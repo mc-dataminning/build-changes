@@ -2,7 +2,7 @@ import javax.annotation.Nullable;
 
 public abstract class drn extends dqb implements bqz {
    @Nullable
-   protected akq<eru> l;
+   protected akq<erw> l;
    protected long m = 0L;
 
    protected drn(dqj<?> $$0, jd $$1, dtc $$2) {
@@ -11,12 +11,12 @@ public abstract class drn extends dqb implements bqz {
 
    @Nullable
    @Override
-   public akq<eru> aB_() {
+   public akq<erw> aB_() {
       return this.l;
    }
 
    @Override
-   public void a(@Nullable akq<eru> $$0) {
+   public void a(@Nullable akq<erw> $$0) {
       this.l = $$0;
    }
 

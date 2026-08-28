@@ -2,14 +2,14 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 
 public interface cox extends bqk, bqv {
-   exa dn();
+   exc dm();
 
-   ewv cL();
+   ewx cK();
 
    @Nullable
-   akq<eru> B();
+   akq<erw> B();
 
-   void a(@Nullable akq<eru> var1);
+   void a(@Nullable akq<erw> var1);
 
    long C();
 
@@ -19,9 +19,9 @@ public interface cox extends bqk, bqv {
 
    void E();
 
-   dcw dP();
+   dcw dO();
 
-   boolean dK();
+   boolean dJ();
 
    @Override
    default boolean c() {
@@ -63,24 +63,24 @@ public interface cox extends bqk, bqv {
 
    default bqr c_(cmx $$0) {
       $$0.a(this);
-      return !$$0.dP().B ? bqr.c : bqr.a;
+      return !$$0.dO().B ? bqr.c : bqr.a;
    }
 
    default void f(@Nullable cmx $$0) {
-      MinecraftServer $$1 = this.dP().o();
+      MinecraftServer $$1 = this.dO().o();
       if (this.B() != null && $$1 != null) {
-         eru $$2 = $$1.be().b(this.B());
+         erw $$2 = $$1.be().b(this.B());
          if ($$0 != null) {
             an.Q.a((aqv)$$0, this.B());
          }
 
          this.a(null);
-         ers.a $$3 = new ers.a((aqu)this.dP()).a(eul.f, this.dn());
+         eru.a $$3 = new eru.a((aqu)this.dO()).a(eun.f, this.dm());
          if ($$0 != null) {
-            $$3.a($$0.gv()).a(eul.a, $$0);
+            $$3.a($$0.gu()).a(eun.a, $$0);
          }
 
-         $$2.a(this, $$3.a(euk.c), this.C());
+         $$2.a(this, $$3.a(eum.c), this.C());
       }
    }
 
@@ -142,6 +142,6 @@ public interface cox extends bqk, bqv {
    }
 
    default boolean g(cmx $$0) {
-      return !this.dK() && $$0.a(this.cL(), 4.0);
+      return !this.dJ() && $$0.a(this.cK(), 4.0);
    }
 }

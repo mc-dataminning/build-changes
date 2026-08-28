@@ -8,25 +8,25 @@ public class caa extends caz {
 
    @Override
    public boolean b() {
-      return this.g.s() && !this.g.gl() && super.b();
+      return this.g.s() && !this.g.gk() && super.b();
    }
 
    @Override
    public void d() {
       super.d();
-      this.g.x(false);
+      this.g.y(false);
    }
 
    @Override
    public void e() {
       super.e();
-      this.g.x(false);
+      this.g.y(false);
    }
 
    @Override
    public void a() {
       super.a();
-      this.g.x(this.m());
+      this.g.y(this.m());
    }
 
    @Override
@@ -38,7 +38,7 @@ public class caa extends caz {
          if ($$2.a(dga.cv)) {
             return dqo.a($$0, $$1) < 1;
          } else {
-            return $$2.a(dga.cD) && $$2.c(djf.b) ? true : $$2.a(awe.R, $$0x -> $$0x.d(dfr.b).map($$0xx -> $$0xx != dtp.a).orElse(true));
+            return $$2.a(dga.cD) && $$2.c(djf.b) ? true : $$2.a(awe.S, $$0x -> $$0x.d(dfr.b).map($$0xx -> $$0xx != dtp.a).orElse(true));
          }
       }
    }

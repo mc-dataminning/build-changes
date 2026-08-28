@@ -1,13 +1,20 @@
-public class gmq extends gmj<ckp> {
-   private static final akr a = akr.b("textures/entity/skeleton/stray.png");
-   private static final akr i = akr.b("textures/entity/skeleton/stray_overlay.png");
+public class gmq<T extends cko> extends glp<T, fxl<T>> {
+   private static final akr a = akr.b("textures/entity/spider/spider.png");
 
-   public gmq(gkh.a $$0) {
-      super($$0, fyh.bA, fyh.bB, fyh.bC);
-      this.a(new gox<>(this, $$0.f(), fyh.bD, i));
+   public gmq(gkj.a $$0) {
+      this($$0, fyj.by);
    }
 
-   public akr a(ckp $$0) {
+   public gmq(gkj.a $$0, fyi $$1) {
+      super($$0, new fxl<>($$0.a($$1)), 0.8F);
+      this.a(new gpc<>(this));
+   }
+
+   protected float b(T $$0) {
+      return 180.0F;
+   }
+
+   public akr a(T $$0) {
       return a;
    }
 }

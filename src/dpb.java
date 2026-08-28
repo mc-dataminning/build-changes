@@ -9,7 +9,7 @@ public class dpb extends doj {
    public static final MapCodec<dpb> f = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), u()).apply($$0, dpb::new));
    public static final dtw g = dju.aE;
    protected static final float h = 2.5F;
-   private static final Map<ji, ext> i = Maps.newEnumMap(
+   private static final Map<ji, exv> i = Maps.newEnumMap(
       ImmutableMap.of(
          ji.c,
          dfy.a(5.5, 3.0, 11.0, 10.5, 13.0, 16.0),
@@ -38,11 +38,11 @@ public class dpb extends doj {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return m($$0);
    }
 
-   public static ext m(dtc $$0) {
+   public static exv m(dtc $$0) {
       return i.get($$0.c(g));
    }
 

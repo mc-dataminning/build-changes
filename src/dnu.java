@@ -22,8 +22,8 @@ public class dnu extends dmz {
 
    @Override
    public dtc a(cyd $$0) {
-      epc $$1 = $$0.q().b_($$0.a());
-      return this.o().a(b, Integer.valueOf(dui.a($$0.i() + 180.0F))).a(f, Boolean.valueOf($$1.a() == epd.c));
+      epe $$1 = $$0.q().b_($$0.a());
+      return this.o().a(b, Integer.valueOf(dui.a($$0.i() + 180.0F))).a(f, Boolean.valueOf($$1.a() == epf.c));
    }
 
    @Override

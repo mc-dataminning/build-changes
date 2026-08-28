@@ -18,7 +18,7 @@ public interface dcz extends dbz, dcg, ddm, ddy.a {
       return this.F_().a($$0);
    }
 
-   default Stream<dtc> c(ewv $$0) {
+   default Stream<dtc> c(ewx $$0) {
       int $$1 = ayo.a($$0.a);
       int $$2 = ayo.a($$0.d);
       int $$3 = ayo.a($$0.b);
@@ -119,7 +119,7 @@ public interface dcz extends dbz, dcg, ddm, ddy.a {
       return this.b_($$0).a(awk.a);
    }
 
-   default boolean d(ewv $$0) {
+   default boolean d(ewx $$0) {
       int $$1 = ayo.a($$0.a);
       int $$2 = ayo.c($$0.d);
       int $$3 = ayo.a($$0.b);

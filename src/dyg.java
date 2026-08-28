@@ -4,30 +4,30 @@ import java.util.Optional;
 import java.util.UUID;
 import javax.annotation.Nullable;
 
-public record dyg(jm<dxz> b, float c, exa d, @Nullable UUID e, @Nullable UUID f, @Nullable bsr g) {
+public record dyg(jm<dxz> b, float c, exc d, @Nullable UUID e, @Nullable UUID f, @Nullable bsr g) {
    public static final Codec<dyg> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                dxz.aj.fieldOf("game_event").forGetter(dyg::a),
                Codec.floatRange(0.0F, Float.MAX_VALUE).fieldOf("distance").forGetter(dyg::b),
-               exa.a.fieldOf("pos").forGetter(dyg::c),
+               exc.a.fieldOf("pos").forGetter(dyg::c),
                kg.a.lenientOptionalFieldOf("source").forGetter($$0x -> Optional.ofNullable($$0x.d())),
                kg.a.lenientOptionalFieldOf("projectile_owner").forGetter($$0x -> Optional.ofNullable($$0x.e()))
             )
             .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new dyg($$0x, $$1, $$2, (UUID)$$3.orElse(null), (UUID)$$4.orElse(null)))
    );
 
-   public dyg(jm<dxz> $$0, float $$1, exa $$2, @Nullable UUID $$3, @Nullable UUID $$4) {
+   public dyg(jm<dxz> $$0, float $$1, exc $$2, @Nullable UUID $$3, @Nullable UUID $$4) {
       this($$0, $$1, $$2, $$3, $$4, null);
    }
 
-   public dyg(jm<dxz> $$0, float $$1, exa $$2, @Nullable bsr $$3) {
-      this($$0, $$1, $$2, $$3 == null ? null : $$3.cA(), a($$3), $$3);
+   public dyg(jm<dxz> $$0, float $$1, exc $$2, @Nullable bsr $$3) {
+      this($$0, $$1, $$2, $$3 == null ? null : $$3.cz(), a($$3), $$3);
    }
 
    @Nullable
    private static UUID a(@Nullable bsr $$0) {
       if ($$0 instanceof cnp $$1 && $$1.s() != null) {
-         return $$1.s().cA();
+         return $$1.s().cz();
       }
 
       return null;
@@ -49,7 +49,7 @@ public record dyg(jm<dxz> b, float c, exa d, @Nullable UUID e, @Nullable UUID f,
       return this.c;
    }
 
-   public exa c() {
+   public exc c() {
       return this.d;
    }
 

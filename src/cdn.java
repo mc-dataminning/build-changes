@@ -10,9 +10,9 @@ public class cdn extends cdy<btn> {
    @Override
    protected void a(aqu $$0, btn $$1) {
       if ($$1.bf()) {
-         $$1.dU().a(ccs.X, azs.a);
+         $$1.dT().a(ccs.X, azs.a);
       } else {
-         $$1.dU().b(ccs.X);
+         $$1.dT().b(ccs.X);
       }
    }
 }

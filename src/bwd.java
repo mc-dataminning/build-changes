@@ -10,10 +10,10 @@ public class bwd {
                .apply(
                   $$1,
                   $$1x -> ($$2, $$3, $$4) -> {
-                        if ($$2.h($$3.dp())) {
+                        if ($$2.h($$3.do())) {
                            return false;
                         } else {
-                           jd $$5 = $$3.dp();
+                           jd $$5 = $$3.do();
                            List<jd> $$6 = jd.d($$5.b(-1, -1, -1), $$5.b(1, 1, 1)).map(jd::j).collect(ad.b());
                            Collections.shuffle($$6);
                            $$6.stream()

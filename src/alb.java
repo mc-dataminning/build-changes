@@ -22,12 +22,12 @@ public class alb {
    public static CompletableFuture<jt<ala>> a(jt<ala> $$0, aue $$1, Executor $$2) {
       ka.b $$3 = $$0.b(ala.d);
       akp<JsonElement> $$4 = new alb.a($$3).a(JsonOps.INSTANCE);
-      List<CompletableFuture<ki<?>>> $$5 = err.a().map($$3x -> a($$3x, $$4, $$1, $$2)).toList();
+      List<CompletableFuture<ki<?>>> $$5 = ert.a().map($$3x -> a($$3x, $$4, $$1, $$2)).toList();
       CompletableFuture<List<ki<?>>> $$6 = ad.d($$5);
       return $$6.thenApplyAsync($$1x -> a($$0, $$1x), $$2);
    }
 
-   private static <T> CompletableFuture<ki<?>> a(err<T> $$0, akp<JsonElement> $$1, aue $$2, Executor $$3) {
+   private static <T> CompletableFuture<ki<?>> a(ert<T> $$0, akp<JsonElement> $$1, aue $$2, Executor $$3) {
       return CompletableFuture.supplyAsync(() -> {
          ki<T> $$3x = new ju<>($$0.b(), Lifecycle.experimental());
          Map<akr, JsonElement> $$4 = new HashMap<>();
@@ -42,19 +42,19 @@ public class alb {
       jt<ala> $$2 = b($$0, $$1);
       ayu.a $$3 = new ayu.a();
       ka.b $$4 = $$2.a();
-      erv $$5 = new erv($$3, euk.q, $$4.b());
-      err.a().forEach($$2x -> a($$5, $$2x, $$4));
+      erx $$5 = new erx($$3, eum.q, $$4.b());
+      ert.a().forEach($$2x -> a($$5, $$2x, $$4));
       $$3.a().forEach(($$0x, $$1x) -> a.warn("Found loot table element validation problem in {}: {}", $$0x, $$1x));
       return $$2;
    }
 
    private static jt<ala> b(jt<ala> $$0, List<ki<?>> $$1) {
       ka $$2 = new ka.c($$1);
-      ((ki)$$2.<eru>d(lu.bc)).a(erl.a, eru.a, c);
+      ((ki)$$2.<erw>d(lu.bc)).a(ern.a, erw.a, c);
       return $$0.a(ala.d, $$2.d());
    }
 
-   private static <T> void a(erv $$0, err<T> $$1, ka $$2) {
+   private static <T> void a(erx $$0, ert<T> $$1, ka $$2) {
       jz<T> $$3 = $$2.d($$1.b());
       $$3.i().forEach($$2x -> $$1.a($$0, $$2x.h(), (T)$$2x.a()));
    }
@@ -96,8 +96,8 @@ public class alb {
          return this.a.c($$0).stream().flatMap($$0x -> $$0x.i().map($$0xx -> $$0xx.h().a())).toList();
       }
 
-      public eru b(akq<eru> $$0) {
-         return this.a.a(lu.bc).flatMap($$1 -> $$1.a($$0)).map(jm::a).orElse(eru.a);
+      public erw b(akq<erw> $$0) {
+         return this.a.a(lu.bc).flatMap($$1 -> $$1.a($$0)).map(jm::a).orElse(erw.a);
       }
    }
 }

@@ -33,7 +33,7 @@ public class cdo<T extends btn> extends cdy<T> {
    }
 
    public void a(T $$0) {
-      Optional<List<btn>> $$1 = $$0.dU().c(ccs.g);
+      Optional<List<btn>> $$1 = $$0.dT().c(ccs.g);
       if (!$$1.isEmpty()) {
          boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
          if ($$2) {
@@ -43,10 +43,10 @@ public class cdo<T extends btn> extends cdy<T> {
    }
 
    public void b(T $$0) {
-      $$0.dU().a(this.d, true, (long)this.e);
+      $$0.dT().a(this.d, true, (long)this.e);
    }
 
    public void c(T $$0) {
-      $$0.dU().b(this.d);
+      $$0.dT().b(this.d);
    }
 }

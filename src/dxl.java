@@ -25,7 +25,7 @@ public class dxl<T extends dxg> {
       this.b = $$1;
    }
 
-   public void a(ewv $$0, axa<dxk<T>> $$1) {
+   public void a(ewx $$0, axa<dxk<T>> $$1) {
       int $$2 = 2;
       int $$3 = kf.a($$0.a - 2.0);
       int $$4 = kf.a($$0.b - 4.0);
@@ -101,11 +101,11 @@ public class dxl<T extends dxg> {
       return $$0;
    }
 
-   public void b(ewv $$0, axa<T> $$1) {
+   public void b(ewx $$0, axa<T> $$1) {
       this.a($$0, $$2 -> $$2.a($$0, $$1));
    }
 
-   public <U extends T> void a(dxn<T, U> $$0, ewv $$1, axa<U> $$2) {
+   public <U extends T> void a(dxn<T, U> $$0, ewx $$1, axa<U> $$2) {
       this.a($$1, $$3 -> $$3.a($$0, $$1, $$2));
    }
 

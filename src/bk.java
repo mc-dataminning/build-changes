@@ -17,10 +17,10 @@ public record bk(List<ed<brm>> b, Optional<bv> c, Optional<bv> d, Optional<Boole
    );
 
    public boolean a(aqv $$0, brk $$1) {
-      return this.a($$0.A(), $$0.dn(), $$1);
+      return this.a($$0.A(), $$0.dm(), $$1);
    }
 
-   public boolean a(aqu $$0, exa $$1, brk $$2) {
+   public boolean a(aqu $$0, exc $$1, brk $$2) {
       for (ed<brm> $$3 : this.b) {
          if (!$$3.a($$2.l())) {
             return false;

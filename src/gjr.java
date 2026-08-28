@@ -1,17 +1,32 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
-
-public class gjr<T extends chh> extends gjb<T, fuw<T>> {
-   private static final Map<bsx<?>, akr> a = Maps.newHashMap(
-      ImmutableMap.of(bsx.z, akr.b("textures/entity/horse/donkey.png"), bsx.at, akr.b("textures/entity/horse/mule.png"))
-   );
-
-   public gjr(gkh.a $$0, float $$1, fyg $$2) {
-      super($$0, new fuw<>($$0.a($$2)), $$1);
+public class gjr extends glp<cfh, fuv<cfh>> {
+   public gjr(gkj.a $$0) {
+      super($$0, new fuv<>($$0.a(fyj.u)), 0.4F);
+      this.a(new gnx(this, $$0.f()));
    }
 
-   public akr a(T $$0) {
-      return a.get($$0.am());
+   public akr a(cfh $$0) {
+      return $$0.gu();
+   }
+
+   protected void a(cfh $$0, fbi $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b(0.8F, 0.8F, 0.8F);
+   }
+
+   protected void a(cfh $$0, fbi $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      float $$6 = $$0.H($$4);
+      if ($$6 > 0.0F) {
+         $$1.a(0.4F * $$6, 0.15F * $$6, 0.1F * $$6);
+         $$1.a(a.f.rotationDegrees(ayo.j($$6, 0.0F, 90.0F)));
+         jd $$7 = $$0.do();
+
+         for (cmx $$9 : $$0.dO().a(cmx.class, new ewx($$7).c(2.0, 2.0, 2.0))) {
+            if ($$9.fH()) {
+               $$1.a(0.15F * $$6, 0.0F, 0.0F);
+               break;
+            }
+         }
+      }
    }
 }

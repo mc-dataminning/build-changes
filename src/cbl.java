@@ -63,7 +63,7 @@ public class cbl extends cam {
 
    @Override
    public void a() {
-      double $$0 = this.a.i(this.c.du(), this.c.dw(), this.c.dA());
+      double $$0 = this.a.i(this.c.dt(), this.c.dv(), this.c.dz());
       boolean $$1 = this.a.O().a(this.c);
       if ($$1) {
          this.f++;

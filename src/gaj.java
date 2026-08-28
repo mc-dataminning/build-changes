@@ -1,67 +1,66 @@
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
-import java.util.Locale;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.minecraft.report.ReportedEntity;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.UUID;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public record gaj(String a, @Nullable gaj.a b) {
-   public static gaj a() {
-      return a(null);
+public class gaj extends gak {
+   private final String g;
+
+   gaj(UUID $$0, Instant $$1, UUID $$2, String $$3) {
+      super($$0, $$1, $$2);
+      this.g = $$3;
    }
 
-   public static gaj a(String $$0) {
-      return a(new gaj.a.b($$0));
+   public String a() {
+      return this.g;
    }
 
-   public static gaj a(fcn $$0) {
-      return a(new gaj.a.a($$0));
+   public gaj c() {
+      gaj $$0 = new gaj(this.a, this.b, this.c, this.g);
+      $$0.d = this.d;
+      $$0.f = this.f;
+      return $$0;
    }
 
-   public static gaj a(@Nullable gaj.a $$0) {
-      return new gaj(g(), $$0);
+   @Override
+   public fod a(fod $$0, gao $$1) {
+      return new fso($$0, $$1, this);
    }
 
-   public ClientInfo b() {
-      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
-   }
-
-   @Nullable
-   public ThirdPartyServerInfo c() {
-      return this.b instanceof gaj.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
-   }
-
-   @Nullable
-   public RealmInfo d() {
-      return this.b instanceof gaj.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
-   }
-
-   private static String g() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append("1.21-pre1");
-      if (fgm.e().a()) {
-         $$0.append(" (modded)");
+   public static class a extends gak.a<gaj> {
+      public a(gaj $$0, AbuseReportLimits $$1) {
+         super($$0, $$1);
       }
 
-      return $$0.toString();
-   }
+      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
+         super(new gaj(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
+      }
 
-   public String e() {
-      return this.a;
-   }
+      @Override
+      public boolean b() {
+         return StringUtils.isNotEmpty(this.g());
+      }
 
-   @Nullable
-   public gaj.a f() {
-      return this.b;
-   }
+      @Nullable
+      @Override
+      public gak.b c() {
+         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? gak.b.d : super.c();
+      }
 
-   public interface a {
-      public static record a(long a, int b) implements gaj.a {
-         public a(fcn $$0) {
-            this($$0.a, $$0.n);
+      @Override
+      public Either<gak.c, gak.b> a(gao $$0) {
+         gak.b $$1 = this.c();
+         if ($$1 != null) {
+            return Either.right($$1);
+         } else {
+            ReportedEntity $$2 = new ReportedEntity(this.a.c);
+            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
+            return Either.left(new gak.c(this.a.a, gan.c, $$3));
          }
-      }
-
-      public static record b(String a) implements gaj.a {
       }
    }
 }

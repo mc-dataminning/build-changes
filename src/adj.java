@@ -7,7 +7,7 @@ public class adj implements zg<abu> {
    private final int c;
    private final adk d;
 
-   public adj(dcd $$0, eor $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+   public adj(dcd $$0, eot $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
       this.b = $$0.e;
       this.c = $$0.f;
       this.d = new adk($$0, $$1, $$2, $$3);

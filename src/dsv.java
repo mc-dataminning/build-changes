@@ -16,12 +16,12 @@ public class dsv extends dib {
    public static final int e = 1;
    public static final int f = 2;
    public static final float g = 4.0F;
-   protected static final ext h = dfy.a(0.0, 0.0, 0.0, 12.0, 16.0, 16.0);
-   protected static final ext i = dfy.a(4.0, 0.0, 0.0, 16.0, 16.0, 16.0);
-   protected static final ext j = dfy.a(0.0, 0.0, 0.0, 16.0, 16.0, 12.0);
-   protected static final ext k = dfy.a(0.0, 0.0, 4.0, 16.0, 16.0, 16.0);
-   protected static final ext l = dfy.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0);
-   protected static final ext m = dfy.a(0.0, 4.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final exv h = dfy.a(0.0, 0.0, 0.0, 12.0, 16.0, 16.0);
+   protected static final exv i = dfy.a(4.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final exv j = dfy.a(0.0, 0.0, 0.0, 16.0, 16.0, 12.0);
+   protected static final exv k = dfy.a(0.0, 0.0, 4.0, 16.0, 16.0, 16.0);
+   protected static final exv l = dfy.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0);
+   protected static final exv m = dfy.a(0.0, 4.0, 0.0, 16.0, 16.0, 16.0);
    private final boolean n;
 
    @Override
@@ -36,7 +36,7 @@ public class dsv extends dib {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       if ($$0.c(c)) {
          switch ((ji)$$0.c(a)) {
             case a:
@@ -54,7 +54,7 @@ public class dsv extends dib {
                return h;
          }
       } else {
-         return exq.b();
+         return exs.b();
       }
    }
 
@@ -172,7 +172,7 @@ public class dsv extends dib {
             }
 
             if (!$$12) {
-               if ($$3 != 1 || $$11.i() || !a($$11, $$1, $$10, $$5.g(), false, $$5) || $$11.o() != eph.a && !$$11.a(dga.by) && !$$11.a(dga.br)) {
+               if ($$3 != 1 || $$11.i() || !a($$11, $$1, $$10, $$5.g(), false, $$5) || $$11.o() != epj.a && !$$11.a(dga.by) && !$$11.a(dga.br)) {
                   $$1.a($$2.a($$5), false);
                } else {
                   this.a($$1, $$2, $$5, false);
@@ -254,7 +254,7 @@ public class dsv extends dib {
             a($$17, $$0, $$16, $$18);
             $$0.a($$16, dga.a.o(), 18);
             $$0.a(dxz.f, $$16, dxz.a.a($$17));
-            if (!$$17.a(awe.aK)) {
+            if (!$$17.a(awe.aL)) {
                $$0.a($$16, $$17);
             }
 
@@ -337,7 +337,7 @@ public class dsv extends dib {
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return false;
    }
 }

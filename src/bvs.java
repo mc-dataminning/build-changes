@@ -10,13 +10,13 @@ public class bvs implements bwv {
    }
 
    @Override
-   public exa a() {
-      return this.b ? this.a.dn().b(0.0, (double)this.a.cM(), 0.0) : this.a.dn();
+   public exc a() {
+      return this.b ? this.a.dm().b(0.0, (double)this.a.cL(), 0.0) : this.a.dm();
    }
 
    @Override
    public jd b() {
-      return this.a.dp();
+      return this.a.do();
    }
 
    @Override
@@ -25,7 +25,7 @@ public class bvs implements bwv {
          if (!$$1.bE()) {
             return false;
          } else {
-            Optional<ccu> $$3 = $$0.dU().c(ccs.h);
+            Optional<ccu> $$3 = $$0.dT().c(ccs.h);
             return $$3.isPresent() && $$3.get().a($$1);
          }
       } else {

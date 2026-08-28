@@ -41,7 +41,7 @@ public abstract class bsl extends btw {
    }
 
    public int g() {
-      if (this.dP().B) {
+      if (this.dO().B) {
          return this.ao.a(ca) ? -1 : 1;
       } else {
          return this.c;
@@ -108,10 +108,10 @@ public abstract class bsl extends btw {
    @Override
    public void m_() {
       super.m_();
-      if (this.dP().B) {
+      if (this.dO().B) {
          if (this.e > 0) {
             if (this.e % 4 == 0) {
-               this.dP().a(lm.O, this.d(1.0), this.dx() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
+               this.dO().a(lm.O, this.d(1.0), this.dw() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
             }
 
             this.e--;
@@ -127,7 +127,7 @@ public abstract class bsl extends btw {
    }
 
    protected void k() {
-      if (!this.o_() && this.bS() && this.dd() instanceof cov $$0 && !$$0.c(this)) {
+      if (!this.o_() && this.bS() && this.dc() instanceof cov $$0 && !$$0.c(this)) {
          this.ad();
       }
    }

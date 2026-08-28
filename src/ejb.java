@@ -1,40 +1,24 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejb extends eiv {
-   public static final MapCodec<ejb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               dyy.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
-               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
-               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, ejb::new)
-   );
-   private final dyy.a c;
-   private final int d;
-   private final int e;
+public class ejb extends eix {
+   public static final MapCodec<ejb> a = axw.l.fieldOf("chance").xmap(ejb::new, $$0 -> $$0.c);
+   private final int c;
 
-   private ejb(dyy.a $$0, int $$1, int $$2) {
+   private ejb(int $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
    }
 
-   public static ejb a(dyy.a $$0, int $$1, int $$2) {
-      return new ejb($$0, $$1, $$2);
-   }
-
-   @Override
-   protected boolean a(eiu $$0, ayw $$1, jd $$2) {
-      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
-      long $$4 = $$3 + (long)this.d;
-      long $$5 = $$3 + (long)this.e;
-      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
+   public static ejb a(int $$0) {
+      return new ejb($$0);
    }
 
    @Override
-   public eix<?> b() {
-      return eix.c;
+   protected boolean a(eiw $$0, ayw $$1, jd $$2) {
+      return $$1.i() < 1.0F / (float)this.c;
+   }
+
+   @Override
+   public eiz<?> b() {
+      return eiz.b;
    }
 }

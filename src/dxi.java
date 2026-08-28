@@ -31,7 +31,7 @@ public class dxi<T extends dxg> {
    }
 
    public void a(T $$0) {
-      UUID $$1 = $$0.cA();
+      UUID $$1 = $$0.cz();
       if (this.c.containsKey($$1)) {
          a.warn("Duplicate entity UUID {}: {}", $$1, $$0);
       } else {
@@ -41,7 +41,7 @@ public class dxi<T extends dxg> {
    }
 
    public void b(T $$0) {
-      this.c.remove($$0.cA());
+      this.c.remove($$0.cz());
       this.b.remove($$0.an());
    }
 

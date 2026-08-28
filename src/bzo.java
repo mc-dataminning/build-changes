@@ -13,20 +13,20 @@ public class bzo implements bzl {
       this.a = $$0;
    }
 
-   public void a(exa $$0) {
+   public void a(exc $$0) {
       this.a($$0.c, $$0.d, $$0.e);
    }
 
    public void a(bsr $$0) {
-      this.a($$0.du(), b($$0), $$0.dA());
+      this.a($$0.dt(), b($$0), $$0.dz());
    }
 
    public void a(bsr $$0, float $$1, float $$2) {
-      this.a($$0.du(), b($$0), $$0.dA(), $$1, $$2);
+      this.a($$0.dt(), b($$0), $$0.dz(), $$1, $$2);
    }
 
    public void a(double $$0, double $$1, double $$2) {
-      this.a($$0, $$1, $$2, (float)this.a.fN(), (float)this.a.ac());
+      this.a($$0, $$1, $$2, (float)this.a.fM(), (float)this.a.ac());
    }
 
    public void a(double $$0, double $$1, double $$2, float $$3, float $$4) {
@@ -46,7 +46,7 @@ public class bzo implements bzl {
       if (this.d > 0) {
          this.d--;
          this.i().ifPresent($$0 -> this.a.ba = this.a(this.a.ba, $$0, this.b));
-         this.h().ifPresent($$0 -> this.a.u(this.a(this.a.dH(), $$0, this.c)));
+         this.h().ifPresent($$0 -> this.a.u(this.a(this.a.dG(), $$0, this.c)));
       } else {
          this.a.ba = this.a(this.a.ba, this.a.aY, 10.0F);
       }
@@ -81,16 +81,16 @@ public class bzo implements bzl {
    }
 
    protected Optional<Float> h() {
-      double $$0 = this.e - this.a.du();
-      double $$1 = this.f - this.a.dy();
-      double $$2 = this.g - this.a.dA();
+      double $$0 = this.e - this.a.dt();
+      double $$1 = this.f - this.a.dx();
+      double $$2 = this.g - this.a.dz();
       double $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
       return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$3) > 1.0E-5F) ? Optional.empty() : Optional.of((float)(-(ayo.d($$1, $$3) * 180.0F / (float)Math.PI)));
    }
 
    protected Optional<Float> i() {
-      double $$0 = this.e - this.a.du();
-      double $$1 = this.g - this.a.dA();
+      double $$0 = this.e - this.a.dt();
+      double $$1 = this.g - this.a.dz();
       return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$0) > 1.0E-5F)
          ? Optional.empty()
          : Optional.of((float)(ayo.d($$1, $$0) * 180.0F / (float)Math.PI) - 90.0F);
@@ -103,6 +103,6 @@ public class bzo implements bzl {
    }
 
    private static double b(bsr $$0) {
-      return $$0 instanceof btn ? $$0.dy() : ($$0.cL().b + $$0.cL().e) / 2.0;
+      return $$0 instanceof btn ? $$0.dx() : ($$0.cK().b + $$0.cK().e) / 2.0;
    }
 }

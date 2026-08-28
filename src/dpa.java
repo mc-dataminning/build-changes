@@ -7,7 +7,7 @@ import java.util.Map;
 public class dpa extends deu {
    public static final MapCodec<dpa> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dnb.a.b.fieldOf("kind").forGetter(deu::b), u()).apply($$0, dpa::new));
    public static final dtw d = dju.aE;
-   private static final Map<ji, ext> b = Maps.newEnumMap(
+   private static final Map<ji, exv> b = Maps.newEnumMap(
       ImmutableMap.of(
          ji.c,
          dfy.a(4.0, 4.0, 8.0, 12.0, 12.0, 16.0),
@@ -36,7 +36,7 @@ public class dpa extends deu {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return b.get($$0.c(d));
    }
 

@@ -142,14 +142,14 @@ public class csw extends cul {
    }
 
    private void a(bsr $$0) {
-      $$0.a(avp.dq, 0.8F, 0.8F + $$0.dP().E_().i() * 0.4F);
+      $$0.a(avp.dq, 0.8F, 0.8F + $$0.dO().E_().i() * 0.4F);
    }
 
    private void b(bsr $$0) {
-      $$0.a(avp.dp, 0.8F, 0.8F + $$0.dP().E_().i() * 0.4F);
+      $$0.a(avp.dp, 0.8F, 0.8F + $$0.dO().E_().i() * 0.4F);
    }
 
    private void c(bsr $$0) {
-      $$0.a(avp.do, 0.8F, 0.8F + $$0.dP().E_().i() * 0.4F);
+      $$0.a(avp.do, 0.8F, 0.8F + $$0.dO().E_().i() * 0.4F);
    }
 }

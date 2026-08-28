@@ -1,41 +1,36 @@
-public class ghp extends ghq<dry> {
-   private static final akr c = akr.b("textures/entity/end_gateway_beam.png");
+public class ghp implements ggz<drw> {
+   private final gkh a;
 
-   public ghp(ggy.a $$0) {
-      super($$0);
+   public ghp(gha.a $$0) {
+      this.a = $$0.c();
    }
 
-   public void a(dry $$0, float $$1, fbg $$2, gex $$3, int $$4, int $$5) {
-      if ($$0.b() || $$0.c()) {
-         float $$6 = $$0.b() ? $$0.a($$1) : $$0.b($$1);
-         double $$7 = $$0.b() ? (double)$$0.i().am() : 50.0;
-         $$6 = ayo.a($$6 * (float) Math.PI);
-         int $$8 = ayo.a((double)$$6 * $$7);
-         int $$9 = $$0.b() ? cti.c.d() : cti.k.d();
-         long $$10 = $$0.i().Z();
-         ggt.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
+   public void a(drw $$0, float $$1, fbi $$2, gez $$3, int $$4, int $$5) {
+      dcw $$6 = $$0.i();
+      if ($$6 != null) {
+         dby $$7 = $$0.c();
+         bsr $$8 = $$7.b($$6, $$0.aD_());
+         if ($$8 != null) {
+            a($$1, $$2, $$3, $$4, $$8, this.a, $$7.b(), $$7.a());
+         }
+      }
+   }
+
+   public static void a(float $$0, fbi $$1, gez $$2, int $$3, bsr $$4, gkh $$5, double $$6, double $$7) {
+      $$1.a();
+      $$1.a(0.5F, 0.0F, 0.5F);
+      float $$8 = 0.53125F;
+      float $$9 = Math.max($$4.dj(), $$4.dk());
+      if ((double)$$9 > 1.0) {
+         $$8 /= $$9;
       }
 
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected float b() {
-      return 1.0F;
-   }
-
-   @Override
-   protected float c() {
-      return 0.0F;
-   }
-
-   @Override
-   protected gff d() {
-      return gff.u();
-   }
-
-   @Override
-   public int aW_() {
-      return 256;
+      $$1.a(0.0F, 0.4F, 0.0F);
+      $$1.a(a.d.rotationDegrees((float)ayo.d((double)$$0, $$6, $$7) * 10.0F));
+      $$1.a(0.0F, -0.2F, 0.0F);
+      $$1.a(a.b.rotationDegrees(-30.0F));
+      $$1.b($$8, $$8, $$8);
+      $$5.a($$4, 0.0, 0.0, 0.0, 0.0F, $$0, $$1, $$2, $$3);
+      $$1.b();
    }
 }

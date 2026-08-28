@@ -51,11 +51,11 @@ public interface btt {
    default void a(aqu $$0, boolean $$1) {
       btn $$2 = this.p();
       UUID $$3 = this.b();
-      if (($$2 == null || $$2.ey()) && $$3 != null && $$0.a($$3) instanceof btp) {
+      if (($$2 == null || $$2.ex()) && $$3 != null && $$0.a($$3) instanceof btp) {
          this.Z_();
       } else {
-         if ($$2 != null && !Objects.equals($$3, $$2.cA())) {
-            this.a($$2.cA());
+         if ($$2 != null && !Objects.equals($$3, $$2.cz())) {
+            this.a($$2.cz());
             this.c();
          }
 
@@ -72,7 +72,7 @@ public interface btt {
       if (!this.c($$0)) {
          return false;
       } else {
-         return $$0.am() == bsx.by && this.a_($$0.dP()) ? true : $$0.cA().equals(this.b());
+         return $$0.am() == bsx.by && this.a_($$0.dO()) ? true : $$0.cz().equals(this.b());
       }
    }
 
@@ -85,8 +85,8 @@ public interface btt {
    }
 
    default void a_(cmx $$0) {
-      if ($$0.dP().ab().b(dcs.N)) {
-         if ($$0.cA().equals(this.b())) {
+      if ($$0.dO().ab().b(dcs.N)) {
+         if ($$0.cz().equals(this.b())) {
             this.Z_();
          }
       }
@@ -105,7 +105,7 @@ public interface btt {
    }
 
    @Nullable
-   btn ej();
+   btn ei();
 
    void a(@Nullable btn var1);
 

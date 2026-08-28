@@ -9,7 +9,7 @@ public abstract class cpg extends bsr {
 
    @Override
    public boolean a(brk $$0, float $$1) {
-      if (this.dP().B || this.dK()) {
+      if (this.dO().B || this.dJ()) {
          return true;
       } else if (this.b($$0)) {
          return false;
@@ -19,7 +19,7 @@ public abstract class cpg extends bsr {
          this.bw();
          this.b(this.N() + $$1 * 10.0F);
          this.a(dxz.o, $$0.d());
-         boolean $$2 = $$0.d() instanceof cmx && ((cmx)$$0.d()).ga().d;
+         boolean $$2 = $$0.d() instanceof cmx && ((cmx)$$0.d()).fZ().d;
          if (($$2 || !(this.N() > 40.0F)) && !this.d($$0)) {
             if ($$2) {
                this.aq();
@@ -38,7 +38,7 @@ public abstract class cpg extends bsr {
 
    public void b(cul $$0) {
       this.ap();
-      if (this.dP().ab().b(dcs.i)) {
+      if (this.dO().ab().b(dcs.i)) {
          cuq $$1 = new cuq($$0);
          $$1.b(kq.g, this.aj());
          this.b($$1);

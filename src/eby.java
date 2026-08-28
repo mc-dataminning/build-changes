@@ -2,16 +2,16 @@ import com.mojang.serialization.Codec;
 import java.util.Optional;
 import java.util.OptionalInt;
 
-public class eby extends ecd<eef> {
-   public eby(Codec<eef> $$0) {
+public class eby extends ece<eeg> {
+   public eby(Codec<eeg> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecf<eef> $$0) {
+   public boolean a(ecg<eeg> $$0) {
       dds $$1 = $$0.b();
       jd $$2 = $$0.e();
-      eef $$3 = $$0.f();
+      eeg $$3 = $$0.f();
       ayw $$4 = $$0.d();
       if (!ebz.a($$1, $$2)) {
          return false;
@@ -34,7 +34,7 @@ public class eby extends ecd<eef> {
       }
    }
 
-   private void a(dds $$0, ayw $$1, jd $$2, int $$3, int $$4, float $$5, double $$6, int $$7, float $$8, eef $$9) {
+   private void a(dds $$0, ayw $$1, jd $$2, int $$3, int $$4, float $$5, double $$6, int $$7, float $$8, eeg $$9) {
       Optional<dyo> $$10 = dyo.a($$0, $$2, $$9.b, ebz::c, ebz::d);
       if (!$$10.isEmpty()) {
          OptionalInt $$11 = $$10.get().b();
@@ -114,7 +114,7 @@ public class eby extends ecd<eef> {
       return $$0.a_($$1).a(dga.H);
    }
 
-   private int a(ayw $$0, int $$1, int $$2, float $$3, int $$4, eef $$5) {
+   private int a(ayw $$0, int $$1, int $$2, float $$3, int $$4, eeg $$5) {
       if ($$0.i() > $$3) {
          return 0;
       } else {
@@ -145,7 +145,7 @@ public class eby extends ecd<eef> {
 
    private boolean a(dcx $$0, jd $$1) {
       dtc $$2 = $$0.a_($$1);
-      return $$2.a(awe.be) || $$2.u().a(awk.a);
+      return $$2.a(awe.bf) || $$2.u().a(awk.a);
    }
 
    private void a(dds $$0, jd $$1, int $$2, ji $$3) {
@@ -160,7 +160,7 @@ public class eby extends ecd<eef> {
       }
    }
 
-   private double a(int $$0, int $$1, int $$2, int $$3, eef $$4) {
+   private double a(int $$0, int $$1, int $$2, int $$3, eeg $$4) {
       int $$5 = $$0 - Math.abs($$2);
       int $$6 = $$1 - Math.abs($$3);
       int $$7 = Math.min($$5, $$6);

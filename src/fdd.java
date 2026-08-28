@@ -1,56 +1,27 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
 import org.slf4j.Logger;
 
-public class fdd extends fda {
-   private static final Logger e = LogUtils.getLogger();
-   public List<fdc> a;
-   public int b;
-   public int c;
-   public int d;
-
-   public fdd() {
-   }
-
-   public fdd(int $$0) {
-      this.a = Collections.emptyList();
-      this.b = 0;
-      this.c = $$0;
-      this.d = -1;
-   }
-
-   public boolean a() {
-      return this.b * this.c >= this.d && this.b > 0 && this.d > 0 && this.c > 0;
-   }
+public class fdd extends fdc {
+   private static final Logger d = LogUtils.getLogger();
+   public String a;
+   public String b;
+   public String c;
 
    public static fdd a(String $$0) {
-      fdd $$1 = new fdd();
-      $$1.a = Lists.newArrayList();
+      JsonParser $$1 = new JsonParser();
+      JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
+      fdd $$3 = new fdd();
 
       try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("templates").isJsonArray()) {
-            Iterator<JsonElement> $$4 = $$3.get("templates").getAsJsonArray().iterator();
-
-            while ($$4.hasNext()) {
-               $$1.a.add(fdc.a($$4.next().getAsJsonObject()));
-            }
-         }
-
-         $$1.b = fex.a("page", $$3, 0);
-         $$1.c = fex.a("size", $$3, 0);
-         $$1.d = fex.a("total", $$3, 0);
+         $$3.a = fez.b("downloadLink", $$2, "");
+         $$3.b = fez.b("resourcePackUrl", $$2, "");
+         $$3.c = fez.b("resourcePackHash", $$2, "");
       } catch (Exception var5) {
-         e.error("Could not parse WorldTemplatePaginatedList: {}", var5.getMessage());
+         d.error("Could not parse WorldDownload: {}", var5.getMessage());
       }
 
-      return $$1;
+      return $$3;
    }
 }

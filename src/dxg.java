@@ -4,21 +4,21 @@ import java.util.stream.Stream;
 public interface dxg {
    int an();
 
-   UUID cA();
+   UUID cz();
 
-   jd dp();
+   jd do();
 
-   ewv cL();
+   ewx cK();
 
    void a(dxh var1);
 
-   Stream<? extends dxg> cV();
+   Stream<? extends dxg> cU();
 
-   Stream<? extends dxg> cW();
+   Stream<? extends dxg> cV();
 
    void b(bsr.c var1);
 
-   boolean dN();
+   boolean dM();
 
-   boolean dO();
+   boolean dN();
 }

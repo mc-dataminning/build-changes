@@ -42,6 +42,10 @@ public abstract class cnd extends cnp {
 
       this.a_($$1, $$2, $$3);
       if ($$6 != null && $$4 instanceof aqu $$8) {
+         if ($$6.e()) {
+            throw new IllegalArgumentException("Invalid weapon firing an arrow");
+         }
+
          this.r = $$6.s();
          int $$9 = dae.a($$8, $$6, this.q);
          if ($$9 > 0) {
@@ -53,7 +57,7 @@ public abstract class cnd extends cnp {
    }
 
    protected cnd(bsx<? extends cnd> $$0, btn $$1, dcw $$2, cuq $$3, @Nullable cuq $$4) {
-      this($$0, $$1.du(), $$1.dy() - 0.1F, $$1.dA(), $$2, $$3, $$4);
+      this($$0, $$1.dt(), $$1.dx() - 0.1F, $$1.dz(), $$2, $$3, $$4);
       this.c($$1);
    }
 
@@ -63,12 +67,12 @@ public abstract class cnd extends cnp {
 
    @Override
    public boolean a(double $$0) {
-      double $$1 = this.cL().a() * 10.0;
+      double $$1 = this.cK().a() * 10.0;
       if (Double.isNaN($$1)) {
          $$1 = 1.0;
       }
 
-      $$1 *= 64.0 * cE();
+      $$1 *= 64.0 * cD();
       return $$0 < $$1 * $$1;
    }
 
@@ -100,23 +104,23 @@ public abstract class cnd extends cnp {
    public void l() {
       super.l();
       boolean $$0 = this.E();
-      exa $$1 = this.ds();
+      exc $$1 = this.dr();
       if (this.P == 0.0F && this.O == 0.0F) {
          double $$2 = $$1.h();
          this.t((float)(ayo.d($$1.c, $$1.e) * 180.0F / (float)Math.PI));
          this.u((float)(ayo.d($$1.d, $$2) * 180.0F / (float)Math.PI));
-         this.O = this.dF();
-         this.P = this.dH();
+         this.O = this.dE();
+         this.P = this.dG();
       }
 
-      jd $$3 = this.dp();
-      dtc $$4 = this.dP().a_($$3);
+      jd $$3 = this.do();
+      dtc $$4 = this.dO().a_($$3);
       if (!$$4.i() && !$$0) {
-         ext $$5 = $$4.k(this.dP(), $$3);
+         exv $$5 = $$4.k(this.dO(), $$3);
          if (!$$5.c()) {
-            exa $$6 = this.dn();
+            exc $$6 = this.dm();
 
-            for (ewv $$7 : $$5.e()) {
+            for (ewx $$7 : $$5.e()) {
                if ($$7.a($$3).d($$6)) {
                   this.b = true;
                   break;
@@ -136,28 +140,28 @@ public abstract class cnd extends cnp {
       if (this.b && !$$0) {
          if (this.k != $$4 && this.F()) {
             this.J();
-         } else if (!this.dP().B) {
+         } else if (!this.dO().B) {
             this.p();
          }
 
          this.c++;
       } else {
          this.c = 0;
-         exa $$8 = this.dn();
-         exa $$9 = $$8.e($$1);
-         ewy $$10 = this.dP().a(new dcf($$8, $$9, dcf.a.a, dcf.b.a, this));
-         if ($$10.c() != ewy.a.a) {
+         exc $$8 = this.dm();
+         exc $$9 = $$8.e($$1);
+         exa $$10 = this.dO().a(new dcf($$8, $$9, dcf.a.a, dcf.b.a, this));
+         if ($$10.c() != exa.a.a) {
             $$9 = $$10.e();
          }
 
-         while (!this.dK()) {
-            ewx $$11 = this.a($$8, $$9);
+         while (!this.dJ()) {
+            ewz $$11 = this.a($$8, $$9);
             if ($$11 != null) {
                $$10 = $$11;
             }
 
-            if ($$10 != null && $$10.c() == ewy.a.c) {
-               bsr $$12 = ((ewx)$$10).a();
+            if ($$10 != null && $$10.c() == exa.a.c) {
+               bsr $$12 = ((ewz)$$10).a();
                bsr $$13 = this.s();
                if ($$12 instanceof cmx && $$13 instanceof cmx && !((cmx)$$13).a((cmx)$$12)) {
                   $$10 = null;
@@ -180,18 +184,18 @@ public abstract class cnd extends cnp {
             $$10 = null;
          }
 
-         $$1 = this.ds();
+         $$1 = this.dr();
          double $$15 = $$1.c;
          double $$16 = $$1.d;
          double $$17 = $$1.e;
          if (this.A()) {
             for (int $$18 = 0; $$18 < 4; $$18++) {
-               this.dP()
+               this.dO()
                   .a(
                      lm.f,
-                     this.du() + $$15 * (double)$$18 / 4.0,
-                     this.dw() + $$16 * (double)$$18 / 4.0,
-                     this.dA() + $$17 * (double)$$18 / 4.0,
+                     this.dt() + $$15 * (double)$$18 / 4.0,
+                     this.dv() + $$16 * (double)$$18 / 4.0,
+                     this.dz() + $$17 * (double)$$18 / 4.0,
                      -$$15,
                      -$$16 + 0.2,
                      -$$17
@@ -199,9 +203,9 @@ public abstract class cnd extends cnp {
             }
          }
 
-         double $$19 = this.du() + $$15;
-         double $$20 = this.dw() + $$16;
-         double $$21 = this.dA() + $$17;
+         double $$19 = this.dt() + $$15;
+         double $$20 = this.dv() + $$16;
+         double $$21 = this.dz() + $$17;
          double $$22 = $$1.h();
          if ($$0) {
             this.t((float)(ayo.d(-$$15, -$$17) * 180.0F / (float)Math.PI));
@@ -210,13 +214,13 @@ public abstract class cnd extends cnp {
          }
 
          this.u((float)(ayo.d($$16, $$22) * 180.0F / (float)Math.PI));
-         this.u(e(this.P, this.dH()));
-         this.t(e(this.O, this.dF()));
+         this.u(e(this.P, this.dG()));
+         this.t(e(this.O, this.dE()));
          float $$23 = 0.99F;
          if (this.bf()) {
             for (int $$24 = 0; $$24 < 4; $$24++) {
                float $$25 = 0.25F;
-               this.dP().a(lm.d, $$19 - $$15 * 0.25, $$20 - $$16 * 0.25, $$21 - $$17 * 0.25, $$15, $$16, $$17);
+               this.dO().a(lm.d, $$19 - $$15 * 0.25, $$20 - $$16 * 0.25, $$21 - $$17 * 0.25, $$15, $$16, $$17);
             }
 
             $$23 = this.D();
@@ -238,18 +242,18 @@ public abstract class cnd extends cnp {
    }
 
    private boolean F() {
-      return this.b && this.dP().b(new ewv(this.dn(), this.dn()).g(0.06));
+      return this.b && this.dO().b(new ewx(this.dm(), this.dm()).g(0.06));
    }
 
    private void J() {
       this.b = false;
-      exa $$0 = this.ds();
+      exc $$0 = this.dr();
       this.i($$0.d((double)(this.ah.i() * 0.2F), (double)(this.ah.i() * 0.2F), (double)(this.ah.i() * 0.2F)));
       this.l = 0;
    }
 
    @Override
-   public void a(bts $$0, exa $$1) {
+   public void a(bts $$0, exc $$1) {
       super.a($$0, $$1);
       if ($$0 != bts.a && this.F()) {
          this.J();
@@ -274,15 +278,15 @@ public abstract class cnd extends cnp {
    }
 
    @Override
-   protected void a(ewx $$0) {
+   protected void a(ewz $$0) {
       super.a($$0);
       bsr $$1 = $$0.a();
-      float $$2 = (float)this.ds().f();
+      float $$2 = (float)this.dr().f();
       double $$3 = this.m;
       bsr $$4 = this.s();
-      brk $$5 = this.dQ().a(this, (bsr)($$4 != null ? $$4 : this));
-      if (this.dT() != null && this.dP() instanceof aqu $$6) {
-         $$3 = (double)dae.a($$6, this.dT(), $$1, $$5, (float)$$3);
+      brk $$5 = this.dP().a(this, (bsr)($$4 != null ? $$4 : this));
+      if (this.dS() != null && this.dO() instanceof aqu $$6) {
+         $$3 = (double)dae.a($$6, this.dS(), $$1, $$5, (float)$$3);
       }
 
       int $$7 = ayo.c(ayo.a((double)$$2 * $$3, 0.0, 2.147483647E9));
@@ -324,13 +328,13 @@ public abstract class cnd extends cnp {
          }
 
          if ($$1 instanceof btn $$12) {
-            if (!this.dP().B && this.C() <= 0) {
-               $$12.p($$12.eQ() + 1);
+            if (!this.dO().B && this.C() <= 0) {
+               $$12.p($$12.eP() + 1);
             }
 
             this.a($$12, $$5);
-            if (this.dP() instanceof aqu $$13) {
-               dae.a($$13, $$12, $$5, this.dT());
+            if (this.dO() instanceof aqu $$13) {
+               dae.a($$13, $$12, $$5, this.dS());
             }
 
             this.a($$12);
@@ -342,7 +346,7 @@ public abstract class cnd extends cnp {
                this.p.add($$12);
             }
 
-            if (!this.dP().B && $$4 instanceof aqv $$14) {
+            if (!this.dO().B && $$4 instanceof aqv $$14) {
                if (this.p != null && this.B()) {
                   an.H.a($$14, this.p);
                } else if (!$$1.bE() && this.B()) {
@@ -358,8 +362,8 @@ public abstract class cnd extends cnp {
       } else {
          $$1.h($$11);
          this.a(cnq.b, $$1, this.s(), false);
-         this.i(this.ds().a(0.2));
-         if (!this.dP().B && this.ds().g() < 1.0E-7) {
+         this.i(this.dr().a(0.2));
+         if (!this.dO().B && this.dr().g() < 1.0E-7) {
             if (this.d == cnd.a.b) {
                this.a(this.w(), 0.1F);
             }
@@ -370,10 +374,10 @@ public abstract class cnd extends cnp {
    }
 
    protected void a(btn $$0, brk $$1) {
-      double $$3 = (double)(this.r != null && this.dP() instanceof aqu $$2 ? dae.d($$2, this.r, $$0, $$1, 0.0F) : 0.0F);
+      double $$3 = (double)(this.r != null && this.dO() instanceof aqu $$2 ? dae.d($$2, this.r, $$0, $$1, 0.0F) : 0.0F);
       if ($$3 > 0.0) {
          double $$4 = Math.max(0.0, 1.0 - $$0.g(buw.p));
-         exa $$5 = this.ds().d(1.0, 0.0, 1.0).d().a($$3 * 0.6 * $$4);
+         exc $$5 = this.dr().d(1.0, 0.0, 1.0).d().a($$3 * 0.6 * $$4);
          if ($$5.g() > 0.0) {
             $$0.j($$5.c, 0.1, $$5.e);
          }
@@ -381,18 +385,18 @@ public abstract class cnd extends cnp {
    }
 
    @Override
-   protected void a(eww $$0) {
-      this.k = this.dP().a_($$0.a());
+   protected void a(ewy $$0) {
+      this.k = this.dO().a_($$0.a());
       super.a($$0);
-      exa $$1 = $$0.e().a(this.du(), this.dw(), this.dA());
+      exc $$1 = $$0.e().a(this.dt(), this.dv(), this.dz());
       this.i($$1);
-      cuq $$2 = this.dT();
-      if (this.dP() instanceof aqu $$3 && $$2 != null) {
+      cuq $$2 = this.dS();
+      if (this.dO() instanceof aqu $$3 && $$2 != null) {
          this.a($$3, $$0, $$2);
       }
 
-      exa $$4 = $$1.d().a(0.05F);
-      this.o(this.du() - $$4.c, this.dw() - $$4.d, this.dA() - $$4.e);
+      exc $$4 = $$1.d().a(0.05F);
+      this.o(this.dt() - $$4.c, this.dv() - $$4.d, this.dz() - $$4.e);
       this.a(this.v(), 1.0F, 1.2F / (this.ah.i() * 0.2F + 0.9F));
       this.b = true;
       this.e = 7;
@@ -402,13 +406,13 @@ public abstract class cnd extends cnp {
       this.K();
    }
 
-   protected void a(aqu $$0, eww $$1, cuq $$2) {
-      exa $$3 = $$1.a().a($$1.e());
+   protected void a(aqu $$0, ewy $$1, cuq $$2) {
+      exc $$3 = $$1.a().a($$1.e());
       dae.a($$0, $$2, this.s() instanceof btn $$4 ? $$4 : null, this, null, $$3, $$0.a_($$1.a()), $$0x -> this.r = null);
    }
 
    @Override
-   public cuq dT() {
+   public cuq dS() {
       return this.r;
    }
 
@@ -424,8 +428,8 @@ public abstract class cnd extends cnp {
    }
 
    @Nullable
-   protected ewx a(exa $$0, exa $$1) {
-      return cnr.a(this.dP(), this, $$0, $$1, this.cL().b(this.ds()).g(1.0), this::b);
+   protected ewz a(exc $$0, exc $$1) {
+      return cnr.a(this.dO(), this, $$0, $$1, this.cK().b(this.dr()).g(1.0), this::b);
    }
 
    @Override
@@ -448,9 +452,9 @@ public abstract class cnd extends cnp {
       $$0.a("crit", this.A());
       $$0.a("PierceLevel", this.C());
       $$0.a("SoundEvent", lt.b.b(this.n).toString());
-      $$0.a("item", this.q.a(this.dR()));
+      $$0.a("item", this.q.a(this.dQ()));
       if (this.r != null) {
-         $$0.a("weapon", this.r.b(this.dR(), new ub()));
+         $$0.a("weapon", this.r.b(this.dQ(), new ub()));
       }
    }
 
@@ -459,7 +463,7 @@ public abstract class cnd extends cnp {
       super.a($$0);
       this.l = $$0.g("life");
       if ($$0.b("inBlockState", 10)) {
-         this.k = uq.a(this.dP().a(lu.f), $$0.p("inBlockState"));
+         this.k = uq.a(this.dO().a(lu.f), $$0.p("inBlockState"));
       }
 
       this.e = $$0.f("shake") & 255;
@@ -476,13 +480,13 @@ public abstract class cnd extends cnp {
       }
 
       if ($$0.b("item", 10)) {
-         this.a(cuq.a(this.dR(), (uy)$$0.p("item")).orElse(this.x()));
+         this.a(cuq.a(this.dQ(), (uy)$$0.p("item")).orElse(this.x()));
       } else {
          this.a(this.x());
       }
 
       if ($$0.b("weapon", 10)) {
-         this.r = cuq.a(this.dR(), (uy)$$0.p("weapon")).orElse(null);
+         this.r = cuq.a(this.dQ(), (uy)$$0.p("weapon")).orElse(null);
       } else {
          this.r = null;
       }
@@ -501,7 +505,7 @@ public abstract class cnd extends cnp {
 
    @Override
    public void b_(cmx $$0) {
-      if (!this.dP().B && (this.b || this.E()) && this.e <= 0) {
+      if (!this.dO().B && (this.b || this.E()) && this.e <= 0) {
          if (this.a($$0)) {
             $$0.a(this, 1);
             this.aq();
@@ -512,8 +516,8 @@ public abstract class cnd extends cnp {
    protected boolean a(cmx $$0) {
       return switch (this.d) {
          case a -> false;
-         case b -> $$0.fZ().f(this.w());
-         case c -> $$0.fM();
+         case b -> $$0.fY().f(this.w());
+         case c -> $$0.fL();
       };
    }
 
@@ -584,7 +588,7 @@ public abstract class cnd extends cnp {
    }
 
    public void a(float $$0) {
-      this.h((double)($$0 * 2.0F) + this.ah.a((double)this.dP().al().a() * 0.11, 0.57425));
+      this.h((double)($$0 * 2.0F) + this.ah.a((double)this.dO().al().a() * 0.11, 0.57425));
    }
 
    protected float D() {
@@ -597,7 +601,7 @@ public abstract class cnd extends cnp {
    }
 
    public boolean E() {
-      return !this.dP().B ? this.ag : (this.ao.a(g) & 2) != 0;
+      return !this.dO().B ? this.ag : (this.ao.a(g) & 2) != 0;
    }
 
    @Override

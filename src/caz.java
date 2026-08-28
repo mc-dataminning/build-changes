@@ -40,19 +40,19 @@ public abstract class caz extends cam {
    }
 
    protected int a(btw $$0) {
-      return b(200 + $$0.dS().a(200));
+      return b(200 + $$0.dR().a(200));
    }
 
    @Override
    public boolean c() {
-      return this.d >= -this.j && this.d <= 1200 && this.a(this.a.dP(), this.e);
+      return this.d >= -this.j && this.d <= 1200 && this.a(this.a.dO(), this.e);
    }
 
    @Override
    public void d() {
       this.h();
       this.d = 0;
-      this.j = this.a.dS().a(this.a.dS().a(1200) + 1200) + 1200;
+      this.j = this.a.dR().a(this.a.dR().a(1200) + 1200) + 1200;
    }
 
    protected void h() {
@@ -75,7 +75,7 @@ public abstract class caz extends cam {
    @Override
    public void a() {
       jd $$0 = this.k();
-      if (!$$0.a(this.a.dn(), this.i())) {
+      if (!$$0.a(this.a.dm(), this.i())) {
          this.k = false;
          this.d++;
          if (this.l()) {
@@ -98,7 +98,7 @@ public abstract class caz extends cam {
    protected boolean n() {
       int $$0 = this.l;
       int $$1 = this.m;
-      jd $$2 = this.a.dp();
+      jd $$2 = this.a.do();
       jd.a $$3 = new jd.a();
 
       for (int $$4 = this.f; $$4 <= $$1; $$4 = $$4 > 0 ? -$$4 : 1 - $$4) {
@@ -106,7 +106,7 @@ public abstract class caz extends cam {
             for (int $$6 = 0; $$6 <= $$5; $$6 = $$6 > 0 ? -$$6 : 1 - $$6) {
                for (int $$7 = $$6 < $$5 && $$6 > -$$5 ? $$5 : 0; $$7 <= $$5; $$7 = $$7 > 0 ? -$$7 : 1 - $$7) {
                   $$3.a($$2, $$6, $$4 - 1, $$7);
-                  if (this.a.a($$3) && this.a(this.a.dP(), $$3)) {
+                  if (this.a.a($$3) && this.a(this.a.dO(), $$3)) {
                      this.e = $$3;
                      return true;
                   }

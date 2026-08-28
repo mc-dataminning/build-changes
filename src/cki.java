@@ -18,7 +18,7 @@ public class cki extends coj {
    public cki(bsx<? extends cki> $$0, dcw $$1) {
       super($$0, $$1);
       this.bP = 20;
-      this.a(ept.v, 0.0F);
+      this.a(epv.v, 0.0F);
    }
 
    @Override
@@ -37,8 +37,8 @@ public class cki extends coj {
 
    @Override
    protected void U() {
-      boolean $$0 = !(this.cR() instanceof btp) || this.cR().am().a(awi.c);
-      boolean $$1 = !(this.dd() instanceof cov);
+      boolean $$0 = !(this.cQ() instanceof btp) || this.cQ().am().a(awi.c);
+      boolean $$1 = !(this.dc() instanceof cov);
       this.bU.a(cam.a.a, $$0);
       this.bU.a(cam.a.c, $$0 && $$1);
       this.bU.a(cam.a.b, $$0);
@@ -46,7 +46,7 @@ public class cki extends coj {
    }
 
    public static buv.a s() {
-      return ckd.gr().a(buw.s, 100.0).a(buw.v, 0.3).a(buw.p, 0.75).a(buw.c, 12.0).a(buw.d, 1.5).a(buw.m, 32.0).a(buw.B, 1.0);
+      return ckd.gq().a(buw.s, 100.0).a(buw.v, 0.3).a(buw.p, 0.75).a(buw.c, 12.0).a(buw.d, 1.5).a(buw.m, 32.0).a(buw.B, 1.0);
    }
 
    @Override
@@ -79,7 +79,7 @@ public class cki extends coj {
    public void m_() {
       super.m_();
       if (this.bE()) {
-         if (this.fd()) {
+         if (this.fc()) {
             this.f(buw.v).a(0.0);
          } else {
             double $$0 = this.p() != null ? 0.35 : 0.3;
@@ -87,27 +87,27 @@ public class cki extends coj {
             this.f(buw.v).a(ayo.d(0.1, $$1, $$0));
          }
 
-         if (this.Q && this.dP().ab().b(dcs.c)) {
+         if (this.Q && this.dO().ab().b(dcs.c)) {
             boolean $$2 = false;
-            ewv $$3 = this.cL().g(0.2);
+            ewx $$3 = this.cK().g(0.2);
 
             for (jd $$4 : jd.b(ayo.a($$3.a), ayo.a($$3.b), ayo.a($$3.c), ayo.a($$3.d), ayo.a($$3.e), ayo.a($$3.f))) {
-               dtc $$5 = this.dP().a_($$4);
+               dtc $$5 = this.dO().a_($$4);
                dfy $$6 = $$5.b();
                if ($$6 instanceof dki) {
-                  $$2 = this.dP().a($$4, true, this) || $$2;
+                  $$2 = this.dO().a($$4, true, this) || $$2;
                }
             }
 
             if (!$$2 && this.aF()) {
-               this.fg();
+               this.ff();
             }
          }
 
          if (this.cj > 0) {
             this.cj--;
             if (this.cj == 10) {
-               this.gx();
+               this.gw();
             }
          }
 
@@ -117,7 +117,7 @@ public class cki extends coj {
 
          if (this.ci > 0) {
             this.ci--;
-            this.gw();
+            this.gv();
             if (this.ci == 0) {
                this.a(avp.vk, 1.0F, 1.0F);
                this.cj = 20;
@@ -126,18 +126,18 @@ public class cki extends coj {
       }
    }
 
-   private void gw() {
+   private void gv() {
       if (this.ah.a(6) == 0) {
-         double $$0 = this.du() - (double)this.dk() * Math.sin((double)(this.aY * (float) (Math.PI / 180.0))) + (this.ah.j() * 0.6 - 0.3);
-         double $$1 = this.dw() + (double)this.dl() - 0.3;
-         double $$2 = this.dA() + (double)this.dk() * Math.cos((double)(this.aY * (float) (Math.PI / 180.0))) + (this.ah.j() * 0.6 - 0.3);
-         this.dP().a(lf.a(lm.u, 0.49803922F, 0.5137255F, 0.57254905F), $$0, $$1, $$2, 0.0, 0.0, 0.0);
+         double $$0 = this.dt() - (double)this.dj() * Math.sin((double)(this.aY * (float) (Math.PI / 180.0))) + (this.ah.j() * 0.6 - 0.3);
+         double $$1 = this.dv() + (double)this.dk() - 0.3;
+         double $$2 = this.dz() + (double)this.dj() * Math.cos((double)(this.aY * (float) (Math.PI / 180.0))) + (this.ah.j() * 0.6 - 0.3);
+         this.dO().a(lf.a(lm.u, 0.49803922F, 0.5137255F, 0.57254905F), $$0, $$1, $$2, 0.0, 0.0, 0.0);
       }
    }
 
    @Override
-   protected boolean fd() {
-      return super.fd() || this.ch > 0 || this.ci > 0 || this.cj > 0;
+   protected boolean fc() {
+      return super.fc() || this.ch > 0 || this.ci > 0 || this.cj > 0;
    }
 
    @Override
@@ -151,7 +151,7 @@ public class cki extends coj {
          if (this.ah.j() < 0.5) {
             this.ci = 40;
             this.a(avp.vj, 1.0F, 1.0F);
-            this.dP().a(this, (byte)39);
+            this.dO().a(this, (byte)39);
             $$0.h(this);
          } else {
             this.c($$0);
@@ -161,23 +161,23 @@ public class cki extends coj {
       }
    }
 
-   private void gx() {
+   private void gw() {
       if (this.bE()) {
-         for (btn $$1 : this.dP().a(btn.class, this.cL().g(4.0), e)) {
+         for (btn $$1 : this.dO().a(btn.class, this.cK().g(4.0), e)) {
             if (!($$1 instanceof cjk)) {
-               $$1.a(this.dQ().b((btn)this), 6.0F);
+               $$1.a(this.dP().b((btn)this), 6.0F);
             }
 
             this.c($$1);
          }
 
-         exa $$2 = this.cL().f();
+         exc $$2 = this.cK().f();
 
          for (int $$3 = 0; $$3 < 40; $$3++) {
             double $$4 = this.ah.k() * 0.2;
             double $$5 = this.ah.k() * 0.2;
             double $$6 = this.ah.k() * 0.2;
-            this.dP().a(lm.ab, $$2.c, $$2.d, $$2.e, $$4, $$5, $$6);
+            this.dO().a(lm.ab, $$2.c, $$2.d, $$2.e, $$4, $$5, $$6);
          }
 
          this.a(dxz.u);
@@ -185,8 +185,8 @@ public class cki extends coj {
    }
 
    private void c(bsr $$0) {
-      double $$1 = $$0.du() - this.du();
-      double $$2 = $$0.dA() - this.dA();
+      double $$1 = $$0.dt() - this.dt();
+      double $$2 = $$0.dz() - this.dz();
       double $$3 = Math.max($$1 * $$1 + $$2 * $$2, 0.001);
       $$0.j($$1 / $$3 * 4.0, 0.2, $$2 / $$3 * 4.0);
    }
@@ -207,18 +207,18 @@ public class cki extends coj {
       return this.ch;
    }
 
-   public int gl() {
+   public int gk() {
       return this.ci;
    }
 
-   public int gv() {
+   public int gu() {
       return this.cj;
    }
 
    @Override
    public boolean D(bsr $$0) {
       this.ch = 10;
-      this.dP().a(this, (byte)4);
+      this.dO().a(this, (byte)4);
       this.a(avp.ve, 1.0F, 1.0F);
       return super.D($$0);
    }
@@ -246,7 +246,7 @@ public class cki extends coj {
 
    @Override
    public boolean a(dcz $$0) {
-      return !$$0.d(this.cL());
+      return !$$0.d(this.cK());
    }
 
    @Override
@@ -254,13 +254,13 @@ public class cki extends coj {
    }
 
    @Override
-   public boolean gm() {
+   public boolean gl() {
       return false;
    }
 
    @Override
-   protected ewv gd() {
-      ewv $$0 = super.gd();
+   protected ewx gc() {
+      ewx $$0 = super.gc();
       return $$0.f(0.05, 0.0, 0.05);
    }
 }

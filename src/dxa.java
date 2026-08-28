@@ -33,10 +33,10 @@ public enum dxa {
          boolean $$6 = $$3 % 40 == 0;
          boolean $$7 = $$3 % 40 == 39;
          if ($$6 || $$7) {
-            List<edn.a> $$8 = edn.a($$0);
+            List<edo.a> $$8 = edo.a($$0);
             int $$9 = $$3 / 40;
             if ($$9 < $$8.size()) {
-               edn.a $$10 = $$8.get($$9);
+               edo.a $$10 = $$8.get($$9);
                if ($$6) {
                   for (chz $$11 : $$2) {
                      $$11.a(new jd($$10.a(), $$10.d() + 1, $$10.b()));
@@ -49,8 +49,8 @@ public enum dxa {
                   }
 
                   $$0.a(null, (double)((float)$$10.a() + 0.5F), (double)$$10.d(), (double)((float)$$10.b() + 0.5F), 5.0F, dcw.a.b);
-                  efb $$14 = new efb(true, ImmutableList.of($$10), new jd(0, 128, 0));
-                  ecd.J.a($$14, $$0, $$0.l().g(), ayw.a(), new jd($$10.a(), 45, $$10.b()));
+                  efc $$14 = new efc(true, ImmutableList.of($$10), new jd(0, 128, 0));
+                  ece.K.a($$14, $$0, $$0.l().g(), ayw.a(), new jd($$10.a(), 45, $$10.b()));
                }
             } else if ($$6) {
                $$1.a(d);
@@ -67,7 +67,7 @@ public enum dxa {
 
             for (chz $$5 : $$2) {
                $$5.a(null);
-               $$0.a($$5, $$5.du(), $$5.dw(), $$5.dA(), 6.0F, dcw.a.a);
+               $$0.a($$5, $$5.dt(), $$5.dv(), $$5.dz(), 6.0F, dcw.a.a);
                $$5.aq();
             }
          } else if ($$3 >= 80) {

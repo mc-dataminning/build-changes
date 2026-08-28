@@ -8,7 +8,7 @@ public class adg implements zg<abu> {
    private final adf d;
    private final adk e;
 
-   public adg(dvi $$0, eor $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+   public adg(dvi $$0, eot $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
       dcd $$4 = $$0.f();
       this.b = $$4.e;
       this.c = $$4.f;

@@ -45,11 +45,11 @@ public class dmu {
    }
 
    public static dmu a() {
-      return new dmu(false, awe.bS, 10, 4, 10, 5);
+      return new dmu(false, awe.bT, 10, 4, 10, 5);
    }
 
    public static dmu b() {
-      return new dmu(true, awe.bT, 50, 1, 5, 10);
+      return new dmu(true, awe.bU, 50, 1, 5, 10);
    }
 
    public awu<dfy> c() {

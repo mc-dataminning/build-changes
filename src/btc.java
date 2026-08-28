@@ -42,49 +42,49 @@ public class btc extends bsr {
    @Override
    public void l() {
       super.l();
-      this.L = this.du();
-      this.M = this.dw();
-      this.N = this.dA();
+      this.L = this.dt();
+      this.M = this.dv();
+      this.N = this.dz();
       if (this.a(awk.a)) {
          this.v();
       } else {
          this.bb();
       }
 
-      if (this.dP().b_(this.dp()).a(awk.b)) {
+      if (this.dO().b_(this.do()).a(awk.b)) {
          this.n((double)((this.ah.i() - this.ah.i()) * 0.2F), 0.2F, (double)((this.ah.i() - this.ah.i()) * 0.2F));
       }
 
-      if (!this.dP().b(this.cL())) {
-         this.m(this.du(), (this.cL().b + this.cL().e) / 2.0, this.dA());
+      if (!this.dO().b(this.cK())) {
+         this.m(this.dt(), (this.cK().b + this.cK().e) / 2.0, this.dz());
       }
 
       if (this.ai % 20 == 1) {
          this.t();
       }
 
-      if (this.k != null && (this.k.R_() || this.k.ey())) {
+      if (this.k != null && (this.k.R_() || this.k.ex())) {
          this.k = null;
       }
 
       if (this.k != null) {
-         exa $$0 = new exa(this.k.du() - this.du(), this.k.dw() + (double)this.k.cM() / 2.0 - this.dw(), this.k.dA() - this.dA());
+         exc $$0 = new exc(this.k.dt() - this.dt(), this.k.dv() + (double)this.k.cL() / 2.0 - this.dv(), this.k.dz() - this.dz());
          double $$1 = $$0.g();
          if ($$1 < 64.0) {
             double $$2 = 1.0 - Math.sqrt($$1) / 8.0;
-            this.i(this.ds().e($$0.d().a($$2 * $$2 * 0.1)));
+            this.i(this.dr().e($$0.d().a($$2 * $$2 * 0.1)));
          }
       }
 
-      this.a(bts.a, this.ds());
+      this.a(bts.a, this.dr());
       float $$3 = 0.98F;
       if (this.aF()) {
-         $$3 = this.dP().a_(this.aL()).b().h() * 0.98F;
+         $$3 = this.dO().a_(this.aL()).b().h() * 0.98F;
       }
 
-      this.i(this.ds().d((double)$$3, 0.98, (double)$$3));
+      this.i(this.dr().d((double)$$3, 0.98, (double)$$3));
       if (this.aF()) {
-         this.i(this.ds().d(1.0, -0.9, 1.0));
+         this.i(this.dr().d(1.0, -0.9, 1.0));
       }
 
       this.g++;
@@ -100,17 +100,17 @@ public class btc extends bsr {
 
    private void t() {
       if (this.k == null || this.k.g(this) > 64.0) {
-         this.k = this.dP().a(this, 8.0);
+         this.k = this.dO().a(this, 8.0);
       }
 
-      if (this.dP() instanceof aqu) {
-         for (btc $$1 : this.dP().a(dxn.a(btc.class), this.cL().g(0.5), this::a)) {
+      if (this.dO() instanceof aqu) {
+         for (btc $$1 : this.dO().a(dxn.a(btc.class), this.cK().g(0.5), this::a)) {
             this.b($$1);
          }
       }
    }
 
-   public static void a(aqu $$0, exa $$1, int $$2) {
+   public static void a(aqu $$0, exc $$1, int $$2) {
       while ($$2 > 0) {
          int $$3 = b($$2);
          $$2 -= $$3;
@@ -120,8 +120,8 @@ public class btc extends bsr {
       }
    }
 
-   private static boolean b(aqu $$0, exa $$1, int $$2) {
-      ewv $$3 = ewv.a($$1, 1.0, 1.0, 1.0);
+   private static boolean b(aqu $$0, exc $$1, int $$2) {
+      ewx $$3 = ewx.a($$1, 1.0, 1.0, 1.0);
       int $$4 = $$0.E_().a(40);
       List<btc> $$5 = $$0.a(dxn.a(btc.class), $$3, $$2x -> a($$2x, $$4, $$2));
       if (!$$5.isEmpty()) {
@@ -139,7 +139,7 @@ public class btc extends bsr {
    }
 
    private static boolean a(btc $$0, int $$1, int $$2) {
-      return !$$0.dK() && ($$0.an() - $$1) % 40 == 0 && $$0.i == $$2;
+      return !$$0.dJ() && ($$0.an() - $$1) % 40 == 0 && $$0.i == $$2;
    }
 
    private void b(btc $$0) {
@@ -149,7 +149,7 @@ public class btc extends bsr {
    }
 
    private void v() {
-      exa $$0 = this.ds();
+      exc $$0 = this.dr();
       this.n($$0.c * 0.99F, Math.min($$0.d + 5.0E-4F, 0.06F), $$0.e * 0.99F);
    }
 
@@ -161,7 +161,7 @@ public class btc extends bsr {
    public boolean a(brk $$0, float $$1) {
       if (this.b($$0)) {
          return false;
-      } else if (this.dP().B) {
+      } else if (this.dO().B) {
          return true;
       } else {
          this.bw();
@@ -292,7 +292,7 @@ public class btc extends bsr {
    }
 
    @Override
-   public avq df() {
+   public avq de() {
       return avq.i;
    }
 }

@@ -73,9 +73,9 @@ public interface dyi {
       }
    });
 
-   dyi.a gn();
+   dyi.a gm();
 
-   dyi.d go();
+   dyi.d gn();
 
    static int a_(jm<dxz> $$0) {
       return $$0.e().map(dyi::a).orElse(0);
@@ -164,28 +164,28 @@ public interface dyi {
 
       @Override
       public dyd a() {
-         return this.a.go().b();
+         return this.a.gn().b();
       }
 
       @Override
       public int b() {
-         return this.a.go().a();
+         return this.a.gn().a();
       }
 
       @Override
-      public boolean a(aqu $$0, jm<dxz> $$1, dxz.a $$2, exa $$3) {
-         dyi.a $$4 = this.a.gn();
-         dyi.d $$5 = this.a.go();
+      public boolean a(aqu $$0, jm<dxz> $$1, dxz.a $$2, exc $$3) {
+         dyi.a $$4 = this.a.gm();
+         dyi.d $$5 = this.a.gn();
          if ($$4.b() != null) {
             return false;
          } else if (!$$5.a($$1, $$2)) {
             return false;
          } else {
-            Optional<exa> $$6 = $$5.b().a($$0);
+            Optional<exc> $$6 = $$5.b().a($$0);
             if ($$6.isEmpty()) {
                return false;
             } else {
-               exa $$7 = $$6.get();
+               exc $$7 = $$6.get();
                if (!$$5.a($$0, jd.a((jw)$$3), $$1, $$2)) {
                   return false;
                } else if (a($$0, $$3, $$7)) {
@@ -198,11 +198,11 @@ public interface dyi {
          }
       }
 
-      public void b(aqu $$0, jm<dxz> $$1, dxz.a $$2, exa $$3) {
-         this.a.go().b().a($$0).ifPresent($$4 -> this.a($$0, this.a.gn(), $$1, $$2, $$3, $$4));
+      public void b(aqu $$0, jm<dxz> $$1, dxz.a $$2, exc $$3) {
+         this.a.gn().b().a($$0).ifPresent($$4 -> this.a($$0, this.a.gm(), $$1, $$2, $$3, $$4));
       }
 
-      private void a(aqu $$0, dyi.a $$1, jm<dxz> $$2, dxz.a $$3, exa $$4, exa $$5) {
+      private void a(aqu $$0, dyi.a $$1, jm<dxz> $$2, dxz.a $$3, exc $$4, exc $$5) {
          $$1.e.a(new dyg($$2, (float)$$4.f($$5), $$4, $$3.a()), $$0.Z());
       }
 
@@ -210,13 +210,13 @@ public interface dyi {
          return (float)Math.sqrt($$0.j($$1));
       }
 
-      private static boolean a(dcw $$0, exa $$1, exa $$2) {
-         exa $$3 = new exa((double)ayo.a($$1.c) + 0.5, (double)ayo.a($$1.d) + 0.5, (double)ayo.a($$1.e) + 0.5);
-         exa $$4 = new exa((double)ayo.a($$2.c) + 0.5, (double)ayo.a($$2.d) + 0.5, (double)ayo.a($$2.e) + 0.5);
+      private static boolean a(dcw $$0, exc $$1, exc $$2) {
+         exc $$3 = new exc((double)ayo.a($$1.c) + 0.5, (double)ayo.a($$1.d) + 0.5, (double)ayo.a($$1.e) + 0.5);
+         exc $$4 = new exc((double)ayo.a($$2.c) + 0.5, (double)ayo.a($$2.d) + 0.5, (double)ayo.a($$2.e) + 0.5);
 
          for (ji $$5 : ji.values()) {
-            exa $$6 = $$3.a($$5, 1.0E-5F);
-            if ($$0.a(new dce($$6, $$4, $$0x -> $$0x.a(awe.bq))).c() != ewy.a.b) {
+            exc $$6 = $$3.a($$5, 1.0E-5F);
+            if ($$0.a(new dce($$6, $$4, $$0x -> $$0x.a(awe.br))).c() != exa.a.b) {
                return false;
             }
          }
@@ -250,7 +250,7 @@ public interface dyi {
       private static void a(aqu $$0, dyi.a $$1, dyi.d $$2) {
          $$1.a().a($$0.Z()).ifPresent($$3 -> {
             $$1.a($$3);
-            exa $$4 = $$3.c();
+            exc $$4 = $$3.c();
             $$1.a($$2.a($$3.b()));
             $$0.a(new lr($$2.b(), $$1.c()), $$4.c, $$4.d, $$4.e, 1, 0.0, 0.0, 0.0, 0.0);
             $$2.e();
@@ -263,9 +263,9 @@ public interface dyi {
             if ($$1.c == null) {
                $$1.a(false);
             } else {
-               exa $$3 = $$1.c.c();
+               exc $$3 = $$1.c.c();
                dyd $$4 = $$2.b();
-               exa $$5 = $$4.a($$0).orElse($$3);
+               exc $$5 = $$4.a($$0).orElse($$3);
                int $$6 = $$1.c();
                int $$7 = $$2.a($$1.c.b());
                double $$8 = 1.0 - (double)$$6 / (double)$$7;
@@ -355,7 +355,7 @@ public interface dyi {
                }
             }
 
-            return $$1.b() != null ? !$$1.b().a(awe.br) : true;
+            return $$1.b() != null ? !$$1.b().a(awe.bs) : true;
          }
       }
 

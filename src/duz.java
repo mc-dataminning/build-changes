@@ -45,7 +45,7 @@ public abstract class duz {
 
    protected abstract MapCodec<? extends duz> b();
 
-   public dva a(jo<ejv> $$0, dzm $$1, long $$2) {
+   public dva a(jo<ejx> $$0, dzm $$1, long $$2) {
       return dva.a($$1, $$2, this.b, $$0);
    }
 
@@ -63,12 +63,12 @@ public abstract class duz {
    public abstract void a(arb var1, long var2, dzm var4, ddy var5, ddq var6, duy var7, dyu.a var8);
 
    @Nullable
-   public Pair<jd, jm<ejp>> a(aqu $$0, jq<ejp> $$1, jd $$2, int $$3, boolean $$4) {
+   public Pair<jd, jm<ejr>> a(aqu $$0, jq<ejr> $$1, jd $$2, int $$3, boolean $$4) {
       dva $$5 = $$0.l().h();
-      Map<ekm, Set<jm<ejp>>> $$6 = new Object2ObjectArrayMap();
+      Map<eko, Set<jm<ejr>>> $$6 = new Object2ObjectArrayMap();
 
-      for (jm<ejp> $$7 : $$1) {
-         for (ekm $$8 : $$5.a($$7)) {
+      for (jm<ejr> $$7 : $$1) {
+         for (eko $$8 : $$5.a($$7)) {
             $$6.computeIfAbsent($$8, $$0x -> new ObjectArraySet()).add($$7);
          }
       }
@@ -76,16 +76,16 @@ public abstract class duz {
       if ($$6.isEmpty()) {
          return null;
       } else {
-         Pair<jd, jm<ejp>> $$9 = null;
+         Pair<jd, jm<ejr>> $$9 = null;
          double $$10 = Double.MAX_VALUE;
          ddq $$11 = $$0.a();
-         List<Entry<ekm, Set<jm<ejp>>>> $$12 = new ArrayList<>($$6.size());
+         List<Entry<eko, Set<jm<ejr>>>> $$12 = new ArrayList<>($$6.size());
 
-         for (Entry<ekm, Set<jm<ejp>>> $$13 : $$6.entrySet()) {
-            ekm $$14 = $$13.getKey();
-            if ($$14 instanceof ekj) {
-               ekj $$15 = (ekj)$$14;
-               Pair<jd, jm<ejp>> $$16 = this.a($$13.getValue(), $$0, $$11, $$2, $$4, $$15);
+         for (Entry<eko, Set<jm<ejr>>> $$13 : $$6.entrySet()) {
+            eko $$14 = $$13.getKey();
+            if ($$14 instanceof ekl) {
+               ekl $$15 = (ekl)$$14;
+               Pair<jd, jm<ejr>> $$16 = this.a($$13.getValue(), $$0, $$11, $$2, $$4, $$15);
                if ($$16 != null) {
                   jd $$17 = (jd)$$16.getFirst();
                   double $$18 = $$2.j($$17);
@@ -94,7 +94,7 @@ public abstract class duz {
                      $$9 = $$16;
                   }
                }
-            } else if ($$14 instanceof ekk) {
+            } else if ($$14 instanceof ekm) {
                $$12.add($$13);
             }
          }
@@ -106,9 +106,9 @@ public abstract class duz {
             for (int $$21 = 0; $$21 <= $$3; $$21++) {
                boolean $$22 = false;
 
-               for (Entry<ekm, Set<jm<ejp>>> $$23 : $$12) {
-                  ekk $$24 = (ekk)$$23.getKey();
-                  Pair<jd, jm<ejp>> $$25 = a($$23.getValue(), $$0, $$11, $$19, $$20, $$21, $$4, $$5.d(), $$24);
+               for (Entry<eko, Set<jm<ejr>>> $$23 : $$12) {
+                  ekm $$24 = (ekm)$$23.getKey();
+                  Pair<jd, jm<ejr>> $$25 = a($$23.getValue(), $$0, $$11, $$19, $$20, $$21, $$4, $$5.d(), $$24);
                   if ($$25 != null) {
                      $$22 = true;
                      double $$26 = $$2.j((kh)$$25.getFirst());
@@ -130,12 +130,12 @@ public abstract class duz {
    }
 
    @Nullable
-   private Pair<jd, jm<ejp>> a(Set<jm<ejp>> $$0, aqu $$1, ddq $$2, jd $$3, boolean $$4, ekj $$5) {
+   private Pair<jd, jm<ejr>> a(Set<jm<ejr>> $$0, aqu $$1, ddq $$2, jd $$3, boolean $$4, ekl $$5) {
       List<dcd> $$6 = $$1.l().h().a($$5);
       if ($$6 == null) {
          throw new IllegalStateException("Somehow tried to find structures for a placement that doesn't exist");
       } else {
-         Pair<jd, jm<ejp>> $$7 = null;
+         Pair<jd, jm<ejr>> $$7 = null;
          double $$8 = Double.MAX_VALUE;
          jd.a $$9 = new jd.a();
 
@@ -144,7 +144,7 @@ public abstract class duz {
             double $$11 = $$9.j($$3);
             boolean $$12 = $$7 == null || $$11 < $$8;
             if ($$12) {
-               Pair<jd, jm<ejp>> $$13 = a($$0, $$1, $$2, $$4, $$5, $$10);
+               Pair<jd, jm<ejr>> $$13 = a($$0, $$1, $$2, $$4, $$5, $$10);
                if ($$13 != null) {
                   $$7 = $$13;
                   $$8 = $$11;
@@ -157,7 +157,7 @@ public abstract class duz {
    }
 
    @Nullable
-   private static Pair<jd, jm<ejp>> a(Set<jm<ejp>> $$0, dcz $$1, ddq $$2, int $$3, int $$4, int $$5, boolean $$6, long $$7, ekk $$8) {
+   private static Pair<jd, jm<ejr>> a(Set<jm<ejr>> $$0, dcz $$1, ddq $$2, int $$3, int $$4, int $$5, boolean $$6, long $$7, ekm $$8) {
       int $$9 = $$8.a();
 
       for (int $$10 = -$$5; $$10 <= $$5; $$10++) {
@@ -169,7 +169,7 @@ public abstract class duz {
                int $$14 = $$3 + $$9 * $$10;
                int $$15 = $$4 + $$9 * $$12;
                dcd $$16 = $$8.a($$7, $$14, $$15);
-               Pair<jd, jm<ejp>> $$17 = a($$0, $$1, $$2, $$6, $$8, $$16);
+               Pair<jd, jm<ejr>> $$17 = a($$0, $$1, $$2, $$6, $$8, $$16);
                if ($$17 != null) {
                   return $$17;
                }
@@ -181,16 +181,16 @@ public abstract class duz {
    }
 
    @Nullable
-   private static Pair<jd, jm<ejp>> a(Set<jm<ejp>> $$0, dcz $$1, ddq $$2, boolean $$3, ekm $$4, dcd $$5) {
-      for (jm<ejp> $$6 : $$0) {
-         ejr $$7 = $$2.a($$5, $$6.a(), $$4, $$3);
-         if ($$7 != ejr.b) {
-            if (!$$3 && $$7 == ejr.a) {
+   private static Pair<jd, jm<ejr>> a(Set<jm<ejr>> $$0, dcz $$1, ddq $$2, boolean $$3, eko $$4, dcd $$5) {
+      for (jm<ejr> $$6 : $$0) {
+         ejt $$7 = $$2.a($$5, $$6.a(), $$4, $$3);
+         if ($$7 != ejt.b) {
+            if (!$$3 && $$7 == ejt.a) {
                return Pair.of($$4.a($$5), $$6);
             }
 
             duy $$8 = $$1.a($$5.e, $$5.f, dvz.d);
-            ejx $$9 = $$2.a(kf.a($$8), $$6.a(), $$8);
+            ejz $$9 = $$2.a(kf.a($$8), $$6.a(), $$8);
             if ($$9 != null && $$9.b() && (!$$3 || a($$2, $$9))) {
                return Pair.of($$4.a($$9.c()), $$6);
             }
@@ -200,7 +200,7 @@ public abstract class duz {
       return null;
    }
 
-   private static boolean a(ddq $$0, ejx $$1) {
+   private static boolean a(ddq $$0, ejz $$1) {
       if ($$1.d()) {
          $$0.a($$1);
          return true;
@@ -214,8 +214,8 @@ public abstract class duz {
       if (!ab.a($$3)) {
          kf $$4 = kf.a($$3, $$0.ao());
          jd $$5 = $$4.j();
-         jz<ejp> $$6 = $$0.H_().d(lu.aR);
-         Map<Integer, List<ejp>> $$7 = $$6.t().collect(Collectors.groupingBy($$0x -> $$0x.c().ordinal()));
+         jz<ejr> $$6 = $$0.H_().d(lu.aR);
+         Map<Integer, List<ejr>> $$7 = $$6.t().collect(Collectors.groupingBy($$0x -> $$0x.c().ordinal()));
          List<deg.b> $$8 = this.c.get();
          dzx $$9 = new dzx(new dzz(dzn.a()));
          long $$10 = $$9.a($$0.C(), $$5.u(), $$5.w());
@@ -231,13 +231,13 @@ public abstract class duz {
          int $$12 = $$8.size();
 
          try {
-            jz<eit> $$13 = $$0.H_().d(lu.aQ);
+            jz<eiv> $$13 = $$0.H_().d(lu.aQ);
             int $$14 = Math.max(dyu.b.values().length, $$12);
 
             for (int $$15 = 0; $$15 < $$14; $$15++) {
                int $$16 = 0;
                if ($$2.a()) {
-                  for (ejp $$18 : $$7.getOrDefault($$15, Collections.emptyList())) {
+                  for (ejr $$18 : $$7.getOrDefault($$15, Collections.emptyList())) {
                      $$9.b($$10, $$16, $$15);
                      Supplier<String> $$19 = () -> $$6.d($$18).map(Object::toString).orElseGet($$18::toString);
 
@@ -258,9 +258,9 @@ public abstract class duz {
                   IntSet $$22 = new IntArraySet();
 
                   for (jm<ddw> $$23 : $$11) {
-                     List<jq<eit>> $$24 = this.d.apply($$23).b();
+                     List<jq<eiv>> $$24 = this.d.apply($$23).b();
                      if ($$15 < $$24.size()) {
-                        jq<eit> $$25 = $$24.get($$15);
+                        jq<eiv> $$25 = $$24.get($$15);
                         deg.b $$26 = $$8.get($$15);
                         $$25.a().map(jm::a).forEach($$2x -> $$22.add($$26.b().applyAsInt($$2x)));
                      }
@@ -273,7 +273,7 @@ public abstract class duz {
 
                   for (int $$30 = 0; $$30 < $$27; $$30++) {
                      int $$31 = $$28[$$30];
-                     eit $$32 = $$29.a().get($$31);
+                     eiv $$32 = $$29.a().get($$31);
                      Supplier<String> $$33 = () -> $$13.d($$32).map(Object::toString).orElseGet($$32::toString);
                      $$9.b($$10, $$31, $$15);
 
@@ -298,14 +298,14 @@ public abstract class duz {
       }
    }
 
-   private static ejh a(duy $$0) {
+   private static ejj a(duy $$0) {
       dcd $$1 = $$0.f();
       int $$2 = $$1.d();
       int $$3 = $$1.e();
       dcy $$4 = $$0.z();
       int $$5 = $$4.I_() + 1;
       int $$6 = $$4.am() - 1;
-      return new ejh($$2, $$5, $$3, $$2 + 15, $$6, $$3 + 15);
+      return new ejj($$2, $$5, $$3, $$2 + 15, $$6, $$3 + 15);
    }
 
    public abstract void a(arb var1, ddq var2, dzm var3, duy var4);
@@ -323,14 +323,14 @@ public abstract class duz {
    public abstract int e();
 
    public bpf<dei.c> a(jm<ddw> $$0, ddq $$1, btq $$2, jd $$3) {
-      Map<ejp, LongSet> $$4 = $$1.b($$3);
+      Map<ejr, LongSet> $$4 = $$1.b($$3);
 
-      for (Entry<ejp, LongSet> $$5 : $$4.entrySet()) {
-         ejp $$6 = $$5.getKey();
-         ejw $$7 = $$6.b().get($$2);
+      for (Entry<ejr, LongSet> $$5 : $$4.entrySet()) {
+         ejr $$6 = $$5.getKey();
+         ejy $$7 = $$6.b().get($$2);
          if ($$7 != null) {
             MutableBoolean $$8 = new MutableBoolean(false);
-            Predicate<ejx> $$9 = $$7.a() == ejw.a.a ? $$2x -> $$1.a($$3, $$2x) : $$1x -> $$1x.a().b($$3);
+            Predicate<ejz> $$9 = $$7.a() == ejy.a.a ? $$2x -> $$1.a($$3, $$2x) : $$1x -> $$1x.a().b($$3);
             $$1.a($$6, $$5.getValue(), $$2x -> {
                if ($$8.isFalse() && $$9.test($$2x)) {
                   $$8.setTrue();
@@ -345,16 +345,16 @@ public abstract class duz {
       return $$0.a().b().a($$2);
    }
 
-   public void a(ka $$0, dva $$1, ddq $$2, duy $$3, ens $$4) {
+   public void a(ka $$0, dva $$1, ddq $$2, duy $$3, enu $$4) {
       dcd $$5 = $$3.f();
       kf $$6 = kf.a($$3);
       dzm $$7 = $$1.c();
       $$1.a().forEach($$8 -> {
-         ekm $$9 = $$8.a().b();
-         List<ejv.a> $$10 = $$8.a().a();
+         eko $$9 = $$8.a().b();
+         List<ejx.a> $$10 = $$8.a().a();
 
-         for (ejv.a $$11 : $$10) {
-            ejx $$12 = $$2.a($$6, $$11.a().a(), $$3);
+         for (ejx.a $$11 : $$10) {
+            ejz $$12 = $$2.a($$6, $$11.a().a(), $$3);
             if ($$12 != null && $$12.b()) {
                return;
             }
@@ -364,13 +364,13 @@ public abstract class duz {
             if ($$10.size() == 1) {
                this.a($$10.get(0), $$2, $$0, $$7, $$4, $$1.d(), $$3, $$5, $$6);
             } else {
-               ArrayList<ejv.a> $$13 = new ArrayList<>($$10.size());
+               ArrayList<ejx.a> $$13 = new ArrayList<>($$10.size());
                $$13.addAll($$10);
                dzx $$14 = new dzx(new dyz(0L));
                $$14.c($$1.d(), $$5.e, $$5.f);
                int $$15 = 0;
 
-               for (ejv.a $$16 : $$13) {
+               for (ejx.a $$16 : $$13) {
                   $$15 += $$16.b();
                }
 
@@ -378,7 +378,7 @@ public abstract class duz {
                   int $$17 = $$14.a($$15);
                   int $$18 = 0;
 
-                  for (ejv.a $$19 : $$13) {
+                  for (ejx.a $$19 : $$13) {
                      $$17 -= $$19.b();
                      if ($$17 < 0) {
                         break;
@@ -387,7 +387,7 @@ public abstract class duz {
                      $$18++;
                   }
 
-                  ejv.a $$20 = $$13.get($$18);
+                  ejx.a $$20 = $$13.get($$18);
                   if (this.a($$20, $$2, $$0, $$7, $$4, $$1.d(), $$3, $$5, $$6)) {
                      return;
                   }
@@ -400,12 +400,12 @@ public abstract class duz {
       });
    }
 
-   private boolean a(ejv.a $$0, ddq $$1, ka $$2, dzm $$3, ens $$4, long $$5, duy $$6, dcd $$7, kf $$8) {
-      ejp $$9 = $$0.a().a();
+   private boolean a(ejx.a $$0, ddq $$1, ka $$2, dzm $$3, enu $$4, long $$5, duy $$6, dcd $$7, kf $$8) {
+      ejr $$9 = $$0.a().a();
       int $$10 = a($$1, $$6, $$8, $$9);
       jq<ddw> $$11 = $$9.a();
       Predicate<jm<ddw>> $$12 = $$11::a;
-      ejx $$13 = $$9.a($$2, this, this.b, $$3, $$4, $$5, $$7, $$10, $$6, $$12);
+      ejz $$13 = $$9.a($$2, this, this.b, $$3, $$4, $$5, $$7, $$10, $$6, $$12);
       if ($$13.b()) {
          $$1.a($$8, $$9, $$13, $$6);
          return true;
@@ -414,8 +414,8 @@ public abstract class duz {
       }
    }
 
-   private static int a(ddq $$0, duy $$1, kf $$2, ejp $$3) {
-      ejx $$4 = $$0.a($$2, $$3, $$1);
+   private static int a(ddq $$0, duy $$1, kf $$2, ejr $$3) {
+      ejz $$4 = $$0.a($$2, $$3, $$1);
       return $$4 != null ? $$4.f() : 0;
    }
 
@@ -432,7 +432,7 @@ public abstract class duz {
          for (int $$11 = $$6 - 8; $$11 <= $$6 + 8; $$11++) {
             long $$12 = dcd.c($$10, $$11);
 
-            for (ejx $$13 : $$0.a($$10, $$11).g().values()) {
+            for (ejz $$13 : $$0.a($$10, $$11).g().values()) {
                try {
                   if ($$13.b() && $$13.a().a($$7, $$8, $$7 + 15, $$8 + 15)) {
                      $$1.a($$9, $$13.h(), $$12, $$2);
@@ -441,7 +441,7 @@ public abstract class duz {
                } catch (Exception var21) {
                   o $$15 = o.a(var21, "Generating structure reference");
                   p $$16 = $$15.a("Structure");
-                  Optional<? extends jz<ejp>> $$17 = $$0.H_().c(lu.aR);
+                  Optional<? extends jz<ejr>> $$17 = $$0.H_().c(lu.aR);
                   $$16.a("Id", () -> $$17.<String>map($$1xx -> $$1xx.b($$13.h()).toString()).orElse("UNKNOWN"));
                   $$16.a("Name", () -> lt.R.b($$13.h().e()).toString());
                   $$16.a("Class", () -> $$13.h().getClass().getCanonicalName());

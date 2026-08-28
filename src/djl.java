@@ -4,9 +4,9 @@ import javax.annotation.Nullable;
 public abstract class djl extends dfy {
    protected final ji a;
    protected final boolean b;
-   protected final ext d;
+   protected final exv d;
 
-   protected djl(dtb.d $$0, ji $$1, ext $$2, boolean $$3) {
+   protected djl(dtb.d $$0, ji $$1, exv $$2, boolean $$3) {
       super($$0);
       this.a = $$1;
       this.d = $$2;
@@ -46,7 +46,7 @@ public abstract class djl extends dfy {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return this.d;
    }
 

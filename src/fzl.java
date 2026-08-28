@@ -1,41 +1,41 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 public class fzl {
-   private final gdz a;
-   private final fzd b;
-   private final gev c;
-   private fzl.a d = fzl.a.a;
+   private final atp a = ats.c();
+   private final Map<atl, String> b;
 
-   public fzl(gdz $$0, fzd $$1, gev $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public fzl() {
+      this.a.a();
+      Builder<atl, String> $$0 = ImmutableMap.builder();
+      this.a.c().forEach($$1 -> {
+         asp $$2 = $$1.a();
+         $$2.d().ifPresent($$2x -> $$0.put($$2x, $$2.a()));
+      });
+      this.b = $$0.build();
    }
 
-   public void a() {
-      switch (this.d) {
-         case b:
-            jd $$0 = this.a.dp();
-            boolean $$1 = this.b.d($$0.v());
-            if ($$1 || this.c.b($$0) || this.a.R_() || !this.a.bE()) {
-               this.d = fzl.a.c;
-            }
-         case a:
-         case c:
+   public List<atl> a(List<atl> $$0) {
+      List<atl> $$1 = new ArrayList<>($$0.size());
+      List<String> $$2 = new ArrayList<>($$0.size());
+
+      for (atl $$3 : $$0) {
+         String $$4 = this.b.get($$3);
+         if ($$4 != null) {
+            $$2.add($$4);
+            $$1.add($$3);
+         }
       }
+
+      this.a.b($$2);
+      return $$1;
    }
 
-   public boolean b() {
-      return this.d == fzl.a.c;
-   }
-
-   public void c() {
-      if (this.d == fzl.a.a) {
-         this.d = fzl.a.b;
-      }
-   }
-
-   static enum a {
-      a,
-      b,
-      c;
+   public atu a() {
+      List<asq> $$0 = this.a.g();
+      return new atx(ass.b, $$0);
    }
 }

@@ -39,7 +39,7 @@ public class cji extends bsr implements bun {
 
    @Override
    public boolean bA() {
-      return !this.dK();
+      return !this.dJ();
    }
 
    @Override
@@ -51,30 +51,30 @@ public class cji extends bsr implements bun {
    public void l() {
       this.bP();
       this.bb();
-      this.a(bts.a, this.ds());
-      this.i(this.ds().a(0.98));
+      this.a(bts.a, this.dr());
+      this.i(this.dr().a(0.98));
       if (this.aF()) {
-         this.i(this.ds().d(0.7, -0.5, 0.7));
+         this.i(this.dr().d(0.7, -0.5, 0.7));
       }
 
       int $$0 = this.t() - 1;
       this.b($$0);
       if ($$0 <= 0) {
          this.aq();
-         if (!this.dP().B) {
+         if (!this.dO().B) {
             this.w();
          }
       } else {
          this.bm();
-         if (this.dP().B) {
-            this.dP().a(lm.ae, this.du(), this.dw() + 0.5, this.dA(), 0.0, 0.0, 0.0);
+         if (this.dO().B) {
+            this.dO().a(lm.ae, this.dt(), this.dv() + 0.5, this.dz(), 0.0, 0.0, 0.0);
          }
       }
    }
 
    private void w() {
       float $$0 = 4.0F;
-      this.dP().a(this, this.du(), this.e(0.0625), this.dA(), 4.0F, dcw.a.d);
+      this.dO().a(this, this.dt(), this.e(0.0625), this.dz(), 4.0F, dcw.a.d);
    }
 
    @Override
@@ -87,7 +87,7 @@ public class cji extends bsr implements bun {
    protected void a(ub $$0) {
       this.b($$0.g("fuse"));
       if ($$0.b("block_state", 10)) {
-         this.c(uq.a(this.dP().a(lu.f), $$0.p("block_state")));
+         this.c(uq.a(this.dO().a(lu.f), $$0.p("block_state")));
       }
    }
 

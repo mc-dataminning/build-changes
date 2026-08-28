@@ -14,9 +14,9 @@ public class cab extends cam {
    public boolean b() {
       boolean $$0 = this.a.aA || this.a.az;
       if ($$0 && this.a.am().a(awi.h)) {
-         jd $$1 = this.a.dp().d();
+         jd $$1 = this.a.do().d();
          dtc $$2 = this.b.a_($$1);
-         return $$2.a(dga.qP) || $$2.k(this.b, $$1) == exq.a();
+         return $$2.a(dga.qP) || $$2.k(this.b, $$1) == exs.a();
       } else {
          return false;
       }

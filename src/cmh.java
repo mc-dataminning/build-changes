@@ -10,7 +10,7 @@ public class cmh implements dbt {
    }
 
    @Override
-   public cmx gl() {
+   public cmx gk() {
       return this.a;
    }
 
@@ -19,7 +19,7 @@ public class cmh implements dbt {
    }
 
    @Override
-   public dbv gn() {
+   public dbv gm() {
       return this.b;
    }
 
@@ -38,8 +38,8 @@ public class cmh implements dbt {
    }
 
    @Override
-   public boolean gt() {
-      return this.a.dP().B;
+   public boolean gs() {
+      return this.a.dO().B;
    }
 
    @Override
@@ -53,12 +53,12 @@ public class cmh implements dbt {
    }
 
    @Override
-   public boolean go() {
+   public boolean gn() {
       return true;
    }
 
    @Override
-   public avo gp() {
+   public avo go() {
       return avp.AY;
    }
 }

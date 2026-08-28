@@ -40,7 +40,7 @@ public class dqt extends dqh {
    protected void b(ub $$0, jo.a $$1) {
       super.b($$0, $$1);
       if (this.m != null) {
-         $$0.a("Target", this.m.cA());
+         $$0.a("Target", this.m.cz());
       }
    }
 
@@ -148,13 +148,13 @@ public class dqt extends dqh {
       int $$5 = $$1.u();
       int $$6 = $$1.v();
       int $$7 = $$1.w();
-      ewv $$8 = new ewv((double)$$5, (double)$$6, (double)$$7, (double)($$5 + 1), (double)($$6 + 1), (double)($$7 + 1))
+      ewx $$8 = new ewx((double)$$5, (double)$$6, (double)$$7, (double)($$5 + 1), (double)($$6 + 1), (double)($$7 + 1))
          .g((double)$$4)
          .b(0.0, (double)$$0.J_(), 0.0);
       List<cmx> $$9 = $$0.a(cmx.class, $$8);
       if (!$$9.isEmpty()) {
          for (cmx $$10 : $$9) {
-            if ($$1.a($$10.dp(), (double)$$4) && $$10.bg()) {
+            if ($$1.a($$10.do(), (double)$$4) && $$10.bg()) {
                $$10.b(new brz(bsb.C, 260, 0, true, true));
             }
          }
@@ -174,12 +174,12 @@ public class dqt extends dqh {
          if (!$$7.isEmpty()) {
             $$4.m = $$7.get($$0.z.a($$7.size()));
          }
-      } else if (!$$4.m.bE() || !$$1.a($$4.m.dp(), 8.0)) {
+      } else if (!$$4.m.bE() || !$$1.a($$4.m.do(), 8.0)) {
          $$4.m = null;
       }
 
       if ($$4.m != null) {
-         $$0.a(null, $$4.m.du(), $$4.m.dw(), $$4.m.dA(), avp.fz, avq.e, 1.0F, 1.0F);
+         $$0.a(null, $$4.m.dt(), $$4.m.dv(), $$4.m.dz(), avp.fz, avq.e, 1.0F, 1.0F);
          $$4.m.a($$0.aj().p(), 4.0F);
       }
 
@@ -191,7 +191,7 @@ public class dqt extends dqh {
    private static void a(dcw $$0, jd $$1, dqt $$2) {
       if ($$2.q == null) {
          $$2.m = null;
-      } else if ($$2.m == null || !$$2.m.cA().equals($$2.q)) {
+      } else if ($$2.m == null || !$$2.m.cz().equals($$2.q)) {
          $$2.m = a($$0, $$1, $$2.q);
          if ($$2.m == null) {
             $$2.q = null;
@@ -199,16 +199,16 @@ public class dqt extends dqh {
       }
    }
 
-   private static ewv a(jd $$0) {
+   private static ewx a(jd $$0) {
       int $$1 = $$0.u();
       int $$2 = $$0.v();
       int $$3 = $$0.w();
-      return new ewv((double)$$1, (double)$$2, (double)$$3, (double)($$1 + 1), (double)($$2 + 1), (double)($$3 + 1)).g(8.0);
+      return new ewx((double)$$1, (double)$$2, (double)$$3, (double)($$1 + 1), (double)($$2 + 1), (double)($$3 + 1)).g(8.0);
    }
 
    @Nullable
    private static btn a(dcw $$0, jd $$1, UUID $$2) {
-      List<btn> $$3 = $$0.a(btn.class, a($$1), $$1x -> $$1x.cA().equals($$2));
+      List<btn> $$3 = $$0.a(btn.class, a($$1), $$1x -> $$1x.cz().equals($$2));
       return $$3.size() == 1 ? $$3.get(0) : null;
    }
 
@@ -216,7 +216,7 @@ public class dqt extends dqh {
       ayw $$5 = $$0.z;
       double $$6 = (double)(ayo.a((float)($$4 + 35) * 0.1F) / 2.0F + 0.5F);
       $$6 = ($$6 * $$6 + $$6) * 0.3F;
-      exa $$7 = new exa((double)$$1.u() + 0.5, (double)$$1.v() + 1.5 + $$6, (double)$$1.w() + 0.5);
+      exc $$7 = new exc((double)$$1.u() + 0.5, (double)$$1.v() + 1.5 + $$6, (double)$$1.w() + 0.5);
 
       for (jd $$8 : $$2) {
          if ($$5.a(50) == 0) {
@@ -229,11 +229,11 @@ public class dqt extends dqh {
       }
 
       if ($$3 != null) {
-         exa $$13 = new exa($$3.du(), $$3.dy(), $$3.dA());
-         float $$14 = (-0.5F + $$5.i()) * (3.0F + $$3.dk());
-         float $$15 = -1.0F + $$5.i() * $$3.dl();
-         float $$16 = (-0.5F + $$5.i()) * (3.0F + $$3.dk());
-         exa $$17 = new exa((double)$$14, (double)$$15, (double)$$16);
+         exc $$13 = new exc($$3.dt(), $$3.dx(), $$3.dz());
+         float $$14 = (-0.5F + $$5.i()) * (3.0F + $$3.dj());
+         float $$15 = -1.0F + $$5.i() * $$3.dk();
+         float $$16 = (-0.5F + $$5.i()) * (3.0F + $$3.dj());
+         exc $$17 = new exc((double)$$14, (double)$$15, (double)$$16);
          $$0.a(lm.ar, $$13.c, $$13.d, $$13.e, $$17.c, $$17.d, $$17.e);
       }
    }

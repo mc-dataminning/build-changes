@@ -5,8 +5,8 @@ class bsg extends brw {
 
    @Override
    public boolean a(btn $$0, int $$1) {
-      if (!$$0.dP().B && $$0 instanceof cmx $$2) {
-         $$2.gj().a($$1 + 1, 1.0F);
+      if (!$$0.dO().B && $$0 instanceof cmx $$2) {
+         $$2.gi().a($$1 + 1, 1.0F);
       }
 
       return true;

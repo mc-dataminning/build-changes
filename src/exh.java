@@ -1,18 +1,17 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-
-public final class exh extends ext {
-   protected exh(exj $$0) {
-      super($$0);
+public interface exh {
+   static exh a() {
+      return exm.a;
    }
 
-   @Override
-   public DoubleList a(ji.a $$0) {
-      return new exg(this.a.c($$0));
+   static exh a(bsr $$0) {
+      return new exm($$0);
    }
 
-   @Override
-   protected int a(ji.a $$0, double $$1) {
-      int $$2 = this.a.c($$0);
-      return ayo.a(ayo.a($$1 * (double)$$2, -1.0, (double)$$2));
-   }
+   boolean b();
+
+   boolean a(exv var1, jd var2, boolean var3);
+
+   boolean a(cul var1);
+
+   boolean a(epe var1, epe var2);
 }

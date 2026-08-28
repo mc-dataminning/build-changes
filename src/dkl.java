@@ -8,14 +8,14 @@ public class dkl extends dis {
    protected static final int c = 6;
    protected static final int d = 6;
    protected static final int e = 8;
-   protected static final ext f = dfy.a(5.0, 4.0, 10.0, 11.0, 12.0, 16.0);
-   protected static final ext g = dfy.a(5.0, 4.0, 0.0, 11.0, 12.0, 6.0);
-   protected static final ext h = dfy.a(10.0, 4.0, 5.0, 16.0, 12.0, 11.0);
-   protected static final ext i = dfy.a(0.0, 4.0, 5.0, 6.0, 12.0, 11.0);
-   protected static final ext j = dfy.a(5.0, 0.0, 4.0, 11.0, 6.0, 12.0);
-   protected static final ext k = dfy.a(4.0, 0.0, 5.0, 12.0, 6.0, 11.0);
-   protected static final ext l = dfy.a(5.0, 10.0, 4.0, 11.0, 16.0, 12.0);
-   protected static final ext m = dfy.a(4.0, 10.0, 5.0, 12.0, 16.0, 11.0);
+   protected static final exv f = dfy.a(5.0, 4.0, 10.0, 11.0, 12.0, 16.0);
+   protected static final exv g = dfy.a(5.0, 4.0, 0.0, 11.0, 12.0, 6.0);
+   protected static final exv h = dfy.a(10.0, 4.0, 5.0, 16.0, 12.0, 11.0);
+   protected static final exv i = dfy.a(0.0, 4.0, 5.0, 6.0, 12.0, 11.0);
+   protected static final exv j = dfy.a(5.0, 0.0, 4.0, 11.0, 6.0, 12.0);
+   protected static final exv k = dfy.a(4.0, 0.0, 5.0, 12.0, 6.0, 11.0);
+   protected static final exv l = dfy.a(5.0, 10.0, 4.0, 11.0, 16.0, 12.0);
+   protected static final exv m = dfy.a(4.0, 10.0, 5.0, 12.0, 16.0, 11.0);
 
    @Override
    public MapCodec<dkl> a() {
@@ -28,7 +28,7 @@ public class dkl extends dis {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       switch ((dtn)$$0.c(K)) {
          case a:
             switch ($$0.c(aE).o()) {
@@ -63,7 +63,7 @@ public class dkl extends dis {
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
       if ($$1.B) {
          dtc $$5 = $$0.a(b);
          if ($$5.c(b)) {

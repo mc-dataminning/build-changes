@@ -15,10 +15,10 @@ public class cba extends cam {
 
    @Override
    public boolean b() {
-      if (this.a.fV()) {
+      if (this.a.fU()) {
          return false;
       } else {
-         exa $$0 = cej.a(this.a, 16, 7, exa.c(this.a.fW()), (float) (Math.PI / 2));
+         exc $$0 = cej.a(this.a, 16, 7, exc.c(this.a.fV()), (float) (Math.PI / 2));
          if ($$0 == null) {
             return false;
          } else {

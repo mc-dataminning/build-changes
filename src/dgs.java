@@ -48,7 +48,7 @@ public class dgs extends dju {
          if ($$4 != null) {
             cfq $$5 = bsx.af.a($$0);
             if ($$5 != null) {
-               $$5.x(true);
+               $$5.y(true);
                a($$0, $$4, $$5, $$4.a(1, 2, 0).d());
             }
          }
@@ -60,7 +60,7 @@ public class dgs extends dju {
       $$2.b((double)$$3.u() + 0.5, (double)$$3.v() + 0.05, (double)$$3.w() + 0.5, 0.0F, 0.0F);
       $$0.b($$2);
 
-      for (aqv $$4 : $$0.a(aqv.class, $$2.cL().g(5.0))) {
+      for (aqv $$4 : $$0.a(aqv.class, $$2.cK().g(5.0))) {
          an.o.a($$4, $$2);
       }
 

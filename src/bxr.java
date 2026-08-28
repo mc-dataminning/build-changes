@@ -16,7 +16,7 @@ public class bxr extends bvh<btn> {
       if ($$1.bS()) {
          return false;
       } else {
-         buq<?> $$2 = $$1.dU();
+         buq<?> $$2 = $$1.dT();
          jl $$3 = $$2.c(ccs.b).get();
          if ($$0.af() != $$3.a()) {
             return false;
@@ -30,26 +30,26 @@ public class bxr extends bvh<btn> {
             }
 
             dtc $$6 = $$0.a_($$3.b());
-            return $$3.b().a($$1.dn(), 2.0) && $$6.a(awe.R) && !$$6.c(dfr.c);
+            return $$3.b().a($$1.dm(), 2.0) && $$6.a(awe.S) && !$$6.c(dfr.c);
          }
       }
    }
 
    @Override
    protected boolean a(aqu $$0, btn $$1, long $$2) {
-      Optional<jl> $$3 = $$1.dU().c(ccs.b);
+      Optional<jl> $$3 = $$1.dT().c(ccs.b);
       if ($$3.isEmpty()) {
          return false;
       } else {
          jd $$4 = $$3.get().b();
-         return $$1.dU().c(com.e) && $$1.dw() > (double)$$4.v() + 0.4 && $$4.a($$1.dn(), 1.14);
+         return $$1.dT().c(com.e) && $$1.dv() > (double)$$4.v() + 0.4 && $$4.a($$1.dm(), 1.14);
       }
    }
 
    @Override
    protected void d(aqu $$0, btn $$1, long $$2) {
       if ($$2 > this.d) {
-         buq<?> $$3 = $$1.dU();
+         buq<?> $$3 = $$1.dT();
          if ($$3.a(ccs.v)) {
             Set<jl> $$4 = $$3.c(ccs.v).get();
             Optional<List<btn>> $$5;
@@ -62,7 +62,7 @@ public class bxr extends bvh<btn> {
             bwf.a($$0, $$1, null, null, $$4, $$5);
          }
 
-         $$1.b($$1.dU().c(ccs.b).get().b());
+         $$1.b($$1.dT().c(ccs.b).get().b());
       }
    }
 
@@ -73,8 +73,8 @@ public class bxr extends bvh<btn> {
 
    @Override
    protected void b(aqu $$0, btn $$1, long $$2) {
-      if ($$1.fI()) {
-         $$1.fJ();
+      if ($$1.fH()) {
+         $$1.fI();
          this.d = $$2 + 40L;
       }
    }

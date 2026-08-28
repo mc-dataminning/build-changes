@@ -81,7 +81,7 @@ public class aon {
       );
    }
 
-   private static int a(et $$0, ewz $$1, float $$2, float $$3, int $$4, boolean $$5, Collection<? extends bsr> $$6) throws CommandSyntaxException {
+   private static int a(et $$0, exb $$1, float $$2, float $$3, int $$4, boolean $$5, Collection<? extends bsr> $$6) throws CommandSyntaxException {
       aqu $$7 = $$0.e();
       int $$8 = $$7.I_();
       if ($$4 < $$8) {
@@ -104,7 +104,7 @@ public class aon {
    }
 
    private static int a(Collection<? extends bsr> $$0) {
-      Set<eyg> $$1 = Sets.newHashSet();
+      Set<eyi> $$1 = Sets.newHashSet();
 
       for (bsr $$2 : $$0) {
          if ($$2 instanceof cmx) {
@@ -117,7 +117,7 @@ public class aon {
       return $$1.size();
    }
 
-   private static void a(ewz $$0, double $$1, aqu $$2, ayw $$3, double $$4, double $$5, double $$6, double $$7, int $$8, aon.a[] $$9, boolean $$10) throws CommandSyntaxException {
+   private static void a(exb $$0, double $$1, aqu $$2, ayw $$3, double $$4, double $$5, double $$6, double $$7, int $$8, aon.a[] $$9, boolean $$10) throws CommandSyntaxException {
       boolean $$11 = true;
       double $$12 = Float.MAX_VALUE;
 
@@ -189,12 +189,12 @@ public class aon {
    private static double a(Collection<? extends bsr> $$0, aqu $$1, aon.a[] $$2, int $$3, boolean $$4) {
       double $$5 = 0.0;
       int $$6 = 0;
-      Map<eyg, aon.a> $$7 = Maps.newHashMap();
+      Map<eyi, aon.a> $$7 = Maps.newHashMap();
 
       for (bsr $$8 : $$0) {
          aon.a $$10;
          if ($$4) {
-            eyg $$9 = $$8 instanceof cmx ? $$8.ck() : null;
+            eyi $$9 = $$8 instanceof cmx ? $$8.ck() : null;
             if (!$$7.containsKey($$9)) {
                $$7.put($$9, $$2[$$6++]);
             }
@@ -204,7 +204,7 @@ public class aon {
             $$10 = $$2[$$6++];
          }
 
-         $$8.a($$1, (double)ayo.a($$10.a) + 0.5, (double)$$10.a($$1, $$3), (double)ayo.a($$10.b) + 0.5, Set.of(), $$8.dF(), $$8.dH());
+         $$8.a($$1, (double)ayo.a($$10.a) + 0.5, (double)$$10.a($$1, $$3), (double)ayo.a($$10.b) + 0.5, Set.of(), $$8.dE(), $$8.dG());
          double $$12 = Double.MAX_VALUE;
 
          for (aon.a $$13 : $$2) {
@@ -301,7 +301,7 @@ public class aon {
       public boolean b(dcc $$0, int $$1) {
          jd $$2 = jd.a(this.a, (double)(this.a($$0, $$1) - 1), this.b);
          dtc $$3 = $$0.a_($$2);
-         return $$2.v() < $$1 && !$$3.k() && !$$3.a(awe.aK);
+         return $$2.v() < $$1 && !$$3.k() && !$$3.a(awe.aL);
       }
 
       public void a(ayw $$0, double $$1, double $$2, double $$3, double $$4) {

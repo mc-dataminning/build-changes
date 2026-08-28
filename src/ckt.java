@@ -13,7 +13,7 @@ public class ckt extends coj implements ckh {
    @Override
    protected void B() {
       super.B();
-      this.cc = new cch<>(this, coj.class, true, $$0 -> $$0 != null && this.gC() && $$0.am() != bsx.bo);
+      this.cc = new cch<>(this, coj.class, true, $$0 -> $$0 != null && this.gB() && $$0.am() != bsx.bo);
       this.cd = new ccg<>(this, cmx.class, 10, true, false, null);
       this.bU.a(1, new cag(this));
       this.bU.a(2, new cbl(this, 1.0, 60, 10.0F));
@@ -46,7 +46,7 @@ public class ckt extends coj implements ckh {
       return avp.Cu;
    }
 
-   public void y(boolean $$0) {
+   public void z(boolean $$0) {
       this.ar().a(ca, $$0);
    }
 
@@ -55,12 +55,12 @@ public class ckt extends coj implements ckh {
    }
 
    public static buv.a t() {
-      return ckd.gr().a(buw.s, 26.0).a(buw.v, 0.25);
+      return ckd.gq().a(buw.s, 26.0).a(buw.v, 0.25);
    }
 
    @Override
    public void m_() {
-      if (!this.dP().B && this.bE()) {
+      if (!this.dO().B && this.bE()) {
          this.cc.k();
          if (this.cc.i() <= 0) {
             this.cd.a(true);
@@ -70,8 +70,8 @@ public class ckt extends coj implements ckh {
 
          if (this.s()) {
             if (this.cb-- <= 0) {
-               this.y(false);
-               cuq $$0 = this.eU();
+               this.z(false);
+               cuq $$0 = this.eT();
                this.a(bsy.a, cuq.l);
                cwu $$1 = $$0.a(kq.G);
                if ($$0.a(cut.sk) && $$1 != null) {
@@ -85,9 +85,9 @@ public class ckt extends coj implements ckh {
             jm<cws> $$2 = null;
             if (this.ah.i() < 0.15F && this.a(awk.a) && !this.b(bsb.m)) {
                $$2 = cwv.w;
-            } else if (this.ah.i() < 0.15F && (this.bR() || this.ez() != null && this.ez().a(awg.i)) && !this.b(bsb.l)) {
+            } else if (this.ah.i() < 0.15F && (this.bR() || this.ey() != null && this.ey().a(awg.i)) && !this.b(bsb.l)) {
                $$2 = cwv.l;
-            } else if (this.ah.i() < 0.05F && this.ex() < this.eO()) {
+            } else if (this.ah.i() < 0.05F && this.ew() < this.eN()) {
                $$2 = cwv.y;
             } else if (this.ah.i() < 0.5F && this.p() != null && !this.b(bsb.a) && this.p().g(this) > 121.0) {
                $$2 = cwv.n;
@@ -95,10 +95,10 @@ public class ckt extends coj implements ckh {
 
             if ($$2 != null) {
                this.a(bsy.a, cwu.a(cut.sk, $$2));
-               this.cb = this.eU().a((btn)this);
-               this.y(true);
+               this.cb = this.eT().a((btn)this);
+               this.z(true);
                if (!this.aX()) {
-                  this.dP().a(null, this.du(), this.dw(), this.dA(), avp.Cv, this.df(), 1.0F, 0.8F + this.ah.i() * 0.4F);
+                  this.dO().a(null, this.dt(), this.dv(), this.dz(), avp.Cv, this.de(), 1.0F, 0.8F + this.ah.i() * 0.4F);
                }
 
                bus $$3 = this.f(buw.v);
@@ -108,7 +108,7 @@ public class ckt extends coj implements ckh {
          }
 
          if (this.ah.i() < 7.5E-4F) {
-            this.dP().a(this, (byte)15);
+            this.dO().a(this, (byte)15);
          }
       }
 
@@ -124,7 +124,7 @@ public class ckt extends coj implements ckh {
    public void b(byte $$0) {
       if ($$0 == 15) {
          for (int $$1 = 0; $$1 < this.ah.a(35) + 10; $$1++) {
-            this.dP().a(lm.an, this.du() + this.ah.k() * 0.13F, this.cL().e + 0.5 + this.ah.k() * 0.13F, this.dA() + this.ah.k() * 0.13F, 0.0, 0.0, 0.0);
+            this.dO().a(lm.an, this.dt() + this.ah.k() * 0.13F, this.cK().e + 0.5 + this.ah.k() * 0.13F, this.dz() + this.ah.k() * 0.13F, 0.0, 0.0, 0.0);
          }
       } else {
          super.b($$0);
@@ -148,14 +148,14 @@ public class ckt extends coj implements ckh {
    @Override
    public void a(btn $$0, float $$1) {
       if (!this.s()) {
-         exa $$2 = $$0.ds();
-         double $$3 = $$0.du() + $$2.c - this.du();
-         double $$4 = $$0.dy() - 1.1F - this.dw();
-         double $$5 = $$0.dA() + $$2.e - this.dA();
+         exc $$2 = $$0.dr();
+         double $$3 = $$0.dt() + $$2.c - this.dt();
+         double $$4 = $$0.dx() - 1.1F - this.dv();
+         double $$5 = $$0.dz() + $$2.e - this.dz();
          double $$6 = Math.sqrt($$3 * $$3 + $$5 * $$5);
          jm<cws> $$7 = cwv.A;
          if ($$0 instanceof coj) {
-            if ($$0.ex() <= 4.0F) {
+            if ($$0.ew() <= 4.0F) {
                $$7 = cwv.y;
             } else {
                $$7 = cwv.F;
@@ -164,21 +164,21 @@ public class ckt extends coj implements ckh {
             this.h(null);
          } else if ($$6 >= 8.0 && !$$0.b(bsb.b)) {
             $$7 = cwv.q;
-         } else if ($$0.ex() >= 8.0F && !$$0.b(bsb.s)) {
+         } else if ($$0.ew() >= 8.0F && !$$0.b(bsb.s)) {
             $$7 = cwv.C;
          } else if ($$6 <= 3.0 && !$$0.b(bsb.r) && this.ah.i() < 0.25F) {
             $$7 = cwv.L;
          }
 
-         cob $$8 = new cob(this.dP(), this);
+         cob $$8 = new cob(this.dO(), this);
          $$8.a(cwu.a(cut.vo, $$7));
-         $$8.u($$8.dH() - -20.0F);
+         $$8.u($$8.dG() - -20.0F);
          $$8.c($$3, $$4 + $$6 * 0.2, $$5, 0.75F, 8.0F);
          if (!this.aX()) {
-            this.dP().a(null, this.du(), this.dw(), this.dA(), avp.Cx, this.df(), 1.0F, 0.8F + this.ah.i() * 0.4F);
+            this.dO().a(null, this.dt(), this.dv(), this.dz(), avp.Cx, this.de(), 1.0F, 0.8F + this.ah.i() * 0.4F);
          }
 
-         this.dP().b($$8);
+         this.dO().b($$8);
       }
    }
 
@@ -187,7 +187,7 @@ public class ckt extends coj implements ckh {
    }
 
    @Override
-   public boolean gm() {
+   public boolean gl() {
       return false;
    }
 }

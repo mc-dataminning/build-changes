@@ -6,7 +6,7 @@ public class bwr extends bvh<btp> {
    private static final int c = 40;
    private int d;
    @Nullable
-   private epq e;
+   private eps e;
    @Nullable
    private jd f;
    private float g;
@@ -24,7 +24,7 @@ public class bwr extends bvh<btp> {
          this.d--;
          return false;
       } else {
-         buq<?> $$2 = $$1.dU();
+         buq<?> $$2 = $$1.dT();
          ccv $$3 = $$2.c(ccs.m).get();
          boolean $$4 = this.a($$1, $$3);
          if (!$$4 && this.a($$1, $$3, $$0.Z())) {
@@ -43,7 +43,7 @@ public class bwr extends bvh<btp> {
 
    protected boolean a(aqu $$0, btp $$1, long $$2) {
       if (this.e != null && this.f != null) {
-         Optional<ccv> $$3 = $$1.dU().c(ccs.m);
+         Optional<ccv> $$3 = $$1.dT().c(ccs.m);
          boolean $$4 = $$3.<Boolean>map(bwr::a).orElse(false);
          cda $$5 = $$1.N();
          return !$$5.l() && $$3.isPresent() && !this.a($$1, $$3.get()) && !$$4;
@@ -53,24 +53,24 @@ public class bwr extends bvh<btp> {
    }
 
    protected void b(aqu $$0, btp $$1, long $$2) {
-      if ($$1.dU().a(ccs.m) && !this.a($$1, $$1.dU().c(ccs.m).get()) && $$1.N().r()) {
+      if ($$1.dT().a(ccs.m) && !this.a($$1, $$1.dT().c(ccs.m).get()) && $$1.N().r()) {
          this.d = $$0.E_().a(40);
       }
 
       $$1.N().n();
-      $$1.dU().b(ccs.m);
-      $$1.dU().b(ccs.t);
+      $$1.dT().b(ccs.m);
+      $$1.dT().b(ccs.t);
       this.e = null;
    }
 
    protected void c(aqu $$0, btp $$1, long $$2) {
-      $$1.dU().a(ccs.t, this.e);
+      $$1.dT().a(ccs.t, this.e);
       $$1.N().a(this.e, (double)this.g);
    }
 
    protected void d(aqu $$0, btp $$1, long $$2) {
-      epq $$3 = $$1.N().j();
-      buq<?> $$4 = $$1.dU();
+      eps $$3 = $$1.N().j();
+      buq<?> $$4 = $$1.dT();
       if (this.e != $$3) {
          this.e = $$3;
          $$4.a(ccs.t, $$3);
@@ -89,7 +89,7 @@ public class bwr extends bvh<btp> {
       jd $$3 = $$1.a().b();
       this.e = $$0.N().a($$3, 0);
       this.g = $$1.b();
-      buq<?> $$4 = $$0.dU();
+      buq<?> $$4 = $$0.dT();
       if (this.a($$0, $$1)) {
          $$4.b(ccs.E);
       } else {
@@ -104,7 +104,7 @@ public class bwr extends bvh<btp> {
             return true;
          }
 
-         exa $$6 = cej.a((btw)$$0, 10, 7, exa.c($$3), (float) (Math.PI / 2));
+         exc $$6 = cej.a((btw)$$0, 10, 7, exc.c($$3), (float) (Math.PI / 2));
          if ($$6 != null) {
             this.e = $$0.N().a($$6.c, $$6.d, $$6.e, 0);
             return this.e != null;
@@ -115,7 +115,7 @@ public class bwr extends bvh<btp> {
    }
 
    private boolean a(btp $$0, ccv $$1) {
-      return $$1.a().b().k($$0.dp()) <= $$1.c();
+      return $$1.a().b().k($$0.do()) <= $$1.c();
    }
 
    private static boolean a(ccv $$0) {

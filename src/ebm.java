@@ -1,16 +1,16 @@
 import com.mojang.serialization.Codec;
 
-public class ebm extends ecd<edz> {
-   public ebm(Codec<edz> $$0) {
+public class ebm extends ece<eea> {
+   public ebm(Codec<eea> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecf<edz> $$0) {
+   public boolean a(ecg<eea> $$0) {
       jd $$1 = $$0.e();
       dds $$2 = $$0.b();
       ayw $$3 = $$0.d();
-      edz $$4 = $$0.f();
+      eea $$4 = $$0.f();
       if ($$1.v() < $$2.I_() + 5) {
          return false;
       } else {
@@ -37,7 +37,7 @@ public class ebm extends ecd<edz> {
       return $$4.a(dga.kE) ? $$2.h() : $$4.d($$0, $$3, ji.b);
    }
 
-   private void a(dcx $$0, jd $$1, ayw $$2, edz $$3) {
+   private void a(dcx $$0, jd $$1, ayw $$2, eea $$3) {
       if ($$0.u($$1) && this.a($$0, $$1, $$2)) {
          $$0.a($$1, $$3.b.a($$2, $$1), 4);
       }

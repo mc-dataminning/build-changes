@@ -5,7 +5,7 @@ public class dip extends des<drd> implements dna {
    public static final MapCodec<dip> b = b(dip::new);
    public static final dtw c = dju.aE;
    public static final dtt d = dts.C;
-   protected static final ext e = dfy.a(1.0, 0.0, 1.0, 15.0, 14.0, 15.0);
+   protected static final exv e = dfy.a(1.0, 0.0, 1.0, 15.0, 14.0, 15.0);
    private static final wz f = wz.c("container.enderchest");
 
    @Override
@@ -24,7 +24,7 @@ public class dip extends des<drd> implements dna {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return e;
    }
 
@@ -35,13 +35,13 @@ public class dip extends des<drd> implements dna {
 
    @Override
    public dtc a(cyd $$0) {
-      epc $$1 = $$0.q().b_($$0.a());
-      return this.o().a(c, $$0.g().g()).a(d, Boolean.valueOf($$1.a() == epd.c));
+      epe $$1 = $$0.q().b_($$0.a());
+      return this.o().a(c, $$0.g().g()).a(d, Boolean.valueOf($$1.a() == epf.c));
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
-      crh $$5 = $$3.gm();
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
+      crh $$5 = $$3.gl();
       dqh $$6 = $$1.c_($$2);
       if ($$5 != null && $$6 instanceof drd) {
          jd $$7 = $$2.d();
@@ -104,21 +104,21 @@ public class dip extends des<drd> implements dna {
    }
 
    @Override
-   protected epc b_(dtc $$0) {
-      return $$0.c(d) ? epd.c.a(false) : super.b_($$0);
+   protected epe b_(dtc $$0) {
+      return $$0.c(d) ? epf.c.a(false) : super.b_($$0);
    }
 
    @Override
    protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
       if ($$0.c(d)) {
-         $$3.a($$4, epd.c, epd.c.a($$3));
+         $$3.a($$4, epf.c, epf.c.a($$3));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return false;
    }
 

@@ -4,7 +4,7 @@ public class cjy extends ckd {
    }
 
    public static buv.a s() {
-      return ckd.gr().a(buw.s, 100.0).a(buw.v, 0.5).a(buw.c, 50.0);
+      return ckd.gq().a(buw.s, 100.0).a(buw.v, 0.5).a(buw.c, 50.0);
    }
 
    @Override

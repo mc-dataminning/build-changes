@@ -1,33 +1,52 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record eey(int b, int c, int d, int e, int f, bpw g, float h) implements eeh {
+public class eey implements eei {
    public static final Codec<eey> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(eey::a),
-               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(eey::b),
-               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(eey::c),
-               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(eey::d),
-               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(eey::f),
-               bpw.c.fieldOf("extra_rare_growths").forGetter(eey::g),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(eey::h)
+               eiv.b.fieldOf("feature").forGetter($$0x -> $$0x.b),
+               Codec.intRange(1, 64).fieldOf("required_vertical_space_for_tree").forGetter($$0x -> $$0x.c),
+               Codec.intRange(1, 64).fieldOf("root_radius").forGetter($$0x -> $$0x.d),
+               awu.b(lu.f).fieldOf("root_replaceable").forGetter($$0x -> $$0x.e),
+               egj.a.fieldOf("root_state_provider").forGetter($$0x -> $$0x.f),
+               Codec.intRange(1, 256).fieldOf("root_placement_attempts").forGetter($$0x -> $$0x.g),
+               Codec.intRange(1, 4096).fieldOf("root_column_max_height").forGetter($$0x -> $$0x.h),
+               Codec.intRange(1, 64).fieldOf("hanging_root_radius").forGetter($$0x -> $$0x.i),
+               Codec.intRange(0, 16).fieldOf("hanging_roots_vertical_span").forGetter($$0x -> $$0x.j),
+               egj.a.fieldOf("hanging_root_state_provider").forGetter($$0x -> $$0x.k),
+               Codec.intRange(1, 256).fieldOf("hanging_root_placement_attempts").forGetter($$0x -> $$0x.l),
+               Codec.intRange(1, 64).fieldOf("allowed_vertical_water_for_tree").forGetter($$0x -> $$0x.n),
+               eaf.b.fieldOf("allowed_tree_position").forGetter($$0x -> $$0x.o)
             )
             .apply($$0, eey::new)
    );
+   public final jm<eiv> b;
+   public final int c;
+   public final int d;
+   public final awu<dfy> e;
+   public final egj f;
+   public final int g;
+   public final int h;
+   public final int i;
+   public final int j;
+   public final egj k;
+   public final int l;
+   public final int n;
+   public final eaf o;
 
-   public int a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
+   public eey(jm<eiv> $$0, int $$1, int $$2, awu<dfy> $$3, egj $$4, int $$5, int $$6, int $$7, int $$8, egj $$9, int $$10, int $$11, eaf $$12) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
+      this.l = $$10;
+      this.n = $$11;
+      this.o = $$12;
    }
 }

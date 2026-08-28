@@ -10,13 +10,13 @@ public class cjr extends ckw implements ckh {
    public cjr(bsx<? extends cjr> $$0, dcw $$1) {
       super($$0, $$1);
       this.bR = new cjr.d(this);
-      this.a(ept.j, 0.0F);
+      this.a(epv.j, 0.0F);
       this.c = new cdc(this, $$1);
       this.d = new ccz(this, $$1);
    }
 
    public static buv.a s() {
-      return ckw.gp().a(buw.B, 1.0);
+      return ckw.go().a(buw.B, 1.0);
    }
 
    @Override
@@ -25,7 +25,7 @@ public class cjr extends ckw implements ckh {
       this.bU.a(2, new cjr.f(this, 1.0, 40, 10.0F));
       this.bU.a(2, new cjr.a(this, 1.0, false));
       this.bU.a(5, new cjr.b(this, 1.0));
-      this.bU.a(6, new cjr.e(this, 1.0, this.dP().z_()));
+      this.bU.a(6, new cjr.e(this, 1.0, this.dO().z_()));
       this.bU.a(7, new cbj(this, 1.0));
       this.bV.a(1, new cce(this, cjr.class).a(cky.class));
       this.bV.a(2, new ccf<>(this, cmx.class, 10, true, false, this::j));
@@ -85,7 +85,7 @@ public class cjr extends ckw implements ckh {
    }
 
    @Override
-   protected avo gl() {
+   protected avo gk() {
       return avp.hK;
    }
 
@@ -95,7 +95,7 @@ public class cjr extends ckw implements ckh {
    }
 
    @Override
-   protected cuq gm() {
+   protected cuq gl() {
       return cuq.l;
    }
 
@@ -123,7 +123,7 @@ public class cjr extends ckw implements ckh {
    }
 
    @Override
-   protected boolean gn() {
+   protected boolean gm() {
       return false;
    }
 
@@ -133,15 +133,15 @@ public class cjr extends ckw implements ckh {
    }
 
    public boolean j(@Nullable btn $$0) {
-      return $$0 != null ? !this.dP().R() || $$0.bf() : false;
+      return $$0 != null ? !this.dO().R() || $$0.bf() : false;
    }
 
    @Override
-   public boolean cD() {
+   public boolean cC() {
       return !this.cd();
    }
 
-   boolean gv() {
+   boolean gu() {
       if (this.cd) {
          return true;
       } else {
@@ -151,11 +151,11 @@ public class cjr extends ckw implements ckh {
    }
 
    @Override
-   public void a(exa $$0) {
-      if (this.db() && this.bf() && this.gv()) {
+   public void a(exc $$0) {
+      if (this.da() && this.bf() && this.gu()) {
          this.a(0.01F, $$0);
-         this.a(bts.a, this.ds());
-         this.i(this.ds().a(0.9));
+         this.a(bts.a, this.dr());
+         this.i(this.dr().a(0.9));
       } else {
          super.a($$0);
       }
@@ -163,8 +163,8 @@ public class cjr extends ckw implements ckh {
 
    @Override
    public void bl() {
-      if (!this.dP().B) {
-         if (this.dc() && this.bf() && this.gv()) {
+      if (!this.dO().B) {
+         if (this.db() && this.bf() && this.gu()) {
             this.bT = this.c;
             this.i(true);
          } else {
@@ -179,8 +179,8 @@ public class cjr extends ckw implements ckh {
       return this.cd();
    }
 
-   protected boolean go() {
-      epq $$0 = this.N().j();
+   protected boolean gn() {
+      eps $$0 = this.N().j();
       if ($$0 != null) {
          jd $$1 = $$0.l();
          if ($$1 != null) {
@@ -196,17 +196,17 @@ public class cjr extends ckw implements ckh {
 
    @Override
    public void a(btn $$0, float $$1) {
-      coc $$2 = new coc(this.dP(), this, new cuq(cut.vS));
-      double $$3 = $$0.du() - this.du();
-      double $$4 = $$0.e(0.3333333333333333) - $$2.dw();
-      double $$5 = $$0.dA() - this.dA();
+      coc $$2 = new coc(this.dO(), this, new cuq(cut.vS));
+      double $$3 = $$0.dt() - this.dt();
+      double $$4 = $$0.e(0.3333333333333333) - $$2.dv();
+      double $$5 = $$0.dz() - this.dz();
       double $$6 = Math.sqrt($$3 * $$3 + $$5 * $$5);
-      $$2.c($$3, $$4 + $$6 * 0.2F, $$5, 1.6F, (float)(14 - this.dP().al().a() * 4));
-      this.a(avp.hJ, 1.0F, 1.0F / (this.dS().i() * 0.4F + 0.8F));
-      this.dP().b($$2);
+      $$2.c($$3, $$4 + $$6 * 0.2F, $$5, 1.6F, (float)(14 - this.dO().al().a() * 4));
+      this.a(avp.hJ, 1.0F, 1.0F / (this.dR().i() * 0.4F + 0.8F));
+      this.dO().b($$2);
    }
 
-   public void w(boolean $$0) {
+   public void x(boolean $$0) {
       this.cd = $$0;
    }
 
@@ -239,7 +239,7 @@ public class cjr extends ckw implements ckh {
 
       @Override
       public boolean b() {
-         return super.b() && !this.g.dP().R() && this.g.bf() && this.g.dw() >= (double)(this.g.dP().z_() - 3);
+         return super.b() && !this.g.dO().R() && this.g.bf() && this.g.dv() >= (double)(this.g.dO().z_() - 3);
       }
 
       @Override
@@ -255,7 +255,7 @@ public class cjr extends ckw implements ckh {
 
       @Override
       public void d() {
-         this.g.w(false);
+         this.g.x(false);
          this.g.bT = this.g.d;
          super.d();
       }
@@ -277,7 +277,7 @@ public class cjr extends ckw implements ckh {
       public c(btw $$0, double $$1) {
          this.a = $$0;
          this.e = $$1;
-         this.f = $$0.dP();
+         this.f = $$0.dO();
          this.a(EnumSet.of(cam.a.a));
       }
 
@@ -288,7 +288,7 @@ public class cjr extends ckw implements ckh {
          } else if (this.a.bf()) {
             return false;
          } else {
-            exa $$0 = this.h();
+            exc $$0 = this.h();
             if ($$0 == null) {
                return false;
             } else {
@@ -311,14 +311,14 @@ public class cjr extends ckw implements ckh {
       }
 
       @Nullable
-      private exa h() {
-         ayw $$0 = this.a.dS();
-         jd $$1 = this.a.dp();
+      private exc h() {
+         ayw $$0 = this.a.dR();
+         jd $$1 = this.a.do();
 
          for (int $$2 = 0; $$2 < 10; $$2++) {
             jd $$3 = $$1.b($$0.a(20) - 10, 2 - $$0.a(8), $$0.a(20) - 10);
             if (this.f.a_($$3).a(dga.G)) {
-               return exa.c($$3);
+               return exc.c($$3);
             }
          }
 
@@ -337,9 +337,9 @@ public class cjr extends ckw implements ckh {
       @Override
       public void a() {
          btn $$0 = this.l.p();
-         if (this.l.gv() && this.l.bf()) {
-            if ($$0 != null && $$0.dw() > this.l.dw() || this.l.cd) {
-               this.l.i(this.l.ds().b(0.0, 0.002, 0.0));
+         if (this.l.gu() && this.l.bf()) {
+            if ($$0 != null && $$0.dv() > this.l.dv() || this.l.cd) {
+               this.l.i(this.l.dr().b(0.0, 0.002, 0.0));
             }
 
             if (this.k != bzp.a.b || this.l.N().l()) {
@@ -347,21 +347,21 @@ public class cjr extends ckw implements ckh {
                return;
             }
 
-            double $$1 = this.e - this.l.du();
-            double $$2 = this.f - this.l.dw();
-            double $$3 = this.g - this.l.dA();
+            double $$1 = this.e - this.l.dt();
+            double $$2 = this.f - this.l.dv();
+            double $$3 = this.g - this.l.dz();
             double $$4 = Math.sqrt($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
             $$2 /= $$4;
             float $$5 = (float)(ayo.d($$3, $$1) * 180.0F / (float)Math.PI) - 90.0F;
-            this.l.t(this.a(this.l.dF(), $$5, 90.0F));
-            this.l.aY = this.l.dF();
+            this.l.t(this.a(this.l.dE(), $$5, 90.0F));
+            this.l.aY = this.l.dE();
             float $$6 = (float)(this.h * this.l.g(buw.v));
-            float $$7 = ayo.i(0.125F, this.l.fk(), $$6);
+            float $$7 = ayo.i(0.125F, this.l.fj(), $$6);
             this.l.A($$7);
-            this.l.i(this.l.ds().b((double)$$7 * $$1 * 0.005, (double)$$7 * $$2 * 0.1, (double)$$7 * $$3 * 0.005));
+            this.l.i(this.l.dr().b((double)$$7 * $$1 * 0.005, (double)$$7 * $$2 * 0.1, (double)$$7 * $$3 * 0.005));
          } else {
             if (!this.l.aF()) {
-               this.l.i(this.l.ds().b(0.0, -0.008, 0.0));
+               this.l.i(this.l.dr().b(0.0, -0.008, 0.0));
             }
 
             super.a();
@@ -383,7 +383,7 @@ public class cjr extends ckw implements ckh {
 
       @Override
       public boolean b() {
-         return !this.a.dP().R() && this.a.bf() && this.a.dw() < (double)(this.c - 2);
+         return !this.a.dO().R() && this.a.bf() && this.a.dv() < (double)(this.c - 2);
       }
 
       @Override
@@ -393,8 +393,8 @@ public class cjr extends ckw implements ckh {
 
       @Override
       public void a() {
-         if (this.a.dw() < (double)(this.c - 1) && (this.a.N().l() || this.a.go())) {
-            exa $$0 = cej.a(this.a, 4, 8, new exa(this.a.du(), (double)(this.c - 1), this.a.dA()), (float) (Math.PI / 2));
+         if (this.a.dv() < (double)(this.c - 1) && (this.a.N().l() || this.a.gn())) {
+            exc $$0 = cej.a(this.a, 4, 8, new exc(this.a.dt(), (double)(this.c - 1), this.a.dz()), (float) (Math.PI / 2));
             if ($$0 == null) {
                this.d = true;
                return;
@@ -406,13 +406,13 @@ public class cjr extends ckw implements ckh {
 
       @Override
       public void d() {
-         this.a.w(true);
+         this.a.x(true);
          this.d = false;
       }
 
       @Override
       public void e() {
-         this.a.w(false);
+         this.a.x(false);
       }
    }
 
@@ -426,21 +426,21 @@ public class cjr extends ckw implements ckh {
 
       @Override
       public boolean b() {
-         return super.b() && this.a.eU().a(cut.vS);
+         return super.b() && this.a.eT().a(cut.vS);
       }
 
       @Override
       public void d() {
          super.d();
-         this.a.v(true);
+         this.a.w(true);
          this.a.c(bqq.a);
       }
 
       @Override
       public void e() {
          super.e();
-         this.a.fy();
-         this.a.v(false);
+         this.a.fx();
+         this.a.w(false);
       }
    }
 }

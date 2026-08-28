@@ -1,59 +1,56 @@
-import java.util.concurrent.locks.LockSupport;
+import com.google.common.collect.Maps;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.util.Collection;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
-public class gvb extends bph<Runnable> {
-   private Thread a = this.b();
-   private volatile boolean b;
+public class gvb {
+   private final auh a;
+   private final Map<akr, CompletableFuture<ezj>> b = Maps.newHashMap();
 
-   public gvb() {
-      super("Sound executor");
+   public gvb(auh $$0) {
+      this.a = $$0;
    }
 
-   private Thread b() {
-      Thread $$0 = new Thread(this::c);
-      $$0.setDaemon(true);
-      $$0.setName("Sound engine");
-      $$0.start();
-      return $$0;
+   public CompletableFuture<ezj> a(akr $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> CompletableFuture.supplyAsync(() -> {
+            try {
+               ezj var5;
+               try (
+                  InputStream $$1 = this.a.open($$0x);
+                  guw $$2 = new guy($$1);
+               ) {
+                  ByteBuffer $$3 = $$2.b();
+                  var5 = new ezj($$3, $$2.a());
+               }
+
+               return var5;
+            } catch (IOException var10) {
+               throw new CompletionException(var10);
+            }
+         }, ad.i()));
    }
 
-   @Override
-   protected Runnable f(Runnable $$0) {
-      return $$0;
-   }
-
-   @Override
-   protected boolean e(Runnable $$0) {
-      return !this.b;
-   }
-
-   @Override
-   protected Thread az() {
-      return this.a;
-   }
-
-   private void c() {
-      while (!this.b) {
-         this.b(() -> this.b);
-      }
-   }
-
-   @Override
-   protected void A() {
-      LockSupport.park("waiting for tasks");
+   public CompletableFuture<gut> a(akr $$0, boolean $$1) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            InputStream $$2 = this.a.open($$0);
+            return (gut)($$1 ? new guz(guy::new, $$2) : new guy($$2));
+         } catch (IOException var4) {
+            throw new CompletionException(var4);
+         }
+      }, ad.i());
    }
 
    public void a() {
-      this.b = true;
-      this.a.interrupt();
+      this.b.values().forEach($$0 -> $$0.thenAccept(ezj::b));
+      this.b.clear();
+   }
 
-      try {
-         this.a.join();
-      } catch (InterruptedException var2) {
-         Thread.currentThread().interrupt();
-      }
-
-      this.bA();
-      this.b = false;
-      this.a = this.b();
+   public CompletableFuture<?> a(Collection<gtx> $$0) {
+      return CompletableFuture.allOf($$0.stream().map($$0x -> this.a($$0x.b())).toArray(CompletableFuture[]::new));
    }
 }

@@ -32,7 +32,7 @@ public record wv(ww l, ww m) {
    }
 
    public static wv.a a(akq<wv> $$0, bsr $$1) {
-      return a($$0, $$1.dP().H_(), $$1.S_());
+      return a($$0, $$1.dO().H_(), $$1.S_());
    }
 
    public static wv.a a(akq<wv> $$0, et $$1) {

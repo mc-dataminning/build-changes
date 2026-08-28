@@ -64,7 +64,7 @@ public interface kx {
          @Override
          public cuq a(ku $$0, cuq $$1) {
             jd $$2 = $$0.c().a($$0.d().c(did.b));
-            List<btn> $$3 = $$0.b().a(btn.class, new ewv($$2), $$0x -> !($$0x instanceof bue $$1x) ? false : !$$1x.i() && $$1x.f());
+            List<btn> $$3 = $$0.b().a(btn.class, new ewx($$2), $$0x -> !($$0x instanceof bue $$1x) ? false : !$$1x.i() && $$1x.f());
             if (!$$3.isEmpty()) {
                ((bue)$$3.get(0)).a($$1.a(1), avq.e);
                this.a(true);
@@ -79,8 +79,8 @@ public interface kx {
          protected cuq a(ku $$0, cuq $$1) {
             jd $$2 = $$0.c().a($$0.d().c(did.b));
 
-            for (chi $$4 : $$0.b().a(chi.class, new ewv($$2), $$0x -> $$0x.bE() && $$0x.d(bsy.g))) {
-               if ($$4.l($$1) && !$$4.fQ() && $$4.gA()) {
+            for (chi $$4 : $$0.b().a(chi.class, new ewx($$2), $$0x -> $$0x.bE() && $$0x.d(bsy.g))) {
+               if ($$4.l($$1) && !$$4.fP() && $$4.gz()) {
                   $$4.m($$1.a(1));
                   this.a(true);
                   return $$1;
@@ -115,8 +115,8 @@ public interface kx {
          public cuq a(ku $$0, cuq $$1) {
             jd $$2 = $$0.c().a($$0.d().c(did.b));
 
-            for (chh $$4 : $$0.b().a(chh.class, new ewv($$2), $$0x -> $$0x.bE() && !$$0x.t())) {
-               if ($$4.gA() && $$4.a_(499).a($$1)) {
+            for (chh $$4 : $$0.b().a(chh.class, new ewx($$2), $$0x -> $$0x.bE() && !$$0x.t())) {
+               if ($$4.gz() && $$4.a_(499).a($$1)) {
                   $$1.h(1);
                   this.a(true);
                   return $$1;
@@ -240,7 +240,7 @@ public interface kx {
             jd $$3 = $$0.c().a($$0.d().c(did.b));
             cji $$4 = new cji($$2, (double)$$3.u() + 0.5, (double)$$3.v(), (double)$$3.w() + 0.5, null);
             $$2.b($$4);
-            $$2.a(null, $$4.du(), $$4.dw(), $$4.dA(), avp.zy, avq.e, 1.0F, 1.0F);
+            $$2.a(null, $$4.dt(), $$4.dv(), $$4.dz(), avp.zy, avq.e, 1.0F, 1.0F);
             $$2.a(null, dxz.t, $$3);
             $$1.h(1);
             return $$1;
@@ -321,7 +321,7 @@ public interface kx {
             aqu $$2 = $$0.b();
             jd $$3 = $$0.c().a($$0.d().c(did.b));
             dtc $$4 = $$2.a_($$3);
-            if ($$4.a(awe.aG, $$0x -> $$0x.b(dfs.c) && $$0x.b() instanceof dfs) && $$4.c(dfs.c) >= 5) {
+            if ($$4.a(awe.aH, $$0x -> $$0x.b(dfs.c) && $$0x.b() instanceof dfs) && $$4.c(dfs.c) >= 5) {
                ((dfs)$$4.b()).a($$2, $$4, $$3, null, dqe.b.b);
                this.a(true);
                return this.b($$0, $$1, new cuq(cut.wC));
@@ -361,13 +361,13 @@ public interface kx {
          protected cuq a(ku $$0, cuq $$1) {
             aqu $$2 = $$0.b();
             jd $$3 = $$0.c().a($$0.d().c(did.b));
-            List<cgn> $$4 = $$2.a(cgn.class, new ewv($$3), bsw.f);
+            List<cgn> $$4 = $$2.a(cgn.class, new ewx($$3), bsw.f);
             if ($$4.isEmpty()) {
                this.a(false);
                return $$1;
             } else {
                for (cgn $$5 : $$4) {
-                  if ($$5.gp()) {
+                  if ($$5.go()) {
                      $$1.a(16, $$2, null, $$0x -> {
                      });
                      return $$1;
@@ -409,7 +409,7 @@ public interface kx {
                aqu $$3 = $$0.b();
                jd $$4 = $$0.c();
                jd $$5 = $$0.c().a($$0.d().c(did.b));
-               if (!$$3.a_($$5).a(awe.ci)) {
+               if (!$$3.a_($$5).a(awe.cj)) {
                   return this.c.dispense($$0, $$1);
                } else {
                   if (!$$3.B) {

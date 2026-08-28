@@ -13,13 +13,13 @@ public class ccj extends ccm {
 
    @Override
    public boolean b() {
-      if (this.a.s() && !this.a.gl()) {
+      if (this.a.s() && !this.a.gk()) {
          btn $$0 = this.a.T_();
          if ($$0 == null) {
             return false;
          } else {
-            this.b = $$0.ej();
-            int $$1 = $$0.ek();
+            this.b = $$0.ei();
+            int $$1 = $$0.ej();
             return $$1 != this.c && this.a(this.b, cef.a) && this.a.a(this.b, $$0);
          }
       } else {
@@ -32,7 +32,7 @@ public class ccj extends ccm {
       this.e.h(this.b);
       btn $$0 = this.a.T_();
       if ($$0 != null) {
-         this.c = $$0.ek();
+         this.c = $$0.ej();
       }
 
       super.d();

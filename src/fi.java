@@ -92,7 +92,7 @@ public class fi implements ArgumentType<fi.a> {
             List<GameProfile> $$2 = Lists.newArrayList();
 
             for (aqv $$3 : $$1) {
-               $$2.add($$3.fY());
+               $$2.add($$3.fX());
             }
 
             return $$2;

@@ -50,7 +50,7 @@ public abstract class dqb extends dqh implements bqk, bqv, bqw {
    }
 
    public static boolean a(cmx $$0, bqu $$1, wz $$2) {
-      if (!$$0.R_() && !$$1.a($$0.eU())) {
+      if (!$$0.R_() && !$$1.a($$0.eT())) {
          $$0.a(wz.a("container.isLocked", $$2), true);
          $$0.a(avp.eP, avq.e, 1.0F, 1.0F);
          return false;

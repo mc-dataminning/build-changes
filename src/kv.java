@@ -16,7 +16,7 @@ public class kv extends kw {
    public cuq a(ku $$0, cuq $$1) {
       ji $$2 = $$0.d().c(did.b);
       aqu $$3 = $$0.b();
-      exa $$4 = $$0.a();
+      exc $$4 = $$0.a();
       double $$5 = 0.5625 + (double)bsx.k.l() / 2.0;
       double $$6 = $$4.a() + (double)$$2.j() * $$5;
       double $$7 = $$4.b() + (double)((float)$$2.k() * 1.125F);

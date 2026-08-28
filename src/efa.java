@@ -1,16 +1,10 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class efa implements eeh {
-   public static final Codec<efa> a = axw.b(eit.c).fieldOf("features").xmap(efa::new, $$0 -> $$0.b).codec();
-   public final jq<eit> b;
+public record efa(egj b) implements eei {
+   public static final Codec<efa> a = RecordCodecBuilder.create($$0 -> $$0.group(egj.a.fieldOf("to_place").forGetter($$0x -> $$0x.b)).apply($$0, efa::new));
 
-   public efa(jq<eit> $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public Stream<ebq<?, ?>> e() {
-      return this.b.a().flatMap($$0 -> $$0.a().a());
+   public egj a() {
+      return this.b;
    }
 }

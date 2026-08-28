@@ -1,28 +1,31 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class gtw extends gtj {
+   private static final float n = 1.0F;
+   private static final float o = 1.0F;
+   private final chv p;
 
-public class gtw {
-   private final List<gtv> a;
-   private final boolean b;
-   @Nullable
-   private final String c;
-
-   public gtw(List<gtv> $$0, boolean $$1, @Nullable String $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public gtw(chv $$0) {
+      super(avp.yu, avq.g, gua.t());
+      this.p = $$0;
+      this.k = gua.a.b;
+      this.i = false;
+      this.j = 0;
    }
 
-   public List<gtv> a() {
-      return this.a;
+   @Override
+   public boolean s() {
+      return !this.p.aX();
    }
 
-   public boolean b() {
-      return this.b;
-   }
-
-   @Nullable
-   public String c() {
-      return this.c;
+   @Override
+   public void q() {
+      if (!this.p.dJ() && this.p.p() == null && this.p.gl()) {
+         this.f = (double)((float)this.p.dt());
+         this.g = (double)((float)this.p.dv());
+         this.h = (double)((float)this.p.dz());
+         this.d = 1.0F;
+         this.e = 1.0F;
+      } else {
+         this.n();
+      }
    }
 }

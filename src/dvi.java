@@ -42,14 +42,14 @@ public class dvi extends duy {
    @Nullable
    private dvi.c t;
    private final Int2ObjectMap<dyc> u;
-   private final eym<dfy> v;
-   private final eym<epb> w;
+   private final eyo<dfy> v;
+   private final eyo<epd> w;
 
    public dvi(dcw $$0, dcd $$1) {
-      this($$0, $$1, dvv.a, new eym<>(), new eym<>(), 0L, null, null, null);
+      this($$0, $$1, dvv.a, new eyo<>(), new eyo<>(), 0L, null, null, null);
    }
 
-   public dvi(dcw $$0, dcd $$1, dvv $$2, eym<dfy> $$3, eym<epb> $$4, long $$5, @Nullable dvj[] $$6, @Nullable dvi.c $$7, @Nullable eab $$8) {
+   public dvi(dcw $$0, dcd $$1, dvv $$2, eyo<dfy> $$3, eyo<epd> $$4, long $$5, @Nullable dvj[] $$6, @Nullable dvi.c $$7, @Nullable eab $$8) {
       super($$1, $$2, $$0, $$0.H_().d(lu.aF), $$5, $$6, $$8);
       this.r = $$0;
       this.u = new Int2ObjectOpenHashMap();
@@ -93,12 +93,12 @@ public class dvi extends duy {
    }
 
    @Override
-   public eyu<dfy> o() {
+   public eyw<dfy> o() {
       return this.v;
    }
 
    @Override
-   public eyu<epb> p() {
+   public eyw<epd> p() {
       return this.w;
    }
 
@@ -149,11 +149,11 @@ public class dvi extends duy {
    }
 
    @Override
-   public epc b_(jd $$0) {
+   public epe b_(jd $$0) {
       return this.a($$0.u(), $$0.v(), $$0.w());
    }
 
-   public epc a(int $$0, int $$1, int $$2) {
+   public epe a(int $$0, int $$1, int $$2) {
       try {
          int $$3 = this.e($$1);
          if ($$3 >= 0 && $$3 < this.m.length) {
@@ -163,7 +163,7 @@ public class dvi extends duy {
             }
          }
 
-         return epd.a.g();
+         return epf.a.g();
       } catch (Throwable var7) {
          o $$6 = o.a(var7, "Getting fluid state");
          p $$7 = $$6.a("Block being got");
@@ -198,7 +198,7 @@ public class dvi extends duy {
                this.r.N().p().a($$0, $$11);
             }
 
-            if (eot.a(this, $$0, $$9, $$1)) {
+            if (eov.a(this, $$0, $$9, $$1)) {
                bnf $$12 = this.r.ag();
                $$12.a("updateSkyLightSources");
                this.i.a(this, $$6, $$3, $$8);
@@ -443,7 +443,7 @@ public class dvi extends duy {
                Short $$2 = (Short)$$7.next();
                jd $$3 = dvs.a($$2, this.g($$1), $$0);
                dtc $$4 = this.a_($$3);
-               epc $$5 = $$4.u();
+               epe $$5 = $$4.u();
                if (!$$5.c()) {
                   $$5.a(this.r, $$3);
                }

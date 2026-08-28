@@ -21,13 +21,13 @@ class bsc extends brx {
    @Override
    public void a(btn $$0, int $$1, bsr.c $$2) {
       if ($$2 == bsr.c.a) {
-         int $$3 = this.e.applyAsInt($$0.dS());
-         dcw $$4 = $$0.dP();
+         int $$3 = this.e.applyAsInt($$0.dR());
+         dcw $$4 = $$0.dO();
          int $$5 = $$4.ab().c(dcs.u);
          int $$6 = a($$5, bsc.a.a($$0), $$3);
 
          for (int $$7 = 0; $$7 < $$6; $$7++) {
-            this.a($$0.dP(), $$0.du(), $$0.dw() + 0.5, $$0.dA());
+            this.a($$0.dO(), $$0.dt(), $$0.dv() + 0.5, $$0.dz());
          }
       }
    }
@@ -48,7 +48,7 @@ class bsc extends brx {
       static bsc.a a(btn $$0) {
          return $$1 -> {
             List<ckm> $$2 = new ArrayList<>();
-            $$0.dP().a(bsx.aP, $$0.cL().g(2.0), $$1x -> $$1x != $$0, $$2, $$1);
+            $$0.dO().a(bsx.aP, $$0.cK().g(2.0), $$1x -> $$1x != $$0, $$2, $$1);
             return $$2.size();
          };
       }

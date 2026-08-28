@@ -1,5 +1,5 @@
 public record ku(aqu a, jd b, dtc c, dra d) {
-   public exa a() {
+   public exc a() {
       return this.b.b();
    }
 

@@ -42,17 +42,17 @@ public class cpw extends cqx {
 
    @Override
    protected boolean a(dtc $$0) {
-      return $$0.a(awe.M);
+      return $$0.a(awe.N);
    }
 
    @Override
    protected boolean a(cmx $$0, boolean $$1) {
-      return ($$0.fM() || $$0.cq >= this.w.b()) && this.w.b() > 0;
+      return ($$0.fL() || $$0.cq >= this.w.b()) && this.w.b() > 0;
    }
 
    @Override
    protected void a(cmx $$0, cuq $$1) {
-      if (!$$0.ga().d) {
+      if (!$$0.fZ().d) {
          $$0.c(-this.w.b());
       }
 
@@ -72,7 +72,7 @@ public class cpw extends cqx {
       this.w.a(0);
       this.o.a(($$1x, $$2x) -> {
          dtc $$3 = $$1x.a_($$2x);
-         if (!$$0.fM() && $$3.a(awe.M) && $$0.dS().i() < 0.12F) {
+         if (!$$0.fL() && $$3.a(awe.N) && $$0.dR().i() < 0.12F) {
             dtc $$4 = dey.e($$3);
             if ($$4 == null) {
                $$1x.a($$2x, false);
@@ -153,7 +153,7 @@ public class cpw extends cqx {
                   $$22 = $$21 == $$22 ? $$22 + 1 : Math.max($$22, $$21);
                   dac $$23 = $$20.a();
                   boolean $$24 = $$23.c($$0);
-                  if (this.p.ga().d || $$0.a(cut.uw)) {
+                  if (this.p.fZ().d || $$0.a(cut.uw)) {
                      $$24 = true;
                   }
 
@@ -215,7 +215,7 @@ public class cpw extends cqx {
             this.w.a(39);
          }
 
-         if (this.w.b() >= 40 && !this.p.ga().d) {
+         if (this.w.b() >= 40 && !this.p.fZ().d) {
             $$4 = cuq.l;
          }
 

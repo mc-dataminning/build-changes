@@ -1,93 +1,52 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class evm implements evo {
-   private static final String d = "block_entity";
-   private static final evm.a e = new evm.a() {
-      @Override
-      public uy a(erp $$0) {
-         dqh $$1 = $$0.c(eul.h);
-         return $$1 != null ? $$1.b($$1.i().H_()) : null;
-      }
-
-      @Override
-      public String a() {
-         return "block_entity";
-      }
-
-      @Override
-      public Set<eui<?>> b() {
-         return ImmutableSet.of(eul.h);
-      }
-   };
-   public static final evm a = new evm(e);
-   private static final Codec<evm.a> f = Codec.STRING.xmap($$0 -> {
-      if ($$0.equals("block_entity")) {
-         return e;
-      } else {
-         erp.b $$1 = erp.b.a($$0);
-         return b($$1);
-      }
-   }, evm.a::a);
-   public static final MapCodec<evm> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(f.fieldOf("target").forGetter($$0x -> $$0x.g)).apply($$0, evm::new));
-   public static final Codec<evm> c = f.xmap(evm::new, $$0 -> $$0.g);
-   private final evm.a g;
-
-   private static evm.a b(final erp.b $$0) {
-      return new evm.a() {
-         @Nullable
-         @Override
-         public uy a(erp $$0x) {
-            bsr $$1 = $$0.c($$0.a());
-            return $$1 != null ? dk.b($$1) : null;
-         }
-
-         @Override
-         public String a() {
-            return $$0.name();
-         }
-
-         @Override
-         public Set<eui<?>> b() {
-            return ImmutableSet.of($$0.a());
-         }
-      };
-   }
-
-   private evm(evm.a $$0) {
-      this.g = $$0;
-   }
+public record evm(Optional<Boolean> b, Optional<Boolean> c) implements evc {
+   public static final MapCodec<evm> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("raining").forGetter(evm::d), Codec.BOOL.optionalFieldOf("thundering").forGetter(evm::e))
+            .apply($$0, evm::new)
+   );
 
    @Override
-   public evn a() {
-      return evp.c;
+   public evd b() {
+      return eve.o;
    }
 
-   @Nullable
-   @Override
-   public uy a(erp $$0) {
-      return this.g.a($$0);
+   public boolean a(err $$0) {
+      aqu $$1 = $$0.d();
+      return this.b.isPresent() && this.b.get() != $$1.ad() ? false : !this.c.isPresent() || this.c.get() == $$1.ac();
    }
 
-   @Override
-   public Set<eui<?>> b() {
-      return this.g.b();
+   public static evm.a c() {
+      return new evm.a();
    }
 
-   public static evo a(erp.b $$0) {
-      return new evm(b($$0));
+   public Optional<Boolean> d() {
+      return this.b;
    }
 
-   interface a {
-      @Nullable
-      uy a(erp var1);
+   public Optional<Boolean> e() {
+      return this.c;
+   }
 
-      String a();
+   public static class a implements evc.a {
+      private Optional<Boolean> a = Optional.empty();
+      private Optional<Boolean> b = Optional.empty();
 
-      Set<eui<?>> b();
+      public evm.a a(boolean $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public evm.a b(boolean $$0) {
+         this.b = Optional.of($$0);
+         return this;
+      }
+
+      public evm a() {
+         return new evm(this.a, this.b);
+      }
    }
 }

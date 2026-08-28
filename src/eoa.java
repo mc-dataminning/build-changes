@@ -1,14 +1,18 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public interface eoa<P extends enz> {
-   eoa<enx> a = a("clear", enx.a);
-   eoa<eny> b = a("passthrough", eny.b);
-   eoa<enw> c = a("append_static", enw.a);
-   eoa<env> d = a("append_loot", env.a);
+public class eoa implements eob {
+   public static final eoa a = new eoa();
+   public static final MapCodec<eoa> b = MapCodec.unit(a);
 
-   MapCodec<P> codec();
+   @Nullable
+   @Override
+   public ub a(ayw $$0, @Nullable ub $$1) {
+      return $$1;
+   }
 
-   private static <P extends enz> eoa<P> a(String $$0, MapCodec<P> $$1) {
-      return jz.a(lt.n, $$0, () -> $$1);
+   @Override
+   public eoc<?> a() {
+      return eoc.b;
    }
 }

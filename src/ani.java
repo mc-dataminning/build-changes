@@ -30,17 +30,17 @@ public class ani {
       );
    }
 
-   private static Optional<? extends jq.b<ejp>> a(fx.c<ejp> $$0, jz<ejp> $$1) {
-      return (Optional<? extends jq.b<ejp>>)$$0.a().map($$1x -> $$1.b($$1x).map($$0xx -> jq.a($$0xx)), $$1::b);
+   private static Optional<? extends jq.b<ejr>> a(fx.c<ejr> $$0, jz<ejr> $$1) {
+      return (Optional<? extends jq.b<ejr>>)$$0.a().map($$1x -> $$1.b($$1x).map($$0xx -> jq.a($$0xx)), $$1::b);
    }
 
-   private static int a(et $$0, fx.c<ejp> $$1) throws CommandSyntaxException {
-      jz<ejp> $$2 = $$0.e().H_().d(lu.aR);
-      jq<ejp> $$3 = (jq<ejp>)a($$1, $$2).orElseThrow(() -> c.create($$1.b()));
+   private static int a(et $$0, fx.c<ejr> $$1) throws CommandSyntaxException {
+      jz<ejr> $$2 = $$0.e().H_().d(lu.aR);
+      jq<ejr> $$3 = (jq<ejr>)a($$1, $$2).orElseThrow(() -> c.create($$1.b()));
       jd $$4 = jd.a((jw)$$0.d());
       aqu $$5 = $$0.e();
       Stopwatch $$6 = Stopwatch.createStarted(ad.d);
-      Pair<jd, jm<ejp>> $$7 = $$5.l().g().a($$5, $$3, $$4, 100, false);
+      Pair<jd, jm<ejr>> $$7 = $$5.l().g().a($$5, $$3, $$4, 100, false);
       $$6.stop();
       if ($$7 == null) {
          throw b.create($$1.b());

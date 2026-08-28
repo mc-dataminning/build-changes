@@ -1,70 +1,60 @@
-public class fuf {
-   public static void a(fyi $$0, fyi $$1, fyi $$2, boolean $$3) {
-      fyi $$4 = $$3 ? $$0 : $$1;
-      fyi $$5 = $$3 ? $$1 : $$0;
-      $$4.f = ($$3 ? -0.3F : 0.3F) + $$2.f;
-      $$5.f = ($$3 ? 0.6F : -0.6F) + $$2.f;
-      $$4.e = (float) (-Math.PI / 2) + $$2.e + 0.1F;
-      $$5.e = -1.5F + $$2.e;
+import java.util.function.Function;
+
+public abstract class fuf<E extends bsr> extends fvk<E> {
+   private final boolean a;
+   private final float b;
+   private final float f;
+   private final float g;
+   private final float h;
+   private final float i;
+
+   protected fuf(boolean $$0, float $$1, float $$2) {
+      this($$0, $$1, $$2, 2.0F, 2.0F, 24.0F);
    }
 
-   public static void a(fyi $$0, fyi $$1, btn $$2, boolean $$3) {
-      fyi $$4 = $$3 ? $$0 : $$1;
-      fyi $$5 = $$3 ? $$1 : $$0;
-      $$4.f = $$3 ? -0.8F : 0.8F;
-      $$4.e = -0.97079635F;
-      $$5.e = $$4.e;
-      float $$6 = (float)ctc.b($$2.fu(), $$2);
-      float $$7 = ayo.a((float)$$2.fw(), 0.0F, $$6);
-      float $$8 = $$7 / $$6;
-      $$5.f = ayo.i($$8, 0.4F, 0.85F) * (float)($$3 ? 1 : -1);
-      $$5.e = ayo.i($$8, $$5.e, (float) (-Math.PI / 2));
+   protected fuf(boolean $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this(gfh::e, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public static <T extends btp> void a(fyi $$0, fyi $$1, T $$2, float $$3, float $$4) {
-      float $$5 = ayo.a($$3 * (float) Math.PI);
-      float $$6 = ayo.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$0.g = 0.0F;
-      $$1.g = 0.0F;
-      $$0.f = (float) (Math.PI / 20);
-      $$1.f = (float) (-Math.PI / 20);
-      if ($$2.fr() == btg.b) {
-         $$0.e = -1.8849558F + ayo.b($$4 * 0.09F) * 0.15F;
-         $$1.e = -0.0F + ayo.b($$4 * 0.19F) * 0.5F;
-         $$0.e += $$5 * 2.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 1.2F - $$6 * 0.4F;
+   protected fuf(Function<akr, gfh> $$0, boolean $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+   }
+
+   protected fuf() {
+      this(false, 5.0F, 2.0F);
+   }
+
+   @Override
+   public void a(fbi $$0, fbm $$1, int $$2, int $$3, int $$4) {
+      if (this.e) {
+         $$0.a();
+         if (this.a) {
+            float $$5 = 1.5F / this.g;
+            $$0.b($$5, $$5, $$5);
+         }
+
+         $$0.a(0.0F, this.b / 16.0F, this.f / 16.0F);
+         this.a().forEach($$5 -> $$5.a($$0, $$1, $$2, $$3, $$4));
+         $$0.b();
+         $$0.a();
+         float $$6 = 1.0F / this.h;
+         $$0.b($$6, $$6, $$6);
+         $$0.a(0.0F, this.i / 16.0F, 0.0F);
+         this.b().forEach($$5 -> $$5.a($$0, $$1, $$2, $$3, $$4));
+         $$0.b();
       } else {
-         $$0.e = -0.0F + ayo.b($$4 * 0.19F) * 0.5F;
-         $$1.e = -1.8849558F + ayo.b($$4 * 0.09F) * 0.15F;
-         $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 2.2F - $$6 * 0.4F;
+         this.a().forEach($$5 -> $$5.a($$0, $$1, $$2, $$3, $$4));
+         this.b().forEach($$5 -> $$5.a($$0, $$1, $$2, $$3, $$4));
       }
-
-      a($$0, $$1, $$4);
    }
 
-   public static void a(fyi $$0, float $$1, float $$2) {
-      $$0.g = $$0.g + $$2 * (ayo.b($$1 * 0.09F) * 0.05F + 0.05F);
-      $$0.e = $$0.e + $$2 * ayo.a($$1 * 0.067F) * 0.05F;
-   }
+   protected abstract Iterable<fyk> a();
 
-   public static void a(fyi $$0, fyi $$1, float $$2) {
-      a($$0, $$2, 1.0F);
-      a($$1, $$2, -1.0F);
-   }
-
-   public static void a(fyi $$0, fyi $$1, boolean $$2, float $$3, float $$4) {
-      float $$5 = ayo.a($$3 * (float) Math.PI);
-      float $$6 = ayo.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$1.g = 0.0F;
-      $$0.g = 0.0F;
-      $$1.f = -(0.1F - $$5 * 0.6F);
-      $$0.f = 0.1F - $$5 * 0.6F;
-      float $$7 = (float) -Math.PI / ($$2 ? 1.5F : 2.25F);
-      $$1.e = $$7;
-      $$0.e = $$7;
-      $$1.e += $$5 * 1.2F - $$6 * 0.4F;
-      $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-      a($$1, $$0, $$4);
-   }
+   protected abstract Iterable<fyk> b();
 }

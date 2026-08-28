@@ -25,7 +25,7 @@ public class ckr extends ckd implements bun {
    }
 
    @Override
-   public void a(bts $$0, exa $$1) {
+   public void a(bts $$0, exc $$1) {
       super.a($$0, $$1);
       this.aT();
    }
@@ -38,7 +38,7 @@ public class ckr extends ckd implements bun {
       this.f(true);
       if (this.cc && --this.cd <= 0) {
          this.cd = 20;
-         this.a(this.dQ().j(), 1.0F);
+         this.a(this.dP().j(), 1.0F);
       }
    }
 
@@ -56,7 +56,7 @@ public class ckr extends ckd implements bun {
    }
 
    public static buv.a t() {
-      return ckd.gr().a(buw.s, 14.0).a(buw.c, 4.0);
+      return ckd.gq().a(buw.s, 14.0).a(buw.c, 4.0);
    }
 
    @Override
@@ -105,7 +105,7 @@ public class ckr extends ckd implements bun {
    }
 
    @Nullable
-   public jd gl() {
+   public jd gk() {
       return this.cb;
    }
 
@@ -129,11 +129,11 @@ public class ckr extends ckd implements bun {
       this.ao.a(d, (byte)($$2 & 0xFF));
    }
 
-   public boolean gm() {
+   public boolean gl() {
       return this.c(1);
    }
 
-   public void w(boolean $$0) {
+   public void x(boolean $$0) {
       this.a(1, $$0);
    }
 
@@ -194,24 +194,24 @@ public class ckr extends ckd implements bun {
 
       @Override
       public boolean c() {
-         return ckr.this.J().b() && ckr.this.gm() && ckr.this.p() != null && ckr.this.p().bE();
+         return ckr.this.J().b() && ckr.this.gl() && ckr.this.p() != null && ckr.this.p().bE();
       }
 
       @Override
       public void d() {
          btn $$0 = ckr.this.p();
          if ($$0 != null) {
-            exa $$1 = $$0.by();
+            exc $$1 = $$0.by();
             ckr.this.bR.a($$1.c, $$1.d, $$1.e, 1.0);
          }
 
-         ckr.this.w(true);
+         ckr.this.x(true);
          ckr.this.a(avp.AP, 1.0F, 1.0F);
       }
 
       @Override
       public void e() {
-         ckr.this.w(false);
+         ckr.this.x(false);
       }
 
       @Override
@@ -223,13 +223,13 @@ public class ckr extends ckd implements bun {
       public void a() {
          btn $$0 = ckr.this.p();
          if ($$0 != null) {
-            if (ckr.this.cL().c($$0.cL())) {
+            if (ckr.this.cK().c($$0.cK())) {
                ckr.this.D($$0);
-               ckr.this.w(false);
+               ckr.this.x(false);
             } else {
                double $$1 = ckr.this.g($$0);
                if ($$1 < 9.0) {
-                  exa $$2 = $$0.by();
+                  exc $$2 = $$0.by();
                   ckr.this.bR.a($$2.c, $$2.d, $$2.e, 1.0);
                }
             }
@@ -264,22 +264,22 @@ public class ckr extends ckd implements bun {
       @Override
       public void a() {
          if (this.k == bzp.a.b) {
-            exa $$0 = new exa(this.e - ckr.this.du(), this.f - ckr.this.dw(), this.g - ckr.this.dA());
+            exc $$0 = new exc(this.e - ckr.this.dt(), this.f - ckr.this.dv(), this.g - ckr.this.dz());
             double $$1 = $$0.f();
-            if ($$1 < ckr.this.cL().a()) {
+            if ($$1 < ckr.this.cK().a()) {
                this.k = bzp.a.a;
-               ckr.this.i(ckr.this.ds().a(0.5));
+               ckr.this.i(ckr.this.dr().a(0.5));
             } else {
-               ckr.this.i(ckr.this.ds().e($$0.a(this.h * 0.05 / $$1)));
+               ckr.this.i(ckr.this.dr().e($$0.a(this.h * 0.05 / $$1)));
                if (ckr.this.p() == null) {
-                  exa $$2 = ckr.this.ds();
+                  exc $$2 = ckr.this.dr();
                   ckr.this.t(-((float)ayo.d($$2.c, $$2.e)) * (180.0F / (float)Math.PI));
-                  ckr.this.aY = ckr.this.dF();
+                  ckr.this.aY = ckr.this.dE();
                } else {
-                  double $$3 = ckr.this.p().du() - ckr.this.du();
-                  double $$4 = ckr.this.p().dA() - ckr.this.dA();
+                  double $$3 = ckr.this.p().dt() - ckr.this.dt();
+                  double $$4 = ckr.this.p().dz() - ckr.this.dz();
                   ckr.this.t(-((float)ayo.d($$3, $$4)) * (180.0F / (float)Math.PI));
-                  ckr.this.aY = ckr.this.dF();
+                  ckr.this.aY = ckr.this.dE();
                }
             }
          }
@@ -303,14 +303,14 @@ public class ckr extends ckd implements bun {
 
       @Override
       public void a() {
-         jd $$0 = ckr.this.gl();
+         jd $$0 = ckr.this.gk();
          if ($$0 == null) {
-            $$0 = ckr.this.dp();
+            $$0 = ckr.this.do();
          }
 
          for (int $$1 = 0; $$1 < 3; $$1++) {
             jd $$2 = $$0.b(ckr.this.ah.a(15) - 7, ckr.this.ah.a(11) - 5, ckr.this.ah.a(15) - 7);
-            if (ckr.this.dP().u($$2)) {
+            if (ckr.this.dO().u($$2)) {
                ckr.this.bR.a((double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, 0.25);
                if (ckr.this.p() == null) {
                   ckr.this.I().a((double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, 180.0F, 20.0F);

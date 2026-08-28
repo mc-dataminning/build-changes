@@ -5,7 +5,7 @@ public class dnw extends dfy {
    public static final MapCodec<dnw> a = b(dnw::new);
    private static final wz d = wz.c("container.stonecutter");
    public static final dtw b = dju.aE;
-   protected static final ext c = dfy.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+   protected static final exv c = dfy.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
 
    @Override
    public MapCodec<dnw> a() {
@@ -23,7 +23,7 @@ public class dnw extends dfy {
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
       if ($$1.B) {
          return bqr.a;
       } else {
@@ -40,7 +40,7 @@ public class dnw extends dfy {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return c;
    }
 
@@ -70,7 +70,7 @@ public class dnw extends dfy {
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return false;
    }
 }

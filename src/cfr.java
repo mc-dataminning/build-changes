@@ -21,12 +21,12 @@ public class cfr extends cfl implements buf, buo<cfr.a> {
    }
 
    public static boolean c(bsx<cfr> $$0, dcx $$1, btr $$2, jd $$3, ayw $$4) {
-      return $$1.a_($$3.e()).a(awe.ca) && a($$1, $$3);
+      return $$1.a_($$3.e()).a(awe.cb) && a($$1, $$3);
    }
 
    @Override
    public void a(aqu $$0, btm $$1) {
-      UUID $$2 = $$1.cA();
+      UUID $$2 = $$1.cz();
       if (!$$2.equals(this.cf)) {
          this.a(this.t() == cfr.a.a ? cfr.a.b : cfr.a.a);
          this.cf = $$2;
@@ -65,19 +65,19 @@ public class cfr extends cfl implements buf, buo<cfr.a> {
          }
 
          this.a($$7, 1.0F, 1.0F);
-         return bqr.a(this.dP().B);
+         return bqr.a(this.dO().B);
       } else if ($$2.a(cut.rV) && this.a()) {
          this.a(avq.h);
          this.a(dxz.M, $$0);
-         if (!this.dP().B) {
+         if (!this.dO().B) {
             $$2.a(1, $$0, d($$1));
          }
 
-         return bqr.a(this.dP().B);
+         return bqr.a(this.dO().B);
       } else if (this.t() == cfr.a.b && $$2.a(awn.O)) {
          if (this.ce != null) {
             for (int $$9 = 0; $$9 < 2; $$9++) {
-               this.dP().a(lm.ae, this.du() + this.ah.j() / 2.0, this.e(0.5), this.dA() + this.ah.j() / 2.0, 0.0, this.ah.j() / 5.0, 0.0);
+               this.dO().a(lm.ae, this.dt() + this.ah.j() / 2.0, this.e(0.5), this.dz() + this.ah.j() / 2.0, 0.0, this.ah.j() / 5.0, 0.0);
             }
          } else {
             Optional<cxw> $$10 = this.n($$2);
@@ -88,14 +88,14 @@ public class cfr extends cfl implements buf, buo<cfr.a> {
             $$2.a(1, $$0);
 
             for (int $$11 = 0; $$11 < 4; $$11++) {
-               this.dP().a(lm.p, this.du() + this.ah.j() / 2.0, this.e(0.5), this.dA() + this.ah.j() / 2.0, 0.0, this.ah.j() / 5.0, 0.0);
+               this.dO().a(lm.p, this.dt() + this.ah.j() / 2.0, this.e(0.5), this.dz() + this.ah.j() / 2.0, 0.0, this.ah.j() / 5.0, 0.0);
             }
 
             this.ce = $$10.get();
             this.a(avp.oP, 2.0F, 1.0F);
          }
 
-         return bqr.a(this.dP().B);
+         return bqr.a(this.dO().B);
       } else {
          return super.b($$0, $$1);
       }
@@ -103,29 +103,29 @@ public class cfr extends cfl implements buf, buo<cfr.a> {
 
    @Override
    public void a(avq $$0) {
-      this.dP().a(null, this, avp.oS, $$0, 1.0F, 1.0F);
-      if (!this.dP().x_()) {
-         cfl $$1 = bsx.w.a(this.dP());
+      this.dO().a(null, this, avp.oS, $$0, 1.0F, 1.0F);
+      if (!this.dO().x_()) {
+         cfl $$1 = bsx.w.a(this.dO());
          if ($$1 != null) {
-            ((aqu)this.dP()).a(lm.w, this.du(), this.e(0.5), this.dA(), 1, 0.0, 0.0, 0.0, 0.0);
+            ((aqu)this.dO()).a(lm.w, this.dt(), this.e(0.5), this.dz(), 1, 0.0, 0.0, 0.0, 0.0);
             this.aq();
-            $$1.b(this.du(), this.dw(), this.dA(), this.dF(), this.dH());
-            $$1.v(this.ex());
+            $$1.b(this.dt(), this.dv(), this.dz(), this.dE(), this.dG());
+            $$1.v(this.ew());
             $$1.aY = this.aY;
             if (this.ai()) {
                $$1.b(this.aj());
-               $$1.o(this.cF());
+               $$1.p(this.cE());
             }
 
-            if (this.fU()) {
-               $$1.fS();
+            if (this.fT()) {
+               $$1.fR();
             }
 
             $$1.n(this.cv());
-            this.dP().b($$1);
+            this.dO().b($$1);
 
             for (int $$2 = 0; $$2 < 5; $$2++) {
-               this.dP().b(new cjh(this.dP(), this.du(), this.e(1.0), this.dA(), new cuq(this.t().e.b())));
+               this.dO().b(new cjh(this.dO(), this.dt(), this.e(1.0), this.dz(), new cuq(this.t().e.b())));
             }
          }
       }

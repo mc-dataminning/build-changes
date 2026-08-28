@@ -15,27 +15,27 @@ public class gs implements gr {
    }
 
    @Override
-   public exa a(et $$0) {
-      ewz $$1 = $$0.k();
-      exa $$2 = $$0.m().a($$0);
+   public exc a(et $$0) {
+      exb $$1 = $$0.k();
+      exc $$2 = $$0.m().a($$0);
       float $$3 = ayo.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
       float $$4 = ayo.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
       float $$5 = ayo.b(-$$1.i * (float) (Math.PI / 180.0));
       float $$6 = ayo.a(-$$1.i * (float) (Math.PI / 180.0));
       float $$7 = ayo.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
       float $$8 = ayo.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      exa $$9 = new exa((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
-      exa $$10 = new exa((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
-      exa $$11 = $$9.c($$10).a(-1.0);
+      exc $$9 = new exc((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
+      exc $$10 = new exc((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
+      exc $$11 = $$9.c($$10).a(-1.0);
       double $$12 = $$9.c * this.d + $$10.c * this.c + $$11.c * this.b;
       double $$13 = $$9.d * this.d + $$10.d * this.c + $$11.d * this.b;
       double $$14 = $$9.e * this.d + $$10.e * this.c + $$11.e * this.b;
-      return new exa($$2.c + $$12, $$2.d + $$13, $$2.e + $$14);
+      return new exc($$2.c + $$12, $$2.d + $$13, $$2.e + $$14);
    }
 
    @Override
-   public ewz b(et $$0) {
-      return ewz.a;
+   public exb b(et $$0) {
+      return exb.a;
    }
 
    @Override

@@ -16,7 +16,7 @@ public class csf extends cul implements cts {
 
    public static boolean a(ku $$0, cuq $$1) {
       jd $$2 = $$0.c().a($$0.d().c(did.b));
-      List<btn> $$3 = $$0.b().a(btn.class, new ewv($$2), bsw.f.and(new bsw.a($$1)));
+      List<btn> $$3 = $$0.b().a(btn.class, new ewx($$2), bsw.f.and(new bsw.a($$1)));
       if ($$3.isEmpty()) {
          return false;
       } else {
@@ -26,7 +26,7 @@ public class csf extends cul implements cts {
          $$4.a($$5, $$6);
          if ($$4 instanceof btp) {
             ((btp)$$4).a($$5, 2.0F);
-            ((btp)$$4).fS();
+            ((btp)$$4).fR();
          }
 
          return true;

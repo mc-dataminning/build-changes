@@ -14,12 +14,12 @@ public class cbd extends cam {
 
    @Override
    public boolean b() {
-      if (!this.c.dP().R()) {
+      if (!this.c.dO().R()) {
          return false;
-      } else if (this.c.dS().a(8000) != 0) {
+      } else if (this.c.dR().a(8000) != 0) {
          return false;
       } else {
-         this.d = this.c.dP().a(cmk.class, b, this.c, this.c.du(), this.c.dw(), this.c.dA(), this.c.cL().c(6.0, 2.0, 6.0));
+         this.d = this.c.dO().a(cmk.class, b, this.c, this.c.dt(), this.c.dv(), this.c.dz(), this.c.cK().c(6.0, 2.0, 6.0));
          return this.d != null;
       }
    }
@@ -32,12 +32,12 @@ public class cbd extends cam {
    @Override
    public void d() {
       this.e = this.a(400);
-      this.c.w(true);
+      this.c.x(true);
    }
 
    @Override
    public void e() {
-      this.c.w(false);
+      this.c.x(false);
       this.d = null;
    }
 

@@ -26,7 +26,7 @@ public class ckg extends cjk implements cjq, cmi {
    }
 
    public static buv.a t() {
-      return ckd.gr().a(buw.v, 0.35F).a(buw.s, 24.0).a(buw.c, 5.0).a(buw.m, 32.0);
+      return ckd.gq().a(buw.v, 0.35F).a(buw.s, 24.0).a(buw.c, 5.0).a(buw.m, 32.0);
    }
 
    @Override
@@ -40,7 +40,7 @@ public class ckg extends cjk implements cjq, cmi {
       return $$0 == cut.vW;
    }
 
-   public boolean gl() {
+   public boolean gk() {
       return this.ao.a(b);
    }
 
@@ -57,24 +57,24 @@ public class ckg extends cjk implements cjq, cmi {
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      this.b($$0, this.dR());
+      this.b($$0, this.dQ());
    }
 
    @Override
    public cjk.a s() {
-      if (this.gl()) {
+      if (this.gk()) {
          return cjk.a.f;
       } else if (this.b(cut.vW)) {
          return cjk.a.e;
       } else {
-         return this.gc() ? cjk.a.b : cjk.a.h;
+         return this.gb() ? cjk.a.b : cjk.a.h;
       }
    }
 
    @Override
    public void a(ub $$0) {
       super.a($$0);
-      this.a($$0, this.dR());
+      this.a($$0, this.dQ());
       this.a_(true);
    }
 
@@ -84,7 +84,7 @@ public class ckg extends cjk implements cjq, cmi {
    }
 
    @Override
-   public int fO() {
+   public int fN() {
       return 1;
    }
 
@@ -106,7 +106,7 @@ public class ckg extends cjk implements cjq, cmi {
    protected void b(ddl $$0, ayw $$1, bqp $$2) {
       super.b($$0, $$1, $$2);
       if ($$1.a(300) == 0) {
-         cuq $$3 = this.eU();
+         cuq $$3 = this.eT();
          if ($$3.a(cut.vW)) {
             dae.a($$3, $$0.H_(), dbp.b, $$2, $$1);
          }
@@ -155,7 +155,7 @@ public class ckg extends cjk implements cjq, cmi {
    }
 
    private boolean n(cuq $$0) {
-      return this.gC() && $$0.a(cut.uP);
+      return this.gB() && $$0.a(cut.uP);
    }
 
    @Override
@@ -166,7 +166,7 @@ public class ckg extends cjk implements cjq, cmi {
 
    @Override
    public void a(aqu $$0, int $$1, boolean $$2) {
-      coi $$3 = this.gz();
+      coi $$3 = this.gy();
       boolean $$4 = this.ah.i() <= $$3.v();
       if ($$4) {
          cuq $$5 = new cuq(cut.vW);
@@ -180,7 +180,7 @@ public class ckg extends cjk implements cjq, cmi {
          }
 
          if ($$6 != null) {
-            dae.a($$5, $$0.H_(), $$6, $$0.d_(this.dp()), this.dS());
+            dae.a($$5, $$0.H_(), $$6, $$0.d_(this.do()), this.dR());
             this.a(bsy.a, $$5);
          }
       }

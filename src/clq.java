@@ -17,7 +17,7 @@ public class clq extends clm {
    }
 
    public static buv.a x() {
-      return ckd.gr().a(buw.s, 50.0).a(buw.v, 0.35F).a(buw.c, 7.0);
+      return ckd.gq().a(buw.s, 50.0).a(buw.v, 0.35F).a(buw.c, 7.0);
    }
 
    @Nullable
@@ -34,18 +34,18 @@ public class clq extends clm {
    }
 
    @Override
-   protected buq.b<clq> dV() {
+   protected buq.b<clq> dU() {
       return buq.a(ca, e);
    }
 
    @Override
    protected buq<?> a(Dynamic<?> $$0) {
-      return clr.a(this, this.dV().a($$0));
+      return clr.a(this, this.dU().a($$0));
    }
 
    @Override
-   public buq<clq> dU() {
-      return (buq<clq>)super.dU();
+   public buq<clq> dT() {
+      return (buq<clq>)super.dT();
    }
 
    @Override
@@ -60,23 +60,23 @@ public class clq extends clm {
 
    @Override
    protected void ab() {
-      this.dP().ag().a("piglinBruteBrain");
-      this.dU().a((aqu)this.dP(), this);
-      this.dP().ag().c();
+      this.dO().ag().a("piglinBruteBrain");
+      this.dT().a((aqu)this.dO(), this);
+      this.dO().ag().c();
       clr.b(this);
       clr.c(this);
       super.ab();
    }
 
    @Override
-   public clp gn() {
-      return this.gc() && this.go() ? clp.a : clp.f;
+   public clp gm() {
+      return this.gb() && this.gn() ? clp.a : clp.f;
    }
 
    @Override
    public boolean a(brk $$0, float $$1) {
       boolean $$2 = super.a($$0, $$1);
-      if (this.dP().B) {
+      if (this.dO().B) {
          return false;
       } else {
          if ($$2 && $$0.d() instanceof btn) {
@@ -107,12 +107,12 @@ public class clq extends clm {
       this.a(avp.tT, 0.15F, 1.0F);
    }
 
-   protected void gs() {
+   protected void gr() {
       this.b(avp.tQ);
    }
 
    @Override
-   protected void gp() {
+   protected void go() {
       this.b(avp.tU);
    }
 }

@@ -1,8 +1,8 @@
 public class qu {
    @Deprecated
-   public static final eof.a a = new eof.a(-3, 1.0, 1.0, 1.0, 0.0);
+   public static final eoh.a a = new eoh.a(-3, 1.0, 1.0, 1.0, 0.0);
 
-   public static void a(qq<eof.a> $$0) {
+   public static void a(qq<eoh.a> $$0) {
       a($$0, 0, dzh.a, dzh.b, dzh.c, dzh.d);
       a($$0, -2, dzh.e, dzh.f, dzh.g, dzh.h);
       a($$0, dzh.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
@@ -59,14 +59,14 @@ public class qu {
       a($$0, dzh.ah, -4, 1.0);
    }
 
-   private static void a(qq<eof.a> $$0, int $$1, akq<eof.a> $$2, akq<eof.a> $$3, akq<eof.a> $$4, akq<eof.a> $$5) {
+   private static void a(qq<eoh.a> $$0, int $$1, akq<eoh.a> $$2, akq<eoh.a> $$3, akq<eoh.a> $$4, akq<eoh.a> $$5) {
       a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
       a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
       a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
       a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
    }
 
-   private static void a(qq<eof.a> $$0, akq<eof.a> $$1, int $$2, double $$3, double... $$4) {
-      $$0.a($$1, new eof.a($$2, $$3, $$4));
+   private static void a(qq<eoh.a> $$0, akq<eoh.a> $$1, int $$2, double $$3, double... $$4) {
+      $$0.a($$1, new eoh.a($$2, $$3, $$4));
    }
 }

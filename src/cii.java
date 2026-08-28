@@ -3,9 +3,9 @@ import javax.annotation.Nullable;
 public class cii extends cic {
    private static final cef b = cef.a().d();
    @Nullable
-   private epq c;
+   private eps c;
    @Nullable
-   private exa d;
+   private exc d;
 
    public cii(cia $$0) {
       super($$0);
@@ -24,7 +24,7 @@ public class cii extends cic {
 
    @Override
    public void c() {
-      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.du(), this.a.dw(), this.a.dA());
+      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.dt(), this.a.dv(), this.a.dz());
       if ($$0 < 100.0 || $$0 > 22500.0 || this.a.Q || this.a.R) {
          this.j();
       }
@@ -32,24 +32,24 @@ public class cii extends cic {
 
    @Nullable
    @Override
-   public exa g() {
+   public exc g() {
       return this.d;
    }
 
    private void j() {
       if (this.c == null || this.c.c()) {
          int $$0 = this.a.x();
-         jd $$1 = this.a.dP().a(dyy.a.f, ecc.a(this.a.s()));
-         cmx $$2 = this.a.dP().a(b, this.a, (double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+         jd $$1 = this.a.dO().a(dyy.a.f, ecd.a(this.a.s()));
+         cmx $$2 = this.a.dO().a(b, this.a, (double)$$1.u(), (double)$$1.v(), (double)$$1.w());
          int $$4;
          if ($$2 != null) {
-            exa $$3 = new exa($$2.du(), 0.0, $$2.dA()).d();
+            exc $$3 = new exc($$2.dt(), 0.0, $$2.dz()).d();
             $$4 = this.a.q(-$$3.c * 40.0, 105.0, -$$3.e * 40.0);
          } else {
             $$4 = this.a.q(40.0, (double)$$1.v(), 0.0);
          }
 
-         epo $$6 = new epo($$1.u(), $$1.v(), $$1.w());
+         epq $$6 = new epq($$1.u(), $$1.v(), $$1.w());
          this.c = this.a.a($$0, $$4, $$6);
          if (this.c != null) {
             this.c.a();
@@ -58,7 +58,7 @@ public class cii extends cic {
 
       this.k();
       if (this.c != null && this.c.c()) {
-         this.a.gi().a(ciq.d);
+         this.a.gh().a(ciq.d);
       }
    }
 
@@ -71,10 +71,10 @@ public class cii extends cic {
 
          double $$3;
          do {
-            $$3 = (double)((float)$$0.v() + this.a.dS().i() * 20.0F);
+            $$3 = (double)((float)$$0.v() + this.a.dR().i() * 20.0F);
          } while ($$3 < (double)$$0.v());
 
-         this.d = new exa($$1, $$3, $$2);
+         this.d = new exc($$1, $$3, $$2);
       }
    }
 }

@@ -144,32 +144,32 @@ public abstract class btn extends bsr implements bso {
    protected btn(bsx<? extends btn> $$0, dcw $$1) {
       super($$0, $$1);
       this.bU = new but(bux.a($$0));
-      this.v(this.eO());
+      this.v(this.eN());
       this.J = true;
       this.aX = (float)((Math.random() + 1.0) * 0.01F);
       this.av();
       this.aW = (float)Math.random() * 12398.0F;
       this.t((float)(Math.random() * (float) (Math.PI * 2)));
-      this.ba = this.dF();
+      this.ba = this.dE();
       up $$2 = up.a;
       this.bF = this.a(new Dynamic($$2, (uy)$$2.createMap(ImmutableMap.of($$2.a("memories"), (uy)$$2.emptyMap()))));
    }
 
-   public buq<?> dU() {
+   public buq<?> dT() {
       return this.bF;
    }
 
-   protected buq.b<?> dV() {
+   protected buq.b<?> dU() {
       return buq.a(ImmutableList.of(), ImmutableList.of());
    }
 
    protected buq<?> a(Dynamic<?> $$0) {
-      return this.dV().a($$0);
+      return this.dU().a($$0);
    }
 
    @Override
    public void ap() {
-      this.a(this.dQ().x(), Float.MAX_VALUE);
+      this.a(this.dP().x(), Float.MAX_VALUE);
    }
 
    public boolean a(bsx<?> $$0) {
@@ -187,7 +187,7 @@ public abstract class btn extends bsr implements bso {
       $$0.a(bR, Optional.empty());
    }
 
-   public static buv.a dW() {
+   public static buv.a dV() {
       return buv.a()
          .a(buw.s)
          .a(buw.p)
@@ -215,14 +215,14 @@ public abstract class btn extends bsr implements bso {
          this.bn();
       }
 
-      if (this.dP() instanceof aqu $$4 && $$1 && this.ac > 0.0F) {
+      if (this.dO() instanceof aqu $$4 && $$1 && this.ac > 0.0F) {
          this.b($$4, $$3);
          double $$5 = this.g(buw.x);
          if ((double)this.ac > $$5 && !$$2.i()) {
-            double $$6 = this.du();
-            double $$7 = this.dw();
-            double $$8 = this.dA();
-            jd $$9 = this.dp();
+            double $$6 = this.dt();
+            double $$7 = this.dv();
+            double $$8 = this.dz();
+            jd $$9 = this.do();
             if ($$3.u() != $$9.u() || $$3.w() != $$9.w()) {
                double $$10 = $$6 - (double)$$3.u() - 0.5;
                double $$11 = $$8 - (double)$$3.w() - 0.5;
@@ -234,7 +234,7 @@ public abstract class btn extends bsr implements bso {
             float $$13 = (float)ayo.c((double)this.ac - $$5);
             double $$14 = Math.min((double)(0.2F + $$13 / 15.0F), 2.5);
             int $$15 = (int)(150.0 * $$14);
-            ((aqu)this.dP()).a(new le(lm.b, $$2), $$6, $$7, $$8, $$15, 0.0, 0.0, 0.0, 0.15F);
+            ((aqu)this.dO()).a(new le(lm.b, $$2), $$6, $$7, $$8, $$15, 0.0, 0.0, 0.0, 0.15F);
          }
       }
 
@@ -244,7 +244,7 @@ public abstract class btn extends bsr implements bso {
       }
    }
 
-   public final boolean dX() {
+   public final boolean dW() {
       return this.am().a(awi.m);
    }
 
@@ -252,71 +252,71 @@ public abstract class btn extends bsr implements bso {
       return ayo.i($$0, this.co, this.cn);
    }
 
-   public boolean dY() {
-      return this.ds().b() < 1.0E-5F && this.bj();
+   public boolean dX() {
+      return this.dr().b() < 1.0E-5F && this.bj();
    }
 
    @Override
    public void aw() {
       this.aR = this.aS;
       if (this.an) {
-         this.fG().ifPresent(this::a);
+         this.fF().ifPresent(this::a);
       }
 
-      if (this.dP() instanceof aqu $$0) {
+      if (this.dO() instanceof aqu $$0) {
          dae.b($$0, this);
       }
 
       super.aw();
-      this.dP().ag().a("livingEntityBaseTick");
-      if (this.be() || this.dP().B) {
+      this.dO().ag().a("livingEntityBaseTick");
+      if (this.be() || this.dO().B) {
          this.aD();
       }
 
       if (this.bE()) {
          boolean $$1 = this instanceof cmx;
-         if (!this.dP().B) {
+         if (!this.dO().B) {
             if (this.bF()) {
-               this.a(this.dQ().g(), 1.0F);
-            } else if ($$1 && !this.dP().C_().a(this.cL())) {
-               double $$2 = this.dP().C_().a(this) + this.dP().C_().n();
+               this.a(this.dP().g(), 1.0F);
+            } else if ($$1 && !this.dO().C_().a(this.cK())) {
+               double $$2 = this.dO().C_().a(this) + this.dO().C_().n();
                if ($$2 < 0.0) {
-                  double $$3 = this.dP().C_().o();
+                  double $$3 = this.dO().C_().o();
                   if ($$3 > 0.0) {
-                     this.a(this.dQ().w(), (float)Math.max(1, ayo.a(-$$2 * $$3)));
+                     this.a(this.dP().w(), (float)Math.max(1, ayo.a(-$$2 * $$3)));
                   }
                }
             }
          }
 
-         if (this.a(awk.a) && !this.dP().a_(jd.a(this.du(), this.dy(), this.dA())).a(dga.nd)) {
-            boolean $$4 = !this.dX() && !bsa.c(this) && (!$$1 || !((cmx)this).ga().a);
+         if (this.a(awk.a) && !this.dO().a_(jd.a(this.dt(), this.dx(), this.dz())).a(dga.nd)) {
+            boolean $$4 = !this.dW() && !bsa.c(this) && (!$$1 || !((cmx)this).fZ().a);
             if ($$4) {
                this.j(this.m(this.cm()));
                if (this.cm() == -20) {
                   this.j(0);
-                  exa $$5 = this.ds();
+                  exc $$5 = this.dr();
 
                   for (int $$6 = 0; $$6 < 8; $$6++) {
                      double $$7 = this.ah.j() - this.ah.j();
                      double $$8 = this.ah.j() - this.ah.j();
                      double $$9 = this.ah.j() - this.ah.j();
-                     this.dP().a(lm.d, this.du() + $$7, this.dw() + $$8, this.dA() + $$9, $$5.c, $$5.d, $$5.e);
+                     this.dO().a(lm.d, this.dt() + $$7, this.dv() + $$8, this.dz() + $$9, $$5.c, $$5.d, $$5.e);
                   }
 
-                  this.a(this.dQ().i(), 2.0F);
+                  this.a(this.dP().i(), 2.0F);
                }
             }
 
-            if (!this.dP().B && this.bS() && this.dd() != null && this.dd().bU()) {
+            if (!this.dO().B && this.bS() && this.dc() != null && this.dc().bU()) {
                this.ad();
             }
          } else if (this.cm() < this.cl()) {
             this.j(this.n(this.cm()));
          }
 
-         if (this.dP() instanceof aqu $$10) {
-            jd $$11 = this.dp();
+         if (this.dO() instanceof aqu $$10) {
+            jd $$11 = this.do();
             if (!Objects.equal(this.cj, $$11)) {
                this.cj = $$11;
                this.b($$10, $$11);
@@ -336,8 +336,8 @@ public abstract class btn extends bsr implements bso {
          this.am--;
       }
 
-      if (this.ey() && this.dP().h(this)) {
-         this.ee();
+      if (this.ex() && this.dO().h(this)) {
+         this.ed();
       }
 
       if (this.bd > 0) {
@@ -358,13 +358,13 @@ public abstract class btn extends bsr implements bso {
          }
       }
 
-      this.ep();
+      this.eo();
       this.bj = this.bi;
       this.aZ = this.aY;
       this.bb = this.ba;
-      this.O = this.dF();
-      this.P = this.dH();
-      this.dP().ag().c();
+      this.O = this.dE();
+      this.P = this.dG();
+      this.dO().ag().c();
    }
 
    @Override
@@ -372,7 +372,7 @@ public abstract class btn extends bsr implements bso {
       return ayo.i((float)this.g(buw.u), super.aO(), 1.0F);
    }
 
-   protected void dZ() {
+   protected void dY() {
       bus $$0 = this.f(buw.v);
       if ($$0 != null) {
          if ($$0.a(d) != null) {
@@ -381,7 +381,7 @@ public abstract class btn extends bsr implements bso {
       }
    }
 
-   protected void ea() {
+   protected void dZ() {
       if (!this.bp().i()) {
          int $$0 = this.cn();
          if ($$0 > 0) {
@@ -404,12 +404,12 @@ public abstract class btn extends bsr implements bso {
       return false;
    }
 
-   public float eb() {
+   public float ea() {
       return this.o_() ? 0.5F : 1.0F;
    }
 
-   public float ec() {
-      but $$0 = this.eT();
+   public float eb() {
+      but $$0 = this.eS();
       return $$0 == null ? 1.0F : this.b((float)$$0.c(buw.y));
    }
 
@@ -417,23 +417,23 @@ public abstract class btn extends bsr implements bso {
       return $$0;
    }
 
-   protected boolean ed() {
+   protected boolean ec() {
       return true;
    }
 
-   protected void ee() {
+   protected void ed() {
       this.aQ++;
-      if (this.aQ >= 20 && !this.dP().x_() && !this.dK()) {
-         this.dP().a(this, (byte)60);
+      if (this.aQ >= 20 && !this.dO().x_() && !this.dJ()) {
+         this.dO().a(this, (byte)60);
          this.a(bsr.c.a);
       }
    }
 
-   public boolean ef() {
+   public boolean ee() {
       return !this.o_();
    }
 
-   protected boolean eg() {
+   protected boolean ef() {
       return !this.o_();
    }
 
@@ -454,28 +454,28 @@ public abstract class btn extends bsr implements bso {
    }
 
    public final int a(aqu $$0, @Nullable bsr $$1) {
-      return dae.a($$0, $$1, this, this.eh());
+      return dae.a($$0, $$1, this, this.eg());
    }
 
-   protected int eh() {
+   protected int eg() {
       return 0;
    }
 
-   protected boolean ei() {
+   protected boolean eh() {
       return false;
    }
 
    @Nullable
-   public btn ej() {
+   public btn ei() {
       return this.cc;
    }
 
    @Override
    public btn Y_() {
-      return this.ej();
+      return this.ei();
    }
 
-   public int ek() {
+   public int ej() {
       return this.cd;
    }
 
@@ -490,11 +490,11 @@ public abstract class btn extends bsr implements bso {
    }
 
    @Nullable
-   public btn el() {
+   public btn ek() {
       return this.ce;
    }
 
-   public int em() {
+   public int el() {
       return this.cf;
    }
 
@@ -508,7 +508,7 @@ public abstract class btn extends bsr implements bso {
       this.cf = this.ai;
    }
 
-   public int en() {
+   public int em() {
       return this.bf;
    }
 
@@ -516,11 +516,11 @@ public abstract class btn extends bsr implements bso {
       this.bf = $$0;
    }
 
-   public boolean eo() {
+   public boolean en() {
       return this.ca;
    }
 
-   public void q(boolean $$0) {
+   public void r(boolean $$0) {
       this.ca = $$0;
    }
 
@@ -532,9 +532,9 @@ public abstract class btn extends bsr implements bso {
       boolean $$3 = $$2.e() && $$1.e();
       if (!$$3 && !cuq.c($$1, $$2) && !this.an) {
          cts $$4 = cts.c_($$2);
-         if (!this.dP().x_() && !this.R_()) {
+         if (!this.dO().x_() && !this.R_()) {
             if (!this.aX() && $$4 != null && $$4.m() == $$0) {
-               this.dP().a(null, this.du(), this.dw(), this.dA(), $$4.n(), this.df(), 1.0F, 1.0F, this.ah.g());
+               this.dO().a(null, this.dt(), this.dv(), this.dz(), $$4.n(), this.de(), 1.0F, 1.0F, this.ah.g());
             }
 
             if (this.b($$0)) {
@@ -555,7 +555,7 @@ public abstract class btn extends bsr implements bso {
    }
 
    protected void c(bsr.c $$0) {
-      for (brz $$1 : this.eu()) {
+      for (brz $$1 : this.et()) {
          $$1.a(this, $$0);
       }
 
@@ -564,12 +564,12 @@ public abstract class btn extends bsr implements bso {
 
    @Override
    public void b(ub $$0) {
-      $$0.a("Health", this.ex());
+      $$0.a("Health", this.ew());
       $$0.a("HurtTime", (short)this.aO);
       $$0.a("HurtByTimestamp", this.cd);
       $$0.a("DeathTime", (short)this.aQ);
-      $$0.a("AbsorptionAmount", this.fp());
-      $$0.a("attributes", this.eT().d());
+      $$0.a("AbsorptionAmount", this.fo());
+      $$0.a("attributes", this.eS().d());
       if (!this.bW.isEmpty()) {
          uh $$1 = new uh();
 
@@ -580,8 +580,8 @@ public abstract class btn extends bsr implements bso {
          $$0.a("active_effects", $$1);
       }
 
-      $$0.a("FallFlying", this.fB());
-      this.fG().ifPresent($$1 -> {
+      $$0.a("FallFlying", this.fA());
+      this.fF().ifPresent($$1 -> {
          $$0.a("SleepingX", $$1.u());
          $$0.a("SleepingY", $$1.v());
          $$0.a("SleepingZ", $$1.w());
@@ -593,8 +593,8 @@ public abstract class btn extends bsr implements bso {
    @Override
    public void a(ub $$0) {
       this.D($$0.j("AbsorptionAmount"));
-      if ($$0.b("attributes", 9) && this.dP() != null && !this.dP().B) {
-         this.eT().a($$0.c("attributes", 10));
+      if ($$0.b("attributes", 9) && this.dO() != null && !this.dO().B) {
+         this.eS().a($$0.c("attributes", 10));
       }
 
       if ($$0.b("active_effects", 9)) {
@@ -618,9 +618,9 @@ public abstract class btn extends bsr implements bso {
       this.cd = $$0.h("HurtByTimestamp");
       if ($$0.b("Team", 8)) {
          String $$5 = $$0.l("Team");
-         eye $$6 = this.dP().M();
-         exz $$7 = $$6.b($$5);
-         boolean $$8 = $$7 != null && $$6.a(this.cB(), $$7);
+         eyg $$6 = this.dO().M();
+         eyb $$7 = $$6.b($$5);
+         boolean $$8 = $$7 != null && $$6.a(this.cA(), $$7);
          if (!$$8) {
             b.warn("Unable to add mob to team \"{}\" (that team probably doesn't exist)", $$5);
          }
@@ -644,7 +644,7 @@ public abstract class btn extends bsr implements bso {
       }
    }
 
-   protected void ep() {
+   protected void eo() {
       Iterator<jm<brx>> $$0 = this.bW.keySet().iterator();
 
       try {
@@ -652,7 +652,7 @@ public abstract class btn extends bsr implements bso {
             jm<brx> $$1 = $$0.next();
             brz $$2 = this.bW.get($$1);
             if (!$$2.a(this, () -> this.a($$2, true, null))) {
-               if (!this.dP().B) {
+               if (!this.dO().B) {
                   $$0.remove();
                   this.a($$2);
                }
@@ -664,7 +664,7 @@ public abstract class btn extends bsr implements bso {
       }
 
       if (this.cb) {
-         if (!this.dP().B) {
+         if (!this.dO().B) {
             this.K();
             this.v();
          }
@@ -678,14 +678,14 @@ public abstract class btn extends bsr implements bso {
          int $$5 = this.ci() ? 15 : 4;
          int $$6 = $$4 ? 5 : 1;
          if (this.ah.a($$5 * $$6) == 0) {
-            this.dP().a(ad.a($$3, this.ah), this.d(0.5), this.dx(), this.g(0.5), 1.0, 1.0, 1.0);
+            this.dO().a(ad.a($$3, this.ah), this.d(0.5), this.dw(), this.g(0.5), 1.0, 1.0, 1.0);
          }
       }
    }
 
    protected void K() {
       if (this.bW.isEmpty()) {
-         this.es();
+         this.er();
          this.k(false);
       } else {
          this.k(this.b(bsb.n));
@@ -713,7 +713,7 @@ public abstract class btn extends bsr implements bso {
       }
 
       if (this.ci()) {
-         float $$2 = this.fa();
+         float $$2 = this.eZ();
          if ($$2 < 0.1F) {
             $$2 = 0.1F;
          }
@@ -737,18 +737,18 @@ public abstract class btn extends bsr implements bso {
    }
 
    public boolean c(btn $$0) {
-      return $$0 instanceof cmx && this.dP().al() == bqo.a ? false : $$0.eq();
+      return $$0 instanceof cmx && this.dO().al() == bqo.a ? false : $$0.ep();
    }
 
    public boolean a(btn $$0, cef $$1) {
       return $$1.a(this, $$0);
    }
 
-   public boolean eq() {
-      return !this.cv() && this.er();
+   public boolean ep() {
+      return !this.cv() && this.eq();
    }
 
-   public boolean er() {
+   public boolean eq() {
       return !this.R_() && this.bE();
    }
 
@@ -762,12 +762,12 @@ public abstract class btn extends bsr implements bso {
       return true;
    }
 
-   protected void es() {
+   protected void er() {
       this.ao.a(bN, List.of());
    }
 
-   public boolean et() {
-      if (this.dP().B) {
+   public boolean es() {
+      if (this.dO().B) {
          return false;
       } else {
          Iterator<brz> $$0 = this.bW.values().iterator();
@@ -782,11 +782,11 @@ public abstract class btn extends bsr implements bso {
       }
    }
 
-   public Collection<brz> eu() {
+   public Collection<brz> et() {
       return this.bW.values();
    }
 
-   public Map<jm<brx>, brz> ev() {
+   public Map<jm<brx>, brz> eu() {
       return this.bW;
    }
 
@@ -846,7 +846,7 @@ public abstract class btn extends bsr implements bso {
       }
    }
 
-   public boolean ew() {
+   public boolean ev() {
       return this.am().a(awi.x);
    }
 
@@ -867,14 +867,14 @@ public abstract class btn extends bsr implements bso {
 
    protected void a(brz $$0, @Nullable bsr $$1) {
       this.cb = true;
-      if (!this.dP().B) {
-         $$0.c().a().a(this.eT(), $$0.e());
+      if (!this.dO().B) {
+         $$0.c().a().a(this.eS(), $$0.e());
          this.d($$0);
       }
    }
 
    public void d(brz $$0) {
-      for (bsr $$1 : this.cT()) {
+      for (bsr $$1 : this.cS()) {
          if ($$1 instanceof aqv $$2) {
             $$2.c.b(new agb(this.an(), $$0, false));
          }
@@ -883,25 +883,25 @@ public abstract class btn extends bsr implements bso {
 
    protected void a(brz $$0, boolean $$1, @Nullable bsr $$2) {
       this.cb = true;
-      if ($$1 && !this.dP().B) {
+      if ($$1 && !this.dO().B) {
          brx $$3 = $$0.c().a();
-         $$3.a(this.eT());
-         $$3.a(this.eT(), $$0.e());
+         $$3.a(this.eS());
+         $$3.a(this.eS(), $$0.e());
          this.B();
       }
 
-      if (!this.dP().B) {
+      if (!this.dO().B) {
          this.d($$0);
       }
    }
 
    protected void a(brz $$0) {
       this.cb = true;
-      if (!this.dP().B) {
-         $$0.c().a().a(this.eT());
+      if (!this.dO().B) {
+         $$0.c().a().a(this.eS());
          this.B();
 
-         for (bsr $$1 : this.cT()) {
+         for (bsr $$1 : this.cS()) {
             if ($$1 instanceof aqv $$2) {
                $$2.c.b(new aeg(this.an(), $$0.c()));
             }
@@ -910,7 +910,7 @@ public abstract class btn extends bsr implements bso {
    }
 
    private void B() {
-      Set<bus> $$0 = this.eT().b();
+      Set<bus> $$0 = this.eS().b();
 
       for (bus $$1 : $$0) {
          this.i($$1.a());
@@ -921,50 +921,50 @@ public abstract class btn extends bsr implements bso {
 
    private void i(jm<bur> $$0) {
       if ($$0.a(buw.s)) {
-         float $$1 = this.eO();
-         if (this.ex() > $$1) {
+         float $$1 = this.eN();
+         if (this.ew() > $$1) {
             this.v($$1);
          }
       } else if ($$0.a(buw.r)) {
-         float $$2 = this.eP();
-         if (this.fp() > $$2) {
+         float $$2 = this.eO();
+         if (this.fo() > $$2) {
             this.C($$2);
          }
       }
    }
 
    public void c(float $$0) {
-      float $$1 = this.ex();
+      float $$1 = this.ew();
       if ($$1 > 0.0F) {
          this.v($$1 + $$0);
       }
    }
 
-   public float ex() {
+   public float ew() {
       return this.ao.a(bM);
    }
 
    public void v(float $$0) {
-      this.ao.a(bM, ayo.a($$0, 0.0F, this.eO()));
+      this.ao.a(bM, ayo.a($$0, 0.0F, this.eN()));
    }
 
-   public boolean ey() {
-      return this.ex() <= 0.0F;
+   public boolean ex() {
+      return this.ew() <= 0.0F;
    }
 
    @Override
    public boolean a(brk $$0, float $$1) {
       if (this.b($$0)) {
          return false;
-      } else if (this.dP().B) {
+      } else if (this.dO().B) {
          return false;
-      } else if (this.ey()) {
+      } else if (this.ex()) {
          return false;
       } else if ($$0.a(awg.i) && this.b(bsb.l)) {
          return false;
       } else {
-         if (this.fI() && !this.dP().B) {
-            this.fJ();
+         if (this.fH() && !this.dO().B) {
+            this.fI();
          }
 
          this.bf = 0;
@@ -1030,9 +1030,9 @@ public abstract class btn extends bsr implements bso {
 
          if ($$7) {
             if ($$3) {
-               this.dP().a(this, (byte)29);
+               this.dO().a(this, (byte)29);
             } else {
-               this.dP().a(this, $$0);
+               this.dO().a(this, $$0);
             }
 
             if (!$$0.a(awg.r) && (!$$3 || $$1 > 0.0F)) {
@@ -1047,8 +1047,8 @@ public abstract class btn extends bsr implements bso {
                   $$13 = -$$16.leftDouble();
                   $$14 = -$$16.rightDouble();
                } else if ($$0.i() != null) {
-                  $$13 = $$0.i().a() - this.du();
-                  $$14 = $$0.i().c() - this.dA();
+                  $$13 = $$0.i().a() - this.dt();
+                  $$14 = $$0.i().c() - this.dz();
                }
 
                this.p(0.4F, $$13, $$14);
@@ -1058,7 +1058,7 @@ public abstract class btn extends bsr implements bso {
             }
          }
 
-         if (this.ey()) {
+         if (this.ex()) {
             if (!this.g($$0)) {
                if ($$7) {
                   this.b(this.n_());
@@ -1073,9 +1073,9 @@ public abstract class btn extends bsr implements bso {
          boolean $$17 = !$$3 || $$1 > 0.0F;
          if ($$17) {
             this.cl = $$0;
-            this.cm = this.dP().Z();
+            this.cm = this.dO().Z();
 
-            for (brz $$18 : this.eu()) {
+            for (brz $$18 : this.et()) {
                $$18.a(this, $$0, $$1);
             }
          }
@@ -1100,7 +1100,7 @@ public abstract class btn extends bsr implements bso {
    }
 
    protected void e(btn $$0) {
-      $$0.p(0.5, $$0.du() - this.du(), $$0.dA() - this.dA());
+      $$0.p(0.5, $$0.dt() - this.dt(), $$0.dz() - this.dz());
    }
 
    private boolean g(brk $$0) {
@@ -1126,11 +1126,11 @@ public abstract class btn extends bsr implements bso {
             }
 
             this.v(1.0F);
-            this.et();
+            this.es();
             this.b(new brz(bsb.j, 900, 1));
             this.b(new brz(bsb.v, 100, 1));
             this.b(new brz(bsb.l, 800, 0));
-            this.dP().a(this, (byte)35);
+            this.dO().a(this, (byte)35);
          }
 
          return $$1 != null;
@@ -1138,8 +1138,8 @@ public abstract class btn extends bsr implements bso {
    }
 
    @Nullable
-   public brk ez() {
-      if (this.dP().Z() - this.cm > 40L) {
+   public brk ey() {
+      if (this.dO().Z() - this.cm > 40L) {
          this.cl = null;
       }
 
@@ -1152,7 +1152,7 @@ public abstract class btn extends bsr implements bso {
 
    public void b(@Nullable avo $$0) {
       if ($$0 != null) {
-         this.a($$0, this.fb(), this.fc());
+         this.a($$0, this.fa(), this.fb());
       }
    }
 
@@ -1163,12 +1163,12 @@ public abstract class btn extends bsr implements bso {
          $$2 = true;
       }
 
-      if (!$$0.a(awg.c) && this.fz() && !$$2) {
-         exa $$4 = $$0.i();
+      if (!$$0.a(awg.c) && this.fy() && !$$2) {
+         exc $$4 = $$0.i();
          if ($$4 != null) {
-            exa $$5 = this.c(0.0F, this.ct());
-            exa $$6 = $$4.a(this.dn());
-            $$6 = new exa($$6.c, 0.0, $$6.e).d();
+            exc $$5 = this.c(0.0F, this.ct());
+            exc $$6 = $$4.a(this.dm());
+            $$6 = new exc($$6.c, 0.0, $$6.e).d();
             return $$6.b($$5) < 0.0;
          }
       }
@@ -1179,7 +1179,7 @@ public abstract class btn extends bsr implements bso {
    private void i(cuq $$0) {
       if (!$$0.e()) {
          if (!this.aX()) {
-            this.dP().a(this.du(), this.dw(), this.dA(), $$0.K(), this.df(), 0.8F, 0.8F + this.dP().z.i() * 0.4F, false);
+            this.dO().a(this.dt(), this.dv(), this.dz(), $$0.K(), this.de(), 0.8F, 0.8F + this.dO().z.i() * 0.4F, false);
          }
 
          this.a($$0, 5);
@@ -1187,31 +1187,31 @@ public abstract class btn extends bsr implements bso {
    }
 
    public void a(brk $$0) {
-      if (!this.dK() && !this.be) {
+      if (!this.dJ() && !this.be) {
          bsr $$1 = $$0.d();
-         btn $$2 = this.eN();
+         btn $$2 = this.eM();
          if (this.bl >= 0 && $$2 != null) {
             $$2.a(this, this.bl, $$0);
          }
 
-         if (this.fI()) {
-            this.fJ();
+         if (this.fH()) {
+            this.fI();
          }
 
-         if (!this.dP().B && this.ai()) {
-            b.info("Named entity {} died: {}", this, this.eM().a().getString());
+         if (!this.dO().B && this.ai()) {
+            b.info("Named entity {} died: {}", this, this.eL().a().getString());
          }
 
          this.be = true;
-         this.eM().c();
-         if (this.dP() instanceof aqu $$3) {
+         this.eL().c();
+         if (this.dO() instanceof aqu $$3) {
             if ($$1 == null || $$1.a($$3, this)) {
                this.a(dxz.p);
                this.a($$3, $$0);
                this.f($$2);
             }
 
-            this.dP().a(this, (byte)3);
+            this.dO().a(this, (byte)3);
          }
 
          this.b(bua.h);
@@ -1219,21 +1219,21 @@ public abstract class btn extends bsr implements bso {
    }
 
    protected void f(@Nullable btn $$0) {
-      if (!this.dP().B) {
+      if (!this.dO().B) {
          boolean $$1 = false;
          if ($$0 instanceof ciu) {
-            if (this.dP().ab().b(dcs.c)) {
-               jd $$2 = this.dp();
+            if (this.dO().ab().b(dcs.c)) {
+               jd $$2 = this.do();
                dtc $$3 = dga.cd.o();
-               if (this.dP().a_($$2).i() && $$3.a((dcz)this.dP(), $$2)) {
-                  this.dP().a($$2, $$3, 3);
+               if (this.dO().a_($$2).i() && $$3.a((dcz)this.dO(), $$2)) {
+                  this.dO().a($$2, $$3, 3);
                   $$1 = true;
                }
             }
 
             if (!$$1) {
-               cjh $$4 = new cjh(this.dP(), this.du(), this.dw(), this.dA(), new cuq(cut.dw));
-               this.dP().b($$4);
+               cjh $$4 = new cjh(this.dO(), this.dt(), this.dv(), this.dz(), new cuq(cut.dw));
+               this.dO().b($$4);
             }
          }
       }
@@ -1241,64 +1241,64 @@ public abstract class btn extends bsr implements bso {
 
    protected void a(aqu $$0, brk $$1) {
       boolean $$2 = this.bd > 0;
-      if (this.eg() && $$0.ab().b(dcs.f)) {
+      if (this.ef() && $$0.ab().b(dcs.f)) {
          this.a($$1, $$2);
          this.a($$0, $$1, $$2);
       }
 
-      this.eA();
+      this.ez();
       this.C($$1.d());
    }
 
-   protected void eA() {
+   protected void ez() {
    }
 
    protected void C(@Nullable bsr $$0) {
-      if (this.dP() instanceof aqu $$1 && !this.eE() && (this.ei() || this.bd > 0 && this.ef() && this.dP().ab().b(dcs.f))) {
-         btc.a($$1, this.dn(), this.a($$1, $$0));
+      if (this.dO() instanceof aqu $$1 && !this.eD() && (this.eh() || this.bd > 0 && this.ee() && this.dO().ab().b(dcs.f))) {
+         btc.a($$1, this.dm(), this.a($$1, $$0));
       }
    }
 
    protected void a(aqu $$0, brk $$1, boolean $$2) {
    }
 
-   public akq<eru> eB() {
+   public akq<erw> eA() {
       return this.am().k();
    }
 
-   public long eC() {
+   public long eB() {
       return 0L;
    }
 
    protected float a(bsr $$0, brk $$1) {
       float $$2 = (float)this.g(buw.d);
-      return this.dP() instanceof aqu $$3 ? dae.d($$3, this.dT(), $$0, $$1, $$2) : $$2;
+      return this.dO() instanceof aqu $$3 ? dae.d($$3, this.dS(), $$0, $$1, $$2) : $$2;
    }
 
    protected void a(brk $$0, boolean $$1) {
-      akq<eru> $$2 = this.eB();
-      eru $$3 = this.dP().o().be().b($$2);
-      ers.a $$4 = new ers.a((aqu)this.dP()).a(eul.a, this).a(eul.f, this.dn()).a(eul.c, $$0).b(eul.d, $$0.d()).b(eul.e, $$0.c());
+      akq<erw> $$2 = this.eA();
+      erw $$3 = this.dO().o().be().b($$2);
+      eru.a $$4 = new eru.a((aqu)this.dO()).a(eun.a, this).a(eun.f, this.dm()).a(eun.c, $$0).b(eun.d, $$0.d()).b(eun.e, $$0.c());
       if ($$1 && this.bc != null) {
-         $$4 = $$4.a(eul.b, this.bc).a(this.bc.gv());
+         $$4 = $$4.a(eun.b, this.bc).a(this.bc.gu());
       }
 
-      ers $$5 = $$4.a(euk.g);
-      $$3.a($$5, this.eC(), this::b);
+      eru $$5 = $$4.a(eum.g);
+      $$3.a($$5, this.eB(), this::b);
    }
 
    public void p(double $$0, double $$1, double $$2) {
       $$0 *= 1.0 - this.g(buw.p);
       if (!($$0 <= 0.0)) {
          this.av = true;
-         exa $$3 = this.ds();
+         exc $$3 = this.dr();
 
          while ($$1 * $$1 + $$2 * $$2 < 1.0E-5F) {
             $$1 = (Math.random() - Math.random()) * 0.01;
             $$2 = (Math.random() - Math.random()) * 0.01;
          }
 
-         exa $$4 = new exa($$1, 0.0, $$2).d().a($$0);
+         exc $$4 = new exc($$1, 0.0, $$2).d().a($$0);
          this.n($$3.c / 2.0 - $$4.c, this.aF() ? Math.min(0.4, $$3.d / 2.0 + $$0) : $$3.d, $$3.e / 2.0 - $$4.e);
       }
    }
@@ -1317,37 +1317,37 @@ public abstract class btn extends bsr implements bso {
    }
 
    private avo r(int $$0) {
-      return $$0 > 4 ? this.eI().b() : this.eI().a();
+      return $$0 > 4 ? this.eH().b() : this.eH().a();
    }
 
-   public void eD() {
+   public void eC() {
       this.cp = true;
    }
 
-   public boolean eE() {
+   public boolean eD() {
       return this.cp;
    }
 
-   public float eF() {
+   public float eE() {
       return 0.0F;
    }
 
-   protected ewv eG() {
-      ewv $$0 = this.cL();
-      bsr $$1 = this.dd();
+   protected ewx eF() {
+      ewx $$0 = this.cK();
+      bsr $$1 = this.dc();
       if ($$1 != null) {
-         exa $$2 = $$1.m(this);
+         exc $$2 = $$1.m(this);
          return $$0.b(Math.max($$2.d, $$0.b));
       } else {
          return $$0;
       }
    }
 
-   public Map<dac, Set<dat>> eH() {
+   public Map<dac, Set<dat>> eG() {
       return this.cq;
    }
 
-   public btn.a eI() {
+   public btn.a eH() {
       return new btn.a(avp.kh, avp.jZ);
    }
 
@@ -1359,7 +1359,7 @@ public abstract class btn extends bsr implements bso {
       return $$0.J();
    }
 
-   public Optional<jd> eJ() {
+   public Optional<jd> eI() {
       return this.ck;
    }
 
@@ -1367,9 +1367,9 @@ public abstract class btn extends bsr implements bso {
       if (this.R_()) {
          return false;
       } else {
-         jd $$0 = this.dp();
-         dtc $$1 = this.dq();
-         if ($$1.a(awe.aP)) {
+         jd $$0 = this.do();
+         dtc $$1 = this.dp();
+         if ($$1.a(awe.aQ)) {
             this.ck = Optional.of($$0);
             return true;
          } else if ($$1.b() instanceof dom && this.c($$0, $$1)) {
@@ -1385,18 +1385,18 @@ public abstract class btn extends bsr implements bso {
       if (!$$1.c(dom.b)) {
          return false;
       } else {
-         dtc $$2 = this.dP().a_($$0.e());
+         dtc $$2 = this.dO().a_($$0.e());
          return $$2.a(dga.cO) && $$2.c(dke.b) == $$1.c(dom.aE);
       }
    }
 
    @Override
    public boolean bE() {
-      return !this.dK() && this.ex() > 0.0F;
+      return !this.dJ() && this.ew() > 0.0F;
    }
 
    @Override
-   public int cy() {
+   public int cx() {
       return this.w(0.0F);
    }
 
@@ -1410,7 +1410,7 @@ public abstract class btn extends bsr implements bso {
       int $$4 = this.e($$0, $$1);
       if ($$4 > 0) {
          this.a(this.r($$4), 1.0F, 1.0F);
-         this.eK();
+         this.eJ();
          this.a($$2, (float)$$4);
          return true;
       } else {
@@ -1428,12 +1428,12 @@ public abstract class btn extends bsr implements bso {
       }
    }
 
-   protected void eK() {
+   protected void eJ() {
       if (!this.aX()) {
-         int $$0 = ayo.a(this.du());
-         int $$1 = ayo.a(this.dw() - 0.2F);
-         int $$2 = ayo.a(this.dA());
-         dtc $$3 = this.dP().a_(new jd($$0, $$1, $$2));
+         int $$0 = ayo.a(this.dt());
+         int $$1 = ayo.a(this.dv() - 0.2F);
+         int $$2 = ayo.a(this.dz());
+         dtc $$3 = this.dO().a_(new jd($$0, $$1, $$2));
          if (!$$3.i()) {
             dnm $$4 = $$3.w();
             this.a($$4.g(), $$4.a() * 0.5F, $$4.b() * 0.75F);
@@ -1447,7 +1447,7 @@ public abstract class btn extends bsr implements bso {
       this.aO = this.aP;
    }
 
-   public int eL() {
+   public int eK() {
       return ayo.a(this.g(buw.a));
    }
 
@@ -1476,7 +1476,7 @@ public abstract class btn extends bsr implements bso {
    protected float d(brk $$0, float $$1) {
       if (!$$0.a(awg.b)) {
          this.b($$0, $$1);
-         $$1 = brg.a(this, $$1, $$0, (float)this.eL(), (float)this.g(buw.b));
+         $$1 = brg.a(this, $$1, $$0, (float)this.eK(), (float)this.g(buw.b));
       }
 
       return $$1;
@@ -1508,7 +1508,7 @@ public abstract class btn extends bsr implements bso {
             return $$1;
          } else {
             float $$8;
-            if (this.dP() instanceof aqu $$7) {
+            if (this.dO() instanceof aqu $$7) {
                $$8 = dae.b($$7, this, $$0);
             } else {
                $$8 = 0.0F;
@@ -1527,28 +1527,28 @@ public abstract class btn extends bsr implements bso {
       if (!this.b($$0)) {
          $$1 = this.d($$0, $$1);
          $$1 = this.e($$0, $$1);
-         float var9 = Math.max($$1 - this.fp(), 0.0F);
-         this.C(this.fp() - ($$1 - var9));
+         float var9 = Math.max($$1 - this.fo(), 0.0F);
+         this.C(this.fo() - ($$1 - var9));
          float $$3 = $$1 - var9;
          if ($$3 > 0.0F && $$3 < 3.4028235E37F && $$0.d() instanceof aqv $$4) {
             $$4.a(avz.H, Math.round($$3 * 10.0F));
          }
 
          if (var9 != 0.0F) {
-            this.eM().a($$0, var9);
-            this.v(this.ex() - var9);
-            this.C(this.fp() - var9);
+            this.eL().a($$0, var9);
+            this.v(this.ew() - var9);
+            this.C(this.fo() - var9);
             this.a(dxz.o);
          }
       }
    }
 
-   public brh eM() {
+   public brh eL() {
       return this.bV;
    }
 
    @Nullable
-   public btn eN() {
+   public btn eM() {
       if (this.bc != null) {
          return this.bc;
       } else {
@@ -1556,15 +1556,15 @@ public abstract class btn extends bsr implements bso {
       }
    }
 
-   public final float eO() {
+   public final float eN() {
       return (float)this.g(buw.s);
    }
 
-   public final float eP() {
+   public final float eO() {
       return (float)this.g(buw.r);
    }
 
-   public final int eQ() {
+   public final int eP() {
       return this.ao.a(bP);
    }
 
@@ -1572,7 +1572,7 @@ public abstract class btn extends bsr implements bso {
       this.ao.a(bP, $$0);
    }
 
-   public final int eR() {
+   public final int eQ() {
       return this.ao.a(bQ);
    }
 
@@ -1597,9 +1597,9 @@ public abstract class btn extends bsr implements bso {
          this.aL = -1;
          this.aJ = true;
          this.aK = $$0;
-         if (this.dP() instanceof aqu) {
+         if (this.dO() instanceof aqu) {
             abx $$2 = new abx(this, $$0 == bqq.a ? 0 : 3);
-            aqs $$3 = ((aqu)this.dP()).l();
+            aqs $$3 = ((aqu)this.dO()).l();
             if ($$1) {
                $$3.a(this, $$2);
             } else {
@@ -1617,12 +1617,12 @@ public abstract class btn extends bsr implements bso {
       this.aO = this.aP;
       avo $$1 = this.d($$0);
       if ($$1 != null) {
-         this.a($$1, this.fb(), (this.ah.i() - this.ah.i()) * 0.2F + 1.0F);
+         this.a($$1, this.fa(), (this.ah.i() - this.ah.i()) * 0.2F + 1.0F);
       }
 
-      this.a(this.dQ().o(), 0.0F);
+      this.a(this.dP().o(), 0.0F);
       this.cl = $$0;
-      this.cm = this.dP().Z();
+      this.cm = this.dO().Z();
    }
 
    @Override
@@ -1631,19 +1631,19 @@ public abstract class btn extends bsr implements bso {
          case 3:
             avo $$1 = this.n_();
             if ($$1 != null) {
-               this.a($$1, this.fb(), (this.ah.i() - this.ah.i()) * 0.2F + 1.0F);
+               this.a($$1, this.fa(), (this.ah.i() - this.ah.i()) * 0.2F + 1.0F);
             }
 
             if (!(this instanceof cmx)) {
                this.v(0.0F);
-               this.a(this.dQ().o());
+               this.a(this.dP().o());
             }
             break;
          case 29:
-            this.a(avp.wD, 1.0F, 0.8F + this.dP().z.i() * 0.4F);
+            this.a(avp.wD, 1.0F, 0.8F + this.dO().z.i() * 0.4F);
             break;
          case 30:
-            this.a(avp.wE, 0.8F, 0.8F + this.dP().z.i() * 0.4F);
+            this.a(avp.wE, 0.8F, 0.8F + this.dO().z.i() * 0.4F);
             break;
          case 46:
             int $$2 = 128;
@@ -1653,10 +1653,10 @@ public abstract class btn extends bsr implements bso {
                float $$5 = (this.ah.i() - 0.5F) * 0.2F;
                float $$6 = (this.ah.i() - 0.5F) * 0.2F;
                float $$7 = (this.ah.i() - 0.5F) * 0.2F;
-               double $$8 = ayo.d($$4, this.L, this.du()) + (this.ah.j() - 0.5) * (double)this.dk() * 2.0;
-               double $$9 = ayo.d($$4, this.M, this.dw()) + this.ah.j() * (double)this.dl();
-               double $$10 = ayo.d($$4, this.N, this.dA()) + (this.ah.j() - 0.5) * (double)this.dk() * 2.0;
-               this.dP().a(lm.ac, $$8, $$9, $$10, (double)$$5, (double)$$6, (double)$$7);
+               double $$8 = ayo.d($$4, this.L, this.dt()) + (this.ah.j() - 0.5) * (double)this.dj() * 2.0;
+               double $$9 = ayo.d($$4, this.M, this.dv()) + this.ah.j() * (double)this.dk();
+               double $$10 = ayo.d($$4, this.N, this.dz()) + (this.ah.j() - 0.5) * (double)this.dj() * 2.0;
+               this.dO().a(lm.ac, $$8, $$9, $$10, (double)$$5, (double)$$6, (double)$$7);
             }
             break;
          case 47:
@@ -1699,7 +1699,7 @@ public abstract class btn extends bsr implements bso {
          double $$1 = this.ah.k() * 0.02;
          double $$2 = this.ah.k() * 0.02;
          double $$3 = this.ah.k() * 0.02;
-         this.dP().a(lm.ab, this.d(1.0), this.dx(), this.g(1.0), $$1, $$2, $$3);
+         this.dO().a(lm.ab, this.d(1.0), this.dw(), this.g(1.0), $$1, $$2, $$3);
       }
    }
 
@@ -1711,10 +1711,10 @@ public abstract class btn extends bsr implements bso {
 
    @Override
    protected void aE() {
-      this.a(this.dQ().n(), 4.0F);
+      this.a(this.dP().n(), 4.0F);
    }
 
-   protected void eS() {
+   protected void eR() {
       int $$0 = this.C();
       if (this.aJ) {
          this.aL++;
@@ -1731,33 +1731,33 @@ public abstract class btn extends bsr implements bso {
 
    @Nullable
    public bus f(jm<bur> $$0) {
-      return this.eT().a($$0);
+      return this.eS().a($$0);
    }
 
    public double g(jm<bur> $$0) {
-      return this.eT().c($$0);
+      return this.eS().c($$0);
    }
 
    public double h(jm<bur> $$0) {
-      return this.eT().d($$0);
+      return this.eS().d($$0);
    }
 
-   public but eT() {
+   public but eS() {
       return this.bU;
    }
 
-   public cuq eU() {
+   public cuq eT() {
       return this.a(bsy.a);
    }
 
-   public cuq eV() {
+   public cuq eU() {
       return this.a(bsy.b);
    }
 
    @Nonnull
    @Override
-   public cuq dT() {
-      return this.eU();
+   public cuq dS() {
+      return this.eT();
    }
 
    public boolean b(cul $$0) {
@@ -1765,7 +1765,7 @@ public abstract class btn extends bsr implements bso {
    }
 
    public boolean b(Predicate<cuq> $$0) {
-      return $$0.test(this.eU()) || $$0.test(this.eV());
+      return $$0.test(this.eT()) || $$0.test(this.eU());
    }
 
    public cuq b(bqq $$0) {
@@ -1798,30 +1798,30 @@ public abstract class btn extends bsr implements bso {
       return false;
    }
 
-   public abstract Iterable<cuq> eW();
+   public abstract Iterable<cuq> eV();
 
    public abstract cuq a(bsy var1);
 
    public abstract void a(bsy var1, cuq var2);
 
-   public Iterable<cuq> eX() {
+   public Iterable<cuq> eW() {
       return List.of();
    }
 
-   public Iterable<cuq> eY() {
-      return this.eW();
+   public Iterable<cuq> eX() {
+      return this.eV();
    }
 
-   public Iterable<cuq> eZ() {
-      return Iterables.concat(this.eX(), this.eY());
+   public Iterable<cuq> eY() {
+      return Iterables.concat(this.eW(), this.eX());
    }
 
    protected void e(cuq $$0) {
       $$0.g().m($$0);
    }
 
-   public float fa() {
-      Iterable<cuq> $$0 = this.eW();
+   public float eZ() {
+      Iterable<cuq> $$0 = this.eV();
       int $$1 = 0;
       int $$2 = 0;
 
@@ -1846,83 +1846,83 @@ public abstract class btn extends bsr implements bso {
       }
    }
 
-   protected float fb() {
+   protected float fa() {
       return 1.0F;
    }
 
-   public float fc() {
+   public float fb() {
       return this.o_() ? (this.ah.i() - this.ah.i()) * 0.2F + 1.5F : (this.ah.i() - this.ah.i()) * 0.2F + 1.0F;
    }
 
-   protected boolean fd() {
-      return this.ey();
+   protected boolean fc() {
+      return this.ex();
    }
 
    @Override
    public void h(bsr $$0) {
-      if (!this.fI()) {
+      if (!this.fH()) {
          super.h($$0);
       }
    }
 
    private void d(bsr $$0) {
-      exa $$1;
-      if (this.dK()) {
-         $$1 = this.dn();
-      } else if (!$$0.dK() && !this.dP().a_($$0.dp()).a(awe.aJ)) {
+      exc $$1;
+      if (this.dJ()) {
+         $$1 = this.dm();
+      } else if (!$$0.dJ() && !this.dO().a_($$0.do()).a(awe.aK)) {
          $$1 = $$0.b(this);
       } else {
-         double $$2 = Math.max(this.dw(), $$0.dw());
-         $$1 = new exa(this.du(), $$2, this.dA());
+         double $$2 = Math.max(this.dv(), $$0.dv());
+         $$1 = new exc(this.dt(), $$2, this.dz());
       }
 
       this.a($$1.c, $$1.d, $$1.e);
    }
 
    @Override
-   public boolean cG() {
-      return this.cF();
+   public boolean cF() {
+      return this.cE();
    }
 
-   protected float fe() {
+   protected float fd() {
       return this.y(1.0F);
    }
 
    protected float y(float $$0) {
-      return (float)this.g(buw.o) * $$0 * this.aN() + this.ff();
+      return (float)this.g(buw.o) * $$0 * this.aN() + this.fe();
    }
 
-   public float ff() {
+   public float fe() {
       return this.b(bsb.h) ? 0.1F * ((float)this.c(bsb.h).e() + 1.0F) : 0.0F;
    }
 
-   protected void fg() {
-      float $$0 = this.fe();
+   protected void ff() {
+      float $$0 = this.fd();
       if (!($$0 <= 1.0E-5F)) {
-         exa $$1 = this.ds();
+         exc $$1 = this.dr();
          this.n($$1.c, (double)$$0, $$1.e);
          if (this.cc()) {
-            float $$2 = this.dF() * (float) (Math.PI / 180.0);
-            this.j(new exa((double)(-ayo.a($$2)) * 0.2, 0.0, (double)ayo.b($$2) * 0.2));
+            float $$2 = this.dE() * (float) (Math.PI / 180.0);
+            this.j(new exc((double)(-ayo.a($$2)) * 0.2, 0.0, (double)ayo.b($$2) * 0.2));
          }
 
          this.av = true;
       }
    }
 
-   protected void fh() {
-      this.i(this.ds().b(0.0, -0.04F, 0.0));
+   protected void fg() {
+      this.i(this.dr().b(0.0, -0.04F, 0.0));
    }
 
-   protected void c(awu<epb> $$0) {
-      this.i(this.ds().b(0.0, 0.04F, 0.0));
+   protected void c(awu<epd> $$0) {
+      this.i(this.dr().b(0.0, 0.04F, 0.0));
    }
 
-   protected float fi() {
+   protected float fh() {
       return 0.8F;
    }
 
-   public boolean a(epc $$0) {
+   public boolean a(epe $$0) {
       return false;
    }
 
@@ -1931,18 +1931,18 @@ public abstract class btn extends bsr implements bso {
       return this.g(buw.n);
    }
 
-   public void a(exa $$0) {
-      if (this.db()) {
+   public void a(exc $$0) {
+      if (this.da()) {
          double $$1 = this.ba();
-         boolean $$2 = this.ds().d <= 0.0;
+         boolean $$2 = this.dr().d <= 0.0;
          if ($$2 && this.b(bsb.B)) {
             $$1 = Math.min($$1, 0.01);
          }
 
-         epc $$3 = this.dP().b_(this.dp());
-         if (this.bf() && this.ed() && !this.a($$3)) {
-            double $$4 = this.dw();
-            float $$5 = this.cc() ? 0.9F : this.fi();
+         epe $$3 = this.dO().b_(this.do());
+         if (this.bf() && this.ec() && !this.a($$3)) {
+            double $$4 = this.dv();
+            float $$5 = this.cc() ? 0.9F : this.fh();
             float $$6 = 0.02F;
             float $$7 = (float)this.g(buw.E);
             if (!this.aF()) {
@@ -1951,7 +1951,7 @@ public abstract class btn extends bsr implements bso {
 
             if ($$7 > 0.0F) {
                $$5 += (0.54600006F - $$5) * $$7;
-               $$6 += (this.fk() - $$6) * $$7;
+               $$6 += (this.fj() - $$6) * $$7;
             }
 
             if (this.b(bsb.D)) {
@@ -1959,49 +1959,49 @@ public abstract class btn extends bsr implements bso {
             }
 
             this.a($$6, $$0);
-            this.a(bts.a, this.ds());
-            exa $$8 = this.ds();
+            this.a(bts.a, this.dr());
+            exc $$8 = this.dr();
             if (this.Q && this.p_()) {
-               $$8 = new exa($$8.c, 0.2, $$8.e);
+               $$8 = new exc($$8.c, 0.2, $$8.e);
             }
 
             this.i($$8.d((double)$$5, 0.8F, (double)$$5));
-            exa $$9 = this.a($$1, $$2, this.ds());
+            exc $$9 = this.a($$1, $$2, this.dr());
             this.i($$9);
-            if (this.Q && this.g($$9.c, $$9.d + 0.6F - this.dw() + $$4, $$9.e)) {
+            if (this.Q && this.g($$9.c, $$9.d + 0.6F - this.dv() + $$4, $$9.e)) {
                this.n($$9.c, 0.3F, $$9.e);
             }
-         } else if (this.bt() && this.ed() && !this.a($$3)) {
-            double $$10 = this.dw();
+         } else if (this.bt() && this.ec() && !this.a($$3)) {
+            double $$10 = this.dv();
             this.a(0.02F, $$0);
-            this.a(bts.a, this.ds());
-            if (this.b(awk.b) <= this.dj()) {
-               this.i(this.ds().d(0.5, 0.8F, 0.5));
-               exa $$11 = this.a($$1, $$2, this.ds());
+            this.a(bts.a, this.dr());
+            if (this.b(awk.b) <= this.di()) {
+               this.i(this.dr().d(0.5, 0.8F, 0.5));
+               exc $$11 = this.a($$1, $$2, this.dr());
                this.i($$11);
             } else {
-               this.i(this.ds().a(0.5));
+               this.i(this.dr().a(0.5));
             }
 
             if ($$1 != 0.0) {
-               this.i(this.ds().b(0.0, -$$1 / 4.0, 0.0));
+               this.i(this.dr().b(0.0, -$$1 / 4.0, 0.0));
             }
 
-            exa $$12 = this.ds();
-            if (this.Q && this.g($$12.c, $$12.d + 0.6F - this.dw() + $$10, $$12.e)) {
+            exc $$12 = this.dr();
+            if (this.Q && this.g($$12.c, $$12.d + 0.6F - this.dv() + $$10, $$12.e)) {
                this.n($$12.c, 0.3F, $$12.e);
             }
-         } else if (this.fB()) {
+         } else if (this.fA()) {
             this.cr();
-            exa $$13 = this.ds();
-            exa $$14 = this.bM();
-            float $$15 = this.dH() * (float) (Math.PI / 180.0);
+            exc $$13 = this.dr();
+            exc $$14 = this.bM();
+            float $$15 = this.dG() * (float) (Math.PI / 180.0);
             double $$16 = Math.sqrt($$14.c * $$14.c + $$14.e * $$14.e);
             double $$17 = $$13.h();
             double $$18 = $$14.f();
             double $$19 = Math.cos((double)$$15);
             $$19 = $$19 * $$19 * Math.min(1.0, $$18 / 0.4);
-            $$13 = this.ds().b(0.0, $$1 * (-1.0 + $$19 * 0.75), 0.0);
+            $$13 = this.dr().b(0.0, $$1 * (-1.0 + $$19 * 0.75), 0.0);
             if ($$13.d < 0.0 && $$16 > 0.0) {
                double $$20 = $$13.d * -0.1 * $$19;
                $$13 = $$13.b($$14.c * $$20 / $$16, $$20, $$14.e * $$20 / $$16);
@@ -2017,37 +2017,37 @@ public abstract class btn extends bsr implements bso {
             }
 
             this.i($$13.d(0.99F, 0.98F, 0.99F));
-            this.a(bts.a, this.ds());
-            if (this.Q && !this.dP().B) {
-               double $$22 = this.ds().h();
+            this.a(bts.a, this.dr());
+            if (this.Q && !this.dO().B) {
+               double $$22 = this.dr().h();
                double $$23 = $$17 - $$22;
                float $$24 = (float)($$23 * 10.0 - 3.0);
                if ($$24 > 0.0F) {
                   this.a(this.r((int)$$24), 1.0F, 1.0F);
-                  this.a(this.dQ().m(), $$24);
+                  this.a(this.dP().m(), $$24);
                }
             }
 
-            if (this.aF() && !this.dP().B) {
+            if (this.aF() && !this.dO().B) {
                this.b(7, false);
             }
          } else {
             jd $$25 = this.aL();
-            float $$26 = this.dP().a_($$25).b().h();
+            float $$26 = this.dO().a_($$25).b().h();
             float $$27 = this.aF() ? $$26 * 0.91F : 0.91F;
-            exa $$28 = this.a($$0, $$26);
+            exc $$28 = this.a($$0, $$26);
             double $$29 = $$28.d;
             if (this.b(bsb.y)) {
                $$29 += (0.05 * (double)(this.c(bsb.y).e() + 1) - $$28.d) * 0.2;
-            } else if (!this.dP().B || this.dP().B($$25)) {
+            } else if (!this.dO().B || this.dO().B($$25)) {
                $$29 -= $$1;
-            } else if (this.dw() > (double)this.dP().I_()) {
+            } else if (this.dv() > (double)this.dO().I_()) {
                $$29 = -0.1;
             } else {
                $$29 = 0.0;
             }
 
-            if (this.eo()) {
+            if (this.en()) {
                this.n($$28.c, $$29, $$28.e);
             } else {
                this.n($$28.c * (double)$$27, this instanceof cfn ? $$29 * (double)$$27 : $$29 * 0.98F, $$28.e * (double)$$27);
@@ -2055,35 +2055,35 @@ public abstract class btn extends bsr implements bso {
          }
       }
 
-      this.r(this instanceof cfn);
+      this.s(this instanceof cfn);
    }
 
-   private void c(cmx $$0, exa $$1) {
-      exa $$2 = this.b($$0, $$1);
+   private void c(cmx $$0, exc $$1) {
+      exc $$2 = this.b($$0, $$1);
       this.a($$0, $$2);
-      if (this.db()) {
+      if (this.da()) {
          this.A(this.e($$0));
          this.a($$2);
       } else {
-         this.r(false);
-         this.i(exa.b);
+         this.s(false);
+         this.i(exc.b);
          this.aG();
       }
    }
 
-   protected void a(cmx $$0, exa $$1) {
+   protected void a(cmx $$0, exc $$1) {
    }
 
-   protected exa b(cmx $$0, exa $$1) {
+   protected exc b(cmx $$0, exc $$1) {
       return $$1;
    }
 
    protected float e(cmx $$0) {
-      return this.fk();
+      return this.fj();
    }
 
-   public void r(boolean $$0) {
-      float $$1 = (float)ayo.g(this.du() - this.L, $$0 ? this.dw() - this.M : 0.0, this.dA() - this.N);
+   public void s(boolean $$0) {
+      float $$1 = (float)ayo.g(this.dt() - this.L, $$0 ? this.dv() - this.M : 0.0, this.dz() - this.N);
       this.z($$1);
    }
 
@@ -2092,19 +2092,19 @@ public abstract class btn extends bsr implements bso {
       this.aU.a($$1, 0.4F);
    }
 
-   public exa a(exa $$0, float $$1) {
+   public exc a(exc $$0, float $$1) {
       this.a(this.E($$1), $$0);
-      this.i(this.b(this.ds()));
-      this.a(bts.a, this.ds());
-      exa $$2 = this.ds();
-      if ((this.Q || this.bn) && (this.p_() || this.dq().a(dga.qP) && dlt.a(this))) {
-         $$2 = new exa($$2.c, 0.2, $$2.e);
+      this.i(this.b(this.dr()));
+      this.a(bts.a, this.dr());
+      exc $$2 = this.dr();
+      if ((this.Q || this.bn) && (this.p_() || this.dp().a(dga.qP) && dlt.a(this))) {
+         $$2 = new exc($$2.c, 0.2, $$2.e);
       }
 
       return $$2;
    }
 
-   public exa a(double $$0, boolean $$1, exa $$2) {
+   public exc a(double $$0, boolean $$1, exc $$2) {
       if ($$0 != 0.0 && !this.cc()) {
          double $$3;
          if ($$1 && Math.abs($$2.d - 0.005) >= 0.003 && Math.abs($$2.d - $$0 / 16.0) < 0.003) {
@@ -2113,38 +2113,38 @@ public abstract class btn extends bsr implements bso {
             $$3 = $$2.d - $$0 / 16.0;
          }
 
-         return new exa($$2.c, $$3, $$2.e);
+         return new exc($$2.c, $$3, $$2.e);
       } else {
          return $$2;
       }
    }
 
-   private exa b(exa $$0) {
+   private exc b(exc $$0) {
       if (this.p_()) {
          this.n();
          float $$1 = 0.15F;
          double $$2 = ayo.a($$0.c, -0.15F, 0.15F);
          double $$3 = ayo.a($$0.e, -0.15F, 0.15F);
          double $$4 = Math.max($$0.d, -0.15F);
-         if ($$4 < 0.0 && !this.dq().a(dga.nS) && this.fA() && this instanceof cmx) {
+         if ($$4 < 0.0 && !this.dp().a(dga.nS) && this.fz() && this instanceof cmx) {
             $$4 = 0.0;
          }
 
-         $$0 = new exa($$2, $$4, $$3);
+         $$0 = new exc($$2, $$4, $$3);
       }
 
       return $$0;
    }
 
    private float E(float $$0) {
-      return this.aF() ? this.fk() * (0.21600002F / ($$0 * $$0 * $$0)) : this.fj();
+      return this.aF() ? this.fj() * (0.21600002F / ($$0 * $$0 * $$0)) : this.fi();
    }
 
-   protected float fj() {
-      return this.cR() instanceof cmx ? this.fk() * 0.1F : 0.02F;
+   protected float fi() {
+      return this.cQ() instanceof cmx ? this.fj() * 0.1F : 0.02F;
    }
 
-   public float fk() {
+   public float fj() {
       return this.cg;
    }
 
@@ -2162,8 +2162,8 @@ public abstract class btn extends bsr implements bso {
       super.l();
       this.J();
       this.N();
-      if (!this.dP().B) {
-         int $$0 = this.eQ();
+      if (!this.dO().B) {
+         int $$0 = this.eP();
          if ($$0 > 0) {
             if (this.aM <= 0) {
                this.aM = 20 * (30 - $$0);
@@ -2175,7 +2175,7 @@ public abstract class btn extends bsr implements bso {
             }
          }
 
-         int $$1 = this.eR();
+         int $$1 = this.eQ();
          if ($$1 > 0) {
             if (this.aN <= 0) {
                this.aN = 20 * (30 - $$1);
@@ -2189,20 +2189,20 @@ public abstract class btn extends bsr implements bso {
 
          this.F();
          if (this.ai % 20 == 0) {
-            this.eM().c();
+            this.eL().c();
          }
 
-         if (this.fI() && !this.O()) {
-            this.fJ();
+         if (this.fH() && !this.O()) {
+            this.fI();
          }
       }
 
-      if (!this.dK()) {
+      if (!this.dJ()) {
          this.m_();
       }
 
-      double $$2 = this.du() - this.L;
-      double $$3 = this.dA() - this.N;
+      double $$2 = this.dt() - this.L;
+      double $$3 = this.dz() - this.N;
       float $$4 = (float)($$2 * $$2 + $$3 * $$3);
       float $$5 = this.aY;
       float $$6 = 0.0F;
@@ -2212,7 +2212,7 @@ public abstract class btn extends bsr implements bso {
          $$7 = 1.0F;
          $$6 = (float)Math.sqrt((double)$$4) * 3.0F;
          float $$8 = (float)ayo.d($$3, $$2) * (180.0F / (float)Math.PI) - 90.0F;
-         float $$9 = ayo.e(ayo.g(this.dF()) - $$8);
+         float $$9 = ayo.e(ayo.g(this.dE()) - $$8);
          if (95.0F < $$9 && $$9 < 265.0F) {
             $$5 = $$8 - 180.0F;
          } else {
@@ -2221,7 +2221,7 @@ public abstract class btn extends bsr implements bso {
       }
 
       if (this.aS > 0.0F) {
-         $$5 = this.dF();
+         $$5 = this.dE();
       }
 
       if (!this.aF()) {
@@ -2229,16 +2229,16 @@ public abstract class btn extends bsr implements bso {
       }
 
       this.bh = this.bh + ($$7 - this.bh) * 0.3F;
-      this.dP().ag().a("headTurn");
+      this.dO().ag().a("headTurn");
       $$6 = this.f($$5, $$6);
-      this.dP().ag().c();
-      this.dP().ag().a("rangeChecks");
+      this.dO().ag().c();
+      this.dO().ag().a("rangeChecks");
 
-      while (this.dF() - this.O < -180.0F) {
+      while (this.dE() - this.O < -180.0F) {
          this.O -= 360.0F;
       }
 
-      while (this.dF() - this.O >= 180.0F) {
+      while (this.dE() - this.O >= 180.0F) {
          this.O += 360.0F;
       }
 
@@ -2250,11 +2250,11 @@ public abstract class btn extends bsr implements bso {
          this.aZ += 360.0F;
       }
 
-      while (this.dH() - this.P < -180.0F) {
+      while (this.dG() - this.P < -180.0F) {
          this.P -= 360.0F;
       }
 
-      while (this.dH() - this.P >= 180.0F) {
+      while (this.dG() - this.P >= 180.0F) {
          this.P += 360.0F;
       }
 
@@ -2266,20 +2266,20 @@ public abstract class btn extends bsr implements bso {
          this.bb += 360.0F;
       }
 
-      this.dP().ag().c();
+      this.dO().ag().c();
       this.bi += $$6;
-      if (this.fB()) {
+      if (this.fA()) {
          this.bB++;
       } else {
          this.bB = 0;
       }
 
-      if (this.fI()) {
+      if (this.fH()) {
          this.u(0.0F);
       }
 
       this.B();
-      float $$10 = this.ec();
+      float $$10 = this.eb();
       if ($$10 != this.bG) {
          this.bG = $$10;
          this.i_();
@@ -2313,7 +2313,7 @@ public abstract class btn extends bsr implements bso {
             }
 
             $$0.put($$1, $$3);
-            but $$4 = this.eT();
+            but $$4 = this.eS();
             if (!$$2.e()) {
                $$2.a($$1, ($$3x, $$4x) -> {
                   bus $$5 = $$4.a($$3x);
@@ -2339,7 +2339,7 @@ public abstract class btn extends bsr implements bso {
                      $$4x.b($$3x);
                   }
 
-                  if (this.dP() instanceof aqu $$6x) {
+                  if (this.dO() instanceof aqu $$6x) {
                      dae.a($$6x, $$7, this, $$6);
                   }
                });
@@ -2358,7 +2358,7 @@ public abstract class btn extends bsr implements bso {
       cuq $$1 = $$0.get(bsy.a);
       cuq $$2 = $$0.get(bsy.b);
       if ($$1 != null && $$2 != null && cuq.a($$1, this.f(bsy.b)) && cuq.a($$2, this.f(bsy.a))) {
-         ((aqu)this.dP()).l().b(this, new acy(this, (byte)55));
+         ((aqu)this.dO()).l().b(this, new acy(this, (byte)55));
          $$0.remove(bsy.a);
          $$0.remove(bsy.b);
          this.c(bsy.a, $$1.s());
@@ -2382,7 +2382,7 @@ public abstract class btn extends bsr implements bso {
                this.bZ = $$3;
          }
       });
-      ((aqu)this.dP()).l().b(this, new afc(this.an(), $$1));
+      ((aqu)this.dO()).l().b(this, new afc(this.an(), $$1));
    }
 
    private cuq e(bsy $$0) {
@@ -2404,8 +2404,8 @@ public abstract class btn extends bsr implements bso {
    protected float f(float $$0, float $$1) {
       float $$2 = ayo.g($$0 - this.aY);
       this.aY += $$2 * 0.3F;
-      float $$3 = ayo.g(this.dF() - this.aY);
-      float $$4 = this.fl();
+      float $$3 = ayo.g(this.dE() - this.aY);
+      float $$4 = this.fk();
       if (Math.abs($$3) > $$4) {
          this.aY = this.aY + ($$3 - (float)ayo.j((double)$$3) * $$4);
       }
@@ -2418,7 +2418,7 @@ public abstract class btn extends bsr implements bso {
       return $$1;
    }
 
-   protected float fl() {
+   protected float fk() {
       return 50.0F;
    }
 
@@ -2427,16 +2427,16 @@ public abstract class btn extends bsr implements bso {
          this.ch--;
       }
 
-      if (this.db()) {
+      if (this.da()) {
          this.br = 0;
-         this.f(this.du(), this.dw(), this.dA());
+         this.f(this.dt(), this.dv(), this.dz());
       }
 
       if (this.br > 0) {
          this.a(this.br, this.bs, this.bt, this.bu, this.bv, this.bw);
          this.br--;
-      } else if (!this.dc()) {
-         this.i(this.ds().a(0.98));
+      } else if (!this.db()) {
+         this.i(this.dr().a(0.98));
       }
 
       if (this.by > 0) {
@@ -2444,7 +2444,7 @@ public abstract class btn extends bsr implements bso {
          this.by--;
       }
 
-      exa $$0 = this.ds();
+      exc $$0 = this.dr();
       double $$1 = $$0.c;
       double $$2 = $$0.d;
       double $$3 = $$0.e;
@@ -2461,20 +2461,20 @@ public abstract class btn extends bsr implements bso {
       }
 
       this.n($$1, $$2, $$3);
-      this.dP().ag().a("ai");
-      if (this.fd()) {
+      this.dO().ag().a("ai");
+      if (this.fc()) {
          this.bn = false;
          this.bo = 0.0F;
          this.bq = 0.0F;
-      } else if (this.dc()) {
-         this.dP().ag().a("newAi");
-         this.fn();
-         this.dP().ag().c();
+      } else if (this.db()) {
+         this.dO().ag().a("newAi");
+         this.fm();
+         this.dO().ag().c();
       }
 
-      this.dP().ag().c();
-      this.dP().ag().a("jump");
-      if (this.bn && this.ed()) {
+      this.dO().ag().c();
+      this.dO().ag().a("jump");
+      if (this.bn && this.ec()) {
          double $$4;
          if (this.bt()) {
             $$4 = this.b(awk.b);
@@ -2483,11 +2483,11 @@ public abstract class btn extends bsr implements bso {
          }
 
          boolean $$6 = this.bf() && $$4 > 0.0;
-         double $$7 = this.dj();
+         double $$7 = this.di();
          if (!$$6 || this.aF() && !($$4 > $$7)) {
             if (!this.bt() || this.aF() && !($$4 > $$7)) {
                if ((this.aF() || $$6 && $$4 <= $$7) && this.ch == 0) {
-                  this.fg();
+                  this.ff();
                   this.ch = 10;
                }
             } else {
@@ -2500,19 +2500,19 @@ public abstract class btn extends bsr implements bso {
          this.ch = 0;
       }
 
-      this.dP().ag().c();
-      this.dP().ag().a("travel");
+      this.dO().ag().c();
+      this.dO().ag().a("travel");
       this.bo *= 0.98F;
       this.bq *= 0.98F;
       this.I();
-      ewv $$8 = this.cL();
-      exa $$9 = new exa((double)this.bo, (double)this.bp, (double)this.bq);
+      ewx $$8 = this.cK();
+      exc $$9 = new exc((double)this.bo, (double)this.bp, (double)this.bq);
       if (this.b(bsb.B) || this.b(bsb.y)) {
          this.n();
       }
 
       label104: {
-         if (this.cR() instanceof cmx $$10 && this.bE()) {
+         if (this.cQ() instanceof cmx $$10 && this.bE()) {
             this.c($$10, $$9);
             break label104;
          }
@@ -2520,38 +2520,38 @@ public abstract class btn extends bsr implements bso {
          this.a($$9);
       }
 
-      this.dP().ag().c();
-      this.dP().ag().a("freezing");
-      if (!this.dP().B && !this.ey()) {
+      this.dO().ag().c();
+      this.dO().ag().a("freezing");
+      if (!this.dO().B && !this.ex()) {
          int $$11 = this.cn();
-         if (this.az && this.dD()) {
+         if (this.az && this.dC()) {
             this.k(Math.min(this.cq(), $$11 + 1));
          } else {
             this.k(Math.max(0, $$11 - 2));
          }
       }
 
+      this.dY();
       this.dZ();
-      this.ea();
-      if (!this.dP().B && this.ai % 40 == 0 && this.cp() && this.dD()) {
-         this.a(this.dQ().u(), 1.0F);
+      if (!this.dO().B && this.ai % 40 == 0 && this.cp() && this.dC()) {
+         this.a(this.dP().u(), 1.0F);
       }
 
-      this.dP().ag().c();
-      this.dP().ag().a("push");
+      this.dO().ag().c();
+      this.dO().ag().a("push");
       if (this.bC > 0) {
          this.bC--;
-         this.a($$8, this.cL());
+         this.a($$8, this.cK());
       }
 
       this.r();
-      this.dP().ag().c();
-      if (!this.dP().B && this.fm() && this.bh()) {
-         this.a(this.dQ().i(), 1.0F);
+      this.dO().ag().c();
+      if (!this.dO().B && this.fl() && this.bh()) {
+         this.a(this.dP().i(), 1.0F);
       }
    }
 
-   public boolean fm() {
+   public boolean fl() {
       return false;
    }
 
@@ -2562,7 +2562,7 @@ public abstract class btn extends bsr implements bso {
          if ($$1.a(cut.nT) && ctm.i($$1)) {
             $$0 = true;
             int $$2 = this.bB + 1;
-            if (!this.dP().B && $$2 % 10 == 0) {
+            if (!this.dO().B && $$2 % 10 == 0) {
                int $$3 = $$2 / 10;
                if ($$3 % 2 == 0) {
                   $$1.a(1, this, bsy.e);
@@ -2577,21 +2577,21 @@ public abstract class btn extends bsr implements bso {
          $$0 = false;
       }
 
-      if (!this.dP().B) {
+      if (!this.dO().B) {
          this.b(7, $$0);
       }
    }
 
-   protected void fn() {
+   protected void fm() {
    }
 
    protected void r() {
-      if (this.dP().x_()) {
-         this.dP().a(dxn.a(cmx.class), this.cL(), bsw.a(this)).forEach(this::E);
+      if (this.dO().x_()) {
+         this.dO().a(dxn.a(cmx.class), this.cK(), bsw.a(this)).forEach(this::E);
       } else {
-         List<bsr> $$0 = this.dP().a(this, this.cL(), bsw.a(this));
+         List<bsr> $$0 = this.dO().a(this, this.cK(), bsw.a(this));
          if (!$$0.isEmpty()) {
-            int $$1 = this.dP().ab().c(dcs.u);
+            int $$1 = this.dO().ab().c(dcs.u);
             if ($$1 > 0 && $$0.size() > $$1 - 1 && this.ah.a(4) == 0) {
                int $$2 = 0;
 
@@ -2602,7 +2602,7 @@ public abstract class btn extends bsr implements bso {
                }
 
                if ($$2 > $$1 - 1) {
-                  this.a(this.dQ().h(), 6.0F);
+                  this.a(this.dP().h(), 6.0F);
                }
             }
 
@@ -2613,15 +2613,15 @@ public abstract class btn extends bsr implements bso {
       }
    }
 
-   protected void a(ewv $$0, ewv $$1) {
-      ewv $$2 = $$0.b($$1);
-      List<bsr> $$3 = this.dP().a_(this, $$2);
+   protected void a(ewx $$0, ewx $$1) {
+      ewx $$2 = $$0.b($$1);
+      List<bsr> $$3 = this.dO().a_(this, $$2);
       if (!$$3.isEmpty()) {
          for (bsr $$4 : $$3) {
             if ($$4 instanceof btn) {
                this.g((btn)$$4);
                this.bC = 0;
-               this.i(this.ds().a(-0.2));
+               this.i(this.dr().a(-0.2));
                break;
             }
          }
@@ -2629,7 +2629,7 @@ public abstract class btn extends bsr implements bso {
          this.bC = 0;
       }
 
-      if (!this.dP().B && this.bC <= 0) {
+      if (!this.dO().B && this.bC <= 0) {
          this.c(4, false);
          this.bD = 0.0F;
          this.bE = null;
@@ -2643,15 +2643,15 @@ public abstract class btn extends bsr implements bso {
    protected void g(btn $$0) {
    }
 
-   public boolean fo() {
+   public boolean fn() {
       return (this.ao.a(aE) & 4) != 0;
    }
 
    @Override
    public void ad() {
-      bsr $$0 = this.dd();
+      bsr $$0 = this.dc();
       super.ad();
-      if ($$0 != null && $$0 != this.dd() && !this.dP().B) {
+      if ($$0 != null && $$0 != this.dc() && !this.dO().B) {
          this.d($$0);
       }
    }
@@ -2676,27 +2676,27 @@ public abstract class btn extends bsr implements bso {
 
    @Override
    public double c_() {
-      return this.br > 0 ? this.bs : this.du();
+      return this.br > 0 ? this.bs : this.dt();
    }
 
    @Override
    public double d_() {
-      return this.br > 0 ? this.bt : this.dw();
+      return this.br > 0 ? this.bt : this.dv();
    }
 
    @Override
    public double P_() {
-      return this.br > 0 ? this.bu : this.dA();
+      return this.br > 0 ? this.bu : this.dz();
    }
 
    @Override
    public float Q_() {
-      return this.br > 0 ? (float)this.bw : this.dH();
+      return this.br > 0 ? (float)this.bw : this.dG();
    }
 
    @Override
    public float e_() {
-      return this.br > 0 ? (float)this.bv : this.dF();
+      return this.br > 0 ? (float)this.bv : this.dE();
    }
 
    @Override
@@ -2705,7 +2705,7 @@ public abstract class btn extends bsr implements bso {
       this.by = $$1;
    }
 
-   public void s(boolean $$0) {
+   public void t(boolean $$0) {
       this.bn = $$0;
    }
 
@@ -2717,18 +2717,18 @@ public abstract class btn extends bsr implements bso {
    }
 
    public void a(bsr $$0, int $$1) {
-      if (!$$0.dK() && !this.dP().B && ($$0 instanceof cjh || $$0 instanceof cnd || $$0 instanceof btc)) {
-         ((aqu)this.dP()).l().b($$0, new afv($$0.an(), this.an(), $$1));
+      if (!$$0.dJ() && !this.dO().B && ($$0 instanceof cjh || $$0 instanceof cnd || $$0 instanceof btc)) {
+         ((aqu)this.dO()).l().b($$0, new afv($$0.an(), this.an(), $$1));
       }
    }
 
    public boolean F(bsr $$0) {
-      if ($$0.dP() != this.dP()) {
+      if ($$0.dO() != this.dO()) {
          return false;
       } else {
-         exa $$1 = new exa(this.du(), this.dy(), this.dA());
-         exa $$2 = new exa($$0.du(), $$0.dy(), $$0.dA());
-         return $$2.f($$1) > 128.0 ? false : this.dP().a(new dcf($$1, $$2, dcf.a.a, dcf.b.a, this)).c() == ewy.a.a;
+         exc $$1 = new exc(this.dt(), this.dx(), this.dz());
+         exc $$2 = new exc($$0.dt(), $$0.dx(), $$0.dz());
+         return $$2.f($$1) > 128.0 ? false : this.dO().a(new dcf($$1, $$2, dcf.a.a, dcf.b.a, this)).c() == exa.a.a;
       }
    }
 
@@ -2748,7 +2748,7 @@ public abstract class btn extends bsr implements bso {
 
    @Override
    public boolean bA() {
-      return !this.dK();
+      return !this.dJ();
    }
 
    @Override
@@ -2772,20 +2772,20 @@ public abstract class btn extends bsr implements bso {
    }
 
    @Override
-   public exa a(ji.a $$0, l.a $$1) {
+   public exc a(ji.a $$0, l.a $$1) {
       return k(super.a($$0, $$1));
    }
 
-   public static exa k(exa $$0) {
-      return new exa($$0.c, $$0.d, 0.0);
+   public static exc k(exc $$0) {
+      return new exc($$0.c, $$0.d, 0.0);
    }
 
-   public float fp() {
+   public float fo() {
       return this.ci;
    }
 
    public final void C(float $$0) {
-      this.D(ayo.a($$0, 0.0F, this.eP()));
+      this.D(ayo.a($$0, 0.0F, this.eO()));
    }
 
    protected void D(float $$0) {
@@ -2798,47 +2798,47 @@ public abstract class btn extends bsr implements bso {
    public void g_() {
    }
 
-   protected void fq() {
+   protected void fp() {
       this.cb = true;
    }
 
-   public abstract btg fr();
+   public abstract btg fq();
 
-   public boolean fs() {
+   public boolean fr() {
       return (this.ao.a(aE) & 1) > 0;
    }
 
-   public bqq ft() {
+   public bqq fs() {
       return (this.ao.a(aE) & 2) > 0 ? bqq.b : bqq.a;
    }
 
    private void J() {
-      if (this.fs()) {
-         if (cuq.b(this.b(this.ft()), this.bz)) {
-            this.bz = this.b(this.ft());
+      if (this.fr()) {
+         if (cuq.b(this.b(this.fs()), this.bz)) {
+            this.bz = this.b(this.fs());
             this.a(this.bz);
          } else {
-            this.fy();
+            this.fx();
          }
       }
    }
 
    protected void a(cuq $$0) {
-      $$0.b(this.dP(), this, this.fv());
+      $$0.b(this.dO(), this, this.fu());
       if (this.L()) {
          this.b($$0, 5);
       }
 
-      if (--this.bA == 0 && !this.dP().B && !$$0.v()) {
+      if (--this.bA == 0 && !this.dO().B && !$$0.v()) {
          this.L_();
       }
    }
 
    private boolean L() {
-      int $$0 = this.bz.a(this) - this.fv();
+      int $$0 = this.bz.a(this) - this.fu();
       int $$1 = (int)((float)this.bz.a(this) * 0.21875F);
       boolean $$2 = $$0 > $$1;
-      return $$2 && this.fv() % 4 == 0;
+      return $$2 && this.fu() % 4 == 0;
    }
 
    private void N() {
@@ -2863,10 +2863,10 @@ public abstract class btn extends bsr implements bso {
 
    public void c(bqq $$0) {
       cuq $$1 = this.b($$0);
-      if (!$$1.e() && !this.fs()) {
+      if (!$$1.e() && !this.fr()) {
          this.bz = $$1;
          this.bA = $$1.a(this);
-         if (!this.dP().B) {
+         if (!this.dO().B) {
             this.c(1, true);
             this.c(2, $$0 == bqq.b);
             this.a(dxz.D);
@@ -2878,16 +2878,16 @@ public abstract class btn extends bsr implements bso {
    public void a(ajw<?> $$0) {
       super.a($$0);
       if (bR.equals($$0)) {
-         if (this.dP().B) {
-            this.fG().ifPresent(this::a);
+         if (this.dO().B) {
+            this.fF().ifPresent(this::a);
          }
-      } else if (aE.equals($$0) && this.dP().B) {
-         if (this.fs() && this.bz.e()) {
-            this.bz = this.b(this.ft());
+      } else if (aE.equals($$0) && this.dO().B) {
+         if (this.fr() && this.bz.e()) {
+            this.bz = this.b(this.fs());
             if (!this.bz.e()) {
                this.bA = this.bz.a(this);
             }
-         } else if (!this.fs() && !this.bz.e()) {
+         } else if (!this.fr() && !this.bz.e()) {
             this.bz = cuq.l;
             this.bA = 0;
          }
@@ -2895,7 +2895,7 @@ public abstract class btn extends bsr implements bso {
    }
 
    @Override
-   public void a(ff.a $$0, exa $$1) {
+   public void a(ff.a $$0, exc $$1) {
       super.a($$0, $$1);
       this.bb = this.ba;
       this.aY = this.ba;
@@ -2908,9 +2908,9 @@ public abstract class btn extends bsr implements bso {
    }
 
    protected void b(cuq $$0, int $$1) {
-      if (!$$0.e() && this.fs()) {
+      if (!$$0.e() && this.fr()) {
          if ($$0.u() == cwo.c) {
-            this.a(this.c($$0), 0.5F, this.dP().z.i() * 0.1F + 0.9F);
+            this.a(this.c($$0), 0.5F, this.dO().z.i() * 0.1F + 0.9F);
          }
 
          if ($$0.u() == cwo.b) {
@@ -2922,63 +2922,63 @@ public abstract class btn extends bsr implements bso {
 
    private void a(cuq $$0, int $$1) {
       for (int $$2 = 0; $$2 < $$1; $$2++) {
-         exa $$3 = new exa(((double)this.ah.i() - 0.5) * 0.1, Math.random() * 0.1 + 0.1, 0.0);
-         $$3 = $$3.a(-this.dH() * (float) (Math.PI / 180.0));
-         $$3 = $$3.b(-this.dF() * (float) (Math.PI / 180.0));
+         exc $$3 = new exc(((double)this.ah.i() - 0.5) * 0.1, Math.random() * 0.1 + 0.1, 0.0);
+         $$3 = $$3.a(-this.dG() * (float) (Math.PI / 180.0));
+         $$3 = $$3.b(-this.dE() * (float) (Math.PI / 180.0));
          double $$4 = (double)(-this.ah.i()) * 0.6 - 0.3;
-         exa $$5 = new exa(((double)this.ah.i() - 0.5) * 0.3, $$4, 0.6);
-         $$5 = $$5.a(-this.dH() * (float) (Math.PI / 180.0));
-         $$5 = $$5.b(-this.dF() * (float) (Math.PI / 180.0));
-         $$5 = $$5.b(this.du(), this.dy(), this.dA());
-         this.dP().a(new li(lm.S, $$0), $$5.c, $$5.d, $$5.e, $$3.c, $$3.d + 0.05, $$3.e);
+         exc $$5 = new exc(((double)this.ah.i() - 0.5) * 0.3, $$4, 0.6);
+         $$5 = $$5.a(-this.dG() * (float) (Math.PI / 180.0));
+         $$5 = $$5.b(-this.dE() * (float) (Math.PI / 180.0));
+         $$5 = $$5.b(this.dt(), this.dx(), this.dz());
+         this.dO().a(new li(lm.S, $$0), $$5.c, $$5.d, $$5.e, $$3.c, $$3.d + 0.05, $$3.e);
       }
    }
 
    protected void L_() {
-      if (!this.dP().B || this.fs()) {
-         bqq $$0 = this.ft();
+      if (!this.dO().B || this.fr()) {
+         bqq $$0 = this.fs();
          if (!this.bz.equals(this.b($$0))) {
-            this.fx();
+            this.fw();
          } else {
-            if (!this.bz.e() && this.fs()) {
+            if (!this.bz.e() && this.fr()) {
                this.b(this.bz, 16);
-               cuq $$1 = this.bz.a(this.dP(), this);
+               cuq $$1 = this.bz.a(this.dO(), this);
                if ($$1 != this.bz) {
                   this.a($$0, $$1);
                }
 
-               this.fy();
+               this.fx();
             }
          }
       }
    }
 
-   public cuq fu() {
+   public cuq ft() {
       return this.bz;
    }
 
-   public int fv() {
+   public int fu() {
       return this.bA;
    }
 
-   public int fw() {
-      return this.fs() ? this.bz.a(this) - this.fv() : 0;
+   public int fv() {
+      return this.fr() ? this.bz.a(this) - this.fu() : 0;
    }
 
-   public void fx() {
+   public void fw() {
       if (!this.bz.e()) {
-         this.bz.a(this.dP(), this, this.fv());
+         this.bz.a(this.dO(), this, this.fu());
          if (this.bz.v()) {
             this.J();
          }
       }
 
-      this.fy();
+      this.fx();
    }
 
-   public void fy() {
-      if (!this.dP().B) {
-         boolean $$0 = this.fs();
+   public void fx() {
+      if (!this.dO().B) {
+         boolean $$0 = this.fr();
          this.c(1, false);
          if ($$0) {
             this.a(dxz.C);
@@ -2989,8 +2989,8 @@ public abstract class btn extends bsr implements bso {
       this.bA = 0;
    }
 
-   public boolean fz() {
-      if (this.fs() && !this.bz.e()) {
+   public boolean fy() {
+      if (this.fr() && !this.bz.e()) {
          cul $$0 = this.bz.g();
          return $$0.b(this.bz) != cwo.d ? false : $$0.a(this.bz, this) - this.bA >= 5;
       } else {
@@ -2998,31 +2998,31 @@ public abstract class btn extends bsr implements bso {
       }
    }
 
-   public boolean fA() {
+   public boolean fz() {
       return this.bW();
    }
 
-   public boolean fB() {
+   public boolean fA() {
       return this.i(7);
    }
 
    @Override
    public boolean ce() {
-      return super.ce() || !this.fB() && this.c(bua.b);
+      return super.ce() || !this.fA() && this.c(bua.b);
    }
 
-   public int fC() {
+   public int fB() {
       return this.bB;
    }
 
    public boolean b(double $$0, double $$1, double $$2, boolean $$3) {
-      double $$4 = this.du();
-      double $$5 = this.dw();
-      double $$6 = this.dA();
+      double $$4 = this.dt();
+      double $$5 = this.dv();
+      double $$6 = this.dz();
       double $$7 = $$1;
       boolean $$8 = false;
       jd $$9 = jd.a($$0, $$1, $$2);
-      dcw $$10 = this.dP();
+      dcw $$10 = this.dO();
       if ($$10.B($$9)) {
          boolean $$11 = false;
 
@@ -3039,7 +3039,7 @@ public abstract class btn extends bsr implements bso {
 
          if ($$11) {
             this.c($$0, $$7, $$2);
-            if ($$10.g(this) && !$$10.d(this.cL())) {
+            if ($$10.g(this) && !$$10.d(this.cK())) {
                $$8 = true;
             }
          }
@@ -3061,11 +3061,11 @@ public abstract class btn extends bsr implements bso {
       }
    }
 
-   public boolean fD() {
-      return !this.ey();
+   public boolean fC() {
+      return !this.ex();
    }
 
-   public boolean fE() {
+   public boolean fD() {
       return true;
    }
 
@@ -3078,33 +3078,33 @@ public abstract class btn extends bsr implements bso {
 
    @Override
    public final bsu a(bua $$0) {
-      return $$0 == bua.c ? aF : this.e($$0).a(this.ec());
+      return $$0 == bua.c ? aF : this.e($$0).a(this.eb());
    }
 
    protected bsu e(bua $$0) {
-      return this.am().n().a(this.eb());
+      return this.am().n().a(this.ea());
    }
 
-   public ImmutableList<bua> fF() {
+   public ImmutableList<bua> fE() {
       return ImmutableList.of(bua.a);
    }
 
-   public ewv f(bua $$0) {
+   public ewx f(bua $$0) {
       bsu $$1 = this.a($$0);
-      return new ewv((double)(-$$1.a() / 2.0F), 0.0, (double)(-$$1.a() / 2.0F), (double)($$1.a() / 2.0F), (double)$$1.b(), (double)($$1.a() / 2.0F));
+      return new ewx((double)(-$$1.a() / 2.0F), 0.0, (double)(-$$1.a() / 2.0F), (double)($$1.a() / 2.0F), (double)$$1.b(), (double)($$1.a() / 2.0F));
    }
 
    protected boolean g(bua $$0) {
-      ewv $$1 = this.a($$0).a(this.dn());
-      return this.dP().b(this, $$1);
+      ewx $$1 = this.a($$0).a(this.dm());
+      return this.dO().b(this, $$1);
    }
 
    @Override
-   public boolean cx() {
-      return super.cx() && !this.fI();
+   public boolean o(boolean $$0) {
+      return super.o($$0) && !this.fH();
    }
 
-   public Optional<jd> fG() {
+   public Optional<jd> fF() {
       return this.ao.a(bR);
    }
 
@@ -3112,12 +3112,12 @@ public abstract class btn extends bsr implements bso {
       this.ao.a(bR, Optional.of($$0));
    }
 
-   public void fH() {
+   public void fG() {
       this.ao.a(bR, Optional.empty());
    }
 
-   public boolean fI() {
-      return this.fG().isPresent();
+   public boolean fH() {
+      return this.fF().isPresent();
    }
 
    public void b(jd $$0) {
@@ -3125,15 +3125,15 @@ public abstract class btn extends bsr implements bso {
          this.ad();
       }
 
-      dtc $$1 = this.dP().a_($$0);
+      dtc $$1 = this.dO().a_($$0);
       if ($$1.b() instanceof dfr) {
-         this.dP().a($$0, $$1.a(dfr.c, Boolean.valueOf(true)), 3);
+         this.dO().a($$0, $$1.a(dfr.c, Boolean.valueOf(true)), 3);
       }
 
       this.b(bua.c);
       this.a($$0);
       this.g($$0);
-      this.i(exa.b);
+      this.i(exc.b);
       this.av = true;
    }
 
@@ -3142,41 +3142,41 @@ public abstract class btn extends bsr implements bso {
    }
 
    private boolean O() {
-      return this.fG().map($$0 -> this.dP().a_($$0).b() instanceof dfr).orElse(false);
+      return this.fF().map($$0 -> this.dO().a_($$0).b() instanceof dfr).orElse(false);
    }
 
-   public void fJ() {
-      this.fG().filter(this.dP()::B).ifPresent($$0x -> {
-         dtc $$1 = this.dP().a_($$0x);
+   public void fI() {
+      this.fF().filter(this.dO()::B).ifPresent($$0x -> {
+         dtc $$1 = this.dO().a_($$0x);
          if ($$1.b() instanceof dfr) {
             ji $$2 = $$1.c(dfr.aE);
-            this.dP().a($$0x, $$1.a(dfr.c, Boolean.valueOf(false)), 3);
-            exa $$3 = dfr.a(this.am(), this.dP(), $$0x, $$2, this.dF()).orElseGet(() -> {
+            this.dO().a($$0x, $$1.a(dfr.c, Boolean.valueOf(false)), 3);
+            exc $$3 = dfr.a(this.am(), this.dO(), $$0x, $$2, this.dE()).orElseGet(() -> {
                jd $$1x = $$0x.d();
-               return new exa((double)$$1x.u() + 0.5, (double)$$1x.v() + 0.1, (double)$$1x.w() + 0.5);
+               return new exc((double)$$1x.u() + 0.5, (double)$$1x.v() + 0.1, (double)$$1x.w() + 0.5);
             });
-            exa $$4 = exa.c($$0x).d($$3).d();
+            exc $$4 = exc.c($$0x).d($$3).d();
             float $$5 = (float)ayo.d(ayo.d($$4.e, $$4.c) * 180.0F / (float)Math.PI - 90.0);
             this.a_($$3.c, $$3.d, $$3.e);
             this.t($$5);
             this.u(0.0F);
          }
       });
-      exa $$0 = this.dn();
+      exc $$0 = this.dm();
       this.b(bua.a);
       this.a_($$0.c, $$0.d, $$0.e);
-      this.fH();
+      this.fG();
    }
 
    @Nullable
-   public ji fK() {
-      jd $$0 = this.fG().orElse(null);
-      return $$0 != null ? dfr.a(this.dP(), $$0) : null;
+   public ji fJ() {
+      jd $$0 = this.fF().orElse(null);
+      return $$0 != null ? dfr.a(this.dO(), $$0) : null;
    }
 
    @Override
    public boolean bF() {
-      return !this.fI() && super.bF();
+      return !this.fH() && super.bF();
    }
 
    public cuq g(cuq $$0) {
@@ -3189,7 +3189,7 @@ public abstract class btn extends bsr implements bso {
    }
 
    public cuq a(dcw $$0, cuq $$1, cpr $$2) {
-      $$0.a(null, this.du(), this.dw(), this.dA(), this.d($$1), avq.g, 1.0F, 1.0F + ($$0.z.i() - $$0.z.i()) * 0.4F);
+      $$0.a(null, this.dt(), this.dv(), this.dz(), this.d($$1), avq.g, 1.0F, 1.0F + ($$0.z.i() - $$0.z.i()) * 0.4F);
       this.a($$2);
       $$1.a(1, this);
       this.a(dxz.m);
@@ -3197,7 +3197,7 @@ public abstract class btn extends bsr implements bso {
    }
 
    private void a(cpr $$0) {
-      if (!this.dP().x_()) {
+      if (!this.dO().x_()) {
          for (cpr.b $$2 : $$0.g()) {
             if (this.ah.i() < $$2.b()) {
                this.b($$2.a());
@@ -3219,7 +3219,7 @@ public abstract class btn extends bsr implements bso {
    }
 
    public void a(cul $$0, bsy $$1) {
-      this.dP().a(this, g($$1));
+      this.dO().a(this, g($$1));
    }
 
    public static bsy d(bqq $$0) {
@@ -3227,10 +3227,10 @@ public abstract class btn extends bsr implements bso {
    }
 
    @Override
-   public ewv h_() {
+   public ewx h_() {
       if (this.a(bsy.f).a(cut.uq)) {
          float $$0 = 0.5F;
-         return this.cL().c(0.5, 0.5, 0.5);
+         return this.cK().c(0.5, 0.5, 0.5);
       } else {
          return super.h_();
       }
@@ -3278,22 +3278,22 @@ public abstract class btn extends bsr implements bso {
    }
 
    @Override
-   public boolean dD() {
+   public boolean dC() {
       if (this.R_()) {
          return false;
       } else {
          boolean $$0 = !this.a(bsy.f).a(awn.aZ) && !this.a(bsy.e).a(awn.aZ) && !this.a(bsy.d).a(awn.aZ) && !this.a(bsy.c).a(awn.aZ) && !this.a(bsy.g).a(awn.aZ);
-         return $$0 && super.dD();
+         return $$0 && super.dC();
       }
    }
 
    @Override
    public boolean ch() {
-      return !this.dP().x_() && this.b(bsb.x) || super.ch();
+      return !this.dO().x_() && this.b(bsb.x) || super.ch();
    }
 
    @Override
-   public float dG() {
+   public float dF() {
       return this.aY;
    }
 
@@ -3315,19 +3315,19 @@ public abstract class btn extends bsr implements bso {
       this.n($$0.j(), $$0.k(), $$0.l());
    }
 
-   public boolean fL() {
-      return this.dT().g() instanceof csk;
+   public boolean fK() {
+      return this.dS().g() instanceof csk;
    }
 
    @Override
-   public float dJ() {
+   public float dI() {
       float $$0 = (float)this.g(buw.B);
-      return this.cR() instanceof cmx ? Math.max($$0, 1.0F) : $$0;
+      return this.cQ() instanceof cmx ? Math.max($$0, 1.0F) : $$0;
    }
 
    @Override
-   public exa m(bsr $$0) {
-      return this.dn().e(this.a($$0, this.a(this.at()), this.ec() * this.eb()));
+   public exc m(bsr $$0) {
+      return this.dm().e(this.a($$0, this.a(this.at()), this.eb() * this.ea()));
    }
 
    protected void a(int $$0, double $$1) {
@@ -3339,7 +3339,7 @@ public abstract class btn extends bsr implements bso {
       super.g(ayo.c((double)$$0 * this.g(buw.h)));
    }
 
-   public boolean fM() {
+   public boolean fL() {
       return false;
    }
 
@@ -3348,7 +3348,7 @@ public abstract class btn extends bsr implements bso {
       if (super.b($$0)) {
          return true;
       } else {
-         if (this.dP() instanceof aqu $$1 && dae.a($$1, this, $$0)) {
+         if (this.dO() instanceof aqu $$1 && dae.a($$1, this, $$0)) {
             return true;
          }
 

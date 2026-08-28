@@ -10,7 +10,7 @@ public class bvn extends bvh<btn> {
    }
 
    private Optional<Integer> b(btn $$0) {
-      return $$0.dU().c(this.c);
+      return $$0.dT().c(this.c);
    }
 
    @Override
@@ -27,11 +27,11 @@ public class bvn extends bvh<btn> {
    @Override
    protected void c(aqu $$0, btn $$1, long $$2) {
       Optional<Integer> $$3 = this.b($$1);
-      $$1.dU().a(this.c, $$3.get() - 1);
+      $$1.dT().a(this.c, $$3.get() - 1);
    }
 
    @Override
    protected void b(aqu $$0, btn $$1, long $$2) {
-      $$1.dU().b(this.c);
+      $$1.dT().b(this.c);
    }
 }

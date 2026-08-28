@@ -40,7 +40,7 @@ public abstract class bul extends cfe implements btv {
          $$1 = $$0.a("Owner");
       } else {
          String $$2 = $$0.l("Owner");
-         $$1 = auq.a(this.cP(), $$2);
+         $$1 = auq.a(this.cO(), $$2);
       }
 
       if ($$1 != null) {
@@ -53,7 +53,7 @@ public abstract class bul extends cfe implements btv {
       }
 
       this.ch = $$0.q("Sitting");
-      this.x(this.ch);
+      this.y(this.ch);
    }
 
    @Override
@@ -74,7 +74,7 @@ public abstract class bul extends cfe implements btv {
       }
    }
 
-   protected void w(boolean $$0) {
+   protected void x(boolean $$0) {
       lk $$1 = lm.Q;
       if (!$$0) {
          $$1 = lm.ae;
@@ -84,16 +84,16 @@ public abstract class bul extends cfe implements btv {
          double $$3 = this.ah.k() * 0.02;
          double $$4 = this.ah.k() * 0.02;
          double $$5 = this.ah.k() * 0.02;
-         this.dP().a($$1, this.d(1.0), this.dx() + 0.5, this.g(1.0), $$3, $$4, $$5);
+         this.dO().a($$1, this.d(1.0), this.dw() + 0.5, this.g(1.0), $$3, $$4, $$5);
       }
    }
 
    @Override
    public void b(byte $$0) {
       if ($$0 == 7) {
-         this.w(true);
+         this.x(true);
       } else if ($$0 == 6) {
-         this.w(false);
+         this.x(false);
       } else {
          super.b($$0);
       }
@@ -123,7 +123,7 @@ public abstract class bul extends cfe implements btv {
       return (this.ao.a(cb) & 1) != 0;
    }
 
-   public void x(boolean $$0) {
+   public void y(boolean $$0) {
       byte $$1 = this.ao.a(cb);
       if ($$0) {
          this.ao.a(cb, (byte)($$1 | 1));
@@ -144,7 +144,7 @@ public abstract class bul extends cfe implements btv {
 
    public void a(cmx $$0) {
       this.b(true, true);
-      this.b($$0.cA());
+      this.b($$0.cz());
       if ($$0 instanceof aqv $$1) {
          an.y.a($$1, this);
       }
@@ -164,7 +164,7 @@ public abstract class bul extends cfe implements btv {
    }
 
    @Override
-   public exz ck() {
+   public eyb ck() {
       if (this.s()) {
          btn $$0 = this.T_();
          if ($$0 != null) {
@@ -193,29 +193,29 @@ public abstract class bul extends cfe implements btv {
 
    @Override
    public void a(brk $$0) {
-      if (!this.dP().B && this.dP().ab().b(dcs.n) && this.T_() instanceof aqv) {
-         this.T_().a(this.eM().a());
+      if (!this.dO().B && this.dO().ab().b(dcs.n) && this.T_() instanceof aqv) {
+         this.T_().a(this.eL().a());
       }
 
       super.a($$0);
    }
 
-   public boolean gl() {
+   public boolean gk() {
       return this.ch;
    }
 
-   public void y(boolean $$0) {
+   public void z(boolean $$0) {
       this.ch = $$0;
    }
 
-   public void gm() {
+   public void gl() {
       btn $$0 = this.T_();
       if ($$0 != null) {
-         this.h($$0.dp());
+         this.h($$0.do());
       }
    }
 
-   public boolean gn() {
+   public boolean gm() {
       btn $$0 = this.T_();
       return $$0 != null && this.g((bsr)this.T_()) >= 144.0;
    }
@@ -237,32 +237,32 @@ public abstract class bul extends cfe implements btv {
       if (!this.i(new jd($$0, $$1, $$2))) {
          return false;
       } else {
-         this.b((double)$$0 + 0.5, (double)$$1, (double)$$2 + 0.5, this.dF(), this.dH());
+         this.b((double)$$0 + 0.5, (double)$$1, (double)$$2 + 0.5, this.dE(), this.dG());
          this.bT.n();
          return true;
       }
    }
 
    private boolean i(jd $$0) {
-      ept $$1 = epy.b(this, $$0);
-      if ($$1 != ept.c) {
+      epv $$1 = eqa.b(this, $$0);
+      if ($$1 != epv.c) {
          return false;
       } else {
-         dtc $$2 = this.dP().a_($$0.e());
-         if (!this.gp() && $$2.b() instanceof dki) {
+         dtc $$2 = this.dO().a_($$0.e());
+         if (!this.go() && $$2.b() instanceof dki) {
             return false;
          } else {
-            jd $$3 = $$0.b(this.dp());
-            return this.dP().a(this, this.cL().a($$3));
+            jd $$3 = $$0.b(this.do());
+            return this.dO().a(this, this.cK().a($$3));
          }
       }
    }
 
-   public final boolean go() {
-      return this.gl() || this.bS() || this.O_() || this.T_() != null && this.T_().R_();
+   public final boolean gn() {
+      return this.gk() || this.bS() || this.O_() || this.T_() != null && this.T_().R_();
    }
 
-   protected boolean gp() {
+   protected boolean go() {
       return false;
    }
 
@@ -277,8 +277,8 @@ public abstract class bul extends cfe implements btv {
 
       @Override
       public void a() {
-         if (!bul.this.go() && bul.this.gn()) {
-            bul.this.gm();
+         if (!bul.this.gn() && bul.this.gm()) {
+            bul.this.gl();
          }
 
          super.a();

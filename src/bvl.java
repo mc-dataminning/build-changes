@@ -12,7 +12,7 @@ public class bvl extends bvh<cmk> {
    }
 
    protected boolean a(aqu $$0, cmk $$1) {
-      jd $$2 = $$1.dp();
+      jd $$2 = $$1.do();
       this.c = $$0.d($$2);
       return this.c != null && this.c.e() && bwq.a($$0, $$1, $$2);
    }
@@ -23,21 +23,21 @@ public class bvl extends bvh<cmk> {
 
    protected void b(aqu $$0, cmk $$1, long $$2) {
       this.c = null;
-      $$1.dU().a($$0.aa(), $$0.Z());
+      $$1.dT().a($$0.aa(), $$0.Z());
    }
 
    protected void c(aqu $$0, cmk $$1, long $$2) {
-      ayw $$3 = $$1.dS();
+      ayw $$3 = $$1.dR();
       if ($$3.a(100) == 0) {
-         $$1.gq();
+         $$1.gp();
       }
 
-      if ($$3.a(200) == 0 && bwq.a($$0, $$1, $$1.dp())) {
+      if ($$3.a(200) == 0 && bwq.a($$0, $$1, $$1.do())) {
          cti $$4 = ad.a(cti.values(), $$3);
          int $$5 = $$3.a(3);
          cuq $$6 = this.a($$4, $$5);
-         cnk $$7 = new cnk($$1.dP(), $$1, $$1.du(), $$1.dy(), $$1.dA(), $$6);
-         $$1.dP().b($$7);
+         cnk $$7 = new cnk($$1.dO(), $$1, $$1.dt(), $$1.dx(), $$1.dz(), $$6);
+         $$1.dO().b($$7);
       }
    }
 

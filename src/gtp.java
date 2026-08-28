@@ -1,29 +1,31 @@
-public class gtp extends gth {
-   private final bsr n;
+public class gtp implements gtk {
+   private final geb a;
+   private boolean b;
+   private boolean c = true;
 
-   public gtp(avo $$0, avq $$1, float $$2, float $$3, bsr $$4, long $$5) {
-      super($$0, $$1, ayw.a($$5));
-      this.d = $$2;
-      this.e = $$3;
-      this.n = $$4;
-      this.f = (double)((float)this.n.du());
-      this.g = (double)((float)this.n.dw());
-      this.h = (double)((float)this.n.dA());
+   public gtp(geb $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public boolean s() {
-      return !this.n.aX();
-   }
+   public void a() {
+      dcw $$0 = this.a.dO();
+      dtc $$1 = $$0.c(this.a.cK().c(0.0, -0.4F, 0.0).h(1.0E-6)).filter($$0x -> $$0x.a(dga.nd)).findFirst().orElse(null);
+      if ($$1 != null) {
+         if (!this.b && !this.c && $$1.a(dga.nd) && !this.a.R_()) {
+            boolean $$2 = $$1.c(dge.b);
+            if ($$2) {
+               this.a.a(avp.db, 1.0F, 1.0F);
+            } else {
+               this.a.a(avp.cZ, 1.0F, 1.0F);
+            }
+         }
 
-   @Override
-   public void q() {
-      if (this.n.dK()) {
-         this.n();
+         this.b = true;
       } else {
-         this.f = (double)((float)this.n.du());
-         this.g = (double)((float)this.n.dw());
-         this.h = (double)((float)this.n.dA());
+         this.b = false;
       }
+
+      this.c = false;
    }
 }

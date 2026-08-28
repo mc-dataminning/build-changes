@@ -14,7 +14,7 @@ public interface dyc {
       }
 
       @Override
-      public boolean a(jm<dxz> $$0, exa $$1, dxz.a $$2, dyc.a $$3) {
+      public boolean a(jm<dxz> $$0, exc $$1, dxz.a $$2, dyc.a $$3) {
          return false;
       }
    };
@@ -25,10 +25,10 @@ public interface dyc {
 
    void b(dyb var1);
 
-   boolean a(jm<dxz> var1, exa var2, dxz.a var3, dyc.a var4);
+   boolean a(jm<dxz> var1, exc var2, dxz.a var3, dyc.a var4);
 
    @FunctionalInterface
    public interface a {
-      void visit(dyb var1, exa var2);
+      void visit(dyb var1, exc var2);
    }
 }

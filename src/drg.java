@@ -1,7 +1,7 @@
 public interface drg extends bqk {
-   ewv q_ = dfy.a(0.0, 11.0, 0.0, 16.0, 32.0, 16.0).e().get(0);
+   ewx q_ = dfy.a(0.0, 11.0, 0.0, 16.0, 32.0, 16.0).e().get(0);
 
-   default ewv am_() {
+   default ewx am_() {
       return q_;
    }
 

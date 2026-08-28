@@ -20,9 +20,9 @@ public class cuf extends cul {
       if ($$0.e()) {
          return new cuq(cut.sl);
       } else {
-         if ($$2 instanceof cmx $$4 && !$$4.fM()) {
+         if ($$2 instanceof cmx $$4 && !$$4.fL()) {
             cuq $$5 = new cuq(cut.sl);
-            if (!$$4.fZ().f($$5)) {
+            if (!$$4.fY().f($$5)) {
                $$4.a($$5, false);
             }
          }

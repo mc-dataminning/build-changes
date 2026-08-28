@@ -1,53 +1,29 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
+import javax.annotation.Nullable;
 
-public record evs(evw b, evw c) implements evw {
-   public static final MapCodec<evs> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(evx.a.fieldOf("n").forGetter(evs::c), evx.a.fieldOf("p").forGetter(evs::d)).apply($$0, evs::new)
-   );
+public record evs(akr b) implements evq {
+   public static final MapCodec<evs> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(akr.a.fieldOf("source").forGetter(evs::c)).apply($$0, evs::new));
 
    @Override
-   public evv b() {
-      return evx.d;
+   public evp a() {
+      return evr.b;
    }
 
+   @Nullable
    @Override
-   public int a(erp $$0) {
-      int $$1 = this.b.a($$0);
-      float $$2 = this.c.b($$0);
-      ayw $$3 = $$0.b();
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$5 < $$1; $$5++) {
-         if ($$3.i() < $$2) {
-            $$4++;
-         }
-      }
-
-      return $$4;
+   public uy a(err $$0) {
+      return $$0.d().o().aL().a(this.b);
    }
 
    @Override
-   public float b(erp $$0) {
-      return (float)this.a($$0);
+   public Set<euk<?>> b() {
+      return ImmutableSet.of();
    }
 
-   public static evs a(int $$0, float $$1) {
-      return new evs(evt.a((float)$$0), evt.a($$1));
-   }
-
-   @Override
-   public Set<eui<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
-
-   public evw c() {
+   public akr c() {
       return this.b;
-   }
-
-   public evw d() {
-      return this.c;
    }
 }

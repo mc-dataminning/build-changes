@@ -9,7 +9,7 @@ public class auu {
    }
 
    public boolean a(int $$0, List<aqv> $$1) {
-      int $$2 = (int)$$1.stream().filter(cmx::gc).count();
+      int $$2 = (int)$$1.stream().filter(cmx::gb).count();
       return $$2 >= this.b($$0);
    }
 
@@ -34,7 +34,7 @@ public class auu {
       for (aqv $$3 : $$0) {
          if (!$$3.R_()) {
             this.a++;
-            if ($$3.fI()) {
+            if ($$3.fH()) {
                this.b++;
             }
          }

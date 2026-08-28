@@ -1,13 +1,13 @@
 import com.mojang.serialization.Codec;
 
-public class ebx extends ecd<eee> {
-   public ebx(Codec<eee> $$0) {
+public class ebx extends ece<eef> {
+   public ebx(Codec<eef> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecf<eee> $$0) {
-      eee $$1 = $$0.f();
+   public boolean a(ecg<eef> $$0) {
+      eef $$1 = $$0.f();
       jd $$2 = $$0.e();
       dds $$3 = $$0.b();
       ayw $$4 = $$0.d();
@@ -29,7 +29,7 @@ public class ebx extends ecd<eee> {
       return $$5;
    }
 
-   protected boolean a(eee $$0, dds $$1, ayw $$2, int $$3, int $$4, jd.a $$5) {
+   protected boolean a(eef $$0, dds $$1, ayw $$2, int $$3, int $$4, jd.a $$5) {
       boolean $$6 = false;
 
       for (int $$7 = $$3; $$7 > $$4; $$7--) {

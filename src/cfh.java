@@ -24,11 +24,11 @@ public class cfh extends bul implements buo<jm<cfi>> {
 
    public cfh(bsx<? extends cfh> $$0, dcw $$1) {
       super($$0, $$1);
-      this.gB();
+      this.gA();
    }
 
-   public akr gv() {
-      return this.gw().a().a();
+   public akr gu() {
+      return this.gv().a().a();
    }
 
    @Override
@@ -51,7 +51,7 @@ public class cfh extends bul implements buo<jm<cfi>> {
       this.bV.a(1, new cci<>(this, cgf.class, false, cgf.ca));
    }
 
-   public jm<cfi> gw() {
+   public jm<cfi> gv() {
       return this.ao.a(ch);
    }
 
@@ -60,23 +60,23 @@ public class cfh extends bul implements buo<jm<cfi>> {
       this.ao.a(ch, $$0);
    }
 
-   public void z(boolean $$0) {
+   public void A(boolean $$0) {
       this.ao.a(ci, $$0);
    }
 
-   public boolean gx() {
+   public boolean gw() {
       return this.ao.a(ci);
    }
 
-   void A(boolean $$0) {
+   void B(boolean $$0) {
       this.ao.a(cj, $$0);
    }
 
-   boolean gC() {
+   boolean gB() {
       return this.ao.a(cj);
    }
 
-   public cti gy() {
+   public cti gx() {
       return cti.a(this.ao.a(ck));
    }
 
@@ -96,8 +96,8 @@ public class cfh extends bul implements buo<jm<cfi>> {
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      $$0.a("variant", this.gw().e().orElse(cl).a().toString());
-      $$0.a("CollarColor", (byte)this.gy().a());
+      $$0.a("variant", this.gv().e().orElse(cl).a().toString());
+      $$0.a("CollarColor", (byte)this.gx().a());
    }
 
    @Override
@@ -133,7 +133,7 @@ public class cfh extends bul implements buo<jm<cfi>> {
    @Override
    protected avo v() {
       if (this.s()) {
-         if (this.gt()) {
+         if (this.gs()) {
             return avp.dX;
          } else {
             return this.ah.a(4) == 0 ? avp.dY : avp.dQ;
@@ -148,7 +148,7 @@ public class cfh extends bul implements buo<jm<cfi>> {
       return 120;
    }
 
-   public void gz() {
+   public void gy() {
       this.b(avp.dU);
    }
 
@@ -162,7 +162,7 @@ public class cfh extends bul implements buo<jm<cfi>> {
       return avp.dS;
    }
 
-   public static buv.a gA() {
+   public static buv.a gz() {
       return btp.C().a(buw.s, 10.0).a(buw.v, 0.3F).a(buw.c, 3.0);
    }
 
@@ -182,22 +182,22 @@ public class cfh extends bul implements buo<jm<cfi>> {
          this.a(avp.dV, 1.0F, 1.0F);
       }
 
-      this.gD();
+      this.gC();
    }
 
-   private void gD() {
-      if ((this.gx() || this.gC()) && this.ai % 5 == 0) {
+   private void gC() {
+      if ((this.gw() || this.gB()) && this.ai % 5 == 0) {
          this.a(avp.dX, 0.6F + 0.4F * (this.ah.i() - this.ah.i()), 1.0F);
       }
 
+      this.gD();
       this.gE();
-      this.gF();
    }
 
-   private void gE() {
+   private void gD() {
       this.cp = this.co;
       this.cr = this.cq;
-      if (this.gx()) {
+      if (this.gw()) {
          this.co = Math.min(1.0F, this.co + 0.15F);
          this.cq = Math.min(1.0F, this.cq + 0.08F);
       } else {
@@ -206,9 +206,9 @@ public class cfh extends bul implements buo<jm<cfi>> {
       }
    }
 
-   private void gF() {
+   private void gE() {
       this.ct = this.cs;
-      if (this.gC()) {
+      if (this.gB()) {
          this.cs = Math.min(1.0F, this.cs + 0.1F);
       } else {
          this.cs = Math.max(0.0F, this.cs - 0.13F);
@@ -232,18 +232,18 @@ public class cfh extends bul implements buo<jm<cfi>> {
       cfh $$2 = bsx.p.a((dcw)$$0);
       if ($$2 != null && $$1 instanceof cfh $$3) {
          if (this.ah.h()) {
-            $$2.i(this.gw());
+            $$2.i(this.gv());
          } else {
-            $$2.i($$3.gw());
+            $$2.i($$3.gv());
          }
 
          if (this.s()) {
             $$2.b(this.aa_());
             $$2.b(true, true);
             if (this.ah.h()) {
-               $$2.a(this.gy());
+               $$2.a(this.gx());
             } else {
-               $$2.a($$3.gy());
+               $$2.a($$3.gx());
             }
          }
       }
@@ -268,9 +268,9 @@ public class cfh extends bul implements buo<jm<cfi>> {
       awu<cfi> $$5 = $$4 ? awf.b : awf.a;
       lt.ai.a($$5, $$0.E_()).ifPresent(this::i);
       aqu $$6 = $$0.E();
-      if ($$6.a().a(this.dp(), awq.o).b()) {
+      if ($$6.a().a(this.do(), awq.o).b()) {
          this.i(lt.ai.g(cfi.l));
-         this.fS();
+         this.fR();
       }
 
       return $$3;
@@ -284,46 +284,46 @@ public class cfh extends bul implements buo<jm<cfi>> {
          if (this.j($$0)) {
             if ($$3 instanceof ctj $$4) {
                cti $$5 = $$4.c();
-               if ($$5 != this.gy()) {
-                  if (!this.dP().x_()) {
+               if ($$5 != this.gx()) {
+                  if (!this.dO().x_()) {
                      this.a($$5);
                      $$2.a(1, $$0);
-                     this.fS();
+                     this.fR();
                   }
 
-                  return bqr.a(this.dP().x_());
+                  return bqr.a(this.dO().x_());
                }
-            } else if (this.o($$2) && this.ex() < this.eO()) {
-               if (!this.dP().x_()) {
+            } else if (this.o($$2) && this.ew() < this.eN()) {
+               if (!this.dO().x_()) {
                   this.a($$0, $$1, $$2);
                   cpr $$6 = $$2.a(kq.v);
                   this.c($$6 != null ? (float)$$6.b() : 1.0F);
                }
 
-               return bqr.a(this.dP().x_());
+               return bqr.a(this.dO().x_());
             }
 
             bqr $$7 = super.b($$0, $$1);
             if (!$$7.a()) {
-               this.y(!this.gl());
-               return bqr.a(this.dP().x_());
+               this.z(!this.gk());
+               return bqr.a(this.dO().x_());
             }
 
             return $$7;
          }
       } else if (this.o($$2)) {
-         if (!this.dP().x_()) {
+         if (!this.dO().x_()) {
             this.a($$0, $$1, $$2);
             this.g($$0);
-            this.fS();
+            this.fR();
          }
 
-         return bqr.a(this.dP().x_());
+         return bqr.a(this.dO().x_());
       }
 
       bqr $$8 = super.b($$0, $$1);
       if ($$8.a()) {
-         this.fS();
+         this.fR();
       }
 
       return $$8;
@@ -342,10 +342,10 @@ public class cfh extends bul implements buo<jm<cfi>> {
    @Override
    public void b(boolean $$0, boolean $$1) {
       super.b($$0, $$1);
-      this.gB();
+      this.gA();
    }
 
-   protected void gB() {
+   protected void gA() {
       if (this.cm == null) {
          this.cm = new cfh.a<>(this, cmx.class, 16.0F, 0.8, 1.33);
       }
@@ -359,10 +359,10 @@ public class cfh extends bul implements buo<jm<cfi>> {
    private void g(cmx $$0) {
       if (this.ah.a(3) == 0) {
          this.a($$0);
-         this.y(true);
-         this.dP().a(this, (byte)7);
+         this.z(true);
+         this.dO().a(this, (byte)7);
       } else {
-         this.dP().a(this, (byte)6);
+         this.dO().a(this, (byte)6);
       }
    }
 
@@ -406,13 +406,13 @@ public class cfh extends bul implements buo<jm<cfi>> {
       public boolean b() {
          if (!this.a.s()) {
             return false;
-         } else if (this.a.gl()) {
+         } else if (this.a.gk()) {
             return false;
          } else {
             btn $$0 = this.a.T_();
             if ($$0 instanceof cmx) {
                this.b = (cmx)$$0;
-               if (!$$0.fI()) {
+               if (!$$0.fH()) {
                   return false;
                }
 
@@ -420,9 +420,9 @@ public class cfh extends bul implements buo<jm<cfi>> {
                   return false;
                }
 
-               jd $$1 = this.b.dp();
-               dtc $$2 = this.a.dP().a_($$1);
-               if ($$2.a(awe.R)) {
+               jd $$1 = this.b.do();
+               dtc $$2 = this.a.dO().a_($$1);
+               if ($$2.a(awe.S)) {
                   this.c = $$2.d(dfr.aE).map($$1x -> $$1.a($$1x.g())).orElseGet(() -> new jd($$1));
                   return !this.h();
                }
@@ -433,8 +433,8 @@ public class cfh extends bul implements buo<jm<cfi>> {
       }
 
       private boolean h() {
-         for (cfh $$1 : this.a.dP().a(cfh.class, new ewv(this.c).g(2.0))) {
-            if ($$1 != this.a && ($$1.gx() || $$1.gC())) {
+         for (cfh $$1 : this.a.dO().a(cfh.class, new ewx(this.c).g(2.0))) {
+            if ($$1 != this.a && ($$1.gw() || $$1.gB())) {
                return true;
             }
          }
@@ -444,45 +444,45 @@ public class cfh extends bul implements buo<jm<cfi>> {
 
       @Override
       public boolean c() {
-         return this.a.s() && !this.a.gl() && this.b != null && this.b.fI() && this.c != null && !this.h();
+         return this.a.s() && !this.a.gk() && this.b != null && this.b.fH() && this.c != null && !this.h();
       }
 
       @Override
       public void d() {
          if (this.c != null) {
-            this.a.x(false);
+            this.a.y(false);
             this.a.N().a((double)this.c.u(), (double)this.c.v(), (double)this.c.w(), 1.1F);
          }
       }
 
       @Override
       public void e() {
-         this.a.z(false);
-         float $$0 = this.a.dP().f(1.0F);
-         if (this.b.gd() >= 100 && (double)$$0 > 0.77 && (double)$$0 < 0.8 && (double)this.a.dP().E_().i() < 0.7) {
+         this.a.A(false);
+         float $$0 = this.a.dO().f(1.0F);
+         if (this.b.gc() >= 100 && (double)$$0 > 0.77 && (double)$$0 < 0.8 && (double)this.a.dO().E_().i() < 0.7) {
             this.i();
          }
 
          this.d = 0;
-         this.a.A(false);
+         this.a.B(false);
          this.a.N().n();
       }
 
       private void i() {
-         ayw $$0 = this.a.dS();
+         ayw $$0 = this.a.dR();
          jd.a $$1 = new jd.a();
-         $$1.g(this.a.N_() ? this.a.A().dp() : this.a.dp());
+         $$1.g(this.a.N_() ? this.a.A().do() : this.a.do());
          this.a.b((double)($$1.u() + $$0.a(11) - 5), (double)($$1.v() + $$0.a(5) - 2), (double)($$1.w() + $$0.a(11) - 5), false);
-         $$1.g(this.a.dp());
-         eru $$2 = this.a.dP().o().be().b(erl.aG);
-         ers $$3 = new ers.a((aqu)this.a.dP()).a(eul.f, this.a.dn()).a(eul.a, this.a).a(euk.j);
+         $$1.g(this.a.do());
+         erw $$2 = this.a.dO().o().be().b(ern.aG);
+         eru $$3 = new eru.a((aqu)this.a.dO()).a(eun.f, this.a.dm()).a(eun.a, this.a).a(eum.j);
 
          for (cuq $$5 : $$2.a($$3)) {
             this.a
-               .dP()
+               .dO()
                .b(
                   new cjh(
-                     this.a.dP(),
+                     this.a.dO(),
                      (double)$$1.u() - (double)ayo.a(this.a.aY * (float) (Math.PI / 180.0)),
                      (double)$$1.v(),
                      (double)$$1.w() + (double)ayo.b(this.a.aY * (float) (Math.PI / 180.0)),
@@ -495,19 +495,19 @@ public class cfh extends bul implements buo<jm<cfi>> {
       @Override
       public void a() {
          if (this.b != null && this.c != null) {
-            this.a.x(false);
+            this.a.y(false);
             this.a.N().a((double)this.c.u(), (double)this.c.v(), (double)this.c.w(), 1.1F);
             if (this.a.g(this.b) < 2.5) {
                this.d++;
                if (this.d > this.a(16)) {
-                  this.a.z(true);
-                  this.a.A(false);
+                  this.a.A(true);
+                  this.a.B(false);
                } else {
                   this.a.a(this.b, 45.0F, 45.0F);
-                  this.a.A(true);
+                  this.a.B(true);
                }
             } else {
-               this.a.z(false);
+               this.a.A(false);
             }
          }
       }
@@ -526,9 +526,9 @@ public class cfh extends bul implements buo<jm<cfi>> {
       @Override
       public void a() {
          super.a();
-         if (this.c == null && this.a.dS().a(this.a(600)) == 0) {
+         if (this.c == null && this.a.dR().a(this.a(600)) == 0) {
             this.c = this.b;
-         } else if (this.a.dS().a(this.a(500)) == 0) {
+         } else if (this.a.dR().a(this.a(500)) == 0) {
             this.c = null;
          }
       }

@@ -7,7 +7,7 @@ public class dmn extends dgh implements dgb {
    );
    public static final duc f = dts.aU;
    protected static final float g = 6.0F;
-   protected static final ext h = dfy.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
+   protected static final exv h = dfy.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
    protected final dsr i;
 
    @Override
@@ -22,7 +22,7 @@ public class dmn extends dgh implements dgb {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return h;
    }
 

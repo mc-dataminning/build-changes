@@ -2,70 +2,70 @@ import com.mojang.serialization.MapCodec;
 
 public class djk extends dis {
    public static final MapCodec<djk> a = b(djk::new);
-   public static final ext b = dfy.a(2.0, 0.0, 6.0, 4.0, 7.0, 10.0);
-   public static final ext c = dfy.a(12.0, 0.0, 6.0, 14.0, 7.0, 10.0);
-   public static final ext d = dfy.a(2.0, 7.0, 5.0, 4.0, 13.0, 11.0);
-   public static final ext e = dfy.a(12.0, 7.0, 5.0, 14.0, 13.0, 11.0);
-   public static final ext f = exq.a(b, d);
-   public static final ext g = exq.a(c, e);
-   public static final ext h = exq.a(f, g);
-   public static final ext i = exq.a(h, dfy.a(4.0, 4.0, 2.0, 12.0, 16.0, 14.0));
-   public static final ext j = dfy.a(6.0, 0.0, 2.0, 10.0, 7.0, 4.0);
-   public static final ext k = dfy.a(6.0, 0.0, 12.0, 10.0, 7.0, 14.0);
-   public static final ext l = dfy.a(5.0, 7.0, 2.0, 11.0, 13.0, 4.0);
-   public static final ext m = dfy.a(5.0, 7.0, 12.0, 11.0, 13.0, 14.0);
-   public static final ext n = exq.a(j, l);
-   public static final ext o = exq.a(k, m);
-   public static final ext F = exq.a(n, o);
-   public static final ext G = exq.a(F, dfy.a(2.0, 4.0, 4.0, 14.0, 16.0, 12.0));
-   public static final ext H = dfy.a(2.0, 6.0, 0.0, 4.0, 10.0, 7.0);
-   public static final ext I = dfy.a(12.0, 6.0, 0.0, 14.0, 10.0, 7.0);
-   public static final ext J = dfy.a(2.0, 5.0, 7.0, 4.0, 11.0, 13.0);
-   public static final ext L = dfy.a(12.0, 5.0, 7.0, 14.0, 11.0, 13.0);
-   public static final ext M = exq.a(H, J);
-   public static final ext N = exq.a(I, L);
-   public static final ext O = exq.a(M, N);
-   public static final ext P = exq.a(O, dfy.a(4.0, 2.0, 4.0, 12.0, 14.0, 16.0));
-   public static final ext Q = dfy.a(2.0, 6.0, 7.0, 4.0, 10.0, 16.0);
-   public static final ext R = dfy.a(12.0, 6.0, 7.0, 14.0, 10.0, 16.0);
-   public static final ext S = dfy.a(2.0, 5.0, 3.0, 4.0, 11.0, 9.0);
-   public static final ext T = dfy.a(12.0, 5.0, 3.0, 14.0, 11.0, 9.0);
-   public static final ext U = exq.a(Q, S);
-   public static final ext V = exq.a(R, T);
-   public static final ext W = exq.a(U, V);
-   public static final ext X = exq.a(W, dfy.a(4.0, 2.0, 0.0, 12.0, 14.0, 12.0));
-   public static final ext Y = dfy.a(7.0, 6.0, 2.0, 16.0, 10.0, 4.0);
-   public static final ext Z = dfy.a(7.0, 6.0, 12.0, 16.0, 10.0, 14.0);
-   public static final ext aa = dfy.a(3.0, 5.0, 2.0, 9.0, 11.0, 4.0);
-   public static final ext ab = dfy.a(3.0, 5.0, 12.0, 9.0, 11.0, 14.0);
-   public static final ext ac = exq.a(Y, aa);
-   public static final ext ad = exq.a(Z, ab);
-   public static final ext ae = exq.a(ac, ad);
-   public static final ext af = exq.a(ae, dfy.a(0.0, 2.0, 4.0, 12.0, 14.0, 12.0));
-   public static final ext ag = dfy.a(0.0, 6.0, 2.0, 9.0, 10.0, 4.0);
-   public static final ext ah = dfy.a(0.0, 6.0, 12.0, 9.0, 10.0, 14.0);
-   public static final ext ai = dfy.a(7.0, 5.0, 2.0, 13.0, 11.0, 4.0);
-   public static final ext aj = dfy.a(7.0, 5.0, 12.0, 13.0, 11.0, 14.0);
-   public static final ext ak = exq.a(ag, ai);
-   public static final ext al = exq.a(ah, aj);
-   public static final ext am = exq.a(ak, al);
-   public static final ext an = exq.a(am, dfy.a(4.0, 2.0, 4.0, 16.0, 14.0, 12.0));
-   public static final ext ao = dfy.a(2.0, 9.0, 6.0, 4.0, 16.0, 10.0);
-   public static final ext ap = dfy.a(12.0, 9.0, 6.0, 14.0, 16.0, 10.0);
-   public static final ext aq = dfy.a(2.0, 3.0, 5.0, 4.0, 9.0, 11.0);
-   public static final ext ar = dfy.a(12.0, 3.0, 5.0, 14.0, 9.0, 11.0);
-   public static final ext as = exq.a(ao, aq);
-   public static final ext at = exq.a(ap, ar);
-   public static final ext au = exq.a(as, at);
-   public static final ext av = exq.a(au, dfy.a(4.0, 0.0, 2.0, 12.0, 12.0, 14.0));
-   public static final ext aw = dfy.a(6.0, 9.0, 2.0, 10.0, 16.0, 4.0);
-   public static final ext ax = dfy.a(6.0, 9.0, 12.0, 10.0, 16.0, 14.0);
-   public static final ext ay = dfy.a(5.0, 3.0, 2.0, 11.0, 9.0, 4.0);
-   public static final ext az = dfy.a(5.0, 3.0, 12.0, 11.0, 9.0, 14.0);
-   public static final ext aA = exq.a(aw, ay);
-   public static final ext aB = exq.a(ax, az);
-   public static final ext aC = exq.a(aA, aB);
-   public static final ext aD = exq.a(aC, dfy.a(2.0, 0.0, 4.0, 14.0, 12.0, 12.0));
+   public static final exv b = dfy.a(2.0, 0.0, 6.0, 4.0, 7.0, 10.0);
+   public static final exv c = dfy.a(12.0, 0.0, 6.0, 14.0, 7.0, 10.0);
+   public static final exv d = dfy.a(2.0, 7.0, 5.0, 4.0, 13.0, 11.0);
+   public static final exv e = dfy.a(12.0, 7.0, 5.0, 14.0, 13.0, 11.0);
+   public static final exv f = exs.a(b, d);
+   public static final exv g = exs.a(c, e);
+   public static final exv h = exs.a(f, g);
+   public static final exv i = exs.a(h, dfy.a(4.0, 4.0, 2.0, 12.0, 16.0, 14.0));
+   public static final exv j = dfy.a(6.0, 0.0, 2.0, 10.0, 7.0, 4.0);
+   public static final exv k = dfy.a(6.0, 0.0, 12.0, 10.0, 7.0, 14.0);
+   public static final exv l = dfy.a(5.0, 7.0, 2.0, 11.0, 13.0, 4.0);
+   public static final exv m = dfy.a(5.0, 7.0, 12.0, 11.0, 13.0, 14.0);
+   public static final exv n = exs.a(j, l);
+   public static final exv o = exs.a(k, m);
+   public static final exv F = exs.a(n, o);
+   public static final exv G = exs.a(F, dfy.a(2.0, 4.0, 4.0, 14.0, 16.0, 12.0));
+   public static final exv H = dfy.a(2.0, 6.0, 0.0, 4.0, 10.0, 7.0);
+   public static final exv I = dfy.a(12.0, 6.0, 0.0, 14.0, 10.0, 7.0);
+   public static final exv J = dfy.a(2.0, 5.0, 7.0, 4.0, 11.0, 13.0);
+   public static final exv L = dfy.a(12.0, 5.0, 7.0, 14.0, 11.0, 13.0);
+   public static final exv M = exs.a(H, J);
+   public static final exv N = exs.a(I, L);
+   public static final exv O = exs.a(M, N);
+   public static final exv P = exs.a(O, dfy.a(4.0, 2.0, 4.0, 12.0, 14.0, 16.0));
+   public static final exv Q = dfy.a(2.0, 6.0, 7.0, 4.0, 10.0, 16.0);
+   public static final exv R = dfy.a(12.0, 6.0, 7.0, 14.0, 10.0, 16.0);
+   public static final exv S = dfy.a(2.0, 5.0, 3.0, 4.0, 11.0, 9.0);
+   public static final exv T = dfy.a(12.0, 5.0, 3.0, 14.0, 11.0, 9.0);
+   public static final exv U = exs.a(Q, S);
+   public static final exv V = exs.a(R, T);
+   public static final exv W = exs.a(U, V);
+   public static final exv X = exs.a(W, dfy.a(4.0, 2.0, 0.0, 12.0, 14.0, 12.0));
+   public static final exv Y = dfy.a(7.0, 6.0, 2.0, 16.0, 10.0, 4.0);
+   public static final exv Z = dfy.a(7.0, 6.0, 12.0, 16.0, 10.0, 14.0);
+   public static final exv aa = dfy.a(3.0, 5.0, 2.0, 9.0, 11.0, 4.0);
+   public static final exv ab = dfy.a(3.0, 5.0, 12.0, 9.0, 11.0, 14.0);
+   public static final exv ac = exs.a(Y, aa);
+   public static final exv ad = exs.a(Z, ab);
+   public static final exv ae = exs.a(ac, ad);
+   public static final exv af = exs.a(ae, dfy.a(0.0, 2.0, 4.0, 12.0, 14.0, 12.0));
+   public static final exv ag = dfy.a(0.0, 6.0, 2.0, 9.0, 10.0, 4.0);
+   public static final exv ah = dfy.a(0.0, 6.0, 12.0, 9.0, 10.0, 14.0);
+   public static final exv ai = dfy.a(7.0, 5.0, 2.0, 13.0, 11.0, 4.0);
+   public static final exv aj = dfy.a(7.0, 5.0, 12.0, 13.0, 11.0, 14.0);
+   public static final exv ak = exs.a(ag, ai);
+   public static final exv al = exs.a(ah, aj);
+   public static final exv am = exs.a(ak, al);
+   public static final exv an = exs.a(am, dfy.a(4.0, 2.0, 4.0, 16.0, 14.0, 12.0));
+   public static final exv ao = dfy.a(2.0, 9.0, 6.0, 4.0, 16.0, 10.0);
+   public static final exv ap = dfy.a(12.0, 9.0, 6.0, 14.0, 16.0, 10.0);
+   public static final exv aq = dfy.a(2.0, 3.0, 5.0, 4.0, 9.0, 11.0);
+   public static final exv ar = dfy.a(12.0, 3.0, 5.0, 14.0, 9.0, 11.0);
+   public static final exv as = exs.a(ao, aq);
+   public static final exv at = exs.a(ap, ar);
+   public static final exv au = exs.a(as, at);
+   public static final exv av = exs.a(au, dfy.a(4.0, 0.0, 2.0, 12.0, 12.0, 14.0));
+   public static final exv aw = dfy.a(6.0, 9.0, 2.0, 10.0, 16.0, 4.0);
+   public static final exv ax = dfy.a(6.0, 9.0, 12.0, 10.0, 16.0, 14.0);
+   public static final exv ay = dfy.a(5.0, 3.0, 2.0, 11.0, 9.0, 4.0);
+   public static final exv az = dfy.a(5.0, 3.0, 12.0, 11.0, 9.0, 14.0);
+   public static final exv aA = exs.a(aw, ay);
+   public static final exv aB = exs.a(ax, az);
+   public static final exv aC = exs.a(aA, aB);
+   public static final exv aD = exs.a(aC, dfy.a(2.0, 0.0, 4.0, 14.0, 12.0, 12.0));
    private static final wz aR = wz.c("container.grindstone_title");
 
    @Override
@@ -83,7 +83,7 @@ public class djk extends dis {
       return dmf.c;
    }
 
-   private ext n(dtc $$0) {
+   private exv n(dtc $$0) {
       ji $$1 = $$0.c(aE);
       switch ((dtn)$$0.c(K)) {
          case a:
@@ -116,12 +116,12 @@ public class djk extends dis {
    }
 
    @Override
-   protected ext b(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv b(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return this.n($$0);
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return this.n($$0);
    }
 
@@ -131,7 +131,7 @@ public class djk extends dis {
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
       if ($$1.B) {
          return bqr.a;
       } else {
@@ -162,7 +162,7 @@ public class djk extends dis {
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return false;
    }
 }

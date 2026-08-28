@@ -37,19 +37,19 @@ public abstract class cke extends ckd {
       this.d = $$0.q("Patrolling");
    }
 
-   public boolean gm() {
+   public boolean gl() {
       return true;
    }
 
    @Nullable
    @Override
    public buh a(ddl $$0, bqp $$1, btr $$2, @Nullable buh $$3) {
-      if ($$2 != btr.p && $$2 != btr.h && $$2 != btr.d && $$0.E_().i() < 0.06F && this.gm()) {
+      if ($$2 != btr.p && $$2 != btr.h && $$2 != btr.d && $$0.E_().i() < 0.06F && this.gl()) {
          this.c = true;
       }
 
-      if (this.gp()) {
-         this.a(bsy.f, coi.a(this.dR().b(lu.d)));
+      if (this.go()) {
+         this.a(bsy.f, coi.a(this.dQ().b(lu.d)));
          this.a(bsy.f, 2.0F);
       }
 
@@ -74,37 +74,37 @@ public abstract class cke extends ckd {
       this.d = true;
    }
 
-   public jd gn() {
+   public jd gm() {
       return this.b;
    }
 
-   public boolean go() {
+   public boolean gn() {
       return this.b != null;
    }
 
-   public void w(boolean $$0) {
+   public void x(boolean $$0) {
       this.c = $$0;
       this.d = true;
    }
 
-   public boolean gp() {
+   public boolean go() {
       return this.c;
    }
 
-   public boolean gs() {
+   public boolean gr() {
       return true;
    }
 
-   public void gt() {
-      this.b = this.dp().b(-500 + this.ah.a(1000), 0, -500 + this.ah.a(1000));
+   public void gs() {
+      this.b = this.do().b(-500 + this.ah.a(1000), 0, -500 + this.ah.a(1000));
       this.d = true;
    }
 
-   protected boolean gu() {
+   protected boolean gt() {
       return this.d;
    }
 
-   protected void x(boolean $$0) {
+   protected void y(boolean $$0) {
       this.d = $$0;
    }
 
@@ -125,8 +125,8 @@ public abstract class cke extends ckd {
 
       @Override
       public boolean b() {
-         boolean $$0 = this.b.dP().Z() < this.e;
-         return this.b.gu() && this.b.p() == null && !this.b.cS() && this.b.go() && !$$0;
+         boolean $$0 = this.b.dO().Z() < this.e;
+         return this.b.gt() && this.b.p() == null && !this.b.cR() && this.b.gn() && !$$0;
       }
 
       @Override
@@ -139,25 +139,25 @@ public abstract class cke extends ckd {
 
       @Override
       public void a() {
-         boolean $$0 = this.b.gp();
+         boolean $$0 = this.b.go();
          cda $$1 = this.b.N();
          if ($$1.l()) {
             List<cke> $$2 = this.h();
-            if (this.b.gu() && $$2.isEmpty()) {
-               this.b.x(false);
-            } else if ($$0 && this.b.gn().a(this.b.dn(), 10.0)) {
-               this.b.gt();
+            if (this.b.gt() && $$2.isEmpty()) {
+               this.b.y(false);
+            } else if ($$0 && this.b.gm().a(this.b.dm(), 10.0)) {
+               this.b.gs();
             } else {
-               exa $$3 = exa.c(this.b.gn());
-               exa $$4 = this.b.dn();
-               exa $$5 = $$4.d($$3);
+               exc $$3 = exc.c(this.b.gm());
+               exc $$4 = this.b.dm();
+               exc $$5 = $$4.d($$3);
                $$3 = $$5.b(90.0F).a(0.4).e($$3);
-               exa $$6 = $$3.d($$4).d().a(10.0).e($$4);
+               exc $$6 = $$3.d($$4).d().a(10.0).e($$4);
                jd $$7 = jd.a((jw)$$6);
-               $$7 = this.b.dP().a(dyy.a.f, $$7);
+               $$7 = this.b.dO().a(dyy.a.f, $$7);
                if (!$$1.a((double)$$7.u(), (double)$$7.v(), (double)$$7.w(), $$0 ? this.d : this.c)) {
                   this.i();
-                  this.e = this.b.dP().Z() + 200L;
+                  this.e = this.b.dO().Z() + 200L;
                } else if ($$0) {
                   for (cke $$8 : $$2) {
                      $$8.h($$7);
@@ -168,12 +168,12 @@ public abstract class cke extends ckd {
       }
 
       private List<cke> h() {
-         return this.b.dP().a(cke.class, this.b.cL().g(16.0), $$0 -> $$0.gs() && !$$0.t(this.b));
+         return this.b.dO().a(cke.class, this.b.cK().g(16.0), $$0 -> $$0.gr() && !$$0.t(this.b));
       }
 
       private boolean i() {
-         ayw $$0 = this.b.dS();
-         jd $$1 = this.b.dP().a(dyy.a.f, this.b.dp().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
+         ayw $$0 = this.b.dR();
+         jd $$1 = this.b.dO().a(dyy.a.f, this.b.do().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
          return this.b.N().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), this.c);
       }
    }

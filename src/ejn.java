@@ -1,84 +1,109 @@
-public abstract class ejn extends ejt {
-   protected final int a;
-   protected final int b;
-   protected final int c;
-   protected int d = -1;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.List;
+import java.util.Locale;
+import org.slf4j.Logger;
 
-   protected ejn(ekg $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, ji $$7) {
-      super($$0, 0, ejt.a($$1, $$2, $$3, $$7, $$4, $$5, $$6));
-      this.a = $$4;
-      this.b = $$5;
-      this.c = $$6;
-      this.a($$7);
+public class ejn extends ejv {
+   private static final Logger d = LogUtils.getLogger();
+   protected final ekz a;
+   protected jd b;
+   private final int h;
+   protected final dmm c;
+   private final List<eku> i = Lists.newArrayList();
+   private final enu j;
+   private final end k;
+
+   public ejn(enu $$0, ekz $$1, jd $$2, int $$3, dmm $$4, ejj $$5, end $$6) {
+      super(eki.ad, 0, $$5);
+      this.j = $$0;
+      this.a = $$1;
+      this.b = $$2;
+      this.h = $$3;
+      this.c = $$4;
+      this.k = $$6;
    }
 
-   protected ejn(ekg $$0, ub $$1) {
-      super($$0, $$1);
-      this.a = $$1.h("Width");
-      this.b = $$1.h("Height");
-      this.c = $$1.h("Depth");
-      this.d = $$1.h("HPos");
+   public ejn(ekh $$0, ub $$1) {
+      super(eki.ad, $$1);
+      this.j = $$0.c();
+      this.b = new jd($$1.h("PosX"), $$1.h("PosY"), $$1.h("PosZ"));
+      this.h = $$1.h("ground_level_delta");
+      DynamicOps<uy> $$2 = $$0.b().a(up.a);
+      this.a = (ekz)ekz.f.parse($$2, $$1.p("pool_element")).getPartialOrThrow($$0x -> new IllegalStateException("Invalid pool element found: " + $$0x));
+      this.c = dmm.valueOf($$1.l("rotation"));
+      this.f = this.a.a(this.j, this.b, this.c);
+      uh $$3 = $$1.c("junctions", 10);
+      this.i.clear();
+      $$3.forEach($$1x -> this.i.add(eku.a(new Dynamic($$2, $$1x))));
+      this.k = end.c.parse(up.a, $$1.c("liquid_settings")).result().orElse(els.e);
    }
 
    @Override
-   protected void a(ekf $$0, ub $$1) {
-      $$1.a("Width", this.a);
-      $$1.a("Height", this.b);
-      $$1.a("Depth", this.c);
-      $$1.a("HPos", this.d);
-   }
+   protected void a(ekh $$0, ub $$1) {
+      $$1.a("PosX", this.b.u());
+      $$1.a("PosY", this.b.v());
+      $$1.a("PosZ", this.b.w());
+      $$1.a("ground_level_delta", this.h);
+      DynamicOps<uy> $$2 = $$0.b().a(up.a);
+      ekz.f.encodeStart($$2, this.a).resultOrPartial(d::error).ifPresent($$1x -> $$1.a("pool_element", $$1x));
+      $$1.a("rotation", this.c.name());
+      uh $$3 = new uh();
 
-   protected boolean a(dcx $$0, ejh $$1, int $$2) {
-      if (this.d >= 0) {
-         return true;
-      } else {
-         int $$3 = 0;
-         int $$4 = 0;
-         jd.a $$5 = new jd.a();
+      for (eku $$4 : this.i) {
+         $$3.add((uy)$$4.a($$2).getValue());
+      }
 
-         for (int $$6 = this.f.j(); $$6 <= this.f.m(); $$6++) {
-            for (int $$7 = this.f.h(); $$7 <= this.f.k(); $$7++) {
-               $$5.d($$7, 64, $$6);
-               if ($$1.b($$5)) {
-                  $$3 += $$0.a(dyy.a.f, $$5).v();
-                  $$4++;
-               }
-            }
-         }
-
-         if ($$4 == 0) {
-            return false;
-         } else {
-            this.d = $$3 / $$4;
-            this.f.a(0, this.d - this.f.i() + $$2, 0);
-            return true;
-         }
+      $$1.a("junctions", $$3);
+      if (this.k != els.e) {
+         $$1.a("liquid_settings", (uy)end.c.encodeStart(up.a, this.k).getOrThrow());
       }
    }
 
-   protected boolean a(dcx $$0, int $$1) {
-      if (this.d >= 0) {
-         return true;
-      } else {
-         int $$2 = $$0.am();
-         boolean $$3 = false;
-         jd.a $$4 = new jd.a();
+   @Override
+   public void a(dds $$0, ddq $$1, duz $$2, ayw $$3, ejj $$4, dcd $$5, jd $$6) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$6, false);
+   }
 
-         for (int $$5 = this.f.j(); $$5 <= this.f.m(); $$5++) {
-            for (int $$6 = this.f.h(); $$6 <= this.f.k(); $$6++) {
-               $$4.d($$6, 0, $$5);
-               $$2 = Math.min($$2, $$0.a(dyy.a.f, $$4).v());
-               $$3 = true;
-            }
-         }
+   public void a(dds $$0, ddq $$1, duz $$2, ayw $$3, ejj $$4, jd $$5, boolean $$6) {
+      this.a.a(this.j, $$0, $$1, $$2, this.b, $$5, this.c, $$4, $$3, this.k, $$6);
+   }
 
-         if (!$$3) {
-            return false;
-         } else {
-            this.d = $$2;
-            this.f.a(0, this.d - this.f.i() + $$1, 0);
-            return true;
-         }
-      }
+   @Override
+   public void a(int $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.b = this.b.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public dmm a() {
+      return this.c;
+   }
+
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "<%s | %s | %s | %s>", this.getClass().getSimpleName(), this.b, this.c, this.a);
+   }
+
+   public ekz b() {
+      return this.a;
+   }
+
+   public jd c() {
+      return this.b;
+   }
+
+   public int d() {
+      return this.h;
+   }
+
+   public void a(eku $$0) {
+      this.i.add($$0);
+   }
+
+   public List<eku> e() {
+      return this.i;
    }
 }

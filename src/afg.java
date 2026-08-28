@@ -7,7 +7,7 @@ public class afg implements zg<abu> {
 
    public afg(bsr $$0) {
       this.b = $$0.an();
-      List<bsr> $$1 = $$0.cT();
+      List<bsr> $$1 = $$0.cS();
       this.c = new int[$$1.size()];
 
       for (int $$2 = 0; $$2 < $$1.size(); $$2++) {

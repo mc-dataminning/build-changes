@@ -9,8 +9,8 @@ public class dnb extends deu {
    public static final int d = dui.a();
    private static final int b = d + 1;
    public static final duc e = dts.ba;
-   protected static final ext f = dfy.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
-   protected static final ext g = dfy.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
+   protected static final exv f = dfy.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
+   protected static final exv g = dfy.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
 
    @Override
    public MapCodec<? extends dnb> a() {
@@ -23,13 +23,13 @@ public class dnb extends deu {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return this.b() == dnb.b.h ? g : f;
    }
 
    @Override
-   protected ext f(dtc $$0, dcc $$1, jd $$2) {
-      return exq.a();
+   protected exv f(dtc $$0, dcc $$1, jd $$2) {
+      return exs.a();
    }
 
    @Override

@@ -18,15 +18,15 @@ public class chf {
    public static final float e = 3.5714288F;
    private static final bqc p = bqc.a(600, 6000);
    private static final bqc q = bqc.a(100, 300);
-   private static final cef r = cef.a().a($$0 -> !$$0.am().equals(bsx.X) && $$0.dP().C_().a($$0.cL()));
+   private static final cef r = cef.a().a($$0 -> !$$0.am().equals(bsx.X) && $$0.dO().C_().a($$0.cK()));
    private static final float s = 3.0F;
    public static final int f = 4;
    public static final float g = 2.5F;
    public static final float h = 1.0F;
 
    protected static void a(che $$0, ayw $$1) {
-      $$0.dU().a(ccs.S, o.a($$1));
-      $$0.dU().a(ccs.V, p.a($$1));
+      $$0.dT().a(ccs.S, o.a($$1));
+      $$0.dT().a(ccs.V, p.a($$1));
    }
 
    protected static buq<?> a(buq<che> $$0) {
@@ -61,7 +61,7 @@ public class chf {
    private static void d(buq<che> $$0) {
       $$0.a(
          com.q,
-         ImmutableList.of(Pair.of(0, new bwi(o, avp.ld)), Pair.of(1, new bwk<>(o, 5, 5, 3.5714288F, $$0x -> $$0x.gv() ? avp.kY : avp.kO))),
+         ImmutableList.of(Pair.of(0, new bwi(o, avp.ld)), Pair.of(1, new bwk<>(o, 5, 5, 3.5714288F, $$0x -> $$0x.gu() ? avp.kY : avp.kO))),
          ImmutableSet.of(Pair.of(ccs.O, cct.b), Pair.of(ccs.r, cct.b), Pair.of(ccs.m, cct.b), Pair.of(ccs.S, cct.b))
       );
    }
@@ -73,17 +73,17 @@ public class chf {
             Pair.of(
                0,
                new bwx(
-                  $$0x -> $$0x.gv() ? q : p, r, 3.0F, $$0x -> $$0x.o_() ? 1.0 : 2.5, $$0x -> $$0x.gv() ? avp.lb : avp.kR, $$0x -> $$0x.gv() ? avp.lc : avp.kS
+                  $$0x -> $$0x.gu() ? q : p, r, 3.0F, $$0x -> $$0x.o_() ? 1.0 : 2.5, $$0x -> $$0x.gu() ? avp.lb : avp.kR, $$0x -> $$0x.gu() ? avp.lc : avp.kS
                )
             ),
-            Pair.of(1, new bww<>($$0x -> $$0x.gv() ? q.a() : p.a(), 4, 7, 1.25F, r, 20, $$0x -> $$0x.gv() ? avp.la : avp.kQ))
+            Pair.of(1, new bww<>($$0x -> $$0x.gu() ? q.a() : p.a(), 4, 7, 1.25F, r, 20, $$0x -> $$0x.gu() ? avp.la : avp.kQ))
          ),
          ImmutableSet.of(Pair.of(ccs.O, cct.b), Pair.of(ccs.r, cct.b), Pair.of(ccs.V, cct.b))
       );
    }
 
    public static void a(che $$0) {
-      $$0.dU().a(ImmutableList.of(com.r, com.q, com.b));
+      $$0.dT().a(ImmutableList.of(com.r, com.q, com.b));
    }
 
    public static Predicate<cuq> a() {

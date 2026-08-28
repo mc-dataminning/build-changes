@@ -11,20 +11,20 @@ public class bx {
    public static final MapCodec<dp> c = a("player", dp.c);
    public static final MapCodec<dy> d = a("slime", dy.b);
    public static final MapCodec<dr> e = a("raider", dr.b);
-   public static final bx.b<cgq.d> f = a("axolotl", bx.b.a(cgq.d.f, $$0 -> $$0 instanceof cgq $$1 ? Optional.of($$1.gl()) : Optional.empty()));
+   public static final bx.b<cgq.d> f = a("axolotl", bx.b.a(cgq.d.f, $$0 -> $$0 instanceof cgq $$1 ? Optional.of($$1.gk()) : Optional.empty()));
    public static final bx.b<cov.b> g = a("boat", bx.b.a(cov.b.j, $$0 -> $$0 instanceof cov $$1 ? Optional.of($$1.x()) : Optional.empty()));
    public static final bx.b<cfo.v> h = a("fox", bx.b.a(cfo.v.c, $$0 -> $$0 instanceof cfo $$1 ? Optional.of($$1.t()) : Optional.empty()));
    public static final bx.b<cfr.a> i = a("mooshroom", bx.b.a(cfr.a.c, $$0 -> $$0 instanceof cfr $$1 ? Optional.of($$1.t()) : Optional.empty()));
-   public static final bx.b<cfy.g> j = a("rabbit", bx.b.a(cfy.g.h, $$0 -> $$0 instanceof cfy $$1 ? Optional.of($$1.gl()) : Optional.empty()));
+   public static final bx.b<cfy.g> j = a("rabbit", bx.b.a(cfy.g.h, $$0 -> $$0 instanceof cfy $$1 ? Optional.of($$1.gk()) : Optional.empty()));
    public static final bx.b<chr> k = a("horse", bx.b.a(chr.h, $$0 -> $$0 instanceof chk $$1 ? Optional.of($$1.s()) : Optional.empty()));
-   public static final bx.b<chl.d> l = a("llama", bx.b.a(chl.d.e, $$0 -> $$0 instanceof chl $$1 ? Optional.of($$1.gw()) : Optional.empty()));
+   public static final bx.b<chl.d> l = a("llama", bx.b.a(chl.d.e, $$0 -> $$0 instanceof chl $$1 ? Optional.of($$1.gv()) : Optional.empty()));
    public static final bx.b<cmp> m = a("villager", bx.b.a(lt.w.r(), $$0 -> $$0 instanceof cmm $$1 ? Optional.of($$1.a()) : Optional.empty()));
-   public static final bx.b<cfu.b> n = a("parrot", bx.b.a(cfu.b.f, $$0 -> $$0 instanceof cfu $$1 ? Optional.of($$1.gx()) : Optional.empty()));
-   public static final bx.b<cge.b> o = a("tropical_fish", bx.b.a(cge.b.m, $$0 -> $$0 instanceof cge $$1 ? Optional.of($$1.gw()) : Optional.empty()));
+   public static final bx.b<cfu.b> n = a("parrot", bx.b.a(cfu.b.f, $$0 -> $$0 instanceof cfu $$1 ? Optional.of($$1.gw()) : Optional.empty()));
+   public static final bx.b<cge.b> o = a("tropical_fish", bx.b.a(cge.b.m, $$0 -> $$0 instanceof cge $$1 ? Optional.of($$1.gv()) : Optional.empty()));
    public static final bx.a<cjd> p = a("painting", bx.a.a(lu.X, $$0 -> $$0 instanceof cjc $$1 ? Optional.of($$1.v()) : Optional.empty()));
-   public static final bx.a<cfi> q = a("cat", bx.a.a(lu.l, $$0 -> $$0 instanceof cfh $$1 ? Optional.of($$1.gw()) : Optional.empty()));
+   public static final bx.a<cfi> q = a("cat", bx.a.a(lu.l, $$0 -> $$0 instanceof cfh $$1 ? Optional.of($$1.gv()) : Optional.empty()));
    public static final bx.a<cfp> r = a("frog", bx.a.a(lu.F, $$0 -> $$0 instanceof cgy $$1 ? Optional.of($$1.x()) : Optional.empty()));
-   public static final bx.a<cgi> s = a("wolf", bx.a.a(lu.m, $$0 -> $$0 instanceof cgh $$1 ? Optional.of($$1.gw()) : Optional.empty()));
+   public static final bx.a<cgi> s = a("wolf", bx.a.a(lu.m, $$0 -> $$0 instanceof cgh $$1 ? Optional.of($$1.gv()) : Optional.empty()));
 
    private static <T extends bw> MapCodec<T> a(String $$0, MapCodec<T> $$1) {
       return jz.a(lt.ar, $$0, $$1);
@@ -88,7 +88,7 @@ public class bx {
          }
 
          @Override
-         public boolean a(bsr $$0, aqu $$1, @Nullable exa $$2) {
+         public boolean a(bsr $$0, aqu $$1, @Nullable exc $$2) {
             return a.this.b.apply($$0).filter(this.c::a).isPresent();
          }
       }
@@ -128,7 +128,7 @@ public class bx {
          }
 
          @Override
-         public boolean a(bsr $$0, aqu $$1, @Nullable exa $$2) {
+         public boolean a(bsr $$0, aqu $$1, @Nullable exc $$2) {
             return b.this.b.apply($$0).filter(this.c::equals).isPresent();
          }
       }

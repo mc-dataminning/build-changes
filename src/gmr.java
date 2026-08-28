@@ -1,28 +1,25 @@
-public class gmr extends gln<ckq, fxl<ckq>> {
-   private static final akr a = akr.b("textures/entity/strider/strider.png");
-   private static final akr i = akr.b("textures/entity/strider/strider_cold.png");
-   private static final float j = 0.5F;
+public class gmr<T extends cgd> extends glp<T, fxm<T>> {
+   private static final akr a = akr.b("textures/entity/squid/squid.png");
 
-   public gmr(gkh.a $$0) {
-      super($$0, new fxl<>($$0.a(fyh.bE)), 0.5F);
-      this.a(new gou<>(this, new fxl<>($$0.a(fyh.bF)), akr.b("textures/entity/strider/strider_saddle.png")));
+   public gmr(gkj.a $$0, fxm<T> $$1) {
+      super($$0, $$1, 0.7F);
    }
 
-   public akr a(ckq $$0) {
-      return $$0.s() ? i : a;
+   public akr a(T $$0) {
+      return a;
    }
 
-   protected float b(ckq $$0) {
-      float $$1 = super.b($$0);
-      return $$0.o_() ? $$1 * 0.5F : $$1;
+   protected void a(T $$0, fbi $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = ayo.i($$4, $$0.c, $$0.b);
+      float $$7 = ayo.i($$4, $$0.e, $$0.d);
+      $$1.a(0.0F, 0.5F, 0.0F);
+      $$1.a(a.d.rotationDegrees(180.0F - $$3));
+      $$1.a(a.b.rotationDegrees($$6));
+      $$1.a(a.d.rotationDegrees($$7));
+      $$1.a(0.0F, -1.2F, 0.0F);
    }
 
-   protected void a(ckq $$0, fbg $$1, float $$2) {
-      float $$3 = $$0.eb();
-      $$1.b($$3, $$3, $$3);
-   }
-
-   protected boolean c(ckq $$0) {
-      return super.a($$0) || $$0.s();
+   protected float a(T $$0, float $$1) {
+      return ayo.i($$1, $$0.cd, $$0.cc);
    }
 }

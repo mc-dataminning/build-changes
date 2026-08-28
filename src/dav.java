@@ -4,14 +4,14 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record dav(boolean d, Optional<jm<brm>> e, Optional<daj> f, Optional<jq<dfy>> g, exa h, daj i, boolean j, dcw.a k, lk l, lk m, jm<avo> n) implements das {
+public record dav(boolean d, Optional<jm<brm>> e, Optional<daj> f, Optional<jq<dfy>> g, exc h, daj i, boolean j, dcw.a k, lk l, lk m, jm<avo> n) implements das {
    public static final MapCodec<dav> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
                Codec.BOOL.optionalFieldOf("attribute_to_user", false).forGetter(dav::b),
                brm.b.optionalFieldOf("damage_type").forGetter(dav::c),
                daj.b.optionalFieldOf("knockback_multiplier").forGetter(dav::d),
                kb.a(lu.f).optionalFieldOf("immune_blocks").forGetter(dav::e),
-               exa.a.optionalFieldOf("offset", exa.b).forGetter(dav::f),
+               exc.a.optionalFieldOf("offset", exc.b).forGetter(dav::f),
                daj.b.fieldOf("radius").forGetter(dav::g),
                Codec.BOOL.optionalFieldOf("create_fire", false).forGetter(dav::h),
                dcw.a.f.fieldOf("block_interaction").forGetter(dav::i),
@@ -23,8 +23,8 @@ public record dav(boolean d, Optional<jm<brm>> e, Optional<daj> f, Optional<jq<d
    );
 
    @Override
-   public void a(aqu $$0, int $$1, dab $$2, bsr $$3, exa $$4) {
-      exa $$5 = $$4.e(this.h);
+   public void a(aqu $$0, int $$1, dab $$2, bsr $$3, exc $$4) {
+      exc $$5 = $$4.e(this.h);
       $$0.a(
          this.d ? $$3 : null,
          this.a($$3, $$5),
@@ -42,7 +42,7 @@ public record dav(boolean d, Optional<jm<brm>> e, Optional<daj> f, Optional<jq<d
    }
 
    @Nullable
-   private brk a(bsr $$0, exa $$1) {
+   private brk a(bsr $$0, exc $$1) {
       if (this.e.isEmpty()) {
          return null;
       } else {
@@ -71,7 +71,7 @@ public record dav(boolean d, Optional<jm<brm>> e, Optional<daj> f, Optional<jq<d
       return this.g;
    }
 
-   public exa f() {
+   public exc f() {
       return this.h;
    }
 

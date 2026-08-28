@@ -1,25 +1,15 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
 
-record ela(akq<ekz> c, akq<ekz> d) implements elb {
-   static MapCodec<ela> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(akq.a(lu.aU).fieldOf("alias").forGetter(ela::c), akq.a(lu.aU).fieldOf("target").forGetter(ela::d)).apply($$0, ela::new)
-   );
+public interface ela<P extends ekz> {
+   ela<eky> a = a("single_pool_element", eky.b);
+   ela<ekx> b = a("list_pool_element", ekx.a);
+   ela<ekt> c = a("feature_pool_element", ekt.a);
+   ela<eks> d = a("empty_pool_element", eks.a);
+   ela<ekw> e = a("legacy_single_pool_element", ekw.a);
 
-   @Override
-   public void a(ayw $$0, BiConsumer<akq<ekz>, akq<ekz>> $$1) {
-      $$1.accept(this.c, this.d);
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public Stream<akq<ekz>> a() {
-      return Stream.of(this.d);
-   }
-
-   @Override
-   public MapCodec<ela> b() {
-      return a;
+   static <P extends ekz> ela<P> a(String $$0, MapCodec<P> $$1) {
+      return jz.a(lt.ag, $$0, () -> $$1);
    }
 }

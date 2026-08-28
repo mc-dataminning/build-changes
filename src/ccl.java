@@ -13,16 +13,16 @@ public class ccl<T extends btp & btt> extends cam {
 
    @Override
    public boolean b() {
-      return this.b.dP().ab().b(dcs.O) && this.h();
+      return this.b.dO().ab().b(dcs.O) && this.h();
    }
 
    private boolean h() {
-      return this.b.ej() != null && this.b.ej().am() == bsx.by && this.b.ek() > this.d;
+      return this.b.ei() != null && this.b.ei().am() == bsx.by && this.b.ej() > this.d;
    }
 
    @Override
    public void d() {
-      this.d = this.b.ek();
+      this.d = this.b.ej();
       this.b.ae_();
       if (this.c) {
          this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (btt)$$0).forEach(btt::ae_);
@@ -33,7 +33,7 @@ public class ccl<T extends btp & btt> extends cam {
 
    private List<? extends btp> i() {
       double $$0 = this.b.g(buw.m);
-      ewv $$1 = ewv.a(this.b.dn()).c($$0, 10.0, $$0);
-      return this.b.dP().a((Class<? extends btp>)this.b.getClass(), $$1, bsw.f);
+      ewx $$1 = ewx.a(this.b.dm()).c($$0, 10.0, $$0);
+      return this.b.dO().a((Class<? extends btp>)this.b.getClass(), $$1, bsw.f);
    }
 }

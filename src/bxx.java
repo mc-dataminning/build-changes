@@ -11,7 +11,7 @@ public class bxx {
                   $$1 -> ($$2, $$3, $$4) -> {
                         Optional.ofNullable($$2.a($$0.b($$1)))
                            .map($$0xxx -> $$0xxx instanceof btn $$1xx ? $$1xx : null)
-                           .filter(btn::ey)
+                           .filter(btn::ex)
                            .filter($$1xx -> $$1xx.am() != bsx.by || $$2.ab().b(dcs.N))
                            .ifPresent($$1xx -> $$1.b());
                         return true;

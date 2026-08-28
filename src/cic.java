@@ -39,7 +39,7 @@ public abstract class cic implements cik {
 
    @Nullable
    @Override
-   public exa g() {
+   public exc g() {
       return null;
    }
 
@@ -50,7 +50,7 @@ public abstract class cic implements cik {
 
    @Override
    public float h() {
-      float $$0 = (float)this.a.ds().h() + 1.0F;
+      float $$0 = (float)this.a.dr().h() + 1.0F;
       float $$1 = Math.min($$0, 40.0F);
       return 0.7F / $$1 / $$0;
    }

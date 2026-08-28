@@ -89,9 +89,9 @@ public class dhh extends dfk implements djg {
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
       dqh $$5 = $$1.c_($$2);
-      if ($$5 instanceof dqr && $$3.gw()) {
+      if ($$5 instanceof dqr && $$3.gv()) {
          $$3.a((dqr)$$5);
          return bqr.a($$1.B);
       } else {

@@ -94,7 +94,7 @@ public class dqe extends dqh {
          for (bsr $$4 : $$3) {
             if ($$4 instanceof cff) {
                cff $$5 = (cff)$$4;
-               if ($$0.dn().g($$4.dn()) <= 16.0) {
+               if ($$0.dm().g($$4.dm()) <= 16.0) {
                   if (!this.j()) {
                      $$5.h($$0);
                   } else {
@@ -172,8 +172,8 @@ public class dqe extends dqh {
                   }
 
                   if ($$5 == dqe.b.a) {
-                     $$11.gz();
-                     if ($$2.a(awe.aG, $$0x -> $$0x.b(dfs.c))) {
+                     $$11.gy();
+                     if ($$2.a(awe.aH, $$0x -> $$0x.b(dfs.c))) {
                         int $$12 = a($$2);
                         if ($$12 < 5) {
                            int $$13 = $$0.z.a(100) == 0 ? 2 : 1;
@@ -190,12 +190,12 @@ public class dqe extends dqh {
                      $$4.add($$11);
                   }
 
-                  float $$14 = $$10.dk();
+                  float $$14 = $$10.dj();
                   double $$15 = $$9 ? 0.0 : 0.55 + (double)($$14 / 2.0F);
                   double $$16 = (double)$$1.u() + 0.5 + $$15 * (double)$$7.j();
-                  double $$17 = (double)$$1.v() + 0.5 - (double)($$10.dl() / 2.0F);
+                  double $$17 = (double)$$1.v() + 0.5 - (double)($$10.dk() / 2.0F);
                   double $$18 = (double)$$1.w() + 0.5 + $$15 * (double)$$7.l();
-                  $$10.b($$16, $$17, $$18, $$10.dF(), $$10.dH());
+                  $$10.b($$16, $$17, $$18, $$10.dE(), $$10.dG());
                }
 
                $$0.a(null, $$1, avp.bW, avq.e, 1.0F, 1.0F);
@@ -368,7 +368,7 @@ public class dqe extends dqh {
             $$1.c_(Math.max(0, $$2 - $$0));
          }
 
-         $$1.s(Math.max(0, $$1.gr() - $$0));
+         $$1.s(Math.max(0, $$1.gq() - $$0));
       }
 
       public cxh a() {

@@ -1,39 +1,28 @@
-public class gmt<T extends bsr & cnm> extends gkg<T> {
-   private static final float a = 12.25F;
-   private final glf g;
-   private final float h;
-   private final boolean i;
+public class gmt extends glp<ckq, fxn<ckq>> {
+   private static final akr a = akr.b("textures/entity/strider/strider.png");
+   private static final akr i = akr.b("textures/entity/strider/strider_cold.png");
+   private static final float j = 0.5F;
 
-   public gmt(gkh.a $$0, float $$1, boolean $$2) {
-      super($$0);
-      this.g = $$0.b();
-      this.h = $$1;
-      this.i = $$2;
+   public gmt(gkj.a $$0) {
+      super($$0, new fxn<>($$0.a(fyj.bE)), 0.5F);
+      this.a(new gow<>(this, new fxn<>($$0.a(fyj.bF)), akr.b("textures/entity/strider/strider_saddle.png")));
    }
 
-   public gmt(gkh.a $$0) {
-      this($$0, 1.0F, false);
+   public akr a(ckq $$0) {
+      return $$0.s() ? i : a;
    }
 
-   @Override
-   protected int a(T $$0, jd $$1) {
-      return this.i ? 15 : super.a($$0, $$1);
+   protected float b(ckq $$0) {
+      float $$1 = super.b($$0);
+      return $$0.o_() ? $$1 * 0.5F : $$1;
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, fbg $$3, gex $$4, int $$5) {
-      if ($$0.ai >= 2 || !(this.d.b.g().g($$0) < 12.25)) {
-         $$3.a();
-         $$3.b(this.h, this.h, this.h);
-         $$3.a(this.d.b());
-         this.g.a($$0.p(), cun.h, $$5, gqa.d, $$3, $$4, $$0.dP(), $$0.an());
-         $$3.b();
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
+   protected void a(ckq $$0, fbi $$1, float $$2) {
+      float $$3 = $$0.ea();
+      $$1.b($$3, $$3, $$3);
    }
 
-   @Override
-   public akr a(bsr $$0) {
-      return gqi.e;
+   protected boolean c(ckq $$0) {
+      return super.a($$0) || $$0.s();
    }
 }

@@ -56,7 +56,7 @@ public class brx implements cpi {
    }
 
    public void c(btn $$0, int $$1) {
-      this.j.ifPresent($$1x -> $$0.dP().a(null, $$0.du(), $$0.dw(), $$0.dA(), $$1x, $$0.df(), 1.0F, 1.0F));
+      this.j.ifPresent($$1x -> $$0.dO().a(null, $$0.dt(), $$0.dv(), $$0.dz(), $$1x, $$0.de(), 1.0F, 1.0F));
    }
 
    public void a(btn $$0, int $$1, bsr.c $$2) {

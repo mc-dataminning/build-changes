@@ -1,90 +1,110 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
 public class ggg {
    public static final ggg a = new ggg();
-   public final ggf b;
-   public final ggf c;
-   public final ggf d;
-   public final ggf e;
-   public final ggf f;
-   public final ggf g;
-   public final ggf h;
-   public final ggf i;
+   public static final float b = Float.NEGATIVE_INFINITY;
+   private final ggg.a[] c;
+   private final akr[] d;
 
    private ggg() {
-      this(ggf.a, ggf.a, ggf.a, ggf.a, ggf.a, ggf.a, ggf.a, ggf.a);
+      this.c = new ggg.a[0];
+      this.d = new akr[0];
    }
 
-   public ggg(ggg $$0) {
-      this.b = $$0.b;
-      this.c = $$0.c;
-      this.d = $$0.d;
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.h = $$0.h;
-      this.i = $$0.i;
-   }
+   public ggg(gsr $$0, ggb $$1, List<ggf> $$2) {
+      this.d = $$2.stream().flatMap(ggf::b).map(ggf.b::a).distinct().toArray(akr[]::new);
+      Object2IntMap<akr> $$3 = new Object2IntOpenHashMap();
 
-   public ggg(ggf $$0, ggf $$1, ggf $$2, ggf $$3, ggf $$4, ggf $$5, ggf $$6, ggf $$7) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-   }
-
-   public ggf a(cun $$0) {
-      return switch ($$0) {
-         case b -> this.b;
-         case c -> this.c;
-         case d -> this.d;
-         case e -> this.e;
-         case f -> this.f;
-         case g -> this.g;
-         case h -> this.h;
-         case i -> this.i;
-         default -> ggf.a;
-      };
-   }
-
-   public boolean b(cun $$0) {
-      return this.a($$0) != ggf.a;
-   }
-
-   protected static class a implements JsonDeserializer<ggg> {
-      public ggg a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         ggf $$4 = this.a($$2, $$3, cun.c);
-         ggf $$5 = this.a($$2, $$3, cun.b);
-         if ($$5 == ggf.a) {
-            $$5 = $$4;
-         }
-
-         ggf $$6 = this.a($$2, $$3, cun.e);
-         ggf $$7 = this.a($$2, $$3, cun.d);
-         if ($$7 == ggf.a) {
-            $$7 = $$6;
-         }
-
-         ggf $$8 = this.a($$2, $$3, cun.f);
-         ggf $$9 = this.a($$2, $$3, cun.g);
-         ggf $$10 = this.a($$2, $$3, cun.h);
-         ggf $$11 = this.a($$2, $$3, cun.i);
-         return new ggg($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
+      for (int $$4 = 0; $$4 < this.d.length; $$4++) {
+         $$3.put(this.d[$$4], $$4);
       }
 
-      private ggf a(JsonDeserializationContext $$0, JsonObject $$1, cun $$2) {
-         String $$3 = $$2.c();
-         return $$1.has($$3) ? (ggf)$$0.deserialize($$1.get($$3), ggf.class) : ggf.a;
+      List<ggg.a> $$5 = Lists.newArrayList();
+
+      for (int $$6 = $$2.size() - 1; $$6 >= 0; $$6--) {
+         ggf $$7 = $$2.get($$6);
+         gsm $$8 = this.a($$0, $$1, $$7);
+         ggg.b[] $$9 = $$7.b().map($$1x -> {
+            int $$2x = $$3.getInt($$1x.a());
+            return new ggg.b($$2x, $$1x.b());
+         }).toArray(ggg.b[]::new);
+         $$5.add(new ggg.a($$9, $$8));
+      }
+
+      this.c = $$5.toArray(new ggg.a[0]);
+   }
+
+   @Nullable
+   private gsm a(gsr $$0, ggb $$1, ggf $$2) {
+      gsy $$3 = $$0.a($$2.a());
+      return Objects.equals($$3, $$1) ? null : $$0.a($$2.a(), gsn.a);
+   }
+
+   @Nullable
+   public gsm a(gsm $$0, cuq $$1, @Nullable fzf $$2, @Nullable btn $$3, int $$4) {
+      if (this.c.length != 0) {
+         int $$5 = this.d.length;
+         float[] $$6 = new float[$$5];
+
+         for (int $$7 = 0; $$7 < $$5; $$7++) {
+            akr $$8 = this.d[$$7];
+            gpt $$9 = gps.a($$1, $$8);
+            if ($$9 != null) {
+               $$6[$$7] = $$9.call($$1, $$2, $$3, $$4);
+            } else {
+               $$6[$$7] = Float.NEGATIVE_INFINITY;
+            }
+         }
+
+         for (ggg.a $$10 : this.c) {
+            if ($$10.a($$6)) {
+               gsm $$11 = $$10.b;
+               if ($$11 == null) {
+                  return $$0;
+               }
+
+               return $$11;
+            }
+         }
+      }
+
+      return $$0;
+   }
+
+   static class a {
+      private final ggg.b[] a;
+      @Nullable
+      final gsm b;
+
+      a(ggg.b[] $$0, @Nullable gsm $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      boolean a(float[] $$0) {
+         for (ggg.b $$1 : this.a) {
+            float $$2 = $$0[$$1.a];
+            if ($$2 < $$1.b) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   static class b {
+      public final int a;
+      public final float b;
+
+      b(int $$0, float $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 }

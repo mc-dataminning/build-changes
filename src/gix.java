@@ -1,37 +1,107 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
+import com.google.common.collect.Maps;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public class gix implements gik.a {
-   private static final int a = 60;
-   private final Set<kf> b = Sets.newHashSet();
+public class gix implements gim.a {
+   private final fgo a;
+   private final Map<akq<dcw>, Map<String, ejj>> b = Maps.newIdentityHashMap();
+   private final Map<akq<dcw>, Map<String, aax.a>> c = Maps.newIdentityHashMap();
+   private static final int d = 500;
 
-   gix() {
+   public gix(fgo $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public void a(fbi $$0, gez $$1, double $$2, double $$3, double $$4) {
+      ffy $$5 = this.a.j.l();
+      akq<dcw> $$6 = this.a.r.af();
+      jd $$7 = jd.a($$5.b().c, 0.0, $$5.b().e);
+      fbm $$8 = $$1.getBuffer(gfh.y());
+      if (this.b.containsKey($$6)) {
+         for (ejj $$9 : this.b.get($$6).values()) {
+            if ($$7.a($$9.g(), 500.0)) {
+               gex.a(
+                  $$0,
+                  $$8,
+                  (double)$$9.h() - $$2,
+                  (double)$$9.i() - $$3,
+                  (double)$$9.j() - $$4,
+                  (double)($$9.k() + 1) - $$2,
+                  (double)($$9.l() + 1) - $$3,
+                  (double)($$9.m() + 1) - $$4,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F
+               );
+            }
+         }
+      }
+
+      Map<String, aax.a> $$10 = this.c.get($$6);
+      if ($$10 != null) {
+         for (aax.a $$11 : $$10.values()) {
+            ejj $$12 = $$11.a();
+            if ($$7.a($$12.g(), 500.0)) {
+               if ($$11.b()) {
+                  gex.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.h() - $$2,
+                     (double)$$12.i() - $$3,
+                     (double)$$12.j() - $$4,
+                     (double)($$12.k() + 1) - $$2,
+                     (double)($$12.l() + 1) - $$3,
+                     (double)($$12.m() + 1) - $$4,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F
+                  );
+               } else {
+                  gex.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.h() - $$2,
+                     (double)$$12.i() - $$3,
+                     (double)$$12.j() - $$4,
+                     (double)($$12.k() + 1) - $$2,
+                     (double)($$12.l() + 1) - $$3,
+                     (double)($$12.m() + 1) - $$4,
+                     0.0F,
+                     0.0F,
+                     1.0F,
+                     1.0F,
+                     0.0F,
+                     0.0F,
+                     1.0F
+                  );
+               }
+            }
+         }
+      }
+   }
+
+   public void a(ejj $$0, List<aax.a> $$1, akq<dcw> $$2) {
+      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
+      Map<String, aax.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
+
+      for (aax.a $$4 : $$1) {
+         $$3.put($$4.a().toString(), $$4);
+      }
    }
 
    @Override
    public void a() {
       this.b.clear();
-   }
-
-   public void a(kf $$0) {
-      this.b.add($$0);
-   }
-
-   public void b(kf $$0) {
-      this.b.remove($$0);
-   }
-
-   @Override
-   public void a(fbg $$0, gex $$1, double $$2, double $$3, double $$4) {
-      jd $$5 = jd.a($$2, $$3, $$4);
-      this.b.forEach($$3x -> {
-         if ($$5.a($$3x.k(), 60.0)) {
-            a($$0, $$1, $$3x);
-         }
-      });
-   }
-
-   private static void a(fbg $$0, gex $$1, kf $$2) {
-      gik.a($$0, $$1, $$2.k(), 0.2F, 1.0F, 0.2F, 0.15F);
+      this.c.clear();
    }
 }

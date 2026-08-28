@@ -27,7 +27,7 @@ public class anf {
          int $$3 = 0;
 
          for (aqv $$4 : $$1) {
-            if (!$$0.l().a($$4.fY())) {
+            if (!$$0.l().a($$4.fX())) {
                $$4.c.a($$2);
                $$0.a(() -> wz.a("commands.kick.success", $$4.S_(), $$2), true);
                $$3++;

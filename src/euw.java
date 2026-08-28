@@ -1,36 +1,34 @@
-import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public class euw implements eva {
-   private static final euw b = new euw();
-   public static final MapCodec<euw> a = MapCodec.unit(b);
+public record euw(boolean b) implements evc {
+   public static final MapCodec<euw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.BOOL.fieldOf("active").forGetter(euw::e)).apply($$0, euw::new));
 
-   private euw() {
+   public boolean a(err $$0) {
+      return $$0.b(eun.l) == this.b;
    }
 
    @Override
-   public evb b() {
-      return evc.l;
+   public evd b() {
+      return eve.s;
    }
 
    @Override
-   public Set<eui<?>> a() {
-      return ImmutableSet.of(eul.j);
+   public Set<euk<?>> a() {
+      return Set.of(eun.l);
    }
 
-   public boolean a(erp $$0) {
-      Float $$1 = $$0.c(eul.j);
-      if ($$1 != null) {
-         ayw $$2 = $$0.b();
-         float $$3 = 1.0F / $$1;
-         return $$2.i() <= $$3;
-      } else {
-         return true;
-      }
+   public static evc.a c() {
+      return () -> new euw(true);
    }
 
-   public static eva.a c() {
-      return () -> b;
+   public static evc.a d() {
+      return () -> new euw(false);
+   }
+
+   public boolean e() {
+      return this.b;
    }
 }

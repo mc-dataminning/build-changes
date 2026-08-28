@@ -52,7 +52,7 @@ public class cgv extends chi implements bty, bue {
    }
 
    public static buv.a s() {
-      return gL().a(buw.s, 32.0).a(buw.v, 0.09F).a(buw.o, 0.42F).a(buw.B, 1.5);
+      return gK().a(buw.s, 32.0).a(buw.v, 0.09F).a(buw.o, 0.42F).a(buw.B, 1.5);
    }
 
    @Override
@@ -70,7 +70,7 @@ public class cgv extends chi implements bty, bue {
    }
 
    @Override
-   protected buq.b<cgv> dV() {
+   protected buq.b<cgv> dU() {
       return cgw.a();
    }
 
@@ -80,23 +80,23 @@ public class cgv extends chi implements bty, bue {
 
    @Override
    protected buq<?> a(Dynamic<?> $$0) {
-      return cgw.a(this.dV().a($$0));
+      return cgw.a(this.dU().a($$0));
    }
 
    @Override
    public bsu e(bua $$0) {
-      return $$0 == bua.k ? cJ.a(this.eb()) : super.e($$0);
+      return $$0 == bua.k ? cJ.a(this.ea()) : super.e($$0);
    }
 
    @Override
    protected void ab() {
-      this.dP().ag().a("camelBrain");
-      buq<?> $$0 = this.dU();
-      ((buq<cgv>)$$0).a((aqu)this.dP(), this);
-      this.dP().ag().c();
-      this.dP().ag().a("camelActivityUpdate");
+      this.dO().ag().a("camelBrain");
+      buq<?> $$0 = this.dT();
+      ((buq<cgv>)$$0).a((aqu)this.dO(), this);
+      this.dO().ag().c();
+      this.dO().ag().a("camelActivityUpdate");
       cgw.a(this);
-      this.dP().ag().c();
+      this.dO().ag().c();
       super.ab();
    }
 
@@ -104,30 +104,30 @@ public class cgv extends chi implements bty, bue {
    public void l() {
       super.l();
       if (this.x() && this.cK < 50 && (this.aF() || this.bj() || this.bS())) {
-         this.w(false);
+         this.x(false);
       }
 
       if (this.cK > 0) {
          this.cK--;
          if (this.cK == 0) {
-            this.dP().a(null, this.dp(), avp.dz, avq.g, 1.0F, 1.0F);
+            this.dO().a(null, this.do(), avp.dz, avq.g, 1.0F, 1.0F);
          }
       }
 
-      if (this.dP().x_()) {
-         this.gW();
+      if (this.dO().x_()) {
+         this.gV();
       }
 
       if (this.t()) {
          this.af();
       }
 
-      if (this.go() && this.bf()) {
-         this.gy();
+      if (this.gn() && this.bf()) {
+         this.gx();
       }
    }
 
-   private void gW() {
+   private void gV() {
       if (this.cL <= 0) {
          this.cL = this.ah.a(40) + 80;
          this.cj.a(this.ai);
@@ -135,10 +135,10 @@ public class cgv extends chi implements bty, bue {
          this.cL--;
       }
 
-      if (this.gp()) {
+      if (this.go()) {
          this.ci.a();
          this.ck.a();
-         if (this.gX()) {
+         if (this.gW()) {
             this.cg.b(this.ai);
             this.ch.a();
          } else {
@@ -149,7 +149,7 @@ public class cgv extends chi implements bty, bue {
          this.cg.a();
          this.ch.a();
          this.ck.a(this.x(), this.ai);
-         this.ci.a(this.gv() && this.gz() >= 0L, this.ai);
+         this.ci.a(this.gu() && this.gy() >= 0L, this.ai);
       }
    }
 
@@ -166,9 +166,9 @@ public class cgv extends chi implements bty, bue {
    }
 
    @Override
-   public void a(exa $$0) {
+   public void a(exc $$0) {
       if (this.t() && this.aF()) {
-         this.i(this.ds().d(0.0, 1.0, 0.0));
+         this.i(this.dr().d(0.0, 1.0, 0.0));
          $$0 = $$0.d(0.0, 1.0, 0.0);
       }
 
@@ -176,15 +176,15 @@ public class cgv extends chi implements bty, bue {
    }
 
    @Override
-   protected void a(cmx $$0, exa $$1) {
+   protected void a(cmx $$0, exc $$1) {
       super.a($$0, $$1);
-      if ($$0.bq > 0.0F && this.go() && !this.gv()) {
-         this.gx();
+      if ($$0.bq > 0.0F && this.gn() && !this.gu()) {
+         this.gw();
       }
    }
 
    public boolean t() {
-      return this.go() || this.gv();
+      return this.gn() || this.gu();
    }
 
    @Override
@@ -194,13 +194,13 @@ public class cgv extends chi implements bty, bue {
    }
 
    @Override
-   protected ewz j(btn $$0) {
-      return this.t() ? new ewz(this.dH(), this.dF()) : super.j($$0);
+   protected exb j(btn $$0) {
+      return this.t() ? new exb(this.dG(), this.dE()) : super.j($$0);
    }
 
    @Override
-   protected exa b(cmx $$0, exa $$1) {
-      return this.t() ? exa.b : super.b($$0, $$1);
+   protected exc b(cmx $$0, exc $$1) {
+      return this.t() ? exc.b : super.b($$0, $$1);
    }
 
    @Override
@@ -216,16 +216,16 @@ public class cgv extends chi implements bty, bue {
    }
 
    @Override
-   public boolean dI() {
+   public boolean dH() {
       return true;
    }
 
    @Override
-   protected void b(float $$0, exa $$1) {
-      double $$2 = (double)this.fe();
+   protected void b(float $$0, exc $$1) {
+      double $$2 = (double)this.fd();
       this.j(this.bM().d(1.0, 0.0, 1.0).d().a((double)(22.2222F * $$0) * this.g(buw.v) * (double)this.aO()).b(0.0, (double)(1.4285F * $$0) * $$2, 0.0));
       this.cK = 55;
-      this.w(true);
+      this.x(true);
       this.av = true;
    }
 
@@ -233,7 +233,7 @@ public class cgv extends chi implements bty, bue {
       return this.ao.a(ce);
    }
 
-   public void w(boolean $$0) {
+   public void x(boolean $$0) {
       this.ao.a(ce, $$0);
    }
 
@@ -241,7 +241,7 @@ public class cgv extends chi implements bty, bue {
    public void c(int $$0) {
       this.b(avp.dy);
       this.a(dxz.u);
-      this.w(true);
+      this.x(true);
    }
 
    @Override
@@ -270,7 +270,7 @@ public class cgv extends chi implements bty, bue {
 
    @Override
    protected void b(jd $$0, dtc $$1) {
-      if ($$1.a(awe.bp)) {
+      if ($$1.a(awe.bq)) {
          this.a(avp.dH, 1.0F, 1.0F);
       } else {
          this.a(avp.dG, 1.0F, 1.0F);
@@ -285,9 +285,9 @@ public class cgv extends chi implements bty, bue {
    @Override
    public bqr b(cmx $$0, bqq $$1) {
       cuq $$2 = $$0.b($$1);
-      if ($$0.fO() && !this.o_()) {
+      if ($$0.fN() && !this.o_()) {
          this.b($$0);
-         return bqr.a(this.dP().B);
+         return bqr.a(this.dO().B);
       } else {
          bqr $$3 = $$2.a($$0, this, $$1);
          if ($$3.a()) {
@@ -295,26 +295,26 @@ public class cgv extends chi implements bty, bue {
          } else if (this.o($$2)) {
             return this.c($$0, $$2);
          } else {
-            if (this.cT().size() < 2 && !this.o_()) {
+            if (this.cS().size() < 2 && !this.o_()) {
                this.a($$0);
             }
 
-            return bqr.a(this.dP().B);
+            return bqr.a(this.dO().B);
          }
       }
    }
 
    @Override
    public boolean a(bsr $$0, float $$1) {
-      if ($$1 > 6.0F && this.go() && !this.gv() && this.gl()) {
-         this.gx();
+      if ($$1 > 6.0F && this.gn() && !this.gu() && this.gk()) {
+         this.gw();
       }
 
       return true;
    }
 
-   public boolean gl() {
-      return this.g(this.go() ? bua.a : bua.k);
+   public boolean gk() {
+      return this.g(this.gn() ? bua.a : bua.k);
    }
 
    @Override
@@ -322,20 +322,20 @@ public class cgv extends chi implements bty, bue {
       if (!this.o($$1)) {
          return false;
       } else {
-         boolean $$2 = this.ex() < this.eO();
+         boolean $$2 = this.ew() < this.eN();
          if ($$2) {
             this.c(2.0F);
          }
 
-         boolean $$3 = this.gA() && this.g() == 0 && this.gq();
+         boolean $$3 = this.gz() && this.g() == 0 && this.gp();
          if ($$3) {
             this.f($$0);
          }
 
          boolean $$4 = this.o_();
          if ($$4) {
-            this.dP().a(lm.O, this.d(1.0), this.dx() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
-            if (!this.dP().B) {
+            this.dO().a(lm.O, this.d(1.0), this.dw() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
+            if (!this.dO().B) {
                this.b_(10);
             }
          }
@@ -344,9 +344,9 @@ public class cgv extends chi implements bty, bue {
             return false;
          } else {
             if (!this.aX()) {
-               avo $$5 = this.gn();
+               avo $$5 = this.gm();
                if ($$5 != null) {
-                  this.dP().a(null, this.du(), this.dw(), this.dA(), $$5, this.df(), 1.0F, 1.0F + (this.ah.i() - this.ah.i()) * 0.2F);
+                  this.dO().a(null, this.dt(), this.dv(), this.dz(), $$5, this.de(), 1.0F, 1.0F + (this.ah.i() - this.ah.i()) * 0.2F);
                }
             }
 
@@ -357,13 +357,13 @@ public class cgv extends chi implements bty, bue {
    }
 
    @Override
-   protected boolean gm() {
+   protected boolean gl() {
       return false;
    }
 
    @Override
    public boolean a(cfe $$0) {
-      if ($$0 != this && $$0 instanceof cgv $$1 && this.gT() && $$1.gT()) {
+      if ($$0 != this && $$0 instanceof cgv $$1 && this.gS() && $$1.gS()) {
          return true;
       }
 
@@ -377,23 +377,23 @@ public class cgv extends chi implements bty, bue {
 
    @Nullable
    @Override
-   protected avo gn() {
+   protected avo gm() {
       return avp.dB;
    }
 
    @Override
    protected void f(brk $$0, float $$1) {
-      this.gy();
+      this.gx();
       super.f($$0, $$1);
    }
 
    @Override
-   protected exa a(bsr $$0, bsu $$1, float $$2) {
-      int $$3 = Math.max(this.cT().indexOf($$0), 0);
+   protected exc a(bsr $$0, bsu $$1, float $$2) {
+      int $$3 = Math.max(this.cS().indexOf($$0), 0);
       boolean $$4 = $$3 == 0;
       float $$5 = 0.5F;
-      float $$6 = (float)(this.dK() ? 0.01F : this.a($$4, 0.0F, $$1, $$2));
-      if (this.cT().size() > 1) {
+      float $$6 = (float)(this.dJ() ? 0.01F : this.a($$4, 0.0F, $$1, $$2));
+      if (this.cS().size() > 1) {
          if (!$$4) {
             $$5 = -0.7F;
          }
@@ -403,11 +403,11 @@ public class cgv extends chi implements bty, bue {
          }
       }
 
-      return new exa(0.0, (double)$$6, (double)($$5 * $$2)).b(-this.dF() * (float) (Math.PI / 180.0));
+      return new exc(0.0, (double)$$6, (double)($$5 * $$2)).b(-this.dE() * (float) (Math.PI / 180.0));
    }
 
    @Override
-   public float eb() {
+   public float ea() {
       return this.o_() ? 0.45F : 1.0F;
    }
 
@@ -416,8 +416,8 @@ public class cgv extends chi implements bty, bue {
       float $$5 = $$3 * 1.43F;
       float $$6 = $$5 - $$3 * 0.2F;
       float $$7 = $$5 - $$6;
-      boolean $$8 = this.gv();
-      boolean $$9 = this.go();
+      boolean $$8 = this.gu();
+      boolean $$9 = this.gn();
       if ($$8) {
          int $$10 = $$9 ? 40 : 52;
          int $$11;
@@ -430,7 +430,7 @@ public class cgv extends chi implements bty, bue {
             $$12 = $$0 ? 0.6F : 0.35F;
          }
 
-         float $$15 = ayo.a((float)this.gz() + $$1, 0.0F, (float)$$10);
+         float $$15 = ayo.a((float)this.gy() + $$1, 0.0F, (float)$$10);
          boolean $$16 = $$15 < (float)$$11;
          float $$17 = $$16 ? $$15 / (float)$$11 : ($$15 - (float)$$11) / (float)($$10 - $$11);
          float $$18 = $$5 - $$12 * $$6;
@@ -445,10 +445,10 @@ public class cgv extends chi implements bty, bue {
    }
 
    @Override
-   public exa q(float $$0) {
+   public exc q(float $$0) {
       bsu $$1 = this.a(this.at());
-      float $$2 = this.eb();
-      return new exa(0.0, this.a(true, $$0, $$1, $$2) - (double)(0.2F * $$2), (double)($$1.a() * 0.56F));
+      float $$2 = this.ea();
+      return new exc(0.0, this.a(true, $$0, $$1, $$2) - (double)(0.2F * $$2), (double)($$1.a() * 0.56F));
    }
 
    @Override
@@ -458,7 +458,7 @@ public class cgv extends chi implements bty, bue {
 
    @Override
    protected boolean r(bsr $$0) {
-      return this.cT().size() <= 2;
+      return this.cS().size() <= 2;
    }
 
    @Override
@@ -467,45 +467,45 @@ public class cgv extends chi implements bty, bue {
       agf.a(this);
    }
 
-   public boolean go() {
+   public boolean gn() {
       return this.ao.a(cf) < 0L;
    }
 
-   public boolean gp() {
-      return this.gz() < 0L != this.go();
+   public boolean go() {
+      return this.gy() < 0L != this.gn();
    }
 
-   public boolean gv() {
-      long $$0 = this.gz();
-      return $$0 < (long)(this.go() ? 40 : 52);
+   public boolean gu() {
+      long $$0 = this.gy();
+      return $$0 < (long)(this.gn() ? 40 : 52);
    }
 
-   private boolean gX() {
-      return this.go() && this.gz() < 40L && this.gz() >= 0L;
+   private boolean gW() {
+      return this.gn() && this.gy() < 40L && this.gy() >= 0L;
    }
 
-   public void gw() {
-      if (!this.go()) {
+   public void gv() {
+      if (!this.gn()) {
          this.b(avp.dE);
          this.b(bua.k);
          this.a(dxz.u);
-         this.a(-this.dP().Z());
+         this.a(-this.dO().Z());
+      }
+   }
+
+   public void gw() {
+      if (this.gn()) {
+         this.b(avp.dF);
+         this.b(bua.a);
+         this.a(dxz.u);
+         this.a(this.dO().Z());
       }
    }
 
    public void gx() {
-      if (this.go()) {
-         this.b(avp.dF);
-         this.b(bua.a);
-         this.a(dxz.u);
-         this.a(this.dP().Z());
-      }
-   }
-
-   public void gy() {
       this.b(bua.a);
       this.a(dxz.u);
-      this.b(this.dP().Z());
+      this.b(this.dO().Z());
    }
 
    @VisibleForTesting
@@ -517,8 +517,8 @@ public class cgv extends chi implements bty, bue {
       this.a(Math.max(0L, $$0 - 52L - 1L));
    }
 
-   public long gz() {
-      return this.dP().Z() - Math.abs(this.ao.a(cf));
+   public long gy() {
+      return this.dO().Z() - Math.abs(this.ao.a(cf));
    }
 
    @Override
@@ -536,13 +536,13 @@ public class cgv extends chi implements bty, bue {
    }
 
    @Override
-   public boolean gA() {
+   public boolean gz() {
       return true;
    }
 
    @Override
    public void b(cmx $$0) {
-      if (!this.dP().B) {
+      if (!this.dO().B) {
          $$0.a(this, this.cu);
       }
    }
@@ -572,7 +572,7 @@ public class cgv extends chi implements bty, bue {
 
       @Override
       public void a() {
-         if (!cgv.this.cS()) {
+         if (!cgv.this.cR()) {
             super.a();
          }
       }
@@ -585,8 +585,8 @@ public class cgv extends chi implements bty, bue {
 
       @Override
       public void a() {
-         if (this.k == bzp.a.b && !cgv.this.N_() && cgv.this.go() && !cgv.this.gv() && cgv.this.gl()) {
-            cgv.this.gx();
+         if (this.k == bzp.a.b && !cgv.this.N_() && cgv.this.gn() && !cgv.this.gu() && cgv.this.gk()) {
+            cgv.this.gw();
          }
 
          super.a();

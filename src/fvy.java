@@ -1,57 +1,147 @@
-import java.util.Arrays;
+public class fvy<T extends cjk> extends fvt<T> implements fuj, fvs {
+   private final fyk a;
+   private final fyk b;
+   private final fyk f;
+   private final fyk g;
+   private final fyk h;
+   private final fyk i;
+   private final fyk j;
+   private final fyk k;
 
-public class fvy<T extends ckm> extends fvr<T> {
-   private static final int a = 8;
-   private final fyi b;
-   private final fyi[] f = new fyi[8];
-
-   public fvy(fyi $$0) {
-      this.b = $$0;
-      Arrays.setAll(this.f, $$1 -> $$0.b(a($$1)));
+   public fvy(fyk $$0) {
+      this.a = $$0;
+      this.b = $$0.b("head");
+      this.f = this.b.b("hat");
+      this.f.k = false;
+      this.g = $$0.b("arms");
+      this.h = $$0.b("left_leg");
+      this.i = $$0.b("right_leg");
+      this.k = $$0.b("left_arm");
+      this.j = $$0.b("right_arm");
    }
 
-   private static String a(int $$0) {
-      return "cube" + $$0;
-   }
-
-   public static fyo b() {
-      fyq $$0 = new fyq();
-      fyr $$1 = $$0.a();
-
-      for (int $$2 = 0; $$2 < 8; $$2++) {
-         int $$3 = 0;
-         int $$4 = $$2;
-         if ($$2 == 2) {
-            $$3 = 24;
-            $$4 = 10;
-         } else if ($$2 == 3) {
-            $$3 = 24;
-            $$4 = 19;
-         }
-
-         $$1.a(a($$2), fyn.c().a($$3, $$4).a(-4.0F, (float)(16 + $$2), -4.0F, 8.0F, 1.0F, 8.0F), fyk.a);
-      }
-
-      $$1.a("inside_cube", fyn.c().a(0, 16).a(-2.0F, 18.0F, -2.0F, 4.0F, 4.0F, 4.0F), fyk.a);
-      return fyo.a($$0, 64, 32);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      float $$4 = ayo.i($$3, $$0.ca, $$0.bZ);
-      if ($$4 < 0.0F) {
-         $$4 = 0.0F;
-      }
-
-      for (int $$5 = 0; $$5 < this.f.length; $$5++) {
-         this.f[$$5].c = (float)(-(4 - $$5)) * $$4 * 1.7F;
-      }
+   public static fyq b() {
+      fys $$0 = new fys();
+      fyt $$1 = $$0.a();
+      fyt $$2 = $$1.a("head", fyp.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F), fym.a(0.0F, 0.0F, 0.0F));
+      $$2.a("hat", fyp.c().a(32, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 12.0F, 8.0F, new fyo(0.45F)), fym.a);
+      $$2.a("nose", fyp.c().a(24, 0).a(-1.0F, -1.0F, -6.0F, 2.0F, 4.0F, 2.0F), fym.a(0.0F, -2.0F, 0.0F));
+      $$1.a(
+         "body",
+         fyp.c().a(16, 20).a(-4.0F, 0.0F, -3.0F, 8.0F, 12.0F, 6.0F).a(0, 38).a(-4.0F, 0.0F, -3.0F, 8.0F, 20.0F, 6.0F, new fyo(0.5F)),
+         fym.a(0.0F, 0.0F, 0.0F)
+      );
+      fyt $$3 = $$1.a(
+         "arms",
+         fyp.c().a(44, 22).a(-8.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F).a(40, 38).a(-4.0F, 2.0F, -2.0F, 8.0F, 4.0F, 4.0F),
+         fym.a(0.0F, 3.0F, -1.0F, -0.75F, 0.0F, 0.0F)
+      );
+      $$3.a("left_shoulder", fyp.c().a(44, 22).a().a(4.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F), fym.a);
+      $$1.a("right_leg", fyp.c().a(0, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), fym.a(-2.0F, 12.0F, 0.0F));
+      $$1.a("left_leg", fyp.c().a(0, 22).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), fym.a(2.0F, 12.0F, 0.0F));
+      $$1.a("right_arm", fyp.c().a(40, 46).a(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), fym.a(-5.0F, 2.0F, 0.0F));
+      $$1.a("left_arm", fyp.c().a(40, 46).a().a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), fym.a(5.0F, 2.0F, 0.0F));
+      return fyq.a($$0, 64, 64);
    }
 
    @Override
-   public fyi a() {
+   public fyk a() {
+      return this.a;
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.b.f = $$4 * (float) (Math.PI / 180.0);
+      this.b.e = $$5 * (float) (Math.PI / 180.0);
+      if (this.d) {
+         this.j.e = (float) (-Math.PI / 5);
+         this.j.f = 0.0F;
+         this.j.g = 0.0F;
+         this.k.e = (float) (-Math.PI / 5);
+         this.k.f = 0.0F;
+         this.k.g = 0.0F;
+         this.i.e = -1.4137167F;
+         this.i.f = (float) (Math.PI / 10);
+         this.i.g = 0.07853982F;
+         this.h.e = -1.4137167F;
+         this.h.f = (float) (-Math.PI / 10);
+         this.h.g = -0.07853982F;
+      } else {
+         this.j.e = ayo.b($$1 * 0.6662F + (float) Math.PI) * 2.0F * $$2 * 0.5F;
+         this.j.f = 0.0F;
+         this.j.g = 0.0F;
+         this.k.e = ayo.b($$1 * 0.6662F) * 2.0F * $$2 * 0.5F;
+         this.k.f = 0.0F;
+         this.k.g = 0.0F;
+         this.i.e = ayo.b($$1 * 0.6662F) * 1.4F * $$2 * 0.5F;
+         this.i.f = 0.0F;
+         this.i.g = 0.0F;
+         this.h.e = ayo.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2 * 0.5F;
+         this.h.f = 0.0F;
+         this.h.g = 0.0F;
+      }
+
+      cjk.a $$6 = $$0.s();
+      if ($$6 == cjk.a.b) {
+         if ($$0.eT().e()) {
+            fuh.a(this.k, this.j, true, this.c, $$3);
+         } else {
+            fuh.a(this.j, this.k, $$0, this.c, $$3);
+         }
+      } else if ($$6 == cjk.a.c) {
+         this.j.d = 0.0F;
+         this.j.b = -5.0F;
+         this.k.d = 0.0F;
+         this.k.b = 5.0F;
+         this.j.e = ayo.b($$3 * 0.6662F) * 0.25F;
+         this.k.e = ayo.b($$3 * 0.6662F) * 0.25F;
+         this.j.g = (float) (Math.PI * 3.0 / 4.0);
+         this.k.g = (float) (-Math.PI * 3.0 / 4.0);
+         this.j.f = 0.0F;
+         this.k.f = 0.0F;
+      } else if ($$6 == cjk.a.d) {
+         this.j.f = -0.1F + this.b.f;
+         this.j.e = (float) (-Math.PI / 2) + this.b.e;
+         this.k.e = -0.9424779F + this.b.e;
+         this.k.f = this.b.f - 0.4F;
+         this.k.g = (float) (Math.PI / 2);
+      } else if ($$6 == cjk.a.e) {
+         fuh.a(this.j, this.k, this.b, true);
+      } else if ($$6 == cjk.a.f) {
+         fuh.a(this.j, this.k, $$0, true);
+      } else if ($$6 == cjk.a.g) {
+         this.j.d = 0.0F;
+         this.j.b = -5.0F;
+         this.j.e = ayo.b($$3 * 0.6662F) * 0.05F;
+         this.j.g = 2.670354F;
+         this.j.f = 0.0F;
+         this.k.d = 0.0F;
+         this.k.b = 5.0F;
+         this.k.e = ayo.b($$3 * 0.6662F) * 0.05F;
+         this.k.g = (float) (-Math.PI * 3.0 / 4.0);
+         this.k.f = 0.0F;
+      }
+
+      boolean $$7 = $$6 == cjk.a.a;
+      this.g.k = $$7;
+      this.k.k = !$$7;
+      this.j.k = !$$7;
+   }
+
+   private fyk a(btg $$0) {
+      return $$0 == btg.a ? this.k : this.j;
+   }
+
+   public fyk c() {
+      return this.f;
+   }
+
+   @Override
+   public fyk d() {
       return this.b;
+   }
+
+   @Override
+   public void a(btg $$0, fbi $$1) {
+      this.a($$0).a($$1);
    }
 }

@@ -1,12 +1,25 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public interface ekn<SP extends ekm> {
-   ekn<ekk> a = a("random_spread", ekk.a);
-   ekn<ekj> b = a("concentric_rings", ekj.a);
+public enum ekn implements azk {
+   a("linear"),
+   b("triangular");
 
-   MapCodec<SP> codec();
+   public static final Codec<ekn> c = azk.a(ekn::values);
+   private final String d;
 
-   private static <SP extends ekm> ekn<SP> a(String $$0, MapCodec<SP> $$1) {
-      return jz.a(lt.P, $$0, () -> $$1);
+   private ekn(final String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
+
+   public int a(ayw $$0, int $$1) {
+      return switch (this) {
+         case a -> $$0.a($$1);
+         case b -> ($$0.a($$1) + $$0.a($$1)) / 2;
+      };
    }
 }

@@ -25,7 +25,7 @@ public class ccs<U> {
    public static final ccs<btn> q = a("interaction_target");
    public static final ccs<bsl> r = a("breed_target");
    public static final ccs<bsr> s = a("ride_target");
-   public static final ccs<epq> t = a("path");
+   public static final ccs<eps> t = a("path");
    public static final ccs<List<jl>> u = a("interactable_doors");
    public static final ccs<Set<jl>> v = a("doors_to_close");
    public static final ccs<jd> w = a("nearest_bed");
@@ -54,7 +54,7 @@ public class ccs<U> {
    public static final ccs<Boolean> T = a("long_jump_mid_jump");
    public static final ccs<Boolean> U = a("has_hunting_cooldown", Codec.BOOL);
    public static final ccs<Integer> V = a("ram_cooldown_ticks", Codec.INT);
-   public static final ccs<exa> W = a("ram_target");
+   public static final ccs<exc> W = a("ram_target");
    public static final ccs<azs> X = a("is_in_water", azs.b);
    public static final ccs<azs> Y = a("is_pregnant", azs.b);
    public static final ccs<Boolean> Z = a("is_panicking", Codec.BOOL);

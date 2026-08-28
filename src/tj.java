@@ -127,7 +127,7 @@ class tj implements sy {
    private static jd b(sx $$0) {
       jd $$1 = $$0.c();
       jd $$2 = new jd(-1, -2, -1);
-      return enr.a($$1.a((kh)$$2), dkv.a, $$0.t(), $$1);
+      return ent.a($$1.a((kh)$$2), dkv.a, $$0.t(), $$1);
    }
 
    private static void b(sx $$0, dfy $$1) {
@@ -143,7 +143,7 @@ class tj implements sy {
       aqu $$2 = $$0.f();
       jd $$3 = $$0.c();
       jd $$4 = new jd(-1, 0, -1);
-      jd $$5 = enr.a($$3.a((kh)$$4), dkv.a, $$0.t(), $$3);
+      jd $$5 = ent.a($$3.a((kh)$$4), dkv.a, $$0.t(), $$3);
       $$2.b($$5, dga.oa.o().a($$0.t()));
       dtc $$6 = $$2.a_($$5);
       cuq $$7 = a($$0.b(), $$0.q(), $$1);

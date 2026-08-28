@@ -411,7 +411,7 @@ public abstract class dpv extends dqb implements brd, crk, crv {
    }
 
    public void a(aqv $$0) {
-      List<czb<?>> $$1 = this.a($$0.A(), $$0.dn());
+      List<czb<?>> $$1 = this.a($$0.A(), $$0.dm());
       $$0.a($$1);
 
       for (czb<?> $$2 : $$1) {
@@ -423,7 +423,7 @@ public abstract class dpv extends dqb implements brd, crk, crv {
       this.y.clear();
    }
 
-   public List<czb<?>> a(aqu $$0, exa $$1) {
+   public List<czb<?>> a(aqu $$0, exc $$1) {
       List<czb<?>> $$2 = Lists.newArrayList();
       ObjectIterator var4 = this.y.object2IntEntrySet().iterator();
 
@@ -438,7 +438,7 @@ public abstract class dpv extends dqb implements brd, crk, crv {
       return $$2;
    }
 
-   private static void a(aqu $$0, exa $$1, int $$2, float $$3) {
+   private static void a(aqu $$0, exc $$1, int $$2, float $$3) {
       int $$4 = ayo.d((float)$$2 * $$3);
       float $$5 = ayo.h((float)$$2 * $$3);
       if ($$5 != 0.0F && Math.random() < (double)$$5) {

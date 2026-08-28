@@ -20,30 +20,30 @@ public class dva {
    private final dea c;
    private final long d;
    private final long e;
-   private final Map<ejp, List<ekm>> f = new Object2ObjectOpenHashMap();
-   private final Map<ekj, CompletableFuture<List<dcd>>> g = new Object2ObjectArrayMap();
+   private final Map<ejr, List<eko>> f = new Object2ObjectOpenHashMap();
+   private final Map<ekl, CompletableFuture<List<dcd>>> g = new Object2ObjectArrayMap();
    private boolean h;
-   private final List<jm<ejv>> i;
+   private final List<jm<ejx>> i;
 
-   public static dva a(dzm $$0, long $$1, dea $$2, Stream<jm<ejv>> $$3) {
-      List<jm<ejv>> $$4 = $$3.filter($$1x -> a((ejv)$$1x.a(), $$2)).toList();
+   public static dva a(dzm $$0, long $$1, dea $$2, Stream<jm<ejx>> $$3) {
+      List<jm<ejx>> $$4 = $$3.filter($$1x -> a((ejx)$$1x.a(), $$2)).toList();
       return new dva($$0, $$2, $$1, 0L, $$4);
    }
 
-   public static dva a(dzm $$0, long $$1, dea $$2, jo<ejv> $$3) {
-      List<jm<ejv>> $$4 = $$3.b().filter($$1x -> a((ejv)$$1x.a(), $$2)).collect(Collectors.toUnmodifiableList());
+   public static dva a(dzm $$0, long $$1, dea $$2, jo<ejx> $$3) {
+      List<jm<ejx>> $$4 = $$3.b().filter($$1x -> a((ejx)$$1x.a(), $$2)).collect(Collectors.toUnmodifiableList());
       return new dva($$0, $$2, $$1, $$1, $$4);
    }
 
-   private static boolean a(ejv $$0, dea $$1) {
+   private static boolean a(ejx $$0, dea $$1) {
       Stream<jm<ddw>> $$2 = $$0.a().stream().flatMap($$0x -> {
-         ejp $$1x = $$0x.a().a();
+         ejr $$1x = $$0x.a().a();
          return $$1x.a().a();
       });
       return $$2.anyMatch($$1.c()::contains);
    }
 
-   private dva(dzm $$0, dea $$1, long $$2, long $$3, List<jm<ejv>> $$4) {
+   private dva(dzm $$0, dea $$1, long $$2, long $$3, List<jm<ejx>> $$4) {
       this.b = $$0;
       this.d = $$2;
       this.c = $$1;
@@ -51,31 +51,31 @@ public class dva {
       this.i = $$4;
    }
 
-   public List<jm<ejv>> a() {
+   public List<jm<ejx>> a() {
       return this.i;
    }
 
    private void e() {
       Set<jm<ddw>> $$0 = this.c.c();
       this.a().forEach($$1 -> {
-         ejv $$2 = $$1.a();
+         ejx $$2 = $$1.a();
          boolean $$3 = false;
 
-         for (ejv.a $$4 : $$2.a()) {
-            ejp $$5 = $$4.a().a();
+         for (ejx.a $$4 : $$2.a()) {
+            ejr $$5 = $$4.a().a();
             if ($$5.a().a().anyMatch($$0::contains)) {
                this.f.computeIfAbsent($$5, $$0xx -> new ArrayList<>()).add($$2.b());
                $$3 = true;
             }
          }
 
-         if ($$3 && $$2.b() instanceof ekj $$7) {
-            this.g.put($$7, this.a((jm<ejv>)$$1, $$7));
+         if ($$3 && $$2.b() instanceof ekl $$7) {
+            this.g.put($$7, this.a((jm<ejx>)$$1, $$7));
          }
       });
    }
 
-   private CompletableFuture<List<dcd>> a(jm<ejv> $$0, ekj $$1) {
+   private CompletableFuture<List<dcd>> a(jm<ejx> $$0, ekl $$1) {
       if ($$1.c() == 0) {
          return CompletableFuture.completedFuture(List.of());
       } else {
@@ -131,13 +131,13 @@ public class dva {
    }
 
    @Nullable
-   public List<dcd> a(ekj $$0) {
+   public List<dcd> a(ekl $$0) {
       this.b();
       CompletableFuture<List<dcd>> $$1 = this.g.get($$0);
       return $$1 != null ? $$1.join() : null;
    }
 
-   public List<ekm> a(jm<ejp> $$0) {
+   public List<eko> a(jm<ejr> $$0) {
       this.b();
       return this.f.getOrDefault($$0.a(), List.of());
    }
@@ -146,8 +146,8 @@ public class dva {
       return this.b;
    }
 
-   public boolean a(jm<ejv> $$0, int $$1, int $$2, int $$3) {
-      ekm $$4 = $$0.a().b();
+   public boolean a(jm<ejx> $$0, int $$1, int $$2, int $$3) {
+      eko $$4 = $$0.a().b();
 
       for (int $$5 = $$1 - $$3; $$5 <= $$1 + $$3; $$5++) {
          for (int $$6 = $$2 - $$3; $$6 <= $$2 + $$3; $$6++) {

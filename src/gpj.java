@@ -1,15 +1,24 @@
-public class gpj extends got<cgh, fxz<cgh>> {
-   private static final akr a = akr.b("textures/entity/wolf/wolf_collar.png");
+public class gpj extends gog<ciu, fya<ciu>> {
+   private static final akr a = akr.b("textures/entity/wither/wither_armor.png");
+   private final fya<ciu> b;
 
-   public gpj(gmd<cgh, fxz<cgh>> $$0) {
+   public gpj(gmf<ciu, fya<ciu>> $$0, fyg $$1) {
       super($$0);
+      this.b = new fya<>($$1.a(fyj.bX));
    }
 
-   public void a(fbg $$0, gex $$1, int $$2, cgh $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.s() && !$$3.ci()) {
-         int $$10 = $$3.gA().d();
-         fbk $$11 = $$1.getBuffer(gff.e(a));
-         this.c().a($$0, $$11, $$2, gqa.d, $$10);
-      }
+   @Override
+   protected float a(float $$0) {
+      return ayo.b($$0 * 0.02F) * 3.0F;
+   }
+
+   @Override
+   protected akr a() {
+      return a;
+   }
+
+   @Override
+   protected fvk<ciu> b() {
+      return this.b;
    }
 }

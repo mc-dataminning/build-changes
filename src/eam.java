@@ -2,12 +2,12 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 class eam extends eaq {
-   private final jq<epb> e;
+   private final jq<epd> e;
    public static final MapCodec<eam> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0).and(kb.a(lu.D).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, eam::new)
    );
 
-   public eam(kh $$0, jq<epb> $$1) {
+   public eam(kh $$0, jq<epd> $$1) {
       super($$0);
       this.e = $$1;
    }

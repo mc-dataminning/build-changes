@@ -19,7 +19,7 @@ public abstract class dlm extends dfy {
       $$0.put(ji.b, f);
       $$0.put(ji.a, g);
    }));
-   protected final ext[] i;
+   protected final exv[] i;
 
    protected dlm(float $$0, dtb.d $$1) {
       super($$1);
@@ -29,15 +29,15 @@ public abstract class dlm extends dfy {
    @Override
    protected abstract MapCodec<? extends dlm> a();
 
-   private ext[] a(float $$0) {
+   private exv[] a(float $$0) {
       float $$1 = 0.5F - $$0;
       float $$2 = 0.5F + $$0;
-      ext $$3 = dfy.a((double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F));
-      ext[] $$4 = new ext[a.length];
+      exv $$3 = dfy.a((double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F));
+      exv[] $$4 = new exv[a.length];
 
       for (int $$5 = 0; $$5 < a.length; $$5++) {
          ji $$6 = a[$$5];
-         $$4[$$5] = exq.a(
+         $$4[$$5] = exs.a(
             0.5 + Math.min((double)(-$$0), (double)$$6.j() * 0.5),
             0.5 + Math.min((double)(-$$0), (double)$$6.k() * 0.5),
             0.5 + Math.min((double)(-$$0), (double)$$6.l() * 0.5),
@@ -47,14 +47,14 @@ public abstract class dlm extends dfy {
          );
       }
 
-      ext[] $$7 = new ext[64];
+      exv[] $$7 = new exv[64];
 
       for (int $$8 = 0; $$8 < 64; $$8++) {
-         ext $$9 = $$3;
+         exv $$9 = $$3;
 
          for (int $$10 = 0; $$10 < a.length; $$10++) {
             if (($$8 & 1 << $$10) != 0) {
-               $$9 = exq.a($$9, $$4[$$10]);
+               $$9 = exs.a($$9, $$4[$$10]);
             }
          }
 
@@ -70,7 +70,7 @@ public abstract class dlm extends dfy {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return this.i[this.m($$0)];
    }
 

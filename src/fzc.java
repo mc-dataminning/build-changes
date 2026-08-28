@@ -1,212 +1,323 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.exceptions.AuthenticationException;
-import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
-import com.mojang.authlib.exceptions.ForcedUsernameChangeException;
-import com.mojang.authlib.exceptions.InsufficientPrivilegesException;
-import com.mojang.authlib.exceptions.InvalidCredentialsException;
-import com.mojang.authlib.exceptions.UserBannedException;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import java.math.BigInteger;
-import java.security.PublicKey;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
+import java.nio.file.Path;
 import java.time.Duration;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Consumer;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import net.minecraft.client.ClientBrandRetriever;
 import org.slf4j.Logger;
 
-public class fzc implements aio {
-   private static final Logger a = LogUtils.getLogger();
-   private final fgm b;
+public abstract class fzc implements zm {
+   private static final wz l = wz.c("disconnect.lost");
+   private static final Logger m = LogUtils.getLogger();
+   protected final fgo a;
+   protected final vt b;
    @Nullable
-   private final fzr c;
+   protected final fzt c;
    @Nullable
-   private final fob d;
-   private final Consumer<wz> e;
-   private final vt f;
-   private final boolean g;
+   protected String d;
+   protected final gvs e;
    @Nullable
-   private final Duration h;
-   @Nullable
-   private String i;
-   private final Map<akr, byte[]> j;
-   private final boolean k;
-   private final AtomicReference<fzc.a> l = new AtomicReference<>(fzc.a.a);
+   protected final fod f;
+   protected boolean g;
+   @Deprecated(
+      forRemoval = true
+   )
+   protected final boolean h;
+   private final List<fzc.a> n = new ArrayList<>();
+   protected final Map<akr, byte[]> i;
+   protected Map<String, String> j;
+   protected alj k;
 
-   public fzc(vt $$0, fgm $$1, @Nullable fzr $$2, @Nullable fob $$3, boolean $$4, @Nullable Duration $$5, Consumer<wz> $$6, @Nullable fzw $$7) {
-      this.f = $$0;
+   protected fzc(fgo $$0, vt $$1, fzj $$2) {
+      this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$6;
-      this.g = $$4;
-      this.h = $$5;
-      this.j = $$7 != null ? new HashMap<>($$7.a()) : new HashMap<>();
-      this.k = $$7 != null;
-   }
-
-   private void a(fzc.a $$0) {
-      fzc.a $$1 = this.l.updateAndGet($$1x -> {
-         if (!$$0.f.contains($$1x)) {
-            throw new IllegalStateException("Tried to switch to " + $$0 + " from " + $$1x + ", but expected one of " + $$0.f);
-         } else {
-            return $$0;
-         }
-      });
-      this.e.accept($$1.e);
+      this.c = $$2.f();
+      this.d = $$2.e();
+      this.e = $$2.b();
+      this.f = $$2.g();
+      this.i = $$2.h();
+      this.h = $$2.j();
+      this.j = $$2.k();
+      this.k = $$2.l();
    }
 
    @Override
-   public void a(air $$0) {
-      this.a(fzc.a.b);
-
-      Cipher $$4;
-      Cipher $$5;
-      String $$3;
-      aiz $$7;
-      try {
-         SecretKey $$1 = axl.a();
-         PublicKey $$2 = $$0.e();
-         $$3 = new BigInteger(axl.a($$0.b(), $$2, $$1)).toString(16);
-         $$4 = axl.a(2, $$1);
-         $$5 = axl.a(1, $$1);
-         byte[] $$6 = $$0.f();
-         $$7 = new aiz($$1, $$2, $$6);
-      } catch (Exception var9) {
-         throw new IllegalStateException("Protocol error", var9);
-      }
-
-      if ($$0.g()) {
-         ad.h().submit(() -> {
-            wz $$4x = this.b($$3);
-            if ($$4x != null) {
-               if (this.c == null || !this.c.d()) {
-                  this.f.a($$4x);
-                  return;
-               }
-
-               a.warn($$4x.getString());
-            }
-
-            this.a($$7, $$4, $$5);
-         });
-      } else {
-         this.a($$7, $$4, $$5);
+   public void a(zg $$0, Exception $$1) {
+      m.error("Failed to handle packet {}", $$0, $$1);
+      zm.super.a($$0, $$1);
+      Optional<Path> $$2 = this.a($$0, (Throwable)$$1);
+      Optional<URI> $$3 = this.k.a(alj.b.a).map(alj.a::c);
+      if (this.h) {
+         this.b.a(new vv(wz.c("disconnect.packetError"), $$2, $$3));
       }
    }
 
-   private void a(aiz $$0, Cipher $$1, Cipher $$2) {
-      this.a(fzc.a.c);
-      this.f.a($$0, wg.a(() -> this.f.a($$1, $$2)));
+   @Override
+   public vv a(wz $$0, Throwable $$1) {
+      Optional<Path> $$2 = this.a(null, $$1);
+      Optional<URI> $$3 = this.k.a(alj.b.a).map(alj.a::c);
+      return new vv($$0, $$2, $$3);
+   }
+
+   private Optional<Path> a(@Nullable zg $$0, Throwable $$1) {
+      o $$2 = o.a($$1, "Packet handling error");
+      zj.a($$2, this, $$0);
+      Path $$3 = this.a.p.toPath().resolve("debug");
+      Path $$4 = $$3.resolve("disconnect-" + ad.f() + "-client.txt");
+      Optional<alj.a> $$5 = this.k.a(alj.b.a);
+      List<String> $$6 = $$5.<List<String>>map($$0x -> List.of("Server bug reporting link: " + $$0x.c())).orElse(List.of());
+      return $$2.a($$4, y.d, $$6) ? Optional.of($$4) : Optional.empty();
+   }
+
+   @Override
+   public boolean a(zg<?> $$0) {
+      return zm.super.a($$0) ? true : this.g && ($$0 instanceof zv || $$0 instanceof zw);
+   }
+
+   @Override
+   public void a(zq $$0) {
+      this.a(new aac($$0.b()), () -> !RenderSystem.isFrozenAtPollEvents(), Duration.ofMinutes(1L));
+   }
+
+   @Override
+   public void a(zr $$0) {
+      zj.a($$0, this, this.a);
+      this.b(new aad($$0.b()));
+   }
+
+   @Override
+   public void a(zn $$0) {
+      aaj $$1 = $$0.b();
+      if (!($$1 instanceof aak)) {
+         zj.a($$0, this, this.a);
+         if ($$1 instanceof aah $$2) {
+            this.d = $$2.b();
+            this.e.a($$2.b());
+         } else {
+            this.a($$1);
+         }
+      }
+   }
+
+   protected abstract void a(aaj var1);
+
+   @Override
+   public void a(zt $$0) {
+      zj.a($$0, this, this.a);
+      UUID $$1 = $$0.b();
+      URL $$2 = a($$0.e());
+      if ($$2 == null) {
+         this.b.a(new aae($$1, aae.a.f));
+      } else {
+         String $$3 = $$0.f();
+         boolean $$4 = $$0.g();
+         fzt.a $$5 = this.c != null ? this.c.b() : fzt.a.c;
+         if ($$5 != fzt.a.c && (!$$4 || $$5 != fzt.a.b)) {
+            this.a.ae().a($$1, $$2, $$3);
+         } else {
+            this.a.a(this.a($$1, $$2, $$3, $$4, $$0.h().orElse(null)));
+         }
+      }
+   }
+
+   @Override
+   public void a(zs $$0) {
+      zj.a($$0, this, this.a);
+      $$0.b().ifPresentOrElse($$0x -> this.a.ae().a($$0x), () -> this.a.ae().e());
+   }
+
+   static wz a(wz $$0, @Nullable wz $$1) {
+      return (wz)($$1 == null ? $$0 : wz.a("multiplayer.texturePrompt.serverPrompt", $$0, $$1));
    }
 
    @Nullable
-   private wz b(String $$0) {
+   private static URL a(String $$0) {
       try {
-         this.d().joinServer(this.b.X().b(), this.b.X().d(), $$0);
+         URL $$1 = new URL($$0);
+         String $$2 = $$1.getProtocol();
+         return !"http".equals($$2) && !"https".equals($$2) ? null : $$1;
+      } catch (MalformedURLException var3) {
          return null;
-      } catch (AuthenticationUnavailableException var3) {
-         return wz.a("disconnect.loginFailedInfo", wz.c("disconnect.loginFailedInfo.serversUnavailable"));
-      } catch (InvalidCredentialsException var4) {
-         return wz.a("disconnect.loginFailedInfo", wz.c("disconnect.loginFailedInfo.invalidSession"));
-      } catch (InsufficientPrivilegesException var5) {
-         return wz.a("disconnect.loginFailedInfo", wz.c("disconnect.loginFailedInfo.insufficientPrivileges"));
-      } catch (ForcedUsernameChangeException | UserBannedException var6) {
-         return wz.a("disconnect.loginFailedInfo", wz.c("disconnect.loginFailedInfo.userBanned"));
-      } catch (AuthenticationException var7) {
-         return wz.a("disconnect.loginFailedInfo", var7.getMessage());
       }
-   }
-
-   private MinecraftSessionService d() {
-      return this.b.al();
-   }
-
-   @Override
-   public void a(aiq $$0) {
-      this.a(fzc.a.d);
-      GameProfile $$1 = $$0.b();
-      this.f
-         .a(
-            abj.d,
-            new fzb(
-               this.b,
-               this.f,
-               new fzh($$1, this.b.u().a(this.g, this.h, this.i), fzf.a().a(), cpn.g, null, this.c, this.d, this.j, null, $$0.e(), Map.of(), alj.a)
-            )
-         );
-      this.f.a(aja.a);
-      this.f.a(abj.b);
-      this.f.a(new aab(new aah(ClientBrandRetriever.getClientModName())));
-      this.f.a(new aaa(this.b.m.aw()));
-   }
-
-   @Override
-   public void a(vv $$0) {
-      wz $$1 = this.k ? wy.q : wy.r;
-      if (this.c != null && this.c.e()) {
-         this.b.a(new gwk(this.d, $$1, $$0.a()));
-      } else {
-         this.b.a(new fni(this.d, $$1, $$0));
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return this.f.i();
-   }
-
-   @Override
-   public void a(ait $$0) {
-      this.f.a($$0.b());
-   }
-
-   @Override
-   public void a(ais $$0) {
-      if (!this.f.e()) {
-         this.f.a($$0.b(), false);
-      }
-   }
-
-   @Override
-   public void a(aip $$0) {
-      this.e.accept(wz.c("connect.negotiating"));
-      this.f.a(new aix($$0.b(), null));
-   }
-
-   public void a(@Nullable String $$0) {
-      this.i = $$0;
    }
 
    @Override
    public void a(abp $$0) {
-      this.f.a(new abs($$0.b(), this.j.get($$0.b())));
+      zj.a($$0, this, this.a);
+      this.b.a(new abs($$0.b(), this.i.get($$0.b())));
+   }
+
+   @Override
+   public void a(zv $$0) {
+      zj.a($$0, this, this.a);
+      this.i.put($$0.b(), $$0.e());
+   }
+
+   @Override
+   public void a(zo $$0) {
+      zj.a($$0, this, this.a);
+      this.j = $$0.b();
+   }
+
+   @Override
+   public void a(zu $$0) {
+      zj.a($$0, this, this.a);
+      List<alj.c> $$1 = $$0.b();
+      Builder<alj.a> $$2 = ImmutableList.builderWithExpectedSize($$1.size());
+
+      for (alj.c $$3 : $$1) {
+         try {
+            URI $$4 = ad.a($$3.b());
+            $$2.add(new alj.a($$3.a(), $$4));
+         } catch (Exception var7) {
+            m.warn("Received invalid link for type {}:{}", new Object[]{$$3.a(), $$3.b(), var7});
+         }
+      }
+
+      this.k = new alj($$2.build());
+   }
+
+   @Override
+   public void a(zw $$0) {
+      this.g = true;
+      zj.a($$0, this, this.a);
+      if (this.c == null) {
+         throw new IllegalStateException("Cannot transfer to server from singleplayer");
+      } else {
+         this.b.a(wz.c("disconnect.transfer"));
+         this.b.m();
+         this.b.n();
+         gax $$1 = new gax($$0.b(), $$0.e());
+         fnc.a(Objects.requireNonNullElseGet(this.f, fof::new), this.a, $$1, this.c, false, new fzy(this.i));
+      }
+   }
+
+   @Override
+   public void a(zp $$0) {
+      this.b.a($$0.b());
+   }
+
+   protected void e() {
+      Iterator<fzc.a> $$0 = this.n.iterator();
+
+      while ($$0.hasNext()) {
+         fzc.a $$1 = $$0.next();
+         if ($$1.b().getAsBoolean()) {
+            this.b($$1.a);
+            $$0.remove();
+         } else if ($$1.c() <= ad.c()) {
+            $$0.remove();
+         }
+      }
+   }
+
+   public void b(zg<?> $$0) {
+      this.b.a($$0);
+   }
+
+   @Override
+   public void a(vv $$0) {
+      this.e.c();
+      this.a.a(this.b($$0), this.g);
+      m.warn("Client disconnected with reason: {}", $$0.a().getString());
    }
 
    @Override
    public void a(o $$0, p $$1) {
-      $$1.a("Server type", () -> this.c != null ? this.c.f().toString() : "<unknown>");
-      $$1.a("Login phase", () -> this.l.get().toString());
+      $$1.a("Server type", () -> this.c != null ? this.c.f().toString() : "<none>");
+      $$1.a("Server brand", () -> this.d);
+      if (!this.j.isEmpty()) {
+         p $$2 = $$0.a("Custom Server Details");
+         this.j.forEach($$2::a);
+      }
    }
 
-   static enum a {
-      a(wz.c("connect.connecting"), Set.of()),
-      b(wz.c("connect.authorizing"), Set.of(a)),
-      c(wz.c("connect.encrypting"), Set.of(b)),
-      d(wz.c("connect.joining"), Set.of(c, a));
+   protected fod b(vv $$0) {
+      fod $$1 = Objects.requireNonNullElseGet(this.f, () -> new fqt(new fof()));
+      return (fod)(this.c != null && this.c.e() ? new gwm($$1, l, $$0.a()) : new fnk($$1, l, $$0));
+   }
 
-      final wz e;
-      final Set<fzc.a> f;
+   @Nullable
+   public String f() {
+      return this.d;
+   }
 
-      private a(final wz $$0, final Set<fzc.a> $$1) {
-         this.e = $$0;
-         this.f = $$1;
+   private void a(zg<? extends wl> $$0, BooleanSupplier $$1, Duration $$2) {
+      if ($$1.getAsBoolean()) {
+         this.b($$0);
+      } else {
+         this.n.add(new fzc.a($$0, $$1, ad.c() + $$2.toMillis()));
+      }
+   }
+
+   private fod a(UUID $$0, URL $$1, String $$2, boolean $$3, @Nullable wz $$4) {
+      fod $$5 = this.a.y;
+      return $$5 instanceof fzc.b $$6 ? $$6.a(this.a, $$0, $$1, $$2, $$3, $$4) : new fzc.b(this.a, $$5, List.of(new fzc.b.a($$0, $$1, $$2)), $$3, $$4);
+   }
+
+   static record a(zg<? extends wl> a, BooleanSupplier b, long c) {
+   }
+
+   class b extends fnb {
+      private final List<fzc.b.a> s;
+      @Nullable
+      private final fod u;
+
+      b(final fgo $$0, @Nullable final fod $$1, final List<fzc.b.a> $$2, final boolean $$3, @Nullable final wz $$4) {
+         super(
+            $$5 -> {
+               $$0.a($$1);
+               gtc $$6 = $$0.ae();
+               if ($$5) {
+                  if (fzc.this.c != null) {
+                     fzc.this.c.a(fzt.a.a);
+                  }
+
+                  $$6.g();
+               } else {
+                  $$6.h();
+                  if ($$3) {
+                     fzc.this.b.a(wz.c("multiplayer.requiredTexturePrompt.disconnect"));
+                  } else if (fzc.this.c != null) {
+                     fzc.this.c.a(fzt.a.b);
+                  }
+               }
+
+               for (fzc.b.a $$7 : $$2) {
+                  $$6.a($$7.a, $$7.b, $$7.c);
+               }
+
+               if (fzc.this.c != null) {
+                  fzu.b(fzc.this.c);
+               }
+            },
+            $$3 ? wz.c("multiplayer.requiredTexturePrompt.line1") : wz.c("multiplayer.texturePrompt.line1"),
+            fzc.a($$3 ? wz.c("multiplayer.requiredTexturePrompt.line2").a(n.o, n.r) : wz.c("multiplayer.texturePrompt.line2"), $$4),
+            $$3 ? wy.i : wy.f,
+            $$3 ? wy.p : wy.g
+         );
+         this.s = $$2;
+         this.u = $$1;
+      }
+
+      public fzc.b a(fgo $$0, UUID $$1, URL $$2, String $$3, boolean $$4, @Nullable wz $$5) {
+         List<fzc.b.a> $$6 = ImmutableList.builderWithExpectedSize(this.s.size() + 1).addAll(this.s).add(new fzc.b.a($$1, $$2, $$3)).build();
+         return fzc.this.new b($$0, this.u, $$6, $$4, $$5);
+      }
+
+      static record a(UUID a, URL b, String c) {
       }
    }
 }

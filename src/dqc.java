@@ -140,7 +140,7 @@ public class dqc extends dqh implements bqv, bqw {
             if (!$$17 && $$18) {
                a($$0, $$1, avp.bK);
 
-               for (aqv $$19 : $$0.a(aqv.class, new ewv((double)$$4, (double)$$5, (double)$$6, (double)$$4, (double)($$5 - 4), (double)$$6).c(10.0, 5.0, 10.0))) {
+               for (aqv $$19 : $$0.a(aqv.class, new ewx((double)$$4, (double)$$5, (double)$$6, (double)$$4, (double)($$5 - 4), (double)$$6).c(10.0, 5.0, 10.0))) {
                   an.m.a($$19, $$3.q);
                }
             } else if ($$17 && !$$18) {
@@ -163,7 +163,7 @@ public class dqc extends dqh implements bqv, bqw {
 
          for (int $$8 = $$1 - $$5; $$8 <= $$1 + $$5 && $$7; $$8++) {
             for (int $$9 = $$3 - $$5; $$9 <= $$3 + $$5; $$9++) {
-               if (!$$0.a_(new jd($$8, $$6, $$9)).a(awe.aM)) {
+               if (!$$0.a_(new jd($$8, $$6, $$9)).a(awe.aN)) {
                   $$7 = false;
                   break;
                }
@@ -193,7 +193,7 @@ public class dqc extends dqh implements bqv, bqw {
          }
 
          int $$7 = (9 + $$2 * 2) * 20;
-         ewv $$8 = new ewv($$1).g($$5).b(0.0, (double)$$0.J_(), 0.0);
+         ewx $$8 = new ewx($$1).g($$5).b(0.0, (double)$$0.J_(), 0.0);
          List<cmx> $$9 = $$0.a(cmx.class, $$8);
 
          for (cmx $$10 : $$9) {

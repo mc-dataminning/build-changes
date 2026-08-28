@@ -8,7 +8,7 @@ public class chs extends chi {
    }
 
    public static buv.a s() {
-      return gL().a(buw.s, 15.0).a(buw.v, 0.2F);
+      return gK().a(buw.s, 15.0).a(buw.v, 0.2F);
    }
 
    public static boolean c(bsx<? extends cfe> $$0, dcx $$1, btr $$2, jd $$3, ayw $$4) {
@@ -43,11 +43,11 @@ public class chs extends chi {
 
    @Override
    public bqr b(cmx $$0, bqq $$1) {
-      return !this.gA() ? bqr.e : super.b($$0, $$1);
+      return !this.gz() ? bqr.e : super.b($$0, $$1);
    }
 
    @Override
-   protected void gB() {
+   protected void gA() {
    }
 
    @Override

@@ -65,9 +65,9 @@ public class cfu extends cgb implements buo<cfu.b>, cfn {
    public cfu(bsx<? extends cfu> $$0, dcw $$1) {
       super($$0, $$1);
       this.bR = new bzm(this, 10, false);
-      this.a(ept.n, -1.0F);
-      this.a(ept.o, -1.0F);
-      this.a(ept.x, -1.0F);
+      this.a(epv.n, -1.0F);
+      this.a(epv.o, -1.0F);
+      this.a(epv.x, -1.0F);
    }
 
    @Nullable
@@ -98,7 +98,7 @@ public class cfu extends cgb implements buo<cfu.b>, cfn {
       this.bU.a(3, new caj(this, 1.0, 3.0F, 7.0F));
    }
 
-   public static buv.a gv() {
+   public static buv.a gu() {
       return btp.C().a(buw.s, 6.0).a(buw.l, 0.4F).a(buw.v, 0.2F).a(buw.c, 3.0);
    }
 
@@ -113,17 +113,17 @@ public class cfu extends cgb implements buo<cfu.b>, cfn {
 
    @Override
    public void m_() {
-      if (this.co == null || !this.co.a(this.dn(), 3.46) || !this.dP().a_(this.co).a(dga.dT)) {
+      if (this.co == null || !this.co.a(this.dm(), 3.46) || !this.dO().a_(this.co).a(dga.dT)) {
          this.cn = false;
          this.co = null;
       }
 
-      if (this.dP().z.a(400) == 0) {
-         a(this.dP(), this);
+      if (this.dO().z.a(400) == 0) {
+         a(this.dO(), this);
       }
 
       super.m_();
-      this.gA();
+      this.gz();
    }
 
    @Override
@@ -132,11 +132,11 @@ public class cfu extends cgb implements buo<cfu.b>, cfn {
       this.cn = $$1;
    }
 
-   public boolean gw() {
+   public boolean gv() {
       return this.cn;
    }
 
-   private void gA() {
+   private void gz() {
       this.ch = this.ce;
       this.cg = this.cf;
       this.cf = this.cf + (float)(!this.aF() && !this.bS() ? 4 : -1) * 0.3F;
@@ -146,7 +146,7 @@ public class cfu extends cgb implements buo<cfu.b>, cfn {
       }
 
       this.cl *= 0.9F;
-      exa $$0 = this.ds();
+      exc $$0 = this.dr();
       if (!this.aF() && $$0.d < 0.0) {
          this.i($$0.d(1.0, 0.6, 1.0));
       }
@@ -156,12 +156,12 @@ public class cfu extends cgb implements buo<cfu.b>, cfn {
 
    public static boolean a(dcw $$0, bsr $$1) {
       if ($$1.bE() && !$$1.aX() && $$0.z.a(2) == 0) {
-         List<btp> $$2 = $$0.a(btp.class, $$1.cL().g(20.0), cj);
+         List<btp> $$2 = $$0.a(btp.class, $$1.cK().g(20.0), cj);
          if (!$$2.isEmpty()) {
             btp $$3 = $$2.get($$0.z.a($$2.size()));
             if (!$$3.aX()) {
                avo $$4 = b($$3.am());
-               $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), $$4, $$1.df(), 0.7F, a($$0.z));
+               $$0.a(null, $$1.dt(), $$1.dv(), $$1.dz(), $$4, $$1.de(), 0.7F, a($$0.z));
                return true;
             }
          }
@@ -178,26 +178,26 @@ public class cfu extends cgb implements buo<cfu.b>, cfn {
       if (!this.s() && $$2.a(awn.aw)) {
          $$2.a(1, $$0);
          if (!this.aX()) {
-            this.dP().a(null, this.du(), this.dw(), this.dA(), avp.sH, this.df(), 1.0F, 1.0F + (this.ah.i() - this.ah.i()) * 0.2F);
+            this.dO().a(null, this.dt(), this.dv(), this.dz(), avp.sH, this.de(), 1.0F, 1.0F + (this.ah.i() - this.ah.i()) * 0.2F);
          }
 
-         if (!this.dP().B) {
+         if (!this.dO().B) {
             if (this.ah.a(10) == 0) {
                this.a($$0);
-               this.dP().a(this, (byte)7);
+               this.dO().a(this, (byte)7);
             } else {
-               this.dP().a(this, (byte)6);
+               this.dO().a(this, (byte)6);
             }
          }
 
-         return bqr.a(this.dP().B);
+         return bqr.a(this.dO().B);
       } else if (!$$2.a(awn.ax)) {
-         if (!this.gy() && this.s() && this.j($$0)) {
-            if (!this.dP().B) {
-               this.y(!this.gl());
+         if (!this.gx() && this.s() && this.j($$0)) {
+            if (!this.dO().B) {
+               this.z(!this.gk());
             }
 
-            return bqr.a(this.dP().B);
+            return bqr.a(this.dO().B);
          } else {
             return super.b($$0, $$1);
          }
@@ -205,10 +205,10 @@ public class cfu extends cgb implements buo<cfu.b>, cfn {
          $$2.a(1, $$0);
          this.b(new brz(bsb.s, 900));
          if ($$0.f() || !this.cv()) {
-            this.a(this.dQ().a($$0), Float.MAX_VALUE);
+            this.a(this.dP().a($$0), Float.MAX_VALUE);
          }
 
-         return bqr.a(this.dP().B);
+         return bqr.a(this.dO().B);
       }
    }
 
@@ -218,7 +218,7 @@ public class cfu extends cgb implements buo<cfu.b>, cfn {
    }
 
    public static boolean c(bsx<cfu> $$0, dcx $$1, btr $$2, jd $$3, ayw $$4) {
-      return $$1.a_($$3.e()).a(awe.cb) && a($$1, $$3);
+      return $$1.a_($$3.e()).a(awe.cc) && a($$1, $$3);
    }
 
    @Override
@@ -239,7 +239,7 @@ public class cfu extends cgb implements buo<cfu.b>, cfn {
    @Nullable
    @Override
    public avo v() {
-      return a(this.dP(), this.dP().z);
+      return a(this.dO(), this.dO().z);
    }
 
    public static avo a(dcw $$0, ayw $$1) {
@@ -282,7 +282,7 @@ public class cfu extends cgb implements buo<cfu.b>, cfn {
    }
 
    @Override
-   public float fc() {
+   public float fb() {
       return a(this.ah);
    }
 
@@ -291,7 +291,7 @@ public class cfu extends cgb implements buo<cfu.b>, cfn {
    }
 
    @Override
-   public avq df() {
+   public avq de() {
       return avq.g;
    }
 
@@ -312,15 +312,15 @@ public class cfu extends cgb implements buo<cfu.b>, cfn {
       if (this.b($$0)) {
          return false;
       } else {
-         if (!this.dP().B) {
-            this.y(false);
+         if (!this.dO().B) {
+            this.z(false);
          }
 
          return super.a($$0, $$1);
       }
    }
 
-   public cfu.b gx() {
+   public cfu.b gw() {
       return cfu.b.a(this.ao.a(ci));
    }
 
@@ -337,7 +337,7 @@ public class cfu extends cgb implements buo<cfu.b>, cfn {
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      $$0.a("Variant", this.gx().h);
+      $$0.a("Variant", this.gw().h);
    }
 
    @Override
@@ -347,18 +347,18 @@ public class cfu extends cgb implements buo<cfu.b>, cfn {
    }
 
    @Override
-   public boolean gy() {
+   public boolean gx() {
       return !this.aF();
    }
 
    @Override
-   protected boolean gp() {
+   protected boolean go() {
       return true;
    }
 
    @Override
-   public exa cN() {
-      return new exa(0.0, (double)(0.5F * this.cM()), (double)(this.dk() * 0.4F));
+   public exc cM() {
+      return new exc(0.0, (double)(0.5F * this.cL()), (double)(this.dj() * 0.4F));
    }
 
    static class a extends cby {
@@ -368,13 +368,13 @@ public class cfu extends cgb implements buo<cfu.b>, cfn {
 
       @Nullable
       @Override
-      protected exa h() {
-         exa $$0 = null;
+      protected exc h() {
+         exc $$0 = null;
          if (this.b.bf()) {
             $$0 = cem.a(this.b, 15, 15);
          }
 
-         if (this.b.dS().i() >= this.j) {
+         if (this.b.dR().i() >= this.j) {
             $$0 = this.k();
          }
 
@@ -382,24 +382,24 @@ public class cfu extends cgb implements buo<cfu.b>, cfn {
       }
 
       @Nullable
-      private exa k() {
-         jd $$0 = this.b.dp();
+      private exc k() {
+         jd $$0 = this.b.do();
          jd.a $$1 = new jd.a();
          jd.a $$2 = new jd.a();
 
          for (jd $$4 : jd.b(
-            ayo.a(this.b.du() - 3.0),
-            ayo.a(this.b.dw() - 6.0),
-            ayo.a(this.b.dA() - 3.0),
-            ayo.a(this.b.du() + 3.0),
-            ayo.a(this.b.dw() + 6.0),
-            ayo.a(this.b.dA() + 3.0)
+            ayo.a(this.b.dt() - 3.0),
+            ayo.a(this.b.dv() - 6.0),
+            ayo.a(this.b.dz() - 3.0),
+            ayo.a(this.b.dt() + 3.0),
+            ayo.a(this.b.dv() + 6.0),
+            ayo.a(this.b.dz() + 3.0)
          )) {
             if (!$$0.equals($$4)) {
-               dtc $$5 = this.b.dP().a_($$2.a($$4, ji.a));
-               boolean $$6 = $$5.b() instanceof dki || $$5.a(awe.t);
-               if ($$6 && this.b.dP().u($$4) && this.b.dP().u($$1.a($$4, ji.b))) {
-                  return exa.c($$4);
+               dtc $$5 = this.b.dO().a_($$2.a($$4, ji.a));
+               boolean $$6 = $$5.b() instanceof dki || $$5.a(awe.u);
+               if ($$6 && this.b.dO().u($$4) && this.b.dO().u($$1.a($$4, ji.b))) {
+                  return exc.c($$4);
                }
             }
          }

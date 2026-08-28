@@ -30,7 +30,7 @@ public class ctd extends cul {
    }
 
    private boolean a(cmx $$0, dtc $$1, dcx $$2, jd $$3, boolean $$4, cuq $$5) {
-      if (!$$0.gw()) {
+      if (!$$0.gv()) {
          return false;
       } else {
          jm<dfy> $$6 = $$1.c();
@@ -50,11 +50,11 @@ public class ctd extends cul {
                      $$10 = $$8.iterator().next();
                   }
 
-                  dtc $$11 = a($$1, $$10, $$0.fO());
+                  dtc $$11 = a($$1, $$10, $$0.fN());
                   $$2.a($$3, $$11, 18);
                   a($$0, wz.a(this.a() + ".update", $$10.f(), a($$11, $$10)));
                } else {
-                  $$10 = a($$8, $$10, $$0.fO());
+                  $$10 = a($$8, $$10, $$0.fN());
                   $$5.b(kq.L, $$9.a($$6, $$10));
                   a($$0, wz.a(this.a() + ".select", $$10.f(), a($$1, $$10)));
                }

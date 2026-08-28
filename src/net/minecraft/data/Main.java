@@ -62,7 +62,7 @@ public class Main {
       pz<cul> $$15 = $$13.a($$2x -> new qe($$2x, $$11, $$14.c()));
       pz<ddw> $$16 = $$13.a(a(pl::new, $$11));
       pz<dpx> $$17 = $$13.a(a(pk::new, $$11));
-      pz<ejp> $$18 = $$13.a(a(py::new, $$11));
+      pz<ejr> $$18 = $$13.a(a(py::new, $$11));
       $$13.a(a(pm::new, $$11));
       $$13.a(a(pn::new, $$11));
       $$13.a(a(pp::new, $$11));

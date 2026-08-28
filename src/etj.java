@@ -2,62 +2,40 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.BiFunction;
 
-public class etj extends etc {
+public class etj implements etf {
    public static final MapCodec<etj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(dpy.b.fieldOf("patterns").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.c)))
-            .apply($$0, etj::new)
+      $$0 -> $$0.group(eth.b.listOf().fieldOf("functions").forGetter($$0x -> $$0x.c)).apply($$0, etj::new)
    );
-   private final dpy b;
-   private final boolean c;
+   public static final Codec<etj> b = eth.b.listOf().xmap(etj::new, $$0 -> $$0.c);
+   private final List<etf> c;
+   private final BiFunction<cuq, err, cuq> d;
 
-   etj(List<eva> $$0, dpy $$1, boolean $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   private etj(List<etf> $$0) {
+      this.c = $$0;
+      this.d = eth.a($$0);
+   }
+
+   public static etj a(List<etf> $$0) {
+      return new etj(List.copyOf($$0));
+   }
+
+   public cuq a(cuq $$0, err $$1) {
+      return this.d.apply($$0, $$1);
    }
 
    @Override
-   protected cuq a(cuq $$0, erp $$1) {
-      if (this.c) {
-         $$0.a(kq.Y, dpy.a, this.b, ($$0x, $$1x) -> new dpy.a().a($$0x).a($$1x).a());
-      } else {
-         $$0.b(kq.Y, this.b);
-      }
+   public void a(erx $$0) {
+      etf.super.a($$0);
 
-      return $$0;
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".function[" + $$1 + "]"));
+      }
    }
 
    @Override
-   public ete<etj> b() {
-      return etf.E;
-   }
-
-   public static etj.a a(boolean $$0) {
-      return new etj.a($$0);
-   }
-
-   public static class a extends etc.a<etj.a> {
-      private final dpy.a a = new dpy.a();
-      private final boolean b;
-
-      a(boolean $$0) {
-         this.b = $$0;
-      }
-
-      protected etj.a a() {
-         return this;
-      }
-
-      @Override
-      public etd b() {
-         return new etj(this.g(), this.a.a(), this.b);
-      }
-
-      public etj.a a(jm<dpx> $$0, cti $$1) {
-         this.a.a($$0, $$1);
-         return this;
-      }
+   public etg<etj> b() {
+      return eth.I;
    }
 }

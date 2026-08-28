@@ -1,19 +1,37 @@
-import java.util.function.Function;
+public class fwe<T extends bsr> extends fvt<T> {
+   private static final String a = "main";
+   private final fyk b;
 
-public abstract class fwe {
-   protected final Function<akr, gff> v;
-
-   public fwe(Function<akr, gff> $$0) {
-      this.v = $$0;
+   public fwe(fyk $$0) {
+      this.b = $$0;
    }
 
-   public final gff a(akr $$0) {
-      return this.v.apply($$0);
+   public static fyq b() {
+      fys $$0 = new fys();
+      fyt $$1 = $$0.a();
+      int $$2 = 2;
+      $$1.a(
+         "main",
+         fyp.c()
+            .a(0, 0)
+            .a(-4.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, -4.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 0.0F, -4.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 2.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 0.0F, 2.0F, 2.0F, 2.0F, 2.0F),
+         fym.a
+      );
+      return fyq.a($$0, 64, 32);
    }
 
-   public abstract void a(fbg var1, fbk var2, int var3, int var4, int var5);
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   }
 
-   public final void a(fbg $$0, fbk $$1, int $$2, int $$3) {
-      this.a($$0, $$1, $$2, $$3, -1);
+   @Override
+   public fyk a() {
+      return this.b;
    }
 }

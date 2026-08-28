@@ -314,7 +314,7 @@ public enum ji implements azk {
       return $$3;
    }
 
-   public static ji a(exa $$0) {
+   public static ji a(exc $$0) {
       return a($$0.c, $$0.d, $$0.e);
    }
 

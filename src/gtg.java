@@ -1,107 +1,374 @@
-public abstract class gtg implements gty {
-   protected gtv a;
-   protected final avq b;
-   protected final akr c;
-   protected float d = 1.0F;
-   protected float e = 1.0F;
-   protected double f;
-   protected double g;
-   protected double h;
-   protected boolean i;
-   protected int j;
-   protected gty.a k = gty.a.b;
-   protected boolean l;
-   protected ayw m;
+import com.google.common.hash.HashCode;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   protected gtg(avo $$0, avq $$1, ayw $$2) {
-      this($$0.a(), $$1, $$2);
-   }
+public class gtg {
+   private final gtd a;
+   final gte b;
+   private final gtf c;
+   private final Runnable d;
+   private gtg.c e;
+   final List<gtg.e> f = new ArrayList<>();
 
-   protected gtg(akr $$0, avq $$1, ayw $$2) {
-      this.c = $$0;
+   public gtg(gtd $$0, gte $$1, gtf $$2, Runnable $$3, gtg.c $$4) {
+      this.a = $$0;
       this.b = $$1;
-      this.m = $$2;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   @Override
-   public akr a() {
-      return this.c;
+   void f() {
+      this.d.run();
    }
 
-   @Override
-   public gve a(gvd $$0) {
-      if (this.c.equals(gvd.c)) {
-         this.a = gvd.e;
-         return gvd.d;
-      } else {
-         gve $$1 = $$0.a(this.c);
-         if ($$1 == null) {
-            this.a = gvd.b;
-         } else {
-            this.a = $$1.a(this.m);
+   private void b(UUID $$0) {
+      for (gtg.e $$1 : this.f) {
+         if ($$1.a.equals($$0)) {
+            $$1.a(gtg.d.f);
          }
-
-         return $$1;
       }
    }
 
-   @Override
-   public gtv b() {
-      return this.a;
+   public void a(UUID $$0, URL $$1, @Nullable HashCode $$2) {
+      if (this.e == gtg.c.c) {
+         this.b.a($$0, gte.a.a);
+      } else {
+         this.a($$0, new gtg.e($$0, $$1, $$2));
+      }
    }
 
-   @Override
-   public avq c() {
-      return this.b;
+   public void a(UUID $$0, Path $$1) {
+      if (this.e == gtg.c.c) {
+         this.b.a($$0, gte.a.a);
+      } else {
+         URL $$2;
+         try {
+            $$2 = $$1.toUri().toURL();
+         } catch (MalformedURLException var5) {
+            throw new IllegalStateException("Can't convert path to URL " + $$1, var5);
+         }
+
+         gtg.e $$5 = new gtg.e($$0, $$2, null);
+         $$5.f = gtg.b.c;
+         $$5.d = $$1;
+         this.a($$0, $$5);
+      }
    }
 
-   @Override
-   public boolean d() {
-      return this.i;
+   private void a(UUID $$0, gtg.e $$1) {
+      this.b($$0);
+      this.f.add($$1);
+      if (this.e == gtg.c.b) {
+         this.a($$1);
+      }
+
+      this.f();
    }
 
-   @Override
-   public int e() {
-      return this.j;
+   private void a(gtg.e $$0) {
+      this.b.a($$0.a, gte.b.a);
+      $$0.h = true;
    }
 
-   @Override
-   public float f() {
-      return this.d * this.a.c().a(this.m);
+   @Nullable
+   private gtg.e c(UUID $$0) {
+      for (gtg.e $$1 : this.f) {
+         if (!$$1.a() && $$1.a.equals($$0)) {
+            return $$1;
+         }
+      }
+
+      return null;
    }
 
-   @Override
-   public float g() {
-      return this.e * this.a.d().a(this.m);
+   public void a(UUID $$0) {
+      gtg.e $$1 = this.c($$0);
+      if ($$1 != null) {
+         $$1.a(gtg.d.e);
+         this.f();
+      }
    }
 
-   @Override
-   public double h() {
-      return this.f;
+   public void a() {
+      for (gtg.e $$0 : this.f) {
+         $$0.a(gtg.d.e);
+      }
+
+      this.f();
    }
 
-   @Override
-   public double i() {
-      return this.g;
+   public void b() {
+      this.e = gtg.c.b;
+
+      for (gtg.e $$0 : this.f) {
+         if (!$$0.h && !$$0.a()) {
+            this.a($$0);
+         }
+      }
+
+      this.f();
    }
 
-   @Override
-   public double j() {
-      return this.h;
+   public void c() {
+      this.e = gtg.c.c;
+
+      for (gtg.e $$0 : this.f) {
+         if (!$$0.h) {
+            $$0.a(gtg.d.c);
+         }
+      }
+
+      this.f();
    }
 
-   @Override
-   public gty.a k() {
-      return this.k;
+   public void d() {
+      this.e = gtg.c.a;
    }
 
-   @Override
-   public boolean l() {
-      return this.l;
+   public void e() {
+      boolean $$0 = this.h();
+      if (!$$0) {
+         this.i();
+      }
+
+      this.g();
    }
 
-   @Override
-   public String toString() {
-      return "SoundInstance[" + this.c + "]";
+   private void g() {
+      this.f.removeIf($$0 -> {
+         if ($$0.g != gtg.a.a) {
+            return false;
+         } else if ($$0.e != null) {
+            gte.a $$1 = $$0.e.g;
+            if ($$1 != null) {
+               this.b.a($$0.a, $$1);
+            }
+
+            return true;
+         } else {
+            return false;
+         }
+      });
+   }
+
+   private void a(Collection<gtg.e> $$0, asl.b $$1) {
+      if (!$$1.b().isEmpty()) {
+         for (gtg.e $$2 : this.f) {
+            if ($$2.g != gtg.a.c) {
+               if ($$1.b().contains($$2.a)) {
+                  $$2.a(gtg.d.a);
+               } else {
+                  $$2.a(gtg.d.d);
+               }
+            }
+         }
+      }
+
+      for (gtg.e $$3 : $$0) {
+         Path $$4 = $$1.a().get($$3.a);
+         if ($$4 != null) {
+            $$3.f = gtg.b.c;
+            $$3.d = $$4;
+            if (!$$3.a()) {
+               this.b.a($$3.a, gte.b.b);
+            }
+         }
+      }
+
+      this.f();
+   }
+
+   private boolean h() {
+      List<gtg.e> $$0 = new ArrayList<>();
+      boolean $$1 = false;
+
+      for (gtg.e $$2 : this.f) {
+         if (!$$2.a() && $$2.h) {
+            if ($$2.f != gtg.b.c) {
+               $$1 = true;
+            }
+
+            if ($$2.f == gtg.b.a) {
+               $$2.f = gtg.b.b;
+               $$0.add($$2);
+            }
+         }
+      }
+
+      if (!$$0.isEmpty()) {
+         Map<UUID, asl.c> $$3 = new HashMap<>();
+
+         for (gtg.e $$4 : $$0) {
+            $$3.put($$4.a, new asl.c($$4.b, $$4.c));
+         }
+
+         this.a.a($$3, $$1x -> this.a($$0, $$1x));
+      }
+
+      return $$1;
+   }
+
+   private void i() {
+      boolean $$0 = false;
+      final List<gtg.e> $$1 = new ArrayList<>();
+      final List<gtg.e> $$2 = new ArrayList<>();
+
+      for (gtg.e $$3 : this.f) {
+         if ($$3.g == gtg.a.b) {
+            return;
+         }
+
+         boolean $$4 = $$3.h && $$3.f == gtg.b.c && !$$3.a();
+         if ($$4 && $$3.g == gtg.a.a) {
+            $$1.add($$3);
+            $$0 = true;
+         }
+
+         if ($$3.g == gtg.a.c) {
+            if (!$$4) {
+               $$0 = true;
+               $$2.add($$3);
+            } else {
+               $$1.add($$3);
+            }
+         }
+      }
+
+      if ($$0) {
+         for (gtg.e $$5 : $$1) {
+            if ($$5.g != gtg.a.c) {
+               $$5.g = gtg.a.b;
+            }
+         }
+
+         for (gtg.e $$6 : $$2) {
+            $$6.g = gtg.a.b;
+         }
+
+         this.c.scheduleReload(new gtf.a() {
+            @Override
+            public void a() {
+               for (gtg.e $$0 : $$1) {
+                  $$0.g = gtg.a.c;
+                  if ($$0.e == null) {
+                     gtg.this.b.a($$0.a, gte.a.b);
+                  }
+               }
+
+               for (gtg.e $$1 : $$2) {
+                  $$1.g = gtg.a.a;
+               }
+
+               gtg.this.f();
+            }
+
+            @Override
+            public void a(boolean $$0) {
+               if (!$$0) {
+                  $$1.clear();
+
+                  for (gtg.e $$1 : gtg.this.f) {
+                     switch ($$1.g) {
+                        case a:
+                           $$1.a(gtg.d.d);
+                           break;
+                        case b:
+                           $$1.g = gtg.a.a;
+                           $$1.a(gtg.d.b);
+                           break;
+                        case c:
+                           $$1.add($$1);
+                     }
+                  }
+
+                  gtg.this.f();
+               } else {
+                  for (gtg.e $$2 : gtg.this.f) {
+                     if ($$2.g == gtg.a.b) {
+                        $$2.g = gtg.a.a;
+                     }
+                  }
+               }
+            }
+
+            @Override
+            public List<gtf.b> b() {
+               return $$1.stream().map($$0 -> new gtf.b($$0.a, $$0.d)).toList();
+            }
+         });
+      }
+   }
+
+   static enum a {
+      a,
+      b,
+      c;
+   }
+
+   static enum b {
+      a,
+      b,
+      c;
+   }
+
+   public static enum c {
+      a,
+      b,
+      c;
+   }
+
+   static enum d {
+      a(gte.a.d),
+      b(gte.a.e),
+      c(gte.a.a),
+      d(gte.a.c),
+      e(null),
+      f(null);
+
+      @Nullable
+      final gte.a g;
+
+      private d(@Nullable final gte.a $$0) {
+         this.g = $$0;
+      }
+   }
+
+   static class e {
+      final UUID a;
+      final URL b;
+      @Nullable
+      final HashCode c;
+      @Nullable
+      Path d;
+      @Nullable
+      gtg.d e;
+      gtg.b f = gtg.b.a;
+      gtg.a g = gtg.a.a;
+      boolean h;
+
+      e(UUID $$0, URL $$1, @Nullable HashCode $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public void a(gtg.d $$0) {
+         if (this.e == null) {
+            this.e = $$0;
+         }
+      }
+
+      public boolean a() {
+         return this.e != null;
+      }
    }
 }

@@ -107,7 +107,7 @@ public class cso extends cul {
 
    protected boolean b(cyd $$0, dtc $$1) {
       cmx $$2 = $$0.o();
-      exf $$3 = $$2 == null ? exf.a() : exf.a($$2);
+      exh $$3 = $$2 == null ? exh.a() : exh.a($$2);
       return (!this.c() || $$1.a((dcz)$$0.q(), $$0.a())) && $$0.q().a($$1, $$0.a(), $$3);
    }
 
@@ -128,7 +128,7 @@ public class cso extends cul {
          if (!$$5.b()) {
             dqh $$6 = $$0.c_($$2);
             if ($$6 != null) {
-               if ($$0.B || !$$6.q() || $$1 != null && $$1.gw()) {
+               if ($$0.B || !$$6.q() || $$1 != null && $$1.gv()) {
                   return $$5.a($$6, $$0.H_());
                }
 

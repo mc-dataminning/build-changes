@@ -15,9 +15,9 @@ public record dan(jq<brx> d, daj e, daj f, daj g, daj h) implements das {
    );
 
    @Override
-   public void a(aqu $$0, int $$1, dab $$2, bsr $$3, exa $$4) {
+   public void a(aqu $$0, int $$1, dab $$2, bsr $$3, exc $$4) {
       if ($$3 instanceof btn $$5) {
-         ayw $$6 = $$5.dS();
+         ayw $$6 = $$5.dR();
          Optional<jm<brx>> $$7 = this.d.a($$6);
          if ($$7.isPresent()) {
             int $$8 = Math.round(ayo.b($$6, this.e.a($$1), this.f.a($$1)) * 20.0F);

@@ -9,14 +9,14 @@ public class chq extends chl {
    }
 
    @Override
-   public boolean go() {
+   public boolean gn() {
       return true;
    }
 
    @Nullable
    @Override
-   protected chl gy() {
-      return bsx.be.a(this.dP());
+   protected chl gx() {
+      return bsx.be.a(this.dO());
    }
 
    @Override
@@ -56,14 +56,14 @@ public class chq extends chl {
    @Override
    public void m_() {
       super.m_();
-      if (!this.dP().B) {
-         this.ha();
+      if (!this.dO().B) {
+         this.gZ();
       }
    }
 
-   private void ha() {
-      if (this.hb()) {
-         this.ca = this.hc() ? ((cmq)this.A()).gu() - 1 : this.ca - 1;
+   private void gZ() {
+      if (this.ha()) {
+         this.ca = this.hb() ? ((cmq)this.A()).gt() - 1 : this.ca - 1;
          if (this.ca <= 0) {
             this.a(true, false);
             this.aq();
@@ -71,16 +71,16 @@ public class chq extends chl {
       }
    }
 
-   private boolean hb() {
-      return !this.gA() && !this.hd() && !this.cZ();
+   private boolean ha() {
+      return !this.gz() && !this.hc() && !this.cY();
    }
 
-   private boolean hc() {
+   private boolean hb() {
       return this.A() instanceof cmq;
    }
 
-   private boolean hd() {
-      return this.N_() && !this.hc();
+   private boolean hc() {
+      return this.N_() && !this.hb();
    }
 
    @Nullable
@@ -115,8 +115,8 @@ public class chq extends chl {
          } else if (!(this.a.A() instanceof cmq $$1)) {
             return false;
          } else {
-            this.b = $$1.ej();
-            int $$2 = $$1.ek();
+            this.b = $$1.ei();
+            int $$2 = $$1.ej();
             return $$2 != this.c && this.a(this.b, cef.a);
          }
       }
@@ -126,7 +126,7 @@ public class chq extends chl {
          this.e.h(this.b);
          bsr $$0 = this.a.A();
          if ($$0 instanceof cmq) {
-            this.c = ((cmq)$$0).ek();
+            this.c = ((cmq)$$0).ej();
          }
 
          super.d();

@@ -41,26 +41,26 @@ public class cwn extends cul implements cvm {
             if (!($$6 > 0.0F) || $$4.bg()) {
                jm<avo> $$7 = dae.b($$0, dad.C).orElse(avp.zG);
                if (!$$1.B) {
-                  $$0.a(1, $$4, btn.d($$2.ft()));
+                  $$0.a(1, $$4, btn.d($$2.fs()));
                   if ($$6 == 0.0F) {
                      coc $$8 = new coc($$1, $$4, $$0);
-                     $$8.a($$4, $$4.dH(), $$4.dF(), 0.0F, 2.5F, 1.0F);
-                     if ($$4.fM()) {
+                     $$8.a($$4, $$4.dG(), $$4.dE(), 0.0F, 2.5F, 1.0F);
+                     if ($$4.fL()) {
                         $$8.d = cnd.a.c;
                      }
 
                      $$1.b($$8);
                      $$1.a(null, $$8, $$7.a(), avq.h, 1.0F, 1.0F);
-                     if (!$$4.fM()) {
-                        $$4.fZ().h($$0);
+                     if (!$$4.fL()) {
+                        $$4.fY().h($$0);
                      }
                   }
                }
 
                $$4.b(avz.c.b(this));
                if ($$6 > 0.0F) {
-                  float $$9 = $$4.dF();
-                  float $$10 = $$4.dH();
+                  float $$9 = $$4.dE();
+                  float $$10 = $$4.dG();
                   float $$11 = -ayo.a($$9 * (float) (Math.PI / 180.0)) * ayo.b($$10 * (float) (Math.PI / 180.0));
                   float $$12 = -ayo.a($$10 * (float) (Math.PI / 180.0));
                   float $$13 = ayo.b($$9 * (float) (Math.PI / 180.0)) * ayo.b($$10 * (float) (Math.PI / 180.0));
@@ -72,7 +72,7 @@ public class cwn extends cul implements cvm {
                   $$4.a(20, 8.0F, $$0);
                   if ($$4.aF()) {
                      float $$15 = 1.1999999F;
-                     $$4.a(bts.a, new exa(0.0, 1.1999999F, 0.0));
+                     $$4.a(bts.a, new exc(0.0, 1.1999999F, 0.0));
                   }
 
                   $$1.a(null, $$4, $$7.a(), avq.h, 1.0F, 1.0F);

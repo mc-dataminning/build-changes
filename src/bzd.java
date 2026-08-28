@@ -9,10 +9,10 @@ public class bzd extends bvh<cmb> {
    }
 
    protected void a(aqu $$0, cmb $$1, long $$2) {
-      buq<cmb> $$3 = $$1.dU();
+      buq<cmb> $$3 = $$1.dT();
       $$3.a(ccs.aD, azs.a, 25L);
       $$3.b(ccs.m);
-      btn $$4 = $$1.dU().c(ccs.ay).get();
+      btn $$4 = $$1.dT().c(ccs.ay).get();
       bvj.a($$1, $$4);
       $$1.b(bua.l);
       $$1.a($$4, 20, false);
@@ -23,8 +23,8 @@ public class bzd extends bvh<cmb> {
    }
 
    protected void c(aqu $$0, cmb $$1, long $$2) {
-      if (!$$1.dU().a(ccs.aD) && !$$1.dU().a(ccs.aF)) {
-         $$1.dU().a(ccs.aF, azs.a, (long)(cmc.b - 25));
+      if (!$$1.dT().a(ccs.aD) && !$$1.dT().a(ccs.aF)) {
+         $$1.dT().a(ccs.aF, azs.a, (long)(cmc.b - 25));
          $$1.a(avp.BU, 3.0F, 1.0F);
       }
    }
@@ -34,7 +34,7 @@ public class bzd extends bvh<cmb> {
          $$1.b(bua.a);
       }
 
-      $$1.dU().c(ccs.ay).ifPresent($$1::j);
-      $$1.dU().b(ccs.ay);
+      $$1.dT().c(ccs.ay).ifPresent($$1::j);
+      $$1.dT().b(ccs.ay);
    }
 }

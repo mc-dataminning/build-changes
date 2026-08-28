@@ -17,7 +17,7 @@ public class chl extends chh implements buo<chl.d>, ckh {
       super($$0, $$1);
    }
 
-   public boolean go() {
+   public boolean gn() {
       return false;
    }
 
@@ -30,15 +30,15 @@ public class chl extends chh implements buo<chl.d>, ckh {
       this.x(1 + $$0.a($$1));
    }
 
-   public int gp() {
+   public int go() {
       return this.ao.a(cb);
    }
 
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      $$0.a("Variant", this.gw().g);
-      $$0.a("Strength", this.gp());
+      $$0.a("Variant", this.gv().g);
+      $$0.a("Strength", this.go());
    }
 
    @Override
@@ -65,7 +65,7 @@ public class chl extends chh implements buo<chl.d>, ckh {
       this.bV.a(2, new chl.a(this));
    }
 
-   public static buv.a gv() {
+   public static buv.a gu() {
       return s().a(buw.m, 40.0);
    }
 
@@ -76,7 +76,7 @@ public class chl extends chh implements buo<chl.d>, ckh {
       $$0.a(cc, 0);
    }
 
-   public chl.d gw() {
+   public chl.d gv() {
       return chl.d.a(this.ao.a(cc));
    }
 
@@ -103,37 +103,37 @@ public class chl extends chh implements buo<chl.d>, ckh {
          $$2 = 90;
          $$3 = 6;
          $$4 = 10.0F;
-         if (this.gA() && this.g() == 0 && this.gq()) {
+         if (this.gz() && this.g() == 0 && this.gp()) {
             $$5 = true;
             this.f($$0);
          }
       }
 
-      if (this.ex() < this.eO() && $$4 > 0.0F) {
+      if (this.ew() < this.eN() && $$4 > 0.0F) {
          this.c($$4);
          $$5 = true;
       }
 
       if (this.o_() && $$2 > 0) {
-         this.dP().a(lm.O, this.d(1.0), this.dx() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
-         if (!this.dP().B) {
+         this.dO().a(lm.O, this.d(1.0), this.dw() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
+         if (!this.dO().B) {
             this.b_($$2);
          }
 
          $$5 = true;
       }
 
-      if ($$3 > 0 && ($$5 || !this.gA()) && this.gG() < this.gM()) {
+      if ($$3 > 0 && ($$5 || !this.gz()) && this.gF() < this.gL()) {
          $$5 = true;
-         if (!this.dP().B) {
+         if (!this.dO().B) {
             this.v($$3);
          }
       }
 
       if ($$5 && !this.aX()) {
-         avo $$6 = this.gn();
+         avo $$6 = this.gm();
          if ($$6 != null) {
-            this.dP().a(null, this.du(), this.dw(), this.dA(), this.gn(), this.df(), 1.0F, 1.0F + (this.ah.i() - this.ah.i()) * 0.2F);
+            this.dO().a(null, this.dt(), this.dv(), this.dz(), this.gm(), this.de(), 1.0F, 1.0F + (this.ah.i() - this.ah.i()) * 0.2F);
          }
       }
 
@@ -141,8 +141,8 @@ public class chl extends chh implements buo<chl.d>, ckh {
    }
 
    @Override
-   public boolean fd() {
-      return this.ey() || this.gD();
+   public boolean fc() {
+      return this.ex() || this.gC();
    }
 
    @Nullable
@@ -163,12 +163,12 @@ public class chl extends chh implements buo<chl.d>, ckh {
    }
 
    @Override
-   protected boolean gm() {
+   protected boolean gl() {
       return false;
    }
 
    @Override
-   protected avo gK() {
+   protected avo gJ() {
       return avp.nZ;
    }
 
@@ -189,7 +189,7 @@ public class chl extends chh implements buo<chl.d>, ckh {
 
    @Nullable
    @Override
-   protected avo gn() {
+   protected avo gm() {
       return avp.oc;
    }
 
@@ -205,7 +205,7 @@ public class chl extends chh implements buo<chl.d>, ckh {
 
    @Override
    public int af_() {
-      return this.t() ? this.gp() : 0;
+      return this.t() ? this.go() : 0;
    }
 
    @Override
@@ -230,59 +230,59 @@ public class chl extends chh implements buo<chl.d>, ckh {
    }
 
    @Nullable
-   public cti gx() {
+   public cti gw() {
       return n(this.a(bsy.g));
    }
 
    @Override
-   public int gM() {
+   public int gL() {
       return 30;
    }
 
    @Override
    public boolean a(cfe $$0) {
-      return $$0 != this && $$0 instanceof chl && this.gT() && ((chl)$$0).gT();
+      return $$0 != this && $$0 instanceof chl && this.gS() && ((chl)$$0).gS();
    }
 
    @Nullable
    public chl b(aqu $$0, bsl $$1) {
-      chl $$2 = this.gy();
+      chl $$2 = this.gx();
       if ($$2 != null) {
          this.a($$1, $$2);
          chl $$3 = (chl)$$1;
-         int $$4 = this.ah.a(Math.max(this.gp(), $$3.gp())) + 1;
+         int $$4 = this.ah.a(Math.max(this.go(), $$3.go())) + 1;
          if (this.ah.i() < 0.03F) {
             $$4++;
          }
 
          $$2.x($$4);
-         $$2.a(this.ah.h() ? this.gw() : $$3.gw());
+         $$2.a(this.ah.h() ? this.gv() : $$3.gv());
       }
 
       return $$2;
    }
 
    @Nullable
-   protected chl gy() {
-      return bsx.an.a(this.dP());
+   protected chl gx() {
+      return bsx.an.a(this.dO());
    }
 
    private void k(btn $$0) {
-      cno $$1 = new cno(this.dP(), this);
-      double $$2 = $$0.du() - this.du();
-      double $$3 = $$0.e(0.3333333333333333) - $$1.dw();
-      double $$4 = $$0.dA() - this.dA();
+      cno $$1 = new cno(this.dO(), this);
+      double $$2 = $$0.dt() - this.dt();
+      double $$3 = $$0.e(0.3333333333333333) - $$1.dv();
+      double $$4 = $$0.dz() - this.dz();
       double $$5 = Math.sqrt($$2 * $$2 + $$4 * $$4) * 0.2F;
       $$1.c($$2, $$3 + $$5, $$4, 1.5F, 10.0F);
       if (!this.aX()) {
-         this.dP().a(null, this.du(), this.dw(), this.dA(), avp.oe, this.df(), 1.0F, 1.0F + (this.ah.i() - this.ah.i()) * 0.2F);
+         this.dO().a(null, this.dt(), this.dv(), this.dz(), avp.oe, this.de(), 1.0F, 1.0F + (this.ah.i() - this.ah.i()) * 0.2F);
       }
 
-      this.dP().b($$1);
+      this.dO().b($$1);
       this.cf = true;
    }
 
-   void D(boolean $$0) {
+   void E(boolean $$0) {
       this.cf = $$0;
    }
 
@@ -295,18 +295,18 @@ public class chl extends chh implements buo<chl.d>, ckh {
          if ($$0 >= 6.0F) {
             this.a($$2, (float)$$3);
             if (this.bT()) {
-               for (bsr $$4 : this.cX()) {
+               for (bsr $$4 : this.cW()) {
                   $$4.a($$2, (float)$$3);
                }
             }
          }
 
-         this.eK();
+         this.eJ();
          return true;
       }
    }
 
-   public void gz() {
+   public void gy() {
       if (this.cg != null) {
          this.cg.ch = null;
       }
@@ -319,33 +319,33 @@ public class chl extends chh implements buo<chl.d>, ckh {
       this.cg.ch = this;
    }
 
-   public boolean gW() {
+   public boolean gV() {
       return this.ch != null;
    }
 
-   public boolean gX() {
+   public boolean gW() {
       return this.cg != null;
    }
 
    @Nullable
-   public chl gY() {
+   public chl gX() {
       return this.cg;
    }
 
    @Override
-   protected double gk() {
+   protected double gj() {
       return 2.0;
    }
 
    @Override
-   protected void gN() {
-      if (!this.gX() && this.o_()) {
-         super.gN();
+   protected void gM() {
+      if (!this.gW() && this.o_()) {
+         super.gM();
       }
    }
 
    @Override
-   public boolean gO() {
+   public boolean gN() {
       return false;
    }
 
@@ -355,8 +355,8 @@ public class chl extends chh implements buo<chl.d>, ckh {
    }
 
    @Override
-   public exa cN() {
-      return new exa(0.0, 0.75 * (double)this.cM(), (double)this.dk() * 0.5);
+   public exc cM() {
+      return new exc(0.0, 0.75 * (double)this.cL(), (double)this.dj() * 0.5);
    }
 
    @Override
@@ -365,7 +365,7 @@ public class chl extends chh implements buo<chl.d>, ckh {
    }
 
    @Override
-   protected exa a(bsr $$0, bsu $$1, float $$2) {
+   protected exc a(bsr $$0, bsu $$1, float $$2) {
       return a(this, $$0, $$1.d());
    }
 
@@ -397,7 +397,7 @@ public class chl extends chh implements buo<chl.d>, ckh {
       @Override
       public boolean c() {
          if (this.e instanceof chl $$0 && $$0.cf) {
-            $$0.D(false);
+            $$0.E(false);
             return false;
          }
 

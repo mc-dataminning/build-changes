@@ -6,9 +6,9 @@ public abstract class der extends dfy {
    private static final int f = 3;
    private static final int g = 2;
    protected static final int a = 4;
-   private static final ext h = a(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
-   protected static final ext b = exq.a(
-      exq.b(), exq.a(a(0.0, 0.0, 4.0, 16.0, 3.0, 12.0), a(4.0, 0.0, 0.0, 12.0, 3.0, 16.0), a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0), h), exe.e
+   private static final exv h = a(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
+   protected static final exv b = exs.a(
+      exs.b(), exs.a(a(0.0, 0.0, 4.0, 16.0, 3.0, 12.0), a(4.0, 0.0, 0.0, 12.0, 3.0, 16.0), a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0), h), exg.e
    );
    protected final kj.a c;
 
@@ -25,22 +25,22 @@ public abstract class der extends dfy {
    }
 
    protected boolean a(dtc $$0, jd $$1, bsr $$2) {
-      return $$2.dw() < (double)$$1.v() + this.b($$0) && $$2.cL().e > (double)$$1.v() + 0.25;
+      return $$2.dv() < (double)$$1.v() + this.b($$0) && $$2.cK().e > (double)$$1.v() + 0.25;
    }
 
    @Override
-   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, eww $$6) {
+   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, ewy $$6) {
       kj $$7 = this.c.b().get($$0.g());
       return $$7.interact($$1, $$2, $$3, $$4, $$5, $$0);
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return b;
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2) {
       return h;
    }
 
@@ -50,7 +50,7 @@ public abstract class der extends dfy {
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return false;
    }
 
@@ -60,17 +60,17 @@ public abstract class der extends dfy {
    protected void a(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
       jd $$4 = dlq.a((dcw)$$1, $$2);
       if ($$4 != null) {
-         epb $$5 = dlq.a($$1, $$4);
-         if ($$5 != epd.a && this.a($$5)) {
+         epd $$5 = dlq.a($$1, $$4);
+         if ($$5 != epf.a && this.a($$5)) {
             this.a($$0, $$1, $$2, $$5);
          }
       }
    }
 
-   protected boolean a(epb $$0) {
+   protected boolean a(epd $$0) {
       return false;
    }
 
-   protected void a(dtc $$0, dcw $$1, jd $$2, epb $$3) {
+   protected void a(dtc $$0, dcw $$1, jd $$2, epd $$3) {
    }
 }

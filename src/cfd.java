@@ -18,73 +18,73 @@ public abstract class cfd extends cfb {
    }
 
    @Override
-   public int fO() {
-      return this.gn();
+   public int fN() {
+      return this.gm();
    }
 
-   public int gn() {
-      return super.fO();
+   public int gm() {
+      return super.fN();
    }
 
    @Override
-   protected boolean gl() {
-      return !this.go();
+   protected boolean gk() {
+      return !this.gn();
    }
 
-   public boolean go() {
+   public boolean gn() {
       return this.b != null && this.b.bE();
    }
 
    public cfd a(cfd $$0) {
       this.b = $$0;
-      $$0.gu();
+      $$0.gt();
       return $$0;
    }
 
-   public void gp() {
-      this.b.gv();
+   public void go() {
+      this.b.gu();
       this.b = null;
    }
 
-   private void gu() {
+   private void gt() {
       this.c++;
    }
 
-   private void gv() {
+   private void gu() {
       this.c--;
    }
 
-   public boolean gq() {
-      return this.gr() && this.c < this.gn();
+   public boolean gp() {
+      return this.gq() && this.c < this.gm();
    }
 
    @Override
    public void l() {
       super.l();
-      if (this.gr() && this.dP().z.a(200) == 1) {
-         List<? extends cfb> $$0 = this.dP().a((Class<? extends cfb>)this.getClass(), this.cL().c(8.0, 8.0, 8.0));
+      if (this.gq() && this.dO().z.a(200) == 1) {
+         List<? extends cfb> $$0 = this.dO().a((Class<? extends cfb>)this.getClass(), this.cK().c(8.0, 8.0, 8.0));
          if ($$0.size() <= 1) {
             this.c = 1;
          }
       }
    }
 
-   public boolean gr() {
+   public boolean gq() {
       return this.c > 1;
    }
 
-   public boolean gs() {
+   public boolean gr() {
       return this.g(this.b) <= 121.0;
    }
 
-   public void gt() {
-      if (this.go()) {
+   public void gs() {
+      if (this.gn()) {
          this.N().a(this.b, 1.0);
       }
    }
 
    public void a(Stream<? extends cfd> $$0) {
-      $$0.limit((long)(this.gn() - this.c)).filter($$0x -> $$0x != this).forEach($$0x -> $$0x.a(this));
+      $$0.limit((long)(this.gm() - this.c)).filter($$0x -> $$0x != this).forEach($$0x -> $$0x.a(this));
    }
 
    @Nullable

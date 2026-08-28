@@ -153,7 +153,7 @@ public class ape {
       return ayo.a($$1 + 0.5);
    }
 
-   private static int a(et $$0, ewz $$1) throws CommandSyntaxException {
+   private static int a(et $$0, exb $$1) throws CommandSyntaxException {
       dut $$2 = $$0.l().I().C_();
       if ($$2.a() == (double)$$1.i && $$2.b() == (double)$$1.j) {
          throw a.create();

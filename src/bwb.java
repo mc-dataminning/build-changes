@@ -13,7 +13,7 @@ public class bwb {
          byu<E, ? extends byv<? extends K1, ccv>> $$5 = $$2 ? $$4.a(ccs.m) : $$4.c(ccs.m);
          return $$4.group($$4.a(ccs.n), $$5, $$4.b(ccs.L), $$4.a(ccs.aP)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
                cjh $$11 = $$4.b($$6);
-               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dP().C_().a($$11.dp())) {
+               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dO().C_().a($$11.do())) {
                   ccv $$12 = new ccv(new bvs($$11, false), $$1, 0);
                   $$4x.a(new bvs($$11, true));
                   $$5x.a($$12);

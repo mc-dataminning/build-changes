@@ -1,42 +1,46 @@
-import com.mojang.serialization.Codec;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ena extends ene {
-   public static final MapCodec<ena> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
-               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
-               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, ena::new)
-   );
-   private final float b;
-   private final float d;
-   private final int e;
-   private final int f;
+public class ena extends enq {
+   private static final Logger c = LogUtils.getLogger();
+   public static final MapCodec<ena> a = MapCodec.unit(() -> ena.b);
+   public static final ena b = new ena();
 
-   public ena(float $$0, float $$1, int $$2, int $$3) {
-      if ($$2 >= $$3) {
-         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
+   private ena() {
+   }
+
+   @Nullable
+   @Override
+   public ent.c a(dcz $$0, jd $$1, jd $$2, ent.c $$3, ent.c $$4, enp $$5) {
+      dtc $$6 = $$4.b();
+      if ($$6.a(dga.pb)) {
+         if ($$4.c() == null) {
+            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
+            return $$4;
+         } else {
+            String $$7 = $$4.c().l("final_state");
+
+            dtc $$9;
+            try {
+               gn.a $$8 = gn.a($$0.a(lu.f), $$7, true);
+               $$9 = $$8.a();
+            } catch (CommandSyntaxException var11) {
+               c.error("Failed to parse jigsaw replacement state '{}' at {}: {}", new Object[]{$$7, $$1, var11.getMessage()});
+               return null;
+            }
+
+            return $$9.a(dga.kN) ? null : new ent.c($$4.a(), $$9, null);
+         }
       } else {
-         this.b = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
+         return $$4;
       }
    }
 
    @Override
-   public boolean a(jd $$0, jd $$1, jd $$2, ayw $$3) {
-      int $$4 = $$1.k($$2);
-      float $$5 = $$3.i();
-      return $$5 <= ayo.b(this.b, this.d, ayo.g((float)$$4, (float)this.e, (float)this.f));
-   }
-
-   @Override
-   protected enf<?> a() {
-      return enf.b;
+   protected ens<?> a() {
+      return ens.h;
    }
 }

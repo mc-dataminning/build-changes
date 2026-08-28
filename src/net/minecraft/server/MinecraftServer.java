@@ -70,8 +70,8 @@ public abstract class MinecraftServer extends bpl<aln> implements alh, dwg, es, 
    public static final int c = 29999984;
    public static final dda d = new dda("Demo World", dct.a, false, bqo.c, false, new dcs(), ddr.c);
    public static final GameProfile e = new GameProfile(ad.e, "Anonymous Player");
-   protected final erd.c f;
-   protected final erg g;
+   protected final erf.c f;
+   protected final eri g;
    private final List<Runnable> y = Lists.newArrayList();
    private bot z = bos.a;
    private bnf A = this.z.f();
@@ -128,7 +128,7 @@ public abstract class MinecraftServer extends bpl<aln> implements alh, dwg, es, 
    private final atp aq;
    private final alk ar = new alk(this);
    @Nullable
-   private equ as;
+   private eqw as;
    private final alt at = new alt();
    private final alg au;
    private boolean av;
@@ -137,9 +137,9 @@ public abstract class MinecraftServer extends bpl<aln> implements alh, dwg, es, 
    @Nullable
    private String ay;
    private MinecraftServer.a az;
-   private final ens aA;
+   private final enu aA;
    private final all aB;
-   protected final erj j;
+   protected final erl j;
    private final cwt aC;
    private volatile boolean aD;
    private static final AtomicReference<RuntimeException> aE = new AtomicReference<>();
@@ -158,7 +158,7 @@ public abstract class MinecraftServer extends bpl<aln> implements alh, dwg, es, 
       return $$3;
    }
 
-   public MinecraftServer(Thread $$0, erd.c $$1, atp $$2, alp $$3, Proxy $$4, DataFixer $$5, alm $$6, are $$7) {
+   public MinecraftServer(Thread $$0, erf.c $$1, atp $$2, alp $$3, Proxy $$4, DataFixer $$5, alm $$6, are $$7) {
       super("Server");
       this.O = $$3.c();
       this.j = $$3.d();
@@ -181,14 +181,14 @@ public abstract class MinecraftServer extends bpl<aln> implements alh, dwg, es, 
          this.L = $$5;
          this.au = new alg(this, this.az.b.a());
          jn<dfy> $$8 = this.O.a().d(lu.f).q().a(this.j.K());
-         this.aA = new ens($$3.a(), $$1, $$5, $$8);
+         this.aA = new enu($$3.a(), $$1, $$5, $$8);
          this.aj = $$0;
          this.ax = ad.g();
          this.aC = cwt.a(this.j.K());
       }
    }
 
-   private void a(eqx $$0) {
+   private void a(eqz $$0) {
       $$0.a(this.aK().b(), "scoreboard");
    }
 
@@ -222,7 +222,7 @@ public abstract class MinecraftServer extends bpl<aln> implements alh, dwg, es, 
    }
 
    protected void a(ard $$0) {
-      eri $$1 = this.j.I();
+      erk $$1 = this.j.I();
       boolean $$2 = this.j.A();
       jz<dwz> $$3 = this.O.a().d(lu.bb);
       dzw $$4 = this.j.y();
@@ -232,9 +232,9 @@ public abstract class MinecraftServer extends bpl<aln> implements alh, dwg, es, 
       dwz $$8 = $$3.a(dwz.b);
       aqu $$9 = new aqu(this, this.ax, this.f, $$1, dcw.h, $$8, $$0, $$2, $$6, $$7, true, null);
       this.P.put(dcw.h, $$9);
-      eqx $$10 = $$9.u();
+      eqz $$10 = $$9.u();
       this.a($$10);
-      this.as = new equ($$10);
+      this.as = new eqw($$10);
       dut $$11 = $$9.C_();
       if (!$$1.n()) {
          try {
@@ -268,7 +268,7 @@ public abstract class MinecraftServer extends bpl<aln> implements alh, dwg, es, 
          akq<dwz> $$16 = $$15.getKey();
          if ($$16 != dwz.b) {
             akq<dcw> $$17 = akq.a(lu.ba, $$16.a());
-            eqw $$18 = new eqw(this.j, $$1);
+            eqy $$18 = new eqy(this.j, $$1);
             aqu $$19 = new aqu(this, this.ax, this.f, $$18, $$17, $$15.getValue(), $$0, $$2, $$6, ImmutableList.of(), false, $$14);
             $$11.a(new dur.a($$19.C_()));
             this.P.put($$17, $$19);
@@ -278,7 +278,7 @@ public abstract class MinecraftServer extends bpl<aln> implements alh, dwg, es, 
       $$11.a($$1.p());
    }
 
-   private static void a(aqu $$0, eri $$1, boolean $$2, boolean $$3) {
+   private static void a(aqu $$0, erk $$1, boolean $$2, boolean $$3) {
       if ($$3) {
          $$1.a(jd.c.b(80), 0.0F);
       } else {
@@ -321,10 +321,10 @@ public abstract class MinecraftServer extends bpl<aln> implements alh, dwg, es, 
       }
    }
 
-   private void a(erj $$0) {
+   private void a(erl $$0) {
       $$0.a(bqo.a);
       $$0.d(true);
-      eri $$1 = $$0.I();
+      erk $$1 = $$0.I();
       $$1.b(false);
       $$1.a(false);
       $$1.a(1000000000);
@@ -397,7 +397,7 @@ public abstract class MinecraftServer extends bpl<aln> implements alh, dwg, es, 
       }
 
       aqu $$5 = this.I();
-      eri $$6 = this.j.I();
+      erk $$6 = this.j.I();
       $$6.a($$5.C_().t());
       this.j.a(this.aN().a(this.bc()));
       this.f.a(this.bc(), this.j, this.ah().r());
@@ -823,7 +823,7 @@ public abstract class MinecraftServer extends bpl<aln> implements alh, dwg, es, 
 
          for (int $$5 = 0; $$5 < $$2; $$5++) {
             aqv $$6 = $$0.get($$4 + $$5);
-            $$3.add($$6.aa() ? $$6.fY() : e);
+            $$3.add($$6.aa() ? $$6.fX() : e);
          }
 
          ad.c($$3, this.K);
@@ -1046,7 +1046,7 @@ public abstract class MinecraftServer extends bpl<aln> implements alh, dwg, es, 
    }
 
    private void c(aqv $$0) {
-      eqz $$1 = $$0.dP().A_();
+      erb $$1 = $$0.dO().A_();
       $$0.c.b(new ach($$1.q(), $$1.r()));
    }
 
@@ -1400,7 +1400,7 @@ public abstract class MinecraftServer extends bpl<aln> implements alh, dwg, es, 
          ava $$2 = $$1.i();
 
          for (aqv $$4 : Lists.newArrayList($$1.t())) {
-            if (!$$2.a($$4.fY())) {
+            if (!$$2.a($$4.fX())) {
                $$4.c.a(wz.c("multiplayer.disconnect.not_whitelisted"));
             }
          }
@@ -1417,7 +1417,7 @@ public abstract class MinecraftServer extends bpl<aln> implements alh, dwg, es, 
 
    public et aI() {
       aqu $$0 = this.I();
-      return new et(this, $$0 == null ? exa.b : exa.a($$0.V()), ewz.a, $$0, 4, "Server", wz.b("Server"), this, null);
+      return new et(this, $$0 == null ? exc.b : exc.a($$0.V()), exb.a, $$0, 4, "Server", wz.b("Server"), this, null);
    }
 
    @Override
@@ -1441,7 +1441,7 @@ public abstract class MinecraftServer extends bpl<aln> implements alh, dwg, es, 
       return this.ar;
    }
 
-   public equ aL() {
+   public eqw aL() {
       if (this.as == null) {
          throw new NullPointerException("Called before server init");
       } else {
@@ -1644,7 +1644,7 @@ public abstract class MinecraftServer extends bpl<aln> implements alh, dwg, es, 
       this.A = this.z.f();
    }
 
-   public Path a(erb $$0) {
+   public Path a(erd $$0) {
       return this.f.a($$0);
    }
 
@@ -1652,11 +1652,11 @@ public abstract class MinecraftServer extends bpl<aln> implements alh, dwg, es, 
       return true;
    }
 
-   public ens ba() {
+   public enu ba() {
       return this.aA;
    }
 
-   public erj bb() {
+   public erl bb() {
       return this.j;
    }
 

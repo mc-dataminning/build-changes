@@ -22,25 +22,25 @@ public class che extends cfe {
    public che(bsx<? extends che> $$0, dcw $$1) {
       super($$0, $$1);
       this.N().a(true);
-      this.a(ept.f, -1.0F);
-      this.a(ept.g, -1.0F);
+      this.a(epv.f, -1.0F);
+      this.a(epv.g, -1.0F);
    }
 
    public cuq s() {
-      ayw $$0 = ayw.a((long)this.cA().hashCode());
-      awu<cui> $$1 = this.gv() ? awm.b : awm.a;
+      ayw $$0 = ayw.a((long)this.cz().hashCode());
+      awu<cui> $$1 = this.gu() ? awm.b : awm.a;
       jq<cui> $$2 = lt.ak.a($$1);
       return cuj.a(cut.wh, $$2.a($$0).get());
    }
 
    @Override
-   protected buq.b<che> dV() {
+   protected buq.b<che> dU() {
       return buq.a(cc, cb);
    }
 
    @Override
    protected buq<?> a(Dynamic<?> $$0) {
-      return chf.a(this.dV().a($$0));
+      return chf.a(this.dU().a($$0));
    }
 
    public static buv.a t() {
@@ -51,10 +51,10 @@ public class che extends cfe {
    protected void k() {
       if (this.o_()) {
          this.f(buw.c).a(1.0);
-         this.gp();
+         this.go();
       } else {
          this.f(buw.c).a(2.0);
-         this.go();
+         this.gn();
       }
    }
 
@@ -65,17 +65,17 @@ public class che extends cfe {
 
    @Override
    protected avo v() {
-      return this.gv() ? avp.kU : avp.kK;
+      return this.gu() ? avp.kU : avp.kK;
    }
 
    @Override
    protected avo d(brk $$0) {
-      return this.gv() ? avp.kX : avp.kN;
+      return this.gu() ? avp.kX : avp.kN;
    }
 
    @Override
    protected avo n_() {
-      return this.gv() ? avp.kV : avp.kL;
+      return this.gu() ? avp.kV : avp.kL;
    }
 
    @Override
@@ -84,7 +84,7 @@ public class che extends cfe {
    }
 
    protected avo x() {
-      return this.gv() ? avp.kZ : avp.kP;
+      return this.gu() ? avp.kZ : avp.kP;
    }
 
    @Nullable
@@ -93,26 +93,26 @@ public class che extends cfe {
       if ($$2 != null) {
          chf.a($$2, $$0.E_());
          bsl $$3 = (bsl)($$0.E_().h() ? this : $$1);
-         boolean $$5 = $$3 instanceof che $$4 && $$4.gv() || $$0.E_().j() < 0.02;
-         $$2.w($$5);
+         boolean $$5 = $$3 instanceof che $$4 && $$4.gu() || $$0.E_().j() < 0.02;
+         $$2.x($$5);
       }
 
       return $$2;
    }
 
    @Override
-   public buq<che> dU() {
-      return (buq<che>)super.dU();
+   public buq<che> dT() {
+      return (buq<che>)super.dT();
    }
 
    @Override
    protected void ab() {
-      this.dP().ag().a("goatBrain");
-      this.dU().a((aqu)this.dP(), this);
-      this.dP().ag().c();
-      this.dP().ag().a("goatActivityUpdate");
+      this.dO().ag().a("goatBrain");
+      this.dT().a((aqu)this.dO(), this);
+      this.dO().ag().c();
+      this.dO().ag().a("goatActivityUpdate");
       chf.a(this);
-      this.dP().ag().c();
+      this.dO().ag().c();
       super.ab();
    }
 
@@ -131,7 +131,7 @@ public class che extends cfe {
 
    @Override
    public avo d(cuq $$0) {
-      return this.gv() ? avp.kW : avp.kM;
+      return this.gu() ? avp.kW : avp.kM;
    }
 
    @Override
@@ -146,11 +146,11 @@ public class che extends cfe {
          $$0.a(this.x(), 1.0F, 1.0F);
          cuq $$3 = cus.a($$2, $$0, cut.qE.w());
          $$0.a($$1, $$3);
-         return bqr.a(this.dP().B);
+         return bqr.a(this.dO().B);
       } else {
          bqr $$4 = super.b($$0, $$1);
          if ($$4.a() && this.o($$2)) {
-            this.dP().a(null, this, this.d($$2), avq.g, 1.0F, ayo.b(this.dP().z, 0.8F, 1.2F));
+            this.dO().a(null, this, this.d($$2), avq.g, 1.0F, ayo.b(this.dO().z, 0.8F, 1.2F));
          }
 
          return $$4;
@@ -161,7 +161,7 @@ public class che extends cfe {
    public buh a(ddl $$0, bqp $$1, btr $$2, @Nullable buh $$3) {
       ayw $$4 = $$0.E_();
       chf.a(this, $$4);
-      this.w($$4.j() < 0.02);
+      this.x($$4.j() < 0.02);
       this.k();
       if (!this.o_() && (double)$$4.i() < 0.1F) {
          ajw<Boolean> $$5 = $$4.h() ? ck : cl;
@@ -179,21 +179,21 @@ public class che extends cfe {
 
    @Override
    public bsu e(bua $$0) {
-      return $$0 == bua.g ? ca.a(this.eb()) : super.e($$0);
+      return $$0 == bua.g ? ca.a(this.ea()) : super.e($$0);
    }
 
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      $$0.a("IsScreamingGoat", this.gv());
-      $$0.a("HasLeftHorn", this.gl());
-      $$0.a("HasRightHorn", this.gm());
+      $$0.a("IsScreamingGoat", this.gu());
+      $$0.a("HasLeftHorn", this.gk());
+      $$0.a("HasRightHorn", this.gl());
    }
 
    @Override
    public void a(ub $$0) {
       super.a($$0);
-      this.w($$0.q("IsScreamingGoat"));
+      this.x($$0.q("IsScreamingGoat"));
       this.ao.a(ck, $$0.q("HasLeftHorn"));
       this.ao.a(cl, $$0.q("HasRightHorn"));
    }
@@ -229,17 +229,17 @@ public class che extends cfe {
       $$0.a(cl, true);
    }
 
-   public boolean gl() {
+   public boolean gk() {
       return this.ao.a(ck);
    }
 
-   public boolean gm() {
+   public boolean gl() {
       return this.ao.a(cl);
    }
 
-   public boolean gn() {
-      boolean $$0 = this.gl();
-      boolean $$1 = this.gm();
+   public boolean gm() {
+      boolean $$0 = this.gk();
+      boolean $$1 = this.gl();
       if (!$$0 && !$$1) {
          return false;
       } else {
@@ -253,40 +253,40 @@ public class che extends cfe {
          }
 
          this.ao.a($$2, false);
-         exa $$5 = this.dn();
+         exc $$5 = this.dm();
          cuq $$6 = this.s();
          double $$7 = (double)ayo.b(this.ah, -0.2F, 0.2F);
          double $$8 = (double)ayo.b(this.ah, 0.3F, 0.7F);
          double $$9 = (double)ayo.b(this.ah, -0.2F, 0.2F);
-         cjh $$10 = new cjh(this.dP(), $$5.a(), $$5.b(), $$5.c(), $$6, $$7, $$8, $$9);
-         this.dP().b($$10);
+         cjh $$10 = new cjh(this.dO(), $$5.a(), $$5.b(), $$5.c(), $$6, $$7, $$8, $$9);
+         this.dO().b($$10);
          return true;
       }
    }
 
-   public void go() {
+   public void gn() {
       this.ao.a(ck, true);
       this.ao.a(cl, true);
    }
 
-   public void gp() {
+   public void go() {
       this.ao.a(ck, false);
       this.ao.a(cl, false);
    }
 
-   public boolean gv() {
+   public boolean gu() {
       return this.ao.a(cj);
    }
 
-   public void w(boolean $$0) {
+   public void x(boolean $$0) {
       this.ao.a(cj, $$0);
    }
 
-   public float gw() {
+   public float gv() {
       return (float)this.cn / 20.0F * 30.0F * (float) (Math.PI / 180.0);
    }
 
    public static boolean c(bsx<? extends cfe> $$0, dcx $$1, btr $$2, jd $$3, ayw $$4) {
-      return $$1.a_($$3.e()).a(awe.bZ) && a($$1, $$3);
+      return $$1.a_($$3.e()).a(awe.ca) && a($$1, $$3);
    }
 }

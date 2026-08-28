@@ -11,13 +11,13 @@ public class bvd {
                   $$0,
                   ($$1, $$2) -> ($$3, $$4, $$5) -> {
                         jl $$6 = $$0.b($$1);
-                        if (!$$6.b().a($$4.dn(), 2.0) && !$$4.gv()) {
+                        if (!$$6.b().a($$4.dm(), 2.0) && !$$4.gu()) {
                            return false;
                         } else {
                            $$1.b();
                            $$2.a($$6);
                            $$3.a($$4, (byte)14);
-                           if ($$4.gw().b() != cmn.b) {
+                           if ($$4.gv().b() != cmn.b) {
                               return true;
                            } else {
                               MinecraftServer $$7 = $$3.o();
@@ -25,7 +25,7 @@ public class bvd {
                                  .flatMap($$1xx -> $$1xx.y().c($$6.b()))
                                  .flatMap($$0xxx -> lt.x.t().filter($$1xx -> $$1xx.b().test($$0xxx)).findFirst())
                                  .ifPresent($$2xx -> {
-                                    $$4.a($$4.gw().a($$2xx));
+                                    $$4.a($$4.gv().a($$2xx));
                                     $$4.a($$3);
                                  });
                               return true;

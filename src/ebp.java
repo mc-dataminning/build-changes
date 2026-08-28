@@ -1,12 +1,12 @@
 import com.mojang.serialization.Codec;
 
-public class ebp extends ecd<eeo> {
-   public ebp(Codec<eeo> $$0) {
+public class ebp extends ece<eep> {
+   public ebp(Codec<eep> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecf<eeo> $$0) {
+   public boolean a(ecg<eep> $$0) {
       dds $$1 = $$0.b();
       jd $$2 = $$0.e();
       ayw $$3 = $$0.d();

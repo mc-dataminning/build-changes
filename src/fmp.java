@@ -1,24 +1,29 @@
-public record fmp(int a, int b) {
-   public static fmp a(fmn $$0, int $$1, int $$2) {
-      return switch ($$0) {
-         case a -> new fmp($$1, $$2);
-         case b -> new fmp($$2, $$1);
+public enum fmp {
+   a,
+   b;
+
+   public fmp a() {
+      return switch (this) {
+         case a -> b;
+         case b -> a;
       };
    }
 
-   public fmp a(fmo $$0) {
-      return switch ($$0) {
-         case b -> new fmp(this.a, this.b + 1);
-         case a -> new fmp(this.a, this.b - 1);
-         case c -> new fmp(this.a - 1, this.b);
-         case d -> new fmp(this.a + 1, this.b);
+   public fmq b() {
+      return switch (this) {
+         case a -> fmq.d;
+         case b -> fmq.b;
       };
    }
 
-   public int a(fmn $$0) {
-      return switch ($$0) {
-         case a -> this.a;
-         case b -> this.b;
+   public fmq c() {
+      return switch (this) {
+         case a -> fmq.c;
+         case b -> fmq.a;
       };
+   }
+
+   public fmq a(boolean $$0) {
+      return $$0 ? this.b() : this.c();
    }
 }

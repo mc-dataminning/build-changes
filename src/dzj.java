@@ -27,12 +27,12 @@ public class dzj implements dcj {
                   cmx $$6 = $$0.x().get($$3.a($$5));
                   if ($$6.R_()) {
                      return 0;
-                  } else if ($$0.a($$6.dp(), 2)) {
+                  } else if ($$0.a($$6.do(), 2)) {
                      return 0;
                   } else {
                      int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
                      int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     jd.a $$9 = $$6.dp().k().e($$7, 0, $$8);
+                     jd.a $$9 = $$6.do().k().e($$7, 0, $$8);
                      int $$10 = 10;
                      if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
                         return 0;
@@ -79,8 +79,8 @@ public class dzj implements dcj {
          cke $$5 = bsx.aC.a((dcw)$$0);
          if ($$5 != null) {
             if ($$3) {
-               $$5.w(true);
-               $$5.gt();
+               $$5.x(true);
+               $$5.gs();
             }
 
             $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());

@@ -6,7 +6,7 @@ public class bza<E extends cmb> extends bvh<E> {
    }
 
    protected boolean a(aqu $$0, E $$1, long $$2) {
-      return $$1.dL() == null;
+      return $$1.dK() == null;
    }
 
    protected boolean a(aqu $$0, E $$1) {
@@ -24,7 +24,7 @@ public class bza<E extends cmb> extends bvh<E> {
    }
 
    protected void c(aqu $$0, E $$1, long $$2) {
-      if ($$1.dL() == null) {
+      if ($$1.dK() == null) {
          $$1.a(bsr.c.b);
       }
    }

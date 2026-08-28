@@ -1,165 +1,130 @@
-import com.mojang.authlib.minecraft.TelemetryPropertyContainer;
+import com.mojang.authlib.minecraft.TelemetryEvent;
+import com.mojang.authlib.minecraft.TelemetrySession;
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.util.UUID;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Stream;
 
-public record gvo<T>(String F, String G, Codec<T> H, gvo.a<T> I) {
-   private static final DateTimeFormatter J = DateTimeFormatter.ISO_OFFSET_DATE_TIME.withZone(ZoneId.from(ZoneOffset.UTC));
-   public static final gvo<String> a = b("user_id", "userId");
-   public static final gvo<String> b = b("client_id", "clientId");
-   public static final gvo<UUID> c = e("minecraft_session_id", "deviceSessionId");
-   public static final gvo<String> d = b("game_version", "buildDisplayName");
-   public static final gvo<String> e = b("operating_system", "buildPlatform");
-   public static final gvo<String> f = b("platform", "platform");
-   public static final gvo<Boolean> g = a("client_modded", "clientModded");
-   public static final gvo<String> h = b("launcher_name", "launcherName");
-   public static final gvo<UUID> i = e("world_session_id", "worldSessionId");
-   public static final gvo<Boolean> j = a("server_modded", "serverModded");
-   public static final gvo<gvo.c> k = a("server_type", "serverType", gvo.c.d, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.c()));
-   public static final gvo<Boolean> l = a("opt_in", "isOptional");
-   public static final gvo<Instant> m = a("event_timestamp_utc", "eventTimestampUtc", axw.o, ($$0, $$1, $$2) -> $$0.addProperty($$1, J.format($$2)));
-   public static final gvo<gvo.b> n = a("game_mode", "playerGameMode", gvo.b.f, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.a()));
-   public static final gvo<String> o = b("realms_map_content", "realmsMapContent");
-   public static final gvo<Integer> p = c("seconds_since_load", "secondsSinceLoad");
-   public static final gvo<Integer> q = c("ticks_since_load", "ticksSinceLoad");
-   public static final gvo<LongList> r = g("frame_rate_samples", "serializedFpsSamples");
-   public static final gvo<LongList> s = g("render_time_samples", "serializedRenderTimeSamples");
-   public static final gvo<LongList> t = g("used_memory_samples", "serializedUsedMemoryKbSamples");
-   public static final gvo<Integer> u = c("number_of_samples", "numSamples");
-   public static final gvo<Integer> v = c("render_distance", "renderDistance");
-   public static final gvo<Integer> w = c("dedicated_memory_kb", "dedicatedMemoryKb");
-   public static final gvo<Integer> x = c("world_load_time_ms", "worldLoadTimeMs");
-   public static final gvo<Boolean> y = a("new_world", "newWorld");
-   public static final gvo<gvs.a> z = f("load_time_total_time_ms", "loadTimeTotalTimeMs");
-   public static final gvo<gvs.a> A = f("load_time_pre_window_ms", "loadTimePreWindowMs");
-   public static final gvo<gvs.a> B = f("load_time_bootstrap_ms", "loadTimeBootstrapMs");
-   public static final gvo<gvs.a> C = f("load_time_loading_overlay_ms", "loadTimeLoadingOverlayMs");
-   public static final gvo<String> D = b("advancement_id", "advancementId");
-   public static final gvo<Long> E = d("advancement_game_time", "advancementGameTime");
+public class gvo {
+   static final Map<String, gvo> h = new Object2ObjectLinkedOpenHashMap();
+   public static final Codec<gvo> a = Codec.STRING.comapFlatMap($$0 -> {
+      gvo $$1 = h.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No TelemetryEventType with key: '" + $$0 + "'");
+   }, gvo::a);
+   private static final List<gvq<?>> i = List.of(gvq.a, gvq.b, gvq.c, gvq.d, gvq.e, gvq.f, gvq.g, gvq.h, gvq.m, gvq.l);
+   private static final List<gvq<?>> j = Stream.concat(i.stream(), Stream.of(gvq.i, gvq.j, gvq.k)).toList();
+   public static final gvo b = a("world_loaded", "WorldLoaded").a(j).a(gvq.n).a(gvq.o).b();
+   public static final gvo c = a("performance_metrics", "PerformanceMetrics").a(j).a(gvq.r).a(gvq.s).a(gvq.t).a(gvq.u).a(gvq.v).a(gvq.w).a().b();
+   public static final gvo d = a("world_load_times", "WorldLoadTimes").a(j).a(gvq.x).a(gvq.y).a().b();
+   public static final gvo e = a("world_unloaded", "WorldUnloaded").a(j).a(gvq.p).a(gvq.q).b();
+   public static final gvo f = a("advancement_made", "AdvancementMade").a(j).a(gvq.D).a(gvq.E).a().b();
+   public static final gvo g = a("game_load_times", "GameLoadTimes").a(i).a(gvq.z).a(gvq.A).a(gvq.B).a(gvq.C).a().b();
+   private final String k;
+   private final String l;
+   private final List<gvq<?>> m;
+   private final boolean n;
+   private final MapCodec<gvk> o;
 
-   public static <T> gvo<T> a(String $$0, String $$1, Codec<T> $$2, gvo.a<T> $$3) {
-      return new gvo<>($$0, $$1, $$2, $$3);
+   gvo(String $$0, String $$1, List<gvq<?>> $$2, boolean $$3) {
+      this.k = $$0;
+      this.l = $$1;
+      this.m = $$2;
+      this.n = $$3;
+      this.o = gvr.a($$2).xmap($$0x -> new gvk(this, $$0x), gvk::b);
    }
 
-   public static gvo<Boolean> a(String $$0, String $$1) {
-      return a($$0, $$1, Codec.BOOL, TelemetryPropertyContainer::addProperty);
+   public static gvo.a a(String $$0, String $$1) {
+      return new gvo.a($$0, $$1);
    }
 
-   public static gvo<String> b(String $$0, String $$1) {
-      return a($$0, $$1, Codec.STRING, TelemetryPropertyContainer::addProperty);
+   public String a() {
+      return this.k;
    }
 
-   public static gvo<Integer> c(String $$0, String $$1) {
-      return a($$0, $$1, Codec.INT, TelemetryPropertyContainer::addProperty);
+   public List<gvq<?>> b() {
+      return this.m;
    }
 
-   public static gvo<Long> d(String $$0, String $$1) {
-      return a($$0, $$1, Codec.LONG, TelemetryPropertyContainer::addProperty);
+   public MapCodec<gvk> c() {
+      return this.o;
    }
 
-   public static gvo<UUID> e(String $$0, String $$1) {
-      return a($$0, $$1, kg.d, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.toString()));
+   public boolean d() {
+      return this.n;
    }
 
-   public static gvo<gvs.a> f(String $$0, String $$1) {
-      return a($$0, $$1, gvs.a.a, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.a()));
-   }
+   public TelemetryEvent a(TelemetrySession $$0, gvr $$1) {
+      TelemetryEvent $$2 = $$0.createNewEvent(this.l);
 
-   public static gvo<LongList> g(String $$0, String $$1) {
-      return a(
-         $$0,
-         $$1,
-         Codec.LONG.listOf().xmap(LongArrayList::new, Function.identity()),
-         ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.longStream().mapToObj(String::valueOf).collect(Collectors.joining(";")))
-      );
-   }
-
-   public void a(gvp $$0, TelemetryPropertyContainer $$1) {
-      T $$2 = $$0.a(this);
-      if ($$2 != null) {
-         this.I.apply($$1, this.G, $$2);
-      } else {
-         $$1.addNullProperty(this.G);
+      for (gvq<?> $$3 : this.m) {
+         $$3.a($$1, $$2);
       }
+
+      return $$2;
    }
 
-   public xn a() {
-      return wz.c("telemetry.property." + this.F + ".title");
+   public <T> boolean a(gvq<T> $$0) {
+      return this.m.contains($$0);
    }
 
    @Override
    public String toString() {
-      return "TelemetryProperty[" + this.F + "]";
+      return "TelemetryEventType[" + this.k + "]";
    }
 
-   public String b() {
-      return this.F;
+   public xn e() {
+      return this.a("title");
    }
 
-   public String c() {
-      return this.G;
+   public xn f() {
+      return this.a("description");
    }
 
-   public Codec<T> d() {
-      return this.H;
+   private xn a(String $$0) {
+      return wz.c("telemetry.event." + this.k + "." + $$0);
    }
 
-   public gvo.a<T> e() {
-      return this.I;
+   public static List<gvo> g() {
+      return List.copyOf(h.values());
    }
 
-   public interface a<T> {
-      void apply(TelemetryPropertyContainer var1, String var2, T var3);
-   }
+   public static class a {
+      private final String a;
+      private final String b;
+      private final List<gvq<?>> c = new ArrayList<>();
+      private boolean d;
 
-   public static enum b implements azk {
-      a("survival", 0),
-      b("creative", 1),
-      c("adventure", 2),
-      d("spectator", 6),
-      e("hardcore", 99);
-
-      public static final Codec<gvo.b> f = azk.a(gvo.b::values);
-      private final String g;
-      private final int h;
-
-      private b(final String $$0, final int $$1) {
-         this.g = $$0;
-         this.h = $$1;
+      a(String $$0, String $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      public int a() {
-         return this.h;
+      public gvo.a a(List<gvq<?>> $$0) {
+         this.c.addAll($$0);
+         return this;
       }
 
-      @Override
-      public String c() {
-         return this.g;
-      }
-   }
-
-   public static enum c implements azk {
-      a("realm"),
-      b("local"),
-      c("server");
-
-      public static final Codec<gvo.c> d = azk.a(gvo.c::values);
-      private final String e;
-
-      private c(final String $$0) {
-         this.e = $$0;
+      public <T> gvo.a a(gvq<T> $$0) {
+         this.c.add($$0);
+         return this;
       }
 
-      @Override
-      public String c() {
-         return this.e;
+      public gvo.a a() {
+         this.d = true;
+         return this;
+      }
+
+      public gvo b() {
+         gvo $$0 = new gvo(this.a, this.b, List.copyOf(this.c), this.d);
+         if (gvo.h.putIfAbsent(this.a, $$0) != null) {
+            throw new IllegalStateException("Duplicate TelemetryEventType with key: '" + this.a + "'");
+         } else {
+            return $$0;
+         }
       }
    }
 }

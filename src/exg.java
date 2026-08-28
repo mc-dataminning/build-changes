@@ -1,21 +1,20 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+public interface exg {
+   exg a = ($$0, $$1) -> false;
+   exg b = ($$0, $$1) -> !$$0 && !$$1;
+   exg c = ($$0, $$1) -> $$1 && !$$0;
+   exg d = ($$0, $$1) -> !$$0;
+   exg e = ($$0, $$1) -> $$0 && !$$1;
+   exg f = ($$0, $$1) -> !$$1;
+   exg g = ($$0, $$1) -> $$0 != $$1;
+   exg h = ($$0, $$1) -> !$$0 || !$$1;
+   exg i = ($$0, $$1) -> $$0 && $$1;
+   exg j = ($$0, $$1) -> $$0 == $$1;
+   exg k = ($$0, $$1) -> $$1;
+   exg l = ($$0, $$1) -> !$$0 || $$1;
+   exg m = ($$0, $$1) -> $$0;
+   exg n = ($$0, $$1) -> $$0 || !$$1;
+   exg o = ($$0, $$1) -> $$0 || $$1;
+   exg p = ($$0, $$1) -> true;
 
-public class exg extends AbstractDoubleList {
-   private final int a;
-
-   public exg(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Need at least 1 part");
-      } else {
-         this.a = $$0;
-      }
-   }
-
-   public double getDouble(int $$0) {
-      return (double)$$0 / (double)this.a;
-   }
-
-   public int size() {
-      return this.a + 1;
-   }
+   boolean apply(boolean var1, boolean var2);
 }

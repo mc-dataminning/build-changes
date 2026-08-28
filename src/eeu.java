@@ -1,30 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.stream.Stream;
 
-public record eeu(int b, int c, int d, jm<eit> e) implements eeh {
+public class eeu implements eei {
    public static final Codec<eeu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               axw.l.fieldOf("tries").orElse(128).forGetter(eeu::a),
-               axw.k.fieldOf("xz_spread").orElse(7).forGetter(eeu::b),
-               axw.k.fieldOf("y_spread").orElse(3).forGetter(eeu::c),
-               eit.b.fieldOf("feature").forGetter(eeu::d)
-            )
-            .apply($$0, eeu::new)
+      $$0 -> $$0.apply2(eeu::new, edy.a.listOf().fieldOf("features").forGetter($$0x -> $$0x.b), eiv.b.fieldOf("default").forGetter($$0x -> $$0x.c))
    );
+   public final List<edy> b;
+   public final jm<eiv> c;
 
-   public int a() {
-      return this.b;
+   public eeu(List<edy> $$0, jm<eiv> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public jm<eit> d() {
-      return this.e;
+   @Override
+   public Stream<ebq<?, ?>> e() {
+      return Stream.concat(this.b.stream().flatMap($$0 -> $$0.b.a().a()), this.c.a().a());
    }
 }

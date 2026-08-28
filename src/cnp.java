@@ -19,7 +19,7 @@ public abstract class cnp extends bsr implements bun {
 
    public void c(@Nullable bsr $$0) {
       if ($$0 != null) {
-         this.b = $$0.cA();
+         this.b = $$0.cz();
          this.c = $$0;
       }
    }
@@ -27,9 +27,9 @@ public abstract class cnp extends bsr implements bun {
    @Nullable
    @Override
    public bsr s() {
-      if (this.c != null && !this.c.dK()) {
+      if (this.c != null && !this.c.dJ()) {
          return this.c;
-      } else if (this.b != null && this.dP() instanceof aqu $$0) {
+      } else if (this.b != null && this.dO() instanceof aqu $$0) {
          this.c = $$0.a(this.b);
          return this.c;
       } else {
@@ -55,7 +55,7 @@ public abstract class cnp extends bsr implements bun {
    }
 
    protected boolean e(bsr $$0) {
-      return $$0.cA().equals(this.b);
+      return $$0.cz().equals(this.b);
    }
 
    @Override
@@ -94,8 +94,8 @@ public abstract class cnp extends bsr implements bun {
    private boolean t() {
       bsr $$0 = this.s();
       if ($$0 != null) {
-         for (bsr $$1 : this.dP().a(this, this.cL().b(this.ds()).g(1.0), $$0x -> !$$0x.R_() && $$0x.bA())) {
-            if ($$1.da() == $$0.da()) {
+         for (bsr $$1 : this.dO().a(this, this.cK().b(this.dr()).g(1.0), $$0x -> !$$0x.R_() && $$0x.bA())) {
+            if ($$1.cZ() == $$0.cZ()) {
                return false;
             }
          }
@@ -104,22 +104,22 @@ public abstract class cnp extends bsr implements bun {
       return true;
    }
 
-   public exa d(double $$0, double $$1, double $$2, float $$3, float $$4) {
-      return new exa($$0, $$1, $$2)
+   public exc d(double $$0, double $$1, double $$2, float $$3, float $$4) {
+      return new exc($$0, $$1, $$2)
          .d()
          .b(this.ah.a(0.0, 0.0172275 * (double)$$4), this.ah.a(0.0, 0.0172275 * (double)$$4), this.ah.a(0.0, 0.0172275 * (double)$$4))
          .a((double)$$3);
    }
 
    public void c(double $$0, double $$1, double $$2, float $$3, float $$4) {
-      exa $$5 = this.d($$0, $$1, $$2, $$3, $$4);
+      exc $$5 = this.d($$0, $$1, $$2, $$3, $$4);
       this.i($$5);
       this.av = true;
       double $$6 = $$5.h();
       this.t((float)(ayo.d($$5.c, $$5.e) * 180.0F / (float)Math.PI));
       this.u((float)(ayo.d($$5.d, $$6) * 180.0F / (float)Math.PI));
-      this.O = this.dF();
-      this.P = this.dH();
+      this.O = this.dE();
+      this.P = this.dG();
    }
 
    public void a(bsr $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
@@ -127,13 +127,13 @@ public abstract class cnp extends bsr implements bun {
       float $$7 = -ayo.a(($$1 + $$3) * (float) (Math.PI / 180.0));
       float $$8 = ayo.b($$2 * (float) (Math.PI / 180.0)) * ayo.b($$1 * (float) (Math.PI / 180.0));
       this.c((double)$$6, (double)$$7, (double)$$8, $$4, $$5);
-      exa $$9 = $$0.ag();
-      this.i(this.ds().b($$9.c, $$0.aF() ? 0.0 : $$9.d, $$9.e));
+      exc $$9 = $$0.ag();
+      this.i(this.dr().b($$9.c, $$0.aF() ? 0.0 : $$9.d, $$9.e));
    }
 
-   protected cnq b(ewy $$0) {
-      if ($$0.c() == ewy.a.c) {
-         ewx $$1 = (ewx)$$0;
+   protected cnq b(exa $$0) {
+      if ($$0.c() == exa.a.c) {
+         ewz $$1 = (ewz)$$0;
          bsr $$2 = $$1.a();
          cnq $$3 = $$2.a(this);
          if ($$3 != cnq.a) {
@@ -150,7 +150,7 @@ public abstract class cnp extends bsr implements bun {
    }
 
    public boolean a(cnq $$0, @Nullable bsr $$1, @Nullable bsr $$2, boolean $$3) {
-      if (!this.dP().B) {
+      if (!this.dO().B) {
          $$0.deflect(this, $$1, this.ah);
          this.c($$2);
          this.b($$1, $$3);
@@ -162,31 +162,31 @@ public abstract class cnp extends bsr implements bun {
    protected void b(@Nullable bsr $$0, boolean $$1) {
    }
 
-   protected void a(ewy $$0) {
-      ewy.a $$1 = $$0.c();
-      if ($$1 == ewy.a.c) {
-         ewx $$2 = (ewx)$$0;
+   protected void a(exa $$0) {
+      exa.a $$1 = $$0.c();
+      if ($$1 == exa.a.c) {
+         ewz $$2 = (ewz)$$0;
          bsr $$3 = $$2.a();
          if ($$3.am().a(awi.H) && $$3 instanceof cnp $$4) {
             $$4.a(cnq.c, this.s(), this.s(), true);
          }
 
          this.a($$2);
-         this.dP().a(dxz.J, $$0.e(), dxz.a.a(this, null));
-      } else if ($$1 == ewy.a.b) {
-         eww $$5 = (eww)$$0;
+         this.dO().a(dxz.J, $$0.e(), dxz.a.a(this, null));
+      } else if ($$1 == exa.a.b) {
+         ewy $$5 = (ewy)$$0;
          this.a($$5);
          jd $$6 = $$5.a();
-         this.dP().a(dxz.J, $$6, dxz.a.a(this, this.dP().a_($$6)));
+         this.dO().a(dxz.J, $$6, dxz.a.a(this, this.dO().a_($$6)));
       }
    }
 
-   protected void a(ewx $$0) {
+   protected void a(ewz $$0) {
    }
 
-   protected void a(eww $$0) {
-      dtc $$1 = this.dP().a_($$0.a());
-      $$1.a(this.dP(), $$1, $$0, this);
+   protected void a(ewy $$0) {
+      dtc $$1 = this.dO().a_($$0.a());
+      $$1.a(this.dO(), $$1, $$0, this);
    }
 
    @Override
@@ -196,9 +196,9 @@ public abstract class cnp extends bsr implements bun {
          double $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
          this.u((float)(ayo.d($$1, $$3) * 180.0F / (float)Math.PI));
          this.t((float)(ayo.d($$0, $$2) * 180.0F / (float)Math.PI));
-         this.P = this.dH();
-         this.O = this.dF();
-         this.b(this.du(), this.dw(), this.dA(), this.dF(), this.dH());
+         this.P = this.dG();
+         this.O = this.dE();
+         this.b(this.dt(), this.dv(), this.dz(), this.dE(), this.dG());
       }
    }
 
@@ -213,7 +213,7 @@ public abstract class cnp extends bsr implements bun {
 
    @Override
    protected void I() {
-      exa $$0 = this.ds();
+      exc $$0 = this.dr();
       double $$1 = $$0.h();
       this.u(e(this.P, (float)(ayo.d($$0.d, $$1) * 180.0F / (float)Math.PI)));
       this.t(e(this.O, (float)(ayo.d($$0.c, $$0.e) * 180.0F / (float)Math.PI)));
@@ -240,7 +240,7 @@ public abstract class cnp extends bsr implements bun {
    @Override
    public void a(abv $$0) {
       super.a($$0);
-      bsr $$1 = this.dP().a($$0.p());
+      bsr $$1 = this.dO().a($$0.p());
       if ($$1 != null) {
          this.c($$1);
       }
@@ -267,8 +267,8 @@ public abstract class cnp extends bsr implements bun {
    }
 
    public DoubleDoubleImmutablePair a_(btn $$0, brk $$1) {
-      double $$2 = this.ds().c;
-      double $$3 = this.ds().e;
+      double $$2 = this.dr().c;
+      double $$3 = this.dr().e;
       return DoubleDoubleImmutablePair.of($$2, $$3);
    }
 }

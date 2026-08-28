@@ -3,7 +3,7 @@ import javax.annotation.Nullable;
 public abstract class cou extends cot implements cox {
    private jv<cuq> c = jv.a(36, cuq.l);
    @Nullable
-   private akq<eru> d;
+   private akq<erw> d;
    private long e;
 
    protected cou(bsx<?> $$0, dcw $$1) {
@@ -17,7 +17,7 @@ public abstract class cou extends cot implements cox {
    @Override
    public void a(brk $$0) {
       super.a($$0);
-      this.a($$0, this.dP(), this);
+      this.a($$0, this.dO(), this);
    }
 
    @Override
@@ -56,8 +56,8 @@ public abstract class cou extends cot implements cox {
 
    @Override
    public void a(bsr.c $$0) {
-      if (!this.dP().B && $$0.a()) {
-         bqn.a(this.dP(), this, this);
+      if (!this.dO().B && $$0.a()) {
+         bqn.a(this.dO(), this, this);
       }
 
       super.a($$0);
@@ -66,13 +66,13 @@ public abstract class cou extends cot implements cox {
    @Override
    protected void b(ub $$0) {
       super.b($$0);
-      this.a($$0, this.dR());
+      this.a($$0, this.dQ());
    }
 
    @Override
    protected void a(ub $$0) {
       super.a($$0);
-      this.b($$0, this.dR());
+      this.b($$0, this.dQ());
    }
 
    @Override
@@ -92,7 +92,7 @@ public abstract class cou extends cot implements cox {
          $$0 *= 0.95F;
       }
 
-      this.i(this.ds().d((double)$$0, 0.0, (double)$$0));
+      this.i(this.dr().d((double)$$0, 0.0, (double)$$0));
    }
 
    @Override
@@ -100,7 +100,7 @@ public abstract class cou extends cot implements cox {
       this.f();
    }
 
-   public void a(akq<eru> $$0, long $$1) {
+   public void a(akq<erw> $$0, long $$1) {
       this.d = $$0;
       this.e = $$1;
    }
@@ -120,12 +120,12 @@ public abstract class cou extends cot implements cox {
 
    @Nullable
    @Override
-   public akq<eru> B() {
+   public akq<erw> B() {
       return this.d;
    }
 
    @Override
-   public void a(@Nullable akq<eru> $$0) {
+   public void a(@Nullable akq<erw> $$0) {
       this.d = $$0;
    }
 

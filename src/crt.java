@@ -23,7 +23,7 @@ public class crt extends cqx {
 
    public crt(int $$0, cmw $$1, cqg $$2) {
       super(crc.v, $$0, $$1, $$2);
-      this.x = $$1.l.dP();
+      this.x = $$1.l.dO();
       this.z = this.x.r().a(czf.g);
    }
 
@@ -49,7 +49,7 @@ public class crt extends cqx {
 
    @Override
    protected void a(cmx $$0, cuq $$1) {
-      $$1.a($$0.dP(), $$0, $$1.H());
+      $$1.a($$0.dO(), $$0, $$1.H());
       this.r.a($$0, this.n());
       this.e(0);
       this.e(1);

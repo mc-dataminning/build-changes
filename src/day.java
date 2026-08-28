@@ -12,10 +12,10 @@ public record day(jm<avo> d, bpu e, bpu f) implements das {
    );
 
    @Override
-   public void a(aqu $$0, int $$1, dab $$2, bsr $$3, exa $$4) {
-      ayw $$5 = $$3.dS();
+   public void a(aqu $$0, int $$1, dab $$2, bsr $$3, exc $$4) {
+      ayw $$5 = $$3.dR();
       if (!$$3.aX()) {
-         $$0.a(null, $$4.a(), $$4.b(), $$4.c(), this.d, $$3.df(), this.e.a($$5), this.f.a($$5));
+         $$0.a(null, $$4.a(), $$4.b(), $$4.c(), this.d, $$3.de(), this.e.a($$5), this.f.a($$5));
       }
    }
 

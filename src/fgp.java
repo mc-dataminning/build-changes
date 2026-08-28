@@ -1,486 +1,335 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import java.nio.file.InvalidPathException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
-import java.util.function.Consumer;
-import java.util.function.DoubleFunction;
-import java.util.function.Function;
-import java.util.function.IntFunction;
-import java.util.function.IntSupplier;
-import java.util.function.Supplier;
-import java.util.function.ToDoubleFunction;
-import java.util.function.ToIntFunction;
-import java.util.stream.IntStream;
-import javax.annotation.Nullable;
+import org.lwjgl.glfw.GLFWDropCallback;
 import org.slf4j.Logger;
 
-public final class fgp<T> {
-   private static final Logger c = LogUtils.getLogger();
-   public static final fgp.e<Boolean> a = new fgp.e<>(ImmutableList.of(Boolean.TRUE, Boolean.FALSE), Codec.BOOL);
-   public static final fgp.b<Boolean> b = ($$0, $$1) -> $$1 ? wy.b : wy.c;
-   private final fgp.l<T> d;
-   final Function<T, wz> e;
-   private final fgp.n<T> f;
-   private final Codec<T> g;
-   private final T h;
-   private final Consumer<T> i;
-   final wz j;
-   T k;
+public class fgp {
+   private static final Logger a = LogUtils.getLogger();
+   private final fgo b;
+   private boolean c;
+   private boolean d;
+   private boolean e;
+   private double f;
+   private double g;
+   private int h;
+   private int i = -1;
+   private boolean j = true;
+   private int k;
+   private double l;
+   private final azf m = new azf();
+   private final azf n = new azf();
+   private double o;
+   private double p;
+   private double q;
+   private double r;
+   private double s = Double.MIN_VALUE;
+   private boolean t;
 
-   public static fgp<Boolean> a(String $$0, boolean $$1, Consumer<Boolean> $$2) {
-      return a($$0, a(), $$1, $$2);
+   public fgp(fgo $$0) {
+      this.b = $$0;
    }
 
-   public static fgp<Boolean> a(String $$0, boolean $$1) {
-      return a($$0, a(), $$1, $$0x -> {
-      });
-   }
+   private void a(long $$0, int $$1, int $$2, int $$3) {
+      if ($$0 == this.b.aM().j()) {
+         if (this.b.y != null) {
+            this.b.a(fgl.b);
+         }
 
-   public static fgp<Boolean> a(String $$0, fgp.l<Boolean> $$1, boolean $$2) {
-      return a($$0, $$1, $$2, $$0x -> {
-      });
-   }
+         boolean $$4 = $$2 == 1;
+         if (fgo.a && $$1 == 0) {
+            if ($$4) {
+               if (($$3 & 2) == 2) {
+                  $$1 = 1;
+                  this.h++;
+               }
+            } else if (this.h > 0) {
+               $$1 = 1;
+               this.h--;
+            }
+         }
 
-   public static fgp<Boolean> a(String $$0, fgp.l<Boolean> $$1, boolean $$2, Consumer<Boolean> $$3) {
-      return a($$0, $$1, b, $$2, $$3);
-   }
+         int $$5 = $$1;
+         if ($$4) {
+            if (this.b.m.Z().c() && this.k++ > 0) {
+               return;
+            }
 
-   public static fgp<Boolean> a(String $$0, fgp.l<Boolean> $$1, fgp.b<Boolean> $$2, boolean $$3, Consumer<Boolean> $$4) {
-      return new fgp<>($$0, $$1, $$2, a, $$3, $$4);
-   }
+            this.i = $$5;
+            this.l = eza.b();
+         } else if (this.i != -1) {
+            if (this.b.m.Z().c() && --this.k > 0) {
+               return;
+            }
 
-   public fgp(String $$0, fgp.l<T> $$1, fgp.b<T> $$2, fgp.n<T> $$3, T $$4, Consumer<T> $$5) {
-      this($$0, $$1, $$2, $$3, $$3.f(), $$4, $$5);
-   }
+            this.i = -1;
+         }
 
-   public fgp(String $$0, fgp.l<T> $$1, fgp.b<T> $$2, fgp.n<T> $$3, Codec<T> $$4, T $$5, Consumer<T> $$6) {
-      this.j = wz.c($$0);
-      this.d = $$1;
-      this.e = $$1x -> $$2.toString(this.j, (T)$$1x);
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-      this.k = this.h;
-   }
+         boolean[] $$6 = new boolean[]{false};
+         if (this.b.aK() == null) {
+            if (this.b.y == null) {
+               if (!this.t && $$4) {
+                  this.i();
+               }
+            } else {
+               double $$7 = this.f * (double)this.b.aM().p() / (double)this.b.aM().n();
+               double $$8 = this.g * (double)this.b.aM().q() / (double)this.b.aM().o();
+               fod $$9 = this.b.y;
+               if ($$4) {
+                  $$9.v();
+                  fod.a(() -> $$6[0] = $$9.a($$7, $$8, $$5), "mouseClicked event handler", $$9.getClass().getCanonicalName());
+               } else {
+                  fod.a(() -> $$6[0] = $$9.b($$7, $$8, $$5), "mouseReleased event handler", $$9.getClass().getCanonicalName());
+               }
+            }
+         }
 
-   public static <T> fgp.l<T> a() {
-      return $$0 -> null;
-   }
+         if (!$$6[0] && this.b.y == null && this.b.aK() == null) {
+            if ($$5 == 0) {
+               this.c = $$4;
+            } else if ($$5 == 2) {
+               this.d = $$4;
+            } else if ($$5 == 1) {
+               this.e = $$4;
+            }
 
-   public static <T> fgp.l<T> a(wz $$0) {
-      return $$1 -> fjv.a($$0);
-   }
-
-   public static <T extends ayr> fgp.b<T> b() {
-      return ($$0, $$1) -> $$1.d();
-   }
-
-   public fii a(fgq $$0) {
-      return this.a($$0, 0, 0, 150);
-   }
-
-   public fii a(fgq $$0, int $$1, int $$2, int $$3) {
-      return this.a($$0, $$1, $$2, $$3, $$0x -> {
-      });
-   }
-
-   public fii a(fgq $$0, int $$1, int $$2, int $$3, Consumer<T> $$4) {
-      return this.f.a(this.d, $$0, $$1, $$2, $$3, $$4).apply(this);
-   }
-
-   public T c() {
-      return this.k;
-   }
-
-   public Codec<T> d() {
-      return this.g;
-   }
-
-   @Override
-   public String toString() {
-      return this.j.getString();
-   }
-
-   public void a(T $$0) {
-      T $$1 = this.f.a($$0).orElseGet(() -> {
-         c.error("Illegal option value " + $$0 + " for " + this.j);
-         return this.h;
-      });
-      if (!fgm.Q().r()) {
-         this.k = $$1;
-      } else {
-         if (!Objects.equals(this.k, $$1)) {
-            this.k = $$1;
-            this.i.accept(this.k);
+            fgm.a(fae.b.c.a($$5), $$4);
+            if ($$4) {
+               if (this.b.s.R_() && $$5 == 2) {
+                  this.b.l.g().b();
+               } else {
+                  fgm.a(fae.b.c.a($$5));
+               }
+            }
          }
       }
    }
 
-   public fgp.n<T> e() {
+   private void a(long $$0, double $$1, double $$2) {
+      if ($$0 == fgo.Q().aM().j()) {
+         boolean $$3 = this.b.m.S().c();
+         double $$4 = this.b.m.F().c();
+         double $$5 = ($$3 ? Math.signum($$1) : $$1) * $$4;
+         double $$6 = ($$3 ? Math.signum($$2) : $$2) * $$4;
+         if (this.b.aK() == null) {
+            if (this.b.y != null) {
+               double $$7 = this.f * (double)this.b.aM().p() / (double)this.b.aM().n();
+               double $$8 = this.g * (double)this.b.aM().q() / (double)this.b.aM().o();
+               this.b.y.a($$7, $$8, $$5, $$6);
+               this.b.y.v();
+            } else if (this.b.s != null) {
+               if (this.q != 0.0 && Math.signum($$5) != Math.signum(this.q)) {
+                  this.q = 0.0;
+               }
+
+               if (this.r != 0.0 && Math.signum($$6) != Math.signum(this.r)) {
+                  this.r = 0.0;
+               }
+
+               this.q += $$5;
+               this.r += $$6;
+               int $$9 = (int)this.q;
+               int $$10 = (int)this.r;
+               if ($$9 == 0 && $$10 == 0) {
+                  return;
+               }
+
+               this.q -= (double)$$9;
+               this.r -= (double)$$10;
+               int $$11 = $$10 == 0 ? -$$9 : $$10;
+               if (this.b.s.R_()) {
+                  if (this.b.l.g().a()) {
+                     this.b.l.g().b(-$$11);
+                  } else {
+                     float $$12 = ayo.a(this.b.s.fZ().a() + (float)$$10 * 0.005F, 0.0F, 0.2F);
+                     this.b.s.fZ().a($$12);
+                  }
+               } else {
+                  this.b.s.fY().a((double)$$11);
+               }
+            }
+         }
+      }
+   }
+
+   private void a(long $$0, List<Path> $$1, int $$2) {
+      if (this.b.y != null) {
+         this.b.y.a($$1);
+      }
+
+      if ($$2 > 0) {
+         fku.a(this.b, $$2);
+      }
+   }
+
+   public void a(long $$0) {
+      fae.a(
+         $$0,
+         ($$0x, $$1, $$2) -> this.b.execute(() -> this.b($$0x, $$1, $$2)),
+         ($$0x, $$1, $$2, $$3) -> this.b.execute(() -> this.a($$0x, $$1, $$2, $$3)),
+         ($$0x, $$1, $$2) -> this.b.execute(() -> this.a($$0x, $$1, $$2)),
+         ($$0x, $$1, $$2) -> {
+            List<Path> $$3 = new ArrayList<>($$1);
+            int $$4 = 0;
+
+            for (int $$5 = 0; $$5 < $$1; $$5++) {
+               String $$6 = GLFWDropCallback.getName($$2, $$5);
+
+               try {
+                  $$3.add(Paths.get($$6));
+               } catch (InvalidPathException var11) {
+                  $$4++;
+                  a.error("Failed to parse path '{}'", $$6, var11);
+               }
+            }
+
+            if (!$$3.isEmpty()) {
+               int $$8 = $$4;
+               this.b.execute(() -> this.a($$0x, $$3, $$8));
+            }
+         }
+      );
+   }
+
+   private void b(long $$0, double $$1, double $$2) {
+      if ($$0 == fgo.Q().aM().j()) {
+         if (this.j) {
+            this.f = $$1;
+            this.g = $$2;
+            this.j = false;
+         } else {
+            if (this.b.aA()) {
+               this.o = this.o + ($$1 - this.f);
+               this.p = this.p + ($$2 - this.g);
+            }
+
+            this.f = $$1;
+            this.g = $$2;
+         }
+      }
+   }
+
+   public void a() {
+      double $$0 = eza.b();
+      double $$1 = $$0 - this.s;
+      this.s = $$0;
+      if (this.b.aA()) {
+         fod $$2 = this.b.y;
+         if ($$2 != null && this.b.aK() == null && (this.o != 0.0 || this.p != 0.0)) {
+            double $$3 = this.f * (double)this.b.aM().p() / (double)this.b.aM().n();
+            double $$4 = this.g * (double)this.b.aM().q() / (double)this.b.aM().o();
+            fod.a(() -> $$2.f($$3, $$4), "mouseMoved event handler", $$2.getClass().getCanonicalName());
+            if (this.i != -1 && this.l > 0.0) {
+               double $$5 = this.o * (double)this.b.aM().p() / (double)this.b.aM().n();
+               double $$6 = this.p * (double)this.b.aM().q() / (double)this.b.aM().o();
+               fod.a(() -> $$2.a($$3, $$4, this.i, $$5, $$6), "mouseDragged event handler", $$2.getClass().getCanonicalName());
+            }
+
+            $$2.u();
+         }
+
+         if (this.h() && this.b.s != null) {
+            this.a($$1);
+         }
+      }
+
+      this.o = 0.0;
+      this.p = 0.0;
+   }
+
+   private void a(double $$0) {
+      double $$1 = this.b.m.d().c() * 0.6F + 0.2F;
+      double $$2 = $$1 * $$1 * $$1;
+      double $$3 = $$2 * 8.0;
+      double $$6;
+      double $$7;
+      if (this.b.m.aa) {
+         double $$4 = this.m.a(this.o * $$3, $$0 * $$3);
+         double $$5 = this.n.a(this.p * $$3, $$0 * $$3);
+         $$6 = $$4;
+         $$7 = $$5;
+      } else if (this.b.m.aB().a() && this.b.s.gw()) {
+         this.m.a();
+         this.n.a();
+         $$6 = this.o * $$2;
+         $$7 = this.p * $$2;
+      } else {
+         this.m.a();
+         this.n.a();
+         $$6 = this.o * $$3;
+         $$7 = this.p * $$3;
+      }
+
+      int $$12 = 1;
+      if (this.b.m.R().c()) {
+         $$12 = -1;
+      }
+
+      this.b.ax().a($$6, $$7);
+      if (this.b.s != null) {
+         this.b.s.b($$6, $$7 * (double)$$12);
+      }
+   }
+
+   public boolean b() {
+      return this.c;
+   }
+
+   public boolean c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public double e() {
       return this.f;
    }
 
-   public static record a<T>(List<T> a, List<T> b, BooleanSupplier c, fgp.d.a<T> d, Codec<T> e) implements fgp.d<T> {
-      @Override
-      public fir.c<T> a() {
-         return fir.c.a(this.c, this.a, this.b);
-      }
-
-      @Override
-      public Optional<T> a(T $$0) {
-         return (this.c.getAsBoolean() ? this.b : this.a).contains($$0) ? Optional.of($$0) : Optional.empty();
-      }
-
-      public List<T> b() {
-         return this.a;
-      }
-
-      public List<T> c() {
-         return this.b;
-      }
-
-      public BooleanSupplier d() {
-         return this.c;
-      }
-
-      @Override
-      public fgp.d.a<T> e() {
-         return this.d;
-      }
-
-      @Override
-      public Codec<T> f() {
-         return this.e;
-      }
+   public double f() {
+      return this.g;
    }
 
-   public interface b<T> {
-      wz toString(wz var1, T var2);
+   public void g() {
+      this.j = true;
    }
 
-   public static record c(int a, IntSupplier b, int c) implements fgp.g, fgp.j<Integer> {
-      public Optional<Integer> a(Integer $$0) {
-         return Optional.of(ayo.a($$0, this.d(), this.b()));
-      }
-
-      @Override
-      public int b() {
-         return this.b.getAsInt();
-      }
-
-      @Override
-      public Codec<Integer> f() {
-         return Codec.INT
-            .validate(
-               $$0 -> {
-                  int $$1 = this.c + 1;
-                  return $$0.compareTo(this.a) >= 0 && $$0.compareTo($$1) <= 0
-                     ? DataResult.success($$0)
-                     : DataResult.error(() -> "Value " + $$0 + " outside of range [" + this.a + ":" + $$1 + "]", $$0);
-               }
-            );
-      }
-
-      @Override
-      public boolean c() {
-         return true;
-      }
-
-      @Override
-      public fir.c<Integer> a() {
-         return fir.c.a(IntStream.range(this.a, this.b() + 1).boxed().toList());
-      }
-
-      @Override
-      public int d() {
-         return this.a;
-      }
-
-      public IntSupplier g() {
-         return this.b;
-      }
-
-      public int h() {
-         return this.c;
-      }
+   public boolean h() {
+      return this.t;
    }
 
-   interface d<T> extends fgp.n<T> {
-      fir.c<T> a();
-
-      default fgp.d.a<T> e() {
-         return fgp::a;
-      }
-
-      @Override
-      default Function<fgp<T>, fii> a(fgp.l<T> $$0, fgq $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
-         return $$6 -> fir.a($$6.e).a(this.a()).a($$0).a($$6.k).a($$2, $$3, $$4, 20, $$6.j, ($$3xx, $$4xx) -> {
-               this.e().set($$6, (T)$$4xx);
-               $$1.av();
-               $$5.accept((T)$$4xx);
-            });
-      }
-
-      public interface a<T> {
-         void set(fgp<T> var1, T var2);
-      }
-   }
-
-   public static record e<T>(List<T> a, Codec<T> b) implements fgp.d<T> {
-      @Override
-      public Optional<T> a(T $$0) {
-         return this.a.contains($$0) ? Optional.of($$0) : Optional.empty();
-      }
-
-      @Override
-      public fir.c<T> a() {
-         return fir.c.a(this.a);
-      }
-
-      public List<T> b() {
-         return this.a;
-      }
-
-      @Override
-      public Codec<T> f() {
-         return this.b;
-      }
-   }
-
-   public static record f(int a, int b, boolean c) implements fgp.g {
-      public f(int $$0, int $$1) {
-         this($$0, $$1, true);
-      }
-
-      public Optional<Integer> a(Integer $$0) {
-         return $$0.compareTo(this.d()) >= 0 && $$0.compareTo(this.b()) <= 0 ? Optional.of($$0) : Optional.empty();
-      }
-
-      @Override
-      public Codec<Integer> f() {
-         return Codec.intRange(this.a, this.b + 1);
-      }
-
-      @Override
-      public int d() {
-         return this.a;
-      }
-
-      @Override
-      public boolean aR_() {
-         return this.c;
-      }
-   }
-
-   interface g extends fgp.k<Integer> {
-      int d();
-
-      int b();
-
-      default double b(Integer $$0) {
-         if ($$0 == this.d()) {
-            return 0.0;
-         } else {
-            return $$0 == this.b() ? 1.0 : ayo.b((double)$$0.intValue() + 0.5, (double)this.d(), (double)this.b() + 1.0, 0.0, 1.0);
-         }
-      }
-
-      default Integer a(double $$0) {
-         if ($$0 >= 1.0) {
-            $$0 = 0.99999F;
-         }
-
-         return ayo.a(ayo.b($$0, 0.0, 1.0, (double)this.d(), (double)this.b() + 1.0));
-      }
-
-      default <R> fgp.k<R> a(final IntFunction<? extends R> $$0, final ToIntFunction<? super R> $$1) {
-         return new fgp.k<R>() {
-            @Override
-            public Optional<R> a(R $$0x) {
-               return g.this.a(Integer.valueOf($$1.applyAsInt($$0))).map($$0::apply);
+   public void i() {
+      if (this.b.aA()) {
+         if (!this.t) {
+            if (!fgo.a) {
+               fgm.a();
             }
 
-            @Override
-            public double b(R $$0x) {
-               return g.this.b($$1.applyAsInt($$0));
-            }
-
-            @Override
-            public R b(double $$0x) {
-               return (R)$$0.apply(g.this.a($$0));
-            }
-
-            @Override
-            public Codec<R> f() {
-               return g.this.f().xmap($$0::apply, $$1::applyAsInt);
-            }
-         };
-      }
-   }
-
-   public static record h<T>(Supplier<List<T>> a, Function<T, Optional<T>> b, Codec<T> c) implements fgp.d<T> {
-      @Override
-      public Optional<T> a(T $$0) {
-         return this.b.apply($$0);
-      }
-
-      @Override
-      public fir.c<T> a() {
-         return fir.c.a(this.a.get());
-      }
-
-      public Supplier<List<T>> b() {
-         return this.a;
-      }
-
-      public Function<T, Optional<T>> c() {
-         return this.b;
-      }
-
-      @Override
-      public Codec<T> f() {
-         return this.c;
-      }
-   }
-
-   public static final class i<N> extends fid {
-      private final fgp<N> d;
-      private final fgp.k<N> e;
-      private final fgp.l<N> f;
-      private final Consumer<N> m;
-      @Nullable
-      private Long n;
-      private final boolean o;
-
-      i(fgq $$0, int $$1, int $$2, int $$3, int $$4, fgp<N> $$5, fgp.k<N> $$6, fgp.l<N> $$7, Consumer<N> $$8, boolean $$9) {
-         super($$0, $$1, $$2, $$3, $$4, $$6.b($$5.c()));
-         this.d = $$5;
-         this.e = $$6;
-         this.f = $$7;
-         this.m = $$8;
-         this.o = $$9;
-         this.b();
-      }
-
-      @Override
-      protected void b() {
-         this.b(this.d.e.apply(this.e.b(this.c)));
-         this.a(this.f.apply(this.e.b(this.c)));
-      }
-
-      @Override
-      protected void a() {
-         if (this.o) {
-            this.c();
-         } else {
-            this.n = ad.c() + 600L;
-         }
-      }
-
-      public void c() {
-         N $$0 = this.e.b(this.c);
-         if (!Objects.equals($$0, this.d.c())) {
-            this.d.a($$0);
-            this.a.av();
-            this.m.accept(this.d.c());
-         }
-      }
-
-      @Override
-      public void b(fhx $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         if (this.n != null && ad.c() >= this.n) {
-            this.n = null;
-            this.c();
+            this.t = true;
+            this.f = (double)(this.b.aM().n() / 2);
+            this.g = (double)(this.b.aM().o() / 2);
+            fae.a(this.b.aM().j(), 212995, this.f, this.g);
+            this.b.a(null);
+            this.b.w = 10000;
+            this.j = true;
          }
       }
    }
 
-   interface j<T> extends fgp.d<T>, fgp.k<T> {
-      boolean c();
-
-      @Override
-      default Function<fgp<T>, fii> a(fgp.l<T> $$0, fgq $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
-         return this.c() ? fgp.d.super.a($$0, $$1, $$2, $$3, $$4, $$5) : fgp.k.super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public void j() {
+      if (this.t) {
+         this.t = false;
+         this.f = (double)(this.b.aM().n() / 2);
+         this.g = (double)(this.b.aM().o() / 2);
+         fae.a(this.b.aM().j(), 212993, this.f, this.g);
       }
    }
 
-   interface k<T> extends fgp.n<T> {
-      double b(T var1);
-
-      T b(double var1);
-
-      default boolean aR_() {
-         return true;
-      }
-
-      @Override
-      default Function<fgp<T>, fii> a(fgp.l<T> $$0, fgq $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
-         return $$6 -> new fgp.i<>($$1, $$2, $$3, $$4, 20, $$6, this, $$0, $$5, this.aR_());
-      }
-   }
-
-   @FunctionalInterface
-   public interface l<T> {
-      @Nullable
-      fjv apply(T var1);
-   }
-
-   public static enum m implements fgp.k<Double> {
-      a;
-
-      public Optional<Double> a(Double $$0) {
-         return $$0 >= 0.0 && $$0 <= 1.0 ? Optional.of($$0) : Optional.empty();
-      }
-
-      public double b(Double $$0) {
-         return $$0;
-      }
-
-      public Double a(double $$0) {
-         return $$0;
-      }
-
-      public <R> fgp.k<R> a(final DoubleFunction<? extends R> $$0, final ToDoubleFunction<? super R> $$1) {
-         return new fgp.k<R>() {
-            @Override
-            public Optional<R> a(R $$0x) {
-               return m.this.a(Double.valueOf($$1.applyAsDouble($$0))).map($$0::apply);
-            }
-
-            @Override
-            public double b(R $$0x) {
-               return m.this.b(Double.valueOf($$1.applyAsDouble($$0)));
-            }
-
-            @Override
-            public R b(double $$0x) {
-               return (R)$$0.apply(m.this.a($$0));
-            }
-
-            @Override
-            public Codec<R> f() {
-               return m.this.f().xmap($$0::apply, $$1::applyAsDouble);
-            }
-         };
-      }
-
-      @Override
-      public Codec<Double> f() {
-         return Codec.withAlternative(Codec.doubleRange(0.0, 1.0), Codec.BOOL, $$0 -> $$0 ? 1.0 : 0.0);
-      }
-   }
-
-   interface n<T> {
-      Function<fgp<T>, fii> a(fgp.l<T> var1, fgq var2, int var3, int var4, int var5, Consumer<T> var6);
-
-      Optional<T> a(T var1);
-
-      Codec<T> f();
+   public void k() {
+      this.j = true;
    }
 }

@@ -1,48 +1,26 @@
-import java.util.Objects;
 import java.util.function.Consumer;
-import javax.annotation.Nullable;
 
-public class fkn {
-   private final Consumer<fii> a;
-   private final Consumer<fii> b;
-   @Nullable
-   private fkm c;
-   @Nullable
-   private fmq d;
+public class fkn implements fko {
+   private final wz b;
+   protected final fly a = new fly();
 
-   public fkn(Consumer<fii> $$0, Consumer<fii> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public fkn(wz $$0) {
+      this.b = $$0;
    }
 
-   public void a(fmq $$0) {
-      this.d = $$0;
-      fkm $$1 = this.a();
-      if ($$1 != null) {
-         $$1.a($$0);
-      }
+   @Override
+   public wz a() {
+      return this.b;
    }
 
-   public void a(fkm $$0, boolean $$1) {
-      if (!Objects.equals(this.c, $$0)) {
-         if (this.c != null) {
-            this.c.a(this.b);
-         }
-
-         this.c = $$0;
-         $$0.a(this.a);
-         if (this.d != null) {
-            $$0.a(this.d);
-         }
-
-         if ($$1) {
-            fgm.Q().aj().a(gtt.a(avp.Ar, 1.0F));
-         }
-      }
+   @Override
+   public void a(Consumer<fik> $$0) {
+      this.a.a($$0);
    }
 
-   @Nullable
-   public fkm a() {
-      return this.c;
+   @Override
+   public void a(fms $$0) {
+      this.a.a();
+      flx.a(this.a, $$0, 0.5F, 0.16666667F);
    }
 }

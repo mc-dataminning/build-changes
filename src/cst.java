@@ -20,10 +20,10 @@ public class cst extends cvn {
             if (!((double)$$7 < 0.1)) {
                List<cuq> $$8 = a($$0, $$5, $$4);
                if ($$1 instanceof aqu $$9 && !$$8.isEmpty()) {
-                  this.a($$9, $$4, $$4.ft(), $$0, $$8, $$7 * 3.0F, 1.0F, $$7 == 1.0F, null);
+                  this.a($$9, $$4, $$4.fs(), $$0, $$8, $$7 * 3.0F, 1.0F, $$7 == 1.0F, null);
                }
 
-               $$1.a(null, $$4.du(), $$4.dw(), $$4.dA(), avp.aG, avq.h, 1.0F, 1.0F / ($$1.E_().i() * 0.4F + 1.2F) + $$7 * 0.5F);
+               $$1.a(null, $$4.dt(), $$4.dv(), $$4.dz(), avp.aG, avq.h, 1.0F, 1.0F / ($$1.E_().i() * 0.4F + 1.2F) + $$7 * 0.5F);
                $$4.b(avz.c.b(this));
             }
          }
@@ -32,7 +32,7 @@ public class cst extends cvn {
 
    @Override
    protected void a(btn $$0, cnp $$1, int $$2, float $$3, float $$4, float $$5, @Nullable btn $$6) {
-      $$1.a($$0, $$0.dH(), $$0.dF() + $$5, 0.0F, $$3, $$4);
+      $$1.a($$0, $$0.dG(), $$0.dE() + $$5, 0.0F, $$3, $$4);
    }
 
    public static float a(int $$0) {
@@ -59,7 +59,7 @@ public class cst extends cvn {
    public bqs<cuq> a(dcw $$0, cmx $$1, bqq $$2) {
       cuq $$3 = $$1.b($$2);
       boolean $$4 = !$$1.g($$3).e();
-      if (!$$1.fM() && !$$4) {
+      if (!$$1.fL() && !$$4) {
          return bqs.d($$3);
       } else {
          $$1.c($$2);

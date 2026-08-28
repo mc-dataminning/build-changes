@@ -67,7 +67,7 @@ public class aqb extends dwj implements apz.b, aqm {
    private final bph<Runnable> u;
    private final dzm v;
    private final dva w;
-   private final Supplier<eqx> x;
+   private final Supplier<eqz> x;
    private final ces y;
    final LongSet z = new LongOpenHashSet();
    private boolean A;
@@ -89,16 +89,16 @@ public class aqb extends dwj implements apz.b, aqm {
 
    public aqb(
       aqu $$0,
-      erd.c $$1,
+      erf.c $$1,
       DataFixer $$2,
-      ens $$3,
+      enu $$3,
       Executor $$4,
       bph<Runnable> $$5,
       dvl $$6,
       duz $$7,
       ard $$8,
       dxf $$9,
-      Supplier<eqx> $$10,
+      Supplier<eqz> $$10,
       int $$11,
       boolean $$12
    ) {
@@ -147,8 +147,8 @@ public class aqb extends dwj implements apz.b, aqm {
    private static double a(dcd $$0, bsr $$1) {
       double $$2 = (double)kf.a($$0.e, 8);
       double $$3 = (double)kf.a($$0.f, 8);
-      double $$4 = $$2 - $$1.du();
-      double $$5 = $$3 - $$1.dA();
+      double $$4 = $$2 - $$1.dt();
+      double $$5 = $$3 - $$1.dz();
       return $$4 * $$4 + $$5 * $$5;
    }
 
@@ -641,7 +641,7 @@ public class aqb extends dwj implements apz.b, aqm {
                   return false;
                }
 
-               if ($$2 == dvz.c && $$0.g().values().stream().noneMatch(ejx::b)) {
+               if ($$2 == dvz.c && $$0.g().values().stream().noneMatch(ejz::b)) {
                   return false;
                }
             }
@@ -918,7 +918,7 @@ public class aqb extends dwj implements apz.b, aqm {
    }
 
    private void e(aqv $$0) {
-      dcd $$1 = $$0.dr();
+      dcd $$1 = $$0.dq();
       int $$2 = this.b($$0);
       if ($$0.X() instanceof aqg.a $$3 && $$3.a().equals($$1) && $$3.b() == $$2) {
          return;
@@ -928,7 +928,7 @@ public class aqb extends dwj implements apz.b, aqm {
    }
 
    private void a(aqv $$0, aqg $$1) {
-      if ($$0.dP() == this.s) {
+      if ($$0.dO() == this.s) {
          aqg $$2 = $$0.X();
          if ($$1 instanceof aqg.a $$3 && (!($$2 instanceof aqg.a $$4) || !$$4.a().equals($$3.a()))) {
             $$0.c.b(new aev($$3.a().e, $$3.a().f));
@@ -1167,12 +1167,12 @@ public class aqb extends dwj implements apz.b, aqm {
 
       public void b(aqv $$0) {
          if ($$0 != this.c) {
-            exa $$1 = $$0.dn().d(this.c.dn());
+            exc $$1 = $$0.dm().d(this.c.dm());
             int $$2 = aqb.this.b($$0);
             double $$3 = (double)Math.min(this.b(), $$2 * 16);
             double $$4 = $$1.c * $$1.c + $$1.e * $$1.e;
             double $$5 = $$3 * $$3;
-            boolean $$6 = $$4 <= $$5 && this.c.a($$0) && aqb.this.a($$0, this.c.dr().e, this.c.dr().f);
+            boolean $$6 = $$4 <= $$5 && this.c.a($$0) && aqb.this.a($$0, this.c.dq().e, this.c.dq().f);
             if ($$6) {
                if (this.f.add($$0.c)) {
                   this.b.b($$0);
@@ -1190,7 +1190,7 @@ public class aqb extends dwj implements apz.b, aqm {
       private int b() {
          int $$0 = this.d;
 
-         for (bsr $$1 : this.c.cX()) {
+         for (bsr $$1 : this.c.cW()) {
             int $$2 = $$1.am().o() * 16;
             if ($$2 > $$0) {
                $$0 = $$2;

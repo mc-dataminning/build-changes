@@ -4,7 +4,7 @@ public class cow extends cov implements btf, cox {
    private static final int i = 27;
    private jv<cuq> j = jv.a(27, cuq.l);
    @Nullable
-   private akq<eru> k;
+   private akq<erw> k;
    private long l;
 
    public cow(bsx<? extends cov> $$0, dcw $$1) {
@@ -32,25 +32,25 @@ public class cow extends cov implements btf, cox {
    @Override
    protected void b(ub $$0) {
       super.b($$0);
-      this.a($$0, this.dR());
+      this.a($$0, this.dQ());
    }
 
    @Override
    protected void a(ub $$0) {
       super.a($$0);
-      this.b($$0, this.dR());
+      this.b($$0, this.dQ());
    }
 
    @Override
    public void a(brk $$0) {
       this.b(this.ak_());
-      this.a($$0, this.dP(), this);
+      this.a($$0, this.dO(), this);
    }
 
    @Override
    public void a(bsr.c $$0) {
-      if (!this.dP().B && $$0.a()) {
-         bqn.a(this.dP(), this, this);
+      if (!this.dO().B && $$0.a()) {
+         bqn.a(this.dO(), this, this);
       }
 
       super.a($$0);
@@ -58,7 +58,7 @@ public class cow extends cov implements btf, cox {
 
    @Override
    public bqr a(cmx $$0, bqq $$1) {
-      if (this.r($$0) && !$$0.fO()) {
+      if (this.r($$0) && !$$0.fN()) {
          return super.a($$0, $$1);
       } else {
          bqr $$2 = this.c_($$0);
@@ -74,7 +74,7 @@ public class cow extends cov implements btf, cox {
    @Override
    public void b(cmx $$0) {
       $$0.a(this);
-      if (!$$0.dP().B) {
+      if (!$$0.dO().B) {
          this.a(dxz.k, $$0);
          clo.a($$0, true);
       }
@@ -156,12 +156,12 @@ public class cow extends cov implements btf, cox {
 
    @Nullable
    @Override
-   public akq<eru> B() {
+   public akq<erw> B() {
       return this.k;
    }
 
    @Override
-   public void a(@Nullable akq<eru> $$0) {
+   public void a(@Nullable akq<erw> $$0) {
       this.k = $$0;
    }
 
@@ -187,6 +187,6 @@ public class cow extends cov implements btf, cox {
 
    @Override
    public void c(cmx $$0) {
-      this.dP().a(dxz.j, this.dn(), dxz.a.a($$0));
+      this.dO().a(dxz.j, this.dm(), dxz.a.a($$0));
    }
 }

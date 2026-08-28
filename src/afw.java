@@ -10,12 +10,12 @@ public class afw implements zg<abu> {
 
    public afw(bsr $$0) {
       this.b = $$0.an();
-      exa $$1 = $$0.do();
+      exc $$1 = $$0.dn();
       this.c = $$1.c;
       this.d = $$1.d;
       this.e = $$1.e;
-      this.f = (byte)((int)($$0.dF() * 256.0F / 360.0F));
-      this.g = (byte)((int)($$0.dH() * 256.0F / 360.0F));
+      this.f = (byte)((int)($$0.dE() * 256.0F / 360.0F));
+      this.g = (byte)((int)($$0.dG() * 256.0F / 360.0F));
       this.h = $$0.aF();
    }
 

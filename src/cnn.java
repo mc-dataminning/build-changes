@@ -5,28 +5,28 @@ public class cnn extends cnj {
       super($$0, $$1);
    }
 
-   public cnn(dcw $$0, btn $$1, exa $$2, int $$3) {
+   public cnn(dcw $$0, btn $$1, exc $$2, int $$3) {
       super(bsx.ak, $$1, $$2, $$0);
       this.e = $$3;
    }
 
    @Override
-   protected void a(ewy $$0) {
+   protected void a(exa $$0) {
       super.a($$0);
-      if (!this.dP().B) {
-         boolean $$1 = this.dP().ab().b(dcs.c);
-         this.dP().a(this, this.du(), this.dw(), this.dA(), (float)this.e, $$1, dcw.a.c);
+      if (!this.dO().B) {
+         boolean $$1 = this.dO().ab().b(dcs.c);
+         this.dO().a(this, this.dt(), this.dv(), this.dz(), (float)this.e, $$1, dcw.a.c);
          this.aq();
       }
    }
 
    @Override
-   protected void a(ewx $$0) {
+   protected void a(ewz $$0) {
       super.a($$0);
-      if (this.dP() instanceof aqu $$1) {
+      if (this.dO() instanceof aqu $$1) {
          bsr var6 = $$0.a();
          bsr $$4 = this.s();
-         brk $$5 = this.dQ().a((cnj)this, $$4);
+         brk $$5 = this.dP().a((cnj)this, $$4);
          var6.a($$5, 6.0F);
          dae.a($$1, var6, $$5);
       }

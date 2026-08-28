@@ -30,12 +30,12 @@ public class cjp extends ckd implements bub {
    }
 
    public static buv.a s() {
-      return ckd.gr().a(buw.v, 0.25);
+      return ckd.gq().a(buw.v, 0.25);
    }
 
    @Override
-   public int cy() {
-      return this.p() == null ? this.w(0.0F) : this.w(this.ex() - 1.0F);
+   public int cx() {
+      return this.p() == null ? this.w(0.0F) : this.w(this.ew() - 1.0F);
    }
 
    @Override
@@ -82,7 +82,7 @@ public class cjp extends ckd implements bub {
       }
 
       if ($$0.q("ignited")) {
-         this.gl();
+         this.gk();
       }
    }
 
@@ -107,7 +107,7 @@ public class cjp extends ckd implements bub {
 
          if (this.ca >= this.cb) {
             this.ca = this.cb;
-            this.go();
+            this.gn();
          }
       }
 
@@ -135,8 +135,8 @@ public class cjp extends ckd implements bub {
    protected void a(aqu $$0, brk $$1, boolean $$2) {
       super.a($$0, $$1, $$2);
       bsr $$3 = $$1.d();
-      if ($$3 != this && $$3 instanceof cjp $$4 && $$4.gm()) {
-         $$4.gn();
+      if ($$3 != this && $$3 instanceof cjp $$4 && $$4.gl()) {
+         $$4.gm();
          this.a(cut.up);
       }
    }
@@ -174,9 +174,9 @@ public class cjp extends ckd implements bub {
       cuq $$2 = $$0.b($$1);
       if ($$2.a(awn.be)) {
          avo $$3 = $$2.a(cut.tX) ? avp.iK : avp.iZ;
-         this.dP().a($$0, this.du(), this.dw(), this.dA(), $$3, this.df(), 1.0F, this.ah.i() * 0.4F + 0.8F);
-         if (!this.dP().B) {
-            this.gl();
+         this.dO().a($$0, this.dt(), this.dv(), this.dz(), $$3, this.de(), 1.0F, this.ah.i() * 0.4F + 0.8F);
+         if (!this.dO().B) {
+            this.gk();
             if (!$$2.l()) {
                $$2.h(1);
             } else {
@@ -184,27 +184,27 @@ public class cjp extends ckd implements bub {
             }
          }
 
-         return bqr.a(this.dP().B);
+         return bqr.a(this.dO().B);
       } else {
          return super.b($$0, $$1);
       }
    }
 
-   private void go() {
-      if (!this.dP().B) {
+   private void gn() {
+      if (!this.dO().B) {
          float $$0 = this.a() ? 2.0F : 1.0F;
          this.be = true;
-         this.dP().a(this, this.du(), this.dw(), this.dA(), (float)this.cc * $$0, dcw.a.c);
-         this.gp();
+         this.dO().a(this, this.dt(), this.dv(), this.dz(), (float)this.cc * $$0, dcw.a.c);
+         this.go();
          this.c(bsr.c.a);
          this.aq();
       }
    }
 
-   private void gp() {
-      Collection<brz> $$0 = this.eu();
+   private void go() {
+      Collection<brz> $$0 = this.et();
       if (!$$0.isEmpty()) {
-         bsn $$1 = new bsn(this.dP(), this.du(), this.dw(), this.dA());
+         bsn $$1 = new bsn(this.dO(), this.dt(), this.dv(), this.dz());
          $$1.a(2.5F);
          $$1.b(-0.5F);
          $$1.c(10);
@@ -215,7 +215,7 @@ public class cjp extends ckd implements bub {
             $$1.a(new brz($$2));
          }
 
-         this.dP().b($$1);
+         this.dO().b($$1);
       }
    }
 
@@ -223,15 +223,15 @@ public class cjp extends ckd implements bub {
       return this.ao.a(d);
    }
 
-   public void gl() {
+   public void gk() {
       this.ao.a(d, true);
    }
 
-   public boolean gm() {
+   public boolean gl() {
       return this.a() && this.cd < 1;
    }
 
-   public void gn() {
+   public void gm() {
       this.cd++;
    }
 }

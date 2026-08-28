@@ -5,7 +5,7 @@ class bsf extends brx {
 
    @Override
    public boolean a(btn $$0, int $$1) {
-      if ($$0.ex() < $$0.eO()) {
+      if ($$0.ew() < $$0.eN()) {
          $$0.c(1.0F);
       }
 

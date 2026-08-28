@@ -43,7 +43,7 @@ public class clh extends cfe implements cjv, clj {
    }
 
    public static buv.a s() {
-      return ckd.gr().a(buw.s, 40.0).a(buw.v, 0.3F).a(buw.p, 0.6F).a(buw.d, 1.0).a(buw.c, 6.0);
+      return ckd.gq().a(buw.s, 40.0).a(buw.v, 0.3F).a(buw.p, 0.6F).a(buw.d, 1.0).a(buw.c, 6.0);
    }
 
    @Override
@@ -52,7 +52,7 @@ public class clh extends cfe implements cjv, clj {
          return false;
       } else {
          this.cm = 10;
-         this.dP().a(this, (byte)4);
+         this.dO().a(this, (byte)4);
          this.b(avp.mq);
          cli.a(this, (btn)$$0);
          return clj.a(this, (btn)$$0);
@@ -69,7 +69,7 @@ public class clh extends cfe implements cjv, clj {
    @Override
    public boolean a(brk $$0, float $$1) {
       boolean $$2 = super.a($$0, $$1);
-      if (this.dP().B) {
+      if (this.dO().B) {
          return false;
       } else {
          if ($$2 && $$0.d() instanceof btn) {
@@ -81,31 +81,31 @@ public class clh extends cfe implements cjv, clj {
    }
 
    @Override
-   protected buq.b<clh> dV() {
+   protected buq.b<clh> dU() {
       return buq.a(cb, ca);
    }
 
    @Override
    protected buq<?> a(Dynamic<?> $$0) {
-      return cli.a(this.dV().a($$0));
+      return cli.a(this.dU().a($$0));
    }
 
    @Override
-   public buq<clh> dU() {
-      return (buq<clh>)super.dU();
+   public buq<clh> dT() {
+      return (buq<clh>)super.dT();
    }
 
    @Override
    protected void ab() {
-      this.dP().ag().a("hoglinBrain");
-      this.dU().a((aqu)this.dP(), this);
-      this.dP().ag().c();
+      this.dO().ag().a("hoglinBrain");
+      this.dT().a((aqu)this.dO(), this);
+      this.dO().ag().c();
       cli.a(this);
       if (this.x()) {
          this.cn++;
          if (this.cn > 300) {
             this.b(avp.mr);
-            this.a((aqu)this.dP());
+            this.a((aqu)this.dO());
          }
       } else {
          this.cn = 0;
@@ -148,7 +148,7 @@ public class clh extends cfe implements cjv, clj {
 
    @Override
    public boolean h(double $$0) {
-      return !this.fU();
+      return !this.fT();
    }
 
    @Override
@@ -164,7 +164,7 @@ public class clh extends cfe implements cjv, clj {
    public bqr b(cmx $$0, bqq $$1) {
       bqr $$2 = super.b($$0, $$1);
       if ($$2.a()) {
-         this.fS();
+         this.fR();
       }
 
       return $$2;
@@ -181,17 +181,17 @@ public class clh extends cfe implements cjv, clj {
    }
 
    @Override
-   public int gl() {
+   public int gk() {
       return this.cm;
    }
 
    @Override
-   public boolean ef() {
+   public boolean ee() {
       return true;
    }
 
    @Override
-   protected int eh() {
+   protected int eg() {
       return this.bP;
    }
 
@@ -220,7 +220,7 @@ public class clh extends cfe implements cjv, clj {
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      if (this.gn()) {
+      if (this.gm()) {
          $$0.a("IsImmuneToZombification", true);
       }
 
@@ -233,28 +233,28 @@ public class clh extends cfe implements cjv, clj {
    @Override
    public void a(ub $$0) {
       super.a($$0);
-      this.w($$0.q("IsImmuneToZombification"));
+      this.x($$0.q("IsImmuneToZombification"));
       this.cn = $$0.h("TimeInOverworld");
-      this.x($$0.q("CannotBeHunted"));
+      this.y($$0.q("CannotBeHunted"));
    }
 
-   public void w(boolean $$0) {
+   public void x(boolean $$0) {
       this.ar().a(cc, $$0);
    }
 
-   private boolean gn() {
+   private boolean gm() {
       return this.ar().a(cc);
    }
 
    public boolean x() {
-      return !this.dP().D_().b() && !this.gn() && !this.ga();
+      return !this.dO().D_().b() && !this.gm() && !this.fZ();
    }
 
-   private void x(boolean $$0) {
+   private void y(boolean $$0) {
       this.co = $$0;
    }
 
-   public boolean gm() {
+   public boolean gl() {
       return this.t() && !this.co;
    }
 
@@ -263,25 +263,25 @@ public class clh extends cfe implements cjv, clj {
    public bsl a(aqu $$0, bsl $$1) {
       clh $$2 = bsx.Z.a((dcw)$$0);
       if ($$2 != null) {
-         $$2.fS();
+         $$2.fR();
       }
 
       return $$2;
    }
 
    @Override
-   public boolean gq() {
-      return !cli.c(this) && super.gq();
+   public boolean gp() {
+      return !cli.c(this) && super.gp();
    }
 
    @Override
-   public avq df() {
+   public avq de() {
       return avq.f;
    }
 
    @Override
    protected avo v() {
-      return this.dP().B ? null : cli.b(this).orElse(null);
+      return this.dO().B ? null : cli.b(this).orElse(null);
    }
 
    @Override

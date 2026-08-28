@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class ebr extends ebs {
-   public ebr(Codec<eeo> $$0) {
+   public ebr(Codec<eep> $$0) {
       super($$0);
    }
 

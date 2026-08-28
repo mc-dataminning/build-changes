@@ -1,3 +1,7 @@
+import java.util.List;
+
 public interface fts {
-   void a(ftp var1);
+   List<ftt> a();
+
+   wz b();
 }

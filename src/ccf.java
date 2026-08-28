@@ -32,7 +32,7 @@ public class ccf<T extends btn> extends ccm {
 
    @Override
    public boolean b() {
-      if (this.b > 0 && this.e.dS().a(this.b) != 0) {
+      if (this.b > 0 && this.e.dR().a(this.b) != 0) {
          return false;
       } else {
          this.h();
@@ -40,15 +40,15 @@ public class ccf<T extends btn> extends ccm {
       }
    }
 
-   protected ewv a(double $$0) {
-      return this.e.cL().c($$0, 4.0, $$0);
+   protected ewx a(double $$0) {
+      return this.e.cK().c($$0, 4.0, $$0);
    }
 
    protected void h() {
       if (this.a != cmx.class && this.a != aqv.class) {
-         this.c = this.e.dP().a(this.e.dP().a(this.a, this.a(this.l()), $$0 -> true), this.d, this.e, this.e.du(), this.e.dy(), this.e.dA());
+         this.c = this.e.dO().a(this.e.dO().a(this.a, this.a(this.l()), $$0 -> true), this.d, this.e, this.e.dt(), this.e.dx(), this.e.dz());
       } else {
-         this.c = this.e.dP().a(this.d, this.e, this.e.du(), this.e.dy(), this.e.dA());
+         this.c = this.e.dO().a(this.d, this.e, this.e.dt(), this.e.dx(), this.e.dz());
       }
    }
 

@@ -6,6 +6,6 @@ public interface dit {
    }
 
    default brk a(bsr $$0) {
-      return $$0.dQ().a($$0);
+      return $$0.dP().a($$0);
    }
 }

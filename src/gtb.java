@@ -1,7 +1,8 @@
-import java.util.Map;
-import java.util.UUID;
-import java.util.function.Consumer;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface gtb {
-   void a(Map<UUID, asl.c> var1, Consumer<asl.b> var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gtb {
 }

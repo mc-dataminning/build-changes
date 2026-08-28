@@ -1,4 +1,8 @@
-public class gwa implements gwh {
-   public gwa(gwg $$0) {
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gwa {
 }

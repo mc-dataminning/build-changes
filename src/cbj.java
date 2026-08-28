@@ -30,20 +30,20 @@ public class cbj extends cam {
 
    @Override
    public boolean b() {
-      if (this.b.cS()) {
+      if (this.b.cR()) {
          return false;
       } else {
          if (!this.h) {
-            if (this.i && this.b.en() >= 100) {
+            if (this.i && this.b.em() >= 100) {
                return false;
             }
 
-            if (this.b.dS().a(b(this.g)) != 0) {
+            if (this.b.dR().a(b(this.g)) != 0) {
                return false;
             }
          }
 
-         exa $$0 = this.h();
+         exc $$0 = this.h();
          if ($$0 == null) {
             return false;
          } else {
@@ -57,13 +57,13 @@ public class cbj extends cam {
    }
 
    @Nullable
-   protected exa h() {
+   protected exc h() {
       return cej.a(this.b, 10, 7);
    }
 
    @Override
    public boolean c() {
-      return !this.b.N().l() && !this.b.cS();
+      return !this.b.N().l() && !this.b.cR();
    }
 
    @Override

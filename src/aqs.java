@@ -21,7 +21,7 @@ public class aqs extends dvc {
    final aqx f;
    private final aqs.b g;
    public final aqb a;
-   private final eqx h;
+   private final eqz h;
    private long i;
    private boolean j = true;
    private boolean k = true;
@@ -33,13 +33,13 @@ public class aqs extends dvc {
    @azt
    private ddh.d p;
 
-   public aqs(aqu $$0, erd.c $$1, DataFixer $$2, ens $$3, Executor $$4, duz $$5, int $$6, int $$7, boolean $$8, ard $$9, dxf $$10, Supplier<eqx> $$11) {
+   public aqs(aqu $$0, erf.c $$1, DataFixer $$2, enu $$3, Executor $$4, duz $$5, int $$6, int $$7, boolean $$8, ard $$9, dxf $$10, Supplier<eqz> $$11) {
       this.d = $$0;
       this.g = new aqs.b($$0);
       this.e = Thread.currentThread();
       File $$12 = $$1.a($$0.af()).resolve("data").toFile();
       $$12.mkdirs();
-      this.h = new eqx($$12, $$2, $$0.H_());
+      this.h = new eqz($$12, $$2, $$0.H_());
       this.a = new aqb($$0, $$1, $$2, $$3, $$4, this.g, this, $$5, $$9, $$10, $$11, $$6, $$8);
       this.f = this.a.d();
       this.c = this.a.j();
@@ -382,7 +382,7 @@ public class aqs extends dvc {
    }
 
    public void a(aqv $$0) {
-      if (!$$0.dK()) {
+      if (!$$0.dJ()) {
          this.a.a($$0);
       }
    }
@@ -421,7 +421,7 @@ public class aqs extends dvc {
       return this.a.a($$0);
    }
 
-   public eqx k() {
+   public eqz k() {
       return this.h;
    }
 

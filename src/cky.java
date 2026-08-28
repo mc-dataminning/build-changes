@@ -17,7 +17,7 @@ public class cky extends ckw implements btt {
 
    public cky(bsx<? extends cky> $$0, dcw $$1) {
       super($$0, $$1);
-      this.a(ept.i, 8.0F);
+      this.a(epv.i, 8.0F);
    }
 
    @Override
@@ -34,8 +34,8 @@ public class cky extends ckw implements btt {
       this.bV.a(3, new ccl<>(this, true));
    }
 
-   public static buv.a gv() {
-      return ckw.gp().a(buw.A, 0.0).a(buw.v, 0.23F).a(buw.c, 5.0);
+   public static buv.a gu() {
+      return ckw.go().a(buw.A, 0.0).a(buw.v, 0.23F).a(buw.c, 5.0);
    }
 
    @Override
@@ -44,7 +44,7 @@ public class cky extends ckw implements btt {
    }
 
    @Override
-   protected boolean gn() {
+   protected boolean gm() {
       return false;
    }
 
@@ -56,14 +56,14 @@ public class cky extends ckw implements btt {
             $$0.b(cd);
          }
 
-         this.gw();
+         this.gv();
       } else if ($$0.b(d)) {
          $$0.c(d);
       }
 
-      this.a((aqu)this.dP(), true);
+      this.a((aqu)this.dO(), true);
       if (this.p() != null) {
-         this.gx();
+         this.gw();
       }
 
       if (this.ad_()) {
@@ -73,31 +73,31 @@ public class cky extends ckw implements btt {
       super.ab();
    }
 
-   private void gw() {
+   private void gv() {
       if (this.cf > 0) {
          this.cf--;
          if (this.cf == 0) {
-            this.gz();
+            this.gy();
          }
       }
    }
 
-   private void gx() {
+   private void gw() {
       if (this.cl > 0) {
          this.cl--;
       } else {
          if (this.O().a(this.p())) {
-            this.gy();
+            this.gx();
          }
 
          this.cl = ck.a(this.ah);
       }
    }
 
-   private void gy() {
+   private void gx() {
       double $$0 = this.g(buw.m);
-      ewv $$1 = ewv.a(this.dn()).c($$0, 10.0, $$0);
-      this.dP()
+      ewx $$1 = ewx.a(this.dm()).c($$0, 10.0, $$0);
+      this.dO()
          .a(cky.class, $$1, bsw.f)
          .stream()
          .filter($$0x -> $$0x != this)
@@ -106,8 +106,8 @@ public class cky extends ckw implements btt {
          .forEach($$0x -> $$0x.h(this.p()));
    }
 
-   private void gz() {
-      this.a(avp.DG, this.fb() * 2.0F, this.fc() * 1.8F);
+   private void gy() {
+      this.a(avp.DG, this.fa() * 2.0F, this.fb() * 1.8F);
    }
 
    @Override
@@ -135,7 +135,7 @@ public class cky extends ckw implements btt {
 
    @Override
    public boolean a(dcz $$0) {
-      return $$0.f(this) && !$$0.d(this.cL());
+      return $$0.f(this) && !$$0.d(this.cK());
    }
 
    @Override
@@ -147,7 +147,7 @@ public class cky extends ckw implements btt {
    @Override
    public void a(ub $$0) {
       super.a($$0);
-      this.a(this.dP(), $$0);
+      this.a(this.dO(), $$0);
    }
 
    @Override
@@ -181,12 +181,12 @@ public class cky extends ckw implements btt {
    }
 
    @Override
-   protected cuq gm() {
+   protected cuq gl() {
       return cuq.l;
    }
 
    @Override
-   protected void gu() {
+   protected void gt() {
       this.f(buw.A).a(0.0);
    }
 

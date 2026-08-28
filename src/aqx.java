@@ -10,7 +10,7 @@ import java.util.function.Supplier;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class aqx extends eor implements AutoCloseable {
+public class aqx extends eot implements AutoCloseable {
    public static final int a = 1000;
    private static final Logger d = LogUtils.getLogger();
    private final bpk<Runnable> e;

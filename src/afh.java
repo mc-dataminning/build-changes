@@ -24,15 +24,15 @@ public class afh implements zg<abu> {
       this.k = ImmutableList.copyOf($$3);
    }
 
-   public static afh a(exz $$0, boolean $$1) {
+   public static afh a(eyb $$0, boolean $$1) {
       return new afh($$0.b(), $$1 ? 0 : 2, Optional.of(new afh.b($$0)), (Collection<String>)($$1 ? $$0.g() : ImmutableList.of()));
    }
 
-   public static afh a(exz $$0) {
+   public static afh a(eyb $$0) {
       return new afh($$0.b(), 1, Optional.empty(), ImmutableList.of());
    }
 
-   public static afh a(exz $$0, String $$1, afh.a $$2) {
+   public static afh a(eyb $$0, String $$1, afh.a $$2) {
       return new afh($$0.b(), $$2 == afh.a.a ? 3 : 4, Optional.empty(), ImmutableList.of($$1));
    }
 
@@ -125,7 +125,7 @@ public class afh implements zg<abu> {
       private final n f;
       private final int g;
 
-      public b(exz $$0) {
+      public b(eyb $$0) {
          this.a = $$0.c();
          this.g = $$0.m();
          this.d = $$0.j().e;

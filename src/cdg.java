@@ -7,7 +7,7 @@ public class cdg extends cds {
    }
 
    private boolean e(btn $$0, btn $$1) {
-      return !$$0.dU().a(ccs.U) && $$1.am().a(awi.j);
+      return !$$0.dT().a(ccs.U) && $$1.am().a(awi.j);
    }
 
    private boolean b(btn $$0) {

@@ -1,179 +1,107 @@
-import com.google.common.collect.Maps;
-import java.util.Locale;
-import java.util.Map;
+import java.time.Duration;
+import java.time.Instant;
+import javax.annotation.Nullable;
+import org.joml.Matrix4f;
+import org.joml.Vector4f;
 
-public class gis implements gik.a {
-   private final Map<Integer, epq> a = Maps.newHashMap();
-   private final Map<Integer, Float> b = Maps.newHashMap();
-   private final Map<Integer, Long> c = Maps.newHashMap();
-   private static final long d = 5000L;
-   private static final float e = 80.0F;
-   private static final boolean f = true;
-   private static final boolean g = false;
-   private static final boolean h = false;
-   private static final boolean i = true;
-   private static final boolean j = true;
-   private static final float k = 0.02F;
+public class gis implements gim.a {
+   private static final Duration a = Duration.ofMillis(500L);
+   private static final int b = 10;
+   private static final Vector4f c = new Vector4f(1.0F, 1.0F, 0.0F, 0.25F);
+   private static final Vector4f d = new Vector4f(0.25F, 0.125F, 0.0F, 0.125F);
+   private final fgo e;
+   private final ddf f;
+   private Instant g = Instant.now();
+   @Nullable
+   private gis.a h;
 
-   public void a(int $$0, epq $$1, float $$2) {
-      this.a.put($$0, $$1);
-      this.c.put($$0, ad.c());
-      this.b.put($$0, $$2);
+   public gis(fgo $$0, ddf $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
-   public void a(fbg $$0, gex $$1, double $$2, double $$3, double $$4) {
-      if (!this.a.isEmpty()) {
-         long $$5 = ad.c();
-
-         for (Integer $$6 : this.a.keySet()) {
-            epq $$7 = this.a.get($$6);
-            float $$8 = this.b.get($$6);
-            a($$0, $$1, $$7, $$8, true, true, $$2, $$3, $$4);
-         }
-
-         for (Integer $$9 : this.c.keySet().toArray(new Integer[0])) {
-            if ($$5 - this.c.get($$9) > 5000L) {
-               this.a.remove($$9);
-               this.c.remove($$9);
-            }
-         }
+   public void a(fbi $$0, gez $$1, double $$2, double $$3, double $$4) {
+      Instant $$5 = Instant.now();
+      if (this.h == null || Duration.between(this.g, $$5).compareTo(a) > 0) {
+         this.g = $$5;
+         this.h = new gis.a(this.e.r.y_(), kf.a(this.e.s.do()), 10, this.f);
       }
+
+      a($$0, this.h.a, this.h.c, $$1, $$2, $$3, $$4, c);
+      a($$0, this.h.b, this.h.c, $$1, $$2, $$3, $$4, d);
+      fbm $$6 = $$1.getBuffer(gfh.D());
+      a($$0, this.h.a, this.h.c, $$6, $$2, $$3, $$4, c);
+      a($$0, this.h.b, this.h.c, $$6, $$2, $$3, $$4, d);
    }
 
-   public static void a(fbg $$0, gex $$1, epq $$2, float $$3, boolean $$4, boolean $$5, double $$6, double $$7, double $$8) {
-      a($$0, $$1.getBuffer(gff.a(6.0)), $$2, $$6, $$7, $$8);
-      jd $$9 = $$2.l();
-      if (a($$9, $$6, $$7, $$8) <= 80.0F) {
-         gik.a(
-            $$0,
-            $$1,
-            new ewv(
-                  (double)((float)$$9.u() + 0.25F),
-                  (double)((float)$$9.v() + 0.25F),
-                  (double)$$9.w() + 0.25,
-                  (double)((float)$$9.u() + 0.75F),
-                  (double)((float)$$9.v() + 0.75F),
-                  (double)((float)$$9.w() + 0.75F)
-               )
-               .d(-$$6, -$$7, -$$8),
-            0.0F,
-            1.0F,
-            0.0F,
-            0.5F
-         );
-
-         for (int $$10 = 0; $$10 < $$2.e(); $$10++) {
-            epo $$11 = $$2.a($$10);
-            if (a($$11.a(), $$6, $$7, $$8) <= 80.0F) {
-               float $$12 = $$10 == $$2.f() ? 1.0F : 0.0F;
-               float $$13 = $$10 == $$2.f() ? 0.0F : 1.0F;
-               gik.a(
-                  $$0,
-                  $$1,
-                  new ewv(
-                        (double)((float)$$11.a + 0.5F - $$3),
-                        (double)((float)$$11.b + 0.01F * (float)$$10),
-                        (double)((float)$$11.c + 0.5F - $$3),
-                        (double)((float)$$11.a + 0.5F + $$3),
-                        (double)((float)$$11.b + 0.25F + 0.01F * (float)$$10),
-                        (double)((float)$$11.c + 0.5F + $$3)
-                     )
-                     .d(-$$6, -$$7, -$$8),
-                  $$12,
-                  0.0F,
-                  $$13,
-                  0.5F
-               );
-            }
-         }
-      }
-
-      epq.a $$14 = $$2.k();
-      if ($$4 && $$14 != null) {
-         for (epo $$15 : $$14.b()) {
-            if (a($$15.a(), $$6, $$7, $$8) <= 80.0F) {
-               gik.a(
-                  $$0,
-                  $$1,
-                  new ewv(
-                        (double)((float)$$15.a + 0.5F - $$3 / 2.0F),
-                        (double)((float)$$15.b + 0.01F),
-                        (double)((float)$$15.c + 0.5F - $$3 / 2.0F),
-                        (double)((float)$$15.a + 0.5F + $$3 / 2.0F),
-                        (double)$$15.b + 0.1,
-                        (double)((float)$$15.c + 0.5F + $$3 / 2.0F)
-                     )
-                     .d(-$$6, -$$7, -$$8),
-                  1.0F,
-                  0.8F,
-                  0.8F,
-                  0.5F
-               );
-            }
-         }
-
-         for (epo $$16 : $$14.a()) {
-            if (a($$16.a(), $$6, $$7, $$8) <= 80.0F) {
-               gik.a(
-                  $$0,
-                  $$1,
-                  new ewv(
-                        (double)((float)$$16.a + 0.5F - $$3 / 2.0F),
-                        (double)((float)$$16.b + 0.01F),
-                        (double)((float)$$16.c + 0.5F - $$3 / 2.0F),
-                        (double)((float)$$16.a + 0.5F + $$3 / 2.0F),
-                        (double)$$16.b + 0.1,
-                        (double)((float)$$16.c + 0.5F + $$3 / 2.0F)
-                     )
-                     .d(-$$6, -$$7, -$$8),
-                  0.8F,
-                  1.0F,
-                  1.0F,
-                  0.5F
-               );
-            }
-         }
-      }
-
-      if ($$5) {
-         for (int $$17 = 0; $$17 < $$2.e(); $$17++) {
-            epo $$18 = $$2.a($$17);
-            if (a($$18.a(), $$6, $$7, $$8) <= 80.0F) {
-               gik.a($$0, $$1, String.valueOf($$18.l), (double)$$18.a + 0.5, (double)$$18.b + 0.75, (double)$$18.c + 0.5, -1, 0.02F, true, 0.0F, true);
-               gik.a(
-                  $$0,
-                  $$1,
-                  String.format(Locale.ROOT, "%.2f", $$18.k),
-                  (double)$$18.a + 0.5,
-                  (double)$$18.b + 0.25,
-                  (double)$$18.c + 0.5,
-                  -1,
-                  0.02F,
-                  true,
-                  0.0F,
-                  true
-               );
-            }
-         }
-      }
+   private static void a(fbi $$0, exl $$1, kf $$2, fbm $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
+      $$1.a(($$7x, $$8, $$9, $$10) -> {
+         int $$11 = $$8 + $$2.u();
+         int $$12 = $$9 + $$2.v();
+         int $$13 = $$10 + $$2.w();
+         a($$0, $$3, $$7x, $$4, $$5, $$6, $$11, $$12, $$13, $$7);
+      });
    }
 
-   public static void a(fbg $$0, fbk $$1, epq $$2, double $$3, double $$4, double $$5) {
-      for (int $$6 = 0; $$6 < $$2.e(); $$6++) {
-         epo $$7 = $$2.a($$6);
-         if (!(a($$7.a(), $$3, $$4, $$5) > 80.0F)) {
-            float $$8 = (float)$$6 / (float)$$2.e() * 0.33F;
-            int $$9 = $$6 == 0 ? 0 : ayo.h($$8, 0.9F, 0.9F);
-            int $$10 = $$9 >> 16 & 0xFF;
-            int $$11 = $$9 >> 8 & 0xFF;
-            int $$12 = $$9 & 0xFF;
-            $$1.a($$0.c(), (float)((double)$$7.a - $$3 + 0.5), (float)((double)$$7.b - $$4 + 0.5), (float)((double)$$7.c - $$5 + 0.5)).a($$10, $$11, $$12, 255);
-         }
-      }
+   private static void a(fbi $$0, exl $$1, kf $$2, gez $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
+      $$1.a(($$7x, $$8, $$9, $$10, $$11, $$12) -> {
+         int $$13 = $$7x + $$2.u();
+         int $$14 = $$8 + $$2.v();
+         int $$15 = $$9 + $$2.w();
+         int $$16 = $$10 + $$2.u();
+         int $$17 = $$11 + $$2.v();
+         int $$18 = $$12 + $$2.w();
+         fbm $$19 = $$3.getBuffer(gfh.a(1.0));
+         a($$0, $$19, $$4, $$5, $$6, $$13, $$14, $$15, $$16, $$17, $$18, $$7);
+      }, true);
    }
 
-   private static float a(jd $$0, double $$1, double $$2, double $$3) {
-      return (float)(Math.abs((double)$$0.u() - $$1) + Math.abs((double)$$0.v() - $$2) + Math.abs((double)$$0.w() - $$3));
+   private static void a(fbi $$0, fbm $$1, ji $$2, double $$3, double $$4, double $$5, int $$6, int $$7, int $$8, Vector4f $$9) {
+      float $$10 = (float)((double)kf.c($$6) - $$3);
+      float $$11 = (float)((double)kf.c($$7) - $$4);
+      float $$12 = (float)((double)kf.c($$8) - $$5);
+      gex.a($$0, $$1, $$2, $$10, $$11, $$12, $$10 + 16.0F, $$11 + 16.0F, $$12 + 16.0F, $$9.x(), $$9.y(), $$9.z(), $$9.w());
+   }
+
+   private static void a(fbi $$0, fbm $$1, double $$2, double $$3, double $$4, int $$5, int $$6, int $$7, int $$8, int $$9, int $$10, Vector4f $$11) {
+      float $$12 = (float)((double)kf.c($$5) - $$2);
+      float $$13 = (float)((double)kf.c($$6) - $$3);
+      float $$14 = (float)((double)kf.c($$7) - $$4);
+      float $$15 = (float)((double)kf.c($$8) - $$2);
+      float $$16 = (float)((double)kf.c($$9) - $$3);
+      float $$17 = (float)((double)kf.c($$10) - $$4);
+      Matrix4f $$18 = $$0.c().a();
+      $$1.a($$18, $$12, $$13, $$14).a($$11.x(), $$11.y(), $$11.z(), 1.0F);
+      $$1.a($$18, $$15, $$16, $$17).a($$11.x(), $$11.y(), $$11.z(), 1.0F);
+   }
+
+   static final class a {
+      final exl a;
+      final exl b;
+      final kf c;
+
+      a(eot $$0, kf $$1, int $$2, ddf $$3) {
+         int $$4 = $$2 * 2 + 1;
+         this.a = new exf($$4, $$4, $$4);
+         this.b = new exf($$4, $$4, $$4);
+
+         for (int $$5 = 0; $$5 < $$4; $$5++) {
+            for (int $$6 = 0; $$6 < $$4; $$6++) {
+               for (int $$7 = 0; $$7 < $$4; $$7++) {
+                  kf $$8 = kf.a($$1.a() + $$7 - $$2, $$1.b() + $$6 - $$2, $$1.c() + $$5 - $$2);
+                  eos.b $$9 = $$0.b($$3, $$8);
+                  if ($$9 == eos.b.c) {
+                     this.a.c($$7, $$6, $$5);
+                     this.b.c($$7, $$6, $$5);
+                  } else if ($$9 == eos.b.b) {
+                     this.b.c($$7, $$6, $$5);
+                  }
+               }
+            }
+         }
+
+         this.c = kf.a($$1.a() - $$2, $$1.b() - $$2, $$1.c() - $$2);
+      }
    }
 }

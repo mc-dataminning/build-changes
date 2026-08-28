@@ -65,7 +65,7 @@ public class cge extends cfd implements buo<cge.b> {
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      $$0.a("Variant", this.gx());
+      $$0.a("Variant", this.gw());
    }
 
    @Override
@@ -83,24 +83,24 @@ public class cge extends cfd implements buo<cge.b> {
       return !this.e;
    }
 
-   private int gx() {
+   private int gw() {
       return this.ao.a(d);
    }
 
+   public cti gt() {
+      return s(this.gw());
+   }
+
    public cti gu() {
-      return s(this.gx());
+      return t(this.gw());
    }
 
-   public cti gv() {
-      return t(this.gx());
-   }
-
-   public cge.b gw() {
-      return u(this.gx());
+   public cge.b gv() {
+      return u(this.gw());
    }
 
    public void a(cge.b $$0) {
-      int $$1 = this.gx();
+      int $$1 = this.gw();
       cti $$2 = s($$1);
       cti $$3 = t($$1);
       this.v(a($$0, $$2, $$3));
@@ -109,7 +109,7 @@ public class cge extends cfd implements buo<cge.b> {
    @Override
    public void n(cuq $$0) {
       super.n($$0);
-      cxh.a(kq.N, $$0, $$0x -> $$0x.a("BucketVariantTag", this.gx()));
+      cxh.a(kq.N, $$0, $$0x -> $$0x.a("BucketVariantTag", this.gw()));
    }
 
    @Override
@@ -133,7 +133,7 @@ public class cge extends cfd implements buo<cge.b> {
    }
 
    @Override
-   protected avo gm() {
+   protected avo gl() {
       return avp.zO;
    }
 

@@ -34,17 +34,17 @@ public class cvb extends cul {
    @Override
    public boolean a(cuq $$0, btn $$1, btn $$2) {
       if ($$2 instanceof aqv $$3 && a($$3)) {
-         aqu $$4 = (aqu)$$2.dP();
-         $$3.cx = $$3.dn();
-         $$3.v(true);
-         $$3.i($$3.ds().a(ji.a.b, 0.01F));
+         aqu $$4 = (aqu)$$2.dO();
+         $$3.cx = $$3.dm();
+         $$3.w(true);
+         $$3.i($$3.dr().a(ji.a.b, 0.01F));
          $$3.c.b(new afb($$3));
          if ($$1.aF()) {
             $$3.b(true);
             avo $$5 = $$3.ac > 5.0F ? avp.oq : avp.op;
-            $$4.a(null, $$3.du(), $$3.dw(), $$3.dA(), $$5, $$3.df(), 1.0F, 1.0F);
+            $$4.a(null, $$3.dt(), $$3.dv(), $$3.dz(), $$5, $$3.de(), 1.0F, 1.0F);
          } else {
-            $$4.a(null, $$3.du(), $$3.dw(), $$3.dA(), avp.oo, $$3.df(), 1.0F, 1.0F);
+            $$4.a(null, $$3.dt(), $$3.dv(), $$3.dz(), avp.oo, $$3.de(), 1.0F, 1.0F);
          }
 
          a($$4, $$3, $$1);
@@ -81,7 +81,7 @@ public class cvb extends cul {
                $$8 = 22.0F + $$7 - 8.0F;
             }
 
-            return $$3.dP() instanceof aqu $$11 ? $$8 + dae.b($$11, $$3.dT(), $$0, $$2, 0.0F) * $$7 : $$8;
+            return $$3.dO() instanceof aqu $$11 ? $$8 + dae.b($$11, $$3.dS(), $$0, $$2, 0.0F) * $$7 : $$8;
          }
       } else {
          return 0.0F;
@@ -90,10 +90,10 @@ public class cvb extends cul {
 
    private static void a(dcw $$0, cmx $$1, bsr $$2) {
       $$0.c(2013, $$2.aM(), 750);
-      $$0.a(btn.class, $$2.cL().g(3.5), a($$1, $$2)).forEach($$2x -> {
-         exa $$3 = $$2x.dn().d($$2.dn());
+      $$0.a(btn.class, $$2.cK().g(3.5), a($$1, $$2)).forEach($$2x -> {
+         exc $$3 = $$2x.dm().d($$2.dm());
          double $$4 = a($$1, $$2x, $$3);
-         exa $$5 = $$3.d().a($$4);
+         exc $$5 = $$3.d().a($$4);
          if ($$4 > 0.0) {
             $$2x.j($$5.c, 0.7F, $$5.e);
             if ($$2x instanceof aqv $$6) {
@@ -113,7 +113,7 @@ public class cvb extends cul {
             $$3 = !$$2.R_();
             $$4 = $$2 != $$0 && $$2 != $$1;
             $$5 = !$$0.s($$2);
-            if ($$2 instanceof bul $$6 && $$6.s() && $$0.cA().equals($$6.aa_())) {
+            if ($$2 instanceof bul $$6 && $$6.s() && $$0.cz().equals($$6.aa_())) {
                var10000 = true;
                break label62;
             }
@@ -138,11 +138,11 @@ public class cvb extends cul {
       };
    }
 
-   private static double a(cmx $$0, btn $$1, exa $$2) {
+   private static double a(cmx $$0, btn $$1, exc $$2) {
       return (3.5 - $$2.f()) * 0.7F * (double)($$0.ac > 5.0F ? 2 : 1) * (1.0 - $$1.g(buw.p));
    }
 
    public static boolean a(btn $$0) {
-      return $$0.ac > 1.5F && !$$0.fB();
+      return $$0.ac > 1.5F && !$$0.fA();
    }
 }

@@ -1,28 +1,31 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
+import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 
-public class elp extends ejp {
+public class elp extends ejr {
    public static final MapCodec<elp> d = a(elp::new);
 
-   public elp(ejp.c $$0) {
+   public elp(ejr.c $$0) {
       super($$0);
    }
 
    @Override
-   public Optional<ejp.b> a(ejp.a $$0) {
-      return a($$0, dyy.a.a, $$1 -> this.a($$1, $$0));
+   public Optional<ejr.b> a(ejr.a $$0) {
+      dmm $$1 = dmm.a($$0.f());
+      jd $$2 = this.a($$0, $$1);
+      return $$2.v() < 60 ? Optional.empty() : Optional.of(new ejr.b($$2, (Consumer<ekj>)($$3 -> this.a($$3, $$2, $$1, $$0))));
    }
 
-   private void a(ekh $$0, ejp.a $$1) {
-      dcd $$2 = $$1.h();
-      dzx $$3 = $$1.f();
-      jd $$4 = new jd($$2.d(), 90, $$2.e());
-      dmm $$5 = dmm.a($$3);
-      elo.a($$1.e(), $$4, $$5, $$0, $$3);
+   private void a(ekj $$0, jd $$1, dmm $$2, ejr.a $$3) {
+      List<ejv> $$4 = Lists.newArrayList();
+      elo.a($$3.e(), $$1, $$2, $$4, $$3.f());
+      $$4.forEach($$0::a);
    }
 
    @Override
-   public ejy<?> e() {
-      return ejy.e;
+   public eka<?> e() {
+      return eka.c;
    }
 }

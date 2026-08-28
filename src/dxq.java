@@ -34,12 +34,12 @@ public class dxq<T extends dxg> implements dxp<T> {
    }
 
    @Override
-   public void a(ewv $$0, Consumer<T> $$1) {
+   public void a(ewx $$0, Consumer<T> $$1) {
       this.b.b($$0, axa.forConsumer($$1));
    }
 
    @Override
-   public <U extends T> void a(dxn<T, U> $$0, ewv $$1, axa<U> $$2) {
+   public <U extends T> void a(dxn<T, U> $$0, ewx $$1, axa<U> $$2) {
       this.b.a($$0, $$1, $$2);
    }
 }

@@ -32,7 +32,7 @@ public class dhc extends dfk {
    }
 
    @Override
-   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, eww $$6) {
+   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, ewy $$6) {
       if ($$2.c_($$3) instanceof dqq $$7) {
          if (!$$0.a(awn.aV)) {
             return bqt.d;
@@ -53,7 +53,7 @@ public class dhc extends dfk {
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
       if ($$1.c_($$2) instanceof dqq $$5) {
          OptionalInt $$7 = this.a($$4, $$0);
          if ($$7.isEmpty()) {
@@ -69,7 +69,7 @@ public class dhc extends dfk {
       }
    }
 
-   private OptionalInt a(eww $$0, dtc $$1) {
+   private OptionalInt a(ewy $$0, dtc $$1) {
       return a($$0, $$1.c(dju.aE)).map($$0x -> {
          int $$1x = $$0x.j >= 0.5F ? 0 : 1;
          int $$2 = a($$0x.i);
@@ -77,22 +77,22 @@ public class dhc extends dfk {
       }).orElseGet(OptionalInt::empty);
    }
 
-   private static Optional<ewz> a(eww $$0, ji $$1) {
+   private static Optional<exb> a(ewy $$0, ji $$1) {
       ji $$2 = $$0.b();
       if ($$1 != $$2) {
          return Optional.empty();
       } else {
          jd $$3 = $$0.a().a($$2);
-         exa $$4 = $$0.e().a((double)$$3.u(), (double)$$3.v(), (double)$$3.w());
+         exc $$4 = $$0.e().a((double)$$3.u(), (double)$$3.v(), (double)$$3.w());
          double $$5 = $$4.a();
          double $$6 = $$4.b();
          double $$7 = $$4.c();
 
          return switch ($$2) {
-            case c -> Optional.of(new ewz((float)(1.0 - $$5), (float)$$6));
-            case d -> Optional.of(new ewz((float)$$5, (float)$$6));
-            case e -> Optional.of(new ewz((float)$$7, (float)$$6));
-            case f -> Optional.of(new ewz((float)(1.0 - $$7), (float)$$6));
+            case c -> Optional.of(new exb((float)(1.0 - $$5), (float)$$6));
+            case d -> Optional.of(new exb((float)$$5, (float)$$6));
+            case e -> Optional.of(new exb((float)$$7, (float)$$6));
+            case f -> Optional.of(new exb((float)(1.0 - $$7), (float)$$6));
             case a, b -> Optional.empty();
          };
       }
@@ -123,7 +123,7 @@ public class dhc extends dfk {
          cuq $$5 = $$3.a($$4, 1);
          avo $$6 = $$5.a(cut.uw) ? avp.fd : avp.fc;
          $$0.a(null, $$1, $$6, avq.e, 1.0F, 1.0F);
-         if (!$$2.fZ().f($$5)) {
+         if (!$$2.fY().f($$5)) {
             $$2.a($$5, false);
          }
 

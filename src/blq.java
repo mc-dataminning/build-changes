@@ -31,7 +31,7 @@ public class blq {
    }
 
    public void a(aqv $$0, bls $$1) {
-      if (this.c.f($$0.fY())) {
+      if (this.c.f($$0.fX())) {
          this.e.add(new blq.a($$0, $$1));
       }
    }
@@ -51,7 +51,7 @@ public class blq {
    private void b(long $$0, int $$1) {
       for (Map<aqv, blq.b> $$2 : this.d.values()) {
          $$2.entrySet().removeIf($$2x -> {
-            boolean $$3 = !this.c.f(((aqv)$$2x.getKey()).fY());
+            boolean $$3 = !this.c.f(((aqv)$$2x.getKey()).fX());
             blq.b $$4 = (blq.b)$$2x.getValue();
             return $$3 || $$1 > $$4.b() + 200 && $$0 > $$4.a() + 10000L;
          });

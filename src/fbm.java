@@ -1,158 +1,134 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.lwjgl.system.MemoryStack;
 
-public record fbm(int i, int j, fbm.a k, fbm.b l, int m) {
-   public static final int a = 32;
-   private static final fbm[] n = new fbm[32];
-   private static final List<fbm> o = new ArrayList<>(32);
-   public static final fbm b = a(0, 0, fbm.a.a, fbm.b.a, 3);
-   public static final fbm c = a(1, 0, fbm.a.b, fbm.b.c, 4);
-   public static final fbm d = a(2, 0, fbm.a.a, fbm.b.d, 2);
-   public static final fbm e = d;
-   public static final fbm f = a(3, 1, fbm.a.e, fbm.b.d, 2);
-   public static final fbm g = a(4, 2, fbm.a.e, fbm.b.d, 2);
-   public static final fbm h = a(5, 0, fbm.a.c, fbm.b.b, 3);
+public interface fbm {
+   fbm a(float var1, float var2, float var3);
 
-   public fbm(int i, int j, fbm.a k, fbm.b l, int m) {
-      if (i < 0 || i >= n.length) {
-         throw new IllegalArgumentException("Element ID must be in range [0; " + n.length + ")");
-      } else if (!this.a(j, l)) {
-         throw new IllegalStateException("Multiple vertex elements of the same type other than UVs are not supported");
-      } else {
-         this.i = i;
-         this.j = j;
-         this.k = k;
-         this.l = l;
-         this.m = m;
-      }
+   fbm a(int var1, int var2, int var3, int var4);
+
+   fbm a(float var1, float var2);
+
+   fbm a(int var1, int var2);
+
+   fbm b(int var1, int var2);
+
+   fbm b(float var1, float var2, float var3);
+
+   default void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+      this.a($$0, $$1, $$2);
+      this.a($$3);
+      this.a($$4, $$5);
+      this.b($$6);
+      this.c($$7);
+      this.b($$8, $$9, $$10);
    }
 
-   public static fbm a(int $$0, int $$1, fbm.a $$2, fbm.b $$3, int $$4) {
-      fbm $$5 = new fbm($$0, $$1, $$2, $$3, $$4);
-      if (n[$$0] != null) {
-         throw new IllegalArgumentException("Duplicate element registration for: " + $$0);
-      } else {
-         n[$$0] = $$5;
-         o.add($$5);
-         return $$5;
-      }
+   default fbm a(float $$0, float $$1, float $$2, float $$3) {
+      return this.a((int)($$0 * 255.0F), (int)($$1 * 255.0F), (int)($$2 * 255.0F), (int)($$3 * 255.0F));
    }
 
-   private boolean a(int $$0, fbm.b $$1) {
-      return $$0 == 0 || $$1 == fbm.b.d;
+   default fbm a(int $$0) {
+      return this.a(axy.b.b($$0), axy.b.c($$0), axy.b.d($$0), axy.b.a($$0));
    }
 
-   @Override
-   public String toString() {
-      return this.m + "," + this.l + "," + this.k + " (" + this.i + ")";
+   default fbm d(int $$0) {
+      return this.a(axy.b.b($$0, -1));
    }
 
-   public int a() {
-      return 1 << this.i;
+   default fbm c(int $$0) {
+      return this.b($$0 & 65535, $$0 >> 16 & 65535);
    }
 
-   public int b() {
-      return this.k.a() * this.m;
+   default fbm b(int $$0) {
+      return this.a($$0 & 65535, $$0 >> 16 & 65535);
    }
 
-   public void a(int $$0, long $$1, int $$2) {
-      this.l.g.setupBufferState(this.m, this.k.b(), $$2, $$1, $$0);
+   default void a(fbi.a $$0, gfw $$1, float $$2, float $$3, float $$4, float $$5, int $$6, int $$7) {
+      this.a($$0, $$1, new float[]{1.0F, 1.0F, 1.0F, 1.0F}, $$2, $$3, $$4, $$5, new int[]{$$6, $$6, $$6, $$6}, $$7, false);
    }
 
-   @Nullable
-   public static fbm a(int $$0) {
-      return n[$$0];
-   }
+   default void a(fbi.a $$0, gfw $$1, float[] $$2, float $$3, float $$4, float $$5, float $$6, int[] $$7, int $$8, boolean $$9) {
+      int[] $$10 = $$1.b();
+      kh $$11 = $$1.e().q();
+      Matrix4f $$12 = $$0.a();
+      Vector3f $$13 = $$0.a((float)$$11.u(), (float)$$11.v(), (float)$$11.w(), new Vector3f());
+      int $$14 = 8;
+      int $$15 = $$10.length / 8;
+      int $$16 = (int)($$6 * 255.0F);
+      MemoryStack $$17 = MemoryStack.stackPush();
 
-   public static Stream<fbm> b(int $$0) {
-      return o.stream().filter($$1 -> $$1 != null && ($$0 & $$1.a()) != 0);
-   }
+      try {
+         ByteBuffer $$18 = $$17.malloc(fbg.b.b());
+         IntBuffer $$19 = $$18.asIntBuffer();
 
-   public int c() {
-      return this.i;
-   }
+         for (int $$20 = 0; $$20 < $$15; $$20++) {
+            $$19.clear();
+            $$19.put($$10, $$20 * 8, 8);
+            float $$21 = $$18.getFloat(0);
+            float $$22 = $$18.getFloat(4);
+            float $$23 = $$18.getFloat(8);
+            float $$27;
+            float $$28;
+            float $$29;
+            if ($$9) {
+               float $$24 = (float)($$18.get(12) & 255);
+               float $$25 = (float)($$18.get(13) & 255);
+               float $$26 = (float)($$18.get(14) & 255);
+               $$27 = $$24 * $$2[$$20] * $$3;
+               $$28 = $$25 * $$2[$$20] * $$4;
+               $$29 = $$26 * $$2[$$20] * $$5;
+            } else {
+               $$27 = $$2[$$20] * $$3 * 255.0F;
+               $$28 = $$2[$$20] * $$4 * 255.0F;
+               $$29 = $$2[$$20] * $$5 * 255.0F;
+            }
 
-   public int d() {
-      return this.j;
-   }
-
-   public fbm.a e() {
-      return this.k;
-   }
-
-   public fbm.b f() {
-      return this.l;
-   }
-
-   public int g() {
-      return this.m;
-   }
-
-   public static enum a {
-      a(4, "Float", 5126),
-      b(1, "Unsigned Byte", 5121),
-      c(1, "Byte", 5120),
-      d(2, "Unsigned Short", 5123),
-      e(2, "Short", 5122),
-      f(4, "Unsigned Int", 5125),
-      g(4, "Int", 5124);
-
-      private final int h;
-      private final String i;
-      private final int j;
-
-      private a(final int $$0, final String $$1, final int $$2) {
-         this.h = $$0;
-         this.i = $$1;
-         this.j = $$2;
-      }
-
-      public int a() {
-         return this.h;
-      }
-
-      public int b() {
-         return this.j;
-      }
-
-      @Override
-      public String toString() {
-         return this.i;
-      }
-   }
-
-   public static enum b {
-      a("Position", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, false, $$2, $$3)),
-      b("Normal", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, true, $$2, $$3)),
-      c("Vertex Color", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, true, $$2, $$3)),
-      d("UV", ($$0, $$1, $$2, $$3, $$4) -> {
-         if ($$1 == 5126) {
-            GlStateManager._vertexAttribPointer($$4, $$0, $$1, false, $$2, $$3);
-         } else {
-            GlStateManager._vertexAttribIPointer($$4, $$0, $$1, $$2, $$3);
+            int $$33 = axy.b.a($$16, (int)$$27, (int)$$28, (int)$$29);
+            int $$34 = $$7[$$20];
+            float $$35 = $$18.getFloat(16);
+            float $$36 = $$18.getFloat(20);
+            Vector3f $$37 = $$12.transformPosition($$21, $$22, $$23, new Vector3f());
+            this.a($$37.x(), $$37.y(), $$37.z(), $$33, $$35, $$36, $$8, $$34, $$13.x(), $$13.y(), $$13.z());
          }
-      }),
-      e("Generic", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, false, $$2, $$3));
+      } catch (Throwable var34) {
+         if ($$17 != null) {
+            try {
+               $$17.close();
+            } catch (Throwable var33) {
+               var34.addSuppressed(var33);
+            }
+         }
 
-      private final String f;
-      final fbm.b.a g;
-
-      private b(final String $$0, final fbm.b.a $$1) {
-         this.f = $$0;
-         this.g = $$1;
+         throw var34;
       }
 
-      @Override
-      public String toString() {
-         return this.f;
+      if ($$17 != null) {
+         $$17.close();
       }
+   }
 
-      @FunctionalInterface
-      interface a {
-         void setupBufferState(int var1, int var2, int var3, long var4, int var6);
-      }
+   default fbm a(Vector3f $$0) {
+      return this.a($$0.x(), $$0.y(), $$0.z());
+   }
+
+   default fbm a(fbi.a $$0, Vector3f $$1) {
+      return this.a($$0, $$1.x(), $$1.y(), $$1.z());
+   }
+
+   default fbm a(fbi.a $$0, float $$1, float $$2, float $$3) {
+      return this.a($$0.a(), $$1, $$2, $$3);
+   }
+
+   default fbm a(Matrix4f $$0, float $$1, float $$2, float $$3) {
+      Vector3f $$4 = $$0.transformPosition($$1, $$2, $$3, new Vector3f());
+      return this.a($$4.x(), $$4.y(), $$4.z());
+   }
+
+   default fbm b(fbi.a $$0, float $$1, float $$2, float $$3) {
+      Vector3f $$4 = $$0.a($$1, $$2, $$3, new Vector3f());
+      return this.b($$4.x(), $$4.y(), $$4.z());
    }
 }

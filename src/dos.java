@@ -2,7 +2,7 @@ import com.mojang.serialization.MapCodec;
 
 public class dos extends djn {
    public static final MapCodec<dos> c = b(dos::new);
-   public static final ext g = dfy.a(4.0, 0.0, 4.0, 12.0, 15.0, 12.0);
+   public static final exv g = dfy.a(4.0, 0.0, 4.0, 12.0, 15.0, 12.0);
 
    @Override
    public MapCodec<dos> a() {

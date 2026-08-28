@@ -24,7 +24,7 @@ public class dgl extends dms {
    @Nullable
    @Override
    public <T extends dqh> dqi<T> a(dcw $$0, dtc $$1, dqj<T> $$2) {
-      return !$$0.B ? a($$2, dqj.J, ($$0x, $$1x, $$2x, $$3) -> dyi.c.a($$0x, $$3.gn(), $$3.go())) : null;
+      return !$$0.B ? a($$2, dqj.J, ($$0x, $$1x, $$2x, $$3) -> dyi.c.a($$0x, $$3.gm(), $$3.gn())) : null;
    }
 
    @Nullable

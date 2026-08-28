@@ -31,7 +31,7 @@ public class dsz {
       this.h.clear();
       dtc $$0 = this.b.a_(this.e);
       if (!dsv.a($$0, this.b, this.e, this.f, false, this.i)) {
-         if (this.d && $$0.o() == eph.b) {
+         if (this.d && $$0.o() == epj.b) {
             this.h.add(this.e);
             return true;
          } else {
@@ -125,7 +125,7 @@ public class dsz {
                   return false;
                }
 
-               if ($$2.o() == eph.b) {
+               if ($$2.o() == epj.b) {
                   this.h.add($$9);
                   return true;
                }

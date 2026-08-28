@@ -1,34 +1,19 @@
+import java.util.Objects;
 import javax.annotation.Nullable;
 
 public interface eyc {
    int a();
 
-   void a(int var1);
-
-   default int b(int $$0) {
-      int $$1 = this.a() + $$0;
-      this.a($$1);
-      return $$1;
-   }
-
-   default int b() {
-      return this.b(1);
-   }
-
-   default void c() {
-      this.a(0);
-   }
-
-   boolean d();
-
-   void e();
-
-   void f();
+   boolean b();
 
    @Nullable
-   wz g();
+   yp c();
 
-   void a(@Nullable wz var1);
+   default xn a(yp $$0) {
+      return Objects.requireNonNullElse(this.c(), $$0).a(this.a());
+   }
 
-   void a(@Nullable yp var1);
+   static xn a(@Nullable eyc $$0, yp $$1) {
+      return $$0 != null ? $$0.a($$1) : $$1.a(0);
+   }
 }

@@ -18,11 +18,11 @@ import java.util.stream.Collectors;
 import org.apache.commons.lang3.mutable.MutableInt;
 
 public class deg {
-   public static <T> List<deg.b> a(List<T> $$0, Function<T, List<jq<eit>>> $$1, boolean $$2) {
-      Object2IntMap<eit> $$3 = new Object2IntOpenHashMap();
+   public static <T> List<deg.b> a(List<T> $$0, Function<T, List<jq<eiv>>> $$1, boolean $$2) {
+      Object2IntMap<eiv> $$3 = new Object2IntOpenHashMap();
       MutableInt $$4 = new MutableInt(0);
 
-      record a(int a, int b, eit c) {
+      record a(int a, int b, eiv c) {
       }
 
       Comparator<a> $$5 = Comparator.comparingInt(a::b).thenComparingInt(a::a);
@@ -31,12 +31,12 @@ public class deg {
 
       for (T $$8 : $$0) {
          List<a> $$9 = Lists.newArrayList();
-         List<jq<eit>> $$10 = $$1.apply($$8);
+         List<jq<eiv>> $$10 = $$1.apply($$8);
          $$7 = Math.max($$7, $$10.size());
 
          for (int $$11 = 0; $$11 < $$10.size(); $$11++) {
-            for (jm<eit> $$12 : $$10.get($$11)) {
-               eit $$13 = $$12.a();
+            for (jm<eiv> $$12 : $$10.get($$11)) {
+               eiv $$13 = $$12.a();
                $$9.add(new a($$3.computeIfAbsent($$13, $$1x -> $$4.getAndIncrement()), $$11, $$13));
             }
          }
@@ -93,15 +93,15 @@ public class deg {
 
       for (int $$26 = 0; $$26 < $$7; $$26++) {
          int $$27 = $$26;
-         List<eit> $$28 = $$18.stream().filter($$1x -> $$1x.b() == $$27).map(a::c).collect(Collectors.toList());
+         List<eiv> $$28 = $$18.stream().filter($$1x -> $$1x.b() == $$27).map(a::c).collect(Collectors.toList());
          $$25.add(new deg.b($$28));
       }
 
       return $$25.build();
    }
 
-   public static record b(List<eit> a, ToIntFunction<eit> b) {
-      b(List<eit> $$0) {
+   public static record b(List<eiv> a, ToIntFunction<eiv> b) {
+      b(List<eiv> $$0) {
          this($$0, ad.h($$0));
       }
    }

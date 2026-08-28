@@ -1,56 +1,37 @@
-import com.google.common.collect.Lists;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class grl extends auj<List<String>> {
-   private static final akr a = akr.b("texts/splashes.txt");
-   private static final ayw b = ayw.a();
-   private final List<String> c = Lists.newArrayList();
-   private final fgz d;
+public record grl(akr a, @Nullable String b, @Nullable akr c, @Nullable akr d, grl.a e, boolean f) {
+   public static enum a {
+      a("slim"),
+      b("default");
 
-   public grl(fgz $$0) {
-      this.d = $$0;
-   }
+      private final String c;
 
-   protected List<String> a(aue $$0, bnf $$1) {
-      try {
-         List var4;
-         try (BufferedReader $$2 = fgm.Q().ab().openAsReader(a)) {
-            var4 = $$2.lines().map(String::trim).filter($$0x -> $$0x.hashCode() != 125780783).collect(Collectors.toList());
-         }
-
-         return var4;
-      } catch (IOException var8) {
-         return Collections.emptyList();
+      private a(final String $$0) {
+         this.c = $$0;
       }
-   }
 
-   protected void a(List<String> $$0, aue $$1, bnf $$2) {
-      this.c.clear();
-      this.c.addAll($$0);
-   }
+      public static grl.a a(@Nullable String $$0) {
+         if ($$0 == null) {
+            return b;
+         } else {
+            byte var2 = -1;
+            switch ($$0.hashCode()) {
+               case 3533117:
+                  if ($$0.equals("slim")) {
+                     var2 = 0;
+                  }
+               default:
+                  return switch (var2) {
+                     case 0 -> a;
+                     default -> b;
+                  };
+            }
+         }
+      }
 
-   @Nullable
-   public fjo a() {
-      Calendar $$0 = Calendar.getInstance();
-      $$0.setTime(new Date());
-      if ($$0.get(2) + 1 == 12 && $$0.get(5) == 24) {
-         return fjo.a;
-      } else if ($$0.get(2) + 1 == 1 && $$0.get(5) == 1) {
-         return fjo.b;
-      } else if ($$0.get(2) + 1 == 10 && $$0.get(5) == 31) {
-         return fjo.c;
-      } else if (this.c.isEmpty()) {
-         return null;
-      } else {
-         return this.d != null && b.a(this.c.size()) == 42 ? new fjo(this.d.c().toUpperCase(Locale.ROOT) + " IS YOU") : new fjo(this.c.get(b.a(this.c.size())));
+      public String a() {
+         return this.c;
       }
    }
 }

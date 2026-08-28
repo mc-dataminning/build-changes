@@ -10,7 +10,7 @@ public class cbr extends cam {
 
    @Override
    public boolean c() {
-      return this.a.gl();
+      return this.a.gk();
    }
 
    @Override
@@ -26,7 +26,7 @@ public class cbr extends cam {
          if ($$0 == null) {
             return true;
          } else {
-            return this.a.g((bsr)$$0) < 144.0 && $$0.ej() != null ? false : this.a.gl();
+            return this.a.g((bsr)$$0) < 144.0 && $$0.ei() != null ? false : this.a.gk();
          }
       }
    }
@@ -34,11 +34,11 @@ public class cbr extends cam {
    @Override
    public void d() {
       this.a.N().n();
-      this.a.x(true);
+      this.a.y(true);
    }
 
    @Override
    public void e() {
-      this.a.x(false);
+      this.a.y(false);
    }
 }

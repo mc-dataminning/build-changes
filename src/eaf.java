@@ -57,15 +57,15 @@ public interface eaf extends BiPredicate<dds, jd> {
       return a(kh.g, $$0);
    }
 
-   static eaf b(kh $$0, List<epb> $$1) {
-      return new eam($$0, jq.a(epb::k, $$1));
+   static eaf b(kh $$0, List<epd> $$1) {
+      return new eam($$0, jq.a(epd::k, $$1));
    }
 
-   static eaf a(kh $$0, epb... $$1) {
+   static eaf a(kh $$0, epd... $$1) {
       return b($$0, List.of($$1));
    }
 
-   static eaf a(epb... $$0) {
+   static eaf a(epd... $$0) {
       return a(kh.g, $$0);
    }
 
@@ -106,7 +106,7 @@ public interface eaf extends BiPredicate<dds, jd> {
    }
 
    static eaf c(kh $$0) {
-      return a($$0, epd.a);
+      return a($$0, epf.a);
    }
 
    static eaf d(kh $$0) {

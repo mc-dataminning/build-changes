@@ -31,7 +31,7 @@ public class cfy extends cfe implements buo<cfy.g> {
    @Override
    protected void B() {
       this.bU.a(1, new cag(this));
-      this.bU.a(1, new cab(this, this.dP()));
+      this.bU.a(1, new cab(this, this.dO()));
       this.bU.a(1, new cfy.e(this, 2.2));
       this.bU.a(2, new bzy(this, 0.8));
       this.bU.a(3, new cbu(this, 1.0, $$0 -> $$0.a(awn.as), false));
@@ -44,16 +44,16 @@ public class cfy extends cfe implements buo<cfy.g> {
    }
 
    @Override
-   protected float fe() {
+   protected float fd() {
       float $$0 = 0.3F;
-      if (this.Q || this.bR.b() && this.bR.e() > this.dw() + 0.5) {
+      if (this.Q || this.bR.b() && this.bR.e() > this.dv() + 0.5) {
          $$0 = 0.5F;
       }
 
-      epq $$1 = this.bT.j();
+      eps $$1 = this.bT.j();
       if ($$1 != null && !$$1.c()) {
-         exa $$2 = $$1.a(this);
-         if ($$2.d > this.dw() + 0.5) {
+         exc $$2 = $$1.a(this);
+         if ($$2.d > this.dv() + 0.5) {
             $$0 = 0.5F;
          }
       }
@@ -66,18 +66,18 @@ public class cfy extends cfe implements buo<cfy.g> {
    }
 
    @Override
-   protected void fg() {
-      super.fg();
+   protected void ff() {
+      super.ff();
       double $$0 = this.bR.c();
       if ($$0 > 0.0) {
-         double $$1 = this.ds().i();
+         double $$1 = this.dr().i();
          if ($$1 < 0.01) {
-            this.a(0.1F, new exa(0.0, 0.0, 1.0));
+            this.a(0.1F, new exc(0.0, 0.0, 1.0));
          }
       }
 
-      if (!this.dP().B) {
-         this.dP().a(this, (byte)1);
+      if (!this.dO().B) {
+         this.dO().a(this, (byte)1);
       }
    }
 
@@ -91,16 +91,16 @@ public class cfy extends cfe implements buo<cfy.g> {
    }
 
    @Override
-   public void s(boolean $$0) {
-      super.s($$0);
+   public void t(boolean $$0) {
+      super.t($$0);
       if ($$0) {
-         this.a(this.x(), this.fb(), ((this.ah.i() - this.ah.i()) * 0.2F + 1.0F) * 0.8F);
+         this.a(this.x(), this.fa(), ((this.ah.i() - this.ah.i()) * 0.2F + 1.0F) * 0.8F);
       }
    }
 
    @Override
    public void s() {
-      this.s(true);
+      this.t(true);
       this.co = 10;
       this.cn = 0;
    }
@@ -126,15 +126,15 @@ public class cfy extends cfe implements buo<cfy.g> {
 
       if (this.aF()) {
          if (!this.cp) {
-            this.s(false);
-            this.gp();
+            this.t(false);
+            this.go();
          }
 
-         if (this.gl() == cfy.g.g && this.cq == 0) {
+         if (this.gk() == cfy.g.g && this.cq == 0) {
             btn $$0 = this.p();
             if ($$0 != null && this.g((bsr)$$0) < 16.0) {
-               this.c($$0.du(), $$0.dA());
-               this.bR.a($$0.du(), $$0.dw(), $$0.dA(), this.bR.c());
+               this.c($$0.dt(), $$0.dz());
+               this.bR.a($$0.dt(), $$0.dv(), $$0.dz(), this.bR.c());
                this.s();
                this.cp = true;
             }
@@ -143,8 +143,8 @@ public class cfy extends cfe implements buo<cfy.g> {
          cfy.c $$1 = (cfy.c)this.bS;
          if (!$$1.c()) {
             if (this.bR.b() && this.cq == 0) {
-               epq $$2 = this.bT.j();
-               exa $$3 = new exa(this.bR.d(), this.bR.e(), this.bR.f());
+               eps $$2 = this.bT.j();
+               exc $$3 = new exc(this.bR.d(), this.bR.e(), this.bR.f());
                if ($$2 != null && !$$2.c()) {
                   $$3 = $$2.a(this);
                }
@@ -153,7 +153,7 @@ public class cfy extends cfe implements buo<cfy.g> {
                this.s();
             }
          } else if (!$$1.d()) {
-            this.gm();
+            this.gl();
          }
       }
 
@@ -166,18 +166,18 @@ public class cfy extends cfe implements buo<cfy.g> {
    }
 
    private void c(double $$0, double $$1) {
-      this.t((float)(ayo.d($$1 - this.dA(), $$0 - this.du()) * 180.0F / (float)Math.PI) - 90.0F);
+      this.t((float)(ayo.d($$1 - this.dz(), $$0 - this.dt()) * 180.0F / (float)Math.PI) - 90.0F);
    }
 
-   private void gm() {
+   private void gl() {
       ((cfy.c)this.bS).a(true);
    }
 
-   private void gn() {
+   private void gm() {
       ((cfy.c)this.bS).a(false);
    }
 
-   private void go() {
+   private void gn() {
       if (this.bR.c() < 2.2) {
          this.cq = 10;
       } else {
@@ -185,9 +185,9 @@ public class cfy extends cfe implements buo<cfy.g> {
       }
    }
 
-   private void gp() {
-      this.go();
+   private void go() {
       this.gn();
+      this.gm();
    }
 
    @Override
@@ -198,7 +198,7 @@ public class cfy extends cfe implements buo<cfy.g> {
       } else if (this.co != 0) {
          this.cn = 0;
          this.co = 0;
-         this.s(false);
+         this.t(false);
       }
    }
 
@@ -209,7 +209,7 @@ public class cfy extends cfe implements buo<cfy.g> {
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      $$0.a("RabbitType", this.gl().j);
+      $$0.a("RabbitType", this.gk().j);
       $$0.a("MoreCarrotTicks", this.cr);
    }
 
@@ -240,15 +240,15 @@ public class cfy extends cfe implements buo<cfy.g> {
    }
 
    @Override
-   public void ge() {
-      if (this.gl() == cfy.g.g) {
+   public void gd() {
+      if (this.gk() == cfy.g.g) {
          this.a(avp.uY, 1.0F, (this.ah.i() - this.ah.i()) * 0.2F + 1.0F);
       }
    }
 
    @Override
-   public avq df() {
-      return this.gl() == cfy.g.g ? avq.f : avq.g;
+   public avq de() {
+      return this.gk() == cfy.g.g ? avq.f : avq.g;
    }
 
    @Nullable
@@ -256,15 +256,15 @@ public class cfy extends cfe implements buo<cfy.g> {
       cfy $$2 = bsx.aG.a((dcw)$$0);
       if ($$2 != null) {
          cfy.g $$3;
-         $$3 = a($$0, this.dp());
+         $$3 = a($$0, this.do());
          label16:
          if (this.ah.a(20) != 0) {
             if ($$1 instanceof cfy $$4 && this.ah.h()) {
-               $$3 = $$4.gl();
+               $$3 = $$4.gk();
                break label16;
             }
 
-            $$3 = this.gl();
+            $$3 = this.gk();
          }
 
          $$2.a($$3);
@@ -278,7 +278,7 @@ public class cfy extends cfe implements buo<cfy.g> {
       return $$0.a(awn.as);
    }
 
-   public cfy.g gl() {
+   public cfy.g gk() {
       return cfy.g.a(this.ao.a(cg));
    }
 
@@ -303,7 +303,7 @@ public class cfy extends cfe implements buo<cfy.g> {
    @Nullable
    @Override
    public buh a(ddl $$0, bqp $$1, btr $$2, @Nullable buh $$3) {
-      cfy.g $$4 = a($$0, this.dp());
+      cfy.g $$4 = a($$0, this.do());
       if ($$3 instanceof cfy.b) {
          $$4 = ((cfy.b)$$3).a;
       } else {
@@ -327,10 +327,10 @@ public class cfy extends cfe implements buo<cfy.g> {
    }
 
    public static boolean c(bsx<cfy> $$0, dcx $$1, btr $$2, jd $$3, ayw $$4) {
-      return $$1.a_($$3.e()).a(awe.cd) && a((dbz)$$1, $$3);
+      return $$1.a_($$3.e()).a(awe.ce) && a((dbz)$$1, $$3);
    }
 
-   boolean gv() {
+   boolean gu() {
       return this.cr <= 0;
    }
 
@@ -346,8 +346,8 @@ public class cfy extends cfe implements buo<cfy.g> {
    }
 
    @Override
-   public exa cN() {
-      return new exa(0.0, (double)(0.6F * this.cM()), (double)(this.dk() * 0.4F));
+   public exc cM() {
+      return new exc(0.0, (double)(0.6F * this.cL()), (double)(this.dj() * 0.4F));
    }
 
    static class a<T extends btn> extends bzt<T> {
@@ -360,7 +360,7 @@ public class cfy extends cfe implements buo<cfy.g> {
 
       @Override
       public boolean b() {
-         return this.i.gl() != cfy.g.g && super.b();
+         return this.i.gk() != cfy.g.g && super.b();
       }
    }
 
@@ -464,12 +464,12 @@ public class cfy extends cfe implements buo<cfy.g> {
       @Override
       public boolean b() {
          if (this.c <= 0) {
-            if (!this.g.dP().ab().b(dcs.c)) {
+            if (!this.g.dO().ab().b(dcs.c)) {
                return false;
             }
 
             this.i = false;
-            this.h = this.g.gv();
+            this.h = this.g.gu();
          }
 
          return super.b();
@@ -485,7 +485,7 @@ public class cfy extends cfe implements buo<cfy.g> {
          super.a();
          this.g.I().a((double)this.e.u() + 0.5, (double)(this.e.v() + 1), (double)this.e.w() + 0.5, 10.0F, (float)this.g.ac());
          if (this.m()) {
-            dcw $$0 = this.g.dP();
+            dcw $$0 = this.g.dO();
             jd $$1 = this.e.d();
             dtc $$2 = $$0.a_($$1);
             dfy $$3 = $$2.b();

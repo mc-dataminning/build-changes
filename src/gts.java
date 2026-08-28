@@ -1,44 +1,34 @@
-public class gts extends gth {
+public class gts extends gtj {
    private static final float n = 0.0F;
-   private static final float o = 0.75F;
-   private final cmx p;
-   private final cot q;
-   private final boolean r;
+   private static final float o = 1.0F;
+   private static final float p = 0.7F;
+   private static final float q = 0.5F;
+   private final cjz r;
 
-   public gts(cmx $$0, cot $$1, boolean $$2) {
-      super($$2 ? avp.oL : avp.oM, avq.g, gty.t());
-      this.p = $$0;
-      this.q = $$1;
-      this.r = $$2;
-      this.k = gty.a.a;
+   public gts(cjz $$0) {
+      super(avp.ls, avq.f, gua.t());
+      this.r = $$0;
+      this.k = gua.a.a;
       this.i = true;
       this.j = 0;
-      this.d = 0.0F;
    }
 
    @Override
    public boolean s() {
-      return !this.q.aX();
-   }
-
-   @Override
-   public boolean r() {
-      return true;
+      return !this.r.aX();
    }
 
    @Override
    public void q() {
-      if (this.q.dK() || !this.p.bS() || this.p.dd() != this.q) {
-         this.n();
-      } else if (this.r != this.p.bk()) {
-         this.d = 0.0F;
+      if (!this.r.dJ() && this.r.p() == null) {
+         this.f = (double)((float)this.r.dt());
+         this.g = (double)((float)this.r.dv());
+         this.h = (double)((float)this.r.dz());
+         float $$0 = this.r.J(0.0F);
+         this.d = 0.0F + 1.0F * $$0 * $$0;
+         this.e = 0.7F + 0.5F * $$0;
       } else {
-         float $$0 = (float)this.q.ds().h();
-         if ($$0 >= 0.01F) {
-            this.d = ayo.b(0.0F, 0.75F, $$0);
-         } else {
-            this.d = 0.0F;
-         }
+         this.n();
       }
    }
 }

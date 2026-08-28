@@ -18,7 +18,7 @@ public class bzy extends cam {
 
    public bzy(cfe $$0, double $$1, Class<? extends cfe> $$2) {
       this.a = $$0;
-      this.b = $$0.dP();
+      this.b = $$0.dO();
       this.e = $$2;
       this.g = $$1;
       this.a(EnumSet.of(cam.a.a, cam.a.b));
@@ -26,7 +26,7 @@ public class bzy extends cam {
 
    @Override
    public boolean b() {
-      if (!this.a.gt()) {
+      if (!this.a.gs()) {
          return false;
       } else {
          this.c = this.h();
@@ -36,7 +36,7 @@ public class bzy extends cam {
 
    @Override
    public boolean c() {
-      return this.c.bE() && this.c.gt() && this.f < 60 && !this.c.gi();
+      return this.c.bE() && this.c.gs() && this.f < 60 && !this.c.gh();
    }
 
    @Override
@@ -57,12 +57,12 @@ public class bzy extends cam {
 
    @Nullable
    private cfe h() {
-      List<? extends cfe> $$0 = this.b.a(this.e, d, this.a, this.a.cL().g(8.0));
+      List<? extends cfe> $$0 = this.b.a(this.e, d, this.a, this.a.cK().g(8.0));
       double $$1 = Double.MAX_VALUE;
       cfe $$2 = null;
 
       for (cfe $$3 : $$0) {
-         if (this.a.a($$3) && !$$3.gi() && this.a.g($$3) < $$1) {
+         if (this.a.a($$3) && !$$3.gh() && this.a.g($$3) < $$1) {
             $$2 = $$3;
             $$1 = this.a.g($$3);
          }

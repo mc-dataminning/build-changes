@@ -6,7 +6,7 @@ import org.apache.commons.lang3.mutable.MutableBoolean;
 public class ebd extends ebb {
    public ebd(Codec<eba> $$0) {
       super($$0);
-      this.h = ImmutableSet.of(epd.e, epd.c);
+      this.h = ImmutableSet.of(epf.e, epf.c);
    }
 
    @Override

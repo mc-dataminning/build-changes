@@ -14,10 +14,10 @@ public record cxr(Map<String, cxr.a> c) {
       return this.c;
    }
 
-   public static record a(jm<eqm> b, double c, double d, float e) {
+   public static record a(jm<eqo> b, double c, double d, float e) {
       public static final Codec<cxr.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  eqm.b.fieldOf("type").forGetter(cxr.a::a),
+                  eqo.b.fieldOf("type").forGetter(cxr.a::a),
                   Codec.DOUBLE.fieldOf("x").forGetter(cxr.a::b),
                   Codec.DOUBLE.fieldOf("z").forGetter(cxr.a::c),
                   Codec.FLOAT.fieldOf("rotation").forGetter(cxr.a::d)
@@ -25,7 +25,7 @@ public record cxr(Map<String, cxr.a> c) {
                .apply($$0, cxr.a::new)
       );
 
-      public jm<eqm> a() {
+      public jm<eqo> a() {
          return this.b;
       }
 

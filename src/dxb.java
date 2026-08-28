@@ -151,7 +151,7 @@ public class dxb {
          this.t = true;
       } else {
          cia $$2 = $$1.get(0);
-         this.w = $$2.cA();
+         this.w = $$2.cz();
          d.info("Found that there's a dragon still alive ({})", $$2);
          this.t = false;
          if (!$$0) {
@@ -173,7 +173,7 @@ public class dxb {
          this.r();
       } else {
          d.debug("Haven't seen our dragon, but found another one to use.");
-         this.w = $$0.get(0).cA();
+         this.w = $$0.get(0).cz();
       }
    }
 
@@ -237,7 +237,7 @@ public class dxb {
          }
       }
 
-      jd $$7 = ecc.a(this.m);
+      jd $$7 = ecd.a(this.m);
       int $$8 = this.l.a(dyy.a.e, $$7).v();
 
       for (int $$9 = $$8; $$9 >= this.l.I_(); $$9--) {
@@ -298,7 +298,7 @@ public class dxb {
       this.r = 0;
       this.q = 0;
 
-      for (edn.a $$0 : edn.a(this.l)) {
+      for (edo.a $$0 : edo.a(this.l)) {
          this.q = this.q + this.l.a(chz.class, $$0.f()).size();
       }
 
@@ -306,13 +306,13 @@ public class dxb {
    }
 
    public void a(cia $$0) {
-      if ($$0.cA().equals(this.w)) {
+      if ($$0.cz().equals(this.w)) {
          this.k.a(0.0F);
          this.k.d(false);
          this.a(true);
          this.q();
          if (!this.u) {
-            this.l.b(this.l.a(dyy.a.e, ecc.a(this.m)), dga.fA.o());
+            this.l.b(this.l.a(dyy.a.e, ecd.a(this.m)), dga.fA.o());
          }
 
          this.u = true;
@@ -337,20 +337,20 @@ public class dxb {
 
    private void a(jd $$0) {
       this.l.c(3000, $$0, 0);
-      this.l.H_().c(lu.aI).flatMap($$0x -> $$0x.b(rq.c)).ifPresent($$1 -> $$1.a().a(this.l, this.l.l().g(), ayw.a(), $$0));
+      this.l.H_().c(lu.aI).flatMap($$0x -> $$0x.b(rq.d)).ifPresent($$1 -> $$1.a().a(this.l, this.l.l().g(), ayw.a(), $$0));
    }
 
    private void a(boolean $$0) {
-      ecc $$1 = new ecc($$0);
+      ecd $$1 = new ecd($$0);
       if (this.y == null) {
-         this.y = this.l.a(dyy.a.f, ecc.a(this.m)).e();
+         this.y = this.l.a(dyy.a.f, ecd.a(this.m)).e();
 
          while (this.l.a_(this.y).a(dga.F) && this.y.v() > this.l.z_()) {
             this.y = this.y.e();
          }
       }
 
-      if ($$1.a(eeh.m, this.l, this.l.l().g(), ayw.a(), this.y)) {
+      if ($$1.a(eei.m, this.l, this.l.l().g(), ayw.a(), this.y)) {
          int $$2 = ayo.e(4, 16);
          this.l.l().a.a(new dcd(this.y), $$2);
       }
@@ -363,18 +363,18 @@ public class dxb {
       if ($$0 != null) {
          $$0.a(this);
          $$0.c(this.m);
-         $$0.gi().a(ciq.a);
+         $$0.gh().a(ciq.a);
          $$0.b((double)this.m.u(), (double)(128 + this.m.v()), (double)this.m.w(), this.l.z.i() * 360.0F, 0.0F);
          this.l.b($$0);
-         this.w = $$0.cA();
+         this.w = $$0.cz();
       }
 
       return $$0;
    }
 
    public void b(cia $$0) {
-      if ($$0.cA().equals(this.w)) {
-         this.k.a($$0.ex() / $$0.eO());
+      if ($$0.cz().equals(this.w)) {
+         this.k.a($$0.ew() / $$0.eN());
          this.p = 0;
          if ($$0.ai()) {
             this.k.a($$0.S_());
@@ -397,7 +397,7 @@ public class dxb {
          this.p();
          bsr $$2 = this.l.a(this.w);
          if ($$2 instanceof cia) {
-            ((cia)$$2).a($$0, $$0.dp(), $$1);
+            ((cia)$$2).a($$0, $$0.do(), $$1);
          }
       }
    }
@@ -426,7 +426,7 @@ public class dxb {
          jd $$3 = $$0.b(1);
 
          for (ji $$4 : ji.c.a) {
-            List<chz> $$5 = this.l.a(chz.class, new ewv($$3.a($$4, 2)));
+            List<chz> $$5 = this.l.a(chz.class, new ewx($$3.a($$4, 2)));
             if ($$5.isEmpty()) {
                return;
             }
@@ -462,7 +462,7 @@ public class dxb {
    }
 
    public void h() {
-      for (edn.a $$0 : edn.a(this.l)) {
+      for (edo.a $$0 : edo.a(this.l)) {
          for (chz $$2 : this.l.a(chz.class, $$0.f())) {
             $$2.n(false);
             $$2.a(null);

@@ -108,7 +108,7 @@ public class aou {
 
    private static int a(et $$0, Collection<? extends bsr> $$1, bsr $$2) throws CommandSyntaxException {
       for (bsr $$3 : $$1) {
-         a($$0, $$3, (aqu)$$2.dP(), $$2.du(), $$2.dw(), $$2.dA(), EnumSet.noneOf(buc.class), $$2.dF(), $$2.dH(), null);
+         a($$0, $$3, (aqu)$$2.dO(), $$2.dt(), $$2.dv(), $$2.dz(), EnumSet.noneOf(buc.class), $$2.dE(), $$2.dG(), null);
       }
 
       if ($$1.size() == 1) {
@@ -121,8 +121,8 @@ public class aou {
    }
 
    private static int a(et $$0, Collection<? extends bsr> $$1, aqu $$2, gr $$3, @Nullable gr $$4, @Nullable aou.a $$5) throws CommandSyntaxException {
-      exa $$6 = $$3.a($$0);
-      ewz $$7 = $$4 == null ? null : $$4.b($$0);
+      exc $$6 = $$3.a($$0);
+      exb $$7 = $$4 == null ? null : $$4.b($$0);
       Set<buc> $$8 = EnumSet.noneOf(buc.class);
       if ($$3.a()) {
          $$8.add(buc.a);
@@ -151,7 +151,7 @@ public class aou {
 
       for (bsr $$9 : $$1) {
          if ($$4 == null) {
-            a($$0, $$9, $$2, $$6.c, $$6.d, $$6.e, $$8, $$9.dF(), $$9.dH(), $$5);
+            a($$0, $$9, $$2, $$6.c, $$6.d, $$6.e, $$8, $$9.dE(), $$9.dG(), $$5);
          } else {
             a($$0, $$9, $$2, $$6.c, $$6.d, $$6.e, $$8, $$7.j, $$7.i, $$5);
          }
@@ -182,8 +182,8 @@ public class aou {
                $$9.perform($$0, $$1);
             }
 
-            if (!($$1 instanceof btn $$13) || !$$13.fB()) {
-               $$1.i($$1.ds().d(1.0, 0.0, 1.0));
+            if (!($$1 instanceof btn $$13) || !$$13.fA()) {
+               $$1.i($$1.dr().d(1.0, 0.0, 1.0));
                $$1.d(true);
             }
 
@@ -210,7 +210,7 @@ public class aou {
       }
    }
 
-   static record c(exa a) implements aou.a {
+   static record c(exc a) implements aou.a {
       @Override
       public void perform(et $$0, bsr $$1) {
          $$1.a($$0.m(), this.a);

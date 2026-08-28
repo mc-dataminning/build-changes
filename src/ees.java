@@ -1,21 +1,13 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class ees implements eeh {
-   public static final Codec<ees> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eit.b.fieldOf("feature_true").forGetter($$0x -> $$0x.b), eit.b.fieldOf("feature_false").forGetter($$0x -> $$0x.c)).apply($$0, ees::new)
+public class ees implements eei {
+   public static final Codec<ees> k = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l)).apply($$0, ees::new)
    );
-   public final jm<eit> b;
-   public final jm<eit> c;
+   public final float l;
 
-   public ees(jm<eit> $$0, jm<eit> $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   @Override
-   public Stream<ebq<?, ?>> e() {
-      return Stream.concat(this.b.a().a(), this.c.a().a());
+   public ees(float $$0) {
+      this.l = $$0;
    }
 }

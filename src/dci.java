@@ -9,12 +9,12 @@ public interface dci extends dcn, dcz, ddb {
    }
 
    @Override
-   default List<ext> c(@Nullable bsr $$0, ewv $$1) {
+   default List<exv> c(@Nullable bsr $$0, ewx $$1) {
       return dcn.super.c($$0, $$1);
    }
 
    @Override
-   default boolean a(@Nullable bsr $$0, ext $$1) {
+   default boolean a(@Nullable bsr $$0, exv $$1) {
       return dcn.super.a($$0, $$1);
    }
 

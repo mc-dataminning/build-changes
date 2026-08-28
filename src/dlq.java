@@ -28,14 +28,14 @@ public class dlq extends dfy implements dit, dna {
    private static final int J = 7;
    private static final int K = 10;
    private static final float L = 0.6875F;
-   private static final ext M = dfy.a(5.0, 0.0, 5.0, 11.0, 16.0, 11.0);
-   private static final ext N = dfy.a(5.0, 0.0, 5.0, 11.0, 11.0, 11.0);
-   private static final ext O = dfy.a(5.0, 5.0, 5.0, 11.0, 16.0, 11.0);
-   private static final ext P = dfy.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
-   private static final ext Q = dfy.a(3.0, 0.0, 3.0, 13.0, 16.0, 13.0);
-   private static final ext R = dfy.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
+   private static final exv M = dfy.a(5.0, 0.0, 5.0, 11.0, 16.0, 11.0);
+   private static final exv N = dfy.a(5.0, 0.0, 5.0, 11.0, 11.0, 11.0);
+   private static final exv O = dfy.a(5.0, 5.0, 5.0, 11.0, 16.0, 11.0);
+   private static final exv P = dfy.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
+   private static final exv Q = dfy.a(3.0, 0.0, 3.0, 13.0, 16.0, 13.0);
+   private static final exv R = dfy.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
    private static final float S = 0.125F;
-   private static final ext T = dfy.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
+   private static final exv T = dfy.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
 
    @Override
    public MapCodec<dlq> a() {
@@ -60,7 +60,7 @@ public class dlq extends dfy implements dit, dna {
    @Override
    protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
       if ($$0.c(d)) {
-         $$3.a($$4, epd.c, epd.c.a($$3));
+         $$3.a($$4, epf.c, epf.c.a($$3));
       }
 
       if ($$1 != ji.b && $$1 != ji.a) {
@@ -86,10 +86,10 @@ public class dlq extends dfy implements dit, dna {
    }
 
    @Override
-   protected void a(dcw $$0, dtc $$1, eww $$2, cnp $$3) {
+   protected void a(dcw $$0, dtc $$1, ewy $$2, cnp $$3) {
       if (!$$0.B) {
          jd $$4 = $$2.a();
-         if ($$3.a($$0, $$4) && $$3.b($$0) && $$3 instanceof coc && $$3.ds().f() > 0.6) {
+         if ($$3.a($$0, $$4) && $$3.b($$0) && $$3 instanceof coc && $$3.dr().f() > 0.6) {
             $$0.b($$4, true);
          }
       }
@@ -137,12 +137,12 @@ public class dlq extends dfy implements dit, dna {
          if (b($$0, (dcz)$$1, $$2)) {
             Optional<dlq.a> $$4 = b($$1, $$2, $$0);
             if (!$$4.isEmpty()) {
-               epb $$5 = $$4.get().b;
+               epd $$5 = $$4.get().b;
                float $$6;
-               if ($$5 == epd.c) {
+               if ($$5 == epf.c) {
                   $$6 = 0.17578125F;
                } else {
-                  if ($$5 != epd.e) {
+                  if ($$5 != epf.e) {
                      return;
                   }
 
@@ -152,7 +152,7 @@ public class dlq extends dfy implements dit, dna {
                if (!($$3 >= $$6)) {
                   jd $$9 = a($$0, $$1, $$2, 11, false);
                   if ($$9 != null) {
-                     if ($$4.get().c.a(dga.sI) && $$5 == epd.c) {
+                     if ($$4.get().c.a(dga.sI) && $$5 == epf.c) {
                         dtc $$10 = dga.dR.o();
                         $$1.b($$4.get().a, $$10);
                         dfy.a($$4.get().c, $$10, $$1, $$4.get().a);
@@ -187,24 +187,24 @@ public class dlq extends dfy implements dit, dna {
       } else {
          boolean $$5 = !$$0.h();
          dtz $$6 = a($$1, $$2, $$4, $$5);
-         return $$6 == null ? null : this.o().a(b, $$4).a(c, $$6).a(d, Boolean.valueOf($$1.b_($$2).a() == epd.c));
+         return $$6 == null ? null : this.o().a(b, $$4).a(c, $$6).a(d, Boolean.valueOf($$1.b_($$2).a() == epf.c));
       }
    }
 
    @Override
-   protected epc b_(dtc $$0) {
-      return $$0.c(d) ? epd.c.a(false) : super.b_($$0);
+   protected epe b_(dtc $$0) {
+      return $$0.c(d) ? epf.c.a(false) : super.b_($$0);
    }
 
    @Override
-   protected ext f(dtc $$0, dcc $$1, jd $$2) {
-      return exq.a();
+   protected exv f(dtc $$0, dcc $$1, jd $$2) {
+      return exs.a();
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       dtz $$4 = $$0.c(c);
-      ext $$5;
+      exv $$5;
       if ($$4 == dtz.a) {
          $$5 = M;
       } else if ($$4 == dtz.b) {
@@ -221,7 +221,7 @@ public class dlq extends dfy implements dit, dna {
          $$5 = R;
       }
 
-      exa $$11 = $$0.n($$1, $$2);
+      exc $$11 = $$0.n($$1, $$2);
       return $$5.a($$11.c, 0.0, $$11.e);
    }
 
@@ -244,7 +244,7 @@ public class dlq extends dfy implements dit, dna {
 
    @Override
    public brk a(bsr $$0) {
-      return $$0.dQ().c($$0);
+      return $$0.dP().c($$0);
    }
 
    private static void a(dtc $$0, aqu $$1, jd $$2) {
@@ -321,7 +321,7 @@ public class dlq extends dfy implements dit, dna {
    }
 
    private static void a(dcx $$0, jd $$1, ji $$2, dtz $$3) {
-      dtc $$4 = dga.st.o().a(b, $$2).a(c, $$3).a(d, Boolean.valueOf($$0.b_($$1).a() == epd.c));
+      dtc $$4 = dga.st.o().a(b, $$2).a(c, $$3).a(d, Boolean.valueOf($$0.b_($$1).a() == epf.c));
       $$0.a($$1, $$4, 3);
    }
 
@@ -344,13 +344,13 @@ public class dlq extends dfy implements dit, dna {
       b($$0, $$1, $$2).ifPresent($$3 -> a($$0, $$1, $$2, $$3.b));
    }
 
-   private static void a(dcw $$0, jd $$1, dtc $$2, epb $$3) {
-      exa $$4 = $$2.n($$0, $$1);
+   private static void a(dcw $$0, jd $$1, dtc $$2, epd $$3) {
+      exc $$4 = $$2.n($$0, $$1);
       double $$5 = 0.0625;
       double $$6 = (double)$$1.u() + 0.5 + $$4.c;
       double $$7 = (double)((float)($$1.v() + 1) - 0.6875F) - 0.0625;
       double $$8 = (double)$$1.w() + 0.5 + $$4.e;
-      epb $$9 = a($$0, $$3);
+      epd $$9 = a($$0, $$3);
       lk $$10 = $$9.a(awk.b) ? lm.aL : lm.aN;
       $$0.a($$10, $$6, $$7, $$8, 0.0, 0.0, 0.0);
    }
@@ -453,7 +453,7 @@ public class dlq extends dfy implements dit, dna {
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return false;
    }
 
@@ -462,7 +462,7 @@ public class dlq extends dfy implements dit, dna {
    }
 
    @Nullable
-   private static jd a(dcw $$0, jd $$1, epb $$2) {
+   private static jd a(dcw $$0, jd $$1, epd $$2) {
       Predicate<dtc> $$3 = $$1x -> $$1x.b() instanceof der && ((der)$$1x.b()).a($$2);
       BiPredicate<jd, dtc> $$4 = ($$1x, $$2x) -> a((dcc)$$0, $$1x, $$2x);
       return a($$0, $$1, ji.a.f(), $$4, $$3, 11).orElse(null);
@@ -474,17 +474,17 @@ public class dlq extends dfy implements dit, dna {
       return a($$0, $$1, ji.b.f(), $$2, dlq::m, 11).orElse(null);
    }
 
-   public static epb a(aqu $$0, jd $$1) {
-      return b($$0, $$1, $$0.a_($$1)).map($$0x -> $$0x.b).filter(dlq::a).orElse(epd.a);
+   public static epd a(aqu $$0, jd $$1) {
+      return b($$0, $$1, $$0.a_($$1)).map($$0x -> $$0x.b).filter(dlq::a).orElse(epf.a);
    }
 
    private static Optional<dlq.a> b(dcw $$0, jd $$1, dtc $$2) {
       return !n($$2) ? Optional.empty() : a($$0, $$1, $$2, 11).map($$1x -> {
          jd $$2x = $$1x.d();
          dtc $$3 = $$0.a_($$2x);
-         epb $$4;
+         epd $$4;
          if ($$3.a(dga.sI) && !$$0.D_().i()) {
-            $$4 = epd.c;
+            $$4 = epf.c;
          } else {
             $$4 = $$0.b_($$2x).a();
          }
@@ -493,17 +493,17 @@ public class dlq extends dfy implements dit, dna {
       });
    }
 
-   private static boolean a(epb $$0) {
-      return $$0 == epd.e || $$0 == epd.c;
+   private static boolean a(epd $$0) {
+      return $$0 == epf.e || $$0 == epf.c;
    }
 
    private static boolean a(dtc $$0, dtc $$1) {
       return $$0.a(dga.su) && $$1.a(dga.G) && $$1.u().b();
    }
 
-   private static epb a(dcw $$0, epb $$1) {
-      if ($$1.a(epd.a)) {
-         return $$0.D_().i() ? epd.e : epd.c;
+   private static epd a(dcw $$0, epd $$1) {
+      if ($$1.a(epf.a)) {
+         return $$0.D_().i() ? epf.e : epf.c;
       } else {
          return $$1;
       }
@@ -536,11 +536,11 @@ public class dlq extends dfy implements dit, dna {
       } else if (!$$2.u().c()) {
          return false;
       } else {
-         ext $$3 = $$2.k($$0, $$1);
-         return !exq.c(T, $$3, exe.i);
+         exv $$3 = $$2.k($$0, $$1);
+         return !exs.c(T, $$3, exg.i);
       }
    }
 
-   static record a(jd a, epb b, dtc c) {
+   static record a(jd a, epd b, dtc c) {
    }
 }

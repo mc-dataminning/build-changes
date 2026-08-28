@@ -1,44 +1,80 @@
-public class gda extends gdl {
-   private final gdg a;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-   protected gda(fzd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gdg $$7) {
+public abstract class gda extends gcn {
+   protected float D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
+
+   protected gda(fzf $$0, double $$1, double $$2, double $$3) {
       super($$0, $$1, $$2, $$3);
-      this.u = 0.225F;
-      this.B = 1.0F;
-      this.a = $$7;
-      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.D = 0.1F * (this.r.i() * this.r.i() * 1.0F + 1.0F);
-      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
-      this.b($$7);
+   }
+
+   protected gda(fzf $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   public gda.a p() {
+      return gda.a.a;
    }
 
    @Override
-   public gcp b() {
-      return gcp.b;
+   public void a(fbm $$0, ffy $$1, float $$2) {
+      Quaternionf $$3 = new Quaternionf();
+      this.p().setRotation($$3, $$1, $$2);
+      if (this.z != 0.0F) {
+         $$3.rotateZ(ayo.i($$2, this.A, this.z));
+      }
+
+      this.a($$0, $$1, $$3, $$2);
+   }
+
+   protected void a(fbm $$0, ffy $$1, Quaternionf $$2, float $$3) {
+      exc $$4 = $$1.b();
+      float $$5 = (float)(ayo.d((double)$$3, this.d, this.g) - $$4.a());
+      float $$6 = (float)(ayo.d((double)$$3, this.e, this.h) - $$4.b());
+      float $$7 = (float)(ayo.d((double)$$3, this.f, this.i) - $$4.c());
+      this.a($$0, $$2, $$5, $$6, $$7, $$3);
+   }
+
+   protected void a(fbm $$0, Quaternionf $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = this.b($$5);
+      float $$7 = this.c();
+      float $$8 = this.d();
+      float $$9 = this.e();
+      float $$10 = this.f();
+      int $$11 = this.a($$5);
+      this.a($$0, $$1, $$2, $$3, $$4, 1.0F, -1.0F, $$6, $$8, $$10, $$11);
+      this.a($$0, $$1, $$2, $$3, $$4, 1.0F, 1.0F, $$6, $$8, $$9, $$11);
+      this.a($$0, $$1, $$2, $$3, $$4, -1.0F, 1.0F, $$6, $$7, $$9, $$11);
+      this.a($$0, $$1, $$2, $$3, $$4, -1.0F, -1.0F, $$6, $$7, $$10, $$11);
+   }
+
+   private void a(fbm $$0, Quaternionf $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, int $$10) {
+      Vector3f $$11 = new Vector3f($$5, $$6, 0.0F).rotate($$1).mul($$7).add($$2, $$3, $$4);
+      $$0.a($$11.x(), $$11.y(), $$11.z()).a($$8, $$9).a(this.v, this.w, this.x, this.y).c($$10);
+   }
+
+   public float b(float $$0) {
+      return this.D;
    }
 
    @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
-      this.j *= 0.95F;
-      this.k *= 0.9F;
-      this.l *= 0.95F;
+   public gcn d(float $$0) {
+      this.D *= $$0;
+      return super.d($$0);
    }
 
-   public static class a implements gco<lq> {
-      private final gdg a;
+   protected abstract float c();
 
-      public a(gdg $$0) {
-         this.a = $$0;
-      }
+   protected abstract float d();
 
-      public gcl a(lq $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gda $$8 = new gda($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.a(0.923F, 0.964F, 0.999F);
-         return $$8;
-      }
+   protected abstract float e();
+
+   protected abstract float f();
+
+   public interface a {
+      gda.a a = ($$0, $$1, $$2) -> $$0.set($$1.f());
+      gda.a b = ($$0, $$1, $$2) -> $$0.set(0.0F, $$1.f().y, 0.0F, $$1.f().w);
+
+      void setRotation(Quaternionf var1, ffy var2, float var3);
    }
 }

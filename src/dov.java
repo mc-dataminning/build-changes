@@ -14,12 +14,12 @@ public class dov extends dfy {
    public static final dtt f = dlm.e;
    public static final Map<ji, dtt> g = dlm.h.entrySet().stream().filter($$0 -> $$0.getKey() != ji.a).collect(ad.a());
    protected static final float h = 1.0F;
-   private static final ext i = dfy.a(0.0, 15.0, 0.0, 16.0, 16.0, 16.0);
-   private static final ext j = dfy.a(0.0, 0.0, 0.0, 1.0, 16.0, 16.0);
-   private static final ext k = dfy.a(15.0, 0.0, 0.0, 16.0, 16.0, 16.0);
-   private static final ext l = dfy.a(0.0, 0.0, 0.0, 16.0, 16.0, 1.0);
-   private static final ext m = dfy.a(0.0, 0.0, 15.0, 16.0, 16.0, 16.0);
-   private final Map<dtc, ext> n;
+   private static final exv i = dfy.a(0.0, 15.0, 0.0, 16.0, 16.0, 16.0);
+   private static final exv j = dfy.a(0.0, 0.0, 0.0, 1.0, 16.0, 16.0);
+   private static final exv k = dfy.a(15.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   private static final exv l = dfy.a(0.0, 0.0, 0.0, 16.0, 16.0, 1.0);
+   private static final exv m = dfy.a(0.0, 0.0, 15.0, 16.0, 16.0, 16.0);
+   private final Map<dtc, exv> n;
 
    @Override
    public MapCodec<dov> a() {
@@ -40,33 +40,33 @@ public class dov extends dfy {
       this.n = ImmutableMap.copyOf(this.E.a().stream().collect(Collectors.toMap(Function.identity(), dov::m)));
    }
 
-   private static ext m(dtc $$0) {
-      ext $$1 = exq.a();
+   private static exv m(dtc $$0) {
+      exv $$1 = exs.a();
       if ($$0.c(b)) {
          $$1 = i;
       }
 
       if ($$0.c(c)) {
-         $$1 = exq.a($$1, l);
+         $$1 = exs.a($$1, l);
       }
 
       if ($$0.c(e)) {
-         $$1 = exq.a($$1, m);
+         $$1 = exs.a($$1, m);
       }
 
       if ($$0.c(d)) {
-         $$1 = exq.a($$1, k);
+         $$1 = exs.a($$1, k);
       }
 
       if ($$0.c(f)) {
-         $$1 = exq.a($$1, j);
+         $$1 = exs.a($$1, j);
       }
 
-      return $$1.c() ? exq.b() : $$1;
+      return $$1.c() ? exs.b() : $$1;
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return this.n.get($$0);
    }
 

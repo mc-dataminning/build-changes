@@ -9,7 +9,7 @@ public class dya {
       this.a = $$0;
    }
 
-   public void a(jm<dxz> $$0, exa $$1, dxz.a $$2) {
+   public void a(jm<dxz> $$0, exc $$1, dxz.a $$2) {
       int $$3 = $$0.a().a();
       jd $$4 = jd.a((jw)$$1);
       int $$5 = kf.a($$4.u() - $$3);

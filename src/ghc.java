@@ -1,30 +1,23 @@
-public class ghc implements ggx<dqn> {
-   private static final float a = 0.375F;
-   private final glf b;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 
-   public ghc(ggy.a $$0) {
-      this.b = $$0.d();
+public class ghc<S extends dqh> implements dif.b<S, Int2IntFunction> {
+   public Int2IntFunction a(S $$0, S $$1) {
+      return $$2 -> {
+         int $$3 = gex.a($$0.i(), $$0.aD_());
+         int $$4 = gex.a($$1.i(), $$1.aD_());
+         int $$5 = gey.a($$3);
+         int $$6 = gey.a($$4);
+         int $$7 = gey.b($$3);
+         int $$8 = gey.b($$4);
+         return gey.a(Math.max($$5, $$6), Math.max($$7, $$8));
+      };
    }
 
-   public void a(dqn $$0, float $$1, fbg $$2, gex $$3, int $$4, int $$5) {
-      ji $$6 = $$0.n().c(dgm.f);
-      jv<cuq> $$7 = $$0.b();
-      int $$8 = (int)$$0.aD_().a();
+   public Int2IntFunction a(S $$0) {
+      return $$0x -> $$0x;
+   }
 
-      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
-         cuq $$10 = $$7.get($$9);
-         if ($$10 != cuq.l) {
-            $$2.a();
-            $$2.a(0.5F, 0.44921875F, 0.5F);
-            ji $$11 = ji.b(($$9 + $$6.e()) % 4);
-            float $$12 = -$$11.p();
-            $$2.a(a.d.rotationDegrees($$12));
-            $$2.a(a.b.rotationDegrees(90.0F));
-            $$2.a(-0.3125F, -0.3125F, 0.0F);
-            $$2.b(0.375F, 0.375F, 0.375F);
-            this.b.a($$10, cun.i, $$4, $$5, $$2, $$3, $$0.i(), $$8 + $$9);
-            $$2.b();
-         }
-      }
+   public Int2IntFunction a() {
+      return $$0 -> $$0;
    }
 }

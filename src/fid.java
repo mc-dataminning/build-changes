@@ -1,8 +1,46 @@
-public abstract class fid extends fig {
-   protected final fgq a;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-   protected fid(fgq $$0, int $$1, int $$2, int $$3, int $$4, double $$5) {
-      super($$1, $$2, $$3, $$4, wy.a, $$5);
-      this.a = $$0;
+public abstract class fid extends fik {
+   protected static final int e = 2;
+   private static final fjz a = new fjz(akr.b("widget/button"), akr.b("widget/button_disabled"), akr.b("widget/button_highlighted"));
+
+   public fid(int $$0, int $$1, int $$2, int $$3, wz $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public abstract void b();
+
+   @Override
+   protected void b(fhz $$0, int $$1, int $$2, float $$3) {
+      fgo $$4 = fgo.Q();
+      $$0.a(1.0F, 1.0F, 1.0F, this.l);
+      RenderSystem.enableBlend();
+      RenderSystem.enableDepthTest();
+      $$0.a(a.a(this.j, this.B()), this.D(), this.E(), this.y(), this.w());
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      int $$5 = this.j ? 16777215 : 10526880;
+      this.a($$0, $$4.h, $$5 | ayo.f(this.l * 255.0F) << 24);
+   }
+
+   public void a(fhz $$0, fhx $$1, int $$2) {
+      this.a($$0, $$1, 2, $$2);
+   }
+
+   @Override
+   public void a(double $$0, double $$1) {
+      this.b();
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (!this.j || !this.k) {
+         return false;
+      } else if (fmn.a($$0)) {
+         this.a(fgo.Q().aj());
+         this.b();
+         return true;
+      } else {
+         return false;
+      }
    }
 }

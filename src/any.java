@@ -26,14 +26,14 @@ public class any {
    }
 
    private static int a(et $$0, bsr $$1, bsr $$2) throws CommandSyntaxException {
-      bsr $$3 = $$1.dd();
+      bsr $$3 = $$1.dc();
       if ($$3 != null) {
          throw b.create($$1.S_(), $$3.S_());
       } else if ($$2.am() == bsx.by) {
          throw d.create();
-      } else if ($$1.cV().anyMatch($$1x -> $$1x == $$2)) {
+      } else if ($$1.cU().anyMatch($$1x -> $$1x == $$2)) {
          throw e.create();
-      } else if ($$1.dP() != $$2.dP()) {
+      } else if ($$1.dO() != $$2.dO()) {
          throw f.create();
       } else if (!$$1.a($$2, true)) {
          throw c.create($$1.S_(), $$2.S_());
@@ -44,7 +44,7 @@ public class any {
    }
 
    private static int a(et $$0, bsr $$1) throws CommandSyntaxException {
-      bsr $$2 = $$1.dd();
+      bsr $$2 = $$1.dc();
       if ($$2 == null) {
          throw a.create($$1.S_());
       } else {

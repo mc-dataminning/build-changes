@@ -16,19 +16,19 @@ public class bwi extends bvh<btp> {
    }
 
    protected void b(aqu $$0, btp $$1, long $$2) {
-      $$1.q(true);
+      $$1.r(true);
       $$1.b(bua.g);
    }
 
    protected void c(aqu $$0, btp $$1, long $$2) {
       if ($$1.aF()) {
-         $$1.i($$1.ds().d(0.1F, 1.0, 0.1F));
+         $$1.i($$1.dr().d(0.1F, 1.0, 0.1F));
          $$0.a(null, $$1, this.e, avq.g, 2.0F, 1.0F);
       }
 
-      $$1.q(false);
+      $$1.r(false);
       $$1.b(bua.a);
-      $$1.dU().b(ccs.T);
-      $$1.dU().a(ccs.S, this.d.a($$0.z));
+      $$1.dT().b(ccs.T);
+      $$1.dT().a(ccs.S, this.d.a($$0.z));
    }
 }

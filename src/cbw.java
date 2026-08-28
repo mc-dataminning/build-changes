@@ -7,7 +7,7 @@ public class cbw extends cam {
 
    @Override
    public boolean b() {
-      return this.a.aF() && !this.a.dP().b_(this.a.dp()).a(awk.a);
+      return this.a.aF() && !this.a.dO().b_(this.a.do()).a(awk.a);
    }
 
    @Override
@@ -15,9 +15,9 @@ public class cbw extends cam {
       jd $$0 = null;
 
       for (jd $$2 : jd.b(
-         ayo.a(this.a.du() - 2.0), ayo.a(this.a.dw() - 2.0), ayo.a(this.a.dA() - 2.0), ayo.a(this.a.du() + 2.0), this.a.dv(), ayo.a(this.a.dA() + 2.0)
+         ayo.a(this.a.dt() - 2.0), ayo.a(this.a.dv() - 2.0), ayo.a(this.a.dz() - 2.0), ayo.a(this.a.dt() + 2.0), this.a.du(), ayo.a(this.a.dz() + 2.0)
       )) {
-         if (this.a.dP().b_($$2).a(awk.a)) {
+         if (this.a.dO().b_($$2).a(awk.a)) {
             $$0 = $$2;
             break;
          }

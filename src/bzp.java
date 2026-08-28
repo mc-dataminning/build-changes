@@ -54,8 +54,8 @@ public class bzp implements bzl {
          $$4 = $$1 / $$4;
          $$2 *= $$4;
          $$3 *= $$4;
-         float $$5 = ayo.a(this.d.dF() * (float) (Math.PI / 180.0));
-         float $$6 = ayo.b(this.d.dF() * (float) (Math.PI / 180.0));
+         float $$5 = ayo.a(this.d.dE() * (float) (Math.PI / 180.0));
+         float $$6 = ayo.b(this.d.dE() * (float) (Math.PI / 180.0));
          float $$7 = $$2 * $$6 - $$3 * $$5;
          float $$8 = $$3 * $$6 + $$2 * $$5;
          if (!this.b($$7, $$8)) {
@@ -69,9 +69,9 @@ public class bzp implements bzl {
          this.k = bzp.a.a;
       } else if (this.k == bzp.a.b) {
          this.k = bzp.a.a;
-         double $$9 = this.e - this.d.du();
-         double $$10 = this.g - this.d.dA();
-         double $$11 = this.f - this.d.dw();
+         double $$9 = this.e - this.d.dt();
+         double $$10 = this.g - this.d.dz();
+         double $$11 = this.f - this.d.dv();
          double $$12 = $$9 * $$9 + $$11 * $$11 + $$10 * $$10;
          if ($$12 < 2.5000003E-7F) {
             this.d.E(0.0F);
@@ -79,13 +79,13 @@ public class bzp implements bzl {
          }
 
          float $$13 = (float)(ayo.d($$10, $$9) * 180.0F / (float)Math.PI) - 90.0F;
-         this.d.t(this.a(this.d.dF(), $$13, 90.0F));
+         this.d.t(this.a(this.d.dE(), $$13, 90.0F));
          this.d.A((float)(this.h * this.d.g(buw.v)));
-         jd $$14 = this.d.dp();
-         dtc $$15 = this.d.dP().a_($$14);
-         ext $$16 = $$15.k(this.d.dP(), $$14);
-         if ($$11 > (double)this.d.dJ() && $$9 * $$9 + $$10 * $$10 < (double)Math.max(1.0F, this.d.dk())
-            || !$$16.c() && this.d.dw() < $$16.c(ji.a.b) + (double)$$14.v() && !$$15.a(awe.p) && !$$15.a(awe.S)) {
+         jd $$14 = this.d.do();
+         dtc $$15 = this.d.dO().a_($$14);
+         exv $$16 = $$15.k(this.d.dO(), $$14);
+         if ($$11 > (double)this.d.dI() && $$9 * $$9 + $$10 * $$10 < (double)Math.max(1.0F, this.d.dj())
+            || !$$16.c() && this.d.dv() < $$16.c(ji.a.b) + (double)$$14.v() && !$$15.a(awe.q) && !$$15.a(awe.T)) {
             this.d.L().a();
             this.k = bzp.a.d;
          }
@@ -102,8 +102,8 @@ public class bzp implements bzl {
    private boolean b(float $$0, float $$1) {
       cda $$2 = this.d.N();
       if ($$2 != null) {
-         epp $$3 = $$2.o();
-         if ($$3 != null && $$3.a(this.d, jd.a(this.d.du() + (double)$$0, (double)this.d.dv(), this.d.dA() + (double)$$1)) != ept.c) {
+         epr $$3 = $$2.o();
+         if ($$3 != null && $$3.a(this.d, jd.a(this.d.dt() + (double)$$0, (double)this.d.du(), this.d.dz() + (double)$$1)) != epv.c) {
             return false;
          }
       }

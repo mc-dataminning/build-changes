@@ -57,7 +57,7 @@ public class dmq extends dii implements dmp {
 
    private static boolean a(dcx $$0, jd $$1) {
       dtc $$2 = $$0.a_($$1.d());
-      if ($$2.i() || $$2.a(dga.G) && $$2.u().b(epd.c)) {
+      if ($$2.i() || $$2.a(dga.G) && $$2.u().b(epf.c)) {
          int $$3 = 0;
 
          for (jd $$4 : jd.c($$1.b(-4, 0, -4), $$1.b(4, 2, 4))) {

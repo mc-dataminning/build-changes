@@ -15,8 +15,8 @@ public class dop extends dfy {
    public static final dtt g = dlm.d;
    public static final dtt h = dlm.e;
    private static final Map<ji, dtt> k = dhu.f;
-   protected static final ext i = dfy.a(0.0, 1.0, 0.0, 16.0, 2.5, 16.0);
-   protected static final ext j = dfy.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
+   protected static final exv i = dfy.a(0.0, 1.0, 0.0, 16.0, 2.5, 16.0);
+   protected static final exv j = dfy.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
    private static final int l = 10;
    private final dfy m;
 
@@ -42,7 +42,7 @@ public class dop extends dfy {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return $$0.c(c) ? i : j;
    }
 
@@ -78,7 +78,7 @@ public class dop extends dfy {
 
    @Override
    public dtc a(dcw $$0, jd $$1, dtc $$2, cmx $$3) {
-      if (!$$0.B && !$$3.eU().e() && $$3.eU().a(cut.rV)) {
+      if (!$$0.B && !$$3.eT().e() && $$3.eT().a(cut.rV)) {
          $$0.a($$1, $$2.a(d, Boolean.valueOf(true)), 4);
          $$0.a($$3, dxz.M, $$1);
       }

@@ -1,47 +1,28 @@
+import java.util.List;
 import javax.annotation.Nullable;
 
-public interface gty {
-   akr a();
+public class gty {
+   private final List<gtx> a;
+   private final boolean b;
+   @Nullable
+   private final String c;
+
+   public gty(List<gtx> $$0, boolean $$1, @Nullable String $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public List<gtx> a() {
+      return this.a;
+   }
+
+   public boolean b() {
+      return this.b;
+   }
 
    @Nullable
-   gve a(gvd var1);
-
-   gtv b();
-
-   avq c();
-
-   boolean d();
-
-   boolean l();
-
-   int e();
-
-   float f();
-
-   float g();
-
-   double h();
-
-   double i();
-
-   double j();
-
-   gty.a k();
-
-   default boolean r() {
-      return false;
-   }
-
-   default boolean s() {
-      return true;
-   }
-
-   static ayw t() {
-      return ayw.a();
-   }
-
-   public static enum a {
-      a,
-      b;
+   public String c() {
+      return this.c;
    }
 }

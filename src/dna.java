@@ -3,13 +3,13 @@ import javax.annotation.Nullable;
 
 public interface dna extends dgf, dkp {
    @Override
-   default boolean a(@Nullable cmx $$0, dcc $$1, jd $$2, dtc $$3, epb $$4) {
-      return $$4 == epd.c;
+   default boolean a(@Nullable cmx $$0, dcc $$1, jd $$2, dtc $$3, epd $$4) {
+      return $$4 == epf.c;
    }
 
    @Override
-   default boolean a(dcx $$0, jd $$1, dtc $$2, epc $$3) {
-      if (!$$2.c(dts.C) && $$3.a() == epd.c) {
+   default boolean a(dcx $$0, jd $$1, dtc $$2, epe $$3) {
+      if (!$$2.c(dts.C) && $$3.a() == epf.c) {
          if (!$$0.x_()) {
             $$0.a($$1, $$2.a(dts.C, Boolean.valueOf(true)), 3);
             $$0.a($$1, $$3.a(), $$3.a().a($$0));
@@ -37,6 +37,6 @@ public interface dna extends dgf, dkp {
 
    @Override
    default Optional<avo> aw_() {
-      return epd.c.j();
+      return epf.c.j();
    }
 }

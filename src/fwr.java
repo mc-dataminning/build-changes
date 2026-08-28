@@ -1,29 +1,36 @@
-public class fwr<T extends bsr> extends fvr<T> {
-   private final fyi a;
-   private final fyi b;
-   private final fyi f;
+public class fwr<T extends bsr> extends fvt<T> {
+   private final fyk a;
+   private final fyk b;
+   private final fyk f;
 
-   public fwr(fyi $$0) {
+   public fwr(fyk $$0) {
       this.a = $$0;
-      this.b = $$0.b("left_fin");
-      this.f = $$0.b("right_fin");
+      this.b = $$0.b("left_blue_fin");
+      this.f = $$0.b("right_blue_fin");
    }
 
-   public static fyo b() {
-      fyq $$0 = new fyq();
-      fyr $$1 = $$0.a();
-      int $$2 = 23;
-      $$1.a("body", fyn.c().a(0, 27).a(-1.5F, -2.0F, -1.5F, 3.0F, 2.0F, 3.0F), fyk.a(0.0F, 23.0F, 0.0F));
-      $$1.a("right_eye", fyn.c().a(24, 6).a(-1.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), fyk.a(0.0F, 20.0F, 0.0F));
-      $$1.a("left_eye", fyn.c().a(28, 6).a(0.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), fyk.a(0.0F, 20.0F, 0.0F));
-      $$1.a("back_fin", fyn.c().a(-3, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 0.0F, 3.0F), fyk.a(0.0F, 22.0F, 1.5F));
-      $$1.a("right_fin", fyn.c().a(25, 0).a(-1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), fyk.a(-1.5F, 22.0F, -1.5F));
-      $$1.a("left_fin", fyn.c().a(25, 0).a(0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), fyk.a(1.5F, 22.0F, -1.5F));
-      return fyo.a($$0, 32, 32);
+   public static fyq b() {
+      fys $$0 = new fys();
+      fyt $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", fyp.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fym.a(0.0F, 22.0F, 0.0F));
+      $$1.a("right_blue_fin", fyp.c().a(24, 0).a(-2.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), fym.a(-4.0F, 15.0F, -2.0F));
+      $$1.a("left_blue_fin", fyp.c().a(24, 3).a(0.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), fym.a(4.0F, 15.0F, -2.0F));
+      $$1.a("top_front_fin", fyp.c().a(15, 17).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), fym.a(0.0F, 14.0F, -4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("top_middle_fin", fyp.c().a(14, 16).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 1.0F), fym.a(0.0F, 14.0F, 0.0F));
+      $$1.a("top_back_fin", fyp.c().a(23, 18).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), fym.a(0.0F, 14.0F, 4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_front_fin", fyp.c().a(5, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fym.a(-4.0F, 22.0F, -4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("left_front_fin", fyp.c().a(1, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fym.a(4.0F, 22.0F, -4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("bottom_front_fin", fyp.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fym.a(0.0F, 22.0F, -4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("bottom_middle_fin", fyp.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fym.a(0.0F, 22.0F, 0.0F));
+      $$1.a("bottom_back_fin", fyp.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fym.a(0.0F, 22.0F, 4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_back_fin", fyp.c().a(9, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fym.a(-4.0F, 22.0F, 4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("left_back_fin", fyp.c().a(9, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fym.a(4.0F, 22.0F, 4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      return fyq.a($$0, 32, 32);
    }
 
    @Override
-   public fyi a() {
+   public fyk a() {
       return this.a;
    }
 

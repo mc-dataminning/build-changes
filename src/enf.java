@@ -1,13 +1,19 @@
 import com.mojang.serialization.MapCodec;
 
-public interface enf<P extends ene> {
-   enf<end> a = a("always_true", end.a);
-   enf<ena> b = a("linear_pos", ena.a);
-   enf<emp> c = a("axis_aligned_linear_pos", emp.a);
+public class enf extends eng {
+   public static final MapCodec<enf> a = MapCodec.unit(() -> enf.b);
+   public static final enf b = new enf();
 
-   MapCodec<P> codec();
+   private enf() {
+   }
 
-   static <P extends ene> enf<P> a(String $$0, MapCodec<P> $$1) {
-      return jz.a(lt.o, $$0, () -> $$1);
+   @Override
+   public boolean a(jd $$0, jd $$1, jd $$2, ayw $$3) {
+      return true;
+   }
+
+   @Override
+   protected enh<?> a() {
+      return enh.a;
    }
 }

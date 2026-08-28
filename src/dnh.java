@@ -7,7 +7,7 @@ public class dnh extends dfy {
    private static final int d = 24000;
    private static final int e = 12000;
    private static final int f = 300;
-   private static final ext g = dfy.a(1.0, 0.0, 2.0, 15.0, 16.0, 14.0);
+   private static final exv g = dfy.a(1.0, 0.0, 2.0, 15.0, 16.0, 14.0);
 
    @Override
    public MapCodec<dnh> a() {
@@ -25,7 +25,7 @@ public class dnh extends dfy {
    }
 
    @Override
-   public ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   public exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return g;
    }
 
@@ -47,7 +47,7 @@ public class dnh extends dfy {
          $$1.b($$2, false);
          chv $$4 = bsx.aR.a((dcw)$$1);
          if ($$4 != null) {
-            exa $$5 = $$2.b();
+            exc $$5 = $$2.b();
             $$4.a(true);
             $$4.b($$5.a(), $$5.b(), $$5.c(), ayo.g($$1.z.i() * 360.0F), 0.0F);
             $$1.b($$4);
@@ -69,11 +69,11 @@ public class dnh extends dfy {
    }
 
    @Override
-   public boolean a(dtc $$0, epr $$1) {
+   public boolean a(dtc $$0, ept $$1) {
       return false;
    }
 
    public static boolean a(dcc $$0, jd $$1) {
-      return $$0.a_($$1.e()).a(awe.cs);
+      return $$0.a_($$1.e()).a(awe.ct);
    }
 }

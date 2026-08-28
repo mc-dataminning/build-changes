@@ -37,9 +37,9 @@ public abstract class duy implements dcc, ddy.a, dvk, dvu {
    @Nullable
    protected eab g;
    protected final Map<dyy.a, dyy> h = Maps.newEnumMap(dyy.a.class);
-   protected eom i;
-   private final Map<ejp, ejx> s = Maps.newHashMap();
-   private final Map<ejp, LongSet> t = Maps.newHashMap();
+   protected eoo i;
+   private final Map<ejr, ejz> s = Maps.newHashMap();
+   private final Map<ejr, LongSet> t = Maps.newHashMap();
    protected final Map<jd, ub> j = Maps.newHashMap();
    protected final Map<jd, dqh> k = new Object2ObjectOpenHashMap();
    protected final dcy l;
@@ -53,7 +53,7 @@ public abstract class duy implements dcc, ddy.a, dvk, dvu {
       this.q = $$4;
       this.b = new ShortList[$$2.an()];
       this.g = $$6;
-      this.i = new eom($$2);
+      this.i = new eoo($$2);
       if ($$5 != null) {
          if (this.m.length == $$5.length) {
             System.arraycopy($$5, 0, this.m, 0, this.m.length);
@@ -155,44 +155,44 @@ public abstract class duy implements dcc, ddy.a, dvk, dvu {
 
    @Nullable
    @Override
-   public ejx a(ejp $$0) {
+   public ejz a(ejr $$0) {
       return this.s.get($$0);
    }
 
    @Override
-   public void a(ejp $$0, ejx $$1) {
+   public void a(ejr $$0, ejz $$1) {
       this.s.put($$0, $$1);
       this.c = true;
    }
 
-   public Map<ejp, ejx> g() {
+   public Map<ejr, ejz> g() {
       return Collections.unmodifiableMap(this.s);
    }
 
-   public void a(Map<ejp, ejx> $$0) {
+   public void a(Map<ejr, ejz> $$0) {
       this.s.clear();
       this.s.putAll($$0);
       this.c = true;
    }
 
    @Override
-   public LongSet b(ejp $$0) {
+   public LongSet b(ejr $$0) {
       return this.t.getOrDefault($$0, o);
    }
 
    @Override
-   public void a(ejp $$0, long $$1) {
+   public void a(ejr $$0, long $$1) {
       this.t.computeIfAbsent($$0, $$0x -> new LongOpenHashSet()).add($$1);
       this.c = true;
    }
 
    @Override
-   public Map<ejp, LongSet> h() {
+   public Map<ejr, LongSet> h() {
       return Collections.unmodifiableMap(this.t);
    }
 
    @Override
-   public void b(Map<ejp, LongSet> $$0) {
+   public void b(Map<ejr, LongSet> $$0) {
       this.t.clear();
       this.t.putAll($$0);
       this.c = true;
@@ -294,9 +294,9 @@ public abstract class duy implements dcc, ddy.a, dvk, dvu {
       }
    }
 
-   public abstract eyu<dfy> o();
+   public abstract eyw<dfy> o();
 
-   public abstract eyu<epb> p();
+   public abstract eyw<epd> p();
 
    public abstract duy.a q();
 
@@ -424,10 +424,10 @@ public abstract class duy implements dcc, ddy.a, dvk, dvu {
    }
 
    @Override
-   public eom B() {
+   public eoo B() {
       return this.i;
    }
 
-   public static record a(eys<dfy> a, eys<epb> b) {
+   public static record a(eyu<dfy> a, eyu<epd> b) {
    }
 }

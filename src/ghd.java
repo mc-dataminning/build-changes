@@ -1,112 +1,58 @@
-import java.util.Calendar;
+public class ghd implements ggz<dql> {
+   private final glh a;
 
-public class ghd<T extends dqh & drl> implements ggx<T> {
-   private static final String a = "bottom";
-   private static final String b = "lid";
-   private static final String c = "lock";
-   private final fyi d;
-   private final fyi e;
-   private final fyi f;
-   private final fyi g;
-   private final fyi h;
-   private final fyi i;
-   private final fyi j;
-   private final fyi k;
-   private final fyi l;
-   private boolean m;
-
-   public ghd(ggy.a $$0) {
-      Calendar $$1 = Calendar.getInstance();
-      if ($$1.get(2) + 1 == 12 && $$1.get(5) >= 24 && $$1.get(5) <= 26) {
-         this.m = true;
-      }
-
-      fyi $$2 = $$0.a(fyh.y);
-      this.e = $$2.b("bottom");
-      this.d = $$2.b("lid");
-      this.f = $$2.b("lock");
-      fyi $$3 = $$0.a(fyh.P);
-      this.h = $$3.b("bottom");
-      this.g = $$3.b("lid");
-      this.i = $$3.b("lock");
-      fyi $$4 = $$0.a(fyh.Q);
-      this.k = $$4.b("bottom");
-      this.j = $$4.b("lid");
-      this.l = $$4.b("lock");
+   public ghd(gha.a $$0) {
+      this.a = $$0.d();
    }
 
-   public static fyo b() {
-      fyq $$0 = new fyq();
-      fyr $$1 = $$0.a();
-      $$1.a("bottom", fyn.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 14.0F, 10.0F, 14.0F), fyk.a);
-      $$1.a("lid", fyn.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 14.0F, 5.0F, 14.0F), fyk.a(0.0F, 9.0F, 1.0F));
-      $$1.a("lock", fyn.c().a(0, 0).a(7.0F, -2.0F, 14.0F, 2.0F, 4.0F, 1.0F), fyk.a(0.0F, 9.0F, 1.0F));
-      return fyo.a($$0, 64, 64);
-   }
-
-   public static fyo c() {
-      fyq $$0 = new fyq();
-      fyr $$1 = $$0.a();
-      $$1.a("bottom", fyn.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), fyk.a);
-      $$1.a("lid", fyn.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), fyk.a(0.0F, 9.0F, 1.0F));
-      $$1.a("lock", fyn.c().a(0, 0).a(15.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), fyk.a(0.0F, 9.0F, 1.0F));
-      return fyo.a($$0, 64, 64);
-   }
-
-   public static fyo d() {
-      fyq $$0 = new fyq();
-      fyr $$1 = $$0.a();
-      $$1.a("bottom", fyn.c().a(0, 19).a(0.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), fyk.a);
-      $$1.a("lid", fyn.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), fyk.a(0.0F, 9.0F, 1.0F));
-      $$1.a("lock", fyn.c().a(0, 0).a(0.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), fyk.a(0.0F, 9.0F, 1.0F));
-      return fyo.a($$0, 64, 64);
-   }
-
-   @Override
-   public void a(T $$0, float $$1, fbg $$2, gex $$3, int $$4, int $$5) {
-      dcw $$6 = $$0.i();
-      boolean $$7 = $$6 != null;
-      dtc $$8 = $$7 ? $$0.n() : dga.cv.o().a(dhb.c, ji.d);
-      dtu $$9 = $$8.b(dhb.d) ? $$8.c(dhb.d) : dtu.a;
-      if ($$8.b() instanceof des<?> $$11) {
-         boolean $$12 = $$9 != dtu.a;
-         $$2.a();
-         float $$13 = $$8.c(dhb.c).p();
-         $$2.a(0.5F, 0.5F, 0.5F);
-         $$2.a(a.d.rotationDegrees(-$$13));
-         $$2.a(-0.5F, -0.5F, -0.5F);
-         dif.c<? extends dqo> $$14;
-         if ($$7) {
-            $$14 = $$11.a($$8, $$6, $$0.aD_(), true);
-         } else {
-            $$14 = dif.b::b;
-         }
-
-         float $$16 = $$14.apply(dhb.a($$0)).get($$1);
-         $$16 = 1.0F - $$16;
-         $$16 = 1.0F - $$16 * $$16 * $$16;
-         int $$17 = $$14.apply(new gha<>()).applyAsInt($$4);
-         gso $$18 = gfm.a($$0, $$9, this.m);
-         fbk $$19 = $$18.a($$3, gff::d);
-         if ($$12) {
-            if ($$9 == dtu.b) {
-               this.a($$2, $$19, this.g, this.i, this.h, $$16, $$17, $$5);
-            } else {
-               this.a($$2, $$19, this.j, this.l, this.k, $$16, $$17, $$5);
+   public void a(dql $$0, float $$1, fbi $$2, gez $$3, int $$4, int $$5) {
+      if ($$0.i() != null) {
+         int $$6 = $$0.n().c(dts.bv);
+         if ($$6 > 0) {
+            ji $$7 = $$0.d();
+            if ($$7 != null) {
+               cuq $$8 = $$0.f();
+               if (!$$8.e()) {
+                  $$2.a();
+                  $$2.a(0.0F, 0.5F, 0.0F);
+                  float[] $$9 = this.a($$7, $$6);
+                  $$2.a($$9[0], $$9[1], $$9[2]);
+                  $$2.a(a.d.rotationDegrees(75.0F));
+                  boolean $$10 = $$7 == ji.f || $$7 == ji.e;
+                  $$2.a(a.d.rotationDegrees((float)(($$10 ? 90 : 0) + 11)));
+                  $$2.b(0.5F, 0.5F, 0.5F);
+                  int $$11 = gex.a($$0.i(), $$0.n(), $$0.aD_().a($$7));
+                  this.a.a($$8, cun.i, $$11, gqc.d, $$2, $$3, $$0.i(), 0);
+                  $$2.b();
+               }
             }
-         } else {
-            this.a($$2, $$19, this.d, this.f, this.e, $$16, $$17, $$5);
          }
-
-         $$2.b();
       }
    }
 
-   private void a(fbg $$0, fbk $$1, fyi $$2, fyi $$3, fyi $$4, float $$5, int $$6, int $$7) {
-      $$2.e = -($$5 * (float) (Math.PI / 2));
-      $$3.e = $$2.e;
-      $$2.a($$0, $$1, $$6, $$7);
-      $$3.a($$0, $$1, $$6, $$7);
-      $$4.a($$0, $$1, $$6, $$7);
+   private float[] a(ji $$0, int $$1) {
+      float[] $$2 = new float[]{0.5F, 0.0F, 0.5F};
+      float $$3 = (float)$$1 / 10.0F * 0.75F;
+      switch ($$0) {
+         case f:
+            $$2[0] = 0.73F + $$3;
+            break;
+         case e:
+            $$2[0] = 0.25F - $$3;
+            break;
+         case b:
+            $$2[1] = 0.25F + $$3;
+            break;
+         case a:
+            $$2[1] = -0.23F - $$3;
+            break;
+         case c:
+            $$2[2] = 0.25F - $$3;
+            break;
+         case d:
+            $$2[2] = 0.73F + $$3;
+      }
+
+      return $$2;
    }
 }

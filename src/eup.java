@@ -1,48 +1,42 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-public record eup(jm<dac> b, List<Float> c) implements eva {
-   public static final MapCodec<eup> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dac.c.fieldOf("enchantment").forGetter(eup::c), axw.a(Codec.FLOAT.listOf()).fieldOf("chances").forGetter(eup::d)).apply($$0, eup::new)
-   );
+public class eup extends eus {
+   public static final MapCodec<eup> a = a(eup::new);
+   public static final Codec<eup> b = b(eup::new);
 
-   @Override
-   public evb b() {
-      return evc.k;
+   eup(List<evc> $$0) {
+      super($$0, ad.a($$0));
+   }
+
+   public static eup a(List<evc> $$0) {
+      return new eup(List.copyOf($$0));
    }
 
    @Override
-   public Set<eui<?>> a() {
-      return ImmutableSet.of(eul.i);
+   public evd b() {
+      return eve.c;
    }
 
-   public boolean a(erp $$0) {
-      cuq $$1 = $$0.c(eul.i);
-      int $$2 = $$1 != null ? dae.a(this.b, $$1) : 0;
-      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
-      return $$0.b().i() < $$3;
+   public static eup.a a(evc.a... $$0) {
+      return new eup.a($$0);
    }
 
-   public static eva.a a(jm<dac> $$0, float... $$1) {
-      List<Float> $$2 = new ArrayList<>($$1.length);
-
-      for (float $$3 : $$1) {
-         $$2.add($$3);
+   public static class a extends eus.a {
+      public a(evc.a... $$0) {
+         super($$0);
       }
 
-      return () -> new eup($$0, $$2);
-   }
+      @Override
+      public eup.a and(evc.a $$0) {
+         this.a($$0);
+         return this;
+      }
 
-   public jm<dac> c() {
-      return this.b;
-   }
-
-   public List<Float> d() {
-      return this.c;
+      @Override
+      protected evc a(List<evc> $$0) {
+         return new eup($$0);
+      }
    }
 }

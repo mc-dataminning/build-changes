@@ -35,7 +35,7 @@ public class bsx<T extends bsr> implements cpi, dxn<bsr, T> {
    public static final bsx<cjo> q = a("cave_spider", bsx.a.a(cjo::new, btq.a).a(0.7F, 0.5F).b(0.45F).a(8));
    public static final bsx<cow> r = a("chest_boat", bsx.a.<cow>a(cow::new, btq.h).a(1.375F, 0.5625F).b(0.5625F).a(10));
    public static final bsx<cpa> s = a("chest_minecart", bsx.a.<cpa>a(cpa::new, btq.h).a(0.98F, 0.7F).a(0.1875F).a(8));
-   public static final bsx<cfj> t = a("chicken", bsx.a.a(cfj::new, btq.b).a(0.4F, 0.7F).b(0.644F).a(new exa(0.0, 0.7, -0.1)).a(10));
+   public static final bsx<cfj> t = a("chicken", bsx.a.a(cfj::new, btq.b).a(0.4F, 0.7F).b(0.644F).a(new exc(0.0, 0.7, -0.1)).a(10));
    public static final bsx<cfk> u = a("cod", bsx.a.a(cfk::new, btq.g).a(0.5F, 0.3F).b(0.195F).a(4));
    public static final bsx<cpb> v = a("command_block_minecart", bsx.a.<cpb>a(cpb::new, btq.h).a(0.98F, 0.7F).a(0.1875F).a(8));
    public static final bsx<cfl> w = a("cow", bsx.a.a(cfl::new, btq.b).a(0.9F, 1.4F).b(1.3F).a(1.36875F).a(10));
@@ -46,7 +46,7 @@ public class bsx<T extends bsr> implements cpi, dxn<bsr, T> {
    public static final bsx<cjr> B = a("drowned", bsx.a.a(cjr::new, btq.a).a(0.6F, 1.95F).b(1.74F).a(2.0125F).c(-0.7F).a(8));
    public static final bsx<cny> C = a("egg", bsx.a.<cny>a(cny::new, btq.h).a(0.25F, 0.25F).a(4).b(10));
    public static final bsx<cjs> D = a("elder_guardian", bsx.a.a(cjs::new, btq.a).a(1.9975F, 1.9975F).b(0.99875F).a(2.350625F).a(10));
-   public static final bsx<chz> E = a("end_crystal", bsx.a.<chz>a(chz::new, btq.h).a(2.0F, 2.0F).a(16).b(Integer.MAX_VALUE));
+   public static final bsx<chz> E = a("end_crystal", bsx.a.<chz>a(chz::new, btq.h).c().a(2.0F, 2.0F).a(16).b(Integer.MAX_VALUE));
    public static final bsx<cia> F = a("ender_dragon", bsx.a.a(cia::new, btq.a).c().a(16.0F, 8.0F).a(3.0F).a(10));
    public static final bsx<cnz> G = a("ender_pearl", bsx.a.<cnz>a(cnz::new, btq.h).a(0.25F, 0.25F).a(4).b(10));
    public static final bsx<cjt> H = a("enderman", bsx.a.a(cjt::new, btq.a).a(0.6F, 2.9F).b(2.55F).a(2.80625F).a(8));
@@ -58,8 +58,8 @@ public class bsx<T extends bsr> implements cpi, dxn<bsr, T> {
    public static final bsx<cni> N = a("eye_of_ender", bsx.a.<cni>a(cni::new, btq.h).a(0.25F, 0.25F).a(4).b(4));
    public static final bsx<cjg> O = a("falling_block", bsx.a.<cjg>a(cjg::new, btq.h).a(0.98F, 0.98F).a(10).b(20));
    public static final bsx<cnk> P = a("firework_rocket", bsx.a.<cnk>a(cnk::new, btq.h).a(0.25F, 0.25F).a(4).b(10));
-   public static final bsx<cfo> Q = a("fox", bsx.a.a(cfo::new, btq.b).a(0.6F, 0.7F).b(0.4F).a(new exa(0.0, 0.6375, -0.25)).a(8).a(dga.oi));
-   public static final bsx<cgy> R = a("frog", bsx.a.a(cgy::new, btq.b).a(0.5F, 0.5F).a(new exa(0.0, 0.375, -0.25)).a(10));
+   public static final bsx<cfo> Q = a("fox", bsx.a.a(cfo::new, btq.b).a(0.6F, 0.7F).b(0.4F).a(new exc(0.0, 0.6375, -0.25)).a(8).a(dga.oi));
+   public static final bsx<cgy> R = a("frog", bsx.a.a(cgy::new, btq.b).a(0.5F, 0.5F).a(new exc(0.0, 0.375, -0.25)).a(10));
    public static final bsx<cpc> S = a("furnace_minecart", bsx.a.<cpc>a(cpc::new, btq.h).a(0.98F, 0.7F).a(0.1875F).a(8));
    public static final bsx<cjx> T = a("ghast", bsx.a.a(cjx::new, btq.a).c().a(4.0F, 4.0F).b(2.6F).a(4.0625F).c(0.5F).a(10));
    public static final bsx<cjy> U = a("giant", bsx.a.a(cjy::new, btq.a).a(3.6F, 12.0F).b(10.44F).c(-3.75F).a(10));
@@ -81,7 +81,7 @@ public class bsx<T extends bsr> implements cpi, dxn<bsr, T> {
    public static final bsx<cnn> ak = a("fireball", bsx.a.<cnn>a(cnn::new, btq.h).a(1.0F, 1.0F).a(4).b(10));
    public static final bsx<cjb> al = a("leash_knot", bsx.a.<cjb>a(cjb::new, btq.h).b().a(0.375F, 0.5F).b(0.0625F).a(10).b(Integer.MAX_VALUE));
    public static final bsx<btm> am = a("lightning_bolt", bsx.a.a(btm::new, btq.h).b().a(0.0F, 0.0F).a(16).b(Integer.MAX_VALUE));
-   public static final bsx<chl> an = a("llama", bsx.a.a(chl::new, btq.b).a(0.9F, 1.87F).b(1.7765F).a(new exa(0.0, 1.37, -0.3)).a(10));
+   public static final bsx<chl> an = a("llama", bsx.a.a(chl::new, btq.b).a(0.9F, 1.87F).b(1.7765F).a(new exc(0.0, 1.37, -0.3)).a(10));
    public static final bsx<cno> ao = a("llama_spit", bsx.a.<cno>a(cno::new, btq.h).a(0.25F, 0.25F).a(4).b(10));
    public static final bsx<ckc> ap = a("magma_cube", bsx.a.a(ckc::new, btq.a).c().a(0.52F, 0.52F).b(0.325F).a(4.0F).a(8));
    public static final bsx<bto> aq = a("marker", bsx.a.a(bto::new, btq.h).a(0.0F, 0.0F).a(0));
@@ -101,7 +101,7 @@ public class bsx<T extends bsr> implements cpi, dxn<bsr, T> {
    public static final bsx<cob> aE = a("potion", bsx.a.<cob>a(cob::new, btq.h).a(0.25F, 0.25F).a(4).b(10));
    public static final bsx<cfx> aF = a("pufferfish", bsx.a.a(cfx::new, btq.g).a(0.7F, 0.7F).b(0.455F).a(4));
    public static final bsx<cfy> aG = a("rabbit", bsx.a.a(cfy::new, btq.b).a(0.4F, 0.5F).a(8));
-   public static final bsx<cki> aH = a("ravager", bsx.a.a(cki::new, btq.a).a(1.95F, 2.2F).a(new exa(0.0, 2.2625, -0.0625)).a(10));
+   public static final bsx<cki> aH = a("ravager", bsx.a.a(cki::new, btq.a).a(1.95F, 2.2F).a(new exc(0.0, 2.2625, -0.0625)).a(10));
    public static final bsx<cfz> aI = a("salmon", bsx.a.a(cfz::new, btq.g).a(0.7F, 0.4F).b(0.26F).a(4));
    public static final bsx<cga> aJ = a("sheep", bsx.a.a(cga::new, btq.b).a(0.9F, 1.3F).b(1.235F).a(1.2375F).a(10));
    public static final bsx<ckj> aK = a("shulker", bsx.a.a(ckj::new, btq.a).c().d().a(1.0F, 1.0F).b(0.5F).a(10));
@@ -124,10 +124,10 @@ public class bsx<T extends bsr> implements cpi, dxn<bsr, T> {
    public static final bsx<bsq.l> bb = a("text_display", bsx.a.a(bsq.l::new, btq.h).a(0.0F, 0.0F).a(10).b(1));
    public static final bsx<cji> bc = a("tnt", bsx.a.<cji>a(cji::new, btq.h).c().a(0.98F, 0.98F).b(0.15F).a(10).b(10));
    public static final bsx<cpf> bd = a("tnt_minecart", bsx.a.<cpf>a(cpf::new, btq.h).a(0.98F, 0.7F).a(0.1875F).a(8));
-   public static final bsx<chq> be = a("trader_llama", bsx.a.a(chq::new, btq.b).a(0.9F, 1.87F).b(1.7765F).a(new exa(0.0, 1.37, -0.3)).a(10));
+   public static final bsx<chq> be = a("trader_llama", bsx.a.a(chq::new, btq.b).a(0.9F, 1.87F).b(1.7765F).a(new exc(0.0, 1.37, -0.3)).a(10));
    public static final bsx<coc> bf = a("trident", bsx.a.<coc>a(coc::new, btq.h).a(0.5F, 0.5F).b(0.13F).a(4).b(20));
    public static final bsx<cge> bg = a("tropical_fish", bsx.a.a(cge::new, btq.g).a(0.5F, 0.4F).b(0.26F).a(4));
-   public static final bsx<cgf> bh = a("turtle", bsx.a.a(cgf::new, btq.b).a(1.2F, 0.4F).a(new exa(0.0, 0.55625, -0.25)).a(10));
+   public static final bsx<cgf> bh = a("turtle", bsx.a.a(cgf::new, btq.b).a(1.2F, 0.4F).a(new exc(0.0, 0.55625, -0.25)).a(10));
    public static final bsx<ckr> bi = a("vex", bsx.a.a(ckr::new, btq.a).c().a(0.4F, 0.8F).b(0.51875F).a(0.7375F).c(0.04F).a(8));
    public static final bsx<cmk> bj = a("villager", bsx.a.<cmk>a(cmk::new, btq.h).a(0.6F, 1.95F).b(1.62F).a(10));
    public static final bsx<cks> bk = a("vindicator", bsx.a.a(cks::new, btq.a).a(0.6F, 1.95F).a(2.0F).c(-0.6F).a(8));
@@ -138,7 +138,7 @@ public class bsx<T extends bsr> implements cpi, dxn<bsr, T> {
    public static final bsx<ciu> bp = a("wither", bsx.a.a(ciu::new, btq.a).c().a(dga.cd).a(0.9F, 3.5F).a(10));
    public static final bsx<cku> bq = a("wither_skeleton", bsx.a.a(cku::new, btq.a).c().a(dga.cd).a(0.7F, 2.4F).b(2.1F).c(-0.875F).a(8));
    public static final bsx<cod> br = a("wither_skull", bsx.a.<cod>a(cod::new, btq.h).a(0.3125F, 0.3125F).a(4).b(10));
-   public static final bsx<cgh> bs = a("wolf", bsx.a.a(cgh::new, btq.b).a(0.6F, 0.85F).b(0.68F).a(new exa(0.0, 0.81875, -0.0625)).a(10));
+   public static final bsx<cgh> bs = a("wolf", bsx.a.a(cgh::new, btq.b).a(0.6F, 0.85F).b(0.68F).a(new exc(0.0, 0.81875, -0.0625)).a(10));
    public static final bsx<ckv> bt = a("zoglin", bsx.a.a(ckv::new, btq.a).c().a(1.3964844F, 1.4F).a(1.49375F).a(8));
    public static final bsx<ckw> bu = a("zombie", bsx.a.<ckw>a(ckw::new, btq.a).a(0.6F, 1.95F).b(1.74F).a(2.0125F).c(-0.7F).a(8));
    public static final bsx<chs> bv = a("zombie_horse", bsx.a.a(chs::new, btq.b).a(1.3964844F, 1.6F).b(1.52F).a(1.31875F).a(10));
@@ -160,7 +160,7 @@ public class bsx<T extends bsr> implements cpi, dxn<bsr, T> {
    @Nullable
    private wz bP;
    @Nullable
-   private akq<eru> bQ;
+   private akq<erw> bQ;
    private final bsu bR;
    private final float bS;
    private final cpl bT;
@@ -248,16 +248,16 @@ public class bsx<T extends bsr> implements cpi, dxn<bsr, T> {
          double $$7;
          if ($$4) {
             $$6.a_((double)$$2.u() + 0.5, (double)($$2.v() + 1), (double)$$2.w() + 0.5);
-            $$7 = a($$0, $$2, $$5, $$6.cL());
+            $$7 = a($$0, $$2, $$5, $$6.cK());
          } else {
             $$7 = 0.0;
          }
 
          $$6.b((double)$$2.u() + 0.5, (double)$$2.v() + $$7, (double)$$2.w() + 0.5, ayo.g($$0.z.i() * 360.0F), 0.0F);
          if ($$6 instanceof btp $$9) {
-            $$9.ba = $$9.dF();
-            $$9.aY = $$9.dF();
-            $$9.a($$0, $$0.d_($$9.dp()), $$3, null);
+            $$9.ba = $$9.dE();
+            $$9.aY = $$9.dE();
+            $$9.a($$0, $$0.d_($$9.do()), $$3, null);
             $$9.S();
          }
 
@@ -269,20 +269,20 @@ public class bsx<T extends bsr> implements cpi, dxn<bsr, T> {
       }
    }
 
-   protected static double a(dcz $$0, jd $$1, boolean $$2, ewv $$3) {
-      ewv $$4 = new ewv($$1);
+   protected static double a(dcz $$0, jd $$1, boolean $$2, ewx $$3) {
+      ewx $$4 = new ewx($$1);
       if ($$2) {
          $$4 = $$4.b(0.0, -1.0, 0.0);
       }
 
-      Iterable<ext> $$5 = $$0.d(null, $$4);
-      return 1.0 + exq.a(ji.a.b, $$3, $$5, $$2 ? -2.0 : -1.0);
+      Iterable<exv> $$5 = $$0.d(null, $$4);
+      return 1.0 + exs.a(ji.a.b, $$3, $$5, $$2 ? -2.0 : -1.0);
    }
 
    public static void a(dcw $$0, @Nullable cmx $$1, @Nullable bsr $$2, cxh $$3) {
       MinecraftServer $$4 = $$0.o();
       if ($$4 != null && $$2 != null) {
-         if ($$0.B || !$$2.cQ() || $$1 != null && $$4.ah().f($$1.fY())) {
+         if ($$0.B || !$$2.cP() || $$1 != null && $$4.ah().f($$1.fX())) {
             $$3.a($$2);
          }
       }
@@ -334,7 +334,7 @@ public class bsx<T extends bsr> implements cpi, dxn<bsr, T> {
       return $$0 == -1 ? this.g() : this.g().substring($$0 + 1);
    }
 
-   public akq<eru> k() {
+   public akq<erw> k() {
       if (this.bQ == null) {
          akr $$0 = lt.f.b(this);
          this.bQ = akq.a(lu.bc, $$0.f("entities/"));
@@ -365,17 +365,17 @@ public class bsx<T extends bsr> implements cpi, dxn<bsr, T> {
       return ad.a(a($$0).map($$1x -> $$1x.a($$1)), $$1x -> $$1x.g($$0), () -> bB.warn("Skipping Entity with id {}", $$0.l("id")));
    }
 
-   public ewv a(double $$0, double $$1, double $$2) {
+   public ewx a(double $$0, double $$1, double $$2) {
       float $$3 = this.bS * this.l() / 2.0F;
       float $$4 = this.bS * this.m();
-      return new ewv($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3);
+      return new ewx($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3);
    }
 
    public boolean a(dtc $$0) {
       if (this.bH.contains($$0.b())) {
          return false;
       } else {
-         return !this.bK && epp.a($$0) ? true : $$0.a(dga.cd) || $$0.a(dga.oi) || $$0.a(dga.dQ) || $$0.a(dga.qP);
+         return !this.bK && epr.a($$0) ? true : $$0.a(dga.cd) || $$0.a(dga.oi) || $$0.a(dga.dQ) || $$0.a(dga.qP);
       }
    }
 
@@ -529,15 +529,15 @@ public class bsx<T extends bsr> implements cpi, dxn<bsr, T> {
          return this;
       }
 
-      public bsx.a<T> a(exa... $$0) {
-         for (exa $$1 : $$0) {
+      public bsx.a<T> a(exc... $$0) {
+         for (exc $$1 : $$0) {
             this.l = this.l.a(bss.a, $$1);
          }
 
          return this;
       }
 
-      public bsx.a<T> a(exa $$0) {
+      public bsx.a<T> a(exc $$0) {
          return this.a(bss.b, $$0);
       }
 
@@ -554,7 +554,7 @@ public class bsx<T extends bsr> implements cpi, dxn<bsr, T> {
          return this;
       }
 
-      public bsx.a<T> a(bss $$0, exa $$1) {
+      public bsx.a<T> a(bss $$0, exc $$1) {
          this.l = this.l.a($$0, $$1);
          return this;
       }

@@ -1,21 +1,17 @@
-public class gjt extends gln<cfk, fuy<cfk>> {
-   private static final akr a = akr.b("textures/entity/fish/cod.png");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gjt(gkh.a $$0) {
-      super($$0, new fuy<>($$0.a(fyh.B)), 0.3F);
+public class gjt<T extends chh> extends gjd<T, fuy<T>> {
+   private static final Map<bsx<?>, akr> a = Maps.newHashMap(
+      ImmutableMap.of(bsx.z, akr.b("textures/entity/horse/donkey.png"), bsx.at, akr.b("textures/entity/horse/mule.png"))
+   );
+
+   public gjt(gkj.a $$0, float $$1, fyi $$2) {
+      super($$0, new fuy<>($$0.a($$2)), $$1);
    }
 
-   public akr a(cfk $$0) {
-      return a;
-   }
-
-   protected void a(cfk $$0, fbg $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = 4.3F * ayo.a(0.6F * $$2);
-      $$1.a(a.d.rotationDegrees($$6));
-      if (!$$0.bf()) {
-         $$1.a(0.1F, 0.1F, -0.1F);
-         $$1.a(a.f.rotationDegrees(90.0F));
-      }
+   public akr a(T $$0) {
+      return a.get($$0.am());
    }
 }

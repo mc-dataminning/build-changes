@@ -26,8 +26,8 @@ public class clr {
    }
 
    protected static void a(clq $$0) {
-      jl $$1 = jl.a($$0.dP().af(), $$0.dp());
-      $$0.dU().a(ccs.b, $$1);
+      jl $$1 = jl.a($$0.dO().af(), $$0.do());
+      $$0.dT().a(ccs.b, $$1);
    }
 
    private static void b(clq $$0, buq<clq> $$1) {
@@ -68,7 +68,7 @@ public class clr {
    }
 
    protected static void b(clq $$0) {
-      buq<clq> $$1 = $$0.dU();
+      buq<clq> $$1 = $$0.dT();
       com $$2 = $$1.g().orElse(null);
       $$1.a(ImmutableList.of(com.k, com.b));
       com $$3 = $$1.g().orElse(null);
@@ -76,7 +76,7 @@ public class clr {
          d($$0);
       }
 
-      $$0.v($$1.a(ccs.o));
+      $$0.w($$1.a(ccs.o));
    }
 
    private static boolean a(clm $$0, btn $$1) {
@@ -89,12 +89,12 @@ public class clr {
          return $$1;
       } else {
          Optional<? extends btn> $$2 = a($$0, ccs.l);
-         return $$2.isPresent() ? $$2 : $$0.dU().c(ccs.M);
+         return $$2.isPresent() ? $$2 : $$0.dT().c(ccs.M);
       }
    }
 
    private static Optional<? extends btn> a(clm $$0, ccs<? extends btn> $$1) {
-      return $$0.dU().c($$1).filter($$1x -> $$1x.a($$0, 12.0));
+      return $$0.dT().c($$1).filter($$1x -> $$1x.a($$0, 12.0));
    }
 
    protected static void a(clq $$0, btn $$1) {
@@ -104,20 +104,20 @@ public class clr {
    }
 
    protected static void b(clq $$0, btn $$1) {
-      $$0.dU().b(ccs.E);
-      $$0.dU().a(ccs.ab, $$1.cA(), 600L);
+      $$0.dT().b(ccs.E);
+      $$0.dT().a(ccs.ab, $$1.cz(), 600L);
    }
 
    protected static void c(clq $$0) {
-      if ((double)$$0.dP().z.i() < 0.0125) {
+      if ((double)$$0.dO().z.i() < 0.0125) {
          d($$0);
       }
    }
 
    private static void d(clq $$0) {
-      $$0.dU().g().ifPresent($$1 -> {
+      $$0.dT().g().ifPresent($$1 -> {
          if ($$1 == com.k) {
-            $$0.gs();
+            $$0.gr();
          }
       });
    }

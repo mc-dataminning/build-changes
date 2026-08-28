@@ -5,7 +5,7 @@ public abstract class dfl extends dfy {
    private static final int c = 8;
    private final float d;
    protected static final float a = 1.0F;
-   protected static final ext b = dfy.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
+   protected static final exv b = dfy.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
 
    public dfl(dtb.d $$0, float $$1) {
       super($$0);
@@ -27,7 +27,7 @@ public abstract class dfl extends dfy {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return b;
    }
 
@@ -113,7 +113,7 @@ public abstract class dfl extends dfy {
    protected void b(dtc $$0, dcw $$1, jd $$2, dtc $$3, boolean $$4) {
       if (!$$3.a($$0.b())) {
          if (a($$1)) {
-            Optional<eqc> $$5 = eqc.a($$1, $$2, ji.a.a);
+            Optional<eqe> $$5 = eqe.a($$1, $$2, ji.a.a);
             if ($$5.isPresent()) {
                $$5.get().b();
                return;
@@ -166,7 +166,7 @@ public abstract class dfl extends dfy {
             return false;
          } else {
             ji.a $$6 = $$2.o().d() ? $$2.i().o() : ji.c.a.b($$0.z);
-            return eqc.a($$0, $$1, $$6).isPresent();
+            return eqe.a($$0, $$1, $$6).isPresent();
          }
       }
    }

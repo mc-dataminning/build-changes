@@ -1,67 +1,111 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
+import it.unimi.dsi.fastutil.ints.IntConsumer;
+import java.nio.ByteBuffer;
+import java.nio.FloatBuffer;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableLong;
 import org.joml.Vector3f;
+import org.lwjgl.system.MemoryUtil;
 
-public class fbh implements fbk {
-   private final fbk a;
-   private final Matrix4f b;
-   private final Matrix3f c;
-   private final float d;
-   private final Vector3f e = new Vector3f();
-   private final Vector3f f = new Vector3f();
-   private float g;
-   private float h;
-   private float i;
+public class fbh implements AutoCloseable {
+   private final fbf.a a;
+   @Nullable
+   private fbf.a b;
+   private final fbh.a c;
 
-   public fbh(fbk $$0, fbg.a $$1, float $$2) {
+   public fbh(fbf.a $$0, fbh.a $$1) {
       this.a = $$0;
-      this.b = new Matrix4f($$1.a()).invert();
-      this.c = new Matrix3f($$1.b()).invert();
-      this.d = $$2;
+      this.c = $$1;
+   }
+
+   private static Vector3f[] a(ByteBuffer $$0, int $$1, fbn $$2) {
+      int $$3 = $$2.a(fbo.b);
+      if ($$3 == -1) {
+         throw new IllegalArgumentException("Cannot identify quad centers with no position element");
+      } else {
+         FloatBuffer $$4 = $$0.asFloatBuffer();
+         int $$5 = $$2.b() / 4;
+         int $$6 = $$5 * 4;
+         int $$7 = $$1 / 4;
+         Vector3f[] $$8 = new Vector3f[$$7];
+
+         for (int $$9 = 0; $$9 < $$7; $$9++) {
+            int $$10 = $$9 * $$6 + $$3;
+            int $$11 = $$10 + $$5 * 2;
+            float $$12 = $$4.get($$10 + 0);
+            float $$13 = $$4.get($$10 + 1);
+            float $$14 = $$4.get($$10 + 2);
+            float $$15 = $$4.get($$11 + 0);
+            float $$16 = $$4.get($$11 + 1);
+            float $$17 = $$4.get($$11 + 2);
+            $$8[$$9] = new Vector3f(($$12 + $$15) / 2.0F, ($$13 + $$16) / 2.0F, ($$14 + $$17) / 2.0F);
+         }
+
+         return $$8;
+      }
+   }
+
+   public ByteBuffer a() {
+      return this.a.a();
+   }
+
+   @Nullable
+   public ByteBuffer b() {
+      return this.b != null ? this.b.a() : null;
+   }
+
+   public fbh.a c() {
+      return this.c;
+   }
+
+   @Nullable
+   public fbh.b a(fbf $$0, fbq $$1) {
+      if (this.c.d() != fbn.c.h) {
+         return null;
+      } else {
+         Vector3f[] $$2 = a(this.a.a(), this.c.b(), this.c.a());
+         fbh.b $$3 = new fbh.b($$2, this.c.e());
+         this.b = $$3.a($$0, $$1);
+         return $$3;
+      }
    }
 
    @Override
-   public fbk a(float $$0, float $$1, float $$2) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.a.a($$0, $$1, $$2);
-      return this;
+   public void close() {
+      this.a.close();
+      if (this.b != null) {
+         this.b.close();
+      }
    }
 
-   @Override
-   public fbk a(int $$0, int $$1, int $$2, int $$3) {
-      this.a.a(-1);
-      return this;
+   public static record a(fbn a, int b, int c, fbn.c d, fbn.b e) {
    }
 
-   @Override
-   public fbk a(float $$0, float $$1) {
-      return this;
-   }
+   public static record b(Vector3f[] a, fbn.b b) {
+      @Nullable
+      public fbf.a a(fbf $$0, fbq $$1) {
+         int[] $$2 = $$1.sort(this.a);
+         long $$3 = $$0.a($$2.length * 6 * this.b.d);
+         IntConsumer $$4 = this.a($$3, this.b);
 
-   @Override
-   public fbk a(int $$0, int $$1) {
-      this.a.a($$0, $$1);
-      return this;
-   }
+         for (int $$5 : $$2) {
+            $$4.accept($$5 * 4 + 0);
+            $$4.accept($$5 * 4 + 1);
+            $$4.accept($$5 * 4 + 2);
+            $$4.accept($$5 * 4 + 2);
+            $$4.accept($$5 * 4 + 3);
+            $$4.accept($$5 * 4 + 0);
+         }
 
-   @Override
-   public fbk b(int $$0, int $$1) {
-      this.a.b($$0, $$1);
-      return this;
-   }
+         return $$0.a();
+      }
 
-   @Override
-   public fbk b(float $$0, float $$1, float $$2) {
-      this.a.b($$0, $$1, $$2);
-      Vector3f $$3 = this.c.transform($$0, $$1, $$2, this.f);
-      ji $$4 = ji.a($$3.x(), $$3.y(), $$3.z());
-      Vector3f $$5 = this.b.transformPosition(this.g, this.h, this.i, this.e);
-      $$5.rotateY((float) Math.PI);
-      $$5.rotateX((float) (-Math.PI / 2));
-      $$5.rotate($$4.b());
-      this.a.a(-$$5.x() * this.d, -$$5.y() * this.d);
-      return this;
+      private IntConsumer a(long $$0, fbn.b $$1) {
+         MutableLong $$2 = new MutableLong($$0);
+
+         return switch ($$1) {
+            case a -> $$1x -> MemoryUtil.memPutShort($$2.getAndAdd(2L), (short)$$1x);
+            case b -> $$1x -> MemoryUtil.memPutInt($$2.getAndAdd(4L), $$1x);
+         };
+      }
    }
 }

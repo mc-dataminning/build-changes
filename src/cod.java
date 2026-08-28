@@ -5,7 +5,7 @@ public class cod extends cne {
       super($$0, $$1);
    }
 
-   public cod(dcw $$0, btn $$1, exa $$2) {
+   public cod(dcw $$0, btn $$1, exc $$2) {
       super(bsx.br, $$1, $$2, $$0);
    }
 
@@ -20,18 +20,18 @@ public class cod extends cne {
    }
 
    @Override
-   public float a(dco $$0, dcc $$1, jd $$2, dtc $$3, epc $$4, float $$5) {
+   public float a(dco $$0, dcc $$1, jd $$2, dtc $$3, epe $$4, float $$5) {
       return this.y() && ciu.c($$3) ? Math.min(0.8F, $$5) : $$5;
    }
 
    @Override
-   protected void a(ewx $$0) {
+   protected void a(ewz $$0) {
       super.a($$0);
-      if (this.dP() instanceof aqu $$1) {
+      if (this.dO() instanceof aqu $$1) {
          bsr var8 = $$0.a();
          boolean $$7;
          if (this.s() instanceof btn $$5) {
-            brk $$6 = this.dQ().a(this, $$5);
+            brk $$6 = this.dP().a(this, $$5);
             $$7 = var8.a($$6, 8.0F);
             if ($$7) {
                if (var8.bE()) {
@@ -41,14 +41,14 @@ public class cod extends cne {
                }
             }
          } else {
-            $$7 = var8.a(this.dQ().p(), 5.0F);
+            $$7 = var8.a(this.dP().p(), 5.0F);
          }
 
          if ($$7 && var8 instanceof btn $$9) {
             int $$10 = 0;
-            if (this.dP().al() == bqo.c) {
+            if (this.dO().al() == bqo.c) {
                $$10 = 10;
-            } else if (this.dP().al() == bqo.d) {
+            } else if (this.dO().al() == bqo.d) {
                $$10 = 40;
             }
 
@@ -60,10 +60,10 @@ public class cod extends cne {
    }
 
    @Override
-   protected void a(ewy $$0) {
+   protected void a(exa $$0) {
       super.a($$0);
-      if (!this.dP().B) {
-         this.dP().a(this, this.du(), this.dw(), this.dA(), 1.0F, false, dcw.a.c);
+      if (!this.dO().B) {
+         this.dO().a(this, this.dt(), this.dv(), this.dz(), 1.0F, false, dcw.a.c);
          this.aq();
       }
    }

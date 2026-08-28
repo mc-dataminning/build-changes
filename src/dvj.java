@@ -26,7 +26,7 @@ public class dvj {
       return this.h.a($$0, $$1, $$2);
    }
 
-   public epc b(int $$0, int $$1, int $$2) {
+   public epe b(int $$0, int $$1, int $$2) {
       return this.h.a($$0, $$1, $$2).u();
    }
 
@@ -50,8 +50,8 @@ public class dvj {
          $$5 = this.h.b($$0, $$1, $$2, $$3);
       }
 
-      epc $$7 = $$5.u();
-      epc $$8 = $$3.u();
+      epe $$7 = $$5.u();
+      epe $$8 = $$3.u();
       if (!$$5.i()) {
          this.e--;
          if ($$5.v()) {
@@ -100,7 +100,7 @@ public class dvj {
          public int c;
 
          public void a(dtc $$0, int $$1) {
-            epc $$2 = $$0.u();
+            epe $$2 = $$0.u();
             if (!$$0.i()) {
                this.a += $$1;
                if ($$0.v()) {

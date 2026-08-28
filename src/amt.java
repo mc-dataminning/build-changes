@@ -67,7 +67,7 @@ public class amt {
                                           List<et> $$1x = Lists.newArrayList();
 
                                           for (bsr $$2x : fg.c($$0x, "targets")) {
-                                             $$1x.add(((et)$$0x.getSource()).a((aqu)$$2x.dP()).a($$2x.dn()).a($$2x.bN()));
+                                             $$1x.add(((et)$$0x.getSource()).a((aqu)$$2x.dO()).a($$2x.dm()).a($$2x.bN()));
                                           }
 
                                           return $$1x;
@@ -80,13 +80,13 @@ public class amt {
                                              List<et> $$1x = Lists.newArrayList();
 
                                              for (bsr $$2x : fg.c($$0x, "targets")) {
-                                                $$1x.add(((et)$$0x.getSource()).a($$2x.dn()));
+                                                $$1x.add(((et)$$0x.getSource()).a($$2x.dm()));
                                              }
 
                                              return $$1x;
                                           }))))
                                        .then(eu.a("over").then(eu.a("heightmap", fj.a()).redirect($$2, $$0x -> {
-                                          exa $$1x = ((et)$$0x.getSource()).d();
+                                          exc $$1x = ((et)$$0x.getSource()).d();
                                           aqu $$2x = ((et)$$0x.getSource()).e();
                                           double $$3 = $$1x.a();
                                           double $$4 = $$1x.c();
@@ -94,7 +94,7 @@ public class amt {
                                              throw gp.a.create();
                                           } else {
                                              int $$5 = $$2x.a(fj.a($$0x, "heightmap"), ayo.a($$3), ayo.a($$4));
-                                             return ((et)$$0x.getSource()).a(new exa($$3, (double)$$5, $$4));
+                                             return ((et)$$0x.getSource()).a(new exc($$3, (double)$$5, $$4));
                                           }
                                        })))
                                  ))
@@ -265,11 +265,11 @@ public class amt {
       return $$1;
    }
 
-   private static et a(et $$0, Collection<eyd> $$1, exw $$2, boolean $$3) {
-      eye $$4 = $$0.l().aK();
+   private static et a(et $$0, Collection<eyf> $$1, exy $$2, boolean $$3) {
+      eyg $$4 = $$0.l().aK();
       return $$0.a(($$4x, $$5) -> {
-         for (eyd $$6 : $$1) {
-            eyc $$7 = $$4.c($$6, $$2);
+         for (eyf $$6 : $$1) {
+            eye $$7 = $$4.c($$6, $$2);
             int $$8 = $$3 ? $$5 : ($$4x ? 1 : 0);
             $$7.a($$8);
          }
@@ -563,29 +563,29 @@ public class amt {
    }
 
    private static boolean a(CommandContext<et> $$0, amt.e $$1) throws CommandSyntaxException {
-      eyd $$2 = fy.a($$0, "target");
-      exw $$3 = fn.a($$0, "targetObjective");
-      eyd $$4 = fy.a($$0, "source");
-      exw $$5 = fn.a($$0, "sourceObjective");
-      eye $$6 = ((et)$$0.getSource()).l().aK();
-      eya $$7 = $$6.d($$2, $$3);
-      eya $$8 = $$6.d($$4, $$5);
+      eyf $$2 = fy.a($$0, "target");
+      exy $$3 = fn.a($$0, "targetObjective");
+      eyf $$4 = fy.a($$0, "source");
+      exy $$5 = fn.a($$0, "sourceObjective");
+      eyg $$6 = ((et)$$0.getSource()).l().aK();
+      eyc $$7 = $$6.d($$2, $$3);
+      eyc $$8 = $$6.d($$4, $$5);
       return $$7 != null && $$8 != null ? $$1.test($$7.a(), $$8.a()) : false;
    }
 
    private static boolean a(CommandContext<et> $$0, dh.d $$1) throws CommandSyntaxException {
-      eyd $$2 = fy.a($$0, "target");
-      exw $$3 = fn.a($$0, "targetObjective");
-      eye $$4 = ((et)$$0.getSource()).l().aK();
-      eya $$5 = $$4.d($$2, $$3);
+      eyf $$2 = fy.a($$0, "target");
+      exy $$3 = fn.a($$0, "targetObjective");
+      eyg $$4 = ((et)$$0.getSource()).l().aK();
+      eyc $$5 = $$4.d($$2, $$3);
       return $$5 == null ? false : $$1.d($$5.a());
    }
 
-   private static boolean a(et $$0, jm<eva> $$1) {
+   private static boolean a(et $$0, jm<evc> $$1) {
       aqu $$2 = $$0.e();
-      ers $$3 = new ers.a($$2).a(eul.f, $$0.d()).b(eul.a, $$0.f()).a(euk.d);
-      erp $$4 = new erp.a($$3).a(Optional.empty());
-      $$4.b(erp.a($$1.a()));
+      eru $$3 = new eru.a($$2).a(eun.f, $$0.d()).b(eun.a, $$0.f()).a(eum.d);
+      err $$4 = new err.a($$3).a(Optional.empty());
+      $$4.b(err.a($$1.a()));
       return $$1.a().test($$4);
    }
 
@@ -633,8 +633,8 @@ public class amt {
    }
 
    private static OptionalInt a(aqu $$0, jd $$1, jd $$2, jd $$3, boolean $$4) throws CommandSyntaxException {
-      ejh $$5 = ejh.a($$1, $$2);
-      ejh $$6 = ejh.a($$3, $$3.a($$5.c()));
+      ejj $$5 = ejj.a($$1, $$2);
+      ejj $$6 = ejj.a($$3, $$3.a($$5.c()));
       jd $$7 = new jd($$6.h() - $$5.h(), $$6.i() - $$5.i(), $$6.j() - $$5.j());
       int $$8 = $$5.d() * $$5.e() * $$5.f();
       if ($$8 > 32768) {
@@ -690,7 +690,7 @@ public class amt {
       return $$1 -> {
          et $$2 = (et)$$1.getSource();
          bsr $$3 = $$2.f();
-         return (Collection)($$3 == null ? List.of() : $$0.apply($$3).filter($$0xx -> !$$0xx.dK()).map($$1x -> List.of($$2.a($$1x))).orElse(List.of()));
+         return (Collection)($$3 == null ? List.of() : $$0.apply($$3).filter($$0xx -> !$$0xx.dJ()).map($$1x -> List.of($$2.a($$1x))).orElse(List.of()));
       };
    }
 
@@ -698,7 +698,7 @@ public class amt {
       return $$1 -> {
          et $$2 = (et)$$1.getSource();
          bsr $$3 = $$2.f();
-         return $$3 == null ? List.of() : $$0.apply($$3).filter($$0xx -> !$$0xx.dK()).map($$2::a).toList();
+         return $$3 == null ? List.of() : $$0.apply($$3).filter($$0xx -> !$$0xx.dJ()).map($$2::a).toList();
       };
    }
 
@@ -724,12 +724,12 @@ public class amt {
                         eu.a("attacker")
                            .fork($$0, a((Function<bsr, Optional<bsr>>)($$0x -> $$0x instanceof bso $$1x ? Optional.ofNullable($$1x.Y_()) : Optional.empty())))
                      ))
-                  .then(eu.a("vehicle").fork($$0, a((Function<bsr, Optional<bsr>>)($$0x -> Optional.ofNullable($$0x.dd()))))))
-               .then(eu.a("controller").fork($$0, a((Function<bsr, Optional<bsr>>)($$0x -> Optional.ofNullable($$0x.cR()))))))
+                  .then(eu.a("vehicle").fork($$0, a((Function<bsr, Optional<bsr>>)($$0x -> Optional.ofNullable($$0x.dc()))))))
+               .then(eu.a("controller").fork($$0, a((Function<bsr, Optional<bsr>>)($$0x -> Optional.ofNullable($$0x.cQ()))))))
             .then(
                eu.a("origin").fork($$0, a((Function<bsr, Optional<bsr>>)($$0x -> $$0x instanceof bun $$1x ? Optional.ofNullable($$1x.s()) : Optional.empty())))
             ))
-         .then(eu.a("passengers").fork($$0, b((Function<bsr, Stream<bsr>>)($$0x -> $$0x.cT().stream()))));
+         .then(eu.a("passengers").fork($$0, b((Function<bsr, Stream<bsr>>)($$0x -> $$0x.cS().stream()))));
    }
 
    private static et a(et $$0, jm.c<bsx<?>> $$1) throws CommandSyntaxException {

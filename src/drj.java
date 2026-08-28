@@ -1,7 +1,7 @@
 import com.google.common.annotations.VisibleForTesting;
 import java.util.Optional;
 
-public class drj extends dqh implements bqi, eyl.a {
+public class drj extends dqh implements bqi, eyn.a {
    public static final String b = "RecordItem";
    public static final String c = "ticks_since_song_started";
    private cuq d = cuq.l;
@@ -33,7 +33,7 @@ public class drj extends dqh implements bqi, eyl.a {
          cuq $$1 = this.f();
          if (!$$1.e()) {
             this.h();
-            exa $$2 = exa.a($$0, 0.5, 1.01, 0.5).a(this.n.z, 0.7F);
+            exc $$2 = exc.a($$0, 0.5, 1.01, 0.5).a(this.n.z, 0.7F);
             cuq $$3 = $$1.s();
             cjh $$4 = new cjh(this.n, $$2.a(), $$2.b(), $$2.c(), $$3);
             $$4.v();

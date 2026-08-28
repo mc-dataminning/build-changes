@@ -10,11 +10,11 @@ public class cgs extends bvh<cgq> {
    }
 
    protected boolean a(aqu $$0, cgq $$1, long $$2) {
-      return $$1.bi() && $$1.dU().a(ccs.N);
+      return $$1.bi() && $$1.dT().a(ccs.N);
    }
 
    protected void b(aqu $$0, cgq $$1, long $$2) {
-      buq<cgq> $$3 = $$1.dU();
+      buq<cgq> $$3 = $$1.dT();
       $$3.b(ccs.m);
       $$3.b(ccs.n);
       $$1.b(new brz(bsb.j, 200, 0));

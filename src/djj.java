@@ -28,7 +28,7 @@ public class djj extends dnq implements dgb {
    public void a(aqu $$0, ayw $$1, jd $$2, dtc $$3) {
       jd $$4 = $$2.d();
       dtc $$5 = dga.bt.o();
-      Optional<jm.c<eit>> $$6 = $$0.H_().d(lu.aQ).b(si.n);
+      Optional<jm.c<eiv>> $$6 = $$0.H_().d(lu.aQ).b(si.n);
 
       label49:
       for (int $$7 = 0; $$7 < 128; $$7++) {
@@ -47,14 +47,14 @@ public class djj extends dnq implements dgb {
          }
 
          if ($$10.i()) {
-            jm<eit> $$12;
+            jm<eiv> $$12;
             if ($$1.a(8) == 0) {
                List<ebq<?, ?>> $$11 = $$0.t($$8).a().d().a();
                if ($$11.isEmpty()) {
                   continue;
                }
 
-               $$12 = ((eeu)$$11.get(0).c()).d();
+               $$12 = ((eev)$$11.get(0).c()).d();
             } else {
                if (!$$6.isPresent()) {
                   continue;

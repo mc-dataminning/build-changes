@@ -13,7 +13,7 @@ public class adk {
    private final List<byte[]> f;
    private final List<byte[]> g;
 
-   public adk(dcd $$0, eor $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+   public adk(dcd $$0, eot $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
       this.b = new BitSet();
       this.c = new BitSet();
       this.d = new BitSet();
@@ -50,7 +50,7 @@ public class adk {
       $$0.a(this.g, a);
    }
 
-   private void a(dcd $$0, eor $$1, ddf $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
+   private void a(dcd $$0, eot $$1, ddf $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
       dvd $$7 = $$1.a($$2).a(kf.a($$0, $$1.d() + $$3));
       if ($$7 != null) {
          if ($$7.d()) {

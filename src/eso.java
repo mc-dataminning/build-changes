@@ -1,93 +1,146 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Objects;
+import java.util.Map;
 import java.util.Set;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class eso extends etc {
+public class eso extends ete {
+   private static final Map<akr, eso.c> b = Stream.of(eso.a.a, eso.d.b, eso.e.b).collect(Collectors.toMap(eso.c::a, Function.identity()));
+   private static final Codec<eso.c> c = akr.a.comapFlatMap($$0 -> {
+      eso.c $$1 = b.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No formula type with id: '" + $$0 + "'");
+   }, eso.c::a);
+   private static final MapCodec<eso.b> d = axw.a("formula", "parameters", c, eso.b::a, eso.c::b);
    public static final MapCodec<eso> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  lt.e.s().fieldOf("block").forGetter($$0x -> $$0x.b),
-                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(duf::f).toList())
-               )
-            )
-            .apply($$0, eso::new)
+      $$0 -> a($$0).and($$0.group(dac.c.fieldOf("enchantment").forGetter($$0x -> $$0x.e), d.forGetter($$0x -> $$0x.f))).apply($$0, eso::new)
    );
-   private final jm<dfy> b;
-   private final Set<duf<?>> c;
+   private final jm<dac> e;
+   private final eso.b f;
 
-   eso(List<eva> $$0, jm<dfy> $$1, Set<duf<?>> $$2) {
+   private eso(List<evc> $$0, jm<dac> $$1, eso.b $$2) {
       super($$0);
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   private eso(List<eva> $$0, jm<dfy> $$1, List<String> $$2) {
-      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
+      this.e = $$1;
+      this.f = $$2;
    }
 
    @Override
-   public ete<eso> b() {
-      return etf.D;
+   public etg<eso> b() {
+      return eth.x;
    }
 
    @Override
-   public Set<eui<?>> a() {
-      return ImmutableSet.of(eul.g);
+   public Set<euk<?>> a() {
+      return ImmutableSet.of(eun.i);
    }
 
    @Override
-   protected cuq a(cuq $$0, erp $$1) {
-      dtc $$2 = $$1.c(eul.g);
+   public cuq a(cuq $$0, err $$1) {
+      cuq $$2 = $$1.c(eun.i);
       if ($$2 != null) {
-         $$0.a(kq.ac, cxd.a, $$1x -> {
-            for (duf<?> $$2x : this.c) {
-               if ($$2.b($$2x)) {
-                  $$1x = $$1x.a($$2x, $$2);
-               }
-            }
-
-            return $$1x;
-         });
+         int $$3 = dae.a(this.e, $$2);
+         int $$4 = this.f.a($$1.b(), $$0.H(), $$3);
+         $$0.e($$4);
       }
 
       return $$0;
    }
 
-   public static eso.a a(dfy $$0) {
-      return new eso.a($$0);
+   public static ete.a<?> a(jm<dac> $$0, float $$1, int $$2) {
+      return a($$3 -> new eso($$3, $$0, new eso.a($$2, $$1)));
    }
 
-   public static class a extends etc.a<eso.a> {
-      private final jm<dfy> a;
-      private final Builder<duf<?>> b = ImmutableSet.builder();
+   public static ete.a<?> a(jm<dac> $$0) {
+      return a($$1 -> new eso($$1, $$0, new eso.d()));
+   }
 
-      a(dfy $$0) {
-         this.a = $$0.s();
-      }
+   public static ete.a<?> b(jm<dac> $$0) {
+      return a($$1 -> new eso($$1, $$0, new eso.e(1)));
+   }
 
-      public eso.a a(duf<?> $$0) {
-         if (!this.a.a().l().d().contains($$0)) {
-            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
-         } else {
-            this.b.add($$0);
-            return this;
+   public static ete.a<?> a(jm<dac> $$0, int $$1) {
+      return a($$2 -> new eso($$2, $$0, new eso.e($$1)));
+   }
+
+   static record a(int b, float c) implements eso.b {
+      private static final Codec<eso.a> d = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("extra").forGetter(eso.a::b), Codec.FLOAT.fieldOf("probability").forGetter(eso.a::c)).apply($$0, eso.a::new)
+      );
+      public static final eso.c a = new eso.c(akr.b("binomial_with_bonus_count"), d);
+
+      @Override
+      public int a(ayw $$0, int $$1, int $$2) {
+         for (int $$3 = 0; $$3 < $$2 + this.b; $$3++) {
+            if ($$0.i() < this.c) {
+               $$1++;
+            }
          }
-      }
 
-      protected eso.a a() {
-         return this;
+         return $$1;
       }
 
       @Override
-      public etd b() {
-         return new eso(this.g(), this.a, this.b.build());
+      public eso.c a() {
+         return a;
+      }
+   }
+
+   interface b {
+      int a(ayw var1, int var2, int var3);
+
+      eso.c a();
+   }
+
+   static record c(akr a, Codec<? extends eso.b> b) {
+   }
+
+   static record d() implements eso.b {
+      public static final Codec<eso.d> a = Codec.unit(eso.d::new);
+      public static final eso.c b = new eso.c(akr.b("ore_drops"), a);
+
+      @Override
+      public int a(ayw $$0, int $$1, int $$2) {
+         if ($$2 > 0) {
+            int $$3 = $$0.a($$2 + 2) - 1;
+            if ($$3 < 0) {
+               $$3 = 0;
+            }
+
+            return $$1 * ($$3 + 1);
+         } else {
+            return $$1;
+         }
+      }
+
+      @Override
+      public eso.c a() {
+         return b;
+      }
+   }
+
+   static record e(int c) implements eso.b {
+      public static final Codec<eso.e> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("bonusMultiplier").forGetter(eso.e::b)).apply($$0, eso.e::new)
+      );
+      public static final eso.c b = new eso.c(akr.b("uniform_bonus_count"), a);
+
+      @Override
+      public int a(ayw $$0, int $$1, int $$2) {
+         return $$1 + $$0.a(this.c * $$2 + 1);
+      }
+
+      @Override
+      public eso.c a() {
+         return b;
+      }
+
+      public int b() {
+         return this.c;
       }
    }
 }

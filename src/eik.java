@@ -1,30 +1,26 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.stream.Stream;
 
-public enum eik implements azk {
-   a(ji.b, 1, "ceiling"),
-   b(ji.a, -1, "floor");
+public class eik extends eiy {
+   public static final MapCodec<eik> a = dyu.a.c.fieldOf("step").xmap(eik::new, $$0 -> $$0.c);
+   private final dyu.a c;
 
-   public static final Codec<eik> c = azk.a(eik::values);
-   private final ji d;
-   private final int e;
-   private final String f;
-
-   private eik(final ji $$0, final int $$1, final String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   private eik(dyu.a $$0) {
+      this.c = $$0;
    }
 
-   public ji a() {
-      return this.d;
-   }
-
-   public int b() {
-      return this.e;
+   public static eik a(dyu.a $$0) {
+      return new eik($$0);
    }
 
    @Override
-   public String c() {
-      return this.f;
+   public Stream<jd> a_(eiw $$0, ayw $$1, jd $$2) {
+      dcd $$3 = new dcd($$2);
+      return $$0.a($$3, this.c).a($$3);
+   }
+
+   @Override
+   public eiz<?> b() {
+      return eiz.o;
    }
 }

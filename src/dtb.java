@@ -26,7 +26,7 @@ public abstract class dtb implements cpi {
    protected final cpl aO;
    protected final dtb.d aP;
    @Nullable
-   protected akq<eru> aQ;
+   protected akq<erw> aQ;
 
    public dtb(dtb.d $$0) {
       this.aG = $$0.c;
@@ -59,7 +59,7 @@ public abstract class dtb implements cpi {
    protected void a(dtc $$0, dcx $$1, jd $$2, int $$3, int $$4) {
    }
 
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       switch ($$1) {
          case a:
             return !$$0.r(dcl.a, jd.c);
@@ -99,9 +99,9 @@ public abstract class dtb implements cpi {
          boolean $$6 = $$3.f() instanceof cmx;
          if ($$5.a($$3) && $$1 instanceof aqu $$7) {
             dqh $$8 = $$0.t() ? $$1.c_($$2) : null;
-            ers.a $$9 = new ers.a($$7).a(eul.f, exa.b($$2)).a(eul.i, cuq.l).b(eul.h, $$8).b(eul.a, $$3.g());
+            eru.a $$9 = new eru.a($$7).a(eun.f, exc.b($$2)).a(eun.i, cuq.l).b(eun.h, $$8).b(eun.a, $$3.g());
             if ($$3.j() == dco.a.c) {
-               $$9.a(eul.j, $$3.a());
+               $$9.a(eun.j, $$3.a());
             }
 
             $$0.a($$7, $$2, cuq.l, $$6);
@@ -113,11 +113,11 @@ public abstract class dtb implements cpi {
       }
    }
 
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
       return bqr.e;
    }
 
-   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, eww $$6) {
+   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, ewy $$6) {
       return bqt.d;
    }
 
@@ -137,8 +137,8 @@ public abstract class dtb implements cpi {
       return false;
    }
 
-   protected epc b_(dtc $$0) {
-      return epd.a.g();
+   protected epe b_(dtc $$0) {
+      return epf.a.g();
    }
 
    protected boolean c_(dtc $$0) {
@@ -170,18 +170,18 @@ public abstract class dtb implements cpi {
       return $$0.r() && ($$1.n().e() || !$$1.n().a(this.r()));
    }
 
-   protected boolean a(dtc $$0, epb $$1) {
+   protected boolean a(dtc $$0, epd $$1) {
       return $$0.r() || !$$0.e();
    }
 
-   protected List<cuq> a(dtc $$0, ers.a $$1) {
-      akq<eru> $$2 = this.v();
-      if ($$2 == erl.a) {
+   protected List<cuq> a(dtc $$0, eru.a $$1) {
+      akq<erw> $$2 = this.v();
+      if ($$2 == ern.a) {
          return Collections.emptyList();
       } else {
-         ers $$3 = $$1.a(eul.g, $$0).a(euk.r);
+         eru $$3 = $$1.a(eun.g, $$0).a(eum.r);
          aqu $$4 = $$3.a();
-         eru $$5 = $$4.o().be().b($$2);
+         erw $$5 = $$4.o().be().b($$2);
          return $$5.a($$3);
       }
    }
@@ -190,16 +190,16 @@ public abstract class dtb implements cpi {
       return ayo.a($$1);
    }
 
-   protected ext f(dtc $$0, dcc $$1, jd $$2) {
+   protected exv f(dtc $$0, dcc $$1, jd $$2) {
       return $$0.j($$1, $$2);
    }
 
-   protected ext b_(dtc $$0, dcc $$1, jd $$2) {
-      return this.b($$0, $$1, $$2, exf.a());
+   protected exv b_(dtc $$0, dcc $$1, jd $$2) {
+      return this.b($$0, $$1, $$2, exh.a());
    }
 
-   protected ext a(dtc $$0, dcc $$1, jd $$2) {
-      return exq.a();
+   protected exv a(dtc $$0, dcc $$1, jd $$2) {
+      return exs.a();
    }
 
    protected int g(dtc $$0, dcc $$1, jd $$2) {
@@ -227,12 +227,12 @@ public abstract class dtb implements cpi {
       return 0;
    }
 
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
-      return exq.b();
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
+      return exs.b();
    }
 
-   protected ext b(dtc $$0, dcc $$1, jd $$2, exf $$3) {
-      return this.aG ? $$0.j($$1, $$2) : exq.a();
+   protected exv b(dtc $$0, dcc $$1, jd $$2, exh $$3) {
+      return this.aG ? $$0.j($$1, $$2) : exs.a();
    }
 
    protected boolean c(dtc $$0, dcc $$1, jd $$2) {
@@ -243,7 +243,7 @@ public abstract class dtb implements cpi {
       return dfy.a($$0.c($$1, $$2));
    }
 
-   protected ext c(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv c(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return this.b($$0, $$1, $$2, $$3);
    }
 
@@ -280,7 +280,7 @@ public abstract class dtb implements cpi {
       return 0;
    }
 
-   public final akq<eru> v() {
+   public final akq<erw> v() {
       if (this.aQ == null) {
          akr $$0 = lt.e.b(this.q());
          this.aQ = akq.a(lu.bc, $$0.f("blocks/"));
@@ -289,7 +289,7 @@ public abstract class dtb implements cpi {
       return this.aQ;
    }
 
-   protected void a(dcw $$0, dtc $$1, eww $$2, cnp $$3) {
+   protected void a(dcw $$0, dtc $$1, ewy $$2, cnp $$3) {
    }
 
    protected boolean a_(dtc $$0, dcc $$1, jd $$2) {
@@ -308,7 +308,7 @@ public abstract class dtb implements cpi {
 
    protected abstract dfy q();
 
-   public epg w() {
+   public epi w() {
       return this.aP.b.apply(this.q().o());
    }
 
@@ -325,8 +325,8 @@ public abstract class dtb implements cpi {
       private final boolean j;
       @Deprecated
       private boolean k;
-      private final eph l;
-      private final epg m;
+      private final epj l;
+      private final epi m;
       private final float n;
       private final boolean o;
       private final boolean p;
@@ -342,7 +342,7 @@ public abstract class dtb implements cpi {
       private final boolean y;
       @Nullable
       protected dtb.a.a a;
-      private epc z = epd.a.g();
+      private epe z = epf.a.g();
       private boolean A;
 
       protected a(dfy $$0, Reference2ObjectArrayMap<duf<?>, Comparable<?>> $$1, MapCodec<dtc> $$2) {
@@ -377,11 +377,11 @@ public abstract class dtb implements cpi {
          } else if (this.a == null) {
             return false;
          } else {
-            ext $$0 = this.a.b;
+            exv $$0 = this.a.b;
             if ($$0.c()) {
                return false;
             } else {
-               ewv $$1 = $$0.a();
+               ewx $$1 = $$0.a();
                return $$1.a() >= 0.7291666666666666 ? true : $$1.c() >= 1.0;
             }
          }
@@ -428,11 +428,11 @@ public abstract class dtb implements cpi {
          return this.a != null ? this.a.h : this.b().g(this.x(), $$0, $$1);
       }
 
-      public ext a(dcc $$0, jd $$1, ji $$2) {
-         return this.a != null && this.a.i != null ? this.a.i[$$2.ordinal()] : exq.a(this.c($$0, $$1), $$2);
+      public exv a(dcc $$0, jd $$1, ji $$2) {
+         return this.a != null && this.a.i != null ? this.a.i[$$2.ordinal()] : exs.a(this.c($$0, $$1), $$2);
       }
 
-      public ext c(dcc $$0, jd $$1) {
+      public exv c(dcc $$0, jd $$1) {
          return this.b().f(this.x(), $$0, $$1);
       }
 
@@ -461,7 +461,7 @@ public abstract class dtb implements cpi {
          return this.j;
       }
 
-      public epg d(dcc $$0, jd $$1) {
+      public epi d(dcc $$0, jd $$1) {
          return this.m;
       }
 
@@ -517,7 +517,7 @@ public abstract class dtb implements cpi {
          return this.b().b(this.x(), $$0, $$1, $$2);
       }
 
-      public eph o() {
+      public epj o() {
          return this.l;
       }
 
@@ -538,31 +538,31 @@ public abstract class dtb implements cpi {
          return this.b().a(this.x(), $$0, $$1);
       }
 
-      public ext j(dcc $$0, jd $$1) {
-         return this.a($$0, $$1, exf.a());
+      public exv j(dcc $$0, jd $$1) {
+         return this.a($$0, $$1, exh.a());
       }
 
-      public ext a(dcc $$0, jd $$1, exf $$2) {
+      public exv a(dcc $$0, jd $$1, exh $$2) {
          return this.b().a(this.x(), $$0, $$1, $$2);
       }
 
-      public ext k(dcc $$0, jd $$1) {
-         return this.a != null ? this.a.b : this.b($$0, $$1, exf.a());
+      public exv k(dcc $$0, jd $$1) {
+         return this.a != null ? this.a.b : this.b($$0, $$1, exh.a());
       }
 
-      public ext b(dcc $$0, jd $$1, exf $$2) {
+      public exv b(dcc $$0, jd $$1, exh $$2) {
          return this.b().b(this.x(), $$0, $$1, $$2);
       }
 
-      public ext l(dcc $$0, jd $$1) {
+      public exv l(dcc $$0, jd $$1) {
          return this.b().b_(this.x(), $$0, $$1);
       }
 
-      public ext c(dcc $$0, jd $$1, exf $$2) {
+      public exv c(dcc $$0, jd $$1, exh $$2) {
          return this.b().c(this.x(), $$0, $$1, $$2);
       }
 
-      public ext m(dcc $$0, jd $$1) {
+      public exv m(dcc $$0, jd $$1) {
          return this.b().a(this.x(), $$0, $$1);
       }
 
@@ -571,12 +571,12 @@ public abstract class dtb implements cpi {
       }
 
       public final boolean a(dcc $$0, jd $$1, bsr $$2, ji $$3) {
-         return dfy.a(this.b($$0, $$1, exf.a($$2)), $$3);
+         return dfy.a(this.b($$0, $$1, exh.a($$2)), $$3);
       }
 
-      public exa n(dcc $$0, jd $$1) {
+      public exc n(dcc $$0, jd $$1) {
          dtb.b $$2 = this.v;
-         return $$2 != null ? $$2.evaluate(this.x(), $$0, $$1) : exa.b;
+         return $$2 != null ? $$2.evaluate(this.x(), $$0, $$1) : exc.b;
       }
 
       public boolean q() {
@@ -640,15 +640,15 @@ public abstract class dtb implements cpi {
          this.b().a(this.x(), $$0, $$1, $$2, $$3);
       }
 
-      public List<cuq> a(ers.a $$0) {
+      public List<cuq> a(eru.a $$0) {
          return this.b().a(this.x(), $$0);
       }
 
-      public bqt a(cuq $$0, dcw $$1, cmx $$2, bqq $$3, eww $$4) {
+      public bqt a(cuq $$0, dcw $$1, cmx $$2, bqq $$3, ewy $$4) {
          return this.b().a($$0, this.x(), $$1, $$4.a(), $$2, $$3, $$4);
       }
 
-      public bqr a(dcw $$0, cmx $$1, eww $$2) {
+      public bqr a(dcw $$0, cmx $$1, ewy $$2) {
          return this.b().a(this.x(), $$0, $$2.a(), $$1, $$2);
       }
 
@@ -668,7 +668,7 @@ public abstract class dtb implements cpi {
          return this.b().a(this.x(), $$0, $$1, $$2, $$3, $$4);
       }
 
-      public boolean a(epr $$0) {
+      public boolean a(ept $$0) {
          return this.b().a(this.x(), $$0);
       }
 
@@ -676,7 +676,7 @@ public abstract class dtb implements cpi {
          return this.b().a(this.x(), $$0);
       }
 
-      public boolean a(epb $$0) {
+      public boolean a(epd $$0) {
          return this.b().a(this.x(), $$0);
       }
 
@@ -734,7 +734,7 @@ public abstract class dtb implements cpi {
          return this.b().s().a($$0);
       }
 
-      public epc u() {
+      public epe u() {
          return this.z;
       }
 
@@ -750,7 +750,7 @@ public abstract class dtb implements cpi {
          return this.b().g_(this.x());
       }
 
-      public void a(dcw $$0, dtc $$1, eww $$2, cnp $$3) {
+      public void a(dcw $$0, dtc $$1, ewy $$2, cnp $$3) {
          this.b().a($$0, $$1, $$2, $$3);
       }
 
@@ -787,8 +787,8 @@ public abstract class dtb implements cpi {
          final boolean g;
          final int h;
          @Nullable
-         final ext[] i;
-         protected final ext b;
+         final exv[] i;
+         protected final exv b;
          protected final boolean c;
          private final boolean[] j;
          protected final boolean d;
@@ -801,15 +801,15 @@ public abstract class dtb implements cpi {
             if (!$$0.p()) {
                this.i = null;
             } else {
-               this.i = new ext[e.length];
-               ext $$2 = $$1.f($$0, dcl.a, jd.c);
+               this.i = new exv[e.length];
+               exv $$2 = $$1.f($$0, dcl.a, jd.c);
 
                for (ji $$3 : e) {
-                  this.i[$$3.ordinal()] = exq.a($$2, $$3);
+                  this.i[$$3.ordinal()] = exs.a($$2, $$3);
                }
             }
 
-            this.b = $$1.b($$0, dcl.a, jd.c, exf.a());
+            this.b = $$1.b($$0, dcl.a, jd.c, exh.a());
             if (!this.b.c() && $$0.q()) {
                throw new IllegalStateException(
                   String.format(Locale.ROOT, "%s has a collision shape and an offset type, but is not marked as dynamicShape in its properties.", lt.e.b($$1))
@@ -839,7 +839,7 @@ public abstract class dtb implements cpi {
    }
 
    public interface b {
-      exa evaluate(dtc var1, dcc var2, jd var3);
+      exc evaluate(dtc var1, dcc var2, jd var3);
    }
 
    public static enum c {
@@ -850,7 +850,7 @@ public abstract class dtb implements cpi {
 
    public static class d {
       public static final Codec<dtb.d> a = Codec.unit(() -> a());
-      Function<dtc, epg> b = $$0 -> epg.a;
+      Function<dtc, epi> b = $$0 -> epi.a;
       boolean c = true;
       dnm d = dnm.f;
       ToIntFunction<dtc> e = $$0 -> 0;
@@ -861,7 +861,7 @@ public abstract class dtb implements cpi {
       float j = 0.6F;
       float k = 1.0F;
       float l = 1.0F;
-      akq<eru> m;
+      akq<erw> m;
       boolean n = true;
       boolean o;
       boolean p;
@@ -870,7 +870,7 @@ public abstract class dtb implements cpi {
       @Deprecated
       boolean r;
       boolean s;
-      eph t = eph.a;
+      epj t = epj.a;
       boolean u = true;
       dud v = dud.a;
       boolean w;
@@ -941,12 +941,12 @@ public abstract class dtb implements cpi {
          return this;
       }
 
-      public dtb.d a(epg $$0) {
+      public dtb.d a(epi $$0) {
          this.b = $$1 -> $$0;
          return this;
       }
 
-      public dtb.d a(Function<dtc, epg> $$0) {
+      public dtb.d a(Function<dtc, epi> $$0) {
          this.b = $$0;
          return this;
       }
@@ -1011,7 +1011,7 @@ public abstract class dtb implements cpi {
       }
 
       public dtb.d g() {
-         this.m = erl.a;
+         this.m = ern.a;
          return this;
       }
 
@@ -1041,7 +1041,7 @@ public abstract class dtb implements cpi {
          return this;
       }
 
-      public dtb.d a(eph $$0) {
+      public dtb.d a(epj $$0) {
          this.t = $$0;
          return this;
       }
@@ -1105,7 +1105,7 @@ public abstract class dtb implements cpi {
             float $$5 = $$3.av_();
             double $$6 = ayo.a(((double)((float)($$4 & 15L) / 15.0F) - 0.5) * 0.5, (double)(-$$5), (double)$$5);
             double $$7 = ayo.a(((double)((float)($$4 >> 8 & 15L) / 15.0F) - 0.5) * 0.5, (double)(-$$5), (double)$$5);
-            return new exa($$6, 0.0, $$7);
+            return new exc($$6, 0.0, $$7);
          };
             case c -> ($$0x, $$1, $$2) -> {
             dfy $$3 = $$0x.b();
@@ -1114,7 +1114,7 @@ public abstract class dtb implements cpi {
             float $$6 = $$3.av_();
             double $$7 = ayo.a(((double)((float)($$4 & 15L) / 15.0F) - 0.5) * 0.5, (double)(-$$6), (double)$$6);
             double $$8 = ayo.a(((double)((float)($$4 >> 8 & 15L) / 15.0F) - 0.5) * 0.5, (double)(-$$6), (double)$$6);
-            return new exa($$7, $$5, $$8);
+            return new exc($$7, $$5, $$8);
          };
          };
          return this;

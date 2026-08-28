@@ -1,48 +1,35 @@
-public class gpd extends got<cge, fva<cge>> {
-   private static final akr a = akr.b("textures/entity/fish/tropical_a_pattern_1.png");
-   private static final akr b = akr.b("textures/entity/fish/tropical_a_pattern_2.png");
-   private static final akr c = akr.b("textures/entity/fish/tropical_a_pattern_3.png");
-   private static final akr d = akr.b("textures/entity/fish/tropical_a_pattern_4.png");
-   private static final akr e = akr.b("textures/entity/fish/tropical_a_pattern_5.png");
-   private static final akr f = akr.b("textures/entity/fish/tropical_a_pattern_6.png");
-   private static final akr g = akr.b("textures/entity/fish/tropical_b_pattern_1.png");
-   private static final akr h = akr.b("textures/entity/fish/tropical_b_pattern_2.png");
-   private static final akr i = akr.b("textures/entity/fish/tropical_b_pattern_3.png");
-   private static final akr j = akr.b("textures/entity/fish/tropical_b_pattern_4.png");
-   private static final akr k = akr.b("textures/entity/fish/tropical_b_pattern_5.png");
-   private static final akr l = akr.b("textures/entity/fish/tropical_b_pattern_6.png");
-   private final fxo<cge> m;
-   private final fxp<cge> n;
+public class gpd<T extends btn> extends gov<T, fwp<T>> {
+   public static final akr a = akr.b("textures/entity/trident_riptide.png");
+   public static final String b = "box";
+   private final fyk c;
 
-   public gpd(gmd<cge, fva<cge>> $$0, fye $$1) {
+   public gpd(gmf<T, fwp<T>> $$0, fyg $$1) {
       super($$0);
-      this.m = new fxo<>($$1.a(fyh.bN));
-      this.n = new fxp<>($$1.a(fyh.bL));
+      fyk $$2 = $$1.a(fyj.ba);
+      this.c = $$2.b("box");
    }
 
-   public void a(fbg $$0, gex $$1, int $$2, cge $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cge.b $$10 = $$3.gw();
+   public static fyq a() {
+      fys $$0 = new fys();
+      fyt $$1 = $$0.a();
+      $$1.a("box", fyp.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 32.0F, 16.0F), fym.a);
+      return fyq.a($$0, 64, 64);
+   }
 
-      fvi<cge> $$11 = (fvi<cge>)(switch ($$10.a()) {
-         case a -> this.m;
-         case b -> this.n;
-      });
+   public void a(fbi $$0, gez $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.fn()) {
+         fbm $$10 = $$1.getBuffer(gfh.e(a));
 
-      akr $$12 = switch ($$10) {
-         case a -> a;
-         case b -> b;
-         case c -> c;
-         case d -> d;
-         case e -> e;
-         case f -> f;
-         case g -> g;
-         case h -> h;
-         case i -> i;
-         case j -> j;
-         case k -> k;
-         case l -> l;
-      };
-      int $$13 = $$3.gv().d();
-      a(this.c(), $$11, $$12, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$13);
+         for (int $$11 = 0; $$11 < 3; $$11++) {
+            $$0.a();
+            float $$12 = $$7 * (float)(-(45 + $$11 * 5));
+            $$0.a(a.d.rotationDegrees($$12));
+            float $$13 = 0.75F * (float)$$11;
+            $$0.b($$13, $$13, $$13);
+            $$0.a(0.0F, -0.2F + 0.6F * (float)$$11, 0.0F);
+            this.c.a($$0, $$10, $$2, gqc.d);
+            $$0.b();
+         }
+      }
    }
 }

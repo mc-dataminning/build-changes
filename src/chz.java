@@ -33,10 +33,10 @@ public class chz extends bsr {
       this.b++;
       this.aT();
       this.bP();
-      if (this.dP() instanceof aqu) {
-         jd $$0 = this.dp();
-         if (((aqu)this.dP()).D() != null && this.dP().a_($$0).i()) {
-            this.dP().b($$0, dfl.a(this.dP(), $$0));
+      if (this.dO() instanceof aqu) {
+         jd $$0 = this.do();
+         if (((aqu)this.dO()).D() != null && this.dO().a_($$0).i()) {
+            this.dO().b($$0, dfl.a(this.dO(), $$0));
          }
       }
    }
@@ -70,11 +70,11 @@ public class chz extends bsr {
       } else if ($$0.d() instanceof cia) {
          return false;
       } else {
-         if (!this.dK() && !this.dP().B) {
+         if (!this.dJ() && !this.dO().B) {
             this.a(bsr.c.a);
             if (!$$0.a(awg.l)) {
-               brk $$2 = $$0.d() != null ? this.dQ().d(this, $$0.d()) : null;
-               this.dP().a(this, $$2, null, this.du(), this.dw(), this.dA(), 6.0F, false, dcw.a.b);
+               brk $$2 = $$0.d() != null ? this.dP().d(this, $$0.d()) : null;
+               this.dO().a(this, $$2, null, this.dt(), this.dv(), this.dz(), 6.0F, false, dcw.a.b);
             }
 
             this.a($$0);
@@ -86,13 +86,13 @@ public class chz extends bsr {
 
    @Override
    public void ap() {
-      this.a(this.dQ().o());
+      this.a(this.dP().o());
       super.ap();
    }
 
    private void a(brk $$0) {
-      if (this.dP() instanceof aqu) {
-         dxb $$1 = ((aqu)this.dP()).D();
+      if (this.dO() instanceof aqu) {
+         dxb $$1 = ((aqu)this.dO()).D();
          if ($$1 != null) {
             $$1.a(this, $$0);
          }
@@ -122,7 +122,7 @@ public class chz extends bsr {
    }
 
    @Override
-   public cuq dC() {
+   public cuq dB() {
       return new cuq(cut.vf);
    }
 }

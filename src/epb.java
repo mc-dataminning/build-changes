@@ -1,93 +1,61 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
-
-public abstract class epb {
-   public static final js<epc> c = new js<>();
-   protected final dtd<epb, epc> d;
-   private epc a;
-   private final jm.c<epb> b = lt.c.f(this);
-
-   protected epb() {
-      dtd.a<epb, epc> $$0 = new dtd.a<>(this);
-      this.a($$0);
-      this.d = $$0.a(epb::g, epc::new);
-      this.f(this.d.b());
+public class epb extends epd {
+   @Override
+   public cul a() {
+      return cut.a;
    }
 
-   protected void a(dtd.a<epb, epc> $$0) {
+   @Override
+   public boolean a(epe $$0, dcc $$1, jd $$2, epd $$3, ji $$4) {
+      return true;
    }
 
-   public dtd<epb, epc> f() {
-      return this.d;
+   @Override
+   public exc a(dcc $$0, jd $$1, epe $$2) {
+      return exc.b;
    }
 
-   protected final void f(epc $$0) {
-      this.a = $$0;
+   @Override
+   public int a(dcz $$0) {
+      return 0;
    }
 
-   public final epc g() {
-      return this.a;
-   }
-
-   public abstract cul a();
-
-   protected void a(dcw $$0, jd $$1, epc $$2, ayw $$3) {
-   }
-
-   protected void b(dcw $$0, jd $$1, epc $$2) {
-   }
-
-   protected void b(dcw $$0, jd $$1, epc $$2, ayw $$3) {
-   }
-
-   @Nullable
-   protected lk h() {
-      return null;
-   }
-
-   protected abstract boolean a(epc var1, dcc var2, jd var3, epb var4, ji var5);
-
-   protected abstract exa a(dcc var1, jd var2, epc var3);
-
-   public abstract int a(dcz var1);
-
-   protected boolean i() {
-      return false;
-   }
-
+   @Override
    protected boolean b() {
+      return true;
+   }
+
+   @Override
+   protected float c() {
+      return 0.0F;
+   }
+
+   @Override
+   public float a(epe $$0, dcc $$1, jd $$2) {
+      return 0.0F;
+   }
+
+   @Override
+   public float a(epe $$0) {
+      return 0.0F;
+   }
+
+   @Override
+   protected dtc b(epe $$0) {
+      return dga.a.o();
+   }
+
+   @Override
+   public boolean c(epe $$0) {
       return false;
    }
 
-   protected abstract float c();
-
-   public abstract float a(epc var1, dcc var2, jd var3);
-
-   public abstract float a(epc var1);
-
-   protected abstract dtc b(epc var1);
-
-   public abstract boolean c(epc var1);
-
-   public abstract int d(epc var1);
-
-   public boolean a(epb $$0) {
-      return $$0 == this;
+   @Override
+   public int d(epe $$0) {
+      return 0;
    }
 
-   @Deprecated
-   public boolean a(awu<epb> $$0) {
-      return this.b.a($$0);
-   }
-
-   public abstract ext b(epc var1, dcc var2, jd var3);
-
-   public Optional<avo> j() {
-      return Optional.empty();
-   }
-
-   @Deprecated
-   public jm.c<epb> k() {
-      return this.b;
+   @Override
+   public exv b(epe $$0, dcc $$1, jd $$2) {
+      return exs.a();
    }
 }

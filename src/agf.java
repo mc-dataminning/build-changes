@@ -38,13 +38,13 @@ public class agf {
    private static void d(aqu $$0, jd $$1) {
    }
 
-   public static void a(dcw $$0, btp $$1, @Nullable epq $$2, float $$3) {
+   public static void a(dcw $$0, btp $$1, @Nullable eps $$2, float $$3) {
    }
 
    public static void a(dcw $$0, jd $$1) {
    }
 
-   public static void a(dds $$0, ejx $$1) {
+   public static void a(dds $$0, ejz $$1) {
    }
 
    public static void a(dcw $$0, btp $$1, can $$2) {
@@ -62,7 +62,7 @@ public class agf {
    public static void a(ckz $$0) {
    }
 
-   public static void a(dcw $$0, jm<dxz> $$1, exa $$2) {
+   public static void a(dcw $$0, jm<dxz> $$1, exc $$2) {
    }
 
    public static void a(dcw $$0, dyb $$1) {
@@ -72,7 +72,7 @@ public class agf {
    }
 
    private static List<String> a(btn $$0, long $$1) {
-      Map<ccs<?>, Optional<? extends ccr<?>>> $$2 = $$0.dU().b();
+      Map<ccs<?>, Optional<? extends ccr<?>>> $$2 = $$0.dT().b();
       List<String> $$3 = Lists.newArrayList();
 
       for (Entry<ccs<?>, Optional<? extends ccr<?>>> $$4 : $$2.entrySet()) {
@@ -86,9 +86,9 @@ public class agf {
                long $$9 = $$1 - (Long)$$8;
                $$10 = $$9 + " ticks ago";
             } else if ($$7.e()) {
-               $$10 = a((aqu)$$0.dP(), $$8) + " (ttl: " + $$7.b() + ")";
+               $$10 = a((aqu)$$0.dO(), $$8) + " (ttl: " + $$7.b() + ")";
             } else {
-               $$10 = a((aqu)$$0.dP(), $$8);
+               $$10 = a((aqu)$$0.dO(), $$8);
             }
          } else {
             $$10 = "-";

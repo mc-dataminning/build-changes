@@ -16,26 +16,26 @@ public class dyl implements dys.c {
       }
    });
    private final ObjectListIterator<dyl.a> h;
-   private final ObjectListIterator<eks> i;
+   private final ObjectListIterator<eku> i;
 
    public static dyl a(ddq $$0, dcd $$1) {
       int $$2 = $$1.d();
       int $$3 = $$1.e();
       ObjectList<dyl.a> $$4 = new ObjectArrayList(10);
-      ObjectList<eks> $$5 = new ObjectArrayList(32);
-      $$0.a($$1, $$0x -> $$0x.d() != eka.a).forEach($$5x -> {
-         eka $$6 = $$5x.h().d();
+      ObjectList<eku> $$5 = new ObjectArrayList(32);
+      $$0.a($$1, $$0x -> $$0x.d() != ekc.a).forEach($$5x -> {
+         ekc $$6 = $$5x.h().d();
 
-         for (ejt $$7 : $$5x.i()) {
+         for (ejv $$7 : $$5x.i()) {
             if ($$7.a($$1, 12)) {
-               if ($$7 instanceof ejl) {
-                  ejl $$8 = (ejl)$$7;
-                  ekz.a $$9 = $$8.b().f();
-                  if ($$9 == ekz.a.b) {
+               if ($$7 instanceof ejn) {
+                  ejn $$8 = (ejn)$$7;
+                  elb.a $$9 = $$8.b().f();
+                  if ($$9 == elb.a.b) {
                      $$4.add(new dyl.a($$8.f(), $$6, $$8.d()));
                   }
 
-                  for (eks $$10 : $$8.e()) {
+                  for (eku $$10 : $$8.e()) {
                      int $$11 = $$10.a();
                      int $$12 = $$10.c();
                      if ($$11 > $$2 - 12 && $$12 > $$3 - 12 && $$11 < $$2 + 15 + 12 && $$12 < $$3 + 15 + 12) {
@@ -52,7 +52,7 @@ public class dyl implements dys.c {
    }
 
    @VisibleForTesting
-   public dyl(ObjectListIterator<dyl.a> $$0, ObjectListIterator<eks> $$1) {
+   public dyl(ObjectListIterator<dyl.a> $$0, ObjectListIterator<eku> $$1) {
       this.h = $$0;
       this.i = $$1;
    }
@@ -66,7 +66,7 @@ public class dyl implements dys.c {
 
       while (this.h.hasNext()) {
          dyl.a $$5 = (dyl.a)this.h.next();
-         ejh $$6 = $$5.a();
+         ejj $$6 = $$5.a();
          int $$7 = $$5.c();
          int $$8 = Math.max(0, Math.max($$6.h() - $$1, $$1 - $$6.k()));
          int $$9 = Math.max(0, Math.max($$6.j() - $$3, $$3 - $$6.m()));
@@ -91,7 +91,7 @@ public class dyl implements dys.c {
       this.h.back(Integer.MAX_VALUE);
 
       while (this.i.hasNext()) {
-         eks $$13 = (eks)this.i.next();
+         eku $$13 = (eku)this.i.next();
          int $$14 = $$1 - $$13.a();
          int $$15 = $$2 - $$13.b();
          int $$16 = $$3 - $$13.c();
@@ -145,6 +145,6 @@ public class dyl implements dys.c {
    }
 
    @VisibleForTesting
-   public static record a(ejh a, eka b, int c) {
+   public static record a(ejj a, ekc b, int c) {
    }
 }

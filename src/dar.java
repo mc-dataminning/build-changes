@@ -22,16 +22,16 @@ public record dar(akr b, jm<bur> d, daj e, buu.a f) implements dat {
    }
 
    @Override
-   public void a(aqu $$0, int $$1, dab $$2, bsr $$3, exa $$4, boolean $$5) {
+   public void a(aqu $$0, int $$1, dab $$2, bsr $$3, exc $$4, boolean $$5) {
       if ($$5 && $$3 instanceof btn $$6) {
-         $$6.eT().a(this.a($$1, $$2.b()));
+         $$6.eS().a(this.a($$1, $$2.b()));
       }
    }
 
    @Override
-   public void a(dab $$0, bsr $$1, exa $$2, int $$3) {
+   public void a(dab $$0, bsr $$1, exc $$2, int $$3) {
       if ($$1 instanceof btn $$4) {
-         $$4.eT().b(this.a($$3, $$0.b()));
+         $$4.eS().b(this.a($$3, $$0.b()));
       }
    }
 

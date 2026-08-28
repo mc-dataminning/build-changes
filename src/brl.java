@@ -239,7 +239,7 @@ public class brl {
       return this.a(brn.R, $$0);
    }
 
-   public brk a(exa $$0) {
+   public brk a(exc $$0) {
       return new brk(this.a.g(brn.S), $$0);
    }
 

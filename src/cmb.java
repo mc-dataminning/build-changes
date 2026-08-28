@@ -54,12 +54,12 @@ public class cmb extends ckd implements dyi {
       this.cE = new dxw<>(new dyi.b(this));
       this.bP = 5;
       this.N().a(true);
-      this.a(ept.m, 0.0F);
-      this.a(ept.q, 8.0F);
-      this.a(ept.f, 8.0F);
-      this.a(ept.i, 8.0F);
-      this.a(ept.o, 0.0F);
-      this.a(ept.n, 0.0F);
+      this.a(epv.m, 0.0F);
+      this.a(epv.q, 8.0F);
+      this.a(epv.f, 8.0F);
+      this.a(epv.i, 8.0F);
+      this.a(epv.o, 0.0F);
+      this.a(epv.n, 0.0F);
    }
 
    @Override
@@ -77,7 +77,7 @@ public class cmb extends ckd implements dyi {
 
    @Override
    public boolean a(dcz $$0) {
-      return super.a($$0) && $$0.a(this, this.am().n().a(this.dn()));
+      return super.a($$0) && $$0.a(this, this.am().n().a(this.dm()));
    }
 
    @Override
@@ -87,10 +87,10 @@ public class cmb extends ckd implements dyi {
 
    @Override
    public boolean b(brk $$0) {
-      return this.gp() && !$$0.a(awg.d) ? true : super.b($$0);
+      return this.go() && !$$0.a(awg.d) ? true : super.b($$0);
    }
 
-   boolean gp() {
+   boolean go() {
       return this.c(bua.o) || this.c(bua.n);
    }
 
@@ -100,7 +100,7 @@ public class cmb extends ckd implements dyi {
    }
 
    @Override
-   public boolean fL() {
+   public boolean fK() {
       return true;
    }
 
@@ -110,7 +110,7 @@ public class cmb extends ckd implements dyi {
    }
 
    public static buv.a s() {
-      return ckd.gr().a(buw.s, 500.0).a(buw.v, 0.3F).a(buw.p, 1.0).a(buw.d, 1.5).a(buw.c, 30.0);
+      return ckd.gq().a(buw.s, 500.0).a(buw.v, 0.3F).a(buw.p, 1.0).a(buw.d, 1.5).a(buw.c, 30.0);
    }
 
    @Override
@@ -119,14 +119,14 @@ public class cmb extends ckd implements dyi {
    }
 
    @Override
-   protected float fb() {
+   protected float fa() {
       return 4.0F;
    }
 
    @Nullable
    @Override
    protected avo v() {
-      return !this.c(bua.l) && !this.gp() ? this.x().b() : null;
+      return !this.c(bua.l) && !this.go() ? this.x().b() : null;
    }
 
    @Override
@@ -146,8 +146,8 @@ public class cmb extends ckd implements dyi {
 
    @Override
    public boolean D(bsr $$0) {
-      this.dP().a(this, (byte)4);
-      this.a(avp.BJ, 10.0F, this.fc());
+      this.dO().a(this, (byte)4);
+      this.a(avp.BJ, 10.0F, this.fb());
       bzh.a(this, 40);
       return super.D($$0);
    }
@@ -162,25 +162,25 @@ public class cmb extends ckd implements dyi {
       return this.ao.a(ck);
    }
 
-   private void gs() {
-      this.ao.a(ck, this.gv());
+   private void gr() {
+      this.ao.a(ck, this.gu());
    }
 
    @Override
    public void l() {
-      if (this.dP() instanceof aqu $$0) {
+      if (this.dO() instanceof aqu $$0) {
          dyi.c.a($$0, this.cG, this.cF);
-         if (this.fU() || this.Y()) {
+         if (this.fT() || this.Y()) {
             cmc.a((btn)this);
          }
       }
 
       super.l();
-      if (this.dP().x_()) {
-         if (this.ai % this.gt() == 0) {
+      if (this.dO().x_()) {
+         if (this.ai % this.gs() == 0) {
             this.cC = 10;
             if (!this.aX()) {
-               this.dP().a(this.du(), this.dw(), this.dA(), avp.BN, this.df(), 5.0F, this.fc(), false);
+               this.dO().a(this.dt(), this.dv(), this.dz(), avp.BN, this.de(), 5.0F, this.fb(), false);
             }
          }
 
@@ -206,18 +206,18 @@ public class cmb extends ckd implements dyi {
 
    @Override
    protected void ab() {
-      aqu $$0 = (aqu)this.dP();
+      aqu $$0 = (aqu)this.dO();
       $$0.ag().a("wardenBrain");
-      this.dU().a($$0, this);
-      this.dP().ag().c();
+      this.dT().a($$0, this);
+      this.dO().ag().c();
       super.ab();
       if ((this.ai + this.an()) % 120 == 0) {
-         a($$0, this.dn(), this, 20);
+         a($$0, this.dm(), this, 20);
       }
 
       if (this.ai % 20 == 0) {
          this.cH.a($$0, this::c);
-         this.gs();
+         this.gr();
       }
 
       cmc.a(this);
@@ -237,7 +237,7 @@ public class cmb extends ckd implements dyi {
       }
    }
 
-   private int gt() {
+   private int gs() {
       float $$0 = (float)this.t() / (float)clz.c.a();
       return 40 - ayo.d(ayo.a($$0, 0.0F, 1.0F) * 30.0F);
    }
@@ -252,14 +252,14 @@ public class cmb extends ckd implements dyi {
 
    private void a(bsm $$0) {
       if ((float)$$0.b() < 4500.0F) {
-         ayw $$1 = this.dS();
+         ayw $$1 = this.dR();
          dtc $$2 = this.bq();
          if ($$2.l() != dmf.a) {
             for (int $$3 = 0; $$3 < 30; $$3++) {
-               double $$4 = this.du() + (double)ayo.b($$1, -0.7F, 0.7F);
-               double $$5 = this.dw();
-               double $$6 = this.dA() + (double)ayo.b($$1, -0.7F, 0.7F);
-               this.dP().a(new le(lm.b, $$2), $$4, $$5, $$6, 0.0, 0.0, 0.0);
+               double $$4 = this.dt() + (double)ayo.b($$1, -0.7F, 0.7F);
+               double $$5 = this.dv();
+               double $$6 = this.dz() + (double)ayo.b($$1, -0.7F, 0.7F);
+               this.dO().a(new le(lm.b, $$2), $$4, $$5, $$6, 0.0, 0.0, 0.0);
             }
          }
       }
@@ -288,7 +288,7 @@ public class cmb extends ckd implements dyi {
 
    @Override
    public boolean a(dco $$0) {
-      return this.gp();
+      return this.go();
    }
 
    @Override
@@ -297,8 +297,8 @@ public class cmb extends ckd implements dyi {
    }
 
    @Override
-   public buq<cmb> dU() {
-      return (buq<cmb>)super.dU();
+   public buq<cmb> dT() {
+      return (buq<cmb>)super.dT();
    }
 
    @Override
@@ -309,7 +309,7 @@ public class cmb extends ckd implements dyi {
 
    @Override
    public void a(BiConsumer<dxw<?>, aqu> $$0) {
-      if (this.dP() instanceof aqu $$1) {
+      if (this.dO() instanceof aqu $$1) {
          $$0.accept(this.cE, $$1);
       }
    }
@@ -317,21 +317,21 @@ public class cmb extends ckd implements dyi {
    @Contract("null->false")
    public boolean c(@Nullable bsr $$0) {
       if ($$0 instanceof btn $$1
-         && this.dP() == $$0.dP()
+         && this.dO() == $$0.dO()
          && bsw.e.test($$0)
          && !this.s($$0)
          && $$1.am() != bsx.d
          && $$1.am() != bsx.bm
          && !$$1.cv()
-         && !$$1.ey()
-         && this.dP().C_().a($$1.cL())) {
+         && !$$1.ex()
+         && this.dO().C_().a($$1.cK())) {
          return true;
       }
 
       return false;
    }
 
-   public static void a(aqu $$0, exa $$1, @Nullable bsr $$2, int $$3) {
+   public static void a(aqu $$0, exc $$1, @Nullable bsr $$2, int $$3) {
       brz $$4 = new brz(bsb.G, 260, 0, false, false);
       bsa.a($$0, $$2, $$1, (double)$$3, $$4, 200);
    }
@@ -339,7 +339,7 @@ public class cmb extends ckd implements dyi {
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      akp<uy> $$1 = this.dR().a(up.a);
+      akp<uy> $$1 = this.dQ().a(up.a);
       cma.a(this::c)
          .encodeStart($$1, this.cH)
          .resultOrPartial($$0x -> cc.error("Failed to encode anger state for Warden: '{}'", $$0x))
@@ -353,13 +353,13 @@ public class cmb extends ckd implements dyi {
    @Override
    public void a(ub $$0) {
       super.a($$0);
-      akp<uy> $$1 = this.dR().a(up.a);
+      akp<uy> $$1 = this.dQ().a(up.a);
       if ($$0.e("anger")) {
          cma.a(this::c)
             .parse($$1, $$0.c("anger"))
             .resultOrPartial($$0x -> cc.error("Failed to parse anger state for Warden: '{}'", $$0x))
             .ifPresent($$0x -> this.cH = $$0x);
-         this.gs();
+         this.gr();
       }
 
       if ($$0.b("listener", 10)) {
@@ -370,17 +370,17 @@ public class cmb extends ckd implements dyi {
       }
    }
 
-   private void gu() {
+   private void gt() {
       if (!this.c(bua.l)) {
-         this.a(this.x().c(), 10.0F, this.fc());
+         this.a(this.x().c(), 10.0F, this.fb());
       }
    }
 
    public clz x() {
-      return clz.a(this.gv());
+      return clz.a(this.gu());
    }
 
-   private int gv() {
+   private int gu() {
       return this.cH.b(this.p());
    }
 
@@ -395,21 +395,21 @@ public class cmb extends ckd implements dyi {
 
    @VisibleForTesting
    public void a(@Nullable bsr $$0, int $$1, boolean $$2) {
-      if (!this.ga() && this.c($$0)) {
+      if (!this.fZ() && this.c($$0)) {
          cmc.a((btn)this);
          boolean $$3 = !(this.p() instanceof cmx);
          int $$4 = this.cH.a($$0, $$1);
          if ($$0 instanceof cmx && $$3 && clz.a($$4).d()) {
-            this.dU().b(ccs.o);
+            this.dT().b(ccs.o);
          }
 
          if ($$2) {
-            this.gu();
+            this.gt();
          }
       }
    }
 
-   public Optional<btn> gl() {
+   public Optional<btn> gk() {
       return this.x().d() ? this.cH.a() : Optional.empty();
    }
 
@@ -427,10 +427,10 @@ public class cmb extends ckd implements dyi {
    @Nullable
    @Override
    public buh a(ddl $$0, bqp $$1, btr $$2, @Nullable buh $$3) {
-      this.dU().a(ccs.aE, azs.a, 1200L);
+      this.dT().a(ccs.aE, azs.a, 1200L);
       if ($$2 == btr.k) {
          this.b(bua.n);
-         this.dU().a(ccs.aC, azs.a, (long)cmc.a);
+         this.dT().a(ccs.aC, azs.a, (long)cmc.a);
          this.a(avp.BG, 5.0F, 1.0F);
       }
 
@@ -440,7 +440,7 @@ public class cmb extends ckd implements dyi {
    @Override
    public boolean a(brk $$0, float $$1) {
       boolean $$2 = super.a($$0, $$1);
-      if (!this.dP().B && !this.ga() && !this.gp()) {
+      if (!this.dO().B && !this.fZ() && !this.go()) {
          bsr $$3 = $$0.d();
          this.a($$3, clz.c.a() + 20, false);
          if (this.bF.c(ccs.o).isEmpty() && $$3 instanceof btn $$4 && ($$0.b() || this.a($$4, 5.0))) {
@@ -452,36 +452,36 @@ public class cmb extends ckd implements dyi {
    }
 
    public void j(btn $$0) {
-      this.dU().b(ccs.ay);
-      this.dU().a(ccs.o, $$0);
-      this.dU().b(ccs.E);
+      this.dT().b(ccs.ay);
+      this.dT().a(ccs.o, $$0);
+      this.dT().b(ccs.E);
       bzh.a(this, 200);
    }
 
    @Override
    public bsu e(bua $$0) {
       bsu $$1 = super.e($$0);
-      return this.gp() ? bsu.c($$1.a(), 1.0F) : $$1;
+      return this.go() ? bsu.c($$1.a(), 1.0F) : $$1;
    }
 
    @Override
    public boolean bB() {
-      return !this.gp() && super.bB();
+      return !this.go() && super.bB();
    }
 
    @Override
    protected void E(bsr $$0) {
-      if (!this.ga() && !this.dU().a(ccs.aH)) {
-         this.dU().a(ccs.aH, azs.a, 20L);
+      if (!this.fZ() && !this.dT().a(ccs.aH)) {
+         this.dT().a(ccs.aH, azs.a, 20L);
          this.e($$0);
-         cmc.a(this, $$0.dp());
+         cmc.a(this, $$0.do());
       }
 
       super.E($$0);
    }
 
    @VisibleForTesting
-   public cma gm() {
+   public cma gl() {
       return this.cH;
    }
 
@@ -489,12 +489,12 @@ public class cmb extends ckd implements dyi {
    protected cda b(dcw $$0) {
       return new ccz(this, $$0) {
          @Override
-         protected eps a(int $$0) {
-            this.o = new epy();
+         protected epu a(int $$0) {
+            this.o = new eqa();
             this.o.a(true);
-            return new eps(this.o, $$0) {
+            return new epu(this.o, $$0) {
                @Override
-               protected float a(epo $$0, epo $$1) {
+               protected float a(epq $$0, epq $$1) {
                   return $$0.b($$1);
                }
             };
@@ -503,18 +503,18 @@ public class cmb extends ckd implements dyi {
    }
 
    @Override
-   public dyi.a gn() {
+   public dyi.a gm() {
       return this.cG;
    }
 
    @Override
-   public dyi.d go() {
+   public dyi.d gn() {
       return this.cF;
    }
 
    class a implements dyi.d {
       private static final int b = 16;
-      private final dyd c = new dxx(cmb.this, cmb.this.cM());
+      private final dyd c = new dxx(cmb.this, cmb.this.cL());
 
       @Override
       public int a() {
@@ -538,7 +538,7 @@ public class cmb extends ckd implements dyi {
 
       @Override
       public boolean a(aqu $$0, jd $$1, jm<dxz> $$2, dxz.a $$3) {
-         if (!cmb.this.ga() && !cmb.this.ey() && !cmb.this.dU().a(ccs.aI) && !cmb.this.gp() && $$0.C_().a($$1)) {
+         if (!cmb.this.fZ() && !cmb.this.ex() && !cmb.this.dT().a(ccs.aI) && !cmb.this.go() && $$0.C_().a($$1)) {
             if ($$3.a() instanceof btn $$4 && !cmb.this.c($$4)) {
                return false;
             }
@@ -551,16 +551,16 @@ public class cmb extends ckd implements dyi {
 
       @Override
       public void a(aqu $$0, jd $$1, jm<dxz> $$2, @Nullable bsr $$3, @Nullable bsr $$4, float $$5) {
-         if (!cmb.this.ey()) {
+         if (!cmb.this.ex()) {
             cmb.this.bF.a(ccs.aI, azs.a, 40L);
             $$0.a(cmb.this, (byte)61);
-            cmb.this.a(avp.BZ, 5.0F, cmb.this.fc());
+            cmb.this.a(avp.BZ, 5.0F, cmb.this.fb());
             jd $$6 = $$1;
             if ($$4 != null) {
                if (cmb.this.a($$4, 30.0)) {
-                  if (cmb.this.dU().a(ccs.aA)) {
+                  if (cmb.this.dT().a(ccs.aA)) {
                      if (cmb.this.c($$4)) {
-                        $$6 = $$4.dp();
+                        $$6 = $$4.do();
                      }
 
                      cmb.this.e($$4);
@@ -569,7 +569,7 @@ public class cmb extends ckd implements dyi {
                   }
                }
 
-               cmb.this.dU().a(ccs.aA, azs.a, 100L);
+               cmb.this.dT().a(ccs.aA, azs.a, 100L);
             } else {
                cmb.this.e($$3);
             }

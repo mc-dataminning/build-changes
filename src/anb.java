@@ -41,20 +41,20 @@ public class anb {
                int $$9 = Math.min($$5, $$8);
                $$8 -= $$9;
                cuq $$10 = $$1.a($$9, false);
-               boolean $$11 = $$7.fZ().f($$10);
+               boolean $$11 = $$7.fY().f($$10);
                if ($$11 && $$10.e()) {
                   cjh $$13 = $$7.a($$4, false);
                   if ($$13 != null) {
                      $$13.B();
                   }
 
-                  $$7.dP().a(null, $$7.du(), $$7.dw(), $$7.dA(), avp.nC, avq.h, 0.2F, (($$7.dS().i() - $$7.dS().i()) * 0.7F + 1.0F) * 2.0F);
+                  $$7.dO().a(null, $$7.dt(), $$7.dv(), $$7.dz(), avp.nC, avq.h, 0.2F, (($$7.dR().i() - $$7.dR().i()) * 0.7F + 1.0F) * 2.0F);
                   $$7.cd.d();
                } else {
                   cjh $$12 = $$7.a($$10, false);
                   if ($$12 != null) {
                      $$12.w();
-                     $$12.b($$7.cA());
+                     $$12.b($$7.cz());
                   }
                }
             }

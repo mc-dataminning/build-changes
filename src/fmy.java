@@ -1,109 +1,92 @@
+import com.mojang.authlib.minecraft.BanDetails;
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 import java.net.URI;
+import java.time.Duration;
+import java.time.Instant;
+import org.apache.commons.lang3.StringUtils;
 
-public class fmy extends fmz {
-   private static final wz r = wz.c("chat.copy");
-   private static final wz s = wz.c("chat.link.warning");
-   private final String u;
-   private final boolean v;
+public class fmy {
+   private static final wz b = wz.c("gui.banned.title.temporary").a(n.r);
+   private static final wz c = wz.c("gui.banned.title.permanent").a(n.r);
+   public static final wz a = wz.c("gui.banned.name.title").a(n.r);
+   private static final wz d = wz.c("gui.banned.skin.title").a(n.r);
+   private static final wz e = wz.a("gui.banned.skin.description", wz.a(axj.n));
 
-   public fmy(BooleanConsumer $$0, String $$1, boolean $$2) {
-      this($$0, c($$2), wz.b($$1), $$1, $$2 ? wy.e : wy.g, $$2);
+   public static fna a(BooleanConsumer $$0, BanDetails $$1) {
+      return new fna($$0, a($$1), b($$1), axj.n, wy.m, true);
    }
 
-   public fmy(BooleanConsumer $$0, wz $$1, String $$2, boolean $$3) {
-      this($$0, $$1, a($$3, $$2), $$2, $$3 ? wy.e : wy.g, $$3);
+   public static fna a(Runnable $$0) {
+      URI $$1 = axj.n;
+      return new fna($$2 -> {
+         if ($$2) {
+            ad.k().a($$1);
+         }
+
+         $$0.run();
+      }, d, e, $$1, wy.m, true);
    }
 
-   public fmy(BooleanConsumer $$0, wz $$1, URI $$2, boolean $$3) {
-      this($$0, $$1, $$2.toString(), $$3);
+   public static fna a(String $$0, Runnable $$1) {
+      URI $$2 = axj.n;
+      return new fna($$2x -> {
+         if ($$2x) {
+            ad.k().a($$2);
+         }
+
+         $$1.run();
+      }, a, wz.a("gui.banned.name.description", wz.b($$0).a(n.o), wz.a(axj.n)), $$2, wy.m, true);
    }
 
-   public fmy(BooleanConsumer $$0, wz $$1, wz $$2, URI $$3, wz $$4, boolean $$5) {
-      this($$0, $$1, $$2, $$3.toString(), $$4, true);
+   private static wz a(BanDetails $$0) {
+      return f($$0) ? b : c;
    }
 
-   public fmy(BooleanConsumer $$0, wz $$1, wz $$2, String $$3, wz $$4, boolean $$5) {
-      super($$0, $$1, $$2);
-      this.a = (wz)($$5 ? wz.c("chat.link.open") : wy.f);
-      this.b = $$4;
-      this.v = !$$5;
-      this.u = $$3;
+   private static wz b(BanDetails $$0) {
+      return wz.a("gui.banned.description", c($$0), d($$0), wz.a(axj.n));
    }
 
-   protected static xn a(boolean $$0, String $$1) {
-      return c($$0).b(wy.v).b(wz.b($$1));
-   }
+   private static wz c(BanDetails $$0) {
+      String $$1 = $$0.reason();
+      String $$2 = $$0.reasonMessage();
+      if (StringUtils.isNumeric($$1)) {
+         int $$3 = Integer.parseInt($$1);
+         gag $$4 = gag.a($$3);
+         wz $$5;
+         if ($$4 != null) {
+            $$5 = xc.a($$4.a().f(), xw.a.a(true));
+         } else if ($$2 != null) {
+            $$5 = wz.a("gui.banned.description.reason_id_message", $$3, $$2).a(n.r);
+         } else {
+            $$5 = wz.a("gui.banned.description.reason_id", $$3).a(n.r);
+         }
 
-   protected static xn c(boolean $$0) {
-      return wz.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
-   }
-
-   @Override
-   protected void a(int $$0) {
-      this.c(fik.a(this.a, $$0x -> this.c.accept(true)).a(this.m / 2 - 50 - 105, $$0, 100, 20).a());
-      this.c(fik.a(r, $$0x -> {
-         this.l();
-         this.c.accept(false);
-      }).a(this.m / 2 - 50, $$0, 100, 20).a());
-      this.c(fik.a(this.b, $$0x -> this.c.accept(false)).a(this.m / 2 - 50 + 105, $$0, 100, 20).a());
-   }
-
-   public void l() {
-      this.l.o.a(this.u);
-   }
-
-   @Override
-   public void a(fhx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.v) {
-         $$0.a(this.o, s, this.m / 2, 110, 16764108);
+         return wz.a("gui.banned.description.reason", $$5);
+      } else {
+         return wz.c("gui.banned.description.unknownreason");
       }
    }
 
-   public static void a(fob $$0, String $$1, boolean $$2) {
-      fgm $$3 = fgm.Q();
-      $$3.a(new fmy($$3x -> {
-         if ($$3x) {
-            ad.k().a($$1);
-         }
-
-         $$3.a($$0);
-      }, $$1, $$2));
+   private static wz d(BanDetails $$0) {
+      if (f($$0)) {
+         wz $$1 = e($$0);
+         return wz.a("gui.banned.description.temporary", wz.a("gui.banned.description.temporary.duration", $$1).a(n.r));
+      } else {
+         return wz.c("gui.banned.description.permanent").a(n.r);
+      }
    }
 
-   public static void a(fob $$0, URI $$1, boolean $$2) {
-      fgm $$3 = fgm.Q();
-      $$3.a(new fmy($$3x -> {
-         if ($$3x) {
-            ad.k().a($$1);
-         }
-
-         $$3.a($$0);
-      }, $$1.toString(), $$2));
+   private static wz e(BanDetails $$0) {
+      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
+      long $$2 = $$1.toHours();
+      if ($$2 > 72L) {
+         return wy.a($$1.toDays());
+      } else {
+         return $$2 < 1L ? wy.c($$1.toMinutes()) : wy.b($$1.toHours());
+      }
    }
 
-   public static void a(fob $$0, URI $$1) {
-      a($$0, $$1, true);
-   }
-
-   public static void a(fob $$0, String $$1) {
-      a($$0, $$1, true);
-   }
-
-   public static fik.c b(fob $$0, String $$1, boolean $$2) {
-      return $$3 -> a($$0, $$1, $$2);
-   }
-
-   public static fik.c b(fob $$0, URI $$1, boolean $$2) {
-      return $$3 -> a($$0, $$1, $$2);
-   }
-
-   public static fik.c b(fob $$0, String $$1) {
-      return b($$0, $$1, true);
-   }
-
-   public static fik.c b(fob $$0, URI $$1) {
-      return b($$0, $$1, true);
+   private static boolean f(BanDetails $$0) {
+      return $$0.expires() != null;
    }
 }

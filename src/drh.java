@@ -200,7 +200,7 @@ public class drh extends drn implements drg {
 
          return false;
       } else {
-         boolean $$7 = $$1.K() && $$3.r($$0, $$2) && !$$3.a(awe.cz);
+         boolean $$7 = $$1.K() && $$3.r($$0, $$2) && !$$3.a(awe.cA);
          if (!$$7) {
             for (cjh $$8 : b($$0, $$1)) {
                if (a($$1, $$8)) {
@@ -336,7 +336,7 @@ public class drh extends drn implements drg {
    }
 
    public static List<cjh> b(dcw $$0, drg $$1) {
-      ewv $$2 = $$1.am_().d($$1.H() - 0.5, $$1.I() - 0.5, $$1.J() - 0.5);
+      ewx $$2 = $$1.am_().d($$1.H() - 0.5, $$1.I() - 0.5, $$1.J() - 0.5);
       return $$0.a(cjh.class, $$2, bsw.a);
    }
 
@@ -373,7 +373,7 @@ public class drh extends drn implements drg {
 
    @Nullable
    private static bqk a(dcw $$0, double $$1, double $$2, double $$3) {
-      List<bsr> $$4 = $$0.a((bsr)null, new ewv($$1 - 0.5, $$2 - 0.5, $$3 - 0.5, $$1 + 0.5, $$2 + 0.5, $$3 + 0.5), bsw.d);
+      List<bsr> $$4 = $$0.a((bsr)null, new ewx($$1 - 0.5, $$2 - 0.5, $$3 - 0.5, $$1 + 0.5, $$2 + 0.5, $$3 + 0.5), bsw.d);
       return !$$4.isEmpty() ? (bqk)$$4.get($$0.z.a($$4.size())) : null;
    }
 
@@ -424,7 +424,7 @@ public class drh extends drn implements drg {
    }
 
    public static void a(dcw $$0, jd $$1, dtc $$2, bsr $$3, drh $$4) {
-      if ($$3 instanceof cjh $$5 && !$$5.p().e() && $$3.cL().d((double)(-$$1.u()), (double)(-$$1.v()), (double)(-$$1.w())).c($$4.am_())) {
+      if ($$3 instanceof cjh $$5 && !$$5.p().e() && $$3.cK().d((double)(-$$1.u()), (double)(-$$1.v()), (double)(-$$1.w())).c($$4.am_())) {
          a($$0, $$1, $$2, $$4, () -> a((bqk)$$4, $$5));
       }
    }

@@ -1,42 +1,18 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+public class eun {
+   public static final euk<bsr> a = a("this_entity");
+   public static final euk<cmx> b = a("last_damage_player");
+   public static final euk<brk> c = a("damage_source");
+   public static final euk<bsr> d = a("attacking_entity");
+   public static final euk<bsr> e = a("direct_attacking_entity");
+   public static final euk<exc> f = a("origin");
+   public static final euk<dtc> g = a("block_state");
+   public static final euk<dqh> h = a("block_entity");
+   public static final euk<cuq> i = a("tool");
+   public static final euk<Float> j = a("explosion_radius");
+   public static final euk<Integer> k = a("enchantment_level");
+   public static final euk<Boolean> l = a("enchantment_active");
 
-public class eun extends euq {
-   public static final MapCodec<eun> a = a(eun::new);
-   public static final Codec<eun> b = b(eun::new);
-
-   eun(List<eva> $$0) {
-      super($$0, ad.a($$0));
-   }
-
-   public static eun a(List<eva> $$0) {
-      return new eun(List.copyOf($$0));
-   }
-
-   @Override
-   public evb b() {
-      return evc.c;
-   }
-
-   public static eun.a a(eva.a... $$0) {
-      return new eun.a($$0);
-   }
-
-   public static class a extends euq.a {
-      public a(eva.a... $$0) {
-         super($$0);
-      }
-
-      @Override
-      public eun.a and(eva.a $$0) {
-         this.a($$0);
-         return this;
-      }
-
-      @Override
-      protected eva a(List<eva> $$0) {
-         return new eun($$0);
-      }
+   private static <T> euk<T> a(String $$0) {
+      return new euk<>(akr.b($$0));
    }
 }

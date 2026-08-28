@@ -56,7 +56,7 @@ public class cqp extends cpu {
       this.a(cqn.a(this.k, 0));
       this.a(cqn.a(this.k, 1));
       this.a(cqn.a(this.k, 2));
-      this.a(this.r).a($$1.l.gh());
+      this.a(this.r).a($$1.l.gg());
       this.a(cqn.a(this.l, 0));
       this.a(cqn.a(this.l, 1));
       this.a(cqn.a(this.l, 2));
@@ -120,9 +120,9 @@ public class cqp extends cpu {
          cuq $$2 = this.o.a(0);
          cuq $$3 = this.o.a(1);
          int $$4 = $$1 + 1;
-         if (($$3.e() || $$3.H() < $$4) && !$$0.fM()) {
+         if (($$3.e() || $$3.H() < $$4) && !$$0.fL()) {
             return false;
-         } else if (this.k[$$1] <= 0 || $$2.e() || ($$0.cq < $$4 || $$0.cq < this.k[$$1]) && !$$0.ga().d) {
+         } else if (this.k[$$1] <= 0 || $$2.e() || ($$0.cq < $$4 || $$0.cq < this.k[$$1]) && !$$0.fZ().d) {
             return false;
          } else {
             this.p.a(($$5, $$6) -> {
@@ -150,7 +150,7 @@ public class cqp extends cpu {
                   }
 
                   this.o.e();
-                  this.r.a($$0.gh());
+                  this.r.a($$0.gg());
                   this.a(this.o);
                   $$5.a(null, $$6, avp.hX, avq.e, 1.0F, $$5.z.i() * 0.1F + 0.9F);
                }

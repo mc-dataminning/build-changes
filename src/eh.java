@@ -9,8 +9,8 @@ public class eh extends dv<eh.a> {
    }
 
    public void a(aqv $$0, jd $$1) {
-      double $$2 = $$0.du() - (double)$$1.u();
-      double $$3 = $$0.dA() - (double)$$1.w();
+      double $$2 = $$0.dt() - (double)$$1.u();
+      double $$3 = $$0.dz() - (double)$$1.w();
       double $$4 = $$2 * $$2 + $$3 * $$3;
       this.a($$0, $$1x -> $$1x.a($$4));
    }

@@ -1,19 +1,19 @@
 public class sj {
-   public static final akq<eit> a = sg.a("pile_hay");
-   public static final akq<eit> b = sg.a("pile_melon");
-   public static final akq<eit> c = sg.a("pile_snow");
-   public static final akq<eit> d = sg.a("pile_ice");
-   public static final akq<eit> e = sg.a("pile_pumpkin");
-   public static final akq<eit> f = sg.a("oak");
-   public static final akq<eit> g = sg.a("acacia");
-   public static final akq<eit> h = sg.a("spruce");
-   public static final akq<eit> i = sg.a("pine");
-   public static final akq<eit> j = sg.a("patch_cactus");
-   public static final akq<eit> k = sg.a("flower_plain");
-   public static final akq<eit> l = sg.a("patch_taiga_grass");
-   public static final akq<eit> m = sg.a("patch_berry_bush");
+   public static final akq<eiv> a = sg.a("pile_hay");
+   public static final akq<eiv> b = sg.a("pile_melon");
+   public static final akq<eiv> c = sg.a("pile_snow");
+   public static final akq<eiv> d = sg.a("pile_ice");
+   public static final akq<eiv> e = sg.a("pile_pumpkin");
+   public static final akq<eiv> f = sg.a("oak");
+   public static final akq<eiv> g = sg.a("acacia");
+   public static final akq<eiv> h = sg.a("spruce");
+   public static final akq<eiv> i = sg.a("pine");
+   public static final akq<eiv> j = sg.a("patch_cactus");
+   public static final akq<eiv> k = sg.a("flower_plain");
+   public static final akq<eiv> l = sg.a("patch_taiga_grass");
+   public static final akq<eiv> m = sg.a("patch_berry_bush");
 
-   public static void a(qq<eit> $$0) {
+   public static void a(qq<eiv> $$0) {
       jn<ebq<?, ?>> $$1 = $$0.a(lu.aI);
       jm<ebq<?, ?>> $$2 = $$1.b(rv.a);
       jm<ebq<?, ?>> $$3 = $$1.b(rv.b);

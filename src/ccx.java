@@ -4,10 +4,10 @@ public class ccx extends cda {
    }
 
    @Override
-   protected eps a(int $$0) {
-      this.o = new epl(false);
+   protected epu a(int $$0) {
+      this.o = new epn(false);
       this.o.a(true);
-      return new eps(this.o, $$0);
+      return new epu(this.o, $$0);
    }
 
    @Override
@@ -16,17 +16,17 @@ public class ccx extends cda {
    }
 
    @Override
-   protected exa b() {
-      return new exa(this.a.du(), this.a.e(0.5), this.a.dA());
+   protected exc b() {
+      return new exc(this.a.dt(), this.a.e(0.5), this.a.dz());
    }
 
    @Override
-   protected double a(exa $$0) {
+   protected double a(exc $$0) {
       return $$0.d;
    }
 
    @Override
-   protected boolean a(exa $$0, exa $$1) {
+   protected boolean a(exc $$0, exc $$1) {
       return this.a.bj() ? a(this.a, $$0, $$1, false) : false;
    }
 

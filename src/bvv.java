@@ -32,7 +32,7 @@ public class bvv<E extends btn> implements bvi<E> {
       for (Entry<ccs<?>, cct> $$1 : this.a.entrySet()) {
          ccs<?> $$2 = $$1.getKey();
          cct $$3 = $$1.getValue();
-         if (!$$0.dU().a($$2, $$3)) {
+         if (!$$0.dT().a($$2, $$3)) {
             return false;
          }
       }
@@ -64,7 +64,7 @@ public class bvv<E extends btn> implements bvi<E> {
    public final void g(aqu $$0, E $$1, long $$2) {
       this.f = bvh.a.a;
       this.e.b().filter($$0x -> $$0x.a() == bvh.a.b).forEach($$3 -> $$3.g($$0, $$1, $$2));
-      this.b.forEach($$1.dU()::b);
+      this.b.forEach($$1.dT()::b);
    }
 
    @Override

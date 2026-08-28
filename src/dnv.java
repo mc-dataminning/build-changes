@@ -16,7 +16,7 @@ public class dnv extends dgh implements dgb {
    public static final int b = 7;
    public static final duc c = dts.av;
    protected static final float d = 1.0F;
-   protected static final ext[] e = new ext[]{
+   protected static final exv[] e = new exv[]{
       dfy.a(7.0, 0.0, 7.0, 9.0, 2.0, 9.0),
       dfy.a(7.0, 0.0, 7.0, 9.0, 4.0, 9.0),
       dfy.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0),
@@ -44,7 +44,7 @@ public class dnv extends dgh implements dgb {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return e[$$0.c(c)];
    }
 
@@ -66,7 +66,7 @@ public class dnv extends dgh implements dgb {
                ji $$6 = ji.c.a.a($$3);
                jd $$7 = $$2.a($$6);
                dtc $$8 = $$1.a_($$7.e());
-               if ($$1.a_($$7).i() && ($$8.a(dga.cC) || $$8.a(awe.af))) {
+               if ($$1.a_($$7).i() && ($$8.a(dga.cC) || $$8.a(awe.ag))) {
                   jz<dfy> $$9 = $$1.H_().d(lu.f);
                   Optional<dfy> $$10 = $$9.e(this.f);
                   Optional<dfy> $$11 = $$9.e(this.g);

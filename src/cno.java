@@ -7,9 +7,9 @@ public class cno extends cnp {
       this(bsx.ao, $$0);
       this.c($$1);
       this.a_(
-         $$1.du() - (double)($$1.dk() + 1.0F) * 0.5 * (double)ayo.a($$1.aY * (float) (Math.PI / 180.0)),
-         $$1.dy() - 0.1F,
-         $$1.dA() + (double)($$1.dk() + 1.0F) * 0.5 * (double)ayo.b($$1.aY * (float) (Math.PI / 180.0))
+         $$1.dt() - (double)($$1.dj() + 1.0F) * 0.5 * (double)ayo.a($$1.aY * (float) (Math.PI / 180.0)),
+         $$1.dx() - 0.1F,
+         $$1.dz() + (double)($$1.dj() + 1.0F) * 0.5 * (double)ayo.b($$1.aY * (float) (Math.PI / 180.0))
       );
    }
 
@@ -21,15 +21,15 @@ public class cno extends cnp {
    @Override
    public void l() {
       super.l();
-      exa $$0 = this.ds();
-      ewy $$1 = cnr.a(this, this::b);
+      exc $$0 = this.dr();
+      exa $$1 = cnr.a(this, this::b);
       this.b($$1);
-      double $$2 = this.du() + $$0.c;
-      double $$3 = this.dw() + $$0.d;
-      double $$4 = this.dA() + $$0.e;
+      double $$2 = this.dt() + $$0.c;
+      double $$3 = this.dv() + $$0.d;
+      double $$4 = this.dz() + $$0.e;
       this.I();
       float $$5 = 0.99F;
-      if (this.dP().a(this.cL()).noneMatch(dtb.a::i)) {
+      if (this.dO().a(this.cK()).noneMatch(dtb.a::i)) {
          this.aq();
       } else if (this.bi()) {
          this.aq();
@@ -41,21 +41,21 @@ public class cno extends cnp {
    }
 
    @Override
-   protected void a(ewx $$0) {
+   protected void a(ewz $$0) {
       super.a($$0);
       if (this.s() instanceof btn $$1) {
          bsr $$2 = $$0.a();
-         brk $$3 = this.dQ().b(this, $$1);
-         if ($$2.a($$3, 1.0F) && this.dP() instanceof aqu $$4) {
+         brk $$3 = this.dP().b(this, $$1);
+         if ($$2.a($$3, 1.0F) && this.dO() instanceof aqu $$4) {
             dae.a($$4, $$2, $$3);
          }
       }
    }
 
    @Override
-   protected void a(eww $$0) {
+   protected void a(ewy $$0) {
       super.a($$0);
-      if (!this.dP().B) {
+      if (!this.dO().B) {
          this.aq();
       }
    }
@@ -73,7 +73,7 @@ public class cno extends cnp {
 
       for (int $$4 = 0; $$4 < 7; $$4++) {
          double $$5 = 0.4 + 0.1 * (double)$$4;
-         this.dP().a(lm.ah, this.du(), this.dw(), this.dA(), $$1 * $$5, $$2, $$3 * $$5);
+         this.dO().a(lm.ah, this.dt(), this.dv(), this.dz(), $$1 * $$5, $$2, $$3 * $$5);
       }
 
       this.n($$1, $$2, $$3);

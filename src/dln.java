@@ -7,12 +7,12 @@ public class dln extends dig implements dgb {
    public static final int e = 4;
    private static final int f = 3;
    private static final int g = 1;
-   private static final ext h = dfy.a(3.0, 0.0, 3.0, 13.0, 15.0, 13.0);
-   private static final ext i = dfy.a(3.0, -1.0, 3.0, 13.0, 16.0, 13.0);
-   private static final ext j = dfy.a(5.0, -1.0, 5.0, 11.0, 3.0, 11.0);
-   private static final ext k = dfy.a(3.0, -1.0, 3.0, 13.0, 5.0, 13.0);
-   private static final ext[] l = new ext[]{dfy.a(3.0, 0.0, 3.0, 13.0, 11.0, 13.0), h};
-   private static final ext[] m = new ext[]{j, dfy.a(3.0, -1.0, 3.0, 13.0, 14.0, 13.0), i, i, i};
+   private static final exv h = dfy.a(3.0, 0.0, 3.0, 13.0, 15.0, 13.0);
+   private static final exv i = dfy.a(3.0, -1.0, 3.0, 13.0, 16.0, 13.0);
+   private static final exv j = dfy.a(5.0, -1.0, 5.0, 11.0, 3.0, 11.0);
+   private static final exv k = dfy.a(3.0, -1.0, 3.0, 13.0, 5.0, 13.0);
+   private static final exv[] l = new exv[]{dfy.a(3.0, 0.0, 3.0, 13.0, 11.0, 13.0), h};
+   private static final exv[] m = new exv[]{j, dfy.a(3.0, -1.0, 3.0, 13.0, 14.0, 13.0), i, i, i};
 
    @Override
    public MapCodec<dln> a() {
@@ -30,12 +30,12 @@ public class dln extends dig implements dgb {
    }
 
    @Override
-   public ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   public exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return $$0.c(b) == dty.a ? l[Math.min(Math.abs(4 - ($$0.c(d) + 1)), l.length - 1)] : m[$$0.c(d)];
    }
 
    @Override
-   public ext b(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   public exv b(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       if ($$0.c(d) == 0) {
          return j;
       } else {

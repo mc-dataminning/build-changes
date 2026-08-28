@@ -13,13 +13,13 @@ public class dmy extends dfk {
    );
    private static final wz d = wz.c("container.shulkerBox.unknownContents");
    private static final float e = 1.0F;
-   private static final ext f = dfy.a(0.0, 15.0, 0.0, 16.0, 16.0, 16.0);
-   private static final ext g = dfy.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
-   private static final ext h = dfy.a(0.0, 0.0, 0.0, 1.0, 16.0, 16.0);
-   private static final ext i = dfy.a(15.0, 0.0, 0.0, 16.0, 16.0, 16.0);
-   private static final ext j = dfy.a(0.0, 0.0, 0.0, 16.0, 16.0, 1.0);
-   private static final ext k = dfy.a(0.0, 0.0, 15.0, 16.0, 16.0, 16.0);
-   private static final Map<ji, ext> l = ad.a(Maps.newEnumMap(ji.class), $$0 -> {
+   private static final exv f = dfy.a(0.0, 15.0, 0.0, 16.0, 16.0, 16.0);
+   private static final exv g = dfy.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
+   private static final exv h = dfy.a(0.0, 0.0, 0.0, 1.0, 16.0, 16.0);
+   private static final exv i = dfy.a(15.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   private static final exv j = dfy.a(0.0, 0.0, 0.0, 16.0, 16.0, 1.0);
+   private static final exv k = dfy.a(0.0, 0.0, 15.0, 16.0, 16.0, 16.0);
+   private static final Map<ji, exv> l = ad.a(Maps.newEnumMap(ji.class), $$0 -> {
       $$0.put(ji.c, j);
       $$0.put(ji.f, i);
       $$0.put(ji.d, k);
@@ -60,7 +60,7 @@ public class dmy extends dfk {
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
       if ($$1.B) {
          return bqr.a;
       } else if ($$3.R_()) {
@@ -82,7 +82,7 @@ public class dmy extends dfk {
       if ($$3.l() != drr.a.a) {
          return true;
       } else {
-         ewv $$4 = ckj.a(1.0F, $$0.c(b), 0.0F, 0.5F).a($$2).h(1.0E-6);
+         ewx $$4 = ckj.a(1.0F, $$0.c(b), 0.0F, 0.5F).a($$2).h(1.0E-6);
          return $$1.b($$4);
       }
    }
@@ -116,8 +116,8 @@ public class dmy extends dfk {
    }
 
    @Override
-   protected List<cuq> a(dtc $$0, ers.a $$1) {
-      dqh $$2 = $$1.b(eul.h);
+   protected List<cuq> a(dtc $$0, eru.a $$1) {
+      dqh $$2 = $$1.b(eun.h);
       if ($$2 instanceof drr $$3) {
          $$1 = $$1.a(c, $$1x -> {
             for (int $$2x = 0; $$2x < $$3.b(); $$2x++) {
@@ -165,18 +165,18 @@ public class dmy extends dfk {
    }
 
    @Override
-   protected ext b_(dtc $$0, dcc $$1, jd $$2) {
+   protected exv b_(dtc $$0, dcc $$1, jd $$2) {
       if ($$1.c_($$2) instanceof drr $$4 && !$$4.v()) {
          return l.get($$0.c(b).g());
       }
 
-      return exq.b();
+      return exs.b();
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       dqh $$4 = $$1.c_($$2);
-      return $$4 instanceof drr ? exq.a(((drr)$$4).a($$0)) : exq.b();
+      return $$4 instanceof drr ? exs.a(((drr)$$4).a($$0)) : exs.b();
    }
 
    @Override

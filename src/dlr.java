@@ -6,7 +6,7 @@ public interface dlr {
    }
 
    @Nullable
-   eqa a(aqu var1, bsr var2, jd var3);
+   eqc a(aqu var1, bsr var2, jd var3);
 
    default dlr.a b() {
       return dlr.a.b;

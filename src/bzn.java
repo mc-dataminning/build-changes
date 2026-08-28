@@ -11,7 +11,7 @@ public class bzn implements bzl {
    }
 
    public void b() {
-      this.b.s(this.a);
+      this.b.t(this.a);
       this.a = false;
    }
 }

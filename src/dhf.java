@@ -14,16 +14,16 @@ public class dhf extends dju implements dgb {
    protected static final int j = 8;
    protected static final int k = 9;
    protected static final int l = 4;
-   protected static final ext[] m = new ext[]{
+   protected static final exv[] m = new exv[]{
       dfy.a(11.0, 7.0, 6.0, 15.0, 12.0, 10.0), dfy.a(9.0, 5.0, 5.0, 15.0, 12.0, 11.0), dfy.a(7.0, 3.0, 4.0, 15.0, 12.0, 12.0)
    };
-   protected static final ext[] n = new ext[]{
+   protected static final exv[] n = new exv[]{
       dfy.a(1.0, 7.0, 6.0, 5.0, 12.0, 10.0), dfy.a(1.0, 5.0, 5.0, 7.0, 12.0, 11.0), dfy.a(1.0, 3.0, 4.0, 9.0, 12.0, 12.0)
    };
-   protected static final ext[] o = new ext[]{
+   protected static final exv[] o = new exv[]{
       dfy.a(6.0, 7.0, 1.0, 10.0, 12.0, 5.0), dfy.a(5.0, 5.0, 1.0, 11.0, 12.0, 7.0), dfy.a(4.0, 3.0, 1.0, 12.0, 12.0, 9.0)
    };
-   protected static final ext[] F = new ext[]{
+   protected static final exv[] F = new exv[]{
       dfy.a(6.0, 7.0, 11.0, 10.0, 12.0, 15.0), dfy.a(5.0, 5.0, 9.0, 11.0, 12.0, 15.0), dfy.a(4.0, 3.0, 7.0, 12.0, 12.0, 15.0)
    };
 
@@ -55,11 +55,11 @@ public class dhf extends dju implements dgb {
    @Override
    protected boolean a(dtc $$0, dcz $$1, jd $$2) {
       dtc $$3 = $$1.a_($$2.a($$0.c(aE)));
-      return $$3.a(awe.z);
+      return $$3.a(awe.A);
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       int $$4 = $$0.c(c);
       switch ((ji)$$0.c(aE)) {
          case d:
@@ -119,7 +119,7 @@ public class dhf extends dju implements dgb {
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return false;
    }
 }

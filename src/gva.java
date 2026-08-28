@@ -1,468 +1,62 @@
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicReference;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
-import org.slf4j.Marker;
-import org.slf4j.MarkerFactory;
 
 public class gva {
-   private static final Marker d = MarkerFactory.getMarker("SOUNDS");
-   private static final Logger e = LogUtils.getLogger();
-   private static final float f = 0.5F;
-   private static final float g = 2.0F;
-   private static final float h = 0.0F;
-   private static final float i = 1.0F;
-   private static final int j = 20;
-   private static final Set<akr> k = Sets.newHashSet();
-   private static final long l = 1000L;
-   public static final String a = "FOR THE DEBUG!";
-   public static final String b = "OpenAL Soft on ";
-   public static final int c = "OpenAL Soft on ".length();
-   private final gvd m;
-   private final fgq n;
-   private boolean o;
-   private final ezd p = new ezd();
-   private final eze q = this.p.e();
-   private final guz r;
-   private final gvb s = new gvb();
-   private final gus t = new gus(this.p, this.s);
-   private int u;
-   private long v;
-   private final AtomicReference<gva.a> w = new AtomicReference<>(gva.a.c);
-   private final Map<gty, gus.a> x = Maps.newHashMap();
-   private final Multimap<avq, gty> y = HashMultimap.create();
-   private final List<gtz> z = Lists.newArrayList();
-   private final Map<gty, Integer> A = Maps.newHashMap();
-   private final Map<gty, Integer> B = Maps.newHashMap();
-   private final List<gvc> C = Lists.newArrayList();
-   private final List<gtz> D = Lists.newArrayList();
-   private final List<gtv> E = Lists.newArrayList();
+   private static final int a = 100;
+   private final ayw b = ayw.a();
+   private final fgo c;
+   @Nullable
+   private gua d;
+   private int e = 100;
 
-   public gva(gvd $$0, fgq $$1, auh $$2) {
-      this.m = $$0;
-      this.n = $$1;
-      this.r = new guz($$2);
+   public gva(fgo $$0) {
+      this.c = $$0;
    }
 
    public void a() {
-      k.clear();
+      avm $$0 = this.c.ak();
+      if (this.d != null) {
+         if (!$$0.a().a().a().equals(this.d.a()) && $$0.d()) {
+            this.c.aj().b(this.d);
+            this.e = ayo.a(this.b, 0, $$0.b() / 2);
+         }
 
-      for (avo $$0 : lt.b) {
-         if ($$0 != avp.qY) {
-            akr $$1 = $$0.a();
-            if (this.m.a($$1) == null) {
-               e.warn("Missing sound for event: {}", lt.b.b($$0));
-               k.add($$1);
-            }
+         if (!this.c.aj().c(this.d)) {
+            this.d = null;
+            this.e = Math.min(this.e, ayo.a(this.b, $$0.b(), $$0.c()));
          }
       }
 
-      this.b();
-      this.j();
-   }
-
-   private synchronized void j() {
-      if (!this.o) {
-         try {
-            String $$0 = this.n.at().c();
-            this.p.a("".equals($$0) ? null : $$0, this.n.X().c());
-            this.q.b();
-            this.q.a(this.n.a(avq.a));
-            this.r.a(this.E).thenRun(this.E::clear);
-            this.o = true;
-            e.info(d, "Sound engine started");
-         } catch (RuntimeException var2) {
-            e.error(d, "Error starting SoundSystem. Turning off sounds & music", var2);
-         }
+      this.e = Math.min(this.e, $$0.c());
+      if (this.d == null && this.e-- <= 0) {
+         this.a($$0);
       }
    }
 
-   private float a(@Nullable avq $$0) {
-      return $$0 != null && $$0 != avq.a ? this.n.a($$0) : 1.0F;
+   public void a(avm $$0) {
+      this.d = gtv.a($$0.a().a());
+      if (this.d.b() != gvf.b) {
+         this.c.aj().a(this.d);
+      }
+
+      this.e = Integer.MAX_VALUE;
    }
 
-   public void a(avq $$0, float $$1) {
-      if (this.o) {
-         if ($$0 == avq.a) {
-            this.q.a($$1);
-         } else {
-            this.x.forEach(($$0x, $$1x) -> {
-               float $$2 = this.h($$0x);
-               $$1x.a($$1xx -> {
-                  if ($$2 <= 0.0F) {
-                     $$1xx.f();
-                  } else {
-                     $$1xx.b($$2);
-                  }
-               });
-            });
-         }
+   public void b(avm $$0) {
+      if (this.c($$0)) {
+         this.b();
       }
    }
 
    public void b() {
-      if (this.o) {
-         this.d();
-         this.r.a();
-         this.p.d();
-         this.o = false;
-      }
-   }
-
-   public void c() {
-      if (this.o) {
-         this.p.d();
-      }
-   }
-
-   public void a(gty $$0) {
-      if (this.o) {
-         gus.a $$1 = this.x.get($$0);
-         if ($$1 != null) {
-            $$1.a(ezc::f);
-         }
-      }
-   }
-
-   public void d() {
-      if (this.o) {
-         this.s.a();
-         this.x.values().forEach($$0 -> $$0.a(ezc::f));
-         this.x.clear();
-         this.t.b();
-         this.A.clear();
-         this.z.clear();
-         this.y.clear();
-         this.B.clear();
-         this.D.clear();
-      }
-   }
-
-   public void a(gvc $$0) {
-      this.C.add($$0);
-   }
-
-   public void b(gvc $$0) {
-      this.C.remove($$0);
-   }
-
-   private boolean k() {
-      if (this.p.h()) {
-         e.info("Audio device was lost!");
-         return true;
-      } else {
-         long $$0 = ad.c();
-         boolean $$1 = $$0 - this.v >= 1000L;
-         if ($$1) {
-            this.v = $$0;
-            if (this.w.compareAndSet(gva.a.c, gva.a.a)) {
-               String $$2 = this.n.at().c();
-               ad.h().execute(() -> {
-                  if ("".equals($$2)) {
-                     if (this.p.c()) {
-                        e.info("System default audio device has changed!");
-                        this.w.compareAndSet(gva.a.a, gva.a.b);
-                     }
-                  } else if (!this.p.b().equals($$2) && this.p.g().contains($$2)) {
-                     e.info("Preferred audio device has become available!");
-                     this.w.compareAndSet(gva.a.a, gva.a.b);
-                  }
-
-                  this.w.compareAndSet(gva.a.a, gva.a.c);
-               });
-            }
-         }
-
-         return this.w.compareAndSet(gva.a.b, gva.a.c);
-      }
-   }
-
-   public void a(boolean $$0) {
-      if (this.k()) {
-         this.a();
+      if (this.d != null) {
+         this.c.aj().b(this.d);
+         this.d = null;
       }
 
-      if (!$$0) {
-         this.l();
-      }
-
-      this.t.a();
+      this.e += 100;
    }
 
-   private void l() {
-      this.u++;
-      this.D.stream().filter(gty::s).forEach(this::c);
-      this.D.clear();
-
-      for (gtz $$0 : this.z) {
-         if (!$$0.s()) {
-            this.a((gty)$$0);
-         }
-
-         $$0.q();
-         if ($$0.m()) {
-            this.a((gty)$$0);
-         } else {
-            float $$1 = this.h($$0);
-            float $$2 = this.g($$0);
-            exa $$3 = new exa($$0.h(), $$0.i(), $$0.j());
-            gus.a $$4 = this.x.get($$0);
-            if ($$4 != null) {
-               $$4.a($$3x -> {
-                  $$3x.b($$1);
-                  $$3x.a($$2);
-                  $$3x.a($$3);
-               });
-            }
-         }
-      }
-
-      Iterator<Entry<gty, gus.a>> $$5 = this.x.entrySet().iterator();
-
-      while ($$5.hasNext()) {
-         Entry<gty, gus.a> $$6 = $$5.next();
-         gus.a $$7 = $$6.getValue();
-         gty $$8 = $$6.getKey();
-         float $$9 = this.n.a($$8.c());
-         if ($$9 <= 0.0F) {
-            $$7.a(ezc::f);
-            $$5.remove();
-         } else if ($$7.a()) {
-            int $$10 = this.B.get($$8);
-            if ($$10 <= this.u) {
-               if (e($$8)) {
-                  this.A.put($$8, this.u + $$8.e());
-               }
-
-               $$5.remove();
-               e.debug(d, "Removed channel {} because it's not playing anymore", $$7);
-               this.B.remove($$8);
-
-               try {
-                  this.y.remove($$8.c(), $$8);
-               } catch (RuntimeException var8) {
-               }
-
-               if ($$8 instanceof gtz) {
-                  this.z.remove($$8);
-               }
-            }
-         }
-      }
-
-      Iterator<Entry<gty, Integer>> $$11 = this.A.entrySet().iterator();
-
-      while ($$11.hasNext()) {
-         Entry<gty, Integer> $$12 = $$11.next();
-         if (this.u >= $$12.getValue()) {
-            gty $$13 = $$12.getKey();
-            if ($$13 instanceof gtz) {
-               ((gtz)$$13).q();
-            }
-
-            this.c($$13);
-            $$11.remove();
-         }
-      }
-   }
-
-   private static boolean d(gty $$0) {
-      return $$0.e() > 0;
-   }
-
-   private static boolean e(gty $$0) {
-      return $$0.d() && d($$0);
-   }
-
-   private static boolean f(gty $$0) {
-      return $$0.d() && !d($$0);
-   }
-
-   public boolean b(gty $$0) {
-      if (!this.o) {
-         return false;
-      } else {
-         return this.B.containsKey($$0) && this.B.get($$0) <= this.u ? true : this.x.containsKey($$0);
-      }
-   }
-
-   public void c(gty $$0) {
-      if (this.o) {
-         if ($$0.s()) {
-            gve $$1 = $$0.a(this.m);
-            akr $$2 = $$0.a();
-            if ($$1 == null) {
-               if (k.add($$2)) {
-                  e.warn(d, "Unable to play unknown soundEvent: {}", $$2);
-               }
-            } else {
-               gtv $$3 = $$0.b();
-               if ($$3 != gvd.e) {
-                  if ($$3 == gvd.b) {
-                     if (k.add($$2)) {
-                        e.warn(d, "Unable to play empty soundEvent: {}", $$2);
-                     }
-                  } else {
-                     float $$4 = $$0.f();
-                     float $$5 = Math.max($$4, 1.0F) * (float)$$3.i();
-                     avq $$6 = $$0.c();
-                     float $$7 = this.a($$4, $$6);
-                     float $$8 = this.g($$0);
-                     gty.a $$9 = $$0.k();
-                     boolean $$10 = $$0.l();
-                     if ($$7 == 0.0F && !$$0.r()) {
-                        e.debug(d, "Skipped playing sound {}, volume was zero.", $$3.a());
-                     } else {
-                        exa $$11 = new exa($$0.h(), $$0.i(), $$0.j());
-                        if (!this.C.isEmpty()) {
-                           float $$12 = !$$10 && $$9 != gty.a.a ? $$5 : Float.POSITIVE_INFINITY;
-
-                           for (gvc $$13 : this.C) {
-                              $$13.a($$0, $$1, $$12);
-                           }
-                        }
-
-                        if (this.q.a() <= 0.0F) {
-                           e.debug(d, "Skipped playing soundEvent: {}, master volume was zero", $$2);
-                        } else {
-                           boolean $$14 = f($$0);
-                           boolean $$15 = $$3.g();
-                           CompletableFuture<gus.a> $$16 = this.t.a($$3.g() ? ezd.c.b : ezd.c.a);
-                           gus.a $$17 = $$16.join();
-                           if ($$17 == null) {
-                              if (ab.aU) {
-                                 e.warn("Failed to create new sound handle");
-                              }
-                           } else {
-                              e.debug(d, "Playing sound {} for event {}", $$3.a(), $$2);
-                              this.B.put($$0, this.u + 20);
-                              this.x.put($$0, $$17);
-                              this.y.put($$6, $$0);
-                              $$17.a($$8x -> {
-                                 $$8x.a($$8);
-                                 $$8x.b($$7);
-                                 if ($$9 == gty.a.b) {
-                                    $$8x.c($$5);
-                                 } else {
-                                    $$8x.i();
-                                 }
-
-                                 $$8x.a($$14 && !$$15);
-                                 $$8x.a($$11);
-                                 $$8x.b($$10);
-                              });
-                              if (!$$15) {
-                                 this.r.a($$3.b()).thenAccept($$1x -> $$17.a($$1xx -> {
-                                       $$1xx.a($$1x);
-                                       $$1xx.c();
-                                    }));
-                              } else {
-                                 this.r.a($$3.b(), $$14).thenAccept($$1x -> $$17.a($$1xx -> {
-                                       $$1xx.a($$1x);
-                                       $$1xx.c();
-                                    }));
-                              }
-
-                              if ($$0 instanceof gtz) {
-                                 this.z.add((gtz)$$0);
-                              }
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   public void a(gtz $$0) {
-      this.D.add($$0);
-   }
-
-   public void a(gtv $$0) {
-      this.E.add($$0);
-   }
-
-   private float g(gty $$0) {
-      return ayo.a($$0.g(), 0.5F, 2.0F);
-   }
-
-   private float h(gty $$0) {
-      return this.a($$0.f(), $$0.c());
-   }
-
-   private float a(float $$0, avq $$1) {
-      return ayo.a($$0 * this.a($$1), 0.0F, 1.0F);
-   }
-
-   public void e() {
-      if (this.o) {
-         this.t.a($$0 -> $$0.forEach(ezc::d));
-      }
-   }
-
-   public void f() {
-      if (this.o) {
-         this.t.a($$0 -> $$0.forEach(ezc::e));
-      }
-   }
-
-   public void a(gty $$0, int $$1) {
-      this.A.put($$0, this.u + $$1);
-   }
-
-   public void a(ffw $$0) {
-      if (this.o && $$0.h()) {
-         ezf $$1 = new ezf($$0.b(), new exa($$0.l()), new exa($$0.m()));
-         this.s.execute(() -> this.q.a($$1));
-      }
-   }
-
-   public void a(@Nullable akr $$0, @Nullable avq $$1) {
-      if ($$1 != null) {
-         for (gty $$2 : this.y.get($$1)) {
-            if ($$0 == null || $$2.a().equals($$0)) {
-               this.a($$2);
-            }
-         }
-      } else if ($$0 == null) {
-         this.d();
-      } else {
-         for (gty $$3 : this.x.keySet()) {
-            if ($$3.a().equals($$0)) {
-               this.a($$3);
-            }
-         }
-      }
-   }
-
-   public String g() {
-      return this.p.f();
-   }
-
-   public List<String> h() {
-      return this.p.g();
-   }
-
-   public ezf i() {
-      return this.q.c();
-   }
-
-   static enum a {
-      a,
-      b,
-      c;
+   public boolean c(avm $$0) {
+      return this.d == null ? false : $$0.a().a().a().equals(this.d.a());
    }
 }

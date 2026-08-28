@@ -5,8 +5,8 @@ class bsd extends brx {
 
    @Override
    public boolean a(btn $$0, int $$1) {
-      if ($$0.ex() > 1.0F) {
-         $$0.a($$0.dQ().p(), 1.0F);
+      if ($$0.ew() > 1.0F) {
+         $$0.a($$0.dP().p(), 1.0F);
       }
 
       return true;

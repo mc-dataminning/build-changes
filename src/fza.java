@@ -1,323 +1,103 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
-import java.nio.file.Path;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
-import java.util.UUID;
-import java.util.function.BooleanSupplier;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public abstract class fza implements zm {
-   private static final wz l = wz.c("disconnect.lost");
-   private static final Logger m = LogUtils.getLogger();
-   protected final fgm a;
-   protected final vt b;
+public class fza {
+   private static final Logger a = LogUtils.getLogger();
+   private final fgo b;
+   private final gvs c;
+   private final al d = new al();
+   private final Map<ag, ai> e = new Object2ObjectOpenHashMap();
    @Nullable
-   protected final fzr c;
+   private fza.a f;
    @Nullable
-   protected String d;
-   protected final gvq e;
-   @Nullable
-   protected final fob f;
-   protected boolean g;
-   @Deprecated(
-      forRemoval = true
-   )
-   protected final boolean h;
-   private final List<fza.a> n = new ArrayList<>();
-   protected final Map<akr, byte[]> i;
-   protected Map<String, String> j;
-   protected alj k;
+   private ag g;
 
-   protected fza(fgm $$0, vt $$1, fzh $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2.f();
-      this.d = $$2.e();
-      this.e = $$2.b();
-      this.f = $$2.g();
-      this.i = $$2.h();
-      this.h = $$2.j();
-      this.j = $$2.k();
-      this.k = $$2.l();
+   public fza(fgo $$0, gvs $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   public void a(zg $$0, Exception $$1) {
-      m.error("Failed to handle packet {}", $$0, $$1);
-      zm.super.a($$0, $$1);
-      Optional<Path> $$2 = this.a($$0, (Throwable)$$1);
-      Optional<URI> $$3 = this.k.a(alj.b.a).map(alj.a::c);
-      if (this.h) {
-         this.b.a(new vv(wz.c("disconnect.packetError"), $$2, $$3));
+   public void a(afz $$0) {
+      if ($$0.g()) {
+         this.d.a();
+         this.e.clear();
       }
-   }
 
-   @Override
-   public vv a(wz $$0, Throwable $$1) {
-      Optional<Path> $$2 = this.a(null, $$1);
-      Optional<URI> $$3 = this.k.a(alj.b.a).map(alj.a::c);
-      return new vv($$0, $$2, $$3);
-   }
+      this.d.a($$0.e());
+      this.d.a($$0.b());
 
-   private Optional<Path> a(@Nullable zg $$0, Throwable $$1) {
-      o $$2 = o.a($$1, "Packet handling error");
-      zj.a($$2, this, $$0);
-      Path $$3 = this.a.p.toPath().resolve("debug");
-      Path $$4 = $$3.resolve("disconnect-" + ad.f() + "-client.txt");
-      Optional<alj.a> $$5 = this.k.a(alj.b.a);
-      List<String> $$6 = $$5.<List<String>>map($$0x -> List.of("Server bug reporting link: " + $$0x.c())).orElse(List.of());
-      return $$2.a($$4, y.d, $$6) ? Optional.of($$4) : Optional.empty();
-   }
+      for (Entry<akr, ai> $$1 : $$0.f().entrySet()) {
+         ah $$2 = this.d.a($$1.getKey());
+         if ($$2 != null) {
+            ai $$3 = $$1.getValue();
+            $$3.a($$2.a().f());
+            this.e.put($$2.b(), $$3);
+            if (this.f != null) {
+               this.f.a($$2, $$3);
+            }
 
-   @Override
-   public boolean a(zg<?> $$0) {
-      return zm.super.a($$0) ? true : this.g && ($$0 instanceof zv || $$0 instanceof zw);
-   }
+            if (!$$0.g() && $$3.a()) {
+               if (this.b.r != null) {
+                  this.c.a(this.b.r, $$2.b());
+               }
 
-   @Override
-   public void a(zq $$0) {
-      this.a(new aac($$0.b()), () -> !RenderSystem.isFrozenAtPollEvents(), Duration.ofMinutes(1L));
-   }
-
-   @Override
-   public void a(zr $$0) {
-      zj.a($$0, this, this.a);
-      this.b(new aad($$0.b()));
-   }
-
-   @Override
-   public void a(zn $$0) {
-      aaj $$1 = $$0.b();
-      if (!($$1 instanceof aak)) {
-         zj.a($$0, this, this.a);
-         if ($$1 instanceof aah $$2) {
-            this.d = $$2.b();
-            this.e.a($$2.b());
+               Optional<as> $$4 = $$2.a().c();
+               if ($$4.isPresent() && $$4.get().h()) {
+                  this.b.aw().a(new fks($$2.b()));
+               }
+            }
          } else {
-            this.a($$1);
+            a.warn("Server informed client about progress for unknown advancement {}", $$1.getKey());
          }
       }
    }
 
-   protected abstract void a(aaj var1);
-
-   @Override
-   public void a(zt $$0) {
-      zj.a($$0, this, this.a);
-      UUID $$1 = $$0.b();
-      URL $$2 = a($$0.e());
-      if ($$2 == null) {
-         this.b.a(new aae($$1, aae.a.f));
-      } else {
-         String $$3 = $$0.f();
-         boolean $$4 = $$0.g();
-         fzr.a $$5 = this.c != null ? this.c.b() : fzr.a.c;
-         if ($$5 != fzr.a.c && (!$$4 || $$5 != fzr.a.b)) {
-            this.a.ae().a($$1, $$2, $$3);
-         } else {
-            this.a.a(this.a($$1, $$2, $$3, $$4, $$0.h().orElse(null)));
-         }
-      }
-   }
-
-   @Override
-   public void a(zs $$0) {
-      zj.a($$0, this, this.a);
-      $$0.b().ifPresentOrElse($$0x -> this.a.ae().a($$0x), () -> this.a.ae().e());
-   }
-
-   static wz a(wz $$0, @Nullable wz $$1) {
-      return (wz)($$1 == null ? $$0 : wz.a("multiplayer.texturePrompt.serverPrompt", $$0, $$1));
-   }
-
-   @Nullable
-   private static URL a(String $$0) {
-      try {
-         URL $$1 = new URL($$0);
-         String $$2 = $$1.getProtocol();
-         return !"http".equals($$2) && !"https".equals($$2) ? null : $$1;
-      } catch (MalformedURLException var3) {
-         return null;
-      }
-   }
-
-   @Override
-   public void a(abp $$0) {
-      zj.a($$0, this, this.a);
-      this.b.a(new abs($$0.b(), this.i.get($$0.b())));
-   }
-
-   @Override
-   public void a(zv $$0) {
-      zj.a($$0, this, this.a);
-      this.i.put($$0.b(), $$0.e());
-   }
-
-   @Override
-   public void a(zo $$0) {
-      zj.a($$0, this, this.a);
-      this.j = $$0.b();
-   }
-
-   @Override
-   public void a(zu $$0) {
-      zj.a($$0, this, this.a);
-      List<alj.c> $$1 = $$0.b();
-      Builder<alj.a> $$2 = ImmutableList.builderWithExpectedSize($$1.size());
-
-      for (alj.c $$3 : $$1) {
-         try {
-            URI $$4 = ad.a($$3.b());
-            $$2.add(new alj.a($$3.a(), $$4));
-         } catch (Exception var7) {
-            m.warn("Received invalid link for type {}:{}", new Object[]{$$3.a(), $$3.b(), var7});
-         }
-      }
-
-      this.k = new alj($$2.build());
-   }
-
-   @Override
-   public void a(zw $$0) {
-      this.g = true;
-      zj.a($$0, this, this.a);
-      if (this.c == null) {
-         throw new IllegalStateException("Cannot transfer to server from singleplayer");
-      } else {
-         this.b.a(wz.c("disconnect.transfer"));
-         this.b.m();
-         this.b.n();
-         gav $$1 = new gav($$0.b(), $$0.e());
-         fna.a(Objects.requireNonNullElseGet(this.f, fod::new), this.a, $$1, this.c, false, new fzw(this.i));
-      }
-   }
-
-   @Override
-   public void a(zp $$0) {
-      this.b.a($$0.b());
-   }
-
-   protected void e() {
-      Iterator<fza.a> $$0 = this.n.iterator();
-
-      while ($$0.hasNext()) {
-         fza.a $$1 = $$0.next();
-         if ($$1.b().getAsBoolean()) {
-            this.b($$1.a);
-            $$0.remove();
-         } else if ($$1.c() <= ad.c()) {
-            $$0.remove();
-         }
-      }
-   }
-
-   public void b(zg<?> $$0) {
-      this.b.a($$0);
-   }
-
-   @Override
-   public void a(vv $$0) {
-      this.e.c();
-      this.a.a(this.b($$0), this.g);
-      m.warn("Client disconnected with reason: {}", $$0.a().getString());
-   }
-
-   @Override
-   public void a(o $$0, p $$1) {
-      $$1.a("Server type", () -> this.c != null ? this.c.f().toString() : "<none>");
-      $$1.a("Server brand", () -> this.d);
-      if (!this.j.isEmpty()) {
-         p $$2 = $$0.a("Custom Server Details");
-         this.j.forEach($$2::a);
-      }
-   }
-
-   protected fob b(vv $$0) {
-      fob $$1 = Objects.requireNonNullElseGet(this.f, () -> new fqr(new fod()));
-      return (fob)(this.c != null && this.c.e() ? new gwk($$1, l, $$0.a()) : new fni($$1, l, $$0));
-   }
-
-   @Nullable
-   public String f() {
+   public al a() {
       return this.d;
    }
 
-   private void a(zg<? extends wl> $$0, BooleanSupplier $$1, Duration $$2) {
-      if ($$1.getAsBoolean()) {
-         this.b($$0);
-      } else {
-         this.n.add(new fza.a($$0, $$1, ad.c() + $$2.toMillis()));
+   public void a(@Nullable ag $$0, boolean $$1) {
+      fzg $$2 = this.b.L();
+      if ($$2 != null && $$0 != null && $$1) {
+         $$2.b(ahs.a($$0));
+      }
+
+      if (this.g != $$0) {
+         this.g = $$0;
+         if (this.f != null) {
+            this.f.a($$0);
+         }
       }
    }
 
-   private fob a(UUID $$0, URL $$1, String $$2, boolean $$3, @Nullable wz $$4) {
-      fob $$5 = this.a.y;
-      return $$5 instanceof fza.b $$6 ? $$6.a(this.a, $$0, $$1, $$2, $$3, $$4) : new fza.b(this.a, $$5, List.of(new fza.b.a($$0, $$1, $$2)), $$3, $$4);
+   public void a(@Nullable fza.a $$0) {
+      this.f = $$0;
+      this.d.a($$0);
+      if ($$0 != null) {
+         this.e.forEach(($$1, $$2) -> {
+            ah $$3 = this.d.a($$1);
+            if ($$3 != null) {
+               $$0.a($$3, $$2);
+            }
+         });
+         $$0.a(this.g);
+      }
    }
 
-   static record a(zg<? extends wl> a, BooleanSupplier b, long c) {
+   @Nullable
+   public ag a(akr $$0) {
+      ah $$1 = this.d.a($$0);
+      return $$1 != null ? $$1.b() : null;
    }
 
-   class b extends fmz {
-      private final List<fza.b.a> s;
-      @Nullable
-      private final fob u;
+   public interface a extends al.a {
+      void a(ah var1, ai var2);
 
-      b(final fgm $$0, @Nullable final fob $$1, final List<fza.b.a> $$2, final boolean $$3, @Nullable final wz $$4) {
-         super(
-            $$5 -> {
-               $$0.a($$1);
-               gta $$6 = $$0.ae();
-               if ($$5) {
-                  if (fza.this.c != null) {
-                     fza.this.c.a(fzr.a.a);
-                  }
-
-                  $$6.g();
-               } else {
-                  $$6.h();
-                  if ($$3) {
-                     fza.this.b.a(wz.c("multiplayer.requiredTexturePrompt.disconnect"));
-                  } else if (fza.this.c != null) {
-                     fza.this.c.a(fzr.a.b);
-                  }
-               }
-
-               for (fza.b.a $$7 : $$2) {
-                  $$6.a($$7.a, $$7.b, $$7.c);
-               }
-
-               if (fza.this.c != null) {
-                  fzs.b(fza.this.c);
-               }
-            },
-            $$3 ? wz.c("multiplayer.requiredTexturePrompt.line1") : wz.c("multiplayer.texturePrompt.line1"),
-            fza.a($$3 ? wz.c("multiplayer.requiredTexturePrompt.line2").a(n.o, n.r) : wz.c("multiplayer.texturePrompt.line2"), $$4),
-            $$3 ? wy.i : wy.f,
-            $$3 ? wy.p : wy.g
-         );
-         this.s = $$2;
-         this.u = $$1;
-      }
-
-      public fza.b a(fgm $$0, UUID $$1, URL $$2, String $$3, boolean $$4, @Nullable wz $$5) {
-         List<fza.b.a> $$6 = ImmutableList.builderWithExpectedSize(this.s.size() + 1).addAll(this.s).add(new fza.b.a($$1, $$2, $$3)).build();
-         return fza.this.new b($$0, this.u, $$6, $$4, $$5);
-      }
-
-      static record a(UUID a, URL b, String c) {
-      }
+      void a(@Nullable ag var1);
    }
 }

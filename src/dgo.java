@@ -10,11 +10,11 @@ public class dgo extends deq {
    );
    public static final dtt d = deq.b;
    protected static final float e = 1.0F;
-   protected static final ext f = dfy.a(1.0, 0.0, 1.0, 15.0, 8.0, 15.0);
-   protected static final ext g = dfy.a(7.0, 8.0, 7.0, 9.0, 14.0, 9.0);
-   protected static final ext h = exq.a(f, g);
+   protected static final exv f = dfy.a(1.0, 0.0, 1.0, 15.0, 8.0, 15.0);
+   protected static final exv g = dfy.a(7.0, 8.0, 7.0, 9.0, 14.0, 9.0);
+   protected static final exv h = exs.a(f, g);
    private static final Map<dgn, dgo> i = Maps.newHashMap();
-   private static final Iterable<exa> j = ImmutableList.of(new exa(0.5, 1.0, 0.5));
+   private static final Iterable<exc> j = ImmutableList.of(new exc(0.5, 1.0, 0.5));
    private final dgn k;
 
    @Override
@@ -34,17 +34,17 @@ public class dgo extends deq {
    }
 
    @Override
-   protected Iterable<exa> b(dtc $$0) {
+   protected Iterable<exc> b(dtc $$0) {
       return j;
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return h;
    }
 
    @Override
-   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, eww $$6) {
+   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, ewy $$6) {
       if ($$0.a(cut.os) || $$0.a(cut.tX)) {
          return bqt.e;
       } else if (a($$6) && $$0.e() && $$1.c(d)) {
@@ -56,7 +56,7 @@ public class dgo extends deq {
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
       bqr $$5 = dgk.a($$1, $$2, dga.eg.o(), $$3);
       if ($$5.a()) {
          c($$0, $$1, $$2);
@@ -65,7 +65,7 @@ public class dgo extends deq {
       return $$5;
    }
 
-   private static boolean a(eww $$0) {
+   private static boolean a(ewy $$0) {
       return $$0.e().d - (double)$$0.a().v() > 0.5;
    }
 
@@ -100,7 +100,7 @@ public class dgo extends deq {
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return false;
    }
 
@@ -109,6 +109,6 @@ public class dgo extends deq {
    }
 
    public static boolean g(dtc $$0) {
-      return $$0.a(awe.bk, $$1 -> $$1.b(d) && !$$0.c(d));
+      return $$0.a(awe.bl, $$1 -> $$1.b(d) && !$$0.c(d));
    }
 }

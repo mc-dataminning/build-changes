@@ -24,7 +24,7 @@ public class dxs<T extends dxg> {
       this.d.b($$1).forEach($$0x -> {
          dxt $$1x = $$0x.a(dxt.c);
          if (!$$1x.a()) {
-            $$0x.b().filter($$0xx -> !$$0xx.dO()).forEach(this.b::e);
+            $$0x.b().filter($$0xx -> !$$0xx.dN()).forEach(this.b::e);
          }
       });
    }
@@ -35,7 +35,7 @@ public class dxs<T extends dxg> {
       this.d.b($$1).forEach($$0x -> {
          dxt $$1x = $$0x.a(dxt.b);
          if ($$1x.a()) {
-            $$0x.b().filter($$0xx -> !$$0xx.dO()).forEach(this.b::d);
+            $$0x.b().filter($$0xx -> !$$0xx.dN()).forEach(this.b::d);
          }
       });
    }
@@ -46,13 +46,13 @@ public class dxs<T extends dxg> {
 
    public void a(T $$0) {
       this.c.a($$0);
-      long $$1 = kf.c($$0.dp());
+      long $$1 = kf.c($$0.do());
       dxk<T> $$2 = this.d.c($$1);
       $$2.a($$0);
       $$0.a(new dxs.a($$0, $$1, $$2));
       this.b.g($$0);
       this.b.c($$0);
-      if ($$0.dO() || $$2.c().a()) {
+      if ($$0.dN() || $$2.c().a()) {
          this.b.e($$0);
       }
    }
@@ -86,7 +86,7 @@ public class dxs<T extends dxg> {
 
       @Override
       public void a() {
-         jd $$0 = this.c.dp();
+         jd $$0 = this.c.do();
          long $$1 = kf.c($$0);
          if ($$1 != this.d) {
             dxt $$2 = this.e.c();
@@ -100,7 +100,7 @@ public class dxs<T extends dxg> {
             this.e = $$3;
             this.d = $$1;
             dxs.this.b.a(this.c);
-            if (!this.c.dO()) {
+            if (!this.c.dN()) {
                boolean $$4 = $$2.a();
                boolean $$5 = $$3.c().a();
                if ($$4 && !$$5) {
@@ -119,7 +119,7 @@ public class dxs<T extends dxg> {
          }
 
          dxt $$1 = this.e.c();
-         if ($$1.a() || this.c.dO()) {
+         if ($$1.a() || this.c.dN()) {
             dxs.this.b.d(this.c);
          }
 

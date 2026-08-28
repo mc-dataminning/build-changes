@@ -55,13 +55,13 @@ public class cef {
    public boolean a(@Nullable btn $$0, btn $$1) {
       if ($$0 == $$1) {
          return false;
-      } else if (!$$1.er()) {
+      } else if (!$$1.eq()) {
          return false;
       } else if (this.g != null && !this.g.test($$1)) {
          return false;
       } else {
          if ($$0 == null) {
-            if (this.c && (!$$1.eq() || $$1.dP().al() == bqo.a)) {
+            if (this.c && (!$$1.ep() || $$1.dO().al() == bqo.a)) {
                return false;
             }
          } else {
@@ -72,7 +72,7 @@ public class cef {
             if (this.d > 0.0) {
                double $$2 = this.f ? $$1.B($$0) : 1.0;
                double $$3 = Math.max(this.d * $$2, 2.0);
-               double $$4 = $$0.i($$1.du(), $$1.dw(), $$1.dA());
+               double $$4 = $$0.i($$1.dt(), $$1.dv(), $$1.dz());
                if ($$4 > $$3 * $$3) {
                   return false;
                }

@@ -161,7 +161,7 @@ public class alz {
    }
 
    private static bus a(bsr $$0, jm<bur> $$1) throws CommandSyntaxException {
-      bus $$2 = a($$0).eT().a($$1);
+      bus $$2 = a($$0).eS().a($$1);
       if ($$2 == null) {
          throw b.create($$0.ah(), a($$1));
       } else {
@@ -179,7 +179,7 @@ public class alz {
 
    private static btn b(bsr $$0, jm<bur> $$1) throws CommandSyntaxException {
       btn $$2 = a($$0);
-      if (!$$2.eT().b($$1)) {
+      if (!$$2.eS().b($$1)) {
          throw b.create($$0.ah(), a($$1));
       } else {
          return $$2;
@@ -202,7 +202,7 @@ public class alz {
 
    private static int a(et $$0, bsr $$1, jm<bur> $$2, akr $$3, double $$4) throws CommandSyntaxException {
       btn $$5 = b($$1, $$2);
-      but $$6 = $$5.eT();
+      but $$6 = $$5.eS();
       if (!$$6.a($$2, $$3)) {
          throw c.create($$1.ah(), a($$2), $$3);
       } else {

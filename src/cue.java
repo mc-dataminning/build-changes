@@ -22,7 +22,7 @@ public class cue extends cte {
    );
 
    public cue(cwi $$0, cul.a $$1) {
-      super($$0, awe.bB, $$1);
+      super($$0, awe.bC, $$1);
    }
 
    @Override

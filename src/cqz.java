@@ -45,13 +45,13 @@ public class cqz extends cpu {
                this.a(0, $$3 + 1);
                return true;
             case 3:
-               if (!$$0.gl()) {
+               if (!$$0.gk()) {
                   return false;
                }
 
                cuq $$5 = this.q.b(0);
                this.q.e();
-               if (!$$0.fZ().f($$5)) {
+               if (!$$0.fY().f($$5)) {
                   $$0.a($$5, false);
                }
 

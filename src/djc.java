@@ -7,7 +7,7 @@ public class djc extends dfy {
    private static final int d = 5;
    private static final int e = 3600;
    private static final int f = 12000;
-   protected static final ext b = dfy.a(0.0, 0.0, 0.0, 16.0, 1.5, 16.0);
+   protected static final exv b = dfy.a(0.0, 0.0, 0.0, 16.0, 1.5, 16.0);
    private static int g = 3600;
    private static int h = 12000;
 
@@ -21,7 +21,7 @@ public class djc extends dfy {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return b;
    }
 
@@ -61,9 +61,9 @@ public class djc extends dfy {
    }
 
    private static boolean a(dcc $$0, jd $$1) {
-      epc $$2 = $$0.b_($$1);
-      epc $$3 = $$0.b_($$1.d());
-      return $$2.a() == epd.c && $$3.a() == epd.a;
+      epe $$2 = $$0.b_($$1);
+      epe $$3 = $$0.b_($$1.d());
+      return $$2.a() == epf.c && $$3.a() == epf.a;
    }
 
    private void a(aqu $$0, jd $$1, ayw $$2) {
@@ -86,7 +86,7 @@ public class djc extends dfy {
             double $$7 = (double)$$1.w() + this.b($$2);
             int $$8 = $$2.b(1, 361);
             $$5.b($$6, (double)$$1.v() - 0.5, $$7, (float)$$8, 0.0F);
-            $$5.fS();
+            $$5.fR();
             $$0.b($$5);
          }
       }

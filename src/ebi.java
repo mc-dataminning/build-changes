@@ -2,24 +2,24 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import javax.annotation.Nullable;
 
-public class ebi extends ecd<eeb> {
+public class ebi extends ece<eec> {
    private static final ImmutableList<dfy> a = ImmutableList.of(dga.H, dga.F, dga.kJ, dga.dW, dga.fn, dga.fo, dga.fp, dga.fq, dga.cv, dga.ct);
    private static final int b = 5;
    private static final int c = 50;
    private static final int d = 8;
-   private static final int an = 15;
+   private static final int ao = 15;
 
-   public ebi(Codec<eeb> $$0) {
+   public ebi(Codec<eec> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecf<eeb> $$0) {
+   public boolean a(ecg<eec> $$0) {
       int $$1 = $$0.c().f();
       jd $$2 = $$0.e();
       dds $$3 = $$0.b();
       ayw $$4 = $$0.d();
-      eeb $$5 = $$0.f();
+      eec $$5 = $$0.f();
       if (!a($$3, $$1, $$2.k())) {
          return false;
       } else {

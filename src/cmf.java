@@ -17,8 +17,8 @@ public abstract class cmf extends bsl implements cmi, cmj, dbt {
 
    public cmf(bsx<? extends cmf> $$0, dcw $$1) {
       super($$0, $$1);
-      this.a(ept.n, 16.0F);
-      this.a(ept.o, -1.0F);
+      this.a(epv.n, 16.0F);
+      this.a(epv.o, -1.0F);
    }
 
    @Override
@@ -56,22 +56,22 @@ public abstract class cmf extends bsl implements cmi, cmj, dbt {
 
    @Nullable
    @Override
-   public cmx gl() {
+   public cmx gk() {
       return this.cf;
    }
 
-   public boolean gm() {
+   public boolean gl() {
       return this.cf != null;
    }
 
    @Override
-   public dbv gn() {
-      if (this.dP().B) {
+   public dbv gm() {
+      if (this.dO().B) {
          throw new IllegalStateException("Cannot load Villager offers on the client");
       } else {
          if (this.cb == null) {
             this.cb = new dbv();
-            this.gs();
+            this.gr();
          }
 
          return this.cb;
@@ -99,69 +99,69 @@ public abstract class cmf extends bsl implements cmi, cmj, dbt {
    protected abstract void b(dbu var1);
 
    @Override
-   public boolean go() {
+   public boolean gn() {
       return true;
    }
 
    @Override
    public void n(cuq $$0) {
-      if (!this.dP().B && this.bO > -this.R() + 20) {
+      if (!this.dO().B && this.bO > -this.R() + 20) {
          this.bO = -this.R();
-         this.b(this.w(!$$0.e()));
+         this.b(this.x(!$$0.e()));
       }
    }
 
    @Override
-   public avo gp() {
+   public avo go() {
       return avp.AY;
    }
 
-   protected avo w(boolean $$0) {
+   protected avo x(boolean $$0) {
       return $$0 ? avp.AY : avp.AW;
    }
 
-   public void gq() {
+   public void gp() {
       this.b(avp.AT);
    }
 
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      if (!this.dP().B) {
-         dbv $$1 = this.gn();
+      if (!this.dO().B) {
+         dbv $$1 = this.gm();
          if (!$$1.isEmpty()) {
-            $$0.a("Offers", (uy)dbv.a.encodeStart(this.dR().a(up.a), $$1).getOrThrow());
+            $$0.a("Offers", (uy)dbv.a.encodeStart(this.dQ().a(up.a), $$1).getOrThrow());
          }
       }
 
-      this.b($$0, this.dR());
+      this.b($$0, this.dQ());
    }
 
    @Override
    public void a(ub $$0) {
       super.a($$0);
       if ($$0.e("Offers")) {
-         dbv.a.parse(this.dR().a(up.a), $$0.c("Offers")).resultOrPartial(ad.a("Failed to load offers: ", cd::warn)).ifPresent($$0x -> this.cb = $$0x);
+         dbv.a.parse(this.dQ().a(up.a), $$0.c("Offers")).resultOrPartial(ad.a("Failed to load offers: ", cd::warn)).ifPresent($$0x -> this.cb = $$0x);
       }
 
-      this.a($$0, this.dR());
+      this.a($$0, this.dQ());
    }
 
    @Nullable
    @Override
-   public bsr a(eqa $$0) {
-      this.gr();
+   public bsr a(eqc $$0) {
+      this.gq();
       return super.a($$0);
    }
 
-   protected void gr() {
+   protected void gq() {
       this.a(null);
    }
 
    @Override
    public void a(brk $$0) {
       super.a($$0);
-      this.gr();
+      this.gq();
    }
 
    protected void a(lk $$0) {
@@ -169,7 +169,7 @@ public abstract class cmf extends bsl implements cmi, cmj, dbt {
          double $$2 = this.ah.k() * 0.02;
          double $$3 = this.ah.k() * 0.02;
          double $$4 = this.ah.k() * 0.02;
-         this.dP().a($$0, this.d(1.0), this.dx() + 1.0, this.g(1.0), $$2, $$3, $$4);
+         this.dO().a($$0, this.d(1.0), this.dw() + 1.0, this.g(1.0), $$2, $$3, $$4);
       }
    }
 
@@ -189,7 +189,7 @@ public abstract class cmf extends bsl implements cmi, cmj, dbt {
       return $$1 >= 0 && $$1 < this.cg.b() ? bug.a(this.cg, $$1) : super.a_($$0);
    }
 
-   protected abstract void gs();
+   protected abstract void gr();
 
    protected void a(dbv $$0, cmo.g[] $$1, int $$2) {
       ArrayList<cmo.g> $$3 = Lists.newArrayList($$1);
@@ -205,14 +205,14 @@ public abstract class cmf extends bsl implements cmi, cmj, dbt {
    }
 
    @Override
-   public exa s(float $$0) {
+   public exc s(float $$0) {
       float $$1 = ayo.i($$0, this.aZ, this.aY) * (float) (Math.PI / 180.0);
-      exa $$2 = new exa(0.0, this.cL().c() - 1.0, 0.2);
+      exc $$2 = new exc(0.0, this.cK().c() - 1.0, 0.2);
       return this.m($$0).e($$2.b(-$$1));
    }
 
    @Override
-   public boolean gt() {
-      return this.dP().B;
+   public boolean gs() {
+      return this.dO().B;
    }
 }

@@ -4,7 +4,7 @@ public class dht extends dgh implements dgb {
    public static final MapCodec<dht> d = b(dht::new);
    public static final int e = 7;
    public static final duc f = dts.av;
-   private static final ext[] a = new ext[]{
+   private static final exv[] a = new exv[]{
       dfy.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
       dfy.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
       dfy.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
@@ -26,7 +26,7 @@ public class dht extends dgh implements dgb {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return a[this.g($$0)];
    }
 

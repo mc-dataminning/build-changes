@@ -10,13 +10,13 @@ public class bxn {
                      jl $$12 = $$5.b($$8);
                      Optional<Long> $$13 = $$5.a($$6);
                      if ($$12.a() == $$9.af() && (!$$13.isPresent() || $$9.Z() - $$13.get() <= (long)$$4)) {
-                        if ($$12.b().k($$10.dp()) > $$3) {
-                           exa $$14 = null;
+                        if ($$12.b().k($$10.do()) > $$3) {
+                           exc $$14 = null;
                            int $$15 = 0;
                            int $$16 = 1000;
 
-                           while ($$14 == null || jd.a((jw)$$14).k($$10.dp()) > $$3) {
-                              $$14 = cej.a($$10, 15, 7, exa.c($$12.b()), (float) (Math.PI / 2));
+                           while ($$14 == null || jd.a((jw)$$14).k($$10.do()) > $$3) {
+                              $$14 = cej.a($$10, 15, 7, exc.c($$12.b()), (float) (Math.PI / 2));
                               if (++$$15 == 1000) {
                                  $$10.a($$0);
                                  $$8.b();
@@ -26,7 +26,7 @@ public class bxn {
                            }
 
                            $$7.a(new ccv($$14, $$1, $$2));
-                        } else if ($$12.b().k($$10.dp()) > $$2) {
+                        } else if ($$12.b().k($$10.do()) > $$2) {
                            $$7.a(new ccv($$12.b(), $$1, $$2));
                         }
                      } else {

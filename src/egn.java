@@ -1,49 +1,41 @@
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
 
-public class egn extends egl {
-   public static final MapCodec<egn> b = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
-                  dtc.b.fieldOf("default_state").forGetter($$0x -> $$0x.i),
-                  Codec.list(dtc.b).fieldOf("low_states").forGetter($$0x -> $$0x.j),
-                  Codec.list(dtc.b).fieldOf("high_states").forGetter($$0x -> $$0x.k)
-               )
-            )
-            .apply($$0, egn::new)
-   );
-   private final float g;
-   private final float h;
-   private final dtc i;
-   private final List<dtc> j;
-   private final List<dtc> k;
+public class egn extends egm {
+   public static final MapCodec<egn> g = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, egn::new));
+   protected final List<dtc> h;
 
-   public egn(long $$0, eof.a $$1, float $$2, float $$3, float $$4, dtc $$5, List<dtc> $$6, List<dtc> $$7) {
+   protected static <P extends egn> P4<Mu<P>, Long, eoh.a, Float, List<dtc>> b(Instance<P> $$0) {
+      return a($$0).and(Codec.list(dtc.b).fieldOf("states").forGetter($$0x -> $$0x.h));
+   }
+
+   public egn(long $$0, eoh.a $$1, float $$2, List<dtc> $$3) {
       super($$0, $$1, $$2);
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
+      this.h = $$3;
    }
 
    @Override
-   protected egj<?> a() {
-      return egj.c;
+   protected egk<?> a() {
+      return egk.d;
    }
 
    @Override
    public dtc a(ayw $$0, jd $$1) {
-      double $$2 = this.a($$1, (double)this.e);
-      if ($$2 < (double)this.g) {
-         return ad.a(this.j, $$0);
-      } else {
-         return $$0.i() < this.h ? ad.a(this.k, $$0) : this.i;
-      }
+      return this.a(this.h, $$1, (double)this.e);
+   }
+
+   protected dtc a(List<dtc> $$0, jd $$1, double $$2) {
+      double $$3 = this.a($$1, $$2);
+      return this.a($$0, $$3);
+   }
+
+   protected dtc a(List<dtc> $$0, double $$1) {
+      double $$2 = ayo.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
+      return $$0.get((int)($$2 * (double)$$0.size()));
    }
 }

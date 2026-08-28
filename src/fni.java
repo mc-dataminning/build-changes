@@ -1,65 +1,49 @@
-public class fni extends fob {
-   private static final wz a = wz.c("gui.toMenu");
-   private static final wz b = wz.c("gui.toTitle");
-   private static final wz c = wz.c("gui.report_to_server");
-   private static final wz r = wz.c("gui.open_report_dir");
-   private final fob s;
-   private final vv u;
-   private final wz v;
-   private final fmb w = fmb.d();
+public class fni extends fod {
+   private static final akr a = akr.b("textures/gui/demo_background.png");
+   private fjf b = fjf.a;
+   private fjf c = fjf.a;
 
-   public fni(fob $$0, wz $$1, wz $$2) {
-      this($$0, $$1, new vv($$2));
-   }
-
-   public fni(fob $$0, wz $$1, wz $$2, wz $$3) {
-      this($$0, $$1, new vv($$2), $$3);
-   }
-
-   public fni(fob $$0, wz $$1, vv $$2) {
-      this($$0, $$1, $$2, a);
-   }
-
-   public fni(fob $$0, wz $$1, vv $$2, wz $$3) {
-      super($$1);
-      this.s = $$0;
-      this.u = $$2;
-      this.v = $$3;
+   public fni() {
+      super(wz.c("demo.help.title"));
    }
 
    @Override
    protected void aT_() {
-      this.w.c().b().a(10);
-      this.w.a(new fjr(this.k, this.o));
-      this.w.a(new fje(this.u.a(), this.o).d(this.m - 50).b(true));
-      this.w.c().a(2);
-      this.u.c().ifPresent($$0 -> this.w.a(fik.a(c, fmy.b(this, $$0, false)).a(200).a()));
-      this.u.b().ifPresent($$0 -> this.w.a(fik.a(r, $$1x -> ad.k().a($$0.getParent())).a(200).a()));
-      fik $$0;
-      if (this.l.F()) {
-         $$0 = fik.a(this.v, $$0x -> this.l.a(this.s)).a(200).a();
-      } else {
-         $$0 = fik.a(b, $$0x -> this.l.a(new fod())).a(200).a();
-      }
-
-      this.w.a($$0);
-      this.w.a();
-      this.w.a(this::c);
-      this.c();
+      int $$0 = -16;
+      this.c(fim.a(wz.c("demo.help.buy"), $$0x -> {
+         $$0x.j = false;
+         ad.k().a(axj.f);
+      }).a(this.m / 2 - 116, this.n / 2 + 62 + -16, 114, 20).a());
+      this.c(fim.a(wz.c("demo.help.later"), $$0x -> {
+         this.l.a(null);
+         this.l.n.i();
+      }).a(this.m / 2 + 2, this.n / 2 + 62 + -16, 114, 20).a());
+      fgs $$1 = this.l.m;
+      this.b = fjf.a(
+         this.o,
+         wz.a("demo.help.movementShort", $$1.w.k(), $$1.x.k(), $$1.y.k(), $$1.z.k()),
+         wz.c("demo.help.movementMouse"),
+         wz.a("demo.help.jump", $$1.A.k()),
+         wz.a("demo.help.inventory", $$1.D.k())
+      );
+      this.c = fjf.a(this.o, wz.c("demo.help.fullWrapped"), 218);
    }
 
    @Override
-   protected void c() {
-      flv.a(this.w, this.H());
+   public void b(fhz $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      int $$4 = (this.m - 248) / 2;
+      int $$5 = (this.n - 166) / 2;
+      $$0.a(a, $$4, $$5, 0, 0, 248, 166);
    }
 
    @Override
-   public wz i() {
-      return wy.a(this.k, this.u.a());
-   }
-
-   @Override
-   public boolean aJ_() {
-      return false;
+   public void a(fhz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      int $$4 = (this.m - 248) / 2 + 10;
+      int $$5 = (this.n - 166) / 2 + 8;
+      $$0.a(this.o, this.k, $$4, $$5, 2039583, false);
+      $$5 = this.b.c($$0, $$4, $$5 + 12, 12, 5197647);
+      this.c.c($$0, $$4, $$5 + 20, 9, 2039583);
    }
 }

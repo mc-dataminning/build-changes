@@ -1,84 +1,80 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public final class elq extends ejp {
-   public static final ekp d = ekp.b;
-   public static final enb e = enb.b;
-   public static final int f = 128;
-   public static final int g = 0;
-   public static final int h = 20;
-   public static final MapCodec<elq> i = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  a($$0),
-                  ekz.b.fieldOf("start_pool").forGetter($$0x -> $$0x.j),
-                  akr.a.optionalFieldOf("start_jigsaw_name").forGetter($$0x -> $$0x.k),
-                  Codec.intRange(0, 20).fieldOf("size").forGetter($$0x -> $$0x.l),
-                  ehw.c.fieldOf("start_height").forGetter($$0x -> $$0x.m),
-                  Codec.BOOL.fieldOf("use_expansion_hack").forGetter($$0x -> $$0x.n),
-                  dyy.a.g.optionalFieldOf("project_start_to_heightmap").forGetter($$0x -> $$0x.o),
-                  Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter($$0x -> $$0x.p),
-                  Codec.list(elb.b).optionalFieldOf("pool_aliases", List.of()).forGetter($$0x -> $$0x.q),
-                  ekp.a.optionalFieldOf("dimension_padding", d).forGetter($$0x -> $$0x.r),
-                  enb.c.optionalFieldOf("liquid_settings", e).forGetter($$0x -> $$0x.s)
-               )
-               .apply($$0, elq::new)
-      )
-      .validate(elq::a);
-   private final jm<ekz> j;
-   private final Optional<akr> k;
-   private final int l;
-   private final ehw m;
-   private final boolean n;
-   private final Optional<dyy.a> o;
-   private final int p;
-   private final List<elb> q;
-   private final ekp r;
-   private final enb s;
+public class elq {
+   public static final int a = 90;
+   static final akr b = akr.b("igloo/top");
+   private static final akr c = akr.b("igloo/middle");
+   private static final akr d = akr.b("igloo/bottom");
+   static final Map<akr, jd> e = ImmutableMap.of(b, new jd(3, 5, 5), c, new jd(1, 3, 1), d, new jd(3, 6, 7));
+   static final Map<akr, jd> f = ImmutableMap.of(b, jd.c, c, new jd(2, -3, 4), d, new jd(0, -3, -2));
 
-   private static DataResult<elq> a(elq $$0) {
-      int $$1 = switch ($$0.d()) {
-         case a -> 0;
-         case b, c, d, e -> 12;
-      };
-      return $$0.p + $$1 > 128 ? DataResult.error(() -> "Structure size including terrain adaptation must not exceed 128") : DataResult.success($$0);
+   public static void a(enu $$0, jd $$1, dmm $$2, ejw $$3, ayw $$4) {
+      if ($$4.j() < 0.5) {
+         int $$5 = $$4.a(8) + 4;
+         $$3.a(new elq.a($$0, d, $$1, $$2, $$5 * 3));
+
+         for (int $$6 = 0; $$6 < $$5 - 1; $$6++) {
+            $$3.a(new elq.a($$0, c, $$1, $$2, $$6 * 3));
+         }
+      }
+
+      $$3.a(new elq.a($$0, b, $$1, $$2, 0));
    }
 
-   public elq(ejp.c $$0, jm<ekz> $$1, Optional<akr> $$2, int $$3, ehw $$4, boolean $$5, Optional<dyy.a> $$6, int $$7, List<elb> $$8, ekp $$9, enb $$10) {
-      super($$0);
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.m = $$4;
-      this.n = $$5;
-      this.o = $$6;
-      this.p = $$7;
-      this.q = $$8;
-      this.r = $$9;
-      this.s = $$10;
-   }
+   public static class a extends ekb {
+      public a(enu $$0, akr $$1, jd $$2, dmm $$3, int $$4) {
+         super(eki.I, 0, $$0, $$1, $$1.toString(), a($$3, $$1), a($$1, $$2, $$4));
+      }
 
-   public elq(ejp.c $$0, jm<ekz> $$1, int $$2, ehw $$3, boolean $$4, dyy.a $$5) {
-      this($$0, $$1, Optional.empty(), $$2, $$3, $$4, Optional.of($$5), 80, List.of(), d, e);
-   }
+      public a(enu $$0, ub $$1) {
+         super(eki.I, $$1, $$0, $$1x -> a(dmm.valueOf($$1.l("Rot")), $$1x));
+      }
 
-   public elq(ejp.c $$0, jm<ekz> $$1, int $$2, ehw $$3, boolean $$4) {
-      this($$0, $$1, Optional.empty(), $$2, $$3, $$4, Optional.empty(), 80, List.of(), d, e);
-   }
+      private static enp a(dmm $$0, akr $$1) {
+         return new enp().a($$0).a(dkv.a).a(elq.e.get($$1)).a(emu.b).a(end.a);
+      }
 
-   @Override
-   public Optional<ejp.b> a(ejp.a $$0) {
-      dcd $$1 = $$0.h();
-      int $$2 = this.m.a($$0.f(), new dzv($$0.b(), $$0.i()));
-      jd $$3 = new jd($$1.d(), $$2, $$1.e());
-      return ekt.a($$0, this.j, this.k, this.l, $$3, this.n, this.o, this.p, eld.create(this.q, $$3, $$0.g()), this.r, this.s);
-   }
+      private static jd a(akr $$0, jd $$1, int $$2) {
+         return $$1.a(elq.f.get($$0)).c($$2);
+      }
 
-   @Override
-   public ejy<?> e() {
-      return ejy.f;
+      @Override
+      protected void a(ekh $$0, ub $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", this.c.d().name());
+      }
+
+      @Override
+      protected void a(String $$0, jd $$1, ddl $$2, ayw $$3, ejj $$4) {
+         if ("chest".equals($$0)) {
+            $$2.a($$1, dga.a.o(), 3);
+            dqh $$5 = $$2.c_($$1.e());
+            if ($$5 instanceof dqo) {
+               ((dqo)$$5).a(ern.C, $$3.g());
+            }
+         }
+      }
+
+      @Override
+      public void a(dds $$0, ddq $$1, duz $$2, ayw $$3, ejj $$4, dcd $$5, jd $$6) {
+         akr $$7 = akr.a(this.a);
+         enp $$8 = a(this.c.d(), $$7);
+         jd $$9 = elq.f.get($$7);
+         jd $$10 = this.d.a((kh)ent.a($$8, new jd(3 - $$9.u(), 0, -$$9.w())));
+         int $$11 = $$0.a(dyy.a.a, $$10.u(), $$10.w());
+         jd $$12 = this.d;
+         this.d = this.d.b(0, $$11 - 90 - 1, 0);
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+         if ($$7.equals(elq.b)) {
+            jd $$13 = this.d.a((kh)ent.a($$8, new jd(3, 0, 5)));
+            dtc $$14 = $$0.a_($$13.e());
+            if (!$$14.i() && !$$14.a(dga.cO)) {
+               $$0.a($$13, dga.dP.o(), 3);
+            }
+         }
+
+         this.d = $$12;
+      }
    }
 }

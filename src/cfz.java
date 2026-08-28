@@ -4,7 +4,7 @@ public class cfz extends cfd {
    }
 
    @Override
-   public int gn() {
+   public int gm() {
       return 5;
    }
 
@@ -29,7 +29,7 @@ public class cfz extends cfd {
    }
 
    @Override
-   protected avo gm() {
+   protected avo gl() {
       return avp.vH;
    }
 }

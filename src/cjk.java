@@ -44,7 +44,7 @@ public abstract class cjk extends coj {
 
       @Override
       public boolean b() {
-         return super.b() && cjk.this.gC();
+         return super.b() && cjk.this.gB();
       }
    }
 }

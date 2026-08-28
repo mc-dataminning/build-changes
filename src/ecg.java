@@ -1,29 +1,43 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class ecg extends ecd<eel> {
-   public ecg(Codec<eel> $$0) {
-      super($$0);
+public class ecg<FC extends eei> {
+   private final Optional<ebq<?, ?>> a;
+   private final dds b;
+   private final duz c;
+   private final ayw d;
+   private final jd e;
+   private final FC f;
+
+   public ecg(Optional<ebq<?, ?>> $$0, dds $$1, duz $$2, ayw $$3, jd $$4, FC $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   @Override
-   public boolean a(ecf<eel> $$0) {
-      jd $$1 = $$0.e();
-      eel $$2 = $$0.f();
-      dds $$3 = $$0.b();
-      jd.a $$4 = new jd.a();
+   public Optional<ebq<?, ?>> a() {
+      return this.a;
+   }
 
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$1.u() + $$5;
-            int $$8 = $$1.w() + $$6;
-            int $$9 = $$3.I_() + $$2.b;
-            $$4.d($$7, $$9, $$8);
-            if ($$3.a_($$4).i()) {
-               $$3.a($$4, $$2.c, 2);
-            }
-         }
-      }
+   public dds b() {
+      return this.b;
+   }
 
-      return true;
+   public duz c() {
+      return this.c;
+   }
+
+   public ayw d() {
+      return this.d;
+   }
+
+   public jd e() {
+      return this.e;
+   }
+
+   public FC f() {
+      return this.f;
    }
 }

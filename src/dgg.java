@@ -32,7 +32,7 @@ public class dgg extends dew {
          }
 
          if ($$7 != null) {
-            dtc $$8 = $$7.o().a(dex.d, $$4).a(dex.c, Boolean.valueOf($$6.u().a() == epd.c));
+            dtc $$8 = $$7.o().a(dex.d, $$4).a(dex.c, Boolean.valueOf($$6.u().a() == epf.c));
             $$1.b($$5, $$8);
          }
       }

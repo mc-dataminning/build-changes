@@ -41,18 +41,18 @@ public class dgt extends der {
    }
 
    @Override
-   protected boolean a(epb $$0) {
+   protected boolean a(epd $$0) {
       return true;
    }
 
    @Override
-   protected void a(dtc $$0, dcw $$1, jd $$2, epb $$3) {
-      if ($$3 == epd.c) {
+   protected void a(dtc $$0, dcw $$1, jd $$2, epd $$3) {
+      if ($$3 == epf.c) {
          dtc $$4 = dga.fu.o();
          $$1.b($$2, $$4);
          $$1.a(dxz.c, $$2, dxz.a.a($$4));
          $$1.c(1047, $$2, 0);
-      } else if ($$3 == epd.e) {
+      } else if ($$3 == epf.e) {
          dtc $$5 = dga.fv.o();
          $$1.b($$2, $$5);
          $$1.a(dxz.c, $$2, dxz.a.a($$5));

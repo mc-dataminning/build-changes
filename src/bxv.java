@@ -11,7 +11,7 @@ public class bxv {
                      Optional<bwv> $$10 = $$0.apply($$8);
                      if (!$$10.isEmpty() && $$1.test($$8)) {
                         bwv $$11 = $$10.get();
-                        if ($$8.dn().a((jw)$$11.a(), (double)$$3)) {
+                        if ($$8.dm().a((jw)$$11.a(), (double)$$3)) {
                            return false;
                         } else {
                            bwv $$12 = $$10.get();

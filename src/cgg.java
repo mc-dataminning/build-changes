@@ -1,7 +1,7 @@
 public abstract class cgg extends btw {
    protected cgg(bsx<? extends cgg> $$0, dcw $$1) {
       super($$0, $$1);
-      this.a(ept.j, 0.0F);
+      this.a(epv.j, 0.0F);
    }
 
    @Override
@@ -15,8 +15,8 @@ public abstract class cgg extends btw {
    }
 
    @Override
-   protected int eh() {
-      return 1 + this.dP().z.a(3);
+   protected int eg() {
+      return 1 + this.dO().z.a(3);
    }
 
    protected void b(int $$0) {
@@ -24,7 +24,7 @@ public abstract class cgg extends btw {
          this.j($$0 - 1);
          if (this.cm() == -20) {
             this.j(0);
-            this.a(this.dQ().i(), 2.0F);
+            this.a(this.dP().i(), 2.0F);
          }
       } else {
          this.j(300);
@@ -39,7 +39,7 @@ public abstract class cgg extends btw {
    }
 
    @Override
-   public boolean cD() {
+   public boolean cC() {
       return false;
    }
 

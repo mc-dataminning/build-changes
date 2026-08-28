@@ -8,7 +8,7 @@ public class dlt extends dfy implements dgf {
    private static final float c = 0.9F;
    private static final float d = 1.5F;
    private static final float e = 2.5F;
-   private static final ext f = exq.a(0.0, 0.0, 0.0, 1.0, 0.9F, 1.0);
+   private static final exv f = exs.a(0.0, 0.0, 0.0, 1.0, 0.9F, 1.0);
    private static final double g = 4.0;
    private static final double h = 7.0;
 
@@ -27,23 +27,23 @@ public class dlt extends dfy implements dgf {
    }
 
    @Override
-   protected ext f(dtc $$0, dcc $$1, jd $$2) {
-      return exq.a();
+   protected exv f(dtc $$0, dcc $$1, jd $$2) {
+      return exs.a();
    }
 
    @Override
    protected void a(dtc $$0, dcw $$1, jd $$2, bsr $$3) {
-      if (!($$3 instanceof btn) || $$3.dq().a(this)) {
-         $$3.a($$0, new exa(0.9F, 1.5, 0.9F));
+      if (!($$3 instanceof btn) || $$3.dp().a(this)) {
+         $$3.a($$0, new exc(0.9F, 1.5, 0.9F));
          if ($$1.B) {
             ayw $$4 = $$1.E_();
-            boolean $$5 = $$3.ad != $$3.du() || $$3.af != $$3.dA();
+            boolean $$5 = $$3.ad != $$3.dt() || $$3.af != $$3.dz();
             if ($$5 && $$4.h()) {
                $$1.a(
                   lm.aK,
-                  $$3.du(),
+                  $$3.dt(),
                   (double)($$2.v() + 1),
-                  $$3.dA(),
+                  $$3.dz(),
                   (double)(ayo.b($$4, -1.0F, 1.0F) * 0.083333336F),
                   0.05F,
                   (double)(ayo.b($$4, -1.0F, 1.0F) * 0.083333336F)
@@ -52,7 +52,7 @@ public class dlt extends dfy implements dgf {
          }
       }
 
-      $$3.p(true);
+      $$3.q(true);
       if (!$$1.B) {
          if ($$3.bR() && ($$1.ab().b(dcs.c) || $$3 instanceof cmx) && $$3.a($$1, $$2)) {
             $$1.b($$2, false);
@@ -65,15 +65,15 @@ public class dlt extends dfy implements dgf {
    @Override
    public void a(dcw $$0, dtc $$1, jd $$2, bsr $$3, float $$4) {
       if (!((double)$$4 < 4.0) && $$3 instanceof btn $$5) {
-         btn.a $$7 = $$5.eI();
+         btn.a $$7 = $$5.eH();
          avo $$8 = (double)$$4 < 7.0 ? $$7.a() : $$7.b();
          $$3.a($$8, 1.0F, 1.0F);
       }
    }
 
    @Override
-   protected ext b(dtc $$0, dcc $$1, jd $$2, exf $$3) {
-      if ($$3 instanceof exk $$4) {
+   protected exv b(dtc $$0, dcc $$1, jd $$2, exh $$3) {
+      if ($$3 instanceof exm $$4) {
          bsr $$5 = $$4.c();
          if ($$5 != null) {
             if ($$5.ac > 2.5F) {
@@ -81,18 +81,18 @@ public class dlt extends dfy implements dgf {
             }
 
             boolean $$6 = $$5 instanceof cjg;
-            if ($$6 || a($$5) && $$3.a(exq.b(), $$2, false) && !$$3.b()) {
+            if ($$6 || a($$5) && $$3.a(exs.b(), $$2, false) && !$$3.b()) {
                return super.b($$0, $$1, $$2, $$3);
             }
          }
       }
 
-      return exq.a();
+      return exs.a();
    }
 
    @Override
-   protected ext c(dtc $$0, dcc $$1, jd $$2, exf $$3) {
-      return exq.a();
+   protected exv c(dtc $$0, dcc $$1, jd $$2, exh $$3) {
+      return exs.a();
    }
 
    public static boolean a(bsr $$0) {
@@ -119,7 +119,7 @@ public class dlt extends dfy implements dgf {
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return true;
    }
 }

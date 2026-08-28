@@ -2,10 +2,10 @@ import org.jetbrains.annotations.VisibleForTesting;
 
 public class aig {
    private static final double a = 4096.0;
-   private exa b;
+   private exc b;
 
    public aig() {
-      this.b = exa.b;
+      this.b = exc.b;
    }
 
    @VisibleForTesting
@@ -18,38 +18,38 @@ public class aig {
       return (double)$$0 / 4096.0;
    }
 
-   public exa a(long $$0, long $$1, long $$2) {
+   public exc a(long $$0, long $$1, long $$2) {
       if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
          return this.b;
       } else {
          double $$3 = $$0 == 0L ? this.b.c : a(a(this.b.c) + $$0);
          double $$4 = $$1 == 0L ? this.b.d : a(a(this.b.d) + $$1);
          double $$5 = $$2 == 0L ? this.b.e : a(a(this.b.e) + $$2);
-         return new exa($$3, $$4, $$5);
+         return new exc($$3, $$4, $$5);
       }
    }
 
-   public long a(exa $$0) {
+   public long a(exc $$0) {
       return a($$0.c) - a(this.b.c);
    }
 
-   public long b(exa $$0) {
+   public long b(exc $$0) {
       return a($$0.d) - a(this.b.d);
    }
 
-   public long c(exa $$0) {
+   public long c(exc $$0) {
       return a($$0.e) - a(this.b.e);
    }
 
-   public exa d(exa $$0) {
+   public exc d(exc $$0) {
       return $$0.d(this.b);
    }
 
-   public void e(exa $$0) {
+   public void e(exc $$0) {
       this.b = $$0;
    }
 
-   public exa a() {
+   public exc a() {
       return this.b;
    }
 }

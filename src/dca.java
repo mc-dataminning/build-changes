@@ -3,22 +3,22 @@ import java.util.function.BiFunction;
 import javax.annotation.Nullable;
 
 public class dca<T> extends AbstractIterator<T> {
-   private final ewv a;
-   private final exf b;
+   private final ewx a;
+   private final exh b;
    private final jf c;
    private final jd.a d;
-   private final ext e;
+   private final exv e;
    private final dcg f;
    private final boolean g;
    @Nullable
    private dcc h;
    private long i;
-   private final BiFunction<jd.a, ext, T> j;
+   private final BiFunction<jd.a, exv, T> j;
 
-   public dca(dcg $$0, @Nullable bsr $$1, ewv $$2, boolean $$3, BiFunction<jd.a, ext, T> $$4) {
-      this.b = $$1 == null ? exf.a() : exf.a($$1);
+   public dca(dcg $$0, @Nullable bsr $$1, ewx $$2, boolean $$3, BiFunction<jd.a, exv, T> $$4) {
+      this.b = $$1 == null ? exh.a() : exh.a($$1);
       this.d = new jd.a();
-      this.e = exq.a($$2);
+      this.e = exs.a($$2);
       this.f = $$0;
       this.a = $$2;
       this.g = $$3;
@@ -59,14 +59,14 @@ public class dca<T> extends AbstractIterator<T> {
                this.d.d($$0, $$1, $$2);
                dtc $$5 = $$4.a_(this.d);
                if ((!this.g || $$5.o($$4, this.d)) && ($$3 != 1 || $$5.f()) && ($$3 != 2 || $$5.a(dga.bQ))) {
-                  ext $$6 = $$5.b(this.f, this.d, this.b);
-                  if ($$6 == exq.b()) {
+                  exv $$6 = $$5.b(this.f, this.d, this.b);
+                  if ($$6 == exs.b()) {
                      if (this.a.a((double)$$0, (double)$$1, (double)$$2, (double)$$0 + 1.0, (double)$$1 + 1.0, (double)$$2 + 1.0)) {
                         return this.j.apply(this.d, $$6.a((double)$$0, (double)$$1, (double)$$2));
                      }
                   } else {
-                     ext $$7 = $$6.a((double)$$0, (double)$$1, (double)$$2);
-                     if (!$$7.c() && exq.c($$7, this.e, exe.i)) {
+                     exv $$7 = $$6.a((double)$$0, (double)$$1, (double)$$2);
+                     if (!$$7.c() && exs.c($$7, this.e, exg.i)) {
                         return this.j.apply(this.d, $$7);
                      }
                   }

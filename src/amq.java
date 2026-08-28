@@ -150,7 +150,7 @@ public class amq {
       int $$2 = 0;
 
       for (bsr $$3 : $$1) {
-         if ($$3 instanceof btn && ((btn)$$3).et()) {
+         if ($$3 instanceof btn && ((btn)$$3).es()) {
             $$2++;
          }
       }

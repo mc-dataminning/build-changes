@@ -16,11 +16,11 @@ public class qr {
             .a(
                new eba(
                   0.15F,
-                  ehz.a(dzs.b(8), dzs.a(180)),
+                  eia.a(dzs.b(8), dzs.a(180)),
                   bqb.b(0.1F, 0.9F),
                   dzs.b(8),
                   eay.a(false, dga.oS.o()),
-                  $$1.b(awe.bi),
+                  $$1.b(awe.bj),
                   bqb.b(0.7F, 1.4F),
                   bqb.b(0.8F, 1.3F),
                   bqb.b(-1.0F, -0.4F)
@@ -33,11 +33,11 @@ public class qr {
             .a(
                new eba(
                   0.07F,
-                  ehz.a(dzs.b(8), dzs.a(47)),
+                  eia.a(dzs.b(8), dzs.a(47)),
                   bqb.b(0.1F, 0.9F),
                   dzs.b(8),
                   eay.a(false, dga.gv.o()),
-                  $$1.b(awe.bi),
+                  $$1.b(awe.bj),
                   bqb.b(0.7F, 1.4F),
                   bqb.b(0.8F, 1.3F),
                   bqb.b(-1.0F, -0.4F)
@@ -50,16 +50,16 @@ public class qr {
             .a(
                new eav(
                   0.01F,
-                  ehz.a(dzs.a(10), dzs.a(67)),
+                  eia.a(dzs.a(10), dzs.a(67)),
                   bps.a(3.0F),
                   dzs.b(8),
                   eay.a(false, dga.oT.o()),
-                  $$1.b(awe.bi),
+                  $$1.b(awe.bj),
                   bqb.b(-0.125F, 0.125F),
                   new eav.a(bqb.b(0.75F, 1.0F), bqa.a(0.0F, 6.0F, 2.0F), 3, bqb.b(0.75F, 1.0F), 1.0F, 0.0F)
                )
             )
       );
-      $$0.a(d, ebe.b.a(new eba(0.2F, ehz.a(dzs.a(0), dzs.c(1)), bps.a(0.5F), dzs.b(10), $$1.b(awe.bj), bps.a(1.0F), bps.a(1.0F), bps.a(-0.7F))));
+      $$0.a(d, ebe.b.a(new eba(0.2F, eia.a(dzs.a(0), dzs.c(1)), bps.a(0.5F), dzs.b(10), $$1.b(awe.bk), bps.a(1.0F), bps.a(1.0F), bps.a(-0.7F))));
    }
 }

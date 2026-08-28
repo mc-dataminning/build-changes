@@ -19,16 +19,16 @@ public class bwc extends bvh<cmk> {
    protected boolean a(aqu $$0, cmk $$1) {
       if (!$$0.ab().b(dcs.c)) {
          return false;
-      } else if ($$1.gw().b() != cmn.g) {
+      } else if ($$1.gv().b() != cmn.g) {
          return false;
       } else {
-         jd.a $$2 = $$1.dp().k();
+         jd.a $$2 = $$1.do().k();
          this.h.clear();
 
          for (int $$3 = -1; $$3 <= 1; $$3++) {
             for (int $$4 = -1; $$4 <= 1; $$4++) {
                for (int $$5 = -1; $$5 <= 1; $$5++) {
-                  $$2.b($$1.du() + (double)$$3, $$1.dw() + (double)$$4, $$1.dA() + (double)$$5);
+                  $$2.b($$1.dt() + (double)$$3, $$1.dv() + (double)$$4, $$1.dz() + (double)$$5);
                   if (this.a($$2, $$0)) {
                      this.h.add(new jd($$2));
                   }
@@ -55,20 +55,20 @@ public class bwc extends bvh<cmk> {
 
    protected void a(aqu $$0, cmk $$1, long $$2) {
       if ($$2 > this.f && this.e != null) {
-         $$1.dU().a(ccs.n, new bvk(this.e));
-         $$1.dU().a(ccs.m, new ccv(new bvk(this.e), 0.5F, 1));
+         $$1.dT().a(ccs.n, new bvk(this.e));
+         $$1.dT().a(ccs.m, new ccv(new bvk(this.e), 0.5F, 1));
       }
    }
 
    protected void b(aqu $$0, cmk $$1, long $$2) {
-      $$1.dU().b(ccs.n);
-      $$1.dU().b(ccs.m);
+      $$1.dT().b(ccs.n);
+      $$1.dT().b(ccs.m);
       this.g = 0;
       this.f = $$2 + 40L;
    }
 
    protected void c(aqu $$0, cmk $$1, long $$2) {
-      if (this.e == null || this.e.a($$1.dn(), 1.0)) {
+      if (this.e == null || this.e.a($$1.dm(), 1.0)) {
          if (this.e != null && $$2 > this.f) {
             dtc $$3 = $$0.a_(this.e);
             dfy $$4 = $$3.b();
@@ -77,7 +77,7 @@ public class bwc extends bvh<cmk> {
                $$0.a(this.e, true, $$1);
             }
 
-            if ($$3.i() && $$5 instanceof div && $$1.gF()) {
+            if ($$3.i() && $$5 instanceof div && $$1.gE()) {
                bra $$6 = $$1.x();
 
                for (int $$7 = 0; $$7 < $$6.b(); $$7++) {
@@ -106,8 +106,8 @@ public class bwc extends bvh<cmk> {
                this.e = this.a($$0);
                if (this.e != null) {
                   this.f = $$2 + 20L;
-                  $$1.dU().a(ccs.m, new ccv(new bvk(this.e), 0.5F, 1));
-                  $$1.dU().a(ccs.n, new bvk(this.e));
+                  $$1.dT().a(ccs.m, new ccv(new bvk(this.e), 0.5F, 1));
+                  $$1.dT().a(ccs.n, new bvk(this.e));
                }
             }
          }

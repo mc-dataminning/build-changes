@@ -13,7 +13,7 @@ public class ckk extends ckd {
    protected void B() {
       this.b = new ckk.b(this);
       this.bU.a(1, new cag(this));
-      this.bU.a(1, new cab(this, this.dP()));
+      this.bU.a(1, new cab(this, this.dO()));
       this.bU.a(3, this.b);
       this.bU.a(4, new caw(this, 1.0, false));
       this.bU.a(5, new ckk.a(this));
@@ -22,7 +22,7 @@ public class ckk extends ckd {
    }
 
    public static buv.a s() {
-      return ckd.gr().a(buw.s, 8.0).a(buw.v, 0.25).a(buw.c, 1.0);
+      return ckd.gq().a(buw.s, 8.0).a(buw.v, 0.25).a(buw.c, 1.0);
    }
 
    @Override
@@ -65,7 +65,7 @@ public class ckk extends ckd {
 
    @Override
    public void l() {
-      this.aY = this.dF();
+      this.aY = this.dE();
       super.l();
    }
 
@@ -106,11 +106,11 @@ public class ckk extends ckd {
          } else if (!this.b.N().l()) {
             return false;
          } else {
-            ayw $$0 = this.b.dS();
-            if (this.b.dP().ab().b(dcs.c) && $$0.a(b(10)) == 0) {
+            ayw $$0 = this.b.dR();
+            if (this.b.dO().ab().b(dcs.c) && $$0.a(b(10)) == 0) {
                this.i = ji.b($$0);
-               jd $$1 = jd.a(this.b.du(), this.b.dw() + 0.5, this.b.dA()).a(this.i);
-               dtc $$2 = this.b.dP().a_($$1);
+               jd $$1 = jd.a(this.b.dt(), this.b.dv() + 0.5, this.b.dz()).a(this.i);
+               dtc $$2 = this.b.dO().a_($$1);
                if (djx.m($$2)) {
                   this.j = true;
                   return true;
@@ -132,8 +132,8 @@ public class ckk extends ckd {
          if (!this.j) {
             super.d();
          } else {
-            dcx $$0 = this.b.dP();
-            jd $$1 = jd.a(this.b.du(), this.b.dw() + 0.5, this.b.dA()).a(this.i);
+            dcx $$0 = this.b.dO();
+            jd $$1 = jd.a(this.b.dt(), this.b.dv() + 0.5, this.b.dz()).a(this.i);
             dtc $$2 = $$0.a_($$1);
             if (djx.m($$2)) {
                $$0.a($$1, djx.n($$2), 3);
@@ -167,9 +167,9 @@ public class ckk extends ckd {
       public void a() {
          this.b--;
          if (this.b <= 0) {
-            dcw $$0 = this.a.dP();
-            ayw $$1 = this.a.dS();
-            jd $$2 = this.a.dp();
+            dcw $$0 = this.a.dO();
+            ayw $$1 = this.a.dR();
+            jd $$2 = this.a.do();
 
             for (int $$3 = 0; $$3 <= 5 && $$3 >= -5; $$3 = ($$3 <= 0 ? 1 : 0) - $$3) {
                for (int $$4 = 0; $$4 <= 10 && $$4 >= -10; $$4 = ($$4 <= 0 ? 1 : 0) - $$4) {

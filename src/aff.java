@@ -7,11 +7,11 @@ public class aff implements zg<abu> {
    public static final int d = 2;
    private final String e;
    private final wz f;
-   private final eyh.a g;
+   private final eyj.a g;
    private final Optional<yp> h;
    private final int i;
 
-   public aff(exw $$0, int $$1) {
+   public aff(exy $$0, int $$1) {
       this.e = $$0.b();
       this.f = $$0.d();
       this.g = $$0.h();
@@ -24,11 +24,11 @@ public class aff implements zg<abu> {
       this.i = $$0.readByte();
       if (this.i != 0 && this.i != 2) {
          this.f = wy.a;
-         this.g = eyh.a.a;
+         this.g = eyj.a.a;
          this.h = Optional.empty();
       } else {
          this.f = xb.d.decode($$0);
-         this.g = $$0.b(eyh.a.class);
+         this.g = $$0.b(eyj.a.class);
          this.h = yr.d.decode($$0);
       }
    }
@@ -64,7 +64,7 @@ public class aff implements zg<abu> {
       return this.i;
    }
 
-   public eyh.a g() {
+   public eyj.a g() {
       return this.g;
    }
 

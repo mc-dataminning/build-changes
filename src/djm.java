@@ -2,7 +2,7 @@ import com.mojang.serialization.MapCodec;
 import java.util.Optional;
 
 public abstract class djm extends djl implements dgb {
-   protected djm(dtb.d $$0, ji $$1, ext $$2, boolean $$3) {
+   protected djm(dtb.d $$0, ji $$1, exv $$2, boolean $$3) {
       super($$0, $$1, $$2, $$3);
    }
 
@@ -24,7 +24,7 @@ public abstract class djm extends djl implements dgb {
          return this.a($$0, $$6.a($$3));
       } else {
          if (this.b) {
-            $$3.a($$4, epd.c, epd.c.a($$3));
+            $$3.a($$4, epf.c, epf.c.a($$3));
          }
 
          return super.a($$0, $$1, $$2, $$3, $$4, $$5);

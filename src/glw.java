@@ -1,12 +1,31 @@
-public class glw extends gln<cfv, fwk<cfv>> {
-   private static final akr a = akr.b("textures/entity/pig/pig.png");
+public class glw extends glp<cfu, fwk> {
+   private static final akr a = akr.b("textures/entity/parrot/parrot_red_blue.png");
+   private static final akr i = akr.b("textures/entity/parrot/parrot_blue.png");
+   private static final akr j = akr.b("textures/entity/parrot/parrot_green.png");
+   private static final akr k = akr.b("textures/entity/parrot/parrot_yellow_blue.png");
+   private static final akr l = akr.b("textures/entity/parrot/parrot_grey.png");
 
-   public glw(gkh.a $$0) {
-      super($$0, new fwk<>($$0.a(fyh.aJ)), 0.7F);
-      this.a(new gou<>(this, new fwk<>($$0.a(fyh.aR)), akr.b("textures/entity/pig/pig_saddle.png")));
+   public glw(gkj.a $$0) {
+      super($$0, new fwk($$0.a(fyj.aH)), 0.3F);
    }
 
-   public akr a(cfv $$0) {
-      return a;
+   public akr a(cfu $$0) {
+      return a($$0.gw());
+   }
+
+   public static akr a(cfu.b $$0) {
+      return switch ($$0) {
+         case a -> a;
+         case b -> i;
+         case c -> j;
+         case d -> k;
+         case e -> l;
+      };
+   }
+
+   public float a(cfu $$0, float $$1) {
+      float $$2 = ayo.i($$1, $$0.ch, $$0.ce);
+      float $$3 = ayo.i($$1, $$0.cg, $$0.cf);
+      return (ayo.a($$2) + 1.0F) * $$3;
    }
 }

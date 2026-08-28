@@ -60,12 +60,12 @@ public class dlh extends dfy {
    }
 
    @Override
-   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, eww $$6) {
+   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, ewy $$6) {
       return $$0.a(awn.bf) && $$6.b() == ji.b ? bqt.e : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
       if ($$1.B) {
          return bqr.a;
       } else {

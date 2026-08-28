@@ -73,7 +73,7 @@ public class Main {
       String $$33 = "Pre-bootstrap";
 
       Logger $$37;
-      fty $$68;
+      fua $$68;
       try {
          if ($$30.has($$2)) {
             bnl.f.a(bnj.a);
@@ -81,15 +81,15 @@ public class Main {
 
          Stopwatch $$34 = Stopwatch.createStarted(Ticker.systemTicker());
          Stopwatch $$35 = Stopwatch.createStarted(Ticker.systemTicker());
-         gvs.a.a(gvo.z, $$34);
-         gvs.a.a(gvo.A, $$35);
+         gvu.a.a(gvq.z, $$34);
+         gvu.a.a(gvq.A, $$35);
          ab.a();
          CompletableFuture<?> $$36 = azx.a(azw.t);
          o.g();
          $$37 = LogUtils.getLogger();
          $$33 = "Bootstrap";
          akt.a();
-         gvs.a.a(akt.b.get());
+         gvu.a.a(akt.b.get());
          akt.c();
          $$33 = "Argument parsing";
          List<String> $$38 = $$30.valuesOf($$29);
@@ -98,7 +98,7 @@ public class Main {
          }
 
          String $$39 = (String)$$27.value($$30);
-         fgz.a $$40 = fgz.a.a($$39);
+         fhb.a $$40 = fhb.a.a($$39);
          if ($$40 == null) {
             $$37.warn("Unrecognized user type: {}", $$39);
          }
@@ -145,13 +145,13 @@ public class Main {
          String $$64 = a(a($$30, $$4));
          String $$65 = a(a($$30, $$5));
          String $$66 = a(a($$30, $$6));
-         fgz $$67 = new fgz((String)$$14.value($$30), $$59, (String)$$18.value($$30), b($$61), b($$62), $$40);
-         $$68 = new fty(
-            new fty.d($$67, $$54, $$55, $$42),
-            new ezy($$45, $$46, $$47, $$48, $$49),
-            new fty.a($$31, $$58, $$57, $$60),
-            new fty.b($$50, $$32, $$56, $$51, $$52),
-            new fty.c($$63, $$64, $$65, $$66)
+         fhb $$67 = new fhb((String)$$14.value($$30), $$59, (String)$$18.value($$30), b($$61), b($$62), $$40);
+         $$68 = new fua(
+            new fua.d($$67, $$54, $$55, $$42),
+            new faa($$45, $$46, $$47, $$48, $$49),
+            new fua.a($$31, $$58, $$57, $$60),
+            new fua.b($$50, $$32, $$56, $$51, $$52),
+            new fua.c($$63, $$64, $$65, $$66)
          );
          ad.m();
          $$36.join();
@@ -159,17 +159,17 @@ public class Main {
          o $$70 = o.a(var79, $$33);
          p $$71 = $$70.a("Initialization");
          ayp.a($$71);
-         fgm.a(null, null, $$32, null, $$70);
-         fgm.a(null, $$31, $$70);
+         fgo.a(null, null, $$32, null, $$70);
+         fgo.a(null, $$31, $$70);
          return;
       }
 
       Thread $$74 = new Thread("Client Shutdown Thread") {
          @Override
          public void run() {
-            fgm $$0 = fgm.Q();
+            fgo $$0 = fgo.Q();
             if ($$0 != null) {
-               gum $$1 = $$0.V();
+               guo $$1 = $$0.V();
                if ($$1 != null) {
                   $$1.a(true);
                }
@@ -178,15 +178,15 @@ public class Main {
       };
       $$74.setUncaughtExceptionHandler(new r($$37));
       Runtime.getRuntime().addShutdownHook($$74);
-      fgm $$75 = null;
+      fgo $$75 = null;
 
       try {
          Thread.currentThread().setName("Render thread");
          RenderSystem.initRenderThread();
          RenderSystem.beginInitialization();
-         $$75 = new fgm($$68);
+         $$75 = new fgo($$68);
          RenderSystem.finishInitialization();
-      } catch (ftz var76) {
+      } catch (fub var76) {
          ad.j();
          $$37.warn("Failed to create window: ", var76);
          return;
@@ -194,14 +194,14 @@ public class Main {
          o $$78 = o.a(var77, "Initializing game");
          p $$79 = $$78.a("Initialization");
          ayp.a($$79);
-         fgm.a($$75, null, $$68.d.b, null, $$78);
-         fgm.a($$75, $$68.c.a, $$78);
+         fgo.a($$75, null, $$68.d.b, null, $$78);
+         fgo.a($$75, $$68.c.a, $$78);
          return;
       }
 
-      fgm $$80 = $$75;
+      fgo $$80 = $$75;
       $$75.f();
-      fbc.a();
+      fbe.a();
 
       try {
          $$80.q();

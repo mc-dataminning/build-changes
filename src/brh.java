@@ -39,7 +39,7 @@ public class brh {
    }
 
    private wz a(bsr $$0, wz $$1, String $$2, String $$3) {
-      cuq $$5 = $$0 instanceof btn $$4 ? $$4.eU() : cuq.l;
+      cuq $$5 = $$0 instanceof btn $$4 ? $$4.eT() : cuq.l;
       return !$$5.e() && $$5.b(kq.g) ? wz.a($$2, this.e.S_(), $$1, $$5.F()) : wz.a($$3, this.e.S_(), $$1);
    }
 

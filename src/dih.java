@@ -2,7 +2,7 @@ import com.mojang.serialization.MapCodec;
 
 public class dih extends diu {
    public static final MapCodec<dih> a = b(dih::new);
-   protected static final ext b = dfy.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+   protected static final exv b = dfy.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
    public MapCodec<dih> a() {
@@ -14,12 +14,12 @@ public class dih extends diu {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return b;
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
       this.d($$0, $$1, $$2);
       return bqr.a($$1.B);
    }
@@ -62,7 +62,7 @@ public class dih extends diu {
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return false;
    }
 }

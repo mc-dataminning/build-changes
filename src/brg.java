@@ -11,7 +11,7 @@ public class brg {
       float $$7 = $$6 / 25.0F;
       cuq $$8 = $$2.e();
       float $$10;
-      if ($$8 != null && $$0.dP() instanceof aqu $$9) {
+      if ($$8 != null && $$0.dO() instanceof aqu $$9) {
          $$10 = ayo.a(dae.c($$9, $$8, $$0, $$2, $$7), 0.0F, 1.0F);
       } else {
          $$10 = $$7;

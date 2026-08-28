@@ -33,9 +33,9 @@ public class chv extends cfe {
    public chv(bsx<? extends cfe> $$0, dcw $$1) {
       super($$0, $$1);
       this.N().a(true);
-      this.a(ept.j, -1.0F);
-      this.a(ept.g, -1.0F);
-      this.a(ept.y, -1.0F);
+      this.a(epv.j, -1.0F);
+      this.a(epv.g, -1.0F);
+      this.a(epv.y, -1.0F);
    }
 
    @Override
@@ -49,46 +49,46 @@ public class chv extends cfe {
    public void E() {
       super.E();
       if (this.bR() || this.bf()) {
-         this.a(ept.j, 0.0F);
+         this.a(epv.j, 0.0F);
       }
    }
 
    @Override
    public void F() {
-      this.a(ept.j, -1.0F);
+      this.a(epv.j, -1.0F);
    }
 
    @Override
    public bsu e(bua $$0) {
-      return this.gw() == chv.a.f ? cm.a(this.eb()) : super.e($$0);
+      return this.gv() == chv.a.f ? cm.a(this.ea()) : super.e($$0);
    }
 
    public boolean t() {
-      return this.gw() == chv.a.e;
+      return this.gv() == chv.a.e;
    }
 
    public boolean x() {
       return this.bF.c(ccs.R).orElse(false);
    }
 
+   public boolean gk() {
+      return !this.x() && !this.gh() && !this.bf() && !this.gs() && this.aF() && !this.bS() && !this.N_();
+   }
+
    public boolean gl() {
-      return !this.x() && !this.gi() && !this.bf() && !this.gt() && this.aF() && !this.bS() && !this.N_();
+      return this.gv() == chv.a.f || this.gv() == chv.a.e;
    }
 
-   public boolean gm() {
-      return this.gw() == chv.a.f || this.gw() == chv.a.e;
+   private jd go() {
+      exc $$0 = this.gu();
+      return jd.a($$0.a(), this.dv() + 0.2F, $$0.c());
    }
 
-   private jd gp() {
-      exa $$0 = this.gv();
-      return jd.a($$0.a(), this.dw() + 0.2F, $$0.c());
+   private exc gu() {
+      return this.dm().e(this.bO().a(2.25));
    }
 
-   private exa gv() {
-      return this.dn().e(this.bO().a(2.25));
-   }
-
-   private chv.a gw() {
+   private chv.a gv() {
       return this.ao.a(cn);
    }
 
@@ -100,8 +100,8 @@ public class chv extends cfe {
    @Override
    public void a(ajw<?> $$0) {
       if (cn.equals($$0)) {
-         chv.a $$1 = this.gw();
-         this.gx();
+         chv.a $$1 = this.gv();
+         this.gw();
          switch ($$1) {
             case b:
                this.ca.b(this.ai);
@@ -127,7 +127,7 @@ public class chv extends cfe {
       super.a($$0);
    }
 
-   private void gx() {
+   private void gw() {
       this.ce.a();
       this.cc.a();
       this.cf.a();
@@ -145,7 +145,7 @@ public class chv extends cfe {
             this.b(chv.a.b);
             break;
          case c:
-            this.b(chv.a.c).gy();
+            this.b(chv.a.c).gx();
             break;
          case d:
             this.a(avp.ys, 1.0F, 1.0F);
@@ -155,7 +155,7 @@ public class chv extends cfe {
             this.b(chv.a.e);
             break;
          case f:
-            this.b(chv.a.f).gz();
+            this.b(chv.a.f).gy();
             break;
          case g:
             this.a(avp.yv, 1.0F, 1.0F);
@@ -165,18 +165,18 @@ public class chv extends cfe {
       return this;
    }
 
-   private chv gy() {
+   private chv gx() {
       this.a(avp.yr, 1.0F, this.o_() ? 1.3F : 1.0F);
       return this;
    }
 
-   private chv gz() {
+   private chv gy() {
       this.ao.a(co, this.ai + 120);
-      this.dP().a(this, (byte)63);
+      this.dO().a(this, (byte)63);
       return this;
    }
 
-   public chv w(boolean $$0) {
+   public chv x(boolean $$0) {
       if ($$0) {
          this.i(this.aM());
       }
@@ -184,34 +184,34 @@ public class chv extends cfe {
       return this;
    }
 
-   Optional<jd> gn() {
+   Optional<jd> gm() {
       return IntStream.range(0, 5)
          .mapToObj($$0 -> cem.a(this, 10 + 2 * $$0, 3))
          .filter(Objects::nonNull)
          .map(jd::a)
-         .filter($$0 -> this.dP().C_().a($$0))
+         .filter($$0 -> this.dO().C_().a($$0))
          .map(jd::e)
          .filter(this::h)
          .findFirst();
    }
 
-   boolean go() {
-      return !this.gi() && !this.x() && !this.o_() && !this.bf() && this.aF() && !this.bS() && this.h(this.gp().e());
+   boolean gn() {
+      return !this.gh() && !this.x() && !this.o_() && !this.bf() && this.aF() && !this.bS() && this.h(this.go().e());
    }
 
    private boolean h(jd $$0) {
-      return this.dP().a_($$0).a(awe.cr)
-         && this.gB().noneMatch($$1 -> jl.a(this.dP().af(), $$0).equals($$1))
-         && Optional.ofNullable(this.N().a($$0, 1)).map(epq::j).orElse(false);
+      return this.dO().a_($$0).a(awe.cs)
+         && this.gA().noneMatch($$1 -> jl.a(this.dO().af(), $$0).equals($$1))
+         && Optional.ofNullable(this.N().a($$0, 1)).map(eps::j).orElse(false);
    }
 
-   private void gA() {
-      if (!this.dP().x_() && this.ao.a(co) == this.ai) {
-         aqu $$0 = (aqu)this.dP();
-         eru $$1 = $$0.o().be().b(erl.aU);
-         ers $$2 = new ers.a($$0).a(eul.f, this.gv()).a(eul.a, this).a(euk.j);
+   private void gz() {
+      if (!this.dO().x_() && this.ao.a(co) == this.ai) {
+         aqu $$0 = (aqu)this.dO();
+         erw $$1 = $$0.o().be().b(ern.aU);
+         eru $$2 = new eru.a($$0).a(eun.f, this.gu()).a(eun.a, this).a(eum.j);
          List<cuq> $$3 = $$1.a($$2);
-         jd $$4 = this.gp();
+         jd $$4 = this.go();
 
          for (cuq $$5 : $$3) {
             cjh $$6 = new cjh($$0, (double)$$4.u(), (double)$$4.v(), (double)$$4.w(), $$5);
@@ -226,46 +226,46 @@ public class chv extends cfe {
    private chv a(bsm $$0) {
       boolean $$1 = $$0.b() > 1700L && $$0.b() < 6000L;
       if ($$1) {
-         jd $$2 = this.gp();
-         dtc $$3 = this.dP().a_($$2.e());
+         jd $$2 = this.go();
+         dtc $$3 = this.dO().a_($$2.e());
          if ($$3.l() != dmf.a) {
             for (int $$4 = 0; $$4 < 30; $$4++) {
-               exa $$5 = exa.b($$2).b(0.0, -0.65F, 0.0);
-               this.dP().a(new le(lm.b, $$3), $$5.c, $$5.d, $$5.e, 0.0, 0.0, 0.0);
+               exc $$5 = exc.b($$2).b(0.0, -0.65F, 0.0);
+               this.dO().a(new le(lm.b, $$3), $$5.c, $$5.d, $$5.e, 0.0, 0.0, 0.0);
             }
 
             if (this.ai % 10 == 0) {
-               this.dP().a(this.du(), this.dw(), this.dA(), $$3.w().f(), this.df(), 0.5F, 0.5F, false);
+               this.dO().a(this.dt(), this.dv(), this.dz(), $$3.w().f(), this.de(), 0.5F, 0.5F, false);
             }
          }
       }
 
       if (this.ai % 10 == 0) {
-         this.dP().a(dxz.u, this.gp(), dxz.a.a(this));
+         this.dO().a(dxz.u, this.go(), dxz.a.a(this));
       }
 
       return this;
    }
 
    private chv i(jd $$0) {
-      List<jl> $$1 = this.gB().limit(20L).collect(Collectors.toList());
-      $$1.add(0, jl.a(this.dP().af(), $$0));
-      this.dU().a(ccs.aQ, $$1);
+      List<jl> $$1 = this.gA().limit(20L).collect(Collectors.toList());
+      $$1.add(0, jl.a(this.dO().af(), $$0));
+      this.dT().a(ccs.aQ, $$1);
       return this;
    }
 
-   private Stream<jl> gB() {
-      return this.dU().c(ccs.aQ).stream().flatMap(Collection::stream);
+   private Stream<jl> gA() {
+      return this.dT().c(ccs.aQ).stream().flatMap(Collection::stream);
    }
 
    @Override
-   protected void fg() {
-      super.fg();
+   protected void ff() {
+      super.ff();
       double $$0 = this.bR.c();
       if ($$0 > 0.0) {
-         double $$1 = this.ds().i();
+         double $$1 = this.dr().i();
          if ($$1 < 0.01) {
-            this.a(0.1F, new exa(0.0, 0.0, 1.0));
+            this.a(0.1F, new exc(0.0, 0.0, 1.0));
          }
       }
    }
@@ -273,7 +273,7 @@ public class chv extends cfe {
    @Override
    public void a(aqu $$0, cfe $$1) {
       cuq $$2 = new cuq(cut.kq);
-      cjh $$3 = new cjh($$0, this.dn().a(), this.dn().b(), this.dn().c(), $$2);
+      cjh $$3 = new cjh($$0, this.dm().a(), this.dm().b(), this.dm().c(), $$2);
       $$3.v();
       this.a($$0, $$1, null);
       this.a(avp.yx, 1.0F, (this.ah.i() - this.ah.i()) * 0.2F + 0.5F);
@@ -288,12 +288,12 @@ public class chv extends cfe {
 
    @Override
    public void l() {
-      switch (this.gw()) {
+      switch (this.gv()) {
          case e:
-            this.gC();
+            this.gB();
             break;
          case f:
-            this.a(this.ce).gA();
+            this.a(this.ce).gz();
       }
 
       super.l();
@@ -305,15 +305,15 @@ public class chv extends cfe {
       boolean $$3 = this.o($$2);
       bqr $$4 = super.b($$0, $$1);
       if ($$4.a() && $$3) {
-         this.dP().a(null, this, this.d($$2), avq.g, 1.0F, ayo.b(this.dP().z, 0.8F, 1.2F));
+         this.dO().a(null, this, this.d($$2), avq.g, 1.0F, ayo.b(this.dO().z, 0.8F, 1.2F));
       }
 
       return $$4;
    }
 
-   private void gC() {
-      if (this.dP().x_() && this.ai % 20 == 0) {
-         this.dP().a(this.du(), this.dw(), this.dA(), avp.yt, this.df(), 1.0F, 1.0F, false);
+   private void gB() {
+      if (this.dO().x_() && this.ai % 20 == 0) {
+         this.dO().a(this.dt(), this.dv(), this.dz(), avp.yt, this.de(), 1.0F, 1.0F, false);
       }
    }
 
@@ -329,7 +329,7 @@ public class chv extends cfe {
 
    @Override
    protected avo v() {
-      return Set.of(chv.a.f, chv.a.e).contains(this.gw()) ? null : avp.yn;
+      return Set.of(chv.a.f, chv.a.e).contains(this.gv()) ? null : avp.yn;
    }
 
    @Override
@@ -363,12 +363,12 @@ public class chv extends cfe {
          return false;
       } else {
          Set<chv.a> $$2 = Set.of(chv.a.a, chv.a.c, chv.a.b);
-         return $$2.contains(this.gw()) && $$2.contains($$1.gw()) && super.a($$0);
+         return $$2.contains(this.gv()) && $$2.contains($$1.gv()) && super.a($$0);
       }
    }
 
    @Override
-   public ewv h_() {
+   public ewx h_() {
       return super.h_().g(0.6F);
    }
 
@@ -379,26 +379,26 @@ public class chv extends cfe {
 
    @Override
    protected buq<?> a(Dynamic<?> $$0) {
-      return chw.a(this.dV().a($$0));
+      return chw.a(this.dU().a($$0));
    }
 
    @Override
-   public buq<chv> dU() {
-      return (buq<chv>)super.dU();
+   public buq<chv> dT() {
+      return (buq<chv>)super.dT();
    }
 
    @Override
-   protected buq.b<chv> dV() {
+   protected buq.b<chv> dU() {
       return buq.a(chw.b, chw.a);
    }
 
    @Override
    protected void ab() {
-      this.dP().ag().a("snifferBrain");
-      this.dU().a((aqu)this.dP(), this);
-      this.dP().ag().b("snifferActivityUpdate");
+      this.dO().ag().a("snifferBrain");
+      this.dT().a((aqu)this.dO(), this);
+      this.dO().ag().b("snifferActivityUpdate");
       chw.a(this);
-      this.dP().ag().c();
+      this.dO().ag().c();
       super.ab();
    }
 

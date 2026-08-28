@@ -1,21 +1,21 @@
 import java.util.function.Predicate;
 
 public class dce {
-   private final exa a;
-   private final exa b;
+   private final exc a;
+   private final exc b;
    private final Predicate<dtc> c;
 
-   public dce(exa $$0, exa $$1, Predicate<dtc> $$2) {
+   public dce(exc $$0, exc $$1, Predicate<dtc> $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
    }
 
-   public exa a() {
+   public exc a() {
       return this.b;
    }
 
-   public exa b() {
+   public exc b() {
       return this.a;
    }
 

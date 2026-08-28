@@ -1,22 +1,13 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class enh extends eno {
-   public final awu<dfy> a;
-   public static final MapCodec<enh> b = awu.b(lu.f).xmap(enh::new, $$0 -> $$0.a).fieldOf("value");
+public interface enh<P extends eng> {
+   enh<enf> a = a("always_true", enf.a);
+   enh<enc> b = a("linear_pos", enc.a);
+   enh<emr> c = a("axis_aligned_linear_pos", emr.a);
 
-   public enh(awu<dfy> $$0) {
-      this.a = $$0;
-   }
+   MapCodec<P> codec();
 
-   @Nullable
-   @Override
-   public enr.c a(dcz $$0, jd $$1, jd $$2, enr.c $$3, enr.c $$4, enn $$5) {
-      return ecd.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
-   }
-
-   @Override
-   protected enq<?> a() {
-      return enq.n;
+   static <P extends eng> enh<P> a(String $$0, MapCodec<P> $$1) {
+      return jz.a(lt.o, $$0, () -> $$1);
    }
 }

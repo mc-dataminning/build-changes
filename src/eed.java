@@ -1,41 +1,18 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eed implements eeh {
-   public static final Codec<eed> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dtc.b.fieldOf("contents").forGetter($$0x -> $$0x.b),
-               dtc.b.fieldOf("rim").forGetter($$0x -> $$0x.c),
-               bpw.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
-               bpw.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, eed::new)
-   );
-   private final dtc b;
-   private final dtc c;
-   private final bpw d;
-   private final bpw e;
+public class eed implements eei {
+   public static final Codec<eed> a = bpw.b(0, 256).fieldOf("count").xmap(eed::new, eed::a).codec();
+   private final bpw b;
 
-   public eed(dtc $$0, dtc $$1, bpw $$2, bpw $$3) {
+   public eed(int $$0) {
+      this.b = bpt.a($$0);
+   }
+
+   public eed(bpw $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
    }
 
-   public dtc a() {
+   public bpw a() {
       return this.b;
-   }
-
-   public dtc b() {
-      return this.c;
-   }
-
-   public bpw c() {
-      return this.d;
-   }
-
-   public bpw d() {
-      return this.e;
    }
 }

@@ -1,61 +1,50 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 import java.util.Set;
 
-public record evi(Optional<Long> b, ero c) implements eva {
+public record evi(float b, daj c, jm<dac> g) implements evc {
    public static final MapCodec<evi> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.LONG.optionalFieldOf("period").forGetter(evi::c), ero.a.fieldOf("value").forGetter(evi::d)).apply($$0, evi::new)
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("unenchanted_chance").forGetter(evi::c),
+               daj.b.fieldOf("enchanted_chance").forGetter(evi::d),
+               dac.c.fieldOf("enchantment").forGetter(evi::e)
+            )
+            .apply($$0, evi::new)
    );
 
    @Override
-   public evb b() {
-      return evc.q;
+   public evd b() {
+      return eve.e;
    }
 
    @Override
-   public Set<eui<?>> a() {
-      return this.c.a();
+   public Set<euk<?>> a() {
+      return ImmutableSet.of(eun.d);
    }
 
-   public boolean a(erp $$0) {
-      aqu $$1 = $$0.d();
-      long $$2 = $$1.aa();
-      if (this.b.isPresent()) {
-         $$2 %= this.b.get();
-      }
-
-      return this.c.b($$0, (int)$$2);
+   public boolean a(err $$0) {
+      bsr $$1 = $$0.c(eun.d);
+      int $$3 = $$1 instanceof btn $$2 ? dae.a(this.g, $$2) : 0;
+      float $$4 = $$3 > 0 ? this.c.a($$3) : this.b;
+      return $$0.b().i() < $$4;
    }
 
-   public static evi.a a(ero $$0) {
-      return new evi.a($$0);
+   public static evc.a a(jo.a $$0, float $$1, float $$2) {
+      jo.b<dac> $$3 = $$0.b(lu.aL);
+      return () -> new evi($$1, new daj.e($$1 + $$2, $$2), $$3.b(dah.s));
    }
 
-   public Optional<Long> c() {
+   public float c() {
       return this.b;
    }
 
-   public ero d() {
+   public daj d() {
       return this.c;
    }
 
-   public static class a implements eva.a {
-      private Optional<Long> a = Optional.empty();
-      private final ero b;
-
-      public a(ero $$0) {
-         this.b = $$0;
-      }
-
-      public evi.a a(long $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public evi a() {
-         return new evi(this.a, this.b);
-      }
+   public jm<dac> e() {
+      return this.g;
    }
 }

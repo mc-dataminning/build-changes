@@ -13,8 +13,8 @@ public class dol extends djo {
    }
 
    @Override
-   protected ext c(dtc $$0, dcc $$1, jd $$2, exf $$3) {
-      return exq.a();
+   protected exv c(dtc $$0, dcc $$1, jd $$2, exh $$3) {
+      return exs.a();
    }
 
    @Override

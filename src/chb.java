@@ -24,44 +24,44 @@ public class chb extends cfb {
    }
 
    @Override
-   protected buq.b<chb> dV() {
+   protected buq.b<chb> dU() {
       return buq.a(ca, e);
    }
 
    @Override
    protected buq<?> a(Dynamic<?> $$0) {
-      return chc.a(this.dV().a($$0));
+      return chc.a(this.dU().a($$0));
    }
 
    @Override
-   public buq<chb> dU() {
-      return (buq<chb>)super.dU();
+   public buq<chb> dT() {
+      return (buq<chb>)super.dT();
    }
 
    @Override
-   protected avo gm() {
+   protected avo gl() {
       return avp.zu;
    }
 
    @Override
    protected void ab() {
-      this.dP().ag().a("tadpoleBrain");
-      this.dU().a((aqu)this.dP(), this);
-      this.dP().ag().c();
-      this.dP().ag().a("tadpoleActivityUpdate");
+      this.dO().ag().a("tadpoleBrain");
+      this.dT().a((aqu)this.dO(), this);
+      this.dO().ag().c();
+      this.dO().ag().a("tadpoleActivityUpdate");
       chc.a(this);
-      this.dP().ag().c();
+      this.dO().ag().c();
       super.ab();
    }
 
-   public static buv.a gn() {
+   public static buv.a gm() {
       return btp.C().a(buw.v, 1.0).a(buw.s, 6.0);
    }
 
    @Override
    public void m_() {
       super.m_();
-      if (!this.dP().B) {
+      if (!this.dO().B) {
          this.s(this.cb + 1);
       }
    }
@@ -101,7 +101,7 @@ public class chb extends cfb {
       cuq $$2 = $$0.b($$1);
       if (this.o($$2)) {
          this.a($$0, $$2);
-         return bqr.a(this.dP().B);
+         return bqr.a(this.dO().B);
       } else {
          return cfg.a($$0, $$1, this).orElse(super.b($$0, $$1));
       }
@@ -119,13 +119,13 @@ public class chb extends cfb {
    }
 
    @Override
-   public void w(boolean $$0) {
+   public void x(boolean $$0) {
    }
 
    @Override
    public void n(cuq $$0) {
       cfg.a(this, $$0);
-      cxh.a(kq.N, $$0, $$0x -> $$0x.a("Age", this.go()));
+      cxh.a(kq.N, $$0, $$0x -> $$0x.a("Age", this.gn()));
    }
 
    @Override
@@ -152,15 +152,15 @@ public class chb extends cfb {
 
    private void a(cmx $$0, cuq $$1) {
       this.b($$0, $$1);
-      this.c(bsl.d_(this.gq()));
-      this.dP().a(lm.O, this.d(1.0), this.dx() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
+      this.c(bsl.d_(this.gp()));
+      this.dO().a(lm.O, this.d(1.0), this.dw() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
    }
 
    private void b(cmx $$0, cuq $$1) {
       $$1.a(1, $$0);
    }
 
-   private int go() {
+   private int gn() {
       return this.cb;
    }
 
@@ -171,23 +171,23 @@ public class chb extends cfb {
    private void s(int $$0) {
       this.cb = $$0;
       if (this.cb >= b) {
-         this.gp();
+         this.go();
       }
    }
 
-   private void gp() {
-      if (this.dP() instanceof aqu $$0) {
-         cgy $$1 = bsx.R.a(this.dP());
+   private void go() {
+      if (this.dO() instanceof aqu $$0) {
+         cgy $$1 = bsx.R.a(this.dO());
          if ($$1 != null) {
-            $$1.b(this.du(), this.dw(), this.dA(), this.dF(), this.dH());
-            $$1.a($$0, this.dP().d_($$1.dp()), btr.i, null);
-            $$1.t(this.ga());
+            $$1.b(this.dt(), this.dv(), this.dz(), this.dE(), this.dG());
+            $$1.a($$0, this.dO().d_($$1.do()), btr.i, null);
+            $$1.u(this.fZ());
             if (this.ai()) {
                $$1.b(this.aj());
-               $$1.o(this.cF());
+               $$1.p(this.cE());
             }
 
-            $$1.fS();
+            $$1.fR();
             $$1.a(this.a(this.at()));
             this.a(avp.zv, 0.15F, 1.0F);
             $$0.a_($$1);
@@ -196,12 +196,12 @@ public class chb extends cfb {
       }
    }
 
-   private int gq() {
+   private int gp() {
       return Math.max(0, b - this.cb);
    }
 
    @Override
-   public boolean ef() {
+   public boolean ee() {
       return false;
    }
 }

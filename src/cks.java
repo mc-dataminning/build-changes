@@ -31,8 +31,8 @@ public class cks extends cjk {
 
    @Override
    protected void ab() {
-      if (!this.ga() && cek.a(this)) {
-         boolean $$0 = ((aqu)this.dP()).e(this.dp());
+      if (!this.fZ() && cek.a(this)) {
+         boolean $$0 = ((aqu)this.dO()).e(this.do());
          ((ccz)this.N()).b($$0);
       }
 
@@ -40,7 +40,7 @@ public class cks extends cjk {
    }
 
    public static buv.a t() {
-      return ckd.gr().a(buw.v, 0.35F).a(buw.m, 12.0).a(buw.s, 24.0).a(buw.c, 5.0);
+      return ckd.gq().a(buw.v, 0.35F).a(buw.m, 12.0).a(buw.s, 24.0).a(buw.c, 5.0);
    }
 
    @Override
@@ -53,10 +53,10 @@ public class cks extends cjk {
 
    @Override
    public cjk.a s() {
-      if (this.gc()) {
+      if (this.gb()) {
          return cjk.a.b;
       } else {
-         return this.gE() ? cjk.a.g : cjk.a.a;
+         return this.gD() ? cjk.a.g : cjk.a.a;
       }
    }
 
@@ -86,7 +86,7 @@ public class cks extends cjk {
 
    @Override
    protected void a(ayw $$0, bqp $$1) {
-      if (this.gz() == null) {
+      if (this.gy() == null) {
          this.a(bsy.a, new cuq(cut.pe));
       }
    }
@@ -117,11 +117,11 @@ public class cks extends cjk {
    @Override
    public void a(aqu $$0, int $$1, boolean $$2) {
       cuq $$3 = new cuq(cut.pe);
-      coi $$4 = this.gz();
+      coi $$4 = this.gy();
       boolean $$5 = this.ah.i() <= $$4.v();
       if ($$5) {
          akq<dbj> $$6 = $$1 > $$4.a(bqo.c) ? dbp.f : dbp.e;
-         dae.a($$3, $$0.H_(), $$6, $$0.d_(this.dp()), this.ah);
+         dae.a($$3, $$0.H_(), $$6, $$0.d_(this.do()), this.ah);
       }
 
       this.a(bsy.a, $$3);
@@ -136,13 +136,13 @@ public class cks extends cjk {
       @Override
       public boolean c() {
          cks $$0 = (cks)this.d;
-         return $$0.gC() && super.c();
+         return $$0.gB() && super.c();
       }
 
       @Override
       public boolean b() {
          cks $$0 = (cks)this.d;
-         return $$0.gC() && $$0.ah.a(b(10)) == 0 && super.b();
+         return $$0.gB() && $$0.ah.a(b(10)) == 0 && super.b();
       }
 
       @Override
@@ -154,7 +154,7 @@ public class cks extends cjk {
 
    static class b extends ccf<btn> {
       public b(cks $$0) {
-         super($$0, btn.class, 0, true, true, btn::fE);
+         super($$0, btn.class, 0, true, true, btn::fD);
       }
 
       @Override

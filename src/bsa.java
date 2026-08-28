@@ -33,12 +33,12 @@ public final class bsa {
       return $$0.b(bsb.m) || $$0.b(bsb.C);
    }
 
-   public static List<aqv> a(aqu $$0, @Nullable bsr $$1, exa $$2, double $$3, brz $$4, int $$5) {
+   public static List<aqv> a(aqu $$0, @Nullable bsr $$1, exc $$2, double $$3, brz $$4, int $$5) {
       jm<brx> $$6 = $$4.c();
       List<aqv> $$7 = $$0.a(
          $$6x -> $$6x.e.d()
                && ($$1 == null || !$$1.s($$6x))
-               && $$2.a((jw)$$6x.dn(), $$3)
+               && $$2.a((jw)$$6x.dm(), $$3)
                && (!$$6x.b($$6) || $$6x.c($$6).e() < $$4.e() || $$6x.c($$6).a($$5 - 1))
       );
       $$7.forEach($$2x -> $$2x.b(new brz($$4), $$1));

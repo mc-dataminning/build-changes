@@ -12,7 +12,7 @@ public class dwj implements AutoCloseable {
    private final dwl a;
    protected final DataFixer e;
    @Nullable
-   private volatile ejk b;
+   private volatile ejm b;
 
    public dwj(dws $$0, Path $$1, DataFixer $$2, boolean $$3) {
       this.e = $$2;
@@ -23,7 +23,7 @@ public class dwj implements AutoCloseable {
       return this.a.a($$0, $$1);
    }
 
-   public ub a(akq<dcw> $$0, Supplier<eqx> $$1, ub $$2, Optional<akq<MapCodec<? extends duz>>> $$3) {
+   public ub a(akq<dcw> $$0, Supplier<eqz> $$1, ub $$2, Optional<akq<MapCodec<? extends duz>>> $$3) {
       int $$4 = a($$2);
       if ($$4 == ab.b().d().c()) {
          return $$2;
@@ -32,7 +32,7 @@ public class dwj implements AutoCloseable {
             if ($$4 < 1493) {
                $$2 = azw.c.a(this.e, $$2, $$4, 1493);
                if ($$2.p("Level").q("hasLegacyStructureData")) {
-                  ejk $$5 = this.a($$0, $$1);
+                  ejm $$5 = this.a($$0, $$1);
                   $$2 = $$5.a($$2);
                }
             }
@@ -51,13 +51,13 @@ public class dwj implements AutoCloseable {
       }
    }
 
-   private ejk a(akq<dcw> $$0, Supplier<eqx> $$1) {
-      ejk $$2 = this.b;
+   private ejm a(akq<dcw> $$0, Supplier<eqz> $$1) {
+      ejm $$2 = this.b;
       if ($$2 == null) {
          synchronized (this) {
             $$2 = this.b;
             if ($$2 == null) {
-               this.b = $$2 = ejk.a($$0, $$1.get());
+               this.b = $$2 = ejm.a($$0, $$1.get());
             }
          }
       }

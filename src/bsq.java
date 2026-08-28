@@ -47,7 +47,7 @@ public abstract class bsq extends bsr {
    private long aQ = -2147483648L;
    private int aR;
    private float aS;
-   private ewv aT;
+   private ewx aT;
    protected boolean o;
    private boolean aU;
    private boolean aV;
@@ -60,7 +60,7 @@ public abstract class bsq extends bsr {
       super($$0, $$1);
       this.ag = true;
       this.au = true;
-      this.aT = this.cL();
+      this.aT = this.cK();
    }
 
    @Override
@@ -93,12 +93,12 @@ public abstract class bsq extends bsr {
 
    @Override
    public void l() {
-      bsr $$0 = this.dd();
-      if ($$0 != null && $$0.dK()) {
+      bsr $$0 = this.dc();
+      if ($$0 != null && $$0.dJ()) {
          this.ad();
       }
 
-      if (this.dP().B) {
+      if (this.dO().B) {
          if (this.aU) {
             this.aU = false;
             int $$1 = this.t();
@@ -248,37 +248,37 @@ public abstract class bsq extends bsr {
 
    @Override
    public double c_() {
-      return this.aX != null ? this.aX.b : this.du();
+      return this.aX != null ? this.aX.b : this.dt();
    }
 
    @Override
    public double d_() {
-      return this.aX != null ? this.aX.c : this.dw();
+      return this.aX != null ? this.aX.c : this.dv();
    }
 
    @Override
    public double P_() {
-      return this.aX != null ? this.aX.d : this.dA();
+      return this.aX != null ? this.aX.d : this.dz();
    }
 
    @Override
    public float Q_() {
-      return this.aX != null ? (float)this.aX.f : this.dH();
+      return this.aX != null ? (float)this.aX.f : this.dG();
    }
 
    @Override
    public float e_() {
-      return this.aX != null ? (float)this.aX.e : this.dF();
+      return this.aX != null ? (float)this.aX.e : this.dE();
    }
 
    @Override
-   public ewv h_() {
+   public ewx h_() {
       return this.aT;
    }
 
    @Override
-   public eph j_() {
-      return eph.d;
+   public epj j_() {
+      return epj.d;
    }
 
    @Override
@@ -410,10 +410,10 @@ public abstract class bsq extends bsr {
       if ($$0 != 0.0F && $$1 != 0.0F) {
          this.au = false;
          float $$2 = $$0 / 2.0F;
-         double $$3 = this.du();
-         double $$4 = this.dw();
-         double $$5 = this.dA();
-         this.aT = new ewv($$3 - (double)$$2, $$4, $$5 - (double)$$2, $$3 + (double)$$2, $$4 + (double)$$1, $$5 + (double)$$2);
+         double $$3 = this.dt();
+         double $$4 = this.dv();
+         double $$5 = this.dz();
+         this.aT = new ewx($$3 - (double)$$2, $$4, $$5 - (double)$$2, $$3 + (double)$$2, $$4 + (double)$$1, $$5 + (double)$$2);
       } else {
          this.au = true;
       }
@@ -421,7 +421,7 @@ public abstract class bsq extends bsr {
 
    @Override
    public boolean a(double $$0) {
-      return $$0 < ayo.k((double)this.z() * 64.0 * cE());
+      return $$0 < ayo.k((double)this.z() * 64.0 * cD());
    }
 
    @Override
@@ -502,7 +502,7 @@ public abstract class bsq extends bsr {
       @Override
       protected void a(ub $$0) {
          super.a($$0);
-         this.c(uq.a(this.dP().a(lu.f), $$0.p("block_state")));
+         this.c(uq.a(this.dO().a(lu.f), $$0.p("block_state")));
       }
 
       @Override
@@ -607,7 +607,7 @@ public abstract class bsq extends bsr {
       protected void a(ub $$0) {
          super.a($$0);
          if ($$0.e("item")) {
-            this.a(cuq.a(this.dR(), (uy)$$0.p("item")).orElse(cuq.l));
+            this.a(cuq.a(this.dQ(), (uy)$$0.p("item")).orElse(cuq.l));
          } else {
             this.a(cuq.l);
          }
@@ -621,7 +621,7 @@ public abstract class bsq extends bsr {
       protected void b(ub $$0) {
          super.b($$0);
          if (!this.t().e()) {
-            $$0.a("item", this.t().a(this.dR()));
+            $$0.a("item", this.t().a(this.dQ()));
          }
 
          cun.j.encodeStart(up.a, this.v()).ifSuccess($$1 -> $$0.a("item_display", $$1));
@@ -817,9 +817,9 @@ public abstract class bsq extends bsr {
             String $$3 = $$0.l("text");
 
             try {
-               wz $$4 = wz.a.a($$3, this.dR());
+               wz $$4 = wz.a.a($$3, this.dQ());
                if ($$4 != null) {
-                  et $$5 = this.dh().a(2);
+                  et $$5 = this.dg().a(2);
                   wz $$6 = xc.a($$5, $$4, this, 0);
                   this.c($$6);
                } else {
@@ -838,7 +838,7 @@ public abstract class bsq extends bsr {
       @Override
       protected void b(ub $$0) {
          super.b($$0);
-         $$0.a("text", wz.a.a(this.t(), this.dR()));
+         $$0.a("text", wz.a.a(this.t(), this.dQ()));
          $$0.a("line_width", this.v());
          $$0.a("background", this.x());
          $$0.a("text_opacity", this.w());

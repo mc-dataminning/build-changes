@@ -1,30 +1,35 @@
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class gqs implements gqn {
-   public static final MapCodec<gqs> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, gqs::new)
-   );
-   private final String c;
-   private final String d;
+public class gqs {
+   private static final BiMap<akr, gqr> i = HashBiMap.create();
+   public static final gqr a = a("single", gqx.b);
+   public static final gqr b = a("directory", gqu.b);
+   public static final gqr c = a("filter", gqy.b);
+   public static final gqr d = a("unstitch", gqz.b);
+   public static final gqr e = a("paletted_permutations", gqw.b);
+   public static Codec<gqr> f = akr.a.flatXmap($$0 -> {
+      gqr $$1 = (gqr)i.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$0);
+   }, $$0 -> {
+      akr $$1 = (akr)i.inverse().get($$0);
+      return $$0 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$1);
+   });
+   public static Codec<gqp> g = f.dispatch(gqp::a, gqr::a);
+   public static Codec<List<gqp>> h = g.listOf().fieldOf("sources").codec();
 
-   public gqs(String $$0, String $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   @Override
-   public void a(aue $$0, gqn.a $$1) {
-      akk $$2 = new akk("textures/" + this.c, ".png");
-      $$2.a($$0).forEach(($$2x, $$3) -> {
-         akr $$4 = $$2.b($$2x).f(this.d);
-         $$1.a($$4, $$3);
-      });
-   }
-
-   @Override
-   public gqp a() {
-      return gqq.b;
+   private static gqr a(String $$0, MapCodec<? extends gqp> $$1) {
+      gqr $$2 = new gqr($$1);
+      akr $$3 = akr.b($$0);
+      gqr $$4 = (gqr)i.putIfAbsent($$3, $$2);
+      if ($$4 != null) {
+         throw new IllegalStateException("Duplicate registration " + $$3);
+      } else {
+         return $$2;
+      }
    }
 }

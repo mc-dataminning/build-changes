@@ -29,7 +29,7 @@ public class cak extends cam {
       btn $$0 = this.a.T_();
       if ($$0 == null) {
          return false;
-      } else if (this.a.go()) {
+      } else if (this.a.gn()) {
          return false;
       } else if (this.a.g((bsr)$$0) < (double)(this.g * this.g)) {
          return false;
@@ -44,22 +44,22 @@ public class cak extends cam {
       if (this.d.l()) {
          return false;
       } else {
-         return this.a.go() ? false : !(this.a.g((bsr)this.b) <= (double)(this.f * this.f));
+         return this.a.gn() ? false : !(this.a.g((bsr)this.b) <= (double)(this.f * this.f));
       }
    }
 
    @Override
    public void d() {
       this.e = 0;
-      this.h = this.a.a(ept.j);
-      this.a.a(ept.j, 0.0F);
+      this.h = this.a.a(epv.j);
+      this.a.a(epv.j, 0.0F);
    }
 
    @Override
    public void e() {
       this.b = null;
       this.d.n();
-      this.a.a(ept.j, this.h);
+      this.a.a(epv.j, this.h);
    }
 
    @Override
@@ -67,8 +67,8 @@ public class cak extends cam {
       this.a.I().a(this.b, 10.0F, (float)this.a.ac());
       if (--this.e <= 0) {
          this.e = this.a(10);
-         if (this.a.gn()) {
-            this.a.gm();
+         if (this.a.gm()) {
+            this.a.gl();
          } else {
             this.d.a(this.b, this.c);
          }

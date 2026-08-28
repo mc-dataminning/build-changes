@@ -1,51 +1,158 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.math.LongMath;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2BooleanFunction;
+import java.io.Reader;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.Map.Entry;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public enum fgu {
-   a(new cuq(cut.qS)),
-   b(new cuq(dga.cj)),
-   c(new cuq(cut.lH)),
-   d(new cuq(cut.pe), new cuq(cut.oW)),
-   e(new cuq(cut.qA), new cuq(cut.ou)),
-   f(new cuq(cut.qS)),
-   g(new cuq(cut.pX)),
-   h(new cuq(dga.b)),
-   i(new cuq(cut.qA), new cuq(cut.oA)),
-   j(new cuq(cut.qS)),
-   k(new cuq(dga.dI)),
-   l(new cuq(cut.pc), new cuq(cut.pQ)),
-   m(new cuq(cut.qS)),
-   n(new cuq(cut.pX)),
-   o(new cuq(cut.fF)),
-   p(new cuq(cut.pT)),
-   q(new cuq(cut.pX)),
-   r(new cuq(cut.hB));
-
-   public static final List<fgu> s = ImmutableList.of(m, n);
-   public static final List<fgu> t = ImmutableList.of(j, k, l);
-   public static final List<fgu> u = ImmutableList.of(f, g, h, i);
-   public static final List<fgu> v = ImmutableList.of(a, d, b, e, c);
-   public static final Map<fgu, List<fgu>> w = ImmutableMap.of(
-      a, ImmutableList.of(d, b, e, c), f, ImmutableList.of(g, h, i), j, ImmutableList.of(k, l), m, ImmutableList.of(n)
+public class fgu extends auj<Map<String, List<fgu.a>>> implements AutoCloseable {
+   private static final Codec<Map<String, List<fgu.a>>> a = Codec.unboundedMap(
+      Codec.STRING,
+      RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     Codec.LONG.optionalFieldOf("delay", 0L).forGetter(fgu.a::a),
+                     Codec.LONG.fieldOf("period").forGetter(fgu.a::b),
+                     Codec.STRING.fieldOf("title").forGetter(fgu.a::c),
+                     Codec.STRING.fieldOf("message").forGetter(fgu.a::d)
+                  )
+                  .apply($$0, fgu.a::new)
+         )
+         .listOf()
    );
-   private final List<cuq> x;
+   private static final Logger b = LogUtils.getLogger();
+   private final akr c;
+   private final Object2BooleanFunction<String> d;
+   @Nullable
+   private Timer e;
+   @Nullable
+   private fgu.b f;
 
-   private fgu(final cuq... $$0) {
-      this.x = ImmutableList.copyOf($$0);
+   public fgu(akr $$0, Object2BooleanFunction<String> $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public static List<fgu> a(crj $$0) {
-      return switch ($$0) {
-         case a -> v;
-         case b -> u;
-         case c -> t;
-         case d -> s;
-      };
+   protected Map<String, List<fgu.a>> a(aue $$0, bnf $$1) {
+      try {
+         Map var4;
+         try (Reader $$2 = $$0.openAsReader(this.c)) {
+            var4 = (Map)a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$2)).result().orElseThrow();
+         }
+
+         return var4;
+      } catch (Exception var8) {
+         b.warn("Failed to load {}", this.c, var8);
+         return ImmutableMap.of();
+      }
    }
 
-   public List<cuq> a() {
-      return this.x;
+   protected void a(Map<String, List<fgu.a>> $$0, aue $$1, bnf $$2) {
+      List<fgu.a> $$3 = $$0.entrySet()
+         .stream()
+         .filter($$0x -> (Boolean)this.d.apply((String)$$0x.getKey()))
+         .map(Entry::getValue)
+         .flatMap(Collection::stream)
+         .collect(Collectors.toList());
+      if ($$3.isEmpty()) {
+         this.a();
+      } else if ($$3.stream().anyMatch($$0x -> $$0x.b == 0L)) {
+         ad.b("A periodic notification in " + this.c + " has a period of zero minutes");
+         this.a();
+      } else {
+         long $$4 = this.a($$3);
+         long $$5 = this.a($$3, $$4);
+         if (this.e == null) {
+            this.e = new Timer();
+         }
+
+         if (this.f == null) {
+            this.f = new fgu.b($$3, $$4, $$5);
+         } else {
+            this.f = this.f.a($$3, $$5);
+         }
+
+         this.e.scheduleAtFixedRate(this.f, TimeUnit.MINUTES.toMillis($$4), TimeUnit.MINUTES.toMillis($$5));
+      }
+   }
+
+   @Override
+   public void close() {
+      this.a();
+   }
+
+   private void a() {
+      if (this.e != null) {
+         this.e.cancel();
+      }
+   }
+
+   private long a(List<fgu.a> $$0, long $$1) {
+      return $$0.stream().mapToLong($$1x -> {
+         long $$2 = $$1x.a - $$1;
+         return LongMath.gcd($$2, $$1x.b);
+      }).reduce(LongMath::gcd).orElseThrow(() -> new IllegalStateException("Empty notifications from: " + this.c));
+   }
+
+   private long a(List<fgu.a> $$0) {
+      return $$0.stream().mapToLong($$0x -> $$0x.a).min().orElse(0L);
+   }
+
+   public static record a(long a, long b, String c, String d) {
+
+      public a(final long a, final long b, final String c, final String d) {
+         this.a = a != 0L ? a : b;
+         this.b = b;
+         this.c = c;
+         this.d = d;
+      }
+   }
+
+   static class b extends TimerTask {
+      private final fgo a = fgo.Q();
+      private final List<fgu.a> b;
+      private final long c;
+      private final AtomicLong d;
+
+      public b(List<fgu.a> $$0, long $$1, long $$2) {
+         this.b = $$0;
+         this.c = $$2;
+         this.d = new AtomicLong($$1);
+      }
+
+      public fgu.b a(List<fgu.a> $$0, long $$1) {
+         this.cancel();
+         return new fgu.b($$0, this.d.get(), $$1);
+      }
+
+      @Override
+      public void run() {
+         long $$0 = this.d.getAndAdd(this.c);
+         long $$1 = this.d.get();
+
+         for (fgu.a $$2 : this.b) {
+            if ($$0 >= $$2.a) {
+               long $$3 = $$0 / $$2.b;
+               long $$4 = $$1 / $$2.b;
+               if ($$3 != $$4) {
+                  this.a.execute(() -> fku.a(fgo.Q().aw(), fku.a.g, wz.a($$2.c, $$3), wz.a($$2.d, $$3)));
+                  return;
+               }
+            }
+         }
+      }
    }
 }

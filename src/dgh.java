@@ -9,7 +9,7 @@ public abstract class dgh extends dfy {
    protected abstract MapCodec<? extends dgh> a();
 
    protected boolean b(dtc $$0, dcc $$1, jd $$2) {
-      return $$0.a(awe.af) || $$0.a(dga.cC);
+      return $$0.a(awe.ag) || $$0.a(dga.cC);
    }
 
    @Override
@@ -29,7 +29,7 @@ public abstract class dgh extends dfy {
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
-      return $$1 == epr.c && !this.aG ? true : super.a($$0, $$1);
+   protected boolean a(dtc $$0, ept $$1) {
+      return $$1 == ept.c && !this.aG ? true : super.a($$0, $$1);
    }
 }

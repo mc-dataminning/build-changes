@@ -24,8 +24,8 @@ public class dpr extends dja {
 
    @Override
    public void a(dtc $$0, dcw $$1, jd $$2, ayw $$3) {
-      ext $$4 = this.a($$0, $$1, $$2, exf.a());
-      exa $$5 = $$4.a().f();
+      exv $$4 = this.a($$0, $$1, $$2, exh.a());
+      exc $$5 = $$4.a().f();
       double $$6 = (double)$$2.u() + $$5.c;
       double $$7 = (double)$$2.w() + $$5.e;
 

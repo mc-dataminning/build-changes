@@ -9,7 +9,7 @@ public class eg extends dv<eg.a> {
    }
 
    public void a(aqv $$0, cmf $$1, cuq $$2) {
-      erp $$3 = bv.b($$0, $$1);
+      err $$3 = bv.b($$0, $$1);
       this.a($$0, $$2x -> $$2x.a($$3, $$2));
    }
 
@@ -31,7 +31,7 @@ public class eg extends dv<eg.a> {
          return an.t.a(new eg.a(Optional.of(bv.a($$0)), Optional.empty(), Optional.empty()));
       }
 
-      public boolean a(erp $$0, cuq $$1) {
+      public boolean a(err $$0, cuq $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || this.d.get().a($$1);
       }
 

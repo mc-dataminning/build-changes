@@ -50,13 +50,13 @@ public class cfw extends cfe implements btt {
 
    public static boolean c(bsx<cfw> $$0, dcx $$1, btr $$2, jd $$3, ayw $$4) {
       jm<ddw> $$5 = $$1.t($$3);
-      return !$$5.a(awd.ao) ? b($$0, $$1, $$2, $$3, $$4) : a($$1, $$3) && $$1.a_($$3.e()).a(awe.cc);
+      return !$$5.a(awd.ao) ? b($$0, $$1, $$2, $$3, $$4) : a($$1, $$3) && $$1.a_($$3.e()).a(awe.cd);
    }
 
    @Override
    public void a(ub $$0) {
       super.a($$0);
-      this.a(this.dP(), $$0);
+      this.a(this.dO(), $$0);
    }
 
    @Override
@@ -127,7 +127,7 @@ public class cfw extends cfe implements btt {
    @Override
    public void l() {
       super.l();
-      if (this.dP().B) {
+      if (this.dO().B) {
          if (this.ce != this.cc) {
             this.i_();
          }
@@ -144,8 +144,8 @@ public class cfw extends cfe implements btt {
          this.cf--;
       }
 
-      if (!this.dP().B) {
-         this.a((aqu)this.dP(), true);
+      if (!this.dO().B) {
+         this.a((aqu)this.dO(), true);
       }
    }
 
@@ -164,7 +164,7 @@ public class cfw extends cfe implements btt {
       return this.ao.a(ca);
    }
 
-   public void w(boolean $$0) {
+   public void x(boolean $$0) {
       this.ao.a(ca, $$0);
    }
 
@@ -173,7 +173,7 @@ public class cfw extends cfe implements btt {
    }
 
    @Override
-   protected float fi() {
+   protected float fh() {
       return 0.98F;
    }
 
@@ -197,7 +197,7 @@ public class cfw extends cfe implements btt {
             return false;
          } else {
             if (super.b()) {
-               for (cfw $$1 : cfw.this.dP().a(cfw.class, cfw.this.cL().c(8.0, 4.0, 8.0))) {
+               for (cfw $$1 : cfw.this.dO().a(cfw.class, cfw.this.cK().c(8.0, 4.0, 8.0))) {
                   if ($$1.o_()) {
                      return true;
                   }
@@ -246,26 +246,26 @@ public class cfw extends cfe implements btt {
          if (this.b($$0)) {
             this.h();
             this.a.D($$0);
-            cfw.this.w(false);
-         } else if (this.a.g((bsr)$$0) < (double)(($$0.dk() + 3.0F) * ($$0.dk() + 3.0F))) {
+            cfw.this.x(false);
+         } else if (this.a.g((bsr)$$0) < (double)(($$0.dj() + 3.0F) * ($$0.dj() + 3.0F))) {
             if (this.i()) {
-               cfw.this.w(false);
+               cfw.this.x(false);
                this.h();
             }
 
             if (this.k() <= 10) {
-               cfw.this.w(true);
+               cfw.this.x(true);
                cfw.this.t();
             }
          } else {
             this.h();
-            cfw.this.w(false);
+            cfw.this.x(false);
          }
       }
 
       @Override
       public void e() {
-         cfw.this.w(false);
+         cfw.this.x(false);
          super.e();
       }
    }

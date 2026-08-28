@@ -7,7 +7,7 @@ public class tm implements ta.c {
    private static final int d = 6;
    private final int e;
    private int f;
-   private ewv g;
+   private ewx g;
    private final jd.a h;
    private final jd i;
    private final boolean j;
@@ -17,7 +17,7 @@ public class tm implements ta.c {
    public tm(jd $$0, int $$1, boolean $$2) {
       this.e = $$1;
       this.h = $$0.k();
-      this.g = new ewv(this.h);
+      this.g = new ewx(this.h);
       this.i = $$0;
       this.j = $$2;
    }
@@ -26,11 +26,11 @@ public class tm implements ta.c {
    public void a(aqu $$0) {
       if (this.j) {
          this.l.forEach($$1 -> {
-            ejh $$2 = tn.b($$1.e());
+            ejj $$2 = tn.b($$1.e());
             tn.a($$2, $$0);
          });
          this.l.clear();
-         this.g = new ewv(this.i);
+         this.g = new ewx(this.i);
          this.h.g(this.i);
       }
    }
@@ -40,7 +40,7 @@ public class tm implements ta.c {
       jd $$1 = new jd(this.h);
       $$0.b($$1);
       $$0.n();
-      ewv $$2 = tn.a($$0.e());
+      ewx $$2 = tn.a($$0.e());
       this.g = this.g.b($$2);
       this.h.e((int)$$2.b() + 5, 0, 0);
       if ((float)this.h.u() > this.k) {
@@ -51,7 +51,7 @@ public class tm implements ta.c {
          this.f = 0;
          this.h.e(0, 0, (int)this.g.d() + 6);
          this.h.p(this.i.u());
-         this.g = new ewv(this.h);
+         this.g = new ewx(this.h);
       }
 
       this.l.add($$0);

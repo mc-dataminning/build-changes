@@ -136,9 +136,9 @@ public class dhz extends dfn {
       return $$0.a($$2, this.a($$1), $$3);
    }
 
-   private ewv a(jd $$0) {
+   private ewx a(jd $$0) {
       double $$1 = 0.2;
-      return new ewv(
+      return new ewx(
          (double)$$0.u() + 0.2, (double)$$0.v(), (double)$$0.w() + 0.2, (double)($$0.u() + 1) - 0.2, (double)($$0.v() + 1) - 0.2, (double)($$0.w() + 1) - 0.2
       );
    }

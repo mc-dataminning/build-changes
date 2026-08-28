@@ -1,11 +1,11 @@
-public class gmn extends gjg<cnv> {
-   public static final akr a = akr.b("textures/entity/projectiles/spectral_arrow.png");
+public class gmn extends glp<chv, fxj<chv>> {
+   private static final akr a = akr.b("textures/entity/sniffer/sniffer.png");
 
-   public gmn(gkh.a $$0) {
-      super($$0);
+   public gmn(gkj.a $$0) {
+      super($$0, new fxj<>($$0.a(fyj.bv)), 1.1F);
    }
 
-   public akr a(cnv $$0) {
+   public akr a(chv $$0) {
       return a;
    }
 }

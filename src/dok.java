@@ -5,7 +5,7 @@ public class dok extends dht {
    public static final int b = 2;
    public static final duc c = dts.aq;
    private static final float g = 3.0F;
-   private static final ext[] h = new ext[]{dfy.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0), dfy.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0)};
+   private static final exv[] h = new exv[]{dfy.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0), dfy.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0)};
    private static final int i = 1;
 
    @Override
@@ -23,7 +23,7 @@ public class dok extends dht {
    }
 
    @Override
-   public ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   public exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return h[this.g($$0)];
    }
 

@@ -33,8 +33,8 @@ public class cla {
       $$0.a(
          com.b,
          ImmutableList.of(
-            Pair.of(0, bxt.a($$0x -> $$0x.dU().c(ccs.B))),
-            Pair.of(1, bxt.a(ckz::gm)),
+            Pair.of(0, bxt.a($$0x -> $$0x.dT().c(ccs.B))),
+            Pair.of(1, bxt.a(ckz::gl)),
             Pair.of(2, new cla.a(20, 40)),
             Pair.of(3, new bxe(ImmutableList.of(Pair.of(new bvr(20, 100), 1), Pair.of(bwz.a(0.6F), 2))))
          )
@@ -52,7 +52,7 @@ public class cla {
    }
 
    static void a(ckz $$0) {
-      $$0.dU().a(ImmutableList.of(com.k, com.b));
+      $$0.dT().a(ImmutableList.of(com.k, com.b));
    }
 
    public static class a extends bwr {
@@ -72,8 +72,8 @@ public class cla {
       protected void b(aqu $$0, btp $$1, long $$2) {
          super.b($$0, $$1, $$2);
          $$1.b(bua.a);
-         if ($$1.dU().a(ccs.o)) {
-            $$1.dU().a(ccs.aV, azs.a, 60L);
+         if ($$1.dT().a(ccs.o)) {
+            $$1.dT().a(ccs.aV, azs.a, 60L);
          }
       }
    }

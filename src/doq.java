@@ -12,10 +12,10 @@ public class doq extends dfy {
    protected static final int f = 42;
    private static final int l = 10;
    protected static final int g = 3;
-   protected static final ext h = dfy.a(5.0, 0.0, 10.0, 11.0, 10.0, 16.0);
-   protected static final ext i = dfy.a(5.0, 0.0, 0.0, 11.0, 10.0, 6.0);
-   protected static final ext j = dfy.a(10.0, 0.0, 5.0, 16.0, 10.0, 11.0);
-   protected static final ext k = dfy.a(0.0, 0.0, 5.0, 6.0, 10.0, 11.0);
+   protected static final exv h = dfy.a(5.0, 0.0, 10.0, 11.0, 10.0, 16.0);
+   protected static final exv i = dfy.a(5.0, 0.0, 0.0, 11.0, 10.0, 6.0);
+   protected static final exv j = dfy.a(10.0, 0.0, 5.0, 16.0, 10.0, 11.0);
+   protected static final exv k = dfy.a(0.0, 0.0, 5.0, 6.0, 10.0, 11.0);
 
    @Override
    public MapCodec<doq> a() {
@@ -28,7 +28,7 @@ public class doq extends dfy {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       switch ((ji)$$0.c(b)) {
          case f:
          default:

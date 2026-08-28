@@ -1,26 +1,30 @@
-public enum ffx {
-   a(true, false),
-   b(false, false),
-   c(false, true);
+import java.util.function.IntFunction;
 
-   private static final ffx[] d = values();
-   private final boolean e;
-   private final boolean f;
+public enum ffx implements ayr {
+   a(0, "options.off"),
+   b(1, "options.attack.crosshair"),
+   c(2, "options.attack.hotbar");
 
-   private ffx(final boolean $$0, final boolean $$1) {
+   private static final IntFunction<ffx> d = axe.a(ffx::a, values(), axe.a.b);
+   private final int e;
+   private final String f;
+
+   private ffx(final int $$0, final String $$1) {
       this.e = $$0;
       this.f = $$1;
    }
 
-   public boolean a() {
+   @Override
+   public int a() {
       return this.e;
    }
 
-   public boolean b() {
+   @Override
+   public String b() {
       return this.f;
    }
 
-   public ffx c() {
-      return d[(this.ordinal() + 1) % d.length];
+   public static ffx a(int $$0) {
+      return d.apply($$0);
    }
 }

@@ -54,7 +54,7 @@ public class fk implements ga<fk.a> {
 
    private static CompletableFuture<arm> a(et $$0, xp $$1) {
       aqv $$2 = $$0.i();
-      return $$2 != null && $$1.a($$2.cA()) ? $$2.Y().a($$1.c()) : CompletableFuture.completedFuture(arm.a($$1.c()));
+      return $$2 != null && $$1.a($$2.cz()) ? $$2.Y().a($$1.c()) : CompletableFuture.completedFuture(arm.a($$1.c()));
    }
 
    public fk.a a(StringReader $$0) throws CommandSyntaxException {

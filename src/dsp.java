@@ -98,7 +98,7 @@ public enum dsp implements azk {
    }
 
    private void a(aqu $$0, jd $$1, cuq $$2, float $$3) {
-      kw.a($$0, $$2, 2, ji.b, exa.c($$1).a(ji.b, 1.2));
+      kw.a($$0, $$2, 2, ji.b, exc.c($$1).a(ji.b, 1.2));
       $$0.c(3017, $$1, 0);
       $$0.a(null, $$1, avp.AF, avq.e, 1.0F, 0.8F + 0.4F * $$3);
    }

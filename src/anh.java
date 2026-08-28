@@ -16,7 +16,7 @@ public class anh {
    }
 
    private static int b(et $$0) {
-      return a($$0, $$0x -> wz.a("commands.list.nameAndId", $$0x.ah(), wz.a($$0x.fY().getId())));
+      return a($$0, $$0x -> wz.a("commands.list.nameAndId", $$0x.ah(), wz.a($$0x.fX().getId())));
    }
 
    private static int a(et $$0, Function<aqv, wz> $$1) {

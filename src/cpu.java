@@ -277,7 +277,7 @@ public abstract class cpu {
    }
 
    private void b(int $$0, int $$1, cqe $$2, cmx $$3) {
-      cmw $$4 = $$3.fZ();
+      cmw $$4 = $$3.fY();
       if ($$2 == cqe.f) {
          int $$5 = this.u;
          this.u = d($$1);
@@ -443,7 +443,7 @@ public abstract class cpu {
                }
             }
          }
-      } else if ($$2 == cqe.d && $$3.fM() && this.g().e() && $$0 >= 0) {
+      } else if ($$2 == cqe.d && $$3.fL() && this.g().e() && $$0 >= 0) {
          crq $$32 = this.i.get($$0);
          if ($$32.h()) {
             cuq $$33 = $$32.g();
@@ -478,7 +478,7 @@ public abstract class cpu {
    }
 
    private boolean a(cmx $$0, cqd $$1, crq $$2, cuq $$3, cuq $$4) {
-      cpl $$5 = $$0.dP().J();
+      cpl $$5 = $$0.dO().J();
       return $$4.a($$5) && $$4.a($$2, $$1, $$0) ? true : $$3.a($$5) && $$3.a($$4, $$2, $$1, $$0, this.m());
    }
 
@@ -506,7 +506,7 @@ public abstract class cpu {
          cuq $$1 = this.g();
          if (!$$1.e()) {
             if ($$0.bE() && !((aqv)$$0).w()) {
-               $$0.fZ().g($$1);
+               $$0.fY().g($$1);
             } else {
                $$0.a($$1, false);
             }
@@ -523,7 +523,7 @@ public abstract class cpu {
          }
       } else {
          for (int $$3 = 0; $$3 < $$1.b(); $$3++) {
-            cmw $$4 = $$0.fZ();
+            cmw $$4 = $$0.fY();
             if ($$4.l instanceof aqv) {
                $$4.g($$1.b($$3));
             }
@@ -635,7 +635,7 @@ public abstract class cpu {
       if ($$0 == 0) {
          return true;
       } else {
-         return $$0 == 1 ? true : $$0 == 2 && $$1.fM();
+         return $$0 == 1 ? true : $$0 == 2 && $$1.fL();
       }
    }
 

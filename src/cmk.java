@@ -66,7 +66,7 @@ public class cmk extends cmf implements bud, cmm {
       ccs.b,
       (BiPredicate<cmk, jm>)($$0, $$1) -> $$1.a(cew.n),
       ccs.c,
-      (BiPredicate<cmk, jm>)($$0, $$1) -> $$0.gw().b().b().test($$1),
+      (BiPredicate<cmk, jm>)($$0, $$1) -> $$0.gv().b().b().test($$1),
       ccs.d,
       (BiPredicate<cmk, jm>)($$0, $$1) -> cmn.a.test($$1),
       ccs.e,
@@ -82,35 +82,35 @@ public class cmk extends cmf implements bud, cmm {
       ((ccz)this.N()).b(true);
       this.N().a(true);
       this.a_(true);
-      this.a(this.gw().a($$2).a(cmn.b));
+      this.a(this.gv().a($$2).a(cmn.b));
    }
 
    @Override
-   public buq<cmk> dU() {
-      return (buq<cmk>)super.dU();
+   public buq<cmk> dT() {
+      return (buq<cmk>)super.dT();
    }
 
    @Override
-   protected buq.b<cmk> dV() {
+   protected buq.b<cmk> dU() {
       return buq.a(cF, cG);
    }
 
    @Override
    protected buq<?> a(Dynamic<?> $$0) {
-      buq<cmk> $$1 = this.dV().a($$0);
+      buq<cmk> $$1 = this.dU().a($$0);
       this.a($$1);
       return $$1;
    }
 
    public void a(aqu $$0) {
-      buq<cmk> $$1 = this.dU();
+      buq<cmk> $$1 = this.dT();
       $$1.b($$0, this);
       this.bF = $$1.i();
-      this.a(this.dU());
+      this.a(this.dT());
    }
 
    private void a(buq<cmk> $$0) {
-      cmn $$1 = this.gw().b();
+      cmn $$1 = this.gv().b();
       if (this.o_()) {
          $$0.a(cop.e);
          $$0.a(com.d, byn.a(0.5F));
@@ -130,39 +130,39 @@ public class cmk extends cmf implements bud, cmm {
       $$0.a(ImmutableSet.of(com.a));
       $$0.b(com.b);
       $$0.a(com.b);
-      $$0.a(this.dP().aa(), this.dP().Z());
+      $$0.a(this.dO().aa(), this.dO().Z());
    }
 
    @Override
    protected void k() {
       super.k();
-      if (this.dP() instanceof aqu) {
-         this.a((aqu)this.dP());
+      if (this.dO() instanceof aqu) {
+         this.a((aqu)this.dO());
       }
    }
 
-   public static buv.a gu() {
+   public static buv.a gt() {
       return btp.C().a(buw.v, 0.5).a(buw.m, 48.0);
    }
 
-   public boolean gv() {
+   public boolean gu() {
       return this.cE;
    }
 
    @Override
    protected void ab() {
-      this.dP().ag().a("villagerBrain");
-      this.dU().a((aqu)this.dP(), this);
-      this.dP().ag().c();
+      this.dO().ag().a("villagerBrain");
+      this.dT().a((aqu)this.dO(), this);
+      this.dO().ag().c();
       if (this.cE) {
          this.cE = false;
       }
 
-      if (!this.gm() && this.cr > 0) {
+      if (!this.gl() && this.cr > 0) {
          this.cr--;
          if (this.cr <= 0) {
             if (this.cs) {
-               this.gS();
+               this.gR();
                this.cs = false;
             }
 
@@ -170,21 +170,21 @@ public class cmk extends cmf implements bud, cmm {
          }
       }
 
-      if (this.ct != null && this.dP() instanceof aqu) {
-         ((aqu)this.dP()).a(cep.e, this.ct, this);
-         this.dP().a(this, (byte)14);
+      if (this.ct != null && this.dO() instanceof aqu) {
+         ((aqu)this.dO()).a(cep.e, this.ct, this);
+         this.dO().a(this, (byte)14);
          this.ct = null;
       }
 
-      if (!this.ga() && this.ah.a(100) == 0) {
-         coi $$0 = ((aqu)this.dP()).d(this.dp());
+      if (!this.fZ() && this.ah.a(100) == 0) {
+         coi $$0 = ((aqu)this.dO()).d(this.do());
          if ($$0 != null && $$0.u() && !$$0.a()) {
-            this.dP().a(this, (byte)42);
+            this.dO().a(this, (byte)42);
          }
       }
 
-      if (this.gw().b() == cmn.b && this.gm()) {
-         this.gr();
+      if (this.gv().b() == cmn.b && this.gl()) {
+         this.gq();
       }
 
       super.ab();
@@ -197,23 +197,23 @@ public class cmk extends cmf implements bud, cmm {
          this.s(this.s() - 1);
       }
 
-      this.gU();
+      this.gT();
    }
 
    @Override
    public bqr b(cmx $$0, bqq $$1) {
       cuq $$2 = $$0.b($$1);
-      if ($$2.a(cut.tJ) || !this.bE() || this.gm() || this.fI()) {
+      if ($$2.a(cut.tJ) || !this.bE() || this.gl() || this.fH()) {
          return super.b($$0, $$1);
       } else if (this.o_()) {
-         this.gH();
-         return bqr.a(this.dP().B);
+         this.gG();
+         return bqr.a(this.dO().B);
       } else {
-         if (!this.dP().B) {
-            boolean $$3 = this.gn().isEmpty();
+         if (!this.dO().B) {
+            boolean $$3 = this.gm().isEmpty();
             if ($$1 == bqq.a) {
                if ($$3) {
-                  this.gH();
+                  this.gG();
                }
 
                $$0.a(avz.S);
@@ -226,13 +226,13 @@ public class cmk extends cmf implements bud, cmm {
             this.g($$0);
          }
 
-         return bqr.a(this.dP().B);
+         return bqr.a(this.dO().B);
       }
    }
 
-   private void gH() {
+   private void gG() {
       this.s(40);
-      if (!this.dP().x_()) {
+      if (!this.dO().x_()) {
          this.b(avp.AW);
       }
    }
@@ -240,64 +240,64 @@ public class cmk extends cmf implements bud, cmm {
    private void g(cmx $$0) {
       this.h($$0);
       this.a($$0);
-      this.a($$0, this.S_(), this.gw().c());
+      this.a($$0, this.S_(), this.gv().c());
    }
 
    @Override
    public void a(@Nullable cmx $$0) {
-      boolean $$1 = this.gl() != null && $$0 == null;
+      boolean $$1 = this.gk() != null && $$0 == null;
       super.a($$0);
       if ($$1) {
-         this.gr();
+         this.gq();
       }
    }
 
    @Override
-   protected void gr() {
-      super.gr();
-      this.gI();
+   protected void gq() {
+      super.gq();
+      this.gH();
    }
 
-   private void gI() {
-      if (!this.dP().x_()) {
-         for (dbu $$0 : this.gn()) {
+   private void gH() {
+      if (!this.dO().x_()) {
+         for (dbu $$0 : this.gm()) {
             $$0.n();
          }
       }
    }
 
    @Override
-   public boolean gx() {
+   public boolean gw() {
       return true;
    }
 
    @Override
-   public boolean gt() {
-      return this.dP().B;
+   public boolean gs() {
+      return this.dO().B;
    }
 
-   public void gy() {
-      this.gN();
+   public void gx() {
+      this.gM();
 
-      for (dbu $$0 : this.gn()) {
+      for (dbu $$0 : this.gm()) {
          $$0.j();
       }
 
-      this.gJ();
-      this.cB = this.dP().Z();
+      this.gI();
+      this.cB = this.dO().Z();
       this.cC++;
    }
 
-   private void gJ() {
-      dbv $$0 = this.gn();
-      cmx $$1 = this.gl();
+   private void gI() {
+      dbv $$0 = this.gm();
+      cmx $$1 = this.gk();
       if ($$1 != null && !$$0.isEmpty()) {
-         $$1.a($$1.cd.j, $$0, this.gw().c(), this.t(), this.go(), this.gx());
+         $$1.a($$1.cd.j, $$0, this.gv().c(), this.t(), this.gn(), this.gw());
       }
    }
 
-   private boolean gK() {
-      for (dbu $$0 : this.gn()) {
+   private boolean gJ() {
+      for (dbu $$0 : this.gm()) {
          if ($$0.t()) {
             return true;
          }
@@ -306,15 +306,15 @@ public class cmk extends cmf implements bud, cmm {
       return false;
    }
 
-   private boolean gL() {
-      return this.cC == 0 || this.cC < 2 && this.dP().Z() > this.cB + 2400L;
+   private boolean gK() {
+      return this.cC == 0 || this.cC < 2 && this.dO().Z() > this.cB + 2400L;
    }
 
-   public boolean gz() {
+   public boolean gy() {
       long $$0 = this.cB + 12000L;
-      long $$1 = this.dP().Z();
+      long $$1 = this.dO().Z();
       boolean $$2 = $$1 > $$0;
-      long $$3 = this.dP().aa();
+      long $$3 = this.dO().aa();
       if (this.cD > 0L) {
          long $$4 = this.cD / 24000L;
          long $$5 = $$3 / 24000L;
@@ -324,29 +324,29 @@ public class cmk extends cmf implements bud, cmm {
       this.cD = $$3;
       if ($$2) {
          this.cB = $$1;
-         this.gV();
+         this.gU();
       }
 
-      return this.gL() && this.gK();
+      return this.gK() && this.gJ();
    }
 
-   private void gM() {
+   private void gL() {
       int $$0 = 2 - this.cC;
       if ($$0 > 0) {
-         for (dbu $$1 : this.gn()) {
+         for (dbu $$1 : this.gm()) {
             $$1.j();
          }
       }
 
       for (int $$2 = 0; $$2 < $$0; $$2++) {
-         this.gN();
+         this.gM();
       }
 
-      this.gJ();
+      this.gI();
    }
 
-   private void gN() {
-      for (dbu $$0 : this.gn()) {
+   private void gM() {
+      for (dbu $$0 : this.gm()) {
          $$0.g();
       }
    }
@@ -354,7 +354,7 @@ public class cmk extends cmf implements bud, cmm {
    private void h(cmx $$0) {
       int $$1 = this.f($$0);
       if ($$1 != 0) {
-         for (dbu $$2 : this.gn()) {
+         for (dbu $$2 : this.gm()) {
             $$2.a(-ayo.d((float)$$1 * $$2.p()));
          }
       }
@@ -363,7 +363,7 @@ public class cmk extends cmf implements bud, cmm {
          brz $$3 = $$0.c(bsb.F);
          int $$4 = $$3.e();
 
-         for (dbu $$5 : this.gn()) {
+         for (dbu $$5 : this.gm()) {
             double $$6 = 0.3 + 0.0625 * (double)$$4;
             int $$7 = (int)Math.floor($$6 * (double)$$5.a().H());
             $$5.a(-Math.max($$7, 1));
@@ -380,7 +380,7 @@ public class cmk extends cmf implements bud, cmm {
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      cml.c.encodeStart(up.a, this.gw()).resultOrPartial(cg::error).ifPresent($$1 -> $$0.a("VillagerData", $$1));
+      cml.c.encodeStart(up.a, this.gv()).resultOrPartial(cg::error).ifPresent($$1 -> $$0.a("VillagerData", $$1));
       $$0.a("FoodLevel", (byte)this.cv);
       $$0.a("Gossips", this.cw.a(up.a));
       $$0.a("Xp", this.cz);
@@ -412,8 +412,8 @@ public class cmk extends cmf implements bud, cmm {
       this.cB = $$0.i("LastRestock");
       this.cy = $$0.i("LastGossipDecay");
       this.a_(true);
-      if (this.dP() instanceof aqu) {
-         this.a((aqu)this.dP());
+      if (this.dO() instanceof aqu) {
+         this.a((aqu)this.dO());
       }
 
       this.cC = $$0.h("RestocksToday");
@@ -430,10 +430,10 @@ public class cmk extends cmf implements bud, cmm {
    @Nullable
    @Override
    protected avo v() {
-      if (this.fI()) {
+      if (this.fH()) {
          return null;
       } else {
-         return this.gm() ? avp.AX : avp.AS;
+         return this.gl() ? avp.AX : avp.AS;
       }
    }
 
@@ -447,13 +447,13 @@ public class cmk extends cmf implements bud, cmm {
       return avp.AU;
    }
 
-   public void gA() {
-      this.b(this.gw().b().f());
+   public void gz() {
+      this.b(this.gv().b().f());
    }
 
    @Override
    public void a(cml $$0) {
-      cml $$1 = this.gw();
+      cml $$1 = this.gv();
       if ($$1.b() != $$0.b()) {
          this.cb = null;
       }
@@ -462,7 +462,7 @@ public class cmk extends cmf implements bud, cmm {
    }
 
    @Override
-   public cml gw() {
+   public cml gv() {
       return this.ao.a(ch);
    }
 
@@ -470,32 +470,32 @@ public class cmk extends cmf implements bud, cmm {
    protected void b(dbu $$0) {
       int $$1 = 3 + this.ah.a(4);
       this.cz = this.cz + $$0.q();
-      this.ct = this.gl();
-      if (this.gR()) {
+      this.ct = this.gk();
+      if (this.gQ()) {
          this.cr = 40;
          this.cs = true;
          $$1 += 5;
       }
 
       if ($$0.u()) {
-         this.dP().b(new btc(this.dP(), this.du(), this.dw() + 0.5, this.dA(), $$1));
+         this.dO().b(new btc(this.dO(), this.dt(), this.dv() + 0.5, this.dz(), $$1));
       }
    }
 
-   public void x(boolean $$0) {
+   public void y(boolean $$0) {
       this.cu = $$0;
    }
 
-   public boolean gB() {
+   public boolean gA() {
       return this.cu;
    }
 
    @Override
    public void a(@Nullable btn $$0) {
-      if ($$0 != null && this.dP() instanceof aqu) {
-         ((aqu)this.dP()).a(cep.c, $$0, this);
+      if ($$0 != null && this.dO() instanceof aqu) {
+         ((aqu)this.dO()).a(cep.c, $$0, this);
          if (this.bE() && $$0 instanceof cmx) {
-            this.dP().a(this, (byte)13);
+            this.dO().a(this, (byte)13);
          }
       }
 
@@ -510,11 +510,11 @@ public class cmk extends cmf implements bud, cmm {
          this.c($$1);
       }
 
-      this.gO();
+      this.gN();
       super.a($$0);
    }
 
-   private void gO() {
+   private void gN() {
       this.a(ccs.b);
       this.a(ccs.c);
       this.a(ccs.d);
@@ -522,7 +522,7 @@ public class cmk extends cmf implements bud, cmm {
    }
 
    private void c(bsr $$0) {
-      if (this.dP() instanceof aqu $$1) {
+      if (this.dO() instanceof aqu $$1) {
          Optional<ccu> $$3 = this.bF.c(ccs.h);
          if (!$$3.isEmpty()) {
             $$3.get().b(bud.class::isInstance).forEach($$2x -> $$1.a(cep.d, $$0, (bud)$$2x));
@@ -531,8 +531,8 @@ public class cmk extends cmf implements bud, cmm {
    }
 
    public void a(ccs<jl> $$0) {
-      if (this.dP() instanceof aqu) {
-         MinecraftServer $$1 = ((aqu)this.dP()).o();
+      if (this.dO() instanceof aqu) {
+         MinecraftServer $$1 = ((aqu)this.dO()).o();
          this.bF.c($$0).ifPresent($$2 -> {
             aqu $$3 = $$1.a($$2.a());
             if ($$3 != null) {
@@ -550,15 +550,15 @@ public class cmk extends cmf implements bud, cmm {
 
    @Override
    public boolean ab_() {
-      return this.cv + this.gT() >= 12 && !this.fI() && this.g() == 0;
+      return this.cv + this.gS() >= 12 && !this.fH() && this.g() == 0;
    }
 
-   private boolean gP() {
+   private boolean gO() {
       return this.cv < 12;
    }
 
-   private void gQ() {
-      if (this.gP() && this.gT() != 0) {
+   private void gP() {
+      if (this.gO() && this.gS() != 0) {
          for (int $$0 = 0; $$0 < this.x().b(); $$0++) {
             cuq $$1 = this.x().a($$0);
             if (!$$1.e()) {
@@ -569,7 +569,7 @@ public class cmk extends cmf implements bud, cmm {
                   for (int $$4 = $$3; $$4 > 0; $$4--) {
                      this.cv = this.cv + $$2;
                      this.x().a($$0, 1);
-                     if (!this.gP()) {
+                     if (!this.gO()) {
                         return;
                      }
                   }
@@ -580,15 +580,15 @@ public class cmk extends cmf implements bud, cmm {
    }
 
    public int f(cmx $$0) {
-      return this.cw.a($$0.cA(), $$0x -> true);
+      return this.cw.a($$0.cz(), $$0x -> true);
    }
 
    private void v(int $$0) {
       this.cv -= $$0;
    }
 
-   public void gC() {
-      this.gQ();
+   public void gB() {
+      this.gP();
       this.v(12);
    }
 
@@ -597,19 +597,19 @@ public class cmk extends cmf implements bud, cmm {
       this.cb = $$0;
    }
 
-   private boolean gR() {
-      int $$0 = this.gw().c();
+   private boolean gQ() {
+      int $$0 = this.gv().c();
       return cml.d($$0) && this.cz >= cml.c($$0);
    }
 
-   private void gS() {
-      this.a(this.gw().a(this.gw().c() + 1));
-      this.gs();
+   private void gR() {
+      this.a(this.gv().a(this.gv().c() + 1));
+      this.gr();
    }
 
    @Override
    protected wz cs() {
-      return wz.c(this.am().g() + "." + lt.x.b(this.gw().b()).a());
+      return wz.c(this.am().g() + "." + lt.x.b(this.gv().b()).a());
    }
 
    @Override
@@ -631,11 +631,11 @@ public class cmk extends cmf implements bud, cmm {
    @Override
    public buh a(ddl $$0, bqp $$1, btr $$2, @Nullable buh $$3) {
       if ($$2 == btr.e) {
-         this.a(this.gw().a(cmn.b));
+         this.a(this.gv().a(cmn.b));
       }
 
       if ($$2 == btr.n || $$2 == btr.m || btr.a($$2) || $$2 == btr.o) {
-         this.a(this.gw().a(cmp.a($$0.t(this.dp()))));
+         this.a(this.gv().a(cmp.a($$0.t(this.do()))));
       }
 
       if ($$2 == btr.d) {
@@ -650,15 +650,15 @@ public class cmk extends cmf implements bud, cmm {
       double $$2 = this.ah.j();
       cmp $$3;
       if ($$2 < 0.5) {
-         $$3 = cmp.a($$0.t(this.dp()));
+         $$3 = cmp.a($$0.t(this.do()));
       } else if ($$2 < 0.75) {
-         $$3 = this.gw().a();
+         $$3 = this.gv().a();
       } else {
-         $$3 = ((cmk)$$1).gw().a();
+         $$3 = ((cmk)$$1).gv().a();
       }
 
       cmk $$6 = new cmk(bsx.bj, $$0, $$3);
-      $$6.a($$0, $$0.d_($$6.dp()), btr.e, null);
+      $$6.a($$0, $$0.d_($$6.do()), btr.e, null);
       return $$6;
    }
 
@@ -668,17 +668,17 @@ public class cmk extends cmf implements bud, cmm {
          cg.info("Villager {} was struck by lightning {}.", this, $$1);
          ckt $$2 = bsx.bo.a((dcw)$$0);
          if ($$2 != null) {
-            $$2.b(this.du(), this.dw(), this.dA(), this.dF(), this.dH());
-            $$2.a($$0, $$0.d_($$2.dp()), btr.i, null);
-            $$2.t(this.ga());
+            $$2.b(this.dt(), this.dv(), this.dz(), this.dE(), this.dG());
+            $$2.a($$0, $$0.d_($$2.do()), btr.i, null);
+            $$2.u(this.fZ());
             if (this.ai()) {
                $$2.b(this.aj());
-               $$2.o(this.cF());
+               $$2.p(this.cE());
             }
 
-            $$2.fS();
+            $$2.fR();
             $$0.a_($$2);
-            this.gO();
+            this.gN();
             this.aq();
          } else {
             super.a($$0, $$1);
@@ -696,31 +696,31 @@ public class cmk extends cmf implements bud, cmm {
    @Override
    public boolean k(cuq $$0) {
       cul $$1 = $$0.g();
-      return (cj.contains($$1) || this.gw().b().d().contains($$1)) && this.x().c($$0);
+      return (cj.contains($$1) || this.gv().b().d().contains($$1)) && this.x().c($$0);
+   }
+
+   public boolean gC() {
+      return this.gS() >= 24;
    }
 
    public boolean gD() {
-      return this.gT() >= 24;
+      return this.gS() < 12;
    }
 
-   public boolean gE() {
-      return this.gT() < 12;
-   }
-
-   private int gT() {
+   private int gS() {
       bra $$0 = this.x();
       return cd.entrySet().stream().mapToInt($$1 -> $$0.a_($$1.getKey()) * $$1.getValue()).sum();
    }
 
-   public boolean gF() {
+   public boolean gE() {
       return this.x().a_($$0 -> $$0.a(awn.bw));
    }
 
    @Override
-   protected void gs() {
-      cml $$0 = this.gw();
+   protected void gr() {
+      cml $$0 = this.gv();
       Int2ObjectMap<cmo.g[]> $$2;
-      if (this.dP().J().b(cpn.c)) {
+      if (this.dO().J().b(cpn.c)) {
          Int2ObjectMap<cmo.g[]> $$1 = cmo.c.get($$0.b());
          $$2 = $$1 != null ? $$1 : cmo.a.get($$0.b());
       } else {
@@ -730,7 +730,7 @@ public class cmk extends cmf implements bud, cmm {
       if ($$2 != null && !$$2.isEmpty()) {
          cmo.g[] $$4 = (cmo.g[])$$2.get($$0.c());
          if ($$4 != null) {
-            dbv $$5 = this.gn();
+            dbv $$5 = this.gm();
             this.a($$5, $$4, 2);
          }
       }
@@ -745,8 +745,8 @@ public class cmk extends cmf implements bud, cmm {
       }
    }
 
-   private void gU() {
-      long $$0 = this.dP().Z();
+   private void gT() {
+      long $$0 = this.dO().Z();
       if (this.cy == 0L) {
          this.cy = $$0;
       } else if ($$0 >= this.cy + 24000L) {
@@ -757,11 +757,11 @@ public class cmk extends cmf implements bud, cmm {
 
    public void a(aqu $$0, long $$1, int $$2) {
       if (this.a($$1)) {
-         ewv $$3 = this.cL().c(10.0, 10.0, 10.0);
+         ewx $$3 = this.cK().c(10.0, 10.0, 10.0);
          List<cmk> $$4 = $$0.a(cmk.class, $$3);
          List<cmk> $$5 = $$4.stream().filter($$1x -> $$1x.a($$1)).limit(5L).collect(Collectors.toList());
          if ($$5.size() >= $$2) {
-            if (!azh.a(bsx.af, btr.f, $$0, this.dp(), 10, 8, 6, azh.a.a).isEmpty()) {
+            if (!azh.a(bsx.af, btr.f, $$0, this.do(), 10, 8, 6, azh.a.a).isEmpty()) {
                $$4.forEach(cdk::b);
             }
          }
@@ -769,20 +769,20 @@ public class cmk extends cmf implements bud, cmm {
    }
 
    public boolean a(long $$0) {
-      return !this.b(this.dP().Z()) ? false : !this.bF.a(ccs.F);
+      return !this.b(this.dO().Z()) ? false : !this.bF.a(ccs.F);
    }
 
    @Override
    public void a(cep $$0, bsr $$1) {
       if ($$0 == cep.a) {
-         this.cw.a($$1.cA(), ccp.d, 20);
-         this.cw.a($$1.cA(), ccp.c, 25);
+         this.cw.a($$1.cz(), ccp.d, 20);
+         this.cw.a($$1.cz(), ccp.c, 25);
       } else if ($$0 == cep.e) {
-         this.cw.a($$1.cA(), ccp.e, 2);
+         this.cw.a($$1.cz(), ccp.e, 2);
       } else if ($$0 == cep.c) {
-         this.cw.a($$1.cA(), ccp.b, 25);
+         this.cw.a($$1.cz(), ccp.b, 25);
       } else if ($$0 == cep.d) {
-         this.cw.a($$1.cA(), ccp.a, 25);
+         this.cw.a($$1.cz(), ccp.a, 25);
       }
    }
 
@@ -795,12 +795,12 @@ public class cmk extends cmf implements bud, cmm {
       this.cz = $$0;
    }
 
-   private void gV() {
-      this.gM();
+   private void gU() {
+      this.gL();
       this.cC = 0;
    }
 
-   public cco gG() {
+   public cco gF() {
       return this.cw;
    }
 
@@ -817,15 +817,15 @@ public class cmk extends cmf implements bud, cmm {
    @Override
    public void b(jd $$0) {
       super.b($$0);
-      this.bF.a(ccs.H, this.dP().Z());
+      this.bF.a(ccs.H, this.dO().Z());
       this.bF.b(ccs.m);
       this.bF.b(ccs.E);
    }
 
    @Override
-   public void fJ() {
-      super.fJ();
-      this.bF.a(ccs.I, this.dP().Z());
+   public void fI() {
+      super.fI();
+      this.bF.a(ccs.I, this.dO().Z());
    }
 
    private boolean b(long $$0) {

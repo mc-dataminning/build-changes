@@ -1,900 +1,389 @@
 public class fhk {
-   public static final fhb a = fhb.a.a(6.68F)
+   public static final fhd a = fhd.a.a(3.0F)
       .a(
-         "body",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.52F, fhd.b(0.0F, 0.0F, -22.5F), fha.b.b),
-            new fhc(1.2F, fhd.b(0.0F, 0.0F, -7.5F), fha.b.b),
-            new fhc(1.68F, fhd.b(0.0F, 0.0F, 10.0F), fha.b.b),
-            new fhc(1.8F, fhd.b(0.0F, 0.0F, 10.0F), fha.b.b),
-            new fhc(2.28F, fhd.b(0.0F, 0.0F, 10.0F), fha.b.b),
-            new fhc(2.88F, fhd.b(0.0F, 0.0F, 10.0F), fha.b.b),
-            new fhc(3.76F, fhd.b(25.0F, 0.0F, -7.5F), fha.b.b),
-            new fhc(3.92F, fhd.b(35.0F, 0.0F, -7.5F), fha.b.b),
-            new fhc(4.08F, fhd.b(25.0F, 0.0F, -7.5F), fha.b.b),
-            new fhc(4.44F, fhd.b(47.5F, 0.0F, 0.0F), fha.b.b),
-            new fhc(4.56F, fhd.b(47.5F, 0.0F, 0.0F), fha.b.b),
-            new fhc(4.68F, fhd.b(47.5F, 0.0F, 0.0F), fha.b.b),
-            new fhc(5.0F, fhd.b(70.0F, 0.0F, 2.5F), fha.b.b),
-            new fhc(5.8F, fhd.b(70.0F, 0.0F, 2.5F), fha.b.b),
-            new fhc(6.64F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b)
+         "croaking_body",
+         new fhc(
+            fhc.d.a,
+            new fhe(0.0F, fhf.a(0.0F, 0.0F, 0.0F), fhc.b.a),
+            new fhe(0.375F, fhf.a(0.0F, 0.0F, 0.0F), fhc.b.a),
+            new fhe(0.4167F, fhf.a(0.0F, 0.0F, 0.0F), fhc.b.a),
+            new fhe(0.4583F, fhf.a(0.0F, 1.0F, 0.0F), fhc.b.a),
+            new fhe(2.9583F, fhf.a(0.0F, 1.0F, 0.0F), fhc.b.a),
+            new fhe(3.0F, fhf.a(0.0F, 0.0F, 0.0F), fhc.b.a)
          )
       )
       .a(
-         "body",
-         new fha(
-            fha.d.a,
-            new fhc(0.0F, fhd.a(0.0F, -63.0F, 0.0F), fha.b.b),
-            new fhc(0.52F, fhd.a(0.0F, -56.0F, 0.0F), fha.b.b),
-            new fhc(1.2F, fhd.a(0.0F, -32.0F, 0.0F), fha.b.b),
-            new fhc(1.68F, fhd.a(0.0F, -32.0F, 0.0F), fha.b.b),
-            new fhc(1.8F, fhd.a(0.0F, -32.0F, 0.0F), fha.b.b),
-            new fhc(2.28F, fhd.a(0.0F, -32.0F, 0.0F), fha.b.b),
-            new fhc(2.88F, fhd.a(0.0F, -32.0F, 0.0F), fha.b.b),
-            new fhc(3.16F, fhd.a(0.0F, -27.0F, 0.0F), fha.b.b),
-            new fhc(3.76F, fhd.a(0.0F, -14.0F, 0.0F), fha.b.b),
-            new fhc(3.92F, fhd.a(0.0F, -11.0F, 0.0F), fha.b.b),
-            new fhc(4.08F, fhd.a(0.0F, -14.0F, 0.0F), fha.b.b),
-            new fhc(4.44F, fhd.a(0.0F, -6.0F, -3.0F), fha.b.b),
-            new fhc(4.56F, fhd.a(0.0F, -4.0F, -3.0F), fha.b.b),
-            new fhc(4.68F, fhd.a(0.0F, -6.0F, -3.0F), fha.b.b),
-            new fhc(5.0F, fhd.a(0.0F, -3.0F, -4.0F), fha.b.b),
-            new fhc(5.8F, fhd.a(0.0F, -3.0F, -4.0F), fha.b.b),
-            new fhc(6.64F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b)
+         "croaking_body",
+         new fhc(
+            fhc.d.c,
+            new fhe(0.0F, fhf.a(0.0, 0.0, 0.0), fhc.b.a),
+            new fhe(0.375F, fhf.a(0.0, 0.0, 0.0), fhc.b.a),
+            new fhe(0.4167F, fhf.a(1.0, 1.0, 1.0), fhc.b.a),
+            new fhe(0.4583F, fhf.a(1.0, 1.0, 1.0), fhc.b.a),
+            new fhe(0.5417F, fhf.a(1.3F, 2.1F, 1.6F), fhc.b.a),
+            new fhe(0.625F, fhf.a(1.3F, 2.1F, 1.6F), fhc.b.a),
+            new fhe(0.7083F, fhf.a(1.0, 1.0, 1.0), fhc.b.a),
+            new fhe(2.25F, fhf.a(1.0, 1.0, 1.0), fhc.b.a),
+            new fhe(2.3333F, fhf.a(1.3F, 2.1F, 1.6F), fhc.b.a),
+            new fhe(2.4167F, fhf.a(1.3F, 2.1F, 1.6F), fhc.b.a),
+            new fhe(2.5F, fhf.a(1.0, 1.0, 1.0), fhc.b.a),
+            new fhe(2.5833F, fhf.a(1.0, 1.0, 1.0), fhc.b.a),
+            new fhe(2.6667F, fhf.a(1.3F, 2.1F, 1.6F), fhc.b.a),
+            new fhe(2.875F, fhf.a(1.3F, 2.1F, 1.6F), fhc.b.a),
+            new fhe(2.9583F, fhf.a(1.0, 1.0, 1.0), fhc.b.a),
+            new fhe(3.0F, fhf.a(0.0, 0.0, 0.0), fhc.b.a)
          )
       )
+      .b();
+   public static final fhd b = fhd.a.a(1.25F)
+      .a()
       .a(
-         "head",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.52F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.92F, fhd.b(0.74F, 0.0F, -40.38F), fha.b.b),
-            new fhc(1.16F, fhd.b(-67.5F, 0.0F, -2.5F), fha.b.b),
-            new fhc(1.24F, fhd.b(-67.5F, 0.0F, -2.5F), fha.b.b),
-            new fhc(1.32F, fhd.b(-47.5F, 0.0F, -2.5F), fha.b.b),
-            new fhc(1.4F, fhd.b(-67.5F, 0.0F, -2.5F), fha.b.b),
-            new fhc(1.68F, fhd.b(-67.5F, 0.0F, 15.0F), fha.b.b),
-            new fhc(1.76F, fhd.b(-67.5F, 0.0F, -5.0F), fha.b.b),
-            new fhc(1.84F, fhd.b(-52.5F, 0.0F, -5.0F), fha.b.b),
-            new fhc(1.92F, fhd.b(-67.5F, 0.0F, -5.0F), fha.b.b),
-            new fhc(2.64F, fhd.b(-17.5F, 0.0F, -10.0F), fha.b.b),
-            new fhc(3.76F, fhd.b(70.0F, 0.0F, 12.5F), fha.b.b),
-            new fhc(4.04F, fhd.b(70.0F, 0.0F, 12.5F), fha.b.b),
-            new fhc(4.12F, fhd.b(80.0F, 0.0F, 12.5F), fha.b.b),
-            new fhc(4.24F, fhd.b(70.0F, 0.0F, 12.5F), fha.b.b),
-            new fhc(5.0F, fhd.b(77.5F, 0.0F, -2.5F), fha.b.b),
-            new fhc(6.64F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .a(
-         "head",
-         new fha(
-            fha.d.a,
-            new fhc(0.0F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.52F, fhd.a(-8.0F, -11.0F, 0.0F), fha.b.b),
-            new fhc(0.92F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.24F, fhd.a(0.0F, 0.47F, -0.95F), fha.b.b),
-            new fhc(1.32F, fhd.a(0.0F, 0.47F, -0.95F), fha.b.b),
-            new fhc(1.4F, fhd.a(0.0F, 0.47F, -0.95F), fha.b.b),
-            new fhc(1.68F, fhd.a(0.0F, 1.0F, -2.0F), fha.b.b),
-            new fhc(1.76F, fhd.a(0.0F, 1.0F, -2.0F), fha.b.b),
-            new fhc(1.84F, fhd.a(0.0F, 1.0F, -2.0F), fha.b.b),
-            new fhc(1.92F, fhd.a(0.0F, 1.0F, -2.0F), fha.b.b),
-            new fhc(2.64F, fhd.a(0.0F, -2.0F, -2.0F), fha.b.b),
-            new fhc(3.76F, fhd.a(0.0F, -4.0F, 1.0F), fha.b.b),
-            new fhc(4.04F, fhd.a(0.0F, -1.0F, 1.0F), fha.b.b),
-            new fhc(4.12F, fhd.a(0.0F, -1.0F, 1.0F), fha.b.b),
-            new fhc(4.24F, fhd.a(0.0F, -1.0F, 1.0F), fha.b.b),
-            new fhc(5.0F, fhd.a(0.0F, -1.0F, 1.0F), fha.b.b),
-            new fhc(6.64F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .a(
-         "right_ear",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.52F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.28F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.88F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(3.36F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(4.56F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(5.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(5.8F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(6.64F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .a(
-         "right_ear",
-         new fha(
-            fha.d.a,
-            new fhc(0.0F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.52F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.28F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.88F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(3.36F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(4.56F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(5.0F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(5.8F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(6.64F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .a(
-         "left_ear",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.52F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.28F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.88F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(3.36F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(4.56F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(5.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(5.8F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(6.64F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .a(
-         "left_ear",
-         new fha(
-            fha.d.a,
-            new fhc(0.0F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.52F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.28F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.88F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(3.36F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(4.56F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(5.0F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(5.8F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(6.64F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .a(
-         "right_arm",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.52F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.2F, fhd.b(-152.5F, 2.5F, 7.5F), fha.b.b),
-            new fhc(1.68F, fhd.b(-180.0F, 12.5F, -10.0F), fha.b.b),
-            new fhc(1.8F, fhd.b(-90.0F, 12.5F, -10.0F), fha.b.b),
-            new fhc(2.28F, fhd.b(-90.0F, 12.5F, -10.0F), fha.b.b),
-            new fhc(2.88F, fhd.b(-90.0F, 12.5F, -10.0F), fha.b.b),
-            new fhc(3.08F, fhd.b(-95.0F, 12.5F, -10.0F), fha.b.b),
-            new fhc(3.24F, fhd.b(-83.93F, 3.93F, 5.71F), fha.b.b),
-            new fhc(3.36F, fhd.b(-80.0F, 7.5F, 17.5F), fha.b.b),
-            new fhc(3.76F, fhd.b(-67.5F, 2.5F, 0.0F), fha.b.b),
-            new fhc(4.08F, fhd.b(-67.5F, 2.5F, 0.0F), fha.b.b),
-            new fhc(4.44F, fhd.b(-55.0F, 2.5F, 0.0F), fha.b.b),
-            new fhc(4.56F, fhd.b(-60.0F, 2.5F, 0.0F), fha.b.b),
-            new fhc(4.68F, fhd.b(-55.0F, 2.5F, 0.0F), fha.b.b),
-            new fhc(5.0F, fhd.b(-67.5F, 0.0F, 0.0F), fha.b.b),
-            new fhc(5.56F, fhd.b(-50.45F, 0.0F, 2.69F), fha.b.b),
-            new fhc(6.08F, fhd.b(-62.72F, 0.0F, 4.3F), fha.b.b),
-            new fhc(6.64F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .a(
-         "right_arm",
-         new fha(
-            fha.d.a,
-            new fhc(0.0F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.52F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.2F, fhd.a(0.0F, -21.0F, 9.0F), fha.b.b),
-            new fhc(1.68F, fhd.a(2.0F, -2.0F, 0.0F), fha.b.b),
-            new fhc(1.8F, fhd.a(2.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.28F, fhd.a(2.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.88F, fhd.a(2.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(3.08F, fhd.a(2.0F, -2.0F, 0.0F), fha.b.b),
-            new fhc(3.24F, fhd.a(2.0F, 2.71F, 3.86F), fha.b.b),
-            new fhc(3.36F, fhd.a(2.0F, 1.0F, 5.0F), fha.b.b),
-            new fhc(3.76F, fhd.a(2.0F, 3.0F, 3.0F), fha.b.b),
-            new fhc(4.08F, fhd.a(2.0F, 3.0F, 3.0F), fha.b.b),
-            new fhc(4.44F, fhd.a(2.67F, 4.0F, 0.0F), fha.b.b),
-            new fhc(4.56F, fhd.a(2.67F, 0.0F, 0.0F), fha.b.b),
-            new fhc(4.68F, fhd.a(2.67F, 4.0F, 0.0F), fha.b.b),
-            new fhc(5.0F, fhd.a(0.67F, 3.0F, 4.0F), fha.b.b),
-            new fhc(6.64F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b)
+         "left_arm",
+         new fhc(
+            fhc.d.b,
+            new fhe(0.0F, fhf.b(0.0F, -5.0F, 0.0F), fhc.b.a),
+            new fhe(0.2917F, fhf.b(7.5F, -2.67F, -7.5F), fhc.b.a),
+            new fhe(0.625F, fhf.b(0.0F, 0.0F, 0.0F), fhc.b.a),
+            new fhe(0.7917F, fhf.b(22.5F, 0.0F, 0.0F), fhc.b.a),
+            new fhe(1.125F, fhf.b(-45.0F, 0.0F, 0.0F), fhc.b.a),
+            new fhe(1.25F, fhf.b(0.0F, -5.0F, 0.0F), fhc.b.a)
          )
       )
       .a(
          "left_arm",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.12F, fhd.b(-167.5F, -17.5F, -7.5F), fha.b.b),
-            new fhc(0.6F, fhd.b(-167.5F, -17.5F, -7.5F), fha.b.b),
-            new fhc(0.88F, fhd.b(-175.0F, -17.5F, 15.0F), fha.b.b),
-            new fhc(1.16F, fhd.b(-190.0F, -17.5F, 5.0F), fha.b.b),
-            new fhc(1.28F, fhd.b(-90.0F, -5.0F, 5.0F), fha.b.b),
-            new fhc(1.68F, fhd.b(-90.0F, -17.5F, -12.5F), fha.b.b),
-            new fhc(1.8F, fhd.b(-90.0F, -17.5F, -12.5F), fha.b.b),
-            new fhc(2.28F, fhd.b(-90.0F, -17.5F, -12.5F), fha.b.b),
-            new fhc(2.88F, fhd.b(-90.0F, -17.5F, -12.5F), fha.b.b),
-            new fhc(3.04F, fhd.b(-81.29F, -10.64F, -14.21F), fha.b.b),
-            new fhc(3.16F, fhd.b(-83.5F, -5.5F, -15.5F), fha.b.b),
-            new fhc(3.76F, fhd.b(-62.5F, -7.5F, 5.0F), fha.b.b),
-            new fhc(3.92F, fhd.b(-58.75F, -3.75F, 5.0F), fha.b.b),
-            new fhc(4.08F, fhd.b(-55.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(4.44F, fhd.b(-52.5F, 0.0F, 5.0F), fha.b.b),
-            new fhc(4.56F, fhd.b(-50.0F, 0.0F, 5.0F), fha.b.b),
-            new fhc(4.68F, fhd.b(-52.5F, 0.0F, 5.0F), fha.b.b),
-            new fhc(5.0F, fhd.b(-72.5F, -2.5F, 5.0F), fha.b.b),
-            new fhc(5.56F, fhd.b(-57.5F, -4.54F, 2.99F), fha.b.b),
-            new fhc(6.08F, fhd.b(-70.99F, -5.77F, 1.78F), fha.b.b),
-            new fhc(6.64F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b)
+         new fhc(
+            fhc.d.a,
+            new fhe(0.0F, fhf.a(0.0F, 0.1F, -2.0F), fhc.b.a),
+            new fhe(0.2917F, fhf.a(-0.5F, -0.25F, -0.13F), fhc.b.a),
+            new fhe(0.625F, fhf.a(-0.5F, 0.1F, 2.0F), fhc.b.a),
+            new fhe(0.9583F, fhf.a(0.5F, 1.0F, -0.11F), fhc.b.a),
+            new fhe(1.25F, fhf.a(0.0F, 0.1F, -2.0F), fhc.b.a)
          )
       )
       .a(
-         "left_arm",
-         new fha(
-            fha.d.a,
-            new fhc(0.0F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.12F, fhd.a(0.0F, -8.0F, 0.0F), fha.b.b),
-            new fhc(0.6F, fhd.a(0.0F, -8.0F, 0.0F), fha.b.b),
-            new fhc(0.88F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.2F, fhd.a(-2.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.68F, fhd.a(-4.0F, 3.0F, 0.0F), fha.b.b),
-            new fhc(1.8F, fhd.a(-4.0F, 3.0F, 0.0F), fha.b.b),
-            new fhc(2.28F, fhd.a(-4.0F, 3.0F, 0.0F), fha.b.b),
-            new fhc(2.88F, fhd.a(-4.0F, 3.0F, 0.0F), fha.b.b),
-            new fhc(3.04F, fhd.a(-3.23F, 5.7F, 4.97F), fha.b.b),
-            new fhc(3.16F, fhd.a(-1.49F, 2.22F, 5.25F), fha.b.b),
-            new fhc(3.76F, fhd.a(-1.14F, 1.71F, 1.86F), fha.b.b),
-            new fhc(3.92F, fhd.a(-1.14F, 1.21F, 3.86F), fha.b.b),
-            new fhc(4.08F, fhd.a(-1.14F, 2.71F, 4.86F), fha.b.b),
-            new fhc(4.44F, fhd.a(-1.0F, 1.0F, 3.0F), fha.b.b),
-            new fhc(4.56F, fhd.a(0.0F, 1.0F, 1.0F), fha.b.b),
-            new fhc(4.68F, fhd.a(0.0F, 1.0F, 3.0F), fha.b.b),
-            new fhc(5.0F, fhd.a(-2.0F, 0.0F, 4.0F), fha.b.b),
-            new fhc(6.64F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b)
+         "right_arm",
+         new fhc(
+            fhc.d.b,
+            new fhe(0.0F, fhf.b(0.0F, 0.0F, 0.0F), fhc.b.a),
+            new fhe(0.125F, fhf.b(22.5F, 0.0F, 0.0F), fhc.b.a),
+            new fhe(0.4583F, fhf.b(-45.0F, 0.0F, 0.0F), fhc.b.a),
+            new fhe(0.625F, fhf.b(0.0F, 5.0F, 0.0F), fhc.b.a),
+            new fhe(0.9583F, fhf.b(7.5F, 2.33F, 7.5F), fhc.b.a),
+            new fhe(1.25F, fhf.b(0.0F, 0.0F, 0.0F), fhc.b.a)
          )
       )
       .a(
-         "right_leg",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.52F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.28F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.88F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(3.36F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(4.32F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(4.48F, fhd.b(55.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(4.6F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(5.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(5.8F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(6.64F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .a(
-         "right_leg",
-         new fha(
-            fha.d.a,
-            new fhc(0.0F, fhd.a(0.0F, -63.0F, 0.0F), fha.b.b),
-            new fhc(0.52F, fhd.a(0.0F, -56.0F, 0.0F), fha.b.b),
-            new fhc(1.2F, fhd.a(0.0F, -32.0F, 0.0F), fha.b.b),
-            new fhc(1.68F, fhd.a(0.0F, -32.0F, 0.0F), fha.b.b),
-            new fhc(1.8F, fhd.a(0.0F, -32.0F, 0.0F), fha.b.b),
-            new fhc(2.28F, fhd.a(0.0F, -32.0F, 0.0F), fha.b.b),
-            new fhc(2.88F, fhd.a(0.0F, -32.0F, 0.0F), fha.b.b),
-            new fhc(3.36F, fhd.a(0.0F, -22.0F, 0.0F), fha.b.b),
-            new fhc(3.76F, fhd.a(0.0F, -12.28F, 2.48F), fha.b.b),
-            new fhc(3.92F, fhd.a(0.0F, -9.28F, 2.48F), fha.b.b),
-            new fhc(4.08F, fhd.a(0.0F, -12.28F, 2.48F), fha.b.b),
-            new fhc(4.32F, fhd.a(0.0F, -4.14F, 4.14F), fha.b.b),
-            new fhc(4.48F, fhd.a(0.0F, -0.57F, -8.43F), fha.b.b),
-            new fhc(4.6F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(5.0F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(5.8F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(6.64F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b)
+         "right_arm",
+         new fhc(
+            fhc.d.a,
+            new fhe(0.0F, fhf.a(0.5F, 0.1F, 2.0F), fhc.b.a),
+            new fhe(0.2917F, fhf.a(-0.5F, 1.0F, 0.12F), fhc.b.a),
+            new fhe(0.625F, fhf.a(0.0F, 0.1F, -2.0F), fhc.b.a),
+            new fhe(0.9583F, fhf.a(0.5F, -0.25F, -0.13F), fhc.b.a),
+            new fhe(1.25F, fhf.a(0.5F, 0.1F, 2.0F), fhc.b.a)
          )
       )
       .a(
          "left_leg",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.52F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.28F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.88F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(3.36F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(3.84F, fhd.b(20.0F, 0.0F, -17.5F), fha.b.b),
-            new fhc(4.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(4.68F, fhd.b(20.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(4.84F, fhd.b(10.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(5.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(5.8F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(6.64F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b)
+         new fhc(
+            fhc.d.b,
+            new fhe(0.0F, fhf.b(0.0F, 0.0F, 0.0F), fhc.b.a),
+            new fhe(0.1667F, fhf.b(0.0F, 0.0F, 0.0F), fhc.b.a),
+            new fhe(0.2917F, fhf.b(45.0F, 0.0F, 0.0F), fhc.b.a),
+            new fhe(0.625F, fhf.b(-45.0F, 0.0F, 0.0F), fhc.b.a),
+            new fhe(0.7917F, fhf.b(0.0F, 0.0F, 0.0F), fhc.b.a),
+            new fhe(1.25F, fhf.b(0.0F, 0.0F, 0.0F), fhc.b.a)
          )
       )
       .a(
          "left_leg",
-         new fha(
-            fha.d.a,
-            new fhc(0.0F, fhd.a(0.0F, -63.0F, 0.0F), fha.b.b),
-            new fhc(0.52F, fhd.a(0.0F, -56.0F, 0.0F), fha.b.b),
-            new fhc(1.2F, fhd.a(0.0F, -32.0F, 0.0F), fha.b.b),
-            new fhc(1.68F, fhd.a(0.0F, -32.0F, 0.0F), fha.b.b),
-            new fhc(1.8F, fhd.a(0.0F, -32.0F, 0.0F), fha.b.b),
-            new fhc(2.28F, fhd.a(0.0F, -32.0F, 0.0F), fha.b.b),
-            new fhc(2.88F, fhd.a(0.0F, -32.0F, 0.0F), fha.b.b),
-            new fhc(3.36F, fhd.a(0.0F, -22.0F, 0.0F), fha.b.b),
-            new fhc(3.84F, fhd.a(-4.0F, 2.0F, -7.0F), fha.b.b),
-            new fhc(4.0F, fhd.a(-4.0F, 0.0F, -5.0F), fha.b.b),
-            new fhc(4.68F, fhd.a(-4.0F, 0.0F, -9.0F), fha.b.b),
-            new fhc(4.84F, fhd.a(-2.0F, 2.0F, -3.5F), fha.b.b),
-            new fhc(5.0F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(5.8F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(6.64F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .b();
-   public static final fhb b = fhb.a.a(5.0F)
-      .a(
-         "body",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.25F, fhd.b(4.13441F, 0.94736F, 1.2694F), fha.b.b),
-            new fhc(0.5F, fhd.b(50.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.7083F, fhd.b(54.45407F, -13.53935F, -18.14183F), fha.b.b),
-            new fhc(1.0417F, fhd.b(59.46442F, -10.8885F, 35.7954F), fha.b.b),
-            new fhc(1.3333F, fhd.b(82.28261F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.625F, fhd.b(53.23606F, 10.04715F, -29.72932F), fha.b.b),
-            new fhc(2.2083F, fhd.b(-17.71739F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.5417F, fhd.b(112.28261F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.6667F, fhd.b(116.06889F, 5.11581F, -24.50117F), fha.b.b),
-            new fhc(2.8333F, fhd.b(121.56244F, -4.17248F, 19.57737F), fha.b.b),
-            new fhc(3.0417F, fhd.b(138.5689F, 5.11581F, -24.50117F), fha.b.b),
-            new fhc(3.25F, fhd.b(144.06244F, -4.17248F, 19.57737F), fha.b.b),
-            new fhc(3.375F, fhd.b(147.28261F, 0.0F, 0.0F), fha.b.b),
-            new fhc(3.625F, fhd.b(147.28261F, 0.0F, 0.0F), fha.b.b),
-            new fhc(3.875F, fhd.b(134.36221F, 8.81113F, -8.90172F), fha.b.b),
-            new fhc(4.0417F, fhd.b(132.05966F, -8.35927F, 9.70506F), fha.b.b),
-            new fhc(4.25F, fhd.b(134.36221F, 8.81113F, -8.90172F), fha.b.b),
-            new fhc(4.5F, fhd.b(147.5F, 0.0F, 0.0F), fha.b.a)
-         )
-      )
-      .a(
-         "body",
-         new fha(
-            fha.d.a,
-            new fhc(0.0F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.5F, fhd.a(0.0F, -16.48454F, -6.5784F), fha.b.b),
-            new fhc(0.7083F, fhd.a(0.0F, -16.48454F, -6.5784F), fha.b.b),
-            new fhc(1.0417F, fhd.a(0.0F, -16.97F, -7.11F), fha.b.b),
-            new fhc(1.625F, fhd.a(0.0F, -13.97F, -7.11F), fha.b.b),
-            new fhc(2.2083F, fhd.a(0.0F, -11.48454F, -0.5784F), fha.b.b),
-            new fhc(2.5417F, fhd.a(0.0F, -16.48454F, -6.5784F), fha.b.b),
-            new fhc(2.6667F, fhd.a(0.0F, -20.27F, -5.42F), fha.b.b),
-            new fhc(3.375F, fhd.a(0.0F, -21.48454F, -5.5784F), fha.b.b),
-            new fhc(4.0417F, fhd.a(0.0F, -22.48454F, -5.5784F), fha.b.b),
-            new fhc(4.5F, fhd.a(0.0F, -40.0F, -8.0F), fha.b.a)
-         )
-      )
-      .a(
-         "head",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.6667F, fhd.b(12.5F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.2083F, fhd.b(12.5F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.75F, fhd.b(45.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.375F, fhd.b(-22.5F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.5417F, fhd.b(67.5F, 0.0F, 0.0F), fha.b.b),
-            new fhc(4.375F, fhd.b(67.5F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .a("head", new fha(fha.d.a, new fhc(0.0F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b), new fhc(4.375F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.a)))
-      .a(
-         "right_arm",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.5F, fhd.b(-101.8036F, -21.29587F, 30.61478F), fha.b.b),
-            new fhc(0.7083F, fhd.b(-101.8036F, -21.29587F, 30.61478F), fha.b.b),
-            new fhc(1.0F, fhd.b(48.7585F, -17.61941F, 9.9865F), fha.b.b),
-            new fhc(1.1667F, fhd.b(48.7585F, -17.61941F, 9.9865F), fha.b.b),
-            new fhc(1.4583F, fhd.b(-101.8036F, -21.29587F, 30.61478F), fha.b.b),
-            new fhc(1.75F, fhd.b(-89.04994F, -4.19657F, -1.47845F), fha.b.b),
-            new fhc(2.2083F, fhd.b(-158.30728F, 3.7152F, -1.52352F), fha.b.b),
-            new fhc(2.5417F, fhd.b(-89.04994F, -4.19657F, -1.47845F), fha.b.b),
-            new fhc(4.375F, fhd.b(-120.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .a(
-         "right_arm",
-         new fha(
-            fha.d.a,
-            new fhc(0.0F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.7083F, fhd.a(2.22F, 0.0F, 0.86F), fha.b.b),
-            new fhc(1.0F, fhd.a(3.12F, 0.0F, 4.29F), fha.b.b),
-            new fhc(2.2083F, fhd.a(1.0F, 0.0F, 4.0F), fha.b.b),
-            new fhc(4.375F, fhd.a(0.0F, 0.0F, 4.0F), fha.b.b)
-         )
-      )
-      .a(
-         "left_arm",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.2917F, fhd.b(-63.89288F, -0.52011F, 2.09491F), fha.b.b),
-            new fhc(0.5F, fhd.b(-63.89288F, -0.52011F, 2.09491F), fha.b.b),
-            new fhc(0.7083F, fhd.b(-62.87857F, 15.15061F, 9.97445F), fha.b.b),
-            new fhc(0.9167F, fhd.b(-86.93642F, 17.45026F, 4.05284F), fha.b.b),
-            new fhc(1.1667F, fhd.b(-86.93642F, 17.45026F, 4.05284F), fha.b.b),
-            new fhc(1.4583F, fhd.b(-86.93642F, 17.45026F, 4.05284F), fha.b.b),
-            new fhc(1.6667F, fhd.b(63.0984F, 8.83573F, -8.71284F), fha.b.b),
-            new fhc(1.8333F, fhd.b(35.5984F, 8.83573F, -8.71284F), fha.b.b),
-            new fhc(2.2083F, fhd.b(-153.27473F, -0.02953F, 3.5235F), fha.b.b),
-            new fhc(2.5417F, fhd.b(-87.07754F, -0.02625F, 3.132F), fha.b.b),
-            new fhc(4.375F, fhd.b(-120.0F, 0.0F, 0.0F), fha.b.a)
-         )
-      )
-      .a(
-         "left_arm",
-         new fha(
-            fha.d.a,
-            new fhc(0.0F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.5F, fhd.a(-0.28F, 5.0F, 10.0F), fha.b.b),
-            new fhc(0.7083F, fhd.a(-1.51F, 4.35F, 4.33F), fha.b.b),
-            new fhc(0.9167F, fhd.a(-0.6F, 3.61F, 4.63F), fha.b.b),
-            new fhc(1.1667F, fhd.a(-0.6F, 3.61F, 0.63F), fha.b.b),
-            new fhc(1.6667F, fhd.a(-2.85F, -0.1F, 3.33F), fha.b.b),
-            new fhc(2.2083F, fhd.a(-1.0F, 0.0F, 4.0F), fha.b.b),
-            new fhc(4.375F, fhd.a(0.0F, 0.0F, 4.0F), fha.b.a)
+         new fhc(
+            fhc.d.a,
+            new fhe(0.0F, fhf.a(0.0F, 0.1F, 1.2F), fhc.b.a),
+            new fhe(0.1667F, fhf.a(0.0F, 0.1F, 2.0F), fhc.b.a),
+            new fhe(0.4583F, fhf.a(0.0F, 2.0F, 1.06F), fhc.b.a),
+            new fhe(0.7917F, fhf.a(0.0F, 0.1F, -1.0F), fhc.b.a),
+            new fhe(1.25F, fhf.a(0.0F, 0.1F, 1.2F), fhc.b.a)
          )
       )
       .a(
          "right_leg",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.5F, fhd.b(113.27F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.7083F, fhd.b(113.27F, 0.0F, 0.0F), fha.b.b),
-            new fhc(3.3333F, fhd.b(113.27F, 0.0F, 0.0F), fha.b.b),
-            new fhc(3.5833F, fhd.b(182.5F, 0.0F, 0.0F), fha.b.b),
-            new fhc(3.8333F, fhd.b(120.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(4.0833F, fhd.b(182.5F, 0.0F, 0.0F), fha.b.b),
-            new fhc(4.2917F, fhd.b(120.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(4.5F, fhd.b(90.0F, 0.0F, 0.0F), fha.b.a)
+         new fhc(
+            fhc.d.b,
+            new fhe(0.0F, fhf.b(-33.75F, 0.0F, 0.0F), fhc.b.a),
+            new fhe(0.0417F, fhf.b(-45.0F, 0.0F, 0.0F), fhc.b.a),
+            new fhe(0.1667F, fhf.b(0.0F, 0.0F, 0.0F), fhc.b.a),
+            new fhe(0.7917F, fhf.b(0.0F, 0.0F, 0.0F), fhc.b.a),
+            new fhe(0.9583F, fhf.b(45.0F, 0.0F, 0.0F), fhc.b.a),
+            new fhe(1.25F, fhf.b(-33.75F, 0.0F, 0.0F), fhc.b.a)
          )
       )
       .a(
          "right_leg",
-         new fha(
-            fha.d.a,
-            new fhc(0.0F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.5F, fhd.a(0.0F, -13.98F, -2.37F), fha.b.b),
-            new fhc(0.7083F, fhd.a(0.0F, -13.98F, -2.37F), fha.b.b),
-            new fhc(3.3333F, fhd.a(0.0F, -13.98F, -2.37F), fha.b.b),
-            new fhc(3.5833F, fhd.a(0.0F, -7.0F, -3.0F), fha.b.b),
-            new fhc(3.8333F, fhd.a(0.0F, -9.0F, -3.0F), fha.b.b),
-            new fhc(4.0833F, fhd.a(0.0F, -16.71F, -3.69F), fha.b.b),
-            new fhc(4.2917F, fhd.a(0.0F, -28.0F, -5.0F), fha.b.a)
+         new fhc(
+            fhc.d.a,
+            new fhe(0.0F, fhf.a(0.0F, 1.14F, 0.11F), fhc.b.a),
+            new fhe(0.1667F, fhf.a(0.0F, 0.1F, -1.0F), fhc.b.a),
+            new fhe(0.7917F, fhf.a(0.0F, 0.1F, 2.0F), fhc.b.a),
+            new fhe(1.125F, fhf.a(0.0F, 2.0F, 0.95F), fhc.b.a),
+            new fhe(1.25F, fhf.a(0.0F, 1.14F, 0.11F), fhc.b.a)
+         )
+      )
+      .a(
+         "body",
+         new fhc(
+            fhc.d.b,
+            new fhe(0.0F, fhf.b(0.0F, 5.0F, 0.0F), fhc.b.a),
+            new fhe(0.2917F, fhf.b(-7.5F, 0.33F, 7.5F), fhc.b.a),
+            new fhe(0.625F, fhf.b(0.0F, -5.0F, 0.0F), fhc.b.a),
+            new fhe(0.9583F, fhf.b(-7.5F, 0.33F, -7.5F), fhc.b.a),
+            new fhe(1.25F, fhf.b(0.0F, 5.0F, 0.0F), fhc.b.a)
+         )
+      )
+      .b();
+   public static final fhd c = fhd.a.a(0.5F)
+      .a("body", new fhc(fhc.d.b, new fhe(0.0F, fhf.b(-22.5F, 0.0F, 0.0F), fhc.b.a), new fhe(0.5F, fhf.b(-22.5F, 0.0F, 0.0F), fhc.b.a)))
+      .a("body", new fhc(fhc.d.a, new fhe(0.0F, fhf.a(0.0F, 0.0F, 0.0F), fhc.b.a), new fhe(0.5F, fhf.a(0.0F, 0.0F, 0.0F), fhc.b.a)))
+      .a("left_arm", new fhc(fhc.d.b, new fhe(0.0F, fhf.b(-56.14F, 0.0F, 0.0F), fhc.b.a), new fhe(0.5F, fhf.b(-56.14F, 0.0F, 0.0F), fhc.b.a)))
+      .a("left_arm", new fhc(fhc.d.a, new fhe(0.0F, fhf.a(0.0F, 1.0F, 0.0F), fhc.b.a), new fhe(0.5F, fhf.a(0.0F, 1.0F, 0.0F), fhc.b.a)))
+      .a("right_arm", new fhc(fhc.d.b, new fhe(0.0F, fhf.b(-56.14F, 0.0F, 0.0F), fhc.b.a), new fhe(0.5F, fhf.b(-56.14F, 0.0F, 0.0F), fhc.b.a)))
+      .a("right_arm", new fhc(fhc.d.a, new fhe(0.0F, fhf.a(0.0F, 1.0F, 0.0F), fhc.b.a), new fhe(0.5F, fhf.a(0.0F, 1.0F, 0.0F), fhc.b.a)))
+      .a("left_leg", new fhc(fhc.d.b, new fhe(0.0F, fhf.b(45.0F, 0.0F, 0.0F), fhc.b.a), new fhe(0.5F, fhf.b(45.0F, 0.0F, 0.0F), fhc.b.a)))
+      .a("left_leg", new fhc(fhc.d.a, new fhe(0.0F, fhf.a(0.0F, 0.0F, 0.0F), fhc.b.a), new fhe(0.5F, fhf.a(0.0F, 0.0F, 0.0F), fhc.b.a)))
+      .a("right_leg", new fhc(fhc.d.b, new fhe(0.0F, fhf.b(45.0F, 0.0F, 0.0F), fhc.b.a), new fhe(0.5F, fhf.b(45.0F, 0.0F, 0.0F), fhc.b.a)))
+      .a("right_leg", new fhc(fhc.d.a, new fhe(0.0F, fhf.a(0.0F, 0.0F, 0.0F), fhc.b.a), new fhe(0.5F, fhf.a(0.0F, 0.0F, 0.0F), fhc.b.a)))
+      .b();
+   public static final fhd d = fhd.a.a(0.5F)
+      .a(
+         "head",
+         new fhc(
+            fhc.d.b,
+            new fhe(0.0F, fhf.b(0.0F, 0.0F, 0.0F), fhc.b.a),
+            new fhe(0.0833F, fhf.b(-60.0F, 0.0F, 0.0F), fhc.b.a),
+            new fhe(0.4167F, fhf.b(-60.0F, 0.0F, 0.0F), fhc.b.a),
+            new fhe(0.5F, fhf.b(0.0F, 0.0F, 0.0F), fhc.b.a)
+         )
+      )
+      .a(
+         "head",
+         new fhc(
+            fhc.d.c,
+            new fhe(0.0F, fhf.b(1.0F, 1.0F, 1.0F), fhc.b.a),
+            new fhe(0.0833F, fhf.b(0.998F, 1.0F, 1.0F), fhc.b.a),
+            new fhe(0.4167F, fhf.b(0.998F, 1.0F, 1.0F), fhc.b.a),
+            new fhe(0.5F, fhf.b(1.0F, 1.0F, 1.0F), fhc.b.a)
+         )
+      )
+      .a(
+         "tongue",
+         new fhc(
+            fhc.d.b,
+            new fhe(0.0F, fhf.b(0.0F, 0.0F, 0.0F), fhc.b.a),
+            new fhe(0.0833F, fhf.b(0.0F, 0.0F, 0.0F), fhc.b.a),
+            new fhe(0.4167F, fhf.b(-18.0F, 0.0F, 0.0F), fhc.b.a),
+            new fhe(0.5F, fhf.b(0.0F, 0.0F, 0.0F), fhc.b.a)
+         )
+      )
+      .a(
+         "tongue",
+         new fhc(
+            fhc.d.c,
+            new fhe(0.0833F, fhf.a(1.0, 1.0, 1.0), fhc.b.a),
+            new fhe(0.1667F, fhf.a(0.5, 1.0, 5.0), fhc.b.a),
+            new fhe(0.4167F, fhf.a(1.0, 1.0, 1.0), fhc.b.a)
+         )
+      )
+      .b();
+   public static final fhd e = fhd.a.a(1.04167F)
+      .a()
+      .a(
+         "body",
+         new fhc(
+            fhc.d.b,
+            new fhe(0.0F, fhf.b(0.0F, 0.0F, 0.0F), fhc.b.b),
+            new fhe(0.3333F, fhf.b(10.0F, 0.0F, 0.0F), fhc.b.b),
+            new fhe(0.6667F, fhf.b(-10.0F, 0.0F, 0.0F), fhc.b.b),
+            new fhe(1.0417F, fhf.b(0.0F, 0.0F, 0.0F), fhc.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new fhc(
+            fhc.d.b,
+            new fhe(0.0F, fhf.b(90.0F, 22.5F, 0.0F), fhc.b.b),
+            new fhe(0.4583F, fhf.b(45.0F, 22.5F, 0.0F), fhc.b.b),
+            new fhe(0.6667F, fhf.b(-22.5F, -22.5F, -22.5F), fhc.b.b),
+            new fhe(0.875F, fhf.b(-45.0F, -22.5F, 0.0F), fhc.b.b),
+            new fhe(0.9583F, fhf.b(22.5F, 0.0F, 22.5F), fhc.b.b),
+            new fhe(1.0417F, fhf.b(90.0F, 22.5F, 0.0F), fhc.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new fhc(
+            fhc.d.a,
+            new fhe(0.0F, fhf.a(0.0F, -0.64F, 2.0F), fhc.b.b),
+            new fhe(0.4583F, fhf.a(0.0F, -0.64F, 0.0F), fhc.b.b),
+            new fhe(0.6667F, fhf.a(0.0F, 0.0F, 0.0F), fhc.b.b),
+            new fhe(0.875F, fhf.a(0.0F, -0.27F, -1.14F), fhc.b.b),
+            new fhe(0.9583F, fhf.a(0.0F, -1.45F, 0.43F), fhc.b.b),
+            new fhe(1.0417F, fhf.a(0.0F, -0.64F, 2.0F), fhc.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new fhc(
+            fhc.d.b,
+            new fhe(0.0F, fhf.b(90.0F, -22.5F, 0.0F), fhc.b.b),
+            new fhe(0.4583F, fhf.b(45.0F, -22.5F, 0.0F), fhc.b.b),
+            new fhe(0.6667F, fhf.b(-22.5F, 22.5F, 22.5F), fhc.b.b),
+            new fhe(0.875F, fhf.b(-45.0F, 22.5F, 0.0F), fhc.b.b),
+            new fhe(0.9583F, fhf.b(22.5F, 0.0F, -22.5F), fhc.b.b),
+            new fhe(1.0417F, fhf.b(90.0F, -22.5F, 0.0F), fhc.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new fhc(
+            fhc.d.a,
+            new fhe(0.0F, fhf.a(0.0F, -0.64F, 2.0F), fhc.b.b),
+            new fhe(0.4583F, fhf.a(0.0F, -0.64F, 0.0F), fhc.b.b),
+            new fhe(0.6667F, fhf.a(0.0F, 0.0F, 0.0F), fhc.b.b),
+            new fhe(0.875F, fhf.a(0.0F, -0.27F, -1.14F), fhc.b.b),
+            new fhe(0.9583F, fhf.a(0.0F, -1.45F, 0.43F), fhc.b.b),
+            new fhe(1.0417F, fhf.a(0.0F, -0.64F, 2.0F), fhc.b.b)
          )
       )
       .a(
          "left_leg",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.5F, fhd.b(114.98F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.7083F, fhd.b(114.98F, 0.0F, 0.0F), fha.b.b),
-            new fhc(3.3333F, fhd.b(114.98F, 0.0F, 0.0F), fha.b.b),
-            new fhc(3.5833F, fhd.b(90.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(3.8333F, fhd.b(172.5F, 0.0F, 0.0F), fha.b.b),
-            new fhc(4.0833F, fhd.b(90.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(4.2917F, fhd.b(197.5F, 0.0F, 0.0F), fha.b.b),
-            new fhc(4.5F, fhd.b(90.0F, 0.0F, 0.0F), fha.b.a)
+         new fhc(
+            fhc.d.b,
+            new fhe(0.0F, fhf.b(90.0F, 0.0F, 0.0F), fhc.b.b),
+            new fhe(0.25F, fhf.b(90.0F, 0.0F, 0.0F), fhc.b.b),
+            new fhe(0.4583F, fhf.b(67.5F, -45.0F, 0.0F), fhc.b.b),
+            new fhe(0.7917F, fhf.b(90.0F, 45.0F, 0.0F), fhc.b.b),
+            new fhe(0.9583F, fhf.b(90.0F, 0.0F, 0.0F), fhc.b.b),
+            new fhe(1.0417F, fhf.b(90.0F, 0.0F, 0.0F), fhc.b.b)
          )
       )
       .a(
          "left_leg",
-         new fha(
-            fha.d.a,
-            new fhc(0.0F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.5F, fhd.a(0.0F, -14.01F, -2.35F), fha.b.b),
-            new fhc(0.7083F, fhd.a(0.0F, -14.01F, -2.35F), fha.b.b),
-            new fhc(3.3333F, fhd.a(0.0F, -14.01F, -2.35F), fha.b.b),
-            new fhc(3.5833F, fhd.a(0.0F, -5.0F, -4.0F), fha.b.b),
-            new fhc(3.8333F, fhd.a(0.0F, -7.0F, -4.0F), fha.b.b),
-            new fhc(4.0833F, fhd.a(0.0F, -15.5F, -3.76F), fha.b.b),
-            new fhc(4.2917F, fhd.a(0.0F, -28.0F, -5.0F), fha.b.a)
+         new fhc(
+            fhc.d.a,
+            new fhe(0.0F, fhf.a(-2.5F, 0.0F, 1.0F), fhc.b.b),
+            new fhe(0.25F, fhf.a(-2.0F, 0.0F, 1.0F), fhc.b.b),
+            new fhe(0.4583F, fhf.a(1.0F, -2.0F, -1.0F), fhc.b.b),
+            new fhe(0.7917F, fhf.a(0.58F, 0.0F, -2.83F), fhc.b.b),
+            new fhe(0.9583F, fhf.a(-2.5F, 0.0F, 1.0F), fhc.b.b),
+            new fhe(1.0417F, fhf.a(-2.5F, 0.0F, 1.0F), fhc.b.b)
+         )
+      )
+      .a(
+         "right_leg",
+         new fhc(
+            fhc.d.b,
+            new fhe(0.0F, fhf.b(90.0F, 0.0F, 0.0F), fhc.b.b),
+            new fhe(0.25F, fhf.b(90.0F, 0.0F, 0.0F), fhc.b.b),
+            new fhe(0.4583F, fhf.b(67.5F, 45.0F, 0.0F), fhc.b.b),
+            new fhe(0.7917F, fhf.b(90.0F, -45.0F, 0.0F), fhc.b.b),
+            new fhe(0.9583F, fhf.b(90.0F, 0.0F, 0.0F), fhc.b.b),
+            new fhe(1.0417F, fhf.b(90.0F, 0.0F, 0.0F), fhc.b.b)
+         )
+      )
+      .a(
+         "right_leg",
+         new fhc(
+            fhc.d.a,
+            new fhe(0.0F, fhf.a(2.5F, 0.0F, 1.0F), fhc.b.b),
+            new fhe(0.25F, fhf.a(2.0F, 0.0F, 1.0F), fhc.b.b),
+            new fhe(0.4583F, fhf.a(-1.0F, -2.0F, -1.0F), fhc.b.b),
+            new fhe(0.7917F, fhf.a(-0.58F, 0.0F, -2.83F), fhc.b.b),
+            new fhe(0.9583F, fhf.a(2.5F, 0.0F, 1.0F), fhc.b.b),
+            new fhe(1.0417F, fhf.a(2.5F, 0.0F, 1.0F), fhc.b.b)
          )
       )
       .b();
-   public static final fhb c = fhb.a.a(4.2F)
+   public static final fhd f = fhd.a.a(3.0F)
+      .a()
       .a(
          "body",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.24F, fhd.b(-25.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.6F, fhd.b(32.5F, 0.0F, -7.5F), fha.b.b),
-            new fhc(1.84F, fhd.b(38.33F, 0.0F, 2.99F), fha.b.b),
-            new fhc(2.08F, fhd.b(40.97F, 0.0F, -4.3F), fha.b.b),
-            new fhc(2.36F, fhd.b(44.41F, 0.0F, 6.29F), fha.b.b),
-            new fhc(3.0F, fhd.b(47.5F, 0.0F, 0.0F), fha.b.b),
-            new fhc(4.2F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .a(
-         "body",
-         new fha(
-            fha.d.a,
-            new fhc(0.0F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.24F, fhd.a(0.0F, -1.0F, 3.0F), fha.b.b),
-            new fhc(1.6F, fhd.a(0.0F, -3.0F, -6.0F), fha.b.b),
-            new fhc(3.0F, fhd.a(0.0F, -3.0F, -6.0F), fha.b.b),
-            new fhc(4.2F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .a(
-         "head",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.24F, fhd.b(-32.5F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.6F, fhd.b(-32.5F, 0.0F, -27.5F), fha.b.b),
-            new fhc(1.8F, fhd.b(-32.5F, 0.0F, 26.0F), fha.b.b),
-            new fhc(2.04F, fhd.b(-32.5F, 0.0F, -27.5F), fha.b.b),
-            new fhc(2.44F, fhd.b(-32.5F, 0.0F, 26.0F), fha.b.b),
-            new fhc(2.84F, fhd.b(-5.0F, 0.0F, -12.5F), fha.b.b),
-            new fhc(4.2F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .a(
-         "head",
-         new fha(
-            fha.d.a,
-            new fhc(0.0F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.24F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.6F, fhd.a(0.0F, -2.0F, -6.0F), fha.b.b),
-            new fhc(2.2F, fhd.a(0.0F, -2.0F, -6.0F), fha.b.b),
-            new fhc(2.48F, fhd.a(0.0F, -2.0F, -6.0F), fha.b.b),
-            new fhc(4.2F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .a(
-         "right_ear",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.24F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.76F, fhd.b(0.0F, 0.0F, -10.85F), fha.b.b),
-            new fhc(2.08F, fhd.b(0.0F, 0.0F, 12.5F), fha.b.b),
-            new fhc(2.4F, fhd.b(0.0F, 0.0F, -10.85F), fha.b.b),
-            new fhc(2.72F, fhd.b(0.0F, 0.0F, 12.5F), fha.b.b),
-            new fhc(3.0F, fhd.b(0.0F, 0.0F, -10.85F), fha.b.b),
-            new fhc(4.2F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .a(
-         "left_ear",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.24F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.76F, fhd.b(0.0F, 0.0F, -15.85F), fha.b.b),
-            new fhc(2.08F, fhd.b(0.0F, 0.0F, 12.5F), fha.b.b),
-            new fhc(2.4F, fhd.b(0.0F, 0.0F, -15.85F), fha.b.b),
-            new fhc(2.72F, fhd.b(0.0F, 0.0F, 12.5F), fha.b.b),
-            new fhc(3.0F, fhd.b(0.0F, 0.0F, -15.85F), fha.b.b),
-            new fhc(4.2F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .a(
-         "right_arm",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.72F, fhd.b(-120.0F, 0.0F, -20.0F), fha.b.b),
-            new fhc(1.24F, fhd.b(-77.5F, 3.75F, 15.0F), fha.b.b),
-            new fhc(1.48F, fhd.b(67.5F, -32.5F, 20.0F), fha.b.b),
-            new fhc(2.48F, fhd.b(37.5F, -32.5F, 25.0F), fha.b.b),
-            new fhc(2.88F, fhd.b(27.6F, -17.1F, 32.5F), fha.b.b),
-            new fhc(4.2F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .a(
-         "right_arm",
-         new fha(
-            fha.d.a,
-            new fhc(0.0F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.72F, fhd.a(3.0F, -2.0F, 0.0F), fha.b.b),
-            new fhc(1.48F, fhd.a(4.0F, -2.0F, 0.0F), fha.b.b),
-            new fhc(2.48F, fhd.a(4.0F, -2.0F, 0.0F), fha.b.b),
-            new fhc(4.2F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b)
+         new fhc(
+            fhc.d.b,
+            new fhe(0.0F, fhf.b(0.0F, 0.0F, 0.0F), fhc.b.b),
+            new fhe(1.625F, fhf.b(-10.0F, 0.0F, 0.0F), fhc.b.b),
+            new fhe(3.0F, fhf.b(0.0F, 0.0F, 0.0F), fhc.b.b)
          )
       )
       .a(
          "left_arm",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.72F, fhd.b(-125.0F, 0.0F, 20.0F), fha.b.b),
-            new fhc(1.24F, fhd.b(-76.25F, -17.5F, -7.5F), fha.b.b),
-            new fhc(1.48F, fhd.b(62.5F, 42.5F, -12.5F), fha.b.b),
-            new fhc(2.48F, fhd.b(37.5F, 27.5F, -27.5F), fha.b.b),
-            new fhc(2.88F, fhd.b(25.0F, 18.4F, -30.0F), fha.b.b),
-            new fhc(4.2F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b)
+         new fhc(
+            fhc.d.b,
+            new fhe(0.0F, fhf.b(0.0F, 0.0F, -22.5F), fhc.b.b),
+            new fhe(2.2083F, fhf.b(0.0F, 0.0F, -45.0F), fhc.b.b),
+            new fhe(3.0F, fhf.b(0.0F, 0.0F, -22.5F), fhc.b.b)
          )
       )
       .a(
          "left_arm",
-         new fha(
-            fha.d.a,
-            new fhc(0.0F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.72F, fhd.a(-3.0F, -2.0F, 0.0F), fha.b.b),
-            new fhc(1.48F, fhd.a(-4.0F, -2.0F, 0.0F), fha.b.b),
-            new fhc(2.48F, fhd.a(-4.0F, -2.0F, 0.0F), fha.b.b),
-            new fhc(4.2F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .b();
-   public static final fhb d = fhb.a.a(4.16F)
-      .a(
-         "body",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.56F, fhd.b(17.5F, 32.5F, 0.0F), fha.b.b),
-            new fhc(0.96F, fhd.b(0.0F, 32.5F, 0.0F), fha.b.b),
-            new fhc(2.2F, fhd.b(10.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.8F, fhd.b(10.0F, -30.0F, 0.0F), fha.b.b),
-            new fhc(3.32F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .a(
-         "head",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.68F, fhd.b(0.0F, 40.0F, 0.0F), fha.b.b),
-            new fhc(0.96F, fhd.b(-22.5F, 40.0F, 0.0F), fha.b.b),
-            new fhc(1.24F, fhd.b(0.0F, 20.0F, 0.0F), fha.b.b),
-            new fhc(1.52F, fhd.b(-35.0F, 20.0F, 0.0F), fha.b.b),
-            new fhc(1.76F, fhd.b(0.0F, 20.0F, 0.0F), fha.b.b),
-            new fhc(2.28F, fhd.b(0.0F, -20.0F, 0.0F), fha.b.b),
-            new fhc(2.88F, fhd.b(0.0F, -20.0F, 0.0F), fha.b.b),
-            new fhc(3.32F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b)
+         new fhc(
+            fhc.d.a,
+            new fhe(0.0F, fhf.a(-1.0F, 0.0F, 0.0F), fhc.b.b),
+            new fhe(2.2083F, fhf.a(-1.0F, -0.5F, 0.0F), fhc.b.b),
+            new fhe(3.0F, fhf.a(-1.0F, 0.0F, 0.0F), fhc.b.b)
          )
       )
       .a(
          "right_arm",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.96F, fhd.b(17.5F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.2F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.76F, fhd.b(-15.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(3.32F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .a(
-         "left_arm",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.96F, fhd.b(-15.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.2F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.76F, fhd.b(17.5F, 0.0F, 0.0F), fha.b.b),
-            new fhc(3.32F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .b();
-   public static final fhb e = fhb.a.a(0.33333F)
-      .a(
-         "body",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.0417F, fhd.b(-22.5F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.2083F, fhd.b(22.5F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.3333F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .a(
-         "body",
-         new fha(
-            fha.d.a,
-            new fhc(0.0F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.0417F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.2083F, fhd.a(0.0F, -1.0F, -2.0F), fha.b.b),
-            new fhc(0.3333F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .a(
-         "head",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.0417F, fhd.b(22.5F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.25F, fhd.b(-30.17493F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.3333F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .a(
-         "head",
-         new fha(
-            fha.d.a,
-            new fhc(0.0F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.0417F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.25F, fhd.a(0.0F, -2.0F, -2.0F), fha.b.b),
-            new fhc(0.3333F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b)
+         new fhc(
+            fhc.d.b,
+            new fhe(0.0F, fhf.b(0.0F, 0.0F, 22.5F), fhc.b.b),
+            new fhe(2.2083F, fhf.b(0.0F, 0.0F, 45.0F), fhc.b.b),
+            new fhe(3.0F, fhf.b(0.0F, 0.0F, 22.5F), fhc.b.b)
          )
       )
       .a(
          "right_arm",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.0417F, fhd.b(-120.36119F, 40.78947F, -20.94102F), fha.b.b),
-            new fhc(0.1667F, fhd.b(-90.0F, -45.0F, 0.0F), fha.b.b),
-            new fhc(0.3333F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b)
+         new fhc(
+            fhc.d.a,
+            new fhe(0.0F, fhf.a(1.0F, 0.0F, 0.0F), fhc.b.b),
+            new fhe(2.2083F, fhf.a(1.0F, -0.5F, 0.0F), fhc.b.b),
+            new fhe(3.0F, fhf.a(1.0F, 0.0F, 0.0F), fhc.b.b)
          )
       )
       .a(
-         "right_arm",
-         new fha(
-            fha.d.a,
-            new fhc(0.0F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.0417F, fhd.a(4.0F, 0.0F, 5.0F), fha.b.b),
-            new fhc(0.1667F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.3333F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b)
+         "left_leg",
+         new fhc(
+            fhc.d.b,
+            new fhe(0.0F, fhf.b(22.5F, -22.5F, 0.0F), fhc.b.b),
+            new fhe(1.0F, fhf.b(22.5F, -22.5F, -45.0F), fhc.b.b),
+            new fhe(3.0F, fhf.b(22.5F, -22.5F, 0.0F), fhc.b.b)
          )
       )
       .a(
-         "left_arm",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.0417F, fhd.b(-120.36119F, -40.78947F, 20.94102F), fha.b.b),
-            new fhc(0.1667F, fhd.b(-61.1632F, 42.85882F, 11.52421F), fha.b.b),
-            new fhc(0.3333F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b)
+         "left_leg",
+         new fhc(
+            fhc.d.a,
+            new fhe(0.0F, fhf.a(0.0F, 0.0F, 1.0F), fhc.b.b),
+            new fhe(1.0F, fhf.a(0.0F, -1.0F, 1.0F), fhc.b.b),
+            new fhe(3.0F, fhf.a(0.0F, 0.0F, 1.0F), fhc.b.b)
          )
       )
       .a(
-         "left_arm",
-         new fha(
-            fha.d.a,
-            new fhc(0.0F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.0417F, fhd.a(-4.0F, 0.0F, 5.0F), fha.b.b),
-            new fhc(0.1667F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.3333F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .b();
-   public static final fhb f = fhb.a.a(3.0F)
-      .a(
-         "body",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.0833F, fhd.b(47.5F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.625F, fhd.b(55.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.9167F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.0F, fhd.b(-32.5F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.4583F, fhd.b(-32.5F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.7083F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.875F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b)
+         "right_leg",
+         new fhc(
+            fhc.d.b,
+            new fhe(0.0F, fhf.b(22.5F, 22.5F, 0.0F), fhc.b.b),
+            new fhe(1.0F, fhf.b(22.5F, 22.5F, 45.0F), fhc.b.b),
+            new fhe(3.0F, fhf.b(22.5F, 22.5F, 0.0F), fhc.b.b)
          )
       )
       .a(
-         "body",
-         new fha(
-            fha.d.a,
-            new fhc(0.0F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.0833F, fhd.a(0.0F, -3.0F, 0.0F), fha.b.b),
-            new fhc(1.625F, fhd.a(0.0F, -4.0F, -1.0F), fha.b.b),
-            new fhc(1.9167F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.7083F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.875F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .a(
-         "right_ribcage",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.5417F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.7917F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.875F, fhd.b(0.0F, 125.0F, 0.0F), fha.b.b),
-            new fhc(2.5F, fhd.b(0.0F, 125.0F, 0.0F), fha.b.b),
-            new fhc(2.6667F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .a(
-         "left_ribcage",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.5417F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.7917F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.875F, fhd.b(0.0F, -125.0F, 0.0F), fha.b.b),
-            new fhc(2.5F, fhd.b(0.0F, -125.0F, 0.0F), fha.b.b),
-            new fhc(2.6667F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .a(
-         "head",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.0F, fhd.b(67.5F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.75F, fhd.b(80.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.9167F, fhd.b(-45.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.5F, fhd.b(-45.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.7083F, fhd.b(-45.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.875F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .a(
-         "head",
-         new fha(
-            fha.d.a,
-            new fhc(0.0F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.9167F, fhd.a(0.0F, 0.0F, -3.0F), fha.b.b),
-            new fhc(2.5F, fhd.a(0.0F, 0.0F, -3.0F), fha.b.b),
-            new fhc(2.7083F, fhd.a(0.0F, 0.0F, -3.0F), fha.b.b),
-            new fhc(2.875F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .a(
-         "right_arm",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.875F, fhd.b(-42.28659F, -32.69813F, -5.00825F), fha.b.b),
-            new fhc(1.1667F, fhd.b(-29.83757F, -35.39626F, -45.28089F), fha.b.b),
-            new fhc(1.3333F, fhd.b(-29.83757F, -35.39626F, -45.28089F), fha.b.b),
-            new fhc(1.6667F, fhd.b(-72.28659F, -32.69813F, -5.00825F), fha.b.b),
-            new fhc(1.8333F, fhd.b(35.26439F, -30.0F, 35.26439F), fha.b.b),
-            new fhc(1.9167F, fhd.b(73.75484F, -13.0931F, 19.20518F), fha.b.b),
-            new fhc(2.5F, fhd.b(73.75484F, -13.0931F, 19.20518F), fha.b.b),
-            new fhc(2.75F, fhd.b(58.20713F, -21.1064F, 28.7261F), fha.b.b),
-            new fhc(3.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .a(
-         "right_arm",
-         new fha(
-            fha.d.a,
-            new fhc(0.0F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.8333F, fhd.a(3.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.75F, fhd.a(3.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(3.0F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .a(
-         "left_arm",
-         new fha(
-            fha.d.b,
-            new fhc(0.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(0.875F, fhd.b(-33.80694F, 32.31058F, 6.87997F), fha.b.b),
-            new fhc(1.1667F, fhd.b(-17.87827F, 34.62115F, 49.02433F), fha.b.b),
-            new fhc(1.3333F, fhd.b(-17.87827F, 34.62115F, 49.02433F), fha.b.b),
-            new fhc(1.6667F, fhd.b(-51.30694F, 32.31058F, 6.87997F), fha.b.b),
-            new fhc(1.8333F, fhd.b(35.26439F, 30.0F, -35.26439F), fha.b.b),
-            new fhc(1.9167F, fhd.b(73.75484F, 13.0931F, -19.20518F), fha.b.b),
-            new fhc(2.5F, fhd.b(73.75484F, 13.0931F, -19.20518F), fha.b.b),
-            new fhc(2.75F, fhd.b(58.20713F, 21.1064F, -28.7261F), fha.b.b),
-            new fhc(3.0F, fhd.b(0.0F, 0.0F, 0.0F), fha.b.b)
-         )
-      )
-      .a(
-         "left_arm",
-         new fha(
-            fha.d.a,
-            new fhc(0.0F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(1.8333F, fhd.a(-3.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(2.75F, fhd.a(-3.0F, 0.0F, 0.0F), fha.b.b),
-            new fhc(3.0F, fhd.a(0.0F, 0.0F, 0.0F), fha.b.b)
+         "right_leg",
+         new fhc(
+            fhc.d.a,
+            new fhe(0.0F, fhf.a(0.0F, 0.0F, 1.0F), fhc.b.b),
+            new fhe(1.0F, fhf.a(0.0F, -1.0F, 1.0F), fhc.b.b),
+            new fhe(3.0F, fhf.a(0.0F, 0.0F, 1.0F), fhc.b.b)
          )
       )
       .b();

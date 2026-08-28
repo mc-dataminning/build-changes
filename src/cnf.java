@@ -53,7 +53,7 @@ public class cnf extends cnd {
    @Override
    public void l() {
       super.l();
-      if (this.dP().B) {
+      if (this.dO().B) {
          if (this.b) {
             if (this.c % 5 == 0) {
                this.b(1);
@@ -62,7 +62,7 @@ public class cnf extends cnd {
             this.b(2);
          }
       } else if (this.b && this.c != 0 && !this.J().equals(cwu.a) && this.c >= 600) {
-         this.dP().a(this, (byte)0);
+         this.dO().a(this, (byte)0);
          this.a(new cuq(cut.ow));
       }
    }
@@ -71,7 +71,7 @@ public class cnf extends cnd {
       int $$1 = this.F();
       if ($$1 != -1 && $$0 > 0) {
          for (int $$2 = 0; $$2 < $$0; $$2++) {
-            this.dP().a(lf.a(lm.u, $$1), this.d(0.5), this.dx(), this.g(0.5), 0.0, 0.0, 0.0);
+            this.dO().a(lf.a(lm.u, $$1), this.d(0.5), this.dw(), this.g(0.5), 0.0, 0.0, 0.0);
          }
       }
    }
@@ -111,7 +111,7 @@ public class cnf extends cnd {
             float $$4 = (float)($$1 >> 0 & 0xFF) / 255.0F;
 
             for (int $$5 = 0; $$5 < 20; $$5++) {
-               this.dP().a(lf.a(lm.u, $$2, $$3, $$4), this.d(0.5), this.dx(), this.g(0.5), 0.0, 0.0, 0.0);
+               this.dO().a(lf.a(lm.u, $$2, $$3, $$4), this.d(0.5), this.dw(), this.g(0.5), 0.0, 0.0, 0.0);
             }
          }
       } else {

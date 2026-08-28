@@ -3,7 +3,7 @@ import com.mojang.serialization.MapCodec;
 public class dhx extends dgh {
    public static final MapCodec<dhx> a = b(dhx::new);
    protected static final float b = 6.0F;
-   protected static final ext c = dfy.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+   protected static final exv c = dfy.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
    @Override
    public MapCodec<dhx> a() {
@@ -15,12 +15,12 @@ public class dhx extends dgh {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return c;
    }
 
    @Override
    protected boolean b(dtc $$0, dcc $$1, jd $$2) {
-      return $$0.a(awe.cl);
+      return $$0.a(awe.cm);
    }
 }

@@ -14,9 +14,9 @@ public class cjo extends cko {
       if (super.D($$0)) {
          if ($$0 instanceof btn) {
             int $$1 = 0;
-            if (this.dP().al() == bqo.c) {
+            if (this.dO().al() == bqo.c) {
                $$1 = 7;
-            } else if (this.dP().al() == bqo.d) {
+            } else if (this.dO().al() == bqo.d) {
                $$1 = 15;
             }
 
@@ -38,7 +38,7 @@ public class cjo extends cko {
    }
 
    @Override
-   public exa l(bsr $$0) {
-      return $$0.dk() <= this.dk() ? new exa(0.0, 0.21875 * (double)this.ec(), 0.0) : super.l($$0);
+   public exc l(bsr $$0) {
+      return $$0.dj() <= this.dj() ? new exc(0.0, 0.21875 * (double)this.eb(), 0.0) : super.l($$0);
    }
 }

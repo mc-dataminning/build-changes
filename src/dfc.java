@@ -6,9 +6,9 @@ public class dfc extends dfy implements dgb {
    protected static final float b = 3.0F;
    protected static final float c = 5.0F;
    protected static final float d = 1.5F;
-   protected static final ext e = dfy.a(5.0, 0.0, 5.0, 11.0, 16.0, 11.0);
-   protected static final ext f = dfy.a(3.0, 0.0, 3.0, 13.0, 16.0, 13.0);
-   protected static final ext g = dfy.a(6.5, 0.0, 6.5, 9.5, 16.0, 9.5);
+   protected static final exv e = dfy.a(5.0, 0.0, 5.0, 11.0, 16.0, 11.0);
+   protected static final exv f = dfy.a(3.0, 0.0, 3.0, 13.0, 16.0, 13.0);
+   protected static final exv g = dfy.a(6.5, 0.0, 6.5, 9.5, 16.0, 9.5);
    public static final duc h = dts.aq;
    public static final dua<dto> i = dts.bk;
    public static final duc j = dts.aU;
@@ -39,20 +39,20 @@ public class dfc extends dfy implements dgb {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
-      ext $$4 = $$0.c(i) == dto.c ? f : e;
-      exa $$5 = $$0.n($$1, $$2);
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
+      exv $$4 = $$0.c(i) == dto.c ? f : e;
+      exc $$5 = $$0.n($$1, $$2);
       return $$4.a($$5.c, $$5.d, $$5.e);
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return false;
    }
 
    @Override
-   protected ext b(dtc $$0, dcc $$1, jd $$2, exf $$3) {
-      exa $$4 = $$0.n($$1, $$2);
+   protected exv b(dtc $$0, dcc $$1, jd $$2, exh $$3) {
+      exc $$4 = $$0.n($$1, $$2);
       return g.a($$4.c, $$4.d, $$4.e);
    }
 
@@ -64,12 +64,12 @@ public class dfc extends dfy implements dgb {
    @Nullable
    @Override
    public dtc a(cyd $$0) {
-      epc $$1 = $$0.q().b_($$0.a());
+      epe $$1 = $$0.q().b_($$0.a());
       if (!$$1.c()) {
          return null;
       } else {
          dtc $$2 = $$0.q().a_($$0.a().e());
-         if ($$2.a(awe.au)) {
+         if ($$2.a(awe.av)) {
             if ($$2.a(dga.mY)) {
                return this.o().a(h, Integer.valueOf(0));
             } else if ($$2.a(dga.mZ)) {
@@ -111,7 +111,7 @@ public class dfc extends dfy implements dgb {
 
    @Override
    protected boolean a(dtc $$0, dcz $$1, jd $$2) {
-      return $$1.a_($$2.e()).a(awe.au);
+      return $$1.a_($$2.e()).a(awe.av);
    }
 
    @Override
@@ -161,7 +161,7 @@ public class dfc extends dfy implements dgb {
 
    @Override
    protected float a(dtc $$0, cmx $$1, dcc $$2, jd $$3) {
-      return $$1.eU().g() instanceof cwg ? 1.0F : super.a($$0, $$1, $$2, $$3);
+      return $$1.eT().g() instanceof cwg ? 1.0F : super.a($$0, $$1, $$2, $$3);
    }
 
    protected void a(dtc $$0, dcw $$1, jd $$2, ayw $$3, int $$4) {

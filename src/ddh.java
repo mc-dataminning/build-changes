@@ -25,17 +25,17 @@ public final class ddh {
       Object2IntOpenHashMap<btq> $$5 = new Object2IntOpenHashMap();
 
       for (bsr $$6 : $$1) {
-         if ($$6 instanceof btp $$7 && ($$7.fU() || $$7.Y())) {
+         if ($$6 instanceof btp $$7 && ($$7.fT() || $$7.Y())) {
             continue;
          }
 
          btq $$8 = $$6.am().f();
          if ($$8 != btq.h) {
-            jd $$9 = $$6.dp();
+            jd $$9 = $$6.do();
             $$2.query(dcd.a($$9), $$6x -> {
                dei.b $$7 = a($$9, $$6x).b().a($$6.am());
                if ($$7 != null) {
-                  $$4.a($$6.dp(), $$7.b());
+                  $$4.a($$6.do(), $$7.b());
                }
 
                if ($$6 instanceof btp) {
@@ -195,12 +195,12 @@ public final class ddh {
 
                         $$26.b($$21, (double)$$8, $$22, $$1.z.i() * 360.0F, 0.0F);
                         if (a($$1, $$26, $$24)) {
-                           $$17 = $$26.a($$1, $$1.d_($$26.dp()), btr.a, $$17);
+                           $$17 = $$26.a($$1, $$1.d_($$26.do()), btr.a, $$17);
                            $$11++;
                            $$19++;
                            $$1.a_($$26);
                            $$5.run($$26, $$2);
-                           if ($$11 >= $$26.fO()) {
+                           if ($$11 >= $$26.fN()) {
                               return;
                            }
 
@@ -220,7 +220,7 @@ public final class ddh {
       if ($$3 <= 576.0) {
          return false;
       } else {
-         return $$0.V().a(new exa((double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5), 24.0)
+         return $$0.V().a(new exc((double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5), 24.0)
             ? false
             : Objects.equals(new dcd($$2), $$1.f()) || $$0.g($$2);
       }
@@ -271,12 +271,12 @@ public final class ddh {
    }
 
    private static bpf<dei.c> a(aqu $$0, ddq $$1, duz $$2, btq $$3, jd $$4, @Nullable jm<ddw> $$5) {
-      return a($$4, $$0, $$3, $$1) ? elw.d : $$2.a($$5 != null ? $$5 : $$0.t($$4), $$1, $$3, $$4);
+      return a($$4, $$0, $$3, $$1) ? ely.d : $$2.a($$5 != null ? $$5 : $$0.t($$4), $$1, $$3, $$4);
    }
 
    public static boolean a(jd $$0, aqu $$1, btq $$2, ddq $$3) {
       if ($$2 == btq.a && $$1.a_($$0.e()).a(dga.fn)) {
-         ejp $$4 = $$3.b().d(lu.aR).a(ejj.o);
+         ejr $$4 = $$3.b().d(lu.aR).a(ejl.o);
          return $$4 == null ? false : $$3.a($$0, $$4).b();
       } else {
          return false;
@@ -292,7 +292,7 @@ public final class ddh {
       return new jd($$3, $$6, $$4);
    }
 
-   public static boolean a(dcc $$0, jd $$1, dtc $$2, epc $$3, bsx<?> $$4) {
+   public static boolean a(dcc $$0, jd $$1, dtc $$2, epe $$3, bsx<?> $$4) {
       if ($$2.r($$0, $$1)) {
          return false;
       } else if ($$2.m()) {
@@ -300,7 +300,7 @@ public final class ddh {
       } else if (!$$3.c()) {
          return false;
       } else {
-         return $$2.a(awe.aX) ? false : !$$4.a($$2);
+         return $$2.a(awe.aY) ? false : !$$4.a($$2);
       }
    }
 
@@ -349,7 +349,7 @@ public final class ddh {
 
                         $$23.b($$21, (double)$$19.v(), $$22, $$3.i() * 360.0F, 0.0F);
                         if ($$23 instanceof btp $$26 && $$26.a($$0, btr.b) && $$26.a($$0)) {
-                           $$11 = $$26.a($$0, $$0.d_($$26.dp()), btr.b, $$11);
+                           $$11 = $$26.a($$0, $$0.d_($$26.do()), btr.b, $$11);
                            $$0.a_($$26);
                            $$17 = true;
                         }
@@ -435,7 +435,7 @@ public final class ddh {
 
       private void a(btp $$0, duy $$1) {
          bsx<?> $$2 = $$0.am();
-         jd $$3 = $$0.dp();
+         jd $$3 = $$0.do();
          double $$4;
          if ($$3.equals(this.f) && $$2 == this.g) {
             $$4 = this.h;

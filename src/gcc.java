@@ -1,52 +1,56 @@
-public class gcc extends gdl {
-   gcc(fzd $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.C = true;
-      this.B = 0.86F;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.1;
-      this.D *= 1.5F;
-      this.t = 16;
-      this.n = false;
+public class gcc extends gdn {
+   private final gdi a;
+
+   protected gcc(fzf $$0, double $$1, double $$2, double $$3, gdi $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$4;
+      this.b($$4);
+      this.t = 12 + this.r.a(4);
+      this.D = 1.0F;
+      this.b(1.0F, 1.0F);
    }
 
    @Override
-   public gcp b() {
-      return gcp.b;
+   public gcr b() {
+      return gcr.d;
    }
 
    @Override
-   public float b(float $$0) {
-      return this.D * ayo.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public int a(float $$0) {
+      return 15728880;
    }
 
-   public static class a implements gco<lq> {
-      private final gdg a;
-
-      public a(gdg $$0) {
-         this.a = $$0;
-      }
-
-      public gcl a(lq $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gcc $$8 = new gcc($$1, $$2, $$3 + 0.5, $$4);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
+   @Override
+   public void a() {
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.a);
       }
    }
 
-   public static class b implements gco<lq> {
-      private final gdg a;
+   public static class a implements gcq<lq> {
+      private final gdi a;
 
-      public b(gdg $$0) {
+      public a(gdi $$0) {
          this.a = $$0;
       }
 
-      public gcl a(lq $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gcc $$8 = new gcc($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
+      public gcn a(lq $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gcc($$1, $$2, $$3, $$4, this.a);
+      }
+   }
+
+   public static class b implements gcq<lq> {
+      private final gdi a;
+
+      public b(gdi $$0) {
+         this.a = $$0;
+      }
+
+      public gcn a(lq $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gcn $$8 = new gcc($$1, $$2, $$3, $$4, this.a);
+         $$8.d(0.15F);
          return $$8;
       }
    }

@@ -2,7 +2,7 @@ import com.mojang.serialization.Codec;
 import java.util.List;
 
 public class ebu extends ebs {
-   public ebu(Codec<eeo> $$0) {
+   public ebu(Codec<eep> $$0) {
       super($$0);
    }
 

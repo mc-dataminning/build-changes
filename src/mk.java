@@ -101,7 +101,7 @@ public class mk implements me {
       ag $$12 = af.a.a()
          .a($$11)
          .a(cut.ss, wz.c("advancements.story.follow_ender_eye.title"), wz.c("advancements.story.follow_ender_eye.description"), null, am.a, true, true, false)
-         .a("in_stronghold", dq.a.a(df.a.b($$0.b(lu.aR).b(ejj.k))))
+         .a("in_stronghold", dq.a.a(df.a.b($$0.b(lu.aR).b(ejl.k))))
          .a($$1, "story/follow_ender_eye");
       af.a.a()
          .a($$12)

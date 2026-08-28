@@ -15,8 +15,8 @@ public class cat extends cam {
 
    @Override
    public boolean b() {
-      if (!this.a.N_() && !this.a.gX()) {
-         List<bsr> $$0 = this.a.dP().a(this.a, this.a.cL().c(9.0, 4.0, 9.0), $$0x -> {
+      if (!this.a.N_() && !this.a.gW()) {
+         List<bsr> $$0 = this.a.dO().a(this.a, this.a.cK().c(9.0, 4.0, 9.0), $$0x -> {
             bsx<?> $$1x = $$0x.am();
             return $$1x == bsx.an || $$1x == bsx.be;
          });
@@ -25,7 +25,7 @@ public class cat extends cam {
 
          for (bsr $$3 : $$0) {
             chl $$4 = (chl)$$3;
-            if ($$4.gX() && !$$4.gW()) {
+            if ($$4.gW() && !$$4.gV()) {
                double $$5 = this.a.g($$4);
                if (!($$5 > $$2)) {
                   $$2 = $$5;
@@ -37,7 +37,7 @@ public class cat extends cam {
          if ($$1 == null) {
             for (bsr $$6 : $$0) {
                chl $$7 = (chl)$$6;
-               if ($$7.N_() && !$$7.gW()) {
+               if ($$7.N_() && !$$7.gV()) {
                   double $$8 = this.a.g($$7);
                   if (!($$8 > $$2)) {
                      $$2 = $$8;
@@ -64,8 +64,8 @@ public class cat extends cam {
 
    @Override
    public boolean c() {
-      if (this.a.gX() && this.a.gY().bE() && this.a(this.a, 0)) {
-         double $$0 = this.a.g(this.a.gY());
+      if (this.a.gW() && this.a.gX().bE() && this.a(this.a, 0)) {
+         double $$0 = this.a.g(this.a.gX());
          if ($$0 > 676.0) {
             if (this.b <= 3.0) {
                this.b *= 1.2;
@@ -90,19 +90,19 @@ public class cat extends cam {
 
    @Override
    public void e() {
-      this.a.gz();
+      this.a.gy();
       this.b = 2.1;
    }
 
    @Override
    public void a() {
-      if (this.a.gX()) {
+      if (this.a.gW()) {
          if (!(this.a.A() instanceof cjb)) {
-            chl $$0 = this.a.gY();
+            chl $$0 = this.a.gX();
             double $$1 = (double)this.a.f($$0);
             float $$2 = 2.0F;
-            exa $$3 = new exa($$0.du() - this.a.du(), $$0.dw() - this.a.dw(), $$0.dA() - this.a.dA()).d().a(Math.max($$1 - 2.0, 0.0));
-            this.a.N().a(this.a.du() + $$3.c, this.a.dw() + $$3.d, this.a.dA() + $$3.e, this.b);
+            exc $$3 = new exc($$0.dt() - this.a.dt(), $$0.dv() - this.a.dv(), $$0.dz() - this.a.dz()).d().a(Math.max($$1 - 2.0, 0.0));
+            this.a.N().a(this.a.dt() + $$3.c, this.a.dv() + $$3.d, this.a.dz() + $$3.e, this.b);
          }
       }
    }
@@ -110,8 +110,8 @@ public class cat extends cam {
    private boolean a(chl $$0, int $$1) {
       if ($$1 > 8) {
          return false;
-      } else if ($$0.gX()) {
-         return $$0.gY().N_() ? true : this.a($$0.gY(), ++$$1);
+      } else if ($$0.gW()) {
+         return $$0.gX().N_() ? true : this.a($$0.gX(), ++$$1);
       } else {
          return false;
       }

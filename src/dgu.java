@@ -2,7 +2,7 @@ import java.util.function.ToIntFunction;
 import javax.annotation.Nullable;
 
 public interface dgu {
-   ext r_ = dfy.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+   exv r_ = dfy.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
    dtt s_ = dts.D;
 
    static bqr a(@Nullable bsr $$0, dtc $$1, dcw $$2, jd $$3) {

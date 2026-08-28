@@ -46,7 +46,7 @@ public class aol {
    }
 
    private static int a(et $$0, cmx $$1) {
-      dcw $$2 = $$1.dP();
+      dcw $$2 = $$1.dO();
       jv<cwx> $$3 = jv.a();
       jz<cxa> $$4 = $$2.H_().d(lu.aX);
       jz<cwy> $$5 = $$2.H_().d(lu.aW);
@@ -57,7 +57,7 @@ public class aol {
                   .sorted(Comparator.comparing($$1xx -> e.applyAsInt($$5.d($$1xx).orElse(null))))
                   .forEachOrdered($$4x -> $$3.add(new cwx($$5.e($$4x), $$4.e($$3x))))
          );
-      jd $$6 = $$1.dp().a($$1.cI(), 5);
+      jd $$6 = $$1.do().a($$1.cH(), 5);
       jz<csg> $$7 = $$0.v().d(lu.az);
       int $$8 = $$7.c() - 1;
       double $$9 = 3.0;
@@ -84,7 +84,7 @@ public class aol {
                         csf $$21 = (csf)$$19;
                         if ($$21.h().a(csh.f)) {
                            $$17.b($$12.a().a().a($$12.b()).f().f(" ").b($$12.b().a().e()));
-                           $$17.o(true);
+                           $$17.p(true);
                            continue;
                         }
                      }

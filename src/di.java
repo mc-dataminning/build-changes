@@ -11,7 +11,7 @@ public record di(Map<jm<brx>, di.b> b) {
    public static final Codec<di> a = Codec.unboundedMap(brx.a, di.b.a).xmap(di::new, di::a);
 
    public boolean a(bsr $$0) {
-      if ($$0 instanceof btn $$1 && this.a($$1.ev())) {
+      if ($$0 instanceof btn $$1 && this.a($$1.eu())) {
          return true;
       }
 
@@ -19,7 +19,7 @@ public record di(Map<jm<brx>, di.b> b) {
    }
 
    public boolean a(btn $$0) {
-      return this.a($$0.ev());
+      return this.a($$0.eu());
    }
 
    public boolean a(Map<jm<brx>, brz> $$0) {

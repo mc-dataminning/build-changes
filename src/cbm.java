@@ -40,16 +40,16 @@ public class cbm<T extends ckd & ckh> extends cam {
    @Override
    public void d() {
       super.d();
-      this.a.v(true);
+      this.a.w(true);
    }
 
    @Override
    public void e() {
       super.e();
-      this.a.v(false);
+      this.a.w(false);
       this.f = 0;
       this.e = -1;
-      this.a.fy();
+      this.a.fx();
    }
 
    @Override
@@ -61,7 +61,7 @@ public class cbm<T extends ckd & ckh> extends cam {
    public void a() {
       btn $$0 = this.a.p();
       if ($$0 != null) {
-         double $$1 = this.a.i($$0.du(), $$0.dw(), $$0.dA());
+         double $$1 = this.a.i($$0.dt(), $$0.dv(), $$0.dz());
          boolean $$2 = this.a.O().a($$0);
          boolean $$3 = this.f > 0;
          if ($$2 != $$3) {
@@ -83,11 +83,11 @@ public class cbm<T extends ckd & ckh> extends cam {
          }
 
          if (this.i >= 20) {
-            if ((double)this.a.dS().i() < 0.3) {
+            if ((double)this.a.dR().i() < 0.3) {
                this.g = !this.g;
             }
 
-            if ((double)this.a.dS().i() < 0.3) {
+            if ((double)this.a.dR().i() < 0.3) {
                this.h = !this.h;
             }
 
@@ -102,7 +102,7 @@ public class cbm<T extends ckd & ckh> extends cam {
             }
 
             this.a.J().a(this.h ? -0.5F : 0.5F, this.g ? 0.5F : -0.5F);
-            if (this.a.de() instanceof btp $$4) {
+            if (this.a.dd() instanceof btp $$4) {
                $$4.a($$0, 30.0F, 30.0F);
             }
 
@@ -111,13 +111,13 @@ public class cbm<T extends ckd & ckh> extends cam {
             this.a.I().a($$0, 30.0F, 30.0F);
          }
 
-         if (this.a.fs()) {
+         if (this.a.fr()) {
             if (!$$2 && this.f < -60) {
-               this.a.fy();
+               this.a.fx();
             } else if ($$2) {
-               int $$5 = this.a.fw();
+               int $$5 = this.a.fv();
                if ($$5 >= 20) {
-                  this.a.fy();
+                  this.a.fx();
                   this.a.a($$0, cst.a($$5));
                   this.e = this.c;
                }

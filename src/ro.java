@@ -9,13 +9,13 @@ public class ro {
    public static final akq<ebq<?, ?>> h = rr.a("warm_ocean_vegetation");
 
    public static void a(qq<ebq<?, ?>> $$0) {
-      rr.a($$0, a, ecd.M, new eer(0.3F));
-      rr.a($$0, b, ecd.M, new eer(0.4F));
-      rr.a($$0, c, ecd.M, new eer(0.6F));
-      rr.a($$0, d, ecd.M, new eer(0.8F));
-      rr.a($$0, e, ecd.R, new eec(20));
-      rr.a($$0, f, ecd.S, new eez(egi.a(dga.bw)));
-      rr.a($$0, g, ecd.N);
-      rr.a($$0, h, ecd.ag, new efa(jq.a(sg.a(ecd.O, eeh.m), sg.a(ecd.Q, eeh.m), sg.a(ecd.P, eeh.m))));
+      rr.a($$0, a, ece.N, new ees(0.3F));
+      rr.a($$0, b, ece.N, new ees(0.4F));
+      rr.a($$0, c, ece.N, new ees(0.6F));
+      rr.a($$0, d, ece.N, new ees(0.8F));
+      rr.a($$0, e, ece.S, new eed(20));
+      rr.a($$0, f, ece.T, new efa(egj.a(dga.bw)));
+      rr.a($$0, g, ece.O);
+      rr.a($$0, h, ece.ah, new efb(jq.a(sg.a(ece.P, eei.m), sg.a(ece.R, eei.m), sg.a(ece.Q, eei.m))));
    }
 }

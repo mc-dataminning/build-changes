@@ -14,7 +14,7 @@ public class cbo extends caz {
 
    @Override
    public boolean b() {
-      if (!this.h.dP().ab().b(dcs.c)) {
+      if (!this.h.dO().ab().b(dcs.c)) {
          return false;
       } else if (this.c > 0) {
          this.c--;
@@ -49,13 +49,13 @@ public class cbo extends caz {
    @Override
    public void a() {
       super.a();
-      dcw $$0 = this.h.dP();
-      jd $$1 = this.h.dp();
+      dcw $$0 = this.h.dO();
+      jd $$1 = this.h.do();
       jd $$2 = this.a($$1, $$0);
-      ayw $$3 = this.h.dS();
+      ayw $$3 = this.h.dR();
       if (this.m() && $$2 != null) {
          if (this.i > 0) {
-            exa $$4 = this.h.ds();
+            exc $$4 = this.h.dr();
             this.h.n($$4.c, 0.3, $$4.e);
             if (!$$0.B) {
                double $$5 = 0.08;
@@ -75,7 +75,7 @@ public class cbo extends caz {
          }
 
          if (this.i % 2 == 0) {
-            exa $$6 = this.h.ds();
+            exc $$6 = this.h.dr();
             this.h.n($$6.c, -0.3, $$6.e);
             if (this.i % 6 == 0) {
                this.a((dcx)$$0, this.e);

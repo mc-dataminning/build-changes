@@ -88,16 +88,16 @@ public class Main {
          File $$24 = new File((String)$$18.valueOf($$11));
          alm $$25 = alm.a(new YggdrasilAuthenticationService(Proxy.NO_PROXY), $$24);
          String $$26 = (String)Optional.ofNullable((String)$$18.valueOf($$12)).orElse($$21.a().n);
-         erd $$27 = erd.b($$24.toPath());
-         erd.c $$28 = $$27.d($$26);
+         erf $$27 = erf.b($$24.toPath());
+         erf.c $$28 = $$27.d($$26);
          Dynamic<?> $$29;
          if ($$28.m()) {
-            ere $$30;
+            erg $$30;
             try {
                $$29 = $$28.h();
                $$30 = $$28.a($$29);
             } catch (um | us | IOException var41) {
-               erd.b $$32 = $$28.e();
+               erf.b $$32 = $$28.e();
                a.warn("Failed to load world data from {}", $$32.b(), var41);
                a.info("Attempting to use fallback");
 
@@ -140,7 +140,7 @@ public class Main {
             $$43 = ad.<alp>c($$6x -> alo.a($$42, $$5xx -> {
                   jz<dwz> $$6xx = $$5xx.d().d(lu.bb);
                   if ($$39 != null) {
-                     era $$7x = erd.a($$39, $$5xx.b(), $$6xx, $$5xx.c());
+                     erc $$7x = erf.a($$39, $$5xx.b(), $$6xx, $$5xx.c());
                      return new alo.b<>($$7x.a(), $$7x.b().b());
                   } else {
                      a.info("No existing world data, creating new world");
@@ -150,7 +150,7 @@ public class Main {
                      if ($$18.has($$4)) {
                         $$8x = MinecraftServer.d;
                         $$9x = dzw.b;
-                        $$10x = ejf.a($$5xx.c());
+                        $$10x = ejh.a($$5xx.c());
                      } else {
                         apo $$11x = $$21.a();
                         $$8x = new dda($$11x.n, $$11x.m, $$11x.v, $$11x.l, false, new dcs(), $$5xx.b());
@@ -160,7 +160,7 @@ public class Main {
 
                      dzt.b $$15x = $$10x.a($$6xx);
                      Lifecycle $$16x = $$15x.a().add($$5xx.c().e());
-                     return new alo.b<>(new erh($$8x, $$9x, $$15x.d(), $$16x), $$15x.b());
+                     return new alo.b<>(new erj($$8x, $$9x, $$15x.d(), $$16x), $$15x.b());
                   }
                }, alp::new, ad.g(), $$6x)).get();
          } catch (Exception var39) {
@@ -174,7 +174,7 @@ public class Main {
             a($$28, azx.a(), $$18.has($$7), () -> true, $$46, $$47);
          }
 
-         erj $$48 = $$43.d();
+         erl $$48 = $$43.d();
          $$28.a($$46, $$48);
          final apn $$49 = MinecraftServer.a((Function<Thread, apn>)($$11x -> {
             apn $$12x = new apn($$11x, $$28, $$41, $$43, $$21, azx.a(), $$25, arf::b);
@@ -214,7 +214,7 @@ public class Main {
       boolean $$5;
       ddr $$6;
       if ($$1 != null) {
-         ddr $$4 = erd.a($$1);
+         ddr $$4 = erf.a($$1);
          $$5 = false;
          $$6 = $$4;
       } else {
@@ -226,7 +226,7 @@ public class Main {
       return new alo.c($$9, eu.a.b, $$0.C);
    }
 
-   private static void a(erd.c $$0, DataFixer $$1, boolean $$2, BooleanSupplier $$3, ka $$4, boolean $$5) {
+   private static void a(erf.c $$0, DataFixer $$1, boolean $$2, BooleanSupplier $$3, ka $$4, boolean $$5) {
       a.info("Forcing world upgrade!");
       bqf $$6 = new bqf($$0, $$1, $$4, $$2, $$5);
       wz $$7 = null;

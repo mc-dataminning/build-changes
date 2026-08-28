@@ -1,5 +1,5 @@
 public class rl {
-   public static ddw a(jn<eit> $$0, jn<ebc<?>> $$1) {
+   public static ddw a(jn<eiv> $$0, jn<ebc<?>> $$1) {
       dei $$2 = new dei.a()
          .a(btq.a, new dei.c(bsx.T, 50, 4, 4))
          .a(btq.a, new dei.c(bsx.bx, 100, 4, 4))
@@ -30,7 +30,7 @@ public class rl {
          .a();
    }
 
-   public static ddw b(jn<eit> $$0, jn<ebc<?>> $$1) {
+   public static ddw b(jn<eiv> $$0, jn<ebc<?>> $$1) {
       double $$2 = 0.7;
       double $$3 = 0.15;
       dei $$4 = new dei.a()
@@ -79,7 +79,7 @@ public class rl {
          .a();
    }
 
-   public static ddw c(jn<eit> $$0, jn<ebc<?>> $$1) {
+   public static ddw c(jn<eiv> $$0, jn<ebc<?>> $$1) {
       dei $$2 = new dei.a().a(btq.a, new dei.c(bsx.T, 40, 1, 1)).a(btq.a, new dei.c(bsx.ap, 100, 2, 5)).a(btq.b, new dei.c(bsx.aZ, 60, 1, 2)).a();
       ddx.a $$3 = new ddx.a($$0, $$1)
          .a(dyu.a.a, qr.d)
@@ -122,7 +122,7 @@ public class rl {
          .a();
    }
 
-   public static ddw d(jn<eit> $$0, jn<ebc<?>> $$1) {
+   public static ddw d(jn<eiv> $$0, jn<ebc<?>> $$1) {
       dei $$2 = new dei.a()
          .a(btq.a, new dei.c(bsx.bx, 1, 2, 4))
          .a(btq.a, new dei.c(bsx.Z, 9, 3, 4))
@@ -163,7 +163,7 @@ public class rl {
          .a();
    }
 
-   public static ddw e(jn<eit> $$0, jn<ebc<?>> $$1) {
+   public static ddw e(jn<eiv> $$0, jn<ebc<?>> $$1) {
       dei $$2 = new dei.a().a(btq.a, new dei.c(bsx.H, 1, 4, 4)).a(btq.b, new dei.c(bsx.aZ, 60, 1, 2)).a(bsx.H, 1.0, 0.12).a();
       ddx.a $$3 = new ddx.a($$0, $$1).a(dyu.a.a, qr.d).a(dyu.b.j, sd.p);
       qp.ac($$3);

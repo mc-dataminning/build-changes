@@ -42,36 +42,36 @@ public class cja extends ciz {
          this.t(0.0F);
       }
 
-      this.P = this.dH();
-      this.O = this.dF();
+      this.P = this.dG();
+      this.O = this.dE();
       this.p();
    }
 
    @Override
-   protected ewv a(jd $$0, ji $$1) {
+   protected ewx a(jd $$0, ji $$1) {
       float $$2 = 0.46875F;
-      exa $$3 = exa.b($$0).a($$1, -0.46875);
+      exc $$3 = exc.b($$0).a($$1, -0.46875);
       ji.a $$4 = $$1.o();
       double $$5 = $$4 == ji.a.a ? 0.0625 : 0.75;
       double $$6 = $$4 == ji.a.b ? 0.0625 : 0.75;
       double $$7 = $$4 == ji.a.c ? 0.0625 : 0.75;
-      return ewv.a($$3, $$5, $$6, $$7);
+      return ewx.a($$3, $$5, $$6, $$7);
    }
 
    @Override
    public boolean s() {
       if (this.l) {
          return true;
-      } else if (!this.dP().g(this)) {
+      } else if (!this.dO().g(this)) {
          return false;
       } else {
-         dtc $$0 = this.dP().a_(this.b.a(this.d.g()));
-         return $$0.e() || this.d.o().d() && dia.m($$0) ? this.dP().a(this, this.cL(), c).isEmpty() : false;
+         dtc $$0 = this.dO().a_(this.b.a(this.d.g()));
+         return $$0.e() || this.d.o().d() && dia.m($$0) ? this.dO().a(this, this.cK(), c).isEmpty() : false;
       }
    }
 
    @Override
-   public void a(bts $$0, exa $$1) {
+   public void a(bts $$0, exc $$1) {
       if (!this.l) {
          super.a($$0, $$1);
       }
@@ -97,7 +97,7 @@ public class cja extends ciz {
       } else if (this.b($$0)) {
          return false;
       } else if (!$$0.a(awg.l) && !this.D().e()) {
-         if (!this.dP().B) {
+         if (!this.dO().B) {
             this.b($$0.d(), false);
             this.a(dxz.c, $$0.d());
             this.a(this.v(), 1.0F, 1.0F);
@@ -116,7 +116,7 @@ public class cja extends ciz {
    @Override
    public boolean a(double $$0) {
       double $$1 = 16.0;
-      $$1 *= 64.0 * cE();
+      $$1 *= 64.0 * cD();
       return $$0 < $$1 * $$1;
    }
 
@@ -144,12 +144,12 @@ public class cja extends ciz {
       if (!this.l) {
          cuq $$2 = this.D();
          this.a(cuq.l);
-         if (!this.dP().ab().b(dcs.i)) {
+         if (!this.dO().ab().b(dcs.i)) {
             if ($$0 == null) {
                this.c($$2);
             }
          } else {
-            if ($$0 instanceof cmx $$3 && $$3.fM()) {
+            if ($$0 instanceof cmx $$3 && $$3.fL()) {
                this.c($$2);
                return;
             }
@@ -170,9 +170,9 @@ public class cja extends ciz {
    }
 
    private void c(cuq $$0) {
-      eqp $$1 = this.E();
+      eqr $$1 = this.E();
       if ($$1 != null) {
-         eqr $$2 = cvc.a($$1, this.dP());
+         eqt $$2 = cvc.a($$1, this.dO());
          if ($$2 != null) {
             $$2.a(this.b, this.an());
             $$2.a(true);
@@ -187,7 +187,7 @@ public class cja extends ciz {
    }
 
    @Nullable
-   public eqp E() {
+   public eqr E() {
       return this.D().a(kq.B);
    }
 
@@ -212,7 +212,7 @@ public class cja extends ciz {
       }
 
       if ($$1 && this.b != null) {
-         this.dP().c(this.b, dga.a);
+         this.dO().c(this.b, dga.a);
       }
    }
 
@@ -251,7 +251,7 @@ public class cja extends ciz {
    private void a(int $$0, boolean $$1) {
       this.ar().a(g, $$0 % 8);
       if ($$1 && this.b != null) {
-         this.dP().c(this.b, dga.a);
+         this.dO().c(this.b, dga.a);
       }
    }
 
@@ -259,7 +259,7 @@ public class cja extends ciz {
    public void b(ub $$0) {
       super.b($$0);
       if (!this.D().e()) {
-         $$0.a("Item", this.D().a(this.dR()));
+         $$0.a("Item", this.D().a(this.dQ()));
          $$0.a("ItemRotation", (byte)this.H());
          $$0.a("ItemDropChance", this.k);
       }
@@ -275,7 +275,7 @@ public class cja extends ciz {
       cuq $$2;
       if ($$0.b("Item", 10)) {
          ub $$1 = $$0.p("Item");
-         $$2 = cuq.a(this.dR(), (uy)$$1).orElse(cuq.l);
+         $$2 = cuq.a(this.dQ(), (uy)$$1).orElse(cuq.l);
       } else {
          $$2 = cuq.l;
       }
@@ -305,11 +305,11 @@ public class cja extends ciz {
       boolean $$4 = !$$2.e();
       if (this.l) {
          return bqr.e;
-      } else if (!this.dP().B) {
+      } else if (!this.dO().B) {
          if (!$$3) {
-            if ($$4 && !this.dK()) {
+            if ($$4 && !this.dJ()) {
                if ($$2.a(cut.rU)) {
-                  eqr $$5 = cvc.b($$2, this.dP());
+                  eqt $$5 = cvc.b($$2, this.dO());
                   if ($$5 != null && $$5.a(256)) {
                      return bqr.f;
                   }
@@ -351,7 +351,7 @@ public class cja extends ciz {
    }
 
    @Override
-   public cuq dC() {
+   public cuq dB() {
       cuq $$0 = this.D();
       return $$0.e() ? this.A() : $$0.s();
    }
@@ -361,8 +361,8 @@ public class cja extends ciz {
    }
 
    @Override
-   public float dG() {
-      ji $$0 = this.cI();
+   public float dF() {
+      ji $$0 = this.cH();
       int $$1 = $$0.o().b() ? 90 * $$0.f().a() : 0;
       return (float)ayo.b(180 + $$0.e() * 90 + this.H() * 45 + $$1);
    }

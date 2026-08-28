@@ -1,49 +1,72 @@
-public class gbh extends gdl {
-   gbh(fzd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+public class gbh extends gdn {
+   private final float a;
+   private final float b;
+
+   gbh(fzf $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cuq $$7) {
+      this($$0, $$1, $$2, $$3, $$7);
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
    }
 
    @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
-      } else {
-         this.k += 0.002;
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.85F;
-         this.k *= 0.85F;
-         this.l *= 0.85F;
-         if (!this.c.b_(jd.a(this.g, this.h, this.i)).a(awk.a)) {
-            this.k();
-         }
-      }
+   public gcr b() {
+      return gcr.a;
+   }
+
+   protected gbh(fzf $$0, double $$1, double $$2, double $$3, cuq $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a(fgo.Q().ar().a($$4, $$0, null, 0).e());
+      this.u = 1.0F;
+      this.D /= 2.0F;
+      this.a = this.r.i() * 3.0F;
+      this.b = this.r.i() * 3.0F;
    }
 
    @Override
-   public gcp b() {
-      return gcp.b;
+   protected float c() {
+      return this.E.a((this.a + 1.0F) / 4.0F);
    }
 
-   public static class a implements gco<lq> {
-      private final gdg a;
+   @Override
+   protected float d() {
+      return this.E.a(this.a / 4.0F);
+   }
 
-      public a(gdg $$0) {
-         this.a = $$0;
+   @Override
+   protected float e() {
+      return this.E.c(this.b / 4.0F);
+   }
+
+   @Override
+   protected float f() {
+      return this.E.c((this.b + 1.0F) / 4.0F);
+   }
+
+   public static class a implements gcq<lq> {
+      public gcn a(lq $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gbh($$1, $$2, $$3, $$4, new cuq(cut.cM));
       }
+   }
 
-      public gcl a(lq $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gbh $$8 = new gbh($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+   public static class b implements gcq<li> {
+      public gcn a(li $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gbh($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.b());
+      }
+   }
+
+   public static class c implements gcq<lq> {
+      public gcn a(lq $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gbh($$1, $$2, $$3, $$4, new cuq(cut.qQ));
+      }
+   }
+
+   public static class d implements gcq<lq> {
+      public gcn a(lq $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gbh($$1, $$2, $$3, $$4, new cuq(cut.qC));
       }
    }
 }

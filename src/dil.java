@@ -1,12 +1,8 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public class dil extends dfk implements dlr {
    public static final MapCodec<dil> a = b(dil::new);
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 10;
 
    @Override
    public MapCodec<dil> a() {
@@ -61,13 +57,13 @@ public class dil extends dfk implements dlr {
    }
 
    @Override
-   protected boolean a(dtc $$0, epb $$1) {
+   protected boolean a(dtc $$0, epd $$1) {
       return false;
    }
 
    @Override
    protected void a(dtc $$0, dcw $$1, jd $$2, bsr $$3) {
-      if ($$3.cx() && !$$1.B && $$1.c_($$2) instanceof dry $$5 && !$$5.c()) {
+      if ($$3.o(false) && !$$1.B && $$1.c_($$2) instanceof dry $$5 && !$$5.c()) {
          $$3.a(this, $$2);
          dry.c($$1, $$2, $$0, $$5);
       }
@@ -75,16 +71,16 @@ public class dil extends dfk implements dlr {
 
    @Nullable
    @Override
-   public eqa a(aqu $$0, bsr $$1, jd $$2) {
+   public eqc a(aqu $$0, bsr $$1, jd $$2) {
       if ($$0.c_($$2) instanceof dry $$4) {
-         exa $$6 = $$4.a($$0, $$2);
-         return $$6 != null ? new eqa($$0, $$6, a($$1), $$1.dF(), $$1.dH(), eqa.c) : null;
+         exc $$6 = $$4.a($$0, $$2);
+         return $$6 != null ? new eqc($$0, $$6, a($$1), $$1.dE(), $$1.dG(), eqc.c) : null;
       } else {
          return null;
       }
    }
 
-   private static exa a(bsr $$0) {
-      return $$0 instanceof cnz ? new exa(0.0, -1.0, 0.0) : $$0.ds();
+   private static exc a(bsr $$0) {
+      return $$0 instanceof cnz ? new exc(0.0, -1.0, 0.0) : $$0.dr();
    }
 }

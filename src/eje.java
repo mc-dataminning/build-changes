@@ -1,44 +1,30 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
 
-public class eje {
-   public static final Codec<eje> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.unboundedMap(akq.a(lu.bb), dwz.a).fieldOf("dimensions").forGetter($$0x -> $$0x.c)).apply($$0, eje::new)
-      )
-      .validate(eje::a);
-   public static final Codec<jm<eje>> b = akn.a(lu.aY, a);
-   private final Map<akq<dwz>, dwz> c;
+public class eje extends eix {
+   public static final MapCodec<eje> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.INT.fieldOf("max_water_depth").forGetter($$0x -> $$0x.c)).apply($$0, eje::new)
+   );
+   private final int c;
 
-   public eje(Map<akq<dwz>, dwz> $$0) {
+   private eje(int $$0) {
       this.c = $$0;
    }
 
-   private ImmutableMap<akq<dwz>, dwz> c() {
-      Builder<akq<dwz>, dwz> $$0 = ImmutableMap.builder();
-      dzt.a(this.c.keySet().stream()).forEach($$1 -> {
-         dwz $$2 = this.c.get($$1);
-         if ($$2 != null) {
-            $$0.put($$1, $$2);
-         }
-      });
-      return $$0.build();
+   public static eje a(int $$0) {
+      return new eje($$0);
    }
 
-   public dzt a() {
-      return new dzt(this.c());
+   @Override
+   protected boolean a(eiw $$0, ayw $$1, jd $$2) {
+      int $$3 = $$0.a(dyy.a.d, $$2.u(), $$2.w());
+      int $$4 = $$0.a(dyy.a.b, $$2.u(), $$2.w());
+      return $$4 - $$3 <= this.c;
    }
 
-   public Optional<dwz> b() {
-      return Optional.ofNullable(this.c.get(dwz.b));
-   }
-
-   private static DataResult<eje> a(eje $$0) {
-      return $$0.b().isEmpty() ? DataResult.error(() -> "Missing overworld dimension") : DataResult.success($$0, Lifecycle.stable());
+   @Override
+   public eiz<?> b() {
+      return eiz.d;
    }
 }

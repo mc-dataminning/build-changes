@@ -19,7 +19,7 @@ public record dd(dh.d c, Optional<bv> d) implements bw {
    }
 
    @Override
-   public boolean a(bsr $$0, aqu $$1, @Nullable exa $$2) {
+   public boolean a(bsr $$0, aqu $$1, @Nullable exc $$2) {
       return !($$0 instanceof btm $$3) ? false : this.c.d($$3.s()) && (this.d.isEmpty() || $$3.t().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
    }
 

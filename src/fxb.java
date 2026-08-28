@@ -1,58 +1,37 @@
-import com.google.common.collect.ImmutableList;
+public class fxb extends fwg {
+   private static final String a = "plate";
+   private static final String b = "handle";
+   private static final int c = 10;
+   private static final int d = 20;
+   private final fyk e;
+   private final fyk f;
+   private final fyk g;
 
-public class fxb<T extends ckj> extends fwa<T> {
-   private static final String a = "lid";
-   private static final String b = "base";
-   private final fyi f;
-   private final fyi g;
-   private final fyi h;
-
-   public fxb(fyi $$0) {
-      super(gff::f);
-      this.g = $$0.b("lid");
-      this.f = $$0.b("base");
-      this.h = $$0.b("head");
+   public fxb(fyk $$0) {
+      super(gfh::c);
+      this.e = $$0;
+      this.f = $$0.b("plate");
+      this.g = $$0.b("handle");
    }
 
-   public static fyo a() {
-      fyq $$0 = new fyq();
-      fyr $$1 = $$0.a();
-      $$1.a("lid", fyn.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), fyk.a(0.0F, 24.0F, 0.0F));
-      $$1.a("base", fyn.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), fyk.a(0.0F, 24.0F, 0.0F));
-      $$1.a("head", fyn.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), fyk.a(0.0F, 12.0F, 0.0F));
-      return fyo.a($$0, 64, 64);
+   public static fyq a() {
+      fys $$0 = new fys();
+      fyt $$1 = $$0.a();
+      $$1.a("plate", fyp.c().a(0, 0).a(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), fym.a);
+      $$1.a("handle", fyp.c().a(26, 0).a(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), fym.a);
+      return fyq.a($$0, 64, 64);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = $$3 - (float)$$0.ai;
-      float $$7 = (0.5F + $$0.H($$6)) * (float) Math.PI;
-      float $$8 = -1.0F + ayo.a($$7);
-      float $$9 = 0.0F;
-      if ($$7 > (float) Math.PI) {
-         $$9 = ayo.a($$3 * 0.1F) * 0.7F;
-      }
-
-      this.g.a(0.0F, 16.0F + ayo.a($$7) * 8.0F + $$9, 0.0F);
-      if ($$0.H($$6) > 0.3F) {
-         this.g.f = $$8 * $$8 * $$8 * $$8 * (float) Math.PI * 0.125F;
-      } else {
-         this.g.f = 0.0F;
-      }
-
-      this.h.e = $$5 * (float) (Math.PI / 180.0);
-      this.h.f = ($$0.ba - 180.0F - $$0.aY) * (float) (Math.PI / 180.0);
+   public fyk b() {
+      return this.f;
    }
 
-   @Override
-   public Iterable<fyi> d() {
-      return ImmutableList.of(this.f, this.g);
-   }
-
-   public fyi b() {
+   public fyk c() {
       return this.g;
    }
 
-   public fyi c() {
-      return this.h;
+   @Override
+   public void a(fbi $$0, fbm $$1, int $$2, int $$3, int $$4) {
+      this.e.a($$0, $$1, $$2, $$3, $$4);
    }
 }

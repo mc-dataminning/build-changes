@@ -22,12 +22,12 @@ public class coa extends cnw {
    }
 
    @Override
-   protected void a(ewy $$0) {
+   protected void a(exa $$0) {
       super.a($$0);
-      if (this.dP() instanceof aqu) {
-         this.dP().c(2002, this.dp(), cwu.c(cwv.a));
-         int $$1 = 3 + this.dP().z.a(5) + this.dP().z.a(5);
-         btc.a((aqu)this.dP(), this.dn(), $$1);
+      if (this.dO() instanceof aqu) {
+         this.dO().c(2002, this.do(), cwu.c(cwv.a));
+         int $$1 = 3 + this.dO().z.a(5) + this.dO().z.a(5);
+         btc.a((aqu)this.dO(), this.dm(), $$1);
          this.aq();
       }
    }

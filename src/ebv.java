@@ -1,21 +1,21 @@
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 
-public class ebv extends ecd<eed> {
+public class ebv extends ece<eee> {
    private static final ImmutableList<dfy> a = ImmutableList.of(dga.F, dga.fn, dga.fo, dga.fp, dga.fq, dga.cv, dga.ct);
    private static final ji[] b = ji.values();
    private static final double c = 0.9;
 
-   public ebv(Codec<eed> $$0) {
+   public ebv(Codec<eee> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecf<eed> $$0) {
+   public boolean a(ecg<eee> $$0) {
       boolean $$1 = false;
       ayw $$2 = $$0.d();
       dds $$3 = $$0.b();
-      eed $$4 = $$0.f();
+      eee $$4 = $$0.f();
       jd $$5 = $$0.e();
       boolean $$6 = $$2.j() < 0.9;
       int $$7 = $$6 ? $$4.d().a($$2) : 0;
@@ -47,7 +47,7 @@ public class ebv extends ecd<eed> {
       return $$1;
    }
 
-   private static boolean a(dcx $$0, jd $$1, eed $$2) {
+   private static boolean a(dcx $$0, jd $$1, eee $$2) {
       dtc $$3 = $$0.a_($$1);
       if ($$3.a($$2.a().b())) {
          return false;

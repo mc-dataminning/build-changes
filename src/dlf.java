@@ -4,7 +4,7 @@ public class dlf extends dgh {
    public static final MapCodec<dlf> a = b(dlf::new);
    public static final int b = 3;
    public static final duc c = dts.as;
-   private static final ext[] d = new ext[]{
+   private static final exv[] d = new exv[]{
       dfy.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
       dfy.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
       dfy.a(0.0, 0.0, 0.0, 16.0, 11.0, 16.0),
@@ -22,7 +22,7 @@ public class dlf extends dgh {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return d[$$0.c(c)];
    }
 

@@ -408,11 +408,11 @@ public class vw extends ByteBuf {
       $$0.writeFloat($$1.w);
    }
 
-   public exa k() {
-      return new exa(this.readDouble(), this.readDouble(), this.readDouble());
+   public exc k() {
+      return new exc(this.readDouble(), this.readDouble(), this.readDouble());
    }
 
-   public void a(exa $$0) {
+   public void a(exc $$0) {
       this.a($$0.a());
       this.a($$0.b());
       this.a($$0.c());
@@ -589,21 +589,21 @@ public class vw extends ByteBuf {
       return this;
    }
 
-   public eww v() {
+   public ewy v() {
       jd $$0 = this.e();
       ji $$1 = this.b(ji.class);
       float $$2 = this.readFloat();
       float $$3 = this.readFloat();
       float $$4 = this.readFloat();
       boolean $$5 = this.readBoolean();
-      return new eww(new exa((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5);
+      return new ewy(new exc((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5);
    }
 
-   public void a(eww $$0) {
+   public void a(ewy $$0) {
       jd $$1 = $$0.a();
       this.a($$1);
       this.a($$0.b());
-      exa $$2 = $$0.e();
+      exc $$2 = $$0.e();
       this.a((float)($$2.c - (double)$$1.u()));
       this.a((float)($$2.d - (double)$$1.v()));
       this.a((float)($$2.e - (double)$$1.w()));

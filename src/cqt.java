@@ -48,7 +48,7 @@ public class cqt extends cpu {
          public void a(cmx $$0, cuq $$1) {
             $$2.a(($$0x, $$1x) -> {
                if ($$0x instanceof aqu) {
-                  btc.a((aqu)$$0x, exa.b($$1x), this.a($$0x));
+                  btc.a((aqu)$$0x, exc.b($$1x), this.a($$0x));
                }
 
                $$0x.c(1042, $$1x, 0);

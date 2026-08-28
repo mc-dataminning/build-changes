@@ -27,13 +27,13 @@ public class cpf extends cot {
       super.l();
       if (this.d > 0) {
          this.d--;
-         this.dP().a(lm.ae, this.du(), this.dw() + 0.5, this.dA(), 0.0, 0.0, 0.0);
+         this.dO().a(lm.ae, this.dt(), this.dv() + 0.5, this.dz(), 0.0, 0.0, 0.0);
       } else if (this.d == 0) {
-         this.h(this.ds().i());
+         this.h(this.dr().i());
       }
 
       if (this.Q) {
-         double $$0 = this.ds().i();
+         double $$0 = this.dr().i();
          if ($$0 >= 0.01F) {
             this.h($$0);
          }
@@ -43,8 +43,8 @@ public class cpf extends cot {
    @Override
    public boolean a(brk $$0, float $$1) {
       if ($$0.c() instanceof cnd $$3 && $$3.bR()) {
-         brk $$4 = this.dQ().d(this, $$0.d());
-         this.a($$4, $$3.ds().g());
+         brk $$4 = this.dP().d(this, $$0.d());
+         this.a($$4, $$3.dr().g());
       }
 
       return super.a($$0, $$1);
@@ -52,7 +52,7 @@ public class cpf extends cot {
 
    @Override
    public void a(brk $$0) {
-      double $$1 = this.ds().i();
+      double $$1 = this.dr().i();
       if (!e($$0) && !($$1 >= 0.01F)) {
          this.b(this.ak_());
       } else {
@@ -73,13 +73,13 @@ public class cpf extends cot {
    }
 
    protected void a(@Nullable brk $$0, double $$1) {
-      if (!this.dP().B) {
+      if (!this.dO().B) {
          double $$2 = Math.sqrt($$1);
          if ($$2 > 5.0) {
             $$2 = 5.0;
          }
 
-         this.dP().a(this, $$0, null, this.du(), this.dw(), this.dA(), (float)(4.0 + this.ah.j() * 1.5 * $$2), false, dcw.a.d);
+         this.dO().a(this, $$0, null, this.dt(), this.dv(), this.dz(), (float)(4.0 + this.ah.j() * 1.5 * $$2), false, dcw.a.d);
          this.aq();
       }
    }
@@ -112,10 +112,10 @@ public class cpf extends cot {
 
    public void B() {
       this.d = 80;
-      if (!this.dP().B) {
-         this.dP().a(this, (byte)10);
+      if (!this.dO().B) {
+         this.dO().a(this, (byte)10);
          if (!this.aX()) {
-            this.dP().a(null, this.du(), this.dw(), this.dA(), avp.zy, avq.e, 1.0F, 1.0F);
+            this.dO().a(null, this.dt(), this.dv(), this.dz(), avp.zy, avq.e, 1.0F, 1.0F);
          }
       }
    }
@@ -129,13 +129,13 @@ public class cpf extends cot {
    }
 
    @Override
-   public float a(dco $$0, dcc $$1, jd $$2, dtc $$3, epc $$4, float $$5) {
-      return !this.D() || !$$3.a(awe.N) && !$$1.a_($$2.d()).a(awe.N) ? super.a($$0, $$1, $$2, $$3, $$4, $$5) : 0.0F;
+   public float a(dco $$0, dcc $$1, jd $$2, dtc $$3, epe $$4, float $$5) {
+      return !this.D() || !$$3.a(awe.O) && !$$1.a_($$2.d()).a(awe.O) ? super.a($$0, $$1, $$2, $$3, $$4, $$5) : 0.0F;
    }
 
    @Override
    public boolean a(dco $$0, dcc $$1, jd $$2, dtc $$3, float $$4) {
-      return !this.D() || !$$3.a(awe.N) && !$$1.a_($$2.d()).a(awe.N) ? super.a($$0, $$1, $$2, $$3, $$4) : false;
+      return !this.D() || !$$3.a(awe.O) && !$$1.a_($$2.d()).a(awe.O) ? super.a($$0, $$1, $$2, $$3, $$4) : false;
    }
 
    @Override

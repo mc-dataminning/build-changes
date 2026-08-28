@@ -65,7 +65,7 @@ public class dig extends dgh {
          if ($$3.f()) {
             b($$0, $$1, $$2, $$3);
          } else {
-            a($$2, $$0, $$1, null, $$3, $$3.eU());
+            a($$2, $$0, $$1, null, $$3, $$3.eT());
          }
       }
 
@@ -83,7 +83,7 @@ public class dig extends dgh {
          jd $$5 = $$1.e();
          dtc $$6 = $$0.a_($$5);
          if ($$6.a($$2.b()) && $$6.c(b) == dty.b) {
-            dtc $$7 = $$6.u().b(epd.c) ? dga.G.o() : dga.a.o();
+            dtc $$7 = $$6.u().b(epf.c) ? dga.G.o() : dga.a.o();
             $$0.a($$5, $$7, 35);
             $$0.a($$3, 2001, $$5, dfy.i($$6));
          }

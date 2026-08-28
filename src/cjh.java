@@ -38,7 +38,7 @@ public class cjh extends bsr implements bun {
    }
 
    private cjh(cjh $$0) {
-      super($$0.am(), $$0.dP());
+      super($$0.am(), $$0.dO());
       this.a($$0.p().s());
       this.v($$0);
       this.i = $$0.i;
@@ -53,9 +53,9 @@ public class cjh extends bsr implements bun {
    @Nullable
    @Override
    public bsr s() {
-      if (this.m != null && !this.m.dK()) {
+      if (this.m != null && !this.m.dJ()) {
          return this.m;
-      } else if (this.l != null && this.dP() instanceof aqu $$0) {
+      } else if (this.l != null && this.dO() instanceof aqu $$0) {
          this.m = $$0.a(this.l);
          return this.m;
       } else {
@@ -96,10 +96,10 @@ public class cjh extends bsr implements bun {
             this.j--;
          }
 
-         this.L = this.du();
-         this.M = this.dw();
-         this.N = this.dA();
-         exa $$0 = this.ds();
+         this.L = this.dt();
+         this.M = this.dv();
+         this.N = this.dz();
+         exc $$0 = this.dr();
          if (this.bf() && this.b(awk.a) > 0.1F) {
             this.D();
          } else if (this.bt() && this.b(awk.b) > 0.1F) {
@@ -108,34 +108,34 @@ public class cjh extends bsr implements bun {
             this.bb();
          }
 
-         if (this.dP().B) {
+         if (this.dO().B) {
             this.ag = false;
          } else {
-            this.ag = !this.dP().a(this, this.cL().h(1.0E-7));
+            this.ag = !this.dO().a(this, this.cK().h(1.0E-7));
             if (this.ag) {
-               this.m(this.du(), (this.cL().b + this.cL().e) / 2.0, this.dA());
+               this.m(this.dt(), (this.cK().b + this.cK().e) / 2.0, this.dz());
             }
          }
 
-         if (!this.aF() || this.ds().i() > 1.0E-5F || (this.ai + this.an()) % 4 == 0) {
-            this.a(bts.a, this.ds());
+         if (!this.aF() || this.dr().i() > 1.0E-5F || (this.ai + this.an()) % 4 == 0) {
+            this.a(bts.a, this.dr());
             float $$1 = 0.98F;
             if (this.aF()) {
-               $$1 = this.dP().a_(this.aL()).b().h() * 0.98F;
+               $$1 = this.dO().a_(this.aL()).b().h() * 0.98F;
             }
 
-            this.i(this.ds().d((double)$$1, 0.98, (double)$$1));
+            this.i(this.dr().d((double)$$1, 0.98, (double)$$1));
             if (this.aF()) {
-               exa $$2 = this.ds();
+               exc $$2 = this.dr();
                if ($$2.d < 0.0) {
                   this.i($$2.d(1.0, -0.5, 1.0));
                }
             }
          }
 
-         boolean $$3 = ayo.a(this.L) != ayo.a(this.du()) || ayo.a(this.M) != ayo.a(this.dw()) || ayo.a(this.N) != ayo.a(this.dA());
+         boolean $$3 = ayo.a(this.L) != ayo.a(this.dt()) || ayo.a(this.M) != ayo.a(this.dv()) || ayo.a(this.N) != ayo.a(this.dz());
          int $$4 = $$3 ? 2 : 40;
-         if (this.ai % $$4 == 0 && !this.dP().B && this.H()) {
+         if (this.ai % $$4 == 0 && !this.dO().B && this.H()) {
             this.F();
          }
 
@@ -144,14 +144,14 @@ public class cjh extends bsr implements bun {
          }
 
          this.av = this.av | this.bm();
-         if (!this.dP().B) {
-            double $$5 = this.ds().d($$0).g();
+         if (!this.dO().B) {
+            double $$5 = this.dr().d($$0).g();
             if ($$5 > 0.01) {
                this.av = true;
             }
          }
 
-         if (!this.dP().B && this.i >= 6000) {
+         if (!this.dO().B && this.i >= 6000) {
             this.aq();
          }
       }
@@ -163,21 +163,21 @@ public class cjh extends bsr implements bun {
    }
 
    private void D() {
-      exa $$0 = this.ds();
+      exc $$0 = this.dr();
       this.n($$0.c * 0.99F, $$0.d + (double)($$0.d < 0.06F ? 5.0E-4F : 0.0F), $$0.e * 0.99F);
    }
 
    private void E() {
-      exa $$0 = this.ds();
+      exc $$0 = this.dr();
       this.n($$0.c * 0.95F, $$0.d + (double)($$0.d < 0.06F ? 5.0E-4F : 0.0F), $$0.e * 0.95F);
    }
 
    private void F() {
       if (this.H()) {
-         for (cjh $$1 : this.dP().a(cjh.class, this.cL().c(0.5, 0.0, 0.5), $$0 -> $$0 != this && $$0.H())) {
+         for (cjh $$1 : this.dO().a(cjh.class, this.cK().c(0.5, 0.0, 0.5), $$0 -> $$0 != this && $$0.H())) {
             if ($$1.H()) {
                this.a($$1);
-               if (this.dK()) {
+               if (this.dJ()) {
                   break;
                }
             }
@@ -240,7 +240,7 @@ public class cjh extends bsr implements bun {
          return false;
       } else if (!this.p().a($$0)) {
          return false;
-      } else if (this.dP().B) {
+      } else if (this.dO().B) {
          return true;
       } else {
          this.bw();
@@ -269,7 +269,7 @@ public class cjh extends bsr implements bun {
       }
 
       if (!this.p().e()) {
-         $$0.a("Item", this.p().a(this.dR()));
+         $$0.a("Item", this.p().a(this.dQ()));
       }
    }
 
@@ -292,7 +292,7 @@ public class cjh extends bsr implements bun {
 
       if ($$0.b("Item", 10)) {
          ub $$1 = $$0.p("Item");
-         this.a(cuq.a(this.dR(), (uy)$$1).orElse(cuq.l));
+         this.a(cuq.a(this.dQ(), (uy)$$1).orElse(cuq.l));
       } else {
          this.a(cuq.l);
       }
@@ -304,11 +304,11 @@ public class cjh extends bsr implements bun {
 
    @Override
    public void b_(cmx $$0) {
-      if (!this.dP().B) {
+      if (!this.dO().B) {
          cuq $$1 = this.p();
          cul $$2 = $$1.g();
          int $$3 = $$1.H();
-         if (this.j == 0 && (this.n == null || this.n.equals($$0.cA())) && $$0.fZ().f($$1)) {
+         if (this.j == 0 && (this.n == null || this.n.equals($$0.cz())) && $$0.fY().f($$1)) {
             $$0.a(this, $$3);
             if ($$1.e()) {
                this.aq();
@@ -334,9 +334,9 @@ public class cjh extends bsr implements bun {
 
    @Nullable
    @Override
-   public bsr a(eqa $$0) {
+   public bsr a(eqc $$0) {
       bsr $$1 = super.a($$0);
-      if (!this.dP().B && $$1 instanceof cjh $$2) {
+      if (!this.dO().B && $$1 instanceof cjh $$2) {
          $$2.F();
       }
 
@@ -364,7 +364,7 @@ public class cjh extends bsr implements bun {
    }
 
    public void b(bsr $$0) {
-      this.l = $$0.cA();
+      this.l = $$0.cz();
       this.m = $$0;
    }
 
@@ -415,12 +415,12 @@ public class cjh extends bsr implements bun {
    }
 
    @Override
-   public avq df() {
+   public avq de() {
       return avq.i;
    }
 
    @Override
-   public float dG() {
+   public float dF() {
       return 180.0F - this.a(0.5F) / (float) (Math.PI * 2) * 360.0F;
    }
 

@@ -47,6 +47,9 @@ public abstract class cvn extends cul {
             this.a($$1, $$16, $$13, $$5, $$6, $$15, $$8);
             $$0.b($$16);
             $$3.a(this.j($$14), $$1, btn.d($$2));
+            if ($$3.e()) {
+               break;
+            }
          }
       }
    }
@@ -71,7 +74,7 @@ public abstract class cvn extends cul {
       if ($$1.e()) {
          return List.of();
       } else {
-         int $$4 = $$2.dP() instanceof aqu $$3 ? dae.a($$3, $$0, $$2, 1) : 1;
+         int $$4 = $$2.dO() instanceof aqu $$3 ? dae.a($$3, $$0, $$2, 1) : 1;
          List<cuq> $$5 = new ArrayList<>($$4);
          cuq $$6 = $$1.s();
 
@@ -87,7 +90,7 @@ public abstract class cvn extends cul {
    }
 
    protected static cuq a(cuq $$0, cuq $$1, btn $$2, boolean $$3) {
-      int $$5 = !$$3 && !$$2.fM() && $$2.dP() instanceof aqu $$4 ? dae.a($$4, $$0, $$1, 1) : 0;
+      int $$5 = !$$3 && !$$2.fL() && $$2.dO() instanceof aqu $$4 ? dae.a($$4, $$0, $$1, 1) : 0;
       if ($$5 > $$1.H()) {
          return cuq.l;
       } else if ($$5 == 0) {
@@ -97,7 +100,7 @@ public abstract class cvn extends cul {
       } else {
          cuq $$7 = $$1.a($$5);
          if ($$1.e() && $$2 instanceof cmx $$8) {
-            $$8.fZ().h($$1);
+            $$8.fY().h($$1);
          }
 
          return $$7;

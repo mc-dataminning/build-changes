@@ -1,14 +1,14 @@
 import com.mojang.serialization.Codec;
 
-public class ebl extends ecd<edy> {
-   public ebl(Codec<edy> $$0) {
+public class ebl extends ece<edz> {
+   public ebl(Codec<edz> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecf<edy> $$0) {
+   public boolean a(ecg<edz> $$0) {
       dds $$1 = $$0.b();
-      edy $$2 = $$0.f();
+      edz $$2 = $$0.f();
       ayw $$3 = $$0.d();
       int $$4 = $$2.a().size();
       int[] $$5 = new int[$$4];
@@ -37,7 +37,7 @@ public class ebl extends ecd<edy> {
          for (int $$11 = 0; $$11 < $$4; $$11++) {
             int $$12 = $$5[$$11];
             if ($$12 != 0) {
-               edy.a $$13 = $$2.a().get($$11);
+               edz.a $$13 = $$2.a().get($$11);
 
                for (int $$14 = 0; $$14 < $$12; $$14++) {
                   $$1.a($$8, $$13.b().a($$3, $$8), 2);

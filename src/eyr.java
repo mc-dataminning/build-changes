@@ -1,69 +1,54 @@
-import it.unimi.dsi.fastutil.Hash.Strategy;
-import java.util.Comparator;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
 
-public record eyr<T>(T d, jd e, long f, eyv g, long h) {
-   public static final Comparator<eyr<?>> a = ($$0, $$1) -> {
-      int $$2 = Long.compare($$0.f, $$1.f);
-      if ($$2 != 0) {
-         return $$2;
-      } else {
-         $$2 = $$0.g.compareTo($$1.g);
-         return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
+public class eyr<T> implements eyu<T>, eyw<T> {
+   private final List<eys<T>> a = Lists.newArrayList();
+   private final Set<eys<?>> b = new ObjectOpenCustomHashSet(eys.a);
+
+   @Override
+   public void a(eyt<T> $$0) {
+      eys<T> $$1 = new eys<>($$0.a(), $$0.b(), 0, $$0.d());
+      this.a($$1);
+   }
+
+   private void a(eys<T> $$0) {
+      if (this.b.add($$0)) {
+         this.a.add($$0);
       }
-   };
-   public static final Comparator<eyr<?>> b = ($$0, $$1) -> {
-      int $$2 = $$0.g.compareTo($$1.g);
-      return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
-   };
-   public static final Strategy<eyr<?>> c = new Strategy<eyr<?>>() {
-      public int a(eyr<?> $$0) {
-         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
+   }
+
+   @Override
+   public boolean a(jd $$0, T $$1) {
+      return this.b.contains(eys.a($$1, $$0));
+   }
+
+   @Override
+   public int a() {
+      return this.a.size();
+   }
+
+   @Override
+   public uy b(long $$0, Function<T, String> $$1) {
+      uh $$2 = new uh();
+
+      for (eys<T> $$3 : this.a) {
+         $$2.add($$3.a($$1));
       }
 
-      public boolean a(@Nullable eyr<?> $$0, @Nullable eyr<?> $$1) {
-         if ($$0 == $$1) {
-            return true;
-         } else {
-            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
-         }
-      }
-   };
-
-   public eyr(T $$0, jd $$1, long $$2, long $$3) {
-      this($$0, $$1, $$2, eyv.d, $$3);
+      return $$2;
    }
 
-   public eyr(T d, jd e, long f, eyv g, long h) {
-      e = e.j();
-      this.d = d;
-      this.e = e;
-      this.f = f;
-      this.g = g;
-      this.h = h;
+   public List<eys<T>> b() {
+      return List.copyOf(this.a);
    }
 
-   public static <T> eyr<T> a(T $$0, jd $$1) {
-      return new eyr<>($$0, $$1, 0L, eyv.d, 0L);
-   }
-
-   public T a() {
-      return this.d;
-   }
-
-   public jd b() {
-      return this.e;
-   }
-
-   public long c() {
-      return this.f;
-   }
-
-   public eyv d() {
-      return this.g;
-   }
-
-   public long e() {
-      return this.h;
+   public static <T> eyr<T> a(uh $$0, Function<String, Optional<T>> $$1, dcd $$2) {
+      eyr<T> $$3 = new eyr<>();
+      eys.a($$0, $$1, $$2, $$3::a);
+      return $$3;
    }
 }

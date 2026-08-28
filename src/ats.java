@@ -12,7 +12,7 @@ public class ats extends atj {
    private static final asr h = new asr(false, atm.b.a, false);
    private static final akr i = akr.b("datapacks");
 
-   public ats(ewq $$0) {
+   public ats(ews $$0) {
       super(ass.b, b(), i, $$0);
    }
 
@@ -42,15 +42,15 @@ public class ats extends atj {
       return atm.a(a($$0, $$2), $$1, ass.b, h);
    }
 
-   public static atp a(Path $$0, ewq $$1) {
+   public static atp a(Path $$0, ews $$1) {
       return new atp(new ats($$1), new atk($$0, ass.b, atq.e, $$1));
    }
 
    public static atp c() {
-      return new atp(new ats(new ewq($$0 -> true)));
+      return new atp(new ats(new ews($$0 -> true)));
    }
 
-   public static atp a(erd.c $$0) {
-      return a($$0.a(erb.j), $$0.d().e());
+   public static atp a(erf.c $$0) {
+      return a($$0.a(erd.j), $$0.d().e());
    }
 }

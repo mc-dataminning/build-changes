@@ -1,13 +1,10 @@
+import com.google.common.collect.Lists;
 import com.google.gson.annotations.SerializedName;
+import java.util.List;
 
-public class fck extends fda implements fcu {
-   @SerializedName("name")
-   public String a;
-   @SerializedName("description")
-   public String b;
-
-   public fck(String $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+public class fck extends fdc implements fcw {
+   @SerializedName("pingResults")
+   public List<fcx> a = Lists.newArrayList();
+   @SerializedName("worldIds")
+   public List<Long> b = Lists.newArrayList();
 }

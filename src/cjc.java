@@ -17,7 +17,7 @@ public class cjc extends ciz implements buo<jm<cjd>> {
 
    @Override
    protected void a(aka.a $$0) {
-      $$0.a(h, this.dR().d(lu.X).a().orElseThrow());
+      $$0.a(h, this.dQ().d(lu.X).a().orElseThrow());
    }
 
    @Override
@@ -80,33 +80,33 @@ public class cjc extends ciz implements buo<jm<cjd>> {
 
    @Override
    public void b(ub $$0) {
-      f.encodeStart(this.dR().a(up.a), this.v()).ifSuccess($$1 -> $$0.a((ub)$$1));
+      f.encodeStart(this.dQ().a(up.a), this.v()).ifSuccess($$1 -> $$0.a((ub)$$1));
       $$0.a("facing", (byte)this.d.e());
       super.b($$0);
    }
 
    @Override
    public void a(ub $$0) {
-      f.parse(this.dR().a(up.a), $$0).ifSuccess(this::b);
+      f.parse(this.dQ().a(up.a), $$0).ifSuccess(this::b);
       this.d = ji.b($$0.f("facing"));
       super.a($$0);
       this.a(this.d);
    }
 
    @Override
-   protected ewv a(jd $$0, ji $$1) {
+   protected ewx a(jd $$0, ji $$1) {
       float $$2 = 0.46875F;
-      exa $$3 = exa.b($$0).a($$1, -0.46875);
+      exc $$3 = exc.b($$0).a($$1, -0.46875);
       cjd $$4 = this.v().a();
       double $$5 = this.b($$4.b());
       double $$6 = this.b($$4.c());
       ji $$7 = $$1.i();
-      exa $$8 = $$3.a($$7, $$5).a(ji.b, $$6);
+      exc $$8 = $$3.a($$7, $$5).a(ji.b, $$6);
       ji.a $$9 = $$1.o();
       double $$10 = $$9 == ji.a.a ? 0.0625 : (double)$$4.b();
       double $$11 = (double)$$4.c();
       double $$12 = $$9 == ji.a.c ? 0.0625 : (double)$$4.b();
-      return ewv.a($$8, $$10, $$11, $$12);
+      return ewx.a($$8, $$10, $$11, $$12);
    }
 
    private double b(int $$0) {
@@ -115,9 +115,9 @@ public class cjc extends ciz implements buo<jm<cjd>> {
 
    @Override
    public void b(@Nullable bsr $$0) {
-      if (this.dP().ab().b(dcs.i)) {
+      if (this.dO().ab().b(dcs.i)) {
          this.a(avp.ss, 1.0F, 1.0F);
-         if ($$0 instanceof cmx $$1 && $$1.fM()) {
+         if ($$0 instanceof cmx $$1 && $$1.fL()) {
             return;
          }
 
@@ -141,8 +141,8 @@ public class cjc extends ciz implements buo<jm<cjd>> {
    }
 
    @Override
-   public exa do() {
-      return exa.a(this.b);
+   public exc dn() {
+      return exc.a(this.b);
    }
 
    @Override
@@ -157,7 +157,7 @@ public class cjc extends ciz implements buo<jm<cjd>> {
    }
 
    @Override
-   public cuq dC() {
+   public cuq dB() {
       return new cuq(cut.pZ);
    }
 }

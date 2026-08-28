@@ -43,7 +43,7 @@ public class ctu extends cul implements cvm {
       double $$5 = $$4.a((double)$$3.j(), 0.11485000000000001);
       double $$6 = $$4.a((double)$$3.k(), 0.11485000000000001);
       double $$7 = $$4.a((double)$$3.l(), 0.11485000000000001);
-      exa $$8 = new exa($$5, $$6, $$7);
+      exc $$8 = new exc($$5, $$6, $$7);
       cnt $$9 = new cnt($$0, $$1.a(), $$1.b(), $$1.c(), $$8.d());
       $$9.a($$2);
       return $$9;
@@ -55,6 +55,6 @@ public class ctu extends cul implements cvm {
 
    @Override
    public cvm.a c() {
-      return cvm.a.a().a(($$0, $$1) -> did.a($$0, 1.0, exa.b)).a(6.6666665F).b(1.0F).a(1018).a();
+      return cvm.a.a().a(($$0, $$1) -> did.a($$0, 1.0, exc.b)).a(6.6666665F).b(1.0F).a(1018).a();
    }
 }

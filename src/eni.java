@@ -1,26 +1,51 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class eni extends enl {
-   public static final MapCodec<eni> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(lt.e.r().fieldOf("block").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d)).apply($$0, eni::new)
+public class eni {
+   public static final eoa a = eoa.a;
+   public static final Codec<eni> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               enn.c.fieldOf("input_predicate").forGetter($$0x -> $$0x.c),
+               enn.c.fieldOf("location_predicate").forGetter($$0x -> $$0x.d),
+               eng.c.lenientOptionalFieldOf("position_predicate", enf.b).forGetter($$0x -> $$0x.e),
+               dtc.b.fieldOf("output_state").forGetter($$0x -> $$0x.f),
+               eob.c.lenientOptionalFieldOf("block_entity_modifier", a).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, eni::new)
    );
-   private final dfy b;
-   private final float d;
+   private final enn c;
+   private final enn d;
+   private final eng e;
+   private final dtc f;
+   private final eob g;
 
-   public eni(dfy $$0, float $$1) {
-      this.b = $$0;
+   public eni(enn $$0, enn $$1, dtc $$2) {
+      this($$0, $$1, enf.b, $$2);
+   }
+
+   public eni(enn $$0, enn $$1, eng $$2, dtc $$3) {
+      this($$0, $$1, $$2, $$3, a);
+   }
+
+   public eni(enn $$0, enn $$1, eng $$2, dtc $$3, eob $$4) {
+      this.c = $$0;
       this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
-   @Override
-   public boolean a(dtc $$0, ayw $$1) {
-      return $$0.a(this.b) && $$1.i() < this.d;
+   public boolean a(dtc $$0, dtc $$1, jd $$2, jd $$3, jd $$4, ayw $$5) {
+      return this.c.a($$0, $$5) && this.d.a($$1, $$5) && this.e.a($$2, $$3, $$4, $$5);
    }
 
-   @Override
-   protected enm<?> a() {
-      return enm.e;
+   public dtc a() {
+      return this.f;
+   }
+
+   @Nullable
+   public ub a(ayw $$0, @Nullable ub $$1) {
+      return this.g.a($$0, $$1);
    }
 }

@@ -1,19 +1,19 @@
 public class bvk implements bwv {
    private final jd a;
-   private final exa b;
+   private final exc b;
 
    public bvk(jd $$0) {
       this.a = $$0.j();
-      this.b = exa.b($$0);
+      this.b = exc.b($$0);
    }
 
-   public bvk(exa $$0) {
+   public bvk(exc $$0) {
       this.a = jd.a((jw)$$0);
       this.b = $$0;
    }
 
    @Override
-   public exa a() {
+   public exc a() {
       return this.b;
    }
 

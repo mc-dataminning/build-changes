@@ -10,8 +10,8 @@ public abstract class cfe extends bsl {
 
    protected cfe(bsx<? extends cfe> $$0, dcw $$1) {
       super($$0, $$1);
-      this.a(ept.n, 16.0F);
-      this.a(ept.o, -1.0F);
+      this.a(epv.n, 16.0F);
+      this.a(epv.o, -1.0F);
    }
 
    @Override
@@ -36,14 +36,14 @@ public abstract class cfe extends bsl {
             double $$0 = this.ah.k() * 0.02;
             double $$1 = this.ah.k() * 0.02;
             double $$2 = this.ah.k() * 0.02;
-            this.dP().a(lm.Q, this.d(1.0), this.dx() + 0.5, this.g(1.0), $$0, $$1, $$2);
+            this.dO().a(lm.Q, this.d(1.0), this.dw() + 0.5, this.g(1.0), $$0, $$1, $$2);
          }
       }
    }
 
    @Override
    protected void f(brk $$0, float $$1) {
-      this.gu();
+      this.gt();
       super.f($$0, $$1);
    }
 
@@ -70,7 +70,7 @@ public abstract class cfe extends bsl {
 
    public static boolean b(bsx<? extends cfe> $$0, dcx $$1, btr $$2, jd $$3, ayw $$4) {
       boolean $$5 = btr.b($$2) || a($$1, $$3);
-      return $$1.a_($$3.e()).a(awe.bW) && $$5;
+      return $$1.a_($$3.e()).a(awe.bX) && $$5;
    }
 
    protected static boolean a(dbz $$0, jd $$1) {
@@ -88,8 +88,8 @@ public abstract class cfe extends bsl {
    }
 
    @Override
-   protected int eh() {
-      return 1 + this.dP().z.a(3);
+   protected int eg() {
+      return 1 + this.dO().z.a(3);
    }
 
    public abstract boolean o(cuq var1);
@@ -99,7 +99,7 @@ public abstract class cfe extends bsl {
       cuq $$2 = $$0.b($$1);
       if (this.o($$2)) {
          int $$3 = this.g();
-         if (!this.dP().B && $$3 == 0 && this.gq()) {
+         if (!this.dO().B && $$3 == 0 && this.gp()) {
             this.a($$0, $$1, $$2);
             this.f($$0);
             return bqr.a;
@@ -108,10 +108,10 @@ public abstract class cfe extends bsl {
          if (this.o_()) {
             this.a($$0, $$1, $$2);
             this.a(d_(-$$3), true);
-            return bqr.a(this.dP().B);
+            return bqr.a(this.dO().B);
          }
 
-         if (this.dP().B) {
+         if (this.dO().B) {
             return bqr.c;
          }
       }
@@ -123,42 +123,42 @@ public abstract class cfe extends bsl {
       $$2.a(1, $$0);
    }
 
-   public boolean gq() {
+   public boolean gp() {
       return this.ca <= 0;
    }
 
    public void f(@Nullable cmx $$0) {
       this.ca = 600;
       if ($$0 != null) {
-         this.cb = $$0.cA();
+         this.cb = $$0.cz();
       }
 
-      this.dP().a(this, (byte)18);
+      this.dO().a(this, (byte)18);
    }
 
    public void s(int $$0) {
       this.ca = $$0;
    }
 
-   public int gr() {
+   public int gq() {
       return this.ca;
    }
 
    @Nullable
-   public aqv gs() {
+   public aqv gr() {
       if (this.cb == null) {
          return null;
       } else {
-         cmx $$0 = this.dP().b(this.cb);
+         cmx $$0 = this.dO().b(this.cb);
          return $$0 instanceof aqv ? (aqv)$$0 : null;
       }
    }
 
-   public boolean gt() {
+   public boolean gs() {
       return this.ca > 0;
    }
 
-   public void gu() {
+   public void gt() {
       this.ca = 0;
    }
 
@@ -166,7 +166,7 @@ public abstract class cfe extends bsl {
       if ($$0 == this) {
          return false;
       } else {
-         return $$0.getClass() != this.getClass() ? false : this.gt() && $$0.gt();
+         return $$0.getClass() != this.getClass() ? false : this.gs() && $$0.gs();
       }
    }
 
@@ -174,24 +174,24 @@ public abstract class cfe extends bsl {
       bsl $$2 = this.a($$0, (bsl)$$1);
       if ($$2 != null) {
          $$2.a(true);
-         $$2.b(this.du(), this.dw(), this.dA(), 0.0F, 0.0F);
+         $$2.b(this.dt(), this.dv(), this.dz(), 0.0F, 0.0F);
          this.a($$0, $$1, $$2);
          $$0.a_($$2);
       }
    }
 
    public void a(aqu $$0, cfe $$1, @Nullable bsl $$2) {
-      Optional.ofNullable(this.gs()).or(() -> Optional.ofNullable($$1.gs())).ifPresent($$2x -> {
+      Optional.ofNullable(this.gr()).or(() -> Optional.ofNullable($$1.gr())).ifPresent($$2x -> {
          $$2x.a(avz.P);
          an.p.a($$2x, this, $$1, $$2);
       });
       this.c_(6000);
       $$1.c_(6000);
-      this.gu();
-      $$1.gu();
+      this.gt();
+      $$1.gt();
       $$0.a(this, (byte)18);
       if ($$0.ab().b(dcs.f)) {
-         $$0.b(new btc($$0, this.du(), this.dw(), this.dA(), this.dS().a(7) + 1));
+         $$0.b(new btc($$0, this.dt(), this.dv(), this.dz(), this.dR().a(7) + 1));
       }
    }
 
@@ -202,7 +202,7 @@ public abstract class cfe extends bsl {
             double $$2 = this.ah.k() * 0.02;
             double $$3 = this.ah.k() * 0.02;
             double $$4 = this.ah.k() * 0.02;
-            this.dP().a(lm.Q, this.d(1.0), this.dx() + 0.5, this.g(1.0), $$2, $$3, $$4);
+            this.dO().a(lm.Q, this.d(1.0), this.dw() + 0.5, this.g(1.0), $$2, $$3, $$4);
          }
       } else {
          super.b($$0);

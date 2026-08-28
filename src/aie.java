@@ -1,10 +1,10 @@
 public class aie implements zg<agi> {
    public static final yx<vw, aie> a = zg.a(aie::a, aie::new);
-   private final eww b;
+   private final ewy b;
    private final bqq c;
    private final int d;
 
-   public aie(bqq $$0, eww $$1, int $$2) {
+   public aie(bqq $$0, ewy $$1, int $$2) {
       this.c = $$0;
       this.b = $$1;
       this.d = $$2;
@@ -35,7 +35,7 @@ public class aie implements zg<agi> {
       return this.c;
    }
 
-   public eww e() {
+   public ewy e() {
       return this.b;
    }
 

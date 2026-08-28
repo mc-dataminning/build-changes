@@ -4,7 +4,7 @@ public class ckc extends ckm {
    }
 
    public static buv.a s() {
-      return ckd.gr().a(buw.v, 0.2F);
+      return ckd.gq().a(buw.v, 0.2F);
    }
 
    public static boolean b(bsx<ckc> $$0, dcx $$1, btr $$2, jd $$3, ayw $$4) {
@@ -38,23 +38,23 @@ public class ckc extends ckm {
    }
 
    @Override
-   protected void gh() {
+   protected void gg() {
       this.e *= 0.9F;
    }
 
    @Override
-   protected void fg() {
-      exa $$0 = this.ds();
-      float $$1 = (float)this.gm() * 0.1F;
-      this.n($$0.c, (double)(this.fe() + $$1), $$0.e);
+   protected void ff() {
+      exc $$0 = this.dr();
+      float $$1 = (float)this.gl() * 0.1F;
+      this.n($$0.c, (double)(this.fd() + $$1), $$0.e);
       this.av = true;
    }
 
    @Override
-   protected void c(awu<epb> $$0) {
+   protected void c(awu<epd> $$0) {
       if ($$0 == awk.b) {
-         exa $$1 = this.ds();
-         this.n($$1.c, (double)(0.22F + (float)this.gm() * 0.05F), $$1.e);
+         exc $$1 = this.dr();
+         this.n($$1.c, (double)(0.22F + (float)this.gl() * 0.05F), $$1.e);
          this.av = true;
       } else {
          super.c($$0);
@@ -62,32 +62,32 @@ public class ckc extends ckm {
    }
 
    @Override
-   protected boolean gi() {
-      return this.dc();
+   protected boolean gh() {
+      return this.db();
    }
 
    @Override
-   protected float gj() {
-      return super.gj() + 2.0F;
+   protected float gi() {
+      return super.gi() + 2.0F;
    }
 
    @Override
    protected avo d(brk $$0) {
-      return this.gn() ? avp.ot : avp.os;
+      return this.gm() ? avp.ot : avp.os;
    }
 
    @Override
    protected avo n_() {
-      return this.gn() ? avp.oh : avp.or;
+      return this.gm() ? avp.oh : avp.or;
+   }
+
+   @Override
+   protected avo gj() {
+      return this.gm() ? avp.ow : avp.ov;
    }
 
    @Override
    protected avo gk() {
-      return this.gn() ? avp.ow : avp.ov;
-   }
-
-   @Override
-   protected avo gl() {
       return avp.ou;
    }
 }

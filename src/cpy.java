@@ -54,7 +54,7 @@ public class cpy extends cpu {
    @Override
    public void a(cmx $$0) {
       super.a($$0);
-      if (!$$0.dP().B) {
+      if (!$$0.dO().B) {
          cuq $$1 = this.t.a(this.t.a());
          if (!$$1.e()) {
             $$0.a($$1, false);

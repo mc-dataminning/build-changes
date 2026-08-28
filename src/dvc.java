@@ -36,7 +36,7 @@ public abstract class dvc implements dvl, AutoCloseable {
    public void close() throws IOException {
    }
 
-   public abstract eor p();
+   public abstract eot p();
 
    public void a(boolean $$0, boolean $$1) {
    }

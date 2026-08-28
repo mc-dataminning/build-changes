@@ -18,9 +18,9 @@ public abstract class atj implements atr {
    private final ass d;
    private final asu e;
    private final akr f;
-   private final ewq g;
+   private final ews g;
 
-   public atj(ass $$0, asu $$1, akr $$2, ewq $$3) {
+   public atj(ass $$0, asu $$1, akr $$2, ews $$3) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;

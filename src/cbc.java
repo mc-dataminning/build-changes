@@ -44,8 +44,8 @@ public class cbc extends cam {
    @Override
    public void a() {
       this.a.I().a(this.b, 30.0F, 30.0F);
-      double $$0 = (double)(this.a.dk() * 2.0F * this.a.dk() * 2.0F);
-      double $$1 = this.a.i(this.b.du(), this.b.dw(), this.b.dA());
+      double $$0 = (double)(this.a.dj() * 2.0F * this.a.dj() * 2.0F);
+      double $$1 = this.a.i(this.b.dt(), this.b.dv(), this.b.dz());
       double $$2 = 0.8;
       if ($$1 > $$0 && $$1 < 16.0) {
          $$2 = 1.33;

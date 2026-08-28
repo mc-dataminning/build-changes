@@ -17,7 +17,7 @@ public class anw {
       });
    }
 
-   private static Collection<String> a(atp $$0, erj $$1, Collection<String> $$2) {
+   private static Collection<String> a(atp $$0, erl $$1, Collection<String> $$2) {
       $$0.a();
       Collection<String> $$3 = Lists.newArrayList($$2);
       Collection<String> $$4 = $$1.D().a().b();
@@ -36,7 +36,7 @@ public class anw {
          et $$1 = (et)$$0x.getSource();
          MinecraftServer $$2 = $$1.l();
          atp $$3 = $$2.aG();
-         erj $$4 = $$2.bb();
+         erl $$4 = $$2.bb();
          Collection<String> $$5 = $$3.d();
          Collection<String> $$6 = a($$3, $$4, $$5);
          $$1.a(() -> wz.c("commands.reload.success"), true);

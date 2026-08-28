@@ -25,7 +25,7 @@ public interface dam {
       public static final MapCodec<dam.a> a = dam.a(das.b, dam.a::new, dam.a::b);
 
       @Override
-      public void a(aqu $$0, int $$1, dab $$2, bsr $$3, exa $$4) {
+      public void a(aqu $$0, int $$1, dab $$2, bsr $$3, exc $$4) {
          for (das $$5 : this.d) {
             $$5.a($$0, $$1, $$2, $$3, $$4);
          }
@@ -45,14 +45,14 @@ public interface dam {
       public static final MapCodec<dam.b> a = dam.a(dat.c, dam.b::new, dam.b::b);
 
       @Override
-      public void a(aqu $$0, int $$1, dab $$2, bsr $$3, exa $$4, boolean $$5) {
+      public void a(aqu $$0, int $$1, dab $$2, bsr $$3, exc $$4, boolean $$5) {
          for (dat $$6 : this.b) {
             $$6.a($$0, $$1, $$2, $$3, $$4, $$5);
          }
       }
 
       @Override
-      public void a(dab $$0, bsr $$1, exa $$2, int $$3) {
+      public void a(dab $$0, bsr $$1, exc $$2, int $$3) {
          for (dat $$4 : this.b) {
             $$4.a($$0, $$1, $$2, $$3);
          }

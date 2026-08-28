@@ -21,9 +21,9 @@ public class dxk<T extends dxg> {
       return this.b.remove($$0);
    }
 
-   public axa.a a(ewv $$0, axa<T> $$1) {
+   public axa.a a(ewx $$0, axa<T> $$1) {
       for (T $$2 : this.b) {
-         if ($$2.cL().c($$0) && $$1.accept($$2).a()) {
+         if ($$2.cK().c($$0) && $$1.accept($$2).a()) {
             return axa.a.b;
          }
       }
@@ -31,14 +31,14 @@ public class dxk<T extends dxg> {
       return axa.a.a;
    }
 
-   public <U extends T> axa.a a(dxn<T, U> $$0, ewv $$1, axa<? super U> $$2) {
+   public <U extends T> axa.a a(dxn<T, U> $$0, ewx $$1, axa<? super U> $$2) {
       Collection<? extends T> $$3 = this.b.a($$0.a());
       if ($$3.isEmpty()) {
          return axa.a.a;
       } else {
          for (T $$4 : $$3) {
             U $$5 = (U)$$0.a($$4);
-            if ($$5 != null && $$4.cL().c($$1) && $$2.accept($$5).a()) {
+            if ($$5 != null && $$4.cK().c($$1) && $$2.accept($$5).a()) {
                return axa.a.b;
             }
          }

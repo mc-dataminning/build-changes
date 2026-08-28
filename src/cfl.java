@@ -49,7 +49,7 @@ public class cfl extends cfe {
    }
 
    @Override
-   protected float fb() {
+   protected float fa() {
       return 0.4F;
    }
 
@@ -60,7 +60,7 @@ public class cfl extends cfe {
          $$0.a(avp.ge, 1.0F, 1.0F);
          cuq $$3 = cus.a($$2, $$0, cut.qE.w());
          $$0.a($$1, $$3);
-         return bqr.a(this.dP().B);
+         return bqr.a(this.dO().B);
       } else {
          return super.b($$0, $$1);
       }

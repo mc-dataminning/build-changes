@@ -48,17 +48,17 @@ public class cpd extends cou implements drg {
 
    @Override
    public double H() {
-      return this.du();
+      return this.dt();
    }
 
    @Override
    public double I() {
-      return this.dw() + 0.5;
+      return this.dv() + 0.5;
    }
 
    @Override
    public double J() {
-      return this.dA();
+      return this.dz();
    }
 
    @Override
@@ -69,16 +69,16 @@ public class cpd extends cou implements drg {
    @Override
    public void l() {
       super.l();
-      if (!this.dP().B && this.bE() && this.F() && this.L()) {
+      if (!this.dO().B && this.bE() && this.F() && this.L()) {
          this.e();
       }
    }
 
    public boolean L() {
-      if (drh.a(this.dP(), this)) {
+      if (drh.a(this.dO(), this)) {
          return true;
       } else {
-         for (cjh $$1 : this.dP().a(cjh.class, this.cL().c(0.25, 0.0, 0.25), bsw.a)) {
+         for (cjh $$1 : this.dO().a(cjh.class, this.cK().c(0.25, 0.0, 0.25), bsw.a)) {
             if (drh.a(this, $$1)) {
                return true;
             }

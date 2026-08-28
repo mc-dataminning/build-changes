@@ -86,7 +86,7 @@ public abstract class bvh<E extends btn> implements bvi<E> {
       for (Entry<ccs<?>, cct> $$1 : this.b.entrySet()) {
          ccs<?> $$2 = $$1.getKey();
          cct $$3 = $$1.getValue();
-         if (!$$0.dU().a($$2, $$3)) {
+         if (!$$0.dT().a($$2, $$3)) {
             return false;
          }
       }

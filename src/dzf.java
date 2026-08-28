@@ -52,7 +52,7 @@ public class dzf {
    }
 
    public static jm<? extends dyr> a(qq<dyr> $$0) {
-      jn<eof.a> $$1 = $$0.a(lu.aP);
+      jn<eoh.a> $$1 = $$0.a(lu.aP);
       jn<dyr> $$2 = $$0.a(lu.aJ);
       $$0.a(u, dys.a());
       int $$3 = dwy.e * 2;
@@ -60,9 +60,9 @@ public class dzf {
       $$0.a(v, dys.a($$3, $$4, (double)$$3, (double)$$4));
       dyr $$5 = a($$0, w, dys.b(dys.c(dys.b($$1.b(dzh.j)))));
       dyr $$6 = a($$0, x, dys.b(dys.c(dys.c($$1.b(dzh.j)))));
-      $$0.a(y, eoc.a(0.25, 0.125, 80.0, 160.0, 8.0));
-      $$0.a(z, eoc.a(0.25, 0.375, 80.0, 60.0, 8.0));
-      $$0.a(A, eoc.a(0.25, 0.25, 80.0, 160.0, 4.0));
+      $$0.a(y, eoe.a(0.25, 0.125, 80.0, 160.0, 8.0));
+      $$0.a(z, eoe.a(0.25, 0.375, 80.0, 60.0, 8.0));
+      $$0.a(A, eoe.a(0.25, 0.25, 80.0, 160.0, 4.0));
       jm<dyr> $$7 = $$0.a(d, dys.b(dys.a($$5, $$6, 0.25, $$1.b(dzh.c))));
       jm<dyr> $$8 = $$0.a(e, dys.b(dys.a($$5, $$6, 0.25, $$1.b(dzh.d))));
       dyr $$9 = a($$0, f, dys.b(dys.a($$5, $$6, 0.25, $$1.b(dzh.i))));
@@ -114,13 +114,13 @@ public class dzf {
       return -(Math.abs(Math.abs($$0) - 0.6666667F) - 0.33333334F) * 3.0F;
    }
 
-   private static dyr b(jn<eof.a> $$0) {
+   private static dyr b(jn<eoh.a> $$0) {
       dyr $$1 = dys.a($$0.b(dzh.z));
       dyr $$2 = dys.a($$0.b(dzh.A), 0.0, -0.1);
       return dys.d(dys.b($$2, dys.a($$1.d(), dys.a(-0.4))));
    }
 
-   private static dyr d(jn<dyr> $$0, jn<eof.a> $$1) {
+   private static dyr d(jn<dyr> $$0, jn<eoh.a> $$1) {
       dyr $$2 = dys.d(dys.b($$1.b(dzh.x), 2.0, 1.0));
       dyr $$3 = dys.a($$1.b(dzh.y), -0.065, -0.088);
       dyr $$4 = dys.a($$2, $$1.b(dzh.v), dys.z.a.a);
@@ -132,7 +132,7 @@ public class dzf {
       return dys.d(dys.c($$9, dys.a($$7, $$6)));
    }
 
-   private static dyr e(jn<dyr> $$0, jn<eof.a> $$1) {
+   private static dyr e(jn<dyr> $$0, jn<eoh.a> $$1) {
       dyr $$2 = a($$0, v);
       int $$3 = -64;
       int $$4 = -60;
@@ -146,7 +146,7 @@ public class dzf {
       return dys.a($$6, -1000000.0, 0.0, dys.a(64.0), dys.a($$7, $$11));
    }
 
-   private static dyr c(jn<eof.a> $$0) {
+   private static dyr c(jn<eoh.a> $$0) {
       double $$1 = 25.0;
       double $$2 = 0.3;
       dyr $$3 = dys.b($$0.b(dzh.o), 25.0, 0.3);
@@ -156,7 +156,7 @@ public class dzf {
       return dys.d(dys.b($$6, $$5.f()));
    }
 
-   private static dyr f(jn<dyr> $$0, jn<eof.a> $$1) {
+   private static dyr f(jn<dyr> $$0, jn<eoh.a> $$1) {
       dyr $$2 = dys.b($$1.b(dzh.t), 2.0, 1.0);
       dyr $$3 = dys.a($$2, $$1.b(dzh.r), dys.z.a.b);
       dyr $$4 = dys.a($$1.b(dzh.s), 0.0, (double)Math.floorDiv(-64, 8), 8.0);
@@ -168,7 +168,7 @@ public class dzf {
       return dys.d($$9, $$7).a(-1.0, 1.0);
    }
 
-   private static dyr a(jn<dyr> $$0, jn<eof.a> $$1, dyr $$2) {
+   private static dyr a(jn<dyr> $$0, jn<eoh.a> $$1, dyr $$2) {
       dyr $$3 = a($$0, S);
       dyr $$4 = a($$0, N);
       dyr $$5 = dys.a($$1.b(dzh.C), 8.0);
@@ -187,7 +187,7 @@ public class dzf {
       return dys.b(dys.a($$1), dys.a(0.64)).i();
    }
 
-   protected static dze a(jn<dyr> $$0, jn<eof.a> $$1, boolean $$2, boolean $$3) {
+   protected static dze a(jn<dyr> $$0, jn<eoh.a> $$1, boolean $$2, boolean $$3) {
       dyr $$4 = dys.a($$1.b(dzh.k), 0.5);
       dyr $$5 = dys.a($$1.b(dzh.l), 0.67);
       dyr $$6 = dys.a($$1.b(dzh.n), 0.7142857142857143);
@@ -231,7 +231,7 @@ public class dzf {
       );
    }
 
-   private static dze b(jn<dyr> $$0, jn<eof.a> $$1, dyr $$2) {
+   private static dze b(jn<dyr> $$0, jn<eoh.a> $$1, dyr $$2) {
       dyr $$3 = a($$0, w);
       dyr $$4 = a($$0, x);
       dyr $$5 = dys.a($$3, $$4, 0.25, $$1.b(dzh.a));
@@ -252,15 +252,15 @@ public class dzf {
       return a($$0, $$1, $$2, 72, -184, -23.4375, 4, 32, -0.234375);
    }
 
-   protected static dze a(jn<dyr> $$0, jn<eof.a> $$1) {
+   protected static dze a(jn<dyr> $$0, jn<eoh.a> $$1) {
       return b($$0, $$1, a($$0, 0, 128));
    }
 
-   protected static dze b(jn<dyr> $$0, jn<eof.a> $$1) {
+   protected static dze b(jn<dyr> $$0, jn<eoh.a> $$1) {
       return b($$0, $$1, a($$0, -64, 192));
    }
 
-   protected static dze c(jn<dyr> $$0, jn<eof.a> $$1) {
+   protected static dze c(jn<dyr> $$0, jn<eoh.a> $$1) {
       return b($$0, $$1, a(a($$0, A), 0, 256));
    }
 

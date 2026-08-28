@@ -3,9 +3,9 @@ import javax.annotation.Nullable;
 public class cig extends cic {
    private static final cef b = cef.a().d();
    @Nullable
-   private epq c;
+   private eps c;
    @Nullable
-   private exa d;
+   private exc d;
    private boolean e;
 
    public cig(cia $$0) {
@@ -19,7 +19,7 @@ public class cig extends cic {
 
    @Override
    public void c() {
-      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.du(), this.a.dw(), this.a.dA());
+      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.dt(), this.a.dv(), this.a.dz());
       if ($$0 < 100.0 || $$0 > 22500.0 || this.a.Q || this.a.R) {
          this.j();
       }
@@ -33,28 +33,28 @@ public class cig extends cic {
 
    @Nullable
    @Override
-   public exa g() {
+   public exc g() {
       return this.d;
    }
 
    private void j() {
       if (this.c != null && this.c.c()) {
-         jd $$0 = this.a.dP().a(dyy.a.f, new jd(ecc.a(this.a.s())));
-         int $$1 = this.a.gj() == null ? 0 : this.a.gj().e();
-         if (this.a.dS().a($$1 + 3) == 0) {
-            this.a.gi().a(ciq.c);
+         jd $$0 = this.a.dO().a(dyy.a.f, new jd(ecd.a(this.a.s())));
+         int $$1 = this.a.gi() == null ? 0 : this.a.gi().e();
+         if (this.a.dR().a($$1 + 3) == 0) {
+            this.a.gh().a(ciq.c);
             return;
          }
 
-         cmx $$2 = this.a.dP().a(b, this.a, (double)$$0.u(), (double)$$0.v(), (double)$$0.w());
+         cmx $$2 = this.a.dO().a(b, this.a, (double)$$0.u(), (double)$$0.v(), (double)$$0.w());
          double $$3;
          if ($$2 != null) {
-            $$3 = $$0.b($$2.dn()) / 512.0;
+            $$3 = $$0.b($$2.dm()) / 512.0;
          } else {
             $$3 = 64.0;
          }
 
-         if ($$2 != null && (this.a.dS().a((int)($$3 + 2.0)) == 0 || this.a.dS().a($$1 + 2) == 0)) {
+         if ($$2 != null && (this.a.dR().a((int)($$3 + 2.0)) == 0 || this.a.dR().a($$1 + 2) == 0)) {
             this.a($$2);
             return;
          }
@@ -63,7 +63,7 @@ public class cig extends cic {
       if (this.c == null || this.c.c()) {
          int $$5 = this.a.x();
          int $$6 = $$5;
-         if (this.a.dS().a(8) == 0) {
+         if (this.a.dR().a(8) == 0) {
             this.e = !this.e;
             $$6 = $$5 + 6;
          }
@@ -74,7 +74,7 @@ public class cig extends cic {
             $$6--;
          }
 
-         if (this.a.gj() != null && this.a.gj().e() >= 0) {
+         if (this.a.gi() != null && this.a.gi().e() >= 0) {
             $$6 %= 12;
             if ($$6 < 0) {
                $$6 += 12;
@@ -95,8 +95,8 @@ public class cig extends cic {
    }
 
    private void a(cmx $$0) {
-      this.a.gi().a(ciq.b);
-      this.a.gi().b(ciq.b).a($$0);
+      this.a.gh().a(ciq.b);
+      this.a.gh().b(ciq.b).a($$0);
    }
 
    private void k() {
@@ -108,10 +108,10 @@ public class cig extends cic {
 
          double $$3;
          do {
-            $$3 = (double)((float)$$0.v() + this.a.dS().i() * 20.0F);
+            $$3 = (double)((float)$$0.v() + this.a.dR().i() * 20.0F);
          } while ($$3 < (double)$$0.v());
 
-         this.d = new exa($$1, $$3, $$2);
+         this.d = new exc($$1, $$3, $$2);
       }
    }
 

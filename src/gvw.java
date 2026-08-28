@@ -1,37 +1,60 @@
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
 public class gvw {
-   private static final int a = -1;
-   private Optional<Instant> b = Optional.empty();
-   private long c;
-   private long d;
+   private boolean a;
+   @Nullable
+   private gvq.b b;
+   @Nullable
+   private String c;
+   @Nullable
+   private final String d;
 
-   public void a() {
-      this.d = -1L;
-      if (this.b.isEmpty()) {
-         this.b = Optional.of(Instant.now());
-      }
-   }
-
-   public void a(long $$0) {
-      if (this.d != -1L) {
-         this.c = this.c + Math.max(0L, $$0 - this.d);
-      }
-
+   public gvw(@Nullable String $$0) {
       this.d = $$0;
    }
 
-   private int a(Instant $$0) {
-      Duration $$1 = Duration.between($$0, Instant.now());
-      return (int)$$1.toSeconds();
+   public void a(gvr.a $$0) {
+      if (this.c != null) {
+         $$0.a(gvq.j, !this.c.equals("vanilla"));
+      }
+
+      $$0.a(gvq.k, this.a());
    }
 
-   public void a(gvl $$0) {
-      this.b.ifPresent($$1 -> $$0.send(gvm.e, $$1x -> {
-            $$1x.a(gvo.p, this.a($$1));
-            $$1x.a(gvo.q, (int)this.c);
-         }));
+   private gvq.c a() {
+      fzt $$0 = fgo.Q().S();
+      if ($$0 != null && $$0.e()) {
+         return gvq.c.a;
+      } else {
+         return fgo.Q().U() ? gvq.c.b : gvq.c.c;
+      }
+   }
+
+   public boolean a(gvn $$0) {
+      if (!this.a && this.b != null && this.c != null) {
+         this.a = true;
+         $$0.send(gvo.b, $$0x -> {
+            $$0x.a(gvq.n, this.b);
+            if (this.d != null) {
+               $$0x.a(gvq.o, this.d);
+            }
+         });
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public void a(dct $$0, boolean $$1) {
+      this.b = switch ($$0) {
+         case a -> $$1 ? gvq.b.e : gvq.b.a;
+         case b -> gvq.b.b;
+         case c -> gvq.b.c;
+         case d -> gvq.b.d;
+      };
+   }
+
+   public void a(String $$0) {
+      this.c = $$0;
    }
 }

@@ -1,80 +1,68 @@
 import org.joml.Quaternionf;
-import org.joml.Vector3f;
 
-public abstract class gcy extends gcl {
-   protected float D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
+public class gcy extends gdn {
+   private static final float a = 1.0472F;
+   private int b;
 
-   protected gcy(fzd $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-   }
-
-   protected gcy(fzd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   public gcy.a p() {
-      return gcy.a.a;
+   gcy(fzf $$0, double $$1, double $$2, double $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.D = 0.85F;
+      this.b = $$4;
+      this.t = 30;
+      this.u = 0.0F;
+      this.j = 0.0;
+      this.k = 0.1;
+      this.l = 0.0;
    }
 
    @Override
-   public void a(fbk $$0, ffw $$1, float $$2) {
-      Quaternionf $$3 = new Quaternionf();
-      this.p().setRotation($$3, $$1, $$2);
-      if (this.z != 0.0F) {
-         $$3.rotateZ(ayo.i($$2, this.A, this.z));
+   public float b(float $$0) {
+      return this.D * ayo.a(((float)this.s + $$0) / (float)this.t * 0.75F, 0.0F, 1.0F);
+   }
+
+   @Override
+   public void a(fbm $$0, ffy $$1, float $$2) {
+      if (this.b <= 0) {
+         this.y = 1.0F - ayo.a(((float)this.s + $$2) / (float)this.t, 0.0F, 1.0F);
+         Quaternionf $$3 = new Quaternionf();
+         $$3.rotationX(-1.0472F);
+         this.a($$0, $$1, $$3, $$2);
+         $$3.rotationYXZ((float) -Math.PI, 1.0472F, 0.0F);
+         this.a($$0, $$1, $$3, $$2);
+      }
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public gcr b() {
+      return gcr.c;
+   }
+
+   @Override
+   public void a() {
+      if (this.b > 0) {
+         this.b--;
+      } else {
+         super.a();
+      }
+   }
+
+   public static class a implements gcq<lp> {
+      private final gdi a;
+
+      public a(gdi $$0) {
+         this.a = $$0;
       }
 
-      this.a($$0, $$1, $$3, $$2);
-   }
-
-   protected void a(fbk $$0, ffw $$1, Quaternionf $$2, float $$3) {
-      exa $$4 = $$1.b();
-      float $$5 = (float)(ayo.d((double)$$3, this.d, this.g) - $$4.a());
-      float $$6 = (float)(ayo.d((double)$$3, this.e, this.h) - $$4.b());
-      float $$7 = (float)(ayo.d((double)$$3, this.f, this.i) - $$4.c());
-      this.a($$0, $$2, $$5, $$6, $$7, $$3);
-   }
-
-   protected void a(fbk $$0, Quaternionf $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = this.b($$5);
-      float $$7 = this.c();
-      float $$8 = this.d();
-      float $$9 = this.e();
-      float $$10 = this.f();
-      int $$11 = this.a($$5);
-      this.a($$0, $$1, $$2, $$3, $$4, 1.0F, -1.0F, $$6, $$8, $$10, $$11);
-      this.a($$0, $$1, $$2, $$3, $$4, 1.0F, 1.0F, $$6, $$8, $$9, $$11);
-      this.a($$0, $$1, $$2, $$3, $$4, -1.0F, 1.0F, $$6, $$7, $$9, $$11);
-      this.a($$0, $$1, $$2, $$3, $$4, -1.0F, -1.0F, $$6, $$7, $$10, $$11);
-   }
-
-   private void a(fbk $$0, Quaternionf $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, int $$10) {
-      Vector3f $$11 = new Vector3f($$5, $$6, 0.0F).rotate($$1).mul($$7).add($$2, $$3, $$4);
-      $$0.a($$11.x(), $$11.y(), $$11.z()).a($$8, $$9).a(this.v, this.w, this.x, this.y).c($$10);
-   }
-
-   public float b(float $$0) {
-      return this.D;
-   }
-
-   @Override
-   public gcl d(float $$0) {
-      this.D *= $$0;
-      return super.d($$0);
-   }
-
-   protected abstract float c();
-
-   protected abstract float d();
-
-   protected abstract float e();
-
-   protected abstract float f();
-
-   public interface a {
-      gcy.a a = ($$0, $$1, $$2) -> $$0.set($$1.f());
-      gcy.a b = ($$0, $$1, $$2) -> $$0.set(0.0F, $$1.f().y, 0.0F, $$1.f().w);
-
-      void setRotation(Quaternionf var1, ffw var2, float var3);
+      public gcn a(lp $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gcy $$8 = new gcy($$1, $$2, $$3, $$4, $$0.b());
+         $$8.a(this.a);
+         $$8.e(1.0F);
+         return $$8;
+      }
    }
 }

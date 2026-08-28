@@ -3,9 +3,9 @@ import javax.annotation.Nullable;
 public class cip extends cic {
    private boolean b;
    @Nullable
-   private epq c;
+   private eps c;
    @Nullable
-   private exa d;
+   private exc d;
 
    public cip(cia $$0) {
       super($$0);
@@ -14,9 +14,9 @@ public class cip extends cic {
    @Override
    public void c() {
       if (!this.b && this.c != null) {
-         jd $$0 = this.a.dP().a(dyy.a.f, ecc.a(this.a.s()));
-         if (!$$0.a(this.a.dn(), 10.0)) {
-            this.a.gi().a(ciq.a);
+         jd $$0 = this.a.dO().a(dyy.a.f, ecd.a(this.a.s()));
+         if (!$$0.a(this.a.dm(), 10.0)) {
+            this.a.gh().a(ciq.a);
          }
       } else {
          this.b = false;
@@ -33,9 +33,9 @@ public class cip extends cic {
 
    private void j() {
       int $$0 = this.a.x();
-      exa $$1 = this.a.H(1.0F);
+      exc $$1 = this.a.H(1.0F);
       int $$2 = this.a.q(-$$1.c * 40.0, 105.0, -$$1.e * 40.0);
-      if (this.a.gj() != null && this.a.gj().e() > 0) {
+      if (this.a.gi() != null && this.a.gi().e() > 0) {
          $$2 %= 12;
          if ($$2 < 0) {
             $$2 += 12;
@@ -59,17 +59,17 @@ public class cip extends cic {
 
             double $$1;
             do {
-               $$1 = (double)((float)$$0.v() + this.a.dS().i() * 20.0F);
+               $$1 = (double)((float)$$0.v() + this.a.dR().i() * 20.0F);
             } while ($$1 < (double)$$0.v());
 
-            this.d = new exa((double)$$0.u(), $$1, (double)$$0.w());
+            this.d = new exc((double)$$0.u(), $$1, (double)$$0.w());
          }
       }
    }
 
    @Nullable
    @Override
-   public exa g() {
+   public exc g() {
       return this.d;
    }
 

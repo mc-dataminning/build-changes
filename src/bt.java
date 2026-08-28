@@ -33,7 +33,7 @@ public record bt(
          if (this.g.isPresent()) {
             boolean var10000;
             label53: {
-               if ($$0 instanceof btn $$1 && ($$1.fB() || $$1 instanceof cmx $$2 && $$2.ga().b)) {
+               if ($$0 instanceof btn $$1 && ($$1.fA() || $$1 instanceof cmx $$2 && $$2.fZ().b)) {
                   var10000 = true;
                   break label53;
                }

@@ -10,7 +10,7 @@ public class cuz extends cul {
       dcw $$1 = $$0.q();
       jd $$2 = $$0.a();
       dtc $$3 = $$1.a_($$2);
-      if ($$3.a(awe.S)) {
+      if ($$3.a(awe.T)) {
          cmx $$4 = $$0.o();
          if (!$$1.B && $$4 != null) {
             a($$4, $$1, $$2);
@@ -28,7 +28,7 @@ public class cuz extends cul {
       int $$5 = $$2.u();
       int $$6 = $$2.v();
       int $$7 = $$2.w();
-      ewv $$8 = new ewv((double)$$5 - 7.0, (double)$$6 - 7.0, (double)$$7 - 7.0, (double)$$5 + 7.0, (double)$$6 + 7.0, (double)$$7 + 7.0);
+      ewx $$8 = new ewx((double)$$5 - 7.0, (double)$$6 - 7.0, (double)$$7 - 7.0, (double)$$5 + 7.0, (double)$$6 + 7.0, (double)$$7 + 7.0);
       List<bsr> $$9 = $$1.a(bsr.class, $$8, $$1x -> {
          if ($$1x instanceof btk $$2x && $$2x.A() == $$0) {
             return true;

@@ -11,19 +11,19 @@ public class dox extends dfy implements dna {
    public static final dua<duo> e = dts.Y;
    public static final dua<duo> f = dts.Z;
    public static final dtt g = dts.C;
-   private final Map<dtc, ext> h;
-   private final Map<dtc, ext> i;
+   private final Map<dtc, exv> h;
+   private final Map<dtc, exv> i;
    private static final int j = 3;
    private static final int k = 14;
    private static final int l = 4;
    private static final int m = 1;
    private static final int n = 7;
    private static final int o = 9;
-   private static final ext F = dfy.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0);
-   private static final ext G = dfy.a(7.0, 0.0, 0.0, 9.0, 16.0, 9.0);
-   private static final ext H = dfy.a(7.0, 0.0, 7.0, 9.0, 16.0, 16.0);
-   private static final ext I = dfy.a(0.0, 0.0, 7.0, 9.0, 16.0, 9.0);
-   private static final ext J = dfy.a(7.0, 0.0, 7.0, 16.0, 16.0, 9.0);
+   private static final exv F = dfy.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0);
+   private static final exv G = dfy.a(7.0, 0.0, 0.0, 9.0, 16.0, 9.0);
+   private static final exv H = dfy.a(7.0, 0.0, 7.0, 9.0, 16.0, 16.0);
+   private static final exv I = dfy.a(0.0, 0.0, 7.0, 9.0, 16.0, 9.0);
+   private static final exv J = dfy.a(7.0, 0.0, 7.0, 16.0, 16.0, 9.0);
 
    @Override
    public MapCodec<dox> a() {
@@ -37,42 +37,42 @@ public class dox extends dfy implements dna {
       this.i = this.a(4.0F, 3.0F, 24.0F, 0.0F, 24.0F, 24.0F);
    }
 
-   private static ext a(ext $$0, duo $$1, ext $$2, ext $$3) {
+   private static exv a(exv $$0, duo $$1, exv $$2, exv $$3) {
       if ($$1 == duo.c) {
-         return exq.a($$0, $$3);
+         return exs.a($$0, $$3);
       } else {
-         return $$1 == duo.b ? exq.a($$0, $$2) : $$0;
+         return $$1 == duo.b ? exs.a($$0, $$2) : $$0;
       }
    }
 
-   private Map<dtc, ext> a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   private Map<dtc, exv> a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
       float $$6 = 8.0F - $$0;
       float $$7 = 8.0F + $$0;
       float $$8 = 8.0F - $$1;
       float $$9 = 8.0F + $$1;
-      ext $$10 = dfy.a((double)$$6, 0.0, (double)$$6, (double)$$7, (double)$$2, (double)$$7);
-      ext $$11 = dfy.a((double)$$8, (double)$$3, 0.0, (double)$$9, (double)$$4, (double)$$9);
-      ext $$12 = dfy.a((double)$$8, (double)$$3, (double)$$8, (double)$$9, (double)$$4, 16.0);
-      ext $$13 = dfy.a(0.0, (double)$$3, (double)$$8, (double)$$9, (double)$$4, (double)$$9);
-      ext $$14 = dfy.a((double)$$8, (double)$$3, (double)$$8, 16.0, (double)$$4, (double)$$9);
-      ext $$15 = dfy.a((double)$$8, (double)$$3, 0.0, (double)$$9, (double)$$5, (double)$$9);
-      ext $$16 = dfy.a((double)$$8, (double)$$3, (double)$$8, (double)$$9, (double)$$5, 16.0);
-      ext $$17 = dfy.a(0.0, (double)$$3, (double)$$8, (double)$$9, (double)$$5, (double)$$9);
-      ext $$18 = dfy.a((double)$$8, (double)$$3, (double)$$8, 16.0, (double)$$5, (double)$$9);
-      Builder<dtc, ext> $$19 = ImmutableMap.builder();
+      exv $$10 = dfy.a((double)$$6, 0.0, (double)$$6, (double)$$7, (double)$$2, (double)$$7);
+      exv $$11 = dfy.a((double)$$8, (double)$$3, 0.0, (double)$$9, (double)$$4, (double)$$9);
+      exv $$12 = dfy.a((double)$$8, (double)$$3, (double)$$8, (double)$$9, (double)$$4, 16.0);
+      exv $$13 = dfy.a(0.0, (double)$$3, (double)$$8, (double)$$9, (double)$$4, (double)$$9);
+      exv $$14 = dfy.a((double)$$8, (double)$$3, (double)$$8, 16.0, (double)$$4, (double)$$9);
+      exv $$15 = dfy.a((double)$$8, (double)$$3, 0.0, (double)$$9, (double)$$5, (double)$$9);
+      exv $$16 = dfy.a((double)$$8, (double)$$3, (double)$$8, (double)$$9, (double)$$5, 16.0);
+      exv $$17 = dfy.a(0.0, (double)$$3, (double)$$8, (double)$$9, (double)$$5, (double)$$9);
+      exv $$18 = dfy.a((double)$$8, (double)$$3, (double)$$8, 16.0, (double)$$5, (double)$$9);
+      Builder<dtc, exv> $$19 = ImmutableMap.builder();
 
       for (Boolean $$20 : b.a()) {
          for (duo $$21 : c.a()) {
             for (duo $$22 : d.a()) {
                for (duo $$23 : f.a()) {
                   for (duo $$24 : e.a()) {
-                     ext $$25 = exq.a();
+                     exv $$25 = exs.a();
                      $$25 = a($$25, $$21, $$14, $$18);
                      $$25 = a($$25, $$23, $$13, $$17);
                      $$25 = a($$25, $$22, $$11, $$15);
                      $$25 = a($$25, $$24, $$12, $$16);
                      if ($$20) {
-                        $$25 = exq.a($$25, $$10);
+                        $$25 = exs.a($$25, $$10);
                      }
 
                      dtc $$26 = this.o().a(b, $$20).a(c, $$21).a(f, $$23).a(d, $$22).a(e, $$24);
@@ -88,31 +88,31 @@ public class dox extends dfy implements dna {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return this.h.get($$0);
    }
 
    @Override
-   protected ext b(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv b(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return this.i.get($$0);
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return false;
    }
 
    private boolean a(dtc $$0, boolean $$1, ji $$2) {
       dfy $$3 = $$0.b();
       boolean $$4 = $$3 instanceof dix && dix.a($$0, $$2);
-      return $$0.a(awe.L) || !j($$0) && $$1 || $$3 instanceof djz || $$4;
+      return $$0.a(awe.M) || !j($$0) && $$1 || $$3 instanceof djz || $$4;
    }
 
    @Override
    public dtc a(cyd $$0) {
       dcz $$1 = $$0.q();
       jd $$2 = $$0.a();
-      epc $$3 = $$0.q().b_($$0.a());
+      epe $$3 = $$0.q().b_($$0.a());
       jd $$4 = $$2.f();
       jd $$5 = $$2.i();
       jd $$6 = $$2.g();
@@ -127,14 +127,14 @@ public class dox extends dfy implements dna {
       boolean $$15 = this.a($$10, $$10.d($$1, $$5, ji.e), ji.e);
       boolean $$16 = this.a($$11, $$11.d($$1, $$6, ji.c), ji.c);
       boolean $$17 = this.a($$12, $$12.d($$1, $$7, ji.f), ji.f);
-      dtc $$18 = this.o().a(g, Boolean.valueOf($$3.a() == epd.c));
+      dtc $$18 = this.o().a(g, Boolean.valueOf($$3.a() == epf.c));
       return this.a($$1, $$18, $$8, $$13, $$14, $$15, $$16, $$17);
    }
 
    @Override
    protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
       if ($$0.c(g)) {
-         $$3.a($$4, epd.c, epd.c.a($$3));
+         $$3.a($$4, epf.c, epf.c.a($$3));
       }
 
       if ($$1 == ji.a) {
@@ -148,8 +148,8 @@ public class dox extends dfy implements dna {
       return $$0.c($$1) != duo.a;
    }
 
-   private static boolean a(ext $$0, ext $$1) {
-      return !exq.c($$1, $$0, exe.e);
+   private static boolean a(exv $$0, exv $$1) {
+      return !exs.c($$1, $$0, exg.e);
    }
 
    private dtc a(dcz $$0, dtc $$1, jd $$2, dtc $$3) {
@@ -172,12 +172,12 @@ public class dox extends dfy implements dna {
    }
 
    private dtc a(dcz $$0, dtc $$1, jd $$2, dtc $$3, boolean $$4, boolean $$5, boolean $$6, boolean $$7) {
-      ext $$8 = $$3.k($$0, $$2).a(ji.a);
+      exv $$8 = $$3.k($$0, $$2).a(ji.a);
       dtc $$9 = this.a($$1, $$4, $$5, $$6, $$7, $$8);
       return $$9.a(b, Boolean.valueOf(this.a($$9, $$3, $$8)));
    }
 
-   private boolean a(dtc $$0, dtc $$1, ext $$2) {
+   private boolean a(dtc $$0, dtc $$1, exv $$2) {
       boolean $$3 = $$1.b() instanceof dox && $$1.c(b);
       if ($$3) {
          return true;
@@ -195,16 +195,16 @@ public class dox extends dfy implements dna {
             return true;
          } else {
             boolean $$13 = $$4 == duo.c && $$5 == duo.c || $$6 == duo.c && $$7 == duo.c;
-            return $$13 ? false : $$1.a(awe.aO) || a($$2, F);
+            return $$13 ? false : $$1.a(awe.aP) || a($$2, F);
          }
       }
    }
 
-   private dtc a(dtc $$0, boolean $$1, boolean $$2, boolean $$3, boolean $$4, ext $$5) {
+   private dtc a(dtc $$0, boolean $$1, boolean $$2, boolean $$3, boolean $$4, exv $$5) {
       return $$0.a(d, this.a($$1, $$5, G)).a(c, this.a($$2, $$5, J)).a(e, this.a($$3, $$5, H)).a(f, this.a($$4, $$5, I));
    }
 
-   private duo a(boolean $$0, ext $$1, ext $$2) {
+   private duo a(boolean $$0, exv $$1, exv $$2) {
       if ($$0) {
          return a($$1, $$2) ? duo.c : duo.b;
       } else {
@@ -213,8 +213,8 @@ public class dox extends dfy implements dna {
    }
 
    @Override
-   protected epc b_(dtc $$0) {
-      return $$0.c(g) ? epd.c.a(false) : super.b_($$0);
+   protected epe b_(dtc $$0) {
+      return $$0.c(g) ? epf.c.a(false) : super.b_($$0);
    }
 
    @Override

@@ -19,12 +19,12 @@ public class cny extends cnw {
          double $$1 = 0.08;
 
          for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dP()
+            this.dO()
                .a(
                   new li(lm.S, this.p()),
-                  this.du(),
-                  this.dw(),
-                  this.dA(),
+                  this.dt(),
+                  this.dv(),
+                  this.dz(),
                   ((double)this.ah.i() - 0.5) * 0.08,
                   ((double)this.ah.i() - 0.5) * 0.08,
                   ((double)this.ah.i() - 0.5) * 0.08
@@ -34,15 +34,15 @@ public class cny extends cnw {
    }
 
    @Override
-   protected void a(ewx $$0) {
+   protected void a(ewz $$0) {
       super.a($$0);
-      $$0.a().a(this.dQ().b(this, this.s()), 0.0F);
+      $$0.a().a(this.dP().b(this, this.s()), 0.0F);
    }
 
    @Override
-   protected void a(ewy $$0) {
+   protected void a(exa $$0) {
       super.a($$0);
-      if (!this.dP().B) {
+      if (!this.dO().B) {
          if (this.ah.a(8) == 0) {
             int $$1 = 1;
             if (this.ah.a(32) == 0) {
@@ -50,20 +50,20 @@ public class cny extends cnw {
             }
 
             for (int $$2 = 0; $$2 < $$1; $$2++) {
-               cfj $$3 = bsx.t.a(this.dP());
+               cfj $$3 = bsx.t.a(this.dO());
                if ($$3 != null) {
                   $$3.c_(-24000);
-                  $$3.b(this.du(), this.dw(), this.dA(), this.dF(), 0.0F);
+                  $$3.b(this.dt(), this.dv(), this.dz(), this.dE(), 0.0F);
                   if (!$$3.a(b)) {
                      break;
                   }
 
-                  this.dP().b($$3);
+                  this.dO().b($$3);
                }
             }
          }
 
-         this.dP().a(this, (byte)3);
+         this.dO().a(this, (byte)3);
          this.aq();
       }
    }

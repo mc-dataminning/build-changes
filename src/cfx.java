@@ -28,7 +28,7 @@ public class cfx extends cfb {
       $$0.a(e, 0);
    }
 
-   public int gn() {
+   public int gm() {
       return this.ao.a(e);
    }
 
@@ -48,7 +48,7 @@ public class cfx extends cfb {
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      $$0.a("PuffState", this.gn());
+      $$0.a("PuffState", this.gm());
    }
 
    @Override
@@ -70,22 +70,22 @@ public class cfx extends cfb {
 
    @Override
    public void l() {
-      if (!this.dP().B && this.bE() && this.dc()) {
+      if (!this.dO().B && this.bE() && this.db()) {
          if (this.ca > 0) {
-            if (this.gn() == 0) {
+            if (this.gm() == 0) {
                this.b(avp.uR);
                this.c(1);
-            } else if (this.ca > 40 && this.gn() == 1) {
+            } else if (this.ca > 40 && this.gm() == 1) {
                this.b(avp.uR);
                this.c(2);
             }
 
             this.ca++;
-         } else if (this.gn() != 0) {
-            if (this.cb > 60 && this.gn() == 2) {
+         } else if (this.gm() != 0) {
+            if (this.cb > 60 && this.gm() == 2) {
                this.b(avp.uQ);
                this.c(1);
-            } else if (this.cb > 100 && this.gn() == 1) {
+            } else if (this.cb > 100 && this.gm() == 1) {
                this.b(avp.uQ);
                this.c(0);
             }
@@ -100,8 +100,8 @@ public class cfx extends cfb {
    @Override
    public void m_() {
       super.m_();
-      if (this.bE() && this.gn() > 0) {
-         for (btp $$1 : this.dP().a(btp.class, this.cL().g(0.3), $$0 -> cd.a(this, $$0))) {
+      if (this.bE() && this.gm() > 0) {
+         for (btp $$1 : this.dO().a(btp.class, this.cK().g(0.3), $$0 -> cd.a(this, $$0))) {
             if ($$1.bE()) {
                this.a($$1);
             }
@@ -110,8 +110,8 @@ public class cfx extends cfb {
    }
 
    private void a(btp $$0) {
-      int $$1 = this.gn();
-      if ($$0.a(this.dQ().b((btn)this), (float)(1 + $$1))) {
+      int $$1 = this.gm();
+      if ($$0.a(this.dP().b((btn)this), (float)(1 + $$1))) {
          $$0.b(new brz(bsb.s, 60 * $$1, 0), this);
          this.a(avp.uV, 1.0F, 1.0F);
       }
@@ -119,8 +119,8 @@ public class cfx extends cfb {
 
    @Override
    public void b_(cmx $$0) {
-      int $$1 = this.gn();
-      if ($$0 instanceof aqv && $$1 > 0 && $$0.a(this.dQ().b((btn)this), (float)(1 + $$1))) {
+      int $$1 = this.gm();
+      if ($$0 instanceof aqv && $$1 > 0 && $$0.a(this.dP().b((btn)this), (float)(1 + $$1))) {
          if (!this.aX()) {
             ((aqv)$$0).c.b(new adb(adb.k, 0.0F));
          }
@@ -145,13 +145,13 @@ public class cfx extends cfb {
    }
 
    @Override
-   protected avo gm() {
+   protected avo gl() {
       return avp.uT;
    }
 
    @Override
    public bsu e(bua $$0) {
-      return super.e($$0).a(s(this.gn()));
+      return super.e($$0).a(s(this.gm()));
    }
 
    private static float s(int $$0) {
@@ -174,7 +174,7 @@ public class cfx extends cfb {
 
       @Override
       public boolean b() {
-         List<btn> $$0 = this.a.dP().a(btn.class, this.a.cL().g(2.0), $$0x -> cfx.cd.a(this.a, $$0x));
+         List<btn> $$0 = this.a.dO().a(btn.class, this.a.cK().g(2.0), $$0x -> cfx.cd.a(this.a, $$0x));
          return !$$0.isEmpty();
       }
 

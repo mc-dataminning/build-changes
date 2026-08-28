@@ -2,7 +2,7 @@ import javax.annotation.Nullable;
 
 public class cih extends cic {
    @Nullable
-   private exa b;
+   private exc b;
 
    public cih(cia $$0) {
       super($$0);
@@ -11,7 +11,7 @@ public class cih extends cic {
    @Override
    public void c() {
       if (this.b == null) {
-         this.b = this.a.dn();
+         this.b = this.a.dm();
       }
    }
 
@@ -32,7 +32,7 @@ public class cih extends cic {
 
    @Nullable
    @Override
-   public exa g() {
+   public exc g() {
       return this.b;
    }
 

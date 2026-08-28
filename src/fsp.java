@@ -1,77 +1,59 @@
-import java.util.UUID;
-import java.util.function.Supplier;
+public class fsp extends fod {
+   private static final wz a = wz.c("gui.abuseReport.title");
+   private static final wz b = wz.c("gui.abuseReport.message");
+   private static final wz c = wz.c("gui.abuseReport.type.chat");
+   private static final wz r = wz.c("gui.abuseReport.type.skin");
+   private static final wz s = wz.c("gui.abuseReport.type.name");
+   private static final int u = 6;
+   private final fod v;
+   private final gao w;
+   private final fst x;
+   private final fmd y = fmd.d().a(6);
 
-public class fsp extends fsi<gan.a> {
-   private static final int z = 120;
-   private static final int A = 85;
-   private static final int B = 178;
-   private static final wz C = wz.c("gui.abuseReport.skin.title");
-   private final fmb D = fmb.d().a(8);
-   private fjc E;
-   private fik F;
-   private fik G;
-
-   private fsp(fob $$0, gam $$1, gan.a $$2) {
-      super(C, $$0, $$1, $$2);
+   public fsp(fod $$0, gao $$1, fst $$2) {
+      super(a);
+      this.v = $$0;
+      this.w = $$1;
+      this.x = $$2;
    }
 
-   public fsp(fob $$0, gam $$1, UUID $$2, Supplier<grj> $$3) {
-      this($$0, $$1, new gan.a($$2, $$3, $$1.a().b()));
-   }
-
-   public fsp(fob $$0, gam $$1, gan $$2) {
-      this($$0, $$1, new gan.a($$2, $$1.a().b()));
+   @Override
+   public wz i() {
+      return wy.a(super.i(), b);
    }
 
    @Override
    protected void aT_() {
-      this.D.c().b();
-      this.D.a(new fjr(this.k, this.o));
-      fmb $$0 = this.D.a(fmb.e().a(8));
-      $$0.c().e();
-      $$0.a(new fjk(85, 120, this.l.aP(), this.y.e().a()));
-      fmb $$1 = $$0.a(fmb.d().a(8));
-      this.G = fik.a(c, $$0x -> this.l.a(new fso(this, this.y.h(), $$0xx -> {
-            this.y.a($$0xx);
-            this.C();
-         }))).a(178).a();
-      $$1.a(flt.a(this.o, this.G, b));
-      this.E = this.a(178, 9 * 8, $$0x -> {
-         this.y.a($$0x);
-         this.C();
-      });
-      $$1.a(flt.a(this.o, this.E, r, $$0x -> $$0x.e(12)));
-      fmb $$2 = this.D.a(fmb.e().a(8));
-      $$2.a(fik.a(wy.k, $$0x -> this.d()).a(120).a());
-      this.F = $$2.a(fik.a(a, $$0x -> this.m()).a(120).a());
-      this.D.a($$1x -> {
-         fii var10000 = this.c($$1x);
+      this.y.c().b();
+      this.y.a(new fjt(this.k, this.o), this.y.b().e(6));
+      this.y.a(new fjg(b, this.o).b(true), this.y.b().e(6));
+      fim $$0 = this.y.a(fim.a(c, $$0x -> this.l.a(new fsl(this.v, this.w, this.x.d()))).a());
+      if (!this.x.k()) {
+         $$0.j = false;
+         $$0.a(fjx.a(wz.c("gui.socialInteractions.tooltip.report.not_reportable")));
+      } else if (!this.x.j()) {
+         $$0.j = false;
+         $$0.a(fjx.a(wz.a("gui.socialInteractions.tooltip.report.no_messages", this.x.c())));
+      }
+
+      this.y.a(fim.a(r, $$0x -> this.l.a(new fsr(this.v, this.w, this.x.d(), this.x.h()))).a());
+      this.y.a(fim.a(s, $$0x -> this.l.a(new fso(this.v, this.w, this.x.d(), this.x.c()))).a());
+      this.y.a(fme.b(20));
+      this.y.a(fim.a(wy.e, $$0x -> this.d()).a());
+      this.y.a($$1 -> {
+         fik var10000 = this.c($$1);
       });
       this.c();
-      this.C();
    }
 
    @Override
    protected void c() {
-      this.D.a();
-      flv.a(this.D, this.H());
-   }
-
-   private void C() {
-      gak $$0 = this.y.h();
-      if ($$0 != null) {
-         this.G.b($$0.b());
-      } else {
-         this.G.b(c);
-      }
-
-      gai.b $$1 = this.y.c();
-      this.F.j = $$1 == null;
-      this.F.a(x.a($$1, gai.b::a));
+      this.y.a();
+      flx.a(this.y, this.H());
    }
 
    @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return super.b($$0, $$1, $$2) ? true : this.E.b($$0, $$1, $$2);
+   public void d() {
+      this.l.a(this.v);
    }
 }

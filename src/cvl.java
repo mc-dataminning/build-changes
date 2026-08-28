@@ -37,13 +37,13 @@ public class cvl extends cul {
          $$0.a(1, $$3);
       }
 
-      if ($$3 == null || !$$3.fM()) {
+      if ($$3 == null || !$$3.fL()) {
          if ($$0.e()) {
             return new cuq(cut.sl);
          }
 
          if ($$3 != null) {
-            $$3.fZ().f(new cuq(cut.sl));
+            $$3.fY().f(new cuq(cut.sl));
          }
       }
 
@@ -59,7 +59,7 @@ public class cvl extends cul {
       cuq $$4 = $$0.n();
       cwu $$5 = $$4.a(kq.G, cwu.a);
       dtc $$6 = $$1.a_($$2);
-      if ($$0.k() != ji.a && $$6.a(awe.ci) && $$5.a(cwv.a)) {
+      if ($$0.k() != ji.a && $$6.a(awe.cj) && $$5.a(cwv.a)) {
          $$1.a(null, $$2, avp.ki, avq.e, 1.0F, 1.0F);
          $$3.a($$0.p(), cus.a($$4, $$3, new cuq(cut.sl)));
          $$3.b(avz.c.b($$4.g()));

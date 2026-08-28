@@ -25,7 +25,7 @@ public class cqa extends cpu {
       a($$3, 2);
       this.u = $$2;
       this.v = $$3;
-      cwt $$4 = $$1.l.dP().K();
+      cwt $$4 = $$1.l.dO().K();
       this.a(new cqa.c($$2, 0, 56, 51));
       this.a(new cqa.c($$2, 1, 79, 58));
       this.a(new cqa.c($$2, 2, 102, 51));
@@ -98,7 +98,7 @@ public class cqa extends cpu {
             return cuq.l;
          }
 
-         $$3.a($$0, $$4);
+         $$3.a($$0, $$2);
       }
 
       return $$2;

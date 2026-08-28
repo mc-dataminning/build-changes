@@ -48,7 +48,7 @@ public class aqu extends dcw implements dds {
    final List<aqv> H = Lists.newArrayList();
    private final aqs I;
    private final MinecraftServer J;
-   private final eri K;
+   private final erk K;
    private int L;
    final dxm M = new dxm();
    private final dxr<bsr> N;
@@ -56,10 +56,10 @@ public class aqu extends dcw implements dds {
    public boolean e;
    private final auu P;
    private int Q;
-   private final eqb R;
-   private final eyo<dfy> S = new eyo<>(this::d, this.ah());
-   private final eyo<epb> T = new eyo<>(this::d, this.ah());
-   private final epu U = new epu();
+   private final eqd R;
+   private final eyq<dfy> S = new eyq<>(this::d, this.ah());
+   private final eyq<epd> T = new eyq<>(this::d, this.ah());
+   private final epw U = new epw();
    final Set<btp> V = new ObjectOpenHashSet();
    volatile boolean W;
    protected final cok f;
@@ -71,15 +71,15 @@ public class aqu extends dcw implements dds {
    private dxb ab;
    final Int2ObjectMap<chy> ac = new Int2ObjectOpenHashMap();
    private final ddq ad;
-   private final ejq ae;
+   private final ejs ae;
    private final boolean af;
    private final bqy ag;
 
    public aqu(
       MinecraftServer $$0,
       Executor $$1,
-      erd.c $$2,
-      eri $$3,
+      erf.c $$2,
+      erk $$3,
       akq<dcw> $$4,
       dwz $$5,
       ard $$6,
@@ -101,7 +101,7 @@ public class aqu extends dcw implements dds {
       this.N = new dxr<>(bsr.class, new aqu.a(), $$15);
       this.I = new aqs(this, $$2, $$14, $$0.ba(), $$1, $$12, $$0.ah().p(), $$0.ah().q(), $$13, $$6, this.N::a, () -> $$0.I().u());
       this.I.h().b();
-      this.R = new eqb(this);
+      this.R = new eqd(this);
       this.U();
       this.X();
       this.C_().a($$0.ax());
@@ -111,7 +111,7 @@ public class aqu extends dcw implements dds {
       }
 
       long $$16 = $$0.bb().y().b();
-      this.ae = new ejq(this.I.m(), this.H_(), $$0.ba(), $$4, $$12, this.I.i(), this, $$12.d(), $$16, $$14);
+      this.ae = new ejs(this.I.m(), this.H_(), $$0.ba(), $$4, $$12, this.I.i(), this, $$12.d(), $$16, $$14);
       this.ad = new ddq(this, $$0.bb().y(), this.ae);
       if (this.af() == dcw.j && this.ae().a(dww.c)) {
          this.ab = new dxb(this, $$16, $$0.bb().C());
@@ -215,17 +215,17 @@ public class aqu extends dcw implements dds {
          }
 
          this.M.a($$2x -> {
-            if (!$$2x.dK()) {
+            if (!$$2x.dJ()) {
                if (this.i($$2x)) {
                   $$2x.aq();
                } else if (!$$2.a($$2x)) {
                   $$1.a("checkDespawn");
-                  $$2x.dB();
+                  $$2x.dA();
                   $$1.c();
-                  if (this.I.a.j().c($$2x.dr().a())) {
-                     bsr $$3x = $$2x.dd();
+                  if (this.I.a.j().c($$2x.dq().a())) {
+                     bsr $$3x = $$2x.dc();
                      if ($$3x != null) {
-                        if (!$$3x.dK() && $$3x.x($$2x)) {
+                        if (!$$3x.dJ() && $$3x.x($$2x)) {
                            return;
                         }
 
@@ -280,7 +280,7 @@ public class aqu extends dcw implements dds {
 
    private void as() {
       this.P.a();
-      this.H.stream().filter(btn::fI).collect(Collectors.toList()).forEach($$0 -> $$0.a(false, false));
+      this.H.stream().filter(btn::fH).collect(Collectors.toList()).forEach($$0 -> $$0.a(false, false));
    }
 
    public void a(dvi $$0, int $$1) {
@@ -298,7 +298,7 @@ public class aqu extends dcw implements dds {
             if ($$9) {
                cho $$10 = bsx.aO.a((dcw)this);
                if ($$10 != null) {
-                  $$10.w(true);
+                  $$10.x(true);
                   $$10.c_(0);
                   $$10.a_((double)$$7.u(), (double)$$7.v(), (double)$$7.w());
                   this.b($$10);
@@ -307,7 +307,7 @@ public class aqu extends dcw implements dds {
 
             btm $$11 = bsx.am.a((dcw)this);
             if ($$11 != null) {
-               $$11.f(exa.c($$7));
+               $$11.f(exc.c($$7));
                $$11.a($$9);
                this.b($$11);
             }
@@ -340,7 +340,7 @@ public class aqu extends dcw implements dds {
                      $$20.b(this, $$19, this.z);
                   }
 
-                  epc $$21 = $$20.u();
+                  epe $$21 = $$20.u();
                   if ($$21.f()) {
                      $$21.b(this, $$19, this.z);
                   }
@@ -398,10 +398,10 @@ public class aqu extends dcw implements dds {
       if ($$2.isPresent()) {
          return $$2.get();
       } else {
-         ewv $$3 = ewv.a($$1, new jd($$1.h(this.am()))).g(3.0);
-         List<btn> $$4 = this.a(btn.class, $$3, $$0x -> $$0x != null && $$0x.bE() && this.h($$0x.dp()));
+         ewx $$3 = ewx.a($$1, new jd($$1.h(this.am()))).g(3.0);
+         List<btn> $$4 = this.a(btn.class, $$3, $$0x -> $$0x != null && $$0x.bE() && this.h($$0x.do()));
          if (!$$4.isEmpty()) {
-            return $$4.get(this.z.a($$4.size())).dp();
+            return $$4.get(this.z.a($$4.size())).do();
          } else {
             if ($$1.v() == this.I_() - 1) {
                $$1 = $$1.b(2);
@@ -542,8 +542,8 @@ public class aqu extends dcw implements dds {
       this.Q = 0;
    }
 
-   private void a(jd $$0, epb $$1) {
-      epc $$2 = this.b_($$0);
+   private void a(jd $$0, epd $$1) {
+      epe $$2 = this.b_($$0);
       if ($$2.b($$1)) {
          $$2.a((dcw)this, $$0);
       }
@@ -565,13 +565,13 @@ public class aqu extends dcw implements dds {
       $$0.l();
       this.ag().c();
 
-      for (bsr $$2 : $$0.cT()) {
+      for (bsr $$2 : $$0.cS()) {
          this.a($$0, $$2);
       }
    }
 
    private void a(bsr $$0, bsr $$1) {
-      if ($$1.dK() || $$1.dd() != $$0) {
+      if ($$1.dJ() || $$1.dc() != $$0) {
          $$1.ad();
       } else if ($$1 instanceof cmx || this.M.c($$1)) {
          $$1.bv();
@@ -582,7 +582,7 @@ public class aqu extends dcw implements dds {
          $$1.u();
          $$2.c();
 
-         for (bsr $$3 : $$1.cT()) {
+         for (bsr $$3 : $$1.cS()) {
             this.a($$1, $$3);
          }
       }
@@ -700,9 +700,9 @@ public class aqu extends dcw implements dds {
    }
 
    private void c(aqv $$0) {
-      bsr $$1 = this.G().a($$0.cA());
+      bsr $$1 = this.G().a($$0.cz());
       if ($$1 != null) {
-         E.warn("Force-added player with duplicate UUID {}", $$0.cA());
+         E.warn("Force-added player with duplicate UUID {}", $$0.cz());
          $$1.ak();
          this.a((aqv)$$1, bsr.c.b);
       }
@@ -711,7 +711,7 @@ public class aqu extends dcw implements dds {
    }
 
    private boolean j(bsr $$0) {
-      if ($$0.dK()) {
+      if ($$0.dJ()) {
          E.warn("Tried to add entity {} but it was marked as removed already", bsx.a($$0.am()));
          return false;
       } else {
@@ -720,7 +720,7 @@ public class aqu extends dcw implements dds {
    }
 
    public boolean e(bsr $$0) {
-      if ($$0.cV().map(bsr::cA).anyMatch(this.N::a)) {
+      if ($$0.cU().map(bsr::cz).anyMatch(this.N::a)) {
          return false;
       } else {
          this.a_($$0);
@@ -740,10 +740,10 @@ public class aqu extends dcw implements dds {
    @Override
    public void a(int $$0, jd $$1, int $$2) {
       for (aqv $$3 : this.J.ah().t()) {
-         if ($$3 != null && $$3.dP() == this && $$3.an() != $$0) {
-            double $$4 = (double)$$1.u() - $$3.du();
-            double $$5 = (double)$$1.v() - $$3.dw();
-            double $$6 = (double)$$1.w() - $$3.dA();
+         if ($$3 != null && $$3.dO() == this && $$3.an() != $$0) {
+            double $$4 = (double)$$1.u() - $$3.dt();
+            double $$5 = (double)$$1.v() - $$3.dv();
+            double $$6 = (double)$$1.w() - $$3.dz();
             if ($$4 * $$4 + $$5 * $$5 + $$6 * $$6 < 1024.0) {
                $$3.c.b(new aca($$0, $$1, $$2));
             }
@@ -758,7 +758,7 @@ public class aqu extends dcw implements dds {
 
    @Override
    public void a(@Nullable cmx $$0, bsr $$1, jm<avo> $$2, avq $$3, float $$4, float $$5, long $$6) {
-      this.J.ah().a($$0, $$1.du(), $$1.dw(), $$1.dA(), (double)$$2.a().a($$4), this.af(), new afo($$2, $$3, $$1, $$4, $$5, $$6));
+      this.J.ah().a($$0, $$1.dt(), $$1.dv(), $$1.dz(), (double)$$2.a().a($$4), this.af(), new afo($$2, $$3, $$1, $$4, $$5, $$6));
    }
 
    @Override
@@ -780,7 +780,7 @@ public class aqu extends dcw implements dds {
    }
 
    @Override
-   public void a(jm<dxz> $$0, exa $$1, dxz.a $$2) {
+   public void a(jm<dxz> $$0, exc $$1, dxz.a $$2) {
       this.O.a($$0, $$1, $$2);
    }
 
@@ -793,9 +793,9 @@ public class aqu extends dcw implements dds {
 
       this.l().a($$0);
       this.U.a($$0);
-      ext $$5 = $$1.k(this, $$0);
-      ext $$6 = $$2.k(this, $$0);
-      if (exq.c($$5, $$6, exe.g)) {
+      exv $$5 = $$1.k(this, $$0);
+      exv $$6 = $$2.k(this, $$0);
+      if (exs.c($$5, $$6, exg.g)) {
          List<cda> $$7 = new ObjectArrayList();
 
          for (btp $$8 : this.V) {
@@ -907,11 +907,11 @@ public class aqu extends dcw implements dds {
       return $$1.a($$0.b()) ? $$1.a(this, $$0.a(), $$0.c(), $$0.d()) : false;
    }
 
-   public eyo<dfy> m() {
+   public eyq<dfy> m() {
       return this.S;
    }
 
-   public eyo<epb> n() {
+   public eyq<epd> n() {
       return this.T;
    }
 
@@ -921,11 +921,11 @@ public class aqu extends dcw implements dds {
       return this.J;
    }
 
-   public eqb p() {
+   public eqd p() {
       return this.R;
    }
 
-   public ens q() {
+   public enu q() {
       return this.J.ba();
    }
 
@@ -949,11 +949,11 @@ public class aqu extends dcw implements dds {
    }
 
    private boolean a(aqv $$0, boolean $$1, double $$2, double $$3, double $$4, zg<?> $$5) {
-      if ($$0.dP() != this) {
+      if ($$0.dO() != this) {
          return false;
       } else {
-         jd $$6 = $$0.dp();
-         if ($$6.a(new exa($$2, $$3, $$4), $$1 ? 512.0 : 32.0)) {
+         jd $$6 = $$0.do();
+         if ($$6.a(new exc($$2, $$3, $$4), $$1 ? 512.0 : 32.0)) {
             $$0.c.b($$5);
             return true;
          } else {
@@ -981,15 +981,15 @@ public class aqu extends dcw implements dds {
    }
 
    @Nullable
-   public jd a(awu<ejp> $$0, jd $$1, int $$2, boolean $$3) {
+   public jd a(awu<ejr> $$0, jd $$1, int $$2, boolean $$3) {
       if (!this.J.bb().y().c()) {
          return null;
       } else {
-         Optional<jq.c<ejp>> $$4 = this.H_().d(lu.aR).b($$0);
+         Optional<jq.c<ejr>> $$4 = this.H_().d(lu.aR).b($$0);
          if ($$4.isEmpty()) {
             return null;
          } else {
-            Pair<jd, jm<ejp>> $$5 = this.l().g().a(this, $$4.get(), $$1, $$2, $$3);
+            Pair<jd, jm<ejr>> $$5 = this.l().g().a(this, $$4.get(), $$1, $$2, $$3);
             return $$5 != null ? (jd)$$5.getFirst() : null;
          }
       }
@@ -1015,24 +1015,24 @@ public class aqu extends dcw implements dds {
       return this.e;
    }
 
-   public eqx u() {
+   public eqz u() {
       return this.l().k();
    }
 
    @Nullable
    @Override
-   public eqr a(eqp $$0) {
-      return this.o().I().u().b(eqr.a(), $$0.a());
+   public eqt a(eqr $$0) {
+      return this.o().I().u().b(eqt.a(), $$0.a());
    }
 
    @Override
-   public void a(eqp $$0, eqr $$1) {
+   public void a(eqr $$0, eqt $$1) {
       this.o().I().u().a($$0.a(), $$1);
    }
 
    @Override
-   public eqp v() {
-      return this.o().I().u().a(eqq.a(), "idcounts").b();
+   public eqr v() {
+      return this.o().I().u().a(eqs.a(), "idcounts").b();
    }
 
    public void a(jd $$0, float $$1) {
@@ -1202,7 +1202,7 @@ public class aqu extends dcw implements dds {
       for (bsr $$3 : $$1) {
          wz $$4 = $$3.aj();
          wz $$5 = $$3.S_();
-         $$2.a($$3.du(), $$3.dw(), $$3.dA(), $$3.cA(), lt.f.b($$3.am()), $$3.bE(), $$5.getString(), $$4 != null ? $$4.getString() : null);
+         $$2.a($$3.dt(), $$3.dv(), $$3.dz(), $$3.cz(), lt.f.b($$3.am()), $$3.bE(), $$5.getString(), $$4 != null ? $$4.getString() : null);
       }
    }
 
@@ -1216,7 +1216,7 @@ public class aqu extends dcw implements dds {
    }
 
    @VisibleForTesting
-   public void a(ejh $$0) {
+   public void a(ejj $$0) {
       this.X.removeIf($$1 -> $$0.b($$1.a()));
    }
 
@@ -1317,7 +1317,7 @@ public class aqu extends dcw implements dds {
       this.J.execute(() -> this.ae.a($$0.f(), $$0.g()));
    }
 
-   public epu H() {
+   public epw H() {
       return this.U;
    }
 
@@ -1410,7 +1410,7 @@ public class aqu extends dcw implements dds {
          }
 
          if ($$0 instanceof cia $$4) {
-            for (chy $$5 : $$4.gh()) {
+            for (chy $$5 : $$4.gg()) {
                aqu.this.ac.put($$5.an(), $$5);
             }
          }
@@ -1435,7 +1435,7 @@ public class aqu extends dcw implements dds {
          }
 
          if ($$0 instanceof cia $$4) {
-            for (chy $$5 : $$4.gh()) {
+            for (chy $$5 : $$4.gg()) {
                aqu.this.ac.remove($$5.an());
             }
          }

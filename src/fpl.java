@@ -1,219 +1,108 @@
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.common.collect.Ordering;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-public class fpl extends foq<cqp> {
-   private static final akr[] L = new akr[]{
-      akr.b("container/enchanting_table/level_1"), akr.b("container/enchanting_table/level_2"), akr.b("container/enchanting_table/level_3")
-   };
-   private static final akr[] M = new akr[]{
-      akr.b("container/enchanting_table/level_1_disabled"),
-      akr.b("container/enchanting_table/level_2_disabled"),
-      akr.b("container/enchanting_table/level_3_disabled")
-   };
-   private static final akr N = akr.b("container/enchanting_table/enchantment_slot_disabled");
-   private static final akr O = akr.b("container/enchanting_table/enchantment_slot_highlighted");
-   private static final akr P = akr.b("container/enchanting_table/enchantment_slot");
-   private static final akr Q = akr.b("textures/gui/container/enchanting_table.png");
-   private static final akr R = akr.b("textures/entity/enchanting_table_book.png");
-   private final ayw S = ayw.a();
-   private fuq T;
-   public int E;
-   public float F;
-   public float G;
-   public float H;
-   public float I;
-   public float J;
-   public float K;
-   private cuq U = cuq.l;
+public abstract class fpl<T extends cpu> extends fot<T> {
+   private static final akr E = akr.b("container/inventory/effect_background_large");
+   private static final akr F = akr.b("container/inventory/effect_background_small");
 
-   public fpl(cqp $$0, cmw $$1, wz $$2) {
+   public fpl(T $$0, cmw $$1, wz $$2) {
       super($$0, $$1, $$2);
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
-      this.T = new fuq(this.l.aP().a(fyh.r));
-   }
-
-   @Override
-   public void C() {
-      super.C();
-      this.E();
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      int $$3 = (this.m - this.c) / 2;
-      int $$4 = (this.n - this.r) / 2;
-
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         double $$6 = $$0 - (double)($$3 + 60);
-         double $$7 = $$1 - (double)($$4 + 14 + 19 * $$5);
-         if ($$6 >= 0.0 && $$7 >= 0.0 && $$6 < 108.0 && $$7 < 19.0 && this.x.a(this.l.s, $$5)) {
-            this.l.q.a(this.x.j, $$5);
-            return true;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(fhx $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.m - this.c) / 2;
-      int $$5 = (this.n - this.r) / 2;
-      $$0.a(Q, $$4, $$5, 0, 0, this.c, this.r);
-      this.d($$0, $$4, $$5, $$1);
-      fpk.a().a((long)this.x.m());
-      int $$6 = this.x.l();
-
-      for (int $$7 = 0; $$7 < 3; $$7++) {
-         int $$8 = $$4 + 60;
-         int $$9 = $$8 + 20;
-         int $$10 = this.x.k[$$7];
-         if ($$10 == 0) {
-            RenderSystem.enableBlend();
-            $$0.a(N, $$8, $$5 + 14 + 19 * $$7, 108, 19);
-            RenderSystem.disableBlend();
-         } else {
-            String $$11 = $$10 + "";
-            int $$12 = 86 - this.o.b($$11);
-            xe $$13 = fpk.a().a(this.o, $$12);
-            int $$14 = 6839882;
-            if (($$6 < $$7 + 1 || this.l.s.cq < $$10) && !this.l.s.ga().d) {
-               RenderSystem.enableBlend();
-               $$0.a(N, $$8, $$5 + 14 + 19 * $$7, 108, 19);
-               $$0.a(M[$$7], $$8 + 1, $$5 + 15 + 19 * $$7, 16, 16);
-               RenderSystem.disableBlend();
-               $$0.a(this.o, $$13, $$9, $$5 + 16 + 19 * $$7, $$12, ($$14 & 16711422) >> 1);
-               $$14 = 4226832;
-            } else {
-               int $$15 = $$2 - ($$4 + 60);
-               int $$16 = $$3 - ($$5 + 14 + 19 * $$7);
-               RenderSystem.enableBlend();
-               if ($$15 >= 0 && $$16 >= 0 && $$15 < 108 && $$16 < 19) {
-                  $$0.a(O, $$8, $$5 + 14 + 19 * $$7, 108, 19);
-                  $$14 = 16777088;
-               } else {
-                  $$0.a(P, $$8, $$5 + 14 + 19 * $$7, 108, 19);
-               }
-
-               $$0.a(L[$$7], $$8 + 1, $$5 + 15 + 19 * $$7, 16, 16);
-               RenderSystem.disableBlend();
-               $$0.a(this.o, $$13, $$9, $$5 + 16 + 19 * $$7, $$12, $$14);
-               $$14 = 8453920;
-            }
-
-            $$0.b(this.o, $$11, $$9 + 86 - this.o.b($$11), $$5 + 16 + 19 * $$7 + 7, $$14);
-         }
-      }
-   }
-
-   private void d(fhx $$0, int $$1, int $$2, float $$3) {
-      float $$4 = ayo.i($$3, this.K, this.J);
-      float $$5 = ayo.i($$3, this.G, this.F);
-      fad.e();
-      $$0.c().a();
-      $$0.c().a((float)$$1 + 33.0F, (float)$$2 + 31.0F, 100.0F);
-      float $$6 = 40.0F;
-      $$0.c().b(-40.0F, 40.0F, 40.0F);
-      $$0.c().a(a.b.rotationDegrees(25.0F));
-      $$0.c().a((1.0F - $$4) * 0.2F, (1.0F - $$4) * 0.1F, (1.0F - $$4) * 0.25F);
-      float $$7 = -(1.0F - $$4) * 90.0F - 90.0F;
-      $$0.c().a(a.d.rotationDegrees($$7));
-      $$0.c().a(a.b.rotationDegrees(180.0F));
-      float $$8 = ayo.a(ayo.h($$5 + 0.25F) * 1.6F - 0.3F, 0.0F, 1.0F);
-      float $$9 = ayo.a(ayo.h($$5 + 0.75F) * 1.6F - 0.3F, 0.0F, 1.0F);
-      this.T.a(0.0F, $$8, $$9, $$4);
-      fbk $$10 = $$0.d().getBuffer(this.T.a(R));
-      this.T.a($$0.c(), $$10, 15728880, gqa.d);
-      $$0.e();
-      $$0.c().b();
-      fad.d();
-   }
-
-   @Override
-   public void a(fhx $$0, int $$1, int $$2, float $$3) {
+   public void a(fhz $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-      boolean $$4 = this.l.s.ga().d;
-      int $$5 = this.x.l();
+      this.c($$0, $$1, $$2);
+   }
 
-      for (int $$6 = 0; $$6 < 3; $$6++) {
-         int $$7 = this.x.k[$$6];
-         Optional<jm.c<dac>> $$8 = this.l.r.H_().d(lu.aL).c(this.x.l[$$6]);
-         if (!$$8.isEmpty()) {
-            int $$9 = this.x.m[$$6];
-            int $$10 = $$6 + 1;
-            if (this.a(60, 14 + 19 * $$6, 108, 17, (double)$$1, (double)$$2) && $$7 > 0 && $$9 >= 0 && $$8 != null) {
-               List<wz> $$11 = Lists.newArrayList();
-               $$11.add(wz.a("container.enchant.clue", dac.a($$8.get(), $$9)).a(n.p));
-               if (!$$4) {
-                  $$11.add(wy.a);
-                  if (this.l.s.cq < $$7) {
-                     $$11.add(wz.a("container.enchant.level.requirement", this.x.k[$$6]).a(n.m));
-                  } else {
-                     xn $$12;
-                     if ($$10 == 1) {
-                        $$12 = wz.c("container.enchant.lapis.one");
-                     } else {
-                        $$12 = wz.a("container.enchant.lapis.many", $$10);
-                     }
+   public boolean G() {
+      int $$0 = this.A + this.c + 2;
+      int $$1 = this.m - $$0;
+      return $$1 >= 32;
+   }
 
-                     $$11.add($$12.a($$5 >= $$10 ? n.h : n.m));
-                     xn $$14;
-                     if ($$10 == 1) {
-                        $$14 = wz.c("container.enchant.level.one");
-                     } else {
-                        $$14 = wz.a("container.enchant.level.many", $$10);
-                     }
+   private void c(fhz $$0, int $$1, int $$2) {
+      int $$3 = this.A + this.c + 2;
+      int $$4 = this.m - $$3;
+      Collection<brz> $$5 = this.l.s.et();
+      if (!$$5.isEmpty() && $$4 >= 32) {
+         boolean $$6 = $$4 >= 120;
+         int $$7 = 33;
+         if ($$5.size() > 5) {
+            $$7 = 132 / ($$5.size() - 1);
+         }
 
-                     $$11.add($$14.a(n.h));
-                  }
+         Iterable<brz> $$8 = Ordering.natural().sortedCopy($$5);
+         this.a($$0, $$3, $$7, $$8, $$6);
+         this.b($$0, $$3, $$7, $$8, $$6);
+         if ($$6) {
+            this.a($$0, $$3, $$7, $$8);
+         } else if ($$1 >= $$3 && $$1 <= $$3 + 33) {
+            int $$9 = this.B;
+            brz $$10 = null;
+
+            for (brz $$11 : $$8) {
+               if ($$2 >= $$9 && $$2 <= $$9 + $$7) {
+                  $$10 = $$11;
                }
 
-               $$0.a(this.o, $$11, $$1, $$2);
-               break;
+               $$9 += $$7;
+            }
+
+            if ($$10 != null) {
+               List<wz> $$12 = List.of(this.a($$10), bsa.a($$10, 1.0F, this.l.r.s().f()));
+               $$0.a(this.o, $$12, Optional.empty(), $$1, $$2);
             }
          }
       }
    }
 
-   public void E() {
-      cuq $$0 = this.x.b(0).g();
-      if (!cuq.a($$0, this.U)) {
-         this.U = $$0;
+   private void a(fhz $$0, int $$1, int $$2, Iterable<brz> $$3, boolean $$4) {
+      int $$5 = this.B;
 
-         do {
-            this.H = this.H + (float)(this.S.a(4) - this.S.a(4));
-         } while (this.F <= this.H + 1.0F && this.F >= this.H - 1.0F);
-      }
-
-      this.E++;
-      this.G = this.F;
-      this.K = this.J;
-      boolean $$1 = false;
-
-      for (int $$2 = 0; $$2 < 3; $$2++) {
-         if (this.x.k[$$2] != 0) {
-            $$1 = true;
+      for (brz $$6 : $$3) {
+         if ($$4) {
+            $$0.a(E, $$1, $$5, 120, 32);
+         } else {
+            $$0.a(F, $$1, $$5, 32, 32);
          }
+
+         $$5 += $$2;
+      }
+   }
+
+   private void b(fhz $$0, int $$1, int $$2, Iterable<brz> $$3, boolean $$4) {
+      grj $$5 = this.l.aE();
+      int $$6 = this.B;
+
+      for (brz $$7 : $$3) {
+         jm<brx> $$8 = $$7.c();
+         gql $$9 = $$5.a($$8);
+         $$0.a($$1 + ($$4 ? 6 : 7), $$6 + 7, 0, 18, 18, $$9);
+         $$6 += $$2;
+      }
+   }
+
+   private void a(fhz $$0, int $$1, int $$2, Iterable<brz> $$3) {
+      int $$4 = this.B;
+
+      for (brz $$5 : $$3) {
+         wz $$6 = this.a($$5);
+         $$0.b(this.o, $$6, $$1 + 10 + 18, $$4 + 6, 16777215);
+         wz $$7 = bsa.a($$5, 1.0F, this.l.r.s().f());
+         $$0.b(this.o, $$7, $$1 + 10 + 18, $$4 + 6 + 10, 8355711);
+         $$4 += $$2;
+      }
+   }
+
+   private wz a(brz $$0) {
+      xn $$1 = $$0.c().a().e().f();
+      if ($$0.e() >= 1 && $$0.e() <= 9) {
+         $$1.b(wy.v).b(wz.c("enchantment.level." + ($$0.e() + 1)));
       }
 
-      if ($$1) {
-         this.J += 0.2F;
-      } else {
-         this.J -= 0.2F;
-      }
-
-      this.J = ayo.a(this.J, 0.0F, 1.0F);
-      float $$3 = (this.H - this.F) * 0.4F;
-      float $$4 = 0.2F;
-      $$3 = ayo.a($$3, -0.2F, 0.2F);
-      this.I = this.I + ($$3 - this.I) * 0.9F;
-      this.F = this.F + this.I;
+      return $$1;
    }
 }

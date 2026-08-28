@@ -5,6 +5,6 @@ public class cuo extends cuc {
 
    @Override
    protected boolean a(cmx $$0, ji $$1, cuq $$2, jd $$3) {
-      return !$$0.dP().s($$3) && $$0.a($$3, $$1, $$2);
+      return !$$0.dO().s($$3) && $$0.a($$3, $$1, $$2);
    }
 }

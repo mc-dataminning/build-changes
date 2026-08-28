@@ -1,65 +1,62 @@
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
-public class est extends etc {
+public class est extends ete {
    public static final MapCodec<est> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(evx.a.fieldOf("levels").forGetter($$0x -> $$0x.b), kb.a(lu.aL).optionalFieldOf("options").forGetter($$0x -> $$0x.c)))
-            .apply($$0, est::new)
+      $$0 -> a($$0).and(est.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, est::new)
    );
-   private final evw b;
-   private final Optional<jq<dac>> c;
+   private final est.a b;
 
-   est(List<eva> $$0, evw $$1, Optional<jq<dac>> $$2) {
+   private est(List<evc> $$0, est.a $$1) {
       super($$0);
       this.b = $$1;
-      this.c = $$2;
    }
 
    @Override
-   public ete<est> b() {
-      return etf.g;
+   public etg<est> b() {
+      return eth.s;
    }
 
    @Override
-   public Set<eui<?>> a() {
-      return this.b.a();
+   public Set<euk<?>> a() {
+      return ImmutableSet.of(this.b.g);
    }
 
    @Override
-   public cuq a(cuq $$0, erp $$1) {
-      ayw $$2 = $$1.b();
-      ka $$3 = $$1.d().H_();
-      return dae.a($$2, $$0, this.b.a($$1), $$3, this.c);
-   }
-
-   public static est.a a(jo.a $$0, evw $$1) {
-      return new est.a($$1).a($$0.b(lu.aL).b(awh.n));
-   }
-
-   public static class a extends etc.a<est.a> {
-      private final evw a;
-      private Optional<jq<dac>> b = Optional.empty();
-
-      public a(evw $$0) {
-         this.a = $$0;
+   public cuq a(cuq $$0, err $$1) {
+      if ($$1.c(this.b.g) instanceof bqw $$3) {
+         $$0.b(kq.g, $$3.aj());
       }
 
-      protected est.a a() {
-         return this;
-      }
+      return $$0;
+   }
 
-      public est.a a(jq<dac> $$0) {
-         this.b = Optional.of($$0);
-         return this;
+   public static ete.a<?> a(est.a $$0) {
+      return a($$1 -> new est($$1, $$0));
+   }
+
+   public static enum a implements azk {
+      a("this", eun.a),
+      b("attacking_entity", eun.d),
+      c("last_damage_player", eun.b),
+      d("block_entity", eun.h);
+
+      public static final Codec<est.a> e = azk.a(est.a::values);
+      private final String f;
+      final euk<?> g;
+
+      private a(final String $$0, final euk<?> $$1) {
+         this.f = $$0;
+         this.g = $$1;
       }
 
       @Override
-      public etd b() {
-         return new est(this.g(), this.a, this.b);
+      public String c() {
+         return this.f;
       }
    }
 }

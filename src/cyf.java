@@ -4,15 +4,15 @@ public class cyf {
    @Nullable
    private final cmx a;
    private final bqq b;
-   private final eww c;
+   private final ewy c;
    private final dcw d;
    private final cuq e;
 
-   public cyf(cmx $$0, bqq $$1, eww $$2) {
-      this($$0.dP(), $$0, $$1, $$0.b($$1), $$2);
+   public cyf(cmx $$0, bqq $$1, ewy $$2) {
+      this($$0.dO(), $$0, $$1, $$0.b($$1), $$2);
    }
 
-   protected cyf(dcw $$0, @Nullable cmx $$1, bqq $$2, cuq $$3, eww $$4) {
+   protected cyf(dcw $$0, @Nullable cmx $$1, bqq $$2, cuq $$3, ewy $$4) {
       this.a = $$1;
       this.b = $$2;
       this.c = $$4;
@@ -20,7 +20,7 @@ public class cyf {
       this.d = $$0;
    }
 
-   protected final eww j() {
+   protected final ewy j() {
       return this.c;
    }
 
@@ -32,7 +32,7 @@ public class cyf {
       return this.c.b();
    }
 
-   public exa l() {
+   public exc l() {
       return this.c.e();
    }
 
@@ -58,14 +58,14 @@ public class cyf {
    }
 
    public ji g() {
-      return this.a == null ? ji.c : this.a.cI();
+      return this.a == null ? ji.c : this.a.cH();
    }
 
    public boolean h() {
-      return this.a != null && this.a.fO();
+      return this.a != null && this.a.fN();
    }
 
    public float i() {
-      return this.a == null ? 0.0F : this.a.dF();
+      return this.a == null ? 0.0F : this.a.dE();
    }
 }

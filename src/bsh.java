@@ -12,8 +12,8 @@ class bsh extends brx {
 
    @Override
    public void a(btn $$0, int $$1, bsr.c $$2) {
-      if ($$2 == bsr.c.a && ($$0 instanceof cmx || $$0.dP().ab().b(dcs.c))) {
-         this.a($$0.dP(), $$0.dS(), $$0.aM());
+      if ($$2 == bsr.c.a && ($$0 instanceof cmx || $$0.dO().ab().b(dcs.c))) {
+         this.a($$0.dO(), $$0.dR(), $$0.aM());
       }
    }
 

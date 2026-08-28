@@ -26,12 +26,12 @@ public class dxx implements dyd {
    }
 
    @Override
-   public Optional<exa> a(dcw $$0) {
+   public Optional<exc> a(dcw $$0) {
       if (this.e.left().isEmpty()) {
          this.b($$0);
       }
 
-      return this.e.left().map($$0x -> $$0x.dn().b(0.0, (double)this.f, 0.0));
+      return this.e.left().map($$0x -> $$0x.dm().b(0.0, (double)this.f, 0.0));
    }
 
    private void b(dcw $$0) {
@@ -40,7 +40,7 @@ public class dxx implements dyd {
    }
 
    private UUID b() {
-      return (UUID)this.e.map(bsr::cA, $$0 -> (UUID)$$0.map(Function.identity(), $$0x -> {
+      return (UUID)this.e.map(bsr::cz, $$0 -> (UUID)$$0.map(Function.identity(), $$0x -> {
             throw new RuntimeException("Unable to get entityId from uuid");
          }));
    }

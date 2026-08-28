@@ -1,64 +1,34 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.io.IOException;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
-
-public class gpe<T extends btn & cmm, M extends fvi<T> & fxs> extends got<T, M> {
-   private static final Int2ObjectMap<akr> a = ad.a(new Int2ObjectOpenHashMap(), $$0 -> {
-      $$0.put(1, akr.b("stone"));
-      $$0.put(2, akr.b("iron"));
-      $$0.put(3, akr.b("gold"));
-      $$0.put(4, akr.b("emerald"));
-      $$0.put(5, akr.b("diamond"));
-   });
-   private final Object2ObjectMap<cmp, grx.a> b = new Object2ObjectOpenHashMap();
-   private final Object2ObjectMap<cmn, grx.a> c = new Object2ObjectOpenHashMap();
-   private final aue d;
-   private final String e;
-
-   public gpe(gmd<T, M> $$0, aue $$1, String $$2) {
+public abstract class gpe<T extends btn, M extends fwp<T>> extends gov<T, M> {
+   public gpe(glk<T, M> $$0) {
       super($$0);
-      this.d = $$1;
-      this.e = $$2;
    }
 
-   public void a(fbg $$0, gex $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.ci()) {
-         cml $$10 = $$3.gw();
-         cmp $$11 = $$10.a();
-         cmn $$12 = $$10.b();
-         grx.a $$13 = this.a(this.b, "type", lt.w, $$11);
-         grx.a $$14 = this.a(this.c, "profession", lt.x, $$12);
-         M $$15 = this.c();
-         $$15.a($$14 == grx.a.a || $$14 == grx.a.b && $$13 != grx.a.c);
-         akr $$16 = this.a("type", lt.w.b($$11));
-         a($$15, $$16, $$0, $$1, $$2, $$3, -1);
-         $$15.a(true);
-         if ($$12 != cmn.b && !$$3.o_()) {
-            akr $$17 = this.a("profession", lt.x.b($$12));
-            a($$15, $$17, $$0, $$1, $$2, $$3, -1);
-            if ($$12 != cmn.m) {
-               akr $$18 = this.a("profession_level", (akr)a.get(ayo.a($$10.c(), 1, a.size())));
-               a($$15, $$18, $$0, $$1, $$2, $$3, -1);
-            }
+   protected abstract int a(T var1);
+
+   protected abstract void a(fbi var1, gez var2, int var3, bsr var4, float var5, float var6, float var7, float var8);
+
+   public void a(fbi $$0, gez $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      int $$10 = this.a($$3);
+      ayw $$11 = ayw.a((long)$$3.an());
+      if ($$10 > 0) {
+         for (int $$12 = 0; $$12 < $$10; $$12++) {
+            $$0.a();
+            fyk $$13 = this.c().a($$11);
+            fyk.a $$14 = $$13.a($$11);
+            $$13.a($$0);
+            float $$15 = $$11.i();
+            float $$16 = $$11.i();
+            float $$17 = $$11.i();
+            float $$18 = ayo.i($$15, $$14.a, $$14.d) / 16.0F;
+            float $$19 = ayo.i($$16, $$14.b, $$14.e) / 16.0F;
+            float $$20 = ayo.i($$17, $$14.c, $$14.f) / 16.0F;
+            $$0.a($$18, $$19, $$20);
+            $$15 = -1.0F * ($$15 * 2.0F - 1.0F);
+            $$16 = -1.0F * ($$16 * 2.0F - 1.0F);
+            $$17 = -1.0F * ($$17 * 2.0F - 1.0F);
+            this.a($$0, $$1, $$2, $$3, $$15, $$16, $$17, $$6);
+            $$0.b();
          }
       }
-   }
-
-   private akr a(String $$0, akr $$1) {
-      return $$1.a((UnaryOperator<String>)($$1x -> "textures/entity/" + this.e + "/" + $$0 + "/" + $$1x + ".png"));
-   }
-
-   public <K> grx.a a(Object2ObjectMap<K, grx.a> $$0, String $$1, jh<K> $$2, K $$3) {
-      return (grx.a)$$0.computeIfAbsent($$3, $$3x -> this.d.getResource(this.a($$1, $$2.b($$3))).flatMap($$0xx -> {
-            try {
-               return $$0xx.f().a(grx.a).map(grx::a);
-            } catch (IOException var2x) {
-               return Optional.empty();
-            }
-         }).orElse(grx.a.a));
    }
 }

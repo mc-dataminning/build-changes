@@ -14,7 +14,7 @@ public class bzh extends bvh<cmb> {
    }
 
    protected boolean a(aqu $$0, cmb $$1) {
-      return $$1.a($$1.dU().c(ccs.o).get(), 15.0, 20.0);
+      return $$1.a($$1.dT().c(ccs.o).get(), 15.0, 20.0);
    }
 
    protected boolean a(aqu $$0, cmb $$1, long $$2) {
@@ -22,24 +22,24 @@ public class bzh extends bvh<cmb> {
    }
 
    protected void b(aqu $$0, cmb $$1, long $$2) {
-      $$1.dU().a(ccs.p, true, (long)i);
-      $$1.dU().a(ccs.aL, azs.a, (long)h);
+      $$1.dT().a(ccs.p, true, (long)i);
+      $$1.dT().a(ccs.aL, azs.a, (long)h);
       $$0.a($$1, (byte)62);
       $$1.a(avp.BX, 3.0F, 1.0F);
    }
 
    protected void c(aqu $$0, cmb $$1, long $$2) {
-      $$1.dU().c(ccs.o).ifPresent($$1x -> $$1.I().a($$1x.dn()));
-      if (!$$1.dU().a(ccs.aL) && !$$1.dU().a(ccs.aK)) {
-         $$1.dU().a(ccs.aK, azs.a, (long)(i - h));
-         $$1.dU().c(ccs.o).filter($$1::c).filter($$1x -> $$1.a($$1x, 15.0, 20.0)).ifPresent($$2x -> {
-            exa $$3 = $$1.dn().e($$1.dm().b(bss.d, 0, $$1.dF()));
-            exa $$4 = $$2x.by().d($$3);
-            exa $$5 = $$4.d();
+      $$1.dT().c(ccs.o).ifPresent($$1x -> $$1.I().a($$1x.dm()));
+      if (!$$1.dT().a(ccs.aL) && !$$1.dT().a(ccs.aK)) {
+         $$1.dT().a(ccs.aK, azs.a, (long)(i - h));
+         $$1.dT().c(ccs.o).filter($$1::c).filter($$1x -> $$1.a($$1x, 15.0, 20.0)).ifPresent($$2x -> {
+            exc $$3 = $$1.dm().e($$1.dl().b(bss.d, 0, $$1.dE()));
+            exc $$4 = $$2x.by().d($$3);
+            exc $$5 = $$4.d();
             int $$6 = ayo.a($$4.f()) + 7;
 
             for (int $$7 = 1; $$7 < $$6; $$7++) {
-               exa $$8 = $$3.e($$5.a((double)$$7));
+               exc $$8 = $$3.e($$5.a((double)$$7));
                $$0.a(lm.B, $$8.c, $$8.d, $$8.e, 1, 0.0, 0.0, 0.0, 0.0);
             }
 
@@ -58,6 +58,6 @@ public class bzh extends bvh<cmb> {
    }
 
    public static void a(btn $$0, int $$1) {
-      $$0.dU().a(ccs.aJ, azs.a, (long)$$1);
+      $$0.dT().a(ccs.aJ, azs.a, (long)$$1);
    }
 }

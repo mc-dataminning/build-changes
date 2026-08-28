@@ -10,13 +10,13 @@ public abstract class cjl extends ckd implements ckh {
       @Override
       public void e() {
          super.e();
-         cjl.this.v(false);
+         cjl.this.w(false);
       }
 
       @Override
       public void d() {
          super.d();
-         cjl.this.v(true);
+         cjl.this.w(true);
       }
    };
 
@@ -40,7 +40,7 @@ public abstract class cjl extends ckd implements ckh {
    }
 
    public static buv.a s() {
-      return ckd.gr().a(buw.v, 0.25);
+      return ckd.gq().a(buw.v, 0.25);
    }
 
    @Override
@@ -52,7 +52,7 @@ public abstract class cjl extends ckd implements ckh {
 
    @Override
    public void m_() {
-      boolean $$0 = this.gf();
+      boolean $$0 = this.ge();
       if ($$0) {
          cuq $$1 = this.a(bsy.f);
          if (!$$1.e()) {
@@ -79,7 +79,7 @@ public abstract class cjl extends ckd implements ckh {
    @Override
    public void u() {
       super.u();
-      if (this.de() instanceof btw $$0) {
+      if (this.dd() instanceof btw $$0) {
          this.aY = $$0.aY;
       }
    }
@@ -113,14 +113,14 @@ public abstract class cjl extends ckd implements ckh {
    }
 
    public void x() {
-      if (this.dP() != null && !this.dP().B) {
+      if (this.dO() != null && !this.dO().B) {
          this.bU.a(this.e);
          this.bU.a(this.d);
          cuq $$0 = this.b(cnr.a(this, cut.ov));
          if ($$0.a(cut.ov)) {
-            int $$1 = this.gl();
-            if (this.dP().al() != bqo.d) {
-               $$1 = this.gm();
+            int $$1 = this.gk();
+            if (this.dO().al() != bqo.d) {
+               $$1 = this.gl();
             }
 
             this.d.c($$1);
@@ -131,11 +131,11 @@ public abstract class cjl extends ckd implements ckh {
       }
    }
 
-   protected int gl() {
+   protected int gk() {
       return 20;
    }
 
-   protected int gm() {
+   protected int gl() {
       return 40;
    }
 
@@ -144,13 +144,13 @@ public abstract class cjl extends ckd implements ckh {
       cuq $$2 = this.b(cnr.a(this, cut.ov));
       cuq $$3 = this.g($$2);
       cnd $$4 = this.a($$3, $$1, $$2);
-      double $$5 = $$0.du() - this.du();
-      double $$6 = $$0.e(0.3333333333333333) - $$4.dw();
-      double $$7 = $$0.dA() - this.dA();
+      double $$5 = $$0.dt() - this.dt();
+      double $$6 = $$0.e(0.3333333333333333) - $$4.dv();
+      double $$7 = $$0.dz() - this.dz();
       double $$8 = Math.sqrt($$5 * $$5 + $$7 * $$7);
-      $$4.c($$5, $$6 + $$8 * 0.2F, $$7, 1.6F, (float)(14 - this.dP().al().a() * 4));
-      this.a(avp.xn, 1.0F, 1.0F / (this.dS().i() * 0.4F + 0.8F));
-      this.dP().b($$4);
+      $$4.c($$5, $$6 + $$8 * 0.2F, $$7, 1.6F, (float)(14 - this.dO().al().a() * 4));
+      this.a(avp.xn, 1.0F, 1.0F / (this.dR().i() * 0.4F + 0.8F));
+      this.dO().b($$4);
    }
 
    protected cnd a(cuq $$0, float $$1, @Nullable cuq $$2) {
@@ -171,12 +171,12 @@ public abstract class cjl extends ckd implements ckh {
    @Override
    public void a(bsy $$0, cuq $$1) {
       super.a($$0, $$1);
-      if (!this.dP().B) {
+      if (!this.dO().B) {
          this.x();
       }
    }
 
-   public boolean gn() {
+   public boolean gm() {
       return this.cp();
    }
 }

@@ -32,13 +32,13 @@ public class cnh extends bsr implements bun {
 
    public void a(@Nullable btn $$0) {
       this.i = $$0;
-      this.j = $$0 == null ? null : $$0.cA();
+      this.j = $$0 == null ? null : $$0.cz();
    }
 
    @Nullable
    public btn p() {
-      if (this.i == null && this.j != null && this.dP() instanceof aqu) {
-         bsr $$0 = ((aqu)this.dP()).a(this.j);
+      if (this.i == null && this.j != null && this.dO() instanceof aqu) {
+         bsr $$0 = ((aqu)this.dO()).a(this.j);
          if ($$0 instanceof btn) {
             this.i = (btn)$$0;
          }
@@ -66,30 +66,30 @@ public class cnh extends bsr implements bun {
    @Override
    public void l() {
       super.l();
-      if (this.dP().B) {
+      if (this.dO().B) {
          if (this.h) {
             this.g--;
             if (this.g == 14) {
                for (int $$0 = 0; $$0 < 12; $$0++) {
-                  double $$1 = this.du() + (this.ah.j() * 2.0 - 1.0) * (double)this.dk() * 0.5;
-                  double $$2 = this.dw() + 0.05 + this.ah.j();
-                  double $$3 = this.dA() + (this.ah.j() * 2.0 - 1.0) * (double)this.dk() * 0.5;
+                  double $$1 = this.dt() + (this.ah.j() * 2.0 - 1.0) * (double)this.dj() * 0.5;
+                  double $$2 = this.dv() + 0.05 + this.ah.j();
+                  double $$3 = this.dz() + (this.ah.j() * 2.0 - 1.0) * (double)this.dj() * 0.5;
                   double $$4 = (this.ah.j() * 2.0 - 1.0) * 0.3;
                   double $$5 = 0.3 + this.ah.j() * 0.3;
                   double $$6 = (this.ah.j() * 2.0 - 1.0) * 0.3;
-                  this.dP().a(lm.f, $$1, $$2 + 1.0, $$3, $$4, $$5, $$6);
+                  this.dO().a(lm.f, $$1, $$2 + 1.0, $$3, $$4, $$5, $$6);
                }
             }
          }
       } else if (--this.e < 0) {
          if (this.e == -8) {
-            for (btn $$8 : this.dP().a(btn.class, this.cL().c(0.2, 0.0, 0.2))) {
+            for (btn $$8 : this.dO().a(btn.class, this.cK().c(0.2, 0.0, 0.2))) {
                this.c($$8);
             }
          }
 
          if (!this.f) {
-            this.dP().a(this, (byte)4);
+            this.dO().a(this, (byte)4);
             this.f = true;
          }
 
@@ -103,14 +103,14 @@ public class cnh extends bsr implements bun {
       btn $$1 = this.p();
       if ($$0.bE() && !$$0.cv() && $$0 != $$1) {
          if ($$1 == null) {
-            $$0.a(this.dQ().p(), 6.0F);
+            $$0.a(this.dP().p(), 6.0F);
          } else {
             if ($$1.s($$0)) {
                return;
             }
 
-            brk $$2 = this.dQ().c(this, (bsr)$$1);
-            if ($$0.a($$2, 6.0F) && this.dP() instanceof aqu $$3) {
+            brk $$2 = this.dP().c(this, (bsr)$$1);
+            if ($$0.a($$2, 6.0F) && this.dO() instanceof aqu $$3) {
                dae.a($$3, (bsr)$$0, $$2);
             }
          }
@@ -123,7 +123,7 @@ public class cnh extends bsr implements bun {
       if ($$0 == 4) {
          this.h = true;
          if (!this.aX()) {
-            this.dP().a(this.du(), this.dw(), this.dA(), avp.iB, this.df(), 1.0F, this.ah.i() * 0.2F + 0.85F, false);
+            this.dO().a(this.dt(), this.dv(), this.dz(), avp.iB, this.de(), 1.0F, this.ah.i() * 0.2F + 0.85F, false);
          }
       }
    }

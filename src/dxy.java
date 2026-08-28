@@ -50,7 +50,7 @@ public class dxy implements dyc {
    }
 
    @Override
-   public boolean a(jm<dxz> $$0, exa $$1, dxz.a $$2, dyc.a $$3) {
+   public boolean a(jm<dxz> $$0, exc $$1, dxz.a $$2, dyc.a $$3) {
       this.e = true;
       boolean $$4 = false;
 
@@ -62,7 +62,7 @@ public class dxy implements dyc {
             if (this.c.remove($$6)) {
                $$5.remove();
             } else {
-               Optional<exa> $$7 = a(this.f, $$1, $$6);
+               Optional<exc> $$7 = a(this.f, $$1, $$6);
                if ($$7.isPresent()) {
                   $$3.visit($$6, $$7.get());
                   $$4 = true;
@@ -86,8 +86,8 @@ public class dxy implements dyc {
       return $$4;
    }
 
-   private static Optional<exa> a(aqu $$0, exa $$1, dyb $$2) {
-      Optional<exa> $$3 = $$2.a().a($$0);
+   private static Optional<exc> a(aqu $$0, exc $$1, dyb $$2) {
+      Optional<exc> $$3 = $$2.a().a($$0);
       if ($$3.isEmpty()) {
          return Optional.empty();
       } else {

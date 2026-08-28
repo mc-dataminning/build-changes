@@ -1,42 +1,44 @@
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.io.IOException;
+import java.util.function.BiFunction;
+import java.util.function.Supplier;
+import org.slf4j.Logger;
 
-public record eql(jm<eqm> b, byte c, byte d, byte e, Optional<wz> f) {
-   public static final yx<wk, eql> a = yx.a(eqm.c, eql::c, yv.c, eql::d, yv.c, eql::e, yv.c, eql::f, xb.c, eql::g, eql::new);
+public abstract class eql {
+   private static final Logger a = LogUtils.getLogger();
+   private boolean b;
 
-   public eql(jm<eqm> b, byte c, byte d, byte e, Optional<wz> f) {
-      e = (byte)(e & 15);
-      this.b = b;
-      this.c = c;
-      this.d = d;
-      this.e = e;
-      this.f = f;
+   public abstract ub a(ub var1, jo.a var2);
+
+   public void c() {
+      this.a(true);
    }
 
-   public akr a() {
-      return this.b.a().b();
+   public void a(boolean $$0) {
+      this.b = $$0;
    }
 
-   public boolean b() {
-      return this.b.a().c();
-   }
-
-   public jm<eqm> c() {
+   public boolean d() {
       return this.b;
    }
 
-   public byte d() {
-      return this.c;
+   public void a(File $$0, jo.a $$1) {
+      if (this.d()) {
+         ub $$2 = new ub();
+         $$2.a("data", this.a(new ub(), $$1));
+         uq.e($$2);
+
+         try {
+            uo.a($$2, $$0.toPath());
+         } catch (IOException var5) {
+            a.error("Could not save data {}", this, var5);
+         }
+
+         this.a(false);
+      }
    }
 
-   public byte e() {
-      return this.d;
-   }
-
-   public byte f() {
-      return this.e;
-   }
-
-   public Optional<wz> g() {
-      return this.f;
+   public static record a<T extends eql>(Supplier<T> a, BiFunction<ub, jo.a, T> b, azw c) {
    }
 }

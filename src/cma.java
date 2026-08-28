@@ -56,7 +56,7 @@ public class cma {
    private List<Pair<UUID, Integer>> b() {
       return Streams.concat(
             new Stream[]{
-               this.c.stream().map($$0 -> Pair.of($$0.cA(), this.d.getInt($$0))),
+               this.c.stream().map($$0 -> Pair.of($$0.cz(), this.d.getInt($$0))),
                this.e.object2IntEntrySet().stream().map($$0 -> Pair.of((UUID)$$0.getKey(), $$0.getIntValue()))
             }
          )
@@ -88,7 +88,7 @@ public class cma {
          Entry<bsr> $$6 = (Entry<bsr>)$$5.next();
          int $$7 = $$6.getIntValue();
          bsr $$8 = (bsr)$$6.getKey();
-         bsr.c $$9 = $$8.dL();
+         bsr.c $$9 = $$8.dK();
          if ($$7 > 1 && $$1.test($$8) && $$9 == null) {
             $$6.setValue($$7 - 1);
          } else {
@@ -99,7 +99,7 @@ public class cma {
                   case e:
                   case c:
                   case d:
-                     this.e.put($$8.cA(), $$7 - 1);
+                     this.e.put($$8.cz(), $$7 - 1);
                }
             }
          }
@@ -135,7 +135,7 @@ public class cma {
       boolean $$2 = !this.d.containsKey($$0);
       int $$3 = this.d.computeInt($$0, ($$1x, $$2x) -> Math.min(150, ($$2x == null ? 0 : $$2x) + $$1));
       if ($$2) {
-         int $$4 = this.e.removeInt($$0.cA());
+         int $$4 = this.e.removeInt($$0.cz());
          $$3 += $$4;
          this.d.put($$0, $$3);
          this.c.add($$0);

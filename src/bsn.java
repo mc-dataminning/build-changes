@@ -49,16 +49,16 @@ public class bsn extends bsr implements bun {
    }
 
    public void a(float $$0) {
-      if (!this.dP().B) {
+      if (!this.dO().B) {
          this.ar().a(f, ayo.a($$0, 0.0F, 32.0F));
       }
    }
 
    @Override
    public void i_() {
-      double $$0 = this.du();
-      double $$1 = this.dw();
-      double $$2 = this.dA();
+      double $$0 = this.dt();
+      double $$1 = this.dv();
+      double $$2 = this.dz();
       super.i_();
       this.a_($$0, $$1, $$2);
    }
@@ -113,7 +113,7 @@ public class bsn extends bsr implements bun {
       super.l();
       boolean $$0 = this.i();
       float $$1 = this.g();
-      if (this.dP().B) {
+      if (this.dO().B) {
          if ($$0 && this.ah.h()) {
             return;
          }
@@ -132,19 +132,19 @@ public class bsn extends bsr implements bun {
          for (int $$7 = 0; $$7 < $$3; $$7++) {
             float $$8 = this.ah.i() * (float) (Math.PI * 2);
             float $$9 = ayo.c(this.ah.i()) * $$4;
-            double $$10 = this.du() + (double)(ayo.b($$8) * $$9);
-            double $$11 = this.dw();
-            double $$12 = this.dA() + (double)(ayo.a($$8) * $$9);
+            double $$10 = this.dt() + (double)(ayo.b($$8) * $$9);
+            double $$11 = this.dv();
+            double $$12 = this.dz() + (double)(ayo.a($$8) * $$9);
             if ($$2.a() == lm.u) {
                if ($$0 && this.ah.h()) {
-                  this.dP().b(lf.a(lm.u, -1), $$10, $$11, $$12, 0.0, 0.0, 0.0);
+                  this.dO().b(lf.a(lm.u, -1), $$10, $$11, $$12, 0.0, 0.0, 0.0);
                } else {
-                  this.dP().b($$2, $$10, $$11, $$12, 0.0, 0.0, 0.0);
+                  this.dO().b($$2, $$10, $$11, $$12, 0.0, 0.0, 0.0);
                }
             } else if ($$0) {
-               this.dP().b($$2, $$10, $$11, $$12, 0.0, 0.0, 0.0);
+               this.dO().b($$2, $$10, $$11, $$12, 0.0, 0.0, 0.0);
             } else {
-               this.dP().b($$2, $$10, $$11, $$12, (0.5 - this.ah.j()) * 0.15, 0.01F, (0.5 - this.ah.j()) * 0.15);
+               this.dO().b($$2, $$10, $$11, $$12, (0.5 - this.ah.j()) * 0.15, 0.01F, (0.5 - this.ah.j()) * 0.15);
             }
          }
       } else {
@@ -185,12 +185,12 @@ public class bsn extends bsr implements bun {
                }
 
                $$14.addAll(this.l.d());
-               List<btn> $$16 = this.dP().a(btn.class, this.cL());
+               List<btn> $$16 = this.dO().a(btn.class, this.cK());
                if (!$$16.isEmpty()) {
                   for (btn $$17 : $$16) {
-                     if (!this.m.containsKey($$17) && $$17.fD()) {
-                        double $$18 = $$17.du() - this.du();
-                        double $$19 = $$17.dA() - this.dA();
+                     if (!this.m.containsKey($$17) && $$17.fC() && !$$14.stream().noneMatch($$17::c)) {
+                        double $$18 = $$17.dt() - this.dt();
+                        double $$19 = $$17.dz() - this.dz();
                         double $$20 = $$18 * $$18 + $$19 * $$19;
                         if ($$20 <= (double)($$1 * $$1)) {
                            this.m.put($$17, this.ai + this.p);
@@ -263,13 +263,13 @@ public class bsn extends bsr implements bun {
 
    public void a(@Nullable btn $$0) {
       this.t = $$0;
-      this.u = $$0 == null ? null : $$0.cA();
+      this.u = $$0 == null ? null : $$0.cz();
    }
 
    @Nullable
    public btn q() {
-      if (this.t == null && this.u != null && this.dP() instanceof aqu) {
-         bsr $$0 = ((aqu)this.dP()).a(this.u);
+      if (this.t == null && this.u != null && this.dO() instanceof aqu) {
+         bsr $$0 = ((aqu)this.dO()).a(this.u);
          if ($$0 instanceof btn) {
             this.t = (btn)$$0;
          }
@@ -292,7 +292,7 @@ public class bsn extends bsr implements bun {
          this.u = $$0.a("Owner");
       }
 
-      akp<uy> $$1 = this.dR().a(up.a);
+      akp<uy> $$1 = this.dQ().a(up.a);
       if ($$0.b("Particle", 10)) {
          lm.bf
             .parse($$1, $$0.c("Particle"))
@@ -315,7 +315,7 @@ public class bsn extends bsr implements bun {
       $$0.a("RadiusOnUse", this.r);
       $$0.a("RadiusPerTick", this.s);
       $$0.a("Radius", this.g());
-      akp<uy> $$1 = this.dR().a(up.a);
+      akp<uy> $$1 = this.dQ().a(up.a);
       $$0.a("Particle", (uy)lm.bf.encodeStart($$1, this.h()).getOrThrow());
       if (this.u != null) {
          $$0.a("Owner", this.u);
@@ -337,8 +337,8 @@ public class bsn extends bsr implements bun {
    }
 
    @Override
-   public eph j_() {
-      return eph.d;
+   public epj j_() {
+      return epj.d;
    }
 
    @Override

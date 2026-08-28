@@ -1,59 +1,48 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
-public record eur(akq<eva> b) implements eva {
-   private static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<eur> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(akq.a(lu.be).fieldOf("name").forGetter(eur::c)).apply($$0, eur::new));
-
-   @Override
-   public evb b() {
-      return evc.p;
-   }
+public record eur(jm<dac> b, List<Float> c) implements evc {
+   public static final MapCodec<eur> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dac.c.fieldOf("enchantment").forGetter(eur::c), axw.a(Codec.FLOAT.listOf()).fieldOf("chances").forGetter(eur::d)).apply($$0, eur::new)
+   );
 
    @Override
-   public void a(erv $$0) {
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
-      } else if ($$0.a(this.b)) {
-         $$0.b("Condition " + this.b.a() + " is recursively called");
-      } else {
-         eva.super.a($$0);
-         $$0.a()
-            .a(lu.be, this.b)
-            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.b.a() + "}", this.b)), () -> $$0.b("Unknown condition table called " + this.b.a()));
+   public evd b() {
+      return eve.k;
+   }
+
+   @Override
+   public Set<euk<?>> a() {
+      return ImmutableSet.of(eun.i);
+   }
+
+   public boolean a(err $$0) {
+      cuq $$1 = $$0.c(eun.i);
+      int $$2 = $$1 != null ? dae.a(this.b, $$1) : 0;
+      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
+      return $$0.b().i() < $$3;
+   }
+
+   public static evc.a a(jm<dac> $$0, float... $$1) {
+      List<Float> $$2 = new ArrayList<>($$1.length);
+
+      for (float $$3 : $$1) {
+         $$2.add($$3);
       }
+
+      return () -> new eur($$0, $$2);
    }
 
-   public boolean a(erp $$0) {
-      eva $$1 = $$0.a().a(lu.be, this.b).map(jm.c::a).orElse(null);
-      if ($$1 == null) {
-         c.warn("Tried using unknown condition table called {}", this.b.a());
-         return false;
-      } else {
-         erp.c<?> $$2 = erp.a($$1);
-         if ($$0.b($$2)) {
-            boolean var4;
-            try {
-               var4 = $$1.test($$0);
-            } finally {
-               $$0.c($$2);
-            }
-
-            return var4;
-         } else {
-            c.warn("Detected infinite loop in loot tables");
-            return false;
-         }
-      }
-   }
-
-   public static eva.a a(akq<eva> $$0) {
-      return () -> new eur($$0);
-   }
-
-   public akq<eva> c() {
+   public jm<dac> c() {
       return this.b;
+   }
+
+   public List<Float> d() {
+      return this.c;
    }
 }

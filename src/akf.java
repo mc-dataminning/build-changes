@@ -17,10 +17,10 @@ public class akf<I extends czc, R extends cyz<I>> implements ake<Integer> {
 
    public void a(aqv $$0, @Nullable czb<R> $$1, boolean $$2) {
       if ($$1 != null && $$0.J().b($$1)) {
-         this.b = $$0.fZ();
+         this.b = $$0.fY();
          if (this.b() || $$0.f()) {
             this.a.a();
-            $$0.fZ().a(this.a);
+            $$0.fY().a(this.a);
             this.c.a(this.a);
             if (this.a.a($$1.b(), null)) {
                this.a($$1, $$2);
@@ -29,7 +29,7 @@ public class akf<I extends czc, R extends cyz<I>> implements ake<Integer> {
                $$0.c.b(new adt($$0.cd.j, $$1));
             }
 
-            $$0.fZ().e();
+            $$0.fY().e();
          }
       }
    }

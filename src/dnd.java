@@ -31,7 +31,7 @@ public class dnd extends djo {
    }
 
    private void a(bsr $$0) {
-      exa $$1 = $$0.ds();
+      exc $$1 = $$0.dr();
       if ($$1.d < 0.0) {
          double $$2 = $$0 instanceof btn ? 1.0 : 0.8;
          $$0.n($$1.c, -$$1.d * $$2, $$1.e);
@@ -40,10 +40,10 @@ public class dnd extends djo {
 
    @Override
    public void a(dcw $$0, jd $$1, dtc $$2, bsr $$3) {
-      double $$4 = Math.abs($$3.ds().d);
+      double $$4 = Math.abs($$3.dr().d);
       if ($$4 < 0.1 && !$$3.bX()) {
          double $$5 = 0.4 + $$4 * 0.2;
-         $$3.i($$3.ds().d($$5, 1.0, $$5));
+         $$3.i($$3.dr().d($$5, 1.0, $$5));
       }
 
       super.a($$0, $$1, $$2, $$3);

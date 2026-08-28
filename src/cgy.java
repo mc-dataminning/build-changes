@@ -23,24 +23,24 @@ public class cgy extends cfe implements buo<jm<cfp>> {
    public cgy(bsx<? extends cfe> $$0, dcw $$1) {
       super($$0, $$1);
       this.bQ = new cgy.a(this);
-      this.a(ept.j, 4.0F);
-      this.a(ept.e, -1.0F);
+      this.a(epv.j, 4.0F);
+      this.a(epv.e, -1.0F);
       this.bR = new bzr(this, 85, 10, 0.02F, 0.1F, true);
    }
 
    @Override
-   protected buq.b<cgy> dV() {
+   protected buq.b<cgy> dU() {
       return buq.a(cb, ca);
    }
 
    @Override
    protected buq<?> a(Dynamic<?> $$0) {
-      return cgz.a(this.dV().a($$0));
+      return cgz.a(this.dU().a($$0));
    }
 
    @Override
-   public buq<cgy> dU() {
-      return (buq<cgy>)super.dU();
+   public buq<cgy> dT() {
+      return (buq<cgy>)super.dT();
    }
 
    @Override
@@ -56,7 +56,7 @@ public class cgy extends cfe implements buo<jm<cfp>> {
    }
 
    public Optional<bsr> t() {
-      return this.ao.a(cj).stream().mapToObj(this.dP()::a).filter(Objects::nonNull).findFirst();
+      return this.ao.a(cj).stream().mapToObj(this.dO()::a).filter(Objects::nonNull).findFirst();
    }
 
    public void c(bsr $$0) {
@@ -64,7 +64,7 @@ public class cgy extends cfe implements buo<jm<cfp>> {
    }
 
    @Override
-   public int fN() {
+   public int fM() {
       return 35;
    }
 
@@ -96,18 +96,18 @@ public class cgy extends cfe implements buo<jm<cfp>> {
 
    @Override
    protected void ab() {
-      this.dP().ag().a("frogBrain");
-      this.dU().a((aqu)this.dP(), this);
-      this.dP().ag().c();
-      this.dP().ag().a("frogActivityUpdate");
+      this.dO().ag().a("frogBrain");
+      this.dT().a((aqu)this.dO(), this);
+      this.dO().ag().c();
+      this.dO().ag().a("frogActivityUpdate");
       cgz.a(this);
-      this.dP().ag().c();
+      this.dO().ag().c();
       super.ab();
    }
 
    @Override
    public void l() {
-      if (this.dP().x_()) {
+      if (this.dO().x_()) {
          this.ch.a(this.bi() && !this.aU.c(), this.ai);
       }
 
@@ -175,12 +175,12 @@ public class cgy extends cfe implements buo<jm<cfp>> {
    @Override
    public void a(aqu $$0, cfe $$1) {
       this.a($$0, $$1, null);
-      this.dU().a(ccs.Y, azs.a);
+      this.dT().a(ccs.Y, azs.a);
    }
 
    @Override
    public buh a(ddl $$0, bqp $$1, btr $$2, @Nullable buh $$3) {
-      jm<ddw> $$4 = $$0.t(this.dp());
+      jm<ddw> $$4 = $$0.t(this.do());
       if ($$4.a(awd.ai)) {
          this.i(lt.aj.g(cfp.d));
       } else if ($$4.a(awd.aj)) {
@@ -193,7 +193,7 @@ public class cgy extends cfe implements buo<jm<cfp>> {
       return super.a($$0, $$1, $$2, $$3);
    }
 
-   public static buv.a gl() {
+   public static buv.a gk() {
       return btp.C().a(buw.v, 1.0).a(buw.s, 10.0).a(buw.c, 10.0).a(buw.B, 1.0);
    }
 
@@ -221,7 +221,7 @@ public class cgy extends cfe implements buo<jm<cfp>> {
    }
 
    @Override
-   public boolean cD() {
+   public boolean cC() {
       return false;
    }
 
@@ -237,18 +237,18 @@ public class cgy extends cfe implements buo<jm<cfp>> {
    }
 
    @Override
-   public void a(exa $$0) {
-      if (this.db() && this.bf()) {
-         this.a(this.fk(), $$0);
-         this.a(bts.a, this.ds());
-         this.i(this.ds().a(0.9));
+   public void a(exc $$0) {
+      if (this.da() && this.bf()) {
+         this.a(this.fj(), $$0);
+         this.a(bts.a, this.dr());
+         this.i(this.dr().a(0.9));
       } else {
          super.a($$0);
       }
    }
 
    public static boolean j(btn $$0) {
-      if ($$0 instanceof ckm $$1 && $$1.gm() != 1) {
+      if ($$0 instanceof ckm $$1 && $$1.gl() != 1) {
          return false;
       }
 
@@ -272,7 +272,7 @@ public class cgy extends cfe implements buo<jm<cfp>> {
    }
 
    public static boolean c(bsx<? extends cfe> $$0, dcx $$1, btr $$2, jd $$3, ayw $$4) {
-      return $$1.a_($$3.e()).a(awe.cg) && a($$1, $$3);
+      return $$1.a_($$3.e()).a(awe.ch) && a($$1, $$3);
    }
 
    class a extends bzo {
@@ -286,7 +286,7 @@ public class cgy extends cfe implements buo<jm<cfp>> {
       }
    }
 
-   static class b extends epl {
+   static class b extends epn {
       private final jd.a l = new jd.a();
 
       public b(boolean $$0) {
@@ -294,15 +294,15 @@ public class cgy extends cfe implements buo<jm<cfp>> {
       }
 
       @Override
-      public epo a() {
-         return !this.b.bf() ? super.a() : this.c(new jd(ayo.a(this.b.cL().a), ayo.a(this.b.cL().b), ayo.a(this.b.cL().c)));
+      public epq a() {
+         return !this.b.bf() ? super.a() : this.c(new jd(ayo.a(this.b.cK().a), ayo.a(this.b.cK().b), ayo.a(this.b.cK().c)));
       }
 
       @Override
-      public ept a(epv $$0, int $$1, int $$2, int $$3) {
+      public epv a(epx $$0, int $$1, int $$2, int $$3) {
          this.l.d($$1, $$2 - 1, $$3);
          dtc $$4 = $$0.a(this.l);
-         return $$4.a(awe.bR) ? ept.b : super.a($$0, $$1, $$2, $$3);
+         return $$4.a(awe.bS) ? epv.b : super.a($$0, $$1, $$2, $$3);
       }
    }
 
@@ -312,15 +312,15 @@ public class cgy extends cfe implements buo<jm<cfp>> {
       }
 
       @Override
-      public boolean b(ept $$0) {
-         return $$0 != ept.k && super.b($$0);
+      public boolean b(epv $$0) {
+         return $$0 != epv.k && super.b($$0);
       }
 
       @Override
-      protected eps a(int $$0) {
+      protected epu a(int $$0) {
          this.o = new cgy.b(true);
          this.o.a(true);
-         return new eps(this.o, $$0);
+         return new epu(this.o, $$0);
       }
    }
 }

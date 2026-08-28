@@ -10,18 +10,18 @@ public interface btb {
 
    void a(bsy var1, float var2);
 
-   default void a(bta $$0, ers $$1) {
+   default void a(bta $$0, eru $$1) {
       this.a($$0.a(), $$1, $$0.b());
    }
 
-   default void a(akq<eru> $$0, ers $$1, Map<bsy, Float> $$2) {
+   default void a(akq<erw> $$0, eru $$1, Map<bsy, Float> $$2) {
       this.a($$0, $$1, 0L, $$2);
    }
 
-   default void a(akq<eru> $$0, ers $$1, long $$2, Map<bsy, Float> $$3) {
-      if (!$$0.equals(erl.a)) {
-         eru $$4 = $$1.a().o().be().b($$0);
-         if ($$4 != eru.a) {
+   default void a(akq<erw> $$0, eru $$1, long $$2, Map<bsy, Float> $$3) {
+      if (!$$0.equals(ern.a)) {
+         erw $$4 = $$1.a().o().be().b($$0);
+         if ($$4 != erw.a) {
             List<cuq> $$5 = $$4.a($$1, $$2);
             List<bsy> $$6 = new ArrayList<>();
 

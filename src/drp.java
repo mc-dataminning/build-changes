@@ -48,12 +48,12 @@ public class drp extends dqh implements dyb.b<dyi.b>, dyi {
    }
 
    @Override
-   public dyi.a gn() {
+   public dyi.a gm() {
       return this.c;
    }
 
    @Override
-   public dyi.d go() {
+   public dyi.d gn() {
       return this.e;
    }
 

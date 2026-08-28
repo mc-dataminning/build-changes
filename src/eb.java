@@ -31,7 +31,7 @@ public record eb(List<eb.c> c) {
       return this.a($$0.b().l(), $$0);
    }
 
-   public boolean a(epc $$0) {
+   public boolean a(epe $$0) {
       return this.a($$0.a().f(), $$0);
    }
 

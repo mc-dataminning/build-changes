@@ -2,7 +2,7 @@ public record add(int b, float c) implements zg<abu> {
    public static final yx<vw, add> a = zg.a(add::a, add::new);
 
    public add(btn $$0) {
-      this($$0.an(), $$0.eF());
+      this($$0.an(), $$0.eE());
    }
 
    private add(vw $$0) {

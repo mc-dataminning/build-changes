@@ -1,36 +1,103 @@
-public class ghg implements ggx<drc> {
-   public static final gso a = new gso(gqi.e, akr.b("entity/enchanting_table_book"));
-   private final fuq b;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-   public ghg(ggy.a $$0) {
-      this.b = new fuq($$0.a(fyh.r));
+public class ghg implements ggz<dqt> {
+   public static final gsq a = new gsq(gqk.e, akr.b("entity/conduit/base"));
+   public static final gsq b = new gsq(gqk.e, akr.b("entity/conduit/cage"));
+   public static final gsq c = new gsq(gqk.e, akr.b("entity/conduit/wind"));
+   public static final gsq d = new gsq(gqk.e, akr.b("entity/conduit/wind_vertical"));
+   public static final gsq e = new gsq(gqk.e, akr.b("entity/conduit/open_eye"));
+   public static final gsq f = new gsq(gqk.e, akr.b("entity/conduit/closed_eye"));
+   private final fyk g;
+   private final fyk h;
+   private final fyk i;
+   private final fyk j;
+   private final ggy k;
+
+   public ghg(gha.a $$0) {
+      this.k = $$0.a();
+      this.g = $$0.a(fyj.E);
+      this.h = $$0.a(fyj.G);
+      this.i = $$0.a(fyj.F);
+      this.j = $$0.a(fyj.D);
    }
 
-   public void a(drc $$0, float $$1, fbg $$2, gex $$3, int $$4, int $$5) {
-      $$2.a();
-      $$2.a(0.5F, 0.75F, 0.5F);
+   public static fyq b() {
+      fys $$0 = new fys();
+      fyt $$1 = $$0.a();
+      $$1.a("eye", fyp.c().a(0, 0).a(-4.0F, -4.0F, 0.0F, 8.0F, 8.0F, 0.0F, new fyo(0.01F)), fym.a);
+      return fyq.a($$0, 16, 16);
+   }
+
+   public static fyq c() {
+      fys $$0 = new fys();
+      fyt $$1 = $$0.a();
+      $$1.a("wind", fyp.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), fym.a);
+      return fyq.a($$0, 64, 32);
+   }
+
+   public static fyq d() {
+      fys $$0 = new fys();
+      fyt $$1 = $$0.a();
+      $$1.a("shell", fyp.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), fym.a);
+      return fyq.a($$0, 32, 16);
+   }
+
+   public static fyq e() {
+      fys $$0 = new fys();
+      fyt $$1 = $$0.a();
+      $$1.a("shell", fyp.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fym.a);
+      return fyq.a($$0, 32, 16);
+   }
+
+   public void a(dqt $$0, float $$1, fbi $$2, gez $$3, int $$4, int $$5) {
       float $$6 = (float)$$0.a + $$1;
-      $$2.a(0.0F, 0.1F + ayo.a($$6 * 0.1F) * 0.01F, 0.0F);
-      float $$7 = $$0.h - $$0.i;
+      if (!$$0.c()) {
+         float $$7 = $$0.a(0.0F);
+         fbm $$8 = a.a($$3, gfh::c);
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.a(new Quaternionf().rotationY($$7 * (float) (Math.PI / 180.0)));
+         this.i.a($$2, $$8, $$4, $$5);
+         $$2.b();
+      } else {
+         float $$9 = $$0.a($$1) * (180.0F / (float)Math.PI);
+         float $$10 = ayo.a($$6 * 0.1F) / 2.0F + 0.5F;
+         $$10 = $$10 * $$10 + $$10;
+         $$2.a();
+         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
+         Vector3f $$11 = new Vector3f(0.5F, 1.0F, 0.5F).normalize();
+         $$2.a(new Quaternionf().rotationAxis($$9 * (float) (Math.PI / 180.0), $$11));
+         this.j.a($$2, b.a($$3, gfh::e), $$4, $$5);
+         $$2.b();
+         int $$12 = $$0.a / 66 % 3;
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         if ($$12 == 1) {
+            $$2.a(new Quaternionf().rotationX((float) (Math.PI / 2)));
+         } else if ($$12 == 2) {
+            $$2.a(new Quaternionf().rotationZ((float) (Math.PI / 2)));
+         }
 
-      while ($$7 >= (float) Math.PI) {
-         $$7 -= (float) (Math.PI * 2);
+         fbm $$13 = ($$12 == 1 ? d : c).a($$3, gfh::e);
+         this.h.a($$2, $$13, $$4, $$5);
+         $$2.b();
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.b(0.875F, 0.875F, 0.875F);
+         $$2.a(new Quaternionf().rotationXYZ((float) Math.PI, 0.0F, (float) Math.PI));
+         this.h.a($$2, $$13, $$4, $$5);
+         $$2.b();
+         ffy $$14 = this.k.b;
+         $$2.a();
+         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
+         $$2.b(0.5F, 0.5F, 0.5F);
+         float $$15 = -$$14.e();
+         $$2.a(new Quaternionf().rotationYXZ($$15 * (float) (Math.PI / 180.0), $$14.d() * (float) (Math.PI / 180.0), (float) Math.PI));
+         float $$16 = 1.3333334F;
+         $$2.b(1.3333334F, 1.3333334F, 1.3333334F);
+         this.g.a($$2, ($$0.d() ? e : f).a($$3, gfh::e), $$4, $$5);
+         $$2.b();
       }
-
-      while ($$7 < (float) -Math.PI) {
-         $$7 += (float) (Math.PI * 2);
-      }
-
-      float $$8 = $$0.i + $$7 * $$1;
-      $$2.a(a.d.rotation(-$$8));
-      $$2.a(a.f.rotationDegrees(80.0F));
-      float $$9 = ayo.i($$1, $$0.c, $$0.b);
-      float $$10 = ayo.h($$9 + 0.25F) * 1.6F - 0.3F;
-      float $$11 = ayo.h($$9 + 0.75F) * 1.6F - 0.3F;
-      float $$12 = ayo.i($$1, $$0.g, $$0.f);
-      this.b.a($$6, ayo.a($$10, 0.0F, 1.0F), ayo.a($$11, 0.0F, 1.0F), $$12);
-      fbk $$13 = a.a($$3, gff::c);
-      this.b.b($$2, $$13, $$4, $$5, -1);
-      $$2.b();
    }
 }

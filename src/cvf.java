@@ -8,7 +8,7 @@ public class cvf extends csv {
    private final bsx<?> b;
    private final avo c;
 
-   public cvf(bsx<?> $$0, epb $$1, avo $$2, cul.a $$3) {
+   public cvf(bsx<?> $$0, epd $$1, avo $$2, cul.a $$3) {
       super($$1, $$3);
       this.b = $$0;
       this.c = $$2;
@@ -31,7 +31,7 @@ public class cvf extends csv {
       if (this.b.a($$0, $$1, null, $$2, btr.l, true, false) instanceof cfg $$4) {
          cxh $$5 = $$1.a(kq.N, cxh.a);
          $$4.h($$5.c());
-         $$4.w(true);
+         $$4.x(true);
       }
    }
 

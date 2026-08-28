@@ -38,9 +38,9 @@ public class hj {
    public static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(wz.c("argument.entity.selector.missing"));
    public static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(wz.c("argument.entity.options.unterminated"));
    public static final DynamicCommandExceptionType j = new DynamicCommandExceptionType($$0 -> wz.b("argument.entity.options.valueless", $$0));
-   public static final BiConsumer<exa, List<? extends bsr>> k = ($$0, $$1) -> $$1.sort(($$1x, $$2) -> Doubles.compare($$1x.g($$0), $$2.g($$0)));
-   public static final BiConsumer<exa, List<? extends bsr>> l = ($$0, $$1) -> $$1.sort(($$1x, $$2) -> Doubles.compare($$2.g($$0), $$1x.g($$0)));
-   public static final BiConsumer<exa, List<? extends bsr>> m = ($$0, $$1) -> Collections.shuffle($$1);
+   public static final BiConsumer<exc, List<? extends bsr>> k = ($$0, $$1) -> $$1.sort(($$1x, $$2) -> Doubles.compare($$1x.g($$0), $$2.g($$0)));
+   public static final BiConsumer<exc, List<? extends bsr>> l = ($$0, $$1) -> $$1.sort(($$1x, $$2) -> Doubles.compare($$2.g($$0), $$1x.g($$0)));
+   public static final BiConsumer<exc, List<? extends bsr>> m = ($$0, $$1) -> Collections.shuffle($$1);
    public static final BiFunction<SuggestionsBuilder, Consumer<SuggestionsBuilder>, CompletableFuture<Suggestions>> n = ($$0, $$1) -> $$0.buildFuture();
    private final StringReader x;
    private final boolean y;
@@ -64,7 +64,7 @@ public class hj {
    private ek K = ek.a;
    private ek L = ek.a;
    private final List<Predicate<bsr>> M = new ArrayList<>();
-   private BiConsumer<exa, List<? extends bsr>> N = hi.b;
+   private BiConsumer<exc, List<? extends bsr>> N = hi.b;
    private boolean O;
    @Nullable
    private String P;
@@ -97,11 +97,11 @@ public class hj {
    }
 
    public hi a() {
-      ewv $$2;
+      ewx $$2;
       if (this.H == null && this.I == null && this.J == null) {
          if (this.C.b().isPresent()) {
             double $$1 = this.C.b().get();
-            $$2 = new ewv(-$$1, -$$1, -$$1, $$1 + 1.0, $$1 + 1.0, $$1 + 1.0);
+            $$2 = new ewx(-$$1, -$$1, -$$1, $$1 + 1.0, $$1 + 1.0, $$1 + 1.0);
          } else {
             $$2 = null;
          }
@@ -109,17 +109,17 @@ public class hj {
          $$2 = this.a(this.H == null ? 0.0 : this.H, this.I == null ? 0.0 : this.I, this.J == null ? 0.0 : this.J);
       }
 
-      Function<exa, exa> $$4;
+      Function<exc, exc> $$4;
       if (this.E == null && this.F == null && this.G == null) {
          $$4 = $$0 -> $$0;
       } else {
-         $$4 = $$0 -> new exa(this.E == null ? $$0.c : this.E, this.F == null ? $$0.d : this.F, this.G == null ? $$0.e : this.G);
+         $$4 = $$0 -> new exc(this.E == null ? $$0.c : this.E, this.F == null ? $$0.d : this.F, this.G == null ? $$0.e : this.G);
       }
 
-      return new hi(this.z, this.A, this.B, ad.a(this.M), this.C, $$4, $$2, this.N, this.O, this.P, this.R, this.ab, this.af);
+      return new hi(this.z, this.A, this.B, List.copyOf(this.M), this.C, $$4, $$2, this.N, this.O, this.P, this.R, this.ab, this.af);
    }
 
-   private ewv a(double $$0, double $$1, double $$2) {
+   private ewx a(double $$0, double $$1, double $$2) {
       boolean $$3 = $$0 < 0.0;
       boolean $$4 = $$1 < 0.0;
       boolean $$5 = $$2 < 0.0;
@@ -129,16 +129,16 @@ public class hj {
       double $$9 = ($$3 ? 0.0 : $$0) + 1.0;
       double $$10 = ($$4 ? 0.0 : $$1) + 1.0;
       double $$11 = ($$5 ? 0.0 : $$2) + 1.0;
-      return new ewv($$6, $$7, $$8, $$9, $$10, $$11);
+      return new ewx($$6, $$7, $$8, $$9, $$10, $$11);
    }
 
    private void I() {
       if (this.K != ek.a) {
-         this.M.add(this.a(this.K, bsr::dH));
+         this.M.add(this.a(this.K, bsr::dG));
       }
 
       if (this.L != ek.a) {
-         this.M.add(this.a(this.L, bsr::dF));
+         this.M.add(this.a(this.L, bsr::dE));
       }
 
       if (!this.D.c()) {
@@ -415,11 +415,11 @@ public class hj {
       this.A = $$0;
    }
 
-   public BiConsumer<exa, List<? extends bsr>> s() {
+   public BiConsumer<exc, List<? extends bsr>> s() {
       return this.N;
    }
 
-   public void a(BiConsumer<exa, List<? extends bsr>> $$0) {
+   public void a(BiConsumer<exc, List<? extends bsr>> $$0) {
       this.N = $$0;
    }
 

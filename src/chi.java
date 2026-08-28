@@ -18,7 +18,7 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
    private static final float cg = a($$0 -> $$0 - 1);
    private static final float ch = 0.25F;
    private static final float ci = 0.5F;
-   private static final Predicate<btn> cj = $$0 -> $$0 instanceof chi && ((chi)$$0).gF();
+   private static final Predicate<btn> cj = $$0 -> $$0 instanceof chi && ((chi)$$0).gE();
    private static final cef ck = cef.b().a(16.0).d().a(cj);
    private static final ajw<Byte> cB = aka.a(chi.class, ajy.a);
    private static final int cC = 2;
@@ -49,10 +49,10 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
    protected int cz;
    @Nullable
    private UUID cR;
-   private final bqk cS = new eyl() {
+   private final bqk cS = new eyn() {
       @Override
       public cuq f() {
-         return chi.this.fP();
+         return chi.this.fO();
       }
 
       @Override
@@ -66,13 +66,13 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
 
       @Override
       public boolean a(cmx $$0) {
-         return $$0.dd() == chi.this || $$0.b(chi.this, 4.0);
+         return $$0.dc() == chi.this || $$0.b(chi.this, 4.0);
       }
    };
 
    protected chi(bsx<? extends chi> $$0, dcw $$1) {
       super($$0, $$1);
-      this.gI();
+      this.gH();
    }
 
    @Override
@@ -84,14 +84,14 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
       this.bU.a(6, new cbz(this, 0.7));
       this.bU.a(7, new cau(this, cmx.class, 6.0F));
       this.bU.a(8, new cbh(this));
-      if (this.gm()) {
+      if (this.gl()) {
          this.bU.a(9, new cbi(this));
       }
 
-      this.gB();
+      this.gA();
    }
 
-   protected void gB() {
+   protected void gA() {
       this.bU.a(0, new cag(this));
       this.bU.a(3, new cbu(this, 1.25, $$0 -> $$0.a(awn.ag), false));
    }
@@ -115,7 +115,7 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
       }
    }
 
-   public boolean gA() {
+   public boolean gz() {
       return this.t(2);
    }
 
@@ -129,46 +129,46 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
       this.cR = $$0;
    }
 
-   public boolean gC() {
+   public boolean gB() {
       return this.ct;
    }
 
-   public void x(boolean $$0) {
+   public void y(boolean $$0) {
       this.d(2, $$0);
    }
 
-   public void y(boolean $$0) {
+   public void z(boolean $$0) {
       this.ct = $$0;
    }
 
    @Override
    public boolean a(bsr $$0, float $$1) {
-      if ($$1 > 6.0F && this.gD()) {
-         this.A(false);
+      if ($$1 > 6.0F && this.gC()) {
+         this.B(false);
       }
 
       return true;
    }
 
-   public boolean gD() {
+   public boolean gC() {
       return this.t(16);
    }
 
-   public boolean gE() {
+   public boolean gD() {
       return this.t(32);
    }
 
-   public boolean gF() {
+   public boolean gE() {
       return this.t(8);
    }
 
-   public void z(boolean $$0) {
+   public void A(boolean $$0) {
       this.d(8, $$0);
    }
 
    @Override
    public boolean f() {
-      return this.bE() && !this.o_() && this.gA();
+      return this.bE() && !this.o_() && this.gz();
    }
 
    @Override
@@ -188,7 +188,7 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
       return this.t(4);
    }
 
-   public int gG() {
+   public int gF() {
       return this.cv;
    }
 
@@ -197,7 +197,7 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
    }
 
    public int v(int $$0) {
-      int $$1 = ayo.a(this.gG() + $$0, 0, this.gM());
+      int $$1 = ayo.a(this.gF() + $$0, 0, this.gL());
       this.u($$1);
       return $$1;
    }
@@ -210,9 +210,9 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
    private void s() {
       this.x();
       if (!this.aX()) {
-         avo $$0 = this.gn();
+         avo $$0 = this.gm();
          if ($$0 != null) {
-            this.dP().a(null, this.du(), this.dw(), this.dA(), $$0, this.df(), 1.0F, 1.0F + (this.ah.i() - this.ah.i()) * 0.2F);
+            this.dO().a(null, this.dt(), this.dv(), this.dz(), $$0, this.de(), 1.0F, 1.0F + (this.ah.i() - this.ah.i()) * 0.2F);
          }
       }
    }
@@ -229,17 +229,17 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
       } else {
          this.a($$2, (float)$$3);
          if (this.bT()) {
-            for (bsr $$4 : this.cX()) {
+            for (bsr $$4 : this.cW()) {
                $$4.a($$2, (float)$$3);
             }
          }
 
-         this.eK();
+         this.eJ();
          return true;
       }
    }
 
-   public final int gH() {
+   public final int gG() {
       return w(this.af_());
    }
 
@@ -247,9 +247,9 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
       return $$0 * 3 + 1;
    }
 
-   protected void gI() {
+   protected void gH() {
       bra $$0 = this.cu;
-      this.cu = new bra(this.gH());
+      this.cu = new bra(this.gG());
       if ($$0 != null) {
          $$0.b(this);
          int $$1 = Math.min($$0.b(), this.cu.b());
@@ -263,11 +263,11 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
       }
 
       this.cu.a(this);
-      this.gJ();
+      this.gI();
    }
 
-   protected void gJ() {
-      if (!this.dP().B) {
+   protected void gI() {
+      if (!this.dO().B) {
          this.d(4, !this.cu.a(0).e());
       }
    }
@@ -275,7 +275,7 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
    @Override
    public void a(bqk $$0) {
       boolean $$1 = this.i();
-      this.gJ();
+      this.gI();
       if (this.ai > 20 && !$$1 && this.i()) {
          this.a(this.ac_(), 0.5F, 1.0F);
       }
@@ -285,30 +285,30 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
    public boolean a(brk $$0, float $$1) {
       boolean $$2 = super.a($$0, $$1);
       if ($$2 && this.ah.a(3) == 0) {
-         this.gQ();
+         this.gP();
       }
 
       return $$2;
    }
 
-   protected boolean gm() {
+   protected boolean gl() {
       return true;
    }
 
    @Nullable
-   protected avo gn() {
+   protected avo gm() {
       return null;
    }
 
    @Nullable
-   protected avo gK() {
+   protected avo gJ() {
       return null;
    }
 
    @Override
    protected void b(jd $$0, dtc $$1) {
       if (!$$1.k()) {
-         dtc $$2 = this.dP().a_($$0.d());
+         dtc $$2 = this.dO().a_($$0.d());
          dnm $$3 = $$1.w();
          if ($$2.a(dga.dN)) {
             $$3 = $$2.w();
@@ -337,21 +337,21 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
       this.a(avp.mM, $$0.a() * 0.15F, $$0.b());
    }
 
-   public static buv.a gL() {
+   public static buv.a gK() {
       return btp.C().a(buw.o, 0.7).a(buw.s, 53.0).a(buw.v, 0.225F).a(buw.B, 1.0).a(buw.x, 6.0).a(buw.k, 0.5);
    }
 
    @Override
-   public int fO() {
+   public int fN() {
       return 6;
    }
 
-   public int gM() {
+   public int gL() {
       return 100;
    }
 
    @Override
-   protected float fb() {
+   protected float fa() {
       return 0.8F;
    }
 
@@ -362,7 +362,7 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
 
    @Override
    public void b(cmx $$0) {
-      if (!this.dP().B && (!this.bT() || this.x($$0)) && this.gA()) {
+      if (!this.dO().B && (!this.bT() || this.x($$0)) && this.gz()) {
          $$0.a(this, this.cu);
       }
    }
@@ -373,7 +373,7 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
          $$1.a(1, $$0);
       }
 
-      if (this.dP().B) {
+      if (this.dO().B) {
          return bqr.c;
       } else {
          return $$2 ? bqr.a : bqr.e;
@@ -404,7 +404,7 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
          $$3 = 4.0F;
          $$4 = 60;
          $$5 = 5;
-         if (!this.dP().B && this.gA() && this.g() == 0 && !this.gt()) {
+         if (!this.dO().B && this.gz() && this.g() == 0 && !this.gs()) {
             $$2 = true;
             this.f($$0);
          }
@@ -412,26 +412,26 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
          $$3 = 10.0F;
          $$4 = 240;
          $$5 = 10;
-         if (!this.dP().B && this.gA() && this.g() == 0 && !this.gt()) {
+         if (!this.dO().B && this.gz() && this.g() == 0 && !this.gs()) {
             $$2 = true;
             this.f($$0);
          }
       }
 
-      if (this.ex() < this.eO() && $$3 > 0.0F) {
+      if (this.ew() < this.eN() && $$3 > 0.0F) {
          this.c($$3);
          $$2 = true;
       }
 
       if (this.o_() && $$4 > 0) {
-         this.dP().a(lm.O, this.d(1.0), this.dx() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
-         if (!this.dP().B) {
+         this.dO().a(lm.O, this.d(1.0), this.dw() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
+         if (!this.dO().B) {
             this.b_($$4);
             $$2 = true;
          }
       }
 
-      if ($$5 > 0 && ($$2 || !this.gA()) && this.gG() < this.gM() && !this.dP().B) {
+      if ($$5 > 0 && ($$2 || !this.gz()) && this.gF() < this.gL() && !this.dO().B) {
          this.v($$5);
          $$2 = true;
       }
@@ -445,18 +445,18 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
    }
 
    protected void a(cmx $$0) {
-      this.A(false);
       this.B(false);
-      if (!this.dP().B) {
-         $$0.t(this.dF());
-         $$0.u(this.dH());
+      this.C(false);
+      if (!this.dO().B) {
+         $$0.t(this.dE());
+         $$0.u(this.dG());
          $$0.n(this);
       }
    }
 
    @Override
-   public boolean fd() {
-      return super.fd() && this.bT() && this.i() || this.gD() || this.gE();
+   public boolean fc() {
+      return super.fc() && this.bT() && this.i() || this.gC() || this.gD();
    }
 
    @Override
@@ -469,8 +469,8 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
    }
 
    @Override
-   protected void eA() {
-      super.eA();
+   protected void ez() {
+      super.ez();
       if (this.cu != null) {
          for (int $$0 = 0; $$0 < this.cu.b(); $$0++) {
             cuq $$1 = this.cu.a($$0);
@@ -488,36 +488,36 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
       }
 
       super.m_();
-      if (!this.dP().B && this.bE()) {
+      if (!this.dO().B && this.bE()) {
          if (this.ah.a(900) == 0 && this.aQ == 0) {
             this.c(1.0F);
          }
 
-         if (this.gO()) {
-            if (!this.gD() && !this.bT() && this.ah.a(300) == 0 && this.dP().a_(this.dp().e()).a(dga.i)) {
-               this.A(true);
+         if (this.gN()) {
+            if (!this.gC() && !this.bT() && this.ah.a(300) == 0 && this.dO().a_(this.do().e()).a(dga.i)) {
+               this.B(true);
             }
 
-            if (this.gD() && ++this.cI > 50) {
+            if (this.gC() && ++this.cI > 50) {
                this.cI = 0;
-               this.A(false);
+               this.B(false);
             }
          }
 
-         this.gN();
+         this.gM();
       }
    }
 
-   protected void gN() {
-      if (this.gF() && this.o_() && !this.gD()) {
-         btn $$0 = this.dP().a(chi.class, ck, this, this.du(), this.dw(), this.dA(), this.cL().g(16.0));
+   protected void gM() {
+      if (this.gE() && this.o_() && !this.gC()) {
+         btn $$0 = this.dO().a(chi.class, ck, this, this.dt(), this.dv(), this.dz(), this.cK().g(16.0));
          if ($$0 != null && this.g($$0) > 4.0) {
             this.bT.a($$0, 0);
          }
       }
    }
 
-   public boolean gO() {
+   public boolean gN() {
       return true;
    }
 
@@ -529,9 +529,9 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
          this.d(64, false);
       }
 
-      if (this.dc() && this.cK > 0 && ++this.cK > 20) {
+      if (this.db() && this.cK > 0 && ++this.cK > 20) {
          this.cK = 0;
-         this.B(false);
+         this.C(false);
       }
 
       if (this.cr > 0 && ++this.cr > 8) {
@@ -546,7 +546,7 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
       }
 
       this.cM = this.cL;
-      if (this.gD()) {
+      if (this.gC()) {
          this.cL = this.cL + (1.0F - this.cL) * 0.4F + 0.05F;
          if (this.cL > 1.0F) {
             this.cL = 1.0F;
@@ -559,7 +559,7 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
       }
 
       this.cO = this.cN;
-      if (this.gE()) {
+      if (this.gD()) {
          this.cL = 0.0F;
          this.cM = this.cL;
          this.cN = this.cN + (1.0F - this.cN) * 0.4F + 0.05F;
@@ -592,9 +592,9 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
    public bqr b(cmx $$0, bqq $$1) {
       if (this.bT() || this.o_()) {
          return super.b($$0, $$1);
-      } else if (this.gA() && $$0.fO()) {
+      } else if (this.gz() && $$0.fN()) {
          this.b($$0);
-         return bqr.a(this.dP().B);
+         return bqr.a(this.dO().B);
       } else {
          cuq $$2 = $$0.b($$1);
          if (!$$2.e()) {
@@ -603,80 +603,80 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
                return $$3;
             }
 
-            if (this.d(bsy.g) && this.l($$2) && !this.fQ()) {
+            if (this.d(bsy.g) && this.l($$2) && !this.fP()) {
                this.b($$0, $$2);
-               return bqr.a(this.dP().B);
+               return bqr.a(this.dO().B);
             }
          }
 
          this.a($$0);
-         return bqr.a(this.dP().B);
+         return bqr.a(this.dO().B);
       }
    }
 
    private void x() {
-      if (!this.dP().B) {
+      if (!this.dO().B) {
          this.cJ = 1;
          this.d(64, true);
       }
    }
 
-   public void A(boolean $$0) {
+   public void B(boolean $$0) {
       this.d(16, $$0);
    }
 
-   public void B(boolean $$0) {
+   public void C(boolean $$0) {
       if ($$0) {
-         this.A(false);
+         this.B(false);
       }
 
       this.d(32, $$0);
    }
 
    @Nullable
-   public avo gP() {
+   public avo gO() {
       return this.v();
    }
 
-   public void gQ() {
-      if (this.gm() && this.dc()) {
+   public void gP() {
+      if (this.gl() && this.db()) {
          this.cK = 1;
-         this.B(true);
+         this.C(true);
       }
    }
 
-   public void gR() {
-      if (!this.gE()) {
-         this.gQ();
-         this.b(this.gK());
+   public void gQ() {
+      if (!this.gD()) {
+         this.gP();
+         this.b(this.gJ());
       }
    }
 
    public boolean g(cmx $$0) {
-      this.b($$0.cA());
-      this.x(true);
+      this.b($$0.cz());
+      this.y(true);
       if ($$0 instanceof aqv) {
          an.y.a((aqv)$$0, this);
       }
 
-      this.dP().a(this, (byte)7);
+      this.dO().a(this, (byte)7);
       return true;
    }
 
    @Override
-   protected void a(cmx $$0, exa $$1) {
+   protected void a(cmx $$0, exc $$1) {
       super.a($$0, $$1);
-      ewz $$2 = this.j($$0);
+      exb $$2 = this.j($$0);
       this.a($$2.j, $$2.i);
-      this.O = this.aY = this.ba = this.dF();
-      if (this.db()) {
+      this.O = this.aY = this.ba = this.dE();
+      if (this.da()) {
          if ($$1.e <= 0.0) {
             this.cz = 0;
          }
 
          if (this.aF()) {
-            this.y(false);
-            if (this.cw > 0.0F && !this.gC()) {
+            this.z(false);
+            if (this.cw > 0.0F && !this.gB()) {
                this.b(this.cw, $$1);
             }
 
@@ -685,14 +685,14 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
       }
    }
 
-   protected ewz j(btn $$0) {
-      return new ewz($$0.dH() * 0.5F, $$0.dF());
+   protected exb j(btn $$0) {
+      return new exb($$0.dG() * 0.5F, $$0.dE());
    }
 
    @Override
-   protected exa b(cmx $$0, exa $$1) {
-      if (this.aF() && this.cw == 0.0F && this.gE() && !this.cx) {
-         return exa.b;
+   protected exc b(cmx $$0, exc $$1) {
+      if (this.aF() && this.cw == 0.0F && this.gD() && !this.cx) {
+         return exc.b;
       } else {
          float $$2 = $$0.bo * 0.5F;
          float $$3 = $$0.bq;
@@ -700,7 +700,7 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
             $$3 *= 0.25F;
          }
 
-         return new exa((double)$$2, 0.0, (double)$$3);
+         return new exc((double)$$2, 0.0, (double)$$3);
       }
    }
 
@@ -709,52 +709,52 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
       return (float)this.g(buw.v);
    }
 
-   protected void b(float $$0, exa $$1) {
+   protected void b(float $$0, exc $$1) {
       double $$2 = (double)this.y($$0);
-      exa $$3 = this.ds();
+      exc $$3 = this.dr();
       this.n($$3.c, $$2, $$3.e);
-      this.y(true);
+      this.z(true);
       this.av = true;
       if ($$1.e > 0.0) {
-         float $$4 = ayo.a(this.dF() * (float) (Math.PI / 180.0));
-         float $$5 = ayo.b(this.dF() * (float) (Math.PI / 180.0));
-         this.i(this.ds().b((double)(-0.4F * $$4 * $$0), 0.0, (double)(0.4F * $$5 * $$0)));
+         float $$4 = ayo.a(this.dE() * (float) (Math.PI / 180.0));
+         float $$5 = ayo.b(this.dE() * (float) (Math.PI / 180.0));
+         this.i(this.dr().b((double)(-0.4F * $$4 * $$0), 0.0, (double)(0.4F * $$5 * $$0)));
       }
    }
 
-   protected void gS() {
+   protected void gR() {
       this.a(avp.mO, 0.4F, 1.0F);
    }
 
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      $$0.a("EatingHaystack", this.gD());
-      $$0.a("Bred", this.gF());
-      $$0.a("Temper", this.gG());
-      $$0.a("Tame", this.gA());
+      $$0.a("EatingHaystack", this.gC());
+      $$0.a("Bred", this.gE());
+      $$0.a("Temper", this.gF());
+      $$0.a("Tame", this.gz());
       if (this.aa_() != null) {
          $$0.a("Owner", this.aa_());
       }
 
       if (!this.cu.a(0).e()) {
-         $$0.a("SaddleItem", this.cu.a(0).a(this.dR()));
+         $$0.a("SaddleItem", this.cu.a(0).a(this.dQ()));
       }
    }
 
    @Override
    public void a(ub $$0) {
       super.a($$0);
-      this.A($$0.q("EatingHaystack"));
-      this.z($$0.q("Bred"));
+      this.B($$0.q("EatingHaystack"));
+      this.A($$0.q("Bred"));
       this.u($$0.h("Temper"));
-      this.x($$0.q("Tame"));
+      this.y($$0.q("Tame"));
       UUID $$1;
       if ($$0.b("Owner")) {
          $$1 = $$0.a("Owner");
       } else {
          String $$2 = $$0.l("Owner");
-         $$1 = auq.a(this.cP(), $$2);
+         $$1 = auq.a(this.cO(), $$2);
       }
 
       if ($$1 != null) {
@@ -762,13 +762,13 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
       }
 
       if ($$0.b("SaddleItem", 10)) {
-         cuq $$4 = cuq.a(this.dR(), (uy)$$0.p("SaddleItem")).orElse(cuq.l);
+         cuq $$4 = cuq.a(this.dQ(), (uy)$$0.p("SaddleItem")).orElse(cuq.l);
          if ($$4.a(cut.nL)) {
             this.cu.a(0, $$4);
          }
       }
 
-      this.gJ();
+      this.gI();
    }
 
    @Override
@@ -776,8 +776,8 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
       return false;
    }
 
-   protected boolean gT() {
-      return !this.bT() && !this.bS() && this.gA() && !this.o_() && this.ex() >= this.eO() && this.gt();
+   protected boolean gS() {
+      return !this.bT() && !this.bS() && this.gz() && !this.o_() && this.ew() >= this.eN() && this.gs();
    }
 
    @Nullable
@@ -839,7 +839,7 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
             $$0 = 0;
          } else {
             this.cx = true;
-            this.gQ();
+            this.gP();
          }
 
          if ($$0 >= 90) {
@@ -858,31 +858,31 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
    @Override
    public void c(int $$0) {
       this.cx = true;
-      this.gQ();
-      this.gS();
+      this.gP();
+      this.gR();
    }
 
    @Override
    public void b() {
    }
 
-   protected void C(boolean $$0) {
+   protected void D(boolean $$0) {
       lk $$1 = $$0 ? lm.Q : lm.ae;
 
       for (int $$2 = 0; $$2 < 7; $$2++) {
          double $$3 = this.ah.k() * 0.02;
          double $$4 = this.ah.k() * 0.02;
          double $$5 = this.ah.k() * 0.02;
-         this.dP().a($$1, this.d(1.0), this.dx() + 0.5, this.g(1.0), $$3, $$4, $$5);
+         this.dO().a($$1, this.d(1.0), this.dw() + 0.5, this.g(1.0), $$3, $$4, $$5);
       }
    }
 
    @Override
    public void b(byte $$0) {
       if ($$0 == 7) {
-         this.C(true);
+         this.D(true);
       } else if ($$0 == 6) {
-         this.C(false);
+         this.D(false);
       } else {
          super.b($$0);
       }
@@ -929,7 +929,7 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
                   return false;
                } else {
                   chi.this.cu.a(0, $$0);
-                  chi.this.gJ();
+                  chi.this.gI();
                   return true;
                }
             }
@@ -942,40 +942,40 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
 
    @Nullable
    @Override
-   public btn cR() {
+   public btn cQ() {
       if (this.i()) {
-         bsr var2 = this.cU();
+         bsr var2 = this.cT();
          if (var2 instanceof cmx) {
             return (cmx)var2;
          }
       }
 
-      return super.cR();
+      return super.cQ();
    }
 
    @Nullable
-   private exa a(exa $$0, btn $$1) {
-      double $$2 = this.du() + $$0.c;
-      double $$3 = this.cL().b;
-      double $$4 = this.dA() + $$0.e;
+   private exc a(exc $$0, btn $$1) {
+      double $$2 = this.dt() + $$0.c;
+      double $$3 = this.cK().b;
+      double $$4 = this.dz() + $$0.e;
       jd.a $$5 = new jd.a();
-      UnmodifiableIterator var10 = $$1.fF().iterator();
+      UnmodifiableIterator var10 = $$1.fE().iterator();
 
       while (var10.hasNext()) {
          bua $$6 = (bua)var10.next();
          $$5.b($$2, $$3, $$4);
-         double $$7 = this.cL().e + 0.75;
+         double $$7 = this.cK().e + 0.75;
 
          do {
-            double $$8 = this.dP().j($$5);
+            double $$8 = this.dO().j($$5);
             if ((double)$$5.v() + $$8 > $$7) {
                break;
             }
 
             if (coy.a($$8)) {
-               ewv $$9 = $$1.f($$6);
-               exa $$10 = new exa($$2, (double)$$5.v() + $$8, $$4);
-               if (coy.a(this.dP(), $$1, $$9.c($$10))) {
+               ewx $$9 = $$1.f($$6);
+               exc $$10 = new exc($$2, (double)$$5.v() + $$8, $$4);
+               if (coy.a(this.dO(), $$1, $$9.c($$10))) {
                   $$1.b($$6);
                   return $$10;
                }
@@ -989,15 +989,15 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
    }
 
    @Override
-   public exa b(btn $$0) {
-      exa $$1 = a((double)this.dk(), (double)$$0.dk(), this.dF() + ($$0.fr() == btg.b ? 90.0F : -90.0F));
-      exa $$2 = this.a($$1, $$0);
+   public exc b(btn $$0) {
+      exc $$1 = a((double)this.dj(), (double)$$0.dj(), this.dE() + ($$0.fq() == btg.b ? 90.0F : -90.0F));
+      exc $$2 = this.a($$1, $$0);
       if ($$2 != null) {
          return $$2;
       } else {
-         exa $$3 = a((double)this.dk(), (double)$$0.dk(), this.dF() + ($$0.fr() == btg.a ? 90.0F : -90.0F));
-         exa $$4 = this.a($$3, $$0);
-         return $$4 != null ? $$4 : this.dn();
+         exc $$3 = a((double)this.dj(), (double)$$0.dj(), this.dE() + ($$0.fq() == btg.a ? 90.0F : -90.0F));
+         exc $$4 = this.a($$3, $$0);
+         return $$4 != null ? $$4 : this.dm();
       }
    }
 
@@ -1019,17 +1019,17 @@ public abstract class chi extends cfe implements bqm, btf, btv, bty, bue {
       return this.cu != $$0;
    }
 
-   public int gU() {
+   public int gT() {
       return this.R();
    }
 
    @Override
-   protected exa a(bsr $$0, bsu $$1, float $$2) {
+   protected exc a(bsr $$0, bsu $$1, float $$2) {
       return super.a($$0, $$1, $$2)
-         .e(new exa(0.0, 0.15 * (double)this.cO * (double)$$2, -0.7 * (double)this.cO * (double)$$2).b(-this.dF() * (float) (Math.PI / 180.0)));
+         .e(new exc(0.0, 0.15 * (double)this.cO * (double)$$2, -0.7 * (double)this.cO * (double)$$2).b(-this.dE() * (float) (Math.PI / 180.0)));
    }
 
-   public final bqk gV() {
+   public final bqk gU() {
       return this.cS;
    }
 

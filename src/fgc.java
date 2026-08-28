@@ -1,38 +1,54 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.google.common.base.Charsets;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Collection;
+import org.slf4j.Logger;
 
 public class fgc {
-   private final fze a;
-   private int b = -1;
-   @Nullable
-   private Consumer<ub> c;
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 50;
+   private static final String c = "command_history.txt";
+   private final Path d;
+   private final axb<String> e = new axb<>(50);
 
-   public fgc(fze $$0) {
-      this.a = $$0;
-   }
-
-   public boolean a(int $$0, @Nullable ub $$1) {
-      if (this.b == $$0 && this.c != null) {
-         this.c.accept($$1);
-         this.c = null;
-         return true;
-      } else {
-         return false;
+   public fgc(Path $$0) {
+      this.d = $$0.resolve("command_history.txt");
+      if (Files.exists(this.d)) {
+         try (BufferedReader $$1 = Files.newBufferedReader(this.d, Charsets.UTF_8)) {
+            this.e.addAll($$1.lines().toList());
+         } catch (Exception var7) {
+            a.error("Failed to read {}, command history will be missing", "command_history.txt", var7);
+         }
       }
    }
 
-   private int a(Consumer<ub> $$0) {
-      this.c = $$0;
-      return ++this.b;
+   public void a(String $$0) {
+      if (!$$0.equals(this.e.peekLast())) {
+         if (this.e.size() >= 50) {
+            this.e.removeFirst();
+         }
+
+         this.e.addLast($$0);
+         this.b();
+      }
    }
 
-   public void a(int $$0, Consumer<ub> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new ahc($$2, $$0));
+   private void b() {
+      try (BufferedWriter $$0 = Files.newBufferedWriter(this.d, Charsets.UTF_8)) {
+         for (String $$1 : this.e) {
+            $$0.write($$1);
+            $$0.newLine();
+         }
+      } catch (IOException var6) {
+         a.error("Failed to write {}, command history will be missing", "command_history.txt", var6);
+      }
    }
 
-   public void a(jd $$0, Consumer<ub> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new agl($$2, $$0));
+   public Collection<String> a() {
+      return this.e;
    }
 }

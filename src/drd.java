@@ -18,7 +18,7 @@ public class drd extends dqh implements drl {
 
       @Override
       protected boolean a(cmx $$0) {
-         return $$0.gm().b(drd.this);
+         return $$0.gl().b(drd.this);
       }
    };
 

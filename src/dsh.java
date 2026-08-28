@@ -37,7 +37,7 @@ public class dsh {
    protected long f;
    protected int g;
    protected Optional<ddo> h;
-   protected Optional<akq<eru>> i;
+   protected Optional<akq<erw>> i;
    @Nullable
    protected bsr j;
    @Nullable
@@ -49,7 +49,7 @@ public class dsh {
       this(Collections.emptySet(), Collections.emptySet(), 0L, 0L, 0, Optional.empty(), Optional.empty());
    }
 
-   public dsh(Set<UUID> $$0, Set<UUID> $$1, long $$2, long $$3, int $$4, Optional<ddo> $$5, Optional<akq<eru>> $$6) {
+   public dsh(Set<UUID> $$0, Set<UUID> $$1, long $$2, long $$3, int $$4, Optional<ddo> $$5, Optional<akq<erw>> $$6) {
       this.c.addAll($$0);
       this.d.addAll($$1);
       this.e = $$2;
@@ -153,9 +153,9 @@ public class dsh {
    public void a(dsf $$0, aqu $$1) {
       this.d.stream().map($$1::a).forEach($$1x -> {
          if ($$1x != null) {
-            $$1.c(3012, $$1x.dp(), dsf.a.a.a());
+            $$1.c(3012, $$1x.do(), dsf.a.a.a());
             if ($$1x instanceof btp $$2) {
-               $$2.fR();
+               $$2.fQ();
             }
 
             $$1x.a(bsr.c.b);
@@ -251,8 +251,8 @@ public class dsh {
       if (this.p != null) {
          return this.p;
       } else {
-         eru $$3 = $$0.o().be().b($$1.j());
-         ers $$4 = new ers.a($$0).a(euk.b);
+         erw $$3 = $$0.o().be().b($$1.j());
+         eru $$4 = new eru.a($$0).a(eum.b);
          long $$5 = a($$0, $$2);
          ObjectArrayList<cuq> $$6 = $$3.a($$4, $$5);
          if ($$6.isEmpty()) {

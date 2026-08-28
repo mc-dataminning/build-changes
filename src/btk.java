@@ -52,7 +52,7 @@ public interface btk {
       if ($$1 != null) {
          Either<UUID, jd> $$2 = $$1.b;
          if ($$1.a instanceof btn) {
-            $$2 = Either.left($$1.a.cA());
+            $$2 = Either.left($$1.a.cz());
          } else if ($$1.a instanceof cjb $$3) {
             $$2 = Either.right($$3.t());
          }
@@ -66,7 +66,7 @@ public interface btk {
    }
 
    private static <E extends bsr & btk> void a(E $$0, btk.a $$1) {
-      if ($$1.b != null && $$0.dP() instanceof aqu $$2) {
+      if ($$1.b != null && $$0.dO() instanceof aqu $$2) {
          Optional<UUID> $$3 = $$1.b.left();
          Optional<jd> $$4 = $$1.b.right();
          if ($$3.isPresent()) {
@@ -82,7 +82,7 @@ public interface btk {
 
          if ($$0.ai > 100) {
             $$0.a((dcv)cut.uK);
-            $$1.b = null;
+            $$0.a(null);
          }
       }
    }
@@ -95,11 +95,11 @@ public interface btk {
       btk.a $$3 = $$0.X_();
       if ($$3 != null && $$3.a != null) {
          $$0.a(null);
-         if (!$$0.dP().B && $$2) {
+         if (!$$0.dO().B && $$2) {
             $$0.a((dcv)cut.uK);
          }
 
-         if ($$1 && $$0.dP() instanceof aqu $$4) {
+         if ($$1 && $$0.dO() instanceof aqu $$4) {
             $$4.l().b($$0, new afa($$0, null));
          }
       }
@@ -117,7 +117,7 @@ public interface btk {
          }
 
          bsr $$2 = $$0.A();
-         if ($$2 != null && $$2.dP() == $$0.dP()) {
+         if ($$2 != null && $$2.dO() == $$0.dO()) {
             float $$3 = $$0.f($$2);
             if (!$$0.a($$2, $$3)) {
                return;
@@ -126,10 +126,10 @@ public interface btk {
             if ($$3 > 10.0F) {
                $$0.z();
             } else if ($$3 > 6.0F) {
-               double $$4 = ($$2.du() - $$0.du()) / (double)$$3;
-               double $$5 = ($$2.dw() - $$0.dw()) / (double)$$3;
-               double $$6 = ($$2.dA() - $$0.dA()) / (double)$$3;
-               $$0.i($$0.ds().b(Math.copySign($$4 * $$4 * 0.4, $$4), Math.copySign($$5 * $$5 * 0.4, $$5), Math.copySign($$6 * $$6 * 0.4, $$6)));
+               double $$4 = ($$2.dt() - $$0.dt()) / (double)$$3;
+               double $$5 = ($$2.dv() - $$0.dv()) / (double)$$3;
+               double $$6 = ($$2.dz() - $$0.dz()) / (double)$$3;
+               $$0.i($$0.dr().b(Math.copySign($$4 * $$4 * 0.4, $$4), Math.copySign($$5 * $$5 * 0.4, $$5), Math.copySign($$6 * $$6 * 0.4, $$6)));
                $$0.cr();
             } else {
                $$0.b($$2);
@@ -162,7 +162,7 @@ public interface btk {
          $$3.a($$1);
       }
 
-      if ($$2 && $$0.dP() instanceof aqu $$4) {
+      if ($$2 && $$0.dO() instanceof aqu $$4) {
          $$4.l().b($$0, new afa($$0, $$1));
       }
 
@@ -182,8 +182,8 @@ public interface btk {
       if ($$1 == null) {
          return null;
       } else {
-         if ($$1.c != 0 && $$0.dP().B) {
-            bsr var3 = $$0.dP().a($$1.c);
+         if ($$1.c != 0 && $$0.dO().B) {
+            bsr var3 = $$0.dO().a($$1.c);
             if (var3 instanceof bsr) {
                $$1.a(var3);
             }

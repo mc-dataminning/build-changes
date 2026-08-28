@@ -1,7 +1,7 @@
 public interface dbz extends dcc {
    float a(ji var1, boolean var2);
 
-   eor y_();
+   eot y_();
 
    int a(jd var1, dch var2);
 

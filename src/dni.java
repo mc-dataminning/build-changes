@@ -5,8 +5,8 @@ public class dni extends dfy {
    public static final MapCodec<dni> a = b(dni::new);
    public static final int b = 8;
    public static final duc c = dts.aF;
-   protected static final ext[] d = new ext[]{
-      exq.a(),
+   protected static final exv[] d = new exv[]{
+      exs.a(),
       dfy.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
       dfy.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
       dfy.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
@@ -29,7 +29,7 @@ public class dni extends dfy {
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       switch ($$1) {
          case a:
             return $$0.c(c) < 5;
@@ -43,22 +43,22 @@ public class dni extends dfy {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return d[$$0.c(c)];
    }
 
    @Override
-   protected ext b(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv b(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return d[$$0.c(c) - 1];
    }
 
    @Override
-   protected ext b_(dtc $$0, dcc $$1, jd $$2) {
+   protected exv b_(dtc $$0, dcc $$1, jd $$2) {
       return d[$$0.c(c)];
    }
 
    @Override
-   protected ext c(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv c(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return d[$$0.c(c)];
    }
 
@@ -75,10 +75,10 @@ public class dni extends dfy {
    @Override
    protected boolean a(dtc $$0, dcz $$1, jd $$2) {
       dtc $$3 = $$1.a_($$2.e());
-      if ($$3.a(awe.co)) {
+      if ($$3.a(awe.cp)) {
          return false;
       } else {
-         return $$3.a(awe.cp) ? true : dfy.a($$3.k($$1, $$2.e()), ji.b) || $$3.a(this) && $$3.c(c) == 8;
+         return $$3.a(awe.cq) ? true : dfy.a($$3.k($$1, $$2.e()), ji.b) || $$3.a(this) && $$3.c(c) == 8;
       }
    }
 

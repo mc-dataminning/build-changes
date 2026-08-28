@@ -1,18 +1,62 @@
-public class fji extends fik {
-   private final fhv a;
-   private final wz b;
-   private final wz c;
+import javax.annotation.Nullable;
 
-   public fji(int $$0, int $$1, int $$2, int $$3, wz $$4, fik.c $$5, fhv $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, q);
-      this.a = $$6;
-      this.b = $$4;
-      this.c = xc.a($$4.f(), xw.a.c(true));
+public abstract class fji<E extends fji.a<E>> extends fih<E> {
+   private static final wz a = wz.c("narration.selection.usage");
+
+   public fji(fgo $$0, int $$1, int $$2, int $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Nullable
+   @Override
+   public fhw a(fmo $$0) {
+      if (this.l() == 0) {
+         return null;
+      } else if (this.aO_() && $$0 instanceof fmo.a $$1) {
+         E $$2 = this.a($$1.b());
+         return $$2 != null ? fhw.a(this, fhw.a($$2)) : null;
+      } else if (!this.aO_()) {
+         E $$3 = this.h();
+         if ($$3 == null) {
+            $$3 = this.a($$0.a());
+         }
+
+         return $$3 == null ? null : fhw.a(this, fhw.a($$3));
+      } else {
+         return null;
+      }
    }
 
    @Override
-   public void b(fhx $$0, int $$1, int $$2, float $$3) {
-      wz $$4 = this.B() ? this.c : this.b;
-      $$0.b(this.a, $$4, this.D(), this.E(), 16777215 | ayo.f(this.l * 255.0F) << 24);
+   public void a(fmi $$0) {
+      E $$1 = this.v();
+      if ($$1 != null) {
+         this.a($$0.a(), $$1);
+         $$1.b($$0);
+      } else {
+         E $$2 = this.h();
+         if ($$2 != null) {
+            this.a($$0.a(), $$2);
+            $$2.b($$0);
+         }
+      }
+
+      if (this.aO_()) {
+         $$0.a(fmh.d, a);
+      }
+   }
+
+   public abstract static class a<E extends fji.a<E>> extends fih.a<E> implements fmj {
+      public abstract wz a();
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         return true;
+      }
+
+      @Override
+      public void b(fmi $$0) {
+         $$0.a(fmh.a, this.a());
+      }
    }
 }

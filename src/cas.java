@@ -13,7 +13,7 @@ public class cas extends cam {
 
    @Override
    public boolean b() {
-      if (this.a.cS()) {
+      if (this.a.cR()) {
          return false;
       } else {
          this.b = this.a.p();
@@ -24,7 +24,7 @@ public class cas extends cam {
             if ($$0 < 4.0 || $$0 > 16.0) {
                return false;
             } else {
-               return !this.a.aF() ? false : this.a.dS().a(b(5)) == 0;
+               return !this.a.aF() ? false : this.a.dR().a(b(5)) == 0;
             }
          }
       }
@@ -37,8 +37,8 @@ public class cas extends cam {
 
    @Override
    public void d() {
-      exa $$0 = this.a.ds();
-      exa $$1 = new exa(this.b.du() - this.a.du(), 0.0, this.b.dA() - this.a.dA());
+      exc $$0 = this.a.dr();
+      exc $$1 = new exc(this.b.dt() - this.a.dt(), 0.0, this.b.dz() - this.a.dz());
       if ($$1.g() > 1.0E-7) {
          $$1 = $$1.d().a(0.4).e($$0.a(0.2));
       }

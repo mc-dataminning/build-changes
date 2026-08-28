@@ -1,20 +1,17 @@
-public class gdb extends gcd {
-   protected gdb(fzd $$0, double $$1, double $$2, double $$3, double $$4, gdg $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.t = 16;
-      this.D = 1.5F;
-      this.b($$5);
+public class gdb extends gbf {
+   protected gdb(fzf $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gdi $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
    }
 
-   public static class a implements gco<lq> {
-      private final gdg a;
+   public static class a implements gcq<lq> {
+      private final gdi a;
 
-      public a(gdg $$0) {
+      public a(gdi $$0) {
          this.a = $$0;
       }
 
-      public gcl a(lq $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gdb($$1, $$2, $$3, $$4, $$5, this.a);
+      public gcn a(lq $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gdb($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
       }
    }
 }

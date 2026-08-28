@@ -8,35 +8,35 @@ public abstract class btd extends btp {
    }
 
    @Override
-   public void a(exa $$0) {
-      if (this.db()) {
+   public void a(exc $$0) {
+      if (this.da()) {
          if (this.bf()) {
             this.a(0.02F, $$0);
-            this.a(bts.a, this.ds());
-            this.i(this.ds().a(0.8F));
+            this.a(bts.a, this.dr());
+            this.i(this.dr().a(0.8F));
          } else if (this.bt()) {
             this.a(0.02F, $$0);
-            this.a(bts.a, this.ds());
-            this.i(this.ds().a(0.5));
+            this.a(bts.a, this.dr());
+            this.i(this.dr().a(0.5));
          } else {
             float $$1 = 0.91F;
             if (this.aF()) {
-               $$1 = this.dP().a_(this.aL()).b().h() * 0.91F;
+               $$1 = this.dO().a_(this.aL()).b().h() * 0.91F;
             }
 
             float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
             $$1 = 0.91F;
             if (this.aF()) {
-               $$1 = this.dP().a_(this.aL()).b().h() * 0.91F;
+               $$1 = this.dO().a_(this.aL()).b().h() * 0.91F;
             }
 
             this.a(this.aF() ? 0.1F * $$2 : 0.02F, $$0);
-            this.a(bts.a, this.ds());
-            this.i(this.ds().a((double)$$1));
+            this.a(bts.a, this.dr());
+            this.i(this.dr().a((double)$$1));
          }
       }
 
-      this.r(false);
+      this.s(false);
    }
 
    @Override

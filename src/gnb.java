@@ -1,17 +1,16 @@
-public class gnb extends gln<ckr, fxr> {
-   private static final akr a = akr.b("textures/entity/illager/vex.png");
-   private static final akr i = akr.b("textures/entity/illager/vex_charging.png");
+public class gnb extends glp<cgf, fxs<cgf>> {
+   private static final akr a = akr.b("textures/entity/turtle/big_sea_turtle.png");
 
-   public gnb(gkh.a $$0) {
-      super($$0, new fxr($$0.a(fyh.bP)), 0.3F);
-      this.a(new gom<>(this, $$0.d()));
+   public gnb(gkj.a $$0) {
+      super($$0, new fxs<>($$0.a(fyj.bO)), 0.7F);
    }
 
-   protected int a(ckr $$0, jd $$1) {
-      return 15;
+   protected float a(cgf $$0) {
+      float $$1 = super.b($$0);
+      return $$0.o_() ? $$1 * 0.83F : $$1;
    }
 
-   public akr a(ckr $$0) {
-      return $$0.gm() ? i : a;
+   public akr b(cgf $$0) {
+      return a;
    }
 }

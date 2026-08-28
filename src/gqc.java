@@ -1,119 +1,59 @@
-import com.mojang.blaze3d.platform.TextureUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.InputStream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class gqc extends gpu {
-   static final Logger f = LogUtils.getLogger();
-   protected final akr e;
+public class gqc implements AutoCloseable {
+   private static final int e = 16;
+   public static final int a = 0;
+   public static final int b = 3;
+   public static final int c = 10;
+   public static final int d = a(0, 10);
+   private final gpy f = new gpy(16, 16, false);
 
-   public gqc(akr $$0) {
-      this.e = $$0;
+   public gqc() {
+      faj $$0 = this.f.e();
+
+      for (int $$1 = 0; $$1 < 16; $$1++) {
+         for (int $$2 = 0; $$2 < 16; $$2++) {
+            if ($$1 < 8) {
+               $$0.a($$2, $$1, -1308622593);
+            } else {
+               int $$3 = (int)((1.0F - (float)$$2 / 15.0F * 0.75F) * 255.0F);
+               $$0.a($$2, $$1, $$3 << 24 | 16777215);
+            }
+         }
+      }
+
+      RenderSystem.activeTexture(33985);
+      this.f.c();
+      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), false, true, false, false);
+      RenderSystem.activeTexture(33984);
    }
 
    @Override
-   public void a(aue $$0) throws IOException {
-      gqc.a $$1 = this.b($$0);
-      $$1.c();
-      gsg $$2 = $$1.a();
-      boolean $$3;
-      boolean $$4;
-      if ($$2 != null) {
-         $$3 = $$2.a();
-         $$4 = $$2.b();
-      } else {
-         $$3 = false;
-         $$4 = false;
-      }
-
-      fah $$7 = $$1.b();
-      if (!RenderSystem.isOnRenderThreadOrInit()) {
-         RenderSystem.recordRenderCall(() -> this.a($$7, $$3, $$4));
-      } else {
-         this.a($$7, $$3, $$4);
-      }
+   public void close() {
+      this.f.close();
    }
 
-   private void a(fah $$0, boolean $$1, boolean $$2) {
-      TextureUtil.prepareImage(this.a(), 0, $$0.a(), $$0.b());
-      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), $$1, $$2, false, true);
+   public void a() {
+      RenderSystem.setupOverlayColor(this.f.a(), 16);
    }
 
-   protected gqc.a b(aue $$0) {
-      return gqc.a.a($$0, this.e);
+   public static int a(float $$0) {
+      return (int)($$0 * 15.0F);
    }
 
-   protected static class a implements Closeable {
-      @Nullable
-      private final gsg a;
-      @Nullable
-      private final fah b;
-      @Nullable
-      private final IOException c;
+   public static int a(boolean $$0) {
+      return $$0 ? 3 : 10;
+   }
 
-      public a(IOException $$0) {
-         this.c = $$0;
-         this.a = null;
-         this.b = null;
-      }
+   public static int a(int $$0, int $$1) {
+      return $$0 | $$1 << 16;
+   }
 
-      public a(@Nullable gsg $$0, fah $$1) {
-         this.c = null;
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public static int a(float $$0, boolean $$1) {
+      return a(a($$0), a($$1));
+   }
 
-      public static gqc.a a(aue $$0, akr $$1) {
-         try {
-            auc $$2 = $$0.getResourceOrThrow($$1);
-
-            fah $$4;
-            try (InputStream $$3 = $$2.d()) {
-               $$4 = fah.a($$3);
-            }
-
-            gsg $$6 = null;
-
-            try {
-               $$6 = $$2.f().a(gsg.a).orElse(null);
-            } catch (RuntimeException var8) {
-               gqc.f.warn("Failed reading metadata of: {}", $$1, var8);
-            }
-
-            return new gqc.a($$6, $$4);
-         } catch (IOException var10) {
-            return new gqc.a(var10);
-         }
-      }
-
-      @Nullable
-      public gsg a() {
-         return this.a;
-      }
-
-      public fah b() throws IOException {
-         if (this.c != null) {
-            throw this.c;
-         } else {
-            return this.b;
-         }
-      }
-
-      @Override
-      public void close() {
-         if (this.b != null) {
-            this.b.close();
-         }
-      }
-
-      public void c() throws IOException {
-         if (this.c != null) {
-            throw this.c;
-         }
-      }
+   public void b() {
+      RenderSystem.teardownOverlayColor();
    }
 }

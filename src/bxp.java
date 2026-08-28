@@ -18,7 +18,7 @@ public class bxp extends bvh<cmk> {
    }
 
    public boolean a(aqu $$0, cmk $$1) {
-      buq<?> $$2 = $$1.dU();
+      buq<?> $$2 = $$1.dT();
       if ($$2.c(ccs.q).isEmpty()) {
          return false;
       } else {
@@ -28,7 +28,7 @@ public class bxp extends bvh<cmk> {
    }
 
    public boolean a(aqu $$0, cmk $$1, long $$2) {
-      return this.a($$0, $$1) && this.i > 0 && $$1.dU().c(ccs.q).isPresent();
+      return this.a($$0, $$1) && this.i > 0 && $$1.dT().c(ccs.q).isPresent();
    }
 
    public void b(aqu $$0, cmk $$1, long $$2) {
@@ -54,14 +54,14 @@ public class bxp extends bvh<cmk> {
 
    public void d(aqu $$0, cmk $$1, long $$2) {
       super.b($$0, $$1, $$2);
-      $$1.dU().b(ccs.q);
+      $$1.dT().b(ccs.q);
       c($$1);
       this.e = null;
    }
 
    private void a(btn $$0, cmk $$1) {
       boolean $$2 = false;
-      cuq $$3 = $$0.eU();
+      cuq $$3 = $$0.eT();
       if (this.e == null || !cuq.b(this.e, $$3)) {
          this.e = $$3;
          $$2 = true;
@@ -82,7 +82,7 @@ public class bxp extends bvh<cmk> {
    }
 
    private void b(cmk $$0) {
-      for (dbu $$1 : $$0.gn()) {
+      for (dbu $$1 : $$0.gm()) {
          if (!$$1.r() && this.a($$1)) {
             this.f.add($$1.h());
          }
@@ -104,7 +104,7 @@ public class bxp extends bvh<cmk> {
    }
 
    private btn d(cmk $$0) {
-      buq<?> $$1 = $$0.dU();
+      buq<?> $$1 = $$0.dT();
       btn $$2 = $$1.c(ccs.q).get();
       $$1.a(ccs.n, new bvs($$2, true));
       return $$2;

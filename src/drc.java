@@ -40,8 +40,8 @@ public class drc extends dqh implements bqw {
       $$3.i = $$3.h;
       cmx $$4 = $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 3.0, false);
       if ($$4 != null) {
-         double $$5 = $$4.du() - ((double)$$1.u() + 0.5);
-         double $$6 = $$4.dA() - ((double)$$1.w() + 0.5);
+         double $$5 = $$4.dt() - ((double)$$1.u() + 0.5);
+         double $$6 = $$4.dz() - ((double)$$1.w() + 0.5);
          $$3.j = (float)ayo.d($$6, $$5);
          $$3.f += 0.1F;
          if ($$3.f < 0.5F || k.a(40) == 0) {

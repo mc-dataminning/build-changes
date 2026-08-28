@@ -20,11 +20,11 @@ public abstract class cix extends bsr {
 
    @Override
    public void l() {
-      if (!this.dP().B) {
+      if (!this.dO().B) {
          this.ax();
          if (this.d++ == 100) {
             this.d = 0;
-            if (!this.dK() && !this.s()) {
+            if (!this.dJ() && !this.s()) {
                this.aq();
                this.b(null);
             }
@@ -42,7 +42,7 @@ public abstract class cix extends bsr {
    @Override
    public boolean u(bsr $$0) {
       if ($$0 instanceof cmx $$1) {
-         return !this.dP().a($$1, this.b) ? true : this.a(this.dQ().a($$1), 0.0F);
+         return !this.dO().a($$1, this.b) ? true : this.a(this.dP().a($$1), 0.0F);
       } else {
          return false;
       }
@@ -53,7 +53,7 @@ public abstract class cix extends bsr {
       if (this.b($$0)) {
          return false;
       } else {
-         if (!this.dK() && !this.dP().B) {
+         if (!this.dJ() && !this.dO().B) {
             this.ap();
             this.bw();
             this.b($$0.d());
@@ -64,8 +64,8 @@ public abstract class cix extends bsr {
    }
 
    @Override
-   public void a(bts $$0, exa $$1) {
-      if (!this.dP().B && !this.dK() && $$1.g() > 0.0) {
+   public void a(bts $$0, exc $$1) {
+      if (!this.dO().B && !this.dJ() && $$1.g() > 0.0) {
          this.ap();
          this.b(null);
       }
@@ -73,7 +73,7 @@ public abstract class cix extends bsr {
 
    @Override
    public void j(double $$0, double $$1, double $$2) {
-      if (!this.dP().B && !this.dK() && $$0 * $$0 + $$1 * $$1 + $$2 * $$2 > 0.0) {
+      if (!this.dO().B && !this.dJ() && $$0 * $$0 + $$1 * $$1 + $$2 * $$2 > 0.0) {
          this.ap();
          this.b(null);
       }
@@ -90,7 +90,7 @@ public abstract class cix extends bsr {
    @Override
    public void a(ub $$0) {
       jd $$1 = new jd($$0.h("TileX"), $$0.h("TileY"), $$0.h("TileZ"));
-      if (!$$1.a(this.dp(), 16.0)) {
+      if (!$$1.a(this.do(), 16.0)) {
          c.error("Block-attached entity at invalid position: {}", $$1);
       } else {
          this.b = $$1;

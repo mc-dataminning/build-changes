@@ -1,19 +1,18 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public class end extends ene {
-   public static final MapCodec<end> a = MapCodec.unit(() -> end.b);
-   public static final end b = new end();
+public enum end implements azk {
+   a("ignore_waterlogging"),
+   b("apply_waterlogging");
 
-   private end() {
+   public static Codec<end> c = azk.b(end::values);
+   private final String d;
+
+   private end(final String $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public boolean a(jd $$0, jd $$1, jd $$2, ayw $$3) {
-      return true;
-   }
-
-   @Override
-   protected enf<?> a() {
-      return enf.a;
+   public String c() {
+      return this.d;
    }
 }

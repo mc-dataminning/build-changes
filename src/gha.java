@@ -1,23 +1,50 @@
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
+@FunctionalInterface
+public interface gha<T extends dqh> {
+   ggz<T> create(gha.a var1);
 
-public class gha<S extends dqh> implements dif.b<S, Int2IntFunction> {
-   public Int2IntFunction a(S $$0, S $$1) {
-      return $$2 -> {
-         int $$3 = gev.a($$0.i(), $$0.aD_());
-         int $$4 = gev.a($$1.i(), $$1.aD_());
-         int $$5 = gew.a($$3);
-         int $$6 = gew.a($$4);
-         int $$7 = gew.b($$3);
-         int $$8 = gew.b($$4);
-         return gew.a(Math.max($$5, $$6), Math.max($$7, $$8));
-      };
-   }
+   public static class a {
+      private final ggy a;
+      private final gft b;
+      private final glh c;
+      private final gkh d;
+      private final fyg e;
+      private final fhx f;
 
-   public Int2IntFunction a(S $$0) {
-      return $$0x -> $$0x;
-   }
+      public a(ggy $$0, gft $$1, glh $$2, gkh $$3, fyg $$4, fhx $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+      }
 
-   public Int2IntFunction a() {
-      return $$0 -> $$0;
+      public ggy a() {
+         return this.a;
+      }
+
+      public gft b() {
+         return this.b;
+      }
+
+      public gkh c() {
+         return this.d;
+      }
+
+      public glh d() {
+         return this.c;
+      }
+
+      public fyg e() {
+         return this.e;
+      }
+
+      public fyk a(fyi $$0) {
+         return this.e.a($$0);
+      }
+
+      public fhx f() {
+         return this.f;
+      }
    }
 }

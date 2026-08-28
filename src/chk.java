@@ -59,9 +59,9 @@ public class chk extends chi implements buo<chr> {
 
    @Override
    public void a(bqk $$0) {
-      cuq $$1 = this.fP();
+      cuq $$1 = this.fO();
       super.a($$0);
-      cuq $$2 = this.fP();
+      cuq $$2 = this.fO();
       if (this.ai > 20 && this.l($$2) && $$1 != $$2) {
          this.a(avp.mI, 0.5F, 1.0F);
       }
@@ -87,7 +87,7 @@ public class chk extends chi implements buo<chr> {
 
    @Nullable
    @Override
-   protected avo gn() {
+   protected avo gm() {
       return avp.mL;
    }
 
@@ -97,13 +97,13 @@ public class chk extends chi implements buo<chr> {
    }
 
    @Override
-   protected avo gK() {
+   protected avo gJ() {
       return avp.mH;
    }
 
    @Override
    public bqr b(cmx $$0, bqq $$1) {
-      boolean $$2 = !this.o_() && this.gA() && $$0.fO();
+      boolean $$2 = !this.o_() && this.gz() && $$0.fN();
       if (!this.bT() && !$$2) {
          cuq $$3 = $$0.b($$1);
          if (!$$3.e()) {
@@ -111,9 +111,9 @@ public class chk extends chi implements buo<chr> {
                return this.c($$0, $$3);
             }
 
-            if (!this.gA()) {
-               this.gR();
-               return bqr.a(this.dP().B);
+            if (!this.gz()) {
+               this.gQ();
+               return bqr.a(this.dO().B);
             }
          }
 
@@ -128,7 +128,7 @@ public class chk extends chi implements buo<chr> {
       if ($$0 == this) {
          return false;
       } else {
-         return !($$0 instanceof chj) && !($$0 instanceof chk) ? false : this.gT() && ((chi)$$0).gT();
+         return !($$0 instanceof chj) && !($$0 instanceof chk) ? false : this.gS() && ((chi)$$0).gS();
       }
    }
 

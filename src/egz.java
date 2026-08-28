@@ -1,66 +1,60 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Comparator;
-import java.util.Set;
-import java.util.function.BiConsumer;
+import com.mojang.serialization.MapCodec;
 
-public abstract class egz {
-   public static final Codec<egz> h = lt.X.r().dispatch(egz::a, eha::a);
+public class egz extends eha {
+   public static final MapCodec<egz> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(egz::new, $$0 -> $$0.b);
+   private final float b;
 
-   protected abstract eha<?> a();
+   @Override
+   protected ehb<?> a() {
+      return ehb.b;
+   }
 
-   public abstract void a(egz.a var1);
+   public egz(float $$0) {
+      this.b = $$0;
+   }
 
-   public static final class a {
-      private final ddc a;
-      private final BiConsumer<jd, dtc> b;
-      private final ayw c;
-      private final ObjectArrayList<jd> d;
-      private final ObjectArrayList<jd> e;
-      private final ObjectArrayList<jd> f;
+   @Override
+   public void a(eha.a $$0) {
+      ayw $$1 = $$0.b();
+      $$0.d().forEach($$2 -> {
+         if ($$1.i() < this.b) {
+            jd $$3 = $$2.h();
+            if ($$0.a($$3)) {
+               a($$3, dov.d, $$0);
+            }
+         }
 
-      public a(ddc $$0, BiConsumer<jd, dtc> $$1, ayw $$2, Set<jd> $$3, Set<jd> $$4, Set<jd> $$5) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = new ObjectArrayList($$5);
-         this.d = new ObjectArrayList($$3);
-         this.e = new ObjectArrayList($$4);
-         this.d.sort(Comparator.comparingInt(kh::v));
-         this.e.sort(Comparator.comparingInt(kh::v));
-         this.f.sort(Comparator.comparingInt(kh::v));
-      }
+         if ($$1.i() < this.b) {
+            jd $$4 = $$2.i();
+            if ($$0.a($$4)) {
+               a($$4, dov.f, $$0);
+            }
+         }
 
-      public void a(jd $$0, dtt $$1) {
-         this.a($$0, dga.ff.o().a($$1, Boolean.valueOf(true)));
-      }
+         if ($$1.i() < this.b) {
+            jd $$5 = $$2.f();
+            if ($$0.a($$5)) {
+               a($$5, dov.e, $$0);
+            }
+         }
 
-      public void a(jd $$0, dtc $$1) {
-         this.b.accept($$0, $$1);
-      }
+         if ($$1.i() < this.b) {
+            jd $$6 = $$2.g();
+            if ($$0.a($$6)) {
+               a($$6, dov.c, $$0);
+            }
+         }
+      });
+   }
 
-      public boolean a(jd $$0) {
-         return this.a.a($$0, dtb.a::i);
-      }
+   private static void a(jd $$0, dtt $$1, eha.a $$2) {
+      $$2.a($$0, $$1);
+      int $$3 = 4;
 
-      public ddc a() {
-         return this.a;
-      }
-
-      public ayw b() {
-         return this.c;
-      }
-
-      public ObjectArrayList<jd> c() {
-         return this.d;
-      }
-
-      public ObjectArrayList<jd> d() {
-         return this.e;
-      }
-
-      public ObjectArrayList<jd> e() {
-         return this.f;
+      for (jd var4 = $$0.e(); $$2.a(var4) && $$3 > 0; $$3--) {
+         $$2.a(var4, $$1);
+         var4 = var4.e();
       }
    }
 }

@@ -20,8 +20,8 @@ public class dmb extends dfy {
    protected static final int j = 13;
    protected static final int k = 3;
    protected static final int l = 13;
-   private static final ext m = dfy.a(3.0, 0.0, 3.0, 13.0, 1.0, 13.0);
-   private static final Map<ji, ext> n = Maps.newEnumMap(
+   private static final exv m = dfy.a(3.0, 0.0, 3.0, 13.0, 1.0, 13.0);
+   private static final Map<ji, exv> n = Maps.newEnumMap(
       ImmutableMap.of(
          ji.c,
          dfy.a(3.0, 0.0, 0.0, 13.0, 1.0, 13.0),
@@ -33,26 +33,26 @@ public class dmb extends dfy {
          dfy.a(0.0, 0.0, 3.0, 13.0, 1.0, 13.0)
       )
    );
-   private static final Map<ji, ext> o = Maps.newEnumMap(
+   private static final Map<ji, exv> o = Maps.newEnumMap(
       ImmutableMap.of(
          ji.c,
-         exq.a(n.get(ji.c), dfy.a(3.0, 0.0, 0.0, 13.0, 16.0, 1.0)),
+         exs.a(n.get(ji.c), dfy.a(3.0, 0.0, 0.0, 13.0, 16.0, 1.0)),
          ji.d,
-         exq.a(n.get(ji.d), dfy.a(3.0, 0.0, 15.0, 13.0, 16.0, 16.0)),
+         exs.a(n.get(ji.d), dfy.a(3.0, 0.0, 15.0, 13.0, 16.0, 16.0)),
          ji.f,
-         exq.a(n.get(ji.f), dfy.a(15.0, 0.0, 3.0, 16.0, 16.0, 13.0)),
+         exs.a(n.get(ji.f), dfy.a(15.0, 0.0, 3.0, 16.0, 16.0, 13.0)),
          ji.e,
-         exq.a(n.get(ji.e), dfy.a(0.0, 0.0, 3.0, 1.0, 16.0, 13.0))
+         exs.a(n.get(ji.e), dfy.a(0.0, 0.0, 3.0, 1.0, 16.0, 13.0))
       )
    );
-   private static final Map<dtc, ext> F = Maps.newHashMap();
-   private static final exa[] G = ad.a(new exa[16], $$0 -> {
+   private static final Map<dtc, exv> F = Maps.newHashMap();
+   private static final exc[] G = ad.a(new exc[16], $$0 -> {
       for (int $$1 = 0; $$1 <= 15; $$1++) {
          float $$2 = (float)$$1 / 15.0F;
          float $$3 = $$2 * 0.6F + ($$2 > 0.0F ? 0.4F : 0.3F);
          float $$4 = ayo.a($$2 * $$2 * 0.7F - 0.5F, 0.0F, 1.0F);
          float $$5 = ayo.a($$2 * $$2 * 0.6F - 0.7F, 0.0F, 1.0F);
-         $$0[$$1] = new exa((double)$$3, (double)$$4, (double)$$5);
+         $$0[$$1] = new exc((double)$$3, (double)$$4, (double)$$5);
       }
    });
    private static final float H = 0.2F;
@@ -78,15 +78,15 @@ public class dmb extends dfy {
       }
    }
 
-   private ext n(dtc $$0) {
-      ext $$1 = m;
+   private exv n(dtc $$0) {
+      exv $$1 = m;
 
       for (ji $$2 : ji.c.a) {
          duh $$3 = $$0.c(g.get($$2));
          if ($$3 == duh.b) {
-            $$1 = exq.a($$1, n.get($$2));
+            $$1 = exs.a($$1, n.get($$2));
          } else if ($$3 == duh.a) {
-            $$1 = exq.a($$1, o.get($$2));
+            $$1 = exs.a($$1, o.get($$2));
          }
       }
 
@@ -94,7 +94,7 @@ public class dmb extends dfy {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return F.get($$0.a(f, Integer.valueOf(0)));
    }
 
@@ -375,11 +375,11 @@ public class dmb extends dfy {
    }
 
    public static int b(int $$0) {
-      exa $$1 = G[$$0];
+      exc $$1 = G[$$0];
       return ayo.f((float)$$1.a(), (float)$$1.b(), (float)$$1.c());
    }
 
-   private void a(dcw $$0, ayw $$1, jd $$2, exa $$3, ji $$4, ji $$5, float $$6, float $$7) {
+   private void a(dcw $$0, ayw $$1, jd $$2, exc $$3, ji $$4, ji $$5, float $$6, float $$7) {
       float $$8 = $$7 - $$6;
       if (!($$1.i() >= 0.2F * $$8)) {
          float $$9 = 0.4375F;
@@ -443,8 +443,8 @@ public class dmb extends dfy {
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
-      if (!$$3.ga().e) {
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
+      if (!$$3.fZ().e) {
          return bqr.e;
       } else {
          if (o($$0) || p($$0)) {

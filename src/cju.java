@@ -10,7 +10,7 @@ public class cju extends ckd {
    @Override
    protected void B() {
       this.bU.a(1, new cag(this));
-      this.bU.a(1, new cab(this, this.dP()));
+      this.bU.a(1, new cab(this, this.dO()));
       this.bU.a(2, new caw(this, 1.0, false));
       this.bU.a(3, new cbz(this, 1.0));
       this.bU.a(7, new cau(this, cmx.class, 8.0F));
@@ -20,7 +20,7 @@ public class cju extends ckd {
    }
 
    public static buv.a s() {
-      return ckd.gr().a(buw.s, 8.0).a(buw.v, 0.25).a(buw.c, 2.0);
+      return ckd.gq().a(buw.s, 8.0).a(buw.v, 0.25).a(buw.c, 2.0);
    }
 
    @Override
@@ -62,7 +62,7 @@ public class cju extends ckd {
 
    @Override
    public void l() {
-      this.aY = this.dF();
+      this.aY = this.dE();
       super.l();
    }
 
@@ -75,12 +75,12 @@ public class cju extends ckd {
    @Override
    public void m_() {
       super.m_();
-      if (this.dP().B) {
+      if (this.dO().B) {
          for (int $$0 = 0; $$0 < 2; $$0++) {
-            this.dP().a(lm.ac, this.d(0.5), this.dx(), this.g(0.5), (this.ah.j() - 0.5) * 2.0, -this.ah.j(), (this.ah.j() - 0.5) * 2.0);
+            this.dO().a(lm.ac, this.d(0.5), this.dw(), this.g(0.5), (this.ah.j() - 0.5) * 2.0, -this.ah.j(), (this.ah.j() - 0.5) * 2.0);
          }
       } else {
-         if (!this.fU()) {
+         if (!this.fT()) {
             this.c++;
          }
 

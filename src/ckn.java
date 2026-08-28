@@ -31,15 +31,15 @@ public abstract class ckn extends cjk {
 
    @Override
    public cjk.a s() {
-      if (this.gv()) {
+      if (this.gu()) {
          return cjk.a.c;
       } else {
-         return this.gE() ? cjk.a.g : cjk.a.a;
+         return this.gD() ? cjk.a.g : cjk.a.a;
       }
    }
 
-   public boolean gv() {
-      return this.dP().B ? this.ao.a(e) > 0 : this.b > 0;
+   public boolean gu() {
+      return this.dO().B ? this.ao.a(e) > 0 : this.b > 0;
    }
 
    public void a(ckn.a $$0) {
@@ -47,8 +47,8 @@ public abstract class ckn extends cjk {
       this.ao.a(e, (byte)$$0.h);
    }
 
-   protected ckn.a gw() {
-      return !this.dP().B ? this.ca : ckn.a.a(this.ao.a(e));
+   protected ckn.a gv() {
+      return !this.dO().B ? this.ca : ckn.a.a(this.ao.a(e));
    }
 
    @Override
@@ -62,26 +62,26 @@ public abstract class ckn extends cjk {
    @Override
    public void l() {
       super.l();
-      if (this.dP().B && this.gv()) {
-         ckn.a $$0 = this.gw();
+      if (this.dO().B && this.gu()) {
+         ckn.a $$0 = this.gv();
          float $$1 = (float)$$0.i[0];
          float $$2 = (float)$$0.i[1];
          float $$3 = (float)$$0.i[2];
          float $$4 = this.aY * (float) (Math.PI / 180.0) + ayo.b((float)this.ai * 0.6662F) * 0.25F;
          float $$5 = ayo.b($$4);
          float $$6 = ayo.a($$4);
-         double $$7 = 0.6 * (double)this.ec();
-         double $$8 = 1.8 * (double)this.ec();
-         this.dP().a(lf.a(lm.u, $$1, $$2, $$3), this.du() + (double)$$5 * $$7, this.dw() + $$8, this.dA() + (double)$$6 * $$7, 0.0, 0.0, 0.0);
-         this.dP().a(lf.a(lm.u, $$1, $$2, $$3), this.du() - (double)$$5 * $$7, this.dw() + $$8, this.dA() - (double)$$6 * $$7, 0.0, 0.0, 0.0);
+         double $$7 = 0.6 * (double)this.eb();
+         double $$8 = 1.8 * (double)this.eb();
+         this.dO().a(lf.a(lm.u, $$1, $$2, $$3), this.dt() + (double)$$5 * $$7, this.dv() + $$8, this.dz() + (double)$$6 * $$7, 0.0, 0.0, 0.0);
+         this.dO().a(lf.a(lm.u, $$1, $$2, $$3), this.dt() - (double)$$5 * $$7, this.dv() + $$8, this.dz() - (double)$$6 * $$7, 0.0, 0.0, 0.0);
       }
    }
 
-   protected int gx() {
+   protected int gw() {
       return this.b;
    }
 
-   protected abstract avo gl();
+   protected abstract avo gk();
 
    protected static enum a {
       a(0, 0.0, 0.0, 0.0),
@@ -112,7 +112,7 @@ public abstract class ckn extends cjk {
 
       @Override
       public boolean b() {
-         return ckn.this.gx() > 0;
+         return ckn.this.gw() > 0;
       }
 
       @Override
@@ -145,7 +145,7 @@ public abstract class ckn extends cjk {
          if ($$0 == null || !$$0.bE()) {
             return false;
          } else {
-            return ckn.this.gv() ? false : ckn.this.ai >= this.c;
+            return ckn.this.gu() ? false : ckn.this.ai >= this.c;
          }
       }
 
@@ -173,7 +173,7 @@ public abstract class ckn extends cjk {
          this.b--;
          if (this.b == 0) {
             this.k();
-            ckn.this.a(ckn.this.gl(), 1.0F, 1.0F);
+            ckn.this.a(ckn.this.gk(), 1.0F, 1.0F);
          }
       }
 

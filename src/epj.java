@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface epj {
+public enum epj {
+   a,
+   b,
+   c,
+   d,
+   e;
 }

@@ -1,46 +1,47 @@
 import com.mojang.serialization.Codec;
 
-public class ecl extends ebg {
-   public ecl(Codec<eej> $$0) {
+public class ecl extends ece<eep> {
+   public ecl(Codec<eep> $$0) {
       super($$0);
    }
 
    @Override
-   protected void a(dcx $$0, ayw $$1, jd $$2, int $$3, jd.a $$4, eej $$5) {
-      int $$6 = $$5.d;
+   public boolean a(ecg<eep> $$0) {
+      dds $$1 = $$0.b();
+      jd $$2 = $$0.e();
+      ayw $$3 = $$0.d();
+      if (!$$1.u($$2)) {
+         return false;
+      } else {
+         dtc $$4 = $$1.a_($$2.d());
+         if (!$$4.a(dga.dV) && !$$4.a(dga.dY) && !$$4.a(dga.pr)) {
+            return false;
+         } else {
+            $$1.a($$2, dga.ec.o(), 2);
 
-      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
-         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
-            boolean $$9 = $$7 == -$$6;
-            boolean $$10 = $$7 == $$6;
-            boolean $$11 = $$8 == -$$6;
-            boolean $$12 = $$8 == $$6;
-            boolean $$13 = $$9 || $$10;
-            boolean $$14 = $$11 || $$12;
-            if (!$$13 || !$$14) {
-               $$4.a($$2, $$7, $$3, $$8);
-               if (!$$0.a_($$4).i($$0, $$4)) {
-                  boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
-                  boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
-                  boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
-                  boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
-                  dtc $$19 = $$5.b.a($$1, $$2);
-                  if ($$19.b(djv.e) && $$19.b(djv.c) && $$19.b(djv.b) && $$19.b(djv.d)) {
-                     $$19 = $$19.a(djv.e, Boolean.valueOf($$15))
-                        .a(djv.c, Boolean.valueOf($$16))
-                        .a(djv.b, Boolean.valueOf($$17))
-                        .a(djv.d, Boolean.valueOf($$18));
+            for (int $$5 = 0; $$5 < 1500; $$5++) {
+               jd $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
+               if ($$1.a_($$6).i()) {
+                  int $$7 = 0;
+
+                  for (ji $$8 : ji.values()) {
+                     if ($$1.a_($$6.a($$8)).a(dga.ec)) {
+                        $$7++;
+                     }
+
+                     if ($$7 > 1) {
+                        break;
+                     }
                   }
 
-                  this.a($$0, $$4, $$19);
+                  if ($$7 == 1) {
+                     $$1.a($$6, dga.ec.o(), 2);
+                  }
                }
             }
+
+            return true;
          }
       }
-   }
-
-   @Override
-   protected int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$3 <= 3 ? 0 : $$2;
    }
 }

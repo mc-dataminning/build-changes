@@ -7,7 +7,7 @@ public class dgk extends dfy {
    public static final int d = b(0);
    protected static final float e = 1.0F;
    protected static final float f = 2.0F;
-   protected static final ext[] g = new ext[]{
+   protected static final exv[] g = new exv[]{
       dfy.a(1.0, 0.0, 1.0, 15.0, 8.0, 15.0),
       dfy.a(3.0, 0.0, 1.0, 15.0, 8.0, 15.0),
       dfy.a(5.0, 0.0, 1.0, 15.0, 8.0, 15.0),
@@ -28,12 +28,12 @@ public class dgk extends dfy {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return g[$$0.c(c)];
    }
 
    @Override
-   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, eww $$6) {
+   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, ewy $$6) {
       cul $$7 = $$0.g();
       if ($$0.a(awn.aJ) && $$1.c(c) == 0 && dfy.a($$7) instanceof dgn $$8) {
          $$0.a(1, $$4);
@@ -48,7 +48,7 @@ public class dgk extends dfy {
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
       if ($$1.B) {
          if (a($$1, $$2, $$0, $$3).a()) {
             return bqr.a;
@@ -63,11 +63,11 @@ public class dgk extends dfy {
    }
 
    protected static bqr a(dcx $$0, jd $$1, dtc $$2, cmx $$3) {
-      if (!$$3.t(false)) {
+      if (!$$3.u(false)) {
          return bqr.e;
       } else {
          $$3.a(avz.U);
-         $$3.gj().a(2, 0.1F);
+         $$3.gi().a(2, 0.1F);
          int $$4 = $$2.c(c);
          $$0.a($$3, dxz.m, $$1);
          if ($$4 < 6) {
@@ -111,7 +111,7 @@ public class dgk extends dfy {
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return false;
    }
 }

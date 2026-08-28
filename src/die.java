@@ -13,10 +13,10 @@ public class die extends dfy {
    public static final dtt e = dts.w;
    public static final dua<dty> f = dts.ae;
    protected static final float g = 3.0F;
-   protected static final ext h = dfy.a(0.0, 0.0, 0.0, 16.0, 16.0, 3.0);
-   protected static final ext i = dfy.a(0.0, 0.0, 13.0, 16.0, 16.0, 16.0);
-   protected static final ext j = dfy.a(13.0, 0.0, 0.0, 16.0, 16.0, 16.0);
-   protected static final ext k = dfy.a(0.0, 0.0, 0.0, 3.0, 16.0, 16.0);
+   protected static final exv h = dfy.a(0.0, 0.0, 0.0, 16.0, 16.0, 3.0);
+   protected static final exv i = dfy.a(0.0, 0.0, 13.0, 16.0, 16.0, 16.0);
+   protected static final exv j = dfy.a(13.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final exv k = dfy.a(0.0, 0.0, 0.0, 3.0, 16.0, 16.0);
    private final dtr l;
 
    @Override
@@ -35,7 +35,7 @@ public class die extends dfy {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       ji $$4 = $$0.c(b);
       boolean $$5 = !$$0.c(c);
       boolean $$6 = $$0.c(d) == dtx.b;
@@ -77,7 +77,7 @@ public class die extends dfy {
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return switch ($$1) {
          case a, c -> $$0.c(c);
          case b -> false;
@@ -124,7 +124,7 @@ public class die extends dfy {
          if ((!$$17 || $$16) && $$15 >= 0) {
             int $$18 = $$3.j();
             int $$19 = $$3.l();
-            exa $$20 = $$0.l();
+            exc $$20 = $$0.l();
             double $$21 = $$20.c - (double)$$2.u();
             double $$22 = $$20.e - (double)$$2.w();
             return ($$18 >= 0 || !($$22 < 0.5)) && ($$18 <= 0 || !($$22 > 0.5)) && ($$19 >= 0 || !($$21 > 0.5)) && ($$19 <= 0 || !($$21 < 0.5)) ? dtx.a : dtx.b;
@@ -137,7 +137,7 @@ public class die extends dfy {
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
       if (!this.l.c()) {
          return bqr.e;
       } else {

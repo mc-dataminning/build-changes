@@ -2,9 +2,9 @@ import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
 public abstract class dfm extends dfy {
-   protected static final ext a = dfy.a(1.0, 0.0, 1.0, 15.0, 0.5, 15.0);
-   protected static final ext b = dfy.a(1.0, 0.0, 1.0, 15.0, 1.0, 15.0);
-   protected static final ewv c = new ewv(0.0625, 0.0, 0.0625, 0.9375, 0.25, 0.9375);
+   protected static final exv a = dfy.a(1.0, 0.0, 1.0, 15.0, 0.5, 15.0);
+   protected static final exv b = dfy.a(1.0, 0.0, 1.0, 15.0, 1.0, 15.0);
+   protected static final ewx c = new ewx(0.0625, 0.0, 0.0625, 0.9375, 0.25, 0.9375);
    protected final dtr d;
 
    protected dfm(dtb.d $$0, dtr $$1) {
@@ -16,7 +16,7 @@ public abstract class dfm extends dfy {
    protected abstract MapCodec<? extends dfm> a();
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return this.g($$0) > 0 ? a : b;
    }
 
@@ -113,7 +113,7 @@ public abstract class dfm extends dfy {
       return true;
    }
 
-   protected static int a(dcw $$0, ewv $$1, Class<? extends bsr> $$2) {
+   protected static int a(dcw $$0, ewx $$1, Class<? extends bsr> $$2) {
       return $$0.a($$2, $$1, bsw.f.and($$0x -> !$$0x.r_())).size();
    }
 

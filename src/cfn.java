@@ -1,3 +1,3 @@
 public interface cfn {
-   boolean gy();
+   boolean gx();
 }

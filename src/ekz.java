@@ -1,112 +1,90 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableObject;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class ekz {
-   private static final int c = Integer.MIN_VALUE;
-   private static final MutableObject<Codec<jm<ekz>>> d = new MutableObject();
-   public static final Codec<ekz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.lazyInitialized(d::getValue).fieldOf("fallback").forGetter(ekz::a),
-               Codec.mapPair(ekx.f.fieldOf("element"), Codec.intRange(1, 150).fieldOf("weight")).codec().listOf().fieldOf("elements").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, ekz::new)
-   );
-   public static final Codec<jm<ekz>> b = ad.a(akn.a(lu.aU, a), d::setValue);
-   private final List<Pair<ekx, Integer>> e;
-   private final ObjectArrayList<ekx> f;
-   private final jm<ekz> g;
-   private int h = Integer.MIN_VALUE;
+public abstract class ekz {
+   public static final Codec<ekz> f = lt.ag.r().dispatch("element_type", ekz::a, ela::codec);
+   private static final jm<enr> a = jm.a(new enr(List.of()));
+   @Nullable
+   private volatile elb.a b;
 
-   public ekz(jm<ekz> $$0, List<Pair<ekx, Integer>> $$1) {
-      this.e = $$1;
-      this.f = new ObjectArrayList();
-
-      for (Pair<ekx, Integer> $$2 : $$1) {
-         ekx $$3 = (ekx)$$2.getFirst();
-
-         for (int $$4 = 0; $$4 < $$2.getSecond(); $$4++) {
-            this.f.add($$3);
-         }
-      }
-
-      this.g = $$0;
+   protected static <E extends ekz> RecordCodecBuilder<E, elb.a> e() {
+      return elb.a.c.fieldOf("projection").forGetter(ekz::f);
    }
 
-   public ekz(jm<ekz> $$0, List<Pair<Function<ekz.a, ? extends ekx>, Integer>> $$1, ekz.a $$2) {
-      this.e = Lists.newArrayList();
-      this.f = new ObjectArrayList();
-
-      for (Pair<Function<ekz.a, ? extends ekx>, Integer> $$3 : $$1) {
-         ekx $$4 = (ekx)((Function)$$3.getFirst()).apply($$2);
-         this.e.add(Pair.of($$4, (Integer)$$3.getSecond()));
-
-         for (int $$5 = 0; $$5 < $$3.getSecond(); $$5++) {
-            this.f.add($$4);
-         }
-      }
-
-      this.g = $$0;
+   protected ekz(elb.a $$0) {
+      this.b = $$0;
    }
 
-   public int a(ens $$0) {
-      if (this.h == Integer.MIN_VALUE) {
-         this.h = this.f.stream().filter($$0x -> $$0x != ekq.b).mapToInt($$1 -> $$1.a($$0, jd.c, dmm.a).e()).max().orElse(0);
-      }
+   public abstract kh a(enu var1, dmm var2);
 
-      return this.h;
+   public abstract List<ent.c> a(enu var1, jd var2, dmm var3, ayw var4);
+
+   public abstract ejj a(enu var1, jd var2, dmm var3);
+
+   public abstract boolean a(enu var1, dds var2, ddq var3, duz var4, jd var5, jd var6, dmm var7, ejj var8, ayw var9, end var10, boolean var11);
+
+   public abstract ela<?> a();
+
+   public void a(dcx $$0, ent.c $$1, jd $$2, dmm $$3, ayw $$4, ejj $$5) {
    }
 
-   public jm<ekz> a() {
-      return this.g;
+   public ekz a(elb.a $$0) {
+      this.b = $$0;
+      return this;
    }
 
-   public ekx a(ayw $$0) {
-      return (ekx)(this.f.isEmpty() ? ekq.b : (ekx)this.f.get($$0.a(this.f.size())));
+   public elb.a f() {
+      elb.a $$0 = this.b;
+      if ($$0 == null) {
+         throw new IllegalStateException();
+      } else {
+         return $$0;
+      }
    }
 
-   public List<ekx> b(ayw $$0) {
-      return ad.a(this.f, $$0);
+   public int g() {
+      return 1;
    }
 
-   public int b() {
-      return this.f.size();
+   public static Function<elb.a, eks> h() {
+      return $$0 -> eks.b;
    }
 
-   public static enum a implements azk {
-      a("terrain_matching", ImmutableList.of(new emx(dyy.a.a, -1))),
-      b("rigid", ImmutableList.of());
+   public static Function<elb.a, ekw> a(String $$0) {
+      return $$1 -> new ekw(Either.left(akr.a($$0)), a, $$1, Optional.empty());
+   }
 
-      public static final azk.a<ekz.a> c = azk.a(ekz.a::values);
-      private final String d;
-      private final ImmutableList<eno> e;
+   public static Function<elb.a, ekw> a(String $$0, jm<enr> $$1) {
+      return $$2 -> new ekw(Either.left(akr.a($$0)), $$1, $$2, Optional.empty());
+   }
 
-      private a(final String $$0, final ImmutableList<eno> $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
+   public static Function<elb.a, eky> b(String $$0) {
+      return $$1 -> new eky(Either.left(akr.a($$0)), a, $$1, Optional.empty());
+   }
 
-      public String a() {
-         return this.d;
-      }
+   public static Function<elb.a, eky> b(String $$0, jm<enr> $$1) {
+      return $$2 -> new eky(Either.left(akr.a($$0)), $$1, $$2, Optional.empty());
+   }
 
-      public static ekz.a a(String $$0) {
-         return c.a($$0);
-      }
+   public static Function<elb.a, eky> a(String $$0, end $$1) {
+      return $$2 -> new eky(Either.left(akr.a($$0)), a, $$2, Optional.of($$1));
+   }
 
-      public ImmutableList<eno> b() {
-         return this.e;
-      }
+   public static Function<elb.a, eky> a(String $$0, jm<enr> $$1, end $$2) {
+      return $$3 -> new eky(Either.left(akr.a($$0)), $$1, $$3, Optional.of($$2));
+   }
 
-      @Override
-      public String c() {
-         return this.d;
-      }
+   public static Function<elb.a, ekt> a(jm<eiv> $$0) {
+      return $$1 -> new ekt($$0, $$1);
+   }
+
+   public static Function<elb.a, ekx> b(List<Function<elb.a, ? extends ekz>> $$0) {
+      return $$1 -> new ekx($$0.stream().map($$1x -> (ekz)$$1x.apply($$1)).collect(Collectors.toList()), $$1);
    }
 }

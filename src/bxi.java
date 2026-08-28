@@ -15,7 +15,7 @@ public class bxi {
                      boolean $$10 = $$9 + 300L <= $$8;
                      if ($$3.getValue() <= $$2 && !$$10) {
                         jd $$11 = $$3x.<jl>b($$4).b();
-                        if ($$11.a($$7.dp(), (double)$$1)) {
+                        if ($$11.a($$7.do(), (double)$$1)) {
                            $$3.increment();
                         }
 
@@ -23,7 +23,7 @@ public class bxi {
                      } else {
                         $$5.b();
                         $$4.b();
-                        $$7.dU().a($$6.aa(), $$6.Z());
+                        $$7.dT().a($$6.aa(), $$6.Z());
                         $$3.setValue(0);
                         return true;
                      }

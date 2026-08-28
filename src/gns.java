@@ -1,20 +1,44 @@
-public class gns extends got<ckz, fur<ckz>> {
-   private static final akr a = akr.b("textures/entity/breeze/breeze_wind.png");
-   private final fur<ckz> b;
+public class gns<T extends btn, M extends fwp<T>> extends gpe<T, M> {
+   private static final akr a = akr.b("textures/entity/bee/bee_stinger.png");
 
-   public gns(gkh.a $$0, gmd<ckz, fur<ckz>> $$1) {
-      super($$1);
-      this.b = new fur<>($$0.a(fyh.t));
+   public gns(glk<T, M> $$0) {
+      super($$0);
    }
 
-   public void a(fbg $$0, gex $$1, int $$2, ckz $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      float $$10 = (float)$$3.ai + $$6;
-      fbk $$11 = $$1.getBuffer(gff.a(a, this.a($$10) % 1.0F, 0.0F));
-      this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-      gjn.a(this.b, this.b.e()).a($$0, $$11, $$2, gqa.d);
+   @Override
+   protected int a(T $$0) {
+      return $$0.eQ();
    }
 
-   private float a(float $$0) {
-      return $$0 * 0.02F;
+   @Override
+   protected void a(fbi $$0, gez $$1, int $$2, bsr $$3, float $$4, float $$5, float $$6, float $$7) {
+      float $$8 = ayo.c($$4 * $$4 + $$6 * $$6);
+      float $$9 = (float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI);
+      float $$10 = (float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI);
+      $$0.a(0.0F, 0.0F, 0.0F);
+      $$0.a(a.d.rotationDegrees($$9 - 90.0F));
+      $$0.a(a.f.rotationDegrees($$10));
+      float $$11 = 0.0F;
+      float $$12 = 0.125F;
+      float $$13 = 0.0F;
+      float $$14 = 0.0625F;
+      float $$15 = 0.03125F;
+      $$0.a(a.b.rotationDegrees(45.0F));
+      $$0.b(0.03125F, 0.03125F, 0.03125F);
+      $$0.a(2.5F, 0.0F, 0.0F);
+      fbm $$16 = $$1.getBuffer(gfh.e(a));
+
+      for (int $$17 = 0; $$17 < 4; $$17++) {
+         $$0.a(a.b.rotationDegrees(90.0F));
+         fbi.a $$18 = $$0.c();
+         a($$16, $$18, -4.5F, -1, 0.0F, 0.0F, $$2);
+         a($$16, $$18, 4.5F, -1, 0.125F, 0.0F, $$2);
+         a($$16, $$18, 4.5F, 1, 0.125F, 0.0625F, $$2);
+         a($$16, $$18, -4.5F, 1, 0.0F, 0.0625F, $$2);
+      }
+   }
+
+   private static void a(fbm $$0, fbi.a $$1, float $$2, int $$3, float $$4, float $$5, int $$6) {
+      $$0.a($$1, $$2, (float)$$3, 0.0F).a(-1).a($$4, $$5).b(gqc.d).c($$6).b($$1, 0.0F, 1.0F, 0.0F);
    }
 }

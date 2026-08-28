@@ -1,57 +1,107 @@
-public class fmv extends fob {
-   private final Runnable c;
-   protected final fmv.a a;
-   private final wz r;
-   private final boolean s;
-   private fjd u = fjd.a;
-   protected int b;
-   private fim v;
+import com.mojang.text2speech.Narrator;
+import javax.annotation.Nullable;
 
-   public fmv(Runnable $$0, fmv.a $$1, wz $$2, wz $$3, boolean $$4) {
-      super($$2);
-      this.c = $$0;
-      this.a = $$1;
-      this.r = $$3;
-      this.s = $$4;
+public class fmv extends fod {
+   private static final wz a = wz.c("accessibility.onboarding.screen.title");
+   private static final wz b = wz.c("accessibility.onboarding.screen.narrator");
+   private static final int c = 4;
+   private static final int r = 16;
+   private final fjd s;
+   private final fgs u;
+   private final boolean v;
+   private boolean w;
+   private float x;
+   private final Runnable y;
+   @Nullable
+   private fix z;
+   private final flz A = new flz(this, this.m(), 33);
+
+   public fmv(fgs $$0, Runnable $$1) {
+      super(a);
+      this.u = $$0;
+      this.y = $$1;
+      this.s = new fjd(true);
+      this.v = fgo.Q().aV().a();
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
-      this.u = fjd.a(this.o, this.r, this.m - 50);
-      int $$0 = (this.u.a() + 1) * 9;
-      this.c(fik.a(wz.c("selectWorld.backupJoinConfirmButton"), $$0x -> this.a.proceed(true, this.v.a())).a(this.m / 2 - 155, 100 + $$0, 150, 20).a());
-      this.c(fik.a(wz.c("selectWorld.backupJoinSkipButton"), $$0x -> this.a.proceed(false, this.v.a())).a(this.m / 2 - 155 + 160, 100 + $$0, 150, 20).a());
-      this.c(fik.a(wy.e, $$0x -> this.c.run()).a(this.m / 2 - 155 + 80, 124 + $$0, 150, 20).a());
-      this.v = fim.a(wz.c("selectWorld.backupEraseCache"), this.o).a(this.m / 2 - 155 + 80, 76 + $$0).a();
-      if (this.s) {
-         this.c(this.v);
+   public void aT_() {
+      fmd $$0 = this.A.c(fmd.d());
+      $$0.c().b().a(4);
+      this.z = $$0.a(new fix(this.m, this.k, this.o), $$0x -> $$0x.a(8));
+      if (this.u.as().a(this.u) instanceof fit $$1) {
+         this.p = $$1;
+         this.p.j = this.v;
+         $$0.a(this.p);
       }
+
+      $$0.a(fiq.b(150, $$0x -> this.a(new fra(this, this.l.m)), false));
+      $$0.a(fiq.a(150, $$0x -> this.a(new frd(this, this.l.m, this.l.ag())), false));
+      this.A.b(fim.a(wy.j, $$0x -> this.d()).a());
+      this.A.a(this::c);
+      this.c();
    }
 
    @Override
-   public void a(fhx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.o, this.k, this.m / 2, 50, 16777215);
-      this.u.a($$0, this.m / 2, 70);
+   protected void c() {
+      if (this.z != null) {
+         this.z.b(this.m);
+      }
+
+      this.A.a();
    }
 
    @Override
-   public boolean aJ_() {
-      return false;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.c.run();
-         return true;
+   protected void aI_() {
+      if (this.v && this.p != null) {
+         this.b(this.p);
       } else {
-         return super.a($$0, $$1, $$2);
+         super.aI_();
       }
    }
 
-   public interface a {
-      void proceed(boolean var1, boolean var2);
+   private int m() {
+      return 90;
+   }
+
+   @Override
+   public void d() {
+      this.a(true, this.y);
+   }
+
+   private void a(fod $$0) {
+      this.a(false, () -> this.l.a($$0));
+   }
+
+   private void a(boolean $$0, Runnable $$1) {
+      if ($$0) {
+         this.u.au();
+      }
+
+      Narrator.getNarrator().clear();
+      $$1.run();
+   }
+
+   @Override
+   public void a(fhz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.C();
+      this.s.a($$0, this.m, 1.0F);
+   }
+
+   @Override
+   protected void a(fhz $$0, float $$1) {
+      e.a($$0, this.m, this.n, 1.0F, 0.0F);
+   }
+
+   private void C() {
+      if (!this.w && this.v) {
+         if (this.x < 40.0F) {
+            this.x++;
+         } else if (this.l.aA()) {
+            Narrator.getNarrator().say(b.getString(), true);
+            this.w = true;
+         }
+      }
    }
 }

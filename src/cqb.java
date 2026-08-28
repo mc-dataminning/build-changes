@@ -52,7 +52,7 @@ public class cqb extends cpu {
          public void a(cmx $$0, cuq $$1) {
             cqb.this.i.get(0).a(1);
             cqb.this.i.get(1).a(1);
-            $$1.g().b($$1, $$0.dP(), $$0);
+            $$1.g().b($$1, $$0.dO(), $$0);
             $$2.a(($$0x, $$1x) -> {
                long $$2xx = $$0x.Z();
                if (cqb.this.t != $$2xx) {
@@ -96,7 +96,7 @@ public class cqb extends cpu {
 
    private void a(cuq $$0, cuq $$1, cuq $$2) {
       this.s.a(($$3, $$4) -> {
-         eqr $$5 = cvc.b($$0, $$3);
+         eqt $$5 = cvc.b($$0, $$3);
          if ($$5 != null) {
             cuq $$6;
             if ($$1.a(cut.qO) && !$$5.h && $$5.f < 4) {
@@ -139,7 +139,7 @@ public class cqb extends cpu {
          cuq $$4 = $$3.g();
          $$2 = $$4.s();
          if ($$1 == 2) {
-            $$4.g().b($$4, $$0.dP(), $$0);
+            $$4.g().b($$4, $$0.dO(), $$0);
             if (!this.a($$4, 3, 39, true)) {
                return cuq.l;
             }

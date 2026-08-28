@@ -26,11 +26,11 @@ public class cjg extends bsr {
       this.h = $$4;
       this.J = true;
       this.a_($$1, $$2, $$3);
-      this.i(exa.b);
+      this.i(exc.b);
       this.L = $$1;
       this.M = $$2;
       this.N = $$3;
-      this.a(this.dp());
+      this.a(this.do());
    }
 
    public static cjg a(dcw $$0, jd $$1, dtc $$2) {
@@ -65,7 +65,7 @@ public class cjg extends bsr {
 
    @Override
    public boolean bA() {
-      return !this.dK();
+      return !this.dJ();
    }
 
    @Override
@@ -81,52 +81,52 @@ public class cjg extends bsr {
          dfy $$0 = this.h.b();
          this.b++;
          this.bb();
-         this.a(bts.a, this.ds());
+         this.a(bts.a, this.dr());
          this.bP();
-         if (!this.dP().B && (this.bE() || this.e)) {
-            jd $$1 = this.dp();
+         if (!this.dO().B && (this.bE() || this.e)) {
+            jd $$1 = this.do();
             boolean $$2 = this.h.b() instanceof dhk;
-            boolean $$3 = $$2 && this.dP().b_($$1).a(awk.a);
-            double $$4 = this.ds().g();
+            boolean $$3 = $$2 && this.dO().b_($$1).a(awk.a);
+            double $$4 = this.dr().g();
             if ($$2 && $$4 > 1.0) {
-               eww $$5 = this.dP().a(new dcf(new exa(this.L, this.M, this.N), this.dn(), dcf.a.a, dcf.b.b, this));
-               if ($$5.c() != ewy.a.a && this.dP().b_($$5.a()).a(awk.a)) {
+               ewy $$5 = this.dO().a(new dcf(new exc(this.L, this.M, this.N), this.dm(), dcf.a.a, dcf.b.b, this));
+               if ($$5.c() != exa.a.a && this.dO().b_($$5.a()).a(awk.a)) {
                   $$1 = $$5.a();
                   $$3 = true;
                }
             }
 
             if (this.aF() || $$3) {
-               dtc $$6 = this.dP().a_($$1);
-               this.i(this.ds().d(0.7, -0.5, 0.7));
+               dtc $$6 = this.dO().a_($$1);
+               this.i(this.dr().d(0.7, -0.5, 0.7));
                if (!$$6.a(dga.bQ)) {
                   if (!this.i) {
-                     boolean $$7 = $$6.a(new cye(this.dP(), $$1, ji.a, cuq.l, ji.b));
-                     boolean $$8 = diu.m(this.dP().a_($$1.e())) && (!$$2 || !$$3);
-                     boolean $$9 = this.h.a((dcz)this.dP(), $$1) && !$$8;
+                     boolean $$7 = $$6.a(new cye(this.dO(), $$1, ji.a, cuq.l, ji.b));
+                     boolean $$8 = diu.m(this.dO().a_($$1.e())) && (!$$2 || !$$3);
+                     boolean $$9 = this.h.a((dcz)this.dO(), $$1) && !$$8;
                      if ($$7 && $$9) {
-                        if (this.h.b(dts.C) && this.dP().b_($$1).a() == epd.c) {
+                        if (this.h.b(dts.C) && this.dO().b_($$1).a() == epf.c) {
                            this.h = this.h.a(dts.C, Boolean.valueOf(true));
                         }
 
-                        if (this.dP().a($$1, this.h, 3)) {
-                           ((aqu)this.dP()).l().a.a(this, new acd($$1, this.dP().a_($$1)));
+                        if (this.dO().a($$1, this.h, 3)) {
+                           ((aqu)this.dO()).l().a.a(this, new acd($$1, this.dO().a_($$1)));
                            this.aq();
                            if ($$0 instanceof dit) {
-                              ((dit)$$0).a(this.dP(), $$1, this.h, $$6, this);
+                              ((dit)$$0).a(this.dO(), $$1, this.h, $$6, this);
                            }
 
                            if (this.d != null && this.h.t()) {
-                              dqh $$10 = this.dP().c_($$1);
+                              dqh $$10 = this.dO().c_($$1);
                               if ($$10 != null) {
-                                 ub $$11 = $$10.d(this.dP().H_());
+                                 ub $$11 = $$10.d(this.dO().H_());
 
                                  for (String $$12 : this.d.e()) {
                                     $$11.a($$12, this.d.c($$12).d());
                                  }
 
                                  try {
-                                    $$10.c($$11, this.dP().H_());
+                                    $$10.c($$11, this.dO().H_());
                                  } catch (Exception var15) {
                                     g.error("Failed to load block entity from falling block", var15);
                                  }
@@ -134,14 +134,14 @@ public class cjg extends bsr {
                                  $$10.e();
                               }
                            }
-                        } else if (this.c && this.dP().ab().b(dcs.i)) {
+                        } else if (this.c && this.dO().ab().b(dcs.i)) {
                            this.aq();
                            this.a($$0, $$1);
                            this.a($$0);
                         }
                      } else {
                         this.aq();
-                        if (this.c && this.dP().ab().b(dcs.i)) {
+                        if (this.c && this.dO().ab().b(dcs.i)) {
                            this.a($$0, $$1);
                            this.a($$0);
                         }
@@ -151,8 +151,8 @@ public class cjg extends bsr {
                      this.a($$0, $$1);
                   }
                }
-            } else if (!this.dP().B && (this.b > 100 && ($$1.v() <= this.dP().I_() || $$1.v() > this.dP().am()) || this.b > 600)) {
-               if (this.c && this.dP().ab().b(dcs.i)) {
+            } else if (!this.dO().B && (this.b > 100 && ($$1.v() <= this.dO().I_() || $$1.v() > this.dO().am()) || this.b > 600)) {
+               if (this.c && this.dO().ab().b(dcs.i)) {
                   this.a($$0);
                }
 
@@ -160,13 +160,13 @@ public class cjg extends bsr {
             }
          }
 
-         this.i(this.ds().a(0.98));
+         this.i(this.dr().a(0.98));
       }
    }
 
    public void a(dfy $$0, jd $$1) {
       if ($$0 instanceof dit) {
-         ((dit)$$0).a(this.dP(), $$1, this);
+         ((dit)$$0).a(this.dO(), $$1, this);
       }
    }
 
@@ -180,10 +180,10 @@ public class cjg extends bsr {
             return false;
          } else {
             Predicate<bsr> $$4 = bsw.e.and(bsw.b);
-            brk $$6 = this.h.b() instanceof dit $$5 ? $$5.a(this) : this.dQ().a(this);
+            brk $$6 = this.h.b() instanceof dit $$5 ? $$5.a(this) : this.dP().a(this);
             float $$7 = (float)Math.min(ayo.d((float)$$3 * this.l), this.k);
-            this.dP().a(this, this.cL(), $$4).forEach($$2x -> $$2x.a($$6, $$7));
-            boolean $$8 = this.h.a(awe.M);
+            this.dO().a(this, this.cK(), $$4).forEach($$2x -> $$2x.a($$6, $$7));
+            boolean $$8 = this.h.a(awe.N);
             if ($$8 && $$7 > 0.0F && this.ah.i() < 0.05F + (float)$$3 * 0.05F) {
                dtc $$9 = dey.e(this.h);
                if ($$9 == null) {
@@ -215,13 +215,13 @@ public class cjg extends bsr {
 
    @Override
    protected void a(ub $$0) {
-      this.h = uq.a(this.dP().a(lu.f), $$0.p("BlockState"));
+      this.h = uq.a(this.dO().a(lu.f), $$0.p("BlockState"));
       this.b = $$0.h("Time");
       if ($$0.b("HurtEntities", 99)) {
          this.j = $$0.q("HurtEntities");
          this.l = $$0.j("FallHurtAmount");
          this.k = $$0.h("FallHurtMax");
-      } else if (this.h.a(awe.M)) {
+      } else if (this.h.a(awe.N)) {
          this.j = true;
       }
 
@@ -250,7 +250,7 @@ public class cjg extends bsr {
    }
 
    @Override
-   public boolean cz() {
+   public boolean cy() {
       return false;
    }
 
@@ -270,7 +270,7 @@ public class cjg extends bsr {
    }
 
    @Override
-   public boolean cQ() {
+   public boolean cP() {
       return true;
    }
 
@@ -288,14 +288,14 @@ public class cjg extends bsr {
       double $$2 = $$0.h();
       double $$3 = $$0.i();
       this.a_($$1, $$2, $$3);
-      this.a(this.dp());
+      this.a(this.do());
    }
 
    @Nullable
    @Override
-   public bsr a(eqa $$0) {
+   public bsr a(eqc $$0) {
       akq<dcw> $$1 = $$0.a().af();
-      akq<dcw> $$2 = this.dP().af();
+      akq<dcw> $$2 = this.dO().af();
       boolean $$3 = ($$2 == dcw.j || $$1 == dcw.j) && $$2 != $$1;
       bsr $$4 = super.a($$0);
       this.e = $$4 != null && $$3;

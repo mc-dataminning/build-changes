@@ -23,7 +23,7 @@ public class btz {
    }
 
    @Nullable
-   public eqa a(aqu $$0, bsr $$1) {
+   public eqc a(aqu $$0, bsr $$1) {
       return this.a.a($$0, $$1, this.b);
    }
 

@@ -93,10 +93,10 @@ public class amg {
    private static int a(et $$0, amg.d $$1, amg.d $$2, amg.d $$3, Predicate<dtg> $$4, amg.e $$5) throws CommandSyntaxException {
       jd $$6 = $$1.b();
       jd $$7 = $$2.b();
-      ejh $$8 = ejh.a($$6, $$7);
+      ejj $$8 = ejj.a($$6, $$7);
       jd $$9 = $$3.b();
       jd $$10 = $$9.a($$8.c());
-      ejh $$11 = ejh.a($$9, $$10);
+      ejj $$11 = ejj.a($$9, $$10);
       aqu $$12 = $$1.a();
       aqu $$13 = $$3.a();
       if (!$$5.a() && $$12 == $$13 && $$11.a($$8)) {

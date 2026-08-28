@@ -30,7 +30,7 @@ public class kq {
    public static final kp<dai> y = a("stored_enchantments", $$0 -> $$0.a(dai.b).a(dai.c).a());
    public static final kp<cxk> z = a("dyed_color", $$0 -> $$0.a(cxk.a).a(cxk.b));
    public static final kp<cxs> A = a("map_color", $$0 -> $$0.a(cxs.a).a(cxs.b));
-   public static final kp<eqp> B = a("map_id", $$0 -> $$0.a(eqp.a).a(eqp.b));
+   public static final kp<eqr> B = a("map_id", $$0 -> $$0.a(eqr.a).a(eqr.b));
    public static final kp<cxr> C = a("map_decorations", $$0 -> $$0.a(cxr.b).a());
    public static final kp<cxt> D = a("map_post_processing", $$0 -> $$0.a(cxt.d));
    public static final kp<cxg> E = a("charged_projectiles", $$0 -> $$0.a(cxg.b).a(cxg.c).a());

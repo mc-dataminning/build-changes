@@ -10,7 +10,7 @@ record eas(kh e) implements eaf {
    }
 
    public boolean a(dds $$0, jd $$1) {
-      return $$0.a(null, exq.b().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w()));
+      return $$0.a(null, exs.b().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w()));
    }
 
    public kh g() {

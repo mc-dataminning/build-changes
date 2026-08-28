@@ -6,7 +6,7 @@ public class cwg extends cwj {
    }
 
    private static cxx k() {
-      return new cxx(List.of(cxx.a.a(List.of(dga.bs), 15.0F), cxx.a.b(awe.bE, 1.5F)), 1.0F, 2);
+      return new cxx(List.of(cxx.a.a(List.of(dga.bs), 15.0F), cxx.a.b(awe.bF, 1.5F)), 1.0F, 2);
    }
 
    public static cxn a(cwi $$0, int $$1, float $$2) {

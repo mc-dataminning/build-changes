@@ -142,7 +142,7 @@ public enum dsi implements azk {
       }
    }
 
-   private static Optional<exa> a(aqu $$0, jd $$1, dsf $$2, dsh $$3) {
+   private static Optional<exc> a(aqu $$0, jd $$1, dsf $$2, dsh $$3) {
       List<cmx> $$4 = $$3.c
          .stream()
          .map($$0::b)
@@ -157,11 +157,11 @@ public enum dsi implements azk {
       }
    }
 
-   private static Optional<exa> a(bsr $$0, aqu $$1) {
-      exa $$2 = $$0.dn();
-      exa $$3 = $$2.a(ji.b, (double)($$0.dl() + 2.0F + (float)$$1.z.a(4)));
-      eww $$4 = $$1.a(new dcf($$2, $$3, dcf.a.c, dcf.b.a, exf.a()));
-      exa $$5 = $$4.a().b().a(ji.a, 1.0);
+   private static Optional<exc> a(bsr $$0, aqu $$1) {
+      exc $$2 = $$0.dm();
+      exc $$3 = $$2.a(ji.b, (double)($$0.dk() + 2.0F + (float)$$1.z.a(4)));
+      ewy $$4 = $$1.a(new dcf($$2, $$3, dcf.a.c, dcf.b.a, exh.a()));
+      exc $$5 = $$4.a().b().a(ji.a, 1.0);
       jd $$6 = jd.a((jw)$$5);
       return !$$1.a_($$6).k($$1, $$6).c() ? Optional.empty() : Optional.of($$5);
    }
@@ -220,23 +220,23 @@ public enum dsi implements azk {
       };
       dsi.b b = ($$0, $$1, $$2, $$3) -> {
          if ($$1.a(2) == 0) {
-            exa $$4 = $$2.b().a($$1, 0.9F);
+            exc $$4 = $$2.b().a($$1, 0.9F);
             a($$3 ? lm.L : lm.aJ, $$4, $$0);
          }
       };
       dsi.b c = ($$0, $$1, $$2, $$3) -> {
-         exa $$4 = $$2.b().a($$1, 1.0F);
+         exc $$4 = $$2.b().a($$1, 1.0F);
          a(lm.ae, $$4, $$0);
          a($$3 ? lm.L : lm.F, $$4, $$0);
       };
       dsi.b d = ($$0, $$1, $$2, $$3) -> {
-         exa $$4 = $$2.b().a($$1, 0.9F);
+         exc $$4 = $$2.b().a($$1, 0.9F);
          if ($$1.a(3) == 0) {
             a(lm.ae, $$4, $$0);
          }
 
          if ($$0.Z() % 20L == 0L) {
-            exa $$5 = $$2.b().b(0.0, 0.5, 0.0);
+            exc $$5 = $$2.b().b(0.0, 0.5, 0.0);
             int $$6 = $$0.E_().a(4) + 20;
 
             for (int $$7 = 0; $$7 < $$6; $$7++) {
@@ -245,7 +245,7 @@ public enum dsi implements azk {
          }
       };
 
-      private static void a(lq $$0, exa $$1, dcw $$2) {
+      private static void a(lq $$0, exc $$1, dcw $$2) {
          $$2.a($$0, $$1.a(), $$1.b(), $$1.c(), 0.0, 0.0, 0.0);
       }
 

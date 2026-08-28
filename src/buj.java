@@ -32,7 +32,7 @@ public interface buj {
       @Override
       public jd a(dcz $$0, jd $$1) {
          jd $$2 = $$1.e();
-         return $$0.a_($$2).a(epr.a) ? $$2 : $$1;
+         return $$0.a_($$2).a(ept.a) ? $$2 : $$1;
       }
    };
 }

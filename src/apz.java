@@ -23,7 +23,7 @@ public class apz extends aqn {
    private final ShortSet[] n;
    private final BitSet o = new BitSet();
    private final BitSet p = new BitSet();
-   private final eor q;
+   private final eot q;
    private final apz.a r;
    private final apz.b s;
    private boolean t;
@@ -31,7 +31,7 @@ public class apz extends aqn {
    private CompletableFuture<?> v = CompletableFuture.completedFuture(null);
    private CompletableFuture<?> w = CompletableFuture.completedFuture(null);
 
-   public apz(dcd $$0, int $$1, dcy $$2, eor $$3, apz.a $$4, apz.b $$5) {
+   public apz(dcd $$0, int $$1, dcy $$2, eot $$3, apz.a $$4, apz.b $$5) {
       super($$0);
       this.f = $$2;
       this.q = $$3;

@@ -7,7 +7,7 @@ public class cjn extends cjl implements buf {
    private static final ajw<Boolean> e = aka.a(cjn.class, ajy.k);
    public static final String b = "sheared";
 
-   public static buv.a go() {
+   public static buv.a gn() {
       return cjl.s().a(buw.s, 16.0);
    }
 
@@ -24,20 +24,20 @@ public class cjn extends cjl implements buf {
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      $$0.a("sheared", this.gp());
+      $$0.a("sheared", this.go());
    }
 
    @Override
    public void a(ub $$0) {
       super.a($$0);
-      this.w($$0.q("sheared"));
+      this.x($$0.q("sheared"));
    }
 
-   public boolean gp() {
+   public boolean go() {
       return this.ao.a(e);
    }
 
-   public void w(boolean $$0) {
+   public void x(boolean $$0) {
       this.ao.a(e, $$0);
    }
 
@@ -47,11 +47,11 @@ public class cjn extends cjl implements buf {
       if ($$2.a(cut.rV) && this.a()) {
          this.a(avq.h);
          this.a(dxz.M, $$0);
-         if (!this.dP().B) {
+         if (!this.dO().B) {
             $$2.a(1, $$0, d($$1));
          }
 
-         return bqr.a(this.dP().B);
+         return bqr.a(this.dO().B);
       } else {
          return super.b($$0, $$1);
       }
@@ -88,37 +88,37 @@ public class cjn extends cjl implements buf {
    }
 
    @Override
-   protected int gl() {
+   protected int gk() {
       return 50;
    }
 
    @Override
-   protected int gm() {
+   protected int gl() {
       return 70;
    }
 
    @Override
    public void a(avq $$0) {
-      this.dP().a(null, this, avp.cq, $$0, 1.0F, 1.0F);
-      this.gs();
-      this.w(true);
+      this.dO().a(null, this, avp.cq, $$0, 1.0F, 1.0F);
+      this.gr();
+      this.x(true);
    }
 
-   private void gs() {
-      if (this.dP() instanceof aqu $$0) {
-         eru $$1 = $$0.o().be().b(erl.bc);
-         ers $$2 = new ers.a($$0).a(eul.f, this.dn()).a(eul.a, this).a(euk.s);
+   private void gr() {
+      if (this.dO() instanceof aqu $$0) {
+         erw $$1 = $$0.o().be().b(ern.bc);
+         eru $$2 = new eru.a($$0).a(eun.f, this.dm()).a(eun.a, this).a(eum.s);
          ObjectListIterator var4 = $$1.a($$2).iterator();
 
          while (var4.hasNext()) {
             cuq $$3 = (cuq)var4.next();
-            this.a($$3, this.dl());
+            this.a($$3, this.dk());
          }
       }
    }
 
    @Override
    public boolean a() {
-      return !this.gp() && this.bE();
+      return !this.go() && this.bE();
    }
 }

@@ -3,13 +3,13 @@ import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntListIterator;
 import java.util.stream.IntStream;
 
-public class ebo extends ecd<eeo> {
-   public ebo(Codec<eeo> $$0) {
+public class ebo extends ece<eep> {
+   public ebo(Codec<eep> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecf<eeo> $$0) {
+   public boolean a(ecg<eep> $$0) {
       ayw $$1 = $$0.d();
       dds $$2 = $$0.b();
       dcd $$3 = new dcd($$0.e());
@@ -28,7 +28,7 @@ public class ebo extends ecd<eeo> {
             jd $$9 = $$2.a(dyy.a.f, $$6);
             if ($$2.u($$9) || $$2.a_($$9).k($$2, $$9).c()) {
                $$2.a($$9, dga.cv.o(), 2);
-               bqz.a($$2, $$1, $$9, erl.b);
+               bqz.a($$2, $$1, $$9, ern.b);
                dtc $$10 = dga.cp.o();
 
                for (ji $$11 : ji.c.a) {

@@ -21,7 +21,7 @@ public final class dys {
       a($$0, "blend_alpha", dys.d.e);
       a($$0, "blend_offset", dys.f.e);
       a($$0, "beardifier", dys.b.e);
-      a($$0, "old_blended_noise", eoc.a);
+      a($$0, "old_blended_noise", eoe.a);
 
       for (dys.l.a $$1 : dys.l.a.values()) {
          a($$0, $$1.c(), $$1.g);
@@ -96,31 +96,31 @@ public final class dys {
       return new dys.l(dys.l.a.e, $$0);
    }
 
-   public static dyr a(jm<eof.a> $$0, @Deprecated double $$1, double $$2, double $$3, double $$4) {
+   public static dyr a(jm<eoh.a> $$0, @Deprecated double $$1, double $$2, double $$3, double $$4) {
       return a(new dys.o(new dyr.c($$0), $$1, $$2), $$3, $$4);
    }
 
-   public static dyr a(jm<eof.a> $$0, double $$1, double $$2, double $$3) {
+   public static dyr a(jm<eoh.a> $$0, double $$1, double $$2, double $$3) {
       return a($$0, 1.0, $$1, $$2, $$3);
    }
 
-   public static dyr a(jm<eof.a> $$0, double $$1, double $$2) {
+   public static dyr a(jm<eoh.a> $$0, double $$1, double $$2) {
       return a($$0, 1.0, 1.0, $$1, $$2);
    }
 
-   public static dyr a(dyr $$0, dyr $$1, double $$2, jm<eof.a> $$3) {
+   public static dyr a(dyr $$0, dyr $$1, double $$2, jm<eoh.a> $$3) {
       return new dys.v($$0, a(), $$1, $$2, 0.0, new dyr.c($$3));
    }
 
-   public static dyr a(jm<eof.a> $$0) {
+   public static dyr a(jm<eoh.a> $$0) {
       return b($$0, 1.0, 1.0);
    }
 
-   public static dyr b(jm<eof.a> $$0, double $$1, double $$2) {
+   public static dyr b(jm<eoh.a> $$0, double $$1, double $$2) {
       return new dys.o(new dyr.c($$0), $$1, $$2);
    }
 
-   public static dyr a(jm<eof.a> $$0, double $$1) {
+   public static dyr a(jm<eoh.a> $$0, double $$1) {
       return b($$0, 1.0, $$1);
    }
 
@@ -128,15 +128,15 @@ public final class dys {
       return new dys.q($$0, $$1, $$2, $$3, $$4);
    }
 
-   public static dyr b(jm<eof.a> $$0) {
+   public static dyr b(jm<eoh.a> $$0) {
       return new dys.s(new dyr.c($$0));
    }
 
-   public static dyr c(jm<eof.a> $$0) {
+   public static dyr c(jm<eoh.a> $$0) {
       return new dys.t(new dyr.c($$0));
    }
 
-   public static dyr d(jm<eof.a> $$0) {
+   public static dyr d(jm<eoh.a> $$0) {
       return new dys.r(new dyr.c($$0));
    }
 
@@ -148,7 +148,7 @@ public final class dys {
       return new dys.i($$0);
    }
 
-   public static dyr a(dyr $$0, jm<eof.a> $$1, dys.z.a $$2) {
+   public static dyr a(dyr $$0, jm<eoh.a> $$1, dys.z.a $$2) {
       return new dys.z($$0, new dyr.c($$1), $$2);
    }
 
@@ -539,15 +539,15 @@ public final class dys {
    protected static final class i implements dyr.d {
       public static final ayh<dys.i> a = ayh.a(MapCodec.unit(new dys.i(0L)));
       private static final float e = -0.9F;
-      private final eoi f;
+      private final eok f;
 
       public i(long $$0) {
          ayw $$1 = new dyz($$0);
          $$1.b(17292);
-         this.f = new eoi($$1);
+         this.f = new eok($$1);
       }
 
-      private static float a(eoi $$0, int $$1, int $$2) {
+      private static float a(eok $$0, int $$1, int $$2) {
          int $$3 = $$1 / 2;
          int $$4 = $$2 / 2;
          int $$5 = $$1 % 2;

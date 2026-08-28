@@ -1,19 +1,30 @@
 import com.mojang.serialization.Codec;
 
-public class edl extends ecd<efa> {
+public class edl extends ece<efa> {
    public edl(Codec<efa> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecf<efa> $$0) {
-      ayw $$1 = $$0.d();
-      efa $$2 = $$0.f();
-      dds $$3 = $$0.b();
-      jd $$4 = $$0.e();
-      duz $$5 = $$0.c();
-      int $$6 = $$1.a($$2.b.b());
-      eit $$7 = $$2.b.a($$6).a();
-      return $$7.a($$3, $$5, $$1, $$4);
+   public boolean a(ecg<efa> $$0) {
+      efa $$1 = $$0.f();
+      dds $$2 = $$0.b();
+      jd $$3 = $$0.e();
+      dtc $$4 = $$1.a().a($$0.d(), $$3);
+      if ($$4.a($$2, $$3)) {
+         if ($$4.b() instanceof dig) {
+            if (!$$2.u($$3.d())) {
+               return false;
+            }
+
+            dig.a($$2, $$4, $$3, 2);
+         } else {
+            $$2.a($$3, $$4, 2);
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 }

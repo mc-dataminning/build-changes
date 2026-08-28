@@ -16,9 +16,9 @@ public class dfy extends dtb implements dcv {
    private static final Logger a = LogUtils.getLogger();
    private final jm.c<dfy> b = lt.e.f(this);
    public static final js<dtc> q = new js<>();
-   private static final LoadingCache<ext, Boolean> c = CacheBuilder.newBuilder().maximumSize(512L).weakKeys().build(new CacheLoader<ext, Boolean>() {
-      public Boolean a(ext $$0) {
-         return !exq.c(exq.b(), $$0, exe.g);
+   private static final LoadingCache<exv, Boolean> c = CacheBuilder.newBuilder().maximumSize(512L).weakKeys().build(new CacheLoader<exv, Boolean>() {
+      public Boolean a(exv $$0) {
+         return !exs.c(exs.b(), $$0, exg.g);
       }
    });
    public static final int r = 1;
@@ -74,12 +74,12 @@ public class dfy extends dtb implements dcv {
    }
 
    public static dtc a(dtc $$0, dtc $$1, dcx $$2, jd $$3) {
-      ext $$4 = exq.b($$0.k($$2, $$3), $$1.k($$2, $$3), exe.c).a((double)$$3.u(), (double)$$3.v(), (double)$$3.w());
+      exv $$4 = exs.b($$0.k($$2, $$3), $$1.k($$2, $$3), exg.c).a((double)$$3.u(), (double)$$3.v(), (double)$$3.w());
       if ($$4.c()) {
          return $$1;
       } else {
          for (bsr $$6 : $$2.a_(null, $$4.a())) {
-            double $$7 = exq.a(ji.a.b, $$6.cL().d(0.0, 1.0, 0.0), List.of($$4), -1.0);
+            double $$7 = exs.a(ji.a.b, $$6.cK().d(0.0, 1.0, 0.0), List.of($$4), -1.0);
             $$6.d(0.0, 1.0 + $$7, 0.0);
          }
 
@@ -87,8 +87,8 @@ public class dfy extends dtb implements dcv {
       }
    }
 
-   public static ext a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      return exq.a($$0 / 16.0, $$1 / 16.0, $$2 / 16.0, $$3 / 16.0, $$4 / 16.0, $$5 / 16.0);
+   public static exv a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      return exs.a($$0 / 16.0, $$1 / 16.0, $$2 / 16.0, $$3 / 16.0, $$4 / 16.0, $$5 / 16.0);
    }
 
    public static dtc b(dtc $$0, dcx $$1, jd $$2) {
@@ -134,7 +134,7 @@ public class dfy extends dtb implements dcv {
    }
 
    public static boolean j(dtc $$0) {
-      return $$0.b() instanceof dki || $$0.a(dga.hW) || $$0.a(dga.ee) || $$0.a(dga.ef) || $$0.a(dga.fa) || $$0.a(dga.eZ) || $$0.a(awe.aR);
+      return $$0.b() instanceof dki || $$0.a(dga.hW) || $$0.a(dga.ee) || $$0.a(dga.ef) || $$0.a(dga.fa) || $$0.a(dga.eZ) || $$0.a(awe.aS);
    }
 
    public static boolean a(dtc $$0, dcc $$1, jd $$2, ji $$3, jd $$4) {
@@ -148,12 +148,12 @@ public class dfy extends dtb implements dcv {
          if ($$8 != 127) {
             return $$8 != 0;
          } else {
-            ext $$9 = $$0.a($$1, $$2, $$3);
+            exv $$9 = $$0.a($$1, $$2, $$3);
             if ($$9.c()) {
                return true;
             } else {
-               ext $$10 = $$5.a($$1, $$4, $$3.g());
-               boolean $$11 = exq.c($$9, $$10, exe.e);
+               exv $$10 = $$5.a($$1, $$4, $$3.g());
+               boolean $$11 = exs.c($$9, $$10, exg.e);
                if ($$7.size() == 2048) {
                   $$7.removeLastByte();
                }
@@ -173,15 +173,15 @@ public class dfy extends dtb implements dcv {
 
    public static boolean a(dcz $$0, jd $$1, ji $$2) {
       dtc $$3 = $$0.a_($$1);
-      return $$2 == ji.a && $$3.a(awe.aZ) ? false : $$3.a($$0, $$1, $$2, doa.b);
+      return $$2 == ji.a && $$3.a(awe.ba) ? false : $$3.a($$0, $$1, $$2, doa.b);
    }
 
-   public static boolean a(ext $$0, ji $$1) {
-      ext $$2 = $$0.a($$1);
+   public static boolean a(exv $$0, ji $$1) {
+      exv $$2 = $$0.a($$1);
       return a($$2);
    }
 
-   public static boolean a(ext $$0) {
+   public static boolean a(exv $$0) {
       return (Boolean)c.getUnchecked($$0);
    }
 
@@ -192,12 +192,12 @@ public class dfy extends dtb implements dcv {
    }
 
    public static List<cuq> a(dtc $$0, aqu $$1, jd $$2, @Nullable dqh $$3) {
-      ers.a $$4 = new ers.a($$1).a(eul.f, exa.b($$2)).a(eul.i, cuq.l).b(eul.h, $$3);
+      eru.a $$4 = new eru.a($$1).a(eun.f, exc.b($$2)).a(eun.i, cuq.l).b(eun.h, $$3);
       return $$0.a($$4);
    }
 
    public static List<cuq> a(dtc $$0, aqu $$1, jd $$2, @Nullable dqh $$3, @Nullable bsr $$4, cuq $$5) {
-      ers.a $$6 = new ers.a($$1).a(eul.f, exa.b($$2)).a(eul.i, $$5).b(eul.a, $$4).b(eul.h, $$3);
+      eru.a $$6 = new eru.a($$1).a(eun.f, exc.b($$2)).a(eun.i, $$5).b(eun.a, $$4).b(eun.h, $$3);
       return $$0.a($$6);
    }
 
@@ -255,7 +255,7 @@ public class dfy extends dtb implements dcv {
 
    protected void a(aqu $$0, jd $$1, int $$2) {
       if ($$0.ab().b(dcs.h)) {
-         btc.a($$0, exa.b($$1), $$2);
+         btc.a($$0, exc.b($$1), $$2);
       }
    }
 
@@ -300,11 +300,11 @@ public class dfy extends dtb implements dcv {
    }
 
    public void a(dcw $$0, dtc $$1, jd $$2, bsr $$3, float $$4) {
-      $$3.a($$4, 1.0F, $$3.dQ().l());
+      $$3.a($$4, 1.0F, $$3.dP().l());
    }
 
    public void a(dcc $$0, bsr $$1) {
-      $$1.i($$1.ds().d(1.0, 0.0, 1.0));
+      $$1.i($$1.dr().d(1.0, 0.0, 1.0));
    }
 
    public cuq a(dcz $$0, jd $$1, dtc $$2) {
@@ -329,7 +329,7 @@ public class dfy extends dtb implements dcv {
 
    public dtc a(dcw $$0, jd $$1, dtc $$2, cmx $$3) {
       this.a($$0, $$3, $$1, $$2);
-      if ($$2.a(awe.aW)) {
+      if ($$2.a(awe.aX)) {
          clo.a($$3, false);
       }
 
@@ -401,7 +401,7 @@ public class dfy extends dtb implements dcv {
       return this;
    }
 
-   protected ImmutableMap<dtc, ext> a(Function<dtc, ext> $$0) {
+   protected ImmutableMap<dtc, exv> a(Function<dtc, exv> $$0) {
       return this.E.a().stream().collect(ImmutableMap.toImmutableMap(Function.identity(), $$0));
    }
 

@@ -26,7 +26,7 @@ public class cgd extends cgg {
       this.bU.a(1, new cgd.a());
    }
 
-   public static buv.a gl() {
+   public static buv.a gk() {
       return btp.C().a(buw.s, 10.0);
    }
 
@@ -55,7 +55,7 @@ public class cgd extends cgg {
    }
 
    @Override
-   protected float fb() {
+   protected float fa() {
       return 0.4F;
    }
 
@@ -78,7 +78,7 @@ public class cgd extends cgg {
       this.cd = this.cc;
       this.ca = this.ca + this.cf;
       if ((double)this.ca > Math.PI * 2) {
-         if (this.dP().B) {
+         if (this.dO().B) {
             this.ca = (float) (Math.PI * 2);
          } else {
             this.ca -= (float) (Math.PI * 2);
@@ -86,7 +86,7 @@ public class cgd extends cgg {
                this.cf = 1.0F / (this.ah.i() + 1.0F) * 0.2F;
             }
 
-            this.dP().a(this, (byte)19);
+            this.dO().a(this, (byte)19);
          }
       }
 
@@ -106,11 +106,11 @@ public class cgd extends cgg {
             this.cg *= 0.99F;
          }
 
-         if (!this.dP().B) {
+         if (!this.dO().B) {
             this.n((double)(this.ch * this.ce), (double)(this.ci * this.ce), (double)(this.cj * this.ce));
          }
 
-         exa $$1 = this.ds();
+         exc $$1 = this.dr();
          double $$2 = $$1.h();
          this.aY = this.aY + (-((float)ayo.d($$1.c, $$1.e)) * (180.0F / (float)Math.PI) - this.aY) * 0.1F;
          this.t(this.aY);
@@ -118,8 +118,8 @@ public class cgd extends cgg {
          this.b = this.b + (-((float)ayo.d($$2, $$1.d)) * (180.0F / (float)Math.PI) - this.b) * 0.1F;
       } else {
          this.cc = ayo.e(ayo.a(this.ca)) * (float) Math.PI * 0.25F;
-         if (!this.dP().B) {
-            double $$3 = this.ds().d;
+         if (!this.dO().B) {
+            double $$3 = this.dr().d;
             if (this.b(bsb.y)) {
                $$3 = 0.05 * (double)(this.c(bsb.y).e() + 1);
             } else {
@@ -135,8 +135,8 @@ public class cgd extends cgg {
 
    @Override
    public boolean a(brk $$0, float $$1) {
-      if (super.a($$0, $$1) && this.ej() != null) {
-         if (!this.dP().B) {
+      if (super.a($$0, $$1) && this.ei() != null) {
+         if (!this.dO().B) {
             this.x();
          }
 
@@ -146,19 +146,19 @@ public class cgd extends cgg {
       }
    }
 
-   private exa b(exa $$0) {
-      exa $$1 = $$0.a(this.c * (float) (Math.PI / 180.0));
+   private exc b(exc $$0) {
+      exc $$1 = $$0.a(this.c * (float) (Math.PI / 180.0));
       return $$1.b(-this.aZ * (float) (Math.PI / 180.0));
    }
 
    private void x() {
       this.b(this.t());
-      exa $$0 = this.b(new exa(0.0, -1.0, 0.0)).b(this.du(), this.dw(), this.dA());
+      exc $$0 = this.b(new exc(0.0, -1.0, 0.0)).b(this.dt(), this.dv(), this.dz());
 
       for (int $$1 = 0; $$1 < 30; $$1++) {
-         exa $$2 = this.b(new exa((double)this.ah.i() * 0.6 - 0.3, -1.0, (double)this.ah.i() * 0.6 - 0.3));
-         exa $$3 = $$2.a(0.3 + (double)(this.ah.i() * 2.0F));
-         ((aqu)this.dP()).a(this.s(), $$0.c, $$0.d + 0.5, $$0.e, 0, $$3.c, $$3.d, $$3.e, 0.1F);
+         exc $$2 = this.b(new exc((double)this.ah.i() * 0.6 - 0.3, -1.0, (double)this.ah.i() * 0.6 - 0.3));
+         exc $$3 = $$2.a(0.3 + (double)(this.ah.i() * 2.0F));
+         ((aqu)this.dO()).a(this.s(), $$0.c, $$0.d + 0.5, $$0.e, 0, $$3.c, $$3.d, $$3.e, 0.1F);
       }
    }
 
@@ -167,8 +167,8 @@ public class cgd extends cgg {
    }
 
    @Override
-   public void a(exa $$0) {
-      this.a(bts.a, this.ds());
+   public void a(exc $$0) {
+      this.a(bts.a, this.dr());
    }
 
    @Override
@@ -186,7 +186,7 @@ public class cgd extends cgg {
       this.cj = $$2;
    }
 
-   public boolean gm() {
+   public boolean gl() {
       return this.ch != 0.0F || this.ci != 0.0F || this.cj != 0.0F;
    }
 
@@ -198,7 +198,7 @@ public class cgd extends cgg {
 
       @Override
       public boolean b() {
-         btn $$0 = cgd.this.ej();
+         btn $$0 = cgd.this.ei();
          return cgd.this.bf() && $$0 != null ? cgd.this.g((bsr)$$0) < 100.0 : false;
       }
 
@@ -215,11 +215,11 @@ public class cgd extends cgg {
       @Override
       public void a() {
          this.e++;
-         btn $$0 = cgd.this.ej();
+         btn $$0 = cgd.this.ei();
          if ($$0 != null) {
-            exa $$1 = new exa(cgd.this.du() - $$0.du(), cgd.this.dw() - $$0.dw(), cgd.this.dA() - $$0.dA());
-            dtc $$2 = cgd.this.dP().a_(jd.a(cgd.this.du() + $$1.c, cgd.this.dw() + $$1.d, cgd.this.dA() + $$1.e));
-            epc $$3 = cgd.this.dP().b_(jd.a(cgd.this.du() + $$1.c, cgd.this.dw() + $$1.d, cgd.this.dA() + $$1.e));
+            exc $$1 = new exc(cgd.this.dt() - $$0.dt(), cgd.this.dv() - $$0.dv(), cgd.this.dz() - $$0.dz());
+            dtc $$2 = cgd.this.dO().a_(jd.a(cgd.this.dt() + $$1.c, cgd.this.dv() + $$1.d, cgd.this.dz() + $$1.e));
+            epe $$3 = cgd.this.dO().b_(jd.a(cgd.this.dt() + $$1.c, cgd.this.dv() + $$1.d, cgd.this.dz() + $$1.e));
             if ($$3.a(awk.a) || $$2.i()) {
                double $$4 = $$1.f();
                if ($$4 > 0.0) {
@@ -242,7 +242,7 @@ public class cgd extends cgg {
             }
 
             if (this.e % 10 == 5) {
-               cgd.this.dP().a(lm.d, cgd.this.du(), cgd.this.dw(), cgd.this.dA(), 0.0, 0.0, 0.0);
+               cgd.this.dO().a(lm.d, cgd.this.dt(), cgd.this.dv(), cgd.this.dz(), 0.0, 0.0, 0.0);
             }
          }
       }
@@ -262,13 +262,13 @@ public class cgd extends cgg {
 
       @Override
       public void a() {
-         int $$0 = this.a.en();
+         int $$0 = this.a.em();
          if ($$0 > 100) {
             this.a.a(0.0F, 0.0F, 0.0F);
-         } else if (this.a.dS().a(b(50)) == 0 || !this.a.aj || !this.a.gm()) {
-            float $$1 = this.a.dS().i() * (float) (Math.PI * 2);
+         } else if (this.a.dR().a(b(50)) == 0 || !this.a.aj || !this.a.gl()) {
+            float $$1 = this.a.dR().i() * (float) (Math.PI * 2);
             float $$2 = ayo.b($$1) * 0.2F;
-            float $$3 = -0.1F + this.a.dS().i() * 0.2F;
+            float $$3 = -0.1F + this.a.dR().i() * 0.2F;
             float $$4 = ayo.a($$1) * 0.2F;
             this.a.a($$2, $$3, $$4);
          }

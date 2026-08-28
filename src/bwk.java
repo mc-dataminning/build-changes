@@ -19,9 +19,9 @@ public class bwk<E extends btp> extends bvh<E> {
    protected final int f;
    protected final float g;
    protected List<bwk.a> h = Lists.newArrayList();
-   protected Optional<exa> i = Optional.empty();
+   protected Optional<exc> i = Optional.empty();
    @Nullable
-   protected exa j;
+   protected exc j;
    protected int k;
    protected long l;
    private final Function<E, avo> q;
@@ -32,9 +32,9 @@ public class bwk<E extends btp> extends bvh<E> {
    }
 
    public static <E extends btp> boolean a(E $$0, jd $$1) {
-      dcw $$2 = $$0.dP();
+      dcw $$2 = $$0.dO();
       jd $$3 = $$1.e();
-      return $$2.a_($$3).i($$2, $$3) && $$0.a(epy.b($$0, $$1)) == 0.0F;
+      return $$2.a_($$3).i($$2, $$3) && $$0.a(eqa.b($$0, $$1)) == 0.0F;
    }
 
    public bwk(bqc $$0, int $$1, int $$2, float $$3, Function<E, avo> $$4, BiPredicate<E, jd> $$5) {
@@ -48,19 +48,19 @@ public class bwk<E extends btp> extends bvh<E> {
    }
 
    protected boolean a(aqu $$0, btp $$1) {
-      boolean $$2 = $$1.aF() && !$$1.bf() && !$$1.bt() && !$$0.a_($$1.dp()).a(dga.pg);
+      boolean $$2 = $$1.aF() && !$$1.bf() && !$$1.bt() && !$$0.a_($$1.do()).a(dga.pg);
       if (!$$2) {
-         $$1.dU().a(ccs.S, this.p.a($$0.z) / 2);
+         $$1.dT().a(ccs.S, this.p.a($$0.z) / 2);
       }
 
       return $$2;
    }
 
    protected boolean b(aqu $$0, btp $$1, long $$2) {
-      boolean $$3 = this.i.isPresent() && this.i.get().equals($$1.dn()) && this.k > 0 && !$$1.bi() && (this.j != null || !this.h.isEmpty());
-      if (!$$3 && $$1.dU().c(ccs.T).isEmpty()) {
-         $$1.dU().a(ccs.S, this.p.a($$0.z) / 2);
-         $$1.dU().b(ccs.n);
+      boolean $$3 = this.i.isPresent() && this.i.get().equals($$1.dm()) && this.k > 0 && !$$1.bi() && (this.j != null || !this.h.isEmpty());
+      if (!$$3 && $$1.dT().c(ccs.T).isEmpty()) {
+         $$1.dT().a(ccs.S, this.p.a($$0.z) / 2);
+         $$1.dT().b(ccs.n);
       }
 
       return $$3;
@@ -69,8 +69,8 @@ public class bwk<E extends btp> extends bvh<E> {
    protected void a(aqu $$0, E $$1, long $$2) {
       this.j = null;
       this.k = 20;
-      this.i = Optional.of($$1.dn());
-      jd $$3 = $$1.dp();
+      this.i = Optional.of($$1.dm());
+      jd $$3 = $$1.do();
       int $$4 = $$3.u();
       int $$5 = $$3.v();
       int $$6 = $$3.w();
@@ -84,11 +84,11 @@ public class bwk<E extends btp> extends bvh<E> {
       if (this.j != null) {
          if ($$2 - this.l >= 40L) {
             $$1.t($$1.aY);
-            $$1.q(true);
+            $$1.r(true);
             double $$3 = this.j.f();
-            double $$4 = $$3 + (double)$$1.ff();
+            double $$4 = $$3 + (double)$$1.fe();
             $$1.i(this.j.a($$4 / $$3));
-            $$1.dU().a(ccs.T, true);
+            $$1.dT().a(ccs.T, true);
             $$0.a(null, $$1, this.q.apply($$1), avq.g, 1.0F, 1.0F);
          }
       } else {
@@ -104,12 +104,12 @@ public class bwk<E extends btp> extends bvh<E> {
             bwk.a $$4 = $$3.get();
             jd $$5 = $$4.b();
             if (this.a($$0, $$1, $$5)) {
-               exa $$6 = exa.b($$5);
-               exa $$7 = this.a($$1, $$6);
+               exc $$6 = exc.b($$5);
+               exc $$7 = this.a($$1, $$6);
                if ($$7 != null) {
-                  $$1.dU().a(ccs.n, new bvk($$5));
+                  $$1.dT().a(ccs.n, new bvk($$5));
                   cda $$8 = $$1.N();
-                  epq $$9 = $$8.a($$5, 0, 8);
+                  eps $$9 = $$8.a($$5, 0, 8);
                   if ($$9 == null || !$$9.j()) {
                      this.j = $$7;
                      this.l = $$2;
@@ -128,20 +128,20 @@ public class bwk<E extends btp> extends bvh<E> {
    }
 
    private boolean a(aqu $$0, E $$1, jd $$2) {
-      jd $$3 = $$1.dp();
+      jd $$3 = $$1.do();
       int $$4 = $$3.u();
       int $$5 = $$3.w();
       return $$4 == $$2.u() && $$5 == $$2.w() ? false : this.r.test($$1, $$2);
    }
 
    @Nullable
-   protected exa a(btp $$0, exa $$1) {
+   protected exc a(btp $$0, exc $$1) {
       List<Integer> $$2 = Lists.newArrayList(o);
       Collections.shuffle($$2);
       float $$3 = (float)($$0.g(buw.o) * (double)this.g);
 
       for (int $$4 : $$2) {
-         Optional<exa> $$5 = bwl.a($$0, $$1, $$3, $$4, true);
+         Optional<exc> $$5 = bwl.a($$0, $$1, $$3, $$4, true);
          if ($$5.isPresent()) {
             return $$5.get();
          }

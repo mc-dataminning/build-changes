@@ -18,7 +18,7 @@ public class dez extends dgh {
    );
    public static final dtw b = dju.aE;
    protected static final float c = 2.0F;
-   private static final Map<ji, ext> d = Maps.newEnumMap(
+   private static final Map<ji, exv> d = Maps.newEnumMap(
       ImmutableMap.of(
          ji.d,
          dfy.a(6.0, 0.0, 6.0, 10.0, 10.0, 16.0),
@@ -48,7 +48,7 @@ public class dez extends dgh {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return d.get($$0.c(b));
    }
 

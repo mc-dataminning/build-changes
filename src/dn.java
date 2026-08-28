@@ -9,7 +9,7 @@ public class dn extends dv<dn.a> {
    }
 
    public void a(aqv $$0, cuq $$1, bsr $$2) {
-      erp $$3 = bv.b($$0, $$2);
+      err $$3 = bv.b($$0, $$2);
       this.a($$0, $$2x -> $$2x.a($$1, $$3));
    }
 
@@ -31,7 +31,7 @@ public class dn extends dv<dn.a> {
          return a(Optional.empty(), $$0, $$1);
       }
 
-      public boolean a(cuq $$0, erp $$1) {
+      public boolean a(cuq $$0, err $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : this.d.isEmpty() || this.d.get().a($$1);
       }
 

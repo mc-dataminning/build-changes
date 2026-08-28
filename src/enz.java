@@ -1,11 +1,17 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public interface enz {
-   Codec<enz> c = lt.n.r().dispatch(enz::a, eoa::codec);
+public class enz implements eob {
+   private static final enz b = new enz();
+   public static final MapCodec<enz> a = MapCodec.unit(b);
 
-   @Nullable
-   ub a(ayw var1, @Nullable ub var2);
+   @Override
+   public ub a(ayw $$0, @Nullable ub $$1) {
+      return new ub();
+   }
 
-   eoa<?> a();
+   @Override
+   public eoc<?> a() {
+      return eoc.a;
+   }
 }

@@ -22,7 +22,7 @@ public class cjb extends cix {
       this.o((double)this.b.u() + 0.5, (double)this.b.v() + 0.375, (double)this.b.w() + 0.5);
       double $$0 = (double)this.am().l() / 2.0;
       double $$1 = (double)this.am().m();
-      this.a(new ewv(this.du() - $$0, this.dw(), this.dA() - $$0, this.du() + $$0, this.dw() + $$1, this.dA() + $$0));
+      this.a(new ewx(this.dt() - $$0, this.dv(), this.dz() - $$0, this.dt() + $$0, this.dv() + $$1, this.dz() + $$0));
    }
 
    @Override
@@ -45,12 +45,12 @@ public class cjb extends cix {
 
    @Override
    public bqr a(cmx $$0, bqq $$1) {
-      if (this.dP().B) {
+      if (this.dO().B) {
          return bqr.a;
       } else {
          boolean $$2 = false;
          double $$3 = 7.0;
-         List<btp> $$4 = this.dP().a(btp.class, new ewv(this.du() - 7.0, this.dw() - 7.0, this.dA() - 7.0, this.du() + 7.0, this.dw() + 7.0, this.dA() + 7.0));
+         List<btp> $$4 = this.dO().a(btp.class, new ewx(this.dt() - 7.0, this.dv() - 7.0, this.dz() - 7.0, this.dt() + 7.0, this.dv() + 7.0, this.dz() + 7.0));
 
          for (btp $$5 : $$4) {
             if ($$5.A() == $$0) {
@@ -62,7 +62,7 @@ public class cjb extends cix {
          boolean $$6 = false;
          if (!$$2) {
             this.aq();
-            if ($$0.ga().d) {
+            if ($$0.fZ().d) {
                for (btp $$7 : $$4) {
                   if ($$7.N_() && $$7.A() == this) {
                      $$7.a(true, false);
@@ -82,7 +82,7 @@ public class cjb extends cix {
 
    @Override
    public boolean s() {
-      return this.dP().a_(this.b).a(awe.S);
+      return this.dO().a_(this.b).a(awe.T);
    }
 
    public static cjb b(dcw $$0, jd $$1) {
@@ -90,7 +90,7 @@ public class cjb extends cix {
       int $$3 = $$1.v();
       int $$4 = $$1.w();
 
-      for (cjb $$6 : $$0.a(cjb.class, new ewv((double)$$2 - 1.0, (double)$$3 - 1.0, (double)$$4 - 1.0, (double)$$2 + 1.0, (double)$$3 + 1.0, (double)$$4 + 1.0))) {
+      for (cjb $$6 : $$0.a(cjb.class, new ewx((double)$$2 - 1.0, (double)$$3 - 1.0, (double)$$4 - 1.0, (double)$$2 + 1.0, (double)$$3 + 1.0, (double)$$4 + 1.0))) {
          if ($$6.t().equals($$1)) {
             return $$6;
          }
@@ -112,12 +112,12 @@ public class cjb extends cix {
    }
 
    @Override
-   public exa s(float $$0) {
+   public exc s(float $$0) {
       return this.m($$0).b(0.0, 0.2, 0.0);
    }
 
    @Override
-   public cuq dC() {
+   public cuq dB() {
       return new cuq(cut.uK);
    }
 }

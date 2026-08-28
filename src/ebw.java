@@ -1,19 +1,19 @@
 import com.mojang.serialization.Codec;
 import java.util.List;
 
-public class ebw extends ecd<eeo> {
+public class ebw extends ece<eep> {
    private static final dtl a = dtl.a(dga.I);
    private final dtc b = dga.I.o();
    private final dtc c = dga.jF.o();
    private final dtc d = dga.aV.o();
-   private final dtc an = dga.G.o();
+   private final dtc ao = dga.G.o();
 
-   public ebw(Codec<eeo> $$0) {
+   public ebw(Codec<eep> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecf<eeo> $$0) {
+   public boolean a(ecg<eep> $$0) {
       dds $$1 = $$0.b();
       jd $$2 = $$0.e();
       $$2 = $$2.d();
@@ -41,10 +41,10 @@ public class ebw extends ecd<eeo> {
             }
          }
 
-         $$1.a($$2, this.an, 2);
+         $$1.a($$2, this.ao, 2);
 
          for (ji $$8 : ji.c.a) {
-            $$1.a($$2.a($$8), this.an, 2);
+            $$1.a($$2.a($$8), this.ao, 2);
          }
 
          jd $$9 = $$2.e();
@@ -94,6 +94,6 @@ public class ebw extends ecd<eeo> {
 
    private static void b(dds $$0, jd $$1) {
       $$0.a($$1, dga.J.o(), 3);
-      $$0.a($$1, dqj.N).ifPresent($$1x -> $$1x.a(erl.bd, $$1.a()));
+      $$0.a($$1, dqj.N).ifPresent($$1x -> $$1x.a(ern.bd, $$1.a()));
    }
 }

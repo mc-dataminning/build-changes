@@ -1,28 +1,18 @@
-public class gng extends gkg<cof> {
-   private static final float a = ayo.k(3.5F);
-   private static final akr g = akr.b("textures/entity/projectiles/wind_charge.png");
-   private final fxw h;
+public class gng extends glp<cmq, fxv<cmq>> {
+   private static final akr a = akr.b("textures/entity/wandering_trader.png");
 
-   public gng(gkh.a $$0) {
-      super($$0);
-      this.h = new fxw($$0.a(fyh.bU));
+   public gng(gkj.a $$0) {
+      super($$0, new fxv<>($$0.a(fyj.bT)), 0.5F);
+      this.a(new goa<>(this, $$0.f(), $$0.d()));
+      this.a(new gnz<>(this, $$0.d()));
    }
 
-   public void a(cof $$0, float $$1, float $$2, fbg $$3, gex $$4, int $$5) {
-      if ($$0.ai >= 2 || !(this.d.b.g().g($$0) < (double)a)) {
-         float $$6 = (float)$$0.ai + $$2;
-         fbk $$7 = $$4.getBuffer(gff.a(g, this.a($$6) % 1.0F, 0.0F));
-         this.h.a($$0, 0.0F, 0.0F, $$6, 0.0F, 0.0F);
-         this.h.a($$3, $$7, $$5, gqa.d);
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
+   public akr a(cmq $$0) {
+      return a;
    }
 
-   protected float a(float $$0) {
-      return $$0 * 0.03F;
-   }
-
-   public akr a(cof $$0) {
-      return g;
+   protected void a(cmq $$0, fbi $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

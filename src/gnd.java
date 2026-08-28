@@ -1,18 +1,17 @@
-public class gnd extends gla<cks> {
-   private static final akr a = akr.b("textures/entity/illager/vindicator.png");
+public class gnd extends glp<ckr, fxt> {
+   private static final akr a = akr.b("textures/entity/illager/vex.png");
+   private static final akr i = akr.b("textures/entity/illager/vex_charging.png");
 
-   public gnd(gkh.a $$0) {
-      super($$0, new fvw<>($$0.a(fyh.bR)), 0.5F);
-      this.a(new gom<cks, fvw<cks>>(this, $$0.d()) {
-         public void a(fbg $$0, gex $$1, int $$2, cks $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-            if ($$3.gc()) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-            }
-         }
-      });
+   public gnd(gkj.a $$0) {
+      super($$0, new fxt($$0.a(fyj.bP)), 0.3F);
+      this.a(new goo<>(this, $$0.d()));
    }
 
-   public akr a(cks $$0) {
-      return a;
+   protected int a(ckr $$0, jd $$1) {
+      return 15;
+   }
+
+   public akr a(ckr $$0) {
+      return $$0.gl() ? i : a;
    }
 }

@@ -28,15 +28,15 @@ public class cka extends ckw {
    }
 
    @Override
-   protected avo gl() {
+   protected avo gk() {
       return avp.nd;
    }
 
    @Override
    public boolean D(bsr $$0) {
       boolean $$1 = super.D($$0);
-      if ($$1 && this.eU().e() && $$0 instanceof btn) {
-         float $$2 = this.dP().d_(this.dp()).b();
+      if ($$1 && this.eT().e() && $$0 instanceof btn) {
+         float $$2 = this.dO().d_(this.do()).b();
          ((btn)$$0).b(new brz(bsb.q, 140 * (int)$$2), this);
       }
 
@@ -44,7 +44,7 @@ public class cka extends ckw {
    }
 
    @Override
-   protected boolean gn() {
+   protected boolean gm() {
       return true;
    }
 
@@ -52,12 +52,12 @@ public class cka extends ckw {
    protected void ag_() {
       this.b(bsx.bu);
       if (!this.aX()) {
-         this.dP().a(null, 1041, this.dp(), 0);
+         this.dO().a(null, 1041, this.do(), 0);
       }
    }
 
    @Override
-   protected cuq gm() {
+   protected cuq gl() {
       return cuq.l;
    }
 }

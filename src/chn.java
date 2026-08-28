@@ -11,7 +11,7 @@ public class chn extends chh {
    }
 
    @Override
-   protected avo gK() {
+   protected avo gJ() {
       return avp.py;
    }
 
@@ -22,7 +22,7 @@ public class chn extends chh {
 
    @Nullable
    @Override
-   protected avo gn() {
+   protected avo gm() {
       return avp.pB;
    }
 
@@ -32,7 +32,7 @@ public class chn extends chh {
    }
 
    @Override
-   protected void gS() {
+   protected void gR() {
       this.a(avp.pD, 0.4F, 1.0F);
    }
 

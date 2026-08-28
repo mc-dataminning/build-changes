@@ -66,7 +66,7 @@ public class cgw {
    }
 
    public static void a(cgv $$0) {
-      $$0.dU().a(ImmutableList.of(com.b));
+      $$0.dT().a(ImmutableList.of(com.b));
    }
 
    public static Predicate<cuq> b() {
@@ -79,7 +79,7 @@ public class cgw {
       }
 
       protected void a(aqu $$0, cgv $$1, long $$2) {
-         $$1.gy();
+         $$1.gx();
          super.b($$0, $$1, $$2);
       }
    }
@@ -93,14 +93,14 @@ public class cgw {
       }
 
       protected boolean a(aqu $$0, cgv $$1) {
-         return !$$1.bf() && $$1.gz() >= (long)this.c && !$$1.N_() && $$1.aF() && !$$1.cS() && $$1.gl();
+         return !$$1.bf() && $$1.gy() >= (long)this.c && !$$1.N_() && $$1.aF() && !$$1.cR() && $$1.gk();
       }
 
       protected void a(aqu $$0, cgv $$1, long $$2) {
-         if ($$1.go()) {
-            $$1.gx();
-         } else if (!$$1.gi()) {
+         if ($$1.gn()) {
             $$1.gw();
+         } else if (!$$1.gh()) {
+            $$1.gv();
          }
       }
    }

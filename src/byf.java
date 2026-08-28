@@ -10,14 +10,14 @@ public class byf {
                .apply(
                   $$3,
                   ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                        if ($$5x.b_($$6.dp()).a(awk.a)) {
+                        if ($$5x.b_($$6.do()).a(awk.a)) {
                            return false;
                         } else if ($$7 < $$2.getValue()) {
                            $$2.setValue($$7 + 40L);
                            return true;
                         } else {
-                           exf $$8 = exf.a($$6);
-                           jd $$9 = $$6.dp();
+                           exh $$8 = exh.a($$6);
+                           jd $$9 = $$6.do();
                            jd.a $$10 = new jd.a();
 
                            label45:

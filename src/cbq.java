@@ -15,8 +15,8 @@ public class cbq extends cam {
 
    @Override
    public boolean b() {
-      if (!this.a.gA() && this.a.bT()) {
-         exa $$0 = cej.a(this.a, 5, 4);
+      if (!this.a.gz() && this.a.bT()) {
+         exc $$0 = cej.a(this.a, 5, 4);
          if ($$0 == null) {
             return false;
          } else {
@@ -37,21 +37,21 @@ public class cbq extends cam {
 
    @Override
    public boolean c() {
-      return !this.a.gA() && !this.a.N().l() && this.a.bT();
+      return !this.a.gz() && !this.a.N().l() && this.a.bT();
    }
 
    @Override
    public void a() {
-      if (!this.a.gA() && this.a.dS().a(this.a(50)) == 0) {
-         bsr $$0 = this.a.cU();
+      if (!this.a.gz() && this.a.dR().a(this.a(50)) == 0) {
+         bsr $$0 = this.a.cT();
          if ($$0 == null) {
             return;
          }
 
          if ($$0 instanceof cmx $$1) {
-            int $$2 = this.a.gG();
-            int $$3 = this.a.gM();
-            if ($$3 > 0 && this.a.dS().a($$3) < $$2) {
+            int $$2 = this.a.gF();
+            int $$3 = this.a.gL();
+            if ($$3 > 0 && this.a.dR().a($$3) < $$2) {
                this.a.g($$1);
                return;
             }
@@ -60,8 +60,8 @@ public class cbq extends cam {
          }
 
          this.a.bI();
-         this.a.gR();
-         this.a.dP().a(this.a, (byte)6);
+         this.a.gQ();
+         this.a.dO().a(this.a, (byte)6);
       }
    }
 }

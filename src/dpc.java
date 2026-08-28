@@ -2,7 +2,7 @@ import com.mojang.serialization.MapCodec;
 
 public class dpc extends dgh {
    public static final MapCodec<dpc> a = b(dpc::new);
-   protected static final ext b = dfy.a(1.0, 0.0, 1.0, 15.0, 1.5, 15.0);
+   protected static final exv b = dfy.a(1.0, 0.0, 1.0, 15.0, 1.5, 15.0);
 
    @Override
    public MapCodec<dpc> a() {
@@ -22,14 +22,14 @@ public class dpc extends dgh {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return b;
    }
 
    @Override
    protected boolean b(dtc $$0, dcc $$1, jd $$2) {
-      epc $$3 = $$1.b_($$2);
-      epc $$4 = $$1.b_($$2.d());
-      return ($$3.a() == epd.c || $$0.b() instanceof djw) && $$4.a() == epd.a;
+      epe $$3 = $$1.b_($$2);
+      epe $$4 = $$1.b_($$2.d());
+      return ($$3.a() == epf.c || $$0.b() instanceof djw) && $$4.a() == epf.a;
    }
 }

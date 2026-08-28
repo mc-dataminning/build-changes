@@ -7,17 +7,17 @@ public class cng extends cne {
       super($$0, $$1);
    }
 
-   public cng(dcw $$0, btn $$1, exa $$2) {
+   public cng(dcw $$0, btn $$1, exc $$2) {
       super(bsx.A, $$1, $$2, $$0);
    }
 
    @Override
-   protected void a(ewy $$0) {
+   protected void a(exa $$0) {
       super.a($$0);
-      if ($$0.c() != ewy.a.c || !this.e(((ewx)$$0).a())) {
-         if (!this.dP().B) {
-            List<btn> $$1 = this.dP().a(btn.class, this.cL().c(4.0, 2.0, 4.0));
-            bsn $$2 = new bsn(this.dP(), this.du(), this.dw(), this.dA());
+      if ($$0.c() != exa.a.c || !this.e(((ewz)$$0).a())) {
+         if (!this.dO().B) {
+            List<btn> $$1 = this.dO().a(btn.class, this.cK().c(4.0, 2.0, 4.0));
+            bsn $$2 = new bsn(this.dO(), this.dt(), this.dv(), this.dz());
             bsr $$3 = this.s();
             if ($$3 instanceof btn) {
                $$2.a((btn)$$3);
@@ -32,14 +32,14 @@ public class cng extends cne {
                for (btn $$4 : $$1) {
                   double $$5 = this.g($$4);
                   if ($$5 < 16.0) {
-                     $$2.a_($$4.du(), $$4.dw(), $$4.dA());
+                     $$2.a_($$4.dt(), $$4.dv(), $$4.dz());
                      break;
                   }
                }
             }
 
-            this.dP().c(2006, this.dp(), this.aX() ? -1 : 1);
-            this.dP().b($$2);
+            this.dO().c(2006, this.do(), this.aX() ? -1 : 1);
+            this.dO().b($$2);
             this.aq();
          }
       }

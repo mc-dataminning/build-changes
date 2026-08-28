@@ -45,11 +45,11 @@ public class ft<T> implements ArgumentType<akq<T>> {
       return b($$0, $$1, lu.aI, b);
    }
 
-   public static jm.c<ejp> b(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
+   public static jm.c<ejr> b(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, lu.aR, c);
    }
 
-   public static jm.c<ekz> c(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
+   public static jm.c<elb> c(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, lu.aU, d);
    }
 

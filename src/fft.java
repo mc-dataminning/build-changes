@@ -1,14 +1,14 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class fft extends ffl {
+public class fft extends ffn {
    private static final Logger b = LogUtils.getLogger();
-   private static final wz c = wz.c("mco.minigame.world.slot.screen.title");
-   private final long d;
-   private final int e;
-   private final Runnable f;
+   private static final wz c = wz.c("mco.backup.restoring");
+   private final fce d;
+   private final long e;
+   private final fdx f;
 
-   public fft(long $$0, int $$1, Runnable $$2) {
+   public fft(fce $$0, long $$1, fdx $$2) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;
@@ -16,31 +16,46 @@ public class fft extends ffl {
 
    @Override
    public void run() {
-      fbw $$0 = fbw.a();
+      fby $$0 = fby.a();
+      int $$1 = 0;
 
-      for (int $$1 = 0; $$1 < 25; $$1++) {
+      while ($$1 < 25) {
          try {
             if (this.d()) {
                return;
             }
 
-            if ($$0.a(this.d, this.e)) {
-               this.f.run();
-               break;
+            $$0.b(this.e, this.d.a);
+            a(1L);
+            if (this.d()) {
+               return;
             }
-         } catch (fdi var4) {
+
+            a(this.f.g());
+            return;
+         } catch (fdk var4) {
             if (this.d()) {
                return;
             }
 
             a((long)var4.c);
-         } catch (Exception var5) {
+            $$1++;
+         } catch (fdj var5) {
             if (this.d()) {
                return;
             }
 
-            b.error("Couldn't switch world!");
-            this.a(var5);
+            b.error("Couldn't restore backup", var5);
+            a(new feb(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't restore backup", var6);
+            this.a(var6);
+            return;
          }
       }
    }

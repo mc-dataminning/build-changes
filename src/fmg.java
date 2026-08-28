@@ -1,19 +1,17 @@
-import com.google.common.collect.ImmutableList;
+public interface fmg extends fjw, fmj {
+   fmg.a u();
 
-public interface fmg {
-   default void a(fmf $$0, wz $$1) {
-      this.a($$0, fmi.a($$1.getString()));
+   default boolean C() {
+      return true;
    }
 
-   default void a(fmf $$0, String $$1) {
-      this.a($$0, fmi.a($$1));
+   public static enum a {
+      a,
+      b,
+      c;
+
+      public boolean a() {
+         return this == c;
+      }
    }
-
-   default void a(fmf $$0, wz... $$1) {
-      this.a($$0, fmi.a(ImmutableList.copyOf($$1)));
-   }
-
-   void a(fmf var1, fmi<?> var2);
-
-   fmg a();
 }

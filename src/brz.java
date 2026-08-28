@@ -339,7 +339,7 @@ public class brz implements Comparable<brz> {
       }
 
       public float a(btn $$0, float $$1) {
-         if ($$0.dK()) {
+         if ($$0.dJ()) {
             this.b = this.a;
          }
 

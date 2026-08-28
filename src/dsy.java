@@ -77,12 +77,12 @@ public class dsy extends dqh {
    private static void a(dcw $$0, jd $$1, float $$2, dsy $$3) {
       ji $$4 = $$3.f();
       double $$5 = (double)($$2 - $$3.i);
-      ext $$6 = $$3.u().k($$0, $$1);
+      exv $$6 = $$3.u().k($$0, $$1);
       if (!$$6.c()) {
-         ewv $$7 = a($$1, $$6.a(), $$3);
+         ewx $$7 = a($$1, $$6.a(), $$3);
          List<bsr> $$8 = $$0.a_(null, dsx.a($$7, $$4, $$5).b($$7));
          if (!$$8.isEmpty()) {
-            List<ewv> $$9 = $$6.e();
+            List<ewx> $$9 = $$6.e();
             boolean $$10 = $$3.d.a(dga.hV);
             Iterator var12 = $$8.iterator();
 
@@ -94,13 +94,13 @@ public class dsy extends dqh {
                   }
 
                   $$11 = (bsr)var12.next();
-                  if ($$11.j_() != eph.d) {
+                  if ($$11.j_() != epj.d) {
                      if (!$$10) {
                         break;
                      }
 
                      if (!($$11 instanceof aqv)) {
-                        exa $$12 = $$11.ds();
+                        exc $$12 = $$11.dr();
                         double $$13 = $$12.c;
                         double $$14 = $$12.d;
                         double $$15 = $$12.e;
@@ -123,9 +123,9 @@ public class dsy extends dqh {
 
                double $$16 = 0.0;
 
-               for (ewv $$17 : $$9) {
-                  ewv $$18 = dsx.a(a($$1, $$17, $$3), $$4, $$5);
-                  ewv $$19 = $$11.cL();
+               for (ewx $$17 : $$9) {
+                  ewx $$18 = dsx.a(a($$1, $$17, $$3), $$4, $$5);
+                  ewx $$19 = $$11.cK();
                   if ($$18.c($$19)) {
                      $$16 = Math.max($$16, a($$18, $$4, $$19));
                      if ($$16 >= $$5) {
@@ -148,7 +148,7 @@ public class dsy extends dqh {
 
    private static void a(ji $$0, bsr $$1, double $$2, ji $$3) {
       h.set($$0);
-      $$1.a(bts.c, new exa($$2 * (double)$$3.j(), $$2 * (double)$$3.k(), $$2 * (double)$$3.l()));
+      $$1.a(bts.c, new exc($$2 * (double)$$3.j(), $$2 * (double)$$3.k(), $$2 * (double)$$3.l()));
       h.set(null);
    }
 
@@ -157,7 +157,7 @@ public class dsy extends dqh {
          ji $$4 = $$3.f();
          if ($$4.o().d()) {
             double $$5 = $$3.d.k($$0, $$1).c(ji.a.b);
-            ewv $$6 = a($$1, new ewv(0.0, $$5, 0.0, 1.0, 1.5000010000000001, 1.0), $$3);
+            ewx $$6 = a($$1, new ewx(0.0, $$5, 0.0, 1.0, 1.5000010000000001, 1.0), $$3);
             double $$7 = (double)($$2 - $$3.i);
 
             for (bsr $$9 : $$0.a((bsr)null, $$6, $$2x -> a($$6, $$2x, $$1))) {
@@ -167,8 +167,8 @@ public class dsy extends dqh {
       }
    }
 
-   private static boolean a(ewv $$0, bsr $$1, jd $$2) {
-      return $$1.j_() == eph.a && $$1.aF() && ($$1.d($$2) || $$1.du() >= $$0.a && $$1.du() <= $$0.d && $$1.dA() >= $$0.c && $$1.dA() <= $$0.f);
+   private static boolean a(ewx $$0, bsr $$1, jd $$2) {
+      return $$1.j_() == epj.a && $$1.aF() && ($$1.d($$2) || $$1.dt() >= $$0.a && $$1.dt() <= $$0.d && $$1.dz() >= $$0.c && $$1.dz() <= $$0.f);
    }
 
    private boolean v() {
@@ -179,7 +179,7 @@ public class dsy extends dqh {
       return this.f ? this.e : this.e.g();
    }
 
-   private static double a(ewv $$0, ji $$1, ewv $$2) {
+   private static double a(ewx $$0, ji $$1, ewx $$2) {
       switch ($$1) {
          case f:
             return $$0.d - $$2.a;
@@ -197,14 +197,14 @@ public class dsy extends dqh {
       }
    }
 
-   private static ewv a(jd $$0, ewv $$1, dsy $$2) {
+   private static ewx a(jd $$0, ewx $$1, dsy $$2) {
       double $$3 = (double)$$2.e($$2.i);
       return $$1.d((double)$$0.u() + $$3 * (double)$$2.e.j(), (double)$$0.v() + $$3 * (double)$$2.e.k(), (double)$$0.w() + $$3 * (double)$$2.e.l());
    }
 
    private static void a(jd $$0, bsr $$1, ji $$2, double $$3) {
-      ewv $$4 = $$1.cL();
-      ewv $$5 = exq.b().a().a($$0);
+      ewx $$4 = $$1.cK();
+      ewx $$5 = exs.b().a().a($$0);
       if ($$4.c($$5)) {
          ji $$6 = $$2.g();
          double $$7 = a($$5, $$6, $$4) + 0.01;
@@ -297,12 +297,12 @@ public class dsy extends dqh {
       $$0.a("source", this.g);
    }
 
-   public ext a(dcc $$0, jd $$1) {
-      ext $$2;
+   public exv a(dcc $$0, jd $$1) {
+      exv $$2;
       if (!this.f && this.g && this.d.b() instanceof dsv) {
          $$2 = this.d.a(dsv.c, Boolean.valueOf(true)).k($$0, $$1);
       } else {
-         $$2 = exq.a();
+         $$2 = exs.a();
       }
 
       ji $$4 = h.get();
@@ -320,7 +320,7 @@ public class dsy extends dqh {
          double $$8 = (double)((float)this.e.j() * $$7);
          double $$9 = (double)((float)this.e.k() * $$7);
          double $$10 = (double)((float)this.e.l() * $$7);
-         return exq.a($$2, $$5.k($$0, $$1).a($$8, $$9, $$10));
+         return exs.a($$2, $$5.k($$0, $$1).a($$8, $$9, $$10));
       }
    }
 

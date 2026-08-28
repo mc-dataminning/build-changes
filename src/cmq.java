@@ -15,8 +15,8 @@ public class cmq extends cmf {
    @Override
    protected void B() {
       this.bU.a(0, new cag(this));
-      this.bU.a(0, new cbx<>(this, cwu.a(cut.sk, cwv.g), avp.By, $$0 -> this.dP().S() && !$$0.ci()));
-      this.bU.a(0, new cbx<>(this, new cuq(cut.qE), avp.BD, $$0 -> this.dP().R() && $$0.ci()));
+      this.bU.a(0, new cbx<>(this, cwu.a(cut.sk, cwv.g), avp.By, $$0 -> this.dO().S() && !$$0.ci()));
+      this.bU.a(0, new cbx<>(this, new cuq(cut.qE), avp.BD, $$0 -> this.dO().R() && $$0.ci()));
       this.bU.a(1, new cbv(this));
       this.bU.a(1, new bzt<>(this, ckw.class, 8.0F, 0.5, 0.5));
       this.bU.a(1, new bzt<>(this, cjw.class, 12.0F, 0.5, 0.5));
@@ -41,20 +41,20 @@ public class cmq extends cmf {
    }
 
    @Override
-   public boolean go() {
+   public boolean gn() {
       return false;
    }
 
    @Override
    public bqr b(cmx $$0, bqq $$1) {
       cuq $$2 = $$0.b($$1);
-      if (!$$2.a(cut.tJ) && this.bE() && !this.gm() && !this.o_()) {
+      if (!$$2.a(cut.tJ) && this.bE() && !this.gl() && !this.o_()) {
          if ($$1 == bqq.a) {
             $$0.a(avz.S);
          }
 
-         if (!this.dP().B) {
-            if (this.gn().isEmpty()) {
+         if (!this.dO().B) {
+            if (this.gm().isEmpty()) {
                return bqr.c;
             }
 
@@ -62,21 +62,21 @@ public class cmq extends cmf {
             this.a($$0, this.S_(), 1);
          }
 
-         return bqr.a(this.dP().B);
+         return bqr.a(this.dO().B);
       } else {
          return super.b($$0, $$1);
       }
    }
 
    @Override
-   protected void gs() {
-      if (this.dP().J().b(cpn.c)) {
-         this.gv();
+   protected void gr() {
+      if (this.dO().J().b(cpn.c)) {
+         this.gu();
       } else {
          cmo.g[] $$0 = (cmo.g[])cmo.b.get(1);
          cmo.g[] $$1 = (cmo.g[])cmo.b.get(2);
          if ($$0 != null && $$1 != null) {
-            dbv $$2 = this.gn();
+            dbv $$2 = this.gm();
             this.a($$2, $$0, 5);
             int $$3 = this.ah.a($$1.length);
             cmo.g $$4 = $$1[$$3];
@@ -88,8 +88,8 @@ public class cmq extends cmf {
       }
    }
 
-   private void gv() {
-      dbv $$0 = this.gn();
+   private void gu() {
+      dbv $$0 = this.gm();
 
       for (Pair<cmo.g[], Integer> $$1 : cmo.d) {
          cmo.g[] $$2 = (cmo.g[])$$1.getLeft();
@@ -126,13 +126,13 @@ public class cmq extends cmf {
    protected void b(dbu $$0) {
       if ($$0.u()) {
          int $$1 = 3 + this.ah.a(4);
-         this.dP().b(new btc(this.dP(), this.du(), this.dw() + 0.5, this.dA(), $$1));
+         this.dO().b(new btc(this.dO(), this.dt(), this.dv() + 0.5, this.dz(), $$1));
       }
    }
 
    @Override
    protected avo v() {
-      return this.gm() ? avp.BE : avp.Bw;
+      return this.gl() ? avp.BE : avp.Bw;
    }
 
    @Override
@@ -151,12 +151,12 @@ public class cmq extends cmf {
    }
 
    @Override
-   protected avo w(boolean $$0) {
+   protected avo x(boolean $$0) {
       return $$0 ? avp.BF : avp.BC;
    }
 
    @Override
-   public avo gp() {
+   public avo go() {
       return avp.BF;
    }
 
@@ -164,20 +164,20 @@ public class cmq extends cmf {
       this.ce = $$0;
    }
 
-   public int gu() {
+   public int gt() {
       return this.ce;
    }
 
    @Override
    public void m_() {
       super.m_();
-      if (!this.dP().B) {
-         this.gw();
+      if (!this.dO().B) {
+         this.gv();
       }
    }
 
-   private void gw() {
-      if (this.ce > 0 && !this.gm() && --this.ce == 0) {
+   private void gv() {
+      if (this.ce > 0 && !this.gl() && --this.ce == 0) {
          this.aq();
       }
    }
@@ -187,7 +187,7 @@ public class cmq extends cmf {
    }
 
    @Nullable
-   jd gy() {
+   jd gx() {
       return this.cd;
    }
 
@@ -211,17 +211,17 @@ public class cmq extends cmf {
 
       @Override
       public boolean b() {
-         jd $$0 = this.a.gy();
+         jd $$0 = this.a.gx();
          return $$0 != null && this.a($$0, this.b);
       }
 
       @Override
       public void a() {
-         jd $$0 = this.a.gy();
+         jd $$0 = this.a.gx();
          if ($$0 != null && cmq.this.bT.l()) {
             if (this.a($$0, 10.0)) {
-               exa $$1 = new exa((double)$$0.u() - this.a.du(), (double)$$0.v() - this.a.dw(), (double)$$0.w() - this.a.dA()).d();
-               exa $$2 = $$1.a(10.0).b(this.a.du(), this.a.dw(), this.a.dA());
+               exc $$1 = new exc((double)$$0.u() - this.a.dt(), (double)$$0.v() - this.a.dv(), (double)$$0.w() - this.a.dz()).d();
+               exc $$2 = $$1.a(10.0).b(this.a.dt(), this.a.dv(), this.a.dz());
                cmq.this.bT.a($$2.c, $$2.d, $$2.e, this.c);
             } else {
                cmq.this.bT.a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), this.c);
@@ -230,7 +230,7 @@ public class cmq extends cmf {
       }
 
       private boolean a(jd $$0, double $$1) {
-         return !$$0.a(this.a.dn(), $$1);
+         return !$$0.a(this.a.dm(), $$1);
       }
    }
 }

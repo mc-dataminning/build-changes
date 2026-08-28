@@ -7,7 +7,7 @@ import java.util.Map;
 public class dow extends dep {
    public static final MapCodec<dow> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cti.q.fieldOf("color").forGetter(dep::b), u()).apply($$0, dow::new));
    public static final dtw b = dju.aE;
-   private static final Map<ji, ext> c = Maps.newEnumMap(
+   private static final Map<ji, exv> c = Maps.newEnumMap(
       ImmutableMap.of(
          ji.c,
          dfy.a(0.0, 0.0, 14.0, 16.0, 12.5, 16.0),
@@ -46,7 +46,7 @@ public class dow extends dep {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return c.get($$0.c(b));
    }
 

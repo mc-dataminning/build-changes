@@ -14,11 +14,11 @@ public class cah extends cam {
 
    @Override
    public boolean b() {
-      List<cov> $$0 = this.b.dP().a(cov.class, this.b.cL().g(5.0));
+      List<cov> $$0 = this.b.dO().a(cov.class, this.b.cK().g(5.0));
       boolean $$1 = false;
 
       for (cov $$2 : $$0) {
-         bsr $$3 = $$2.cR();
+         bsr $$3 = $$2.cQ();
          if ($$3 instanceof cmx && (ayo.e(((cmx)$$3).bo) > 0.0F || ayo.e(((cmx)$$3).bq) > 0.0F)) {
             $$1 = true;
             break;
@@ -40,8 +40,8 @@ public class cah extends cam {
 
    @Override
    public void d() {
-      for (cov $$1 : this.b.dP().a(cov.class, this.b.cL().g(5.0))) {
-         if ($$1.cR() instanceof cmx $$2) {
+      for (cov $$1 : this.b.dO().a(cov.class, this.b.cK().g(5.0))) {
+         if ($$1.cQ() instanceof cmx $$2) {
             this.c = $$2;
             break;
          }
@@ -60,12 +60,12 @@ public class cah extends cam {
    public void a() {
       boolean $$0 = ayo.e(this.c.bo) > 0.0F || ayo.e(this.c.bq) > 0.0F;
       float $$1 = this.d == bzv.b ? ($$0 ? 0.01F : 0.0F) : 0.015F;
-      this.b.a($$1, new exa((double)this.b.bo, (double)this.b.bp, (double)this.b.bq));
-      this.b.a(bts.a, this.b.ds());
+      this.b.a($$1, new exc((double)this.b.bo, (double)this.b.bp, (double)this.b.bq));
+      this.b.a(bts.a, this.b.dr());
       if (--this.a <= 0) {
          this.a = this.a(10);
          if (this.d == bzv.a) {
-            jd $$2 = this.c.dp().a(this.c.cI().g());
+            jd $$2 = this.c.do().a(this.c.cH().g());
             $$2 = $$2.b(0, -1, 0);
             this.b.N().a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0);
             if (this.b.f(this.c) < 4.0F) {
@@ -73,8 +73,8 @@ public class cah extends cam {
                this.d = bzv.b;
             }
          } else if (this.d == bzv.b) {
-            ji $$3 = this.c.cJ();
-            jd $$4 = this.c.dp().a($$3, 10);
+            ji $$3 = this.c.cI();
+            jd $$4 = this.c.do().a($$3, 10);
             this.b.N().a((double)$$4.u(), (double)($$4.v() - 1), (double)$$4.w(), 1.0);
             if (this.b.f(this.c) > 12.0F) {
                this.a = 0;

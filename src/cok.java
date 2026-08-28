@@ -4,15 +4,15 @@ import java.util.List;
 import java.util.Map;
 import javax.annotation.Nullable;
 
-public class cok extends eqj {
+public class cok extends eql {
    private static final String a = "raids";
    private final Map<Integer, coi> b = Maps.newHashMap();
    private final aqu c;
    private int d;
    private int e;
 
-   public static eqj.a<cok> a(aqu $$0) {
-      return new eqj.a<>(() -> new cok($$0), ($$1, $$2) -> a($$0, $$1), azw.l);
+   public static eql.a<cok> a(aqu $$0) {
+      return new eql.a<>(() -> new cok($$0), ($$1, $$2) -> a($$0, $$1), azw.l);
    }
 
    public cok(aqu $$0) {
@@ -51,7 +51,7 @@ public class cok extends eqj {
    }
 
    public static boolean a(coj $$0, coi $$1) {
-      return $$0 != null && $$1 != null && $$1.i() != null ? $$0.bE() && $$0.gy() && $$0.en() <= 2400 && $$0.dP().D_() == $$1.i().D_() : false;
+      return $$0 != null && $$1 != null && $$1.i() != null ? $$0.bE() && $$0.gx() && $$0.em() <= 2400 && $$0.dO().D_() == $$1.i().D_() : false;
    }
 
    @Nullable
@@ -61,13 +61,13 @@ public class cok extends eqj {
       } else if (this.c.ab().b(dcs.B)) {
          return null;
       } else {
-         dwy $$2 = $$0.dP().D_();
+         dwy $$2 = $$0.dO().D_();
          if (!$$2.c()) {
             return null;
          } else {
             List<cet> $$3 = this.c.y().c($$0x -> $$0x.a(awp.b), $$1, 64, ces.b.b).toList();
             int $$4 = 0;
-            exa $$5 = exa.b;
+            exc $$5 = exc.b;
 
             for (cet $$6 : $$3) {
                jd $$7 = $$6.f();

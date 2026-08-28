@@ -13,14 +13,14 @@ public abstract class deq extends dfy {
       super($$0);
    }
 
-   protected abstract Iterable<exa> b(dtc var1);
+   protected abstract Iterable<exc> b(dtc var1);
 
    public static boolean c(dtc $$0) {
-      return $$0.b(b) && ($$0.a(awe.ae) || $$0.a(awe.bk)) && $$0.c(b);
+      return $$0.b(b) && ($$0.a(awe.af) || $$0.a(awe.bl)) && $$0.c(b);
    }
 
    @Override
-   protected void a(dcw $$0, dtc $$1, eww $$2, cnp $$3) {
+   protected void a(dcw $$0, dtc $$1, ewy $$2, cnp $$3) {
       if (!$$0.B && $$3.bR() && this.d($$1)) {
          a($$0, $$1, $$2.a(), true);
       }
@@ -37,7 +37,7 @@ public abstract class deq extends dfy {
       }
    }
 
-   private static void a(dcw $$0, exa $$1, ayw $$2) {
+   private static void a(dcw $$0, exc $$1, ayw $$2) {
       float $$3 = $$2.i();
       if ($$3 < 0.3F) {
          $$0.a(lm.ae, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);

@@ -5,7 +5,7 @@ public class dhp extends dfi {
    public static final MapCodec<dhp> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dhn.a.forGetter($$0x -> $$0x.e), u()).apply($$0, dhp::new));
    private final dfy e;
    protected static final float b = 6.0F;
-   protected static final ext c = dfy.a(2.0, 0.0, 2.0, 14.0, 15.0, 14.0);
+   protected static final exv c = dfy.a(2.0, 0.0, 2.0, 14.0, 15.0, 14.0);
 
    @Override
    public MapCodec<dhp> a() {
@@ -36,7 +36,7 @@ public class dhp extends dfi {
       } else {
          this.a($$0, $$3, $$4);
          if ($$0.c(d)) {
-            $$3.a($$4, epd.c, epd.c.a($$3));
+            $$3.a($$4, epf.c, epf.c.a($$3));
          }
 
          return super.a($$0, $$1, $$2, $$3, $$4, $$5);
@@ -44,7 +44,7 @@ public class dhp extends dfi {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return c;
    }
 }

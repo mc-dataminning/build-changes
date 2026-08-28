@@ -7,12 +7,12 @@ public class cdj extends cds {
 
    @Override
    protected boolean a(btn $$0, btn $$1) {
-      return !$$0.dU().a(ccs.U) && cdy.c($$0, $$1) && cgy.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
+      return !$$0.dT().a(ccs.U) && cdy.c($$0, $$1) && cgy.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
    }
 
    private boolean e(btn $$0, btn $$1) {
-      List<UUID> $$2 = $$0.dU().c(ccs.aa).orElseGet(ArrayList::new);
-      return $$2.contains($$1.cA());
+      List<UUID> $$2 = $$0.dT().c(ccs.aa).orElseGet(ArrayList::new);
+      return $$2.contains($$1.cz());
    }
 
    @Override

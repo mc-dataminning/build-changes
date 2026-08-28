@@ -22,7 +22,7 @@ public class cbx<T extends btp> extends cam {
 
    @Override
    public boolean c() {
-      return this.a.fs();
+      return this.a.fr();
    }
 
    @Override
@@ -35,7 +35,7 @@ public class cbx<T extends btp> extends cam {
    public void e() {
       this.a.a(bsy.a, cuq.l);
       if (this.d != null) {
-         this.a.a(this.d, 1.0F, this.a.dS().i() * 0.2F + 0.9F);
+         this.a.a(this.d, 1.0F, this.a.dR().i() * 0.2F + 0.9F);
       }
    }
 }

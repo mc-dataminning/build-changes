@@ -7,7 +7,7 @@ public class ccv {
       this(new bvk($$0), $$1, $$2);
    }
 
-   public ccv(exa $$0, float $$1, int $$2) {
+   public ccv(exc $$0, float $$1, int $$2) {
       this(new bvk(jd.a((jw)$$0)), $$1, $$2);
    }
 

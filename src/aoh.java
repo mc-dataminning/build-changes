@@ -55,7 +55,7 @@ public class aoh {
 
    public interface a {
       @Nullable
-      gk filter(ejh var1, jd var2, gk var3, aqu var4);
+      gk filter(ejj var1, jd var2, gk var3, aqu var4);
    }
 
    public static enum b {

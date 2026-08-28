@@ -18,22 +18,22 @@ public class dpd extends dol implements dna {
    @Nullable
    @Override
    public dtc a(cyd $$0) {
-      epc $$1 = $$0.q().b_($$0.a());
-      return super.a($$0).a(c, Boolean.valueOf($$1.b(epd.c)));
+      epe $$1 = $$0.q().b_($$0.a());
+      return super.a($$0).a(c, Boolean.valueOf($$1.b(epf.c)));
    }
 
    @Override
    protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
       if ($$0.c(c)) {
-         $$3.a($$4, epd.c, epd.c.a($$3));
+         $$3.a($$4, epf.c, epf.c.a($$3));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected epc b_(dtc $$0) {
-      return $$0.c(c) ? epd.c.a(true) : super.b_($$0);
+   protected epe b_(dtc $$0) {
+      return $$0.c(c) ? epf.c.a(true) : super.b_($$0);
    }
 
    @Override

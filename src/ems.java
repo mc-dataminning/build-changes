@@ -1,27 +1,65 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Map;
 
-public class ems extends eno {
-   public static final MapCodec<ems> a = dtc.b.xmap(dtb.a::b, dfy::o).listOf().fieldOf("blocks").xmap(ems::new, $$0 -> $$0.e);
-   public static final ems b = new ems(ImmutableList.of(dga.pa));
-   public static final ems c = new ems(ImmutableList.of(dga.a));
-   public static final ems d = new ems(ImmutableList.of(dga.a, dga.pa));
-   private final ImmutableList<dfy> e;
+public class ems extends enq {
+   public static final MapCodec<ems> a = MapCodec.unit(() -> ems.b);
+   public static final ems b = new ems();
+   private final Map<dfy, dfy> c = ad.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(dga.m, dga.pr);
+      $$0.put(dga.cn, dga.pr);
+      $$0.put(dga.b, dga.pv);
+      $$0.put(dga.eH, dga.pw);
+      $$0.put(dga.eI, dga.pw);
+      $$0.put(dga.cQ, dga.ps);
+      $$0.put(dga.ni, dga.ps);
+      $$0.put(dga.nk, dga.pD);
+      $$0.put(dga.fj, dga.pA);
+      $$0.put(dga.ng, dga.pA);
+      $$0.put(dga.jI, dga.pu);
+      $$0.put(dga.nw, dga.pu);
+      $$0.put(dga.jE, dga.pE);
+      $$0.put(dga.jD, dga.pE);
+      $$0.put(dga.jK, dga.pz);
+      $$0.put(dga.nu, dga.pz);
+      $$0.put(dga.nK, dga.pB);
+      $$0.put(dga.nI, dga.pB);
+      $$0.put(dga.fP, dga.pt);
+      $$0.put(dga.fQ, dga.pt);
+      $$0.put(dga.eK, dga.py);
+      $$0.put(dga.eJ, dga.px);
+      $$0.put(dga.eW, dga.eX);
+   });
 
-   public ems(List<dfy> $$0) {
-      this.e = ImmutableList.copyOf($$0);
+   private ems() {
    }
 
-   @Nullable
    @Override
-   public enr.c a(dcz $$0, jd $$1, jd $$2, enr.c $$3, enr.c $$4, enn $$5) {
-      return this.e.contains($$4.b().b()) ? null : $$4;
+   public ent.c a(dcz $$0, jd $$1, jd $$2, ent.c $$3, ent.c $$4, enp $$5) {
+      dfy $$6 = this.c.get($$4.b().b());
+      if ($$6 == null) {
+         return $$4;
+      } else {
+         dtc $$7 = $$4.b();
+         dtc $$8 = $$6.o();
+         if ($$7.b(dnt.b)) {
+            $$8 = $$8.a(dnt.b, $$7.c(dnt.b));
+         }
+
+         if ($$7.b(dnt.c)) {
+            $$8 = $$8.a(dnt.c, $$7.c(dnt.c));
+         }
+
+         if ($$7.b(dnc.b)) {
+            $$8 = $$8.a(dnc.b, $$7.c(dnc.b));
+         }
+
+         return new ent.c($$4.a(), $$8, $$4.c());
+      }
    }
 
    @Override
-   protected enq<?> a() {
-      return enq.e;
+   protected ens<?> a() {
+      return ens.l;
    }
 }

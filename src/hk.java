@@ -186,7 +186,7 @@ public class hk {
                if (!($$2x instanceof btn)) {
                   return false;
                } else {
-                  eyg $$3 = $$2x.ck();
+                  eyi $$3 = $$2x.ck();
                   String $$4 = $$3 == null ? "" : $$3.b();
                   return $$4.equals($$2) != $$1;
                }
@@ -249,9 +249,9 @@ public class hk {
             $$0.a($$2x -> {
                ub $$3 = $$2x.f(new ub());
                if ($$2x instanceof aqv $$4) {
-                  cuq $$5 = $$4.fZ().f();
+                  cuq $$5 = $$4.fY().f();
                   if (!$$5.e()) {
-                     $$3.a("SelectedItem", $$5.a($$4.dR()));
+                     $$3.a("SelectedItem", $$5.a($$4.dQ()));
                   }
                }
 
@@ -281,15 +281,15 @@ public class hk {
             $$1.expect('}');
             if (!$$2.isEmpty()) {
                $$0.a($$1x -> {
-                  eye $$2x = $$1x.cP().aK();
+                  eyg $$2x = $$1x.cO().aK();
 
                   for (Entry<String, dh.d> $$3x : $$2.entrySet()) {
-                     exw $$4x = $$2x.a($$3x.getKey());
+                     exy $$4x = $$2x.a($$3x.getKey());
                      if ($$4x == null) {
                         return false;
                      }
 
-                     eya $$5 = $$2x.d($$1x, $$4x);
+                     eyc $$5 = $$2x.d($$1x, $$4x);
                      if ($$5 == null) {
                         return false;
                      }
@@ -368,7 +368,7 @@ public class hk {
                      return false;
                   } else {
                      akz $$4 = $$2x.R();
-                     ale $$5x = $$2x.cP().aE();
+                     ale $$5x = $$2x.cO().aE();
 
                      for (Entry<akr, Predicate<ai>> $$6x : $$2.entrySet()) {
                         ag $$7x = $$5x.a($$6x.getKey());
@@ -387,19 +387,19 @@ public class hk {
          }, $$0 -> !$$0.H(), wz.c("argument.entity.options.advancements.description"));
          a("predicate", $$0 -> {
             boolean $$1 = $$0.e();
-            akq<eva> $$2 = akq.a(lu.be, akr.a($$0.g()));
+            akq<evc> $$2 = akq.a(lu.be, akr.a($$0.g()));
             $$0.a($$2x -> {
-               if (!($$2x.dP() instanceof aqu)) {
+               if (!($$2x.dO() instanceof aqu)) {
                   return false;
                } else {
-                  aqu $$3 = (aqu)$$2x.dP();
-                  Optional<eva> $$4 = $$3.o().be().b().a(lu.be, $$2).map(jm::a);
+                  aqu $$3 = (aqu)$$2x.dO();
+                  Optional<evc> $$4 = $$3.o().be().b().a(lu.be, $$2).map(jm::a);
                   if ($$4.isEmpty()) {
                      return false;
                   } else {
-                     ers $$5 = new ers.a($$3).a(eul.a, $$2x).a(eul.f, $$2x.dn()).a(euk.e);
-                     erp $$6 = new erp.a($$5).a(Optional.empty());
-                     $$6.b(erp.a($$4.get()));
+                     eru $$5 = new eru.a($$3).a(eun.a, $$2x).a(eun.f, $$2x.dm()).a(eum.e);
+                     err $$6 = new err.a($$5).a(Optional.empty());
+                     $$6.b(err.a($$4.get()));
                      return $$1 ^ $$4.get().test($$6);
                   }
                }

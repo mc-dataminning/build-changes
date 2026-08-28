@@ -9,7 +9,7 @@ public class cwh extends cvl implements cvm {
       if (!$$0.B) {
          cob $$4 = new cob($$0, $$1);
          $$4.a($$3);
-         $$4.a($$1, $$1.dH(), $$1.dF(), -20.0F, 0.5F, 1.0F);
+         $$4.a($$1, $$1.dG(), $$1.dE(), -20.0F, 0.5F, 1.0F);
          $$0.b($$4);
       }
 

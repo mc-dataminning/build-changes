@@ -30,7 +30,7 @@ public class caj extends cam {
 
    @Override
    public boolean b() {
-      List<btp> $$0 = this.a.dP().a(btp.class, this.a.cL().g((double)this.i), this.b);
+      List<btp> $$0 = this.a.dO().a(btp.class, this.a.cK().g((double)this.i), this.b);
       if (!$$0.isEmpty()) {
          for (btp $$1 : $$0) {
             if (!$$1.ci()) {
@@ -51,15 +51,15 @@ public class caj extends cam {
    @Override
    public void d() {
       this.f = 0;
-      this.h = this.a.a(ept.j);
-      this.a.a(ept.j, 0.0F);
+      this.h = this.a.a(epv.j);
+      this.a.a(epv.j, 0.0F);
    }
 
    @Override
    public void e() {
       this.c = null;
       this.e.n();
-      this.a.a(ept.j, this.h);
+      this.a.a(epv.j, this.h);
    }
 
    @Override
@@ -68,19 +68,19 @@ public class caj extends cam {
          this.a.I().a(this.c, 10.0F, (float)this.a.ac());
          if (--this.f <= 0) {
             this.f = this.a(10);
-            double $$0 = this.a.du() - this.c.du();
-            double $$1 = this.a.dw() - this.c.dw();
-            double $$2 = this.a.dA() - this.c.dA();
+            double $$0 = this.a.dt() - this.c.dt();
+            double $$1 = this.a.dv() - this.c.dv();
+            double $$2 = this.a.dz() - this.c.dz();
             double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
             if (!($$3 <= (double)(this.g * this.g))) {
                this.e.a(this.c, this.d);
             } else {
                this.e.n();
                bzo $$4 = this.c.I();
-               if ($$3 <= (double)this.g || $$4.e() == this.a.du() && $$4.f() == this.a.dw() && $$4.g() == this.a.dA()) {
-                  double $$5 = this.c.du() - this.a.du();
-                  double $$6 = this.c.dA() - this.a.dA();
-                  this.e.a(this.a.du() - $$5, this.a.dw(), this.a.dA() - $$6, this.d);
+               if ($$3 <= (double)this.g || $$4.e() == this.a.dt() && $$4.f() == this.a.dv() && $$4.g() == this.a.dz()) {
+                  double $$5 = this.c.dt() - this.a.dt();
+                  double $$6 = this.c.dz() - this.a.dz();
+                  this.e.a(this.a.dt() - $$5, this.a.dv(), this.a.dz() - $$6, this.d);
                }
             }
          }

@@ -65,7 +65,7 @@ public class ddj implements dcc, dcg {
    }
 
    @Override
-   public List<ext> c(@Nullable bsr $$0, ewv $$1) {
+   public List<exv> c(@Nullable bsr $$0, ewx $$1) {
       return List.of();
    }
 
@@ -87,9 +87,9 @@ public class ddj implements dcc, dcg {
    }
 
    @Override
-   public epc b_(jd $$0) {
+   public epe b_(jd $$0) {
       if (this.s($$0)) {
-         return epd.a.g();
+         return epf.a.g();
       } else {
          duy $$1 = this.d($$0);
          return $$1.b_($$0);

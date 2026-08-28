@@ -11,8 +11,8 @@ public abstract class dhu extends dfy implements dna {
    public static final dtt d = dlm.e;
    public static final dtt e = dts.C;
    protected static final Map<ji, dtt> f = dlm.h.entrySet().stream().filter($$0 -> $$0.getKey().o().d()).collect(ad.a());
-   protected final ext[] g;
-   protected final ext[] h;
+   protected final exv[] g;
+   protected final exv[] h;
    private final Object2IntMap<dtc> i = new Object2IntOpenHashMap();
 
    protected dhu(float $$0, float $$1, float $$2, float $$3, float $$4, dtb.d $$5) {
@@ -30,39 +30,39 @@ public abstract class dhu extends dfy implements dna {
    @Override
    protected abstract MapCodec<? extends dhu> a();
 
-   protected ext[] a(float $$0, float $$1, float $$2, float $$3, float $$4) {
+   protected exv[] a(float $$0, float $$1, float $$2, float $$3, float $$4) {
       float $$5 = 8.0F - $$0;
       float $$6 = 8.0F + $$0;
       float $$7 = 8.0F - $$1;
       float $$8 = 8.0F + $$1;
-      ext $$9 = dfy.a((double)$$5, 0.0, (double)$$5, (double)$$6, (double)$$2, (double)$$6);
-      ext $$10 = dfy.a((double)$$7, (double)$$3, 0.0, (double)$$8, (double)$$4, (double)$$8);
-      ext $$11 = dfy.a((double)$$7, (double)$$3, (double)$$7, (double)$$8, (double)$$4, 16.0);
-      ext $$12 = dfy.a(0.0, (double)$$3, (double)$$7, (double)$$8, (double)$$4, (double)$$8);
-      ext $$13 = dfy.a((double)$$7, (double)$$3, (double)$$7, 16.0, (double)$$4, (double)$$8);
-      ext $$14 = exq.a($$10, $$13);
-      ext $$15 = exq.a($$11, $$12);
-      ext[] $$16 = new ext[]{
-         exq.a(),
+      exv $$9 = dfy.a((double)$$5, 0.0, (double)$$5, (double)$$6, (double)$$2, (double)$$6);
+      exv $$10 = dfy.a((double)$$7, (double)$$3, 0.0, (double)$$8, (double)$$4, (double)$$8);
+      exv $$11 = dfy.a((double)$$7, (double)$$3, (double)$$7, (double)$$8, (double)$$4, 16.0);
+      exv $$12 = dfy.a(0.0, (double)$$3, (double)$$7, (double)$$8, (double)$$4, (double)$$8);
+      exv $$13 = dfy.a((double)$$7, (double)$$3, (double)$$7, 16.0, (double)$$4, (double)$$8);
+      exv $$14 = exs.a($$10, $$13);
+      exv $$15 = exs.a($$11, $$12);
+      exv[] $$16 = new exv[]{
+         exs.a(),
          $$11,
          $$12,
          $$15,
          $$10,
-         exq.a($$11, $$10),
-         exq.a($$12, $$10),
-         exq.a($$15, $$10),
+         exs.a($$11, $$10),
+         exs.a($$12, $$10),
+         exs.a($$15, $$10),
          $$13,
-         exq.a($$11, $$13),
-         exq.a($$12, $$13),
-         exq.a($$15, $$13),
+         exs.a($$11, $$13),
+         exs.a($$12, $$13),
+         exs.a($$15, $$13),
          $$14,
-         exq.a($$11, $$14),
-         exq.a($$12, $$14),
-         exq.a($$15, $$14)
+         exs.a($$11, $$14),
+         exs.a($$12, $$14),
+         exs.a($$15, $$14)
       };
 
       for (int $$17 = 0; $$17 < 16; $$17++) {
-         $$16[$$17] = exq.a($$9, $$16[$$17]);
+         $$16[$$17] = exs.a($$9, $$16[$$17]);
       }
 
       return $$16;
@@ -74,12 +74,12 @@ public abstract class dhu extends dfy implements dna {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return this.h[this.g($$0)];
    }
 
    @Override
-   protected ext b(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv b(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return this.g[this.g($$0)];
    }
 
@@ -111,12 +111,12 @@ public abstract class dhu extends dfy implements dna {
    }
 
    @Override
-   protected epc b_(dtc $$0) {
-      return $$0.c(e) ? epd.c.a(false) : super.b_($$0);
+   protected epe b_(dtc $$0) {
+      return $$0.c(e) ? epf.c.a(false) : super.b_($$0);
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return false;
    }
 

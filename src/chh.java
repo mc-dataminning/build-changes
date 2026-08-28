@@ -20,14 +20,14 @@ public abstract class chh extends chi {
    }
 
    public static buv.a s() {
-      return gL().a(buw.v, 0.175F).a(buw.o, 0.5);
+      return gK().a(buw.v, 0.175F).a(buw.o, 0.5);
    }
 
    public boolean t() {
       return this.ao.a(ca);
    }
 
-   public void w(boolean $$0) {
+   public void x(boolean $$0) {
       this.ao.a(ca, $$0);
    }
 
@@ -37,14 +37,14 @@ public abstract class chh extends chi {
    }
 
    @Override
-   protected void eA() {
-      super.eA();
+   protected void ez() {
+      super.ez();
       if (this.t()) {
-         if (!this.dP().B) {
+         if (!this.dO().B) {
             this.a(dga.cv);
          }
 
-         this.w(false);
+         this.x(false);
       }
    }
 
@@ -60,7 +60,7 @@ public abstract class chh extends chi {
             if (!$$3.e()) {
                ub $$4 = new ub();
                $$4.a("Slot", (byte)($$2 - 1));
-               $$1.add($$3.b(this.dR(), $$4));
+               $$1.add($$3.b(this.dQ(), $$4));
             }
          }
 
@@ -71,8 +71,8 @@ public abstract class chh extends chi {
    @Override
    public void a(ub $$0) {
       super.a($$0);
-      this.w($$0.q("ChestedHorse"));
-      this.gI();
+      this.x($$0.q("ChestedHorse"));
+      this.gH();
       if (this.t()) {
          uh $$1 = $$0.c("Items", 10);
 
@@ -80,12 +80,12 @@ public abstract class chh extends chi {
             ub $$3 = $$1.a($$2);
             int $$4 = $$3.f("Slot") & 255;
             if ($$4 < this.cu.b() - 1) {
-               this.cu.a($$4 + 1, cuq.a(this.dR(), (uy)$$3).orElse(cuq.l));
+               this.cu.a($$4 + 1, cuq.a(this.dQ(), (uy)$$3).orElse(cuq.l));
             }
          }
       }
 
-      this.gJ();
+      this.gI();
    }
 
    @Override
@@ -100,15 +100,15 @@ public abstract class chh extends chi {
          public boolean a(cuq $$0) {
             if ($$0.e()) {
                if (chh.this.t()) {
-                  chh.this.w(false);
-                  chh.this.gI();
+                  chh.this.x(false);
+                  chh.this.gH();
                }
 
                return true;
             } else if ($$0.a(cut.eN)) {
                if (!chh.this.t()) {
-                  chh.this.w(true);
-                  chh.this.gI();
+                  chh.this.x(true);
+                  chh.this.gH();
                }
 
                return true;
@@ -121,7 +121,7 @@ public abstract class chh extends chi {
 
    @Override
    public bqr b(cmx $$0, bqq $$1) {
-      boolean $$2 = !this.o_() && this.gA() && $$0.fO();
+      boolean $$2 = !this.o_() && this.gz() && $$0.fN();
       if (!this.bT() && !$$2) {
          cuq $$3 = $$0.b($$1);
          if (!$$3.e()) {
@@ -129,14 +129,14 @@ public abstract class chh extends chi {
                return this.c($$0, $$3);
             }
 
-            if (!this.gA()) {
-               this.gR();
-               return bqr.a(this.dP().B);
+            if (!this.gz()) {
+               this.gQ();
+               return bqr.a(this.dO().B);
             }
 
             if (!this.t() && $$3.a(cut.eN)) {
                this.d($$0, $$3);
-               return bqr.a(this.dP().B);
+               return bqr.a(this.dO().B);
             }
          }
 
@@ -147,10 +147,10 @@ public abstract class chh extends chi {
    }
 
    private void d(cmx $$0, cuq $$1) {
-      this.w(true);
+      this.x(true);
       this.x();
       $$1.a(1, $$0);
-      this.gI();
+      this.gH();
    }
 
    @Override

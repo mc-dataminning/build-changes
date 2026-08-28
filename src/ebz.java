@@ -77,7 +77,7 @@ public class ebz {
 
    protected static boolean c(dcx $$0, jd $$1) {
       dtc $$2 = $$0.a_($$1);
-      if ($$2.a(awe.bs)) {
+      if ($$2.a(awe.bt)) {
          $$0.a($$1, dga.su.o(), 2);
          return true;
       } else {
@@ -94,7 +94,7 @@ public class ebz {
    }
 
    public static boolean b(dtc $$0) {
-      return $$0.a(dga.su) || $$0.a(awe.bs);
+      return $$0.a(dga.su) || $$0.a(awe.bt);
    }
 
    public static boolean c(dtc $$0) {

@@ -11,7 +11,7 @@ public class byc extends bvh<cmk> {
    }
 
    protected boolean a(aqu $$0, cmk $$1) {
-      return bvj.a($$1.dU(), ccs.q, bsx.bj);
+      return bvj.a($$1.dT(), ccs.q, bsx.bj);
    }
 
    protected boolean a(aqu $$0, cmk $$1, long $$2) {
@@ -19,21 +19,21 @@ public class byc extends bvh<cmk> {
    }
 
    protected void b(aqu $$0, cmk $$1, long $$2) {
-      cmk $$3 = (cmk)$$1.dU().c(ccs.q).get();
+      cmk $$3 = (cmk)$$1.dT().c(ccs.q).get();
       bvj.a($$1, $$3, 0.5F, 2);
       this.c = a($$1, $$3);
    }
 
    protected void c(aqu $$0, cmk $$1, long $$2) {
-      cmk $$3 = (cmk)$$1.dU().c(ccs.q).get();
+      cmk $$3 = (cmk)$$1.dT().c(ccs.q).get();
       if (!($$1.g($$3) > 5.0)) {
          bvj.a($$1, $$3, 0.5F, 2);
          $$1.a($$0, $$3, $$2);
-         if ($$1.gD() && ($$1.gw().b() == cmn.g || $$3.gE())) {
+         if ($$1.gC() && ($$1.gv().b() == cmn.g || $$3.gD())) {
             a($$1, cmk.cd.keySet(), $$3);
          }
 
-         if ($$3.gw().b() == cmn.g && $$1.x().a_(cut.pw) > cut.pw.q() / 2) {
+         if ($$3.gv().b() == cmn.g && $$1.x().a_(cut.pw) > cut.pw.q() / 2) {
             a($$1, ImmutableSet.of(cut.pw), $$3);
          }
 
@@ -44,12 +44,12 @@ public class byc extends bvh<cmk> {
    }
 
    protected void d(aqu $$0, cmk $$1, long $$2) {
-      $$1.dU().b(ccs.q);
+      $$1.dT().b(ccs.q);
    }
 
    private static Set<cul> a(cmk $$0, cmk $$1) {
-      ImmutableSet<cul> $$2 = $$1.gw().b().d();
-      ImmutableSet<cul> $$3 = $$0.gw().b().d();
+      ImmutableSet<cul> $$2 = $$1.gv().b().d();
+      ImmutableSet<cul> $$3 = $$0.gv().b().d();
       return $$2.stream().filter($$1x -> !$$3.contains($$1x)).collect(Collectors.toSet());
    }
 
@@ -89,7 +89,7 @@ public class byc extends bvh<cmk> {
       }
 
       if (!$$4.e()) {
-         bvj.a($$0, $$4, $$2.dn());
+         bvj.a($$0, $$4, $$2.dm());
       }
    }
 }

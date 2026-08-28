@@ -12,7 +12,7 @@ public class bzk implements bzl {
 
    public void a() {
       if (this.f()) {
-         this.a.aY = this.a.dF();
+         this.a.aY = this.a.dE();
          this.c();
          this.f = this.a.ba;
          this.e = 0;
@@ -48,12 +48,12 @@ public class bzk implements bzl {
    }
 
    private boolean e() {
-      return !(this.a.cU() instanceof btp);
+      return !(this.a.cT() instanceof btp);
    }
 
    private boolean f() {
-      double $$0 = this.a.du() - this.a.L;
-      double $$1 = this.a.dA() - this.a.N;
+      double $$0 = this.a.dt() - this.a.L;
+      double $$1 = this.a.dz() - this.a.N;
       return $$0 * $$0 + $$1 * $$1 > 2.5000003E-7F;
    }
 }

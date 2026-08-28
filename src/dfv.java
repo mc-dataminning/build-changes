@@ -20,7 +20,7 @@ public class dfv extends dju implements dgb, dna {
    private static final int g = 6;
    private static final int h = 11;
    private static final int i = 13;
-   private static final Map<dun, ext> j = ImmutableMap.of(
+   private static final Map<dun, exv> j = ImmutableMap.of(
       dun.a,
       dfy.a(0.0, 11.0, 0.0, 16.0, 15.0, 16.0),
       dun.b,
@@ -28,13 +28,13 @@ public class dfv extends dju implements dgb, dna {
       dun.c,
       dfy.a(0.0, 11.0, 0.0, 16.0, 13.0, 16.0),
       dun.d,
-      exq.a()
+      exs.a()
    );
-   private static final ext k = dfy.a(0.0, 13.0, 0.0, 16.0, 16.0, 16.0);
-   private static final Map<ji, ext> l = ImmutableMap.of(
-      ji.c, exq.b(dfw.b, k, exe.e), ji.d, exq.b(dfw.c, k, exe.e), ji.f, exq.b(dfw.d, k, exe.e), ji.e, exq.b(dfw.e, k, exe.e)
+   private static final exv k = dfy.a(0.0, 13.0, 0.0, 16.0, 16.0, 16.0);
+   private static final Map<ji, exv> l = ImmutableMap.of(
+      ji.c, exs.b(dfw.b, k, exg.e), ji.d, exs.b(dfw.c, k, exg.e), ji.f, exs.b(dfw.d, k, exg.e), ji.e, exs.b(dfw.e, k, exg.e)
    );
-   private final Map<dtc, ext> m;
+   private final Map<dtc, exv> m;
 
    @Override
    public MapCodec<dfv> a() {
@@ -47,8 +47,8 @@ public class dfv extends dju implements dgb, dna {
       this.m = this.a(dfv::m);
    }
 
-   private static ext m(dtc $$0) {
-      return exq.a(j.get($$0.c(c)), l.get($$0.c(aE)));
+   private static exv m(dtc $$0) {
+      return exs.a(j.get($$0.c(c)), l.get($$0.c(aE)));
    }
 
    public static void a(dcx $$0, ayw $$1, jd $$2, ji $$3) {
@@ -80,26 +80,26 @@ public class dfv extends dju implements dgb, dna {
       return !$$0.s($$1) && n($$2);
    }
 
-   protected static boolean a(dcx $$0, jd $$1, epc $$2, ji $$3) {
-      dtc $$4 = dga.sD.o().a(b, Boolean.valueOf($$2.a(epd.c))).a(aE, $$3);
+   protected static boolean a(dcx $$0, jd $$1, epe $$2, ji $$3) {
+      dtc $$4 = dga.sD.o().a(b, Boolean.valueOf($$2.a(epf.c))).a(aE, $$3);
       return $$0.a($$1, $$4, 3);
    }
 
    @Override
-   protected void a(dcw $$0, dtc $$1, eww $$2, cnp $$3) {
+   protected void a(dcw $$0, dtc $$1, ewy $$2, cnp $$3) {
       this.a($$1, $$0, $$2.a(), dun.d, avp.hB);
    }
 
    @Override
-   protected epc b_(dtc $$0) {
-      return $$0.c(b) ? epd.c.a(false) : super.b_($$0);
+   protected epe b_(dtc $$0) {
+      return $$0.c(b) ? epf.c.a(false) : super.b_($$0);
    }
 
    @Override
    protected boolean a(dtc $$0, dcz $$1, jd $$2) {
       jd $$3 = $$2.e();
       dtc $$4 = $$1.a_($$3);
-      return $$4.a(this) || $$4.a(dga.sE) || $$4.a(awe.by);
+      return $$4.a(this) || $$4.a(dga.sE) || $$4.a(awe.bz);
    }
 
    @Override
@@ -108,7 +108,7 @@ public class dfv extends dju implements dgb, dna {
          return dga.a.o();
       } else {
          if ($$0.c(b)) {
-            $$3.a($$4, epd.c, epd.c.a($$3));
+            $$3.a($$4, epf.c, epf.c.a($$3));
          }
 
          return $$1 == ji.b && $$2.a(this) ? dga.sE.l($$0) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
@@ -175,7 +175,7 @@ public class dfv extends dju implements dgb, dna {
    }
 
    private static boolean a(jd $$0, bsr $$1) {
-      return $$1.aF() && $$1.dn().d > (double)((float)$$0.v() + 0.6875F);
+      return $$1.aF() && $$1.dm().d > (double)((float)$$0.v() + 0.6875F);
    }
 
    private void a(dtc $$0, dcw $$1, jd $$2, dun $$3, @Nullable avo $$4) {
@@ -206,21 +206,21 @@ public class dfv extends dju implements dgb, dna {
    }
 
    @Override
-   protected ext b(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv b(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return j.get($$0.c(c));
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return this.m.get($$0);
    }
 
    @Override
    public dtc a(cyd $$0) {
       dtc $$1 = $$0.q().a_($$0.a().e());
-      epc $$2 = $$0.q().b_($$0.a());
+      epe $$2 = $$0.q().b_($$0.a());
       boolean $$3 = $$1.a(dga.sD) || $$1.a(dga.sE);
-      return this.o().a(b, Boolean.valueOf($$2.a(epd.c))).a(aE, $$3 ? $$1.c(aE) : $$0.g().g());
+      return this.o().a(b, Boolean.valueOf($$2.a(epf.c))).a(aE, $$3 ? $$1.c(aE) : $$0.g().g());
    }
 
    @Override

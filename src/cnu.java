@@ -27,24 +27,24 @@ public class cnu extends cnw {
          lk $$1 = this.v();
 
          for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dP().a($$1, this.du(), this.dw(), this.dA(), 0.0, 0.0, 0.0);
+            this.dO().a($$1, this.dt(), this.dv(), this.dz(), 0.0, 0.0, 0.0);
          }
       }
    }
 
    @Override
-   protected void a(ewx $$0) {
+   protected void a(ewz $$0) {
       super.a($$0);
       bsr $$1 = $$0.a();
       int $$2 = $$1 instanceof cjm ? 3 : 0;
-      $$1.a(this.dQ().b(this, this.s()), (float)$$2);
+      $$1.a(this.dP().b(this, this.s()), (float)$$2);
    }
 
    @Override
-   protected void a(ewy $$0) {
+   protected void a(exa $$0) {
       super.a($$0);
-      if (!this.dP().B) {
-         this.dP().a(this, (byte)3);
+      if (!this.dO().B) {
+         this.dO().a(this, (byte)3);
          this.aq();
       }
    }

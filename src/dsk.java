@@ -103,7 +103,7 @@ public class dsk extends dqh {
          ayw $$5 = $$0.z;
 
          for (int $$6 = 0; $$6 < 20; $$6++) {
-            exa $$7 = b($$1, $$5);
+            exc $$7 = b($$1, $$5);
             $$0.a(lm.ae, $$7.a(), $$7.b(), $$7.c(), 0.0, 0.0, 0.0);
             $$0.a($$4, $$7.a(), $$7.b(), $$7.c(), 0.0, 0.0, 0.0);
          }
@@ -113,8 +113,8 @@ public class dsk extends dqh {
          ayw $$3 = $$0.z;
 
          for (int $$4 = 0; $$4 < 20; $$4++) {
-            exa $$5 = a($$1, $$3);
-            exa $$6 = new exa($$3.k() * 0.02, $$3.k() * 0.02, $$3.k() * 0.02);
+            exc $$5 = a($$1, $$3);
+            exc $$6 = new exc($$3.k() * 0.02, $$3.k() * 0.02, $$3.k() * 0.02);
             $$0.a($$2, $$5.a(), $$5.b(), $$5.c(), $$6.a(), $$6.b(), $$6.c());
          }
       }
@@ -122,7 +122,7 @@ public class dsk extends dqh {
       private static void a(dcw $$0, jd $$1, dso $$2, lk $$3) {
          ayw $$4 = $$0.E_();
          if ($$4.i() <= 0.5F) {
-            exa $$5 = b($$1, $$4);
+            exc $$5 = b($$1, $$4);
             $$0.a(lm.ae, $$5.a(), $$5.b(), $$5.c(), 0.0, 0.0, 0.0);
             if (a($$2)) {
                $$0.a($$3, $$5.a(), $$5.b(), $$5.c(), 0.0, 0.0, 0.0);
@@ -130,13 +130,13 @@ public class dsk extends dqh {
          }
       }
 
-      private static void a(dcw $$0, exa $$1, cmx $$2) {
+      private static void a(dcw $$0, exc $$1, cmx $$2) {
          ayw $$3 = $$0.z;
-         exa $$4 = $$1.a($$2.dn().b(0.0, (double)($$2.dl() / 2.0F), 0.0));
+         exc $$4 = $$1.a($$2.dm().b(0.0, (double)($$2.dk() / 2.0F), 0.0));
          int $$5 = ayo.a($$3, 2, 5);
 
          for (int $$6 = 0; $$6 < $$5; $$6++) {
-            exa $$7 = $$4.a($$3, 1.0F);
+            exc $$7 = $$4.a($$3, 1.0F);
             $$0.a(lm.ba, $$1.a(), $$1.b(), $$1.c(), $$7.a(), $$7.b(), $$7.c());
          }
       }
@@ -144,7 +144,7 @@ public class dsk extends dqh {
       private static void a(dcw $$0, jd $$1, dtc $$2, dso $$3) {
          Set<UUID> $$4 = $$3.d();
          if (!$$4.isEmpty()) {
-            exa $$5 = a($$1, $$2.c(dou.c));
+            exc $$5 = a($$1, $$2.c(dou.c));
 
             for (UUID $$6 : $$4) {
                cmx $$7 = $$0.b($$6);
@@ -156,7 +156,7 @@ public class dsk extends dqh {
       }
 
       private static boolean a(jd $$0, dso $$1, cmx $$2) {
-         return $$2.dp().j($$0) <= ayo.k($$1.e());
+         return $$2.do().j($$0) <= ayo.k($$1.e());
       }
 
       private static void a(dcw $$0, jd $$1, dso $$2) {
@@ -172,16 +172,16 @@ public class dsk extends dqh {
          return $$0.b();
       }
 
-      private static exa a(jd $$0, ayw $$1) {
-         return exa.a($$0).b(ayo.a($$1, 0.4, 0.6), ayo.a($$1, 0.4, 0.6), ayo.a($$1, 0.4, 0.6));
+      private static exc a(jd $$0, ayw $$1) {
+         return exc.a($$0).b(ayo.a($$1, 0.4, 0.6), ayo.a($$1, 0.4, 0.6), ayo.a($$1, 0.4, 0.6));
       }
 
-      private static exa b(jd $$0, ayw $$1) {
-         return exa.a($$0).b(ayo.a($$1, 0.1, 0.9), ayo.a($$1, 0.25, 0.75), ayo.a($$1, 0.1, 0.9));
+      private static exc b(jd $$0, ayw $$1) {
+         return exc.a($$0).b(ayo.a($$1, 0.1, 0.9), ayo.a($$1, 0.25, 0.75), ayo.a($$1, 0.1, 0.9));
       }
 
-      private static exa a(jd $$0, ji $$1) {
-         return exa.c($$0).b((double)$$1.j() * 0.5, 1.75, (double)$$1.l() * 0.5);
+      private static exc a(jd $$0, ji $$1) {
+         return exc.c($$0).b((double)$$1.j() * 0.5, 1.75, (double)$$1.l() * 0.5);
       }
    }
 
@@ -251,9 +251,9 @@ public class dsk extends dqh {
          }
       }
 
-      private static cuq a(aqu $$0, jd $$1, akq<eru> $$2) {
-         eru $$3 = $$0.o().be().b($$2);
-         ers $$4 = new ers.a($$0).a(eul.f, exa.b($$1)).a(euk.l);
+      private static cuq a(aqu $$0, jd $$1, akq<erw> $$2) {
+         erw $$3 = $$0.o().be().b($$2);
+         eru $$4 = new eru.a($$0).a(eun.f, exc.b($$1)).a(eum.l);
          List<cuq> $$5 = $$3.a($$4, $$0.E_());
          return $$5.isEmpty() ? cuq.l : ad.a($$5, $$0.E_());
       }
@@ -266,13 +266,13 @@ public class dsk extends dqh {
       }
 
       private static List<cuq> a(aqu $$0, dsm $$1, jd $$2, cmx $$3) {
-         eru $$4 = $$0.o().be().b($$1.b());
-         ers $$5 = new ers.a($$0).a(eul.f, exa.b($$2)).a($$3.gv()).a(eul.a, $$3).a(euk.l);
+         erw $$4 = $$0.o().be().b($$1.b());
+         eru $$5 = new eru.a($$0).a(eun.f, exc.b($$2)).a($$3.gu()).a(eun.a, $$3).a(eum.l);
          return $$4.a($$5);
       }
 
       private static boolean a(dsm $$0, dsp $$1) {
-         return $$0.b() != erl.a && !$$0.e().e() && $$1 != dsp.a;
+         return $$0.b() != ern.a && !$$0.e().e() && $$1 != dsp.a;
       }
 
       private static boolean a(dsm $$0, cuq $$1) {

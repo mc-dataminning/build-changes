@@ -1,7 +1,7 @@
 import com.mojang.serialization.Codec;
 
 public class ebt extends ebs {
-   public ebt(Codec<eeo> $$0) {
+   public ebt(Codec<eep> $$0) {
       super($$0);
    }
 

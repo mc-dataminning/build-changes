@@ -1,53 +1,81 @@
-import com.mojang.authlib.GameProfile;
 import javax.annotation.Nullable;
 
-public interface eyd {
-   String a_ = "*";
-   eyd cA = new eyd() {
-      @Override
-      public String cC() {
-         return "*";
-      }
-   };
+public class eyd implements eyc {
+   private static final String a = "Score";
+   private static final String b = "Locked";
+   private static final String c = "display";
+   private static final String d = "format";
+   private int e;
+   private boolean f = true;
+   @Nullable
+   private wz g;
+   @Nullable
+   private yp h;
 
-   String cC();
+   @Override
+   public int a() {
+      return this.e;
+   }
+
+   public void a(int $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   public boolean b() {
+      return this.f;
+   }
+
+   public void a(boolean $$0) {
+      this.f = $$0;
+   }
 
    @Nullable
-   default wz S_() {
-      return null;
+   public wz d() {
+      return this.g;
    }
 
-   default wz gZ() {
-      wz $$0 = this.S_();
-      return $$0 != null ? $$0.f().a($$0x -> $$0x.a(new xf(xf.a.a, wz.b(this.cC())))) : wz.b(this.cC());
+   public void a(@Nullable wz $$0) {
+      this.g = $$0;
    }
 
-   static eyd c(final String $$0) {
-      if ($$0.equals("*")) {
-         return cA;
-      } else {
-         final wz $$1 = wz.b($$0);
-         return new eyd() {
-            @Override
-            public String cC() {
-               return $$0;
-            }
+   @Nullable
+   @Override
+   public yp c() {
+      return this.h;
+   }
 
-            @Override
-            public wz gZ() {
-               return $$1;
-            }
-         };
+   public void b(@Nullable yp $$0) {
+      this.h = $$0;
+   }
+
+   public ub a(jo.a $$0) {
+      ub $$1 = new ub();
+      $$1.a("Score", this.e);
+      $$1.a("Locked", this.f);
+      if (this.g != null) {
+         $$1.a("display", wz.a.a(this.g, $$0));
       }
+
+      if (this.h != null) {
+         yr.b.encodeStart($$0.a(up.a), this.h).ifSuccess($$1x -> $$1.a("format", $$1x));
+      }
+
+      return $$1;
    }
 
-   static eyd a(GameProfile $$0) {
-      final String $$1 = $$0.getName();
-      return new eyd() {
-         @Override
-         public String cC() {
-            return $$1;
-         }
-      };
+   public static eyd a(ub $$0, jo.a $$1) {
+      eyd $$2 = new eyd();
+      $$2.e = $$0.h("Score");
+      $$2.f = $$0.q("Locked");
+      if ($$0.b("display", 8)) {
+         $$2.g = wz.a.a($$0.l("display"), $$1);
+      }
+
+      if ($$0.b("format", 10)) {
+         yr.b.parse($$1.a(up.a), $$0.c("format")).ifSuccess($$1x -> $$2.h = $$1x);
+      }
+
+      return $$2;
    }
 }

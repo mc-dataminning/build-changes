@@ -60,7 +60,7 @@ public class ceq implements dcj {
    private boolean a(aqu $$0) {
       for (cmx $$1 : $$0.x()) {
          if (!$$1.R_()) {
-            jd $$2 = $$1.dp();
+            jd $$2 = $$1.do();
             if ($$0.c($$2) && !$$0.t($$2).a(awd.af)) {
                for (int $$3 = 0; $$3 < 10; $$3++) {
                   float $$4 = $$0.z.i() * (float) (Math.PI * 2);
@@ -83,12 +83,12 @@ public class ceq implements dcj {
    }
 
    private void b(aqu $$0) {
-      exa $$1 = this.a($$0, new jd(this.f, this.g, this.h));
+      exc $$1 = this.a($$0, new jd(this.f, this.g, this.h));
       if ($$1 != null) {
          ckw $$2;
          try {
             $$2 = new ckw($$0);
-            $$2.a($$0, $$0.d_($$2.dp()), btr.h, null);
+            $$2.a($$0, $$0.d_($$2.do()), btr.h, null);
          } catch (Exception var5) {
             a.warn("Failed to create zombie for village siege at {}", $$1, var5);
             return;
@@ -100,14 +100,14 @@ public class ceq implements dcj {
    }
 
    @Nullable
-   private exa a(aqu $$0, jd $$1) {
+   private exc a(aqu $$0, jd $$1) {
       for (int $$2 = 0; $$2 < 10; $$2++) {
          int $$3 = $$1.u() + $$0.z.a(16) - 8;
          int $$4 = $$1.w() + $$0.z.a(16) - 8;
          int $$5 = $$0.a(dyy.a.b, $$3, $$4);
          jd $$6 = new jd($$3, $$5, $$4);
          if ($$0.c($$6) && ckd.b(bsx.bu, $$0, btr.h, $$6, $$0.z)) {
-            return exa.c($$6);
+            return exc.c($$6);
          }
       }
 

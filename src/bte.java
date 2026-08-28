@@ -56,7 +56,7 @@ public class bte extends cgd {
          this.c($$0 - 1);
       }
 
-      this.dP().a(lm.aQ, this.d(0.6), this.dx(), this.g(0.6), 0.0, 0.0, 0.0);
+      this.dO().a(lm.aQ, this.d(0.6), this.dw(), this.g(0.6), 0.0, 0.0, 0.0);
    }
 
    @Override

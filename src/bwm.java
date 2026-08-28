@@ -9,7 +9,7 @@ public class bwm extends bvh<cmk> {
    }
 
    protected boolean a(aqu $$0, cmk $$1) {
-      cmx $$2 = $$1.gl();
+      cmx $$2 = $$1.gk();
       return $$1.bE() && $$2 != null && !$$1.bf() && !$$1.U && $$1.g($$2) <= 16.0 && $$2.cd != null;
    }
 
@@ -22,7 +22,7 @@ public class bwm extends bvh<cmk> {
    }
 
    protected void c(aqu $$0, cmk $$1, long $$2) {
-      buq<?> $$3 = $$1.dU();
+      buq<?> $$3 = $$1.dT();
       $$3.b(ccs.m);
       $$3.b(ccs.n);
    }
@@ -37,8 +37,8 @@ public class bwm extends bvh<cmk> {
    }
 
    private void a(cmk $$0) {
-      buq<?> $$1 = $$0.dU();
-      $$1.a(ccs.m, new ccv(new bvs($$0.gl(), false), this.c, 2));
-      $$1.a(ccs.n, new bvs($$0.gl(), true));
+      buq<?> $$1 = $$0.dT();
+      $$1.a(ccs.m, new ccv(new bvs($$0.gk(), false), this.c, 2));
+      $$1.a(ccs.n, new bvs($$0.gk(), true));
    }
 }

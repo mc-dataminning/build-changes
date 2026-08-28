@@ -1,66 +1,99 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.List;
-import org.apache.commons.lang3.Validate;
+import javax.annotation.Nullable;
 
-public class gtx implements JsonDeserializer<gtw> {
-   private static final bpu a = bps.a(1.0F);
+public class gtx implements gvh<gtx> {
+   public static final akk a = new akk("sounds", ".ogg");
+   private final akr b;
+   private final bpz c;
+   private final bpz d;
+   private final int e;
+   private final gtx.a f;
+   private final boolean g;
+   private final boolean h;
+   private final int i;
 
-   public gtw a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-      JsonObject $$3 = aye.m($$0, "entry");
-      boolean $$4 = aye.a($$3, "replace", false);
-      String $$5 = aye.a($$3, "subtitle", null);
-      List<gtv> $$6 = this.a($$3);
-      return new gtw($$6, $$4, $$5);
+   public gtx(akr $$0, bpz $$1, bpz $$2, int $$3, gtx.a $$4, boolean $$5, boolean $$6, int $$7) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
    }
 
-   private List<gtv> a(JsonObject $$0) {
-      List<gtv> $$1 = Lists.newArrayList();
-      if ($$0.has("sounds")) {
-         JsonArray $$2 = aye.v($$0, "sounds");
+   public akr a() {
+      return this.b;
+   }
 
-         for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-            JsonElement $$4 = $$2.get($$3);
-            if (aye.a($$4)) {
-               akr $$5 = akr.a(aye.a($$4, "sound"));
-               $$1.add(new gtv($$5, a, a, 1, gtv.a.a, false, false, 16));
-            } else {
-               $$1.add(this.b(aye.m($$4, "sound")));
+   public akr b() {
+      return a.a(this.b);
+   }
+
+   public bpz c() {
+      return this.c;
+   }
+
+   public bpz d() {
+      return this.d;
+   }
+
+   @Override
+   public int e() {
+      return this.e;
+   }
+
+   public gtx a(ayw $$0) {
+      return this;
+   }
+
+   @Override
+   public void a(gvc $$0) {
+      if (this.h) {
+         $$0.a(this);
+      }
+   }
+
+   public gtx.a f() {
+      return this.f;
+   }
+
+   public boolean g() {
+      return this.g;
+   }
+
+   public boolean h() {
+      return this.h;
+   }
+
+   public int i() {
+      return this.i;
+   }
+
+   @Override
+   public String toString() {
+      return "Sound[" + this.b + "]";
+   }
+
+   public static enum a {
+      a("file"),
+      b("event");
+
+      private final String c;
+
+      private a(final String $$0) {
+         this.c = $$0;
+      }
+
+      @Nullable
+      public static gtx.a a(String $$0) {
+         for (gtx.a $$1 : values()) {
+            if ($$1.c.equals($$0)) {
+               return $$1;
             }
          }
+
+         return null;
       }
-
-      return $$1;
-   }
-
-   private gtv b(JsonObject $$0) {
-      akr $$1 = akr.a(aye.i($$0, "name"));
-      gtv.a $$2 = this.a($$0, gtv.a.a);
-      float $$3 = aye.a($$0, "volume", 1.0F);
-      Validate.isTrue($$3 > 0.0F, "Invalid volume", new Object[0]);
-      float $$4 = aye.a($$0, "pitch", 1.0F);
-      Validate.isTrue($$4 > 0.0F, "Invalid pitch", new Object[0]);
-      int $$5 = aye.a($$0, "weight", 1);
-      Validate.isTrue($$5 > 0, "Invalid weight", new Object[0]);
-      boolean $$6 = aye.a($$0, "preload", false);
-      boolean $$7 = aye.a($$0, "stream", false);
-      int $$8 = aye.a($$0, "attenuation_distance", 16);
-      return new gtv($$1, bps.a($$3), bps.a($$4), $$5, $$2, $$7, $$6, $$8);
-   }
-
-   private gtv.a a(JsonObject $$0, gtv.a $$1) {
-      gtv.a $$2 = $$1;
-      if ($$0.has("type")) {
-         $$2 = gtv.a.a(aye.i($$0, "type"));
-         Validate.notNull($$2, "Invalid type", new Object[0]);
-      }
-
-      return $$2;
    }
 }

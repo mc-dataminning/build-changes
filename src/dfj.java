@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 public class dfj extends dfg {
    public static final MapCodec<dfj> b = b(dfj::new);
    public static final dtw c = dju.aE;
-   private static final Map<ji, ext> e = Maps.newEnumMap(
+   private static final Map<ji, exv> e = Maps.newEnumMap(
       ImmutableMap.of(
          ji.c,
          dfy.a(0.0, 4.0, 5.0, 16.0, 12.0, 16.0),
@@ -31,7 +31,7 @@ public class dfj extends dfg {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return e.get($$0.c(c));
    }
 
@@ -53,7 +53,7 @@ public class dfj extends dfg {
    @Override
    protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
       if ($$0.c(d)) {
-         $$3.a($$4, epd.c, epd.c.a($$3));
+         $$3.a($$4, epf.c, epf.c.a($$3));
       }
 
       return $$1.g() == $$0.c(c) && !$$0.a($$3, $$4) ? dga.a.o() : $$0;

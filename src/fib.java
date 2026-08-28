@@ -1,46 +1,38 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.BooleanSupplier;
 
-public abstract class fib extends fii {
-   protected static final int e = 2;
-   private static final fjx a = new fjx(akr.b("widget/button"), akr.b("widget/button_disabled"), akr.b("widget/button_highlighted"));
+public class fib {
+   public static final float a = 200.0F;
+   private final List<fib.a> b = new ArrayList<>();
 
-   public fib(int $$0, int $$1, int $$2, int $$3, wz $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+   public fib a(fib.a $$0) {
+      this.b.add($$0);
+      return this;
    }
 
-   public abstract void b();
-
-   @Override
-   protected void b(fhx $$0, int $$1, int $$2, float $$3) {
-      fgm $$4 = fgm.Q();
-      $$0.a(1.0F, 1.0F, 1.0F, this.l);
-      RenderSystem.enableBlend();
-      RenderSystem.enableDepthTest();
-      $$0.a(a.a(this.j, this.B()), this.D(), this.E(), this.y(), this.w());
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      int $$5 = this.j ? 16777215 : 10526880;
-      this.a($$0, $$4.h, $$5 | ayo.f(this.l * 255.0F) << 24);
+   public fib a(fib $$0, BooleanSupplier $$1) {
+      return this.a(($$2, $$3) -> {
+         if ($$1.getAsBoolean()) {
+            $$0.b($$2, $$3);
+         }
+      });
    }
 
-   public void a(fhx $$0, fhv $$1, int $$2) {
-      this.a($$0, $$1, 2, $$2);
+   public void a(fhz $$0, fgf $$1) {
+      $$0.c().a();
+      this.b($$0, $$1);
+      $$0.c().b();
    }
 
-   @Override
-   public void a(double $$0, double $$1) {
-      this.b();
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.j || !this.k) {
-         return false;
-      } else if (fml.a($$0)) {
-         this.a(fgm.Q().aj());
-         this.b();
-         return true;
-      } else {
-         return false;
+   private void b(fhz $$0, fgf $$1) {
+      for (fib.a $$2 : this.b) {
+         $$2.render($$0, $$1);
+         $$0.c().a(0.0F, 0.0F, 200.0F);
       }
+   }
+
+   public interface a {
+      void render(fhz var1, fgf var2);
    }
 }

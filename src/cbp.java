@@ -7,7 +7,7 @@ public class cbp extends cam {
 
    @Override
    public boolean b() {
-      return this.a.dP().R() && this.a.a(bsy.f).e() && cek.a(this.a);
+      return this.a.dO().R() && this.a.a(bsy.f).e() && cek.a(this.a);
    }
 
    @Override

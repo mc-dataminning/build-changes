@@ -1,16 +1,13 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 
-public interface ehx<P extends ehw> {
-   ehx<ehv> a = a("constant", ehv.b);
-   ehx<ehz> b = a("uniform", ehz.a);
-   ehx<ehu> c = a("biased_to_bottom", ehu.a);
-   ehx<eia> d = a("very_biased_to_bottom", eia.a);
-   ehx<ehy> e = a("trapezoid", ehy.a);
-   ehx<eib> f = a("weighted_list", eib.a);
+public abstract class ehx {
+   private static final Codec<Either<dzs, ehx>> a = Codec.either(dzs.a, lt.L.r().dispatch(ehx::a, ehy::codec));
+   public static final Codec<ehx> c = a.xmap(
+      $$0 -> (ehx)$$0.map(ehw::a, $$0x -> $$0x), $$0 -> $$0.a() == ehy.a ? Either.left(((ehw)$$0).b()) : Either.right($$0)
+   );
 
-   MapCodec<P> codec();
+   public abstract int a(ayw var1, dzv var2);
 
-   private static <P extends ehw> ehx<P> a(String $$0, MapCodec<P> $$1) {
-      return jz.a(lt.L, $$0, () -> $$1);
-   }
+   public abstract ehy<?> a();
 }

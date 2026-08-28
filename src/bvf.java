@@ -10,7 +10,7 @@ public class bvf {
                      if ($$9.a($$7, (double)$$0) && $$2.<ccu>b($$6).a($$9)) {
                         $$4.a(new bvs($$9, true));
                         $$7.J().a(-$$1, 0.0F);
-                        $$7.t(ayo.c($$7.dF(), $$7.ba, 0.0F));
+                        $$7.t(ayo.c($$7.dE(), $$7.ba, 0.0F));
                         return true;
                      } else {
                         return false;

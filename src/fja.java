@@ -1,49 +1,31 @@
-public class fja extends fik {
-   private boolean a;
+import java.util.UUID;
 
-   public fja(int $$0, int $$1, fik.c $$2) {
-      super($$0, $$1, 20, 20, wz.c("narrator.button.difficulty_lock"), $$2, q);
+public class fja extends bqh {
+   private static final long j = 100L;
+   protected float h;
+   protected long i;
+
+   public fja(UUID $$0, wz $$1, float $$2, bqh.a $$3, bqh.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      super($$0, $$1, $$3, $$4);
+      this.h = $$2;
+      this.b = $$2;
+      this.i = ad.c();
+      this.a($$5);
+      this.b($$6);
+      this.c($$7);
    }
 
    @Override
-   protected xn aQ_() {
-      return wy.a(super.aQ_(), this.a() ? wz.c("narrator.button.difficulty_lock.locked") : wz.c("narrator.button.difficulty_lock.unlocked"));
-   }
-
-   public boolean a() {
-      return this.a;
-   }
-
-   public void b(boolean $$0) {
-      this.a = $$0;
+   public void a(float $$0) {
+      this.b = this.j();
+      this.h = $$0;
+      this.i = ad.c();
    }
 
    @Override
-   public void b(fhx $$0, int $$1, int $$2, float $$3) {
-      fja.a $$4;
-      if (!this.j) {
-         $$4 = this.a ? fja.a.c : fja.a.f;
-      } else if (this.B()) {
-         $$4 = this.a ? fja.a.b : fja.a.e;
-      } else {
-         $$4 = this.a ? fja.a.a : fja.a.d;
-      }
-
-      $$0.a($$4.g, this.D(), this.E(), this.g, this.h);
-   }
-
-   static enum a {
-      a(akr.b("widget/locked_button")),
-      b(akr.b("widget/locked_button_highlighted")),
-      c(akr.b("widget/locked_button_disabled")),
-      d(akr.b("widget/unlocked_button")),
-      e(akr.b("widget/unlocked_button_highlighted")),
-      f(akr.b("widget/unlocked_button_disabled"));
-
-      final akr g;
-
-      private a(final akr $$0) {
-         this.g = $$0;
-      }
+   public float j() {
+      long $$0 = ad.c() - this.i;
+      float $$1 = ayo.a((float)$$0 / 100.0F, 0.0F, 1.0F);
+      return ayo.i($$1, this.b, this.h);
    }
 }

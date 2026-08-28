@@ -11,7 +11,7 @@ public class pi implements ph.a {
    }
 
    public static ub a(String $$0, ub $$1) {
-      enr $$2 = new enr();
+      ent $$2 = new ent();
       int $$3 = uq.b($$1, 500);
       int $$4 = 3937;
       if ($$3 < 3937) {

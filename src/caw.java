@@ -4,7 +4,7 @@ public class caw extends cam {
    protected final btw a;
    private final double b;
    private final boolean c;
-   private epq d;
+   private eps d;
    private double e;
    private double f;
    private double g;
@@ -23,7 +23,7 @@ public class caw extends cam {
 
    @Override
    public boolean b() {
-      long $$0 = this.a.dP().Z();
+      long $$0 = this.a.dO().Z();
       if ($$0 - this.k < 20L) {
          return false;
       } else {
@@ -50,14 +50,14 @@ public class caw extends cam {
       } else if (!this.c) {
          return !this.a.N().l();
       } else {
-         return !this.a.a($$0.dp()) ? false : !($$0 instanceof cmx) || !$$0.R_() && !((cmx)$$0).f();
+         return !this.a.a($$0.do()) ? false : !($$0 instanceof cmx) || !$$0.R_() && !((cmx)$$0).f();
       }
    }
 
    @Override
    public void d() {
       this.a.N().a(this.d, this.b);
-      this.a.v(true);
+      this.a.w(true);
       this.h = 0;
       this.i = 0;
    }
@@ -69,7 +69,7 @@ public class caw extends cam {
          this.a.h(null);
       }
 
-      this.a.v(false);
+      this.a.w(false);
       this.a.N().n();
    }
 
@@ -86,11 +86,11 @@ public class caw extends cam {
          this.h = Math.max(this.h - 1, 0);
          if ((this.c || this.a.O().a($$0))
             && this.h <= 0
-            && (this.e == 0.0 && this.f == 0.0 && this.g == 0.0 || $$0.i(this.e, this.f, this.g) >= 1.0 || this.a.dS().i() < 0.05F)) {
-            this.e = $$0.du();
-            this.f = $$0.dw();
-            this.g = $$0.dA();
-            this.h = 4 + this.a.dS().a(7);
+            && (this.e == 0.0 && this.f == 0.0 && this.g == 0.0 || $$0.i(this.e, this.f, this.g) >= 1.0 || this.a.dR().i() < 0.05F)) {
+            this.e = $$0.dt();
+            this.f = $$0.dv();
+            this.g = $$0.dz();
+            this.h = 4 + this.a.dR().a(7);
             double $$1 = this.a.g((bsr)$$0);
             if ($$1 > 1024.0) {
                this.h += 10;

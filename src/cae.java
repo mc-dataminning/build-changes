@@ -10,16 +10,16 @@ public class cae extends cam {
 
    public cae(btp $$0) {
       this.c = $$0;
-      this.d = $$0.dP();
+      this.d = $$0.dO();
       this.a(EnumSet.of(cam.a.a, cam.a.b, cam.a.c));
    }
 
    @Override
    public boolean b() {
-      if (this.c.dS().a(this.c.o_() ? 50 : 1000) != 0) {
+      if (this.c.dR().a(this.c.o_() ? 50 : 1000) != 0) {
          return false;
       } else {
-         jd $$0 = this.c.dp();
+         jd $$0 = this.c.do();
          return b.test(this.d.a_($$0)) ? true : this.d.a_($$0.e()).a(dga.i);
       }
    }
@@ -49,7 +49,7 @@ public class cae extends cam {
    public void a() {
       this.e = Math.max(0, this.e - 1);
       if (this.e == this.a(4)) {
-         jd $$0 = this.c.dp();
+         jd $$0 = this.c.do();
          if (b.test(this.d.a_($$0))) {
             if (this.d.ab().b(dcs.c)) {
                this.d.b($$0, false);

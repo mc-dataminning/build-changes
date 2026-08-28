@@ -11,10 +11,10 @@ public class dhj extends dfy implements bre {
    public static final duc e = dts.aL;
    public static final Object2FloatMap<dcv> f = new Object2FloatOpenHashMap();
    private static final int g = 2;
-   private static final ext h = exq.b();
-   private static final ext[] i = ad.a(new ext[9], $$0 -> {
+   private static final exv h = exs.b();
+   private static final exv[] i = ad.a(new exv[9], $$0 -> {
       for (int $$1 = 0; $$1 < 8; $$1++) {
-         $$0[$$1] = exq.a(h, dfy.a(2.0, (double)Math.max(2, 1 + $$1 * 2), 2.0, 14.0, 16.0, 14.0), exe.e);
+         $$0[$$1] = exs.a(h, dfy.a(2.0, (double)Math.max(2, 1 + $$1 * 2), 2.0, 14.0, 16.0, 14.0), exg.e);
       }
 
       $$0[8] = $$0[7];
@@ -169,17 +169,17 @@ public class dhj extends dfy implements bre {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return i[$$0.c(e)];
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2) {
       return h;
    }
 
    @Override
-   protected ext b(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv b(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return i[0];
    }
 
@@ -191,7 +191,7 @@ public class dhj extends dfy implements bre {
    }
 
    @Override
-   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, eww $$6) {
+   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, ewy $$6) {
       int $$7 = $$1.c(e);
       if ($$7 < 8 && f.containsKey($$0.g())) {
          if ($$7 < 7 && !$$2.B) {
@@ -208,7 +208,7 @@ public class dhj extends dfy implements bre {
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
       int $$5 = $$0.c(e);
       if ($$5 == 8) {
          a($$3, $$0, $$1, $$2);
@@ -231,7 +231,7 @@ public class dhj extends dfy implements bre {
 
    public static dtc a(bsr $$0, dtc $$1, dcw $$2, jd $$3) {
       if (!$$2.B) {
-         exa $$4 = exa.a($$3, 0.5, 1.01, 0.5).a($$2.z, 0.7F);
+         exc $$4 = exc.a($$3, 0.5, 1.01, 0.5).a($$2.z, 0.7F);
          cjh $$5 = new cjh($$2, $$4.a(), $$4.b(), $$4.c(), new cuq(cut.ry));
          $$5.v();
          $$2.b($$5);
@@ -291,7 +291,7 @@ public class dhj extends dfy implements bre {
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return false;
    }
 

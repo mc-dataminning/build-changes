@@ -36,7 +36,7 @@ public class ahd implements zg<agi> {
       return new ahd($$0.an(), $$1, new ahd.d($$2));
    }
 
-   public static ahd a(bsr $$0, boolean $$1, bqq $$2, exa $$3) {
+   public static ahd a(bsr $$0, boolean $$1, bqq $$2, exc $$3) {
       return new ahd($$0.an(), $$1, new ahd.e($$2, $$3));
    }
 
@@ -99,7 +99,7 @@ public class ahd implements zg<agi> {
    public interface c {
       void a(bqq var1);
 
-      void a(bqq var1, exa var2);
+      void a(bqq var1, exc var2);
 
       void a();
    }
@@ -133,15 +133,15 @@ public class ahd implements zg<agi> {
 
    static class e implements ahd.a {
       private final bqq a;
-      private final exa b;
+      private final exc b;
 
-      e(bqq $$0, exa $$1) {
+      e(bqq $$0, exc $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       private e(vw $$0) {
-         this.b = new exa((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
+         this.b = new exc((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
          this.a = $$0.b(bqq.class);
       }
 

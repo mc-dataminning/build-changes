@@ -1,8 +1,8 @@
 import com.mojang.serialization.Codec;
 import java.util.stream.Stream;
 
-public record ebq<FC extends eeh, F extends ecd<FC>>(F d, FC e) {
-   public static final Codec<ebq<?, ?>> a = lt.O.r().dispatch($$0 -> $$0.d, ecd::a);
+public record ebq<FC extends eei, F extends ece<FC>>(F d, FC e) {
+   public static final Codec<ebq<?, ?>> a = lt.O.r().dispatch($$0 -> $$0.d, ece::a);
    public static final Codec<jm<ebq<?, ?>>> b = akn.a(lu.aI, a);
    public static final Codec<jq<ebq<?, ?>>> c = kb.a(lu.aI, a);
 

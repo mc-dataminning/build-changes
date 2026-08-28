@@ -7,10 +7,10 @@ public class cby extends cbz {
 
    @Nullable
    @Override
-   protected exa h() {
-      exa $$0 = this.b.g(0.0F);
+   protected exc h() {
+      exc $$0 = this.b.g(0.0F);
       int $$1 = 8;
-      exa $$2 = cel.a(this.b, 8, 7, $$0.c, $$0.e, (float) (Math.PI / 2), 3, 1);
+      exc $$2 = cel.a(this.b, 8, 7, $$0.c, $$0.e, (float) (Math.PI / 2), 3, 1);
       return $$2 != null ? $$2 : ceh.a(this.b, 8, 4, -2, $$0.c, $$0.e, (float) (Math.PI / 2));
    }
 }

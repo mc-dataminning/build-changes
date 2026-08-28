@@ -1,56 +1,33 @@
-public class ecc extends ecd<eeo> {
-   public static final int a = 4;
-   public static final int b = 4;
-   public static final int c = 1;
-   public static final float d = 0.5F;
-   private static final jd an = jd.c;
-   private final boolean ao;
+import com.mojang.serialization.Codec;
 
-   public static jd a(jd $$0) {
-      return an.a((kh)$$0);
-   }
-
-   public ecc(boolean $$0) {
-      super(eeo.a);
-      this.ao = $$0;
+public class ecc extends ece<eep> {
+   public ecc(Codec<eep> $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(ecf<eeo> $$0) {
-      jd $$1 = $$0.e();
-      dds $$2 = $$0.b();
+   public boolean a(ecg<eep> $$0) {
+      a($$0.b(), $$0.e(), false);
+      return true;
+   }
 
-      for (jd $$3 : jd.c(new jd($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new jd($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
-         boolean $$4 = $$3.a($$1, 2.5);
-         if ($$4 || $$3.a($$1, 3.5)) {
-            if ($$3.v() < $$1.v()) {
-               if ($$4) {
-                  this.a($$2, $$3, dga.F.o());
-               } else if ($$3.v() < $$1.v()) {
-                  this.a($$2, $$3, dga.fz.o());
+   public static void a(ddl $$0, jd $$1, boolean $$2) {
+      jd.a $$3 = $$1.k();
+
+      for (int $$4 = -2; $$4 <= 2; $$4++) {
+         for (int $$5 = -2; $$5 <= 2; $$5++) {
+            for (int $$6 = -1; $$6 < 3; $$6++) {
+               jd $$7 = $$3.g($$1).e($$5, $$6, $$4);
+               dfy $$8 = $$6 == -1 ? dga.co : dga.a;
+               if (!$$0.a_($$7).a($$8)) {
+                  if ($$2) {
+                     $$0.a($$7, true, null);
+                  }
+
+                  $$0.a($$7, $$8.o(), 3);
                }
-            } else if ($$3.v() > $$1.v()) {
-               this.a($$2, $$3, dga.a.o());
-            } else if (!$$4) {
-               this.a($$2, $$3, dga.F.o());
-            } else if (this.ao) {
-               this.a($$2, new jd($$3), dga.fx.o());
-            } else {
-               this.a($$2, new jd($$3), dga.a.o());
             }
          }
       }
-
-      for (int $$5 = 0; $$5 < 4; $$5++) {
-         this.a($$2, $$1.b($$5), dga.F.o());
-      }
-
-      jd $$6 = $$1.b(2);
-
-      for (ji $$7 : ji.c.a) {
-         this.a($$2, $$6.a($$7), dga.cq.o().a(dpb.g, $$7));
-      }
-
-      return true;
    }
 }

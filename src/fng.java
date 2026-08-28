@@ -1,49 +1,31 @@
-public class fng extends fob {
-   private static final akr a = akr.b("textures/gui/demo_background.png");
-   private fjd b = fjd.a;
-   private fjd c = fjd.a;
+public class fng extends fod {
+   private fjf a;
+   private final Runnable b;
+   private final Runnable c;
 
-   public fng() {
-      super(wz.c("demo.help.title"));
+   public fng(Runnable $$0, Runnable $$1) {
+      super(wz.c("datapackFailure.title"));
+      this.a = fjf.a;
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
    protected void aT_() {
-      int $$0 = -16;
-      this.c(fik.a(wz.c("demo.help.buy"), $$0x -> {
-         $$0x.j = false;
-         ad.k().a(axj.f);
-      }).a(this.m / 2 - 116, this.n / 2 + 62 + -16, 114, 20).a());
-      this.c(fik.a(wz.c("demo.help.later"), $$0x -> {
-         this.l.a(null);
-         this.l.n.i();
-      }).a(this.m / 2 + 2, this.n / 2 + 62 + -16, 114, 20).a());
-      fgq $$1 = this.l.m;
-      this.b = fjd.a(
-         this.o,
-         wz.a("demo.help.movementShort", $$1.w.k(), $$1.x.k(), $$1.y.k(), $$1.z.k()),
-         wz.c("demo.help.movementMouse"),
-         wz.a("demo.help.jump", $$1.A.k()),
-         wz.a("demo.help.inventory", $$1.D.k())
-      );
-      this.c = fjd.a(this.o, wz.c("demo.help.fullWrapped"), 218);
+      super.aT_();
+      this.a = fjf.a(this.o, this.n(), this.m - 50);
+      this.c(fim.a(wz.c("datapackFailure.safeMode"), $$0 -> this.c.run()).a(this.m / 2 - 155, this.n / 6 + 96, 150, 20).a());
+      this.c(fim.a(wy.k, $$0 -> this.b.run()).a(this.m / 2 - 155 + 160, this.n / 6 + 96, 150, 20).a());
    }
 
    @Override
-   public void b(fhx $$0, int $$1, int $$2, float $$3) {
-      super.b($$0, $$1, $$2, $$3);
-      int $$4 = (this.m - 248) / 2;
-      int $$5 = (this.n - 166) / 2;
-      $$0.a(a, $$4, $$5, 0, 0, 248, 166);
-   }
-
-   @Override
-   public void a(fhx $$0, int $$1, int $$2, float $$3) {
+   public void a(fhz $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      int $$4 = (this.m - 248) / 2 + 10;
-      int $$5 = (this.n - 166) / 2 + 8;
-      $$0.a(this.o, this.k, $$4, $$5, 2039583, false);
-      $$5 = this.b.c($$0, $$4, $$5 + 12, 12, 5197647);
-      this.c.c($$0, $$4, $$5 + 20, 9, 2039583);
+      this.a.a($$0, this.m / 2, 70);
+   }
+
+   @Override
+   public boolean aJ_() {
+      return false;
    }
 }

@@ -56,7 +56,7 @@ public class amv {
       return new jd(a($$0.u()), a($$0.v()), a($$0.w()));
    }
 
-   private static ddz a(MutableInt $$0, duy $$1, ejh $$2, jm<ddw> $$3, Predicate<jm<ddw>> $$4) {
+   private static ddz a(MutableInt $$0, duy $$1, ejj $$2, jm<ddw> $$3, Predicate<jm<ddw>> $$4) {
       return ($$5, $$6, $$7, $$8) -> {
          int $$9 = jx.c($$5);
          int $$10 = jx.c($$6);
@@ -79,7 +79,7 @@ public class amv {
    public static Either<Integer, CommandSyntaxException> a(aqu $$0, jd $$1, jd $$2, jm<ddw> $$3, Predicate<jm<ddw>> $$4, Consumer<Supplier<wz>> $$5) {
       jd $$6 = a($$1);
       jd $$7 = a($$2);
-      ejh $$8 = ejh.a($$6, $$7);
+      ejj $$8 = ejj.a($$6, $$7);
       int $$9 = $$8.d() * $$8.e() * $$8.f();
       int $$10 = $$0.ab().c(dcs.z);
       if ($$9 > $$10) {

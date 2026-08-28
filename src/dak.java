@@ -3,8 +3,8 @@ import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record dak<T>(dag a, dag b, T c, Optional<eva> d) {
-   public static <S> Codec<dak<S>> a(Codec<S> $$0, euj $$1) {
+public record dak<T>(dag a, dag b, T c, Optional<evc> d) {
+   public static <S> Codec<dak<S>> a(Codec<S> $$0, eul $$1) {
       return RecordCodecBuilder.create(
          $$2 -> $$2.group(
                   dag.d.fieldOf("enchanted").forGetter(dak::a),
@@ -16,7 +16,7 @@ public record dak<T>(dag a, dag b, T c, Optional<eva> d) {
       );
    }
 
-   public static <S> Codec<dak<S>> b(Codec<S> $$0, euj $$1) {
+   public static <S> Codec<dak<S>> b(Codec<S> $$0, eul $$1) {
       return RecordCodecBuilder.create(
          $$2 -> $$2.group(
                   dag.d
@@ -30,7 +30,7 @@ public record dak<T>(dag a, dag b, T c, Optional<eva> d) {
       );
    }
 
-   public boolean a(erp $$0) {
+   public boolean a(err $$0) {
       return this.d.isEmpty() ? true : this.d.get().test($$0);
    }
 }

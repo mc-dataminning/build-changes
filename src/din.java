@@ -5,9 +5,9 @@ public class din extends dfy {
    public static final MapCodec<din> a = b(din::new);
    public static final dtw b = dju.aE;
    public static final dtt c = dts.h;
-   protected static final ext d = dfy.a(0.0, 0.0, 0.0, 16.0, 13.0, 16.0);
-   protected static final ext e = dfy.a(4.0, 13.0, 4.0, 12.0, 16.0, 12.0);
-   protected static final ext f = exq.a(d, e);
+   protected static final exv d = dfy.a(0.0, 0.0, 0.0, 16.0, 13.0, 16.0);
+   protected static final exv e = dfy.a(4.0, 13.0, 4.0, 12.0, 16.0, 12.0);
+   protected static final exv f = exs.a(d, e);
    private static dth g;
 
    @Override
@@ -26,7 +26,7 @@ public class din extends dfy {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return $$0.c(c) ? f : d;
    }
 
@@ -76,7 +76,7 @@ public class din extends dfy {
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return false;
    }
 }

@@ -26,7 +26,7 @@ public class aqt {
    private int l;
    private int m;
    private int n;
-   private exa o = exa.b;
+   private exc o = exc.b;
    private int p;
    private int q;
    private List<bsr> r = Collections.emptyList();
@@ -41,22 +41,22 @@ public class aqt {
       this.g = $$1;
       this.h = $$2;
       this.i = $$3;
-      this.k.e($$1.do());
-      this.o = $$1.ds();
-      this.l = ayo.d($$1.dF() * 256.0F / 360.0F);
-      this.m = ayo.d($$1.dH() * 256.0F / 360.0F);
+      this.k.e($$1.dn());
+      this.o = $$1.dr();
+      this.l = ayo.d($$1.dE() * 256.0F / 360.0F);
+      this.m = ayo.d($$1.dG() * 256.0F / 360.0F);
       this.n = ayo.d($$1.ct() * 256.0F / 360.0F);
       this.t = $$1.aF();
       this.u = $$1.ar().c();
    }
 
    public void a() {
-      List<bsr> $$0 = this.g.cT();
+      List<bsr> $$0 = this.g.cS();
       if (!$$0.equals(this.r)) {
          this.j.accept(new afg(this.g));
          a($$0, this.r).forEach($$0x -> {
             if ($$0x instanceof aqv $$1) {
-               $$1.c.a($$1.du(), $$1.dw(), $$1.dA(), $$1.dF(), $$1.dH());
+               $$1.c.a($$1.dt(), $$1.dv(), $$1.dz(), $$1.dE(), $$1.dG());
             }
          });
          this.r = $$0;
@@ -65,8 +65,8 @@ public class aqt {
       if (this.g instanceof cja $$1 && this.p % 10 == 0) {
          cuq $$2 = $$1.D();
          if ($$2.g() instanceof cvc) {
-            eqp $$3 = $$2.a(kq.B);
-            eqr $$4 = cvc.a($$3, this.f);
+            eqr $$3 = $$2.a(kq.B);
+            eqt $$4 = cvc.a($$3, this.f);
             if ($$4 != null) {
                for (aqv $$5 : this.f.x()) {
                   $$4.a($$5, $$2);
@@ -83,8 +83,8 @@ public class aqt {
 
       if (this.p % this.h == 0 || this.g.av || this.g.ar().a()) {
          if (this.g.bS()) {
-            int $$7 = ayo.d(this.g.dF() * 256.0F / 360.0F);
-            int $$8 = ayo.d(this.g.dH() * 256.0F / 360.0F);
+            int $$7 = ayo.d(this.g.dE() * 256.0F / 360.0F);
+            int $$8 = ayo.d(this.g.dG() * 256.0F / 360.0F);
             boolean $$9 = Math.abs($$7 - this.l) >= 1 || Math.abs($$8 - this.m) >= 1;
             if ($$9) {
                this.j.accept(new ado.c(this.g.an(), (byte)$$7, (byte)$$8, this.g.aF()));
@@ -92,14 +92,14 @@ public class aqt {
                this.m = $$8;
             }
 
-            this.k.e(this.g.do());
+            this.k.e(this.g.dn());
             this.g();
             this.s = true;
          } else {
             this.q++;
-            int $$10 = ayo.d(this.g.dF() * 256.0F / 360.0F);
-            int $$11 = ayo.d(this.g.dH() * 256.0F / 360.0F);
-            exa $$12 = this.g.do();
+            int $$10 = ayo.d(this.g.dE() * 256.0F / 360.0F);
+            int $$11 = ayo.d(this.g.dG() * 256.0F / 360.0F);
+            exc $$12 = this.g.dn();
             boolean $$13 = this.k.d($$12).g() >= 7.6293945E-6F;
             zg<?> $$14 = null;
             boolean $$15 = $$13 || this.p % 60 == 0;
@@ -130,8 +130,8 @@ public class aqt {
                $$18 = true;
             }
 
-            if ((this.i || this.g.av || this.g instanceof btn && ((btn)this.g).fB()) && this.p > 0) {
-               exa $$23 = this.g.ds();
+            if ((this.i || this.g.av || this.g instanceof btn && ((btn)this.g).fA()) && this.p > 0) {
+               exc $$23 = this.g.dr();
                double $$24 = $$23.g(this.o);
                if ($$24 > 1.0E-7 || $$24 > 0.0 && $$23.g() == 0.0) {
                   this.o = $$23;
@@ -193,7 +193,7 @@ public class aqt {
    }
 
    public void a(aqv $$0, Consumer<zg<abu>> $$1) {
-      if (this.g.dK()) {
+      if (this.g.dJ()) {
          b.warn("Fetching packet for removed entity {}", this.g);
       }
 
@@ -205,12 +205,12 @@ public class aqt {
 
       boolean $$3 = this.i;
       if (this.g instanceof btn) {
-         Collection<bus> $$4 = ((btn)this.g).eT().c();
+         Collection<bus> $$4 = ((btn)this.g).eS().c();
          if (!$$4.isEmpty()) {
             $$1.accept(new aga(this.g.an(), $$4));
          }
 
-         if (((btn)this.g).fB()) {
+         if (((btn)this.g).fA()) {
             $$3 = true;
          }
       }
@@ -234,12 +234,12 @@ public class aqt {
          }
       }
 
-      if (!this.g.cT().isEmpty()) {
+      if (!this.g.cS().isEmpty()) {
          $$1.accept(new afg(this.g));
       }
 
       if (this.g.bS()) {
-         $$1.accept(new afg(this.g.dd()));
+         $$1.accept(new afg(this.g.dc()));
       }
 
       if (this.g instanceof btp $$8 && $$8.N_()) {
@@ -247,11 +247,11 @@ public class aqt {
       }
    }
 
-   public exa b() {
+   public exc b() {
       return this.k.a();
    }
 
-   public exa c() {
+   public exc c() {
       return this.o;
    }
 
@@ -276,7 +276,7 @@ public class aqt {
       }
 
       if (this.g instanceof btn) {
-         Set<bus> $$2 = ((btn)this.g).eT().a();
+         Set<bus> $$2 = ((btn)this.g).eS().a();
          if (!$$2.isEmpty()) {
             this.a(new aga(this.g.an(), $$2));
          }

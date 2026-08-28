@@ -1,17 +1,11 @@
-public class gjq extends gmo<cjo> {
-   private static final akr a = akr.b("textures/entity/spider/cave_spider.png");
-   private static final float i = 0.7F;
+public class gjq extends glp<cgv, fuu<cgv>> {
+   private static final akr a = akr.b("textures/entity/camel/camel.png");
 
-   public gjq(gkh.a $$0) {
-      super($$0, fyh.x);
-      this.e *= 0.7F;
+   public gjq(gkj.a $$0, fyi $$1) {
+      super($$0, new fuu<>($$0.a($$1)), 0.7F);
    }
 
-   protected void a(cjo $$0, fbg $$1, float $$2) {
-      $$1.b(0.7F, 0.7F, 0.7F);
-   }
-
-   public akr a(cjo $$0) {
+   public akr a(cgv $$0) {
       return a;
    }
 }

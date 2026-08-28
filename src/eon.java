@@ -1,77 +1,24 @@
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import javax.annotation.Nullable;
 
-public abstract class eon<M extends eon<M>> {
-   private static final int b = 2;
-   private final long[] c = new long[2];
-   private final dvd[] d = new dvd[2];
-   private boolean e;
-   protected final Long2ObjectOpenHashMap<dvd> a;
-
-   protected eon(Long2ObjectOpenHashMap<dvd> $$0) {
-      this.a = $$0;
-      this.c();
-      this.e = true;
+public class eon extends eos<eon.a> {
+   protected eon(dvl $$0) {
+      super(ddf.b, $$0, new eon.a(new Long2ObjectOpenHashMap()));
    }
 
-   public abstract M b();
-
-   public dvd a(long $$0) {
-      dvd $$1 = ((dvd)this.a.get($$0)).b();
-      this.a.put($$0, $$1);
-      this.c();
-      return $$1;
+   @Override
+   protected int a(long $$0) {
+      long $$1 = kf.e($$0);
+      dvd $$2 = this.a($$1, false);
+      return $$2 == null ? 0 : $$2.a(kf.b(jd.a($$0)), kf.b(jd.b($$0)), kf.b(jd.c($$0)));
    }
 
-   public boolean b(long $$0) {
-      return this.a.containsKey($$0);
-   }
-
-   @Nullable
-   public dvd c(long $$0) {
-      if (this.e) {
-         for (int $$1 = 0; $$1 < 2; $$1++) {
-            if ($$0 == this.c[$$1]) {
-               return this.d[$$1];
-            }
-         }
+   protected static final class a extends eop<eon.a> {
+      public a(Long2ObjectOpenHashMap<dvd> $$0) {
+         super($$0);
       }
 
-      dvd $$2 = (dvd)this.a.get($$0);
-      if ($$2 == null) {
-         return null;
-      } else {
-         if (this.e) {
-            for (int $$3 = 1; $$3 > 0; $$3--) {
-               this.c[$$3] = this.c[$$3 - 1];
-               this.d[$$3] = this.d[$$3 - 1];
-            }
-
-            this.c[0] = $$0;
-            this.d[0] = $$2;
-         }
-
-         return $$2;
+      public eon.a a() {
+         return new eon.a(this.a.clone());
       }
-   }
-
-   @Nullable
-   public dvd d(long $$0) {
-      return (dvd)this.a.remove($$0);
-   }
-
-   public void a(long $$0, dvd $$1) {
-      this.a.put($$0, $$1);
-   }
-
-   public void c() {
-      for (int $$0 = 0; $$0 < 2; $$0++) {
-         this.c[$$0] = Long.MAX_VALUE;
-         this.d[$$0] = null;
-      }
-   }
-
-   public void d() {
-      this.e = false;
    }
 }

@@ -1,4 +1,4 @@
-public abstract class aqf extends eoo {
+public abstract class aqf extends eoq {
    protected aqf(int $$0, int $$1, int $$2) {
       super($$0, $$1, $$2);
    }

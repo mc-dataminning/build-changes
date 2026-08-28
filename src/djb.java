@@ -9,7 +9,7 @@ public class djb extends dfy {
    );
    private static final Map<dfy, dfy> d = Maps.newHashMap();
    public static final float b = 3.0F;
-   protected static final ext c = dfy.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
+   protected static final exv c = dfy.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
    private final dfy e;
 
    @Override
@@ -24,12 +24,12 @@ public class djb extends dfy {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return c;
    }
 
    @Override
-   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, eww $$6) {
+   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, ewy $$6) {
       dtc $$8 = ($$0.g() instanceof cso $$7 ? d.getOrDefault($$7.d(), dga.a) : dga.a).o();
       if ($$8.i()) {
          return bqt.d;
@@ -45,7 +45,7 @@ public class djb extends dfy {
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
       if (this.m()) {
          return bqr.c;
       } else {
@@ -79,7 +79,7 @@ public class djb extends dfy {
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return false;
    }
 }

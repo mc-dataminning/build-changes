@@ -12,9 +12,9 @@ public abstract class ebe<C extends eax> {
    public static final ebe<eav> c = a("canyon", new eaw(eav.a));
    protected static final dtc d = dga.a.o();
    protected static final dtc e = dga.nc.o();
-   protected static final epc f = epd.c.g();
-   protected static final epc g = epd.e.g();
-   protected Set<epb> h = ImmutableSet.of(epd.c);
+   protected static final epe f = epf.c.g();
+   protected static final epe g = epf.e.g();
+   protected Set<epd> h = ImmutableSet.of(epf.c);
    private final MapCodec<ebc<C>> i;
 
    private static <C extends eax, F extends ebe<C>> F a(String $$0, F $$1) {

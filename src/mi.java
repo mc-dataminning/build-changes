@@ -223,7 +223,7 @@ public class mi implements me {
          .a($$1, "husbandry/whole_pack");
       ag $$10 = af.a.a()
          .a($$3)
-         .a("safely_harvest_honey", cw.a.a(df.a.a().a(aw.a.a().a(awe.aG)).a(true), cs.a.a().a(cut.sl)))
+         .a("safely_harvest_honey", cw.a.a(df.a.a().a(aw.a.a().a(awe.aH)).a(true), cs.a.a().a(cut.sl)))
          .a(
             cut.wC,
             wz.c("advancements.husbandry.safely_harvest_honey.title"),
@@ -317,7 +317,7 @@ public class mi implements me {
             true,
             false
          )
-         .a("make_a_sign_glow", cw.a.a(df.a.a().a(aw.a.a().a(awe.aB)), cs.a.a().a(cut.rg)))
+         .a("make_a_sign_glow", cw.a.a(df.a.a().a(aw.a.a().a(awe.aC)), cs.a.a().a(cut.rg)))
          .a($$1, "husbandry/make_a_sign_glow");
       ag $$14 = af.a.a()
          .a($$3)

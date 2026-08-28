@@ -3,7 +3,7 @@ import javax.annotation.Nullable;
 public class cku extends cjl {
    public cku(bsx<? extends cku> $$0, dcw $$1) {
       super($$0, $$1);
-      this.a(ept.i, 8.0F);
+      this.a(epv.i, 8.0F);
    }
 
    @Override
@@ -35,8 +35,8 @@ public class cku extends cjl {
    @Override
    protected void a(aqu $$0, brk $$1, boolean $$2) {
       super.a($$0, $$1, $$2);
-      if ($$1.d() instanceof cjp $$4 && $$4.gm()) {
-         $$4.gn();
+      if ($$1.d() instanceof cjp $$4 && $$4.gl()) {
+         $$4.gm();
          this.a((dcv)cut.um);
       }
    }

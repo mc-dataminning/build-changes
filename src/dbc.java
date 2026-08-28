@@ -10,7 +10,7 @@ public record dbc(akr d) implements das {
    public static final MapCodec<dbc> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(akr.a.fieldOf("function").forGetter(dbc::b)).apply($$0, dbc::new));
 
    @Override
-   public void a(aqu $$0, int $$1, dab $$2, bsr $$3, exa $$4) {
+   public void a(aqu $$0, int $$1, dab $$2, bsr $$3, exc $$4) {
       MinecraftServer $$5 = $$0.o();
       alg $$6 = $$5.aF();
       Optional<ig<et>> $$7 = $$6.a(this.d);

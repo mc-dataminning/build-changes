@@ -120,13 +120,13 @@ public class amu {
 
    static enum a {
       a("points", cmx::d, ($$0, $$1) -> {
-         if ($$1 >= $$0.gi()) {
+         if ($$1 >= $$0.gh()) {
             return false;
          } else {
             $$0.a($$1);
             return true;
          }
-      }, $$0 -> ayo.d($$0.cs * (float)$$0.gi())),
+      }, $$0 -> ayo.d($$0.cs * (float)$$0.gh())),
       b("levels", aqv::c, ($$0, $$1) -> {
          $$0.b($$1);
          return true;

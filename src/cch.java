@@ -19,9 +19,9 @@ public class cch<T extends btn> extends ccf<T> {
 
    @Override
    public boolean b() {
-      if (this.j > 0 || !this.e.dS().h()) {
+      if (this.j > 0 || !this.e.dR().h()) {
          return false;
-      } else if (!((coj)this.e).gC()) {
+      } else if (!((coj)this.e).gB()) {
          return false;
       } else {
          this.h();

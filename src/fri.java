@@ -1,72 +1,22 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
+import java.util.ArrayList;
 import java.util.List;
 
-public class fri extends fob {
-   private static final int a = 20;
-   private static final int b = 5;
-   private static final int c = 20;
-   private final wz r;
-   private final xe s;
-   private final ImmutableList<fri.a> u;
-   private fjd v = fjd.a;
-   private int w;
-   private int x;
+public class fri extends frh {
+   private static final wz a = wz.c("options.skinCustomisation.title");
 
-   protected fri(wz $$0, List<wz> $$1, ImmutableList<fri.a> $$2) {
-      super($$0);
-      this.s = xe.a($$1);
-      this.r = wy.a($$0, xc.a($$1, wy.a));
-      this.u = $$2;
+   public fri(fod $$0, fgs $$1) {
+      super($$0, $$1, a);
    }
 
    @Override
-   public wz i() {
-      return this.r;
-   }
+   protected void m() {
+      List<fik> $$0 = new ArrayList<>();
 
-   @Override
-   public void aT_() {
-      UnmodifiableIterator $$1 = this.u.iterator();
-
-      while ($$1.hasNext()) {
-         fri.a $$0 = (fri.a)$$1.next();
-         this.x = Math.max(this.x, 20 + this.o.a($$0.a) + 20);
+      for (cmy $$1 : cmy.values()) {
+         $$0.add(fit.b(this.c.a($$1)).a($$1.d(), ($$1x, $$2) -> this.c.a($$1, $$2)));
       }
 
-      int $$1x = 5 + this.x + 5;
-      int $$2 = $$1x * this.u.size();
-      this.v = fjd.a(this.o, this.s, $$2);
-      int $$3 = this.v.a() * 9;
-      this.w = (int)((double)this.n / 2.0 - (double)$$3 / 2.0);
-      int $$4 = this.w + $$3 + 9 * 2;
-      int $$5 = (int)((double)this.m / 2.0 - (double)$$2 / 2.0);
-
-      for (UnmodifiableIterator var6 = this.u.iterator(); var6.hasNext(); $$5 += $$1x) {
-         fri.a $$6 = (fri.a)var6.next();
-         this.c(fik.a($$6.a, $$6.b).a($$5, $$4, this.x, 20).a());
-      }
-   }
-
-   @Override
-   public void a(fhx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.o, this.k, this.m / 2, this.w - 9 * 2, -1);
-      this.v.a($$0, this.m / 2, this.w);
-   }
-
-   @Override
-   public boolean aJ_() {
-      return false;
-   }
-
-   public static final class a {
-      final wz a;
-      final fik.c b;
-
-      public a(wz $$0, fik.c $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+      $$0.add(this.c.v().a(this.c));
+      this.r.a($$0);
    }
 }

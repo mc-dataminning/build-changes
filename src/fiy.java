@@ -1,31 +1,22 @@
-import java.util.UUID;
+public class fiy extends fim {
+   protected final fjz a;
 
-public class fiy extends bqh {
-   private static final long j = 100L;
-   protected float h;
-   protected long i;
+   public fiy(int $$0, int $$1, int $$2, int $$3, fjz $$4, fim.c $$5) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, wy.a);
+   }
 
-   public fiy(UUID $$0, wz $$1, float $$2, bqh.a $$3, bqh.b $$4, boolean $$5, boolean $$6, boolean $$7) {
-      super($$0, $$1, $$3, $$4);
-      this.h = $$2;
-      this.b = $$2;
-      this.i = ad.c();
-      this.a($$5);
-      this.b($$6);
-      this.c($$7);
+   public fiy(int $$0, int $$1, int $$2, int $$3, fjz $$4, fim.c $$5, wz $$6) {
+      super($$0, $$1, $$2, $$3, $$6, $$5, q);
+      this.a = $$4;
+   }
+
+   public fiy(int $$0, int $$1, fjz $$2, fim.c $$3, wz $$4) {
+      this(0, 0, $$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public void a(float $$0) {
-      this.b = this.j();
-      this.h = $$0;
-      this.i = ad.c();
-   }
-
-   @Override
-   public float j() {
-      long $$0 = ad.c() - this.i;
-      float $$1 = ayo.a((float)$$0 / 100.0F, 0.0F, 1.0F);
-      return ayo.i($$1, this.b, this.h);
+   public void b(fhz $$0, int $$1, int $$2, float $$3) {
+      akr $$4 = this.a.a(this.C(), this.B());
+      $$0.a($$4, this.D(), this.E(), this.g, this.h);
    }
 }

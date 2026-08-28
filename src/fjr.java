@@ -1,56 +1,111 @@
-public class fjr extends fih {
-   private float a = 0.5F;
+import javax.annotation.Nullable;
 
-   public fjr(wz $$0, fhv $$1) {
-      this(0, 0, $$1.a($$0.g()), 9, $$0, $$1);
+public abstract class fjr extends fim {
+   protected final akr a;
+   protected final int b;
+   protected final int c;
+
+   fjr(int $$0, int $$1, wz $$2, int $$3, int $$4, akr $$5, fim.c $$6, @Nullable fim.b $$7) {
+      super(0, 0, $$0, $$1, $$2, $$6, $$7 == null ? q : $$7);
+      this.b = $$3;
+      this.c = $$4;
+      this.a = $$5;
    }
 
-   public fjr(int $$0, int $$1, wz $$2, fhv $$3) {
-      this(0, 0, $$0, $$1, $$2, $$3);
+   public static fjr.a a(wz $$0, fim.c $$1, boolean $$2) {
+      return new fjr.a($$0, $$1, $$2);
    }
 
-   public fjr(int $$0, int $$1, int $$2, int $$3, wz $$4, fhv $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.j = false;
+   public static class a {
+      private final wz b;
+      private final fim.c c;
+      private final boolean d;
+      private int e = 150;
+      private int f = 20;
+      @Nullable
+      private akr g;
+      private int h;
+      private int i;
+      @Nullable
+      fim.b a;
+
+      public a(wz $$0, fim.c $$1, boolean $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      public fjr.a a(int $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public fjr.a a(int $$0, int $$1) {
+         this.e = $$0;
+         this.f = $$1;
+         return this;
+      }
+
+      public fjr.a a(akr $$0, int $$1, int $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+         return this;
+      }
+
+      public fjr.a a(fim.b $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public fjr a() {
+         if (this.g == null) {
+            throw new IllegalStateException("Sprite not set");
+         } else {
+            return (fjr)(this.d
+               ? new fjr.b(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a)
+               : new fjr.c(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a));
+         }
+      }
    }
 
-   public fjr b(int $$0) {
-      super.a($$0);
-      return this;
+   public static class b extends fjr {
+      protected b(int $$0, int $$1, wz $$2, int $$3, int $$4, akr $$5, fim.c $$6, @Nullable fim.b $$7) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
+
+      @Override
+      public void b(fhz $$0, int $$1, int $$2, float $$3) {
+         super.b($$0, $$1, $$2, $$3);
+         int $$4 = this.D() + this.y() / 2 - this.b / 2;
+         int $$5 = this.E() + this.w() / 2 - this.c / 2;
+         $$0.a(this.a, $$4, $$5, this.b, this.c);
+      }
+
+      @Override
+      public void a(fhz $$0, fhx $$1, int $$2) {
+      }
    }
 
-   private fjr b(float $$0) {
-      this.a = $$0;
-      return this;
-   }
+   public static class c extends fjr {
+      protected c(int $$0, int $$1, wz $$2, int $$3, int $$4, akr $$5, fim.c $$6, @Nullable fim.b $$7) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
 
-   public fjr c() {
-      return this.b(0.0F);
-   }
+      @Override
+      public void b(fhz $$0, int $$1, int $$2, float $$3) {
+         super.b($$0, $$1, $$2, $$3);
+         int $$4 = this.D() + this.y() - this.b - 2;
+         int $$5 = this.E() + this.w() / 2 - this.c / 2;
+         $$0.a(this.a, $$4, $$5, this.b, this.c);
+      }
 
-   public fjr e() {
-      return this.b(0.5F);
-   }
-
-   public fjr f() {
-      return this.b(1.0F);
-   }
-
-   @Override
-   public void b(fhx $$0, int $$1, int $$2, float $$3) {
-      wz $$4 = this.z();
-      fhv $$5 = this.a();
-      int $$6 = this.y();
-      int $$7 = $$5.a($$4);
-      int $$8 = this.D() + Math.round(this.a * (float)($$6 - $$7));
-      int $$9 = this.E() + (this.w() - 9) / 2;
-      aya $$10 = $$7 > $$6 ? this.a($$4, $$6) : $$4.g();
-      $$0.b($$5, $$10, $$8, $$9, this.b());
-   }
-
-   private aya a(wz $$0, int $$1) {
-      fhv $$2 = this.a();
-      xe $$3 = $$2.a($$0, $$1 - $$2.a(wy.u));
-      return tw.a().a(xe.a($$3, wy.u));
+      @Override
+      public void a(fhz $$0, fhx $$1, int $$2) {
+         int $$3 = this.D() + 2;
+         int $$4 = this.D() + this.y() - this.b - 4;
+         int $$5 = this.D() + this.y() / 2;
+         a($$0, $$1, this.z(), $$5, $$3, this.E(), $$4, this.E() + this.w(), $$2);
+      }
    }
 }

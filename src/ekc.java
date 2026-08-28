@@ -1,7 +1,21 @@
-@FunctionalInterface
-public interface ekc<C extends eeh> {
-   void generatePieces(ekh var1, ekc.a<C> var2);
+import com.mojang.serialization.Codec;
 
-   public static record a<C extends eeh>(C a, duz b, ens c, dcd d, dcy e, dzx f, long g) {
+public enum ekc implements azk {
+   a("none"),
+   b("bury"),
+   c("beard_thin"),
+   d("beard_box"),
+   e("encapsulate");
+
+   public static final Codec<ekc> f = azk.a(ekc::values);
+   private final String g;
+
+   private ekc(final String $$0) {
+      this.g = $$0;
+   }
+
+   @Override
+   public String c() {
+      return this.g;
    }
 }

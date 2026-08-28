@@ -22,7 +22,7 @@ public abstract class dcw implements dcx, AutoCloseable {
    public static final int p = 20000000;
    public static final int q = -20000000;
    protected final List<dsa> r = Lists.newArrayList();
-   protected final eqg s;
+   protected final eqi s;
    private final List<dsa> a = Lists.newArrayList();
    private boolean b;
    private final Thread c;
@@ -38,7 +38,7 @@ public abstract class dcw implements dcx, AutoCloseable {
    @Deprecated
    private final ayw f = ayw.b();
    private final jm<dwy> D;
-   protected final erk A;
+   protected final erm A;
    private final Supplier<bnf> E;
    public final boolean B;
    private final dut F;
@@ -48,7 +48,7 @@ public abstract class dcw implements dcx, AutoCloseable {
    private final brl J;
    private long K;
 
-   protected dcw(erk $$0, akq<dcw> $$1, ka $$2, jm<dwy> $$3, Supplier<bnf> $$4, boolean $$5, boolean $$6, long $$7, int $$8) {
+   protected dcw(erm $$0, akq<dcw> $$1, ka $$2, jm<dwy> $$3, Supplier<bnf> $$4, boolean $$5, boolean $$6, long $$7, int $$8) {
       this.E = $$4;
       this.A = $$0;
       this.D = $$3;
@@ -74,7 +74,7 @@ public abstract class dcw implements dcx, AutoCloseable {
       this.c = Thread.currentThread();
       this.G = new ddy(this, $$7);
       this.d = $$6;
-      this.s = new eqe(this, $$8);
+      this.s = new eqg(this, $$8);
       this.I = $$2;
       this.J = new brl($$2);
    }
@@ -180,7 +180,7 @@ public abstract class dcw implements dcx, AutoCloseable {
 
    @Override
    public boolean a(jd $$0, boolean $$1) {
-      epc $$2 = this.b_($$0);
+      epe $$2 = this.b_($$0);
       return this.a($$0, $$2.g(), 3 | ($$1 ? 64 : 0));
    }
 
@@ -190,7 +190,7 @@ public abstract class dcw implements dcx, AutoCloseable {
       if ($$4.i()) {
          return false;
       } else {
-         epc $$5 = this.b_($$0);
+         epe $$5 = this.b_($$0);
          if (!($$4.b() instanceof dfl)) {
             this.c(2001, $$0, dfy.i($$4));
          }
@@ -255,7 +255,7 @@ public abstract class dcw implements dcx, AutoCloseable {
    }
 
    @Override
-   public eor y_() {
+   public eot y_() {
       return this.N().p();
    }
 
@@ -270,9 +270,9 @@ public abstract class dcw implements dcx, AutoCloseable {
    }
 
    @Override
-   public epc b_(jd $$0) {
+   public epe b_(jd $$0) {
       if (this.s($$0)) {
-         return epd.a.g();
+         return epf.a.g();
       } else {
          dvi $$1 = this.m($$0);
          return $$1.b_($$0);
@@ -408,7 +408,7 @@ public abstract class dcw implements dcx, AutoCloseable {
       return this.a($$0, dco.a(this, $$0), null, $$1, $$2, $$3, $$4, $$5, $$6, lm.w, lm.v, avp.ke);
    }
 
-   public dco a(@Nullable bsr $$0, @Nullable brk $$1, @Nullable dcp $$2, exa $$3, float $$4, boolean $$5, dcw.a $$6) {
+   public dco a(@Nullable bsr $$0, @Nullable brk $$1, @Nullable dcp $$2, exc $$3, float $$4, boolean $$5, dcw.a $$6) {
       return this.a($$0, $$1, $$2, $$3.a(), $$3.b(), $$3.c(), $$4, $$5, $$6, lm.w, lm.v, avp.ke);
    }
 
@@ -552,7 +552,7 @@ public abstract class dcw implements dcx, AutoCloseable {
    }
 
    @Override
-   public List<bsr> a(@Nullable bsr $$0, ewv $$1, Predicate<? super bsr> $$2) {
+   public List<bsr> a(@Nullable bsr $$0, ewx $$1, Predicate<? super bsr> $$2) {
       this.ag().d("getEntities");
       List<bsr> $$3 = Lists.newArrayList();
       this.G().a($$1, $$3x -> {
@@ -561,7 +561,7 @@ public abstract class dcw implements dcx, AutoCloseable {
          }
 
          if ($$3x instanceof cia) {
-            for (chy $$4 : ((cia)$$3x).gh()) {
+            for (chy $$4 : ((cia)$$3x).gg()) {
                if ($$3x != $$0 && $$2.test($$4)) {
                   $$3.add($$4);
                }
@@ -572,17 +572,17 @@ public abstract class dcw implements dcx, AutoCloseable {
    }
 
    @Override
-   public <T extends bsr> List<T> a(dxn<bsr, T> $$0, ewv $$1, Predicate<? super T> $$2) {
+   public <T extends bsr> List<T> a(dxn<bsr, T> $$0, ewx $$1, Predicate<? super T> $$2) {
       List<T> $$3 = Lists.newArrayList();
       this.a($$0, $$1, $$2, $$3);
       return $$3;
    }
 
-   public <T extends bsr> void a(dxn<bsr, T> $$0, ewv $$1, Predicate<? super T> $$2, List<? super T> $$3) {
+   public <T extends bsr> void a(dxn<bsr, T> $$0, ewx $$1, Predicate<? super T> $$2, List<? super T> $$3) {
       this.a($$0, $$1, $$2, $$3, Integer.MAX_VALUE);
    }
 
-   public <T extends bsr> void a(dxn<bsr, T> $$0, ewv $$1, Predicate<? super T> $$2, List<? super T> $$3, int $$4) {
+   public <T extends bsr> void a(dxn<bsr, T> $$0, ewx $$1, Predicate<? super T> $$2, List<? super T> $$3, int $$4) {
       this.ag().d("getEntities");
       this.G().a($$0, $$1, $$4x -> {
          if ($$2.test((T)$$4x)) {
@@ -593,7 +593,7 @@ public abstract class dcw implements dcx, AutoCloseable {
          }
 
          if ($$4x instanceof cia $$5) {
-            for (chy $$6 : $$5.gh()) {
+            for (chy $$6 : $$5.gg()) {
                T $$7 = $$0.a($$6);
                if ($$7 != null && $$2.test($$7)) {
                   $$3.add($$7);
@@ -648,7 +648,7 @@ public abstract class dcw implements dcx, AutoCloseable {
    }
 
    @Override
-   public eqz A_() {
+   public erb A_() {
       return this.A;
    }
 
@@ -700,11 +700,11 @@ public abstract class dcw implements dcx, AutoCloseable {
    }
 
    @Nullable
-   public abstract eqr a(eqp var1);
+   public abstract eqt a(eqr var1);
 
-   public abstract void a(eqp var1, eqr var2);
+   public abstract void a(eqr var1, eqt var2);
 
-   public abstract eqp v();
+   public abstract eqr v();
 
    public void b(int $$0, jd $$1, int $$2) {
    }
@@ -729,7 +729,7 @@ public abstract class dcw implements dcx, AutoCloseable {
    public void a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, List<cxl> $$6) {
    }
 
-   public abstract eye M();
+   public abstract eyg M();
 
    public void c(jd $$0, dfy $$1) {
       for (ji $$2 : ji.c.a) {
@@ -802,7 +802,7 @@ public abstract class dcw implements dcx, AutoCloseable {
    }
 
    @Override
-   public boolean b(jd $$0, Predicate<epc> $$1) {
+   public boolean b(jd $$0, Predicate<epe> $$1) {
       return $$1.test(this.b_($$0));
    }
 

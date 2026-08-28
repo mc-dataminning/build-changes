@@ -297,40 +297,42 @@ public class ad {
    }
 
    public static <T> Predicate<T> a(List<? extends Predicate<T>> $$0) {
-      List<Predicate<T>> $$1 = List.copyOf($$0);
-
-      return switch ($$1.size()) {
+      return switch ($$0.size()) {
          case 0 -> $$0x -> true;
-         case 1 -> (Predicate)$$1.get(0);
-         case 2 -> $$1.get(0).and($$1.get(1));
-         default -> $$1x -> {
-         for (Predicate<T> $$2 : $$1) {
-            if (!$$2.test((T)$$1x)) {
-               return false;
-            }
-         }
+         case 1 -> (Predicate)$$0.get(0);
+         case 2 -> $$0.get(0).and((Predicate<? super T>)$$0.get(1));
+         default -> {
+            Predicate<T>[] $$1 = $$0.toArray(Predicate[]::new);
+            yield $$1x -> {
+               for (Predicate<T> $$2 : $$1) {
+                  if (!$$2.test((T)$$1x)) {
+                     return false;
+                  }
+               }
 
-         return true;
-      };
+               return true;
+            };
+         }
       };
    }
 
    public static <T> Predicate<T> b(List<? extends Predicate<T>> $$0) {
-      List<Predicate<T>> $$1 = List.copyOf($$0);
-
-      return switch ($$1.size()) {
+      return switch ($$0.size()) {
          case 0 -> $$0x -> false;
-         case 1 -> (Predicate)$$1.get(0);
-         case 2 -> $$1.get(0).or($$1.get(1));
-         default -> $$1x -> {
-         for (Predicate<T> $$2 : $$1) {
-            if ($$2.test((T)$$1x)) {
-               return true;
-            }
-         }
+         case 1 -> (Predicate)$$0.get(0);
+         case 2 -> $$0.get(0).or((Predicate<? super T>)$$0.get(1));
+         default -> {
+            Predicate<T>[] $$1 = $$0.toArray(Predicate[]::new);
+            yield $$1x -> {
+               for (Predicate<T> $$2 : $$1) {
+                  if ($$2.test((T)$$1x)) {
+                     return true;
+                  }
+               }
 
-         return false;
-      };
+               return false;
+            };
+         }
       };
    }
 

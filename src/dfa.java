@@ -2,7 +2,7 @@ import com.mojang.serialization.MapCodec;
 
 public class dfa extends dgh implements dgb {
    public static final MapCodec<dfa> a = b(dfa::new);
-   private static final ext b = exq.a(dfy.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0), dfy.a(6.0, 0.0, 6.0, 10.0, 8.0, 10.0));
+   private static final exv b = exs.a(dfy.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0), dfy.a(6.0, 0.0, 6.0, 10.0, 8.0, 10.0));
 
    @Override
    public MapCodec<dfa> a() {
@@ -14,7 +14,7 @@ public class dfa extends dgh implements dgb {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return b;
    }
 

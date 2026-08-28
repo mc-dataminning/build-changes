@@ -33,16 +33,16 @@ public record dbf(lk d, dbf.a e, dbf.a f, dbf.c g, dbf.c h, bpu i) implements da
    }
 
    @Override
-   public void a(aqu $$0, int $$1, dab $$2, bsr $$3, exa $$4) {
-      ayw $$5 = $$3.dS();
-      exa $$6 = $$3.ag();
-      float $$7 = $$3.dk();
-      float $$8 = $$3.dl();
+   public void a(aqu $$0, int $$1, dab $$2, bsr $$3, exc $$4) {
+      ayw $$5 = $$3.dR();
+      exc $$6 = $$3.ag();
+      float $$7 = $$3.dj();
+      float $$8 = $$3.dk();
       $$0.a(
          this.d,
-         this.e.a($$4.a(), $$7, $$5),
-         this.f.a($$4.b(), $$8, $$5),
-         this.e.a($$4.c(), $$7, $$5),
+         this.e.a($$4.a(), $$4.a(), $$7, $$5),
+         this.f.a($$4.b(), $$4.b() + (double)($$8 / 2.0F), $$8, $$5),
+         this.e.a($$4.c(), $$4.c(), $$7, $$5),
          0,
          this.g.a($$6.a(), $$5),
          this.h.a($$6.b(), $$5),
@@ -95,8 +95,8 @@ public record dbf(lk d, dbf.a e, dbf.a f, dbf.c g, dbf.c h, bpu i) implements da
                   : DataResult.success($$0)
          );
 
-      public double a(double $$0, float $$1, ayw $$2) {
-         return this.b.a($$0, $$1 * this.d, $$2) + (double)this.c;
+      public double a(double $$0, double $$1, float $$2, ayw $$3) {
+         return this.b.a($$0, $$1, $$2 * this.d, $$3) + (double)this.c;
       }
 
       public dbf.b a() {
@@ -113,8 +113,8 @@ public record dbf(lk d, dbf.a e, dbf.a f, dbf.c g, dbf.c h, bpu i) implements da
    }
 
    public static enum b implements azk {
-      a("entity_position", ($$0, $$1, $$2) -> $$0),
-      b("in_bounding_box", ($$0, $$1, $$2) -> $$0 + ($$2.j() - 0.5) * (double)$$1);
+      a("entity_position", ($$0, $$1, $$2, $$3) -> $$0),
+      b("in_bounding_box", ($$0, $$1, $$2, $$3) -> $$1 + ($$3.j() - 0.5) * (double)$$2);
 
       public static final Codec<dbf.b> c = azk.a(dbf.b::values);
       private final String d;
@@ -125,8 +125,8 @@ public record dbf(lk d, dbf.a e, dbf.a f, dbf.c g, dbf.c h, bpu i) implements da
          this.e = $$1;
       }
 
-      public double a(double $$0, float $$1, ayw $$2) {
-         return this.e.getCoordinate($$0, $$1, $$2);
+      public double a(double $$0, double $$1, float $$2, ayw $$3) {
+         return this.e.getCoordinate($$0, $$1, $$2, $$3);
       }
 
       @Override
@@ -136,7 +136,7 @@ public record dbf(lk d, dbf.a e, dbf.a f, dbf.c g, dbf.c h, bpu i) implements da
 
       @FunctionalInterface
       interface a {
-         double getCoordinate(double var1, float var3, ayw var4);
+         double getCoordinate(double var1, double var3, float var5, ayw var6);
       }
    }
 

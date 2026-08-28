@@ -1,142 +1,222 @@
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.Arrays;
+import java.util.List;
+import javax.annotation.Nullable;
 
 public class fbn {
-   public static fbk a() {
-      throw new IllegalArgumentException();
+   public static final int a = -1;
+   private final List<fbo> b;
+   private final List<String> c;
+   private final int d;
+   private final int e;
+   private final int[] f = new int[32];
+   @Nullable
+   private fbl g;
+
+   fbn(List<fbo> $$0, List<String> $$1, IntList $$2, int $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$3;
+      this.e = $$0.stream().mapToInt(fbo::a).reduce(0, ($$0x, $$1x) -> $$0x | $$1x);
+
+      for (int $$4 = 0; $$4 < this.f.length; $$4++) {
+         fbo $$5 = fbo.a($$4);
+         int $$6 = $$5 != null ? $$0.indexOf($$5) : -1;
+         this.f[$$4] = $$6 != -1 ? $$2.getInt($$6) : -1;
+      }
    }
 
-   public static fbk a(fbk $$0) {
+   public static fbn.a a() {
+      return new fbn.a();
+   }
+
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder("Vertex format (").append(this.d).append(" bytes):\n");
+
+      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
+         fbo $$2 = this.b.get($$1);
+         $$0.append($$1).append(". ").append(this.c.get($$1)).append(": ").append($$2).append(" @ ").append(this.a($$2)).append('\n');
+      }
+
+      return $$0.toString();
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public List<fbo> c() {
+      return this.b;
+   }
+
+   public List<String> d() {
+      return this.c;
+   }
+
+   public int[] e() {
+      return this.f;
+   }
+
+   public int a(fbo $$0) {
+      return this.f[$$0.c()];
+   }
+
+   public boolean b(fbo $$0) {
+      return (this.e & $$0.a()) != 0;
+   }
+
+   public int f() {
+      return this.e;
+   }
+
+   public String c(fbo $$0) {
+      int $$1 = this.b.indexOf($$0);
+      if ($$1 == -1) {
+         throw new IllegalArgumentException($$0 + " is not contained in format");
+      } else {
+         return this.c.get($$1);
+      }
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof fbn $$1 && this.e == $$1.e && this.d == $$1.d && this.c.equals($$1.c) && Arrays.equals(this.f, $$1.f)) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.e * 31 + Arrays.hashCode(this.f);
+   }
+
+   public void g() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(this::j);
+      } else {
+         this.j();
+      }
+   }
+
+   private void j() {
+      int $$0 = this.b();
+
+      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
+         GlStateManager._enableVertexAttribArray($$1);
+         fbo $$2 = this.b.get($$1);
+         $$2.a($$1, (long)this.a($$2), $$0);
+      }
+   }
+
+   public void h() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(this::k);
+      } else {
+         this.k();
+      }
+   }
+
+   private void k() {
+      for (int $$0 = 0; $$0 < this.b.size(); $$0++) {
+         GlStateManager._disableVertexAttribArray($$0);
+      }
+   }
+
+   public fbl i() {
+      fbl $$0 = this.g;
+      if ($$0 == null) {
+         this.g = $$0 = new fbl(fbl.a.b);
+      }
+
       return $$0;
    }
 
-   public static fbk a(fbk $$0, fbk $$1) {
-      return new fbn.a($$0, $$1);
-   }
+   public static class a {
+      private final Builder<String, fbo> a = ImmutableMap.builder();
+      private final IntList b = new IntArrayList();
+      private int c;
 
-   public static fbk a(fbk... $$0) {
-      return new fbn.b($$0);
-   }
-
-   static class a implements fbk {
-      private final fbk a;
-      private final fbk b;
-
-      public a(fbk $$0, fbk $$1) {
-         if ($$0 == $$1) {
-            throw new IllegalArgumentException("Duplicate delegates");
-         } else {
-            this.a = $$0;
-            this.b = $$1;
-         }
+      a() {
       }
 
-      @Override
-      public fbk a(float $$0, float $$1, float $$2) {
-         this.a.a($$0, $$1, $$2);
-         this.b.a($$0, $$1, $$2);
+      public fbn.a a(String $$0, fbo $$1) {
+         this.a.put($$0, $$1);
+         this.b.add(this.c);
+         this.c = this.c + $$1.b();
          return this;
       }
 
-      @Override
-      public fbk a(int $$0, int $$1, int $$2, int $$3) {
-         this.a.a($$0, $$1, $$2, $$3);
-         this.b.a($$0, $$1, $$2, $$3);
+      public fbn.a a(int $$0) {
+         this.c += $$0;
          return this;
       }
 
-      @Override
-      public fbk a(float $$0, float $$1) {
-         this.a.a($$0, $$1);
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fbk a(int $$0, int $$1) {
-         this.a.a($$0, $$1);
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fbk b(int $$0, int $$1) {
-         this.a.b($$0, $$1);
-         this.b.b($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fbk b(float $$0, float $$1, float $$2) {
-         this.a.b($$0, $$1, $$2);
-         this.b.b($$0, $$1, $$2);
-         return this;
-      }
-
-      @Override
-      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
-         this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
+      public fbn a() {
+         ImmutableMap<String, fbo> $$0 = this.a.buildOrThrow();
+         ImmutableList<fbo> $$1 = $$0.values().asList();
+         ImmutableList<String> $$2 = $$0.keySet().asList();
+         return new fbn($$1, $$2, this.b, this.c);
       }
    }
 
-   static record b(fbk[] a) implements fbk {
-      b(fbk[] a) {
-         for (int $$1 = 0; $$1 < a.length; $$1++) {
-            for (int $$2 = $$1 + 1; $$2 < a.length; $$2++) {
-               if (a[$$1] == a[$$2]) {
-                  throw new IllegalArgumentException("Duplicate delegates");
-               }
-            }
-         }
+   public static enum b {
+      a(5123, 2),
+      b(5125, 4);
 
-         this.a = a;
+      public final int c;
+      public final int d;
+
+      private b(final int $$0, final int $$1) {
+         this.c = $$0;
+         this.d = $$1;
       }
 
-      private void a(Consumer<fbk> $$0) {
-         for (fbk $$1 : this.a) {
-            $$0.accept($$1);
-         }
+      public static fbn.b a(int $$0) {
+         return ($$0 & -65536) != 0 ? b : a;
+      }
+   }
+
+   public static enum c {
+      a(4, 2, 2, false),
+      b(5, 2, 1, true),
+      c(1, 2, 2, false),
+      d(3, 2, 1, true),
+      e(4, 3, 3, false),
+      f(5, 3, 1, true),
+      g(6, 3, 1, true),
+      h(4, 4, 4, false);
+
+      public final int i;
+      public final int j;
+      public final int k;
+      public final boolean l;
+
+      private c(final int $$0, final int $$1, final int $$2, final boolean $$3) {
+         this.i = $$0;
+         this.j = $$1;
+         this.k = $$2;
+         this.l = $$3;
       }
 
-      @Override
-      public fbk a(float $$0, float $$1, float $$2) {
-         this.a($$3 -> $$3.a($$0, $$1, $$2));
-         return this;
-      }
-
-      @Override
-      public fbk a(int $$0, int $$1, int $$2, int $$3) {
-         this.a($$4 -> $$4.a($$0, $$1, $$2, $$3));
-         return this;
-      }
-
-      @Override
-      public fbk a(float $$0, float $$1) {
-         this.a($$2 -> $$2.a($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public fbk a(int $$0, int $$1) {
-         this.a($$2 -> $$2.a($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public fbk b(int $$0, int $$1) {
-         this.a($$2 -> $$2.b($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public fbk b(float $$0, float $$1, float $$2) {
-         this.a($$3 -> $$3.b($$0, $$1, $$2));
-         return this;
-      }
-
-      @Override
-      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-         this.a($$11 -> $$11.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10));
+      public int a(int $$0) {
+         return switch (this) {
+            case a, h -> $$0 / 4 * 6;
+            case b, c, d, e, f, g -> $$0;
+            default -> 0;
+         };
       }
    }
 }

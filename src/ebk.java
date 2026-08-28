@@ -1,17 +1,17 @@
 import com.mojang.serialization.Codec;
 
-public class ebk extends ecd<eea> {
-   public ebk(Codec<eea> $$0) {
+public class ebk extends ece<eeb> {
+   public ebk(Codec<eeb> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecf<eea> $$0) {
+   public boolean a(ecg<eeb> $$0) {
       jd $$1 = $$0.e();
       dds $$2 = $$0.b();
       ayw $$3 = $$0.d();
 
-      eea $$4;
+      eeb $$4;
       for ($$4 = $$0.f(); $$1.v() > $$2.I_() + 3; $$1 = $$1.e()) {
          if (!$$2.u($$1.e())) {
             dtc $$5 = $$2.a_($$1.e());

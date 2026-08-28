@@ -1,154 +1,81 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.google.gson.JsonParser;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.authlib.yggdrasil.ProfileResult;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+import org.slf4j.Logger;
 
-public class fcs extends fda {
-   public final boolean a;
-   public final boolean b;
-   public final boolean c;
-   public final boolean d;
-   public final int e;
-   public final boolean f;
-   public final boolean g;
-   public final int h;
-   public final int i;
-   private final String o;
-   public final String j;
-   public final fcn.a k;
-   public long l;
-   @Nullable
-   public String m;
-   public boolean n;
-   private static final boolean p = false;
-   private static final boolean q = true;
-   private static final boolean r = true;
-   private static final boolean s = true;
-   private static final boolean t = true;
-   private static final int u = 0;
-   private static final boolean v = false;
-   private static final int w = 2;
-   private static final int x = 0;
-   private static final String y = "";
-   private static final String z = "";
-   private static final fcn.a A = fcn.a.a;
-   private static final long B = -1L;
-   private static final String C = null;
+public class fcs extends fdc {
+   private static final Logger b = LogUtils.getLogger();
+   public Map<Long, List<ProfileResult>> a = Map.of();
 
-   public fcs(boolean $$0, boolean $$1, boolean $$2, boolean $$3, int $$4, boolean $$5, int $$6, int $$7, boolean $$8, String $$9, String $$10, fcn.a $$11) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.g = $$8;
-      this.o = $$9;
-      this.j = $$10;
-      this.k = $$11;
-   }
+   public static fcs a(String $$0) {
+      fcs $$1 = new fcs();
+      Builder<Long, List<ProfileResult>> $$2 = ImmutableMap.builder();
 
-   public static fcs a() {
-      return new fcs(true, true, true, true, 0, false, 2, 0, false, "", "", A);
-   }
+      try {
+         JsonObject $$3 = aye.a($$0);
+         if (aye.d($$3, "lists")) {
+            for (JsonElement $$5 : $$3.getAsJsonArray("lists")) {
+               JsonObject $$6 = $$5.getAsJsonObject();
+               String $$7 = fez.b("playerList", $$6, null);
+               List<ProfileResult> $$9;
+               if ($$7 != null) {
+                  JsonElement $$8 = JsonParser.parseString($$7);
+                  if ($$8.isJsonArray()) {
+                     $$9 = a($$8.getAsJsonArray());
+                  } else {
+                     $$9 = Lists.newArrayList();
+                  }
+               } else {
+                  $$9 = Lists.newArrayList();
+               }
 
-   public static fcs b() {
-      fcs $$0 = a();
-      $$0.a(true);
-      return $$0;
-   }
+               $$2.put(fez.a("serverId", $$6, -1L), $$9);
+            }
+         }
+      } catch (Exception var11) {
+         b.error("Could not parse RealmsServerPlayerLists: {}", var11.getMessage());
+      }
 
-   public void a(boolean $$0) {
-      this.n = $$0;
-   }
-
-   public static fcs a(JsonObject $$0) {
-      fcs $$1 = new fcs(
-         fex.a("pvp", $$0, true),
-         fex.a("spawnAnimals", $$0, true),
-         fex.a("spawnMonsters", $$0, true),
-         fex.a("spawnNPCs", $$0, true),
-         fex.a("spawnProtection", $$0, 0),
-         fex.a("commandBlocks", $$0, false),
-         fex.a("difficulty", $$0, 2),
-         fex.a("gameMode", $$0, 0),
-         fex.a("forceGameMode", $$0, false),
-         fex.a("slotName", $$0, ""),
-         fex.a("version", $$0, ""),
-         fcn.d(fex.a("compatibility", $$0, fcn.a.a.name()))
-      );
-      $$1.l = fex.a("worldTemplateId", $$0, -1L);
-      $$1.m = fex.b("worldTemplateImage", $$0, C);
+      $$1.a = $$2.build();
       return $$1;
    }
 
-   public String a(int $$0) {
-      if (azl.h(this.o)) {
-         return this.n ? grp.a("mco.configure.world.slot.empty") : this.b($$0);
-      } else {
-         return this.o;
+   private static List<ProfileResult> a(JsonArray $$0) {
+      List<ProfileResult> $$1 = new ArrayList<>($$0.size());
+      MinecraftSessionService $$2 = fgo.Q().al();
+
+      for (JsonElement $$3 : $$0) {
+         if ($$3.isJsonObject()) {
+            UUID $$4 = fez.a("playerId", $$3.getAsJsonObject(), null);
+            if ($$4 != null && !fgo.Q().b($$4)) {
+               try {
+                  ProfileResult $$5 = $$2.fetchProfile($$4, false);
+                  if ($$5 != null) {
+                     $$1.add($$5);
+                  }
+               } catch (Exception var7) {
+                  b.error("Could not get name for {}", $$4, var7);
+               }
+            }
+         }
       }
+
+      return $$1;
    }
 
-   public String b(int $$0) {
-      return grp.a("mco.configure.world.slot", $$0);
-   }
-
-   public String c() {
-      JsonObject $$0 = new JsonObject();
-      if (!this.a) {
-         $$0.addProperty("pvp", this.a);
-      }
-
-      if (!this.b) {
-         $$0.addProperty("spawnAnimals", this.b);
-      }
-
-      if (!this.c) {
-         $$0.addProperty("spawnMonsters", this.c);
-      }
-
-      if (!this.d) {
-         $$0.addProperty("spawnNPCs", this.d);
-      }
-
-      if (this.e != 0) {
-         $$0.addProperty("spawnProtection", this.e);
-      }
-
-      if (this.f) {
-         $$0.addProperty("commandBlocks", this.f);
-      }
-
-      if (this.h != 2) {
-         $$0.addProperty("difficulty", this.h);
-      }
-
-      if (this.i != 0) {
-         $$0.addProperty("gameMode", this.i);
-      }
-
-      if (this.g) {
-         $$0.addProperty("forceGameMode", this.g);
-      }
-
-      if (!Objects.equals(this.o, "")) {
-         $$0.addProperty("slotName", this.o);
-      }
-
-      if (!Objects.equals(this.j, "")) {
-         $$0.addProperty("version", this.j);
-      }
-
-      if (this.k != A) {
-         $$0.addProperty("compatibility", this.k.name());
-      }
-
-      return $$0.toString();
-   }
-
-   public fcs d() {
-      return new fcs(this.a, this.b, this.c, this.d, this.e, this.f, this.h, this.i, this.g, this.o, this.j, this.k);
+   public List<ProfileResult> a(long $$0) {
+      List<ProfileResult> $$1 = this.a.get($$0);
+      return $$1 != null ? $$1 : List.of();
    }
 }

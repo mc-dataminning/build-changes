@@ -111,12 +111,12 @@ public class jd extends kh {
       return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new jd(this.u() + $$0, this.v() + $$1, this.w() + $$2);
    }
 
-   public exa b() {
-      return exa.b(this);
+   public exc b() {
+      return exc.b(this);
    }
 
-   public exa c() {
-      return exa.c(this);
+   public exc c() {
+      return exc.c(this);
    }
 
    public jd a(kh $$0) {
@@ -232,8 +232,8 @@ public class jd extends kh {
       return new jd.a(this.u(), this.v(), this.w());
    }
 
-   public exa a(exa $$0) {
-      return new exa(
+   public exc a(exc $$0) {
+      return new exc(
          ayo.a($$0.c, (double)((float)this.u() + 1.0E-5F), (double)this.u() + 1.0 - 1.0E-5F),
          ayo.a($$0.d, (double)((float)this.v() + 1.0E-5F), (double)this.v() + 1.0 - 1.0E-5F),
          ayo.a($$0.e, (double)((float)this.w() + 1.0E-5F), (double)this.w() + 1.0 - 1.0E-5F)
@@ -351,7 +351,7 @@ public class jd extends kh {
       return StreamSupport.stream(c($$0, $$1).spliterator(), false);
    }
 
-   public static Stream<jd> a(ejh $$0) {
+   public static Stream<jd> a(ejj $$0) {
       return a(
          Math.min($$0.h(), $$0.k()),
          Math.min($$0.i(), $$0.l()),
@@ -362,7 +362,7 @@ public class jd extends kh {
       );
    }
 
-   public static Stream<jd> a(ewv $$0) {
+   public static Stream<jd> a(ewx $$0) {
       return a(ayo.a($$0.a), ayo.a($$0.b), ayo.a($$0.c), ayo.a($$0.d), ayo.a($$0.e), ayo.a($$0.f));
    }
 

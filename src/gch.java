@@ -1,57 +1,76 @@
-public class gch extends gdl {
-   gch(fzd $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.u = 0.75F;
-      this.B = 0.999F;
-      this.j *= 0.8F;
-      this.k *= 0.8F;
-      this.l *= 0.8F;
-      this.k = (double)(this.r.i() * 0.4F + 0.05F);
-      this.D = this.D * (this.r.i() * 2.0F + 0.2F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+public class gch extends gcn {
+   private static final int a = 3;
+   private final gff b;
+   private final bsr D;
+   private final bsr E;
+   private int F;
+   private final gkh G;
+   private double H;
+   private double I;
+   private double J;
+   private double K;
+   private double L;
+   private double M;
+
+   public gch(gkh $$0, gff $$1, fzf $$2, bsr $$3, bsr $$4) {
+      this($$0, $$1, $$2, $$3, $$4, $$3.dr());
+   }
+
+   private gch(gkh $$0, gff $$1, fzf $$2, bsr $$3, bsr $$4, exc $$5) {
+      super($$2, $$3.dt(), $$3.dv(), $$3.dz(), $$5.c, $$5.d, $$5.e);
+      this.b = $$1;
+      this.D = this.a($$3);
+      this.E = $$4;
+      this.G = $$0;
+      this.c();
+      this.d();
+   }
+
+   private bsr a(bsr $$0) {
+      return (bsr)(!($$0 instanceof cjh) ? $$0 : ((cjh)$$0).C());
    }
 
    @Override
-   public gcp b() {
-      return gcp.b;
+   public gcr b() {
+      return gcr.e;
    }
 
    @Override
-   public int a(float $$0) {
-      int $$1 = super.a($$0);
-      int $$2 = 240;
-      int $$3 = $$1 >> 16 & 0xFF;
-      return 240 | $$3 << 16;
-   }
-
-   @Override
-   public float b(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      return this.D * (1.0F - $$1 * $$1);
+   public void a(fbm $$0, ffy $$1, float $$2) {
+      float $$3 = ((float)this.F + $$2) / 3.0F;
+      $$3 *= $$3;
+      double $$4 = ayo.d((double)$$2, this.K, this.H);
+      double $$5 = ayo.d((double)$$2, this.L, this.I);
+      double $$6 = ayo.d((double)$$2, this.M, this.J);
+      double $$7 = ayo.d((double)$$3, this.D.dt(), $$4);
+      double $$8 = ayo.d((double)$$3, this.D.dv(), $$5);
+      double $$9 = ayo.d((double)$$3, this.D.dz(), $$6);
+      gez.a $$10 = this.b.c();
+      exc $$11 = $$1.b();
+      this.G.a(this.D, $$7 - $$11.a(), $$8 - $$11.b(), $$9 - $$11.c(), this.D.dE(), $$2, new fbi(), $$10, this.G.a(this.D, $$2));
+      $$10.b();
    }
 
    @Override
    public void a() {
-      super.a();
-      if (!this.o) {
-         float $$0 = (float)this.s / (float)this.t;
-         if (this.r.i() > $$0) {
-            this.c.a(lm.ae, this.g, this.h, this.i, this.j, this.k, this.l);
-         }
+      this.F++;
+      if (this.F == 3) {
+         this.k();
       }
+
+      this.d();
+      this.c();
    }
 
-   public static class a implements gco<lq> {
-      private final gdg a;
+   private void c() {
+      this.H = this.E.dt();
+      this.I = (this.E.dv() + this.E.dx()) / 2.0;
+      this.J = this.E.dz();
+   }
 
-      public a(gdg $$0) {
-         this.a = $$0;
-      }
-
-      public gcl a(lq $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gch $$8 = new gch($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
-      }
+   private void d() {
+      this.K = this.H;
+      this.L = this.I;
+      this.M = this.J;
    }
 }

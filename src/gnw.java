@@ -1,24 +1,24 @@
-public class gnw extends goe<cjp, fvc<cjp>> {
-   private static final akr a = akr.b("textures/entity/creeper/creeper_armor.png");
-   private final fvc<cjp> b;
+public class gnw extends gov<cjt, fvi<cjt>> {
+   private final gft a;
 
-   public gnw(gmd<cjp, fvc<cjp>> $$0, fye $$1) {
+   public gnw(gmf<cjt, fvi<cjt>> $$0, gft $$1) {
       super($$0);
-      this.b = new fvc<>($$1.a(fyh.J));
+      this.a = $$1;
    }
 
-   @Override
-   protected float a(float $$0) {
-      return $$0 * 0.01F;
-   }
-
-   @Override
-   protected akr a() {
-      return a;
-   }
-
-   @Override
-   protected fvi<cjp> b() {
-      return this.b;
+   public void a(fbi $$0, gez $$1, int $$2, cjt $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      dtc $$10 = $$3.gk();
+      if ($$10 != null) {
+         $$0.a();
+         $$0.a(0.0F, 0.6875F, -0.75F);
+         $$0.a(a.b.rotationDegrees(20.0F));
+         $$0.a(a.d.rotationDegrees(45.0F));
+         $$0.a(0.25F, 0.1875F, 0.25F);
+         float $$11 = 0.5F;
+         $$0.b(-0.5F, -0.5F, 0.5F);
+         $$0.a(a.d.rotationDegrees(90.0F));
+         this.a.a($$10, $$0, $$1, $$2, gqc.d);
+         $$0.b();
+      }
    }
 }

@@ -1,63 +1,60 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
 import java.util.Optional;
 
-public class emc extends ejp {
-   public static final MapCodec<emc> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               a($$0),
-               emc.a.c.fieldOf("biome_temp").forGetter($$0x -> $$0x.e),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("large_probability").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("cluster_probability").forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, emc::new)
-   );
-   public final emc.a e;
-   public final float f;
-   public final float g;
+public class emc extends ejr {
+   public static final MapCodec<emc> d = a(emc::new);
 
-   public emc(ejp.c $$0, emc.a $$1, float $$2, float $$3) {
+   public emc(ejr.c $$0) {
       super($$0);
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
    }
 
    @Override
-   public Optional<ejp.b> a(ejp.a $$0) {
-      return a($$0, dyy.a.c, $$1 -> this.a($$1, $$0));
+   public Optional<ejr.b> a(ejr.a $$0) {
+      int $$1 = $$0.h().a(9);
+      int $$2 = $$0.h().b(9);
+
+      for (jm<ddw> $$4 : $$0.c().a($$1, $$0.b().f(), $$2, 29, $$0.d().b())) {
+         if (!$$4.a(awd.X)) {
+            return Optional.empty();
+         }
+      }
+
+      return a($$0, dyy.a.c, $$1x -> a($$1x, $$0));
    }
 
-   private void a(ekh $$0, ejp.a $$1) {
-      jd $$2 = new jd($$1.h().d(), 90, $$1.h().e());
-      dmm $$3 = dmm.a($$1.f());
-      emb.a($$1.e(), $$2, $$3, $$0, $$1.f(), this);
+   private static ejv a(dcd $$0, dzx $$1) {
+      int $$2 = $$0.d() - 29;
+      int $$3 = $$0.e() - 29;
+      ji $$4 = ji.c.a.a($$1);
+      return new emb.h($$1, $$2, $$3, $$4);
+   }
+
+   private static void a(ekj $$0, ejr.a $$1) {
+      $$0.a(a($$1.h(), $$1.f()));
+   }
+
+   public static ekg a(dcd $$0, long $$1, ekg $$2) {
+      if ($$2.a()) {
+         return $$2;
+      } else {
+         dzx $$3 = new dzx(new dyz(dzn.a()));
+         $$3.c($$1, $$0.e, $$0.f);
+         ejv $$4 = $$2.c().get(0);
+         ejj $$5 = $$4.f();
+         int $$6 = $$5.h();
+         int $$7 = $$5.j();
+         ji $$8 = ji.c.a.a($$3);
+         ji $$9 = Objects.requireNonNullElse($$4.i(), $$8);
+         ejv $$10 = new emb.h($$3, $$6, $$7, $$9);
+         ekj $$11 = new ekj();
+         $$11.a($$10);
+         return $$11.a();
+      }
    }
 
    @Override
-   public ejy<?> e() {
-      return ejy.k;
-   }
-
-   public static enum a implements azk {
-      a("warm"),
-      b("cold");
-
-      public static final Codec<emc.a> c = azk.a(emc.a::values);
-      private final String d;
-
-      private a(final String $$0) {
-         this.d = $$0;
-      }
-
-      public String a() {
-         return this.d;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   public eka<?> e() {
+      return eka.j;
    }
 }

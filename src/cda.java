@@ -11,11 +11,11 @@ public abstract class cda {
    protected final btp a;
    protected final dcw b;
    @Nullable
-   protected epq c;
+   protected eps c;
    protected double d;
    protected int e;
    protected int f;
-   protected exa g = exa.b;
+   protected exc g = exc.b;
    protected kh h = kh.g;
    protected long i;
    protected long j;
@@ -23,12 +23,12 @@ public abstract class cda {
    protected float l = 0.5F;
    protected boolean m;
    protected long n;
-   protected epp o;
+   protected epr o;
    @Nullable
    private jd s;
    private int t;
    private float u = 1.0F;
-   private final eps v;
+   private final epu v;
    private boolean w;
 
    public cda(btp $$0, dcw $$1) {
@@ -51,7 +51,7 @@ public abstract class cda {
       return this.s;
    }
 
-   protected abstract eps a(int var1);
+   protected abstract epu a(int var1);
 
    public void a(double $$0) {
       this.d = $$0;
@@ -71,45 +71,45 @@ public abstract class cda {
    }
 
    @Nullable
-   public final epq a(double $$0, double $$1, double $$2, int $$3) {
+   public final eps a(double $$0, double $$1, double $$2, int $$3) {
       return this.a(jd.a($$0, $$1, $$2), $$3);
    }
 
    @Nullable
-   public epq a(Stream<jd> $$0, int $$1) {
+   public eps a(Stream<jd> $$0, int $$1) {
       return this.a($$0.collect(Collectors.toSet()), 8, false, $$1);
    }
 
    @Nullable
-   public epq a(Set<jd> $$0, int $$1) {
+   public eps a(Set<jd> $$0, int $$1) {
       return this.a($$0, 8, false, $$1);
    }
 
    @Nullable
-   public epq a(jd $$0, int $$1) {
+   public eps a(jd $$0, int $$1) {
       return this.a(ImmutableSet.of($$0), 8, false, $$1);
    }
 
    @Nullable
-   public epq a(jd $$0, int $$1, int $$2) {
+   public eps a(jd $$0, int $$1, int $$2) {
       return this.a(ImmutableSet.of($$0), 8, false, $$1, (float)$$2);
    }
 
    @Nullable
-   public epq a(bsr $$0, int $$1) {
-      return this.a(ImmutableSet.of($$0.dp()), 16, true, $$1);
+   public eps a(bsr $$0, int $$1) {
+      return this.a(ImmutableSet.of($$0.do()), 16, true, $$1);
    }
 
    @Nullable
-   protected epq a(Set<jd> $$0, int $$1, boolean $$2, int $$3) {
+   protected eps a(Set<jd> $$0, int $$1, boolean $$2, int $$3) {
       return this.a($$0, $$1, $$2, $$3, (float)this.a.g(buw.m));
    }
 
    @Nullable
-   protected epq a(Set<jd> $$0, int $$1, boolean $$2, int $$3, float $$4) {
+   protected eps a(Set<jd> $$0, int $$1, boolean $$2, int $$3, float $$4) {
       if ($$0.isEmpty()) {
          return null;
-      } else if (this.a.dw() < (double)this.b.I_()) {
+      } else if (this.a.dv() < (double)this.b.I_()) {
          return null;
       } else if (!this.a()) {
          return null;
@@ -117,10 +117,10 @@ public abstract class cda {
          return this.c;
       } else {
          this.b.ag().a("pathfind");
-         jd $$5 = $$2 ? this.a.dp().d() : this.a.dp();
+         jd $$5 = $$2 ? this.a.do().d() : this.a.do();
          int $$6 = (int)($$4 + (float)$$1);
          ddj $$7 = new ddj(this.b, $$5.b(-$$6, -$$6, -$$6), $$5.b($$6, $$6, $$6));
-         epq $$8 = this.v.a($$7, this.a, $$0, $$4, $$3, this.u);
+         eps $$8 = this.v.a($$7, this.a, $$0, $$4, $$3, this.u);
          this.b.ag().c();
          if ($$8 != null && $$8.l() != null) {
             this.s = $$8.l();
@@ -141,11 +141,11 @@ public abstract class cda {
    }
 
    public boolean a(bsr $$0, double $$1) {
-      epq $$2 = this.a($$0, 1);
+      eps $$2 = this.a($$0, 1);
       return $$2 != null && this.a($$2, $$1);
    }
 
-   public boolean a(@Nullable epq $$0, double $$1) {
+   public boolean a(@Nullable eps $$0, double $$1) {
       if ($$0 == null) {
          this.c = null;
          return false;
@@ -162,7 +162,7 @@ public abstract class cda {
                return false;
             } else {
                this.d = $$1;
-               exa $$2 = this.b();
+               exc $$2 = this.b();
                this.f = this.e;
                this.g = $$2;
                return true;
@@ -172,7 +172,7 @@ public abstract class cda {
    }
 
    @Nullable
-   public epq j() {
+   public eps j() {
       return this.c;
    }
 
@@ -186,8 +186,8 @@ public abstract class cda {
          if (this.a()) {
             this.k();
          } else if (this.c != null && !this.c.c()) {
-            exa $$0 = this.b();
-            exa $$1 = this.c.a(this.a);
+            exc $$0 = this.b();
+            exc $$1 = this.c.a(this.a);
             if ($$0.d > $$1.d && !this.a.aF() && ayo.a($$0.c) == ayo.a($$1.c) && ayo.a($$0.e) == ayo.a($$1.e)) {
                this.c.a();
             }
@@ -195,24 +195,24 @@ public abstract class cda {
 
          agf.a(this.b, this.a, this.c, this.l);
          if (!this.l()) {
-            exa $$2 = this.c.a(this.a);
+            exc $$2 = this.c.a(this.a);
             this.a.J().a($$2.c, this.a($$2), $$2.e, this.d);
          }
       }
    }
 
-   protected double a(exa $$0) {
+   protected double a(exc $$0) {
       jd $$1 = jd.a((jw)$$0);
-      return this.b.a_($$1.e()).i() ? $$0.d : epy.a(this.b, $$1);
+      return this.b.a_($$1.e()).i() ? $$0.d : eqa.a(this.b, $$1);
    }
 
    protected void k() {
-      exa $$0 = this.b();
-      this.l = this.a.dk() > 0.75F ? this.a.dk() / 2.0F : 0.75F - this.a.dk() / 2.0F;
+      exc $$0 = this.b();
+      this.l = this.a.dj() > 0.75F ? this.a.dj() / 2.0F : 0.75F - this.a.dj() / 2.0F;
       kh $$1 = this.c.g();
-      double $$2 = Math.abs(this.a.du() - ((double)$$1.u() + 0.5));
-      double $$3 = Math.abs(this.a.dw() - (double)$$1.v());
-      double $$4 = Math.abs(this.a.dA() - ((double)$$1.w() + 0.5));
+      double $$2 = Math.abs(this.a.dt() - ((double)$$1.u() + 0.5));
+      double $$3 = Math.abs(this.a.dv() - (double)$$1.v());
+      double $$4 = Math.abs(this.a.dz() - ((double)$$1.w() + 0.5));
       boolean $$5 = $$2 < (double)this.l && $$4 < (double)this.l && $$3 < 1.0;
       if ($$5 || this.b(this.c.h().l) && this.c($$0)) {
          this.c.a();
@@ -221,19 +221,19 @@ public abstract class cda {
       this.b($$0);
    }
 
-   private boolean c(exa $$0) {
+   private boolean c(exc $$0) {
       if (this.c.f() + 1 >= this.c.e()) {
          return false;
       } else {
-         exa $$1 = exa.c(this.c.g());
+         exc $$1 = exc.c(this.c.g());
          if (!$$0.a((jw)$$1, 2.0)) {
             return false;
          } else if (this.a($$0, this.c.a(this.a))) {
             return true;
          } else {
-            exa $$2 = exa.c(this.c.d(this.c.f() + 1));
-            exa $$3 = $$1.d($$0);
-            exa $$4 = $$2.d($$0);
+            exc $$2 = exc.c(this.c.d(this.c.f() + 1));
+            exc $$3 = $$1.d($$0);
+            exc $$4 = $$2.d($$0);
             double $$5 = $$3.g();
             double $$6 = $$4.g();
             boolean $$7 = $$6 < $$5;
@@ -241,17 +241,17 @@ public abstract class cda {
             if (!$$7 && !$$8) {
                return false;
             } else {
-               exa $$9 = $$3.d();
-               exa $$10 = $$4.d();
+               exc $$9 = $$3.d();
+               exc $$10 = $$4.d();
                return $$10.b($$9) < 0.0;
             }
          }
       }
    }
 
-   protected void b(exa $$0) {
+   protected void b(exc $$0) {
       if (this.e - this.f > 100) {
-         float $$1 = this.a.fk() >= 1.0F ? this.a.fk() : this.a.fk() * this.a.fk();
+         float $$1 = this.a.fj() >= 1.0F ? this.a.fj() : this.a.fj() * this.a.fj();
          float $$2 = $$1 * 100.0F * 0.25F;
          if ($$0.g(this.g) < (double)($$2 * $$2)) {
             this.w = true;
@@ -271,8 +271,8 @@ public abstract class cda {
             this.i = this.i + ($$4 - this.j);
          } else {
             this.h = $$3;
-            double $$5 = $$0.f(exa.c(this.h));
-            this.k = this.a.fk() > 0.0F ? $$5 / (double)this.a.fk() * 20.0 : 0.0;
+            double $$5 = $$0.f(exc.c(this.h));
+            this.k = this.a.fj() > 0.0F ? $$5 / (double)this.a.fj() * 20.0 : 0.0;
          }
 
          if (this.k > 0.0 && (double)this.i > this.k * 3.0) {
@@ -307,17 +307,17 @@ public abstract class cda {
       this.c = null;
    }
 
-   protected abstract exa b();
+   protected abstract exc b();
 
    protected abstract boolean a();
 
    protected void W_() {
       if (this.c != null) {
          for (int $$0 = 0; $$0 < this.c.e(); $$0++) {
-            epo $$1 = this.c.a($$0);
-            epo $$2 = $$0 + 1 < this.c.e() ? this.c.a($$0 + 1) : null;
+            epq $$1 = this.c.a($$0);
+            epq $$2 = $$0 + 1 < this.c.e() ? this.c.a($$0 + 1) : null;
             dtc $$3 = this.b.a_(new jd($$1.a, $$1.b, $$1.c));
-            if ($$3.a(awe.bl)) {
+            if ($$3.a(awe.bm)) {
                this.c.a($$0, $$1.a($$1.a, $$1.b + 1, $$1.c));
                if ($$2 != null && $$1.b >= $$2.b) {
                   this.c.a($$0 + 1, $$1.a($$2.a, $$1.b + 1, $$2.c));
@@ -327,17 +327,17 @@ public abstract class cda {
       }
    }
 
-   protected boolean a(exa $$0, exa $$1) {
+   protected boolean a(exc $$0, exc $$1) {
       return false;
    }
 
-   public boolean b(ept $$0) {
-      return $$0 != ept.n && $$0 != ept.p && $$0 != ept.d;
+   public boolean b(epv $$0) {
+      return $$0 != epv.n && $$0 != epv.p && $$0 != epv.d;
    }
 
-   protected static boolean a(btp $$0, exa $$1, exa $$2, boolean $$3) {
-      exa $$4 = new exa($$2.c, $$2.d + (double)$$0.dl() * 0.5, $$2.e);
-      return $$0.dP().a(new dcf($$1, $$4, dcf.a.a, $$3 ? dcf.b.c : dcf.b.a, $$0)).c() == ewy.a.a;
+   protected static boolean a(btp $$0, exc $$1, exc $$2, boolean $$3) {
+      exc $$4 = new exc($$2.c, $$2.d + (double)$$0.dk() * 0.5, $$2.e);
+      return $$0.dO().a(new dcf($$1, $$4, dcf.a.a, $$3 ? dcf.b.c : dcf.b.a, $$0)).c() == exa.a.a;
    }
 
    public boolean a(jd $$0) {
@@ -345,7 +345,7 @@ public abstract class cda {
       return this.b.a_($$1).i(this.b, $$1);
    }
 
-   public epp o() {
+   public epr o() {
       return this.o;
    }
 
@@ -361,8 +361,8 @@ public abstract class cda {
       if (this.m) {
          return false;
       } else if (this.c != null && !this.c.c() && this.c.e() != 0) {
-         epo $$1 = this.c.d();
-         exa $$2 = new exa(((double)$$1.a + this.a.du()) / 2.0, ((double)$$1.b + this.a.dw()) / 2.0, ((double)$$1.c + this.a.dA()) / 2.0);
+         epq $$1 = this.c.d();
+         exc $$2 = new exc(((double)$$1.a + this.a.dt()) / 2.0, ((double)$$1.b + this.a.dv()) / 2.0, ((double)$$1.c + this.a.dz()) / 2.0);
          return $$0.a($$2, (double)(this.c.e() - this.c.f()));
       } else {
          return false;

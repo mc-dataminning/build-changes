@@ -31,7 +31,7 @@ public class btm extends bsr {
    }
 
    @Override
-   public avq df() {
+   public avq de() {
       return avq.d;
    }
 
@@ -46,9 +46,9 @@ public class btm extends bsr {
 
    private void v() {
       jd $$0 = this.w();
-      dtc $$1 = this.dP().a_($$0);
+      dtc $$1 = this.dO().a_($$0);
       if ($$1.a(dga.ss)) {
-         ((dkn)$$1.b()).d($$1, this.dP(), $$0);
+         ((dkn)$$1.b()).d($$1, this.dO(), $$0);
       }
    }
 
@@ -56,17 +56,17 @@ public class btm extends bsr {
    public void l() {
       super.l();
       if (this.f == 2) {
-         if (this.dP().x_()) {
-            this.dP().a(this.du(), this.dw(), this.dA(), avp.nW, avq.d, 10000.0F, 0.8F + this.ah.i() * 0.2F, false);
-            this.dP().a(this.du(), this.dw(), this.dA(), avp.nV, avq.d, 2.0F, 0.5F + this.ah.i() * 0.2F, false);
+         if (this.dO().x_()) {
+            this.dO().a(this.dt(), this.dv(), this.dz(), avp.nW, avq.d, 10000.0F, 0.8F + this.ah.i() * 0.2F, false);
+            this.dO().a(this.dt(), this.dv(), this.dz(), avp.nV, avq.d, 2.0F, 0.5F + this.ah.i() * 0.2F, false);
          } else {
-            bqo $$0 = this.dP().al();
+            bqo $$0 = this.dO().al();
             if ($$0 == bqo.c || $$0 == bqo.d) {
                this.b(4);
             }
 
             this.v();
-            b(this.dP(), this.w());
+            b(this.dO(), this.w());
             this.a(dxz.G);
          }
       }
@@ -74,15 +74,15 @@ public class btm extends bsr {
       this.f--;
       if (this.f < 0) {
          if (this.g == 0) {
-            if (this.dP() instanceof aqu) {
-               List<bsr> $$1 = this.dP()
+            if (this.dO() instanceof aqu) {
+               List<bsr> $$1 = this.dO()
                   .a(
                      this,
-                     new ewv(this.du() - 15.0, this.dw() - 15.0, this.dA() - 15.0, this.du() + 15.0, this.dw() + 6.0 + 15.0, this.dA() + 15.0),
+                     new ewx(this.dt() - 15.0, this.dv() - 15.0, this.dz() - 15.0, this.dt() + 15.0, this.dv() + 6.0 + 15.0, this.dz() + 15.0),
                      $$0 -> $$0.bE() && !this.j.contains($$0)
                   );
 
-               for (aqv $$2 : ((aqu)this.dP()).a($$0 -> $$0.f(this) < 256.0F)) {
+               for (aqv $$2 : ((aqu)this.dO()).a($$0 -> $$0.f(this) < 256.0F)) {
                   an.V.a($$2, this, $$1);
                }
             }
@@ -97,14 +97,14 @@ public class btm extends bsr {
       }
 
       if (this.f >= 0) {
-         if (!(this.dP() instanceof aqu)) {
-            this.dP().c(2);
+         if (!(this.dO() instanceof aqu)) {
+            this.dO().c(2);
          } else if (!this.h) {
-            List<bsr> $$3 = this.dP()
-               .a(this, new ewv(this.du() - 3.0, this.dw() - 3.0, this.dA() - 3.0, this.du() + 3.0, this.dw() + 6.0 + 3.0, this.dA() + 3.0), bsr::bE);
+            List<bsr> $$3 = this.dO()
+               .a(this, new ewx(this.dt() - 3.0, this.dv() - 3.0, this.dz() - 3.0, this.dt() + 3.0, this.dv() + 6.0 + 3.0, this.dz() + 3.0), bsr::bE);
 
             for (bsr $$4 : $$3) {
-               $$4.a((aqu)this.dP(), this);
+               $$4.a((aqu)this.dO(), this);
             }
 
             this.j.addAll($$3);
@@ -116,24 +116,24 @@ public class btm extends bsr {
    }
 
    private jd w() {
-      exa $$0 = this.dn();
+      exc $$0 = this.dm();
       return jd.a($$0.c, $$0.d - 1.0E-6, $$0.e);
    }
 
    private void b(int $$0) {
-      if (!this.h && !this.dP().B && this.dP().ab().b(dcs.b)) {
-         jd $$1 = this.dp();
-         dtc $$2 = dfl.a(this.dP(), $$1);
-         if (this.dP().a_($$1).i() && $$2.a((dcz)this.dP(), $$1)) {
-            this.dP().b($$1, $$2);
+      if (!this.h && !this.dO().B && this.dO().ab().b(dcs.b)) {
+         jd $$1 = this.do();
+         dtc $$2 = dfl.a(this.dO(), $$1);
+         if (this.dO().a_($$1).i() && $$2.a((dcz)this.dO(), $$1)) {
+            this.dO().b($$1, $$2);
             this.k++;
          }
 
          for (int $$3 = 0; $$3 < $$0; $$3++) {
             jd $$4 = $$1.b(this.ah.a(3) - 1, this.ah.a(3) - 1, this.ah.a(3) - 1);
-            $$2 = dfl.a(this.dP(), $$4);
-            if (this.dP().a_($$4).i() && $$2.a((dcz)this.dP(), $$4)) {
-               this.dP().b($$4, $$2);
+            $$2 = dfl.a(this.dO(), $$4);
+            if (this.dO().a_($$4).i() && $$2.a((dcz)this.dO(), $$4)) {
+               this.dO().b($$4, $$2);
                this.k++;
             }
          }
@@ -192,7 +192,7 @@ public class btm extends bsr {
 
    @Override
    public boolean a(double $$0) {
-      double $$1 = 64.0 * cE();
+      double $$1 = 64.0 * cD();
       return $$0 < $$1 * $$1;
    }
 

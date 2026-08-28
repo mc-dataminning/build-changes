@@ -39,21 +39,21 @@ public class coc extends cnd {
       int $$1 = this.ao.a(g);
       if ($$1 > 0 && (this.i || this.E()) && $$0 != null) {
          if (!this.J()) {
-            if (!this.dP().B && this.d == cnd.a.b) {
+            if (!this.dO().B && this.d == cnd.a.b) {
                this.a(this.w(), 0.1F);
             }
 
             this.aq();
          } else {
             this.b(true);
-            exa $$2 = $$0.by().d(this.dn());
-            this.o(this.du(), this.dw() + $$2.d * 0.015 * (double)$$1, this.dA());
-            if (this.dP().B) {
-               this.ae = this.dw();
+            exc $$2 = $$0.by().d(this.dm());
+            this.o(this.dt(), this.dv() + $$2.d * 0.015 * (double)$$1, this.dz());
+            if (this.dO().B) {
+               this.ae = this.dv();
             }
 
             double $$3 = 0.05 * (double)$$1;
-            this.i(this.ds().a(0.95).e($$2.d().a($$3)));
+            this.i(this.dr().a(0.95).e($$2.d().a($$3)));
             if (this.f == 0) {
                this.a(avp.zC, 10.0F, 1.0F);
             }
@@ -77,18 +77,18 @@ public class coc extends cnd {
 
    @Nullable
    @Override
-   protected ewx a(exa $$0, exa $$1) {
+   protected ewz a(exc $$0, exc $$1) {
       return this.i ? null : super.a($$0, $$1);
    }
 
    @Override
-   protected void a(ewx $$0) {
+   protected void a(ewz $$0) {
       bsr $$1 = $$0.a();
       float $$2 = 8.0F;
       bsr $$3 = this.s();
-      brk $$4 = this.dQ().a(this, (bsr)($$3 == null ? this : $$3));
-      if (this.dP() instanceof aqu $$5) {
-         $$2 = dae.a($$5, this.dT(), $$1, $$4, $$2);
+      brk $$4 = this.dP().a(this, (bsr)($$3 == null ? this : $$3));
+      if (this.dO() instanceof aqu $$5) {
+         $$2 = dae.a($$5, this.dS(), $$1, $$4, $$2);
       }
 
       this.i = true;
@@ -97,8 +97,8 @@ public class coc extends cnd {
             return;
          }
 
-         if (this.dP() instanceof aqu $$6) {
-            dae.a($$6, $$1, $$4, this.dT());
+         if (this.dO() instanceof aqu $$6) {
+            dae.a($$6, $$1, $$4, this.dS());
          }
 
          if ($$1 instanceof btn $$7) {
@@ -107,24 +107,24 @@ public class coc extends cnd {
          }
       }
 
-      this.i(this.ds().d(-0.01, -0.1, -0.01));
+      this.i(this.dr().d(-0.01, -0.1, -0.01));
       this.a(avp.zA, 1.0F, 1.0F);
    }
 
    @Override
-   protected void a(aqu $$0, eww $$1, cuq $$2) {
-      exa $$3 = $$1.a().a($$1.e());
+   protected void a(aqu $$0, ewy $$1, cuq $$2) {
+      exc $$3 = $$1.a().a($$1.e());
       dae.a($$0, $$2, this.s() instanceof btn $$4 ? $$4 : null, this, null, $$3, $$0.a_($$1.a()), $$0x -> this.ap());
    }
 
    @Override
-   public cuq dT() {
+   public cuq dS() {
       return this.y();
    }
 
    @Override
    protected boolean a(cmx $$0) {
-      return super.a($$0) || this.E() && this.e($$0) && $$0.fZ().f(this.w());
+      return super.a($$0) || this.E() && this.e($$0) && $$0.fY().f(this.w());
    }
 
    @Override
@@ -158,7 +158,7 @@ public class coc extends cnd {
    }
 
    private byte c(cuq $$0) {
-      return this.dP() instanceof aqu $$1 ? (byte)ayo.a(dae.c($$1, $$0, this), 0, 127) : 0;
+      return this.dO() instanceof aqu $$1 ? (byte)ayo.a(dae.c($$1, $$0, this), 0, 127) : 0;
    }
 
    @Override

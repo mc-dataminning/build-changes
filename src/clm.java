@@ -9,8 +9,8 @@ public abstract class clm extends ckd {
       super($$0, $$1);
       this.a_(true);
       this.x();
-      this.a(ept.n, 16.0F);
-      this.a(ept.o, -1.0F);
+      this.a(epv.n, 16.0F);
+      this.a(epv.o, -1.0F);
    }
 
    private void x() {
@@ -21,7 +21,7 @@ public abstract class clm extends ckd {
 
    protected abstract boolean s();
 
-   public void w(boolean $$0) {
+   public void x(boolean $$0) {
       this.ar().a(b, $$0);
    }
 
@@ -48,27 +48,27 @@ public abstract class clm extends ckd {
    @Override
    public void a(ub $$0) {
       super.a($$0);
-      this.w($$0.q("IsImmuneToZombification"));
+      this.x($$0.q("IsImmuneToZombification"));
       this.d = $$0.h("TimeInOverworld");
    }
 
    @Override
    protected void ab() {
       super.ab();
-      if (this.gl()) {
+      if (this.gk()) {
          this.d++;
       } else {
          this.d = 0;
       }
 
       if (this.d > 300) {
-         this.gp();
-         this.a((aqu)this.dP());
+         this.go();
+         this.a((aqu)this.dO());
       }
    }
 
-   public boolean gl() {
-      return !this.dP().D_().b() && !this.t() && !this.ga();
+   public boolean gk() {
+      return !this.dO().D_().b() && !this.t() && !this.fZ();
    }
 
    protected void a(aqu $$0) {
@@ -78,11 +78,11 @@ public abstract class clm extends ckd {
       }
    }
 
-   public boolean gm() {
+   public boolean gl() {
       return !this.o_();
    }
 
-   public abstract clp gn();
+   public abstract clp gm();
 
    @Nullable
    @Override
@@ -90,8 +90,8 @@ public abstract class clm extends ckd {
       return this.P();
    }
 
-   protected boolean go() {
-      return this.eU().g() instanceof cwj;
+   protected boolean gn() {
+      return this.eT().g() instanceof cwj;
    }
 
    @Override
@@ -107,5 +107,5 @@ public abstract class clm extends ckd {
       agf.a(this);
    }
 
-   protected abstract void gp();
+   protected abstract void go();
 }

@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
-public record bta(akq<eru> c, Map<bsy, Float> d) {
+public record bta(akq<erw> c, Map<bsy, Float> d) {
    public static final Codec<Map<bsy, Float>> a = Codec.either(Codec.FLOAT, Codec.unboundedMap(bsy.i, Codec.FLOAT))
       .xmap($$0 -> (Map)$$0.map(bta::a, Function.identity()), $$0 -> {
          boolean $$1 = $$0.values().stream().distinct().count() == 1L;
@@ -33,7 +33,7 @@ public record bta(akq<eru> c, Map<bsy, Float> d) {
       return $$2;
    }
 
-   public akq<eru> a() {
+   public akq<erw> a() {
       return this.c;
    }
 

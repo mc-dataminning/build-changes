@@ -30,7 +30,7 @@ public class cgq extends cfe implements btl, buo<cgq.d>, cfg {
 
    public cgq(bsx<? extends cgq> $$0, dcw $$1) {
       super($$0, $$1);
-      this.a(ept.j, 0.0F);
+      this.a(epv.j, 0.0F);
       this.bR = new cgq.c(this);
       this.bQ = new cgq.b(this, 20);
    }
@@ -56,7 +56,7 @@ public class cgq extends cfe implements btl, buo<cgq.d>, cfg {
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      $$0.a("Variant", this.gl().a());
+      $$0.a("Variant", this.gk().a());
       $$0.a("FromBucket", this.t());
    }
 
@@ -64,12 +64,12 @@ public class cgq extends cfe implements btl, buo<cgq.d>, cfg {
    public void a(ub $$0) {
       super.a($$0);
       this.a(cgq.d.a($$0.h("Variant")));
-      this.w($$0.q("FromBucket"));
+      this.x($$0.q("FromBucket"));
    }
 
    @Override
    public void S() {
-      if (!this.gm()) {
+      if (!this.gl()) {
          super.S();
       }
    }
@@ -102,7 +102,7 @@ public class cgq extends cfe implements btl, buo<cgq.d>, cfg {
    public void aw() {
       int $$0 = this.cm();
       super.aw();
-      if (!this.ga()) {
+      if (!this.fZ()) {
          this.t($$0);
       }
    }
@@ -112,7 +112,7 @@ public class cgq extends cfe implements btl, buo<cgq.d>, cfg {
          this.j($$0 - 1);
          if (this.cm() == -20) {
             this.j(0);
-            this.a(this.dQ().s(), 2.0F);
+            this.a(this.dP().s(), 2.0F);
          }
       } else {
          this.j(this.cl());
@@ -130,7 +130,7 @@ public class cgq extends cfe implements btl, buo<cgq.d>, cfg {
       return 6000;
    }
 
-   public cgq.d gl() {
+   public cgq.d gk() {
       return cgq.d.a(this.ao.a(ch));
    }
 
@@ -148,15 +148,15 @@ public class cgq extends cfe implements btl, buo<cgq.d>, cfg {
    }
 
    @Override
-   public boolean cD() {
+   public boolean cC() {
       return false;
    }
 
-   public void x(boolean $$0) {
+   public void y(boolean $$0) {
       this.ao.a(ci, $$0);
    }
 
-   public boolean gm() {
+   public boolean gl() {
       return this.ao.a(ci);
    }
 
@@ -166,7 +166,7 @@ public class cgq extends cfe implements btl, buo<cgq.d>, cfg {
    }
 
    @Override
-   public void w(boolean $$0) {
+   public void x(boolean $$0) {
       this.ao.a(cj, $$0);
    }
 
@@ -179,11 +179,11 @@ public class cgq extends cfe implements btl, buo<cgq.d>, cfg {
          if (a(this.ah)) {
             $$3 = cgq.d.b(this.ah);
          } else {
-            $$3 = this.ah.h() ? this.gl() : ((cgq)$$1).gl();
+            $$3 = this.ah.h() ? this.gk() : ((cgq)$$1).gk();
          }
 
          $$2.a($$3);
-         $$2.fS();
+         $$2.fR();
       }
 
       return $$2;
@@ -201,19 +201,19 @@ public class cgq extends cfe implements btl, buo<cgq.d>, cfg {
 
    @Override
    protected void ab() {
-      this.dP().ag().a("axolotlBrain");
-      this.dU().a((aqu)this.dP(), this);
-      this.dP().ag().c();
-      this.dP().ag().a("axolotlActivityUpdate");
+      this.dO().ag().a("axolotlBrain");
+      this.dT().a((aqu)this.dO(), this);
+      this.dO().ag().c();
+      this.dO().ag().a("axolotlActivityUpdate");
       cgr.a(this);
-      this.dP().ag().c();
-      if (!this.ga()) {
-         Optional<Integer> $$0 = this.dU().c(ccs.N);
-         this.x($$0.isPresent() && $$0.get() > 0);
+      this.dO().ag().c();
+      if (!this.fZ()) {
+         Optional<Integer> $$0 = this.dT().c(ccs.N);
+         this.y($$0.isPresent() && $$0.get() > 0);
       }
    }
 
-   public static buv.a gn() {
+   public static buv.a gm() {
       return btp.C().a(buw.s, 14.0).a(buw.v, 1.0).a(buw.c, 2.0).a(buw.B, 1.0);
    }
 
@@ -223,21 +223,21 @@ public class cgq extends cfe implements btl, buo<cgq.d>, cfg {
    }
 
    @Override
-   public void ge() {
+   public void gd() {
       this.a(avp.aK, 1.0F, 1.0F);
    }
 
    @Override
    public boolean a(brk $$0, float $$1) {
-      float $$2 = this.ex();
-      if (!this.dP().B
-         && !this.ga()
-         && this.dP().z.a(3) == 0
-         && ((float)this.dP().z.a(3) < $$1 || $$2 / this.eO() < 0.5F)
+      float $$2 = this.ew();
+      if (!this.dO().B
+         && !this.fZ()
+         && this.dO().z.a(3) == 0
+         && ((float)this.dO().z.a(3) < $$1 || $$2 / this.eN() < 0.5F)
          && $$1 < $$2
          && this.bf()
          && ($$0.d() != null || $$0.c() != null)
-         && !this.gm()) {
+         && !this.gl()) {
          this.bF.a(ccs.N, 200);
       }
 
@@ -263,9 +263,9 @@ public class cgq extends cfe implements btl, buo<cgq.d>, cfg {
    public void n(cuq $$0) {
       cfg.a(this, $$0);
       cxh.a(kq.N, $$0, $$0x -> {
-         $$0x.a("Variant", this.gl().a());
+         $$0x.a("Variant", this.gk().a());
          $$0x.a("Age", this.g());
-         buq<?> $$1 = this.dU();
+         buq<?> $$1 = this.dT();
          if ($$1.a(ccs.U)) {
             $$0x.a("HuntingCooldown", $$1.e(ccs.U));
          }
@@ -281,7 +281,7 @@ public class cgq extends cfe implements btl, buo<cgq.d>, cfg {
       }
 
       if ($$0.e("HuntingCooldown")) {
-         this.dU().a(ccs.U, true, $$0.i("HuntingCooldown"));
+         this.dT().a(ccs.U, true, $$0.i("HuntingCooldown"));
       }
    }
 
@@ -296,19 +296,19 @@ public class cgq extends cfe implements btl, buo<cgq.d>, cfg {
    }
 
    @Override
-   public boolean eq() {
-      return !this.gm() && super.eq();
+   public boolean ep() {
+      return !this.gl() && super.ep();
    }
 
    public static void a(cgq $$0, btn $$1) {
-      dcw $$2 = $$0.dP();
-      if ($$1.ey()) {
-         brk $$3 = $$1.ez();
+      dcw $$2 = $$0.dO();
+      if ($$1.ex()) {
+         brk $$3 = $$1.ey();
          if ($$3 != null) {
             bsr $$4 = $$3.d();
             if ($$4 != null && $$4.am() == bsx.by) {
                cmx $$5 = (cmx)$$4;
-               List<cmx> $$6 = $$2.a(cmx.class, $$0.cL().g(20.0));
+               List<cmx> $$6 = $$2.a(cmx.class, $$0.cK().g(20.0));
                if ($$6.contains($$5)) {
                   $$0.a($$5);
                }
@@ -361,18 +361,18 @@ public class cgq extends cfe implements btl, buo<cgq.d>, cfg {
    }
 
    @Override
-   protected buq.b<cgq> dV() {
+   protected buq.b<cgq> dU() {
       return buq.a(cc, cb);
    }
 
    @Override
    protected buq<?> a(Dynamic<?> $$0) {
-      return cgr.a(this.dV().a($$0));
+      return cgr.a(this.dU().a($$0));
    }
 
    @Override
-   public buq<cgq> dU() {
-      return (buq<cgq>)super.dU();
+   public buq<cgq> dT() {
+      return (buq<cgq>)super.dT();
    }
 
    @Override
@@ -382,11 +382,11 @@ public class cgq extends cfe implements btl, buo<cgq.d>, cfg {
    }
 
    @Override
-   public void a(exa $$0) {
-      if (this.db() && this.bf()) {
-         this.a(this.fk(), $$0);
-         this.a(bts.a, this.ds());
-         this.i(this.ds().a(0.9));
+   public void a(exc $$0) {
+      if (this.da() && this.bf()) {
+         this.a(this.fj(), $$0);
+         this.a(bts.a, this.dr());
+         this.i(this.dr().a(0.9));
       } else {
          super.a($$0);
       }
@@ -413,7 +413,7 @@ public class cgq extends cfe implements btl, buo<cgq.d>, cfg {
    }
 
    public static boolean a(bsx<? extends btn> $$0, ddl $$1, btr $$2, jd $$3, ayw $$4) {
-      return $$1.a_($$3.e()).a(awe.bY);
+      return $$1.a_($$3.e()).a(awe.bZ);
    }
 
    public static class a extends bsl.a {
@@ -436,7 +436,7 @@ public class cgq extends cfe implements btl, buo<cgq.d>, cfg {
 
       @Override
       public void a() {
-         if (!cgq.this.gm()) {
+         if (!cgq.this.gl()) {
             super.a();
          }
       }
@@ -452,7 +452,7 @@ public class cgq extends cfe implements btl, buo<cgq.d>, cfg {
 
       @Override
       public void a() {
-         if (!this.l.gm()) {
+         if (!this.l.gl()) {
             super.a();
          }
       }

@@ -7,7 +7,7 @@ public class dla extends dgh implements dgb {
       $$0 -> $$0.group(akq.a(lu.aI).fieldOf("feature").forGetter($$0x -> $$0x.d), u()).apply($$0, dla::new)
    );
    protected static final float b = 3.0F;
-   protected static final ext c = dfy.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
+   protected static final exv c = dfy.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
    private final akq<ebq<?, ?>> d;
 
    @Override
@@ -21,7 +21,7 @@ public class dla extends dgh implements dgb {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return c;
    }
 
@@ -64,7 +64,7 @@ public class dla extends dgh implements dgb {
    protected boolean a(dtc $$0, dcz $$1, jd $$2) {
       jd $$3 = $$2.e();
       dtc $$4 = $$1.a_($$3);
-      return $$4.a(awe.ba) ? true : $$1.b($$2, 0) < 13 && this.b($$4, $$1, $$3);
+      return $$4.a(awe.bb) ? true : $$1.b($$2, 0) < 13 && this.b($$4, $$1, $$3);
    }
 
    public boolean a(aqu $$0, jd $$1, dtc $$2, ayw $$3) {

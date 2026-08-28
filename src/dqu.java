@@ -22,7 +22,7 @@ public abstract class dqu {
       }
 
       this.a($$1, $$2, $$3, $$4, this.b);
-      this.c = Math.max($$0.gz(), this.c);
+      this.c = Math.max($$0.gy(), this.c);
    }
 
    public void b(cmx $$0, dcw $$1, jd $$2, dtc $$3) {
@@ -38,7 +38,7 @@ public abstract class dqu {
 
    private List<cmx> a(dcw $$0, jd $$1) {
       double $$2 = this.c + 4.0;
-      ewv $$3 = new ewv($$1).g($$2);
+      ewx $$3 = new ewx($$1).g($$2);
       return $$0.a(dxn.a(cmx.class), $$3, this::a);
    }
 
@@ -47,7 +47,7 @@ public abstract class dqu {
       this.c = 0.0;
 
       for (cmx $$4 : $$3) {
-         this.c = Math.max($$4.gz(), this.c);
+         this.c = Math.max($$4.gy(), this.c);
       }
 
       int $$5 = $$3.size();

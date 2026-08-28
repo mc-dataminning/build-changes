@@ -5,8 +5,8 @@ public class doc extends dgh implements dgb {
    private static final float d = 0.003F;
    public static final int b = 3;
    public static final duc c = dts.as;
-   private static final ext e = dfy.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
-   private static final ext f = dfy.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+   private static final exv e = dfy.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
+   private static final exv f = dfy.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
    public MapCodec<doc> a() {
@@ -24,7 +24,7 @@ public class doc extends dgh implements dgb {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       if ($$0.c(c) == 0) {
          return e;
       } else {
@@ -50,10 +50,10 @@ public class doc extends dgh implements dgb {
    @Override
    protected void a(dtc $$0, dcw $$1, jd $$2, bsr $$3) {
       if ($$3 instanceof btn && $$3.am() != bsx.Q && $$3.am() != bsx.h) {
-         $$3.a($$0, new exa(0.8F, 0.75, 0.8F));
-         if (!$$1.B && $$0.c(c) > 0 && ($$3.ad != $$3.du() || $$3.af != $$3.dA())) {
-            double $$4 = Math.abs($$3.du() - $$3.ad);
-            double $$5 = Math.abs($$3.dA() - $$3.af);
+         $$3.a($$0, new exc(0.8F, 0.75, 0.8F));
+         if (!$$1.B && $$0.c(c) > 0 && ($$3.ad != $$3.dt() || $$3.af != $$3.dz())) {
+            double $$4 = Math.abs($$3.dt() - $$3.ad);
+            double $$5 = Math.abs($$3.dz() - $$3.af);
             if ($$4 >= 0.003F || $$5 >= 0.003F) {
                $$3.a($$1.aj().t(), 1.0F);
             }
@@ -62,14 +62,14 @@ public class doc extends dgh implements dgb {
    }
 
    @Override
-   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, eww $$6) {
+   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, ewy $$6) {
       int $$7 = $$1.c(c);
       boolean $$8 = $$7 == 3;
       return !$$8 && $$0.a(cut.ry) ? bqt.e : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
       int $$5 = $$0.c(c);
       boolean $$6 = $$5 == 3;
       if ($$5 > 1) {

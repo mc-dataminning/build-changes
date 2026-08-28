@@ -2,7 +2,7 @@ import com.mojang.serialization.MapCodec;
 
 public class dnp extends dfy {
    public static final MapCodec<dnp> a = b(dnp::new);
-   private static final ext b = dfy.a(2.0, 13.0, 2.0, 14.0, 16.0, 14.0);
+   private static final exv b = dfy.a(2.0, 13.0, 2.0, 14.0, 16.0, 14.0);
    private static final int c = 14;
    private static final int d = 10;
    private static final int e = 10;
@@ -47,7 +47,7 @@ public class dnp extends dfy {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return b;
    }
 }

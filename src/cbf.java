@@ -33,7 +33,7 @@ public class cbf extends cam {
          return false;
       } else {
          if (this.c.bR()) {
-            jd $$0 = this.a(this.c.dP(), this.c, 5);
+            jd $$0 = this.a(this.c.dO(), this.c, 5);
             if ($$0 != null) {
                this.e = (double)$$0.u();
                this.f = (double)$$0.v();
@@ -47,11 +47,11 @@ public class cbf extends cam {
    }
 
    protected boolean h() {
-      return this.c.ez() != null && this.c.ez().a(this.a.apply(this.c));
+      return this.c.ey() != null && this.c.ey().a(this.a.apply(this.c));
    }
 
    protected boolean i() {
-      exa $$0 = cej.a(this.c, 5, 4);
+      exc $$0 = cej.a(this.c, 5, 4);
       if ($$0 == null) {
          return false;
       } else {
@@ -84,7 +84,7 @@ public class cbf extends cam {
 
    @Nullable
    protected jd a(dcc $$0, bsr $$1, int $$2) {
-      jd $$3 = $$1.dp();
-      return !$$0.a_($$3).k($$0, $$3).c() ? null : jd.a($$1.dp(), $$2, 1, $$1x -> $$0.b_($$1x).a(awk.a)).orElse(null);
+      jd $$3 = $$1.do();
+      return !$$0.a_($$3).k($$0, $$3).c() ? null : jd.a($$1.do(), $$2, 1, $$1x -> $$0.b_($$1x).a(awk.a)).orElse(null);
    }
 }

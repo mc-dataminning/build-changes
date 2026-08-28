@@ -30,12 +30,12 @@ public class bww<E extends btw> extends bvh<E> {
    }
 
    protected void a(aqu $$0, btw $$1, long $$2) {
-      buq<?> $$3 = $$1.dU();
+      buq<?> $$3 = $$1.dT();
       $$3.c(ccs.h).flatMap($$1x -> $$1x.a($$1xx -> this.h.a($$1, $$1xx))).ifPresent($$1x -> this.b($$1, $$1x));
    }
 
    protected void b(aqu $$0, E $$1, long $$2) {
-      buq<?> $$3 = $$1.dU();
+      buq<?> $$3 = $$1.dT();
       if (!$$3.a(ccs.W)) {
          $$0.a($$1, (byte)59);
          $$3.a(ccs.V, this.d.applyAsInt($$1));
@@ -48,15 +48,15 @@ public class bww<E extends btw> extends bvh<E> {
 
    protected void d(aqu $$0, E $$1, long $$2) {
       if (!this.l.isEmpty()) {
-         $$1.dU().a(ccs.m, new ccv(this.l.get().a(), this.g, 0));
-         $$1.dU().a(ccs.n, new bvs(this.l.get().c(), true));
-         boolean $$3 = !this.l.get().c().dp().equals(this.l.get().b());
+         $$1.dT().a(ccs.m, new ccv(this.l.get().a(), this.g, 0));
+         $$1.dT().a(ccs.n, new bvs(this.l.get().c(), true));
+         boolean $$3 = !this.l.get().c().do().equals(this.l.get().b());
          if ($$3) {
             $$0.a($$1, (byte)59);
             $$1.N().n();
             this.b($$1, this.l.get().c);
          } else {
-            jd $$4 = $$1.dp();
+            jd $$4 = $$1.do();
             if ($$4.equals(this.l.get().a())) {
                $$0.a($$1, (byte)58);
                if (this.k.isEmpty()) {
@@ -64,8 +64,8 @@ public class bww<E extends btw> extends bvh<E> {
                }
 
                if ($$2 - this.k.get() >= (long)this.i) {
-                  $$1.dU().a(ccs.W, this.a($$4, this.l.get().b()));
-                  $$0.a(null, $$1, this.j.apply($$1), avq.g, 1.0F, $$1.fc());
+                  $$1.dT().a(ccs.W, this.a($$4, this.l.get().b()));
+                  $$0.a(null, $$1, this.j.apply($$1), avq.g, 1.0F, $$1.fb());
                   this.l = Optional.empty();
                }
             }
@@ -73,15 +73,15 @@ public class bww<E extends btw> extends bvh<E> {
       }
    }
 
-   private exa a(jd $$0, jd $$1) {
+   private exc a(jd $$0, jd $$1) {
       double $$2 = 0.5;
       double $$3 = 0.5 * (double)ayo.j((double)($$1.u() - $$0.u()));
       double $$4 = 0.5 * (double)ayo.j((double)($$1.w() - $$0.w()));
-      return exa.c($$1).b($$3, 0.0, $$4);
+      return exc.c($$1).b($$3, 0.0, $$4);
    }
 
    private Optional<jd> a(btw $$0, btn $$1) {
-      jd $$2 = $$1.dp();
+      jd $$2 = $$1.do();
       if (!this.a($$0, $$2)) {
          return Optional.empty();
       } else {
@@ -104,20 +104,20 @@ public class bww<E extends btw> extends bvh<E> {
          }
 
          cda $$7 = $$0.N();
-         return $$3.stream().sorted(Comparator.comparingDouble($$0.dp()::j)).filter($$1x -> {
-            epq $$2x = $$7.a($$1x, 0);
+         return $$3.stream().sorted(Comparator.comparingDouble($$0.do()::j)).filter($$1x -> {
+            eps $$2x = $$7.a($$1x, 0);
             return $$2x != null && $$2x.j();
          }).findFirst();
       }
    }
 
    private boolean a(btw $$0, jd $$1) {
-      return $$0.N().a($$1) && $$0.a(epy.b($$0, $$1)) == 0.0F;
+      return $$0.N().a($$1) && $$0.a(eqa.b($$0, $$1)) == 0.0F;
    }
 
    private void b(btw $$0, btn $$1) {
       this.k = Optional.empty();
-      this.l = this.a($$0, $$1).map($$1x -> new bww.a($$1x, $$1.dp(), $$1));
+      this.l = this.a($$0, $$1).map($$1x -> new bww.a($$1x, $$1.do(), $$1));
    }
 
    public static class a {

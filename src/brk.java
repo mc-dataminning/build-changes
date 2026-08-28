@@ -7,7 +7,7 @@ public class brk {
    @Nullable
    private final bsr c;
    @Nullable
-   private final exa d;
+   private final exc d;
 
    @Override
    public String toString() {
@@ -22,7 +22,7 @@ public class brk {
       return this.b == this.c;
    }
 
-   private brk(jm<brm> $$0, @Nullable bsr $$1, @Nullable bsr $$2, @Nullable exa $$3) {
+   private brk(jm<brm> $$0, @Nullable bsr $$1, @Nullable bsr $$2, @Nullable exc $$3) {
       this.a = $$0;
       this.b = $$2;
       this.c = $$1;
@@ -33,7 +33,7 @@ public class brk {
       this($$0, $$1, $$2, null);
    }
 
-   public brk(jm<brm> $$0, exa $$1) {
+   public brk(jm<brm> $$0, exc $$1) {
       this($$0, null, null, $$1);
    }
 
@@ -57,18 +57,18 @@ public class brk {
 
    @Nullable
    public cuq e() {
-      return this.c != null ? this.c.dT() : null;
+      return this.c != null ? this.c.dS() : null;
    }
 
    public wz a(btn $$0) {
       String $$1 = "death.attack." + this.k().a();
       if (this.b == null && this.c == null) {
-         btn $$5 = $$0.eN();
+         btn $$5 = $$0.eM();
          String $$6 = $$1 + ".player";
          return $$5 != null ? wz.a($$6, $$0.S_(), $$5.S_()) : wz.a($$1, $$0.S_());
       } else {
          wz $$2 = this.b == null ? this.c.S_() : this.b.S_();
-         cuq $$4 = this.b instanceof btn $$3 ? $$3.eU() : cuq.l;
+         cuq $$4 = this.b instanceof btn $$3 ? $$3.eT() : cuq.l;
          return !$$4.e() && $$4.b(kq.g) ? wz.a($$1 + ".item", $$0.S_(), $$2, $$4.F()) : wz.a($$1, $$0.S_(), $$2);
       }
    }
@@ -86,7 +86,7 @@ public class brk {
    }
 
    public boolean h() {
-      if (this.d() instanceof cmx $$0 && $$0.ga().d) {
+      if (this.d() instanceof cmx $$0 && $$0.fZ().d) {
          return true;
       }
 
@@ -94,16 +94,16 @@ public class brk {
    }
 
    @Nullable
-   public exa i() {
+   public exc i() {
       if (this.d != null) {
          return this.d;
       } else {
-         return this.c != null ? this.c.dn() : null;
+         return this.c != null ? this.c.dm() : null;
       }
    }
 
    @Nullable
-   public exa j() {
+   public exc j() {
       return this.d;
    }
 

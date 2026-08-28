@@ -1,33 +1,12 @@
-public abstract class got<T extends bsr, M extends fvi<T>> {
-   private final gmd<T, M> a;
+public class got<T extends ckf> extends goh<T, fwl<T>> {
+   private static final gfh a = gfh.p(akr.b("textures/entity/phantom_eyes.png"));
 
-   public got(gmd<T, M> $$0) {
-      this.a = $$0;
+   public got(gmf<T, fwl<T>> $$0) {
+      super($$0);
    }
 
-   protected static <T extends btn> void a(
-      fvi<T> $$0, fvi<T> $$1, akr $$2, fbg $$3, gex $$4, int $$5, T $$6, float $$7, float $$8, float $$9, float $$10, float $$11, float $$12, int $$13
-   ) {
-      if (!$$6.ci()) {
-         $$0.a($$1);
-         $$1.a($$6, $$7, $$8, $$12);
-         $$1.a($$6, $$7, $$8, $$9, $$10, $$11);
-         a($$1, $$2, $$3, $$4, $$5, $$6, $$13);
-      }
+   @Override
+   public gfh a() {
+      return a;
    }
-
-   protected static <T extends btn> void a(fvi<T> $$0, akr $$1, fbg $$2, gex $$3, int $$4, T $$5, int $$6) {
-      fbk $$7 = $$3.getBuffer(gff.e($$1));
-      $$0.a($$2, $$7, $$4, gli.c($$5, 0.0F), $$6);
-   }
-
-   public M c() {
-      return this.a.a();
-   }
-
-   protected akr a(T $$0) {
-      return this.a.a($$0);
-   }
-
-   public abstract void a(fbg var1, gex var2, int var3, T var4, float var5, float var6, float var7, float var8, float var9, float var10);
 }

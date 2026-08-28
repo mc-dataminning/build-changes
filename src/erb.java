@@ -1,28 +1,30 @@
-public class erb {
-   public static final erb a = new erb("advancements");
-   public static final erb b = new erb("stats");
-   public static final erb c = new erb("playerdata");
-   public static final erb d = new erb("players");
-   public static final erb e = new erb("level.dat");
-   public static final erb f = new erb("level.dat_old");
-   public static final erb g = new erb("icon.png");
-   public static final erb h = new erb("session.lock");
-   public static final erb i = new erb("generated");
-   public static final erb j = new erb("datapacks");
-   public static final erb k = new erb("resources.zip");
-   public static final erb l = new erb(".");
-   private final String m;
+import java.util.Locale;
 
-   private erb(String $$0) {
-      this.m = $$0;
-   }
+public interface erb {
+   jd a();
 
-   public String a() {
-      return this.m;
-   }
+   float b();
 
-   @Override
-   public String toString() {
-      return "/" + this.m;
+   long c();
+
+   long d();
+
+   boolean g();
+
+   boolean i();
+
+   void b(boolean var1);
+
+   boolean l();
+
+   dcs o();
+
+   bqo q();
+
+   boolean r();
+
+   default void a(p $$0, dcy $$1) {
+      $$0.a("Level spawn location", () -> p.a($$1, this.a()));
+      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.c(), this.d()));
    }
 }

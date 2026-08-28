@@ -1,30 +1,52 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.List;
+import java.util.Optional;
 
-public class ett extends etc {
+public class ett extends ete {
    public static final MapCodec<ett> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(awu.b(lu.I).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, ett::new)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  cxl.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
+                  cxl.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
+                  cxl.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
+                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
+                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
+               )
+            )
+            .apply($$0, ett::new)
    );
-   private final awu<cui> b;
+   public static final cxl b = new cxl(cxl.a.a, IntList.of(), IntList.of(), false, false);
+   final Optional<cxl.a> c;
+   final Optional<IntList> d;
+   final Optional<IntList> e;
+   final Optional<Boolean> f;
+   final Optional<Boolean> h;
 
-   private ett(List<eva> $$0, awu<cui> $$1) {
+   public ett(List<evc> $$0, Optional<cxl.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
       super($$0);
-      this.b = $$1;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.h = $$5;
    }
 
    @Override
-   public ete<ett> b() {
-      return etf.G;
-   }
-
-   @Override
-   public cuq a(cuq $$0, erp $$1) {
-      cuj.a($$0, this.b, $$1.b());
+   protected cuq a(cuq $$0, err $$1) {
+      $$0.a(kq.U, b, this::a);
       return $$0;
    }
 
-   public static etc.a<?> a(awu<cui> $$0) {
-      return a($$1 -> new ett($$1, $$0));
+   private cxl a(cxl $$0) {
+      return new cxl(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
+   }
+
+   @Override
+   public etg<ett> b() {
+      return eth.L;
    }
 }

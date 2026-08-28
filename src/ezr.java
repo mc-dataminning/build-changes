@@ -1,3 +1,8 @@
-public interface ezr {
-   void execute();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@ezd
+@ezc
+interface ezr {
 }

@@ -3,9 +3,9 @@ import com.mojang.serialization.MapCodec;
 public abstract class dmi extends dib {
    protected static final float f = 6.0F;
    protected static final float g = 10.0F;
-   protected static final ext h = dfy.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
-   protected static final ext i = dfy.a(6.0, 6.0, 0.0, 10.0, 10.0, 16.0);
-   protected static final ext j = dfy.a(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
+   protected static final exv h = dfy.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final exv i = dfy.a(6.0, 6.0, 0.0, 10.0, 10.0, 16.0);
+   protected static final exv j = dfy.a(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
 
    protected dmi(dtb.d $$0) {
       super($$0);
@@ -15,7 +15,7 @@ public abstract class dmi extends dib {
    protected abstract MapCodec<? extends dmi> a();
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       switch ($$0.c(a).o()) {
          case a:
          default:
@@ -38,7 +38,7 @@ public abstract class dmi extends dib {
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return false;
    }
 }

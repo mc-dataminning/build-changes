@@ -1,33 +1,26 @@
-import com.mojang.serialization.Codec;
+public enum ffz {
+   a(true, false),
+   b(false, false),
+   c(false, true);
 
-public enum ffz implements ayr, azk {
-   a(0, "false", "options.off"),
-   b(1, "fast", "options.clouds.fast"),
-   c(2, "true", "options.clouds.fancy");
+   private static final ffz[] d = values();
+   private final boolean e;
+   private final boolean f;
 
-   public static final Codec<ffz> d = azk.a(ffz::values);
-   private final int e;
-   private final String f;
-   private final String g;
-
-   private ffz(final int $$0, final String $$1, final String $$2) {
+   private ffz(final boolean $$0, final boolean $$1) {
       this.e = $$0;
       this.f = $$1;
-      this.g = $$2;
    }
 
-   @Override
-   public String c() {
-      return this.f;
-   }
-
-   @Override
-   public int a() {
+   public boolean a() {
       return this.e;
    }
 
-   @Override
-   public String b() {
-      return this.g;
+   public boolean b() {
+      return this.f;
+   }
+
+   public ffz c() {
+      return d[(this.ordinal() + 1) % d.length];
    }
 }

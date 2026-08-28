@@ -4,7 +4,7 @@ import javax.annotation.Nullable;
 public class div extends dfy {
    public static final MapCodec<div> a = b(div::new);
    public static final duc b = dts.aQ;
-   protected static final ext c = dfy.a(0.0, 0.0, 0.0, 16.0, 15.0, 16.0);
+   protected static final exv c = dfy.a(0.0, 0.0, 0.0, 16.0, 15.0, 16.0);
    public static final int d = 7;
 
    @Override
@@ -43,7 +43,7 @@ public class div extends dfy {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return c;
    }
 
@@ -70,7 +70,7 @@ public class div extends dfy {
 
    @Override
    public void a(dcw $$0, dtc $$1, jd $$2, bsr $$3, float $$4) {
-      if (!$$0.B && $$0.z.i() < $$4 - 0.5F && $$3 instanceof btn && ($$3 instanceof cmx || $$0.ab().b(dcs.c)) && $$3.dk() * $$3.dk() * $$3.dl() > 0.512F) {
+      if (!$$0.B && $$0.z.i() < $$4 - 0.5F && $$3 instanceof btn && ($$3 instanceof cmx || $$0.ab().b(dcs.c)) && $$3.dj() * $$3.dj() * $$3.dk() > 0.512F) {
          a($$3, $$1, $$0, $$2);
       }
 
@@ -84,7 +84,7 @@ public class div extends dfy {
    }
 
    private static boolean a(dcc $$0, jd $$1) {
-      return $$0.a_($$1.d()).a(awe.cx);
+      return $$0.a_($$1.d()).a(awe.cy);
    }
 
    private static boolean a(dcz $$0, jd $$1) {
@@ -103,7 +103,7 @@ public class div extends dfy {
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return false;
    }
 }

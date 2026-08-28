@@ -5,11 +5,11 @@ public interface bqz extends bqk {
    String c = "LootTableSeed";
 
    @Nullable
-   akq<eru> aB_();
+   akq<erw> aB_();
 
-   void a(@Nullable akq<eru> var1);
+   void a(@Nullable akq<erw> var1);
 
-   default void a(akq<eru> $$0, long $$1) {
+   default void a(akq<erw> $$0, long $$1) {
       this.a($$0);
       this.a($$1);
    }
@@ -23,7 +23,7 @@ public interface bqz extends bqk {
    @Nullable
    dcw i();
 
-   static void a(dcc $$0, ayw $$1, jd $$2, akq<eru> $$3) {
+   static void a(dcc $$0, ayw $$1, jd $$2, akq<erw> $$3) {
       if ($$0.c_($$2) instanceof bqz $$5) {
          $$5.a($$3, $$1.g());
       }
@@ -45,7 +45,7 @@ public interface bqz extends bqk {
    }
 
    default boolean c_(ub $$0) {
-      akq<eru> $$1 = this.aB_();
+      akq<erw> $$1 = this.aB_();
       if ($$1 == null) {
          return false;
       } else {
@@ -62,20 +62,20 @@ public interface bqz extends bqk {
    default void e_(@Nullable cmx $$0) {
       dcw $$1 = this.i();
       jd $$2 = this.aD_();
-      akq<eru> $$3 = this.aB_();
+      akq<erw> $$3 = this.aB_();
       if ($$3 != null && $$1 != null && $$1.o() != null) {
-         eru $$4 = $$1.o().be().b($$3);
+         erw $$4 = $$1.o().be().b($$3);
          if ($$0 instanceof aqv) {
             an.Q.a((aqv)$$0, $$3);
          }
 
          this.a(null);
-         ers.a $$5 = new ers.a((aqu)$$1).a(eul.f, exa.b($$2));
+         eru.a $$5 = new eru.a((aqu)$$1).a(eun.f, exc.b($$2));
          if ($$0 != null) {
-            $$5.a($$0.gv()).a(eul.a, $$0);
+            $$5.a($$0.gu()).a(eun.a, $$0);
          }
 
-         $$4.a(this, $$5.a(euk.c), this.aC_());
+         $$4.a(this, $$5.a(eum.c), this.aC_());
       }
    }
 }

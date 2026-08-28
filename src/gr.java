@@ -1,7 +1,7 @@
 public interface gr {
-   exa a(et var1);
+   exc a(et var1);
 
-   ewz b(et var1);
+   exb b(et var1);
 
    default jd c(et $$0) {
       return jd.a((jw)this.a($$0));

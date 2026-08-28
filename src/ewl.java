@@ -1,26 +1,29 @@
-@FunctionalInterface
-public interface ewl<T> {
-   void handle(T var1, ewn<T> var2, long var3);
+import net.minecraft.server.MinecraftServer;
 
-   public abstract static class a<T, C extends ewl<T>> {
-      private final akr a;
-      private final Class<?> b;
+public class ewl implements ewn<MinecraftServer> {
+   final akr a;
 
-      public a(akr $$0, Class<?> $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public ewl(akr $$0) {
+      this.a = $$0;
+   }
+
+   public void a(MinecraftServer $$0, ewp<MinecraftServer> $$1, long $$2) {
+      alg $$3 = $$0.aF();
+      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
+   }
+
+   public static class a extends ewn.a<MinecraftServer, ewl> {
+      public a() {
+         super(akr.b("function"), ewl.class);
       }
 
-      public akr a() {
-         return this.a;
+      public void a(ub $$0, ewl $$1) {
+         $$0.a("Name", $$1.a.toString());
       }
 
-      public Class<?> b() {
-         return this.b;
+      public ewl a(ub $$0) {
+         akr $$1 = akr.a($$0.l("Name"));
+         return new ewl($$1);
       }
-
-      public abstract void a(ub var1, C var2);
-
-      public abstract C b(ub var1);
    }
 }

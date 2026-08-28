@@ -5,9 +5,9 @@ public interface dbt {
    void a(@Nullable cmx var1);
 
    @Nullable
-   cmx gl();
+   cmx gk();
 
-   dbv gn();
+   dbv gm();
 
    void a(dbv var1);
 
@@ -19,23 +19,23 @@ public interface dbt {
 
    void t(int var1);
 
-   boolean go();
+   boolean gn();
 
-   avo gp();
+   avo go();
 
-   default boolean gx() {
+   default boolean gw() {
       return false;
    }
 
    default void a(cmx $$0, wz $$1, int $$2) {
       OptionalInt $$3 = $$0.a(new brb(($$0x, $$1x, $$2x) -> new cre($$0x, $$1x, this), $$1));
       if ($$3.isPresent()) {
-         dbv $$4 = this.gn();
+         dbv $$4 = this.gm();
          if (!$$4.isEmpty()) {
-            $$0.a($$3.getAsInt(), $$4, $$2, this.t(), this.go(), this.gx());
+            $$0.a($$3.getAsInt(), $$4, $$2, this.t(), this.gn(), this.gw());
          }
       }
    }
 
-   boolean gt();
+   boolean gs();
 }

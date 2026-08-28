@@ -18,10 +18,10 @@ public class ckq extends cfe implements btj, bue {
    public ckq(bsx<? extends ckq> $$0, dcw $$1) {
       super($$0, $$1);
       this.J = true;
-      this.a(ept.j, -1.0F);
-      this.a(ept.i, 0.0F);
-      this.a(ept.n, 0.0F);
-      this.a(ept.o, 0.0F);
+      this.a(epv.j, -1.0F);
+      this.a(epv.i, 0.0F);
+      this.a(epv.n, 0.0F);
+      this.a(epv.o, 0.0F);
    }
 
    public static boolean c(bsx<ckq> $$0, dcx $$1, btr $$2, jd $$3, ayw $$4) {
@@ -36,7 +36,7 @@ public class ckq extends cfe implements btj, bue {
 
    @Override
    public void a(ajw<?> $$0) {
-      if (cf.equals($$0) && this.dP().B) {
+      if (cf.equals($$0) && this.dO().B) {
          this.ci.a();
       }
 
@@ -77,7 +77,7 @@ public class ckq extends cfe implements btj, bue {
    public void a(cuq $$0, @Nullable avq $$1) {
       this.ci.a(true);
       if ($$1 != null) {
-         this.dP().a(null, this, avp.ye, $$1, 0.5F, 1.0F);
+         this.dO().a(null, this, avp.ye, $$1, 0.5F, 1.0F);
       }
    }
 
@@ -95,7 +95,7 @@ public class ckq extends cfe implements btj, bue {
       this.bU.a(9, new cau(this, ckq.class, 8.0F));
    }
 
-   public void w(boolean $$0) {
+   public void x(boolean $$0) {
       this.ao.a(cg, $$0);
       bus $$1 = this.f(buw.v);
       if ($$1 != null) {
@@ -112,12 +112,12 @@ public class ckq extends cfe implements btj, bue {
    }
 
    @Override
-   public boolean a(epc $$0) {
+   public boolean a(epe $$0) {
       return $$0.a(awk.b);
    }
 
    @Override
-   protected exa a(bsr $$0, bsu $$1, float $$2) {
+   protected exc a(bsr $$0, bsu $$1, float $$2) {
       float $$3 = Math.min(0.25F, this.aU.a());
       float $$4 = this.aU.b();
       float $$5 = 0.12F * ayo.b($$4 * 1.5F) * 2.0F * $$3;
@@ -131,26 +131,26 @@ public class ckq extends cfe implements btj, bue {
 
    @Nullable
    @Override
-   public btn cR() {
-      return (btn)(this.i() && this.cU() instanceof cmx $$0 && $$0.b(cut.nS) ? $$0 : super.cR());
+   public btn cQ() {
+      return (btn)(this.i() && this.cT() instanceof cmx $$0 && $$0.b(cut.nS) ? $$0 : super.cQ());
    }
 
    @Override
-   public exa b(btn $$0) {
-      exa[] $$1 = new exa[]{
-         a((double)this.dk(), (double)$$0.dk(), $$0.dF()),
-         a((double)this.dk(), (double)$$0.dk(), $$0.dF() - 22.5F),
-         a((double)this.dk(), (double)$$0.dk(), $$0.dF() + 22.5F),
-         a((double)this.dk(), (double)$$0.dk(), $$0.dF() - 45.0F),
-         a((double)this.dk(), (double)$$0.dk(), $$0.dF() + 45.0F)
+   public exc b(btn $$0) {
+      exc[] $$1 = new exc[]{
+         a((double)this.dj(), (double)$$0.dj(), $$0.dE()),
+         a((double)this.dj(), (double)$$0.dj(), $$0.dE() - 22.5F),
+         a((double)this.dj(), (double)$$0.dj(), $$0.dE() + 22.5F),
+         a((double)this.dj(), (double)$$0.dj(), $$0.dE() - 45.0F),
+         a((double)this.dj(), (double)$$0.dj(), $$0.dE() + 45.0F)
       };
       Set<jd> $$2 = Sets.newLinkedHashSet();
-      double $$3 = this.cL().e;
-      double $$4 = this.cL().b - 0.5;
+      double $$3 = this.cK().e;
+      double $$4 = this.cK().b - 0.5;
       jd.a $$5 = new jd.a();
 
-      for (exa $$6 : $$1) {
-         $$5.b(this.du() + $$6.c, $$3, this.dA() + $$6.e);
+      for (exc $$6 : $$1) {
+         $$5.b(this.dt() + $$6.c, $$3, this.dz() + $$6.e);
 
          for (double $$7 = $$3; $$7 > $$4; $$7--) {
             $$2.add($$5.j());
@@ -159,16 +159,16 @@ public class ckq extends cfe implements btj, bue {
       }
 
       for (jd $$8 : $$2) {
-         if (!this.dP().b_($$8).a(awk.b)) {
-            double $$9 = this.dP().j($$8);
+         if (!this.dO().b_($$8).a(awk.b)) {
+            double $$9 = this.dO().j($$8);
             if (coy.a($$9)) {
-               exa $$10 = exa.a($$8, $$9);
-               UnmodifiableIterator var14 = $$0.fF().iterator();
+               exc $$10 = exc.a($$8, $$9);
+               UnmodifiableIterator var14 = $$0.fE().iterator();
 
                while (var14.hasNext()) {
                   bua $$11 = (bua)var14.next();
-                  ewv $$12 = $$0.f($$11);
-                  if (coy.a(this.dP(), $$0, $$12.c($$10))) {
+                  ewx $$12 = $$0.f($$11);
+                  if (coy.a(this.dO(), $$0, $$12.c($$10))) {
                      $$0.b($$11);
                      return $$10;
                   }
@@ -177,20 +177,20 @@ public class ckq extends cfe implements btj, bue {
          }
       }
 
-      return new exa(this.du(), this.cL().e, this.dA());
+      return new exc(this.dt(), this.cK().e, this.dz());
    }
 
    @Override
-   protected void a(cmx $$0, exa $$1) {
-      this.a($$0.dF(), $$0.dH() * 0.5F);
-      this.O = this.aY = this.ba = this.dF();
+   protected void a(cmx $$0, exc $$1) {
+      this.a($$0.dE(), $$0.dG() * 0.5F);
+      this.O = this.aY = this.ba = this.dE();
       this.ci.b();
       super.a($$0, $$1);
    }
 
    @Override
-   protected exa b(cmx $$0, exa $$1) {
-      return new exa(0.0, 0.0, 1.0);
+   protected exc b(cmx $$0, exc $$1) {
+      return new exc(0.0, 0.0, 1.0);
    }
 
    @Override
@@ -210,7 +210,7 @@ public class ckq extends cfe implements btj, bue {
 
    @Override
    public boolean a() {
-      return this.ci.a(this.dS());
+      return this.ci.a(this.dR());
    }
 
    @Override
@@ -227,18 +227,18 @@ public class ckq extends cfe implements btj, bue {
    public void l() {
       if (this.x() && this.ah.a(140) == 0) {
          this.b(avp.xX);
-      } else if (this.gi() && this.ah.a(60) == 0) {
+      } else if (this.gh() && this.ah.a(60) == 0) {
          this.b(avp.xY);
       }
 
-      if (!this.ga()) {
+      if (!this.fZ()) {
          boolean $$2;
          boolean var10000;
          label36: {
-            dtc $$0 = this.dP().a_(this.dp());
+            dtc $$0 = this.dO().a_(this.do());
             dtc $$1 = this.bp();
-            $$2 = $$0.a(awe.aU) || $$1.a(awe.aU) || this.b(awk.b) > 0.0;
-            if (this.dd() instanceof ckq $$3 && $$3.s()) {
+            $$2 = $$0.a(awe.aV) || $$1.a(awe.aV) || this.b(awk.b) > 0.0;
+            if (this.dc() instanceof ckq $$3 && $$3.s()) {
                var10000 = true;
                break label36;
             }
@@ -247,11 +247,11 @@ public class ckq extends cfe implements btj, bue {
          }
 
          boolean $$4 = var10000;
-         this.w(!$$2 || $$4);
+         this.x(!$$2 || $$4);
       }
 
       super.l();
-      this.gl();
+      this.gk();
       this.aT();
    }
 
@@ -264,13 +264,13 @@ public class ckq extends cfe implements btj, bue {
       return true;
    }
 
-   private void gl() {
+   private void gk() {
       if (this.bt()) {
-         exf $$0 = exf.a(this);
-         if ($$0.a(dko.d, this.dp(), true) && !this.dP().b_(this.dp().d()).a(awk.b)) {
+         exh $$0 = exh.a(this);
+         if ($$0.a(dko.d, this.do(), true) && !this.dO().b_(this.do().d()).a(awk.b)) {
             this.d(true);
          } else {
-            this.i(this.ds().a(0.5).b(0.0, 0.05, 0.0));
+            this.i(this.dr().a(0.5).b(0.0, 0.05, 0.0));
          }
       }
    }
@@ -281,7 +281,7 @@ public class ckq extends cfe implements btj, bue {
 
    @Override
    protected avo v() {
-      return !this.gi() && !this.x() ? avp.xW : null;
+      return !this.gh() && !this.x() ? avp.xW : null;
    }
 
    @Override
@@ -300,7 +300,7 @@ public class ckq extends cfe implements btj, bue {
    }
 
    @Override
-   public boolean fm() {
+   public boolean fl() {
       return true;
    }
 
@@ -334,8 +334,8 @@ public class ckq extends cfe implements btj, bue {
    }
 
    @Override
-   protected void eA() {
-      super.eA();
+   protected void ez() {
+      super.ez();
       if (this.i()) {
          this.a(cut.nL);
       }
@@ -344,12 +344,12 @@ public class ckq extends cfe implements btj, bue {
    @Override
    public bqr b(cmx $$0, bqq $$1) {
       boolean $$2 = this.o($$0.b($$1));
-      if (!$$2 && this.i() && !this.bT() && !$$0.fO()) {
-         if (!this.dP().B) {
+      if (!$$2 && this.i() && !this.bT() && !$$0.fN()) {
+         if (!this.dO().B) {
             $$0.n(this);
          }
 
-         return bqr.a(this.dP().B);
+         return bqr.a(this.dO().B);
       } else {
          bqr $$3 = super.b($$0, $$1);
          if (!$$3.a()) {
@@ -357,7 +357,7 @@ public class ckq extends cfe implements btj, bue {
             return $$4.a(cut.nL) ? $$4.a($$0, this, $$1) : bqr.e;
          } else {
             if ($$2 && !this.aX()) {
-               this.dP().a(null, this.du(), this.dw(), this.dA(), avp.yd, this.df(), 1.0F, 1.0F + (this.ah.i() - this.ah.i()) * 0.2F);
+               this.dO().a(null, this.dt(), this.dv(), this.dz(), avp.yd, this.de(), 1.0F, 1.0F + (this.ah.i() - this.ah.i()) * 0.2F);
             }
 
             return $$3;
@@ -366,8 +366,8 @@ public class ckq extends cfe implements btj, bue {
    }
 
    @Override
-   public exa cN() {
-      return new exa(0.0, (double)(0.6F * this.cM()), (double)(this.dk() * 0.4F));
+   public exc cM() {
+      return new exc(0.0, (double)(0.6F * this.cL()), (double)(this.dj() * 0.4F));
    }
 
    @Nullable
@@ -399,7 +399,7 @@ public class ckq extends cfe implements btj, bue {
    }
 
    private buh a(ddl $$0, bqp $$1, btp $$2, @Nullable buh $$3) {
-      $$2.b(this.du(), this.dw(), this.dA(), this.dF(), 0.0F);
+      $$2.b(this.dt(), this.dv(), this.dz(), this.dE(), 0.0F);
       $$2.a($$0, $$1, btr.g, $$3);
       $$2.a(this, true);
       return new bsl.a(0.0F);
@@ -420,7 +420,7 @@ public class ckq extends cfe implements btj, bue {
 
       @Override
       public boolean c() {
-         return !this.g.bt() && this.a(this.g.dP(), this.e);
+         return !this.g.bt() && this.a(this.g.dO(), this.e);
       }
 
       @Override
@@ -435,7 +435,7 @@ public class ckq extends cfe implements btj, bue {
 
       @Override
       protected boolean a(dcz $$0, jd $$1) {
-         return $$0.a_($$1).a(dga.H) && $$0.a_($$1.d()).a(epr.a);
+         return $$0.a_($$1).a(dga.H) && $$0.a_($$1.d()).a(ept.a);
       }
    }
 
@@ -445,15 +445,15 @@ public class ckq extends cfe implements btj, bue {
       }
 
       @Override
-      protected eps a(int $$0) {
-         this.o = new epy();
+      protected epu a(int $$0) {
+         this.o = new eqa();
          this.o.a(true);
-         return new eps(this.o, $$0);
+         return new epu(this.o, $$0);
       }
 
       @Override
-      protected boolean a(ept $$0) {
-         return $$0 != ept.i && $$0 != ept.o && $$0 != ept.n ? super.a($$0) : true;
+      protected boolean a(epv $$0) {
+         return $$0 != epv.i && $$0 != epv.o && $$0 != epv.n ? super.a($$0) : true;
       }
 
       @Override

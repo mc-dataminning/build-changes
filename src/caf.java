@@ -12,7 +12,7 @@ public class caf extends cam {
    public caf(btw $$0, double $$1) {
       this.a = $$0;
       this.e = $$1;
-      this.f = $$0.dP();
+      this.f = $$0.dO();
       this.a(EnumSet.of(cam.a.a));
    }
 
@@ -24,7 +24,7 @@ public class caf extends cam {
          return false;
       } else if (!this.a.bR()) {
          return false;
-      } else if (!this.f.h(this.a.dp())) {
+      } else if (!this.f.h(this.a.do())) {
          return false;
       } else {
          return !this.a.a(bsy.f).e() ? false : this.h();
@@ -32,7 +32,7 @@ public class caf extends cam {
    }
 
    protected boolean h() {
-      exa $$0 = this.i();
+      exc $$0 = this.i();
       if ($$0 == null) {
          return false;
       } else {
@@ -54,14 +54,14 @@ public class caf extends cam {
    }
 
    @Nullable
-   protected exa i() {
-      ayw $$0 = this.a.dS();
-      jd $$1 = this.a.dp();
+   protected exc i() {
+      ayw $$0 = this.a.dR();
+      jd $$1 = this.a.do();
 
       for (int $$2 = 0; $$2 < 10; $$2++) {
          jd $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
          if (!this.f.h($$3) && this.a.c($$3) < 0.0F) {
-            return exa.c($$3);
+            return exc.c($$3);
          }
       }
 

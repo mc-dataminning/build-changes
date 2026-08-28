@@ -1,27 +1,53 @@
-public class gce extends gcj {
-   gce(fzd $$0, double $$1, double $$2, double $$3) {
+public class gce extends gdn {
+   gce(fzf $$0, double $$1, double $$2, double $$3) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 8;
+      this.C = true;
+      this.B = 0.86F;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.1;
+      this.D *= 1.5F;
+      this.t = 16;
+      this.n = false;
    }
 
    @Override
-   public void a() {
-      for (int $$0 = 0; $$0 < 6; $$0++) {
-         double $$1 = this.g + (this.r.j() - this.r.j()) * 4.0;
-         double $$2 = this.h + (this.r.j() - this.r.j()) * 4.0;
-         double $$3 = this.i + (this.r.j() - this.r.j()) * 4.0;
-         this.c.a(lm.w, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
+   public gcr b() {
+      return gcr.b;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * ayo.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
+
+   public static class a implements gcq<lq> {
+      private final gdi a;
+
+      public a(gdi $$0) {
+         this.a = $$0;
       }
 
-      this.s++;
-      if (this.s == this.t) {
-         this.k();
+      public gcn a(lq $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gce $$8 = new gce($$1, $$2, $$3 + 0.5, $$4);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
       }
    }
 
-   public static class a implements gco<lq> {
-      public gcl a(lq $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gce($$1, $$2, $$3, $$4);
+   public static class b implements gcq<lq> {
+      private final gdi a;
+
+      public b(gdi $$0) {
+         this.a = $$0;
+      }
+
+      public gcn a(lq $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gce $$8 = new gce($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

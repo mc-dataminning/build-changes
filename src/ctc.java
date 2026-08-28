@@ -61,7 +61,7 @@ public class ctc extends cvn {
       float $$5 = a($$4, $$0, $$2);
       if ($$5 >= 1.0F && !i($$0) && a($$2, $$0)) {
          ctc.a $$6 = this.k($$0);
-         $$6.c().ifPresent($$2x -> $$1.a(null, $$2.du(), $$2.dw(), $$2.dA(), (avo)$$2x.a(), $$2.df(), 1.0F, 1.0F / ($$1.E_().i() * 0.5F + 1.0F) + 0.2F));
+         $$6.c().ifPresent($$2x -> $$1.a(null, $$2.dt(), $$2.dv(), $$2.dz(), (avo)$$2x.a(), $$2.de(), 1.0F, 1.0F / ($$1.E_().i() * 0.5F + 1.0F) + 0.2F));
       }
    }
 
@@ -84,28 +84,28 @@ public class ctc extends cvn {
    protected void a(btn $$0, cnp $$1, int $$2, float $$3, float $$4, float $$5, @Nullable btn $$6) {
       Vector3f $$11;
       if ($$6 != null) {
-         double $$7 = $$6.du() - $$0.du();
-         double $$8 = $$6.dA() - $$0.dA();
+         double $$7 = $$6.dt() - $$0.dt();
+         double $$8 = $$6.dz() - $$0.dz();
          double $$9 = Math.sqrt($$7 * $$7 + $$8 * $$8);
-         double $$10 = $$6.e(0.3333333333333333) - $$1.dw() + $$9 * 0.2F;
-         $$11 = a($$0, new exa($$7, $$10, $$8), $$5);
+         double $$10 = $$6.e(0.3333333333333333) - $$1.dv() + $$9 * 0.2F;
+         $$11 = a($$0, new exc($$7, $$10, $$8), $$5);
       } else {
-         exa $$12 = $$0.j(1.0F);
+         exc $$12 = $$0.j(1.0F);
          Quaternionf $$13 = new Quaternionf().setAngleAxis((double)($$5 * (float) (Math.PI / 180.0)), $$12.c, $$12.d, $$12.e);
-         exa $$14 = $$0.g(1.0F);
+         exc $$14 = $$0.g(1.0F);
          $$11 = $$14.j().rotate($$13);
       }
 
       $$1.c((double)$$11.x(), (double)$$11.y(), (double)$$11.z(), $$3, $$4);
-      float $$16 = a($$0.dS(), $$2);
-      $$0.dP().a(null, $$0.du(), $$0.dw(), $$0.dA(), avp.gu, $$0.df(), 1.0F, $$16);
+      float $$16 = a($$0.dR(), $$2);
+      $$0.dO().a(null, $$0.dt(), $$0.dv(), $$0.dz(), avp.gu, $$0.de(), 1.0F, $$16);
    }
 
-   private static Vector3f a(btn $$0, exa $$1, float $$2) {
+   private static Vector3f a(btn $$0, exc $$1, float $$2) {
       Vector3f $$3 = $$1.j().normalize();
       Vector3f $$4 = new Vector3f($$3).cross(new Vector3f(0.0F, 1.0F, 0.0F));
       if ((double)$$4.lengthSquared() <= 1.0E-7) {
-         exa $$5 = $$0.j(1.0F);
+         exc $$5 = $$0.j(1.0F);
          $$4 = new Vector3f($$3).cross($$5.j());
       }
 
@@ -116,7 +116,7 @@ public class ctc extends cvn {
    @Override
    protected cnp a(dcw $$0, btn $$1, cuq $$2, cuq $$3, boolean $$4) {
       if ($$3.a(cut.uu)) {
-         return new cnk($$0, $$3, $$1, $$1.du(), $$1.dy() - 0.15F, $$1.dA(), true);
+         return new cnk($$0, $$3, $$1, $$1.dt(), $$1.dx() - 0.15F, $$1.dz(), true);
       } else {
          cnp $$5 = super.a($$0, $$1, $$2, $$3, $$4);
          if ($$5 instanceof cnd $$6) {
@@ -166,12 +166,12 @@ public class ctc extends cvn {
 
          if ($$5 >= 0.2F && !this.l) {
             this.l = true;
-            $$4.a().ifPresent($$2x -> $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), (avo)$$2x.a(), avq.h, 0.5F, 1.0F));
+            $$4.a().ifPresent($$2x -> $$0.a(null, $$1.dt(), $$1.dv(), $$1.dz(), (avo)$$2x.a(), avq.h, 0.5F, 1.0F));
          }
 
          if ($$5 >= 0.5F && !this.m) {
             this.m = true;
-            $$4.b().ifPresent($$2x -> $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), (avo)$$2x.a(), avq.h, 0.5F, 1.0F));
+            $$4.b().ifPresent($$2x -> $$0.a(null, $$1.dt(), $$1.dv(), $$1.dz(), (avo)$$2x.a(), avq.h, 0.5F, 1.0F));
          }
       }
    }

@@ -1,58 +1,36 @@
 import javax.annotation.Nullable;
 
-public interface fkg extends fju {
-   long t = 250L;
+public abstract class fkg implements fkh {
+   @Nullable
+   private fki a;
+   private boolean b;
 
-   default void f(double $$0, double $$1) {
+   @Override
+   public final boolean aM_() {
+      return this.b;
    }
 
-   default boolean a(double $$0, double $$1, int $$2) {
-      return false;
-   }
-
-   default boolean b(double $$0, double $$1, int $$2) {
-      return false;
-   }
-
-   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      return false;
-   }
-
-   default boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return false;
-   }
-
-   default boolean a(int $$0, int $$1, int $$2) {
-      return false;
-   }
-
-   default boolean c(int $$0, int $$1, int $$2) {
-      return false;
-   }
-
-   default boolean a(char $$0, int $$1) {
-      return false;
+   @Override
+   public final void b_(boolean $$0) {
+      this.b = $$0;
    }
 
    @Nullable
-   default fhu a(fmm $$0) {
-      return null;
+   @Override
+   public fki aN_() {
+      return this.a;
    }
 
-   default boolean c(double $$0, double $$1) {
-      return false;
-   }
+   @Override
+   public void a(@Nullable fki $$0) {
+      if (this.a != null) {
+         this.a.a(false);
+      }
 
-   void a(boolean var1);
+      if ($$0 != null) {
+         $$0.a(true);
+      }
 
-   boolean aO_();
-
-   @Nullable
-   default fhu aP_() {
-      return this.aO_() ? fhu.a(this) : null;
-   }
-
-   default fmq H() {
-      return fmq.a();
+      this.a = $$0;
    }
 }

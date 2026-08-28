@@ -1,16 +1,8 @@
-public class eui<T> {
-   private final akr a;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public eui(akr $$0) {
-      this.a = $$0;
-   }
-
-   public akr a() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "<parameter " + this.a + ">";
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface eui {
 }

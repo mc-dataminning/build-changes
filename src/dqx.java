@@ -1,7 +1,7 @@
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class dqx extends dqh implements bqz, eyl.a {
+public class dqx extends dqh implements bqz, eyn.a {
    public static final String d = "sherds";
    public static final String e = "item";
    public static final int f = 1;
@@ -11,7 +11,7 @@ public class dqx extends dqh implements bqz, eyl.a {
    private drm k;
    private cuq l;
    @Nullable
-   protected akq<eru> i;
+   protected akq<erw> i;
    protected long j;
 
    public dqx(jd $$0, dtc $$1) {
@@ -77,12 +77,12 @@ public class dqx extends dqh implements bqz, eyl.a {
 
    @Nullable
    @Override
-   public akq<eru> aB_() {
+   public akq<erw> aB_() {
       return this.i;
    }
 
    @Override
-   public void a(@Nullable akq<eru> $$0) {
+   public void a(@Nullable akq<erw> $$0) {
       this.i = $$0;
    }
 

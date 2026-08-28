@@ -8,7 +8,7 @@ public class dhd extends dfy {
    );
    public static final int b = 5;
    public static final duc c = dts.au;
-   protected static final ext d = dfy.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
+   protected static final exv d = dfy.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
    private final dfy e;
 
    @Override
@@ -35,7 +35,7 @@ public class dhd extends dfy {
    }
 
    @Override
-   public ext b_(dtc $$0, dcc $$1, jd $$2) {
+   public exv b_(dtc $$0, dcc $$1, jd $$2) {
       return d;
    }
 
@@ -214,7 +214,7 @@ public class dhd extends dfy {
    }
 
    @Override
-   protected void a(dcw $$0, dtc $$1, eww $$2, cnp $$3) {
+   protected void a(dcw $$0, dtc $$1, ewy $$2, cnp $$3) {
       jd $$4 = $$2.a();
       if (!$$0.B && $$3.a($$0, $$4) && $$3.b($$0)) {
          $$0.a($$4, true, $$3);

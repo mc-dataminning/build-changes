@@ -119,7 +119,7 @@ public class alv {
          float $$4 = $$0.nextFloat();
          float $$5 = $$0.nextFloat();
          float $$6 = $$0.nextFloat();
-         return Optional.of(new alv.a($$1, new exa((double)$$2, (double)$$3, (double)$$4), new ewz($$6, $$5)));
+         return Optional.of(new alv.a($$1, new exc((double)$$2, (double)$$3, (double)$$4), new exb($$6, $$5)));
       }
    }
 
@@ -129,13 +129,13 @@ public class alv {
          if (!$$1.isEmpty()) {
             aqv $$2 = $$1.get(0);
             aqu $$3 = this.e.I();
-            et $$4 = new et($$2, exa.a($$3.V()), ewz.a, $$3, 4, "", wy.a, this.e, $$2);
+            et $$4 = new et($$2, exc.a($$3.V()), exb.a, $$3, 4, "", wy.a, this.e, $$2);
             eu $$5 = this.e.aH();
             $$5.a($$4, $$0);
          }
       });
    }
 
-   static record a(akq<dcw> a, exa b, ewz c) {
+   static record a(akq<dcw> a, exc b, exb c) {
    }
 }

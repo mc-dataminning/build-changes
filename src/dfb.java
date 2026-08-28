@@ -3,7 +3,7 @@ import com.mojang.serialization.MapCodec;
 public class dfb extends dfy implements dgb {
    public static final MapCodec<dfb> a = b(dfb::new);
    protected static final float b = 4.0F;
-   protected static final ext c = dfy.a(4.0, 0.0, 4.0, 12.0, 12.0, 12.0);
+   protected static final exv c = dfy.a(4.0, 0.0, 4.0, 12.0, 12.0, 12.0);
 
    @Override
    public MapCodec<dfb> a() {
@@ -15,8 +15,8 @@ public class dfb extends dfy implements dgb {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
-      exa $$4 = $$0.n($$1, $$2);
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
+      exc $$4 = $$0.n($$1, $$2);
       return c.a($$4.c, $$4.d, $$4.e);
    }
 
@@ -29,7 +29,7 @@ public class dfb extends dfy implements dgb {
 
    @Override
    protected boolean a(dtc $$0, dcz $$1, jd $$2) {
-      return $$1.a_($$2.e()).a(awe.au);
+      return $$1.a_($$2.e()).a(awe.av);
    }
 
    @Override
@@ -67,7 +67,7 @@ public class dfb extends dfy implements dgb {
 
    @Override
    protected float a(dtc $$0, cmx $$1, dcc $$2, jd $$3) {
-      return $$1.eU().g() instanceof cwg ? 1.0F : super.a($$0, $$1, $$2, $$3);
+      return $$1.eT().g() instanceof cwg ? 1.0F : super.a($$0, $$1, $$2, $$3);
    }
 
    protected void a(dcw $$0, jd $$1) {

@@ -1,9 +1,96 @@
-public class fpm extends fos<cqr> {
-   private static final akr F = akr.b("container/furnace/lit_progress");
-   private static final akr G = akr.b("container/furnace/burn_progress");
-   private static final akr H = akr.b("textures/gui/container/furnace.png");
+public class fpm {
+   private static final akr a = akr.b("alt");
+   private static final xw b = xw.a.a(a);
+   private static final fpm c = new fpm();
+   private final ayw d = ayw.a();
+   private final String[] e = new String[]{
+      "the",
+      "elder",
+      "scrolls",
+      "klaatu",
+      "berata",
+      "niktu",
+      "xyzzy",
+      "bless",
+      "curse",
+      "light",
+      "darkness",
+      "fire",
+      "air",
+      "earth",
+      "water",
+      "hot",
+      "dry",
+      "cold",
+      "wet",
+      "ignite",
+      "snuff",
+      "embiggen",
+      "twist",
+      "shorten",
+      "stretch",
+      "fiddle",
+      "destroy",
+      "imbue",
+      "galvanize",
+      "enchant",
+      "free",
+      "limited",
+      "range",
+      "of",
+      "towards",
+      "inside",
+      "sphere",
+      "cube",
+      "self",
+      "other",
+      "ball",
+      "mental",
+      "physical",
+      "grow",
+      "shrink",
+      "demon",
+      "elemental",
+      "spirit",
+      "animal",
+      "creature",
+      "beast",
+      "humanoid",
+      "undead",
+      "fresh",
+      "stale",
+      "phnglui",
+      "mglwnafh",
+      "cthulhu",
+      "rlyeh",
+      "wgahnagl",
+      "fhtagn",
+      "baguette"
+   };
 
-   public fpm(cqr $$0, cmw $$1, wz $$2) {
-      super($$0, new fsf(), $$1, $$2, H, F, G);
+   private fpm() {
+   }
+
+   public static fpm a() {
+      return c;
+   }
+
+   public xe a(fhx $$0, int $$1) {
+      StringBuilder $$2 = new StringBuilder();
+      int $$3 = this.d.a(2) + 3;
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if ($$4 != 0) {
+            $$2.append(" ");
+         }
+
+         $$2.append(ad.a(this.e, this.d));
+      }
+
+      return $$0.b().a(wz.b($$2.toString()).c(b), $$1, xw.a);
+   }
+
+   public void a(long $$0) {
+      this.d.b($$0);
    }
 }

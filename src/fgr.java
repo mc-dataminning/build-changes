@@ -1,30 +1,486 @@
+import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
+import java.util.function.DoubleFunction;
+import java.util.function.Function;
 import java.util.function.IntFunction;
+import java.util.function.IntSupplier;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
+import java.util.function.ToIntFunction;
+import java.util.stream.IntStream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public enum fgr implements ayr {
-   a(0, "options.particles.all"),
-   b(1, "options.particles.decreased"),
-   c(2, "options.particles.minimal");
+public final class fgr<T> {
+   private static final Logger c = LogUtils.getLogger();
+   public static final fgr.e<Boolean> a = new fgr.e<>(ImmutableList.of(Boolean.TRUE, Boolean.FALSE), Codec.BOOL);
+   public static final fgr.b<Boolean> b = ($$0, $$1) -> $$1 ? wy.b : wy.c;
+   private final fgr.l<T> d;
+   final Function<T, wz> e;
+   private final fgr.n<T> f;
+   private final Codec<T> g;
+   private final T h;
+   private final Consumer<T> i;
+   final wz j;
+   T k;
 
-   private static final IntFunction<fgr> d = axe.a(fgr::a, values(), axe.a.b);
-   private final int e;
-   private final String f;
+   public static fgr<Boolean> a(String $$0, boolean $$1, Consumer<Boolean> $$2) {
+      return a($$0, a(), $$1, $$2);
+   }
 
-   private fgr(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public static fgr<Boolean> a(String $$0, boolean $$1) {
+      return a($$0, a(), $$1, $$0x -> {
+      });
+   }
+
+   public static fgr<Boolean> a(String $$0, fgr.l<Boolean> $$1, boolean $$2) {
+      return a($$0, $$1, $$2, $$0x -> {
+      });
+   }
+
+   public static fgr<Boolean> a(String $$0, fgr.l<Boolean> $$1, boolean $$2, Consumer<Boolean> $$3) {
+      return a($$0, $$1, b, $$2, $$3);
+   }
+
+   public static fgr<Boolean> a(String $$0, fgr.l<Boolean> $$1, fgr.b<Boolean> $$2, boolean $$3, Consumer<Boolean> $$4) {
+      return new fgr<>($$0, $$1, $$2, a, $$3, $$4);
+   }
+
+   public fgr(String $$0, fgr.l<T> $$1, fgr.b<T> $$2, fgr.n<T> $$3, T $$4, Consumer<T> $$5) {
+      this($$0, $$1, $$2, $$3, $$3.f(), $$4, $$5);
+   }
+
+   public fgr(String $$0, fgr.l<T> $$1, fgr.b<T> $$2, fgr.n<T> $$3, Codec<T> $$4, T $$5, Consumer<T> $$6) {
+      this.j = wz.c($$0);
+      this.d = $$1;
+      this.e = $$1x -> $$2.toString(this.j, (T)$$1x);
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.k = this.h;
+   }
+
+   public static <T> fgr.l<T> a() {
+      return $$0 -> null;
+   }
+
+   public static <T> fgr.l<T> a(wz $$0) {
+      return $$1 -> fjx.a($$0);
+   }
+
+   public static <T extends ayr> fgr.b<T> b() {
+      return ($$0, $$1) -> $$1.d();
+   }
+
+   public fik a(fgs $$0) {
+      return this.a($$0, 0, 0, 150);
+   }
+
+   public fik a(fgs $$0, int $$1, int $$2, int $$3) {
+      return this.a($$0, $$1, $$2, $$3, $$0x -> {
+      });
+   }
+
+   public fik a(fgs $$0, int $$1, int $$2, int $$3, Consumer<T> $$4) {
+      return this.f.a(this.d, $$0, $$1, $$2, $$3, $$4).apply(this);
+   }
+
+   public T c() {
+      return this.k;
+   }
+
+   public Codec<T> d() {
+      return this.g;
    }
 
    @Override
-   public String b() {
+   public String toString() {
+      return this.j.getString();
+   }
+
+   public void a(T $$0) {
+      T $$1 = this.f.a($$0).orElseGet(() -> {
+         c.error("Illegal option value " + $$0 + " for " + this.j);
+         return this.h;
+      });
+      if (!fgo.Q().r()) {
+         this.k = $$1;
+      } else {
+         if (!Objects.equals(this.k, $$1)) {
+            this.k = $$1;
+            this.i.accept(this.k);
+         }
+      }
+   }
+
+   public fgr.n<T> e() {
       return this.f;
    }
 
-   @Override
-   public int a() {
-      return this.e;
+   public static record a<T>(List<T> a, List<T> b, BooleanSupplier c, fgr.d.a<T> d, Codec<T> e) implements fgr.d<T> {
+      @Override
+      public fit.c<T> a() {
+         return fit.c.a(this.c, this.a, this.b);
+      }
+
+      @Override
+      public Optional<T> a(T $$0) {
+         return (this.c.getAsBoolean() ? this.b : this.a).contains($$0) ? Optional.of($$0) : Optional.empty();
+      }
+
+      public List<T> b() {
+         return this.a;
+      }
+
+      public List<T> c() {
+         return this.b;
+      }
+
+      public BooleanSupplier d() {
+         return this.c;
+      }
+
+      @Override
+      public fgr.d.a<T> e() {
+         return this.d;
+      }
+
+      @Override
+      public Codec<T> f() {
+         return this.e;
+      }
    }
 
-   public static fgr a(int $$0) {
-      return d.apply($$0);
+   public interface b<T> {
+      wz toString(wz var1, T var2);
+   }
+
+   public static record c(int a, IntSupplier b, int c) implements fgr.g, fgr.j<Integer> {
+      public Optional<Integer> a(Integer $$0) {
+         return Optional.of(ayo.a($$0, this.d(), this.b()));
+      }
+
+      @Override
+      public int b() {
+         return this.b.getAsInt();
+      }
+
+      @Override
+      public Codec<Integer> f() {
+         return Codec.INT
+            .validate(
+               $$0 -> {
+                  int $$1 = this.c + 1;
+                  return $$0.compareTo(this.a) >= 0 && $$0.compareTo($$1) <= 0
+                     ? DataResult.success($$0)
+                     : DataResult.error(() -> "Value " + $$0 + " outside of range [" + this.a + ":" + $$1 + "]", $$0);
+               }
+            );
+      }
+
+      @Override
+      public boolean c() {
+         return true;
+      }
+
+      @Override
+      public fit.c<Integer> a() {
+         return fit.c.a(IntStream.range(this.a, this.b() + 1).boxed().toList());
+      }
+
+      @Override
+      public int d() {
+         return this.a;
+      }
+
+      public IntSupplier g() {
+         return this.b;
+      }
+
+      public int h() {
+         return this.c;
+      }
+   }
+
+   interface d<T> extends fgr.n<T> {
+      fit.c<T> a();
+
+      default fgr.d.a<T> e() {
+         return fgr::a;
+      }
+
+      @Override
+      default Function<fgr<T>, fik> a(fgr.l<T> $$0, fgs $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
+         return $$6 -> fit.a($$6.e).a(this.a()).a($$0).a($$6.k).a($$2, $$3, $$4, 20, $$6.j, ($$3xx, $$4xx) -> {
+               this.e().set($$6, (T)$$4xx);
+               $$1.aw();
+               $$5.accept((T)$$4xx);
+            });
+      }
+
+      public interface a<T> {
+         void set(fgr<T> var1, T var2);
+      }
+   }
+
+   public static record e<T>(List<T> a, Codec<T> b) implements fgr.d<T> {
+      @Override
+      public Optional<T> a(T $$0) {
+         return this.a.contains($$0) ? Optional.of($$0) : Optional.empty();
+      }
+
+      @Override
+      public fit.c<T> a() {
+         return fit.c.a(this.a);
+      }
+
+      public List<T> b() {
+         return this.a;
+      }
+
+      @Override
+      public Codec<T> f() {
+         return this.b;
+      }
+   }
+
+   public static record f(int a, int b, boolean c) implements fgr.g {
+      public f(int $$0, int $$1) {
+         this($$0, $$1, true);
+      }
+
+      public Optional<Integer> a(Integer $$0) {
+         return $$0.compareTo(this.d()) >= 0 && $$0.compareTo(this.b()) <= 0 ? Optional.of($$0) : Optional.empty();
+      }
+
+      @Override
+      public Codec<Integer> f() {
+         return Codec.intRange(this.a, this.b + 1);
+      }
+
+      @Override
+      public int d() {
+         return this.a;
+      }
+
+      @Override
+      public boolean aR_() {
+         return this.c;
+      }
+   }
+
+   interface g extends fgr.k<Integer> {
+      int d();
+
+      int b();
+
+      default double b(Integer $$0) {
+         if ($$0 == this.d()) {
+            return 0.0;
+         } else {
+            return $$0 == this.b() ? 1.0 : ayo.b((double)$$0.intValue() + 0.5, (double)this.d(), (double)this.b() + 1.0, 0.0, 1.0);
+         }
+      }
+
+      default Integer a(double $$0) {
+         if ($$0 >= 1.0) {
+            $$0 = 0.99999F;
+         }
+
+         return ayo.a(ayo.b($$0, 0.0, 1.0, (double)this.d(), (double)this.b() + 1.0));
+      }
+
+      default <R> fgr.k<R> a(final IntFunction<? extends R> $$0, final ToIntFunction<? super R> $$1) {
+         return new fgr.k<R>() {
+            @Override
+            public Optional<R> a(R $$0x) {
+               return g.this.a(Integer.valueOf($$1.applyAsInt($$0))).map($$0::apply);
+            }
+
+            @Override
+            public double b(R $$0x) {
+               return g.this.b($$1.applyAsInt($$0));
+            }
+
+            @Override
+            public R b(double $$0x) {
+               return (R)$$0.apply(g.this.a($$0));
+            }
+
+            @Override
+            public Codec<R> f() {
+               return g.this.f().xmap($$0::apply, $$1::applyAsInt);
+            }
+         };
+      }
+   }
+
+   public static record h<T>(Supplier<List<T>> a, Function<T, Optional<T>> b, Codec<T> c) implements fgr.d<T> {
+      @Override
+      public Optional<T> a(T $$0) {
+         return this.b.apply($$0);
+      }
+
+      @Override
+      public fit.c<T> a() {
+         return fit.c.a(this.a.get());
+      }
+
+      public Supplier<List<T>> b() {
+         return this.a;
+      }
+
+      public Function<T, Optional<T>> c() {
+         return this.b;
+      }
+
+      @Override
+      public Codec<T> f() {
+         return this.c;
+      }
+   }
+
+   public static final class i<N> extends fif {
+      private final fgr<N> d;
+      private final fgr.k<N> e;
+      private final fgr.l<N> f;
+      private final Consumer<N> m;
+      @Nullable
+      private Long n;
+      private final boolean o;
+
+      i(fgs $$0, int $$1, int $$2, int $$3, int $$4, fgr<N> $$5, fgr.k<N> $$6, fgr.l<N> $$7, Consumer<N> $$8, boolean $$9) {
+         super($$0, $$1, $$2, $$3, $$4, $$6.b($$5.c()));
+         this.d = $$5;
+         this.e = $$6;
+         this.f = $$7;
+         this.m = $$8;
+         this.o = $$9;
+         this.b();
+      }
+
+      @Override
+      protected void b() {
+         this.b(this.d.e.apply(this.e.b(this.c)));
+         this.a(this.f.apply(this.e.b(this.c)));
+      }
+
+      @Override
+      protected void a() {
+         if (this.o) {
+            this.c();
+         } else {
+            this.n = ad.c() + 600L;
+         }
+      }
+
+      public void c() {
+         N $$0 = this.e.b(this.c);
+         if (!Objects.equals($$0, this.d.c())) {
+            this.d.a($$0);
+            this.a.aw();
+            this.m.accept(this.d.c());
+         }
+      }
+
+      @Override
+      public void b(fhz $$0, int $$1, int $$2, float $$3) {
+         super.b($$0, $$1, $$2, $$3);
+         if (this.n != null && ad.c() >= this.n) {
+            this.n = null;
+            this.c();
+         }
+      }
+   }
+
+   interface j<T> extends fgr.d<T>, fgr.k<T> {
+      boolean c();
+
+      @Override
+      default Function<fgr<T>, fik> a(fgr.l<T> $$0, fgs $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
+         return this.c() ? fgr.d.super.a($$0, $$1, $$2, $$3, $$4, $$5) : fgr.k.super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   interface k<T> extends fgr.n<T> {
+      double b(T var1);
+
+      T b(double var1);
+
+      default boolean aR_() {
+         return true;
+      }
+
+      @Override
+      default Function<fgr<T>, fik> a(fgr.l<T> $$0, fgs $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
+         return $$6 -> new fgr.i<>($$1, $$2, $$3, $$4, 20, $$6, this, $$0, $$5, this.aR_());
+      }
+   }
+
+   @FunctionalInterface
+   public interface l<T> {
+      @Nullable
+      fjx apply(T var1);
+   }
+
+   public static enum m implements fgr.k<Double> {
+      a;
+
+      public Optional<Double> a(Double $$0) {
+         return $$0 >= 0.0 && $$0 <= 1.0 ? Optional.of($$0) : Optional.empty();
+      }
+
+      public double b(Double $$0) {
+         return $$0;
+      }
+
+      public Double a(double $$0) {
+         return $$0;
+      }
+
+      public <R> fgr.k<R> a(final DoubleFunction<? extends R> $$0, final ToDoubleFunction<? super R> $$1) {
+         return new fgr.k<R>() {
+            @Override
+            public Optional<R> a(R $$0x) {
+               return m.this.a(Double.valueOf($$1.applyAsDouble($$0))).map($$0::apply);
+            }
+
+            @Override
+            public double b(R $$0x) {
+               return m.this.b(Double.valueOf($$1.applyAsDouble($$0)));
+            }
+
+            @Override
+            public R b(double $$0x) {
+               return (R)$$0.apply(m.this.a($$0));
+            }
+
+            @Override
+            public Codec<R> f() {
+               return m.this.f().xmap($$0::apply, $$1::applyAsDouble);
+            }
+         };
+      }
+
+      @Override
+      public Codec<Double> f() {
+         return Codec.withAlternative(Codec.doubleRange(0.0, 1.0), Codec.BOOL, $$0 -> $$0 ? 1.0 : 0.0);
+      }
+   }
+
+   interface n<T> {
+      Function<fgr<T>, fik> a(fgr.l<T> var1, fgs var2, int var3, int var4, int var5, Consumer<T> var6);
+
+      Optional<T> a(T var1);
+
+      Codec<T> f();
    }
 }

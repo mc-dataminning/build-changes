@@ -16,7 +16,7 @@ public class cez extends cey {
    public cez(bsx<? extends cez> $$0, dcw $$1) {
       super($$0, $$1);
       if (!$$1.B) {
-         this.w(true);
+         this.x(true);
       }
    }
 
@@ -32,13 +32,13 @@ public class cez extends cey {
    }
 
    @Override
-   protected float fb() {
+   protected float fa() {
       return 0.1F;
    }
 
    @Override
-   public float fc() {
-      return super.fc() * 0.95F;
+   public float fb() {
+      return super.fb() * 0.95F;
    }
 
    @Nullable
@@ -78,7 +78,7 @@ public class cez extends cey {
       return (this.ao.a(bZ) & 1) != 0;
    }
 
-   public void w(boolean $$0) {
+   public void x(boolean $$0) {
       byte $$1 = this.ao.a(bZ);
       if ($$0) {
          this.ao.a(bZ, (byte)($$1 | 1));
@@ -91,64 +91,64 @@ public class cez extends cey {
    public void l() {
       super.l();
       if (this.t()) {
-         this.i(exa.b);
-         this.o(this.du(), (double)ayo.a(this.dw()) + 1.0 - (double)this.dl(), this.dA());
+         this.i(exc.b);
+         this.o(this.dt(), (double)ayo.a(this.dv()) + 1.0 - (double)this.dk(), this.dz());
       } else {
-         this.i(this.ds().d(1.0, 0.6, 1.0));
+         this.i(this.dr().d(1.0, 0.6, 1.0));
       }
 
-      this.gh();
+      this.gg();
    }
 
    @Override
    protected void ab() {
       super.ab();
-      jd $$0 = this.dp();
+      jd $$0 = this.do();
       jd $$1 = $$0.d();
       if (this.t()) {
          boolean $$2 = this.aX();
-         if (this.dP().a_($$1).g(this.dP(), $$0)) {
+         if (this.dO().a_($$1).g(this.dO(), $$0)) {
             if (this.ah.a(200) == 0) {
                this.ba = (float)this.ah.a(360);
             }
 
-            if (this.dP().a(cb, this) != null) {
-               this.w(false);
+            if (this.dO().a(cb, this) != null) {
+               this.x(false);
                if (!$$2) {
-                  this.dP().a(null, 1025, $$0, 0);
+                  this.dO().a(null, 1025, $$0, 0);
                }
             }
          } else {
-            this.w(false);
+            this.x(false);
             if (!$$2) {
-               this.dP().a(null, 1025, $$0, 0);
+               this.dO().a(null, 1025, $$0, 0);
             }
          }
       } else {
-         if (this.cc != null && (!this.dP().u(this.cc) || this.cc.v() <= this.dP().I_())) {
+         if (this.cc != null && (!this.dO().u(this.cc) || this.cc.v() <= this.dO().I_())) {
             this.cc = null;
          }
 
-         if (this.cc == null || this.ah.a(30) == 0 || this.cc.a(this.dn(), 2.0)) {
+         if (this.cc == null || this.ah.a(30) == 0 || this.cc.a(this.dm(), 2.0)) {
             this.cc = jd.a(
-               this.du() + (double)this.ah.a(7) - (double)this.ah.a(7),
-               this.dw() + (double)this.ah.a(6) - 2.0,
-               this.dA() + (double)this.ah.a(7) - (double)this.ah.a(7)
+               this.dt() + (double)this.ah.a(7) - (double)this.ah.a(7),
+               this.dv() + (double)this.ah.a(6) - 2.0,
+               this.dz() + (double)this.ah.a(7) - (double)this.ah.a(7)
             );
          }
 
-         double $$3 = (double)this.cc.u() + 0.5 - this.du();
-         double $$4 = (double)this.cc.v() + 0.1 - this.dw();
-         double $$5 = (double)this.cc.w() + 0.5 - this.dA();
-         exa $$6 = this.ds();
-         exa $$7 = $$6.b((Math.signum($$3) * 0.5 - $$6.c) * 0.1F, (Math.signum($$4) * 0.7F - $$6.d) * 0.1F, (Math.signum($$5) * 0.5 - $$6.e) * 0.1F);
+         double $$3 = (double)this.cc.u() + 0.5 - this.dt();
+         double $$4 = (double)this.cc.v() + 0.1 - this.dv();
+         double $$5 = (double)this.cc.w() + 0.5 - this.dz();
+         exc $$6 = this.dr();
+         exc $$7 = $$6.b((Math.signum($$3) * 0.5 - $$6.c) * 0.1F, (Math.signum($$4) * 0.7F - $$6.d) * 0.1F, (Math.signum($$5) * 0.5 - $$6.e) * 0.1F);
          this.i($$7);
          float $$8 = (float)(ayo.d($$7.e, $$7.c) * 180.0F / (float)Math.PI) - 90.0F;
-         float $$9 = ayo.g($$8 - this.dF());
+         float $$9 = ayo.g($$8 - this.dE());
          this.bq = 0.5F;
-         this.t(this.dF() + $$9);
-         if (this.ah.a(100) == 0 && this.dP().a_($$1).g(this.dP(), $$1)) {
-            this.w(true);
+         this.t(this.dE() + $$9);
+         if (this.ah.a(100) == 0 && this.dO().a_($$1).g(this.dO(), $$1)) {
+            this.x(true);
          }
       }
    }
@@ -172,8 +172,8 @@ public class cez extends cey {
       if (this.b($$0)) {
          return false;
       } else {
-         if (!this.dP().B && this.t()) {
-            this.w(false);
+         if (!this.dO().B && this.t()) {
+            this.x(false);
          }
 
          return super.a($$0, $$1);
@@ -215,7 +215,7 @@ public class cez extends cey {
       return $$2 == 10 && $$1 >= 20 || $$2 == 11 && $$1 <= 3;
    }
 
-   private void gh() {
+   private void gg() {
       if (this.t()) {
          this.d.a();
          this.e.b(this.ai);

@@ -1,12 +1,38 @@
-public abstract class fva<E extends bsr> extends fvr<E> {
-   private int a = -1;
+public class fva<T extends bsr> extends fvt<T> {
+   private final fyk a;
+   private final fyk b;
 
-   public void a(int $$0) {
+   public fva(fyk $$0) {
       this.a = $$0;
+      this.b = $$0.b("tail_fin");
+   }
+
+   public static fyq b() {
+      fys $$0 = new fys();
+      fyt $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", fyp.c().a(0, 0).a(-1.0F, -2.0F, 0.0F, 2.0F, 4.0F, 7.0F), fym.a(0.0F, 22.0F, 0.0F));
+      $$1.a("head", fyp.c().a(11, 0).a(-1.0F, -2.0F, -3.0F, 2.0F, 4.0F, 3.0F), fym.a(0.0F, 22.0F, 0.0F));
+      $$1.a("nose", fyp.c().a(0, 0).a(-1.0F, -2.0F, -1.0F, 2.0F, 3.0F, 1.0F), fym.a(0.0F, 22.0F, -3.0F));
+      $$1.a("right_fin", fyp.c().a(22, 1).a(-2.0F, 0.0F, -1.0F, 2.0F, 0.0F, 2.0F), fym.a(-1.0F, 23.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 4)));
+      $$1.a("left_fin", fyp.c().a(22, 4).a(0.0F, 0.0F, -1.0F, 2.0F, 0.0F, 2.0F), fym.a(1.0F, 23.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 4)));
+      $$1.a("tail_fin", fyp.c().a(22, 3).a(0.0F, -2.0F, 0.0F, 0.0F, 4.0F, 4.0F), fym.a(0.0F, 22.0F, 7.0F));
+      $$1.a("top_fin", fyp.c().a(20, -6).a(0.0F, -1.0F, -1.0F, 0.0F, 1.0F, 6.0F), fym.a(0.0F, 20.0F, 0.0F));
+      return fyq.a($$0, 32, 32);
    }
 
    @Override
-   public void a(fbg $$0, fbk $$1, int $$2, int $$3, int $$4) {
-      super.a($$0, $$1, $$2, $$3, axy.b.a($$4, this.a));
+   public fyk a() {
+      return this.a;
+   }
+
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = 1.0F;
+      if (!$$0.bf()) {
+         $$6 = 1.5F;
+      }
+
+      this.b.f = -$$6 * 0.45F * ayo.a(0.6F * $$3);
    }
 }

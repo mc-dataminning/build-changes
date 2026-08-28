@@ -1,396 +1,112 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InvalidClassException;
-import java.io.Reader;
-import java.util.List;
-import java.util.Map;
-import java.util.function.IntSupplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import org.joml.Matrix4f;
+import org.joml.Matrix4fStack;
 
-public class gen implements far, AutoCloseable {
-   private static final String a = "shaders/program/";
-   private static final Logger b = LogUtils.getLogger();
-   private static final fap c = new fap();
-   private static final boolean d = true;
-   private static gen e;
-   private static int f = -1;
-   private final Map<String, IntSupplier> g = Maps.newHashMap();
-   private final List<String> h = Lists.newArrayList();
-   private final List<Integer> i = Lists.newArrayList();
-   private final List<fax> j = Lists.newArrayList();
-   private final List<Integer> k = Lists.newArrayList();
-   private final Map<String, fax> l = Maps.newHashMap();
-   private final int m;
-   private final String n;
-   private boolean o;
-   private final faq p;
-   private final List<Integer> q;
-   private final List<String> r;
-   private final fas s;
-   private final fas t;
+public class gen {
+   private static final int a = 6;
+   private final akr[] b = new akr[6];
 
-   public gen(auh $$0, String $$1) throws IOException {
-      akr $$2 = akr.b("shaders/program/" + $$1 + ".json");
-      this.n = $$1;
-      auc $$3 = $$0.getResourceOrThrow($$2);
-
-      try (Reader $$4 = $$3.e()) {
-         JsonObject $$5 = aye.a($$4);
-         String $$6 = aye.i($$5, "vertex");
-         String $$7 = aye.i($$5, "fragment");
-         JsonArray $$8 = aye.a($$5, "samplers", null);
-         if ($$8 != null) {
-            int $$9 = 0;
-
-            for (JsonElement $$10 : $$8) {
-               try {
-                  this.a($$10);
-               } catch (Exception var20) {
-                  aku $$12 = aku.a(var20);
-                  $$12.a("samplers[" + $$9 + "]");
-                  throw $$12;
-               }
-
-               $$9++;
-            }
-         }
-
-         JsonArray $$13 = aye.a($$5, "attributes", null);
-         if ($$13 != null) {
-            int $$14 = 0;
-            this.q = Lists.newArrayListWithCapacity($$13.size());
-            this.r = Lists.newArrayListWithCapacity($$13.size());
-
-            for (JsonElement $$15 : $$13) {
-               try {
-                  this.r.add(aye.a($$15, "attribute"));
-               } catch (Exception var19) {
-                  aku $$17 = aku.a(var19);
-                  $$17.a("attributes[" + $$14 + "]");
-                  throw $$17;
-               }
-
-               $$14++;
-            }
-         } else {
-            this.q = null;
-            this.r = null;
-         }
-
-         JsonArray $$18 = aye.a($$5, "uniforms", null);
-         if ($$18 != null) {
-            int $$19 = 0;
-
-            for (JsonElement $$20 : $$18) {
-               try {
-                  this.b($$20);
-               } catch (Exception var18) {
-                  aku $$22 = aku.a(var18);
-                  $$22.a("uniforms[" + $$19 + "]");
-                  throw $$22;
-               }
-
-               $$19++;
-            }
-         }
-
-         this.p = a(aye.a($$5, "blend", null));
-         this.s = a($$0, fau.a.a, $$6);
-         this.t = a($$0, fau.a.b, $$7);
-         this.m = fav.a();
-         fav.b(this);
-         this.i();
-         if (this.r != null) {
-            for (String $$23 : this.r) {
-               int $$24 = fax.b(this.m, $$23);
-               this.q.add($$24);
-            }
-         }
-      } catch (Exception var22) {
-         aku $$26 = aku.a(var22);
-         $$26.b($$2.a() + " (" + $$3.b() + ")");
-         throw $$26;
-      }
-
-      this.b();
-   }
-
-   public static fas a(auh $$0, fau.a $$1, String $$2) throws IOException {
-      fau $$3 = $$1.c().get($$2);
-      if ($$3 != null && !($$3 instanceof fas)) {
-         throw new InvalidClassException("Program is not of type EffectProgram");
-      } else {
-         fas $$7;
-         if ($$3 == null) {
-            akr $$4 = akr.b("shaders/program/" + $$2 + $$1.b());
-            auc $$5 = $$0.getResourceOrThrow($$4);
-
-            try (InputStream $$6 = $$5.d()) {
-               $$7 = fas.a($$1, $$2, $$6, $$5.b());
-            }
-         } else {
-            $$7 = (fas)$$3;
-         }
-
-         return $$7;
+   public gen(akr $$0) {
+      for (int $$1 = 0; $$1 < 6; $$1++) {
+         this.b[$$1] = $$0.e($$0.a() + "_" + $$1 + ".png");
       }
    }
 
-   public static faq a(@Nullable JsonObject $$0) {
-      if ($$0 == null) {
-         return new faq();
-      } else {
-         int $$1 = 32774;
-         int $$2 = 1;
-         int $$3 = 0;
-         int $$4 = 1;
-         int $$5 = 0;
-         boolean $$6 = true;
-         boolean $$7 = false;
-         if (aye.a($$0, "func")) {
-            $$1 = faq.a($$0.get("func").getAsString());
-            if ($$1 != 32774) {
-               $$6 = false;
-            }
-         }
+   public void a(fgo $$0, float $$1, float $$2, float $$3) {
+      fbk $$4 = fbk.b();
+      Matrix4f $$5 = new Matrix4f().setPerspective(1.4835298F, (float)$$0.aM().l() / (float)$$0.aM().m(), 0.05F, 10.0F);
+      RenderSystem.backupProjectionMatrix();
+      RenderSystem.setProjectionMatrix($$5, fbq.a);
+      Matrix4fStack $$6 = RenderSystem.getModelViewStack();
+      $$6.pushMatrix();
+      $$6.rotationX((float) Math.PI);
+      RenderSystem.setShader(ges::r);
+      RenderSystem.enableBlend();
+      RenderSystem.disableCull();
+      RenderSystem.depthMask(false);
+      int $$7 = 2;
 
-         if (aye.a($$0, "srcrgb")) {
-            $$2 = faq.b($$0.get("srcrgb").getAsString());
-            if ($$2 != 1) {
-               $$6 = false;
-            }
-         }
+      for (int $$8 = 0; $$8 < 4; $$8++) {
+         $$6.pushMatrix();
+         float $$9 = ((float)($$8 % 2) / 2.0F - 0.5F) / 256.0F;
+         float $$10 = ((float)($$8 / 2) / 2.0F - 0.5F) / 256.0F;
+         float $$11 = 0.0F;
+         $$6.translate($$9, $$10, 0.0F);
+         $$6.rotateX($$1 * (float) (Math.PI / 180.0));
+         $$6.rotateY($$2 * (float) (Math.PI / 180.0));
+         RenderSystem.applyModelViewMatrix();
 
-         if (aye.a($$0, "dstrgb")) {
-            $$3 = faq.b($$0.get("dstrgb").getAsString());
-            if ($$3 != 0) {
-               $$6 = false;
-            }
-         }
-
-         if (aye.a($$0, "srcalpha")) {
-            $$4 = faq.b($$0.get("srcalpha").getAsString());
-            if ($$4 != 1) {
-               $$6 = false;
+         for (int $$12 = 0; $$12 < 6; $$12++) {
+            RenderSystem.setShaderTexture(0, this.b[$$12]);
+            fbd $$13 = $$4.a(fbn.c.h, fbg.j);
+            int $$14 = Math.round(255.0F * $$3) / ($$8 + 1);
+            if ($$12 == 0) {
+               $$13.a(-1.0F, -1.0F, 1.0F).a(0.0F, 0.0F).d($$14);
+               $$13.a(-1.0F, 1.0F, 1.0F).a(0.0F, 1.0F).d($$14);
+               $$13.a(1.0F, 1.0F, 1.0F).a(1.0F, 1.0F).d($$14);
+               $$13.a(1.0F, -1.0F, 1.0F).a(1.0F, 0.0F).d($$14);
             }
 
-            $$7 = true;
-         }
-
-         if (aye.a($$0, "dstalpha")) {
-            $$5 = faq.b($$0.get("dstalpha").getAsString());
-            if ($$5 != 0) {
-               $$6 = false;
+            if ($$12 == 1) {
+               $$13.a(1.0F, -1.0F, 1.0F).a(0.0F, 0.0F).d($$14);
+               $$13.a(1.0F, 1.0F, 1.0F).a(0.0F, 1.0F).d($$14);
+               $$13.a(1.0F, 1.0F, -1.0F).a(1.0F, 1.0F).d($$14);
+               $$13.a(1.0F, -1.0F, -1.0F).a(1.0F, 0.0F).d($$14);
             }
 
-            $$7 = true;
-         }
-
-         if ($$6) {
-            return new faq();
-         } else {
-            return $$7 ? new faq($$2, $$3, $$4, $$5, $$1) : new faq($$2, $$3, $$1);
-         }
-      }
-   }
-
-   @Override
-   public void close() {
-      for (fax $$0 : this.j) {
-         $$0.close();
-      }
-
-      fav.a(this);
-   }
-
-   public void f() {
-      RenderSystem.assertOnRenderThread();
-      fav.a(0);
-      f = -1;
-      e = null;
-
-      for (int $$0 = 0; $$0 < this.i.size(); $$0++) {
-         if (this.g.get(this.h.get($$0)) != null) {
-            GlStateManager._activeTexture(33984 + $$0);
-            GlStateManager._bindTexture(0);
-         }
-      }
-   }
-
-   public void g() {
-      this.o = false;
-      e = this;
-      this.p.a();
-      if (this.m != f) {
-         fav.a(this.m);
-         f = this.m;
-      }
-
-      for (int $$0 = 0; $$0 < this.i.size(); $$0++) {
-         String $$1 = this.h.get($$0);
-         IntSupplier $$2 = this.g.get($$1);
-         if ($$2 != null) {
-            RenderSystem.activeTexture(33984 + $$0);
-            int $$3 = $$2.getAsInt();
-            if ($$3 != -1) {
-               RenderSystem.bindTexture($$3);
-               fax.b(this.i.get($$0), $$0);
-            }
-         }
-      }
-
-      for (fax $$4 : this.j) {
-         $$4.b();
-      }
-   }
-
-   @Override
-   public void b() {
-      this.o = true;
-   }
-
-   @Nullable
-   public fax a(String $$0) {
-      RenderSystem.assertOnRenderThread();
-      return this.l.get($$0);
-   }
-
-   public fap b(String $$0) {
-      fax $$1 = this.a($$0);
-      return (fap)($$1 == null ? c : $$1);
-   }
-
-   private void i() {
-      RenderSystem.assertOnRenderThread();
-      IntList $$0 = new IntArrayList();
-
-      for (int $$1 = 0; $$1 < this.h.size(); $$1++) {
-         String $$2 = this.h.get($$1);
-         int $$3 = fax.a(this.m, $$2);
-         if ($$3 == -1) {
-            b.warn("Shader {} could not find sampler named {} in the specified shader program.", this.n, $$2);
-            this.g.remove($$2);
-            $$0.add($$1);
-         } else {
-            this.i.add($$3);
-         }
-      }
-
-      for (int $$4 = $$0.size() - 1; $$4 >= 0; $$4--) {
-         this.h.remove($$0.getInt($$4));
-      }
-
-      for (fax $$5 : this.j) {
-         String $$6 = $$5.a();
-         int $$7 = fax.a(this.m, $$6);
-         if ($$7 == -1) {
-            b.warn("Shader {} could not find uniform named {} in the specified shader program.", this.n, $$6);
-         } else {
-            this.k.add($$7);
-            $$5.b($$7);
-            this.l.put($$6, $$5);
-         }
-      }
-   }
-
-   private void a(JsonElement $$0) {
-      JsonObject $$1 = aye.m($$0, "sampler");
-      String $$2 = aye.i($$1, "name");
-      if (!aye.a($$1, "file")) {
-         this.g.put($$2, null);
-         this.h.add($$2);
-      } else {
-         this.h.add($$2);
-      }
-   }
-
-   public void a(String $$0, IntSupplier $$1) {
-      if (this.g.containsKey($$0)) {
-         this.g.remove($$0);
-      }
-
-      this.g.put($$0, $$1);
-      this.b();
-   }
-
-   private void b(JsonElement $$0) throws aku {
-      JsonObject $$1 = aye.m($$0, "uniform");
-      String $$2 = aye.i($$1, "name");
-      int $$3 = fax.a(aye.i($$1, "type"));
-      int $$4 = aye.o($$1, "count");
-      float[] $$5 = new float[Math.max($$4, 16)];
-      JsonArray $$6 = aye.v($$1, "values");
-      if ($$6.size() != $$4 && $$6.size() > 1) {
-         throw new aku("Invalid amount of values specified (expected " + $$4 + ", found " + $$6.size() + ")");
-      } else {
-         int $$7 = 0;
-
-         for (JsonElement $$8 : $$6) {
-            try {
-               $$5[$$7] = aye.e($$8, "value");
-            } catch (Exception var13) {
-               aku $$10 = aku.a(var13);
-               $$10.a("values[" + $$7 + "]");
-               throw $$10;
+            if ($$12 == 2) {
+               $$13.a(1.0F, -1.0F, -1.0F).a(0.0F, 0.0F).d($$14);
+               $$13.a(1.0F, 1.0F, -1.0F).a(0.0F, 1.0F).d($$14);
+               $$13.a(-1.0F, 1.0F, -1.0F).a(1.0F, 1.0F).d($$14);
+               $$13.a(-1.0F, -1.0F, -1.0F).a(1.0F, 0.0F).d($$14);
             }
 
-            $$7++;
-         }
-
-         if ($$4 > 1 && $$6.size() == 1) {
-            while ($$7 < $$4) {
-               $$5[$$7] = $$5[0];
-               $$7++;
+            if ($$12 == 3) {
+               $$13.a(-1.0F, -1.0F, -1.0F).a(0.0F, 0.0F).d($$14);
+               $$13.a(-1.0F, 1.0F, -1.0F).a(0.0F, 1.0F).d($$14);
+               $$13.a(-1.0F, 1.0F, 1.0F).a(1.0F, 1.0F).d($$14);
+               $$13.a(-1.0F, -1.0F, 1.0F).a(1.0F, 0.0F).d($$14);
             }
+
+            if ($$12 == 4) {
+               $$13.a(-1.0F, -1.0F, -1.0F).a(0.0F, 0.0F).d($$14);
+               $$13.a(-1.0F, -1.0F, 1.0F).a(0.0F, 1.0F).d($$14);
+               $$13.a(1.0F, -1.0F, 1.0F).a(1.0F, 1.0F).d($$14);
+               $$13.a(1.0F, -1.0F, -1.0F).a(1.0F, 0.0F).d($$14);
+            }
+
+            if ($$12 == 5) {
+               $$13.a(-1.0F, 1.0F, 1.0F).a(0.0F, 0.0F).d($$14);
+               $$13.a(-1.0F, 1.0F, -1.0F).a(0.0F, 1.0F).d($$14);
+               $$13.a(1.0F, 1.0F, -1.0F).a(1.0F, 1.0F).d($$14);
+               $$13.a(1.0F, 1.0F, 1.0F).a(1.0F, 0.0F).d($$14);
+            }
+
+            fbe.a($$13.b());
          }
 
-         int $$11 = $$4 > 1 && $$4 <= 4 && $$3 < 8 ? $$4 - 1 : 0;
-         fax $$12 = new fax($$2, $$3 + $$11, $$4, this);
-         if ($$3 <= 3) {
-            $$12.a((int)$$5[0], (int)$$5[1], (int)$$5[2], (int)$$5[3]);
-         } else if ($$3 <= 7) {
-            $$12.b($$5[0], $$5[1], $$5[2], $$5[3]);
-         } else {
-            $$12.a($$5);
-         }
-
-         this.j.add($$12);
+         $$6.popMatrix();
+         RenderSystem.colorMask(true, true, true, false);
       }
+
+      RenderSystem.colorMask(true, true, true, true);
+      RenderSystem.restoreProjectionMatrix();
+      $$6.popMatrix();
+      RenderSystem.applyModelViewMatrix();
+      RenderSystem.depthMask(true);
+      RenderSystem.enableCull();
+      RenderSystem.enableDepthTest();
    }
 
-   @Override
-   public fau c() {
-      return this.s;
-   }
+   public CompletableFuture<Void> a(gqm $$0, Executor $$1) {
+      CompletableFuture<?>[] $$2 = new CompletableFuture[6];
 
-   @Override
-   public fau d() {
-      return this.t;
-   }
+      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+         $$2[$$3] = $$0.a(this.b[$$3], $$1);
+      }
 
-   @Override
-   public void e() {
-      this.t.a(this);
-      this.s.a(this);
-   }
-
-   public String h() {
-      return this.n;
-   }
-
-   @Override
-   public int a() {
-      return this.m;
+      return CompletableFuture.allOf($$2);
    }
 }

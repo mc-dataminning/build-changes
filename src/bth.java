@@ -92,8 +92,8 @@ public class bth extends bsr implements bso, bum {
    }
 
    @Override
-   public eph j_() {
-      return eph.d;
+   public epj j_() {
+      return epj.d;
    }
 
    @Override
@@ -104,9 +104,9 @@ public class bth extends bsr implements bso, bum {
    @Override
    public boolean u(bsr $$0) {
       if ($$0 instanceof cmx $$1) {
-         this.k = new bth.a($$1.cA(), this.dP().Z());
+         this.k = new bth.a($$1.cz(), this.dO().Z());
          if ($$1 instanceof aqv $$2) {
-            an.h.a($$2, this, $$1.dQ().o(), 1.0F, 1.0F, false);
+            an.h.a($$2, this, $$1.dP().o(), 1.0F, 1.0F, false);
          }
 
          return !this.v();
@@ -117,10 +117,10 @@ public class bth extends bsr implements bso, bum {
 
    @Override
    public bqr a(cmx $$0, bqq $$1) {
-      if (this.dP().B) {
+      if (this.dO().B) {
          return this.v() ? bqr.a : bqr.c;
       } else {
-         this.l = new bth.a($$0.cA(), this.dP().Z());
+         this.l = new bth.a($$0.cz(), this.dO().Z());
          return bqr.c;
       }
    }
@@ -132,13 +132,13 @@ public class bth extends bsr implements bso, bum {
    @Nullable
    @Override
    public btn Y_() {
-      return this.k != null ? this.dP().b(this.k.a()) : null;
+      return this.k != null ? this.dO().b(this.k.a()) : null;
    }
 
    @Nullable
    @Override
    public btn p() {
-      return this.l != null ? this.dP().b(this.l.a()) : null;
+      return this.l != null ? this.dO().b(this.l.a()) : null;
    }
 
    private void a(float $$0) {
@@ -175,8 +175,8 @@ public class bth extends bsr implements bso, bum {
    }
 
    @Override
-   protected ewv au() {
-      return this.w().a(this.dn());
+   protected ewx au() {
+      return this.w().a(this.dm());
    }
 
    static record a(UUID b, long c) {

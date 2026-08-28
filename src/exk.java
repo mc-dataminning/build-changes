@@ -1,98 +1,38 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.google.common.math.IntMath;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public class exk implements exf {
-   protected static final exf a = new exk(false, -Double.MAX_VALUE, cuq.l, $$0 -> false, null) {
-      @Override
-      public boolean a(ext $$0, jd $$1, boolean $$2) {
-         return $$2;
+public final class exk implements exo {
+   private final exi a;
+   private final int b;
+   private final int c;
+
+   exk(int $$0, int $$1) {
+      this.a = new exi((int)exs.a($$0, $$1));
+      int $$2 = IntMath.gcd($$0, $$1);
+      this.b = $$0 / $$2;
+      this.c = $$1 / $$2;
+   }
+
+   @Override
+   public boolean a(exo.a $$0) {
+      int $$1 = this.a.size() - 1;
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
+            return false;
+         }
       }
-   };
-   private final boolean b;
-   private final double c;
-   private final cuq d;
-   private final Predicate<epc> e;
-   @Nullable
-   private final bsr f;
 
-   protected exk(boolean $$0, double $$1, cuq $$2, Predicate<epc> $$3, @Nullable bsr $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-   }
-
-   @Deprecated
-   protected exk(bsr $$0) {
-      // $VF: Couldn't be decompiled
-      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-      // java.lang.NullPointerException: Cannot invoke "org.jetbrains.java.decompiler.struct.gen.VarType.equals(Object)" because "curType" is null
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.setLambdaGenericTypes(NewExprent.java:668)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.toJava(NewExprent.java:401)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:745)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:714)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.toJava(FunctionExprent.java:625)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.getCastedExprent(ExprProcessor.java:1018)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.appendParamList(InvocationExprent.java:1153)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.toJava(InvocationExprent.java:902)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.listToJava(ExprProcessor.java:895)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.BasicBlockStatement.toJava(BasicBlockStatement.java:90)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.RootStatement.toJava(RootStatement.java:36)
-      //   at org.jetbrains.java.decompiler.main.ClassWriter.writeMethod(ClassWriter.java:1283)
-      //
-      // Bytecode:
-      // 00: aload 0
-      // 01: aload 1
-      // 02: invokevirtual bsr.ca ()Z
-      // 05: aload 1
-      // 06: invokevirtual bsr.dw ()D
-      // 09: aload 1
-      // 0a: instanceof btn
-      // 0d: ifeq 1a
-      // 10: aload 1
-      // 11: checkcast btn
-      // 14: invokevirtual btn.eU ()Lcuq;
-      // 17: goto 1d
-      // 1a: getstatic cuq.l Lcuq;
-      // 1d: aload 1
-      // 1e: instanceof btn
-      // 21: ifeq 35
-      // 24: aload 1
-      // 25: checkcast btn
-      // 28: dup
-      // 29: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
-      // 2c: pop
-      // 2d: invokedynamic test (Lbtn;)Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, btn.a (Lepc;)Z, (Lepc;)Z ]
-      // 32: goto 3a
-      // 35: invokedynamic test ()Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, exk.a (Lepc;)Z, (Lepc;)Z ]
-      // 3a: aload 1
-      // 3b: invokespecial exk.<init> (ZDLcuq;Ljava/util/function/Predicate;Lbsr;)V
-      // 3e: return
+      return true;
    }
 
    @Override
-   public boolean a(cul $$0) {
-      return this.d.a($$0);
+   public int size() {
+      return this.a.size();
    }
 
    @Override
-   public boolean a(epc $$0, epc $$1) {
-      return this.e.test($$1) && !$$0.a().a($$1.a());
-   }
-
-   @Override
-   public boolean b() {
-      return this.b;
-   }
-
-   @Override
-   public boolean a(ext $$0, jd $$1, boolean $$2) {
-      return this.c > (double)$$1.v() + $$0.c(ji.a.b) - 1.0E-5F;
-   }
-
-   @Nullable
-   public bsr c() {
-      return this.f;
+   public DoubleList a() {
+      return this.a;
    }
 }

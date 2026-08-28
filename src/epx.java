@@ -1,38 +1,37 @@
-public class epx extends epo {
-   private float m = Float.MAX_VALUE;
-   private epo n;
-   private boolean o;
+import javax.annotation.Nullable;
 
-   public epx(epo $$0) {
-      super($$0.a, $$0.b, $$0.c);
-   }
+public class epx {
+   private final dcg a;
+   @Nullable
+   private final epw b;
+   private final jd c;
+   private final jd.a d = new jd.a();
 
-   public epx(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   public void a(float $$0, epo $$1) {
-      if ($$0 < this.m) {
-         this.m = $$0;
-         this.n = $$1;
+   public epx(dcg $$0, btp $$1) {
+      this.a = $$0;
+      if ($$1.dO() instanceof aqu $$2) {
+         this.b = $$2.H();
+      } else {
+         this.b = null;
       }
+
+      this.c = $$1.do();
    }
 
-   public epo d() {
-      return this.n;
+   public epv a(int $$0, int $$1, int $$2) {
+      jd $$3 = this.d.d($$0, $$1, $$2);
+      return this.b == null ? eqa.b(this.a, $$3) : this.b.a(this.a, $$3);
    }
 
-   public void e() {
-      this.o = true;
+   public dtc a(jd $$0) {
+      return this.a.a_($$0);
    }
 
-   public boolean f() {
-      return this.o;
+   public dcg a() {
+      return this.a;
    }
 
-   public static epx c(vw $$0) {
-      epx $$1 = new epx($$0.readInt(), $$0.readInt(), $$0.readInt());
-      a($$0, $$1);
-      return $$1;
+   public jd b() {
+      return this.c;
    }
 }

@@ -16,7 +16,7 @@ public class cha extends bvh<cgy> {
    private int k;
    private final avo l;
    private final avo m;
-   private exa n;
+   private exc n;
    private cha.a o = cha.a.d;
 
    public cha(avo $$0, avo $$1) {
@@ -26,10 +26,10 @@ public class cha extends bvh<cgy> {
    }
 
    protected boolean a(aqu $$0, cgy $$1) {
-      btn $$2 = $$1.dU().c(ccs.o).get();
+      btn $$2 = $$1.dT().c(ccs.o).get();
       boolean $$3 = this.a($$1, $$2);
       if (!$$3) {
-         $$1.dU().b(ccs.o);
+         $$1.dT().b(ccs.o);
          this.b($$1, $$2);
       }
 
@@ -37,20 +37,20 @@ public class cha extends bvh<cgy> {
    }
 
    protected boolean a(aqu $$0, cgy $$1, long $$2) {
-      return $$1.dU().a(ccs.o) && this.o != cha.a.d && !$$1.dU().a(ccs.Z);
+      return $$1.dT().a(ccs.o) && this.o != cha.a.d && !$$1.dT().a(ccs.Z);
    }
 
    protected void b(aqu $$0, cgy $$1, long $$2) {
-      btn $$3 = $$1.dU().c(ccs.o).get();
+      btn $$3 = $$1.dT().c(ccs.o).get();
       bvj.a($$1, $$3);
       $$1.c($$3);
-      $$1.dU().a(ccs.m, new ccv($$3.dn(), 2.0F, 0));
+      $$1.dT().a(ccs.m, new ccv($$3.dm(), 2.0F, 0));
       this.k = 10;
       this.o = cha.a.a;
    }
 
    protected void c(aqu $$0, cgy $$1, long $$2) {
-      $$1.dU().b(ccs.o);
+      $$1.dT().b(ccs.o);
       $$1.s();
       $$1.b(bua.a);
    }
@@ -70,19 +70,19 @@ public class cha extends bvh<cgy> {
    }
 
    protected void d(aqu $$0, cgy $$1, long $$2) {
-      btn $$3 = $$1.dU().c(ccs.o).get();
+      btn $$3 = $$1.dT().c(ccs.o).get();
       $$1.c($$3);
       switch (this.o) {
          case a:
             if ($$3.f($$1) < 1.75F) {
                $$0.a(null, $$1, this.l, avq.g, 2.0F, 1.0F);
                $$1.b(bua.j);
-               $$3.i($$3.dn().a($$1.dn()).d().a(0.75));
-               this.n = $$3.dn();
+               $$3.i($$3.dm().a($$1.dm()).d().a(0.75));
+               this.n = $$3.dm();
                this.j = 0;
                this.o = cha.a.b;
             } else if (this.k <= 0) {
-               $$1.dU().a(ccs.m, new ccv($$3.dn(), 2.0F, 0));
+               $$1.dT().a(ccs.m, new ccv($$3.dm(), 2.0F, 0));
                this.k = 10;
             } else {
                this.k--;
@@ -105,22 +105,22 @@ public class cha extends bvh<cgy> {
    }
 
    private boolean a(cgy $$0, btn $$1) {
-      epq $$2 = $$0.N().a($$1, 0);
+      eps $$2 = $$0.N().a($$1, 0);
       return $$2 != null && $$2.m() < 1.75F;
    }
 
    private void b(cgy $$0, btn $$1) {
-      List<UUID> $$2 = $$0.dU().c(ccs.aa).orElseGet(ArrayList::new);
-      boolean $$3 = !$$2.contains($$1.cA());
+      List<UUID> $$2 = $$0.dT().c(ccs.aa).orElseGet(ArrayList::new);
+      boolean $$3 = !$$2.contains($$1.cz());
       if ($$2.size() == 5 && $$3) {
          $$2.remove(0);
       }
 
       if ($$3) {
-         $$2.add($$1.cA());
+         $$2.add($$1.cz());
       }
 
-      $$0.dU().a(ccs.aa, $$2, 100L);
+      $$0.dT().a(ccs.aa, $$2, 100L);
    }
 
    static enum a {

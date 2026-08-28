@@ -1,36 +1,25 @@
-public class goc<T extends btn, M extends fvi<T>> extends got<T, M> {
-   private static final akr a = akr.b("textures/entity/elytra.png");
-   private final fvf<T> b;
+public class goc extends gov<cfm, fvf<cfm>> {
+   private final gev a;
 
-   public goc(gmd<T, M> $$0, fye $$1) {
+   public goc(gmf<cfm, fvf<cfm>> $$0, gev $$1) {
       super($$0);
-      this.b = new fvf<>($$1.a(fyh.X));
+      this.a = $$1;
    }
 
-   public void a(fbg $$0, gex $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cuq $$10 = $$3.a(bsy.e);
-      if ($$10.a(cut.nT)) {
-         akr $$13;
-         if ($$3 instanceof gdw $$11) {
-            grj $$12 = $$11.b();
-            if ($$12.d() != null) {
-               $$13 = $$12.d();
-            } else if ($$12.c() != null && $$11.a(cmy.a)) {
-               $$13 = $$12.c();
-            } else {
-               $$13 = a;
-            }
-         } else {
-            $$13 = a;
-         }
-
-         $$0.a();
-         $$0.a(0.0F, 0.0F, 0.125F);
-         this.c().a(this.b);
-         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-         fbk $$17 = glf.a($$1, gff.a($$13), $$10.x());
-         this.b.a($$0, $$17, $$2, gqa.d);
-         $$0.b();
+   public void a(fbi $$0, gez $$1, int $$2, cfm $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fq() == btg.b;
+      $$0.a();
+      float $$11 = 1.0F;
+      float $$12 = -1.0F;
+      float $$13 = ayo.e($$3.dG()) / 60.0F;
+      if ($$3.dG() < 0.0F) {
+         $$0.a(0.0F, 1.0F - $$13 * 0.5F, -1.0F + $$13 * 0.5F);
+      } else {
+         $$0.a(0.0F, 1.0F + $$13 * 0.8F, -1.0F + $$13 * 0.2F);
       }
+
+      cuq $$14 = $$10 ? $$3.eT() : $$3.eU();
+      this.a.a($$3, $$14, cun.h, false, $$0, $$1, $$2);
+      $$0.b();
    }
 }

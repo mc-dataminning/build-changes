@@ -1,263 +1,109 @@
-import com.google.common.base.MoreObjects;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.Iterator;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
 
 public class ejh {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<ejh> a = Codec.INT_STREAM
-      .comapFlatMap(
-         $$0 -> ad.a($$0, 6).map($$0x -> new ejh($$0x[0], $$0x[1], $$0x[2], $$0x[3], $$0x[4], $$0x[5])),
-         $$0 -> IntStream.of($$0.c, $$0.d, $$0.e, $$0.f, $$0.g, $$0.h)
-      )
-      .stable();
-   private int c;
-   private int d;
-   private int e;
-   private int f;
-   private int g;
-   private int h;
+   public static final akq<ejg> a = a("normal");
+   public static final akq<ejg> b = a("flat");
+   public static final akq<ejg> c = a("large_biomes");
+   public static final akq<ejg> d = a("amplified");
+   public static final akq<ejg> e = a("single_biome_surface");
+   public static final akq<ejg> f = a("debug_all_block_states");
 
-   public ejh(jd $$0) {
-      this($$0.u(), $$0.v(), $$0.w(), $$0.u(), $$0.v(), $$0.w());
+   public static void a(qq<ejg> $$0) {
+      new ejh.a($$0).a();
    }
 
-   public ejh(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      if ($$3 < $$0 || $$4 < $$1 || $$5 < $$2) {
-         String $$6 = "Invalid bounding box data, inverted bounds for: " + this;
-         if (ab.aU) {
-            throw new IllegalStateException($$6);
-         }
+   private static akq<ejg> a(String $$0) {
+      return akq.a(lu.aY, akr.b($$0));
+   }
 
-         b.error($$6);
-         this.c = Math.min($$0, $$3);
-         this.d = Math.min($$1, $$4);
-         this.e = Math.min($$2, $$5);
-         this.f = Math.max($$0, $$3);
-         this.g = Math.max($$1, $$4);
-         this.h = Math.max($$2, $$5);
+   public static Optional<akq<ejg>> a(dzt $$0) {
+      return $$0.a(dwz.b).flatMap($$0x -> {
+         Object var10000;
+         Objects.requireNonNull(var10000);
+         duz $$1 = (duz)var10000;
+
+         $$0x.b();
+         return switch ($$1) {
+            case dyt $$3 -> Optional.of(b);
+            case dyp $$4 -> Optional.of(f);
+            case dzb $$5 -> Optional.of(a);
+            default -> Optional.empty();
+         };
+      });
+   }
+
+   public static dzt a(ka $$0) {
+      return $$0.d(lu.aY).g(a).a().a();
+   }
+
+   public static dwz b(ka $$0) {
+      return $$0.d(lu.aY).g(a).a().b().orElseThrow();
+   }
+
+   static class a {
+      private final qq<ejg> a;
+      private final jn<dzd> b;
+      private final jn<ddw> c;
+      private final jn<eiv> d;
+      private final jn<ejx> e;
+      private final jn<dek> f;
+      private final jm<dwy> g;
+      private final dwz h;
+      private final dwz i;
+
+      a(qq<ejg> $$0) {
+         this.a = $$0;
+         jn<dwy> $$1 = $$0.a(lu.aK);
+         this.b = $$0.a(lu.aO);
+         this.c = $$0.a(lu.aF);
+         this.d = $$0.a(lu.aQ);
+         this.e = $$0.a(lu.aT);
+         this.f = $$0.a(lu.aZ);
+         this.g = $$1.b(dww.a);
+         jm<dwy> $$2 = $$1.b(dww.b);
+         jm<dzd> $$3 = this.b.b(dzd.f);
+         jm.c<dek> $$4 = this.f.b(del.a);
+         this.h = new dwz($$2, new dzb(dej.a($$4), $$3));
+         jm<dwy> $$5 = $$1.b(dww.c);
+         jm<dzd> $$6 = this.b.b(dzd.g);
+         this.i = new dwz($$5, new dzb(den.a(this.c), $$6));
       }
-   }
 
-   public static ejh a(kh $$0, kh $$1) {
-      return new ejh(
-         Math.min($$0.u(), $$1.u()),
-         Math.min($$0.v(), $$1.v()),
-         Math.min($$0.w(), $$1.w()),
-         Math.max($$0.u(), $$1.u()),
-         Math.max($$0.v(), $$1.v()),
-         Math.max($$0.w(), $$1.w())
-      );
-   }
-
-   public static ejh a() {
-      return new ejh(Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE);
-   }
-
-   public static ejh a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8, ji $$9) {
-      switch ($$9) {
-         case d:
-         default:
-            return new ejh($$0 + $$3, $$1 + $$4, $$2 + $$5, $$0 + $$6 - 1 + $$3, $$1 + $$7 - 1 + $$4, $$2 + $$8 - 1 + $$5);
-         case c:
-            return new ejh($$0 + $$3, $$1 + $$4, $$2 - $$8 + 1 + $$5, $$0 + $$6 - 1 + $$3, $$1 + $$7 - 1 + $$4, $$2 + $$5);
-         case e:
-            return new ejh($$0 - $$8 + 1 + $$5, $$1 + $$4, $$2 + $$3, $$0 + $$5, $$1 + $$7 - 1 + $$4, $$2 + $$6 - 1 + $$3);
-         case f:
-            return new ejh($$0 + $$5, $$1 + $$4, $$2 + $$3, $$0 + $$8 - 1 + $$5, $$1 + $$7 - 1 + $$4, $$2 + $$6 - 1 + $$3);
+      private dwz a(duz $$0) {
+         return new dwz(this.g, $$0);
       }
-   }
 
-   public Stream<dcd> b() {
-      int $$0 = kf.a(this.h());
-      int $$1 = kf.a(this.j());
-      int $$2 = kf.a(this.k());
-      int $$3 = kf.a(this.m());
-      return dcd.a(new dcd($$0, $$1), new dcd($$2, $$3));
-   }
-
-   public boolean a(ejh $$0) {
-      return this.f >= $$0.c && this.c <= $$0.f && this.h >= $$0.e && this.e <= $$0.h && this.g >= $$0.d && this.d <= $$0.g;
-   }
-
-   public boolean a(int $$0, int $$1, int $$2, int $$3) {
-      return this.f >= $$0 && this.c <= $$2 && this.h >= $$1 && this.e <= $$3;
-   }
-
-   public static Optional<ejh> a(Iterable<jd> $$0) {
-      Iterator<jd> $$1 = $$0.iterator();
-      if (!$$1.hasNext()) {
-         return Optional.empty();
-      } else {
-         ejh $$2 = new ejh($$1.next());
-         $$1.forEachRemaining($$2::a);
-         return Optional.of($$2);
+      private dwz a(dea $$0, jm<dzd> $$1) {
+         return this.a(new dzb($$0, $$1));
       }
-   }
 
-   public static Optional<ejh> b(Iterable<ejh> $$0) {
-      Iterator<ejh> $$1 = $$0.iterator();
-      if (!$$1.hasNext()) {
-         return Optional.empty();
-      } else {
-         ejh $$2 = $$1.next();
-         ejh $$3 = new ejh($$2.c, $$2.d, $$2.e, $$2.f, $$2.g, $$2.h);
-         $$1.forEachRemaining($$3::b);
-         return Optional.of($$3);
+      private ejg a(dwz $$0) {
+         return new ejg(Map.of(dwz.b, $$0, dwz.c, this.h, dwz.d, this.i));
       }
-   }
 
-   @Deprecated
-   public ejh b(ejh $$0) {
-      this.c = Math.min(this.c, $$0.c);
-      this.d = Math.min(this.d, $$0.d);
-      this.e = Math.min(this.e, $$0.e);
-      this.f = Math.max(this.f, $$0.f);
-      this.g = Math.max(this.g, $$0.g);
-      this.h = Math.max(this.h, $$0.h);
-      return this;
-   }
-
-   @Deprecated
-   public ejh a(jd $$0) {
-      this.c = Math.min(this.c, $$0.u());
-      this.d = Math.min(this.d, $$0.v());
-      this.e = Math.min(this.e, $$0.w());
-      this.f = Math.max(this.f, $$0.u());
-      this.g = Math.max(this.g, $$0.v());
-      this.h = Math.max(this.h, $$0.w());
-      return this;
-   }
-
-   @Deprecated
-   public ejh a(int $$0, int $$1, int $$2) {
-      this.c += $$0;
-      this.d += $$1;
-      this.e += $$2;
-      this.f += $$0;
-      this.g += $$1;
-      this.h += $$2;
-      return this;
-   }
-
-   @Deprecated
-   public ejh a(kh $$0) {
-      return this.a($$0.u(), $$0.v(), $$0.w());
-   }
-
-   public ejh b(int $$0, int $$1, int $$2) {
-      return new ejh(this.c + $$0, this.d + $$1, this.e + $$2, this.f + $$0, this.g + $$1, this.h + $$2);
-   }
-
-   public ejh a(int $$0) {
-      return this.c($$0, $$0, $$0);
-   }
-
-   public ejh c(int $$0, int $$1, int $$2) {
-      return new ejh(this.h() - $$0, this.i() - $$1, this.j() - $$2, this.k() + $$0, this.l() + $$1, this.m() + $$2);
-   }
-
-   public boolean b(kh $$0) {
-      return this.d($$0.u(), $$0.v(), $$0.w());
-   }
-
-   public boolean d(int $$0, int $$1, int $$2) {
-      return $$0 >= this.c && $$0 <= this.f && $$2 >= this.e && $$2 <= this.h && $$1 >= this.d && $$1 <= this.g;
-   }
-
-   public kh c() {
-      return new kh(this.f - this.c, this.g - this.d, this.h - this.e);
-   }
-
-   public int d() {
-      return this.f - this.c + 1;
-   }
-
-   public int e() {
-      return this.g - this.d + 1;
-   }
-
-   public int f() {
-      return this.h - this.e + 1;
-   }
-
-   public jd g() {
-      return new jd(this.c + (this.f - this.c + 1) / 2, this.d + (this.g - this.d + 1) / 2, this.e + (this.h - this.e + 1) / 2);
-   }
-
-   public void a(Consumer<jd> $$0) {
-      jd.a $$1 = new jd.a();
-      $$0.accept($$1.d(this.f, this.g, this.h));
-      $$0.accept($$1.d(this.c, this.g, this.h));
-      $$0.accept($$1.d(this.f, this.d, this.h));
-      $$0.accept($$1.d(this.c, this.d, this.h));
-      $$0.accept($$1.d(this.f, this.g, this.e));
-      $$0.accept($$1.d(this.c, this.g, this.e));
-      $$0.accept($$1.d(this.f, this.d, this.e));
-      $$0.accept($$1.d(this.c, this.d, this.e));
-   }
-
-   @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this)
-         .add("minX", this.c)
-         .add("minY", this.d)
-         .add("minZ", this.e)
-         .add("maxX", this.f)
-         .add("maxY", this.g)
-         .add("maxZ", this.h)
-         .toString();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof ejh $$1)
-            ? false
-            : this.c == $$1.c && this.d == $$1.d && this.e == $$1.e && this.f == $$1.f && this.g == $$1.g && this.h == $$1.h;
+      private void a(akq<ejg> $$0, dwz $$1) {
+         this.a.a($$0, this.a($$1));
       }
-   }
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.c, this.d, this.e, this.f, this.g, this.h);
-   }
+      private void a(dea $$0) {
+         jm<dzd> $$1 = this.b.b(dzd.c);
+         this.a(ejh.a, this.a($$0, $$1));
+         jm<dzd> $$2 = this.b.b(dzd.d);
+         this.a(ejh.c, this.a($$0, $$2));
+         jm<dzd> $$3 = this.b.b(dzd.e);
+         this.a(ejh.d, this.a($$0, $$3));
+      }
 
-   public int h() {
-      return this.c;
-   }
-
-   public int i() {
-      return this.d;
-   }
-
-   public int j() {
-      return this.e;
-   }
-
-   public int k() {
-      return this.f;
-   }
-
-   public int l() {
-      return this.g;
-   }
-
-   public int m() {
-      return this.h;
+      public void a() {
+         jm.c<dek> $$0 = this.f.b(del.b);
+         this.a(dej.a($$0));
+         jm<dzd> $$1 = this.b.b(dzd.c);
+         jm.c<ddw> $$2 = this.c.b(ded.b);
+         this.a(ejh.e, this.a(new deh($$2), $$1));
+         this.a(ejh.b, this.a(new dyt(eht.a(this.c, this.e, this.d))));
+         this.a(ejh.f, this.a(new dyp($$2)));
+      }
    }
 }

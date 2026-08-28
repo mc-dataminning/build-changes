@@ -37,7 +37,7 @@ public class byj extends bvh<cmk> {
       for (int $$5 = -1; $$5 <= 1; $$5++) {
          for (int $$6 = -1; $$6 <= 1; $$6++) {
             for (int $$7 = -1; $$7 <= 1; $$7++) {
-               $$2.a($$1.dp(), $$5, $$6, $$7);
+               $$2.a($$1.do(), $$5, $$6, $$7);
                if (this.a($$2, $$0)) {
                   if ($$0.z.a(++$$4) == 0) {
                      $$3 = Optional.of($$2.j());
@@ -66,8 +66,8 @@ public class byj extends bvh<cmk> {
    private void a(cmk $$0) {
       this.g.ifPresent($$1 -> {
          bvk $$2 = new bvk($$1);
-         $$0.dU().a(ccs.n, $$2);
-         $$0.dU().a(ccs.m, new ccv($$2, 0.5F, 1));
+         $$0.dT().a(ccs.n, $$2);
+         $$0.dT().a(ccs.m, new ccv($$2, 0.5F, 1));
       });
    }
 
@@ -78,7 +78,7 @@ public class byj extends bvh<cmk> {
 
    protected void d(aqu $$0, cmk $$1, long $$2) {
       jd $$3 = this.g.get();
-      if ($$2 >= this.d && $$3.a($$1.dn(), 1.0)) {
+      if ($$2 >= this.d && $$3.a($$1.dm(), 1.0)) {
          cuq $$4 = cuq.l;
          bra $$5 = $$1.x();
          int $$6 = $$5.b();

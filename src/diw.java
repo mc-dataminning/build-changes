@@ -2,7 +2,7 @@ import com.mojang.serialization.MapCodec;
 
 public class diw extends dhu {
    public static final MapCodec<diw> i = b(diw::new);
-   private final ext[] j;
+   private final exv[] j;
 
    @Override
    public MapCodec<diw> a() {
@@ -24,17 +24,17 @@ public class diw extends dhu {
    }
 
    @Override
-   protected ext f(dtc $$0, dcc $$1, jd $$2) {
+   protected exv f(dtc $$0, dcc $$1, jd $$2) {
       return this.j[this.g($$0)];
    }
 
    @Override
-   protected ext c(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv c(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return this.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return false;
    }
 
@@ -46,11 +46,11 @@ public class diw extends dhu {
    }
 
    private boolean m(dtc $$0) {
-      return $$0.a(awe.S) && $$0.a(awe.k) == this.o().a(awe.k);
+      return $$0.a(awe.T) && $$0.a(awe.l) == this.o().a(awe.l);
    }
 
    @Override
-   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, eww $$6) {
+   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, ewy $$6) {
       if ($$2.B) {
          return $$0.a(cut.uK) ? bqt.a : bqt.e;
       } else {
@@ -59,7 +59,7 @@ public class diw extends dhu {
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
       return !$$1.x_() ? cuz.a($$3, $$1, $$2) : bqr.e;
    }
 
@@ -67,7 +67,7 @@ public class diw extends dhu {
    public dtc a(cyd $$0) {
       dcc $$1 = $$0.q();
       jd $$2 = $$0.a();
-      epc $$3 = $$0.q().b_($$0.a());
+      epe $$3 = $$0.q().b_($$0.a());
       jd $$4 = $$2.f();
       jd $$5 = $$2.i();
       jd $$6 = $$2.g();
@@ -81,13 +81,13 @@ public class diw extends dhu {
          .a(b, Boolean.valueOf(this.a($$9, $$9.d($$1, $$5, ji.e), ji.e)))
          .a(c, Boolean.valueOf(this.a($$10, $$10.d($$1, $$6, ji.c), ji.c)))
          .a(d, Boolean.valueOf(this.a($$11, $$11.d($$1, $$7, ji.f), ji.f)))
-         .a(e, Boolean.valueOf($$3.a() == epd.c));
+         .a(e, Boolean.valueOf($$3.a() == epf.c));
    }
 
    @Override
    protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
       if ($$0.c(e)) {
-         $$3.a($$4, epd.c, epd.c.a($$3));
+         $$3.a($$4, epf.c, epf.c.a($$3));
       }
 
       return $$1.o().e() == ji.c.a ? $$0.a(f.get($$1), Boolean.valueOf(this.a($$2, $$2.d($$3, $$5, $$1.g()), $$1.g()))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);

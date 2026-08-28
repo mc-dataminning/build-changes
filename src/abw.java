@@ -8,7 +8,7 @@ public class abw implements zg<abu> {
 
    public abw(btc $$0, aqt $$1) {
       this.b = $$0.an();
-      exa $$2 = $$1.b();
+      exc $$2 = $$1.b();
       this.c = $$2.a();
       this.d = $$2.b();
       this.e = $$2.c();

@@ -1,65 +1,40 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import org.slf4j.Logger;
+import java.util.Set;
 
-public class esy extends etc {
-   private static final Logger b = LogUtils.getLogger();
+public class esy extends ete {
    public static final MapCodec<esy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(akq.a(lu.bd).fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, esy::new)
+      $$0 -> a($$0).and(err.b.e.fieldOf("entity").forGetter($$0x -> $$0x.b)).apply($$0, esy::new)
    );
-   private final akq<etd> c;
+   private final err.b b;
 
-   private esy(List<eva> $$0, akq<etd> $$1) {
+   public esy(List<evc> $$0, err.b $$1) {
       super($$0);
-      this.c = $$1;
+      this.b = $$1;
    }
 
    @Override
-   public ete<esy> b() {
-      return etf.H;
+   public etg<esy> b() {
+      return eth.B;
    }
 
    @Override
-   public void a(erv $$0) {
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.c.a() + ", but references are not allowed");
-      } else if ($$0.a(this.c)) {
-         $$0.b("Function " + this.c.a() + " is recursively called");
-      } else {
-         super.a($$0);
-         $$0.a()
-            .a(lu.bd, this.c)
-            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.c.a() + "}", this.c)), () -> $$0.b("Unknown function table called " + this.c.a()));
+   public Set<euk<?>> a() {
+      return ImmutableSet.of(this.b.a());
+   }
+
+   @Override
+   public cuq a(cuq $$0, err $$1) {
+      if ($$0.a(cut.un) && $$1.c(this.b.a()) instanceof cmx $$2) {
+         $$0.b(kq.W, new cxu($$2.fX()));
       }
+
+      return $$0;
    }
 
-   @Override
-   protected cuq a(cuq $$0, erp $$1) {
-      etd $$2 = $$1.a().a(lu.bd, this.c).map(jm::a).orElse(null);
-      if ($$2 == null) {
-         b.warn("Unknown function: {}", this.c.a());
-         return $$0;
-      } else {
-         erp.c<?> $$3 = erp.a($$2);
-         if ($$1.b($$3)) {
-            cuq var5;
-            try {
-               var5 = $$2.apply($$0, $$1);
-            } finally {
-               $$1.c($$3);
-            }
-
-            return var5;
-         } else {
-            b.warn("Detected infinite loop in loot tables");
-            return $$0;
-         }
-      }
-   }
-
-   public static etc.a<?> a(akq<etd> $$0) {
+   public static ete.a<?> a(err.b $$0) {
       return a($$1 -> new esy($$1, $$0));
    }
 }

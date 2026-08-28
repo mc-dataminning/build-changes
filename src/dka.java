@@ -48,9 +48,9 @@ public class dka extends dfy implements diq, djg {
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
       dqh $$5 = $$1.c_($$2);
-      if ($$5 instanceof dri && $$3.gw()) {
+      if ($$5 instanceof dri && $$3.gv()) {
          $$3.a((dri)$$5);
          return bqr.a($$1.B);
       } else {
@@ -58,7 +58,7 @@ public class dka extends dfy implements diq, djg {
       }
    }
 
-   public static boolean a(enr.c $$0, enr.c $$1) {
+   public static boolean a(ent.c $$0, ent.c $$1) {
       ji $$2 = m($$0.b());
       ji $$3 = m($$1.b());
       ji $$4 = n($$0.b());

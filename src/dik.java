@@ -4,7 +4,7 @@ import javax.annotation.Nullable;
 
 public class dik extends dfk {
    public static final MapCodec<dik> a = b(dik::new);
-   protected static final ext b = dfy.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0);
+   protected static final exv b = dfy.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0);
    public static final List<jd> c = jd.a(-2, 0, -2, 2, 1, 2).filter($$0 -> Math.abs($$0.u()) == 2 || Math.abs($$0.w()) == 2).map(jd::j).toList();
 
    @Override
@@ -17,7 +17,7 @@ public class dik extends dfk {
    }
 
    public static boolean a(dcw $$0, jd $$1, jd $$2) {
-      return $$0.a_($$1.a((kh)$$2)).a(awe.cv) && $$0.a_($$1.b($$2.u() / 2, $$2.v(), $$2.w() / 2)).a(awe.cw);
+      return $$0.a_($$1.a((kh)$$2)).a(awe.cw) && $$0.a_($$1.b($$2.u() / 2, $$2.v(), $$2.w() / 2)).a(awe.cx);
    }
 
    @Override
@@ -26,7 +26,7 @@ public class dik extends dfk {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return b;
    }
 
@@ -66,7 +66,7 @@ public class dik extends dfk {
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
       if ($$1.B) {
          return bqr.a;
       } else {
@@ -88,7 +88,7 @@ public class dik extends dfk {
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return false;
    }
 }

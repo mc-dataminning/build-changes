@@ -6,16 +6,16 @@ public class cvs extends cul {
    }
 
    public static cxx h() {
-      return new cxx(List.of(cxx.a.a(List.of(dga.bs), 15.0F), cxx.a.b(awe.O, 15.0F), cxx.a.b(awe.a, 5.0F), cxx.a.b(List.of(dga.ff, dga.fg), 2.0F)), 1.0F, 1);
+      return new cxx(List.of(cxx.a.a(List.of(dga.bs), 15.0F), cxx.a.b(awe.P, 15.0F), cxx.a.b(awe.a, 5.0F), cxx.a.b(List.of(dga.ff, dga.fg), 2.0F)), 1.0F, 1);
    }
 
    @Override
    public boolean a(cuq $$0, dcw $$1, dtc $$2, jd $$3, btn $$4) {
-      if (!$$1.B && !$$2.a(awe.aK)) {
+      if (!$$1.B && !$$2.a(awe.aL)) {
          $$0.a(1, $$4, bsy.a);
       }
 
-      return $$2.a(awe.O)
+      return $$2.a(awe.P)
          || $$2.a(dga.bs)
          || $$2.a(dga.bt)
          || $$2.a(dga.bu)

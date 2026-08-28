@@ -1,28 +1,52 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
+public class gud {
+   public static class a extends gtj {
+      private final geb n;
 
-public class gud<T> extends gue<T> {
-   private final gui<T> c;
+      protected a(geb $$0, avo $$1) {
+         super($$1, avq.i, gua.t());
+         this.n = $$0;
+         this.i = false;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
+      }
 
-   public gud(Function<T, Stream<String>> $$0, Function<T, Stream<akr>> $$1, List<T> $$2) {
-      super($$1, $$2);
-      this.c = gui.plainText($$2, $$0);
+      @Override
+      public void q() {
+         if (this.n.dJ() || !this.n.bk()) {
+            this.n();
+         }
+      }
    }
 
-   @Override
-   protected List<T> a(String $$0) {
-      return this.c.search($$0);
-   }
+   public static class b extends gtj {
+      public static final int n = 40;
+      private final geb o;
+      private int p;
 
-   @Override
-   protected List<T> a(String $$0, String $$1) {
-      List<T> $$2 = this.b.a($$0);
-      List<T> $$3 = this.b.b($$1);
-      List<T> $$4 = this.c.search($$1);
-      Iterator<T> $$5 = new gug<T>($$3.iterator(), $$4.iterator(), this.a);
-      return ImmutableList.copyOf(new guf<T>($$2.iterator(), $$5, this.a));
+      public b(geb $$0) {
+         super(avp.z, avq.i, gua.t());
+         this.o = $$0;
+         this.i = true;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
+      }
+
+      @Override
+      public void q() {
+         if (!this.o.dJ() && this.p >= 0) {
+            if (this.o.bk()) {
+               this.p++;
+            } else {
+               this.p -= 2;
+            }
+
+            this.p = Math.min(this.p, 40);
+            this.d = Math.max(0.0F, Math.min((float)this.p / 40.0F, 1.0F));
+         } else {
+            this.n();
+         }
+      }
    }
 }

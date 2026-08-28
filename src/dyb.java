@@ -3,7 +3,7 @@ public interface dyb {
 
    int b();
 
-   boolean a(aqu var1, jm<dxz> var2, dxz.a var3, exa var4);
+   boolean a(aqu var1, jm<dxz> var2, dxz.a var3, exc var4);
 
    default dyb.a c() {
       return dyb.a.a;

@@ -1,24 +1,20 @@
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
 import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public class exr extends ext {
-   private final ext b;
-   private final ji.a c;
-   private static final DoubleList d = new exg(1);
+public class exr extends AbstractDoubleList {
+   private final DoubleList a;
+   private final double b;
 
-   public exr(ext $$0, ji.a $$1, int $$2) {
-      super(a($$0.a, $$1, $$2));
-      this.b = $$0;
-      this.c = $$1;
+   public exr(DoubleList $$0, double $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   private static exj a(exj $$0, ji.a $$1, int $$2) {
-      return new exs(
-         $$0, $$1.a($$2, 0, 0), $$1.a(0, $$2, 0), $$1.a(0, 0, $$2), $$1.a($$2 + 1, $$0.a, $$0.a), $$1.a($$0.b, $$2 + 1, $$0.b), $$1.a($$0.c, $$0.c, $$2 + 1)
-      );
+   public double getDouble(int $$0) {
+      return this.a.getDouble($$0) + this.b;
    }
 
-   @Override
-   public DoubleList a(ji.a $$0) {
-      return $$0 == this.c ? d : this.b.a($$0);
+   public int size() {
+      return this.a.size();
    }
 }

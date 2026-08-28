@@ -39,7 +39,7 @@ public class cuj extends cul {
          cui $$5 = $$4.get().a();
          $$1.c($$2);
          a($$0, $$1, $$5);
-         $$1.gu().a(this, $$5.b());
+         $$1.gt().a(this, $$5.b());
          $$1.b(avz.c.b(this));
          return bqs.b($$3);
       } else {
@@ -72,6 +72,6 @@ public class cuj extends cul {
       avo $$3 = $$2.a().a();
       float $$4 = $$2.c() / 16.0F;
       $$0.a($$1, $$1, $$3, avq.c, $$4, 1.0F);
-      $$0.a(dxz.B, $$1.dn(), dxz.a.a($$1));
+      $$0.a(dxz.B, $$1.dm(), dxz.a.a($$1));
    }
 }

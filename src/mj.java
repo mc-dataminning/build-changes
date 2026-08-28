@@ -3,10 +3,10 @@ import java.util.function.Consumer;
 
 public class mj implements me {
    private static final bg a = bg.a(
-      evd.a(erp.b.a, bv.a.a().a(bs.a.a().a(cs.a.a().a(cut.pO)))).invert().build(),
-      evd.a(erp.b.a, bv.a.a().a(bs.a.a().b(cs.a.a().a(cut.pP)))).invert().build(),
-      evd.a(erp.b.a, bv.a.a().a(bs.a.a().c(cs.a.a().a(cut.pQ)))).invert().build(),
-      evd.a(erp.b.a, bv.a.a().a(bs.a.a().d(cs.a.a().a(cut.pR)))).invert().build()
+      evf.a(err.b.a, bv.a.a().a(bs.a.a().a(cs.a.a().a(cut.pO)))).invert().build(),
+      evf.a(err.b.a, bv.a.a().a(bs.a.a().b(cs.a.a().a(cut.pP)))).invert().build(),
+      evf.a(err.b.a, bv.a.a().a(bs.a.a().c(cs.a.a().a(cut.pQ)))).invert().build(),
+      evf.a(err.b.a, bv.a.a().a(bs.a.a().d(cs.a.a().a(cut.pR)))).invert().build()
    );
 
    @Override
@@ -33,7 +33,7 @@ public class mj implements me {
       ag $$4 = af.a.a()
          .a($$2)
          .a(dga.fn, wz.c("advancements.nether.find_fortress.title"), wz.c("advancements.nether.find_fortress.description"), null, am.a, true, true, false)
-         .a("fortress", dq.a.a(df.a.b($$0.b(lu.aR).b(ejj.o))))
+         .a("fortress", dq.a.a(df.a.b($$0.b(lu.aR).b(ejl.o))))
          .a($$1, "nether/find_fortress");
       af.a.a()
          .a($$2)
@@ -238,16 +238,16 @@ public class mj implements me {
       ag $$14 = af.a.a()
          .a($$2)
          .a(cut.wO, wz.c("advancements.nether.find_bastion.title"), wz.c("advancements.nether.find_bastion.description"), null, am.a, true, true, false)
-         .a("bastion", dq.a.a(df.a.b($$0.b(lu.aR).b(ejj.s))))
+         .a("bastion", dq.a.a(df.a.b($$0.b(lu.aR).b(ejl.s))))
          .a($$1, "nether/find_bastion");
       af.a.a()
          .a($$14)
          .a(dga.cv, wz.c("advancements.nether.loot_bastion.title"), wz.c("advancements.nether.loot_bastion.description"), null, am.a, true, true, false)
          .a(aj.a.b)
-         .a("loot_bastion_other", dg.a.a(erl.M))
-         .a("loot_bastion_treasure", dg.a.a(erl.L))
-         .a("loot_bastion_hoglin_stable", dg.a.a(erl.O))
-         .a("loot_bastion_bridge", dg.a.a(erl.N))
+         .a("loot_bastion_other", dg.a.a(ern.M))
+         .a("loot_bastion_treasure", dg.a.a(ern.L))
+         .a("loot_bastion_hoglin_stable", dg.a.a(ern.O))
+         .a("loot_bastion_bridge", dg.a.a(ern.N))
          .a($$1, "nether/loot_bastion");
       af.a.a()
          .a($$2)

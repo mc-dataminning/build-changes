@@ -1,47 +1,24 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import java.util.Map;
 import javax.annotation.Nullable;
 
-public class ezm implements ezk {
-   private final Int2ObjectMap<ezj.a> b;
+public interface ezm extends AutoCloseable {
+   float a = 7.0F;
 
-   public ezm(Map<Integer, Float> $$0) {
-      this.b = new Int2ObjectOpenHashMap($$0.size());
-      $$0.forEach(($$0x, $$1) -> this.b.put($$0x, (ezj.a)() -> $$1));
+   @Override
+   default void close() {
    }
 
    @Nullable
-   @Override
-   public ezj a(int $$0) {
-      return (ezj)this.b.get($$0);
+   default ezl a(int $$0) {
+      return null;
    }
 
-   @Override
-   public IntSet a() {
-      return IntSets.unmodifiable(this.b.keySet());
-   }
+   IntSet a();
 
-   public static record a(Map<Integer, Float> c) implements flm {
-      public static final MapCodec<ezm.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.unboundedMap(axw.z, Codec.FLOAT).fieldOf("advances").forGetter(ezm.a::c)).apply($$0, ezm.a::new)
-      );
-
+   public static record a(ezm a, flc.a b) implements AutoCloseable {
       @Override
-      public fln a() {
-         return fln.c;
-      }
-
-      @Override
-      public Either<flm.b, flm.c> b() {
-         flm.b $$0 = $$0x -> new ezm(this.c);
-         return Either.left($$0);
+      public void close() {
+         this.a.close();
       }
    }
 }

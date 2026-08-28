@@ -20,7 +20,7 @@ public class cfs extends cfe {
       return this.ao.a(ce);
    }
 
-   private void w(boolean $$0) {
+   private void x(boolean $$0) {
       this.ao.a(ce, $$0);
       this.t();
    }
@@ -34,7 +34,7 @@ public class cfs extends cfe {
    @Override
    public void a(ub $$0) {
       super.a($$0);
-      this.w($$0.q("Trusting"));
+      this.x($$0.q("Trusting"));
    }
 
    @Override
@@ -112,18 +112,18 @@ public class cfs extends cfe {
       cuq $$2 = $$0.b($$1);
       if ((this.cg == null || this.cg.i()) && !this.x() && this.o($$2) && $$0.g(this) < 9.0) {
          this.a($$0, $$1, $$2);
-         if (!this.dP().B) {
+         if (!this.dO().B) {
             if (this.ah.a(3) == 0) {
-               this.w(true);
                this.x(true);
-               this.dP().a(this, (byte)41);
+               this.y(true);
+               this.dO().a(this, (byte)41);
             } else {
-               this.x(false);
-               this.dP().a(this, (byte)40);
+               this.y(false);
+               this.dO().a(this, (byte)40);
             }
          }
 
-         return bqr.a(this.dP().B);
+         return bqr.a(this.dO().B);
       } else {
          return super.b($$0, $$1);
       }
@@ -132,15 +132,15 @@ public class cfs extends cfe {
    @Override
    public void b(byte $$0) {
       if ($$0 == 41) {
-         this.x(true);
+         this.y(true);
       } else if ($$0 == 40) {
-         this.x(false);
+         this.y(false);
       } else {
          super.b($$0);
       }
    }
 
-   private void x(boolean $$0) {
+   private void y(boolean $$0) {
       lk $$1 = lm.Q;
       if (!$$0) {
          $$1 = lm.ae;
@@ -150,7 +150,7 @@ public class cfs extends cfe {
          double $$3 = this.ah.k() * 0.02;
          double $$4 = this.ah.k() * 0.02;
          double $$5 = this.ah.k() * 0.02;
-         this.dP().a($$1, this.d(1.0), this.dx() + 0.5, this.g(1.0), $$3, $$4, $$5);
+         this.dO().a($$1, this.d(1.0), this.dw() + 0.5, this.g(1.0), $$3, $$4, $$5);
       }
    }
 
@@ -181,14 +181,14 @@ public class cfs extends cfe {
 
    @Override
    public boolean a(dcz $$0) {
-      if ($$0.f(this) && !$$0.d(this.cL())) {
-         jd $$1 = this.dp();
+      if ($$0.f(this) && !$$0.d(this.cK())) {
+         jd $$1 = this.do();
          if ($$1.v() < $$0.z_()) {
             return false;
          }
 
          dtc $$2 = $$0.a_($$1.e());
-         if ($$2.a(dga.i) || $$2.a(awe.O)) {
+         if ($$2.a(dga.i) || $$2.a(awe.P)) {
             return true;
          }
       }
@@ -207,8 +207,8 @@ public class cfs extends cfe {
    }
 
    @Override
-   public exa cN() {
-      return new exa(0.0, (double)(0.5F * this.cM()), (double)(this.dk() * 0.4F));
+   public exc cM() {
+      return new exc(0.0, (double)(0.5F * this.cL()), (double)(this.dj() * 0.4F));
    }
 
    @Override

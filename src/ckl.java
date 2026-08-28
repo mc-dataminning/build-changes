@@ -15,27 +15,27 @@ public class ckl extends cjl {
       $$0.a(d, false);
    }
 
-   public boolean go() {
+   public boolean gn() {
       return this.ar().a(d);
    }
 
-   public void w(boolean $$0) {
+   public void x(boolean $$0) {
       this.ao.a(d, $$0);
    }
 
    @Override
-   public boolean gn() {
-      return this.go();
+   public boolean gm() {
+      return this.gn();
    }
 
    @Override
    public void l() {
-      if (!this.dP().B && this.bE() && !this.ga()) {
+      if (!this.dO().B && this.bE() && !this.fZ()) {
          if (this.az) {
-            if (this.go()) {
+            if (this.gn()) {
                this.ca--;
                if (this.ca < 0) {
-                  this.gp();
+                  this.go();
                }
             } else {
                this.e++;
@@ -45,7 +45,7 @@ public class ckl extends cjl {
             }
          } else {
             this.e = -1;
-            this.w(false);
+            this.x(false);
          }
       }
 
@@ -55,7 +55,7 @@ public class ckl extends cjl {
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      $$0.a("StrayConversionTime", this.go() ? this.ca : -1);
+      $$0.a("StrayConversionTime", this.gn() ? this.ca : -1);
    }
 
    @Override
@@ -68,18 +68,18 @@ public class ckl extends cjl {
 
    private void b(int $$0) {
       this.ca = $$0;
-      this.w(true);
+      this.x(true);
    }
 
-   protected void gp() {
+   protected void go() {
       this.a(bsx.aY, true);
       if (!this.aX()) {
-         this.dP().a(null, 1048, this.dp(), 0);
+         this.dO().a(null, 1048, this.do(), 0);
       }
    }
 
    @Override
-   public boolean dD() {
+   public boolean dC() {
       return false;
    }
 
@@ -106,8 +106,8 @@ public class ckl extends cjl {
    @Override
    protected void a(aqu $$0, brk $$1, boolean $$2) {
       super.a($$0, $$1, $$2);
-      if ($$1.d() instanceof cjp $$4 && $$4.gm()) {
-         $$4.gn();
+      if ($$1.d() instanceof cjp $$4 && $$4.gl()) {
+         $$4.gm();
          this.a(cut.ul);
       }
    }

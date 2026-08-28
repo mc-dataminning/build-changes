@@ -13,13 +13,13 @@ public class cdt extends cdy<btn> {
 
    @Override
    protected void a(aqu $$0, btn $$1) {
-      buq<?> $$2 = $$1.dU();
+      buq<?> $$2 = $$1.dT();
       List<clm> $$3 = Lists.newArrayList();
       ccu $$4 = $$2.c(ccs.h).orElse(ccu.a());
       Optional<btp> $$5 = $$4.a($$0x -> $$0x instanceof cku || $$0x instanceof ciu).map(btp.class::cast);
 
       for (btn $$7 : $$2.c(ccs.g).orElse(ImmutableList.of())) {
-         if ($$7 instanceof clm && ((clm)$$7).gm()) {
+         if ($$7 instanceof clm && ((clm)$$7).gl()) {
             $$3.add((clm)$$7);
          }
       }

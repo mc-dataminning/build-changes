@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 
 public abstract class dky extends dfy {
    private static final float a = 1.0F;
-   private static final ext c = dfy.a(0.0, 15.0, 0.0, 16.0, 16.0, 16.0);
-   private static final ext d = dfy.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
-   private static final ext e = dfy.a(0.0, 0.0, 0.0, 1.0, 16.0, 16.0);
-   private static final ext f = dfy.a(15.0, 0.0, 0.0, 16.0, 16.0, 16.0);
-   private static final ext g = dfy.a(0.0, 0.0, 0.0, 16.0, 16.0, 1.0);
-   private static final ext h = dfy.a(0.0, 0.0, 15.0, 16.0, 16.0, 16.0);
+   private static final exv c = dfy.a(0.0, 15.0, 0.0, 16.0, 16.0, 16.0);
+   private static final exv d = dfy.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
+   private static final exv e = dfy.a(0.0, 0.0, 0.0, 1.0, 16.0, 16.0);
+   private static final exv f = dfy.a(15.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   private static final exv g = dfy.a(0.0, 0.0, 0.0, 16.0, 16.0, 1.0);
+   private static final exv h = dfy.a(0.0, 0.0, 15.0, 16.0, 16.0, 16.0);
    private static final Map<ji, dtt> i = dlm.h;
-   private static final Map<ji, ext> j = ad.a(Maps.newEnumMap(ji.class), $$0 -> {
+   private static final Map<ji, exv> j = ad.a(Maps.newEnumMap(ji.class), $$0 -> {
       $$0.put(ji.c, g);
       $$0.put(ji.f, f);
       $$0.put(ji.d, h);
@@ -28,7 +28,7 @@ public abstract class dky extends dfy {
       $$0.put(ji.a, d);
    });
    protected static final ji[] b = ji.values();
-   private final ImmutableMap<dtc, ext> k;
+   private final ImmutableMap<dtc, exv> k;
    private final boolean l;
    private final boolean m;
    private final boolean n;
@@ -106,8 +106,8 @@ public abstract class dky extends dfy {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
-      return (ext)this.k.get($$0);
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
+      return (exv)this.k.get($$0);
    }
 
    @Override
@@ -159,7 +159,7 @@ public abstract class dky extends dfy {
          dtc $$4;
          if ($$0.a(this)) {
             $$4 = $$0;
-         } else if (this.m() && $$0.u().a(epd.c)) {
+         } else if (this.m() && $$0.u().a(epf.c)) {
             $$4 = this.o().a(dts.C, Boolean.valueOf(true));
          } else {
             $$4 = this.o();
@@ -229,16 +229,16 @@ public abstract class dky extends dfy {
       return $$1;
    }
 
-   private static ext o(dtc $$0) {
-      ext $$1 = exq.a();
+   private static exv o(dtc $$0) {
+      exv $$1 = exs.a();
 
       for (ji $$2 : b) {
          if (a($$0, $$2)) {
-            $$1 = exq.a($$1, j.get($$2));
+            $$1 = exs.a($$1, j.get($$2));
          }
       }
 
-      return $$1.c() ? exq.b() : $$1;
+      return $$1.c() ? exs.b() : $$1;
    }
 
    protected static boolean n(dtc $$0) {

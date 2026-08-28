@@ -1,37 +1,37 @@
 import java.util.List;
 
 public class sh {
-   public static final akq<eit> a = sg.a("crimson_fungi");
-   public static final akq<eit> b = sg.a("warped_fungi");
-   public static final akq<eit> c = sg.a("oak_checked");
-   public static final akq<eit> d = sg.a("dark_oak_checked");
-   public static final akq<eit> e = sg.a("birch_checked");
-   public static final akq<eit> f = sg.a("acacia_checked");
-   public static final akq<eit> g = sg.a("spruce_checked");
-   public static final akq<eit> h = sg.a("mangrove_checked");
-   public static final akq<eit> i = sg.a("cherry_checked");
-   public static final akq<eit> j = sg.a("pine_on_snow");
-   public static final akq<eit> k = sg.a("spruce_on_snow");
-   public static final akq<eit> l = sg.a("pine_checked");
-   public static final akq<eit> m = sg.a("jungle_tree");
-   public static final akq<eit> n = sg.a("fancy_oak_checked");
-   public static final akq<eit> o = sg.a("mega_jungle_tree_checked");
-   public static final akq<eit> p = sg.a("mega_spruce_checked");
-   public static final akq<eit> q = sg.a("mega_pine_checked");
-   public static final akq<eit> r = sg.a("tall_mangrove_checked");
-   public static final akq<eit> s = sg.a("jungle_bush");
-   public static final akq<eit> t = sg.a("super_birch_bees_0002");
-   public static final akq<eit> u = sg.a("super_birch_bees");
-   public static final akq<eit> v = sg.a("oak_bees_0002");
-   public static final akq<eit> w = sg.a("oak_bees_002");
-   public static final akq<eit> x = sg.a("birch_bees_0002");
-   public static final akq<eit> y = sg.a("birch_bees_002");
-   public static final akq<eit> z = sg.a("fancy_oak_bees_0002");
-   public static final akq<eit> A = sg.a("fancy_oak_bees_002");
-   public static final akq<eit> B = sg.a("fancy_oak_bees");
-   public static final akq<eit> C = sg.a("cherry_bees_005");
+   public static final akq<eiv> a = sg.a("crimson_fungi");
+   public static final akq<eiv> b = sg.a("warped_fungi");
+   public static final akq<eiv> c = sg.a("oak_checked");
+   public static final akq<eiv> d = sg.a("dark_oak_checked");
+   public static final akq<eiv> e = sg.a("birch_checked");
+   public static final akq<eiv> f = sg.a("acacia_checked");
+   public static final akq<eiv> g = sg.a("spruce_checked");
+   public static final akq<eiv> h = sg.a("mangrove_checked");
+   public static final akq<eiv> i = sg.a("cherry_checked");
+   public static final akq<eiv> j = sg.a("pine_on_snow");
+   public static final akq<eiv> k = sg.a("spruce_on_snow");
+   public static final akq<eiv> l = sg.a("pine_checked");
+   public static final akq<eiv> m = sg.a("jungle_tree");
+   public static final akq<eiv> n = sg.a("fancy_oak_checked");
+   public static final akq<eiv> o = sg.a("mega_jungle_tree_checked");
+   public static final akq<eiv> p = sg.a("mega_spruce_checked");
+   public static final akq<eiv> q = sg.a("mega_pine_checked");
+   public static final akq<eiv> r = sg.a("tall_mangrove_checked");
+   public static final akq<eiv> s = sg.a("jungle_bush");
+   public static final akq<eiv> t = sg.a("super_birch_bees_0002");
+   public static final akq<eiv> u = sg.a("super_birch_bees");
+   public static final akq<eiv> v = sg.a("oak_bees_0002");
+   public static final akq<eiv> w = sg.a("oak_bees_002");
+   public static final akq<eiv> x = sg.a("birch_bees_0002");
+   public static final akq<eiv> y = sg.a("birch_bees_002");
+   public static final akq<eiv> z = sg.a("fancy_oak_bees_0002");
+   public static final akq<eiv> A = sg.a("fancy_oak_bees_002");
+   public static final akq<eiv> B = sg.a("fancy_oak_bees");
+   public static final akq<eiv> C = sg.a("cherry_bees_005");
 
-   public static void a(qq<eit> $$0) {
+   public static void a(qq<eiv> $$0) {
       jn<ebq<?, ?>> $$1 = $$0.a(lu.aI);
       jm<ebq<?, ?>> $$2 = $$1.b(rw.a);
       jm<ebq<?, ?>> $$3 = $$1.b(rw.c);
@@ -60,8 +60,8 @@ public class sh {
       jm<ebq<?, ?>> $$26 = $$1.b(rw.H);
       jm<ebq<?, ?>> $$27 = $$1.b(rw.J);
       jm<ebq<?, ?>> $$28 = $$1.b(rw.K);
-      sg.a($$0, a, $$2, eil.a(8), eih.a());
-      sg.a($$0, b, $$3, eil.a(8), eih.a());
+      sg.a($$0, a, $$2, eim.a(8), eii.a());
+      sg.a($$0, b, $$3, eim.a(8), eii.a());
       sg.a($$0, c, $$4, sg.a(dga.x));
       sg.a($$0, d, $$5, sg.a(dga.D));
       sg.a($$0, e, $$6, sg.a(dga.z));
@@ -70,7 +70,7 @@ public class sh {
       sg.a($$0, h, $$9, sg.a(dga.E));
       sg.a($$0, i, $$10, sg.a(dga.C));
       eaf $$29 = eaf.a(ji.a.q(), dga.dP, dga.qP);
-      List<eiw> $$30 = List.of(ein.a(ji.b, eaf.a(eaf.a(dga.qP)), 8), eii.a($$29));
+      List<eiy> $$30 = List.of(eio.a(ji.b, eaf.a(eaf.a(dga.qP)), 8), eij.a($$29));
       sg.a($$0, j, $$11, $$30);
       sg.a($$0, k, $$8, $$30);
       sg.a($$0, l, $$11, sg.a(dga.y));

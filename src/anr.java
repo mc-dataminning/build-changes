@@ -85,18 +85,18 @@ public class anr {
       return $$0 != null ? List.of($$0) : List.of();
    }
 
-   private static int a(et $$0, Collection<aqv> $$1, akr $$2, avq $$3, exa $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
+   private static int a(et $$0, Collection<aqv> $$1, akr $$2, avq $$3, exc $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
       jm<avo> $$8 = jm.a(avo.a($$2));
       double $$9 = (double)ayo.k($$8.a().a($$5));
       int $$10 = 0;
       long $$11 = $$0.e().E_().g();
 
       for (aqv $$12 : $$1) {
-         double $$13 = $$4.c - $$12.du();
-         double $$14 = $$4.d - $$12.dw();
-         double $$15 = $$4.e - $$12.dA();
+         double $$13 = $$4.c - $$12.dt();
+         double $$14 = $$4.d - $$12.dv();
+         double $$15 = $$4.e - $$12.dz();
          double $$16 = $$13 * $$13 + $$14 * $$14 + $$15 * $$15;
-         exa $$17 = $$4;
+         exc $$17 = $$4;
          float $$18 = $$5;
          if ($$16 > $$9) {
             if ($$7 <= 0.0F) {
@@ -104,7 +104,7 @@ public class anr {
             }
 
             double $$19 = Math.sqrt($$16);
-            $$17 = new exa($$12.du() + $$13 / $$19 * 2.0, $$12.dw() + $$14 / $$19 * 2.0, $$12.dA() + $$15 / $$19 * 2.0);
+            $$17 = new exc($$12.dt() + $$13 / $$19 * 2.0, $$12.dv() + $$14 / $$19 * 2.0, $$12.dz() + $$15 / $$19 * 2.0);
             $$18 = $$7;
          }
 

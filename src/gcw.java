@@ -1,35 +1,13 @@
-import org.joml.Quaternionf;
+public class gcw extends gdn {
+   private final gdi a;
 
-public class gcw extends gdl {
-   private static final float a = 1.0472F;
-   private int b;
-
-   gcw(fzd $$0, double $$1, double $$2, double $$3, int $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.D = 0.85F;
-      this.b = $$4;
-      this.t = 30;
-      this.u = 0.0F;
-      this.j = 0.0;
-      this.k = 0.1;
-      this.l = 0.0;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * ayo.a(((float)this.s + $$0) / (float)this.t * 0.75F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void a(fbk $$0, ffw $$1, float $$2) {
-      if (this.b <= 0) {
-         this.y = 1.0F - ayo.a(((float)this.s + $$2) / (float)this.t, 0.0F, 1.0F);
-         Quaternionf $$3 = new Quaternionf();
-         $$3.rotationX(-1.0472F);
-         this.a($$0, $$1, $$3, $$2);
-         $$3.rotationYXZ((float) -Math.PI, 1.0472F, 0.0F);
-         this.a($$0, $$1, $$3, $$2);
-      }
+   gcw(fzf $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gdi $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.a = $$7;
+      this.d(1.5F);
+      this.n = false;
+      this.b($$7);
    }
 
    @Override
@@ -38,30 +16,24 @@ public class gcw extends gdl {
    }
 
    @Override
-   public gcp b() {
-      return gcp.c;
+   public gcr b() {
+      return gcr.c;
    }
 
    @Override
    public void a() {
-      if (this.b > 0) {
-         this.b--;
-      } else {
-         super.a();
-      }
+      super.a();
+      this.b(this.a);
    }
 
-   public static class a implements gco<lp> {
-      private final gdg a;
-
-      public a(gdg $$0) {
-         this.a = $$0;
-      }
-
-      public gcl a(lp $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gcw $$8 = new gcw($$1, $$2, $$3, $$4, $$0.b());
-         $$8.a(this.a);
+   public static record a(gdi a) implements gcq<lo> {
+      public gcn a(lo $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gcw $$8 = new gcw($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
          $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.A = $$0.b();
+         $$8.z = $$0.b();
+         $$8.a($$1.z.a(12) + 8);
          return $$8;
       }
    }

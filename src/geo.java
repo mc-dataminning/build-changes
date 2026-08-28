@@ -1,51 +1,136 @@
-public enum geo {
-   a(new geo.b(geo.a.f, geo.a.e, geo.a.a), new geo.b(geo.a.f, geo.a.e, geo.a.d), new geo.b(geo.a.c, geo.a.e, geo.a.d), new geo.b(geo.a.c, geo.a.e, geo.a.a)),
-   b(new geo.b(geo.a.f, geo.a.b, geo.a.d), new geo.b(geo.a.f, geo.a.b, geo.a.a), new geo.b(geo.a.c, geo.a.b, geo.a.a), new geo.b(geo.a.c, geo.a.b, geo.a.d)),
-   c(new geo.b(geo.a.c, geo.a.b, geo.a.d), new geo.b(geo.a.c, geo.a.e, geo.a.d), new geo.b(geo.a.f, geo.a.e, geo.a.d), new geo.b(geo.a.f, geo.a.b, geo.a.d)),
-   d(new geo.b(geo.a.f, geo.a.b, geo.a.a), new geo.b(geo.a.f, geo.a.e, geo.a.a), new geo.b(geo.a.c, geo.a.e, geo.a.a), new geo.b(geo.a.c, geo.a.b, geo.a.a)),
-   e(new geo.b(geo.a.f, geo.a.b, geo.a.d), new geo.b(geo.a.f, geo.a.e, geo.a.d), new geo.b(geo.a.f, geo.a.e, geo.a.a), new geo.b(geo.a.f, geo.a.b, geo.a.a)),
-   f(new geo.b(geo.a.c, geo.a.b, geo.a.a), new geo.b(geo.a.c, geo.a.e, geo.a.a), new geo.b(geo.a.c, geo.a.e, geo.a.d), new geo.b(geo.a.c, geo.a.b, geo.a.d));
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import javax.annotation.Nullable;
 
-   private static final geo[] g = ad.a(new geo[6], $$0 -> {
-      $$0[geo.a.e] = a;
-      $$0[geo.a.b] = b;
-      $$0[geo.a.d] = c;
-      $$0[geo.a.a] = d;
-      $$0[geo.a.f] = e;
-      $$0[geo.a.c] = f;
+public abstract class geo {
+   private static final Object2ObjectMap<akr, geo> a = ad.a(new Object2ObjectArrayMap(), $$0 -> {
+      geo.c $$1 = new geo.c();
+      $$0.defaultReturnValue($$1);
+      $$0.put(dww.e, $$1);
+      $$0.put(dww.f, new geo.b());
+      $$0.put(dww.g, new geo.a());
    });
-   private final geo.b[] h;
+   private final float[] b = new float[4];
+   private final float c;
+   private final boolean d;
+   private final geo.d e;
+   private final boolean f;
+   private final boolean g;
 
-   public static geo a(ji $$0) {
-      return g[$$0.d()];
+   public geo(float $$0, boolean $$1, geo.d $$2, boolean $$3, boolean $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
-   private geo(final geo.b... $$0) {
-      this.h = $$0;
+   public static geo a(dwy $$0) {
+      return (geo)a.get($$0.r());
    }
 
-   public geo.b a(int $$0) {
-      return this.h[$$0];
-   }
-
-   public static final class a {
-      public static final int a = ji.d.d();
-      public static final int b = ji.b.d();
-      public static final int c = ji.f.d();
-      public static final int d = ji.c.d();
-      public static final int e = ji.a.d();
-      public static final int f = ji.e.d();
-   }
-
-   public static class b {
-      public final int a;
-      public final int b;
-      public final int c;
-
-      b(int $$0, int $$1, int $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+   @Nullable
+   public float[] a(float $$0, float $$1) {
+      float $$2 = 0.4F;
+      float $$3 = ayo.b($$0 * (float) (Math.PI * 2)) - 0.0F;
+      float $$4 = -0.0F;
+      if ($$3 >= -0.4F && $$3 <= 0.4F) {
+         float $$5 = ($$3 - -0.0F) / 0.4F * 0.5F + 0.5F;
+         float $$6 = 1.0F - (1.0F - ayo.a($$5 * (float) Math.PI)) * 0.99F;
+         $$6 *= $$6;
+         this.b[0] = $$5 * 0.3F + 0.7F;
+         this.b[1] = $$5 * $$5 * 0.7F + 0.2F;
+         this.b[2] = $$5 * $$5 * 0.0F + 0.2F;
+         this.b[3] = $$6;
+         return this.b;
+      } else {
+         return null;
       }
+   }
+
+   public float a() {
+      return this.c;
+   }
+
+   public boolean b() {
+      return this.d;
+   }
+
+   public abstract exc a(exc var1, float var2);
+
+   public abstract boolean a(int var1, int var2);
+
+   public geo.d c() {
+      return this.e;
+   }
+
+   public boolean d() {
+      return this.f;
+   }
+
+   public boolean e() {
+      return this.g;
+   }
+
+   public static class a extends geo {
+      public a() {
+         super(Float.NaN, false, geo.d.c, true, false);
+      }
+
+      @Override
+      public exc a(exc $$0, float $$1) {
+         return $$0.a(0.15F);
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return false;
+      }
+
+      @Nullable
+      @Override
+      public float[] a(float $$0, float $$1) {
+         return null;
+      }
+   }
+
+   public static class b extends geo {
+      public b() {
+         super(Float.NaN, true, geo.d.a, false, true);
+      }
+
+      @Override
+      public exc a(exc $$0, float $$1) {
+         return $$0;
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return true;
+      }
+   }
+
+   public static class c extends geo {
+      public static final int a = 192;
+
+      public c() {
+         super(192.0F, true, geo.d.b, false, false);
+      }
+
+      @Override
+      public exc a(exc $$0, float $$1) {
+         return $$0.d((double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.91F + 0.09F));
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return false;
+      }
+   }
+
+   public static enum d {
+      a,
+      b,
+      c;
    }
 }

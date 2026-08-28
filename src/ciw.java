@@ -52,14 +52,14 @@ public class ciw extends btn {
    }
 
    public static buv.a s() {
-      return dW().a(buw.B, 0.0);
+      return dV().a(buw.B, 0.0);
    }
 
    @Override
    public void i_() {
-      double $$0 = this.du();
-      double $$1 = this.dw();
-      double $$2 = this.dA();
+      double $$0 = this.dt();
+      double $$1 = this.dv();
+      double $$2 = this.dz();
       super.i_();
       this.a_($$0, $$1, $$2);
    }
@@ -69,8 +69,8 @@ public class ciw extends btn {
    }
 
    @Override
-   public boolean dc() {
-      return super.dc() && this.H();
+   public boolean db() {
+      return super.db() && this.H();
    }
 
    @Override
@@ -86,12 +86,12 @@ public class ciw extends btn {
    }
 
    @Override
-   public Iterable<cuq> eX() {
+   public Iterable<cuq> eW() {
       return this.cd;
    }
 
    @Override
-   public Iterable<cuq> eW() {
+   public Iterable<cuq> eV() {
       return this.ce;
    }
 
@@ -136,14 +136,14 @@ public class ciw extends btn {
       uh $$1 = new uh();
 
       for (cuq $$2 : this.ce) {
-         $$1.add($$2.b(this.dR()));
+         $$1.add($$2.b(this.dQ()));
       }
 
       $$0.a("ArmorItems", $$1);
       uh $$3 = new uh();
 
       for (cuq $$4 : this.cd) {
-         $$3.add($$4.b(this.dR()));
+         $$3.add($$4.b(this.dQ()));
       }
 
       $$0.a("HandItems", $$3);
@@ -167,7 +167,7 @@ public class ciw extends btn {
 
          for (int $$2 = 0; $$2 < this.ce.size(); $$2++) {
             ub $$3 = $$1.a($$2);
-            this.ce.set($$2, cuq.a(this.dR(), $$3));
+            this.ce.set($$2, cuq.a(this.dQ(), $$3));
          }
       }
 
@@ -176,16 +176,16 @@ public class ciw extends btn {
 
          for (int $$5 = 0; $$5 < this.cd.size(); $$5++) {
             ub $$6 = $$4.a($$5);
-            this.cd.set($$5, cuq.a(this.dR(), $$6));
+            this.cd.set($$5, cuq.a(this.dQ(), $$6));
          }
       }
 
       this.k($$0.q("Invisible"));
-      this.t($$0.q("Small"));
+      this.u($$0.q("Small"));
       this.a($$0.q("ShowArms"));
       this.cg = $$0.h("DisabledSlots");
       this.b($$0.q("NoBasePlate"));
-      this.u($$0.q("Marker"));
+      this.v($$0.q("Marker"));
       this.ag = !this.H();
       ub $$7 = $$0.p("Pose");
       this.c($$7);
@@ -246,7 +246,7 @@ public class ciw extends btn {
 
    @Override
    protected void r() {
-      for (bsr $$1 : this.dP().a(this, this.cL(), cc)) {
+      for (bsr $$1 : this.dO().a(this, this.cK(), cc)) {
          if (this.g($$1) <= 0.2) {
             $$1.h(this);
          }
@@ -254,13 +254,13 @@ public class ciw extends btn {
    }
 
    @Override
-   public bqr a(cmx $$0, exa $$1, bqq $$2) {
+   public bqr a(cmx $$0, exc $$1, bqq $$2) {
       cuq $$3 = $$0.b($$2);
       if (this.z() || $$3.a(cut.uL)) {
          return bqr.e;
       } else if ($$0.R_()) {
          return bqr.a;
-      } else if ($$0.dP().B) {
+      } else if ($$0.dO().B) {
          return bqr.c;
       } else {
          bsy $$4 = this.h($$3);
@@ -288,10 +288,10 @@ public class ciw extends btn {
       }
    }
 
-   private bsy b(exa $$0) {
+   private bsy b(exc $$0) {
       bsy $$1 = bsy.a;
       boolean $$2 = this.t();
-      double $$3 = $$0.d / (double)(this.ec() * this.eb());
+      double $$3 = $$0.d / (double)(this.eb() * this.ea());
       bsy $$4 = bsy.c;
       if ($$3 >= 0.1 && $$3 < 0.1 + ($$2 ? 0.8 : 0.45) && this.c($$4)) {
          $$1 = bsy.c;
@@ -318,7 +318,7 @@ public class ciw extends btn {
          return false;
       } else if ($$4.e() && (this.cg & 1 << $$1.d() + 16) != 0) {
          return false;
-      } else if ($$0.fM() && $$4.e() && !$$2.e()) {
+      } else if ($$0.fL() && $$4.e() && !$$2.e()) {
          this.a($$1, $$2.c(1));
          return true;
       } else if ($$2.e() || $$2.H() <= 1) {
@@ -335,9 +335,9 @@ public class ciw extends btn {
 
    @Override
    public boolean a(brk $$0, float $$1) {
-      if (this.dK()) {
+      if (this.dJ()) {
          return false;
-      } else if (this.dP() instanceof aqu $$2) {
+      } else if (this.dO() instanceof aqu $$2) {
          if ($$0.a(awg.d)) {
             this.ap();
             return false;
@@ -355,7 +355,7 @@ public class ciw extends btn {
             }
 
             return false;
-         } else if ($$0.a(awg.v) && this.ex() > 0.5F) {
+         } else if ($$0.a(awg.v) && this.ew() > 0.5F) {
             this.a($$2, $$0, 4.0F);
             return false;
          } else {
@@ -364,7 +364,7 @@ public class ciw extends btn {
             if (!$$4 && !$$5) {
                return false;
             } else {
-               if ($$0.d() instanceof cmx $$6 && !$$6.ga().e) {
+               if ($$0.d() instanceof cmx $$6 && !$$6.fZ().e) {
                   return false;
                }
 
@@ -397,9 +397,9 @@ public class ciw extends btn {
    @Override
    public void b(byte $$0) {
       if ($$0 == 32) {
-         if (this.dP().B) {
-            this.dP().a(this.du(), this.dw(), this.dA(), avp.aC, this.df(), 0.3F, 1.0F, false);
-            this.bO = this.dP().Z();
+         if (this.dO().B) {
+            this.dO().a(this.dt(), this.dv(), this.dz(), avp.aC, this.de(), 0.3F, 1.0F, false);
+            this.bO = this.dO().Z();
          }
       } else {
          super.b($$0);
@@ -408,7 +408,7 @@ public class ciw extends btn {
 
    @Override
    public boolean a(double $$0) {
-      double $$1 = this.cL().a() * 4.0;
+      double $$1 = this.cK().a() * 4.0;
       if (Double.isNaN($$1) || $$1 == 0.0) {
          $$1 = 4.0;
       }
@@ -418,24 +418,24 @@ public class ciw extends btn {
    }
 
    private void J() {
-      if (this.dP() instanceof aqu) {
-         ((aqu)this.dP())
+      if (this.dO() instanceof aqu) {
+         ((aqu)this.dO())
             .a(
                new le(lm.b, dga.n.o()),
-               this.du(),
+               this.dt(),
                this.e(0.6666666666666666),
-               this.dA(),
+               this.dz(),
                10,
+               (double)(this.dj() / 4.0F),
                (double)(this.dk() / 4.0F),
-               (double)(this.dl() / 4.0F),
-               (double)(this.dk() / 4.0F),
+               (double)(this.dj() / 4.0F),
                0.05
             );
       }
    }
 
    private void a(aqu $$0, brk $$1, float $$2) {
-      float $$3 = this.ex();
+      float $$3 = this.ew();
       $$3 -= $$2;
       if ($$3 <= 0.5F) {
          this.c($$0, $$1);
@@ -449,7 +449,7 @@ public class ciw extends btn {
    private void b(aqu $$0, brk $$1) {
       cuq $$2 = new cuq(cut.uF);
       $$2.b(kq.g, this.aj());
-      dfy.a(this.dP(), this.dp(), $$2);
+      dfy.a(this.dO(), this.do(), $$2);
       this.c($$0, $$1);
    }
 
@@ -460,7 +460,7 @@ public class ciw extends btn {
       for (int $$2 = 0; $$2 < this.cd.size(); $$2++) {
          cuq $$3 = this.cd.get($$2);
          if (!$$3.e()) {
-            dfy.a(this.dP(), this.dp().d(), $$3);
+            dfy.a(this.dO(), this.do().d(), $$3);
             this.cd.set($$2, cuq.l);
          }
       }
@@ -468,25 +468,25 @@ public class ciw extends btn {
       for (int $$4 = 0; $$4 < this.ce.size(); $$4++) {
          cuq $$5 = this.ce.get($$4);
          if (!$$5.e()) {
-            dfy.a(this.dP(), this.dp().d(), $$5);
+            dfy.a(this.dO(), this.do().d(), $$5);
             this.ce.set($$4, cuq.l);
          }
       }
    }
 
    private void L() {
-      this.dP().a(null, this.du(), this.dw(), this.dA(), avp.aA, this.df(), 1.0F, 1.0F);
+      this.dO().a(null, this.dt(), this.dv(), this.dz(), avp.aA, this.de(), 1.0F, 1.0F);
    }
 
    @Override
    protected float f(float $$0, float $$1) {
       this.aZ = this.O;
-      this.aY = this.dF();
+      this.aY = this.dE();
       return 0.0F;
    }
 
    @Override
-   public void a(exa $$0) {
+   public void a(exc $$0) {
       if (this.H()) {
          super.a($$0);
       }
@@ -566,8 +566,8 @@ public class ciw extends btn {
    }
 
    @Override
-   public eph j_() {
-      return this.z() ? eph.d : super.j_();
+   public epj j_() {
+      return this.z() ? epj.d : super.j_();
    }
 
    @Override
@@ -575,7 +575,7 @@ public class ciw extends btn {
       return this.z();
    }
 
-   private void t(boolean $$0) {
+   private void u(boolean $$0) {
       this.ao.a(bH, this.a(this.ao.a(bH), 1, $$0));
    }
 
@@ -599,7 +599,7 @@ public class ciw extends btn {
       return (this.ao.a(bH) & 8) != 0;
    }
 
-   private void u(boolean $$0) {
+   private void v(boolean $$0) {
       this.ao.a(bH, this.a(this.ao.a(bH), 16, $$0));
    }
 
@@ -678,16 +678,16 @@ public class ciw extends btn {
 
    @Override
    public boolean u(bsr $$0) {
-      return $$0 instanceof cmx && !this.dP().a((cmx)$$0, this.dp());
+      return $$0 instanceof cmx && !this.dO().a((cmx)$$0, this.do());
    }
 
    @Override
-   public btg fr() {
+   public btg fq() {
       return btg.b;
    }
 
    @Override
-   public btn.a eI() {
+   public btn.a eH() {
       return new btn.a(avp.aB, avp.aB);
    }
 
@@ -708,7 +708,7 @@ public class ciw extends btn {
    }
 
    @Override
-   public boolean fD() {
+   public boolean fC() {
       return false;
    }
 
@@ -723,16 +723,16 @@ public class ciw extends btn {
    }
 
    @Override
-   public boolean fE() {
+   public boolean fD() {
       return false;
    }
 
    @Override
    public bsu e(bua $$0) {
-      return this.v(this.z());
+      return this.w(this.z());
    }
 
-   private bsu v(boolean $$0) {
+   private bsu w(boolean $$0) {
       if ($$0) {
          return bW;
       } else {
@@ -741,16 +741,16 @@ public class ciw extends btn {
    }
 
    @Override
-   public exa l(float $$0) {
+   public exc l(float $$0) {
       if (this.z()) {
-         ewv $$1 = this.v(false).a(this.dn());
-         jd $$2 = this.dp();
+         ewx $$1 = this.w(false).a(this.dm());
+         jd $$2 = this.do();
          int $$3 = Integer.MIN_VALUE;
 
          for (jd $$4 : jd.c(jd.a($$1.a, $$1.b, $$1.c), jd.a($$1.d, $$1.e, $$1.f))) {
-            int $$5 = Math.max(this.dP().a(ddf.b, $$4), this.dP().a(ddf.a, $$4));
+            int $$5 = Math.max(this.dO().a(ddf.b, $$4), this.dO().a(ddf.a, $$4));
             if ($$5 == 15) {
-               return exa.b($$4);
+               return exc.b($$4);
             }
 
             if ($$5 > $$3) {
@@ -759,19 +759,19 @@ public class ciw extends btn {
             }
          }
 
-         return exa.b($$2);
+         return exc.b($$2);
       } else {
          return super.l($$0);
       }
    }
 
    @Override
-   public cuq dC() {
+   public cuq dB() {
       return new cuq(cut.uF);
    }
 
    @Override
-   public boolean er() {
+   public boolean eq() {
       return !this.ci() && !this.z();
    }
 }

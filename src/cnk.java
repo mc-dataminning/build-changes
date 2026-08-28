@@ -37,7 +37,7 @@ public class cnk extends cnp implements cnm {
    }
 
    public cnk(dcw $$0, cuq $$1, btn $$2) {
-      this($$0, $$2, $$2.du(), $$2.dw(), $$2.dA(), $$1);
+      this($$0, $$2, $$2.dt(), $$2.dv(), $$2.dz(), $$1);
       this.ao.a(c, OptionalInt.of($$2.an()));
       this.g = $$2;
    }
@@ -75,7 +75,7 @@ public class cnk extends cnp implements cnm {
       if (this.y()) {
          if (this.g == null) {
             this.ao.a(c).ifPresent($$0x -> {
-               bsr $$1x = this.dP().a($$0x);
+               bsr $$1x = this.dO().a($$0x);
                if ($$1x instanceof btn) {
                   this.g = (btn)$$1x;
                }
@@ -83,33 +83,33 @@ public class cnk extends cnp implements cnm {
          }
 
          if (this.g != null) {
-            exa $$4;
-            if (this.g.fB()) {
-               exa $$0 = this.g.bM();
+            exc $$4;
+            if (this.g.fA()) {
+               exc $$0 = this.g.bM();
                double $$1 = 1.5;
                double $$2 = 0.1;
-               exa $$3 = this.g.ds();
+               exc $$3 = this.g.dr();
                this.g.i($$3.b($$0.c * 0.1 + ($$0.c * 1.5 - $$3.c) * 0.5, $$0.d * 0.1 + ($$0.d * 1.5 - $$3.d) * 0.5, $$0.e * 0.1 + ($$0.e * 1.5 - $$3.e) * 0.5));
                $$4 = this.g.a(cut.uu);
             } else {
-               $$4 = exa.b;
+               $$4 = exc.b;
             }
 
-            this.a_(this.g.du() + $$4.c, this.g.dw() + $$4.d, this.g.dA() + $$4.e);
-            this.i(this.g.ds());
+            this.a_(this.g.dt() + $$4.c, this.g.dv() + $$4.d, this.g.dz() + $$4.e);
+            this.i(this.g.dr());
          }
       } else {
          if (!this.t()) {
             double $$6 = this.Q ? 1.0 : 1.15;
-            this.i(this.ds().d($$6, 1.0, $$6).b(0.0, 0.04, 0.0));
+            this.i(this.dr().d($$6, 1.0, $$6).b(0.0, 0.04, 0.0));
          }
 
-         exa $$7 = this.ds();
+         exc $$7 = this.dr();
          this.a(bts.a, $$7);
          this.i($$7);
       }
 
-      ewy $$8 = cnr.a(this, this::b);
+      exa $$8 = cnr.a(this, this::b);
       if (!this.ag) {
          this.b($$8);
          this.av = true;
@@ -117,39 +117,39 @@ public class cnk extends cnp implements cnm {
 
       this.I();
       if (this.e == 0 && !this.aX()) {
-         this.dP().a(null, this.du(), this.dw(), this.dA(), avp.iP, avq.i, 3.0F, 1.0F);
+         this.dO().a(null, this.dt(), this.dv(), this.dz(), avp.iP, avq.i, 3.0F, 1.0F);
       }
 
       this.e++;
-      if (this.dP().B && this.e % 2 < 2) {
-         this.dP().a(lm.D, this.du(), this.dw(), this.dA(), this.ah.k() * 0.05, -this.ds().d * 0.5, this.ah.k() * 0.05);
+      if (this.dO().B && this.e % 2 < 2) {
+         this.dO().a(lm.D, this.dt(), this.dv(), this.dz(), this.ah.k() * 0.05, -this.dr().d * 0.5, this.ah.k() * 0.05);
       }
 
-      if (!this.dP().B && this.e > this.f) {
+      if (!this.dO().B && this.e > this.f) {
          this.v();
       }
    }
 
    private void v() {
-      this.dP().a(this, (byte)17);
+      this.dO().a(this, (byte)17);
       this.a(dxz.w, this.s());
       this.x();
       this.aq();
    }
 
    @Override
-   protected void a(ewx $$0) {
+   protected void a(ewz $$0) {
       super.a($$0);
-      if (!this.dP().B) {
+      if (!this.dO().B) {
          this.v();
       }
    }
 
    @Override
-   protected void a(eww $$0) {
+   protected void a(ewy $$0) {
       jd $$1 = new jd($$0.a());
-      this.dP().a_($$1).a(this.dP(), $$1, this);
-      if (!this.dP().x_() && this.w()) {
+      this.dO().a_($$1).a(this.dO(), $$1, this);
+      if (!this.dO().x_() && this.w()) {
          this.v();
       }
 
@@ -169,20 +169,20 @@ public class cnk extends cnp implements cnm {
 
       if ($$0 > 0.0F) {
          if (this.g != null) {
-            this.g.a(this.dQ().a(this, this.s()), 5.0F + (float)($$1.size() * 2));
+            this.g.a(this.dP().a(this, this.s()), 5.0F + (float)($$1.size() * 2));
          }
 
          double $$2 = 5.0;
-         exa $$3 = this.dn();
+         exc $$3 = this.dm();
 
-         for (btn $$5 : this.dP().a(btn.class, this.cL().g(5.0))) {
+         for (btn $$5 : this.dO().a(btn.class, this.cK().g(5.0))) {
             if ($$5 != this.g && !(this.g($$5) > 25.0)) {
                boolean $$6 = false;
 
                for (int $$7 = 0; $$7 < 2; $$7++) {
-                  exa $$8 = new exa($$5.du(), $$5.e(0.5 * (double)$$7), $$5.dA());
-                  ewy $$9 = this.dP().a(new dcf($$3, $$8, dcf.a.a, dcf.b.a, this));
-                  if ($$9.c() == ewy.a.a) {
+                  exc $$8 = new exc($$5.dt(), $$5.e(0.5 * (double)$$7), $$5.dz());
+                  exa $$9 = this.dO().a(new dcf($$3, $$8, dcf.a.a, dcf.b.a, this));
+                  if ($$9.c() == exa.a.a) {
                      $$6 = true;
                      break;
                   }
@@ -190,7 +190,7 @@ public class cnk extends cnp implements cnm {
 
                if ($$6) {
                   float $$10 = $$0 * (float)Math.sqrt((5.0 - (double)this.f($$5)) / 5.0);
-                  $$5.a(this.dQ().a(this, this.s()), $$10);
+                  $$5.a(this.dP().a(this, this.s()), $$10);
                }
             }
          }
@@ -208,9 +208,9 @@ public class cnk extends cnp implements cnm {
 
    @Override
    public void b(byte $$0) {
-      if ($$0 == 17 && this.dP().B) {
-         exa $$1 = this.ds();
-         this.dP().a(this.du(), this.dw(), this.dA(), $$1.c, $$1.d, $$1.e, this.z());
+      if ($$0 == 17 && this.dO().B) {
+         exc $$1 = this.dr();
+         this.dO().a(this.dt(), this.dv(), this.dz(), $$1.c, $$1.d, $$1.e, this.z());
       }
 
       super.b($$0);
@@ -221,7 +221,7 @@ public class cnk extends cnp implements cnm {
       super.b($$0);
       $$0.a("Life", this.e);
       $$0.a("LifeTime", this.f);
-      $$0.a("FireworksItem", this.p().a(this.dR()));
+      $$0.a("FireworksItem", this.p().a(this.dQ()));
       $$0.a("ShotAtAngle", this.ao.a(d));
    }
 
@@ -231,7 +231,7 @@ public class cnk extends cnp implements cnm {
       this.e = $$0.h("Life");
       this.f = $$0.h("LifeTime");
       if ($$0.b("FireworksItem", 10)) {
-         this.ao.a(b, cuq.a(this.dR(), (uy)$$0.p("FireworksItem")).orElseGet(cnk::A));
+         this.ao.a(b, cuq.a(this.dQ(), (uy)$$0.p("FireworksItem")).orElseGet(cnk::A));
       } else {
          this.ao.a(b, A());
       }
@@ -263,8 +263,8 @@ public class cnk extends cnp implements cnm {
 
    @Override
    public DoubleDoubleImmutablePair a_(btn $$0, brk $$1) {
-      double $$2 = $$0.dn().c - this.dn().c;
-      double $$3 = $$0.dn().e - this.dn().e;
+      double $$2 = $$0.dm().c - this.dm().c;
+      double $$3 = $$0.dm().e - this.dm().e;
       return DoubleDoubleImmutablePair.of($$2, $$3);
    }
 }

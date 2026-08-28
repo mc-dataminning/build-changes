@@ -43,7 +43,7 @@ public class bvx<E extends btn & cmi> extends bvh<E> {
                   cgl.a((btn)$$7).ifPresent($$2x -> this.a($$4, $$6, $$2x));
                }
 
-               $$1.dU().a(ccs.aP, 60);
+               $$1.dT().a(ccs.aP, 60);
             }
          }
       }
@@ -63,14 +63,14 @@ public class bvx<E extends btn & cmi> extends bvh<E> {
       }
    }
 
-   private static exa a(bwv $$0) {
+   private static exc a(bwv $$0) {
       return $$0.a().b(0.0, 1.0, 0.0);
    }
 
-   public static void a(btn $$0, cuq $$1, exa $$2) {
-      exa $$3 = new exa(0.2F, 0.3F, 0.2F);
+   public static void a(btn $$0, cuq $$1, exc $$2) {
+      exc $$3 = new exc(0.2F, 0.3F, 0.2F);
       bvj.a($$0, $$1, $$2, $$3, 0.2F);
-      dcw $$4 = $$0.dP();
+      dcw $$4 = $$0.dO();
       if ($$4.Z() % 7L == 0L && $$4.z.j() < 0.9) {
          float $$5 = ad.<Float>a(cgk.d, $$4.E_());
          $$4.a(null, $$0, avp.g, avq.g, 1.0F, $$5);

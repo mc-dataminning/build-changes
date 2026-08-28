@@ -21,11 +21,11 @@ public class cir {
          }
 
          this.d = this.b((ciq<cik>)$$0);
-         if (!this.b.dP().B) {
+         if (!this.b.dO().B) {
             this.b.ar().a(cia.b, $$0.b());
          }
 
-         a.debug("Dragon is now in phase {} on the {}", $$0, this.b.dP().B ? "client" : "server");
+         a.debug("Dragon is now in phase {} on the {}", $$0, this.b.dO().B ? "client" : "server");
          this.d.d();
       }
    }

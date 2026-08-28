@@ -1,43 +1,48 @@
-import java.util.List;
+public class gpf extends gov<cge, fvc<cge>> {
+   private static final akr a = akr.b("textures/entity/fish/tropical_a_pattern_1.png");
+   private static final akr b = akr.b("textures/entity/fish/tropical_a_pattern_2.png");
+   private static final akr c = akr.b("textures/entity/fish/tropical_a_pattern_3.png");
+   private static final akr d = akr.b("textures/entity/fish/tropical_a_pattern_4.png");
+   private static final akr e = akr.b("textures/entity/fish/tropical_a_pattern_5.png");
+   private static final akr f = akr.b("textures/entity/fish/tropical_a_pattern_6.png");
+   private static final akr g = akr.b("textures/entity/fish/tropical_b_pattern_1.png");
+   private static final akr h = akr.b("textures/entity/fish/tropical_b_pattern_2.png");
+   private static final akr i = akr.b("textures/entity/fish/tropical_b_pattern_3.png");
+   private static final akr j = akr.b("textures/entity/fish/tropical_b_pattern_4.png");
+   private static final akr k = akr.b("textures/entity/fish/tropical_b_pattern_5.png");
+   private static final akr l = akr.b("textures/entity/fish/tropical_b_pattern_6.png");
+   private final fxq<cge> m;
+   private final fxr<cge> n;
 
-public class gpf<T extends cmb, M extends fxu<T>> extends got<T, M> {
-   private final akr a;
-   private final gpf.a<T> b;
-   private final gpf.b<T, M> c;
-
-   public gpf(gmd<T, M> $$0, akr $$1, gpf.a<T> $$2, gpf.b<T, M> $$3) {
+   public gpf(gmf<cge, fvc<cge>> $$0, fyg $$1) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
+      this.m = new fxq<>($$1.a(fyj.bN));
+      this.n = new fxr<>($$1.a(fyj.bL));
    }
 
-   public void a(fbg $$0, gex $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.ci()) {
-         this.a();
-         fbk $$10 = $$1.getBuffer(gff.j(this.a));
-         float $$11 = this.b.apply($$3, $$6, $$7);
-         int $$12 = axy.b.a(ayo.d($$11 * 255.0F), 255, 255, 255);
-         this.c().a($$0, $$10, $$2, gli.c($$3, 0.0F), $$12);
-         this.b();
-      }
-   }
+   public void a(fbi $$0, gez $$1, int $$2, cge $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cge.b $$10 = $$3.gv();
 
-   private void a() {
-      List<fyi> $$0 = this.c.getPartsToDraw(this.c());
-      this.c().a().e().forEach($$0x -> $$0x.l = true);
-      $$0.forEach($$0x -> $$0x.l = false);
-   }
+      fvk<cge> $$11 = (fvk<cge>)(switch ($$10.a()) {
+         case a -> this.m;
+         case b -> this.n;
+      });
 
-   private void b() {
-      this.c().a().e().forEach($$0 -> $$0.l = false);
-   }
-
-   public interface a<T extends cmb> {
-      float apply(T var1, float var2, float var3);
-   }
-
-   public interface b<T extends cmb, M extends fvi<T>> {
-      List<fyi> getPartsToDraw(M var1);
+      akr $$12 = switch ($$10) {
+         case a -> a;
+         case b -> b;
+         case c -> c;
+         case d -> d;
+         case e -> e;
+         case f -> f;
+         case g -> g;
+         case h -> h;
+         case i -> i;
+         case j -> j;
+         case k -> k;
+         case l -> l;
+      };
+      int $$13 = $$3.gu().d();
+      a(this.c(), $$11, $$12, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$13);
    }
 }

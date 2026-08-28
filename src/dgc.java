@@ -4,7 +4,7 @@ import javax.annotation.Nullable;
 public class dgc extends dfk {
    public static final MapCodec<dgc> a = b(dgc::new);
    public static final dtt[] b = new dtt[]{dts.k, dts.l, dts.m};
-   protected static final ext c = exq.a(dfy.a(1.0, 0.0, 1.0, 15.0, 2.0, 15.0), dfy.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0));
+   protected static final exv c = exs.a(dfy.a(1.0, 0.0, 1.0, 15.0, 2.0, 15.0), dfy.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0));
 
    @Override
    public MapCodec<dgc> a() {
@@ -33,12 +33,12 @@ public class dgc extends dfk {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return c;
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
       if ($$1.B) {
          return bqr.a;
       } else {
@@ -82,7 +82,7 @@ public class dgc extends dfk {
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return false;
    }
 }

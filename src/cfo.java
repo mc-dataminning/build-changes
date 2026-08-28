@@ -20,7 +20,7 @@ public class cfo extends cfe implements buo<cfo.v> {
    private static final ajw<Optional<UUID>> ck = aka.a(cfo.class, ajy.r);
    private static final ajw<Optional<UUID>> cl = aka.a(cfo.class, ajy.r);
    static final Predicate<cjh> cm = $$0 -> !$$0.y() && $$0.bE();
-   private static final Predicate<bsr> cn = $$0 -> !($$0 instanceof btn $$1) ? false : $$1.el() != null && $$1.em() < $$1.ai + 600;
+   private static final Predicate<bsr> cn = $$0 -> !($$0 instanceof btn $$1) ? false : $$1.ek() != null && $$1.el() < $$1.ai + 600;
    static final Predicate<bsr> co = $$0 -> $$0 instanceof cfj || $$0 instanceof cfy;
    private static final Predicate<bsr> cp = $$0 -> !$$0.bZ() && bsw.e.test($$0);
    private static final int cq = 600;
@@ -38,8 +38,8 @@ public class cfo extends cfe implements buo<cfo.v> {
       super($$0, $$1);
       this.bQ = new cfo.k();
       this.bR = new cfo.m();
-      this.a(ept.p, 0.0F);
-      this.a(ept.q, 0.0F);
+      this.a(epv.p, 0.0F);
+      this.a(epv.q, 0.0F);
       this.a_(true);
    }
 
@@ -58,13 +58,13 @@ public class cfo extends cfe implements buo<cfo.v> {
       this.ct = new ccf<>(this, cgf.class, 10, false, false, cgf.ca);
       this.cu = new ccf<>(this, cfb.class, 20, false, false, $$0 -> $$0 instanceof cfd);
       this.bU.a(0, new cfo.g());
-      this.bU.a(0, new cab(this, this.dP()));
+      this.bU.a(0, new cab(this, this.dO()));
       this.bU.a(1, new cfo.b());
       this.bU.a(2, new cfo.n(2.2));
       this.bU.a(3, new cfo.e(1.0));
-      this.bU.a(4, new bzt<>(this, cmx.class, 16.0F, 1.6, 1.4, $$0 -> cp.test($$0) && !this.c($$0.cA()) && !this.gx()));
-      this.bU.a(4, new bzt<>(this, cgh.class, 8.0F, 1.6, 1.4, $$0 -> !((cgh)$$0).s() && !this.gx()));
-      this.bU.a(4, new bzt<>(this, cfw.class, 8.0F, 1.6, 1.4, $$0 -> !this.gx()));
+      this.bU.a(4, new bzt<>(this, cmx.class, 16.0F, 1.6, 1.4, $$0 -> cp.test($$0) && !this.c($$0.cz()) && !this.gw()));
+      this.bU.a(4, new bzt<>(this, cgh.class, 8.0F, 1.6, 1.4, $$0 -> !((cgh)$$0).s() && !this.gw()));
+      this.bU.a(4, new bzt<>(this, cfw.class, 8.0F, 1.6, 1.4, $$0 -> !this.gw()));
       this.bU.a(5, new cfo.u());
       this.bU.a(6, new cfo.o());
       this.bU.a(6, new cfo.s(1.25));
@@ -78,7 +78,7 @@ public class cfo extends cfe implements buo<cfo.v> {
       this.bU.a(11, new cfo.p());
       this.bU.a(12, new cfo.j(this, cmx.class, 24.0F));
       this.bU.a(13, new cfo.r());
-      this.bV.a(3, new cfo.a(btn.class, false, false, $$0 -> cn.test($$0) && !this.c($$0.cA())));
+      this.bV.a(3, new cfo.a(btn.class, false, false, $$0 -> cn.test($$0) && !this.c($$0.cz())));
    }
 
    @Override
@@ -88,12 +88,12 @@ public class cfo extends cfe implements buo<cfo.v> {
 
    @Override
    public void m_() {
-      if (!this.dP().B && this.bE() && this.dc()) {
+      if (!this.dO().B && this.bE() && this.db()) {
          this.cz++;
          cuq $$0 = this.a(bsy.a);
          if (this.n($$0)) {
             if (this.cz > 600) {
-               cuq $$1 = $$0.a(this.dP(), this);
+               cuq $$1 = $$0.a(this.dO(), this);
                if (!$$1.e()) {
                   this.a(bsy.a, $$1);
                }
@@ -101,36 +101,36 @@ public class cfo extends cfe implements buo<cfo.v> {
                this.cz = 0;
             } else if (this.cz > 560 && this.ah.i() < 0.1F) {
                this.a(this.d($$0), 1.0F, 1.0F);
-               this.dP().a(this, (byte)45);
+               this.dO().a(this, (byte)45);
             }
          }
 
          btn $$2 = this.p();
          if ($$2 == null || !$$2.bE()) {
-            this.y(false);
             this.z(false);
+            this.A(false);
          }
       }
 
-      if (this.fI() || this.fd()) {
+      if (this.fH() || this.fc()) {
          this.bn = false;
          this.bo = 0.0F;
          this.bq = 0.0F;
       }
 
       super.m_();
-      if (this.gx() && this.ah.i() < 0.05F) {
+      if (this.gw() && this.ah.i() < 0.05F) {
          this.a(avp.jf, 1.0F, 1.0F);
       }
    }
 
    @Override
-   protected boolean fd() {
-      return this.ey();
+   protected boolean fc() {
+      return this.ex();
    }
 
    private boolean n(cuq $$0) {
-      return $$0.b(kq.v) && this.p() == null && this.aF() && !this.fI();
+      return $$0.b(kq.v) && this.p() == null && this.aF() && !this.fH();
    }
 
    @Override
@@ -162,10 +162,10 @@ public class cfo extends cfe implements buo<cfo.v> {
          cuq $$1 = this.a(bsy.a);
          if (!$$1.e()) {
             for (int $$2 = 0; $$2 < 8; $$2++) {
-               exa $$3 = new exa(((double)this.ah.i() - 0.5) * 0.1, Math.random() * 0.1 + 0.1, 0.0)
-                  .a(-this.dH() * (float) (Math.PI / 180.0))
-                  .b(-this.dF() * (float) (Math.PI / 180.0));
-               this.dP().a(new li(lm.S, $$1), this.du() + this.bM().c / 2.0, this.dw(), this.dA() + this.bM().e / 2.0, $$3.c, $$3.d + 0.05, $$3.e);
+               exc $$3 = new exc(((double)this.ah.i() - 0.5) * 0.1, Math.random() * 0.1 + 0.1, 0.0)
+                  .a(-this.dG() * (float) (Math.PI / 180.0))
+                  .b(-this.dE() * (float) (Math.PI / 180.0));
+               this.dO().a(new li(lm.S, $$1), this.dt() + this.bM().c / 2.0, this.dv(), this.dz() + this.bM().e / 2.0, $$3.c, $$3.d + 0.05, $$3.e);
             }
          }
       } else {
@@ -188,13 +188,13 @@ public class cfo extends cfe implements buo<cfo.v> {
    }
 
    public static boolean c(bsx<cfo> $$0, dcx $$1, btr $$2, jd $$3, ayw $$4) {
-      return $$1.a_($$3.e()).a(awe.ce) && a($$1, $$3);
+      return $$1.a_($$3.e()).a(awe.cf) && a($$1, $$3);
    }
 
    @Nullable
    @Override
    public buh a(ddl $$0, bqp $$1, btr $$2, @Nullable buh $$3) {
-      jm<ddw> $$4 = $$0.t(this.dp());
+      jm<ddw> $$4 = $$0.t(this.do());
       cfo.v $$5 = cfo.v.a($$4);
       boolean $$6 = false;
       if ($$3 instanceof cfo.i $$7) {
@@ -212,14 +212,14 @@ public class cfo extends cfe implements buo<cfo.v> {
       }
 
       if ($$0 instanceof aqu) {
-         this.gv();
+         this.gu();
       }
 
       this.a($$0.E_(), $$1);
       return super.a($$0, $$1, $$2, $$3);
    }
 
-   private void gv() {
+   private void gu() {
       if (this.t() == cfo.v.a) {
          this.bV.a(4, this.cs);
          this.bV.a(4, this.ct);
@@ -253,7 +253,7 @@ public class cfo extends cfe implements buo<cfo.v> {
       this.ao.a(ce, $$0.a());
    }
 
-   List<UUID> gw() {
+   List<UUID> gv() {
       List<UUID> $$0 = Lists.newArrayList();
       $$0.add(this.ao.a(ck).orElse(null));
       $$0.add(this.ao.a(cl).orElse(null));
@@ -271,7 +271,7 @@ public class cfo extends cfe implements buo<cfo.v> {
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      List<UUID> $$1 = this.gw();
+      List<UUID> $$1 = this.gv();
       uh $$2 = new uh();
 
       for (UUID $$3 : $$1) {
@@ -281,7 +281,7 @@ public class cfo extends cfe implements buo<cfo.v> {
       }
 
       $$0.a("Trusted", $$2);
-      $$0.a("Sleeping", this.fI());
+      $$0.a("Sleeping", this.fH());
       $$0.a("Type", this.t().c());
       $$0.a("Sitting", this.x());
       $$0.a("Crouching", this.cb());
@@ -295,12 +295,12 @@ public class cfo extends cfe implements buo<cfo.v> {
          this.b(uq.a($$2));
       }
 
-      this.C($$0.q("Sleeping"));
+      this.D($$0.q("Sleeping"));
       this.a(cfo.v.a($$0.l("Type")));
-      this.w($$0.q("Sitting"));
-      this.y($$0.q("Crouching"));
-      if (this.dP() instanceof aqu) {
-         this.gv();
+      this.x($$0.q("Sitting"));
+      this.z($$0.q("Crouching"));
+      if (this.dO() instanceof aqu) {
+         this.gu();
       }
    }
 
@@ -308,32 +308,32 @@ public class cfo extends cfe implements buo<cfo.v> {
       return this.t(1);
    }
 
-   public void w(boolean $$0) {
+   public void x(boolean $$0) {
       this.d(1, $$0);
    }
 
-   public boolean gl() {
+   public boolean gk() {
       return this.t(64);
    }
 
-   void A(boolean $$0) {
+   void B(boolean $$0) {
       this.d(64, $$0);
    }
 
-   boolean gx() {
+   boolean gw() {
       return this.t(128);
    }
 
-   void B(boolean $$0) {
+   void C(boolean $$0) {
       this.d(128, $$0);
    }
 
    @Override
-   public boolean fI() {
+   public boolean fH() {
       return this.t(32);
    }
 
-   void C(boolean $$0) {
+   void D(boolean $$0) {
       this.d(32, $$0);
    }
 
@@ -362,18 +362,18 @@ public class cfo extends cfe implements buo<cfo.v> {
    }
 
    private void p(cuq $$0) {
-      if (!$$0.e() && !this.dP().B) {
-         cjh $$1 = new cjh(this.dP(), this.du() + this.bM().c, this.dw() + 1.0, this.dA() + this.bM().e, $$0);
+      if (!$$0.e() && !this.dO().B) {
+         cjh $$1 = new cjh(this.dO(), this.dt() + this.bM().c, this.dv() + 1.0, this.dz() + this.bM().e, $$0);
          $$1.b(40);
          $$1.b(this);
          this.a(avp.jo, 1.0F, 1.0F);
-         this.dP().b($$1);
+         this.dO().b($$1);
       }
    }
 
    private void q(cuq $$0) {
-      cjh $$1 = new cjh(this.dP(), this.du(), this.dw(), this.dA(), $$0);
-      this.dP().b($$1);
+      cjh $$1 = new cjh(this.dO(), this.dt(), this.dv(), this.dz(), $$0);
+      this.dO().b($$1);
    }
 
    @Override
@@ -398,25 +398,25 @@ public class cfo extends cfe implements buo<cfo.v> {
    @Override
    public void l() {
       super.l();
-      if (this.dc()) {
+      if (this.db()) {
          boolean $$0 = this.bf();
-         if ($$0 || this.p() != null || this.dP().ac()) {
-            this.gy();
+         if ($$0 || this.p() != null || this.dO().ac()) {
+            this.gx();
          }
 
-         if ($$0 || this.fI()) {
-            this.w(false);
+         if ($$0 || this.fH()) {
+            this.x(false);
          }
 
-         if (this.gl() && this.dP().z.i() < 0.2F) {
-            jd $$1 = this.dp();
-            dtc $$2 = this.dP().a_($$1);
-            this.dP().c(2001, $$1, dfy.i($$2));
+         if (this.gk() && this.dO().z.i() < 0.2F) {
+            jd $$1 = this.do();
+            dtc $$2 = this.dO().a_($$1);
+            this.dO().c(2001, $$1, dfy.i($$2));
          }
       }
 
       this.cw = this.cv;
-      if (this.gp()) {
+      if (this.go()) {
          this.cv = this.cv + (1.0F - this.cv) * 0.4F;
       } else {
          this.cv = this.cv + (0.0F - this.cv) * 0.4F;
@@ -440,26 +440,26 @@ public class cfo extends cfe implements buo<cfo.v> {
 
    @Override
    protected void a(cmx $$0, btp $$1) {
-      ((cfo)$$1).b($$0.cA());
+      ((cfo)$$1).b($$0.cz());
    }
 
-   public boolean gm() {
+   public boolean gl() {
       return this.t(16);
    }
 
-   public void x(boolean $$0) {
+   public void y(boolean $$0) {
       this.d(16, $$0);
    }
 
-   public boolean gn() {
+   public boolean gm() {
       return this.bn;
    }
 
-   public boolean go() {
+   public boolean gn() {
       return this.cx == 3.0F;
    }
 
-   public void y(boolean $$0) {
+   public void z(boolean $$0) {
       this.d(4, $$0);
    }
 
@@ -468,11 +468,11 @@ public class cfo extends cfe implements buo<cfo.v> {
       return this.t(4);
    }
 
-   public void z(boolean $$0) {
+   public void A(boolean $$0) {
       this.d(8, $$0);
    }
 
-   public boolean gp() {
+   public boolean go() {
       return this.t(8);
    }
 
@@ -486,35 +486,35 @@ public class cfo extends cfe implements buo<cfo.v> {
 
    @Override
    public void h(@Nullable btn $$0) {
-      if (this.gx() && $$0 == null) {
-         this.B(false);
+      if (this.gw() && $$0 == null) {
+         this.C(false);
       }
 
       super.h($$0);
    }
 
-   void gy() {
-      this.C(false);
+   void gx() {
+      this.D(false);
    }
 
-   void gz() {
+   void gy() {
+      this.A(false);
       this.z(false);
-      this.y(false);
-      this.w(false);
+      this.x(false);
+      this.D(false);
       this.C(false);
       this.B(false);
-      this.A(false);
    }
 
-   boolean gA() {
-      return !this.fI() && !this.x() && !this.gl();
+   boolean gz() {
+      return !this.fH() && !this.x() && !this.gk();
    }
 
    @Override
    public void S() {
       avo $$0 = this.v();
       if ($$0 == avp.jl) {
-         this.a($$0, 2.0F, this.fc());
+         this.a($$0, 2.0F, this.fb());
       } else {
          super.S();
       }
@@ -523,11 +523,11 @@ public class cfo extends cfe implements buo<cfo.v> {
    @Nullable
    @Override
    protected avo v() {
-      if (this.fI()) {
+      if (this.fH()) {
          return avp.jm;
       } else {
-         if (!this.dP().R() && this.ah.i() < 0.1F) {
-            List<cmx> $$0 = this.dP().a(cmx.class, this.cL().c(16.0, 16.0, 16.0), bsw.f);
+         if (!this.dO().R() && this.ah.i() < 0.1F) {
+            List<cmx> $$0 = this.dO().a(cmx.class, this.cK().c(16.0, 16.0, 16.0), bsw.f);
             if ($$0.isEmpty()) {
                return avp.jl;
             }
@@ -550,7 +550,7 @@ public class cfo extends cfe implements buo<cfo.v> {
    }
 
    boolean c(UUID $$0) {
-      return this.gw().contains($$0);
+      return this.gv().contains($$0);
    }
 
    @Override
@@ -565,8 +565,8 @@ public class cfo extends cfe implements buo<cfo.v> {
    }
 
    public static boolean a(cfo $$0, btn $$1) {
-      double $$2 = $$1.dA() - $$0.dA();
-      double $$3 = $$1.du() - $$0.du();
+      double $$2 = $$1.dz() - $$0.dz();
+      double $$3 = $$1.dt() - $$0.dt();
       double $$4 = $$2 / $$3;
       int $$5 = 6;
 
@@ -575,7 +575,7 @@ public class cfo extends cfe implements buo<cfo.v> {
          double $$8 = $$4 == 0.0 ? $$3 * (double)((float)$$6 / 6.0F) : $$7 / $$4;
 
          for (int $$9 = 1; $$9 < 4; $$9++) {
-            if (!$$0.dP().a_(jd.a($$0.du() + $$8, $$0.dw() + (double)$$9, $$0.dA() + $$7)).r()) {
+            if (!$$0.dO().a_(jd.a($$0.dt() + $$8, $$0.dv() + (double)$$9, $$0.dz() + $$7)).r()) {
                return false;
             }
          }
@@ -585,8 +585,8 @@ public class cfo extends cfe implements buo<cfo.v> {
    }
 
    @Override
-   public exa cN() {
-      return new exa(0.0, (double)(0.55F * this.cM()), (double)(this.dk() * 0.4F));
+   public exc cM() {
+      return new exc(0.0, (double)(0.55F * this.cL()), (double)(this.dj() * 0.4F));
    }
 
    class a extends ccf<btn> {
@@ -602,14 +602,14 @@ public class cfo extends cfe implements buo<cfo.v> {
 
       @Override
       public boolean b() {
-         if (this.b > 0 && this.e.dS().a(this.b) != 0) {
+         if (this.b > 0 && this.e.dR().a(this.b) != 0) {
             return false;
          } else {
-            for (UUID $$0 : cfo.this.gw()) {
-               if ($$0 != null && cfo.this.dP() instanceof aqu && ((aqu)cfo.this.dP()).a($$0) instanceof btn $$2) {
+            for (UUID $$0 : cfo.this.gv()) {
+               if ($$0 != null && cfo.this.dO() instanceof aqu && ((aqu)cfo.this.dO()).a($$0) instanceof btn $$2) {
                   this.k = $$2;
-                  this.j = $$2.ej();
-                  int $$3 = $$2.ek();
+                  this.j = $$2.ei();
+                  int $$3 = $$2.ej();
                   return $$3 != this.l && this.a(this.j, this.d);
                }
             }
@@ -623,12 +623,12 @@ public class cfo extends cfe implements buo<cfo.v> {
          this.a(this.j);
          this.c = this.j;
          if (this.k != null) {
-            this.l = this.k.ek();
+            this.l = this.k.ej();
          }
 
          cfo.this.a(avp.jf, 1.0F, 1.0F);
-         cfo.this.B(true);
-         cfo.this.gy();
+         cfo.this.C(true);
+         cfo.this.gx();
          super.d();
       }
    }
@@ -642,7 +642,7 @@ public class cfo extends cfe implements buo<cfo.v> {
 
       @Override
       public boolean b() {
-         return cfo.this.gl();
+         return cfo.this.gk();
       }
 
       @Override
@@ -657,7 +657,7 @@ public class cfo extends cfe implements buo<cfo.v> {
 
       @Override
       public void e() {
-         cfo.this.A(false);
+         cfo.this.B(false);
       }
 
       @Override
@@ -675,7 +675,7 @@ public class cfo extends cfe implements buo<cfo.v> {
          } else if ($$0 instanceof bul) {
             return !((bul)$$0).s();
          } else if (!($$0 instanceof cmx) || !$$0.R_() && !((cmx)$$0).f()) {
-            return cfo.this.c($$0.cA()) ? false : !$$0.fI() && !$$0.bZ();
+            return cfo.this.c($$0.cz()) ? false : !$$0.fH() && !$$0.bZ();
          } else {
             return false;
          }
@@ -686,12 +686,12 @@ public class cfo extends cfe implements buo<cfo.v> {
       private final cef b = cef.a().a(12.0).d().a(cfo.this.new c());
 
       protected boolean h() {
-         jd $$0 = jd.a(cfo.this.du(), cfo.this.cL().e, cfo.this.dA());
-         return !cfo.this.dP().h($$0) && cfo.this.c($$0) >= 0.0F;
+         jd $$0 = jd.a(cfo.this.dt(), cfo.this.cK().e, cfo.this.dz());
+         return !cfo.this.dO().h($$0) && cfo.this.c($$0) >= 0.0F;
       }
 
       protected boolean i() {
-         return !cfo.this.dP().a(btn.class, this.b, cfo.this, cfo.this.cL().c(12.0, 6.0, 12.0)).isEmpty();
+         return !cfo.this.dO().a(btn.class, this.b, cfo.this, cfo.this.cK().c(12.0, 6.0, 12.0)).isEmpty();
       }
    }
 
@@ -702,8 +702,8 @@ public class cfo extends cfe implements buo<cfo.v> {
 
       @Override
       public void d() {
-         ((cfo)this.a).gz();
-         ((cfo)this.c).gz();
+         ((cfo)this.a).gy();
+         ((cfo)this.c).gy();
          super.d();
       }
 
@@ -712,17 +712,17 @@ public class cfo extends cfe implements buo<cfo.v> {
          aqu $$0 = (aqu)this.b;
          cfo $$1 = (cfo)this.a.a($$0, (bsl)this.c);
          if ($$1 != null) {
-            aqv $$2 = this.a.gs();
-            aqv $$3 = this.c.gs();
+            aqv $$2 = this.a.gr();
+            aqv $$3 = this.c.gr();
             aqv $$4 = $$2;
             if ($$2 != null) {
-               $$1.b($$2.cA());
+               $$1.b($$2.cz());
             } else {
                $$4 = $$3;
             }
 
             if ($$3 != null && $$2 != $$3) {
-               $$1.b($$3.cA());
+               $$1.b($$3.cz());
             }
 
             if ($$4 != null) {
@@ -732,14 +732,14 @@ public class cfo extends cfe implements buo<cfo.v> {
 
             this.a.c_(6000);
             this.c.c_(6000);
-            this.a.gu();
-            this.c.gu();
+            this.a.gt();
+            this.c.gt();
             $$1.c_(-24000);
-            $$1.b(this.a.du(), this.a.dw(), this.a.dA(), 0.0F, 0.0F);
+            $$1.b(this.a.dt(), this.a.dv(), this.a.dz(), 0.0F, 0.0F);
             $$0.a_($$1);
             this.b.a(this.a, (byte)18);
             if (this.b.ab().b(dcs.f)) {
-               this.b.b(new btc(this.b, this.a.du(), this.a.dw(), this.a.dA(), this.a.dS().a(7) + 1));
+               this.b.b(new btc(this.b, this.a.dt(), this.a.dv(), this.a.dz(), this.a.dR().a(7) + 1));
             }
          }
       }
@@ -785,8 +785,8 @@ public class cfo extends cfe implements buo<cfo.v> {
       }
 
       protected void o() {
-         if (cfo.this.dP().ab().b(dcs.c)) {
-            dtc $$0 = cfo.this.dP().a_(this.e);
+         if (cfo.this.dO().ab().b(dcs.c)) {
+            dtc $$0 = cfo.this.dO().a_(this.e);
             if ($$0.a(dga.oi)) {
                this.b($$0);
             } else if (dgu.h_($$0)) {
@@ -796,13 +796,13 @@ public class cfo extends cfe implements buo<cfo.v> {
       }
 
       private void a(dtc $$0) {
-         dgu.a(cfo.this, $$0, cfo.this.dP(), this.e);
+         dgu.a(cfo.this, $$0, cfo.this.dO(), this.e);
       }
 
       private void b(dtc $$0) {
          int $$1 = $$0.c(doc.c);
          $$0.a(doc.c, Integer.valueOf(1));
-         int $$2 = 1 + cfo.this.dP().z.a(2) + ($$1 == 3 ? 1 : 0);
+         int $$2 = 1 + cfo.this.dO().z.a(2) + ($$1 == 3 ? 1 : 0);
          cuq $$3 = cfo.this.a(bsy.a);
          if ($$3.e()) {
             cfo.this.a(bsy.a, new cuq(cut.wu));
@@ -810,23 +810,23 @@ public class cfo extends cfe implements buo<cfo.v> {
          }
 
          if ($$2 > 0) {
-            dfy.a(cfo.this.dP(), this.e, new cuq(cut.wu, $$2));
+            dfy.a(cfo.this.dO(), this.e, new cuq(cut.wu, $$2));
          }
 
          cfo.this.a(avp.zs, 1.0F, 1.0F);
-         cfo.this.dP().a(this.e, $$0.a(doc.c, Integer.valueOf(1)), 2);
-         cfo.this.dP().a(dxz.c, this.e, dxz.a.a(cfo.this));
+         cfo.this.dO().a(this.e, $$0.a(doc.c, Integer.valueOf(1)), 2);
+         cfo.this.dO().a(dxz.c, this.e, dxz.a.a(cfo.this));
       }
 
       @Override
       public boolean b() {
-         return !cfo.this.fI() && super.b();
+         return !cfo.this.fH() && super.b();
       }
 
       @Override
       public void d() {
          this.g = 0;
-         cfo.this.w(false);
+         cfo.this.x(false);
          super.d();
       }
    }
@@ -839,7 +839,7 @@ public class cfo extends cfe implements buo<cfo.v> {
       @Override
       public void d() {
          super.d();
-         cfo.this.gz();
+         cfo.this.gy();
       }
 
       @Override
@@ -858,17 +858,17 @@ public class cfo extends cfe implements buo<cfo.v> {
 
       @Override
       public boolean b() {
-         return !this.d.gx() && super.b();
+         return !this.d.gw() && super.b();
       }
 
       @Override
       public boolean c() {
-         return !this.d.gx() && super.c();
+         return !this.d.gw() && super.c();
       }
 
       @Override
       public void d() {
-         this.d.gz();
+         this.d.gy();
          super.d();
       }
    }
@@ -889,12 +889,12 @@ public class cfo extends cfe implements buo<cfo.v> {
 
       @Override
       public boolean b() {
-         return super.b() && !cfo.this.gl() && !cfo.this.gp();
+         return super.b() && !cfo.this.gk() && !cfo.this.go();
       }
 
       @Override
       public boolean c() {
-         return super.c() && !cfo.this.gl() && !cfo.this.gp();
+         return super.c() && !cfo.this.gk() && !cfo.this.go();
       }
    }
 
@@ -905,14 +905,14 @@ public class cfo extends cfe implements buo<cfo.v> {
 
       @Override
       public void a() {
-         if (!cfo.this.fI()) {
+         if (!cfo.this.fH()) {
             super.a();
          }
       }
 
       @Override
       protected boolean c() {
-         return !cfo.this.gm() && !cfo.this.cb() && !cfo.this.gp() && !cfo.this.gl();
+         return !cfo.this.gl() && !cfo.this.cb() && !cfo.this.go() && !cfo.this.gk();
       }
    }
 
@@ -932,13 +932,13 @@ public class cfo extends cfe implements buo<cfo.v> {
 
       @Override
       public void d() {
-         cfo.this.z(false);
+         cfo.this.A(false);
          super.d();
       }
 
       @Override
       public boolean b() {
-         return !cfo.this.x() && !cfo.this.fI() && !cfo.this.cb() && !cfo.this.gl() && super.b();
+         return !cfo.this.x() && !cfo.this.fH() && !cfo.this.cb() && !cfo.this.gk() && super.b();
       }
    }
 
@@ -949,7 +949,7 @@ public class cfo extends cfe implements buo<cfo.v> {
 
       @Override
       public void a() {
-         if (cfo.this.gA()) {
+         if (cfo.this.gz()) {
             super.a();
          }
       }
@@ -962,26 +962,26 @@ public class cfo extends cfe implements buo<cfo.v> {
 
       @Override
       public boolean h() {
-         return !cfo.this.gx() && super.h();
+         return !cfo.this.gw() && super.h();
       }
    }
 
    public class o extends caq {
       @Override
       public boolean b() {
-         if (!cfo.this.go()) {
+         if (!cfo.this.gn()) {
             return false;
          } else {
             btn $$0 = cfo.this.p();
             if ($$0 != null && $$0.bE()) {
-               if ($$0.cJ() != $$0.cI()) {
+               if ($$0.cI() != $$0.cH()) {
                   return false;
                } else {
                   boolean $$1 = cfo.a(cfo.this, $$0);
                   if (!$$1) {
                      cfo.this.N().a($$0, 0);
-                     cfo.this.y(false);
                      cfo.this.z(false);
+                     cfo.this.A(false);
                   }
 
                   return $$1;
@@ -996,8 +996,8 @@ public class cfo extends cfe implements buo<cfo.v> {
       public boolean c() {
          btn $$0 = cfo.this.p();
          if ($$0 != null && $$0.bE()) {
-            double $$1 = cfo.this.ds().d;
-            return (!($$1 * $$1 < 0.05F) || !(Math.abs(cfo.this.dH()) < 15.0F) || !cfo.this.aF()) && !cfo.this.gl();
+            double $$1 = cfo.this.dr().d;
+            return (!($$1 * $$1 < 0.05F) || !(Math.abs(cfo.this.dG()) < 15.0F) || !cfo.this.aF()) && !cfo.this.gk();
          } else {
             return false;
          }
@@ -1010,14 +1010,14 @@ public class cfo extends cfe implements buo<cfo.v> {
 
       @Override
       public void d() {
-         cfo.this.s(true);
-         cfo.this.x(true);
-         cfo.this.z(false);
+         cfo.this.t(true);
+         cfo.this.y(true);
+         cfo.this.A(false);
          btn $$0 = cfo.this.p();
          if ($$0 != null) {
             cfo.this.I().a($$0, 60.0F, 30.0F);
-            exa $$1 = new exa($$0.du() - cfo.this.du(), $$0.dw() - cfo.this.dw(), $$0.dA() - cfo.this.dA()).d();
-            cfo.this.i(cfo.this.ds().b($$1.c * 0.8, 0.9, $$1.e * 0.8));
+            exc $$1 = new exc($$0.dt() - cfo.this.dt(), $$0.dv() - cfo.this.dv(), $$0.dz() - cfo.this.dz()).d();
+            cfo.this.i(cfo.this.dr().b($$1.c * 0.8, 0.9, $$1.e * 0.8));
          }
 
          cfo.this.N().n();
@@ -1025,11 +1025,11 @@ public class cfo extends cfe implements buo<cfo.v> {
 
       @Override
       public void e() {
-         cfo.this.y(false);
+         cfo.this.z(false);
          cfo.this.cx = 0.0F;
          cfo.this.cy = 0.0F;
-         cfo.this.z(false);
-         cfo.this.x(false);
+         cfo.this.A(false);
+         cfo.this.y(false);
       }
 
       @Override
@@ -1039,10 +1039,10 @@ public class cfo extends cfe implements buo<cfo.v> {
             cfo.this.I().a($$0, 60.0F, 30.0F);
          }
 
-         if (!cfo.this.gl()) {
-            exa $$1 = cfo.this.ds();
-            if ($$1.d * $$1.d < 0.03F && cfo.this.dH() != 0.0F) {
-               cfo.this.u(ayo.j(0.2F, cfo.this.dH(), 0.0F));
+         if (!cfo.this.gk()) {
+            exc $$1 = cfo.this.dr();
+            if ($$1.d * $$1.d < 0.03F && cfo.this.dG() != 0.0F) {
+               cfo.this.u(ayo.j(0.2F, cfo.this.dG(), 0.0F));
             } else {
                double $$2 = $$1.h();
                double $$3 = Math.signum(-$$1.d) * Math.acos($$2 / $$1.f()) * 180.0F / (float)Math.PI;
@@ -1052,10 +1052,10 @@ public class cfo extends cfe implements buo<cfo.v> {
 
          if ($$0 != null && cfo.this.f($$0) <= 2.0F) {
             cfo.this.D($$0);
-         } else if (cfo.this.dH() > 0.0F && cfo.this.aF() && (float)cfo.this.ds().d != 0.0F && cfo.this.dP().a_(cfo.this.dp()).a(dga.dN)) {
+         } else if (cfo.this.dG() > 0.0F && cfo.this.aF() && (float)cfo.this.dr().d != 0.0F && cfo.this.dO().a_(cfo.this.do()).a(dga.dN)) {
             cfo.this.u(60.0F);
             cfo.this.h(null);
-            cfo.this.A(true);
+            cfo.this.B(true);
          }
       }
    }
@@ -1069,21 +1069,21 @@ public class cfo extends cfe implements buo<cfo.v> {
       public boolean b() {
          if (!cfo.this.a(bsy.a).e()) {
             return false;
-         } else if (cfo.this.p() != null || cfo.this.ej() != null) {
+         } else if (cfo.this.p() != null || cfo.this.ei() != null) {
             return false;
-         } else if (!cfo.this.gA()) {
+         } else if (!cfo.this.gz()) {
             return false;
-         } else if (cfo.this.dS().a(b(10)) != 0) {
+         } else if (cfo.this.dR().a(b(10)) != 0) {
             return false;
          } else {
-            List<cjh> $$0 = cfo.this.dP().a(cjh.class, cfo.this.cL().c(8.0, 8.0, 8.0), cfo.cm);
+            List<cjh> $$0 = cfo.this.dO().a(cjh.class, cfo.this.cK().c(8.0, 8.0, 8.0), cfo.cm);
             return !$$0.isEmpty() && cfo.this.a(bsy.a).e();
          }
       }
 
       @Override
       public void a() {
-         List<cjh> $$0 = cfo.this.dP().a(cjh.class, cfo.this.cL().c(8.0, 8.0, 8.0), cfo.cm);
+         List<cjh> $$0 = cfo.this.dO().a(cjh.class, cfo.this.cK().c(8.0, 8.0, 8.0), cfo.cm);
          cuq $$1 = cfo.this.a(bsy.a);
          if ($$1.e() && !$$0.isEmpty()) {
             cfo.this.N().a($$0.get(0), 1.2F);
@@ -1092,7 +1092,7 @@ public class cfo extends cfe implements buo<cfo.v> {
 
       @Override
       public void d() {
-         List<cjh> $$0 = cfo.this.dP().a(cjh.class, cfo.this.cL().c(8.0, 8.0, 8.0), cfo.cm);
+         List<cjh> $$0 = cfo.this.dO().a(cjh.class, cfo.this.cK().c(8.0, 8.0, 8.0), cfo.cm);
          if (!$$0.isEmpty()) {
             cfo.this.N().a($$0.get(0), 1.2F);
          }
@@ -1106,7 +1106,7 @@ public class cfo extends cfe implements buo<cfo.v> {
 
       @Override
       public void d() {
-         cfo.this.gz();
+         cfo.this.gy();
          super.d();
       }
 
@@ -1121,7 +1121,7 @@ public class cfo extends cfe implements buo<cfo.v> {
       }
 
       private boolean h() {
-         return !cfo.this.fI() && !cfo.this.x() && !cfo.this.gx() && cfo.this.p() == null;
+         return !cfo.this.fH() && !cfo.this.x() && !cfo.this.gw() && cfo.this.p() == null;
       }
    }
 
@@ -1137,13 +1137,13 @@ public class cfo extends cfe implements buo<cfo.v> {
 
       @Override
       public boolean b() {
-         return cfo.this.ej() == null
-            && cfo.this.dS().i() < 0.02F
-            && !cfo.this.fI()
+         return cfo.this.ei() == null
+            && cfo.this.dR().i() < 0.02F
+            && !cfo.this.fH()
             && cfo.this.p() == null
             && cfo.this.N().l()
             && !this.i()
-            && !cfo.this.gm()
+            && !cfo.this.gl()
             && !cfo.this.cb();
       }
 
@@ -1155,14 +1155,14 @@ public class cfo extends cfe implements buo<cfo.v> {
       @Override
       public void d() {
          this.k();
-         this.f = 2 + cfo.this.dS().a(3);
-         cfo.this.w(true);
+         this.f = 2 + cfo.this.dR().a(3);
+         cfo.this.x(true);
          cfo.this.N().n();
       }
 
       @Override
       public void e() {
-         cfo.this.w(false);
+         cfo.this.x(false);
       }
 
       @Override
@@ -1173,14 +1173,14 @@ public class cfo extends cfe implements buo<cfo.v> {
             this.k();
          }
 
-         cfo.this.I().a(cfo.this.du() + this.c, cfo.this.dy(), cfo.this.dA() + this.d, (float)cfo.this.ae(), (float)cfo.this.ac());
+         cfo.this.I().a(cfo.this.dt() + this.c, cfo.this.dx(), cfo.this.dz() + this.d, (float)cfo.this.ae(), (float)cfo.this.ac());
       }
 
       private void k() {
-         double $$0 = (Math.PI * 2) * cfo.this.dS().j();
+         double $$0 = (Math.PI * 2) * cfo.this.dR().j();
          this.c = Math.cos($$0);
          this.d = Math.sin($$0);
-         this.e = this.a(80 + cfo.this.dS().a(20));
+         this.e = this.a(80 + cfo.this.dR().a(20));
       }
    }
 
@@ -1193,16 +1193,16 @@ public class cfo extends cfe implements buo<cfo.v> {
 
       @Override
       public boolean b() {
-         if (!cfo.this.fI() && this.a.p() == null) {
-            if (cfo.this.dP().ac() && cfo.this.dP().h(this.a.dp())) {
+         if (!cfo.this.fH() && this.a.p() == null) {
+            if (cfo.this.dO().ac() && cfo.this.dO().h(this.a.do())) {
                return this.h();
             } else if (this.c > 0) {
                this.c--;
                return false;
             } else {
                this.c = 100;
-               jd $$0 = this.a.dp();
-               return cfo.this.dP().R() && cfo.this.dP().h($$0) && !((aqu)cfo.this.dP()).c($$0) && this.h();
+               jd $$0 = this.a.do();
+               return cfo.this.dO().R() && cfo.this.dO().h($$0) && !((aqu)cfo.this.dO()).c($$0) && this.h();
             }
          } else {
             return false;
@@ -1211,7 +1211,7 @@ public class cfo extends cfe implements buo<cfo.v> {
 
       @Override
       public void d() {
-         cfo.this.gz();
+         cfo.this.gy();
          super.d();
       }
    }
@@ -1226,7 +1226,7 @@ public class cfo extends cfe implements buo<cfo.v> {
 
       @Override
       public boolean b() {
-         return cfo.this.bo == 0.0F && cfo.this.bp == 0.0F && cfo.this.bq == 0.0F ? this.k() || cfo.this.fI() : false;
+         return cfo.this.bo == 0.0F && cfo.this.bp == 0.0F && cfo.this.bq == 0.0F ? this.k() || cfo.this.fH() : false;
       }
 
       @Override
@@ -1239,25 +1239,25 @@ public class cfo extends cfe implements buo<cfo.v> {
             this.d--;
             return false;
          } else {
-            return cfo.this.dP().R() && this.h() && !this.i() && !cfo.this.az;
+            return cfo.this.dO().R() && this.h() && !this.i() && !cfo.this.az;
          }
       }
 
       @Override
       public void e() {
          this.d = cfo.this.ah.a(c);
-         cfo.this.gz();
+         cfo.this.gy();
       }
 
       @Override
       public void d() {
-         cfo.this.w(false);
-         cfo.this.y(false);
+         cfo.this.x(false);
          cfo.this.z(false);
-         cfo.this.s(false);
-         cfo.this.C(true);
+         cfo.this.A(false);
+         cfo.this.t(false);
+         cfo.this.D(true);
          cfo.this.N().n();
-         cfo.this.J().a(cfo.this.du(), cfo.this.dw(), cfo.this.dA(), 0.0);
+         cfo.this.J().a(cfo.this.dt(), cfo.this.dv(), cfo.this.dz(), 0.0);
       }
    }
 
@@ -1268,31 +1268,31 @@ public class cfo extends cfe implements buo<cfo.v> {
 
       @Override
       public boolean b() {
-         if (cfo.this.fI()) {
+         if (cfo.this.fH()) {
             return false;
          } else {
             btn $$0 = cfo.this.p();
-            return $$0 != null && $$0.bE() && cfo.co.test($$0) && cfo.this.g((bsr)$$0) > 36.0 && !cfo.this.cb() && !cfo.this.gp() && !cfo.this.bn;
+            return $$0 != null && $$0.bE() && cfo.co.test($$0) && cfo.this.g((bsr)$$0) > 36.0 && !cfo.this.cb() && !cfo.this.go() && !cfo.this.bn;
          }
       }
 
       @Override
       public void d() {
-         cfo.this.w(false);
-         cfo.this.A(false);
+         cfo.this.x(false);
+         cfo.this.B(false);
       }
 
       @Override
       public void e() {
          btn $$0 = cfo.this.p();
          if ($$0 != null && cfo.a(cfo.this, $$0)) {
+            cfo.this.A(true);
             cfo.this.z(true);
-            cfo.this.y(true);
             cfo.this.N().n();
             cfo.this.I().a($$0, (float)cfo.this.ae(), (float)cfo.this.ac());
          } else {
+            cfo.this.A(false);
             cfo.this.z(false);
-            cfo.this.y(false);
          }
       }
 
@@ -1302,8 +1302,8 @@ public class cfo extends cfe implements buo<cfo.v> {
          if ($$0 != null) {
             cfo.this.I().a($$0, (float)cfo.this.ae(), (float)cfo.this.ac());
             if (cfo.this.g((bsr)$$0) <= 36.0) {
+               cfo.this.A(true);
                cfo.this.z(true);
-               cfo.this.y(true);
                cfo.this.N().n();
             } else {
                cfo.this.N().a($$0, 1.5);

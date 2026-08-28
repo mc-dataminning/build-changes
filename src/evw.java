@@ -1,9 +1,25 @@
-public interface evw extends erq {
-   float b(erp var1);
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   default int a(erp $$0) {
-      return Math.round(this.b($$0));
+public record evw(daj b) implements evy {
+   public static final MapCodec<evw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(daj.b.fieldOf("amount").forGetter(evw::c)).apply($$0, evw::new));
+
+   @Override
+   public float b(err $$0) {
+      int $$1 = $$0.b(eun.k);
+      return this.b.a($$1);
    }
 
-   evv b();
+   @Override
+   public evx b() {
+      return evz.g;
+   }
+
+   public static evw a(daj $$0) {
+      return new evw($$0);
+   }
+
+   public daj c() {
+      return this.b;
+   }
 }

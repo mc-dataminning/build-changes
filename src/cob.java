@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 public class cob extends cnw implements cnm {
    public static final double b = 4.0;
    private static final double d = 16.0;
-   public static final Predicate<btn> c = $$0 -> $$0.fm() || $$0.bR();
+   public static final Predicate<btn> c = $$0 -> $$0.fl() || $$0.bR();
 
    public cob(bsx<? extends cob> $$0, dcw $$1) {
       super($$0, $$1);
@@ -31,9 +31,9 @@ public class cob extends cnw implements cnm {
    }
 
    @Override
-   protected void a(eww $$0) {
+   protected void a(ewy $$0) {
       super.a($$0);
-      if (!this.dP().B) {
+      if (!this.dO().B) {
          cuq $$1 = this.p();
          ji $$2 = $$0.b();
          jd $$3 = $$0.a();
@@ -51,9 +51,9 @@ public class cob extends cnw implements cnm {
    }
 
    @Override
-   protected void a(ewy $$0) {
+   protected void a(exa $$0) {
       super.a($$0);
-      if (!this.dP().B) {
+      if (!this.dO().B) {
          cuq $$1 = this.p();
          cwu $$2 = $$1.a(kq.G, cwu.a);
          if ($$2.a(cwv.a)) {
@@ -62,24 +62,24 @@ public class cob extends cnw implements cnm {
             if (this.w()) {
                this.a($$2);
             } else {
-               this.a($$2.a(), $$0.c() == ewy.a.c ? ((ewx)$$0).a() : null);
+               this.a($$2.a(), $$0.c() == exa.a.c ? ((ewz)$$0).a() : null);
             }
          }
 
          int $$3 = $$2.e().isPresent() && $$2.e().get().a().b() ? 2007 : 2002;
-         this.dP().c($$3, this.dp(), $$2.b());
+         this.dO().c($$3, this.do(), $$2.b());
          this.aq();
       }
    }
 
    private void v() {
-      ewv $$0 = this.cL().c(4.0, 2.0, 4.0);
+      ewx $$0 = this.cK().c(4.0, 2.0, 4.0);
 
-      for (btn $$2 : this.dP().a(btn.class, $$0, c)) {
+      for (btn $$2 : this.dO().a(btn.class, $$0, c)) {
          double $$3 = this.g($$2);
          if ($$3 < 16.0) {
-            if ($$2.fm()) {
-               $$2.a(this.dQ().c(this, this.s()), 1.0F);
+            if ($$2.fl()) {
+               $$2.a(this.dP().c(this, this.s()), 1.0F);
             }
 
             if ($$2.bR() && $$2.bE()) {
@@ -88,19 +88,19 @@ public class cob extends cnw implements cnm {
          }
       }
 
-      for (cgq $$5 : this.dP().a(cgq.class, $$0)) {
+      for (cgq $$5 : this.dO().a(cgq.class, $$0)) {
          $$5.s();
       }
    }
 
    private void a(Iterable<brz> $$0, @Nullable bsr $$1) {
-      ewv $$2 = this.cL().c(4.0, 2.0, 4.0);
-      List<btn> $$3 = this.dP().a(btn.class, $$2);
+      ewx $$2 = this.cK().c(4.0, 2.0, 4.0);
+      List<btn> $$3 = this.dO().a(btn.class, $$2);
       if (!$$3.isEmpty()) {
          bsr $$4 = this.H();
 
          for (btn $$5 : $$3) {
-            if ($$5.fD()) {
+            if ($$5.fC()) {
                double $$6 = this.g($$5);
                if ($$6 < 16.0) {
                   double $$7;
@@ -129,7 +129,7 @@ public class cob extends cnw implements cnm {
    }
 
    private void a(cwu $$0) {
-      bsn $$1 = new bsn(this.dP(), this.du(), this.dw(), this.dA());
+      bsn $$1 = new bsn(this.dO(), this.dt(), this.dv(), this.dz());
       if (this.s() instanceof btn $$2) {
          $$1.a($$2);
       }
@@ -139,7 +139,7 @@ public class cob extends cnw implements cnm {
       $$1.c(10);
       $$1.c(-$$1.g() / (float)$$1.j());
       $$1.a($$0);
-      this.dP().b($$1);
+      this.dO().b($$1);
    }
 
    private boolean w() {
@@ -147,22 +147,22 @@ public class cob extends cnw implements cnm {
    }
 
    private void a(jd $$0) {
-      dtc $$1 = this.dP().a_($$0);
-      if ($$1.a(awe.aK)) {
-         this.dP().a($$0, false, this);
+      dtc $$1 = this.dO().a_($$0);
+      if ($$1.a(awe.aL)) {
+         this.dO().a($$0, false, this);
       } else if (deq.c($$1)) {
-         deq.a(null, $$1, this.dP(), $$0);
+         deq.a(null, $$1, this.dO(), $$0);
       } else if (dgm.g($$1)) {
-         this.dP().a(null, 1009, $$0, 0);
-         dgm.a(this.s(), this.dP(), $$0, $$1);
-         this.dP().b($$0, $$1.a(dgm.c, Boolean.valueOf(false)));
+         this.dO().a(null, 1009, $$0, 0);
+         dgm.a(this.s(), this.dO(), $$0, $$1);
+         this.dO().b($$0, $$1.a(dgm.c, Boolean.valueOf(false)));
       }
    }
 
    @Override
    public DoubleDoubleImmutablePair a_(btn $$0, brk $$1) {
-      double $$2 = $$0.dn().c - this.dn().c;
-      double $$3 = $$0.dn().e - this.dn().e;
+      double $$2 = $$0.dm().c - this.dm().c;
+      double $$3 = $$0.dm().e - this.dm().e;
       return DoubleDoubleImmutablePair.of($$2, $$3);
    }
 }

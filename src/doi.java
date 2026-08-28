@@ -60,13 +60,13 @@ public class doi extends dfy {
       if (!$$0.B) {
          cji $$3 = new cji($$0, (double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, $$2);
          $$0.b($$3);
-         $$0.a(null, $$3.du(), $$3.dw(), $$3.dA(), avp.zy, avq.e, 1.0F, 1.0F);
+         $$0.a(null, $$3.dt(), $$3.dv(), $$3.dz(), avp.zy, avq.e, 1.0F, 1.0F);
          $$0.a($$2, dxz.I, $$1);
       }
    }
 
    @Override
-   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, eww $$6) {
+   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, ewy $$6) {
       if (!$$0.a(cut.os) && !$$0.a(cut.tX)) {
          return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       } else {
@@ -85,7 +85,7 @@ public class doi extends dfy {
    }
 
    @Override
-   protected void a(dcw $$0, dtc $$1, eww $$2, cnp $$3) {
+   protected void a(dcw $$0, dtc $$1, ewy $$2, cnp $$3) {
       if (!$$0.B) {
          jd $$4 = $$2.a();
          bsr $$5 = $$3.s();

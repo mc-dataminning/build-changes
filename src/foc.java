@@ -1,96 +1,132 @@
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.time.Instant;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class foc extends fob {
-   private static final int a = 1024;
-   private static final int b = 65535;
-   private static final wz c = wz.c("selectWorld.allowCommands.new");
-   private static final wz r = wz.c("selectWorld.gameMode");
-   private static final wz s = wz.c("lanServer.otherPlayers");
-   private static final wz u = wz.c("lanServer.port");
-   private static final wz v = wz.a("lanServer.port.unavailable.new", 1024, 65535);
-   private static final wz w = wz.a("lanServer.port.invalid.new", 1024, 65535);
-   private static final int x = 16733525;
-   private final fob y;
-   private dct z = dct.a;
-   private boolean A;
-   private int B = ayf.a();
-   @Nullable
-   private fit C;
+public class foc extends fod {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 25;
+   private static final wz c = wz.c("recover_world.title").a(n.r);
+   private static final wz r = wz.c("recover_world.bug_tracker");
+   private static final wz s = wz.c("recover_world.restore");
+   private static final wz u = wz.c("recover_world.no_fallback");
+   private static final wz v = wz.c("recover_world.done.title");
+   private static final wz w = wz.c("recover_world.done.success");
+   private static final wz x = wz.c("recover_world.done.failed");
+   private static final wz y = wz.c("recover_world.issue.none").a(n.k);
+   private static final wz z = wz.c("recover_world.issue.missing_file").a(n.m);
+   private final BooleanConsumer A;
+   private final fmd B = fmd.d().a(8);
+   private final wz C;
+   private final fjg D;
+   private final fjg E;
+   private final erf.c F;
 
-   public foc(fob $$0) {
-      super(wz.c("lanServer.title"));
-      this.y = $$0;
+   public foc(fgo $$0, BooleanConsumer $$1, erf.c $$2) {
+      super(c);
+      this.A = $$1;
+      this.C = wz.a("recover_world.message", wz.b($$2.f()).a(n.h));
+      this.D = new fjg(this.C, $$0.h);
+      this.F = $$2;
+      Exception $$3 = this.a($$2, false);
+      Exception $$4 = this.a($$2, true);
+      wz $$5 = wz.i().b(this.a($$2, false, $$3)).f("\n").b(this.a($$2, true, $$4));
+      this.E = new fjg($$5, $$0.h);
+      boolean $$6 = $$3 != null && $$4 == null;
+      this.B.c().b();
+      this.B.a(new fjt(this.k, $$0.h));
+      this.B.a(this.D.b(true));
+      this.B.a(this.E);
+      fmd $$7 = fmd.e().a(5);
+      $$7.a(fim.a(r, fna.b(this, axj.j)).b(120, 20).a());
+      $$7.a(fim.a(s, $$1x -> this.a($$0)).b(120, 20).a($$6 ? null : fjx.a(u)).a()).j = $$6;
+      this.B.a($$7);
+      this.B.a(fim.a(wy.k, $$0x -> this.d()).b(120, 20).a());
+      this.B.a(this::c);
    }
 
-   @Override
-   protected void aT_() {
-      gum $$0 = this.l.V();
-      this.z = $$0.u_();
-      this.A = $$0.bb().m();
-      this.c(fir.a(dct::e).a(dct.a, dct.d, dct.b, dct.c).a(this.z).a(this.m / 2 - 155, 100, 150, 20, r, ($$0x, $$1x) -> this.z = $$1x));
-      this.c(fir.b(this.A).a(this.m / 2 + 5, 100, 150, 20, c, ($$0x, $$1x) -> this.A = $$1x));
-      fik $$1 = fik.a(wz.c("lanServer.start"), $$1x -> {
-         this.l.a(null);
-         wz $$2;
-         if ($$0.a(this.z, this.A, this.B)) {
-            $$2 = ans.a(this.B);
+   private void a(fgo $$0) {
+      Exception $$1 = this.a(this.F, false);
+      Exception $$2 = this.a(this.F, true);
+      if ($$1 != null && $$2 == null) {
+         $$0.d(new fno(wz.c("recover_world.restoring")));
+         fte.a(this.F);
+         if (this.F.n()) {
+            $$0.a(new fnb(this.A, v, w, wy.j, wy.k));
          } else {
-            $$2 = wz.c("commands.publish.failed");
+            $$0.a(new fmw(() -> this.A.accept(false), v, x));
          }
-
-         this.l.l.d().a($$2);
-         this.l.d();
-      }).a(this.m / 2 - 155, this.n - 28, 150, 20).a();
-      this.C = new fit(this.o, this.m / 2 - 75, 160, 150, 20, wz.c("lanServer.port"));
-      this.C.b($$1x -> {
-         wz $$2 = this.a($$1x);
-         this.C.c(wz.b(this.B + "").a(n.i));
-         if ($$2 == null) {
-            this.C.g(14737632);
-            this.C.a(null);
-            $$1.j = true;
-         } else {
-            this.C.g(16733525);
-            this.C.a(fjv.a($$2));
-            $$1.j = false;
-         }
-      });
-      this.C.c(wz.b(this.B + "").a(n.i));
-      this.c(this.C);
-      this.c($$1);
-      this.c(fik.a(wy.e, $$0x -> this.d()).a(this.m / 2 + 5, this.n - 28, 150, 20).a());
-   }
-
-   @Override
-   public void d() {
-      this.l.a(this.y);
-   }
-
-   @Nullable
-   private wz a(String $$0) {
-      if ($$0.isBlank()) {
-         this.B = ayf.a();
-         return null;
       } else {
-         try {
-            this.B = Integer.parseInt($$0);
-            if (this.B < 1024 || this.B > 65535) {
-               return w;
-            } else {
-               return !ayf.a(this.B) ? v : null;
-            }
-         } catch (NumberFormatException var3) {
-            this.B = ayf.a();
-            return w;
+         a.error(
+            "Failed to recover world, files not as expected. level.dat: {}, level.dat_old: {}",
+            $$1 != null ? $$1.getMessage() : "no issues",
+            $$2 != null ? $$2.getMessage() : "no issues"
+         );
+         $$0.a(new fmw(() -> this.A.accept(false), v, x));
+      }
+   }
+
+   private wz a(erf.c $$0, boolean $$1, @Nullable Exception $$2) {
+      if ($$1 && $$2 instanceof FileNotFoundException) {
+         return wz.i();
+      } else {
+         xn $$3 = wz.i();
+         Instant $$4 = $$0.a($$1);
+         xn $$5 = $$4 != null ? wz.b(ftn.a.format($$4)) : wz.c("recover_world.state_entry.unknown");
+         $$3.b(wz.a("recover_world.state_entry", $$5.a(n.h)));
+         if ($$2 == null) {
+            $$3.b(y);
+         } else if ($$2 instanceof FileNotFoundException) {
+            $$3.b(z);
+         } else if ($$2 instanceof us) {
+            $$3.b(wz.b($$2.getCause().toString()).a(n.m));
+         } else {
+            $$3.b(wz.b($$2.toString()).a(n.m));
          }
+
+         return $$3;
+      }
+   }
+
+   @Nullable
+   private Exception a(erf.c $$0, boolean $$1) {
+      try {
+         if (!$$1) {
+            $$0.a($$0.h());
+         } else {
+            $$0.a($$0.i());
+         }
+
+         return null;
+      } catch (um | us | IOException var4) {
+         return var4;
       }
    }
 
    @Override
-   public void a(fhx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.o, this.k, this.m / 2, 50, 16777215);
-      $$0.a(this.o, s, this.m / 2, 82, 16777215);
-      $$0.a(this.o, u, this.m / 2, 142, 16777215);
+   protected void aT_() {
+      super.aT_();
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      this.E.d(this.m - 50);
+      this.D.d(this.m - 50);
+      this.B.a();
+      flx.a(this.B, this.H());
+   }
+
+   @Override
+   public wz i() {
+      return wy.a(super.i(), this.C);
+   }
+
+   @Override
+   public void d() {
+      this.A.accept(false);
    }
 }

@@ -1,150 +1,261 @@
-import com.mojang.logging.LogUtils;
-import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.system.MemoryUtil.MemoryAllocator;
-import org.slf4j.Logger;
 
-public class fbd implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final MemoryAllocator b = MemoryUtil.getAllocator(false);
-   private static final int c = 2097152;
-   private static final int d = -1;
-   long e;
+public class fbd implements fbm {
+   private static final long a = -1L;
+   private static final long b = -1L;
+   private static final boolean c = ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN;
+   private final fbf d;
+   private long e = -1L;
    private int f;
-   private int g;
-   private int h;
-   private int i;
-   private int j;
+   private final fbn g;
+   private final fbn.c h;
+   private final boolean i;
+   private final boolean j;
+   private final int k;
+   private final int l;
+   private final int[] m;
+   private int n;
+   private boolean o = true;
 
-   public fbd(int $$0) {
-      this.f = $$0;
-      this.e = b.malloc((long)$$0);
-      if (this.e == 0L) {
-         throw new OutOfMemoryError("Failed to allocate " + $$0 + " bytes");
-      }
-   }
-
-   public long a(int $$0) {
-      int $$1 = this.g;
-      int $$2 = $$1 + $$0;
-      this.b($$2);
-      this.g = $$2;
-      return this.e + (long)$$1;
-   }
-
-   private void b(int $$0) {
-      if ($$0 > this.f) {
-         int $$1 = Math.min(this.f, 2097152);
-         int $$2 = Math.max(this.f + $$1, $$0);
-         this.c($$2);
-      }
-   }
-
-   private void c(int $$0) {
-      this.e = b.realloc(this.e, (long)$$0);
-      a.debug("Needed to grow BufferBuilder buffer: Old size {} bytes, new size {} bytes.", this.f, $$0);
-      if (this.e == 0L) {
-         throw new OutOfMemoryError("Failed to resize buffer from " + this.f + " bytes to " + $$0 + " bytes");
+   public fbd(fbf $$0, fbn.c $$1, fbn $$2) {
+      if (!$$2.b(fbo.b)) {
+         throw new IllegalArgumentException("Cannot build mesh with no position element");
       } else {
-         this.f = $$0;
+         this.d = $$0;
+         this.h = $$1;
+         this.g = $$2;
+         this.k = $$2.b();
+         this.l = $$2.f() & ~fbo.b.a();
+         this.m = $$2.e();
+         boolean $$3 = $$2 == fbg.c;
+         boolean $$4 = $$2 == fbg.b;
+         this.i = $$3 || $$4;
+         this.j = $$3;
       }
    }
 
    @Nullable
-   public fbd.a a() {
+   public fbh a() {
+      this.c();
       this.f();
-      int $$0 = this.h;
-      int $$1 = this.g - $$0;
-      if ($$1 == 0) {
+      fbh $$0 = this.d();
+      this.o = false;
+      this.e = -1L;
+      return $$0;
+   }
+
+   public fbh b() {
+      fbh $$0 = this.a();
+      if ($$0 == null) {
+         throw new IllegalStateException("BufferBuilder was empty");
+      } else {
+         return $$0;
+      }
+   }
+
+   private void c() {
+      if (!this.o) {
+         throw new IllegalStateException("Not building!");
+      }
+   }
+
+   @Nullable
+   private fbh d() {
+      if (this.f == 0) {
          return null;
       } else {
-         this.h = this.g;
-         this.i++;
-         return new fbd.a($$0, $$1, this.j);
+         fbf.a $$0 = this.d.a();
+         if ($$0 == null) {
+            return null;
+         } else {
+            int $$1 = this.h.a(this.f);
+            fbn.b $$2 = fbn.b.a(this.f);
+            return new fbh($$0, new fbh.a(this.g, this.f, $$1, this.h, $$2));
+         }
       }
    }
 
-   public void b() {
-      if (this.i > 0) {
-         a.warn("Clearing BufferBuilder with unused batches");
-      }
-
+   private long e() {
       this.c();
-   }
-
-   public void c() {
       this.f();
-      if (this.i > 0) {
-         this.e();
-         this.i = 0;
-      }
+      this.f++;
+      long $$0 = this.d.a(this.k);
+      this.e = $$0;
+      return $$0;
    }
 
-   boolean d(int $$0) {
-      return $$0 == this.j;
-   }
-
-   void d() {
-      if (--this.i <= 0) {
-         this.e();
-      }
-   }
-
-   private void e() {
-      int $$0 = this.g - this.h;
-      if ($$0 > 0) {
-         MemoryUtil.memCopy(this.e + (long)this.h, this.e, (long)$$0);
-      }
-
-      this.g = $$0;
-      this.h = 0;
-      this.j++;
-   }
-
-   @Override
-   public void close() {
-      if (this.e != 0L) {
-         b.free(this.e);
-         this.e = 0L;
-         this.j = -1;
+   private long a(fbo $$0) {
+      int $$1 = this.n;
+      int $$2 = $$1 & ~$$0.a();
+      if ($$2 == $$1) {
+         return -1L;
+      } else {
+         this.n = $$2;
+         long $$3 = this.e;
+         if ($$3 == -1L) {
+            throw new IllegalArgumentException("Not currently building vertex");
+         } else {
+            return $$3 + (long)this.m[$$0.c()];
+         }
       }
    }
 
    private void f() {
-      if (this.e == 0L) {
-         throw new IllegalStateException("Buffer has been freed");
+      if (this.f != 0) {
+         if (this.n != 0) {
+            String $$0 = fbo.b(this.n).map(this.g::c).collect(Collectors.joining(", "));
+            throw new IllegalStateException("Missing elements in vertex: " + $$0);
+         } else {
+            if (this.h == fbn.c.a || this.h == fbn.c.b) {
+               long $$1 = this.d.a(this.k);
+               MemoryUtil.memCopy($$1 - (long)this.k, $$1, (long)this.k);
+               this.f++;
+            }
+         }
       }
    }
 
-   public class a implements AutoCloseable {
-      private final int b;
-      private final int c;
-      private final int d;
-      private boolean e;
+   private static void a(long $$0, int $$1) {
+      int $$2 = axy.a.g($$1);
+      MemoryUtil.memPutInt($$0, c ? $$2 : Integer.reverseBytes($$2));
+   }
 
-      a(final int $$1, final int $$2, final int $$3) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+   private static void b(long $$0, int $$1) {
+      if (c) {
+         MemoryUtil.memPutInt($$0, $$1);
+      } else {
+         MemoryUtil.memPutShort($$0, (short)($$1 & 65535));
+         MemoryUtil.memPutShort($$0 + 2L, (short)($$1 >> 16 & 65535));
+      }
+   }
+
+   @Override
+   public fbm a(float $$0, float $$1, float $$2) {
+      long $$3 = this.e() + (long)this.m[fbo.b.c()];
+      this.n = this.l;
+      MemoryUtil.memPutFloat($$3, $$0);
+      MemoryUtil.memPutFloat($$3 + 4L, $$1);
+      MemoryUtil.memPutFloat($$3 + 8L, $$2);
+      return this;
+   }
+
+   @Override
+   public fbm a(int $$0, int $$1, int $$2, int $$3) {
+      long $$4 = this.a(fbo.c);
+      if ($$4 != -1L) {
+         MemoryUtil.memPutByte($$4, (byte)$$0);
+         MemoryUtil.memPutByte($$4 + 1L, (byte)$$1);
+         MemoryUtil.memPutByte($$4 + 2L, (byte)$$2);
+         MemoryUtil.memPutByte($$4 + 3L, (byte)$$3);
       }
 
-      public ByteBuffer a() {
-         if (!fbd.this.d(this.d)) {
-            throw new IllegalStateException("Buffer is no longer valid");
+      return this;
+   }
+
+   @Override
+   public fbm a(int $$0) {
+      long $$1 = this.a(fbo.c);
+      if ($$1 != -1L) {
+         a($$1, $$0);
+      }
+
+      return this;
+   }
+
+   @Override
+   public fbm a(float $$0, float $$1) {
+      long $$2 = this.a(fbo.d);
+      if ($$2 != -1L) {
+         MemoryUtil.memPutFloat($$2, $$0);
+         MemoryUtil.memPutFloat($$2 + 4L, $$1);
+      }
+
+      return this;
+   }
+
+   @Override
+   public fbm a(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, fbo.f);
+   }
+
+   @Override
+   public fbm b(int $$0) {
+      long $$1 = this.a(fbo.f);
+      if ($$1 != -1L) {
+         b($$1, $$0);
+      }
+
+      return this;
+   }
+
+   @Override
+   public fbm b(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, fbo.g);
+   }
+
+   @Override
+   public fbm c(int $$0) {
+      long $$1 = this.a(fbo.g);
+      if ($$1 != -1L) {
+         b($$1, $$0);
+      }
+
+      return this;
+   }
+
+   private fbm a(short $$0, short $$1, fbo $$2) {
+      long $$3 = this.a($$2);
+      if ($$3 != -1L) {
+         MemoryUtil.memPutShort($$3, $$0);
+         MemoryUtil.memPutShort($$3 + 2L, $$1);
+      }
+
+      return this;
+   }
+
+   @Override
+   public fbm b(float $$0, float $$1, float $$2) {
+      long $$3 = this.a(fbo.h);
+      if ($$3 != -1L) {
+         MemoryUtil.memPutByte($$3, a($$0));
+         MemoryUtil.memPutByte($$3 + 1L, a($$1));
+         MemoryUtil.memPutByte($$3 + 2L, a($$2));
+      }
+
+      return this;
+   }
+
+   private static byte a(float $$0) {
+      return (byte)((int)(ayo.a($$0, -1.0F, 1.0F) * 127.0F) & 0xFF);
+   }
+
+   @Override
+   public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+      if (this.i) {
+         long $$11 = this.e();
+         MemoryUtil.memPutFloat($$11 + 0L, $$0);
+         MemoryUtil.memPutFloat($$11 + 4L, $$1);
+         MemoryUtil.memPutFloat($$11 + 8L, $$2);
+         a($$11 + 12L, $$3);
+         MemoryUtil.memPutFloat($$11 + 16L, $$4);
+         MemoryUtil.memPutFloat($$11 + 20L, $$5);
+         long $$12;
+         if (this.j) {
+            b($$11 + 24L, $$6);
+            $$12 = $$11 + 28L;
          } else {
-            return MemoryUtil.memByteBuffer(fbd.this.e + (long)this.b, this.c);
+            $$12 = $$11 + 24L;
          }
-      }
 
-      @Override
-      public void close() {
-         if (!this.e) {
-            this.e = true;
-            if (fbd.this.d(this.d)) {
-               fbd.this.d();
-            }
-         }
+         b($$12 + 0L, $$7);
+         MemoryUtil.memPutByte($$12 + 4L, a($$8));
+         MemoryUtil.memPutByte($$12 + 5L, a($$9));
+         MemoryUtil.memPutByte($$12 + 6L, a($$10));
+      } else {
+         fbm.super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
       }
    }
 }

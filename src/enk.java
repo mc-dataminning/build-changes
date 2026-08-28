@@ -1,36 +1,26 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class enk extends eno {
-   public static final MapCodec<enk> a = eng.b.listOf().fieldOf("rules").xmap(enk::new, $$0 -> $$0.b);
-   private final ImmutableList<eng> b;
+public class enk extends enn {
+   public static final MapCodec<enk> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(lt.e.r().fieldOf("block").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d)).apply($$0, enk::new)
+   );
+   private final dfy b;
+   private final float d;
 
-   public enk(List<? extends eng> $$0) {
-      this.b = ImmutableList.copyOf($$0);
-   }
-
-   @Nullable
-   @Override
-   public enr.c a(dcz $$0, jd $$1, jd $$2, enr.c $$3, enr.c $$4, enn $$5) {
-      ayw $$6 = ayw.a(ayo.a($$4.a()));
-      dtc $$7 = $$0.a_($$4.a());
-      UnmodifiableIterator var9 = this.b.iterator();
-
-      while (var9.hasNext()) {
-         eng $$8 = (eng)var9.next();
-         if ($$8.a($$4.b(), $$7, $$3.a(), $$4.a(), $$2, $$6)) {
-            return new enr.c($$4.a(), $$8.a(), $$8.a($$6, $$4.c()));
-         }
-      }
-
-      return $$4;
+   public enk(dfy $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
    }
 
    @Override
-   protected enq<?> a() {
-      return enq.i;
+   public boolean a(dtc $$0, ayw $$1) {
+      return $$0.a(this.b) && $$1.i() < this.d;
+   }
+
+   @Override
+   protected eno<?> a() {
+      return eno.e;
    }
 }

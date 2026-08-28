@@ -26,7 +26,7 @@ public class bzw extends cad {
       if (!super.b()) {
          return false;
       } else {
-         return !this.d.dP().ab().b(dcs.c) ? false : this.a(this.d.dP().al()) && !this.h();
+         return !this.d.dO().ab().b(dcs.c) ? false : this.a(this.d.dO().al()) && !this.h();
       }
    }
 
@@ -38,36 +38,36 @@ public class bzw extends cad {
 
    @Override
    public boolean c() {
-      return this.a <= this.f() && !this.h() && this.e.a(this.d.dn(), 2.0) && this.a(this.d.dP().al());
+      return this.a <= this.f() && !this.h() && this.e.a(this.d.dm(), 2.0) && this.a(this.d.dO().al());
    }
 
    @Override
    public void e() {
       super.e();
-      this.d.dP().a(this.d.an(), this.e, -1);
+      this.d.dO().a(this.d.an(), this.e, -1);
    }
 
    @Override
    public void a() {
       super.a();
-      if (this.d.dS().a(20) == 0) {
-         this.d.dP().c(1019, this.e, 0);
+      if (this.d.dR().a(20) == 0) {
+         this.d.dO().c(1019, this.e, 0);
          if (!this.d.aJ) {
-            this.d.a(this.d.ft());
+            this.d.a(this.d.fs());
          }
       }
 
       this.a++;
       int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
       if ($$0 != this.b) {
-         this.d.dP().a(this.d.an(), this.e, $$0);
+         this.d.dO().a(this.d.an(), this.e, $$0);
          this.b = $$0;
       }
 
-      if (this.a == this.f() && this.a(this.d.dP().al())) {
-         this.d.dP().a(this.e, false);
-         this.d.dP().c(1021, this.e, 0);
-         this.d.dP().c(2001, this.e, dfy.i(this.d.dP().a_(this.e)));
+      if (this.a == this.f() && this.a(this.d.dO().al())) {
+         this.d.dO().a(this.e, false);
+         this.d.dO().c(1021, this.e, 0);
+         this.d.dO().c(2001, this.e, dfy.i(this.d.dO().a_(this.e)));
       }
    }
 

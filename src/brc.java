@@ -55,6 +55,6 @@ public class brc {
    }
 
    public boolean a(bsr $$0) {
-      return !this.i() && !($$0 instanceof cmx) && $$0.cY() <= 0;
+      return !this.i() && !($$0 instanceof cmx) && $$0.cX() <= 0;
    }
 }

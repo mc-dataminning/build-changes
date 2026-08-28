@@ -1,16 +1,17 @@
-public class gtj extends gtl {
-   public gtj(cff $$0) {
-      super($$0, avp.bQ, avq.g);
-      this.j = 0;
+public abstract class gtj extends gti implements gub {
+   private boolean n;
+
+   protected gtj(avo $$0, avq $$1, ayw $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected gth o() {
-      return new gtk(this.n);
+   public boolean m() {
+      return this.n;
    }
 
-   @Override
-   protected boolean p() {
-      return !this.n.ad_();
+   protected final void n() {
+      this.n = true;
+      this.i = false;
    }
 }

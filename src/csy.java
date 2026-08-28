@@ -39,7 +39,7 @@ public class csy extends cul {
          $$2.a(null, $$1, avp.on, avq.h, 1.0F, 1.0F);
          cmx $$3 = $$0.o();
          cuq $$4 = $$0.n();
-         boolean $$5 = !$$3.fM() && $$4.H() == 1;
+         boolean $$5 = !$$3.fL() && $$4.H() == 1;
          cxq $$6 = new cxq(Optional.of(jl.a($$2.af(), $$1)), true);
          if ($$5) {
             $$4.b(kq.T, $$6);
@@ -47,7 +47,7 @@ public class csy extends cul {
             cuq $$7 = $$4.a(cut.qS, 1);
             $$4.a(1, $$3);
             $$7.b(kq.T, $$6);
-            if (!$$3.fZ().f($$7)) {
+            if (!$$3.fY().f($$7)) {
                $$3.a($$7, false);
             }
          }

@@ -22,9 +22,9 @@ public interface dat {
       return jz.a($$0, "summon_entity", dbg.a);
    }
 
-   void a(aqu var1, int var2, dab var3, bsr var4, exa var5, boolean var6);
+   void a(aqu var1, int var2, dab var3, bsr var4, exc var5, boolean var6);
 
-   default void a(dab $$0, bsr $$1, exa $$2, int $$3) {
+   default void a(dab $$0, bsr $$1, exc $$2, int $$3) {
    }
 
    MapCodec<? extends dat> a();

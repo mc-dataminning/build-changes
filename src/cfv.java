@@ -29,13 +29,13 @@ public class cfv extends cfe implements btj, bue {
 
    @Nullable
    @Override
-   public btn cR() {
-      return (btn)(this.i() && this.cU() instanceof cmx $$0 && $$0.b(cut.nR) ? $$0 : super.cR());
+   public btn cQ() {
+      return (btn)(this.i() && this.cT() instanceof cmx $$0 && $$0.b(cut.nR) ? $$0 : super.cQ());
    }
 
    @Override
    public void a(ajw<?> $$0) {
-      if (cb.equals($$0) && this.dP().B) {
+      if (cb.equals($$0) && this.dO().B) {
          this.cc.a();
       }
 
@@ -84,12 +84,12 @@ public class cfv extends cfe implements btj, bue {
    @Override
    public bqr b(cmx $$0, bqq $$1) {
       boolean $$2 = this.o($$0.b($$1));
-      if (!$$2 && this.i() && !this.bT() && !$$0.fO()) {
-         if (!this.dP().B) {
+      if (!$$2 && this.i() && !this.bT() && !$$0.fN()) {
+         if (!this.dO().B) {
             $$0.n(this);
          }
 
-         return bqr.a(this.dP().B);
+         return bqr.a(this.dO().B);
       } else {
          bqr $$3 = super.b($$0, $$1);
          if (!$$3.a()) {
@@ -107,8 +107,8 @@ public class cfv extends cfe implements btj, bue {
    }
 
    @Override
-   protected void eA() {
-      super.eA();
+   protected void ez() {
+      super.ez();
       if (this.i()) {
          this.a(cut.nL);
       }
@@ -123,31 +123,31 @@ public class cfv extends cfe implements btj, bue {
    public void a(cuq $$0, @Nullable avq $$1) {
       this.cc.a(true);
       if ($$1 != null) {
-         this.dP().a(null, this, avp.tD, $$1, 0.5F, 1.0F);
+         this.dO().a(null, this, avp.tD, $$1, 0.5F, 1.0F);
       }
    }
 
    @Override
-   public exa b(btn $$0) {
-      ji $$1 = this.cJ();
+   public exc b(btn $$0) {
+      ji $$1 = this.cI();
       if ($$1.o() == ji.a.b) {
          return super.b($$0);
       } else {
          int[][] $$2 = coy.a($$1);
-         jd $$3 = this.dp();
+         jd $$3 = this.do();
          jd.a $$4 = new jd.a();
-         UnmodifiableIterator var6 = $$0.fF().iterator();
+         UnmodifiableIterator var6 = $$0.fE().iterator();
 
          while (var6.hasNext()) {
             bua $$5 = (bua)var6.next();
-            ewv $$6 = $$0.f($$5);
+            ewx $$6 = $$0.f($$5);
 
             for (int[] $$7 : $$2) {
                $$4.d($$3.u() + $$7[0], $$3.v(), $$3.w() + $$7[1]);
-               double $$8 = this.dP().j($$4);
+               double $$8 = this.dO().j($$4);
                if (coy.a($$8)) {
-                  exa $$9 = exa.a($$4, $$8);
-                  if (coy.a(this.dP(), $$0, $$6.c($$9))) {
+                  exc $$9 = exc.a($$4, $$8);
+                  if (coy.a(this.dO(), $$0, $$6.c($$9))) {
                      $$0.b($$5);
                      return $$9;
                   }
@@ -165,15 +165,15 @@ public class cfv extends cfe implements btj, bue {
          cky $$2 = bsx.bx.a((dcw)$$0);
          if ($$2 != null) {
             $$2.a(bsy.a, new cuq(cut.oW));
-            $$2.b(this.du(), this.dw(), this.dA(), this.dF(), this.dH());
-            $$2.t(this.ga());
+            $$2.b(this.dt(), this.dv(), this.dz(), this.dE(), this.dG());
+            $$2.u(this.fZ());
             $$2.a(this.o_());
             if (this.ai()) {
                $$2.b(this.aj());
-               $$2.o(this.cF());
+               $$2.p(this.cE());
             }
 
-            $$2.fS();
+            $$2.fR();
             $$0.b($$2);
             this.aq();
          } else {
@@ -185,16 +185,16 @@ public class cfv extends cfe implements btj, bue {
    }
 
    @Override
-   protected void a(cmx $$0, exa $$1) {
+   protected void a(cmx $$0, exc $$1) {
       super.a($$0, $$1);
-      this.a($$0.dF(), $$0.dH() * 0.5F);
-      this.O = this.aY = this.ba = this.dF();
+      this.a($$0.dE(), $$0.dG() * 0.5F);
+      this.O = this.aY = this.ba = this.dE();
       this.cc.b();
    }
 
    @Override
-   protected exa b(cmx $$0, exa $$1) {
-      return new exa(0.0, 0.0, 1.0);
+   protected exc b(cmx $$0, exc $$1) {
+      return new exc(0.0, 0.0, 1.0);
    }
 
    @Override
@@ -204,7 +204,7 @@ public class cfv extends cfe implements btj, bue {
 
    @Override
    public boolean a() {
-      return this.cc.a(this.dS());
+      return this.cc.a(this.dR());
    }
 
    @Nullable
@@ -218,7 +218,7 @@ public class cfv extends cfe implements btj, bue {
    }
 
    @Override
-   public exa cN() {
-      return new exa(0.0, (double)(0.6F * this.cM()), (double)(this.dk() * 0.4F));
+   public exc cM() {
+      return new exc(0.0, (double)(0.6F * this.cL()), (double)(this.dj() * 0.4F));
    }
 }

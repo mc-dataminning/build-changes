@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface eif {
+public interface eif {
+   @Nullable
+   dtc a(dzc var1, int var2, int var3, int var4);
 }

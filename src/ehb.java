@@ -1,45 +1,23 @@
 import com.mojang.serialization.MapCodec;
 
-public class ehb extends egz {
-   public static final MapCodec<ehb> a = MapCodec.unit(() -> ehb.b);
-   public static final ehb b = new ehb();
+public class ehb<P extends eha> {
+   public static final ehb<ehc> a = a("trunk_vine", ehc.a);
+   public static final ehb<egz> b = a("leave_vine", egz.a);
+   public static final ehb<egy> c = a("cocoa", egy.a);
+   public static final ehb<egx> d = a("beehive", egx.a);
+   public static final ehb<egv> e = a("alter_ground", egv.a);
+   public static final ehb<egw> f = a("attached_to_leaves", egw.a);
+   private final MapCodec<P> g;
 
-   @Override
-   protected eha<?> a() {
-      return eha.a;
+   private static <P extends eha> ehb<P> a(String $$0, MapCodec<P> $$1) {
+      return jz.a(lt.X, $$0, new ehb<>($$1));
    }
 
-   @Override
-   public void a(egz.a $$0) {
-      ayw $$1 = $$0.b();
-      $$0.c().forEach($$2 -> {
-         if ($$1.a(3) > 0) {
-            jd $$3 = $$2.h();
-            if ($$0.a($$3)) {
-               $$0.a($$3, dov.d);
-            }
-         }
+   private ehb(MapCodec<P> $$0) {
+      this.g = $$0;
+   }
 
-         if ($$1.a(3) > 0) {
-            jd $$4 = $$2.i();
-            if ($$0.a($$4)) {
-               $$0.a($$4, dov.f);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            jd $$5 = $$2.f();
-            if ($$0.a($$5)) {
-               $$0.a($$5, dov.e);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            jd $$6 = $$2.g();
-            if ($$0.a($$6)) {
-               $$0.a($$6, dov.c);
-            }
-         }
-      });
+   public MapCodec<P> a() {
+      return this.g;
    }
 }

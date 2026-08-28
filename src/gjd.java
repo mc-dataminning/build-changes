@@ -1,16 +1,13 @@
-public class gjd extends gln<cgk, fue> {
-   private static final akr a = akr.b("textures/entity/allay/allay.png");
+public abstract class gjd<T extends chi, M extends fvv<T>> extends glp<T, M> {
+   private final float a;
 
-   public gjd(gkh.a $$0) {
-      super($$0, new fue($$0.a(fyh.a)), 0.4F);
-      this.a(new gom<>(this, $$0.d()));
+   public gjd(gkj.a $$0, M $$1, float $$2) {
+      super($$0, $$1, 0.75F);
+      this.a = $$2;
    }
 
-   public akr a(cgk $$0) {
-      return a;
-   }
-
-   protected int a(cgk $$0, jd $$1) {
-      return 15;
+   protected void a(T $$0, fbi $$1, float $$2) {
+      $$1.b(this.a, this.a, this.a);
+      super.a($$0, $$1, $$2);
    }
 }

@@ -1,6 +1,8 @@
-import java.io.IOException;
-import java.nio.file.Path;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface gpv {
-   void a(akr var1, Path var2) throws IOException;
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gpv {
 }

@@ -1,3 +1,6 @@
-public interface fmh {
-   void b(fmg var1);
+public enum fmh {
+   a,
+   b,
+   c,
+   d;
 }

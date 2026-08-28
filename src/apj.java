@@ -17,14 +17,14 @@ public class apj implements apg {
             return $$0.then(eu.a("storage").then($$1.apply(eu.a($$0, fu.a()).suggests(apj.b))));
          }
       };
-   private final equ c;
+   private final eqw c;
    private final akr d;
 
-   static equ a(CommandContext<et> $$0) {
+   static eqw a(CommandContext<et> $$0) {
       return ((et)$$0.getSource()).l().aL();
    }
 
-   apj(equ $$0, akr $$1) {
+   apj(eqw $$0, akr $$1) {
       this.c = $$0;
       this.d = $$1;
    }

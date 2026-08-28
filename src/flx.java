@@ -1,130 +1,111 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Consumer;
 
-public class flx implements fly {
-   public static final int a = 33;
-   private static final int b = 30;
-   private final flv c = new flv();
-   private final flv d = new flv();
-   private final flv e = new flv();
-   private final fob f;
-   private int g;
-   private int h;
+public class flx extends flu {
+   private final List<flx.a> c = new ArrayList<>();
+   private int d;
+   private int e;
+   private final fmc f = fmc.i().a(0.5F, 0.5F);
 
-   public flx(fob $$0) {
-      this($$0, 33);
+   public flx() {
+      this(0, 0, 0, 0);
    }
 
-   public flx(fob $$0, int $$1) {
-      this($$0, $$1, $$1);
+   public flx(int $$0, int $$1) {
+      this(0, 0, $$0, $$1);
    }
 
-   public flx(fob $$0, int $$1, int $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.c.c().a(0.5F, 0.5F);
-      this.d.c().a(0.5F, 0.5F);
+   public flx(int $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a($$2, $$3);
    }
 
-   @Override
-   public void m(int $$0) {
+   public flx a(int $$0, int $$1) {
+      return this.b($$0).a($$1);
    }
 
-   @Override
-   public void n(int $$0) {
+   public flx a(int $$0) {
+      this.e = $$0;
+      return this;
    }
 
-   @Override
-   public int D() {
-      return 0;
+   public flx b(int $$0) {
+      this.d = $$0;
+      return this;
    }
 
-   @Override
-   public int E() {
-      return 0;
+   public fmc b() {
+      return this.f.g();
    }
 
-   @Override
-   public int y() {
-      return this.f.m;
-   }
-
-   @Override
-   public int w() {
-      return this.f.n;
-   }
-
-   public int b() {
-      return this.h;
-   }
-
-   public void a(int $$0) {
-      this.h = $$0;
-   }
-
-   public void b(int $$0) {
-      this.g = $$0;
-   }
-
-   public int c() {
-      return this.g;
-   }
-
-   public int d() {
-      return this.f.n - this.c() - this.b();
-   }
-
-   @Override
-   public void b(Consumer<flz> $$0) {
-      this.c.b($$0);
-      this.e.b($$0);
-      this.d.b($$0);
+   public fmc c() {
+      return this.f;
    }
 
    @Override
    public void a() {
-      int $$0 = this.c();
-      int $$1 = this.b();
-      this.c.b(this.f.m);
-      this.c.a($$0);
-      this.c.c(0, 0);
-      this.c.a();
-      this.d.b(this.f.m);
-      this.d.a($$1);
-      this.d.a();
-      this.d.n(this.f.n - $$1);
-      this.e.b(this.f.m);
-      this.e.a();
-      int $$2 = $$0 + 30;
-      int $$3 = this.f.n - $$1 - this.e.w();
-      this.e.c(0, Math.min($$2, $$3));
+      super.a();
+      int $$0 = this.d;
+      int $$1 = this.e;
+
+      for (flx.a $$2 : this.c) {
+         $$0 = Math.max($$0, $$2.b());
+         $$1 = Math.max($$1, $$2.a());
+      }
+
+      for (flx.a $$3 : this.c) {
+         $$3.a(this.D(), $$0);
+         $$3.b(this.E(), $$1);
+      }
+
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public <T extends flz> T a(T $$0) {
-      return this.c.a($$0);
+   public <T extends fmb> T a(T $$0) {
+      return this.a($$0, this.b());
    }
 
-   public <T extends flz> T a(T $$0, Consumer<fma> $$1) {
-      return this.c.a($$0, $$1);
+   public <T extends fmb> T a(T $$0, fmc $$1) {
+      this.c.add(new flx.a($$0, $$1));
+      return $$0;
    }
 
-   public void a(wz $$0, fhv $$1) {
-      this.c.a(new fjr($$0, $$1));
+   public <T extends fmb> T a(T $$0, Consumer<fmc> $$1) {
+      return this.a($$0, ad.a(this.b(), $$1));
    }
 
-   public <T extends flz> T b(T $$0) {
-      return this.d.a($$0);
+   @Override
+   public void b(Consumer<fmb> $$0) {
+      this.c.forEach($$1 -> $$0.accept($$1.a));
    }
 
-   public <T extends flz> T b(T $$0, Consumer<fma> $$1) {
-      return this.d.a($$0, $$1);
+   public static void a(fmb $$0, int $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1, $$2, $$3, $$4, 0.5F, 0.5F);
    }
 
-   public <T extends flz> T c(T $$0) {
-      return this.e.a($$0);
+   public static void a(fmb $$0, fms $$1) {
+      a($$0, $$1.f().a(), $$1.f().b(), $$1.g(), $$1.h());
    }
 
-   public <T extends flz> T c(T $$0, Consumer<fma> $$1) {
-      return this.e.a($$0, $$1);
+   public static void a(fmb $$0, fms $$1, float $$2, float $$3) {
+      a($$0, $$1.d(), $$1.b(), $$1.g(), $$1.h(), $$2, $$3);
+   }
+
+   public static void a(fmb $$0, int $$1, int $$2, int $$3, int $$4, float $$5, float $$6) {
+      a($$1, $$3, $$0.y(), $$0::m, $$5);
+      a($$2, $$4, $$0.w(), $$0::n, $$6);
+   }
+
+   public static void a(int $$0, int $$1, int $$2, Consumer<Integer> $$3, float $$4) {
+      int $$5 = (int)ayo.i($$4, 0.0F, (float)($$1 - $$2));
+      $$3.accept($$0 + $$5);
+   }
+
+   static class a extends flu.a {
+      protected a(fmb $$0, fmc $$1) {
+         super($$0, $$1);
+      }
    }
 }

@@ -51,12 +51,12 @@ public class dsn {
    }
 
    boolean a(cmx $$0) {
-      return this.e.contains($$0.cA());
+      return this.e.contains($$0.cz());
    }
 
    @VisibleForTesting
    public void b(cmx $$0) {
-      this.e.add($$0.cA());
+      this.e.add($$0.cz());
       if (this.e.size() > 128) {
          Iterator<UUID> $$1 = this.e.iterator();
          if ($$1.hasNext()) {

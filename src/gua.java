@@ -1,32 +1,47 @@
-public class gua implements gti {
-   public static final float a = 0.01F;
-   public static final float b = 0.001F;
-   public static final float c = 1.0E-4F;
-   private static final int d = 0;
-   private final gdz e;
-   private final gvd f;
-   private int g = 0;
+import javax.annotation.Nullable;
 
-   public gua(gdz $$0, gvd $$1) {
-      this.e = $$0;
-      this.f = $$1;
+public interface gua {
+   akr a();
+
+   @Nullable
+   gvg a(gvf var1);
+
+   gtx b();
+
+   avq c();
+
+   boolean d();
+
+   boolean l();
+
+   int e();
+
+   float f();
+
+   float g();
+
+   double h();
+
+   double i();
+
+   double j();
+
+   gua.a k();
+
+   default boolean r() {
+      return false;
    }
 
-   @Override
-   public void a() {
-      this.g--;
-      if (this.g <= 0 && this.e.bk()) {
-         float $$0 = this.e.dP().z.i();
-         if ($$0 < 1.0E-4F) {
-            this.g = 0;
-            this.f.a((gty)(new gub.a(this.e, avp.C)));
-         } else if ($$0 < 0.001F) {
-            this.g = 0;
-            this.f.a((gty)(new gub.a(this.e, avp.B)));
-         } else if ($$0 < 0.01F) {
-            this.g = 0;
-            this.f.a((gty)(new gub.a(this.e, avp.A)));
-         }
-      }
+   default boolean s() {
+      return true;
+   }
+
+   static ayw t() {
+      return ayw.a();
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

@@ -7,7 +7,7 @@ public class ays {
       }
    }
 
-   public static void a(dcw $$0, jd $$1, lk $$2, bpw $$3, ji $$4, Supplier<exa> $$5, double $$6) {
+   public static void a(dcw $$0, jd $$1, lk $$2, bpw $$3, ji $$4, Supplier<exc> $$5, double $$6) {
       int $$7 = $$3.a($$0.z);
 
       for (int $$8 = 0; $$8 < $$7; $$8++) {
@@ -15,12 +15,12 @@ public class ays {
       }
    }
 
-   private static exa a(ayw $$0) {
-      return new exa(ayo.a($$0, -0.5, 0.5), ayo.a($$0, -0.5, 0.5), ayo.a($$0, -0.5, 0.5));
+   private static exc a(ayw $$0) {
+      return new exc(ayo.a($$0, -0.5, 0.5), ayo.a($$0, -0.5, 0.5), ayo.a($$0, -0.5, 0.5));
    }
 
    public static void a(ji.a $$0, dcw $$1, jd $$2, double $$3, lk $$4, bqc $$5) {
-      exa $$6 = exa.b($$2);
+      exc $$6 = exc.b($$2);
       boolean $$7 = $$0 == ji.a.a;
       boolean $$8 = $$0 == ji.a.b;
       boolean $$9 = $$0 == ji.a.c;
@@ -37,8 +37,8 @@ public class ays {
       }
    }
 
-   public static void a(dcw $$0, jd $$1, ji $$2, lk $$3, exa $$4, double $$5) {
-      exa $$6 = exa.b($$1);
+   public static void a(dcw $$0, jd $$1, ji $$2, lk $$3, exc $$4, double $$5) {
+      exc $$6 = exc.b($$1);
       int $$7 = $$2.j();
       int $$8 = $$2.k();
       int $$9 = $$2.l();
@@ -83,7 +83,7 @@ public class ays {
    }
 
    public static void a(dcx $$0, jd $$1, int $$2) {
-      exa $$3 = $$1.b().b(0.0, 0.5, 0.0);
+      exc $$3 = $$1.b().b(0.0, 0.5, 0.0);
       le $$4 = new le(lm.bb, $$0.a_($$1));
 
       for (int $$5 = 0; (float)$$5 < (float)$$2 / 3.0F; $$5++) {

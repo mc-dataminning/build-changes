@@ -24,7 +24,7 @@ public class ckx extends ckw implements cmm {
 
    public ckx(bsx<? extends ckx> $$0, dcw $$1) {
       super($$0, $$1);
-      lt.x.a(this.ah).ifPresent($$0x -> this.a(this.gw().a((cmn)$$0x.a())));
+      lt.x.a(this.ah).ifPresent($$0x -> this.a(this.gv().a((cmn)$$0x.a())));
    }
 
    @Override
@@ -37,16 +37,16 @@ public class ckx extends ckw implements cmm {
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      cml.c.encodeStart(up.a, this.gw()).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("VillagerData", $$1));
+      cml.c.encodeStart(up.a, this.gv()).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("VillagerData", $$1));
       if (this.ck != null) {
-         $$0.a("Offers", (uy)dbv.a.encodeStart(this.dR().a(up.a), this.ck).getOrThrow());
+         $$0.a("Offers", (uy)dbv.a.encodeStart(this.dQ().a(up.a), this.ck).getOrThrow());
       }
 
       if (this.cj != null) {
          $$0.a("Gossips", this.cj);
       }
 
-      $$0.a("ConversionTime", this.gv() ? this.ch : -1);
+      $$0.a("ConversionTime", this.gu() ? this.ch : -1);
       if (this.ci != null) {
          $$0.a("ConversionPlayer", this.ci);
       }
@@ -63,7 +63,7 @@ public class ckx extends ckw implements cmm {
       }
 
       if ($$0.e("Offers")) {
-         dbv.a.parse(this.dR().a(up.a), $$0.c("Offers")).resultOrPartial(ad.a("Failed to load offers: ", b::warn)).ifPresent($$0x -> this.ck = $$0x);
+         dbv.a.parse(this.dQ().a(up.a), $$0.c("Offers")).resultOrPartial(ad.a("Failed to load offers: ", b::warn)).ifPresent($$0x -> this.ck = $$0x);
       }
 
       if ($$0.b("Gossips", 9)) {
@@ -81,11 +81,11 @@ public class ckx extends ckw implements cmm {
 
    @Override
    public void l() {
-      if (!this.dP().B && this.bE() && this.gv()) {
-         int $$0 = this.gy();
+      if (!this.dO().B && this.bE() && this.gu()) {
+         int $$0 = this.gx();
          this.ch -= $$0;
          if (this.ch <= 0) {
-            this.a((aqu)this.dP());
+            this.a((aqu)this.dO());
          }
       }
 
@@ -98,8 +98,8 @@ public class ckx extends ckw implements cmm {
       if ($$2.a(cut.qa)) {
          if (this.b(bsb.r)) {
             $$2.a(1, $$0);
-            if (!this.dP().B) {
-               this.a($$0.cA(), this.ah.a(2401) + 3600);
+            if (!this.dO().B) {
+               this.a($$0.cz(), this.ah.a(2401) + 3600);
             }
 
             return bqr.a;
@@ -112,16 +112,16 @@ public class ckx extends ckw implements cmm {
    }
 
    @Override
-   protected boolean gn() {
+   protected boolean gm() {
       return false;
    }
 
    @Override
    public boolean h(double $$0) {
-      return !this.gv() && this.cl == 0;
+      return !this.gu() && this.cl == 0;
    }
 
-   public boolean gv() {
+   public boolean gu() {
       return this.ar().a(c);
    }
 
@@ -130,15 +130,15 @@ public class ckx extends ckw implements cmm {
       this.ch = $$1;
       this.ar().a(c, true);
       this.e(bsb.r);
-      this.b(new brz(bsb.e, $$1, Math.min(this.dP().al().a() - 1, 0)));
-      this.dP().a(this, (byte)16);
+      this.b(new brz(bsb.e, $$1, Math.min(this.dO().al().a() - 1, 0)));
+      this.dO().a(this, (byte)16);
    }
 
    @Override
    public void b(byte $$0) {
       if ($$0 == 16) {
          if (!this.aX()) {
-            this.dP().a(this.du(), this.dy(), this.dA(), avp.DM, this.df(), 1.0F + this.ah.i(), this.ah.i() * 0.7F + 0.3F, false);
+            this.dO().a(this.dt(), this.dx(), this.dz(), avp.DM, this.de(), 1.0F + this.ah.i(), this.ah.i() * 0.7F + 0.3F, false);
          }
       } else {
          super.b($$0);
@@ -153,7 +153,7 @@ public class ckx extends ckw implements cmm {
             $$3.a(this.a($$2));
          }
 
-         $$1.a(this.gw());
+         $$1.a(this.gv());
          if (this.cj != null) {
             $$1.a(this.cj);
          }
@@ -163,7 +163,7 @@ public class ckx extends ckw implements cmm {
          }
 
          $$1.u(this.cl);
-         $$1.a($$0, $$0.d_($$1.dp()), btr.i, null);
+         $$1.a($$0, $$0.d_($$1.do()), btr.i, null);
          $$1.a($$0);
          if (this.ci != null) {
             cmx $$4 = $$0.b(this.ci);
@@ -175,21 +175,21 @@ public class ckx extends ckw implements cmm {
 
          $$1.b(new brz(bsb.i, 200, 0));
          if (!this.aX()) {
-            $$0.a(null, 1027, this.dp(), 0);
+            $$0.a(null, 1027, this.do(), 0);
          }
       }
    }
 
-   private int gy() {
+   private int gx() {
       int $$0 = 1;
       if (this.ah.i() < 0.01F) {
          int $$1 = 0;
          jd.a $$2 = new jd.a();
 
-         for (int $$3 = (int)this.du() - 4; $$3 < (int)this.du() + 4 && $$1 < 14; $$3++) {
-            for (int $$4 = (int)this.dw() - 4; $$4 < (int)this.dw() + 4 && $$1 < 14; $$4++) {
-               for (int $$5 = (int)this.dA() - 4; $$5 < (int)this.dA() + 4 && $$1 < 14; $$5++) {
-                  dtc $$6 = this.dP().a_($$2.d($$3, $$4, $$5));
+         for (int $$3 = (int)this.dt() - 4; $$3 < (int)this.dt() + 4 && $$1 < 14; $$3++) {
+            for (int $$4 = (int)this.dv() - 4; $$4 < (int)this.dv() + 4 && $$1 < 14; $$4++) {
+               for (int $$5 = (int)this.dz() - 4; $$5 < (int)this.dz() + 4 && $$1 < 14; $$5++) {
+                  dtc $$6 = this.dO().a_($$2.d($$3, $$4, $$5));
                   if ($$6.a(dga.eW) || $$6.b() instanceof dfr) {
                      if (this.ah.i() < 0.3F) {
                         $$0++;
@@ -206,7 +206,7 @@ public class ckx extends ckw implements cmm {
    }
 
    @Override
-   public float fc() {
+   public float fb() {
       return this.o_() ? (this.ah.i() - this.ah.i()) * 0.2F + 2.0F : (this.ah.i() - this.ah.i()) * 0.2F + 1.0F;
    }
 
@@ -226,12 +226,12 @@ public class ckx extends ckw implements cmm {
    }
 
    @Override
-   public avo gl() {
+   public avo gk() {
       return avp.DP;
    }
 
    @Override
-   protected cuq gm() {
+   protected cuq gl() {
       return cuq.l;
    }
 
@@ -246,13 +246,13 @@ public class ckx extends ckw implements cmm {
    @Nullable
    @Override
    public buh a(ddl $$0, bqp $$1, btr $$2, @Nullable buh $$3) {
-      this.a(this.gw().a(cmp.a($$0.t(this.dp()))));
+      this.a(this.gv().a(cmp.a($$0.t(this.do()))));
       return super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
    public void a(cml $$0) {
-      cml $$1 = this.gw();
+      cml $$1 = this.gv();
       if ($$1.b() != $$0.b()) {
          this.ck = null;
       }
@@ -261,11 +261,11 @@ public class ckx extends ckw implements cmm {
    }
 
    @Override
-   public cml gw() {
+   public cml gv() {
       return this.ao.a(d);
    }
 
-   public int gx() {
+   public int gw() {
       return this.cl;
    }
 

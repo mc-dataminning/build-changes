@@ -89,15 +89,15 @@ public class cov extends cpg implements btk, buo<cov.b> {
    }
 
    @Override
-   public exa a(ji.a $$0, l.a $$1) {
+   public exc a(ji.a $$0, l.a $$1) {
       return btn.k(super.a($$0, $$1));
    }
 
    @Override
-   protected exa a(bsr $$0, bsu $$1, float $$2) {
+   protected exc a(bsr $$0, bsu $$1, float $$2) {
       float $$3 = this.w();
-      if (this.cT().size() > 1) {
-         int $$4 = this.cT().indexOf($$0);
+      if (this.cS().size() > 1) {
+         int $$4 = this.cS().indexOf($$0);
          if ($$4 == 0) {
             $$3 = 0.2F;
          } else {
@@ -109,13 +109,13 @@ public class cov extends cpg implements btk, buo<cov.b> {
          }
       }
 
-      return new exa(0.0, this.x() == cov.b.i ? (double)($$1.b() * 0.8888889F) : (double)($$1.b() / 3.0F), (double)$$3)
-         .b(-this.dF() * (float) (Math.PI / 180.0));
+      return new exc(0.0, this.x() == cov.b.i ? (double)($$1.b() * 0.8888889F) : (double)($$1.b() / 3.0F), (double)$$3)
+         .b(-this.dE() * (float) (Math.PI / 180.0));
    }
 
    @Override
    public void l(boolean $$0) {
-      if (!this.dP().B) {
+      if (!this.dO().B) {
          this.aO = true;
          this.aP = $$0;
          if (this.K() == 0) {
@@ -123,20 +123,20 @@ public class cov extends cpg implements btk, buo<cov.b> {
          }
       }
 
-      this.dP().a(lm.am, this.du() + (double)this.ah.i(), this.dw() + 0.7, this.dA() + (double)this.ah.i(), 0.0, 0.0, 0.0);
+      this.dO().a(lm.am, this.dt() + (double)this.ah.i(), this.dv() + 0.7, this.dz() + (double)this.ah.i(), 0.0, 0.0, 0.0);
       if (this.ah.a(20) == 0) {
-         this.dP().a(this.du(), this.dw(), this.dA(), this.aR(), this.df(), 1.0F, 0.8F + 0.4F * this.ah.i(), false);
-         this.a(dxz.O, this.cR());
+         this.dO().a(this.dt(), this.dv(), this.dz(), this.aR(), this.de(), 1.0F, 0.8F + 0.4F * this.ah.i(), false);
+         this.a(dxz.O, this.cQ());
       }
    }
 
    @Override
    public void h(bsr $$0) {
       if ($$0 instanceof cov) {
-         if ($$0.cL().b < this.cL().e) {
+         if ($$0.cK().b < this.cK().e) {
             super.h($$0);
          }
-      } else if ($$0.cL().b <= this.cL().b) {
+      } else if ($$0.cK().b <= this.cK().b) {
          super.h($$0);
       }
    }
@@ -165,7 +165,7 @@ public class cov extends cpg implements btk, buo<cov.b> {
 
    @Override
    public boolean bA() {
-      return !this.dK();
+      return !this.dJ();
    }
 
    @Override
@@ -180,32 +180,32 @@ public class cov extends cpg implements btk, buo<cov.b> {
 
    @Override
    public double c_() {
-      return this.s > 0 ? this.t : this.du();
+      return this.s > 0 ? this.t : this.dt();
    }
 
    @Override
    public double d_() {
-      return this.s > 0 ? this.u : this.dw();
+      return this.s > 0 ? this.u : this.dv();
    }
 
    @Override
    public double P_() {
-      return this.s > 0 ? this.v : this.dA();
+      return this.s > 0 ? this.v : this.dz();
    }
 
    @Override
    public float Q_() {
-      return this.s > 0 ? (float)this.aE : this.dH();
+      return this.s > 0 ? (float)this.aE : this.dG();
    }
 
    @Override
    public float e_() {
-      return this.s > 0 ? (float)this.aD : this.dF();
+      return this.s > 0 ? (float)this.aD : this.dE();
    }
 
    @Override
-   public ji cJ() {
-      return this.cI().h();
+   public ji cI() {
+      return this.cH().h();
    }
 
    @Override
@@ -218,7 +218,7 @@ public class cov extends cpg implements btk, buo<cov.b> {
          this.q++;
       }
 
-      if (!this.dP().B && this.q >= 60.0F) {
+      if (!this.dO().B && this.q >= 60.0F) {
          this.bI();
       }
 
@@ -232,20 +232,20 @@ public class cov extends cpg implements btk, buo<cov.b> {
 
       super.l();
       this.C();
-      if (this.db()) {
-         if (!(this.cU() instanceof cmx)) {
+      if (this.da()) {
+         if (!(this.cT() instanceof cmx)) {
             this.b(false, false);
          }
 
          this.I();
-         if (this.dP().B) {
+         if (this.dO().B) {
             this.J();
-            this.dP().a(new ahi(this.c(0), this.c(1)));
+            this.dO().a(new ahi(this.c(0), this.c(1)));
          }
 
-         this.a(bts.a, this.ds());
+         this.a(bts.a, this.dr());
       } else {
-         this.i(exa.b);
+         this.i(exc.b);
       }
 
       this.B();
@@ -257,10 +257,10 @@ public class cov extends cpg implements btk, buo<cov.b> {
                && (double)((this.o[$$0] + (float) (Math.PI / 8)) % (float) (Math.PI * 2)) >= (float) (Math.PI / 4)) {
                avo $$1 = this.s();
                if ($$1 != null) {
-                  exa $$2 = this.g(1.0F);
+                  exc $$2 = this.g(1.0F);
                   double $$3 = $$0 == 1 ? -$$2.e : $$2.e;
                   double $$4 = $$0 == 1 ? $$2.c : -$$2.c;
-                  this.dP().a(null, this.du() + $$3, this.dw(), this.dA() + $$4, $$1, this.df(), 1.0F, 0.8F + 0.4F * this.ah.i());
+                  this.dO().a(null, this.dt() + $$3, this.dv(), this.dz() + $$4, $$1, this.de(), 1.0F, 0.8F + 0.4F * this.ah.i());
                }
             }
 
@@ -271,13 +271,13 @@ public class cov extends cpg implements btk, buo<cov.b> {
       }
 
       this.aT();
-      List<bsr> $$5 = this.dP().a(this, this.cL().c(0.2F, -0.01F, 0.2F), bsw.a(this));
+      List<bsr> $$5 = this.dO().a(this, this.cK().c(0.2F, -0.01F, 0.2F), bsw.a(this));
       if (!$$5.isEmpty()) {
-         boolean $$6 = !this.dP().B && !(this.cR() instanceof cmx);
+         boolean $$6 = !this.dO().B && !(this.cQ() instanceof cmx);
 
          for (bsr $$7 : $$5) {
             if (!$$7.x(this)) {
-               if ($$6 && this.cT().size() < this.F() && !$$7.bS() && this.c($$7) && $$7 instanceof btn && !($$7 instanceof cgg) && !($$7 instanceof cmx)) {
+               if ($$6 && this.cS().size() < this.F() && !$$7.bS() && this.c($$7) && $$7 instanceof btn && !($$7 instanceof cgg) && !($$7 instanceof cmx)) {
                   $$7.n(this);
                } else {
                   this.h($$7);
@@ -288,7 +288,7 @@ public class cov extends cpg implements btk, buo<cov.b> {
    }
 
    private void B() {
-      if (this.dP().B) {
+      if (this.dO().B) {
          int $$0 = this.K();
          if ($$0 > 0) {
             this.aQ += 0.05F;
@@ -298,7 +298,7 @@ public class cov extends cpg implements btk, buo<cov.b> {
 
          this.aQ = ayo.a(this.aQ, 0.0F, 1.0F);
          this.aS = this.aR;
-         this.aR = 10.0F * (float)Math.sin((double)(0.5F * (float)this.dP().Z())) * this.aQ;
+         this.aR = 10.0F * (float)Math.sin((double)(0.5F * (float)this.dO().Z())) * this.aQ;
       } else {
          if (!this.aO) {
             this.b(0);
@@ -310,7 +310,7 @@ public class cov extends cpg implements btk, buo<cov.b> {
             int $$2 = 60 - $$1 - 1;
             if ($$2 > 0 && $$1 == 0) {
                this.b(0);
-               exa $$3 = this.ds();
+               exc $$3 = this.dr();
                if (this.aP) {
                   this.i($$3.b(0.0, -0.7, 0.0));
                   this.bI();
@@ -340,9 +340,9 @@ public class cov extends cpg implements btk, buo<cov.b> {
    }
 
    private void C() {
-      if (this.db()) {
+      if (this.da()) {
          this.s = 0;
-         this.f(this.du(), this.dw(), this.dA());
+         this.f(this.dt(), this.dv(), this.dz());
       }
 
       if (this.s > 0) {
@@ -372,14 +372,14 @@ public class cov extends cpg implements btk, buo<cov.b> {
    }
 
    @Override
-   public exa cN() {
-      return new exa(0.0, (double)(0.88F * this.cM()), (double)(this.dk() * 0.64F));
+   public exc cM() {
+      return new exc(0.0, (double)(0.88F * this.cL()), (double)(this.dj() * 0.64F));
    }
 
    private cov.a D() {
       cov.a $$0 = this.H();
       if ($$0 != null) {
-         this.aJ = this.cL().e;
+         this.aJ = this.cK().e;
          return $$0;
       } else if (this.E()) {
          return cov.a.a;
@@ -395,7 +395,7 @@ public class cov extends cpg implements btk, buo<cov.b> {
    }
 
    public float t() {
-      ewv $$0 = this.cL();
+      ewx $$0 = this.cK();
       int $$1 = ayo.a($$0.a);
       int $$2 = ayo.c($$0.d);
       int $$3 = ayo.a($$0.e);
@@ -411,9 +411,9 @@ public class cov extends cpg implements btk, buo<cov.b> {
          for (int $$10 = $$1; $$10 < $$2; $$10++) {
             for (int $$11 = $$5; $$11 < $$6; $$11++) {
                $$7.d($$10, $$8, $$11);
-               epc $$12 = this.dP().b_($$7);
+               epe $$12 = this.dO().b_($$7);
                if ($$12.a(awk.a)) {
-                  $$9 = Math.max($$9, $$12.a((dcc)this.dP(), $$7));
+                  $$9 = Math.max($$9, $$12.a((dcc)this.dO(), $$7));
                }
 
                if ($$9 >= 1.0F) {
@@ -431,15 +431,15 @@ public class cov extends cpg implements btk, buo<cov.b> {
    }
 
    public float v() {
-      ewv $$0 = this.cL();
-      ewv $$1 = new ewv($$0.a, $$0.b - 0.001, $$0.c, $$0.d, $$0.b, $$0.f);
+      ewx $$0 = this.cK();
+      ewx $$1 = new ewx($$0.a, $$0.b - 0.001, $$0.c, $$0.d, $$0.b, $$0.f);
       int $$2 = ayo.a($$1.a) - 1;
       int $$3 = ayo.c($$1.d) + 1;
       int $$4 = ayo.a($$1.b) - 1;
       int $$5 = ayo.c($$1.e) + 1;
       int $$6 = ayo.a($$1.c) - 1;
       int $$7 = ayo.c($$1.f) + 1;
-      ext $$8 = exq.a($$1);
+      exv $$8 = exs.a($$1);
       float $$9 = 0.0F;
       int $$10 = 0;
       jd.a $$11 = new jd.a();
@@ -451,8 +451,8 @@ public class cov extends cpg implements btk, buo<cov.b> {
                for (int $$15 = $$4; $$15 < $$5; $$15++) {
                   if ($$14 <= 0 || $$15 != $$4 && $$15 != $$5 - 1) {
                      $$11.d($$12, $$15, $$13);
-                     dtc $$16 = this.dP().a_($$11);
-                     if (!($$16.b() instanceof dpc) && exq.c($$16.k(this.dP(), $$11).a((double)$$12, (double)$$15, (double)$$13), $$8, exe.i)) {
+                     dtc $$16 = this.dO().a_($$11);
+                     if (!($$16.b() instanceof dpc) && exs.c($$16.k(this.dO(), $$11).a((double)$$12, (double)$$15, (double)$$13), $$8, exg.i)) {
                         $$9 += $$16.b().h();
                         $$10++;
                      }
@@ -466,7 +466,7 @@ public class cov extends cpg implements btk, buo<cov.b> {
    }
 
    private boolean E() {
-      ewv $$0 = this.cL();
+      ewx $$0 = this.cK();
       int $$1 = ayo.a($$0.a);
       int $$2 = ayo.c($$0.d);
       int $$3 = ayo.a($$0.b);
@@ -481,9 +481,9 @@ public class cov extends cpg implements btk, buo<cov.b> {
          for (int $$10 = $$3; $$10 < $$4; $$10++) {
             for (int $$11 = $$5; $$11 < $$6; $$11++) {
                $$8.d($$9, $$10, $$11);
-               epc $$12 = this.dP().b_($$8);
+               epe $$12 = this.dO().b_($$8);
                if ($$12.a(awk.a)) {
-                  float $$13 = (float)$$10 + $$12.a((dcc)this.dP(), $$8);
+                  float $$13 = (float)$$10 + $$12.a((dcc)this.dO(), $$8);
                   this.aJ = Math.max((double)$$13, this.aJ);
                   $$7 |= $$0.b < (double)$$13;
                }
@@ -496,7 +496,7 @@ public class cov extends cpg implements btk, buo<cov.b> {
 
    @Nullable
    private cov.a H() {
-      ewv $$0 = this.cL();
+      ewx $$0 = this.cK();
       double $$1 = $$0.e + 0.001;
       int $$2 = ayo.a($$0.a);
       int $$3 = ayo.c($$0.d);
@@ -511,8 +511,8 @@ public class cov extends cpg implements btk, buo<cov.b> {
          for (int $$11 = $$4; $$11 < $$5; $$11++) {
             for (int $$12 = $$6; $$12 < $$7; $$12++) {
                $$9.d($$10, $$11, $$12);
-               epc $$13 = this.dP().b_($$9);
-               if ($$13.a(awk.a) && $$1 < (double)((float)$$9.v() + $$13.a((dcc)this.dP(), $$9))) {
+               epe $$13 = this.dO().b_($$9);
+               if ($$13.a(awk.a) && $$1 < (double)((float)$$9.v() + $$13.a((dcc)this.dO(), $$9))) {
                   if (!$$13.b()) {
                      return cov.a.c;
                   }
@@ -537,17 +537,17 @@ public class cov extends cpg implements btk, buo<cov.b> {
       this.p = 0.05F;
       if (this.aM == cov.a.e && this.aL != cov.a.e && this.aL != cov.a.d) {
          this.aJ = this.e(1.0);
-         double $$2 = (double)(this.t() - this.dl()) + 0.101;
-         if (this.dP().a(this, this.cL().d(0.0, $$2 - this.dw(), 0.0))) {
-            this.a_(this.du(), $$2, this.dA());
-            this.i(this.ds().d(1.0, 0.0, 1.0));
+         double $$2 = (double)(this.t() - this.dk()) + 0.101;
+         if (this.dO().a(this, this.cK().d(0.0, $$2 - this.dv(), 0.0))) {
+            this.a_(this.dt(), $$2, this.dz());
+            this.i(this.dr().d(1.0, 0.0, 1.0));
             this.aN = 0.0;
          }
 
          this.aL = cov.a.a;
       } else {
          if (this.aL == cov.a.a) {
-            $$1 = (this.aJ - this.dw()) / (double)this.dl();
+            $$1 = (this.aJ - this.dv()) / (double)this.dk();
             this.p = 0.9F;
          } else if (this.aL == cov.a.c) {
             $$0 = -7.0E-4;
@@ -559,16 +559,16 @@ public class cov extends cpg implements btk, buo<cov.b> {
             this.p = 0.9F;
          } else if (this.aL == cov.a.d) {
             this.p = this.aK;
-            if (this.cR() instanceof cmx) {
+            if (this.cQ() instanceof cmx) {
                this.aK /= 2.0F;
             }
          }
 
-         exa $$3 = this.ds();
+         exc $$3 = this.dr();
          this.n($$3.c * (double)this.p, $$3.d + $$0, $$3.e * (double)this.p);
          this.r = this.r * this.p;
          if ($$1 > 0.0) {
-            exa $$4 = this.ds();
+            exc $$4 = this.dr();
             this.n($$4.c, ($$4.d + $$1 * (this.aZ() / 0.65)) * 0.75, $$4.e);
          }
       }
@@ -589,7 +589,7 @@ public class cov extends cpg implements btk, buo<cov.b> {
             $$0 += 0.005F;
          }
 
-         this.t(this.dF() + this.r);
+         this.t(this.dE() + this.r);
          if (this.aH) {
             $$0 += 0.04F;
          }
@@ -598,7 +598,7 @@ public class cov extends cpg implements btk, buo<cov.b> {
             $$0 -= 0.005F;
          }
 
-         this.i(this.ds().b((double)(ayo.a(-this.dF() * (float) (Math.PI / 180.0)) * $$0), 0.0, (double)(ayo.b(this.dF() * (float) (Math.PI / 180.0)) * $$0)));
+         this.i(this.dr().b((double)(ayo.a(-this.dE() * (float) (Math.PI / 180.0)) * $$0), 0.0, (double)(ayo.b(this.dE() * (float) (Math.PI / 180.0)) * $$0)));
          this.b(this.aG && !this.aF || this.aH, this.aF && !this.aG || this.aH);
       }
    }
@@ -608,17 +608,17 @@ public class cov extends cpg implements btk, buo<cov.b> {
    }
 
    public boolean c(bsr $$0) {
-      return $$0.dk() < this.dk();
+      return $$0.dj() < this.dj();
    }
 
    @Override
    protected void a(bsr $$0, bsr.a $$1) {
       super.a($$0, $$1);
       if (!$$0.am().a(awi.s)) {
-         $$0.t($$0.dF() + this.r);
+         $$0.t($$0.dE() + this.r);
          $$0.o($$0.ct() + this.r);
          this.d($$0);
-         if ($$0 instanceof cfe && this.cT().size() == this.F()) {
+         if ($$0 instanceof cfe && this.cS().size() == this.F()) {
             int $$2 = $$0.an() % 2 == 0 ? 90 : 270;
             $$0.p(((cfe)$$0).aY + (float)$$2);
             $$0.o($$0.ct() + (float)$$2);
@@ -627,31 +627,31 @@ public class cov extends cpg implements btk, buo<cov.b> {
    }
 
    @Override
-   public exa b(btn $$0) {
-      exa $$1 = a((double)(this.dk() * ayo.g), (double)$$0.dk(), $$0.dF());
-      double $$2 = this.du() + $$1.c;
-      double $$3 = this.dA() + $$1.e;
-      jd $$4 = jd.a($$2, this.cL().e, $$3);
+   public exc b(btn $$0) {
+      exc $$1 = a((double)(this.dj() * ayo.g), (double)$$0.dj(), $$0.dE());
+      double $$2 = this.dt() + $$1.c;
+      double $$3 = this.dz() + $$1.e;
+      jd $$4 = jd.a($$2, this.cK().e, $$3);
       jd $$5 = $$4.e();
-      if (!this.dP().z($$5)) {
-         List<exa> $$6 = Lists.newArrayList();
-         double $$7 = this.dP().j($$4);
+      if (!this.dO().z($$5)) {
+         List<exc> $$6 = Lists.newArrayList();
+         double $$7 = this.dO().j($$4);
          if (coy.a($$7)) {
-            $$6.add(new exa($$2, (double)$$4.v() + $$7, $$3));
+            $$6.add(new exc($$2, (double)$$4.v() + $$7, $$3));
          }
 
-         double $$8 = this.dP().j($$5);
+         double $$8 = this.dO().j($$5);
          if (coy.a($$8)) {
-            $$6.add(new exa($$2, (double)$$5.v() + $$8, $$3));
+            $$6.add(new exc($$2, (double)$$5.v() + $$8, $$3));
          }
 
-         UnmodifiableIterator var14 = $$0.fF().iterator();
+         UnmodifiableIterator var14 = $$0.fE().iterator();
 
          while (var14.hasNext()) {
             bua $$9 = (bua)var14.next();
 
-            for (exa $$10 : $$6) {
-               if (coy.a(this.dP(), $$10, $$0, $$9)) {
+            for (exc $$10 : $$6) {
+               if (coy.a(this.dO(), $$10, $$0, $$9)) {
                   $$0.b($$9);
                   return $$10;
                }
@@ -663,12 +663,12 @@ public class cov extends cpg implements btk, buo<cov.b> {
    }
 
    protected void d(bsr $$0) {
-      $$0.p(this.dF());
-      float $$1 = ayo.g($$0.dF() - this.dF());
+      $$0.p(this.dE());
+      float $$1 = ayo.g($$0.dE() - this.dE());
       float $$2 = ayo.a($$1, -105.0F, 105.0F);
       $$0.O += $$2 - $$1;
-      $$0.t($$0.dF() + $$2 - $$1);
-      $$0.o($$0.dF());
+      $$0.t($$0.dE() + $$2 - $$1);
+      $$0.o($$0.dE());
    }
 
    @Override
@@ -695,10 +695,10 @@ public class cov extends cpg implements btk, buo<cov.b> {
       bqr $$2 = super.a($$0, $$1);
       if ($$2 != bqr.e) {
          return $$2;
-      } else if ($$0.fO()) {
+      } else if ($$0.fN()) {
          return bqr.e;
       } else if (this.q < 60.0F) {
-         if (!this.dP().B) {
+         if (!this.dO().B) {
             return $$0.n(this) ? bqr.c : bqr.e;
          } else {
             return bqr.a;
@@ -709,8 +709,17 @@ public class cov extends cpg implements btk, buo<cov.b> {
    }
 
    @Override
+   public void a(bsr.c $$0) {
+      if (!this.dO().B && $$0.a() && this.N_()) {
+         this.a(true, true);
+      }
+
+      super.a($$0);
+   }
+
+   @Override
    protected void a(double $$0, boolean $$1, dtc $$2, jd $$3) {
-      this.aN = this.ds().d;
+      this.aN = this.dr().d;
       if (!this.bS()) {
          if ($$1) {
             if (this.ac > 3.0F) {
@@ -719,10 +728,10 @@ public class cov extends cpg implements btk, buo<cov.b> {
                   return;
                }
 
-               this.a(this.ac, 1.0F, this.dQ().l());
-               if (!this.dP().B && !this.dK()) {
+               this.a(this.ac, 1.0F, this.dP().l());
+               if (!this.dO().B && !this.dJ()) {
                   this.ap();
-                  if (this.dP().ab().b(dcs.i)) {
+                  if (this.dO().ab().b(dcs.i)) {
                      for (int $$4 = 0; $$4 < 3; $$4++) {
                         this.a(this.x().b());
                      }
@@ -735,14 +744,14 @@ public class cov extends cpg implements btk, buo<cov.b> {
             }
 
             this.n();
-         } else if (!this.dP().b_(this.dp().e()).a(awk.a) && $$0 < 0.0) {
+         } else if (!this.dO().b_(this.do().e()).a(awk.a) && $$0 < 0.0) {
             this.ac -= (float)$$0;
          }
       }
    }
 
    public boolean c(int $$0) {
-      return this.ao.a($$0 == 0 ? j : k) && this.cR() != null;
+      return this.ao.a($$0 == 0 ? j : k) && this.cQ() != null;
    }
 
    private void b(int $$0) {
@@ -767,7 +776,7 @@ public class cov extends cpg implements btk, buo<cov.b> {
 
    @Override
    protected boolean r(bsr $$0) {
-      return this.cT().size() < this.F() && !this.a(awk.a);
+      return this.cS().size() < this.F() && !this.a(awk.a);
    }
 
    protected int F() {
@@ -776,8 +785,8 @@ public class cov extends cpg implements btk, buo<cov.b> {
 
    @Nullable
    @Override
-   public btn cR() {
-      return this.cU() instanceof btn $$0 ? $$0 : super.cR();
+   public btn cQ() {
+      return this.cT() instanceof btn $$0 ? $$0 : super.cQ();
    }
 
    public void a(boolean $$0, boolean $$1, boolean $$2, boolean $$3) {
@@ -798,7 +807,7 @@ public class cov extends cpg implements btk, buo<cov.b> {
    }
 
    @Override
-   public cuq dC() {
+   public cuq dB() {
       return new cuq(this.ak_());
    }
 

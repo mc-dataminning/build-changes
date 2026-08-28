@@ -23,7 +23,7 @@ public class cft extends cfe {
    boolean cr;
    boolean cs;
    public int cb;
-   private exa ct;
+   private exc ct;
    private float cu;
    private float cv;
    private float cw;
@@ -66,27 +66,27 @@ public class cft extends cfe {
       return this.w(8);
    }
 
-   public void w(boolean $$0) {
+   public void x(boolean $$0) {
       this.d(8, $$0);
    }
 
-   public boolean gl() {
+   public boolean gk() {
       return this.w(16);
    }
 
-   public void x(boolean $$0) {
+   public void y(boolean $$0) {
       this.d(16, $$0);
    }
 
-   public boolean gm() {
+   public boolean gl() {
       return this.ao.a(cf) > 0;
    }
 
-   public void y(boolean $$0) {
+   public void z(boolean $$0) {
       this.ao.a(cf, $$0 ? 1 : 0);
    }
 
-   private int gG() {
+   private int gF() {
       return this.ao.a(cf);
    }
 
@@ -94,14 +94,14 @@ public class cft extends cfe {
       this.ao.a(cf, $$0);
    }
 
-   public void z(boolean $$0) {
+   public void A(boolean $$0) {
       this.d(2, $$0);
       if (!$$0) {
          this.u(0);
       }
    }
 
-   public int gn() {
+   public int gm() {
       return this.ao.a(ce);
    }
 
@@ -109,7 +109,7 @@ public class cft extends cfe {
       this.ao.a(ce, $$0);
    }
 
-   public cft.a go() {
+   public cft.a gn() {
       return cft.a.a(this.ao.a(cg));
    }
 
@@ -121,7 +121,7 @@ public class cft extends cfe {
       this.ao.a(cg, (byte)$$0.a());
    }
 
-   public cft.a gp() {
+   public cft.a go() {
       return cft.a.a(this.ao.a(ch));
    }
 
@@ -133,11 +133,11 @@ public class cft extends cfe {
       this.ao.a(ch, (byte)$$0.a());
    }
 
-   public boolean gv() {
+   public boolean gu() {
       return this.w(4);
    }
 
-   public void A(boolean $$0) {
+   public void B(boolean $$0) {
       this.d(4, $$0);
    }
 
@@ -168,8 +168,8 @@ public class cft extends cfe {
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      $$0.a("MainGene", this.go().c());
-      $$0.a("HiddenGene", this.gp().c());
+      $$0.a("MainGene", this.gn().c());
+      $$0.a("HiddenGene", this.go().c());
    }
 
    @Override
@@ -188,7 +188,7 @@ public class cft extends cfe {
             $$2.a(this, $$3);
          }
 
-         $$2.gE();
+         $$2.gD();
       }
 
       return $$2;
@@ -215,37 +215,37 @@ public class cft extends cfe {
       this.bV.a(1, new cft.e(this).a(new Class[0]));
    }
 
-   public static buv.a gw() {
+   public static buv.a gv() {
       return btp.C().a(buw.v, 0.15F).a(buw.c, 6.0);
    }
 
-   public cft.a gx() {
-      return cft.a.a(this.go(), this.gp());
+   public cft.a gw() {
+      return cft.a.a(this.gn(), this.go());
+   }
+
+   public boolean gx() {
+      return this.gw() == cft.a.b;
    }
 
    public boolean gy() {
-      return this.gx() == cft.a.b;
+      return this.gw() == cft.a.c;
    }
 
    public boolean gz() {
-      return this.gx() == cft.a.c;
+      return this.gw() == cft.a.d;
    }
 
    public boolean gA() {
-      return this.gx() == cft.a.d;
+      return this.gw() == cft.a.e;
    }
 
    public boolean gB() {
-      return this.gx() == cft.a.e;
-   }
-
-   public boolean gC() {
-      return this.gx() == cft.a.f;
+      return this.gw() == cft.a.f;
    }
 
    @Override
-   public boolean gc() {
-      return this.gx() == cft.a.g;
+   public boolean gb() {
+      return this.gw() == cft.a.g;
    }
 
    @Override
@@ -255,7 +255,7 @@ public class cft extends cfe {
 
    @Override
    public boolean D(bsr $$0) {
-      if (!this.gc()) {
+      if (!this.gb()) {
          this.cs = true;
       }
 
@@ -263,19 +263,19 @@ public class cft extends cfe {
    }
 
    @Override
-   public void ge() {
+   public void gd() {
       this.a(avp.sE, 1.0F, 1.0F);
    }
 
    @Override
    public void l() {
       super.l();
-      if (this.gz()) {
-         if (this.dP().ac() && !this.bf()) {
-            this.w(true);
-            this.y(false);
-         } else if (!this.gm()) {
-            this.w(false);
+      if (this.gy()) {
+         if (this.dO().ac() && !this.bf()) {
+            this.x(true);
+            this.z(false);
+         } else if (!this.gl()) {
+            this.x(false);
          }
       }
 
@@ -298,17 +298,17 @@ public class cft extends cfe {
       }
 
       if (this.t()) {
-         this.u(this.gn() + 1);
-         if (this.gn() > 20) {
-            this.z(false);
-            this.gN();
-         } else if (this.gn() == 1) {
+         this.u(this.gm() + 1);
+         if (this.gm() > 20) {
+            this.A(false);
+            this.gM();
+         } else if (this.gm() == 1) {
             this.a(avp.su, 1.0F, 1.0F);
          }
       }
 
-      if (this.gv()) {
-         this.gM();
+      if (this.gu()) {
+         this.gL();
       } else {
          this.cb = 0;
       }
@@ -317,61 +317,61 @@ public class cft extends cfe {
          this.u(0.0F);
       }
 
+      this.gI();
+      this.gG();
       this.gJ();
-      this.gH();
       this.gK();
-      this.gL();
    }
 
-   public boolean gD() {
-      return this.gz() && this.dP().ac();
+   public boolean gC() {
+      return this.gy() && this.dO().ac();
    }
 
-   private void gH() {
-      if (!this.gm() && this.x() && !this.gD() && !this.a(bsy.a).e() && this.ah.a(80) == 1) {
-         this.y(true);
+   private void gG() {
+      if (!this.gl() && this.x() && !this.gC() && !this.a(bsy.a).e() && this.ah.a(80) == 1) {
+         this.z(true);
       } else if (this.a(bsy.a).e() || !this.x()) {
-         this.y(false);
+         this.z(false);
       }
 
-      if (this.gm()) {
-         this.gI();
-         if (!this.dP().B && this.gG() > 80 && this.ah.a(20) == 1) {
-            if (this.gG() > 100 && this.n(this.a(bsy.a))) {
-               if (!this.dP().B) {
+      if (this.gl()) {
+         this.gH();
+         if (!this.dO().B && this.gF() > 80 && this.ah.a(20) == 1) {
+            if (this.gF() > 100 && this.n(this.a(bsy.a))) {
+               if (!this.dO().B) {
                   this.a(bsy.a, cuq.l);
                   this.a(dxz.m);
                }
 
-               this.w(false);
+               this.x(false);
             }
 
-            this.y(false);
+            this.z(false);
             return;
          }
 
-         this.v(this.gG() + 1);
+         this.v(this.gF() + 1);
+      }
+   }
+
+   private void gH() {
+      if (this.gF() % 5 == 0) {
+         this.a(avp.sy, 0.5F + 0.5F * (float)this.ah.a(2), (this.ah.i() - this.ah.i()) * 0.2F + 1.0F);
+
+         for (int $$0 = 0; $$0 < 6; $$0++) {
+            exc $$1 = new exc(((double)this.ah.i() - 0.5) * 0.1, Math.random() * 0.1 + 0.1, ((double)this.ah.i() - 0.5) * 0.1);
+            $$1 = $$1.a(-this.dG() * (float) (Math.PI / 180.0));
+            $$1 = $$1.b(-this.dE() * (float) (Math.PI / 180.0));
+            double $$2 = (double)(-this.ah.i()) * 0.6 - 0.3;
+            exc $$3 = new exc(((double)this.ah.i() - 0.5) * 0.8, $$2, 1.0 + ((double)this.ah.i() - 0.5) * 0.4);
+            $$3 = $$3.b(-this.aY * (float) (Math.PI / 180.0));
+            $$3 = $$3.b(this.dt(), this.dx() + 1.0, this.dz());
+            this.dO().a(new li(lm.S, this.a(bsy.a)), $$3.c, $$3.d, $$3.e, $$1.c, $$1.d + 0.05, $$1.e);
+         }
       }
    }
 
    private void gI() {
-      if (this.gG() % 5 == 0) {
-         this.a(avp.sy, 0.5F + 0.5F * (float)this.ah.a(2), (this.ah.i() - this.ah.i()) * 0.2F + 1.0F);
-
-         for (int $$0 = 0; $$0 < 6; $$0++) {
-            exa $$1 = new exa(((double)this.ah.i() - 0.5) * 0.1, Math.random() * 0.1 + 0.1, ((double)this.ah.i() - 0.5) * 0.1);
-            $$1 = $$1.a(-this.dH() * (float) (Math.PI / 180.0));
-            $$1 = $$1.b(-this.dF() * (float) (Math.PI / 180.0));
-            double $$2 = (double)(-this.ah.i()) * 0.6 - 0.3;
-            exa $$3 = new exa(((double)this.ah.i() - 0.5) * 0.8, $$2, 1.0 + ((double)this.ah.i() - 0.5) * 0.4);
-            $$3 = $$3.b(-this.aY * (float) (Math.PI / 180.0));
-            $$3 = $$3.b(this.du(), this.dy() + 1.0, this.dA());
-            this.dP().a(new li(lm.S, this.a(bsy.a)), $$3.c, $$3.d, $$3.e, $$1.c, $$1.d + 0.05, $$1.e);
-         }
-      }
-   }
-
-   private void gJ() {
       this.cv = this.cu;
       if (this.x()) {
          this.cu = Math.min(1.0F, this.cu + 0.15F);
@@ -380,18 +380,18 @@ public class cft extends cfe {
       }
    }
 
-   private void gK() {
+   private void gJ() {
       this.cx = this.cw;
-      if (this.gl()) {
+      if (this.gk()) {
          this.cw = Math.min(1.0F, this.cw + 0.15F);
       } else {
          this.cw = Math.max(0.0F, this.cw - 0.19F);
       }
    }
 
-   private void gL() {
+   private void gK() {
       this.cz = this.cy;
-      if (this.gv()) {
+      if (this.gu()) {
          this.cy = Math.min(1.0F, this.cy + 0.15F);
       } else {
          this.cy = Math.max(0.0F, this.cy - 0.19F);
@@ -410,17 +410,17 @@ public class cft extends cfe {
       return ayo.i($$0, this.cz, this.cy);
    }
 
-   private void gM() {
+   private void gL() {
       this.cb++;
       if (this.cb > 32) {
-         this.A(false);
+         this.B(false);
       } else {
-         if (!this.dP().B) {
-            exa $$0 = this.ds();
+         if (!this.dO().B) {
+            exc $$0 = this.dr();
             if (this.cb == 1) {
-               float $$1 = this.dF() * (float) (Math.PI / 180.0);
+               float $$1 = this.dE() * (float) (Math.PI / 180.0);
                float $$2 = this.o_() ? 0.1F : 0.2F;
-               this.ct = new exa($$0.c + (double)(-ayo.a($$1) * $$2), 0.0, $$0.e + (double)(ayo.b($$1) * $$2));
+               this.ct = new exc($$0.c + (double)(-ayo.a($$1) * $$2), 0.0, $$0.e + (double)(ayo.b($$1) * $$2));
                this.i(this.ct.b(0.0, 0.27, 0.0));
             } else if ((float)this.cb != 7.0F && (float)this.cb != 15.0F && (float)this.cb != 23.0F) {
                this.n(this.ct.c, $$0.d, this.ct.e);
@@ -431,30 +431,30 @@ public class cft extends cfe {
       }
    }
 
-   private void gN() {
-      exa $$0 = this.ds();
-      dcw $$1 = this.dP();
+   private void gM() {
+      exc $$0 = this.dr();
+      dcw $$1 = this.dO();
       $$1.a(
          lm.ag,
-         this.du() - (double)(this.dk() + 1.0F) * 0.5 * (double)ayo.a(this.aY * (float) (Math.PI / 180.0)),
-         this.dy() - 0.1F,
-         this.dA() + (double)(this.dk() + 1.0F) * 0.5 * (double)ayo.b(this.aY * (float) (Math.PI / 180.0)),
+         this.dt() - (double)(this.dj() + 1.0F) * 0.5 * (double)ayo.a(this.aY * (float) (Math.PI / 180.0)),
+         this.dx() - 0.1F,
+         this.dz() + (double)(this.dj() + 1.0F) * 0.5 * (double)ayo.b(this.aY * (float) (Math.PI / 180.0)),
          $$0.c,
          0.0,
          $$0.e
       );
       this.a(avp.sv, 1.0F, 1.0F);
 
-      for (cft $$3 : $$1.a(cft.class, this.cL().g(10.0))) {
-         if (!$$3.o_() && $$3.aF() && !$$3.bf() && $$3.gF()) {
-            $$3.fg();
+      for (cft $$3 : $$1.a(cft.class, this.cK().g(10.0))) {
+         if (!$$3.o_() && $$3.aF() && !$$3.bf() && $$3.gE()) {
+            $$3.ff();
          }
       }
 
       if (!$$1.x_() && $$1.ab().b(dcs.f)) {
          aqu $$4 = (aqu)$$1;
-         eru $$5 = $$4.o().be().b(erl.aV);
-         ers $$6 = new ers.a($$4).a(eul.f, this.dn()).a(eul.a, this).a(euk.j);
+         erw $$5 = $$4.o().be().b(ern.aV);
+         eru $$6 = new eru.a($$4).a(eun.f, this.dm()).a(eun.a, this).a(eum.j);
 
          for (cuq $$8 : $$5.a($$6)) {
             this.b($$8);
@@ -476,8 +476,8 @@ public class cft extends cfe {
 
    @Override
    public boolean a(brk $$0, float $$1) {
-      if (!this.dP().B) {
-         this.w(false);
+      if (!this.dO().B) {
+         this.x(false);
       }
 
       return super.a($$0, $$1);
@@ -489,7 +489,7 @@ public class cft extends cfe {
       ayw $$4 = $$0.E_();
       this.a(cft.a.a($$4));
       this.b(cft.a.a($$4));
-      this.gE();
+      this.gD();
       if ($$3 == null) {
          $$3 = new bsl.a(0.2F);
       }
@@ -500,18 +500,18 @@ public class cft extends cfe {
    public void a(cft $$0, @Nullable cft $$1) {
       if ($$1 == null) {
          if (this.ah.h()) {
-            this.a($$0.gO());
+            this.a($$0.gN());
             this.b(cft.a.a(this.ah));
          } else {
             this.a(cft.a.a(this.ah));
-            this.b($$0.gO());
+            this.b($$0.gN());
          }
       } else if (this.ah.h()) {
-         this.a($$0.gO());
-         this.b($$1.gO());
+         this.a($$0.gN());
+         this.b($$1.gN());
       } else {
-         this.a($$1.gO());
-         this.b($$0.gO());
+         this.a($$1.gN());
+         this.b($$0.gN());
       }
 
       if (this.ah.a(32) == 0) {
@@ -523,36 +523,36 @@ public class cft extends cfe {
       }
    }
 
-   private cft.a gO() {
-      return this.ah.h() ? this.go() : this.gp();
+   private cft.a gN() {
+      return this.ah.h() ? this.gn() : this.go();
    }
 
-   public void gE() {
-      if (this.gC()) {
+   public void gD() {
+      if (this.gB()) {
          this.f(buw.s).a(10.0);
       }
 
-      if (this.gy()) {
+      if (this.gx()) {
          this.f(buw.v).a(0.07F);
       }
    }
 
-   void gP() {
+   void gO() {
       if (!this.bf()) {
          this.E(0.0F);
          this.N().n();
-         this.w(true);
+         this.x(true);
       }
    }
 
    @Override
    public bqr b(cmx $$0, bqq $$1) {
       cuq $$2 = $$0.b($$1);
-      if (this.gD()) {
+      if (this.gC()) {
          return bqr.e;
-      } else if (this.gl()) {
-         this.x(false);
-         return bqr.a(this.dP().B);
+      } else if (this.gk()) {
+         this.y(false);
+         return bqr.a(this.dO().B);
       } else if (this.o($$2)) {
          if (this.p() != null) {
             this.cr = true;
@@ -561,18 +561,18 @@ public class cft extends cfe {
          if (this.o_()) {
             this.a($$0, $$1, $$2);
             this.a((int)((float)(-this.g() / 20) * 0.1F), true);
-         } else if (!this.dP().B && this.g() == 0 && this.gq()) {
+         } else if (!this.dO().B && this.g() == 0 && this.gp()) {
             this.a($$0, $$1, $$2);
             this.f($$0);
          } else {
-            if (this.dP().B || this.x() || this.bf()) {
+            if (this.dO().B || this.x() || this.bf()) {
                return bqr.e;
             }
 
-            this.gP();
-            this.y(true);
+            this.gO();
+            this.z(true);
             cuq $$3 = this.a(bsy.a);
-            if (!$$3.e() && !$$0.fM()) {
+            if (!$$3.e() && !$$0.fL()) {
                this.b($$3);
             }
 
@@ -589,10 +589,10 @@ public class cft extends cfe {
    @Nullable
    @Override
    protected avo v() {
-      if (this.gc()) {
+      if (this.gb()) {
          return avp.sB;
       } else {
-         return this.gz() ? avp.sC : avp.sw;
+         return this.gy() ? avp.sC : avp.sw;
       }
    }
 
@@ -622,8 +622,8 @@ public class cft extends cfe {
       return avp.sD;
    }
 
-   public boolean gF() {
-      return !this.gl() && !this.gD() && !this.gm() && !this.gv() && !this.x();
+   public boolean gE() {
+      return !this.gk() && !this.gC() && !this.gl() && !this.gu() && !this.x();
    }
 
    @Override
@@ -710,7 +710,7 @@ public class cft extends cfe {
 
       @Override
       public boolean b() {
-         return this.b.gF() && super.b();
+         return this.b.gE() && super.b();
       }
    }
 
@@ -724,7 +724,7 @@ public class cft extends cfe {
 
       @Override
       public boolean b() {
-         return this.i.gz() && this.i.gF() && super.b();
+         return this.i.gy() && this.i.gE() && super.b();
       }
    }
 
@@ -745,7 +745,7 @@ public class cft extends cfe {
             if (this.e <= this.d.ai) {
                this.d.t(32);
                this.e = this.d.ai + 600;
-               if (this.d.dc()) {
+               if (this.d.db()) {
                   cmx $$0 = this.b.a(cft.cj, this.d);
                   this.d.cB.a($$0);
                }
@@ -758,7 +758,7 @@ public class cft extends cfe {
       }
 
       private boolean h() {
-         jd $$0 = this.d.dp();
+         jd $$0 = this.d.do();
          jd.a $$1 = new jd.a();
 
          for (int $$2 = 0; $$2 < 3; $$2++) {
@@ -798,7 +798,7 @@ public class cft extends cfe {
 
       @Override
       protected void a(btp $$0, btn $$1) {
-         if ($$0 instanceof cft && $$0.gc()) {
+         if ($$0 instanceof cft && $$0.gb()) {
             $$0.h($$1);
          }
       }
@@ -814,23 +814,23 @@ public class cft extends cfe {
 
       @Override
       public boolean b() {
-         return this.b < this.a.ai && this.a.gy() && this.a.gF() && this.a.ah.a(b(400)) == 1;
+         return this.b < this.a.ai && this.a.gx() && this.a.gE() && this.a.ah.a(b(400)) == 1;
       }
 
       @Override
       public boolean c() {
-         return !this.a.bf() && (this.a.gy() || this.a.ah.a(b(600)) != 1) ? this.a.ah.a(b(2000)) != 1 : false;
+         return !this.a.bf() && (this.a.gx() || this.a.ah.a(b(600)) != 1) ? this.a.ah.a(b(2000)) != 1 : false;
       }
 
       @Override
       public void d() {
-         this.a.x(true);
+         this.a.y(true);
          this.b = 0;
       }
 
       @Override
       public void e() {
-         this.a.x(false);
+         this.a.y(false);
          this.b = this.a.ai + 200;
       }
    }
@@ -854,27 +854,27 @@ public class cft extends cfe {
 
       @Override
       public boolean b() {
-         if (this.b.dS().i() >= this.e) {
+         if (this.b.dR().i() >= this.e) {
             return false;
          } else {
             if (this.c == null) {
                if (this.f == cmx.class) {
-                  this.c = this.b.dP().a(this.g, this.b, this.b.du(), this.b.dy(), this.b.dA());
+                  this.c = this.b.dO().a(this.g, this.b, this.b.dt(), this.b.dx(), this.b.dz());
                } else {
                   this.c = this.b
-                     .dP()
+                     .dO()
                      .a(
-                        this.b.dP().a(this.f, this.b.cL().c((double)this.d, 3.0, (double)this.d), $$0 -> true),
+                        this.b.dO().a(this.f, this.b.cK().c((double)this.d, 3.0, (double)this.d), $$0 -> true),
                         this.g,
                         this.b,
-                        this.b.du(),
-                        this.b.dy(),
-                        this.b.dA()
+                        this.b.dt(),
+                        this.b.dx(),
+                        this.b.dz()
                      );
                }
             }
 
-            return this.h.gF() && this.c != null;
+            return this.h.gE() && this.c != null;
          }
       }
 
@@ -896,7 +896,7 @@ public class cft extends cfe {
 
       @Override
       public void a() {
-         if (this.l.gF()) {
+         if (this.l.gE()) {
             super.a();
          }
       }
@@ -931,19 +931,19 @@ public class cft extends cfe {
 
       @Override
       public boolean b() {
-         if ((this.a.o_() || this.a.gA()) && this.a.aF()) {
-            if (!this.a.gF()) {
+         if ((this.a.o_() || this.a.gz()) && this.a.aF()) {
+            if (!this.a.gE()) {
                return false;
             } else {
-               float $$0 = this.a.dF() * (float) (Math.PI / 180.0);
+               float $$0 = this.a.dE() * (float) (Math.PI / 180.0);
                float $$1 = -ayo.a($$0);
                float $$2 = ayo.b($$0);
                int $$3 = (double)Math.abs($$1) > 0.5 ? ayo.j((double)$$1) : 0;
                int $$4 = (double)Math.abs($$2) > 0.5 ? ayo.j((double)$$2) : 0;
-               if (this.a.dP().a_(this.a.dp().b($$3, -1, $$4)).i()) {
+               if (this.a.dO().a_(this.a.do().b($$3, -1, $$4)).i()) {
                   return true;
                } else {
-                  return this.a.gA() && this.a.ah.a(b(60)) == 1 ? true : this.a.ah.a(b(500)) == 1;
+                  return this.a.gz() && this.a.ah.a(b(60)) == 1 ? true : this.a.ah.a(b(500)) == 1;
                }
             }
          } else {
@@ -958,7 +958,7 @@ public class cft extends cfe {
 
       @Override
       public void d() {
-         this.a.A(true);
+         this.a.B(true);
       }
 
       @Override
@@ -976,8 +976,8 @@ public class cft extends cfe {
 
       @Override
       public boolean b() {
-         if (this.b <= cft.this.ai && !cft.this.o_() && !cft.this.bf() && cft.this.gF() && cft.this.s() <= 0) {
-            List<cjh> $$0 = cft.this.dP().a(cjh.class, cft.this.cL().c(6.0, 6.0, 6.0), cft.cC);
+         if (this.b <= cft.this.ai && !cft.this.o_() && !cft.this.bf() && cft.this.gE() && cft.this.s() <= 0) {
+            List<cjh> $$0 = cft.this.dO().a(cjh.class, cft.this.cK().c(6.0, 6.0, 6.0), cft.cC);
             return !$$0.isEmpty() || !cft.this.a(bsy.a).e();
          } else {
             return false;
@@ -986,23 +986,23 @@ public class cft extends cfe {
 
       @Override
       public boolean c() {
-         return !cft.this.bf() && (cft.this.gy() || cft.this.ah.a(b(600)) != 1) ? cft.this.ah.a(b(2000)) != 1 : false;
+         return !cft.this.bf() && (cft.this.gx() || cft.this.ah.a(b(600)) != 1) ? cft.this.ah.a(b(2000)) != 1 : false;
       }
 
       @Override
       public void a() {
          if (!cft.this.x() && !cft.this.a(bsy.a).e()) {
-            cft.this.gP();
+            cft.this.gO();
          }
       }
 
       @Override
       public void d() {
-         List<cjh> $$0 = cft.this.dP().a(cjh.class, cft.this.cL().c(8.0, 8.0, 8.0), cft.cC);
+         List<cjh> $$0 = cft.this.dO().a(cjh.class, cft.this.cK().c(8.0, 8.0, 8.0), cft.cC);
          if (!$$0.isEmpty() && cft.this.a(bsy.a).e()) {
             cft.this.N().a($$0.get(0), 1.2F);
          } else if (!cft.this.a(bsy.a).e()) {
-            cft.this.gP();
+            cft.this.gO();
          }
 
          this.b = 0;
@@ -1014,11 +1014,11 @@ public class cft extends cfe {
          if (!$$0.e()) {
             cft.this.b($$0);
             cft.this.a(bsy.a, cuq.l);
-            int $$1 = cft.this.gy() ? cft.this.ah.a(50) + 10 : cft.this.ah.a(150) + 10;
+            int $$1 = cft.this.gx() ? cft.this.ah.a(50) + 10 : cft.this.ah.a(150) + 10;
             this.b = cft.this.ai + $$1 * 20;
          }
 
-         cft.this.w(false);
+         cft.this.x(false);
       }
    }
 
@@ -1031,8 +1031,8 @@ public class cft extends cfe {
 
       @Override
       public boolean b() {
-         if (this.a.o_() && this.a.gF()) {
-            return this.a.gC() && this.a.ah.a(b(500)) == 1 ? true : this.a.ah.a(b(6000)) == 1;
+         if (this.a.o_() && this.a.gE()) {
+            return this.a.gB() && this.a.ah.a(b(500)) == 1 ? true : this.a.ah.a(b(6000)) == 1;
          } else {
             return false;
          }
@@ -1045,7 +1045,7 @@ public class cft extends cfe {
 
       @Override
       public void d() {
-         this.a.z(true);
+         this.a.A(true);
       }
    }
 }

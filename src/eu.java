@@ -232,7 +232,7 @@ public class eu {
       Map<CommandNode<et>, CommandNode<ey>> $$1 = Maps.newHashMap();
       RootCommandNode<ey> $$2 = new RootCommandNode();
       $$1.put(this.h.getRoot(), $$2);
-      this.a(this.h.getRoot(), $$2, $$0.dh(), $$1);
+      this.a(this.h.getRoot(), $$2, $$0.dg(), $$1);
       $$0.c.b(new acn($$2));
    }
 

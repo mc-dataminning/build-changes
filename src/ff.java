@@ -47,7 +47,7 @@ public class ff implements ArgumentType<ff.a> {
 
    public static enum a {
       a("feet", ($$0, $$1) -> $$0),
-      b("eyes", ($$0, $$1) -> new exa($$0.c, $$0.d + (double)$$1.cM(), $$0.e));
+      b("eyes", ($$0, $$1) -> new exc($$0.c, $$0.d + (double)$$1.cL(), $$0.e));
 
       static final Map<String, ff.a> c = ad.a(Maps.newHashMap(), $$0 -> {
          for (ff.a $$1 : values()) {
@@ -55,9 +55,9 @@ public class ff implements ArgumentType<ff.a> {
          }
       });
       private final String d;
-      private final BiFunction<exa, bsr, exa> e;
+      private final BiFunction<exc, bsr, exc> e;
 
-      private a(final String $$0, final BiFunction<exa, bsr, exa> $$1) {
+      private a(final String $$0, final BiFunction<exc, bsr, exc> $$1) {
          this.d = $$0;
          this.e = $$1;
       }
@@ -67,11 +67,11 @@ public class ff implements ArgumentType<ff.a> {
          return c.get($$0);
       }
 
-      public exa a(bsr $$0) {
-         return this.e.apply($$0.dn(), $$0);
+      public exc a(bsr $$0) {
+         return this.e.apply($$0.dm(), $$0);
       }
 
-      public exa a(et $$0) {
+      public exc a(et $$0) {
          bsr $$1 = $$0.f();
          return $$1 == null ? $$0.d() : this.e.apply($$0.d(), $$1);
       }

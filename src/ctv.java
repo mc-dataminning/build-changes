@@ -13,7 +13,7 @@ public class ctv extends cul implements cvm {
       dcw $$1 = $$0.q();
       if (!$$1.B) {
          cuq $$2 = $$0.n();
-         exa $$3 = $$0.l();
+         exc $$3 = $$0.l();
          ji $$4 = $$0.k();
          cnk $$5 = new cnk($$1, $$0.o(), $$3.c + (double)$$4.j() * 0.15, $$3.d + (double)$$4.k() * 0.15, $$3.e + (double)$$4.l() * 0.15, $$2);
          $$1.b($$5);
@@ -25,7 +25,7 @@ public class ctv extends cul implements cvm {
 
    @Override
    public bqs<cuq> a(dcw $$0, cmx $$1, bqq $$2) {
-      if ($$1.fB()) {
+      if ($$1.fA()) {
          cuq $$3 = $$1.b($$2);
          if (!$$0.B) {
             cnk $$4 = new cnk($$0, $$3, $$1);
@@ -58,7 +58,7 @@ public class ctv extends cul implements cvm {
       return cvm.a.a().a(ctv::a).a(1.0F).b(0.5F).a(1004).a();
    }
 
-   private static exa a(ku $$0, ji $$1) {
+   private static exc a(ku $$0, ji $$1) {
       return $$0.a()
          .b(
             (double)$$1.j() * (0.5000099999997474 - (double)bsx.P.l() / 2.0),

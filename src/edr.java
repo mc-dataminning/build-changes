@@ -1,56 +1,79 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
 
-public class edr extends ecd<eff> {
+public class edr extends ece<eff> {
    public edr(Codec<eff> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecf<eff> $$0) {
+   public boolean a(ecg<eff> $$0) {
       dds $$1 = $$0.b();
       jd $$2 = $$0.e();
-      eff $$3 = $$0.f();
-      ayw $$4 = $$0.d();
-      OptionalInt $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
+      if (a($$1, $$2)) {
          return false;
       } else {
-         jd $$6 = $$2.h($$5.getAsInt());
-         kh $$7 = new kh($$3.c, $$3.c, $$3.c);
-         ejh $$8 = ejh.a($$6.b($$7), $$6.a($$7));
-         return jd.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
-            $$1.a($$1x, dga.kJ.o(), 2);
-            return 1;
-         }).sum() > 0;
-      }
-   }
+         ayw $$3 = $$0.d();
+         eff $$4 = $$0.f();
+         int $$5 = $$4.a();
+         int $$6 = $$4.b();
+         int $$7 = $$4.c();
+         jd.a $$8 = new jd.a();
 
-   private static OptionalInt a(dds $$0, jd $$1, eff $$2) {
-      Predicate<dtc> $$3 = $$0x -> $$0x.a(dga.G);
-      Predicate<dtc> $$4 = $$0x -> !$$0x.a(dga.G);
-      Optional<dyo> $$5 = dyo.a($$0, $$1, $$2.b, $$3, $$4);
-      return $$5.<OptionalInt>map(dyo::c).orElseGet(OptionalInt::empty);
-   }
+         for (int $$9 = 0; $$9 < $$5 * $$5; $$9++) {
+            $$8.g($$2).e(ayo.a($$3, -$$5, $$5), ayo.a($$3, -$$6, $$6), ayo.a($$3, -$$5, $$5));
+            if (a($$1, $$8) && !a($$1, (jd)$$8)) {
+               int $$10 = ayo.a($$3, 1, $$7);
+               if ($$3.a(6) == 0) {
+                  $$10 *= 2;
+               }
 
-   private boolean b(dds $$0, jd $$1) {
-      if (!this.a($$0, $$1) && !this.a($$0, $$1.e())) {
-         for (ji $$2 : ji.c.a) {
-            if (this.a($$0, $$1.a($$2))) {
-               return false;
+               if ($$3.a(5) == 0) {
+                  $$10 = 1;
+               }
+
+               int $$11 = 17;
+               int $$12 = 25;
+               a($$1, $$3, $$8, $$10, 17, 25);
             }
          }
 
          return true;
-      } else {
-         return false;
       }
    }
 
-   private boolean a(dcx $$0, jd $$1) {
-      dtc $$2 = $$0.a_($$1);
-      return $$2.a(dga.G) || $$2.i();
+   private static boolean a(dcx $$0, jd.a $$1) {
+      do {
+         $$1.e(0, -1, 0);
+         if ($$0.s($$1)) {
+            return false;
+         }
+      } while ($$0.a_($$1).i());
+
+      $$1.e(0, 1, 0);
+      return true;
+   }
+
+   public static void a(dcx $$0, ayw $$1, jd.a $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = 1; $$6 <= $$3; $$6++) {
+         if ($$0.u($$2)) {
+            if ($$6 == $$3 || !$$0.u($$2.d())) {
+               $$0.a($$2, dga.oB.o().a(djn.e, Integer.valueOf(ayo.a($$1, $$4, $$5))), 2);
+               break;
+            }
+
+            $$0.a($$2, dga.oC.o(), 2);
+         }
+
+         $$2.c(ji.b);
+      }
+   }
+
+   private static boolean a(dcx $$0, jd $$1) {
+      if (!$$0.u($$1)) {
+         return true;
+      } else {
+         dtc $$2 = $$0.a_($$1.e());
+         return !$$2.a(dga.dV) && !$$2.a(dga.on) && !$$2.a(dga.op);
+      }
    }
 }

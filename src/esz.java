@@ -1,22 +1,35 @@
-import java.util.Arrays;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public interface esz<T extends esz<T>> {
-   T b(etd.a var1);
+public class esz extends ete {
+   public static final MapCodec<esz> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and($$0.group(cs.a.fieldOf("item_filter").forGetter($$0x -> $$0x.b), eth.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
+            .apply($$0, esz::new)
+   );
+   private final cs b;
+   private final etf c;
 
-   default <E> T a(Iterable<E> $$0, Function<E, etd.a> $$1) {
-      T $$2 = this.c();
-
-      for (E $$3 : $$0) {
-         $$2 = $$2.b($$1.apply($$3));
-      }
-
-      return $$2;
+   private esz(List<evc> $$0, cs $$1, etf $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   default <E> T a(E[] $$0, Function<E, etd.a> $$1) {
-      return this.a(Arrays.asList($$0), $$1);
+   @Override
+   public etg<esz> b() {
+      return eth.v;
    }
 
-   T c();
+   @Override
+   public cuq a(cuq $$0, err $$1) {
+      return this.b.a($$0) ? this.c.apply($$0, $$1) : $$0;
+   }
+
+   @Override
+   public void a(erx $$0) {
+      super.a($$0);
+      this.c.a($$0.a(".modifier"));
+   }
 }

@@ -16,7 +16,7 @@ public class apu extends JList<String> {
          Vector<String> $$0 = new Vector<>();
 
          for (int $$1 = 0; $$1 < this.a.ah().t().size(); $$1++) {
-            $$0.add(this.a.ah().t().get($$1).fY().getName());
+            $$0.add(this.a.ah().t().get($$1).fX().getName());
          }
 
          this.setListData($$0);

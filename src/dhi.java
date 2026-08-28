@@ -82,15 +82,15 @@ public class dhi extends dia implements diq {
    private cja a(dcw $$0, ji $$1, jd $$2) {
       List<cja> $$3 = $$0.a(
          cja.class,
-         new ewv((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), (double)($$2.u() + 1), (double)($$2.v() + 1), (double)($$2.w() + 1)),
-         $$1x -> $$1x != null && $$1x.cI() == $$1
+         new ewx((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), (double)($$2.u() + 1), (double)($$2.v() + 1), (double)($$2.w() + 1)),
+         $$1x -> $$1x != null && $$1x.cH() == $$1
       );
       return $$3.size() == 1 ? $$3.get(0) : null;
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
-      if (!$$3.ga().e) {
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
+      if (!$$3.fZ().e) {
          return bqr.e;
       } else {
          $$0 = $$0.a(b);
@@ -109,7 +109,7 @@ public class dhi extends dia implements diq {
          dqh $$4 = $$0.c_($$1);
          int $$5 = $$4 instanceof dqs ? ((dqs)$$4).b() : 0;
          if ($$3 != $$5 || $$2.c(d) != this.a($$0, $$1, $$2)) {
-            eyv $$6 = this.b($$0, $$1, $$2) ? eyv.c : eyv.d;
+            eyx $$6 = this.b($$0, $$1, $$2) ? eyx.c : eyx.d;
             $$0.a($$1, this, 2, $$6);
          }
       }

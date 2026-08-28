@@ -9,11 +9,11 @@ public class coz extends cot {
 
    @Override
    public bqr a(cmx $$0, bqq $$1) {
-      if ($$0.fO()) {
+      if ($$0.fN()) {
          return bqr.e;
       } else if (this.bT()) {
          return bqr.e;
-      } else if (!this.dP().B) {
+      } else if (!this.dO().B) {
          return $$0.n(this) ? bqr.c : bqr.e;
       } else {
          return bqr.a;

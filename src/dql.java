@@ -20,7 +20,7 @@ public class dql extends dqh {
    @Nullable
    private ji m;
    @Nullable
-   private akq<eru> q;
+   private akq<erw> q;
    private long r;
 
    public dql(jd $$0, dtc $$1) {
@@ -59,12 +59,12 @@ public class dql extends dqh {
 
    public void a(cmx $$0) {
       if (this.q != null && this.n != null && !this.n.x_() && this.n.o() != null) {
-         eru $$1 = this.n.o().be().b(this.q);
+         erw $$1 = this.n.o().be().b(this.q);
          if ($$0 instanceof aqv $$2) {
             an.Q.a($$2, this.q);
          }
 
-         ers $$3 = new ers.a((aqu)this.n).a(eul.f, exa.b(this.o)).a($$0.gv()).a(eul.a, $$0).a(euk.c);
+         eru $$3 = new eru.a((aqu)this.n).a(eun.f, exc.b(this.o)).a($$0.gu()).a(eun.a, $$0).a(eum.c);
          ObjectArrayList<cuq> $$4 = $$1.a($$3, this.r);
 
          this.l = switch ($$4.size()) {
@@ -109,7 +109,7 @@ public class dql extends dqh {
             double $$7 = (double)$$5.v() + 0.5 + (double)(bsx.ag.m() / 2.0F);
             double $$8 = (double)$$5.w() + 0.5 * $$2 + $$3;
             cjh $$9 = new cjh(this.n, $$6, $$7, $$8, this.l.a(this.n.z.a(21) + 10));
-            $$9.i(exa.b);
+            $$9.i(exc.b);
             this.n.b($$9);
             this.l = cuq.l;
          }
@@ -203,7 +203,7 @@ public class dql extends dqh {
       }
    }
 
-   public void a(akq<eru> $$0, long $$1) {
+   public void a(akq<erw> $$0, long $$1) {
       this.q = $$0;
       this.r = $$1;
    }

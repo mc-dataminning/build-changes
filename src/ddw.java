@@ -22,12 +22,12 @@ public final class ddw {
    );
    public static final Codec<jm<ddw>> c = akn.a(lu.aF, a);
    public static final Codec<jq<ddw>> d = kb.a(lu.aF, a);
-   private static final eoh f = new eoh(new dzx(new dyz(1234L)), ImmutableList.of(0));
-   static final eoh g = new eoh(new dzx(new dyz(3456L)), ImmutableList.of(-2, -1, 0));
+   private static final eoj f = new eoj(new dzx(new dyz(1234L)), ImmutableList.of(0));
+   static final eoj g = new eoj(new dzx(new dyz(3456L)), ImmutableList.of(-2, -1, 0));
    @Deprecated(
       forRemoval = true
    )
-   public static final eoh e = new eoh(new dzx(new dyz(2345L)), ImmutableList.of(0));
+   public static final eoj e = new eoj(new dzx(new dyz(2345L)), ImmutableList.of(0));
    private static final int h = 1024;
    private final ddw.b i;
    private final ddx j;
@@ -107,8 +107,8 @@ public final class ddw {
       } else {
          if ($$1.v() >= $$0.I_() && $$1.v() < $$0.am() && $$0.a(ddf.b, $$1) < 10) {
             dtc $$3 = $$0.a_($$1);
-            epc $$4 = $$0.b_($$1);
-            if ($$4.a() == epd.c && $$3.b() instanceof dko) {
+            epe $$4 = $$0.b_($$1);
+            if ($$4.a() == epf.c && $$3.b() instanceof dko) {
                if (!$$2) {
                   return true;
                }

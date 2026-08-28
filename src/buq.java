@@ -378,7 +378,7 @@ public class buq<E extends btn> {
    }
 
    public void b(aqu $$0, E $$1) {
-      long $$2 = $$1.dP().Z();
+      long $$2 = $$1.dO().Z();
 
       for (bvi<? super E> $$3 : this.e()) {
          $$3.g($$0, $$1, $$2);

@@ -88,7 +88,7 @@ public class apo extends apr<apo> {
       this.aa = new dzw($$3, $$2, false);
       this.ag = new apo.a(
          this.a("generator-settings", $$0x -> aye.a(!$$0x.isEmpty() ? $$0x : "{}"), new JsonObject()),
-         this.a("level-type", $$0x -> $$0x.toLowerCase(Locale.ROOT), ejf.a.a().toString())
+         this.a("level-type", $$0x -> $$0x.toLowerCase(Locale.ROOT), ejh.a.a().toString())
       );
       this.U = a(
          this.a("resource-pack-id", ""),
@@ -174,14 +174,14 @@ public class apo extends apr<apo> {
    }
 
    static record a(JsonObject a, String b) {
-      private static final Map<String, akq<eje>> c = Map.of("default", ejf.a, "largebiomes", ejf.c);
+      private static final Map<String, akq<ejg>> c = Map.of("default", ejh.a, "largebiomes", ejh.c);
 
       public dzt a(ka $$0) {
-         jz<eje> $$1 = $$0.d(lu.aY);
-         jm.c<eje> $$2 = $$1.b(ejf.a)
+         jz<ejg> $$1 = $$0.d(lu.aY);
+         jm.c<ejg> $$2 = $$1.b(ejh.a)
             .or(() -> $$1.i().findAny())
             .orElseThrow(() -> new IllegalStateException("Invalid datapack contents: can't find default preset"));
-         jm<eje> $$3 = Optional.ofNullable(akr.c(this.b))
+         jm<ejg> $$3 = Optional.ofNullable(akr.c(this.b))
             .map($$0x -> akq.a(lu.aY, $$0x))
             .or(() -> Optional.ofNullable(c.get(this.b)))
             .flatMap($$1::b)
@@ -190,9 +190,9 @@ public class apo extends apr<apo> {
                return $$2;
             });
          dzt $$4 = $$3.a().a();
-         if ($$3.a(ejf.b)) {
+         if ($$3.a(ejh.b)) {
             akp<JsonElement> $$5 = $$0.a(JsonOps.INSTANCE);
-            Optional<ehs> $$6 = ehs.a.parse(new Dynamic($$5, this.a())).resultOrPartial(apo.ad::error);
+            Optional<eht> $$6 = eht.a.parse(new Dynamic($$5, this.a())).resultOrPartial(apo.ad::error);
             if ($$6.isPresent()) {
                return $$4.a($$0, new dyt($$6.get()));
             }

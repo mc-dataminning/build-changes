@@ -1,15 +1,15 @@
 import com.mojang.serialization.Codec;
 
-public class eca extends ecd<eeg> {
-   public eca(Codec<eeg> $$0) {
+public class eca extends ece<eeh> {
+   public eca(Codec<eeh> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecf<eeg> $$0) {
+   public boolean a(ecg<eeh> $$0) {
       jd $$1 = $$0.e();
       dds $$2 = $$0.b();
-      eeg $$3 = $$0.f();
+      eeh $$3 = $$0.f();
 
       for (jd $$4 : jd.c($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
          boolean $$5 = $$4.u() == $$1.u();
@@ -20,10 +20,8 @@ public class eca extends ecd<eeg> {
             jd $$9 = $$4.j();
             this.a($$2, $$9, dga.kF.o());
             $$3.b().ifPresent($$3x -> {
-               dqh $$4x = $$2.c_($$9);
-               if ($$4x instanceof dry $$5x) {
+               if ($$2.c_($$9) instanceof dry $$5x) {
                   $$5x.a($$3x, $$3.c());
-                  $$4x.e();
                }
             });
          } else if ($$6) {

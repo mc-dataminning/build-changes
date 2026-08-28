@@ -48,7 +48,7 @@ public class cfq extends cfc implements btt {
 
    @Override
    protected void E(bsr $$0) {
-      if ($$0 instanceof cjv && !($$0 instanceof cjp) && this.dS().a(20) == 0) {
+      if ($$0 instanceof cjv && !($$0 instanceof cjp) && this.dR().a(20) == 0) {
          this.h((btn)$$0);
       }
 
@@ -66,19 +66,19 @@ public class cfq extends cfc implements btt {
          this.ca--;
       }
 
-      if (!this.dP().B) {
-         this.a((aqu)this.dP(), true);
+      if (!this.dO().B) {
+         this.a((aqu)this.dO(), true);
       }
    }
 
    @Override
    public boolean br() {
-      return this.ds().i() > 2.5000003E-7F && this.ah.a(5) == 0;
+      return this.dr().i() > 2.5000003E-7F && this.ah.a(5) == 0;
    }
 
    @Override
    public boolean a(bsx<?> $$0) {
-      if (this.gm() && $$0 == bsx.by) {
+      if (this.gl() && $$0 == bsx.by) {
          return false;
       } else {
          return $$0 == bsx.x ? false : super.a($$0);
@@ -88,15 +88,15 @@ public class cfq extends cfc implements btt {
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      $$0.a("PlayerCreated", this.gm());
+      $$0.a("PlayerCreated", this.gl());
       this.a_($$0);
    }
 
    @Override
    public void a(ub $$0) {
       super.a($$0);
-      this.x($$0.q("PlayerCreated"));
-      this.a(this.dP(), $$0);
+      this.y($$0.q("PlayerCreated"));
+      this.a(this.dO(), $$0);
    }
 
    @Override
@@ -125,23 +125,23 @@ public class cfq extends cfc implements btt {
       return this.cd;
    }
 
-   private float gn() {
+   private float gm() {
       return (float)this.g(buw.c);
    }
 
    @Override
    public boolean D(bsr $$0) {
       this.e = 10;
-      this.dP().a(this, (byte)4);
-      float $$1 = this.gn();
+      this.dO().a(this, (byte)4);
+      float $$1 = this.gm();
       float $$2 = (int)$$1 > 0 ? $$1 / 2.0F + (float)this.ah.a((int)$$1) : $$1;
-      brk $$3 = this.dQ().b((btn)this);
+      brk $$3 = this.dP().b((btn)this);
       boolean $$4 = $$0.a($$3, $$2);
       if ($$4) {
          double $$6 = $$0 instanceof btn $$5 ? $$5.g(buw.p) : 0.0;
          double $$7 = Math.max(0.0, 1.0 - $$6);
-         $$0.i($$0.ds().b(0.0, 0.4F * $$7, 0.0));
-         if (this.dP() instanceof aqu $$8) {
+         $$0.i($$0.dr().b(0.0, 0.4F * $$7, 0.0));
+         if (this.dO() instanceof aqu $$8) {
             dae.a($$8, $$0, $$3);
          }
       }
@@ -162,7 +162,7 @@ public class cfq extends cfc implements btt {
    }
 
    public bsp.a t() {
-      return bsp.a.a(this.ex() / this.eO());
+      return bsp.a.a(this.ew() / this.eN());
    }
 
    @Override
@@ -183,13 +183,13 @@ public class cfq extends cfc implements btt {
       return this.e;
    }
 
-   public void w(boolean $$0) {
+   public void x(boolean $$0) {
       if ($$0) {
          this.ca = 400;
-         this.dP().a(this, (byte)11);
+         this.dO().a(this, (byte)11);
       } else {
          this.ca = 0;
-         this.dP().a(this, (byte)34);
+         this.dO().a(this, (byte)34);
       }
    }
 
@@ -209,15 +209,15 @@ public class cfq extends cfc implements btt {
       if (!$$2.a(cut.oF)) {
          return bqr.e;
       } else {
-         float $$3 = this.ex();
+         float $$3 = this.ew();
          this.c(25.0F);
-         if (this.ex() == $$3) {
+         if (this.ew() == $$3) {
             return bqr.e;
          } else {
             float $$4 = 1.0F + (this.ah.i() - this.ah.i()) * 0.2F;
             this.a(avp.ns, 1.0F, $$4);
             $$2.a(1, $$0);
-            return bqr.a(this.dP().B);
+            return bqr.a(this.dO().B);
          }
       }
    }
@@ -227,15 +227,15 @@ public class cfq extends cfc implements btt {
       this.a(avp.nt, 1.0F, 1.0F);
    }
 
-   public int gl() {
+   public int gk() {
       return this.ca;
    }
 
-   public boolean gm() {
+   public boolean gl() {
       return (this.ao.a(c) & 1) != 0;
    }
 
-   public void x(boolean $$0) {
+   public void y(boolean $$0) {
       byte $$1 = this.ao.a(c);
       if ($$0) {
          this.ao.a(c, (byte)($$1 | 1));
@@ -251,7 +251,7 @@ public class cfq extends cfc implements btt {
 
    @Override
    public boolean a(dcz $$0) {
-      jd $$1 = this.dp();
+      jd $$1 = this.do();
       jd $$2 = $$1.e();
       dtc $$3 = $$0.a_($$2);
       if (!$$3.a($$0, $$2, this)) {
@@ -265,12 +265,12 @@ public class cfq extends cfc implements btt {
             }
          }
 
-         return ddh.a($$0, $$1, $$0.a_($$1), epd.a.g(), bsx.af) && $$0.f(this);
+         return ddh.a($$0, $$1, $$0.a_($$1), epf.a.g(), bsx.af) && $$0.f(this);
       }
    }
 
    @Override
-   public exa cN() {
-      return new exa(0.0, (double)(0.875F * this.cM()), (double)(this.dk() * 0.4F));
+   public exc cM() {
+      return new exc(0.0, (double)(0.875F * this.cL()), (double)(this.dj() * 0.4F));
    }
 }

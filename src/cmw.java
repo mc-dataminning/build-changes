@@ -191,7 +191,7 @@ public class cmw implements bqk, bqw {
       for (jv<cuq> $$0 : this.n) {
          for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
             if (!$$0.get($$1).e()) {
-               $$0.get($$1).a(this.l.dP(), this.l, $$1, this.k == $$1);
+               $$0.get($$1).a(this.l.dO(), this.l, $$1, this.k == $$1);
             }
          }
       }
@@ -215,7 +215,7 @@ public class cmw implements bqk, bqw {
                   this.h.set($$0, $$1.f());
                   this.h.get($$0).d(5);
                   return true;
-               } else if (this.l.fM()) {
+               } else if (this.l.fL()) {
                   $$1.e(0);
                   return true;
                } else {
@@ -232,7 +232,7 @@ public class cmw implements bqk, bqw {
                   }
                } while (!$$1.e() && $$1.H() < $$2);
 
-               if ($$1.H() == $$2 && this.l.fM()) {
+               if ($$1.H() == $$2 && this.l.fL()) {
                   $$1.e(0);
                   return true;
                } else {
@@ -349,7 +349,7 @@ public class cmw implements bqk, bqw {
          if (!this.h.get($$1).e()) {
             ub $$2 = new ub();
             $$2.a("Slot", (byte)$$1);
-            $$0.add(this.h.get($$1).b(this.l.dR(), $$2));
+            $$0.add(this.h.get($$1).b(this.l.dQ(), $$2));
          }
       }
 
@@ -357,7 +357,7 @@ public class cmw implements bqk, bqw {
          if (!this.i.get($$3).e()) {
             ub $$4 = new ub();
             $$4.a("Slot", (byte)($$3 + 100));
-            $$0.add(this.i.get($$3).b(this.l.dR(), $$4));
+            $$0.add(this.i.get($$3).b(this.l.dQ(), $$4));
          }
       }
 
@@ -365,7 +365,7 @@ public class cmw implements bqk, bqw {
          if (!this.j.get($$5).e()) {
             ub $$6 = new ub();
             $$6.a("Slot", (byte)($$5 + 150));
-            $$0.add(this.j.get($$5).b(this.l.dR(), $$6));
+            $$0.add(this.j.get($$5).b(this.l.dQ(), $$6));
          }
       }
 
@@ -380,7 +380,7 @@ public class cmw implements bqk, bqw {
       for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
          ub $$2 = $$0.a($$1);
          int $$3 = $$2.f("Slot") & 255;
-         cuq $$4 = cuq.a(this.l.dR(), (uy)$$2).orElse(cuq.l);
+         cuq $$4 = cuq.a(this.l.dQ(), (uy)$$2).orElse(cuq.l);
          if ($$3 >= 0 && $$3 < this.h.size()) {
             this.h.set($$3, $$4);
          } else if ($$3 >= 100 && $$3 < this.i.size() + 100) {

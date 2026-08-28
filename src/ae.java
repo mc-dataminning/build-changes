@@ -1,7 +1,7 @@
 import java.util.Date;
 
 public interface ae {
-   eqv d();
+   eqx d();
 
    String b();
 

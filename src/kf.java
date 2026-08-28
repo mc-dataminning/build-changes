@@ -40,7 +40,7 @@ public class kf extends kh {
    }
 
    public static kf a(dxg $$0) {
-      return a($$0.dp());
+      return a($$0.do());
    }
 
    public static kf a(jw $$0) {

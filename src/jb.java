@@ -38,8 +38,8 @@ public record jb(jd b, jd c) implements Iterable<jd> {
       return $$0.u() >= this.b.u() && $$0.v() >= this.b.v() && $$0.w() >= this.b.w() && $$0.u() <= this.c.u() && $$0.v() <= this.c.v() && $$0.w() <= this.c.w();
    }
 
-   public ewv b() {
-      return ewv.a(this.b, this.c);
+   public ewx b() {
+      return ewx.a(this.b, this.c);
    }
 
    @Override

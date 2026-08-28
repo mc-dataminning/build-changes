@@ -21,10 +21,10 @@ public interface das extends dat {
       return jz.a($$0, "summon_entity", dbg.a);
    }
 
-   void a(aqu var1, int var2, dab var3, bsr var4, exa var5);
+   void a(aqu var1, int var2, dab var3, bsr var4, exc var5);
 
    @Override
-   default void a(aqu $$0, int $$1, dab $$2, bsr $$3, exa $$4, boolean $$5) {
+   default void a(aqu $$0, int $$1, dab $$2, bsr $$3, exc $$4, boolean $$5) {
       this.a($$0, $$1, $$2, $$3, $$4);
    }
 

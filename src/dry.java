@@ -106,18 +106,18 @@ public class dry extends drz {
    }
 
    @Nullable
-   public exa a(aqu $$0, jd $$1) {
+   public exc a(aqu $$0, jd $$1) {
       if (this.i == null && $$0.af() == dcw.j) {
          jd $$2 = b($$0, $$1);
          $$2 = $$2.b(10);
          a.debug("Creating portal at {}", $$2);
-         a($$0, $$2, eeg.a($$1, false));
-         this.i = $$2;
+         a($$0, $$2, eeh.a($$1, false));
+         this.a($$2, this.j);
       }
 
       if (this.i != null) {
          jd $$3 = this.j ? this.i : a((dcw)$$0, this.i);
-         return new exa((double)$$3.u() + 0.5, (double)$$3.v(), (double)$$3.w() + 0.5);
+         return $$3.c();
       } else {
          return null;
       }
@@ -130,13 +130,13 @@ public class dry extends drz {
    }
 
    private static jd b(aqu $$0, jd $$1) {
-      exa $$2 = c($$0, $$1);
+      exc $$2 = c($$0, $$1);
       dvi $$3 = a((dcw)$$0, $$2);
       jd $$4 = a($$3);
       if ($$4 == null) {
          jd $$5 = jd.a($$2.c + 0.5, 75.0, $$2.e + 0.5);
          a.debug("Failed to find a suitable block to teleport to, spawning an island on {}", $$5);
-         $$0.H_().c(lu.aI).flatMap($$0x -> $$0x.b(rq.e)).ifPresent($$2x -> ((ebq)$$2x.a()).a($$0, $$0.l().g(), ayw.a($$5.a()), $$5));
+         $$0.H_().c(lu.aI).flatMap($$0x -> $$0x.b(rq.f)).ifPresent($$2x -> ((ebq)$$2x.a()).a($$0, $$0.l().g(), ayw.a($$5.a()), $$5));
          $$4 = $$5;
       } else {
          a.debug("Found suitable block to teleport to: {}", $$4);
@@ -145,10 +145,10 @@ public class dry extends drz {
       return a($$0, $$4, 16, true);
    }
 
-   private static exa c(aqu $$0, jd $$1) {
-      exa $$2 = new exa((double)$$1.u(), 0.0, (double)$$1.w()).d();
+   private static exc c(aqu $$0, jd $$1) {
+      exc $$2 = new exc((double)$$1.u(), 0.0, (double)$$1.w()).d();
       int $$3 = 1024;
-      exa $$4 = $$2.a(1024.0);
+      exc $$4 = $$2.a(1024.0);
 
       for (int $$5 = 16; !a($$0, $$4) && $$5-- > 0; $$4 = $$4.e($$2.a(-16.0))) {
          a.debug("Skipping backwards past nonempty chunk at {}", $$4);
@@ -162,7 +162,7 @@ public class dry extends drz {
       return $$4;
    }
 
-   private static boolean a(aqu $$0, exa $$1) {
+   private static boolean a(aqu $$0, exc $$1) {
       return a((dcw)$$0, $$1).a() == -1;
    }
 
@@ -187,7 +187,7 @@ public class dry extends drz {
       return $$4 == null ? $$1 : $$4;
    }
 
-   private static dvi a(dcw $$0, exa $$1) {
+   private static dvi a(dcw $$0, exc $$1) {
       return $$0.d(ayo.a($$1.c / 16.0), ayo.a($$1.e / 16.0));
    }
 
@@ -216,8 +216,8 @@ public class dry extends drz {
       return $$5;
    }
 
-   private static void a(aqu $$0, jd $$1, eeg $$2) {
-      ecd.L.a($$2, $$0, $$0.l().g(), ayw.a(), $$1);
+   private static void a(aqu $$0, jd $$1, eeh $$2) {
+      ece.M.a($$2, $$0, $$0.l().g(), ayw.a(), $$1);
    }
 
    @Override
@@ -238,5 +238,6 @@ public class dry extends drz {
    public void a(jd $$0, boolean $$1) {
       this.j = $$1;
       this.i = $$0;
+      this.e();
    }
 }

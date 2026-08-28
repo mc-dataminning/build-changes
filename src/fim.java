@@ -1,135 +1,100 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class fim extends fib {
-   private static final akr a = akr.b("widget/checkbox_selected_highlighted");
-   private static final akr b = akr.b("widget/checkbox_selected");
-   private static final akr c = akr.b("widget/checkbox_highlighted");
-   private static final akr d = akr.b("widget/checkbox");
-   private static final int f = 14737632;
-   private static final int m = 4;
-   private static final int n = 8;
-   private boolean o;
-   private final fim.b p;
+public class fim extends fid {
+   public static final int f = 120;
+   public static final int m = 150;
+   public static final int n = 200;
+   public static final int o = 20;
+   public static final int p = 8;
+   protected static final fim.b q = $$0 -> $$0.get();
+   protected final fim.c r;
+   protected final fim.b s;
 
-   fim(int $$0, int $$1, wz $$2, fhv $$3, boolean $$4, fim.b $$5) {
-      super($$0, $$1, a($$3) + 4 + $$3.a($$2), a($$3), $$2);
-      this.o = $$4;
-      this.p = $$5;
-   }
-
-   public static fim.a a(wz $$0, fhv $$1) {
+   public static fim.a a(wz $$0, fim.c $$1) {
       return new fim.a($$0, $$1);
    }
 
-   public static int a(fhv $$0) {
-      return 9 + 8;
+   protected fim(int $$0, int $$1, int $$2, int $$3, wz $$4, fim.c $$5, fim.b $$6) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.r = $$5;
+      this.s = $$6;
    }
 
    @Override
    public void b() {
-      this.o = !this.o;
-      this.p.onValueChange(this, this.o);
-   }
-
-   public boolean a() {
-      return this.o;
+      this.r.onPress(this);
    }
 
    @Override
-   public void a(fmg $$0) {
-      $$0.a(fmf.a, this.aQ_());
-      if (this.j) {
-         if (this.aO_()) {
-            $$0.a(fmf.d, wz.c("narration.checkbox.usage.focused"));
-         } else {
-            $$0.a(fmf.d, wz.c("narration.checkbox.usage.hovered"));
-         }
-      }
+   protected xn aQ_() {
+      return this.s.createNarrationMessage(() -> super.aQ_());
    }
 
    @Override
-   public void b(fhx $$0, int $$1, int $$2, float $$3) {
-      fgm $$4 = fgm.Q();
-      RenderSystem.enableDepthTest();
-      fhv $$5 = $$4.h;
-      $$0.a(1.0F, 1.0F, 1.0F, this.l);
-      RenderSystem.enableBlend();
-      akr $$6;
-      if (this.o) {
-         $$6 = this.aO_() ? a : b;
-      } else {
-         $$6 = this.aO_() ? c : d;
-      }
-
-      int $$8 = a($$5);
-      int $$9 = this.D() + $$8 + 4;
-      int $$10 = this.E() + (this.h >> 1) - (9 >> 1);
-      $$0.a($$6, this.D(), this.E(), $$8, $$8);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      $$0.b($$5, this.z(), $$9, $$10, 14737632 | ayo.f(this.l * 255.0F) << 24);
+   public void a(fmi $$0) {
+      this.c($$0);
    }
 
    public static class a {
       private final wz a;
-      private final fhv b;
-      private int c = 0;
-      private int d = 0;
-      private fim.b e = fim.b.a;
-      private boolean f = false;
+      private final fim.c b;
       @Nullable
-      private fgp<Boolean> g = null;
-      @Nullable
-      private fjv h = null;
+      private fjx c;
+      private int d;
+      private int e;
+      private int f = 150;
+      private int g = 20;
+      private fim.b h = fim.q;
 
-      a(wz $$0, fhv $$1) {
+      public a(wz $$0, fim.c $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       public fim.a a(int $$0, int $$1) {
+         this.d = $$0;
+         this.e = $$1;
+         return this;
+      }
+
+      public fim.a a(int $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public fim.a b(int $$0, int $$1) {
+         this.f = $$0;
+         this.g = $$1;
+         return this;
+      }
+
+      public fim.a a(int $$0, int $$1, int $$2, int $$3) {
+         return this.a($$0, $$1).b($$2, $$3);
+      }
+
+      public fim.a a(@Nullable fjx $$0) {
          this.c = $$0;
-         this.d = $$1;
          return this;
       }
 
       public fim.a a(fim.b $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fim.a a(boolean $$0) {
-         this.f = $$0;
-         this.g = null;
-         return this;
-      }
-
-      public fim.a a(fgp<Boolean> $$0) {
-         this.g = $$0;
-         this.f = $$0.c();
-         return this;
-      }
-
-      public fim.a a(fjv $$0) {
          this.h = $$0;
          return this;
       }
 
       public fim a() {
-         fim.b $$0 = this.g == null ? this.e : ($$0x, $$1x) -> {
-            this.g.a($$1x);
-            this.e.onValueChange($$0x, $$1x);
-         };
-         fim $$1 = new fim(this.c, this.d, this.a, this.b, this.f, $$0);
-         $$1.a(this.h);
-         return $$1;
+         fim $$0 = new fim(this.d, this.e, this.f, this.g, this.a, this.b, this.h);
+         $$0.a(this.c);
+         return $$0;
       }
    }
 
    public interface b {
-      fim.b a = ($$0, $$1) -> {
-      };
+      xn createNarrationMessage(Supplier<xn> var1);
+   }
 
-      void onValueChange(fim var1, boolean var2);
+   public interface c {
+      void onPress(fim var1);
    }
 }

@@ -27,7 +27,7 @@ public class cpc extends cot {
    @Override
    public void l() {
       super.l();
-      if (!this.dP().x_()) {
+      if (!this.dO().x_()) {
          if (this.i > 0) {
             this.i--;
          }
@@ -41,7 +41,7 @@ public class cpc extends cot {
       }
 
       if (this.B() && this.ah.a(4) == 0) {
-         this.dP().a(lm.X, this.du(), this.dw() + 0.8, this.dA(), 0.0, 0.0, 0.0);
+         this.dO().a(lm.X, this.dt(), this.dv() + 0.8, this.dz(), 0.0, 0.0, 0.0);
       }
    }
 
@@ -60,7 +60,7 @@ public class cpc extends cot {
       double $$2 = 1.0E-4;
       double $$3 = 0.001;
       super.c($$0, $$1);
-      exa $$4 = this.ds();
+      exc $$4 = this.dr();
       double $$5 = $$4.i();
       double $$6 = this.c * this.c + this.d * this.d;
       if ($$6 > 1.0E-4 && $$5 > 0.001) {
@@ -78,14 +78,14 @@ public class cpc extends cot {
          $$0 = Math.sqrt($$0);
          this.c /= $$0;
          this.d /= $$0;
-         exa $$1 = this.ds().d(0.8, 0.0, 0.8).b(this.c, 0.0, this.d);
+         exc $$1 = this.dr().d(0.8, 0.0, 0.8).b(this.c, 0.0, this.d);
          if (this.bf()) {
             $$1 = $$1.a(0.1);
          }
 
          this.i($$1);
       } else {
-         this.i(this.ds().d(0.98, 0.0, 0.98));
+         this.i(this.dr().d(0.98, 0.0, 0.98));
       }
 
       super.t();
@@ -100,11 +100,11 @@ public class cpc extends cot {
       }
 
       if (this.i > 0) {
-         this.c = this.du() - $$0.du();
-         this.d = this.dA() - $$0.dA();
+         this.c = this.dt() - $$0.dt();
+         this.d = this.dz() - $$0.dz();
       }
 
-      return bqr.a(this.dP().B);
+      return bqr.a(this.dO().B);
    }
 
    @Override

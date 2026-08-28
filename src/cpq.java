@@ -23,7 +23,7 @@ public class cpq {
    }
 
    public void a(cmx $$0) {
-      bqo $$1 = $$0.dP().al();
+      bqo $$1 = $$0.dO().al();
       this.e = this.a;
       if (this.c > 4.0F) {
          this.c -= 4.0F;
@@ -34,8 +34,8 @@ public class cpq {
          }
       }
 
-      boolean $$2 = $$0.dP().ab().b(dcs.k);
-      if ($$2 && this.b > 0.0F && $$0.gk() && this.a >= 20) {
+      boolean $$2 = $$0.dO().ab().b(dcs.k);
+      if ($$2 && this.b > 0.0F && $$0.gj() && this.a >= 20) {
          this.d++;
          if (this.d >= 10) {
             float $$3 = Math.min(this.b, 6.0F);
@@ -43,7 +43,7 @@ public class cpq {
             this.a($$3);
             this.d = 0;
          }
-      } else if ($$2 && this.a >= 18 && $$0.gk()) {
+      } else if ($$2 && this.a >= 18 && $$0.gj()) {
          this.d++;
          if (this.d >= 80) {
             $$0.c(1.0F);
@@ -53,8 +53,8 @@ public class cpq {
       } else if (this.a <= 0) {
          this.d++;
          if (this.d >= 80) {
-            if ($$0.ex() > 10.0F || $$1 == bqo.d || $$0.ex() > 1.0F && $$1 == bqo.c) {
-               $$0.a($$0.dQ().j(), 1.0F);
+            if ($$0.ew() > 10.0F || $$1 == bqo.d || $$0.ew() > 1.0F && $$1 == bqo.c) {
+               $$0.a($$0.dP().j(), 1.0F);
             }
 
             this.d = 0;

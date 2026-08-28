@@ -5,8 +5,8 @@ public class dkf extends dfy implements dna {
    public static final MapCodec<dkf> a = b(dkf::new);
    public static final dtt b = dts.j;
    public static final dtt c = dts.C;
-   protected static final ext d = exq.a(dfy.a(5.0, 0.0, 5.0, 11.0, 7.0, 11.0), dfy.a(6.0, 7.0, 6.0, 10.0, 9.0, 10.0));
-   protected static final ext e = exq.a(dfy.a(5.0, 1.0, 5.0, 11.0, 8.0, 11.0), dfy.a(6.0, 8.0, 6.0, 10.0, 10.0, 10.0));
+   protected static final exv d = exs.a(dfy.a(5.0, 0.0, 5.0, 11.0, 7.0, 11.0), dfy.a(6.0, 7.0, 6.0, 10.0, 9.0, 10.0));
+   protected static final exv e = exs.a(dfy.a(5.0, 1.0, 5.0, 11.0, 8.0, 11.0), dfy.a(6.0, 8.0, 6.0, 10.0, 10.0, 10.0));
 
    @Override
    public MapCodec<dkf> a() {
@@ -21,13 +21,13 @@ public class dkf extends dfy implements dna {
    @Nullable
    @Override
    public dtc a(cyd $$0) {
-      epc $$1 = $$0.q().b_($$0.a());
+      epe $$1 = $$0.q().b_($$0.a());
 
       for (ji $$2 : $$0.f()) {
          if ($$2.o() == ji.a.b) {
             dtc $$3 = this.o().a(b, Boolean.valueOf($$2 == ji.b));
             if ($$3.a((dcz)$$0.q(), $$0.a())) {
-               return $$3.a(c, Boolean.valueOf($$1.a() == epd.c));
+               return $$3.a(c, Boolean.valueOf($$1.a() == epf.c));
             }
          }
       }
@@ -36,7 +36,7 @@ public class dkf extends dfy implements dna {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return $$0.c(b) ? e : d;
    }
 
@@ -58,19 +58,19 @@ public class dkf extends dfy implements dna {
    @Override
    protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
       if ($$0.c(c)) {
-         $$3.a($$4, epd.c, epd.c.a($$3));
+         $$3.a($$4, epf.c, epf.c.a($$3));
       }
 
       return m($$0).g() == $$1 && !$$0.a($$3, $$4) ? dga.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected epc b_(dtc $$0) {
-      return $$0.c(c) ? epd.c.a(false) : super.b_($$0);
+   protected epe b_(dtc $$0) {
+      return $$0.c(c) ? epf.c.a(false) : super.b_($$0);
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return false;
    }
 }

@@ -28,7 +28,7 @@ public class fv<T> implements ArgumentType<jm<T>> {
       return new fv.c($$0);
    }
 
-   public static jm<eru> a(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
+   public static jm<erw> a(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
       return d($$0, $$1);
    }
 
@@ -36,7 +36,7 @@ public class fv<T> implements ArgumentType<jm<T>> {
       return new fv.a($$0);
    }
 
-   public static jm<etd> b(CommandContext<et> $$0, String $$1) {
+   public static jm<etf> b(CommandContext<et> $$0, String $$1) {
       return d($$0, $$1);
    }
 
@@ -44,7 +44,7 @@ public class fv<T> implements ArgumentType<jm<T>> {
       return new fv.b($$0);
    }
 
-   public static jm<eva> c(CommandContext<et> $$0, String $$1) {
+   public static jm<evc> c(CommandContext<et> $$0, String $$1) {
       return d($$0, $$1);
    }
 
@@ -89,21 +89,21 @@ public class fv<T> implements ArgumentType<jm<T>> {
       return b;
    }
 
-   public static class a extends fv<etd> {
+   public static class a extends fv<etf> {
       protected a(ep $$0) {
-         super($$0, lu.bd, etf.d);
+         super($$0, lu.bd, eth.d);
       }
    }
 
-   public static class b extends fv<eva> {
+   public static class b extends fv<evc> {
       protected b(ep $$0) {
-         super($$0, lu.be, eva.f);
+         super($$0, lu.be, evc.f);
       }
    }
 
-   public static class c extends fv<eru> {
+   public static class c extends fv<erw> {
       protected c(ep $$0) {
-         super($$0, lu.bc, eru.e);
+         super($$0, lu.bc, erw.e);
       }
    }
 }

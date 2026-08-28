@@ -15,16 +15,16 @@ public class dzq {
    private final dtc j;
    private final int k;
    private final dtc[] l;
-   private final eof m;
-   private final eof n;
-   private final eof o;
-   private final eof p;
-   private final eof q;
-   private final eof r;
-   private final eof s;
+   private final eoh m;
+   private final eoh n;
+   private final eoh o;
+   private final eoh p;
+   private final eoh q;
+   private final eoh r;
+   private final eoh s;
    private final dzl t;
-   private final eof u;
-   private final eof v;
+   private final eoh u;
+   private final eoh v;
 
    public dzq(dzm $$0, dtc $$1, int $$2, dzl $$3) {
       this.j = $$1;

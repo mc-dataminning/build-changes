@@ -1,30 +1,60 @@
 import com.mojang.serialization.Codec;
 
-public class edi extends ecd<eec> {
-   public edi(Codec<eec> $$0) {
+public class edi extends ece<eez> {
+   public edi(Codec<eez> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecf<eec> $$0) {
-      int $$1 = 0;
-      ayw $$2 = $$0.d();
-      dds $$3 = $$0.b();
-      jd $$4 = $$0.e();
-      int $$5 = $$0.f().a().a($$2);
+   public boolean a(ecg<eez> $$0) {
+      dds $$1 = $$0.b();
+      jd $$2 = $$0.e();
+      if (!this.a($$1, $$2)) {
+         return false;
+      } else {
+         eez $$3 = $$0.f();
+         ayw $$4 = $$0.d();
+         dmu $$5 = dmu.b();
+         int $$6 = $$3.f() + $$3.d();
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         int $$7 = $$2.a(8) - $$2.a(8);
-         int $$8 = $$2.a(8) - $$2.a(8);
-         int $$9 = $$3.a(dyy.a.d, $$4.u() + $$7, $$4.w() + $$8);
-         jd $$10 = new jd($$4.u() + $$7, $$9, $$4.w() + $$8);
-         dtc $$11 = dga.mV.o().a(dmw.c, Integer.valueOf($$2.a(4) + 1));
-         if ($$3.a_($$10).a(dga.G) && $$11.a($$3, $$10)) {
-            $$3.a($$10, $$11, 2);
-            $$1++;
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
+               $$5.a($$2, $$3.b());
+            }
+
+            boolean $$9 = $$7 < $$3.f();
+
+            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
+               $$5.a($$1, $$2, $$4, $$9);
+            }
+
+            $$5.j();
          }
-      }
 
-      return $$1 > 0;
+         jd $$11 = $$2.e();
+         if ($$4.i() <= $$3.h() && $$1.a_($$11).r($$1, $$11)) {
+            $$1.a($$2, dga.qU.o(), 3);
+         }
+
+         int $$12 = $$3.g().a($$4);
+
+         for (int $$13 = 0; $$13 < $$12; $$13++) {
+            jd $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
+            if ($$1.a_($$14).i() && $$1.a_($$14.e()).d($$1, $$14.e(), ji.b)) {
+               $$1.a($$14, dga.qV.o().a(dmt.d, Boolean.valueOf(true)), 3);
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private boolean a(dcx $$0, jd $$1) {
+      dtc $$2 = $$0.a_($$1);
+      if ($$2.b() instanceof dmp) {
+         return true;
+      } else {
+         return !$$2.i() && (!$$2.a(dga.G) || !$$2.u().b()) ? false : ji.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).r($$0, $$1x));
+      }
    }
 }

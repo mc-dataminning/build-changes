@@ -10,7 +10,7 @@ public class cay extends cam {
    protected final btw a;
    private final double b;
    @Nullable
-   private epq c;
+   private eps c;
    private jd d;
    private final boolean e;
    private final List<jd> f = Lists.newArrayList();
@@ -35,15 +35,15 @@ public class cay extends cam {
          return false;
       } else {
          this.h();
-         if (this.e && this.a.dP().R()) {
+         if (this.e && this.a.dO().R()) {
             return false;
          } else {
-            aqu $$0 = (aqu)this.a.dP();
-            jd $$1 = this.a.dp();
+            aqu $$0 = (aqu)this.a.dO();
+            jd $$1 = this.a.do();
             if (!$$0.a($$1, 6)) {
                return false;
             } else {
-               exa $$2 = cem.a(this.a, 15, 7, $$2x -> {
+               exc $$2 = cem.a(this.a, 15, 7, $$2x -> {
                   if (!$$0.c($$2x)) {
                      return Double.NEGATIVE_INFINITY;
                   } else {
@@ -65,7 +65,7 @@ public class cay extends cam {
                      this.c = $$4.a(this.d, 0);
                      $$4.b($$5);
                      if (this.c == null) {
-                        exa $$6 = cej.a(this.a, 10, 7, exa.c(this.d), (float) (Math.PI / 2));
+                        exc $$6 = cej.a(this.a, 10, 7, exc.c(this.d), (float) (Math.PI / 2));
                         if ($$6 == null) {
                            return false;
                         }
@@ -79,9 +79,9 @@ public class cay extends cam {
                      }
 
                      for (int $$7 = 0; $$7 < this.c.e(); $$7++) {
-                        epo $$8 = this.c.a($$7);
+                        epq $$8 = this.c.a($$7);
                         jd $$9 = new jd($$8.a, $$8.b + 1, $$8.c);
-                        if (die.a(this.a.dP(), $$9)) {
+                        if (die.a(this.a.dO(), $$9)) {
                            this.c = this.a.N().a((double)$$8.a, (double)$$8.b, (double)$$8.c, 0);
                            break;
                         }
@@ -97,7 +97,7 @@ public class cay extends cam {
 
    @Override
    public boolean c() {
-      return this.a.N().l() ? false : !this.d.a(this.a.dn(), (double)(this.a.dk() + (float)this.g));
+      return this.a.N().l() ? false : !this.d.a(this.a.dm(), (double)(this.a.dj() + (float)this.g));
    }
 
    @Override
@@ -107,7 +107,7 @@ public class cay extends cam {
 
    @Override
    public void e() {
-      if (this.a.N().l() || this.d.a(this.a.dn(), (double)this.g)) {
+      if (this.a.N().l() || this.d.a(this.a.dm(), (double)this.g)) {
          this.f.add(this.d);
       }
    }

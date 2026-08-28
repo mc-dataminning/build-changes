@@ -1,18 +1,24 @@
-public class gkz extends gnn {
-   private static final akr a = akr.b("textures/entity/zombie/husk.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gkz(gkh.a $$0) {
-      super($$0, fyh.as, fyh.at, fyh.au);
+public final class gkz extends gjd<chk, fvv<chk>> {
+   private static final Map<chr, akr> a = ad.a(Maps.newEnumMap(chr.class), $$0 -> {
+      $$0.put(chr.a, akr.b("textures/entity/horse/horse_white.png"));
+      $$0.put(chr.b, akr.b("textures/entity/horse/horse_creamy.png"));
+      $$0.put(chr.c, akr.b("textures/entity/horse/horse_chestnut.png"));
+      $$0.put(chr.d, akr.b("textures/entity/horse/horse_brown.png"));
+      $$0.put(chr.e, akr.b("textures/entity/horse/horse_black.png"));
+      $$0.put(chr.f, akr.b("textures/entity/horse/horse_gray.png"));
+      $$0.put(chr.g, akr.b("textures/entity/horse/horse_darkbrown.png"));
+   });
+
+   public gkz(gkj.a $$0) {
+      super($$0, new fvv<>($$0.a(fyj.aq)), 1.1F);
+      this.a(new gok(this));
+      this.a(new goj(this, $$0.f()));
    }
 
-   protected void a(ckw $$0, fbg $$1, float $$2) {
-      float $$3 = 1.0625F;
-      $$1.b(1.0625F, 1.0625F, 1.0625F);
-      super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public akr a(ckw $$0) {
-      return a;
+   public akr a(chk $$0) {
+      return a.get($$0.s());
    }
 }

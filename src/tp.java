@@ -258,7 +258,7 @@ public class tp {
    }
 
    private static int a(et $$0, String $$1) throws CommandSyntaxException {
-      eww $$2 = (eww)$$0.h().a(10.0, 1.0F, false);
+      ewy $$2 = (ewy)$$0.h().a(10.0, 1.0F, false);
       jd $$3 = $$2.a();
       aqu $$4 = $$0.e();
       Optional<jd> $$5 = tn.a($$3, 15, $$4);
@@ -415,7 +415,7 @@ public class tp {
             if ($$2 == null) {
                return 0;
             } else {
-               ejh $$3 = tn.b($$2);
+               ejj $$3 = tn.b($$2);
                tn.a($$3, $$1);
                return 1;
             }

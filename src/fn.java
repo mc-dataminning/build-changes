@@ -18,10 +18,10 @@ public class fn implements ArgumentType<String> {
       return new fn();
    }
 
-   public static exw a(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
+   public static exy a(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
       String $$2 = (String)$$0.getArgument($$1, String.class);
-      eye $$3 = ((et)$$0.getSource()).l().aK();
-      exw $$4 = $$3.a($$2);
+      eyg $$3 = ((et)$$0.getSource()).l().aK();
+      exy $$4 = $$3.a($$2);
       if ($$4 == null) {
          throw b.create($$2);
       } else {
@@ -29,8 +29,8 @@ public class fn implements ArgumentType<String> {
       }
    }
 
-   public static exw b(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
-      exw $$2 = a($$0, $$1);
+   public static exy b(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
+      exy $$2 = a($$0, $$1);
       if ($$2.c().e()) {
          throw c.create($$2.b());
       } else {

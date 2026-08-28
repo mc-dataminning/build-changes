@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gpt {
+@Deprecated
+public interface gpt {
+   float call(cuq var1, @Nullable fzf var2, @Nullable btn var3, int var4);
 }

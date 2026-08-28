@@ -14,7 +14,7 @@ public abstract class det extends dfk {
    protected abstract MapCodec<? extends det> a();
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
       if ($$1.B) {
          return bqr.a;
       } else {
@@ -37,7 +37,7 @@ public abstract class det extends dfk {
          if ($$5 instanceof dpv) {
             if ($$1 instanceof aqu) {
                bqn.a($$1, $$2, (dpv)$$5);
-               ((dpv)$$5).a((aqu)$$1, exa.b($$2));
+               ((dpv)$$5).a((aqu)$$1, exc.b($$2));
             }
 
             super.a($$0, $$1, $$2, $$3, $$4);

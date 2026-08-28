@@ -11,7 +11,7 @@ public class doz extends dmz {
    protected static final float c = 2.0F;
    protected static final float d = 4.5F;
    protected static final float e = 12.5F;
-   private static final Map<ji, ext> i = Maps.newEnumMap(
+   private static final Map<ji, exv> i = Maps.newEnumMap(
       ImmutableMap.of(
          ji.c,
          dfy.a(0.0, 4.5, 14.0, 16.0, 12.5, 16.0),
@@ -40,7 +40,7 @@ public class doz extends dmz {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return i.get($$0.c(b));
    }
 
@@ -53,7 +53,7 @@ public class doz extends dmz {
    @Override
    public dtc a(cyd $$0) {
       dtc $$1 = this.o();
-      epc $$2 = $$0.q().b_($$0.a());
+      epe $$2 = $$0.q().b_($$0.a());
       dcz $$3 = $$0.q();
       jd $$4 = $$0.a();
       ji[] $$5 = $$0.f();
@@ -63,7 +63,7 @@ public class doz extends dmz {
             ji $$7 = $$6.g();
             $$1 = $$1.a(b, $$7);
             if ($$1.a($$3, $$4)) {
-               return $$1.a(f, Boolean.valueOf($$2.a() == epd.c));
+               return $$1.a(f, Boolean.valueOf($$2.a() == epf.c));
             }
          }
       }
@@ -82,8 +82,8 @@ public class doz extends dmz {
    }
 
    @Override
-   public exa m(dtc $$0) {
-      ext $$1 = i.get($$0.c(b));
+   public exc m(dtc $$0) {
+      exv $$1 = i.get($$0.c(b));
       return $$1.a().f();
    }
 

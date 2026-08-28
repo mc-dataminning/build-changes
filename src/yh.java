@@ -51,7 +51,7 @@ public class yh implements xa {
       return this.f;
    }
 
-   private eyd a(et $$0) throws CommandSyntaxException {
+   private eyf a(et $$0) throws CommandSyntaxException {
       if (this.e != null) {
          List<? extends bsr> $$1 = this.e.b($$0);
          if (!$$1.isEmpty()) {
@@ -63,16 +63,16 @@ public class yh implements xa {
          }
       }
 
-      return eyd.c(this.d);
+      return eyf.c(this.d);
    }
 
-   private xn a(eyd $$0, et $$1) {
+   private xn a(eyf $$0, et $$1) {
       MinecraftServer $$2 = $$1.l();
       if ($$2 != null) {
-         eye $$3 = $$2.aK();
-         exw $$4 = $$3.a(this.f);
+         eyg $$3 = $$2.aK();
+         exy $$4 = $$3.a(this.f);
          if ($$4 != null) {
-            eya $$5 = $$3.d($$0, $$4);
+            eyc $$5 = $$3.d($$0, $$4);
             if ($$5 != null) {
                return $$5.a($$4.a(ys.b));
             }
@@ -87,8 +87,8 @@ public class yh implements xa {
       if ($$0 == null) {
          return wz.i();
       } else {
-         eyd $$3 = this.a($$0);
-         eyd $$4 = (eyd)($$1 != null && $$3.equals(eyd.cA) ? $$1 : $$3);
+         eyf $$3 = this.a($$0);
+         eyf $$4 = (eyf)($$1 != null && $$3.equals(eyf.cA) ? $$1 : $$3);
          return this.a($$4, $$0);
       }
    }

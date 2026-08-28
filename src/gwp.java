@@ -1,29 +1,57 @@
-import com.google.common.util.concurrent.RateLimiter;
-import java.time.Duration;
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.Collection;
 
-public class gwp {
-   private final float a;
-   private final AtomicReference<gwp.a> b = new AtomicReference<>();
-
-   public gwp(Duration $$0) {
-      this.a = 1000.0F / (float)$$0.toMillis();
+public abstract class gwp<E extends fji.a<E>> extends fji<E> {
+   protected gwp(int $$0, int $$1, int $$2, int $$3) {
+      super(fgo.Q(), $$0, $$1, $$2, $$3);
    }
 
-   public void a(fge $$0, wz $$1) {
-      gwp.a $$2 = this.b.updateAndGet($$1x -> $$1x != null && $$1.equals($$1x.a) ? $$1x : new gwp.a($$1, RateLimiter.create((double)this.a)));
-      if ($$2.b.tryAcquire(1)) {
-         $$0.c($$1);
+   public void p(int $$0) {
+      if ($$0 == -1) {
+         this.a(null);
+      } else if (super.l() != 0) {
+         this.a(this.d($$0));
       }
    }
 
-   static class a {
-      final wz a;
-      final RateLimiter b;
+   public void b(int $$0) {
+      this.p($$0);
+   }
 
-      a(wz $$0, RateLimiter $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   @Override
+   public int a() {
+      return 0;
+   }
+
+   @Override
+   public int b() {
+      return (int)((double)this.g * 0.6);
+   }
+
+   @Override
+   public void a(Collection<E> $$0) {
+      super.a($$0);
+   }
+
+   @Override
+   public int l() {
+      return super.l();
+   }
+
+   @Override
+   public int g(int $$0) {
+      return super.g($$0);
+   }
+
+   @Override
+   public int s() {
+      return super.s();
+   }
+
+   public int a(E $$0) {
+      return super.b($$0);
+   }
+
+   public void J() {
+      this.k();
    }
 }

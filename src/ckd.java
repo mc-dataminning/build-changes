@@ -7,18 +7,18 @@ public abstract class ckd extends btw implements cjv {
    }
 
    @Override
-   public avq df() {
+   public avq de() {
       return avq.f;
    }
 
    @Override
    public void m_() {
-      this.eS();
-      this.gq();
+      this.eR();
+      this.gp();
       super.m_();
    }
 
-   protected void gq() {
+   protected void gp() {
       float $$0 = this.bu();
       if ($$0 > 0.5F) {
          this.bf += 2;
@@ -51,7 +51,7 @@ public abstract class ckd extends btw implements cjv {
    }
 
    @Override
-   public btn.a eI() {
+   public btn.a eH() {
       return new btn.a(avp.mW, avp.mT);
    }
 
@@ -83,17 +83,17 @@ public abstract class ckd extends btw implements cjv {
       return $$1.al() != bqo.a && a($$0, $$1, $$2, $$3, $$4);
    }
 
-   public static buv.a gr() {
+   public static buv.a gq() {
       return btp.C().a(buw.c);
    }
 
    @Override
-   public boolean ef() {
+   public boolean ee() {
       return true;
    }
 
    @Override
-   protected boolean eg() {
+   protected boolean ef() {
       return true;
    }
 

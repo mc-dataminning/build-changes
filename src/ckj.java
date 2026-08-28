@@ -51,7 +51,7 @@ public class ckj extends cfc implements buo<Optional<cti>>, cjv {
    }
 
    @Override
-   public avq df() {
+   public avq de() {
       return avq.f;
    }
 
@@ -62,7 +62,7 @@ public class ckj extends cfc implements buo<Optional<cti>>, cjv {
 
    @Override
    public void S() {
-      if (!this.gq()) {
+      if (!this.gp()) {
          super.S();
       }
    }
@@ -74,7 +74,7 @@ public class ckj extends cfc implements buo<Optional<cti>>, cjv {
 
    @Override
    protected avo d(brk $$0) {
-      return this.gq() ? avp.wT : avp.wS;
+      return this.gp() ? avp.wT : avp.wS;
    }
 
    @Override
@@ -115,15 +115,15 @@ public class ckj extends cfc implements buo<Optional<cti>>, cjv {
    @Override
    public void l() {
       super.l();
-      if (!this.dP().B && !this.bS() && !this.a(this.dp(), this.x())) {
-         this.gn();
+      if (!this.dO().B && !this.bS() && !this.a(this.do(), this.x())) {
+         this.gm();
       }
 
-      if (this.go()) {
-         this.gp();
+      if (this.gn()) {
+         this.go();
       }
 
-      if (this.dP().B) {
+      if (this.dO().B) {
          if (this.cn > 0) {
             this.cn--;
          } else {
@@ -132,8 +132,8 @@ public class ckj extends cfc implements buo<Optional<cti>>, cjv {
       }
    }
 
-   private void gn() {
-      ji $$0 = this.h(this.dp());
+   private void gm() {
+      ji $$0 = this.h(this.do());
       if ($$0 != null) {
          this.a($$0);
       } else {
@@ -142,20 +142,20 @@ public class ckj extends cfc implements buo<Optional<cti>>, cjv {
    }
 
    @Override
-   protected ewv au() {
+   protected ewx au() {
       float $$0 = J(this.cl);
       ji $$1 = this.x().g();
-      float $$2 = this.dk() / 2.0F;
-      return a(this.ec(), $$1, $$0).d(this.du() - (double)$$2, this.dw(), this.dA() - (double)$$2);
+      float $$2 = this.dj() / 2.0F;
+      return a(this.eb(), $$1, $$0).d(this.dt() - (double)$$2, this.dv(), this.dz() - (double)$$2);
    }
 
    private static float J(float $$0) {
       return 0.5F - ayo.a((0.5F + $$0) * (float) Math.PI) * 0.5F;
    }
 
-   private boolean go() {
+   private boolean gn() {
       this.ck = this.cl;
-      float $$0 = (float)this.gs() * 0.01F;
+      float $$0 = (float)this.gr() * 0.01F;
       if (this.cl == $$0) {
          return false;
       } else {
@@ -169,27 +169,27 @@ public class ckj extends cfc implements buo<Optional<cti>>, cjv {
       }
    }
 
-   private void gp() {
+   private void go() {
       this.av();
       float $$0 = J(this.cl);
       float $$1 = J(this.ck);
       ji $$2 = this.x().g();
-      float $$3 = ($$0 - $$1) * this.ec();
+      float $$3 = ($$0 - $$1) * this.eb();
       if (!($$3 <= 0.0F)) {
-         for (bsr $$5 : this.dP().a(this, a(this.ec(), $$2, $$1, $$0).d(this.du() - 0.5, this.dw(), this.dA() - 0.5), bsw.f.and($$0x -> !$$0x.y(this)))) {
+         for (bsr $$5 : this.dO().a(this, a(this.eb(), $$2, $$1, $$0).d(this.dt() - 0.5, this.dv(), this.dz() - 0.5), bsw.f.and($$0x -> !$$0x.y(this)))) {
             if (!($$5 instanceof ckj) && !$$5.ag) {
-               $$5.a(bts.e, new exa((double)($$3 * (float)$$2.j()), (double)($$3 * (float)$$2.k()), (double)($$3 * (float)$$2.l())));
+               $$5.a(bts.e, new exc((double)($$3 * (float)$$2.j()), (double)($$3 * (float)$$2.k()), (double)($$3 * (float)$$2.l())));
             }
          }
       }
    }
 
-   public static ewv a(float $$0, ji $$1, float $$2) {
+   public static ewx a(float $$0, ji $$1, float $$2) {
       return a($$0, $$1, -1.0F, $$2);
    }
 
-   public static ewv a(float $$0, ji $$1, float $$2, float $$3) {
-      ewv $$4 = new ewv(0.0, 0.0, 0.0, (double)$$0, (double)$$0, (double)$$0);
+   public static ewx a(float $$0, ji $$1, float $$2, float $$3) {
+      ewx $$4 = new ewx(0.0, 0.0, 0.0, (double)$$0, (double)$$0, (double)$$0);
       double $$5 = (double)Math.max($$2, $$3);
       double $$6 = (double)Math.min($$2, $$3);
       return $$4.b((double)$$1.j() * $$5 * (double)$$0, (double)$$1.k() * $$5 * (double)$$0, (double)$$1.l() * $$5 * (double)$$0)
@@ -198,7 +198,7 @@ public class ckj extends cfc implements buo<Optional<cti>>, cjv {
 
    @Override
    public boolean a(bsr $$0, boolean $$1) {
-      if (this.dP().x_()) {
+      if (this.dO().x_()) {
          this.cm = null;
          this.cn = 0;
       }
@@ -210,8 +210,8 @@ public class ckj extends cfc implements buo<Optional<cti>>, cjv {
    @Override
    public void ad() {
       super.ad();
-      if (this.dP().B) {
-         this.cm = this.dp();
+      if (this.dO().B) {
+         this.cm = this.do();
       }
 
       this.aZ = 0.0F;
@@ -222,13 +222,13 @@ public class ckj extends cfc implements buo<Optional<cti>>, cjv {
    @Override
    public buh a(ddl $$0, bqp $$1, btr $$2, @Nullable buh $$3) {
       this.t(0.0F);
-      this.ba = this.dF();
+      this.ba = this.dE();
       this.bv();
       return super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public void a(bts $$0, exa $$1) {
+   public void a(bts $$0, exc $$1) {
       if ($$0 == bts.d) {
          this.t();
       } else {
@@ -237,17 +237,17 @@ public class ckj extends cfc implements buo<Optional<cti>>, cjv {
    }
 
    @Override
-   public exa ds() {
-      return exa.b;
+   public exc dr() {
+      return exc.b;
    }
 
    @Override
-   public void i(exa $$0) {
+   public void i(exc $$0) {
    }
 
    @Override
    public void a_(double $$0, double $$1, double $$2) {
-      jd $$3 = this.dp();
+      jd $$3 = this.do();
       if (this.bS()) {
          super.a_($$0, $$1, $$2);
       } else {
@@ -255,16 +255,16 @@ public class ckj extends cfc implements buo<Optional<cti>>, cjv {
       }
 
       if (this.ai != 0) {
-         jd $$4 = this.dp();
+         jd $$4 = this.do();
          if (!$$4.equals($$3)) {
             this.ao.a(c, (byte)0);
             this.av = true;
-            if (this.dP().B && !this.bS() && !$$4.equals(this.cm)) {
+            if (this.dO().B && !this.bS() && !$$4.equals(this.cm)) {
                this.cm = $$3;
                this.cn = 6;
-               this.ad = this.du();
-               this.ae = this.dw();
-               this.af = this.dA();
+               this.ad = this.dt();
+               this.ae = this.dv();
+               this.af = this.dz();
             }
          }
       }
@@ -286,39 +286,39 @@ public class ckj extends cfc implements buo<Optional<cti>>, cjv {
          return false;
       } else {
          ji $$2 = $$1.g();
-         if (!this.dP().a($$0.a($$1), this, $$2)) {
+         if (!this.dO().a($$0.a($$1), this, $$2)) {
             return false;
          } else {
-            ewv $$3 = a(this.ec(), $$2, 1.0F).a($$0).h(1.0E-6);
-            return this.dP().a(this, $$3);
+            ewx $$3 = a(this.eb(), $$2, 1.0F).a($$0).h(1.0E-6);
+            return this.dO().a(this, $$3);
          }
       }
    }
 
    private boolean i(jd $$0) {
-      dtc $$1 = this.dP().a_($$0);
+      dtc $$1 = this.dO().a_($$0);
       if ($$1.i()) {
          return false;
       } else {
-         boolean $$2 = $$1.a(dga.bQ) && $$0.equals(this.dp());
+         boolean $$2 = $$1.a(dga.bQ) && $$0.equals(this.do());
          return !$$2;
       }
    }
 
    protected boolean t() {
-      if (!this.ga() && this.bE()) {
-         jd $$0 = this.dp();
+      if (!this.fZ() && this.bE()) {
+         jd $$0 = this.do();
 
          for (int $$1 = 0; $$1 < 5; $$1++) {
             jd $$2 = $$0.b(ayo.b(this.ah, -8, 8), ayo.b(this.ah, -8, 8), ayo.b(this.ah, -8, 8));
-            if ($$2.v() > this.dP().I_() && this.dP().u($$2) && this.dP().C_().a($$2) && this.dP().a(this, new ewv($$2).h(1.0E-6))) {
+            if ($$2.v() > this.dO().I_() && this.dO().u($$2) && this.dO().C_().a($$2) && this.dO().a(this, new ewx($$2).h(1.0E-6))) {
                ji $$3 = this.h($$2);
                if ($$3 != null) {
                   this.ak();
                   this.a($$3);
                   this.a(avp.wW, 1.0F, 1.0F);
                   this.a_((double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5);
-                  this.dP().a(dxz.R, $$0, dxz.a.a(this));
+                  this.dO().a(dxz.R, $$0, dxz.a.a(this));
                   this.ao.a(c, (byte)0);
                   this.h(null);
                   return true;
@@ -341,7 +341,7 @@ public class ckj extends cfc implements buo<Optional<cti>>, cjv {
 
    @Override
    public boolean a(brk $$0, float $$1) {
-      if (this.gq()) {
+      if (this.gp()) {
          bsr $$2 = $$0.c();
          if ($$2 instanceof cnd) {
             return false;
@@ -351,12 +351,12 @@ public class ckj extends cfc implements buo<Optional<cti>>, cjv {
       if (!super.a($$0, $$1)) {
          return false;
       } else {
-         if ((double)this.ex() < (double)this.eO() * 0.5 && this.ah.a(4) == 0) {
+         if ((double)this.ew() < (double)this.eN() * 0.5 && this.ah.a(4) == 0) {
             this.t();
          } else if ($$0.a(awg.j)) {
             bsr $$3 = $$0.c();
             if ($$3 != null && $$3.am() == bsx.aL) {
-               this.gr();
+               this.gq();
             }
          }
 
@@ -364,22 +364,22 @@ public class ckj extends cfc implements buo<Optional<cti>>, cjv {
       }
    }
 
-   private boolean gq() {
-      return this.gs() == 0;
+   private boolean gp() {
+      return this.gr() == 0;
    }
 
-   private void gr() {
-      exa $$0 = this.dn();
-      ewv $$1 = this.cL();
-      if (!this.gq() && this.t()) {
-         int $$2 = this.dP().a(bsx.aK, $$1.g(8.0), bsr::bE).size();
+   private void gq() {
+      exc $$0 = this.dm();
+      ewx $$1 = this.cK();
+      if (!this.gp() && this.t()) {
+         int $$2 = this.dO().a(bsx.aK, $$1.g(8.0), bsr::bE).size();
          float $$3 = (float)($$2 - 1) / 5.0F;
-         if (!(this.dP().z.i() < $$3)) {
-            ckj $$4 = bsx.aK.a(this.dP());
+         if (!(this.dO().z.i() < $$3)) {
+            ckj $$4 = bsx.aK.a(this.dO());
             if ($$4 != null) {
-               $$4.a(this.gl());
+               $$4.a(this.gk());
                $$4.f($$0);
-               this.dP().b($$4);
+               this.dO().b($$4);
             }
          }
       }
@@ -407,12 +407,12 @@ public class ckj extends cfc implements buo<Optional<cti>>, cjv {
       super.a($$0);
    }
 
-   private int gs() {
+   private int gr() {
       return this.ao.a(c);
    }
 
    void b(int $$0) {
-      if (!this.dP().B) {
+      if (!this.dO().B) {
          this.f(buw.a).c(e);
          if ($$0 == 0) {
             this.f(buw.a).c(ca);
@@ -452,15 +452,15 @@ public class ckj extends cfc implements buo<Optional<cti>>, cjv {
    public void h(bsr $$0) {
    }
 
-   public Optional<exa> I(float $$0) {
+   public Optional<exc> I(float $$0) {
       if (this.cm != null && this.cn > 0) {
          double $$1 = (double)((float)this.cn - $$0) / 6.0;
          $$1 *= $$1;
-         jd $$2 = this.dp();
+         jd $$2 = this.do();
          double $$3 = (double)($$2.u() - this.cm.u()) * $$1;
          double $$4 = (double)($$2.v() - this.cm.v()) * $$1;
          double $$5 = (double)($$2.w() - this.cm.w()) * $$1;
-         return Optional.of(new exa(-$$3, -$$4, -$$5));
+         return Optional.of(new exc(-$$3, -$$4, -$$5));
       } else {
          return Optional.empty();
       }
@@ -475,12 +475,12 @@ public class ckj extends cfc implements buo<Optional<cti>>, cjv {
       this.ao.a(d, $$0.<Byte>map($$0x -> (byte)$$0x.a()).orElse((byte)16));
    }
 
-   public Optional<cti> gl() {
-      return Optional.ofNullable(this.gm());
+   public Optional<cti> gk() {
+      return Optional.ofNullable(this.gl());
    }
 
    @Nullable
-   public cti gm() {
+   public cti gl() {
       byte $$0 = this.ao.a(d);
       return $$0 != 16 && $$0 <= 15 ? cti.a($$0) : null;
    }
@@ -495,7 +495,7 @@ public class ckj extends cfc implements buo<Optional<cti>>, cjv {
       @Override
       public boolean b() {
          btn $$0 = ckj.this.p();
-         return $$0 != null && $$0.bE() ? ckj.this.dP().al() != bqo.a : false;
+         return $$0 != null && $$0.bE() ? ckj.this.dO().al() != bqo.a : false;
       }
 
       @Override
@@ -516,7 +516,7 @@ public class ckj extends cfc implements buo<Optional<cti>>, cjv {
 
       @Override
       public void a() {
-         if (ckj.this.dP().al() != bqo.a) {
+         if (ckj.this.dO().al() != bqo.a) {
             this.b--;
             btn $$0 = ckj.this.p();
             if ($$0 != null) {
@@ -525,7 +525,7 @@ public class ckj extends cfc implements buo<Optional<cti>>, cjv {
                if ($$1 < 400.0) {
                   if (this.b <= 0) {
                      this.b = 20 + ckj.this.ah.a(10) * 20 / 2;
-                     ckj.this.dP().b(new cns(ckj.this.dP(), ckj.this, $$0, ckj.this.x().o()));
+                     ckj.this.dO().b(new cns(ckj.this.dO(), ckj.this, $$0, ckj.this.x().o()));
                      ckj.this.a(avp.wV, 2.0F, (ckj.this.ah.i() - ckj.this.ah.i()) * 0.2F + 1.0F);
                   }
                } else {
@@ -559,12 +559,12 @@ public class ckj extends cfc implements buo<Optional<cti>>, cjv {
       }
 
       @Override
-      protected ewv a(double $$0) {
+      protected ewx a(double $$0) {
          ji $$1 = ((ckj)this.e).x();
          if ($$1.o() == ji.a.a) {
-            return this.e.cL().c(4.0, $$0, $$0);
+            return this.e.cK().c(4.0, $$0, $$0);
          } else {
-            return $$1.o() == ji.a.c ? this.e.cL().c($$0, $$0, 4.0) : this.e.cL().c($$0, 4.0, $$0);
+            return $$1.o() == ji.a.c ? this.e.cK().c($$0, $$0, 4.0) : this.e.cK().c($$0, 4.0, $$0);
          }
       }
    }
@@ -585,9 +585,9 @@ public class ckj extends cfc implements buo<Optional<cti>>, cjv {
          kh $$2 = $$0.q();
          Vector3f $$3 = new Vector3f((float)$$2.u(), (float)$$2.v(), (float)$$2.w());
          $$3.cross($$1);
-         double $$4 = this.e - this.a.du();
-         double $$5 = this.f - this.a.dy();
-         double $$6 = this.g - this.a.dA();
+         double $$4 = this.e - this.a.dt();
+         double $$5 = this.f - this.a.dx();
+         double $$6 = this.g - this.a.dz();
          Vector3f $$7 = new Vector3f((float)$$4, (float)$$5, (float)$$6);
          float $$8 = $$3.dot($$7);
          float $$9 = $$1.dot($$7);
@@ -609,16 +609,16 @@ public class ckj extends cfc implements buo<Optional<cti>>, cjv {
 
       @Override
       public boolean b() {
-         return ckj.this.dP().al() == bqo.a ? false : super.b();
+         return ckj.this.dO().al() == bqo.a ? false : super.b();
       }
 
       @Override
-      protected ewv a(double $$0) {
+      protected ewx a(double $$0) {
          ji $$1 = ((ckj)this.e).x();
          if ($$1.o() == ji.a.a) {
-            return this.e.cL().c(4.0, $$0, $$0);
+            return this.e.cK().c(4.0, $$0, $$0);
          } else {
-            return $$1.o() == ji.a.c ? this.e.cL().c($$0, $$0, 4.0) : this.e.cL().c($$0, 4.0, $$0);
+            return $$1.o() == ji.a.c ? this.e.cK().c($$0, $$0, 4.0) : this.e.cK().c($$0, 4.0, $$0);
          }
       }
    }
@@ -628,7 +628,7 @@ public class ckj extends cfc implements buo<Optional<cti>>, cjv {
 
       @Override
       public boolean b() {
-         return ckj.this.p() == null && ckj.this.ah.a(b(40)) == 0 && ckj.this.a(ckj.this.dp(), ckj.this.x());
+         return ckj.this.p() == null && ckj.this.ah.a(b(40)) == 0 && ckj.this.a(ckj.this.do(), ckj.this.x());
       }
 
       @Override

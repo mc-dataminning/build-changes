@@ -6,10 +6,10 @@ public class dke extends dfy implements dna {
    public static final dtw b = dju.aE;
    public static final dtt c = dts.C;
    protected static final float d = 3.0F;
-   protected static final ext e = dfy.a(0.0, 0.0, 0.0, 3.0, 16.0, 16.0);
-   protected static final ext f = dfy.a(13.0, 0.0, 0.0, 16.0, 16.0, 16.0);
-   protected static final ext g = dfy.a(0.0, 0.0, 0.0, 16.0, 16.0, 3.0);
-   protected static final ext h = dfy.a(0.0, 0.0, 13.0, 16.0, 16.0, 16.0);
+   protected static final exv e = dfy.a(0.0, 0.0, 0.0, 3.0, 16.0, 16.0);
+   protected static final exv f = dfy.a(13.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final exv g = dfy.a(0.0, 0.0, 0.0, 16.0, 16.0, 3.0);
+   protected static final exv h = dfy.a(0.0, 0.0, 13.0, 16.0, 16.0, 16.0);
 
    @Override
    public MapCodec<dke> a() {
@@ -22,7 +22,7 @@ public class dke extends dfy implements dna {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       switch ((ji)$$0.c(b)) {
          case c:
             return h;
@@ -53,7 +53,7 @@ public class dke extends dfy implements dna {
          return dga.a.o();
       } else {
          if ($$0.c(c)) {
-            $$3.a($$4, epd.c, epd.c.a($$3));
+            $$3.a($$4, epf.c, epf.c.a($$3));
          }
 
          return super.a($$0, $$1, $$2, $$3, $$4, $$5);
@@ -73,13 +73,13 @@ public class dke extends dfy implements dna {
       dtc $$2 = this.o();
       dcz $$3 = $$0.q();
       jd $$4 = $$0.a();
-      epc $$5 = $$0.q().b_($$0.a());
+      epe $$5 = $$0.q().b_($$0.a());
 
       for (ji $$6 : $$0.f()) {
          if ($$6.o().d()) {
             $$2 = $$2.a(b, $$6.g());
             if ($$2.a($$3, $$4)) {
-               return $$2.a(c, Boolean.valueOf($$5.a() == epd.c));
+               return $$2.a(c, Boolean.valueOf($$5.a() == epf.c));
             }
          }
       }
@@ -103,7 +103,7 @@ public class dke extends dfy implements dna {
    }
 
    @Override
-   protected epc b_(dtc $$0) {
-      return $$0.c(c) ? epd.c.a(false) : super.b_($$0);
+   protected epe b_(dtc $$0) {
+      return $$0.c(c) ? epf.c.a(false) : super.b_($$0);
    }
 }

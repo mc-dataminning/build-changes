@@ -2,12 +2,12 @@ import com.google.common.base.Suppliers;
 import java.util.function.Supplier;
 
 public enum cwk implements cwi {
-   a(awe.bN, 59, 2.0F, 0.0F, 15, () -> cyw.a(awn.b)),
-   b(awe.bL, 131, 4.0F, 1.0F, 5, () -> cyw.a(awn.aX)),
-   c(awe.bK, 250, 6.0F, 2.0F, 14, () -> cyw.a(cut.oF)),
-   d(awe.bJ, 1561, 8.0F, 3.0F, 10, () -> cyw.a(cut.oz)),
-   e(awe.bM, 32, 12.0F, 0.0F, 22, () -> cyw.a(cut.oJ)),
-   f(awe.bI, 2031, 9.0F, 4.0F, 15, () -> cyw.a(cut.oK));
+   a(awe.bO, 59, 2.0F, 0.0F, 15, () -> cyw.a(awn.b)),
+   b(awe.bM, 131, 4.0F, 1.0F, 5, () -> cyw.a(awn.aX)),
+   c(awe.bL, 250, 6.0F, 2.0F, 14, () -> cyw.a(cut.oF)),
+   d(awe.bK, 1561, 8.0F, 3.0F, 10, () -> cyw.a(cut.oz)),
+   e(awe.bN, 32, 12.0F, 0.0F, 22, () -> cyw.a(cut.oJ)),
+   f(awe.bJ, 2031, 9.0F, 4.0F, 15, () -> cyw.a(cut.oK));
 
    private final awu<dfy> g;
    private final int h;

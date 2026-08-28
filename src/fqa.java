@@ -1,21 +1,30 @@
-public class fqa extends foq<crn> {
-   private static final akr E = akr.b("textures/gui/container/shulker_box.png");
+public class fqa extends fos {
+   private final dbx u;
 
-   public fqa(crn $$0, cmw $$1, wz $$2) {
-      super($$0, $$1, $$2);
-      this.r++;
+   public fqa(dbx $$0) {
+      this.u = $$0;
    }
 
    @Override
-   public void a(fhx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   public dbx m() {
+      return this.u;
    }
 
    @Override
-   protected void a(fhx $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.m - this.c) / 2;
-      int $$5 = (this.n - this.r) / 2;
-      $$0.a(E, $$4, $$5, 0, 0, this.c, this.r);
+   int C() {
+      return 150;
+   }
+
+   @Override
+   protected void aT_() {
+      super.aT_();
+      this.a.a(this.m().m());
+   }
+
+   @Override
+   protected void a(dbx $$0) {
+      if ($$0 instanceof cpb.a $$1) {
+         this.l.L().b(new ahx($$1.h().an(), this.a.a(), $$0.p()));
+      }
    }
 }

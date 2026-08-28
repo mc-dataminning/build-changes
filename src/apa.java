@@ -51,14 +51,14 @@ public class apa {
    }
 
    public static CompletableFuture<Suggestions> a(et $$0, SuggestionsBuilder $$1) {
-      eyd $$2 = $$0.f();
+      eyf $$2 = $$0.f();
       List<String> $$3 = Lists.newArrayList();
       if ($$2 != null) {
-         eye $$4 = $$0.l().aK();
+         eyg $$4 = $$0.l().aK();
 
-         for (exw $$5 : $$4.c()) {
-            if ($$5.c() == eyh.c) {
-               eya $$6 = $$4.d($$2, $$5);
+         for (exy $$5 : $$4.c()) {
+            if ($$5.c() == eyj.c) {
+               eyc $$6 = $$4.d($$2, $$5);
                if ($$6 != null && !$$6.b()) {
                   $$3.add($$5.b());
                }
@@ -69,34 +69,34 @@ public class apa {
       return ey.b($$3, $$1);
    }
 
-   private static int a(et $$0, aqv $$1, exw $$2, int $$3) throws CommandSyntaxException {
-      eyc $$4 = a($$0.l().aK(), $$1, $$2);
+   private static int a(et $$0, aqv $$1, exy $$2, int $$3) throws CommandSyntaxException {
+      eye $$4 = a($$0.l().aK(), $$1, $$2);
       int $$5 = $$4.b($$3);
       $$0.a(() -> wz.a("commands.trigger.add.success", $$2.g(), $$3), true);
       return $$5;
    }
 
-   private static int b(et $$0, aqv $$1, exw $$2, int $$3) throws CommandSyntaxException {
-      eyc $$4 = a($$0.l().aK(), $$1, $$2);
+   private static int b(et $$0, aqv $$1, exy $$2, int $$3) throws CommandSyntaxException {
+      eye $$4 = a($$0.l().aK(), $$1, $$2);
       $$4.a($$3);
       $$0.a(() -> wz.a("commands.trigger.set.success", $$2.g(), $$3), true);
       return $$3;
    }
 
-   private static int a(et $$0, aqv $$1, exw $$2) throws CommandSyntaxException {
-      eyc $$3 = a($$0.l().aK(), $$1, $$2);
+   private static int a(et $$0, aqv $$1, exy $$2) throws CommandSyntaxException {
+      eye $$3 = a($$0.l().aK(), $$1, $$2);
       int $$4 = $$3.b(1);
       $$0.a(() -> wz.a("commands.trigger.simple.success", $$2.g()), true);
       return $$4;
    }
 
-   private static eyc a(eye $$0, eyd $$1, exw $$2) throws CommandSyntaxException {
-      if ($$2.c() != eyh.c) {
+   private static eye a(eyg $$0, eyf $$1, exy $$2) throws CommandSyntaxException {
+      if ($$2.c() != eyj.c) {
          throw b.create();
       } else {
-         eya $$3 = $$0.d($$1, $$2);
+         eyc $$3 = $$0.d($$1, $$2);
          if ($$3 != null && !$$3.b()) {
-            eyc $$4 = $$0.c($$1, $$2);
+            eye $$4 = $$0.c($$1, $$2);
             $$4.f();
             return $$4;
          } else {

@@ -1,39 +1,23 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+public class fjq {
+   public static final fjq a = new fjq("Merry X-mas!");
+   public static final fjq b = new fjq("Happy new year!");
+   public static final fjq c = new fjq("OOoooOOOoooo! Spooky!");
+   private static final int d = 123;
+   private static final int e = 69;
+   private final String f;
 
-public class fjq extends fii {
-   @Nullable
-   protected fjx a;
-   protected boolean b;
-
-   public fjq(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
-      super($$0, $$1, $$2, $$3, wy.a);
-      this.b = $$4;
+   public fjq(String $$0) {
+      this.f = $$0;
    }
 
-   public void a(fjx $$0) {
-      this.a = $$0;
-   }
-
-   public void b(boolean $$0) {
-      this.b = $$0;
-   }
-
-   public boolean a() {
-      return this.b;
-   }
-
-   @Override
-   public void a(fmg $$0) {
-      this.c($$0);
-   }
-
-   @Override
-   public void b(fhx $$0, int $$1, int $$2, float $$3) {
-      if (this.a != null) {
-         RenderSystem.disableDepthTest();
-         $$0.a(this.a.a(this.b, this.B()), this.D(), this.E(), this.g, this.h);
-         RenderSystem.enableDepthTest();
-      }
+   public void a(fhz $$0, int $$1, fhx $$2, int $$3) {
+      $$0.c().a();
+      $$0.c().a((float)$$1 / 2.0F + 123.0F, 69.0F, 0.0F);
+      $$0.c().a(a.f.rotationDegrees(-20.0F));
+      float $$4 = 1.8F - ayo.e(ayo.a((float)(ad.c() % 1000L) / 1000.0F * (float) (Math.PI * 2)) * 0.1F);
+      $$4 = $$4 * 100.0F / (float)($$2.b(this.f) + 32);
+      $$0.c().b($$4, $$4, $$4);
+      $$0.a($$2, this.f, 0, -8, 16776960 | $$3);
+      $$0.c().b();
    }
 }

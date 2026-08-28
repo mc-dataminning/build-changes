@@ -20,10 +20,10 @@ public class cce extends ccm {
 
    @Override
    public boolean b() {
-      int $$0 = this.e.ek();
-      btn $$1 = this.e.ej();
+      int $$0 = this.e.ej();
+      btn $$1 = this.e.ei();
       if ($$0 != this.d && $$1 != null) {
-         if ($$1.am() == bsx.by && this.e.dP().ab().b(dcs.O)) {
+         if ($$1.am() == bsx.by && this.e.dO().ab().b(dcs.O)) {
             return false;
          } else {
             for (Class<?> $$2 : this.i) {
@@ -47,9 +47,9 @@ public class cce extends ccm {
 
    @Override
    public void d() {
-      this.e.h(this.e.ej());
+      this.e.h(this.e.ei());
       this.g = this.e.p();
-      this.d = this.e.ek();
+      this.d = this.e.ej();
       this.h = 300;
       if (this.c) {
          this.h();
@@ -60,8 +60,8 @@ public class cce extends ccm {
 
    protected void h() {
       double $$0 = this.l();
-      ewv $$1 = ewv.a(this.e.dn()).c($$0, 10.0, $$0);
-      List<? extends btp> $$2 = this.e.dP().a((Class<? extends btp>)this.e.getClass(), $$1, bsw.f);
+      ewx $$1 = ewx.a(this.e.dm()).c($$0, 10.0, $$0);
+      List<? extends btp> $$2 = this.e.dO().a((Class<? extends btp>)this.e.getClass(), $$1, bsw.f);
       Iterator var5 = $$2.iterator();
 
       while (true) {
@@ -72,7 +72,7 @@ public class cce extends ccm {
             }
 
             $$3 = (btp)var5.next();
-            if (this.e != $$3 && $$3.p() == null && (!(this.e instanceof bul) || ((bul)this.e).T_() == ((bul)$$3).T_()) && !$$3.s(this.e.ej())) {
+            if (this.e != $$3 && $$3.p() == null && (!(this.e instanceof bul) || ((bul)this.e).T_() == ((bul)$$3).T_()) && !$$3.s(this.e.ei())) {
                if (this.j == null) {
                   break;
                }
@@ -92,7 +92,7 @@ public class cce extends ccm {
             }
          }
 
-         this.a($$3, this.e.ej());
+         this.a($$3, this.e.ei());
       }
    }
 

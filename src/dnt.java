@@ -10,18 +10,18 @@ public class dnt extends dfy implements dna {
    public static final dua<dub> c = dts.af;
    public static final dua<dul> d = dts.bi;
    public static final dtt e = dts.C;
-   protected static final ext f = dnc.e;
-   protected static final ext g = dnc.d;
-   protected static final ext h = dfy.a(0.0, 0.0, 0.0, 8.0, 8.0, 8.0);
-   protected static final ext i = dfy.a(0.0, 0.0, 8.0, 8.0, 8.0, 16.0);
-   protected static final ext j = dfy.a(0.0, 8.0, 0.0, 8.0, 16.0, 8.0);
-   protected static final ext k = dfy.a(0.0, 8.0, 8.0, 8.0, 16.0, 16.0);
-   protected static final ext l = dfy.a(8.0, 0.0, 0.0, 16.0, 8.0, 8.0);
-   protected static final ext m = dfy.a(8.0, 0.0, 8.0, 16.0, 8.0, 16.0);
-   protected static final ext n = dfy.a(8.0, 8.0, 0.0, 16.0, 16.0, 8.0);
-   protected static final ext o = dfy.a(8.0, 8.0, 8.0, 16.0, 16.0, 16.0);
-   protected static final ext[] F = a(f, h, l, i, m);
-   protected static final ext[] G = a(g, j, n, k, o);
+   protected static final exv f = dnc.e;
+   protected static final exv g = dnc.d;
+   protected static final exv h = dfy.a(0.0, 0.0, 0.0, 8.0, 8.0, 8.0);
+   protected static final exv i = dfy.a(0.0, 0.0, 8.0, 8.0, 8.0, 16.0);
+   protected static final exv j = dfy.a(0.0, 8.0, 0.0, 8.0, 16.0, 8.0);
+   protected static final exv k = dfy.a(0.0, 8.0, 8.0, 8.0, 16.0, 16.0);
+   protected static final exv l = dfy.a(8.0, 0.0, 0.0, 16.0, 8.0, 8.0);
+   protected static final exv m = dfy.a(8.0, 0.0, 8.0, 16.0, 8.0, 16.0);
+   protected static final exv n = dfy.a(8.0, 8.0, 0.0, 16.0, 16.0, 8.0);
+   protected static final exv o = dfy.a(8.0, 8.0, 8.0, 16.0, 16.0, 16.0);
+   protected static final exv[] F = a(f, h, l, i, m);
+   protected static final exv[] G = a(g, j, n, k, o);
    private static final int[] I = new int[]{12, 5, 3, 10, 14, 13, 7, 11, 13, 7, 11, 14, 8, 4, 1, 2, 4, 1, 2, 8};
    private final dfy J;
    protected final dtc H;
@@ -31,26 +31,26 @@ public class dnt extends dfy implements dna {
       return a;
    }
 
-   private static ext[] a(ext $$0, ext $$1, ext $$2, ext $$3, ext $$4) {
-      return IntStream.range(0, 16).mapToObj($$5 -> a($$5, $$0, $$1, $$2, $$3, $$4)).toArray(ext[]::new);
+   private static exv[] a(exv $$0, exv $$1, exv $$2, exv $$3, exv $$4) {
+      return IntStream.range(0, 16).mapToObj($$5 -> a($$5, $$0, $$1, $$2, $$3, $$4)).toArray(exv[]::new);
    }
 
-   private static ext a(int $$0, ext $$1, ext $$2, ext $$3, ext $$4, ext $$5) {
-      ext $$6 = $$1;
+   private static exv a(int $$0, exv $$1, exv $$2, exv $$3, exv $$4, exv $$5) {
+      exv $$6 = $$1;
       if (($$0 & 1) != 0) {
-         $$6 = exq.a($$1, $$2);
+         $$6 = exs.a($$1, $$2);
       }
 
       if (($$0 & 2) != 0) {
-         $$6 = exq.a($$6, $$3);
+         $$6 = exs.a($$6, $$3);
       }
 
       if (($$0 & 4) != 0) {
-         $$6 = exq.a($$6, $$4);
+         $$6 = exs.a($$6, $$4);
       }
 
       if (($$0 & 8) != 0) {
-         $$6 = exq.a($$6, $$5);
+         $$6 = exs.a($$6, $$5);
       }
 
       return $$6;
@@ -69,7 +69,7 @@ public class dnt extends dfy implements dna {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return ($$0.c(c) == dub.a ? F : G)[I[this.n($$0)]];
    }
 
@@ -86,18 +86,18 @@ public class dnt extends dfy implements dna {
    public dtc a(cyd $$0) {
       ji $$1 = $$0.k();
       jd $$2 = $$0.a();
-      epc $$3 = $$0.q().b_($$2);
+      epe $$3 = $$0.q().b_($$2);
       dtc $$4 = this.o()
          .a(b, $$0.g())
          .a(c, $$1 != ji.a && ($$1 == ji.b || !($$0.l().d - (double)$$2.v() > 0.5)) ? dub.b : dub.a)
-         .a(e, Boolean.valueOf($$3.a() == epd.c));
+         .a(e, Boolean.valueOf($$3.a() == epf.c));
       return $$4.a(d, i($$4, $$0.q(), $$2));
    }
 
    @Override
    protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
       if ($$0.c(e)) {
-         $$3.a($$4, epd.c, epd.c.a($$3));
+         $$3.a($$4, epf.c, epf.c.a($$3));
       }
 
       return $$1.o().d() ? $$0.a(d, i($$0, $$3, $$4)) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
@@ -193,12 +193,12 @@ public class dnt extends dfy implements dna {
    }
 
    @Override
-   protected epc b_(dtc $$0) {
-      return $$0.c(e) ? epd.c.a(false) : super.b_($$0);
+   protected epe b_(dtc $$0) {
+      return $$0.c(e) ? epf.c.a(false) : super.b_($$0);
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return false;
    }
 }

@@ -1,96 +1,56 @@
 import com.mojang.serialization.Codec;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.function.Predicate;
 
-public class eds extends ecd<efg> {
+public class eds extends ece<efg> {
    public eds(Codec<efg> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecf<efg> $$0) {
+   public boolean a(ecg<efg> $$0) {
       dds $$1 = $$0.b();
-      efg $$2 = $$0.f();
-      ayw $$3 = $$0.d();
-      jd $$4 = $$0.e();
-      Predicate<dtc> $$5 = $$1x -> $$1x.a($$2.b);
-      int $$6 = $$2.j.a($$3) + 1;
-      int $$7 = $$2.j.a($$3) + 1;
-      Set<jd> $$8 = this.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      this.a($$0, $$1, $$2, $$3, $$8, $$6, $$7);
-      return !$$8.isEmpty();
+      jd $$2 = $$0.e();
+      efg $$3 = $$0.f();
+      ayw $$4 = $$0.d();
+      OptionalInt $$5 = a($$1, $$2, $$3);
+      if ($$5.isEmpty()) {
+         return false;
+      } else {
+         jd $$6 = $$2.h($$5.getAsInt());
+         kh $$7 = new kh($$3.c, $$3.c, $$3.c);
+         ejj $$8 = ejj.a($$6.b($$7), $$6.a($$7));
+         return jd.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
+            $$1.a($$1x, dga.kJ.o(), 2);
+            return 1;
+         }).sum() > 0;
+      }
    }
 
-   protected Set<jd> a(dds $$0, efg $$1, ayw $$2, jd $$3, Predicate<dtc> $$4, int $$5, int $$6) {
-      jd.a $$7 = $$3.k();
-      jd.a $$8 = $$7.k();
-      ji $$9 = $$1.e.a();
-      ji $$10 = $$9.g();
-      Set<jd> $$11 = new HashSet<>();
+   private static OptionalInt a(dds $$0, jd $$1, efg $$2) {
+      Predicate<dtc> $$3 = $$0x -> $$0x.a(dga.G);
+      Predicate<dtc> $$4 = $$0x -> !$$0x.a(dga.G);
+      Optional<dyo> $$5 = dyo.a($$0, $$1, $$2.b, $$3, $$4);
+      return $$5.<OptionalInt>map(dyo::c).orElseGet(OptionalInt::empty);
+   }
 
-      for (int $$12 = -$$5; $$12 <= $$5; $$12++) {
-         boolean $$13 = $$12 == -$$5 || $$12 == $$5;
-
-         for (int $$14 = -$$6; $$14 <= $$6; $$14++) {
-            boolean $$15 = $$14 == -$$6 || $$14 == $$6;
-            boolean $$16 = $$13 || $$15;
-            boolean $$17 = $$13 && $$15;
-            boolean $$18 = $$16 && !$$17;
-            if (!$$17 && (!$$18 || $$1.k != 0.0F && !($$2.i() > $$1.k))) {
-               $$7.a($$3, $$12, 0, $$14);
-
-               for (int $$19 = 0; $$0.a($$7, dtb.a::i) && $$19 < $$1.h; $$19++) {
-                  $$7.c($$9);
-               }
-
-               for (int var25 = 0; $$0.a($$7, $$0x -> !$$0x.i()) && var25 < $$1.h; var25++) {
-                  $$7.c($$10);
-               }
-
-               $$8.a($$7, $$1.e.a());
-               dtc $$20 = $$0.a_($$8);
-               if ($$0.u($$7) && $$20.d($$0, $$8, $$1.e.a().g())) {
-                  int $$21 = $$1.f.a($$2) + ($$1.g > 0.0F && $$2.i() < $$1.g ? 1 : 0);
-                  jd $$22 = $$8.j();
-                  boolean $$23 = this.a($$0, $$1, $$4, $$2, $$8, $$21);
-                  if ($$23) {
-                     $$11.add($$22);
-                  }
-               }
+   private boolean b(dds $$0, jd $$1) {
+      if (!this.a($$0, $$1) && !this.a($$0, $$1.e())) {
+         for (ji $$2 : ji.c.a) {
+            if (this.a($$0, $$1.a($$2))) {
+               return false;
             }
          }
-      }
 
-      return $$11;
-   }
-
-   protected void a(ecf<efg> $$0, dds $$1, efg $$2, ayw $$3, Set<jd> $$4, int $$5, int $$6) {
-      for (jd $$7 : $$4) {
-         if ($$2.i > 0.0F && $$3.i() < $$2.i) {
-            this.a($$1, $$2, $$0.c(), $$3, $$7);
-         }
+         return true;
+      } else {
+         return false;
       }
    }
 
-   protected boolean a(dds $$0, efg $$1, duz $$2, ayw $$3, jd $$4) {
-      return $$1.d.a().a($$0, $$2, $$3, $$4.a($$1.e.a().g()));
-   }
-
-   protected boolean a(dds $$0, efg $$1, Predicate<dtc> $$2, ayw $$3, jd.a $$4, int $$5) {
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         dtc $$7 = $$1.c.a($$3, $$4);
-         dtc $$8 = $$0.a_($$4);
-         if (!$$7.a($$8.b())) {
-            if (!$$2.test($$8)) {
-               return $$6 != 0;
-            }
-
-            $$0.a($$4, $$7, 2);
-            $$4.c($$1.e.a());
-         }
-      }
-
-      return true;
+   private boolean a(dcx $$0, jd $$1) {
+      dtc $$2 = $$0.a_($$1);
+      return $$2.a(dga.G) || $$2.i();
    }
 }

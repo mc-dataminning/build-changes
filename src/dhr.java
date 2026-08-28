@@ -97,7 +97,7 @@ public class dhr extends dfk {
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
       if ($$1.B) {
          return bqr.a;
       } else {
@@ -173,11 +173,11 @@ public class dhr extends dfk {
       }
 
       if (!$$8.e()) {
-         exa $$12 = exa.b($$1);
-         exa $$13 = $$12.a($$6, 0.7);
+         exc $$12 = exc.b($$1);
+         exc $$13 = $$12.a($$6, 0.7);
          kw.a($$0, $$8, 6, $$6, $$13);
 
-         for (aqv $$14 : $$0.a(aqv.class, ewv.a($$12, 17.0, 17.0, 17.0))) {
+         for (aqv $$14 : $$0.a(aqv.class, ewx.a($$12, 17.0, 17.0, 17.0))) {
             an.ad.a($$14, $$5.a(), $$2.j());
          }
 

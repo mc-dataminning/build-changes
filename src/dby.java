@@ -92,7 +92,7 @@ public abstract class dby {
                   }
 
                   bsr $$15 = bsx.a($$6, $$0, $$3x -> {
-                     $$3x.b($$10, $$11, $$12, $$3x.dF(), $$3x.dH());
+                     $$3x.b($$10, $$11, $$12, $$3x.dE(), $$3x.dG());
                      return $$3x;
                   });
                   if ($$15 == null) {
@@ -102,7 +102,7 @@ public abstract class dby {
 
                   int $$16 = $$0.a(
                         dxn.b($$15.getClass()),
-                        new ewv((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), (double)($$1.u() + 1), (double)($$1.v() + 1), (double)($$1.w() + 1))
+                        new ewx((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), (double)($$1.u() + 1), (double)($$1.v() + 1), (double)($$1.w() + 1))
                            .g((double)this.o),
                         bsw.f
                      )
@@ -112,7 +112,7 @@ public abstract class dby {
                      return;
                   }
 
-                  $$15.b($$15.du(), $$15.dw(), $$15.dA(), $$3.i() * 360.0F, 0.0F);
+                  $$15.b($$15.dt(), $$15.dv(), $$15.dz(), $$3.i() * 360.0F, 0.0F);
                   if ($$15 instanceof btp $$17) {
                      if ($$4.b().isEmpty() && !$$17.a($$0, btr.c) || !$$17.a($$0)) {
                         continue;
@@ -120,7 +120,7 @@ public abstract class dby {
 
                      boolean $$18 = $$4.a().f() == 1 && $$4.a().b("id", 8);
                      if ($$18) {
-                        ((btp)$$15).a($$0, $$0.d_($$15.dp()), btr.c, null);
+                        ((btp)$$15).a($$0, $$0.d_($$15.do()), btr.c, null);
                      }
 
                      $$4.c().ifPresent($$17::a);

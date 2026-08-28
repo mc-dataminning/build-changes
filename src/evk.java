@@ -2,46 +2,55 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import java.util.Set;
 
-public record evk(Optional<Boolean> b, Optional<Boolean> c) implements eva {
+public record evk(Optional<Long> b, erq c) implements evc {
    public static final MapCodec<evk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("raining").forGetter(evk::d), Codec.BOOL.optionalFieldOf("thundering").forGetter(evk::e))
-            .apply($$0, evk::new)
+      $$0 -> $$0.group(Codec.LONG.optionalFieldOf("period").forGetter(evk::c), erq.a.fieldOf("value").forGetter(evk::d)).apply($$0, evk::new)
    );
 
    @Override
-   public evb b() {
-      return evc.o;
+   public evd b() {
+      return eve.q;
    }
 
-   public boolean a(erp $$0) {
+   @Override
+   public Set<euk<?>> a() {
+      return this.c.a();
+   }
+
+   public boolean a(err $$0) {
       aqu $$1 = $$0.d();
-      return this.b.isPresent() && this.b.get() != $$1.ad() ? false : !this.c.isPresent() || this.c.get() == $$1.ac();
+      long $$2 = $$1.aa();
+      if (this.b.isPresent()) {
+         $$2 %= this.b.get();
+      }
+
+      return this.c.b($$0, (int)$$2);
    }
 
-   public static evk.a c() {
-      return new evk.a();
+   public static evk.a a(erq $$0) {
+      return new evk.a($$0);
    }
 
-   public Optional<Boolean> d() {
+   public Optional<Long> c() {
       return this.b;
    }
 
-   public Optional<Boolean> e() {
+   public erq d() {
       return this.c;
    }
 
-   public static class a implements eva.a {
-      private Optional<Boolean> a = Optional.empty();
-      private Optional<Boolean> b = Optional.empty();
+   public static class a implements evc.a {
+      private Optional<Long> a = Optional.empty();
+      private final erq b;
 
-      public evk.a a(boolean $$0) {
-         this.a = Optional.of($$0);
-         return this;
+      public a(erq $$0) {
+         this.b = $$0;
       }
 
-      public evk.a b(boolean $$0) {
-         this.b = Optional.of($$0);
+      public evk.a a(long $$0) {
+         this.a = Optional.of($$0);
          return this;
       }
 

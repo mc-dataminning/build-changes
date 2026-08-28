@@ -40,7 +40,7 @@ public abstract class aur {
    private final ava q = new ava(d);
    private final Map<UUID, avv> r = Maps.newHashMap();
    private final Map<UUID, akz> s = Maps.newHashMap();
-   private final erg t;
+   private final eri t;
    private boolean u;
    private final jt<ala> v;
    protected final int g;
@@ -50,7 +50,7 @@ public abstract class aur {
    private static final boolean z = false;
    private int A;
 
-   public aur(MinecraftServer $$0, jt<ala> $$1, erg $$2, int $$3) {
+   public aur(MinecraftServer $$0, jt<ala> $$1, eri $$2, int $$3) {
       this.k = $$0;
       this.v = $$1;
       this.g = $$3;
@@ -58,7 +58,7 @@ public abstract class aur {
    }
 
    public void a(vt $$0, aqv $$1, arj $$2) {
-      GameProfile $$3 = $$1.fY();
+      GameProfile $$3 = $$1.fX();
       aun $$4 = this.k.au();
       String $$6;
       if ($$4 != null) {
@@ -82,8 +82,8 @@ public abstract class aur {
 
       $$1.a($$11);
       String $$13 = $$0.a(this.k.bn());
-      h.info("{}[{}] logged in with entity id {} at ({}, {}, {})", new Object[]{$$1.ah().getString(), $$13, $$1.an(), $$1.du(), $$1.dw(), $$1.dA()});
-      eqz $$14 = $$11.A_();
+      h.info("{}[{}] logged in with entity id {} at ({}, {}, {})", new Object[]{$$1.ah().getString(), $$13, $$1.an(), $$1.dt(), $$1.dv(), $$1.dz()});
+      erb $$14 = $$11.A_();
       $$1.c($$8.orElse(null));
       aru $$15 = new aru(this.k, $$0, $$1, $$2);
       $$0.a(agh.a.a(wk.a(this.k.bc())), $$15);
@@ -93,8 +93,8 @@ public abstract class aur {
       boolean $$19 = $$16.b(dcs.w);
       $$15.b(new adl($$1.an(), $$14.l(), this.k.J(), this.n(), this.w, this.x, $$18, !$$17, $$19, $$1.b($$11), this.k.aB()));
       $$15.b(new ach($$14.q(), $$14.r()));
-      $$15.b(new adu($$1.ga()));
-      $$15.b(new aeu($$1.fZ().k));
+      $$15.b(new adu($$1.fZ()));
+      $$15.b(new aeu($$1.fY().k));
       $$15.b(new agc(this.k.aJ().b()));
       this.e($$1);
       $$1.I().c();
@@ -102,14 +102,14 @@ public abstract class aur {
       this.a($$11.f(), $$1);
       this.k.aw();
       xn $$20;
-      if ($$1.fY().getName().equalsIgnoreCase($$6)) {
+      if ($$1.fX().getName().equalsIgnoreCase($$6)) {
          $$20 = wz.a("multiplayer.player.joined", $$1.S_());
       } else {
          $$20 = wz.a("multiplayer.player.joined.renamed", $$1.S_(), $$6);
       }
 
       this.a($$20.a(n.o), false);
-      $$15.a($$1.du(), $$1.dw(), $$1.dA(), $$1.dF(), $$1.dH());
+      $$15.a($$1.dt(), $$1.dv(), $$1.dz(), $$1.dE(), $$1.dG());
       ajq $$22 = this.k.av();
       if ($$22 != null && !$$2.d()) {
          $$1.a($$22);
@@ -117,7 +117,7 @@ public abstract class aur {
 
       $$1.c.b(aea.a(this.l));
       this.l.add($$1);
-      this.m.put($$1.cA(), $$1);
+      this.m.put($$1.cz(), $$1);
       this.a(aea.a(List.of($$1)));
       this.a($$1, $$11);
       $$11.a($$1);
@@ -134,11 +134,11 @@ public abstract class aur {
                $$25 = null;
             }
 
-            if ($$24.cA().equals($$25)) {
+            if ($$24.cz().equals($$25)) {
                $$1.a($$24, true);
             } else {
-               for (bsr $$27 : $$24.cX()) {
-                  if ($$27.cA().equals($$25)) {
+               for (bsr $$27 : $$24.cW()) {
+                  if ($$27.cz().equals($$25)) {
                      $$1.a($$27, true);
                      break;
                   }
@@ -149,7 +149,7 @@ public abstract class aur {
                h.warn("Couldn't reattach entity to player");
                $$24.aq();
 
-               for (bsr $$28 : $$24.cX()) {
+               for (bsr $$28 : $$24.cW()) {
                   $$28.aq();
                }
             }
@@ -160,14 +160,14 @@ public abstract class aur {
    }
 
    protected void a(alk $$0, aqv $$1) {
-      Set<exw> $$2 = Sets.newHashSet();
+      Set<exy> $$2 = Sets.newHashSet();
 
-      for (exz $$3 : $$0.g()) {
+      for (eyb $$3 : $$0.g()) {
          $$1.c.b(afh.a($$3, true));
       }
 
-      for (exv $$4 : exv.values()) {
-         exw $$5 = $$0.a($$4);
+      for (exx $$4 : exx.values()) {
+         exy $$5 = $$0.a($$4);
          if ($$5 != null && !$$2.contains($$5)) {
             for (zg<?> $$7 : $$0.d($$5)) {
                $$1.c.b($$7);
@@ -218,7 +218,7 @@ public abstract class aur {
    public Optional<ub> a(aqv $$0) {
       ub $$1 = this.k.bb().w();
       Optional<ub> $$2;
-      if (this.k.a($$0.fY()) && $$1 != null) {
+      if (this.k.a($$0.fX()) && $$1 != null) {
          $$2 = Optional.of($$1);
          $$0.g($$1);
          h.debug("loading single player");
@@ -231,12 +231,12 @@ public abstract class aur {
 
    protected void b(aqv $$0) {
       this.t.a($$0);
-      avv $$1 = this.r.get($$0.cA());
+      avv $$1 = this.r.get($$0.cz());
       if ($$1 != null) {
          $$1.a();
       }
 
-      akz $$2 = this.s.get($$0.cA());
+      akz $$2 = this.s.get($$0.cz());
       if ($$2 != null) {
          $$2.b();
       }
@@ -247,11 +247,11 @@ public abstract class aur {
       $$0.a(avz.j);
       this.b($$0);
       if ($$0.bS()) {
-         bsr $$2 = $$0.da();
-         if ($$2.cZ()) {
+         bsr $$2 = $$0.cZ();
+         if ($$2.cY()) {
             h.debug("Removing player mount");
             $$0.ad();
-            $$2.cW().forEach($$0x -> $$0x.b(bsr.c.d));
+            $$2.cV().forEach($$0x -> $$0x.b(bsr.c.d));
          }
       }
 
@@ -260,7 +260,7 @@ public abstract class aur {
       $$0.R().a();
       this.l.remove($$0);
       this.k.aN().b($$0);
-      UUID $$3 = $$0.cA();
+      UUID $$3 = $$0.cz();
       aqv $$4 = this.m.get($$3);
       if ($$4 == $$0) {
          this.m.remove($$3);
@@ -268,7 +268,7 @@ public abstract class aur {
          this.s.remove($$3);
       }
 
-      this.a(new adz(List.of($$0.cA())));
+      this.a(new adz(List.of($$0.cz())));
    }
 
    @Nullable
@@ -305,7 +305,7 @@ public abstract class aur {
       Set<aqv> $$2 = Sets.newIdentityHashSet();
 
       for (aqv $$3 : this.l) {
-         if ($$3.cA().equals($$1)) {
+         if ($$3.cz().equals($$1)) {
             $$2.add($$3);
          }
       }
@@ -325,13 +325,13 @@ public abstract class aur {
    public aqv a(aqv $$0, boolean $$1, bsr.c $$2) {
       this.l.remove($$0);
       $$0.A().a($$0, $$2);
-      eqa $$3 = $$0.a($$1, eqa.a);
+      eqc $$3 = $$0.a($$1, eqc.a);
       aqu $$4 = $$3.a();
-      aqv $$5 = new aqv(this.k, $$4, $$0.fY(), $$0.C());
+      aqv $$5 = new aqv(this.k, $$4, $$0.fX(), $$0.C());
       $$5.c = $$0.c;
       $$5.a($$0, $$1);
       $$5.e($$0.an());
-      $$5.a($$0.fr());
+      $$5.a($$0.fq());
       if (!$$3.f()) {
          $$5.b($$0);
       }
@@ -340,7 +340,7 @@ public abstract class aur {
          $$5.a($$6);
       }
 
-      exa $$7 = $$3.b();
+      exc $$7 = $$3.b();
       $$5.b($$7.c, $$7.d, $$7.e, $$3.d(), $$3.e());
       if ($$3.f()) {
          $$5.c.b(new adb(adb.b, 0.0F));
@@ -348,9 +348,9 @@ public abstract class aur {
 
       byte $$8 = (byte)($$1 ? 1 : 0);
       aqu $$9 = $$5.A();
-      eqz $$10 = $$9.A_();
+      erb $$10 = $$9.A_();
       $$5.c.b(new aei($$5.b($$9), $$8));
-      $$5.c.a($$5.du(), $$5.dw(), $$5.dA(), $$5.dF(), $$5.dH());
+      $$5.c.a($$5.dt(), $$5.dv(), $$5.dz(), $$5.dE(), $$5.dG());
       $$5.c.b(new aex($$4.V(), $$4.W()));
       $$5.c.b(new ach($$10.q(), $$10.r()));
       $$5.c.b(new afd($$5.cs, $$5.cr, $$5.cq));
@@ -359,9 +359,9 @@ public abstract class aur {
       this.e($$5);
       $$4.b($$5);
       this.l.add($$5);
-      this.m.put($$5.cA(), $$5);
+      this.m.put($$5.cz(), $$5);
       $$5.h();
-      $$5.v($$5.ex());
+      $$5.v($$5.ew());
       if (!$$1) {
          jd $$11 = jd.a((jw)$$3.b());
          dtc $$12 = $$4.a_($$11);
@@ -378,13 +378,13 @@ public abstract class aur {
    }
 
    public void a(btn $$0, aru $$1) {
-      for (brz $$2 : $$0.eu()) {
+      for (brz $$2 : $$0.et()) {
          $$1.b(new agb($$0.an(), $$2, false));
       }
    }
 
    public void e(aqv $$0) {
-      GameProfile $$1 = $$0.fY();
+      GameProfile $$1 = $$0.fX();
       int $$2 = this.k.c($$1);
       this.a($$0, $$2);
    }
@@ -404,14 +404,14 @@ public abstract class aur {
 
    public void a(zg<?> $$0, akq<dcw> $$1) {
       for (aqv $$2 : this.l) {
-         if ($$2.dP().af() == $$1) {
+         if ($$2.dO().af() == $$1) {
             $$2.c.b($$0);
          }
       }
    }
 
    public void a(cmx $$0, wz $$1) {
-      eyg $$2 = $$0.ck();
+      eyi $$2 = $$0.ck();
       if ($$2 != null) {
          for (String $$4 : $$2.g()) {
             aqv $$5 = this.a($$4);
@@ -423,7 +423,7 @@ public abstract class aur {
    }
 
    public void b(cmx $$0, wz $$1) {
-      eyg $$2 = $$0.ck();
+      eyi $$2 = $$0.ck();
       if ($$2 == null) {
          this.a($$1, false);
       } else {
@@ -440,7 +440,7 @@ public abstract class aur {
       String[] $$0 = new String[this.l.size()];
 
       for (int $$1 = 0; $$1 < this.l.size(); $$1++) {
-         $$0[$$1] = this.l.get($$1).fY().getName();
+         $$0[$$1] = this.l.get($$1).fX().getName();
       }
 
       return $$0;
@@ -501,7 +501,7 @@ public abstract class aur {
 
       for (int $$2 = 0; $$2 < $$1; $$2++) {
          aqv $$3 = this.l.get($$2);
-         if ($$3.fY().getName().equalsIgnoreCase($$0)) {
+         if ($$3.fX().getName().equalsIgnoreCase($$0)) {
             return $$3;
          }
       }
@@ -512,10 +512,10 @@ public abstract class aur {
    public void a(@Nullable cmx $$0, double $$1, double $$2, double $$3, double $$4, akq<dcw> $$5, zg<?> $$6) {
       for (int $$7 = 0; $$7 < this.l.size(); $$7++) {
          aqv $$8 = this.l.get($$7);
-         if ($$8 != $$0 && $$8.dP().af() == $$5) {
-            double $$9 = $$1 - $$8.du();
-            double $$10 = $$2 - $$8.dw();
-            double $$11 = $$3 - $$8.dA();
+         if ($$8 != $$0 && $$8.dO().af() == $$5) {
+            double $$9 = $$1 - $$8.dt();
+            double $$10 = $$2 - $$8.dv();
+            double $$11 = $$3 - $$8.dz();
             if ($$9 * $$9 + $$10 * $$10 + $$11 * $$11 < $$4 * $$4) {
                $$8.c.b($$6);
             }
@@ -566,7 +566,7 @@ public abstract class aur {
    public void f(aqv $$0) {
       $$0.cc.b();
       $$0.x();
-      $$0.c.b(new aeu($$0.fZ().k));
+      $$0.c.b(new aeu($$0.fY().k));
    }
 
    public int m() {
@@ -669,10 +669,10 @@ public abstract class aur {
    }
 
    public avv a(cmx $$0) {
-      UUID $$1 = $$0.cA();
+      UUID $$1 = $$0.cz();
       avv $$2 = this.r.get($$1);
       if ($$2 == null) {
-         File $$3 = this.k.a(erb.b).toFile();
+         File $$3 = this.k.a(erd.b).toFile();
          File $$4 = new File($$3, $$1 + ".json");
          if (!$$4.exists()) {
             File $$5 = new File($$3, $$0.ah().getString() + ".json");
@@ -690,10 +690,10 @@ public abstract class aur {
    }
 
    public akz g(aqv $$0) {
-      UUID $$1 = $$0.cA();
+      UUID $$1 = $$0.cz();
       akz $$2 = this.s.get($$1);
       if ($$2 == null) {
-         Path $$3 = this.k.a(erb.a).resolve($$1 + ".json");
+         Path $$3 = this.k.a(erd.a).resolve($$1 + ".json");
          $$2 = new akz(this.k.aD(), this, this.k.aE(), $$3, $$0);
          this.s.put($$1, $$2);
       }

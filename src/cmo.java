@@ -241,12 +241,12 @@ public class cmo {
                   1,
                   new cmo.g[]{new cmo.b(cut.qO, 24, 16, 2), new cmo.i(cut.uj, 7, 1, 1)},
                   2,
-                  new cmo.g[]{new cmo.b(cut.fT, 11, 16, 10), new cmo.l(13, awq.d, "filled_map.monument", eqn.j, 12, 5)},
+                  new cmo.g[]{new cmo.b(cut.fT, 11, 16, 10), new cmo.l(13, awq.d, "filled_map.monument", eqp.j, 12, 5)},
                   3,
                   new cmo.g[]{
                      new cmo.b(cut.qS, 1, 12, 20),
-                     new cmo.l(14, awq.c, "filled_map.mansion", eqn.i, 12, 10),
-                     new cmo.l(12, awq.m, "filled_map.trial_chambers", eqn.I, 12, 10)
+                     new cmo.l(14, awq.c, "filled_map.mansion", eqp.i, 12, 10),
+                     new cmo.l(12, awq.m, "filled_map.trial_chambers", eqp.I, 12, 10)
                   },
                   4,
                   new cmo.g[]{
@@ -545,13 +545,13 @@ public class cmo {
          }
       )
    );
-   private static final cmo.l s = new cmo.l(8, awq.f, "filled_map.village_desert", eqn.B, 12, 5);
-   private static final cmo.l t = new cmo.l(8, awq.e, "filled_map.village_savanna", eqn.D, 12, 5);
-   private static final cmo.l u = new cmo.l(8, awq.g, "filled_map.village_plains", eqn.C, 12, 5);
-   private static final cmo.l v = new cmo.l(8, awq.h, "filled_map.village_taiga", eqn.F, 12, 5);
-   private static final cmo.l w = new cmo.l(8, awq.i, "filled_map.village_snowy", eqn.E, 12, 5);
-   private static final cmo.l x = new cmo.l(8, awq.j, "filled_map.explorer_jungle", eqn.G, 12, 5);
-   private static final cmo.l y = new cmo.l(8, awq.k, "filled_map.explorer_swamp", eqn.H, 12, 5);
+   private static final cmo.l s = new cmo.l(8, awq.f, "filled_map.village_desert", eqp.B, 12, 5);
+   private static final cmo.l t = new cmo.l(8, awq.e, "filled_map.village_savanna", eqp.D, 12, 5);
+   private static final cmo.l u = new cmo.l(8, awq.g, "filled_map.village_plains", eqp.C, 12, 5);
+   private static final cmo.l v = new cmo.l(8, awq.h, "filled_map.village_taiga", eqp.F, 12, 5);
+   private static final cmo.l w = new cmo.l(8, awq.i, "filled_map.village_snowy", eqp.E, 12, 5);
+   private static final cmo.l x = new cmo.l(8, awq.j, "filled_map.explorer_jungle", eqp.G, 12, 5);
+   private static final cmo.l y = new cmo.l(8, awq.k, "filled_map.explorer_swamp", eqp.H, 12, 5);
    public static final Map<cmn, Int2ObjectMap<cmo.g[]>> c = Map.of(
       cmn.k,
       a(
@@ -652,8 +652,8 @@ public class cmo {
             3,
             new cmo.g[]{
                new cmo.b(cut.qS, 1, 12, 20),
-               new cmo.l(13, awq.d, "filled_map.monument", eqn.j, 12, 10),
-               new cmo.l(12, awq.m, "filled_map.trial_chambers", eqn.I, 12, 10)
+               new cmo.l(13, awq.d, "filled_map.monument", eqp.j, 12, 10),
+               new cmo.l(12, awq.m, "filled_map.trial_chambers", eqp.I, 12, 10)
             },
             4,
             new cmo.g[]{
@@ -676,7 +676,7 @@ public class cmo {
                new cmo.i(cut.uX, 3, 1, 15)
             },
             5,
-            new cmo.g[]{new cmo.i(cut.wd, 8, 1, 30), new cmo.l(14, awq.c, "filled_map.mansion", eqn.i, 1, 30)}
+            new cmo.g[]{new cmo.i(cut.wd, 8, 1, 30), new cmo.l(14, awq.c, "filled_map.mansion", eqp.i, 1, 30)}
          )
       )
    );
@@ -921,7 +921,7 @@ public class cmo {
       @Override
       public dbu a(bsr $$0, ayw $$1) {
          if ($$0 instanceof cmm $$2) {
-            dbs $$3 = new dbs(this.a.get($$2.gw().a()), this.b);
+            dbs $$3 = new dbs(this.a.get($$2.gv().a()), this.b);
             return new dbu($$3, new cuq(cut.oA), this.c, this.d, 0.05F);
          } else {
             return null;
@@ -948,7 +948,7 @@ public class cmo {
 
       @Override
       public dbu a(bsr $$0, ayw $$1) {
-         Optional<jm<dac>> $$2 = $$0.dP().H_().d(lu.aL).a(this.b, $$1);
+         Optional<jm<dac>> $$2 = $$0.dO().H_().d(lu.aL).a(this.b, $$1);
          int $$9;
          cuq $$8;
          if (!$$2.isEmpty()) {
@@ -997,7 +997,7 @@ public class cmo {
       @Override
       public dbu a(bsr $$0, ayw $$1) {
          int $$2 = 5 + $$1.a(15);
-         ka $$3 = $$0.dP().H_();
+         ka $$3 = $$0.dO().H_();
          Optional<jq.c<dac>> $$4 = $$3.d(lu.aL).b(awh.m);
          cuq $$5 = dae.a($$1, new cuq(this.a.g()), $$2, $$3, $$4);
          int $$6 = Math.min(this.b + $$2, 64);
@@ -1053,8 +1053,8 @@ public class cmo {
       @Override
       public dbu a(bsr $$0, ayw $$1) {
          cuq $$2 = this.c.s();
-         dcw $$3 = $$0.dP();
-         this.g.ifPresent($$4 -> dae.a($$2, $$3.H_(), (akq<dbj>)$$4, $$3.d_($$0.dp()), $$1));
+         dcw $$3 = $$0.dO();
+         this.g.ifPresent($$4 -> dae.a($$2, $$3.H_(), (akq<dbj>)$$4, $$3.d_($$0.do()), $$1));
          return new dbu(new dbs(cut.oA, this.b), Optional.of(this.a), $$2, 0, this.d, this.e, this.f);
       }
    }
@@ -1108,8 +1108,8 @@ public class cmo {
       @Override
       public dbu a(bsr $$0, ayw $$1) {
          cuq $$2 = this.a.s();
-         dcw $$3 = $$0.dP();
-         this.f.ifPresent($$4 -> dae.a($$2, $$3.H_(), (akq<dbj>)$$4, $$3.d_($$0.dp()), $$1));
+         dcw $$3 = $$0.dO();
+         this.f.ifPresent($$4 -> dae.a($$2, $$3.H_(), (akq<dbj>)$$4, $$3.d_($$0.do()), $$1));
          return new dbu(new dbs(cut.oA, this.b), $$2, this.c, this.d, this.e);
       }
    }
@@ -1162,7 +1162,7 @@ public class cmo {
       @Override
       public dbu a(bsr $$0, ayw $$1) {
          dbs $$2 = new dbs(cut.oA, this.c);
-         List<jm<cws>> $$3 = lt.h.i().filter($$1x -> !((cws)$$1x.a()).a().isEmpty() && $$0.dP().K().a($$1x)).collect(Collectors.toList());
+         List<jm<cws>> $$3 = lt.h.i().filter($$1x -> !((cws)$$1x.a()).a().isEmpty() && $$0.dO().K().a($$1x)).collect(Collectors.toList());
          jm<cws> $$4 = ad.a($$3, $$1);
          cuq $$5 = new cuq(this.a.g(), this.b);
          $$5.b(kq.G, new cwu($$4));
@@ -1172,13 +1172,13 @@ public class cmo {
 
    static class l implements cmo.g {
       private final int a;
-      private final awu<ejp> b;
+      private final awu<ejr> b;
       private final String c;
-      private final jm<eqm> d;
+      private final jm<eqo> d;
       private final int e;
       private final int f;
 
-      public l(int $$0, awu<ejp> $$1, String $$2, jm<eqm> $$3, int $$4, int $$5) {
+      public l(int $$0, awu<ejr> $$1, String $$2, jm<eqo> $$3, int $$4, int $$5) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
@@ -1190,15 +1190,15 @@ public class cmo {
       @Nullable
       @Override
       public dbu a(bsr $$0, ayw $$1) {
-         if (!($$0.dP() instanceof aqu)) {
+         if (!($$0.dO() instanceof aqu)) {
             return null;
          } else {
-            aqu $$2 = (aqu)$$0.dP();
-            jd $$3 = $$2.a(this.b, $$0.dp(), 100, true);
+            aqu $$2 = (aqu)$$0.dO();
+            jd $$3 = $$2.a(this.b, $$0.do(), 100, true);
             if ($$3 != null) {
                cuq $$4 = cvc.a($$2, $$3.u(), $$3.w(), (byte)2, true, true);
                cvc.a($$2, $$4);
-               eqr.a($$4, $$3, "+", this.d);
+               eqt.a($$4, $$3, "+", this.d);
                $$4.b(kq.h, wz.c(this.c));
                return new dbu(new dbs(cut.oA, this.a), Optional.of(new dbs(cut.qS)), $$4, this.e, this.f, 0.2F);
             } else {
@@ -1217,7 +1217,7 @@ public class cmo {
       @Override
       public dbu a(bsr $$0, ayw $$1) {
          if ($$0 instanceof cmm $$2) {
-            cmp $$3 = $$2.gw().a();
+            cmp $$3 = $$2.gv().a();
             cmo.g $$4 = this.a.get($$3);
             return $$4 == null ? null : $$4.a($$0, $$1);
          } else {

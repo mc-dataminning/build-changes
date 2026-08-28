@@ -7,11 +7,11 @@ public class ahh implements zg<agi> {
    private final float f;
 
    public ahh(bsr $$0) {
-      this.b = $$0.du();
-      this.c = $$0.dw();
-      this.d = $$0.dA();
-      this.e = $$0.dF();
-      this.f = $$0.dH();
+      this.b = $$0.dt();
+      this.c = $$0.dv();
+      this.d = $$0.dz();
+      this.e = $$0.dE();
+      this.f = $$0.dG();
    }
 
    private ahh(vw $$0) {

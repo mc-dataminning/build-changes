@@ -21,7 +21,7 @@ public class cjt extends ckd implements btt {
 
    public cjt(bsx<? extends cjt> $$0, dcw $$1) {
       super($$0, $$1);
-      this.a(ept.j, -1.0F);
+      this.a(epv.j, -1.0F);
    }
 
    @Override
@@ -41,7 +41,7 @@ public class cjt extends ckd implements btt {
    }
 
    public static buv.a s() {
-      return ckd.gr().a(buw.s, 40.0).a(buw.v, 0.3F).a(buw.c, 7.0).a(buw.m, 64.0).a(buw.B, 1.0);
+      return ckd.gq().a(buw.s, 40.0).a(buw.v, 0.3F).a(buw.c, 7.0).a(buw.m, 64.0).a(buw.B, 1.0);
    }
 
    @Override
@@ -100,14 +100,14 @@ public class cjt extends ckd implements btt {
       if (this.ai >= this.ce + 400) {
          this.ce = this.ai;
          if (!this.aX()) {
-            this.dP().a(this.du(), this.dy(), this.dA(), avp.in, this.df(), 2.5F, 1.0F, false);
+            this.dO().a(this.dt(), this.dx(), this.dz(), avp.in, this.de(), 2.5F, 1.0F, false);
          }
       }
    }
 
    @Override
    public void a(ajw<?> $$0) {
-      if (cc.equals($$0) && this.gn() && this.dP().B) {
+      if (cc.equals($$0) && this.gm() && this.dO().B) {
          this.t();
       }
 
@@ -117,7 +117,7 @@ public class cjt extends ckd implements btt {
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      dtc $$1 = this.gl();
+      dtc $$1 = this.gk();
       if ($$1 != null) {
          $$0.a("carriedBlockState", uq.a($$1));
       }
@@ -130,23 +130,23 @@ public class cjt extends ckd implements btt {
       super.a($$0);
       dtc $$1 = null;
       if ($$0.b("carriedBlockState", 10)) {
-         $$1 = uq.a(this.dP().a(lu.f), $$0.p("carriedBlockState"));
+         $$1 = uq.a(this.dO().a(lu.f), $$0.p("carriedBlockState"));
          if ($$1.i()) {
             $$1 = null;
          }
       }
 
       this.c($$1);
-      this.a(this.dP(), $$0);
+      this.a(this.dO(), $$0);
    }
 
    boolean f(cmx $$0) {
-      cuq $$1 = $$0.fZ().i.get(3);
+      cuq $$1 = $$0.fY().i.get(3);
       if ($$1.a(dga.ee.r())) {
          return false;
       } else {
-         exa $$2 = $$0.g(1.0F).d();
-         exa $$3 = new exa(this.du() - $$0.du(), this.dy() - $$0.dy(), this.dA() - $$0.dA());
+         exc $$2 = $$0.g(1.0F).d();
+         exc $$3 = new exc(this.dt() - $$0.dt(), this.dx() - $$0.dx(), this.dz() - $$0.dz());
          double $$4 = $$3.f();
          $$3 = $$3.d();
          double $$5 = $$2.b($$3);
@@ -156,30 +156,30 @@ public class cjt extends ckd implements btt {
 
    @Override
    public void m_() {
-      if (this.dP().B) {
+      if (this.dO().B) {
          for (int $$0 = 0; $$0 < 2; $$0++) {
-            this.dP().a(lm.ac, this.d(0.5), this.dx() - 0.25, this.g(0.5), (this.ah.j() - 0.5) * 2.0, -this.ah.j(), (this.ah.j() - 0.5) * 2.0);
+            this.dO().a(lm.ac, this.d(0.5), this.dw() - 0.25, this.g(0.5), (this.ah.j() - 0.5) * 2.0, -this.ah.j(), (this.ah.j() - 0.5) * 2.0);
          }
       }
 
       this.bn = false;
-      if (!this.dP().B) {
-         this.a((aqu)this.dP(), true);
+      if (!this.dO().B) {
+         this.a((aqu)this.dO(), true);
       }
 
       super.m_();
    }
 
    @Override
-   public boolean fm() {
+   public boolean fl() {
       return true;
    }
 
    @Override
    protected void ab() {
-      if (this.dP().R() && this.ai >= this.cf + 600) {
+      if (this.dO().R() && this.ai >= this.cf + 600) {
          float $$0 = this.bu();
-         if ($$0 > 0.5F && this.dP().h(this.dp()) && this.ah.i() * 30.0F < ($$0 - 0.4F) * 2.0F) {
+         if ($$0 > 0.5F && this.dO().h(this.do()) && this.ah.i() * 30.0F < ($$0 - 0.4F) * 2.0F) {
             this.h(null);
             this.x();
          }
@@ -189,10 +189,10 @@ public class cjt extends ckd implements btt {
    }
 
    protected boolean x() {
-      if (!this.dP().x_() && this.bE()) {
-         double $$0 = this.du() + (this.ah.j() - 0.5) * 64.0;
-         double $$1 = this.dw() + (double)(this.ah.a(64) - 32);
-         double $$2 = this.dA() + (this.ah.j() - 0.5) * 64.0;
+      if (!this.dO().x_() && this.bE()) {
+         double $$0 = this.dt() + (this.ah.j() - 0.5) * 64.0;
+         double $$1 = this.dv() + (double)(this.ah.a(64) - 32);
+         double $$2 = this.dz() + (this.ah.j() - 0.5) * 64.0;
          return this.q($$0, $$1, $$2);
       } else {
          return false;
@@ -200,32 +200,32 @@ public class cjt extends ckd implements btt {
    }
 
    boolean c(bsr $$0) {
-      exa $$1 = new exa(this.du() - $$0.du(), this.e(0.5) - $$0.dy(), this.dA() - $$0.dA());
+      exc $$1 = new exc(this.dt() - $$0.dt(), this.e(0.5) - $$0.dx(), this.dz() - $$0.dz());
       $$1 = $$1.d();
       double $$2 = 16.0;
-      double $$3 = this.du() + (this.ah.j() - 0.5) * 8.0 - $$1.c * 16.0;
-      double $$4 = this.dw() + (double)(this.ah.a(16) - 8) - $$1.d * 16.0;
-      double $$5 = this.dA() + (this.ah.j() - 0.5) * 8.0 - $$1.e * 16.0;
+      double $$3 = this.dt() + (this.ah.j() - 0.5) * 8.0 - $$1.c * 16.0;
+      double $$4 = this.dv() + (double)(this.ah.a(16) - 8) - $$1.d * 16.0;
+      double $$5 = this.dz() + (this.ah.j() - 0.5) * 8.0 - $$1.e * 16.0;
       return this.q($$3, $$4, $$5);
    }
 
    private boolean q(double $$0, double $$1, double $$2) {
       jd.a $$3 = new jd.a($$0, $$1, $$2);
 
-      while ($$3.v() > this.dP().I_() && !this.dP().a_($$3).d()) {
+      while ($$3.v() > this.dO().I_() && !this.dO().a_($$3).d()) {
          $$3.c(ji.a);
       }
 
-      dtc $$4 = this.dP().a_($$3);
+      dtc $$4 = this.dO().a_($$3);
       boolean $$5 = $$4.d();
       boolean $$6 = $$4.u().a(awk.a);
       if ($$5 && !$$6) {
-         exa $$7 = this.dn();
+         exc $$7 = this.dm();
          boolean $$8 = this.b($$0, $$1, $$2, true);
          if ($$8) {
-            this.dP().a(dxz.R, $$7, dxz.a.a(this));
+            this.dO().a(dxz.R, $$7, dxz.a.a(this));
             if (!this.aX()) {
-               this.dP().a(null, this.L, this.M, this.N, avp.io, this.df(), 1.0F, 1.0F);
+               this.dO().a(null, this.L, this.M, this.N, avp.io, this.de(), 1.0F, 1.0F);
                this.a(avp.io, 1.0F, 1.0F);
             }
          }
@@ -238,7 +238,7 @@ public class cjt extends ckd implements btt {
 
    @Override
    protected avo v() {
-      return this.gm() ? avp.im : avp.ij;
+      return this.gl() ? avp.im : avp.ij;
    }
 
    @Override
@@ -254,11 +254,11 @@ public class cjt extends ckd implements btt {
    @Override
    protected void a(aqu $$0, brk $$1, boolean $$2) {
       super.a($$0, $$1, $$2);
-      dtc $$3 = this.gl();
+      dtc $$3 = this.gk();
       if ($$3 != null) {
          cuq $$4 = new cuq(cut.pj);
-         dae.a($$4, $$0.H_(), dbp.g, $$0.d_(this.dp()), this.dS());
-         ers.a $$5 = new ers.a((aqu)this.dP()).a(eul.f, this.dn()).a(eul.i, $$4).b(eul.a, this);
+         dae.a($$4, $$0.H_(), dbp.g, $$0.d_(this.do()), this.dR());
+         eru.a $$5 = new eru.a((aqu)this.dO()).a(eun.f, this.dm()).a(eun.i, $$4).b(eun.a, this);
 
          for (cuq $$7 : $$3.a($$5)) {
             this.b($$7);
@@ -271,7 +271,7 @@ public class cjt extends ckd implements btt {
    }
 
    @Nullable
-   public dtc gl() {
+   public dtc gk() {
       return this.ao.a(cb).orElse(null);
    }
 
@@ -283,7 +283,7 @@ public class cjt extends ckd implements btt {
          boolean $$2 = $$0.c() instanceof cob;
          if (!$$0.a(awg.j) && !$$2) {
             boolean $$5 = super.a($$0, $$1);
-            if (!this.dP().x_() && !($$0.d() instanceof btn) && this.ah.a(10) != 0) {
+            if (!this.dO().x_() && !($$0.d() instanceof btn) && this.ah.a(10) != 0) {
                this.x();
             }
 
@@ -308,21 +308,21 @@ public class cjt extends ckd implements btt {
       return $$4.a(cwv.a) ? super.a($$0, $$2) : false;
    }
 
-   public boolean gm() {
+   public boolean gl() {
       return this.ao.a(cc);
    }
 
-   public boolean gn() {
+   public boolean gm() {
       return this.ao.a(cd);
    }
 
-   public void go() {
+   public void gn() {
       this.ao.a(cd, true);
    }
 
    @Override
    public boolean Y() {
-      return super.Y() || this.gl() != null;
+      return super.Y() || this.gk() != null;
    }
 
    static class a extends cam {
@@ -353,7 +353,7 @@ public class cjt extends ckd implements btt {
 
       @Override
       public void a() {
-         this.a.I().a(this.b.du(), this.b.dy(), this.b.dA());
+         this.a.I().a(this.b.dt(), this.b.dx(), this.b.dz());
       }
    }
 
@@ -366,27 +366,27 @@ public class cjt extends ckd implements btt {
 
       @Override
       public boolean b() {
-         if (this.a.gl() == null) {
+         if (this.a.gk() == null) {
             return false;
          } else {
-            return !this.a.dP().ab().b(dcs.c) ? false : this.a.dS().a(b(2000)) == 0;
+            return !this.a.dO().ab().b(dcs.c) ? false : this.a.dR().a(b(2000)) == 0;
          }
       }
 
       @Override
       public void a() {
-         ayw $$0 = this.a.dS();
-         dcw $$1 = this.a.dP();
-         int $$2 = ayo.a(this.a.du() - 1.0 + $$0.j() * 2.0);
-         int $$3 = ayo.a(this.a.dw() + $$0.j() * 2.0);
-         int $$4 = ayo.a(this.a.dA() - 1.0 + $$0.j() * 2.0);
+         ayw $$0 = this.a.dR();
+         dcw $$1 = this.a.dO();
+         int $$2 = ayo.a(this.a.dt() - 1.0 + $$0.j() * 2.0);
+         int $$3 = ayo.a(this.a.dv() + $$0.j() * 2.0);
+         int $$4 = ayo.a(this.a.dz() - 1.0 + $$0.j() * 2.0);
          jd $$5 = new jd($$2, $$3, $$4);
          dtc $$6 = $$1.a_($$5);
          jd $$7 = $$5.e();
          dtc $$8 = $$1.a_($$7);
-         dtc $$9 = this.a.gl();
+         dtc $$9 = this.a.gk();
          if ($$9 != null) {
-            $$9 = dfy.b($$9, this.a.dP(), $$5);
+            $$9 = dfy.b($$9, this.a.dO(), $$5);
             if (this.a($$1, $$5, $$9, $$6, $$8, $$7)) {
                $$1.a($$5, $$9, 3);
                $$1.a(dxz.i, $$5, dxz.a.a(this.a, $$9));
@@ -396,7 +396,7 @@ public class cjt extends ckd implements btt {
       }
 
       private boolean a(dcw $$0, jd $$1, dtc $$2, dtc $$3, dtc $$4, jd $$5) {
-         return $$3.i() && !$$4.i() && !$$4.a(dga.F) && $$4.r($$0, $$5) && $$2.a((dcz)$$0, $$1) && $$0.a_(this.a, ewv.a(exa.a($$1))).isEmpty();
+         return $$3.i() && !$$4.i() && !$$4.a(dga.F) && $$4.r($$0, $$5) && $$2.a((dcz)$$0, $$1) && $$0.a_(this.a, ewx.a(exc.a($$1))).isEmpty();
       }
    }
 
@@ -419,7 +419,7 @@ public class cjt extends ckd implements btt {
 
       @Override
       public boolean b() {
-         this.j = this.i.dP().a(this.m, this.i);
+         this.j = this.i.dO().a(this.m, this.i);
          return this.j != null;
       }
 
@@ -427,7 +427,7 @@ public class cjt extends ckd implements btt {
       public void d() {
          this.k = this.a(5);
          this.l = 0;
-         this.i.go();
+         this.i.gn();
       }
 
       @Override
@@ -499,27 +499,27 @@ public class cjt extends ckd implements btt {
 
       @Override
       public boolean b() {
-         if (this.a.gl() != null) {
+         if (this.a.gk() != null) {
             return false;
          } else {
-            return !this.a.dP().ab().b(dcs.c) ? false : this.a.dS().a(b(20)) == 0;
+            return !this.a.dO().ab().b(dcs.c) ? false : this.a.dR().a(b(20)) == 0;
          }
       }
 
       @Override
       public void a() {
-         ayw $$0 = this.a.dS();
-         dcw $$1 = this.a.dP();
-         int $$2 = ayo.a(this.a.du() - 2.0 + $$0.j() * 4.0);
-         int $$3 = ayo.a(this.a.dw() + $$0.j() * 3.0);
-         int $$4 = ayo.a(this.a.dA() - 2.0 + $$0.j() * 4.0);
+         ayw $$0 = this.a.dR();
+         dcw $$1 = this.a.dO();
+         int $$2 = ayo.a(this.a.dt() - 2.0 + $$0.j() * 4.0);
+         int $$3 = ayo.a(this.a.dv() + $$0.j() * 3.0);
+         int $$4 = ayo.a(this.a.dz() - 2.0 + $$0.j() * 4.0);
          jd $$5 = new jd($$2, $$3, $$4);
          dtc $$6 = $$1.a_($$5);
-         exa $$7 = new exa((double)this.a.dt() + 0.5, (double)$$3 + 0.5, (double)this.a.dz() + 0.5);
-         exa $$8 = new exa((double)$$2 + 0.5, (double)$$3 + 0.5, (double)$$4 + 0.5);
-         eww $$9 = $$1.a(new dcf($$7, $$8, dcf.a.b, dcf.b.a, this.a));
+         exc $$7 = new exc((double)this.a.ds() + 0.5, (double)$$3 + 0.5, (double)this.a.dy() + 0.5);
+         exc $$8 = new exc((double)$$2 + 0.5, (double)$$3 + 0.5, (double)$$4 + 0.5);
+         ewy $$9 = $$1.a(new dcf($$7, $$8, dcf.a.b, dcf.b.a, this.a));
          boolean $$10 = $$9.a().equals($$5);
-         if ($$6.a(awe.al) && $$10) {
+         if ($$6.a(awe.am) && $$10) {
             $$1.a($$5, false);
             $$1.a(dxz.f, $$5, dxz.a.a(this.a, $$6));
             this.a.c($$6.b().o());

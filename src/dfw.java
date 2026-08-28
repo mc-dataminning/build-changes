@@ -5,10 +5,10 @@ public class dfw extends dju implements dgb, dna {
    public static final MapCodec<dfw> a = b(dfw::new);
    private static final dtt f = dts.C;
    private static final int g = 6;
-   protected static final ext b = dfy.a(5.0, 0.0, 9.0, 11.0, 16.0, 15.0);
-   protected static final ext c = dfy.a(5.0, 0.0, 1.0, 11.0, 16.0, 7.0);
-   protected static final ext d = dfy.a(1.0, 0.0, 5.0, 7.0, 16.0, 11.0);
-   protected static final ext e = dfy.a(9.0, 0.0, 5.0, 15.0, 16.0, 11.0);
+   protected static final exv b = dfy.a(5.0, 0.0, 9.0, 11.0, 16.0, 15.0);
+   protected static final exv c = dfy.a(5.0, 0.0, 1.0, 11.0, 16.0, 7.0);
+   protected static final exv d = dfy.a(1.0, 0.0, 5.0, 7.0, 16.0, 11.0);
+   protected static final exv e = dfy.a(9.0, 0.0, 5.0, 15.0, 16.0, 11.0);
 
    @Override
    public MapCodec<dfw> a() {
@@ -21,7 +21,7 @@ public class dfw extends dju implements dgb, dna {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       switch ((ji)$$0.c(aE)) {
          case d:
             return c;
@@ -41,8 +41,8 @@ public class dfw extends dju implements dgb, dna {
    }
 
    @Override
-   protected epc b_(dtc $$0) {
-      return $$0.c(f) ? epd.c.a(false) : super.b_($$0);
+   protected epe b_(dtc $$0) {
+      return $$0.c(f) ? epf.c.a(false) : super.b_($$0);
    }
 
    @Override
@@ -50,11 +50,11 @@ public class dfw extends dju implements dgb, dna {
       jd $$3 = $$2.e();
       dtc $$4 = $$1.a_($$3);
       dtc $$5 = $$1.a_($$2.d());
-      return ($$4.a(this) || $$4.a(awe.by)) && ($$5.a(this) || $$5.a(dga.sD));
+      return ($$4.a(this) || $$4.a(awe.bz)) && ($$5.a(this) || $$5.a(dga.sD));
    }
 
-   protected static boolean a(dcx $$0, jd $$1, epc $$2, ji $$3) {
-      dtc $$4 = dga.sE.o().a(f, Boolean.valueOf($$2.a(epd.c))).a(aE, $$3);
+   protected static boolean a(dcx $$0, jd $$1, epe $$2, ji $$3) {
+      dtc $$4 = dga.sE.o().a(f, Boolean.valueOf($$2.a(epf.c))).a(aE, $$3);
       return $$0.a($$1, $$4, 3);
    }
 
@@ -65,7 +65,7 @@ public class dfw extends dju implements dgb, dna {
       }
 
       if ($$0.c(f)) {
-         $$3.a($$4, epd.c, epd.c.a($$3));
+         $$3.a($$4, epf.c, epf.c.a($$3));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);

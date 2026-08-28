@@ -37,7 +37,7 @@ public class cau extends cam {
 
    @Override
    public boolean b() {
-      if (this.b.dS().i() >= this.e) {
+      if (this.b.dR().i() >= this.e) {
          return false;
       } else {
          if (this.b.p() != null) {
@@ -45,11 +45,11 @@ public class cau extends cam {
          }
 
          if (this.f == cmx.class) {
-            this.c = this.b.dP().a(this.g, this.b, this.b.du(), this.b.dy(), this.b.dA());
+            this.c = this.b.dO().a(this.g, this.b, this.b.dt(), this.b.dx(), this.b.dz());
          } else {
             this.c = this.b
-               .dP()
-               .a(this.b.dP().a(this.f, this.b.cL().c((double)this.d, 3.0, (double)this.d), $$0 -> true), this.g, this.b, this.b.du(), this.b.dy(), this.b.dA());
+               .dO()
+               .a(this.b.dO().a(this.f, this.b.cK().c((double)this.d, 3.0, (double)this.d), $$0 -> true), this.g, this.b, this.b.dt(), this.b.dx(), this.b.dz());
          }
 
          return this.c != null;
@@ -67,7 +67,7 @@ public class cau extends cam {
 
    @Override
    public void d() {
-      this.h = this.a(40 + this.b.dS().a(40));
+      this.h = this.a(40 + this.b.dR().a(40));
    }
 
    @Override
@@ -78,8 +78,8 @@ public class cau extends cam {
    @Override
    public void a() {
       if (this.c.bE()) {
-         double $$0 = this.i ? this.b.dy() : this.c.dy();
-         this.b.I().a(this.c.du(), $$0, this.c.dA());
+         double $$0 = this.i ? this.b.dx() : this.c.dx();
+         this.b.I().a(this.c.dt(), $$0, this.c.dz());
          this.h--;
       }
    }

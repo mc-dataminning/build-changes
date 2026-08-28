@@ -5,8 +5,8 @@ public class dgj extends dfy {
    public static final duc b = dts.aw;
    public static final int c = 15;
    protected static final int d = 1;
-   protected static final ext e = dfy.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
-   protected static final ext f = dfy.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+   protected static final exv e = dfy.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
+   protected static final exv f = dfy.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
    public MapCodec<dgj> a() {
@@ -50,12 +50,12 @@ public class dgj extends dfy {
    }
 
    @Override
-   protected ext b(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv b(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return e;
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return f;
    }
 
@@ -78,7 +78,7 @@ public class dgj extends dfy {
       }
 
       dtc $$5 = $$1.a_($$2.e());
-      return ($$5.a(dga.dQ) || $$5.a(awe.H)) && !$$1.a_($$2.d()).k();
+      return ($$5.a(dga.dQ) || $$5.a(awe.I)) && !$$1.a_($$2.d()).k();
    }
 
    @Override
@@ -92,7 +92,7 @@ public class dgj extends dfy {
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return false;
    }
 }

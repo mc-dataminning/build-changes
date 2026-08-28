@@ -6,7 +6,7 @@ public class chy extends bsr {
    private final bsu d;
 
    public chy(cia $$0, String $$1, float $$2, float $$3) {
-      super($$0.am(), $$0.dP());
+      super($$0.am(), $$0.dO());
       this.d = bsu.b($$2, $$3);
       this.i_();
       this.b = $$0;
@@ -32,8 +32,8 @@ public class chy extends bsr {
 
    @Nullable
    @Override
-   public cuq dC() {
-      return this.b.dC();
+   public cuq dB() {
+      return this.b.dB();
    }
 
    @Override
@@ -57,7 +57,7 @@ public class chy extends bsr {
    }
 
    @Override
-   public boolean dN() {
+   public boolean dM() {
       return false;
    }
 }

@@ -1,100 +1,82 @@
-public class fpd extends foq<cqj> {
-   private static final akr E = akr.b("container/crafter/disabled_slot");
-   private static final akr F = akr.b("container/crafter/powered_redstone");
-   private static final akr G = akr.b("container/crafter/unpowered_redstone");
-   private static final akr H = akr.b("textures/gui/container/crafter.png");
-   private static final wz I = wz.c("gui.togglable_slot");
-   private final cmx J;
+public class fpd extends fos {
+   private final dqr u;
+   private fit<dqr.a> v;
+   private fit<Boolean> w;
+   private fit<Boolean> x;
+   private dqr.a y = dqr.a.c;
+   private boolean z;
+   private boolean A;
 
-   public fpd(cqj $$0, cmw $$1, wz $$2) {
-      super($$0, $$1, $$2);
-      this.J = $$1.l;
+   public fpd(dqr $$0) {
+      this.u = $$0;
+   }
+
+   @Override
+   dbx m() {
+      return this.u.b();
+   }
+
+   @Override
+   int C() {
+      return 135;
    }
 
    @Override
    protected void aT_() {
       super.aT_();
-      this.s = (this.c - this.o.a(this.k)) / 2;
+      this.v = this.c(fit.<dqr.a>a($$0 -> {
+         return switch ($$0) {
+            case a -> wz.c("advMode.mode.sequence");
+            case b -> wz.c("advMode.mode.auto");
+            case c -> wz.c("advMode.mode.redstone");
+         };
+      }).a(dqr.a.values()).a().a(this.y).a(this.m / 2 - 50 - 100 - 4, 165, 100, 20, wz.c("advMode.mode"), ($$0, $$1) -> this.y = $$1));
+      this.w = this.c(
+         fit.a(wz.c("advMode.mode.conditional"), wz.c("advMode.mode.unconditional"))
+            .a()
+            .a(this.z)
+            .a(this.m / 2 - 50, 165, 100, 20, wz.c("advMode.type"), ($$0, $$1) -> this.z = $$1)
+      );
+      this.x = this.c(
+         fit.a(wz.c("advMode.mode.autoexec.bat"), wz.c("advMode.mode.redstoneTriggered"))
+            .a()
+            .a(this.A)
+            .a(this.m / 2 + 50 + 4, 165, 100, 20, wz.c("advMode.triggering"), ($$0, $$1) -> this.A = $$1)
+      );
+      this.f(false);
+   }
+
+   private void f(boolean $$0) {
+      this.c.j = $$0;
+      this.s.j = $$0;
+      this.v.j = $$0;
+      this.w.j = $$0;
+      this.x.j = $$0;
+   }
+
+   public void E() {
+      dbx $$0 = this.u.b();
+      this.a.a($$0.m());
+      boolean $$1 = $$0.p();
+      this.y = this.u.l();
+      this.z = this.u.u();
+      this.A = this.u.d();
+      this.s.a($$1);
+      this.v.a(this.y);
+      this.w.a(this.z);
+      this.x.a(this.A);
+      this.c($$1);
+      this.f(true);
    }
 
    @Override
-   protected void a(crq $$0, int $$1, int $$2, cqe $$3) {
-      if ($$0 instanceof cqk && !$$0.h() && !this.J.R_()) {
-         switch ($$3) {
-            case a:
-               if (this.x.e($$1)) {
-                  this.a($$1);
-               } else if (this.x.g().e()) {
-                  this.b($$1);
-               }
-               break;
-            case c:
-               cuq $$4 = this.J.fZ().a($$2);
-               if (this.x.e($$1) && !$$4.e()) {
-                  this.a($$1);
-               }
-         }
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   private void a(int $$0) {
-      this.a($$0, true);
-   }
-
-   private void b(int $$0) {
-      this.a($$0, false);
-   }
-
-   private void a(int $$0, boolean $$1) {
-      this.x.a($$0, $$1);
-      super.a($$0, this.x.j, $$1);
-      float $$2 = $$1 ? 1.0F : 0.75F;
-      this.J.a(avp.Ar.a(), 0.4F, $$2);
+   public void a(fgo $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.f(true);
    }
 
    @Override
-   public void a(fhx $$0, crq $$1) {
-      if ($$1 instanceof cqk $$2 && this.x.e($$1.d)) {
-         this.a($$0, $$2);
-         return;
-      }
-
-      super.a($$0, $$1);
-   }
-
-   private void a(fhx $$0, cqk $$1) {
-      $$0.a(E, $$1.e - 1, $$1.f - 1, 18, 18);
-   }
-
-   @Override
-   public void a(fhx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c($$0);
-      this.a($$0, $$1, $$2);
-      if (this.z instanceof cqk && !this.x.e(this.z.d) && this.x.g().e() && !this.z.h() && !this.J.R_()) {
-         $$0.a(this.o, I, $$1, $$2);
-      }
-   }
-
-   private void c(fhx $$0) {
-      int $$1 = this.m / 2 + 9;
-      int $$2 = this.n / 2 - 48;
-      akr $$3;
-      if (this.x.l()) {
-         $$3 = F;
-      } else {
-         $$3 = G;
-      }
-
-      $$0.a($$3, $$1, $$2, 16, 16);
-   }
-
-   @Override
-   protected void a(fhx $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.m - this.c) / 2;
-      int $$5 = (this.n - this.r) / 2;
-      $$0.a(H, $$4, $$5, 0, 0, this.c, this.r);
+   protected void a(dbx $$0) {
+      this.l.L().b(new ahw(jd.a((jw)$$0.g()), this.a.a(), this.y, $$0.p(), this.z, this.A));
    }
 }

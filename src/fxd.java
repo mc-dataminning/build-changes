@@ -1,61 +1,58 @@
-public class fxd<T extends btp & ckh> extends fvv<T> {
-   public fxd(fyi $$0) {
-      super($$0);
+import com.google.common.collect.ImmutableList;
+
+public class fxd<T extends ckj> extends fwc<T> {
+   private static final String a = "lid";
+   private static final String b = "base";
+   private final fyk f;
+   private final fyk g;
+   private final fyk h;
+
+   public fxd(fyk $$0) {
+      super(gfh::f);
+      this.g = $$0.b("lid");
+      this.f = $$0.b("base");
+      this.h = $$0.b("head");
    }
 
-   public static fyo e() {
-      fyq $$0 = fvv.a(fym.a, 0.0F);
-      fyr $$1 = $$0.a();
-      a($$1);
-      return fyo.a($$0, 64, 32);
-   }
-
-   protected static void a(fyr $$0) {
-      $$0.a("right_arm", fyn.c().a(40, 16).a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fyk.a(-5.0F, 2.0F, 0.0F));
-      $$0.a("left_arm", fyn.c().a(40, 16).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fyk.a(5.0F, 2.0F, 0.0F));
-      $$0.a("right_leg", fyn.c().a(0, 16).a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), fyk.a(-2.0F, 12.0F, 0.0F));
-      $$0.a("left_leg", fyn.c().a(0, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), fyk.a(2.0F, 12.0F, 0.0F));
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      this.s = fvv.a.a;
-      this.r = fvv.a.a;
-      cuq $$4 = $$0.b(bqq.a);
-      if ($$4.a(cut.ov) && $$0.gc()) {
-         if ($$0.fr() == btg.b) {
-            this.s = fvv.a.d;
-         } else {
-            this.r = fvv.a.d;
-         }
-      }
-
-      super.a($$0, $$1, $$2, $$3);
+   public static fyq a() {
+      fys $$0 = new fys();
+      fyt $$1 = $$0.a();
+      $$1.a("lid", fyp.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), fym.a(0.0F, 24.0F, 0.0F));
+      $$1.a("base", fyp.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), fym.a(0.0F, 24.0F, 0.0F));
+      $$1.a("head", fyp.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), fym.a(0.0F, 12.0F, 0.0F));
+      return fyq.a($$0, 64, 64);
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      cuq $$6 = $$0.eU();
-      if ($$0.gc() && ($$6.e() || !$$6.a(cut.ov))) {
-         float $$7 = ayo.a(this.c * (float) Math.PI);
-         float $$8 = ayo.a((1.0F - (1.0F - this.c) * (1.0F - this.c)) * (float) Math.PI);
-         this.n.g = 0.0F;
-         this.o.g = 0.0F;
-         this.n.f = -(0.1F - $$7 * 0.6F);
-         this.o.f = 0.1F - $$7 * 0.6F;
-         this.n.e = (float) (-Math.PI / 2);
-         this.o.e = (float) (-Math.PI / 2);
-         this.n.e -= $$7 * 1.2F - $$8 * 0.4F;
-         this.o.e -= $$7 * 1.2F - $$8 * 0.4F;
-         fuf.a(this.n, this.o, $$3);
+      float $$6 = $$3 - (float)$$0.ai;
+      float $$7 = (0.5F + $$0.H($$6)) * (float) Math.PI;
+      float $$8 = -1.0F + ayo.a($$7);
+      float $$9 = 0.0F;
+      if ($$7 > (float) Math.PI) {
+         $$9 = ayo.a($$3 * 0.1F) * 0.7F;
       }
+
+      this.g.a(0.0F, 16.0F + ayo.a($$7) * 8.0F + $$9, 0.0F);
+      if ($$0.H($$6) > 0.3F) {
+         this.g.f = $$8 * $$8 * $$8 * $$8 * (float) Math.PI * 0.125F;
+      } else {
+         this.g.f = 0.0F;
+      }
+
+      this.h.e = $$5 * (float) (Math.PI / 180.0);
+      this.h.f = ($$0.ba - 180.0F - $$0.aY) * (float) (Math.PI / 180.0);
    }
 
    @Override
-   public void a(btg $$0, fbg $$1) {
-      float $$2 = $$0 == btg.b ? 1.0F : -1.0F;
-      fyi $$3 = this.a($$0);
-      $$3.b += $$2;
-      $$3.a($$1);
-      $$3.b -= $$2;
+   public Iterable<fyk> d() {
+      return ImmutableList.of(this.f, this.g);
+   }
+
+   public fyk b() {
+      return this.g;
+   }
+
+   public fyk c() {
+      return this.h;
    }
 }

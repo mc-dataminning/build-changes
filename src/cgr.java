@@ -66,8 +66,8 @@ public class cgr {
    }
 
    private static boolean a(btn $$0) {
-      dcw $$1 = $$0.dP();
-      Optional<bwv> $$2 = $$0.dU().c(ccs.n);
+      dcw $$1 = $$0.dO();
+      Optional<bwv> $$2 = $$0.dT().c(ccs.n);
       if ($$2.isPresent()) {
          jd $$3 = $$2.get().b();
          return $$1.z($$3) == $$0.bi();
@@ -77,7 +77,7 @@ public class cgr {
    }
 
    public static void a(cgq $$0) {
-      buq<cgq> $$1 = $$0.dU();
+      buq<cgq> $$1 = $$0.dT();
       com $$2 = $$1.g().orElse(null);
       if ($$2 != com.p) {
          $$1.a(ImmutableList.of(com.p, com.k, com.b));
@@ -100,7 +100,7 @@ public class cgr {
    }
 
    private static Optional<? extends btn> b(cgq $$0) {
-      return bvj.a($$0) ? Optional.empty() : $$0.dU().c(ccs.B);
+      return bvj.a($$0) ? Optional.empty() : $$0.dT().c(ccs.B);
    }
 
    public static Predicate<cuq> a() {

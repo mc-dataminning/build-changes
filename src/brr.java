@@ -5,7 +5,7 @@ class brr extends brx {
 
    @Override
    public boolean a(btn $$0, int $$1) {
-      return $$0.fp() > 0.0F || $$0.dP().B;
+      return $$0.fo() > 0.0F || $$0.dO().B;
    }
 
    @Override
@@ -16,6 +16,6 @@ class brr extends brx {
    @Override
    public void b(btn $$0, int $$1) {
       super.b($$0, $$1);
-      $$0.C(Math.max($$0.fp(), (float)(4 * (1 + $$1))));
+      $$0.C(Math.max($$0.fo(), (float)(4 * (1 + $$1))));
    }
 }

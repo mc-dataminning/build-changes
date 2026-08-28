@@ -43,7 +43,7 @@ public class cfm extends cgg {
       return this.ao.a(e);
    }
 
-   public void w(boolean $$0) {
+   public void x(boolean $$0) {
       this.ao.a(e, $$0);
    }
 
@@ -80,7 +80,7 @@ public class cfm extends cgg {
       int $$3 = $$0.h("TreasurePosZ");
       this.h(new jd($$1, $$2, $$3));
       super.a($$0);
-      this.w($$0.q("GotFish"));
+      this.x($$0.q("GotFish"));
       this.c($$0.h("Moistness"));
    }
 
@@ -101,7 +101,7 @@ public class cfm extends cgg {
       this.bV.a(1, new cce(this, cjz.class).a());
    }
 
-   public static buv.a gl() {
+   public static buv.a gk() {
       return btp.C().a(buw.s, 10.0).a(buw.v, 1.2F).a(buw.c, 3.0);
    }
 
@@ -111,7 +111,7 @@ public class cfm extends cgg {
    }
 
    @Override
-   public void ge() {
+   public void gd() {
       this.a(avp.gX, 1.0F, 1.0F);
    }
 
@@ -163,7 +163,7 @@ public class cfm extends cgg {
    @Override
    public void l() {
       super.l();
-      if (this.ga()) {
+      if (this.fZ()) {
          this.j(this.cl());
       } else {
          if (this.bh()) {
@@ -171,28 +171,28 @@ public class cfm extends cgg {
          } else {
             this.c(this.x() - 1);
             if (this.x() <= 0) {
-               this.a(this.dQ().s(), 1.0F);
+               this.a(this.dP().s(), 1.0F);
             }
 
             if (this.aF()) {
-               this.i(this.ds().b((double)((this.ah.i() * 2.0F - 1.0F) * 0.2F), 0.5, (double)((this.ah.i() * 2.0F - 1.0F) * 0.2F)));
+               this.i(this.dr().b((double)((this.ah.i() * 2.0F - 1.0F) * 0.2F), 0.5, (double)((this.ah.i() * 2.0F - 1.0F) * 0.2F)));
                this.t(this.ah.i() * 360.0F);
                this.d(false);
                this.av = true;
             }
          }
 
-         if (this.dP().B && this.bf() && this.ds().g() > 0.03) {
-            exa $$0 = this.g(0.0F);
-            float $$1 = ayo.b(this.dF() * (float) (Math.PI / 180.0)) * 0.3F;
-            float $$2 = ayo.a(this.dF() * (float) (Math.PI / 180.0)) * 0.3F;
+         if (this.dO().B && this.bf() && this.dr().g() > 0.03) {
+            exc $$0 = this.g(0.0F);
+            float $$1 = ayo.b(this.dE() * (float) (Math.PI / 180.0)) * 0.3F;
+            float $$2 = ayo.a(this.dE() * (float) (Math.PI / 180.0)) * 0.3F;
             float $$3 = 1.2F - this.ah.i() * 0.7F;
 
             for (int $$4 = 0; $$4 < 2; $$4++) {
-               this.dP()
-                  .a(lm.as, this.du() - $$0.c * (double)$$3 + (double)$$1, this.dw() - $$0.d, this.dA() - $$0.e * (double)$$3 + (double)$$2, 0.0, 0.0, 0.0);
-               this.dP()
-                  .a(lm.as, this.du() - $$0.c * (double)$$3 - (double)$$1, this.dw() - $$0.d, this.dA() - $$0.e * (double)$$3 - (double)$$2, 0.0, 0.0, 0.0);
+               this.dO()
+                  .a(lm.as, this.dt() - $$0.c * (double)$$3 + (double)$$1, this.dv() - $$0.d, this.dz() - $$0.e * (double)$$3 + (double)$$2, 0.0, 0.0, 0.0);
+               this.dO()
+                  .a(lm.as, this.dt() - $$0.c * (double)$$3 - (double)$$1, this.dv() - $$0.d, this.dz() - $$0.e * (double)$$3 - (double)$$2, 0.0, 0.0, 0.0);
             }
          }
       }
@@ -212,7 +212,7 @@ public class cfm extends cgg {
          double $$2 = this.ah.k() * 0.01;
          double $$3 = this.ah.k() * 0.01;
          double $$4 = this.ah.k() * 0.01;
-         this.dP().a($$0, this.d(1.0), this.dx() + 0.2, this.g(1.0), $$2, $$3, $$4);
+         this.dO().a($$0, this.d(1.0), this.dw() + 0.2, this.g(1.0), $$2, $$3, $$4);
       }
    }
 
@@ -220,13 +220,13 @@ public class cfm extends cgg {
    protected bqr b(cmx $$0, bqq $$1) {
       cuq $$2 = $$0.b($$1);
       if (!$$2.e() && $$2.a(awn.aP)) {
-         if (!this.dP().B) {
+         if (!this.dO().B) {
             this.a(avp.gZ, 1.0F, 1.0F);
          }
 
-         this.w(true);
+         this.x(true);
          $$2.a(1, $$0);
-         return bqr.a(this.dP().B);
+         return bqr.a(this.dO().B);
       } else {
          return super.b($$0, $$1);
       }
@@ -259,19 +259,19 @@ public class cfm extends cgg {
       return avp.he;
    }
 
-   protected boolean gm() {
+   protected boolean gl() {
       jd $$0 = this.N().h();
-      return $$0 != null ? $$0.a(this.dn(), 12.0) : false;
+      return $$0 != null ? $$0.a(this.dm(), 12.0) : false;
    }
 
    @Override
-   public void a(exa $$0) {
-      if (this.dc() && this.bf()) {
-         this.a(this.fk(), $$0);
-         this.a(bts.a, this.ds());
-         this.i(this.ds().a(0.9));
+   public void a(exc $$0) {
+      if (this.db() && this.bf()) {
+         this.a(this.fj(), $$0);
+         this.a(bts.a, this.dr());
+         this.i(this.dr().a(0.9));
          if (this.p() == null) {
-            this.i(this.ds().b(0.0, -0.005, 0.0));
+            this.i(this.dr().b(0.0, -0.005, 0.0));
          }
       } else {
          super.a($$0);
@@ -305,16 +305,16 @@ public class cfm extends cgg {
       @Override
       public boolean c() {
          jd $$0 = this.a.s();
-         return !jd.a((double)$$0.u(), this.a.dw(), (double)$$0.w()).a(this.a.dn(), 4.0) && !this.b && this.a.cm() >= 100;
+         return !jd.a((double)$$0.u(), this.a.dv(), (double)$$0.w()).a(this.a.dm(), 4.0) && !this.b && this.a.cm() >= 100;
       }
 
       @Override
       public void d() {
-         if (this.a.dP() instanceof aqu) {
-            aqu $$0 = (aqu)this.a.dP();
+         if (this.a.dO() instanceof aqu) {
+            aqu $$0 = (aqu)this.a.dO();
             this.b = false;
             this.a.N().n();
-            jd $$1 = this.a.dp();
+            jd $$1 = this.a.do();
             jd $$2 = $$0.a(awq.b, $$1, 50, false);
             if ($$2 != null) {
                this.a.h($$2);
@@ -328,24 +328,24 @@ public class cfm extends cgg {
       @Override
       public void e() {
          jd $$0 = this.a.s();
-         if (jd.a((double)$$0.u(), this.a.dw(), (double)$$0.w()).a(this.a.dn(), 4.0) || this.b) {
-            this.a.w(false);
+         if (jd.a((double)$$0.u(), this.a.dv(), (double)$$0.w()).a(this.a.dm(), 4.0) || this.b) {
+            this.a.x(false);
          }
       }
 
       @Override
       public void a() {
-         dcw $$0 = this.a.dP();
-         if (this.a.gm() || this.a.N().l()) {
-            exa $$1 = exa.b(this.a.s());
-            exa $$2 = cej.a(this.a, 16, 1, $$1, (float) (Math.PI / 8));
+         dcw $$0 = this.a.dO();
+         if (this.a.gl() || this.a.N().l()) {
+            exc $$1 = exc.b(this.a.s());
+            exc $$2 = cej.a(this.a, 16, 1, $$1, (float) (Math.PI / 8));
             if ($$2 == null) {
                $$2 = cej.a(this.a, 8, 4, $$1, (float) (Math.PI / 2));
             }
 
             if ($$2 != null) {
                jd $$3 = jd.a((jw)$$2);
-               if (!$$0.b_($$3).a(awk.a) || !$$0.a_($$3).a(epr.b)) {
+               if (!$$0.b_($$3).a(awk.a) || !$$0.a_($$3).a(ept.b)) {
                   $$2 = cej.a(this.a, 8, 5, $$1, (float) (Math.PI / 2));
                }
             }
@@ -378,7 +378,7 @@ public class cfm extends cgg {
 
       @Override
       public boolean b() {
-         this.c = this.a.dP().a(cfm.cb, this.a);
+         this.c = this.a.dO().a(cfm.cb, this.a);
          return this.c == null ? false : this.c.cd() && this.a.p() != this.c;
       }
 
@@ -407,7 +407,7 @@ public class cfm extends cgg {
             this.a.N().a(this.c, this.b);
          }
 
-         if (this.c.cd() && this.c.dP().z.a(6) == 0) {
+         if (this.c.cd() && this.c.dO().z.a(6) == 0) {
             this.c.b(new brz(bsb.D, 100), this.a);
          }
       }
@@ -421,14 +421,14 @@ public class cfm extends cgg {
          if (this.b > cfm.this.ai) {
             return false;
          } else {
-            List<cjh> $$0 = cfm.this.dP().a(cjh.class, cfm.this.cL().c(8.0, 8.0, 8.0), cfm.c);
+            List<cjh> $$0 = cfm.this.dO().a(cjh.class, cfm.this.cK().c(8.0, 8.0, 8.0), cfm.c);
             return !$$0.isEmpty() || !cfm.this.a(bsy.a).e();
          }
       }
 
       @Override
       public void d() {
-         List<cjh> $$0 = cfm.this.dP().a(cjh.class, cfm.this.cL().c(8.0, 8.0, 8.0), cfm.c);
+         List<cjh> $$0 = cfm.this.dO().a(cjh.class, cfm.this.cK().c(8.0, 8.0, 8.0), cfm.c);
          if (!$$0.isEmpty()) {
             cfm.this.N().a($$0.get(0), 1.2F);
             cfm.this.a(avp.hc, 1.0F, 1.0F);
@@ -449,7 +449,7 @@ public class cfm extends cgg {
 
       @Override
       public void a() {
-         List<cjh> $$0 = cfm.this.dP().a(cjh.class, cfm.this.cL().c(8.0, 8.0, 8.0), cfm.c);
+         List<cjh> $$0 = cfm.this.dO().a(cjh.class, cfm.this.cK().c(8.0, 8.0, 8.0), cfm.c);
          cuq $$1 = cfm.this.a(bsy.a);
          if (!$$1.e()) {
             this.a($$1);
@@ -461,19 +461,19 @@ public class cfm extends cgg {
 
       private void a(cuq $$0) {
          if (!$$0.e()) {
-            double $$1 = cfm.this.dy() - 0.3F;
-            cjh $$2 = new cjh(cfm.this.dP(), cfm.this.du(), $$1, cfm.this.dA(), $$0);
+            double $$1 = cfm.this.dx() - 0.3F;
+            cjh $$2 = new cjh(cfm.this.dO(), cfm.this.dt(), $$1, cfm.this.dz(), $$0);
             $$2.b(40);
             $$2.b(cfm.this);
             float $$3 = 0.3F;
             float $$4 = cfm.this.ah.i() * (float) (Math.PI * 2);
             float $$5 = 0.02F * cfm.this.ah.i();
             $$2.n(
-               (double)(0.3F * -ayo.a(cfm.this.dF() * (float) (Math.PI / 180.0)) * ayo.b(cfm.this.dH() * (float) (Math.PI / 180.0)) + ayo.b($$4) * $$5),
-               (double)(0.3F * ayo.a(cfm.this.dH() * (float) (Math.PI / 180.0)) * 1.5F),
-               (double)(0.3F * ayo.b(cfm.this.dF() * (float) (Math.PI / 180.0)) * ayo.b(cfm.this.dH() * (float) (Math.PI / 180.0)) + ayo.a($$4) * $$5)
+               (double)(0.3F * -ayo.a(cfm.this.dE() * (float) (Math.PI / 180.0)) * ayo.b(cfm.this.dG() * (float) (Math.PI / 180.0)) + ayo.b($$4) * $$5),
+               (double)(0.3F * ayo.a(cfm.this.dG() * (float) (Math.PI / 180.0)) * 1.5F),
+               (double)(0.3F * ayo.b(cfm.this.dE() * (float) (Math.PI / 180.0)) * ayo.b(cfm.this.dG() * (float) (Math.PI / 180.0)) + ayo.a($$4) * $$5)
             );
-            cfm.this.dP().b($$2);
+            cfm.this.dO().b($$2);
          }
       }
    }

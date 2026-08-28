@@ -22,7 +22,7 @@ public class btu extends bsr {
    @Override
    public void l() {
       super.l();
-      if (this.dP().B) {
+      if (this.dO().B) {
          this.v();
       } else {
          this.t();
@@ -31,7 +31,7 @@ public class btu extends bsr {
 
    private void t() {
       if ((long)this.ai == this.h - 36L) {
-         this.dP().a(null, this.dp(), avp.md, avq.g);
+         this.dO().a(null, this.do(), avp.md, avq.g);
       }
 
       if ((long)this.ai >= this.h) {
@@ -41,31 +41,31 @@ public class btu extends bsr {
    }
 
    private void v() {
-      if (this.dP().Z() % 5L == 0L) {
+      if (this.dO().Z() % 5L == 0L) {
          this.p();
       }
    }
 
    private void w() {
-      dcw $$0 = this.dP();
+      dcw $$0 = this.dO();
       cuq $$1 = this.s();
       if (!$$1.e()) {
          bsr $$6;
          if ($$1.g() instanceof cvm $$2) {
             ji $$3 = ji.a;
-            cnp $$4 = $$2.a($$0, this.dn(), $$1, $$3);
+            cnp $$4 = $$2.a($$0, this.dm(), $$1, $$3);
             $$4.c(this);
             cvm.a $$5 = $$2.c();
             $$2.a($$4, (double)$$3.j(), (double)$$3.k(), (double)$$3.l(), $$5.d(), $$5.c());
-            $$5.e().ifPresent($$1x -> $$0.c($$1x, this.dp(), 0));
+            $$5.e().ifPresent($$1x -> $$0.c($$1x, this.do(), 0));
             $$6 = $$4;
          } else {
-            $$6 = new cjh($$0, this.du(), this.dw(), this.dA(), $$1);
+            $$6 = new cjh($$0, this.dt(), this.dv(), this.dz(), $$1);
          }
 
          $$0.b($$6);
-         $$0.c(3021, this.dp(), 1);
-         $$0.a($$6, dxz.t, this.dn());
+         $$0.c(3021, this.do(), 1);
+         $$0.a($$6, dxz.t, this.dm());
          this.a(cuq.l);
       }
    }
@@ -77,7 +77,7 @@ public class btu extends bsr {
 
    @Override
    protected void a(ub $$0) {
-      cuq $$1 = $$0.b("item", 10) ? cuq.a(this.dR(), (uy)$$0.p("item")).orElse(cuq.l) : cuq.l;
+      cuq $$1 = $$0.b("item", 10) ? cuq.a(this.dQ(), (uy)$$0.p("item")).orElse(cuq.l) : cuq.l;
       this.a($$1);
       this.h = $$0.i("spawn_item_after_ticks");
    }
@@ -85,7 +85,7 @@ public class btu extends bsr {
    @Override
    protected void b(ub $$0) {
       if (!this.s().e()) {
-         $$0.a("item", this.s().a(this.dR()).d());
+         $$0.a("item", this.s().a(this.dQ()).d());
       }
 
       $$0.a("spawn_item_after_ticks", this.h);
@@ -107,8 +107,8 @@ public class btu extends bsr {
    }
 
    @Override
-   public eph j_() {
-      return eph.d;
+   public epj j_() {
+      return epj.d;
    }
 
    @Override
@@ -117,16 +117,16 @@ public class btu extends bsr {
    }
 
    public void p() {
-      exa $$0 = this.dn();
+      exc $$0 = this.dm();
       int $$1 = this.ah.a(1, 3);
 
       for (int $$2 = 0; $$2 < $$1; $$2++) {
          double $$3 = 0.4;
-         exa $$4 = new exa(
-            this.du() + 0.4 * (this.ah.k() - this.ah.k()), this.dw() + 0.4 * (this.ah.k() - this.ah.k()), this.dA() + 0.4 * (this.ah.k() - this.ah.k())
+         exc $$4 = new exc(
+            this.dt() + 0.4 * (this.ah.k() - this.ah.k()), this.dv() + 0.4 * (this.ah.k() - this.ah.k()), this.dz() + 0.4 * (this.ah.k() - this.ah.k())
          );
-         exa $$5 = $$0.a($$4);
-         this.dP().a(lm.bc, $$0.a(), $$0.b(), $$0.c(), $$5.a(), $$5.b(), $$5.c());
+         exc $$5 = $$0.a($$4);
+         this.dO().a(lm.bc, $$0.a(), $$0.b(), $$0.c(), $$5.a(), $$5.b(), $$5.c());
       }
    }
 

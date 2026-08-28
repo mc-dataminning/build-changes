@@ -23,15 +23,15 @@ public class bvb extends bvh<cfe> {
    }
 
    protected boolean a(aqu $$0, cfe $$1) {
-      return $$1.gt() && this.c($$1).isPresent();
+      return $$1.gs() && this.c($$1).isPresent();
    }
 
    protected void a(aqu $$0, cfe $$1, long $$2) {
       cfe $$3 = this.c($$1).get();
-      $$1.dU().a(ccs.r, $$3);
-      $$3.dU().a(ccs.r, $$1);
+      $$1.dT().a(ccs.r, $$3);
+      $$3.dT().a(ccs.r, $$1);
       bvj.a($$1, (btn)$$3, this.g, this.h);
-      int $$4 = 60 + $$1.dS().a(50);
+      int $$4 = 60 + $$1.dR().a(50);
       this.j = $$2 + (long)$$4;
    }
 
@@ -40,7 +40,7 @@ public class bvb extends bvh<cfe> {
          return false;
       } else {
          cfe $$3 = this.a($$1);
-         return $$3.bE() && $$1.a($$3) && bvj.a($$1.dU(), $$3) && $$2 <= this.j && !$$1.gi() && !$$3.gi();
+         return $$3.bE() && $$1.a($$3) && bvj.a($$1.dT(), $$3) && $$2 <= this.j && !$$1.gh() && !$$3.gh();
       }
    }
 
@@ -50,31 +50,31 @@ public class bvb extends bvh<cfe> {
       if ($$1.a($$3, 3.0)) {
          if ($$2 >= this.j) {
             $$1.a($$0, $$3);
-            $$1.dU().b(ccs.r);
-            $$3.dU().b(ccs.r);
+            $$1.dT().b(ccs.r);
+            $$3.dT().b(ccs.r);
          }
       }
    }
 
    protected void d(aqu $$0, cfe $$1, long $$2) {
-      $$1.dU().b(ccs.r);
-      $$1.dU().b(ccs.m);
-      $$1.dU().b(ccs.n);
+      $$1.dT().b(ccs.r);
+      $$1.dT().b(ccs.m);
+      $$1.dT().b(ccs.n);
       this.j = 0L;
    }
 
    private cfe a(cfe $$0) {
-      return (cfe)$$0.dU().c(ccs.r).get();
+      return (cfe)$$0.dT().c(ccs.r).get();
    }
 
    private boolean b(cfe $$0) {
-      buq<?> $$1 = $$0.dU();
+      buq<?> $$1 = $$0.dT();
       return $$1.a(ccs.r) && $$1.c(ccs.r).get().am() == this.f;
    }
 
    private Optional<? extends cfe> c(cfe $$0) {
-      return $$0.dU().c(ccs.h).get().a($$1 -> {
-         if ($$1.am() == this.f && $$1 instanceof cfe $$2 && $$0.a($$2) && !$$2.gi()) {
+      return $$0.dT().c(ccs.h).get().a($$1 -> {
+         if ($$1.am() == this.f && $$1 instanceof cfe $$2 && $$0.a($$2) && !$$2.gh()) {
             return true;
          }
 

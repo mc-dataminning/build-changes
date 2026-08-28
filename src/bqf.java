@@ -35,7 +35,7 @@ public class bqf {
    final Set<akq<dcw>> k;
    final boolean l;
    final boolean m;
-   final erd.c n;
+   final erf.c n;
    private final Thread o;
    final DataFixer p;
    volatile boolean q = true;
@@ -48,15 +48,15 @@ public class bqf {
    final Reference2FloatMap<akq<dcw>> x = Reference2FloatMaps.synchronize(new Reference2FloatOpenHashMap());
    volatile wz y = wz.c("optimizeWorld.stage.counting");
    static final Pattern z = Pattern.compile("^r\\.(-?[0-9]+)\\.(-?[0-9]+)\\.mca$");
-   final eqx A;
+   final eqz A;
 
-   public bqf(erd.c $$0, DataFixer $$1, ka $$2, boolean $$3, boolean $$4) {
+   public bqf(erf.c $$0, DataFixer $$1, ka $$2, boolean $$3, boolean $$4) {
       this.j = $$2.d(lu.bb);
       this.k = this.j.g().stream().map(lu::a).collect(Collectors.toUnmodifiableSet());
       this.l = $$3;
       this.p = $$1;
       this.n = $$0;
-      this.A = new eqx(this.n.a(dcw.h).resolve("data").toFile(), $$1, $$2);
+      this.A = new eqz(this.n.a(dcw.h).resolve("data").toFile(), $$1, $$2);
       this.m = $$4;
       this.o = b.newThread(this::i);
       this.o.setUncaughtExceptionHandler(($$0x, $$1x) -> {

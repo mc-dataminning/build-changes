@@ -17,13 +17,13 @@ public class ano {
                ((RequiredArgumentBuilder)eu.a("name", fq.a($$1))
                      .executes(
                         $$0x -> a(
-                              (et)$$0x.getSource(), fq.a($$0x, "name"), ((et)$$0x.getSource()).d(), exa.b, 0.0F, 0, false, ((et)$$0x.getSource()).l().ah().t()
+                              (et)$$0x.getSource(), fq.a($$0x, "name"), ((et)$$0x.getSource()).d(), exc.b, 0.0F, 0, false, ((et)$$0x.getSource()).l().ah().t()
                            )
                      ))
                   .then(
                      ((RequiredArgumentBuilder)eu.a("pos", gw.a())
                            .executes(
-                              $$0x -> a((et)$$0x.getSource(), fq.a($$0x, "name"), gw.a($$0x, "pos"), exa.b, 0.0F, 0, false, ((et)$$0x.getSource()).l().ah().t())
+                              $$0x -> a((et)$$0x.getSource(), fq.a($$0x, "name"), gw.a($$0x, "pos"), exc.b, 0.0F, 0, false, ((et)$$0x.getSource()).l().ah().t())
                            ))
                         .then(
                            eu.a("delta", gw.a(false))
@@ -111,7 +111,7 @@ public class ano {
       );
    }
 
-   private static int a(et $$0, lk $$1, exa $$2, exa $$3, float $$4, int $$5, boolean $$6, Collection<aqv> $$7) throws CommandSyntaxException {
+   private static int a(et $$0, lk $$1, exc $$2, exc $$3, float $$4, int $$5, boolean $$6, Collection<aqv> $$7) throws CommandSyntaxException {
       int $$8 = 0;
 
       for (aqv $$9 : $$7) {

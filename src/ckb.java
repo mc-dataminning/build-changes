@@ -5,16 +5,16 @@ public class ckb extends ckn implements ckh {
    private static final int ca = 3;
    private static final int cb = 3;
    private int cc;
-   private final exa[][] cd;
+   private final exc[][] cd;
 
    public ckb(bsx<? extends ckb> $$0, dcw $$1) {
       super($$0, $$1);
       this.bP = 5;
-      this.cd = new exa[2][4];
+      this.cd = new exc[2][4];
 
       for (int $$2 = 0; $$2 < 4; $$2++) {
-         this.cd[0][$$2] = exa.b;
-         this.cd[1][$$2] = exa.b;
+         this.cd[0][$$2] = exc.b;
+         this.cd[1][$$2] = exc.b;
       }
    }
 
@@ -36,7 +36,7 @@ public class ckb extends ckn implements ckh {
    }
 
    public static buv.a t() {
-      return ckd.gr().a(buw.v, 0.5).a(buw.m, 18.0).a(buw.s, 32.0);
+      return ckd.gq().a(buw.v, 0.5).a(buw.m, 18.0).a(buw.s, 32.0);
    }
 
    @Override
@@ -46,14 +46,14 @@ public class ckb extends ckn implements ckh {
    }
 
    @Override
-   public ewv h_() {
-      return this.cL().c(3.0, 0.0, 3.0);
+   public ewx h_() {
+      return this.cK().c(3.0, 0.0, 3.0);
    }
 
    @Override
    public void m_() {
       super.m_();
-      if (this.dP().B && this.ci()) {
+      if (this.dO().B && this.ci()) {
          this.cc--;
          if (this.cc < 0) {
             this.cc = 0;
@@ -66,22 +66,22 @@ public class ckb extends ckn implements ckh {
 
             for (int $$2 = 0; $$2 < 4; $$2++) {
                this.cd[0][$$2] = this.cd[1][$$2];
-               this.cd[1][$$2] = new exa(
+               this.cd[1][$$2] = new exc(
                   (double)(-6.0F + (float)this.ah.a(13)) * 0.5, (double)Math.max(0, this.ah.a(6) - 4), (double)(-6.0F + (float)this.ah.a(13)) * 0.5
                );
             }
 
             for (int $$3 = 0; $$3 < 16; $$3++) {
-               this.dP().a(lm.e, this.d(0.5), this.dx(), this.f(0.5), 0.0, 0.0, 0.0);
+               this.dO().a(lm.e, this.d(0.5), this.dw(), this.f(0.5), 0.0, 0.0, 0.0);
             }
 
-            this.dP().a(this.du(), this.dw(), this.dA(), avp.ni, this.df(), 1.0F, 1.0F, false);
+            this.dO().a(this.dt(), this.dv(), this.dz(), avp.ni, this.de(), 1.0F, 1.0F, false);
          } else if (this.aO == this.aP - 1) {
             this.cc = 3;
 
             for (int $$4 = 0; $$4 < 4; $$4++) {
                this.cd[0][$$4] = this.cd[1][$$4];
-               this.cd[1][$$4] = new exa(0.0, 0.0, 0.0);
+               this.cd[1][$$4] = new exc(0.0, 0.0, 0.0);
             }
          }
       }
@@ -92,13 +92,13 @@ public class ckb extends ckn implements ckh {
       return avp.ne;
    }
 
-   public exa[] H(float $$0) {
+   public exc[] H(float $$0) {
       if (this.cc <= 0) {
          return this.cd[1];
       } else {
          double $$1 = (double)(((float)this.cc - $$0) / 3.0F);
          $$1 = Math.pow($$1, 0.25);
-         exa[] $$2 = new exa[4];
+         exc[] $$2 = new exc[4];
 
          for (int $$3 = 0; $$3 < 4; $$3++) {
             $$2[$$3] = this.cd[1][$$3].a(1.0 - $$1).e(this.cd[0][$$3].a($$1));
@@ -124,7 +124,7 @@ public class ckb extends ckn implements ckh {
    }
 
    @Override
-   protected avo gl() {
+   protected avo gk() {
       return avp.nf;
    }
 
@@ -137,21 +137,21 @@ public class ckb extends ckn implements ckh {
       cuq $$2 = this.b(cnr.a(this, cut.ov));
       cuq $$3 = this.g($$2);
       cnd $$4 = cnr.a(this, $$3, $$1, $$2);
-      double $$5 = $$0.du() - this.du();
-      double $$6 = $$0.e(0.3333333333333333) - $$4.dw();
-      double $$7 = $$0.dA() - this.dA();
+      double $$5 = $$0.dt() - this.dt();
+      double $$6 = $$0.e(0.3333333333333333) - $$4.dv();
+      double $$7 = $$0.dz() - this.dz();
       double $$8 = Math.sqrt($$5 * $$5 + $$7 * $$7);
-      $$4.c($$5, $$6 + $$8 * 0.2F, $$7, 1.6F, (float)(14 - this.dP().al().a() * 4));
-      this.a(avp.xn, 1.0F, 1.0F / (this.dS().i() * 0.4F + 0.8F));
-      this.dP().b($$4);
+      $$4.c($$5, $$6 + $$8 * 0.2F, $$7, 1.6F, (float)(14 - this.dO().al().a() * 4));
+      this.a(avp.xn, 1.0F, 1.0F / (this.dR().i() * 0.4F + 0.8F));
+      this.dO().b($$4);
    }
 
    @Override
    public cjk.a s() {
-      if (this.gv()) {
+      if (this.gu()) {
          return cjk.a.c;
       } else {
-         return this.gc() ? cjk.a.d : cjk.a.a;
+         return this.gb() ? cjk.a.d : cjk.a.a;
       }
    }
 
@@ -165,7 +165,7 @@ public class ckb extends ckn implements ckh {
          } else if (ckb.this.p() == null) {
             return false;
          } else {
-            return ckb.this.p().an() == this.e ? false : ckb.this.dP().d_(ckb.this.dp()).a((float)bqo.c.ordinal());
+            return ckb.this.p().an() == this.e ? false : ckb.this.dO().d_(ckb.this.do()).a((float)bqo.c.ordinal());
          }
       }
 

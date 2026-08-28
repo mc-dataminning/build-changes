@@ -5,7 +5,7 @@ public class dhl extends dfk implements dna {
    public static final MapCodec<dhl> a = b(dhl::new);
    public static final dtt b = dts.C;
    private static final int d = 3;
-   protected static final ext c = dfy.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
+   protected static final exv c = dfy.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
 
    @Override
    public MapCodec<dhl> a() {
@@ -39,33 +39,33 @@ public class dhl extends dfk implements dna {
    }
 
    @Override
-   protected epc b_(dtc $$0) {
-      return $$0.c(b) ? epd.c.a(false) : super.b_($$0);
+   protected epe b_(dtc $$0) {
+      return $$0.c(b) ? epf.c.a(false) : super.b_($$0);
    }
 
    @Override
    protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
       if ($$0.c(b)) {
-         $$3.a($$4, epd.c, epd.c.a($$3));
+         $$3.a($$4, epf.c, epf.c.a($$3));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return c;
    }
 
    @Nullable
    @Override
    public dtc a(cyd $$0) {
-      epc $$1 = $$0.q().b_($$0.a());
+      epe $$1 = $$0.q().b_($$0.a());
       return this.o().a(b, Boolean.valueOf($$1.a(awk.a) && $$1.e() == 8));
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return false;
    }
 }

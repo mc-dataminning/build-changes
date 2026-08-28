@@ -58,7 +58,7 @@ public class aru extends arr implements agi, arx, wn {
    private double D;
    private double E;
    @Nullable
-   private exa F;
+   private exc F;
    private int G;
    private int H;
    private boolean I;
@@ -81,7 +81,7 @@ public class aru extends arr implements agi, arx, wn {
       this.f = $$2;
       $$2.c = this;
       $$2.Y().a();
-      this.P = xt.b.unsigned($$2.cA(), $$0::aB);
+      this.P = xt.b.unsigned($$2.cz(), $$0::aB);
       this.S = new ayc($$0);
    }
 
@@ -93,14 +93,14 @@ public class aru extends arr implements agi, arx, wn {
       }
 
       this.l();
-      this.f.L = this.f.du();
-      this.f.M = this.f.dw();
-      this.f.N = this.f.dA();
+      this.f.L = this.f.dt();
+      this.f.M = this.f.dv();
+      this.f.N = this.f.dz();
       this.f.m();
-      this.f.a(this.s, this.t, this.u, this.f.dF(), this.f.dH());
+      this.f.a(this.s, this.t, this.u, this.f.dE(), this.f.dG());
       this.o++;
       this.N = this.M;
-      if (this.I && !this.f.fI() && !this.f.bS() && !this.f.ey()) {
+      if (this.I && !this.f.fH() && !this.f.bS() && !this.f.ex()) {
          if (++this.J > this.a((bsr)this.f)) {
             h.warn("{} was kicked for floating too long!", this.f.ah().getString());
             this.a(wz.c("multiplayer.disconnect.flying"));
@@ -111,15 +111,15 @@ public class aru extends arr implements agi, arx, wn {
          this.J = 0;
       }
 
-      this.y = this.f.da();
-      if (this.y != this.f && this.y.cR() == this.f) {
-         this.z = this.y.du();
-         this.A = this.y.dw();
-         this.B = this.y.dA();
-         this.C = this.y.du();
-         this.D = this.y.dw();
-         this.E = this.y.dA();
-         if (this.K && this.y.cR() == this.f) {
+      this.y = this.f.cZ();
+      if (this.y != this.f && this.y.cQ() == this.f) {
+         this.z = this.y.dt();
+         this.A = this.y.dv();
+         this.B = this.y.dz();
+         this.C = this.y.dt();
+         this.D = this.y.dv();
+         this.E = this.y.dz();
+         if (this.K && this.y.cQ() == this.f) {
             if (++this.L > this.a(this.y)) {
                h.warn("{} was kicked for floating a vehicle too long!", this.f.ah().getString());
                this.a(wz.c("multiplayer.disconnect.flying"));
@@ -161,12 +161,12 @@ public class aru extends arr implements agi, arx, wn {
 
    @Override
    public void l() {
-      this.s = this.f.du();
-      this.t = this.f.dw();
-      this.u = this.f.dA();
-      this.v = this.f.du();
-      this.w = this.f.dw();
-      this.x = this.f.dA();
+      this.s = this.f.dt();
+      this.t = this.f.dv();
+      this.u = this.f.dz();
+      this.v = this.f.dt();
+      this.w = this.f.dv();
+      this.x = this.f.dz();
    }
 
    @Override
@@ -181,7 +181,7 @@ public class aru extends arr implements agi, arx, wn {
 
    @Override
    protected GameProfile i() {
-      return this.f.fY();
+      return this.f.fX();
    }
 
    private <T, R> CompletableFuture<R> a(T $$0, BiFunction<arz, T, CompletableFuture<R>> $$1) {
@@ -227,12 +227,12 @@ public class aru extends arr implements agi, arx, wn {
       if (b($$0.b(), $$0.e(), $$0.f(), $$0.g(), $$0.h())) {
          this.a(wz.c("multiplayer.disconnect.invalid_vehicle_movement"));
       } else if (!this.p()) {
-         bsr $$1 = this.f.da();
-         if ($$1 != this.f && $$1.cR() == this.f && $$1 == this.y) {
+         bsr $$1 = this.f.cZ();
+         if ($$1 != this.f && $$1.cQ() == this.f && $$1 == this.y) {
             aqu $$2 = this.f.A();
-            double $$3 = $$1.du();
-            double $$4 = $$1.dw();
-            double $$5 = $$1.dA();
+            double $$3 = $$1.dt();
+            double $$4 = $$1.dv();
+            double $$5 = $$1.dz();
             double $$6 = a($$0.b());
             double $$7 = b($$0.e());
             double $$8 = a($$0.f());
@@ -241,7 +241,7 @@ public class aru extends arr implements agi, arx, wn {
             double $$11 = $$6 - this.z;
             double $$12 = $$7 - this.A;
             double $$13 = $$8 - this.B;
-            double $$14 = $$1.ds().g();
+            double $$14 = $$1.dr().g();
             double $$15 = $$11 * $$11 + $$12 * $$12 + $$13 * $$13;
             if ($$15 - $$14 > 100.0 && !this.h()) {
                h.warn("{} (vehicle of {}) moved too quickly! {},{},{}", new Object[]{$$1.ah().getString(), this.f.ah().getString(), $$11, $$12, $$13});
@@ -249,7 +249,7 @@ public class aru extends arr implements agi, arx, wn {
                return;
             }
 
-            boolean $$16 = $$2.a($$1, $$1.cL().h(0.0625));
+            boolean $$16 = $$2.a($$1, $$1.cK().h(0.0625));
             $$11 = $$6 - this.C;
             $$12 = $$7 - this.D - 1.0E-6;
             $$13 = $$8 - this.E;
@@ -258,14 +258,14 @@ public class aru extends arr implements agi, arx, wn {
                $$18.n();
             }
 
-            $$1.a(bts.b, new exa($$11, $$12, $$13));
-            $$11 = $$6 - $$1.du();
-            $$12 = $$7 - $$1.dw();
+            $$1.a(bts.b, new exc($$11, $$12, $$13));
+            $$11 = $$6 - $$1.dt();
+            $$12 = $$7 - $$1.dv();
             if ($$12 > -0.5 || $$12 < 0.5) {
                $$12 = 0.0;
             }
 
-            $$13 = $$8 - $$1.dA();
+            $$13 = $$8 - $$1.dz();
             $$15 = $$11 * $$11 + $$12 * $$12 + $$13 * $$13;
             boolean $$20 = false;
             if ($$15 > 0.0625) {
@@ -274,7 +274,7 @@ public class aru extends arr implements agi, arx, wn {
             }
 
             $$1.a($$6, $$7, $$8, $$9, $$10);
-            boolean $$21 = $$2.a($$1, $$1.cL().h(0.0625));
+            boolean $$21 = $$2.a($$1, $$1.cK().h(0.0625));
             if ($$16 && ($$20 || !$$21)) {
                $$1.a($$3, $$4, $$5, $$9, $$10);
                this.b(new adp($$1));
@@ -282,19 +282,19 @@ public class aru extends arr implements agi, arx, wn {
             }
 
             this.f.A().l().a(this.f);
-            exa $$22 = new exa($$1.du() - $$3, $$1.dw() - $$4, $$1.dA() - $$5);
+            exc $$22 = new exc($$1.dt() - $$3, $$1.dv() - $$4, $$1.dz() - $$5);
             this.f.b($$22);
             this.f.b($$22.c, $$22.d, $$22.e);
             this.K = $$12 >= -0.03125 && !$$17 && !this.d.ae() && !$$1.aY() && this.b($$1);
-            this.C = $$1.du();
-            this.D = $$1.dw();
-            this.E = $$1.dA();
+            this.C = $$1.dt();
+            this.D = $$1.dv();
+            this.E = $$1.dz();
          }
       }
    }
 
    private boolean b(bsr $$0) {
-      return $$0.dP().a($$0.cL().g(0.0625).b(0.0, -0.55, 0.0)).allMatch(dtb.a::i);
+      return $$0.dO().a($$0.cK().g(0.0625).b(0.0, -0.55, 0.0)).allMatch(dtb.a::i);
    }
 
    @Override
@@ -306,7 +306,7 @@ public class aru extends arr implements agi, arx, wn {
             return;
          }
 
-         this.f.a(this.F.c, this.F.d, this.F.e, this.f.dF(), this.f.dH());
+         this.f.a(this.F.c, this.F.d, this.F.e, this.f.dE(), this.f.dG());
          this.v = this.F.c;
          this.w = this.F.d;
          this.x = this.F.e;
@@ -350,7 +350,7 @@ public class aru extends arr implements agi, arx, wn {
          $$1.skip();
       }
 
-      ParseResults<et> $$2 = this.d.aH().a().parse($$1, this.f.dh());
+      ParseResults<et> $$2 = this.d.aH().a().parse($$1, this.f.dg());
       this.d.aH().a().getCompletionSuggestions($$2).thenAccept($$1x -> {
          Suggestions $$2x = $$1x.getList().size() <= 1000 ? $$1x : new Suggestions($$1x.getRange(), $$1x.getList().subList(0, 1000));
          this.b(new acm($$0.b(), $$2x));
@@ -362,13 +362,13 @@ public class aru extends arr implements agi, arx, wn {
       zj.a($$0, this, this.f.A());
       if (!this.d.q()) {
          this.f.a(wz.c("advMode.notEnabled"));
-      } else if (!this.f.gw()) {
+      } else if (!this.f.gv()) {
          this.f.a(wz.c("advMode.notAllowed"));
       } else {
          dbx $$1 = null;
          dqr $$2 = null;
          jd $$3 = $$0.b();
-         dqh $$4 = this.f.dP().c_($$3);
+         dqh $$4 = this.f.dO().c_($$3);
          if ($$4 instanceof dqr) {
             $$2 = (dqr)$$4;
             $$1 = $$2.b();
@@ -378,7 +378,7 @@ public class aru extends arr implements agi, arx, wn {
          boolean $$6 = $$0.f();
          if ($$1 != null) {
             dqr.a $$7 = $$2.l();
-            dtc $$8 = this.f.dP().a_($$3);
+            dtc $$8 = this.f.dO().a_($$3);
             ji $$9 = $$8.c(dhh.b);
 
             dtc $$10 = switch ($$0.i()) {
@@ -388,9 +388,9 @@ public class aru extends arr implements agi, arx, wn {
             };
             dtc $$11 = $$10.a(dhh.b, $$9).a(dhh.c, Boolean.valueOf($$0.g()));
             if ($$11 != $$8) {
-               this.f.dP().a($$3, $$11, 2);
+               this.f.dO().a($$3, $$11, 2);
                $$4.b($$11);
-               this.f.dP().m($$3).a($$4);
+               this.f.dO().m($$3).a($$4);
             }
 
             $$1.a($$5);
@@ -417,10 +417,10 @@ public class aru extends arr implements agi, arx, wn {
       zj.a($$0, this, this.f.A());
       if (!this.d.q()) {
          this.f.a(wz.c("advMode.notEnabled"));
-      } else if (!this.f.gw()) {
+      } else if (!this.f.gv()) {
          this.f.a(wz.c("advMode.notAllowed"));
       } else {
-         dbx $$1 = $$0.a(this.f.dP());
+         dbx $$1 = $$0.a(this.f.dO());
          if ($$1 != null) {
             $$1.a($$0.b());
             $$1.a($$0.e());
@@ -437,10 +437,10 @@ public class aru extends arr implements agi, arx, wn {
    @Override
    public void a(ahj $$0) {
       zj.a($$0, this, this.f.A());
-      this.f.fZ().c($$0.b());
-      this.f.c.b(new acr(-2, 0, this.f.fZ().k, this.f.fZ().a(this.f.fZ().k)));
-      this.f.c.b(new acr(-2, 0, $$0.b(), this.f.fZ().a($$0.b())));
-      this.f.c.b(new aeu(this.f.fZ().k));
+      this.f.fY().c($$0.b());
+      this.f.c.b(new acr(-2, 0, this.f.fY().k, this.f.fY().a(this.f.fY().k)));
+      this.f.c.b(new acr(-2, 0, $$0.b(), this.f.fY().a($$0.b())));
+      this.f.c.b(new aeu(this.f.fY().k));
    }
 
    @Override
@@ -472,10 +472,10 @@ public class aru extends arr implements agi, arx, wn {
    @Override
    public void a(aia $$0) {
       zj.a($$0, this, this.f.A());
-      if (this.f.gw()) {
+      if (this.f.gv()) {
          jd $$1 = $$0.b();
-         dtc $$2 = this.f.dP().a_($$1);
-         if (this.f.dP().c_($$1) instanceof drx $$4) {
+         dtc $$2 = this.f.dO().a_($$1);
+         if (this.f.dO().c_($$1) instanceof drx $$4) {
             $$4.a($$0.f());
             $$4.a($$0.g());
             $$4.a($$0.h());
@@ -516,7 +516,7 @@ public class aru extends arr implements agi, arx, wn {
             }
 
             $$4.e();
-            this.f.dP().a($$1, $$2, $$2, 3);
+            this.f.dO().a($$1, $$2, $$2, 3);
          }
       }
    }
@@ -524,10 +524,10 @@ public class aru extends arr implements agi, arx, wn {
    @Override
    public void a(ahz $$0) {
       zj.a($$0, this, this.f.A());
-      if (this.f.gw()) {
+      if (this.f.gv()) {
          jd $$1 = $$0.b();
-         dtc $$2 = this.f.dP().a_($$1);
-         if (this.f.dP().c_($$1) instanceof dri $$4) {
+         dtc $$2 = this.f.dO().a_($$1);
+         if (this.f.dO().c_($$1) instanceof dri $$4) {
             $$4.a($$0.e());
             $$4.b($$0.f());
             $$4.a(akq.a(lu.aU, $$0.g()));
@@ -536,7 +536,7 @@ public class aru extends arr implements agi, arx, wn {
             $$4.a($$0.k());
             $$4.b($$0.j());
             $$4.e();
-            this.f.dP().a($$1, $$2, $$2, 3);
+            this.f.dO().a($$1, $$2, $$2, 3);
          }
       }
    }
@@ -544,9 +544,9 @@ public class aru extends arr implements agi, arx, wn {
    @Override
    public void a(ahe $$0) {
       zj.a($$0, this, this.f.A());
-      if (this.f.gw()) {
+      if (this.f.gv()) {
          jd $$1 = $$0.b();
-         if (this.f.dP().c_($$1) instanceof dri $$3) {
+         if (this.f.dO().c_($$1) instanceof dri $$3) {
             $$3.a(this.f.A(), $$0.e(), $$0.f());
          }
       }
@@ -581,7 +581,7 @@ public class aru extends arr implements agi, arx, wn {
    }
 
    private void a(List<arm> $$0, int $$1) {
-      cuq $$2 = this.f.fZ().a($$1);
+      cuq $$2 = this.f.fY().a($$1);
       if ($$2.a(cut.tZ)) {
          List<arl<String>> $$3 = $$0.stream().map(this::a).toList();
          $$2.b(kq.I, new cya($$3));
@@ -589,13 +589,13 @@ public class aru extends arr implements agi, arx, wn {
    }
 
    private void a(arm $$0, List<arm> $$1, int $$2) {
-      cuq $$3 = this.f.fZ().a($$2);
+      cuq $$3 = this.f.fY().a($$2);
       if ($$3.a(cut.tZ)) {
          cuq $$4 = $$3.a((dcv)cut.ua);
          $$4.c(kq.I);
          List<arl<wz>> $$5 = $$1.stream().map($$0x -> this.a($$0x).a(wz::b)).toList();
          $$4.b(kq.J, new cyb(this.a($$0), this.f.ah().getString(), 0, $$5, true));
-         this.f.fZ().a($$2, $$4);
+         this.f.fY().a($$2, $$4);
       }
    }
 
@@ -607,7 +607,7 @@ public class aru extends arr implements agi, arx, wn {
    public void a(ahc $$0) {
       zj.a($$0, this, this.f.A());
       if (this.f.l(2)) {
-         bsr $$1 = this.f.dP().a($$0.e());
+         bsr $$1 = this.f.dO().a($$0.e());
          if ($$1 != null) {
             ub $$2 = $$1.f(new ub());
             this.f.c.b(new afu($$0.b(), $$2));
@@ -629,8 +629,8 @@ public class aru extends arr implements agi, arx, wn {
    public void a(agl $$0) {
       zj.a($$0, this, this.f.A());
       if (this.f.l(2)) {
-         dqh $$1 = this.f.dP().c_($$0.e());
-         ub $$2 = $$1 != null ? $$1.d(this.f.dR()) : null;
+         dqh $$1 = this.f.dO().c_($$0.e());
+         ub $$2 = $$1 != null ? $$1.d(this.f.dQ()) : null;
          this.f.c.b(new afu($$0.b(), $$2));
       }
    }
@@ -648,29 +648,29 @@ public class aru extends arr implements agi, arx, wn {
             }
 
             if (!this.p()) {
-               double $$2 = a($$0.a(this.f.du()));
-               double $$3 = b($$0.b(this.f.dw()));
-               double $$4 = a($$0.c(this.f.dA()));
-               float $$5 = ayo.g($$0.a(this.f.dF()));
-               float $$6 = ayo.g($$0.b(this.f.dH()));
+               double $$2 = a($$0.a(this.f.dt()));
+               double $$3 = b($$0.b(this.f.dv()));
+               double $$4 = a($$0.c(this.f.dz()));
+               float $$5 = ayo.g($$0.a(this.f.dE()));
+               float $$6 = ayo.g($$0.b(this.f.dG()));
                if (this.f.bS()) {
-                  this.f.a(this.f.du(), this.f.dw(), this.f.dA(), $$5, $$6);
+                  this.f.a(this.f.dt(), this.f.dv(), this.f.dz(), $$5, $$6);
                   this.f.A().l().a(this.f);
                } else {
-                  double $$7 = this.f.du();
-                  double $$8 = this.f.dw();
-                  double $$9 = this.f.dA();
+                  double $$7 = this.f.dt();
+                  double $$8 = this.f.dv();
+                  double $$9 = this.f.dz();
                   double $$10 = $$2 - this.s;
                   double $$11 = $$3 - this.t;
                   double $$12 = $$4 - this.u;
-                  double $$13 = this.f.ds().g();
+                  double $$13 = this.f.dr().g();
                   double $$14 = $$10 * $$10 + $$11 * $$11 + $$12 * $$12;
-                  if (this.f.fI()) {
+                  if (this.f.fH()) {
                      if ($$14 > 1.0) {
-                        this.a(this.f.du(), this.f.dw(), this.f.dA(), $$5, $$6);
+                        this.a(this.f.dt(), this.f.dv(), this.f.dz(), $$5, $$6);
                      }
                   } else {
-                     boolean $$15 = this.f.fB();
+                     boolean $$15 = this.f.fA();
                      if ($$1.s().i()) {
                         this.M++;
                         int $$16 = this.M - this.N;
@@ -679,73 +679,73 @@ public class aru extends arr implements agi, arx, wn {
                            $$16 = 1;
                         }
 
-                        if (!this.f.P() && (!this.f.dP().ab().b(dcs.t) || !$$15)) {
+                        if (!this.f.P() && (!this.f.dO().ab().b(dcs.t) || !$$15)) {
                            float $$17 = $$15 ? 300.0F : 100.0F;
                            if ($$14 - $$13 > (double)($$17 * (float)$$16) && !this.h()) {
                               h.warn("{} moved too quickly! {},{},{}", new Object[]{this.f.ah().getString(), $$10, $$11, $$12});
-                              this.a(this.f.du(), this.f.dw(), this.f.dA(), this.f.dF(), this.f.dH());
+                              this.a(this.f.dt(), this.f.dv(), this.f.dz(), this.f.dE(), this.f.dG());
                               return;
                            }
                         }
                      }
 
-                     ewv $$18 = this.f.cL();
+                     ewx $$18 = this.f.cK();
                      $$10 = $$2 - this.v;
                      $$11 = $$3 - this.w;
                      $$12 = $$4 - this.x;
                      boolean $$19 = $$11 > 0.0;
                      if (this.f.aF() && !$$0.b() && $$19) {
-                        this.f.fg();
+                        this.f.ff();
                      }
 
                      boolean $$20 = this.f.S;
-                     this.f.a(bts.b, new exa($$10, $$11, $$12));
-                     $$10 = $$2 - this.f.du();
-                     $$11 = $$3 - this.f.dw();
+                     this.f.a(bts.b, new exc($$10, $$11, $$12));
+                     $$10 = $$2 - this.f.dt();
+                     $$11 = $$3 - this.f.dv();
                      if ($$11 > -0.5 || $$11 < 0.5) {
                         $$11 = 0.0;
                      }
 
-                     $$12 = $$4 - this.f.dA();
+                     $$12 = $$4 - this.f.dz();
                      $$14 = $$10 * $$10 + $$11 * $$11 + $$12 * $$12;
                      boolean $$22 = false;
-                     if (!this.f.P() && $$14 > 0.0625 && !this.f.fI() && !this.f.e.e() && this.f.e.b() != dct.d) {
+                     if (!this.f.P() && $$14 > 0.0625 && !this.f.fH() && !this.f.e.e() && this.f.e.b() != dct.d) {
                         $$22 = true;
                         h.warn("{} moved wrongly!", this.f.ah().getString());
                      }
 
-                     if (this.f.ag || this.f.fI() || (!$$22 || !$$1.a(this.f, $$18)) && !this.a($$1, $$18, $$2, $$3, $$4)) {
+                     if (this.f.ag || this.f.fH() || (!$$22 || !$$1.a(this.f, $$18)) && !this.a($$1, $$18, $$2, $$3, $$4)) {
                         this.f.a($$2, $$3, $$4, $$5, $$6);
-                        boolean $$23 = this.f.fo();
+                        boolean $$23 = this.f.fn();
                         this.I = $$11 >= -0.03125
                            && !$$20
                            && this.f.e.b() != dct.d
                            && !this.d.ae()
-                           && !this.f.ga().c
+                           && !this.f.fZ().c
                            && !this.f.b(bsb.y)
                            && !$$15
                            && !$$23
                            && this.b(this.f);
                         this.f.A().l().a(this.f);
-                        this.f.a(this.f.du() - $$7, this.f.dw() - $$8, this.f.dA() - $$9, $$0.b());
-                        exa $$24 = new exa(this.f.du() - $$7, this.f.dw() - $$8, this.f.dA() - $$9);
+                        exc $$24 = new exc(this.f.dt() - $$7, this.f.dv() - $$8, this.f.dz() - $$9);
                         this.f.a($$0.b(), $$24);
+                        this.f.a(this.f.dt() - $$7, this.f.dv() - $$8, this.f.dz() - $$9, $$0.b());
                         this.f.b($$24);
                         if ($$19) {
                            this.f.n();
                         }
 
-                        if ($$0.b() || this.f.dY() || this.f.p_() || this.f.R_() || $$15 || $$23) {
-                           this.f.gB();
+                        if ($$0.b() || this.f.dX() || this.f.p_() || this.f.R_() || $$15 || $$23) {
+                           this.f.gA();
                         }
 
-                        this.f.b(this.f.du() - $$7, this.f.dw() - $$8, this.f.dA() - $$9);
-                        this.v = this.f.du();
-                        this.w = this.f.dw();
-                        this.x = this.f.dA();
+                        this.f.b(this.f.dt() - $$7, this.f.dv() - $$8, this.f.dz() - $$9);
+                        this.v = this.f.dt();
+                        this.w = this.f.dv();
+                        this.x = this.f.dz();
                      } else {
                         this.a($$7, $$8, $$9, $$5, $$6);
-                        this.f.a(this.f.du() - $$7, this.f.dw() - $$8, this.f.dA() - $$9, $$0.b());
+                        this.f.a(this.f.dt() - $$7, this.f.dv() - $$8, this.f.dz() - $$9, $$0.b());
                      }
                   }
                }
@@ -758,7 +758,7 @@ public class aru extends arr implements agi, arx, wn {
       if (this.F != null) {
          if (this.o - this.H > 20) {
             this.H = this.o;
-            this.a(this.F.c, this.F.d, this.F.e, this.f.dF(), this.f.dH());
+            this.a(this.F.c, this.F.d, this.F.e, this.f.dE(), this.f.dG());
          }
 
          return true;
@@ -768,13 +768,13 @@ public class aru extends arr implements agi, arx, wn {
       }
    }
 
-   private boolean a(dcz $$0, ewv $$1, double $$2, double $$3, double $$4) {
-      ewv $$5 = this.f.cL().d($$2 - this.f.du(), $$3 - this.f.dw(), $$4 - this.f.dA());
-      Iterable<ext> $$6 = $$0.d(this.f, $$5.h(1.0E-5F));
-      ext $$7 = exq.a($$1.h(1.0E-5F));
+   private boolean a(dcz $$0, ewx $$1, double $$2, double $$3, double $$4) {
+      ewx $$5 = this.f.cK().d($$2 - this.f.dt(), $$3 - this.f.dv(), $$4 - this.f.dz());
+      Iterable<exv> $$6 = $$0.d(this.f, $$5.h(1.0E-5F));
+      exv $$7 = exs.a($$1.h(1.0E-5F));
 
-      for (ext $$8 : $$6) {
-         if (!exq.c($$8, $$7, exe.i)) {
+      for (exv $$8 : $$6) {
+         if (!exs.c($$8, $$7, exg.i)) {
             return true;
          }
       }
@@ -787,18 +787,18 @@ public class aru extends arr implements agi, arx, wn {
    }
 
    public void a(double $$0, double $$1, double $$2, float $$3, float $$4, Set<buc> $$5) {
-      double $$6 = $$5.contains(buc.a) ? this.f.du() : 0.0;
-      double $$7 = $$5.contains(buc.b) ? this.f.dw() : 0.0;
-      double $$8 = $$5.contains(buc.c) ? this.f.dA() : 0.0;
-      float $$9 = $$5.contains(buc.d) ? this.f.dF() : 0.0F;
-      float $$10 = $$5.contains(buc.e) ? this.f.dH() : 0.0F;
-      this.F = new exa($$0, $$1, $$2);
+      double $$6 = $$5.contains(buc.a) ? this.f.dt() : 0.0;
+      double $$7 = $$5.contains(buc.b) ? this.f.dv() : 0.0;
+      double $$8 = $$5.contains(buc.c) ? this.f.dz() : 0.0;
+      float $$9 = $$5.contains(buc.d) ? this.f.dE() : 0.0F;
+      float $$10 = $$5.contains(buc.e) ? this.f.dG() : 0.0F;
+      this.F = new exc($$0, $$1, $$2);
       if (++this.G == Integer.MAX_VALUE) {
          this.G = 0;
       }
 
       this.H = this.o;
-      this.f.gC();
+      this.f.gB();
       this.f.a($$0, $$1, $$2, $$3, $$4);
       this.f.c.b(new aec($$0 - $$6, $$1 - $$7, $$2 - $$8, $$3 - $$9, $$4 - $$10, $$5, this.G));
    }
@@ -815,7 +815,7 @@ public class aru extends arr implements agi, arx, wn {
                cuq $$3 = this.f.b(bqq.b);
                this.f.a(bqq.b, this.f.b(bqq.a));
                this.f.a(bqq.a, $$3);
-               this.f.fy();
+               this.f.fx();
             }
 
             return;
@@ -832,12 +832,12 @@ public class aru extends arr implements agi, arx, wn {
 
             return;
          case f:
-            this.f.fx();
+            this.f.fw();
             return;
          case a:
          case b:
          case c:
-            this.f.e.a($$1, $$2, $$0.e(), this.f.dP().am(), $$0.g());
+            this.f.e.a($$1, $$2, $$0.e(), this.f.dO().am(), $$0.g());
             this.f.c.a($$0.g());
             return;
          default:
@@ -850,7 +850,7 @@ public class aru extends arr implements agi, arx, wn {
          return false;
       } else {
          cul $$2 = $$1.g();
-         return ($$2 instanceof cso || $$2 instanceof csv) && !$$0.gu().a($$2);
+         return ($$2 instanceof cso || $$2 instanceof csv) && !$$0.gt().a($$2);
       }
    }
 
@@ -862,16 +862,16 @@ public class aru extends arr implements agi, arx, wn {
       bqq $$2 = $$0.b();
       cuq $$3 = this.f.b($$2);
       if ($$3.a($$1.J())) {
-         eww $$4 = $$0.e();
-         exa $$5 = $$4.e();
+         ewy $$4 = $$0.e();
+         exc $$5 = $$4.e();
          jd $$6 = $$4.a();
          if (this.f.a($$6, 1.0)) {
-            exa $$7 = $$5.d(exa.b($$6));
+            exc $$7 = $$5.d(exc.b($$6));
             double $$8 = 1.0000001;
             if (Math.abs($$7.a()) < 1.0000001 && Math.abs($$7.b()) < 1.0000001 && Math.abs($$7.c()) < 1.0000001) {
                ji $$9 = $$4.b();
                this.f.H();
-               int $$10 = this.f.dP().am();
+               int $$10 = this.f.dO().am();
                if ($$6.v() < $$10) {
                   if (this.F == null && $$1.a(this.f, $$6)) {
                      bqr $$11 = this.f.e.a(this.f, $$1, $$3, $$2, $$4);
@@ -894,7 +894,7 @@ public class aru extends arr implements agi, arx, wn {
                this.f.c.b(new acd($$1, $$6));
                this.f.c.b(new acd($$1, $$6.a($$9)));
             } else {
-               h.warn("Rejecting UseItemOnPacket from {}: Location {} too far away from hit block {}.", new Object[]{this.f.fY().getName(), $$5, $$6});
+               h.warn("Rejecting UseItemOnPacket from {}: Location {} too far away from hit block {}.", new Object[]{this.f.fX().getName(), $$5, $$6});
             }
          }
       }
@@ -911,7 +911,7 @@ public class aru extends arr implements agi, arx, wn {
       if (!$$3.e() && $$3.a($$1.J())) {
          float $$4 = ayo.g($$0.f());
          float $$5 = ayo.g($$0.g());
-         if ($$5 != this.f.dH() || $$4 != this.f.dF()) {
+         if ($$5 != this.f.dG() || $$4 != this.f.dE()) {
             this.f.b($$4, $$5);
          }
 
@@ -929,7 +929,7 @@ public class aru extends arr implements agi, arx, wn {
          for (aqu $$1 : this.d.K()) {
             bsr $$2 = $$0.a($$1);
             if ($$2 != null) {
-               this.f.a($$1, $$2.du(), $$2.dw(), $$2.dA(), $$2.dF(), $$2.dH());
+               this.f.a($$1, $$2.dt(), $$2.dv(), $$2.dz(), $$2.dE(), $$2.dG());
                return;
             }
          }
@@ -939,7 +939,7 @@ public class aru extends arr implements agi, arx, wn {
    @Override
    public void a(ahi $$0) {
       zj.a($$0, this, this.f.A());
-      if (this.f.de() instanceof cov $$2) {
+      if (this.f.dd() instanceof cov $$2) {
          $$2.b($$0.b(), $$0.e());
       }
    }
@@ -972,11 +972,11 @@ public class aru extends arr implements agi, arx, wn {
    public void a(ahv $$0) {
       zj.a($$0, this, this.f.A());
       if ($$0.b() >= 0 && $$0.b() < cmw.g()) {
-         if (this.f.fZ().k != $$0.b() && this.f.ft() == bqq.a) {
-            this.f.fy();
+         if (this.f.fY().k != $$0.b() && this.f.fs() == bqq.a) {
+            this.f.fx();
          }
 
-         this.f.fZ().k = $$0.b();
+         this.f.fY().k = $$0.b();
          this.f.H();
       } else {
          h.warn("{} tried to set an invalid carried item", this.f.ah().getString());
@@ -1017,7 +1017,7 @@ public class aru extends arr implements agi, arx, wn {
    private void b(String $$0) {
       ParseResults<et> $$1 = this.c($$0);
       if (this.d.aB() && xr.a($$1)) {
-         h.error("Received unsigned command packet from {}, but the command requires signable arguments: {}", this.f.fY().getName(), $$0);
+         h.error("Received unsigned command packet from {}, but the command requires signable arguments: {}", this.f.fX().getName(), $$0);
          this.f.a(m);
       } else {
          this.d.aH().a($$1, $$0);
@@ -1052,7 +1052,7 @@ public class aru extends arr implements agi, arx, wn {
    }
 
    private void a(xt.a $$0) {
-      h.warn("Failed to update secure chat state for {}: '{}'", this.f.fY().getName(), $$0.a().getString());
+      h.warn("Failed to update secure chat state for {}: '{}'", this.f.fX().getName(), $$0.a().getString());
       this.f.a($$0.a().f().a(n.m));
    }
 
@@ -1105,7 +1105,7 @@ public class aru extends arr implements agi, arx, wn {
 
    private ParseResults<et> c(String $$0) {
       CommandDispatcher<et> $$1 = this.d.aH().a();
-      return $$1.parse($$0, this.f.dh());
+      return $$1.parse($$0, this.f.dg());
    }
 
    private void a(String $$0, Runnable $$1) {
@@ -1153,7 +1153,7 @@ public class aru extends arr implements agi, arx, wn {
 
    private void r() {
       this.q += 20;
-      if (this.q > 200 && !this.d.ah().f(this.f.fY()) && !this.d.a(this.f.fY())) {
+      if (this.q > 200 && !this.d.ah().f(this.f.fX()) && !this.d.a(this.f.fX())) {
          this.a(wz.c("disconnect.spam"));
       }
    }
@@ -1193,13 +1193,13 @@ public class aru extends arr implements agi, arx, wn {
             this.f.h(false);
             break;
          case c:
-            if (this.f.fI()) {
+            if (this.f.fH()) {
                this.f.a(false, true);
-               this.F = this.f.dn();
+               this.F = this.f.dm();
             }
             break;
          case f:
-            if (this.f.de() instanceof bty $$1) {
+            if (this.f.dd() instanceof bty $$1) {
                int $$2 = $$0.f();
                if ($$1.a() && $$2 > 0) {
                   $$1.c($$2);
@@ -1207,18 +1207,18 @@ public class aru extends arr implements agi, arx, wn {
             }
             break;
          case g:
-            if (this.f.de() instanceof bty $$3) {
+            if (this.f.dd() instanceof bty $$3) {
                $$3.b();
             }
             break;
          case h:
-            if (this.f.dd() instanceof btf $$4) {
+            if (this.f.dc() instanceof btf $$4) {
                $$4.b(this.f);
             }
             break;
          case i:
-            if (!this.f.ge()) {
-               this.f.gg();
+            if (!this.f.gd()) {
+               this.f.gf();
             }
             break;
          default:
@@ -1275,11 +1275,11 @@ public class aru extends arr implements agi, arx, wn {
       this.f.H();
       this.f.g($$0.b());
       if ($$2 != null) {
-         if (!$$1.C_().a($$2.dp())) {
+         if (!$$1.C_().a($$2.do())) {
             return;
          }
 
-         ewv $$3 = $$2.cL();
+         ewx $$3 = $$2.cK();
          if (this.f.a($$3, 1.0)) {
             $$0.a(new ahd.c() {
                private void a(bqq $$0, aru.a $$1x) {
@@ -1302,7 +1302,7 @@ public class aru extends arr implements agi, arx, wn {
                }
 
                @Override
-               public void a(bqq $$0, exa $$1x) {
+               public void a(bqq $$0, exc $$1x) {
                   this.a($$0, ($$1xxx, $$2xx, $$3) -> $$2xx.a($$1xxx, $$1, $$3));
                }
 
@@ -1343,14 +1343,14 @@ public class aru extends arr implements agi, arx, wn {
                this.f = this.d.ah().a(this.f, true, bsr.c.e);
                an.w.a(this.f, dcw.j, dcw.h);
             } else {
-               if (this.f.ex() > 0.0F) {
+               if (this.f.ew() > 0.0F) {
                   return;
                }
 
                this.f = this.d.ah().a(this.f, false, bsr.c.a);
                if (this.d.j()) {
                   this.f.a(dct.d);
-                  this.f.dP().ab().a(dcs.r).a(false, this.d);
+                  this.f.dO().ab().a(dcs.r).a(false, this.d);
                }
             }
             break;
@@ -1436,17 +1436,17 @@ public class aru extends arr implements agi, arx, wn {
       if (this.f.e.e()) {
          boolean $$1 = $$0.b() < 0;
          cuq $$2 = $$0.e();
-         if (!$$2.a(this.f.dP().J())) {
+         if (!$$2.a(this.f.dO().J())) {
             return;
          }
 
          cxh $$3 = $$2.a(kq.O, cxh.a);
          if ($$3.a("x") && $$3.a("y") && $$3.a("z")) {
             jd $$4 = dqh.b($$3.d());
-            if (this.f.dP().p($$4)) {
-               dqh $$5 = this.f.dP().c_($$4);
+            if (this.f.dO().p($$4)) {
+               dqh $$5 = this.f.dO().c_($$4);
                if ($$5 != null) {
-                  $$5.a($$2, this.f.dP().H_());
+                  $$5.a($$2, this.f.dO().H_());
                }
             }
          }
@@ -1485,7 +1485,7 @@ public class aru extends arr implements agi, arx, wn {
    @Override
    public void a(ahl $$0) {
       zj.a($$0, this, this.f.A());
-      this.f.ga().b = $$0.b() && this.f.ga().c;
+      this.f.fZ().b = $$0.b() && this.f.fZ().c;
    }
 
    @Override
@@ -1523,11 +1523,11 @@ public class aru extends arr implements agi, arx, wn {
             try {
                azb $$4 = this.d.as();
                if ($$4 == null) {
-                  h.warn("Ignoring chat session from {} due to missing Services public key", this.f.fY().getName());
+                  h.warn("Ignoring chat session from {} due to missing Services public key", this.f.fX().getName());
                   return;
                }
 
-               this.a($$1.a(this.f.fY(), $$4));
+               this.a($$1.a(this.f.fX(), $$4));
             } catch (cna.b var6) {
                h.error("Failed to validate profile key: {}", var6.getMessage());
                this.a(var6.a());
@@ -1559,7 +1559,7 @@ public class aru extends arr implements agi, arx, wn {
 
    private void a(xq $$0) {
       this.O = $$0;
-      this.P = $$0.a(this.f.cA());
+      this.P = $$0.a(this.f.cz());
       this.S.append(() -> {
          this.f.a($$0);
          this.d.ah().a(new aea(EnumSet.of(aea.a.b), List.of(this.f)));

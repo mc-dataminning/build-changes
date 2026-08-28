@@ -10,8 +10,8 @@ public class car extends cam {
    @Override
    public boolean b() {
       aqv $$0 = (aqv)this.a.T_();
-      boolean $$1 = $$0 != null && !$$0.R_() && !$$0.ga().b && !$$0.bf() && !$$0.az;
-      return !this.a.gl() && $$1 && this.a.gz();
+      boolean $$1 = $$0 != null && !$$0.R_() && !$$0.fZ().b && !$$0.bf() && !$$0.az;
+      return !this.a.gk() && $$1 && this.a.gy();
    }
 
    @Override
@@ -28,7 +28,7 @@ public class car extends cam {
    @Override
    public void a() {
       if (!this.c && !this.a.x() && !this.a.N_()) {
-         if (this.a.cL().c(this.b.cL())) {
+         if (this.a.cK().c(this.b.cK())) {
             this.c = this.a.b(this.b);
          }
       }

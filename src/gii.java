@@ -1,104 +1,66 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import org.joml.Matrix4f;
 
-public class gii implements gik.a {
-   final fgm a;
-   private double b = Double.MIN_VALUE;
-   private final int c = 12;
-   @Nullable
-   private gii.a d;
+public class gii {
+   private static final int a = axy.b.a(255, 255, 100, 255);
+   private static final int b = axy.b.a(255, 100, 255, 255);
+   private static final int c = axy.b.a(255, 0, 255, 0);
+   private static final int d = axy.b.a(255, 255, 165, 0);
+   private static final int e = axy.b.a(255, 255, 0, 0);
+   private static final int f = 20;
+   private static final float g = (float) (Math.PI / 10);
+   private final fgo h;
+   private final Map<Integer, aai.a> i = new HashMap<>();
 
-   public gii(fgm $$0) {
-      this.a = $$0;
+   public gii(fgo $$0) {
+      this.h = $$0;
    }
 
-   @Override
-   public void a(fbg $$0, gex $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ad.d();
-      if ($$5 - this.b > 3.0E9) {
-         this.b = $$5;
-         gum $$6 = this.a.V();
-         if ($$6 != null) {
-            this.d = new gii.a($$6, $$2, $$4);
-         } else {
-            this.d = null;
-         }
-      }
-
-      if (this.d != null) {
-         Map<dcd, String> $$7 = this.d.b.getNow(null);
-         double $$8 = this.a.j.l().b().d * 0.85;
-
-         for (Entry<dcd, String> $$9 : this.d.a.entrySet()) {
-            dcd $$10 = $$9.getKey();
-            String $$11 = $$9.getValue();
-            if ($$7 != null) {
-               $$11 = $$11 + $$7.get($$10);
-            }
-
-            String[] $$12 = $$11.split("\n");
-            int $$13 = 0;
-
-            for (String $$14 : $$12) {
-               gik.a($$0, $$1, $$14, (double)kf.a($$10.e, 8), $$8 + (double)$$13, (double)kf.a($$10.f, 8), -1, 0.15F, true, 0.0F, true);
-               $$13 -= 2;
-            }
-         }
-      }
-   }
-
-   final class a {
-      final Map<dcd, String> a;
-      final CompletableFuture<Map<dcd, String>> b;
-
-      a(final gum $$0, final double $$1, final double $$2) {
-         fzd $$3 = gii.this.a.r;
-         akq<dcw> $$4 = $$3.af();
-         int $$5 = kf.a($$1);
-         int $$6 = kf.a($$2);
-         Builder<dcd, String> $$7 = ImmutableMap.builder();
-         fyz $$8 = $$3.i();
-
-         for (int $$9 = $$5 - 12; $$9 <= $$5 + 12; $$9++) {
-            for (int $$10 = $$6 - 12; $$10 <= $$6 + 12; $$10++) {
-               dcd $$11 = new dcd($$9, $$10);
-               String $$12 = "";
-               dvi $$13 = $$8.a($$9, $$10, false);
-               $$12 = $$12 + "Client: ";
-               if ($$13 == null) {
-                  $$12 = $$12 + "0n/a\n";
-               } else {
-                  $$12 = $$12 + ($$13.C() ? " E" : "");
-                  $$12 = $$12 + "\n";
-               }
-
-               $$7.put($$11, $$12);
-            }
-         }
-
-         this.a = $$7.build();
-         this.b = $$0.a(() -> {
-            aqu $$4x = $$0.a($$4);
-            if ($$4x == null) {
-               return ImmutableMap.of();
-            } else {
-               Builder<dcd, String> $$5x = ImmutableMap.builder();
-               aqs $$6x = $$4x.l();
-
-               for (int $$7x = $$5 - 12; $$7x <= $$5 + 12; $$7x++) {
-                  for (int $$8x = $$6 - 12; $$8x <= $$6 + 12; $$8x++) {
-                     dcd $$9x = new dcd($$7x, $$8x);
-                     $$5x.put($$9x, "Server: " + $$6x.a($$9x));
-                  }
-               }
-
-               return $$5x.build();
-            }
+   public void a(fbi $$0, gez $$1, double $$2, double $$3, double $$4) {
+      geb $$5 = this.h.s;
+      $$5.dO().a(bsx.m, $$5.cK().g(100.0), $$0x -> true).forEach($$6 -> {
+         Optional<aai.a> $$7 = Optional.ofNullable(this.i.get($$6.an()));
+         $$7.map(aai.a::d).map($$1xx -> $$5.dO().a($$1xx)).map($$0xx -> $$0xx.m(this.h.at().a(true))).ifPresent($$6x -> {
+            a($$0, $$1, $$2, $$3, $$4, $$6.dm(), $$6x, b);
+            exc $$7x = $$6x.b(0.0, 0.01F, 0.0);
+            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(gfh.a(2.0)), $$7x, 4.0F, c);
+            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(gfh.a(2.0)), $$7x, 8.0F, d);
+            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(gfh.a(2.0)), $$7x, 20.0F, e);
          });
+         $$7.map(aai.a::e).ifPresent($$6x -> {
+            a($$0, $$1, $$2, $$3, $$4, $$6.dm(), $$6x.b(), a);
+            gim.a($$0, $$1, ewx.a(exc.a($$6x)).d(-$$2, -$$3, -$$4), 1.0F, 0.0F, 0.0F, 1.0F);
+         });
+      });
+   }
+
+   private static void a(fbi $$0, gez $$1, double $$2, double $$3, double $$4, exc $$5, exc $$6, int $$7) {
+      fbm $$8 = $$1.getBuffer(gfh.a(2.0));
+      $$8.a($$0.c(), (float)($$5.c - $$2), (float)($$5.d - $$3), (float)($$5.e - $$4)).a($$7);
+      $$8.a($$0.c(), (float)($$6.c - $$2), (float)($$6.d - $$3), (float)($$6.e - $$4)).a($$7);
+   }
+
+   private static void a(Matrix4f $$0, double $$1, double $$2, double $$3, fbm $$4, exc $$5, float $$6, int $$7) {
+      for (int $$8 = 0; $$8 < 20; $$8++) {
+         a($$8, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
+
+      a(0, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   private static void a(int $$0, Matrix4f $$1, double $$2, double $$3, double $$4, fbm $$5, exc $$6, float $$7, int $$8) {
+      float $$9 = (float)$$0 * (float) (Math.PI / 10);
+      exc $$10 = $$6.b((double)$$7 * Math.cos((double)$$9), 0.0, (double)$$7 * Math.sin((double)$$9));
+      $$5.a($$1, (float)($$10.c - $$2), (float)($$10.d - $$3), (float)($$10.e - $$4)).a($$8);
+   }
+
+   public void a() {
+      this.i.clear();
+   }
+
+   public void a(aai.a $$0) {
+      this.i.put($$0.c(), $$0);
    }
 }

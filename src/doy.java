@@ -8,11 +8,11 @@ import javax.annotation.Nullable;
 public class doy extends dmz {
    public static final MapCodec<doy> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dup.a.fieldOf("wood_type").forGetter(dmz::d), u()).apply($$0, doy::new));
    public static final dtw b = dju.aE;
-   public static final ext c = dfy.a(0.0, 14.0, 6.0, 16.0, 16.0, 10.0);
-   public static final ext d = dfy.a(6.0, 14.0, 0.0, 10.0, 16.0, 16.0);
-   public static final ext e = exq.a(c, dfy.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0));
-   public static final ext i = exq.a(d, dfy.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0));
-   private static final Map<ji, ext> j = Maps.newEnumMap(ImmutableMap.of(ji.c, e, ji.d, e, ji.f, i, ji.e, i));
+   public static final exv c = dfy.a(0.0, 14.0, 6.0, 16.0, 16.0, 10.0);
+   public static final exv d = dfy.a(6.0, 14.0, 0.0, 10.0, 16.0, 16.0);
+   public static final exv e = exs.a(c, dfy.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0));
+   public static final exv i = exs.a(d, dfy.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0));
+   private static final Map<ji, exv> j = Maps.newEnumMap(ImmutableMap.of(ji.c, e, ji.d, e, ji.f, i, ji.e, i));
 
    @Override
    public MapCodec<doy> a() {
@@ -25,7 +25,7 @@ public class doy extends dmz {
    }
 
    @Override
-   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, eww $$6) {
+   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, ewy $$6) {
       if ($$2.c_($$3) instanceof drs $$7 && this.a($$1, $$4, $$6, $$7, $$0)) {
          return bqt.e;
       }
@@ -33,11 +33,11 @@ public class doy extends dmz {
       return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   private boolean a(dtc $$0, cmx $$1, eww $$2, drs $$3, cuq $$4) {
+   private boolean a(dtc $$0, cmx $$1, ewy $$2, drs $$3, cuq $$4) {
       return !$$3.a($$3.a($$1), $$1) && $$4.g() instanceof cud && !this.a($$2, $$0);
    }
 
-   private boolean a(eww $$0, dtc $$1) {
+   private boolean a(ewy $$0, dtc $$1) {
       return $$0.b().o() == $$1.c(b).o();
    }
 
@@ -47,17 +47,17 @@ public class doy extends dmz {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return j.get($$0.c(b));
    }
 
    @Override
-   protected ext b_(dtc $$0, dcc $$1, jd $$2) {
-      return this.a($$0, $$1, $$2, exf.a());
+   protected exv b_(dtc $$0, dcc $$1, jd $$2) {
+      return this.a($$0, $$1, $$2, exh.a());
    }
 
    @Override
-   protected ext b(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv b(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       switch ((ji)$$0.c(b)) {
          case f:
          case e:
@@ -75,14 +75,14 @@ public class doy extends dmz {
 
    public boolean a(dcz $$0, dtc $$1, jd $$2, ji $$3) {
       dtc $$4 = $$0.a_($$2);
-      return $$4.a(awe.az) ? $$4.c(b).o().a($$1.c(b)) : $$4.a($$0, $$2, $$3, doa.a);
+      return $$4.a(awe.aA) ? $$4.c(b).o().a($$1.c(b)) : $$4.a($$0, $$2, $$3, doa.a);
    }
 
    @Nullable
    @Override
    public dtc a(cyd $$0) {
       dtc $$1 = this.o();
-      epc $$2 = $$0.q().b_($$0.a());
+      epe $$2 = $$0.q().b_($$0.a());
       dcz $$3 = $$0.q();
       jd $$4 = $$0.a();
 
@@ -91,7 +91,7 @@ public class doy extends dmz {
             ji $$6 = $$5.g();
             $$1 = $$1.a(b, $$6);
             if ($$1.a($$3, $$4) && this.b($$1, $$3, $$4)) {
-               return $$1.a(f, Boolean.valueOf($$2.a() == epd.c));
+               return $$1.a(f, Boolean.valueOf($$2.a() == epf.c));
             }
          }
       }
@@ -130,7 +130,7 @@ public class doy extends dmz {
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return false;
    }
 

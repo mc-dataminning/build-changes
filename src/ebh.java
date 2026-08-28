@@ -1,22 +1,22 @@
 import com.mojang.serialization.Codec;
 
-public class ebh extends ecd<eer> {
+public class ebh extends ece<ees> {
    private static final dtc a = dga.mZ.o().a(dfc.h, Integer.valueOf(1)).a(dfc.i, dto.a).a(dfc.j, Integer.valueOf(0));
    private static final dtc b = a.a(dfc.i, dto.c).a(dfc.j, Integer.valueOf(1));
    private static final dtc c = a.a(dfc.i, dto.c);
    private static final dtc d = a.a(dfc.i, dto.b);
 
-   public ebh(Codec<eer> $$0) {
+   public ebh(Codec<ees> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecf<eer> $$0) {
+   public boolean a(ecg<ees> $$0) {
       int $$1 = 0;
       jd $$2 = $$0.e();
       dds $$3 = $$0.b();
       ayw $$4 = $$0.d();
-      eer $$5 = $$0.f();
+      ees $$5 = $$0.f();
       jd.a $$6 = $$2.k();
       jd.a $$7 = $$2.k();
       if ($$3.u($$6)) {

@@ -195,7 +195,7 @@ public class anj {
 
       for (cuq $$4 : $$1) {
          for (aqv $$5 : $$0) {
-            if ($$5.fZ().f($$4.s())) {
+            if ($$5.fY().f($$4.s())) {
                $$3.add($$4);
             }
          }
@@ -231,7 +231,7 @@ public class anj {
       return $$5.size();
    }
 
-   private static int a(et $$0, exa $$1, List<cuq> $$2, anj.a $$3) throws CommandSyntaxException {
+   private static int a(et $$0, exc $$1, List<cuq> $$2, anj.a $$3) throws CommandSyntaxException {
       aqu $$4 = $$0.e();
       $$2.forEach($$2x -> {
          cjh $$3x = new cjh($$4, $$1.c, $$1.d, $$1.e, $$2x.s());
@@ -251,7 +251,7 @@ public class anj {
       }
    }
 
-   private static void a(et $$0, List<cuq> $$1, akq<eru> $$2) {
+   private static void a(et $$0, List<cuq> $$1, akq<erw> $$2) {
       if ($$1.size() == 1) {
          cuq $$3 = $$1.get(0);
          $$0.a(() -> wz.a("commands.drop.success.single_with_table", $$3.H(), $$3.F(), wz.a($$2.a())), false);
@@ -274,7 +274,7 @@ public class anj {
       aqu $$5 = $$4.e();
       dtc $$6 = $$5.a_($$1);
       dqh $$7 = $$5.c_($$1);
-      ers.a $$8 = new ers.a($$5).a(eul.f, exa.b($$1)).a(eul.g, $$6).b(eul.h, $$7).b(eul.a, $$4.f()).a(eul.i, $$2);
+      eru.a $$8 = new eru.a($$5).a(eun.f, exc.b($$1)).a(eun.g, $$6).b(eun.h, $$7).b(eun.a, $$4.f()).a(eun.i, $$2);
       List<cuq> $$9 = $$6.a($$8);
       return $$3.accept($$0, $$9, $$2x -> a($$4, $$2x, $$6.b().v()));
    }
@@ -283,39 +283,39 @@ public class anj {
       if (!($$1 instanceof btn)) {
          throw c.create($$1.S_());
       } else {
-         akq<eru> $$3 = ((btn)$$1).eB();
+         akq<erw> $$3 = ((btn)$$1).eA();
          et $$4 = (et)$$0.getSource();
-         ers.a $$5 = new ers.a($$4.e());
+         eru.a $$5 = new eru.a($$4.e());
          bsr $$6 = $$4.f();
          if ($$6 instanceof cmx $$7) {
-            $$5.a(eul.b, $$7);
+            $$5.a(eun.b, $$7);
          }
 
-         $$5.a(eul.c, $$1.dQ().p());
-         $$5.b(eul.e, $$6);
-         $$5.b(eul.d, $$6);
-         $$5.a(eul.a, $$1);
-         $$5.a(eul.f, $$4.d());
-         ers $$8 = $$5.a(euk.g);
-         eru $$9 = $$4.l().be().b($$3);
+         $$5.a(eun.c, $$1.dP().p());
+         $$5.b(eun.e, $$6);
+         $$5.b(eun.d, $$6);
+         $$5.a(eun.a, $$1);
+         $$5.a(eun.f, $$4.d());
+         eru $$8 = $$5.a(eum.g);
+         erw $$9 = $$4.l().be().b($$3);
          List<cuq> $$10 = $$9.a($$8);
          return $$2.accept($$0, $$10, $$2x -> a($$4, $$2x, $$3));
       }
    }
 
-   private static int a(CommandContext<et> $$0, jm<eru> $$1, anj.b $$2) throws CommandSyntaxException {
+   private static int a(CommandContext<et> $$0, jm<erw> $$1, anj.b $$2) throws CommandSyntaxException {
       et $$3 = (et)$$0.getSource();
-      ers $$4 = new ers.a($$3.e()).b(eul.a, $$3.f()).a(eul.f, $$3.d()).a(euk.c);
+      eru $$4 = new eru.a($$3.e()).b(eun.a, $$3.f()).a(eun.f, $$3.d()).a(eum.c);
       return a($$0, $$1, $$4, $$2);
    }
 
-   private static int a(CommandContext<et> $$0, jm<eru> $$1, jd $$2, cuq $$3, anj.b $$4) throws CommandSyntaxException {
+   private static int a(CommandContext<et> $$0, jm<erw> $$1, jd $$2, cuq $$3, anj.b $$4) throws CommandSyntaxException {
       et $$5 = (et)$$0.getSource();
-      ers $$6 = new ers.a($$5.e()).a(eul.f, exa.b($$2)).a(eul.i, $$3).b(eul.a, $$5.f()).a(euk.f);
+      eru $$6 = new eru.a($$5.e()).a(eun.f, exc.b($$2)).a(eun.i, $$3).b(eun.a, $$5.f()).a(eum.f);
       return a($$0, $$1, $$6, $$4);
    }
 
-   private static int a(CommandContext<et> $$0, jm<eru> $$1, ers $$2, anj.b $$3) throws CommandSyntaxException {
+   private static int a(CommandContext<et> $$0, jm<erw> $$1, eru $$2, anj.b $$3) throws CommandSyntaxException {
       et $$4 = (et)$$0.getSource();
       List<cuq> $$5 = $$1.a().a($$2);
       return $$3.accept($$0, $$5, $$1x -> a($$4, $$1x));

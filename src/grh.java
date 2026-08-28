@@ -1,9 +1,17 @@
-public class grh extends grm {
-   public grh(gqk $$0) {
-      super($$0, akr.b("textures/atlas/mob_effects.png"), akr.b("mob_effects"));
-   }
+import java.io.IOException;
+import java.io.InputStream;
 
-   public gqj a(jm<brx> $$0) {
-      return this.a($$0.e().map(akq::a).orElseGet(gpz::b));
+public class grh {
+   @Deprecated
+   public static int[] a(aue $$0, akr $$1) throws IOException {
+      int[] var4;
+      try (
+         InputStream $$2 = $$0.open($$1);
+         faj $$3 = faj.a($$2);
+      ) {
+         var4 = $$3.e();
+      }
+
+      return var4;
    }
 }

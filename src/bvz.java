@@ -11,19 +11,19 @@ public class bvz extends bvh<cmk> {
    }
 
    protected boolean a(aqu $$0, cmk $$1) {
-      return $$1.dU().g().map($$0x -> $$0x == com.b || $$0x == com.c || $$0x == com.d).orElse(true);
+      return $$1.dT().g().map($$0x -> $$0x == com.b || $$0x == com.c || $$0x == com.d).orElse(true);
    }
 
    protected boolean a(aqu $$0, cmk $$1, long $$2) {
-      return $$1.dU().a(ccs.d);
+      return $$1.dT().a(ccs.d);
    }
 
    protected void b(aqu $$0, cmk $$1, long $$2) {
-      bvj.a($$1, $$1.dU().c(ccs.d).get().b(), this.c, 1);
+      bvj.a($$1, $$1.dT().c(ccs.d).get().b(), this.c, 1);
    }
 
    protected void c(aqu $$0, cmk $$1, long $$2) {
-      Optional<jl> $$3 = $$1.dU().c(ccs.d);
+      Optional<jl> $$3 = $$1.dT().c(ccs.d);
       $$3.ifPresent($$1x -> {
          jd $$2x = $$1x.b();
          aqu $$3x = $$0.o().a($$1x.a());
@@ -36,6 +36,6 @@ public class bvz extends bvh<cmk> {
             agf.c($$0, $$2x);
          }
       });
-      $$1.dU().b(ccs.d);
+      $$1.dT().b(ccs.d);
    }
 }

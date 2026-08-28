@@ -1,6 +1,6 @@
 import java.util.List;
 
-public record aax(akq<dcw> c, ejh d, List<aax.a> e) implements aaj {
+public record aax(akq<dcw> c, ejj d, List<aax.a> e) implements aaj {
    public static final yx<vw, aax> a = aaj.a(aax::a, aax::new);
    public static final aaj.b<aax> b = aaj.a("debug/structures");
 
@@ -19,11 +19,11 @@ public record aax(akq<dcw> c, ejh d, List<aax.a> e) implements aaj {
       return b;
    }
 
-   static ejh b(vw $$0) {
-      return new ejh($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
+   static ejj b(vw $$0) {
+      return new ejj($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
    }
 
-   static void a(vw $$0, ejh $$1) {
+   static void a(vw $$0, ejj $$1) {
       $$0.p($$1.h());
       $$0.p($$1.i());
       $$0.p($$1.j());
@@ -36,7 +36,7 @@ public record aax(akq<dcw> c, ejh d, List<aax.a> e) implements aaj {
       return this.c;
    }
 
-   public ejh c() {
+   public ejj c() {
       return this.d;
    }
 
@@ -44,7 +44,7 @@ public record aax(akq<dcw> c, ejh d, List<aax.a> e) implements aaj {
       return this.e;
    }
 
-   public static record a(ejh a, boolean b) {
+   public static record a(ejj a, boolean b) {
       public a(vw $$0) {
          this(aax.b($$0), $$0.readBoolean());
       }

@@ -22,7 +22,7 @@ public class als extends aqr {
    @Override
    public void a(aqv $$0) {
       super.a($$0);
-      this.i.add($$0.cA());
+      this.i.add($$0.cz());
    }
 
    public void a(UUID $$0) {
@@ -32,7 +32,7 @@ public class als extends aqr {
    @Override
    public void b(aqv $$0) {
       super.b($$0);
-      this.i.remove($$0.cA());
+      this.i.remove($$0.cz());
    }
 
    @Override
@@ -71,7 +71,7 @@ public class als extends aqr {
          boolean $$4 = false;
 
          for (aqv $$5 : $$0) {
-            if ($$5.cA().equals($$3)) {
+            if ($$5.cz().equals($$3)) {
                $$4 = true;
                break;
             }
@@ -86,7 +86,7 @@ public class als extends aqr {
          boolean $$7 = false;
 
          for (UUID $$8 : this.i) {
-            if ($$6.cA().equals($$8)) {
+            if ($$6.cz().equals($$8)) {
                $$7 = true;
                break;
             }
@@ -99,7 +99,7 @@ public class als extends aqr {
 
       for (UUID $$9 : $$1) {
          for (aqv $$10 : this.g()) {
-            if ($$10.cA().equals($$9)) {
+            if ($$10.cz().equals($$9)) {
                this.b($$10);
                break;
             }
@@ -155,7 +155,7 @@ public class als extends aqr {
    }
 
    public void c(aqv $$0) {
-      if (this.i.contains($$0.cA())) {
+      if (this.i.contains($$0.cz())) {
          this.a($$0);
       }
    }

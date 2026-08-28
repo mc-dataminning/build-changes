@@ -43,7 +43,7 @@ public class cgk extends btw implements cmi, dyi {
    public cgk(bsx<? extends cgk> $$0, dcw $$1) {
       super($$0, $$1);
       this.bR = new bzm(this, 20, true);
-      this.a_(this.fT());
+      this.a_(this.fS());
       this.cl = new cgk.b();
       this.ck = new dyi.a();
       this.cj = new dxw<>(new dyi.b(this));
@@ -51,18 +51,18 @@ public class cgk extends btw implements cmi, dyi {
    }
 
    @Override
-   protected buq.b<cgk> dV() {
+   protected buq.b<cgk> dU() {
       return buq.a(c, b);
    }
 
    @Override
    protected buq<?> a(Dynamic<?> $$0) {
-      return cgl.a(this.dV().a($$0));
+      return cgl.a(this.dU().a($$0));
    }
 
    @Override
-   public buq<cgk> dU() {
-      return (buq<cgk>)super.dU();
+   public buq<cgk> dT() {
+      return (buq<cgk>)super.dT();
    }
 
    public static buv.a s() {
@@ -86,31 +86,31 @@ public class cgk extends btw implements cmi, dyi {
    }
 
    @Override
-   public void a(exa $$0) {
-      if (this.db()) {
+   public void a(exc $$0) {
+      if (this.da()) {
          if (this.bf()) {
             this.a(0.02F, $$0);
-            this.a(bts.a, this.ds());
-            this.i(this.ds().a(0.8F));
+            this.a(bts.a, this.dr());
+            this.i(this.dr().a(0.8F));
          } else if (this.bt()) {
             this.a(0.02F, $$0);
-            this.a(bts.a, this.ds());
-            this.i(this.ds().a(0.5));
+            this.a(bts.a, this.dr());
+            this.i(this.dr().a(0.5));
          } else {
-            this.a(this.fk(), $$0);
-            this.a(bts.a, this.ds());
-            this.i(this.ds().a(0.91F));
+            this.a(this.fj(), $$0);
+            this.a(bts.a, this.dr());
+            this.i(this.dr().a(0.91F));
          }
       }
 
-      this.r(false);
+      this.s(false);
    }
 
    @Override
    public boolean a(brk $$0, float $$1) {
       if ($$0.d() instanceof cmx $$2) {
-         Optional<UUID> $$3 = this.dU().c(ccs.aM);
-         if ($$3.isPresent() && $$2.cA().equals($$3.get())) {
+         Optional<UUID> $$3 = this.dT().c(ccs.aM);
+         if ($$3.isPresent() && $$2.cz().equals($$3.get())) {
             return false;
          }
       }
@@ -142,40 +142,40 @@ public class cgk extends btw implements cmi, dyi {
    }
 
    @Override
-   protected float fb() {
+   protected float fa() {
       return 0.4F;
    }
 
    @Override
    protected void ab() {
-      this.dP().ag().a("allayBrain");
-      this.dU().a((aqu)this.dP(), this);
-      this.dP().ag().c();
-      this.dP().ag().a("allayActivityUpdate");
+      this.dO().ag().a("allayBrain");
+      this.dT().a((aqu)this.dO(), this);
+      this.dO().ag().c();
+      this.dO().ag().a("allayActivityUpdate");
       cgl.a(this);
-      this.dP().ag().c();
+      this.dO().ag().c();
       super.ab();
    }
 
    @Override
    public void m_() {
       super.m_();
-      if (!this.dP().B && this.bE() && this.ai % 10 == 0) {
+      if (!this.dO().B && this.bE() && this.ai % 10 == 0) {
          this.c(1.0F);
       }
 
-      if (this.gl() && this.gq() && this.ai % 20 == 0) {
-         this.w(false);
+      if (this.gk() && this.gp() && this.ai % 20 == 0) {
+         this.x(false);
          this.co = null;
       }
 
-      this.gr();
+      this.gq();
    }
 
    @Override
    public void l() {
       super.l();
-      if (this.dP().B) {
+      if (this.dO().B) {
          this.cr = this.cq;
          if (this.t()) {
             this.cq = ayo.a(this.cq + 1.0F, 0.0F, 5.0F);
@@ -183,10 +183,10 @@ public class cgk extends btw implements cmi, dyi {
             this.cq = ayo.a(this.cq - 1.0F, 0.0F, 5.0F);
          }
 
-         if (this.gl()) {
+         if (this.gk()) {
             this.cs++;
             this.cu = this.ct;
-            if (this.gm()) {
+            if (this.gl()) {
                this.ct++;
             } else {
                this.ct--;
@@ -199,16 +199,16 @@ public class cgk extends btw implements cmi, dyi {
             this.cu = 0.0F;
          }
       } else {
-         dyi.c.a(this.dP(), this.ck, this.cl);
-         if (this.gi()) {
-            this.w(false);
+         dyi.c.a(this.dO(), this.ck, this.cl);
+         if (this.gh()) {
+            this.x(false);
          }
       }
    }
 
    @Override
-   public boolean fT() {
-      return !this.gp() && this.t();
+   public boolean fS() {
+      return !this.go() && this.t();
    }
 
    public boolean t() {
@@ -220,37 +220,37 @@ public class cgk extends btw implements cmi, dyi {
       return false;
    }
 
-   private boolean gp() {
-      return this.dU().a(ccs.aP, cct.a);
+   private boolean go() {
+      return this.dT().a(ccs.aP, cct.a);
    }
 
    @Override
    protected bqr b(cmx $$0, bqq $$1) {
       cuq $$2 = $$0.b($$1);
       cuq $$3 = this.b(bqq.a);
-      if (this.gl() && this.n($$2) && this.gu()) {
-         this.gs();
-         this.dP().a(this, (byte)18);
-         this.dP().a($$0, this, avp.E, avq.g, 2.0F, 1.0F);
+      if (this.gk() && this.n($$2) && this.gt()) {
+         this.gr();
+         this.dO().a(this, (byte)18);
+         this.dO().a($$0, this, avp.E, avq.g, 2.0F, 1.0F);
          this.a($$0, $$2);
          return bqr.a;
       } else if ($$3.e() && !$$2.e()) {
          cuq $$4 = $$2.c(1);
          this.a(bqq.a, $$4);
          this.a($$0, $$2);
-         this.dP().a($$0, this, avp.e, avq.g, 2.0F, 1.0F);
-         this.dU().a(ccs.aM, $$0.cA());
+         this.dO().a($$0, this, avp.e, avq.g, 2.0F, 1.0F);
+         this.dT().a(ccs.aM, $$0.cz());
          return bqr.a;
       } else if (!$$3.e() && $$1 == bqq.a && $$2.e()) {
          this.a(bsy.a, cuq.l);
-         this.dP().a($$0, this, avp.f, avq.g, 2.0F, 1.0F);
+         this.dO().a($$0, this, avp.f, avq.g, 2.0F, 1.0F);
          this.a(bqq.a);
 
          for (cuq $$5 : this.x().f()) {
-            bvj.a(this, $$5, this.dn());
+            bvj.a(this, $$5, this.dm());
          }
 
-         this.dU().b(ccs.aM);
+         this.dT().b(ccs.aM);
          $$0.i($$3);
          return bqr.a;
       } else {
@@ -260,13 +260,13 @@ public class cgk extends btw implements cmi, dyi {
 
    public void b(jd $$0, boolean $$1) {
       if ($$1) {
-         if (!this.gl()) {
+         if (!this.gk()) {
             this.co = $$0;
-            this.w(true);
+            this.x(true);
          }
       } else if ($$0.equals(this.co) || this.co == null) {
          this.co = null;
-         this.w(false);
+         this.x(false);
       }
    }
 
@@ -283,7 +283,7 @@ public class cgk extends btw implements cmi, dyi {
    @Override
    public boolean k(cuq $$0) {
       cuq $$1 = this.b(bqq.a);
-      return !$$1.e() && this.dP().ab().b(dcs.c) && this.cn.c($$0) && this.d($$1, $$0);
+      return !$$1.e() && this.dO().ab().b(dcs.c) && this.cn.c($$0) && this.d($$1, $$0);
    }
 
    private boolean d(cuq $$0, cuq $$1) {
@@ -314,31 +314,31 @@ public class cgk extends btw implements cmi, dyi {
 
    @Override
    public void a(BiConsumer<dxw<?>, aqu> $$0) {
-      if (this.dP() instanceof aqu $$1) {
+      if (this.dO() instanceof aqu $$1) {
          $$0.accept(this.cj, $$1);
          $$0.accept(this.cm, $$1);
       }
    }
 
-   public boolean gl() {
+   public boolean gk() {
       return this.ao.a(ch);
    }
 
-   public void w(boolean $$0) {
-      if (!this.dP().B && this.dc() && (!$$0 || !this.gi())) {
+   public void x(boolean $$0) {
+      if (!this.dO().B && this.db() && (!$$0 || !this.gh())) {
          this.ao.a(ch, $$0);
       }
    }
 
-   private boolean gq() {
-      return this.co == null || !this.co.a(this.dn(), (double)dxz.E.a().a()) || !this.dP().a_(this.co).a(dga.dT);
+   private boolean gp() {
+      return this.co == null || !this.co.a(this.dm(), (double)dxz.E.a().a()) || !this.dO().a_(this.co).a(dga.dT);
    }
 
    public float H(float $$0) {
       return ayo.i($$0, this.cr, this.cq) / 5.0F;
    }
 
-   public boolean gm() {
+   public boolean gl() {
       float $$0 = this.cs % 55.0F;
       return $$0 < 15.0F;
    }
@@ -353,8 +353,8 @@ public class cgk extends btw implements cmi, dyi {
    }
 
    @Override
-   protected void eA() {
-      super.eA();
+   protected void ez() {
+      super.ez();
       this.cn.f().forEach(this::b);
       cuq $$0 = this.a(bsy.a);
       if (!$$0.e() && !dae.a($$0, dad.D)) {
@@ -371,21 +371,21 @@ public class cgk extends btw implements cmi, dyi {
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      this.b($$0, this.dR());
-      akp<uy> $$1 = this.dR().a(up.a);
+      this.b($$0, this.dQ());
+      akp<uy> $$1 = this.dQ().a(up.a);
       dyi.a.a
          .encodeStart($$1, this.ck)
          .resultOrPartial($$0x -> e.error("Failed to encode vibration listener for Allay: '{}'", $$0x))
          .ifPresent($$1x -> $$0.a("listener", $$1x));
       $$0.a("DuplicationCooldown", this.cp);
-      $$0.a("CanDuplicate", this.gu());
+      $$0.a("CanDuplicate", this.gt());
    }
 
    @Override
    public void a(ub $$0) {
       super.a($$0);
-      this.a($$0, this.dR());
-      akp<uy> $$1 = this.dR().a(up.a);
+      this.a($$0, this.dQ());
+      akp<uy> $$1 = this.dQ().a(up.a);
       if ($$0.b("listener", 10)) {
          dyi.a.a
             .parse($$1, $$0.p("listener"))
@@ -398,16 +398,16 @@ public class cgk extends btw implements cmi, dyi {
    }
 
    @Override
-   protected boolean gj() {
+   protected boolean gi() {
       return false;
    }
 
-   private void gr() {
+   private void gq() {
       if (this.cp > 0L) {
          this.cp--;
       }
 
-      if (!this.dP().x_() && this.cp == 0L && !this.gu()) {
+      if (!this.dO().x_() && this.cp == 0L && !this.gt()) {
          this.ao.a(ci, true);
       }
    }
@@ -416,23 +416,23 @@ public class cgk extends btw implements cmi, dyi {
       return ce.a($$0);
    }
 
-   private void gs() {
-      cgk $$0 = bsx.a.a(this.dP());
+   private void gr() {
+      cgk $$0 = bsx.a.a(this.dO());
       if ($$0 != null) {
-         $$0.f(this.dn());
-         $$0.fS();
-         $$0.gt();
-         this.gt();
-         this.dP().b($$0);
+         $$0.f(this.dm());
+         $$0.fR();
+         $$0.gs();
+         this.gs();
+         this.dO().b($$0);
       }
    }
 
-   private void gt() {
+   private void gs() {
       this.cp = 6000L;
       this.ao.a(ci, false);
    }
 
-   private boolean gu() {
+   private boolean gt() {
       return this.ao.a(ci);
    }
 
@@ -441,35 +441,35 @@ public class cgk extends btw implements cmi, dyi {
    }
 
    @Override
-   public exa cN() {
-      return new exa(0.0, (double)this.cM() * 0.6, (double)this.dk() * 0.1);
+   public exc cM() {
+      return new exc(0.0, (double)this.cL() * 0.6, (double)this.dj() * 0.1);
    }
 
    @Override
    public void b(byte $$0) {
       if ($$0 == 18) {
          for (int $$1 = 0; $$1 < 3; $$1++) {
-            this.gv();
+            this.gu();
          }
       } else {
          super.b($$0);
       }
    }
 
-   private void gv() {
+   private void gu() {
       double $$0 = this.ah.k() * 0.02;
       double $$1 = this.ah.k() * 0.02;
       double $$2 = this.ah.k() * 0.02;
-      this.dP().a(lm.Q, this.d(1.0), this.dx() + 0.5, this.g(1.0), $$0, $$1, $$2);
+      this.dO().a(lm.Q, this.d(1.0), this.dw() + 0.5, this.g(1.0), $$0, $$1, $$2);
    }
 
    @Override
-   public dyi.a gn() {
+   public dyi.a gm() {
       return this.ck;
    }
 
    @Override
-   public dyi.d go() {
+   public dyi.d gn() {
       return this.cl;
    }
 
@@ -493,7 +493,7 @@ public class cgk extends btw implements cmi, dyi {
       }
 
       @Override
-      public boolean a(aqu $$0, jm<dxz> $$1, dxz.a $$2, exa $$3) {
+      public boolean a(aqu $$0, jm<dxz> $$1, dxz.a $$2, exc $$3) {
          if ($$1.a(dxz.E)) {
             cgk.this.b(jd.a((jw)$$3), true);
             return true;
@@ -508,7 +508,7 @@ public class cgk extends btw implements cmi, dyi {
 
    class b implements dyi.d {
       private static final int b = 16;
-      private final dyd c = new dxx(cgk.this, cgk.this.cM());
+      private final dyd c = new dxx(cgk.this, cgk.this.cL());
 
       @Override
       public int a() {
@@ -522,10 +522,10 @@ public class cgk extends btw implements cmi, dyi {
 
       @Override
       public boolean a(aqu $$0, jd $$1, jm<dxz> $$2, dxz.a $$3) {
-         if (cgk.this.ga()) {
+         if (cgk.this.fZ()) {
             return false;
          } else {
-            Optional<jl> $$4 = cgk.this.dU().c(ccs.aN);
+            Optional<jl> $$4 = cgk.this.dT().c(ccs.aN);
             if ($$4.isEmpty()) {
                return true;
             } else {

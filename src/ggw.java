@@ -1,95 +1,53 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public class ggw implements ggz<dqd> {
+   private final fyk a;
+   private final fyk b;
 
-public class ggw implements auf {
-   private Map<dqj<?>, ggx<?>> d = ImmutableMap.of();
-   private final fhv e;
-   private final fye f;
-   public dcw a;
-   public ffw b;
-   public ewy c;
-   private final Supplier<gfr> g;
-   private final Supplier<glf> h;
-   private final Supplier<gkf> i;
-
-   public ggw(fhv $$0, fye $$1, Supplier<gfr> $$2, Supplier<glf> $$3, Supplier<gkf> $$4) {
-      this.h = $$3;
-      this.i = $$4;
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public ggw(gha.a $$0) {
+      this.a = $$0.a(fyj.j);
+      this.b = $$0.a(fyj.i);
    }
 
-   @Nullable
-   public <E extends dqh> ggx<E> a(E $$0) {
-      return (ggx<E>)this.d.get($$0.r());
+   public static fyq b() {
+      fys $$0 = new fys();
+      fyt $$1 = $$0.a();
+      $$1.a("main", fyp.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fym.a);
+      $$1.a("left_leg", fyp.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fym.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
+      $$1.a("right_leg", fyp.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fym.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
+      return fyq.a($$0, 64, 64);
    }
 
-   public void a(dcw $$0, ffw $$1, ewy $$2) {
-      if (this.a != $$0) {
-         this.a($$0);
-      }
-
-      this.b = $$1;
-      this.c = $$2;
+   public static fyq c() {
+      fys $$0 = new fys();
+      fyt $$1 = $$0.a();
+      $$1.a("main", fyp.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fym.a);
+      $$1.a("left_leg", fyp.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fym.b((float) (Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("right_leg", fyp.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fym.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
+      return fyq.a($$0, 64, 64);
    }
 
-   public <E extends dqh> void a(E $$0, float $$1, fbg $$2, gex $$3) {
-      ggx<E> $$4 = this.a($$0);
-      if ($$4 != null) {
-         if ($$0.m() && $$0.r().a($$0.n())) {
-            if ($$4.a($$0, this.b.b())) {
-               a($$0, () -> a($$4, $$0, $$1, $$2, $$3));
-            }
-         }
-      }
-   }
-
-   private static <T extends dqh> void a(ggx<T> $$0, T $$1, float $$2, fbg $$3, gex $$4) {
-      dcw $$5 = $$1.i();
-      int $$6;
-      if ($$5 != null) {
-         $$6 = gev.a($$5, $$1.aD_());
+   public void a(dqd $$0, float $$1, fbi $$2, gez $$3, int $$4, int $$5) {
+      gsq $$6 = gfo.r[$$0.c().a()];
+      dcw $$7 = $$0.i();
+      if ($$7 != null) {
+         dtc $$8 = $$0.n();
+         dif.c<? extends dqd> $$9 = dif.a(dqj.y, dfr::h, dfr::g, dhb.c, $$8, $$7, $$0.aD_(), ($$0x, $$1x) -> false);
+         int $$10 = $$9.apply(new ghc<>()).get($$4);
+         this.a($$2, $$3, $$8.c(dfr.b) == dtp.a ? this.a : this.b, $$8.c(dfr.aE), $$6, $$10, $$5, false);
       } else {
-         $$6 = 15728880;
-      }
-
-      $$0.a($$1, $$2, $$3, $$4, $$6, gqa.d);
-   }
-
-   public <E extends dqh> boolean a(E $$0, fbg $$1, gex $$2, int $$3, int $$4) {
-      ggx<E> $$5 = this.a($$0);
-      if ($$5 == null) {
-         return true;
-      } else {
-         a($$0, () -> $$5.a($$0, 0.0F, $$1, $$2, $$3, $$4));
-         return false;
+         this.a($$2, $$3, this.a, ji.d, $$6, $$4, $$5, false);
+         this.a($$2, $$3, this.b, ji.d, $$6, $$4, $$5, true);
       }
    }
 
-   private static void a(dqh $$0, Runnable $$1) {
-      try {
-         $$1.run();
-      } catch (Throwable var5) {
-         o $$3 = o.a(var5, "Rendering Block Entity");
-         p $$4 = $$3.a("Block Entity Details");
-         $$0.a($$4);
-         throw new z($$3);
-      }
-   }
-
-   public void a(@Nullable dcw $$0) {
-      this.a = $$0;
-      if ($$0 == null) {
-         this.b = null;
-      }
-   }
-
-   @Override
-   public void a(aue $$0) {
-      ggy.a $$1 = new ggy.a(this, this.g.get(), this.h.get(), this.i.get(), this.f, this.e);
-      this.d = ggz.a($$1);
+   private void a(fbi $$0, gez $$1, fyk $$2, ji $$3, gsq $$4, int $$5, int $$6, boolean $$7) {
+      $$0.a();
+      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
+      $$0.a(a.b.rotationDegrees(90.0F));
+      $$0.a(0.5F, 0.5F, 0.5F);
+      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
+      $$0.a(-0.5F, -0.5F, -0.5F);
+      fbm $$8 = $$4.a($$1, gfh::c);
+      $$2.a($$0, $$8, $$5, $$6);
+      $$0.b();
    }
 }

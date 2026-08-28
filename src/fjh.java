@@ -1,143 +1,356 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public class fjh extends fiq<fjh.a> {
-   private static final int a = 310;
-   private static final int m = 25;
-   private final frf n;
+public class fjh {
+   public static final int a = Integer.MAX_VALUE;
+   private static final int b = 2;
+   private final fhx c;
+   private final List<fjh.a> d = Lists.newArrayList();
+   private String e;
+   private int f;
+   private int g;
+   private boolean h;
+   private int i = Integer.MAX_VALUE;
+   private final int j;
+   private Consumer<String> k = $$0x -> {
+   };
+   private Runnable l = () -> {
+   };
 
-   public fjh(fgm $$0, int $$1, frf $$2) {
-      super($$0, $$1, $$2.s.d(), $$2.s.c(), 25);
-      this.e = false;
-      this.n = $$2;
+   public fjh(fhx $$0, int $$1) {
+      this.c = $$0;
+      this.j = $$1;
+      this.a("");
    }
 
-   public void a(fgp<?> $$0) {
-      this.b(fjh.b.a(this.c.m, $$0, this.n));
+   public int a() {
+      return this.i;
    }
 
-   public void a(fgp<?>... $$0) {
-      for (int $$1 = 0; $$1 < $$0.length; $$1 += 2) {
-         fgp<?> $$2 = $$1 < $$0.length - 1 ? $$0[$$1 + 1] : null;
-         this.b(fjh.b.a(this.c.m, $$0[$$1], $$2, this.n));
+   public void a(int $$0) {
+      if ($$0 < 0) {
+         throw new IllegalArgumentException("Character limit cannot be negative");
+      } else {
+         this.i = $$0;
       }
    }
 
-   public void a(List<fii> $$0) {
-      for (int $$1 = 0; $$1 < $$0.size(); $$1 += 2) {
-         this.a($$0.get($$1), $$1 < $$0.size() - 1 ? $$0.get($$1 + 1) : null);
+   public boolean b() {
+      return this.i != Integer.MAX_VALUE;
+   }
+
+   public void a(Consumer<String> $$0) {
+      this.k = $$0;
+   }
+
+   public void a(Runnable $$0) {
+      this.l = $$0;
+   }
+
+   public void a(String $$0) {
+      this.e = this.c($$0);
+      this.f = this.e.length();
+      this.g = this.f;
+      this.n();
+   }
+
+   public String c() {
+      return this.e;
+   }
+
+   public void b(String $$0) {
+      if (!$$0.isEmpty() || this.i()) {
+         String $$1 = this.d(azl.a($$0, true));
+         fjh.a $$2 = this.e();
+         this.e = new StringBuilder(this.e).replace($$2.a, $$2.b, $$1).toString();
+         this.f = $$2.a + $$1.length();
+         this.g = this.f;
+         this.n();
       }
    }
 
-   public void a(fii $$0, @Nullable fii $$1) {
-      this.b(fjh.a.a($$0, $$1, this.n));
+   public void b(int $$0) {
+      if (!this.i()) {
+         this.g = ayo.a(this.f + $$0, 0, this.e.length());
+      }
+
+      this.b("");
    }
 
-   @Override
-   public int b() {
-      return 310;
+   public int d() {
+      return this.f;
    }
 
-   @Nullable
-   public fii b(fgp<?> $$0) {
-      for (fjh.a $$1 : this.aK_()) {
-         if ($$1 instanceof fjh.b $$2) {
-            fii $$3 = $$2.a.get($$0);
-            if ($$3 != null) {
-               return $$3;
-            }
+   public void a(boolean $$0) {
+      this.h = $$0;
+   }
+
+   public fjh.a e() {
+      return new fjh.a(Math.min(this.g, this.f), Math.max(this.g, this.f));
+   }
+
+   public int f() {
+      return this.d.size();
+   }
+
+   public int g() {
+      for (int $$0 = 0; $$0 < this.d.size(); $$0++) {
+         fjh.a $$1 = this.d.get($$0);
+         if (this.f >= $$1.a && this.f <= $$1.b) {
+            return $$0;
          }
       }
 
-      return null;
+      return -1;
    }
 
-   public void c() {
-      for (fjh.a $$0 : this.aK_()) {
-         if ($$0 instanceof fjh.b) {
-            fjh.b $$1 = (fjh.b)$$0;
+   public fjh.a c(int $$0) {
+      return this.d.get(ayo.a($$0, 0, this.d.size() - 1));
+   }
 
-            for (fii $$2 : $$1.a.values()) {
-               if ($$2 instanceof fgp.i<?> $$3) {
-                  $$3.c();
+   public void a(fjy $$0, int $$1) {
+      switch ($$0) {
+         case a:
+            this.f = $$1;
+            break;
+         case b:
+            this.f += $$1;
+            break;
+         case c:
+            this.f = this.e.length() + $$1;
+      }
+
+      this.f = ayo.a(this.f, 0, this.e.length());
+      this.l.run();
+      if (!this.h) {
+         this.g = this.f;
+      }
+   }
+
+   public void d(int $$0) {
+      if ($$0 != 0) {
+         int $$1 = this.c.b(this.e.substring(this.m().a, this.f)) + 2;
+         fjh.a $$2 = this.f($$0);
+         int $$3 = this.c.a(this.e.substring($$2.a, $$2.b), $$1).length();
+         this.a(fjy.a, $$2.a + $$3);
+      }
+   }
+
+   public void a(double $$0, double $$1) {
+      int $$2 = ayo.a($$0);
+      int $$3 = ayo.a($$1 / 9.0);
+      fjh.a $$4 = this.d.get(ayo.a($$3, 0, this.d.size() - 1));
+      int $$5 = this.c.a(this.e.substring($$4.a, $$4.b), $$2).length();
+      this.a(fjy.a, $$4.a + $$5);
+   }
+
+   public boolean e(int $$0) {
+      this.h = fod.s();
+      if (fod.f($$0)) {
+         this.f = this.e.length();
+         this.g = 0;
+         return true;
+      } else if (fod.e($$0)) {
+         fgo.Q().o.a(this.j());
+         return true;
+      } else if (fod.d($$0)) {
+         this.b(fgo.Q().o.a());
+         return true;
+      } else if (fod.c($$0)) {
+         fgo.Q().o.a(this.j());
+         this.b("");
+         return true;
+      } else {
+         switch ($$0) {
+            case 257:
+            case 335:
+               this.b("\n");
+               return true;
+            case 259:
+               if (fod.r()) {
+                  fjh.a $$3 = this.k();
+                  this.b($$3.a - this.f);
+               } else {
+                  this.b(-1);
                }
-            }
+
+               return true;
+            case 261:
+               if (fod.r()) {
+                  fjh.a $$4 = this.l();
+                  this.b($$4.a - this.f);
+               } else {
+                  this.b(1);
+               }
+
+               return true;
+            case 262:
+               if (fod.r()) {
+                  fjh.a $$2 = this.l();
+                  this.a(fjy.a, $$2.a);
+               } else {
+                  this.a(fjy.b, 1);
+               }
+
+               return true;
+            case 263:
+               if (fod.r()) {
+                  fjh.a $$1 = this.k();
+                  this.a(fjy.a, $$1.a);
+               } else {
+                  this.a(fjy.b, -1);
+               }
+
+               return true;
+            case 264:
+               if (!fod.r()) {
+                  this.d(1);
+               }
+
+               return true;
+            case 265:
+               if (!fod.r()) {
+                  this.d(-1);
+               }
+
+               return true;
+            case 266:
+               this.a(fjy.a, 0);
+               return true;
+            case 267:
+               this.a(fjy.c, 0);
+               return true;
+            case 268:
+               if (fod.r()) {
+                  this.a(fjy.a, 0);
+               } else {
+                  this.a(fjy.a, this.m().a);
+               }
+
+               return true;
+            case 269:
+               if (fod.r()) {
+                  this.a(fjy.c, 0);
+               } else {
+                  this.a(fjy.a, this.m().b);
+               }
+
+               return true;
+            default:
+               return false;
          }
       }
    }
 
-   public Optional<fkg> e(double $$0, double $$1) {
-      for (fjh.a $$2 : this.aK_()) {
-         for (fkg $$3 : $$2.aK_()) {
-            if ($$3.c($$0, $$1)) {
-               return Optional.of($$3);
-            }
-         }
-      }
-
-      return Optional.empty();
+   public Iterable<fjh.a> h() {
+      return this.d;
    }
 
-   protected static class a extends fiq.a<fjh.a> {
-      private final List<fii> a;
-      private final fob b;
-      private static final int c = 160;
+   public boolean i() {
+      return this.g != this.f;
+   }
 
-      a(List<fii> $$0, fob $$1) {
-         this.a = ImmutableList.copyOf($$0);
-         this.b = $$1;
-      }
+   @VisibleForTesting
+   public String j() {
+      fjh.a $$0 = this.e();
+      return this.e.substring($$0.a, $$0.b);
+   }
 
-      public static fjh.a a(List<fii> $$0, fob $$1) {
-         return new fjh.a($$0, $$1);
-      }
+   private fjh.a m() {
+      return this.f(0);
+   }
 
-      public static fjh.a a(fii $$0, @Nullable fii $$1, fob $$2) {
-         return $$1 == null ? new fjh.a(ImmutableList.of($$0), $$2) : new fjh.a(ImmutableList.of($$0, $$1), $$2);
-      }
-
-      @Override
-      public void a(fhx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10 = 0;
-         int $$11 = this.b.m / 2 - 155;
-
-         for (fii $$12 : this.a) {
-            $$12.c($$11 + $$10, $$2);
-            $$12.a($$0, $$6, $$7, $$9);
-            $$10 += 160;
-         }
-      }
-
-      @Override
-      public List<? extends fkg> aK_() {
-         return this.a;
-      }
-
-      @Override
-      public List<? extends fme> b() {
-         return this.a;
+   private fjh.a f(int $$0) {
+      int $$1 = this.g();
+      if ($$1 < 0) {
+         throw new IllegalStateException("Cursor is not within text (cursor = " + this.f + ", length = " + this.e.length() + ")");
+      } else {
+         return this.d.get(ayo.a($$1 + $$0, 0, this.d.size() - 1));
       }
    }
 
-   protected static class b extends fjh.a {
-      final Map<fgp<?>, fii> a;
+   @VisibleForTesting
+   public fjh.a k() {
+      if (this.e.isEmpty()) {
+         return fjh.a.c;
+      } else {
+         int $$0 = ayo.a(this.f, 0, this.e.length() - 1);
 
-      private b(Map<fgp<?>, fii> $$0, frf $$1) {
-         super(ImmutableList.copyOf($$0.values()), $$1);
-         this.a = $$0;
+         while ($$0 > 0 && Character.isWhitespace(this.e.charAt($$0 - 1))) {
+            $$0--;
+         }
+
+         while ($$0 > 0 && !Character.isWhitespace(this.e.charAt($$0 - 1))) {
+            $$0--;
+         }
+
+         return new fjh.a($$0, this.g($$0));
+      }
+   }
+
+   @VisibleForTesting
+   public fjh.a l() {
+      if (this.e.isEmpty()) {
+         return fjh.a.c;
+      } else {
+         int $$0 = ayo.a(this.f, 0, this.e.length() - 1);
+
+         while ($$0 < this.e.length() && !Character.isWhitespace(this.e.charAt($$0))) {
+            $$0++;
+         }
+
+         while ($$0 < this.e.length() && Character.isWhitespace(this.e.charAt($$0))) {
+            $$0++;
+         }
+
+         return new fjh.a($$0, this.g($$0));
+      }
+   }
+
+   private int g(int $$0) {
+      int $$1 = $$0;
+
+      while ($$1 < this.e.length() && !Character.isWhitespace(this.e.charAt($$1))) {
+         $$1++;
       }
 
-      public static fjh.b a(fgq $$0, fgp<?> $$1, frf $$2) {
-         return new fjh.b(ImmutableMap.of($$1, $$1.a($$0, 0, 0, 310)), $$2);
-      }
+      return $$1;
+   }
 
-      public static fjh.b a(fgq $$0, fgp<?> $$1, @Nullable fgp<?> $$2, frf $$3) {
-         fii $$4 = $$1.a($$0);
-         return $$2 == null ? new fjh.b(ImmutableMap.of($$1, $$4), $$3) : new fjh.b(ImmutableMap.of($$1, $$4, $$2, $$2.a($$0)), $$3);
+   private void n() {
+      this.o();
+      this.k.accept(this.e);
+      this.l.run();
+   }
+
+   private void o() {
+      this.d.clear();
+      if (this.e.isEmpty()) {
+         this.d.add(fjh.a.c);
+      } else {
+         this.c.b().a(this.e, this.j, xw.a, false, ($$0, $$1, $$2) -> this.d.add(new fjh.a($$1, $$2)));
+         if (this.e.charAt(this.e.length() - 1) == '\n') {
+            this.d.add(new fjh.a(this.e.length(), this.e.length()));
+         }
       }
+   }
+
+   private String c(String $$0) {
+      return this.b() ? azl.a($$0, this.i, false) : $$0;
+   }
+
+   private String d(String $$0) {
+      if (this.b()) {
+         int $$1 = this.i - this.e.length();
+         return azl.a($$0, $$1, false);
+      } else {
+         return $$0;
+      }
+   }
+
+   protected static record a(int a, int b) {
+      static final fjh.a c = new fjh.a(0, 0);
    }
 }

@@ -1,59 +1,63 @@
-public class fqy extends frf {
-   public static final wz a = wz.c("options.accessibility.title");
+import javax.annotation.Nullable;
 
-   private static fgp<?>[] a(fgq $$0) {
-      return new fgp[]{
-         $$0.as(),
-         $$0.W(),
-         $$0.t(),
-         $$0.H(),
-         $$0.p(),
-         $$0.r(),
-         $$0.Y(),
-         $$0.n(),
-         $$0.o(),
-         $$0.A(),
-         $$0.B(),
-         $$0.ab(),
-         $$0.ac(),
-         $$0.ad(),
-         $$0.aj(),
-         $$0.ak(),
-         $$0.al(),
-         $$0.ao(),
-         $$0.am(),
-         $$0.an(),
-         $$0.b(),
-         $$0.a(),
-         $$0.s(),
-         $$0.c(),
-         $$0.u()
-      };
+public abstract class fqy extends fod {
+   private static final int b = 100;
+   private final wz c;
+   @Nullable
+   private final wz r;
+   private final wz s;
+   @Nullable
+   protected fio a;
+   @Nullable
+   private fix u;
+   private final flx v;
+
+   protected fqy(wz $$0, wz $$1, wz $$2) {
+      this($$0, $$1, null, $$2);
    }
 
-   public fqy(fob $$0, fgq $$1) {
-      super($$0, $$1, a);
+   protected fqy(wz $$0, wz $$1, @Nullable wz $$2, wz $$3) {
+      super($$0);
+      this.c = $$1;
+      this.r = $$2;
+      this.s = $$3;
+      this.v = new flx(0, 0, this.m, this.n);
    }
+
+   protected abstract fma m();
 
    @Override
    protected void aT_() {
-      super.aT_();
-      fii $$0 = this.r.b(this.c.t());
-      if ($$0 != null && !this.l.ac().b().contains("high_contrast")) {
-         $$0.j = false;
-         $$0.a(fjv.a(wz.c("options.accessibility.high_contrast.error.tooltip")));
+      fmd $$0 = this.v.a(fmd.d().a(8));
+      $$0.c().b();
+      $$0.a(new fjt(this.n(), this.o));
+      this.u = $$0.a(new fix(this.m - 100, this.c, this.o, 12), $$0x -> $$0x.a(12));
+      this.u.b(false);
+      fmd $$1 = $$0.a(fmd.d().a(8));
+      $$1.c().b();
+      if (this.r != null) {
+         this.a = $$1.a(fio.a(this.r, this.o).a());
       }
+
+      $$1.a(this.m());
+      this.v.a($$1x -> {
+         fik var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
    @Override
-   protected void m() {
-      this.r.a(a(this.c));
+   protected void c() {
+      if (this.u != null) {
+         this.u.d(this.m - 100);
+      }
+
+      this.v.a();
+      flx.a(this.v, this.H());
    }
 
    @Override
-   protected void C() {
-      fmb $$0 = this.s.b(fmb.e().a(8));
-      $$0.a(fik.a(wz.c("options.accessibility.link"), fmy.b(this, axj.l)).a());
-      $$0.a(fik.a(wy.d, $$0x -> this.l.a(this.b)).a());
+   public wz i() {
+      return this.s;
    }
 }

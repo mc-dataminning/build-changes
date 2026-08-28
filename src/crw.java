@@ -35,7 +35,7 @@ public class crw extends cpu {
    public crw(int $$0, cmw $$1, final cqg $$2) {
       super(crc.y, $$0);
       this.t = $$2;
-      this.v = $$1.l.dP();
+      this.v = $$1.l.dO();
       this.m = this.a(new crq(this.o, 0, 20, 33));
       this.n = this.a(new crq(this.A, 1, 143, 33) {
          @Override
@@ -45,7 +45,7 @@ public class crw extends cpu {
 
          @Override
          public void a(cmx $$0, cuq $$1) {
-            $$1.a($$0.dP(), $$0, $$1.H());
+            $$1.a($$0.dO(), $$0, $$1.H());
             crw.this.A.a($$0, this.j());
             cuq $$2 = crw.this.m.a(1);
             if (!$$2.e()) {
@@ -177,7 +177,7 @@ public class crw extends cpu {
          cul $$5 = $$4.g();
          $$2 = $$4.s();
          if ($$1 == 1) {
-            $$5.b($$4, $$0.dP(), $$0);
+            $$5.b($$4, $$0.dO(), $$0);
             if (!this.a($$4, 2, 38, true)) {
                return cuq.l;
             }

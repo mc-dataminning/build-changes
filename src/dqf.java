@@ -85,14 +85,14 @@ public class dqf extends dqh {
       jd $$0 = this.aD_();
       if (this.n.Z() > this.l + 60L || this.m == null) {
          this.l = this.n.Z();
-         ewv $$1 = new ewv($$0).g(48.0);
+         ewx $$1 = new ewx($$0).g(48.0);
          this.m = this.n.a(btn.class, $$1);
       }
 
       if (!this.n.B) {
          for (btn $$2 : this.m) {
-            if ($$2.bE() && !$$2.dK() && $$0.a($$2.dn(), 32.0)) {
-               $$2.dU().a(ccs.D, this.n.Z());
+            if ($$2.bE() && !$$2.dJ() && $$0.a($$2.dm(), 32.0)) {
+               $$2.dT().a(ccs.D, this.n.Z());
             }
          }
       }
@@ -100,7 +100,7 @@ public class dqf extends dqh {
 
    private static boolean a(jd $$0, List<btn> $$1) {
       for (btn $$2 : $$1) {
-         if ($$2.bE() && !$$2.dK() && $$0.a($$2.dn(), 32.0) && $$2.am().a(awi.c)) {
+         if ($$2.bE() && !$$2.dJ() && $$0.a($$2.dm(), 32.0) && $$2.am().a(awi.c)) {
             return true;
          }
       }
@@ -114,12 +114,12 @@ public class dqf extends dqh {
 
    private static void b(dcw $$0, jd $$1, List<btn> $$2) {
       MutableInt $$3 = new MutableInt(16700985);
-      int $$4 = (int)$$2.stream().filter($$1x -> $$1.a($$1x.dn(), 48.0)).count();
+      int $$4 = (int)$$2.stream().filter($$1x -> $$1.a($$1x.dm(), 48.0)).count();
       $$2.stream().filter($$1x -> a($$1, $$1x)).forEach($$4x -> {
          float $$5 = 1.0F;
-         double $$6 = Math.sqrt(($$4x.du() - (double)$$1.u()) * ($$4x.du() - (double)$$1.u()) + ($$4x.dA() - (double)$$1.w()) * ($$4x.dA() - (double)$$1.w()));
-         double $$7 = (double)((float)$$1.u() + 0.5F) + 1.0 / $$6 * ($$4x.du() - (double)$$1.u());
-         double $$8 = (double)((float)$$1.w() + 0.5F) + 1.0 / $$6 * ($$4x.dA() - (double)$$1.w());
+         double $$6 = Math.sqrt(($$4x.dt() - (double)$$1.u()) * ($$4x.dt() - (double)$$1.u()) + ($$4x.dz() - (double)$$1.w()) * ($$4x.dz() - (double)$$1.w()));
+         double $$7 = (double)((float)$$1.u() + 0.5F) + 1.0 / $$6 * ($$4x.dt() - (double)$$1.u());
+         double $$8 = (double)((float)$$1.w() + 0.5F) + 1.0 / $$6 * ($$4x.dz() - (double)$$1.w());
          int $$9 = ayo.a(($$4 - 21) / -2, 3, 15);
 
          for (int $$10 = 0; $$10 < $$9; $$10++) {
@@ -130,7 +130,7 @@ public class dqf extends dqh {
    }
 
    private static boolean a(jd $$0, btn $$1) {
-      return $$1.bE() && !$$1.dK() && $$0.a($$1.dn(), 48.0) && $$1.am().a(awi.c);
+      return $$1.bE() && !$$1.dJ() && $$0.a($$1.dm(), 48.0) && $$1.am().a(awi.c);
    }
 
    private static void a(btn $$0) {

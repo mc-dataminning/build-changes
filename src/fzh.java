@@ -1,19 +1,13 @@
-import com.mojang.authlib.GameProfile;
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public record fzh(
-   GameProfile a,
-   gvq b,
-   ka.b c,
-   cpl d,
-   @Nullable String e,
-   @Nullable fzr f,
-   @Nullable fob g,
-   Map<akr, byte[]> h,
-   @Nullable fil.b i,
-   @Deprecated(forRemoval = true) boolean j,
-   Map<String, String> k,
-   alj l
-) {
+public enum fzh {
+   a,
+   b;
+
+   private static final List<fzh> c = List.of(values());
+   private static final ka.b d = ka.a(lt.aA);
+
+   public static jt<fzh> a() {
+      return new jt<>(c).a(a, d);
+   }
 }

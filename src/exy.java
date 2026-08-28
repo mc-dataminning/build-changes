@@ -1,46 +1,87 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.Collections;
-import java.util.Map;
-import java.util.function.Consumer;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-class exy {
-   private final Reference2ObjectOpenHashMap<exw, eyb> a = new Reference2ObjectOpenHashMap(16, 0.5F);
+public class exy {
+   private final eyg a;
+   private final String b;
+   private final eyj c;
+   private wz d;
+   private wz e;
+   private eyj.a f;
+   private boolean g;
+   @Nullable
+   private yp h;
+
+   public exy(eyg $$0, String $$1, eyj $$2, wz $$3, eyj.a $$4, boolean $$5, @Nullable yp $$6) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = this.i();
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+   }
+
+   public eyg a() {
+      return this.a;
+   }
+
+   public String b() {
+      return this.b;
+   }
+
+   public eyj c() {
+      return this.c;
+   }
+
+   public wz d() {
+      return this.d;
+   }
+
+   public boolean e() {
+      return this.g;
+   }
 
    @Nullable
-   public eyb a(exw $$0) {
-      return (eyb)this.a.get($$0);
+   public yp f() {
+      return this.h;
    }
 
-   public eyb a(exw $$0, Consumer<eyb> $$1) {
-      return (eyb)this.a.computeIfAbsent($$0, $$1x -> {
-         eyb $$2 = new eyb();
-         $$1.accept($$2);
-         return $$2;
-      });
+   public yp a(yp $$0) {
+      return Objects.requireNonNullElse(this.h, $$0);
    }
 
-   public boolean b(exw $$0) {
-      return this.a.remove($$0) != null;
+   private wz i() {
+      return xc.a((wz)this.d.f().a($$0 -> $$0.a(new xf(xf.a.a, wz.b(this.b)))));
    }
 
-   public boolean a() {
-      return !this.a.isEmpty();
+   public wz g() {
+      return this.e;
    }
 
-   public Object2IntMap<exw> b() {
-      Object2IntMap<exw> $$0 = new Object2IntOpenHashMap();
-      this.a.forEach(($$1, $$2) -> $$0.put($$1, $$2.a()));
-      return $$0;
+   public void a(wz $$0) {
+      this.d = $$0;
+      this.e = this.i();
+      this.a.b(this);
    }
 
-   void a(exw $$0, eyb $$1) {
-      this.a.put($$0, $$1);
+   public eyj.a h() {
+      return this.f;
    }
 
-   Map<exw, eyb> c() {
-      return Collections.unmodifiableMap(this.a);
+   public void a(eyj.a $$0) {
+      this.f = $$0;
+      this.a.b(this);
+   }
+
+   public void a(boolean $$0) {
+      this.g = $$0;
+      this.a.b(this);
+   }
+
+   public void b(@Nullable yp $$0) {
+      this.h = $$0;
+      this.a.b(this);
    }
 }

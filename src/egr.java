@@ -1,20 +1,49 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class egr extends egi {
-   public static final MapCodec<egr> b = dtc.b.fieldOf("state").xmap(egr::new, $$0 -> $$0.c);
-   private final dtc c;
+public record egr(egj b, List<egr.a> c) {
+   public static final Codec<egr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(egj.a.fieldOf("fallback").forGetter(egr::a), egr.a.a.listOf().fieldOf("rules").forGetter(egr::b)).apply($$0, egr::new)
+   );
 
-   protected egr(dtc $$0) {
-      this.c = $$0;
+   public static egr a(egj $$0) {
+      return new egr($$0, List.of());
    }
 
-   @Override
-   protected egj<?> a() {
-      return egj.a;
+   public static egr a(dfy $$0) {
+      return a(egj.a($$0));
    }
 
-   @Override
-   public dtc a(ayw $$0, jd $$1) {
+   public dtc a(dds $$0, ayw $$1, jd $$2) {
+      for (egr.a $$3 : this.c) {
+         if ($$3.a().test($$0, $$2)) {
+            return $$3.b().a($$1, $$2);
+         }
+      }
+
+      return this.b.a($$1, $$2);
+   }
+
+   public egj a() {
+      return this.b;
+   }
+
+   public List<egr.a> b() {
       return this.c;
+   }
+
+   public static record a(eaf b, egj c) {
+      public static final Codec<egr.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(eaf.b.fieldOf("if_true").forGetter(egr.a::a), egj.a.fieldOf("then").forGetter(egr.a::b)).apply($$0, egr.a::new)
+      );
+
+      public eaf a() {
+         return this.b;
+      }
+
+      public egj b() {
+         return this.c;
+      }
    }
 }

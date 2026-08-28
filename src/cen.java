@@ -73,12 +73,12 @@ public class cen {
    }
 
    @Nullable
-   public static exa a(btw $$0, Supplier<jd> $$1) {
+   public static exc a(btw $$0, Supplier<jd> $$1) {
       return a($$1, $$0::c);
    }
 
    @Nullable
-   public static exa a(Supplier<jd> $$0, ToDoubleFunction<jd> $$1) {
+   public static exc a(Supplier<jd> $$0, ToDoubleFunction<jd> $$1) {
       double $$2 = Double.NEGATIVE_INFINITY;
       jd $$3 = null;
 
@@ -93,27 +93,27 @@ public class cen {
          }
       }
 
-      return $$3 != null ? exa.c($$3) : null;
+      return $$3 != null ? exc.c($$3) : null;
    }
 
    public static jd a(btw $$0, int $$1, ayw $$2, jd $$3) {
       int $$4 = $$3.u();
       int $$5 = $$3.w();
-      if ($$0.fZ() && $$1 > 1) {
-         jd $$6 = $$0.fW();
-         if ($$0.du() > (double)$$6.u()) {
+      if ($$0.fY() && $$1 > 1) {
+         jd $$6 = $$0.fV();
+         if ($$0.dt() > (double)$$6.u()) {
             $$4 -= $$2.a($$1 / 2);
          } else {
             $$4 += $$2.a($$1 / 2);
          }
 
-         if ($$0.dA() > (double)$$6.w()) {
+         if ($$0.dz() > (double)$$6.w()) {
             $$5 -= $$2.a($$1 / 2);
          } else {
             $$5 += $$2.a($$1 / 2);
          }
       }
 
-      return jd.a((double)$$4 + $$0.du(), (double)$$3.v() + $$0.dw(), (double)$$5 + $$0.dA());
+      return jd.a((double)$$4 + $$0.dt(), (double)$$3.v() + $$0.dv(), (double)$$5 + $$0.dz());
    }
 }

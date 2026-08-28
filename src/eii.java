@@ -1,27 +1,26 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eii extends eiv {
-   public static final MapCodec<eii> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eaf.b.fieldOf("predicate").forGetter($$0x -> $$0x.c)).apply($$0, eii::new)
-   );
-   private final eaf c;
+public class eii extends eix {
+   private static final eii c = new eii();
+   public static MapCodec<eii> a = MapCodec.unit(() -> c);
 
-   private eii(eaf $$0) {
-      this.c = $$0;
+   private eii() {
    }
 
-   public static eii a(eaf $$0) {
-      return new eii($$0);
+   public static eii a() {
+      return c;
    }
 
    @Override
-   protected boolean a(eiu $$0, ayw $$1, jd $$2) {
-      return this.c.test($$0.d(), $$2);
+   protected boolean a(eiw $$0, ayw $$1, jd $$2) {
+      eiv $$3 = $$0.e()
+         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
+      jm<ddw> $$4 = $$0.d().t($$2);
+      return $$0.f().a($$4).a($$3);
    }
 
    @Override
-   public eix<?> b() {
-      return eix.a;
+   public eiz<?> b() {
+      return eiz.e;
    }
 }

@@ -1,27 +1,51 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public interface eva extends erq, Predicate<erp> {
-   Codec<eva> d = lt.F.r().dispatch("condition", eva::b, evb::a);
-   Codec<eva> e = Codec.lazyInitialized(() -> Codec.withAlternative(d, eun.b));
-   Codec<jm<eva>> f = akn.a(lu.be, e);
+public record eva(Optional<df> b, jd c) implements evc {
+   private static final MapCodec<jd> g = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.INT.optionalFieldOf("offsetX", 0).forGetter(kh::u),
+               Codec.INT.optionalFieldOf("offsetY", 0).forGetter(kh::v),
+               Codec.INT.optionalFieldOf("offsetZ", 0).forGetter(kh::w)
+            )
+            .apply($$0, jd::new)
+   );
+   public static final MapCodec<eva> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(df.a.optionalFieldOf("predicate").forGetter(eva::c), g.forGetter(eva::d)).apply($$0, eva::new)
+   );
 
-   evb b();
+   @Override
+   public evd b() {
+      return eve.n;
+   }
 
-   @FunctionalInterface
-   public interface a {
-      eva build();
+   public boolean a(err $$0) {
+      exc $$1 = $$0.c(eun.f);
+      return $$1 != null
+         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
+   }
 
-      default eva.a invert() {
-         return eux.a(this);
-      }
+   @Override
+   public Set<euk<?>> a() {
+      return Set.of(eun.f);
+   }
 
-      default euo.a or(eva.a $$0) {
-         return euo.a(this, $$0);
-      }
+   public static evc.a a(df.a $$0) {
+      return () -> new eva(Optional.of($$0.b()), jd.c);
+   }
 
-      default eun.a and(eva.a $$0) {
-         return eun.a(this, $$0);
-      }
+   public static evc.a a(df.a $$0, jd $$1) {
+      return () -> new eva(Optional.of($$0.b()), $$1);
+   }
+
+   public Optional<df> c() {
+      return this.b;
+   }
+
+   public jd d() {
+      return this.c;
    }
 }

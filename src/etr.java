@@ -1,52 +1,30 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.List;
-import java.util.Optional;
+import java.util.Set;
 
-public class etr extends etc {
-   public static final MapCodec<etr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  cxl.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
-                  cxl.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
-                  cxl.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
-                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
-                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
-               )
-            )
-            .apply($$0, etr::new)
-   );
-   public static final cxl b = new cxl(cxl.a.a, IntList.of(), IntList.of(), false, false);
-   final Optional<cxl.a> c;
-   final Optional<IntList> d;
-   final Optional<IntList> e;
-   final Optional<Boolean> f;
-   final Optional<Boolean> h;
+public class etr extends ete {
+   static final MapCodec<etr> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(evz.a.fieldOf("value").forGetter($$0x -> $$0x.b)).apply($$0, etr::new));
+   private final evy b;
 
-   public etr(List<eva> $$0, Optional<cxl.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
+   private etr(List<evc> $$0, evy $$1) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.h = $$5;
+      this.b = $$1;
    }
 
    @Override
-   protected cuq a(cuq $$0, erp $$1) {
-      $$0.a(kq.U, b, this::a);
+   public Set<euk<?>> a() {
+      return this.b.a();
+   }
+
+   @Override
+   public etg<etr> b() {
+      return eth.R;
+   }
+
+   @Override
+   public cuq a(cuq $$0, err $$1) {
+      $$0.b(kq.o, new cxi(this.b.a($$1)));
       return $$0;
-   }
-
-   private cxl a(cxl $$0) {
-      return new cxl(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
-   }
-
-   @Override
-   public ete<etr> b() {
-      return etf.L;
    }
 }

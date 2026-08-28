@@ -15,8 +15,8 @@ public class csi extends cul {
          cyd $$3 = new cyd($$0);
          jd $$4 = $$3.a();
          cuq $$5 = $$0.n();
-         exa $$6 = exa.c($$4);
-         ewv $$7 = bsx.d.n().a($$6.a(), $$6.b(), $$6.c());
+         exc $$6 = exc.c($$4);
+         ewx $$7 = bsx.d.n().a($$6.a(), $$6.b(), $$6.c());
          if ($$2.a(null, $$7) && $$2.a_(null, $$7).isEmpty()) {
             if ($$2 instanceof aqu $$8) {
                Consumer<ciw> $$9 = bsx.a($$8, $$5, $$0.o());
@@ -26,9 +26,9 @@ public class csi extends cul {
                }
 
                float $$11 = (float)ayo.d((ayo.g($$0.i() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
-               $$10.b($$10.du(), $$10.dw(), $$10.dA(), $$11, 0.0F);
+               $$10.b($$10.dt(), $$10.dv(), $$10.dz(), $$11, 0.0F);
                $$8.a_($$10);
-               $$2.a(null, $$10.du(), $$10.dw(), $$10.dA(), avp.aD, avq.e, 0.75F, 0.8F);
+               $$2.a(null, $$10.dt(), $$10.dv(), $$10.dz(), avp.aD, avq.e, 0.75F, 0.8F);
                $$10.a(dxz.t, $$0.o());
             }
 

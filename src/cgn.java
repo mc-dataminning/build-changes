@@ -20,7 +20,7 @@ public class cgn extends cfe {
    public cgn(bsx<? extends cfe> $$0, dcw $$1) {
       super($$0, $$1);
       this.N().a(true);
-      this.cl = this.gw();
+      this.cl = this.gv();
    }
 
    @Nullable
@@ -44,14 +44,14 @@ public class cgn extends cfe {
    }
 
    public boolean x() {
-      return this.gm().a(this.ck);
+      return this.gl().a(this.ck);
    }
 
-   public boolean gl() {
-      return this.gm() == cgn.a.b && this.ck > (long)cgn.a.b.b();
+   public boolean gk() {
+      return this.gl() == cgn.a.b && this.ck > (long)cgn.a.b.b();
    }
 
-   public cgn.a gm() {
+   public cgn.a gl() {
       return this.ao.a(cj);
    }
 
@@ -75,42 +75,42 @@ public class cgn extends cfe {
    }
 
    @Override
-   protected buq.b<cgn> dV() {
+   protected buq.b<cgn> dU() {
       return cgo.a();
    }
 
    @Override
    protected buq<?> a(Dynamic<?> $$0) {
-      return cgo.a(this.dV().a($$0));
+      return cgo.a(this.dU().a($$0));
    }
 
    @Override
    protected void ab() {
-      this.dP().ag().a("armadilloBrain");
-      ((buq<cgn>)this.bF).a((aqu)this.dP(), this);
-      this.dP().ag().c();
-      this.dP().ag().a("armadilloActivityUpdate");
+      this.dO().ag().a("armadilloBrain");
+      ((buq<cgn>)this.bF).a((aqu)this.dO(), this);
+      this.dO().ag().c();
+      this.dO().ag().a("armadilloActivityUpdate");
       cgo.a(this);
-      this.dP().ag().c();
+      this.dO().ag().c();
       if (this.bE() && !this.o_() && --this.cl <= 0) {
          this.a(avp.ak, 1.0F, (this.ah.i() - this.ah.i()) * 0.2F + 1.0F);
          this.a(cut.oq);
          this.a(dxz.t);
-         this.cl = this.gw();
+         this.cl = this.gv();
       }
 
       super.ab();
    }
 
-   private int gw() {
+   private int gv() {
       return this.ah.a(20 * azp.e * 5) + 20 * azp.e * 5;
    }
 
    @Override
    public void l() {
       super.l();
-      if (this.dP().x_()) {
-         this.gx();
+      if (this.dO().x_()) {
+         this.gw();
       }
 
       if (this.t()) {
@@ -121,12 +121,12 @@ public class cgn extends cfe {
    }
 
    @Override
-   public float eb() {
+   public float ea() {
       return this.o_() ? 0.6F : 1.0F;
    }
 
-   private void gx() {
-      switch (this.gm()) {
+   private void gw() {
+      switch (this.gl()) {
          case a:
             this.ce.a();
             this.cf.a();
@@ -161,9 +161,9 @@ public class cgn extends cfe {
 
    @Override
    public void b(byte $$0) {
-      if ($$0 == 64 && this.dP().B) {
+      if ($$0 == 64 && this.dO().B) {
          this.cm = true;
-         this.dP().a(this.du(), this.dw(), this.dA(), avp.am, this.df(), 1.0F, 1.0F, false);
+         this.dO().a(this.dt(), this.dv(), this.dz(), avp.am, this.de(), 1.0F, 1.0F, false);
       } else {
          super.b($$0);
       }
@@ -175,15 +175,15 @@ public class cgn extends cfe {
    }
 
    public static boolean c(bsx<cgn> $$0, dcx $$1, btr $$2, jd $$3, ayw $$4) {
-      return $$1.a_($$3.e()).a(awe.bX) && a($$1, $$3);
+      return $$1.a_($$3.e()).a(awe.bY) && a($$1, $$3);
    }
 
    public boolean j(btn $$0) {
-      if (!this.cL().c(7.0, 2.0, 7.0).c($$0.cL())) {
+      if (!this.cK().c(7.0, 2.0, 7.0).c($$0.cK())) {
          return false;
       } else if ($$0.am().a(awi.d)) {
          return true;
-      } else if (this.ej() == $$0) {
+      } else if (this.ei() == $$0) {
          return true;
       } else if ($$0 instanceof cmx $$1) {
          return $$1.R_() ? false : $$1.cc() || $$1.bS();
@@ -195,7 +195,7 @@ public class cgn extends cfe {
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      $$0.a("state", this.gm().c());
+      $$0.a("state", this.gl().c());
       $$0.a("scute_time", this.cl);
    }
 
@@ -208,17 +208,17 @@ public class cgn extends cfe {
       }
    }
 
-   public void gn() {
+   public void gm() {
       if (!this.t()) {
          this.W();
-         this.gu();
+         this.gt();
          this.a(dxz.u);
          this.b(avp.ai);
          this.a(cgn.a.b);
       }
    }
 
-   public void go() {
+   public void gn() {
       if (this.t()) {
          this.a(dxz.u);
          this.b(avp.al);
@@ -238,14 +238,14 @@ public class cgn extends cfe {
    @Override
    protected void f(brk $$0, float $$1) {
       super.f($$0, $$1);
-      if (!this.ga() && !this.ey()) {
+      if (!this.fZ() && !this.ex()) {
          if ($$0.d() instanceof btn) {
-            this.dU().a(ccs.G, true, 80L);
-            if (this.gv()) {
-               this.gn();
+            this.dT().a(ccs.G, true, 80L);
+            if (this.gu()) {
+               this.gm();
             }
          } else if ($$0.a(awg.G)) {
-            this.go();
+            this.gn();
          }
       }
    }
@@ -253,9 +253,9 @@ public class cgn extends cfe {
    @Override
    public bqr b(cmx $$0, bqq $$1) {
       cuq $$2 = $$0.b($$1);
-      if ($$2.a(cut.xu) && this.gp()) {
+      if ($$2.a(cut.xu) && this.go()) {
          $$2.a(16, $$0, d($$1));
-         return bqr.a(this.dP().B);
+         return bqr.a(this.dO().B);
       } else {
          return this.t() ? bqr.f : super.b($$0, $$1);
       }
@@ -270,7 +270,7 @@ public class cgn extends cfe {
       super.a($$0, $$1);
    }
 
-   public boolean gp() {
+   public boolean go() {
       if (this.o_()) {
          return false;
       } else {
@@ -281,8 +281,8 @@ public class cgn extends cfe {
       }
    }
 
-   public boolean gv() {
-      return !this.gi() && !this.bj() && !this.N_() && !this.bS() && !this.bT();
+   public boolean gu() {
+      return !this.gh() && !this.bj() && !this.N_() && !this.bS() && !this.bT();
    }
 
    @Override
@@ -292,8 +292,8 @@ public class cgn extends cfe {
    }
 
    @Override
-   public boolean gq() {
-      return super.gq() && !this.t();
+   public boolean gp() {
+      return super.gp() && !this.t();
    }
 
    @Override

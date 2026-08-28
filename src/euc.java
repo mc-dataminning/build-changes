@@ -2,32 +2,27 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class euc extends etc {
-   public static final MapCodec<euc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and($$0.group(cya.d.fieldOf("pages").forGetter($$0x -> $$0x.b), etb.a(100).forGetter($$0x -> $$0x.c))).apply($$0, euc::new)
-   );
-   private final List<arl<String>> b;
-   private final etb c;
+public class euc extends ete {
+   public static final MapCodec<euc> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(cws.a.fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, euc::new));
+   private final jm<cws> b;
 
-   protected euc(List<eva> $$0, List<arl<String>> $$1, etb $$2) {
+   private euc(List<evc> $$0, jm<cws> $$1) {
       super($$0);
       this.b = $$1;
-      this.c = $$2;
    }
 
    @Override
-   protected cuq a(cuq $$0, erp $$1) {
-      $$0.a(kq.I, cya.a, this::a);
+   public etg<euc> b() {
+      return eth.F;
+   }
+
+   @Override
+   public cuq a(cuq $$0, err $$1) {
+      $$0.a(kq.G, cwu.a, this.b, cwu::b);
       return $$0;
    }
 
-   public cya a(cya $$0) {
-      List<arl<String>> $$1 = this.c.a($$0.a(), this.b, 100);
-      return $$0.b($$1);
-   }
-
-   @Override
-   public ete<euc> b() {
-      return etf.O;
+   public static ete.a<?> a(jm<cws> $$0) {
+      return a($$1 -> new euc($$1, $$0));
    }
 }

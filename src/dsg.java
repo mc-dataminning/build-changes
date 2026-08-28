@@ -1,8 +1,8 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dsg(int c, float d, float e, float f, float g, int h, bpb<ddo> i, bpb<akq<eru>> j, akq<eru> k) {
-   public static final dsg a = new dsg(4, 6.0F, 2.0F, 2.0F, 1.0F, 40, bpb.b(), bpb.<akq<eru>>a().a(erl.aY).a(erl.aX).a(), erl.bb);
+public record dsg(int c, float d, float e, float f, float g, int h, bpb<ddo> i, bpb<akq<erw>> j, akq<erw> k) {
+   public static final dsg a = new dsg(4, 6.0F, 2.0F, 2.0F, 1.0F, 40, bpb.b(), bpb.<akq<erw>>a().a(ern.aY).a(ern.aX).a(), ern.bb);
    public static final Codec<dsg> b = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                Codec.intRange(1, 128).lenientOptionalFieldOf("spawn_range", a.c).forGetter(dsg::b),
@@ -58,11 +58,11 @@ public record dsg(int c, float d, float e, float f, float g, int h, bpb<ddo> i, 
       return this.i;
    }
 
-   public bpb<akq<eru>> i() {
+   public bpb<akq<erw>> i() {
       return this.j;
    }
 
-   public akq<eru> j() {
+   public akq<erw> j() {
       return this.k;
    }
 }

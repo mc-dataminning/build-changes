@@ -9,6 +9,6 @@ public class cua extends cso {
    @Override
    protected dtc c(cyd $$0) {
       cmx $$1 = $$0.o();
-      return $$1 != null && !$$1.gw() ? null : super.c($$0);
+      return $$1 != null && !$$1.gv() ? null : super.c($$0);
    }
 }

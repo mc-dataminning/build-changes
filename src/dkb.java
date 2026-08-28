@@ -25,7 +25,7 @@ public class dkb extends dfk {
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
       if ($$0.c(b) && $$1.c_($$2) instanceof drj $$5) {
          $$5.l();
          return bqr.a($$1.B);
@@ -35,7 +35,7 @@ public class dkb extends dfk {
    }
 
    @Override
-   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, eww $$6) {
+   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, ewy $$6) {
       if ($$1.c(b)) {
          return bqt.d;
       } else {

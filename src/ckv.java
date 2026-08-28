@@ -27,13 +27,13 @@ public class ckv extends ckd implements cjv, clj {
    }
 
    @Override
-   protected buq.b<ckv> dV() {
+   protected buq.b<ckv> dU() {
       return buq.a(c, b);
    }
 
    @Override
    protected buq<?> a(Dynamic<?> $$0) {
-      buq<ckv> $$1 = this.dV().a($$0);
+      buq<ckv> $$1 = this.dU().a($$0);
       a($$1);
       b($$1);
       c($$1);
@@ -52,7 +52,7 @@ public class ckv extends ckd implements cjv, clj {
          com.b,
          10,
          ImmutableList.of(
-            bxt.a(ckv::gn),
+            bxt.a(ckv::gm),
             bxh.a(8.0F, bqc.a(30, 60)),
             new bxe(ImmutableList.of(Pair.of(bwz.a(0.4F), 2), Pair.of(bxo.a(0.4F, 3), 2), Pair.of(new bvr(30, 60), 1)))
          )
@@ -63,8 +63,8 @@ public class ckv extends ckd implements cjv, clj {
       $$0.a(com.k, 10, ImmutableList.of(bxm.a(1.0F), byu.a(ckv::t, bwo.a(40)), byu.a(ckv::o_, bwo.a(15)), bxw.a()), ccs.o);
    }
 
-   private Optional<? extends btn> gn() {
-      return this.dU().c(ccs.h).orElse(ccu.a()).a(this::j);
+   private Optional<? extends btn> gm() {
+      return this.dT().c(ccs.h).orElse(ccu.a()).a(this::j);
    }
 
    private boolean j(btn $$0) {
@@ -87,7 +87,7 @@ public class ckv extends ckd implements cjv, clj {
    }
 
    public static buv.a s() {
-      return ckd.gr().a(buw.s, 40.0).a(buw.v, 0.3F).a(buw.p, 0.6F).a(buw.d, 1.0).a(buw.c, 6.0);
+      return ckd.gq().a(buw.s, 40.0).a(buw.v, 0.3F).a(buw.p, 0.6F).a(buw.d, 1.0).a(buw.c, 6.0);
    }
 
    public boolean t() {
@@ -100,7 +100,7 @@ public class ckv extends ckd implements cjv, clj {
          return false;
       } else {
          this.cj = 10;
-         this.dP().a(this, (byte)4);
+         this.dO().a(this, (byte)4);
          this.b(avp.Dp);
          return clj.a(this, (btn)$$0);
       }
@@ -121,7 +121,7 @@ public class ckv extends ckd implements cjv, clj {
    @Override
    public boolean a(brk $$0, float $$1) {
       boolean $$2 = super.a($$0, $$1);
-      if (this.dP().B) {
+      if (this.dO().B) {
          return false;
       } else if ($$2 && $$0.d() instanceof btn) {
          btn $$3 = (btn)$$0.d();
@@ -141,8 +141,8 @@ public class ckv extends ckd implements cjv, clj {
    }
 
    @Override
-   public buq<ckv> dU() {
-      return (buq<ckv>)super.dU();
+   public buq<ckv> dT() {
+      return (buq<ckv>)super.dT();
    }
 
    protected void x() {
@@ -150,24 +150,24 @@ public class ckv extends ckd implements cjv, clj {
       this.bF.a(ImmutableList.of(com.k, com.b));
       com $$1 = this.bF.g().orElse(null);
       if ($$1 == com.k && $$0 != com.k) {
-         this.gm();
+         this.gl();
       }
 
-      this.v(this.bF.a(ccs.o));
+      this.w(this.bF.a(ccs.o));
    }
 
    @Override
    protected void ab() {
-      this.dP().ag().a("zoglinBrain");
-      this.dU().a((aqu)this.dP(), this);
-      this.dP().ag().c();
+      this.dO().ag().a("zoglinBrain");
+      this.dT().a((aqu)this.dO(), this);
+      this.dO().ag().c();
       this.x();
    }
 
    @Override
    public void a(boolean $$0) {
       this.ar().a(d, $$0);
-      if (!this.dP().B && $$0) {
+      if (!this.dO().B && $$0) {
          this.f(buw.c).a(0.5);
       }
    }
@@ -197,13 +197,13 @@ public class ckv extends ckd implements cjv, clj {
    }
 
    @Override
-   public int gl() {
+   public int gk() {
       return this.cj;
    }
 
    @Override
    protected avo v() {
-      if (this.dP().B) {
+      if (this.dO().B) {
          return null;
       } else {
          return this.bF.a(ccs.o) ? avp.Do : avp.Dn;
@@ -225,7 +225,7 @@ public class ckv extends ckd implements cjv, clj {
       this.a(avp.Ds, 0.15F, 1.0F);
    }
 
-   protected void gm() {
+   protected void gl() {
       this.b(avp.Do);
    }
 

@@ -1,33 +1,25 @@
-public class gos<T extends cmx, M extends fvi<T> & fuh & fvq> extends gom<T, M> {
-   private final get a;
-   private static final float b = (float) (-Math.PI / 6);
-   private static final float c = (float) (Math.PI / 2);
+public class gos<T extends cmx> extends gov<T, fwp<T>> {
+   private final fwk a;
 
-   public gos(gmd<T, M> $$0, get $$1) {
-      super($$0, $$1);
-      this.a = $$1;
+   public gos(gmf<T, fwp<T>> $$0, fyg $$1) {
+      super($$0);
+      this.a = new fwk($$1.a(fyj.aH));
    }
 
-   @Override
-   protected void a(btn $$0, cuq $$1, cun $$2, btg $$3, fbg $$4, gex $$5, int $$6) {
-      if ($$1.a(cut.qX) && $$0.fu() == $$1 && $$0.aL == 0) {
-         this.a($$0, $$1, $$3, $$4, $$5, $$6);
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      }
+   public void a(fbi $$0, gez $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, true);
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, false);
    }
 
-   private void a(btn $$0, cuq $$1, btg $$2, fbg $$3, gex $$4, int $$5) {
-      $$3.a();
-      fyi $$6 = this.c().d();
-      float $$7 = $$6.e;
-      $$6.e = ayo.a($$6.e, (float) (-Math.PI / 6), (float) (Math.PI / 2));
-      $$6.a($$3);
-      $$6.e = $$7;
-      gny.a($$3, false);
-      boolean $$8 = $$2 == btg.a;
-      $$3.a(($$8 ? -2.5F : 2.5F) / 16.0F, -0.0625F, 0.0F);
-      this.a.a($$0, $$1, cun.f, false, $$3, $$4, $$5);
-      $$3.b();
+   private void a(fbi $$0, gez $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8) {
+      ub $$9 = $$8 ? $$3.gp() : $$3.gq();
+      bsx.a($$9.l("id")).filter($$0x -> $$0x == bsx.ax).ifPresent($$10 -> {
+         $$0.a();
+         $$0.a($$8 ? 0.4F : -0.4F, $$3.cb() ? -1.3F : -1.5F, 0.0F);
+         cfu.b $$11 = cfu.b.a($$9.h("Variant"));
+         fbm $$12 = $$1.getBuffer(this.a.a(glw.a($$11)));
+         this.a.a($$0, $$12, $$2, gqc.d, $$4, $$5, $$6, $$7, $$3.ai);
+         $$0.b();
+      });
    }
 }

@@ -114,7 +114,7 @@ public class aea implements zg<abu> {
    public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, dct e, @Nullable wz f, @Nullable xq.a g) {
 
       b(aqv $$0) {
-         this($$0.cA(), $$0.fY(), true, $$0.c.k(), $$0.e.b(), $$0.O(), x.a($$0.ac(), xq::a));
+         this($$0.cz(), $$0.fX(), true, $$0.c.k(), $$0.e.b(), $$0.O(), x.a($$0.ac(), xq::a));
       }
    }
 

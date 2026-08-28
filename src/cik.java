@@ -20,7 +20,7 @@ public interface cik {
    ciq<? extends cik> i();
 
    @Nullable
-   exa g();
+   exc g();
 
    float a(brk var1, float var2);
 }

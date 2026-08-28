@@ -5,7 +5,7 @@ public class dhw extends dfk {
    public static final MapCodec<dhw> a = b(dhw::new);
    public static final duc b = dts.aT;
    public static final dtt c = dts.p;
-   protected static final ext d = dfy.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0);
+   protected static final exv d = dfy.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0);
 
    @Override
    public MapCodec<dhw> a() {
@@ -18,7 +18,7 @@ public class dhw extends dfk {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return d;
    }
 
@@ -51,8 +51,8 @@ public class dhw extends dfk {
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
-      if ($$3.gl()) {
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
+      if ($$3.gk()) {
          if ($$1.B) {
             return bqr.a;
          } else {

@@ -15,7 +15,7 @@ public class bvp<E extends btp & cjq, T extends btn> extends bvh<E> {
    }
 
    protected boolean a(aqu $$0, E $$1, long $$2) {
-      return $$1.dU().a(ccs.o) && this.a($$0, $$1);
+      return $$1.dT().a(ccs.o) && this.a($$0, $$1);
    }
 
    protected void b(aqu $$0, E $$1, long $$2) {
@@ -25,13 +25,13 @@ public class bvp<E extends btp & cjq, T extends btn> extends bvh<E> {
    }
 
    protected void c(aqu $$0, E $$1, long $$2) {
-      if ($$1.fs()) {
-         $$1.fy();
+      if ($$1.fr()) {
+         $$1.fx();
       }
 
       if ($$1.b(cut.vW)) {
          $$1.b(false);
-         $$1.fu().b(kq.E, cxg.a);
+         $$1.ft().b(kq.E, cxg.a);
       }
    }
 
@@ -41,16 +41,16 @@ public class bvp<E extends btp & cjq, T extends btn> extends bvh<E> {
          this.e = bvp.a.b;
          $$0.b(true);
       } else if (this.e == bvp.a.b) {
-         if (!$$0.fs()) {
+         if (!$$0.fr()) {
             this.e = bvp.a.a;
          }
 
-         int $$2 = $$0.fw();
-         cuq $$3 = $$0.fu();
+         int $$2 = $$0.fv();
+         cuq $$3 = $$0.ft();
          if ($$2 >= ctc.b($$3, $$0)) {
-            $$0.fx();
+            $$0.fw();
             this.e = bvp.a.c;
-            this.d = 20 + $$0.dS().a(20);
+            this.d = 20 + $$0.dR().a(20);
             $$0.b(false);
          }
       } else if (this.e == bvp.a.c) {
@@ -65,11 +65,11 @@ public class bvp<E extends btp & cjq, T extends btn> extends bvh<E> {
    }
 
    private void b(btp $$0, btn $$1) {
-      $$0.dU().a(ccs.n, new bvs($$1, true));
+      $$0.dT().a(ccs.n, new bvs($$1, true));
    }
 
    private static btn b(btn $$0) {
-      return $$0.dU().c(ccs.o).get();
+      return $$0.dT().c(ccs.o).get();
    }
 
    static enum a {

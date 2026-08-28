@@ -1,24 +1,44 @@
-import org.joml.Matrix4f;
+import com.mojang.authlib.yggdrasil.ProfileResult;
+import java.util.List;
 
-public class fqk implements fql {
-   private final aya a;
+public class fqk implements fqn {
+   private static final int a = 10;
+   private static final int b = 2;
+   private final List<ProfileResult> c;
 
-   public fqk(aya $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public int a(fhv $$0) {
-      return $$0.a(this.a);
+   public fqk(fqk.a $$0) {
+      this.c = $$0.a();
    }
 
    @Override
    public int a() {
-      return 10;
+      return this.c.size() * 12 + 2;
    }
 
    @Override
-   public void a(fhv $$0, int $$1, int $$2, Matrix4f $$3, gex.a $$4) {
-      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, fhv.a.a, 0, 15728880);
+   public int a(fhx $$0) {
+      int $$1 = 0;
+
+      for (ProfileResult $$2 : this.c) {
+         int $$3 = $$0.b($$2.profile().getName());
+         if ($$3 > $$1) {
+            $$1 = $$3;
+         }
+      }
+
+      return $$1 + 10 + 6;
+   }
+
+   @Override
+   public void a(fhx $$0, int $$1, int $$2, fhz $$3) {
+      for (int $$4 = 0; $$4 < this.c.size(); $$4++) {
+         ProfileResult $$5 = this.c.get($$4);
+         int $$6 = $$2 + 2 + $$4 * 12;
+         fjl.a($$3, fgo.Q().am().b($$5.profile()), $$1 + 2, $$6, 10);
+         $$3.b($$0, $$5.profile().getName(), $$1 + 10 + 4, $$6 + 2, -1);
+      }
+   }
+
+   public static record a(List<ProfileResult> a) implements csa {
    }
 }

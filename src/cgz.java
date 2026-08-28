@@ -16,7 +16,7 @@ public class cgz {
    private static final float i = 1.25F;
 
    protected static void a(cgy $$0, ayw $$1) {
-      $$0.dU().a(ccs.S, e.a($$1));
+      $$0.dT().a(ccs.S, e.a($$1));
    }
 
    protected static buq<?> a(buq<cgy> $$0) {
@@ -43,7 +43,7 @@ public class cgz {
             Pair.of(0, bxh.a(bsx.by, 6.0F, bqc.a(30, 60))),
             Pair.of(0, new bvb(bsx.R)),
             Pair.of(1, new bvu($$0x -> 1.25F)),
-            Pair.of(2, bxt.a(cgz::b, $$0x -> $$0x.dU().c(ccs.B))),
+            Pair.of(2, bxt.a(cgz::b, $$0x -> $$0x.dT().c(ccs.B))),
             Pair.of(3, bye.a(6, 1.0F)),
             Pair.of(
                4,
@@ -63,7 +63,7 @@ public class cgz {
          ImmutableList.of(
             Pair.of(0, bxh.a(bsx.by, 6.0F, bqc.a(30, 60))),
             Pair.of(1, new bvu($$0x -> 1.25F)),
-            Pair.of(2, bxt.a(cgz::b, $$0x -> $$0x.dU().c(ccs.B))),
+            Pair.of(2, bxt.a(cgz::b, $$0x -> $$0x.dT().c(ccs.B))),
             Pair.of(3, bye.a(8, 1.5F)),
             Pair.of(
                5,
@@ -85,7 +85,7 @@ public class cgz {
          com.u,
          ImmutableList.of(
             Pair.of(0, bxh.a(bsx.by, 6.0F, bqc.a(30, 60))),
-            Pair.of(1, bxt.a(cgz::b, $$0x -> $$0x.dU().c(ccs.B))),
+            Pair.of(1, bxt.a(cgz::b, $$0x -> $$0x.dT().c(ccs.B))),
             Pair.of(2, byf.a(8, 1.0F)),
             Pair.of(3, byh.a(dga.tn)),
             Pair.of(4, new bxe(ImmutableList.of(Pair.of(bwz.a(1.0F), 2), Pair.of(bxo.a(1.0F, 3), 1), Pair.of(new bvo(), 2), Pair.of(byu.a(bsr::aF), 1))))
@@ -97,7 +97,7 @@ public class cgz {
    private static void f(buq<cgy> $$0) {
       $$0.a(
          com.q,
-         ImmutableList.of(Pair.of(0, new bwi(e, avp.jR)), Pair.of(1, new bwj<>(e, 2, 4, 3.5714288F, $$0x -> avp.jQ, awe.bR, 0.5F, cgz::a))),
+         ImmutableList.of(Pair.of(0, new bwi(e, avp.jR)), Pair.of(1, new bwj<>(e, 2, 4, 3.5714288F, $$0x -> avp.jQ, awe.bS, 0.5F, cgz::a))),
          ImmutableSet.of(Pair.of(ccs.O, cct.b), Pair.of(ccs.r, cct.b), Pair.of(ccs.S, cct.b), Pair.of(ccs.X, cct.b))
       );
    }
@@ -107,16 +107,16 @@ public class cgz {
    }
 
    private static <E extends btp> boolean a(E $$0, jd $$1) {
-      dcw $$2 = $$0.dP();
+      dcw $$2 = $$0.dO();
       jd $$3 = $$1.e();
       if ($$2.b_($$1).c() && $$2.b_($$3).c() && $$2.b_($$1.d()).c()) {
          dtc $$4 = $$2.a_($$1);
          dtc $$5 = $$2.a_($$3);
-         if (!$$4.a(awe.bR) && !$$5.a(awe.bR)) {
-            epv $$6 = new epv($$0.dP(), $$0);
-            ept $$7 = epy.a($$6, $$1.k());
-            ept $$8 = epy.a($$6, $$3.k());
-            return $$7 != ept.e && (!$$4.i() || $$8 != ept.e) ? bwk.a($$0, $$1) : true;
+         if (!$$4.a(awe.bS) && !$$5.a(awe.bS)) {
+            epx $$6 = new epx($$0.dO(), $$0);
+            epv $$7 = eqa.a($$6, $$1.k());
+            epv $$8 = eqa.a($$6, $$3.k());
+            return $$7 != epv.e && (!$$4.i() || $$8 != epv.e) ? bwk.a($$0, $$1) : true;
          } else {
             return true;
          }
@@ -130,7 +130,7 @@ public class cgz {
    }
 
    public static void a(cgy $$0) {
-      $$0.dU().a(ImmutableList.of(com.s, com.u, com.q, com.t, com.b));
+      $$0.dT().a(ImmutableList.of(com.s, com.u, com.q, com.t, com.b));
    }
 
    public static Predicate<cuq> a() {

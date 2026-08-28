@@ -1,47 +1,33 @@
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+public class fqb extends fim {
+   private static final akr a = akr.b("widget/page_forward_highlighted");
+   private static final akr b = akr.b("widget/page_forward");
+   private static final akr c = akr.b("widget/page_backward_highlighted");
+   private static final akr d = akr.b("widget/page_backward");
+   private final boolean u;
+   private final boolean v;
 
-public class fqb extends fot {
-   public static final float b = 62.500004F;
-   public static final float c = 0.9765628F;
-   private static final Vector3f r = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
-   @Nullable
-   private ghl.a s;
-
-   public fqb(drs $$0, boolean $$1, boolean $$2) {
-      super($$0, $$1, $$2);
+   public fqb(int $$0, int $$1, boolean $$2, fim.c $$3, boolean $$4) {
+      super($$0, $$1, 23, 13, wy.a, $$3, q);
+      this.u = $$2;
+      this.v = $$4;
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
-      this.s = ghl.a(this.l.aP(), this.a);
-   }
-
-   @Override
-   protected void b(fhx $$0, dtc $$1) {
-      super.b($$0, $$1);
-      boolean $$2 = $$1.b() instanceof dnu;
-      if (!$$2) {
-         $$0.c().a(0.0F, 35.0F, 0.0F);
+   public void b(fhz $$0, int $$1, int $$2, float $$3) {
+      akr $$4;
+      if (this.u) {
+         $$4 = this.B() ? a : b;
+      } else {
+         $$4 = this.B() ? c : d;
       }
+
+      $$0.a($$4, this.D(), this.E(), 23, 13);
    }
 
    @Override
-   protected void a(fhx $$0, dtc $$1) {
-      if (this.s != null) {
-         boolean $$2 = $$1.b() instanceof dnu;
-         $$0.c().a(0.0F, 31.0F, 0.0F);
-         $$0.c().b(62.500004F, 62.500004F, -62.500004F);
-         gso $$3 = gfm.a(this.a);
-         fbk $$4 = $$3.a($$0.d(), this.s::a);
-         this.s.b.k = $$2;
-         this.s.a.a($$0.c(), $$4, 15728880, gqa.d);
+   public void a(gvf $$0) {
+      if (this.v) {
+         $$0.a(gtv.a(avp.cy, 1.0F));
       }
-   }
-
-   @Override
-   protected Vector3f m() {
-      return r;
    }
 }

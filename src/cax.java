@@ -10,18 +10,18 @@ public class cax extends cbj {
 
    @Override
    public boolean b() {
-      aqu $$0 = (aqu)this.b.dP();
-      jd $$1 = this.b.dp();
+      aqu $$0 = (aqu)this.b.dO();
+      jd $$1 = this.b.do();
       return $$0.c($$1) ? false : super.b();
    }
 
    @Nullable
    @Override
-   protected exa h() {
-      aqu $$0 = (aqu)this.b.dP();
-      jd $$1 = this.b.dp();
+   protected exc h() {
+      aqu $$0 = (aqu)this.b.dO();
+      jd $$1 = this.b.do();
       kf $$2 = kf.a($$1);
       kf $$3 = bvj.a($$0, $$2, 2);
-      return $$3 != $$2 ? cej.a(this.b, 10, 7, exa.c($$3.k()), (float) (Math.PI / 2)) : null;
+      return $$3 != $$2 ? cej.a(this.b, 10, 7, exc.c($$3.k()), (float) (Math.PI / 2)) : null;
    }
 }

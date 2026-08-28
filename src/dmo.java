@@ -3,10 +3,10 @@ import com.mojang.serialization.MapCodec;
 public class dmo extends dfy implements dna {
    public static final MapCodec<dmo> a = b(dmo::new);
    private static final int f = 1;
-   private static final ext g;
-   private static final ext h;
-   private static final ext i = dfy.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
-   private static final ext j = exq.b().a(0.0, -1.0, 0.0);
+   private static final exv g;
+   private static final exv h;
+   private static final exv i = dfy.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
+   private static final exv j = exs.b().a(0.0, -1.0, 0.0);
    public static final int b = 7;
    public static final duc c = dts.aW;
    public static final dtt d = dts.C;
@@ -28,17 +28,17 @@ public class dmo extends dfy implements dna {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       if (!$$3.a($$0.b().r())) {
          return $$0.c(e) ? h : g;
       } else {
-         return exq.b();
+         return exs.b();
       }
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2) {
-      return exq.b();
+   protected exv a(dtc $$0, dcc $$1, jd $$2) {
+      return exs.b();
    }
 
    @Override
@@ -51,7 +51,7 @@ public class dmo extends dfy implements dna {
       jd $$1 = $$0.a();
       dcw $$2 = $$0.q();
       int $$3 = a($$2, $$1);
-      return this.o().a(d, Boolean.valueOf($$2.b_($$1).a() == epd.c)).a(c, Integer.valueOf($$3)).a(e, Boolean.valueOf(this.a($$2, $$1, $$3)));
+      return this.o().a(d, Boolean.valueOf($$2.b_($$1).a() == epf.c)).a(c, Integer.valueOf($$3)).a(e, Boolean.valueOf(this.a($$2, $$1, $$3)));
    }
 
    @Override
@@ -64,7 +64,7 @@ public class dmo extends dfy implements dna {
    @Override
    protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
       if ($$0.c(d)) {
-         $$3.a($$4, epd.c, epd.c.a($$3));
+         $$3.a($$4, epf.c, epf.c.a($$3));
       }
 
       if (!$$3.x_()) {
@@ -95,17 +95,17 @@ public class dmo extends dfy implements dna {
    }
 
    @Override
-   protected ext b(dtc $$0, dcc $$1, jd $$2, exf $$3) {
-      if ($$3.a(exq.b(), $$2, true) && !$$3.b()) {
+   protected exv b(dtc $$0, dcc $$1, jd $$2, exh $$3) {
+      if ($$3.a(exs.b(), $$2, true) && !$$3.b()) {
          return g;
       } else {
-         return $$0.c(c) != 0 && $$0.c(e) && $$3.a(j, $$2, true) ? i : exq.a();
+         return $$0.c(c) != 0 && $$0.c(e) && $$3.a(j, $$2, true) ? i : exs.a();
       }
    }
 
    @Override
-   protected epc b_(dtc $$0) {
-      return $$0.c(d) ? epd.c.a(false) : super.b_($$0);
+   protected epe b_(dtc $$0) {
+      return $$0.c(d) ? epf.c.a(false) : super.b_($$0);
    }
 
    private boolean a(dcc $$0, jd $$1, int $$2) {
@@ -136,16 +136,16 @@ public class dmo extends dfy implements dna {
    }
 
    static {
-      ext $$0 = dfy.a(0.0, 14.0, 0.0, 16.0, 16.0, 16.0);
-      ext $$1 = dfy.a(0.0, 0.0, 0.0, 2.0, 16.0, 2.0);
-      ext $$2 = dfy.a(14.0, 0.0, 0.0, 16.0, 16.0, 2.0);
-      ext $$3 = dfy.a(0.0, 0.0, 14.0, 2.0, 16.0, 16.0);
-      ext $$4 = dfy.a(14.0, 0.0, 14.0, 16.0, 16.0, 16.0);
-      g = exq.a($$0, $$1, $$2, $$3, $$4);
-      ext $$5 = dfy.a(0.0, 0.0, 0.0, 2.0, 2.0, 16.0);
-      ext $$6 = dfy.a(14.0, 0.0, 0.0, 16.0, 2.0, 16.0);
-      ext $$7 = dfy.a(0.0, 0.0, 14.0, 16.0, 2.0, 16.0);
-      ext $$8 = dfy.a(0.0, 0.0, 0.0, 16.0, 2.0, 2.0);
-      h = exq.a(dmo.i, g, $$6, $$5, $$8, $$7);
+      exv $$0 = dfy.a(0.0, 14.0, 0.0, 16.0, 16.0, 16.0);
+      exv $$1 = dfy.a(0.0, 0.0, 0.0, 2.0, 16.0, 2.0);
+      exv $$2 = dfy.a(14.0, 0.0, 0.0, 16.0, 16.0, 2.0);
+      exv $$3 = dfy.a(0.0, 0.0, 14.0, 2.0, 16.0, 16.0);
+      exv $$4 = dfy.a(14.0, 0.0, 14.0, 16.0, 16.0, 16.0);
+      g = exs.a($$0, $$1, $$2, $$3, $$4);
+      exv $$5 = dfy.a(0.0, 0.0, 0.0, 2.0, 2.0, 16.0);
+      exv $$6 = dfy.a(14.0, 0.0, 0.0, 16.0, 2.0, 16.0);
+      exv $$7 = dfy.a(0.0, 0.0, 14.0, 16.0, 2.0, 16.0);
+      exv $$8 = dfy.a(0.0, 0.0, 0.0, 16.0, 2.0, 2.0);
+      h = exs.a(dmo.i, g, $$6, $$5, $$8, $$7);
    }
 }

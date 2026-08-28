@@ -8,7 +8,7 @@ public class bxz {
       return byu.a(
          (Function<byu.b<btw>, ? extends App<byu.c<btw>, byx<btw>>>)($$5 -> $$5.group($$5.a(ccs.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
                   jl $$10 = $$5.b($$6);
-                  if ($$7.af() != $$10.a() || !$$10.b().a($$8.dn(), (double)$$3)) {
+                  if ($$7.af() != $$10.a() || !$$10.b().a($$8.dm(), (double)$$3)) {
                      return false;
                   } else if ($$9 <= $$4.getValue()) {
                      return true;

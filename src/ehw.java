@@ -1,13 +1,34 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public abstract class ehw {
-   private static final Codec<Either<dzs, ehw>> a = Codec.either(dzs.a, lt.L.r().dispatch(ehw::a, ehx::codec));
-   public static final Codec<ehw> c = a.xmap(
-      $$0 -> (ehw)$$0.map(ehv::a, $$0x -> $$0x), $$0 -> $$0.a() == ehx.a ? Either.left(((ehv)$$0).b()) : Either.right($$0)
-   );
+public class ehw extends ehx {
+   public static final ehw a = new ehw(dzs.a(0));
+   public static final MapCodec<ehw> b = dzs.a.fieldOf("value").xmap(ehw::new, ehw::b);
+   private final dzs d;
 
-   public abstract int a(ayw var1, dzv var2);
+   public static ehw a(dzs $$0) {
+      return new ehw($$0);
+   }
 
-   public abstract ehx<?> a();
+   private ehw(dzs $$0) {
+      this.d = $$0;
+   }
+
+   public dzs b() {
+      return this.d;
+   }
+
+   @Override
+   public int a(ayw $$0, dzv $$1) {
+      return this.d.a($$1);
+   }
+
+   @Override
+   public ehy<?> a() {
+      return ehy.a;
+   }
+
+   @Override
+   public String toString() {
+      return this.d.toString();
+   }
 }

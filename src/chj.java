@@ -11,7 +11,7 @@ public class chj extends chh {
    }
 
    @Override
-   protected avo gK() {
+   protected avo gJ() {
       return avp.hg;
    }
 
@@ -22,7 +22,7 @@ public class chj extends chh {
 
    @Nullable
    @Override
-   protected avo gn() {
+   protected avo gm() {
       return avp.hj;
    }
 
@@ -36,12 +36,12 @@ public class chj extends chh {
       if ($$0 == this) {
          return false;
       } else {
-         return !($$0 instanceof chj) && !($$0 instanceof chk) ? false : this.gT() && ((chi)$$0).gT();
+         return !($$0 instanceof chj) && !($$0 instanceof chk) ? false : this.gS() && ((chi)$$0).gS();
       }
    }
 
    @Override
-   protected void gS() {
+   protected void gR() {
       this.a(avp.hl, 0.4F, 1.0F);
    }
 

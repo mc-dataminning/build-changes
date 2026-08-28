@@ -144,7 +144,7 @@ public class coi {
 
    private Predicate<aqv> w() {
       return $$0 -> {
-         jd $$1 = $$0.dp();
+         jd $$1 = $$0.do();
          return $$0.bE() && this.D.d($$1) == this;
       };
    }
@@ -395,19 +395,19 @@ public class coi {
          Set<coj> $$2 = $$0.next();
 
          for (coj $$3 : $$2) {
-            jd $$4 = $$3.dp();
-            if ($$3.dK() || $$3.dP().af() != this.D.af() || this.C.j($$4) >= 12544.0) {
+            jd $$4 = $$3.do();
+            if ($$3.dJ() || $$3.dO().af() != this.D.af() || this.C.j($$4) >= 12544.0) {
                $$1.add($$3);
             } else if ($$3.ai > 600) {
-               if (this.D.a($$3.cA()) == null) {
+               if (this.D.a($$3.cz()) == null) {
                   $$1.add($$3);
                }
 
-               if (!this.D.c($$4) && $$3.en() > 2400) {
-                  $$3.c($$3.gF() + 1);
+               if (!this.D.c($$4) && $$3.em() > 2400) {
+                  $$3.c($$3.gE() + 1);
                }
 
-               if ($$3.gF() >= 30) {
+               if ($$3.gE() >= 30) {
                   $$1.add($$3);
                }
             }
@@ -426,13 +426,13 @@ public class coi {
       long $$4 = this.N.g();
 
       for (aqv $$5 : this.D.x()) {
-         exa $$6 = $$5.dn();
-         exa $$7 = exa.b($$0);
+         exc $$6 = $$5.dm();
+         exc $$7 = exc.b($$0);
          double $$8 = Math.sqrt(($$7.c - $$6.c) * ($$7.c - $$6.c) + ($$7.e - $$6.e) * ($$7.e - $$6.e));
          double $$9 = $$6.c + 13.0 / $$8 * ($$7.c - $$6.c);
          double $$10 = $$6.e + 13.0 / $$8 * ($$7.e - $$6.e);
          if ($$8 <= 64.0 || $$3.contains($$5)) {
-            $$5.c.b(new afp(avp.vc, avq.g, $$9, $$5.dw(), $$10, 64.0F, 1.0F, $$4));
+            $$5.c.b(new afp(avp.vc, avq.g, $$9, $$5.dv(), $$10, 64.0F, 1.0F, $$4));
          }
       }
    }
@@ -454,8 +454,8 @@ public class coi {
                break;
             }
 
-            if (!$$1 && $$9.gm()) {
-               $$9.w(true);
+            if (!$$1 && $$9.gl()) {
+               $$9.x(true);
                this.a($$2, $$9);
                $$1 = true;
             }
@@ -494,7 +494,7 @@ public class coi {
       if ($$4) {
          $$1.a(this);
          $$1.b($$0);
-         $$1.z(true);
+         $$1.A(true);
          $$1.c(0);
          if (!$$3 && $$2 != null) {
             $$1.a_((double)$$2.u() + 0.5, (double)$$2.v() + 1.0, (double)$$2.w() + 0.5);
@@ -515,7 +515,7 @@ public class coi {
 
       for (Set<coj> $$1 : this.z.values()) {
          for (coj $$2 : $$1) {
-            $$0 += $$2.ex();
+            $$0 += $$2.ew();
          }
       }
 
@@ -531,12 +531,12 @@ public class coi {
    }
 
    public void a(coj $$0, boolean $$1) {
-      Set<coj> $$2 = this.z.get($$0.gD());
+      Set<coj> $$2 = this.z.get($$0.gC());
       if ($$2 != null) {
          boolean $$3 = $$2.remove($$0);
          if ($$3) {
             if ($$1) {
-               this.G = this.G - $$0.ex();
+               this.G = this.G - $$0.ew();
             }
 
             $$0.a(null);
@@ -608,7 +608,7 @@ public class coi {
       coj $$4 = null;
 
       for (coj $$5 : $$3) {
-         if ($$5.cA().equals($$1.cA())) {
+         if ($$5.cz().equals($$1.cz())) {
             $$4 = $$5;
             break;
          }
@@ -621,7 +621,7 @@ public class coi {
 
       $$3.add($$1);
       if ($$2) {
-         this.G = this.G + $$1.ex();
+         this.G = this.G + $$1.ew();
       }
 
       this.p();
@@ -631,7 +631,7 @@ public class coi {
 
    public void a(int $$0, coj $$1) {
       this.y.put($$0, $$1);
-      $$1.a(bsy.f, a($$1.dR().b(lu.d)));
+      $$1.a(bsy.f, a($$1.dQ().b(lu.d)));
       $$1.a(bsy.f, 2.0F);
    }
 
@@ -744,7 +744,7 @@ public class coi {
    }
 
    public void a(bsr $$0) {
-      this.A.add($$0.cA());
+      this.A.add($$0.cz());
    }
 
    static enum a {

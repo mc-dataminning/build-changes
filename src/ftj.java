@@ -1,274 +1,173 @@
-import java.io.IOException;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.OptionalLong;
+import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class ftj {
-   private static final wz a = wz.c("selectWorld.newWorld");
-   private final List<Consumer<ftj>> b = new ArrayList<>();
-   private String c = a.getString();
-   private ftj.a d = ftj.a.a;
-   private bqo e = bqo.c;
-   @Nullable
-   private Boolean f;
-   private String g;
-   private boolean h;
-   private boolean i;
-   private final Path j;
-   private String k;
-   private fti l;
-   private ftj.b m;
-   private final List<ftj.b> n = new ArrayList<>();
-   private final List<ftj.b> o = new ArrayList<>();
-   private dcs p = new dcs();
+class ftj {
+   private static final int a = 44;
+   private final List<ftj.c> b;
 
-   public ftj(Path $$0, fti $$1, Optional<akq<eje>> $$2, OptionalLong $$3) {
-      this.j = $$0;
-      this.l = $$1;
-      this.m = new ftj.b(a($$1, $$2).orElse(null));
-      this.r();
-      this.g = $$3.isPresent() ? Long.toString($$3.getAsLong()) : "";
-      this.h = $$1.c().c();
-      this.i = $$1.c().d();
-      this.k = this.c(this.c);
-   }
-
-   public void a(Consumer<ftj> $$0) {
-      this.b.add($$0);
+   ftj(List<ftj.c> $$0) {
+      this.b = $$0;
    }
 
    public void a() {
-      boolean $$0 = this.j();
-      if ($$0 != this.l.c().d()) {
-         this.l = this.l.a($$1x -> $$1x.a($$0));
+      this.b.forEach(ftj.c::a);
+   }
+
+   public static ftj.a a(int $$0) {
+      return new ftj.a($$0);
+   }
+
+   public static class a {
+      final int a;
+      private final List<ftj.d> b = new ArrayList<>();
+      int c;
+      int d = 4;
+      int e;
+      Optional<ftj.b> f = Optional.empty();
+
+      public a(int $$0) {
+         this.a = $$0;
       }
 
-      boolean $$1 = this.i();
-      if ($$1 != this.l.c().c()) {
-         this.l = this.l.a($$1x -> $$1x.b($$1));
+      void a() {
+         this.e++;
       }
 
-      for (Consumer<ftj> $$2 : this.b) {
-         $$2.accept(this);
+      public ftj.d a(wz $$0, BooleanSupplier $$1, Consumer<Boolean> $$2) {
+         ftj.d $$3 = new ftj.d($$0, $$1, $$2, 44);
+         this.b.add($$3);
+         return $$3;
+      }
+
+      public ftj.a a(int $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public ftj.a b(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public ftj a(Consumer<fmb> $$0) {
+         fly $$1 = new fly().b(this.d);
+         $$1.a(fme.a(this.a - 44), 0, 0);
+         $$1.a(fme.a(44), 0, 1);
+         List<ftj.c> $$2 = new ArrayList<>();
+         this.e = 0;
+
+         for (ftj.d $$3 : this.b) {
+            $$2.add($$3.a(this, $$1, 0));
+         }
+
+         $$1.a();
+         $$0.accept($$1);
+         ftj $$4 = new ftj($$2);
+         $$4.a();
+         return $$4;
+      }
+
+      public ftj.a a(int $$0, boolean $$1) {
+         this.f = Optional.of(new ftj.b($$0, $$1));
+         return this;
       }
    }
 
-   public void a(String $$0) {
-      this.c = $$0;
-      this.k = this.c($$0);
-      this.a();
+   static record b(int a, boolean b) {
    }
 
-   private String c(String $$0) {
-      String $$1 = $$0.trim();
-
-      try {
-         return v.a(this.j, !$$1.isEmpty() ? $$1 : a.getString(), "");
-      } catch (Exception var5) {
-         try {
-            return v.a(this.j, "World", "");
-         } catch (IOException var4) {
-            throw new RuntimeException("Could not create save folder", var4);
+   static record c(fit<Boolean> a, BooleanSupplier b, @Nullable BooleanSupplier c) {
+      public void a() {
+         this.a.a(this.b.getAsBoolean());
+         if (this.c != null) {
+            this.a.j = this.c.getAsBoolean();
          }
       }
-   }
 
-   public String b() {
-      return this.c;
-   }
-
-   public String c() {
-      return this.k;
-   }
-
-   public void a(ftj.a $$0) {
-      this.d = $$0;
-      this.a();
-   }
-
-   public ftj.a d() {
-      return this.l() ? ftj.a.d : this.d;
-   }
-
-   public void a(bqo $$0) {
-      this.e = $$0;
-      this.a();
-   }
-
-   public bqo e() {
-      return this.f() ? bqo.d : this.e;
-   }
-
-   public boolean f() {
-      return this.d() == ftj.a.b;
-   }
-
-   public void a(boolean $$0) {
-      this.f = $$0;
-      this.a();
-   }
-
-   public boolean g() {
-      if (this.l()) {
-         return true;
-      } else if (this.f()) {
-         return false;
-      } else {
-         return this.f == null ? this.d() == ftj.a.c : this.f;
-      }
-   }
-
-   public void b(String $$0) {
-      this.g = $$0;
-      this.l = this.l.a($$0x -> $$0x.a(dzw.a(this.h())));
-      this.a();
-   }
-
-   public String h() {
-      return this.g;
-   }
-
-   public void b(boolean $$0) {
-      this.h = $$0;
-      this.a();
-   }
-
-   public boolean i() {
-      return this.l() ? false : this.h;
-   }
-
-   public void c(boolean $$0) {
-      this.i = $$0;
-      this.a();
-   }
-
-   public boolean j() {
-      return !this.l() && !this.f() ? this.i : false;
-   }
-
-   public void a(fti $$0) {
-      this.l = $$0;
-      this.r();
-      this.a();
-   }
-
-   public fti k() {
-      return this.l;
-   }
-
-   public void a(fti.a $$0) {
-      this.l = this.l.a($$0);
-      this.a();
-   }
-
-   protected boolean a(ddr $$0) {
-      ddr $$1 = this.l.h();
-      if ($$1.a().a().equals($$0.a().a()) && $$1.b().equals($$0.b())) {
-         this.l = new fti(this.l.c(), this.l.d(), this.l.e(), this.l.f(), this.l.g(), $$0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean l() {
-      return this.l.e().c();
-   }
-
-   public void a(ftj.b $$0) {
-      this.m = $$0;
-      jm<eje> $$1 = $$0.c();
-      if ($$1 != null) {
-         this.a(($$1x, $$2) -> $$1.a().a());
-      }
-   }
-
-   public ftj.b m() {
-      return this.m;
-   }
-
-   @Nullable
-   public ftf n() {
-      jm<eje> $$0 = this.m().c();
-      return $$0 != null ? ftf.a.get($$0.e()) : null;
-   }
-
-   public List<ftj.b> o() {
-      return this.n;
-   }
-
-   public List<ftj.b> p() {
-      return this.o;
-   }
-
-   private void r() {
-      jz<eje> $$0 = this.k().a().d(lu.aY);
-      this.n.clear();
-      this.n.addAll(a($$0, awy.a).orElseGet(() -> $$0.i().map(ftj.b::new).toList()));
-      this.o.clear();
-      this.o.addAll(a($$0, awy.b).orElse(this.n));
-      jm<eje> $$1 = this.m.c();
-      if ($$1 != null) {
-         this.m = a(this.k(), $$1.e()).map(ftj.b::new).orElse(this.n.get(0));
-      }
-   }
-
-   private static Optional<jm<eje>> a(fti $$0, Optional<akq<eje>> $$1) {
-      return $$1.flatMap($$1x -> $$0.a().d(lu.aY).b($$1x));
-   }
-
-   private static Optional<List<ftj.b>> a(jz<eje> $$0, awu<eje> $$1) {
-      return $$0.b($$1).map($$0x -> $$0x.a().map(ftj.b::new).toList()).filter($$0x -> !$$0x.isEmpty());
-   }
-
-   public void a(dcs $$0) {
-      this.p = $$0;
-      this.a();
-   }
-
-   public dcs q() {
-      return this.p;
-   }
-
-   public static enum a {
-      a("survival", dct.a),
-      b("hardcore", dct.a),
-      c("creative", dct.b),
-      d("spectator", dct.d);
-
-      public final dct e;
-      public final wz f;
-      private final wz g;
-
-      private a(final String $$0, final dct $$1) {
-         this.e = $$1;
-         this.f = wz.c("selectWorld.gameMode." + $$0);
-         this.g = wz.c("selectWorld.gameMode." + $$0 + ".info");
+      public fit<Boolean> b() {
+         return this.a;
       }
 
-      public wz a() {
-         return this.g;
-      }
-   }
-
-   public static record b(@Nullable jm<eje> a) {
-      private static final wz b = wz.c("generator.custom");
-
-      public wz a() {
-         return Optional.ofNullable(this.a).flatMap(jm::e).map($$0 -> wz.c($$0.a().h("generator"))).orElse(b);
-      }
-
-      public boolean b() {
-         return Optional.ofNullable(this.a).flatMap(jm::e).filter($$0 -> $$0.equals(ejf.d)).isPresent();
+      public BooleanSupplier c() {
+         return this.b;
       }
 
       @Nullable
-      public jm<eje> c() {
-         return this.a;
+      public BooleanSupplier d() {
+         return this.c;
+      }
+   }
+
+   public static class d {
+      private final wz a;
+      private final BooleanSupplier b;
+      private final Consumer<Boolean> c;
+      @Nullable
+      private wz d;
+      @Nullable
+      private BooleanSupplier e;
+      private final int f;
+
+      d(wz $$0, BooleanSupplier $$1, Consumer<Boolean> $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = $$3;
+      }
+
+      public ftj.d a(BooleanSupplier $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public ftj.d a(wz $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      ftj.c a(ftj.a $$0, fly $$1, int $$2) {
+         $$0.a();
+         fjt $$3 = new fjt(this.a, fgo.Q().h).c();
+         $$1.a($$3, $$0.e, $$2, $$1.b().a(0.0F, 0.5F).b($$0.c));
+         Optional<ftj.b> $$4 = $$0.f;
+         fit.a<Boolean> $$5 = fit.b(this.b.getAsBoolean());
+         $$5.a();
+         boolean $$6 = this.d != null && $$4.isEmpty();
+         if ($$6) {
+            fjx $$7 = fjx.a(this.d);
+            $$5.a($$1x -> $$7);
+         }
+
+         if (this.d != null && !$$6) {
+            $$5.a($$0x -> wy.a(this.a, $$0x.c(), this.d));
+         } else {
+            $$5.a($$0x -> wy.a(this.a, $$0x.c()));
+         }
+
+         fit<Boolean> $$8 = $$5.a(0, 0, this.f, 20, wz.i(), ($$0x, $$1x) -> this.c.accept($$1x));
+         if (this.e != null) {
+            $$8.j = this.e.getAsBoolean();
+         }
+
+         $$1.a($$8, $$0.e, $$2 + 1, $$1.b().c());
+         if (this.d != null) {
+            $$4.ifPresent($$3x -> {
+               wz $$4x = this.d.f().a(n.h);
+               fhx $$5x = fgo.Q().h;
+               fjg $$6x = new fjg($$4x, $$5x);
+               $$6x.d($$0.a - $$0.c - this.f);
+               $$6x.e($$3x.a());
+               $$0.a();
+               int $$7 = $$3x.b ? 9 * $$3x.a - $$6x.w() : 0;
+               $$1.a($$6x, $$0.e, $$2, $$1.b().c(-$$0.d).e($$7));
+            });
+         }
+
+         return new ftj.c($$8, this.b, this.e);
       }
    }
 }

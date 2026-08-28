@@ -1,70 +1,30 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class esb extends ery {
-   public static final MapCodec<esb> a = a(esb::new);
+public class esb extends esj {
+   public static final MapCodec<esb> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(akr.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, esb::new)
+   );
+   private final akr j;
 
-   esb(List<esf> $$0, List<eva> $$1) {
-      super($$0, $$1);
+   private esb(akr $$0, int $$1, int $$2, List<evc> $$3, List<etf> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public esg a() {
-      return esd.i;
+   public esi a() {
+      return esf.e;
    }
 
    @Override
-   protected erx a(List<? extends erx> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (erx)$$0.get(0);
-         case 2 -> {
-            erx $$1 = $$0.get(0);
-            erx $$2 = $$0.get(1);
-            yield ($$2x, $$3) -> {
-               $$1.expand($$2x, $$3);
-               $$2.expand($$2x, $$3);
-               return true;
-            };
-         }
-         default -> ($$1x, $$2x) -> {
-         for (erx $$3 : $$0) {
-            $$3.expand($$1x, $$2x);
-         }
-
-         return true;
-      };
-      };
+   public void a(Consumer<cuq> $$0, err $$1) {
+      $$1.a(this.j, $$0);
    }
 
-   public static esb.a a(esf.a<?>... $$0) {
-      return new esb.a($$0);
-   }
-
-   public static class a extends esf.a<esb.a> {
-      private final Builder<esf> a = ImmutableList.builder();
-
-      public a(esf.a<?>... $$0) {
-         for (esf.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
-
-      protected esb.a a() {
-         return this;
-      }
-
-      @Override
-      public esb.a b(esf.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public esf b() {
-         return new esb(this.a.build(), this.f());
-      }
+   public static esj.a<?> a(akr $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new esb($$0, $$1, $$2, $$3, $$4));
    }
 }

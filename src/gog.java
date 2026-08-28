@@ -1,45 +1,24 @@
-public class gog extends got<cfo, fvk<cfo>> {
-   private final get a;
-
-   public gog(gmd<cfo, fvk<cfo>> $$0, get $$1) {
+public abstract class gog<T extends bsr & bub, M extends fvk<T>> extends gov<T, M> {
+   public gog(gmf<T, M> $$0) {
       super($$0);
-      this.a = $$1;
    }
 
-   public void a(fbg $$0, gex $$1, int $$2, cfo $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fI();
-      boolean $$11 = $$3.o_();
-      $$0.a();
-      if ($$11) {
-         float $$12 = 0.75F;
-         $$0.b(0.75F, 0.75F, 0.75F);
-         $$0.a(0.0F, 0.5F, 0.209375F);
+   @Override
+   public void a(fbi $$0, gez $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.a()) {
+         float $$10 = (float)$$3.ai + $$6;
+         fvk<T> $$11 = this.b();
+         $$11.a($$3, $$4, $$5, $$6);
+         this.c().a($$11);
+         fbm $$12 = $$1.getBuffer(gfh.b(this.a(), this.a($$10) % 1.0F, $$10 * 0.01F % 1.0F));
+         $$11.a($$3, $$4, $$5, $$7, $$8, $$9);
+         $$11.a($$0, $$12, $$2, gqc.d, -8355712);
       }
-
-      $$0.a(this.c().a.b / 16.0F, this.c().a.c / 16.0F, this.c().a.d / 16.0F);
-      float $$13 = $$3.H($$6);
-      $$0.a(a.f.rotation($$13));
-      $$0.a(a.d.rotationDegrees($$8));
-      $$0.a(a.b.rotationDegrees($$9));
-      if ($$3.o_()) {
-         if ($$10) {
-            $$0.a(0.4F, 0.26F, 0.15F);
-         } else {
-            $$0.a(0.06F, 0.26F, -0.5F);
-         }
-      } else if ($$10) {
-         $$0.a(0.46F, 0.26F, 0.22F);
-      } else {
-         $$0.a(0.06F, 0.27F, -0.5F);
-      }
-
-      $$0.a(a.b.rotationDegrees(90.0F));
-      if ($$10) {
-         $$0.a(a.f.rotationDegrees(90.0F));
-      }
-
-      cuq $$14 = $$3.a(bsy.a);
-      this.a.a($$3, $$14, cun.h, false, $$0, $$1, $$2);
-      $$0.b();
    }
+
+   protected abstract float a(float var1);
+
+   protected abstract akr a();
+
+   protected abstract fvk<T> b();
 }

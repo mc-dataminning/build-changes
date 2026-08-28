@@ -15,7 +15,7 @@ public class t implements ae {
    private final String c;
    private final String d;
    private final boolean e;
-   private final eqv f;
+   private final eqx f;
    private final int g;
    private final int h;
    private final int i;
@@ -23,12 +23,12 @@ public class t implements ae {
 
    private t() {
       this.c = UUID.randomUUID().toString().replaceAll("-", "");
-      this.d = "1.21-pre1";
+      this.d = "1.21-pre2";
       this.e = false;
-      this.f = new eqv(3948, "main");
+      this.f = new eqx(3949, "main");
       this.g = ab.c();
       this.h = 34;
-      this.i = 46;
+      this.i = 47;
       this.j = new Date();
    }
 
@@ -36,7 +36,7 @@ public class t implements ae {
       this.c = aye.i($$0, "id");
       this.d = aye.i($$0, "name");
       this.e = aye.k($$0, "stable");
-      this.f = new eqv(aye.o($$0, "world_version"), aye.a($$0, "series_id", eqv.a));
+      this.f = new eqx(aye.o($$0, "world_version"), aye.a($$0, "series_id", eqx.a));
       this.g = aye.o($$0, "protocol_version");
       JsonObject $$1 = aye.u($$0, "pack_version");
       this.h = aye.o($$1, "resource");
@@ -75,7 +75,7 @@ public class t implements ae {
    }
 
    @Override
-   public eqv d() {
+   public eqx d() {
       return this.f;
    }
 

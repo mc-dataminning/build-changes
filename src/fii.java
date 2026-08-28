@@ -1,306 +1,127 @@
-import java.time.Duration;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public abstract class fii implements fjn, fkg, flz, fme {
-   private static final double a = 0.5;
-   private static final double b = 3.0;
-   protected int g;
-   protected int h;
-   private int c;
-   private int d;
-   private wz e;
-   protected boolean i;
-   public boolean j = true;
-   public boolean k = true;
-   protected float l = 1.0F;
-   private int f;
-   private boolean m;
-   private final fjy n = new fjy();
+public abstract class fii extends fik {
+   private static final akr a = akr.b("widget/slider");
+   private static final akr d = akr.b("widget/slider_highlighted");
+   private static final akr e = akr.b("widget/slider_handle");
+   private static final akr f = akr.b("widget/slider_handle_highlighted");
+   protected static final int b = 2;
+   private static final int m = 8;
+   private static final int n = 4;
+   protected double c;
+   private boolean o;
 
-   public fii(int $$0, int $$1, int $$2, int $$3, wz $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.e = $$4;
+   public fii(int $$0, int $$1, int $$2, int $$3, wz $$4, double $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
+   }
+
+   private akr c() {
+      return this.aO_() && !this.o ? d : a;
+   }
+
+   private akr e() {
+      return !this.i && !this.o ? e : f;
    }
 
    @Override
-   public int w() {
-      return this.h;
-   }
-
-   @Override
-   public final void a(fhx $$0, int $$1, int $$2, float $$3) {
-      if (this.k) {
-         this.i = $$0.a($$1, $$2) && $$1 >= this.D() && $$2 >= this.E() && $$1 < this.D() + this.g && $$2 < this.E() + this.h;
-         this.b($$0, $$1, $$2, $$3);
-         this.n.a(this.A(), this.aO_(), this.H());
-      }
-   }
-
-   public void a(@Nullable fjv $$0) {
-      this.n.a($$0);
-   }
-
-   @Nullable
-   public fjv x() {
-      return this.n.a();
-   }
-
-   public void a(Duration $$0) {
-      this.n.a($$0);
-   }
-
    protected xn aQ_() {
-      return a_(this.z());
-   }
-
-   public static xn a_(wz $$0) {
-      return wz.a("gui.narrate.button", $$0);
-   }
-
-   protected abstract void b(fhx var1, int var2, int var3, float var4);
-
-   protected static void a(fhx $$0, fhv $$1, wz $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
-      a($$0, $$1, $$2, ($$3 + $$5) / 2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   protected static void a(fhx $$0, fhv $$1, wz $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
-      int $$9 = $$1.a($$2);
-      int $$10 = ($$5 + $$7 - 9) / 2 + 1;
-      int $$11 = $$6 - $$4;
-      if ($$9 > $$11) {
-         int $$12 = $$9 - $$11;
-         double $$13 = (double)ad.c() / 1000.0;
-         double $$14 = Math.max((double)$$12 * 0.5, 3.0);
-         double $$15 = Math.sin((Math.PI / 2) * Math.cos((Math.PI * 2) * $$13 / $$14)) / 2.0 + 0.5;
-         double $$16 = ayo.d($$15, 0.0, (double)$$12);
-         $$0.c($$4, $$5, $$6, $$7);
-         $$0.b($$1, $$2, $$4 - (int)$$16, $$10, $$8);
-         $$0.f();
-      } else {
-         int $$17 = ayo.a($$3, $$4 + $$9 / 2, $$6 - $$9 / 2);
-         $$0.a($$1, $$2, $$17, $$10, $$8);
-      }
-   }
-
-   protected void a(fhx $$0, fhv $$1, int $$2, int $$3) {
-      int $$4 = this.D() + $$2;
-      int $$5 = this.D() + this.y() - $$2;
-      a($$0, $$1, this.z(), $$4, this.E(), $$5, this.E() + this.w(), $$3);
-   }
-
-   public void a(double $$0, double $$1) {
-   }
-
-   public void a_(double $$0, double $$1) {
-   }
-
-   protected void b(double $$0, double $$1, double $$2, double $$3) {
+      return wz.a("gui.narrate.slider", this.z());
    }
 
    @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.j && this.k) {
-         if (this.j($$2)) {
-            boolean $$3 = this.d($$0, $$1);
-            if ($$3) {
-               this.a(fgm.Q().aj());
-               this.a($$0, $$1);
+   public void a(fmi $$0) {
+      $$0.a(fmh.a, this.aQ_());
+      if (this.j) {
+         if (this.aO_()) {
+            $$0.a(fmh.d, wz.c("narration.slider.usage.focused"));
+         } else {
+            $$0.a(fmh.d, wz.c("narration.slider.usage.hovered"));
+         }
+      }
+   }
+
+   @Override
+   public void b(fhz $$0, int $$1, int $$2, float $$3) {
+      fgo $$4 = fgo.Q();
+      $$0.a(1.0F, 1.0F, 1.0F, this.l);
+      RenderSystem.enableBlend();
+      RenderSystem.defaultBlendFunc();
+      RenderSystem.enableDepthTest();
+      $$0.a(this.c(), this.D(), this.E(), this.y(), this.w());
+      $$0.a(this.e(), this.D() + (int)(this.c * (double)(this.g - 8)), this.E(), 8, this.w());
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      int $$5 = this.j ? 16777215 : 10526880;
+      this.a($$0, $$4.h, 2, $$5 | ayo.f(this.l * 255.0F) << 24);
+   }
+
+   @Override
+   public void a(double $$0, double $$1) {
+      this.a($$0);
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      super.a($$0);
+      if (!$$0) {
+         this.o = false;
+      } else {
+         fgl $$1 = fgo.Q().aU();
+         if ($$1 == fgl.b || $$1 == fgl.d) {
+            this.o = true;
+         }
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (fmn.a($$0)) {
+         this.o = !this.o;
+         return true;
+      } else {
+         if (this.o) {
+            boolean $$3 = $$0 == 263;
+            if ($$3 || $$0 == 262) {
+               float $$4 = $$3 ? -1.0F : 1.0F;
+               this.b(this.c + (double)($$4 / (float)(this.g - 8)));
                return true;
             }
          }
 
          return false;
-      } else {
-         return false;
       }
    }
 
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      if (this.j($$2)) {
-         this.a_($$0, $$1);
-         return true;
-      } else {
-         return false;
+   private void a(double $$0) {
+      this.b(($$0 - (double)(this.D() + 4)) / (double)(this.g - 8));
+   }
+
+   private void b(double $$0) {
+      double $$1 = this.c;
+      this.c = ayo.a($$0, 0.0, 1.0);
+      if ($$1 != this.c) {
+         this.a();
       }
-   }
 
-   protected boolean j(int $$0) {
-      return $$0 == 0;
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if (this.j($$2)) {
-         this.b($$0, $$1, $$3, $$4);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected boolean d(double $$0, double $$1) {
-      return this.j
-         && this.k
-         && $$0 >= (double)this.D()
-         && $$1 >= (double)this.E()
-         && $$0 < (double)(this.D() + this.y())
-         && $$1 < (double)(this.E() + this.w());
-   }
-
-   @Nullable
-   @Override
-   public fhu a(fmm $$0) {
-      if (!this.j || !this.k) {
-         return null;
-      } else {
-         return !this.aO_() ? fhu.a(this) : null;
-      }
+      this.b();
    }
 
    @Override
-   public boolean c(double $$0, double $$1) {
-      return this.j && this.k && $$0 >= (double)this.D() && $$1 >= (double)this.E() && $$0 < (double)(this.D() + this.g) && $$1 < (double)(this.E() + this.h);
-   }
-
-   public void a(gvd $$0) {
-      $$0.a(gtt.a(avp.Ar, 1.0F));
-   }
-
-   @Override
-   public int y() {
-      return this.g;
-   }
-
-   public void k(int $$0) {
-      this.g = $$0;
-   }
-
-   public void l(int $$0) {
-      this.h = $$0;
-   }
-
-   public void a(float $$0) {
-      this.l = $$0;
-   }
-
-   public void b(wz $$0) {
-      this.e = $$0;
-   }
-
-   public wz z() {
-      return this.e;
-   }
-
-   @Override
-   public boolean aO_() {
-      return this.m;
-   }
-
-   public boolean A() {
-      return this.i;
-   }
-
-   public boolean B() {
-      return this.A() || this.aO_();
-   }
-
-   @Override
-   public boolean C() {
-      return this.k && this.j;
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      this.m = $$0;
-   }
-
-   @Override
-   public fme.a u() {
-      if (this.aO_()) {
-         return fme.a.c;
-      } else {
-         return this.i ? fme.a.b : fme.a.a;
-      }
-   }
-
-   @Override
-   public final void b(fmg $$0) {
+   protected void b(double $$0, double $$1, double $$2, double $$3) {
       this.a($$0);
-      this.n.a($$0);
-   }
-
-   protected abstract void a(fmg var1);
-
-   protected void c(fmg $$0) {
-      $$0.a(fmf.a, this.aQ_());
-      if (this.j) {
-         if (this.aO_()) {
-            $$0.a(fmf.d, wz.c("narration.button.usage.focused"));
-         } else {
-            $$0.a(fmf.d, wz.c("narration.button.usage.hovered"));
-         }
-      }
+      super.b($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public int D() {
-      return this.c;
+   public void a(gvf $$0) {
    }
 
    @Override
-   public void m(int $$0) {
-      this.c = $$0;
+   public void a_(double $$0, double $$1) {
+      super.a(fgo.Q().aj());
    }
 
-   @Override
-   public int E() {
-      return this.d;
-   }
+   protected abstract void b();
 
-   @Override
-   public void n(int $$0) {
-      this.d = $$0;
-   }
-
-   public int F() {
-      return this.D() + this.y();
-   }
-
-   public int G() {
-      return this.E() + this.w();
-   }
-
-   @Override
-   public void a(Consumer<fii> $$0) {
-      $$0.accept(this);
-   }
-
-   public void b(int $$0, int $$1) {
-      this.g = $$0;
-      this.h = $$1;
-   }
-
-   @Override
-   public fmq H() {
-      return flz.super.H();
-   }
-
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-      this.b($$0, $$1);
-      this.c($$2, $$3);
-   }
-
-   @Override
-   public int I() {
-      return this.f;
-   }
-
-   public void o(int $$0) {
-      this.f = $$0;
-   }
+   protected abstract void a();
 }

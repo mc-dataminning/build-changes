@@ -1,42 +1,38 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eiu extends dzv {
-   private final dds a;
-   private final duz b;
-   private final Optional<eit> c;
+public class eiu extends ejc {
+   public static final MapCodec<eiu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, eiu::new)
+   );
+   private final double c;
+   private final int d;
+   private final int e;
 
-   public eiu(dds $$0, duz $$1, Optional<eit> $$2) {
-      super($$1, $$0);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   private eiu(double $$0, int $$1, int $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public int a(dyy.a $$0, int $$1, int $$2) {
-      return this.a.a($$0, $$1, $$2);
+   public static eiu a(double $$0, int $$1, int $$2) {
+      return new eiu($$0, $$1, $$2);
    }
 
-   public dux a(dcd $$0, dyu.a $$1) {
-      return ((dvs)this.a.a($$0.e, $$0.f)).b($$1);
+   @Override
+   protected int a(ayw $$0, jd $$1) {
+      double $$2 = ddw.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
+      return $$2 < this.c ? this.d : this.e;
    }
 
-   public dtc a(jd $$0) {
-      return this.a.a_($$0);
-   }
-
-   public int c() {
-      return this.a.I_();
-   }
-
-   public dds d() {
-      return this.a;
-   }
-
-   public Optional<eit> e() {
-      return this.c;
-   }
-
-   public duz f() {
-      return this.b;
+   @Override
+   public eiz<?> b() {
+      return eiz.h;
    }
 }

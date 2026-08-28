@@ -13,10 +13,10 @@ public class bzq extends bzo {
       if (this.d > 0) {
          this.d--;
          this.i().ifPresent($$0x -> this.a.ba = this.a(this.a.ba, $$0x + 20.0F, this.b));
-         this.h().ifPresent($$0x -> this.a.u(this.a(this.a.dH(), $$0x + 10.0F, this.c)));
+         this.h().ifPresent($$0x -> this.a.u(this.a(this.a.dG(), $$0x + 10.0F, this.c)));
       } else {
          if (this.a.N().l()) {
-            this.a.u(this.a(this.a.dH(), 0.0F, 5.0F));
+            this.a.u(this.a(this.a.dG(), 0.0F, 5.0F));
          }
 
          this.a.ba = this.a(this.a.ba, this.a.aY, this.b);

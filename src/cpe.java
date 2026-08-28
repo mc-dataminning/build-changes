@@ -23,7 +23,7 @@ public class cpe extends cot {
    }
 
    private Runnable b(dcw $$0) {
-      return $$0 instanceof aqu ? () -> this.c.a((aqu)$$0, this.dp()) : () -> this.c.a($$0, this.dp());
+      return $$0 instanceof aqu ? () -> this.c.a((aqu)$$0, this.do()) : () -> this.c.a($$0, this.do());
    }
 
    @Override
@@ -39,7 +39,7 @@ public class cpe extends cot {
    @Override
    protected void a(ub $$0) {
       super.a($$0);
-      this.c.a(this.dP(), this.dp(), $$0);
+      this.c.a(this.dO(), this.do(), $$0);
    }
 
    @Override
@@ -50,7 +50,7 @@ public class cpe extends cot {
 
    @Override
    public void b(byte $$0) {
-      this.c.a(this.dP(), $$0);
+      this.c.a(this.dO(), $$0);
    }
 
    @Override
@@ -64,7 +64,7 @@ public class cpe extends cot {
    }
 
    @Override
-   public boolean cQ() {
+   public boolean cP() {
       return true;
    }
 }

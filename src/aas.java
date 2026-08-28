@@ -1,9 +1,9 @@
-public record aas(int c, epq d, float e) implements aaj {
+public record aas(int c, eps d, float e) implements aaj {
    public static final yx<vw, aas> a = aaj.a(aas::a, aas::new);
    public static final aaj.b<aas> b = aaj.a("debug/path");
 
    private aas(vw $$0) {
-      this($$0.readInt(), epq.b($$0), $$0.readFloat());
+      this($$0.readInt(), eps.b($$0), $$0.readFloat());
    }
 
    private void a(vw $$0) {
@@ -21,7 +21,7 @@ public record aas(int c, epq d, float e) implements aaj {
       return this.c;
    }
 
-   public epq c() {
+   public eps c() {
       return this.d;
    }
 

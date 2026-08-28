@@ -27,14 +27,14 @@ public class amw {
                                                 "block", gm.a($$1)
                                              )
                                              .executes(
-                                                $$0x -> a((et)$$0x.getSource(), ejh.a(gp.a($$0x, "from"), gp.a($$0x, "to")), gm.a($$0x, "block"), amw.a.a, null)
+                                                $$0x -> a((et)$$0x.getSource(), ejj.a(gp.a($$0x, "from"), gp.a($$0x, "to")), gm.a($$0x, "block"), amw.a.a, null)
                                              ))
                                           .then(
                                              ((LiteralArgumentBuilder)eu.a("replace")
                                                    .executes(
                                                       $$0x -> a(
                                                             (et)$$0x.getSource(),
-                                                            ejh.a(gp.a($$0x, "from"), gp.a($$0x, "to")),
+                                                            ejj.a(gp.a($$0x, "from"), gp.a($$0x, "to")),
                                                             gm.a($$0x, "block"),
                                                             amw.a.a,
                                                             null
@@ -45,7 +45,7 @@ public class amw {
                                                       .executes(
                                                          $$0x -> a(
                                                                (et)$$0x.getSource(),
-                                                               ejh.a(gp.a($$0x, "from"), gp.a($$0x, "to")),
+                                                               ejj.a(gp.a($$0x, "from"), gp.a($$0x, "to")),
                                                                gm.a($$0x, "block"),
                                                                amw.a.a,
                                                                gl.a($$0x, "filter")
@@ -58,7 +58,7 @@ public class amw {
                                              .executes(
                                                 $$0x -> a(
                                                       (et)$$0x.getSource(),
-                                                      ejh.a(gp.a($$0x, "from"), gp.a($$0x, "to")),
+                                                      ejj.a(gp.a($$0x, "from"), gp.a($$0x, "to")),
                                                       gm.a($$0x, "block"),
                                                       amw.a.a,
                                                       $$0xx -> $$0xx.c().u($$0xx.d())
@@ -68,18 +68,18 @@ public class amw {
                                     .then(
                                        eu.a("outline")
                                           .executes(
-                                             $$0x -> a((et)$$0x.getSource(), ejh.a(gp.a($$0x, "from"), gp.a($$0x, "to")), gm.a($$0x, "block"), amw.a.b, null)
+                                             $$0x -> a((et)$$0x.getSource(), ejj.a(gp.a($$0x, "from"), gp.a($$0x, "to")), gm.a($$0x, "block"), amw.a.b, null)
                                           )
                                     ))
                                  .then(
                                     eu.a("hollow")
                                        .executes(
-                                          $$0x -> a((et)$$0x.getSource(), ejh.a(gp.a($$0x, "from"), gp.a($$0x, "to")), gm.a($$0x, "block"), amw.a.c, null)
+                                          $$0x -> a((et)$$0x.getSource(), ejj.a(gp.a($$0x, "from"), gp.a($$0x, "to")), gm.a($$0x, "block"), amw.a.c, null)
                                        )
                                  ))
                               .then(
                                  eu.a("destroy")
-                                    .executes($$0x -> a((et)$$0x.getSource(), ejh.a(gp.a($$0x, "from"), gp.a($$0x, "to")), gm.a($$0x, "block"), amw.a.d, null))
+                                    .executes($$0x -> a((et)$$0x.getSource(), ejj.a(gp.a($$0x, "from"), gp.a($$0x, "to")), gm.a($$0x, "block"), amw.a.d, null))
                               )
                         )
                   )
@@ -87,7 +87,7 @@ public class amw {
       );
    }
 
-   private static int a(et $$0, ejh $$1, gk $$2, amw.a $$3, @Nullable Predicate<dtg> $$4) throws CommandSyntaxException {
+   private static int a(et $$0, ejj $$1, gk $$2, amw.a $$3, @Nullable Predicate<dtg> $$4) throws CommandSyntaxException {
       int $$5 = $$1.d() * $$1.e() * $$1.f();
       int $$6 = $$0.e().ab().c(dcs.z);
       if ($$5 > $$6) {

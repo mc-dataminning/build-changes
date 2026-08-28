@@ -33,7 +33,7 @@ public record dp(dh.d d, ce e, List<dp.e<?>> f, Object2BooleanMap<akr> g, Map<ak
    );
 
    @Override
-   public boolean a(bsr $$0, aqu $$1, @Nullable exa $$2) {
+   public boolean a(bsr $$0, aqu $$1, @Nullable exc $$2) {
       if (!($$0 instanceof aqv $$3)) {
          return false;
       } else if (!this.d.d($$3.cq)) {
@@ -61,7 +61,7 @@ public record dp(dh.d d, ce e, List<dp.e<?>> f, Object2BooleanMap<akr> g, Map<ak
 
          if (!this.h.isEmpty()) {
             akz $$9 = $$3.R();
-            ale $$10 = $$3.cP().aE();
+            ale $$10 = $$3.cO().aE();
 
             for (java.util.Map.Entry<akr, dp.c> $$11 : this.h.entrySet()) {
                ag $$12 = $$10.a($$11.getKey());
@@ -72,11 +72,11 @@ public record dp(dh.d d, ce e, List<dp.e<?>> f, Object2BooleanMap<akr> g, Map<ak
          }
 
          if (this.i.isPresent()) {
-            exa $$13 = $$3.by();
-            exa $$14 = $$3.g(1.0F);
-            exa $$15 = $$13.b($$14.c * 100.0, $$14.d * 100.0, $$14.e * 100.0);
-            ewx $$16 = cnr.a($$3.dP(), $$3, $$13, $$15, new ewv($$13, $$15).g(1.0), $$0x -> !$$0x.R_(), 0.0F);
-            if ($$16 == null || $$16.c() != ewy.a.c) {
+            exc $$13 = $$3.by();
+            exc $$14 = $$3.g(1.0F);
+            exc $$15 = $$13.b($$14.c * 100.0, $$14.d * 100.0, $$14.e * 100.0);
+            ewz $$16 = cnr.a($$3.dO(), $$3, $$13, $$15, new ewx($$13, $$15).g(1.0), $$0x -> !$$0x.R_(), 0.0F);
+            if ($$16 == null || $$16.c() != exa.a.c) {
                return false;
             }
 

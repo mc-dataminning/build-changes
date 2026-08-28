@@ -13,12 +13,12 @@ public class bxy {
       return byu.a(
          (Function<byu.b<btw>, ? extends App<byu.c<btw>, byx<btw>>>)($$4 -> $$4.group($$4.a(ccs.m), $$4.b($$0)).apply($$4, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
                   jl $$9 = $$4.b($$5);
-                  if ($$6.af() != $$9.a() || !$$9.b().a($$7.dn(), (double)$$2)) {
+                  if ($$6.af() != $$9.a() || !$$9.b().a($$7.dm(), (double)$$2)) {
                      return false;
                   } else if ($$8 <= $$3.getValue()) {
                      return true;
                   } else {
-                     Optional<exa> $$10 = Optional.ofNullable(cem.a($$7, 8, 6));
+                     Optional<exc> $$10 = Optional.ofNullable(cem.a($$7, 8, 6));
                      $$4x.a($$10.map($$1xxxx -> new ccv($$1xxxx, $$1, 1)));
                      $$3.setValue($$8 + 180L);
                      return true;

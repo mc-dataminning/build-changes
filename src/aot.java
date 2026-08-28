@@ -12,7 +12,7 @@ public class aot {
       LiteralCommandNode<et> $$1 = $$0.register((LiteralArgumentBuilder)eu.a("teammsg").then(eu.a("message", fk.a()).executes($$0x -> {
          et $$1x = (et)$$0x.getSource();
          bsr $$2 = $$1x.g();
-         exz $$3 = $$2.ck();
+         eyb $$3 = $$2.ck();
          if ($$3 == null) {
             throw b.create();
          } else {
@@ -27,7 +27,7 @@ public class aot {
       $$0.register((LiteralArgumentBuilder)eu.a("tm").redirect($$1));
    }
 
-   private static void a(et $$0, bsr $$1, exz $$2, List<aqv> $$3, xp $$4) {
+   private static void a(et $$0, bsr $$1, eyb $$2, List<aqv> $$3, xp $$4) {
       wz $$5 = $$2.d().c(a);
       wv.a $$6 = wv.a(wv.i, $$0).c($$5);
       wv.a $$7 = wv.a(wv.j, $$0).c($$5);

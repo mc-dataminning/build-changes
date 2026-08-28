@@ -3,7 +3,7 @@ import java.util.function.Function;
 import javax.annotation.Nullable;
 
 public class coh extends cof {
-   private static final dcp g = new ddn(true, false, Optional.of(1.22F), lt.e.b(awe.cy).map(Function.identity()));
+   private static final dcp g = new ddn(true, false, Optional.of(1.22F), lt.e.b(awe.cz).map(Function.identity()));
    private static final float h = 1.2F;
    private int i = 5;
 
@@ -15,7 +15,7 @@ public class coh extends cof {
       super(bsx.bn, $$1, $$0, $$2, $$3, $$4);
    }
 
-   public coh(dcw $$0, double $$1, double $$2, double $$3, exa $$4) {
+   public coh(dcw $$0, double $$1, double $$2, double $$3, exc $$4) {
       super(bsx.bn, $$1, $$2, $$3, $$4, $$0);
    }
 
@@ -33,7 +33,7 @@ public class coh extends cof {
    }
 
    @Override
-   protected void a(exa $$0) {
-      this.dP().a(this, null, g, $$0.a(), $$0.b(), $$0.c(), 1.2F, false, dcw.a.e, lm.A, lm.z, avp.Cq);
+   protected void a(exc $$0) {
+      this.dO().a(this, null, g, $$0.a(), $$0.b(), $$0.c(), 1.2F, false, dcw.a.e, lm.A, lm.z, avp.Cq);
    }
 }

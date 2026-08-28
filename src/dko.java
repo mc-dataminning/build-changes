@@ -11,14 +11,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 public class dko extends dfy implements dgf {
-   private static final Codec<epa> f = lt.c
+   private static final Codec<epc> f = lt.c
       .r()
-      .comapFlatMap($$0 -> $$0 instanceof epa $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a flowing fluid: " + $$0), $$0 -> $$0);
+      .comapFlatMap($$0 -> $$0 instanceof epc $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a flowing fluid: " + $$0), $$0 -> $$0);
    public static final MapCodec<dko> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(f.fieldOf("fluid").forGetter($$0x -> $$0x.c), u()).apply($$0, dko::new));
    public static final duc b = dts.aP;
-   protected final epa c;
-   private final List<epc> g;
-   public static final ext d = dfy.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
+   protected final epc c;
+   private final List<epe> g;
+   public static final exv d = dfy.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
    public static final ImmutableList<ji> e = ImmutableList.of(ji.a, ji.d, ji.c, ji.f, ji.e);
 
    @Override
@@ -26,7 +26,7 @@ public class dko extends dfy implements dgf {
       return a;
    }
 
-   protected dko(epa $$0, dtb.d $$1) {
+   protected dko(epc $$0, dtb.d $$1) {
       super($$1);
       this.c = $$0;
       this.g = Lists.newArrayList();
@@ -41,8 +41,8 @@ public class dko extends dfy implements dgf {
    }
 
    @Override
-   protected ext b(dtc $$0, dcc $$1, jd $$2, exf $$3) {
-      return $$3.a(d, $$2, true) && $$0.c(b) == 0 && $$3.a($$1.b_($$2.d()), $$0.u()) ? d : exq.a();
+   protected exv b(dtc $$0, dcc $$1, jd $$2, exh $$3) {
+      return $$3.a(d, $$2, true) && $$0.c(b) == 0 && $$3.a($$1.b_($$2.d()), $$0.u()) ? d : exs.a();
    }
 
    @Override
@@ -61,12 +61,12 @@ public class dko extends dfy implements dgf {
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return !this.c.a(awk.b);
    }
 
    @Override
-   protected epc b_(dtc $$0) {
+   protected epe b_(dtc $$0) {
       int $$1 = $$0.c(b);
       return this.g.get(Math.min($$1, 8));
    }
@@ -82,13 +82,13 @@ public class dko extends dfy implements dgf {
    }
 
    @Override
-   protected List<cuq> a(dtc $$0, ers.a $$1) {
+   protected List<cuq> a(dtc $$0, eru.a $$1) {
       return Collections.emptyList();
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
-      return exq.a();
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
+      return exs.a();
    }
 
    @Override

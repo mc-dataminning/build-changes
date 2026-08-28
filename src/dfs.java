@@ -44,7 +44,7 @@ public class dfs extends dfk {
    }
 
    private void b(dcw $$0, jd $$1) {
-      ewv $$2 = new ewv($$1).c(8.0, 6.0, 8.0);
+      ewx $$2 = new ewx($$1).c(8.0, 6.0, 8.0);
       List<cff> $$3 = $$0.a(cff.class, $$2);
       if (!$$3.isEmpty()) {
          List<cmx> $$4 = $$0.a(cmx.class, $$2);
@@ -66,23 +66,23 @@ public class dfs extends dfk {
    }
 
    @Override
-   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, eww $$6) {
+   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, ewy $$6) {
       int $$7 = $$1.c(c);
       boolean $$8 = false;
       if ($$7 >= 5) {
          cul $$9 = $$0.g();
          if ($$0.a(cut.rV)) {
-            $$2.a($$4, $$4.du(), $$4.dw(), $$4.dA(), avp.bX, avq.e, 1.0F, 1.0F);
+            $$2.a($$4, $$4.dt(), $$4.dv(), $$4.dz(), avp.bX, avq.e, 1.0F, 1.0F);
             a($$2, $$3);
             $$0.a(1, $$4, btn.d($$5));
             $$8 = true;
             $$2.a($$4, dxz.M, $$3);
          } else if ($$0.a(cut.sl)) {
             $$0.h(1);
-            $$2.a($$4, $$4.du(), $$4.dw(), $$4.dA(), avp.cC, avq.e, 1.0F, 1.0F);
+            $$2.a($$4, $$4.dt(), $$4.dv(), $$4.dz(), avp.cC, avq.e, 1.0F, 1.0F);
             if ($$0.e()) {
                $$4.a($$5, new cuq(cut.wC));
-            } else if (!$$4.fZ().f(new cuq(cut.wC))) {
+            } else if (!$$4.fY().f(new cuq(cut.wC))) {
                $$4.a(new cuq(cut.wC), false);
             }
 
@@ -138,16 +138,16 @@ public class dfs extends dfk {
 
    private void a(dcw $$0, jd $$1, dtc $$2) {
       if ($$2.u().c() && !($$0.z.i() < 0.3F)) {
-         ext $$3 = $$2.k($$0, $$1);
+         exv $$3 = $$2.k($$0, $$1);
          double $$4 = $$3.c(ji.a.b);
-         if ($$4 >= 1.0 && !$$2.a(awe.ao)) {
+         if ($$4 >= 1.0 && !$$2.a(awe.ap)) {
             double $$5 = $$3.b(ji.a.b);
             if ($$5 > 0.0) {
                this.a($$0, $$1, $$3, (double)$$1.v() + $$5 - 0.05);
             } else {
                jd $$6 = $$1.e();
                dtc $$7 = $$0.a_($$6);
-               ext $$8 = $$7.k($$0, $$6);
+               exv $$8 = $$7.k($$0, $$6);
                double $$9 = $$8.c(ji.a.b);
                if (($$9 < 1.0 || !$$7.r($$0, $$6)) && $$7.u().c()) {
                   this.a($$0, $$1, $$3, (double)$$1.v() - 0.05);
@@ -157,7 +157,7 @@ public class dfs extends dfk {
       }
    }
 
-   private void a(dcw $$0, jd $$1, ext $$2, double $$3) {
+   private void a(dcw $$0, jd $$1, exv $$2, double $$3) {
       this.a($$0, (double)$$1.u() + $$2.b(ji.a.a), (double)$$1.u() + $$2.c(ji.a.a), (double)$$1.w() + $$2.b(ji.a.c), (double)$$1.w() + $$2.c(ji.a.c), $$3);
    }
 
@@ -211,10 +211,10 @@ public class dfs extends dfk {
    }
 
    @Override
-   protected List<cuq> a(dtc $$0, ers.a $$1) {
-      bsr $$2 = $$1.b(eul.a);
+   protected List<cuq> a(dtc $$0, eru.a $$1) {
+      bsr $$2 = $$1.b(eun.a);
       if ($$2 instanceof cji || $$2 instanceof cjp || $$2 instanceof cod || $$2 instanceof ciu || $$2 instanceof cpf) {
-         dqh $$3 = $$1.b(eul.h);
+         dqh $$3 = $$1.b(eun.h);
          if ($$3 instanceof dqe $$4) {
             $$4.a(null, $$0, dqe.b.c);
          }

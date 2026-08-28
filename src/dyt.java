@@ -6,18 +6,18 @@ import java.util.stream.Stream;
 
 public class dyt extends duz {
    public static final MapCodec<dyt> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ehs.a.fieldOf("settings").forGetter(dyt::h)).apply($$0, $$0.stable(dyt::new))
+      $$0 -> $$0.group(eht.a.fieldOf("settings").forGetter(dyt::h)).apply($$0, $$0.stable(dyt::new))
    );
-   private final ehs d;
+   private final eht d;
 
-   public dyt(ehs $$0) {
+   public dyt(eht $$0) {
       super(new deh($$0.d()), ad.b($$0::a));
       this.d = $$0;
    }
 
    @Override
-   public dva a(jo<ejv> $$0, dzm $$1, long $$2) {
-      Stream<jm<ejv>> $$3 = this.d.c().map(jq::a).orElseGet(() -> $$0.b().map($$0xx -> $$0xx));
+   public dva a(jo<ejx> $$0, dzm $$1, long $$2) {
+      Stream<jm<ejx>> $$3 = this.d.c().map(jq::a).orElseGet(() -> $$0.b().map($$0xx -> $$0xx));
       return dva.a($$1, $$2, this.b, $$3);
    }
 
@@ -26,7 +26,7 @@ public class dyt extends duz {
       return c;
    }
 
-   public ehs h() {
+   public eht h() {
       return this.d;
    }
 

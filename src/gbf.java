@@ -1,72 +1,59 @@
-public class gbf extends gdl {
-   private final float a;
-   private final float b;
+public class gbf extends gdn {
+   private final gdi a;
 
-   gbf(fzd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cuq $$7) {
-      this($$0, $$1, $$2, $$3, $$7);
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
-   }
-
-   @Override
-   public gcp b() {
-      return gcp.a;
-   }
-
-   protected gbf(fzd $$0, double $$1, double $$2, double $$3, cuq $$4) {
+   protected gbf(
+      fzf $$0,
+      double $$1,
+      double $$2,
+      double $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      double $$7,
+      double $$8,
+      double $$9,
+      float $$10,
+      gdi $$11,
+      float $$12,
+      int $$13,
+      float $$14,
+      boolean $$15
+   ) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a(fgm.Q().ar().a($$4, $$0, null, 0).e());
-      this.u = 1.0F;
-      this.D /= 2.0F;
-      this.a = this.r.i() * 3.0F;
-      this.b = this.r.i() * 3.0F;
+      this.B = 0.96F;
+      this.u = $$14;
+      this.C = true;
+      this.a = $$11;
+      this.j *= (double)$$4;
+      this.k *= (double)$$5;
+      this.l *= (double)$$6;
+      this.j += $$7;
+      this.k += $$8;
+      this.l += $$9;
+      float $$16 = $$0.z.i() * $$12;
+      this.v = $$16;
+      this.w = $$16;
+      this.x = $$16;
+      this.D *= 0.75F * $$10;
+      this.t = (int)((double)$$13 / ((double)$$0.z.i() * 0.8 + 0.2) * (double)$$10);
+      this.t = Math.max(this.t, 1);
+      this.b($$11);
+      this.n = $$15;
    }
 
    @Override
-   protected float c() {
-      return this.E.a((this.a + 1.0F) / 4.0F);
+   public gcr b() {
+      return gcr.b;
    }
 
    @Override
-   protected float d() {
-      return this.E.a(this.a / 4.0F);
+   public float b(float $$0) {
+      return this.D * ayo.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
-   protected float e() {
-      return this.E.c(this.b / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.b + 1.0F) / 4.0F);
-   }
-
-   public static class a implements gco<lq> {
-      public gcl a(lq $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gbf($$1, $$2, $$3, $$4, new cuq(cut.cM));
-      }
-   }
-
-   public static class b implements gco<li> {
-      public gcl a(li $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gbf($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.b());
-      }
-   }
-
-   public static class c implements gco<lq> {
-      public gcl a(lq $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gbf($$1, $$2, $$3, $$4, new cuq(cut.qQ));
-      }
-   }
-
-   public static class d implements gco<lq> {
-      public gcl a(lq $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gbf($$1, $$2, $$3, $$4, new cuq(cut.qC));
-      }
+   public void a() {
+      super.a();
+      this.b(this.a);
    }
 }

@@ -1,66 +1,50 @@
-import javax.annotation.Nullable;
+public class fix extends fjg {
+   private static final int a = 4;
+   private final boolean b;
+   private final int c;
 
-public abstract class fix extends fii {
-   fix(int $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1, $$2, $$3, wy.a);
+   public fix(int $$0, wz $$1, fhx $$2) {
+      this($$0, $$1, $$2, 4);
    }
 
-   public static fix a(int $$0, int $$1, akr $$2, int $$3, int $$4) {
-      return new fix.b(0, 0, $$0, $$1, $$2, $$3, $$4);
+   public fix(int $$0, wz $$1, fhx $$2, int $$3) {
+      this($$0, $$1, $$2, true, $$3);
    }
 
-   public static fix a(int $$0, int $$1, akr $$2) {
-      return new fix.a(0, 0, $$0, $$1, $$2);
+   public fix(int $$0, wz $$1, fhx $$2, boolean $$3, int $$4) {
+      super($$1, $$2);
+      this.d($$0);
+      this.b(true);
+      this.j = true;
+      this.b = $$3;
+      this.c = $$4;
+   }
+
+   public void b(int $$0) {
+      this.d($$0 - this.c * 4);
    }
 
    @Override
-   protected void a(fmg $$0) {
+   protected void a(fmi $$0) {
+      $$0.a(fmh.a, this.z());
    }
 
    @Override
-   public void a(gvd $$0) {
+   public void b(fhz $$0, int $$1, int $$2, float $$3) {
+      if (this.aO_() || this.b) {
+         int $$4 = this.D() - this.c;
+         int $$5 = this.E() - this.c;
+         int $$6 = this.y() + this.c * 2;
+         int $$7 = this.w() + this.c * 2;
+         int $$8 = this.b ? (this.aO_() ? -1 : -6250336) : -1;
+         $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, -16777216);
+         $$0.b($$4, $$5, $$6, $$7, $$8);
+      }
+
+      super.b($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public boolean C() {
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public fhu a(fmm $$0) {
-      return null;
-   }
-
-   static class a extends fix {
-      private final akr a;
-
-      public a(int $$0, int $$1, int $$2, int $$3, akr $$4) {
-         super($$0, $$1, $$2, $$3);
-         this.a = $$4;
-      }
-
-      @Override
-      public void b(fhx $$0, int $$1, int $$2, float $$3) {
-         $$0.a(this.a, this.D(), this.E(), this.y(), this.w());
-      }
-   }
-
-   static class b extends fix {
-      private final akr a;
-      private final int b;
-      private final int c;
-
-      public b(int $$0, int $$1, int $$2, int $$3, akr $$4, int $$5, int $$6) {
-         super($$0, $$1, $$2, $$3);
-         this.a = $$4;
-         this.b = $$5;
-         this.c = $$6;
-      }
-
-      @Override
-      protected void b(fhx $$0, int $$1, int $$2, float $$3) {
-         $$0.a(this.a, this.D(), this.E(), this.y(), this.w(), 0.0F, 0.0F, this.y(), this.w(), this.b, this.c);
-      }
+   public void a(gvf $$0) {
    }
 }

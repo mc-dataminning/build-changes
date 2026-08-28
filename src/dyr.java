@@ -64,10 +64,10 @@ public interface dyr {
       }
    }
 
-   public static record c(jm<eof.a> b, @Nullable eof c) {
-      public static final Codec<dyr.c> a = eof.a.b.xmap($$0 -> new dyr.c($$0, null), dyr.c::b);
+   public static record c(jm<eoh.a> b, @Nullable eoh c) {
+      public static final Codec<dyr.c> a = eoh.a.b.xmap($$0 -> new dyr.c($$0, null), dyr.c::b);
 
-      public c(jm<eof.a> $$0) {
+      public c(jm<eoh.a> $$0) {
          this($$0, null);
       }
 

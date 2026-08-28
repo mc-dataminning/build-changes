@@ -49,7 +49,7 @@ public class fs<T> implements ArgumentType<jm.c<T>> {
       return a($$0, $$1, lu.aI);
    }
 
-   public static jm.c<ejp> c(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
+   public static jm.c<ejr> c(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, lu.aR);
    }
 

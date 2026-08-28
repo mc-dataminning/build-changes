@@ -1,109 +1,102 @@
-import com.ibm.icu.text.Collator;
-import java.util.Comparator;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.List;
 
-public class fnb extends fob {
-   private static final wz a = wz.c("createWorld.customize.buffet.biome").b(-8355712);
-   private static final int b = 8;
-   private final flx c = new flx(this);
-   private final fob r;
-   private final Consumer<jm<ddw>> s;
-   final jz<ddw> u;
-   private fnb.a v;
-   jm<ddw> w;
-   private fik x;
+public class fnb extends fod {
+   private static final int r = 20;
+   private final wz s;
+   private fjf u = fjf.a;
+   protected wz a;
+   protected wz b;
+   private int v;
+   protected final BooleanConsumer c;
+   private final List<fim> w = Lists.newArrayList();
 
-   public fnb(fob $$0, fti $$1, Consumer<jm<ddw>> $$2) {
-      super(wz.c("createWorld.customize.buffet.title"));
-      this.r = $$0;
+   public fnb(BooleanConsumer $$0, wz $$1, wz $$2) {
+      this($$0, $$1, $$2, wy.f, wy.g);
+   }
+
+   public fnb(BooleanConsumer $$0, wz $$1, wz $$2, wz $$3, wz $$4) {
+      super($$1);
+      this.c = $$0;
       this.s = $$2;
-      this.u = $$1.a().d(lu.aF);
-      jm<ddw> $$3 = this.u.b(ded.b).or(() -> this.u.i().findAny()).orElseThrow();
-      this.w = $$1.e().a().d().c().stream().findFirst().orElse($$3);
+      this.a = $$3;
+      this.b = $$4;
    }
 
    @Override
-   public void d() {
-      this.l.a(this.r);
+   public wz i() {
+      return wy.a(super.i(), this.s);
    }
 
    @Override
    protected void aT_() {
-      fmb $$0 = this.c.a(fmb.d().a(8));
-      $$0.c().b();
-      $$0.a(new fjr(this.n(), this.o));
-      $$0.a(new fjr(a, this.o));
-      this.v = this.c.c(new fnb.a());
-      fmb $$1 = this.c.b(fmb.e().a(8));
-      this.x = $$1.a(fik.a(wy.d, $$0x -> {
-         this.s.accept(this.w);
-         this.d();
-      }).a());
-      $$1.a(fik.a(wy.e, $$0x -> this.d()).a());
-      this.v.a(this.v.aK_().stream().filter($$0x -> Objects.equals($$0x.b, this.w)).findFirst().orElse(null));
-      this.c.a(this::c);
-      this.c();
+      super.aT_();
+      this.u = fjf.a(this.o, this.s, this.m - 50);
+      int $$0 = ayo.a(this.C() + this.D() + 20, this.n / 6 + 96, this.n - 24);
+      this.w.clear();
+      this.a($$0);
+   }
+
+   protected void a(int $$0) {
+      this.a(fim.a(this.a, $$0x -> this.c.accept(true)).a(this.m / 2 - 155, $$0, 150, 20).a());
+      this.a(fim.a(this.b, $$0x -> this.c.accept(false)).a(this.m / 2 - 155 + 160, $$0, 150, 20).a());
+   }
+
+   protected void a(fim $$0) {
+      this.w.add(this.c($$0));
    }
 
    @Override
-   protected void c() {
-      this.c.a();
-      this.v.a(this.m, this.c);
+   public void a(fhz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.o, this.k, this.m / 2, this.m(), 16777215);
+      this.u.a($$0, this.m / 2, this.C());
    }
 
-   void m() {
-      this.x.j = this.v.h() != null;
+   private int m() {
+      int $$0 = (this.n - this.D()) / 2;
+      return ayo.a($$0 - 20 - 9, 10, 80);
    }
 
-   class a extends fjg<fnb.a.a> {
-      a() {
-         super(fnb.this.l, fnb.this.m, fnb.this.n - 77, 40, 16);
-         Collator $$0 = Collator.getInstance(Locale.getDefault());
-         fnb.this.u.i().map($$0x -> new fnb.a.a($$0x)).sorted(Comparator.comparing($$0x -> $$0x.c.getString(), $$0)).forEach($$1 -> this.b($$1));
+   private int C() {
+      return this.m() + 20;
+   }
+
+   private int D() {
+      return this.u.a() * 9;
+   }
+
+   public void b(int $$0) {
+      this.v = $$0;
+
+      for (fim $$1 : this.w) {
+         $$1.j = false;
       }
+   }
 
-      public void a(@Nullable fnb.a.a $$0) {
-         super.a($$0);
-         if ($$0 != null) {
-            fnb.this.w = $$0.b;
+   @Override
+   public void e() {
+      super.e();
+      if (--this.v == 0) {
+         for (fim $$0 : this.w) {
+            $$0.j = true;
          }
-
-         fnb.this.m();
       }
+   }
 
-      class a extends fjg.a<fnb.a.a> {
-         final jm.c<ddw> b;
-         final wz c;
+   @Override
+   public boolean aJ_() {
+      return false;
+   }
 
-         public a(final jm.c<ddw> $$0) {
-            this.b = $$0;
-            akr $$1 = $$0.h().a();
-            String $$2 = $$1.h("biome");
-            if (tw.a().b($$2)) {
-               this.c = wz.c($$2);
-            } else {
-               this.c = wz.b($$1.toString());
-            }
-         }
-
-         @Override
-         public wz a() {
-            return wz.a("narrator.select", this.c);
-         }
-
-         @Override
-         public void a(fhx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(fnb.this.o, this.c, $$3 + 5, $$2 + 2, 16777215);
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            a.this.a(this);
-            return super.a($$0, $$1, $$2);
-         }
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.c.accept(false);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
       }
    }
 }

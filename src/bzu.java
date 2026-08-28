@@ -12,7 +12,7 @@ public class bzu extends cam {
 
    public bzu(cgh $$0, float $$1) {
       this.a = $$0;
-      this.c = $$0.dP();
+      this.c = $$0.dO();
       this.d = $$1;
       this.f = cef.b().a((double)$$1);
       this.a(EnumSet.of(cam.a.b));
@@ -35,19 +35,19 @@ public class bzu extends cam {
 
    @Override
    public void d() {
-      this.a.z(true);
-      this.e = this.a(40 + this.a.dS().a(40));
+      this.a.A(true);
+      this.e = this.a(40 + this.a.dR().a(40));
    }
 
    @Override
    public void e() {
-      this.a.z(false);
+      this.a.A(false);
       this.b = null;
    }
 
    @Override
    public void a() {
-      this.a.I().a(this.b.du(), this.b.dy(), this.b.dA(), 10.0F, (float)this.a.ac());
+      this.a.I().a(this.b.dt(), this.b.dx(), this.b.dz(), 10.0F, (float)this.a.ac());
       this.e--;
    }
 

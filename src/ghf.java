@@ -1,111 +1,112 @@
-import java.util.EnumSet;
-import java.util.Optional;
+import java.util.Calendar;
 
-public class ghf implements ggx<dqx> {
-   private static final String a = "neck";
-   private static final String b = "front";
-   private static final String c = "back";
-   private static final String d = "left";
-   private static final String e = "right";
-   private static final String f = "top";
-   private static final String g = "bottom";
-   private final fyi h;
-   private final fyi i;
-   private final fyi j;
-   private final fyi k;
-   private final fyi l;
-   private final fyi m;
-   private final fyi n;
-   private static final float o = 0.125F;
+public class ghf<T extends dqh & drl> implements ggz<T> {
+   private static final String a = "bottom";
+   private static final String b = "lid";
+   private static final String c = "lock";
+   private final fyk d;
+   private final fyk e;
+   private final fyk f;
+   private final fyk g;
+   private final fyk h;
+   private final fyk i;
+   private final fyk j;
+   private final fyk k;
+   private final fyk l;
+   private boolean m;
 
-   public ghf(ggy.a $$0) {
-      fyi $$1 = $$0.a(fyh.L);
-      this.h = $$1.b("neck");
-      this.m = $$1.b("top");
-      this.n = $$1.b("bottom");
-      fyi $$2 = $$0.a(fyh.M);
-      this.i = $$2.b("front");
-      this.j = $$2.b("back");
-      this.k = $$2.b("left");
-      this.l = $$2.b("right");
-   }
-
-   public static fyo b() {
-      fyq $$0 = new fyq();
-      fyr $$1 = $$0.a();
-      fym $$2 = new fym(0.2F);
-      fym $$3 = new fym(-0.1F);
-      $$1.a(
-         "neck",
-         fyn.c().a(0, 0).a(4.0F, 17.0F, 4.0F, 8.0F, 3.0F, 8.0F, $$3).a(0, 5).a(5.0F, 20.0F, 5.0F, 6.0F, 1.0F, 6.0F, $$2),
-         fyk.a(0.0F, 37.0F, 16.0F, (float) Math.PI, 0.0F, 0.0F)
-      );
-      fyn $$4 = fyn.c().a(-14, 13).a(0.0F, 0.0F, 0.0F, 14.0F, 0.0F, 14.0F);
-      $$1.a("top", $$4, fyk.a(1.0F, 16.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      $$1.a("bottom", $$4, fyk.a(1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      return fyo.a($$0, 32, 32);
-   }
-
-   public static fyo c() {
-      fyq $$0 = new fyq();
-      fyr $$1 = $$0.a();
-      fyn $$2 = fyn.c().a(1, 0).a(0.0F, 0.0F, 0.0F, 14.0F, 16.0F, 0.0F, EnumSet.of(ji.c));
-      $$1.a("back", $$2, fyk.a(15.0F, 16.0F, 1.0F, 0.0F, 0.0F, (float) Math.PI));
-      $$1.a("left", $$2, fyk.a(1.0F, 16.0F, 1.0F, 0.0F, (float) (-Math.PI / 2), (float) Math.PI));
-      $$1.a("right", $$2, fyk.a(15.0F, 16.0F, 15.0F, 0.0F, (float) (Math.PI / 2), (float) Math.PI));
-      $$1.a("front", $$2, fyk.a(1.0F, 16.0F, 15.0F, (float) Math.PI, 0.0F, 0.0F));
-      return fyo.a($$0, 16, 16);
-   }
-
-   private static gso a(Optional<cul> $$0) {
-      if ($$0.isPresent()) {
-         gso $$1 = gfm.a(dqz.a($$0.get()));
-         if ($$1 != null) {
-            return $$1;
-         }
+   public ghf(gha.a $$0) {
+      Calendar $$1 = Calendar.getInstance();
+      if ($$1.get(2) + 1 == 12 && $$1.get(5) >= 24 && $$1.get(5) <= 26) {
+         this.m = true;
       }
 
-      return gfm.q;
+      fyk $$2 = $$0.a(fyj.y);
+      this.e = $$2.b("bottom");
+      this.d = $$2.b("lid");
+      this.f = $$2.b("lock");
+      fyk $$3 = $$0.a(fyj.P);
+      this.h = $$3.b("bottom");
+      this.g = $$3.b("lid");
+      this.i = $$3.b("lock");
+      fyk $$4 = $$0.a(fyj.Q);
+      this.k = $$4.b("bottom");
+      this.j = $$4.b("lid");
+      this.l = $$4.b("lock");
    }
 
-   public void a(dqx $$0, float $$1, fbg $$2, gex $$3, int $$4, int $$5) {
-      $$2.a();
-      ji $$6 = $$0.k();
-      $$2.a(0.5, 0.0, 0.5);
-      $$2.a(a.d.rotationDegrees(180.0F - $$6.p()));
-      $$2.a(-0.5, 0.0, -0.5);
-      dqx.a $$7 = $$0.h;
-      if ($$7 != null && $$0.i() != null) {
-         float $$8 = ((float)($$0.i().Z() - $$0.g) + $$1) / (float)$$7.c;
-         if ($$8 >= 0.0F && $$8 <= 1.0F) {
-            if ($$7 == dqx.a.a) {
-               float $$9 = 0.015625F;
-               float $$10 = $$8 * (float) (Math.PI * 2);
-               float $$11 = -1.5F * (ayo.b($$10) + 0.5F) * ayo.a($$10 / 2.0F);
-               $$2.a(a.b.rotation($$11 * 0.015625F), 0.5F, 0.0F, 0.5F);
-               float $$12 = ayo.a($$10);
-               $$2.a(a.f.rotation($$12 * 0.015625F), 0.5F, 0.0F, 0.5F);
+   public static fyq b() {
+      fys $$0 = new fys();
+      fyt $$1 = $$0.a();
+      $$1.a("bottom", fyp.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 14.0F, 10.0F, 14.0F), fym.a);
+      $$1.a("lid", fyp.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 14.0F, 5.0F, 14.0F), fym.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", fyp.c().a(0, 0).a(7.0F, -2.0F, 14.0F, 2.0F, 4.0F, 1.0F), fym.a(0.0F, 9.0F, 1.0F));
+      return fyq.a($$0, 64, 64);
+   }
+
+   public static fyq c() {
+      fys $$0 = new fys();
+      fyt $$1 = $$0.a();
+      $$1.a("bottom", fyp.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), fym.a);
+      $$1.a("lid", fyp.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), fym.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", fyp.c().a(0, 0).a(15.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), fym.a(0.0F, 9.0F, 1.0F));
+      return fyq.a($$0, 64, 64);
+   }
+
+   public static fyq d() {
+      fys $$0 = new fys();
+      fyt $$1 = $$0.a();
+      $$1.a("bottom", fyp.c().a(0, 19).a(0.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), fym.a);
+      $$1.a("lid", fyp.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), fym.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", fyp.c().a(0, 0).a(0.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), fym.a(0.0F, 9.0F, 1.0F));
+      return fyq.a($$0, 64, 64);
+   }
+
+   @Override
+   public void a(T $$0, float $$1, fbi $$2, gez $$3, int $$4, int $$5) {
+      dcw $$6 = $$0.i();
+      boolean $$7 = $$6 != null;
+      dtc $$8 = $$7 ? $$0.n() : dga.cv.o().a(dhb.c, ji.d);
+      dtu $$9 = $$8.b(dhb.d) ? $$8.c(dhb.d) : dtu.a;
+      if ($$8.b() instanceof des<?> $$11) {
+         boolean $$12 = $$9 != dtu.a;
+         $$2.a();
+         float $$13 = $$8.c(dhb.c).p();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.a(a.d.rotationDegrees(-$$13));
+         $$2.a(-0.5F, -0.5F, -0.5F);
+         dif.c<? extends dqo> $$14;
+         if ($$7) {
+            $$14 = $$11.a($$8, $$6, $$0.aD_(), true);
+         } else {
+            $$14 = dif.b::b;
+         }
+
+         float $$16 = $$14.apply(dhb.a($$0)).get($$1);
+         $$16 = 1.0F - $$16;
+         $$16 = 1.0F - $$16 * $$16 * $$16;
+         int $$17 = $$14.apply(new ghc<>()).applyAsInt($$4);
+         gsq $$18 = gfo.a($$0, $$9, this.m);
+         fbm $$19 = $$18.a($$3, gfh::d);
+         if ($$12) {
+            if ($$9 == dtu.b) {
+               this.a($$2, $$19, this.g, this.i, this.h, $$16, $$17, $$5);
             } else {
-               float $$13 = ayo.a(-$$8 * 3.0F * (float) Math.PI) * 0.125F;
-               float $$14 = 1.0F - $$8;
-               $$2.a(a.d.rotation($$13 * $$14), 0.5F, 0.0F, 0.5F);
+               this.a($$2, $$19, this.j, this.l, this.k, $$16, $$17, $$5);
             }
+         } else {
+            this.a($$2, $$19, this.d, this.f, this.e, $$16, $$17, $$5);
          }
-      }
 
-      fbk $$15 = gfm.p.a($$3, gff::c);
-      this.h.a($$2, $$15, $$4, $$5);
-      this.m.a($$2, $$15, $$4, $$5);
-      this.n.a($$2, $$15, $$4, $$5);
-      drm $$16 = $$0.l();
-      this.a(this.i, $$2, $$3, $$4, $$5, a($$16.e()));
-      this.a(this.j, $$2, $$3, $$4, $$5, a($$16.b()));
-      this.a(this.k, $$2, $$3, $$4, $$5, a($$16.c()));
-      this.a(this.l, $$2, $$3, $$4, $$5, a($$16.d()));
-      $$2.b();
+         $$2.b();
+      }
    }
 
-   private void a(fyi $$0, fbg $$1, gex $$2, int $$3, int $$4, gso $$5) {
-      $$0.a($$1, $$5.a($$2, gff::c), $$3, $$4);
+   private void a(fbi $$0, fbm $$1, fyk $$2, fyk $$3, fyk $$4, float $$5, int $$6, int $$7) {
+      $$2.e = -($$5 * (float) (Math.PI / 2));
+      $$3.e = $$2.e;
+      $$2.a($$0, $$1, $$6, $$7);
+      $$3.a($$0, $$1, $$6, $$7);
+      $$4.a($$0, $$1, $$6, $$7);
    }
 }

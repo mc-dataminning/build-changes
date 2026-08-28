@@ -7,10 +7,10 @@ public class cjm extends ckd {
 
    public cjm(bsx<? extends cjm> $$0, dcw $$1) {
       super($$0, $$1);
-      this.a(ept.j, -1.0F);
-      this.a(ept.i, 8.0F);
-      this.a(ept.n, 0.0F);
-      this.a(ept.o, 0.0F);
+      this.a(epv.j, -1.0F);
+      this.a(epv.i, 8.0F);
+      this.a(epv.n, 0.0F);
+      this.a(epv.o, 0.0F);
       this.bP = 10;
    }
 
@@ -26,7 +26,7 @@ public class cjm extends ckd {
    }
 
    public static buv.a s() {
-      return ckd.gr().a(buw.c, 6.0).a(buw.v, 0.23F).a(buw.m, 48.0);
+      return ckd.gq().a(buw.c, 6.0).a(buw.v, 0.23F).a(buw.m, 48.0);
    }
 
    @Override
@@ -57,17 +57,17 @@ public class cjm extends ckd {
 
    @Override
    public void m_() {
-      if (!this.aF() && this.ds().d < 0.0) {
-         this.i(this.ds().d(1.0, 0.6, 1.0));
+      if (!this.aF() && this.dr().d < 0.0) {
+         this.i(this.dr().d(1.0, 0.6, 1.0));
       }
 
-      if (this.dP().B) {
+      if (this.dO().B) {
          if (this.ah.a(24) == 0 && !this.aX()) {
-            this.dP().a(this.du() + 0.5, this.dw() + 0.5, this.dA() + 0.5, avp.ch, this.df(), 1.0F + this.ah.i(), this.ah.i() * 0.7F + 0.3F, false);
+            this.dO().a(this.dt() + 0.5, this.dv() + 0.5, this.dz() + 0.5, avp.ch, this.de(), 1.0F + this.ah.i(), this.ah.i() * 0.7F + 0.3F, false);
          }
 
          for (int $$0 = 0; $$0 < 2; $$0++) {
-            this.dP().a(lm.X, this.d(0.5), this.dx(), this.g(0.5), 0.0, 0.0, 0.0);
+            this.dO().a(lm.X, this.d(0.5), this.dw(), this.g(0.5), 0.0, 0.0, 0.0);
          }
       }
 
@@ -75,7 +75,7 @@ public class cjm extends ckd {
    }
 
    @Override
-   public boolean fm() {
+   public boolean fl() {
       return true;
    }
 
@@ -88,9 +88,9 @@ public class cjm extends ckd {
       }
 
       btn $$0 = this.p();
-      if ($$0 != null && $$0.dy() > this.dy() + (double)this.b && this.c($$0)) {
-         exa $$1 = this.ds();
-         this.i(this.ds().b(0.0, (0.3F - $$1.d) * 0.3F, 0.0));
+      if ($$0 != null && $$0.dx() > this.dx() + (double)this.b && this.c($$0)) {
+         exc $$1 = this.dr();
+         this.i(this.dr().b(0.0, (0.3F - $$1.d) * 0.3F, 0.0));
          this.av = true;
       }
 
@@ -106,7 +106,7 @@ public class cjm extends ckd {
       return (this.ao.a(d) & 1) != 0;
    }
 
-   void w(boolean $$0) {
+   void x(boolean $$0) {
       byte $$1 = this.ao.a(d);
       if ($$0) {
          $$1 = (byte)($$1 | 1);
@@ -141,7 +141,7 @@ public class cjm extends ckd {
 
       @Override
       public void e() {
-         this.a.w(false);
+         this.a.x(false);
          this.d = 0;
       }
 
@@ -173,42 +173,42 @@ public class cjm extends ckd {
                   this.a.D($$0);
                }
 
-               this.a.J().a($$0.du(), $$0.dw(), $$0.dA(), 1.0);
+               this.a.J().a($$0.dt(), $$0.dv(), $$0.dz(), 1.0);
             } else if ($$2 < this.h() * this.h() && $$1) {
-               double $$3 = $$0.du() - this.a.du();
+               double $$3 = $$0.dt() - this.a.dt();
                double $$4 = $$0.e(0.5) - this.a.e(0.5);
-               double $$5 = $$0.dA() - this.a.dA();
+               double $$5 = $$0.dz() - this.a.dz();
                if (this.c <= 0) {
                   this.b++;
                   if (this.b == 1) {
                      this.c = 60;
-                     this.a.w(true);
+                     this.a.x(true);
                   } else if (this.b <= 4) {
                      this.c = 6;
                   } else {
                      this.c = 100;
                      this.b = 0;
-                     this.a.w(false);
+                     this.a.x(false);
                   }
 
                   if (this.b > 1) {
                      double $$6 = Math.sqrt(Math.sqrt($$2)) * 0.5;
                      if (!this.a.aX()) {
-                        this.a.dP().a(null, 1018, this.a.dp(), 0);
+                        this.a.dO().a(null, 1018, this.a.do(), 0);
                      }
 
                      for (int $$7 = 0; $$7 < 1; $$7++) {
-                        exa $$8 = new exa(this.a.dS().a($$3, 2.297 * $$6), $$4, this.a.dS().a($$5, 2.297 * $$6));
-                        cnt $$9 = new cnt(this.a.dP(), this.a, $$8.d());
-                        $$9.a_($$9.du(), this.a.e(0.5) + 0.5, $$9.dA());
-                        this.a.dP().b($$9);
+                        exc $$8 = new exc(this.a.dR().a($$3, 2.297 * $$6), $$4, this.a.dR().a($$5, 2.297 * $$6));
+                        cnt $$9 = new cnt(this.a.dO(), this.a, $$8.d());
+                        $$9.a_($$9.dt(), this.a.e(0.5) + 0.5, $$9.dz());
+                        this.a.dO().b($$9);
                      }
                   }
                }
 
                this.a.I().a($$0, 10.0F, 10.0F);
             } else if (this.d < 5) {
-               this.a.J().a($$0.du(), $$0.dw(), $$0.dA(), 1.0);
+               this.a.J().a($$0.dt(), $$0.dv(), $$0.dz(), 1.0);
             }
 
             super.a();

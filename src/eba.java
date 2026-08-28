@@ -15,14 +15,14 @@ public class eba extends eax {
    public final bpu c;
    final bpu j;
 
-   public eba(float $$0, ehw $$1, bpu $$2, dzs $$3, eay $$4, jq<dfy> $$5, bpu $$6, bpu $$7, bpu $$8) {
+   public eba(float $$0, ehx $$1, bpu $$2, dzs $$3, eay $$4, jq<dfy> $$5, bpu $$6, bpu $$7, bpu $$8) {
       super($$0, $$1, $$2, $$3, $$4, $$5);
       this.b = $$6;
       this.c = $$7;
       this.j = $$8;
    }
 
-   public eba(float $$0, ehw $$1, bpu $$2, dzs $$3, jq<dfy> $$4, bpu $$5, bpu $$6, bpu $$7) {
+   public eba(float $$0, ehx $$1, bpu $$2, dzs $$3, jq<dfy> $$4, bpu $$5, bpu $$6, bpu $$7) {
       this($$0, $$1, $$2, $$3, eay.a, $$4, $$5, $$6, $$7);
    }
 

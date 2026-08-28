@@ -6,7 +6,7 @@ import java.util.Optional;
 import java.util.function.BiConsumer;
 import org.slf4j.Logger;
 
-public class bqy extends eqj {
+public class bqy extends eql {
    private static final Logger a = LogUtils.getLogger();
    private final long b;
    private int c;
@@ -14,8 +14,8 @@ public class bqy extends eqj {
    private boolean e = true;
    private final Map<akr, bqx> f = new Object2ObjectOpenHashMap();
 
-   public static eqj.a<bqy> a(long $$0) {
-      return new eqj.a<>(() -> new bqy($$0), ($$1, $$2) -> a($$0, $$1), azw.m);
+   public static eql.a<bqy> a(long $$0) {
+      return new eql.a<>(() -> new bqy($$0), ($$1, $$2) -> a($$0, $$1), azw.m);
    }
 
    public bqy(long $$0) {

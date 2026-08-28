@@ -56,27 +56,27 @@ public class dah {
          a,
          dac.a(dac.a($$3.b(awn.bC), 10, 4, dac.a(1, 11), dac.a(12, 11), 1, bsz.i))
             .a($$2.b(awh.b))
-            .a(dad.c, new dal(daj.b(1.0F)), eut.a(bk.a.a().a(ed.b(awg.d))))
+            .a(dad.c, new dal(daj.b(1.0F)), euv.a(bk.a.a().a(ed.b(awg.d))))
       );
       a(
          $$0,
          b,
          dac.a(dac.a($$3.b(awn.bC), 5, 4, dac.a(10, 8), dac.a(18, 8), 2, bsz.i))
             .a($$2.b(awh.b))
-            .a(dad.c, new dal(daj.b(2.0F)), eun.a(eut.a(bk.a.a().a(ed.a(awg.i)).a(ed.b(awg.d)))))
+            .a(dad.c, new dal(daj.b(2.0F)), eup.a(euv.a(bk.a.a().a(ed.a(awg.i)).a(ed.b(awg.d)))))
             .a(dad.l, new dar(akr.b("enchantment.fire_protection"), buw.h, daj.b(-0.15F), buu.a.b))
       );
       a(
          $$0,
          c,
-         dac.a(dac.a($$3.b(awn.by), 5, 4, dac.a(5, 6), dac.a(11, 6), 2, bsz.i)).a(dad.c, new dal(daj.b(3.0F)), eut.a(bk.a.a().a(ed.a(awg.m)).a(ed.b(awg.d))))
+         dac.a(dac.a($$3.b(awn.by), 5, 4, dac.a(5, 6), dac.a(11, 6), 2, bsz.i)).a(dad.c, new dal(daj.b(3.0F)), euv.a(bk.a.a().a(ed.a(awg.m)).a(ed.b(awg.d))))
       );
       a(
          $$0,
          d,
          dac.a(dac.a($$3.b(awn.bC), 2, 4, dac.a(5, 8), dac.a(13, 8), 4, bsz.i))
             .a($$2.b(awh.b))
-            .a(dad.c, new dal(daj.b(2.0F)), eut.a(bk.a.a().a(ed.a(awg.l)).a(ed.b(awg.d))))
+            .a(dad.c, new dal(daj.b(2.0F)), euv.a(bk.a.a().a(ed.a(awg.l)).a(ed.b(awg.d))))
             .a(dad.l, new dar(akr.b("enchantment.blast_protection"), buw.i, daj.b(0.15F), buu.a.a))
       );
       a(
@@ -84,7 +84,7 @@ public class dah {
          e,
          dac.a(dac.a($$3.b(awn.bC), 5, 4, dac.a(3, 6), dac.a(9, 6), 2, bsz.i))
             .a($$2.b(awh.b))
-            .a(dad.c, new dal(daj.b(2.0F)), eut.a(bk.a.a().a(ed.a(awg.j)).a(ed.b(awg.d))))
+            .a(dad.c, new dal(daj.b(2.0F)), euv.a(bk.a.a().a(ed.a(awg.j)).a(ed.b(awg.d))))
       );
       a(
          $$0,
@@ -101,7 +101,7 @@ public class dah {
          $$0,
          h,
          dac.a(dac.a($$3.b(awn.bC), $$3.b(awn.bA), 1, 3, dac.a(10, 20), dac.a(60, 20), 8, bsz.a))
-            .a(dad.i, dag.c, dag.a, dam.a(new dao(daj.a(1.0F), daj.a(5.0F), $$1.b(brn.O)), new daq(daj.a(2.0F))), evf.a(evu.a(daj.b(0.15F))))
+            .a(dad.i, dag.c, dag.a, dam.a(new dao(daj.a(1.0F), daj.a(5.0F), $$1.b(brn.O)), new daq(daj.a(2.0F))), evh.a(evw.a(daj.b(0.15F))))
       );
       a(
          $$0,
@@ -115,22 +115,22 @@ public class dah {
          j,
          dac.a(dac.a($$3.b(awn.by), 2, 2, dac.a(10, 10), dac.a(25, 10), 4, bsz.e))
             .a($$2.b(awh.c))
-            .a(dad.d, dap.a, eut.a(bk.a.a().a(ed.a(awg.E)).a(ed.b(awg.d))))
+            .a(dad.d, dap.a, euv.a(bk.a.a().a(ed.a(awg.E)).a(ed.b(awg.d))))
             .a(
                dad.n,
                new dbb(
                   new daj.a(daj.a(3.0F, 1.0F), 0.0F, 16.0F),
                   daj.a(1.0F),
                   new kh(0, -1, 0),
-                  Optional.of(eaf.a(eaf.a(new kh(0, 1, 0), awe.cA), eaf.a(dga.G), eaf.a(epd.c), eaf.f())),
-                  egi.a(dga.kI),
+                  Optional.of(eaf.a(eaf.a(new kh(0, 1, 0), awe.cB), eaf.a(dga.G), eaf.a(epf.c), eaf.f())),
+                  egj.a(dga.kI),
                   Optional.of(dxz.i)
                ),
-               evd.a(erp.b.a, bv.a.a().a(bt.a.a().a(true)))
+               evf.a(err.b.a, bv.a.a().a(bt.a.a().a(true)))
             )
       );
       a($$0, k, dac.a(dac.a($$3.b(awn.bN), 1, 1, dac.a(25), dac.a(50), 8, bsz.i)).a(dad.E));
-      bv.a $$5 = bv.a.a().a(5).a(bt.a.a().f(false).a(true)).a(dj.b(dh.c.b(1.0E-5F))).c(df.a.a().a(aw.a.a().a(awe.aN)));
+      bv.a $$5 = bv.a.a().a(5).a(bt.a.a().f(false).a(true)).a(dj.b(dh.c.b(1.0E-5F))).c(df.a.a().a(aw.a.a().a(awe.aO)));
       a(
          $$0,
          l,
@@ -138,22 +138,22 @@ public class dah {
             .a(
                dad.n,
                new dar(akr.b("enchantment.soul_speed"), buw.v, daj.a(0.0405F, 0.0105F), buu.a.a),
-               eun.a(
-                  eux.a(evd.a(erp.b.a, bv.a.a().a(bv.a.a()))),
-                  euo.a(
-                     eun.a(
-                        euu.c(),
-                        evd.a(erp.b.a, bv.a.a().a(bt.a.a().f(false))),
-                        euo.a(evd.a(erp.b.a, bv.a.a().c(df.a.a().a(aw.a.a().a(awe.aN)))), evd.a(erp.b.a, bv.a.a().a(bt.a.a().a(false)).b()))
+               eup.a(
+                  euz.a(evf.a(err.b.a, bv.a.a().a(bv.a.a()))),
+                  euq.a(
+                     eup.a(
+                        euw.c(),
+                        evf.a(err.b.a, bv.a.a().a(bt.a.a().f(false))),
+                        euq.a(evf.a(err.b.a, bv.a.a().c(df.a.a().a(aw.a.a().a(awe.aO)))), evf.a(err.b.a, bv.a.a().a(bt.a.a().a(false)).b()))
                      ),
-                     eun.a(euu.d(), evd.a(erp.b.a, bv.a.a().c(df.a.a().a(aw.a.a().a(awe.aN))).a(bt.a.a().f(false))))
+                     eup.a(euw.d(), evf.a(err.b.a, bv.a.a().c(df.a.a().a(aw.a.a().a(awe.aO))).a(bt.a.a().f(false))))
                   )
                )
             )
-            .a(dad.n, new dar(akr.b("enchantment.soul_speed"), buw.u, daj.a(1.0F), buu.a.a), evd.a(erp.b.a, bv.a.a().c(df.a.a().a(aw.a.a().a(awe.aN)))))
-            .a(dad.n, new daq(daj.a(1.0F)), eun.a(evf.a(evu.a(daj.a(0.04F))), evd.a(erp.b.a, bv.a.a().a(bt.a.a().a(true)).c(df.a.a().a(aw.a.a().a(awe.aN))))))
-            .a(dad.o, new dbf(lm.M, dbf.b(), dbf.a(0.1F), dbf.b(-0.2F), dbf.a(bps.a(0.1F)), bps.a(1.0F)), evd.a(erp.b.a, $$5))
-            .a(dad.o, new day(avp.xQ, bps.a(0.6F), bqb.b(0.6F, 1.0F)), eun.a(evf.a(0.35F), evd.a(erp.b.a, $$5)))
+            .a(dad.n, new dar(akr.b("enchantment.soul_speed"), buw.u, daj.a(1.0F), buu.a.a), evf.a(err.b.a, bv.a.a().c(df.a.a().a(aw.a.a().a(awe.aO)))))
+            .a(dad.n, new daq(daj.a(1.0F)), eup.a(evh.a(evw.a(daj.a(0.04F))), evf.a(err.b.a, bv.a.a().a(bt.a.a().a(true)).c(df.a.a().a(aw.a.a().a(awe.aO))))))
+            .a(dad.o, new dbf(lm.M, dbf.b(), dbf.a(0.1F), dbf.b(-0.2F), dbf.a(bps.a(0.1F)), bps.a(1.0F)), evf.a(err.b.a, $$5))
+            .a(dad.o, new day(avp.xQ, bps.a(0.6F), bqb.b(0.6F, 1.0F)), eup.a(evh.a(0.35F), evf.a(err.b.a, $$5)))
       );
       a(
          $$0,
@@ -167,20 +167,20 @@ public class dah {
          o,
          dac.a(dac.a($$3.b(awn.bG), $$3.b(awn.bD), 5, 5, dac.a(5, 8), dac.a(25, 8), 2, bsz.b))
             .a($$2.b(awh.f))
-            .a(dad.e, new dal(daj.b(2.5F)), evd.a(erp.b.a, bv.a.a().a(by.a(awi.D))))
+            .a(dad.e, new dal(daj.b(2.5F)), evf.a(err.b.a, bv.a.a().a(by.a(awi.D))))
       );
       a(
          $$0,
          p,
          dac.a(dac.a($$3.b(awn.bG), $$3.b(awn.bD), 5, 5, dac.a(5, 8), dac.a(25, 8), 2, bsz.b))
             .a($$2.b(awh.f))
-            .a(dad.e, new dal(daj.b(2.5F)), evd.a(erp.b.a, bv.a.a().a(by.a(awi.C))))
+            .a(dad.e, new dal(daj.b(2.5F)), evf.a(err.b.a, bv.a.a().a(by.a(awi.C))))
             .a(
                dad.i,
                dag.a,
                dag.c,
                new dan(jq.a(bsb.b), daj.a(1.5F), daj.a(1.5F, 0.5F), daj.a(3.0F), daj.a(3.0F)),
-               evd.a(erp.b.a, bv.a.a().a(by.a(awi.C))).and(eut.a(bk.a.a().a(true)))
+               evf.a(err.b.a, bv.a.a().a(by.a(awi.C))).and(euv.a(bk.a.a().a(true)))
             )
       );
       a($$0, q, dac.a(dac.a($$3.b(awn.bD), 5, 2, dac.a(5, 20), dac.a(55, 20), 2, bsz.b)).a(dad.g, new dal(daj.b(1.0F))));
@@ -188,13 +188,13 @@ public class dah {
          $$0,
          r,
          dac.a(dac.a($$3.b(awn.bE), $$3.b(awn.bD), 2, 2, dac.a(10, 20), dac.a(60, 20), 4, bsz.b))
-            .a(dad.i, dag.a, dag.c, new daw(daj.b(4.0F)), eut.a(bk.a.a().a(true)))
+            .a(dad.i, dag.a, dag.c, new daw(daj.b(4.0F)), euv.a(bk.a.a().a(true)))
       );
       a(
          $$0,
          s,
          dac.a(dac.a($$3.b(awn.bD), 2, 3, dac.a(15, 9), dac.a(65, 9), 4, bsz.b))
-            .a(dad.m, dag.a, dag.c, new dal(daj.b(0.01F)), evd.a(erp.b.b, bv.a.a().a(by.a(bsx.by))))
+            .a(dad.m, dag.a, dag.c, new dal(daj.b(0.01F)), evf.a(err.b.b, bv.a.a().a(by.a(bsx.by))))
       );
       a(
          $$0,
@@ -213,14 +213,14 @@ public class dah {
          $$0,
          w,
          dac.a(dac.a($$3.b(awn.bL), 5, 3, dac.a(5, 8), dac.a(55, 8), 2, bsz.a))
-            .a(dad.k, new daz(new daj.c(daj.b(2.0F), daj.a(10.0F, 5.0F))), evh.a(cs.a.a().a(awn.bC)))
-            .a(dad.k, new daz(new daj.c(daj.b(1.0F), daj.a(2.0F, 1.0F))), eux.a(evh.a(cs.a.a().a(awn.bC))))
+            .a(dad.k, new daz(new daj.c(daj.b(2.0F), daj.a(10.0F, 5.0F))), evj.a(cs.a.a().a(awn.bC)))
+            .a(dad.k, new daz(new daj.c(daj.b(1.0F), daj.a(2.0F, 1.0F))), euz.a(evj.a(cs.a.a().a(awn.bC))))
       );
       a($$0, x, dac.a(dac.a($$3.b(awn.bI), 2, 3, dac.a(15, 9), dac.a(65, 9), 4, bsz.b)).a($$2.b(awh.g)));
-      a($$0, y, dac.a(dac.a($$3.b(awn.bM), 10, 5, dac.a(1, 10), dac.a(16, 10), 1, bsz.b)).a(dad.e, new dal(daj.b(0.5F)), evd.a(erp.b.c, bv.a.a().a(awi.f).b())));
-      a($$0, z, dac.a(dac.a($$3.b(awn.bM), 2, 2, dac.a(12, 20), dac.a(37, 20), 4, bsz.b)).a(dad.g, new dal(daj.b(1.0F)), evd.a(erp.b.c, bv.a.a().a(awi.f).b())));
+      a($$0, y, dac.a(dac.a($$3.b(awn.bM), 10, 5, dac.a(1, 10), dac.a(16, 10), 1, bsz.b)).a(dad.e, new dal(daj.b(0.5F)), evf.a(err.b.c, bv.a.a().a(awi.f).b())));
+      a($$0, z, dac.a(dac.a($$3.b(awn.bM), 2, 2, dac.a(12, 20), dac.a(37, 20), 4, bsz.b)).a(dad.g, new dal(daj.b(1.0F)), evf.a(err.b.c, bv.a.a().a(awi.f).b())));
       a($$0, A, dac.a(dac.a($$3.b(awn.bM), 2, 1, dac.a(20), dac.a(50), 4, bsz.b)).a(dad.r, new daw(daj.a(100.0F))));
-      a($$0, B, dac.a(dac.a($$3.b(awn.bM), 1, 1, dac.a(20), dac.a(50), 8, bsz.b)).a($$2.b(awh.d)).a(dad.p, new dbe(daj.a(0.0F)), evh.a(cs.a.a().a(cut.ow))));
+      a($$0, B, dac.a(dac.a($$3.b(awn.bM), 1, 1, dac.a(20), dac.a(50), 8, bsz.b)).a($$2.b(awh.d)).a(dad.p, new dbe(daj.a(0.0F)), evj.a(cs.a.a().a(cut.ow))));
       a($$0, C, dac.a(dac.a($$3.b(awn.bJ), 2, 3, dac.a(15, 9), dac.a(65, 9), 4, bsz.b)).a(dad.w, new dal(daj.b(1.0F))));
       a($$0, D, dac.a(dac.a($$3.b(awn.bJ), 2, 3, dac.a(15, 9), dac.a(65, 9), 4, bsz.b)).a(dad.v, new dal(daj.b(5.0F))));
       a($$0, E, dac.a(dac.a($$3.b(awn.bK), 5, 3, dac.a(12, 7), dac.a(50), 2, bsz.b)).a(dad.u, new dal(daj.b(1.0F))));
@@ -229,7 +229,7 @@ public class dah {
          F,
          dac.a(dac.a($$3.b(awn.bK), 2, 5, dac.a(1, 8), dac.a(21, 8), 4, bsz.b))
             .a($$2.b(awh.f))
-            .a(dad.e, new dal(daj.b(2.5F)), evd.a(erp.b.a, bv.a.a().a(by.a(awi.B)).b()))
+            .a(dad.e, new dal(daj.b(2.5F)), evf.a(err.b.a, bv.a.a().a(by.a(awi.B)).b()))
       );
       a(
          $$0,
@@ -248,12 +248,12 @@ public class dah {
                dag.a,
                dag.c,
                dam.a(new dbg(jq.a(bsx.am.r()), false), new day(avp.zH, bps.a(5.0F), bps.a(1.0F))),
-               eun.a(evk.c().b(true), evd.a(erp.b.a, bv.a.a().a(df.a.a().b(true))), evd.a(erp.b.c, bv.a.a().a(bsx.bf)))
+               eup.a(evm.c().b(true), evf.a(err.b.a, bv.a.a().a(df.a.a().b(true))), evf.a(err.b.c, bv.a.a().a(bsx.bf)))
             )
             .a(
                dad.j,
                dam.a(new dbg(jq.a(bsx.am.r()), false), new day(avp.zH, bps.a(5.0F), bps.a(1.0F))),
-               eun.a(evk.c().b(true), evd.a(erp.b.a, bv.a.a().a(bsx.bf)), euy.a(df.a.a().b(true)), euz.a(dga.ss))
+               eup.a(evm.c().b(true), evf.a(err.b.a, bv.a.a().a(bsx.bf)), eva.a(df.a.a().b(true)), evb.a(dga.ss))
             )
       );
       a(
@@ -290,8 +290,8 @@ public class dah {
                   false,
                   Optional.empty(),
                   Optional.of(daj.a(List.of(1.2F, 1.75F, 2.2F), daj.a(1.5F, 0.35F))),
-                  $$4.a(awe.cy).map(Function.identity()),
-                  exa.b,
+                  $$4.a(awe.cz).map(Function.identity()),
+                  exc.b,
                   daj.a(3.5F),
                   false,
                   dcw.a.e,
@@ -299,7 +299,7 @@ public class dah {
                   lm.z,
                   avp.Cq
                ),
-               evd.a(erp.b.b, bv.a.a().a(bt.a.a().f(false)).a(dj.d(dh.c.b(1.5))))
+               evf.a(err.b.c, bv.a.a().a(bt.a.a().f(false)).a(dj.d(dh.c.b(1.5))))
             )
       );
       a($$0, O, dac.a(dac.a($$3.b(awn.bL), 2, 1, dac.a(25, 25), dac.a(75, 25), 4, bsz.a)).a(dad.z, new dax(daj.a(2.0F))));

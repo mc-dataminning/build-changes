@@ -42,7 +42,7 @@ public class apn extends MinecraftServer implements ali {
    private blq v;
    private final alj w;
 
-   public apn(Thread $$0, erd.c $$1, atp $$2, alp $$3, app $$4, DataFixer $$5, alm $$6, are $$7) {
+   public apn(Thread $$0, erf.c $$1, atp $$2, alp $$3, app $$4, DataFixer $$5, alm $$6, are $$7) {
       super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, $$5, $$6, $$7);
       this.r = $$4;
       this.p = new avf(this);
@@ -337,7 +337,7 @@ public class apn extends MinecraftServer implements ali {
          return false;
       } else if (this.bs().k().c()) {
          return false;
-      } else if (this.bs().f($$2.fY())) {
+      } else if (this.bs().f($$2.fX())) {
          return false;
       } else if (this.am() <= 0) {
          return false;
@@ -528,7 +528,7 @@ public class apn extends MinecraftServer implements ali {
 
    @Override
    public arz a(aqv $$0) {
-      return this.t != null ? this.t.a($$0.fY()) : arz.a;
+      return this.t != null ? this.t.a($$0.fX()) : arz.a;
    }
 
    @Nullable

@@ -7,7 +7,7 @@ public class dfd extends dep {
    public static final MapCodec<dfd> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cti.q.fieldOf("color").forGetter(dep::b), u()).apply($$0, dfd::new));
    public static final duc b = dts.ba;
    private static final Map<cti, dfy> c = Maps.newHashMap();
-   private static final ext d = dfy.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
+   private static final exv d = dfy.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
 
    @Override
    public MapCodec<dfd> a() {
@@ -26,7 +26,7 @@ public class dfd extends dep {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return d;
    }
 

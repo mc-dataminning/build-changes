@@ -21,7 +21,7 @@ public class et implements ev<et>, ey {
    public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wz.c("permissions.requires.player"));
    public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wz.c("permissions.requires.entity"));
    private final es c;
-   private final exa d;
+   private final exc d;
    private final aqu e;
    private final int f;
    private final String g;
@@ -32,18 +32,18 @@ public class et implements ev<et>, ey {
    private final bsr k;
    private final eq l;
    private final ff.a m;
-   private final ewz n;
+   private final exb n;
    private final er o;
    private final azm p;
 
-   public et(es $$0, exa $$1, ewz $$2, aqu $$3, int $$4, String $$5, wz $$6, MinecraftServer $$7, @Nullable bsr $$8) {
+   public et(es $$0, exc $$1, exb $$2, aqu $$3, int $$4, String $$5, wz $$6, MinecraftServer $$7, @Nullable bsr $$8) {
       this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, eq.a, ff.a.a, er.a, azm.immediate($$7));
    }
 
    protected et(
       es $$0,
-      exa $$1,
-      ewz $$2,
+      exc $$1,
+      exb $$2,
       aqu $$3,
       int $$4,
       String $$5,
@@ -82,11 +82,11 @@ public class et implements ev<et>, ey {
          : new et(this.c, this.d, this.n, this.e, this.f, $$0.ah().getString(), $$0.S_(), this.i, $$0, this.j, this.l, this.m, this.o, this.p);
    }
 
-   public et a(exa $$0) {
+   public et a(exc $$0) {
       return this.d.equals($$0) ? this : new et(this.c, $$0, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
    }
 
-   public et a(ewz $$0) {
+   public et a(exb $$0) {
       return this.n.c($$0) ? this : new et(this.c, this.d, $$0, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
    }
 
@@ -124,7 +124,7 @@ public class et implements ev<et>, ey {
          return this;
       } else {
          double $$1 = dwy.a(this.e.D_(), $$0.D_());
-         exa $$2 = new exa(this.d.c * $$1, this.d.d, this.d.e * $$1);
+         exc $$2 = new exc(this.d.c * $$1, this.d.d, this.d.e * $$1);
          return new et(this.c, $$2, this.n, $$0, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
       }
    }
@@ -133,15 +133,15 @@ public class et implements ev<et>, ey {
       return this.b($$1.a($$0));
    }
 
-   public et b(exa $$0) {
-      exa $$1 = this.m.a(this);
+   public et b(exc $$0) {
+      exc $$1 = this.m.a(this);
       double $$2 = $$0.c - $$1.c;
       double $$3 = $$0.d - $$1.d;
       double $$4 = $$0.e - $$1.e;
       double $$5 = Math.sqrt($$2 * $$2 + $$4 * $$4);
       float $$6 = ayo.g((float)(-(ayo.d($$3, $$5) * 180.0F / (float)Math.PI)));
       float $$7 = ayo.g((float)(ayo.d($$4, $$2) * 180.0F / (float)Math.PI) - 90.0F);
-      return this.a(new ewz($$6, $$7));
+      return this.a(new exb($$6, $$7));
    }
 
    public et a(er $$0, azm $$1) {
@@ -163,7 +163,7 @@ public class et implements ev<et>, ey {
       return this.f >= $$0;
    }
 
-   public exa d() {
+   public exc d() {
       return this.d;
    }
 
@@ -202,7 +202,7 @@ public class et implements ev<et>, ey {
       return this.k instanceof aqv;
    }
 
-   public ewz k() {
+   public exb k() {
       return this.n;
    }
 
@@ -268,7 +268,7 @@ public class et implements ev<et>, ey {
       wz $$1 = wz.a("chat.type.admin", this.b(), $$0).a(n.h, n.u);
       if (this.i.aM().b(dcs.p)) {
          for (aqv $$2 : this.i.ah().t()) {
-            if ($$2 != this.c && this.i.ah().f($$2.fY())) {
+            if ($$2 != this.c && this.i.ah().f($$2.fX())) {
                $$2.a($$1);
             }
          }

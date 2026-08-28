@@ -38,13 +38,13 @@ public class cbn<T extends ckd & ckh & cjq> extends cam {
    @Override
    public void e() {
       super.e();
-      this.b.v(false);
+      this.b.w(false);
       this.b.h(null);
       this.f = 0;
-      if (this.b.fs()) {
-         this.b.fy();
+      if (this.b.fr()) {
+         this.b.fx();
          this.b.b(false);
-         this.b.fu().b(kq.E, cxg.a);
+         this.b.ft().b(kq.E, cxg.a);
       }
    }
 
@@ -75,7 +75,7 @@ public class cbn<T extends ckd & ckh & cjq> extends cam {
             this.h--;
             if (this.h <= 0) {
                this.b.N().a($$0, this.k() ? this.d : this.d * 0.5);
-               this.h = a.a(this.b.dS());
+               this.h = a.a(this.b.dR());
             }
          } else {
             this.h = 0;
@@ -90,16 +90,16 @@ public class cbn<T extends ckd & ckh & cjq> extends cam {
                this.b.b(true);
             }
          } else if (this.c == cbn.a.b) {
-            if (!this.b.fs()) {
+            if (!this.b.fr()) {
                this.c = cbn.a.a;
             }
 
-            int $$5 = this.b.fw();
-            cuq $$6 = this.b.fu();
+            int $$5 = this.b.fv();
+            cuq $$6 = this.b.ft();
             if ($$5 >= ctc.b($$6, this.b)) {
-               this.b.fx();
+               this.b.fw();
                this.c = cbn.a.c;
-               this.g = 20 + this.b.dS().a(20);
+               this.g = 20 + this.b.dR().a(20);
                this.b.b(false);
             }
          } else if (this.c == cbn.a.c) {

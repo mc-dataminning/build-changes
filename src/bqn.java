@@ -4,7 +4,7 @@ public class bqn {
    }
 
    public static void a(dcw $$0, bsr $$1, bqk $$2) {
-      a($$0, $$1.du(), $$1.dw(), $$1.dA(), $$2);
+      a($$0, $$1.dt(), $$1.dv(), $$1.dz(), $$2);
    }
 
    private static void a(dcw $$0, double $$1, double $$2, double $$3, bqk $$4) {

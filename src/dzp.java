@@ -13,18 +13,18 @@ import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
 public class dzp {
-   public static final dzp.f a = a(0, false, eik.b);
-   public static final dzp.f b = a(0, true, eik.b);
-   public static final dzp.f c = a(0, true, 6, eik.b);
-   public static final dzp.f d = a(0, true, 30, eik.b);
-   public static final dzp.f e = a(0, false, eik.a);
-   public static final dzp.f f = a(0, true, eik.a);
+   public static final dzp.f a = a(0, false, eil.b);
+   public static final dzp.f b = a(0, true, eil.b);
+   public static final dzp.f c = a(0, true, 6, eil.b);
+   public static final dzp.f d = a(0, true, 30, eil.b);
+   public static final dzp.f e = a(0, false, eil.a);
+   public static final dzp.f f = a(0, true, eil.a);
 
-   public static dzp.f a(int $$0, boolean $$1, eik $$2) {
+   public static dzp.f a(int $$0, boolean $$1, eil $$2) {
       return new dzp.t($$0, $$1, 0, $$2);
    }
 
-   public static dzp.f a(int $$0, boolean $$1, int $$2, eik $$3) {
+   public static dzp.f a(int $$0, boolean $$1, int $$2, eil $$3) {
       return new dzp.t($$0, $$1, $$2, $$3);
    }
 
@@ -57,11 +57,11 @@ public class dzp {
       return new dzp.c($$0);
    }
 
-   public static dzp.f a(akq<eof.a> $$0, double $$1) {
+   public static dzp.f a(akq<eoh.a> $$0, double $$1) {
       return a($$0, $$1, Double.MAX_VALUE);
    }
 
-   public static dzp.f a(akq<eof.a> $$0, double $$1, double $$2) {
+   public static dzp.f a(akq<eoh.a> $$0, double $$1, double $$2) {
       return new dzp.l($$0, $$1, $$2);
    }
 
@@ -502,7 +502,7 @@ public class dzp {
       }
    }
 
-   static record l(akq<eof.a> a, double c, double d) implements dzp.f {
+   static record l(akq<eoh.a> a, double c, double d) implements dzp.f {
       static final ayh<dzp.l> e = ayh.a(
          RecordCodecBuilder.mapCodec(
             $$0 -> $$0.group(
@@ -520,7 +520,7 @@ public class dzp {
       }
 
       public dzp.e a(final dzp.g $$0) {
-         final eof $$1 = $$0.j.a(this.a);
+         final eoh $$1 = $$0.j.a(this.a);
 
          class a extends dzp.j {
             a() {
@@ -537,7 +537,7 @@ public class dzp {
          return new a();
       }
 
-      public akq<eof.a> b() {
+      public akq<eoh.a> b() {
          return this.a;
       }
    }
@@ -643,14 +643,14 @@ public class dzp {
       }
    }
 
-   static record t(int a, boolean c, int d, eik e) implements dzp.f {
+   static record t(int a, boolean c, int d, eil e) implements dzp.f {
       static final ayh<dzp.t> f = ayh.a(
          RecordCodecBuilder.mapCodec(
             $$0 -> $$0.group(
                      Codec.INT.fieldOf("offset").forGetter(dzp.t::b),
                      Codec.BOOL.fieldOf("add_surface_depth").forGetter(dzp.t::c),
                      Codec.INT.fieldOf("secondary_depth_range").forGetter(dzp.t::d),
-                     eik.c.fieldOf("surface_type").forGetter(dzp.t::e)
+                     eil.c.fieldOf("surface_type").forGetter(dzp.t::e)
                   )
                   .apply($$0, dzp.t::new)
          )
@@ -662,7 +662,7 @@ public class dzp {
       }
 
       public dzp.e a(final dzp.g $$0) {
-         final boolean $$1 = this.e == eik.a;
+         final boolean $$1 = this.e == eil.a;
 
          class a extends dzp.k {
             a() {

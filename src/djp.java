@@ -4,7 +4,7 @@ import javax.annotation.Nullable;
 public class djp extends dfy implements dna {
    public static final MapCodec<djp> a = b(djp::new);
    private static final dtt c = dts.C;
-   protected static final ext b = dfy.a(2.0, 10.0, 2.0, 14.0, 16.0, 14.0);
+   protected static final exv b = dfy.a(2.0, 10.0, 2.0, 14.0, 16.0, 14.0);
 
    @Override
    public MapCodec<djp> a() {
@@ -22,8 +22,8 @@ public class djp extends dfy implements dna {
    }
 
    @Override
-   protected epc b_(dtc $$0) {
-      return $$0.c(c) ? epd.c.a(false) : super.b_($$0);
+   protected epe b_(dtc $$0) {
+      return $$0.c(c) ? epf.c.a(false) : super.b_($$0);
    }
 
    @Nullable
@@ -31,8 +31,8 @@ public class djp extends dfy implements dna {
    public dtc a(cyd $$0) {
       dtc $$1 = super.a($$0);
       if ($$1 != null) {
-         epc $$2 = $$0.q().b_($$0.a());
-         return $$1.a(c, Boolean.valueOf($$2.a() == epd.c));
+         epe $$2 = $$0.q().b_($$0.a());
+         return $$1.a(c, Boolean.valueOf($$2.a() == epf.c));
       } else {
          return null;
       }
@@ -46,7 +46,7 @@ public class djp extends dfy implements dna {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return b;
    }
 
@@ -56,7 +56,7 @@ public class djp extends dfy implements dna {
          return dga.a.o();
       } else {
          if ($$0.c(c)) {
-            $$3.a($$4, epd.c, epd.c.a($$3));
+            $$3.a($$4, epf.c, epf.c.a($$3));
          }
 
          return super.a($$0, $$1, $$2, $$3, $$4, $$5);

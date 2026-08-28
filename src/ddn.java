@@ -14,7 +14,7 @@ public class ddn extends dcp {
    }
 
    @Override
-   public Optional<Float> a(dco $$0, dcc $$1, jd $$2, dtc $$3, epc $$4) {
+   public Optional<Float> a(dco $$0, dcc $$1, jd $$2, dtc $$3, epe $$4) {
       if (this.d.isPresent()) {
          return $$3.a(this.d.get()) ? Optional.of(3600000.0F) : Optional.empty();
       } else {
@@ -36,7 +36,7 @@ public class ddn extends dcp {
    public float a(bsr $$0) {
       boolean var10000;
       label17: {
-         if ($$0 instanceof cmx $$1 && $$1.ga().b) {
+         if ($$0 instanceof cmx $$1 && $$1.fZ().b) {
             var10000 = true;
             break label17;
          }

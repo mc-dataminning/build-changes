@@ -7,19 +7,19 @@ public class dll extends dgh implements dgb {
    public static final int c = 4;
    public static final dtw d = dts.R;
    public static final duc e = dts.S;
-   private static final BiFunction<ji, Integer, ext> f = ad.a(
+   private static final BiFunction<ji, Integer, exv> f = ad.a(
       ($$0, $$1) -> {
-         ext[] $$2 = new ext[]{
+         exv[] $$2 = new exv[]{
             dfy.a(8.0, 0.0, 8.0, 16.0, 3.0, 16.0),
             dfy.a(8.0, 0.0, 0.0, 16.0, 3.0, 8.0),
             dfy.a(0.0, 0.0, 0.0, 8.0, 3.0, 8.0),
             dfy.a(0.0, 0.0, 8.0, 8.0, 3.0, 16.0)
          };
-         ext $$3 = exq.a();
+         exv $$3 = exs.a();
 
          for (int $$4 = 0; $$4 < $$1; $$4++) {
             int $$5 = Math.floorMod($$4 - $$0.e(), 4);
-            $$3 = exq.a($$3, $$2[$$5]);
+            $$3 = exs.a($$3, $$2[$$5]);
          }
 
          return $$3.b();
@@ -52,7 +52,7 @@ public class dll extends dgh implements dgb {
    }
 
    @Override
-   public ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   public exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return f.apply($$0.c(d), $$0.c(e));
    }
 

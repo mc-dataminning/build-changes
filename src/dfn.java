@@ -1,8 +1,8 @@
 import com.mojang.serialization.MapCodec;
 
 public abstract class dfn extends dfy implements dna {
-   protected static final ext a = dfy.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
-   protected static final ext b = dfy.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
+   protected static final exv a = dfy.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
+   protected static final exv b = dfy.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
    public static final dtt c = dts.C;
    private final boolean d;
 
@@ -11,7 +11,7 @@ public abstract class dfn extends dfy implements dna {
    }
 
    public static boolean g(dtc $$0) {
-      return $$0.a(awe.N) && $$0.b() instanceof dfn;
+      return $$0.a(awe.O) && $$0.b() instanceof dfn;
    }
 
    protected dfn(boolean $$0, dtb.d $$1) {
@@ -27,7 +27,7 @@ public abstract class dfn extends dfy implements dna {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       dug $$4 = $$0.a(this) ? $$0.c(this.c()) : null;
       return $$4 != null && $$4.b() ? b : a;
    }
@@ -114,8 +114,8 @@ public abstract class dfn extends dfy implements dna {
 
    @Override
    public dtc a(cyd $$0) {
-      epc $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == epd.c;
+      epe $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == epf.c;
       dtc $$3 = super.o();
       ji $$4 = $$0.g();
       boolean $$5 = $$4 == ji.f || $$4 == ji.e;
@@ -127,14 +127,14 @@ public abstract class dfn extends dfy implements dna {
    @Override
    protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
       if ($$0.c(c)) {
-         $$3.a($$4, epd.c, epd.c.a($$3));
+         $$3.a($$4, epf.c, epf.c.a($$3));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected epc b_(dtc $$0) {
-      return $$0.c(c) ? epd.c.a(false) : super.b_($$0);
+   protected epe b_(dtc $$0) {
+      return $$0.c(c) ? epf.c.a(false) : super.b_($$0);
    }
 }

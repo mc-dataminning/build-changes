@@ -1,88 +1,119 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 
-public class fuo extends fwa<cov> implements fxv {
-   private static final String a = "left_paddle";
-   private static final String b = "right_paddle";
-   private static final String f = "water_patch";
-   private static final String g = "bottom";
-   private static final String h = "back";
-   private static final String i = "front";
-   private static final String j = "right";
-   private static final String k = "left";
-   private final fyi l;
-   private final fyi m;
-   private final fyi n;
-   private final ImmutableList<fyi> o;
+public class fuo<T extends cff> extends fuf<T> {
+   private static final float a = 19.0F;
+   private static final String b = "bone";
+   private static final String f = "stinger";
+   private static final String g = "left_antenna";
+   private static final String h = "right_antenna";
+   private static final String i = "front_legs";
+   private static final String j = "middle_legs";
+   private static final String k = "back_legs";
+   private final fyk l;
+   private final fyk m;
+   private final fyk n;
+   private final fyk o;
+   private final fyk p;
+   private final fyk q;
+   private final fyk r;
+   private final fyk s;
+   private final fyk t;
+   private float u;
 
-   public fuo(fyi $$0) {
-      this.l = $$0.b("left_paddle");
-      this.m = $$0.b("right_paddle");
-      this.n = $$0.b("water_patch");
-      this.o = this.a($$0).build();
+   public fuo(fyk $$0) {
+      super(false, 24.0F, 0.0F);
+      this.l = $$0.b("bone");
+      fyk $$1 = this.l.b("body");
+      this.r = $$1.b("stinger");
+      this.s = $$1.b("left_antenna");
+      this.t = $$1.b("right_antenna");
+      this.m = this.l.b("right_wing");
+      this.n = this.l.b("left_wing");
+      this.o = this.l.b("front_legs");
+      this.p = this.l.b("middle_legs");
+      this.q = this.l.b("back_legs");
    }
 
-   protected Builder<fyi> a(fyi $$0) {
-      Builder<fyi> $$1 = new Builder();
-      $$1.add(new fyi[]{$$0.b("bottom"), $$0.b("back"), $$0.b("front"), $$0.b("right"), $$0.b("left"), this.l, this.m});
-      return $$1;
+   public static fyq c() {
+      fys $$0 = new fys();
+      fyt $$1 = $$0.a();
+      fyt $$2 = $$1.a("bone", fyp.c(), fym.a(0.0F, 19.0F, 0.0F));
+      fyt $$3 = $$2.a("body", fyp.c().a(0, 0).a(-3.5F, -4.0F, -5.0F, 7.0F, 7.0F, 10.0F), fym.a);
+      $$3.a("stinger", fyp.c().a(26, 7).a(0.0F, -1.0F, 5.0F, 0.0F, 1.0F, 2.0F), fym.a);
+      $$3.a("left_antenna", fyp.c().a(2, 0).a(1.5F, -2.0F, -3.0F, 1.0F, 2.0F, 3.0F), fym.a(0.0F, -2.0F, -5.0F));
+      $$3.a("right_antenna", fyp.c().a(2, 3).a(-2.5F, -2.0F, -3.0F, 1.0F, 2.0F, 3.0F), fym.a(0.0F, -2.0F, -5.0F));
+      fyo $$4 = new fyo(0.001F);
+      $$2.a("right_wing", fyp.c().a(0, 18).a(-9.0F, 0.0F, 0.0F, 9.0F, 0.0F, 6.0F, $$4), fym.a(-1.5F, -4.0F, -3.0F, 0.0F, -0.2618F, 0.0F));
+      $$2.a("left_wing", fyp.c().a(0, 18).a().a(0.0F, 0.0F, 0.0F, 9.0F, 0.0F, 6.0F, $$4), fym.a(1.5F, -4.0F, -3.0F, 0.0F, 0.2618F, 0.0F));
+      $$2.a("front_legs", fyp.c().a("front_legs", -5.0F, 0.0F, 0.0F, 7, 2, 0, 26, 1), fym.a(1.5F, 3.0F, -2.0F));
+      $$2.a("middle_legs", fyp.c().a("middle_legs", -5.0F, 0.0F, 0.0F, 7, 2, 0, 26, 3), fym.a(1.5F, 3.0F, 0.0F));
+      $$2.a("back_legs", fyp.c().a("back_legs", -5.0F, 0.0F, 0.0F, 7, 2, 0, 26, 5), fym.a(1.5F, 3.0F, 2.0F));
+      return fyq.a($$0, 64, 64);
    }
 
-   public static void a(fyr $$0) {
-      int $$1 = 32;
-      int $$2 = 6;
-      int $$3 = 20;
-      int $$4 = 4;
-      int $$5 = 28;
-      $$0.a("bottom", fyn.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), fyk.a(0.0F, 3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      $$0.a("back", fyn.c().a(0, 19).a(-13.0F, -7.0F, -1.0F, 18.0F, 6.0F, 2.0F), fyk.a(-15.0F, 4.0F, 4.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
-      $$0.a("front", fyn.c().a(0, 27).a(-8.0F, -7.0F, -1.0F, 16.0F, 6.0F, 2.0F), fyk.a(15.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      $$0.a("right", fyn.c().a(0, 35).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), fyk.a(0.0F, 4.0F, -9.0F, 0.0F, (float) Math.PI, 0.0F));
-      $$0.a("left", fyn.c().a(0, 43).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), fyk.a(0.0F, 4.0F, 9.0F));
-      int $$6 = 20;
-      int $$7 = 7;
-      int $$8 = 6;
-      float $$9 = -5.0F;
-      $$0.a(
-         "left_paddle",
-         fyn.c().a(62, 0).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         fyk.a(3.0F, -5.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
-      );
-      $$0.a(
-         "right_paddle",
-         fyn.c().a(62, 20).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         fyk.a(3.0F, -5.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
-      );
-      $$0.a("water_patch", fyn.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), fyk.a(0.0F, -3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.u = $$0.H($$3);
+      this.r.k = !$$0.gv();
    }
 
-   public static fyo a() {
-      fyq $$0 = new fyq();
-      fyr $$1 = $$0.a();
-      a($$1);
-      return fyo.a($$0, 128, 64);
-   }
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.m.e = 0.0F;
+      this.s.e = 0.0F;
+      this.t.e = 0.0F;
+      this.l.e = 0.0F;
+      boolean $$6 = $$0.aF() && $$0.dr().g() < 1.0E-7;
+      if ($$6) {
+         this.m.f = -0.2618F;
+         this.m.g = 0.0F;
+         this.n.e = 0.0F;
+         this.n.f = 0.2618F;
+         this.n.g = 0.0F;
+         this.o.e = 0.0F;
+         this.p.e = 0.0F;
+         this.q.e = 0.0F;
+      } else {
+         float $$7 = $$3 * 120.32113F * (float) (Math.PI / 180.0);
+         this.m.f = 0.0F;
+         this.m.g = ayo.b($$7) * (float) Math.PI * 0.15F;
+         this.n.e = this.m.e;
+         this.n.f = this.m.f;
+         this.n.g = -this.m.g;
+         this.o.e = (float) (Math.PI / 4);
+         this.p.e = (float) (Math.PI / 4);
+         this.q.e = (float) (Math.PI / 4);
+         this.l.e = 0.0F;
+         this.l.f = 0.0F;
+         this.l.g = 0.0F;
+      }
 
-   public void a(cov $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      a($$0, 0, this.l, $$1);
-      a($$0, 1, this.m, $$1);
-   }
+      if (!$$0.ad_()) {
+         this.l.e = 0.0F;
+         this.l.f = 0.0F;
+         this.l.g = 0.0F;
+         if (!$$6) {
+            float $$8 = ayo.b($$3 * 0.18F);
+            this.l.e = 0.1F + $$8 * (float) Math.PI * 0.025F;
+            this.s.e = $$8 * (float) Math.PI * 0.03F;
+            this.t.e = $$8 * (float) Math.PI * 0.03F;
+            this.o.e = -$$8 * (float) Math.PI * 0.1F + (float) (Math.PI / 8);
+            this.q.e = -$$8 * (float) Math.PI * 0.05F + (float) (Math.PI / 4);
+            this.l.c = 19.0F - ayo.b($$3 * 0.18F) * 0.9F;
+         }
+      }
 
-   public ImmutableList<fyi> b() {
-      return this.o;
+      if (this.u > 0.0F) {
+         this.l.e = fwh.a(this.l.e, 3.0915928F, this.u);
+      }
    }
 
    @Override
-   public fyi c() {
-      return this.n;
+   protected Iterable<fyk> a() {
+      return ImmutableList.of();
    }
 
-   private static void a(cov $$0, int $$1, fyi $$2, float $$3) {
-      float $$4 = $$0.a($$1, $$3);
-      $$2.e = ayo.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (ayo.a(-$$4) + 1.0F) / 2.0F);
-      $$2.f = ayo.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (ayo.a(-$$4 + 1.0F) + 1.0F) / 2.0F);
-      if ($$1 == 1) {
-         $$2.f = (float) Math.PI - $$2.f;
-      }
+   @Override
+   protected Iterable<fyk> b() {
+      return ImmutableList.of(this.l);
    }
 }

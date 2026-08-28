@@ -19,11 +19,11 @@ public class bwy extends bvh<btp> {
    }
 
    protected void a(aqu $$0, btp $$1, long $$2) {
-      ayw $$3 = $$1.dS();
+      ayw $$3 = $$1.dR();
       float $$4 = ayo.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
-      float $$5 = ayo.g($$1.dF() + 2.0F * $$3.i() * this.d - this.d);
-      exa $$6 = exa.a($$4, $$5);
-      $$1.dU().a(ccs.n, new bvk($$1.by().e($$6)));
-      $$1.dU().a(ccs.Q, this.c.a($$3));
+      float $$5 = ayo.g($$1.dE() + 2.0F * $$3.i() * this.d - this.d);
+      exc $$6 = exc.a($$4, $$5);
+      $$1.dT().a(ccs.n, new bvk($$1.by().e($$6)));
+      $$1.dT().a(ccs.Q, this.c.a($$3));
    }
 }

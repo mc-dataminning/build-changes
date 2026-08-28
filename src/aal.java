@@ -1,4 +1,4 @@
-public record aal(akq<dxz> c, exa d) implements aaj {
+public record aal(akq<dxz> c, exc d) implements aaj {
    public static final yx<vw, aal> a = aaj.a(aal::a, aal::new);
    public static final aaj.b<aal> b = aaj.a("debug/game_event");
 
@@ -20,7 +20,7 @@ public record aal(akq<dxz> c, exa d) implements aaj {
       return this.c;
    }
 
-   public exa c() {
+   public exc c() {
       return this.d;
    }
 }

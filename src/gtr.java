@@ -1,49 +1,29 @@
-public class gtr extends gth {
-   private static final float n = 0.0F;
-   private static final float o = 0.7F;
-   private static final float p = 0.0F;
-   private static final float q = 1.0F;
-   private static final float r = 0.0025F;
-   private final cot s;
-   private float t = 0.0F;
+public class gtr extends gtj {
+   private final bsr n;
 
-   public gtr(cot $$0) {
-      super(avp.oN, avq.g, gty.t());
-      this.s = $$0;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
-      this.f = (double)((float)$$0.du());
-      this.g = (double)((float)$$0.dw());
-      this.h = (double)((float)$$0.dA());
+   public gtr(avo $$0, avq $$1, float $$2, float $$3, bsr $$4, long $$5) {
+      super($$0, $$1, ayw.a($$5));
+      this.d = $$2;
+      this.e = $$3;
+      this.n = $$4;
+      this.f = (double)((float)this.n.dt());
+      this.g = (double)((float)this.n.dv());
+      this.h = (double)((float)this.n.dz());
    }
 
    @Override
    public boolean s() {
-      return !this.s.aX();
-   }
-
-   @Override
-   public boolean r() {
-      return true;
+      return !this.n.aX();
    }
 
    @Override
    public void q() {
-      if (this.s.dK()) {
+      if (this.n.dJ()) {
          this.n();
       } else {
-         this.f = (double)((float)this.s.du());
-         this.g = (double)((float)this.s.dw());
-         this.h = (double)((float)this.s.dA());
-         float $$0 = (float)this.s.ds().h();
-         if ($$0 >= 0.01F && this.s.dP().s().i()) {
-            this.t = ayo.a(this.t + 0.0025F, 0.0F, 1.0F);
-            this.d = ayo.i(ayo.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
-         } else {
-            this.t = 0.0F;
-            this.d = 0.0F;
-         }
+         this.f = (double)((float)this.n.dt());
+         this.g = (double)((float)this.n.dv());
+         this.h = (double)((float)this.n.dz());
       }
    }
 }

@@ -1,28 +1,33 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.Lists;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import java.util.Set;
+import com.mojang.logging.LogUtils;
+import java.util.Iterator;
+import java.util.List;
+import org.slf4j.Logger;
 
-public class fcf extends fda {
-   public Set<String> a = Sets.newHashSet();
+public class fcf extends fdc {
+   private static final Logger b = LogUtils.getLogger();
+   public List<fce> a;
 
    public static fcf a(String $$0) {
-      fcf $$1 = new fcf();
-      JsonParser $$2 = new JsonParser();
+      JsonParser $$1 = new JsonParser();
+      fcf $$2 = new fcf();
+      $$2.a = Lists.newArrayList();
 
       try {
-         JsonElement $$3 = $$2.parse($$0);
-         JsonObject $$4 = $$3.getAsJsonObject();
-         JsonElement $$5 = $$4.get("ops");
-         if ($$5.isJsonArray()) {
-            for (JsonElement $$6 : $$5.getAsJsonArray()) {
-               $$1.a.add($$6.getAsString());
+         JsonElement $$3 = $$1.parse($$0).getAsJsonObject().get("backups");
+         if ($$3.isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.getAsJsonArray().iterator();
+
+            while ($$4.hasNext()) {
+               $$2.a.add(fce.a($$4.next()));
             }
          }
-      } catch (Exception var8) {
+      } catch (Exception var5) {
+         b.error("Could not parse BackupList: {}", var5.getMessage());
       }
 
-      return $$1;
+      return $$2;
    }
 }

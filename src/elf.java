@@ -1,25 +1,24 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
+import java.util.Map;
+import java.util.Objects;
 
-record elf(bpb<List<elb>> c) implements elb {
-   static MapCodec<elf> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bpb.b(Codec.list(elb.b)).fieldOf("groups").forGetter(elf::c)).apply($$0, elf::new));
+@FunctionalInterface
+public interface elf {
+   elf a = $$0 -> $$0;
 
-   @Override
-   public void a(ayw $$0, BiConsumer<akq<ekz>, akq<ekz>> $$1) {
-      this.c.b($$0).ifPresent($$2 -> $$2.b().forEach($$2x -> $$2x.a($$0, $$1)));
-   }
+   akq<elb> lookup(akq<elb> var1);
 
-   @Override
-   public Stream<akq<ekz>> a() {
-      return this.c.e().stream().flatMap($$0 -> $$0.b().stream()).flatMap(elb::a);
-   }
-
-   @Override
-   public MapCodec<elf> b() {
-      return a;
+   static elf create(List<eld> $$0, jd $$1, long $$2) {
+      if ($$0.isEmpty()) {
+         return a;
+      } else {
+         ayw $$3 = ayw.a($$2).e().a($$1);
+         Builder<akq<elb>, akq<elb>> $$4 = ImmutableMap.builder();
+         $$0.forEach($$2x -> $$2x.a($$3, $$4::put));
+         Map<akq<elb>, akq<elb>> $$5 = $$4.build();
+         return $$1x -> Objects.requireNonNull($$5.getOrDefault($$1x, $$1x), () -> "alias " + $$1x + " was mapped to null value");
+      }
    }
 }

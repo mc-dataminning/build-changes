@@ -25,29 +25,29 @@ public class rt {
    public static final akq<ebq<?, ?>> v = rr.a("patch_soul_fire");
 
    public static void a(qq<ebq<?, ?>> $$0) {
-      rr.a($$0, a, ecd.Z, new eed(dga.H.o(), dga.kJ.o(), bqc.a(3, 7), bqc.a(0, 2)));
-      rr.a($$0, b, ecd.Y, new eeb(bpt.a(1), bqc.a(1, 4)));
-      rr.a($$0, c, ecd.Y, new eeb(bqc.a(2, 3), bqc.a(5, 10)));
-      rr.a($$0, d, ecd.aa, new eew(dga.dV.o(), dga.dY.o(), bqc.a(3, 7)));
-      rr.a($$0, e, ecd.aa, new eew(dga.dV.o(), dga.pr.o(), bqc.a(3, 7)));
-      rr.a($$0, f, ecd.t);
-      egs $$1 = new egs(bpb.<dtc>a().a(dga.oD.o(), 87).a(dga.ox.o(), 11).a(dga.oo.o(), 1));
-      rr.a($$0, g, ecd.V, new een($$1, 8, 4));
-      rr.a($$0, h, ecd.V, new een($$1, 3, 1));
-      egs $$2 = new egs(bpb.<dtc>a().a(dga.oq.o(), 85).a(dga.oD.o(), 1).a(dga.oo.o(), 13).a(dga.ox.o(), 1));
-      rr.a($$0, i, ecd.V, new een($$2, 8, 4));
-      rr.a($$0, j, ecd.V, new een($$2, 3, 1));
-      rr.a($$0, k, ecd.V, new een(egi.a(dga.or), 8, 4));
-      rr.a($$0, l, ecd.V, new een(egi.a(dga.or), 3, 1));
-      rr.a($$0, m, ecd.X, new efe(8, 4, 8));
-      rr.a($$0, n, ecd.X, new efe(3, 1, 2));
-      rr.a($$0, o, ecd.W);
-      rr.a($$0, p, ecd.i, rr.a(ecd.S, new eez(egi.a(dga.oD))));
-      rr.a($$0, q, ecd.ad);
-      rr.a($$0, r, ecd.k, new efc(epd.e.g(), true, 4, 1, jq.a(dfy::s, dga.dV, dga.dW, dga.L, dga.kJ, dga.pr)));
-      rr.a($$0, s, ecd.k, new efc(epd.e.g(), false, 5, 0, jq.a(dfy::s, dga.dV)));
-      rr.a($$0, t, ecd.k, new efc(epd.e.g(), false, 4, 1, jq.a(dfy::s, dga.dV)));
-      rr.a($$0, u, ecd.i, rr.a(ecd.S, new eez(egi.a(dga.cr)), List.of(dga.dV)));
-      rr.a($$0, v, ecd.i, rr.a(ecd.S, new eez(egi.a(dga.cs)), List.of(dga.dX)));
+      rr.a($$0, a, ece.aa, new eee(dga.H.o(), dga.kJ.o(), bqc.a(3, 7), bqc.a(0, 2)));
+      rr.a($$0, b, ece.Z, new eec(bpt.a(1), bqc.a(1, 4)));
+      rr.a($$0, c, ece.Z, new eec(bqc.a(2, 3), bqc.a(5, 10)));
+      rr.a($$0, d, ece.ab, new eex(dga.dV.o(), dga.dY.o(), bqc.a(3, 7)));
+      rr.a($$0, e, ece.ab, new eex(dga.dV.o(), dga.pr.o(), bqc.a(3, 7)));
+      rr.a($$0, f, ece.t);
+      egt $$1 = new egt(bpb.<dtc>a().a(dga.oD.o(), 87).a(dga.ox.o(), 11).a(dga.oo.o(), 1));
+      rr.a($$0, g, ece.W, new eeo($$1, 8, 4));
+      rr.a($$0, h, ece.W, new eeo($$1, 3, 1));
+      egt $$2 = new egt(bpb.<dtc>a().a(dga.oq.o(), 85).a(dga.oD.o(), 1).a(dga.oo.o(), 13).a(dga.ox.o(), 1));
+      rr.a($$0, i, ece.W, new eeo($$2, 8, 4));
+      rr.a($$0, j, ece.W, new eeo($$2, 3, 1));
+      rr.a($$0, k, ece.W, new eeo(egj.a(dga.or), 8, 4));
+      rr.a($$0, l, ece.W, new eeo(egj.a(dga.or), 3, 1));
+      rr.a($$0, m, ece.Y, new eff(8, 4, 8));
+      rr.a($$0, n, ece.Y, new eff(3, 1, 2));
+      rr.a($$0, o, ece.X);
+      rr.a($$0, p, ece.i, rr.a(ece.T, new efa(egj.a(dga.oD))));
+      rr.a($$0, q, ece.ae);
+      rr.a($$0, r, ece.k, new efd(epf.e.g(), true, 4, 1, jq.a(dfy::s, dga.dV, dga.dW, dga.L, dga.kJ, dga.pr)));
+      rr.a($$0, s, ece.k, new efd(epf.e.g(), false, 5, 0, jq.a(dfy::s, dga.dV)));
+      rr.a($$0, t, ece.k, new efd(epf.e.g(), false, 4, 1, jq.a(dfy::s, dga.dV)));
+      rr.a($$0, u, ece.i, rr.a(ece.T, new efa(egj.a(dga.cr)), List.of(dga.dV)));
+      rr.a($$0, v, ece.i, rr.a(ece.T, new efa(egj.a(dga.cs)), List.of(dga.dX)));
    }
 }

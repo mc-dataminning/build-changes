@@ -72,7 +72,7 @@ public class cuw {
 
    private static void a(dcx $$0, jd $$1) {
       if ($$0 instanceof aqu $$2) {
-         exa $$3 = exa.c($$1).b(0.0, 1.2F, 0.0);
+         exc $$3 = exc.c($$1).b(0.0, 1.2F, 0.0);
          float $$4 = (float)$$0.E_().a(4) / 24.0F;
          $$2.a(lm.aa, $$3.a(), $$3.b(), $$3.c(), 0, (double)$$4, 0.0, 0.0, 1.0);
       }

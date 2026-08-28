@@ -32,7 +32,7 @@ public class did extends dfk {
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
       if ($$1.B) {
          return bqr.a;
       } else {
@@ -108,10 +108,10 @@ public class did extends dfk {
    }
 
    public static jw a(ku $$0) {
-      return a($$0, 0.7, exa.b);
+      return a($$0, 0.7, exc.b);
    }
 
-   public static jw a(ku $$0, double $$1, exa $$2) {
+   public static jw a(ku $$0, double $$1, exc $$2) {
       ji $$3 = $$0.d().c(b);
       return $$0.a().b($$1 * (double)$$3.j() + $$2.a(), $$1 * (double)$$3.k() + $$2.b(), $$1 * (double)$$3.l() + $$2.c());
    }

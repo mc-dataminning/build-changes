@@ -1,80 +1,108 @@
-public class fut<T extends cfh> extends fwg<T> {
-   private float q;
-   private float r;
-   private float s;
+public class fut<T extends ckz> extends fvt<T> {
+   private static final float a = 0.6F;
+   private static final float b = 0.8F;
+   private static final float f = 1.0F;
+   private final fyk g;
+   private final fyk h;
+   private final fyk i;
+   private final fyk j;
+   private final fyk k;
+   private final fyk l;
+   private final fyk m;
+   private final fyk n;
 
-   public fut(fyi $$0) {
-      super($$0);
+   public fut(fyk $$0) {
+      super(gfh::i);
+      this.g = $$0;
+      this.j = $$0.b("wind_body");
+      this.m = this.j.b("wind_bottom");
+      this.l = this.m.b("wind_mid");
+      this.k = this.l.b("wind_top");
+      this.h = $$0.b("body").b("head");
+      this.i = this.h.b("eyes");
+      this.n = $$0.b("body").b("rods");
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      this.q = $$0.H($$3);
-      this.r = $$0.I($$3);
-      this.s = $$0.J($$3);
-      if (this.q <= 0.0F) {
-         this.n.e = 0.0F;
-         this.n.g = 0.0F;
-         this.j.e = 0.0F;
-         this.j.g = 0.0F;
-         this.k.e = 0.0F;
-         this.k.g = 0.0F;
-         this.k.b = -1.2F;
-         this.h.e = 0.0F;
-         this.i.e = 0.0F;
-         this.i.g = 0.0F;
-         this.i.b = -1.1F;
-         this.i.c = 18.0F;
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-      if ($$0.x()) {
-         this.o.e = (float) (Math.PI / 4);
-         this.o.c += -4.0F;
-         this.o.d += 5.0F;
-         this.n.c += -3.3F;
-         this.n.d++;
-         this.l.c += 8.0F;
-         this.l.d += -2.0F;
-         this.m.c += 2.0F;
-         this.m.d += -0.8F;
-         this.l.e = 1.7278761F;
-         this.m.e = 2.670354F;
-         this.j.e = (float) (-Math.PI / 20);
-         this.j.c = 16.1F;
-         this.j.d = -7.0F;
-         this.k.e = (float) (-Math.PI / 20);
-         this.k.c = 16.1F;
-         this.k.d = -7.0F;
-         this.h.e = (float) (-Math.PI / 2);
-         this.h.c = 21.0F;
-         this.h.d = 1.0F;
-         this.i.e = (float) (-Math.PI / 2);
-         this.i.c = 21.0F;
-         this.i.d = 1.0F;
-         this.p = 3;
-      }
+   public static fyq a(int $$0, int $$1) {
+      fys $$2 = new fys();
+      fyt $$3 = $$2.a();
+      fyt $$4 = $$3.a("body", fyp.c(), fym.a(0.0F, 0.0F, 0.0F));
+      fyt $$5 = $$4.a("rods", fyp.c(), fym.a(0.0F, 8.0F, 0.0F));
+      $$5.a("rod_1", fyp.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new fyo(0.0F)), fym.a(2.5981F, -3.0F, 1.5F, -2.7489F, -1.0472F, 3.1416F));
+      $$5.a("rod_2", fyp.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new fyo(0.0F)), fym.a(-2.5981F, -3.0F, 1.5F, -2.7489F, 1.0472F, 3.1416F));
+      $$5.a("rod_3", fyp.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new fyo(0.0F)), fym.a(0.0F, -3.0F, -3.0F, 0.3927F, 0.0F, 0.0F));
+      fyt $$6 = $$4.a(
+         "head",
+         fyp.c().a(4, 24).a(-5.0F, -5.0F, -4.2F, 10.0F, 3.0F, 4.0F, new fyo(0.0F)).a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fyo(0.0F)),
+         fym.a(0.0F, 4.0F, 0.0F)
+      );
+      $$6.a(
+         "eyes",
+         fyp.c().a(4, 24).a(-5.0F, -5.0F, -4.2F, 10.0F, 3.0F, 4.0F, new fyo(0.0F)).a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fyo(0.0F)),
+         fym.a(0.0F, 0.0F, 0.0F)
+      );
+      fyt $$7 = $$3.a("wind_body", fyp.c(), fym.a(0.0F, 0.0F, 0.0F));
+      fyt $$8 = $$7.a("wind_bottom", fyp.c().a(1, 83).a(-2.5F, -7.0F, -2.5F, 5.0F, 7.0F, 5.0F, new fyo(0.0F)), fym.a(0.0F, 24.0F, 0.0F));
+      fyt $$9 = $$8.a(
+         "wind_mid",
+         fyp.c()
+            .a(74, 28)
+            .a(-6.0F, -6.0F, -6.0F, 12.0F, 6.0F, 12.0F, new fyo(0.0F))
+            .a(78, 32)
+            .a(-4.0F, -6.0F, -4.0F, 8.0F, 6.0F, 8.0F, new fyo(0.0F))
+            .a(49, 71)
+            .a(-2.5F, -6.0F, -2.5F, 5.0F, 6.0F, 5.0F, new fyo(0.0F)),
+         fym.a(0.0F, -7.0F, 0.0F)
+      );
+      $$9.a(
+         "wind_top",
+         fyp.c()
+            .a(0, 0)
+            .a(-9.0F, -8.0F, -9.0F, 18.0F, 8.0F, 18.0F, new fyo(0.0F))
+            .a(6, 6)
+            .a(-6.0F, -8.0F, -6.0F, 12.0F, 8.0F, 12.0F, new fyo(0.0F))
+            .a(105, 57)
+            .a(-2.5F, -8.0F, -2.5F, 5.0F, 8.0F, 5.0F, new fyo(0.0F)),
+         fym.a(0.0F, -6.0F, 0.0F)
+      );
+      return fyq.a($$2, $$0, $$1);
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (this.q > 0.0F) {
-         this.n.g = fwf.a(this.n.g, -1.2707963F, this.q);
-         this.n.f = fwf.a(this.n.f, 1.2707963F, this.q);
-         this.j.e = -1.2707963F;
-         this.k.e = -0.47079635F;
-         this.k.g = -0.2F;
-         this.k.b = -0.2F;
-         this.h.e = -0.4F;
-         this.i.e = 0.5F;
-         this.i.g = -0.5F;
-         this.i.b = -0.3F;
-         this.i.c = 20.0F;
-         this.l.e = fwf.a(this.l.e, 0.8F, this.r);
-         this.m.e = fwf.a(this.m.e, -0.4F, this.r);
-      }
+      this.a().e().forEach(fyk::c);
+      float $$6 = $$3 * (float) Math.PI * -0.1F;
+      this.k.b = ayo.b($$6) * 1.0F * 0.6F;
+      this.k.d = ayo.a($$6) * 1.0F * 0.6F;
+      this.l.b = ayo.a($$6) * 0.5F * 0.8F;
+      this.l.d = ayo.b($$6) * 0.8F;
+      this.m.b = ayo.b($$6) * -0.25F * 1.0F;
+      this.m.d = ayo.a($$6) * -0.25F * 1.0F;
+      this.h.c = 4.0F + ayo.b($$6) / 4.0F;
+      this.n.f = $$3 * (float) Math.PI * 0.1F;
+      this.a($$0.ca, fhi.a, $$3);
+      this.a($$0.c, fhi.c, $$3);
+      this.a($$0.d, fhi.d, $$3);
+      this.a($$0.e, fhi.b, $$3);
+   }
 
-      if (this.s > 0.0F) {
-         this.n.e = fwf.a(this.n.e, -0.58177644F, this.s);
-      }
+   @Override
+   public fyk a() {
+      return this.g;
+   }
+
+   public fyk b() {
+      return this.h;
+   }
+
+   public fyk c() {
+      return this.i;
+   }
+
+   public fyk d() {
+      return this.n;
+   }
+
+   public fyk e() {
+      return this.j;
    }
 }

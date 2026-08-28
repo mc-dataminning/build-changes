@@ -14,7 +14,7 @@ public class ckm extends btp implements cjv {
 
    public ckm(bsx<? extends ckm> $$0, dcw $$1) {
       super($$0, $$1);
-      this.cH();
+      this.cG();
       this.bR = new ckm.d(this);
    }
 
@@ -24,12 +24,12 @@ public class ckm extends btp implements cjv {
       this.bU.a(2, new ckm.a(this));
       this.bU.a(3, new ckm.e(this));
       this.bU.a(5, new ckm.c(this));
-      this.bV.a(1, new ccf<>(this, cmx.class, 10, true, false, $$0 -> Math.abs($$0.dw() - this.dw()) <= 4.0));
+      this.bV.a(1, new ccf<>(this, cmx.class, 10, true, false, $$0 -> Math.abs($$0.dv() - this.dv()) <= 4.0));
       this.bV.a(3, new ccf<>(this, cfq.class, true));
    }
 
    @Override
-   public avq df() {
+   public avq de() {
       return avq.f;
    }
 
@@ -49,20 +49,20 @@ public class ckm extends btp implements cjv {
       this.f(buw.v).a((double)(0.2F + 0.1F * (float)$$2));
       this.f(buw.c).a((double)$$2);
       if ($$1) {
-         this.v(this.eO());
+         this.v(this.eN());
       }
 
       this.bP = $$2;
    }
 
-   public int gm() {
+   public int gl() {
       return this.ao.a(cb);
    }
 
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      $$0.a("Size", this.gm() - 1);
+      $$0.a("Size", this.gl() - 1);
       $$0.a("wasOnGround", this.cc);
    }
 
@@ -73,8 +73,8 @@ public class ckm extends btp implements cjv {
       this.cc = $$0.q("wasOnGround");
    }
 
-   public boolean gn() {
-      return this.gm() <= 1;
+   public boolean gm() {
+      return this.gl() <= 1;
    }
 
    protected lk t() {
@@ -83,7 +83,7 @@ public class ckm extends btp implements cjv {
 
    @Override
    protected boolean Z() {
-      return this.gm() > 0;
+      return this.gl() > 0;
    }
 
    @Override
@@ -100,20 +100,20 @@ public class ckm extends btp implements cjv {
             float $$4 = this.ah.i() * 0.5F + 0.5F;
             float $$5 = ayo.a($$3) * $$1 * $$4;
             float $$6 = ayo.b($$3) * $$1 * $$4;
-            this.dP().a(this.t(), this.du() + (double)$$5, this.dw(), this.dA() + (double)$$6, 0.0, 0.0, 0.0);
+            this.dO().a(this.t(), this.dt() + (double)$$5, this.dv(), this.dz() + (double)$$6, 0.0, 0.0, 0.0);
          }
 
-         this.a(this.gk(), this.fb(), ((this.ah.i() - this.ah.i()) * 0.2F + 1.0F) / 0.8F);
+         this.a(this.gj(), this.fa(), ((this.ah.i() - this.ah.i()) * 0.2F + 1.0F) / 0.8F);
          this.e = -0.5F;
       } else if (!this.aF() && this.cc) {
          this.e = 1.0F;
       }
 
       this.cc = this.aF();
-      this.gh();
+      this.gg();
    }
 
-   protected void gh() {
+   protected void gg() {
       this.e *= 0.6F;
    }
 
@@ -123,9 +123,9 @@ public class ckm extends btp implements cjv {
 
    @Override
    public void i_() {
-      double $$0 = this.du();
-      double $$1 = this.dw();
-      double $$2 = this.dA();
+      double $$0 = this.dt();
+      double $$1 = this.dv();
+      double $$2 = this.dz();
       super.i_();
       this.a_($$0, $$1, $$2);
    }
@@ -151,10 +151,10 @@ public class ckm extends btp implements cjv {
 
    @Override
    public void a(bsr.c $$0) {
-      int $$1 = this.gm();
-      if (!this.dP().B && $$1 > 1 && this.ey()) {
+      int $$1 = this.gl();
+      if (!this.dO().B && $$1 > 1 && this.ex()) {
          wz $$2 = this.aj();
-         boolean $$3 = this.ga();
+         boolean $$3 = this.fZ();
          float $$4 = this.a(this.at()).a();
          float $$5 = $$4 / 2.0F;
          int $$6 = $$1 / 2;
@@ -163,18 +163,18 @@ public class ckm extends btp implements cjv {
          for (int $$8 = 0; $$8 < $$7; $$8++) {
             float $$9 = ((float)($$8 % 2) - 0.5F) * $$5;
             float $$10 = ((float)($$8 / 2) - 0.5F) * $$5;
-            ckm $$11 = this.am().a(this.dP());
+            ckm $$11 = this.am().a(this.dO());
             if ($$11 != null) {
-               if (this.fU()) {
-                  $$11.fS();
+               if (this.fT()) {
+                  $$11.fR();
                }
 
                $$11.b($$2);
-               $$11.t($$3);
+               $$11.u($$3);
                $$11.n(this.cv());
                $$11.a($$6, true);
-               $$11.b(this.du() + (double)$$9, this.dw() + 0.5, this.dA() + (double)$$10, this.ah.i() * 360.0F, 0.0F);
-               this.dP().b($$11);
+               $$11.b(this.dt() + (double)$$9, this.dv() + 0.5, this.dz() + (double)$$10, this.ah.i() * 360.0F, 0.0F);
+               this.dO().b($$11);
             }
          }
       }
@@ -185,24 +185,24 @@ public class ckm extends btp implements cjv {
    @Override
    public void h(bsr $$0) {
       super.h($$0);
-      if ($$0 instanceof cfq && this.gi()) {
+      if ($$0 instanceof cfq && this.gh()) {
          this.j((btn)$$0);
       }
    }
 
    @Override
    public void b_(cmx $$0) {
-      if (this.gi()) {
+      if (this.gh()) {
          this.j($$0);
       }
    }
 
    protected void j(btn $$0) {
       if (this.bE() && this.i($$0) && this.F($$0)) {
-         brk $$1 = this.dQ().b((btn)this);
-         if ($$0.a($$1, this.gj())) {
+         brk $$1 = this.dP().b((btn)this);
+         if ($$0.a($$1, this.gi())) {
             this.a(avp.xp, 1.0F, (this.ah.i() - this.ah.i()) * 0.2F + 1.0F);
-            if (this.dP() instanceof aqu $$2) {
+            if (this.dO() instanceof aqu $$2) {
                dae.a($$2, (bsr)$$0, $$1);
             }
          }
@@ -210,30 +210,30 @@ public class ckm extends btp implements cjv {
    }
 
    @Override
-   protected exa a(bsr $$0, bsu $$1, float $$2) {
-      return new exa(0.0, (double)$$1.b() - 0.015625 * (double)this.gm() * (double)$$2, 0.0);
+   protected exc a(bsr $$0, bsu $$1, float $$2) {
+      return new exc(0.0, (double)$$1.b() - 0.015625 * (double)this.gl() * (double)$$2, 0.0);
    }
 
-   protected boolean gi() {
-      return !this.gn() && this.dc();
+   protected boolean gh() {
+      return !this.gm() && this.db();
    }
 
-   protected float gj() {
+   protected float gi() {
       return (float)this.g(buw.c);
    }
 
    @Override
    protected avo d(brk $$0) {
-      return this.gn() ? avp.yg : avp.xr;
+      return this.gm() ? avp.yg : avp.xr;
    }
 
    @Override
    protected avo n_() {
-      return this.gn() ? avp.yf : avp.xq;
+      return this.gm() ? avp.yf : avp.xq;
    }
 
-   protected avo gk() {
-      return this.gn() ? avp.yi : avp.xt;
+   protected avo gj() {
+      return this.gm() ? avp.yi : avp.xt;
    }
 
    public static boolean c(bsx<ckm> $$0, dcx $$1, btr $$2, jd $$3, ayw $$4) {
@@ -265,8 +265,8 @@ public class ckm extends btp implements cjv {
    }
 
    @Override
-   protected float fb() {
-      return 0.4F * (float)this.gm();
+   protected float fa() {
+      return 0.4F * (float)this.gl();
    }
 
    @Override
@@ -274,14 +274,14 @@ public class ckm extends btp implements cjv {
       return 0;
    }
 
-   protected boolean go() {
-      return this.gm() > 0;
+   protected boolean gn() {
+      return this.gl() > 0;
    }
 
    @Override
-   protected void fg() {
-      exa $$0 = this.ds();
-      this.n($$0.c, (double)this.fe(), $$0.e);
+   protected void ff() {
+      exc $$0 = this.dr();
+      this.n($$0.c, (double)this.fd(), $$0.e);
       this.av = true;
    }
 
@@ -300,17 +300,17 @@ public class ckm extends btp implements cjv {
    }
 
    float s() {
-      float $$0 = this.gn() ? 1.4F : 0.8F;
+      float $$0 = this.gm() ? 1.4F : 0.8F;
       return ((this.ah.i() - this.ah.i()) * 0.2F + 1.0F) * $$0;
    }
 
-   protected avo gl() {
-      return this.gn() ? avp.yh : avp.xs;
+   protected avo gk() {
+      return this.gm() ? avp.yh : avp.xs;
    }
 
    @Override
    public bsu e(bua $$0) {
-      return super.e($$0).a((float)this.gm());
+      return super.e($$0).a((float)this.gl());
    }
 
    static class a extends cam {
@@ -361,7 +361,7 @@ public class ckm extends btp implements cjv {
          }
 
          if (this.a.J() instanceof ckm.d $$1) {
-            $$1.a(this.a.dF(), this.a.gi());
+            $$1.a(this.a.dE(), this.a.gh());
          }
       }
    }
@@ -387,7 +387,7 @@ public class ckm extends btp implements cjv {
 
       @Override
       public void a() {
-         if (this.a.dS().i() < 0.8F) {
+         if (this.a.dR().i() < 0.8F) {
             this.a.L().a();
          }
 
@@ -427,7 +427,7 @@ public class ckm extends btp implements cjv {
       public d(ckm $$0) {
          super($$0);
          this.n = $$0;
-         this.l = 180.0F * $$0.dF() / (float) Math.PI;
+         this.l = 180.0F * $$0.dE() / (float) Math.PI;
       }
 
       public void a(float $$0, boolean $$1) {
@@ -442,9 +442,9 @@ public class ckm extends btp implements cjv {
 
       @Override
       public void a() {
-         this.d.t(this.a(this.d.dF(), this.l, 90.0F));
-         this.d.ba = this.d.dF();
-         this.d.aY = this.d.dF();
+         this.d.t(this.a(this.d.dE(), this.l, 90.0F));
+         this.d.ba = this.d.dE();
+         this.d.aY = this.d.dE();
          if (this.k != bzp.a.b) {
             this.d.E(0.0F);
          } else {
@@ -458,8 +458,8 @@ public class ckm extends btp implements cjv {
                   }
 
                   this.n.L().a();
-                  if (this.n.go()) {
-                     this.n.a(this.n.gl(), this.n.fb(), this.n.s());
+                  if (this.n.gn()) {
+                     this.n.a(this.n.gk(), this.n.fa(), this.n.s());
                   }
                } else {
                   this.n.bo = 0.0F;
@@ -491,8 +491,8 @@ public class ckm extends btp implements cjv {
       @Override
       public void a() {
          if (--this.c <= 0) {
-            this.c = this.a(40 + this.a.dS().a(60));
-            this.b = (float)this.a.dS().a(360);
+            this.c = this.a(40 + this.a.dR().a(60));
+            this.b = (float)this.a.dR().a(360);
          }
 
          if (this.a.J() instanceof ckm.d $$0) {

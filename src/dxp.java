@@ -13,7 +13,7 @@ public interface dxp<T extends dxg> {
 
    <U extends T> void a(dxn<T, U> var1, axa<U> var2);
 
-   void a(ewv var1, Consumer<T> var2);
+   void a(ewx var1, Consumer<T> var2);
 
-   <U extends T> void a(dxn<T, U> var1, ewv var2, axa<U> var3);
+   <U extends T> void a(dxn<T, U> var1, ewx var2, axa<U> var3);
 }

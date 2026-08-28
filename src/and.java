@@ -275,7 +275,7 @@ public class and {
       );
    }
 
-   private static int a(et $$0, jd $$1, int $$2, jm<etd> $$3) throws CommandSyntaxException {
+   private static int a(et $$0, jd $$1, int $$2, jm<etf> $$3) throws CommandSyntaxException {
       bqk $$4 = a($$0, $$1, a);
       if ($$2 >= 0 && $$2 < $$4.b()) {
          cuq $$5 = a($$0, $$3, $$4.a($$2));
@@ -287,7 +287,7 @@ public class and {
       }
    }
 
-   private static int a(et $$0, Collection<? extends bsr> $$1, int $$2, jm<etd> $$3) throws CommandSyntaxException {
+   private static int a(et $$0, Collection<? extends bsr> $$1, int $$2, jm<etf> $$3) throws CommandSyntaxException {
       Map<bsr, cuq> $$4 = Maps.newHashMapWithExpectedSize($$1.size());
 
       for (bsr $$5 : $$1) {
@@ -367,7 +367,7 @@ public class and {
       return a($$0, $$3, $$4, a($$0, $$1, $$2));
    }
 
-   private static int a(et $$0, jd $$1, int $$2, Collection<? extends bsr> $$3, int $$4, jm<etd> $$5) throws CommandSyntaxException {
+   private static int a(et $$0, jd $$1, int $$2, Collection<? extends bsr> $$3, int $$4, jm<etf> $$5) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$0, $$5, a($$0, $$1, $$2)));
    }
 
@@ -375,7 +375,7 @@ public class and {
       return a($$0, $$3, $$4, a($$0, $$1, $$2));
    }
 
-   private static int a(et $$0, jd $$1, int $$2, jd $$3, int $$4, jm<etd> $$5) throws CommandSyntaxException {
+   private static int a(et $$0, jd $$1, int $$2, jd $$3, int $$4, jm<etf> $$5) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$0, $$5, a($$0, $$1, $$2)));
    }
 
@@ -383,7 +383,7 @@ public class and {
       return a($$0, $$3, $$4, a($$1, $$2));
    }
 
-   private static int a(et $$0, bsr $$1, int $$2, jd $$3, int $$4, jm<etd> $$5) throws CommandSyntaxException {
+   private static int a(et $$0, bsr $$1, int $$2, jd $$3, int $$4, jm<etf> $$5) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$0, $$5, a($$1, $$2)));
    }
 
@@ -391,15 +391,15 @@ public class and {
       return a($$0, $$3, $$4, a($$1, $$2));
    }
 
-   private static int a(et $$0, bsr $$1, int $$2, Collection<? extends bsr> $$3, int $$4, jm<etd> $$5) throws CommandSyntaxException {
+   private static int a(et $$0, bsr $$1, int $$2, Collection<? extends bsr> $$3, int $$4, jm<etf> $$5) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$0, $$5, a($$1, $$2)));
    }
 
-   private static cuq a(et $$0, jm<etd> $$1, cuq $$2) {
+   private static cuq a(et $$0, jm<etf> $$1, cuq $$2) {
       aqu $$3 = $$0.e();
-      ers $$4 = new ers.a($$3).a(eul.f, $$0.d()).b(eul.a, $$0.f()).a(euk.d);
-      erp $$5 = new erp.a($$4).a(Optional.empty());
-      $$5.b(erp.a($$1.a()));
+      eru $$4 = new eru.a($$3).a(eun.f, $$0.d()).b(eun.a, $$0.f()).a(eum.d);
+      err $$5 = new err.a($$4).a(Optional.empty());
+      $$5.b(err.a($$1.a()));
       cuq $$6 = $$1.a().apply($$2, $$5);
       $$6.f($$6.j());
       return $$6;

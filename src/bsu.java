@@ -7,14 +7,14 @@ public record bsu(float a, float b, float c, bst d, boolean e) {
       return $$0 * 0.85F;
    }
 
-   public ewv a(exa $$0) {
+   public ewx a(exc $$0) {
       return this.a($$0.c, $$0.d, $$0.e);
    }
 
-   public ewv a(double $$0, double $$1, double $$2) {
+   public ewx a(double $$0, double $$1, double $$2) {
       float $$3 = this.a / 2.0F;
       float $$4 = this.b;
-      return new ewv($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3);
+      return new ewx($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3);
    }
 
    public bsu a(float $$0) {

@@ -17,34 +17,50 @@ public class dut {
    public static final dut.c d = new dut.c(0.0, 0.0, 0.2, 5.0, 5, 15, 5.999997E7F, 0L, 0.0);
 
    public boolean a(jd $$0) {
-      return (double)($$0.u() + 1) > this.e() && (double)$$0.u() < this.g() && (double)($$0.w() + 1) > this.f() && (double)$$0.w() < this.h();
+      return this.a((double)$$0.u(), (double)$$0.w());
+   }
+
+   public boolean a(exc $$0) {
+      return this.a($$0.c, $$0.e);
    }
 
    public boolean a(dcd $$0) {
-      return (double)$$0.f() > this.e() && (double)$$0.d() < this.g() && (double)$$0.g() > this.f() && (double)$$0.e() < this.h();
+      return this.a((double)$$0.d(), (double)$$0.e()) && this.a((double)$$0.f(), (double)$$0.g());
+   }
+
+   public boolean a(ewx $$0) {
+      return this.a($$0.a, $$0.c, $$0.d - 1.0E-5F, $$0.f - 1.0E-5F);
+   }
+
+   private boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return this.a($$0, $$1) && this.a($$2, $$3);
    }
 
    public boolean a(double $$0, double $$1) {
-      return $$0 > this.e() && $$0 < this.g() && $$1 > this.f() && $$1 < this.h();
+      return this.a($$0, $$1, 0.0);
    }
 
    public boolean a(double $$0, double $$1, double $$2) {
-      return $$0 > this.e() - $$2 && $$0 < this.g() + $$2 && $$1 > this.f() - $$2 && $$1 < this.h() + $$2;
+      return $$0 >= this.e() - $$2 && $$0 < this.g() + $$2 && $$1 >= this.f() - $$2 && $$1 < this.h() + $$2;
    }
 
-   public boolean a(ewv $$0) {
-      return $$0.d > this.e() && $$0.a < this.g() && $$0.f > this.f() && $$0.c < this.h();
+   public jd b(jd $$0) {
+      return this.b((double)$$0.u(), (double)$$0.v(), (double)$$0.w());
+   }
+
+   public jd b(exc $$0) {
+      return this.b($$0.a(), $$0.b(), $$0.c());
    }
 
    public jd b(double $$0, double $$1, double $$2) {
-      return jd.a(ayo.a($$0, this.e(), this.g()), $$1, ayo.a($$2, this.f(), this.h()));
+      return jd.a(ayo.a($$0, this.e(), this.g() - 1.0), $$1, ayo.a($$2, this.f(), this.h() - 1.0));
    }
 
    public double a(bsr $$0) {
-      return this.b($$0.du(), $$0.dA());
+      return this.b($$0.dt(), $$0.dz());
    }
 
-   public ext c() {
+   public exv c() {
       return this.l.m();
    }
 
@@ -58,9 +74,9 @@ public class dut {
       return Math.min($$6, $$3);
    }
 
-   public boolean a(bsr $$0, ewv $$1) {
+   public boolean a(bsr $$0, ewx $$1) {
       double $$2 = Math.max(ayo.a($$1.b(), $$1.d()), 1.0);
-      return this.a($$0) < $$2 * 2.0 && this.a($$0.du(), $$0.dA(), $$2);
+      return this.a($$0) < $$2 * 2.0 && this.a($$0.dt(), $$0.dz(), $$2);
    }
 
    public dus d() {
@@ -248,7 +264,7 @@ public class dut {
 
       dut.a l();
 
-      ext m();
+      exv m();
    }
 
    class b implements dut.a {
@@ -326,11 +342,11 @@ public class dut {
       }
 
       @Override
-      public ext m() {
-         return exq.a(
-            exq.c,
-            exq.a(Math.floor(this.a()), Double.NEGATIVE_INFINITY, Math.floor(this.c()), Math.ceil(this.b()), Double.POSITIVE_INFINITY, Math.ceil(this.d())),
-            exe.e
+      public exv m() {
+         return exs.a(
+            exs.c,
+            exs.a(Math.floor(this.a()), Double.NEGATIVE_INFINITY, Math.floor(this.c()), Math.ceil(this.b()), Double.POSITIVE_INFINITY, Math.ceil(this.d())),
+            exg.e
          );
       }
    }
@@ -438,7 +454,7 @@ public class dut {
       private double d;
       private double e;
       private double f;
-      private ext g;
+      private exv g;
 
       public d(final double $$0) {
          this.b = $$0;
@@ -495,10 +511,10 @@ public class dut {
          this.d = ayo.a(dut.this.b() - this.b / 2.0, (double)(-dut.this.k), (double)dut.this.k);
          this.e = ayo.a(dut.this.a() + this.b / 2.0, (double)(-dut.this.k), (double)dut.this.k);
          this.f = ayo.a(dut.this.b() + this.b / 2.0, (double)(-dut.this.k), (double)dut.this.k);
-         this.g = exq.a(
-            exq.c,
-            exq.a(Math.floor(this.a()), Double.NEGATIVE_INFINITY, Math.floor(this.c()), Math.ceil(this.b()), Double.POSITIVE_INFINITY, Math.ceil(this.d())),
-            exe.e
+         this.g = exs.a(
+            exs.c,
+            exs.a(Math.floor(this.a()), Double.NEGATIVE_INFINITY, Math.floor(this.c()), Math.ceil(this.b()), Double.POSITIVE_INFINITY, Math.ceil(this.d())),
+            exg.e
          );
       }
 
@@ -518,7 +534,7 @@ public class dut {
       }
 
       @Override
-      public ext m() {
+      public exv m() {
          return this.g;
       }
    }

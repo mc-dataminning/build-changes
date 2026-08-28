@@ -1,55 +1,39 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import javax.annotation.Nullable;
+public class gfw {
+   protected final int[] a;
+   protected final int b;
+   protected final ji c;
+   protected final gql d;
+   private final boolean e;
 
-public record gfw(@Nullable ji b, int c, String d, gfy e) {
-   public static final int a = -1;
-
-   @Nullable
-   public ji a() {
-      return this.b;
+   public gfw(int[] $$0, int $$1, ji $$2, gql $$3, boolean $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public String c() {
+   public gql a() {
       return this.d;
    }
 
-   public gfy d() {
-      return this.e;
+   public int[] b() {
+      return this.a;
    }
 
-   protected static class a implements JsonDeserializer<gfw> {
-      private static final int a = -1;
+   public boolean c() {
+      return this.b != -1;
+   }
 
-      public gfw a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         ji $$4 = this.c($$3);
-         int $$5 = this.a($$3);
-         String $$6 = this.b($$3);
-         gfy $$7 = (gfy)$$2.deserialize($$3, gfy.class);
-         return new gfw($$4, $$5, $$6, $$7);
-      }
+   public int d() {
+      return this.b;
+   }
 
-      protected int a(JsonObject $$0) {
-         return aye.a($$0, "tintindex", -1);
-      }
+   public ji e() {
+      return this.c;
+   }
 
-      private String b(JsonObject $$0) {
-         return aye.i($$0, "texture");
-      }
-
-      @Nullable
-      private ji c(JsonObject $$0) {
-         String $$1 = aye.a($$0, "cullface", "");
-         return ji.a($$1);
-      }
+   public boolean f() {
+      return this.e;
    }
 }

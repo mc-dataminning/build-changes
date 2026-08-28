@@ -1,15 +1,16 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public abstract class eno {
-   @Nullable
-   public enr.c a(dcz $$0, jd $$1, jd $$2, enr.c $$3, enr.c $$4, enn $$5) {
-      return $$4;
-   }
+public interface eno<P extends enn> {
+   eno<emq> a = a("always_true", emq.a);
+   eno<emv> b = a("block_match", emv.a);
+   eno<emx> c = a("blockstate_match", emx.a);
+   eno<env> d = a("tag_match", env.a);
+   eno<enk> e = a("random_block_match", enk.a);
+   eno<enl> f = a("random_blockstate_match", enl.a);
 
-   protected abstract enq<?> a();
+   MapCodec<P> codec();
 
-   public List<enr.c> a(ddl $$0, jd $$1, jd $$2, List<enr.c> $$3, List<enr.c> $$4, enn $$5) {
-      return $$4;
+   static <P extends enn> eno<P> a(String $$0, MapCodec<P> $$1) {
+      return jz.a(lt.m, $$0, () -> $$1);
    }
 }

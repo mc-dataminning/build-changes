@@ -21,41 +21,41 @@ public abstract class ciz extends cix {
       Validate.isTrue($$0.o().d());
       this.d = $$0;
       this.t((float)(this.d.e() * 90));
-      this.O = this.dF();
+      this.O = this.dE();
       this.p();
    }
 
    @Override
    protected final void p() {
       if (this.d != null) {
-         ewv $$0 = this.a(this.b, this.d);
-         exa $$1 = $$0.f();
+         ewx $$0 = this.a(this.b, this.d);
+         exc $$1 = $$0.f();
          this.o($$1.c, $$1.d, $$1.e);
          this.a($$0);
       }
    }
 
-   protected abstract ewv a(jd var1, ji var2);
+   protected abstract ewx a(jd var1, ji var2);
 
    @Override
    public boolean s() {
-      if (!this.dP().g(this)) {
+      if (!this.dO().g(this)) {
          return false;
       } else {
          boolean $$0 = jd.a(this.B()).allMatch($$0x -> {
-            dtc $$1 = this.dP().a_($$0x);
+            dtc $$1 = this.dO().a_($$0x);
             return $$1.e() || dia.m($$1);
          });
-         return !$$0 ? false : this.dP().a(this, this.cL(), c).isEmpty();
+         return !$$0 ? false : this.dO().a(this, this.cK(), c).isEmpty();
       }
    }
 
-   protected ewv B() {
-      return this.cL().a(this.d.m().mul(-0.5F)).h(1.0E-7);
+   protected ewx B() {
+      return this.cK().a(this.d.m().mul(-0.5F)).h(1.0E-7);
    }
 
    @Override
-   public ji cI() {
+   public ji cH() {
       return this.d;
    }
 
@@ -64,10 +64,10 @@ public abstract class ciz extends cix {
    @Override
    public cjh a(cuq $$0, float $$1) {
       cjh $$2 = new cjh(
-         this.dP(), this.du() + (double)((float)this.d.j() * 0.15F), this.dw() + (double)$$1, this.dA() + (double)((float)this.d.l() * 0.15F), $$0
+         this.dO(), this.dt() + (double)((float)this.d.j() * 0.15F), this.dv() + (double)$$1, this.dz() + (double)((float)this.d.l() * 0.15F), $$0
       );
       $$2.v();
-      this.dP().b($$2);
+      this.dO().b($$2);
       return $$2;
    }
 
@@ -86,7 +86,7 @@ public abstract class ciz extends cix {
          }
       }
 
-      float $$1 = ayo.g(this.dF());
+      float $$1 = ayo.g(this.dE());
 
       return switch ($$0) {
          case c -> $$1 + 180.0F;

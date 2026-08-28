@@ -3,7 +3,7 @@ import java.util.function.Function;
 import javax.annotation.Nullable;
 
 public abstract class cof extends cne implements cnm {
-   public static final dcp e = new ddn(true, false, Optional.empty(), lt.e.b(awe.cy).map(Function.identity()));
+   public static final dcp e = new ddn(true, false, Optional.empty(), lt.e.b(awe.cz).map(Function.identity()));
    public static final double f = 0.25;
 
    public cof(bsx<? extends cof> $$0, dcw $$1) {
@@ -17,23 +17,23 @@ public abstract class cof extends cne implements cnm {
       this.d = 0.0;
    }
 
-   cof(bsx<? extends cof> $$0, double $$1, double $$2, double $$3, exa $$4, dcw $$5) {
+   cof(bsx<? extends cof> $$0, double $$1, double $$2, double $$3, exc $$4, dcw $$5) {
       super($$0, $$1, $$2, $$3, $$4, $$5);
       this.d = 0.0;
    }
 
    @Override
-   protected ewv au() {
+   protected ewx au() {
       float $$0 = this.am().n().a() / 2.0F;
       float $$1 = this.am().n().b();
       float $$2 = 0.15F;
-      return new ewv(
-         this.dn().c - (double)$$0,
-         this.dn().d - 0.15F,
-         this.dn().e - (double)$$0,
-         this.dn().c + (double)$$0,
-         this.dn().d - 0.15F + (double)$$1,
-         this.dn().e + (double)$$0
+      return new ewx(
+         this.dm().c - (double)$$0,
+         this.dm().d - 0.15F,
+         this.dm().e - (double)$$0,
+         this.dm().c + (double)$$0,
+         this.dm().d - 0.15F + (double)$$1,
+         this.dm().e + (double)$$0
       );
    }
 
@@ -52,21 +52,21 @@ public abstract class cof extends cne implements cnm {
    }
 
    @Override
-   protected void a(ewx $$0) {
+   protected void a(ewz $$0) {
       super.a($$0);
-      if (!this.dP().B) {
+      if (!this.dO().B) {
          btn $$2 = this.s() instanceof btn $$1 ? $$1 : null;
          bsr $$3 = $$0.a();
          if ($$2 != null) {
             $$2.A($$3);
          }
 
-         brk $$4 = this.dQ().c(this, $$2);
+         brk $$4 = this.dP().c(this, $$2);
          if ($$3.a($$4, 1.0F) && $$3 instanceof btn $$5) {
-            dae.a((aqu)this.dP(), (bsr)$$5, $$4);
+            dae.a((aqu)this.dO(), (bsr)$$5, $$4);
          }
 
-         this.a(this.dn());
+         this.a(this.dm());
       }
    }
 
@@ -74,24 +74,24 @@ public abstract class cof extends cne implements cnm {
    public void j(double $$0, double $$1, double $$2) {
    }
 
-   protected abstract void a(exa var1);
+   protected abstract void a(exc var1);
 
    @Override
-   protected void a(eww $$0) {
+   protected void a(ewy $$0) {
       super.a($$0);
-      if (!this.dP().B) {
+      if (!this.dO().B) {
          kh $$1 = $$0.b().q();
-         exa $$2 = exa.a($$1).d(0.25, 0.25, 0.25);
-         exa $$3 = $$0.e().e($$2);
+         exc $$2 = exc.a($$1).d(0.25, 0.25, 0.25);
+         exc $$3 = $$0.e().e($$2);
          this.a($$3);
          this.aq();
       }
    }
 
    @Override
-   protected void a(ewy $$0) {
+   protected void a(exa $$0) {
       super.a($$0);
-      if (!this.dP().B) {
+      if (!this.dO().B) {
          this.aq();
       }
    }
@@ -124,8 +124,8 @@ public abstract class cof extends cne implements cnm {
 
    @Override
    public void l() {
-      if (!this.dP().B && this.dv() > this.dP().am() + 30) {
-         this.a(this.dn());
+      if (!this.dO().B && this.du() > this.dO().am() + 30) {
+         this.a(this.dm());
          this.aq();
       } else {
          super.l();

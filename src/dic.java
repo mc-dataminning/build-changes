@@ -2,7 +2,7 @@ import com.mojang.serialization.MapCodec;
 
 public class dic extends dfy {
    public static final MapCodec<dic> a = b(dic::new);
-   protected static final ext b = div.c;
+   protected static final exv b = div.c;
 
    @Override
    public MapCodec<dic> a() {
@@ -44,12 +44,12 @@ public class dic extends dfy {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return b;
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return false;
    }
 }

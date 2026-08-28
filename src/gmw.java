@@ -1,33 +1,23 @@
-public class gmw extends glm<cpf> {
-   private final gfr g;
+public class gmw extends gki<coc> {
+   public static final akr a = akr.b("textures/entity/trident.png");
+   private final fxp g;
 
-   public gmw(gkh.a $$0) {
-      super($$0, fyh.bH);
-      this.g = $$0.c();
+   public gmw(gkj.a $$0) {
+      super($$0);
+      this.g = new fxp($$0.a(fyj.bJ));
    }
 
-   protected void a(cpf $$0, float $$1, dtc $$2, fbg $$3, gex $$4, int $$5) {
-      int $$6 = $$0.C();
-      if ($$6 > -1 && (float)$$6 - $$1 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$1 + 1.0F) / 10.0F;
-         $$7 = ayo.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
-      }
-
-      a(this.g, $$2, $$3, $$4, $$5, $$6 > -1 && $$6 / 5 % 2 == 0);
+   public void a(coc $$0, float $$1, float $$2, fbi $$3, gez $$4, int $$5) {
+      $$3.a();
+      $$3.a(a.d.rotationDegrees(ayo.i($$2, $$0.O, $$0.dE()) - 90.0F));
+      $$3.a(a.f.rotationDegrees(ayo.i($$2, $$0.P, $$0.dG()) + 90.0F));
+      fbm $$6 = glh.b($$4, this.g.a(this.a($$0)), false, $$0.F());
+      this.g.a($$3, $$6, $$5, gqc.d);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public static void a(gfr $$0, dtc $$1, fbg $$2, gex $$3, int $$4, boolean $$5) {
-      int $$6;
-      if ($$5) {
-         $$6 = gqa.a(gqa.a(1.0F), 10);
-      } else {
-         $$6 = gqa.d;
-      }
-
-      $$0.a($$1, $$2, $$3, $$4, $$6);
+   public akr a(coc $$0) {
+      return a;
    }
 }

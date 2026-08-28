@@ -5,8 +5,8 @@ public class dnc extends dfy implements dna {
    public static final MapCodec<dnc> a = b(dnc::new);
    public static final dua<duk> b = dts.bh;
    public static final dtt c = dts.C;
-   protected static final ext d = dfy.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   protected static final ext e = dfy.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final exv d = dfy.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
+   protected static final exv e = dfy.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0);
 
    @Override
    public MapCodec<? extends dnc> a() {
@@ -29,11 +29,11 @@ public class dnc extends dfy implements dna {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       duk $$4 = $$0.c(b);
       switch ($$4) {
          case c:
-            return exq.b();
+            return exs.b();
          case a:
             return e;
          default:
@@ -49,8 +49,8 @@ public class dnc extends dfy implements dna {
       if ($$2.a(this)) {
          return $$2.a(b, duk.c).a(c, Boolean.valueOf(false));
       } else {
-         epc $$3 = $$0.q().b_($$1);
-         dtc $$4 = this.o().a(b, duk.b).a(c, Boolean.valueOf($$3.a() == epd.c));
+         epe $$3 = $$0.q().b_($$1);
+         dtc $$4 = this.o().a(b, duk.b).a(c, Boolean.valueOf($$3.a() == epf.c));
          ji $$5 = $$0.k();
          return $$5 != ji.a && ($$5 == ji.b || !($$0.l().d - (double)$$1.v() > 0.5)) ? $$4 : $$4.a(b, duk.a);
       }
@@ -72,31 +72,31 @@ public class dnc extends dfy implements dna {
    }
 
    @Override
-   protected epc b_(dtc $$0) {
-      return $$0.c(c) ? epd.c.a(false) : super.b_($$0);
+   protected epe b_(dtc $$0) {
+      return $$0.c(c) ? epf.c.a(false) : super.b_($$0);
    }
 
    @Override
-   public boolean a(dcx $$0, jd $$1, dtc $$2, epc $$3) {
+   public boolean a(dcx $$0, jd $$1, dtc $$2, epe $$3) {
       return $$2.c(b) != duk.c ? dna.super.a($$0, $$1, $$2, $$3) : false;
    }
 
    @Override
-   public boolean a(@Nullable cmx $$0, dcc $$1, jd $$2, dtc $$3, epb $$4) {
+   public boolean a(@Nullable cmx $$0, dcc $$1, jd $$2, dtc $$3, epd $$4) {
       return $$3.c(b) != duk.c ? dna.super.a($$0, $$1, $$2, $$3, $$4) : false;
    }
 
    @Override
    protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
       if ($$0.c(c)) {
-         $$3.a($$4, epd.c, epd.c.a($$3));
+         $$3.a($$4, epf.c, epf.c.a($$3));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       switch ($$1) {
          case a:
             return false;

@@ -30,8 +30,8 @@ public class dkh extends der {
    }
 
    @Override
-   protected boolean a(epb $$0) {
-      return $$0 == epd.c && this.j == ddw.c.b;
+   protected boolean a(epd $$0) {
+      return $$0 == epf.c && this.j == ddw.c.b;
    }
 
    @Override
@@ -84,7 +84,7 @@ public class dkh extends der {
    }
 
    @Override
-   protected void a(dtc $$0, dcw $$1, jd $$2, epb $$3) {
+   protected void a(dtc $$0, dcw $$1, jd $$2, epd $$3) {
       if (!this.d($$0)) {
          dtc $$4 = $$0.a(g, Integer.valueOf($$0.c(g) + 1));
          $$1.b($$2, $$4);

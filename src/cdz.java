@@ -11,7 +11,7 @@ public class cdz<U extends cdy<?>> {
    public static final cdz<ceb> h = a("villager_babies", ceb::new);
    public static final cdz<cdw> i = a("secondary_pois", cdw::new);
    public static final cdz<cdk> j = a("golem_detected", cdk::new);
-   public static final cdz<cdo<cgn>> k = a("armadillo_scare_detected", () -> new cdo<>(5, cgn::j, cgn::gv, ccs.G, 80));
+   public static final cdz<cdo<cgn>> k = a("armadillo_scare_detected", () -> new cdo<>(5, cgn::j, cgn::gu, ccs.G, 80));
    public static final cdz<cdu> l = a("piglin_specific_sensor", cdu::new);
    public static final cdz<cdt> m = a("piglin_brute_specific_sensor", cdt::new);
    public static final cdz<cdl> n = a("hoglin_specific_sensor", cdl::new);

@@ -22,20 +22,20 @@ public class ddx {
    public static final MapCodec<ddx> b = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
                Codec.simpleMap(dyu.a.c, ebc.c.promotePartial(ad.a("Carver: ", c::error)), azk.a(dyu.a.values())).fieldOf("carvers").forGetter($$0x -> $$0x.d),
-               eit.d.promotePartial(ad.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
+               eiv.d.promotePartial(ad.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
             )
             .apply($$0, ddx::new)
    );
    private final Map<dyu.a, jq<ebc<?>>> d;
-   private final List<jq<eit>> e;
+   private final List<jq<eiv>> e;
    private final Supplier<List<ebq<?, ?>>> f;
-   private final Supplier<Set<eit>> g;
+   private final Supplier<Set<eiv>> g;
 
-   ddx(Map<dyu.a, jq<ebc<?>>> $$0, List<jq<eit>> $$1) {
+   ddx(Map<dyu.a, jq<ebc<?>>> $$0, List<jq<eiv>> $$1) {
       this.d = $$0;
       this.e = $$1;
       this.f = Suppliers.memoize(
-         () -> $$1.stream().flatMap(jq::a).map(jm::a).flatMap(eit::a).filter($$0xx -> $$0xx.b() == ecd.g).collect(ImmutableList.toImmutableList())
+         () -> $$1.stream().flatMap(jq::a).map(jm::a).flatMap(eiv::a).filter($$0xx -> $$0xx.b() == ece.g).collect(ImmutableList.toImmutableList())
       );
       this.g = Suppliers.memoize(() -> $$1.stream().flatMap(jq::a).map(jm::a).collect(Collectors.toSet()));
    }
@@ -48,24 +48,24 @@ public class ddx {
       return this.f.get();
    }
 
-   public List<jq<eit>> b() {
+   public List<jq<eiv>> b() {
       return this.e;
    }
 
-   public boolean a(eit $$0) {
+   public boolean a(eiv $$0) {
       return this.g.get().contains($$0);
    }
 
    public static class a extends ddx.b {
-      private final jn<eit> a;
+      private final jn<eiv> a;
       private final jn<ebc<?>> b;
 
-      public a(jn<eit> $$0, jn<ebc<?>> $$1) {
+      public a(jn<eiv> $$0, jn<ebc<?>> $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
-      public ddx.a a(dyu.b $$0, akq<eit> $$1) {
+      public ddx.a a(dyu.b $$0, akq<eiv> $$1) {
          this.a($$0.ordinal(), this.a.b($$1));
          return this;
       }
@@ -78,13 +78,13 @@ public class ddx {
 
    public static class b {
       private final Map<dyu.a, List<jm<ebc<?>>>> a = Maps.newLinkedHashMap();
-      private final List<List<jm<eit>>> b = Lists.newArrayList();
+      private final List<List<jm<eiv>>> b = Lists.newArrayList();
 
-      public ddx.b a(dyu.b $$0, jm<eit> $$1) {
+      public ddx.b a(dyu.b $$0, jm<eiv> $$1) {
          return this.a($$0.ordinal(), $$1);
       }
 
-      public ddx.b a(int $$0, jm<eit> $$1) {
+      public ddx.b a(int $$0, jm<eiv> $$1) {
          this.a($$0);
          this.b.get($$0).add($$1);
          return this;

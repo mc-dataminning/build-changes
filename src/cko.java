@@ -36,13 +36,13 @@ public class cko extends ckd {
    @Override
    public void l() {
       super.l();
-      if (!this.dP().B) {
-         this.w(this.Q);
+      if (!this.dO().B) {
+         this.x(this.Q);
       }
    }
 
    public static buv.a t() {
-      return ckd.gr().a(buw.s, 16.0).a(buw.v, 0.3F);
+      return ckd.gq().a(buw.s, 16.0).a(buw.v, 0.3F);
    }
 
    @Override
@@ -71,7 +71,7 @@ public class cko extends ckd {
    }
 
    @Override
-   public void a(dtc $$0, exa $$1) {
+   public void a(dtc $$0, exc $$1) {
       if (!$$0.a(dga.bs)) {
          super.a($$0, $$1);
       }
@@ -86,7 +86,7 @@ public class cko extends ckd {
       return (this.ao.a(b) & 1) != 0;
    }
 
-   public void w(boolean $$0) {
+   public void x(boolean $$0) {
       byte $$1 = this.ao.a(b);
       if ($$0) {
          $$1 = (byte)($$1 | 1);
@@ -103,9 +103,9 @@ public class cko extends ckd {
       $$3 = super.a($$0, $$1, $$2, $$3);
       ayw $$4 = $$0.E_();
       if ($$4.a(100) == 0) {
-         ckl $$5 = bsx.aN.a(this.dP());
+         ckl $$5 = bsx.aN.a(this.dO());
          if ($$5 != null) {
-            $$5.b(this.du(), this.dw(), this.dA(), this.dF(), 0.0F);
+            $$5.b(this.dt(), this.dv(), this.dz(), this.dE(), 0.0F);
             $$5.a($$0, $$1, $$2, null);
             $$5.n(this);
          }
@@ -129,8 +129,8 @@ public class cko extends ckd {
    }
 
    @Override
-   public exa l(bsr $$0) {
-      return $$0.dk() <= this.dk() ? new exa(0.0, 0.3125 * (double)this.ec(), 0.0) : super.l($$0);
+   public exc l(bsr $$0) {
+      return $$0.dj() <= this.dj() ? new exc(0.0, 0.3125 * (double)this.eb(), 0.0) : super.l($$0);
    }
 
    static class a extends caw {
@@ -146,7 +146,7 @@ public class cko extends ckd {
       @Override
       public boolean c() {
          float $$0 = this.a.bu();
-         if ($$0 >= 0.5F && this.a.dS().a(100) == 0) {
+         if ($$0 >= 0.5F && this.a.dR().a(100) == 0) {
             this.a.h(null);
             return false;
          } else {

@@ -42,7 +42,7 @@ public class dwi {
       dvj[] $$10 = new dvj[$$9];
       boolean $$11 = $$0.D_().g();
       dvc $$12 = $$0.l();
-      eor $$13 = $$12.p();
+      eot $$13 = $$12.p();
       jz<ddw> $$14 = $$0.H_().d(lu.aF);
       Codec<dvr<jm<ddw>>> $$15 = a($$14);
       boolean $$16 = false;
@@ -101,12 +101,12 @@ public class dwi {
 
       duy $$35;
       if ($$30 == dwd.b) {
-         eym<dfy> $$33 = eym.a($$4.c("block_ticks", 10), $$0x -> lt.e.b(akr.c($$0x)), $$3);
-         eym<epb> $$34 = eym.a($$4.c("fluid_ticks", 10), $$0x -> lt.c.b(akr.c($$0x)), $$3);
+         eyo<dfy> $$33 = eyo.a($$4.c("block_ticks", 10), $$0x -> lt.e.b(akr.c($$0x)), $$3);
+         eyo<epd> $$34 = eyo.a($$4.c("fluid_ticks", 10), $$0x -> lt.c.b(akr.c($$0x)), $$3);
          $$35 = new dvi($$0.E(), $$3, $$6, $$33, $$34, $$29, $$10, a($$0, $$4), $$31);
       } else {
-         eyp<dfy> $$36 = eyp.a($$4.c("block_ticks", 10), $$0x -> lt.e.b(akr.c($$0x)), $$3);
-         eyp<epb> $$37 = eyp.a($$4.c("fluid_ticks", 10), $$0x -> lt.c.b(akr.c($$0x)), $$3);
+         eyr<dfy> $$36 = eyr.a($$4.c("block_ticks", 10), $$0x -> lt.e.b(akr.c($$0x)), $$3);
+         eyr<epd> $$37 = eyr.a($$4.c("fluid_ticks", 10), $$0x -> lt.c.b(akr.c($$0x)), $$3);
          dvs $$38 = new dvs($$3, $$6, $$10, $$36, $$37, $$0, $$14, $$31);
          $$35 = $$38;
          $$38.b($$29);
@@ -136,7 +136,7 @@ public class dwi {
 
       dyy.a($$35, $$42);
       ub $$45 = $$4.p("structures");
-      $$35.a(a(ekf.a($$0), $$45, $$0.C()));
+      $$35.a(a(ekh.a($$0), $$45, $$0.C()));
       $$35.b(a($$0.H_(), $$3, $$45));
       if ($$4.q("shouldSave")) {
          $$35.a(true);
@@ -214,7 +214,7 @@ public class dwi {
 
       dvj[] $$7 = $$1.d();
       uh $$8 = new uh();
-      eor $$9 = $$0.l().a();
+      eot $$9 = $$0.l().a();
       jz<ddw> $$10 = $$0.H_().d(lu.aF);
       Codec<dvr<jm<ddw>>> $$11 = a($$10);
       boolean $$12 = $$1.v();
@@ -290,7 +290,7 @@ public class dwi {
       }
 
       $$3.a("Heightmaps", $$28);
-      $$3.a("structures", a(ekf.a($$0), $$2, $$1.g(), $$1.h()));
+      $$3.a("structures", a(ekh.a($$0), $$2, $$1.g(), $$1.h()));
       return $$3;
    }
 
@@ -337,12 +337,12 @@ public class dwi {
       return $$2.isEmpty() ? null : $$2;
    }
 
-   private static ub a(ekf $$0, dcd $$1, Map<ejp, ejx> $$2, Map<ejp, LongSet> $$3) {
+   private static ub a(ekh $$0, dcd $$1, Map<ejr, ejz> $$2, Map<ejr, LongSet> $$3) {
       ub $$4 = new ub();
       ub $$5 = new ub();
-      jz<ejp> $$6 = $$0.b().d(lu.aR);
+      jz<ejr> $$6 = $$0.b().d(lu.aR);
 
-      for (Entry<ejp, ejx> $$7 : $$2.entrySet()) {
+      for (Entry<ejr, ejz> $$7 : $$2.entrySet()) {
          akr $$8 = $$6.b($$7.getKey());
          $$5.a($$8.toString(), $$7.getValue().a($$0, $$1));
       }
@@ -350,7 +350,7 @@ public class dwi {
       $$4.a("starts", $$5);
       ub $$9 = new ub();
 
-      for (Entry<ejp, LongSet> $$10 : $$3.entrySet()) {
+      for (Entry<ejr, LongSet> $$10 : $$3.entrySet()) {
          if (!$$10.getValue().isEmpty()) {
             akr $$11 = $$6.b($$10.getKey());
             $$9.a($$11.toString(), new ui($$10.getValue()));
@@ -361,18 +361,18 @@ public class dwi {
       return $$4;
    }
 
-   private static Map<ejp, ejx> a(ekf $$0, ub $$1, long $$2) {
-      Map<ejp, ejx> $$3 = Maps.newHashMap();
-      jz<ejp> $$4 = $$0.b().d(lu.aR);
+   private static Map<ejr, ejz> a(ekh $$0, ub $$1, long $$2) {
+      Map<ejr, ejz> $$3 = Maps.newHashMap();
+      jz<ejr> $$4 = $$0.b().d(lu.aR);
       ub $$5 = $$1.p("starts");
 
       for (String $$6 : $$5.e()) {
          akr $$7 = akr.c($$6);
-         ejp $$8 = $$4.a($$7);
+         ejr $$8 = $$4.a($$7);
          if ($$8 == null) {
             i.error("Unknown structure start: {}", $$7);
          } else {
-            ejx $$9 = ejx.a($$0, $$5.p($$6), $$2);
+            ejz $$9 = ejz.a($$0, $$5.p($$6), $$2);
             if ($$9 != null) {
                $$3.put($$8, $$9);
             }
@@ -382,14 +382,14 @@ public class dwi {
       return $$3;
    }
 
-   private static Map<ejp, LongSet> a(ka $$0, dcd $$1, ub $$2) {
-      Map<ejp, LongSet> $$3 = Maps.newHashMap();
-      jz<ejp> $$4 = $$0.d(lu.aR);
+   private static Map<ejr, LongSet> a(ka $$0, dcd $$1, ub $$2) {
+      Map<ejr, LongSet> $$3 = Maps.newHashMap();
+      jz<ejr> $$4 = $$0.d(lu.aR);
       ub $$5 = $$2.p("References");
 
       for (String $$6 : $$5.e()) {
          akr $$7 = akr.c($$6);
-         ejp $$8 = $$4.a($$7);
+         ejr $$8 = $$4.a($$7);
          if ($$8 == null) {
             i.warn("Found reference to unknown structure '{}' in chunk {}, discarding", $$7, $$1);
          } else {

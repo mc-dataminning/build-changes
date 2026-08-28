@@ -1,58 +1,101 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.google.common.base.Suppliers;
+import com.mojang.authlib.GameProfile;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
 public class fzq {
+   private final GameProfile a;
+   private final Supplier<grl> b;
+   private dct c = dct.e;
+   private int d;
    @Nullable
-   private fzq.a a;
+   private wz e;
    @Nullable
-   private fzv b;
+   private xq f;
+   private xv g;
 
-   public void a(akq<? extends jz<?>> $$0, List<kd.a> $$1) {
-      if (this.a == null) {
-         this.a = new fzq.a();
-      }
-
-      this.a.a($$0, $$1);
+   public fzq(GameProfile $$0, boolean $$1) {
+      this.a = $$0;
+      this.g = b($$1);
+      Supplier<Supplier<grl>> $$2 = Suppliers.memoize(() -> a($$0));
+      this.b = () -> $$2.get().get();
    }
 
-   public void a(Map<akq<? extends jz<?>>, awx.a> $$0) {
-      if (this.b == null) {
-         this.b = new fzv();
-      }
-
-      $$0.forEach(this.b::a);
+   private static Supplier<grl> a(GameProfile $$0) {
+      fgo $$1 = fgo.Q();
+      grm $$2 = $$1.am();
+      CompletableFuture<grl> $$3 = $$2.c($$0);
+      boolean $$4 = !$$1.b($$0.getId());
+      grl $$5 = grd.a($$0);
+      return () -> {
+         grl $$3x = $$3.getNow($$5);
+         return $$4 && !$$3x.f() ? $$5 : $$3x;
+      };
    }
 
-   public ka.b a(auh $$0, ka $$1, boolean $$2) {
-      jt<fzf> $$3 = fzf.a();
-      ka $$6;
-      if (this.a != null) {
-         ka.b $$4 = $$3.b(fzf.b);
-         ka.b $$5 = this.a.a($$0, $$4).d();
-         $$6 = $$3.a(fzf.b, $$5).a();
-      } else {
-         $$6 = $$1;
-      }
-
-      if (this.b != null) {
-         this.b.a($$6, $$2);
-      }
-
-      return $$6.d();
+   public GameProfile a() {
+      return this.a;
    }
 
-   static class a {
-      private final Map<akq<? extends jz<?>>, List<kd.a>> a = new HashMap<>();
+   @Nullable
+   public xq b() {
+      return this.f;
+   }
 
-      public void a(akq<? extends jz<?>> $$0, List<kd.a> $$1) {
-         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>()).addAll($$1);
-      }
+   public xv c() {
+      return this.g;
+   }
 
-      public ka a(auh $$0, ka $$1) {
-         return akm.a(this.a, $$0, $$1, akm.c);
-      }
+   public boolean d() {
+      return this.f != null;
+   }
+
+   protected void a(xq $$0) {
+      this.f = $$0;
+      this.g = $$0.a(cna.b);
+   }
+
+   protected void a(boolean $$0) {
+      this.f = null;
+      this.g = b($$0);
+   }
+
+   private static xv b(boolean $$0) {
+      return $$0 ? xv.c : xv.b;
+   }
+
+   public dct e() {
+      return this.c;
+   }
+
+   protected void a(dct $$0) {
+      this.c = $$0;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   protected void a(int $$0) {
+      this.d = $$0;
+   }
+
+   public grl g() {
+      return this.b.get();
+   }
+
+   @Nullable
+   public eyb h() {
+      return fgo.Q().r.M().e(this.a().getName());
+   }
+
+   public void a(@Nullable wz $$0) {
+      this.e = $$0;
+   }
+
+   @Nullable
+   public wz i() {
+      return this.e;
    }
 }

@@ -19,9 +19,9 @@ public class atk implements atr {
    private final Path c;
    private final ass d;
    private final atq e;
-   private final ewq f;
+   private final ews f;
 
-   public atk(Path $$0, ass $$1, atq $$2, ewq $$3) {
+   public atk(Path $$0, ass $$1, atq $$2, ews $$3) {
       this.c = $$0;
       this.d = $$1;
       this.e = $$2;
@@ -53,16 +53,16 @@ public class atk implements atr {
       return new asp("file/" + $$1, wz.b($$1), this.e, Optional.empty());
    }
 
-   public static void a(Path $$0, ewq $$1, BiConsumer<Path, atm.c> $$2) throws IOException {
+   public static void a(Path $$0, ews $$1, BiConsumer<Path, atm.c> $$2) throws IOException {
       atk.a $$3 = new atk.a($$1);
 
       try (DirectoryStream<Path> $$4 = Files.newDirectoryStream($$0)) {
          for (Path $$5 : $$4) {
             try {
-               List<ewr> $$6 = new ArrayList<>();
+               List<ewt> $$6 = new ArrayList<>();
                atm.c $$7 = $$3.a($$5, $$6);
                if (!$$6.isEmpty()) {
-                  a.warn("Ignoring potential pack entry: {}", ewp.a($$5, $$6));
+                  a.warn("Ignoring potential pack entry: {}", ewr.a($$5, $$6));
                } else if ($$7 != null) {
                   $$2.accept($$5, $$7);
                } else {
@@ -76,7 +76,7 @@ public class atk implements atr {
    }
 
    static class a extends ato<atm.c> {
-      protected a(ewq $$0) {
+      protected a(ews $$0) {
          super($$0);
       }
 

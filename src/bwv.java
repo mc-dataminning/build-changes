@@ -1,5 +1,5 @@
 public interface bwv {
-   exa a();
+   exc a();
 
    jd b();
 

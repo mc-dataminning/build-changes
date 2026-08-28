@@ -1,352 +1,53 @@
-import java.util.ArrayList;
-import java.util.List;
+public class elk {
+   public static class a extends ejv {
+      public a(jd $$0) {
+         super(eki.aa, 0, new ejj($$0));
+      }
 
-public class elk extends ejn {
-   public static final int h = 21;
-   public static final int i = 21;
-   private final boolean[] j = new boolean[4];
-   private final List<jd> k = new ArrayList<>();
-   private jd l = jd.c;
+      public a(ub $$0) {
+         super(eki.aa, $$0);
+      }
 
-   public elk(ayw $$0, int $$1, int $$2) {
-      super(ekg.L, $$1, 64, $$2, 21, 15, 21, a($$0));
-   }
+      @Override
+      protected void a(ekh $$0, ub $$1) {
+      }
 
-   public elk(ub $$0) {
-      super(ekg.L, $$0);
-      this.j[0] = $$0.q("hasPlacedChest0");
-      this.j[1] = $$0.q("hasPlacedChest1");
-      this.j[2] = $$0.q("hasPlacedChest2");
-      this.j[3] = $$0.q("hasPlacedChest3");
-   }
+      @Override
+      public void a(dds $$0, ddq $$1, duz $$2, ayw $$3, ejj $$4, dcd $$5, jd $$6) {
+         int $$7 = $$0.a(dyy.a.c, this.f.h(), this.f.j());
+         jd.a $$8 = new jd.a(this.f.h(), $$7, this.f.j());
 
-   @Override
-   protected void a(ekf $$0, ub $$1) {
-      super.a($$0, $$1);
-      $$1.a("hasPlacedChest0", this.j[0]);
-      $$1.a("hasPlacedChest1", this.j[1]);
-      $$1.a("hasPlacedChest2", this.j[2]);
-      $$1.a("hasPlacedChest3", this.j[3]);
-   }
+         while ($$8.v() > $$0.I_()) {
+            dtc $$9 = $$0.a_($$8);
+            dtc $$10 = $$0.a_($$8.e());
+            if ($$10 == dga.aV.o() || $$10 == dga.b.o() || $$10 == dga.g.o() || $$10 == dga.c.o() || $$10 == dga.e.o()) {
+               dtc $$11 = !$$9.i() && !this.b($$9) ? $$9 : dga.I.o();
 
-   @Override
-   public void a(dds $$0, ddq $$1, duz $$2, ayw $$3, ejh $$4, dcd $$5, jd $$6) {
-      if (this.a($$0, -$$3.a(3))) {
-         this.a($$0, $$4, 0, -4, 0, this.a - 1, 0, this.c - 1, dga.aV.o(), dga.aV.o(), false);
+               for (ji $$12 : ji.values()) {
+                  jd $$13 = $$8.a($$12);
+                  dtc $$14 = $$0.a_($$13);
+                  if ($$14.i() || this.b($$14)) {
+                     jd $$15 = $$13.e();
+                     dtc $$16 = $$0.a_($$15);
+                     if (($$16.i() || this.b($$16)) && $$12 != ji.b) {
+                        $$0.a($$13, $$10, 3);
+                     } else {
+                        $$0.a($$13, $$11, 3);
+                     }
+                  }
+               }
 
-         for (int $$7 = 1; $$7 <= 9; $$7++) {
-            this.a($$0, $$4, $$7, $$7, $$7, this.a - 1 - $$7, $$7, this.c - 1 - $$7, dga.aV.o(), dga.aV.o(), false);
-            this.a($$0, $$4, $$7 + 1, $$7, $$7 + 1, this.a - 2 - $$7, $$7, this.c - 2 - $$7, dga.a.o(), dga.a.o(), false);
-         }
-
-         for (int $$8 = 0; $$8 < this.a; $$8++) {
-            for (int $$9 = 0; $$9 < this.c; $$9++) {
-               int $$10 = -5;
-               this.b($$0, dga.aV.o(), $$8, -5, $$9, $$4);
+               this.f = new ejj($$8);
+               this.a($$0, $$4, $$3, $$8, ern.G, null);
+               return;
             }
-         }
 
-         dtc $$11 = dga.fD.o().a(dnt.b, ji.c);
-         dtc $$12 = dga.fD.o().a(dnt.b, ji.d);
-         dtc $$13 = dga.fD.o().a(dnt.b, ji.f);
-         dtc $$14 = dga.fD.o().a(dnt.b, ji.e);
-         this.a($$0, $$4, 0, 0, 0, 4, 9, 4, dga.aV.o(), dga.a.o(), false);
-         this.a($$0, $$4, 1, 10, 1, 3, 10, 3, dga.aV.o(), dga.aV.o(), false);
-         this.a($$0, $$11, 2, 10, 0, $$4);
-         this.a($$0, $$12, 2, 10, 4, $$4);
-         this.a($$0, $$13, 0, 10, 2, $$4);
-         this.a($$0, $$14, 4, 10, 2, $$4);
-         this.a($$0, $$4, this.a - 5, 0, 0, this.a - 1, 9, 4, dga.aV.o(), dga.a.o(), false);
-         this.a($$0, $$4, this.a - 4, 10, 1, this.a - 2, 10, 3, dga.aV.o(), dga.aV.o(), false);
-         this.a($$0, $$11, this.a - 3, 10, 0, $$4);
-         this.a($$0, $$12, this.a - 3, 10, 4, $$4);
-         this.a($$0, $$13, this.a - 5, 10, 2, $$4);
-         this.a($$0, $$14, this.a - 1, 10, 2, $$4);
-         this.a($$0, $$4, 8, 0, 0, 12, 4, 4, dga.aV.o(), dga.a.o(), false);
-         this.a($$0, $$4, 9, 1, 0, 11, 3, 4, dga.a.o(), dga.a.o(), false);
-         this.a($$0, dga.aX.o(), 9, 1, 1, $$4);
-         this.a($$0, dga.aX.o(), 9, 2, 1, $$4);
-         this.a($$0, dga.aX.o(), 9, 3, 1, $$4);
-         this.a($$0, dga.aX.o(), 10, 3, 1, $$4);
-         this.a($$0, dga.aX.o(), 11, 3, 1, $$4);
-         this.a($$0, dga.aX.o(), 11, 2, 1, $$4);
-         this.a($$0, dga.aX.o(), 11, 1, 1, $$4);
-         this.a($$0, $$4, 4, 1, 1, 8, 3, 3, dga.aV.o(), dga.a.o(), false);
-         this.a($$0, $$4, 4, 1, 2, 8, 2, 2, dga.a.o(), dga.a.o(), false);
-         this.a($$0, $$4, 12, 1, 1, 16, 3, 3, dga.aV.o(), dga.a.o(), false);
-         this.a($$0, $$4, 12, 1, 2, 16, 2, 2, dga.a.o(), dga.a.o(), false);
-         this.a($$0, $$4, 5, 4, 5, this.a - 6, 4, this.c - 6, dga.aV.o(), dga.aV.o(), false);
-         this.a($$0, $$4, 9, 4, 9, 11, 4, 11, dga.a.o(), dga.a.o(), false);
-         this.a($$0, $$4, 8, 1, 8, 8, 3, 8, dga.aX.o(), dga.aX.o(), false);
-         this.a($$0, $$4, 12, 1, 8, 12, 3, 8, dga.aX.o(), dga.aX.o(), false);
-         this.a($$0, $$4, 8, 1, 12, 8, 3, 12, dga.aX.o(), dga.aX.o(), false);
-         this.a($$0, $$4, 12, 1, 12, 12, 3, 12, dga.aX.o(), dga.aX.o(), false);
-         this.a($$0, $$4, 1, 1, 5, 4, 4, 11, dga.aV.o(), dga.aV.o(), false);
-         this.a($$0, $$4, this.a - 5, 1, 5, this.a - 2, 4, 11, dga.aV.o(), dga.aV.o(), false);
-         this.a($$0, $$4, 6, 7, 9, 6, 7, 11, dga.aV.o(), dga.aV.o(), false);
-         this.a($$0, $$4, this.a - 7, 7, 9, this.a - 7, 7, 11, dga.aV.o(), dga.aV.o(), false);
-         this.a($$0, $$4, 5, 5, 9, 5, 7, 11, dga.aX.o(), dga.aX.o(), false);
-         this.a($$0, $$4, this.a - 6, 5, 9, this.a - 6, 7, 11, dga.aX.o(), dga.aX.o(), false);
-         this.a($$0, dga.a.o(), 5, 5, 10, $$4);
-         this.a($$0, dga.a.o(), 5, 6, 10, $$4);
-         this.a($$0, dga.a.o(), 6, 6, 10, $$4);
-         this.a($$0, dga.a.o(), this.a - 6, 5, 10, $$4);
-         this.a($$0, dga.a.o(), this.a - 6, 6, 10, $$4);
-         this.a($$0, dga.a.o(), this.a - 7, 6, 10, $$4);
-         this.a($$0, $$4, 2, 4, 4, 2, 6, 4, dga.a.o(), dga.a.o(), false);
-         this.a($$0, $$4, this.a - 3, 4, 4, this.a - 3, 6, 4, dga.a.o(), dga.a.o(), false);
-         this.a($$0, $$11, 2, 4, 5, $$4);
-         this.a($$0, $$11, 2, 3, 4, $$4);
-         this.a($$0, $$11, this.a - 3, 4, 5, $$4);
-         this.a($$0, $$11, this.a - 3, 3, 4, $$4);
-         this.a($$0, $$4, 1, 1, 3, 2, 2, 3, dga.aV.o(), dga.aV.o(), false);
-         this.a($$0, $$4, this.a - 3, 1, 3, this.a - 2, 2, 3, dga.aV.o(), dga.aV.o(), false);
-         this.a($$0, dga.aV.o(), 1, 1, 2, $$4);
-         this.a($$0, dga.aV.o(), this.a - 2, 1, 2, $$4);
-         this.a($$0, dga.jF.o(), 1, 2, 2, $$4);
-         this.a($$0, dga.jF.o(), this.a - 2, 2, 2, $$4);
-         this.a($$0, $$14, 2, 1, 2, $$4);
-         this.a($$0, $$13, this.a - 3, 1, 2, $$4);
-         this.a($$0, $$4, 4, 3, 5, 4, 3, 17, dga.aV.o(), dga.aV.o(), false);
-         this.a($$0, $$4, this.a - 5, 3, 5, this.a - 5, 3, 17, dga.aV.o(), dga.aV.o(), false);
-         this.a($$0, $$4, 3, 1, 5, 4, 2, 16, dga.a.o(), dga.a.o(), false);
-         this.a($$0, $$4, this.a - 6, 1, 5, this.a - 5, 2, 16, dga.a.o(), dga.a.o(), false);
-
-         for (int $$15 = 5; $$15 <= 17; $$15 += 2) {
-            this.a($$0, dga.aX.o(), 4, 1, $$15, $$4);
-            this.a($$0, dga.aW.o(), 4, 2, $$15, $$4);
-            this.a($$0, dga.aX.o(), this.a - 5, 1, $$15, $$4);
-            this.a($$0, dga.aW.o(), this.a - 5, 2, $$15, $$4);
-         }
-
-         this.a($$0, dga.hk.o(), 10, 0, 7, $$4);
-         this.a($$0, dga.hk.o(), 10, 0, 8, $$4);
-         this.a($$0, dga.hk.o(), 9, 0, 9, $$4);
-         this.a($$0, dga.hk.o(), 11, 0, 9, $$4);
-         this.a($$0, dga.hk.o(), 8, 0, 10, $$4);
-         this.a($$0, dga.hk.o(), 12, 0, 10, $$4);
-         this.a($$0, dga.hk.o(), 7, 0, 10, $$4);
-         this.a($$0, dga.hk.o(), 13, 0, 10, $$4);
-         this.a($$0, dga.hk.o(), 9, 0, 11, $$4);
-         this.a($$0, dga.hk.o(), 11, 0, 11, $$4);
-         this.a($$0, dga.hk.o(), 10, 0, 12, $$4);
-         this.a($$0, dga.hk.o(), 10, 0, 13, $$4);
-         this.a($$0, dga.hu.o(), 10, 0, 10, $$4);
-
-         for (int $$16 = 0; $$16 <= this.a - 1; $$16 += this.a - 1) {
-            this.a($$0, dga.aX.o(), $$16, 2, 1, $$4);
-            this.a($$0, dga.hk.o(), $$16, 2, 2, $$4);
-            this.a($$0, dga.aX.o(), $$16, 2, 3, $$4);
-            this.a($$0, dga.aX.o(), $$16, 3, 1, $$4);
-            this.a($$0, dga.hk.o(), $$16, 3, 2, $$4);
-            this.a($$0, dga.aX.o(), $$16, 3, 3, $$4);
-            this.a($$0, dga.hk.o(), $$16, 4, 1, $$4);
-            this.a($$0, dga.aW.o(), $$16, 4, 2, $$4);
-            this.a($$0, dga.hk.o(), $$16, 4, 3, $$4);
-            this.a($$0, dga.aX.o(), $$16, 5, 1, $$4);
-            this.a($$0, dga.hk.o(), $$16, 5, 2, $$4);
-            this.a($$0, dga.aX.o(), $$16, 5, 3, $$4);
-            this.a($$0, dga.hk.o(), $$16, 6, 1, $$4);
-            this.a($$0, dga.aW.o(), $$16, 6, 2, $$4);
-            this.a($$0, dga.hk.o(), $$16, 6, 3, $$4);
-            this.a($$0, dga.hk.o(), $$16, 7, 1, $$4);
-            this.a($$0, dga.hk.o(), $$16, 7, 2, $$4);
-            this.a($$0, dga.hk.o(), $$16, 7, 3, $$4);
-            this.a($$0, dga.aX.o(), $$16, 8, 1, $$4);
-            this.a($$0, dga.aX.o(), $$16, 8, 2, $$4);
-            this.a($$0, dga.aX.o(), $$16, 8, 3, $$4);
-         }
-
-         for (int $$17 = 2; $$17 <= this.a - 3; $$17 += this.a - 3 - 2) {
-            this.a($$0, dga.aX.o(), $$17 - 1, 2, 0, $$4);
-            this.a($$0, dga.hk.o(), $$17, 2, 0, $$4);
-            this.a($$0, dga.aX.o(), $$17 + 1, 2, 0, $$4);
-            this.a($$0, dga.aX.o(), $$17 - 1, 3, 0, $$4);
-            this.a($$0, dga.hk.o(), $$17, 3, 0, $$4);
-            this.a($$0, dga.aX.o(), $$17 + 1, 3, 0, $$4);
-            this.a($$0, dga.hk.o(), $$17 - 1, 4, 0, $$4);
-            this.a($$0, dga.aW.o(), $$17, 4, 0, $$4);
-            this.a($$0, dga.hk.o(), $$17 + 1, 4, 0, $$4);
-            this.a($$0, dga.aX.o(), $$17 - 1, 5, 0, $$4);
-            this.a($$0, dga.hk.o(), $$17, 5, 0, $$4);
-            this.a($$0, dga.aX.o(), $$17 + 1, 5, 0, $$4);
-            this.a($$0, dga.hk.o(), $$17 - 1, 6, 0, $$4);
-            this.a($$0, dga.aW.o(), $$17, 6, 0, $$4);
-            this.a($$0, dga.hk.o(), $$17 + 1, 6, 0, $$4);
-            this.a($$0, dga.hk.o(), $$17 - 1, 7, 0, $$4);
-            this.a($$0, dga.hk.o(), $$17, 7, 0, $$4);
-            this.a($$0, dga.hk.o(), $$17 + 1, 7, 0, $$4);
-            this.a($$0, dga.aX.o(), $$17 - 1, 8, 0, $$4);
-            this.a($$0, dga.aX.o(), $$17, 8, 0, $$4);
-            this.a($$0, dga.aX.o(), $$17 + 1, 8, 0, $$4);
-         }
-
-         this.a($$0, $$4, 8, 4, 0, 12, 6, 0, dga.aX.o(), dga.aX.o(), false);
-         this.a($$0, dga.a.o(), 8, 6, 0, $$4);
-         this.a($$0, dga.a.o(), 12, 6, 0, $$4);
-         this.a($$0, dga.hk.o(), 9, 5, 0, $$4);
-         this.a($$0, dga.aW.o(), 10, 5, 0, $$4);
-         this.a($$0, dga.hk.o(), 11, 5, 0, $$4);
-         this.a($$0, $$4, 8, -14, 8, 12, -11, 12, dga.aX.o(), dga.aX.o(), false);
-         this.a($$0, $$4, 8, -10, 8, 12, -10, 12, dga.aW.o(), dga.aW.o(), false);
-         this.a($$0, $$4, 8, -9, 8, 12, -9, 12, dga.aX.o(), dga.aX.o(), false);
-         this.a($$0, $$4, 8, -8, 8, 12, -1, 12, dga.aV.o(), dga.aV.o(), false);
-         this.a($$0, $$4, 9, -11, 9, 11, -1, 11, dga.a.o(), dga.a.o(), false);
-         this.a($$0, dga.dx.o(), 10, -11, 10, $$4);
-         this.a($$0, $$4, 9, -13, 9, 11, -13, 11, dga.ck.o(), dga.a.o(), false);
-         this.a($$0, dga.a.o(), 8, -11, 10, $$4);
-         this.a($$0, dga.a.o(), 8, -10, 10, $$4);
-         this.a($$0, dga.aW.o(), 7, -10, 10, $$4);
-         this.a($$0, dga.aX.o(), 7, -11, 10, $$4);
-         this.a($$0, dga.a.o(), 12, -11, 10, $$4);
-         this.a($$0, dga.a.o(), 12, -10, 10, $$4);
-         this.a($$0, dga.aW.o(), 13, -10, 10, $$4);
-         this.a($$0, dga.aX.o(), 13, -11, 10, $$4);
-         this.a($$0, dga.a.o(), 10, -11, 8, $$4);
-         this.a($$0, dga.a.o(), 10, -10, 8, $$4);
-         this.a($$0, dga.aW.o(), 10, -10, 7, $$4);
-         this.a($$0, dga.aX.o(), 10, -11, 7, $$4);
-         this.a($$0, dga.a.o(), 10, -11, 12, $$4);
-         this.a($$0, dga.a.o(), 10, -10, 12, $$4);
-         this.a($$0, dga.aW.o(), 10, -10, 13, $$4);
-         this.a($$0, dga.aX.o(), 10, -11, 13, $$4);
-
-         for (ji $$18 : ji.c.a) {
-            if (!this.j[$$18.e()]) {
-               int $$19 = $$18.j() * 2;
-               int $$20 = $$18.l() * 2;
-               this.j[$$18.e()] = this.a($$0, $$4, $$3, 10 + $$19, -11, 10 + $$20, erl.z);
-            }
-         }
-
-         this.a($$0, $$4);
-      }
-   }
-
-   private void a(dds $$0, ejh $$1) {
-      jd $$2 = new jd(16, -4, 13);
-      this.a($$2, $$0, $$1);
-      this.b($$2, $$0, $$1);
-   }
-
-   private void a(jd $$0, dds $$1, ejh $$2) {
-      int $$3 = $$0.u();
-      int $$4 = $$0.v();
-      int $$5 = $$0.w();
-      dtc $$6 = dga.fD.o();
-      this.a($$1, $$6.a(dmm.d), 13, -1, 17, $$2);
-      this.a($$1, $$6.a(dmm.d), 14, -2, 17, $$2);
-      this.a($$1, $$6.a(dmm.d), 15, -3, 17, $$2);
-      dtc $$7 = dga.I.o();
-      dtc $$8 = dga.aV.o();
-      boolean $$9 = $$1.E_().h();
-      this.a($$1, $$7, $$3 - 4, $$4 + 4, $$5 + 4, $$2);
-      this.a($$1, $$7, $$3 - 3, $$4 + 4, $$5 + 4, $$2);
-      this.a($$1, $$7, $$3 - 2, $$4 + 4, $$5 + 4, $$2);
-      this.a($$1, $$7, $$3 - 1, $$4 + 4, $$5 + 4, $$2);
-      this.a($$1, $$7, $$3, $$4 + 4, $$5 + 4, $$2);
-      this.a($$1, $$7, $$3 - 2, $$4 + 3, $$5 + 4, $$2);
-      this.a($$1, $$9 ? $$7 : $$8, $$3 - 1, $$4 + 3, $$5 + 4, $$2);
-      this.a($$1, !$$9 ? $$7 : $$8, $$3, $$4 + 3, $$5 + 4, $$2);
-      this.a($$1, $$7, $$3 - 1, $$4 + 2, $$5 + 4, $$2);
-      this.a($$1, $$8, $$3, $$4 + 2, $$5 + 4, $$2);
-      this.a($$1, $$7, $$3, $$4 + 1, $$5 + 4, $$2);
-   }
-
-   private void b(jd $$0, dds $$1, ejh $$2) {
-      int $$3 = $$0.u();
-      int $$4 = $$0.v();
-      int $$5 = $$0.w();
-      dtc $$6 = dga.aX.o();
-      dtc $$7 = dga.aW.o();
-      this.a($$1, $$2, $$3 - 3, $$4 + 1, $$5 - 3, $$3 - 3, $$4 + 1, $$5 + 2, $$6, $$6, true);
-      this.a($$1, $$2, $$3 + 3, $$4 + 1, $$5 - 3, $$3 + 3, $$4 + 1, $$5 + 2, $$6, $$6, true);
-      this.a($$1, $$2, $$3 - 3, $$4 + 1, $$5 - 3, $$3 + 3, $$4 + 1, $$5 - 2, $$6, $$6, true);
-      this.a($$1, $$2, $$3 - 3, $$4 + 1, $$5 + 3, $$3 + 3, $$4 + 1, $$5 + 3, $$6, $$6, true);
-      this.a($$1, $$2, $$3 - 3, $$4 + 2, $$5 - 3, $$3 - 3, $$4 + 2, $$5 + 2, $$7, $$7, true);
-      this.a($$1, $$2, $$3 + 3, $$4 + 2, $$5 - 3, $$3 + 3, $$4 + 2, $$5 + 2, $$7, $$7, true);
-      this.a($$1, $$2, $$3 - 3, $$4 + 2, $$5 - 3, $$3 + 3, $$4 + 2, $$5 - 2, $$7, $$7, true);
-      this.a($$1, $$2, $$3 - 3, $$4 + 2, $$5 + 3, $$3 + 3, $$4 + 2, $$5 + 3, $$7, $$7, true);
-      this.a($$1, $$2, $$3 - 3, -1, $$5 - 3, $$3 - 3, -1, $$5 + 2, $$6, $$6, true);
-      this.a($$1, $$2, $$3 + 3, -1, $$5 - 3, $$3 + 3, -1, $$5 + 2, $$6, $$6, true);
-      this.a($$1, $$2, $$3 - 3, -1, $$5 - 3, $$3 + 3, -1, $$5 - 2, $$6, $$6, true);
-      this.a($$1, $$2, $$3 - 3, -1, $$5 + 3, $$3 + 3, -1, $$5 + 3, $$6, $$6, true);
-      this.a($$3 - 2, $$4 + 1, $$5 - 2, $$3 + 2, $$4 + 3, $$5 + 2);
-      this.a($$1, $$2, $$3 - 2, $$4 + 4, $$5 - 2, $$3 + 2, $$5 + 2);
-      dtc $$8 = dga.hk.o();
-      dtc $$9 = dga.hu.o();
-      this.a($$1, $$9, $$3, $$4, $$5, $$2);
-      this.a($$1, $$8, $$3 + 1, $$4, $$5 - 1, $$2);
-      this.a($$1, $$8, $$3 + 1, $$4, $$5 + 1, $$2);
-      this.a($$1, $$8, $$3 - 1, $$4, $$5 - 1, $$2);
-      this.a($$1, $$8, $$3 - 1, $$4, $$5 + 1, $$2);
-      this.a($$1, $$8, $$3 + 2, $$4, $$5, $$2);
-      this.a($$1, $$8, $$3 - 2, $$4, $$5, $$2);
-      this.a($$1, $$8, $$3, $$4, $$5 + 2, $$2);
-      this.a($$1, $$8, $$3, $$4, $$5 - 2, $$2);
-      this.a($$1, $$8, $$3 + 3, $$4, $$5, $$2);
-      this.c($$3 + 3, $$4 + 1, $$5);
-      this.c($$3 + 3, $$4 + 2, $$5);
-      this.a($$1, $$6, $$3 + 4, $$4 + 1, $$5, $$2);
-      this.a($$1, $$7, $$3 + 4, $$4 + 2, $$5, $$2);
-      this.a($$1, $$8, $$3 - 3, $$4, $$5, $$2);
-      this.c($$3 - 3, $$4 + 1, $$5);
-      this.c($$3 - 3, $$4 + 2, $$5);
-      this.a($$1, $$6, $$3 - 4, $$4 + 1, $$5, $$2);
-      this.a($$1, $$7, $$3 - 4, $$4 + 2, $$5, $$2);
-      this.a($$1, $$8, $$3, $$4, $$5 + 3, $$2);
-      this.c($$3, $$4 + 1, $$5 + 3);
-      this.c($$3, $$4 + 2, $$5 + 3);
-      this.a($$1, $$8, $$3, $$4, $$5 - 3, $$2);
-      this.c($$3, $$4 + 1, $$5 - 3);
-      this.c($$3, $$4 + 2, $$5 - 3);
-      this.a($$1, $$6, $$3, $$4 + 1, $$5 - 4, $$2);
-      this.a($$1, $$7, $$3, -2, $$5 - 4, $$2);
-   }
-
-   private void c(int $$0, int $$1, int $$2) {
-      jd $$3 = this.b($$0, $$1, $$2);
-      this.k.add($$3);
-   }
-
-   private void a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      for (int $$6 = $$1; $$6 <= $$4; $$6++) {
-         for (int $$7 = $$0; $$7 <= $$3; $$7++) {
-            for (int $$8 = $$2; $$8 <= $$5; $$8++) {
-               this.c($$7, $$6, $$8);
-            }
-         }
-      }
-   }
-
-   private void a(dds $$0, int $$1, int $$2, int $$3, ejh $$4) {
-      if ($$0.E_().i() < 0.33F) {
-         dtc $$5 = dga.aV.o();
-         this.a($$0, $$5, $$1, $$2, $$3, $$4);
-      } else {
-         dtc $$6 = dga.I.o();
-         this.a($$0, $$6, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   private void a(dds $$0, ejh $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      for (int $$7 = $$2; $$7 <= $$5; $$7++) {
-         for (int $$8 = $$4; $$8 <= $$6; $$8++) {
-            this.a($$0, $$7, $$3, $$8, $$1);
+            $$8.e(0, -1, 0);
          }
       }
 
-      ayw $$9 = ayw.a($$0.C()).e().a(this.b($$2, $$3, $$4));
-      int $$10 = $$9.a($$2, $$5);
-      int $$11 = $$9.a($$4, $$6);
-      this.l = new jd(this.a($$10, $$11), this.b($$3), this.b($$10, $$11));
-   }
-
-   public List<jd> b() {
-      return this.k;
-   }
-
-   public jd c() {
-      return this.l;
+      private boolean b(dtc $$0) {
+         return $$0 == dga.G.o() || $$0 == dga.H.o();
+      }
    }
 }

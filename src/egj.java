@@ -1,24 +1,17 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public class egj<P extends egi> {
-   public static final egj<egr> a = a("simple_state_provider", egr.b);
-   public static final egj<egs> b = a("weighted_state_provider", egs.b);
-   public static final egj<egn> c = a("noise_threshold_provider", egn.b);
-   public static final egj<egm> d = a("noise_provider", egm.g);
-   public static final egj<egk> e = a("dual_noise_provider", egk.b);
-   public static final egj<egp> f = a("rotated_block_provider", egp.b);
-   public static final egj<ego> g = a("randomized_int_state_provider", ego.b);
-   private final MapCodec<P> h;
+public abstract class egj {
+   public static final Codec<egj> a = lt.T.r().dispatch(egj::a, egk::a);
 
-   private static <P extends egi> egj<P> a(String $$0, MapCodec<P> $$1) {
-      return jz.a(lt.T, $$0, new egj<>($$1));
+   public static egs a(dtc $$0) {
+      return new egs($$0);
    }
 
-   private egj(MapCodec<P> $$0) {
-      this.h = $$0;
+   public static egs a(dfy $$0) {
+      return new egs($$0.o());
    }
 
-   public MapCodec<P> a() {
-      return this.h;
-   }
+   protected abstract egk<?> a();
+
+   public abstract dtc a(ayw var1, jd var2);
 }

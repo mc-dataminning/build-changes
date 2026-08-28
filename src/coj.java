@@ -8,7 +8,7 @@ import javax.annotation.Nullable;
 
 public abstract class coj extends cke {
    protected static final ajw<Boolean> c = aka.a(coj.class, ajy.k);
-   static final Predicate<cjh> b = $$0 -> !$$0.y() && $$0.bE() && cuq.a($$0.p(), coi.a($$0.dR().b(lu.d)));
+   static final Predicate<cjh> b = $$0 -> !$$0.y() && $$0.bE() && cuq.a($$0.p(), coi.a($$0.dQ().b(lu.d)));
    @Nullable
    protected coi d;
    private int e;
@@ -36,22 +36,22 @@ public abstract class coj extends cke {
 
    public abstract void a(aqu var1, int var2, boolean var3);
 
-   public boolean gy() {
+   public boolean gx() {
       return this.ca;
    }
 
-   public void z(boolean $$0) {
+   public void A(boolean $$0) {
       this.ca = $$0;
    }
 
    @Override
    public void m_() {
-      if (this.dP() instanceof aqu && this.bE()) {
-         coi $$0 = this.gz();
-         if (this.gy()) {
+      if (this.dO() instanceof aqu && this.bE()) {
+         coi $$0 = this.gy();
+         if (this.gx()) {
             if ($$0 == null) {
-               if (this.dP().Z() % 20L == 0L) {
-                  coi $$1 = ((aqu)this.dP()).d(this.dp());
+               if (this.dO().Z() % 20L == 0L) {
+                  coi $$1 = ((aqu)this.dO()).d(this.do());
                   if ($$1 != null && cok.a(this, $$1)) {
                      $$1.a($$1.k(), this, null, true);
                   }
@@ -69,18 +69,18 @@ public abstract class coj extends cke {
    }
 
    @Override
-   protected void gq() {
+   protected void gp() {
       this.bf += 2;
    }
 
    @Override
    public void a(brk $$0) {
-      if (this.dP() instanceof aqu) {
+      if (this.dO() instanceof aqu) {
          bsr $$1 = $$0.d();
-         coi $$2 = this.gz();
+         coi $$2 = this.gy();
          if ($$2 != null) {
-            if (this.gp()) {
-               $$2.c(this.gD());
+            if (this.go()) {
+               $$2.c(this.gC());
             }
 
             if ($$1 != null && $$1.am() == bsx.by) {
@@ -95,8 +95,8 @@ public abstract class coj extends cke {
    }
 
    @Override
-   public boolean gs() {
-      return !this.gC();
+   public boolean gr() {
+      return !this.gB();
    }
 
    public void a(@Nullable coi $$0) {
@@ -104,38 +104,38 @@ public abstract class coj extends cke {
    }
 
    @Nullable
-   public coi gz() {
+   public coi gy() {
       return this.d;
    }
 
-   public boolean gA() {
+   public boolean gz() {
       cuq $$0 = this.a(bsy.f);
-      boolean $$1 = !$$0.e() && cuq.a($$0, coi.a(this.dR().b(lu.d)));
-      boolean $$2 = this.gp();
+      boolean $$1 = !$$0.e() && cuq.a($$0, coi.a(this.dQ().b(lu.d)));
+      boolean $$2 = this.go();
       return $$1 && $$2;
    }
 
-   public boolean gB() {
-      return !(this.dP() instanceof aqu $$0) ? false : this.gz() != null || $$0.d(this.dp()) != null;
+   public boolean gA() {
+      return !(this.dO() instanceof aqu $$0) ? false : this.gy() != null || $$0.d(this.do()) != null;
    }
 
-   public boolean gC() {
-      return this.gz() != null && this.gz().u();
+   public boolean gB() {
+      return this.gy() != null && this.gy().u();
    }
 
    public void b(int $$0) {
       this.e = $$0;
    }
 
-   public int gD() {
+   public int gC() {
       return this.e;
    }
 
-   public boolean gE() {
+   public boolean gD() {
       return this.ao.a(c);
    }
 
-   public void A(boolean $$0) {
+   public void B(boolean $$0) {
       this.ao.a(c, $$0);
    }
 
@@ -155,13 +155,13 @@ public abstract class coj extends cke {
       this.e = $$0.h("Wave");
       this.ca = $$0.q("CanJoinRaid");
       if ($$0.b("RaidId", 3)) {
-         if (this.dP() instanceof aqu) {
-            this.d = ((aqu)this.dP()).z().a($$0.h("RaidId"));
+         if (this.dO() instanceof aqu) {
+            this.d = ((aqu)this.dO()).z().a($$0.h("RaidId"));
          }
 
          if (this.d != null) {
             this.d.a(this.e, this, false);
-            if (this.gp()) {
+            if (this.go()) {
                this.d.a(this.e, this);
             }
          }
@@ -171,8 +171,8 @@ public abstract class coj extends cke {
    @Override
    protected void b(cjh $$0) {
       cuq $$1 = $$0.p();
-      boolean $$2 = this.gC() && this.gz().b(this.gD()) != null;
-      if (this.gC() && !$$2 && cuq.a($$1, coi.a(this.dR().b(lu.d)))) {
+      boolean $$2 = this.gB() && this.gy().b(this.gC()) != null;
+      if (this.gB() && !$$2 && cuq.a($$1, coi.a(this.dQ().b(lu.d)))) {
          bsy $$3 = bsy.f;
          cuq $$4 = this.a($$3);
          double $$5 = (double)this.f($$3);
@@ -184,8 +184,8 @@ public abstract class coj extends cke {
          this.a($$3, $$1);
          this.a($$0, $$1.H());
          $$0.aq();
-         this.gz().a(this.gD(), this);
-         this.w(true);
+         this.gy().a(this.gC(), this);
+         this.x(true);
       } else {
          super.b($$0);
       }
@@ -193,15 +193,15 @@ public abstract class coj extends cke {
 
    @Override
    public boolean h(double $$0) {
-      return this.gz() == null ? super.h($$0) : false;
+      return this.gy() == null ? super.h($$0) : false;
    }
 
    @Override
    public boolean Y() {
-      return super.Y() || this.gz() != null;
+      return super.Y() || this.gy() != null;
    }
 
-   public int gF() {
+   public int gE() {
       return this.cb;
    }
 
@@ -211,8 +211,8 @@ public abstract class coj extends cke {
 
    @Override
    public boolean a(brk $$0, float $$1) {
-      if (this.gC()) {
-         this.gz().p();
+      if (this.gB()) {
+         this.gy().p();
       }
 
       return super.a($$0, $$1);
@@ -221,7 +221,7 @@ public abstract class coj extends cke {
    @Nullable
    @Override
    public buh a(ddl $$0, bqp $$1, btr $$2, @Nullable buh $$3) {
-      this.z(this.am() != bsx.bo || $$2 != btr.a);
+      this.A(this.am() != bsx.bo || $$2 != btr.a);
       return super.a($$0, $$1, $$2, $$3);
    }
 
@@ -240,8 +240,8 @@ public abstract class coj extends cke {
 
       @Override
       public boolean b() {
-         btn $$0 = this.b.ej();
-         return this.b.gz() == null && this.b.gu() && this.b.p() != null && !this.b.gc() && ($$0 == null || $$0.am() != bsx.by);
+         btn $$0 = this.b.ei();
+         return this.b.gy() == null && this.b.gt() && this.b.p() != null && !this.b.gb() && ($$0 == null || $$0.am() != bsx.by);
       }
 
       @Override
@@ -249,7 +249,7 @@ public abstract class coj extends cke {
          super.d();
          this.b.N().n();
 
-         for (coj $$1 : this.b.dP().a(coj.class, this.a, this.b, this.b.cL().c(8.0, 8.0, 8.0))) {
+         for (coj $$1 : this.b.dO().a(coj.class, this.a, this.b, this.b.cK().c(8.0, 8.0, 8.0))) {
             $$1.h(this.b.p());
          }
       }
@@ -259,12 +259,12 @@ public abstract class coj extends cke {
          super.e();
          btn $$0 = this.b.p();
          if ($$0 != null) {
-            for (coj $$2 : this.b.dP().a(coj.class, this.a, this.b, this.b.cL().c(8.0, 8.0, 8.0))) {
+            for (coj $$2 : this.b.dO().a(coj.class, this.a, this.b, this.b.cK().c(8.0, 8.0, 8.0))) {
                $$2.h($$0);
-               $$2.v(true);
+               $$2.w(true);
             }
 
-            this.b.v(true);
+            this.b.w(true);
          }
       }
 
@@ -283,7 +283,7 @@ public abstract class coj extends cke {
                   this.b.S();
                }
             } else {
-               this.b.v(true);
+               this.b.w(true);
             }
 
             super.a();
@@ -301,11 +301,11 @@ public abstract class coj extends cke {
 
       @Override
       public boolean b() {
-         coi $$0 = this.a.gz();
-         if (this.a.gC() && !this.a.gz().a() && this.a.gm() && !cuq.a(this.a.a(bsy.f), coi.a(this.a.dR().b(lu.d)))) {
-            coj $$1 = $$0.b(this.a.gD());
+         coi $$0 = this.a.gy();
+         if (this.a.gB() && !this.a.gy().a() && this.a.gl() && !cuq.a(this.a.a(bsy.f), coi.a(this.a.dQ().b(lu.d)))) {
+            coj $$1 = $$0.b(this.a.gC());
             if ($$1 == null || !$$1.bE()) {
-               List<cjh> $$2 = this.a.dP().a(cjh.class, this.a.cL().c(16.0, 8.0, 16.0), coj.b);
+               List<cjh> $$2 = this.a.dO().a(cjh.class, this.a.cK().c(16.0, 8.0, 16.0), coj.b);
                if (!$$2.isEmpty()) {
                   return this.a.N().a($$2.get(0), 1.15F);
                }
@@ -319,8 +319,8 @@ public abstract class coj extends cke {
 
       @Override
       public void a() {
-         if (this.a.N().h().a(this.a.dn(), 1.414)) {
-            List<cjh> $$0 = this.a.dP().a(cjh.class, this.a.cL().c(4.0, 4.0, 4.0), coj.b);
+         if (this.a.N().h().a(this.a.dm(), 1.414)) {
+            List<cjh> $$0 = this.a.dO().a(cjh.class, this.a.cK().c(4.0, 4.0, 4.0), coj.b);
             if (!$$0.isEmpty()) {
                this.a.b($$0.get(0));
             }
@@ -338,19 +338,19 @@ public abstract class coj extends cke {
 
       @Override
       public boolean b() {
-         coi $$0 = this.b.gz();
+         coi $$0 = this.b.gy();
          return this.b.bE() && this.b.p() == null && $$0 != null && $$0.f();
       }
 
       @Override
       public void d() {
-         this.b.A(true);
+         this.b.B(true);
          super.d();
       }
 
       @Override
       public void e() {
-         this.b.A(false);
+         this.b.B(false);
          super.e();
       }
 
@@ -390,12 +390,12 @@ public abstract class coj extends cke {
       }
 
       private boolean h() {
-         return this.a.gC() && !this.a.gz().a();
+         return this.a.gB() && !this.a.gy().a();
       }
 
       private boolean i() {
-         aqu $$0 = (aqu)this.a.dP();
-         jd $$1 = this.a.dp();
+         aqu $$0 = (aqu)this.a.dO();
+         jd $$1 = this.a.do();
          Optional<jd> $$2 = $$0.y().a($$0x -> $$0x.a(cew.n), this::a, ces.b.c, $$1, 48, this.a.ah);
          if ($$2.isEmpty()) {
             return false;
@@ -407,12 +407,12 @@ public abstract class coj extends cke {
 
       @Override
       public boolean c() {
-         return this.a.N().l() ? false : this.a.p() == null && !this.c.a(this.a.dn(), (double)(this.a.dk() + (float)this.e)) && !this.f;
+         return this.a.N().l() ? false : this.a.p() == null && !this.c.a(this.a.dm(), (double)(this.a.dj() + (float)this.e)) && !this.f;
       }
 
       @Override
       public void e() {
-         if (this.c.a(this.a.dn(), (double)this.e)) {
+         if (this.c.a(this.a.dm(), (double)this.e)) {
             this.d.add(this.c);
          }
       }
@@ -428,8 +428,8 @@ public abstract class coj extends cke {
       @Override
       public void a() {
          if (this.a.N().l()) {
-            exa $$0 = exa.c(this.c);
-            exa $$1 = cej.a(this.a, 16, 7, $$0, (float) (Math.PI / 10));
+            exc $$0 = exc.c(this.c);
+            exc $$1 = cej.a(this.a, 16, 7, $$0, (float) (Math.PI / 10));
             if ($$1 == null) {
                $$1 = cej.a(this.a, 8, 7, $$0, (float) (Math.PI / 2));
             }

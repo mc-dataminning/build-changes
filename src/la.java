@@ -16,7 +16,7 @@ public class la extends ky {
 
    private static boolean a(aqu $$0, jd $$1) {
       dtc $$2 = $$0.a_($$1);
-      if ($$2.a(awe.aG, $$0x -> $$0x.b(dfs.c) && $$0x.b() instanceof dfs)) {
+      if ($$2.a(awe.aH, $$0x -> $$0x.b(dfs.c) && $$0x.b() instanceof dfs)) {
          int $$3 = $$2.c(dfs.c);
          if ($$3 >= 5) {
             $$0.a(null, $$1, avp.bX, avq.e, 1.0F, 1.0F);
@@ -31,7 +31,7 @@ public class la extends ky {
    }
 
    private static boolean b(aqu $$0, jd $$1) {
-      for (btn $$3 : $$0.a(btn.class, new ewv($$1), bsw.f)) {
+      for (btn $$3 : $$0.a(btn.class, new ewx($$1), bsw.f)) {
          if ($$3 instanceof buf $$4 && $$4.a()) {
             $$4.a(avq.e);
             $$0.a(null, dxz.M, $$1);

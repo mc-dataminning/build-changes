@@ -6,8 +6,8 @@ public class dor extends dfy {
    public static final int b = 2;
    public static final int c = 1;
    public static final int d = 4;
-   private static final ext g = dfy.a(3.0, 0.0, 3.0, 12.0, 7.0, 12.0);
-   private static final ext h = dfy.a(1.0, 0.0, 1.0, 15.0, 7.0, 15.0);
+   private static final exv g = dfy.a(3.0, 0.0, 3.0, 12.0, 7.0, 12.0);
+   private static final exv h = dfy.a(1.0, 0.0, 1.0, 15.0, 7.0, 15.0);
    public static final duc e = dts.aE;
    public static final duc f = dts.aD;
 
@@ -91,7 +91,7 @@ public class dor extends dfy {
    }
 
    public static boolean b(dcc $$0, jd $$1) {
-      return $$0.a_($$1).a(awe.H);
+      return $$0.a_($$1).a(awe.I);
    }
 
    @Override
@@ -125,7 +125,7 @@ public class dor extends dfy {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return $$0.c(f) > 1 ? h : g;
    }
 

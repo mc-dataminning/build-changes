@@ -12,7 +12,7 @@ public class cdw extends cdy<cmk> {
 
    protected void a(aqu $$0, cmk $$1) {
       akq<dcw> $$2 = $$0.af();
-      jd $$3 = $$1.dp();
+      jd $$3 = $$1.do();
       List<jl> $$4 = Lists.newArrayList();
       int $$5 = 4;
 
@@ -20,14 +20,14 @@ public class cdw extends cdy<cmk> {
          for (int $$7 = -2; $$7 <= 2; $$7++) {
             for (int $$8 = -4; $$8 <= 4; $$8++) {
                jd $$9 = $$3.b($$6, $$7, $$8);
-               if ($$1.gw().b().e().contains($$0.a_($$9).b())) {
+               if ($$1.gv().b().e().contains($$0.a_($$9).b())) {
                   $$4.add(jl.a($$2, $$9));
                }
             }
          }
       }
 
-      buq<?> $$10 = $$1.dU();
+      buq<?> $$10 = $$1.dT();
       if (!$$4.isEmpty()) {
          $$10.a(ccs.f, $$4);
       } else {

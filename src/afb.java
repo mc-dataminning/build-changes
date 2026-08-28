@@ -6,10 +6,10 @@ public class afb implements zg<abu> {
    private final int e;
 
    public afb(bsr $$0) {
-      this($$0.an(), $$0.ds());
+      this($$0.an(), $$0.dr());
    }
 
-   public afb(int $$0, exa $$1) {
+   public afb(int $$0, exc $$1) {
       this.b = $$0;
       double $$2 = 3.9;
       double $$3 = ayo.a($$1.c, -3.9, 3.9);

@@ -17,7 +17,7 @@ public class dog extends dfy {
    }
 
    @Override
-   protected void a(dcw $$0, dtc $$1, eww $$2, cnp $$3) {
+   protected void a(dcw $$0, dtc $$1, ewy $$2, cnp $$3) {
       int $$4 = a((dcx)$$0, $$1, $$2, (bsr)$$3);
       if ($$3.s() instanceof aqv $$6) {
          $$6.a(avz.aE);
@@ -25,7 +25,7 @@ public class dog extends dfy {
       }
    }
 
-   private static int a(dcx $$0, dtc $$1, eww $$2, bsr $$3) {
+   private static int a(dcx $$0, dtc $$1, ewy $$2, bsr $$3) {
       int $$4 = a($$2, $$2.e());
       int $$5 = $$3 instanceof cnd ? 20 : 8;
       if (!$$0.P().a($$2.a(), $$1.b())) {
@@ -35,7 +35,7 @@ public class dog extends dfy {
       return $$4;
    }
 
-   private static int a(eww $$0, exa $$1) {
+   private static int a(ewy $$0, exc $$1) {
       ji $$2 = $$0.b();
       double $$3 = Math.abs(ayo.e($$1.c) - 0.5);
       double $$4 = Math.abs(ayo.e($$1.d) - 0.5);

@@ -9,8 +9,8 @@ public class dlc extends dfy implements dlr {
    public static final dua<ji.a> b = dts.H;
    private static final Logger f = LogUtils.getLogger();
    protected static final int c = 2;
-   protected static final ext d = dfy.a(0.0, 0.0, 6.0, 16.0, 16.0, 10.0);
-   protected static final ext e = dfy.a(6.0, 0.0, 0.0, 10.0, 16.0, 16.0);
+   protected static final exv d = dfy.a(0.0, 0.0, 6.0, 16.0, 16.0, 10.0);
+   protected static final exv e = dfy.a(6.0, 0.0, 0.0, 10.0, 16.0, 16.0);
 
    @Override
    public MapCodec<dlc> a() {
@@ -23,7 +23,7 @@ public class dlc extends dfy implements dlr {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       switch ((ji.a)$$0.c(b)) {
          case c:
             return e;
@@ -54,45 +54,45 @@ public class dlc extends dfy implements dlr {
       ji.a $$6 = $$1.o();
       ji.a $$7 = $$0.c(b);
       boolean $$8 = $$7 != $$6 && $$6.d();
-      return !$$8 && !$$2.a(this) && !new eqc($$3, $$4, $$7).c() ? dga.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return !$$8 && !$$2.a(this) && !new eqe($$3, $$4, $$7).c() ? dga.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
    protected void a(dtc $$0, dcw $$1, jd $$2, bsr $$3) {
-      if ($$3.cx()) {
+      if ($$3.o(false)) {
          $$3.a(this, $$2);
       }
    }
 
    @Override
    public int a(aqu $$0, bsr $$1) {
-      return $$1 instanceof cmx $$2 ? Math.max(1, $$0.ab().c($$2.ga().a ? dcs.F : dcs.E)) : 0;
+      return $$1 instanceof cmx $$2 ? Math.max(1, $$0.ab().c($$2.fZ().a ? dcs.F : dcs.E)) : 0;
    }
 
    @Nullable
    @Override
-   public eqa a(aqu $$0, bsr $$1, jd $$2) {
+   public eqc a(aqu $$0, bsr $$1, jd $$2) {
       akq<dcw> $$3 = $$0.af() == dcw.i ? dcw.h : dcw.i;
       aqu $$4 = $$0.o().a($$3);
       boolean $$5 = $$4.af() == dcw.i;
       dut $$6 = $$4.C_();
       double $$7 = dwy.a($$0.D_(), $$4.D_());
-      jd $$8 = $$6.b($$1.du() * $$7, $$1.dw(), $$1.dA() * $$7);
+      jd $$8 = $$6.b($$1.dt() * $$7, $$1.dv(), $$1.dz() * $$7);
       return this.a($$4, $$1, $$2, $$8, $$5, $$6);
    }
 
    @Nullable
-   private eqa a(aqu $$0, bsr $$1, jd $$2, jd $$3, boolean $$4, dut $$5) {
+   private eqc a(aqu $$0, bsr $$1, jd $$2, jd $$3, boolean $$4, dut $$5) {
       Optional<jd> $$6 = $$0.p().a($$3, $$4, $$5);
       l.a $$9;
-      eqa.a $$10;
+      eqc.a $$10;
       if ($$6.isPresent()) {
          jd $$7 = $$6.get();
          dtc $$8 = $$0.a_($$7);
          $$9 = l.a($$7, $$8.c(dts.H), 21, ji.a.b, 21, $$2x -> $$0.a_($$2x) == $$8);
-         $$10 = eqa.b.then($$1x -> $$1x.f($$7));
+         $$10 = eqc.b.then($$1x -> $$1x.f($$7));
       } else {
-         ji.a $$11 = $$1.dP().a_($$2).d(b).orElse(ji.a.a);
+         ji.a $$11 = $$1.dO().a_($$2).d(b).orElse(ji.a.a);
          Optional<l.a> $$12 = $$0.p().a($$3, $$11);
          if ($$12.isEmpty()) {
             f.error("Unable to create a portal, likely target out of worldborder");
@@ -100,29 +100,29 @@ public class dlc extends dfy implements dlr {
          }
 
          $$9 = $$12.get();
-         $$10 = eqa.b.then(eqa.c);
+         $$10 = eqc.b.then(eqc.c);
       }
 
       return a($$1, $$2, $$9, $$0, $$10);
    }
 
-   private static eqa a(bsr $$0, jd $$1, l.a $$2, aqu $$3, eqa.a $$4) {
-      dtc $$5 = $$0.dP().a_($$1);
+   private static eqc a(bsr $$0, jd $$1, l.a $$2, aqu $$3, eqc.a $$4) {
+      dtc $$5 = $$0.dO().a_($$1);
       ji.a $$6;
-      exa $$8;
+      exc $$8;
       if ($$5.b(dts.H)) {
          $$6 = $$5.c(dts.H);
-         l.a $$7 = l.a($$1, $$6, 21, ji.a.b, 21, $$2x -> $$0.dP().a_($$2x) == $$5);
+         l.a $$7 = l.a($$1, $$6, 21, ji.a.b, 21, $$2x -> $$0.dO().a_($$2x) == $$5);
          $$8 = $$0.a($$6, $$7);
       } else {
          $$6 = ji.a.a;
-         $$8 = new exa(0.5, 0.0, 0.0);
+         $$8 = new exc(0.5, 0.0, 0.0);
       }
 
-      return a($$3, $$2, $$6, $$8, $$0, $$0.ds(), $$0.dF(), $$0.dH(), $$4);
+      return a($$3, $$2, $$6, $$8, $$0, $$0.dr(), $$0.dE(), $$0.dG(), $$4);
    }
 
-   private static eqa a(aqu $$0, l.a $$1, ji.a $$2, exa $$3, bsr $$4, exa $$5, float $$6, float $$7, eqa.a $$8) {
+   private static eqc a(aqu $$0, l.a $$1, ji.a $$2, exc $$3, bsr $$4, exc $$5, float $$6, float $$7, eqc.a $$8) {
       jd $$9 = $$1.a;
       dtc $$10 = $$0.a_($$9);
       ji.a $$11 = $$10.d(dts.H).orElse(ji.a.a);
@@ -130,14 +130,14 @@ public class dlc extends dfy implements dlr {
       double $$13 = (double)$$1.c;
       bsu $$14 = $$4.a($$4.at());
       int $$15 = $$2 == $$11 ? 0 : 90;
-      exa $$16 = $$2 == $$11 ? $$5 : new exa($$5.e, $$5.d, -$$5.c);
+      exc $$16 = $$2 == $$11 ? $$5 : new exc($$5.e, $$5.d, -$$5.c);
       double $$17 = (double)$$14.a() / 2.0 + ($$12 - (double)$$14.a()) * $$3.a();
       double $$18 = ($$13 - (double)$$14.b()) * $$3.b();
       double $$19 = 0.5 + $$3.c();
       boolean $$20 = $$11 == ji.a.a;
-      exa $$21 = new exa((double)$$9.u() + ($$20 ? $$17 : $$19), (double)$$9.v() + $$18, (double)$$9.w() + ($$20 ? $$19 : $$17));
-      exa $$22 = eqc.a($$21, $$0, $$4, $$14);
-      return new eqa($$0, $$22, $$16, $$6 + (float)$$15, $$7, $$8);
+      exc $$21 = new exc((double)$$9.u() + ($$20 ? $$17 : $$19), (double)$$9.v() + $$18, (double)$$9.w() + ($$20 ? $$19 : $$17));
+      exc $$22 = eqe.a($$21, $$0, $$4, $$14);
+      return new eqc($$0, $$22, $$16, $$6 + (float)$$15, $$7, $$8);
    }
 
    @Override

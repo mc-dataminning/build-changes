@@ -37,7 +37,7 @@ public class aqw {
          this.d.d.ah().a(new aea(aea.a.c, this.d));
          this.c.e();
          if ($$0 == dct.b) {
-            this.d.gC();
+            this.d.gB();
          }
 
          return true;
@@ -47,7 +47,7 @@ public class aqw {
    protected void a(dct $$0, @Nullable dct $$1) {
       this.e = $$1;
       this.b = $$0;
-      $$0.a(this.d.ga());
+      $$0.a(this.d.fZ());
    }
 
    public dct b() {
@@ -94,7 +94,7 @@ public class aqw {
 
    private float a(dtc $$0, jd $$1, int $$2) {
       int $$3 = this.i - $$2;
-      float $$4 = $$0.a(this.d, this.d.dP(), $$1) * (float)($$3 + 1);
+      float $$4 = $$0.a(this.d, this.d.dO(), $$1) * (float)($$3 + 1);
       int $$5 = (int)($$4 * 10.0F);
       if ($$5 != this.m) {
          this.c.a(this.d.an(), $$1, $$5);
@@ -136,9 +136,9 @@ public class aqw {
             float $$5 = 1.0F;
             dtc $$6 = this.c.a_($$0);
             if (!$$6.i()) {
-               dae.a(this.c, this.d.eU(), this.d, this.d, bsy.a, exa.b($$0), $$6, $$0x -> this.d.a($$0x, bsy.a));
+               dae.a(this.c, this.d.eT(), this.d, this.d, bsy.a, exc.b($$0), $$6, $$0x -> this.d.a($$0x, bsy.a));
                $$6.a(this.c, $$0, this.d);
-               $$5 = $$6.a(this.d, this.d.dP(), $$0);
+               $$5 = $$6.a(this.d, this.d.dO(), $$0);
             }
 
             if (!$$6.i() && $$5 >= 1.0F) {
@@ -161,7 +161,7 @@ public class aqw {
                int $$8 = this.i - this.g;
                dtc $$9 = this.c.a_($$0);
                if (!$$9.i()) {
-                  float $$10 = $$9.a(this.d, this.d.dP(), $$0) * (float)($$8 + 1);
+                  float $$10 = $$9.a(this.d, this.d.dO(), $$0) * (float)($$8 + 1);
                   if ($$10 >= 0.7F) {
                      this.f = false;
                      this.c.a(this.d.an(), $$0, -1);
@@ -204,12 +204,12 @@ public class aqw {
 
    public boolean a(jd $$0) {
       dtc $$1 = this.c.a_($$0);
-      if (!this.d.eU().g().a($$1, this.c, $$0, this.d)) {
+      if (!this.d.eT().g().a($$1, this.c, $$0, this.d)) {
          return false;
       } else {
          dqh $$2 = this.c.c_($$0);
          dfy $$3 = $$1.b();
-         if ($$3 instanceof djg && !this.d.gw()) {
+         if ($$3 instanceof djg && !this.d.gv()) {
             this.c.a($$0, $$1, $$1, 3);
             return false;
          } else if (this.d.a(this.c, $$0, this.b)) {
@@ -224,7 +224,7 @@ public class aqw {
             if (this.e()) {
                return true;
             } else {
-               cuq $$6 = this.d.eU();
+               cuq $$6 = this.d.eT();
                cuq $$7 = $$6.s();
                boolean $$8 = this.d.d($$4);
                $$6.a(this.c, $$4, $$0, this.d);
@@ -241,7 +241,7 @@ public class aqw {
    public bqr a(aqv $$0, dcw $$1, cuq $$2, bqq $$3) {
       if (this.b == dct.d) {
          return bqr.e;
-      } else if ($$0.gu().a($$2.g())) {
+      } else if ($$0.gt().a($$2.g())) {
          return bqr.e;
       } else {
          int $$4 = $$2.H();
@@ -250,7 +250,7 @@ public class aqw {
          cuq $$7 = $$6.b();
          if ($$7 == $$2 && $$7.H() == $$4 && $$7.a((btn)$$0) <= 0 && $$7.n() == $$5) {
             return $$6.a();
-         } else if ($$6.a() == bqr.f && $$7.a((btn)$$0) > 0 && !$$0.fs()) {
+         } else if ($$6.a() == bqr.f && $$7.a((btn)$$0) > 0 && !$$0.fr()) {
             return $$6.a();
          } else {
             if ($$2 != $$7) {
@@ -261,7 +261,7 @@ public class aqw {
                $$0.a($$3, cuq.l);
             }
 
-            if (!$$0.fs()) {
+            if (!$$0.fr()) {
                $$0.cc.b();
             }
 
@@ -270,7 +270,7 @@ public class aqw {
       }
    }
 
-   public bqr a(aqv $$0, dcw $$1, cuq $$2, bqq $$3, eww $$4) {
+   public bqr a(aqv $$0, dcw $$1, cuq $$2, bqq $$3, ewy $$4) {
       jd $$5 = $$4.a();
       dtc $$6 = $$1.a_($$5);
       if (!$$6.b().a($$1.J())) {
@@ -284,8 +284,8 @@ public class aqw {
             return bqr.e;
          }
       } else {
-         boolean $$8 = !$$0.eU().e() || !$$0.eV().e();
-         boolean $$9 = $$0.fO() && $$8;
+         boolean $$8 = !$$0.eT().e() || !$$0.eU().e();
+         boolean $$9 = $$0.fN() && $$8;
          cuq $$10 = $$2.s();
          if (!$$9) {
             bqt $$11 = $$6.a($$0.b($$3), $$1, $$0, $$3, $$4);
@@ -303,7 +303,7 @@ public class aqw {
             }
          }
 
-         if (!$$2.e() && !$$0.gu().a($$2.g())) {
+         if (!$$2.e() && !$$0.gt().a($$2.g())) {
             cyf $$13 = new cyf($$0, $$3, $$4);
             bqr $$15;
             if (this.e()) {

@@ -24,7 +24,7 @@ public abstract class cgb extends bul {
       super.l();
    }
 
-   public boolean gz() {
+   public boolean gy() {
       return this.cf > 100;
    }
 }

@@ -11,7 +11,7 @@ public class eav extends eax {
    public final bpu b;
    public final eav.a c;
 
-   public eav(float $$0, ehw $$1, bpu $$2, dzs $$3, eay $$4, jq<dfy> $$5, bpu $$6, eav.a $$7) {
+   public eav(float $$0, ehx $$1, bpu $$2, dzs $$3, eay $$4, jq<dfy> $$5, bpu $$6, eav.a $$7) {
       super($$0, $$1, $$2, $$3, $$4, $$5);
       this.b = $$6;
       this.c = $$7;

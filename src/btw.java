@@ -6,7 +6,7 @@ public abstract class btw extends btp {
    }
 
    public float c(jd $$0) {
-      return this.a($$0, this.dP());
+      return this.a($$0, this.dO());
    }
 
    public float a(jd $$0, dcz $$1) {
@@ -15,14 +15,14 @@ public abstract class btw extends btp {
 
    @Override
    public boolean a(dcx $$0, btr $$1) {
-      return this.a(this.dp(), $$0) >= 0.0F;
+      return this.a(this.do(), $$0) >= 0.0F;
    }
 
-   public boolean gh() {
+   public boolean gg() {
       return !this.N().l();
    }
 
-   public boolean gi() {
+   public boolean gh() {
       if (this.bF.a(ccs.Z)) {
          return this.bF.c(ccs.Z).isPresent();
       } else {
@@ -36,29 +36,29 @@ public abstract class btw extends btp {
       }
    }
 
-   protected boolean gj() {
+   protected boolean gi() {
       return true;
    }
 
    @Override
    public void b(bsr $$0) {
       super.b($$0);
-      if (this.gj() && !this.gi()) {
+      if (this.gi() && !this.gh()) {
          this.bU.b(cam.a.a);
          float $$1 = 2.0F;
          float $$2 = this.f($$0);
-         exa $$3 = new exa($$0.du() - this.du(), $$0.dw() - this.dw(), $$0.dA() - this.dA()).d().a((double)Math.max($$2 - 2.0F, 0.0F));
-         this.N().a(this.du() + $$3.c, this.dw() + $$3.d, this.dA() + $$3.e, this.gk());
+         exc $$3 = new exc($$0.dt() - this.dt(), $$0.dv() - this.dv(), $$0.dz() - this.dz()).d().a((double)Math.max($$2 - 2.0F, 0.0F));
+         this.N().a(this.dt() + $$3.c, this.dv() + $$3.d, this.dz() + $$3.e, this.gj());
       }
    }
 
    @Override
    public boolean a(bsr $$0, float $$1) {
-      this.a($$0.dp(), 5);
+      this.a($$0.do(), 5);
       return true;
    }
 
-   protected double gk() {
+   protected double gj() {
       return 1.0;
    }
 }

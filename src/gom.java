@@ -1,39 +1,27 @@
-public class gom<T extends btn, M extends fvi<T> & fuh> extends got<T, M> {
-   private final get a;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-   public gom(gmd<T, M> $$0, get $$1) {
+public class gom extends gov<cfq, fvz<cfq>> {
+   private static final Map<bsp.a, akr> a = ImmutableMap.of(
+      bsp.a.b,
+      akr.b("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
+      bsp.a.c,
+      akr.b("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
+      bsp.a.d,
+      akr.b("textures/entity/iron_golem/iron_golem_crackiness_high.png")
+   );
+
+   public gom(gmf<cfq, fvz<cfq>> $$0) {
       super($$0);
-      this.a = $$1;
    }
 
-   public void a(fbg $$0, gex $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fr() == btg.b;
-      cuq $$11 = $$10 ? $$3.eV() : $$3.eU();
-      cuq $$12 = $$10 ? $$3.eU() : $$3.eV();
-      if (!$$11.e() || !$$12.e()) {
-         $$0.a();
-         if (this.c().e) {
-            float $$13 = 0.5F;
-            $$0.a(0.0F, 0.75F, 0.0F);
-            $$0.b(0.5F, 0.5F, 0.5F);
+   public void a(fbi $$0, gez $$1, int $$2, cfq $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.ci()) {
+         bsp.a $$10 = $$3.t();
+         if ($$10 != bsp.a.a) {
+            akr $$11 = a.get($$10);
+            a(this.c(), $$11, $$0, $$1, $$2, $$3, -1);
          }
-
-         this.a($$3, $$12, cun.c, btg.b, $$0, $$1, $$2);
-         this.a($$3, $$11, cun.b, btg.a, $$0, $$1, $$2);
-         $$0.b();
-      }
-   }
-
-   protected void a(btn $$0, cuq $$1, cun $$2, btg $$3, fbg $$4, gex $$5, int $$6) {
-      if (!$$1.e()) {
-         $$4.a();
-         this.c().a($$3, $$4);
-         $$4.a(a.b.rotationDegrees(-90.0F));
-         $$4.a(a.d.rotationDegrees(180.0F));
-         boolean $$7 = $$3 == btg.a;
-         $$4.a((float)($$7 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
-         this.a.a($$0, $$1, $$2, $$7, $$4, $$5, $$6);
-         $$4.b();
       }
    }
 }

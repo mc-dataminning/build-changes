@@ -11,7 +11,7 @@ public class dri extends dqh {
    public static final String g = "final_state";
    private akr h = akr.b("empty");
    private akr i = akr.b("empty");
-   private akq<ekz> j = akq.a(lu.aU, akr.b("empty"));
+   private akq<elb> j = akq.a(lu.aU, akr.b("empty"));
    private dri.a k = dri.a.a;
    private String l = "minecraft:air";
    private int m;
@@ -29,7 +29,7 @@ public class dri extends dqh {
       return this.i;
    }
 
-   public akq<ekz> d() {
+   public akq<elb> d() {
       return this.j;
    }
 
@@ -57,7 +57,7 @@ public class dri extends dqh {
       this.i = $$0;
    }
 
-   public void a(akq<ekz> $$0) {
+   public void a(akq<elb> $$0) {
       this.j = $$0;
    }
 
@@ -112,9 +112,9 @@ public class dri extends dqh {
 
    public void a(aqu $$0, int $$1, boolean $$2) {
       jd $$3 = this.aD_().a(this.n().c(dka.b).a());
-      jz<ekz> $$4 = $$0.H_().d(lu.aU);
-      jm<ekz> $$5 = $$4.g(this.j);
-      ekt.a($$0, $$5, this.i, $$1, $$3, $$2);
+      jz<elb> $$4 = $$0.H_().d(lu.aU);
+      jm<elb> $$5 = $$4.g(this.j);
+      ekv.a($$0, $$5, this.i, $$1, $$3, $$2);
    }
 
    public static enum a implements azk {

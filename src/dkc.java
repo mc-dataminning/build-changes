@@ -3,7 +3,7 @@ import javax.annotation.Nullable;
 
 public class dkc extends djn implements dkp {
    public static final MapCodec<dkc> c = b(dkc::new);
-   protected static final ext g = dfy.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+   protected static final exv g = dfy.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
    private static final double h = 0.14;
 
    @Override
@@ -31,12 +31,12 @@ public class dkc extends djn implements dkp {
    }
 
    @Override
-   public boolean a(@Nullable cmx $$0, dcc $$1, jd $$2, dtc $$3, epb $$4) {
+   public boolean a(@Nullable cmx $$0, dcc $$1, jd $$2, dtc $$3, epd $$4) {
       return false;
    }
 
    @Override
-   public boolean a(dcx $$0, jd $$1, dtc $$2, epc $$3) {
+   public boolean a(dcx $$0, jd $$1, dtc $$2, epe $$3) {
       return false;
    }
 
@@ -48,12 +48,12 @@ public class dkc extends djn implements dkp {
    @Nullable
    @Override
    public dtc a(cyd $$0) {
-      epc $$1 = $$0.q().b_($$0.a());
+      epe $$1 = $$0.q().b_($$0.a());
       return $$1.a(awk.a) && $$1.e() == 8 ? super.a($$0) : null;
    }
 
    @Override
-   protected epc b_(dtc $$0) {
-      return epd.c.a(false);
+   protected epe b_(dtc $$0) {
+      return epf.c.a(false);
    }
 }

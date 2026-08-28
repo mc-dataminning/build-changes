@@ -66,7 +66,7 @@ public class bwg extends bvh<btp> {
    }
 
    private void a(btp $$0, jd $$1) {
-      $$0.dU().a(ccs.m, new ccv($$1, this.g, 0));
+      $$0.dT().a(ccs.m, new ccv($$1, this.g, 0));
    }
 
    private boolean b(aqu $$0, btp $$1) {
@@ -74,21 +74,21 @@ public class bwg extends bvh<btp> {
    }
 
    private boolean c(aqu $$0, btp $$1) {
-      jd $$2 = $$1.dp();
+      jd $$2 = $$1.do();
       jd $$3 = $$2.e();
       return this.a($$0, $$2) || this.a($$0, $$3);
    }
 
    private boolean d(aqu $$0, btp $$1) {
-      return this.a($$0, $$1.dp());
+      return this.a($$0, $$1.do());
    }
 
    private boolean a(aqu $$0, jd $$1) {
-      return $$0.a_($$1).a(awe.R);
+      return $$0.a_($$1).a(awe.S);
    }
 
    private Optional<jd> a(btp $$0) {
-      return $$0.dU().c(ccs.w);
+      return $$0.dT().c(ccs.w);
    }
 
    private boolean e(aqu $$0, btp $$1) {

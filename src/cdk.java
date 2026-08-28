@@ -26,7 +26,7 @@ public class cdk extends cdy<btn> {
    }
 
    public static void a(btn $$0) {
-      Optional<List<btn>> $$1 = $$0.dU().c(ccs.g);
+      Optional<List<btn>> $$1 = $$0.dT().c(ccs.g);
       if (!$$1.isEmpty()) {
          boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.am().equals(bsx.af));
          if ($$2) {
@@ -36,6 +36,6 @@ public class cdk extends cdy<btn> {
    }
 
    public static void b(btn $$0) {
-      $$0.dU().a(ccs.F, true, 599L);
+      $$0.dT().a(ccs.F, true, 599L);
    }
 }

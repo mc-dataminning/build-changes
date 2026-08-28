@@ -21,7 +21,7 @@ public abstract class cfb extends cgg implements cfg {
    }
 
    @Override
-   public int fO() {
+   public int fN() {
       return 8;
    }
 
@@ -37,7 +37,7 @@ public abstract class cfb extends cgg implements cfg {
    }
 
    @Override
-   public void w(boolean $$0) {
+   public void x(boolean $$0) {
       this.ao.a(b, $$0);
    }
 
@@ -50,7 +50,7 @@ public abstract class cfb extends cgg implements cfg {
    @Override
    public void a(ub $$0) {
       super.a($$0);
-      this.w($$0.q("FromBucket"));
+      this.x($$0.q("FromBucket"));
    }
 
    @Override
@@ -67,13 +67,13 @@ public abstract class cfb extends cgg implements cfg {
    }
 
    @Override
-   public void a(exa $$0) {
-      if (this.dc() && this.bf()) {
+   public void a(exc $$0) {
+      if (this.db() && this.bf()) {
          this.a(0.01F, $$0);
-         this.a(bts.a, this.ds());
-         this.i(this.ds().a(0.9));
+         this.a(bts.a, this.dr());
+         this.i(this.dr().a(0.9));
          if (this.p() == null) {
-            this.i(this.ds().b(0.0, -0.005, 0.0));
+            this.i(this.dr().b(0.0, -0.005, 0.0));
          }
       } else {
          super.a($$0);
@@ -83,10 +83,10 @@ public abstract class cfb extends cgg implements cfg {
    @Override
    public void m_() {
       if (!this.bf() && this.aF() && this.R) {
-         this.i(this.ds().b((double)((this.ah.i() * 2.0F - 1.0F) * 0.05F), 0.4F, (double)((this.ah.i() * 2.0F - 1.0F) * 0.05F)));
+         this.i(this.dr().b((double)((this.ah.i() * 2.0F - 1.0F) * 0.05F), 0.4F, (double)((this.ah.i() * 2.0F - 1.0F) * 0.05F)));
          this.d(false);
          this.av = true;
-         this.b(this.gm());
+         this.b(this.gl());
       }
 
       super.m_();
@@ -112,11 +112,11 @@ public abstract class cfb extends cgg implements cfg {
       return avp.dk;
    }
 
-   protected boolean gl() {
+   protected boolean gk() {
       return true;
    }
 
-   protected abstract avo gm();
+   protected abstract avo gl();
 
    @Override
    protected avo aQ() {
@@ -138,24 +138,24 @@ public abstract class cfb extends cgg implements cfg {
       @Override
       public void a() {
          if (this.l.a(awk.a)) {
-            this.l.i(this.l.ds().b(0.0, 0.005, 0.0));
+            this.l.i(this.l.dr().b(0.0, 0.005, 0.0));
          }
 
          if (this.k == bzp.a.b && !this.l.N().l()) {
             float $$0 = (float)(this.h * this.l.g(buw.v));
-            this.l.A(ayo.i(0.125F, this.l.fk(), $$0));
-            double $$1 = this.e - this.l.du();
-            double $$2 = this.f - this.l.dw();
-            double $$3 = this.g - this.l.dA();
+            this.l.A(ayo.i(0.125F, this.l.fj(), $$0));
+            double $$1 = this.e - this.l.dt();
+            double $$2 = this.f - this.l.dv();
+            double $$3 = this.g - this.l.dz();
             if ($$2 != 0.0) {
                double $$4 = Math.sqrt($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
-               this.l.i(this.l.ds().b(0.0, (double)this.l.fk() * ($$2 / $$4) * 0.1, 0.0));
+               this.l.i(this.l.dr().b(0.0, (double)this.l.fj() * ($$2 / $$4) * 0.1, 0.0));
             }
 
             if ($$1 != 0.0 || $$3 != 0.0) {
                float $$5 = (float)(ayo.d($$3, $$1) * 180.0F / (float)Math.PI) - 90.0F;
-               this.l.t(this.a(this.l.dF(), $$5, 90.0F));
-               this.l.aY = this.l.dF();
+               this.l.t(this.a(this.l.dE(), $$5, 90.0F));
+               this.l.aY = this.l.dE();
             }
          } else {
             this.l.A(0.0F);
@@ -173,7 +173,7 @@ public abstract class cfb extends cgg implements cfg {
 
       @Override
       public boolean b() {
-         return this.i.gl() && super.b();
+         return this.i.gk() && super.b();
       }
    }
 }

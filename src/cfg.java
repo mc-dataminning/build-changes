@@ -3,7 +3,7 @@ import java.util.Optional;
 public interface cfg {
    boolean t();
 
-   void w(boolean var1);
+   void x(boolean var1);
 
    void n(cuq var1);
 
@@ -17,8 +17,8 @@ public interface cfg {
    static void a(btp $$0, cuq $$1) {
       $$1.b(kq.g, $$0.aj());
       cxh.a(kq.N, $$1, $$1x -> {
-         if ($$0.ga()) {
-            $$1x.a("NoAI", $$0.ga());
+         if ($$0.fZ()) {
+            $$1x.a("NoAI", $$0.fZ());
          }
 
          if ($$0.aX()) {
@@ -37,14 +37,14 @@ public interface cfg {
             $$1x.a("Invulnerable", $$0.cv());
          }
 
-         $$1x.a("Health", $$0.ex());
+         $$1x.a("Health", $$0.ew());
       });
    }
 
    @Deprecated
    static void a(btp $$0, ub $$1) {
       if ($$1.e("NoAI")) {
-         $$0.t($$1.q("NoAI"));
+         $$0.u($$1.q("NoAI"));
       }
 
       if ($$1.e("Silent")) {
@@ -76,7 +76,7 @@ public interface cfg {
          $$2.n($$4);
          cuq $$5 = cus.a($$3, $$0, $$4, false);
          $$0.a($$1, $$5);
-         dcw $$6 = $$2.dP();
+         dcw $$6 = $$2.dO();
          if (!$$6.B) {
             an.k.a((aqv)$$0, $$4);
          }

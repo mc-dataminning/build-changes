@@ -1,9 +1,14 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public abstract class ene {
-   public static final Codec<ene> c = lt.o.r().dispatch("predicate_type", ene::a, enf::codec);
+public class ene extends enq {
+   public static final MapCodec<ene> a = MapCodec.unit(() -> ene.b);
+   public static final ene b = new ene();
 
-   public abstract boolean a(jd var1, jd var2, jd var3, ayw var4);
+   private ene() {
+   }
 
-   protected abstract enf<?> a();
+   @Override
+   protected ens<?> a() {
+      return ens.j;
+   }
 }

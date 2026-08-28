@@ -29,7 +29,7 @@ public class dco {
    private final lk o;
    private final jm<avo> p;
    private final ObjectArrayList<jd> q = new ObjectArrayList();
-   private final Map<cmx, exa> r = Maps.newHashMap();
+   private final Map<cmx, exc> r = Maps.newHashMap();
 
    public static brk a(dcw $$0, @Nullable bsr $$1) {
       return $$0.aj().d($$1, b($$1));
@@ -83,8 +83,8 @@ public class dco {
       return (dcp)($$0 == null ? a : new dcm($$0));
    }
 
-   public static float a(exa $$0, bsr $$1) {
-      ewv $$2 = $$1.cL();
+   public static float a(exc $$0, bsr $$1) {
+      ewx $$2 = $$1.cK();
       double $$3 = 1.0 / (($$2.d - $$2.a) * 2.0 + 1.0);
       double $$4 = 1.0 / (($$2.e - $$2.b) * 2.0 + 1.0);
       double $$5 = 1.0 / (($$2.f - $$2.c) * 2.0 + 1.0);
@@ -100,8 +100,8 @@ public class dco {
                   double $$13 = ayo.d($$10, $$2.a, $$2.d);
                   double $$14 = ayo.d($$11, $$2.b, $$2.e);
                   double $$15 = ayo.d($$12, $$2.c, $$2.f);
-                  exa $$16 = new exa($$13 + $$6, $$14, $$15 + $$7);
-                  if ($$1.dP().a(new dcf($$16, $$0, dcf.a.a, dcf.b.a, $$1)).c() == ewy.a.a) {
+                  exc $$16 = new exc($$13 + $$6, $$14, $$15 + $$7);
+                  if ($$1.dO().a(new dcf($$16, $$0, dcf.a.a, dcf.b.a, $$1)).c() == exa.a.a) {
                      $$8++;
                   }
 
@@ -120,12 +120,12 @@ public class dco {
       return this.k;
    }
 
-   public exa b() {
-      return new exa(this.g, this.h, this.i);
+   public exc b() {
+      return new exc(this.g, this.h, this.i);
    }
 
    public void c() {
-      this.f.a(this.j, dxz.w, new exa(this.g, this.h, this.i));
+      this.f.a(this.j, dxz.w, new exc(this.g, this.h, this.i));
       Set<jd> $$0 = Sets.newHashSet();
       int $$1 = 16;
 
@@ -148,7 +148,7 @@ public class dco {
                   for (float $$13 = 0.3F; $$9 > 0.0F; $$9 -= 0.22500001F) {
                      jd $$14 = jd.a($$10, $$11, $$12);
                      dtc $$15 = this.f.a_($$14);
-                     epc $$16 = this.f.b_($$14);
+                     epe $$16 = this.f.b_($$14);
                      if (!this.f.k($$14)) {
                         break;
                      }
@@ -179,16 +179,16 @@ public class dco {
       int $$22 = ayo.a(this.h + (double)$$18 + 1.0);
       int $$23 = ayo.a(this.i - (double)$$18 - 1.0);
       int $$24 = ayo.a(this.i + (double)$$18 + 1.0);
-      List<bsr> $$25 = this.f.a_(this.j, new ewv((double)$$19, (double)$$21, (double)$$23, (double)$$20, (double)$$22, (double)$$24));
-      exa $$26 = new exa(this.g, this.h, this.i);
+      List<bsr> $$25 = this.f.a_(this.j, new ewx((double)$$19, (double)$$21, (double)$$23, (double)$$20, (double)$$22, (double)$$24));
+      exc $$26 = new exc(this.g, this.h, this.i);
 
       for (bsr $$27 : $$25) {
          if (!$$27.a(this)) {
             double $$28 = Math.sqrt($$27.g($$26)) / (double)$$18;
             if ($$28 <= 1.0) {
-               double $$29 = $$27.du() - this.g;
-               double $$30 = ($$27 instanceof cji ? $$27.dw() : $$27.dy()) - this.h;
-               double $$31 = $$27.dA() - this.i;
+               double $$29 = $$27.dt() - this.g;
+               double $$30 = ($$27 instanceof cji ? $$27.dv() : $$27.dx()) - this.h;
+               double $$31 = $$27.dz() - this.i;
                double $$32 = Math.sqrt($$29 * $$29 + $$30 * $$30 + $$31 * $$31);
                if ($$32 != 0.0) {
                   $$29 /= $$32;
@@ -209,11 +209,11 @@ public class dco {
                   $$29 *= $$35;
                   $$30 *= $$35;
                   $$31 *= $$35;
-                  exa $$37 = new exa($$29, $$30, $$31);
-                  $$27.i($$27.ds().e($$37));
+                  exc $$37 = new exc($$29, $$30, $$31);
+                  $$27.i($$27.dr().e($$37));
                   if ($$27 instanceof cmx) {
                      cmx $$38 = (cmx)$$27;
-                     if (!$$38.R_() && (!$$38.f() || !$$38.ga().b)) {
+                     if (!$$38.R_() && (!$$38.f() || !$$38.fZ().b)) {
                         this.r.put($$38, $$37);
                      }
                   }
@@ -291,7 +291,7 @@ public class dco {
       return this.d != dco.a.a;
    }
 
-   public Map<cmx, exa> e() {
+   public Map<cmx, exc> e() {
       return this.r;
    }
 

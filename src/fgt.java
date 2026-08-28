@@ -1,9 +1,9 @@
 import java.util.function.IntFunction;
 
 public enum fgt implements ayr {
-   a(0, "options.prioritizeChunkUpdates.none"),
-   b(1, "options.prioritizeChunkUpdates.byPlayer"),
-   c(2, "options.prioritizeChunkUpdates.nearby");
+   a(0, "options.particles.all"),
+   b(1, "options.particles.decreased"),
+   c(2, "options.particles.minimal");
 
    private static final IntFunction<fgt> d = axe.a(fgt::a, values(), axe.a.b);
    private final int e;
@@ -15,13 +15,13 @@ public enum fgt implements ayr {
    }
 
    @Override
-   public int a() {
-      return this.e;
+   public String b() {
+      return this.f;
    }
 
    @Override
-   public String b() {
-      return this.f;
+   public int a() {
+      return this.e;
    }
 
    public static fgt a(int $$0) {

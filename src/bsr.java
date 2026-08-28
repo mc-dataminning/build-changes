@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public abstract class bsr implements ajz, bqw, dxg, es, eyd {
+public abstract class bsr implements ajz, bqw, dxg, es, eyf {
    private static final Logger b = LogUtils.getLogger();
    public static final String w = "id";
    public static final String x = "Passengers";
@@ -43,7 +43,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    public static final int F = 140;
    public static final int G = 40;
    public static final int H = 3;
-   private static final ewv d = new ewv(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+   private static final ewx d = new ewx(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
    private static final double e = 0.014;
    private static final double k = 0.007;
    private static final double l = 0.0023333333333333335;
@@ -60,22 +60,22 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    public double L;
    public double M;
    public double N;
-   private exa s;
+   private exc s;
    private jd t;
    private dcd u;
-   private exa v = exa.b;
+   private exc v = exc.b;
    private float aD;
    private float aE;
    public float O;
    public float P;
-   private ewv aF = d;
+   private ewx aF = d;
    private boolean aG;
    public boolean Q;
    public boolean R;
    public boolean S;
    public boolean T;
    public boolean U;
-   protected exa V = exa.b;
+   protected exc V = exc.b;
    @Nullable
    private bsr.c aH;
    public static final float W = 0.6F;
@@ -92,11 +92,11 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    public boolean ag;
    protected final ayw ah = ayw.a();
    public int ai;
-   private int aJ = -this.dg();
+   private int aJ = -this.df();
    protected boolean aj;
-   protected Object2DoubleMap<awu<epb>> ak = new Object2DoubleArrayMap(2);
+   protected Object2DoubleMap<awu<epd>> ak = new Object2DoubleArrayMap(2);
    protected boolean al;
-   private final Set<awu<epb>> aK = new HashSet<>();
+   private final Set<awu<epd>> aK = new HashSet<>();
    public int am;
    protected boolean an = true;
    protected final aka ao;
@@ -146,7 +146,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       this.n = $$0;
       this.r = $$1;
       this.bd = $$0.n();
-      this.s = exa.b;
+      this.s = exc.b;
       this.t = jd.c;
       this.u = dcd.b;
       aka.a $$2 = new aka.a(this);
@@ -165,13 +165,13 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    public boolean a(jd $$0, dtc $$1) {
-      ext $$2 = $$1.b(this.dP(), $$0, exf.a(this));
-      ext $$3 = $$2.a((double)$$0.u(), (double)$$0.v(), (double)$$0.w());
-      return exq.c($$3, exq.a(this.cL()), exe.i);
+      exv $$2 = $$1.b(this.dO(), $$0, exh.a(this));
+      exv $$3 = $$2.a((double)$$0.u(), (double)$$0.v(), (double)$$0.w());
+      return exs.c($$3, exs.a(this.cK()), exg.i);
    }
 
    public int q_() {
-      eyg $$0 = this.ck();
+      eyi $$0 = this.ck();
       return $$0 != null && $$0.n().f() != null ? $$0.n().f() : 16777215;
    }
 
@@ -190,7 +190,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    public void f(double $$0, double $$1, double $$2) {
-      this.aW.e(new exa($$0, $$1, $$2));
+      this.aW.e(new exc($$0, $$1, $$2));
    }
 
    public aig al() {
@@ -267,13 +267,13 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    public boolean a(bsr $$0, double $$1) {
-      return this.dn().a((jw)$$0.dn(), $$1);
+      return this.dm().a((jw)$$0.dm(), $$1);
    }
 
    public boolean a(bsr $$0, double $$1, double $$2) {
-      double $$3 = $$0.du() - this.du();
-      double $$4 = $$0.dw() - this.dw();
-      double $$5 = $$0.dA() - this.dA();
+      double $$3 = $$0.dt() - this.dt();
+      double $$4 = $$0.dv() - this.dv();
+      double $$5 = $$0.dz() - this.dz();
       return ayo.e($$3, $$5) < ayo.k($$1) && ayo.k($$4) < ayo.k($$2);
    }
 
@@ -282,7 +282,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       this.u($$1 % 360.0F);
    }
 
-   public final void c(exa $$0) {
+   public final void c(exc $$0) {
       this.a_($$0.a(), $$0.b(), $$0.c());
    }
 
@@ -291,7 +291,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       this.a(this.au());
    }
 
-   protected ewv au() {
+   protected ewx au() {
       return this.bd.a(this.s);
    }
 
@@ -302,9 +302,9 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    public void b(double $$0, double $$1) {
       float $$2 = (float)$$1 * 0.15F;
       float $$3 = (float)$$0 * 0.15F;
-      this.u(this.dH() + $$2);
-      this.t(this.dF() + $$3);
-      this.u(ayo.a(this.dH(), -90.0F, 90.0F));
+      this.u(this.dG() + $$2);
+      this.t(this.dE() + $$3);
+      this.u(ayo.a(this.dG(), -90.0F, 90.0F));
       this.P += $$2;
       this.O += $$3;
       this.P = ayo.a(this.P, -90.0F, 90.0F);
@@ -318,9 +318,9 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    public void aw() {
-      this.dP().ag().a("entityBaseTick");
+      this.dO().ag().a("entityBaseTick");
       this.bj = null;
-      if (this.bS() && this.dd().dK()) {
+      if (this.bS() && this.dc().dJ()) {
          this.ad();
       }
 
@@ -329,8 +329,8 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       }
 
       this.Y = this.Z;
-      this.P = this.dH();
-      this.O = this.dF();
+      this.P = this.dG();
+      this.O = this.dE();
       this.bP();
       if (this.br()) {
          this.bs();
@@ -341,7 +341,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       this.bm();
       this.H();
       this.bl();
-      if (this.dP().B) {
+      if (this.dO().B) {
          this.aD();
       } else if (this.aJ > 0) {
          if (this.be()) {
@@ -351,7 +351,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
             }
          } else {
             if (this.aJ % 20 == 0 && !this.bt()) {
-               this.a(this.dQ().d(), 1.0F);
+               this.a(this.dP().d(), 1.0F);
             }
 
             this.h(this.aJ - 1);
@@ -359,7 +359,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
 
          if (this.cn() > 0) {
             this.k(0);
-            this.dP().a(null, 1009, this.t, 1);
+            this.dO().a(null, 1009, this.t, 1);
          }
       }
 
@@ -369,16 +369,16 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       }
 
       this.ax();
-      if (!this.dP().B) {
+      if (!this.dO().B) {
          this.c(this.aJ > 0);
       }
 
       this.an = false;
-      if (!this.dP().B && this instanceof btk) {
+      if (!this.dO().B && this instanceof btk) {
          btk.b_((bsr)((btk)this));
       }
 
-      this.dP().ag().c();
+      this.dO().ag().c();
    }
 
    public void c(boolean $$0) {
@@ -386,7 +386,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    public void ax() {
-      if (this.dw() < (double)(this.dP().I_() - 64)) {
+      if (this.dv() < (double)(this.dO().I_() - 64)) {
          this.aE();
       }
    }
@@ -416,7 +416,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    public void aB() {
       if (!this.be()) {
          this.d(15.0F);
-         if (this.a(this.dQ().e(), 4.0F)) {
+         if (this.a(this.dP().e(), 4.0F)) {
             this.a(avp.ka, 0.4F, 2.0F + this.ah.i() * 0.4F);
          }
       }
@@ -449,11 +449,11 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    public boolean g(double $$0, double $$1, double $$2) {
-      return this.b(this.cL().d($$0, $$1, $$2));
+      return this.b(this.cK().d($$0, $$1, $$2));
    }
 
-   private boolean b(ewv $$0) {
-      return this.dP().a(this, $$0) && !this.dP().d($$0);
+   private boolean b(ewx $$0) {
+      return this.dO().a(this, $$0) && !this.dO().d($$0);
    }
 
    public void d(boolean $$0) {
@@ -461,7 +461,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       this.b($$0, null);
    }
 
-   public void a(boolean $$0, exa $$1) {
+   public void a(boolean $$0, exc $$1) {
       this.aG = $$0;
       this.b($$0, $$1);
    }
@@ -470,15 +470,15 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       return this.aC.isPresent() && this.aC.get().equals($$0);
    }
 
-   protected void b(boolean $$0, @Nullable exa $$1) {
+   protected void b(boolean $$0, @Nullable exc $$1) {
       if ($$0) {
-         ewv $$2 = this.cL();
-         ewv $$3 = new ewv($$2.a, $$2.b - 1.0E-6, $$2.c, $$2.d, $$2.b, $$2.f);
+         ewx $$2 = this.cK();
+         ewx $$3 = new ewx($$2.a, $$2.b - 1.0E-6, $$2.c, $$2.d, $$2.b, $$2.f);
          Optional<jd> $$4 = this.r.g(this, $$3);
          if ($$4.isPresent() || this.bf) {
             this.aC = $$4;
          } else if ($$1 != null) {
-            ewv $$5 = $$3.d(-$$1.c, 0.0, -$$1.e);
+            ewx $$5 = $$3.d(-$$1.c, 0.0, -$$1.e);
             $$4 = this.r.g(this, $$5);
             this.aC = $$4;
          }
@@ -496,41 +496,41 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       return this.aG;
    }
 
-   public void a(bts $$0, exa $$1) {
+   public void a(bts $$0, exc $$1) {
       if (this.ag) {
-         this.a_(this.du() + $$1.c, this.dw() + $$1.d, this.dA() + $$1.e);
+         this.a_(this.dt() + $$1.c, this.dv() + $$1.d, this.dz() + $$1.e);
       } else {
          this.aB = this.bR();
          if ($$0 == bts.c) {
             $$1 = this.e($$1);
-            if ($$1.equals(exa.b)) {
+            if ($$1.equals(exc.b)) {
                return;
             }
          }
 
-         this.dP().ag().a("move");
+         this.dO().ag().a("move");
          if (this.V.g() > 1.0E-7) {
             $$1 = $$1.h(this.V);
-            this.V = exa.b;
-            this.i(exa.b);
+            this.V = exc.b;
+            this.i(exc.b);
          }
 
          $$1 = this.a($$1, $$0);
-         exa $$2 = this.a($$1);
+         exc $$2 = this.a($$1);
          double $$3 = $$2.g();
          if ($$3 > 1.0E-7) {
             if (this.ac != 0.0F && $$3 >= 1.0) {
-               eww $$4 = this.dP().a(new dcf(this.dn(), this.dn().e($$2), dcf.a.d, dcf.b.d, this));
-               if ($$4.c() != ewy.a.a) {
+               ewy $$4 = this.dO().a(new dcf(this.dm(), this.dm().e($$2), dcf.a.d, dcf.b.d, this));
+               if ($$4.c() != exa.a.a) {
                   this.n();
                }
             }
 
-            this.a_(this.du() + $$2.c, this.dw() + $$2.d, this.dA() + $$2.e);
+            this.a_(this.dt() + $$2.c, this.dv() + $$2.d, this.dz() + $$2.e);
          }
 
-         this.dP().ag().c();
-         this.dP().ag().a("rest");
+         this.dO().ag().c();
+         this.dO().ag().a("rest");
          boolean $$5 = !ayo.b($$1.c, $$2.c);
          boolean $$6 = !ayo.b($$1.e, $$2.e);
          this.Q = $$5 || $$6;
@@ -544,23 +544,23 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
 
          this.a(this.S, $$2);
          jd $$7 = this.aK();
-         dtc $$8 = this.dP().a_($$7);
+         dtc $$8 = this.dO().a_($$7);
          this.a($$2.d, this.aF(), $$8, $$7);
-         if (this.dK()) {
-            this.dP().ag().c();
+         if (this.dJ()) {
+            this.dO().ag().c();
          } else {
             if (this.Q) {
-               exa $$9 = this.ds();
+               exc $$9 = this.dr();
                this.n($$5 ? 0.0 : $$9.c, $$9.d, $$6 ? 0.0 : $$9.e);
             }
 
             dfy $$10 = $$8.b();
             if ($$1.d != $$2.d) {
-               $$10.a(this.dP(), this);
+               $$10.a(this.dO(), this);
             }
 
             if (this.aF()) {
-               $$10.a(this.dP(), $$7, $$8, this);
+               $$10.a(this.dO(), $$7, $$8, this);
             }
 
             bsr.b $$11 = this.bc();
@@ -570,7 +570,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
                double $$14 = $$2.e;
                this.ab = this.ab + (float)($$2.f() * 0.6);
                jd $$15 = this.aM();
-               dtc $$16 = this.dP().a_($$15);
+               dtc $$16 = this.dO().a_($$15);
                boolean $$17 = this.c($$16);
                if (!$$17) {
                   $$13 = 0.0;
@@ -604,10 +604,10 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
 
             this.aG();
             float $$20 = this.aO();
-            this.i(this.ds().d((double)$$20, 1.0, (double)$$20));
-            if (this.dP().c(this.cL().h(1.0E-6)).noneMatch($$0x -> $$0x.a(awe.aK) || $$0x.a(dga.H))) {
+            this.i(this.dr().d((double)$$20, 1.0, (double)$$20));
+            if (this.dO().c(this.cK().h(1.0E-6)).noneMatch($$0x -> $$0x.a(awe.aL) || $$0x.a(dga.H))) {
                if (this.aJ <= 0) {
-                  this.h(-this.dg());
+                  this.h(-this.df());
                }
 
                if (this.aB && (this.az || this.bh())) {
@@ -616,19 +616,19 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
             }
 
             if (this.bR() && (this.az || this.bh())) {
-               this.h(-this.dg());
+               this.h(-this.df());
             }
 
-            this.dP().ag().c();
+            this.dO().ag().c();
          }
       }
    }
 
    private boolean c(dtc $$0) {
-      return $$0.a(awe.aP) || $$0.a(dga.qP);
+      return $$0.a(awe.aQ) || $$0.a(dga.qP);
    }
 
-   private boolean a(jd $$0, dtc $$1, boolean $$2, boolean $$3, exa $$4) {
+   private boolean a(jd $$0, dtc $$1, boolean $$2, boolean $$3, exc $$4) {
       if ($$1.i()) {
          return false;
       } else {
@@ -639,7 +639,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
             }
 
             if ($$3) {
-               this.dP().a(dxz.P, this.dn(), dxz.a.a(this, $$1));
+               this.dO().a(dxz.P, this.dm(), dxz.a.a(this, $$1));
             }
 
             return true;
@@ -649,7 +649,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       }
    }
 
-   protected boolean d(exa $$0) {
+   protected boolean d(exc $$0) {
       return false;
    }
 
@@ -669,7 +669,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    public void aI() {
-      if (!this.dP().B && this.aB) {
+      if (!this.dO().B && this.aB) {
          this.aH();
       }
 
@@ -704,8 +704,8 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
          if (!($$0 > 1.0E-5F)) {
             return $$1;
          } else {
-            dtc $$2 = this.dP().a_($$1);
-            return (!((double)$$0 <= 0.5) || !$$2.a(awe.S)) && !$$2.a(awe.L) && !($$2.b() instanceof dix) ? $$1.h(ayo.a(this.s.d - (double)$$0)) : $$1;
+            dtc $$2 = this.dO().a_($$1);
+            return (!((double)$$0 <= 0.5) || !$$2.a(awe.T)) && !$$2.a(awe.M) && !($$2.b() instanceof dix) ? $$1.h(ayo.a(this.s.d - (double)$$0)) : $$1;
          }
       } else {
          int $$3 = ayo.a(this.s.c);
@@ -716,30 +716,30 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    protected float aN() {
-      float $$0 = this.dP().a_(this.dp()).b().k();
-      float $$1 = this.dP().a_(this.aL()).b().k();
+      float $$0 = this.dO().a_(this.do()).b().k();
+      float $$1 = this.dO().a_(this.aL()).b().k();
       return (double)$$0 == 1.0 ? $$1 : $$0;
    }
 
    protected float aO() {
-      dtc $$0 = this.dP().a_(this.dp());
+      dtc $$0 = this.dO().a_(this.do());
       float $$1 = $$0.b().j();
       if (!$$0.a(dga.G) && !$$0.a(dga.nd)) {
-         return (double)$$1 == 1.0 ? this.dP().a_(this.aL()).b().j() : $$1;
+         return (double)$$1 == 1.0 ? this.dO().a_(this.aL()).b().j() : $$1;
       } else {
          return $$1;
       }
    }
 
-   protected exa a(exa $$0, bts $$1) {
+   protected exc a(exc $$0, bts $$1) {
       return $$0;
    }
 
-   protected exa e(exa $$0) {
+   protected exc e(exc $$0) {
       if ($$0.g() <= 1.0E-7) {
          return $$0;
       } else {
-         long $$1 = this.dP().Z();
+         long $$1 = this.dO().Z();
          if ($$1 != this.bc) {
             Arrays.fill(this.bb, 0.0);
             this.bc = $$1;
@@ -747,15 +747,15 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
 
          if ($$0.c != 0.0) {
             double $$2 = this.a(ji.a.a, $$0.c);
-            return Math.abs($$2) <= 1.0E-5F ? exa.b : new exa($$2, 0.0, 0.0);
+            return Math.abs($$2) <= 1.0E-5F ? exc.b : new exc($$2, 0.0, 0.0);
          } else if ($$0.d != 0.0) {
             double $$3 = this.a(ji.a.b, $$0.d);
-            return Math.abs($$3) <= 1.0E-5F ? exa.b : new exa(0.0, $$3, 0.0);
+            return Math.abs($$3) <= 1.0E-5F ? exc.b : new exc(0.0, $$3, 0.0);
          } else if ($$0.e != 0.0) {
             double $$4 = this.a(ji.a.c, $$0.e);
-            return Math.abs($$4) <= 1.0E-5F ? exa.b : new exa(0.0, 0.0, $$4);
+            return Math.abs($$4) <= 1.0E-5F ? exc.b : new exc(0.0, 0.0, $$4);
          } else {
-            return exa.b;
+            return exc.b;
          }
       }
    }
@@ -768,27 +768,27 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       return $$1;
    }
 
-   private exa a(exa $$0) {
-      ewv $$1 = this.cL();
-      List<ext> $$2 = this.dP().c(this, $$1.b($$0));
-      exa $$3 = $$0.g() == 0.0 ? $$0 : a(this, $$0, $$1, this.dP(), $$2);
+   private exc a(exc $$0) {
+      ewx $$1 = this.cK();
+      List<exv> $$2 = this.dO().c(this, $$1.b($$0));
+      exc $$3 = $$0.g() == 0.0 ? $$0 : a(this, $$0, $$1, this.dO(), $$2);
       boolean $$4 = $$0.c != $$3.c;
       boolean $$5 = $$0.d != $$3.d;
       boolean $$6 = $$0.e != $$3.e;
       boolean $$7 = $$5 && $$0.d < 0.0;
-      if (this.dJ() > 0.0F && ($$7 || this.aF()) && ($$4 || $$6)) {
-         ewv $$8 = $$7 ? $$1.d(0.0, $$3.d, 0.0) : $$1;
-         ewv $$9 = $$8.b($$0.c, (double)this.dJ(), $$0.e);
+      if (this.dI() > 0.0F && ($$7 || this.aF()) && ($$4 || $$6)) {
+         ewx $$8 = $$7 ? $$1.d(0.0, $$3.d, 0.0) : $$1;
+         ewx $$9 = $$8.b($$0.c, (double)this.dI(), $$0.e);
          if (!$$7) {
             $$9 = $$9.b(0.0, -1.0E-5F, 0.0);
          }
 
-         List<ext> $$10 = a(this, this.r, $$2, $$9);
+         List<exv> $$10 = a(this, this.r, $$2, $$9);
          float $$11 = (float)$$3.d;
-         float[] $$12 = a($$8, $$10, this.dJ(), $$11);
+         float[] $$12 = a($$8, $$10, this.dI(), $$11);
 
          for (float $$13 : $$12) {
-            exa $$14 = a(new exa($$0.c, (double)$$13, $$0.e), $$8, $$10);
+            exc $$14 = a(new exc($$0.c, (double)$$13, $$0.e), $$8, $$10);
             if ($$14.i() > $$3.i()) {
                return $$14;
             }
@@ -798,10 +798,10 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       return $$3;
    }
 
-   private static float[] a(ewv $$0, List<ext> $$1, float $$2, float $$3) {
+   private static float[] a(ewx $$0, List<exv> $$1, float $$2, float $$3) {
       FloatSet $$4 = new FloatArraySet(4);
 
-      for (ext $$5 : $$1) {
+      for (exv $$5 : $$1) {
          DoubleList $$6 = $$5.a(ji.a.b);
          DoubleListIterator var8 = $$6.iterator();
 
@@ -823,13 +823,13 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       return $$9;
    }
 
-   public static exa a(@Nullable bsr $$0, exa $$1, ewv $$2, dcw $$3, List<ext> $$4) {
-      List<ext> $$5 = a($$0, $$3, $$4, $$2.b($$1));
+   public static exc a(@Nullable bsr $$0, exc $$1, ewx $$2, dcw $$3, List<exv> $$4) {
+      List<exv> $$5 = a($$0, $$3, $$4, $$2.b($$1));
       return a($$1, $$2, $$5);
    }
 
-   private static List<ext> a(@Nullable bsr $$0, dcw $$1, List<ext> $$2, ewv $$3) {
-      Builder<ext> $$4 = ImmutableList.builderWithExpectedSize($$2.size() + 1);
+   private static List<exv> a(@Nullable bsr $$0, dcw $$1, List<exv> $$2, ewx $$3) {
+      Builder<exv> $$4 = ImmutableList.builderWithExpectedSize($$2.size() + 1);
       if (!$$2.isEmpty()) {
          $$4.addAll($$2);
       }
@@ -844,7 +844,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       return $$4.build();
    }
 
-   private static exa a(exa $$0, ewv $$1, List<ext> $$2) {
+   private static exc a(exc $$0, ewx $$1, List<exv> $$2) {
       if ($$2.isEmpty()) {
          return $$0;
       } else {
@@ -852,7 +852,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
          double $$4 = $$0.d;
          double $$5 = $$0.e;
          if ($$4 != 0.0) {
-            $$4 = exq.a(ji.a.b, $$1, $$2, $$4);
+            $$4 = exs.a(ji.a.b, $$1, $$2, $$4);
             if ($$4 != 0.0) {
                $$1 = $$1.d(0.0, $$4, 0.0);
             }
@@ -860,24 +860,24 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
 
          boolean $$6 = Math.abs($$3) < Math.abs($$5);
          if ($$6 && $$5 != 0.0) {
-            $$5 = exq.a(ji.a.c, $$1, $$2, $$5);
+            $$5 = exs.a(ji.a.c, $$1, $$2, $$5);
             if ($$5 != 0.0) {
                $$1 = $$1.d(0.0, 0.0, $$5);
             }
          }
 
          if ($$3 != 0.0) {
-            $$3 = exq.a(ji.a.a, $$1, $$2, $$3);
+            $$3 = exs.a(ji.a.a, $$1, $$2, $$3);
             if (!$$6 && $$3 != 0.0) {
                $$1 = $$1.d($$3, 0.0, 0.0);
             }
          }
 
          if (!$$6 && $$5 != 0.0) {
-            $$5 = exq.a(ji.a.c, $$1, $$2, $$5);
+            $$5 = exs.a(ji.a.c, $$1, $$2, $$5);
          }
 
-         return new exa($$3, $$4, $$5);
+         return new exc($$3, $$4, $$5);
       }
    }
 
@@ -898,10 +898,10 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    protected void aT() {
-      ewv $$0 = this.cL();
+      ewx $$0 = this.cK();
       jd $$1 = jd.a($$0.a + 1.0E-7, $$0.b + 1.0E-7, $$0.c + 1.0E-7);
       jd $$2 = jd.a($$0.d - 1.0E-7, $$0.e - 1.0E-7, $$0.f - 1.0E-7);
-      if (this.dP().a($$1, $$2)) {
+      if (this.dO().a($$1, $$2)) {
          jd.a $$3 = new jd.a();
 
          for (int $$4 = $$1.u(); $$4 <= $$2.u(); $$4++) {
@@ -912,15 +912,15 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
                   }
 
                   $$3.d($$4, $$5, $$6);
-                  dtc $$7 = this.dP().a_($$3);
+                  dtc $$7 = this.dO().a_($$3);
 
                   try {
-                     $$7.a(this.dP(), $$3, this);
+                     $$7.a(this.dO(), $$3, this);
                      this.a($$7);
                   } catch (Throwable var12) {
                      o $$9 = o.a(var12, "Colliding entity with block");
                      p $$10 = $$9.a("Block being collided with");
-                     p.a($$10, this.dP(), $$3, $$7);
+                     p.a($$10, this.dO(), $$3, $$7);
                      throw new z($$9);
                   }
                }
@@ -934,13 +934,13 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
 
    public jd a(aqu $$0, jd $$1) {
       jd $$2 = $$0.V();
-      exa $$3 = $$2.b();
+      exc $$3 = $$2.b();
       int $$4 = $$0.m($$2).a(dyy.a.f, $$2.u(), $$2.w()) + 1;
       return jd.a($$3.c, (double)$$4, $$3.e);
    }
 
    public void a(jm<dxz> $$0, @Nullable bsr $$1) {
-      this.dP().a($$1, $$0, this.s);
+      this.dO().a($$1, $$0, this.s);
    }
 
    public void a(jm<dxz> $$0) {
@@ -955,17 +955,17 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    protected void aU() {
-      bsr $$0 = Objects.requireNonNullElse(this.cR(), this);
+      bsr $$0 = Objects.requireNonNullElse(this.cQ(), this);
       float $$1 = $$0 == this ? 0.35F : 0.4F;
-      exa $$2 = $$0.ds();
+      exc $$2 = $$0.dr();
       float $$3 = Math.min(1.0F, (float)Math.sqrt($$2.c * $$2.c * 0.2F + $$2.d * $$2.d + $$2.e * $$2.e * 0.2F) * $$1);
       this.f($$3);
    }
 
    protected jd e(jd $$0) {
       jd $$1 = $$0.d();
-      dtc $$2 = this.dP().a_($$1);
-      return !$$2.a(awe.bn) && !$$2.a(awe.bo) ? $$0 : $$1;
+      dtc $$2 = this.dO().a_($$1);
+      return !$$2.a(awe.bo) && !$$2.a(awe.bp) ? $$0 : $$1;
    }
 
    protected void a(dtc $$0, dtc $$1) {
@@ -985,7 +985,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    private boolean d(dtc $$0) {
-      return $$0.a(awe.bm) && this.ai >= this.bh + 20;
+      return $$0.a(awe.bn) && this.ai >= this.bh + 20;
    }
 
    private void v() {
@@ -1010,7 +1010,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
 
    public void a(avo $$0, float $$1, float $$2) {
       if (!this.aX()) {
-         this.dP().a(null, this.du(), this.dw(), this.dA(), $$0, this.df(), $$1, $$2);
+         this.dO().a(null, this.dt(), this.dv(), this.dz(), $$0, this.de(), $$1, $$2);
       }
    }
 
@@ -1047,7 +1047,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    protected void bb() {
       double $$0 = this.ba();
       if ($$0 != 0.0) {
-         this.i(this.ds().b(0.0, -$$0, 0.0));
+         this.i(this.dr().b(0.0, -$$0, 0.0));
       }
    }
 
@@ -1062,8 +1062,8 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    protected void a(double $$0, boolean $$1, dtc $$2, jd $$3) {
       if ($$1) {
          if (this.ac > 0.0F) {
-            $$2.b().a(this.dP(), $$2, $$3, this, this.ac);
-            this.dP().a(dxz.A, this.s, dxz.a.a(this, this.aC.<dtc>map($$0x -> this.dP().a_($$0x)).orElse($$2)));
+            $$2.b().a(this.dO(), $$2, $$3, this, this.ac);
+            this.dO().a(dxz.A, this.s, dxz.a.a(this, this.aC.<dtc>map($$0x -> this.dO().a_($$0x)).orElse($$2)));
          }
 
          this.n();
@@ -1081,7 +1081,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
          return false;
       } else {
          if (this.bT()) {
-            for (bsr $$3 : this.cT()) {
+            for (bsr $$3 : this.cS()) {
                $$3.a($$0, $$1, $$2);
             }
          }
@@ -1095,12 +1095,12 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    private boolean w() {
-      jd $$0 = this.dp();
-      return this.dP().r($$0) || this.dP().r(jd.a((double)$$0.u(), this.cL().e, (double)$$0.w()));
+      jd $$0 = this.do();
+      return this.dO().r($$0) || this.dO().r(jd.a((double)$$0.u(), this.cK().e, (double)$$0.w()));
    }
 
    private boolean F() {
-      return this.dq().a(dga.nd);
+      return this.dp().a(dga.nd);
    }
 
    public boolean bg() {
@@ -1127,20 +1127,20 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       if (this.cd()) {
          this.i(this.cc() && this.bf() && !this.bS());
       } else {
-         this.i(this.cc() && this.bk() && !this.bS() && this.dP().b_(this.t).a(awk.a));
+         this.i(this.cc() && this.bk() && !this.bS() && this.dO().b_(this.t).a(awk.a));
       }
    }
 
    protected boolean bm() {
       this.ak.clear();
       this.bn();
-      double $$0 = this.dP().D_().i() ? 0.007 : 0.0023333333333333335;
+      double $$0 = this.dO().D_().i() ? 0.007 : 0.0023333333333333335;
       boolean $$1 = this.a(awk.b, $$0);
       return this.bf() || $$1;
    }
 
    void bn() {
-      if (this.dd() instanceof cov $$0 && !$$0.bk()) {
+      if (this.dc() instanceof cov $$0 && !$$0.bk()) {
          this.aj = false;
          return;
       }
@@ -1161,23 +1161,23 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    private void H() {
       this.al = this.a(awk.a);
       this.aK.clear();
-      double $$0 = this.dy();
-      if (this.dd() instanceof cov $$2 && !$$2.bk() && $$2.cL().e >= $$0 && $$2.cL().b <= $$0) {
+      double $$0 = this.dx();
+      if (this.dc() instanceof cov $$2 && !$$2.bk() && $$2.cK().e >= $$0 && $$2.cK().b <= $$0) {
          return;
       }
 
-      jd $$3 = jd.a(this.du(), $$0, this.dA());
-      epc $$4 = this.dP().b_($$3);
-      double $$5 = (double)((float)$$3.v() + $$4.a((dcc)this.dP(), $$3));
+      jd $$3 = jd.a(this.dt(), $$0, this.dz());
+      epe $$4 = this.dO().b_($$3);
+      double $$5 = (double)((float)$$3.v() + $$4.a((dcc)this.dO(), $$3));
       if ($$5 > $$0) {
          $$4.k().forEach(this.aK::add);
       }
    }
 
    protected void bo() {
-      bsr $$0 = Objects.requireNonNullElse(this.cR(), this);
+      bsr $$0 = Objects.requireNonNullElse(this.cQ(), this);
       float $$1 = $$0 == this ? 0.2F : 0.9F;
-      exa $$2 = $$0.ds();
+      exc $$2 = $$0.dr();
       float $$3 = Math.min(1.0F, (float)Math.sqrt($$2.c * $$2.c * 0.2F + $$2.d * $$2.d + $$2.e * $$2.e * 0.2F) * $$1);
       if ($$3 < 0.25F) {
          this.a(this.aR(), $$3, 1.0F + (this.ah.i() - this.ah.i()) * 0.4F);
@@ -1185,18 +1185,18 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
          this.a(this.aS(), $$3, 1.0F + (this.ah.i() - this.ah.i()) * 0.4F);
       }
 
-      float $$4 = (float)ayo.a(this.dw());
+      float $$4 = (float)ayo.a(this.dv());
 
       for (int $$5 = 0; (float)$$5 < 1.0F + this.bd.a() * 20.0F; $$5++) {
          double $$6 = (this.ah.j() * 2.0 - 1.0) * (double)this.bd.a();
          double $$7 = (this.ah.j() * 2.0 - 1.0) * (double)this.bd.a();
-         this.dP().a(lm.d, this.du() + $$6, (double)($$4 + 1.0F), this.dA() + $$7, $$2.c, $$2.d - this.ah.j() * 0.2F, $$2.e);
+         this.dO().a(lm.d, this.dt() + $$6, (double)($$4 + 1.0F), this.dz() + $$7, $$2.c, $$2.d - this.ah.j() * 0.2F, $$2.e);
       }
 
       for (int $$8 = 0; (float)$$8 < 1.0F + this.bd.a() * 20.0F; $$8++) {
          double $$9 = (this.ah.j() * 2.0 - 1.0) * (double)this.bd.a();
          double $$10 = (this.ah.j() * 2.0 - 1.0) * (double)this.bd.a();
-         this.dP().a(lm.am, this.du() + $$9, (double)($$4 + 1.0F), this.dA() + $$10, $$2.c, $$2.d, $$2.e);
+         this.dO().a(lm.am, this.dt() + $$9, (double)($$4 + 1.0F), this.dz() + $$10, $$2.c, $$2.d, $$2.e);
       }
 
       this.a(dxz.O);
@@ -1204,11 +1204,11 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
 
    @Deprecated
    protected dtc bp() {
-      return this.dP().a_(this.aK());
+      return this.dO().a_(this.aK());
    }
 
    public dtc bq() {
-      return this.dP().a_(this.aM());
+      return this.dO().a_(this.aM());
    }
 
    public boolean br() {
@@ -1217,12 +1217,12 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
 
    protected void bs() {
       jd $$0 = this.aK();
-      dtc $$1 = this.dP().a_($$0);
+      dtc $$1 = this.dO().a_($$0);
       if ($$1.l() != dmf.a) {
-         exa $$2 = this.ds();
-         jd $$3 = this.dp();
-         double $$4 = this.du() + (this.ah.j() - 0.5) * (double)this.bd.a();
-         double $$5 = this.dA() + (this.ah.j() - 0.5) * (double)this.bd.a();
+         exc $$2 = this.dr();
+         jd $$3 = this.do();
+         double $$4 = this.dt() + (this.ah.j() - 0.5) * (double)this.bd.a();
+         double $$5 = this.dz() + (this.ah.j() - 0.5) * (double)this.bd.a();
          if ($$3.u() != $$0.u()) {
             $$4 = ayo.a($$4, (double)$$0.u(), (double)$$0.u() + 1.0);
          }
@@ -1231,11 +1231,11 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
             $$5 = ayo.a($$5, (double)$$0.w(), (double)$$0.w() + 1.0);
          }
 
-         this.dP().a(new le(lm.b, $$1), $$4, this.dw() + 0.1, $$5, $$2.c * -4.0, 1.5, $$2.e * -4.0);
+         this.dO().a(new le(lm.b, $$1), $$4, this.dv() + 0.1, $$5, $$2.c * -4.0, 1.5, $$2.e * -4.0);
       }
    }
 
-   public boolean a(awu<epb> $$0) {
+   public boolean a(awu<epd> $$0) {
       return this.aK.contains($$0);
    }
 
@@ -1243,26 +1243,26 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       return !this.an && this.ak.getDouble(awk.b) > 0.0;
    }
 
-   public void a(float $$0, exa $$1) {
-      exa $$2 = b($$1, $$0, this.dF());
-      this.i(this.ds().e($$2));
+   public void a(float $$0, exc $$1) {
+      exc $$2 = b($$1, $$0, this.dE());
+      this.i(this.dr().e($$2));
    }
 
-   private static exa b(exa $$0, float $$1, float $$2) {
+   private static exc b(exc $$0, float $$1, float $$2) {
       double $$3 = $$0.g();
       if ($$3 < 1.0E-7) {
-         return exa.b;
+         return exc.b;
       } else {
-         exa $$4 = ($$3 > 1.0 ? $$0.d() : $$0).a((double)$$1);
+         exc $$4 = ($$3 > 1.0 ? $$0.d() : $$0).a((double)$$1);
          float $$5 = ayo.a($$2 * (float) (Math.PI / 180.0));
          float $$6 = ayo.b($$2 * (float) (Math.PI / 180.0));
-         return new exa($$4.c * (double)$$6 - $$4.e * (double)$$5, $$4.d, $$4.e * (double)$$6 + $$4.c * (double)$$5);
+         return new exc($$4.c * (double)$$6 - $$4.e * (double)$$5, $$4.d, $$4.e * (double)$$6 + $$4.c * (double)$$5);
       }
    }
 
    @Deprecated
    public float bu() {
-      return this.dP().f(this.dt(), this.dz()) ? this.dP().x(jd.a(this.du(), this.dy(), this.dA())) : 0.0F;
+      return this.dO().f(this.ds(), this.dy()) ? this.dO().x(jd.a(this.dt(), this.dx(), this.dz())) : 0.0F;
    }
 
    public void a(double $$0, double $$1, double $$2, float $$3, float $$4) {
@@ -1273,8 +1273,8 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    public void b(float $$0, float $$1) {
       this.t($$0 % 360.0F);
       this.u(ayo.a($$1, -90.0F, 90.0F) % 360.0F);
-      this.O = this.dF();
-      this.P = this.dH();
+      this.O = this.dE();
+      this.P = this.dG();
    }
 
    public void h(double $$0, double $$1, double $$2) {
@@ -1286,19 +1286,19 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       this.a_($$3, $$1, $$4);
    }
 
-   public void f(exa $$0) {
+   public void f(exc $$0) {
       this.e($$0.c, $$0.d, $$0.e);
    }
 
    public void e(double $$0, double $$1, double $$2) {
-      this.b($$0, $$1, $$2, this.dF(), this.dH());
+      this.b($$0, $$1, $$2, this.dE(), this.dG());
    }
 
    public void a(jd $$0, float $$1, float $$2) {
       this.a($$0.c(), $$1, $$2);
    }
 
-   public void a(exa $$0, float $$1, float $$2) {
+   public void a(exc $$0, float $$1, float $$2) {
       this.b($$0.c, $$0.d, $$0.e, $$1, $$2);
    }
 
@@ -1311,41 +1311,41 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    public final void bv() {
-      double $$0 = this.du();
-      double $$1 = this.dw();
-      double $$2 = this.dA();
+      double $$0 = this.dt();
+      double $$1 = this.dv();
+      double $$2 = this.dz();
       this.L = $$0;
       this.M = $$1;
       this.N = $$2;
       this.ad = $$0;
       this.ae = $$1;
       this.af = $$2;
-      this.O = this.dF();
-      this.P = this.dH();
+      this.O = this.dE();
+      this.P = this.dG();
    }
 
    public float f(bsr $$0) {
-      float $$1 = (float)(this.du() - $$0.du());
-      float $$2 = (float)(this.dw() - $$0.dw());
-      float $$3 = (float)(this.dA() - $$0.dA());
+      float $$1 = (float)(this.dt() - $$0.dt());
+      float $$2 = (float)(this.dv() - $$0.dv());
+      float $$3 = (float)(this.dz() - $$0.dz());
       return ayo.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
    }
 
    public double i(double $$0, double $$1, double $$2) {
-      double $$3 = this.du() - $$0;
-      double $$4 = this.dw() - $$1;
-      double $$5 = this.dA() - $$2;
+      double $$3 = this.dt() - $$0;
+      double $$4 = this.dv() - $$1;
+      double $$5 = this.dz() - $$2;
       return $$3 * $$3 + $$4 * $$4 + $$5 * $$5;
    }
 
    public double g(bsr $$0) {
-      return this.g($$0.dn());
+      return this.g($$0.dm());
    }
 
-   public double g(exa $$0) {
-      double $$1 = this.du() - $$0.c;
-      double $$2 = this.dw() - $$0.d;
-      double $$3 = this.dA() - $$0.e;
+   public double g(exc $$0) {
+      double $$1 = this.dt() - $$0.c;
+      double $$2 = this.dv() - $$0.d;
+      double $$3 = this.dz() - $$0.e;
       return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
    }
 
@@ -1355,8 +1355,8 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    public void h(bsr $$0) {
       if (!this.y($$0)) {
          if (!$$0.ag && !this.ag) {
-            double $$1 = $$0.du() - this.du();
-            double $$2 = $$0.dA() - this.dA();
+            double $$1 = $$0.dt() - this.dt();
+            double $$2 = $$0.dz() - this.dz();
             double $$3 = ayo.a($$1, $$2);
             if ($$3 >= 0.01F) {
                $$3 = Math.sqrt($$3);
@@ -1383,12 +1383,12 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       }
    }
 
-   public void h(exa $$0) {
+   public void h(exc $$0) {
       this.j($$0.c, $$0.d, $$0.e);
    }
 
    public void j(double $$0, double $$1, double $$2) {
-      this.i(this.ds().b($$0, $$1, $$2));
+      this.i(this.dr().b($$0, $$1, $$2));
       this.av = true;
    }
 
@@ -1405,7 +1405,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       }
    }
 
-   public final exa g(float $$0) {
+   public final exc g(float $$0) {
       return this.c(this.h($$0), this.i($$0));
    }
 
@@ -1414,58 +1414,58 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    public float h(float $$0) {
-      return $$0 == 1.0F ? this.dH() : ayo.i($$0, this.P, this.dH());
+      return $$0 == 1.0F ? this.dG() : ayo.i($$0, this.P, this.dG());
    }
 
    public float i(float $$0) {
-      return $$0 == 1.0F ? this.dF() : ayo.i($$0, this.O, this.dF());
+      return $$0 == 1.0F ? this.dE() : ayo.i($$0, this.O, this.dE());
    }
 
-   public final exa c(float $$0, float $$1) {
+   public final exc c(float $$0, float $$1) {
       float $$2 = $$0 * (float) (Math.PI / 180.0);
       float $$3 = -$$1 * (float) (Math.PI / 180.0);
       float $$4 = ayo.b($$3);
       float $$5 = ayo.a($$3);
       float $$6 = ayo.b($$2);
       float $$7 = ayo.a($$2);
-      return new exa((double)($$5 * $$6), (double)(-$$7), (double)($$4 * $$6));
+      return new exc((double)($$5 * $$6), (double)(-$$7), (double)($$4 * $$6));
    }
 
-   public final exa j(float $$0) {
+   public final exc j(float $$0) {
       return this.d(this.h($$0), this.i($$0));
    }
 
-   protected final exa d(float $$0, float $$1) {
+   protected final exc d(float $$0, float $$1) {
       return this.c($$0 - 90.0F, $$1);
    }
 
-   public final exa by() {
-      return new exa(this.du(), this.dy(), this.dA());
+   public final exc by() {
+      return new exc(this.dt(), this.dx(), this.dz());
    }
 
-   public final exa k(float $$0) {
-      double $$1 = ayo.d((double)$$0, this.L, this.du());
-      double $$2 = ayo.d((double)$$0, this.M, this.dw()) + (double)this.cM();
-      double $$3 = ayo.d((double)$$0, this.N, this.dA());
-      return new exa($$1, $$2, $$3);
+   public final exc k(float $$0) {
+      double $$1 = ayo.d((double)$$0, this.L, this.dt());
+      double $$2 = ayo.d((double)$$0, this.M, this.dv()) + (double)this.cL();
+      double $$3 = ayo.d((double)$$0, this.N, this.dz());
+      return new exc($$1, $$2, $$3);
    }
 
-   public exa l(float $$0) {
+   public exc l(float $$0) {
       return this.k($$0);
    }
 
-   public final exa m(float $$0) {
-      double $$1 = ayo.d((double)$$0, this.L, this.du());
-      double $$2 = ayo.d((double)$$0, this.M, this.dw());
-      double $$3 = ayo.d((double)$$0, this.N, this.dA());
-      return new exa($$1, $$2, $$3);
+   public final exc m(float $$0) {
+      double $$1 = ayo.d((double)$$0, this.L, this.dt());
+      double $$2 = ayo.d((double)$$0, this.M, this.dv());
+      double $$3 = ayo.d((double)$$0, this.N, this.dz());
+      return new exc($$1, $$2, $$3);
    }
 
-   public ewy a(double $$0, float $$1, boolean $$2) {
-      exa $$3 = this.k($$1);
-      exa $$4 = this.g($$1);
-      exa $$5 = $$3.b($$4.c * $$0, $$4.d * $$0, $$4.e * $$0);
-      return this.dP().a(new dcf($$3, $$5, dcf.a.b, $$2 ? dcf.b.c : dcf.b.a, this));
+   public exa a(double $$0, float $$1, boolean $$2) {
+      exc $$3 = this.k($$1);
+      exc $$4 = this.g($$1);
+      exc $$5 = $$3.b($$4.c * $$0, $$4.d * $$0, $$4.e * $$0);
+      return this.dO().a(new dcf($$3, $$5, dcf.a.b, $$2 ? dcf.b.c : dcf.b.a, this));
    }
 
    public boolean bz() {
@@ -1487,15 +1487,15 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    public boolean k(double $$0, double $$1, double $$2) {
-      double $$3 = this.du() - $$0;
-      double $$4 = this.dw() - $$1;
-      double $$5 = this.dA() - $$2;
+      double $$3 = this.dt() - $$0;
+      double $$4 = this.dv() - $$1;
+      double $$5 = this.dz() - $$2;
       double $$6 = $$3 * $$3 + $$4 * $$4 + $$5 * $$5;
       return this.a($$6);
    }
 
    public boolean a(double $$0) {
-      double $$1 = this.cL().a();
+      double $$1 = this.cK().a();
       if (Double.isNaN($$1)) {
          $$1 = 1.0;
       }
@@ -1526,28 +1526,28 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    public ub f(ub $$0) {
       try {
          if (this.q != null) {
-            $$0.a("Pos", this.a(this.q.du(), this.dw(), this.q.dA()));
+            $$0.a("Pos", this.a(this.q.dt(), this.dv(), this.q.dz()));
          } else {
-            $$0.a("Pos", this.a(this.du(), this.dw(), this.dA()));
+            $$0.a("Pos", this.a(this.dt(), this.dv(), this.dz()));
          }
 
-         exa $$1 = this.ds();
+         exc $$1 = this.dr();
          $$0.a("Motion", this.a($$1.c, $$1.d, $$1.e));
-         $$0.a("Rotation", this.a(this.dF(), this.dH()));
+         $$0.a("Rotation", this.a(this.dE(), this.dG()));
          $$0.a("FallDistance", this.ac);
          $$0.a("Fire", (short)this.aJ);
          $$0.a("Air", (short)this.cm());
          $$0.a("OnGround", this.aF());
          $$0.a("Invulnerable", this.aY);
          $$0.a("PortalCooldown", this.aX);
-         $$0.a("UUID", this.cA());
+         $$0.a("UUID", this.cz());
          wz $$2 = this.aj();
          if ($$2 != null) {
-            $$0.a("CustomName", wz.a.a($$2, this.dR()));
+            $$0.a("CustomName", wz.a.a($$2, this.dQ()));
          }
 
-         if (this.cF()) {
-            $$0.a("CustomNameVisible", this.cF());
+         if (this.cE()) {
+            $$0.a("CustomNameVisible", this.cE());
          }
 
          if (this.aX()) {
@@ -1585,7 +1585,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
          if (this.bT()) {
             uh $$6 = new uh();
 
-            for (bsr $$7 : this.cT()) {
+            for (bsr $$7 : this.cS()) {
                ub $$8 = new ub();
                if ($$7.d($$8)) {
                   $$6.add($$8);
@@ -1620,8 +1620,8 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
          this.t($$3.i(0));
          this.u($$3.i(1));
          this.bv();
-         this.o(this.dF());
-         this.p(this.dF());
+         this.o(this.dE());
+         this.p(this.dE());
          this.ac = $$0.j("FallDistance");
          this.aJ = $$0.g("Fire");
          if ($$0.e("Air")) {
@@ -1636,22 +1636,22 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
             this.ay = this.ax.toString();
          }
 
-         if (!Double.isFinite(this.du()) || !Double.isFinite(this.dw()) || !Double.isFinite(this.dA())) {
+         if (!Double.isFinite(this.dt()) || !Double.isFinite(this.dv()) || !Double.isFinite(this.dz())) {
             throw new IllegalStateException("Entity has invalid position");
-         } else if (Double.isFinite((double)this.dF()) && Double.isFinite((double)this.dH())) {
+         } else if (Double.isFinite((double)this.dE()) && Double.isFinite((double)this.dG())) {
             this.av();
-            this.a(this.dF(), this.dH());
+            this.a(this.dE(), this.dG());
             if ($$0.b("CustomName", 8)) {
                String $$8 = $$0.l("CustomName");
 
                try {
-                  this.b(wz.a.a($$8, this.dR()));
+                  this.b(wz.a.a($$8, this.dQ()));
                } catch (Exception var16) {
                   b.warn("Failed to parse entity custom name {}", $$8, var16);
                }
             }
 
-            this.o($$0.q("CustomNameVisible"));
+            this.p($$0.q("CustomNameVisible"));
             this.e($$0.q("Silent"));
             this.f($$0.q("NoGravity"));
             this.j($$0.q("Glowing"));
@@ -1736,18 +1736,18 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    public cjh a(cuq $$0, float $$1) {
       if ($$0.e()) {
          return null;
-      } else if (this.dP().B) {
+      } else if (this.dO().B) {
          return null;
       } else {
-         cjh $$2 = new cjh(this.dP(), this.du(), this.dw() + (double)$$1, this.dA(), $$0);
+         cjh $$2 = new cjh(this.dO(), this.dt(), this.dv() + (double)$$1, this.dz(), $$0);
          $$2.v();
-         this.dP().b($$2);
+         this.dO().b($$2);
          return $$2;
       }
    }
 
    public boolean bE() {
-      return !this.dK();
+      return !this.dJ();
    }
 
    public boolean bF() {
@@ -1755,14 +1755,14 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
          return false;
       } else {
          float $$0 = this.bd.a() * 0.8F;
-         ewv $$1 = ewv.a(this.by(), (double)$$0, 1.0E-6, (double)$$0);
+         ewx $$1 = ewx.a(this.by(), (double)$$0, 1.0E-6, (double)$$0);
          return jd.a($$1)
             .anyMatch(
                $$1x -> {
-                  dtc $$2 = this.dP().a_($$1x);
+                  dtc $$2 = this.dO().a_($$1x);
                   return !$$2.i()
-                     && $$2.o(this.dP(), $$1x)
-                     && exq.c($$2.k(this.dP(), $$1x).a((double)$$1x.u(), (double)$$1x.v(), (double)$$1x.w()), exq.a($$1), exe.i);
+                     && $$2.o(this.dO(), $$1x)
+                     && exs.c($$2.k(this.dO(), $$1x).a((double)$$1x.u(), (double)$$1x.v(), (double)$$1x.w()), exs.a($$1), exg.i);
                }
             );
       }
@@ -1771,16 +1771,16 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    public bqr a(cmx $$0, bqq $$1) {
       if (this.bE() && this instanceof btk $$2) {
          if ($$2.A() == $$0) {
-            $$2.a(true, !$$0.fM());
+            $$2.a(true, !$$0.fL());
             this.a(dxz.r, $$0);
-            return bqr.a(this.dP().B);
+            return bqr.a(this.dO().B);
          }
 
          cuq $$3 = $$0.b($$1);
          if ($$3.a(cut.uK) && $$2.q()) {
             $$2.b($$0, true);
             $$3.h(1);
-            return bqr.a(this.dP().B);
+            return bqr.a(this.dO().B);
          }
       }
 
@@ -1796,10 +1796,10 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    public void u() {
-      this.i(exa.b);
+      this.i(exc.b);
       this.l();
       if (this.bS()) {
-         this.dd().j(this);
+         this.dc().j(this);
       }
    }
 
@@ -1810,28 +1810,28 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    protected void a(bsr $$0, bsr.a $$1) {
-      exa $$2 = this.m($$0);
-      exa $$3 = $$0.l(this);
+      exc $$2 = this.m($$0);
+      exc $$3 = $$0.l(this);
       $$1.accept($$0, $$2.c - $$3.c, $$2.d - $$3.d, $$2.e - $$3.e);
    }
 
    public void k(bsr $$0) {
    }
 
-   public exa l(bsr $$0) {
-      return this.dm().b(bss.b, 0, this.aD);
+   public exc l(bsr $$0) {
+      return this.dl().b(bss.b, 0, this.aD);
    }
 
-   public exa m(bsr $$0) {
-      return this.dn().e(this.a($$0, this.bd, 1.0F));
+   public exc m(bsr $$0) {
+      return this.dm().e(this.a($$0, this.bd, 1.0F));
    }
 
-   protected exa a(bsr $$0, bsu $$1, float $$2) {
+   protected exc a(bsr $$0, bsu $$1, float $$2) {
       return a(this, $$0, $$1.d());
    }
 
-   protected static exa a(bsr $$0, bsr $$1, bst $$2) {
-      int $$3 = $$0.cT().indexOf($$1);
+   protected static exc a(bsr $$0, bsr $$1, bst $$2) {
+      int $$3 = $$0.cS().indexOf($$1);
       return $$2.c(bss.a, $$3, $$0.aD);
    }
 
@@ -1894,14 +1894,14 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    protected void p(bsr $$0) {
-      if ($$0.dd() != this) {
+      if ($$0.dc() != this) {
          throw new IllegalStateException("Use x.startRiding(y), not y.addPassenger(x)");
       } else {
          if (this.p.isEmpty()) {
             this.p = ImmutableList.of($$0);
          } else {
             List<bsr> $$1 = Lists.newArrayList(this.p);
-            if (!this.dP().B && $$0 instanceof cmx && !(this.cU() instanceof cmx)) {
+            if (!this.dO().B && $$0 instanceof cmx && !(this.cT() instanceof cmx)) {
                $$1.add(0, $$0);
             } else {
                $$1.add($$0);
@@ -1915,7 +1915,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    protected void q(bsr $$0) {
-      if ($$0.dd() == this) {
+      if ($$0.dc() == this) {
          throw new IllegalStateException("Use x.stopRiding(y), not y.removePassenger(x)");
       } else {
          if (this.p.size() == 1 && this.p.get(0) == $$0) {
@@ -1943,23 +1943,23 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    public double c_() {
-      return this.du();
+      return this.dt();
    }
 
    public double d_() {
-      return this.dw();
+      return this.dv();
    }
 
    public double P_() {
-      return this.dA();
+      return this.dz();
    }
 
    public float Q_() {
-      return this.dH();
+      return this.dG();
    }
 
    public float e_() {
-      return this.dF();
+      return this.dE();
    }
 
    public void a(float $$0, int $$1) {
@@ -1970,26 +1970,26 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       return 0.0F;
    }
 
-   public exa bM() {
-      return this.c(this.dH(), this.dF());
+   public exc bM() {
+      return this.c(this.dG(), this.dE());
    }
 
-   public exa a(cul $$0) {
+   public exc a(cul $$0) {
       if (!(this instanceof cmx $$1)) {
-         return exa.b;
+         return exc.b;
       } else {
-         boolean $$2 = $$1.eV().a($$0) && !$$1.eU().a($$0);
-         btg $$3 = $$2 ? $$1.fr().e() : $$1.fr();
-         return this.c(0.0F, this.dF() + (float)($$3 == btg.b ? 80 : -80)).a(0.5);
+         boolean $$2 = $$1.eU().a($$0) && !$$1.eT().a($$0);
+         btg $$3 = $$2 ? $$1.fq().e() : $$1.fq();
+         return this.c(0.0F, this.dE() + (float)($$3 == btg.b ? 80 : -80)).a(0.5);
       }
    }
 
-   public ewz bN() {
-      return new ewz(this.dH(), this.dF());
+   public exb bN() {
+      return new exb(this.dG(), this.dE());
    }
 
-   public exa bO() {
-      return exa.a(this.bN());
+   public exc bO() {
+      return exc.a(this.bN());
    }
 
    public void a(dlr $$0, jd $$1) {
@@ -2006,15 +2006,18 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    protected void bP() {
-      if (this.dP() instanceof aqu $$0) {
+      if (this.dO() instanceof aqu $$0) {
          this.M();
          if (this.aw != null) {
-            if (this.aw.a($$0, this, this.cx())) {
+            if (this.aw.a($$0, this, this.o(false))) {
                $$0.ag().a("portal");
                this.ay();
-               eqa $$2 = this.aw.a($$0, this);
-               if ($$2 != null && $$0.o().a((dcw)$$2.a())) {
-                  this.a($$2);
+               eqc $$2 = this.aw.a($$0, this);
+               if ($$2 != null) {
+                  aqu $$3 = $$2.a();
+                  if ($$0.o().a((dcw)$$3) && ($$3.af() == $$0.af() || this.a($$0, $$3))) {
+                     this.a($$2);
+                  }
                }
 
                $$0.ag().c();
@@ -2026,7 +2029,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    public int bQ() {
-      bsr $$0 = this.cU();
+      bsr $$0 = this.cT();
       return $$0 instanceof aqv ? $$0.bQ() : 300;
    }
 
@@ -2048,12 +2051,12 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    public boolean bR() {
-      boolean $$0 = this.dP() != null && this.dP().B;
+      boolean $$0 = this.dO() != null && this.dO().B;
       return !this.be() && (this.aJ > 0 || $$0 && this.i(0));
    }
 
    public boolean bS() {
-      return this.dd() != null;
+      return this.dc() != null;
    }
 
    public boolean bT() {
@@ -2130,7 +2133,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    public boolean ch() {
-      return this.dP().x_() ? this.i(6) : this.aZ;
+      return this.dO().x_() ? this.i(6) : this.aZ;
    }
 
    public boolean ci() {
@@ -2141,7 +2144,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       if ($$0.R_()) {
          return false;
       } else {
-         eyg $$1 = this.ck();
+         eyi $$1 = this.ck();
          return $$1 != null && $$0 != null && $$0.ck() == $$1 && $$1.i() ? false : this.ci();
       }
    }
@@ -2154,15 +2157,15 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    @Nullable
-   public exz ck() {
-      return this.dP().M().e(this.cC());
+   public eyb ck() {
+      return this.dO().M().e(this.cB());
    }
 
    public boolean s(bsr $$0) {
       return this.a($$0.ck());
    }
 
-   public boolean a(eyg $$0) {
+   public boolean a(eyi $$0) {
       return this.ck() != null ? this.ck().a($$0) : false;
    }
 
@@ -2222,11 +2225,11 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
          this.d(8.0F);
       }
 
-      this.a(this.dQ().c(), 5.0F);
+      this.a(this.dP().c(), 5.0F);
    }
 
    public void l(boolean $$0) {
-      exa $$1 = this.ds();
+      exc $$1 = this.dr();
       double $$2;
       if ($$0) {
          $$2 = Math.max(-0.9, $$1.d - 0.03);
@@ -2238,7 +2241,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    public void m(boolean $$0) {
-      exa $$1 = this.ds();
+      exc $$1 = this.dr();
       double $$2;
       if ($$0) {
          $$2 = Math.max(-0.3, $$1.d - 0.03);
@@ -2255,7 +2258,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    public void cr() {
-      if (this.ds().b() > -0.5 && this.ac > 1.0F) {
+      if (this.dr().b() > -0.5 && this.ac > 1.0F) {
          this.ac = 1.0F;
       }
    }
@@ -2266,14 +2269,14 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
 
    protected void m(double $$0, double $$1, double $$2) {
       jd $$3 = jd.a($$0, $$1, $$2);
-      exa $$4 = new exa($$0 - (double)$$3.u(), $$1 - (double)$$3.v(), $$2 - (double)$$3.w());
+      exc $$4 = new exc($$0 - (double)$$3.u(), $$1 - (double)$$3.v(), $$2 - (double)$$3.w());
       jd.a $$5 = new jd.a();
       ji $$6 = ji.b;
       double $$7 = Double.MAX_VALUE;
 
       for (ji $$8 : new ji[]{ji.c, ji.d, ji.e, ji.f, ji.b}) {
          $$5.a($$3, $$8);
-         if (!this.dP().a_($$5).r(this.dP(), $$5)) {
+         if (!this.dO().a_($$5).r(this.dO(), $$5)) {
             double $$9 = $$4.a($$8.o());
             double $$10 = $$8.f() == ji.b.a ? 1.0 - $$9 : $$9;
             if ($$10 < $$7) {
@@ -2285,7 +2288,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
 
       float $$11 = this.ah.i() * 0.2F + 0.1F;
       float $$12 = (float)$$6.f().a();
-      exa $$13 = this.ds().a(0.75);
+      exc $$13 = this.dr().a(0.75);
       if ($$6.o() == ji.a.a) {
          this.n((double)($$12 * $$11), $$13.d, $$13.e);
       } else if ($$6.o() == ji.a.b) {
@@ -2295,7 +2298,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       }
    }
 
-   public void a(dtc $$0, exa $$1) {
+   public void a(dtc $$0, exc $$1) {
       this.n();
       this.V = $$1;
    }
@@ -2344,7 +2347,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
 
    @Override
    public String toString() {
-      String $$0 = this.dP() == null ? "~NULL~" : this.dP().toString();
+      String $$0 = this.dO() == null ? "~NULL~" : this.dO().toString();
       return this.aH != null
          ? String.format(
             Locale.ROOT,
@@ -2353,9 +2356,9 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
             this.ah().getString(),
             this.o,
             $$0,
-            this.du(),
-            this.dw(),
-            this.dA(),
+            this.dt(),
+            this.dv(),
+            this.dz(),
             this.aH
          )
          : String.format(
@@ -2365,14 +2368,14 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
             this.ah().getString(),
             this.o,
             $$0,
-            this.du(),
-            this.dw(),
-            this.dA()
+            this.dt(),
+            this.dv(),
+            this.dz()
          );
    }
 
    public boolean b(brk $$0) {
-      return this.dK() || this.aY && !$$0.a(awg.d) && !$$0.h() || $$0.a(awg.i) && this.be() || $$0.a(awg.m) && this.am().a(awi.o);
+      return this.dJ() || this.aY && !$$0.a(awg.d) && !$$0.h() || $$0.a(awg.i) && this.be() || $$0.a(awg.m) && this.am().a(awi.o);
    }
 
    public boolean cv() {
@@ -2384,7 +2387,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    public void v(bsr $$0) {
-      this.b($$0.du(), $$0.dw(), $$0.dA(), $$0.dF(), $$0.dH());
+      this.b($$0.dt(), $$0.dv(), $$0.dz(), $$0.dE(), $$0.dG());
    }
 
    public void w(bsr $$0) {
@@ -2396,10 +2399,10 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    @Nullable
-   public bsr a(eqa $$0) {
-      if (this.dP() instanceof aqu $$1 && !this.dK()) {
+   public bsr a(eqc $$0) {
+      if (this.dO() instanceof aqu $$1 && !this.dJ()) {
          aqu $$3 = $$0.a();
-         List<bsr> $$4 = this.cT();
+         List<bsr> $$4 = this.cS();
          this.ak();
          List<bsr> $$5 = new ArrayList<>();
 
@@ -2418,7 +2421,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
                this.cw();
             }
 
-            $$8.b($$0.b().c, $$0.b().d, $$0.b().e, $$0.d(), $$8.dH());
+            $$8.b($$0.b().c, $$0.b().d, $$0.b().e, $$0.d(), $$8.dG());
             $$8.i($$0.c());
             if (this != $$8) {
                $$3.d($$8);
@@ -2441,24 +2444,31 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    public void f(jd $$0) {
-      if (this.dP() instanceof aqu $$1) {
+      if (this.dO() instanceof aqu $$1) {
          $$1.l().a(aqz.e, new dcd($$0), 3, $$0);
       }
    }
 
    protected void cw() {
       this.b(bsr.c.e);
+      if (this instanceof btk $$0) {
+         $$0.a(true, false);
+      }
    }
 
-   public exa a(ji.a $$0, l.a $$1) {
-      return eqc.a($$1, $$0, this.dn(), this.a(this.at()));
+   public exc a(ji.a $$0, l.a $$1) {
+      return eqe.a($$1, $$0, this.dm(), this.a(this.at()));
    }
 
-   public boolean cx() {
-      return !this.bS() && this.bE();
+   public boolean o(boolean $$0) {
+      return ($$0 || !this.bS()) && this.bE();
    }
 
-   public float a(dco $$0, dcc $$1, jd $$2, dtc $$3, epc $$4, float $$5) {
+   public boolean a(dcw $$0, dcw $$1) {
+      return true;
+   }
+
+   public float a(dco $$0, dcc $$1, jd $$2, dtc $$3, epe $$4, float $$5) {
       return $$5;
    }
 
@@ -2466,7 +2476,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       return true;
    }
 
-   public int cy() {
+   public int cx() {
       return 3;
    }
 
@@ -2478,15 +2488,15 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       $$0.a("Entity Type", () -> bsx.a(this.am()) + " (" + this.getClass().getCanonicalName() + ")");
       $$0.a("Entity ID", this.o);
       $$0.a("Entity Name", () -> this.ah().getString());
-      $$0.a("Entity's Exact location", String.format(Locale.ROOT, "%.2f, %.2f, %.2f", this.du(), this.dw(), this.dA()));
-      $$0.a("Entity's Block location", p.a(this.dP(), ayo.a(this.du()), ayo.a(this.dw()), ayo.a(this.dA())));
-      exa $$1 = this.ds();
+      $$0.a("Entity's Exact location", String.format(Locale.ROOT, "%.2f, %.2f, %.2f", this.dt(), this.dv(), this.dz()));
+      $$0.a("Entity's Block location", p.a(this.dO(), ayo.a(this.dt()), ayo.a(this.dv()), ayo.a(this.dz())));
+      exc $$1 = this.dr();
       $$0.a("Entity's Momentum", String.format(Locale.ROOT, "%.2f, %.2f, %.2f", $$1.c, $$1.d, $$1.e));
-      $$0.a("Entity's Passengers", () -> this.cT().toString());
-      $$0.a("Entity's Vehicle", () -> String.valueOf(this.dd()));
+      $$0.a("Entity's Passengers", () -> this.cS().toString());
+      $$0.a("Entity's Vehicle", () -> String.valueOf(this.dc()));
    }
 
-   public boolean cz() {
+   public boolean cy() {
       return this.bR() && !this.R_();
    }
 
@@ -2496,24 +2506,24 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    @Override
-   public UUID cA() {
+   public UUID cz() {
       return this.ax;
    }
 
-   public String cB() {
+   public String cA() {
       return this.ay;
    }
 
    @Override
-   public String cC() {
+   public String cB() {
       return this.ay;
    }
 
-   public boolean cD() {
+   public boolean cC() {
       return true;
    }
 
-   public static double cE() {
+   public static double cD() {
       return m;
    }
 
@@ -2523,7 +2533,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
 
    @Override
    public wz S_() {
-      return exz.a(this.ck(), this.ah()).a($$0 -> $$0.a(this.cK()).a(this.cB()));
+      return eyb.a(this.ck(), this.ah()).a($$0 -> $$0.a(this.cJ()).a(this.cA()));
    }
 
    public void b(@Nullable wz $$0) {
@@ -2541,17 +2551,17 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       return this.ao.a(aQ).isPresent();
    }
 
-   public void o(boolean $$0) {
+   public void p(boolean $$0) {
       this.ao.a(aR, $$0);
    }
 
-   public boolean cF() {
+   public boolean cE() {
       return this.ao.a(aR);
    }
 
    public boolean a(aqu $$0, double $$1, double $$2, double $$3, Set<buc> $$4, float $$5, float $$6) {
       float $$7 = ayo.a($$6, -90.0F, 90.0F);
-      if ($$0 == this.dP()) {
+      if ($$0 == this.dO()) {
          this.b($$1, $$2, $$3, $$5, $$7);
          this.I();
          this.o($$5);
@@ -2577,14 +2587,14 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    public void c(double $$0, double $$1, double $$2) {
-      if (this.dP() instanceof aqu) {
-         this.b($$0, $$1, $$2, this.dF(), this.dH());
+      if (this.dO() instanceof aqu) {
+         this.b($$0, $$1, $$2, this.dE(), this.dG());
          this.I();
       }
    }
 
    private void I() {
-      this.cV().forEach($$0 -> {
+      this.cU().forEach($$0 -> {
          UnmodifiableIterator var1 = $$0.p.iterator();
 
          while (var1.hasNext()) {
@@ -2595,11 +2605,11 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    public void d(double $$0, double $$1, double $$2) {
-      this.c(this.du() + $$0, this.dw() + $$1, this.dA() + $$2);
+      this.c(this.dt() + $$0, this.dv() + $$1, this.dz() + $$2);
    }
 
-   public boolean cG() {
-      return this.cF();
+   public boolean cF() {
+      return this.cE();
    }
 
    @Override
@@ -2614,7 +2624,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    @Deprecated
-   protected void cH() {
+   protected void cG() {
       bua $$0 = this.at();
       bsu $$1 = this.a($$0);
       this.bd = $$1;
@@ -2636,18 +2646,18 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
 
    public boolean a(bsu $$0) {
       bsu $$1 = this.a(this.at());
-      exa $$2 = this.dn().b(0.0, (double)$$0.b() / 2.0, 0.0);
+      exc $$2 = this.dm().b(0.0, (double)$$0.b() / 2.0, 0.0);
       double $$3 = (double)Math.max(0.0F, $$1.a() - $$0.a()) + 1.0E-6;
       double $$4 = (double)Math.max(0.0F, $$1.b() - $$0.b()) + 1.0E-6;
-      ext $$5 = exq.a(ewv.a($$2, $$3, $$4, $$3));
-      Optional<exa> $$6 = this.r.a(this, $$5, $$2, (double)$$1.a(), (double)$$1.b(), (double)$$1.a());
+      exv $$5 = exs.a(ewx.a($$2, $$3, $$4, $$3));
+      Optional<exc> $$6 = this.r.a(this, $$5, $$2, (double)$$1.a(), (double)$$1.b(), (double)$$1.a());
       if ($$6.isPresent()) {
          this.c($$6.get().b(0.0, (double)(-$$1.b()) / 2.0, 0.0));
          return true;
       } else {
          if ($$1.a() > $$0.a() && $$1.b() > $$0.b()) {
-            ext $$7 = exq.a(ewv.a($$2, $$3, 1.0E-6, $$3));
-            Optional<exa> $$8 = this.r.a(this, $$7, $$2, (double)$$1.a(), (double)$$0.b(), (double)$$1.a());
+            exv $$7 = exs.a(ewx.a($$2, $$3, 1.0E-6, $$3));
+            Optional<exc> $$8 = this.r.a(this, $$7, $$2, (double)$$1.a(), (double)$$0.b(), (double)$$1.a());
             if ($$8.isPresent()) {
                this.c($$8.get().b(0.0, (double)(-$$0.b()) / 2.0 + 1.0E-6, 0.0));
                return true;
@@ -2658,16 +2668,16 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       }
    }
 
+   public ji cH() {
+      return ji.a((double)this.dE());
+   }
+
    public ji cI() {
-      return ji.a((double)this.dF());
+      return this.cH();
    }
 
-   public ji cJ() {
-      return this.cI();
-   }
-
-   protected xf cK() {
-      return new xf(xf.a.c, new xf.b(this.am(), this.cA(), this.ah()));
+   protected xf cJ() {
+      return new xf(xf.a.c, new xf.b(this.am(), this.cz(), this.ah()));
    }
 
    public boolean a(aqv $$0) {
@@ -2675,15 +2685,15 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    @Override
-   public final ewv cL() {
+   public final ewx cK() {
       return this.aF;
    }
 
-   public ewv h_() {
-      return this.cL();
+   public ewx h_() {
+      return this.cK();
    }
 
-   public final void a(ewv $$0) {
+   public final void a(ewx $$0) {
       this.aF = $$0;
    }
 
@@ -2691,16 +2701,16 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       return this.a($$0).c();
    }
 
-   public final float cM() {
+   public final float cL() {
       return this.be;
    }
 
-   public exa q(float $$0) {
-      return this.cN();
+   public exc q(float $$0) {
+      return this.cM();
    }
 
-   protected exa cN() {
-      return new exa(0.0, (double)this.cM(), (double)(this.dk() * 0.4F));
+   protected exc cM() {
+      return new exc(0.0, (double)this.cL(), (double)(this.dj() * 0.4F));
    }
 
    public bug a_(int $$0) {
@@ -2711,16 +2721,16 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    public void a(wz $$0) {
    }
 
-   public dcw cO() {
-      return this.dP();
+   public dcw cN() {
+      return this.dO();
    }
 
    @Nullable
-   public MinecraftServer cP() {
-      return this.dP().o();
+   public MinecraftServer cO() {
+      return this.dO().o();
    }
 
-   public bqr a(cmx $$0, exa $$1, bqq $$2) {
+   public bqr a(cmx $$0, exc $$1, bqq $$2) {
       return bqr.e;
    }
 
@@ -2735,7 +2745,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    public float a(dmm $$0) {
-      float $$1 = ayo.g(this.dF());
+      float $$1 = ayo.g(this.dE());
       switch ($$0) {
          case c:
             return $$1 + 180.0F;
@@ -2749,7 +2759,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    public float a(dkv $$0) {
-      float $$1 = ayo.g(this.dF());
+      float $$1 = ayo.g(this.dE());
       switch ($$0) {
          case c:
             return -$$1;
@@ -2760,7 +2770,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       }
    }
 
-   public boolean cQ() {
+   public boolean cP() {
       return false;
    }
 
@@ -2769,20 +2779,20 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    @Nullable
-   public btn cR() {
+   public btn cQ() {
       return null;
    }
 
-   public final boolean cS() {
-      return this.cR() != null;
+   public final boolean cR() {
+      return this.cQ() != null;
    }
 
-   public final List<bsr> cT() {
+   public final List<bsr> cS() {
       return this.p;
    }
 
    @Nullable
-   public bsr cU() {
+   public bsr cT() {
       return this.p.isEmpty() ? null : (bsr)this.p.get(0);
    }
 
@@ -2804,99 +2814,99 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    private Stream<bsr> J() {
-      return this.p.stream().flatMap(bsr::cV);
+      return this.p.stream().flatMap(bsr::cU);
    }
 
    @Override
-   public Stream<bsr> cV() {
+   public Stream<bsr> cU() {
       return Stream.concat(Stream.of(this), this.J());
    }
 
    @Override
-   public Stream<bsr> cW() {
-      return Stream.concat(this.p.stream().flatMap(bsr::cW), Stream.of(this));
+   public Stream<bsr> cV() {
+      return Stream.concat(this.p.stream().flatMap(bsr::cV), Stream.of(this));
    }
 
-   public Iterable<bsr> cX() {
+   public Iterable<bsr> cW() {
       return () -> this.J().iterator();
    }
 
-   public int cY() {
+   public int cX() {
       return (int)this.J().filter($$0 -> $$0 instanceof cmx).count();
    }
 
-   public boolean cZ() {
-      return this.cY() == 1;
+   public boolean cY() {
+      return this.cX() == 1;
    }
 
-   public bsr da() {
+   public bsr cZ() {
       bsr $$0 = this;
 
       while ($$0.bS()) {
-         $$0 = $$0.dd();
+         $$0 = $$0.dc();
       }
 
       return $$0;
    }
 
    public boolean y(bsr $$0) {
-      return this.da() == $$0.da();
+      return this.cZ() == $$0.cZ();
    }
 
    public boolean z(bsr $$0) {
       if (!$$0.bS()) {
          return false;
       } else {
-         bsr $$1 = $$0.dd();
+         bsr $$1 = $$0.dc();
          return $$1 == this ? true : this.z($$1);
       }
    }
 
+   public boolean da() {
+      return this.cQ() instanceof cmx $$0 ? $$0.g() : this.db();
+   }
+
    public boolean db() {
-      return this.cR() instanceof cmx $$0 ? $$0.g() : this.dc();
+      return !this.dO().B;
    }
 
-   public boolean dc() {
-      return !this.dP().B;
-   }
-
-   protected static exa a(double $$0, double $$1, float $$2) {
+   protected static exc a(double $$0, double $$1, float $$2) {
       double $$3 = ($$0 + $$1 + 1.0E-5F) / 2.0;
       float $$4 = -ayo.a($$2 * (float) (Math.PI / 180.0));
       float $$5 = ayo.b($$2 * (float) (Math.PI / 180.0));
       float $$6 = Math.max(Math.abs($$4), Math.abs($$5));
-      return new exa((double)$$4 * $$3 / (double)$$6, 0.0, (double)$$5 * $$3 / (double)$$6);
+      return new exc((double)$$4 * $$3 / (double)$$6, 0.0, (double)$$5 * $$3 / (double)$$6);
    }
 
-   public exa b(btn $$0) {
-      return new exa(this.du(), this.cL().e, this.dA());
+   public exc b(btn $$0) {
+      return new exc(this.dt(), this.cK().e, this.dz());
    }
 
    @Nullable
-   public bsr dd() {
+   public bsr dc() {
       return this.q;
    }
 
    @Nullable
-   public bsr de() {
-      return this.q != null && this.q.cR() == this ? this.q : null;
+   public bsr dd() {
+      return this.q != null && this.q.cQ() == this ? this.q : null;
    }
 
-   public eph j_() {
-      return eph.a;
+   public epj j_() {
+      return epj.a;
    }
 
-   public avq df() {
+   public avq de() {
       return avq.g;
    }
 
-   protected int dg() {
+   protected int df() {
       return 1;
    }
 
-   public et dh() {
+   public et dg() {
       return new et(
-         this, this.dn(), this.bN(), this.dP() instanceof aqu ? (aqu)this.dP() : null, this.G(), this.ah().getString(), this.S_(), this.dP().o(), this
+         this, this.dm(), this.bN(), this.dO() instanceof aqu ? (aqu)this.dO() : null, this.G(), this.ah().getString(), this.S_(), this.dO().o(), this
       );
    }
 
@@ -2910,7 +2920,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
 
    @Override
    public boolean k_() {
-      return this.dP().ab().b(dcs.p);
+      return this.dO().ab().b(dcs.p);
    }
 
    @Override
@@ -2923,28 +2933,28 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       return true;
    }
 
-   public void a(ff.a $$0, exa $$1) {
-      exa $$2 = $$0.a(this);
+   public void a(ff.a $$0, exc $$1) {
+      exc $$2 = $$0.a(this);
       double $$3 = $$1.c - $$2.c;
       double $$4 = $$1.d - $$2.d;
       double $$5 = $$1.e - $$2.e;
       double $$6 = Math.sqrt($$3 * $$3 + $$5 * $$5);
       this.u(ayo.g((float)(-(ayo.d($$4, $$6) * 180.0F / (float)Math.PI))));
       this.t(ayo.g((float)(ayo.d($$5, $$3) * 180.0F / (float)Math.PI) - 90.0F));
-      this.o(this.dF());
-      this.P = this.dH();
-      this.O = this.dF();
+      this.o(this.dE());
+      this.P = this.dG();
+      this.O = this.dE();
    }
 
    public float r(float $$0) {
       return ayo.i($$0, this.O, this.aD);
    }
 
-   public boolean a(awu<epb> $$0, double $$1) {
-      if (this.di()) {
+   public boolean a(awu<epd> $$0, double $$1) {
+      if (this.dh()) {
          return false;
       } else {
-         ewv $$2 = this.cL().h(0.001);
+         ewx $$2 = this.cK().h(0.001);
          int $$3 = ayo.a($$2.a);
          int $$4 = ayo.c($$2.d);
          int $$5 = ayo.a($$2.b);
@@ -2952,9 +2962,9 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
          int $$7 = ayo.a($$2.c);
          int $$8 = ayo.c($$2.f);
          double $$9 = 0.0;
-         boolean $$10 = this.cD();
+         boolean $$10 = this.cC();
          boolean $$11 = false;
-         exa $$12 = exa.b;
+         exc $$12 = exc.b;
          int $$13 = 0;
          jd.a $$14 = new jd.a();
 
@@ -2962,14 +2972,14 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
             for (int $$16 = $$5; $$16 < $$6; $$16++) {
                for (int $$17 = $$7; $$17 < $$8; $$17++) {
                   $$14.d($$15, $$16, $$17);
-                  epc $$18 = this.dP().b_($$14);
+                  epe $$18 = this.dO().b_($$14);
                   if ($$18.a($$0)) {
-                     double $$19 = (double)((float)$$16 + $$18.a((dcc)this.dP(), $$14));
+                     double $$19 = (double)((float)$$16 + $$18.a((dcc)this.dO(), $$14));
                      if ($$19 >= $$2.b) {
                         $$11 = true;
                         $$9 = Math.max($$19 - $$2.b, $$9);
                         if ($$10) {
-                           exa $$20 = $$18.c(this.dP(), $$14);
+                           exc $$20 = $$18.c(this.dO(), $$14);
                            if ($$9 < 0.4) {
                               $$20 = $$20.a($$9);
                            }
@@ -2992,14 +3002,14 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
                $$12 = $$12.d();
             }
 
-            exa $$21 = this.ds();
+            exc $$21 = this.dr();
             $$12 = $$12.a($$1);
             double $$22 = 0.003;
             if (Math.abs($$21.c) < 0.003 && Math.abs($$21.e) < 0.003 && $$12.f() < 0.0045000000000000005) {
                $$12 = $$12.d().a(0.0045000000000000005);
             }
 
-            this.i(this.ds().e($$12));
+            this.i(this.dr().e($$12));
          }
 
          this.ak.put($$0, $$9);
@@ -3007,28 +3017,28 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       }
    }
 
-   public boolean di() {
-      ewv $$0 = this.cL().g(1.0);
+   public boolean dh() {
+      ewx $$0 = this.cK().g(1.0);
       int $$1 = ayo.a($$0.a);
       int $$2 = ayo.c($$0.d);
       int $$3 = ayo.a($$0.c);
       int $$4 = ayo.c($$0.f);
-      return !this.dP().b($$1, $$3, $$2, $$4);
+      return !this.dO().b($$1, $$3, $$2, $$4);
    }
 
-   public double b(awu<epb> $$0) {
+   public double b(awu<epd> $$0) {
       return this.ak.getDouble($$0);
    }
 
-   public double dj() {
-      return (double)this.cM() < 0.4 ? 0.0 : 0.4;
+   public double di() {
+      return (double)this.cL() < 0.4 ? 0.0 : 0.4;
    }
 
-   public final float dk() {
+   public final float dj() {
       return this.bd.a();
    }
 
-   public final float dl() {
+   public final float dk() {
       return this.bd.b();
    }
 
@@ -3040,97 +3050,97 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       return this.n.n();
    }
 
-   public final bst dm() {
+   public final bst dl() {
       return this.bd.d();
    }
 
-   public exa dn() {
+   public exc dm() {
       return this.s;
    }
 
-   public exa do() {
-      return this.dn();
+   public exc dn() {
+      return this.dm();
    }
 
    @Override
-   public jd dp() {
+   public jd do() {
       return this.t;
    }
 
-   public dtc dq() {
+   public dtc dp() {
       if (this.bj == null) {
-         this.bj = this.dP().a_(this.dp());
+         this.bj = this.dO().a_(this.do());
       }
 
       return this.bj;
    }
 
-   public dcd dr() {
+   public dcd dq() {
       return this.u;
    }
 
-   public exa ds() {
+   public exc dr() {
       return this.v;
    }
 
-   public void i(exa $$0) {
+   public void i(exc $$0) {
       this.v = $$0;
    }
 
-   public void j(exa $$0) {
-      this.i(this.ds().e($$0));
+   public void j(exc $$0) {
+      this.i(this.dr().e($$0));
    }
 
    public void n(double $$0, double $$1, double $$2) {
-      this.i(new exa($$0, $$1, $$2));
+      this.i(new exc($$0, $$1, $$2));
    }
 
-   public final int dt() {
+   public final int ds() {
       return this.t.u();
    }
 
-   public final double du() {
+   public final double dt() {
       return this.s.c;
    }
 
    public double c(double $$0) {
-      return this.s.c + (double)this.dk() * $$0;
+      return this.s.c + (double)this.dj() * $$0;
    }
 
    public double d(double $$0) {
       return this.c((2.0 * this.ah.j() - 1.0) * $$0);
    }
 
-   public final int dv() {
+   public final int du() {
       return this.t.v();
    }
 
-   public final double dw() {
+   public final double dv() {
       return this.s.d;
    }
 
    public double e(double $$0) {
-      return this.s.d + (double)this.dl() * $$0;
+      return this.s.d + (double)this.dk() * $$0;
    }
 
-   public double dx() {
+   public double dw() {
       return this.e(this.ah.j());
    }
 
-   public double dy() {
+   public double dx() {
       return this.s.d + (double)this.be;
    }
 
-   public final int dz() {
+   public final int dy() {
       return this.t.w();
    }
 
-   public final double dA() {
+   public final double dz() {
       return this.s.e;
    }
 
    public double f(double $$0) {
-      return this.s.e + (double)this.dk() * $$0;
+      return this.s.e + (double)this.dj() * $$0;
    }
 
    public double g(double $$0) {
@@ -3139,7 +3149,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
 
    public final void o(double $$0, double $$1, double $$2) {
       if (this.s.c != $$0 || this.s.d != $$1 || this.s.e != $$2) {
-         this.s = new exa($$0, $$1, $$2);
+         this.s = new exc($$0, $$1, $$2);
          int $$3 = ayo.a($$0);
          int $$4 = ayo.a($$1);
          int $$5 = ayo.a($$2);
@@ -3155,10 +3165,10 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       }
    }
 
-   public void dB() {
+   public void dA() {
    }
 
-   public exa s(float $$0) {
+   public exc s(float $$0) {
       return this.m($$0).b(0.0, (double)this.be * 0.7, 0.0);
    }
 
@@ -3176,28 +3186,28 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    @Nullable
-   public cuq dC() {
+   public cuq dB() {
       return null;
    }
 
-   public void p(boolean $$0) {
+   public void q(boolean $$0) {
       this.az = $$0;
    }
 
-   public boolean dD() {
+   public boolean dC() {
       return !this.am().a(awi.k);
    }
 
-   public boolean dE() {
-      return (this.az || this.aA) && this.dD();
+   public boolean dD() {
+      return (this.az || this.aA) && this.dC();
    }
 
-   public float dF() {
+   public float dE() {
       return this.aD;
    }
 
-   public float dG() {
-      return this.dF();
+   public float dF() {
+      return this.dE();
    }
 
    public void t(float $$0) {
@@ -3208,7 +3218,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       }
    }
 
-   public float dH() {
+   public float dG() {
       return this.aE;
    }
 
@@ -3220,23 +3230,23 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       }
    }
 
-   public boolean dI() {
+   public boolean dH() {
       return false;
    }
 
-   public float dJ() {
+   public float dI() {
       return 0.0F;
    }
 
    public void a(@Nullable bsr $$0) {
    }
 
-   public final boolean dK() {
+   public final boolean dJ() {
       return this.aH != null;
    }
 
    @Nullable
-   public bsr.c dL() {
+   public bsr.c dK() {
       return this.aH;
    }
 
@@ -3250,11 +3260,11 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
          this.ad();
       }
 
-      this.cT().forEach(bsr::ad);
+      this.cS().forEach(bsr::ad);
       this.aV.a($$0);
    }
 
-   protected void dM() {
+   protected void dL() {
       this.aH = null;
    }
 
@@ -3264,16 +3274,16 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
    }
 
    @Override
-   public boolean dN() {
+   public boolean dM() {
       if (this.aH != null && !this.aH.b()) {
          return false;
       } else {
-         return this.bS() ? false : !this.bT() || !this.cZ();
+         return this.bS() ? false : !this.bT() || !this.cY();
       }
    }
 
    @Override
-   public boolean dO() {
+   public boolean dN() {
       return false;
    }
 
@@ -3281,7 +3291,7 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       return true;
    }
 
-   public dcw dP() {
+   public dcw dO() {
       return this.r;
    }
 
@@ -3289,39 +3299,39 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyd {
       this.r = $$0;
    }
 
-   public brl dQ() {
-      return this.dP().aj();
+   public brl dP() {
+      return this.dO().aj();
    }
 
-   public ka dR() {
-      return this.dP().H_();
+   public ka dQ() {
+      return this.dO().H_();
    }
 
    protected void a(int $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
       double $$6 = 1.0 / (double)$$0;
-      double $$7 = ayo.d($$6, this.du(), $$1);
-      double $$8 = ayo.d($$6, this.dw(), $$2);
-      double $$9 = ayo.d($$6, this.dA(), $$3);
-      float $$10 = (float)ayo.e($$6, (double)this.dF(), $$4);
-      float $$11 = (float)ayo.d($$6, (double)this.dH(), $$5);
+      double $$7 = ayo.d($$6, this.dt(), $$1);
+      double $$8 = ayo.d($$6, this.dv(), $$2);
+      double $$9 = ayo.d($$6, this.dz(), $$3);
+      float $$10 = (float)ayo.e($$6, (double)this.dE(), $$4);
+      float $$11 = (float)ayo.d($$6, (double)this.dG(), $$5);
       this.a_($$7, $$8, $$9);
       this.a($$10, $$11);
    }
 
-   public ayw dS() {
+   public ayw dR() {
       return this.ah;
    }
 
-   public exa ag() {
-      if (this.cR() instanceof cmx $$0 && this.bE()) {
+   public exc ag() {
+      if (this.cQ() instanceof cmx $$0 && this.bE()) {
          return $$0.ag();
       }
 
-      return this.ds();
+      return this.dr();
    }
 
    @Nullable
-   public cuq dT() {
+   public cuq dS() {
       return null;
    }
 

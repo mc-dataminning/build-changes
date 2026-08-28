@@ -1,32 +1,28 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
 
-public record evh(Optional<cs> b) implements eva {
-   public static final MapCodec<evh> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cs.a.optionalFieldOf("predicate").forGetter(evh::c)).apply($$0, evh::new));
+public record evh(evy b) implements evc {
+   public static final MapCodec<evh> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(evz.a.fieldOf("chance").forGetter(evh::c)).apply($$0, evh::new));
 
    @Override
-   public evb b() {
-      return evc.j;
+   public evd b() {
+      return eve.d;
    }
 
-   @Override
-   public Set<eui<?>> a() {
-      return ImmutableSet.of(eul.i);
+   public boolean a(err $$0) {
+      float $$1 = this.b.b($$0);
+      return $$0.b().i() < $$1;
    }
 
-   public boolean a(erp $$0) {
-      cuq $$1 = $$0.c(eul.i);
-      return $$1 != null && (this.b.isEmpty() || this.b.get().a($$1));
+   public static evc.a a(float $$0) {
+      return () -> new evh(evv.a($$0));
    }
 
-   public static eva.a a(cs.a $$0) {
-      return () -> new evh(Optional.of($$0.b()));
+   public static evc.a a(evy $$0) {
+      return () -> new evh($$0);
    }
 
-   public Optional<cs> c() {
+   public evy c() {
       return this.b;
    }
 }

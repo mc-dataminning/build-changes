@@ -1,37 +1,31 @@
-public class fwz extends fwe {
-   private static final String a = "plate";
-   private static final String b = "handle";
-   private static final int c = 10;
-   private static final int d = 20;
-   private final fyi e;
-   private final fyi f;
-   private final fyi g;
+public class fwz<T extends cga> extends fwu<T> {
+   private float j;
 
-   public fwz(fyi $$0) {
-      super(gff::c);
-      this.e = $$0;
-      this.f = $$0.b("plate");
-      this.g = $$0.b("handle");
+   public fwz(fyk $$0) {
+      super($$0, false, 8.0F, 4.0F, 2.0F, 2.0F, 24);
    }
 
-   public static fyo a() {
-      fyq $$0 = new fyq();
-      fyr $$1 = $$0.a();
-      $$1.a("plate", fyn.c().a(0, 0).a(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), fyk.a);
-      $$1.a("handle", fyn.c().a(26, 0).a(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), fyk.a);
-      return fyo.a($$0, 64, 64);
+   public static fyq c() {
+      fys $$0 = new fys();
+      fyt $$1 = $$0.a();
+      $$1.a("head", fyp.c().a(0, 0).a(-3.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, new fyo(0.6F)), fym.a(0.0F, 6.0F, -8.0F));
+      $$1.a("body", fyp.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F, new fyo(1.75F)), fym.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      fyp $$2 = fyp.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, new fyo(0.5F));
+      $$1.a("right_hind_leg", $$2, fym.a(-3.0F, 12.0F, 7.0F));
+      $$1.a("left_hind_leg", $$2, fym.a(3.0F, 12.0F, 7.0F));
+      $$1.a("right_front_leg", $$2, fym.a(-3.0F, 12.0F, -5.0F));
+      $$1.a("left_front_leg", $$2, fym.a(3.0F, 12.0F, -5.0F));
+      return fyq.a($$0, 64, 32);
    }
 
-   public fyi b() {
-      return this.f;
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.c = 6.0F + $$0.H($$3) * 9.0F;
+      this.j = $$0.I($$3);
    }
 
-   public fyi c() {
-      return this.g;
-   }
-
-   @Override
-   public void a(fbg $$0, fbk $$1, int $$2, int $$3, int $$4) {
-      this.e.a($$0, $$1, $$2, $$3, $$4);
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      this.a.e = this.j;
    }
 }

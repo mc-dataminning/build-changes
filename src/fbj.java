@@ -1,214 +1,67 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.nio.ByteBuffer;
-import javax.annotation.Nullable;
+import org.joml.Matrix3f;
 import org.joml.Matrix4f;
+import org.joml.Vector3f;
 
-public class fbj implements AutoCloseable {
-   private final fbj.a a;
-   private int b;
-   private int c;
-   private int d;
-   @Nullable
-   private fbl e;
-   @Nullable
-   private RenderSystem.a f;
-   private fbl.b g;
-   private int h;
-   private fbl.c i;
+public class fbj implements fbm {
+   private final fbm a;
+   private final Matrix4f b;
+   private final Matrix3f c;
+   private final float d;
+   private final Vector3f e = new Vector3f();
+   private final Vector3f f = new Vector3f();
+   private float g;
+   private float h;
+   private float i;
 
-   public fbj(fbj.a $$0) {
+   public fbj(fbm $$0, fbi.a $$1, float $$2) {
       this.a = $$0;
-      RenderSystem.assertOnRenderThread();
-      this.b = GlStateManager._glGenBuffers();
-      this.c = GlStateManager._glGenBuffers();
-      this.d = GlStateManager._glGenVertexArrays();
-   }
-
-   public void a(fbf $$0) {
-      fbf var2 = $$0;
-
-      label40: {
-         try {
-            if (this.e()) {
-               break label40;
-            }
-
-            RenderSystem.assertOnRenderThread();
-            fbf.a $$1 = $$0.c();
-            this.e = this.a($$1, $$0.a());
-            this.f = this.b($$1, $$0.b());
-            this.h = $$1.c();
-            this.g = $$1.e();
-            this.i = $$1.d();
-         } catch (Throwable var6) {
-            if ($$0 != null) {
-               try {
-                  var2.close();
-               } catch (Throwable var5) {
-                  var6.addSuppressed(var5);
-               }
-            }
-
-            throw var6;
-         }
-
-         if ($$0 != null) {
-            $$0.close();
-         }
-
-         return;
-      }
-
-      if ($$0 != null) {
-         $$0.close();
-      }
-   }
-
-   public void a(fbd.a $$0) {
-      fbd.a var2 = $$0;
-
-      label40: {
-         try {
-            if (this.e()) {
-               break label40;
-            }
-
-            RenderSystem.assertOnRenderThread();
-            GlStateManager._glBindBuffer(34963, this.c);
-            RenderSystem.glBufferData(34963, $$0.a(), this.a.c);
-            this.f = null;
-         } catch (Throwable var6) {
-            if ($$0 != null) {
-               try {
-                  var2.close();
-               } catch (Throwable var5) {
-                  var6.addSuppressed(var5);
-               }
-            }
-
-            throw var6;
-         }
-
-         if ($$0 != null) {
-            $$0.close();
-         }
-
-         return;
-      }
-
-      if ($$0 != null) {
-         $$0.close();
-      }
-   }
-
-   private fbl a(fbf.a $$0, @Nullable ByteBuffer $$1) {
-      boolean $$2 = false;
-      if (!$$0.a().equals(this.e)) {
-         if (this.e != null) {
-            this.e.h();
-         }
-
-         GlStateManager._glBindBuffer(34962, this.b);
-         $$0.a().g();
-         $$2 = true;
-      }
-
-      if ($$1 != null) {
-         if (!$$2) {
-            GlStateManager._glBindBuffer(34962, this.b);
-         }
-
-         RenderSystem.glBufferData(34962, $$1, this.a.c);
-      }
-
-      return $$0.a();
-   }
-
-   @Nullable
-   private RenderSystem.a b(fbf.a $$0, @Nullable ByteBuffer $$1) {
-      if ($$1 != null) {
-         GlStateManager._glBindBuffer(34963, this.c);
-         RenderSystem.glBufferData(34963, $$1, this.a.c);
-         return null;
-      } else {
-         RenderSystem.a $$2 = RenderSystem.getSequentialBuffer($$0.d());
-         if ($$2 != this.f || !$$2.a($$0.c())) {
-            $$2.b($$0.c());
-         }
-
-         return $$2;
-      }
-   }
-
-   public void a() {
-      fbc.b();
-      GlStateManager._glBindVertexArray(this.d);
-   }
-
-   public static void b() {
-      fbc.b();
-      GlStateManager._glBindVertexArray(0);
-   }
-
-   public void c() {
-      RenderSystem.drawElements(this.i.i, this.h, this.f().c);
-   }
-
-   private fbl.b f() {
-      RenderSystem.a $$0 = this.f;
-      return $$0 != null ? $$0.a() : this.g;
-   }
-
-   public void a(Matrix4f $$0, Matrix4f $$1, gfl $$2) {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> this.b(new Matrix4f($$0), new Matrix4f($$1), $$2));
-      } else {
-         this.b($$0, $$1, $$2);
-      }
-   }
-
-   private void b(Matrix4f $$0, Matrix4f $$1, gfl $$2) {
-      $$2.a(this.i, $$0, $$1, fgm.Q().aM());
-      $$2.g();
-      this.c();
-      $$2.f();
+      this.b = new Matrix4f($$1.a()).invert();
+      this.c = new Matrix3f($$1.b()).invert();
+      this.d = $$2;
    }
 
    @Override
-   public void close() {
-      if (this.b >= 0) {
-         RenderSystem.glDeleteBuffers(this.b);
-         this.b = -1;
-      }
-
-      if (this.c >= 0) {
-         RenderSystem.glDeleteBuffers(this.c);
-         this.c = -1;
-      }
-
-      if (this.d >= 0) {
-         RenderSystem.glDeleteVertexArrays(this.d);
-         this.d = -1;
-      }
+   public fbm a(float $$0, float $$1, float $$2) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.a.a($$0, $$1, $$2);
+      return this;
    }
 
-   public fbl d() {
-      return this.e;
+   @Override
+   public fbm a(int $$0, int $$1, int $$2, int $$3) {
+      this.a.a(-1);
+      return this;
    }
 
-   public boolean e() {
-      return this.d == -1;
+   @Override
+   public fbm a(float $$0, float $$1) {
+      return this;
    }
 
-   public static enum a {
-      a(35044),
-      b(35048);
+   @Override
+   public fbm a(int $$0, int $$1) {
+      this.a.a($$0, $$1);
+      return this;
+   }
 
-      final int c;
+   @Override
+   public fbm b(int $$0, int $$1) {
+      this.a.b($$0, $$1);
+      return this;
+   }
 
-      private a(final int $$0) {
-         this.c = $$0;
-      }
+   @Override
+   public fbm b(float $$0, float $$1, float $$2) {
+      this.a.b($$0, $$1, $$2);
+      Vector3f $$3 = this.c.transform($$0, $$1, $$2, this.f);
+      ji $$4 = ji.a($$3.x(), $$3.y(), $$3.z());
+      Vector3f $$5 = this.b.transformPosition(this.g, this.h, this.i, this.e);
+      $$5.rotateY((float) Math.PI);
+      $$5.rotateX((float) (-Math.PI / 2));
+      $$5.rotate($$4.b());
+      this.a.a(-$$5.x() * this.d, -$$5.y() * this.d);
+      return this;
    }
 }

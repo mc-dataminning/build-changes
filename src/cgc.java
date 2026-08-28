@@ -37,37 +37,37 @@ public class cgc extends cfc implements buf, ckh {
    public void a(ub $$0) {
       super.a($$0);
       if ($$0.e("Pumpkin")) {
-         this.w($$0.q("Pumpkin"));
+         this.x($$0.q("Pumpkin"));
       }
    }
 
    @Override
-   public boolean fm() {
+   public boolean fl() {
       return true;
    }
 
    @Override
    public void m_() {
       super.m_();
-      if (!this.dP().B) {
-         if (this.dP().t(this.dp()).a(awd.ae)) {
-            this.a(this.dQ().d(), 1.0F);
+      if (!this.dO().B) {
+         if (this.dO().t(this.do()).a(awd.ae)) {
+            this.a(this.dP().d(), 1.0F);
          }
 
-         if (!this.dP().ab().b(dcs.c)) {
+         if (!this.dO().ab().b(dcs.c)) {
             return;
          }
 
          dtc $$0 = dga.dN.o();
 
          for (int $$1 = 0; $$1 < 4; $$1++) {
-            int $$2 = ayo.a(this.du() + (double)((float)($$1 % 2 * 2 - 1) * 0.25F));
-            int $$3 = ayo.a(this.dw());
-            int $$4 = ayo.a(this.dA() + (double)((float)($$1 / 2 % 2 * 2 - 1) * 0.25F));
+            int $$2 = ayo.a(this.dt() + (double)((float)($$1 % 2 * 2 - 1) * 0.25F));
+            int $$3 = ayo.a(this.dv());
+            int $$4 = ayo.a(this.dz() + (double)((float)($$1 / 2 % 2 * 2 - 1) * 0.25F));
             jd $$5 = new jd($$2, $$3, $$4);
-            if (this.dP().a_($$5).i() && $$0.a((dcz)this.dP(), $$5)) {
-               this.dP().b($$5, $$0);
-               this.dP().a(dxz.i, $$5, dxz.a.a(this, $$0));
+            if (this.dO().a_($$5).i() && $$0.a((dcz)this.dO(), $$5)) {
+               this.dO().b($$5, $$0);
+               this.dO().a(dxz.i, $$5, dxz.a.a(this, $$0));
             }
          }
       }
@@ -75,15 +75,15 @@ public class cgc extends cfc implements buf, ckh {
 
    @Override
    public void a(btn $$0, float $$1) {
-      cnu $$2 = new cnu(this.dP(), this);
-      double $$3 = $$0.dy() - 1.1F;
-      double $$4 = $$0.du() - this.du();
-      double $$5 = $$3 - $$2.dw();
-      double $$6 = $$0.dA() - this.dA();
+      cnu $$2 = new cnu(this.dO(), this);
+      double $$3 = $$0.dx() - 1.1F;
+      double $$4 = $$0.dt() - this.dt();
+      double $$5 = $$3 - $$2.dv();
+      double $$6 = $$0.dz() - this.dz();
       double $$7 = Math.sqrt($$4 * $$4 + $$6 * $$6) * 0.2F;
       $$2.c($$4, $$5 + $$7, $$6, 1.6F, 12.0F);
-      this.a(avp.yG, 1.0F, 0.4F / (this.dS().i() * 0.4F + 0.8F));
-      this.dP().b($$2);
+      this.a(avp.yG, 1.0F, 0.4F / (this.dR().i() * 0.4F + 0.8F));
+      this.dO().b($$2);
    }
 
    @Override
@@ -92,11 +92,11 @@ public class cgc extends cfc implements buf, ckh {
       if ($$2.a(cut.rV) && this.a()) {
          this.a(avq.h);
          this.a(dxz.M, $$0);
-         if (!this.dP().B) {
+         if (!this.dO().B) {
             $$2.a(1, $$0, d($$1));
          }
 
-         return bqr.a(this.dP().B);
+         return bqr.a(this.dO().B);
       } else {
          return bqr.e;
       }
@@ -104,10 +104,10 @@ public class cgc extends cfc implements buf, ckh {
 
    @Override
    public void a(avq $$0) {
-      this.dP().a(null, this, avp.yH, $$0, 1.0F, 1.0F);
-      if (!this.dP().x_()) {
-         this.w(false);
-         this.a(new cuq(cut.fl), this.cM());
+      this.dO().a(null, this, avp.yH, $$0, 1.0F, 1.0F);
+      if (!this.dO().x_()) {
+         this.x(false);
+         this.a(new cuq(cut.fl), this.cL());
       }
    }
 
@@ -120,7 +120,7 @@ public class cgc extends cfc implements buf, ckh {
       return (this.ao.a(b) & 16) != 0;
    }
 
-   public void w(boolean $$0) {
+   public void x(boolean $$0) {
       byte $$1 = this.ao.a(b);
       if ($$0) {
          this.ao.a(b, (byte)($$1 | 16));
@@ -148,7 +148,7 @@ public class cgc extends cfc implements buf, ckh {
    }
 
    @Override
-   public exa cN() {
-      return new exa(0.0, (double)(0.75F * this.cM()), (double)(this.dk() * 0.4F));
+   public exc cM() {
+      return new exc(0.0, (double)(0.75F * this.cL()), (double)(this.dj() * 0.4F));
    }
 }

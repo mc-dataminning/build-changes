@@ -9,7 +9,7 @@ public class dm extends dv<dm.a> {
    }
 
    public void a(aqv $$0, bsr $$1, brk $$2, float $$3, float $$4, boolean $$5) {
-      erp $$6 = bv.b($$0, $$1);
+      err $$6 = bv.b($$0, $$1);
       this.a($$0, $$6x -> $$6x.a($$0, $$6, $$2, $$3, $$4, $$5));
    }
 
@@ -47,7 +47,7 @@ public class dm extends dv<dm.a> {
          return an.h.a(new dm.a(Optional.empty(), Optional.of($$0.b()), bv.a($$1)));
       }
 
-      public boolean a(aqv $$0, erp $$1, brk $$2, float $$3, float $$4, boolean $$5) {
+      public boolean a(aqv $$0, err $$1, brk $$2, float $$3, float $$4, boolean $$5) {
          return this.c.isPresent() && !this.c.get().a($$0, $$2, $$3, $$4, $$5) ? false : !this.d.isPresent() || this.d.get().a($$1);
       }
 

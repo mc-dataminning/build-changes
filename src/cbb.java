@@ -26,7 +26,7 @@ public class cbb extends cam {
       } else if (this.b.g(this.a) > (double)(this.g * this.g)) {
          return false;
       } else {
-         exa $$0 = cej.a(this.a, 16, 7, this.b.dn(), (float) (Math.PI / 2));
+         exc $$0 = cej.a(this.a, 16, 7, this.b.dm(), (float) (Math.PI / 2));
          if ($$0 == null) {
             return false;
          } else {

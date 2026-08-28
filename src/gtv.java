@@ -1,99 +1,58 @@
-import javax.annotation.Nullable;
+public class gtv extends gti {
+   public gtv(avo $$0, avq $$1, float $$2, float $$3, ayw $$4, jd $$5) {
+      this($$0, $$1, $$2, $$3, $$4, (double)$$5.u() + 0.5, (double)$$5.v() + 0.5, (double)$$5.w() + 0.5);
+   }
 
-public class gtv implements gvf<gtv> {
-   public static final akk a = new akk("sounds", ".ogg");
-   private final akr b;
-   private final bpz c;
-   private final bpz d;
-   private final int e;
-   private final gtv.a f;
-   private final boolean g;
-   private final boolean h;
-   private final int i;
+   public static gtv a(avo $$0, float $$1) {
+      return a($$0, $$1, 0.25F);
+   }
 
-   public gtv(akr $$0, bpz $$1, bpz $$2, int $$3, gtv.a $$4, boolean $$5, boolean $$6, int $$7) {
-      this.b = $$0;
-      this.c = $$1;
+   public static gtv a(jm<avo> $$0, float $$1) {
+      return a($$0.a(), $$1);
+   }
+
+   public static gtv a(avo $$0, float $$1, float $$2) {
+      return new gtv($$0.a(), avq.a, $$2, $$1, gua.t(), false, 0, gua.a.a, 0.0, 0.0, 0.0, true);
+   }
+
+   public static gtv a(avo $$0) {
+      return new gtv($$0.a(), avq.b, 1.0F, 1.0F, gua.t(), false, 0, gua.a.a, 0.0, 0.0, 0.0, true);
+   }
+
+   public static gtv a(avo $$0, exc $$1) {
+      return new gtv($$0, avq.c, 4.0F, 1.0F, gua.t(), false, 0, gua.a.b, $$1.c, $$1.d, $$1.e);
+   }
+
+   public static gtv b(avo $$0, float $$1, float $$2) {
+      return new gtv($$0.a(), avq.i, $$2, $$1, gua.t(), false, 0, gua.a.a, 0.0, 0.0, 0.0, true);
+   }
+
+   public static gtv b(avo $$0) {
+      return b($$0, 1.0F, 1.0F);
+   }
+
+   public static gtv a(avo $$0, ayw $$1, double $$2, double $$3, double $$4) {
+      return new gtv($$0, avq.i, 1.0F, 1.0F, $$1, false, 0, gua.a.b, $$2, $$3, $$4);
+   }
+
+   public gtv(avo $$0, avq $$1, float $$2, float $$3, ayw $$4, double $$5, double $$6, double $$7) {
+      this($$0, $$1, $$2, $$3, $$4, false, 0, gua.a.b, $$5, $$6, $$7);
+   }
+
+   private gtv(avo $$0, avq $$1, float $$2, float $$3, ayw $$4, boolean $$5, int $$6, gua.a $$7, double $$8, double $$9, double $$10) {
+      this($$0.a(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, false);
+   }
+
+   public gtv(akr $$0, avq $$1, float $$2, float $$3, ayw $$4, boolean $$5, int $$6, gua.a $$7, double $$8, double $$9, double $$10, boolean $$11) {
+      super($$0, $$1, $$4);
       this.d = $$2;
       this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-   }
-
-   public akr a() {
-      return this.b;
-   }
-
-   public akr b() {
-      return a.a(this.b);
-   }
-
-   public bpz c() {
-      return this.c;
-   }
-
-   public bpz d() {
-      return this.d;
-   }
-
-   @Override
-   public int e() {
-      return this.e;
-   }
-
-   public gtv a(ayw $$0) {
-      return this;
-   }
-
-   @Override
-   public void a(gva $$0) {
-      if (this.h) {
-         $$0.a(this);
-      }
-   }
-
-   public gtv.a f() {
-      return this.f;
-   }
-
-   public boolean g() {
-      return this.g;
-   }
-
-   public boolean h() {
-      return this.h;
-   }
-
-   public int i() {
-      return this.i;
-   }
-
-   @Override
-   public String toString() {
-      return "Sound[" + this.b + "]";
-   }
-
-   public static enum a {
-      a("file"),
-      b("event");
-
-      private final String c;
-
-      private a(final String $$0) {
-         this.c = $$0;
-      }
-
-      @Nullable
-      public static gtv.a a(String $$0) {
-         for (gtv.a $$1 : values()) {
-            if ($$1.c.equals($$0)) {
-               return $$1;
-            }
-         }
-
-         return null;
-      }
+      this.f = $$8;
+      this.g = $$9;
+      this.h = $$10;
+      this.i = $$5;
+      this.j = $$6;
+      this.k = $$7;
+      this.l = $$11;
    }
 }

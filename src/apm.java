@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 public class apm extends aur {
    private static final Logger h = LogUtils.getLogger();
 
-   public apm(apn $$0, jt<ala> $$1, erg $$2) {
+   public apm(apn $$0, jt<ala> $$1, eri $$2) {
       super($$0, $$1, $$2, $$0.a().I);
       apo $$3 = $$0.a();
       this.a($$3.G);

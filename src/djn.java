@@ -5,7 +5,7 @@ public abstract class djn extends djl implements dgb {
    public static final int f = 25;
    private final double c;
 
-   protected djn(dtb.d $$0, ji $$1, ext $$2, boolean $$3, double $$4) {
+   protected djn(dtb.d $$0, ji $$1, exv $$2, boolean $$3, double $$4) {
       super($$0, $$1, $$2, $$3);
       this.c = $$4;
       this.k(this.E.b().a(e, Integer.valueOf(0)));
@@ -58,7 +58,7 @@ public abstract class djn extends djl implements dgb {
 
       if ($$1 != this.a || !$$2.a(this) && !$$2.a(this.b())) {
          if (this.b) {
-            $$3.a($$4, epd.c, epd.c.a($$3));
+            $$3.a($$4, epf.c, epf.c.a($$3));
          }
 
          return super.a($$0, $$1, $$2, $$3, $$4, $$5);

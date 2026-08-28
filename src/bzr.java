@@ -19,21 +19,21 @@ public class bzr extends bzp {
    @Override
    public void a() {
       if (this.r && this.d.bf()) {
-         this.d.i(this.d.ds().b(0.0, 0.005, 0.0));
+         this.d.i(this.d.dr().b(0.0, 0.005, 0.0));
       }
 
       if (this.k == bzp.a.b && !this.d.N().l()) {
-         double $$0 = this.e - this.d.du();
-         double $$1 = this.f - this.d.dw();
-         double $$2 = this.g - this.d.dA();
+         double $$0 = this.e - this.d.dt();
+         double $$1 = this.f - this.d.dv();
+         double $$2 = this.g - this.d.dz();
          double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
          if ($$3 < 2.5000003E-7F) {
             this.d.E(0.0F);
          } else {
             float $$4 = (float)(ayo.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
-            this.d.t(this.a(this.d.dF(), $$4, (float)this.o));
-            this.d.aY = this.d.dF();
-            this.d.ba = this.d.dF();
+            this.d.t(this.a(this.d.dE(), $$4, (float)this.o));
+            this.d.aY = this.d.dE();
+            this.d.ba = this.d.dE();
             float $$5 = (float)(this.h * this.d.g(buw.v));
             if (this.d.bf()) {
                this.d.A($$5 * this.p);
@@ -41,15 +41,15 @@ public class bzr extends bzp {
                if (Math.abs($$1) > 1.0E-5F || Math.abs($$6) > 1.0E-5F) {
                   float $$7 = -((float)(ayo.d($$1, $$6) * 180.0F / (float)Math.PI));
                   $$7 = ayo.a(ayo.g($$7), (float)(-this.n), (float)this.n);
-                  this.d.u(this.a(this.d.dH(), $$7, 5.0F));
+                  this.d.u(this.a(this.d.dG(), $$7, 5.0F));
                }
 
-               float $$8 = ayo.b(this.d.dH() * (float) (Math.PI / 180.0));
-               float $$9 = ayo.a(this.d.dH() * (float) (Math.PI / 180.0));
+               float $$8 = ayo.b(this.d.dG() * (float) (Math.PI / 180.0));
+               float $$9 = ayo.a(this.d.dG() * (float) (Math.PI / 180.0));
                this.d.bq = $$8 * $$5;
                this.d.bp = -$$9 * $$5;
             } else {
-               float $$10 = Math.abs(ayo.g(this.d.dF() - $$4));
+               float $$10 = Math.abs(ayo.g(this.d.dE() - $$4));
                float $$11 = a($$10);
                this.d.A($$5 * this.q * $$11);
             }

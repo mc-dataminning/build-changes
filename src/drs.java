@@ -31,9 +31,9 @@ public class drs extends dqh {
 
    public boolean a(cmx $$0) {
       if (this.n().b() instanceof dmz $$1) {
-         exa $$2 = $$1.m(this.n());
-         double $$3 = $$0.du() - ((double)this.aD_().u() + $$2.c);
-         double $$4 = $$0.dA() - ((double)this.aD_().w() + $$2.e);
+         exc $$2 = $$1.m(this.n());
+         double $$3 = $$0.dt() - ((double)this.aD_().u() + $$2.c);
+         double $$4 = $$0.dz() - ((double)this.aD_().w() + $$2.e);
          float $$5 = $$1.g(this.n());
          float $$6 = (float)(ayo.d($$4, $$3) * 180.0F / (float)Math.PI) - 90.0F;
          return ayo.d($$5, $$6) <= 90.0F;
@@ -108,7 +108,7 @@ public class drs extends dqh {
    }
 
    public void a(cmx $$0, boolean $$1, List<arm> $$2) {
-      if (!this.v() && $$0.cA().equals(this.u()) && this.n != null) {
+      if (!this.v() && $$0.cz().equals(this.u()) && this.n != null) {
          this.a($$2x -> this.a($$0, $$2, $$2x), $$1);
          this.a(null);
          this.n.a(this.aD_(), this.n(), this.n(), 3);
@@ -171,7 +171,7 @@ public class drs extends dqh {
          xw $$6 = $$5.a();
          wx $$7 = $$6.h();
          if ($$7 != null && $$7.a() == wx.a.c) {
-            $$0.cP().aH().a(a($$0, $$1, $$2), $$7.b());
+            $$0.cO().aH().a(a($$0, $$1, $$2), $$7.b());
             $$4 = true;
          }
       }
@@ -182,7 +182,7 @@ public class drs extends dqh {
    private static et a(@Nullable cmx $$0, dcw $$1, jd $$2) {
       String $$3 = $$0 == null ? "Sign" : $$0.ah().getString();
       wz $$4 = (wz)($$0 == null ? wz.b("Sign") : $$0.S_());
-      return new et(es.a, exa.b($$2), ewz.a, (aqu)$$1, 2, $$3, $$4, $$1.o(), $$0);
+      return new et(es.a, exc.b($$2), exb.a, (aqu)$$1, 2, $$3, $$4, $$1.o(), $$0);
    }
 
    public acb l() {

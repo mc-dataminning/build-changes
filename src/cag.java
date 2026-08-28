@@ -11,7 +11,7 @@ public class cag extends cam {
 
    @Override
    public boolean b() {
-      return this.a.bf() && this.a.b(awk.a) > this.a.dj() || this.a.bt();
+      return this.a.bf() && this.a.b(awk.a) > this.a.di() || this.a.bt();
    }
 
    @Override
@@ -21,7 +21,7 @@ public class cag extends cam {
 
    @Override
    public void a() {
-      if (this.a.dS().i() < 0.8F) {
+      if (this.a.dR().i() < 0.8F) {
          this.a.L().a();
       }
    }

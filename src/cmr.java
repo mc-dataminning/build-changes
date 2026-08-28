@@ -10,12 +10,12 @@ public class cmr implements dcj {
    private static final int f = 10;
    private static final int g = 10;
    private final ayw h = ayw.a();
-   private final eri i;
+   private final erk i;
    private int j;
    private int k;
    private int l;
 
-   public cmr(eri $$0) {
+   public cmr(erk $$0) {
       this.i = $$0;
       this.j = 1200;
       this.k = $$0.t();
@@ -68,7 +68,7 @@ public class cmr implements dcj {
       } else if (this.h.a(10) != 0) {
          return false;
       } else {
-         jd $$2 = $$1.dp();
+         jd $$2 = $$1.do();
          int $$3 = 48;
          ces $$4 = $$0.y();
          Optional<jd> $$5 = $$4.d($$0x -> $$0x.a(cew.o), $$0x -> true, $$2, 48, ces.b.c);
@@ -85,7 +85,7 @@ public class cmr implements dcj {
                   this.a($$0, $$8, 4);
                }
 
-               this.i.a($$8.cA());
+               this.i.a($$8.cz());
                $$8.u(48000);
                $$8.h($$6);
                $$8.a($$6, 16);
@@ -98,7 +98,7 @@ public class cmr implements dcj {
    }
 
    private void a(aqu $$0, cmq $$1, int $$2) {
-      jd $$3 = this.a($$0, $$1.dp(), $$2);
+      jd $$3 = this.a($$0, $$1.do(), $$2);
       if ($$3 != null) {
          chq $$4 = bsx.be.a($$0, $$3, btr.h);
          if ($$4 != null) {

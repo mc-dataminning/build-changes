@@ -13,7 +13,7 @@ public class cbh extends cam {
 
    @Override
    public boolean b() {
-      return this.a.dS().i() < 0.02F;
+      return this.a.dR().i() < 0.02F;
    }
 
    @Override
@@ -23,10 +23,10 @@ public class cbh extends cam {
 
    @Override
    public void d() {
-      double $$0 = (Math.PI * 2) * this.a.dS().j();
+      double $$0 = (Math.PI * 2) * this.a.dR().j();
       this.b = Math.cos($$0);
       this.c = Math.sin($$0);
-      this.d = 20 + this.a.dS().a(20);
+      this.d = 20 + this.a.dR().a(20);
    }
 
    @Override
@@ -37,6 +37,6 @@ public class cbh extends cam {
    @Override
    public void a() {
       this.d--;
-      this.a.I().a(this.a.du() + this.b, this.a.dy(), this.a.dA() + this.c);
+      this.a.I().a(this.a.dt() + this.b, this.a.dx(), this.a.dz() + this.c);
    }
 }

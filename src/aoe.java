@@ -280,23 +280,23 @@ public class aoe {
    private static LiteralArgumentBuilder<et> a() {
       LiteralArgumentBuilder<et> $$0 = eu.a("rendertype");
 
-      for (eyh.a $$1 : eyh.a.values()) {
+      for (eyj.a $$1 : eyj.a.values()) {
          $$0.then(eu.a($$1.a()).executes($$1x -> a((et)$$1x.getSource(), fn.a($$1x, "objective"), $$1)));
       }
 
       return $$0;
    }
 
-   private static CompletableFuture<Suggestions> a(et $$0, Collection<eyd> $$1, SuggestionsBuilder $$2) {
+   private static CompletableFuture<Suggestions> a(et $$0, Collection<eyf> $$1, SuggestionsBuilder $$2) {
       List<String> $$3 = Lists.newArrayList();
-      eye $$4 = $$0.l().aK();
+      eyg $$4 = $$0.l().aK();
 
-      for (exw $$5 : $$4.c()) {
-         if ($$5.c() == eyh.c) {
+      for (exy $$5 : $$4.c()) {
+         if ($$5.c() == eyj.c) {
             boolean $$6 = false;
 
-            for (eyd $$7 : $$1) {
-               eya $$8 = $$4.d($$7, $$5);
+            for (eyf $$7 : $$1) {
+               eyc $$8 = $$4.d($$7, $$5);
                if ($$8 == null || $$8.b()) {
                   $$6 = true;
                   break;
@@ -312,30 +312,30 @@ public class aoe {
       return ey.b($$3, $$2);
    }
 
-   private static int a(et $$0, eyd $$1, exw $$2) throws CommandSyntaxException {
-      eye $$3 = $$0.l().aK();
-      eya $$4 = $$3.d($$1, $$2);
+   private static int a(et $$0, eyf $$1, exy $$2) throws CommandSyntaxException {
+      eyg $$3 = $$0.l().aK();
+      eyc $$4 = $$3.d($$1, $$2);
       if ($$4 == null) {
-         throw f.create($$2.b(), $$1.gZ());
+         throw f.create($$2.b(), $$1.gY());
       } else {
-         $$0.a(() -> wz.a("commands.scoreboard.players.get.success", $$1.gZ(), $$4.a(), $$2.g()), false);
+         $$0.a(() -> wz.a("commands.scoreboard.players.get.success", $$1.gY(), $$4.a(), $$2.g()), false);
          return $$4.a();
       }
    }
 
-   private static wz a(Collection<eyd> $$0) {
-      return $$0.iterator().next().gZ();
+   private static wz a(Collection<eyf> $$0) {
+      return $$0.iterator().next().gY();
    }
 
-   private static int a(et $$0, Collection<eyd> $$1, exw $$2, fp.a $$3, Collection<eyd> $$4, exw $$5) throws CommandSyntaxException {
-      eye $$6 = $$0.l().aK();
+   private static int a(et $$0, Collection<eyf> $$1, exy $$2, fp.a $$3, Collection<eyf> $$4, exy $$5) throws CommandSyntaxException {
+      eyg $$6 = $$0.l().aK();
       int $$7 = 0;
 
-      for (eyd $$8 : $$1) {
-         eyc $$9 = $$6.c($$8, $$2);
+      for (eyf $$8 : $$1) {
+         eye $$9 = $$6.c($$8, $$2);
 
-         for (eyd $$10 : $$4) {
-            eyc $$11 = $$6.c($$10, $$5);
+         for (eyf $$10 : $$4) {
+            eye $$11 = $$6.c($$10, $$5);
             $$3.apply($$9, $$11);
          }
 
@@ -352,15 +352,15 @@ public class aoe {
       return $$7;
    }
 
-   private static int a(et $$0, Collection<eyd> $$1, exw $$2) throws CommandSyntaxException {
-      if ($$2.c() != eyh.c) {
+   private static int a(et $$0, Collection<eyf> $$1, exy $$2) throws CommandSyntaxException {
+      if ($$2.c() != eyj.c) {
          throw e.create();
       } else {
-         eye $$3 = $$0.l().aK();
+         eyg $$3 = $$0.l().aK();
          int $$4 = 0;
 
-         for (eyd $$5 : $$1) {
-            eyc $$6 = $$3.c($$5, $$2);
+         for (eyf $$5 : $$1) {
+            eye $$6 = $$3.c($$5, $$2);
             if ($$6.d()) {
                $$6.e();
                $$4++;
@@ -381,10 +381,10 @@ public class aoe {
       }
    }
 
-   private static int a(et $$0, Collection<eyd> $$1) {
-      eye $$2 = $$0.l().aK();
+   private static int a(et $$0, Collection<eyf> $$1) {
+      eyg $$2 = $$0.l().aK();
 
-      for (eyd $$3 : $$1) {
+      for (eyf $$3 : $$1) {
          $$2.b($$3);
       }
 
@@ -397,10 +397,10 @@ public class aoe {
       return $$1.size();
    }
 
-   private static int b(et $$0, Collection<eyd> $$1, exw $$2) {
-      eye $$3 = $$0.l().aK();
+   private static int b(et $$0, Collection<eyf> $$1, exy $$2) {
+      eyg $$3 = $$0.l().aK();
 
-      for (eyd $$4 : $$1) {
+      for (eyf $$4 : $$1) {
          $$3.e($$4, $$2);
       }
 
@@ -413,10 +413,10 @@ public class aoe {
       return $$1.size();
    }
 
-   private static int a(et $$0, Collection<eyd> $$1, exw $$2, int $$3) {
-      eye $$4 = $$0.l().aK();
+   private static int a(et $$0, Collection<eyf> $$1, exy $$2, int $$3) {
+      eyg $$4 = $$0.l().aK();
 
-      for (eyd $$5 : $$1) {
+      for (eyf $$5 : $$1) {
          $$4.c($$5, $$2).a($$3);
       }
 
@@ -429,10 +429,10 @@ public class aoe {
       return $$3 * $$1.size();
    }
 
-   private static int a(et $$0, Collection<eyd> $$1, exw $$2, @Nullable wz $$3) {
-      eye $$4 = $$0.l().aK();
+   private static int a(et $$0, Collection<eyf> $$1, exy $$2, @Nullable wz $$3) {
+      eyg $$4 = $$0.l().aK();
 
-      for (eyd $$5 : $$1) {
+      for (eyf $$5 : $$1) {
          $$4.c($$5, $$2).a($$3);
       }
 
@@ -451,10 +451,10 @@ public class aoe {
       return $$1.size();
    }
 
-   private static int a(et $$0, Collection<eyd> $$1, exw $$2, @Nullable yp $$3) {
-      eye $$4 = $$0.l().aK();
+   private static int a(et $$0, Collection<eyf> $$1, exy $$2, @Nullable yp $$3) {
+      eyg $$4 = $$0.l().aK();
 
-      for (eyd $$5 : $$1) {
+      for (eyf $$5 : $$1) {
          $$4.c($$5, $$2).a($$3);
       }
 
@@ -473,12 +473,12 @@ public class aoe {
       return $$1.size();
    }
 
-   private static int b(et $$0, Collection<eyd> $$1, exw $$2, int $$3) {
-      eye $$4 = $$0.l().aK();
+   private static int b(et $$0, Collection<eyf> $$1, exy $$2, int $$3) {
+      eyg $$4 = $$0.l().aK();
       int $$5 = 0;
 
-      for (eyd $$6 : $$1) {
-         eyc $$7 = $$4.c($$6, $$2);
+      for (eyf $$6 : $$1) {
+         eye $$7 = $$4.c($$6, $$2);
          $$7.a($$7.a() + $$3);
          $$5 += $$7.a();
       }
@@ -493,12 +493,12 @@ public class aoe {
       return $$5;
    }
 
-   private static int c(et $$0, Collection<eyd> $$1, exw $$2, int $$3) {
-      eye $$4 = $$0.l().aK();
+   private static int c(et $$0, Collection<eyf> $$1, exy $$2, int $$3) {
+      eyg $$4 = $$0.l().aK();
       int $$5 = 0;
 
-      for (eyd $$6 : $$1) {
-         eyc $$7 = $$4.c($$6, $$2);
+      for (eyf $$6 : $$1) {
+         eye $$7 = $$4.c($$6, $$2);
          $$7.a($$7.a() - $$3);
          $$5 += $$7.a();
       }
@@ -514,32 +514,32 @@ public class aoe {
    }
 
    private static int a(et $$0) {
-      Collection<eyd> $$1 = $$0.l().aK().e();
+      Collection<eyf> $$1 = $$0.l().aK().e();
       if ($$1.isEmpty()) {
          $$0.a(() -> wz.c("commands.scoreboard.players.list.empty"), false);
       } else {
-         $$0.a(() -> wz.a("commands.scoreboard.players.list.success", $$1.size(), xc.b($$1, eyd::gZ)), false);
+         $$0.a(() -> wz.a("commands.scoreboard.players.list.success", $$1.size(), xc.b($$1, eyf::gY)), false);
       }
 
       return $$1.size();
    }
 
-   private static int a(et $$0, eyd $$1) {
-      Object2IntMap<exw> $$2 = $$0.l().aK().c($$1);
+   private static int a(et $$0, eyf $$1) {
+      Object2IntMap<exy> $$2 = $$0.l().aK().c($$1);
       if ($$2.isEmpty()) {
-         $$0.a(() -> wz.a("commands.scoreboard.players.list.entity.empty", $$1.gZ()), false);
+         $$0.a(() -> wz.a("commands.scoreboard.players.list.entity.empty", $$1.gY()), false);
       } else {
-         $$0.a(() -> wz.a("commands.scoreboard.players.list.entity.success", $$1.gZ(), $$2.size()), false);
+         $$0.a(() -> wz.a("commands.scoreboard.players.list.entity.success", $$1.gY(), $$2.size()), false);
          Object2IntMaps.fastForEach(
-            $$2, $$1x -> $$0.a(() -> wz.a("commands.scoreboard.players.list.entity.entry", ((exw)$$1x.getKey()).g(), $$1x.getIntValue()), false)
+            $$2, $$1x -> $$0.a(() -> wz.a("commands.scoreboard.players.list.entity.entry", ((exy)$$1x.getKey()).g(), $$1x.getIntValue()), false)
          );
       }
 
       return $$2.size();
    }
 
-   private static int a(et $$0, exv $$1) throws CommandSyntaxException {
-      eye $$2 = $$0.l().aK();
+   private static int a(et $$0, exx $$1) throws CommandSyntaxException {
+      eyg $$2 = $$0.l().aK();
       if ($$2.a($$1) == null) {
          throw b.create();
       } else {
@@ -549,8 +549,8 @@ public class aoe {
       }
    }
 
-   private static int a(et $$0, exv $$1, exw $$2) throws CommandSyntaxException {
-      eye $$3 = $$0.l().aK();
+   private static int a(et $$0, exx $$1, exy $$2) throws CommandSyntaxException {
+      eyg $$3 = $$0.l().aK();
       if ($$3.a($$1) == $$2) {
          throw c.create();
       } else {
@@ -560,7 +560,7 @@ public class aoe {
       }
    }
 
-   private static int a(et $$0, exw $$1, wz $$2) {
+   private static int a(et $$0, exy $$1, wz $$2) {
       if (!$$1.d().equals($$2)) {
          $$1.a($$2);
          $$0.a(() -> wz.a("commands.scoreboard.objectives.modify.displayname", $$1.b(), $$1.g()), true);
@@ -569,7 +569,7 @@ public class aoe {
       return 0;
    }
 
-   private static int a(et $$0, exw $$1, boolean $$2) {
+   private static int a(et $$0, exy $$1, boolean $$2) {
       if ($$1.e() != $$2) {
          $$1.a($$2);
          if ($$2) {
@@ -582,7 +582,7 @@ public class aoe {
       return 0;
    }
 
-   private static int a(et $$0, exw $$1, @Nullable yp $$2) {
+   private static int a(et $$0, exy $$1, @Nullable yp $$2) {
       $$1.b($$2);
       if ($$2 != null) {
          $$0.a(() -> wz.a("commands.scoreboard.objectives.modify.objectiveFormat.set", $$1.b()), true);
@@ -593,7 +593,7 @@ public class aoe {
       return 0;
    }
 
-   private static int a(et $$0, exw $$1, eyh.a $$2) {
+   private static int a(et $$0, exy $$1, eyj.a $$2) {
       if ($$1.h() != $$2) {
          $$1.a($$2);
          $$0.a(() -> wz.a("commands.scoreboard.objectives.modify.rendertype", $$1.g()), true);
@@ -602,31 +602,31 @@ public class aoe {
       return 0;
    }
 
-   private static int a(et $$0, exw $$1) {
-      eye $$2 = $$0.l().aK();
+   private static int a(et $$0, exy $$1) {
+      eyg $$2 = $$0.l().aK();
       $$2.j($$1);
       $$0.a(() -> wz.a("commands.scoreboard.objectives.remove.success", $$1.g()), true);
       return $$2.c().size();
    }
 
-   private static int a(et $$0, String $$1, eyh $$2, wz $$3) throws CommandSyntaxException {
-      eye $$4 = $$0.l().aK();
+   private static int a(et $$0, String $$1, eyj $$2, wz $$3) throws CommandSyntaxException {
+      eyg $$4 = $$0.l().aK();
       if ($$4.a($$1) != null) {
          throw a.create();
       } else {
          $$4.a($$1, $$2, $$3, $$2.f(), false, null);
-         exw $$5 = $$4.a($$1);
+         exy $$5 = $$4.a($$1);
          $$0.a(() -> wz.a("commands.scoreboard.objectives.add.success", $$5.g()), true);
          return $$4.c().size();
       }
    }
 
    private static int b(et $$0) {
-      Collection<exw> $$1 = $$0.l().aK().c();
+      Collection<exy> $$1 = $$0.l().aK().c();
       if ($$1.isEmpty()) {
          $$0.a(() -> wz.c("commands.scoreboard.objectives.list.empty"), false);
       } else {
-         $$0.a(() -> wz.a("commands.scoreboard.objectives.list.success", $$1.size(), xc.b($$1, exw::g)), false);
+         $$0.a(() -> wz.a("commands.scoreboard.objectives.list.success", $$1.size(), xc.b($$1, exy::g)), false);
       }
 
       return $$1.size();

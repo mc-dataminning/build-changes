@@ -1,38 +1,26 @@
-public class fxa<T extends bsr> extends fvr<T> {
-   private static final String a = "main";
-   private final fyi b;
-   private final fyi f;
+public class fxa<T extends cga> extends fwu<T> {
+   private float j;
 
-   public fxa(fyi $$0) {
-      this.b = $$0;
-      this.f = $$0.b("main");
+   public fxa(fyk $$0) {
+      super($$0, false, 8.0F, 4.0F, 2.0F, 2.0F, 24);
    }
 
-   public static fyo b() {
-      fyq $$0 = new fyq();
-      fyr $$1 = $$0.a();
-      $$1.a(
-         "main",
-         fyn.c()
-            .a(0, 0)
-            .a(-4.0F, -4.0F, -1.0F, 8.0F, 8.0F, 2.0F)
-            .a(0, 10)
-            .a(-1.0F, -4.0F, -4.0F, 2.0F, 8.0F, 8.0F)
-            .a(20, 0)
-            .a(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F),
-         fyk.a
-      );
-      return fyo.a($$0, 64, 32);
+   public static fyq c() {
+      fys $$0 = fwu.a(12, fyo.a);
+      fyt $$1 = $$0.a();
+      $$1.a("head", fyp.c().a(0, 0).a(-3.0F, -4.0F, -6.0F, 6.0F, 6.0F, 8.0F), fym.a(0.0F, 6.0F, -8.0F));
+      $$1.a("body", fyp.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F), fym.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      return fyq.a($$0, 64, 32);
    }
 
-   @Override
-   public fyi a() {
-      return this.b;
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.c = 6.0F + $$0.H($$3) * 9.0F;
+      this.j = $$0.I($$3);
    }
 
-   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.f.f = $$4 * (float) (Math.PI / 180.0);
-      this.f.e = $$5 * (float) (Math.PI / 180.0);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      this.a.e = this.j;
    }
 }

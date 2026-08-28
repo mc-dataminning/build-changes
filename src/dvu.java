@@ -4,15 +4,15 @@ import javax.annotation.Nullable;
 
 public interface dvu {
    @Nullable
-   ejx a(ejp var1);
+   ejz a(ejr var1);
 
-   void a(ejp var1, ejx var2);
+   void a(ejr var1, ejz var2);
 
-   LongSet b(ejp var1);
+   LongSet b(ejr var1);
 
-   void a(ejp var1, long var2);
+   void a(ejr var1, long var2);
 
-   Map<ejp, LongSet> h();
+   Map<ejr, LongSet> h();
 
-   void b(Map<ejp, LongSet> var1);
+   void b(Map<ejr, LongSet> var1);
 }

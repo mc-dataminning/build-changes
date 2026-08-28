@@ -10,15 +10,15 @@ public class bye {
       return byu.a(
          (Function<byu.b<btw>, ? extends App<byu.c<btw>, byx<btw>>>)($$3 -> $$3.group($$3.c(ccs.o), $$3.c(ccs.m), $$3.a(ccs.n))
                .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                     if (!$$5x.b_($$6.dp()).a(awk.a)) {
+                     if (!$$5x.b_($$6.do()).a(awk.a)) {
                         return false;
                      } else if ($$7 < $$2.getValue()) {
                         $$2.setValue($$7 + 60L);
                         return true;
                      } else {
-                        jd $$8 = $$6.dp();
+                        jd $$8 = $$6.do();
                         jd.a $$9 = new jd.a();
-                        exf $$10 = exf.a($$6);
+                        exh $$10 = exh.a($$6);
 
                         for (jd $$11 : jd.a($$8, $$0, $$0, $$0)) {
                            if ($$11.u() != $$8.u() || $$11.w() != $$8.w()) {

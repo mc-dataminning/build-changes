@@ -36,8 +36,8 @@ public abstract class ccm extends cam {
       } else if (!this.e.c($$0)) {
          return false;
       } else {
-         eyg $$1 = this.e.ck();
-         eyg $$2 = $$0.ck();
+         eyi $$1 = this.e.ck();
+         eyi $$2 = $$0.ck();
          if ($$1 != null && $$2 == $$1) {
             return false;
          } else {
@@ -82,7 +82,7 @@ public abstract class ccm extends cam {
          return false;
       } else if (!$$1.a(this.e, $$0)) {
          return false;
-      } else if (!this.e.a($$0.dp())) {
+      } else if (!this.e.a($$0.do())) {
          return false;
       } else {
          if (this.d) {
@@ -104,17 +104,17 @@ public abstract class ccm extends cam {
    }
 
    private boolean a(btn $$0) {
-      this.j = b(10 + this.e.dS().a(5));
-      epq $$1 = this.e.N().a($$0, 0);
+      this.j = b(10 + this.e.dR().a(5));
+      eps $$1 = this.e.N().a($$0, 0);
       if ($$1 == null) {
          return false;
       } else {
-         epo $$2 = $$1.d();
+         epq $$2 = $$1.d();
          if ($$2 == null) {
             return false;
          } else {
-            int $$3 = $$2.a - $$0.dt();
-            int $$4 = $$2.c - $$0.dz();
+            int $$3 = $$2.a - $$0.ds();
+            int $$4 = $$2.c - $$0.dy();
             return (double)($$3 * $$3 + $$4 * $$4) <= 2.25;
          }
       }

@@ -1,40 +1,38 @@
-public class gck extends gdl {
-   gck(fzd $$0, double $$1, double $$2, double $$3, double $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.66F;
-      this.C = true;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.2;
-      this.v = Math.max(0.0F, ayo.a(((float)$$4 + 0.0F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.w = Math.max(0.0F, ayo.a(((float)$$4 + 0.33333334F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.x = Math.max(0.0F, ayo.a(((float)$$4 + 0.6666667F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.D *= 1.5F;
-      this.t = 6;
+public class gck extends gcn {
+   private final fwg a;
+   private final gfh b = gfh.i(gkc.a);
+
+   gck(fzf $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a = new fvr(fgo.Q().aP().a(fyj.W));
+      this.u = 0.0F;
+      this.t = 30;
    }
 
    @Override
-   public gcp b() {
-      return gcp.b;
+   public gcr b() {
+      return gcr.e;
    }
 
    @Override
-   public float b(float $$0) {
-      return this.D * ayo.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public void a(fbm $$0, ffy $$1, float $$2) {
+      float $$3 = ((float)this.s + $$2) / (float)this.t;
+      float $$4 = 0.05F + 0.5F * ayo.a($$3 * (float) Math.PI);
+      int $$5 = axy.b.a($$4, 1.0F, 1.0F, 1.0F);
+      fbi $$6 = new fbi();
+      $$6.a($$1.f());
+      $$6.a(a.b.rotationDegrees(150.0F * $$3 - 60.0F));
+      $$6.b(1.0F, -1.0F, -1.0F);
+      $$6.a(0.0F, -1.101F, 1.5F);
+      gez.a $$7 = fgo.Q().aO().c();
+      fbm $$8 = $$7.getBuffer(this.b);
+      this.a.a($$6, $$8, 15728880, gqc.d, $$5);
+      $$7.b();
    }
 
-   public static class a implements gco<lq> {
-      private final gdg a;
-
-      public a(gdg $$0) {
-         this.a = $$0;
-      }
-
-      public gcl a(lq $$0, fzd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gck $$8 = new gck($$1, $$2, $$3, $$4, $$5);
-         $$8.a(this.a);
-         return $$8;
+   public static class a implements gcq<lq> {
+      public gcn a(lq $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gck($$1, $$2, $$3, $$4);
       }
    }
 }

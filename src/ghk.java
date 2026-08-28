@@ -1,39 +1,23 @@
-public class ghk implements ggx<drr> {
-   private final fxb<?> a;
+public class ghk implements ggz<drk> {
+   private final fus a;
 
-   public ghk(ggy.a $$0) {
-      this.a = new fxb($$0.a(fyh.bl));
+   public ghk(gha.a $$0) {
+      this.a = new fus($$0.a(fyj.r));
    }
 
-   public void a(drr $$0, float $$1, fbg $$2, gex $$3, int $$4, int $$5) {
-      ji $$6 = ji.b;
-      if ($$0.m()) {
-         dtc $$7 = $$0.i().a_($$0.aD_());
-         if ($$7.b() instanceof dmy) {
-            $$6 = $$7.c(dmy.b);
-         }
+   public void a(drk $$0, float $$1, fbi $$2, gez $$3, int $$4, int $$5) {
+      dtc $$6 = $$0.n();
+      if ($$6.c(dkj.d)) {
+         $$2.a();
+         $$2.a(0.5F, 1.0625F, 0.5F);
+         float $$7 = $$6.c(dkj.b).h().p();
+         $$2.a(a.d.rotationDegrees(-$$7));
+         $$2.a(a.f.rotationDegrees(67.5F));
+         $$2.a(0.0F, -0.125F, 0.0F);
+         this.a.a(0.0F, 0.1F, 0.9F, 1.2F);
+         fbm $$8 = ghi.a.a($$3, gfh::c);
+         this.a.b($$2, $$8, $$4, $$5, -1);
+         $$2.b();
       }
-
-      cti $$8 = $$0.u();
-      gso $$9;
-      if ($$8 == null) {
-         $$9 = gfm.i;
-      } else {
-         $$9 = gfm.j.get($$8.a());
-      }
-
-      $$2.a();
-      $$2.a(0.5F, 0.5F, 0.5F);
-      float $$11 = 0.9995F;
-      $$2.b(0.9995F, 0.9995F, 0.9995F);
-      $$2.a($$6.b());
-      $$2.b(1.0F, -1.0F, -1.0F);
-      $$2.a(0.0F, -1.0F, 0.0F);
-      fyi $$12 = this.a.b();
-      $$12.a(0.0F, 24.0F - $$0.a($$1) * 0.5F * 16.0F, 0.0F);
-      $$12.f = 270.0F * $$0.a($$1) * (float) (Math.PI / 180.0);
-      fbk $$13 = $$9.a($$3, gff::e);
-      this.a.a($$2, $$13, $$4, $$5);
-      $$2.b();
    }
 }

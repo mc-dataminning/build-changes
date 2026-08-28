@@ -1,37 +1,80 @@
-public class fui extends fvv<ciw> {
-   public fui(fyi $$0) {
-      super($$0);
+public class fui extends fue<cgn> {
+   private static final float a = 16.02F;
+   private static final float b = 25.0F;
+   private static final float f = 22.5F;
+   private static final float g = 16.5F;
+   private static final float h = 2.5F;
+   private static final String i = "head_cube";
+   private static final String j = "right_ear_cube";
+   private static final String k = "left_ear_cube";
+   private final fyk l;
+   private final fyk m;
+   private final fyk n;
+   private final fyk o;
+   private final fyk p;
+   private final fyk q;
+   private final fyk r;
+
+   public fui(fyk $$0) {
+      super(0.6F, 16.02F);
+      this.l = $$0;
+      this.m = $$0.b("body");
+      this.n = $$0.b("right_hind_leg");
+      this.o = $$0.b("left_hind_leg");
+      this.q = this.m.b("head");
+      this.r = this.m.b("tail");
+      this.p = $$0.b("cube");
    }
 
-   public static fyo a(fym $$0) {
-      fyq $$1 = fvv.a($$0, 0.0F);
-      fyr $$2 = $$1.a();
-      $$2.a("head", fyn.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fyk.a(0.0F, 1.0F, 0.0F));
-      $$2.a("hat", fyn.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0.a(0.5F)), fyk.a(0.0F, 1.0F, 0.0F));
-      $$2.a("right_leg", fyn.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fyk.a(-1.9F, 11.0F, 0.0F));
-      $$2.a("left_leg", fyn.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fyk.a(1.9F, 11.0F, 0.0F));
-      return fyo.a($$1, 64, 32);
+   public static fyq b() {
+      fys $$0 = new fys();
+      fyt $$1 = $$0.a();
+      fyt $$2 = $$1.a(
+         "body",
+         fyp.c().a(0, 20).a(-4.0F, -7.0F, -10.0F, 8.0F, 8.0F, 12.0F, new fyo(0.3F)).a(0, 40).a(-4.0F, -7.0F, -10.0F, 8.0F, 8.0F, 12.0F, new fyo(0.0F)),
+         fym.a(0.0F, 21.0F, 4.0F)
+      );
+      $$2.a("tail", fyp.c().a(44, 53).a(-0.5F, -0.0865F, 0.0933F, 1.0F, 6.0F, 1.0F, new fyo(0.0F)), fym.a(0.0F, -3.0F, 1.0F, 0.5061F, 0.0F, 0.0F));
+      fyt $$3 = $$2.a("head", fyp.c(), fym.a(0.0F, -2.0F, -11.0F));
+      $$3.a("head_cube", fyp.c().a(43, 15).a(-1.5F, -1.0F, -1.0F, 3.0F, 5.0F, 2.0F, new fyo(0.0F)), fym.a(0.0F, 0.0F, 0.0F, -0.3927F, 0.0F, 0.0F));
+      fyt $$4 = $$3.a("right_ear", fyp.c(), fym.a(-1.0F, -1.0F, 0.0F));
+      $$4.a("right_ear_cube", fyp.c().a(43, 10).a(-2.0F, -3.0F, 0.0F, 2.0F, 5.0F, 0.0F, new fyo(0.0F)), fym.a(-0.5F, 0.0F, -0.6F, 0.1886F, -0.3864F, -0.0718F));
+      fyt $$5 = $$3.a("left_ear", fyp.c(), fym.a(1.0F, -2.0F, 0.0F));
+      $$5.a("left_ear_cube", fyp.c().a(47, 10).a(0.0F, -3.0F, 0.0F, 2.0F, 5.0F, 0.0F, new fyo(0.0F)), fym.a(0.5F, 1.0F, -0.6F, 0.1886F, 0.3864F, 0.0718F));
+      $$1.a("right_hind_leg", fyp.c().a(51, 31).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new fyo(0.0F)), fym.a(-2.0F, 21.0F, 4.0F));
+      $$1.a("left_hind_leg", fyp.c().a(42, 31).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new fyo(0.0F)), fym.a(2.0F, 21.0F, 4.0F));
+      $$1.a("right_front_leg", fyp.c().a(51, 43).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new fyo(0.0F)), fym.a(-2.0F, 21.0F, -4.0F));
+      $$1.a("left_front_leg", fyp.c().a(42, 43).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new fyo(0.0F)), fym.a(2.0F, 21.0F, -4.0F));
+      $$1.a("cube", fyp.c().a(0, 0).a(-5.0F, -10.0F, -6.0F, 10.0F, 10.0F, 10.0F, new fyo(0.0F)), fym.a(0.0F, 24.0F, 0.0F));
+      return fyq.a($$0, 64, 64);
    }
 
-   public void a(ciw $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.k.e = (float) (Math.PI / 180.0) * $$0.A().b();
-      this.k.f = (float) (Math.PI / 180.0) * $$0.A().c();
-      this.k.g = (float) (Math.PI / 180.0) * $$0.A().d();
-      this.m.e = (float) (Math.PI / 180.0) * $$0.B().b();
-      this.m.f = (float) (Math.PI / 180.0) * $$0.B().c();
-      this.m.g = (float) (Math.PI / 180.0) * $$0.B().d();
-      this.o.e = (float) (Math.PI / 180.0) * $$0.C().b();
-      this.o.f = (float) (Math.PI / 180.0) * $$0.C().c();
-      this.o.g = (float) (Math.PI / 180.0) * $$0.C().d();
-      this.n.e = (float) (Math.PI / 180.0) * $$0.D().b();
-      this.n.f = (float) (Math.PI / 180.0) * $$0.D().c();
-      this.n.g = (float) (Math.PI / 180.0) * $$0.D().d();
-      this.q.e = (float) (Math.PI / 180.0) * $$0.E().b();
-      this.q.f = (float) (Math.PI / 180.0) * $$0.E().c();
-      this.q.g = (float) (Math.PI / 180.0) * $$0.E().d();
-      this.p.e = (float) (Math.PI / 180.0) * $$0.F().b();
-      this.p.f = (float) (Math.PI / 180.0) * $$0.F().c();
-      this.p.g = (float) (Math.PI / 180.0) * $$0.F().d();
-      this.l.a(this.k);
+   @Override
+   public fyk a() {
+      return this.l;
+   }
+
+   public void a(cgn $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a().e().forEach(fyk::c);
+      if ($$0.x()) {
+         this.m.l = true;
+         this.o.k = false;
+         this.n.k = false;
+         this.r.k = false;
+         this.p.k = true;
+      } else {
+         this.m.l = false;
+         this.o.k = true;
+         this.n.k = true;
+         this.r.k = true;
+         this.p.k = false;
+         this.q.e = ayo.a($$5, -22.5F, 25.0F) * (float) (Math.PI / 180.0);
+         this.q.f = ayo.a($$4, -32.5F, 32.5F) * (float) (Math.PI / 180.0);
+      }
+
+      this.a(fhg.b, $$1, $$2, 16.5F, 2.5F);
+      this.a($$0.ce, fhg.d, $$3, 1.0F);
+      this.a($$0.cf, fhg.a, $$3, 1.0F);
+      this.a($$0.cg, fhg.c, $$3, 1.0F);
    }
 }

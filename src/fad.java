@@ -1,36 +1,40 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+import org.apache.commons.lang3.ArrayUtils;
 
-public class fad {
-   private static final Vector3f a = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
-   private static final Vector3f b = new Vector3f(-0.2F, 1.0F, 0.7F).normalize();
-   private static final Vector3f c = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
-   private static final Vector3f d = new Vector3f(-0.2F, -1.0F, 0.7F).normalize();
-   private static final Vector3f e = new Vector3f(0.2F, -1.0F, 1.0F).normalize();
-   private static final Vector3f f = new Vector3f(-0.2F, -1.0F, 0.0F).normalize();
+public enum fad {
+   a("icons"),
+   b("icons", "snapshot");
 
-   public static void a() {
-      RenderSystem.setupLevelDiffuseLighting(c, d);
+   private final String[] c;
+
+   private fad(final String... $$0) {
+      this.c = $$0;
    }
 
-   public static void b() {
-      RenderSystem.setupLevelDiffuseLighting(a, b);
+   public List<atw<InputStream>> a(asq $$0) throws IOException {
+      return List.of(
+         this.a($$0, "icon_16x16.png"),
+         this.a($$0, "icon_32x32.png"),
+         this.a($$0, "icon_48x48.png"),
+         this.a($$0, "icon_128x128.png"),
+         this.a($$0, "icon_256x256.png")
+      );
    }
 
-   public static void c() {
-      RenderSystem.setupGuiFlatDiffuseLighting(a, b);
+   public atw<InputStream> b(asq $$0) throws IOException {
+      return this.a($$0, "minecraft.icns");
    }
 
-   public static void d() {
-      RenderSystem.setupGui3DDiffuseLighting(a, b);
-   }
-
-   public static void e() {
-      RenderSystem.setShaderLights(e, f);
-   }
-
-   public static void a(Quaternionf $$0) {
-      RenderSystem.setShaderLights($$0.transform(e, new Vector3f()), $$0.transform(f, new Vector3f()));
+   private atw<InputStream> a(asq $$0, String $$1) throws IOException {
+      String[] $$2 = (String[])ArrayUtils.add(this.c, $$1);
+      atw<InputStream> $$3 = $$0.a($$2);
+      if ($$3 == null) {
+         throw new FileNotFoundException(String.join("/", $$2));
+      } else {
+         return $$3;
+      }
    }
 }

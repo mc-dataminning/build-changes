@@ -23,14 +23,14 @@ public class abv implements zg<abu> {
    }
 
    public abv(bsr $$0, aqt $$1, int $$2) {
-      this($$0.an(), $$0.cA(), $$1.b().a(), $$1.b().b(), $$1.b().c(), $$1.d(), $$1.e(), $$0.am(), $$2, $$1.c(), (double)$$1.f());
+      this($$0.an(), $$0.cz(), $$1.b().a(), $$1.b().b(), $$1.b().c(), $$1.d(), $$1.e(), $$0.am(), $$2, $$1.c(), (double)$$1.f());
    }
 
    public abv(bsr $$0, int $$1, jd $$2) {
-      this($$0.an(), $$0.cA(), (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$0.dH(), $$0.dF(), $$0.am(), $$1, $$0.ds(), (double)$$0.ct());
+      this($$0.an(), $$0.cz(), (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$0.dG(), $$0.dE(), $$0.am(), $$1, $$0.dr(), (double)$$0.ct());
    }
 
-   public abv(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, bsx<?> $$7, int $$8, exa $$9, double $$10) {
+   public abv(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, bsx<?> $$7, int $$8, exc $$9, double $$10) {
       this.d = $$0;
       this.e = $$1;
       this.g = $$2;

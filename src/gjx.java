@@ -1,12 +1,28 @@
-public class gjx extends gln<cfm, fvd<cfm>> {
-   private static final akr a = akr.b("textures/entity/dolphin.png");
+public class gjx extends glp<cjp, fve<cjp>> {
+   private static final akr a = akr.b("textures/entity/creeper/creeper.png");
 
-   public gjx(gkh.a $$0) {
-      super($$0, new fvd<>($$0.a(fyh.N)), 0.7F);
-      this.a(new goa(this, $$0.d()));
+   public gjx(gkj.a $$0) {
+      super($$0, new fve<>($$0.a(fyj.I)), 0.5F);
+      this.a(new gny(this, $$0.f()));
    }
 
-   public akr a(cfm $$0) {
+   protected void a(cjp $$0, fbi $$1, float $$2) {
+      float $$3 = $$0.H($$2);
+      float $$4 = 1.0F + ayo.a($$3 * 100.0F) * $$3 * 0.01F;
+      $$3 = ayo.a($$3, 0.0F, 1.0F);
+      $$3 *= $$3;
+      $$3 *= $$3;
+      float $$5 = (1.0F + $$3 * 0.4F) * $$4;
+      float $$6 = (1.0F + $$3 * 0.1F) / $$4;
+      $$1.b($$5, $$6, $$5);
+   }
+
+   protected float a(cjp $$0, float $$1) {
+      float $$2 = $$0.H($$1);
+      return (int)($$2 * 10.0F) % 2 == 0 ? 0.0F : ayo.a($$2, 0.5F, 1.0F);
+   }
+
+   public akr a(cjp $$0) {
       return a;
    }
 }

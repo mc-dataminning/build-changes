@@ -1,16 +1,36 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.serialization.MapCodec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public interface enm<P extends enl> {
-   enm<emo> a = a("always_true", emo.a);
-   enm<emt> b = a("block_match", emt.a);
-   enm<emv> c = a("blockstate_match", emv.a);
-   enm<ent> d = a("tag_match", ent.a);
-   enm<eni> e = a("random_block_match", eni.a);
-   enm<enj> f = a("random_blockstate_match", enj.a);
+public class enm extends enq {
+   public static final MapCodec<enm> a = eni.b.listOf().fieldOf("rules").xmap(enm::new, $$0 -> $$0.b);
+   private final ImmutableList<eni> b;
 
-   MapCodec<P> codec();
+   public enm(List<? extends eni> $$0) {
+      this.b = ImmutableList.copyOf($$0);
+   }
 
-   static <P extends enl> enm<P> a(String $$0, MapCodec<P> $$1) {
-      return jz.a(lt.m, $$0, () -> $$1);
+   @Nullable
+   @Override
+   public ent.c a(dcz $$0, jd $$1, jd $$2, ent.c $$3, ent.c $$4, enp $$5) {
+      ayw $$6 = ayw.a(ayo.a($$4.a()));
+      dtc $$7 = $$0.a_($$4.a());
+      UnmodifiableIterator var9 = this.b.iterator();
+
+      while (var9.hasNext()) {
+         eni $$8 = (eni)var9.next();
+         if ($$8.a($$4.b(), $$7, $$3.a(), $$4.a(), $$2, $$6)) {
+            return new ent.c($$4.a(), $$8.a(), $$8.a($$6, $$4.c()));
+         }
+      }
+
+      return $$4;
+   }
+
+   @Override
+   protected ens<?> a() {
+      return ens.i;
    }
 }

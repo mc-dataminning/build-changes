@@ -5,7 +5,7 @@ class bsj extends brx {
 
    @Override
    public boolean a(btn $$0, int $$1) {
-      $$0.a($$0.dQ().q(), 1.0F);
+      $$0.a($$0.dP().q(), 1.0F);
       return true;
    }
 

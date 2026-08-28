@@ -16,7 +16,7 @@ public class ccb extends caw {
    @Override
    public void e() {
       super.e();
-      this.b.v(false);
+      this.b.w(false);
    }
 
    @Override
@@ -24,9 +24,9 @@ public class ccb extends caw {
       super.a();
       this.c++;
       if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.v(true);
+         this.b.w(true);
       } else {
-         this.b.v(false);
+         this.b.w(false);
       }
    }
 }

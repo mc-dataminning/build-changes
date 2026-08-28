@@ -1,56 +1,70 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public abstract class ffl implements Runnable {
-   protected static final int a = 25;
+public class ffl extends ffn {
    private static final Logger b = LogUtils.getLogger();
-   private boolean c = false;
+   private static final wz c = wz.c("mco.download.preparing");
+   private final long d;
+   private final int e;
+   private final fod f;
+   private final String g;
 
-   protected static void a(long $$0) {
-      try {
-         Thread.sleep($$0 * 1000L);
-      } catch (InterruptedException var3) {
-         Thread.currentThread().interrupt();
-         b.error("", var3);
+   public ffl(long $$0, int $$1, String $$2, fod $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$3;
+      this.g = $$2;
+   }
+
+   @Override
+   public void run() {
+      fby $$0 = fby.a();
+      int $$1 = 0;
+
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            fdd $$2 = $$0.b(this.d, this.e);
+            a(1L);
+            if (this.d()) {
+               return;
+            }
+
+            a(new fea(this.f, $$2, this.g, $$0x -> {
+            }));
+            return;
+         } catch (fdk var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (fdj var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't download world data", var5);
+            a(new feb(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't download world data", var6);
+            this.a(var6);
+            return;
+         }
       }
    }
 
-   public static void a(fob $$0) {
-      fgm $$1 = fgm.Q();
-      $$1.execute(() -> $$1.a($$0));
-   }
-
-   protected void a(wz $$0) {
-      this.b();
-      fgm $$1 = fgm.Q();
-      $$1.execute(() -> $$1.a(new fdz($$0, new fbr(new fod()))));
-   }
-
-   protected void a(Exception $$0) {
-      if ($$0 instanceof fdh $$1) {
-         this.a($$1.a.b());
-      } else {
-         this.a(wz.b($$0.getMessage()));
-      }
-   }
-
-   protected void a(fdh $$0) {
-      this.a($$0.a.b());
-   }
-
-   public abstract wz a();
-
-   public boolean d() {
-      return this.c;
-   }
-
-   public void c() {
-   }
-
-   public void e() {
-   }
-
-   public void b() {
-      this.c = true;
+   @Override
+   public wz a() {
+      return c;
    }
 }

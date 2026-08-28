@@ -1,48 +1,54 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class eqq extends eqj {
-   public static final String a = "idcounts";
-   private final Object2IntMap<String> b = new Object2IntOpenHashMap();
+public class eqq {
+   private final jd a;
+   private final int b;
+   private final int c;
 
-   public static eqj.a<eqq> a() {
-      return new eqj.a<>(eqq::new, eqq::b, azw.k);
+   public eqq(jd $$0, int $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public eqq() {
-      this.b.defaultReturnValue(-1);
-   }
-
-   public static eqq b(ub $$0, jo.a $$1) {
-      eqq $$2 = new eqq();
-
-      for (String $$3 : $$0.e()) {
-         if ($$0.b($$3, 99)) {
-            $$2.b.put($$3, $$0.h($$3));
-         }
+   @Nullable
+   public static eqq a(ub $$0) {
+      Optional<jd> $$1 = uq.a($$0, "pos");
+      if ($$1.isEmpty()) {
+         return null;
+      } else {
+         int $$2 = $$0.h("rotation");
+         int $$3 = $$0.h("entity_id");
+         return new eqq($$1.get(), $$2, $$3);
       }
-
-      return $$2;
    }
 
-   @Override
-   public ub a(ub $$0, jo.a $$1) {
-      ObjectIterator var3 = this.b.object2IntEntrySet().iterator();
-
-      while (var3.hasNext()) {
-         Entry<String> $$2 = (Entry<String>)var3.next();
-         $$0.a((String)$$2.getKey(), $$2.getIntValue());
-      }
-
+   public ub a() {
+      ub $$0 = new ub();
+      $$0.a("pos", uq.a(this.a));
+      $$0.a("rotation", this.b);
+      $$0.a("entity_id", this.c);
       return $$0;
    }
 
-   public eqp b() {
-      int $$0 = this.b.getInt("map") + 1;
-      this.b.put("map", $$0);
-      this.c();
-      return new eqp($$0);
+   public jd b() {
+      return this.a;
+   }
+
+   public int c() {
+      return this.b;
+   }
+
+   public int d() {
+      return this.c;
+   }
+
+   public String e() {
+      return a(this.a);
+   }
+
+   public static String a(jd $$0) {
+      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
    }
 }

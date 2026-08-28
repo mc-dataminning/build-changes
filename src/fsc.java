@@ -1,116 +1,89 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
+import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.List;
-import java.util.Set;
 
-public class fsc {
-   private final ka a;
-   private final List<czb<?>> b;
-   private final boolean c;
-   private final Set<czb<?>> d = Sets.newHashSet();
-   private final Set<czb<?>> e = Sets.newHashSet();
-   private final Set<czb<?>> f = Sets.newHashSet();
+public class fsc extends fjs {
+   private static final fjz c = new fjz(akr.b("recipe_book/tab"), akr.b("recipe_book/tab_selected"));
+   private final fgw d;
+   private static final float e = 15.0F;
+   private float f;
 
-   public fsc(ka $$0, List<czb<?>> $$1) {
-      this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
-      if ($$1.size() <= 1) {
-         this.c = true;
-      } else {
-         this.c = a($$0, $$1);
-      }
+   public fsc(fgw $$0) {
+      super(0, 0, 35, 27, false);
+      this.d = $$0;
+      this.a(c);
    }
 
-   private static boolean a(ka $$0, List<czb<?>> $$1) {
-      int $$2 = $$1.size();
-      cuq $$3 = $$1.get(0).b().a($$0);
-
-      for (int $$4 = 1; $$4 < $$2; $$4++) {
-         cuq $$5 = $$1.get($$4).b().a($$0);
-         if (!cuq.c($$3, $$5)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public ka a() {
-      return this.a;
-   }
-
-   public boolean b() {
-      return !this.f.isEmpty();
-   }
-
-   public void a(avs $$0) {
-      for (czb<?> $$1 : this.b) {
-         if ($$0.b($$1)) {
-            this.f.add($$1);
+   public void a(fgo $$0) {
+      fga $$1 = $$0.s.m();
+      List<fse> $$2 = $$1.a(this.d);
+      if ($$0.s.cd instanceof cri) {
+         for (fse $$3 : $$2) {
+            for (czb<?> $$4 : $$3.a($$1.a((cri<?, ?>)$$0.s.cd))) {
+               if ($$1.d($$4)) {
+                  this.f = 15.0F;
+                  return;
+               }
+            }
          }
       }
    }
 
-   public void a(cnb $$0, int $$1, int $$2, avs $$3) {
-      for (czb<?> $$4 : this.b) {
-         boolean $$5 = $$4.b().a($$1, $$2) && $$3.b($$4);
-         if ($$5) {
-            this.e.add($$4);
-         } else {
-            this.e.remove($$4);
+   @Override
+   public void b(fhz $$0, int $$1, int $$2, float $$3) {
+      if (this.a != null) {
+         if (this.f > 0.0F) {
+            float $$4 = 1.0F + 0.1F * (float)Math.sin((double)(this.f / 15.0F * (float) Math.PI));
+            $$0.c().a();
+            $$0.c().a((float)(this.D() + 8), (float)(this.E() + 12), 0.0F);
+            $$0.c().b(1.0F, $$4, 1.0F);
+            $$0.c().a((float)(-(this.D() + 8)), (float)(-(this.E() + 12)), 0.0F);
          }
 
-         if ($$5 && $$0.a($$4.b(), null)) {
-            this.d.add($$4);
-         } else {
-            this.d.remove($$4);
+         fgo $$5 = fgo.Q();
+         RenderSystem.disableDepthTest();
+         akr $$6 = this.a.a(true, this.b);
+         int $$7 = this.D();
+         if (this.b) {
+            $$7 -= 2;
          }
+
+         $$0.a($$6, $$7, this.E(), this.g, this.h);
+         RenderSystem.enableDepthTest();
+         this.a($$0, $$5.ar());
+         if (this.f > 0.0F) {
+            $$0.c().b();
+            this.f -= $$3;
+         }
+      }
+   }
+
+   private void a(fhz $$0, glh $$1) {
+      List<cuq> $$2 = this.d.a();
+      int $$3 = this.b ? -2 : 0;
+      if ($$2.size() == 1) {
+         $$0.b($$2.get(0), this.D() + 9 + $$3, this.E() + 5);
+      } else if ($$2.size() == 2) {
+         $$0.b($$2.get(0), this.D() + 3 + $$3, this.E() + 5);
+         $$0.b($$2.get(1), this.D() + 14 + $$3, this.E() + 5);
       }
    }
 
-   public boolean a(czb<?> $$0) {
-      return this.d.contains($$0);
+   public fgw b() {
+      return this.d;
    }
 
-   public boolean c() {
-      return !this.d.isEmpty();
-   }
-
-   public boolean d() {
-      return !this.e.isEmpty();
-   }
-
-   public List<czb<?>> e() {
-      return this.b;
-   }
-
-   public List<czb<?>> a(boolean $$0) {
-      List<czb<?>> $$1 = Lists.newArrayList();
-      Set<czb<?>> $$2 = $$0 ? this.d : this.e;
-
-      for (czb<?> $$3 : this.b) {
-         if ($$2.contains($$3)) {
-            $$1.add($$3);
+   public boolean a(fga $$0) {
+      List<fse> $$1 = $$0.a(this.d);
+      this.k = false;
+      if ($$1 != null) {
+         for (fse $$2 : $$1) {
+            if ($$2.b() && $$2.d()) {
+               this.k = true;
+               break;
+            }
          }
       }
 
-      return $$1;
-   }
-
-   public List<czb<?>> b(boolean $$0) {
-      List<czb<?>> $$1 = Lists.newArrayList();
-
-      for (czb<?> $$2 : this.b) {
-         if (this.e.contains($$2) && this.d.contains($$2) == $$0) {
-            $$1.add($$2);
-         }
-      }
-
-      return $$1;
-   }
-
-   public boolean f() {
-      return this.c;
+      return this.k;
    }
 }

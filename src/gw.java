@@ -28,7 +28,7 @@ public class gw implements ArgumentType<gr> {
       return new gw($$0);
    }
 
-   public static exa a(CommandContext<et> $$0, String $$1) {
+   public static exc a(CommandContext<et> $$0, String $$1) {
       return ((gr)$$0.getArgument($$1, gr.class)).a((et)$$0.getSource());
    }
 

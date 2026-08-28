@@ -464,7 +464,7 @@ public class mh implements me {
             true,
             false
          )
-         .a("minecraft_trials_edition", dq.a.a(df.a.b($$0.b(lu.aR).b(ejj.H))))
+         .a("minecraft_trials_edition", dq.a.a(df.a.b($$0.b(lu.aR).b(ejl.H))))
          .a($$1, "adventure/minecraft_trials_edition");
       af.a.a()
          .a($$15)
@@ -547,22 +547,22 @@ public class mh implements me {
    }
 
    private static ao<cw.a> a(dfy $$0) {
-      eva.a[] $$1 = dhi.aE.a().stream().map($$0x -> {
+      evc.a[] $$1 = dhi.aE.a().stream().map($$0x -> {
          eb.a $$1x = eb.a.a().a(dhi.aE, $$0x);
          aw.a $$2 = aw.a.a().a(dga.gY).a($$1x);
-         return euy.a(df.a.a().a($$2), new jd($$0x.g().q()));
-      }).toArray(eva.a[]::new);
-      return cw.a.a(euz.a($$0), euo.a($$1));
+         return eva.a(df.a.a().a($$2), new jd($$0x.g().q()));
+      }).toArray(evc.a[]::new);
+      return cw.a.a(evb.a($$0), euq.a($$1));
    }
 
    private static ao<cw.a> b(dfy $$0) {
-      eva.a[] $$1 = dhi.aE.a().stream().map($$1x -> {
+      evc.a[] $$1 = dhi.aE.a().stream().map($$1x -> {
          eb.a $$2 = eb.a.a().a(dhi.aE, $$1x);
-         euz.a $$3 = new euz.a(dga.gY).a($$2);
-         eva.a $$4 = euy.a(df.a.a().a(aw.a.a().a($$0)), new jd($$1x.q()));
-         return eun.a($$3, $$4);
-      }).toArray(eva.a[]::new);
-      return cw.a.a(euo.a($$1));
+         evb.a $$3 = new evb.a(dga.gY).a($$2);
+         evc.a $$4 = eva.a(df.a.a().a(aw.a.a().a($$0)), new jd($$1x.q()));
+         return eup.a($$3, $$4);
+      }).toArray(evc.a[]::new);
+      return cw.a.a(euq.a($$1));
    }
 
    private static af.a a(af.a $$0) {
@@ -580,12 +580,12 @@ public class mh implements me {
 
    private static af.a c(af.a $$0) {
       List<Pair<String, ao<dg.a>>> $$1 = List.of(
-         Pair.of("desert_pyramid", dg.a.a(erl.be)),
-         Pair.of("desert_well", dg.a.a(erl.bd)),
-         Pair.of("ocean_ruin_cold", dg.a.a(erl.bi)),
-         Pair.of("ocean_ruin_warm", dg.a.a(erl.bh)),
-         Pair.of("trail_ruins_rare", dg.a.a(erl.bg)),
-         Pair.of("trail_ruins_common", dg.a.a(erl.bf))
+         Pair.of("desert_pyramid", dg.a.a(ern.be)),
+         Pair.of("desert_well", dg.a.a(ern.bd)),
+         Pair.of("ocean_ruin_cold", dg.a.a(ern.bi)),
+         Pair.of("ocean_ruin_warm", dg.a.a(ern.bh)),
+         Pair.of("trail_ruins_rare", dg.a.a(ern.bg)),
+         Pair.of("trail_ruins_common", dg.a.a(ern.bf))
       );
       $$1.forEach($$1x -> $$0.a((String)$$1x.getFirst(), (ao<?>)$$1x.getSecond()));
       String $$2 = "has_sherd";

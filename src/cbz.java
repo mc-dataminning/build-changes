@@ -15,12 +15,12 @@ public class cbz extends cbj {
 
    @Nullable
    @Override
-   protected exa h() {
+   protected exc h() {
       if (this.b.bi()) {
-         exa $$0 = cem.a(this.b, 15, 7);
+         exc $$0 = cem.a(this.b, 15, 7);
          return $$0 == null ? super.h() : $$0;
       } else {
-         return this.b.dS().i() >= this.j ? cem.a(this.b, 10, 7) : super.h();
+         return this.b.dR().i() >= this.j ? cem.a(this.b, 10, 7) : super.h();
       }
    }
 }

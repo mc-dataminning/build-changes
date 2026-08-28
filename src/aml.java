@@ -35,7 +35,7 @@ public class aml {
    }
 
    private static int a(et $$0, aqv $$1) {
-      GameProfile $$2 = $$1.fY();
+      GameProfile $$2 = $$1.fX();
       $$1.c.n();
       $$0.a(() -> wz.b("Switched player " + $$2.getName() + "(" + $$2.getId() + ") to config mode"), false);
       return 1;

@@ -1,30 +1,40 @@
 import com.mojang.serialization.Codec;
 
-public class edk extends ecd<eez> {
-   public edk(Codec<eez> $$0) {
+public class edk extends ece<ees> {
+   public edk(Codec<ees> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecf<eez> $$0) {
-      eez $$1 = $$0.f();
-      dds $$2 = $$0.b();
-      jd $$3 = $$0.e();
-      dtc $$4 = $$1.a().a($$0.d(), $$3);
-      if ($$4.a($$2, $$3)) {
-         if ($$4.b() instanceof dig) {
-            if (!$$2.u($$3.d())) {
-               return false;
+   public boolean a(ecg<ees> $$0) {
+      boolean $$1 = false;
+      ayw $$2 = $$0.d();
+      dds $$3 = $$0.b();
+      jd $$4 = $$0.e();
+      ees $$5 = $$0.f();
+      int $$6 = $$2.a(8) - $$2.a(8);
+      int $$7 = $$2.a(8) - $$2.a(8);
+      int $$8 = $$3.a(dyy.a.d, $$4.u() + $$6, $$4.w() + $$7);
+      jd $$9 = new jd($$4.u() + $$6, $$8, $$4.w() + $$7);
+      if ($$3.a_($$9).a(dga.G)) {
+         boolean $$10 = $$2.j() < (double)$$5.l;
+         dtc $$11 = $$10 ? dga.bx.o() : dga.bw.o();
+         if ($$11.a($$3, $$9)) {
+            if ($$10) {
+               dtc $$12 = $$11.a(dof.d, dty.a);
+               jd $$13 = $$9.d();
+               if ($$3.a_($$13).a(dga.G)) {
+                  $$3.a($$9, $$11, 2);
+                  $$3.a($$13, $$12, 2);
+               }
+            } else {
+               $$3.a($$9, $$11, 2);
             }
 
-            dig.a($$2, $$4, $$3, 2);
-         } else {
-            $$2.a($$3, $$4, 2);
+            $$1 = true;
          }
-
-         return true;
-      } else {
-         return false;
       }
+
+      return $$1;
    }
 }

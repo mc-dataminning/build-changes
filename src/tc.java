@@ -34,7 +34,7 @@ public class tc extends MinecraftServer {
    @Nullable
    private ti v;
 
-   public static tc a(Thread $$0, erd.c $$1, atp $$2, Collection<tr> $$3, jd $$4) {
+   public static tc a(Thread $$0, erf.c $$1, atp $$2, Collection<tr> $$3, jd $$4) {
       if ($$3.isEmpty()) {
          throw new IllegalArgumentException("No test functions were given!");
       } else {
@@ -49,8 +49,8 @@ public class tc extends MinecraftServer {
             Stopwatch $$9 = Stopwatch.createStarted();
             alp $$10 = ad.<alp>c($$2x -> alo.a($$8, $$1xx -> {
                   jz<dwz> $$2xx = new ju<>(lu.bb, Lifecycle.stable()).m();
-                  dzt.b $$3x = $$1xx.c().d(lu.aY).g(ejf.b).a().a().a($$2xx);
-                  return new alo.b<>(new erh($$6, u, $$3x.d(), $$3x.a()), $$3x.b());
+                  dzt.b $$3x = $$1xx.c().d(lu.aY).g(ejh.b).a().a().a($$2xx);
+                  return new alo.b<>(new erj($$6, u, $$3x.d(), $$3x.a()), $$3x.b());
                }, alp::new, ad.g(), $$2x)).get();
             $$9.stop();
             k.debug("Finished resource loading after {} ms", $$9.elapsed(TimeUnit.MILLISECONDS));
@@ -63,7 +63,7 @@ public class tc extends MinecraftServer {
       }
    }
 
-   private tc(Thread $$0, erd.c $$1, atp $$2, alp $$3, Collection<tr> $$4, jd $$5) {
+   private tc(Thread $$0, erf.c $$1, atp $$2, alp $$3, Collection<tr> $$4, jd $$5) {
       super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, azx.a(), n, arf::b);
       this.q = Lists.newArrayList($$4);
       this.r = $$5;

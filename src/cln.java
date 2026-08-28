@@ -80,15 +80,15 @@ public class cln extends clm implements cjq, cmi {
          $$0.a("CannotHunt", true);
       }
 
-      this.b($$0, this.dR());
+      this.b($$0, this.dQ());
    }
 
    @Override
    public void a(ub $$0) {
       super.a($$0);
       this.a($$0.q("IsBaby"));
-      this.y($$0.q("CannotHunt"));
-      this.a($$0, this.dR());
+      this.z($$0.q("CannotHunt"));
+      this.a($$0, this.dQ());
    }
 
    @azt
@@ -100,9 +100,9 @@ public class cln extends clm implements cjq, cmi {
    @Override
    protected void a(aqu $$0, brk $$1, boolean $$2) {
       super.a($$0, $$1, $$2);
-      if ($$1.d() instanceof cjp $$4 && $$4.gm()) {
+      if ($$1.d() instanceof cjp $$4 && $$4.gl()) {
          cuq $$5 = new cuq(cut.ur);
-         $$4.gn();
+         $$4.gm();
          this.b($$5);
       }
 
@@ -133,8 +133,8 @@ public class cln extends clm implements cjq, cmi {
       }
    }
 
-   public static buv.a gs() {
-      return ckd.gr().a(buw.s, 16.0).a(buw.v, 0.35F).a(buw.c, 5.0);
+   public static buv.a gr() {
+      return ckd.gq().a(buw.s, 16.0).a(buw.v, 0.35F).a(buw.c, 5.0);
    }
 
    public static boolean b(bsx<cln> $$0, dcx $$1, btr $$2, jd $$3, ayw $$4) {
@@ -148,8 +148,8 @@ public class cln extends clm implements cjq, cmi {
       if ($$2 != btr.d) {
          if ($$4.i() < 0.2F) {
             this.a(true);
-         } else if (this.gm()) {
-            this.a(bsy.a, this.gu());
+         } else if (this.gl()) {
+            this.a(bsy.a, this.gt());
          }
       }
 
@@ -166,12 +166,12 @@ public class cln extends clm implements cjq, cmi {
 
    @Override
    public boolean h(double $$0) {
-      return !this.fU();
+      return !this.fT();
    }
 
    @Override
    protected void a(ayw $$0, bqp $$1) {
-      if (this.gm()) {
+      if (this.gl()) {
          this.a(bsy.f, new cuq(cut.pO), $$0);
          this.a(bsy.e, new cuq(cut.pP), $$0);
          this.a(bsy.d, new cuq(cut.pQ), $$0);
@@ -186,18 +186,18 @@ public class cln extends clm implements cjq, cmi {
    }
 
    @Override
-   protected buq.b<cln> dV() {
+   protected buq.b<cln> dU() {
       return buq.a(ca, e);
    }
 
    @Override
    protected buq<?> a(Dynamic<?> $$0) {
-      return clo.a(this, this.dV().a($$0));
+      return clo.a(this, this.dU().a($$0));
    }
 
    @Override
-   public buq<cln> dU() {
-      return (buq<cln>)super.dU();
+   public buq<cln> dT() {
+      return (buq<cln>)super.dT();
    }
 
    @Override
@@ -205,10 +205,10 @@ public class cln extends clm implements cjq, cmi {
       bqr $$2 = super.b($$0, $$1);
       if ($$2.a()) {
          return $$2;
-      } else if (!this.dP().B) {
+      } else if (!this.dO().B) {
          return clo.a(this, $$0, $$1);
       } else {
-         boolean $$3 = clo.b(this, $$0.b($$1)) && this.gn() != clp.d;
+         boolean $$3 = clo.b(this, $$0.b($$1)) && this.gm() != clp.d;
          return $$3 ? bqr.a : bqr.e;
       }
    }
@@ -221,7 +221,7 @@ public class cln extends clm implements cjq, cmi {
    @Override
    public void a(boolean $$0) {
       this.ar().a(cb, $$0);
-      if (!this.dP().B) {
+      if (!this.dO().B) {
          bus $$1 = this.f(buw.v);
          $$1.c(cf.b());
          if ($$0) {
@@ -235,7 +235,7 @@ public class cln extends clm implements cjq, cmi {
       return this.ar().a(cb);
    }
 
-   private void y(boolean $$0) {
+   private void z(boolean $$0) {
       this.cp = $$0;
    }
 
@@ -246,15 +246,15 @@ public class cln extends clm implements cjq, cmi {
 
    @Override
    protected void ab() {
-      this.dP().ag().a("piglinBrain");
-      this.dU().a((aqu)this.dP(), this);
-      this.dP().ag().c();
+      this.dO().ag().a("piglinBrain");
+      this.dT().a((aqu)this.dO(), this);
+      this.dO().ag().c();
       clo.a(this);
       super.ab();
    }
 
    @Override
-   protected int eh() {
+   protected int eg() {
       return this.bP;
    }
 
@@ -265,11 +265,11 @@ public class cln extends clm implements cjq, cmi {
       super.a($$0);
    }
 
-   private cuq gu() {
+   private cuq gt() {
       return (double)this.ah.i() < 0.5 ? new cuq(cut.vW) : new cuq(cut.oW);
    }
 
-   private boolean gv() {
+   private boolean gu() {
       return this.ao.a(cc);
    }
 
@@ -284,32 +284,32 @@ public class cln extends clm implements cjq, cmi {
    }
 
    @Override
-   public clp gn() {
-      if (this.gt()) {
+   public clp gm() {
+      if (this.gs()) {
          return clp.e;
-      } else if (clo.a(this.eV())) {
+      } else if (clo.a(this.eU())) {
          return clp.d;
-      } else if (this.gc() && this.go()) {
+      } else if (this.gb() && this.gn()) {
          return clp.a;
-      } else if (this.gv()) {
+      } else if (this.gu()) {
          return clp.c;
       } else {
-         return this.gc() && this.b(cut.vW) ? clp.b : clp.f;
+         return this.gb() && this.b(cut.vW) ? clp.b : clp.f;
       }
    }
 
-   public boolean gt() {
+   public boolean gs() {
       return this.ao.a(cd);
    }
 
-   public void x(boolean $$0) {
+   public void y(boolean $$0) {
       this.ao.a(cd, $$0);
    }
 
    @Override
    public boolean a(brk $$0, float $$1) {
       boolean $$2 = super.a($$0, $$1);
-      if (this.dP().B) {
+      if (this.dO().B) {
          return false;
       } else {
          if ($$2 && $$0.d() instanceof btn) {
@@ -345,7 +345,7 @@ public class cln extends clm implements cjq, cmi {
 
    @Override
    public boolean k(cuq $$0) {
-      return this.dP().ab().b(dcs.c) && this.fT() && clo.a(this, $$0);
+      return this.dO().ab().b(dcs.c) && this.fS() && clo.a(this, $$0);
    }
 
    protected boolean r(cuq $$0) {
@@ -366,7 +366,7 @@ public class cln extends clm implements cjq, cmi {
          } else if (!$$2 && $$3) {
             return false;
          } else {
-            return this.gm() && !$$0.a(cut.vW) && $$1.a(cut.vW) ? false : super.b($$0, $$1);
+            return this.gl() && !$$0.a(cut.vW) && $$1.a(cut.vW) ? false : super.b($$0, $$1);
          }
       }
    }
@@ -387,13 +387,13 @@ public class cln extends clm implements cjq, cmi {
    }
 
    private bsr b(bsr $$0, int $$1) {
-      List<bsr> $$2 = $$0.cT();
+      List<bsr> $$2 = $$0.cS();
       return $$1 != 1 && !$$2.isEmpty() ? this.b($$2.get(0), $$1 - 1) : $$0;
    }
 
    @Override
    protected avo v() {
-      return this.dP().B ? null : clo.c(this).orElse(null);
+      return this.dO().B ? null : clo.c(this).orElse(null);
    }
 
    @Override
@@ -412,7 +412,7 @@ public class cln extends clm implements cjq, cmi {
    }
 
    @Override
-   protected void gp() {
+   protected void go() {
       this.b(avp.tO);
    }
 }

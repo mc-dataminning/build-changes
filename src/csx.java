@@ -8,14 +8,14 @@ public class csx extends cul {
       cuq $$3 = super.a($$0, $$1, $$2);
       if (!$$1.B) {
          for (int $$4 = 0; $$4 < 16; $$4++) {
-            double $$5 = $$2.du() + ($$2.dS().j() - 0.5) * 16.0;
-            double $$6 = ayo.a($$2.dw() + (double)($$2.dS().a(16) - 8), (double)$$1.I_(), (double)($$1.I_() + ((aqu)$$1).k() - 1));
-            double $$7 = $$2.dA() + ($$2.dS().j() - 0.5) * 16.0;
+            double $$5 = $$2.dt() + ($$2.dR().j() - 0.5) * 16.0;
+            double $$6 = ayo.a($$2.dv() + (double)($$2.dR().a(16) - 8), (double)$$1.I_(), (double)($$1.I_() + ((aqu)$$1).k() - 1));
+            double $$7 = $$2.dz() + ($$2.dR().j() - 0.5) * 16.0;
             if ($$2.bS()) {
                $$2.ad();
             }
 
-            exa $$8 = $$2.dn();
+            exc $$8 = $$2.dm();
             if ($$2.b($$5, $$6, $$7, true)) {
                $$1.a(dxz.R, $$8, dxz.a.a($$2));
                avq $$10;
@@ -28,14 +28,14 @@ public class csx extends cul {
                   $$10 = avq.h;
                }
 
-               $$1.a(null, $$2.du(), $$2.dw(), $$2.dA(), $$9, $$10);
+               $$1.a(null, $$2.dt(), $$2.dv(), $$2.dz(), $$9, $$10);
                $$2.n();
                break;
             }
          }
 
          if ($$2 instanceof cmx $$13) {
-            $$13.gu().a(this, 20);
+            $$13.gt().a(this, 20);
          }
       }
 

@@ -55,7 +55,7 @@ public class cre extends cpu {
 
    @Override
    public boolean b(cmx $$0) {
-      return this.v.gl() == $$0;
+      return this.v.gk() == $$0;
    }
 
    public int l() {
@@ -134,9 +134,9 @@ public class cre extends cpu {
    }
 
    private void r() {
-      if (!this.v.gt()) {
+      if (!this.v.gs()) {
          bsr $$0 = (bsr)this.v;
-         $$0.dP().a($$0.du(), $$0.dw(), $$0.dA(), this.v.gp(), avq.g, 1.0F, 1.0F, false);
+         $$0.dO().a($$0.dt(), $$0.dv(), $$0.dz(), this.v.go(), avq.g, 1.0F, 1.0F, false);
       }
    }
 
@@ -144,7 +144,7 @@ public class cre extends cpu {
    public void a(cmx $$0) {
       super.a($$0);
       this.v.a(null);
-      if (!this.v.gt()) {
+      if (!this.v.gs()) {
          if (!$$0.bE() || $$0 instanceof aqv && ((aqv)$$0).w()) {
             cuq $$1 = this.w.b(0);
             if (!$$1.e()) {
@@ -156,8 +156,8 @@ public class cre extends cpu {
                $$0.a($$1, false);
             }
          } else if ($$0 instanceof aqv) {
-            $$0.fZ().g(this.w.b(0));
-            $$0.fZ().g(this.w.b(1));
+            $$0.fY().g(this.w.b(0));
+            $$0.fY().g(this.w.b(1));
          }
       }
    }
@@ -214,7 +214,7 @@ public class cre extends cpu {
    }
 
    public dbv p() {
-      return this.v.gn();
+      return this.v.gm();
    }
 
    public boolean q() {

@@ -29,12 +29,12 @@ public class bwz {
       return a($$0, bwz::a, bsr::bi);
    }
 
-   private static bws<btw> a(float $$0, Function<btw, exa> $$1, Predicate<btw> $$2) {
+   private static bws<btw> a(float $$0, Function<btw, exc> $$1, Predicate<btw> $$2) {
       return byu.a((Function<byu.b<btw>, ? extends App<byu.c<btw>, byx<btw>>>)($$3 -> $$3.group($$3.c(ccs.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
                if (!$$2.test($$5)) {
                   return false;
                } else {
-                  Optional<exa> $$7 = Optional.ofNullable($$1.apply($$5));
+                  Optional<exc> $$7 = Optional.ofNullable($$1.apply($$5));
                   $$3x.a($$7.map($$1xxxx -> new ccv($$1xxxx, $$0, 0)));
                   return true;
                }
@@ -42,18 +42,18 @@ public class bwz {
    }
 
    @Nullable
-   private static exa a(btw $$0) {
-      exa $$1 = null;
-      exa $$2 = null;
+   private static exc a(btw $$0) {
+      exc $$1 = null;
+      exc $$2 = null;
 
       for (int[] $$3 : c) {
          if ($$1 == null) {
             $$2 = bvj.a($$0, $$3[0], $$3[1]);
          } else {
-            $$2 = $$0.dn().e($$0.dn().a($$1).d().d((double)$$3[0], (double)$$3[1], (double)$$3[0]));
+            $$2 = $$0.dm().e($$0.dm().a($$1).d().d((double)$$3[0], (double)$$3[1], (double)$$3[0]));
          }
 
-         if ($$2 == null || $$0.dP().b_(jd.a((jw)$$2)).c()) {
+         if ($$2 == null || $$0.dO().b_(jd.a((jw)$$2)).c()) {
             return $$1;
          }
 
@@ -64,8 +64,8 @@ public class bwz {
    }
 
    @Nullable
-   private static exa a(btw $$0, int $$1, int $$2) {
-      exa $$3 = $$0.g(0.0F);
+   private static exc a(btw $$0, int $$1, int $$2) {
+      exc $$3 = $$0.g(0.0F);
       return ceh.a($$0, $$1, $$2, -2, $$3.c, $$3.e, (float) (Math.PI / 2));
    }
 }

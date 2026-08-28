@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 public class dhy extends dfk implements dna {
    public static final MapCodec<dhy> a = b(dhy::new);
    public static final akr b = akr.b("sherds");
-   private static final ext d = dfy.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+   private static final exv d = dfy.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
    private static final dtw e = dts.R;
    public static final dtt c = dts.bw;
    private static final dtt f = dts.C;
@@ -24,7 +24,7 @@ public class dhy extends dfk implements dna {
    @Override
    protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
       if ($$0.c(f)) {
-         $$3.a($$4, epd.c, epd.c.a($$3));
+         $$3.a($$4, epf.c, epf.c.a($$3));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
@@ -32,12 +32,12 @@ public class dhy extends dfk implements dna {
 
    @Override
    public dtc a(cyd $$0) {
-      epc $$1 = $$0.q().b_($$0.a());
-      return this.o().a(e, $$0.g()).a(f, Boolean.valueOf($$1.a() == epd.c)).a(c, Boolean.valueOf(false));
+      epe $$1 = $$0.q().b_($$0.a());
+      return this.o().a(e, $$0.g()).a(f, Boolean.valueOf($$1.a() == epf.c)).a(c, Boolean.valueOf(false));
    }
 
    @Override
-   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, eww $$6) {
+   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, ewy $$6) {
       if ($$2.c_($$3) instanceof dqx $$7) {
          if ($$2.B) {
             return bqt.b;
@@ -74,7 +74,7 @@ public class dhy extends dfk implements dna {
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
       if ($$1.c_($$2) instanceof dqx $$5) {
          $$1.a(null, $$2, avp.gz, avq.e, 1.0F, 1.0F);
          $$5.a(dqx.a.b);
@@ -86,12 +86,12 @@ public class dhy extends dfk implements dna {
    }
 
    @Override
-   protected boolean a(dtc $$0, epr $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return false;
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return d;
    }
 
@@ -113,8 +113,8 @@ public class dhy extends dfk implements dna {
    }
 
    @Override
-   protected List<cuq> a(dtc $$0, ers.a $$1) {
-      dqh $$2 = $$1.b(eul.h);
+   protected List<cuq> a(dtc $$0, eru.a $$1) {
+      dqh $$2 = $$1.b(eun.h);
       if ($$2 instanceof dqx $$3) {
          $$1.a(b, $$1x -> {
             for (cul $$2x : $$3.l().a()) {
@@ -128,7 +128,7 @@ public class dhy extends dfk implements dna {
 
    @Override
    public dtc a(dcw $$0, jd $$1, dtc $$2, cmx $$3) {
-      cuq $$4 = $$3.eU();
+      cuq $$4 = $$3.eT();
       dtc $$5 = $$2;
       if ($$4.a(awn.bv) && !dae.a($$4, awh.r)) {
          $$5 = $$2.a(c, Boolean.valueOf(true));
@@ -139,8 +139,8 @@ public class dhy extends dfk implements dna {
    }
 
    @Override
-   protected epc b_(dtc $$0) {
-      return $$0.c(f) ? epd.c.a(false) : super.b_($$0);
+   protected epe b_(dtc $$0) {
+      return $$0.c(f) ? epf.c.a(false) : super.b_($$0);
    }
 
    @Override
@@ -159,7 +159,7 @@ public class dhy extends dfk implements dna {
    }
 
    @Override
-   protected void a(dcw $$0, dtc $$1, eww $$2, cnp $$3) {
+   protected void a(dcw $$0, dtc $$1, ewy $$2, cnp $$3) {
       jd $$4 = $$2.a();
       if (!$$0.B && $$3.a($$0, $$4) && $$3.b($$0)) {
          $$0.a($$4, $$1.a(c, Boolean.valueOf(true)), 4);

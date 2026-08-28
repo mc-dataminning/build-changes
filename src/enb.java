@@ -1,18 +1,20 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public enum enb implements azk {
-   a("ignore_waterlogging"),
-   b("apply_waterlogging");
+public class enb extends enq {
+   public static final MapCodec<enb> a = MapCodec.unit(() -> enb.b);
+   public static final enb b = new enb();
 
-   public static Codec<enb> c = azk.b(enb::values);
-   private final String d;
-
-   private enb(final String $$0) {
-      this.d = $$0;
+   @Nullable
+   @Override
+   public ent.c a(dcz $$0, jd $$1, jd $$2, ent.c $$3, ent.c $$4, enp $$5) {
+      jd $$6 = $$4.a();
+      boolean $$7 = $$0.a_($$6).a(dga.H);
+      return $$7 && !dfy.a($$4.b().j($$0, $$6)) ? new ent.c($$6, dga.H.o(), $$4.c()) : $$4;
    }
 
    @Override
-   public String c() {
-      return this.d;
+   protected ens<?> a() {
+      return ens.m;
    }
 }

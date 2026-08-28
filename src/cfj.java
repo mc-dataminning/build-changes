@@ -13,7 +13,7 @@ public class cfj extends cfe {
 
    public cfj(bsx<? extends cfj> $$0, dcw $$1) {
       super($$0, $$1);
-      this.a(ept.j, 0.0F);
+      this.a(epv.j, 0.0F);
    }
 
    @Override
@@ -49,13 +49,13 @@ public class cfj extends cfe {
       }
 
       this.cf *= 0.9F;
-      exa $$0 = this.ds();
+      exc $$0 = this.dr();
       if (!this.aF() && $$0.d < 0.0) {
          this.i($$0.d(1.0, 0.6, 1.0));
       }
 
       this.ca = this.ca + this.cf * 2.0F;
-      if (!this.dP().B && this.bE() && !this.o_() && !this.t() && --this.cg <= 0) {
+      if (!this.dO().B && this.bE() && !this.o_() && !this.t() && --this.cg <= 0) {
          this.a(avp.eT, 1.0F, (this.ah.i() - this.ah.i()) * 0.2F + 1.0F);
          this.a(cut.qR);
          this.a(dxz.t);
@@ -104,8 +104,8 @@ public class cfj extends cfe {
    }
 
    @Override
-   protected int eh() {
-      return this.t() ? 10 : super.eh();
+   protected int eg() {
+      return this.t() ? 10 : super.eg();
    }
 
    @Override
@@ -141,7 +141,7 @@ public class cfj extends cfe {
       return this.ch;
    }
 
-   public void w(boolean $$0) {
+   public void x(boolean $$0) {
       this.ch = $$0;
    }
 }

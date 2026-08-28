@@ -12,7 +12,7 @@ public record brp(String i) {
    public static final brp h = new brp("water");
 
    public static brp a(dtc $$0) {
-      if ($$0.a(dga.cO) || $$0.a(awe.P)) {
+      if ($$0.a(dga.cO) || $$0.a(awe.Q)) {
          return b;
       } else if ($$0.a(dga.ff)) {
          return c;
@@ -27,9 +27,9 @@ public record brp(String i) {
 
    @Nullable
    public static brp a(btn $$0) {
-      Optional<jd> $$1 = $$0.eJ();
+      Optional<jd> $$1 = $$0.eI();
       if ($$1.isPresent()) {
-         dtc $$2 = $$0.dP().a_($$1.get());
+         dtc $$2 = $$0.dO().a_($$1.get());
          return a($$2);
       } else {
          return $$0.bf() ? h : null;

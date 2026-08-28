@@ -6,7 +6,7 @@ public class cie extends cic {
    private static final Logger b = LogUtils.getLogger();
    private static final int c = 10;
    @Nullable
-   private exa d;
+   private exc d;
    private int e;
 
    public cie(cia $$0) {
@@ -17,11 +17,11 @@ public class cie extends cic {
    public void c() {
       if (this.d == null) {
          b.warn("Aborting charge player as no target was set.");
-         this.a.gi().a(ciq.a);
+         this.a.gh().a(ciq.a);
       } else if (this.e > 0 && this.e++ >= 10) {
-         this.a.gi().a(ciq.a);
+         this.a.gh().a(ciq.a);
       } else {
-         double $$0 = this.d.c(this.a.du(), this.a.dw(), this.a.dA());
+         double $$0 = this.d.c(this.a.dt(), this.a.dv(), this.a.dz());
          if ($$0 < 100.0 || $$0 > 22500.0 || this.a.Q || this.a.R) {
             this.e++;
          }
@@ -34,7 +34,7 @@ public class cie extends cic {
       this.e = 0;
    }
 
-   public void a(exa $$0) {
+   public void a(exc $$0) {
       this.d = $$0;
    }
 
@@ -45,7 +45,7 @@ public class cie extends cic {
 
    @Nullable
    @Override
-   public exa g() {
+   public exc g() {
       return this.d;
    }
 

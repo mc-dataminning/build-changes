@@ -47,17 +47,17 @@ public class aqv extends cmx {
    public boolean f;
    private final avu cY = new avu();
    @Nullable
-   private exa cZ;
+   private exc cZ;
    private int da;
    private boolean db;
    private int dc = 2;
    private String dd = "en_us";
    @Nullable
-   private exa de;
+   private exc de;
    @Nullable
-   private exa df;
+   private exc df;
    @Nullable
-   private exa dg;
+   private exc dg;
    private kf dh = kf.a(0, 0, 0);
    private aqg di = aqg.a;
    private akq<dcw> dj = dcw.h;
@@ -72,7 +72,7 @@ public class aqv extends cmx {
    private cmd dr = new cmd(0, 0, 0);
    @Nullable
    private jd ds;
-   private exa dt = exa.b;
+   private exc dt = exc.b;
    private final cqi du = new cqi() {
       @Override
       public void a(cpu $$0, jv<cuq> $$1, cuq $$2, int[] $$3) {
@@ -107,8 +107,8 @@ public class aqv extends cmx {
       public void a(cpu $$0, int $$1, cuq $$2) {
          crq $$3 = $$0.b($$1);
          if (!($$3 instanceof crm)) {
-            if ($$3.c == aqv.this.fZ()) {
-               an.f.a(aqv.this, aqv.this.fZ(), $$2);
+            if ($$3.c == aqv.this.fY()) {
+               an.f.a(aqv.this, aqv.this.fY(), $$2);
             }
          }
       }
@@ -131,14 +131,14 @@ public class aqv extends cmx {
       this.d = $$0;
       this.cH = $$0.ah().a((cmx)this);
       this.cG = $$0.ah().g(this);
-      this.a(this.a($$1, $$1.V()), 0.0F, 0.0F);
+      this.a(this.a($$1, $$1.V()).c(), 0.0F, 0.0F);
       this.a($$3);
       this.g = null;
    }
 
    @Override
    public jd a(aqu $$0, jd $$1) {
-      ewv $$2 = this.cL().c(this.cL().f().a(-1.0));
+      ewx $$2 = this.a(bua.a).a(exc.b);
       jd $$3 = $$1;
       if ($$0.D_().g() && $$0.o().bb().k() != dct.c) {
          int $$4 = Math.max(0, this.d.a($$0));
@@ -162,7 +162,7 @@ public class aqv extends cmx {
             int $$13 = $$12 % ($$4 * 2 + 1);
             int $$14 = $$12 / ($$4 * 2 + 1);
             $$3 = aqp.a($$0, $$1.u() + $$13 - $$4, $$1.w() + $$14 - $$4);
-            if ($$3 != null && $$0.a(this, $$2.a($$3))) {
+            if ($$3 != null && $$0.a(this, $$2.c($$3.c()))) {
                return $$3;
             }
          }
@@ -170,8 +170,12 @@ public class aqv extends cmx {
          $$3 = $$1;
       }
 
-      while (!$$0.a(this, $$2.a($$3)) && this.dw() < (double)($$0.am() - 1)) {
-         $$3 = jd.a((jw)$$3.b().b(0.0, 1.0, 0.0));
+      while (!$$0.a(this, $$2.c($$3.c())) && $$3.v() < $$0.am() - 1) {
+         $$3 = $$3.d();
+      }
+
+      while ($$0.a(this, $$2.c($$3.e().c())) && $$3.v() > $$0.I_() + 1) {
+         $$3 = $$3.e();
       }
 
       return $$3;
@@ -190,7 +194,7 @@ public class aqv extends cmx {
 
       if ($$0.b("enteredNetherPosition", 10)) {
          ub $$1 = $$0.p("enteredNetherPosition");
-         this.df = new exa($$1.k("x"), $$1.k("y"), $$1.k("z"));
+         this.df = new exc($$1.k("x"), $$1.k("y"), $$1.k("z"));
       }
 
       this.f = $$0.q("seenCredits");
@@ -198,8 +202,8 @@ public class aqv extends cmx {
          this.cY.a($$0.p("recipeBook"), this.d.aJ());
       }
 
-      if (this.fI()) {
-         this.fJ();
+      if (this.fH()) {
+         this.fI();
       }
 
       if ($$0.b("SpawnX", 99) && $$0.b("SpawnY", 99) && $$0.b("SpawnZ", 99)) {
@@ -232,19 +236,19 @@ public class aqv extends cmx {
          $$0.a("enteredNetherPosition", $$1);
       }
 
-      bsr $$2 = this.da();
-      bsr $$3 = this.dd();
-      if ($$3 != null && $$2 != this && $$2.cZ()) {
+      bsr $$2 = this.cZ();
+      bsr $$3 = this.dc();
+      if ($$3 != null && $$2 != this && $$2.cY()) {
          ub $$4 = new ub();
          ub $$5 = new ub();
          $$2.e($$5);
-         $$4.a("Attach", $$3.cA());
+         $$4.a("Attach", $$3.cz());
          $$4.a("Entity", $$5);
          $$0.a("RootVehicle", $$4);
       }
 
       $$0.a("recipeBook", this.cY.b());
-      $$0.a("Dimension", this.dP().af().a().toString());
+      $$0.a("Dimension", this.dO().af().a().toString());
       if (this.dk != null) {
          $$0.a("SpawnX", this.dk.u());
          $$0.a("SpawnY", this.dk.v());
@@ -261,7 +265,7 @@ public class aqv extends cmx {
    }
 
    public void a(int $$0) {
-      float $$1 = (float)this.gi();
+      float $$1 = (float)this.gh();
       float $$2 = ($$1 - 1.0F) / $$1;
       this.cs = ayo.a((float)$$0 / $$1, 0.0F, $$2);
       this.cR = -1;
@@ -302,7 +306,7 @@ public class aqv extends cmx {
    @Override
    public void g_() {
       super.g_();
-      this.c.b(new adw(this.eM()));
+      this.c.b(new adw(this.eL()));
    }
 
    @Override
@@ -325,7 +329,7 @@ public class aqv extends cmx {
       }
 
       this.cd.d();
-      if (!this.dP().B && !this.cd.b(this)) {
+      if (!this.dO().B && !this.cd.b(this)) {
          this.s();
          this.cd = this.cc;
       }
@@ -333,9 +337,9 @@ public class aqv extends cmx {
       bsr $$0 = this.L();
       if ($$0 != this) {
          if ($$0.bE()) {
-            this.a($$0.du(), $$0.dw(), $$0.dA(), $$0.dF(), $$0.dH());
+            this.a($$0.dt(), $$0.dv(), $$0.dz(), $$0.dE(), $$0.dG());
             this.A().l().a(this);
-            if (this.fP()) {
+            if (this.fO()) {
                this.d(this);
             }
          } else {
@@ -350,11 +354,11 @@ public class aqv extends cmx {
 
       this.o();
       this.p();
-      this.gD();
+      this.gC();
       this.cG.b(this);
    }
 
-   private void gD() {
+   private void gC() {
       bus $$0 = this.f(buw.g);
       if ($$0 != null) {
          if (this.f()) {
@@ -376,55 +380,55 @@ public class aqv extends cmx {
 
    public void m() {
       try {
-         if (!this.R_() || !this.di()) {
+         if (!this.R_() || !this.dh()) {
             super.l();
          }
 
-         for (int $$0 = 0; $$0 < this.fZ().b(); $$0++) {
-            cuq $$1 = this.fZ().a($$0);
+         for (int $$0 = 0; $$0 < this.fY().b(); $$0++) {
+            cuq $$1 = this.fY().a($$0);
             if ($$1.g().ao_()) {
-               zg<?> $$2 = ((csz)$$1.g()).a($$1, this.dP(), this);
+               zg<?> $$2 = ((csz)$$1.g()).a($$1, this.dO(), this);
                if ($$2 != null) {
                   this.c.b($$2);
                }
             }
          }
 
-         if (this.ex() != this.cO || this.cP != this.ce.a() || this.ce.e() == 0.0F != this.cQ) {
-            this.c.b(new afe(this.ex(), this.ce.a(), this.ce.e()));
-            this.cO = this.ex();
+         if (this.ew() != this.cO || this.cP != this.ce.a() || this.ce.e() == 0.0F != this.cQ) {
+            this.c.b(new afe(this.ew(), this.ce.a(), this.ce.e()));
+            this.cO = this.ew();
             this.cP = this.ce.a();
             this.cQ = this.ce.e() == 0.0F;
          }
 
-         if (this.ex() + this.fp() != this.cI) {
-            this.cI = this.ex() + this.fp();
-            this.a(eyh.g, ayo.f(this.cI));
+         if (this.ew() + this.fo() != this.cI) {
+            this.cI = this.ew() + this.fo();
+            this.a(eyj.g, ayo.f(this.cI));
          }
 
          if (this.ce.a() != this.cJ) {
             this.cJ = this.ce.a();
-            this.a(eyh.h, ayo.f((float)this.cJ));
+            this.a(eyj.h, ayo.f((float)this.cJ));
          }
 
          if (this.cm() != this.cK) {
             this.cK = this.cm();
-            this.a(eyh.i, ayo.f((float)this.cK));
+            this.a(eyj.i, ayo.f((float)this.cK));
          }
 
-         if (this.eL() != this.cL) {
-            this.cL = this.eL();
-            this.a(eyh.j, ayo.f((float)this.cL));
+         if (this.eK() != this.cL) {
+            this.cL = this.eK();
+            this.a(eyj.j, ayo.f((float)this.cL));
          }
 
          if (this.cr != this.cN) {
             this.cN = this.cr;
-            this.a(eyh.k, ayo.f((float)this.cN));
+            this.a(eyj.k, ayo.f((float)this.cN));
          }
 
          if (this.cq != this.cM) {
             this.cM = this.cq;
-            this.a(eyh.l, ayo.f((float)this.cM));
+            this.a(eyj.l, ayo.f((float)this.cM));
          }
 
          if (this.cr != this.cR) {
@@ -445,7 +449,7 @@ public class aqv extends cmx {
 
    @Override
    public void n() {
-      if (this.ex() > 0.0F && this.de != null) {
+      if (this.ew() > 0.0F && this.de != null) {
          an.X.a(this, this.de);
       }
 
@@ -455,7 +459,7 @@ public class aqv extends cmx {
 
    public void o() {
       if (this.ac > 0.0F && this.de == null) {
-         this.de = this.dn();
+         this.de = this.dm();
          if (this.cx != null && this.cx.d <= this.de.d) {
             an.ae.a(this, this.cx, this.cy);
          }
@@ -463,29 +467,29 @@ public class aqv extends cmx {
    }
 
    public void p() {
-      if (this.dd() != null && this.dd().bt()) {
+      if (this.dc() != null && this.dc().bt()) {
          if (this.dg == null) {
-            this.dg = this.dn();
+            this.dg = this.dm();
          } else {
             an.Y.a(this, this.dg);
          }
       }
 
-      if (this.dg != null && (this.dd() == null || !this.dd().bt())) {
+      if (this.dg != null && (this.dc() == null || !this.dc().bt())) {
          this.dg = null;
       }
    }
 
-   private void a(eyh $$0, int $$1) {
-      this.go().a($$0, this, $$1x -> $$1x.a($$1));
+   private void a(eyj $$0, int $$1) {
+      this.gn().a($$0, this, $$1x -> $$1x.a($$1));
    }
 
    @Override
    public void a(brk $$0) {
       this.a(dxz.p);
-      boolean $$1 = this.dP().ab().b(dcs.n);
+      boolean $$1 = this.dO().ab().b(dcs.n);
       if ($$1) {
-         wz $$2 = this.eM().a();
+         wz $$2 = this.eL().a();
          this.c.a(new ady(this.an(), $$2), wg.a(() -> {
             int $$1x = 256;
             String $$2x = $$2.a(256);
@@ -493,49 +497,49 @@ public class aqv extends cmx {
             wz $$4x = wz.a("death.attack.even_more_magic", this.S_()).a($$1xx -> $$1xx.a(new xf(xf.a.a, $$3x)));
             return new ady(this.an(), $$4x);
          }));
-         eyg $$3 = this.ck();
-         if ($$3 == null || $$3.k() == eyg.b.a) {
+         eyi $$3 = this.ck();
+         if ($$3 == null || $$3.k() == eyi.b.a) {
             this.d.ah().a($$2, false);
-         } else if ($$3.k() == eyg.b.c) {
+         } else if ($$3.k() == eyi.b.c) {
             this.d.ah().a(this, $$2);
-         } else if ($$3.k() == eyg.b.d) {
+         } else if ($$3.k() == eyi.b.d) {
             this.d.ah().b(this, $$2);
          }
       } else {
          this.c.b(new ady(this.an(), wy.a));
       }
 
-      this.gn();
-      if (this.dP().ab().b(dcs.N)) {
-         this.gE();
+      this.gm();
+      if (this.dO().ab().b(dcs.N)) {
+         this.gD();
       }
 
       if (!this.R_()) {
          this.a(this.A(), $$0);
       }
 
-      this.go().a(eyh.d, this, eyc::b);
-      btn $$4 = this.eN();
+      this.gn().a(eyj.d, this, eye::b);
+      btn $$4 = this.eM();
       if ($$4 != null) {
          this.b(avz.h.b($$4.am()));
          $$4.a(this, this.bl, $$0);
          this.f($$4);
       }
 
-      this.dP().a(this, (byte)3);
+      this.dO().a(this, (byte)3);
       this.a(avz.N);
       this.a(avz.i.b(avz.m));
       this.a(avz.i.b(avz.n));
       this.aD();
       this.k(0);
       this.c(false);
-      this.eM().c();
-      this.a(Optional.of(jl.a(this.dP().af(), this.dp())));
+      this.eL().c();
+      this.a(Optional.of(jl.a(this.dO().af(), this.do())));
    }
 
-   private void gE() {
-      ewv $$0 = new ewv(this.dp()).c(32.0, 10.0, 32.0);
-      this.dP().a(btp.class, $$0, bsw.f).stream().filter($$0x -> $$0x instanceof btt).forEach($$0x -> ((btt)$$0x).a_((cmx)this));
+   private void gD() {
+      ewx $$0 = new ewx(this.do()).c(32.0, 10.0, 32.0);
+      this.dO().a(btp.class, $$0, bsw.f).stream().filter($$0x -> $$0x instanceof btt).forEach($$0x -> ((btt)$$0x).a_((cmx)this));
    }
 
    @Override
@@ -543,26 +547,26 @@ public class aqv extends cmx {
       if ($$0 != this) {
          super.a($$0, $$1, $$2);
          this.s($$1);
-         this.go().a(eyh.f, this, eyc::b);
+         this.gn().a(eyj.f, this, eye::b);
          if ($$0 instanceof cmx) {
             this.a(avz.Q);
-            this.go().a(eyh.e, this, eyc::b);
+            this.gn().a(eyj.e, this, eye::b);
          } else {
             this.a(avz.O);
          }
 
-         this.a(this, $$0, eyh.m);
-         this.a($$0, this, eyh.n);
+         this.a(this, $$0, eyj.m);
+         this.a($$0, this, eyj.n);
          an.c.a(this, $$0, $$2);
       }
    }
 
-   private void a(eyd $$0, eyd $$1, eyh[] $$2) {
-      exz $$3 = this.go().e($$1.cC());
+   private void a(eyf $$0, eyf $$1, eyj[] $$2) {
+      eyb $$3 = this.gn().e($$1.cB());
       if ($$3 != null) {
          int $$4 = $$3.n().b();
          if ($$4 >= 0 && $$4 < $$2.length) {
-            this.go().a($$2[$$4], $$0, eyc::b);
+            this.gn().a($$2[$$4], $$0, eye::b);
          }
       }
    }
@@ -572,7 +576,7 @@ public class aqv extends cmx {
       if (this.b($$0)) {
          return false;
       } else {
-         boolean $$2 = this.d.n() && this.gF() && $$0.a(awg.m);
+         boolean $$2 = this.d.n() && this.gE() && $$0.a(awg.m);
          if (!$$2 && this.cS > 0 && !$$0.a(awg.d)) {
             return false;
          } else {
@@ -592,14 +596,14 @@ public class aqv extends cmx {
 
    @Override
    public boolean a(cmx $$0) {
-      return !this.gF() ? false : super.a($$0);
+      return !this.gE() ? false : super.a($$0);
    }
 
-   private boolean gF() {
+   private boolean gE() {
       return this.d.ad();
    }
 
-   public eqa a(boolean $$0, eqa.a $$1) {
+   public eqc a(boolean $$0, eqc.a $$1) {
       jd $$2 = this.S();
       float $$3 = this.T();
       boolean $$4 = this.V();
@@ -608,12 +612,12 @@ public class aqv extends cmx {
          Optional<aqv.a> $$6 = a($$5, $$2, $$3, $$4, $$0);
          if ($$6.isPresent()) {
             aqv.a $$7 = $$6.get();
-            return new eqa($$5, $$7.a(), exa.b, $$7.b(), 0.0F, $$1);
+            return new eqc($$5, $$7.a(), exc.b, $$7.b(), 0.0F, $$1);
          } else {
-            return eqa.a(this.d.I(), this, $$1);
+            return eqc.a(this.d.I(), this, $$1);
          }
       } else {
-         return new eqa(this.d.I(), this, $$1);
+         return new eqc(this.d.I(), this, $$1);
       }
    }
 
@@ -621,7 +625,7 @@ public class aqv extends cmx {
       dtc $$5 = $$0.a_($$1);
       dfy $$6 = $$5.b();
       if ($$6 instanceof dmh && ($$3 || $$5.c(dmh.d) > 0) && dmh.a($$0)) {
-         Optional<exa> $$7 = dmh.a(bsx.by, $$0, $$1);
+         Optional<exc> $$7 = dmh.a(bsx.by, $$0, $$1);
          if (!$$3 && !$$4 && $$7.isPresent()) {
             $$0.a($$1, $$5.a(dmh.d, Integer.valueOf($$5.c(dmh.d) - 1)), 3);
          }
@@ -635,7 +639,7 @@ public class aqv extends cmx {
          boolean $$8 = $$6.a($$5);
          dtc $$9 = $$0.a_($$1.d());
          boolean $$10 = $$9.b().a($$9);
-         return $$8 && $$10 ? Optional.of(new aqv.a(new exa((double)$$1.u() + 0.5, (double)$$1.v() + 0.1, (double)$$1.w() + 0.5), $$2)) : Optional.empty();
+         return $$8 && $$10 ? Optional.of(new aqv.a(new exc((double)$$1.u() + 0.5, (double)$$1.v() + 0.1, (double)$$1.w() + 0.5), $$2)) : Optional.empty();
       }
    }
 
@@ -651,8 +655,8 @@ public class aqv extends cmx {
 
    @Nullable
    @Override
-   public bsr a(eqa $$0) {
-      if (this.dK()) {
+   public bsr a(eqc $$0) {
+      if (this.dJ()) {
          return null;
       } else {
          if ($$0.f()) {
@@ -669,16 +673,16 @@ public class aqv extends cmx {
             return this;
          } else {
             this.cX = true;
-            eqz $$4 = $$1.A_();
+            erb $$4 = $$1.A_();
             this.c.b(new aei(this.b($$1), (byte)3));
             this.c.b(new ach($$4.q(), $$4.r()));
             aur $$5 = this.d.ah();
             $$5.e(this);
             $$2.a(this, bsr.c.e);
-            this.dM();
+            this.dL();
             $$2.ag().a("moving");
             if ($$3 == dcw.h && $$1.af() == dcw.i) {
-               this.df = this.dn();
+               this.df = this.dm();
             }
 
             $$2.ag().c();
@@ -689,7 +693,7 @@ public class aqv extends cmx {
             $$1.d(this);
             $$2.ag().c();
             this.c($$2);
-            this.c.b(new adu(this.ga()));
+            this.c.b(new adu(this.fZ()));
             $$5.a(this, $$1);
             $$5.f(this);
             $$5.d(this);
@@ -704,7 +708,7 @@ public class aqv extends cmx {
 
    private void c(aqu $$0) {
       akq<dcw> $$1 = $$0.af();
-      akq<dcw> $$2 = this.dP().af();
+      akq<dcw> $$2 = this.dO().af();
       an.w.a(this, $$1, $$2);
       if ($$1 == dcw.i && $$2 == dcw.h && this.df != null) {
          an.D.a(this, this.df);
@@ -732,26 +736,26 @@ public class aqv extends cmx {
 
    @Override
    public Either<cmx.a, azs> a(jd $$0) {
-      ji $$1 = this.dP().a_($$0).c(dju.aE);
-      if (this.fI() || !this.bE()) {
+      ji $$1 = this.dO().a_($$0).c(dju.aE);
+      if (this.fH() || !this.bE()) {
          return Either.left(cmx.a.e);
-      } else if (!this.dP().D_().j()) {
+      } else if (!this.dO().D_().j()) {
          return Either.left(cmx.a.a);
       } else if (!this.a($$0, $$1)) {
          return Either.left(cmx.a.c);
       } else if (this.b($$0, $$1)) {
          return Either.left(cmx.a.d);
       } else {
-         this.a(this.dP().af(), $$0, this.dF(), false, true);
-         if (this.dP().R()) {
+         this.a(this.dO().af(), $$0, this.dE(), false, true);
+         if (this.dO().R()) {
             return Either.left(cmx.a.b);
          } else {
             if (!this.f()) {
                double $$2 = 8.0;
                double $$3 = 5.0;
-               exa $$4 = exa.c($$0);
-               List<ckd> $$5 = this.dP()
-                  .a(ckd.class, new ewv($$4.a() - 8.0, $$4.b() - 5.0, $$4.c() - 8.0, $$4.a() + 8.0, $$4.b() + 5.0, $$4.c() + 8.0), $$0x -> $$0x.a(this));
+               exc $$4 = exc.c($$0);
+               List<ckd> $$5 = this.dO()
+                  .a(ckd.class, new ewx($$4.a() - 8.0, $$4.b() - 5.0, $$4.c() - 8.0, $$4.a() + 8.0, $$4.b() + 5.0, $$4.c() + 8.0), $$0x -> $$0x.a(this));
                if (!$$5.isEmpty()) {
                   return Either.left(cmx.a.f);
                }
@@ -765,7 +769,7 @@ public class aqv extends cmx {
                this.a(wz.c("sleep.not_possible"), true);
             }
 
-            ((aqu)this.dP()).e();
+            ((aqu)this.dO()).e();
             return $$6;
          }
       }
@@ -782,8 +786,8 @@ public class aqv extends cmx {
    }
 
    private boolean i(jd $$0) {
-      exa $$1 = exa.c($$0);
-      return Math.abs(this.du() - $$1.a()) <= 3.0 && Math.abs(this.dw() - $$1.b()) <= 2.0 && Math.abs(this.dA() - $$1.c()) <= 3.0;
+      exc $$1 = exc.c($$0);
+      return Math.abs(this.dt() - $$1.a()) <= 3.0 && Math.abs(this.dv() - $$1.b()) <= 2.0 && Math.abs(this.dz() - $$1.c()) <= 3.0;
    }
 
    private boolean b(jd $$0, ji $$1) {
@@ -793,13 +797,13 @@ public class aqv extends cmx {
 
    @Override
    public void a(boolean $$0, boolean $$1) {
-      if (this.fI()) {
+      if (this.fH()) {
          this.A().l().a(this, new abx(this, 2));
       }
 
       super.a($$0, $$1);
       if (this.c != null) {
-         this.c.a(this.du(), this.dw(), this.dA(), this.dF(), this.dH());
+         this.c.a(this.dt(), this.dv(), this.dz(), this.dE(), this.dG());
       }
    }
 
@@ -826,12 +830,12 @@ public class aqv extends cmx {
    }
 
    public void a(double $$0, double $$1, double $$2, boolean $$3) {
-      if (!this.di()) {
-         this.b($$3, new exa($$0, $$1, $$2));
+      if (!this.dh()) {
+         this.b($$3, new exc($$0, $$1, $$2));
          jd $$4 = this.aK();
-         dtc $$5 = this.dP().a_($$4);
+         dtc $$5 = this.dO().a_($$4);
          if (this.dq && $$3 && this.ac > 0.0F) {
-            exa $$6 = $$4.b().b(0.0, 0.5, 0.0);
+            exc $$6 = $$4.b().b(0.0, 0.5, 0.0);
             int $$7 = (int)ayo.a(50.0F * this.ac, 0.0F, 200.0F);
             this.A().a(new le(lm.b, $$5), $$6.c, $$6.d, $$6.e, $$7, 0.3F, 0.3F, 0.3F, 0.15F);
             this.dq = false;
@@ -844,25 +848,25 @@ public class aqv extends cmx {
    @Override
    public void a(@Nullable bsr $$0) {
       super.a($$0);
-      this.cx = this.dn();
+      this.cx = this.dm();
       this.cy = $$0;
-      this.v($$0 != null && $$0.am() == bsx.bn);
+      this.w($$0 != null && $$0.am() == bsx.bn);
    }
 
    @Override
    protected void r() {
-      if (this.dP().s().i()) {
+      if (this.dO().s().i()) {
          super.r();
       }
    }
 
    @Override
    public void a(drs $$0, boolean $$1) {
-      this.c.b(new acd(this.dP(), $$0.aD_()));
+      this.c.b(new acd(this.dO(), $$0.aD_()));
       this.c.b(new ads($$0.aD_(), $$1));
    }
 
-   private void gG() {
+   private void gF() {
       this.dx = this.dx % 100 + 1;
    }
 
@@ -875,8 +879,8 @@ public class aqv extends cmx {
             this.s();
          }
 
-         this.gG();
-         cpu $$1 = $$0.createMenu(this.dx, this.fZ(), this);
+         this.gF();
+         cpu $$1 = $$0.createMenu(this.dx, this.fY(), this);
          if ($$1 == null) {
             if (this.R_()) {
                this.a(wz.c("container.spectatorCantOpen").a(n.m), true);
@@ -903,17 +907,17 @@ public class aqv extends cmx {
          this.s();
       }
 
-      this.gG();
+      this.gF();
       int $$2 = $$0.af_();
       this.c.b(new adc(this.dx, $$2, $$0.an()));
-      this.cd = new cqv(this.dx, this.fZ(), $$1, $$0, $$2);
+      this.cd = new cqv(this.dx, this.fY(), $$1, $$0, $$2);
       this.a(this.cd);
    }
 
    @Override
    public void a(cuq $$0, bqq $$1) {
       if ($$0.a(cut.ua)) {
-         if (cwr.a($$0, this.dh(), this)) {
+         if (cwr.a($$0, this.dg(), this)) {
             this.cd.d();
          }
 
@@ -955,21 +959,21 @@ public class aqv extends cmx {
    }
 
    @Override
-   public void a(exa $$0) {
-      double $$1 = this.du();
-      double $$2 = this.dw();
-      double $$3 = this.dA();
+   public void a(exc $$0) {
+      double $$1 = this.dt();
+      double $$2 = this.dv();
+      double $$3 = this.dz();
       super.a($$0);
-      this.b(this.du() - $$1, this.dw() - $$2, this.dA() - $$3);
+      this.b(this.dt() - $$1, this.dv() - $$2, this.dz() - $$3);
    }
 
    @Override
    public void u() {
-      double $$0 = this.du();
-      double $$1 = this.dw();
-      double $$2 = this.dA();
+      double $$0 = this.dt();
+      double $$1 = this.dv();
+      double $$2 = this.dz();
       super.u();
-      this.q(this.du() - $$0, this.dw() - $$1, this.dA() - $$2);
+      this.q(this.dt() - $$0, this.dv() - $$1, this.dz() - $$2);
    }
 
    public void b(double $$0, double $$1, double $$2) {
@@ -1010,7 +1014,7 @@ public class aqv extends cmx {
                   this.E(0.0F * (float)$$6 * 0.01F);
                }
             }
-         } else if (this.fB()) {
+         } else if (this.fA()) {
             int $$7 = Math.round((float)Math.sqrt($$0 * $$0 + $$1 * $$1 + $$2 * $$2) * 100.0F);
             this.a(avz.B, $$7);
          } else {
@@ -1025,7 +1029,7 @@ public class aqv extends cmx {
    private void q(double $$0, double $$1, double $$2) {
       if (this.bS() && !r($$0, $$1, $$2)) {
          int $$3 = Math.round((float)Math.sqrt($$0 * $$0 + $$1 * $$1 + $$2 * $$2) * 100.0F);
-         bsr $$4 = this.dd();
+         bsr $$4 = this.dc();
          if ($$4 instanceof cot) {
             this.a(avz.x, $$3);
          } else if ($$4 instanceof cov) {
@@ -1047,13 +1051,13 @@ public class aqv extends cmx {
    @Override
    public void a(avw<?> $$0, int $$1) {
       this.cH.b(this, $$0, $$1);
-      this.go().a($$0, this, $$1x -> $$1x.b($$1));
+      this.gn().a($$0, this, $$1x -> $$1x.b($$1));
    }
 
    @Override
    public void a(avw<?> $$0) {
       this.cH.a(this, $$0, 0);
-      this.go().a($$0, this, eyc::c);
+      this.gn().a($$0, this, eye::c);
    }
 
    @Override
@@ -1087,7 +1091,7 @@ public class aqv extends cmx {
    public void v() {
       this.db = true;
       this.bI();
-      if (this.fI()) {
+      if (this.fH()) {
          this.a(true, false);
       }
    }
@@ -1109,20 +1113,20 @@ public class aqv extends cmx {
 
    @Override
    protected void L_() {
-      if (!this.bz.e() && this.fs()) {
+      if (!this.bz.e() && this.fr()) {
          this.c.b(new acy(this, (byte)9));
          super.L_();
       }
    }
 
    @Override
-   public void a(ff.a $$0, exa $$1) {
+   public void a(ff.a $$0, exc $$1) {
       super.a($$0, $$1);
       this.c.b(new aeb($$0, $$1.c, $$1.d, $$1.e));
    }
 
    public void a(ff.a $$0, bsr $$1, ff.a $$2) {
-      exa $$3 = $$2.a($$1);
+      exc $$3 = $$2.a($$1);
       super.a($$0, $$3);
       this.c.b(new aeb($$0, $$1, $$2));
    }
@@ -1132,28 +1136,28 @@ public class aqv extends cmx {
       this.dw = $$0.dw;
       this.e.a($$0.e.b(), $$0.e.c());
       this.z();
-      this.eT().b($$0.eT());
-      this.v(this.eO());
+      this.eS().b($$0.eS());
+      this.v(this.eN());
       if ($$1) {
-         this.fZ().a($$0.fZ());
-         this.v($$0.ex());
+         this.fY().a($$0.fY());
+         this.v($$0.ew());
          this.ce = $$0.ce;
 
-         for (brz $$2 : $$0.eu()) {
+         for (brz $$2 : $$0.et()) {
             this.b(new brz($$2));
          }
 
          this.cq = $$0.cq;
          this.cr = $$0.cr;
          this.cs = $$0.cs;
-         this.r($$0.fT());
+         this.r($$0.fS());
          this.aw = $$0.aw;
-      } else if (this.dP().ab().b(dcs.d) || $$0.R_()) {
-         this.fZ().a($$0.fZ());
+      } else if (this.dO().ab().b(dcs.d) || $$0.R_()) {
+         this.fY().a($$0.fY());
          this.cq = $$0.cq;
          this.cr = $$0.cr;
          this.cs = $$0.cs;
-         this.r($$0.fT());
+         this.r($$0.fS());
       }
 
       this.ct = $$0.ct;
@@ -1166,9 +1170,9 @@ public class aqv extends cmx {
       this.f = $$0.f;
       this.df = $$0.df;
       this.di = $$0.di;
-      this.i($$0.gq());
-      this.j($$0.gr());
-      this.a($$0.gy());
+      this.i($$0.gp());
+      this.j($$0.gq());
+      this.a($$0.gx());
    }
 
    @Override
@@ -1177,7 +1181,7 @@ public class aqv extends cmx {
       this.c.b(new agb(this.an(), $$0, true));
       if ($$0.a(bsb.y)) {
          this.da = this.ai;
-         this.cZ = this.dn();
+         this.cZ = this.dm();
       }
 
       an.B.a(this, $$1);
@@ -1203,12 +1207,12 @@ public class aqv extends cmx {
 
    @Override
    public void c(double $$0, double $$1, double $$2) {
-      this.c.a($$0, $$1, $$2, this.dF(), this.dH(), buc.g);
+      this.c.a($$0, $$1, $$2, this.dE(), this.dG(), buc.g);
    }
 
    @Override
    public void d(double $$0, double $$1, double $$2) {
-      this.c.a(this.du() + $$0, this.dw() + $$1, this.dA() + $$2, this.dF(), this.dH(), buc.f);
+      this.c.a(this.dt() + $$0, this.dv() + $$1, this.dz() + $$2, this.dE(), this.dG(), buc.f);
    }
 
    @Override
@@ -1216,11 +1220,11 @@ public class aqv extends cmx {
       dcd $$7 = new dcd(jd.a($$1, $$2, $$3));
       $$0.l().a(aqz.f, $$7, 1, this.an());
       this.ad();
-      if (this.fI()) {
+      if (this.fH()) {
          this.a(true, true);
       }
 
-      if ($$0 == this.dP()) {
+      if ($$0 == this.dO()) {
          this.c.a($$1, $$2, $$3, $$5, $$6, $$4);
       } else {
          this.a($$0, $$1, $$2, $$3, $$5, $$6);
@@ -1249,13 +1253,13 @@ public class aqv extends cmx {
    @Override
    public void z() {
       if (this.c != null) {
-         this.c.b(new adu(this.ga()));
+         this.c.b(new adu(this.fZ()));
          this.K();
       }
    }
 
    public aqu A() {
-      return (aqu)this.dP();
+      return (aqu)this.dO();
    }
 
    public boolean a(dct $$0) {
@@ -1265,7 +1269,7 @@ public class aqv extends cmx {
       } else {
          this.c.b(new adb(adb.e, (float)$$0.a()));
          if ($$0 == dct.d) {
-            this.gn();
+            this.gm();
             this.ad();
             dae.a(this);
          } else {
@@ -1276,7 +1280,7 @@ public class aqv extends cmx {
          }
 
          this.z();
-         this.fq();
+         this.fp();
          return true;
       }
    }
@@ -1297,9 +1301,9 @@ public class aqv extends cmx {
    }
 
    public void b(wz $$0, boolean $$1) {
-      if (this.w($$1)) {
+      if (this.x($$1)) {
          this.c.a(new afs($$0, $$1), wg.a(() -> {
-            if (this.w(false)) {
+            if (this.x(false)) {
                int $$1x = 256;
                String $$2 = $$0.a(256);
                wz $$3 = wz.b($$2).a(n.o);
@@ -1312,7 +1316,7 @@ public class aqv extends cmx {
    }
 
    public void a(xo $$0, boolean $$1, wv.a $$2) {
-      if (this.gH()) {
+      if (this.gG()) {
          $$0.a(this, $$1, $$2);
       }
    }
@@ -1346,11 +1350,11 @@ public class aqv extends cmx {
       return this.cT;
    }
 
-   private boolean w(boolean $$0) {
+   private boolean x(boolean $$0) {
       return this.cT == cmv.c ? $$0 : true;
    }
 
-   private boolean gH() {
+   private boolean gG() {
       return this.cT == cmv.a;
    }
 
@@ -1364,7 +1368,7 @@ public class aqv extends cmx {
 
    @Override
    protected int G() {
-      return this.d.c(this.fY());
+      return this.d.c(this.fX());
    }
 
    @Override
@@ -1383,7 +1387,7 @@ public class aqv extends cmx {
    @Override
    protected void K() {
       if (this.R_()) {
-         this.es();
+         this.er();
          this.k(true);
       } else {
          super.K();
@@ -1399,8 +1403,8 @@ public class aqv extends cmx {
       bsr $$1 = this.L();
       this.cW = (bsr)($$0 == null ? this : $$0);
       if ($$1 != this.cW) {
-         if (this.cW.dP() instanceof aqu $$2) {
-            this.a($$2, this.cW.du(), this.cW.dw(), this.cW.dA(), Set.of(), this.dF(), this.dH());
+         if (this.cW.dO() instanceof aqu $$2) {
+            this.a($$2, this.cW.dt(), this.cW.dv(), this.cW.dz(), Set.of(), this.dE(), this.dG());
          }
 
          if ($$0 != null) {
@@ -1440,7 +1444,7 @@ public class aqv extends cmx {
    @Override
    public void a(bqq $$0) {
       super.a($$0);
-      this.gt();
+      this.gs();
    }
 
    public boolean P() {
@@ -1458,10 +1462,10 @@ public class aqv extends cmx {
    public void a(aqu $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
       this.d(this);
       this.ad();
-      if ($$0 == this.dP()) {
+      if ($$0 == this.dO()) {
          this.c.a($$1, $$2, $$3, $$4, $$5);
       } else {
-         this.a(new eqa($$0, new exa($$1, $$2, $$3), exa.b, $$4, $$5, eqa.a));
+         this.a(new eqc($$0, new exc($$1, $$2, $$3), exc.b, $$4, $$5, eqc.a));
       }
    }
 
@@ -1523,7 +1527,7 @@ public class aqv extends cmx {
 
    @Override
    public void a(avo $$0, avq $$1, float $$2, float $$3) {
-      this.c.b(new afp(lt.b.e($$0), $$1, this.du(), this.dw(), this.dA(), $$2, $$3, this.ah.g()));
+      this.c.b(new afp(lt.b.e($$0), $$1, this.dt(), this.dv(), this.dz(), $$2, $$3, this.ah.g()));
    }
 
    @Override
@@ -1532,7 +1536,7 @@ public class aqv extends cmx {
       if ($$3 == null) {
          return null;
       } else {
-         this.dP().b($$3);
+         this.dO().b($$3);
          cuq $$4 = $$3.p();
          if ($$2) {
             if (!$$4.e()) {
@@ -1603,7 +1607,7 @@ public class aqv extends cmx {
    }
 
    public boolean a(boolean $$0) {
-      cmw $$1 = this.fZ();
+      cmw $$1 = this.fY();
       cuq $$2 = $$1.a($$0);
       this.cd.b($$1, $$1.k).ifPresent($$1x -> this.cd.a($$1x, $$1.f()));
       return this.a($$2, false, true) != null;
@@ -1642,7 +1646,7 @@ public class aqv extends cmx {
 
    @Override
    public void a(double $$0, double $$1) {
-      this.cw = (float)(ayo.d($$1, $$0) * 180.0F / (float)Math.PI - (double)this.dF());
+      this.cw = (float)(ayo.d($$1, $$0) * 180.0F / (float)Math.PI - (double)this.dE());
       this.c.b(new add(this));
    }
 
@@ -1650,7 +1654,7 @@ public class aqv extends cmx {
    public boolean a(bsr $$0, boolean $$1) {
       if (super.a($$0, $$1)) {
          $$0.j(this);
-         this.c.a(this.du(), this.dw(), this.dA(), this.dF(), this.dH());
+         this.c.a(this.dt(), this.dv(), this.dz(), this.dE(), this.dG());
          if ($$0 instanceof btn $$2) {
             this.d.ah().a($$2, this.c);
          }
@@ -1663,17 +1667,17 @@ public class aqv extends cmx {
 
    @Override
    public void ad() {
-      bsr $$0 = this.dd();
+      bsr $$0 = this.dc();
       super.ad();
       if ($$0 instanceof btn $$1) {
-         for (brz $$2 : $$1.eu()) {
+         for (brz $$2 : $$1.et()) {
             this.c.b(new aeg($$0.an(), $$2.c()));
          }
       }
    }
 
    public agd b(aqu $$0) {
-      return new agd($$0.ae(), $$0.af(), ddy.a($$0.C()), this.e.b(), this.e.c(), $$0.ai(), $$0.B(), this.gy(), this.az());
+      return new agd($$0.ae(), $$0.af(), ddy.a($$0.C()), this.e.b(), this.e.c(), $$0.ai(), $$0.B(), this.gx(), this.az());
    }
 
    @Override
@@ -1691,18 +1695,18 @@ public class aqv extends cmx {
    }
 
    @Override
-   public exa ag() {
+   public exc ag() {
       return this.dt;
    }
 
    @Override
-   public void b(exa $$0) {
+   public void b(exc $$0) {
       this.dt = $$0;
    }
 
    @Override
    protected float a(bsr $$0, float $$1, brk $$2) {
-      return dae.a(this.A(), this.dT(), $$0, $$2, $$1);
+      return dae.a(this.A(), this.dS(), $$0, $$2, $$1);
    }
 
    @Override
@@ -1711,13 +1715,13 @@ public class aqv extends cmx {
       this.b(avz.d.b($$0));
    }
 
-   static record a(exa a, float b) {
-      public static aqv.a a(exa $$0, jd $$1) {
+   static record a(exc a, float b) {
+      public static aqv.a a(exc $$0, jd $$1) {
          return new aqv.a($$0, b($$0, $$1));
       }
 
-      private static float b(exa $$0, jd $$1) {
-         exa $$2 = exa.c($$1).d($$0).d();
+      private static float b(exc $$0, jd $$1) {
+         exc $$2 = exc.c($$1).d($$0).d();
          return (float)ayo.d(ayo.d($$2.e, $$2.c) * 180.0F / (float)Math.PI - 90.0);
       }
    }

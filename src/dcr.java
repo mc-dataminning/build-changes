@@ -1,13 +1,13 @@
 import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import it.unimi.dsi.fastutil.longs.LongSet;
 
-public class dcr extends eqj {
+public class dcr extends eql {
    public static final String a = "chunks";
    private static final String b = "Forced";
    private final LongSet c;
 
-   public static eqj.a<dcr> a() {
-      return new eqj.a<>(dcr::new, dcr::b, azw.i);
+   public static eql.a<dcr> a() {
+      return new eql.a<>(dcr::new, dcr::b, azw.i);
    }
 
    private dcr(LongSet $$0) {

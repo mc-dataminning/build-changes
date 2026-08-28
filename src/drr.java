@@ -74,19 +74,19 @@ public class drr extends drn implements brd {
       return this.s;
    }
 
-   public ewv a(dtc $$0) {
+   public ewx a(dtc $$0) {
       return ckj.a(1.0F, $$0.c(dmy.b), 0.5F * this.a(1.0F));
    }
 
    private void c(dcw $$0, jd $$1, dtc $$2) {
       if ($$2.b() instanceof dmy) {
          ji $$3 = $$2.c(dmy.b);
-         ewv $$4 = ckj.a(1.0F, $$3, this.u, this.t).a($$1);
+         ewx $$4 = ckj.a(1.0F, $$3, this.u, this.t).a($$1);
          List<bsr> $$5 = $$0.a_(null, $$4);
          if (!$$5.isEmpty()) {
             for (bsr $$6 : $$5) {
-               if ($$6.j_() != eph.d) {
-                  $$6.a(bts.d, new exa(($$4.b() + 0.01) * (double)$$3.j(), ($$4.c() + 0.01) * (double)$$3.k(), ($$4.d() + 0.01) * (double)$$3.l()));
+               if ($$6.j_() != epj.d) {
+                  $$6.a(bts.d, new exc(($$4.b() + 0.01) * (double)$$3.j(), ($$4.c() + 0.01) * (double)$$3.k(), ($$4.d() + 0.01) * (double)$$3.l()));
                }
             }
          }

@@ -51,7 +51,7 @@ public class dxr<T extends dxg> implements AutoCloseable {
    }
 
    private boolean b(T $$0) {
-      if (!this.b.add($$0.cA())) {
+      if (!this.b.add($$0.cz())) {
          a.warn("UUID of added entity already exists: {}", $$0);
          return false;
       } else {
@@ -67,7 +67,7 @@ public class dxr<T extends dxg> implements AutoCloseable {
       if (!this.b($$0)) {
          return false;
       } else {
-         long $$2 = kf.c($$0.dp());
+         long $$2 = kf.c($$0.do());
          dxk<T> $$3 = this.f.c($$2);
          $$3.a($$0);
          $$0.a(new dxr.a($$0, $$2, $$3));
@@ -89,7 +89,7 @@ public class dxr<T extends dxg> implements AutoCloseable {
    }
 
    static <T extends dxg> dxt a(T $$0, dxt $$1) {
-      return $$0.dO() ? dxt.c : $$1;
+      return $$0.dN() ? dxt.c : $$1;
    }
 
    public void a(Stream<T> $$0) {
@@ -141,17 +141,17 @@ public class dxr<T extends dxg> implements AutoCloseable {
          boolean $$5 = $$2x.a();
          boolean $$6 = $$1.a();
          if ($$5 && !$$6) {
-            $$1x.b().filter($$0xx -> !$$0xx.dO()).forEach(this::d);
+            $$1x.b().filter($$0xx -> !$$0xx.dN()).forEach(this::d);
          }
 
          if ($$3 && !$$4) {
-            $$1x.b().filter($$0xx -> !$$0xx.dO()).forEach(this::f);
+            $$1x.b().filter($$0xx -> !$$0xx.dN()).forEach(this::f);
          } else if (!$$3 && $$4) {
-            $$1x.b().filter($$0xx -> !$$0xx.dO()).forEach(this::e);
+            $$1x.b().filter($$0xx -> !$$0xx.dN()).forEach(this::e);
          }
 
          if (!$$5 && $$6) {
-            $$1x.b().filter($$0xx -> !$$0xx.dO()).forEach(this::c);
+            $$1x.b().filter($$0xx -> !$$0xx.dN()).forEach(this::c);
          }
       });
    }
@@ -168,7 +168,7 @@ public class dxr<T extends dxg> implements AutoCloseable {
       if ($$2 == dxr.b.b) {
          return false;
       } else {
-         List<T> $$3 = this.f.b($$0).flatMap($$0x -> $$0x.b().filter(dxg::dN)).collect(Collectors.toList());
+         List<T> $$3 = this.f.b($$0).flatMap($$0x -> $$0x.b().filter(dxg::dM)).collect(Collectors.toList());
          if ($$3.isEmpty()) {
             if ($$2 == dxr.b.c) {
                this.d.a(new dxe<>(new dcd($$0), ImmutableList.of()));
@@ -196,7 +196,7 @@ public class dxr<T extends dxg> implements AutoCloseable {
    }
 
    private boolean d(long $$0) {
-      boolean $$1 = this.a($$0, $$0x -> $$0x.cW().forEach(this::g));
+      boolean $$1 = this.a($$0, $$0x -> $$0x.cV().forEach(this::g));
       if (!$$1) {
          return false;
       } else {
@@ -335,7 +335,7 @@ public class dxr<T extends dxg> implements AutoCloseable {
 
       @Override
       public void a() {
-         jd $$0 = this.c.dp();
+         jd $$0 = this.c.do();
          long $$1 = kf.c($$0);
          if ($$1 != this.d) {
             dxt $$2 = this.e.c();
@@ -401,7 +401,7 @@ public class dxr<T extends dxg> implements AutoCloseable {
             dxr.this.c.f(this.c);
          }
 
-         dxr.this.b.remove(this.c.cA());
+         dxr.this.b.remove(this.c.cz());
          this.c.a(a);
          dxr.this.a(this.d, this.e);
       }

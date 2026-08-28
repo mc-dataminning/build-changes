@@ -35,7 +35,7 @@ public class cni extends bsr implements cnm {
 
    @Override
    public boolean a(double $$0) {
-      double $$1 = this.cL().a() * 4.0;
+      double $$1 = this.cK().a() * 4.0;
       if (Double.isNaN($$1)) {
          $$1 = 4.0;
       }
@@ -48,13 +48,13 @@ public class cni extends bsr implements cnm {
       double $$1 = (double)$$0.u();
       int $$2 = $$0.v();
       double $$3 = (double)$$0.w();
-      double $$4 = $$1 - this.du();
-      double $$5 = $$3 - this.dA();
+      double $$4 = $$1 - this.dt();
+      double $$5 = $$3 - this.dz();
       double $$6 = Math.sqrt($$4 * $$4 + $$5 * $$5);
       if ($$6 > 12.0) {
-         this.c = this.du() + $$4 / $$6 * 12.0;
-         this.e = this.dA() + $$5 / $$6 * 12.0;
-         this.d = this.dw() + 8.0;
+         this.c = this.dt() + $$4 / $$6 * 12.0;
+         this.e = this.dz() + $$5 / $$6 * 12.0;
+         this.d = this.dv() + 8.0;
       } else {
          this.c = $$1;
          this.d = (double)$$2;
@@ -72,22 +72,22 @@ public class cni extends bsr implements cnm {
          double $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
          this.t((float)(ayo.d($$0, $$2) * 180.0F / (float)Math.PI));
          this.u((float)(ayo.d($$1, $$3) * 180.0F / (float)Math.PI));
-         this.O = this.dF();
-         this.P = this.dH();
+         this.O = this.dE();
+         this.P = this.dG();
       }
    }
 
    @Override
    public void l() {
       super.l();
-      exa $$0 = this.ds();
-      double $$1 = this.du() + $$0.c;
-      double $$2 = this.dw() + $$0.d;
-      double $$3 = this.dA() + $$0.e;
+      exc $$0 = this.dr();
+      double $$1 = this.dt() + $$0.c;
+      double $$2 = this.dv() + $$0.d;
+      double $$3 = this.dz() + $$0.e;
       double $$4 = $$0.h();
       this.u(cnp.e(this.P, (float)(ayo.d($$0.d, $$4) * 180.0F / (float)Math.PI)));
       this.t(cnp.e(this.O, (float)(ayo.d($$0.c, $$0.e) * 180.0F / (float)Math.PI)));
-      if (!this.dP().B) {
+      if (!this.dO().B) {
          double $$5 = this.c - $$1;
          double $$6 = this.e - $$3;
          float $$7 = (float)Math.sqrt($$5 * $$5 + $$6 * $$6);
@@ -99,31 +99,31 @@ public class cni extends bsr implements cnm {
             $$10 *= 0.8;
          }
 
-         int $$11 = this.dw() < this.d ? 1 : -1;
-         $$0 = new exa(Math.cos((double)$$8) * $$9, $$10 + ((double)$$11 - $$10) * 0.015F, Math.sin((double)$$8) * $$9);
+         int $$11 = this.dv() < this.d ? 1 : -1;
+         $$0 = new exc(Math.cos((double)$$8) * $$9, $$10 + ((double)$$11 - $$10) * 0.015F, Math.sin((double)$$8) * $$9);
          this.i($$0);
       }
 
       float $$12 = 0.25F;
       if (this.bf()) {
          for (int $$13 = 0; $$13 < 4; $$13++) {
-            this.dP().a(lm.d, $$1 - $$0.c * 0.25, $$2 - $$0.d * 0.25, $$3 - $$0.e * 0.25, $$0.c, $$0.d, $$0.e);
+            this.dO().a(lm.d, $$1 - $$0.c * 0.25, $$2 - $$0.d * 0.25, $$3 - $$0.e * 0.25, $$0.c, $$0.d, $$0.e);
          }
       } else {
-         this.dP()
+         this.dO()
             .a(lm.ac, $$1 - $$0.c * 0.25 + this.ah.j() * 0.6 - 0.3, $$2 - $$0.d * 0.25 - 0.5, $$3 - $$0.e * 0.25 + this.ah.j() * 0.6 - 0.3, $$0.c, $$0.d, $$0.e);
       }
 
-      if (!this.dP().B) {
+      if (!this.dO().B) {
          this.a_($$1, $$2, $$3);
          this.f++;
-         if (this.f > 80 && !this.dP().B) {
+         if (this.f > 80 && !this.dO().B) {
             this.a(avp.ih, 1.0F, 1.0F);
             this.aq();
             if (this.g) {
-               this.dP().b(new cjh(this.dP(), this.du(), this.dw(), this.dA(), this.p()));
+               this.dO().b(new cjh(this.dO(), this.dt(), this.dv(), this.dz(), this.p()));
             } else {
-               this.dP().c(2003, this.dp(), 0);
+               this.dO().c(2003, this.do(), 0);
             }
          }
       } else {
@@ -133,13 +133,13 @@ public class cni extends bsr implements cnm {
 
    @Override
    public void b(ub $$0) {
-      $$0.a("Item", this.p().a(this.dR()));
+      $$0.a("Item", this.p().a(this.dQ()));
    }
 
    @Override
    public void a(ub $$0) {
       if ($$0.b("Item", 10)) {
-         this.a(cuq.a(this.dR(), (uy)$$0.p("Item")).orElse(this.s()));
+         this.a(cuq.a(this.dQ(), (uy)$$0.p("Item")).orElse(this.s()));
       } else {
          this.a(this.s());
       }

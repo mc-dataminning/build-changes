@@ -20,7 +20,7 @@ public class bwj<E extends btp> extends bwk<E> {
    protected void a(aqu $$0, E $$1, long $$2) {
       super.a($$0, $$1, $$2);
       this.o.clear();
-      this.p = $$1.dS().i() < this.n;
+      this.p = $$1.dR().i() < this.n;
    }
 
    @Override

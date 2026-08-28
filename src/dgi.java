@@ -18,22 +18,22 @@ public class dgi extends dis {
    private static final int M = 2;
    protected static final int c = 2;
    protected static final int d = 3;
-   protected static final ext e = dfy.a(6.0, 14.0, 5.0, 10.0, 16.0, 11.0);
-   protected static final ext f = dfy.a(5.0, 14.0, 6.0, 11.0, 16.0, 10.0);
-   protected static final ext g = dfy.a(6.0, 0.0, 5.0, 10.0, 2.0, 11.0);
-   protected static final ext h = dfy.a(5.0, 0.0, 6.0, 11.0, 2.0, 10.0);
-   protected static final ext i = dfy.a(5.0, 6.0, 14.0, 11.0, 10.0, 16.0);
-   protected static final ext j = dfy.a(5.0, 6.0, 0.0, 11.0, 10.0, 2.0);
-   protected static final ext k = dfy.a(14.0, 6.0, 5.0, 16.0, 10.0, 11.0);
-   protected static final ext l = dfy.a(0.0, 6.0, 5.0, 2.0, 10.0, 11.0);
-   protected static final ext m = dfy.a(6.0, 15.0, 5.0, 10.0, 16.0, 11.0);
-   protected static final ext n = dfy.a(5.0, 15.0, 6.0, 11.0, 16.0, 10.0);
-   protected static final ext o = dfy.a(6.0, 0.0, 5.0, 10.0, 1.0, 11.0);
-   protected static final ext F = dfy.a(5.0, 0.0, 6.0, 11.0, 1.0, 10.0);
-   protected static final ext G = dfy.a(5.0, 6.0, 15.0, 11.0, 10.0, 16.0);
-   protected static final ext H = dfy.a(5.0, 6.0, 0.0, 11.0, 10.0, 1.0);
-   protected static final ext I = dfy.a(15.0, 6.0, 5.0, 16.0, 10.0, 11.0);
-   protected static final ext J = dfy.a(0.0, 6.0, 5.0, 1.0, 10.0, 11.0);
+   protected static final exv e = dfy.a(6.0, 14.0, 5.0, 10.0, 16.0, 11.0);
+   protected static final exv f = dfy.a(5.0, 14.0, 6.0, 11.0, 16.0, 10.0);
+   protected static final exv g = dfy.a(6.0, 0.0, 5.0, 10.0, 2.0, 11.0);
+   protected static final exv h = dfy.a(5.0, 0.0, 6.0, 11.0, 2.0, 10.0);
+   protected static final exv i = dfy.a(5.0, 6.0, 14.0, 11.0, 10.0, 16.0);
+   protected static final exv j = dfy.a(5.0, 6.0, 0.0, 11.0, 10.0, 2.0);
+   protected static final exv k = dfy.a(14.0, 6.0, 5.0, 16.0, 10.0, 11.0);
+   protected static final exv l = dfy.a(0.0, 6.0, 5.0, 2.0, 10.0, 11.0);
+   protected static final exv m = dfy.a(6.0, 15.0, 5.0, 10.0, 16.0, 11.0);
+   protected static final exv n = dfy.a(5.0, 15.0, 6.0, 11.0, 16.0, 10.0);
+   protected static final exv o = dfy.a(6.0, 0.0, 5.0, 10.0, 1.0, 11.0);
+   protected static final exv F = dfy.a(5.0, 0.0, 6.0, 11.0, 1.0, 10.0);
+   protected static final exv G = dfy.a(5.0, 6.0, 15.0, 11.0, 10.0, 16.0);
+   protected static final exv H = dfy.a(5.0, 6.0, 0.0, 11.0, 10.0, 1.0);
+   protected static final exv I = dfy.a(15.0, 6.0, 5.0, 16.0, 10.0, 11.0);
+   protected static final exv J = dfy.a(0.0, 6.0, 5.0, 1.0, 10.0, 11.0);
    private final dtr N;
    private final int O;
 
@@ -50,7 +50,7 @@ public class dgi extends dis {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       ji $$4 = $$0.c(aE);
       boolean $$5 = $$0.c(b);
       switch ((dtn)$$0.c(K)) {
@@ -78,7 +78,7 @@ public class dgi extends dis {
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
       if ($$0.c(b)) {
          return bqr.c;
       } else {

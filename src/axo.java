@@ -6,7 +6,7 @@ public class axo {
    private axo() {
    }
 
-   public static exa a(exa $$0, axo.a $$1) {
+   public static exc a(exc $$0, axo.a $$1) {
       int $$2 = ayo.a($$0.a());
       int $$3 = ayo.a($$0.b());
       int $$4 = ayo.a($$0.c());
@@ -14,7 +14,7 @@ public class axo {
       double $$6 = $$0.b() - (double)$$3;
       double $$7 = $$0.c() - (double)$$4;
       double $$8 = 0.0;
-      exa $$9 = exa.b;
+      exc $$9 = exc.b;
 
       for (int $$10 = 0; $$10 < 6; $$10++) {
          double $$11 = ayo.d($$5, c[$$10 + 1], c[$$10]);
@@ -39,6 +39,6 @@ public class axo {
 
    @FunctionalInterface
    public interface a {
-      exa fetch(int var1, int var2, int var3);
+      exc fetch(int var1, int var2, int var3);
    }
 }

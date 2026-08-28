@@ -22,9 +22,9 @@ public class cdx {
       } else if (this.c.contains($$1)) {
          return false;
       } else {
-         this.a.dP().ag().a("hasLineOfSight");
+         this.a.dO().ag().a("hasLineOfSight");
          boolean $$2 = this.a.F($$0);
-         this.a.dP().ag().c();
+         this.a.dO().ag().c();
          if ($$2) {
             this.b.add($$1);
          } else {

@@ -75,7 +75,7 @@ public class cga extends cfe implements buf {
 
    @Override
    public void m_() {
-      if (this.dP().B) {
+      if (this.dO().B) {
          this.cf = Math.max(0, this.cf - 1);
       }
 
@@ -93,27 +93,27 @@ public class cga extends cfe implements buf {
    }
 
    @Override
-   public akq<eru> V() {
+   public akq<erw> V() {
       if (this.x()) {
          return this.am().k();
       } else {
          return switch (this.t()) {
-            case a -> erl.am;
-            case b -> erl.an;
-            case c -> erl.ao;
-            case d -> erl.ap;
-            case e -> erl.aq;
-            case f -> erl.ar;
-            case g -> erl.as;
-            case h -> erl.at;
-            case i -> erl.au;
-            case j -> erl.av;
-            case k -> erl.aw;
-            case l -> erl.ax;
-            case m -> erl.ay;
-            case n -> erl.az;
-            case o -> erl.aA;
-            case p -> erl.aB;
+            case a -> ern.am;
+            case b -> ern.an;
+            case c -> ern.ao;
+            case d -> ern.ap;
+            case e -> ern.aq;
+            case f -> ern.ar;
+            case g -> ern.as;
+            case h -> ern.at;
+            case i -> ern.au;
+            case j -> ern.av;
+            case k -> ern.aw;
+            case l -> ern.ax;
+            case m -> ern.ay;
+            case n -> ern.az;
+            case o -> ern.aA;
+            case p -> ern.aB;
          };
       }
    }
@@ -142,7 +142,7 @@ public class cga extends cfe implements buf {
          float $$1 = ((float)(this.cf - 4) - $$0) / 32.0F;
          return (float) (Math.PI / 5) + 0.21991149F * ayo.a($$1 * 28.7F);
       } else {
-         return this.cf > 0 ? (float) (Math.PI / 5) : this.dH() * (float) (Math.PI / 180.0);
+         return this.cf > 0 ? (float) (Math.PI / 5) : this.dG() * (float) (Math.PI / 180.0);
       }
    }
 
@@ -150,7 +150,7 @@ public class cga extends cfe implements buf {
    public bqr b(cmx $$0, bqq $$1) {
       cuq $$2 = $$0.b($$1);
       if ($$2.a(cut.rV)) {
-         if (!this.dP().B && this.a()) {
+         if (!this.dO().B && this.a()) {
             this.a(avq.h);
             this.a(dxz.M, $$0);
             $$2.a(1, $$0, d($$1));
@@ -165,14 +165,14 @@ public class cga extends cfe implements buf {
 
    @Override
    public void a(avq $$0) {
-      this.dP().a(null, this, avp.wB, $$0, 1.0F, 1.0F);
-      this.w(true);
+      this.dO().a(null, this, avp.wB, $$0, 1.0F, 1.0F);
+      this.x(true);
       int $$1 = 1 + this.ah.a(3);
 
       for (int $$2 = 0; $$2 < $$1; $$2++) {
          cjh $$3 = this.a(cc.get(this.t()), 1);
          if ($$3 != null) {
-            $$3.i($$3.ds().b((double)((this.ah.i() - this.ah.i()) * 0.1F), (double)(this.ah.i() * 0.05F), (double)((this.ah.i() - this.ah.i()) * 0.1F)));
+            $$3.i($$3.dr().b((double)((this.ah.i() - this.ah.i()) * 0.1F), (double)(this.ah.i() * 0.05F), (double)((this.ah.i() - this.ah.i()) * 0.1F)));
          }
       }
    }
@@ -192,7 +192,7 @@ public class cga extends cfe implements buf {
    @Override
    public void a(ub $$0) {
       super.a($$0);
-      this.w($$0.q("Sheared"));
+      this.x($$0.q("Sheared"));
       this.b(cti.a($$0.f("Color")));
    }
 
@@ -229,7 +229,7 @@ public class cga extends cfe implements buf {
       return (this.ao.a(cb) & 16) != 0;
    }
 
-   public void w(boolean $$0) {
+   public void x(boolean $$0) {
       byte $$1 = this.ao.a(cb);
       if ($$0) {
          this.ao.a(cb, (byte)($$1 | 16));
@@ -266,7 +266,7 @@ public class cga extends cfe implements buf {
    @Override
    public void Q() {
       super.Q();
-      this.w(false);
+      this.x(false);
       if (this.o_()) {
          this.b_(60);
       }
@@ -283,15 +283,15 @@ public class cga extends cfe implements buf {
       cti $$2 = ((cga)$$0).t();
       cti $$3 = ((cga)$$1).t();
       cyp $$4 = a($$2, $$3);
-      return this.dP()
+      return this.dO()
          .r()
-         .a(czf.a, $$4, this.dP())
-         .map($$1x -> ((cyq)$$1x.b()).a($$4, this.dP().H_()))
+         .a(czf.a, $$4, this.dO())
+         .map($$1x -> ((cyq)$$1x.b()).a($$4, this.dO().H_()))
          .map(cuq::g)
          .filter(ctj.class::isInstance)
          .map(ctj.class::cast)
          .map(ctj::c)
-         .orElseGet(() -> this.dP().z.h() ? $$2 : $$3);
+         .orElseGet(() -> this.dO().z.h() ? $$2 : $$3);
    }
 
    private static cyp a(cti $$0, cti $$1) {

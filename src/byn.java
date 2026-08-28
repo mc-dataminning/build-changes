@@ -204,12 +204,12 @@ public class byn {
    }
 
    private static boolean a(aqu $$0, btn $$1) {
-      coi $$2 = $$0.d($$1.dp());
+      coi $$2 = $$0.d($$1.do());
       return $$2 != null && $$2.u() && !$$2.e() && !$$2.f();
    }
 
    private static boolean b(aqu $$0, btn $$1) {
-      coi $$2 = $$0.d($$1.dp());
+      coi $$2 = $$0.d($$1.do());
       return $$2 != null && $$2.e();
    }
 }

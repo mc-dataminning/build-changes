@@ -21,7 +21,7 @@ public class dnx extends dfk implements djg {
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
       dqh $$5 = $$1.c_($$2);
       if ($$5 instanceof drx) {
          return ((drx)$$5).a($$3) ? bqr.a($$1.B) : bqr.e;

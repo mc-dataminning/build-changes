@@ -3,7 +3,7 @@ import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record dsm(akq<eru> d, double e, double f, cuq g, Optional<akq<eru>> h, dse i, dse.a j) {
+public record dsm(akq<erw> d, double e, double f, cuq g, Optional<akq<erw>> h, dse i, dse.a j) {
    static final String a = "config";
    static dsm b = new dsm();
    static Codec<dsm> c = RecordCodecBuilder.create(
@@ -19,10 +19,10 @@ public record dsm(akq<eru> d, double e, double f, cuq g, Optional<akq<eru>> h, d
       .validate(dsm::h);
 
    private dsm() {
-      this(erl.S, 4.0, 4.5, new cuq(cut.yC), Optional.empty(), dse.b, dse.a.a);
+      this(ern.S, 4.0, 4.5, new cuq(cut.yC), Optional.empty(), dse.b, dse.a.a);
    }
 
-   public dsm(akq<eru> $$0, double $$1, double $$2, cuq $$3, Optional<akq<eru>> $$4) {
+   public dsm(akq<erw> $$0, double $$1, double $$2, cuq $$3, Optional<akq<erw>> $$4) {
       this($$0, $$1, $$2, $$3, $$4, b.a(), b.g());
    }
 
@@ -36,7 +36,7 @@ public record dsm(akq<eru> d, double e, double f, cuq g, Optional<akq<eru>> h, d
          : DataResult.success(this);
    }
 
-   public akq<eru> b() {
+   public akq<erw> b() {
       return this.d;
    }
 
@@ -52,7 +52,7 @@ public record dsm(akq<eru> d, double e, double f, cuq g, Optional<akq<eru>> h, d
       return this.g;
    }
 
-   public Optional<akq<eru>> f() {
+   public Optional<akq<erw>> f() {
       return this.h;
    }
 

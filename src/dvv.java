@@ -19,8 +19,8 @@ public class dvv {
    private static final String c = "Indices";
    private static final jj[] d = jj.values();
    private final EnumSet<jj> e = EnumSet.noneOf(jj.class);
-   private final List<eyq<dfy>> f = Lists.newArrayList();
-   private final List<eyq<epb>> g = Lists.newArrayList();
+   private final List<eys<dfy>> f = Lists.newArrayList();
+   private final List<eys<epd>> g = Lists.newArrayList();
    private final int[][] h;
    static final Map<dfy, dvv.a> i = new IdentityHashMap<>();
    static final Set<dvv.a> j = Sets.newHashSet();
@@ -51,13 +51,13 @@ public class dvv {
       }
 
       a($$0, "neighbor_block_ticks", $$0x -> lt.e.b(akr.c($$0x)).or(() -> Optional.of(dga.a)), this.f);
-      a($$0, "neighbor_fluid_ticks", $$0x -> lt.c.b(akr.c($$0x)).or(() -> Optional.of(epd.a)), this.g);
+      a($$0, "neighbor_fluid_ticks", $$0x -> lt.c.b(akr.c($$0x)).or(() -> Optional.of(epf.a)), this.g);
    }
 
-   private static <T> void a(ub $$0, String $$1, Function<String, Optional<T>> $$2, List<eyq<T>> $$3) {
+   private static <T> void a(ub $$0, String $$1, Function<String, Optional<T>> $$2, List<eys<T>> $$3) {
       if ($$0.b($$1, 9)) {
          for (uy $$5 : $$0.c($$1, 10)) {
-            eyq.a((ub)$$5, $$2).ifPresent($$3::add);
+            eys.a((ub)$$5, $$2).ifPresent($$3::add);
          }
       }
    }
@@ -75,7 +75,7 @@ public class dvv {
          $$2.a($$1x.b(), $$2x, $$1x.c(), $$1x.d());
       });
       this.g.forEach($$1x -> {
-         epb $$2x = $$1x.a() == epd.a ? $$2.b_($$1x.b()).a() : (epb)$$1x.a();
+         epd $$2x = $$1x.a() == epf.a ? $$2.b_($$1x.b()).a() : (epd)$$1x.a();
          $$2.a($$1x.b(), $$2x, $$1x.c(), $$1x.d());
       });
       j.forEach($$1x -> $$1x.a($$2));

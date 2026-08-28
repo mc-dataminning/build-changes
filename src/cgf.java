@@ -15,10 +15,10 @@ public class cgf extends cfe {
 
    public cgf(bsx<? extends cgf> $$0, dcw $$1) {
       super($$0, $$1);
-      this.a(ept.j, 0.0F);
-      this.a(ept.t, -1.0F);
-      this.a(ept.s, -1.0F);
-      this.a(ept.r, -1.0F);
+      this.a(epv.j, 0.0F);
+      this.a(epv.t, -1.0F);
+      this.a(epv.s, -1.0F);
+      this.a(epv.r, -1.0F);
       this.bR = new cgf.e(this);
    }
 
@@ -26,7 +26,7 @@ public class cgf extends cfe {
       this.ao.a(cb, $$0);
    }
 
-   jd gl() {
+   jd gk() {
       return this.ao.a(cb);
    }
 
@@ -34,7 +34,7 @@ public class cgf extends cfe {
       this.ao.a(cf, $$0);
    }
 
-   jd gm() {
+   jd gl() {
       return this.ao.a(cf);
    }
 
@@ -42,7 +42,7 @@ public class cgf extends cfe {
       return this.ao.a(cc);
    }
 
-   void w(boolean $$0) {
+   void x(boolean $$0) {
       this.ao.a(cc, $$0);
    }
 
@@ -50,24 +50,24 @@ public class cgf extends cfe {
       return this.ao.a(ce);
    }
 
-   void x(boolean $$0) {
+   void y(boolean $$0) {
       this.ck = $$0 ? 1 : 0;
       this.ao.a(ce, $$0);
    }
 
-   boolean gn() {
+   boolean gm() {
       return this.ao.a(cg);
    }
 
-   void y(boolean $$0) {
+   void z(boolean $$0) {
       this.ao.a(cg, $$0);
    }
 
-   boolean go() {
+   boolean gn() {
       return this.ao.a(ch);
    }
 
-   void z(boolean $$0) {
+   void A(boolean $$0) {
       this.ao.a(ch, $$0);
    }
 
@@ -85,13 +85,13 @@ public class cgf extends cfe {
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      $$0.a("HomePosX", this.gl().u());
-      $$0.a("HomePosY", this.gl().v());
-      $$0.a("HomePosZ", this.gl().w());
+      $$0.a("HomePosX", this.gk().u());
+      $$0.a("HomePosY", this.gk().v());
+      $$0.a("HomePosZ", this.gk().w());
       $$0.a("HasEgg", this.s());
-      $$0.a("TravelPosX", this.gm().u());
-      $$0.a("TravelPosY", this.gm().v());
-      $$0.a("TravelPosZ", this.gm().w());
+      $$0.a("TravelPosX", this.gl().u());
+      $$0.a("TravelPosY", this.gl().v());
+      $$0.a("TravelPosZ", this.gl().w());
    }
 
    @Override
@@ -101,7 +101,7 @@ public class cgf extends cfe {
       int $$3 = $$0.h("HomePosZ");
       this.h(new jd($$1, $$2, $$3));
       super.a($$0);
-      this.w($$0.q("HasEgg"));
+      this.x($$0.q("HasEgg"));
       int $$4 = $$0.h("TravelPosX");
       int $$5 = $$0.h("TravelPosY");
       int $$6 = $$0.h("TravelPosZ");
@@ -111,7 +111,7 @@ public class cgf extends cfe {
    @Nullable
    @Override
    public buh a(ddl $$0, bqp $$1, btr $$2, @Nullable buh $$3) {
-      this.h(this.dp());
+      this.h(this.do());
       this.i(jd.c);
       return super.a($$0, $$1, $$2, $$3);
    }
@@ -138,7 +138,7 @@ public class cgf extends cfe {
    }
 
    @Override
-   public boolean cD() {
+   public boolean cC() {
       return false;
    }
 
@@ -182,8 +182,8 @@ public class cgf extends cfe {
    }
 
    @Override
-   public boolean gq() {
-      return super.gq() && !this.s();
+   public boolean gp() {
+      return super.gp() && !this.s();
    }
 
    @Override
@@ -192,7 +192,7 @@ public class cgf extends cfe {
    }
 
    @Override
-   public float eb() {
+   public float ea() {
       return this.o_() ? 0.3F : 1.0F;
    }
 
@@ -214,7 +214,7 @@ public class cgf extends cfe {
 
    @Override
    public float a(jd $$0, dcz $$1) {
-      if (!this.gn() && $$1.b_($$0).a(awk.a)) {
+      if (!this.gm() && $$1.b_($$0).a(awk.a)) {
          return 10.0F;
       } else {
          return dor.a($$1, $$0) ? 10.0F : $$1.w($$0);
@@ -225,9 +225,9 @@ public class cgf extends cfe {
    public void m_() {
       super.m_();
       if (this.bE() && this.t() && this.ck >= 1 && this.ck % 5 == 0) {
-         jd $$0 = this.dp();
-         if (dor.a(this.dP(), $$0)) {
-            this.dP().c(2001, $$0, dfy.i(this.dP().a_($$0.e())));
+         jd $$0 = this.do();
+         if (dor.a(this.dO(), $$0)) {
+            this.dO().c(2001, $$0, dfy.i(this.dO().a_($$0.e())));
             this.a(dxz.u);
          }
       }
@@ -236,19 +236,19 @@ public class cgf extends cfe {
    @Override
    protected void k() {
       super.k();
-      if (!this.o_() && this.dP().ab().b(dcs.f)) {
+      if (!this.o_() && this.dO().ab().b(dcs.f)) {
          this.a(cut.op, 1);
       }
    }
 
    @Override
-   public void a(exa $$0) {
-      if (this.db() && this.bf()) {
+   public void a(exc $$0) {
+      if (this.da() && this.bf()) {
          this.a(0.1F, $$0);
-         this.a(bts.a, this.ds());
-         this.i(this.ds().a(0.9));
-         if (this.p() == null && (!this.gn() || !this.gl().a(this.dn(), 20.0))) {
-            this.i(this.ds().b(0.0, -0.005, 0.0));
+         this.a(bts.a, this.dr());
+         this.i(this.dr().a(0.9));
+         if (this.p() == null && (!this.gm() || !this.gk().a(this.dm(), 20.0))) {
+            this.i(this.dr().b(0.0, -0.005, 0.0));
          }
       } else {
          super.a($$0);
@@ -262,7 +262,7 @@ public class cgf extends cfe {
 
    @Override
    public void a(aqu $$0, btm $$1) {
-      this.a(this.dQ().c(), Float.MAX_VALUE);
+      this.a(this.dP().c(), Float.MAX_VALUE);
    }
 
    @Override
@@ -285,9 +285,9 @@ public class cgf extends cfe {
 
       @Override
       protected void g() {
-         aqv $$0 = this.a.gs();
-         if ($$0 == null && this.c.gs() != null) {
-            $$0 = this.c.gs();
+         aqv $$0 = this.a.gr();
+         if ($$0 == null && this.c.gr() != null) {
+            $$0 = this.c.gr();
          }
 
          if ($$0 != null) {
@@ -295,14 +295,14 @@ public class cgf extends cfe {
             an.p.a($$0, this.a, this.c, null);
          }
 
-         this.d.w(true);
+         this.d.x(true);
          this.a.c_(6000);
          this.c.c_(6000);
-         this.a.gu();
-         this.c.gu();
-         ayw $$1 = this.a.dS();
+         this.a.gt();
+         this.c.gt();
+         ayw $$1 = this.a.dR();
          if (this.b.ab().b(dcs.f)) {
-            this.b.b(new btc(this.b, this.a.du(), this.a.dw(), this.a.dA(), $$1.a(7) + 1));
+            this.b.b(new btc(this.b, this.a.dt(), this.a.dv(), this.a.dz(), $$1.a(7) + 1));
          }
       }
    }
@@ -326,43 +326,43 @@ public class cgf extends cfe {
          } else if (this.a.s()) {
             return true;
          } else {
-            return this.a.dS().a(b(700)) != 0 ? false : !this.a.gl().a(this.a.dn(), 64.0);
+            return this.a.dR().a(b(700)) != 0 ? false : !this.a.gk().a(this.a.dm(), 64.0);
          }
       }
 
       @Override
       public void d() {
-         this.a.y(true);
+         this.a.z(true);
          this.c = false;
          this.d = 0;
       }
 
       @Override
       public void e() {
-         this.a.y(false);
+         this.a.z(false);
       }
 
       @Override
       public boolean c() {
-         return !this.a.gl().a(this.a.dn(), 7.0) && !this.c && this.d <= this.a(600);
+         return !this.a.gk().a(this.a.dm(), 7.0) && !this.c && this.d <= this.a(600);
       }
 
       @Override
       public void a() {
-         jd $$0 = this.a.gl();
-         boolean $$1 = $$0.a(this.a.dn(), 16.0);
+         jd $$0 = this.a.gk();
+         boolean $$1 = $$0.a(this.a.dm(), 16.0);
          if ($$1) {
             this.d++;
          }
 
          if (this.a.N().l()) {
-            exa $$2 = exa.c($$0);
-            exa $$3 = cej.a(this.a, 16, 3, $$2, (float) (Math.PI / 10));
+            exc $$2 = exc.c($$0);
+            exc $$3 = cej.a(this.a, 16, 3, $$2, (float) (Math.PI / 10));
             if ($$3 == null) {
                $$3 = cej.a(this.a, 8, 7, $$2, (float) (Math.PI / 2));
             }
 
-            if ($$3 != null && !$$1 && !this.a.dP().a_(jd.a((jw)$$3)).a(dga.G)) {
+            if ($$3 != null && !$$1 && !this.a.dO().a_(jd.a((jw)$$3)).a(dga.G)) {
                $$3 = cej.a(this.a, 16, 5, $$2, (float) (Math.PI / 2));
             }
 
@@ -388,7 +388,7 @@ public class cgf extends cfe {
 
       @Override
       public boolean c() {
-         return !this.h.bf() && this.d <= 1200 && this.a(this.h.dP(), this.e);
+         return !this.h.bf() && this.d <= 1200 && this.a(this.h.dO(), this.e);
       }
 
       @Override
@@ -396,7 +396,7 @@ public class cgf extends cfe {
          if (this.h.o_() && !this.h.bf()) {
             return super.b();
          } else {
-            return !this.h.gn() && !this.h.bf() && !this.h.s() ? super.b() : false;
+            return !this.h.gm() && !this.h.bf() && !this.h.s() ? super.b() : false;
          }
       }
 
@@ -421,30 +421,30 @@ public class cgf extends cfe {
 
       @Override
       public boolean b() {
-         return this.g.s() && this.g.gl().a(this.g.dn(), 9.0) ? super.b() : false;
+         return this.g.s() && this.g.gk().a(this.g.dm(), 9.0) ? super.b() : false;
       }
 
       @Override
       public boolean c() {
-         return super.c() && this.g.s() && this.g.gl().a(this.g.dn(), 9.0);
+         return super.c() && this.g.s() && this.g.gk().a(this.g.dm(), 9.0);
       }
 
       @Override
       public void a() {
          super.a();
-         jd $$0 = this.g.dp();
+         jd $$0 = this.g.do();
          if (!this.g.bf() && this.m()) {
             if (this.g.ck < 1) {
-               this.g.x(true);
+               this.g.y(true);
             } else if (this.g.ck > this.a(200)) {
-               dcw $$1 = this.g.dP();
+               dcw $$1 = this.g.dO();
                $$1.a(null, $$0, avp.An, avq.e, 0.3F, 0.9F + $$1.z.i() * 0.2F);
                jd $$2 = this.e.d();
                dtc $$3 = dga.mf.o().a(dor.f, Integer.valueOf(this.g.ah.a(4) + 1));
                $$1.a($$2, $$3, 3);
                $$1.a(dxz.i, $$2, dxz.a.a(this.g, $$3));
-               this.g.w(false);
                this.g.x(false);
+               this.g.y(false);
                this.g.s(600);
             }
 
@@ -470,16 +470,16 @@ public class cgf extends cfe {
 
       private void g() {
          if (this.l.bf()) {
-            this.l.i(this.l.ds().b(0.0, 0.005, 0.0));
-            if (!this.l.gl().a(this.l.dn(), 16.0)) {
-               this.l.A(Math.max(this.l.fk() / 2.0F, 0.08F));
+            this.l.i(this.l.dr().b(0.0, 0.005, 0.0));
+            if (!this.l.gk().a(this.l.dm(), 16.0)) {
+               this.l.A(Math.max(this.l.fj() / 2.0F, 0.08F));
             }
 
             if (this.l.o_()) {
-               this.l.A(Math.max(this.l.fk() / 3.0F, 0.06F));
+               this.l.A(Math.max(this.l.fj() / 3.0F, 0.06F));
             }
          } else if (this.l.aF()) {
-            this.l.A(Math.max(this.l.fk() / 2.0F, 0.06F));
+            this.l.A(Math.max(this.l.fj() / 2.0F, 0.06F));
          }
       }
 
@@ -487,20 +487,20 @@ public class cgf extends cfe {
       public void a() {
          this.g();
          if (this.k == bzp.a.b && !this.l.N().l()) {
-            double $$0 = this.e - this.l.du();
-            double $$1 = this.f - this.l.dw();
-            double $$2 = this.g - this.l.dA();
+            double $$0 = this.e - this.l.dt();
+            double $$1 = this.f - this.l.dv();
+            double $$2 = this.g - this.l.dz();
             double $$3 = Math.sqrt($$0 * $$0 + $$1 * $$1 + $$2 * $$2);
             if ($$3 < 1.0E-5F) {
                this.d.A(0.0F);
             } else {
                $$1 /= $$3;
                float $$4 = (float)(ayo.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
-               this.l.t(this.a(this.l.dF(), $$4, 90.0F));
-               this.l.aY = this.l.dF();
+               this.l.t(this.a(this.l.dE(), $$4, 90.0F));
+               this.l.aY = this.l.dE();
                float $$5 = (float)(this.h * this.l.g(buw.v));
-               this.l.A(ayo.i(0.125F, this.l.fk(), $$5));
-               this.l.i(this.l.ds().b(0.0, (double)this.l.fk() * $$1 * 0.1, 0.0));
+               this.l.A(ayo.i(0.125F, this.l.fj(), $$5));
+               this.l.i(this.l.dr().b(0.0, (double)this.l.fj() * $$1 * 0.1, 0.0));
             }
          } else {
             this.l.A(0.0F);
@@ -518,7 +518,7 @@ public class cgf extends cfe {
          if (!this.h()) {
             return false;
          } else {
-            jd $$0 = this.a(this.c.dP(), this.c, 7);
+            jd $$0 = this.a(this.c.dO(), this.c, 7);
             if ($$0 != null) {
                this.e = (double)$$0.u();
                this.f = (double)$$0.v();
@@ -538,7 +538,7 @@ public class cgf extends cfe {
 
       @Override
       public boolean a(jd $$0) {
-         if (this.a instanceof cgf $$1 && $$1.go()) {
+         if (this.a instanceof cgf $$1 && $$1.gn()) {
             return this.b.a_($$0).a(dga.G);
          }
 
@@ -556,7 +556,7 @@ public class cgf extends cfe {
 
       @Override
       public boolean b() {
-         return !this.b.bf() && !this.i.gn() && !this.i.s() ? super.b() : false;
+         return !this.b.bf() && !this.i.gm() && !this.i.s() ? super.b() : false;
       }
    }
 
@@ -572,7 +572,7 @@ public class cgf extends cfe {
 
       @Override
       public boolean b() {
-         return !this.a.gn() && !this.a.s() && this.a.bf();
+         return !this.a.gm() && !this.a.s() && this.a.bf();
       }
 
       @Override
@@ -583,21 +583,21 @@ public class cgf extends cfe {
          int $$3 = $$2.a(1025) - 512;
          int $$4 = $$2.a(9) - 4;
          int $$5 = $$2.a(1025) - 512;
-         if ((double)$$4 + this.a.dw() > (double)(this.a.dP().z_() - 1)) {
+         if ((double)$$4 + this.a.dv() > (double)(this.a.dO().z_() - 1)) {
             $$4 = 0;
          }
 
-         jd $$6 = jd.a((double)$$3 + this.a.du(), (double)$$4 + this.a.dw(), (double)$$5 + this.a.dA());
+         jd $$6 = jd.a((double)$$3 + this.a.dt(), (double)$$4 + this.a.dv(), (double)$$5 + this.a.dz());
          this.a.i($$6);
-         this.a.z(true);
+         this.a.A(true);
          this.c = false;
       }
 
       @Override
       public void a() {
          if (this.a.N().l()) {
-            exa $$0 = exa.c(this.a.gm());
-            exa $$1 = cej.a(this.a, 16, 3, $$0, (float) (Math.PI / 10));
+            exc $$0 = exc.c(this.a.gl());
+            exc $$1 = cej.a(this.a, 16, 3, $$0, (float) (Math.PI / 10));
             if ($$1 == null) {
                $$1 = cej.a(this.a, 8, 7, $$0, (float) (Math.PI / 2));
             }
@@ -606,7 +606,7 @@ public class cgf extends cfe {
                int $$2 = ayo.a($$1.c);
                int $$3 = ayo.a($$1.e);
                int $$4 = 34;
-               if (!this.a.dP().b($$2 - 34, $$3 - 34, $$2 + 34, $$3 + 34)) {
+               if (!this.a.dO().b($$2 - 34, $$3 - 34, $$2 + 34, $$3 + 34)) {
                   $$1 = null;
                }
             }
@@ -622,12 +622,12 @@ public class cgf extends cfe {
 
       @Override
       public boolean c() {
-         return !this.a.N().l() && !this.c && !this.a.gn() && !this.a.gt() && !this.a.s();
+         return !this.a.N().l() && !this.c && !this.a.gm() && !this.a.gs() && !this.a.s();
       }
 
       @Override
       public void e() {
-         this.a.z(false);
+         this.a.A(false);
          super.e();
       }
    }

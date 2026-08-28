@@ -12,13 +12,13 @@ public class bzz extends caz {
 
    @Override
    public boolean b() {
-      return this.g.s() && !this.g.gl() && !this.g.gx() && super.b();
+      return this.g.s() && !this.g.gk() && !this.g.gw() && super.b();
    }
 
    @Override
    public void d() {
       super.d();
-      this.g.x(false);
+      this.g.y(false);
    }
 
    @Override
@@ -29,22 +29,22 @@ public class bzz extends caz {
    @Override
    public void e() {
       super.e();
-      this.g.z(false);
+      this.g.A(false);
    }
 
    @Override
    public void a() {
       super.a();
-      this.g.x(false);
+      this.g.y(false);
       if (!this.m()) {
-         this.g.z(false);
-      } else if (!this.g.gx()) {
-         this.g.z(true);
+         this.g.A(false);
+      } else if (!this.g.gw()) {
+         this.g.A(true);
       }
    }
 
    @Override
    protected boolean a(dcz $$0, jd $$1) {
-      return $$0.u($$1.d()) && $$0.a_($$1).a(awe.R);
+      return $$0.u($$1.d()) && $$0.a_($$1).a(awe.S);
    }
 }

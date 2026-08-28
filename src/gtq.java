@@ -1,32 +1,42 @@
-public class gtq extends gth {
-   private static final float n = 0.0F;
-   private static final float o = 1.0F;
-   private static final float p = 0.7F;
-   private static final float q = 0.5F;
-   private final cjz r;
+public class gtq extends gtj {
+   public static final int n = 20;
+   private final geb o;
+   private int p;
 
-   public gtq(cjz $$0) {
-      super(avp.ls, avq.f, gty.t());
-      this.r = $$0;
-      this.k = gty.a.a;
+   public gtq(geb $$0) {
+      super(avp.hW, avq.h, gua.t());
+      this.o = $$0;
       this.i = true;
       this.j = 0;
-   }
-
-   @Override
-   public boolean s() {
-      return !this.r.aX();
+      this.d = 0.1F;
    }
 
    @Override
    public void q() {
-      if (!this.r.dK() && this.r.p() == null) {
-         this.f = (double)((float)this.r.du());
-         this.g = (double)((float)this.r.dw());
-         this.h = (double)((float)this.r.dA());
-         float $$0 = this.r.J(0.0F);
-         this.d = 0.0F + 1.0F * $$0 * $$0;
-         this.e = 0.7F + 0.5F * $$0;
+      this.p++;
+      if (!this.o.dJ() && (this.p <= 20 || this.o.fA())) {
+         this.f = (double)((float)this.o.dt());
+         this.g = (double)((float)this.o.dv());
+         this.h = (double)((float)this.o.dz());
+         float $$0 = (float)this.o.dr().g();
+         if ((double)$$0 >= 1.0E-7) {
+            this.d = ayo.a($$0 / 4.0F, 0.0F, 1.0F);
+         } else {
+            this.d = 0.0F;
+         }
+
+         if (this.p < 20) {
+            this.d = 0.0F;
+         } else if (this.p < 40) {
+            this.d = this.d * ((float)(this.p - 20) / 20.0F);
+         }
+
+         float $$1 = 0.8F;
+         if (this.d > 0.8F) {
+            this.e = 1.0F + (this.d - 0.8F);
+         } else {
+            this.e = 1.0F;
+         }
       } else {
          this.n();
       }

@@ -1,335 +1,488 @@
-import com.mojang.logging.LogUtils;
-import java.nio.file.InvalidPathException;
+import com.google.common.base.MoreObjects;
+import com.mojang.blaze3d.platform.TextureUtil;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import org.lwjgl.glfw.GLFWDropCallback;
-import org.slf4j.Logger;
+import java.text.MessageFormat;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
 public class fgn {
-   private static final Logger a = LogUtils.getLogger();
-   private final fgm b;
-   private boolean c;
-   private boolean d;
-   private boolean e;
-   private double f;
-   private double g;
-   private int h;
-   private int i = -1;
-   private boolean j = true;
-   private int k;
-   private double l;
-   private final azf m = new azf();
-   private final azf n = new azf();
-   private double o;
-   private double p;
-   private double q;
-   private double r;
-   private double s = Double.MIN_VALUE;
-   private boolean t;
+   public static final int a = 10000;
+   private final fgo b;
+   private final ezy c = new ezy();
+   private long d = -1L;
+   private long e = -1L;
+   private long f = -1L;
+   private boolean g;
 
-   public fgn(fgm $$0) {
+   public fgn(fgo $$0) {
       this.b = $$0;
    }
 
-   private void a(long $$0, int $$1, int $$2, int $$3) {
-      if ($$0 == this.b.aM().j()) {
-         if (this.b.y != null) {
-            this.b.a(fgj.b);
-         }
-
-         boolean $$4 = $$2 == 1;
-         if (fgm.a && $$1 == 0) {
-            if ($$4) {
-               if (($$3 & 2) == 2) {
-                  $$1 = 1;
-                  this.h++;
-               }
-            } else if (this.h > 0) {
-               $$1 = 1;
-               this.h--;
-            }
-         }
-
-         int $$5 = $$1;
-         if ($$4) {
-            if (this.b.m.Z().c() && this.k++ > 0) {
-               return;
-            }
-
-            this.i = $$5;
-            this.l = eyy.b();
-         } else if (this.i != -1) {
-            if (this.b.m.Z().c() && --this.k > 0) {
-               return;
-            }
-
-            this.i = -1;
-         }
-
-         boolean[] $$6 = new boolean[]{false};
-         if (this.b.aK() == null) {
-            if (this.b.y == null) {
-               if (!this.t && $$4) {
-                  this.i();
-               }
+   private boolean a(int $$0) {
+      switch ($$0) {
+         case 69:
+            this.b.B = !this.b.B;
+            this.c("SectionPath: {0}", this.b.B ? "shown" : "hidden");
+            return true;
+         case 76:
+            this.b.D = !this.b.D;
+            this.c("SmartCull: {0}", this.b.D ? "enabled" : "disabled");
+            return true;
+         case 85:
+            if (fod.s()) {
+               this.b.f.n();
+               this.c("Killed frustum");
             } else {
-               double $$7 = this.f * (double)this.b.aM().p() / (double)this.b.aM().n();
-               double $$8 = this.g * (double)this.b.aM().q() / (double)this.b.aM().o();
-               fob $$9 = this.b.y;
-               if ($$4) {
-                  $$9.v();
-                  fob.a(() -> $$6[0] = $$9.a($$7, $$8, $$5), "mouseClicked event handler", $$9.getClass().getCanonicalName());
-               } else {
-                  fob.a(() -> $$6[0] = $$9.b($$7, $$8, $$5), "mouseReleased event handler", $$9.getClass().getCanonicalName());
-               }
-            }
-         }
-
-         if (!$$6[0] && this.b.y == null && this.b.aK() == null) {
-            if ($$5 == 0) {
-               this.c = $$4;
-            } else if ($$5 == 2) {
-               this.d = $$4;
-            } else if ($$5 == 1) {
-               this.e = $$4;
+               this.b.f.m();
+               this.c("Captured frustum");
             }
 
-            fgk.a(fac.b.c.a($$5), $$4);
-            if ($$4) {
-               if (this.b.s.R_() && $$5 == 2) {
-                  this.b.l.g().b();
+            return true;
+         case 86:
+            this.b.C = !this.b.C;
+            this.c("SectionVisibility: {0}", this.b.C ? "enabled" : "disabled");
+            return true;
+         case 87:
+            this.b.A = !this.b.A;
+            this.c("WireFrame: {0}", this.b.A ? "enabled" : "disabled");
+            return true;
+         default:
+            return false;
+      }
+   }
+
+   private void a(n $$0, wz $$1) {
+      this.b.l.d().a(wz.i().b(wz.c("debug.prefix").a($$0, n.r)).b(wy.v).b($$1));
+   }
+
+   private void a(wz $$0) {
+      this.a(n.o, $$0);
+   }
+
+   private void a(String $$0, Object... $$1) {
+      this.a(wz.b($$0, $$1));
+   }
+
+   private void b(String $$0, Object... $$1) {
+      this.a(n.m, wz.b($$0, $$1));
+   }
+
+   private void c(String $$0, Object... $$1) {
+      this.a(wz.b(MessageFormat.format($$0, $$1)));
+   }
+
+   private boolean b(int $$0) {
+      if (this.d > 0L && this.d < ad.c() - 100L) {
+         return true;
+      } else {
+         switch ($$0) {
+            case 49:
+               this.b.aN().k();
+               return true;
+            case 50:
+               this.b.aN().j();
+               return true;
+            case 51:
+               this.b.aN().i();
+               return true;
+            case 65:
+               this.b.f.f();
+               this.a("debug.reload_chunks.message");
+               return true;
+            case 66:
+               boolean $$1 = !this.b.ap().a();
+               this.b.ap().b($$1);
+               this.a($$1 ? "debug.show_hitboxes.on" : "debug.show_hitboxes.off");
+               return true;
+            case 67:
+               if (this.b.s.go()) {
+                  return false;
                } else {
-                  fgk.a(fac.b.c.a($$5));
+                  fzg $$7 = this.b.s.h;
+                  if ($$7 == null) {
+                     return false;
+                  }
+
+                  this.a("debug.copy_location.message");
+                  this.a(
+                     String.format(
+                        Locale.ROOT,
+                        "/execute in %s run tp @s %.2f %.2f %.2f %.2f %.2f",
+                        this.b.s.dO().af().a(),
+                        this.b.s.dt(),
+                        this.b.s.dv(),
+                        this.b.s.dz(),
+                        this.b.s.dE(),
+                        this.b.s.dG()
+                     )
+                  );
+                  return true;
                }
-            }
+            case 68:
+               if (this.b.l != null) {
+                  this.b.l.d().a(false);
+               }
+
+               return true;
+            case 71:
+               boolean $$2 = this.b.k.b();
+               this.a($$2 ? "debug.chunk_boundaries.on" : "debug.chunk_boundaries.off");
+               return true;
+            case 72:
+               this.b.m.m = !this.b.m.m;
+               this.a(this.b.m.m ? "debug.advanced_tooltips.on" : "debug.advanced_tooltips.off");
+               this.b.m.aw();
+               return true;
+            case 73:
+               if (!this.b.s.go()) {
+                  this.a(this.b.s.l(2), !fod.s());
+               }
+
+               return true;
+            case 76:
+               if (this.b.a(this::a)) {
+                  this.a("debug.profiling.start", 10);
+               }
+
+               return true;
+            case 78:
+               if (!this.b.s.l(2)) {
+                  this.a("debug.creative_spectator.error");
+               } else if (!this.b.s.R_()) {
+                  this.b.s.h.d("gamemode spectator");
+               } else {
+                  this.b.s.h.d("gamemode " + ((dct)MoreObjects.firstNonNull(this.b.q.i(), dct.b)).b());
+               }
+
+               return true;
+            case 80:
+               this.b.m.n = !this.b.m.n;
+               this.b.m.aw();
+               this.a(this.b.m.n ? "debug.pause_focus.on" : "debug.pause_focus.off");
+               return true;
+            case 81:
+               this.a("debug.help.message");
+               fin $$3 = this.b.l.d();
+               $$3.a(wz.c("debug.reload_chunks.help"));
+               $$3.a(wz.c("debug.show_hitboxes.help"));
+               $$3.a(wz.c("debug.copy_location.help"));
+               $$3.a(wz.c("debug.clear_chat.help"));
+               $$3.a(wz.c("debug.chunk_boundaries.help"));
+               $$3.a(wz.c("debug.advanced_tooltips.help"));
+               $$3.a(wz.c("debug.inspect.help"));
+               $$3.a(wz.c("debug.profiling.help"));
+               $$3.a(wz.c("debug.creative_spectator.help"));
+               $$3.a(wz.c("debug.pause_focus.help"));
+               $$3.a(wz.c("debug.help.help"));
+               $$3.a(wz.c("debug.dump_dynamic_textures.help"));
+               $$3.a(wz.c("debug.reload_resourcepacks.help"));
+               $$3.a(wz.c("debug.pause.help"));
+               $$3.a(wz.c("debug.gamemodes.help"));
+               return true;
+            case 83:
+               Path $$4 = this.b.p.toPath().toAbsolutePath();
+               Path $$5 = TextureUtil.getDebugTexturePath($$4);
+               this.b.aa().a($$5);
+               wz $$6 = wz.b($$4.relativize($$5).toString()).a(n.t).a($$1x -> $$1x.a(new wx(wx.a.b, $$5.toFile().toString())));
+               this.a("debug.dump_dynamic_textures", $$6);
+               return true;
+            case 84:
+               this.a("debug.reload_resourcepacks.message");
+               this.b.l();
+               return true;
+            case 293:
+               if (!this.b.s.l(2)) {
+                  this.a("debug.gamemodes.error");
+               } else {
+                  this.b.a(new fop());
+               }
+
+               return true;
+            default:
+               return false;
          }
       }
    }
 
-   private void a(long $$0, double $$1, double $$2) {
-      if ($$0 == fgm.Q().aM().j()) {
-         boolean $$3 = this.b.m.S().c();
-         double $$4 = this.b.m.F().c();
-         double $$5 = ($$3 ? Math.signum($$1) : $$1) * $$4;
-         double $$6 = ($$3 ? Math.signum($$2) : $$2) * $$4;
-         if (this.b.aK() == null) {
-            if (this.b.y != null) {
-               double $$7 = this.f * (double)this.b.aM().p() / (double)this.b.aM().n();
-               double $$8 = this.g * (double)this.b.aM().q() / (double)this.b.aM().o();
-               this.b.y.a($$7, $$8, $$5, $$6);
-               this.b.y.v();
-            } else if (this.b.s != null) {
-               if (this.q != 0.0 && Math.signum($$5) != Math.signum(this.q)) {
-                  this.q = 0.0;
-               }
-
-               if (this.r != 0.0 && Math.signum($$6) != Math.signum(this.r)) {
-                  this.r = 0.0;
-               }
-
-               this.q += $$5;
-               this.r += $$6;
-               int $$9 = (int)this.q;
-               int $$10 = (int)this.r;
-               if ($$9 == 0 && $$10 == 0) {
-                  return;
-               }
-
-               this.q -= (double)$$9;
-               this.r -= (double)$$10;
-               int $$11 = $$10 == 0 ? -$$9 : $$10;
-               if (this.b.s.R_()) {
-                  if (this.b.l.g().a()) {
-                     this.b.l.g().b(-$$11);
+   private void a(boolean $$0, boolean $$1) {
+      exa $$2 = this.b.v;
+      if ($$2 != null) {
+         switch ($$2.c()) {
+            case b:
+               jd $$3 = ((ewy)$$2).a();
+               dcw $$4 = this.b.s.dO();
+               dtc $$5 = $$4.a_($$3);
+               if ($$0) {
+                  if ($$1) {
+                     this.b.s.h.s().a($$3, $$2x -> {
+                        this.a($$5, $$3, $$2x);
+                        this.a("debug.inspect.server.block");
+                     });
                   } else {
-                     float $$12 = ayo.a(this.b.s.ga().a() + (float)$$10 * 0.005F, 0.0F, 0.2F);
-                     this.b.s.ga().a($$12);
+                     dqh $$6 = $$4.c_($$3);
+                     ub $$7 = $$6 != null ? $$6.d($$4.H_()) : null;
+                     this.a($$5, $$3, $$7);
+                     this.a("debug.inspect.client.block");
                   }
                } else {
-                  this.b.s.fZ().a((double)$$11);
+                  this.a($$5, $$3, null);
+                  this.a("debug.inspect.client.block");
+               }
+               break;
+            case c:
+               bsr $$8 = ((ewz)$$2).a();
+               akr $$9 = lt.f.b($$8.am());
+               if ($$0) {
+                  if ($$1) {
+                     this.b.s.h.s().a($$8.an(), $$2x -> {
+                        this.a($$9, $$8.dm(), $$2x);
+                        this.a("debug.inspect.server.entity");
+                     });
+                  } else {
+                     ub $$10 = $$8.f(new ub());
+                     this.a($$9, $$8.dm(), $$10);
+                     this.a("debug.inspect.client.entity");
+                  }
+               } else {
+                  this.a($$9, $$8.dm(), null);
+                  this.a("debug.inspect.client.entity");
+               }
+         }
+      }
+   }
+
+   private void a(dtc $$0, jd $$1, @Nullable ub $$2) {
+      StringBuilder $$3 = new StringBuilder(gn.a($$0));
+      if ($$2 != null) {
+         $$3.append($$2);
+      }
+
+      String $$4 = String.format(Locale.ROOT, "/setblock %d %d %d %s", $$1.u(), $$1.v(), $$1.w(), $$3);
+      this.a($$4);
+   }
+
+   private void a(akr $$0, exc $$1, @Nullable ub $$2) {
+      String $$4;
+      if ($$2 != null) {
+         $$2.r("UUID");
+         $$2.r("Pos");
+         $$2.r("Dimension");
+         String $$3 = uq.c((uy)$$2).getString();
+         $$4 = String.format(Locale.ROOT, "/summon %s %.2f %.2f %.2f %s", $$0, $$1.c, $$1.d, $$1.e, $$3);
+      } else {
+         $$4 = String.format(Locale.ROOT, "/summon %s %.2f %.2f %.2f", $$0, $$1.c, $$1.d, $$1.e);
+      }
+
+      this.a($$4);
+   }
+
+   public void a(long $$0, int $$1, int $$2, int $$3, int $$4) {
+      if ($$0 == this.b.aM().j()) {
+         boolean $$5 = fae.a(fgo.Q().aM().j(), 292);
+         if (this.d > 0L) {
+            if (!fae.a(fgo.Q().aM().j(), 67) || !$$5) {
+               this.d = -1L;
+            }
+         } else if (fae.a(fgo.Q().aM().j(), 67) && $$5) {
+            this.g = true;
+            this.d = ad.c();
+            this.e = ad.c();
+            this.f = 0L;
+         }
+
+         fod $$6 = this.b.y;
+         if ($$6 != null) {
+            switch ($$1) {
+               case 258:
+                  this.b.a(fgl.d);
+               case 259:
+               case 260:
+               case 261:
+               default:
+                  break;
+               case 262:
+               case 263:
+               case 264:
+               case 265:
+                  this.b.a(fgl.c);
+            }
+         }
+
+         if ($$3 == 1 && (!(this.b.y instanceof fro) || ((fro)$$6).u <= ad.c() - 20L)) {
+            if (this.b.m.Q.a($$1, $$2)) {
+               this.b.aM().i();
+               this.b.m.aa().a(this.b.aM().k());
+               return;
+            }
+
+            if (this.b.m.N.a($$1, $$2)) {
+               if (fod.r()) {
+               }
+
+               fgy.a(this.b.p, this.b.h(), $$0x -> this.b.execute(() -> this.b.l.d().a($$0x)));
+               return;
+            }
+         }
+
+         if ($$3 != 0) {
+            boolean $$7 = $$6 == null || !($$6.aN_() instanceof fiv) || !((fiv)$$6.aN_()).c();
+            if ($$7) {
+               if (fod.r() && $$1 == 66 && this.b.aV().a() && this.b.m.u().c()) {
+                  boolean $$8 = this.b.m.as().c() == fgq.a;
+                  this.b.m.as().a(fgq.a(this.b.m.as().c().a() + 1));
+                  this.b.m.aw();
+                  if ($$6 != null) {
+                     $$6.e($$8);
+                  }
+               }
+
+               geb var16 = this.b.s;
+            }
+         }
+
+         if ($$6 != null) {
+            boolean[] $$9 = new boolean[]{false};
+            fod.a(() -> {
+               if ($$3 == 1 || $$3 == 2) {
+                  $$6.x();
+                  $$9[0] = $$6.a($$1, $$2, $$4);
+               } else if ($$3 == 0) {
+                  $$9[0] = $$6.c($$1, $$2, $$4);
+               }
+            }, "keyPressed event handler", $$6.getClass().getCanonicalName());
+            if ($$9[0]) {
+               return;
+            }
+         }
+
+         fae.a $$10;
+         boolean $$11;
+         boolean var10000;
+         label180: {
+            $$10 = fae.a($$1, $$2);
+            $$11 = this.b.y == null;
+            label141:
+            if (!$$11) {
+               if (this.b.y instanceof fny $$12 && !$$12.m()) {
+                  break label141;
+               }
+
+               var10000 = false;
+               break label180;
+            }
+
+            var10000 = true;
+         }
+
+         boolean $$13 = var10000;
+         if ($$3 == 0) {
+            fgm.a($$10, false);
+            if ($$13 && $$1 == 292) {
+               if (this.g) {
+                  this.g = false;
+               } else {
+                  this.b.aN().h();
+               }
+            }
+         } else {
+            boolean $$14 = false;
+            if ($$13) {
+               if ($$1 == 293 && this.b.j != null) {
+                  this.b.j.c();
+               }
+
+               if ($$1 == 256) {
+                  this.b.b($$5);
+                  $$14 |= $$5;
+               }
+
+               $$14 |= $$5 && this.b($$1);
+               this.g |= $$14;
+               if ($$1 == 290) {
+                  this.b.m.Y = !this.b.m.Y;
+               }
+
+               if (this.b.aN().e() && !$$5 && $$1 >= 48 && $$1 <= 57) {
+                  this.b.a($$1 - 48);
+               }
+            }
+
+            if ($$11) {
+               if ($$14) {
+                  fgm.a($$10, false);
+               } else {
+                  fgm.a($$10, true);
+                  fgm.a($$10);
                }
             }
          }
       }
    }
 
-   private void a(long $$0, List<Path> $$1, int $$2) {
-      if (this.b.y != null) {
-         this.b.y.a($$1);
-      }
-
-      if ($$2 > 0) {
-         fks.a(this.b, $$2);
+   private void a(long $$0, int $$1, int $$2) {
+      if ($$0 == this.b.aM().j()) {
+         fki $$3 = this.b.y;
+         if ($$3 != null && this.b.aK() == null) {
+            if (Character.charCount($$1) == 1) {
+               fod.a(() -> $$3.a((char)$$1, $$2), "charTyped event handler", $$3.getClass().getCanonicalName());
+            } else {
+               for (char $$4 : Character.toChars($$1)) {
+                  fod.a(() -> $$3.a($$4, $$2), "charTyped event handler", $$3.getClass().getCanonicalName());
+               }
+            }
+         }
       }
    }
 
    public void a(long $$0) {
-      fac.a(
+      fae.a(
          $$0,
-         ($$0x, $$1, $$2) -> this.b.execute(() -> this.b($$0x, $$1, $$2)),
-         ($$0x, $$1, $$2, $$3) -> this.b.execute(() -> this.a($$0x, $$1, $$2, $$3)),
-         ($$0x, $$1, $$2) -> this.b.execute(() -> this.a($$0x, $$1, $$2)),
-         ($$0x, $$1, $$2) -> {
-            List<Path> $$3 = new ArrayList<>($$1);
-            int $$4 = 0;
-
-            for (int $$5 = 0; $$5 < $$1; $$5++) {
-               String $$6 = GLFWDropCallback.getName($$2, $$5);
-
-               try {
-                  $$3.add(Paths.get($$6));
-               } catch (InvalidPathException var11) {
-                  $$4++;
-                  a.error("Failed to parse path '{}'", $$6, var11);
-               }
-            }
-
-            if (!$$3.isEmpty()) {
-               int $$8 = $$4;
-               this.b.execute(() -> this.a($$0x, $$3, $$8));
-            }
-         }
+         ($$0x, $$1, $$2, $$3, $$4) -> this.b.execute(() -> this.a($$0x, $$1, $$2, $$3, $$4)),
+         ($$0x, $$1, $$2) -> this.b.execute(() -> this.a($$0x, $$1, $$2))
       );
    }
 
-   private void b(long $$0, double $$1, double $$2) {
-      if ($$0 == fgm.Q().aM().j()) {
-         if (this.j) {
-            this.f = $$1;
-            this.g = $$2;
-            this.j = false;
-         } else {
-            if (this.b.aA()) {
-               this.o = this.o + ($$1 - this.f);
-               this.p = this.p + ($$2 - this.g);
+   public String a() {
+      return this.c.a(this.b.aM().j(), ($$0, $$1) -> {
+         if ($$0 != 65545) {
+            this.b.aM().a($$0, $$1);
+         }
+      });
+   }
+
+   public void a(String $$0) {
+      if (!$$0.isEmpty()) {
+         this.c.a(this.b.aM().j(), $$0);
+      }
+   }
+
+   public void b() {
+      if (this.d > 0L) {
+         long $$0 = ad.c();
+         long $$1 = 10000L - ($$0 - this.d);
+         long $$2 = $$0 - this.e;
+         if ($$1 < 0L) {
+            if (fod.r()) {
+               eza.a();
             }
 
-            this.f = $$1;
-            this.g = $$2;
+            String $$3 = "Manually triggered debug crash";
+            o $$4 = new o("Manually triggered debug crash", new Throwable("Manually triggered debug crash"));
+            p $$5 = $$4.a("Manual crash details");
+            ayp.a($$5);
+            throw new z($$4);
          }
-      }
-   }
 
-   public void a() {
-      double $$0 = eyy.b();
-      double $$1 = $$0 - this.s;
-      this.s = $$0;
-      if (this.b.aA()) {
-         fob $$2 = this.b.y;
-         if ($$2 != null && this.b.aK() == null && (this.o != 0.0 || this.p != 0.0)) {
-            double $$3 = this.f * (double)this.b.aM().p() / (double)this.b.aM().n();
-            double $$4 = this.g * (double)this.b.aM().q() / (double)this.b.aM().o();
-            fob.a(() -> $$2.f($$3, $$4), "mouseMoved event handler", $$2.getClass().getCanonicalName());
-            if (this.i != -1 && this.l > 0.0) {
-               double $$5 = this.o * (double)this.b.aM().p() / (double)this.b.aM().n();
-               double $$6 = this.p * (double)this.b.aM().q() / (double)this.b.aM().o();
-               fob.a(() -> $$2.a($$3, $$4, this.i, $$5, $$6), "mouseDragged event handler", $$2.getClass().getCanonicalName());
+         if ($$2 >= 1000L) {
+            if (this.f == 0L) {
+               this.a("debug.crash.message");
+            } else {
+               this.b("debug.crash.warning", ayo.f((float)$$1 / 1000.0F));
             }
 
-            $$2.u();
-         }
-
-         if (this.h() && this.b.s != null) {
-            this.a($$1);
+            this.e = $$0;
+            this.f++;
          }
       }
-
-      this.o = 0.0;
-      this.p = 0.0;
-   }
-
-   private void a(double $$0) {
-      double $$1 = this.b.m.d().c() * 0.6F + 0.2F;
-      double $$2 = $$1 * $$1 * $$1;
-      double $$3 = $$2 * 8.0;
-      double $$6;
-      double $$7;
-      if (this.b.m.aa) {
-         double $$4 = this.m.a(this.o * $$3, $$0 * $$3);
-         double $$5 = this.n.a(this.p * $$3, $$0 * $$3);
-         $$6 = $$4;
-         $$7 = $$5;
-      } else if (this.b.m.aA().a() && this.b.s.gx()) {
-         this.m.a();
-         this.n.a();
-         $$6 = this.o * $$2;
-         $$7 = this.p * $$2;
-      } else {
-         this.m.a();
-         this.n.a();
-         $$6 = this.o * $$3;
-         $$7 = this.p * $$3;
-      }
-
-      int $$12 = 1;
-      if (this.b.m.R().c()) {
-         $$12 = -1;
-      }
-
-      this.b.ax().a($$6, $$7);
-      if (this.b.s != null) {
-         this.b.s.b($$6, $$7 * (double)$$12);
-      }
-   }
-
-   public boolean b() {
-      return this.c;
-   }
-
-   public boolean c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public double e() {
-      return this.f;
-   }
-
-   public double f() {
-      return this.g;
-   }
-
-   public void g() {
-      this.j = true;
-   }
-
-   public boolean h() {
-      return this.t;
-   }
-
-   public void i() {
-      if (this.b.aA()) {
-         if (!this.t) {
-            if (!fgm.a) {
-               fgk.a();
-            }
-
-            this.t = true;
-            this.f = (double)(this.b.aM().n() / 2);
-            this.g = (double)(this.b.aM().o() / 2);
-            fac.a(this.b.aM().j(), 212995, this.f, this.g);
-            this.b.a(null);
-            this.b.w = 10000;
-            this.j = true;
-         }
-      }
-   }
-
-   public void j() {
-      if (this.t) {
-         this.t = false;
-         this.f = (double)(this.b.aM().n() / 2);
-         this.g = (double)(this.b.aM().o() / 2);
-         fac.a(this.b.aM().j(), 212993, this.f, this.g);
-      }
-   }
-
-   public void k() {
-      this.j = true;
    }
 }

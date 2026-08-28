@@ -1,155 +1,107 @@
-import it.unimi.dsi.fastutil.ints.IntArrayFIFOQueue;
-import it.unimi.dsi.fastutil.ints.IntPriorityQueue;
-import java.util.BitSet;
-import java.util.EnumSet;
-import java.util.Set;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
 public class ghz {
-   private static final int a = 4;
-   private static final int b = 16;
-   private static final int c = 15;
-   private static final int d = 4096;
-   private static final int e = 0;
-   private static final int f = 4;
-   private static final int g = 8;
-   private static final int h = (int)Math.pow(16.0, 0.0);
-   private static final int i = (int)Math.pow(16.0, 1.0);
-   private static final int j = (int)Math.pow(16.0, 2.0);
-   private static final int k = -1;
-   private static final ji[] l = ji.values();
-   private final BitSet m = new BitSet(4096);
-   private static final int[] n = ad.a(new int[1352], $$0 -> {
-      int $$1 = 0;
-      int $$2 = 15;
-      int $$3 = 0;
+   private final gft a;
+   private final ggy b;
 
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            for (int $$6 = 0; $$6 < 16; $$6++) {
-               if ($$4 == 0 || $$4 == 15 || $$5 == 0 || $$5 == 15 || $$6 == 0 || $$6 == 15) {
-                  $$0[$$3++] = a($$4, $$5, $$6);
-               }
+   public ghz(gft $$0, ggy $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public ghz.a a(kf $$0, ghx $$1, fbq $$2, gfk $$3) {
+      ghz.a $$4 = new ghz.a();
+      jd $$5 = $$0.j();
+      jd $$6 = $$5.b(15, 15, 15);
+      gib $$7 = new gib();
+      fbi $$8 = new fbi();
+      gfv.a();
+      Map<gfh, fbd> $$9 = new Reference2ObjectArrayMap(gfh.I().size());
+      ayw $$10 = ayw.a();
+
+      for (jd $$11 : jd.c($$5, $$6)) {
+         dtc $$12 = $$1.a_($$11);
+         if ($$12.i($$1, $$11)) {
+            $$7.a($$11);
+         }
+
+         if ($$12.t()) {
+            dqh $$13 = $$1.c_($$11);
+            if ($$13 != null) {
+               this.a($$4, $$13);
             }
          }
-      }
-   });
-   private int o = 4096;
 
-   public void a(jd $$0) {
-      this.m.set(b($$0), true);
-      this.o--;
-   }
+         epe $$14 = $$12.u();
+         if (!$$14.c()) {
+            gfh $$15 = geu.a($$14);
+            fbd $$16 = this.a($$9, $$3, $$15);
+            this.a.a($$11, $$1, $$16, $$12, $$14);
+         }
 
-   private static int b(jd $$0) {
-      return a($$0.u() & 15, $$0.v() & 15, $$0.w() & 15);
-   }
-
-   private static int a(int $$0, int $$1, int $$2) {
-      return $$0 << 0 | $$1 << 8 | $$2 << 4;
-   }
-
-   public gia a() {
-      gia $$0 = new gia();
-      if (4096 - this.o < 256) {
-         $$0.a(true);
-      } else if (this.o == 0) {
-         $$0.a(false);
-      } else {
-         for (int $$1 : n) {
-            if (!this.m.get($$1)) {
-               $$0.a(this.a($$1));
-            }
+         if ($$12.l() == dmf.c) {
+            gfh $$17 = geu.a($$12);
+            fbd $$18 = this.a($$9, $$3, $$17);
+            $$8.a();
+            $$8.a((float)kf.b($$11.u()), (float)kf.b($$11.v()), (float)kf.b($$11.w()));
+            this.a.a($$12, $$11, $$1, $$8, $$18, true, $$10);
+            $$8.b();
          }
       }
 
-      return $$0;
-   }
-
-   private Set<ji> a(int $$0) {
-      Set<ji> $$1 = EnumSet.noneOf(ji.class);
-      IntPriorityQueue $$2 = new IntArrayFIFOQueue();
-      $$2.enqueue($$0);
-      this.m.set($$0, true);
-
-      while (!$$2.isEmpty()) {
-         int $$3 = $$2.dequeueInt();
-         this.a($$3, $$1);
-
-         for (ji $$4 : l) {
-            int $$5 = this.a($$3, $$4);
-            if ($$5 >= 0 && !this.m.get($$5)) {
-               this.m.set($$5, true);
-               $$2.enqueue($$5);
+      for (Entry<gfh, fbd> $$19 : $$9.entrySet()) {
+         gfh $$20 = $$19.getKey();
+         fbh $$21 = $$19.getValue().a();
+         if ($$21 != null) {
+            if ($$20 == gfh.f()) {
+               $$4.e = $$21.a($$3.a(gfh.f()), $$2);
             }
+
+            $$4.c.put($$20, $$21);
          }
       }
 
-      return $$1;
+      gfv.b();
+      $$4.d = $$7.a();
+      return $$4;
    }
 
-   private void a(int $$0, Set<ji> $$1) {
-      int $$2 = $$0 >> 0 & 15;
-      if ($$2 == 0) {
-         $$1.add(ji.e);
-      } else if ($$2 == 15) {
-         $$1.add(ji.f);
+   private fbd a(Map<gfh, fbd> $$0, gfk $$1, gfh $$2) {
+      fbd $$3 = $$0.get($$2);
+      if ($$3 == null) {
+         fbf $$4 = $$1.a($$2);
+         $$3 = new fbd($$4, fbn.c.h, fbg.b);
+         $$0.put($$2, $$3);
       }
 
-      int $$3 = $$0 >> 8 & 15;
-      if ($$3 == 0) {
-         $$1.add(ji.a);
-      } else if ($$3 == 15) {
-         $$1.add(ji.b);
-      }
+      return $$3;
+   }
 
-      int $$4 = $$0 >> 4 & 15;
-      if ($$4 == 0) {
-         $$1.add(ji.c);
-      } else if ($$4 == 15) {
-         $$1.add(ji.d);
+   private <E extends dqh> void a(ghz.a $$0, E $$1) {
+      ggz<E> $$2 = this.b.a($$1);
+      if ($$2 != null) {
+         $$0.b.add($$1);
+         if ($$2.a($$1)) {
+            $$0.a.add($$1);
+         }
       }
    }
 
-   private int a(int $$0, ji $$1) {
-      switch ($$1) {
-         case a:
-            if (($$0 >> 8 & 15) == 0) {
-               return -1;
-            }
+   public static final class a {
+      public final List<dqh> a = new ArrayList<>();
+      public final List<dqh> b = new ArrayList<>();
+      public final Map<gfh, fbh> c = new Reference2ObjectArrayMap();
+      public gic d = new gic();
+      @Nullable
+      public fbh.b e;
 
-            return $$0 - j;
-         case b:
-            if (($$0 >> 8 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + j;
-         case c:
-            if (($$0 >> 4 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - i;
-         case d:
-            if (($$0 >> 4 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + i;
-         case e:
-            if (($$0 >> 0 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - h;
-         case f:
-            if (($$0 >> 0 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + h;
-         default:
-            return -1;
+      public void a() {
+         this.c.values().forEach(fbh::close);
       }
    }
 }

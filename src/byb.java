@@ -9,7 +9,7 @@ public class byb extends bvh<btp> {
    }
 
    public static boolean a(btp $$0) {
-      return $$0.bf() && $$0.b(awk.a) > $$0.dj() || $$0.bt();
+      return $$0.bf() && $$0.b(awk.a) > $$0.di() || $$0.bt();
    }
 
    protected boolean a(aqu $$0, btp $$1) {
@@ -21,7 +21,7 @@ public class byb extends bvh<btp> {
    }
 
    protected void b(aqu $$0, btp $$1, long $$2) {
-      if ($$1.dS().i() < this.c) {
+      if ($$1.dR().i() < this.c) {
          $$1.L().a();
       }
    }

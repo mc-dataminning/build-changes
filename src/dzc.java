@@ -122,7 +122,7 @@ public class dzc implements dyr.a, dyr.b {
          $$20.add(dzi.a($$17.m(), $$17.n(), $$17.o(), $$1.e()));
       }
 
-      this.o = new eid($$20.build());
+      this.o = new eie($$20.build());
       this.n = $$17.k();
    }
 

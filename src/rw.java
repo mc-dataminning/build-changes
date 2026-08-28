@@ -42,37 +42,37 @@ public class rw {
    public static final akq<ebq<?, ?>> J = rr.a("fancy_oak_bees");
    public static final akq<ebq<?, ?>> K = rr.a("cherry_bees_005");
 
-   private static efd.a a(dfy $$0, dfy $$1, int $$2, int $$3, int $$4, int $$5) {
-      return new efd.a(egi.a($$0), new ehk($$2, $$3, $$4), egi.a($$1), new efo(bpt.a($$5), bpt.a(0), 3), new efl(1, 0, 1));
+   private static efe.a a(dfy $$0, dfy $$1, int $$2, int $$3, int $$4, int $$5) {
+      return new efe.a(egj.a($$0), new ehl($$2, $$3, $$4), egj.a($$1), new efp(bpt.a($$5), bpt.a(0), 3), new efm(1, 0, 1));
    }
 
-   private static efd.a a() {
+   private static efe.a a() {
       return a(dga.U, dga.aE, 4, 2, 0, 2).a();
    }
 
-   private static efd.a b() {
+   private static efe.a b() {
       return a(dga.W, dga.aG, 5, 2, 0, 2).a();
    }
 
-   private static efd.a c() {
+   private static efe.a c() {
       return a(dga.W, dga.aG, 5, 2, 6, 2).a();
    }
 
-   private static efd.a d() {
+   private static efe.a d() {
       return a(dga.X, dga.aH, 4, 8, 0, 2);
    }
 
-   private static efd.a e() {
-      return new efd.a(egi.a(dga.U), new ehg(3, 11, 0), egi.a(dga.aE), new efs(bpt.a(2), bpt.a(4), 4), new efl(0, 0, 0, OptionalInt.of(4))).a();
+   private static efe.a e() {
+      return new efe.a(egj.a(dga.U), new ehh(3, 11, 0), egj.a(dga.aE), new eft(bpt.a(2), bpt.a(4), 4), new efm(0, 0, 0, OptionalInt.of(4))).a();
    }
 
-   private static efd.a f() {
-      return new efd.a(
-            egi.a(dga.Z),
-            new ehe(7, 1, 0, new bqd(bpb.<bpw>a().a(bpt.a(1), 1).a(bpt.a(2), 1).a(bpt.a(3), 1).a()), bqc.a(2, 4), bqc.a(-4, -3), bqc.a(-1, 0)),
-            egi.a(dga.aJ),
-            new efq(bpt.a(4), bpt.a(0), bpt.a(5), 0.25F, 0.5F, 0.16666667F, 0.33333334F),
-            new efl(1, 0, 2)
+   private static efe.a f() {
+      return new efe.a(
+            egj.a(dga.Z),
+            new ehf(7, 1, 0, new bqd(bpb.<bpw>a().a(bpt.a(1), 1).a(bpt.a(2), 1).a(bpt.a(3), 1).a()), bqc.a(2, 4), bqc.a(-4, -3), bqc.a(-1, 0)),
+            egj.a(dga.aJ),
+            new efr(bpt.a(4), bpt.a(0), bpt.a(5), 0.25F, 0.5F, 0.16666667F, 0.33333334F),
+            new efm(1, 0, 2)
          )
          .a();
    }
@@ -138,112 +138,112 @@ public class rw {
          dga.sE,
          dga.sF
       );
-      rr.a($$0, a, ecd.U, new ecm(dga.ow.o(), dga.os.o(), dga.kK.o(), dga.oy.o(), $$2, false));
-      rr.a($$0, b, ecd.U, new ecm(dga.ow.o(), dga.os.o(), dga.kK.o(), dga.oy.o(), $$2, true));
-      rr.a($$0, c, ecd.U, new ecm(dga.on.o(), dga.oj.o(), dga.op.o(), dga.oy.o(), $$2, false));
-      rr.a($$0, d, ecd.U, new ecm(dga.on.o(), dga.oj.o(), dga.op.o(), dga.oy.o(), $$2, true));
+      rr.a($$0, a, ece.V, new ecn(dga.ow.o(), dga.os.o(), dga.kK.o(), dga.oy.o(), $$2, false));
+      rr.a($$0, b, ece.V, new ecn(dga.ow.o(), dga.os.o(), dga.kK.o(), dga.oy.o(), $$2, true));
+      rr.a($$0, c, ece.V, new ecn(dga.on.o(), dga.oj.o(), dga.op.o(), dga.oy.o(), $$2, false));
+      rr.a($$0, d, ece.V, new ecn(dga.on.o(), dga.oj.o(), dga.op.o(), dga.oy.o(), $$2, true));
       rr.a(
          $$0,
          e,
-         ecd.r,
-         new eej(
-            egi.a(dga.eT.o().a(djv.f, Boolean.valueOf(true)).a(djv.g, Boolean.valueOf(false))),
-            egi.a(dga.eV.o().a(djv.f, Boolean.valueOf(false)).a(djv.g, Boolean.valueOf(false))),
+         ece.r,
+         new eek(
+            egj.a(dga.eT.o().a(djv.f, Boolean.valueOf(true)).a(djv.g, Boolean.valueOf(false))),
+            egj.a(dga.eV.o().a(djv.f, Boolean.valueOf(false)).a(djv.g, Boolean.valueOf(false))),
             3
          )
       );
       rr.a(
          $$0,
          f,
-         ecd.q,
-         new eej(egi.a(dga.eU.o().a(djv.g, Boolean.valueOf(false))), egi.a(dga.eV.o().a(djv.f, Boolean.valueOf(false)).a(djv.g, Boolean.valueOf(false))), 2)
+         ece.q,
+         new eek(egj.a(dga.eU.o().a(djv.g, Boolean.valueOf(false))), egj.a(dga.eV.o().a(djv.f, Boolean.valueOf(false)).a(djv.g, Boolean.valueOf(false))), 2)
       );
-      egw $$3 = new egw(0.002F);
-      egw $$4 = new egw(0.01F);
-      egw $$5 = new egw(0.02F);
-      egw $$6 = new egw(0.05F);
-      egw $$7 = new egw(1.0F);
-      rr.a($$0, g, ecd.f, a().c());
+      egx $$3 = new egx(0.002F);
+      egx $$4 = new egx(0.01F);
+      egx $$5 = new egx(0.02F);
+      egx $$6 = new egx(0.05F);
+      egx $$7 = new egx(1.0F);
+      rr.a($$0, g, ece.f, a().c());
       rr.a(
          $$0,
          h,
-         ecd.f,
-         new efd.a(egi.a(dga.aa), new ehf(6, 2, 1), egi.a(dga.aK), new efr(bpt.a(0), bpt.a(0)), new efk(1, 1, 0, 1, 2, OptionalInt.empty())).a().c()
+         ece.f,
+         new efe.a(egj.a(dga.aa), new ehg(6, 2, 1), egj.a(dga.aK), new efs(bpt.a(0), bpt.a(0)), new efl(1, 1, 0, 1, 2, OptionalInt.empty())).a().c()
       );
-      rr.a($$0, i, ecd.f, b().c());
-      rr.a($$0, j, ecd.f, new efd.a(egi.a(dga.Y), new ehh(5, 2, 2), egi.a(dga.aI), new efn(bpt.a(2), bpt.a(0)), new efl(1, 0, 2)).a().c());
-      rr.a($$0, z, ecd.f, f().c());
-      rr.a($$0, K, ecd.f, f().a(List.of($$6)).c());
-      rr.a($$0, k, ecd.f, new efd.a(egi.a(dga.V), new ehk(5, 2, 1), egi.a(dga.aF), new efz(bqc.a(2, 3), bqc.a(0, 2), bqc.a(1, 2)), new efl(2, 0, 2)).a().c());
-      rr.a($$0, l, ecd.f, new efd.a(egi.a(dga.V), new ehk(6, 4, 0), egi.a(dga.aF), new efx(bpt.a(1), bpt.a(1), bqc.a(3, 4)), new efl(2, 0, 2)).a().c());
-      rr.a($$0, m, ecd.f, d().a(ImmutableList.of(new egx(0.2F), ehb.b, new egy(0.25F))).a().c());
-      rr.a($$0, n, ecd.f, e().c());
-      rr.a($$0, o, ecd.f, d().a().c());
+      rr.a($$0, i, ece.f, b().c());
+      rr.a($$0, j, ece.f, new efe.a(egj.a(dga.Y), new ehi(5, 2, 2), egj.a(dga.aI), new efo(bpt.a(2), bpt.a(0)), new efm(1, 0, 2)).a().c());
+      rr.a($$0, z, ece.f, f().c());
+      rr.a($$0, K, ece.f, f().a(List.of($$6)).c());
+      rr.a($$0, k, ece.f, new efe.a(egj.a(dga.V), new ehl(5, 2, 1), egj.a(dga.aF), new ega(bqc.a(2, 3), bqc.a(0, 2), bqc.a(1, 2)), new efm(2, 0, 2)).a().c());
+      rr.a($$0, l, ece.f, new efe.a(egj.a(dga.V), new ehl(6, 4, 0), egj.a(dga.aF), new efy(bpt.a(1), bpt.a(1), bqc.a(3, 4)), new efm(2, 0, 2)).a().c());
+      rr.a($$0, m, ece.f, d().a(ImmutableList.of(new egy(0.2F), ehc.b, new egz(0.25F))).a().c());
+      rr.a($$0, n, ece.f, e().c());
+      rr.a($$0, o, ece.f, d().a().c());
       rr.a(
          $$0,
          p,
-         ecd.f,
-         new efd.a(egi.a(dga.X), new ehj(10, 2, 19), egi.a(dga.aH), new efv(bpt.a(2), bpt.a(0), 2), new efl(1, 1, 2))
-            .a(ImmutableList.of(ehb.b, new egy(0.25F)))
+         ece.f,
+         new efe.a(egj.a(dga.X), new ehk(10, 2, 19), egj.a(dga.aH), new efw(bpt.a(2), bpt.a(0), 2), new efm(1, 1, 2))
+            .a(ImmutableList.of(ehc.b, new egz(0.25F)))
             .c()
       );
       rr.a(
          $$0,
          q,
-         ecd.f,
-         new efd.a(egi.a(dga.V), new ehi(13, 2, 14), egi.a(dga.aF), new efw(bpt.a(0), bpt.a(0), bqc.a(13, 17)), new efl(1, 1, 2))
-            .a(ImmutableList.of(new egu(egi.a(dga.l))))
+         ece.f,
+         new efe.a(egj.a(dga.V), new ehj(13, 2, 14), egj.a(dga.aF), new efx(bpt.a(0), bpt.a(0), bqc.a(13, 17)), new efm(1, 1, 2))
+            .a(ImmutableList.of(new egv(egj.a(dga.l))))
             .c()
       );
       rr.a(
          $$0,
          r,
-         ecd.f,
-         new efd.a(egi.a(dga.V), new ehi(13, 2, 14), egi.a(dga.aF), new efw(bpt.a(0), bpt.a(0), bqc.a(3, 7)), new efl(1, 1, 2))
-            .a(ImmutableList.of(new egu(egi.a(dga.l))))
+         ece.f,
+         new efe.a(egj.a(dga.V), new ehj(13, 2, 14), egj.a(dga.aF), new efx(bpt.a(0), bpt.a(0), bqc.a(3, 7)), new efm(1, 1, 2))
+            .a(ImmutableList.of(new egv(egj.a(dga.l))))
             .c()
       );
-      rr.a($$0, s, ecd.f, c().a(ImmutableList.of($$3)).c());
-      rr.a($$0, t, ecd.f, c().a(ImmutableList.of($$7)).c());
-      rr.a($$0, u, ecd.f, a(dga.U, dga.aE, 5, 3, 0, 3).a(ImmutableList.of(new egy(0.25F))).c());
-      rr.a($$0, v, ecd.f, new efd.a(egi.a(dga.X), new ehk(1, 0, 0), egi.a(dga.aE), new efp(bpt.a(2), bpt.a(1), 2), new efl(0, 0, 0)).c());
+      rr.a($$0, s, ece.f, c().a(ImmutableList.of($$3)).c());
+      rr.a($$0, t, ece.f, c().a(ImmutableList.of($$7)).c());
+      rr.a($$0, u, ece.f, a(dga.U, dga.aE, 5, 3, 0, 3).a(ImmutableList.of(new egz(0.25F))).c());
+      rr.a($$0, v, ece.f, new efe.a(egj.a(dga.X), new ehl(1, 0, 0), egj.a(dga.aE), new efq(bpt.a(2), bpt.a(1), 2), new efm(0, 0, 0)).c());
       rr.a(
          $$0,
          w,
-         ecd.f,
-         new efd.a(
-               egi.a(dga.U),
-               new ehd(4, 2, 0, 3, bqc.a(1, 2)),
-               new egs(bpb.<dtc>a().a(dga.aM.o(), 3).a(dga.aN.o(), 1)),
-               new efy(bpt.a(3), bpt.a(0), bpt.a(2), 50),
-               new efl(1, 0, 1)
+         ece.f,
+         new efe.a(
+               egj.a(dga.U),
+               new ehe(4, 2, 0, 3, bqc.a(1, 2)),
+               new egt(bpb.<dtc>a().a(dga.aM.o(), 3).a(dga.aN.o(), 1)),
+               new efz(bpt.a(3), bpt.a(0), bpt.a(2), 50),
+               new efm(1, 0, 1)
             )
-            .a(egi.a(dga.sH))
+            .a(egj.a(dga.sH))
             .b()
             .c()
       );
       rr.a(
          $$0,
          x,
-         ecd.f,
-         new efd.a(
-               egi.a(dga.ab),
-               new ehn(2, 1, 4, bqc.a(1, 4), 0.5F, bqc.a(0, 1), $$1.b(awe.cj)),
-               egi.a(dga.aL),
-               new efy(bpt.a(3), bpt.a(0), bpt.a(2), 70),
+         ece.f,
+         new efe.a(
+               egj.a(dga.ab),
+               new eho(2, 1, 4, bqc.a(1, 4), 0.5F, bqc.a(0, 1), $$1.b(awe.ck)),
+               egj.a(dga.aL),
+               new efz(bpt.a(3), bpt.a(0), bpt.a(2), 70),
                Optional.of(
-                  new ege(
+                  new egf(
                      bqc.a(1, 3),
-                     egi.a(dga.ac),
-                     Optional.of(new egc(egi.a(dga.sA), 0.5F)),
-                     new egd($$1.b(awe.ck), jq.a(dfy::s, dga.sI, dga.ad), egi.a(dga.ad), 8, 15, 0.2F)
+                     egj.a(dga.ac),
+                     Optional.of(new egd(egj.a(dga.sA), 0.5F)),
+                     new ege($$1.b(awe.cl), jq.a(dfy::s, dga.sI, dga.ad), egj.a(dga.ad), 8, 15, 0.2F)
                   )
                ),
-               new efl(2, 0, 2)
+               new efm(2, 0, 2)
             )
             .a(
                List.of(
-                  new egy(0.125F), new egv(0.14F, 1, 0, new ego(egi.a(dga.E.o().a(dkt.d, Boolean.valueOf(true))), dkt.b, bqc.a(0, 4)), 2, List.of(ji.a)), $$4
+                  new egz(0.125F), new egw(0.14F, 1, 0, new egp(egj.a(dga.E.o().a(dkt.d, Boolean.valueOf(true))), dkt.b, bqc.a(0, 4)), 2, List.of(ji.a)), $$4
                )
             )
             .a()
@@ -252,39 +252,39 @@ public class rw {
       rr.a(
          $$0,
          y,
-         ecd.f,
-         new efd.a(
-               egi.a(dga.ab),
-               new ehn(4, 1, 9, bqc.a(1, 6), 0.5F, bqc.a(0, 1), $$1.b(awe.cj)),
-               egi.a(dga.aL),
-               new efy(bpt.a(3), bpt.a(0), bpt.a(2), 70),
+         ece.f,
+         new efe.a(
+               egj.a(dga.ab),
+               new eho(4, 1, 9, bqc.a(1, 6), 0.5F, bqc.a(0, 1), $$1.b(awe.ck)),
+               egj.a(dga.aL),
+               new efz(bpt.a(3), bpt.a(0), bpt.a(2), 70),
                Optional.of(
-                  new ege(
+                  new egf(
                      bqc.a(3, 7),
-                     egi.a(dga.ac),
-                     Optional.of(new egc(egi.a(dga.sA), 0.5F)),
-                     new egd($$1.b(awe.ck), jq.a(dfy::s, dga.sI, dga.ad), egi.a(dga.ad), 8, 15, 0.2F)
+                     egj.a(dga.ac),
+                     Optional.of(new egd(egj.a(dga.sA), 0.5F)),
+                     new ege($$1.b(awe.cl), jq.a(dfy::s, dga.sI, dga.ad), egj.a(dga.ad), 8, 15, 0.2F)
                   )
                ),
-               new efl(3, 0, 2)
+               new efm(3, 0, 2)
             )
             .a(
                List.of(
-                  new egy(0.125F), new egv(0.14F, 1, 0, new ego(egi.a(dga.E.o().a(dkt.d, Boolean.valueOf(true))), dkt.b, bqc.a(0, 4)), 2, List.of(ji.a)), $$4
+                  new egz(0.125F), new egw(0.14F, 1, 0, new egp(egj.a(dga.E.o().a(dkt.d, Boolean.valueOf(true))), dkt.b, bqc.a(0, 4)), 2, List.of(ji.a)), $$4
                )
             )
             .a()
             .c()
       );
-      rr.a($$0, A, ecd.f, a().a(List.of($$3)).c());
-      rr.a($$0, B, ecd.f, a().a(List.of($$5)).c());
-      rr.a($$0, C, ecd.f, a().a(List.of($$6)).c());
-      rr.a($$0, D, ecd.f, b().a(List.of($$3)).c());
-      rr.a($$0, E, ecd.f, b().a(List.of($$5)).c());
-      rr.a($$0, F, ecd.f, b().a(List.of($$6)).c());
-      rr.a($$0, G, ecd.f, e().a(List.of($$3)).c());
-      rr.a($$0, H, ecd.f, e().a(List.of($$5)).c());
-      rr.a($$0, I, ecd.f, e().a(List.of($$6)).c());
-      rr.a($$0, J, ecd.f, e().a(List.of($$7)).c());
+      rr.a($$0, A, ece.f, a().a(List.of($$3)).c());
+      rr.a($$0, B, ece.f, a().a(List.of($$5)).c());
+      rr.a($$0, C, ece.f, a().a(List.of($$6)).c());
+      rr.a($$0, D, ece.f, b().a(List.of($$3)).c());
+      rr.a($$0, E, ece.f, b().a(List.of($$5)).c());
+      rr.a($$0, F, ece.f, b().a(List.of($$6)).c());
+      rr.a($$0, G, ece.f, e().a(List.of($$3)).c());
+      rr.a($$0, H, ece.f, e().a(List.of($$5)).c());
+      rr.a($$0, I, ece.f, e().a(List.of($$6)).c());
+      rr.a($$0, J, ece.f, e().a(List.of($$7)).c());
    }
 }

@@ -14,13 +14,13 @@ public class ctj extends cul implements cvv {
    @Override
    public bqr a(cuq $$0, cmx $$1, btn $$2, bqq $$3) {
       if ($$2 instanceof cga $$4 && $$4.bE() && !$$4.x() && $$4.t() != this.b) {
-         $$4.dP().a($$1, $$4, avp.hM, avq.h, 1.0F, 1.0F);
-         if (!$$1.dP().B) {
+         $$4.dO().a($$1, $$4, avp.hM, avq.h, 1.0F, 1.0F);
+         if (!$$1.dO().B) {
             $$4.b(this.b);
             $$0.h(1);
          }
 
-         return bqr.a($$1.dP().B);
+         return bqr.a($$1.dO().B);
       }
 
       return bqr.e;

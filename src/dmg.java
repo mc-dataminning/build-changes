@@ -16,8 +16,8 @@ public class dmg extends dia {
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, eww $$4) {
-      if (!$$3.ga().e) {
+   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
+      if (!$$3.fZ().e) {
          return bqr.e;
       } else {
          $$1.a($$2, $$0.a(e), 3);

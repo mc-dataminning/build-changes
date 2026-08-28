@@ -39,13 +39,13 @@ public class bwu {
          $$3 = $$0;
       }
 
-      $$3.dU().b(ccs.c);
+      $$3.dT().b(ccs.c);
       return $$2;
    }
 
    private static boolean a(jl $$0, jm<cev> $$1, cmk $$2) {
-      Optional<jl> $$3 = $$2.dU().c(ccs.c);
-      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gw().b());
+      Optional<jl> $$3 = $$2.dT().c(ccs.c);
+      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gv().b());
    }
 
    private static boolean a(jm<cev> $$0, cmn $$1) {

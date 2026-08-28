@@ -14,7 +14,7 @@ public class cyy extends czh {
          if ($$2.e()) {
             return false;
          } else {
-            eqr $$3 = cvc.b($$2, $$1);
+            eqt $$3 = cvc.b($$2, $$1);
             if ($$3 == null) {
                return false;
             } else {

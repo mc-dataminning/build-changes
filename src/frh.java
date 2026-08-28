@@ -1,25 +1,67 @@
-import java.util.Arrays;
+import javax.annotation.Nullable;
 
-public class frh extends frf {
-   private static final wz a = wz.c("options.sounds.title");
+public abstract class frh extends fod {
+   protected final fod b;
+   protected final fgs c;
+   @Nullable
+   protected fjj r;
+   public final flz s = new flz(this);
 
-   private static fgp<?>[] a(fgq $$0) {
-      return new fgp[]{$$0.W(), $$0.X()};
-   }
-
-   public frh(fob $$0, fgq $$1) {
-      super($$0, $$1, a);
+   public frh(fod $$0, fgs $$1, wz $$2) {
+      super($$2);
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   protected void m() {
-      this.r.a(this.c.b(avq.a));
-      this.r.a(this.F());
-      this.r.a(this.c.at());
-      this.r.a(a(this.c));
+   protected void aT_() {
+      this.E();
+      this.D();
+      this.C();
+      this.s.a($$1 -> {
+         fik var10000 = this.c($$1);
+      });
+      this.c();
    }
 
-   private fgp<?>[] F() {
-      return Arrays.stream(avq.values()).filter($$0 -> $$0 != avq.a).map($$0 -> this.c.b($$0)).toArray(fgp[]::new);
+   protected void E() {
+      this.s.a(this.k, this.o);
+   }
+
+   protected void D() {
+      this.r = this.s.c(new fjj(this.l, this.m, this));
+      this.m();
+      if (this.r.b(this.c.as()) instanceof fit $$0) {
+         this.p = $$0;
+         this.p.j = this.l.aV().a();
+      }
+   }
+
+   protected abstract void m();
+
+   protected void C() {
+      this.s.b(fim.a(wy.d, $$0 -> this.d()).a(200).a());
+   }
+
+   @Override
+   protected void c() {
+      this.s.a();
+      if (this.r != null) {
+         this.r.a(this.m, this.s);
+      }
+   }
+
+   @Override
+   public void j() {
+      this.l.m.aw();
+   }
+
+   @Override
+   public void d() {
+      if (this.r != null) {
+         this.r.c();
+      }
+
+      this.l.a(this.b);
    }
 }

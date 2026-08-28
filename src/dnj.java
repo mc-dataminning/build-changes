@@ -26,7 +26,7 @@ public class dnj extends dfy {
    }
 
    private static boolean m(dtc $$0) {
-      return $$0.a(awe.bz);
+      return $$0.a(awe.bA);
    }
 
    @Override

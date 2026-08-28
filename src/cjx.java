@@ -15,14 +15,14 @@ public class cjx extends btd implements cjv {
       this.bU.a(5, new cjx.d(this));
       this.bU.a(7, new cjx.a(this));
       this.bU.a(7, new cjx.c(this));
-      this.bV.a(1, new ccf<>(this, cmx.class, 10, true, false, $$0 -> Math.abs($$0.dw() - this.dw()) <= 4.0));
+      this.bV.a(1, new ccf<>(this, cmx.class, 10, true, false, $$0 -> Math.abs($$0.dv() - this.dv()) <= 4.0));
    }
 
    public boolean s() {
       return this.ao.a(b);
    }
 
-   public void w(boolean $$0) {
+   public void x(boolean $$0) {
       this.ao.a(b, $$0);
    }
 
@@ -65,7 +65,7 @@ public class cjx extends btd implements cjv {
    }
 
    @Override
-   public avq df() {
+   public avq de() {
       return avq.f;
    }
 
@@ -85,7 +85,7 @@ public class cjx extends btd implements cjv {
    }
 
    @Override
-   protected float fb() {
+   protected float fa() {
       return 5.0F;
    }
 
@@ -94,7 +94,7 @@ public class cjx extends btd implements cjv {
    }
 
    @Override
-   public int fO() {
+   public int fN() {
       return 1;
    }
 
@@ -133,17 +133,17 @@ public class cjx extends btd implements cjv {
       @Override
       public void a() {
          if (this.a.p() == null) {
-            exa $$0 = this.a.ds();
+            exc $$0 = this.a.dr();
             this.a.t(-((float)ayo.d($$0.c, $$0.e)) * (180.0F / (float)Math.PI));
-            this.a.aY = this.a.dF();
+            this.a.aY = this.a.dE();
          } else {
             btn $$1 = this.a.p();
             double $$2 = 64.0;
             if ($$1.g(this.a) < 4096.0) {
-               double $$3 = $$1.du() - this.a.du();
-               double $$4 = $$1.dA() - this.a.dA();
+               double $$3 = $$1.dt() - this.a.dt();
+               double $$4 = $$1.dz() - this.a.dz();
                this.a.t(-((float)ayo.d($$3, $$4)) * (180.0F / (float)Math.PI));
-               this.a.aY = this.a.dF();
+               this.a.aY = this.a.dE();
             }
          }
       }
@@ -162,12 +162,12 @@ public class cjx extends btd implements cjv {
       public void a() {
          if (this.k == bzp.a.b) {
             if (this.m-- <= 0) {
-               this.m = this.m + this.l.dS().a(5) + 2;
-               exa $$0 = new exa(this.e - this.l.du(), this.f - this.l.dw(), this.g - this.l.dA());
+               this.m = this.m + this.l.dR().a(5) + 2;
+               exc $$0 = new exc(this.e - this.l.dt(), this.f - this.l.dv(), this.g - this.l.dz());
                double $$1 = $$0.f();
                $$0 = $$0.d();
                if (this.a($$0, ayo.c($$1))) {
-                  this.l.i(this.l.ds().e($$0.a(0.1)));
+                  this.l.i(this.l.dr().e($$0.a(0.1)));
                } else {
                   this.k = bzp.a.a;
                }
@@ -175,12 +175,12 @@ public class cjx extends btd implements cjv {
          }
       }
 
-      private boolean a(exa $$0, int $$1) {
-         ewv $$2 = this.l.cL();
+      private boolean a(exc $$0, int $$1) {
+         ewx $$2 = this.l.cK();
 
          for (int $$3 = 1; $$3 < $$1; $$3++) {
             $$2 = $$2.c($$0);
-            if (!this.l.dP().a(this.l, $$2)) {
+            if (!this.l.dO().a(this.l, $$2)) {
                return false;
             }
          }
@@ -209,7 +209,7 @@ public class cjx extends btd implements cjv {
 
       @Override
       public void e() {
-         this.b.w(false);
+         this.b.x(false);
       }
 
       @Override
@@ -223,25 +223,25 @@ public class cjx extends btd implements cjv {
          if ($$0 != null) {
             double $$1 = 64.0;
             if ($$0.g(this.b) < 4096.0 && this.b.F($$0)) {
-               dcw $$2 = this.b.dP();
+               dcw $$2 = this.b.dO();
                this.a++;
                if (this.a == 10 && !this.b.aX()) {
-                  $$2.a(null, 1015, this.b.dp(), 0);
+                  $$2.a(null, 1015, this.b.do(), 0);
                }
 
                if (this.a == 20) {
                   double $$3 = 4.0;
-                  exa $$4 = this.b.g(1.0F);
-                  double $$5 = $$0.du() - (this.b.du() + $$4.c * 4.0);
+                  exc $$4 = this.b.g(1.0F);
+                  double $$5 = $$0.dt() - (this.b.dt() + $$4.c * 4.0);
                   double $$6 = $$0.e(0.5) - (0.5 + this.b.e(0.5));
-                  double $$7 = $$0.dA() - (this.b.dA() + $$4.e * 4.0);
-                  exa $$8 = new exa($$5, $$6, $$7);
+                  double $$7 = $$0.dz() - (this.b.dz() + $$4.e * 4.0);
+                  exc $$8 = new exc($$5, $$6, $$7);
                   if (!this.b.aX()) {
-                     $$2.a(null, 1016, this.b.dp(), 0);
+                     $$2.a(null, 1016, this.b.do(), 0);
                   }
 
                   cnn $$9 = new cnn($$2, this.b, $$8.d(), this.b.t());
-                  $$9.a_(this.b.du() + $$4.c * 4.0, this.b.e(0.5) + 0.5, $$9.dA() + $$4.e * 4.0);
+                  $$9.a_(this.b.dt() + $$4.c * 4.0, this.b.e(0.5) + 0.5, $$9.dz() + $$4.e * 4.0);
                   $$2.b($$9);
                   this.a = -40;
                }
@@ -249,7 +249,7 @@ public class cjx extends btd implements cjv {
                this.a--;
             }
 
-            this.b.w(this.a > 10);
+            this.b.x(this.a > 10);
          }
       }
    }
@@ -268,9 +268,9 @@ public class cjx extends btd implements cjv {
          if (!$$0.b()) {
             return true;
          } else {
-            double $$1 = $$0.d() - this.a.du();
-            double $$2 = $$0.e() - this.a.dw();
-            double $$3 = $$0.f() - this.a.dA();
+            double $$1 = $$0.d() - this.a.dt();
+            double $$2 = $$0.e() - this.a.dv();
+            double $$3 = $$0.f() - this.a.dz();
             double $$4 = $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
             return $$4 < 1.0 || $$4 > 3600.0;
          }
@@ -283,10 +283,10 @@ public class cjx extends btd implements cjv {
 
       @Override
       public void d() {
-         ayw $$0 = this.a.dS();
-         double $$1 = this.a.du() + (double)(($$0.i() * 2.0F - 1.0F) * 16.0F);
-         double $$2 = this.a.dw() + (double)(($$0.i() * 2.0F - 1.0F) * 16.0F);
-         double $$3 = this.a.dA() + (double)(($$0.i() * 2.0F - 1.0F) * 16.0F);
+         ayw $$0 = this.a.dR();
+         double $$1 = this.a.dt() + (double)(($$0.i() * 2.0F - 1.0F) * 16.0F);
+         double $$2 = this.a.dv() + (double)(($$0.i() * 2.0F - 1.0F) * 16.0F);
+         double $$3 = this.a.dz() + (double)(($$0.i() * 2.0F - 1.0F) * 16.0F);
          this.a.J().a($$1, $$2, $$3, 1.0);
       }
    }

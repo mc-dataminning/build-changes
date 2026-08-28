@@ -1,52 +1,25 @@
 import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.Set;
+import java.util.Optional;
 
-public class ell extends ejo {
+public class ell extends ejr {
    public static final MapCodec<ell> d = a(ell::new);
 
-   public ell(ejp.c $$0) {
-      super(elk::new, 21, 21, $$0);
+   public ell(ejr.c $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(dds $$0, ddq $$1, duz $$2, ayw $$3, ejh $$4, dcd $$5, eke $$6) {
-      Set<jd> $$7 = azg.a(kh::i);
-
-      for (ejt $$8 : $$6.c()) {
-         if ($$8 instanceof elk $$9) {
-            $$7.addAll($$9.b());
-            a($$4, $$0, $$9.c());
-         }
-      }
-
-      ObjectArrayList<jd> $$10 = new ObjectArrayList($$7.stream().toList());
-      ayw $$11 = ayw.a($$0.C()).e().a($$6.b().g());
-      ad.c($$10, $$11);
-      int $$12 = Math.min($$7.size(), $$11.b(5, 8));
-      ObjectListIterator var12 = $$10.iterator();
-
-      while (var12.hasNext()) {
-         jd $$13 = (jd)var12.next();
-         if ($$12 > 0) {
-            $$12--;
-            a($$4, $$0, $$13);
-         } else if ($$4.b($$13)) {
-            $$0.a($$13, dga.I.o(), 2);
-         }
-      }
+   public Optional<ejr.b> a(ejr.a $$0) {
+      return a($$0, dyy.a.c, $$1 -> a($$1, $$0));
    }
 
-   private static void a(ejh $$0, dds $$1, jd $$2) {
-      if ($$0.b($$2)) {
-         $$1.a($$2, dga.J.o(), 2);
-         $$1.a($$2, dqj.N).ifPresent($$1x -> $$1x.a(erl.be, $$2.a()));
-      }
+   private static void a(ekj $$0, ejr.a $$1) {
+      jd $$2 = new jd($$1.h().a(9), 90, $$1.h().b(9));
+      $$0.a(new elk.a($$2));
    }
 
    @Override
-   public ejy<?> e() {
-      return ejy.b;
+   public eka<?> e() {
+      return eka.a;
    }
 }

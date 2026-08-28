@@ -2,7 +2,7 @@ import com.mojang.serialization.MapCodec;
 
 public class dls extends dht {
    public static final MapCodec<dls> a = b(dls::new);
-   private static final ext[] b = new ext[]{
+   private static final exv[] b = new exv[]{
       dfy.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
       dfy.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
       dfy.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
@@ -28,7 +28,7 @@ public class dls extends dht {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return b[this.g($$0)];
    }
 }

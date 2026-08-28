@@ -1,46 +1,41 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import java.util.Optional;
 
-public class etu extends etc {
+public class etu extends ete {
    public static final MapCodec<etu> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and($$0.group(evx.a.fieldOf("count").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)))
+            .and(
+               $$0.group(
+                  etd.e.a(cxl.c, 256).optionalFieldOf("explosions").forGetter($$0x -> $$0x.c),
+                  axw.j.optionalFieldOf("flight_duration").forGetter($$0x -> $$0x.d)
+               )
+            )
             .apply($$0, etu::new)
    );
-   private final evw b;
-   private final boolean c;
+   public static final cxm b = new cxm(0, List.of());
+   private final Optional<etd.e<cxl>> c;
+   private final Optional<Integer> d;
 
-   private etu(List<eva> $$0, evw $$1, boolean $$2) {
+   protected etu(List<evc> $$0, Optional<etd.e<cxl>> $$1, Optional<Integer> $$2) {
       super($$0);
-      this.b = $$1;
-      this.c = $$2;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public ete<etu> b() {
-      return etf.e;
-   }
-
-   @Override
-   public Set<eui<?>> a() {
-      return this.b.a();
-   }
-
-   @Override
-   public cuq a(cuq $$0, erp $$1) {
-      int $$2 = this.c ? $$0.H() : 0;
-      $$0.e($$2 + this.b.a($$1));
+   protected cuq a(cuq $$0, err $$1) {
+      $$0.a(kq.V, b, this::a);
       return $$0;
    }
 
-   public static etc.a<?> a(evw $$0) {
-      return a($$1 -> new etu($$1, $$0, false));
+   private cxm a(cxm $$0) {
+      return new cxm(this.d.orElseGet($$0::a), this.c.<List<cxl>>map($$1 -> $$1.a($$0.b())).orElse($$0.b()));
    }
 
-   public static etc.a<?> a(evw $$0, boolean $$1) {
-      return a($$2 -> new etu($$2, $$0, $$1));
+   @Override
+   public etg<etu> b() {
+      return eth.K;
    }
 }

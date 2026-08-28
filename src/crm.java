@@ -37,7 +37,7 @@ public class crm extends crq {
    @Override
    protected void b_(cuq $$0) {
       if (this.g > 0) {
-         $$0.a(this.b.dP(), this.b, this.g);
+         $$0.a(this.b.dO(), this.b, this.g);
       }
 
       if (this.c instanceof crk $$1) {
@@ -54,7 +54,7 @@ public class crm extends crq {
       cyp $$3 = $$2.a();
       int $$4 = $$2.b();
       int $$5 = $$2.c();
-      jv<cuq> $$6 = $$0.dP().r().c(czf.a, $$3, $$0.dP());
+      jv<cuq> $$6 = $$0.dO().r().c(czf.a, $$3, $$0.dO());
 
       for (int $$7 = 0; $$7 < $$3.g(); $$7++) {
          for (int $$8 = 0; $$8 < $$3.f(); $$8++) {
@@ -72,7 +72,7 @@ public class crm extends crq {
                } else if (cuq.c($$10, $$11)) {
                   $$11.g($$10.H());
                   this.a.a($$9, $$11);
-               } else if (!this.b.fZ().f($$11)) {
+               } else if (!this.b.fY().f($$11)) {
                   this.b.a($$11, false);
                }
             }

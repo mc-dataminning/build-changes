@@ -10,8 +10,8 @@ public record dao(daj d, daj e, jm<brm> f) implements das {
    );
 
    @Override
-   public void a(aqu $$0, int $$1, dab $$2, bsr $$3, exa $$4) {
-      float $$5 = ayo.b($$3.dS(), this.d.a($$1), this.e.a($$1));
+   public void a(aqu $$0, int $$1, dab $$2, bsr $$3, exc $$4) {
+      float $$5 = ayo.b($$3.dR(), this.d.a($$1), this.e.a($$1));
       $$3.a(new brk(this.f, $$2.c()), $$5);
    }
 

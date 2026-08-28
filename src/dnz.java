@@ -4,7 +4,7 @@ public class dnz extends dfy {
    public static final MapCodec<dnz> a = b(dnz::new);
    public static final duc b = dts.aw;
    protected static final float c = 6.0F;
-   protected static final ext d = dfy.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
+   protected static final exv d = dfy.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
 
    @Override
    public MapCodec<dnz> a() {
@@ -17,7 +17,7 @@ public class dnz extends dfy {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return d;
    }
 
@@ -64,12 +64,12 @@ public class dnz extends dfy {
       if ($$3.a(this)) {
          return true;
       } else {
-         if ($$3.a(awe.af) || $$3.a(awe.H)) {
+         if ($$3.a(awe.ag) || $$3.a(awe.I)) {
             jd $$4 = $$2.e();
 
             for (ji $$5 : ji.c.a) {
                dtc $$6 = $$1.a_($$4.a($$5));
-               epc $$7 = $$1.b_($$4.a($$5));
+               epe $$7 = $$1.b_($$4.a($$5));
                if ($$7.a(awk.a) || $$6.a(dga.kI)) {
                   return true;
                }

@@ -1,7 +1,7 @@
 import com.mojang.serialization.MapCodec;
 
 public abstract class dia extends dju {
-   protected static final ext c = dfy.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
+   protected static final exv c = dfy.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
    public static final dtt d = dts.w;
 
    protected dia(dtb.d $$0) {
@@ -12,7 +12,7 @@ public abstract class dia extends dju {
    protected abstract MapCodec<? extends dia> a();
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       return c;
    }
 
@@ -36,7 +36,7 @@ public abstract class dia extends dju {
          } else if (!$$4) {
             $$1.a($$2, $$0.a(d, Boolean.valueOf(true)), 2);
             if (!$$5) {
-               $$1.a($$2, this, this.g($$0), eyv.b);
+               $$1.a($$2, this, this.g($$0), eyx.b);
             }
          }
       }
@@ -76,11 +76,11 @@ public abstract class dia extends dju {
          boolean $$3 = $$2.c(d);
          boolean $$4 = this.a($$0, $$1, $$2);
          if ($$3 != $$4 && !$$0.P().b($$1, this)) {
-            eyv $$5 = eyv.c;
+            eyx $$5 = eyx.c;
             if (this.b((dcc)$$0, $$1, $$2)) {
-               $$5 = eyv.a;
+               $$5 = eyx.a;
             } else if ($$3) {
-               $$5 = eyv.b;
+               $$5 = eyx.b;
             }
 
             $$0.a($$1, this, this.g($$2), $$5);

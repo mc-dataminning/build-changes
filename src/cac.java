@@ -11,13 +11,13 @@ public class cac extends caq {
 
    @Override
    public boolean b() {
-      if (this.b.dS().a(this.c) != 0) {
+      if (this.b.dR().a(this.c) != 0) {
          return false;
       } else {
-         ji $$0 = this.b.cJ();
+         ji $$0 = this.b.cI();
          int $$1 = $$0.j();
          int $$2 = $$0.l();
-         jd $$3 = this.b.dp();
+         jd $$3 = this.b.do();
 
          for (int $$4 : a) {
             if (!this.a($$3, $$1, $$2, $$4) || !this.b($$3, $$1, $$2, $$4)) {
@@ -31,17 +31,17 @@ public class cac extends caq {
 
    private boolean a(jd $$0, int $$1, int $$2, int $$3) {
       jd $$4 = $$0.b($$1 * $$3, 0, $$2 * $$3);
-      return this.b.dP().b_($$4).a(awk.a) && !this.b.dP().a_($$4).d();
+      return this.b.dO().b_($$4).a(awk.a) && !this.b.dO().a_($$4).d();
    }
 
    private boolean b(jd $$0, int $$1, int $$2, int $$3) {
-      return this.b.dP().a_($$0.b($$1 * $$3, 1, $$2 * $$3)).i() && this.b.dP().a_($$0.b($$1 * $$3, 2, $$2 * $$3)).i();
+      return this.b.dO().a_($$0.b($$1 * $$3, 1, $$2 * $$3)).i() && this.b.dO().a_($$0.b($$1 * $$3, 2, $$2 * $$3)).i();
    }
 
    @Override
    public boolean c() {
-      double $$0 = this.b.ds().d;
-      return (!($$0 * $$0 < 0.03F) || this.b.dH() == 0.0F || !(Math.abs(this.b.dH()) < 10.0F) || !this.b.bf()) && !this.b.aF();
+      double $$0 = this.b.dr().d;
+      return (!($$0 * $$0 < 0.03F) || this.b.dG() == 0.0F || !(Math.abs(this.b.dG()) < 10.0F) || !this.b.bf()) && !this.b.aF();
    }
 
    @Override
@@ -51,8 +51,8 @@ public class cac extends caq {
 
    @Override
    public void d() {
-      ji $$0 = this.b.cJ();
-      this.b.i(this.b.ds().b((double)$$0.j() * 0.6, 0.7, (double)$$0.l() * 0.6));
+      ji $$0 = this.b.cI();
+      this.b.i(this.b.dr().b((double)$$0.j() * 0.6, 0.7, (double)$$0.l() * 0.6));
       this.b.N().n();
    }
 
@@ -65,7 +65,7 @@ public class cac extends caq {
    public void a() {
       boolean $$0 = this.d;
       if (!$$0) {
-         epc $$1 = this.b.dP().b_(this.b.dp());
+         epe $$1 = this.b.dO().b_(this.b.do());
          this.d = $$1.a(awk.a);
       }
 
@@ -73,9 +73,9 @@ public class cac extends caq {
          this.b.a(avp.hb, 1.0F, 1.0F);
       }
 
-      exa $$2 = this.b.ds();
-      if ($$2.d * $$2.d < 0.03F && this.b.dH() != 0.0F) {
-         this.b.u(ayo.j(0.2F, this.b.dH(), 0.0F));
+      exc $$2 = this.b.dr();
+      if ($$2.d * $$2.d < 0.03F && this.b.dG() != 0.0F) {
+         this.b.u(ayo.j(0.2F, this.b.dG(), 0.0F));
       } else if ($$2.f() > 1.0E-5F) {
          double $$3 = $$2.h();
          double $$4 = Math.atan2(-$$2.d, $$3) * 180.0F / (float)Math.PI;

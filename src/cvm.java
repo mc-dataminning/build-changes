@@ -19,7 +19,7 @@ public interface cvm {
       }
 
       public static class a {
-         private cvm.b a = ($$0, $$1) -> did.a($$0, 0.7, new exa(0.0, 0.1, 0.0));
+         private cvm.b a = ($$0, $$1) -> did.a($$0, 0.7, new exc(0.0, 0.1, 0.0));
          private float b = 6.0F;
          private float c = 1.1F;
          private OptionalInt d = OptionalInt.empty();

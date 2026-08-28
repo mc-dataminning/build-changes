@@ -12,12 +12,12 @@ public class dex extends dew implements dna {
    public static final dtw d = dts.P;
    private final float k;
    private final float l;
-   protected final ext e;
-   protected final ext f;
-   protected final ext g;
-   protected final ext h;
-   protected final ext i;
-   protected final ext j;
+   protected final exv e;
+   protected final exv f;
+   protected final exv g;
+   protected final exv h;
+   protected final exv i;
+   protected final exv j;
 
    @Override
    public MapCodec<dex> a() {
@@ -38,7 +38,7 @@ public class dex extends dew implements dna {
    }
 
    @Override
-   protected ext a(dtc $$0, dcc $$1, jd $$2, exf $$3) {
+   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
       ji $$4 = $$0.c(d);
       switch ($$4) {
          case c:
@@ -67,7 +67,7 @@ public class dex extends dew implements dna {
    @Override
    protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
       if ($$0.c(c)) {
-         $$3.a($$4, epd.c, epd.c.a($$3));
+         $$3.a($$4, epf.c, epf.c.a($$3));
       }
 
       return $$1 == $$0.c(d).g() && !$$0.a($$3, $$4) ? dga.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
@@ -78,7 +78,7 @@ public class dex extends dew implements dna {
    public dtc a(cyd $$0) {
       dcx $$1 = $$0.q();
       jd $$2 = $$0.a();
-      return this.o().a(c, Boolean.valueOf($$1.b_($$2).a() == epd.c)).a(d, $$0.k());
+      return this.o().a(c, Boolean.valueOf($$1.b_($$2).a() == epf.c)).a(d, $$0.k());
    }
 
    @Override
@@ -92,8 +92,8 @@ public class dex extends dew implements dna {
    }
 
    @Override
-   protected epc b_(dtc $$0) {
-      return $$0.c(c) ? epd.c.a(false) : super.b_($$0);
+   protected epe b_(dtc $$0) {
+      return $$0.c(c) ? epf.c.a(false) : super.b_($$0);
    }
 
    @Override

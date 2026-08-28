@@ -1,15 +1,56 @@
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
+
 public class fbe {
-   public static final fbl a = fbl.a().a("Position", fbm.b).a();
-   public static final fbl b = fbl.a().a("Position", fbm.b).a("Color", fbm.c).a("UV0", fbm.d).a("UV2", fbm.g).a("Normal", fbm.h).a(1).a();
-   public static final fbl c = fbl.a().a("Position", fbm.b).a("Color", fbm.c).a("UV0", fbm.d).a("UV1", fbm.f).a("UV2", fbm.g).a("Normal", fbm.h).a(1).a();
-   public static final fbl d = fbl.a().a("Position", fbm.b).a("UV0", fbm.d).a("Color", fbm.c).a("UV2", fbm.g).a();
-   public static final fbl e = fbl.a().a("Position", fbm.b).a();
-   public static final fbl f = fbl.a().a("Position", fbm.b).a("Color", fbm.c).a();
-   public static final fbl g = fbl.a().a("Position", fbm.b).a("Color", fbm.c).a("Normal", fbm.h).a(1).a();
-   public static final fbl h = fbl.a().a("Position", fbm.b).a("Color", fbm.c).a("UV2", fbm.g).a();
-   public static final fbl i = fbl.a().a("Position", fbm.b).a("UV0", fbm.d).a();
-   public static final fbl j = fbl.a().a("Position", fbm.b).a("UV0", fbm.d).a("Color", fbm.c).a();
-   public static final fbl k = fbl.a().a("Position", fbm.b).a("Color", fbm.c).a("UV0", fbm.d).a("UV2", fbm.g).a();
-   public static final fbl l = fbl.a().a("Position", fbm.b).a("UV0", fbm.d).a("UV2", fbm.g).a("Color", fbm.c).a();
-   public static final fbl m = fbl.a().a("Position", fbm.b).a("UV0", fbm.d).a("Color", fbm.c).a("Normal", fbm.h).a(1).a();
+   @Nullable
+   private static fbl a;
+
+   public static void a() {
+      if (a != null) {
+         b();
+         fbl.b();
+      }
+   }
+
+   public static void b() {
+      a = null;
+   }
+
+   public static void a(fbh $$0) {
+      if (!RenderSystem.isOnRenderThreadOrInit()) {
+         RenderSystem.recordRenderCall(() -> c($$0));
+      } else {
+         c($$0);
+      }
+   }
+
+   private static void c(fbh $$0) {
+      fbl $$1 = d($$0);
+      $$1.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
+   }
+
+   public static void b(fbh $$0) {
+      fbl $$1 = d($$0);
+      $$1.c();
+   }
+
+   private static fbl d(fbh $$0) {
+      RenderSystem.assertOnRenderThread();
+      fbl $$1 = a($$0.c().a());
+      $$1.a($$0);
+      return $$1;
+   }
+
+   private static fbl a(fbn $$0) {
+      fbl $$1 = $$0.i();
+      a($$1);
+      return $$1;
+   }
+
+   private static void a(fbl $$0) {
+      if ($$0 != a) {
+         $$0.a();
+         a = $$0;
+      }
+   }
 }

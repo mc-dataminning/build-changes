@@ -1,28 +1,28 @@
-public class gni extends gln<ciu, fxy<ciu>> {
-   private static final akr a = akr.b("textures/entity/wither/wither_invulnerable.png");
-   private static final akr i = akr.b("textures/entity/wither/wither.png");
+public class gni extends gki<cof> {
+   private static final float a = ayo.k(3.5F);
+   private static final akr g = akr.b("textures/entity/projectiles/wind_charge.png");
+   private final fxy h;
 
-   public gni(gkh.a $$0) {
-      super($$0, new fxy<>($$0.a(fyh.bW)), 1.0F);
-      this.a(new gph(this, $$0.f()));
+   public gni(gkj.a $$0) {
+      super($$0);
+      this.h = new fxy($$0.a(fyj.bU));
    }
 
-   protected int a(ciu $$0, jd $$1) {
-      return 15;
-   }
-
-   public akr a(ciu $$0) {
-      int $$1 = $$0.x();
-      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : i;
-   }
-
-   protected void a(ciu $$0, fbg $$1, float $$2) {
-      float $$3 = 2.0F;
-      int $$4 = $$0.x();
-      if ($$4 > 0) {
-         $$3 -= ((float)$$4 - $$2) / 220.0F * 0.5F;
+   public void a(cof $$0, float $$1, float $$2, fbi $$3, gez $$4, int $$5) {
+      if ($$0.ai >= 2 || !(this.d.b.g().g($$0) < (double)a)) {
+         float $$6 = (float)$$0.ai + $$2;
+         fbm $$7 = $$4.getBuffer(gfh.a(g, this.a($$6) % 1.0F, 0.0F));
+         this.h.a($$0, 0.0F, 0.0F, $$6, 0.0F, 0.0F);
+         this.h.a($$3, $$7, $$5, gqc.d);
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
+   }
 
-      $$1.b($$3, $$3, $$3);
+   protected float a(float $$0) {
+      return $$0 * 0.03F;
+   }
+
+   public akr a(cof $$0) {
+      return g;
    }
 }
