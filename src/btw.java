@@ -1,5 +1,5 @@
 public abstract class btw extends btp {
-   protected static final float bZ = 0.0F;
+   protected static final float cb = 0.0F;
 
    protected btw(bsx<? extends btw> $$0, dcw $$1) {
       super($$0, $$1);
@@ -26,7 +26,7 @@ public abstract class btw extends btp {
       if (this.bF.a(ccs.Z)) {
          return this.bF.c(ccs.Z).isPresent();
       } else {
-         for (cca $$0 : this.bU.b()) {
+         for (cca $$0 : this.bW.b()) {
             if ($$0.h() && $$0.k() instanceof cbf) {
                return true;
             }
@@ -44,7 +44,7 @@ public abstract class btw extends btp {
    public void b(bsr $$0) {
       super.b($$0);
       if (this.gi() && !this.gh()) {
-         this.bU.b(cam.a.a);
+         this.bW.b(cam.a.a);
          float $$1 = 2.0F;
          float $$2 = this.f($$0);
          exc $$3 = new exc($$0.dt() - this.dt(), $$0.dv() - this.dv(), $$0.dz() - this.dz()).d().a((double)Math.max($$2 - 2.0F, 0.0F));

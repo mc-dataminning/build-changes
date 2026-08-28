@@ -713,7 +713,7 @@ public class amt {
                            .then(
                               eu.a("leasher")
                                  .fork(
-                                    $$0, a((Function<bsr, Optional<bsr>>)($$0x -> $$0x instanceof btp $$1x ? Optional.ofNullable($$1x.A()) : Optional.empty()))
+                                    $$0, a((Function<bsr, Optional<bsr>>)($$0x -> $$0x instanceof btk $$1x ? Optional.ofNullable($$1x.A()) : Optional.empty()))
                                  )
                            ))
                         .then(

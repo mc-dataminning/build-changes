@@ -88,7 +88,7 @@ public class yh implements xa {
          return wz.i();
       } else {
          eyf $$3 = this.a($$0);
-         eyf $$4 = (eyf)($$1 != null && $$3.equals(eyf.cA) ? $$1 : $$3);
+         eyf $$4 = (eyf)($$1 != null && $$3.equals(eyf.cC) ? $$1 : $$3);
          return this.a($$4, $$0);
       }
    }

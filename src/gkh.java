@@ -104,7 +104,7 @@ public class gkh implements auf {
          }
 
          if (this.r && !$$0.ci() && !fgo.Q().av()) {
-            a($$6, $$7.getBuffer(gfh.y()), $$0, $$5);
+            a($$6, $$7.getBuffer(gfh.y()), $$0, $$5, 1.0F, 1.0F, 1.0F);
          }
 
          $$6.b();
@@ -121,44 +121,70 @@ public class gkh implements auf {
       }
    }
 
-   private static void a(fbi $$0, fbm $$1, bsr $$2, float $$3) {
-      ewx $$4 = $$2.cK().d(-$$2.dt(), -$$2.dv(), -$$2.dz());
-      gex.a($$0, $$1, $$4, 1.0F, 1.0F, 1.0F, 1.0F);
-      if ($$2 instanceof cia) {
-         double $$5 = -ayo.d((double)$$3, $$2.ad, $$2.dt());
-         double $$6 = -ayo.d((double)$$3, $$2.ae, $$2.dv());
-         double $$7 = -ayo.d((double)$$3, $$2.af, $$2.dz());
+   private static void a(fbi $$0, bsr $$1, gez $$2) {
+      bsr $$3 = c($$1);
+      if ($$3 == null) {
+         gim.a($$0, $$2, "Missing", $$1.dt(), $$1.cK().e + 1.5, $$1.dz(), -65536);
+      } else {
+         $$0.a();
+         $$0.a($$3.dt() - $$1.dt(), $$3.dv() - $$1.dv(), $$3.dz() - $$1.dz());
+         a($$0, $$2.getBuffer(gfh.y()), $$3, 1.0F, 0.0F, 1.0F, 0.0F);
+         a($$0, $$2.getBuffer(gfh.y()), new Vector3f(), $$3.dr(), -256);
+         $$0.b();
+      }
+   }
 
-         for (chy $$8 : ((cia)$$2).gg()) {
+   @Nullable
+   private static bsr c(bsr $$0) {
+      guo $$1 = fgo.Q().V();
+      if ($$1 != null) {
+         aqu $$2 = $$1.a($$0.dO().af());
+         if ($$2 != null) {
+            return $$2.a($$0.an());
+         }
+      }
+
+      return null;
+   }
+
+   private static void a(fbi $$0, fbm $$1, bsr $$2, float $$3, float $$4, float $$5, float $$6) {
+      ewx $$7 = $$2.cK().d(-$$2.dt(), -$$2.dv(), -$$2.dz());
+      gex.a($$0, $$1, $$7, $$4, $$5, $$6, 1.0F);
+      if ($$2 instanceof cia) {
+         double $$8 = -ayo.d((double)$$3, $$2.ad, $$2.dt());
+         double $$9 = -ayo.d((double)$$3, $$2.ae, $$2.dv());
+         double $$10 = -ayo.d((double)$$3, $$2.af, $$2.dz());
+
+         for (chy $$11 : ((cia)$$2).gg()) {
             $$0.a();
-            double $$9 = $$5 + ayo.d((double)$$3, $$8.ad, $$8.dt());
-            double $$10 = $$6 + ayo.d((double)$$3, $$8.ae, $$8.dv());
-            double $$11 = $$7 + ayo.d((double)$$3, $$8.af, $$8.dz());
-            $$0.a($$9, $$10, $$11);
-            gex.a($$0, $$1, $$8.cK().d(-$$8.dt(), -$$8.dv(), -$$8.dz()), 0.25F, 1.0F, 0.0F, 1.0F);
+            double $$12 = $$8 + ayo.d((double)$$3, $$11.ad, $$11.dt());
+            double $$13 = $$9 + ayo.d((double)$$3, $$11.ae, $$11.dv());
+            double $$14 = $$10 + ayo.d((double)$$3, $$11.af, $$11.dz());
+            $$0.a($$12, $$13, $$14);
+            gex.a($$0, $$1, $$11.cK().d(-$$11.dt(), -$$11.dv(), -$$11.dz()), 0.25F, 1.0F, 0.0F, 1.0F);
             $$0.b();
          }
       }
 
       if ($$2 instanceof btn) {
-         float $$12 = 0.01F;
-         gex.a($$0, $$1, $$4.a, (double)($$2.cL() - 0.01F), $$4.c, $$4.d, (double)($$2.cL() + 0.01F), $$4.f, 1.0F, 0.0F, 0.0F, 1.0F);
+         float $$15 = 0.01F;
+         gex.a($$0, $$1, $$7.a, (double)($$2.cL() - 0.01F), $$7.c, $$7.d, (double)($$2.cL() + 0.01F), $$7.f, 1.0F, 0.0F, 0.0F, 1.0F);
       }
 
-      bsr $$13 = $$2.dc();
-      if ($$13 != null) {
-         float $$14 = Math.min($$13.dj(), $$2.dj()) / 2.0F;
-         float $$15 = 0.0625F;
-         exc $$16 = $$13.m($$2).d($$2.dm());
+      bsr $$16 = $$2.dc();
+      if ($$16 != null) {
+         float $$17 = Math.min($$16.dj(), $$2.dj()) / 2.0F;
+         float $$18 = 0.0625F;
+         exc $$19 = $$16.m($$2).d($$2.dm());
          gex.a(
             $$0,
             $$1,
-            $$16.c - (double)$$14,
-            $$16.d,
-            $$16.e - (double)$$14,
-            $$16.c + (double)$$14,
-            $$16.d + 0.0625,
-            $$16.e + (double)$$14,
+            $$19.c - (double)$$17,
+            $$19.d,
+            $$19.e - (double)$$17,
+            $$19.c + (double)$$17,
+            $$19.d + 0.0625,
+            $$19.e + (double)$$17,
             1.0F,
             1.0F,
             0.0F,
@@ -166,12 +192,15 @@ public class gkh implements auf {
          );
       }
 
-      exc $$17 = $$2.g($$3);
-      fbi.a $$18 = $$0.c();
-      $$1.a($$18, 0.0F, $$2.cL(), 0.0F).a(-16776961).b($$18, (float)$$17.c, (float)$$17.d, (float)$$17.e);
-      $$1.a($$18, (float)($$17.c * 2.0), (float)((double)$$2.cL() + $$17.d * 2.0), (float)($$17.e * 2.0))
-         .a(0, 0, 255, 255)
-         .b($$18, (float)$$17.c, (float)$$17.d, (float)$$17.e);
+      a($$0, $$1, new Vector3f(0.0F, $$2.cL(), 0.0F), $$2.g($$3).a(2.0), -16776961);
+   }
+
+   private static void a(fbi $$0, fbm $$1, Vector3f $$2, exc $$3, int $$4) {
+      fbi.a $$5 = $$0.c();
+      $$1.a($$5, $$2).a($$4).b($$5, (float)$$3.c, (float)$$3.d, (float)$$3.e);
+      $$1.a($$5, (float)((double)$$2.x() + $$3.c), (float)((double)$$2.y() + $$3.d), (float)((double)$$2.z() + $$3.e))
+         .a($$4)
+         .b($$5, (float)$$3.c, (float)$$3.d, (float)$$3.e);
    }
 
    private void a(fbi $$0, gez $$1, bsr $$2, Quaternionf $$3) {

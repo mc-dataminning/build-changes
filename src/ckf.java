@@ -8,14 +8,14 @@ public class ckf extends btd implements cjv {
    public static final int c = ayo.f(24.166098F);
    private static final ajw<Integer> d = aka.a(ckf.class, ajy.b);
    exc e = exc.b;
-   jd bZ = jd.c;
-   ckf.a ca = ckf.a.a;
+   jd cb = jd.c;
+   ckf.a cc = ckf.a.a;
 
    public ckf(bsx<? extends ckf> $$0, dcw $$1) {
       super($$0, $$1);
-      this.bP = 5;
-      this.bR = new ckf.g(this);
-      this.bQ = new ckf.f(this);
+      this.bR = 5;
+      this.bT = new ckf.g(this);
+      this.bS = new ckf.f(this);
    }
 
    @Override
@@ -30,10 +30,10 @@ public class ckf extends btd implements cjv {
 
    @Override
    protected void B() {
-      this.bU.a(1, new ckf.c());
-      this.bU.a(2, new ckf.i());
-      this.bU.a(3, new ckf.e());
-      this.bV.a(1, new ckf.b());
+      this.bW.a(1, new ckf.c());
+      this.bW.a(2, new ckf.i());
+      this.bW.a(3, new ckf.e());
+      this.bX.a(1, new ckf.b());
    }
 
    @Override
@@ -108,7 +108,7 @@ public class ckf extends btd implements cjv {
 
    @Override
    public buh a(ddl $$0, bqp $$1, btr $$2, @Nullable buh $$3) {
-      this.bZ = this.do().b(5);
+      this.cb = this.do().b(5);
       this.b(0);
       return super.a($$0, $$1, $$2, $$3);
    }
@@ -117,7 +117,7 @@ public class ckf extends btd implements cjv {
    public void a(ub $$0) {
       super.a($$0);
       if ($$0.e("AX")) {
-         this.bZ = new jd($$0.h("AX"), $$0.h("AY"), $$0.h("AZ"));
+         this.cb = new jd($$0.h("AX"), $$0.h("AY"), $$0.h("AZ"));
       }
 
       this.b($$0.h("Size"));
@@ -126,9 +126,9 @@ public class ckf extends btd implements cjv {
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      $$0.a("AX", this.bZ.u());
-      $$0.a("AY", this.bZ.v());
-      $$0.a("AZ", this.bZ.w());
+      $$0.a("AX", this.cb.u());
+      $$0.a("AY", this.cb.v());
+      $$0.a("AZ", this.cb.w());
       $$0.a("Size", this.s());
    }
 
@@ -225,21 +225,21 @@ public class ckf extends btd implements cjv {
       @Override
       public void d() {
          this.b = this.a(10);
-         ckf.this.ca = ckf.a.a;
+         ckf.this.cc = ckf.a.a;
          this.h();
       }
 
       @Override
       public void e() {
-         ckf.this.bZ = ckf.this.dO().a(dyy.a.e, ckf.this.bZ).b(10 + ckf.this.ah.a(20));
+         ckf.this.cb = ckf.this.dO().a(dyy.a.e, ckf.this.cb).b(10 + ckf.this.ah.a(20));
       }
 
       @Override
       public void a() {
-         if (ckf.this.ca == ckf.a.a) {
+         if (ckf.this.cc == ckf.a.a) {
             this.b--;
             if (this.b <= 0) {
-               ckf.this.ca = ckf.a.b;
+               ckf.this.cc = ckf.a.b;
                this.h();
                this.b = this.a((8 + ckf.this.ah.a(4)) * 20);
                ckf.this.a(avp.tz, 10.0F, 0.95F + ckf.this.ah.i() * 0.1F);
@@ -248,9 +248,9 @@ public class ckf extends btd implements cjv {
       }
 
       private void h() {
-         ckf.this.bZ = ckf.this.p().do().b(20 + ckf.this.ah.a(20));
-         if (ckf.this.bZ.v() < ckf.this.dO().z_()) {
-            ckf.this.bZ = new jd(ckf.this.bZ.u(), ckf.this.dO().z_() + 1, ckf.this.bZ.w());
+         ckf.this.cb = ckf.this.p().do().b(20 + ckf.this.ah.a(20));
+         if (ckf.this.cb.v() < ckf.this.dO().z_()) {
+            ckf.this.cb = new jd(ckf.this.cb.u(), ckf.this.dO().z_() + 1, ckf.this.cb.w());
          }
       }
    }
@@ -275,7 +275,7 @@ public class ckf extends btd implements cjv {
 
       @Override
       public boolean b() {
-         return ckf.this.p() == null || ckf.this.ca == ckf.a.a;
+         return ckf.this.p() == null || ckf.this.cc == ckf.a.a;
       }
 
       @Override
@@ -321,12 +321,12 @@ public class ckf extends btd implements cjv {
       }
 
       private void i() {
-         if (jd.c.equals(ckf.this.bZ)) {
-            ckf.this.bZ = ckf.this.do();
+         if (jd.c.equals(ckf.this.cb)) {
+            ckf.this.cb = ckf.this.do();
          }
 
          this.c = this.c + this.f * 15.0F * (float) (Math.PI / 180.0);
-         ckf.this.e = exc.a(ckf.this.bZ).b((double)(this.d * ayo.b(this.c)), (double)(-4.0F + this.e), (double)(this.d * ayo.a(this.c)));
+         ckf.this.e = exc.a(ckf.this.cb).b((double)(this.d * ayo.b(this.c)), (double)(-4.0F + this.e), (double)(this.d * ayo.a(this.c)));
       }
    }
 
@@ -405,7 +405,7 @@ public class ckf extends btd implements cjv {
 
       @Override
       public boolean b() {
-         return ckf.this.p() != null && ckf.this.ca == ckf.a.b;
+         return ckf.this.p() != null && ckf.this.cc == ckf.a.b;
       }
 
       @Override
@@ -446,7 +446,7 @@ public class ckf extends btd implements cjv {
       @Override
       public void e() {
          ckf.this.h(null);
-         ckf.this.ca = ckf.a.a;
+         ckf.this.cc = ckf.a.a;
       }
 
       @Override
@@ -456,12 +456,12 @@ public class ckf extends btd implements cjv {
             ckf.this.e = new exc($$0.dt(), $$0.e(0.5), $$0.dz());
             if (ckf.this.cK().g(0.2F).c($$0.cK())) {
                ckf.this.D($$0);
-               ckf.this.ca = ckf.a.a;
+               ckf.this.cc = ckf.a.a;
                if (!ckf.this.aX()) {
                   ckf.this.dO().c(1039, ckf.this.do(), 0);
                }
             } else if (ckf.this.Q || ckf.this.aO > 0) {
-               ckf.this.ca = ckf.a.a;
+               ckf.this.cc = ckf.a.a;
             }
          }
       }

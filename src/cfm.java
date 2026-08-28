@@ -6,16 +6,16 @@ import javax.annotation.Nullable;
 public class cfm extends cgg {
    private static final ajw<jd> d = aka.a(cfm.class, ajy.o);
    private static final ajw<Boolean> e = aka.a(cfm.class, ajy.k);
-   private static final ajw<Integer> ca = aka.a(cfm.class, ajy.b);
-   static final cef cb = cef.b().a(10.0).d();
+   private static final ajw<Integer> cc = aka.a(cfm.class, ajy.b);
+   static final cef cd = cef.b().a(10.0).d();
    public static final int b = 4800;
-   private static final int cc = 2400;
+   private static final int ce = 2400;
    public static final Predicate<cjh> c = $$0 -> !$$0.y() && $$0.bE() && $$0.bf();
 
    public cfm(bsx<? extends cfm> $$0, dcw $$1) {
       super($$0, $$1);
-      this.bR = new bzr(this, 85, 10, 0.02F, 0.1F, true);
-      this.bQ = new bzq(this, 10);
+      this.bT = new bzr(this, 85, 10, 0.02F, 0.1F, true);
+      this.bS = new bzq(this, 10);
       this.a_(true);
    }
 
@@ -48,11 +48,11 @@ public class cfm extends cgg {
    }
 
    public int x() {
-      return this.ao.a(ca);
+      return this.ao.a(cc);
    }
 
    public void c(int $$0) {
-      this.ao.a(ca, $$0);
+      this.ao.a(cc, $$0);
    }
 
    @Override
@@ -60,7 +60,7 @@ public class cfm extends cgg {
       super.a($$0);
       $$0.a(d, jd.c);
       $$0.a(e, false);
-      $$0.a(ca, 2400);
+      $$0.a(cc, 2400);
    }
 
    @Override
@@ -86,19 +86,19 @@ public class cfm extends cgg {
 
    @Override
    protected void B() {
-      this.bU.a(0, new bzx(this));
-      this.bU.a(0, new cbw(this));
-      this.bU.a(1, new cfm.a(this));
-      this.bU.a(2, new cfm.b(this, 4.0));
-      this.bU.a(4, new cbk(this, 1.0, 10));
-      this.bU.a(4, new cbh(this));
-      this.bU.a(5, new cau(this, cmx.class, 6.0F));
-      this.bU.a(5, new cac(this, 10));
-      this.bU.a(6, new caw(this, 1.2F, true));
-      this.bU.a(8, new cfm.c());
-      this.bU.a(8, new cah(this));
-      this.bU.a(9, new bzt<>(this, cjz.class, 8.0F, 1.0, 1.0));
-      this.bV.a(1, new cce(this, cjz.class).a());
+      this.bW.a(0, new bzx(this));
+      this.bW.a(0, new cbw(this));
+      this.bW.a(1, new cfm.a(this));
+      this.bW.a(2, new cfm.b(this, 4.0));
+      this.bW.a(4, new cbk(this, 1.0, 10));
+      this.bW.a(4, new cbh(this));
+      this.bW.a(5, new cau(this, cmx.class, 6.0F));
+      this.bW.a(5, new cac(this, 10));
+      this.bW.a(6, new caw(this, 1.2F, true));
+      this.bW.a(8, new cfm.c());
+      this.bW.a(8, new cah(this));
+      this.bW.a(9, new bzt<>(this, cjz.class, 8.0F, 1.0, 1.0));
+      this.bX.a(1, new cce(this, cjz.class).a());
    }
 
    public static buv.a gk() {
@@ -378,7 +378,7 @@ public class cfm extends cgg {
 
       @Override
       public boolean b() {
-         this.c = this.a.dO().a(cfm.cb, this.a);
+         this.c = this.a.dO().a(cfm.cd, this.a);
          return this.c == null ? false : this.c.cd() && this.a.p() != this.c;
       }
 

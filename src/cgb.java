@@ -1,6 +1,6 @@
 public abstract class cgb extends bul {
-   private static final int ce = 100;
-   private int cf;
+   private static final int cg = 100;
+   private int ch;
 
    protected cgb(bsx<? extends cgb> $$0, dcw $$1) {
       super($$0, $$1);
@@ -20,11 +20,11 @@ public abstract class cgb extends bul {
 
    @Override
    public void l() {
-      this.cf++;
+      this.ch++;
       super.l();
    }
 
    public boolean gy() {
-      return this.cf > 100;
+      return this.ch > 100;
    }
 }

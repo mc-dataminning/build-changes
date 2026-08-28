@@ -3,32 +3,32 @@ import com.mojang.serialization.Dynamic;
 import javax.annotation.Nullable;
 
 public class cgv extends chi implements bty, bue {
-   public static final float ca = 0.45F;
-   public static final int cb = 55;
-   public static final int cc = 30;
-   private static final float cB = 0.1F;
-   private static final float cC = 1.4285F;
-   private static final float cD = 22.2222F;
-   private static final int cE = 5;
-   private static final int cF = 40;
-   private static final int cG = 52;
-   private static final int cH = 80;
-   private static final float cI = 1.43F;
-   public static final ajw<Boolean> ce = aka.a(cgv.class, ajy.k);
-   public static final ajw<Long> cf = aka.a(cgv.class, ajy.c);
-   public final bsm cg = new bsm();
-   public final bsm ch = new bsm();
+   public static final float cc = 0.45F;
+   public static final int cd = 55;
+   public static final int ce = 30;
+   private static final float cD = 0.1F;
+   private static final float cE = 1.4285F;
+   private static final float cF = 22.2222F;
+   private static final int cG = 5;
+   private static final int cH = 40;
+   private static final int cI = 52;
+   private static final int cJ = 80;
+   private static final float cK = 1.43F;
+   public static final ajw<Boolean> cg = aka.a(cgv.class, ajy.k);
+   public static final ajw<Long> ch = aka.a(cgv.class, ajy.c);
    public final bsm ci = new bsm();
    public final bsm cj = new bsm();
    public final bsm ck = new bsm();
-   private static final bsu cJ = bsu.b(bsx.o.l(), bsx.o.m() - 1.43F).b(0.845F);
-   private int cK = 0;
-   private int cL = 0;
+   public final bsm cl = new bsm();
+   public final bsm cm = new bsm();
+   private static final bsu cL = bsu.b(bsx.o.l(), bsx.o.m() - 1.43F).b(0.845F);
+   private int cM = 0;
+   private int cN = 0;
 
    public cgv(bsx<? extends cgv> $$0, dcw $$1) {
       super($$0, $$1);
-      this.bR = new cgv.c();
-      this.bQ = new cgv.b();
+      this.bT = new cgv.c();
+      this.bS = new cgv.b();
       ccz $$2 = (ccz)this.N();
       $$2.a(true);
       $$2.e(true);
@@ -37,7 +37,7 @@ public class cgv extends chi implements bty, bue {
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      $$0.a("LastPoseTick", this.ao.a(cf));
+      $$0.a("LastPoseTick", this.ao.a(ch));
    }
 
    @Override
@@ -58,8 +58,8 @@ public class cgv extends chi implements bty, bue {
    @Override
    protected void a(aka.a $$0) {
       super.a($$0);
-      $$0.a(ce, false);
-      $$0.a(cf, 0L);
+      $$0.a(cg, false);
+      $$0.a(ch, 0L);
    }
 
    @Override
@@ -85,7 +85,7 @@ public class cgv extends chi implements bty, bue {
 
    @Override
    public bsu e(bua $$0) {
-      return $$0 == bua.k ? cJ.a(this.ea()) : super.e($$0);
+      return $$0 == bua.k ? cL.a(this.ea()) : super.e($$0);
    }
 
    @Override
@@ -103,13 +103,13 @@ public class cgv extends chi implements bty, bue {
    @Override
    public void l() {
       super.l();
-      if (this.x() && this.cK < 50 && (this.aF() || this.bj() || this.bS())) {
+      if (this.x() && this.cM < 50 && (this.aF() || this.bj() || this.bS())) {
          this.x(false);
       }
 
-      if (this.cK > 0) {
-         this.cK--;
-         if (this.cK == 0) {
+      if (this.cM > 0) {
+         this.cM--;
+         if (this.cM == 0) {
             this.dO().a(null, this.do(), avp.dz, avq.g, 1.0F, 1.0F);
          }
       }
@@ -128,35 +128,35 @@ public class cgv extends chi implements bty, bue {
    }
 
    private void gV() {
-      if (this.cL <= 0) {
-         this.cL = this.ah.a(40) + 80;
-         this.cj.a(this.ai);
+      if (this.cN <= 0) {
+         this.cN = this.ah.a(40) + 80;
+         this.cl.a(this.ai);
       } else {
-         this.cL--;
+         this.cN--;
       }
 
       if (this.go()) {
-         this.ci.a();
          this.ck.a();
+         this.cm.a();
          if (this.gW()) {
-            this.cg.b(this.ai);
-            this.ch.a();
+            this.ci.b(this.ai);
+            this.cj.a();
          } else {
-            this.cg.a();
-            this.ch.b(this.ai);
+            this.ci.a();
+            this.cj.b(this.ai);
          }
       } else {
-         this.cg.a();
-         this.ch.a();
-         this.ck.a(this.x(), this.ai);
-         this.ci.a(this.gu() && this.gy() >= 0L, this.ai);
+         this.ci.a();
+         this.cj.a();
+         this.cm.a(this.x(), this.ai);
+         this.ck.a(this.gu() && this.gy() >= 0L, this.ai);
       }
    }
 
    @Override
    protected void z(float $$0) {
       float $$1;
-      if (this.at() == bua.a && !this.ck.c()) {
+      if (this.at() == bua.a && !this.cm.c()) {
          $$1 = Math.min($$0 * 6.0F, 1.0F);
       } else {
          $$1 = 0.0F;
@@ -210,7 +210,7 @@ public class cgv extends chi implements bty, bue {
 
    @Override
    public void b(int $$0) {
-      if (this.i() && this.cK <= 0 && this.aF()) {
+      if (this.i() && this.cM <= 0 && this.aF()) {
          super.b($$0);
       }
    }
@@ -224,17 +224,17 @@ public class cgv extends chi implements bty, bue {
    protected void b(float $$0, exc $$1) {
       double $$2 = (double)this.fd();
       this.j(this.bM().d(1.0, 0.0, 1.0).d().a((double)(22.2222F * $$0) * this.g(buw.v) * (double)this.aO()).b(0.0, (double)(1.4285F * $$0) * $$2, 0.0));
-      this.cK = 55;
+      this.cM = 55;
       this.x(true);
       this.av = true;
    }
 
    public boolean x() {
-      return this.ao.a(ce);
+      return this.ao.a(cg);
    }
 
    public void x(boolean $$0) {
-      this.ao.a(ce, $$0);
+      this.ao.a(cg, $$0);
    }
 
    @Override
@@ -250,7 +250,7 @@ public class cgv extends chi implements bty, bue {
 
    @Override
    public int c() {
-      return this.cK;
+      return this.cM;
    }
 
    @Override
@@ -468,7 +468,7 @@ public class cgv extends chi implements bty, bue {
    }
 
    public boolean gn() {
-      return this.ao.a(cf) < 0L;
+      return this.ao.a(ch) < 0L;
    }
 
    public boolean go() {
@@ -510,7 +510,7 @@ public class cgv extends chi implements bty, bue {
 
    @VisibleForTesting
    public void a(long $$0) {
-      this.ao.a(cf, $$0);
+      this.ao.a(ch, $$0);
    }
 
    private void b(long $$0) {
@@ -518,7 +518,7 @@ public class cgv extends chi implements bty, bue {
    }
 
    public long gy() {
-      return this.dO().Z() - Math.abs(this.ao.a(cf));
+      return this.dO().Z() - Math.abs(this.ao.a(ch));
    }
 
    @Override
@@ -528,8 +528,8 @@ public class cgv extends chi implements bty, bue {
 
    @Override
    public void a(ajw<?> $$0) {
-      if (!this.an && ce.equals($$0)) {
-         this.cK = this.cK == 0 ? 55 : this.cK;
+      if (!this.an && cg.equals($$0)) {
+         this.cM = this.cM == 0 ? 55 : this.cM;
       }
 
       super.a($$0);
@@ -543,7 +543,7 @@ public class cgv extends chi implements bty, bue {
    @Override
    public void b(cmx $$0) {
       if (!this.dO().B) {
-         $$0.a(this, this.cu);
+         $$0.a(this, this.cw);
       }
    }
 

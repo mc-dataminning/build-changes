@@ -40,7 +40,7 @@ public class fwa<T extends ckm> extends fvt<T> {
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3) {
-      float $$4 = ayo.i($$3, $$0.ca, $$0.bZ);
+      float $$4 = ayo.i($$3, $$0.cc, $$0.cb);
       if ($$4 < 0.0F) {
          $$4 = 0.0F;
       }

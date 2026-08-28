@@ -74,11 +74,15 @@ public class dlc extends dfy implements dlr {
    public eqc a(aqu $$0, bsr $$1, jd $$2) {
       akq<dcw> $$3 = $$0.af() == dcw.i ? dcw.h : dcw.i;
       aqu $$4 = $$0.o().a($$3);
-      boolean $$5 = $$4.af() == dcw.i;
-      dut $$6 = $$4.C_();
-      double $$7 = dwy.a($$0.D_(), $$4.D_());
-      jd $$8 = $$6.b($$1.dt() * $$7, $$1.dv(), $$1.dz() * $$7);
-      return this.a($$4, $$1, $$2, $$8, $$5, $$6);
+      if ($$4 == null) {
+         return null;
+      } else {
+         boolean $$5 = $$4.af() == dcw.i;
+         dut $$6 = $$4.C_();
+         double $$7 = dwy.a($$0.D_(), $$4.D_());
+         jd $$8 = $$6.b($$1.dt() * $$7, $$1.dv(), $$1.dz() * $$7);
+         return this.a($$4, $$1, $$2, $$8, $$5, $$6);
+      }
    }
 
    @Nullable

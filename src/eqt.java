@@ -19,20 +19,21 @@ public class eqt extends eql {
    private static final int k = 64;
    public static final int a = 4;
    public static final int b = 256;
+   private static final String l = "frame-";
    public final int c;
    public final int d;
    public final akq<dcw> e;
-   private final boolean l;
    private final boolean m;
+   private final boolean n;
    public final byte f;
    public byte[] g = new byte[16384];
    public final boolean h;
-   private final List<eqt.a> n = Lists.newArrayList();
-   private final Map<cmx, eqt.a> o = Maps.newHashMap();
-   private final Map<String, eqm> p = Maps.newHashMap();
-   final Map<String, eqn> q = Maps.newLinkedHashMap();
-   private final Map<String, eqq> r = Maps.newHashMap();
-   private int s;
+   private final List<eqt.a> o = Lists.newArrayList();
+   private final Map<cmx, eqt.a> p = Maps.newHashMap();
+   private final Map<String, eqm> q = Maps.newHashMap();
+   final Map<String, eqn> r = Maps.newLinkedHashMap();
+   private final Map<String, eqq> s = Maps.newHashMap();
+   private int t;
 
    public static eql.a<eqt> a() {
       return new eql.a<>(() -> {
@@ -45,8 +46,8 @@ public class eqt extends eql {
       this.c = $$0;
       this.d = $$1;
       this.e = $$6;
-      this.l = $$3;
-      this.m = $$4;
+      this.m = $$3;
+      this.n = $$4;
       this.h = $$5;
       this.c();
    }
@@ -83,7 +84,7 @@ public class eqt extends eql {
       akp<uy> $$11 = $$1.a(up.a);
 
       for (eqm $$13 : eqm.b.parse($$11, $$0.c("banners")).resultOrPartial($$0x -> i.warn("Failed to parse map banner: '{}'", $$0x)).orElse(List.of())) {
-         $$9.p.put($$13.b(), $$13);
+         $$9.q.put($$13.b(), $$13);
          $$9.a($$13.a(), null, $$13.b(), (double)$$13.c().u(), (double)$$13.c().w(), 180.0, $$13.e().orElse(null));
       }
 
@@ -92,8 +93,8 @@ public class eqt extends eql {
       for (int $$15 = 0; $$15 < $$14.size(); $$15++) {
          eqq $$16 = eqq.a($$14.a($$15));
          if ($$16 != null) {
-            $$9.r.put($$16.e(), $$16);
-            $$9.a(eqp.b, null, "frame-" + $$16.d(), (double)$$16.b().u(), (double)$$16.b().w(), (double)$$16.c(), null);
+            $$9.s.put($$16.e(), $$16);
+            $$9.a(eqp.b, null, b($$16.d()), (double)$$16.b().u(), (double)$$16.b().w(), (double)$$16.c(), null);
          }
       }
 
@@ -107,14 +108,14 @@ public class eqt extends eql {
       $$0.a("zCenter", this.d);
       $$0.a("scale", this.f);
       $$0.a("colors", this.g);
-      $$0.a("trackingPosition", this.l);
-      $$0.a("unlimitedTracking", this.m);
+      $$0.a("trackingPosition", this.m);
+      $$0.a("unlimitedTracking", this.n);
       $$0.a("locked", this.h);
       akp<uy> $$2 = $$1.a(up.a);
-      $$0.a("banners", (uy)eqm.b.encodeStart($$2, List.copyOf(this.p.values())).getOrThrow());
+      $$0.a("banners", (uy)eqm.b.encodeStart($$2, List.copyOf(this.q.values())).getOrThrow());
       uh $$3 = new uh();
 
-      for (eqq $$4 : this.r.values()) {
+      for (eqq $$4 : this.s.values()) {
          $$3.add($$4.a());
       }
 
@@ -123,17 +124,17 @@ public class eqt extends eql {
    }
 
    public eqt b() {
-      eqt $$0 = new eqt(this.c, this.d, this.f, this.l, this.m, true, this.e);
-      $$0.p.putAll(this.p);
+      eqt $$0 = new eqt(this.c, this.d, this.f, this.m, this.n, true, this.e);
       $$0.q.putAll(this.q);
-      $$0.s = this.s;
+      $$0.r.putAll(this.r);
+      $$0.t = this.t;
       System.arraycopy(this.g, 0, $$0.g, 0, this.g.length);
       $$0.c();
       return $$0;
    }
 
    public eqt e() {
-      return a((double)this.c, (double)this.d, (byte)ayo.a(this.f + 1, 0, 4), this.l, this.m, this.e);
+      return a((double)this.c, (double)this.d, (byte)ayo.a(this.f + 1, 0, 4), this.m, this.n, this.e);
    }
 
    private static Predicate<cuq> a(cuq $$0) {
@@ -142,10 +143,10 @@ public class eqt extends eql {
    }
 
    public void a(cmx $$0, cuq $$1) {
-      if (!this.o.containsKey($$0)) {
+      if (!this.p.containsKey($$0)) {
          eqt.a $$2 = new eqt.a($$0);
-         this.o.put($$0, $$2);
-         this.n.add($$2);
+         this.p.put($$0, $$2);
+         this.o.add($$2);
       }
 
       Predicate<cuq> $$3 = a($$1);
@@ -153,37 +154,37 @@ public class eqt extends eql {
          this.a($$0.ah().getString());
       }
 
-      for (int $$4 = 0; $$4 < this.n.size(); $$4++) {
-         eqt.a $$5 = this.n.get($$4);
+      for (int $$4 = 0; $$4 < this.o.size(); $$4++) {
+         eqt.a $$5 = this.o.get($$4);
          String $$6 = $$5.a.ah().getString();
          if (!$$5.a.dJ() && ($$5.a.fY().b($$3) || $$1.C())) {
-            if (!$$1.C() && $$5.a.dO().af() == this.e && this.l) {
+            if (!$$1.C() && $$5.a.dO().af() == this.e && this.m) {
                this.a(eqp.a, $$5.a.dO(), $$6, $$5.a.dt(), $$5.a.dz(), (double)$$5.a.dE(), null);
             }
          } else {
-            this.o.remove($$5.a);
-            this.n.remove($$5);
+            this.p.remove($$5.a);
+            this.o.remove($$5);
             this.a($$6);
          }
       }
 
-      if ($$1.C() && this.l) {
+      if ($$1.C() && this.m) {
          cja $$7 = $$1.D();
          jd $$8 = $$7.t();
-         eqq $$9 = this.r.get(eqq.a($$8));
-         if ($$9 != null && $$7.an() != $$9.d() && this.r.containsKey($$9.e())) {
-            this.a("frame-" + $$9.d());
+         eqq $$9 = this.s.get(eqq.a($$8));
+         if ($$9 != null && $$7.an() != $$9.d() && this.s.containsKey($$9.e())) {
+            this.a(b($$9.d()));
          }
 
          eqq $$10 = new eqq($$8, $$7.cH().e() * 90, $$7.an());
-         this.a(eqp.b, $$0.dO(), "frame-" + $$7.an(), (double)$$8.u(), (double)$$8.w(), (double)($$7.cH().e() * 90), null);
-         this.r.put($$10.e(), $$10);
+         this.a(eqp.b, $$0.dO(), b($$7.an()), (double)$$8.u(), (double)$$8.w(), (double)($$7.cH().e() * 90), null);
+         this.s.put($$10.e(), $$10);
       }
 
       cxr $$11 = $$1.a(kq.C, cxr.a);
-      if (!this.q.keySet().containsAll($$11.a().keySet())) {
+      if (!this.r.keySet().containsAll($$11.a().keySet())) {
          $$11.a().forEach(($$1x, $$2) -> {
-            if (!this.q.containsKey($$1x)) {
+            if (!this.r.containsKey($$1x)) {
                this.a($$2.a(), $$0.dO(), $$1x, $$2.b(), $$2.c(), (double)$$2.d(), null);
             }
          });
@@ -191,9 +192,9 @@ public class eqt extends eql {
    }
 
    private void a(String $$0) {
-      eqn $$1 = this.q.remove($$0);
+      eqn $$1 = this.r.remove($$0);
       if ($$1 != null && $$1.c().a().f()) {
-         this.s--;
+         this.t--;
       }
 
       this.i();
@@ -232,7 +233,7 @@ public class eqt extends eql {
          if (Math.abs($$8) < 320.0F && Math.abs($$9) < 320.0F) {
             $$0 = eqp.g;
          } else {
-            if (!this.m) {
+            if (!this.n) {
                this.a($$2);
                return;
             }
@@ -259,14 +260,14 @@ public class eqt extends eql {
       }
 
       eqn $$18 = new eqn($$0, $$10, $$11, $$13, Optional.ofNullable($$6));
-      eqn $$19 = this.q.put($$2, $$18);
+      eqn $$19 = this.r.put($$2, $$18);
       if (!$$18.equals($$19)) {
          if ($$19 != null && $$19.c().a().f()) {
-            this.s--;
+            this.t--;
          }
 
          if ($$0.a().f()) {
-            this.s++;
+            this.t++;
          }
 
          this.i();
@@ -275,29 +276,29 @@ public class eqt extends eql {
 
    @Nullable
    public zg<?> a(eqr $$0, cmx $$1) {
-      eqt.a $$2 = this.o.get($$1);
+      eqt.a $$2 = this.p.get($$1);
       return $$2 == null ? null : $$2.a($$0);
    }
 
    private void a(int $$0, int $$1) {
       this.c();
 
-      for (eqt.a $$2 : this.n) {
+      for (eqt.a $$2 : this.o) {
          $$2.a($$0, $$1);
       }
    }
 
    private void i() {
       this.c();
-      this.n.forEach(eqt.a::b);
+      this.o.forEach(eqt.a::b);
    }
 
    public eqt.a a(cmx $$0) {
-      eqt.a $$1 = this.o.get($$0);
+      eqt.a $$1 = this.p.get($$0);
       if ($$1 == null) {
          $$1 = new eqt.a($$0);
-         this.o.put($$0, $$1);
-         this.n.add($$1);
+         this.p.put($$0, $$1);
+         this.o.add($$1);
       }
 
       return $$1;
@@ -316,13 +317,13 @@ public class eqt extends eql {
             return false;
          }
 
-         if (this.p.remove($$8.b(), $$8)) {
+         if (this.q.remove($$8.b(), $$8)) {
             this.a($$8.b());
             return true;
          }
 
          if (!this.a(256)) {
-            this.p.put($$8.b(), $$8);
+            this.q.put($$8.b(), $$8);
             this.a($$8.a(), $$0, $$8.b(), $$2, $$3, 180.0, $$8.e().orElse(null));
             return true;
          }
@@ -332,7 +333,7 @@ public class eqt extends eql {
    }
 
    public void a(dcc $$0, int $$1, int $$2) {
-      Iterator<eqm> $$3 = this.p.values().iterator();
+      Iterator<eqm> $$3 = this.q.values().iterator();
 
       while ($$3.hasNext()) {
          eqm $$4 = $$3.next();
@@ -347,12 +348,12 @@ public class eqt extends eql {
    }
 
    public Collection<eqm> f() {
-      return this.p.values();
+      return this.q.values();
    }
 
    public void a(jd $$0, int $$1) {
-      this.a("frame-" + $$1);
-      this.r.remove(eqq.a($$0));
+      this.a(b($$1));
+      this.s.remove(eqq.a($$0));
    }
 
    public boolean a(int $$0, int $$1, byte $$2) {
@@ -371,7 +372,7 @@ public class eqt extends eql {
    }
 
    public boolean g() {
-      for (eqn $$0 : this.q.values()) {
+      for (eqn $$0 : this.r.values()) {
          if ($$0.c().a().e()) {
             return true;
          }
@@ -381,24 +382,28 @@ public class eqt extends eql {
    }
 
    public void a(List<eqn> $$0) {
-      this.q.clear();
-      this.s = 0;
+      this.r.clear();
+      this.t = 0;
 
       for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
          eqn $$2 = $$0.get($$1);
-         this.q.put("icon-" + $$1, $$2);
+         this.r.put("icon-" + $$1, $$2);
          if ($$2.c().a().f()) {
-            this.s++;
+            this.t++;
          }
       }
    }
 
    public Iterable<eqn> h() {
-      return this.q.values();
+      return this.r.values();
    }
 
    public boolean a(int $$0) {
-      return this.s >= $$0;
+      return this.t >= $$0;
+   }
+
+   private static String b(int $$0) {
+      return "frame-" + $$0;
    }
 
    public class a {
@@ -445,7 +450,7 @@ public class eqt extends eql {
          Collection<eqn> $$3;
          if (this.i && this.j++ % 5 == 0) {
             this.i = false;
-            $$3 = eqt.this.q.values();
+            $$3 = eqt.this.r.values();
          } else {
             $$3 = null;
          }

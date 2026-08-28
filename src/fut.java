@@ -79,7 +79,7 @@ public class fut<T extends ckz> extends fvt<T> {
       this.m.d = ayo.a($$6) * -0.25F * 1.0F;
       this.h.c = 4.0F + ayo.b($$6) / 4.0F;
       this.n.f = $$3 * (float) Math.PI * 0.1F;
-      this.a($$0.ca, fhi.a, $$3);
+      this.a($$0.cc, fhi.a, $$3);
       this.a($$0.c, fhi.c, $$3);
       this.a($$0.d, fhi.d, $$3);
       this.a($$0.e, fhi.b, $$3);

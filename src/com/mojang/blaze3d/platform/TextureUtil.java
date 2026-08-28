@@ -23,7 +23,7 @@ public class TextureUtil {
 
    public static int generateTextureId() {
       RenderSystem.assertOnRenderThreadOrInit();
-      if (ab.aU) {
+      if (ab.aV) {
          int[] $$0 = new int[ThreadLocalRandom.current().nextInt(15) + 1];
          GlStateManager._genTextures($$0);
          int $$1 = GlStateManager._genTexture();

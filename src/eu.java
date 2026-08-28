@@ -100,7 +100,7 @@ public class eu {
          ane.a(this.h);
       }
 
-      if (ab.aU) {
+      if (ab.aV) {
          tp.a(this.h);
          ant.a(this.h, $$1);
          amn.a(this.h);
@@ -170,7 +170,7 @@ public class eu {
          }
 
          $$2.b(wz.c("command.failed").a($$1x -> $$1x.a(new xf(xf.a.a, $$5))));
-         if (ab.aU) {
+         if (ab.aV) {
             $$2.b(wz.b(ad.c(var12)));
             g.error("'/{}' threw an exception", $$1, var12);
          }

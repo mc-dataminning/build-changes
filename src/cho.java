@@ -1,11 +1,11 @@
 import javax.annotation.Nullable;
 
 public class cho extends chi {
-   private final chp ca = new chp(this);
-   private static final int cb = 18000;
-   private static final bsu cc = bsx.aO.n().a(bst.a().a(bss.a, 0.0F, bsx.aO.m() - 0.03125F, 0.0F)).a(0.5F);
-   private boolean ce;
-   private int cf;
+   private final chp cc = new chp(this);
+   private static final int cd = 18000;
+   private static final bsu ce = bsx.aO.n().a(bst.a().a(bss.a, 0.0F, bsx.aO.m() - 0.03125F, 0.0F)).a(0.5F);
+   private boolean cg;
+   private int ch;
 
    public cho(bsx<? extends cho> $$0, dcw $$1) {
       super($$0, $$1);
@@ -50,12 +50,12 @@ public class cho extends chi {
             return avp.xl;
          }
 
-         this.cz++;
-         if (this.cz > 5 && this.cz % 3 == 0) {
+         this.cB++;
+         if (this.cB > 5 && this.cB % 3 == 0) {
             return avp.xj;
          }
 
-         if (this.cz <= 5) {
+         if (this.cB <= 5) {
             return avp.xl;
          }
       }
@@ -83,13 +83,13 @@ public class cho extends chi {
 
    @Override
    public bsu e(bua $$0) {
-      return this.o_() ? cc : super.e($$0);
+      return this.o_() ? ce : super.e($$0);
    }
 
    @Override
    public void m_() {
       super.m_();
-      if (this.t() && this.cf++ >= 18000) {
+      if (this.t() && this.ch++ >= 18000) {
          this.aq();
       }
    }
@@ -98,14 +98,14 @@ public class cho extends chi {
    public void b(ub $$0) {
       super.b($$0);
       $$0.a("SkeletonTrap", this.t());
-      $$0.a("SkeletonTrapTime", this.cf);
+      $$0.a("SkeletonTrapTime", this.ch);
    }
 
    @Override
    public void a(ub $$0) {
       super.a($$0);
       this.x($$0.q("SkeletonTrap"));
-      this.cf = $$0.h("SkeletonTrapTime");
+      this.ch = $$0.h("SkeletonTrapTime");
    }
 
    @Override
@@ -114,16 +114,16 @@ public class cho extends chi {
    }
 
    public boolean t() {
-      return this.ce;
+      return this.cg;
    }
 
    public void x(boolean $$0) {
-      if ($$0 != this.ce) {
-         this.ce = $$0;
+      if ($$0 != this.cg) {
+         this.cg = $$0;
          if ($$0) {
-            this.bU.a(1, this.ca);
+            this.bW.a(1, this.cc);
          } else {
-            this.bU.a(this.ca);
+            this.bW.a(this.cc);
          }
       }
    }

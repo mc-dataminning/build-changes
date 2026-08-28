@@ -5,15 +5,15 @@ import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public abstract class cmf extends bsl implements cmi, cmj, dbt {
-   private static final ajw<Integer> cc = aka.a(cmf.class, ajy.b);
-   private static final Logger cd = LogUtils.getLogger();
-   public static final int ca = 300;
-   private static final int ce = 8;
+   private static final ajw<Integer> ce = aka.a(cmf.class, ajy.b);
+   private static final Logger cf = LogUtils.getLogger();
+   public static final int cc = 300;
+   private static final int cg = 8;
    @Nullable
-   private cmx cf;
+   private cmx ch;
    @Nullable
-   protected dbv cb;
-   private final bra cg = new bra(8);
+   protected dbv cd;
+   private final bra ci = new bra(8);
 
    public cmf(bsx<? extends cmf> $$0, dcw $$1) {
       super($$0, $$1);
@@ -31,11 +31,11 @@ public abstract class cmf extends bsl implements cmi, cmj, dbt {
    }
 
    public int s() {
-      return this.ao.a(cc);
+      return this.ao.a(ce);
    }
 
    public void s(int $$0) {
-      this.ao.a(cc, $$0);
+      this.ao.a(ce, $$0);
    }
 
    @Override
@@ -46,22 +46,22 @@ public abstract class cmf extends bsl implements cmi, cmj, dbt {
    @Override
    protected void a(aka.a $$0) {
       super.a($$0);
-      $$0.a(cc, 0);
+      $$0.a(ce, 0);
    }
 
    @Override
    public void a(@Nullable cmx $$0) {
-      this.cf = $$0;
+      this.ch = $$0;
    }
 
    @Nullable
    @Override
    public cmx gk() {
-      return this.cf;
+      return this.ch;
    }
 
    public boolean gl() {
-      return this.cf != null;
+      return this.ch != null;
    }
 
    @Override
@@ -69,12 +69,12 @@ public abstract class cmf extends bsl implements cmi, cmj, dbt {
       if (this.dO().B) {
          throw new IllegalStateException("Cannot load Villager offers on the client");
       } else {
-         if (this.cb == null) {
-            this.cb = new dbv();
+         if (this.cd == null) {
+            this.cd = new dbv();
             this.gr();
          }
 
-         return this.cb;
+         return this.cd;
       }
    }
 
@@ -89,10 +89,10 @@ public abstract class cmf extends bsl implements cmi, cmj, dbt {
    @Override
    public void a(dbu $$0) {
       $$0.l();
-      this.bO = -this.R();
+      this.bQ = -this.R();
       this.b($$0);
-      if (this.cf instanceof aqv) {
-         an.t.a((aqv)this.cf, this, $$0.f());
+      if (this.ch instanceof aqv) {
+         an.t.a((aqv)this.ch, this, $$0.f());
       }
    }
 
@@ -105,8 +105,8 @@ public abstract class cmf extends bsl implements cmi, cmj, dbt {
 
    @Override
    public void n(cuq $$0) {
-      if (!this.dO().B && this.bO > -this.R() + 20) {
-         this.bO = -this.R();
+      if (!this.dO().B && this.bQ > -this.R() + 20) {
+         this.bQ = -this.R();
          this.b(this.x(!$$0.e()));
       }
    }
@@ -141,7 +141,7 @@ public abstract class cmf extends bsl implements cmi, cmj, dbt {
    public void a(ub $$0) {
       super.a($$0);
       if ($$0.e("Offers")) {
-         dbv.a.parse(this.dQ().a(up.a), $$0.c("Offers")).resultOrPartial(ad.a("Failed to load offers: ", cd::warn)).ifPresent($$0x -> this.cb = $$0x);
+         dbv.a.parse(this.dQ().a(up.a), $$0.c("Offers")).resultOrPartial(ad.a("Failed to load offers: ", cf::warn)).ifPresent($$0x -> this.cd = $$0x);
       }
 
       this.a($$0, this.dQ());
@@ -180,13 +180,13 @@ public abstract class cmf extends bsl implements cmi, cmj, dbt {
 
    @Override
    public bra x() {
-      return this.cg;
+      return this.ci;
    }
 
    @Override
    public bug a_(int $$0) {
       int $$1 = $$0 - 300;
-      return $$1 >= 0 && $$1 < this.cg.b() ? bug.a(this.cg, $$1) : super.a_($$0);
+      return $$1 >= 0 && $$1 < this.ci.b() ? bug.a(this.ci, $$1) : super.a_($$0);
    }
 
    protected abstract void gr();

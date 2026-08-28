@@ -4,16 +4,16 @@ import javax.annotation.Nullable;
 public class cky extends ckw implements btt {
    private static final bsu c = bsx.bx.n().a(0.5F).b(0.97F);
    private static final akr d = akr.b("attacking");
-   private static final buu cd = new buu(d, 0.05, buu.a.a);
-   private static final bqc ce = azp.a(0, 1);
-   private int cf;
-   private static final bqc cg = azp.a(20, 39);
+   private static final buu cf = new buu(d, 0.05, buu.a.a);
+   private static final bqc cg = azp.a(0, 1);
    private int ch;
+   private static final bqc ci = azp.a(20, 39);
+   private int cj;
    @Nullable
-   private UUID ci;
-   private static final int cj = 10;
-   private static final bqc ck = azp.a(4, 6);
-   private int cl;
+   private UUID ck;
+   private static final int cl = 10;
+   private static final bqc cm = azp.a(4, 6);
+   private int cn;
 
    public cky(bsx<? extends cky> $$0, dcw $$1) {
       super($$0, $$1);
@@ -22,16 +22,16 @@ public class cky extends ckw implements btt {
 
    @Override
    public void a(@Nullable UUID $$0) {
-      this.ci = $$0;
+      this.ck = $$0;
    }
 
    @Override
    protected void t() {
-      this.bU.a(2, new ccb(this, 1.0, false));
-      this.bU.a(7, new cbz(this, 1.0));
-      this.bV.a(1, new cce(this).a());
-      this.bV.a(2, new ccf<>(this, cmx.class, 10, true, false, this::a_));
-      this.bV.a(3, new ccl<>(this, true));
+      this.bW.a(2, new ccb(this, 1.0, false));
+      this.bW.a(7, new cbz(this, 1.0));
+      this.bX.a(1, new cce(this).a());
+      this.bX.a(2, new ccf<>(this, cmx.class, 10, true, false, this::a_));
+      this.bX.a(3, new ccl<>(this, true));
    }
 
    public static buv.a gu() {
@@ -53,7 +53,7 @@ public class cky extends ckw implements btt {
       bus $$0 = this.f(buw.v);
       if (this.ad_()) {
          if (!this.o_() && !$$0.b(d)) {
-            $$0.b(cd);
+            $$0.b(cf);
          }
 
          this.gv();
@@ -74,23 +74,23 @@ public class cky extends ckw implements btt {
    }
 
    private void gv() {
-      if (this.cf > 0) {
-         this.cf--;
-         if (this.cf == 0) {
+      if (this.ch > 0) {
+         this.ch--;
+         if (this.ch == 0) {
             this.gy();
          }
       }
    }
 
    private void gw() {
-      if (this.cl > 0) {
-         this.cl--;
+      if (this.cn > 0) {
+         this.cn--;
       } else {
          if (this.O().a(this.p())) {
             this.gx();
          }
 
-         this.cl = ck.a(this.ah);
+         this.cn = cm.a(this.ah);
       }
    }
 
@@ -113,8 +113,8 @@ public class cky extends ckw implements btt {
    @Override
    public void h(@Nullable btn $$0) {
       if (this.p() == null && $$0 != null) {
-         this.cf = ce.a(this.ah);
-         this.cl = ck.a(this.ah);
+         this.ch = cg.a(this.ah);
+         this.cn = cm.a(this.ah);
       }
 
       if ($$0 instanceof cmx) {
@@ -126,7 +126,7 @@ public class cky extends ckw implements btt {
 
    @Override
    public void c() {
-      this.a(cg.a(this.ah));
+      this.a(ci.a(this.ah));
    }
 
    public static boolean b(bsx<cky> $$0, dcx $$1, btr $$2, jd $$3, ayw $$4) {
@@ -152,12 +152,12 @@ public class cky extends ckw implements btt {
 
    @Override
    public void a(int $$0) {
-      this.ch = $$0;
+      this.cj = $$0;
    }
 
    @Override
    public int a() {
-      return this.ch;
+      return this.cj;
    }
 
    @Override
@@ -193,7 +193,7 @@ public class cky extends ckw implements btt {
    @Nullable
    @Override
    public UUID b() {
-      return this.ci;
+      return this.ck;
    }
 
    @Override

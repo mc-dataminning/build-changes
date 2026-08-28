@@ -10,16 +10,16 @@ public class cko extends ckd {
 
    @Override
    protected void B() {
-      this.bU.a(1, new cag(this));
-      this.bU.a(2, new bzt<>(this, cgn.class, 6.0F, 1.0, 1.2, $$0 -> !((cgn)$$0).t()));
-      this.bU.a(3, new cas(this, 0.4F));
-      this.bU.a(4, new cko.a(this));
-      this.bU.a(5, new cbz(this, 0.8));
-      this.bU.a(6, new cau(this, cmx.class, 8.0F));
-      this.bU.a(6, new cbh(this));
-      this.bV.a(1, new cce(this));
-      this.bV.a(2, new cko.c<>(this, cmx.class));
-      this.bV.a(3, new cko.c<>(this, cfq.class));
+      this.bW.a(1, new cag(this));
+      this.bW.a(2, new bzt<>(this, cgn.class, 6.0F, 1.0, 1.2, $$0 -> !((cgn)$$0).t()));
+      this.bW.a(3, new cas(this, 0.4F));
+      this.bW.a(4, new cko.a(this));
+      this.bW.a(5, new cbz(this, 0.8));
+      this.bW.a(6, new cau(this, cmx.class, 8.0F));
+      this.bW.a(6, new cbh(this));
+      this.bX.a(1, new cce(this));
+      this.bX.a(2, new cko.c<>(this, cmx.class));
+      this.bX.a(3, new cko.c<>(this, cfq.class));
    }
 
    @Override

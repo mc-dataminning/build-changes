@@ -2,7 +2,7 @@ import java.util.EnumSet;
 import javax.annotation.Nullable;
 
 public class chq extends chl {
-   private int ca = 47999;
+   private int cc = 47999;
 
    public chq(bsx<? extends chq> $$0, dcw $$1) {
       super($$0, $$1);
@@ -22,27 +22,27 @@ public class chq extends chl {
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      $$0.a("DespawnDelay", this.ca);
+      $$0.a("DespawnDelay", this.cc);
    }
 
    @Override
    public void a(ub $$0) {
       super.a($$0);
       if ($$0.b("DespawnDelay", 99)) {
-         this.ca = $$0.h("DespawnDelay");
+         this.cc = $$0.h("DespawnDelay");
       }
    }
 
    @Override
    protected void B() {
       super.B();
-      this.bU.a(1, new cbf(this, 2.0));
-      this.bV.a(1, new chq.a(this));
+      this.bW.a(1, new cbf(this, 2.0));
+      this.bX.a(1, new chq.a(this));
    }
 
    @Override
    public void x(int $$0) {
-      this.ca = $$0;
+      this.cc = $$0;
    }
 
    @Override
@@ -63,8 +63,8 @@ public class chq extends chl {
 
    private void gZ() {
       if (this.ha()) {
-         this.ca = this.hb() ? ((cmq)this.A()).gt() - 1 : this.ca - 1;
-         if (this.ca <= 0) {
+         this.cc = this.hb() ? ((cmq)this.A()).gt() - 1 : this.cc - 1;
+         if (this.cc <= 0) {
             this.a(true, false);
             this.aq();
          }

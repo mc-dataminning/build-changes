@@ -1,7 +1,7 @@
 import javax.annotation.Nullable;
 
 public class chs extends chi {
-   private static final bsu ca = bsx.bv.n().a(bst.a().a(bss.a, 0.0F, bsx.bv.m() - 0.03125F, 0.0F)).a(0.5F);
+   private static final bsu cc = bsx.bv.n().a(bst.a().a(bss.a, 0.0F, bsx.bv.m() - 0.03125F, 0.0F)).a(0.5F);
 
    public chs(bsx<? extends chs> $$0, dcw $$1) {
       super($$0, $$1);
@@ -52,6 +52,6 @@ public class chs extends chi {
 
    @Override
    public bsu e(bua $$0) {
-      return this.o_() ? ca : super.e($$0);
+      return this.o_() ? cc : super.e($$0);
    }
 }

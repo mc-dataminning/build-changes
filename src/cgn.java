@@ -4,23 +4,23 @@ import java.util.function.IntFunction;
 import javax.annotation.Nullable;
 
 public class cgn extends cfe {
-   public static final float ca = 0.6F;
-   public static final float cb = 32.5F;
-   public static final int cc = 80;
-   private static final double ch = 7.0;
-   private static final double ci = 2.0;
-   private static final ajw<cgn.a> cj = aka.a(cgn.class, ajy.B);
-   private long ck = 0L;
-   public final bsm ce = new bsm();
-   public final bsm cf = new bsm();
+   public static final float cc = 0.6F;
+   public static final float cd = 32.5F;
+   public static final int ce = 80;
+   private static final double cj = 7.0;
+   private static final double ck = 2.0;
+   private static final ajw<cgn.a> cl = aka.a(cgn.class, ajy.B);
+   private long cm = 0L;
    public final bsm cg = new bsm();
-   private int cl;
-   private boolean cm = false;
+   public final bsm ch = new bsm();
+   public final bsm ci = new bsm();
+   private int cn;
+   private boolean co = false;
 
    public cgn(bsx<? extends cfe> $$0, dcw $$1) {
       super($$0, $$1);
       this.N().a(true);
-      this.cl = this.gv();
+      this.cn = this.gv();
    }
 
    @Nullable
@@ -36,23 +36,23 @@ public class cgn extends cfe {
    @Override
    protected void a(aka.a $$0) {
       super.a($$0);
-      $$0.a(cj, cgn.a.a);
+      $$0.a(cl, cgn.a.a);
    }
 
    public boolean t() {
-      return this.ao.a(cj) != cgn.a.a;
+      return this.ao.a(cl) != cgn.a.a;
    }
 
    public boolean x() {
-      return this.gl().a(this.ck);
+      return this.gl().a(this.cm);
    }
 
    public boolean gk() {
-      return this.gl() == cgn.a.b && this.ck > (long)cgn.a.b.b();
+      return this.gl() == cgn.a.b && this.cm > (long)cgn.a.b.b();
    }
 
    public cgn.a gl() {
-      return this.ao.a(cj);
+      return this.ao.a(cl);
    }
 
    @Override
@@ -62,13 +62,13 @@ public class cgn extends cfe {
    }
 
    public void a(cgn.a $$0) {
-      this.ao.a(cj, $$0);
+      this.ao.a(cl, $$0);
    }
 
    @Override
    public void a(ajw<?> $$0) {
-      if (cj.equals($$0)) {
-         this.ck = 0L;
+      if (cl.equals($$0)) {
+         this.cm = 0L;
       }
 
       super.a($$0);
@@ -92,11 +92,11 @@ public class cgn extends cfe {
       this.dO().ag().a("armadilloActivityUpdate");
       cgo.a(this);
       this.dO().ag().c();
-      if (this.bE() && !this.o_() && --this.cl <= 0) {
+      if (this.bE() && !this.o_() && --this.cn <= 0) {
          this.a(avp.ak, 1.0F, (this.ah.i() - this.ah.i()) * 0.2F + 1.0F);
          this.a(cut.oq);
          this.a(dxz.t);
-         this.cl = this.gv();
+         this.cn = this.gv();
       }
 
       super.ab();
@@ -117,7 +117,7 @@ public class cgn extends cfe {
          this.af();
       }
 
-      this.ck++;
+      this.cm++;
    }
 
    @Override
@@ -128,41 +128,41 @@ public class cgn extends cfe {
    private void gw() {
       switch (this.gl()) {
          case a:
-            this.ce.a();
-            this.cf.a();
             this.cg.a();
+            this.ch.a();
+            this.ci.a();
             break;
          case b:
-            this.ce.a();
-            this.cf.b(this.ai);
             this.cg.a();
+            this.ch.b(this.ai);
+            this.ci.a();
             break;
          case c:
-            this.ce.a();
-            this.cf.a();
-            if (this.cm) {
-               this.cg.a();
-               this.cm = false;
+            this.cg.a();
+            this.ch.a();
+            if (this.co) {
+               this.ci.a();
+               this.co = false;
             }
 
-            if (this.ck == 0L) {
-               this.cg.a(this.ai);
-               this.cg.a(cgn.a.c.b(), 1.0F);
+            if (this.cm == 0L) {
+               this.ci.a(this.ai);
+               this.ci.a(cgn.a.c.b(), 1.0F);
             } else {
-               this.cg.b(this.ai);
+               this.ci.b(this.ai);
             }
             break;
          case d:
-            this.ce.b(this.ai);
-            this.cf.a();
-            this.cg.a();
+            this.cg.b(this.ai);
+            this.ch.a();
+            this.ci.a();
       }
    }
 
    @Override
    public void b(byte $$0) {
       if ($$0 == 64 && this.dO().B) {
-         this.cm = true;
+         this.co = true;
          this.dO().a(this.dt(), this.dv(), this.dz(), avp.am, this.de(), 1.0F, 1.0F, false);
       } else {
          super.b($$0);
@@ -196,7 +196,7 @@ public class cgn extends cfe {
    public void b(ub $$0) {
       super.b($$0);
       $$0.a("state", this.gl().c());
-      $$0.a("scute_time", this.cl);
+      $$0.a("scute_time", this.cn);
    }
 
    @Override
@@ -204,7 +204,7 @@ public class cgn extends cfe {
       super.a($$0);
       this.a(cgn.a.a($$0.l("state")));
       if ($$0.e("scute_time")) {
-         this.cl = $$0.h("scute_time");
+         this.cn = $$0.h("scute_time");
       }
    }
 

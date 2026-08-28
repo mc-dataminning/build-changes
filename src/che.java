@@ -3,21 +3,21 @@ import com.mojang.serialization.Dynamic;
 import javax.annotation.Nullable;
 
 public class che extends cfe {
-   public static final bsu ca = bsu.b(0.9F, 1.3F).a(0.7F);
-   private static final int ch = 2;
-   private static final int ci = 1;
-   protected static final ImmutableList<cdz<? extends cdy<? super che>>> cb = ImmutableList.of(cdz.c, cdz.d, cdz.b, cdz.o, cdz.f, cdz.r);
-   protected static final ImmutableList<ccs<?>> cc = ImmutableList.of(
+   public static final bsu cc = bsu.b(0.9F, 1.3F).a(0.7F);
+   private static final int cj = 2;
+   private static final int ck = 1;
+   protected static final ImmutableList<cdz<? extends cdy<? super che>>> cd = ImmutableList.of(cdz.c, cdz.d, cdz.b, cdz.o, cdz.f, cdz.r);
+   protected static final ImmutableList<ccs<?>> ce = ImmutableList.of(
       ccs.n, ccs.h, ccs.m, ccs.E, ccs.t, ccs.av, ccs.r, ccs.S, ccs.T, ccs.O, ccs.K, ccs.P, new ccs[]{ccs.R, ccs.V, ccs.W, ccs.Z}
    );
-   public static final int ce = 10;
-   public static final double cf = 0.02;
-   public static final double cg = 0.1F;
-   private static final ajw<Boolean> cj = aka.a(che.class, ajy.k);
-   private static final ajw<Boolean> ck = aka.a(che.class, ajy.k);
+   public static final int cg = 10;
+   public static final double ch = 0.02;
+   public static final double ci = 0.1F;
    private static final ajw<Boolean> cl = aka.a(che.class, ajy.k);
-   private boolean cm;
-   private int cn;
+   private static final ajw<Boolean> cm = aka.a(che.class, ajy.k);
+   private static final ajw<Boolean> cn = aka.a(che.class, ajy.k);
+   private boolean co;
+   private int cp;
 
    public che(bsx<? extends che> $$0, dcw $$1) {
       super($$0, $$1);
@@ -35,7 +35,7 @@ public class che extends cfe {
 
    @Override
    protected buq.b<che> dU() {
-      return buq.a(cc, cb);
+      return buq.a(ce, cd);
    }
 
    @Override
@@ -164,7 +164,7 @@ public class che extends cfe {
       this.x($$4.j() < 0.02);
       this.k();
       if (!this.o_() && (double)$$4.i() < 0.1F) {
-         ajw<Boolean> $$5 = $$4.h() ? ck : cl;
+         ajw<Boolean> $$5 = $$4.h() ? cm : cn;
          this.ao.a($$5, false);
       }
 
@@ -179,7 +179,7 @@ public class che extends cfe {
 
    @Override
    public bsu e(bua $$0) {
-      return $$0 == bua.g ? ca.a(this.ea()) : super.e($$0);
+      return $$0 == bua.g ? cc.a(this.ea()) : super.e($$0);
    }
 
    @Override
@@ -194,16 +194,16 @@ public class che extends cfe {
    public void a(ub $$0) {
       super.a($$0);
       this.x($$0.q("IsScreamingGoat"));
-      this.ao.a(ck, $$0.q("HasLeftHorn"));
-      this.ao.a(cl, $$0.q("HasRightHorn"));
+      this.ao.a(cm, $$0.q("HasLeftHorn"));
+      this.ao.a(cn, $$0.q("HasRightHorn"));
    }
 
    @Override
    public void b(byte $$0) {
       if ($$0 == 58) {
-         this.cm = true;
+         this.co = true;
       } else if ($$0 == 59) {
-         this.cm = false;
+         this.co = false;
       } else {
          super.b($$0);
       }
@@ -211,30 +211,30 @@ public class che extends cfe {
 
    @Override
    public void m_() {
-      if (this.cm) {
-         this.cn++;
+      if (this.co) {
+         this.cp++;
       } else {
-         this.cn -= 2;
+         this.cp -= 2;
       }
 
-      this.cn = ayo.a(this.cn, 0, 20);
+      this.cp = ayo.a(this.cp, 0, 20);
       super.m_();
    }
 
    @Override
    protected void a(aka.a $$0) {
       super.a($$0);
-      $$0.a(cj, false);
-      $$0.a(ck, true);
-      $$0.a(cl, true);
+      $$0.a(cl, false);
+      $$0.a(cm, true);
+      $$0.a(cn, true);
    }
 
    public boolean gk() {
-      return this.ao.a(ck);
+      return this.ao.a(cm);
    }
 
    public boolean gl() {
-      return this.ao.a(cl);
+      return this.ao.a(cn);
    }
 
    public boolean gm() {
@@ -245,11 +245,11 @@ public class che extends cfe {
       } else {
          ajw<Boolean> $$2;
          if (!$$0) {
-            $$2 = cl;
+            $$2 = cn;
          } else if (!$$1) {
-            $$2 = ck;
+            $$2 = cm;
          } else {
-            $$2 = this.ah.h() ? ck : cl;
+            $$2 = this.ah.h() ? cm : cn;
          }
 
          this.ao.a($$2, false);
@@ -265,25 +265,25 @@ public class che extends cfe {
    }
 
    public void gn() {
-      this.ao.a(ck, true);
-      this.ao.a(cl, true);
+      this.ao.a(cm, true);
+      this.ao.a(cn, true);
    }
 
    public void go() {
-      this.ao.a(ck, false);
-      this.ao.a(cl, false);
+      this.ao.a(cm, false);
+      this.ao.a(cn, false);
    }
 
    public boolean gu() {
-      return this.ao.a(cj);
+      return this.ao.a(cl);
    }
 
    public void x(boolean $$0) {
-      this.ao.a(cj, $$0);
+      this.ao.a(cl, $$0);
    }
 
    public float gv() {
-      return (float)this.cn / 20.0F * 30.0F * (float) (Math.PI / 180.0);
+      return (float)this.cp / 20.0F * 30.0F * (float) (Math.PI / 180.0);
    }
 
    public static boolean c(bsx<? extends cfe> $$0, dcx $$1, btr $$2, jd $$3, ayw $$4) {

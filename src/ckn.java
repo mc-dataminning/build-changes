@@ -5,7 +5,7 @@ import javax.annotation.Nullable;
 public abstract class ckn extends cjk {
    private static final ajw<Byte> e = aka.a(ckn.class, ajy.a);
    protected int b;
-   private ckn.a ca = ckn.a.a;
+   private ckn.a cc = ckn.a.a;
 
    protected ckn(bsx<? extends ckn> $$0, dcw $$1) {
       super($$0, $$1);
@@ -43,12 +43,12 @@ public abstract class ckn extends cjk {
    }
 
    public void a(ckn.a $$0) {
-      this.ca = $$0;
+      this.cc = $$0;
       this.ao.a(e, (byte)$$0.h);
    }
 
    protected ckn.a gv() {
-      return !this.dO().B ? this.ca : ckn.a.a(this.ao.a(e));
+      return !this.dO().B ? this.cc : ckn.a.a(this.ao.a(e));
    }
 
    @Override
@@ -118,7 +118,7 @@ public abstract class ckn extends cjk {
       @Override
       public void d() {
          super.d();
-         ckn.this.bT.n();
+         ckn.this.bV.n();
       }
 
       @Override

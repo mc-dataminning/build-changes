@@ -3,8 +3,8 @@ import javax.annotation.Nullable;
 public class ckg extends cjk implements cjq, cmi {
    private static final ajw<Boolean> b = aka.a(ckg.class, ajy.k);
    private static final int e = 5;
-   private static final int ca = 300;
-   private final bra cb = new bra(5);
+   private static final int cc = 300;
+   private final bra cd = new bra(5);
 
    public ckg(bsx<? extends ckg> $$0, dcw $$1) {
       super($$0, $$1);
@@ -13,16 +13,16 @@ public class ckg extends cjk implements cjq, cmi {
    @Override
    protected void B() {
       super.B();
-      this.bU.a(0, new cag(this));
-      this.bU.a(2, new coj.a(this, 10.0F));
-      this.bU.a(3, new cbn<>(this, 1.0, 8.0F));
-      this.bU.a(8, new cbj(this, 0.6));
-      this.bU.a(9, new cau(this, cmx.class, 15.0F, 1.0F));
-      this.bU.a(10, new cau(this, btp.class, 15.0F));
-      this.bV.a(1, new cce(this, coj.class).a());
-      this.bV.a(2, new ccf<>(this, cmx.class, true));
-      this.bV.a(3, new ccf<>(this, cmf.class, false));
-      this.bV.a(3, new ccf<>(this, cfq.class, true));
+      this.bW.a(0, new cag(this));
+      this.bW.a(2, new coj.a(this, 10.0F));
+      this.bW.a(3, new cbn<>(this, 1.0, 8.0F));
+      this.bW.a(8, new cbj(this, 0.6));
+      this.bW.a(9, new cau(this, cmx.class, 15.0F, 1.0F));
+      this.bW.a(10, new cau(this, btp.class, 15.0F));
+      this.bX.a(1, new cce(this, coj.class).a());
+      this.bX.a(2, new ccf<>(this, cmx.class, true));
+      this.bX.a(3, new ccf<>(this, cmf.class, false));
+      this.bX.a(3, new ccf<>(this, cfq.class, true));
    }
 
    public static buv.a t() {
@@ -135,7 +135,7 @@ public class ckg extends cjk implements cjq, cmi {
 
    @Override
    public bra x() {
-      return this.cb;
+      return this.cd;
    }
 
    @Override
@@ -145,7 +145,7 @@ public class ckg extends cjk implements cjq, cmi {
          super.b($$0);
       } else if (this.n($$1)) {
          this.a($$0);
-         cuq $$2 = this.cb.b($$1);
+         cuq $$2 = this.cd.b($$1);
          if ($$2.e()) {
             $$0.aq();
          } else {
@@ -161,7 +161,7 @@ public class ckg extends cjk implements cjq, cmi {
    @Override
    public bug a_(int $$0) {
       int $$1 = $$0 - 300;
-      return $$1 >= 0 && $$1 < this.cb.b() ? bug.a(this.cb, $$1) : super.a_($$0);
+      return $$1 >= 0 && $$1 < this.cd.b() ? bug.a(this.cd, $$1) : super.a_($$0);
    }
 
    @Override

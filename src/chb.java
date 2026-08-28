@@ -8,14 +8,14 @@ public class chb extends cfb {
    public static int b = Math.abs(-24000);
    public static final float c = 0.4F;
    public static final float d = 0.3F;
-   private int cb;
+   private int cd;
    protected static final ImmutableList<cdz<? extends cdy<? super chb>>> e = ImmutableList.of(cdz.c, cdz.d, cdz.f, cdz.s);
-   protected static final ImmutableList<ccs<?>> ca = ImmutableList.of(ccs.n, ccs.h, ccs.m, ccs.E, ccs.t, ccs.K, ccs.P, ccs.R, ccs.O, ccs.r, ccs.Z);
+   protected static final ImmutableList<ccs<?>> cc = ImmutableList.of(ccs.n, ccs.h, ccs.m, ccs.E, ccs.t, ccs.K, ccs.P, ccs.R, ccs.O, ccs.r, ccs.Z);
 
    public chb(bsx<? extends cfb> $$0, dcw $$1) {
       super($$0, $$1);
-      this.bR = new bzr(this, 85, 10, 0.02F, 0.1F, true);
-      this.bQ = new bzq(this, 10);
+      this.bT = new bzr(this, 85, 10, 0.02F, 0.1F, true);
+      this.bS = new bzq(this, 10);
    }
 
    @Override
@@ -25,7 +25,7 @@ public class chb extends cfb {
 
    @Override
    protected buq.b<chb> dU() {
-      return buq.a(ca, e);
+      return buq.a(cc, e);
    }
 
    @Override
@@ -62,14 +62,14 @@ public class chb extends cfb {
    public void m_() {
       super.m_();
       if (!this.dO().B) {
-         this.s(this.cb + 1);
+         this.s(this.cd + 1);
       }
    }
 
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      $$0.a("Age", this.cb);
+      $$0.a("Age", this.cd);
    }
 
    @Override
@@ -161,16 +161,16 @@ public class chb extends cfb {
    }
 
    private int gn() {
-      return this.cb;
+      return this.cd;
    }
 
    private void c(int $$0) {
-      this.s(this.cb + $$0 * 20);
+      this.s(this.cd + $$0 * 20);
    }
 
    private void s(int $$0) {
-      this.cb = $$0;
-      if (this.cb >= b) {
+      this.cd = $$0;
+      if (this.cd >= b) {
          this.go();
       }
    }
@@ -197,7 +197,7 @@ public class chb extends cfb {
    }
 
    private int gp() {
-      return Math.max(0, b - this.cb);
+      return Math.max(0, b - this.cd);
    }
 
    @Override

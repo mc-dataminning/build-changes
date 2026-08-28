@@ -3,7 +3,7 @@ public class ckl extends cjl {
    private static final ajw<Boolean> d = aka.a(ckl.class, ajy.k);
    public static final String b = "StrayConversionTime";
    private int e;
-   private int ca;
+   private int cc;
 
    public ckl(bsx<? extends ckl> $$0, dcw $$1) {
       super($$0, $$1);
@@ -33,8 +33,8 @@ public class ckl extends cjl {
       if (!this.dO().B && this.bE() && !this.fZ()) {
          if (this.az) {
             if (this.gn()) {
-               this.ca--;
-               if (this.ca < 0) {
+               this.cc--;
+               if (this.cc < 0) {
                   this.go();
                }
             } else {
@@ -55,7 +55,7 @@ public class ckl extends cjl {
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      $$0.a("StrayConversionTime", this.gn() ? this.ca : -1);
+      $$0.a("StrayConversionTime", this.gn() ? this.cc : -1);
    }
 
    @Override
@@ -67,7 +67,7 @@ public class ckl extends cjl {
    }
 
    private void b(int $$0) {
-      this.ca = $$0;
+      this.cc = $$0;
       this.x(true);
    }
 

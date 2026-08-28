@@ -393,15 +393,16 @@ public class ben extends DataFix {
    }
 
    private static void c(ben.a $$0, Dynamic<?> $$1, int $$2) {
-      List<? extends Dynamic<?>> $$3 = $$0.a("AttributeModifiers").asList(ben::d);
-      boolean $$4 = ($$2 & 2) != 0;
-      if (!$$3.isEmpty() || $$4) {
-         Dynamic<?> $$5 = $$1.emptyMap().set("modifiers", $$1.createList($$3.stream()));
+      OptionalDynamic<?> $$3 = $$0.a("AttributeModifiers");
+      if (!$$3.result().isEmpty()) {
+         boolean $$4 = ($$2 & 2) != 0;
+         List<? extends Dynamic<?>> $$5 = $$3.asList(ben::d);
+         Dynamic<?> $$6 = $$1.emptyMap().set("modifiers", $$1.createList($$5.stream()));
          if ($$4) {
-            $$5 = $$5.set("show_in_tooltip", $$1.createBoolean(false));
+            $$6 = $$6.set("show_in_tooltip", $$1.createBoolean(false));
          }
 
-         $$0.a("minecraft:attribute_modifiers", $$5);
+         $$0.a("minecraft:attribute_modifiers", $$6);
       }
    }
 

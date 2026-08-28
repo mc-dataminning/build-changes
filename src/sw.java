@@ -640,6 +640,12 @@ public class sw {
       this.b(() -> this.a($$0, $$1, $$2, $$3));
    }
 
+   public void a(bsr $$0, ewx $$1, String $$2) {
+      if (!$$1.d(this.b($$0.dm()))) {
+         this.a($$2);
+      }
+   }
+
    public <E extends bsr> void a(E $$0, Predicate<E> $$1, String $$2) {
       if (!$$1.test($$0)) {
          throw new sp("Entity " + $$0 + " failed " + $$2 + " test");

@@ -3,15 +3,15 @@ import java.util.function.IntFunction;
 import javax.annotation.Nullable;
 
 public class chl extends chh implements buo<chl.d>, ckh {
-   private static final int ca = 5;
-   private static final ajw<Integer> cb = aka.a(chl.class, ajy.b);
-   private static final ajw<Integer> cc = aka.a(chl.class, ajy.b);
-   private static final bsu ce = bsx.an.n().a(bst.a().a(bss.a, 0.0F, bsx.an.m() - 0.8125F, -0.3F)).a(0.5F);
-   boolean cf;
+   private static final int cc = 5;
+   private static final ajw<Integer> cd = aka.a(chl.class, ajy.b);
+   private static final ajw<Integer> ce = aka.a(chl.class, ajy.b);
+   private static final bsu cg = bsx.an.n().a(bst.a().a(bss.a, 0.0F, bsx.an.m() - 0.8125F, -0.3F)).a(0.5F);
+   boolean ch;
    @Nullable
-   private chl cg;
+   private chl ci;
    @Nullable
-   private chl ch;
+   private chl cj;
 
    public chl(bsx<? extends chl> $$0, dcw $$1) {
       super($$0, $$1);
@@ -22,7 +22,7 @@ public class chl extends chh implements buo<chl.d>, ckh {
    }
 
    private void x(int $$0) {
-      this.ao.a(cb, Math.max(1, Math.min(5, $$0)));
+      this.ao.a(cd, Math.max(1, Math.min(5, $$0)));
    }
 
    private void b(ayw $$0) {
@@ -31,7 +31,7 @@ public class chl extends chh implements buo<chl.d>, ckh {
    }
 
    public int go() {
-      return this.ao.a(cb);
+      return this.ao.a(cd);
    }
 
    @Override
@@ -50,19 +50,19 @@ public class chl extends chh implements buo<chl.d>, ckh {
 
    @Override
    protected void B() {
-      this.bU.a(0, new cag(this));
-      this.bU.a(1, new cbq(this, 1.2));
-      this.bU.a(2, new cat(this, 2.1F));
-      this.bU.a(3, new cbl(this, 1.25, 40, 20.0F));
-      this.bU.a(3, new cbf(this, 1.2));
-      this.bU.a(4, new bzy(this, 1.0));
-      this.bU.a(5, new cbu(this, 1.25, $$0 -> $$0.a(awn.ao), false));
-      this.bU.a(6, new cal(this, 1.0));
-      this.bU.a(7, new cbz(this, 0.7));
-      this.bU.a(8, new cau(this, cmx.class, 6.0F));
-      this.bU.a(9, new cbh(this));
-      this.bV.a(1, new chl.c(this));
-      this.bV.a(2, new chl.a(this));
+      this.bW.a(0, new cag(this));
+      this.bW.a(1, new cbq(this, 1.2));
+      this.bW.a(2, new cat(this, 2.1F));
+      this.bW.a(3, new cbl(this, 1.25, 40, 20.0F));
+      this.bW.a(3, new cbf(this, 1.2));
+      this.bW.a(4, new bzy(this, 1.0));
+      this.bW.a(5, new cbu(this, 1.25, $$0 -> $$0.a(awn.ao), false));
+      this.bW.a(6, new cal(this, 1.0));
+      this.bW.a(7, new cbz(this, 0.7));
+      this.bW.a(8, new cau(this, cmx.class, 6.0F));
+      this.bW.a(9, new cbh(this));
+      this.bX.a(1, new chl.c(this));
+      this.bX.a(2, new chl.a(this));
    }
 
    public static buv.a gu() {
@@ -72,16 +72,16 @@ public class chl extends chh implements buo<chl.d>, ckh {
    @Override
    protected void a(aka.a $$0) {
       super.a($$0);
-      $$0.a(cb, 0);
-      $$0.a(cc, 0);
+      $$0.a(cd, 0);
+      $$0.a(ce, 0);
    }
 
    public chl.d gv() {
-      return chl.d.a(this.ao.a(cc));
+      return chl.d.a(this.ao.a(ce));
    }
 
    public void a(chl.d $$0) {
-      this.ao.a(cc, $$0.g);
+      this.ao.a(ce, $$0.g);
    }
 
    @Override
@@ -279,11 +279,11 @@ public class chl extends chh implements buo<chl.d>, ckh {
       }
 
       this.dO().b($$1);
-      this.cf = true;
+      this.ch = true;
    }
 
    void E(boolean $$0) {
-      this.cf = $$0;
+      this.ch = $$0;
    }
 
    @Override
@@ -307,29 +307,29 @@ public class chl extends chh implements buo<chl.d>, ckh {
    }
 
    public void gy() {
-      if (this.cg != null) {
-         this.cg.ch = null;
+      if (this.ci != null) {
+         this.ci.cj = null;
       }
 
-      this.cg = null;
+      this.ci = null;
    }
 
    public void a(chl $$0) {
-      this.cg = $$0;
-      this.cg.ch = this;
+      this.ci = $$0;
+      this.ci.cj = this;
    }
 
    public boolean gV() {
-      return this.ch != null;
+      return this.cj != null;
    }
 
    public boolean gW() {
-      return this.cg != null;
+      return this.ci != null;
    }
 
    @Nullable
    public chl gX() {
-      return this.cg;
+      return this.ci;
    }
 
    @Override
@@ -361,7 +361,7 @@ public class chl extends chh implements buo<chl.d>, ckh {
 
    @Override
    public bsu e(bua $$0) {
-      return this.o_() ? ce : super.e($$0);
+      return this.o_() ? cg : super.e($$0);
    }
 
    @Override
@@ -396,7 +396,7 @@ public class chl extends chh implements buo<chl.d>, ckh {
 
       @Override
       public boolean c() {
-         if (this.e instanceof chl $$0 && $$0.cf) {
+         if (this.e instanceof chl $$0 && $$0.ch) {
             $$0.E(false);
             return false;
          }

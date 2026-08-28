@@ -86,7 +86,7 @@ public class cja extends ciz {
 
    @Override
    public void ap() {
-      this.c(this.D());
+      this.d(this.D());
       super.ap();
    }
 
@@ -143,14 +143,14 @@ public class cja extends ciz {
    private void b(@Nullable bsr $$0, boolean $$1) {
       if (!this.l) {
          cuq $$2 = this.D();
-         this.a(cuq.l);
+         this.c(cuq.l);
          if (!this.dO().ab().b(dcs.i)) {
             if ($$0 == null) {
-               this.c($$2);
+               this.d($$2);
             }
          } else {
             if ($$0 instanceof cmx $$3 && $$3.fL()) {
-               this.c($$2);
+               this.d($$2);
                return;
             }
 
@@ -160,7 +160,7 @@ public class cja extends ciz {
 
             if (!$$2.e()) {
                $$2 = $$2.s();
-               this.c($$2);
+               this.d($$2);
                if (this.ah.i() < this.k) {
                   this.b($$2);
                }
@@ -169,8 +169,8 @@ public class cja extends ciz {
       }
    }
 
-   private void c(cuq $$0) {
-      eqr $$1 = this.E();
+   private void d(cuq $$0) {
+      eqr $$1 = this.a($$0);
       if ($$1 != null) {
          eqt $$2 = cvc.a($$1, this.dO());
          if ($$2 != null) {
@@ -187,16 +187,15 @@ public class cja extends ciz {
    }
 
    @Nullable
-   public eqr E() {
-      return this.D().a(kq.B);
+   public eqr a(cuq $$0) {
+      return $$0.a(kq.B);
    }
 
-   @Override
-   public boolean F() {
+   public boolean E() {
       return this.D().b(kq.B);
    }
 
-   public void a(cuq $$0) {
+   public void c(cuq $$0) {
       this.a($$0, true);
    }
 
@@ -205,7 +204,7 @@ public class cja extends ciz {
          $$0 = $$0.c(1);
       }
 
-      this.d($$0);
+      this.e($$0);
       this.ar().a(f, $$0);
       if (!$$0.e()) {
          this.a(this.y(), 1.0F, 1.0F);
@@ -222,17 +221,17 @@ public class cja extends ciz {
 
    @Override
    public bug a_(int $$0) {
-      return $$0 == 0 ? bug.a(this::D, this::a) : super.a_($$0);
+      return $$0 == 0 ? bug.a(this::D, this::c) : super.a_($$0);
    }
 
    @Override
    public void a(ajw<?> $$0) {
       if ($$0.equals(f)) {
-         this.d(this.D());
+         this.e(this.D());
       }
    }
 
-   private void d(cuq $$0) {
+   private void e(cuq $$0) {
       if (!$$0.e() && $$0.D() != this) {
          $$0.a(this);
       }
@@ -240,7 +239,7 @@ public class cja extends ciz {
       this.p();
    }
 
-   public int H() {
+   public int F() {
       return this.ar().a(g);
    }
 
@@ -260,7 +259,7 @@ public class cja extends ciz {
       super.b($$0);
       if (!this.D().e()) {
          $$0.a("Item", this.D().a(this.dQ()));
-         $$0.a("ItemRotation", (byte)this.H());
+         $$0.a("ItemRotation", (byte)this.F());
          $$0.a("ItemDropChance", this.k);
       }
 
@@ -282,7 +281,7 @@ public class cja extends ciz {
 
       cuq $$4 = this.D();
       if (!$$4.e() && !cuq.a($$2, $$4)) {
-         this.c($$4);
+         this.d($$4);
       }
 
       this.a($$2, false);
@@ -315,13 +314,13 @@ public class cja extends ciz {
                   }
                }
 
-               this.a($$2);
+               this.c($$2);
                this.a(dxz.c, $$0);
                $$2.a(1, $$0);
             }
          } else {
             this.a(this.z(), 1.0F, 1.0F);
-            this.b(this.H() + 1);
+            this.b(this.F() + 1);
             this.a(dxz.c, $$0);
          }
 
@@ -335,8 +334,8 @@ public class cja extends ciz {
       return avp.nA;
    }
 
-   public int I() {
-      return this.D().e() ? 0 : this.H() % 8 + 1;
+   public int H() {
+      return this.D().e() ? 0 : this.F() % 8 + 1;
    }
 
    @Override
@@ -364,6 +363,6 @@ public class cja extends ciz {
    public float dF() {
       ji $$0 = this.cH();
       int $$1 = $$0.o().b() ? 90 * $$0.f().a() : 0;
-      return (float)ayo.b(180 + $$0.e() * 90 + this.H() * 45 + $$1);
+      return (float)ayo.b(180 + $$0.e() * 90 + this.F() * 45 + $$1);
    }
 }

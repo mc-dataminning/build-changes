@@ -16,8 +16,8 @@ import org.slf4j.Logger;
 
 public class aqv extends cmx {
    private static final Logger cz = LogUtils.getLogger();
-   private static final int cB = 32;
-   private static final int cC = 10;
+   private static final int cA = 32;
+   private static final int cB = 10;
    private static final int cD = 25;
    public static final double b = 1.0;
    private static final buu cE = new buu(akr.b("creative_mode_block_range"), 0.5, buu.a.a);
@@ -310,7 +310,7 @@ public class aqv extends cmx {
    }
 
    @Override
-   protected void a(dtc $$0) {
+   public void a(dtc $$0) {
       an.e.a(this, $$0);
    }
 
@@ -354,17 +354,17 @@ public class aqv extends cmx {
 
       this.o();
       this.p();
-      this.gC();
+      this.gD();
       this.cG.b(this);
    }
 
-   private void gC() {
+   private void gD() {
       bus $$0 = this.f(buw.g);
       if ($$0 != null) {
          if (this.f()) {
             $$0.a(cE);
          } else {
-            $$0.d(cE);
+            $$0.e(cE);
          }
       }
 
@@ -373,7 +373,7 @@ public class aqv extends cmx {
          if (this.f()) {
             $$1.a(cF);
          } else {
-            $$1.d(cF);
+            $$1.e(cF);
          }
       }
    }
@@ -511,7 +511,7 @@ public class aqv extends cmx {
 
       this.gm();
       if (this.dO().ab().b(dcs.N)) {
-         this.gD();
+         this.gE();
       }
 
       if (!this.R_()) {
@@ -537,7 +537,7 @@ public class aqv extends cmx {
       this.a(Optional.of(jl.a(this.dO().af(), this.do())));
    }
 
-   private void gD() {
+   private void gE() {
       ewx $$0 = new ewx(this.do()).c(32.0, 10.0, 32.0);
       this.dO().a(btp.class, $$0, bsw.f).stream().filter($$0x -> $$0x instanceof btt).forEach($$0x -> ((btt)$$0x).a_((cmx)this));
    }
@@ -576,7 +576,7 @@ public class aqv extends cmx {
       if (this.b($$0)) {
          return false;
       } else {
-         boolean $$2 = this.d.n() && this.gE() && $$0.a(awg.m);
+         boolean $$2 = this.d.n() && this.gF() && $$0.a(awg.m);
          if (!$$2 && this.cS > 0 && !$$0.a(awg.d)) {
             return false;
          } else {
@@ -596,10 +596,10 @@ public class aqv extends cmx {
 
    @Override
    public boolean a(cmx $$0) {
-      return !this.gE() ? false : super.a($$0);
+      return !this.gF() ? false : super.a($$0);
    }
 
-   private boolean gE() {
+   private boolean gF() {
       return this.d.ad();
    }
 
@@ -866,7 +866,7 @@ public class aqv extends cmx {
       this.c.b(new ads($$0.aD_(), $$1));
    }
 
-   private void gF() {
+   private void gG() {
       this.dx = this.dx % 100 + 1;
    }
 
@@ -879,7 +879,7 @@ public class aqv extends cmx {
             this.s();
          }
 
-         this.gF();
+         this.gG();
          cpu $$1 = $$0.createMenu(this.dx, this.fY(), this);
          if ($$1 == null) {
             if (this.R_()) {
@@ -907,7 +907,7 @@ public class aqv extends cmx {
          this.s();
       }
 
-      this.gF();
+      this.gG();
       int $$2 = $$0.af_();
       this.c.b(new adc(this.dx, $$2, $$0.an()));
       this.cd = new cqv(this.dx, this.fY(), $$1, $$0, $$2);
@@ -1316,7 +1316,7 @@ public class aqv extends cmx {
    }
 
    public void a(xo $$0, boolean $$1, wv.a $$2) {
-      if (this.gG()) {
+      if (this.gH()) {
          $$0.a(this, $$1, $$2);
       }
    }
@@ -1354,7 +1354,7 @@ public class aqv extends cmx {
       return this.cT == cmv.c ? $$0 : true;
    }
 
-   private boolean gG() {
+   private boolean gH() {
       return this.cT == cmv.a;
    }
 

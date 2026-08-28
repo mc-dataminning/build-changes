@@ -1,9 +1,9 @@
 import javax.annotation.Nullable;
 
 public abstract class bsl extends btw {
-   private static final ajw<Boolean> ca = aka.a(bsl.class, ajy.k);
+   private static final ajw<Boolean> cc = aka.a(bsl.class, ajy.k);
    public static final int b = -24000;
-   private static final int cb = 40;
+   private static final int cd = 40;
    protected int c;
    protected int d;
    protected int e;
@@ -33,7 +33,7 @@ public abstract class bsl extends btw {
    @Override
    protected void a(aka.a $$0) {
       super.a($$0);
-      $$0.a(ca, false);
+      $$0.a(cc, false);
    }
 
    public boolean ab_() {
@@ -42,7 +42,7 @@ public abstract class bsl extends btw {
 
    public int g() {
       if (this.dO().B) {
-         return this.ao.a(ca) ? -1 : 1;
+         return this.ao.a(cc) ? -1 : 1;
       } else {
          return this.c;
       }
@@ -77,7 +77,7 @@ public abstract class bsl extends btw {
       int $$1 = this.g();
       this.c = $$0;
       if ($$1 < 0 && $$0 >= 0 || $$1 >= 0 && $$0 < 0) {
-         this.ao.a(ca, $$0 < 0);
+         this.ao.a(cc, $$0 < 0);
          this.k();
       }
    }
@@ -98,7 +98,7 @@ public abstract class bsl extends btw {
 
    @Override
    public void a(ajw<?> $$0) {
-      if (ca.equals($$0)) {
+      if (cc.equals($$0)) {
          this.i_();
       }
 

@@ -65,8 +65,8 @@ public class fxw<T extends cmb> extends fvt<T> {
       this.b($$1, $$2);
       this.a($$3);
       this.a($$0, $$3, $$6);
-      this.a($$0.ca, fhm.e, $$3);
-      this.a($$0.cb, fhm.f, $$3);
+      this.a($$0.cc, fhm.e, $$3);
+      this.a($$0.cd, fhm.f, $$3);
       this.a($$0.e, fhm.b, $$3);
       this.a($$0.d, fhm.a, $$3);
       this.a($$0.b, fhm.c, $$3);

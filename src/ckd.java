@@ -3,7 +3,7 @@ import java.util.function.Predicate;
 public abstract class ckd extends btw implements cjv {
    protected ckd(bsx<? extends ckd> $$0, dcw $$1) {
       super($$0, $$1);
-      this.bP = 5;
+      this.bR = 5;
    }
 
    @Override

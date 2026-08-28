@@ -4,19 +4,19 @@ public class cju extends ckd {
 
    public cju(bsx<? extends cju> $$0, dcw $$1) {
       super($$0, $$1);
-      this.bP = 3;
+      this.bR = 3;
    }
 
    @Override
    protected void B() {
-      this.bU.a(1, new cag(this));
-      this.bU.a(1, new cab(this, this.dO()));
-      this.bU.a(2, new caw(this, 1.0, false));
-      this.bU.a(3, new cbz(this, 1.0));
-      this.bU.a(7, new cau(this, cmx.class, 8.0F));
-      this.bU.a(8, new cbh(this));
-      this.bV.a(1, new cce(this).a());
-      this.bV.a(2, new ccf<>(this, cmx.class, true));
+      this.bW.a(1, new cag(this));
+      this.bW.a(1, new cab(this, this.dO()));
+      this.bW.a(2, new caw(this, 1.0, false));
+      this.bW.a(3, new cbz(this, 1.0));
+      this.bW.a(7, new cau(this, cmx.class, 8.0F));
+      this.bW.a(8, new cbh(this));
+      this.bX.a(1, new cce(this).a());
+      this.bX.a(2, new ccf<>(this, cmx.class, true));
    }
 
    public static buv.a s() {

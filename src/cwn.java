@@ -35,47 +35,49 @@ public class cwn extends cul implements cvm {
    @Override
    public void a(cuq $$0, dcw $$1, btn $$2, int $$3) {
       if ($$2 instanceof cmx $$4) {
-         int $$5 = this.a($$0, $$2) - $$3;
-         if ($$5 >= 10) {
-            float $$6 = dae.a($$0, $$4);
-            if (!($$6 > 0.0F) || $$4.bg()) {
-               jm<avo> $$7 = dae.b($$0, dad.C).orElse(avp.zG);
-               if (!$$1.B) {
-                  $$0.a(1, $$4, btn.d($$2.fs()));
-                  if ($$6 == 0.0F) {
-                     coc $$8 = new coc($$1, $$4, $$0);
-                     $$8.a($$4, $$4.dG(), $$4.dE(), 0.0F, 2.5F, 1.0F);
-                     if ($$4.fL()) {
-                        $$8.d = cnd.a.c;
-                     }
+         int $$6 = this.a($$0, $$2) - $$3;
+         if ($$6 >= 10) {
+            float $$7 = dae.a($$0, $$4);
+            if (!($$7 > 0.0F) || $$4.bg()) {
+               if (!i($$0)) {
+                  jm<avo> $$8 = dae.b($$0, dad.C).orElse(avp.zG);
+                  if (!$$1.B) {
+                     $$0.a(1, $$4, btn.d($$2.fs()));
+                     if ($$7 == 0.0F) {
+                        coc $$9 = new coc($$1, $$4, $$0);
+                        $$9.a($$4, $$4.dG(), $$4.dE(), 0.0F, 2.5F, 1.0F);
+                        if ($$4.fL()) {
+                           $$9.d = cnd.a.c;
+                        }
 
-                     $$1.b($$8);
-                     $$1.a(null, $$8, $$7.a(), avq.h, 1.0F, 1.0F);
-                     if (!$$4.fL()) {
-                        $$4.fY().h($$0);
+                        $$1.b($$9);
+                        $$1.a(null, $$9, $$8.a(), avq.h, 1.0F, 1.0F);
+                        if (!$$4.fL()) {
+                           $$4.fY().h($$0);
+                        }
                      }
                   }
-               }
 
-               $$4.b(avz.c.b(this));
-               if ($$6 > 0.0F) {
-                  float $$9 = $$4.dE();
-                  float $$10 = $$4.dG();
-                  float $$11 = -ayo.a($$9 * (float) (Math.PI / 180.0)) * ayo.b($$10 * (float) (Math.PI / 180.0));
-                  float $$12 = -ayo.a($$10 * (float) (Math.PI / 180.0));
-                  float $$13 = ayo.b($$9 * (float) (Math.PI / 180.0)) * ayo.b($$10 * (float) (Math.PI / 180.0));
-                  float $$14 = ayo.c($$11 * $$11 + $$12 * $$12 + $$13 * $$13);
-                  $$11 *= $$6 / $$14;
-                  $$12 *= $$6 / $$14;
-                  $$13 *= $$6 / $$14;
-                  $$4.j((double)$$11, (double)$$12, (double)$$13);
-                  $$4.a(20, 8.0F, $$0);
-                  if ($$4.aF()) {
-                     float $$15 = 1.1999999F;
-                     $$4.a(bts.a, new exc(0.0, 1.1999999F, 0.0));
+                  $$4.b(avz.c.b(this));
+                  if ($$7 > 0.0F) {
+                     float $$10 = $$4.dE();
+                     float $$11 = $$4.dG();
+                     float $$12 = -ayo.a($$10 * (float) (Math.PI / 180.0)) * ayo.b($$11 * (float) (Math.PI / 180.0));
+                     float $$13 = -ayo.a($$11 * (float) (Math.PI / 180.0));
+                     float $$14 = ayo.b($$10 * (float) (Math.PI / 180.0)) * ayo.b($$11 * (float) (Math.PI / 180.0));
+                     float $$15 = ayo.c($$12 * $$12 + $$13 * $$13 + $$14 * $$14);
+                     $$12 *= $$7 / $$15;
+                     $$13 *= $$7 / $$15;
+                     $$14 *= $$7 / $$15;
+                     $$4.j((double)$$12, (double)$$13, (double)$$14);
+                     $$4.a(20, 8.0F, $$0);
+                     if ($$4.aF()) {
+                        float $$16 = 1.1999999F;
+                        $$4.a(bts.a, new exc(0.0, 1.1999999F, 0.0));
+                     }
+
+                     $$1.a(null, $$4, $$8.a(), avq.h, 1.0F, 1.0F);
                   }
-
-                  $$1.a(null, $$4, $$7.a(), avq.h, 1.0F, 1.0F);
                }
             }
          }
@@ -85,7 +87,7 @@ public class cwn extends cul implements cvm {
    @Override
    public bqs<cuq> a(dcw $$0, cmx $$1, bqq $$2) {
       cuq $$3 = $$1.b($$2);
-      if ($$3.n() >= $$3.o() - 1) {
+      if (i($$3)) {
          return bqs.d($$3);
       } else if (dae.a($$3, $$1) > 0.0F && !$$1.bg()) {
          return bqs.d($$3);
@@ -93,6 +95,10 @@ public class cwn extends cul implements cvm {
          $$1.c($$2);
          return bqs.b($$3);
       }
+   }
+
+   private static boolean i(cuq $$0) {
+      return $$0.n() >= $$0.o() - 1;
    }
 
    @Override

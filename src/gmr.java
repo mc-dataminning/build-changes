@@ -20,6 +20,6 @@ public class gmr<T extends cgd> extends glp<T, fxm<T>> {
    }
 
    protected float a(T $$0, float $$1) {
-      return ayo.i($$1, $$0.cd, $$0.cc);
+      return ayo.i($$1, $$0.cf, $$0.ce);
    }
 }

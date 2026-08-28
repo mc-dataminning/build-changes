@@ -28,15 +28,15 @@ public class cin extends cid {
                double $$5 = $$0.dt() - this.a.e.dt();
                double $$6 = $$0.dz() - this.a.e.dz();
                double $$7 = ayo.a(ayo.d(180.0 - ayo.d($$5, $$6) * 180.0F / (float)Math.PI - (double)this.a.dE()), -100.0, 100.0);
-               this.a.cd *= 0.8F;
+               this.a.cf *= 0.8F;
                float $$8 = (float)Math.sqrt($$5 * $$5 + $$6 * $$6) + 1.0F;
                float $$9 = $$8;
                if ($$8 > 40.0F) {
                   $$8 = 40.0F;
                }
 
-               this.a.cd += (float)$$7 * (0.7F / $$8 / $$9);
-               this.a.t(this.a.dE() + this.a.cd);
+               this.a.cf += (float)$$7 * (0.7F / $$8 / $$9);
+               this.a.t(this.a.dE() + this.a.cf);
             }
          }
       } else if (this.h >= 100) {

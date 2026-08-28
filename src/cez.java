@@ -5,13 +5,13 @@ import javax.annotation.Nullable;
 public class cez extends cey {
    public static final float b = 0.5F;
    public static final float c = 10.0F;
-   private static final ajw<Byte> bZ = aka.a(cez.class, ajy.a);
-   private static final int ca = 1;
-   private static final cef cb = cef.b().a(4.0);
+   private static final ajw<Byte> cb = aka.a(cez.class, ajy.a);
+   private static final int cc = 1;
+   private static final cef cd = cef.b().a(4.0);
    public final bsm d = new bsm();
    public final bsm e = new bsm();
    @Nullable
-   private jd cc;
+   private jd ce;
 
    public cez(bsx<? extends cez> $$0, dcw $$1) {
       super($$0, $$1);
@@ -28,7 +28,7 @@ public class cez extends cey {
    @Override
    protected void a(aka.a $$0) {
       super.a($$0);
-      $$0.a(bZ, (byte)0);
+      $$0.a(cb, (byte)0);
    }
 
    @Override
@@ -75,15 +75,15 @@ public class cez extends cey {
    }
 
    public boolean t() {
-      return (this.ao.a(bZ) & 1) != 0;
+      return (this.ao.a(cb) & 1) != 0;
    }
 
    public void x(boolean $$0) {
-      byte $$1 = this.ao.a(bZ);
+      byte $$1 = this.ao.a(cb);
       if ($$0) {
-         this.ao.a(bZ, (byte)($$1 | 1));
+         this.ao.a(cb, (byte)($$1 | 1));
       } else {
-         this.ao.a(bZ, (byte)($$1 & -2));
+         this.ao.a(cb, (byte)($$1 & -2));
       }
    }
 
@@ -112,7 +112,7 @@ public class cez extends cey {
                this.ba = (float)this.ah.a(360);
             }
 
-            if (this.dO().a(cb, this) != null) {
+            if (this.dO().a(cd, this) != null) {
                this.x(false);
                if (!$$2) {
                   this.dO().a(null, 1025, $$0, 0);
@@ -125,21 +125,21 @@ public class cez extends cey {
             }
          }
       } else {
-         if (this.cc != null && (!this.dO().u(this.cc) || this.cc.v() <= this.dO().I_())) {
-            this.cc = null;
+         if (this.ce != null && (!this.dO().u(this.ce) || this.ce.v() <= this.dO().I_())) {
+            this.ce = null;
          }
 
-         if (this.cc == null || this.ah.a(30) == 0 || this.cc.a(this.dm(), 2.0)) {
-            this.cc = jd.a(
+         if (this.ce == null || this.ah.a(30) == 0 || this.ce.a(this.dm(), 2.0)) {
+            this.ce = jd.a(
                this.dt() + (double)this.ah.a(7) - (double)this.ah.a(7),
                this.dv() + (double)this.ah.a(6) - 2.0,
                this.dz() + (double)this.ah.a(7) - (double)this.ah.a(7)
             );
          }
 
-         double $$3 = (double)this.cc.u() + 0.5 - this.dt();
-         double $$4 = (double)this.cc.v() + 0.1 - this.dv();
-         double $$5 = (double)this.cc.w() + 0.5 - this.dz();
+         double $$3 = (double)this.ce.u() + 0.5 - this.dt();
+         double $$4 = (double)this.ce.v() + 0.1 - this.dv();
+         double $$5 = (double)this.ce.w() + 0.5 - this.dz();
          exc $$6 = this.dr();
          exc $$7 = $$6.b((Math.signum($$3) * 0.5 - $$6.c) * 0.1F, (Math.signum($$4) * 0.7F - $$6.d) * 0.1F, (Math.signum($$5) * 0.5 - $$6.e) * 0.1F);
          this.i($$7);
@@ -183,13 +183,13 @@ public class cez extends cey {
    @Override
    public void a(ub $$0) {
       super.a($$0);
-      this.ao.a(bZ, $$0.f("BatFlags"));
+      this.ao.a(cb, $$0.f("BatFlags"));
    }
 
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      $$0.a("BatFlags", this.ao.a(bZ));
+      $$0.a("BatFlags", this.ao.a(cb));
    }
 
    public static boolean b(bsx<cez> $$0, dcx $$1, btr $$2, jd $$3, ayw $$4) {

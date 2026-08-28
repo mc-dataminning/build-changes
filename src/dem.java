@@ -86,7 +86,7 @@ public final class dem {
    }
 
    protected void a(Consumer<Pair<def.d, akq<ddw>>> $$0) {
-      if (ab.aq) {
+      if (ab.ar) {
          this.b($$0);
       } else {
          this.c($$0);

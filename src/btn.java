@@ -1,3 +1,4 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Objects;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
@@ -1896,7 +1897,8 @@ public abstract class btn extends bsr implements bso {
       return this.b(bsb.h) ? 0.1F * ((float)this.c(bsb.h).e() + 1.0F) : 0.0F;
    }
 
-   protected void ff() {
+   @VisibleForTesting
+   public void ff() {
       float $$0 = this.fd();
       if (!($$0 <= 1.0E-5F)) {
          exc $$1 = this.dr();
@@ -2318,7 +2320,7 @@ public abstract class btn extends bsr implements bso {
                $$2.a($$1, ($$3x, $$4x) -> {
                   bus $$5 = $$4.a($$3x);
                   if ($$5 != null) {
-                     $$5.d($$4x);
+                     $$5.e($$4x);
                   }
 
                   dae.a($$2, this, $$1);

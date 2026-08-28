@@ -54,17 +54,17 @@ public class fvn<T extends cgy> extends fvt<T> {
 
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
       this.a().e().forEach(fyk::c);
-      this.a($$0.ce, fhk.c, $$3);
-      this.a($$0.cf, fhk.a, $$3);
-      this.a($$0.cg, fhk.d, $$3);
+      this.a($$0.cg, fhk.c, $$3);
+      this.a($$0.ch, fhk.a, $$3);
+      this.a($$0.ci, fhk.d, $$3);
       if ($$0.bi()) {
          this.a(fhk.e, $$1, $$2, 1.0F, 2.5F);
       } else {
          this.a(fhk.b, $$1, $$2, 1.5F, 2.5F);
       }
 
-      this.a($$0.ch, fhk.f, $$3);
-      this.p.k = $$0.cf.c();
+      this.a($$0.cj, fhk.f, $$3);
+      this.p.k = $$0.ch.c();
    }
 
    @Override

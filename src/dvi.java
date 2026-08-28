@@ -312,12 +312,29 @@ public class dvi extends duy {
    @Override
    public void a(dqh $$0) {
       jd $$1 = $$0.aD_();
-      if (this.a_($$1).t()) {
+      dtc $$2 = this.a_($$1);
+      if (!$$2.t()) {
+         n.warn("Trying to set block entity {} at position {}, but state {} does not allow it", new Object[]{$$0, $$1, $$2});
+      } else {
+         dtc $$3 = $$0.n();
+         if ($$2 != $$3) {
+            if (!$$0.r().a($$2)) {
+               n.warn("Trying to set block entity {} at position {}, but state {} does not allow it", new Object[]{$$0, $$1, $$2});
+               return;
+            }
+
+            if ($$2.b() != $$3.b()) {
+               n.warn("Block state mismatch on block entity {} in position {}, {} != {}, updating", new Object[]{$$0, $$1, $$2, $$3});
+            }
+
+            $$0.b($$2);
+         }
+
          $$0.a(this.r);
          $$0.p();
-         dqh $$2 = this.k.put($$1.j(), $$0);
-         if ($$2 != null && $$2 != $$0) {
-            $$2.aA_();
+         dqh $$4 = this.k.put($$1.j(), $$0);
+         if ($$4 != null && $$4 != $$0) {
+            $$4.aA_();
          }
       }
    }

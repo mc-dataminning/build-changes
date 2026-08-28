@@ -27,16 +27,16 @@ public abstract class cjl extends ckd implements ckh {
 
    @Override
    protected void B() {
-      this.bU.a(2, new cbp(this));
-      this.bU.a(3, new caf(this, 1.0));
-      this.bU.a(3, new bzt<>(this, cgh.class, 6.0F, 1.0, 1.2));
-      this.bU.a(5, new cbz(this, 1.0));
-      this.bU.a(6, new cau(this, cmx.class, 8.0F));
-      this.bU.a(6, new cbh(this));
-      this.bV.a(1, new cce(this));
-      this.bV.a(2, new ccf<>(this, cmx.class, true));
-      this.bV.a(3, new ccf<>(this, cfq.class, true));
-      this.bV.a(3, new ccf<>(this, cgf.class, 10, true, false, cgf.ca));
+      this.bW.a(2, new cbp(this));
+      this.bW.a(3, new caf(this, 1.0));
+      this.bW.a(3, new bzt<>(this, cgh.class, 6.0F, 1.0, 1.2));
+      this.bW.a(5, new cbz(this, 1.0));
+      this.bW.a(6, new cau(this, cmx.class, 8.0F));
+      this.bW.a(6, new cbh(this));
+      this.bX.a(1, new cce(this));
+      this.bX.a(2, new ccf<>(this, cmx.class, true));
+      this.bX.a(3, new ccf<>(this, cfq.class, true));
+      this.bX.a(3, new ccf<>(this, cgf.class, 10, true, false, cgf.cc));
    }
 
    public static buv.a s() {
@@ -105,7 +105,7 @@ public abstract class cjl extends ckd implements ckh {
          int $$7 = $$5.get(ChronoField.MONTH_OF_YEAR);
          if ($$7 == 10 && $$6 == 31 && $$4.i() < 0.25F) {
             this.a(bsy.f, new cuq($$4.i() < 0.1F ? dga.ef : dga.ee));
-            this.bX[bsy.f.b()] = 0.0F;
+            this.bZ[bsy.f.b()] = 0.0F;
          }
       }
 
@@ -114,8 +114,8 @@ public abstract class cjl extends ckd implements ckh {
 
    public void x() {
       if (this.dO() != null && !this.dO().B) {
-         this.bU.a(this.e);
-         this.bU.a(this.d);
+         this.bW.a(this.e);
+         this.bW.a(this.d);
          cuq $$0 = this.b(cnr.a(this, cut.ov));
          if ($$0.a(cut.ov)) {
             int $$1 = this.gk();
@@ -124,9 +124,9 @@ public abstract class cjl extends ckd implements ckh {
             }
 
             this.d.c($$1);
-            this.bU.a(4, this.d);
+            this.bW.a(4, this.d);
          } else {
-            this.bU.a(4, this.e);
+            this.bW.a(4, this.e);
          }
       }
    }

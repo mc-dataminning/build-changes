@@ -12,13 +12,13 @@ public class ckk extends ckd {
    @Override
    protected void B() {
       this.b = new ckk.b(this);
-      this.bU.a(1, new cag(this));
-      this.bU.a(1, new cab(this, this.dO()));
-      this.bU.a(3, this.b);
-      this.bU.a(4, new caw(this, 1.0, false));
-      this.bU.a(5, new ckk.a(this));
-      this.bV.a(1, new cce(this).a());
-      this.bV.a(2, new ccf<>(this, cmx.class, true));
+      this.bW.a(1, new cag(this));
+      this.bW.a(1, new cab(this, this.dO()));
+      this.bW.a(3, this.b);
+      this.bW.a(4, new caw(this, 1.0, false));
+      this.bW.a(5, new ckk.a(this));
+      this.bX.a(1, new cce(this).a());
+      this.bX.a(2, new ccf<>(this, cmx.class, true));
    }
 
    public static buv.a s() {

@@ -37,7 +37,7 @@ public class aqw {
          this.d.d.ah().a(new aea(aea.a.c, this.d));
          this.c.e();
          if ($$0 == dct.b) {
-            this.d.gB();
+            this.d.gC();
          }
 
          return true;

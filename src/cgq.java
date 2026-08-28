@@ -11,33 +11,33 @@ import javax.annotation.Nullable;
 import org.joml.Vector3f;
 
 public class cgq extends cfe implements btl, buo<cgq.d>, cfg {
-   public static final int ca = 200;
-   protected static final ImmutableList<? extends cdz<? extends cdy<? super cgq>>> cb = ImmutableList.of(cdz.c, cdz.o, cdz.f, cdz.p, cdz.q);
-   protected static final ImmutableList<? extends ccs<?>> cc = ImmutableList.of(
+   public static final int cc = 200;
+   protected static final ImmutableList<? extends cdz<? extends cdy<? super cgq>>> cd = ImmutableList.of(cdz.c, cdz.o, cdz.f, cdz.p, cdz.q);
+   protected static final ImmutableList<? extends ccs<?>> ce = ImmutableList.of(
       ccs.r, ccs.g, ccs.h, ccs.k, ccs.l, ccs.n, ccs.m, ccs.E, ccs.t, ccs.o, ccs.p, ccs.K, new ccs[]{ccs.y, ccs.N, ccs.B, ccs.O, ccs.P, ccs.R, ccs.U, ccs.Z}
    );
-   private static final ajw<Integer> ch = aka.a(cgq.class, ajy.b);
-   private static final ajw<Boolean> ci = aka.a(cgq.class, ajy.k);
-   private static final ajw<Boolean> cj = aka.a(cgq.class, ajy.k);
-   public static final double ce = 20.0;
-   public static final int cf = 1200;
-   private static final int ck = 6000;
-   public static final String cg = "Variant";
-   private static final int cl = 1800;
-   private static final int cm = 2400;
-   private final Map<String, Vector3f> cn = Maps.newHashMap();
-   private static final int co = 100;
+   private static final ajw<Integer> cj = aka.a(cgq.class, ajy.b);
+   private static final ajw<Boolean> ck = aka.a(cgq.class, ajy.k);
+   private static final ajw<Boolean> cl = aka.a(cgq.class, ajy.k);
+   public static final double cg = 20.0;
+   public static final int ch = 1200;
+   private static final int cm = 6000;
+   public static final String ci = "Variant";
+   private static final int cn = 1800;
+   private static final int co = 2400;
+   private final Map<String, Vector3f> cp = Maps.newHashMap();
+   private static final int cq = 100;
 
    public cgq(bsx<? extends cgq> $$0, dcw $$1) {
       super($$0, $$1);
       this.a(epv.j, 0.0F);
-      this.bR = new cgq.c(this);
-      this.bQ = new cgq.b(this, 20);
+      this.bT = new cgq.c(this);
+      this.bS = new cgq.b(this, 20);
    }
 
    @Override
    public Map<String, Vector3f> a() {
-      return this.cn;
+      return this.cp;
    }
 
    @Override
@@ -48,9 +48,9 @@ public class cgq extends cfe implements btl, buo<cgq.d>, cfg {
    @Override
    protected void a(aka.a $$0) {
       super.a($$0);
-      $$0.a(ch, 0);
-      $$0.a(ci, false);
-      $$0.a(cj, false);
+      $$0.a(cj, 0);
+      $$0.a(ck, false);
+      $$0.a(cl, false);
    }
 
    @Override
@@ -131,11 +131,11 @@ public class cgq extends cfe implements btl, buo<cgq.d>, cfg {
    }
 
    public cgq.d gk() {
-      return cgq.d.a(this.ao.a(ch));
+      return cgq.d.a(this.ao.a(cj));
    }
 
    public void a(cgq.d $$0) {
-      this.ao.a(ch, $$0.a());
+      this.ao.a(cj, $$0.a());
    }
 
    private static boolean a(ayw $$0) {
@@ -153,21 +153,21 @@ public class cgq extends cfe implements btl, buo<cgq.d>, cfg {
    }
 
    public void y(boolean $$0) {
-      this.ao.a(ci, $$0);
+      this.ao.a(ck, $$0);
    }
 
    public boolean gl() {
-      return this.ao.a(ci);
+      return this.ao.a(ck);
    }
 
    @Override
    public boolean t() {
-      return this.ao.a(cj);
+      return this.ao.a(cl);
    }
 
    @Override
    public void x(boolean $$0) {
-      this.ao.a(cj, $$0);
+      this.ao.a(cl, $$0);
    }
 
    @Nullable
@@ -362,7 +362,7 @@ public class cgq extends cfe implements btl, buo<cgq.d>, cfg {
 
    @Override
    protected buq.b<cgq> dU() {
-      return buq.a(cc, cb);
+      return buq.a(ce, cd);
    }
 
    @Override

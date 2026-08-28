@@ -41,7 +41,7 @@ public class cul implements cpi, dcv {
       this.c = $$0.b();
       this.j = $$0.c;
       this.l = $$0.d;
-      if (ab.aU) {
+      if (ab.aV) {
          String $$1 = this.getClass().getSimpleName();
          if (!$$1.endsWith("Item")) {
             a.error("Item classes should end with Item and {} doesn't.", $$1);

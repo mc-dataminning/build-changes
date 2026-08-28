@@ -376,6 +376,14 @@ public class cov extends cpg implements btk, buo<cov.b> {
       return new exc(0.0, (double)(0.88F * this.cL()), (double)(this.dj() * 0.64F));
    }
 
+   @Override
+   public void b(bsr $$0, float $$1) {
+      exc $$2 = $$0.dm().d(this.dm()).d().a((double)$$1 - 6.0);
+      exc $$3 = this.dr();
+      boolean $$4 = $$3.b($$2) > 0.0;
+      this.i($$3.e($$2.a($$4 ? 0.15F : 0.2F)));
+   }
+
    private cov.a D() {
       cov.a $$0 = this.H();
       if ($$0 != null) {

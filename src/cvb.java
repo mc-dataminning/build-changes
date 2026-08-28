@@ -35,7 +35,14 @@ public class cvb extends cul {
    public boolean a(cuq $$0, btn $$1, btn $$2) {
       if ($$2 instanceof aqv $$3 && a($$3)) {
          aqu $$4 = (aqu)$$2.dO();
-         $$3.cx = $$3.dm();
+         if ($$3.gA() && $$3.cx != null) {
+            if ($$3.cx.d > $$3.dm().d) {
+               $$3.cx = $$3.dm();
+            }
+         } else {
+            $$3.cx = $$3.dm();
+         }
+
          $$3.w(true);
          $$3.i($$3.dr().a(ji.a.b, 0.01F));
          $$3.c.b(new afb($$3));

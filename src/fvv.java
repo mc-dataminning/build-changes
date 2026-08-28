@@ -134,7 +134,7 @@ public class fvv<T extends chi> extends fuf<T> {
       float $$10 = $$0.I($$3);
       float $$11 = 1.0F - $$10;
       float $$12 = $$0.J($$3);
-      boolean $$13 = $$0.cr != 0;
+      boolean $$13 = $$0.ct != 0;
       float $$14 = (float)$$0.ai + $$3;
       this.f.c = 4.0F;
       this.f.d = -12.0F;

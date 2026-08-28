@@ -1,10 +1,10 @@
 public class ckt extends coj implements ckh {
    private static final akr b = akr.b("drinking");
    private static final buu e = new buu(b, -0.25, buu.a.a);
-   private static final ajw<Boolean> ca = aka.a(ckt.class, ajy.k);
-   private int cb;
-   private cch<coj> cc;
-   private ccg<cmx> cd;
+   private static final ajw<Boolean> cc = aka.a(ckt.class, ajy.k);
+   private int cd;
+   private cch<coj> ce;
+   private ccg<cmx> cf;
 
    public ckt(bsx<? extends ckt> $$0, dcw $$1) {
       super($$0, $$1);
@@ -13,22 +13,22 @@ public class ckt extends coj implements ckh {
    @Override
    protected void B() {
       super.B();
-      this.cc = new cch<>(this, coj.class, true, $$0 -> $$0 != null && this.gB() && $$0.am() != bsx.bo);
-      this.cd = new ccg<>(this, cmx.class, 10, true, false, null);
-      this.bU.a(1, new cag(this));
-      this.bU.a(2, new cbl(this, 1.0, 60, 10.0F));
-      this.bU.a(2, new cbz(this, 1.0));
-      this.bU.a(3, new cau(this, cmx.class, 8.0F));
-      this.bU.a(3, new cbh(this));
-      this.bV.a(1, new cce(this, coj.class));
-      this.bV.a(2, this.cc);
-      this.bV.a(3, this.cd);
+      this.ce = new cch<>(this, coj.class, true, $$0 -> $$0 != null && this.gB() && $$0.am() != bsx.bo);
+      this.cf = new ccg<>(this, cmx.class, 10, true, false, null);
+      this.bW.a(1, new cag(this));
+      this.bW.a(2, new cbl(this, 1.0, 60, 10.0F));
+      this.bW.a(2, new cbz(this, 1.0));
+      this.bW.a(3, new cau(this, cmx.class, 8.0F));
+      this.bW.a(3, new cbh(this));
+      this.bX.a(1, new cce(this, coj.class));
+      this.bX.a(2, this.ce);
+      this.bX.a(3, this.cf);
    }
 
    @Override
    protected void a(aka.a $$0) {
       super.a($$0);
-      $$0.a(ca, false);
+      $$0.a(cc, false);
    }
 
    @Override
@@ -47,11 +47,11 @@ public class ckt extends coj implements ckh {
    }
 
    public void z(boolean $$0) {
-      this.ar().a(ca, $$0);
+      this.ar().a(cc, $$0);
    }
 
    public boolean s() {
-      return this.ar().a(ca);
+      return this.ar().a(cc);
    }
 
    public static buv.a t() {
@@ -61,15 +61,15 @@ public class ckt extends coj implements ckh {
    @Override
    public void m_() {
       if (!this.dO().B && this.bE()) {
-         this.cc.k();
-         if (this.cc.i() <= 0) {
-            this.cd.a(true);
+         this.ce.k();
+         if (this.ce.i() <= 0) {
+            this.cf.a(true);
          } else {
-            this.cd.a(false);
+            this.cf.a(false);
          }
 
          if (this.s()) {
-            if (this.cb-- <= 0) {
+            if (this.cd-- <= 0) {
                this.z(false);
                cuq $$0 = this.eT();
                this.a(bsy.a, cuq.l);
@@ -95,7 +95,7 @@ public class ckt extends coj implements ckh {
 
             if ($$2 != null) {
                this.a(bsy.a, cwu.a(cut.sk, $$2));
-               this.cb = this.eT().a((btn)this);
+               this.cd = this.eT().a((btn)this);
                this.z(true);
                if (!this.aX()) {
                   this.dO().a(null, this.dt(), this.dv(), this.dz(), avp.Cv, this.de(), 1.0F, 0.8F + this.ah.i() * 0.4F);

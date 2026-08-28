@@ -4,26 +4,26 @@ import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
 public class cgh extends bul implements btt, buo<jm<cgi>> {
-   private static final ajw<Boolean> cf = aka.a(cgh.class, ajy.k);
-   private static final ajw<Integer> cg = aka.a(cgh.class, ajy.b);
-   private static final ajw<Integer> ch = aka.a(cgh.class, ajy.b);
-   private static final ajw<jm<cgi>> ci = aka.a(cgh.class, ajy.y);
-   public static final Predicate<btn> ce = $$0 -> {
+   private static final ajw<Boolean> ch = aka.a(cgh.class, ajy.k);
+   private static final ajw<Integer> ci = aka.a(cgh.class, ajy.b);
+   private static final ajw<Integer> cj = aka.a(cgh.class, ajy.b);
+   private static final ajw<jm<cgi>> ck = aka.a(cgh.class, ajy.y);
+   public static final Predicate<btn> cg = $$0 -> {
       bsx<?> $$1 = $$0.am();
       return $$1 == bsx.aJ || $$1 == bsx.aG || $$1 == bsx.Q;
    };
-   private static final float cj = 8.0F;
-   private static final float ck = 40.0F;
-   private static final float cl = 0.125F;
-   private float cm;
-   private float cn;
-   private boolean co;
-   private boolean cp;
-   private float cq;
-   private float cr;
-   private static final bqc cs = azp.a(20, 39);
+   private static final float cl = 8.0F;
+   private static final float cm = 40.0F;
+   private static final float cn = 0.125F;
+   private float co;
+   private float cp;
+   private boolean cq;
+   private boolean cr;
+   private float cs;
+   private float ct;
+   private static final bqc cu = azp.a(20, 39);
    @Nullable
-   private UUID ct;
+   private UUID cv;
 
    public cgh(bsx<? extends cgh> $$0, dcw $$1) {
       super($$0, $$1);
@@ -34,26 +34,26 @@ public class cgh extends bul implements btt, buo<jm<cgi>> {
 
    @Override
    protected void B() {
-      this.bU.a(1, new cag(this));
-      this.bU.a(1, new bul.a(1.5, awg.G));
-      this.bU.a(2, new cbr(this));
-      this.bU.a(3, new cgh.a<>(this, chl.class, 24.0F, 1.5, 1.5));
-      this.bU.a(4, new cas(this, 0.4F));
-      this.bU.a(5, new caw(this, 1.0, true));
-      this.bU.a(6, new cak(this, 1.0, 10.0F, 2.0F));
-      this.bU.a(7, new bzy(this, 1.0));
-      this.bU.a(8, new cbz(this, 1.0));
-      this.bU.a(9, new bzu(this, 8.0F));
-      this.bU.a(10, new cau(this, cmx.class, 8.0F));
-      this.bU.a(10, new cbh(this));
-      this.bV.a(1, new ccj(this));
-      this.bV.a(2, new cck(this));
-      this.bV.a(3, new cce(this).a());
-      this.bV.a(4, new ccf<>(this, cmx.class, 10, true, false, this::a_));
-      this.bV.a(5, new cci<>(this, cfe.class, false, ce));
-      this.bV.a(6, new cci<>(this, cgf.class, false, cgf.ca));
-      this.bV.a(7, new ccf<>(this, cjl.class, false));
-      this.bV.a(8, new ccl<>(this, true));
+      this.bW.a(1, new cag(this));
+      this.bW.a(1, new bul.a(1.5, awg.G));
+      this.bW.a(2, new cbr(this));
+      this.bW.a(3, new cgh.a<>(this, chl.class, 24.0F, 1.5, 1.5));
+      this.bW.a(4, new cas(this, 0.4F));
+      this.bW.a(5, new caw(this, 1.0, true));
+      this.bW.a(6, new cak(this, 1.0, 10.0F, 2.0F));
+      this.bW.a(7, new bzy(this, 1.0));
+      this.bW.a(8, new cbz(this, 1.0));
+      this.bW.a(9, new bzu(this, 8.0F));
+      this.bW.a(10, new cau(this, cmx.class, 8.0F));
+      this.bW.a(10, new cbh(this));
+      this.bX.a(1, new ccj(this));
+      this.bX.a(2, new cck(this));
+      this.bX.a(3, new cce(this).a());
+      this.bX.a(4, new ccf<>(this, cmx.class, 10, true, false, this::a_));
+      this.bX.a(5, new cci<>(this, cfe.class, false, cg));
+      this.bX.a(6, new cci<>(this, cgf.class, false, cgf.cc));
+      this.bX.a(7, new ccf<>(this, cjl.class, false));
+      this.bX.a(8, new ccl<>(this, true));
    }
 
    public akr gu() {
@@ -66,12 +66,12 @@ public class cgh extends bul implements btt, buo<jm<cgi>> {
    }
 
    public jm<cgi> gv() {
-      return this.ao.a(ci);
+      return this.ao.a(ck);
    }
 
    @Override
    public void i(jm<cgi> $$0) {
-      this.ao.a(ci, $$0);
+      this.ao.a(ck, $$0);
    }
 
    public static buv.a gw() {
@@ -83,10 +83,10 @@ public class cgh extends bul implements btt, buo<jm<cgi>> {
       super.a($$0);
       ka $$1 = this.dQ();
       jz<cgi> $$2 = $$1.d(lu.m);
-      $$0.a(ci, $$2.b(cgj.j).or($$2::a).orElseThrow());
-      $$0.a(cf, false);
-      $$0.a(cg, cti.o.a());
-      $$0.a(ch, 0);
+      $$0.a(ck, $$2.b(cgj.j).or($$2::a).orElseThrow());
+      $$0.a(ch, false);
+      $$0.a(ci, cti.o.a());
+      $$0.a(cj, 0);
    }
 
    @Override
@@ -158,10 +158,10 @@ public class cgh extends bul implements btt, buo<jm<cgi>> {
    @Override
    public void m_() {
       super.m_();
-      if (!this.dO().B && this.co && !this.cp && !this.gg() && this.aF()) {
-         this.cp = true;
-         this.cq = 0.0F;
-         this.cr = 0.0F;
+      if (!this.dO().B && this.cq && !this.cr && !this.gg() && this.aF()) {
+         this.cr = true;
+         this.cs = 0.0F;
+         this.ct = 0.0F;
          this.dO().a(this, (byte)8);
       }
 
@@ -174,37 +174,37 @@ public class cgh extends bul implements btt, buo<jm<cgi>> {
    public void l() {
       super.l();
       if (this.bE()) {
-         this.cn = this.cm;
+         this.cp = this.co;
          if (this.gB()) {
-            this.cm = this.cm + (1.0F - this.cm) * 0.4F;
+            this.co = this.co + (1.0F - this.co) * 0.4F;
          } else {
-            this.cm = this.cm + (0.0F - this.cm) * 0.4F;
+            this.co = this.co + (0.0F - this.co) * 0.4F;
          }
 
          if (this.bh()) {
-            this.co = true;
-            if (this.cp && !this.dO().B) {
+            this.cq = true;
+            if (this.cr && !this.dO().B) {
                this.dO().a(this, (byte)56);
                this.gC();
             }
-         } else if ((this.co || this.cp) && this.cp) {
-            if (this.cq == 0.0F) {
+         } else if ((this.cq || this.cr) && this.cr) {
+            if (this.cs == 0.0F) {
                this.a(avp.CS, this.fa(), (this.ah.i() - this.ah.i()) * 0.2F + 1.0F);
                this.a(dxz.u);
             }
 
-            this.cr = this.cq;
-            this.cq += 0.05F;
-            if (this.cr >= 2.0F) {
-               this.co = false;
-               this.cp = false;
-               this.cr = 0.0F;
-               this.cq = 0.0F;
+            this.ct = this.cs;
+            this.cs += 0.05F;
+            if (this.ct >= 2.0F) {
+               this.cq = false;
+               this.cr = false;
+               this.ct = 0.0F;
+               this.cs = 0.0F;
             }
 
-            if (this.cq > 0.4F) {
+            if (this.cs > 0.4F) {
                float $$0 = (float)this.dv();
-               int $$1 = (int)(ayo.a((this.cq - 0.4F) * (float) Math.PI) * 7.0F);
+               int $$1 = (int)(ayo.a((this.cs - 0.4F) * (float) Math.PI) * 7.0F);
                exc $$2 = this.dr();
 
                for (int $$3 = 0; $$3 < $$1; $$3++) {
@@ -218,30 +218,30 @@ public class cgh extends bul implements btt, buo<jm<cgi>> {
    }
 
    private void gC() {
-      this.cp = false;
-      this.cq = 0.0F;
-      this.cr = 0.0F;
+      this.cr = false;
+      this.cs = 0.0F;
+      this.ct = 0.0F;
    }
 
    @Override
    public void a(brk $$0) {
-      this.co = false;
-      this.cp = false;
-      this.cr = 0.0F;
-      this.cq = 0.0F;
+      this.cq = false;
+      this.cr = false;
+      this.ct = 0.0F;
+      this.cs = 0.0F;
       super.a($$0);
    }
 
    public boolean gx() {
-      return this.co;
+      return this.cq;
    }
 
    public float H(float $$0) {
-      return Math.min(0.75F + ayo.i($$0, this.cr, this.cq) / 2.0F * 0.25F, 1.0F);
+      return Math.min(0.75F + ayo.i($$0, this.ct, this.cs) / 2.0F * 0.25F, 1.0F);
    }
 
    public float g(float $$0, float $$1) {
-      float $$2 = (ayo.i($$0, this.cr, this.cq) + $$1) / 1.8F;
+      float $$2 = (ayo.i($$0, this.ct, this.cs) + $$1) / 1.8F;
       if ($$2 < 0.0F) {
          $$2 = 0.0F;
       } else if ($$2 > 1.0F) {
@@ -252,7 +252,7 @@ public class cgh extends bul implements btt, buo<jm<cgi>> {
    }
 
    public float I(float $$0) {
-      return ayo.i($$0, this.cn, this.cm) * 0.15F * (float) Math.PI;
+      return ayo.i($$0, this.cp, this.co) * 0.15F * (float) Math.PI;
    }
 
    @Override
@@ -362,7 +362,7 @@ public class cgh extends bul implements btt, buo<jm<cgi>> {
                   if (!$$12.a() && this.j($$0)) {
                      this.z(!this.gk());
                      this.bn = false;
-                     this.bT.n();
+                     this.bV.n();
                      this.h(null);
                      return bqr.b;
                   } else {
@@ -386,7 +386,7 @@ public class cgh extends bul implements btt, buo<jm<cgi>> {
    private void g(cmx $$0) {
       if (this.ah.a(3) == 0) {
          this.a($$0);
-         this.bT.n();
+         this.bV.n();
          this.h(null);
          this.z(true);
          this.dO().a(this, (byte)7);
@@ -398,9 +398,9 @@ public class cgh extends bul implements btt, buo<jm<cgi>> {
    @Override
    public void b(byte $$0) {
       if ($$0 == 8) {
-         this.cp = true;
-         this.cq = 0.0F;
-         this.cr = 0.0F;
+         this.cr = true;
+         this.cs = 0.0F;
+         this.ct = 0.0F;
       } else if ($$0 == 56) {
          this.gC();
       } else {
@@ -432,32 +432,32 @@ public class cgh extends bul implements btt, buo<jm<cgi>> {
 
    @Override
    public int a() {
-      return this.ao.a(ch);
+      return this.ao.a(cj);
    }
 
    @Override
    public void a(int $$0) {
-      this.ao.a(ch, $$0);
+      this.ao.a(cj, $$0);
    }
 
    @Override
    public void c() {
-      this.a(cs.a(this.ah));
+      this.a(cu.a(this.ah));
    }
 
    @Nullable
    @Override
    public UUID b() {
-      return this.ct;
+      return this.cv;
    }
 
    @Override
    public void a(@Nullable UUID $$0) {
-      this.ct = $$0;
+      this.cv = $$0;
    }
 
    public cti gz() {
-      return cti.a(this.ao.a(cg));
+      return cti.a(this.ao.a(ci));
    }
 
    public boolean gA() {
@@ -465,7 +465,7 @@ public class cgh extends bul implements btt, buo<jm<cgi>> {
    }
 
    private void a(cti $$0) {
-      this.ao.a(cg, $$0.a());
+      this.ao.a(ci, $$0.a());
    }
 
    @Nullable
@@ -493,7 +493,7 @@ public class cgh extends bul implements btt, buo<jm<cgi>> {
    }
 
    public void A(boolean $$0) {
-      this.ao.a(cf, $$0);
+      this.ao.a(ch, $$0);
    }
 
    @Override
@@ -512,7 +512,7 @@ public class cgh extends bul implements btt, buo<jm<cgi>> {
    }
 
    public boolean gB() {
-      return this.ao.a(cf);
+      return this.ao.a(ch);
    }
 
    @Override

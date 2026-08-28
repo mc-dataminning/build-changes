@@ -9,18 +9,18 @@ public class ckx extends ckw implements cmm {
    private static final Logger b = LogUtils.getLogger();
    private static final ajw<Boolean> c = aka.a(ckx.class, ajy.k);
    private static final ajw<cml> d = aka.a(ckx.class, ajy.u);
-   private static final int cd = 3600;
-   private static final int ce = 6000;
-   private static final int cf = 14;
-   private static final int cg = 4;
-   private int ch;
+   private static final int cf = 3600;
+   private static final int cg = 6000;
+   private static final int ch = 14;
+   private static final int ci = 4;
+   private int cj;
    @Nullable
-   private UUID ci;
+   private UUID ck;
    @Nullable
-   private uy cj;
+   private uy cl;
    @Nullable
-   private dbv ck;
-   private int cl;
+   private dbv cm;
+   private int cn;
 
    public ckx(bsx<? extends ckx> $$0, dcw $$1) {
       super($$0, $$1);
@@ -38,20 +38,20 @@ public class ckx extends ckw implements cmm {
    public void b(ub $$0) {
       super.b($$0);
       cml.c.encodeStart(up.a, this.gv()).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("VillagerData", $$1));
+      if (this.cm != null) {
+         $$0.a("Offers", (uy)dbv.a.encodeStart(this.dQ().a(up.a), this.cm).getOrThrow());
+      }
+
+      if (this.cl != null) {
+         $$0.a("Gossips", this.cl);
+      }
+
+      $$0.a("ConversionTime", this.gu() ? this.cj : -1);
       if (this.ck != null) {
-         $$0.a("Offers", (uy)dbv.a.encodeStart(this.dQ().a(up.a), this.ck).getOrThrow());
+         $$0.a("ConversionPlayer", this.ck);
       }
 
-      if (this.cj != null) {
-         $$0.a("Gossips", this.cj);
-      }
-
-      $$0.a("ConversionTime", this.gu() ? this.ch : -1);
-      if (this.ci != null) {
-         $$0.a("ConversionPlayer", this.ci);
-      }
-
-      $$0.a("Xp", this.cl);
+      $$0.a("Xp", this.cn);
    }
 
    @Override
@@ -63,11 +63,11 @@ public class ckx extends ckw implements cmm {
       }
 
       if ($$0.e("Offers")) {
-         dbv.a.parse(this.dQ().a(up.a), $$0.c("Offers")).resultOrPartial(ad.a("Failed to load offers: ", b::warn)).ifPresent($$0x -> this.ck = $$0x);
+         dbv.a.parse(this.dQ().a(up.a), $$0.c("Offers")).resultOrPartial(ad.a("Failed to load offers: ", b::warn)).ifPresent($$0x -> this.cm = $$0x);
       }
 
       if ($$0.b("Gossips", 9)) {
-         this.cj = $$0.c("Gossips", 10);
+         this.cl = $$0.c("Gossips", 10);
       }
 
       if ($$0.b("ConversionTime", 99) && $$0.h("ConversionTime") > -1) {
@@ -75,7 +75,7 @@ public class ckx extends ckw implements cmm {
       }
 
       if ($$0.b("Xp", 3)) {
-         this.cl = $$0.h("Xp");
+         this.cn = $$0.h("Xp");
       }
    }
 
@@ -83,8 +83,8 @@ public class ckx extends ckw implements cmm {
    public void l() {
       if (!this.dO().B && this.bE() && this.gu()) {
          int $$0 = this.gx();
-         this.ch -= $$0;
-         if (this.ch <= 0) {
+         this.cj -= $$0;
+         if (this.cj <= 0) {
             this.a((aqu)this.dO());
          }
       }
@@ -118,7 +118,7 @@ public class ckx extends ckw implements cmm {
 
    @Override
    public boolean h(double $$0) {
-      return !this.gu() && this.cl == 0;
+      return !this.gu() && this.cn == 0;
    }
 
    public boolean gu() {
@@ -126,8 +126,8 @@ public class ckx extends ckw implements cmm {
    }
 
    private void a(@Nullable UUID $$0, int $$1) {
-      this.ci = $$0;
-      this.ch = $$1;
+      this.ck = $$0;
+      this.cj = $$1;
       this.ar().a(c, true);
       this.e(bsb.r);
       this.b(new brz(bsb.e, $$1, Math.min(this.dO().al().a() - 1, 0)));
@@ -154,19 +154,19 @@ public class ckx extends ckw implements cmm {
          }
 
          $$1.a(this.gv());
-         if (this.cj != null) {
-            $$1.a(this.cj);
+         if (this.cl != null) {
+            $$1.a(this.cl);
          }
 
-         if (this.ck != null) {
-            $$1.b(this.ck.a());
+         if (this.cm != null) {
+            $$1.b(this.cm.a());
          }
 
-         $$1.u(this.cl);
+         $$1.u(this.cn);
          $$1.a($$0, $$0.d_($$1.do()), btr.i, null);
          $$1.a($$0);
-         if (this.ci != null) {
-            cmx $$4 = $$0.b(this.ci);
+         if (this.ck != null) {
+            cmx $$4 = $$0.b(this.ck);
             if ($$4 instanceof aqv) {
                an.s.a((aqv)$$4, this, $$1);
                $$0.a(cep.a, $$4, $$1);
@@ -236,11 +236,11 @@ public class ckx extends ckw implements cmm {
    }
 
    public void a(dbv $$0) {
-      this.ck = $$0;
+      this.cm = $$0;
    }
 
    public void a(uy $$0) {
-      this.cj = $$0;
+      this.cl = $$0;
    }
 
    @Nullable
@@ -254,7 +254,7 @@ public class ckx extends ckw implements cmm {
    public void a(cml $$0) {
       cml $$1 = this.gv();
       if ($$1.b() != $$0.b()) {
-         this.ck = null;
+         this.cm = null;
       }
 
       this.ao.a(d, $$0);
@@ -266,11 +266,11 @@ public class ckx extends ckw implements cmm {
    }
 
    public int gw() {
-      return this.cl;
+      return this.cn;
    }
 
    @Override
    public void b(int $$0) {
-      this.cl = $$0;
+      this.cn = $$0;
    }
 }

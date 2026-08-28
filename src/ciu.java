@@ -9,24 +9,24 @@ public class ciu extends ckd implements bub, ckh {
    private static final ajw<Integer> c = aka.a(ciu.class, ajy.b);
    private static final ajw<Integer> d = aka.a(ciu.class, ajy.b);
    private static final List<ajw<Integer>> e = ImmutableList.of(b, c, d);
-   private static final ajw<Integer> ca = aka.a(ciu.class, ajy.b);
-   private static final int cb = 220;
-   private final float[] cc = new float[2];
-   private final float[] cd = new float[2];
+   private static final ajw<Integer> cc = aka.a(ciu.class, ajy.b);
+   private static final int cd = 220;
    private final float[] ce = new float[2];
    private final float[] cf = new float[2];
-   private final int[] cg = new int[2];
-   private final int[] ch = new int[2];
-   private int ci;
-   private final aqr cj = (aqr)new aqr(this.S_(), bqh.a.f, bqh.b.a).a(true);
-   private static final Predicate<btn> ck = $$0 -> !$$0.am().a(awi.y) && $$0.fD();
-   private static final cef cl = cef.a().a(20.0).a(ck);
+   private final float[] cg = new float[2];
+   private final float[] ch = new float[2];
+   private final int[] ci = new int[2];
+   private final int[] cj = new int[2];
+   private int ck;
+   private final aqr cl = (aqr)new aqr(this.S_(), bqh.a.f, bqh.b.a).a(true);
+   private static final Predicate<btn> cm = $$0 -> !$$0.am().a(awi.y) && $$0.fD();
+   private static final cef cn = cef.a().a(20.0).a(cm);
 
    public ciu(bsx<? extends ciu> $$0, dcw $$1) {
       super($$0, $$1);
-      this.bR = new bzm(this, 10, false);
+      this.bT = new bzm(this, 10, false);
       this.v(this.eN());
-      this.bP = 50;
+      this.bR = 50;
    }
 
    @Override
@@ -40,13 +40,13 @@ public class ciu extends ckd implements bub, ckh {
 
    @Override
    protected void B() {
-      this.bU.a(0, new ciu.a());
-      this.bU.a(2, new cbl(this, 1.0, 40, 20.0F));
-      this.bU.a(5, new cby(this, 1.0));
-      this.bU.a(6, new cau(this, cmx.class, 8.0F));
-      this.bU.a(7, new cbh(this));
-      this.bV.a(1, new cce(this));
-      this.bV.a(2, new ccf<>(this, btn.class, 0, false, false, ck));
+      this.bW.a(0, new ciu.a());
+      this.bW.a(2, new cbl(this, 1.0, 40, 20.0F));
+      this.bW.a(5, new cby(this, 1.0));
+      this.bW.a(6, new cau(this, cmx.class, 8.0F));
+      this.bW.a(7, new cbh(this));
+      this.bX.a(1, new cce(this));
+      this.bX.a(2, new ccf<>(this, btn.class, 0, false, false, cm));
    }
 
    @Override
@@ -55,7 +55,7 @@ public class ciu extends ckd implements bub, ckh {
       $$0.a(b, 0);
       $$0.a(c, 0);
       $$0.a(d, 0);
-      $$0.a(ca, 0);
+      $$0.a(cc, 0);
    }
 
    @Override
@@ -69,14 +69,14 @@ public class ciu extends ckd implements bub, ckh {
       super.a($$0);
       this.s($$0.h("Invul"));
       if (this.ai()) {
-         this.cj.a(this.S_());
+         this.cl.a(this.S_());
       }
    }
 
    @Override
    public void b(@Nullable wz $$0) {
       super.b($$0);
-      this.cj.a(this.S_());
+      this.cl.a(this.S_());
    }
 
    @Override
@@ -123,8 +123,8 @@ public class ciu extends ckd implements bub, ckh {
       super.m_();
 
       for (int $$5 = 0; $$5 < 2; $$5++) {
-         this.cf[$$5] = this.cd[$$5];
-         this.ce[$$5] = this.cc[$$5];
+         this.ch[$$5] = this.cf[$$5];
+         this.cg[$$5] = this.ce[$$5];
       }
 
       for (int $$6 = 0; $$6 < 2; $$6++) {
@@ -144,10 +144,10 @@ public class ciu extends ckd implements bub, ckh {
             double $$15 = Math.sqrt($$12 * $$12 + $$14 * $$14);
             float $$16 = (float)(ayo.d($$14, $$12) * 180.0F / (float)Math.PI) - 90.0F;
             float $$17 = (float)(-(ayo.d($$13, $$15) * 180.0F / (float)Math.PI));
-            this.cc[$$6] = this.a(this.cc[$$6], $$17, 40.0F);
-            this.cd[$$6] = this.a(this.cd[$$6], $$16, 10.0F);
+            this.ce[$$6] = this.a(this.ce[$$6], $$17, 40.0F);
+            this.cf[$$6] = this.a(this.cf[$$6], $$16, 10.0F);
          } else {
-            this.cd[$$6] = this.a(this.cd[$$6], this.aY, 10.0F);
+            this.cf[$$6] = this.a(this.cf[$$6], this.aY, 10.0F);
          }
       }
 
@@ -187,7 +187,7 @@ public class ciu extends ckd implements bub, ckh {
    protected void ab() {
       if (this.x() > 0) {
          int $$0 = this.x() - 1;
-         this.cj.a(1.0F - (float)$$0 / 220.0F);
+         this.cl.a(1.0F - (float)$$0 / 220.0F);
          if ($$0 <= 0) {
             this.dO().a(this, this.dt(), this.dx(), this.dz(), 7.0F, false, dcw.a.c);
             if (!this.aX()) {
@@ -203,16 +203,16 @@ public class ciu extends ckd implements bub, ckh {
          super.ab();
 
          for (int $$1 = 1; $$1 < 3; $$1++) {
-            if (this.ai >= this.cg[$$1 - 1]) {
-               this.cg[$$1 - 1] = this.ai + 10 + this.ah.a(10);
-               if ((this.dO().al() == bqo.c || this.dO().al() == bqo.d) && this.ch[$$1 - 1]++ > 15) {
+            if (this.ai >= this.ci[$$1 - 1]) {
+               this.ci[$$1 - 1] = this.ai + 10 + this.ah.a(10);
+               if ((this.dO().al() == bqo.c || this.dO().al() == bqo.d) && this.cj[$$1 - 1]++ > 15) {
                   float $$2 = 10.0F;
                   float $$3 = 5.0F;
                   double $$4 = ayo.a(this.ah, this.dt() - 10.0, this.dt() + 10.0);
                   double $$5 = ayo.a(this.ah, this.dv() - 5.0, this.dv() + 5.0);
                   double $$6 = ayo.a(this.ah, this.dz() - 10.0, this.dz() + 10.0);
                   this.a($$1 + 1, $$4, $$5, $$6, true);
-                  this.ch[$$1 - 1] = 0;
+                  this.cj[$$1 - 1] = 0;
                }
 
                int $$7 = this.t($$1);
@@ -220,13 +220,13 @@ public class ciu extends ckd implements bub, ckh {
                   btn $$8 = (btn)this.dO().a($$7);
                   if ($$8 != null && this.c($$8) && !(this.g((bsr)$$8) > 900.0) && this.F($$8)) {
                      this.a($$1 + 1, $$8);
-                     this.cg[$$1 - 1] = this.ai + 40 + this.ah.a(20);
-                     this.ch[$$1 - 1] = 0;
+                     this.ci[$$1 - 1] = this.ai + 40 + this.ah.a(20);
+                     this.cj[$$1 - 1] = 0;
                   } else {
                      this.a($$1, 0);
                   }
                } else {
-                  List<btn> $$9 = this.dO().a(btn.class, cl, this, this.cK().c(20.0, 8.0, 20.0));
+                  List<btn> $$9 = this.dO().a(btn.class, cn, this, this.cK().c(20.0, 8.0, 20.0));
                   if (!$$9.isEmpty()) {
                      btn $$10 = $$9.get(this.ah.a($$9.size()));
                      this.a($$1, $$10.an());
@@ -241,9 +241,9 @@ public class ciu extends ckd implements bub, ckh {
             this.a(0, 0);
          }
 
-         if (this.ci > 0) {
-            this.ci--;
-            if (this.ci == 0 && this.dO().ab().b(dcs.c)) {
+         if (this.ck > 0) {
+            this.ck--;
+            if (this.ck == 0 && this.dO().ab().b(dcs.c)) {
                boolean $$11 = false;
                int $$12 = ayo.d(this.dj() / 2.0F + 1.0F);
                int $$13 = ayo.d(this.dk());
@@ -265,7 +265,7 @@ public class ciu extends ckd implements bub, ckh {
             this.c(1.0F);
          }
 
-         this.cj.a(this.ew() / this.eN());
+         this.cl.a(this.ew() / this.eN());
       }
    }
 
@@ -276,7 +276,7 @@ public class ciu extends ckd implements bub, ckh {
    @Override
    public void s() {
       this.s(220);
-      this.cj.a(0.0F);
+      this.cl.a(0.0F);
       this.v(this.eN() / 3.0F);
    }
 
@@ -287,13 +287,13 @@ public class ciu extends ckd implements bub, ckh {
    @Override
    public void d(aqv $$0) {
       super.d($$0);
-      this.cj.a($$0);
+      this.cl.a($$0);
    }
 
    @Override
    public void e(aqv $$0) {
       super.e($$0);
-      this.cj.b($$0);
+      this.cl.b($$0);
    }
 
    private double u(int $$0) {
@@ -385,12 +385,12 @@ public class ciu extends ckd implements bub, ckh {
          if ($$3 != null && $$3.am().a(awi.y)) {
             return false;
          } else {
-            if (this.ci <= 0) {
-               this.ci = 20;
+            if (this.ck <= 0) {
+               this.ck = 20;
             }
 
-            for (int $$4 = 0; $$4 < this.ch.length; $$4++) {
-               this.ch[$$4] = this.ch[$$4] + 3;
+            for (int $$4 = 0; $$4 < this.cj.length; $$4++) {
+               this.cj[$$4] = this.cj[$$4] + 3;
             }
 
             return super.a($$0, $$1);
@@ -426,19 +426,19 @@ public class ciu extends ckd implements bub, ckh {
    }
 
    public float b(int $$0) {
-      return this.cd[$$0];
+      return this.cf[$$0];
    }
 
    public float c(int $$0) {
-      return this.cc[$$0];
+      return this.ce[$$0];
    }
 
    public int x() {
-      return this.ao.a(ca);
+      return this.ao.a(cc);
    }
 
    public void s(int $$0) {
-      this.ao.a(ca, $$0);
+      this.ao.a(cc, $$0);
    }
 
    public int t(int $$0) {

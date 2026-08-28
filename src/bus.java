@@ -61,7 +61,7 @@ public class bus {
       return this.f.get($$0) != null;
    }
 
-   private void e(buu $$0) {
+   private void f(buu $$0) {
       buu $$1 = this.f.putIfAbsent($$0.b(), $$0);
       if ($$1 != null) {
          throw new IllegalArgumentException("Modifier is already applied on this attribute!");
@@ -80,11 +80,17 @@ public class bus {
    }
 
    public void b(buu $$0) {
-      this.e($$0);
+      this.f($$0);
    }
 
    public void c(buu $$0) {
-      this.e($$0);
+      this.c($$0.b());
+      this.f($$0);
+      this.g.put($$0.b(), $$0);
+   }
+
+   public void d(buu $$0) {
+      this.f($$0);
       this.g.put($$0.b(), $$0);
    }
 
@@ -93,7 +99,7 @@ public class bus {
       this.k.accept(this);
    }
 
-   public void d(buu $$0) {
+   public void e(buu $$0) {
       this.c($$0.b());
    }
 
@@ -111,7 +117,7 @@ public class bus {
 
    public void e() {
       for (buu $$0 : this.c()) {
-         this.d($$0);
+         this.e($$0);
       }
    }
 

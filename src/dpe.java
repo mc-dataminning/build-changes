@@ -6,7 +6,7 @@ import java.util.Optional;
 import java.util.function.Supplier;
 
 public interface dpe extends dgz<dpe.a> {
-   Supplier<BiMap<dfy, dfy>> u_ = Suppliers.memoize(
+   Supplier<BiMap<dfy, dfy>> w_ = Suppliers.memoize(
       () -> ImmutableBiMap.builder()
             .put(dga.qW, dga.qX)
             .put(dga.qX, dga.qY)
@@ -37,16 +37,16 @@ public interface dpe extends dgz<dpe.a> {
             .put(dga.sm, dga.sn)
             .build()
    );
-   Supplier<BiMap<dfy, dfy>> v_ = Suppliers.memoize(() -> u_.get().inverse());
+   Supplier<BiMap<dfy, dfy>> x_ = Suppliers.memoize(() -> w_.get().inverse());
 
    static Optional<dfy> a(dfy $$0) {
-      return Optional.ofNullable((dfy)v_.get().get($$0));
+      return Optional.ofNullable((dfy)x_.get().get($$0));
    }
 
    static dfy b(dfy $$0) {
       dfy $$1 = $$0;
 
-      for (dfy $$2 = (dfy)v_.get().get($$0); $$2 != null; $$2 = (dfy)v_.get().get($$2)) {
+      for (dfy $$2 = (dfy)x_.get().get($$0); $$2 != null; $$2 = (dfy)x_.get().get($$2)) {
          $$1 = $$2;
       }
 
@@ -58,7 +58,7 @@ public interface dpe extends dgz<dpe.a> {
    }
 
    static Optional<dfy> c(dfy $$0) {
-      return Optional.ofNullable((dfy)u_.get().get($$0));
+      return Optional.ofNullable((dfy)w_.get().get($$0));
    }
 
    static dtc c(dtc $$0) {

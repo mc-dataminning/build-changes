@@ -3,20 +3,20 @@ import com.mojang.serialization.Dynamic;
 import javax.annotation.Nullable;
 
 public class clh extends cfe implements cjv, clj {
-   private static final ajw<Boolean> cc = aka.a(clh.class, ajy.k);
-   private static final float ce = 0.2F;
-   private static final int cf = 40;
-   private static final float cg = 0.3F;
-   private static final int ch = 1;
-   private static final float ci = 0.6F;
-   private static final int cj = 6;
-   private static final float ck = 0.5F;
-   private static final int cl = 300;
-   private int cm;
-   private int cn;
-   private boolean co;
-   protected static final ImmutableList<? extends cdz<? extends cdy<? super clh>>> ca = ImmutableList.of(cdz.c, cdz.d, cdz.o, cdz.n);
-   protected static final ImmutableList<? extends ccs<?>> cb = ImmutableList.of(
+   private static final ajw<Boolean> ce = aka.a(clh.class, ajy.k);
+   private static final float cg = 0.2F;
+   private static final int ch = 40;
+   private static final float ci = 0.3F;
+   private static final int cj = 1;
+   private static final float ck = 0.6F;
+   private static final int cl = 6;
+   private static final float cm = 0.5F;
+   private static final int cn = 300;
+   private int co;
+   private int cp;
+   private boolean cq;
+   protected static final ImmutableList<? extends cdz<? extends cdy<? super clh>>> cc = ImmutableList.of(cdz.c, cdz.d, cdz.o, cdz.n);
+   protected static final ImmutableList<? extends ccs<?>> cd = ImmutableList.of(
       ccs.r,
       ccs.g,
       ccs.h,
@@ -34,7 +34,7 @@ public class clh extends cfe implements cjv, clj {
 
    public clh(bsx<? extends clh> $$0, dcw $$1) {
       super($$0, $$1);
-      this.bP = 5;
+      this.bR = 5;
    }
 
    @Override
@@ -51,7 +51,7 @@ public class clh extends cfe implements cjv, clj {
       if (!($$0 instanceof btn)) {
          return false;
       } else {
-         this.cm = 10;
+         this.co = 10;
          this.dO().a(this, (byte)4);
          this.b(avp.mq);
          cli.a(this, (btn)$$0);
@@ -82,7 +82,7 @@ public class clh extends cfe implements cjv, clj {
 
    @Override
    protected buq.b<clh> dU() {
-      return buq.a(cb, ca);
+      return buq.a(cd, cc);
    }
 
    @Override
@@ -102,20 +102,20 @@ public class clh extends cfe implements cjv, clj {
       this.dO().ag().c();
       cli.a(this);
       if (this.x()) {
-         this.cn++;
-         if (this.cn > 300) {
+         this.cp++;
+         if (this.cp > 300) {
             this.b(avp.mr);
             this.a((aqu)this.dO());
          }
       } else {
-         this.cn = 0;
+         this.cp = 0;
       }
    }
 
    @Override
    public void m_() {
-      if (this.cm > 0) {
-         this.cm--;
+      if (this.co > 0) {
+         this.co--;
       }
 
       super.m_();
@@ -124,10 +124,10 @@ public class clh extends cfe implements cjv, clj {
    @Override
    protected void k() {
       if (this.o_()) {
-         this.bP = 3;
+         this.bR = 3;
          this.f(buw.c).a(0.5);
       } else {
-         this.bP = 5;
+         this.bR = 5;
          this.f(buw.c).a(6.0);
       }
    }
@@ -173,7 +173,7 @@ public class clh extends cfe implements cjv, clj {
    @Override
    public void b(byte $$0) {
       if ($$0 == 4) {
-         this.cm = 10;
+         this.co = 10;
          this.b(avp.mq);
       } else {
          super.b($$0);
@@ -182,7 +182,7 @@ public class clh extends cfe implements cjv, clj {
 
    @Override
    public int gk() {
-      return this.cm;
+      return this.co;
    }
 
    @Override
@@ -192,7 +192,7 @@ public class clh extends cfe implements cjv, clj {
 
    @Override
    protected int eg() {
-      return this.bP;
+      return this.bR;
    }
 
    private void a(aqu $$0) {
@@ -214,7 +214,7 @@ public class clh extends cfe implements cjv, clj {
    @Override
    protected void a(aka.a $$0) {
       super.a($$0);
-      $$0.a(cc, false);
+      $$0.a(ce, false);
    }
 
    @Override
@@ -224,8 +224,8 @@ public class clh extends cfe implements cjv, clj {
          $$0.a("IsImmuneToZombification", true);
       }
 
-      $$0.a("TimeInOverworld", this.cn);
-      if (this.co) {
+      $$0.a("TimeInOverworld", this.cp);
+      if (this.cq) {
          $$0.a("CannotBeHunted", true);
       }
    }
@@ -234,16 +234,16 @@ public class clh extends cfe implements cjv, clj {
    public void a(ub $$0) {
       super.a($$0);
       this.x($$0.q("IsImmuneToZombification"));
-      this.cn = $$0.h("TimeInOverworld");
+      this.cp = $$0.h("TimeInOverworld");
       this.y($$0.q("CannotBeHunted"));
    }
 
    public void x(boolean $$0) {
-      this.ar().a(cc, $$0);
+      this.ar().a(ce, $$0);
    }
 
    private boolean gm() {
-      return this.ar().a(cc);
+      return this.ar().a(ce);
    }
 
    public boolean x() {
@@ -251,11 +251,11 @@ public class clh extends cfe implements cjv, clj {
    }
 
    private void y(boolean $$0) {
-      this.co = $$0;
+      this.cq = $$0;
    }
 
    public boolean gl() {
-      return this.t() && !this.co;
+      return this.t() && !this.cq;
    }
 
    @Nullable

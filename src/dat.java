@@ -15,7 +15,7 @@ public interface dat {
       jz.a($$0, "ignite", daw.a);
       jz.a($$0, "play_sound", day.a);
       jz.a($$0, "replace_block", dba.a);
-      jz.a($$0, "replace_disc", dbb.a);
+      jz.a($$0, "replace_disk", dbb.a);
       jz.a($$0, "run_function", dbc.a);
       jz.a($$0, "set_block_properties", dbd.a);
       jz.a($$0, "spawn_particles", dbf.a);

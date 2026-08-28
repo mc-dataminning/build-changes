@@ -8,22 +8,22 @@ import javax.annotation.Nullable;
 public class ckv extends ckd implements cjv, clj {
    private static final ajw<Boolean> d = aka.a(ckv.class, ajy.k);
    private static final int e = 40;
-   private static final int ca = 1;
-   private static final float cb = 0.6F;
-   private static final int cc = 6;
-   private static final float cd = 0.5F;
-   private static final int ce = 40;
-   private static final int cf = 15;
-   private static final int cg = 200;
-   private static final float ch = 0.3F;
-   private static final float ci = 0.4F;
-   private int cj;
+   private static final int cc = 1;
+   private static final float cd = 0.6F;
+   private static final int ce = 6;
+   private static final float cf = 0.5F;
+   private static final int cg = 40;
+   private static final int ch = 15;
+   private static final int ci = 200;
+   private static final float cj = 0.3F;
+   private static final float ck = 0.4F;
+   private int cl;
    protected static final ImmutableList<? extends cdz<? extends cdy<? super ckv>>> b = ImmutableList.of(cdz.c, cdz.d);
    protected static final ImmutableList<? extends ccs<?>> c = ImmutableList.of(ccs.g, ccs.h, ccs.k, ccs.l, ccs.n, ccs.m, ccs.E, ccs.t, ccs.o, ccs.p);
 
    public ckv(bsx<? extends ckv> $$0, dcw $$1) {
       super($$0, $$1);
-      this.bP = 5;
+      this.bR = 5;
    }
 
    @Override
@@ -99,7 +99,7 @@ public class ckv extends ckd implements cjv, clj {
       if (!($$0 instanceof btn)) {
          return false;
       } else {
-         this.cj = 10;
+         this.cl = 10;
          this.dO().a(this, (byte)4);
          this.b(avp.Dp);
          return clj.a(this, (btn)$$0);
@@ -179,8 +179,8 @@ public class ckv extends ckd implements cjv, clj {
 
    @Override
    public void m_() {
-      if (this.cj > 0) {
-         this.cj--;
+      if (this.cl > 0) {
+         this.cl--;
       }
 
       super.m_();
@@ -189,7 +189,7 @@ public class ckv extends ckd implements cjv, clj {
    @Override
    public void b(byte $$0) {
       if ($$0 == 4) {
-         this.cj = 10;
+         this.cl = 10;
          this.b(avp.Dp);
       } else {
          super.b($$0);
@@ -198,7 +198,7 @@ public class ckv extends ckd implements cjv, clj {
 
    @Override
    public int gk() {
-      return this.cj;
+      return this.cl;
    }
 
    @Override

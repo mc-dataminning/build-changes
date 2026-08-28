@@ -3,13 +3,13 @@ import java.util.UUID;
 import javax.annotation.Nullable;
 
 public abstract class bul extends cfe implements btv {
-   public static final int ca = 144;
-   private static final int ce = 2;
-   private static final int cf = 3;
-   private static final int cg = 1;
-   protected static final ajw<Byte> cb = aka.a(bul.class, ajy.a);
-   protected static final ajw<Optional<UUID>> cc = aka.a(bul.class, ajy.r);
-   private boolean ch;
+   public static final int cc = 144;
+   private static final int cg = 2;
+   private static final int ch = 3;
+   private static final int ci = 1;
+   protected static final ajw<Byte> cd = aka.a(bul.class, ajy.a);
+   protected static final ajw<Optional<UUID>> ce = aka.a(bul.class, ajy.r);
+   private boolean cj;
 
    protected bul(bsx<? extends bul> $$0, dcw $$1) {
       super($$0, $$1);
@@ -18,8 +18,8 @@ public abstract class bul extends cfe implements btv {
    @Override
    protected void a(aka.a $$0) {
       super.a($$0);
-      $$0.a(cb, (byte)0);
-      $$0.a(cc, Optional.empty());
+      $$0.a(cd, (byte)0);
+      $$0.a(ce, Optional.empty());
    }
 
    @Override
@@ -29,7 +29,7 @@ public abstract class bul extends cfe implements btv {
          $$0.a("Owner", this.aa_());
       }
 
-      $$0.a("Sitting", this.ch);
+      $$0.a("Sitting", this.cj);
    }
 
    @Override
@@ -52,8 +52,8 @@ public abstract class bul extends cfe implements btv {
          }
       }
 
-      this.ch = $$0.q("Sitting");
-      this.y(this.ch);
+      this.cj = $$0.q("Sitting");
+      this.y(this.cj);
    }
 
    @Override
@@ -100,15 +100,15 @@ public abstract class bul extends cfe implements btv {
    }
 
    public boolean s() {
-      return (this.ao.a(cb) & 4) != 0;
+      return (this.ao.a(cd) & 4) != 0;
    }
 
    public void b(boolean $$0, boolean $$1) {
-      byte $$2 = this.ao.a(cb);
+      byte $$2 = this.ao.a(cd);
       if ($$0) {
-         this.ao.a(cb, (byte)($$2 | 4));
+         this.ao.a(cd, (byte)($$2 | 4));
       } else {
-         this.ao.a(cb, (byte)($$2 & -5));
+         this.ao.a(cd, (byte)($$2 & -5));
       }
 
       if ($$1) {
@@ -120,26 +120,26 @@ public abstract class bul extends cfe implements btv {
    }
 
    public boolean x() {
-      return (this.ao.a(cb) & 1) != 0;
+      return (this.ao.a(cd) & 1) != 0;
    }
 
    public void y(boolean $$0) {
-      byte $$1 = this.ao.a(cb);
+      byte $$1 = this.ao.a(cd);
       if ($$0) {
-         this.ao.a(cb, (byte)($$1 | 1));
+         this.ao.a(cd, (byte)($$1 | 1));
       } else {
-         this.ao.a(cb, (byte)($$1 & -2));
+         this.ao.a(cd, (byte)($$1 & -2));
       }
    }
 
    @Nullable
    @Override
    public UUID aa_() {
-      return this.ao.a(cc).orElse(null);
+      return this.ao.a(ce).orElse(null);
    }
 
    public void b(@Nullable UUID $$0) {
-      this.ao.a(cc, Optional.ofNullable($$0));
+      this.ao.a(ce, Optional.ofNullable($$0));
    }
 
    public void a(cmx $$0) {
@@ -201,11 +201,11 @@ public abstract class bul extends cfe implements btv {
    }
 
    public boolean gk() {
-      return this.ch;
+      return this.cj;
    }
 
    public void z(boolean $$0) {
-      this.ch = $$0;
+      this.cj = $$0;
    }
 
    public void gl() {
@@ -238,7 +238,7 @@ public abstract class bul extends cfe implements btv {
          return false;
       } else {
          this.b((double)$$0 + 0.5, (double)$$1, (double)$$2 + 0.5, this.dE(), this.dG());
-         this.bT.n();
+         this.bV.n();
          return true;
       }
    }

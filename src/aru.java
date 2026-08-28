@@ -736,7 +736,7 @@ public class aru extends arr implements agi, arx, wn {
                         }
 
                         if ($$0.b() || this.f.dX() || this.f.p_() || this.f.R_() || $$15 || $$23) {
-                           this.f.gA();
+                           this.f.gB();
                         }
 
                         this.f.b(this.f.dt() - $$7, this.f.dv() - $$8, this.f.dz() - $$9);
@@ -798,7 +798,7 @@ public class aru extends arr implements agi, arx, wn {
       }
 
       this.H = this.o;
-      this.f.gB();
+      this.f.gC();
       this.f.a($$0, $$1, $$2, $$3, $$4);
       this.f.c.b(new aec($$0 - $$6, $$1 - $$7, $$2 - $$8, $$3 - $$9, $$4 - $$10, $$5, this.G));
    }

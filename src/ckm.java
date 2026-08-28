@@ -3,29 +3,29 @@ import java.util.EnumSet;
 import javax.annotation.Nullable;
 
 public class ckm extends btp implements cjv {
-   private static final ajw<Integer> cb = aka.a(ckm.class, ajy.b);
+   private static final ajw<Integer> cd = aka.a(ckm.class, ajy.b);
    public static final int b = 1;
    public static final int c = 127;
    public static final int d = 4;
    public float e;
-   public float bZ;
-   public float ca;
-   private boolean cc;
+   public float cb;
+   public float cc;
+   private boolean ce;
 
    public ckm(bsx<? extends ckm> $$0, dcw $$1) {
       super($$0, $$1);
       this.cG();
-      this.bR = new ckm.d(this);
+      this.bT = new ckm.d(this);
    }
 
    @Override
    protected void B() {
-      this.bU.a(1, new ckm.b(this));
-      this.bU.a(2, new ckm.a(this));
-      this.bU.a(3, new ckm.e(this));
-      this.bU.a(5, new ckm.c(this));
-      this.bV.a(1, new ccf<>(this, cmx.class, 10, true, false, $$0 -> Math.abs($$0.dv() - this.dv()) <= 4.0));
-      this.bV.a(3, new ccf<>(this, cfq.class, true));
+      this.bW.a(1, new ckm.b(this));
+      this.bW.a(2, new ckm.a(this));
+      this.bW.a(3, new ckm.e(this));
+      this.bW.a(5, new ckm.c(this));
+      this.bX.a(1, new ccf<>(this, cmx.class, 10, true, false, $$0 -> Math.abs($$0.dv() - this.dv()) <= 4.0));
+      this.bX.a(3, new ccf<>(this, cfq.class, true));
    }
 
    @Override
@@ -36,13 +36,13 @@ public class ckm extends btp implements cjv {
    @Override
    protected void a(aka.a $$0) {
       super.a($$0);
-      $$0.a(cb, 1);
+      $$0.a(cd, 1);
    }
 
    @VisibleForTesting
    public void a(int $$0, boolean $$1) {
       int $$2 = ayo.a($$0, 1, 127);
-      this.ao.a(cb, $$2);
+      this.ao.a(cd, $$2);
       this.av();
       this.i_();
       this.f(buw.s).a((double)($$2 * $$2));
@@ -52,25 +52,25 @@ public class ckm extends btp implements cjv {
          this.v(this.eN());
       }
 
-      this.bP = $$2;
+      this.bR = $$2;
    }
 
    public int gl() {
-      return this.ao.a(cb);
+      return this.ao.a(cd);
    }
 
    @Override
    public void b(ub $$0) {
       super.b($$0);
       $$0.a("Size", this.gl() - 1);
-      $$0.a("wasOnGround", this.cc);
+      $$0.a("wasOnGround", this.ce);
    }
 
    @Override
    public void a(ub $$0) {
       this.a($$0.h("Size") + 1, false);
       super.a($$0);
-      this.cc = $$0.q("wasOnGround");
+      this.ce = $$0.q("wasOnGround");
    }
 
    public boolean gm() {
@@ -88,10 +88,10 @@ public class ckm extends btp implements cjv {
 
    @Override
    public void l() {
-      this.bZ = this.bZ + (this.e - this.bZ) * 0.5F;
-      this.ca = this.bZ;
+      this.cb = this.cb + (this.e - this.cb) * 0.5F;
+      this.cc = this.cb;
       super.l();
-      if (this.aF() && !this.cc) {
+      if (this.aF() && !this.ce) {
          float $$0 = this.a(this.at()).a() * 2.0F;
          float $$1 = $$0 / 2.0F;
 
@@ -105,11 +105,11 @@ public class ckm extends btp implements cjv {
 
          this.a(this.gj(), this.fa(), ((this.ah.i() - this.ah.i()) * 0.2F + 1.0F) / 0.8F);
          this.e = -0.5F;
-      } else if (!this.aF() && this.cc) {
+      } else if (!this.aF() && this.ce) {
          this.e = 1.0F;
       }
 
-      this.cc = this.aF();
+      this.ce = this.aF();
       this.gg();
    }
 
@@ -132,7 +132,7 @@ public class ckm extends btp implements cjv {
 
    @Override
    public void a(ajw<?> $$0) {
-      if (cb.equals($$0)) {
+      if (cd.equals($$0)) {
          this.i_();
          this.t(this.ba);
          this.aY = this.ba;
@@ -279,7 +279,7 @@ public class ckm extends btp implements cjv {
    }
 
    @Override
-   protected void ff() {
+   public void ff() {
       exc $$0 = this.dr();
       this.n($$0.c, (double)this.fd(), $$0.e);
       this.av = true;

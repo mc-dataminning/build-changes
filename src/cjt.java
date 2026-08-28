@@ -8,16 +8,16 @@ public class cjt extends ckd implements btt {
    private static final akr c = akr.b("attacking");
    private static final buu d = new buu(c, 0.15F, buu.a.a);
    private static final int e = 400;
-   private static final int ca = 600;
-   private static final ajw<Optional<dtc>> cb = aka.a(cjt.class, ajy.j);
-   private static final ajw<Boolean> cc = aka.a(cjt.class, ajy.k);
-   private static final ajw<Boolean> cd = aka.a(cjt.class, ajy.k);
-   private int ce = Integer.MIN_VALUE;
-   private int cf;
-   private static final bqc cg = azp.a(20, 39);
+   private static final int cc = 600;
+   private static final ajw<Optional<dtc>> cd = aka.a(cjt.class, ajy.j);
+   private static final ajw<Boolean> ce = aka.a(cjt.class, ajy.k);
+   private static final ajw<Boolean> cf = aka.a(cjt.class, ajy.k);
+   private int cg = Integer.MIN_VALUE;
    private int ch;
+   private static final bqc ci = azp.a(20, 39);
+   private int cj;
    @Nullable
-   private UUID ci;
+   private UUID ck;
 
    public cjt(bsx<? extends cjt> $$0, dcw $$1) {
       super($$0, $$1);
@@ -26,18 +26,18 @@ public class cjt extends ckd implements btt {
 
    @Override
    protected void B() {
-      this.bU.a(0, new cag(this));
-      this.bU.a(1, new cjt.a(this));
-      this.bU.a(2, new caw(this, 1.0, false));
-      this.bU.a(7, new cbz(this, 1.0, 0.0F));
-      this.bU.a(8, new cau(this, cmx.class, 8.0F));
-      this.bU.a(8, new cbh(this));
-      this.bU.a(10, new cjt.b(this));
-      this.bU.a(11, new cjt.d(this));
-      this.bV.a(1, new cjt.c(this, this::a_));
-      this.bV.a(2, new cce(this));
-      this.bV.a(3, new ccf<>(this, cju.class, true, false));
-      this.bV.a(4, new ccl<>(this, false));
+      this.bW.a(0, new cag(this));
+      this.bW.a(1, new cjt.a(this));
+      this.bW.a(2, new caw(this, 1.0, false));
+      this.bW.a(7, new cbz(this, 1.0, 0.0F));
+      this.bW.a(8, new cau(this, cmx.class, 8.0F));
+      this.bW.a(8, new cbh(this));
+      this.bW.a(10, new cjt.b(this));
+      this.bW.a(11, new cjt.d(this));
+      this.bX.a(1, new cjt.c(this, this::a_));
+      this.bX.a(2, new cce(this));
+      this.bX.a(3, new ccf<>(this, cju.class, true, false));
+      this.bX.a(4, new ccl<>(this, false));
    }
 
    public static buv.a s() {
@@ -49,13 +49,13 @@ public class cjt extends ckd implements btt {
       super.h($$0);
       bus $$1 = this.f(buw.v);
       if ($$0 == null) {
-         this.cf = 0;
-         this.ao.a(cc, false);
-         this.ao.a(cd, false);
+         this.ch = 0;
+         this.ao.a(ce, false);
+         this.ao.a(cf, false);
          $$1.c(c);
       } else {
-         this.cf = this.ai;
-         this.ao.a(cc, true);
+         this.ch = this.ai;
+         this.ao.a(ce, true);
          if (!$$1.b(c)) {
             $$1.b(d);
          }
@@ -65,40 +65,40 @@ public class cjt extends ckd implements btt {
    @Override
    protected void a(aka.a $$0) {
       super.a($$0);
-      $$0.a(cb, Optional.empty());
-      $$0.a(cc, false);
-      $$0.a(cd, false);
+      $$0.a(cd, Optional.empty());
+      $$0.a(ce, false);
+      $$0.a(cf, false);
    }
 
    @Override
    public void c() {
-      this.a(cg.a(this.ah));
+      this.a(ci.a(this.ah));
    }
 
    @Override
    public void a(int $$0) {
-      this.ch = $$0;
+      this.cj = $$0;
    }
 
    @Override
    public int a() {
-      return this.ch;
+      return this.cj;
    }
 
    @Override
    public void a(@Nullable UUID $$0) {
-      this.ci = $$0;
+      this.ck = $$0;
    }
 
    @Nullable
    @Override
    public UUID b() {
-      return this.ci;
+      return this.ck;
    }
 
    public void t() {
-      if (this.ai >= this.ce + 400) {
-         this.ce = this.ai;
+      if (this.ai >= this.cg + 400) {
+         this.cg = this.ai;
          if (!this.aX()) {
             this.dO().a(this.dt(), this.dx(), this.dz(), avp.in, this.de(), 2.5F, 1.0F, false);
          }
@@ -107,7 +107,7 @@ public class cjt extends ckd implements btt {
 
    @Override
    public void a(ajw<?> $$0) {
-      if (cc.equals($$0) && this.gm() && this.dO().B) {
+      if (ce.equals($$0) && this.gm() && this.dO().B) {
          this.t();
       }
 
@@ -177,7 +177,7 @@ public class cjt extends ckd implements btt {
 
    @Override
    protected void ab() {
-      if (this.dO().R() && this.ai >= this.cf + 600) {
+      if (this.dO().R() && this.ai >= this.ch + 600) {
          float $$0 = this.bu();
          if ($$0 > 0.5F && this.dO().h(this.do()) && this.ah.i() * 30.0F < ($$0 - 0.4F) * 2.0F) {
             this.h(null);
@@ -267,12 +267,12 @@ public class cjt extends ckd implements btt {
    }
 
    public void c(@Nullable dtc $$0) {
-      this.ao.a(cb, Optional.ofNullable($$0));
+      this.ao.a(cd, Optional.ofNullable($$0));
    }
 
    @Nullable
    public dtc gk() {
-      return this.ao.a(cb).orElse(null);
+      return this.ao.a(cd).orElse(null);
    }
 
    @Override
@@ -309,15 +309,15 @@ public class cjt extends ckd implements btt {
    }
 
    public boolean gl() {
-      return this.ao.a(cc);
+      return this.ao.a(ce);
    }
 
    public boolean gm() {
-      return this.ao.a(cd);
+      return this.ao.a(cf);
    }
 
    public void gn() {
-      this.ao.a(cd, true);
+      this.ao.a(cf, true);
    }
 
    @Override

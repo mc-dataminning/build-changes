@@ -92,7 +92,7 @@ public class akt {
 
    public static void c() {
       a(() -> "validate");
-      if (ab.aU) {
+      if (ab.aV) {
          b().forEach($$0 -> d.error("Missing translations: {}", $$0));
          eu.b();
       }

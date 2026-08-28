@@ -2,7 +2,7 @@ import java.util.Collection;
 import javax.annotation.Nullable;
 
 public interface dmp {
-   dmp t_ = new dmp() {
+   dmp v_ = new dmp() {
       @Override
       public boolean a(dcx $$0, jd $$1, dtc $$2, @Nullable Collection<ji> $$3, boolean $$4) {
          if ($$3 == null) {

@@ -1,15 +1,15 @@
 import javax.annotation.Nullable;
 
 public class cfj extends cfe {
-   private static final bsu ci = bsx.t.n().a(0.5F).b(0.2975F);
-   public float ca;
-   public float cb;
+   private static final bsu ck = bsx.t.n().a(0.5F).b(0.2975F);
    public float cc;
+   public float cd;
    public float ce;
-   public float cf = 1.0F;
-   private float cj = 1.0F;
-   public int cg = this.ah.a(6000) + 6000;
-   public boolean ch;
+   public float cg;
+   public float ch = 1.0F;
+   private float cl = 1.0F;
+   public int ci = this.ah.a(6000) + 6000;
+   public boolean cj;
 
    public cfj(bsx<? extends cfj> $$0, dcw $$1) {
       super($$0, $$1);
@@ -18,19 +18,19 @@ public class cfj extends cfe {
 
    @Override
    protected void B() {
-      this.bU.a(0, new cag(this));
-      this.bU.a(1, new cbf(this, 1.4));
-      this.bU.a(2, new bzy(this, 1.0));
-      this.bU.a(3, new cbu(this, 1.0, $$0 -> $$0.a(awn.ak), false));
-      this.bU.a(4, new cal(this, 1.1));
-      this.bU.a(5, new cbz(this, 1.0));
-      this.bU.a(6, new cau(this, cmx.class, 6.0F));
-      this.bU.a(7, new cbh(this));
+      this.bW.a(0, new cag(this));
+      this.bW.a(1, new cbf(this, 1.4));
+      this.bW.a(2, new bzy(this, 1.0));
+      this.bW.a(3, new cbu(this, 1.0, $$0 -> $$0.a(awn.ak), false));
+      this.bW.a(4, new cal(this, 1.1));
+      this.bW.a(5, new cbz(this, 1.0));
+      this.bW.a(6, new cau(this, cmx.class, 6.0F));
+      this.bW.a(7, new cbh(this));
    }
 
    @Override
    public bsu e(bua $$0) {
-      return this.o_() ? ci : super.e($$0);
+      return this.o_() ? ck : super.e($$0);
    }
 
    public static buv.a s() {
@@ -40,37 +40,37 @@ public class cfj extends cfe {
    @Override
    public void m_() {
       super.m_();
-      this.ce = this.ca;
-      this.cc = this.cb;
-      this.cb = this.cb + (this.aF() ? -1.0F : 4.0F) * 0.3F;
-      this.cb = ayo.a(this.cb, 0.0F, 1.0F);
-      if (!this.aF() && this.cf < 1.0F) {
-         this.cf = 1.0F;
+      this.cg = this.cc;
+      this.ce = this.cd;
+      this.cd = this.cd + (this.aF() ? -1.0F : 4.0F) * 0.3F;
+      this.cd = ayo.a(this.cd, 0.0F, 1.0F);
+      if (!this.aF() && this.ch < 1.0F) {
+         this.ch = 1.0F;
       }
 
-      this.cf *= 0.9F;
+      this.ch *= 0.9F;
       exc $$0 = this.dr();
       if (!this.aF() && $$0.d < 0.0) {
          this.i($$0.d(1.0, 0.6, 1.0));
       }
 
-      this.ca = this.ca + this.cf * 2.0F;
-      if (!this.dO().B && this.bE() && !this.o_() && !this.t() && --this.cg <= 0) {
+      this.cc = this.cc + this.ch * 2.0F;
+      if (!this.dO().B && this.bE() && !this.o_() && !this.t() && --this.ci <= 0) {
          this.a(avp.eT, 1.0F, (this.ah.i() - this.ah.i()) * 0.2F + 1.0F);
          this.a(cut.qR);
          this.a(dxz.t);
-         this.cg = this.ah.a(6000) + 6000;
+         this.ci = this.ah.a(6000) + 6000;
       }
    }
 
    @Override
    protected boolean aW() {
-      return this.ab > this.cj;
+      return this.ab > this.cl;
    }
 
    @Override
    protected void aV() {
-      this.cj = this.ab + this.cb / 2.0F;
+      this.cl = this.ab + this.cd / 2.0F;
    }
 
    @Override
@@ -111,17 +111,17 @@ public class cfj extends cfe {
    @Override
    public void a(ub $$0) {
       super.a($$0);
-      this.ch = $$0.q("IsChickenJockey");
+      this.cj = $$0.q("IsChickenJockey");
       if ($$0.e("EggLayTime")) {
-         this.cg = $$0.h("EggLayTime");
+         this.ci = $$0.h("EggLayTime");
       }
    }
 
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      $$0.a("IsChickenJockey", this.ch);
-      $$0.a("EggLayTime", this.cg);
+      $$0.a("IsChickenJockey", this.cj);
+      $$0.a("EggLayTime", this.ci);
    }
 
    @Override
@@ -138,10 +138,10 @@ public class cfj extends cfe {
    }
 
    public boolean t() {
-      return this.ch;
+      return this.cj;
    }
 
    public void x(boolean $$0) {
-      this.ch = $$0;
+      this.cj = $$0;
    }
 }

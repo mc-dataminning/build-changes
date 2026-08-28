@@ -7,25 +7,25 @@ public class cjw extends ckn {
 
    public cjw(bsx<? extends cjw> $$0, dcw $$1) {
       super($$0, $$1);
-      this.bP = 10;
+      this.bR = 10;
    }
 
    @Override
    protected void B() {
       super.B();
-      this.bU.a(0, new cag(this));
-      this.bU.a(1, new cjw.b());
-      this.bU.a(2, new bzt<>(this, cmx.class, 8.0F, 0.6, 1.0));
-      this.bU.a(4, new cjw.c());
-      this.bU.a(5, new cjw.a());
-      this.bU.a(6, new cjw.d());
-      this.bU.a(8, new cbj(this, 0.6));
-      this.bU.a(9, new cau(this, cmx.class, 3.0F, 1.0F));
-      this.bU.a(10, new cau(this, btp.class, 8.0F));
-      this.bV.a(1, new cce(this, coj.class).a());
-      this.bV.a(2, new ccf<>(this, cmx.class, true).c(300));
-      this.bV.a(3, new ccf<>(this, cmf.class, false).c(300));
-      this.bV.a(3, new ccf<>(this, cfq.class, false));
+      this.bW.a(0, new cag(this));
+      this.bW.a(1, new cjw.b());
+      this.bW.a(2, new bzt<>(this, cmx.class, 8.0F, 0.6, 1.0));
+      this.bW.a(4, new cjw.c());
+      this.bW.a(5, new cjw.a());
+      this.bW.a(6, new cjw.d());
+      this.bW.a(8, new cbj(this, 0.6));
+      this.bW.a(9, new cau(this, cmx.class, 3.0F, 1.0F));
+      this.bW.a(10, new cau(this, btp.class, 8.0F));
+      this.bX.a(1, new cce(this, coj.class).a());
+      this.bX.a(2, new ccf<>(this, cmx.class, true).c(300));
+      this.bX.a(3, new ccf<>(this, cmf.class, false).c(300));
+      this.bX.a(3, new ccf<>(this, cfq.class, false));
    }
 
    public static buv.a t() {

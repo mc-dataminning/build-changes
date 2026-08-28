@@ -3,46 +3,46 @@ import javax.annotation.Nullable;
 
 public class cki extends coj {
    private static final Predicate<bsr> e = $$0 -> $$0.bE() && !($$0 instanceof cki);
-   private static final double ca = 0.3;
-   private static final double cb = 0.35;
-   private static final int cc = 8356754;
-   private static final float cd = 0.57254905F;
-   private static final float ce = 0.5137255F;
-   private static final float cf = 0.49803922F;
-   private static final int cg = 10;
+   private static final double cc = 0.3;
+   private static final double cd = 0.35;
+   private static final int ce = 8356754;
+   private static final float cf = 0.57254905F;
+   private static final float cg = 0.5137255F;
+   private static final float ch = 0.49803922F;
+   private static final int ci = 10;
    public static final int b = 40;
-   private int ch;
-   private int ci;
    private int cj;
+   private int ck;
+   private int cl;
 
    public cki(bsx<? extends cki> $$0, dcw $$1) {
       super($$0, $$1);
-      this.bP = 20;
+      this.bR = 20;
       this.a(epv.v, 0.0F);
    }
 
    @Override
    protected void B() {
       super.B();
-      this.bU.a(0, new cag(this));
-      this.bU.a(4, new caw(this, 1.0, true));
-      this.bU.a(5, new cbz(this, 0.4));
-      this.bU.a(6, new cau(this, cmx.class, 6.0F));
-      this.bU.a(10, new cau(this, btp.class, 8.0F));
-      this.bV.a(2, new cce(this, coj.class).a());
-      this.bV.a(3, new ccf<>(this, cmx.class, true));
-      this.bV.a(4, new ccf<>(this, cmf.class, true, $$0 -> !$$0.o_()));
-      this.bV.a(4, new ccf<>(this, cfq.class, true));
+      this.bW.a(0, new cag(this));
+      this.bW.a(4, new caw(this, 1.0, true));
+      this.bW.a(5, new cbz(this, 0.4));
+      this.bW.a(6, new cau(this, cmx.class, 6.0F));
+      this.bW.a(10, new cau(this, btp.class, 8.0F));
+      this.bX.a(2, new cce(this, coj.class).a());
+      this.bX.a(3, new ccf<>(this, cmx.class, true));
+      this.bX.a(4, new ccf<>(this, cmf.class, true, $$0 -> !$$0.o_()));
+      this.bX.a(4, new ccf<>(this, cfq.class, true));
    }
 
    @Override
    protected void U() {
       boolean $$0 = !(this.cQ() instanceof btp) || this.cQ().am().a(awi.c);
       boolean $$1 = !(this.dc() instanceof cov);
-      this.bU.a(cam.a.a, $$0);
-      this.bU.a(cam.a.c, $$0 && $$1);
-      this.bU.a(cam.a.b, $$0);
-      this.bU.a(cam.a.d, $$0);
+      this.bW.a(cam.a.a, $$0);
+      this.bW.a(cam.a.c, $$0 && $$1);
+      this.bW.a(cam.a.b, $$0);
+      this.bW.a(cam.a.d, $$0);
    }
 
    public static buv.a s() {
@@ -52,17 +52,17 @@ public class cki extends coj {
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      $$0.a("AttackTick", this.ch);
-      $$0.a("StunTick", this.ci);
-      $$0.a("RoarTick", this.cj);
+      $$0.a("AttackTick", this.cj);
+      $$0.a("StunTick", this.ck);
+      $$0.a("RoarTick", this.cl);
    }
 
    @Override
    public void a(ub $$0) {
       super.a($$0);
-      this.ch = $$0.h("AttackTick");
-      this.ci = $$0.h("StunTick");
-      this.cj = $$0.h("RoarTick");
+      this.cj = $$0.h("AttackTick");
+      this.ck = $$0.h("StunTick");
+      this.cl = $$0.h("RoarTick");
    }
 
    @Override
@@ -104,23 +104,23 @@ public class cki extends coj {
             }
          }
 
-         if (this.cj > 0) {
-            this.cj--;
-            if (this.cj == 10) {
+         if (this.cl > 0) {
+            this.cl--;
+            if (this.cl == 10) {
                this.gw();
             }
          }
 
-         if (this.ch > 0) {
-            this.ch--;
+         if (this.cj > 0) {
+            this.cj--;
          }
 
-         if (this.ci > 0) {
-            this.ci--;
+         if (this.ck > 0) {
+            this.ck--;
             this.gv();
-            if (this.ci == 0) {
+            if (this.ck == 0) {
                this.a(avp.vk, 1.0F, 1.0F);
-               this.cj = 20;
+               this.cl = 20;
             }
          }
       }
@@ -137,19 +137,19 @@ public class cki extends coj {
 
    @Override
    protected boolean fc() {
-      return super.fc() || this.ch > 0 || this.ci > 0 || this.cj > 0;
+      return super.fc() || this.cj > 0 || this.ck > 0 || this.cl > 0;
    }
 
    @Override
    public boolean F(bsr $$0) {
-      return this.ci <= 0 && this.cj <= 0 ? super.F($$0) : false;
+      return this.ck <= 0 && this.cl <= 0 ? super.F($$0) : false;
    }
 
    @Override
    protected void e(btn $$0) {
-      if (this.cj == 0) {
+      if (this.cl == 0) {
          if (this.ah.j() < 0.5) {
-            this.ci = 40;
+            this.ck = 40;
             this.a(avp.vj, 1.0F, 1.0F);
             this.dO().a(this, (byte)39);
             $$0.h(this);
@@ -194,30 +194,30 @@ public class cki extends coj {
    @Override
    public void b(byte $$0) {
       if ($$0 == 4) {
-         this.ch = 10;
+         this.cj = 10;
          this.a(avp.ve, 1.0F, 1.0F);
       } else if ($$0 == 39) {
-         this.ci = 40;
+         this.ck = 40;
       }
 
       super.b($$0);
    }
 
    public int t() {
-      return this.ch;
+      return this.cj;
    }
 
    public int gk() {
-      return this.ci;
+      return this.ck;
    }
 
    public int gu() {
-      return this.cj;
+      return this.cl;
    }
 
    @Override
    public boolean D(bsr $$0) {
-      this.ch = 10;
+      this.cj = 10;
       this.dO().a(this, (byte)4);
       this.a(avp.ve, 1.0F, 1.0F);
       return super.D($$0);

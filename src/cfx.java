@@ -3,16 +3,16 @@ import java.util.function.Predicate;
 
 public class cfx extends cfb {
    private static final ajw<Integer> e = aka.a(cfx.class, ajy.b);
-   int ca;
-   int cb;
-   private static final Predicate<btn> cc = $$0 -> {
+   int cc;
+   int cd;
+   private static final Predicate<btn> ce = $$0 -> {
       if ($$0 instanceof cmx $$1 && $$1.f()) {
          return false;
       }
 
       return !$$0.am().a(awi.A);
    };
-   static final cef cd = cef.b().e().d().a(cc);
+   static final cef cf = cef.b().e().d().a(ce);
    public static final int b = 0;
    public static final int c = 1;
    public static final int d = 2;
@@ -65,32 +65,32 @@ public class cfx extends cfb {
    @Override
    protected void B() {
       super.B();
-      this.bU.a(1, new cfx.a(this));
+      this.bW.a(1, new cfx.a(this));
    }
 
    @Override
    public void l() {
       if (!this.dO().B && this.bE() && this.db()) {
-         if (this.ca > 0) {
+         if (this.cc > 0) {
             if (this.gm() == 0) {
                this.b(avp.uR);
                this.c(1);
-            } else if (this.ca > 40 && this.gm() == 1) {
+            } else if (this.cc > 40 && this.gm() == 1) {
                this.b(avp.uR);
                this.c(2);
             }
 
-            this.ca++;
+            this.cc++;
          } else if (this.gm() != 0) {
-            if (this.cb > 60 && this.gm() == 2) {
+            if (this.cd > 60 && this.gm() == 2) {
                this.b(avp.uQ);
                this.c(1);
-            } else if (this.cb > 100 && this.gm() == 1) {
+            } else if (this.cd > 100 && this.gm() == 1) {
                this.b(avp.uQ);
                this.c(0);
             }
 
-            this.cb++;
+            this.cd++;
          }
       }
 
@@ -101,7 +101,7 @@ public class cfx extends cfb {
    public void m_() {
       super.m_();
       if (this.bE() && this.gm() > 0) {
-         for (btp $$1 : this.dO().a(btp.class, this.cK().g(0.3), $$0 -> cd.a(this, $$0))) {
+         for (btp $$1 : this.dO().a(btp.class, this.cK().g(0.3), $$0 -> cf.a(this, $$0))) {
             if ($$1.bE()) {
                this.a($$1);
             }
@@ -174,19 +174,19 @@ public class cfx extends cfb {
 
       @Override
       public boolean b() {
-         List<btn> $$0 = this.a.dO().a(btn.class, this.a.cK().g(2.0), $$0x -> cfx.cd.a(this.a, $$0x));
+         List<btn> $$0 = this.a.dO().a(btn.class, this.a.cK().g(2.0), $$0x -> cfx.cf.a(this.a, $$0x));
          return !$$0.isEmpty();
       }
 
       @Override
       public void d() {
-         this.a.ca = 1;
-         this.a.cb = 0;
+         this.a.cc = 1;
+         this.a.cd = 0;
       }
 
       @Override
       public void e() {
-         this.a.ca = 0;
+         this.a.cc = 0;
       }
    }
 }

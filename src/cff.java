@@ -10,57 +10,57 @@ import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
 public class cff extends cfe implements btt, cfn {
-   public static final float ca = 120.32113F;
-   public static final int cb = ayo.f(1.4959966F);
-   private static final ajw<Byte> ck = aka.a(cff.class, ajy.a);
-   private static final ajw<Integer> cl = aka.a(cff.class, ajy.b);
-   private static final int cm = 2;
-   private static final int cn = 4;
-   private static final int co = 8;
-   private static final int cp = 1200;
-   private static final int cq = 2400;
-   private static final int cr = 3600;
-   private static final int cs = 4;
-   private static final int ct = 10;
-   private static final int cu = 10;
-   private static final int cv = 18;
-   private static final int cw = 32;
-   private static final int cx = 2;
-   private static final int cy = 16;
-   private static final int cz = 20;
-   public static final String cc = "CropsGrownSincePollination";
-   public static final String ce = "CannotEnterHiveTicks";
-   public static final String cf = "TicksSincePollination";
-   public static final String cg = "HasStung";
-   public static final String ch = "HasNectar";
-   public static final String ci = "flower_pos";
-   public static final String cj = "hive_pos";
-   private static final bqc cB = azp.a(20, 39);
+   public static final float cc = 120.32113F;
+   public static final int cd = ayo.f(1.4959966F);
+   private static final ajw<Byte> cm = aka.a(cff.class, ajy.a);
+   private static final ajw<Integer> cn = aka.a(cff.class, ajy.b);
+   private static final int co = 2;
+   private static final int cp = 4;
+   private static final int cq = 8;
+   private static final int cr = 1200;
+   private static final int cs = 2400;
+   private static final int ct = 3600;
+   private static final int cu = 4;
+   private static final int cv = 10;
+   private static final int cw = 10;
+   private static final int cx = 18;
+   private static final int cy = 32;
+   private static final int cz = 2;
+   private static final int cA = 16;
+   private static final int cB = 20;
+   public static final String ce = "CropsGrownSincePollination";
+   public static final String cg = "CannotEnterHiveTicks";
+   public static final String ch = "TicksSincePollination";
+   public static final String ci = "HasStung";
+   public static final String cj = "HasNectar";
+   public static final String ck = "flower_pos";
+   public static final String cl = "hive_pos";
+   private static final bqc cD = azp.a(20, 39);
    @Nullable
-   private UUID cC;
-   private float cD;
-   private float cE;
-   private int cF;
-   int cG;
+   private UUID cE;
+   private float cF;
+   private float cG;
    private int cH;
-   private int cI;
-   private static final int cJ = 200;
-   int cK;
+   int cI;
+   private int cJ;
+   private int cK;
    private static final int cL = 200;
-   int cM = ayo.a(this.ah, 20, 60);
+   int cM;
+   private static final int cN = 200;
+   int cO = ayo.a(this.ah, 20, 60);
    @Nullable
-   jd cN;
+   jd cP;
    @Nullable
-   jd cO;
-   cff.k cP;
-   cff.e cQ;
-   private cff.f cR;
-   private int cS;
+   jd cQ;
+   cff.k cR;
+   cff.e cS;
+   private cff.f cT;
+   private int cU;
 
    public cff(bsx<? extends cff> $$0, dcw $$1) {
       super($$0, $$1);
-      this.bR = new bzm(this, 20, true);
-      this.bQ = new cff.j(this);
+      this.bT = new bzm(this, 20, true);
+      this.bS = new cff.j(this);
       this.a(epv.n, -1.0F);
       this.a(epv.j, -1.0F);
       this.a(epv.k, 16.0F);
@@ -71,8 +71,8 @@ public class cff extends cfe implements btt, cfn {
    @Override
    protected void a(aka.a $$0) {
       super.a($$0);
-      $$0.a(ck, (byte)0);
-      $$0.a(cl, 0);
+      $$0.a(cm, (byte)0);
+      $$0.a(cn, 0);
    }
 
    @Override
@@ -82,24 +82,24 @@ public class cff extends cfe implements btt, cfn {
 
    @Override
    protected void B() {
-      this.bU.a(0, new cff.b(this, 1.4F, true));
-      this.bU.a(1, new cff.d());
-      this.bU.a(2, new bzy(this, 1.0));
-      this.bU.a(3, new cbu(this, 1.25, $$0 -> $$0.a(awn.aj), false));
-      this.cP = new cff.k();
-      this.bU.a(4, this.cP);
-      this.bU.a(5, new cal(this, 1.25));
-      this.bU.a(5, new cff.i());
-      this.cQ = new cff.e();
-      this.bU.a(5, this.cQ);
-      this.cR = new cff.f();
-      this.bU.a(6, this.cR);
-      this.bU.a(7, new cff.g());
-      this.bU.a(8, new cff.l());
-      this.bU.a(9, new cag(this));
-      this.bV.a(1, new cff.h(this).a(new Class[0]));
-      this.bV.a(2, new cff.c(this));
-      this.bV.a(3, new ccl<>(this, true));
+      this.bW.a(0, new cff.b(this, 1.4F, true));
+      this.bW.a(1, new cff.d());
+      this.bW.a(2, new bzy(this, 1.0));
+      this.bW.a(3, new cbu(this, 1.25, $$0 -> $$0.a(awn.aj), false));
+      this.cR = new cff.k();
+      this.bW.a(4, this.cR);
+      this.bW.a(5, new cal(this, 1.25));
+      this.bW.a(5, new cff.i());
+      this.cS = new cff.e();
+      this.bW.a(5, this.cS);
+      this.cT = new cff.f();
+      this.bW.a(6, this.cT);
+      this.bW.a(7, new cff.g());
+      this.bW.a(8, new cff.l());
+      this.bW.a(9, new cag(this));
+      this.bX.a(1, new cff.h(this).a(new Class[0]));
+      this.bX.a(2, new cff.c(this));
+      this.bX.a(3, new ccl<>(this, true));
    }
 
    @Override
@@ -115,22 +115,22 @@ public class cff extends cfe implements btt, cfn {
 
       $$0.a("HasNectar", this.gu());
       $$0.a("HasStung", this.gv());
-      $$0.a("TicksSincePollination", this.cG);
-      $$0.a("CannotEnterHiveTicks", this.cH);
-      $$0.a("CropsGrownSincePollination", this.cI);
+      $$0.a("TicksSincePollination", this.cI);
+      $$0.a("CannotEnterHiveTicks", this.cJ);
+      $$0.a("CropsGrownSincePollination", this.cK);
       this.a_($$0);
    }
 
    @Override
    public void a(ub $$0) {
-      this.cO = uq.a($$0, "hive_pos").orElse(null);
-      this.cN = uq.a($$0, "flower_pos").orElse(null);
+      this.cQ = uq.a($$0, "hive_pos").orElse(null);
+      this.cP = uq.a($$0, "flower_pos").orElse(null);
       super.a($$0);
       this.x($$0.q("HasNectar"));
       this.y($$0.q("HasStung"));
-      this.cG = $$0.h("TicksSincePollination");
-      this.cH = $$0.h("CannotEnterHiveTicks");
-      this.cI = $$0.h("CropsGrownSincePollination");
+      this.cI = $$0.h("TicksSincePollination");
+      this.cJ = $$0.h("CannotEnterHiveTicks");
+      this.cK = $$0.h("CropsGrownSincePollination");
       this.a(this.dO(), $$0);
    }
 
@@ -202,40 +202,40 @@ public class cff extends cfe implements btt, cfn {
 
       exc $$8 = cei.a(this, $$5, $$6, $$2, $$1, (float) (Math.PI / 10));
       if ($$8 != null) {
-         this.bT.a(0.5F);
-         this.bT.a($$8.c, $$8.d, $$8.e, 1.0);
+         this.bV.a(0.5F);
+         this.bV.a($$8.c, $$8.d, $$8.e, 1.0);
       }
    }
 
    @Nullable
    public jd s() {
-      return this.cN;
+      return this.cP;
    }
 
    public boolean t() {
-      return this.cN != null;
+      return this.cP != null;
    }
 
    public void h(jd $$0) {
-      this.cN = $$0;
+      this.cP = $$0;
    }
 
    @azt
    public int x() {
-      return Math.max(this.cQ.d, this.cR.d);
+      return Math.max(this.cS.d, this.cT.d);
    }
 
    @azt
    public List<jd> gk() {
-      return this.cQ.f;
+      return this.cS.f;
    }
 
    private boolean gz() {
-      return this.cG > 3600;
+      return this.cI > 3600;
    }
 
    boolean gA() {
-      if (this.cH <= 0 && !this.cP.l() && !this.gv() && this.p() == null) {
+      if (this.cJ <= 0 && !this.cR.l() && !this.gv() && this.p() == null) {
          boolean $$0 = this.gz() || this.dO().ad() || this.dO().S() || this.gu();
          return $$0 && !this.gC();
       } else {
@@ -244,19 +244,19 @@ public class cff extends cfe implements btt, cfn {
    }
 
    public void t(int $$0) {
-      this.cH = $$0;
+      this.cJ = $$0;
    }
 
    public float H(float $$0) {
-      return ayo.i($$0, this.cE, this.cD);
+      return ayo.i($$0, this.cG, this.cF);
    }
 
    private void gB() {
-      this.cE = this.cD;
+      this.cG = this.cF;
       if (this.gH()) {
-         this.cD = Math.min(1.0F, this.cD + 0.2F);
+         this.cF = Math.min(1.0F, this.cF + 0.2F);
       } else {
-         this.cD = Math.max(0.0F, this.cD - 0.24F);
+         this.cF = Math.max(0.0F, this.cF - 0.24F);
       }
    }
 
@@ -264,24 +264,24 @@ public class cff extends cfe implements btt, cfn {
    protected void ab() {
       boolean $$0 = this.gv();
       if (this.bi()) {
-         this.cS++;
+         this.cU++;
       } else {
-         this.cS = 0;
+         this.cU = 0;
       }
 
-      if (this.cS > 20) {
+      if (this.cU > 20) {
          this.a(this.dP().i(), 1.0F);
       }
 
       if ($$0) {
-         this.cF++;
-         if (this.cF % 5 == 0 && this.ah.a(ayo.a(1200 - this.cF, 1, 1200)) == 0) {
+         this.cH++;
+         if (this.cH % 5 == 0 && this.ah.a(ayo.a(1200 - this.cH, 1, 1200)) == 0) {
             this.a(this.dP().o(), this.ew());
          }
       }
 
       if (!this.gu()) {
-         this.cG++;
+         this.cI++;
       }
 
       if (!this.dO().B) {
@@ -290,42 +290,42 @@ public class cff extends cfe implements btt, cfn {
    }
 
    public void gl() {
-      this.cG = 0;
+      this.cI = 0;
    }
 
    private boolean gC() {
-      if (this.cO == null) {
+      if (this.cQ == null) {
          return false;
       } else {
-         dqh $$0 = this.dO().c_(this.cO);
+         dqh $$0 = this.dO().c_(this.cQ);
          return $$0 instanceof dqe && ((dqe)$$0).b();
       }
    }
 
    @Override
    public int a() {
-      return this.ao.a(cl);
+      return this.ao.a(cn);
    }
 
    @Override
    public void a(int $$0) {
-      this.ao.a(cl, $$0);
+      this.ao.a(cn, $$0);
    }
 
    @Nullable
    @Override
    public UUID b() {
-      return this.cC;
+      return this.cE;
    }
 
    @Override
    public void a(@Nullable UUID $$0) {
-      this.cC = $$0;
+      this.cE = $$0;
    }
 
    @Override
    public void c() {
-      this.a(cB.a(this.ah));
+      this.a(cD.a(this.ah));
    }
 
    private boolean k(jd $$0) {
@@ -335,18 +335,18 @@ public class cff extends cfe implements btt, cfn {
 
    @azt
    public boolean gm() {
-      return this.cO != null;
+      return this.cQ != null;
    }
 
    @Nullable
    @azt
    public jd gn() {
-      return this.cO;
+      return this.cQ;
    }
 
    @azt
    public can go() {
-      return this.bU;
+      return this.bW;
    }
 
    @Override
@@ -356,37 +356,37 @@ public class cff extends cfe implements btt, cfn {
    }
 
    int gD() {
-      return this.cI;
+      return this.cK;
    }
 
    private void gE() {
-      this.cI = 0;
+      this.cK = 0;
    }
 
    void gF() {
-      this.cI++;
+      this.cK++;
    }
 
    @Override
    public void m_() {
       super.m_();
       if (!this.dO().B) {
-         if (this.cH > 0) {
-            this.cH--;
-         }
-
-         if (this.cK > 0) {
-            this.cK--;
+         if (this.cJ > 0) {
+            this.cJ--;
          }
 
          if (this.cM > 0) {
             this.cM--;
          }
 
+         if (this.cO > 0) {
+            this.cO--;
+         }
+
          boolean $$0 = this.ad_() && !this.gv() && this.p() != null && this.p().g(this) < 4.0;
          this.z($$0);
          if (this.ai % 20 == 0 && !this.gG()) {
-            this.cO = null;
+            this.cQ = null;
          }
       }
    }
@@ -394,10 +394,10 @@ public class cff extends cfe implements btt, cfn {
    boolean gG() {
       if (!this.gm()) {
          return false;
-      } else if (this.l(this.cO)) {
+      } else if (this.l(this.cQ)) {
          return false;
       } else {
-         dqh $$0 = this.dO().c_(this.cO);
+         dqh $$0 = this.dO().c_(this.cQ);
          return $$0 != null && $$0.r() == dqj.H;
       }
    }
@@ -436,14 +436,14 @@ public class cff extends cfe implements btt, cfn {
 
    private void d(int $$0, boolean $$1) {
       if ($$1) {
-         this.ao.a(ck, (byte)(this.ao.a(ck) | $$0));
+         this.ao.a(cm, (byte)(this.ao.a(cm) | $$0));
       } else {
-         this.ao.a(ck, (byte)(this.ao.a(ck) & ~$$0));
+         this.ao.a(cm, (byte)(this.ao.a(cm) & ~$$0));
       }
    }
 
    private boolean u(int $$0) {
-      return (this.ao.a(ck) & $$0) != 0;
+      return (this.ao.a(cm) & $$0) != 0;
    }
 
    public static buv.a gw() {
@@ -460,7 +460,7 @@ public class cff extends cfe implements btt, cfn {
 
          @Override
          public void c() {
-            if (!cff.this.cP.l()) {
+            if (!cff.this.cR.l()) {
                super.c();
             }
          }
@@ -515,7 +515,7 @@ public class cff extends cfe implements btt, cfn {
 
    @Override
    public boolean aW() {
-      return this.gx() && this.ai % cb == 0;
+      return this.gx() && this.ai % cd == 0;
    }
 
    @Override
@@ -534,7 +534,7 @@ public class cff extends cfe implements btt, cfn {
          return false;
       } else {
          if (!this.dO().B) {
-            this.cP.m();
+            this.cR.m();
          }
 
          return super.a($$0, $$1);
@@ -556,7 +556,7 @@ public class cff extends cfe implements btt, cfn {
    }
 
    public void i(jd $$0) {
-      this.cO = $$0;
+      this.cQ = $$0;
    }
 
    abstract class a extends cam {
@@ -621,12 +621,12 @@ public class cff extends cfe implements btt, cfn {
    class d extends cff.a {
       @Override
       public boolean h() {
-         if (cff.this.gm() && cff.this.gA() && cff.this.cO.a(cff.this.dm(), 2.0) && cff.this.dO().c_(cff.this.cO) instanceof dqe $$1) {
+         if (cff.this.gm() && cff.this.gA() && cff.this.cQ.a(cff.this.dm(), 2.0) && cff.this.dO().c_(cff.this.cQ) instanceof dqe $$1) {
             if (!$$1.d()) {
                return true;
             }
 
-            cff.this.cO = null;
+            cff.this.cQ = null;
          }
 
          return false;
@@ -639,7 +639,7 @@ public class cff extends cfe implements btt, cfn {
 
       @Override
       public void d() {
-         if (cff.this.dO().c_(cff.this.cO) instanceof dqe $$1) {
+         if (cff.this.dO().c_(cff.this.cQ) instanceof dqe $$1) {
             $$1.a(cff.this);
          }
       }
@@ -662,7 +662,7 @@ public class cff extends cfe implements btt, cfn {
 
       @Override
       public boolean h() {
-         return cff.this.cO != null && !cff.this.fY() && cff.this.gA() && !this.d(cff.this.cO) && cff.this.dO().a_(cff.this.cO).a(awe.aH);
+         return cff.this.cQ != null && !cff.this.fY() && cff.this.gA() && !this.d(cff.this.cQ) && cff.this.dO().a_(cff.this.cQ).a(awe.aH);
       }
 
       @Override
@@ -681,35 +681,35 @@ public class cff extends cfe implements btt, cfn {
       public void e() {
          this.d = 0;
          this.i = 0;
-         cff.this.bT.n();
-         cff.this.bT.g();
+         cff.this.bV.n();
+         cff.this.bV.g();
       }
 
       @Override
       public void a() {
-         if (cff.this.cO != null) {
+         if (cff.this.cQ != null) {
             this.d++;
             if (this.d > this.a(600)) {
                this.l();
-            } else if (!cff.this.bT.m()) {
-               if (!cff.this.b(cff.this.cO, 16)) {
-                  if (cff.this.l(cff.this.cO)) {
+            } else if (!cff.this.bV.m()) {
+               if (!cff.this.b(cff.this.cQ, 16)) {
+                  if (cff.this.l(cff.this.cQ)) {
                      this.m();
                   } else {
-                     cff.this.j(cff.this.cO);
+                     cff.this.j(cff.this.cQ);
                   }
                } else {
-                  boolean $$0 = this.a(cff.this.cO);
+                  boolean $$0 = this.a(cff.this.cQ);
                   if (!$$0) {
                      this.l();
-                  } else if (this.g != null && cff.this.bT.j().a(this.g)) {
+                  } else if (this.g != null && cff.this.bV.j().a(this.g)) {
                      this.i++;
                      if (this.i > 60) {
                         this.m();
                         this.i = 0;
                      }
                   } else {
-                     this.g = cff.this.bT.j();
+                     this.g = cff.this.bV.j();
                   }
                }
             }
@@ -717,9 +717,9 @@ public class cff extends cfe implements btt, cfn {
       }
 
       private boolean a(jd $$0) {
-         cff.this.bT.a(10.0F);
-         cff.this.bT.a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 2, 1.0);
-         return cff.this.bT.j() != null && cff.this.bT.j().j();
+         cff.this.bV.a(10.0F);
+         cff.this.bV.a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 2, 1.0);
+         return cff.this.bV.j() != null && cff.this.bV.j().j();
       }
 
       boolean b(jd $$0) {
@@ -739,23 +739,23 @@ public class cff extends cfe implements btt, cfn {
       }
 
       private void l() {
-         if (cff.this.cO != null) {
-            this.c(cff.this.cO);
+         if (cff.this.cQ != null) {
+            this.c(cff.this.cQ);
          }
 
          this.m();
       }
 
       private void m() {
-         cff.this.cO = null;
-         cff.this.cK = 200;
+         cff.this.cQ = null;
+         cff.this.cM = 200;
       }
 
       private boolean d(jd $$0) {
          if (cff.this.b($$0, 2)) {
             return true;
          } else {
-            eps $$1 = cff.this.bT.j();
+            eps $$1 = cff.this.bV.j();
             return $$1 != null && $$1.l().equals($$0) && $$1.j() && $$1.c();
          }
       }
@@ -771,7 +771,7 @@ public class cff extends cfe implements btt, cfn {
 
       @Override
       public boolean h() {
-         return cff.this.cN != null && !cff.this.fY() && this.k() && cff.this.m(cff.this.cN) && !cff.this.b(cff.this.cN, 2);
+         return cff.this.cP != null && !cff.this.fY() && this.k() && cff.this.m(cff.this.cP) && !cff.this.b(cff.this.cP, 2);
       }
 
       @Override
@@ -788,28 +788,28 @@ public class cff extends cfe implements btt, cfn {
       @Override
       public void e() {
          this.d = 0;
-         cff.this.bT.n();
-         cff.this.bT.g();
+         cff.this.bV.n();
+         cff.this.bV.g();
       }
 
       @Override
       public void a() {
-         if (cff.this.cN != null) {
+         if (cff.this.cP != null) {
             this.d++;
             if (this.d > this.a(600)) {
-               cff.this.cN = null;
-            } else if (!cff.this.bT.m()) {
-               if (cff.this.l(cff.this.cN)) {
-                  cff.this.cN = null;
+               cff.this.cP = null;
+            } else if (!cff.this.bV.m()) {
+               if (cff.this.l(cff.this.cP)) {
+                  cff.this.cP = null;
                } else {
-                  cff.this.j(cff.this.cN);
+                  cff.this.j(cff.this.cP);
                }
             }
          }
       }
 
       private boolean k() {
-         return cff.this.cG > 2400;
+         return cff.this.cI > 2400;
       }
    }
 
@@ -890,7 +890,7 @@ public class cff extends cfe implements btt, cfn {
    class i extends cff.a {
       @Override
       public boolean h() {
-         return cff.this.cK == 0 && !cff.this.gm() && cff.this.gA();
+         return cff.this.cM == 0 && !cff.this.gm() && cff.this.gA();
       }
 
       @Override
@@ -900,18 +900,18 @@ public class cff extends cfe implements btt, cfn {
 
       @Override
       public void d() {
-         cff.this.cK = 200;
+         cff.this.cM = 200;
          List<jd> $$0 = this.k();
          if (!$$0.isEmpty()) {
             for (jd $$1 : $$0) {
-               if (!cff.this.cQ.b($$1)) {
-                  cff.this.cO = $$1;
+               if (!cff.this.cS.b($$1)) {
+                  cff.this.cQ = $$1;
                   return;
                }
             }
 
-            cff.this.cQ.k();
-            cff.this.cO = $$0.get(0);
+            cff.this.cS.k();
+            cff.this.cQ = $$0.get(0);
          }
       }
 
@@ -937,7 +937,7 @@ public class cff extends cfe implements btt, cfn {
 
       @Override
       protected boolean c() {
-         return !cff.this.cP.l();
+         return !cff.this.cR.l();
       }
    }
 
@@ -973,7 +973,7 @@ public class cff extends cfe implements btt, cfn {
 
       @Override
       public boolean h() {
-         if (cff.this.cM > 0) {
+         if (cff.this.cO > 0) {
             return false;
          } else if (cff.this.gu()) {
             return false;
@@ -982,11 +982,11 @@ public class cff extends cfe implements btt, cfn {
          } else {
             Optional<jd> $$0 = this.p();
             if ($$0.isPresent()) {
-               cff.this.cN = $$0.get();
-               cff.this.bT.a((double)cff.this.cN.u() + 0.5, (double)cff.this.cN.v() + 0.5, (double)cff.this.cN.w() + 0.5, 1.2F);
+               cff.this.cP = $$0.get();
+               cff.this.bV.a((double)cff.this.cP.u() + 0.5, (double)cff.this.cP.v() + 0.5, (double)cff.this.cP.w() + 0.5, 1.2F);
                return true;
             } else {
-               cff.this.cM = ayo.a(cff.this.ah, 20, 60);
+               cff.this.cO = ayo.a(cff.this.ah, 20, 60);
                return false;
             }
          }
@@ -1002,8 +1002,8 @@ public class cff extends cfe implements btt, cfn {
             return false;
          } else if (this.k()) {
             return cff.this.ah.i() < 0.2F;
-         } else if (cff.this.ai % 20 == 0 && !cff.this.m(cff.this.cN)) {
-            cff.this.cN = null;
+         } else if (cff.this.ai % 20 == 0 && !cff.this.m(cff.this.cP)) {
+            cff.this.cP = null;
             return false;
          } else {
             return true;
@@ -1038,8 +1038,8 @@ public class cff extends cfe implements btt, cfn {
          }
 
          this.n = false;
-         cff.this.bT.n();
-         cff.this.cM = 200;
+         cff.this.bV.n();
+         cff.this.cO = 200;
       }
 
       @Override
@@ -1051,9 +1051,9 @@ public class cff extends cfe implements btt, cfn {
       public void a() {
          this.p++;
          if (this.p > 600) {
-            cff.this.cN = null;
+            cff.this.cP = null;
          } else {
-            exc $$0 = exc.c(cff.this.cN).b(0.0, 0.6F, 0.0);
+            exc $$0 = exc.c(cff.this.cP).b(0.0, 0.6F, 0.0);
             if ($$0.f(cff.this.dm()) > 1.0) {
                this.o = $$0;
                this.n();
@@ -1065,13 +1065,13 @@ public class cff extends cfe implements btt, cfn {
                boolean $$1 = cff.this.dm().f(this.o) <= 0.1;
                boolean $$2 = true;
                if (!$$1 && this.p > 600) {
-                  cff.this.cN = null;
+                  cff.this.cP = null;
                } else {
                   if ($$1) {
                      boolean $$3 = cff.this.ah.a(25) == 0;
                      if ($$3) {
                         this.o = new exc($$0.a() + (double)this.o(), $$0.b(), $$0.c() + (double)this.o());
-                        cff.this.bT.n();
+                        cff.this.bV.n();
                      } else {
                         $$2 = false;
                      }
@@ -1135,27 +1135,27 @@ public class cff extends cfe implements btt, cfn {
 
       @Override
       public boolean b() {
-         return cff.this.bT.l() && cff.this.ah.a(10) == 0;
+         return cff.this.bV.l() && cff.this.ah.a(10) == 0;
       }
 
       @Override
       public boolean c() {
-         return cff.this.bT.m();
+         return cff.this.bV.m();
       }
 
       @Override
       public void d() {
          exc $$0 = this.h();
          if ($$0 != null) {
-            cff.this.bT.a(cff.this.bT.a(jd.a((jw)$$0), 1), 1.0);
+            cff.this.bV.a(cff.this.bV.a(jd.a((jw)$$0), 1), 1.0);
          }
       }
 
       @Nullable
       private exc h() {
          exc $$1;
-         if (cff.this.gG() && !cff.this.b(cff.this.cO, 22)) {
-            exc $$0 = exc.b(cff.this.cO);
+         if (cff.this.gG() && !cff.this.b(cff.this.cQ, 22)) {
+            exc $$0 = exc.b(cff.this.cQ);
             $$1 = $$0.d(cff.this.dm()).d();
          } else {
             $$1 = cff.this.g(0.0F);

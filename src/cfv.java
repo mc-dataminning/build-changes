@@ -2,9 +2,9 @@ import com.google.common.collect.UnmodifiableIterator;
 import javax.annotation.Nullable;
 
 public class cfv extends cfe implements btj, bue {
-   private static final ajw<Boolean> ca = aka.a(cfv.class, ajy.k);
-   private static final ajw<Integer> cb = aka.a(cfv.class, ajy.b);
-   private final bti cc = new bti(this.ao, cb, ca);
+   private static final ajw<Boolean> cc = aka.a(cfv.class, ajy.k);
+   private static final ajw<Integer> cd = aka.a(cfv.class, ajy.b);
+   private final bti ce = new bti(this.ao, cd, cc);
 
    public cfv(bsx<? extends cfv> $$0, dcw $$1) {
       super($$0, $$1);
@@ -12,15 +12,15 @@ public class cfv extends cfe implements btj, bue {
 
    @Override
    protected void B() {
-      this.bU.a(0, new cag(this));
-      this.bU.a(1, new cbf(this, 1.25));
-      this.bU.a(3, new bzy(this, 1.0));
-      this.bU.a(4, new cbu(this, 1.2, $$0 -> $$0.a(cut.nR), false));
-      this.bU.a(4, new cbu(this, 1.2, $$0 -> $$0.a(awn.ar), false));
-      this.bU.a(5, new cal(this, 1.1));
-      this.bU.a(6, new cbz(this, 1.0));
-      this.bU.a(7, new cau(this, cmx.class, 6.0F));
-      this.bU.a(8, new cbh(this));
+      this.bW.a(0, new cag(this));
+      this.bW.a(1, new cbf(this, 1.25));
+      this.bW.a(3, new bzy(this, 1.0));
+      this.bW.a(4, new cbu(this, 1.2, $$0 -> $$0.a(cut.nR), false));
+      this.bW.a(4, new cbu(this, 1.2, $$0 -> $$0.a(awn.ar), false));
+      this.bW.a(5, new cal(this, 1.1));
+      this.bW.a(6, new cbz(this, 1.0));
+      this.bW.a(7, new cau(this, cmx.class, 6.0F));
+      this.bW.a(8, new cbh(this));
    }
 
    public static buv.a s() {
@@ -35,8 +35,8 @@ public class cfv extends cfe implements btj, bue {
 
    @Override
    public void a(ajw<?> $$0) {
-      if (cb.equals($$0) && this.dO().B) {
-         this.cc.a();
+      if (cd.equals($$0) && this.dO().B) {
+         this.ce.a();
       }
 
       super.a($$0);
@@ -45,20 +45,20 @@ public class cfv extends cfe implements btj, bue {
    @Override
    protected void a(aka.a $$0) {
       super.a($$0);
-      $$0.a(ca, false);
-      $$0.a(cb, 0);
+      $$0.a(cc, false);
+      $$0.a(cd, 0);
    }
 
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      this.cc.a($$0);
+      this.ce.a($$0);
    }
 
    @Override
    public void a(ub $$0) {
       super.a($$0);
-      this.cc.b($$0);
+      this.ce.b($$0);
    }
 
    @Override
@@ -116,12 +116,12 @@ public class cfv extends cfe implements btj, bue {
 
    @Override
    public boolean i() {
-      return this.cc.d();
+      return this.ce.d();
    }
 
    @Override
    public void a(cuq $$0, @Nullable avq $$1) {
-      this.cc.a(true);
+      this.ce.a(true);
       if ($$1 != null) {
          this.dO().a(null, this, avp.tD, $$1, 0.5F, 1.0F);
       }
@@ -189,7 +189,7 @@ public class cfv extends cfe implements btj, bue {
       super.a($$0, $$1);
       this.a($$0.dE(), $$0.dG() * 0.5F);
       this.O = this.aY = this.ba = this.dE();
-      this.cc.b();
+      this.ce.b();
    }
 
    @Override
@@ -199,12 +199,12 @@ public class cfv extends cfe implements btj, bue {
 
    @Override
    protected float e(cmx $$0) {
-      return (float)(this.g(buw.v) * 0.225 * (double)this.cc.c());
+      return (float)(this.g(buw.v) * 0.225 * (double)this.ce.c());
    }
 
    @Override
    public boolean a() {
-      return this.cc.a(this.dR());
+      return this.ce.a(this.dR());
    }
 
    @Nullable

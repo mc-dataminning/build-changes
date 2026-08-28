@@ -1,8 +1,8 @@
 import javax.annotation.Nullable;
 
 public class chk extends chi implements buo<chr> {
-   private static final ajw<Integer> ca = aka.a(chk.class, ajy.b);
-   private static final bsu cb = bsx.ab.n().a(bst.a().a(bss.a, 0.0F, bsx.ab.m() + 0.125F, 0.0F)).a(0.5F);
+   private static final ajw<Integer> cc = aka.a(chk.class, ajy.b);
+   private static final bsu cd = bsx.ab.n().a(bst.a().a(bss.a, 0.0F, bsx.ab.m() + 0.125F, 0.0F)).a(0.5F);
 
    public chk(bsx<? extends chk> $$0, dcw $$1) {
       super($$0, $$1);
@@ -18,7 +18,7 @@ public class chk extends chi implements buo<chr> {
    @Override
    protected void a(aka.a $$0) {
       super.a($$0);
-      $$0.a(ca, 0);
+      $$0.a(cc, 0);
    }
 
    @Override
@@ -34,11 +34,11 @@ public class chk extends chi implements buo<chr> {
    }
 
    private void x(int $$0) {
-      this.ao.a(ca, $$0);
+      this.ao.a(cc, $$0);
    }
 
    private int x() {
-      return this.ao.a(ca);
+      return this.ao.a(cc);
    }
 
    private void a(chr $$0, chm $$1) {
@@ -206,7 +206,7 @@ public class chk extends chi implements buo<chr> {
 
    @Override
    public bsu e(bua $$0) {
-      return this.o_() ? cb : super.e($$0);
+      return this.o_() ? cd : super.e($$0);
    }
 
    public static class a extends bsl.a {

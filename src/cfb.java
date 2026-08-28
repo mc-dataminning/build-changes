@@ -3,7 +3,7 @@ public abstract class cfb extends cgg implements cfg {
 
    public cfb(bsx<? extends cfb> $$0, dcw $$1) {
       super($$0, $$1);
-      this.bR = new cfb.a(this);
+      this.bT = new cfb.a(this);
    }
 
    public static buv.a s() {
@@ -56,9 +56,9 @@ public abstract class cfb extends cgg implements cfg {
    @Override
    protected void B() {
       super.B();
-      this.bU.a(0, new cbf(this, 1.25));
-      this.bU.a(2, new bzt<>(this, cmx.class, 8.0F, 1.6, 1.4, bsw.f::test));
-      this.bU.a(4, new cfb.b(this));
+      this.bW.a(0, new cbf(this, 1.25));
+      this.bW.a(2, new bzt<>(this, cmx.class, 8.0F, 1.6, 1.4, bsw.f::test));
+      this.bW.a(4, new cfb.b(this));
    }
 
    @Override

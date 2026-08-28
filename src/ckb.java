@@ -2,37 +2,37 @@ import javax.annotation.Nullable;
 
 public class ckb extends ckn implements ckh {
    private static final int e = 4;
-   private static final int ca = 3;
-   private static final int cb = 3;
-   private int cc;
-   private final exc[][] cd;
+   private static final int cc = 3;
+   private static final int cd = 3;
+   private int ce;
+   private final exc[][] cf;
 
    public ckb(bsx<? extends ckb> $$0, dcw $$1) {
       super($$0, $$1);
-      this.bP = 5;
-      this.cd = new exc[2][4];
+      this.bR = 5;
+      this.cf = new exc[2][4];
 
       for (int $$2 = 0; $$2 < 4; $$2++) {
-         this.cd[0][$$2] = exc.b;
-         this.cd[1][$$2] = exc.b;
+         this.cf[0][$$2] = exc.b;
+         this.cf[1][$$2] = exc.b;
       }
    }
 
    @Override
    protected void B() {
       super.B();
-      this.bU.a(0, new cag(this));
-      this.bU.a(1, new ckn.b());
-      this.bU.a(4, new ckb.b());
-      this.bU.a(5, new ckb.a());
-      this.bU.a(6, new cbm<>(this, 0.5, 20, 15.0F));
-      this.bU.a(8, new cbj(this, 0.6));
-      this.bU.a(9, new cau(this, cmx.class, 3.0F, 1.0F));
-      this.bU.a(10, new cau(this, btp.class, 8.0F));
-      this.bV.a(1, new cce(this, coj.class).a());
-      this.bV.a(2, new ccf<>(this, cmx.class, true).c(300));
-      this.bV.a(3, new ccf<>(this, cmf.class, false).c(300));
-      this.bV.a(3, new ccf<>(this, cfq.class, false).c(300));
+      this.bW.a(0, new cag(this));
+      this.bW.a(1, new ckn.b());
+      this.bW.a(4, new ckb.b());
+      this.bW.a(5, new ckb.a());
+      this.bW.a(6, new cbm<>(this, 0.5, 20, 15.0F));
+      this.bW.a(8, new cbj(this, 0.6));
+      this.bW.a(9, new cau(this, cmx.class, 3.0F, 1.0F));
+      this.bW.a(10, new cau(this, btp.class, 8.0F));
+      this.bX.a(1, new cce(this, coj.class).a());
+      this.bX.a(2, new ccf<>(this, cmx.class, true).c(300));
+      this.bX.a(3, new ccf<>(this, cmf.class, false).c(300));
+      this.bX.a(3, new ccf<>(this, cfq.class, false).c(300));
    }
 
    public static buv.a t() {
@@ -54,19 +54,19 @@ public class ckb extends ckn implements ckh {
    public void m_() {
       super.m_();
       if (this.dO().B && this.ci()) {
-         this.cc--;
-         if (this.cc < 0) {
-            this.cc = 0;
+         this.ce--;
+         if (this.ce < 0) {
+            this.ce = 0;
          }
 
          if (this.aO == 1 || this.ai % 1200 == 0) {
-            this.cc = 3;
+            this.ce = 3;
             float $$0 = -6.0F;
             int $$1 = 13;
 
             for (int $$2 = 0; $$2 < 4; $$2++) {
-               this.cd[0][$$2] = this.cd[1][$$2];
-               this.cd[1][$$2] = new exc(
+               this.cf[0][$$2] = this.cf[1][$$2];
+               this.cf[1][$$2] = new exc(
                   (double)(-6.0F + (float)this.ah.a(13)) * 0.5, (double)Math.max(0, this.ah.a(6) - 4), (double)(-6.0F + (float)this.ah.a(13)) * 0.5
                );
             }
@@ -77,11 +77,11 @@ public class ckb extends ckn implements ckh {
 
             this.dO().a(this.dt(), this.dv(), this.dz(), avp.ni, this.de(), 1.0F, 1.0F, false);
          } else if (this.aO == this.aP - 1) {
-            this.cc = 3;
+            this.ce = 3;
 
             for (int $$4 = 0; $$4 < 4; $$4++) {
-               this.cd[0][$$4] = this.cd[1][$$4];
-               this.cd[1][$$4] = new exc(0.0, 0.0, 0.0);
+               this.cf[0][$$4] = this.cf[1][$$4];
+               this.cf[1][$$4] = new exc(0.0, 0.0, 0.0);
             }
          }
       }
@@ -93,15 +93,15 @@ public class ckb extends ckn implements ckh {
    }
 
    public exc[] H(float $$0) {
-      if (this.cc <= 0) {
-         return this.cd[1];
+      if (this.ce <= 0) {
+         return this.cf[1];
       } else {
-         double $$1 = (double)(((float)this.cc - $$0) / 3.0F);
+         double $$1 = (double)(((float)this.ce - $$0) / 3.0F);
          $$1 = Math.pow($$1, 0.25);
          exc[] $$2 = new exc[4];
 
          for (int $$3 = 0; $$3 < 4; $$3++) {
-            $$2[$$3] = this.cd[1][$$3].a(1.0 - $$1).e(this.cd[0][$$3].a($$1));
+            $$2[$$3] = this.cf[1][$$3].a(1.0 - $$1).e(this.cf[0][$$3].a($$1));
          }
 
          return $$2;

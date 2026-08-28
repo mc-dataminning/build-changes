@@ -2,15 +2,15 @@ import java.util.UUID;
 import javax.annotation.Nullable;
 
 public class cfw extends cfe implements btt {
-   private static final ajw<Boolean> ca = aka.a(cfw.class, ajy.k);
-   private static final float cb = 6.0F;
-   private float cc;
+   private static final ajw<Boolean> cc = aka.a(cfw.class, ajy.k);
+   private static final float cd = 6.0F;
    private float ce;
-   private int cf;
-   private static final bqc cg = azp.a(20, 39);
+   private float cg;
    private int ch;
+   private static final bqc ci = azp.a(20, 39);
+   private int cj;
    @Nullable
-   private UUID ci;
+   private UUID ck;
 
    public cfw(bsx<? extends cfw> $$0, dcw $$1) {
       super($$0, $$1);
@@ -30,18 +30,18 @@ public class cfw extends cfe implements btt {
    @Override
    protected void B() {
       super.B();
-      this.bU.a(0, new cag(this));
-      this.bU.a(1, new cfw.c());
-      this.bU.a(1, new cbf(this, 2.0, $$0 -> $$0.o_() ? awg.F : awg.G));
-      this.bU.a(4, new cal(this, 1.25));
-      this.bU.a(5, new cbj(this, 1.0));
-      this.bU.a(6, new cau(this, cmx.class, 6.0F));
-      this.bU.a(7, new cbh(this));
-      this.bV.a(1, new cfw.b());
-      this.bV.a(2, new cfw.a());
-      this.bV.a(3, new ccf<>(this, cmx.class, 10, true, false, this::a_));
-      this.bV.a(4, new ccf<>(this, cfo.class, 10, true, true, null));
-      this.bV.a(5, new ccl<>(this, false));
+      this.bW.a(0, new cag(this));
+      this.bW.a(1, new cfw.c());
+      this.bW.a(1, new cbf(this, 2.0, $$0 -> $$0.o_() ? awg.F : awg.G));
+      this.bW.a(4, new cal(this, 1.25));
+      this.bW.a(5, new cbj(this, 1.0));
+      this.bW.a(6, new cau(this, cmx.class, 6.0F));
+      this.bW.a(7, new cbh(this));
+      this.bX.a(1, new cfw.b());
+      this.bX.a(2, new cfw.a());
+      this.bX.a(3, new ccf<>(this, cmx.class, 10, true, false, this::a_));
+      this.bX.a(4, new ccf<>(this, cfo.class, 10, true, true, null));
+      this.bX.a(5, new ccl<>(this, false));
    }
 
    public static buv.a s() {
@@ -67,28 +67,28 @@ public class cfw extends cfe implements btt {
 
    @Override
    public void c() {
-      this.a(cg.a(this.ah));
+      this.a(ci.a(this.ah));
    }
 
    @Override
    public void a(int $$0) {
-      this.ch = $$0;
+      this.cj = $$0;
    }
 
    @Override
    public int a() {
-      return this.ch;
+      return this.cj;
    }
 
    @Override
    public void a(@Nullable UUID $$0) {
-      this.ci = $$0;
+      this.ck = $$0;
    }
 
    @Nullable
    @Override
    public UUID b() {
-      return this.ci;
+      return this.ck;
    }
 
    @Override
@@ -112,36 +112,36 @@ public class cfw extends cfe implements btt {
    }
 
    protected void t() {
-      if (this.cf <= 0) {
+      if (this.ch <= 0) {
          this.b(avp.uB);
-         this.cf = 40;
+         this.ch = 40;
       }
    }
 
    @Override
    protected void a(aka.a $$0) {
       super.a($$0);
-      $$0.a(ca, false);
+      $$0.a(cc, false);
    }
 
    @Override
    public void l() {
       super.l();
       if (this.dO().B) {
-         if (this.ce != this.cc) {
+         if (this.cg != this.ce) {
             this.i_();
          }
 
-         this.cc = this.ce;
+         this.ce = this.cg;
          if (this.x()) {
-            this.ce = ayo.a(this.ce + 1.0F, 0.0F, 6.0F);
+            this.cg = ayo.a(this.cg + 1.0F, 0.0F, 6.0F);
          } else {
-            this.ce = ayo.a(this.ce - 1.0F, 0.0F, 6.0F);
+            this.cg = ayo.a(this.cg - 1.0F, 0.0F, 6.0F);
          }
       }
 
-      if (this.cf > 0) {
-         this.cf--;
+      if (this.ch > 0) {
+         this.ch--;
       }
 
       if (!this.dO().B) {
@@ -151,8 +151,8 @@ public class cfw extends cfe implements btt {
 
    @Override
    public bsu e(bua $$0) {
-      if (this.ce > 0.0F) {
-         float $$1 = this.ce / 6.0F;
+      if (this.cg > 0.0F) {
+         float $$1 = this.cg / 6.0F;
          float $$2 = 1.0F + $$1;
          return super.e($$0).a(1.0F, $$2);
       } else {
@@ -161,15 +161,15 @@ public class cfw extends cfe implements btt {
    }
 
    public boolean x() {
-      return this.ao.a(ca);
+      return this.ao.a(cc);
    }
 
    public void x(boolean $$0) {
-      this.ao.a(ca, $$0);
+      this.ao.a(cc, $$0);
    }
 
    public float H(float $$0) {
-      return ayo.i($$0, this.cc, this.ce) / 6.0F;
+      return ayo.i($$0, this.ce, this.cg) / 6.0F;
    }
 
    @Override

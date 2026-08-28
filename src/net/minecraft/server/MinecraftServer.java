@@ -863,7 +863,7 @@ public abstract class MinecraftServer extends bpl<aln> implements alh, dwg, es, 
       this.ai().c();
       this.A.b("players");
       this.Q.d();
-      if (ab.aU && this.aB.i()) {
+      if (ab.aV && this.aB.i()) {
          td.a.b();
       }
 

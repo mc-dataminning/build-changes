@@ -6,40 +6,40 @@ public class cjz extends ckd {
    protected static final int c = 80;
    private static final ajw<Boolean> b = aka.a(cjz.class, ajy.k);
    private static final ajw<Integer> e = aka.a(cjz.class, ajy.b);
-   private float ca;
-   private float cb;
    private float cc;
    private float cd;
    private float ce;
+   private float cf;
+   private float cg;
    @Nullable
-   private btn cf;
-   private int cg;
-   private boolean ch;
+   private btn ch;
+   private int ci;
+   private boolean cj;
    @Nullable
    protected cbj d;
 
    public cjz(bsx<? extends cjz> $$0, dcw $$1) {
       super($$0, $$1);
-      this.bP = 10;
+      this.bR = 10;
       this.a(epv.j, 0.0F);
-      this.bR = new cjz.c(this);
-      this.ca = this.ah.i();
-      this.cb = this.ca;
+      this.bT = new cjz.c(this);
+      this.cc = this.ah.i();
+      this.cd = this.cc;
    }
 
    @Override
    protected void B() {
       cba $$0 = new cba(this, 1.0);
       this.d = new cbj(this, 1.0, 80);
-      this.bU.a(4, new cjz.a(this));
-      this.bU.a(5, $$0);
-      this.bU.a(7, this.d);
-      this.bU.a(8, new cau(this, cmx.class, 8.0F));
-      this.bU.a(8, new cau(this, cjz.class, 12.0F, 0.01F));
-      this.bU.a(9, new cbh(this));
+      this.bW.a(4, new cjz.a(this));
+      this.bW.a(5, $$0);
+      this.bW.a(7, this.d);
+      this.bW.a(8, new cau(this, cmx.class, 8.0F));
+      this.bW.a(8, new cau(this, cjz.class, 12.0F, 0.01F));
+      this.bW.a(9, new cbh(this));
       this.d.a(EnumSet.of(cam.a.a, cam.a.b));
       $$0.a(EnumSet.of(cam.a.a, cam.a.b));
-      this.bV.a(1, new ccf<>(this, btn.class, 10, true, false, new cjz.b(this)));
+      this.bX.a(1, new ccf<>(this, btn.class, 10, true, false, new cjz.b(this)));
    }
 
    public static buv.a gk() {
@@ -83,13 +83,13 @@ public class cjz extends ckd {
       if (!this.gm()) {
          return null;
       } else if (this.dO().B) {
-         if (this.cf != null) {
-            return this.cf;
+         if (this.ch != null) {
+            return this.ch;
          } else {
             bsr $$0 = this.dO().a(this.ao.a(e));
             if ($$0 instanceof btn) {
-               this.cf = (btn)$$0;
-               return this.cf;
+               this.ch = (btn)$$0;
+               return this.ch;
             } else {
                return null;
             }
@@ -103,8 +103,8 @@ public class cjz extends ckd {
    public void a(ajw<?> $$0) {
       super.a($$0);
       if (e.equals($$0)) {
-         this.cg = 0;
-         this.cf = null;
+         this.ci = 0;
+         this.ch = null;
       }
    }
 
@@ -142,33 +142,33 @@ public class cjz extends ckd {
    public void m_() {
       if (this.bE()) {
          if (this.dO().B) {
-            this.cb = this.ca;
+            this.cd = this.cc;
             if (!this.bf()) {
-               this.cc = 2.0F;
+               this.ce = 2.0F;
                exc $$0 = this.dr();
-               if ($$0.d > 0.0 && this.ch && !this.aX()) {
+               if ($$0.d > 0.0 && this.cj && !this.aX()) {
                   this.dO().a(this.dt(), this.dv(), this.dz(), this.x(), this.de(), 1.0F, 1.0F, false);
                }
 
-               this.ch = $$0.d < 0.0 && this.dO().a(this.do().e(), this);
+               this.cj = $$0.d < 0.0 && this.dO().a(this.do().e(), this);
             } else if (this.gl()) {
-               if (this.cc < 0.5F) {
-                  this.cc = 4.0F;
+               if (this.ce < 0.5F) {
+                  this.ce = 4.0F;
                } else {
-                  this.cc = this.cc + (0.5F - this.cc) * 0.1F;
+                  this.ce = this.ce + (0.5F - this.ce) * 0.1F;
                }
             } else {
-               this.cc = this.cc + (0.125F - this.cc) * 0.2F;
+               this.ce = this.ce + (0.125F - this.ce) * 0.2F;
             }
 
-            this.ca = this.ca + this.cc;
-            this.ce = this.cd;
+            this.cc = this.cc + this.ce;
+            this.cg = this.cf;
             if (!this.bi()) {
-               this.cd = this.ah.i();
+               this.cf = this.ah.i();
             } else if (this.gl()) {
-               this.cd = this.cd + (0.0F - this.cd) * 0.25F;
+               this.cf = this.cf + (0.0F - this.cf) * 0.25F;
             } else {
-               this.cd = this.cd + (1.0F - this.cd) * 0.06F;
+               this.cf = this.cf + (1.0F - this.cf) * 0.06F;
             }
 
             if (this.gl() && this.bf()) {
@@ -180,8 +180,8 @@ public class cjz extends ckd {
             }
 
             if (this.gm()) {
-               if (this.cg < this.t()) {
-                  this.cg++;
+               if (this.ci < this.t()) {
+                  this.ci++;
                }
 
                btn $$3 = this.gn();
@@ -228,19 +228,19 @@ public class cjz extends ckd {
    }
 
    public float H(float $$0) {
-      return ayo.i($$0, this.cb, this.ca);
+      return ayo.i($$0, this.cd, this.cc);
    }
 
    public float I(float $$0) {
-      return ayo.i($$0, this.ce, this.cd);
+      return ayo.i($$0, this.cg, this.cf);
    }
 
    public float J(float $$0) {
-      return ((float)this.cg + $$0) / (float)this.t();
+      return ((float)this.ci + $$0) / (float)this.t();
    }
 
    public float go() {
-      return (float)this.cg;
+      return (float)this.ci;
    }
 
    @Override

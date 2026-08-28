@@ -6,10 +6,10 @@ public class cjp extends ckd implements bub {
    private static final ajw<Boolean> c = aka.a(cjp.class, ajy.k);
    private static final ajw<Boolean> d = aka.a(cjp.class, ajy.k);
    private int e;
-   private int ca;
-   private int cb = 30;
-   private int cc = 3;
-   private int cd;
+   private int cc;
+   private int cd = 30;
+   private int ce = 3;
+   private int cf;
 
    public cjp(bsx<? extends cjp> $$0, dcw $$1) {
       super($$0, $$1);
@@ -17,16 +17,16 @@ public class cjp extends ckd implements bub {
 
    @Override
    protected void B() {
-      this.bU.a(1, new cag(this));
-      this.bU.a(2, new cbt(this));
-      this.bU.a(3, new bzt<>(this, cfs.class, 6.0F, 1.0, 1.2));
-      this.bU.a(3, new bzt<>(this, cfh.class, 6.0F, 1.0, 1.2));
-      this.bU.a(4, new caw(this, 1.0, false));
-      this.bU.a(5, new cbz(this, 0.8));
-      this.bU.a(6, new cau(this, cmx.class, 8.0F));
-      this.bU.a(6, new cbh(this));
-      this.bV.a(1, new ccf<>(this, cmx.class, true));
-      this.bV.a(2, new cce(this));
+      this.bW.a(1, new cag(this));
+      this.bW.a(2, new cbt(this));
+      this.bW.a(3, new bzt<>(this, cfs.class, 6.0F, 1.0, 1.2));
+      this.bW.a(3, new bzt<>(this, cfh.class, 6.0F, 1.0, 1.2));
+      this.bW.a(4, new caw(this, 1.0, false));
+      this.bW.a(5, new cbz(this, 0.8));
+      this.bW.a(6, new cau(this, cmx.class, 8.0F));
+      this.bW.a(6, new cbh(this));
+      this.bX.a(1, new ccf<>(this, cmx.class, true));
+      this.bX.a(2, new cce(this));
    }
 
    public static buv.a s() {
@@ -41,9 +41,9 @@ public class cjp extends ckd implements bub {
    @Override
    public boolean a(float $$0, float $$1, brk $$2) {
       boolean $$3 = super.a($$0, $$1, $$2);
-      this.ca += (int)($$0 * 1.5F);
-      if (this.ca > this.cb - 5) {
-         this.ca = this.cb - 5;
+      this.cc += (int)($$0 * 1.5F);
+      if (this.cc > this.cd - 5) {
+         this.cc = this.cd - 5;
       }
 
       return $$3;
@@ -64,8 +64,8 @@ public class cjp extends ckd implements bub {
          $$0.a("powered", true);
       }
 
-      $$0.a("Fuse", (short)this.cb);
-      $$0.a("ExplosionRadius", (byte)this.cc);
+      $$0.a("Fuse", (short)this.cd);
+      $$0.a("ExplosionRadius", (byte)this.ce);
       $$0.a("ignited", this.x());
    }
 
@@ -74,11 +74,11 @@ public class cjp extends ckd implements bub {
       super.a($$0);
       this.ao.a(c, $$0.q("powered"));
       if ($$0.b("Fuse", 99)) {
-         this.cb = $$0.g("Fuse");
+         this.cd = $$0.g("Fuse");
       }
 
       if ($$0.b("ExplosionRadius", 99)) {
-         this.cc = $$0.f("ExplosionRadius");
+         this.ce = $$0.f("ExplosionRadius");
       }
 
       if ($$0.q("ignited")) {
@@ -89,24 +89,24 @@ public class cjp extends ckd implements bub {
    @Override
    public void l() {
       if (this.bE()) {
-         this.e = this.ca;
+         this.e = this.cc;
          if (this.x()) {
             this.b(1);
          }
 
          int $$0 = this.t();
-         if ($$0 > 0 && this.ca == 0) {
+         if ($$0 > 0 && this.cc == 0) {
             this.a(avp.gk, 1.0F, 0.5F);
             this.a(dxz.I);
          }
 
-         this.ca += $$0;
-         if (this.ca < 0) {
-            this.ca = 0;
+         this.cc += $$0;
+         if (this.cc < 0) {
+            this.cc = 0;
          }
 
-         if (this.ca >= this.cb) {
-            this.ca = this.cb;
+         if (this.cc >= this.cd) {
+            this.cc = this.cd;
             this.gn();
          }
       }
@@ -152,7 +152,7 @@ public class cjp extends ckd implements bub {
    }
 
    public float H(float $$0) {
-      return ayo.i($$0, (float)this.e, (float)this.ca) / (float)(this.cb - 2);
+      return ayo.i($$0, (float)this.e, (float)this.cc) / (float)(this.cd - 2);
    }
 
    public int t() {
@@ -194,7 +194,7 @@ public class cjp extends ckd implements bub {
       if (!this.dO().B) {
          float $$0 = this.a() ? 2.0F : 1.0F;
          this.be = true;
-         this.dO().a(this, this.dt(), this.dv(), this.dz(), (float)this.cc * $$0, dcw.a.c);
+         this.dO().a(this, this.dt(), this.dv(), this.dz(), (float)this.ce * $$0, dcw.a.c);
          this.go();
          this.c(bsr.c.a);
          this.aq();
@@ -228,10 +228,10 @@ public class cjp extends ckd implements bub {
    }
 
    public boolean gl() {
-      return this.a() && this.cd < 1;
+      return this.a() && this.cf < 1;
    }
 
    public void gm() {
-      this.cd++;
+      this.cf++;
    }
 }

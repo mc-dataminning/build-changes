@@ -26,7 +26,7 @@ public class aqt {
    private int l;
    private int m;
    private int n;
-   private exc o = exc.b;
+   private exc o;
    private int p;
    private int q;
    private List<bsr> r = Collections.emptyList();
@@ -242,8 +242,8 @@ public class aqt {
          $$1.accept(new afg(this.g.dc()));
       }
 
-      if (this.g instanceof btp $$8 && $$8.N_()) {
-         $$1.accept(new afa($$8, $$8.A()));
+      if (this.g instanceof btk $$8 && $$8.N_()) {
+         $$1.accept(new afa(this.g, $$8.A()));
       }
    }
 
@@ -256,15 +256,15 @@ public class aqt {
    }
 
    public float d() {
-      return (float)this.m;
+      return (float)(this.m * 360) / 256.0F;
    }
 
    public float e() {
-      return (float)this.l;
+      return (float)(this.l * 360) / 256.0F;
    }
 
    public float f() {
-      return (float)this.n;
+      return (float)(this.n * 360) / 256.0F;
    }
 
    private void g() {

@@ -341,7 +341,7 @@ public class gvc {
                            CompletableFuture<guu.a> $$16 = this.t.a($$3.g() ? ezf.c.b : ezf.c.a);
                            guu.a $$17 = $$16.join();
                            if ($$17 == null) {
-                              if (ab.aU) {
+                              if (ab.aV) {
                                  e.warn("Failed to create new sound handle");
                               }
                            } else {

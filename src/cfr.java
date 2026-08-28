@@ -3,13 +3,13 @@ import java.util.UUID;
 import javax.annotation.Nullable;
 
 public class cfr extends cfl implements buf, buo<cfr.a> {
-   private static final ajw<String> ca = aka.a(cfr.class, ajy.e);
-   private static final int cb = 1024;
-   private static final String cc = "stew_effects";
+   private static final ajw<String> cc = aka.a(cfr.class, ajy.e);
+   private static final int cd = 1024;
+   private static final String ce = "stew_effects";
    @Nullable
-   private cxw ce;
+   private cxw cg;
    @Nullable
-   private UUID cf;
+   private UUID ch;
 
    public cfr(bsx<? extends cfr> $$0, dcw $$1) {
       super($$0, $$1);
@@ -27,9 +27,9 @@ public class cfr extends cfl implements buf, buo<cfr.a> {
    @Override
    public void a(aqu $$0, btm $$1) {
       UUID $$2 = $$1.cz();
-      if (!$$2.equals(this.cf)) {
+      if (!$$2.equals(this.ch)) {
          this.a(this.t() == cfr.a.a ? cfr.a.b : cfr.a.a);
-         this.cf = $$2;
+         this.ch = $$2;
          this.a(avp.oO, 2.0F, 1.0F);
       }
    }
@@ -37,7 +37,7 @@ public class cfr extends cfl implements buf, buo<cfr.a> {
    @Override
    protected void a(aka.a $$0) {
       super.a($$0);
-      $$0.a(ca, cfr.a.a.d);
+      $$0.a(cc, cfr.a.a.d);
    }
 
    @Override
@@ -46,11 +46,11 @@ public class cfr extends cfl implements buf, buo<cfr.a> {
       if ($$2.a(cut.ot) && !this.o_()) {
          boolean $$3 = false;
          cuq $$4;
-         if (this.ce != null) {
+         if (this.cg != null) {
             $$3 = true;
             $$4 = new cuq(cut.vX);
-            $$4.b(kq.H, this.ce);
-            this.ce = null;
+            $$4.b(kq.H, this.cg);
+            this.cg = null;
          } else {
             $$4 = new cuq(cut.pr);
          }
@@ -75,7 +75,7 @@ public class cfr extends cfl implements buf, buo<cfr.a> {
 
          return bqr.a(this.dO().B);
       } else if (this.t() == cfr.a.b && $$2.a(awn.O)) {
-         if (this.ce != null) {
+         if (this.cg != null) {
             for (int $$9 = 0; $$9 < 2; $$9++) {
                this.dO().a(lm.ae, this.dt() + this.ah.j() / 2.0, this.e(0.5), this.dz() + this.ah.j() / 2.0, 0.0, this.ah.j() / 5.0, 0.0);
             }
@@ -91,7 +91,7 @@ public class cfr extends cfl implements buf, buo<cfr.a> {
                this.dO().a(lm.p, this.dt() + this.ah.j() / 2.0, this.e(0.5), this.dz() + this.ah.j() / 2.0, 0.0, this.ah.j() / 5.0, 0.0);
             }
 
-            this.ce = $$10.get();
+            this.cg = $$10.get();
             this.a(avp.oP, 2.0F, 1.0F);
          }
 
@@ -140,8 +140,8 @@ public class cfr extends cfl implements buf, buo<cfr.a> {
    public void b(ub $$0) {
       super.b($$0);
       $$0.a("Type", this.t().c());
-      if (this.ce != null) {
-         cxw.b.encodeStart(up.a, this.ce).ifSuccess($$1 -> $$0.a("stew_effects", $$1));
+      if (this.cg != null) {
+         cxw.b.encodeStart(up.a, this.cg).ifSuccess($$1 -> $$0.a("stew_effects", $$1));
       }
    }
 
@@ -150,7 +150,7 @@ public class cfr extends cfl implements buf, buo<cfr.a> {
       super.a($$0);
       this.a(cfr.a.a($$0.l("Type")));
       if ($$0.b("stew_effects", 9)) {
-         cxw.b.parse(up.a, $$0.c("stew_effects")).ifSuccess($$0x -> this.ce = $$0x);
+         cxw.b.parse(up.a, $$0.c("stew_effects")).ifSuccess($$0x -> this.cg = $$0x);
       }
    }
 
@@ -160,11 +160,11 @@ public class cfr extends cfl implements buf, buo<cfr.a> {
    }
 
    public void a(cfr.a $$0) {
-      this.ao.a(ca, $$0.d);
+      this.ao.a(cc, $$0.d);
    }
 
    public cfr.a t() {
-      return cfr.a.a(this.ao.a(ca));
+      return cfr.a.a(this.ao.a(cc));
    }
 
    @Nullable

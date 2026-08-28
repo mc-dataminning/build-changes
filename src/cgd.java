@@ -3,27 +3,27 @@ public class cgd extends cgg {
    public float c;
    public float d;
    public float e;
-   public float ca;
-   public float cb;
    public float cc;
    public float cd;
-   private float ce;
-   private float cf;
+   public float ce;
+   public float cf;
    private float cg;
    private float ch;
    private float ci;
    private float cj;
+   private float ck;
+   private float cl;
 
    public cgd(bsx<? extends cgd> $$0, dcw $$1) {
       super($$0, $$1);
       this.ah.b((long)this.an());
-      this.cf = 1.0F / (this.ah.i() + 1.0F) * 0.2F;
+      this.ch = 1.0F / (this.ah.i() + 1.0F) * 0.2F;
    }
 
    @Override
    protected void B() {
-      this.bU.a(0, new cgd.b(this));
-      this.bU.a(1, new cgd.a());
+      this.bW.a(0, new cgd.b(this));
+      this.bW.a(1, new cgd.a());
    }
 
    public static buv.a gk() {
@@ -74,16 +74,16 @@ public class cgd extends cgg {
       super.m_();
       this.c = this.b;
       this.e = this.d;
-      this.cb = this.ca;
       this.cd = this.cc;
-      this.ca = this.ca + this.cf;
-      if ((double)this.ca > Math.PI * 2) {
+      this.cf = this.ce;
+      this.cc = this.cc + this.ch;
+      if ((double)this.cc > Math.PI * 2) {
          if (this.dO().B) {
-            this.ca = (float) (Math.PI * 2);
+            this.cc = (float) (Math.PI * 2);
          } else {
-            this.ca -= (float) (Math.PI * 2);
+            this.cc -= (float) (Math.PI * 2);
             if (this.ah.a(10) == 0) {
-               this.cf = 1.0F / (this.ah.i() + 1.0F) * 0.2F;
+               this.ch = 1.0F / (this.ah.i() + 1.0F) * 0.2F;
             }
 
             this.dO().a(this, (byte)19);
@@ -91,33 +91,33 @@ public class cgd extends cgg {
       }
 
       if (this.bi()) {
-         if (this.ca < (float) Math.PI) {
-            float $$0 = this.ca / (float) Math.PI;
-            this.cc = ayo.a($$0 * $$0 * (float) Math.PI) * (float) Math.PI * 0.25F;
+         if (this.cc < (float) Math.PI) {
+            float $$0 = this.cc / (float) Math.PI;
+            this.ce = ayo.a($$0 * $$0 * (float) Math.PI) * (float) Math.PI * 0.25F;
             if ((double)$$0 > 0.75) {
-               this.ce = 1.0F;
                this.cg = 1.0F;
+               this.ci = 1.0F;
             } else {
-               this.cg *= 0.8F;
+               this.ci *= 0.8F;
             }
          } else {
-            this.cc = 0.0F;
-            this.ce *= 0.9F;
-            this.cg *= 0.99F;
+            this.ce = 0.0F;
+            this.cg *= 0.9F;
+            this.ci *= 0.99F;
          }
 
          if (!this.dO().B) {
-            this.n((double)(this.ch * this.ce), (double)(this.ci * this.ce), (double)(this.cj * this.ce));
+            this.n((double)(this.cj * this.cg), (double)(this.ck * this.cg), (double)(this.cl * this.cg));
          }
 
          exc $$1 = this.dr();
          double $$2 = $$1.h();
          this.aY = this.aY + (-((float)ayo.d($$1.c, $$1.e)) * (180.0F / (float)Math.PI) - this.aY) * 0.1F;
          this.t(this.aY);
-         this.d = this.d + (float) Math.PI * this.cg * 1.5F;
+         this.d = this.d + (float) Math.PI * this.ci * 1.5F;
          this.b = this.b + (-((float)ayo.d($$2, $$1.d)) * (180.0F / (float)Math.PI) - this.b) * 0.1F;
       } else {
-         this.cc = ayo.e(ayo.a(this.ca)) * (float) Math.PI * 0.25F;
+         this.ce = ayo.e(ayo.a(this.cc)) * (float) Math.PI * 0.25F;
          if (!this.dO().B) {
             double $$3 = this.dr().d;
             if (this.b(bsb.y)) {
@@ -174,20 +174,20 @@ public class cgd extends cgg {
    @Override
    public void b(byte $$0) {
       if ($$0 == 19) {
-         this.ca = 0.0F;
+         this.cc = 0.0F;
       } else {
          super.b($$0);
       }
    }
 
    public void a(float $$0, float $$1, float $$2) {
-      this.ch = $$0;
-      this.ci = $$1;
-      this.cj = $$2;
+      this.cj = $$0;
+      this.ck = $$1;
+      this.cl = $$2;
    }
 
    public boolean gl() {
-      return this.ch != 0.0F || this.ci != 0.0F || this.cj != 0.0F;
+      return this.cj != 0.0F || this.ck != 0.0F || this.cl != 0.0F;
    }
 
    class a extends cam {

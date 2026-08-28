@@ -257,7 +257,6 @@ public class geu {
       $$0.put(dga.sx, $$3);
       $$0.put(dga.sz, $$3);
       $$0.put(dga.sy, $$3);
-      $$0.put(dga.sA, $$3);
       $$0.put(dga.sB, $$3);
       $$0.put(dga.sD, $$3);
       $$0.put(dga.sE, $$3);

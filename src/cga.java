@@ -6,9 +6,9 @@ import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
 public class cga extends cfe implements buf {
-   private static final int ca = 40;
-   private static final ajw<Byte> cb = aka.a(cga.class, ajy.a);
-   private static final Map<cti, dcv> cc = ad.a(Maps.newEnumMap(cti.class), $$0 -> {
+   private static final int cc = 40;
+   private static final ajw<Byte> cd = aka.a(cga.class, ajy.a);
+   private static final Map<cti, dcv> ce = ad.a(Maps.newEnumMap(cti.class), $$0 -> {
       $$0.put(cti.a, dga.bA);
       $$0.put(cti.b, dga.bB);
       $$0.put(cti.c, dga.bC);
@@ -26,9 +26,9 @@ public class cga extends cfe implements buf {
       $$0.put(cti.o, dga.bO);
       $$0.put(cti.p, dga.bP);
    });
-   private static final Map<cti, Integer> ce = Maps.newEnumMap(Arrays.stream(cti.values()).collect(Collectors.toMap($$0 -> (cti)$$0, cga::c)));
-   private int cf;
-   private cae cg;
+   private static final Map<cti, Integer> cg = Maps.newEnumMap(Arrays.stream(cti.values()).collect(Collectors.toMap($$0 -> (cti)$$0, cga::c)));
+   private int ch;
+   private cae ci;
 
    private static int c(cti $$0) {
       if ($$0 == cti.a) {
@@ -41,7 +41,7 @@ public class cga extends cfe implements buf {
    }
 
    public static int a(cti $$0) {
-      return ce.get($$0);
+      return cg.get($$0);
    }
 
    public cga(bsx<? extends cga> $$0, dcw $$1) {
@@ -50,16 +50,16 @@ public class cga extends cfe implements buf {
 
    @Override
    protected void B() {
-      this.cg = new cae(this);
-      this.bU.a(0, new cag(this));
-      this.bU.a(1, new cbf(this, 1.25));
-      this.bU.a(2, new bzy(this, 1.0));
-      this.bU.a(3, new cbu(this, 1.1, $$0 -> $$0.a(awn.ac), false));
-      this.bU.a(4, new cal(this, 1.1));
-      this.bU.a(5, this.cg);
-      this.bU.a(6, new cbz(this, 1.0));
-      this.bU.a(7, new cau(this, cmx.class, 6.0F));
-      this.bU.a(8, new cbh(this));
+      this.ci = new cae(this);
+      this.bW.a(0, new cag(this));
+      this.bW.a(1, new cbf(this, 1.25));
+      this.bW.a(2, new bzy(this, 1.0));
+      this.bW.a(3, new cbu(this, 1.1, $$0 -> $$0.a(awn.ac), false));
+      this.bW.a(4, new cal(this, 1.1));
+      this.bW.a(5, this.ci);
+      this.bW.a(6, new cbz(this, 1.0));
+      this.bW.a(7, new cau(this, cmx.class, 6.0F));
+      this.bW.a(8, new cbh(this));
    }
 
    @Override
@@ -69,14 +69,14 @@ public class cga extends cfe implements buf {
 
    @Override
    protected void ab() {
-      this.cf = this.cg.h();
+      this.ch = this.ci.h();
       super.ab();
    }
 
    @Override
    public void m_() {
       if (this.dO().B) {
-         this.cf = Math.max(0, this.cf - 1);
+         this.ch = Math.max(0, this.ch - 1);
       }
 
       super.m_();
@@ -89,7 +89,7 @@ public class cga extends cfe implements buf {
    @Override
    protected void a(aka.a $$0) {
       super.a($$0);
-      $$0.a(cb, (byte)0);
+      $$0.a(cd, (byte)0);
    }
 
    @Override
@@ -121,28 +121,28 @@ public class cga extends cfe implements buf {
    @Override
    public void b(byte $$0) {
       if ($$0 == 10) {
-         this.cf = 40;
+         this.ch = 40;
       } else {
          super.b($$0);
       }
    }
 
    public float H(float $$0) {
-      if (this.cf <= 0) {
+      if (this.ch <= 0) {
          return 0.0F;
-      } else if (this.cf >= 4 && this.cf <= 36) {
+      } else if (this.ch >= 4 && this.ch <= 36) {
          return 1.0F;
       } else {
-         return this.cf < 4 ? ((float)this.cf - $$0) / 4.0F : -((float)(this.cf - 40) - $$0) / 4.0F;
+         return this.ch < 4 ? ((float)this.ch - $$0) / 4.0F : -((float)(this.ch - 40) - $$0) / 4.0F;
       }
    }
 
    public float I(float $$0) {
-      if (this.cf > 4 && this.cf <= 36) {
-         float $$1 = ((float)(this.cf - 4) - $$0) / 32.0F;
+      if (this.ch > 4 && this.ch <= 36) {
+         float $$1 = ((float)(this.ch - 4) - $$0) / 32.0F;
          return (float) (Math.PI / 5) + 0.21991149F * ayo.a($$1 * 28.7F);
       } else {
-         return this.cf > 0 ? (float) (Math.PI / 5) : this.dG() * (float) (Math.PI / 180.0);
+         return this.ch > 0 ? (float) (Math.PI / 5) : this.dG() * (float) (Math.PI / 180.0);
       }
    }
 
@@ -170,7 +170,7 @@ public class cga extends cfe implements buf {
       int $$1 = 1 + this.ah.a(3);
 
       for (int $$2 = 0; $$2 < $$1; $$2++) {
-         cjh $$3 = this.a(cc.get(this.t()), 1);
+         cjh $$3 = this.a(ce.get(this.t()), 1);
          if ($$3 != null) {
             $$3.i($$3.dr().b((double)((this.ah.i() - this.ah.i()) * 0.1F), (double)(this.ah.i() * 0.05F), (double)((this.ah.i() - this.ah.i()) * 0.1F)));
          }
@@ -217,24 +217,24 @@ public class cga extends cfe implements buf {
    }
 
    public cti t() {
-      return cti.a(this.ao.a(cb) & 15);
+      return cti.a(this.ao.a(cd) & 15);
    }
 
    public void b(cti $$0) {
-      byte $$1 = this.ao.a(cb);
-      this.ao.a(cb, (byte)($$1 & 240 | $$0.a() & 15));
+      byte $$1 = this.ao.a(cd);
+      this.ao.a(cd, (byte)($$1 & 240 | $$0.a() & 15));
    }
 
    public boolean x() {
-      return (this.ao.a(cb) & 16) != 0;
+      return (this.ao.a(cd) & 16) != 0;
    }
 
    public void x(boolean $$0) {
-      byte $$1 = this.ao.a(cb);
+      byte $$1 = this.ao.a(cd);
       if ($$0) {
-         this.ao.a(cb, (byte)($$1 | 16));
+         this.ao.a(cd, (byte)($$1 | 16));
       } else {
-         this.ao.a(cb, (byte)($$1 & -17));
+         this.ao.a(cd, (byte)($$1 & -17));
       }
    }
 

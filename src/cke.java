@@ -15,7 +15,7 @@ public abstract class cke extends ckd {
    @Override
    protected void B() {
       super.B();
-      this.bU.a(4, new cke.a<>(this, 0.7, 0.595));
+      this.bW.a(4, new cke.a<>(this, 0.7, 0.595));
    }
 
    @Override

@@ -10,15 +10,15 @@ import org.slf4j.Logger;
 
 public class cgk extends btw implements cmi, dyi {
    private static final Logger e = LogUtils.getLogger();
-   private static final kh ca = new kh(1, 1, 1);
-   private static final int cb = 5;
-   private static final float cc = 55.0F;
-   private static final float cd = 15.0F;
-   private static final cyw ce = cyw.a(cut.oD);
-   private static final int cf = 6000;
-   private static final int cg = 3;
-   private static final ajw<Boolean> ch = aka.a(cgk.class, ajy.k);
-   private static final ajw<Boolean> ci = aka.a(cgk.class, ajy.k);
+   private static final kh cc = new kh(1, 1, 1);
+   private static final int cd = 5;
+   private static final float ce = 55.0F;
+   private static final float cf = 15.0F;
+   private static final cyw cg = cyw.a(cut.oD);
+   private static final int ch = 6000;
+   private static final int ci = 3;
+   private static final ajw<Boolean> cj = aka.a(cgk.class, ajy.k);
+   private static final ajw<Boolean> ck = aka.a(cgk.class, ajy.k);
    protected static final ImmutableList<cdz<? extends cdy<? super cgk>>> b = ImmutableList.of(cdz.c, cdz.d, cdz.f, cdz.b);
    protected static final ImmutableList<ccs<?>> c = ImmutableList.of(
       ccs.t, ccs.n, ccs.h, ccs.m, ccs.E, ccs.x, ccs.L, ccs.aM, ccs.aN, ccs.aO, ccs.aP, ccs.Z, new ccs[0]
@@ -26,28 +26,28 @@ public class cgk extends btw implements cmi, dyi {
    public static final ImmutableList<Float> d = ImmutableList.of(
       0.5625F, 0.625F, 0.75F, 0.9375F, 1.0F, 1.0F, 1.125F, 1.25F, 1.5F, 1.875F, 2.0F, 2.25F, new Float[]{2.5F, 3.0F, 3.75F, 4.0F}
    );
-   private final dxw<dyi.b> cj;
-   private dyi.a ck;
-   private final dyi.d cl;
-   private final dxw<cgk.a> cm;
-   private final bra cn = new bra(1);
+   private final dxw<dyi.b> cl;
+   private dyi.a cm;
+   private final dyi.d cn;
+   private final dxw<cgk.a> co;
+   private final bra cp = new bra(1);
    @Nullable
-   private jd co;
-   private long cp;
-   private float cq;
-   private float cr;
+   private jd cq;
+   private long cr;
    private float cs;
    private float ct;
    private float cu;
+   private float cv;
+   private float cw;
 
    public cgk(bsx<? extends cgk> $$0, dcw $$1) {
       super($$0, $$1);
-      this.bR = new bzm(this, 20, true);
+      this.bT = new bzm(this, 20, true);
       this.a_(this.fS());
-      this.cl = new cgk.b();
-      this.ck = new dyi.a();
-      this.cj = new dxw<>(new dyi.b(this));
-      this.cm = new dxw<>(new cgk.a(this.cl.b(), dxz.E.a().a()));
+      this.cn = new cgk.b();
+      this.cm = new dyi.a();
+      this.cl = new dxw<>(new dyi.b(this));
+      this.co = new dxw<>(new cgk.a(this.cn.b(), dxz.E.a().a()));
    }
 
    @Override
@@ -81,8 +81,8 @@ public class cgk extends btw implements cmi, dyi {
    @Override
    protected void a(aka.a $$0) {
       super.a($$0);
-      $$0.a(ch, false);
-      $$0.a(ci, true);
+      $$0.a(cj, false);
+      $$0.a(ck, true);
    }
 
    @Override
@@ -166,7 +166,7 @@ public class cgk extends btw implements cmi, dyi {
 
       if (this.gk() && this.gp() && this.ai % 20 == 0) {
          this.x(false);
-         this.co = null;
+         this.cq = null;
       }
 
       this.gq();
@@ -176,30 +176,30 @@ public class cgk extends btw implements cmi, dyi {
    public void l() {
       super.l();
       if (this.dO().B) {
-         this.cr = this.cq;
+         this.ct = this.cs;
          if (this.t()) {
-            this.cq = ayo.a(this.cq + 1.0F, 0.0F, 5.0F);
+            this.cs = ayo.a(this.cs + 1.0F, 0.0F, 5.0F);
          } else {
-            this.cq = ayo.a(this.cq - 1.0F, 0.0F, 5.0F);
+            this.cs = ayo.a(this.cs - 1.0F, 0.0F, 5.0F);
          }
 
          if (this.gk()) {
-            this.cs++;
-            this.cu = this.ct;
+            this.cu++;
+            this.cw = this.cv;
             if (this.gl()) {
-               this.ct++;
+               this.cv++;
             } else {
-               this.ct--;
+               this.cv--;
             }
 
-            this.ct = ayo.a(this.ct, 0.0F, 15.0F);
+            this.cv = ayo.a(this.cv, 0.0F, 15.0F);
          } else {
-            this.cs = 0.0F;
-            this.ct = 0.0F;
             this.cu = 0.0F;
+            this.cv = 0.0F;
+            this.cw = 0.0F;
          }
       } else {
-         dyi.c.a(this.dO(), this.ck, this.cl);
+         dyi.c.a(this.dO(), this.cm, this.cn);
          if (this.gh()) {
             this.x(false);
          }
@@ -261,29 +261,29 @@ public class cgk extends btw implements cmi, dyi {
    public void b(jd $$0, boolean $$1) {
       if ($$1) {
          if (!this.gk()) {
-            this.co = $$0;
+            this.cq = $$0;
             this.x(true);
          }
-      } else if ($$0.equals(this.co) || this.co == null) {
-         this.co = null;
+      } else if ($$0.equals(this.cq) || this.cq == null) {
+         this.cq = null;
          this.x(false);
       }
    }
 
    @Override
    public bra x() {
-      return this.cn;
+      return this.cp;
    }
 
    @Override
    protected kh X() {
-      return ca;
+      return cc;
    }
 
    @Override
    public boolean k(cuq $$0) {
       cuq $$1 = this.b(bqq.a);
-      return !$$1.e() && this.dO().ab().b(dcs.c) && this.cn.c($$0) && this.d($$1, $$0);
+      return !$$1.e() && this.dO().ab().b(dcs.c) && this.cp.c($$0) && this.d($$1, $$0);
    }
 
    private boolean d(cuq $$0, cuq $$1) {
@@ -315,36 +315,36 @@ public class cgk extends btw implements cmi, dyi {
    @Override
    public void a(BiConsumer<dxw<?>, aqu> $$0) {
       if (this.dO() instanceof aqu $$1) {
-         $$0.accept(this.cj, $$1);
-         $$0.accept(this.cm, $$1);
+         $$0.accept(this.cl, $$1);
+         $$0.accept(this.co, $$1);
       }
    }
 
    public boolean gk() {
-      return this.ao.a(ch);
+      return this.ao.a(cj);
    }
 
    public void x(boolean $$0) {
       if (!this.dO().B && this.db() && (!$$0 || !this.gh())) {
-         this.ao.a(ch, $$0);
+         this.ao.a(cj, $$0);
       }
    }
 
    private boolean gp() {
-      return this.co == null || !this.co.a(this.dm(), (double)dxz.E.a().a()) || !this.dO().a_(this.co).a(dga.dT);
+      return this.cq == null || !this.cq.a(this.dm(), (double)dxz.E.a().a()) || !this.dO().a_(this.cq).a(dga.dT);
    }
 
    public float H(float $$0) {
-      return ayo.i($$0, this.cr, this.cq) / 5.0F;
+      return ayo.i($$0, this.ct, this.cs) / 5.0F;
    }
 
    public boolean gl() {
-      float $$0 = this.cs % 55.0F;
+      float $$0 = this.cu % 55.0F;
       return $$0 < 15.0F;
    }
 
    public float I(float $$0) {
-      return ayo.i($$0, this.cu, this.ct) / 15.0F;
+      return ayo.i($$0, this.cw, this.cv) / 15.0F;
    }
 
    @Override
@@ -355,7 +355,7 @@ public class cgk extends btw implements cmi, dyi {
    @Override
    protected void ez() {
       super.ez();
-      this.cn.f().forEach(this::b);
+      this.cp.f().forEach(this::b);
       cuq $$0 = this.a(bsy.a);
       if (!$$0.e() && !dae.a($$0, dad.D)) {
          this.b($$0);
@@ -374,10 +374,10 @@ public class cgk extends btw implements cmi, dyi {
       this.b($$0, this.dQ());
       akp<uy> $$1 = this.dQ().a(up.a);
       dyi.a.a
-         .encodeStart($$1, this.ck)
+         .encodeStart($$1, this.cm)
          .resultOrPartial($$0x -> e.error("Failed to encode vibration listener for Allay: '{}'", $$0x))
          .ifPresent($$1x -> $$0.a("listener", $$1x));
-      $$0.a("DuplicationCooldown", this.cp);
+      $$0.a("DuplicationCooldown", this.cr);
       $$0.a("CanDuplicate", this.gt());
    }
 
@@ -390,11 +390,11 @@ public class cgk extends btw implements cmi, dyi {
          dyi.a.a
             .parse($$1, $$0.p("listener"))
             .resultOrPartial($$0x -> e.error("Failed to parse vibration listener for Allay: '{}'", $$0x))
-            .ifPresent($$0x -> this.ck = $$0x);
+            .ifPresent($$0x -> this.cm = $$0x);
       }
 
-      this.cp = (long)$$0.h("DuplicationCooldown");
-      this.ao.a(ci, $$0.q("CanDuplicate"));
+      this.cr = (long)$$0.h("DuplicationCooldown");
+      this.ao.a(ck, $$0.q("CanDuplicate"));
    }
 
    @Override
@@ -403,17 +403,17 @@ public class cgk extends btw implements cmi, dyi {
    }
 
    private void gq() {
-      if (this.cp > 0L) {
-         this.cp--;
+      if (this.cr > 0L) {
+         this.cr--;
       }
 
-      if (!this.dO().x_() && this.cp == 0L && !this.gt()) {
-         this.ao.a(ci, true);
+      if (!this.dO().x_() && this.cr == 0L && !this.gt()) {
+         this.ao.a(ck, true);
       }
    }
 
    private boolean n(cuq $$0) {
-      return ce.a($$0);
+      return cg.a($$0);
    }
 
    private void gr() {
@@ -428,12 +428,12 @@ public class cgk extends btw implements cmi, dyi {
    }
 
    private void gs() {
-      this.cp = 6000L;
-      this.ao.a(ci, false);
+      this.cr = 6000L;
+      this.ao.a(ck, false);
    }
 
    private boolean gt() {
-      return this.ao.a(ci);
+      return this.ao.a(ck);
    }
 
    private void a(cmx $$0, cuq $$1) {
@@ -465,12 +465,12 @@ public class cgk extends btw implements cmi, dyi {
 
    @Override
    public dyi.a gm() {
-      return this.ck;
+      return this.cm;
    }
 
    @Override
    public dyi.d gn() {
-      return this.cl;
+      return this.cn;
    }
 
    class a implements dyb {

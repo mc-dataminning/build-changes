@@ -73,8 +73,8 @@ public class fui extends fue<cgn> {
       }
 
       this.a(fhg.b, $$1, $$2, 16.5F, 2.5F);
-      this.a($$0.ce, fhg.d, $$3, 1.0F);
-      this.a($$0.cf, fhg.a, $$3, 1.0F);
-      this.a($$0.cg, fhg.c, $$3, 1.0F);
+      this.a($$0.cg, fhg.d, $$3, 1.0F);
+      this.a($$0.ch, fhg.a, $$3, 1.0F);
+      this.a($$0.ci, fhg.c, $$3, 1.0F);
    }
 }

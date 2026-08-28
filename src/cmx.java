@@ -66,13 +66,13 @@ public abstract class cmx extends btn {
    public double co;
    private int cz;
    protected boolean cp;
-   private final cmu cB = new cmu();
+   private final cmu cA = new cmu();
    public int cq;
    public int cr;
    public float cs;
    protected int ct;
    protected final float cu = 0.02F;
-   private int cC;
+   private int cB;
    private final GameProfile cD;
    private boolean cE;
    private cuq cF = cuq.l;
@@ -290,7 +290,7 @@ public abstract class cmx extends btn {
             $$0 = bua.d;
          } else if (this.fn()) {
             $$0 = bua.e;
-         } else if (this.bW() && !this.cB.b) {
+         } else if (this.bW() && !this.cA.b) {
             $$0 = bua.f;
          } else {
             $$0 = bua.a;
@@ -449,7 +449,7 @@ public abstract class cmx extends btn {
 
       this.c(this.gp());
       this.c(this.gq());
-      if (!this.dO().B && (this.ac > 0.5F || this.bf()) || this.cB.b || this.fH() || this.az) {
+      if (!this.dO().B && (this.ac > 0.5F || this.bf()) || this.cA.b || this.fH() || this.az) {
          this.gm();
       }
    }
@@ -650,8 +650,8 @@ public abstract class cmx extends btn {
 
       this.r($$0.h("Score"));
       this.ce.a($$0);
-      this.cB.b($$0);
-      this.f(buw.v).a((double)this.cB.b());
+      this.cA.b($$0);
+      this.f(buw.v).a((double)this.cA.b());
       if ($$0.b("EnderItems", 9)) {
          this.cb.a($$0.c("EnderItems", 10), this.dQ());
       }
@@ -689,7 +689,7 @@ public abstract class cmx extends btn {
       $$0.a("XpSeed", this.ct);
       $$0.a("Score", this.fS());
       this.ce.b($$0);
-      this.cB.a($$0);
+      this.cA.a($$0);
       $$0.a("EnderItems", this.cb.a(this.dQ()));
       if (!this.gp().g()) {
          $$0.a("ShoulderEntityLeft", this.gp());
@@ -727,7 +727,7 @@ public abstract class cmx extends btn {
    public boolean a(brk $$0, float $$1) {
       if (this.b($$0)) {
          return false;
-      } else if (this.cB.a && !$$0.a(awg.d)) {
+      } else if (this.cA.a && !$$0.a(awg.d)) {
          return false;
       } else {
          this.bf = 0;
@@ -884,21 +884,21 @@ public abstract class cmx extends btn {
          cuq $$3 = $$2.s();
          bqr $$4 = $$0.a(this, $$1);
          if ($$4.a()) {
-            if (this.cB.d && $$2 == this.b($$1) && $$2.H() < $$3.H()) {
+            if (this.cA.d && $$2 == this.b($$1) && $$2.H() < $$3.H()) {
                $$2.e($$3.H());
             }
 
             return $$4;
          } else {
             if (!$$2.e() && $$0 instanceof btn) {
-               if (this.cB.d) {
+               if (this.cA.d) {
                   $$2 = $$3;
                }
 
                bqr $$5 = $$2.a(this, (btn)$$0, $$1);
                if ($$5.a()) {
                   this.dO().a(dxz.r, $$0.dm(), dxz.a.a(this));
-                  if ($$2.e() && !this.cB.d) {
+                  if ($$2.e() && !this.cA.d) {
                      this.a($$1, cuq.l);
                   }
 
@@ -924,13 +924,13 @@ public abstract class cmx extends btn {
 
    @Override
    public boolean ec() {
-      return !this.cB.b;
+      return !this.cA.b;
    }
 
    @Override
    protected exc a(exc $$0, bts $$1) {
       float $$2 = this.dI();
-      if (!this.cB.b && !($$0.d > 0.0) && ($$1 == bts.a || $$1 == bts.b) && this.fP() && this.G($$2)) {
+      if (!this.cA.b && !($$0.d > 0.0) && ($$1 == bts.a || $$1 == bts.b) && this.fP() && this.G($$2)) {
          double $$3 = $$0.c;
          double $$4 = $$0.e;
          double $$5 = 0.05;
@@ -1200,12 +1200,12 @@ public abstract class cmx extends btn {
    }
 
    public cmu fZ() {
-      return this.cB;
+      return this.cA;
    }
 
    @Override
    public boolean fL() {
-      return this.cB.d;
+      return this.cA.d;
    }
 
    public void a(cuq $$0, cuq $$1, cqd $$2) {
@@ -1300,7 +1300,7 @@ public abstract class cmx extends btn {
          }
       }
 
-      if (this.cB.b && !this.bS()) {
+      if (this.cA.b && !this.bS()) {
          double $$4 = this.dr().d;
          super.a($$0);
          exc $$5 = this.dr();
@@ -1314,7 +1314,7 @@ public abstract class cmx extends btn {
 
    @Override
    public void bl() {
-      if (this.cB.b) {
+      if (this.cA.b) {
          this.i(false);
       } else {
          super.bl();
@@ -1332,20 +1332,31 @@ public abstract class cmx extends btn {
 
    @Override
    public boolean a(float $$0, float $$1, brk $$2) {
-      if (this.cB.c) {
+      if (this.cA.c) {
          return false;
       } else {
          if ($$0 >= 2.0F) {
             this.a(avz.t, (int)Math.round((double)$$0 * 100.0));
          }
 
+         boolean $$4;
          if (this.cI && this.cx != null) {
             double $$3 = this.cx.d;
-            this.gA();
-            return $$3 < this.dv() ? false : super.a((float)($$3 - this.dv()), $$1, $$2);
+            this.gB();
+            if ($$3 < this.dv()) {
+               return false;
+            }
+
+            $$4 = super.a((float)($$3 - this.dv()), $$1, $$2);
          } else {
-            return super.a($$0, $$1, $$2);
+            $$4 = super.a($$0, $$1, $$2);
          }
+
+         if ($$4) {
+            this.gC();
+         }
+
+         return $$4;
       }
    }
 
@@ -1410,11 +1421,11 @@ public abstract class cmx extends btn {
 
    @Override
    public void a(dtc $$0, exc $$1) {
-      if (!this.cB.b) {
+      if (!this.cA.b) {
          super.a($$0, $$1);
       }
 
-      this.gA();
+      this.gB();
    }
 
    public void d(int $$0) {
@@ -1464,10 +1475,10 @@ public abstract class cmx extends btn {
          this.cr = 0;
       }
 
-      if ($$0 > 0 && this.cq % 5 == 0 && (float)this.cC < (float)this.ai - 100.0F) {
+      if ($$0 > 0 && this.cq % 5 == 0 && (float)this.cB < (float)this.ai - 100.0F) {
          float $$1 = this.cq > 30 ? 1.0F : (float)this.cq / 30.0F;
          this.dO().a(null, this.dt(), this.dv(), this.dz(), avp.uq, this.de(), $$1 * 0.75F, 1.0F);
-         this.cC = this.ai;
+         this.cB = this.ai;
       }
    }
 
@@ -1480,7 +1491,7 @@ public abstract class cmx extends btn {
    }
 
    public void E(float $$0) {
-      if (!this.cB.a) {
+      if (!this.cA.a) {
          if (!this.dO().B) {
             this.ce.a($$0);
          }
@@ -1496,7 +1507,7 @@ public abstract class cmx extends btn {
    }
 
    public boolean u(boolean $$0) {
-      return this.cB.a || $$0 || this.ce.c();
+      return this.cA.a || $$0 || this.ce.c();
    }
 
    public boolean gj() {
@@ -1504,11 +1515,11 @@ public abstract class cmx extends btn {
    }
 
    public boolean gk() {
-      return this.cB.e;
+      return this.cA.e;
    }
 
    public boolean a(jd $$0, ji $$1, cuq $$2) {
-      if (this.cB.e) {
+      if (this.cA.e) {
          return true;
       } else {
          jd $$3 = $$0.a($$1.g());
@@ -1539,7 +1550,7 @@ public abstract class cmx extends btn {
 
    @Override
    protected bsr.b bc() {
-      return this.cB.b || this.aF() && this.bZ() ? bsr.b.a : bsr.b.d;
+      return this.cA.b || this.aF() && this.bZ() ? bsr.b.a : bsr.b.d;
    }
 
    public void z() {
@@ -1649,14 +1660,14 @@ public abstract class cmx extends btn {
 
    @Override
    public boolean cd() {
-      return !this.cB.b && !this.R_() && super.cd();
+      return !this.cA.b && !this.R_() && super.cd();
    }
 
    public abstract boolean f();
 
    @Override
    public boolean cC() {
-      return !this.cB.b;
+      return !this.cA.b;
    }
 
    public eyg gn() {
@@ -1743,7 +1754,7 @@ public abstract class cmx extends btn {
 
    @Override
    public void h(int $$0) {
-      super.h(this.cB.a ? Math.min($$0, 1) : $$0);
+      super.h(this.cA.a ? Math.min($$0, 1) : $$0);
    }
 
    @Override
@@ -1789,7 +1800,7 @@ public abstract class cmx extends btn {
 
    @Override
    protected float aO() {
-      return !this.cB.b && !this.fA() ? super.aO() : 1.0F;
+      return !this.cA.b && !this.fA() ? super.aO() : 1.0F;
    }
 
    public float gu() {
@@ -1797,7 +1808,7 @@ public abstract class cmx extends btn {
    }
 
    public boolean gv() {
-      return this.cB.d && this.G() >= 2;
+      return this.cA.d && this.G() >= 2;
    }
 
    @Override
@@ -1835,7 +1846,7 @@ public abstract class cmx extends btn {
                }
             }
 
-            return this.cB.d ? new cuq(cut.ow) : cuq.l;
+            return this.cA.d ? new cuq(cut.ow) : cuq.l;
          }
       }
    }
@@ -1933,8 +1944,8 @@ public abstract class cmx extends btn {
 
    @Override
    protected float fi() {
-      if (this.cB.b && !this.bS()) {
-         return this.cc() ? this.cB.a() * 2.0F : this.cB.a();
+      if (this.cA.b && !this.bS()) {
+         return this.cc() ? this.cA.a() * 2.0F : this.cA.a();
       } else {
          return this.cc() ? 0.025999999F : 0.02F;
       }
@@ -1971,13 +1982,17 @@ public abstract class cmx extends btn {
       }
    }
 
-   public void gA() {
-      if (this.cJ == 0) {
-         this.gB();
-      }
+   public boolean gA() {
+      return this.cI;
    }
 
    public void gB() {
+      if (this.cJ == 0) {
+         this.gC();
+      }
+   }
+
+   public void gC() {
       this.cJ = 0;
       this.cy = null;
       this.cx = null;

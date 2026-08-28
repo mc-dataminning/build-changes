@@ -224,7 +224,7 @@ public class alz {
       if ($$6.b($$3)) {
          throw d.create($$1.ah(), a($$2), $$3);
       } else {
-         $$6.c($$7);
+         $$6.d($$7);
          $$0.a(() -> wz.a("commands.attribute.modifier.add.success", wz.a($$3), a($$2), $$1.ah()), false);
          return 1;
       }

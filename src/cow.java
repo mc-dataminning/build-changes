@@ -58,16 +58,23 @@ public class cow extends cov implements btf, cox {
 
    @Override
    public bqr a(cmx $$0, bqq $$1) {
+      if (!$$0.fN()) {
+         bqr $$2 = super.a($$0, $$1);
+         if ($$2 != bqr.e) {
+            return $$2;
+         }
+      }
+
       if (this.r($$0) && !$$0.fN()) {
-         return super.a($$0, $$1);
+         return bqr.e;
       } else {
-         bqr $$2 = this.c_($$0);
-         if ($$2.a()) {
+         bqr $$3 = this.c_($$0);
+         if ($$3.a()) {
             this.a(dxz.k, $$0);
             clo.a($$0, true);
          }
 
-         return $$2;
+         return $$3;
       }
    }
 

@@ -241,7 +241,7 @@ public class ad {
 
    @Nullable
    public static Type<?> a(TypeReference $$0, String $$1) {
-      return !ab.aT ? null : b($$0, $$1);
+      return !ab.aU ? null : b($$0, $$1);
    }
 
    @Nullable
@@ -252,7 +252,7 @@ public class ad {
          $$2 = azx.a().getSchema(DataFixUtils.makeKey(ab.b().d().c())).getChoiceType($$0, $$1);
       } catch (IllegalArgumentException var4) {
          g.error("No data fixer registered for {}", $$1);
-         if (ab.aU) {
+         if (ab.aV) {
             throw var4;
          }
       }
@@ -261,7 +261,7 @@ public class ad {
    }
 
    public static Runnable a(String $$0, Runnable $$1) {
-      return ab.aU ? () -> {
+      return ab.aV ? () -> {
          Thread $$2 = Thread.currentThread();
          String $$3 = $$2.getName();
          $$2.setName($$0);
@@ -275,7 +275,7 @@ public class ad {
    }
 
    public static <V> Supplier<V> a(String $$0, Supplier<V> $$1) {
-      return ab.aU ? () -> {
+      return ab.aV ? () -> {
          Thread $$2 = Thread.currentThread();
          String $$3 = $$2.getName();
          $$2.setName($$0);
@@ -510,20 +510,20 @@ public class ad {
 
    public static void b(String $$0) {
       g.error($$0);
-      if (ab.aU) {
+      if (ab.aV) {
          d($$0);
       }
    }
 
    public static void a(String $$0, Throwable $$1) {
       g.error($$0, $$1);
-      if (ab.aU) {
+      if (ab.aV) {
          d($$0);
       }
    }
 
    public static <T extends Throwable> T b(T $$0) {
-      if (ab.aU) {
+      if (ab.aV) {
          g.error("Trying to throw a fatal exception, pausing in IDE", $$0);
          d($$0.getMessage());
       }

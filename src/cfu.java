@@ -8,13 +8,13 @@ import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
 public class cfu extends cgb implements buo<cfu.b>, cfn {
-   private static final ajw<Integer> ci = aka.a(cfu.class, ajy.b);
-   private static final Predicate<btp> cj = new Predicate<btp>() {
+   private static final ajw<Integer> ck = aka.a(cfu.class, ajy.b);
+   private static final Predicate<btp> cl = new Predicate<btp>() {
       public boolean a(@Nullable btp $$0) {
-         return $$0 != null && cfu.ck.containsKey($$0.am());
+         return $$0 != null && cfu.cm.containsKey($$0.am());
       }
    };
-   static final Map<bsx<?>, avo> ck = ad.a(Maps.newHashMap(), $$0 -> {
+   static final Map<bsx<?>, avo> cm = ad.a(Maps.newHashMap(), $$0 -> {
       $$0.put(bsx.i, avp.sK);
       $$0.put(bsx.l, avp.sL);
       $$0.put(bsx.m, avp.sM);
@@ -52,19 +52,19 @@ public class cfu extends cgb implements buo<cfu.b>, cfn {
       $$0.put(bsx.bu, avp.tr);
       $$0.put(bsx.bw, avp.ts);
    });
-   public float ce;
-   public float cf;
    public float cg;
    public float ch;
-   private float cl = 1.0F;
-   private float cm = 1.0F;
-   private boolean cn;
+   public float ci;
+   public float cj;
+   private float cn = 1.0F;
+   private float co = 1.0F;
+   private boolean cp;
    @Nullable
-   private jd co;
+   private jd cq;
 
    public cfu(bsx<? extends cfu> $$0, dcw $$1) {
       super($$0, $$1);
-      this.bR = new bzm(this, 10, false);
+      this.bT = new bzm(this, 10, false);
       this.a(epv.n, -1.0F);
       this.a(epv.o, -1.0F);
       this.a(epv.x, -1.0F);
@@ -88,14 +88,14 @@ public class cfu extends cgb implements buo<cfu.b>, cfn {
 
    @Override
    protected void B() {
-      this.bU.a(0, new bul.a(1.25));
-      this.bU.a(0, new cag(this));
-      this.bU.a(1, new cau(this, cmx.class, 8.0F));
-      this.bU.a(2, new cbr(this));
-      this.bU.a(2, new cak(this, 1.0, 5.0F, 1.0F));
-      this.bU.a(2, new cfu.a(this, 1.0));
-      this.bU.a(3, new car(this));
-      this.bU.a(3, new caj(this, 1.0, 3.0F, 7.0F));
+      this.bW.a(0, new bul.a(1.25));
+      this.bW.a(0, new cag(this));
+      this.bW.a(1, new cau(this, cmx.class, 8.0F));
+      this.bW.a(2, new cbr(this));
+      this.bW.a(2, new cak(this, 1.0, 5.0F, 1.0F));
+      this.bW.a(2, new cfu.a(this, 1.0));
+      this.bW.a(3, new car(this));
+      this.bW.a(3, new caj(this, 1.0, 3.0F, 7.0F));
    }
 
    public static buv.a gu() {
@@ -113,9 +113,9 @@ public class cfu extends cgb implements buo<cfu.b>, cfn {
 
    @Override
    public void m_() {
-      if (this.co == null || !this.co.a(this.dm(), 3.46) || !this.dO().a_(this.co).a(dga.dT)) {
-         this.cn = false;
-         this.co = null;
+      if (this.cq == null || !this.cq.a(this.dm(), 3.46) || !this.dO().a_(this.cq).a(dga.dT)) {
+         this.cp = false;
+         this.cq = null;
       }
 
       if (this.dO().z.a(400) == 0) {
@@ -128,35 +128,35 @@ public class cfu extends cgb implements buo<cfu.b>, cfn {
 
    @Override
    public void a(jd $$0, boolean $$1) {
-      this.co = $$0;
-      this.cn = $$1;
+      this.cq = $$0;
+      this.cp = $$1;
    }
 
    public boolean gv() {
-      return this.cn;
+      return this.cp;
    }
 
    private void gz() {
-      this.ch = this.ce;
-      this.cg = this.cf;
-      this.cf = this.cf + (float)(!this.aF() && !this.bS() ? 4 : -1) * 0.3F;
-      this.cf = ayo.a(this.cf, 0.0F, 1.0F);
-      if (!this.aF() && this.cl < 1.0F) {
-         this.cl = 1.0F;
+      this.cj = this.cg;
+      this.ci = this.ch;
+      this.ch = this.ch + (float)(!this.aF() && !this.bS() ? 4 : -1) * 0.3F;
+      this.ch = ayo.a(this.ch, 0.0F, 1.0F);
+      if (!this.aF() && this.cn < 1.0F) {
+         this.cn = 1.0F;
       }
 
-      this.cl *= 0.9F;
+      this.cn *= 0.9F;
       exc $$0 = this.dr();
       if (!this.aF() && $$0.d < 0.0) {
          this.i($$0.d(1.0, 0.6, 1.0));
       }
 
-      this.ce = this.ce + this.cl * 2.0F;
+      this.cg = this.cg + this.cn * 2.0F;
    }
 
    public static boolean a(dcw $$0, bsr $$1) {
       if ($$1.bE() && !$$1.aX() && $$0.z.a(2) == 0) {
-         List<btp> $$2 = $$0.a(btp.class, $$1.cK().g(20.0), cj);
+         List<btp> $$2 = $$0.a(btp.class, $$1.cK().g(20.0), cl);
          if (!$$2.isEmpty()) {
             btp $$3 = $$2.get($$0.z.a($$2.size()));
             if (!$$3.aX()) {
@@ -244,7 +244,7 @@ public class cfu extends cgb implements buo<cfu.b>, cfn {
 
    public static avo a(dcw $$0, ayw $$1) {
       if ($$0.al() != bqo.a && $$1.a(1000) == 0) {
-         List<bsx<?>> $$2 = Lists.newArrayList(ck.keySet());
+         List<bsx<?>> $$2 = Lists.newArrayList(cm.keySet());
          return b($$2.get($$1.a($$2.size())));
       } else {
          return avp.sF;
@@ -252,7 +252,7 @@ public class cfu extends cgb implements buo<cfu.b>, cfn {
    }
 
    private static avo b(bsx<?> $$0) {
-      return ck.getOrDefault($$0, avp.sF);
+      return cm.getOrDefault($$0, avp.sF);
    }
 
    @Override
@@ -272,13 +272,13 @@ public class cfu extends cgb implements buo<cfu.b>, cfn {
 
    @Override
    protected boolean aW() {
-      return this.ab > this.cm;
+      return this.ab > this.co;
    }
 
    @Override
    protected void aV() {
       this.a(avp.sI, 0.15F, 1.0F);
-      this.cm = this.ab + this.cf / 2.0F;
+      this.co = this.ab + this.ch / 2.0F;
    }
 
    @Override
@@ -321,17 +321,17 @@ public class cfu extends cgb implements buo<cfu.b>, cfn {
    }
 
    public cfu.b gw() {
-      return cfu.b.a(this.ao.a(ci));
+      return cfu.b.a(this.ao.a(ck));
    }
 
    public void a(cfu.b $$0) {
-      this.ao.a(ci, $$0.h);
+      this.ao.a(ck, $$0.h);
    }
 
    @Override
    protected void a(aka.a $$0) {
       super.a($$0);
-      $$0.a(ci, 0);
+      $$0.a(ck, 0);
    }
 
    @Override

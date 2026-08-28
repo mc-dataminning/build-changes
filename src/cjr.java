@@ -3,13 +3,13 @@ import javax.annotation.Nullable;
 
 public class cjr extends ckw implements ckh {
    public static final float b = 0.03F;
-   boolean cd;
+   boolean cf;
    protected final cdc c;
    protected final ccz d;
 
    public cjr(bsx<? extends cjr> $$0, dcw $$1) {
       super($$0, $$1);
-      this.bR = new cjr.d(this);
+      this.bT = new cjr.d(this);
       this.a(epv.j, 0.0F);
       this.c = new cdc(this, $$1);
       this.d = new ccz(this, $$1);
@@ -21,18 +21,18 @@ public class cjr extends ckw implements ckh {
 
    @Override
    protected void t() {
-      this.bU.a(1, new cjr.c(this, 1.0));
-      this.bU.a(2, new cjr.f(this, 1.0, 40, 10.0F));
-      this.bU.a(2, new cjr.a(this, 1.0, false));
-      this.bU.a(5, new cjr.b(this, 1.0));
-      this.bU.a(6, new cjr.e(this, 1.0, this.dO().z_()));
-      this.bU.a(7, new cbj(this, 1.0));
-      this.bV.a(1, new cce(this, cjr.class).a(cky.class));
-      this.bV.a(2, new ccf<>(this, cmx.class, 10, true, false, this::j));
-      this.bV.a(3, new ccf<>(this, cmf.class, false));
-      this.bV.a(3, new ccf<>(this, cfq.class, true));
-      this.bV.a(3, new ccf<>(this, cgq.class, true, false));
-      this.bV.a(5, new ccf<>(this, cgf.class, 10, true, false, cgf.ca));
+      this.bW.a(1, new cjr.c(this, 1.0));
+      this.bW.a(2, new cjr.f(this, 1.0, 40, 10.0F));
+      this.bW.a(2, new cjr.a(this, 1.0, false));
+      this.bW.a(5, new cjr.b(this, 1.0));
+      this.bW.a(6, new cjr.e(this, 1.0, this.dO().z_()));
+      this.bW.a(7, new cbj(this, 1.0));
+      this.bX.a(1, new cce(this, cjr.class).a(cky.class));
+      this.bX.a(2, new ccf<>(this, cmx.class, 10, true, false, this::j));
+      this.bX.a(3, new ccf<>(this, cmf.class, false));
+      this.bX.a(3, new ccf<>(this, cfq.class, true));
+      this.bX.a(3, new ccf<>(this, cgq.class, true, false));
+      this.bX.a(5, new ccf<>(this, cgf.class, 10, true, false, cgf.cc));
    }
 
    @Override
@@ -142,7 +142,7 @@ public class cjr extends ckw implements ckh {
    }
 
    boolean gu() {
-      if (this.cd) {
+      if (this.cf) {
          return true;
       } else {
          btn $$0 = this.p();
@@ -165,10 +165,10 @@ public class cjr extends ckw implements ckh {
    public void bl() {
       if (!this.dO().B) {
          if (this.db() && this.bf() && this.gu()) {
-            this.bT = this.c;
+            this.bV = this.c;
             this.i(true);
          } else {
-            this.bT = this.d;
+            this.bV = this.d;
             this.i(false);
          }
       }
@@ -207,7 +207,7 @@ public class cjr extends ckw implements ckh {
    }
 
    public void x(boolean $$0) {
-      this.cd = $$0;
+      this.cf = $$0;
    }
 
    static class a extends ccb {
@@ -256,7 +256,7 @@ public class cjr extends ckw implements ckh {
       @Override
       public void d() {
          this.g.x(false);
-         this.g.bT = this.g.d;
+         this.g.bV = this.g.d;
          super.d();
       }
 
@@ -338,7 +338,7 @@ public class cjr extends ckw implements ckh {
       public void a() {
          btn $$0 = this.l.p();
          if (this.l.gu() && this.l.bf()) {
-            if ($$0 != null && $$0.dv() > this.l.dv() || this.l.cd) {
+            if ($$0 != null && $$0.dv() > this.l.dv() || this.l.cf) {
                this.l.i(this.l.dr().b(0.0, 0.002, 0.0));
             }
 

@@ -1,7 +1,7 @@
 import javax.annotation.Nullable;
 
 public class cfl extends cfe {
-   private static final bsu ca = bsx.w.n().a(0.5F).b(0.665F);
+   private static final bsu cc = bsx.w.n().a(0.5F).b(0.665F);
 
    public cfl(bsx<? extends cfl> $$0, dcw $$1) {
       super($$0, $$1);
@@ -9,14 +9,14 @@ public class cfl extends cfe {
 
    @Override
    protected void B() {
-      this.bU.a(0, new cag(this));
-      this.bU.a(1, new cbf(this, 2.0));
-      this.bU.a(2, new bzy(this, 1.0));
-      this.bU.a(3, new cbu(this, 1.25, $$0 -> $$0.a(awn.aa), false));
-      this.bU.a(4, new cal(this, 1.25));
-      this.bU.a(5, new cbz(this, 1.0));
-      this.bU.a(6, new cau(this, cmx.class, 6.0F));
-      this.bU.a(7, new cbh(this));
+      this.bW.a(0, new cag(this));
+      this.bW.a(1, new cbf(this, 2.0));
+      this.bW.a(2, new bzy(this, 1.0));
+      this.bW.a(3, new cbu(this, 1.25, $$0 -> $$0.a(awn.aa), false));
+      this.bW.a(4, new cal(this, 1.25));
+      this.bW.a(5, new cbz(this, 1.0));
+      this.bW.a(6, new cau(this, cmx.class, 6.0F));
+      this.bW.a(7, new cbh(this));
    }
 
    @Override
@@ -73,6 +73,6 @@ public class cfl extends cfe {
 
    @Override
    public bsu e(bua $$0) {
-      return this.o_() ? ca : super.e($$0);
+      return this.o_() ? cc : super.e($$0);
    }
 }

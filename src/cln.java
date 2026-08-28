@@ -4,23 +4,23 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 public class cln extends clm implements cjq, cmi {
-   private static final ajw<Boolean> cb = aka.a(cln.class, ajy.k);
-   private static final ajw<Boolean> cc = aka.a(cln.class, ajy.k);
    private static final ajw<Boolean> cd = aka.a(cln.class, ajy.k);
-   private static final akr ce = akr.b("baby");
-   private static final buu cf = new buu(ce, 0.2F, buu.a.b);
-   private static final int cg = 16;
-   private static final float ch = 0.35F;
-   private static final int ci = 5;
-   private static final float cj = 0.1F;
-   private static final int ck = 3;
-   private static final float cl = 0.2F;
-   private static final bsu cm = bsx.aA.n().a(0.5F).b(0.97F);
-   private static final double cn = 0.5;
-   private final bra co = new bra(8);
-   private boolean cp;
+   private static final ajw<Boolean> ce = aka.a(cln.class, ajy.k);
+   private static final ajw<Boolean> cf = aka.a(cln.class, ajy.k);
+   private static final akr cg = akr.b("baby");
+   private static final buu ch = new buu(cg, 0.2F, buu.a.b);
+   private static final int ci = 16;
+   private static final float cj = 0.35F;
+   private static final int ck = 5;
+   private static final float cl = 0.1F;
+   private static final int cm = 3;
+   private static final float cn = 0.2F;
+   private static final bsu co = bsx.aA.n().a(0.5F).b(0.97F);
+   private static final double cp = 0.5;
+   private final bra cq = new bra(8);
+   private boolean cr;
    protected static final ImmutableList<cdz<? extends cdy<? super cln>>> e = ImmutableList.of(cdz.c, cdz.d, cdz.b, cdz.f, cdz.l);
-   protected static final ImmutableList<ccs<?>> ca = ImmutableList.of(
+   protected static final ImmutableList<ccs<?>> cc = ImmutableList.of(
       ccs.n,
       ccs.v,
       ccs.g,
@@ -66,7 +66,7 @@ public class cln extends clm implements cjq, cmi {
 
    public cln(bsx<? extends clm> $$0, dcw $$1) {
       super($$0, $$1);
-      this.bP = 5;
+      this.bR = 5;
    }
 
    @Override
@@ -76,7 +76,7 @@ public class cln extends clm implements cjq, cmi {
          $$0.a("IsBaby", true);
       }
 
-      if (this.cp) {
+      if (this.cr) {
          $$0.a("CannotHunt", true);
       }
 
@@ -94,7 +94,7 @@ public class cln extends clm implements cjq, cmi {
    @azt
    @Override
    public bra x() {
-      return this.co;
+      return this.cq;
    }
 
    @Override
@@ -106,29 +106,29 @@ public class cln extends clm implements cjq, cmi {
          this.b($$5);
       }
 
-      this.co.f().forEach(this::b);
+      this.cq.f().forEach(this::b);
    }
 
    protected cuq n(cuq $$0) {
-      return this.co.b($$0);
+      return this.cq.b($$0);
    }
 
    protected boolean o(cuq $$0) {
-      return this.co.c($$0);
+      return this.cq.c($$0);
    }
 
    @Override
    protected void a(aka.a $$0) {
       super.a($$0);
-      $$0.a(cb, false);
-      $$0.a(cc, false);
       $$0.a(cd, false);
+      $$0.a(ce, false);
+      $$0.a(cf, false);
    }
 
    @Override
    public void a(ajw<?> $$0) {
       super.a($$0);
-      if (cb.equals($$0)) {
+      if (cd.equals($$0)) {
          this.i_();
       }
    }
@@ -187,7 +187,7 @@ public class cln extends clm implements cjq, cmi {
 
    @Override
    protected buq.b<cln> dU() {
-      return buq.a(ca, e);
+      return buq.a(cc, e);
    }
 
    @Override
@@ -215,33 +215,33 @@ public class cln extends clm implements cjq, cmi {
 
    @Override
    public bsu e(bua $$0) {
-      return this.o_() ? cm : super.e($$0);
+      return this.o_() ? co : super.e($$0);
    }
 
    @Override
    public void a(boolean $$0) {
-      this.ar().a(cb, $$0);
+      this.ar().a(cd, $$0);
       if (!this.dO().B) {
          bus $$1 = this.f(buw.v);
-         $$1.c(cf.b());
+         $$1.c(ch.b());
          if ($$0) {
-            $$1.b(cf);
+            $$1.b(ch);
          }
       }
    }
 
    @Override
    public boolean o_() {
-      return this.ar().a(cb);
+      return this.ar().a(cd);
    }
 
    private void z(boolean $$0) {
-      this.cp = $$0;
+      this.cr = $$0;
    }
 
    @Override
    protected boolean s() {
-      return !this.cp;
+      return !this.cr;
    }
 
    @Override
@@ -255,13 +255,13 @@ public class cln extends clm implements cjq, cmi {
 
    @Override
    protected int eg() {
-      return this.bP;
+      return this.bR;
    }
 
    @Override
    protected void a(aqu $$0) {
       clo.b(this);
-      this.co.f().forEach(this::b);
+      this.cq.f().forEach(this::b);
       super.a($$0);
    }
 
@@ -270,12 +270,12 @@ public class cln extends clm implements cjq, cmi {
    }
 
    private boolean gu() {
-      return this.ao.a(cc);
+      return this.ao.a(ce);
    }
 
    @Override
    public void b(boolean $$0) {
-      this.ao.a(cc, $$0);
+      this.ao.a(ce, $$0);
    }
 
    @Override
@@ -299,11 +299,11 @@ public class cln extends clm implements cjq, cmi {
    }
 
    public boolean gs() {
-      return this.ao.a(cd);
+      return this.ao.a(cf);
    }
 
    public void y(boolean $$0) {
-      this.ao.a(cd, $$0);
+      this.ao.a(cf, $$0);
    }
 
    @Override

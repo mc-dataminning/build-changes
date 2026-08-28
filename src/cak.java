@@ -64,10 +64,14 @@ public class cak extends cam {
 
    @Override
    public void a() {
-      this.a.I().a(this.b, 10.0F, (float)this.a.ac());
+      boolean $$0 = this.a.gm();
+      if (!$$0) {
+         this.a.I().a(this.b, 10.0F, (float)this.a.ac());
+      }
+
       if (--this.e <= 0) {
          this.e = this.a(10);
-         if (this.a.gm()) {
+         if ($$0) {
             this.a.gl();
          } else {
             this.d.a(this.b, this.c);

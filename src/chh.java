@@ -1,11 +1,11 @@
 public abstract class chh extends chi {
-   private static final ajw<Boolean> ca = aka.a(chh.class, ajy.k);
-   private final bsu cb;
+   private static final ajw<Boolean> cc = aka.a(chh.class, ajy.k);
+   private final bsu cd;
 
    protected chh(bsx<? extends chh> $$0, dcw $$1) {
       super($$0, $$1);
-      this.cy = false;
-      this.cb = $$0.n().a(bst.a().a(bss.a, 0.0F, $$0.m() - 0.15625F, 0.0F)).a(0.5F);
+      this.cA = false;
+      this.cd = $$0.n().a(bst.a().a(bss.a, 0.0F, $$0.m() - 0.15625F, 0.0F)).a(0.5F);
    }
 
    @Override
@@ -16,7 +16,7 @@ public abstract class chh extends chi {
    @Override
    protected void a(aka.a $$0) {
       super.a($$0);
-      $$0.a(ca, false);
+      $$0.a(cc, false);
    }
 
    public static buv.a s() {
@@ -24,16 +24,16 @@ public abstract class chh extends chi {
    }
 
    public boolean t() {
-      return this.ao.a(ca);
+      return this.ao.a(cc);
    }
 
    public void x(boolean $$0) {
-      this.ao.a(ca, $$0);
+      this.ao.a(cc, $$0);
    }
 
    @Override
    public bsu e(bua $$0) {
-      return this.o_() ? this.cb : super.e($$0);
+      return this.o_() ? this.cd : super.e($$0);
    }
 
    @Override
@@ -55,8 +55,8 @@ public abstract class chh extends chi {
       if (this.t()) {
          uh $$1 = new uh();
 
-         for (int $$2 = 1; $$2 < this.cu.b(); $$2++) {
-            cuq $$3 = this.cu.a($$2);
+         for (int $$2 = 1; $$2 < this.cw.b(); $$2++) {
+            cuq $$3 = this.cw.a($$2);
             if (!$$3.e()) {
                ub $$4 = new ub();
                $$4.a("Slot", (byte)($$2 - 1));
@@ -79,8 +79,8 @@ public abstract class chh extends chi {
          for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
             ub $$3 = $$1.a($$2);
             int $$4 = $$3.f("Slot") & 255;
-            if ($$4 < this.cu.b() - 1) {
-               this.cu.a($$4 + 1, cuq.a(this.dQ(), (uy)$$3).orElse(cuq.l));
+            if ($$4 < this.cw.b() - 1) {
+               this.cw.a($$4 + 1, cuq.a(this.dQ(), (uy)$$3).orElse(cuq.l));
             }
          }
       }

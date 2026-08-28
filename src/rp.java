@@ -115,8 +115,8 @@ public class rp {
             eaf.a(eaf.b(eaf.c(List.of(dga.a, dga.nc, dga.nb)), eaf.a(awe.co)), eaf.a(ji.a.q(), awe.ci))
          )
       );
-      egt $$7 = new egt(bpb.<dtc>a().a(dga.sw.o(), 4).a(dga.sw.o().a(dgu.s_, Boolean.valueOf(true)), 1));
-      egp $$8 = new egp(new egt(bpb.<dtc>a().a(dga.sv.o(), 4).a(dga.sv.o().a(dgu.s_, Boolean.valueOf(true)), 1)), dgv.e, bqc.a(23, 25));
+      egt $$7 = new egt(bpb.<dtc>a().a(dga.sw.o(), 4).a(dga.sw.o().a(dgu.u_, Boolean.valueOf(true)), 1));
+      egp $$8 = new egp(new egt(bpb.<dtc>a().a(dga.sv.o(), 4).a(dga.sv.o().a(dgu.u_, Boolean.valueOf(true)), 1)), dgv.e, bqc.a(23, 25));
       rr.a(
          $$0,
          j,

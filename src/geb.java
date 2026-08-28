@@ -32,8 +32,8 @@ public class geb extends gdy {
    private int dc;
    private boolean dd;
    public gdz cz;
-   protected final fgo cB;
-   protected int cC;
+   protected final fgo cA;
+   protected int cB;
    public float cD;
    public float cE;
    public float cF;
@@ -55,7 +55,7 @@ public class geb extends gdy {
 
    public geb(fgo $$0, fzf $$1, fzg $$2, awa $$3, fga $$4, boolean $$5, boolean $$6) {
       super($$1, $$2.o());
-      this.cB = $$0;
+      this.cA = $$0;
       this.h = $$2;
       this.cP = $$3;
       this.cQ = $$4;
@@ -81,8 +81,8 @@ public class geb extends gdy {
          return false;
       } else {
          if ($$0 instanceof cot) {
-            this.cB.aj().a((gua)(new gtu(this, (cot)$$0, true)));
-            this.cB.aj().a((gua)(new gtu(this, (cot)$$0, false)));
+            this.cA.aj().a((gua)(new gtu(this, (cot)$$0, true)));
+            this.cA.aj().a((gua)(new gtu(this, (cot)$$0, false)));
          }
 
          return true;
@@ -182,7 +182,7 @@ public class geb extends gdy {
          }
 
          this.cY = this.aF();
-         this.dj = this.cB.m.H().c();
+         this.dj = this.cA.m.H().c();
       }
    }
 
@@ -229,7 +229,7 @@ public class geb extends gdy {
 
    public void e() {
       super.s();
-      this.cB.a(null);
+      this.cA.a(null);
    }
 
    public void H(float $$0) {
@@ -307,7 +307,7 @@ public class geb extends gdy {
 
    @Override
    public void a(wz $$0, boolean $$1) {
-      this.cB.aW().a($$0, $$1);
+      this.cA.aW().a($$0, $$1);
    }
 
    private void c(double $$0, double $$1) {
@@ -353,7 +353,7 @@ public class geb extends gdy {
 
    @Override
    public void a(wz $$0) {
-      this.cB.l.d().a($$0);
+      this.cA.l.d().a($$0);
    }
 
    @Override
@@ -436,7 +436,7 @@ public class geb extends gdy {
       }
 
       if (ap.equals($$0) && this.fA() && !this.dl) {
-         this.cB.aj().a((gua)(new gtq(this)));
+         this.cA.aj().a((gua)(new gtq(this)));
       }
    }
 
@@ -455,53 +455,53 @@ public class geb extends gdy {
 
    @Override
    public boolean Z() {
-      return this.cB.aQ();
+      return this.cA.aQ();
    }
 
    @Override
    public void a(drs $$0, boolean $$1) {
       if ($$0 instanceof drf $$2) {
-         this.cB.a(new fpq($$2, $$1, this.cB.aQ()));
+         this.cA.a(new fpq($$2, $$1, this.cA.aQ()));
       } else {
-         this.cB.a(new fqd($$0, $$1, this.cB.aQ()));
+         this.cA.a(new fqd($$0, $$1, this.cA.aQ()));
       }
    }
 
    @Override
    public void a(dbx $$0) {
-      this.cB.a(new fqa($$0));
+      this.cA.a(new fqa($$0));
    }
 
    @Override
    public void a(dqr $$0) {
-      this.cB.a(new fpd($$0));
+      this.cA.a(new fpd($$0));
    }
 
    @Override
    public void a(drx $$0) {
-      this.cB.a(new fqh($$0));
+      this.cA.a(new fqh($$0));
    }
 
    @Override
    public void a(dri $$0) {
-      this.cB.a(new fpv($$0));
+      this.cA.a(new fpv($$0));
    }
 
    @Override
    public void a(cuq $$0, bqq $$1) {
       if ($$0.a(cut.tZ)) {
-         this.cB.a(new foz(this, $$0, $$1));
+         this.cA.a(new foz(this, $$0, $$1));
       }
    }
 
    @Override
    public void b(bsr $$0) {
-      this.cB.g.a($$0, lm.f);
+      this.cA.g.a($$0, lm.f);
    }
 
    @Override
    public void c(bsr $$0) {
-      this.cB.g.a($$0, lm.r);
+      this.cA.g.a($$0, lm.r);
    }
 
    @Override
@@ -534,7 +534,7 @@ public class geb extends gdy {
    }
 
    protected boolean x() {
-      return this.cB.an() == this;
+      return this.cA.an() == this;
    }
 
    public void y() {
@@ -557,11 +557,11 @@ public class geb extends gdy {
 
    @Override
    public void m_() {
-      if (this.cC > 0) {
-         this.cC--;
+      if (this.cB > 0) {
+         this.cB--;
       }
 
-      if (!(this.cB.y instanceof fob)) {
+      if (!(this.cA.y instanceof fob)) {
          this.y(this.A() == dlr.a.a);
          this.M();
       }
@@ -573,11 +573,11 @@ public class geb extends gdy {
       this.cZ = !$$3.b && !this.cd() && !this.bS() && this.h(bua.f) && (this.bW() || !this.fH() && !this.h(bua.a));
       float $$4 = (float)this.g(buw.z);
       this.cz.a(this.w(), $$4);
-      this.cB.ax().a(this.cz);
+      this.cA.ax().a(this.cz);
       if (this.fr() && !this.bS()) {
          this.cz.a *= 0.2F;
          this.cz.b *= 0.2F;
-         this.cC = 0;
+         this.cB = 0;
       }
 
       boolean $$5 = false;
@@ -595,21 +595,21 @@ public class geb extends gdy {
       }
 
       if ($$1) {
-         this.cC = 0;
+         this.cB = 0;
       }
 
       boolean $$6 = this.J();
       boolean $$7 = this.bS() ? this.dc().aF() : this.aF();
       boolean $$8 = !$$1 && !$$2;
       if (($$7 || this.bk()) && $$8 && $$6) {
-         if (this.cC <= 0 && !this.cB.m.C.e()) {
-            this.cC = 7;
+         if (this.cB <= 0 && !this.cA.m.C.e()) {
+            this.cB = 7;
          } else {
             this.h(true);
          }
       }
 
-      if ((!this.bf() || this.bk()) && $$6 && this.cB.m.C.e()) {
+      if ((!this.bf() || this.bk()) && $$6 && this.cA.m.C.e()) {
          this.h(true);
       }
 
@@ -627,7 +627,7 @@ public class geb extends gdy {
 
       boolean $$11 = false;
       if ($$3.c) {
-         if (this.cB.q.h()) {
+         if (this.cA.q.h()) {
             if (!$$3.b) {
                $$3.b = true;
                $$11 = true;
@@ -713,7 +713,7 @@ public class geb extends gdy {
       }
 
       super.m_();
-      if (this.aF() && $$3.b && !this.cB.q.h()) {
+      if (this.aF() && $$3.b && !this.cA.q.h()) {
          $$3.b = false;
          this.z();
       }
@@ -735,16 +735,16 @@ public class geb extends gdy {
       this.cI = this.cH;
       float $$1 = 0.0F;
       if ($$0 && this.aw != null && this.aw.e()) {
-         if (this.cB.y != null && !this.cB.y.k() && !(this.cB.y instanceof fnh) && !(this.cB.y instanceof fog)) {
-            if (this.cB.y instanceof fot) {
+         if (this.cA.y != null && !this.cA.y.k() && !(this.cA.y instanceof fnh) && !(this.cA.y instanceof fog)) {
+            if (this.cA.y instanceof fot) {
                this.s();
             }
 
-            this.cB.a(null);
+            this.cA.a(null);
          }
 
          if (this.cH == 0.0F) {
-            this.cB.aj().a(gtv.b(avp.uJ, this.ah.i() * 0.4F + 0.8F, 0.25F));
+            this.cA.aj().a(gtv.b(avp.uJ, this.ah.i() * 0.4F + 0.8F, 0.25F));
          }
 
          $$1 = 0.0125F;
@@ -972,7 +972,7 @@ public class geb extends gdy {
       } else {
          if (!$$0 && $$1) {
             this.dO().a(this.dt(), this.dv(), this.dz(), avp.x, avq.i, 1.0F, 1.0F, false);
-            this.cB.aj().a((gua)(new gud.b(this)));
+            this.cA.aj().a((gua)(new gud.b(this)));
          }
 
          if ($$0 && !$$1) {
@@ -985,7 +985,7 @@ public class geb extends gdy {
 
    @Override
    public exc s(float $$0) {
-      if (this.cB.m.aB().a()) {
+      if (this.cA.m.aB().a()) {
          float $$1 = ayo.i($$0 * 0.5F, this.dE(), this.O) * (float) (Math.PI / 180.0);
          float $$2 = ayo.i($$0 * 0.5F, this.dG(), this.P) * (float) (Math.PI / 180.0);
          double $$3 = this.fq() == btg.b ? -1.0 : 1.0;
@@ -998,7 +998,7 @@ public class geb extends gdy {
 
    @Override
    public void a(cuq $$0, cuq $$1, cqd $$2) {
-      this.cB.ax().a($$0, $$1, $$2);
+      this.cA.ax().a($$0, $$1, $$2);
    }
 
    @Override

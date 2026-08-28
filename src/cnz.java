@@ -89,4 +89,12 @@ public class cnz extends cnw {
    public boolean a(dcw $$0, dcw $$1) {
       return $$0.af() == dcw.j && this.s() instanceof aqv $$2 ? super.a($$0, $$1) && $$2.f : super.a($$0, $$1);
    }
+
+   @Override
+   protected void a(dtc $$0) {
+      super.a($$0);
+      if ($$0.a(dga.kF) && this.s() instanceof aqv $$1) {
+         $$1.a($$0);
+      }
+   }
 }

@@ -2,16 +2,16 @@ import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
 public class cgf extends cfe {
-   private static final ajw<jd> cb = aka.a(cgf.class, ajy.o);
-   private static final ajw<Boolean> cc = aka.a(cgf.class, ajy.k);
+   private static final ajw<jd> cd = aka.a(cgf.class, ajy.o);
    private static final ajw<Boolean> ce = aka.a(cgf.class, ajy.k);
-   private static final ajw<jd> cf = aka.a(cgf.class, ajy.o);
    private static final ajw<Boolean> cg = aka.a(cgf.class, ajy.k);
-   private static final ajw<Boolean> ch = aka.a(cgf.class, ajy.k);
-   private static final float ci = 0.3F;
-   private static final bsu cj = bsx.bh.n().a(bst.a().a(bss.a, 0.0F, bsx.bh.m(), -0.25F)).a(0.3F);
-   int ck;
-   public static final Predicate<btn> ca = $$0 -> $$0.o_() && !$$0.bf();
+   private static final ajw<jd> ch = aka.a(cgf.class, ajy.o);
+   private static final ajw<Boolean> ci = aka.a(cgf.class, ajy.k);
+   private static final ajw<Boolean> cj = aka.a(cgf.class, ajy.k);
+   private static final float ck = 0.3F;
+   private static final bsu cl = bsx.bh.n().a(bst.a().a(bss.a, 0.0F, bsx.bh.m(), -0.25F)).a(0.3F);
+   int cm;
+   public static final Predicate<btn> cc = $$0 -> $$0.o_() && !$$0.bf();
 
    public cgf(bsx<? extends cgf> $$0, dcw $$1) {
       super($$0, $$1);
@@ -19,67 +19,67 @@ public class cgf extends cfe {
       this.a(epv.t, -1.0F);
       this.a(epv.s, -1.0F);
       this.a(epv.r, -1.0F);
-      this.bR = new cgf.e(this);
+      this.bT = new cgf.e(this);
    }
 
    public void h(jd $$0) {
-      this.ao.a(cb, $$0);
+      this.ao.a(cd, $$0);
    }
 
    jd gk() {
-      return this.ao.a(cb);
+      return this.ao.a(cd);
    }
 
    void i(jd $$0) {
-      this.ao.a(cf, $$0);
+      this.ao.a(ch, $$0);
    }
 
    jd gl() {
-      return this.ao.a(cf);
-   }
-
-   public boolean s() {
-      return this.ao.a(cc);
-   }
-
-   void x(boolean $$0) {
-      this.ao.a(cc, $$0);
-   }
-
-   public boolean t() {
-      return this.ao.a(ce);
-   }
-
-   void y(boolean $$0) {
-      this.ck = $$0 ? 1 : 0;
-      this.ao.a(ce, $$0);
-   }
-
-   boolean gm() {
-      return this.ao.a(cg);
-   }
-
-   void z(boolean $$0) {
-      this.ao.a(cg, $$0);
-   }
-
-   boolean gn() {
       return this.ao.a(ch);
    }
 
+   public boolean s() {
+      return this.ao.a(ce);
+   }
+
+   void x(boolean $$0) {
+      this.ao.a(ce, $$0);
+   }
+
+   public boolean t() {
+      return this.ao.a(cg);
+   }
+
+   void y(boolean $$0) {
+      this.cm = $$0 ? 1 : 0;
+      this.ao.a(cg, $$0);
+   }
+
+   boolean gm() {
+      return this.ao.a(ci);
+   }
+
+   void z(boolean $$0) {
+      this.ao.a(ci, $$0);
+   }
+
+   boolean gn() {
+      return this.ao.a(cj);
+   }
+
    void A(boolean $$0) {
-      this.ao.a(ch, $$0);
+      this.ao.a(cj, $$0);
    }
 
    @Override
    protected void a(aka.a $$0) {
       super.a($$0);
-      $$0.a(cb, jd.c);
-      $$0.a(cc, false);
-      $$0.a(cf, jd.c);
-      $$0.a(cg, false);
-      $$0.a(ch, false);
+      $$0.a(cd, jd.c);
       $$0.a(ce, false);
+      $$0.a(ch, jd.c);
+      $$0.a(ci, false);
+      $$0.a(cj, false);
+      $$0.a(cg, false);
    }
 
    @Override
@@ -122,15 +122,15 @@ public class cgf extends cfe {
 
    @Override
    protected void B() {
-      this.bU.a(0, new cgf.f(this, 1.2));
-      this.bU.a(1, new cgf.a(this, 1.0));
-      this.bU.a(1, new cgf.d(this, 1.0));
-      this.bU.a(2, new cbu(this, 1.1, $$0 -> $$0.a(awn.av), false));
-      this.bU.a(3, new cgf.c(this, 1.0));
-      this.bU.a(4, new cgf.b(this, 1.0));
-      this.bU.a(7, new cgf.i(this, 1.0));
-      this.bU.a(8, new cau(this, cmx.class, 8.0F));
-      this.bU.a(9, new cgf.h(this, 1.0, 100));
+      this.bW.a(0, new cgf.f(this, 1.2));
+      this.bW.a(1, new cgf.a(this, 1.0));
+      this.bW.a(1, new cgf.d(this, 1.0));
+      this.bW.a(2, new cbu(this, 1.1, $$0 -> $$0.a(awn.av), false));
+      this.bW.a(3, new cgf.c(this, 1.0));
+      this.bW.a(4, new cgf.b(this, 1.0));
+      this.bW.a(7, new cgf.i(this, 1.0));
+      this.bW.a(8, new cau(this, cmx.class, 8.0F));
+      this.bW.a(9, new cgf.h(this, 1.0, 100));
    }
 
    public static buv.a x() {
@@ -224,7 +224,7 @@ public class cgf extends cfe {
    @Override
    public void m_() {
       super.m_();
-      if (this.bE() && this.t() && this.ck >= 1 && this.ck % 5 == 0) {
+      if (this.bE() && this.t() && this.cm >= 1 && this.cm % 5 == 0) {
          jd $$0 = this.do();
          if (dor.a(this.dO(), $$0)) {
             this.dO().c(2001, $$0, dfy.i(this.dO().a_($$0.e())));
@@ -267,7 +267,7 @@ public class cgf extends cfe {
 
    @Override
    public bsu e(bua $$0) {
-      return this.o_() ? cj : super.e($$0);
+      return this.o_() ? cl : super.e($$0);
    }
 
    static class a extends bzy {
@@ -434,9 +434,9 @@ public class cgf extends cfe {
          super.a();
          jd $$0 = this.g.do();
          if (!this.g.bf() && this.m()) {
-            if (this.g.ck < 1) {
+            if (this.g.cm < 1) {
                this.g.y(true);
-            } else if (this.g.ck > this.a(200)) {
+            } else if (this.g.cm > this.a(200)) {
                dcw $$1 = this.g.dO();
                $$1.a(null, $$0, avp.An, avq.e, 0.3F, 0.9F + $$1.z.i() * 0.2F);
                jd $$2 = this.e.d();
@@ -449,7 +449,7 @@ public class cgf extends cfe {
             }
 
             if (this.g.t()) {
-               this.g.ck++;
+               this.g.cm++;
             }
          }
       }

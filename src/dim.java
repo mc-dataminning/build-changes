@@ -39,23 +39,29 @@ public class dim extends dfk implements dlr {
    public eqc a(aqu $$0, bsr $$1, jd $$2) {
       akq<dcw> $$3 = $$0.af() == dcw.j ? dcw.h : dcw.j;
       aqu $$4 = $$0.o().a($$3);
-      boolean $$5 = $$3 == dcw.j;
-      jd $$6 = $$5 ? aqu.a : $$4.V();
-      exc $$7 = $$6.c();
-      if ($$5) {
-         ecc.a($$4, jd.a((jw)$$7).e(), true);
-         if ($$1 instanceof aqv) {
-            $$7 = $$7.a(0.0, 1.0, 0.0);
-         }
+      if ($$4 == null) {
+         return null;
       } else {
-         if ($$1 instanceof aqv $$8) {
-            return $$8.a(false, eqc.a);
+         boolean $$5 = $$3 == dcw.j;
+         jd $$6 = $$5 ? aqu.a : $$4.V();
+         exc $$7 = $$6.c();
+         float $$8 = $$1.dE();
+         if ($$5) {
+            ecc.a($$4, jd.a((jw)$$7).e(), true);
+            $$8 = ji.e.p();
+            if ($$1 instanceof aqv) {
+               $$7 = $$7.a(0.0, 1.0, 0.0);
+            }
+         } else {
+            if ($$1 instanceof aqv $$9) {
+               return $$9.a(false, eqc.a);
+            }
+
+            $$7 = $$1.a($$4, $$6).c();
          }
 
-         $$7 = $$1.a($$4, $$6).c();
+         return new eqc($$4, $$7, $$1.dr(), $$8, $$1.dG(), eqc.b.then(eqc.c));
       }
-
-      return new eqc($$4, $$7, $$1.dr(), $$1.dE(), $$1.dG(), eqc.b.then(eqc.c));
    }
 
    @Override

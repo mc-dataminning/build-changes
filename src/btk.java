@@ -5,6 +5,8 @@ import javax.annotation.Nullable;
 
 public interface btk {
    String b_ = "leash";
+   double q_ = 10.0;
+   double r_ = 6.0;
 
    @Nullable
    btk.a X_();
@@ -51,17 +53,19 @@ public interface btk {
    default void a(ub $$0, @Nullable btk.a $$1) {
       if ($$1 != null) {
          Either<UUID, jd> $$2 = $$1.b;
-         if ($$1.a instanceof btn) {
-            $$2 = Either.left($$1.a.cz());
-         } else if ($$1.a instanceof cjb $$3) {
+         if ($$1.a instanceof cjb $$3) {
             $$2 = Either.right($$3.t());
+         } else if ($$1.a != null) {
+            $$2 = Either.left($$1.a.cz());
          }
 
-         $$0.a("leash", (uy)$$2.map($$0x -> {
-            ub $$1x = new ub();
-            $$1x.a("UUID", $$0x);
-            return $$1x;
-         }, uq::a));
+         if ($$2 != null) {
+            $$0.a("leash", (uy)$$2.map($$0x -> {
+               ub $$1x = new ub();
+               $$1x.a("UUID", $$0x);
+               return $$1x;
+            }, uq::a));
+         }
       }
    }
 
@@ -123,13 +127,10 @@ public interface btk {
                return;
             }
 
-            if ($$3 > 10.0F) {
+            if ((double)$$3 > 10.0) {
                $$0.z();
-            } else if ($$3 > 6.0F) {
-               double $$4 = ($$2.dt() - $$0.dt()) / (double)$$3;
-               double $$5 = ($$2.dv() - $$0.dv()) / (double)$$3;
-               double $$6 = ($$2.dz() - $$0.dz()) / (double)$$3;
-               $$0.i($$0.dr().b(Math.copySign($$4 * $$4 * 0.4, $$4), Math.copySign($$5 * $$5 * 0.4, $$5), Math.copySign($$6 * $$6 * 0.4, $$6)));
+            } else if ((double)$$3 > 6.0) {
+               $$0.b($$2, $$3);
                $$0.cr();
             } else {
                $$0.b($$2);
@@ -147,6 +148,17 @@ public interface btk {
    }
 
    default void b(bsr $$0) {
+   }
+
+   default void b(bsr $$0, float $$1) {
+      a((bsr)this, $$0, $$1);
+   }
+
+   private static <E extends bsr & btk> void a(E $$0, bsr $$1, float $$2) {
+      double $$3 = ($$1.dt() - $$0.dt()) / (double)$$2;
+      double $$4 = ($$1.dv() - $$0.dv()) / (double)$$2;
+      double $$5 = ($$1.dz() - $$0.dz()) / (double)$$2;
+      $$0.i($$0.dr().b(Math.copySign($$3 * $$3 * 0.4, $$3), Math.copySign($$4 * $$4 * 0.4, $$4), Math.copySign($$5 * $$5 * 0.4, $$5)));
    }
 
    default void b(bsr $$0, boolean $$1) {

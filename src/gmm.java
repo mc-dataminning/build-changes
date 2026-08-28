@@ -16,7 +16,7 @@ public class gmm extends glp<ckm, fxi<ckm>> {
       $$1.b(0.999F, 0.999F, 0.999F);
       $$1.a(0.0F, 0.001F, 0.0F);
       float $$4 = (float)$$0.gl();
-      float $$5 = ayo.i($$2, $$0.ca, $$0.bZ) / ($$4 * 0.5F + 1.0F);
+      float $$5 = ayo.i($$2, $$0.cc, $$0.cb) / ($$4 * 0.5F + 1.0F);
       float $$6 = 1.0F / ($$5 + 1.0F);
       $$1.b($$6 * $$4, 1.0F / $$6 * $$4, $$6 * $$4);
    }

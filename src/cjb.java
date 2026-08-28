@@ -49,30 +49,32 @@ public class cjb extends cix {
          return bqr.a;
       } else {
          boolean $$2 = false;
-         double $$3 = 7.0;
-         List<btp> $$4 = this.dO().a(btp.class, new ewx(this.dt() - 7.0, this.dv() - 7.0, this.dz() - 7.0, this.dt() + 7.0, this.dv() + 7.0, this.dz() + 7.0));
+         List<btk> $$3 = cuz.a(this.dO(), this.t(), $$1x -> {
+            bsr $$2x = $$1x.A();
+            return $$2x == $$0 || $$2x == this;
+         });
 
-         for (btp $$5 : $$4) {
-            if ($$5.A() == $$0) {
-               $$5.b(this, true);
+         for (btk $$4 : $$3) {
+            if ($$4.A() == $$0) {
+               $$4.b(this, true);
                $$2 = true;
             }
          }
 
-         boolean $$6 = false;
+         boolean $$5 = false;
          if (!$$2) {
             this.aq();
             if ($$0.fZ().d) {
-               for (btp $$7 : $$4) {
-                  if ($$7.N_() && $$7.A() == this) {
-                     $$7.a(true, false);
-                     $$6 = true;
+               for (btk $$6 : $$3) {
+                  if ($$6.N_() && $$6.A() == this) {
+                     $$6.a(true, false);
+                     $$5 = true;
                   }
                }
             }
          }
 
-         if ($$2 || $$6) {
+         if ($$2 || $$5) {
             this.a(dxz.b, $$0);
          }
 

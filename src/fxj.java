@@ -53,11 +53,11 @@ public class fxj<T extends chv> extends fue<T> {
          this.a(fhl.d, $$1, $$2, 9.0F, 100.0F);
       }
 
-      this.a($$0.ce, fhl.f, $$3);
-      this.a($$0.cc, fhl.c, $$3);
-      this.a($$0.cf, fhl.g, $$3);
-      this.a($$0.ca, fhl.i, $$3);
-      this.a($$0.cb, fhl.b, $$3);
+      this.a($$0.cg, fhl.f, $$3);
+      this.a($$0.ce, fhl.c, $$3);
+      this.a($$0.ch, fhl.g, $$3);
+      this.a($$0.cc, fhl.i, $$3);
+      this.a($$0.cd, fhl.b, $$3);
       if (this.e) {
          this.a(fhl.a);
       }

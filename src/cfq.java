@@ -5,11 +5,11 @@ public class cfq extends cfc implements btt {
    protected static final ajw<Byte> c = aka.a(cfq.class, ajy.a);
    private static final int d = 25;
    private int e;
-   private int ca;
-   private static final bqc cb = azp.a(20, 39);
    private int cc;
+   private static final bqc cd = azp.a(20, 39);
+   private int ce;
    @Nullable
-   private UUID cd;
+   private UUID cf;
 
    public cfq(bsx<? extends cfq> $$0, dcw $$1) {
       super($$0, $$1);
@@ -17,18 +17,18 @@ public class cfq extends cfc implements btt {
 
    @Override
    protected void B() {
-      this.bU.a(1, new caw(this, 1.0, true));
-      this.bU.a(2, new cbb(this, 0.9, 32.0F));
-      this.bU.a(2, new cax(this, 0.6, false));
-      this.bU.a(4, new cao(this, 0.6));
-      this.bU.a(5, new cbd(this));
-      this.bU.a(7, new cau(this, cmx.class, 6.0F));
-      this.bU.a(8, new cbh(this));
-      this.bV.a(1, new ccd(this));
-      this.bV.a(2, new cce(this));
-      this.bV.a(3, new ccf<>(this, cmx.class, 10, true, false, this::a_));
-      this.bV.a(3, new ccf<>(this, btp.class, 5, false, false, $$0 -> $$0 instanceof cjv && !($$0 instanceof cjp)));
-      this.bV.a(4, new ccl<>(this, false));
+      this.bW.a(1, new caw(this, 1.0, true));
+      this.bW.a(2, new cbb(this, 0.9, 32.0F));
+      this.bW.a(2, new cax(this, 0.6, false));
+      this.bW.a(4, new cao(this, 0.6));
+      this.bW.a(5, new cbd(this));
+      this.bW.a(7, new cau(this, cmx.class, 6.0F));
+      this.bW.a(8, new cbh(this));
+      this.bX.a(1, new ccd(this));
+      this.bX.a(2, new cce(this));
+      this.bX.a(3, new ccf<>(this, cmx.class, 10, true, false, this::a_));
+      this.bX.a(3, new ccf<>(this, btp.class, 5, false, false, $$0 -> $$0 instanceof cjv && !($$0 instanceof cjp)));
+      this.bX.a(4, new ccl<>(this, false));
    }
 
    @Override
@@ -62,8 +62,8 @@ public class cfq extends cfc implements btt {
          this.e--;
       }
 
-      if (this.ca > 0) {
-         this.ca--;
+      if (this.cc > 0) {
+         this.cc--;
       }
 
       if (!this.dO().B) {
@@ -101,28 +101,28 @@ public class cfq extends cfc implements btt {
 
    @Override
    public void c() {
-      this.a(cb.a(this.ah));
+      this.a(cd.a(this.ah));
    }
 
    @Override
    public void a(int $$0) {
-      this.cc = $$0;
+      this.ce = $$0;
    }
 
    @Override
    public int a() {
-      return this.cc;
+      return this.ce;
    }
 
    @Override
    public void a(@Nullable UUID $$0) {
-      this.cd = $$0;
+      this.cf = $$0;
    }
 
    @Nullable
    @Override
    public UUID b() {
-      return this.cd;
+      return this.cf;
    }
 
    private float gm() {
@@ -171,9 +171,9 @@ public class cfq extends cfc implements btt {
          this.e = 10;
          this.a(avp.no, 1.0F, 1.0F);
       } else if ($$0 == 11) {
-         this.ca = 400;
+         this.cc = 400;
       } else if ($$0 == 34) {
-         this.ca = 0;
+         this.cc = 0;
       } else {
          super.b($$0);
       }
@@ -185,10 +185,10 @@ public class cfq extends cfc implements btt {
 
    public void x(boolean $$0) {
       if ($$0) {
-         this.ca = 400;
+         this.cc = 400;
          this.dO().a(this, (byte)11);
       } else {
-         this.ca = 0;
+         this.cc = 0;
          this.dO().a(this, (byte)34);
       }
    }
@@ -228,7 +228,7 @@ public class cfq extends cfc implements btt {
    }
 
    public int gk() {
-      return this.ca;
+      return this.cc;
    }
 
    public boolean gl() {

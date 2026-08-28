@@ -3,10 +3,10 @@ import java.util.UUID;
 import javax.annotation.Nullable;
 
 public abstract class cfe extends bsl {
-   protected static final int cd = 6000;
-   private int ca;
+   protected static final int cf = 6000;
+   private int cc;
    @Nullable
-   private UUID cb;
+   private UUID cd;
 
    protected cfe(bsx<? extends cfe> $$0, dcw $$1) {
       super($$0, $$1);
@@ -17,7 +17,7 @@ public abstract class cfe extends bsl {
    @Override
    protected void ab() {
       if (this.g() != 0) {
-         this.ca = 0;
+         this.cc = 0;
       }
 
       super.ab();
@@ -27,12 +27,12 @@ public abstract class cfe extends bsl {
    public void m_() {
       super.m_();
       if (this.g() != 0) {
-         this.ca = 0;
+         this.cc = 0;
       }
 
-      if (this.ca > 0) {
-         this.ca--;
-         if (this.ca % 10 == 0) {
+      if (this.cc > 0) {
+         this.cc--;
+         if (this.cc % 10 == 0) {
             double $$0 = this.ah.k() * 0.02;
             double $$1 = this.ah.k() * 0.02;
             double $$2 = this.ah.k() * 0.02;
@@ -55,17 +55,17 @@ public abstract class cfe extends bsl {
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      $$0.a("InLove", this.ca);
-      if (this.cb != null) {
-         $$0.a("LoveCause", this.cb);
+      $$0.a("InLove", this.cc);
+      if (this.cd != null) {
+         $$0.a("LoveCause", this.cd);
       }
    }
 
    @Override
    public void a(ub $$0) {
       super.a($$0);
-      this.ca = $$0.h("InLove");
-      this.cb = $$0.b("LoveCause") ? $$0.a("LoveCause") : null;
+      this.cc = $$0.h("InLove");
+      this.cd = $$0.b("LoveCause") ? $$0.a("LoveCause") : null;
    }
 
    public static boolean b(bsx<? extends cfe> $$0, dcx $$1, btr $$2, jd $$3, ayw $$4) {
@@ -124,42 +124,42 @@ public abstract class cfe extends bsl {
    }
 
    public boolean gp() {
-      return this.ca <= 0;
+      return this.cc <= 0;
    }
 
    public void f(@Nullable cmx $$0) {
-      this.ca = 600;
+      this.cc = 600;
       if ($$0 != null) {
-         this.cb = $$0.cz();
+         this.cd = $$0.cz();
       }
 
       this.dO().a(this, (byte)18);
    }
 
    public void s(int $$0) {
-      this.ca = $$0;
+      this.cc = $$0;
    }
 
    public int gq() {
-      return this.ca;
+      return this.cc;
    }
 
    @Nullable
    public aqv gr() {
-      if (this.cb == null) {
+      if (this.cd == null) {
          return null;
       } else {
-         cmx $$0 = this.dO().b(this.cb);
+         cmx $$0 = this.dO().b(this.cd);
          return $$0 instanceof aqv ? (aqv)$$0 : null;
       }
    }
 
    public boolean gs() {
-      return this.ca > 0;
+      return this.cc > 0;
    }
 
    public void gt() {
-      this.ca = 0;
+      this.cc = 0;
    }
 
    public boolean a(cfe $$0) {

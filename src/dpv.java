@@ -164,7 +164,7 @@ public abstract class dpv extends dqb implements brd, crk, crv {
    private static void a(Map<cul, Integer> $$0, dcv $$1, int $$2) {
       cul $$3 = $$1.r();
       if (b($$3)) {
-         if (ab.aU) {
+         if (ab.aV) {
             throw (IllegalStateException)ad.b(
                new IllegalStateException(
                   "A developer tried to explicitly make fire resistant item " + $$3.n(null).getString() + " a furnace fuel. That will not work!"

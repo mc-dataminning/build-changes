@@ -31,8 +31,8 @@ public class gke extends gki<cia> {
       $$3.a(0.0F, -1.501F, 0.0F);
       boolean $$8 = $$0.aO > 0;
       this.o.a($$0, 0.0F, 0.0F, $$2);
-      if ($$0.cc > 0) {
-         float $$9 = (float)$$0.cc / 200.0F;
+      if ($$0.ce > 0) {
+         float $$9 = (float)$$0.ce / 200.0F;
          int $$10 = axy.b.b(ayo.d($$9 * 255.0F), -1);
          fbm $$11 = $$4.getBuffer(gfh.o(g));
          this.o.a($$3, $$11, $$5, gqc.d, $$10);
@@ -45,8 +45,8 @@ public class gke extends gki<cia> {
 
       fbm $$14 = $$4.getBuffer(l);
       this.o.a($$3, $$14, $$5, gqc.d);
-      if ($$0.cc > 0) {
-         float $$15 = ((float)$$0.cc + $$2) / 200.0F;
+      if ($$0.ce > 0) {
+         float $$15 = ((float)$$0.ce + $$2) / 200.0F;
          $$3.a();
          $$3.a(0.0F, -1.0F, -2.0F);
          a($$3, $$15, $$4.getBuffer(gfh.r()));
@@ -55,12 +55,12 @@ public class gke extends gki<cia> {
       }
 
       $$3.b();
-      if ($$0.ce != null) {
+      if ($$0.cg != null) {
          $$3.a();
-         float $$16 = (float)($$0.ce.dt() - ayo.d((double)$$2, $$0.L, $$0.dt()));
-         float $$17 = (float)($$0.ce.dv() - ayo.d((double)$$2, $$0.M, $$0.dv()));
-         float $$18 = (float)($$0.ce.dz() - ayo.d((double)$$2, $$0.N, $$0.dz()));
-         a($$16, $$17 + gkd.a($$0.ce, $$2), $$18, $$2, $$0.ai, $$3, $$4, $$5);
+         float $$16 = (float)($$0.cg.dt() - ayo.d((double)$$2, $$0.L, $$0.dt()));
+         float $$17 = (float)($$0.cg.dv() - ayo.d((double)$$2, $$0.M, $$0.dv()));
+         float $$18 = (float)($$0.cg.dz() - ayo.d((double)$$2, $$0.N, $$0.dz()));
+         a($$16, $$17 + gkd.a($$0.cg, $$2), $$18, $$2, $$0.ai, $$3, $$4, $$5);
          $$3.b();
       }
 
@@ -258,7 +258,7 @@ public class gke extends gki<cia> {
       @Override
       public void a(fbi $$0, fbm $$1, int $$2, int $$3, int $$4) {
          $$0.a();
-         float $$5 = ayo.i(this.z, this.y.bZ, this.y.ca);
+         float $$5 = ayo.i(this.z, this.y.cb, this.y.cc);
          this.f.e = (float)(Math.sin((double)($$5 * (float) (Math.PI * 2))) + 1.0) * 0.2F;
          float $$6 = (float)(Math.sin((double)($$5 * (float) (Math.PI * 2) - 1.0F)) + 1.0);
          $$6 = ($$6 * $$6 + $$6 * 2.0F) * 0.05F;

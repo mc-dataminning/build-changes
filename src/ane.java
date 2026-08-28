@@ -34,7 +34,7 @@ public class ane {
    private static int b(et $$0) throws CommandSyntaxException {
       try {
          Path $$1 = Paths.get(".").relativize(bnl.f.b().normalize());
-         Path $$2 = $$0.l().r() && !ab.aU ? $$1 : $$1.toAbsolutePath();
+         Path $$2 = $$0.l().r() && !ab.aV ? $$1 : $$1.toAbsolutePath();
          wz $$3 = wz.b($$1.toString()).a(n.t).a($$1x -> $$1x.a(new wx(wx.a.f, $$2.toString())).a(new xf(xf.a.a, wz.c("chat.copy.click"))));
          $$0.a(() -> wz.a("commands.jfr.stopped", $$3), false);
          return 1;

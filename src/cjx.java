@@ -6,16 +6,16 @@ public class cjx extends btd implements cjv {
 
    public cjx(bsx<? extends cjx> $$0, dcw $$1) {
       super($$0, $$1);
-      this.bP = 5;
-      this.bR = new cjx.b(this);
+      this.bR = 5;
+      this.bT = new cjx.b(this);
    }
 
    @Override
    protected void B() {
-      this.bU.a(5, new cjx.d(this));
-      this.bU.a(7, new cjx.a(this));
-      this.bU.a(7, new cjx.c(this));
-      this.bV.a(1, new ccf<>(this, cmx.class, 10, true, false, $$0 -> Math.abs($$0.dv() - this.dv()) <= 4.0));
+      this.bW.a(5, new cjx.d(this));
+      this.bW.a(7, new cjx.a(this));
+      this.bW.a(7, new cjx.c(this));
+      this.bX.a(1, new ccf<>(this, cmx.class, 10, true, false, $$0 -> Math.abs($$0.dv() - this.dv()) <= 4.0));
    }
 
    public boolean s() {

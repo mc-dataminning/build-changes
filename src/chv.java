@@ -11,20 +11,20 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class chv extends cfe {
-   private static final int cg = 1700;
-   private static final int ch = 6000;
-   private static final int ci = 30;
-   private static final int cj = 120;
-   private static final int ck = 48000;
-   private static final float cl = 0.4F;
-   private static final bsu cm = bsu.b(bsx.aR.l(), bsx.aR.m() - 0.4F).b(0.81F);
-   private static final ajw<chv.a> cn = aka.a(chv.class, ajy.C);
-   private static final ajw<Integer> co = aka.a(chv.class, ajy.b);
-   public final bsm ca = new bsm();
-   public final bsm cb = new bsm();
+   private static final int ci = 1700;
+   private static final int cj = 6000;
+   private static final int ck = 30;
+   private static final int cl = 120;
+   private static final int cm = 48000;
+   private static final float cn = 0.4F;
+   private static final bsu co = bsu.b(bsx.aR.l(), bsx.aR.m() - 0.4F).b(0.81F);
+   private static final ajw<chv.a> cp = aka.a(chv.class, ajy.C);
+   private static final ajw<Integer> cq = aka.a(chv.class, ajy.b);
    public final bsm cc = new bsm();
+   public final bsm cd = new bsm();
    public final bsm ce = new bsm();
-   public final bsm cf = new bsm();
+   public final bsm cg = new bsm();
+   public final bsm ch = new bsm();
 
    public static buv.a s() {
       return btp.C().a(buw.v, 0.1F).a(buw.s, 14.0);
@@ -41,8 +41,8 @@ public class chv extends cfe {
    @Override
    protected void a(aka.a $$0) {
       super.a($$0);
-      $$0.a(cn, chv.a.a);
-      $$0.a(co, 0);
+      $$0.a(cp, chv.a.a);
+      $$0.a(cq, 0);
    }
 
    @Override
@@ -60,7 +60,7 @@ public class chv extends cfe {
 
    @Override
    public bsu e(bua $$0) {
-      return this.gv() == chv.a.f ? cm.a(this.ea()) : super.e($$0);
+      return this.gv() == chv.a.f ? co.a(this.ea()) : super.e($$0);
    }
 
    public boolean t() {
@@ -89,36 +89,36 @@ public class chv extends cfe {
    }
 
    private chv.a gv() {
-      return this.ao.a(cn);
+      return this.ao.a(cp);
    }
 
    private chv b(chv.a $$0) {
-      this.ao.a(cn, $$0);
+      this.ao.a(cp, $$0);
       return this;
    }
 
    @Override
    public void a(ajw<?> $$0) {
-      if (cn.equals($$0)) {
+      if (cp.equals($$0)) {
          chv.a $$1 = this.gv();
          this.gw();
          switch ($$1) {
             case b:
-               this.ca.b(this.ai);
+               this.cc.b(this.ai);
                break;
             case c:
-               this.cb.b(this.ai);
+               this.cd.b(this.ai);
                break;
             case d:
-               this.cc.b(this.ai);
+               this.ce.b(this.ai);
             case e:
             default:
                break;
             case f:
-               this.ce.b(this.ai);
+               this.cg.b(this.ai);
                break;
             case g:
-               this.cf.b(this.ai);
+               this.ch.b(this.ai);
          }
 
          this.i_();
@@ -128,11 +128,11 @@ public class chv extends cfe {
    }
 
    private void gw() {
+      this.cg.a();
       this.ce.a();
+      this.ch.a();
       this.cc.a();
-      this.cf.a();
-      this.ca.a();
-      this.cb.a();
+      this.cd.a();
    }
 
    public chv a(chv.a $$0) {
@@ -171,7 +171,7 @@ public class chv extends cfe {
    }
 
    private chv gy() {
-      this.ao.a(co, this.ai + 120);
+      this.ao.a(cq, this.ai + 120);
       this.dO().a(this, (byte)63);
       return this;
    }
@@ -206,7 +206,7 @@ public class chv extends cfe {
    }
 
    private void gz() {
-      if (!this.dO().x_() && this.ao.a(co) == this.ai) {
+      if (!this.dO().x_() && this.ao.a(cq) == this.ai) {
          aqu $$0 = (aqu)this.dO();
          erw $$1 = $$0.o().be().b(ern.aU);
          eru $$2 = new eru.a($$0).a(eun.f, this.gu()).a(eun.a, this).a(eum.j);
@@ -259,9 +259,9 @@ public class chv extends cfe {
    }
 
    @Override
-   protected void ff() {
+   public void ff() {
       super.ff();
-      double $$0 = this.bR.c();
+      double $$0 = this.bT.c();
       if ($$0 > 0.0) {
          double $$1 = this.dr().i();
          if ($$1 < 0.01) {
@@ -293,7 +293,7 @@ public class chv extends cfe {
             this.gB();
             break;
          case f:
-            this.a(this.ce).gz();
+            this.a(this.cg).gz();
       }
 
       super.l();

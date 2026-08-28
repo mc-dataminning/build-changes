@@ -89,11 +89,11 @@ public class fuu<T extends cgv> extends fvt<T> {
       this.a($$0, $$4, $$5, $$3);
       this.a($$0);
       this.a(fhj.a, $$1, $$2, 2.0F, 2.5F);
-      this.a($$0.cg, fhj.b, $$3, 1.0F);
-      this.a($$0.ch, fhj.c, $$3, 1.0F);
-      this.a($$0.ci, fhj.d, $$3, 1.0F);
-      this.a($$0.cj, fhj.f, $$3, 1.0F);
-      this.a($$0.ck, fhj.e, $$3, 1.0F);
+      this.a($$0.ci, fhj.b, $$3, 1.0F);
+      this.a($$0.cj, fhj.c, $$3, 1.0F);
+      this.a($$0.ck, fhj.d, $$3, 1.0F);
+      this.a($$0.cl, fhj.f, $$3, 1.0F);
+      this.a($$0.cm, fhj.e, $$3, 1.0F);
    }
 
    private void a(T $$0, float $$1, float $$2, float $$3) {

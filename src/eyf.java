@@ -3,7 +3,7 @@ import javax.annotation.Nullable;
 
 public interface eyf {
    String a_ = "*";
-   eyf cA = new eyf() {
+   eyf cC = new eyf() {
       @Override
       public String cB() {
          return "*";
@@ -24,7 +24,7 @@ public interface eyf {
 
    static eyf c(final String $$0) {
       if ($$0.equals("*")) {
-         return cA;
+         return cC;
       } else {
          final wz $$1 = wz.b($$0);
          return new eyf() {

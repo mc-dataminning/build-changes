@@ -396,7 +396,7 @@ public class fgo extends bpl<Runnable> implements fan {
       gvu.a.a(gvq.C);
       fgo.b $$15 = new fgo.b($$11, $$0.e);
       this.a(new fnt(this, $$14, $$1x -> ad.a($$1x, $$1xx -> this.a($$1xx, $$15), () -> {
-            if (ab.aU) {
+            if (ab.aV) {
                this.bg();
             }
 
@@ -779,7 +779,7 @@ public class fgo extends bpl<Runnable> implements fan {
    }
 
    public void a(@Nullable fod $$0) {
-      if (ab.aU && Thread.currentThread() != this.aY) {
+      if (ab.aV && Thread.currentThread() != this.aY) {
          F.error("setScreen called from non-game thread");
       }
 
@@ -1950,7 +1950,7 @@ public class fgo extends bpl<Runnable> implements fan {
    }
 
    public boolean E() {
-      return ab.aU ? false : this.bq().flag(UserFlag.TELEMETRY_ENABLED);
+      return ab.aV ? false : this.bq().flag(UserFlag.TELEMETRY_ENABLED);
    }
 
    public boolean F() {

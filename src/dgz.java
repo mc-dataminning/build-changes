@@ -1,7 +1,7 @@
 import java.util.Optional;
 
 public interface dgz<T extends Enum<T>> {
-   int w_ = 4;
+   int y_ = 4;
 
    Optional<dtc> i_(dtc var1);
 

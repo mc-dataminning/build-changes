@@ -23,8 +23,8 @@ public class glv extends glp<cft, fwj<cft>> {
 
    protected void a(cft $$0, fbi $$1, float $$2, float $$3, float $$4, float $$5) {
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if ($$0.cb > 0) {
-         int $$6 = $$0.cb;
+      if ($$0.cd > 0) {
+         int $$6 = $$0.cd;
          int $$7 = $$6 + 1;
          float $$8 = 7.0F;
          float $$9 = $$0.o_() ? 0.3F : 0.8F;

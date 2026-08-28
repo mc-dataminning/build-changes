@@ -6,31 +6,31 @@ import java.util.OptionalInt;
 import javax.annotation.Nullable;
 
 public class cgy extends cfe implements buo<jm<cfp>> {
-   protected static final ImmutableList<cdz<? extends cdy<? super cgy>>> ca = ImmutableList.of(cdz.c, cdz.f, cdz.v, cdz.s, cdz.w);
-   protected static final ImmutableList<ccs<?>> cb = ImmutableList.of(
+   protected static final ImmutableList<cdz<? extends cdy<? super cgy>>> cc = ImmutableList.of(cdz.c, cdz.f, cdz.v, cdz.s, cdz.w);
+   protected static final ImmutableList<ccs<?>> cd = ImmutableList.of(
       ccs.n, ccs.g, ccs.h, ccs.m, ccs.E, ccs.t, ccs.r, ccs.S, ccs.T, ccs.o, ccs.O, ccs.P, new ccs[]{ccs.R, ccs.x, ccs.y, ccs.B, ccs.X, ccs.Y, ccs.Z, ccs.aa}
    );
-   private static final ajw<jm<cfp>> ci = aka.a(cgy.class, ajy.z);
-   private static final ajw<OptionalInt> cj = aka.a(cgy.class, ajy.v);
-   private static final int ck = 5;
-   public static final String cc = "variant";
-   private static final akq<cfp> cl = cfp.b;
-   public final bsm ce = new bsm();
-   public final bsm cf = new bsm();
+   private static final ajw<jm<cfp>> ck = aka.a(cgy.class, ajy.z);
+   private static final ajw<OptionalInt> cl = aka.a(cgy.class, ajy.v);
+   private static final int cm = 5;
+   public static final String ce = "variant";
+   private static final akq<cfp> cn = cfp.b;
    public final bsm cg = new bsm();
    public final bsm ch = new bsm();
+   public final bsm ci = new bsm();
+   public final bsm cj = new bsm();
 
    public cgy(bsx<? extends cfe> $$0, dcw $$1) {
       super($$0, $$1);
-      this.bQ = new cgy.a(this);
+      this.bS = new cgy.a(this);
       this.a(epv.j, 4.0F);
       this.a(epv.e, -1.0F);
-      this.bR = new bzr(this, 85, 10, 0.02F, 0.1F, true);
+      this.bT = new bzr(this, 85, 10, 0.02F, 0.1F, true);
    }
 
    @Override
    protected buq.b<cgy> dU() {
-      return buq.a(cb, ca);
+      return buq.a(cd, cc);
    }
 
    @Override
@@ -46,21 +46,21 @@ public class cgy extends cfe implements buo<jm<cfp>> {
    @Override
    protected void a(aka.a $$0) {
       super.a($$0);
-      $$0.a(ci, lt.aj.g(cl));
-      $$0.a(cj, OptionalInt.empty());
+      $$0.a(ck, lt.aj.g(cn));
+      $$0.a(cl, OptionalInt.empty());
    }
 
    @Override
    public void s() {
-      this.ao.a(cj, OptionalInt.empty());
+      this.ao.a(cl, OptionalInt.empty());
    }
 
    public Optional<bsr> t() {
-      return this.ao.a(cj).stream().mapToObj(this.dO()::a).filter(Objects::nonNull).findFirst();
+      return this.ao.a(cl).stream().mapToObj(this.dO()::a).filter(Objects::nonNull).findFirst();
    }
 
    public void c(bsr $$0) {
-      this.ao.a(cj, OptionalInt.of($$0.an()));
+      this.ao.a(cl, OptionalInt.of($$0.an()));
    }
 
    @Override
@@ -74,18 +74,18 @@ public class cgy extends cfe implements buo<jm<cfp>> {
    }
 
    public jm<cfp> x() {
-      return this.ao.a(ci);
+      return this.ao.a(ck);
    }
 
    @Override
    public void i(jm<cfp> $$0) {
-      this.ao.a(ci, $$0);
+      this.ao.a(ck, $$0);
    }
 
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      $$0.a("variant", this.x().e().orElse(cl).a().toString());
+      $$0.a("variant", this.x().e().orElse(cn).a().toString());
    }
 
    @Override
@@ -108,7 +108,7 @@ public class cgy extends cfe implements buo<jm<cfp>> {
    @Override
    public void l() {
       if (this.dO().x_()) {
-         this.ch.a(this.bi() && !this.aU.c(), this.ai);
+         this.cj.a(this.bi() && !this.aU.c(), this.ai);
       }
 
       super.l();
@@ -119,21 +119,21 @@ public class cgy extends cfe implements buo<jm<cfp>> {
       if (at.equals($$0)) {
          bua $$1 = this.at();
          if ($$1 == bua.g) {
-            this.ce.a(this.ai);
-         } else {
-            this.ce.a();
-         }
-
-         if ($$1 == bua.i) {
-            this.cf.a(this.ai);
-         } else {
-            this.cf.a();
-         }
-
-         if ($$1 == bua.j) {
             this.cg.a(this.ai);
          } else {
             this.cg.a();
+         }
+
+         if ($$1 == bua.i) {
+            this.ch.a(this.ai);
+         } else {
+            this.ch.a();
+         }
+
+         if ($$1 == bua.j) {
+            this.ci.a(this.ai);
+         } else {
+            this.ci.a();
          }
       }
 
@@ -143,7 +143,7 @@ public class cgy extends cfe implements buo<jm<cfp>> {
    @Override
    protected void z(float $$0) {
       float $$1;
-      if (this.ce.c()) {
+      if (this.cg.c()) {
          $$1 = 0.0F;
       } else {
          $$1 = Math.min($$0 * 25.0F, 1.0F);
@@ -186,7 +186,7 @@ public class cgy extends cfe implements buo<jm<cfp>> {
       } else if ($$4.a(awd.aj)) {
          this.i(lt.aj.g(cfp.c));
       } else {
-         this.i(lt.aj.g(cl));
+         this.i(lt.aj.g(cn));
       }
 
       cgz.a(this, $$0.E_());

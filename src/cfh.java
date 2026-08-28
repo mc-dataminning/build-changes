@@ -3,24 +3,24 @@ import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
 public class cfh extends bul implements buo<jm<cfi>> {
-   public static final double ce = 0.6;
-   public static final double cf = 0.8;
-   public static final double cg = 1.33;
-   private static final ajw<jm<cfi>> ch = aka.a(cfh.class, ajy.x);
-   private static final ajw<Boolean> ci = aka.a(cfh.class, ajy.k);
-   private static final ajw<Boolean> cj = aka.a(cfh.class, ajy.k);
-   private static final ajw<Integer> ck = aka.a(cfh.class, ajy.b);
-   private static final akq<cfi> cl = cfi.c;
+   public static final double cg = 0.6;
+   public static final double ch = 0.8;
+   public static final double ci = 1.33;
+   private static final ajw<jm<cfi>> cj = aka.a(cfh.class, ajy.x);
+   private static final ajw<Boolean> ck = aka.a(cfh.class, ajy.k);
+   private static final ajw<Boolean> cl = aka.a(cfh.class, ajy.k);
+   private static final ajw<Integer> cm = aka.a(cfh.class, ajy.b);
+   private static final akq<cfi> cn = cfi.c;
    @Nullable
-   private cfh.a<cmx> cm;
+   private cfh.a<cmx> co;
    @Nullable
-   private cbu cn;
-   private float co;
-   private float cp;
+   private cbu cp;
    private float cq;
    private float cr;
    private float cs;
    private float ct;
+   private float cu;
+   private float cv;
 
    public cfh(bsx<? extends cfh> $$0, dcw $$1) {
       super($$0, $$1);
@@ -33,70 +33,70 @@ public class cfh extends bul implements buo<jm<cfi>> {
 
    @Override
    protected void B() {
-      this.cn = new cfh.c(this, 0.6, $$0 -> $$0.a(awn.ae), true);
-      this.bU.a(1, new cag(this));
-      this.bU.a(1, new bul.a(1.5));
-      this.bU.a(2, new cbr(this));
-      this.bU.a(3, new cfh.b(this));
-      this.bU.a(4, this.cn);
-      this.bU.a(5, new bzz(this, 1.1, 8));
-      this.bU.a(6, new cak(this, 1.0, 10.0F, 5.0F));
-      this.bU.a(7, new caa(this, 0.8));
-      this.bU.a(8, new cas(this, 0.3F));
-      this.bU.a(9, new cbc(this));
-      this.bU.a(10, new bzy(this, 0.8));
-      this.bU.a(11, new cbz(this, 0.8, 1.0000001E-5F));
-      this.bU.a(12, new cau(this, cmx.class, 10.0F));
-      this.bV.a(1, new cci<>(this, cfy.class, false, null));
-      this.bV.a(1, new cci<>(this, cgf.class, false, cgf.ca));
+      this.cp = new cfh.c(this, 0.6, $$0 -> $$0.a(awn.ae), true);
+      this.bW.a(1, new cag(this));
+      this.bW.a(1, new bul.a(1.5));
+      this.bW.a(2, new cbr(this));
+      this.bW.a(3, new cfh.b(this));
+      this.bW.a(4, this.cp);
+      this.bW.a(5, new bzz(this, 1.1, 8));
+      this.bW.a(6, new cak(this, 1.0, 10.0F, 5.0F));
+      this.bW.a(7, new caa(this, 0.8));
+      this.bW.a(8, new cas(this, 0.3F));
+      this.bW.a(9, new cbc(this));
+      this.bW.a(10, new bzy(this, 0.8));
+      this.bW.a(11, new cbz(this, 0.8, 1.0000001E-5F));
+      this.bW.a(12, new cau(this, cmx.class, 10.0F));
+      this.bX.a(1, new cci<>(this, cfy.class, false, null));
+      this.bX.a(1, new cci<>(this, cgf.class, false, cgf.cc));
    }
 
    public jm<cfi> gv() {
-      return this.ao.a(ch);
+      return this.ao.a(cj);
    }
 
    @Override
    public void i(jm<cfi> $$0) {
-      this.ao.a(ch, $$0);
-   }
-
-   public void A(boolean $$0) {
-      this.ao.a(ci, $$0);
-   }
-
-   public boolean gw() {
-      return this.ao.a(ci);
-   }
-
-   void B(boolean $$0) {
       this.ao.a(cj, $$0);
    }
 
+   public void A(boolean $$0) {
+      this.ao.a(ck, $$0);
+   }
+
+   public boolean gw() {
+      return this.ao.a(ck);
+   }
+
+   void B(boolean $$0) {
+      this.ao.a(cl, $$0);
+   }
+
    boolean gB() {
-      return this.ao.a(cj);
+      return this.ao.a(cl);
    }
 
    public cti gx() {
-      return cti.a(this.ao.a(ck));
+      return cti.a(this.ao.a(cm));
    }
 
    private void a(cti $$0) {
-      this.ao.a(ck, $$0.a());
+      this.ao.a(cm, $$0.a());
    }
 
    @Override
    protected void a(aka.a $$0) {
       super.a($$0);
-      $$0.a(ch, lt.ai.g(cl));
-      $$0.a(ci, false);
-      $$0.a(cj, false);
-      $$0.a(ck, cti.o.a());
+      $$0.a(cj, lt.ai.g(cn));
+      $$0.a(ck, false);
+      $$0.a(cl, false);
+      $$0.a(cm, cti.o.a());
    }
 
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      $$0.a("variant", this.gv().e().orElse(cl).a().toString());
+      $$0.a("variant", this.gv().e().orElse(cn).a().toString());
       $$0.a("CollarColor", (byte)this.gx().a());
    }
 
@@ -178,7 +178,7 @@ public class cfh extends bul implements buo<jm<cfi>> {
    @Override
    public void l() {
       super.l();
-      if (this.cn != null && this.cn.i() && !this.s() && this.ai % 100 == 0) {
+      if (this.cp != null && this.cp.i() && !this.s() && this.ai % 100 == 0) {
          this.a(avp.dV, 1.0F, 1.0F);
       }
 
@@ -195,36 +195,36 @@ public class cfh extends bul implements buo<jm<cfi>> {
    }
 
    private void gD() {
-      this.cp = this.co;
       this.cr = this.cq;
-      if (this.gw()) {
-         this.co = Math.min(1.0F, this.co + 0.15F);
-         this.cq = Math.min(1.0F, this.cq + 0.08F);
-      } else {
-         this.co = Math.max(0.0F, this.co - 0.22F);
-         this.cq = Math.max(0.0F, this.cq - 0.13F);
-      }
-   }
-
-   private void gE() {
       this.ct = this.cs;
-      if (this.gB()) {
-         this.cs = Math.min(1.0F, this.cs + 0.1F);
+      if (this.gw()) {
+         this.cq = Math.min(1.0F, this.cq + 0.15F);
+         this.cs = Math.min(1.0F, this.cs + 0.08F);
       } else {
+         this.cq = Math.max(0.0F, this.cq - 0.22F);
          this.cs = Math.max(0.0F, this.cs - 0.13F);
       }
    }
 
-   public float H(float $$0) {
-      return ayo.i($$0, this.cp, this.co);
+   private void gE() {
+      this.cv = this.cu;
+      if (this.gB()) {
+         this.cu = Math.min(1.0F, this.cu + 0.1F);
+      } else {
+         this.cu = Math.max(0.0F, this.cu - 0.13F);
+      }
    }
 
-   public float I(float $$0) {
+   public float H(float $$0) {
       return ayo.i($$0, this.cr, this.cq);
    }
 
-   public float J(float $$0) {
+   public float I(float $$0) {
       return ayo.i($$0, this.ct, this.cs);
+   }
+
+   public float J(float $$0) {
+      return ayo.i($$0, this.cv, this.cu);
    }
 
    @Nullable
@@ -346,13 +346,13 @@ public class cfh extends bul implements buo<jm<cfi>> {
    }
 
    protected void gA() {
-      if (this.cm == null) {
-         this.cm = new cfh.a<>(this, cmx.class, 16.0F, 0.8, 1.33);
+      if (this.co == null) {
+         this.co = new cfh.a<>(this, cmx.class, 16.0F, 0.8, 1.33);
       }
 
-      this.bU.a(this.cm);
+      this.bW.a(this.co);
       if (!this.s()) {
-         this.bU.a(4, this.cm);
+         this.bW.a(4, this.co);
       }
    }
 

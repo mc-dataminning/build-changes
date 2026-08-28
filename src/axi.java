@@ -5,7 +5,9 @@ public class axi {
    public static final int d = -6250336;
    public static final int e = -4539718;
    public static final int f = -65536;
-   public static final int g = -2142128;
-   public static final int h = -256;
-   public static final int i = -171;
+   public static final int g = -16711936;
+   public static final int h = -16776961;
+   public static final int i = -2142128;
+   public static final int j = -256;
+   public static final int k = -171;
 }

@@ -29,7 +29,7 @@ public class bpc {
       if ($$0 < 0) {
          throw (IllegalArgumentException)ad.b(new IllegalArgumentException("Weight should be >= 0"));
       } else {
-         if ($$0 == 0 && ab.aU) {
+         if ($$0 == 0 && ab.aV) {
             c.warn("Found 0 weight, make sure this is intentional!");
          }
       }

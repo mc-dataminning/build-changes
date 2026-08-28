@@ -790,7 +790,8 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyf {
          for (float $$13 : $$12) {
             exc $$14 = a(new exc($$0.c, (double)$$13, $$0.e), $$8, $$10);
             if ($$14.i() > $$3.i()) {
-               return $$14;
+               double $$15 = $$1.b - $$8.b;
+               return $$14.b(0.0, -$$15, 0.0);
             }
          }
       }

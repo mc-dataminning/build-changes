@@ -5,7 +5,7 @@ import javax.annotation.Nullable;
 public class cks extends cjk {
    private static final String b = "Johnny";
    static final Predicate<bqo> e = $$0 -> $$0 == bqo.c || $$0 == bqo.d;
-   boolean ca;
+   boolean cc;
 
    public cks(bsx<? extends cks> $$0, dcw $$1) {
       super($$0, $$1);
@@ -14,19 +14,19 @@ public class cks extends cjk {
    @Override
    protected void B() {
       super.B();
-      this.bU.a(0, new cag(this));
-      this.bU.a(1, new cks.a(this));
-      this.bU.a(2, new cjk.b(this));
-      this.bU.a(3, new coj.a(this, 10.0F));
-      this.bU.a(4, new caw(this, 1.0, false));
-      this.bV.a(1, new cce(this, coj.class).a());
-      this.bV.a(2, new ccf<>(this, cmx.class, true));
-      this.bV.a(3, new ccf<>(this, cmf.class, true));
-      this.bV.a(3, new ccf<>(this, cfq.class, true));
-      this.bV.a(4, new cks.b(this));
-      this.bU.a(8, new cbj(this, 0.6));
-      this.bU.a(9, new cau(this, cmx.class, 3.0F, 1.0F));
-      this.bU.a(10, new cau(this, btp.class, 8.0F));
+      this.bW.a(0, new cag(this));
+      this.bW.a(1, new cks.a(this));
+      this.bW.a(2, new cjk.b(this));
+      this.bW.a(3, new coj.a(this, 10.0F));
+      this.bW.a(4, new caw(this, 1.0, false));
+      this.bX.a(1, new cce(this, coj.class).a());
+      this.bX.a(2, new ccf<>(this, cmx.class, true));
+      this.bX.a(3, new ccf<>(this, cmf.class, true));
+      this.bX.a(3, new ccf<>(this, cfq.class, true));
+      this.bX.a(4, new cks.b(this));
+      this.bW.a(8, new cbj(this, 0.6));
+      this.bW.a(9, new cau(this, cmx.class, 3.0F, 1.0F));
+      this.bW.a(10, new cau(this, btp.class, 8.0F));
    }
 
    @Override
@@ -46,7 +46,7 @@ public class cks extends cjk {
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      if (this.ca) {
+      if (this.cc) {
          $$0.a("Johnny", true);
       }
    }
@@ -64,7 +64,7 @@ public class cks extends cjk {
    public void a(ub $$0) {
       super.a($$0);
       if ($$0.b("Johnny", 99)) {
-         this.ca = $$0.q("Johnny");
+         this.cc = $$0.q("Johnny");
       }
    }
 
@@ -94,8 +94,8 @@ public class cks extends cjk {
    @Override
    public void b(@Nullable wz $$0) {
       super.b($$0);
-      if (!this.ca && $$0 != null && $$0.getString().equals("Johnny")) {
-         this.ca = true;
+      if (!this.cc && $$0 != null && $$0.getString().equals("Johnny")) {
+         this.cc = true;
       }
    }
 
@@ -159,7 +159,7 @@ public class cks extends cjk {
 
       @Override
       public boolean b() {
-         return ((cks)this.e).ca && super.b();
+         return ((cks)this.e).cc && super.b();
       }
 
       @Override

@@ -20,7 +20,7 @@ public class gln extends glp<ckc, fwa<ckc>> {
 
    protected void a(ckc $$0, fbi $$1, float $$2) {
       int $$3 = $$0.gl();
-      float $$4 = ayo.i($$2, $$0.ca, $$0.bZ) / ((float)$$3 * 0.5F + 1.0F);
+      float $$4 = ayo.i($$2, $$0.cc, $$0.cb) / ((float)$$3 * 0.5F + 1.0F);
       float $$5 = 1.0F / ($$4 + 1.0F);
       $$1.b($$5 * (float)$$3, 1.0F / $$5 * (float)$$3, $$5 * (float)$$3);
    }

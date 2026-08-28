@@ -3,10 +3,10 @@ import javax.annotation.Nullable;
 import org.apache.commons.lang3.tuple.Pair;
 
 public class cmq extends cmf {
-   private static final int cc = 5;
+   private static final int ce = 5;
    @Nullable
-   private jd cd;
-   private int ce;
+   private jd cf;
+   private int cg;
 
    public cmq(bsx<? extends cmq> $$0, dcw $$1) {
       super($$0, $$1);
@@ -14,24 +14,24 @@ public class cmq extends cmf {
 
    @Override
    protected void B() {
-      this.bU.a(0, new cag(this));
-      this.bU.a(0, new cbx<>(this, cwu.a(cut.sk, cwv.g), avp.By, $$0 -> this.dO().S() && !$$0.ci()));
-      this.bU.a(0, new cbx<>(this, new cuq(cut.qE), avp.BD, $$0 -> this.dO().R() && $$0.ci()));
-      this.bU.a(1, new cbv(this));
-      this.bU.a(1, new bzt<>(this, ckw.class, 8.0F, 0.5, 0.5));
-      this.bU.a(1, new bzt<>(this, cjw.class, 12.0F, 0.5, 0.5));
-      this.bU.a(1, new bzt<>(this, cks.class, 8.0F, 0.5, 0.5));
-      this.bU.a(1, new bzt<>(this, ckr.class, 8.0F, 0.5, 0.5));
-      this.bU.a(1, new bzt<>(this, ckg.class, 15.0F, 0.5, 0.5));
-      this.bU.a(1, new bzt<>(this, ckb.class, 12.0F, 0.5, 0.5));
-      this.bU.a(1, new bzt<>(this, ckv.class, 10.0F, 0.5, 0.5));
-      this.bU.a(1, new cbf(this, 0.5));
-      this.bU.a(1, new cav(this));
-      this.bU.a(2, new cmq.a(this, 2.0, 0.35));
-      this.bU.a(4, new cba(this, 0.35));
-      this.bU.a(8, new cbz(this, 0.35));
-      this.bU.a(9, new cap(this, cmx.class, 3.0F, 1.0F));
-      this.bU.a(10, new cau(this, btp.class, 8.0F));
+      this.bW.a(0, new cag(this));
+      this.bW.a(0, new cbx<>(this, cwu.a(cut.sk, cwv.g), avp.By, $$0 -> this.dO().S() && !$$0.ci()));
+      this.bW.a(0, new cbx<>(this, new cuq(cut.qE), avp.BD, $$0 -> this.dO().R() && $$0.ci()));
+      this.bW.a(1, new cbv(this));
+      this.bW.a(1, new bzt<>(this, ckw.class, 8.0F, 0.5, 0.5));
+      this.bW.a(1, new bzt<>(this, cjw.class, 12.0F, 0.5, 0.5));
+      this.bW.a(1, new bzt<>(this, cks.class, 8.0F, 0.5, 0.5));
+      this.bW.a(1, new bzt<>(this, ckr.class, 8.0F, 0.5, 0.5));
+      this.bW.a(1, new bzt<>(this, ckg.class, 15.0F, 0.5, 0.5));
+      this.bW.a(1, new bzt<>(this, ckb.class, 12.0F, 0.5, 0.5));
+      this.bW.a(1, new bzt<>(this, ckv.class, 10.0F, 0.5, 0.5));
+      this.bW.a(1, new cbf(this, 0.5));
+      this.bW.a(1, new cav(this));
+      this.bW.a(2, new cmq.a(this, 2.0, 0.35));
+      this.bW.a(4, new cba(this, 0.35));
+      this.bW.a(8, new cbz(this, 0.35));
+      this.bW.a(9, new cap(this, cmx.class, 3.0F, 1.0F));
+      this.bW.a(10, new cau(this, btp.class, 8.0F));
    }
 
    @Nullable
@@ -100,9 +100,9 @@ public class cmq extends cmf {
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      $$0.a("DespawnDelay", this.ce);
-      if (this.cd != null) {
-         $$0.a("wander_target", uq.a(this.cd));
+      $$0.a("DespawnDelay", this.cg);
+      if (this.cf != null) {
+         $$0.a("wander_target", uq.a(this.cf));
       }
    }
 
@@ -110,10 +110,10 @@ public class cmq extends cmf {
    public void a(ub $$0) {
       super.a($$0);
       if ($$0.b("DespawnDelay", 99)) {
-         this.ce = $$0.h("DespawnDelay");
+         this.cg = $$0.h("DespawnDelay");
       }
 
-      uq.a($$0, "wander_target").ifPresent($$0x -> this.cd = $$0x);
+      uq.a($$0, "wander_target").ifPresent($$0x -> this.cf = $$0x);
       this.c_(Math.max(0, this.g()));
    }
 
@@ -161,11 +161,11 @@ public class cmq extends cmf {
    }
 
    public void u(int $$0) {
-      this.ce = $$0;
+      this.cg = $$0;
    }
 
    public int gt() {
-      return this.ce;
+      return this.cg;
    }
 
    @Override
@@ -177,18 +177,18 @@ public class cmq extends cmf {
    }
 
    private void gv() {
-      if (this.ce > 0 && !this.gl() && --this.ce == 0) {
+      if (this.cg > 0 && !this.gl() && --this.cg == 0) {
          this.aq();
       }
    }
 
    public void h(@Nullable jd $$0) {
-      this.cd = $$0;
+      this.cf = $$0;
    }
 
    @Nullable
    jd gx() {
-      return this.cd;
+      return this.cf;
    }
 
    class a extends cam {
@@ -206,7 +206,7 @@ public class cmq extends cmf {
       @Override
       public void e() {
          this.a.h(null);
-         cmq.this.bT.n();
+         cmq.this.bV.n();
       }
 
       @Override
@@ -218,13 +218,13 @@ public class cmq extends cmf {
       @Override
       public void a() {
          jd $$0 = this.a.gx();
-         if ($$0 != null && cmq.this.bT.l()) {
+         if ($$0 != null && cmq.this.bV.l()) {
             if (this.a($$0, 10.0)) {
                exc $$1 = new exc((double)$$0.u() - this.a.dt(), (double)$$0.v() - this.a.dv(), (double)$$0.w() - this.a.dz()).d();
                exc $$2 = $$1.a(10.0).b(this.a.dt(), this.a.dv(), this.a.dz());
-               cmq.this.bT.a($$2.c, $$2.d, $$2.e, this.c);
+               cmq.this.bV.a($$2.c, $$2.d, $$2.e, this.c);
             } else {
-               cmq.this.bT.a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), this.c);
+               cmq.this.bV.a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), this.c);
             }
          }
       }

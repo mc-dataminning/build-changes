@@ -125,7 +125,7 @@ public class dfy extends dtb implements dcv {
       this.a($$1);
       this.E = $$1.a(dfy::o, dtc::new);
       this.k(this.E.b());
-      if (ab.aU) {
+      if (ab.aV) {
          String $$2 = this.getClass().getSimpleName();
          if (!$$2.endsWith("Block")) {
             a.error("Block classes should end with Block and {} doesn't.", $$2);

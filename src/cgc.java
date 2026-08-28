@@ -10,11 +10,11 @@ public class cgc extends cfc implements buf, ckh {
 
    @Override
    protected void B() {
-      this.bU.a(1, new cbl(this, 1.25, 20, 10.0F));
-      this.bU.a(2, new cbz(this, 1.0, 1.0000001E-5F));
-      this.bU.a(3, new cau(this, cmx.class, 6.0F));
-      this.bU.a(4, new cbh(this));
-      this.bV.a(1, new ccf<>(this, btp.class, 10, true, false, $$0 -> $$0 instanceof cjv));
+      this.bW.a(1, new cbl(this, 1.25, 20, 10.0F));
+      this.bW.a(2, new cbz(this, 1.0, 1.0000001E-5F));
+      this.bW.a(3, new cau(this, cmx.class, 6.0F));
+      this.bW.a(4, new cbh(this));
+      this.bX.a(1, new ccf<>(this, btp.class, 10, true, false, $$0 -> $$0 instanceof cjv));
    }
 
    public static buv.a s() {

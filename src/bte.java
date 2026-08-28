@@ -1,5 +1,5 @@
 public class bte extends cgd {
-   private static final ajw<Integer> ce = aka.a(bte.class, ajy.b);
+   private static final ajw<Integer> cg = aka.a(bte.class, ajy.b);
 
    public bte(bsx<? extends bte> $$0, dcw $$1) {
       super($$0, $$1);
@@ -13,7 +13,7 @@ public class bte extends cgd {
    @Override
    protected void a(aka.a $$0) {
       super.a($$0);
-      $$0.a(ce, 0);
+      $$0.a(cg, 0);
    }
 
    @Override
@@ -70,11 +70,11 @@ public class bte extends cgd {
    }
 
    private void c(int $$0) {
-      this.ao.a(ce, $$0);
+      this.ao.a(cg, $$0);
    }
 
    public int x() {
-      return this.ao.a(ce);
+      return this.ao.a(cg);
    }
 
    public static boolean a(bsx<? extends btn> $$0, ddl $$1, btr $$2, jd $$3, ayw $$4) {

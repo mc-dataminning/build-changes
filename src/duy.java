@@ -138,7 +138,7 @@ public abstract class duy implements dcc, ddy.a, dvk, dvu {
    public int a(dyy.a $$0, int $$1, int $$2) {
       dyy $$3 = this.h.get($$0);
       if ($$3 == null) {
-         if (ab.aU && this instanceof dvi) {
+         if (ab.aV && this instanceof dvi) {
             n.error("Unprimed heightmap: " + $$0 + " " + $$1 + " " + $$2);
          }
 

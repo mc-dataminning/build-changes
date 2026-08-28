@@ -217,7 +217,7 @@ public class fbv {
       Pattern $$3 = Pattern.compile(".*-([0-9]+)$");
       int $$4 = 1;
 
-      for (char $$5 : ab.bc) {
+      for (char $$5 : ab.bd) {
          $$0 = $$0.replace($$5, '_');
       }
 

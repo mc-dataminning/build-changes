@@ -3,10 +3,10 @@ import java.util.List;
 public class cjs extends cjz {
    public static final float b = bsx.D.l() / bsx.Y.l();
    private static final int e = 1200;
-   private static final int ca = 50;
-   private static final int cb = 6000;
-   private static final int cc = 2;
-   private static final int cd = 1200;
+   private static final int cc = 50;
+   private static final int cd = 6000;
+   private static final int ce = 2;
+   private static final int cf = 1200;
 
    public cjs(bsx<? extends cjs> $$0, dcw $$1) {
       super($$0, $$1);

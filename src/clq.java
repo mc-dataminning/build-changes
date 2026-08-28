@@ -3,17 +3,17 @@ import com.mojang.serialization.Dynamic;
 import javax.annotation.Nullable;
 
 public class clq extends clm {
-   private static final int cb = 50;
-   private static final float cc = 0.35F;
-   private static final int cd = 7;
+   private static final int cd = 50;
+   private static final float ce = 0.35F;
+   private static final int cf = 7;
    protected static final ImmutableList<cdz<? extends cdy<? super clq>>> e = ImmutableList.of(cdz.c, cdz.d, cdz.b, cdz.f, cdz.m);
-   protected static final ImmutableList<ccs<?>> ca = ImmutableList.of(
+   protected static final ImmutableList<ccs<?>> cc = ImmutableList.of(
       ccs.n, ccs.v, ccs.g, ccs.h, ccs.k, ccs.l, ccs.ao, ccs.an, ccs.x, ccs.y, ccs.m, ccs.E, new ccs[]{ccs.o, ccs.p, ccs.q, ccs.t, ccs.ab, ccs.M, ccs.b}
    );
 
    public clq(bsx<? extends clq> $$0, dcw $$1) {
       super($$0, $$1);
-      this.bP = 20;
+      this.bR = 20;
    }
 
    public static buv.a x() {
@@ -35,7 +35,7 @@ public class clq extends clm {
 
    @Override
    protected buq.b<clq> dU() {
-      return buq.a(ca, e);
+      return buq.a(cc, e);
    }
 
    @Override

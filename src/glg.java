@@ -40,14 +40,14 @@ public class glg<T extends cja> extends gki<T> {
       }
 
       if (!$$10.e()) {
-         eqr $$13 = $$0.E();
+         eqr $$13 = $$0.a($$10);
          if ($$9) {
             $$3.a(0.0F, 0.0F, 0.5F);
          } else {
             $$3.a(0.0F, 0.0F, 0.4375F);
          }
 
-         int $$14 = $$13 != null ? $$0.H() % 4 * 2 : $$0.H();
+         int $$14 = $$13 != null ? $$0.F() % 4 * 2 : $$0.F();
          $$3.a(a.f.rotationDegrees((float)$$14 * 360.0F / 8.0F));
          if ($$13 != null) {
             $$3.a(a.f.rotationDegrees(180.0F));

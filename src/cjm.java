@@ -11,18 +11,18 @@ public class cjm extends ckd {
       this.a(epv.i, 8.0F);
       this.a(epv.n, 0.0F);
       this.a(epv.o, 0.0F);
-      this.bP = 10;
+      this.bR = 10;
    }
 
    @Override
    protected void B() {
-      this.bU.a(4, new cjm.a(this));
-      this.bU.a(5, new cba(this, 1.0));
-      this.bU.a(7, new cbz(this, 1.0, 0.0F));
-      this.bU.a(8, new cau(this, cmx.class, 8.0F));
-      this.bU.a(8, new cbh(this));
-      this.bV.a(1, new cce(this).a());
-      this.bV.a(2, new ccf<>(this, cmx.class, true));
+      this.bW.a(4, new cjm.a(this));
+      this.bW.a(5, new cba(this, 1.0));
+      this.bW.a(7, new cbz(this, 1.0, 0.0F));
+      this.bW.a(8, new cau(this, cmx.class, 8.0F));
+      this.bW.a(8, new cbh(this));
+      this.bX.a(1, new cce(this).a());
+      this.bX.a(2, new ccf<>(this, cmx.class, true));
    }
 
    public static buv.a s() {

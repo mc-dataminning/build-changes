@@ -12,8 +12,8 @@ public abstract class coj extends cke {
    @Nullable
    protected coi d;
    private int e;
-   private boolean ca;
-   private int cb;
+   private boolean cc;
+   private int cd;
 
    protected coj(bsx<? extends coj> $$0, dcw $$1) {
       super($$0, $$1);
@@ -22,10 +22,10 @@ public abstract class coj extends cke {
    @Override
    protected void B() {
       super.B();
-      this.bU.a(1, new coj.b<>(this));
-      this.bU.a(3, new cbg<>(this));
-      this.bU.a(4, new coj.d(this, 1.05F, 1));
-      this.bU.a(5, new coj.c(this));
+      this.bW.a(1, new coj.b<>(this));
+      this.bW.a(3, new cbg<>(this));
+      this.bW.a(4, new coj.d(this, 1.05F, 1));
+      this.bW.a(5, new coj.c(this));
    }
 
    @Override
@@ -37,11 +37,11 @@ public abstract class coj extends cke {
    public abstract void a(aqu var1, int var2, boolean var3);
 
    public boolean gx() {
-      return this.ca;
+      return this.cc;
    }
 
    public void A(boolean $$0) {
-      this.ca = $$0;
+      this.cc = $$0;
    }
 
    @Override
@@ -143,7 +143,7 @@ public abstract class coj extends cke {
    public void b(ub $$0) {
       super.b($$0);
       $$0.a("Wave", this.e);
-      $$0.a("CanJoinRaid", this.ca);
+      $$0.a("CanJoinRaid", this.cc);
       if (this.d != null) {
          $$0.a("RaidId", this.d.t());
       }
@@ -153,7 +153,7 @@ public abstract class coj extends cke {
    public void a(ub $$0) {
       super.a($$0);
       this.e = $$0.h("Wave");
-      this.ca = $$0.q("CanJoinRaid");
+      this.cc = $$0.q("CanJoinRaid");
       if ($$0.b("RaidId", 3)) {
          if (this.dO() instanceof aqu) {
             this.d = ((aqu)this.dO()).z().a($$0.h("RaidId"));
@@ -202,11 +202,11 @@ public abstract class coj extends cke {
    }
 
    public int gE() {
-      return this.cb;
+      return this.cd;
    }
 
    public void c(int $$0) {
-      this.cb = $$0;
+      this.cd = $$0;
    }
 
    @Override

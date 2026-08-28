@@ -37,7 +37,7 @@ public class ejj {
       this.h = $$5;
       if ($$3 < $$0 || $$4 < $$1 || $$5 < $$2) {
          String $$6 = "Invalid bounding box data, inverted bounds for: " + this;
-         if (ab.aU) {
+         if (ab.aV) {
             throw new IllegalStateException($$6);
          }
 

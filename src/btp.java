@@ -16,60 +16,60 @@ public abstract class btp extends btn implements btb, btk, bum {
    private static final int c = 1;
    private static final int d = 2;
    private static final int e = 4;
-   protected static final int f = 1;
-   private static final kh bZ = new kh(1, 0, 1);
-   public static final float g = 0.15F;
-   public static final float h = 0.55F;
-   public static final float bH = 0.5F;
-   public static final float bI = 0.25F;
-   public static final float bJ = 0.085F;
-   public static final float bK = 1.0F;
-   public static final int bL = 2;
-   public static final int bM = 2;
-   private static final double ca = Math.sqrt(2.04F) - 0.6F;
-   protected static final akr bN = akr.b("random_spawn_bonus");
-   public int bO;
-   protected int bP;
-   protected bzo bQ;
-   protected bzp bR;
-   protected bzn bS;
-   private final bzk cb;
-   protected cda bT;
-   protected final can bU;
-   protected final can bV;
+   protected static final int h = 1;
+   private static final kh cb = new kh(1, 0, 1);
+   public static final float bH = 0.15F;
+   public static final float bI = 0.55F;
+   public static final float bJ = 0.5F;
+   public static final float bK = 0.25F;
+   public static final float bL = 0.085F;
+   public static final float bM = 1.0F;
+   public static final int bN = 2;
+   public static final int bO = 2;
+   private static final double cc = Math.sqrt(2.04F) - 0.6F;
+   protected static final akr bP = akr.b("random_spawn_bonus");
+   public int bQ;
+   protected int bR;
+   protected bzo bS;
+   protected bzp bT;
+   protected bzn bU;
+   private final bzk cd;
+   protected cda bV;
+   protected final can bW;
+   protected final can bX;
    @Nullable
-   private btn cc;
-   private final cdx cd;
-   private final jv<cuq> ce = jv.a(2, cuq.l);
-   protected final float[] bW = new float[2];
-   private final jv<cuq> cf = jv.a(4, cuq.l);
-   protected final float[] bX = new float[4];
-   private cuq cg = cuq.l;
-   protected float bY;
-   private boolean ch;
-   private boolean ci;
-   private final Map<epv, Float> cj = Maps.newEnumMap(epv.class);
+   private btn ce;
+   private final cdx cf;
+   private final jv<cuq> cg = jv.a(2, cuq.l);
+   protected final float[] bY = new float[2];
+   private final jv<cuq> ch = jv.a(4, cuq.l);
+   protected final float[] bZ = new float[4];
+   private cuq ci = cuq.l;
+   protected float ca;
+   private boolean cj;
+   private boolean ck;
+   private final Map<epv, Float> cl = Maps.newEnumMap(epv.class);
    @Nullable
-   private akq<erw> ck;
-   private long cl;
+   private akq<erw> cm;
+   private long cn;
    @Nullable
-   private btk.a cm;
-   private jd cn = jd.c;
-   private float co = -1.0F;
+   private btk.a co;
+   private jd cp = jd.c;
+   private float cq = -1.0F;
 
    protected btp(bsx<? extends btp> $$0, dcw $$1) {
       super($$0, $$1);
-      this.bU = new can($$1.ah());
-      this.bV = new can($$1.ah());
-      this.bQ = new bzo(this);
-      this.bR = new bzp(this);
-      this.bS = new bzn(this);
-      this.cb = this.H();
-      this.bT = this.b($$1);
-      this.cd = new cdx(this);
-      Arrays.fill(this.bX, 0.085F);
-      Arrays.fill(this.bW, 0.085F);
-      this.bY = 0.085F;
+      this.bW = new can($$1.ah());
+      this.bX = new can($$1.ah());
+      this.bS = new bzo(this);
+      this.bT = new bzp(this);
+      this.bU = new bzn(this);
+      this.cd = this.H();
+      this.bV = this.b($$1);
+      this.cf = new cdx(this);
+      Arrays.fill(this.bZ, 0.085F);
+      Arrays.fill(this.bY, 0.085F);
+      this.ca = 0.085F;
       if ($$1 != null && !$$1.B) {
          this.B();
       }
@@ -102,12 +102,12 @@ public abstract class btp extends btn implements btb, btk, bum {
          $$2 = this;
       }
 
-      Float $$4 = $$2.cj.get($$0);
+      Float $$4 = $$2.cl.get($$0);
       return $$4 == null ? $$0.a() : $$4;
    }
 
    public void a(epv $$0, float $$1) {
-      this.cj.put($$0, $$1);
+      this.cl.put($$0, $$1);
    }
 
    @Override
@@ -123,19 +123,19 @@ public abstract class btp extends btn implements btb, btk, bum {
    }
 
    public bzo I() {
-      return this.bQ;
-   }
-
-   public bzp J() {
-      return this.dd() instanceof btp $$0 ? $$0.J() : this.bR;
-   }
-
-   public bzn L() {
       return this.bS;
    }
 
+   public bzp J() {
+      return this.dd() instanceof btp $$0 ? $$0.J() : this.bT;
+   }
+
+   public bzn L() {
+      return this.bU;
+   }
+
    public cda N() {
-      return this.dd() instanceof btp $$0 ? $$0.N() : this.bT;
+      return this.dd() instanceof btp $$0 ? $$0.N() : this.bV;
    }
 
    @Nullable
@@ -150,13 +150,13 @@ public abstract class btp extends btn implements btb, btk, bum {
    }
 
    public cdx O() {
-      return this.cd;
+      return this.cf;
    }
 
    @Nullable
    @Override
    public btn p() {
-      return this.cc;
+      return this.ce;
    }
 
    @Nullable
@@ -165,7 +165,7 @@ public abstract class btp extends btn implements btb, btk, bum {
    }
 
    public void h(@Nullable btn $$0) {
-      this.cc = $$0;
+      this.ce = $$0;
    }
 
    @Override
@@ -199,7 +199,7 @@ public abstract class btp extends btn implements btb, btk, bum {
    public void aw() {
       super.aw();
       this.dO().ag().a("mobBaseTick");
-      if (this.bE() && this.ah.a(1000) < this.bO++) {
+      if (this.bE() && this.ah.a(1000) < this.bQ++) {
          this.s();
          this.S();
       }
@@ -214,33 +214,33 @@ public abstract class btp extends btn implements btb, btk, bum {
    }
 
    private void s() {
-      this.bO = -this.R();
+      this.bQ = -this.R();
    }
 
    @Override
    protected int eg() {
-      if (this.bP > 0) {
-         int $$0 = this.bP;
+      if (this.bR > 0) {
+         int $$0 = this.bR;
 
-         for (int $$1 = 0; $$1 < this.cf.size(); $$1++) {
-            if (!this.cf.get($$1).e() && this.bX[$$1] <= 1.0F) {
+         for (int $$1 = 0; $$1 < this.ch.size(); $$1++) {
+            if (!this.ch.get($$1).e() && this.bZ[$$1] <= 1.0F) {
                $$0 += 1 + this.ah.a(3);
             }
          }
 
-         for (int $$2 = 0; $$2 < this.ce.size(); $$2++) {
-            if (!this.ce.get($$2).e() && this.bW[$$2] <= 1.0F) {
+         for (int $$2 = 0; $$2 < this.cg.size(); $$2++) {
+            if (!this.cg.get($$2).e() && this.bY[$$2] <= 1.0F) {
                $$0 += 1 + this.ah.a(3);
             }
          }
 
-         if (!this.cg.e() && this.bY <= 1.0F) {
+         if (!this.ci.e() && this.ca <= 1.0F) {
             $$0 += 1 + this.ah.a(3);
          }
 
          return $$0;
       } else {
-         return this.bP;
+         return this.bR;
       }
    }
 
@@ -278,14 +278,14 @@ public abstract class btp extends btn implements btb, btk, bum {
    protected void U() {
       boolean $$0 = !(this.cQ() instanceof btp);
       boolean $$1 = !(this.dc() instanceof cov);
-      this.bU.a(cam.a.a, $$0);
-      this.bU.a(cam.a.c, $$0 && $$1);
-      this.bU.a(cam.a.b, $$0);
+      this.bW.a(cam.a.a, $$0);
+      this.bW.a(cam.a.c, $$0 && $$1);
+      this.bW.a(cam.a.b, $$0);
    }
 
    @Override
    protected float f(float $$0, float $$1) {
-      this.cb.a();
+      this.cd.a();
       return $$1;
    }
 
@@ -298,10 +298,10 @@ public abstract class btp extends btn implements btb, btk, bum {
    public void b(ub $$0) {
       super.b($$0);
       $$0.a("CanPickUpLoot", this.fS());
-      $$0.a("PersistenceRequired", this.ci);
+      $$0.a("PersistenceRequired", this.ck);
       uh $$1 = new uh();
 
-      for (cuq $$2 : this.cf) {
+      for (cuq $$2 : this.ch) {
          if (!$$2.e()) {
             $$1.add($$2.a(this.dQ()));
          } else {
@@ -312,14 +312,14 @@ public abstract class btp extends btn implements btb, btk, bum {
       $$0.a("ArmorItems", $$1);
       uh $$3 = new uh();
 
-      for (float $$4 : this.bX) {
+      for (float $$4 : this.bZ) {
          $$3.add(ue.a($$4));
       }
 
       $$0.a("ArmorDropChances", $$3);
       uh $$5 = new uh();
 
-      for (cuq $$6 : this.ce) {
+      for (cuq $$6 : this.cg) {
          if (!$$6.e()) {
             $$5.add($$6.a(this.dQ()));
          } else {
@@ -330,22 +330,22 @@ public abstract class btp extends btn implements btb, btk, bum {
       $$0.a("HandItems", $$5);
       uh $$7 = new uh();
 
-      for (float $$8 : this.bW) {
+      for (float $$8 : this.bY) {
          $$7.add(ue.a($$8));
       }
 
       $$0.a("HandDropChances", $$7);
-      if (!this.cg.e()) {
-         $$0.a("body_armor_item", this.cg.a(this.dQ()));
-         $$0.a("body_armor_drop_chance", this.bY);
+      if (!this.ci.e()) {
+         $$0.a("body_armor_item", this.ci.a(this.dQ()));
+         $$0.a("body_armor_drop_chance", this.ca);
       }
 
-      this.a($$0, this.cm);
+      this.a($$0, this.co);
       $$0.a("LeftHanded", this.ga());
-      if (this.ck != null) {
-         $$0.a("DeathLootTable", this.ck.a().toString());
-         if (this.cl != 0L) {
-            $$0.a("DeathLootTableSeed", this.cl);
+      if (this.cm != null) {
+         $$0.a("DeathLootTable", this.cm.a().toString());
+         if (this.cn != 0L) {
+            $$0.a("DeathLootTableSeed", this.cn);
          }
       }
 
@@ -361,13 +361,13 @@ public abstract class btp extends btn implements btb, btk, bum {
          this.a_($$0.q("CanPickUpLoot"));
       }
 
-      this.ci = $$0.q("PersistenceRequired");
+      this.ck = $$0.q("PersistenceRequired");
       if ($$0.b("ArmorItems", 9)) {
          uh $$1 = $$0.c("ArmorItems", 10);
 
-         for (int $$2 = 0; $$2 < this.cf.size(); $$2++) {
+         for (int $$2 = 0; $$2 < this.ch.size(); $$2++) {
             ub $$3 = $$1.a($$2);
-            this.cf.set($$2, cuq.a(this.dQ(), $$3));
+            this.ch.set($$2, cuq.a(this.dQ(), $$3));
          }
       }
 
@@ -375,16 +375,16 @@ public abstract class btp extends btn implements btb, btk, bum {
          uh $$4 = $$0.c("ArmorDropChances", 5);
 
          for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
-            this.bX[$$5] = $$4.i($$5);
+            this.bZ[$$5] = $$4.i($$5);
          }
       }
 
       if ($$0.b("HandItems", 9)) {
          uh $$6 = $$0.c("HandItems", 10);
 
-         for (int $$7 = 0; $$7 < this.ce.size(); $$7++) {
+         for (int $$7 = 0; $$7 < this.cg.size(); $$7++) {
             ub $$8 = $$6.a($$7);
-            this.ce.set($$7, cuq.a(this.dQ(), $$8));
+            this.cg.set($$7, cuq.a(this.dQ(), $$8));
          }
       }
 
@@ -392,22 +392,22 @@ public abstract class btp extends btn implements btb, btk, bum {
          uh $$9 = $$0.c("HandDropChances", 5);
 
          for (int $$10 = 0; $$10 < $$9.size(); $$10++) {
-            this.bW[$$10] = $$9.i($$10);
+            this.bY[$$10] = $$9.i($$10);
          }
       }
 
       if ($$0.b("body_armor_item", 10)) {
-         this.cg = cuq.a(this.dQ(), (uy)$$0.p("body_armor_item")).orElse(cuq.l);
-         this.bY = $$0.j("body_armor_drop_chance");
+         this.ci = cuq.a(this.dQ(), (uy)$$0.p("body_armor_item")).orElse(cuq.l);
+         this.ca = $$0.j("body_armor_drop_chance");
       } else {
-         this.cg = cuq.l;
+         this.ci = cuq.l;
       }
 
-      this.cm = this.c($$0);
+      this.co = this.c($$0);
       this.v($$0.q("LeftHanded"));
       if ($$0.b("DeathLootTable", 8)) {
-         this.ck = akq.a(lu.bc, akr.a($$0.l("DeathLootTable")));
-         this.cl = $$0.i("DeathLootTableSeed");
+         this.cm = akq.a(lu.bc, akr.a($$0.l("DeathLootTable")));
+         this.cn = $$0.i("DeathLootTableSeed");
       }
 
       this.u($$0.q("NoAI"));
@@ -416,12 +416,12 @@ public abstract class btp extends btn implements btb, btk, bum {
    @Override
    protected void a(brk $$0, boolean $$1) {
       super.a($$0, $$1);
-      this.ck = null;
+      this.cm = null;
    }
 
    @Override
    public final akq<erw> eA() {
-      return this.ck == null ? this.V() : this.ck;
+      return this.cm == null ? this.V() : this.cm;
    }
 
    protected akq<erw> V() {
@@ -430,7 +430,7 @@ public abstract class btp extends btn implements btb, btk, bum {
 
    @Override
    public long eB() {
-      return this.cl;
+      return this.cn;
    }
 
    public void E(float $$0) {
@@ -476,7 +476,7 @@ public abstract class btp extends btn implements btb, btk, bum {
    }
 
    protected kh X() {
-      return bZ;
+      return cb;
    }
 
    protected void b(cjh $$0) {
@@ -520,19 +520,19 @@ public abstract class btp extends btn implements btb, btk, bum {
    protected void b(bsy $$0, cuq $$1) {
       this.a($$0, $$1);
       this.e($$0);
-      this.ci = true;
+      this.ck = true;
    }
 
    public void e(bsy $$0) {
       switch ($$0.a()) {
          case a:
-            this.bW[$$0.b()] = 2.0F;
+            this.bY[$$0.b()] = 2.0F;
             break;
          case b:
-            this.bX[$$0.b()] = 2.0F;
+            this.bZ[$$0.b()] = 2.0F;
             break;
          case c:
-            this.bY = 2.0F;
+            this.ca = 2.0F;
       }
    }
 
@@ -652,45 +652,45 @@ public abstract class btp extends btn implements btb, btk, bum {
       this.bf++;
       bnf $$0 = this.dO().ag();
       $$0.a("sensing");
-      this.cd.a();
+      this.cf.a();
       $$0.c();
       int $$1 = this.ai + this.an();
       if ($$1 % 2 != 0 && this.ai > 1) {
          $$0.a("targetSelector");
-         this.bV.a(false);
+         this.bX.a(false);
          $$0.c();
          $$0.a("goalSelector");
-         this.bU.a(false);
+         this.bW.a(false);
          $$0.c();
       } else {
          $$0.a("targetSelector");
-         this.bV.a();
+         this.bX.a();
          $$0.c();
          $$0.a("goalSelector");
-         this.bU.a();
+         this.bW.a();
          $$0.c();
       }
 
       $$0.a("navigation");
-      this.bT.c();
+      this.bV.c();
       $$0.c();
       $$0.a("mob tick");
       this.ab();
       $$0.c();
       $$0.a("controls");
       $$0.a("move");
-      this.bR.a();
+      this.bT.a();
       $$0.b("look");
-      this.bQ.a();
+      this.bS.a();
       $$0.b("jump");
-      this.bS.b();
+      this.bU.b();
       $$0.c();
       $$0.c();
       this.aa();
    }
 
    protected void aa() {
-      agf.a(this.dO(), this, this.bU);
+      agf.a(this.dO(), this, this.bW);
    }
 
    protected void ab() {
@@ -785,16 +785,16 @@ public abstract class btp extends btn implements btb, btk, bum {
 
    @Override
    public Iterable<cuq> eW() {
-      return this.ce;
+      return this.cg;
    }
 
    @Override
    public Iterable<cuq> eV() {
-      return this.cf;
+      return this.ch;
    }
 
    public cuq fO() {
-      return this.cg;
+      return this.ci;
    }
 
    @Override
@@ -816,15 +816,15 @@ public abstract class btp extends btn implements btb, btk, bum {
 
    @Override
    public Iterable<cuq> eX() {
-      return (Iterable<cuq>)(this.cg.e() ? this.cf : Iterables.concat(this.cf, List.of(this.cg)));
+      return (Iterable<cuq>)(this.ci.e() ? this.ch : Iterables.concat(this.ch, List.of(this.ci)));
    }
 
    @Override
    public cuq a(bsy $$0) {
       return switch ($$0.a()) {
-         case a -> (cuq)this.ce.get($$0.b());
-         case b -> (cuq)this.cf.get($$0.b());
-         case c -> this.cg;
+         case a -> (cuq)this.cg.get($$0.b());
+         case b -> (cuq)this.ch.get($$0.b());
+         case c -> this.ci;
       };
    }
 
@@ -833,14 +833,14 @@ public abstract class btp extends btn implements btb, btk, bum {
       this.e($$1);
       switch ($$0.a()) {
          case a:
-            this.a($$0, this.ce.set($$0.b(), $$1), $$1);
+            this.a($$0, this.cg.set($$0.b(), $$1), $$1);
             break;
          case b:
-            this.a($$0, this.cf.set($$0.b(), $$1), $$1);
+            this.a($$0, this.ch.set($$0.b(), $$1), $$1);
             break;
          case c:
-            cuq $$2 = this.cg;
-            this.cg = $$1;
+            cuq $$2 = this.ci;
+            this.ci = $$1;
             this.a($$0, $$2, $$1);
       }
    }
@@ -876,9 +876,9 @@ public abstract class btp extends btn implements btb, btk, bum {
 
    protected float f(bsy $$0) {
       return switch ($$0.a()) {
-         case a -> this.bW[$$0.b()];
-         case b -> this.bX[$$0.b()];
-         case c -> this.bY;
+         case a -> this.bY[$$0.b()];
+         case b -> this.bZ[$$0.b()];
+         case c -> this.ca;
       };
    }
 
@@ -1044,8 +1044,8 @@ public abstract class btp extends btn implements btb, btk, bum {
    public buh a(ddl $$0, bqp $$1, btr $$2, @Nullable buh $$3) {
       ayw $$4 = $$0.E_();
       bus $$5 = Objects.requireNonNull(this.f(buw.m));
-      if (!$$5.b(bN)) {
-         $$5.c(new buu(bN, $$4.a(0.0, 0.11485000000000001), buu.a.b));
+      if (!$$5.b(bP)) {
+         $$5.d(new buu(bP, $$4.a(0.0, 0.11485000000000001), buu.a.b));
       }
 
       this.v($$4.i() < 0.05F);
@@ -1053,29 +1053,29 @@ public abstract class btp extends btn implements btb, btk, bum {
    }
 
    public void fR() {
-      this.ci = true;
+      this.ck = true;
    }
 
    @Override
    public void a(bsy $$0, float $$1) {
       switch ($$0.a()) {
          case a:
-            this.bW[$$0.b()] = $$1;
+            this.bY[$$0.b()] = $$1;
             break;
          case b:
-            this.bX[$$0.b()] = $$1;
+            this.bZ[$$0.b()] = $$1;
             break;
          case c:
-            this.bY = $$1;
+            this.ca = $$1;
       }
    }
 
    public boolean fS() {
-      return this.ch;
+      return this.cj;
    }
 
    public void a_(boolean $$0) {
-      this.ch = $$0;
+      this.cj = $$0;
    }
 
    @Override
@@ -1085,7 +1085,7 @@ public abstract class btp extends btn implements btb, btk, bum {
    }
 
    public boolean fT() {
-      return this.ci;
+      return this.ck;
    }
 
    @Override
@@ -1149,28 +1149,28 @@ public abstract class btp extends btn implements btb, btk, bum {
    }
 
    public boolean a(jd $$0) {
-      return this.co == -1.0F ? true : this.cn.j($$0) < (double)(this.co * this.co);
+      return this.cq == -1.0F ? true : this.cp.j($$0) < (double)(this.cq * this.cq);
    }
 
    public void a(jd $$0, int $$1) {
-      this.cn = $$0;
-      this.co = (float)$$1;
+      this.cp = $$0;
+      this.cq = (float)$$1;
    }
 
    public jd fV() {
-      return this.cn;
+      return this.cp;
    }
 
    public float fW() {
-      return this.co;
+      return this.cq;
    }
 
    public void fX() {
-      this.co = -1.0F;
+      this.cq = -1.0F;
    }
 
    public boolean fY() {
-      return this.co != -1.0F;
+      return this.cq != -1.0F;
    }
 
    @Nullable
@@ -1223,12 +1223,12 @@ public abstract class btp extends btn implements btb, btk, bum {
    @Nullable
    @Override
    public btk.a X_() {
-      return this.cm;
+      return this.co;
    }
 
    @Override
    public void a(@Nullable btk.a $$0) {
-      this.cm = $$0;
+      this.co = $$0;
    }
 
    @Override
@@ -1242,7 +1242,7 @@ public abstract class btp extends btn implements btb, btk, bum {
    @Override
    public void z() {
       btk.super.z();
-      this.bU.a(cam.a.a);
+      this.bW.a(cam.a.a);
    }
 
    @Override
@@ -1315,7 +1315,7 @@ public abstract class btp extends btn implements btb, btk, bum {
          $$3 = this.cK();
       }
 
-      return $$3.c(ca, 0.0, ca);
+      return $$3.c(cc, 0.0, cc);
    }
 
    @Override
@@ -1377,7 +1377,7 @@ public abstract class btp extends btn implements btb, btk, bum {
    }
 
    public void d(Predicate<cam> $$0) {
-      this.bU.a($$0);
+      this.bW.a($$0);
    }
 
    @Override

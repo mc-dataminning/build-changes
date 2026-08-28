@@ -43,7 +43,7 @@ public class ckc extends ckm {
    }
 
    @Override
-   protected void ff() {
+   public void ff() {
       exc $$0 = this.dr();
       float $$1 = (float)this.gl() * 0.1F;
       this.n($$0.c, (double)(this.fd() + $$1), $$0.e);

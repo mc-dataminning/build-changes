@@ -2,14 +2,14 @@ import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
 public class cfs extends cfe {
-   public static final double ca = 0.6;
-   public static final double cb = 0.8;
-   public static final double cc = 1.33;
-   private static final ajw<Boolean> ce = aka.a(cfs.class, ajy.k);
+   public static final double cc = 0.6;
+   public static final double cd = 0.8;
+   public static final double ce = 1.33;
+   private static final ajw<Boolean> cg = aka.a(cfs.class, ajy.k);
    @Nullable
-   private cfs.a<cmx> cf;
+   private cfs.a<cmx> ch;
    @Nullable
-   private cfs.b cg;
+   private cfs.b ci;
 
    public cfs(bsx<? extends cfs> $$0, dcw $$1) {
       super($$0, $$1);
@@ -17,11 +17,11 @@ public class cfs extends cfe {
    }
 
    boolean x() {
-      return this.ao.a(ce);
+      return this.ao.a(cg);
    }
 
    private void x(boolean $$0) {
-      this.ao.a(ce, $$0);
+      this.ao.a(cg, $$0);
       this.t();
    }
 
@@ -40,21 +40,21 @@ public class cfs extends cfe {
    @Override
    protected void a(aka.a $$0) {
       super.a($$0);
-      $$0.a(ce, false);
+      $$0.a(cg, false);
    }
 
    @Override
    protected void B() {
-      this.cg = new cfs.b(this, 0.6, $$0 -> $$0.a(awn.ap), true);
-      this.bU.a(1, new cag(this));
-      this.bU.a(3, this.cg);
-      this.bU.a(7, new cas(this, 0.3F));
-      this.bU.a(8, new cbc(this));
-      this.bU.a(9, new bzy(this, 0.8));
-      this.bU.a(10, new cbz(this, 0.8, 1.0000001E-5F));
-      this.bU.a(11, new cau(this, cmx.class, 10.0F));
-      this.bV.a(1, new ccf<>(this, cfj.class, false));
-      this.bV.a(1, new ccf<>(this, cgf.class, 10, false, false, cgf.ca));
+      this.ci = new cfs.b(this, 0.6, $$0 -> $$0.a(awn.ap), true);
+      this.bW.a(1, new cag(this));
+      this.bW.a(3, this.ci);
+      this.bW.a(7, new cas(this, 0.3F));
+      this.bW.a(8, new cbc(this));
+      this.bW.a(9, new bzy(this, 0.8));
+      this.bW.a(10, new cbz(this, 0.8, 1.0000001E-5F));
+      this.bW.a(11, new cau(this, cmx.class, 10.0F));
+      this.bX.a(1, new ccf<>(this, cfj.class, false));
+      this.bX.a(1, new ccf<>(this, cgf.class, 10, false, false, cgf.cc));
    }
 
    @Override
@@ -110,7 +110,7 @@ public class cfs extends cfe {
    @Override
    public bqr b(cmx $$0, bqq $$1) {
       cuq $$2 = $$0.b($$1);
-      if ((this.cg == null || this.cg.i()) && !this.x() && this.o($$2) && $$0.g(this) < 9.0) {
+      if ((this.ci == null || this.ci.i()) && !this.x() && this.o($$2) && $$0.g(this) < 9.0) {
          this.a($$0, $$1, $$2);
          if (!this.dO().B) {
             if (this.ah.a(3) == 0) {
@@ -155,13 +155,13 @@ public class cfs extends cfe {
    }
 
    protected void t() {
-      if (this.cf == null) {
-         this.cf = new cfs.a<>(this, cmx.class, 16.0F, 0.8, 1.33);
+      if (this.ch == null) {
+         this.ch = new cfs.a<>(this, cmx.class, 16.0F, 0.8, 1.33);
       }
 
-      this.bU.a(this.cf);
+      this.bW.a(this.ch);
       if (!this.x()) {
-         this.bU.a(4, this.cf);
+         this.bW.a(4, this.ch);
       }
    }
 

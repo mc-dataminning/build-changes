@@ -71,7 +71,7 @@ public class ip {
       a($$0, "loot_table", fv.c.class, ir.a(fv::a));
       a($$0, "loot_predicate", fv.b.class, ir.a(fv::c));
       a($$0, "loot_modifier", fv.a.class, ir.a(fv::b));
-      if (ab.aU) {
+      if (ab.aV) {
          a($$0, "test_argument", ts.class, ir.a(ts::a));
          a($$0, "test_class", to.class, ir.a(to::a));
       }

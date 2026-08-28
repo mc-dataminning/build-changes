@@ -24,8 +24,8 @@ public class glw extends glp<cfu, fwk> {
    }
 
    public float a(cfu $$0, float $$1) {
-      float $$2 = ayo.i($$1, $$0.ch, $$0.ce);
-      float $$3 = ayo.i($$1, $$0.cg, $$0.cf);
+      float $$2 = ayo.i($$1, $$0.cj, $$0.cg);
+      float $$3 = ayo.i($$1, $$0.ci, $$0.ch);
       return (ayo.a($$2) + 1.0F) * $$3;
    }
 }

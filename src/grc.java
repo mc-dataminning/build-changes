@@ -32,7 +32,7 @@ public class grc extends atj {
 
    @Nullable
    private Path a(Path $$0) {
-      if (ab.aU && $$0.getFileSystem() == FileSystems.getDefault()) {
+      if (ab.aV && $$0.getFileSystem() == FileSystems.getDefault()) {
          Path $$1 = $$0.getParent().resolve("resourcepacks");
          if (Files.isDirectory($$1)) {
             return $$1;

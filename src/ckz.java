@@ -3,24 +3,24 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 public class ckz extends ckd {
-   private static final int cc = 20;
-   private static final int cd = 1;
    private static final int ce = 20;
-   private static final int cf = 3;
-   private static final int cg = 5;
-   private static final int ch = 10;
-   private static final float ci = 3.0F;
-   private static final int cj = 1;
-   private static final int ck = 80;
+   private static final int cf = 1;
+   private static final int cg = 20;
+   private static final int ch = 3;
+   private static final int ci = 5;
+   private static final int cj = 10;
+   private static final float ck = 3.0F;
+   private static final int cl = 1;
+   private static final int cm = 80;
    public bsm b = new bsm();
    public bsm c = new bsm();
    public bsm d = new bsm();
    public bsm e = new bsm();
-   public bsm ca = new bsm();
-   public bsm cb = new bsm();
-   private int cl = 0;
-   private int cm = 0;
-   private static final cnq cn = ($$0, $$1, $$2) -> {
+   public bsm cc = new bsm();
+   public bsm cd = new bsm();
+   private int cn = 0;
+   private int co = 0;
+   private static final cnq cp = ($$0, $$1, $$2) -> {
       $$1.dO().a(null, $$1, avp.cF, $$1.de(), 1.0F, 1.0F);
       cnq.b.deflect($$0, $$1, $$2);
    };
@@ -33,7 +33,7 @@ public class ckz extends ckd {
       super($$0, $$1);
       this.a(epv.z, -1.0F);
       this.a(epv.o, -1.0F);
-      this.bP = 10;
+      this.bR = 10;
    }
 
    @Override
@@ -58,7 +58,7 @@ public class ckz extends ckd {
          bua $$1 = this.at();
          switch ($$1) {
             case q:
-               this.ca.b(this.ai);
+               this.cc.b(this.ai);
                break;
             case r:
                this.e.b(this.ai);
@@ -72,9 +72,9 @@ public class ckz extends ckd {
    }
 
    private void gn() {
-      this.ca.a();
+      this.cc.a();
       this.b.a();
-      this.cb.a();
+      this.cd.a();
       this.e.a();
    }
 
@@ -99,8 +99,8 @@ public class ckz extends ckd {
          this.c.a();
       }
 
-      this.cm = this.cm == 0 ? this.ah.a(1, 80) : this.cm - 1;
-      if (this.cm == 0) {
+      this.co = this.co == 0 ? this.ah.a(1, 80) : this.co - 1;
+      if (this.co == 0) {
          this.gk();
       }
 
@@ -108,12 +108,12 @@ public class ckz extends ckd {
    }
 
    public ckz t() {
-      this.cl = 0;
+      this.cn = 0;
       return this;
    }
 
    public void x() {
-      if (++this.cl <= 5) {
+      if (++this.cn <= 5) {
          dtc $$0 = !this.dp().i() ? this.dp() : this.bq();
          exc $$1 = this.dr();
          exc $$2 = this.dm().e($$1).b(0.0, 0.1F, 0.0);
@@ -153,7 +153,7 @@ public class ckz extends ckd {
    @Override
    public cnq a(cnp $$0) {
       if ($$0.am() != bsx.n && $$0.am() != bsx.bn) {
-         return this.am().a(awi.r) ? cn : cnq.a;
+         return this.am().a(awi.r) ? cp : cnq.a;
       } else {
          return cnq.a;
       }

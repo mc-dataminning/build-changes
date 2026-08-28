@@ -4,16 +4,16 @@ import java.util.Set;
 import javax.annotation.Nullable;
 
 public class ckq extends cfe implements btj, bue {
-   private static final akr ca = akr.b("suffocating");
-   private static final buu cb = new buu(ca, -0.34F, buu.a.b);
-   private static final float cc = 0.35F;
-   private static final float ce = 0.55F;
-   private static final ajw<Integer> cf = aka.a(ckq.class, ajy.b);
-   private static final ajw<Boolean> cg = aka.a(ckq.class, ajy.k);
-   private static final ajw<Boolean> ch = aka.a(ckq.class, ajy.k);
-   private final bti ci = new bti(this.ao, cf, ch);
+   private static final akr cc = akr.b("suffocating");
+   private static final buu cd = new buu(cc, -0.34F, buu.a.b);
+   private static final float ce = 0.35F;
+   private static final float cg = 0.55F;
+   private static final ajw<Integer> ch = aka.a(ckq.class, ajy.b);
+   private static final ajw<Boolean> ci = aka.a(ckq.class, ajy.k);
+   private static final ajw<Boolean> cj = aka.a(ckq.class, ajy.k);
+   private final bti ck = new bti(this.ao, ch, cj);
    @Nullable
-   private cbu cj;
+   private cbu cl;
 
    public ckq(bsx<? extends ckq> $$0, dcw $$1) {
       super($$0, $$1);
@@ -36,8 +36,8 @@ public class ckq extends cfe implements btj, bue {
 
    @Override
    public void a(ajw<?> $$0) {
-      if (cf.equals($$0) && this.dO().B) {
-         this.ci.a();
+      if (ch.equals($$0) && this.dO().B) {
+         this.ck.a();
       }
 
       super.a($$0);
@@ -46,26 +46,26 @@ public class ckq extends cfe implements btj, bue {
    @Override
    protected void a(aka.a $$0) {
       super.a($$0);
-      $$0.a(cf, 0);
-      $$0.a(cg, false);
-      $$0.a(ch, false);
+      $$0.a(ch, 0);
+      $$0.a(ci, false);
+      $$0.a(cj, false);
    }
 
    @Override
    public void b(ub $$0) {
       super.b($$0);
-      this.ci.a($$0);
+      this.ck.a($$0);
    }
 
    @Override
    public void a(ub $$0) {
       super.a($$0);
-      this.ci.b($$0);
+      this.ck.b($$0);
    }
 
    @Override
    public boolean i() {
-      return this.ci.d();
+      return this.ck.d();
    }
 
    @Override
@@ -75,7 +75,7 @@ public class ckq extends cfe implements btj, bue {
 
    @Override
    public void a(cuq $$0, @Nullable avq $$1) {
-      this.ci.a(true);
+      this.ck.a(true);
       if ($$1 != null) {
          this.dO().a(null, this, avp.ye, $$1, 0.5F, 1.0F);
       }
@@ -83,32 +83,32 @@ public class ckq extends cfe implements btj, bue {
 
    @Override
    protected void B() {
-      this.bU.a(1, new cbf(this, 1.65));
-      this.bU.a(2, new bzy(this, 1.0));
-      this.cj = new cbu(this, 1.4, $$0 -> $$0.a(awn.au), false);
-      this.bU.a(3, this.cj);
-      this.bU.a(4, new ckq.a(this, 1.0));
-      this.bU.a(5, new cal(this, 1.0));
-      this.bU.a(7, new cbj(this, 1.0, 60));
-      this.bU.a(8, new cau(this, cmx.class, 8.0F));
-      this.bU.a(8, new cbh(this));
-      this.bU.a(9, new cau(this, ckq.class, 8.0F));
+      this.bW.a(1, new cbf(this, 1.65));
+      this.bW.a(2, new bzy(this, 1.0));
+      this.cl = new cbu(this, 1.4, $$0 -> $$0.a(awn.au), false);
+      this.bW.a(3, this.cl);
+      this.bW.a(4, new ckq.a(this, 1.0));
+      this.bW.a(5, new cal(this, 1.0));
+      this.bW.a(7, new cbj(this, 1.0, 60));
+      this.bW.a(8, new cau(this, cmx.class, 8.0F));
+      this.bW.a(8, new cbh(this));
+      this.bW.a(9, new cau(this, ckq.class, 8.0F));
    }
 
    public void x(boolean $$0) {
-      this.ao.a(cg, $$0);
+      this.ao.a(ci, $$0);
       bus $$1 = this.f(buw.v);
       if ($$1 != null) {
          if ($$0) {
-            $$1.a(cb);
+            $$1.a(cd);
          } else {
-            $$1.c(ca);
+            $$1.c(cc);
          }
       }
    }
 
    public boolean s() {
-      return this.ao.a(cg);
+      return this.ao.a(ci);
    }
 
    @Override
@@ -184,7 +184,7 @@ public class ckq extends cfe implements btj, bue {
    protected void a(cmx $$0, exc $$1) {
       this.a($$0.dE(), $$0.dG() * 0.5F);
       this.O = this.aY = this.ba = this.dE();
-      this.ci.b();
+      this.ck.b();
       super.a($$0, $$1);
    }
 
@@ -195,7 +195,7 @@ public class ckq extends cfe implements btj, bue {
 
    @Override
    protected float e(cmx $$0) {
-      return (float)(this.g(buw.v) * (double)(this.s() ? 0.35F : 0.55F) * (double)this.ci.c());
+      return (float)(this.g(buw.v) * (double)(this.s() ? 0.35F : 0.55F) * (double)this.ck.c());
    }
 
    @Override
@@ -210,7 +210,7 @@ public class ckq extends cfe implements btj, bue {
 
    @Override
    public boolean a() {
-      return this.ci.a(this.dR());
+      return this.ck.a(this.dR());
    }
 
    @Override
@@ -256,7 +256,7 @@ public class ckq extends cfe implements btj, bue {
    }
 
    private boolean x() {
-      return this.cj != null && this.cj.i();
+      return this.cl != null && this.cl.i();
    }
 
    @Override
