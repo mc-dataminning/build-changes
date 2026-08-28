@@ -37,7 +37,7 @@ public record ggp(String a, @Nullable ggp.a b) {
 
    private static String g() {
       StringBuilder $$0 = new StringBuilder();
-      $$0.append("1.21.2-pre5");
+      $$0.append("1.21.2-rc1");
       if (fmf.e().a()) {
          $$0.append(" (modded)");
       }

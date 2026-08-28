@@ -1937,7 +1937,11 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    public boolean a(bvj $$0, boolean $$1) {
       if ($$0 == this.r) {
          return false;
-      } else if ($$0.bR() && $$0.o.b()) {
+      } else if (!$$0.bR()) {
+         return false;
+      } else if (!this.dW().B_() && !$$0.o.b()) {
+         return false;
+      } else {
          for (bvj $$2 = $$0; $$2.r != null; $$2 = $$2.r) {
             if ($$2.r == this) {
                return false;
@@ -1957,8 +1961,6 @@ public abstract class bvj implements alf, btl, ebx, fdb {
          } else {
             return false;
          }
-      } else {
-         return false;
       }
    }
 

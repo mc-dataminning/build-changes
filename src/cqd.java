@@ -193,7 +193,7 @@ public abstract class cqd extends cqp {
          }
 
          this.D();
-         if ($$0) {
+         if ($$0 && !this.l()) {
             this.bf();
          }
 

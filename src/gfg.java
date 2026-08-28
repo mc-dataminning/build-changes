@@ -51,7 +51,6 @@ public abstract class gfg implements aai {
    @Override
    public void a(aac $$0, Exception $$1) {
       l.error("Failed to handle packet {}, disconnecting", $$0, $$1);
-      aai.super.a($$0, $$1);
       Optional<Path> $$2 = this.a($$0, (Throwable)$$1);
       Optional<URI> $$3 = this.j.a(amr.b.a).map(amr.a::c);
       this.b.a(new wr(xv.c("disconnect.packetError"), $$2, $$3));

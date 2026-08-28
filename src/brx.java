@@ -157,7 +157,9 @@ public abstract class brx<R extends Runnable> implements bre, bsd<R>, Executor {
          }
       } catch (Exception var7) {
          c.error(LogUtils.FATAL_MARKER, "Error executing task on {}", this.A_(), var7);
-         throw var7;
+         if (a(var7)) {
+            throw var7;
+         }
       }
    }
 

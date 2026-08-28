@@ -1,4 +1,4 @@
-// 1.21.2 Pre-Release 5	2026-08-28T02:48:51.10151593	vanilla/Tags for minecraft:block
+// 1.21.2 Release Candidate 1	2026-08-28T02:51:24.479793033	vanilla/Tags for minecraft:block
 1b34690c952fb0cae947d85b752e19a7a83a453b data/minecraft/tags/block/oak_logs.json
 1dfe6273688ebbb262b42c16e2c05f6c27e6d54b data/minecraft/tags/block/flower_pots.json
 2279d1f34e9b03831a4631584ee0fcdf1ea0fc66 data/minecraft/tags/block/rails.json
@@ -15,8 +15,8 @@ e85d473045cf55c6f706798af73a74b69875c186 data/minecraft/tags/block/smelts_to_gla
 6d8c49aebfc6e8906a021084112fa9efdc950177 data/minecraft/tags/block/azalea_root_replaceable.json
 c3344f6e568a707914a420dacbf9b082a8ff1787 data/minecraft/tags/block/stone_bricks.json
 f8376cab397acf16d638e5a8595dc07d123925c5 data/minecraft/tags/block/planks.json
-632e3c9b57c812cfb93f65d1ec8cb7afe2b4e733 data/minecraft/tags/block/geode_invalid_blocks.json
 2d763e05a229e6a7dd61a548583f193804395954 data/minecraft/tags/block/parrots_spawnable_on.json
+632e3c9b57c812cfb93f65d1ec8cb7afe2b4e733 data/minecraft/tags/block/geode_invalid_blocks.json
 1ae902776b0942fb7f6424ba52eb2150950f973c data/minecraft/tags/block/acacia_logs.json
 b7d959a4eef7bbd9e6ce12e26764c3931088f42c data/minecraft/tags/block/wooden_buttons.json
 3c79ca784535e4edb6ad3bf6da109ba0a651018b data/minecraft/tags/block/walls.json
@@ -84,8 +84,8 @@ e6ec9c5c82db2c7ca6c3a9f643df2dac9f4967db data/minecraft/tags/block/slabs.json
 1babc3647a545dddb5fe13e06599fb605cf5ca16 data/minecraft/tags/block/all_signs.json
 80ca0014239f0046a5e01ce25e5f173990cdb610 data/minecraft/tags/block/sculk_replaceable_world_gen.json
 882f7161808179f92ed953b9200fdaf74eec6c36 data/minecraft/tags/block/infiniburn_overworld.json
-a249c46329a41538f49a564e1f14338aaf1be5a0 data/minecraft/tags/block/incorrect_for_iron_tool.json
 ef8b53a5070a43fe7b9c6aa14d13e5b64c516aae data/minecraft/tags/block/incorrect_for_stone_tool.json
+a249c46329a41538f49a564e1f14338aaf1be5a0 data/minecraft/tags/block/incorrect_for_iron_tool.json
 3c4ac3776003f4217a20f6ed7a55765569f41a87 data/minecraft/tags/block/beacon_base_blocks.json
 63155bd2e062478d6c9822ed300f20263356b435 data/minecraft/tags/block/piglin_repellents.json
 0cc76a2a135e15e63ba435b9ae22e215cc9637fb data/minecraft/tags/block/replaceable.json
