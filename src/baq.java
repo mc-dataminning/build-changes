@@ -1,13 +1,11 @@
-public enum baq {
-   a,
-   b,
-   c;
+import java.security.SignatureException;
 
-   public boolean a(boolean $$0) {
-      return switch (this) {
-         case a -> true;
-         case b -> false;
-         default -> $$0;
-      };
+@FunctionalInterface
+public interface baq {
+   void update(baq.a var1) throws SignatureException;
+
+   @FunctionalInterface
+   public interface a {
+      void update(byte[] var1) throws SignatureException;
    }
 }

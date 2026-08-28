@@ -1,46 +1,48 @@
-import java.util.List;
-import java.util.function.BiConsumer;
+import java.util.Objects;
 import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class fqd<T> {
-   private final T b;
-   private final BiConsumer<Consumer<String>, T> c;
-   public static final fqd<?> a = new fqd<>(bas.a, ($$0, $$1) -> {
-   });
+public class fqd {
+   private final Consumer<fnw> a;
+   private final Consumer<fnw> b;
+   @Nullable
+   private fqc c;
+   @Nullable
+   private fsg d;
 
-   private fqd(T $$0, BiConsumer<Consumer<String>, T> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public fqd(Consumer<fnw> $$0, Consumer<fnw> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static fqd<?> a(String $$0) {
-      return new fqd<>($$0, Consumer::accept);
-   }
-
-   public static fqd<?> a(xj $$0) {
-      return new fqd<>($$0, ($$0x, $$1) -> $$0x.accept($$1.getString()));
-   }
-
-   public static fqd<?> a(List<xj> $$0) {
-      return new fqd<>($$0, ($$1, $$2) -> $$0.stream().map(xj::getString).forEach($$1));
-   }
-
-   public void a(Consumer<String> $$0) {
-      this.c.accept($$0, this.b);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof fqd<?> $$1) ? false : $$1.c == this.c && $$1.b.equals(this.b);
+   public void a(fsg $$0) {
+      this.d = $$0;
+      fqc $$1 = this.a();
+      if ($$1 != null) {
+         $$1.a($$0);
       }
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
+   public void a(fqc $$0, boolean $$1) {
+      if (!Objects.equals(this.c, $$0)) {
+         if (this.c != null) {
+            this.c.a(this.b);
+         }
+
+         this.c = $$0;
+         $$0.a(this.a);
+         if (this.d != null) {
+            $$0.a(this.d);
+         }
+
+         if ($$1) {
+            flz.Q().ak().a(hew.a(axf.AP, 1.0F));
+         }
+      }
+   }
+
+   @Nullable
+   public fqc a() {
+      return this.c;
    }
 }

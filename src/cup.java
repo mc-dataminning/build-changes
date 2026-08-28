@@ -1,29 +1,68 @@
-import java.util.List;
-import org.apache.commons.lang3.Validate;
+import javax.annotation.Nullable;
 
-public class cup extends cxz {
-   public cup(diq $$0, diq $$1, cwi.a $$2) {
-      super($$0, $$1, jm.a, $$2);
-      Validate.isInstanceOf(dhh.class, $$0);
-      Validate.isInstanceOf(dhh.class, $$1);
-   }
+public class cup implements bsx, cuo {
+   private final jz<cxk> b = jz.a(1, cxk.k);
+   @Nullable
+   private dcd<?> c;
 
-   public static void a(cwm $$0, List<xj> $$1) {
-      dsp $$2 = $$0.a(ku.ai);
-      if ($$2 != null) {
-         for (int $$3 = 0; $$3 < Math.min($$2.b().size(), 6); $$3++) {
-            dsp.b $$4 = $$2.b().get($$3);
-            $$1.add($$4.a().a(n.h));
-         }
-      }
-   }
-
-   public cvj b() {
-      return ((dhh)this.d()).b();
+   @Override
+   public int b() {
+      return 1;
    }
 
    @Override
-   public void a(cwm $$0, cwi.b $$1, List<xj> $$2, cye $$3) {
-      a($$0, $$2);
+   public boolean c() {
+      for (cxk $$0 : this.b) {
+         if (!$$0.f()) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public cxk a(int $$0) {
+      return this.b.get(0);
+   }
+
+   @Override
+   public cxk a(int $$0, int $$1) {
+      return bsy.a(this.b, 0);
+   }
+
+   @Override
+   public cxk b(int $$0) {
+      return bsy.a(this.b, 0);
+   }
+
+   @Override
+   public void a(int $$0, cxk $$1) {
+      this.b.set(0, $$1);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cps $$0) {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.b.clear();
+   }
+
+   @Override
+   public void a(@Nullable dcd<?> $$0) {
+      this.c = $$0;
+   }
+
+   @Nullable
+   @Override
+   public dcd<?> d() {
+      return this.c;
    }
 }

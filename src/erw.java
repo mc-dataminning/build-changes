@@ -1,24 +1,27 @@
-import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class erw {
-   public static final eru a = a("empty", new ers());
-   public static final ert b = a("flowing_water", new esb.a());
-   public static final ert c = a("water", new esb.b());
-   public static final ert d = a("flowing_lava", new ery.a());
-   public static final ert e = a("lava", new ery.b());
+public class erw extends ery {
+   public static final MapCodec<erw> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dxn.a.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
+            .apply($$0, erw::new)
+   );
+   private final dxn b;
+   private final float d;
 
-   private static <T extends eru> T a(String $$0, T $$1) {
-      return kd.a(lz.c, $$0, $$1);
+   public erw(dxn $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
    }
 
-   static {
-      for (eru $$0 : lz.c) {
-         UnmodifiableIterator var2 = $$0.f().a().iterator();
+   @Override
+   public boolean a(dxn $$0, bam $$1) {
+      return $$0 == this.b && $$1.i() < this.d;
+   }
 
-         while (var2.hasNext()) {
-            erv $$1 = (erv)var2.next();
-            eru.c.b($$1);
-         }
-      }
+   @Override
+   protected erz<?> a() {
+      return erz.f;
    }
 }

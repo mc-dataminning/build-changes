@@ -1,3 +1,9 @@
+import java.util.function.Consumer;
+
 public interface fqc {
-   void b(fqb var1);
+   xv a();
+
+   void a(Consumer<fnw> var1);
+
+   void a(fsg var1);
 }

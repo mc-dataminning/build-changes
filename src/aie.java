@@ -1,41 +1,26 @@
-public class aie implements zq<agw> {
-   public static final zh<wg, aie> a = zq.a(aie::a, aie::new);
-   private final ctp b;
-   private final boolean c;
-   private final boolean d;
+public record aie(int b, int c, boolean d) implements aac<ahm> {
+   public static final zt<ws, aie> a = aac.a(aie::a, aie::new);
 
-   public aie(ctp $$0, boolean $$1, boolean $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   private aie(ws $$0) {
+      this($$0.l(), $$0.x(), $$0.readBoolean());
    }
 
-   private aie(wg $$0) {
-      this.b = $$0.b(ctp.class);
-      this.c = $$0.readBoolean();
-      this.d = $$0.readBoolean();
-   }
-
-   private void a(wg $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(ws $$0) {
+      $$0.c(this.b);
+      $$0.f(this.c);
       $$0.a(this.d);
    }
 
    @Override
-   public zs<aie> a() {
-      return agu.bQ;
+   public aae<aie> a() {
+      return ahk.bB;
    }
 
-   public void a(agw $$0) {
+   public void a(ahm $$0) {
       $$0.a(this);
    }
 
-   public ctp b() {
-      return this.b;
-   }
-
-   public boolean e() {
+   public int e() {
       return this.c;
    }
 

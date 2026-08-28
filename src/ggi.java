@@ -1,76 +1,101 @@
-public class ggi extends ggo {
-   private static final int a = 3;
-   private final gjo b;
-   private final bul D;
-   private final bul E;
-   private int F;
-   private final gpi G;
-   private double H;
-   private double I;
-   private double J;
-   private double K;
-   private double L;
-   private double M;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   public ggi(gpi $$0, gjo $$1, gdh $$2, bul $$3, bul $$4) {
-      this($$0, $$1, $$2, $$3, $$4, $$3.dy());
-   }
+public abstract class ggi {
+   protected final UUID a;
+   protected final Instant b;
+   protected final UUID c;
+   protected String d = "";
+   @Nullable
+   protected ggk e;
+   protected boolean f;
 
-   private ggi(gpi $$0, gjo $$1, gdh $$2, bul $$3, bul $$4, ezy $$5) {
-      super($$2, $$3.dA(), $$3.dC(), $$3.dG(), $$5.d, $$5.e, $$5.f);
+   public ggi(UUID $$0, Instant $$1, UUID $$2) {
+      this.a = $$0;
       this.b = $$1;
-      this.D = this.a($$3);
-      this.E = $$4;
-      this.G = $$0;
-      this.c();
-      this.d();
+      this.c = $$2;
    }
 
-   private bul a(bul $$0) {
-      return (bul)(!($$0 instanceof clc) ? $$0 : ((clc)$$0).x());
+   public boolean a(UUID $$0) {
+      return $$0.equals(this.c);
    }
 
-   @Override
-   public ggs b() {
-      return ggs.d;
-   }
+   public abstract ggi b();
 
-   @Override
-   public void a(fev $$0, fjn $$1, float $$2) {
-      float $$3 = ((float)this.F + $$2) / 3.0F;
-      $$3 *= $$3;
-      double $$4 = azm.d((double)$$2, this.K, this.H);
-      double $$5 = azm.d((double)$$2, this.L, this.I);
-      double $$6 = azm.d((double)$$2, this.M, this.J);
-      double $$7 = azm.d((double)$$3, this.D.dA(), $$4);
-      double $$8 = azm.d((double)$$3, this.D.dC(), $$5);
-      double $$9 = azm.d((double)$$3, this.D.dG(), $$6);
-      gjg.a $$10 = this.b.c();
-      ezy $$11 = $$1.b();
-      this.G.a(this.D, $$7 - $$11.a(), $$8 - $$11.b(), $$9 - $$11.c(), $$2, new fer(), $$10, this.G.a(this.D, $$2));
-      $$10.b();
-   }
+   public abstract ftr a(ftr var1, ggm var2);
 
-   @Override
-   public void a() {
-      this.F++;
-      if (this.F == 3) {
-         this.k();
+   public abstract static class a<R extends ggi> {
+      protected final R a;
+      protected final AbuseReportLimits b;
+
+      protected a(R $$0, AbuseReportLimits $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      this.d();
-      this.c();
+      public R e() {
+         return this.a;
+      }
+
+      public UUID f() {
+         return this.a.c;
+      }
+
+      public String g() {
+         return this.a.d;
+      }
+
+      public boolean h() {
+         return this.e().f;
+      }
+
+      public void a(String $$0) {
+         this.a.d = $$0;
+      }
+
+      @Nullable
+      public ggk i() {
+         return this.a.e;
+      }
+
+      public void a(ggk $$0) {
+         this.a.e = $$0;
+      }
+
+      public void a(boolean $$0) {
+         this.a.f = $$0;
+      }
+
+      public abstract boolean b();
+
+      @Nullable
+      public ggi.b c() {
+         return !this.e().f ? ggi.b.e : null;
+      }
+
+      public abstract Either<ggi.c, ggi.b> a(ggm var1);
    }
 
-   private void c() {
-      this.H = this.E.dA();
-      this.I = (this.E.dC() + this.E.dE()) / 2.0;
-      this.J = this.E.dG();
+   public static record b(xv f) {
+      public static final ggi.b a = new ggi.b(xv.c("gui.abuseReport.send.no_reason"));
+      public static final ggi.b b = new ggi.b(xv.c("gui.chatReport.send.no_reported_messages"));
+      public static final ggi.b c = new ggi.b(xv.c("gui.chatReport.send.too_many_messages"));
+      public static final ggi.b d = new ggi.b(xv.c("gui.abuseReport.send.comment_too_long"));
+      public static final ggi.b e = new ggi.b(xv.c("gui.abuseReport.send.not_attested"));
+
+      public fpk a() {
+         return fpk.a(this.f);
+      }
+
+      public xv b() {
+         return this.f;
+      }
    }
 
-   private void d() {
-      this.K = this.H;
-      this.L = this.I;
-      this.M = this.J;
+   public static record c(UUID a, ggl b, AbuseReport c) {
    }
 }

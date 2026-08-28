@@ -1,27 +1,11 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
+import java.util.function.Function;
 
-public class dez {
-   public static final dez a = new dez(ImmutableList.of("vanilla"), ImmutableList.of());
-   public static final Codec<dez> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
-            .apply($$0, dez::new)
-   );
-   private final List<String> c;
-   private final List<String> d;
+public interface dez {
+   Codec<dez> a = ma.ax.q().dispatch(dez::a, Function.identity());
 
-   public dez(List<String> $$0, List<String> $$1) {
-      this.c = ImmutableList.copyOf($$0);
-      this.d = ImmutableList.copyOf($$1);
-   }
+   void a(cxk var1, ddx.a var2, bam var3, btc var4);
 
-   public List<String> a() {
-      return this.c;
-   }
-
-   public List<String> b() {
-      return this.d;
-   }
+   MapCodec<? extends dez> a();
 }

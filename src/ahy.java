@@ -1,29 +1,15 @@
-public class ahy implements zq<agw> {
-   public static final zh<wg, ahy> a = zq.a(ahy::a, ahy::new);
-   private final int b;
+import io.netty.buffer.ByteBuf;
 
-   public ahy(int $$0) {
-      this.b = $$0;
-   }
-
-   private ahy(wg $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(wg $$0) {
-      $$0.c(this.b);
-   }
+public record ahy() implements aac<ahm> {
+   public static final ahy a = new ahy();
+   public static final zt<ByteBuf, ahy> b = zt.a(a);
 
    @Override
-   public zs<ahy> a() {
-      return agu.bK;
+   public aae<ahy> a() {
+      return ahk.bv;
    }
 
-   public void a(agw $$0) {
+   public void a(ahm $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
    }
 }

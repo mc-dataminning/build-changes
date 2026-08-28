@@ -1,29 +1,44 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ddb(dck c) implements dcw {
-   public static final MapCodec<ddb> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dck.b.fieldOf("chance").forGetter(ddb::b)).apply($$0, ddb::new));
+public record ddb(ddi f, ddi g, ddi h, ddi i) implements ddc {
+   public static final MapCodec<ddb> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ddi.a.fieldOf("ingredient").forGetter(ddb::b),
+               ddi.a.fieldOf("fuel").forGetter(ddb::c),
+               ddi.a.fieldOf("result").forGetter(ddb::d),
+               ddi.a.fieldOf("crafting_station").forGetter(ddb::e)
+            )
+            .apply($$0, ddb::new)
+   );
+   public static final zt<xg, ddb> b = zt.a(ddi.b, ddb::b, ddi.b, ddb::c, ddi.b, ddb::d, ddi.b, ddb::e, ddb::new);
+   public static final ddc.a<ddb> c = new ddc.a<>(a, b);
 
    @Override
-   public float a(int $$0, azu $$1, float $$2) {
-      float $$3 = this.c.a($$0);
-      int $$4 = 0;
-
-      for (int $$5 = 0; (float)$$5 < $$2; $$5++) {
-         if ($$1.i() < $$3) {
-            $$4++;
-         }
-      }
-
-      return $$2 - (float)$$4;
+   public ddc.a<ddb> a() {
+      return c;
    }
 
    @Override
-   public MapCodec<ddb> a() {
-      return a;
+   public boolean a(cso $$0) {
+      return this.f.a($$0) && this.c().a($$0) && ddc.super.a($$0);
    }
 
-   public dck b() {
-      return this.c;
+   public ddi b() {
+      return this.f;
+   }
+
+   public ddi c() {
+      return this.g;
+   }
+
+   @Override
+   public ddi d() {
+      return this.h;
+   }
+
+   @Override
+   public ddi e() {
+      return this.i;
    }
 }

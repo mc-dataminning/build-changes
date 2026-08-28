@@ -1,59 +1,35 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.List;
 
-public record exp(ali<exy> b) implements exy {
-   private static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<exp> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ali.a(ma.bf).fieldOf("name").forGetter(exp::c)).apply($$0, exp::new));
+public class exp extends exu {
+   public static final MapCodec<exp> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and($$0.group(cu.a.fieldOf("item_filter").forGetter($$0x -> $$0x.b), exx.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
+            .apply($$0, exp::new)
+   );
+   private final cu b;
+   private final exv c;
 
-   @Override
-   public exz b() {
-      return eya.p;
+   private exp(List<ezs> $$0, cu $$1, exv $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public void a(eut $$0) {
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
-      } else if ($$0.a(this.b)) {
-         $$0.b("Condition " + this.b.a() + " is recursively called");
-      } else {
-         exy.super.a($$0);
-         $$0.a()
-            .c(this.b)
-            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.b.a() + "}", this.b)), () -> $$0.b("Unknown condition table called " + this.b.a()));
-      }
+   public exw<exp> b() {
+      return exx.v;
    }
 
-   public boolean a(eun $$0) {
-      exy $$1 = $$0.a().c(this.b).map(jq.c::a).orElse(null);
-      if ($$1 == null) {
-         c.warn("Tried using unknown condition table called {}", this.b.a());
-         return false;
-      } else {
-         eun.c<?> $$2 = eun.a($$1);
-         if ($$0.b($$2)) {
-            boolean var4;
-            try {
-               var4 = $$1.test($$0);
-            } finally {
-               $$0.c($$2);
-            }
-
-            return var4;
-         } else {
-            c.warn("Detected infinite loop in loot tables");
-            return false;
-         }
-      }
+   @Override
+   public cxk a(cxk $$0, ewh $$1) {
+      return this.b.a($$0) ? this.c.apply($$0, $$1) : $$0;
    }
 
-   public static exy.a a(ali<exy> $$0) {
-      return () -> new exp($$0);
-   }
-
-   public ali<exy> c() {
-      return this.b;
+   @Override
+   public void a(ewn $$0) {
+      super.a($$0);
+      this.c.a($$0.a(".modifier"));
    }
 }

@@ -12,8 +12,8 @@ import java.util.concurrent.CompletableFuture;
 
 public class gz implements ArgumentType<gu> {
    private static final Collection<String> c = Arrays.asList("0 0 0", "~ ~ ~", "^ ^ ^", "^1 ^ ^-5", "0.1 -0.5 .9", "~0.5 ~1 ~-5");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xj.c("argument.pos3d.incomplete"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xj.c("argument.pos.mixed"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xv.c("argument.pos3d.incomplete"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xv.c("argument.pos.mixed"));
    private final boolean d;
 
    public gz(boolean $$0) {
@@ -28,7 +28,7 @@ public class gz implements ArgumentType<gu> {
       return new gz($$0);
    }
 
-   public static ezy a(CommandContext<ew> $$0, String $$1) {
+   public static fbs a(CommandContext<ew> $$0, String $$1) {
       return ((gu)$$0.getArgument($$1, gu.class)).a((ew)$$0.getSource());
    }
 
@@ -49,7 +49,7 @@ public class gz implements ArgumentType<gu> {
          if (!$$2.isEmpty() && $$2.charAt(0) == '^') {
             $$3 = Collections.singleton(fb.b.a);
          } else {
-            $$3 = ((fb)$$0.getSource()).C();
+            $$3 = ((fb)$$0.getSource()).B();
          }
 
          return fb.a($$2, $$3, $$1, ex.a(this::a));

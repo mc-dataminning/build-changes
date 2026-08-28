@@ -1,20 +1,29 @@
-import com.google.common.annotations.VisibleForTesting;
+public enum ecd {
+   a(false, false),
+   b(true, false),
+   c(true, true);
 
-public interface ecd {
-   default azu a(jh $$0) {
-      return this.a($$0.u(), $$0.v(), $$0.w());
+   private final boolean d;
+   private final boolean e;
+
+   private ecd(final boolean $$0, final boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   default azu a(alj $$0) {
-      return this.a($$0.toString());
+   public boolean a() {
+      return this.e;
    }
 
-   azu a(String var1);
+   public boolean b() {
+      return this.d;
+   }
 
-   azu a(long var1);
-
-   azu a(int var1, int var2, int var3);
-
-   @VisibleForTesting
-   void a(StringBuilder var1);
+   public static ecd a(arw $$0) {
+      if ($$0.a(arw.d)) {
+         return c;
+      } else {
+         return $$0.a(arw.b) ? b : a;
+      }
+   }
 }

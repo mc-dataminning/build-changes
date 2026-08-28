@@ -1,28 +1,30 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public record eyd(eyu b) implements exy {
-   public static final MapCodec<eyd> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(eyv.a.fieldOf("chance").forGetter(eyd::c)).apply($$0, eyd::new));
+public class eyd extends exu {
+   public static final MapCodec<eyd> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(kr.b.fieldOf("components").forGetter($$0x -> $$0x.b)).apply($$0, eyd::new)
+   );
+   private final kr b;
+
+   private eyd(List<ezs> $$0, kr $$1) {
+      super($$0);
+      this.b = $$1;
+   }
 
    @Override
-   public exz b() {
-      return eya.d;
+   public exw<eyd> b() {
+      return exx.k;
    }
 
-   public boolean a(eun $$0) {
-      float $$1 = this.b.b($$0);
-      return $$0.b().i() < $$1;
+   @Override
+   public cxk a(cxk $$0, ewh $$1) {
+      $$0.a(this.b);
+      return $$0;
    }
 
-   public static exy.a a(float $$0) {
-      return () -> new eyd(eyr.a($$0));
-   }
-
-   public static exy.a a(eyu $$0) {
-      return () -> new eyd($$0);
-   }
-
-   public eyu c() {
-      return this.b;
+   public static <T> exu.a<?> a(kt<T> $$0, T $$1) {
+      return a($$2 -> new eyd($$2, kr.a().a($$0, $$1).a()));
    }
 }

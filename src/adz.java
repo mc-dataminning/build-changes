@@ -1,166 +1,69 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public abstract class adz implements zq<acf> {
-   protected final int a;
-   protected final short b;
-   protected final short c;
-   protected final short d;
-   protected final byte e;
-   protected final byte f;
-   protected final boolean g;
-   protected final boolean h;
-   protected final boolean i;
+public class adz implements aac<acr> {
+   public static final zt<ws, adz> a = aac.a(adz::a, adz::new);
+   public static final adz.a b = new adz.a(0);
+   public static final adz.a c = new adz.a(1);
+   public static final adz.a d = new adz.a(2);
+   public static final adz.a e = new adz.a(3);
+   public static final adz.a f = new adz.a(4);
+   public static final adz.a g = new adz.a(5);
+   public static final adz.a h = new adz.a(6);
+   public static final adz.a i = new adz.a(7);
+   public static final adz.a j = new adz.a(8);
+   public static final adz.a k = new adz.a(9);
+   public static final adz.a l = new adz.a(10);
+   public static final adz.a m = new adz.a(11);
+   public static final adz.a n = new adz.a(12);
+   public static final adz.a o = new adz.a(13);
+   public static final int p = 0;
+   public static final int q = 101;
+   public static final int r = 102;
+   public static final int s = 103;
+   public static final int t = 104;
+   private final adz.a u;
+   private final float v;
 
-   protected adz(int $$0, short $$1, short $$2, short $$3, byte $$4, byte $$5, boolean $$6, boolean $$7, boolean $$8) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
-      this.i = $$8;
+   public adz(adz.a $$0, float $$1) {
+      this.u = $$0;
+      this.v = $$1;
+   }
+
+   private adz(ws $$0) {
+      this.u = (adz.a)adz.a.a.get($$0.readUnsignedByte());
+      this.v = $$0.readFloat();
+   }
+
+   private void a(ws $$0) {
+      $$0.l(this.u.b);
+      $$0.a(this.v);
    }
 
    @Override
-   public abstract zs<? extends adz> a();
+   public aae<adz> a() {
+      return ahk.G;
+   }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public String toString() {
-      return "Entity_" + super.toString();
+   public adz.a b() {
+      return this.u;
    }
 
-   @Nullable
-   public bul a(dfm $$0) {
-      return $$0.a(this.a);
+   public float e() {
+      return this.v;
    }
 
-   public short b() {
-      return this.b;
-   }
+   public static class a {
+      static final Int2ObjectMap<adz.a> a = new Int2ObjectOpenHashMap();
+      final int b;
 
-   public short e() {
-      return this.c;
-   }
-
-   public short f() {
-      return this.d;
-   }
-
-   public float g() {
-      return azm.a(this.e);
-   }
-
-   public float h() {
-      return azm.a(this.f);
-   }
-
-   public boolean i() {
-      return this.h;
-   }
-
-   public boolean j() {
-      return this.i;
-   }
-
-   public boolean k() {
-      return this.g;
-   }
-
-   public static class a extends adz {
-      public static final zh<wg, adz.a> j = zq.a(adz.a::b, adz.a::a);
-
-      public a(int $$0, short $$1, short $$2, short $$3, boolean $$4) {
-         super($$0, $$1, $$2, $$3, (byte)0, (byte)0, $$4, false, true);
-      }
-
-      private static adz.a a(wg $$0) {
-         int $$1 = $$0.l();
-         short $$2 = $$0.readShort();
-         short $$3 = $$0.readShort();
-         short $$4 = $$0.readShort();
-         boolean $$5 = $$0.readBoolean();
-         return new adz.a($$1, $$2, $$3, $$4, $$5);
-      }
-
-      private void b(wg $$0) {
-         $$0.c(this.a);
-         $$0.m(this.b);
-         $$0.m(this.c);
-         $$0.m(this.d);
-         $$0.a(this.g);
-      }
-
-      @Override
-      public zs<adz.a> a() {
-         return agu.R;
-      }
-   }
-
-   public static class b extends adz {
-      public static final zh<wg, adz.b> j = zq.a(adz.b::b, adz.b::a);
-
-      public b(int $$0, short $$1, short $$2, short $$3, byte $$4, byte $$5, boolean $$6) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, true, true);
-      }
-
-      private static adz.b a(wg $$0) {
-         int $$1 = $$0.l();
-         short $$2 = $$0.readShort();
-         short $$3 = $$0.readShort();
-         short $$4 = $$0.readShort();
-         byte $$5 = $$0.readByte();
-         byte $$6 = $$0.readByte();
-         boolean $$7 = $$0.readBoolean();
-         return new adz.b($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-
-      private void b(wg $$0) {
-         $$0.c(this.a);
-         $$0.m(this.b);
-         $$0.m(this.c);
-         $$0.m(this.d);
-         $$0.l(this.e);
-         $$0.l(this.f);
-         $$0.a(this.g);
-      }
-
-      @Override
-      public zs<adz.b> a() {
-         return agu.S;
-      }
-   }
-
-   public static class c extends adz {
-      public static final zh<wg, adz.c> j = zq.a(adz.c::b, adz.c::a);
-
-      public c(int $$0, byte $$1, byte $$2, boolean $$3) {
-         super($$0, (short)0, (short)0, (short)0, $$1, $$2, $$3, true, false);
-      }
-
-      private static adz.c a(wg $$0) {
-         int $$1 = $$0.l();
-         byte $$2 = $$0.readByte();
-         byte $$3 = $$0.readByte();
-         boolean $$4 = $$0.readBoolean();
-         return new adz.c($$1, $$2, $$3, $$4);
-      }
-
-      private void b(wg $$0) {
-         $$0.c(this.a);
-         $$0.l(this.e);
-         $$0.l(this.f);
-         $$0.a(this.g);
-      }
-
-      @Override
-      public zs<adz.c> a() {
-         return agu.U;
+      public a(int $$0) {
+         this.b = $$0;
+         a.put($$0, this);
       }
    }
 }

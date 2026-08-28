@@ -1,58 +1,54 @@
-import org.joml.Vector2i;
+import com.google.common.base.Charsets;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Collection;
+import org.slf4j.Logger;
 
-public class flm implements fls {
-   private final fke a;
-   private final fko b;
+public class flm {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 50;
+   private static final String c = "command_history.txt";
+   private final Path d;
+   private final ayr<String> e = new ayr<>(50);
 
-   public flm(fke $$0) {
-      this.a = $$0;
-      this.b = new fko();
+   public flm(Path $$0) {
+      this.d = $$0.resolve("command_history.txt");
+      if (Files.exists(this.d)) {
+         try (BufferedReader $$1 = Files.newBufferedReader(this.d, Charsets.UTF_8)) {
+            this.e.addAll($$1.lines().toList());
+         } catch (Exception var7) {
+            a.error("Failed to read {}, command history will be missing", "command_history.txt", var7);
+         }
+      }
    }
 
-   @Override
-   public boolean a(ctw $$0) {
-      return $$0.g().a(axl.bS);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, cwm $$3) {
-      int $$4 = cuz.j($$3);
-      if ($$4 == 0) {
-         return false;
-      } else {
-         Vector2i $$5 = this.b.a($$0, $$1);
-         int $$6 = $$5.y == 0 ? -$$5.x : $$5.y;
-         if ($$6 != 0) {
-            int $$7 = cuz.h($$3);
-            $$7 = fko.a((double)$$6, $$7, $$4);
-            this.a($$3, $$2, $$7);
+   public void a(String $$0) {
+      if (!$$0.equals(this.e.peekLast())) {
+         if (this.e.size() >= 50) {
+            this.e.removeFirst();
          }
 
-         return true;
+         this.e.addLast($$0);
+         this.b();
       }
    }
 
-   @Override
-   public void b(ctw $$0) {
-      this.a($$0.g(), $$0.d);
-   }
-
-   @Override
-   public void a(ctw $$0, csk $$1) {
-      if ($$1 == csk.b) {
-         this.a($$0.g(), $$0.d);
+   private void b() {
+      try (BufferedWriter $$0 = Files.newBufferedWriter(this.d, Charsets.UTF_8)) {
+         for (String $$1 : this.e) {
+            $$0.write($$1);
+            $$0.newLine();
+         }
+      } catch (IOException var6) {
+         a.error("Failed to write {}, command history will be missing", "command_history.txt", var6);
       }
    }
 
-   private void a(cwm $$0, int $$1, int $$2) {
-      if (this.a.L() != null && $$2 < cuz.j($$0)) {
-         gdi $$3 = this.a.L();
-         cuz.a($$0, $$2);
-         $$3.b(new aii($$1, $$2));
-      }
-   }
-
-   public void a(cwm $$0, int $$1) {
-      this.a($$0, $$1, -1);
+   public Collection<String> a() {
+      return this.e;
    }
 }

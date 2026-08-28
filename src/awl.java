@@ -1,18 +1,45 @@
-public class awl {
-   private static final int h = 20;
-   private static final int i = 600;
-   private static final int j = 12000;
-   private static final int k = 24000;
-   private static final int l = 6000;
-   public static final awk a = new awk(awn.qb, 20, 600, true);
-   public static final awk b = new awk(awn.pD, 12000, 24000, false);
-   public static final awk c = new awk(awn.pE, 0, 0, true);
-   public static final awk d = new awk(awn.pY, 0, 0, true);
-   public static final awk e = new awk(awn.pZ, 6000, 24000, true);
-   public static final awk f = a(awn.qA);
-   public static final awk g = a(awn.qa);
+import java.util.List;
 
-   public static awk a(jq<awm> $$0) {
-      return new awk($$0, 12000, 24000, false);
+public class awl {
+   private int a;
+   private int b;
+
+   public boolean a(int $$0) {
+      return this.b >= this.b($$0);
+   }
+
+   public boolean a(int $$0, List<asi> $$1) {
+      int $$2 = (int)$$1.stream().filter(cps::gk).count();
+      return $$2 >= this.b($$0);
+   }
+
+   public int b(int $$0) {
+      return Math.max(1, bae.f((float)(this.a * $$0) / 100.0F));
+   }
+
+   public void a() {
+      this.b = 0;
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public boolean a(List<asi> $$0) {
+      int $$1 = this.a;
+      int $$2 = this.b;
+      this.a = 0;
+      this.b = 0;
+
+      for (asi $$3 : $$0) {
+         if (!$$3.aa_()) {
+            this.a++;
+            if ($$3.fP()) {
+               this.b++;
+            }
+         }
+      }
+
+      return ($$2 > 0 || this.b > 0) && ($$1 != this.a || $$2 != this.b);
    }
 }

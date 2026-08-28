@@ -1,245 +1,31 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
-
 public class dgu {
-   public static final Codec<dgu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.INT.fieldOf("fog_color").forGetter($$0x -> $$0x.b),
-               Codec.INT.fieldOf("water_color").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("water_fog_color").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("sky_color").forGetter($$0x -> $$0x.e),
-               Codec.INT.optionalFieldOf("foliage_color").forGetter($$0x -> $$0x.f),
-               Codec.INT.optionalFieldOf("grass_color").forGetter($$0x -> $$0x.g),
-               dgu.b.d.optionalFieldOf("grass_color_modifier", dgu.b.a).forGetter($$0x -> $$0x.h),
-               dgn.a.optionalFieldOf("particle").forGetter($$0x -> $$0x.i),
-               awm.b.optionalFieldOf("ambient_sound").forGetter($$0x -> $$0x.j),
-               dgm.a.optionalFieldOf("mood_sound").forGetter($$0x -> $$0x.k),
-               dgl.a.optionalFieldOf("additions_sound").forGetter($$0x -> $$0x.l),
-               awk.a.optionalFieldOf("music").forGetter($$0x -> $$0x.m)
-            )
-            .apply($$0, dgu::new)
-   );
-   private final int b;
-   private final int c;
-   private final int d;
-   private final int e;
-   private final Optional<Integer> f;
-   private final Optional<Integer> g;
-   private final dgu.b h;
-   private final Optional<dgn> i;
-   private final Optional<jq<awm>> j;
-   private final Optional<dgm> k;
-   private final Optional<dgl> l;
-   private final Optional<awk> m;
+   private static int[] a = new int[65536];
 
-   dgu(
-      int $$0,
-      int $$1,
-      int $$2,
-      int $$3,
-      Optional<Integer> $$4,
-      Optional<Integer> $$5,
-      dgu.b $$6,
-      Optional<dgn> $$7,
-      Optional<jq<awm>> $$8,
-      Optional<dgm> $$9,
-      Optional<dgl> $$10,
-      Optional<awk> $$11
-   ) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
-      this.m = $$11;
+   public static void a(int[] $$0) {
+      a = $$0;
    }
 
-   public int a() {
-      return this.b;
+   public static int a(double $$0, double $$1) {
+      $$1 *= $$0;
+      int $$2 = (int)((1.0 - $$0) * 255.0);
+      int $$3 = (int)((1.0 - $$1) * 255.0);
+      int $$4 = $$3 << 8 | $$2;
+      return $$4 >= a.length ? c() : a[$$4];
    }
 
-   public int b() {
-      return this.c;
+   public static int a() {
+      return -10380959;
    }
 
-   public int c() {
-      return this.d;
+   public static int b() {
+      return -8345771;
    }
 
-   public int d() {
-      return this.e;
+   public static int c() {
+      return -12012264;
    }
 
-   public Optional<Integer> e() {
-      return this.f;
-   }
-
-   public Optional<Integer> f() {
-      return this.g;
-   }
-
-   public dgu.b g() {
-      return this.h;
-   }
-
-   public Optional<dgn> h() {
-      return this.i;
-   }
-
-   public Optional<jq<awm>> i() {
-      return this.j;
-   }
-
-   public Optional<dgm> j() {
-      return this.k;
-   }
-
-   public Optional<dgl> k() {
-      return this.l;
-   }
-
-   public Optional<awk> l() {
-      return this.m;
-   }
-
-   public static class a {
-      private OptionalInt a = OptionalInt.empty();
-      private OptionalInt b = OptionalInt.empty();
-      private OptionalInt c = OptionalInt.empty();
-      private OptionalInt d = OptionalInt.empty();
-      private Optional<Integer> e = Optional.empty();
-      private Optional<Integer> f = Optional.empty();
-      private dgu.b g = dgu.b.a;
-      private Optional<dgn> h = Optional.empty();
-      private Optional<jq<awm>> i = Optional.empty();
-      private Optional<dgm> j = Optional.empty();
-      private Optional<dgl> k = Optional.empty();
-      private Optional<awk> l = Optional.empty();
-
-      public dgu.a a(int $$0) {
-         this.a = OptionalInt.of($$0);
-         return this;
-      }
-
-      public dgu.a b(int $$0) {
-         this.b = OptionalInt.of($$0);
-         return this;
-      }
-
-      public dgu.a c(int $$0) {
-         this.c = OptionalInt.of($$0);
-         return this;
-      }
-
-      public dgu.a d(int $$0) {
-         this.d = OptionalInt.of($$0);
-         return this;
-      }
-
-      public dgu.a e(int $$0) {
-         this.e = Optional.of($$0);
-         return this;
-      }
-
-      public dgu.a f(int $$0) {
-         this.f = Optional.of($$0);
-         return this;
-      }
-
-      public dgu.a a(dgu.b $$0) {
-         this.g = $$0;
-         return this;
-      }
-
-      public dgu.a a(dgn $$0) {
-         this.h = Optional.of($$0);
-         return this;
-      }
-
-      public dgu.a a(jq<awm> $$0) {
-         this.i = Optional.of($$0);
-         return this;
-      }
-
-      public dgu.a a(dgm $$0) {
-         this.j = Optional.of($$0);
-         return this;
-      }
-
-      public dgu.a a(dgl $$0) {
-         this.k = Optional.of($$0);
-         return this;
-      }
-
-      public dgu.a a(@Nullable awk $$0) {
-         this.l = Optional.ofNullable($$0);
-         return this;
-      }
-
-      public dgu a() {
-         return new dgu(
-            this.a.orElseThrow(() -> new IllegalStateException("Missing 'fog' color.")),
-            this.b.orElseThrow(() -> new IllegalStateException("Missing 'water' color.")),
-            this.c.orElseThrow(() -> new IllegalStateException("Missing 'water fog' color.")),
-            this.d.orElseThrow(() -> new IllegalStateException("Missing 'sky' color.")),
-            this.e,
-            this.f,
-            this.g,
-            this.h,
-            this.i,
-            this.j,
-            this.k,
-            this.l
-         );
-      }
-   }
-
-   public static enum b implements bai {
-      a("none") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            return $$2;
-         }
-      },
-      b("dark_forest") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            return ($$2 & 16711422) + 2634762 >> 1;
-         }
-      },
-      c("swamp") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            double $$3 = dgo.e.a($$0 * 0.0225, $$1 * 0.0225, false);
-            return $$3 < -0.1 ? 5011004 : 6975545;
-         }
-      };
-
-      private final String e;
-      public static final Codec<dgu.b> d = bai.a(dgu.b::values);
-
-      public abstract int a(double var1, double var3, int var5);
-
-      b(final String $$0) {
-         this.e = $$0;
-      }
-
-      public String a() {
-         return this.e;
-      }
-
-      @Override
-      public String c() {
-         return this.e;
-      }
+   public static int d() {
+      return -7158200;
    }
 }

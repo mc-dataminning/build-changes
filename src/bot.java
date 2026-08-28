@@ -1,56 +1,31 @@
-import com.mojang.jtracy.TracyClient;
-import java.util.Objects;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.Optional;
 
-public final class bot {
-   private static final ThreadLocal<boy> a = ThreadLocal.withInitial(boy::new);
-   private static final ThreadLocal<bou> b = new ThreadLocal<>();
-   private static final AtomicInteger c = new AtomicInteger();
+public interface bot<S, T> {
+   Optional<T> a(bos<S> var1);
 
-   private bot() {
+   static <S, T> bot<S, T> a(bow<S> $$0, bot.a<S, T> $$1) {
+      return new bot.c<>($$1, $$0);
    }
 
-   public static bot.a a(bou $$0) {
-      b($$0);
-      return bot::b;
+   static <S, T> bot<S, T> a(bow<S> $$0, bot.b<T> $$1) {
+      return new bot.c<>(($$1x, $$2) -> Optional.of($$1.run($$2)), $$0);
    }
 
-   private static void b(bou $$0) {
-      if (b.get() != null) {
-         throw new IllegalStateException("Profiler is already active");
-      } else {
-         bou $$1 = c($$0);
-         b.set($$1);
-         c.incrementAndGet();
-         $$1.a();
-      }
+   @FunctionalInterface
+   public interface a<S, T> {
+      Optional<T> run(bos<S> var1, bou var2);
    }
 
-   private static void b() {
-      bou $$0 = b.get();
-      if ($$0 == null) {
-         throw new IllegalStateException("Profiler was not active");
-      } else {
-         b.remove();
-         c.decrementAndGet();
-         $$0.b();
-      }
+   @FunctionalInterface
+   public interface b<T> {
+      T run(bou var1);
    }
 
-   private static bou c(bou $$0) {
-      return bou.a(c(), $$0);
-   }
-
-   public static bou a() {
-      return c.get() == 0 ? c() : Objects.requireNonNullElseGet(b.get(), bot::c);
-   }
-
-   private static bou c() {
-      return (bou)(TracyClient.isAvailable() ? a.get() : boq.a);
-   }
-
-   public interface a extends AutoCloseable {
+   public static record c<S, T>(bot.a<S, T> a, bow<S> b) implements bot<S, T> {
       @Override
-      void close();
+      public Optional<T> a(bos<S> $$0) {
+         bou $$1 = new bou();
+         return this.b.a($$0, $$1, boo.a) ? this.a.run($$0, $$1) : Optional.empty();
+      }
    }
 }

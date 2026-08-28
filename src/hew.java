@@ -1,53 +1,58 @@
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-
-public final class hew extends heu {
-   private static final long a = a(Runtime.getRuntime().maxMemory());
-   private final LongList b = new LongArrayList();
-   private final LongList c = new LongArrayList();
-   private final LongList d = new LongArrayList();
-
-   @Override
-   public void a(heo $$0) {
-      if (fke.Q().C()) {
-         super.a($$0);
-      }
+public class hew extends hej {
+   public hew(axe $$0, axg $$1, float $$2, float $$3, bam $$4, jh $$5) {
+      this($$0, $$1, $$2, $$3, $$4, (double)$$5.u() + 0.5, (double)$$5.v() + 0.5, (double)$$5.w() + 0.5);
    }
 
-   private void g() {
-      this.b.clear();
-      this.c.clear();
-      this.d.clear();
+   public static hew a(axe $$0, float $$1) {
+      return a($$0, $$1, 0.25F);
    }
 
-   @Override
-   public void f() {
-      this.b.add((long)fke.Q().o());
-      this.h();
-      this.c.add(fke.Q().p());
+   public static hew a(jq<axe> $$0, float $$1) {
+      return a($$0.a(), $$1);
    }
 
-   private void h() {
-      long $$0 = Runtime.getRuntime().totalMemory();
-      long $$1 = Runtime.getRuntime().freeMemory();
-      long $$2 = $$0 - $$1;
-      this.d.add(a($$2));
+   public static hew a(axe $$0, float $$1, float $$2) {
+      return new hew($$0.a(), axg.a, $$2, $$1, hfb.t(), false, 0, hfb.a.a, 0.0, 0.0, 0.0, true);
    }
 
-   @Override
-   public void b(heo $$0) {
-      $$0.send(hep.c, $$0x -> {
-         $$0x.a(her.r, new LongArrayList(this.b));
-         $$0x.a(her.s, new LongArrayList(this.c));
-         $$0x.a(her.t, new LongArrayList(this.d));
-         $$0x.a(her.u, this.e());
-         $$0x.a(her.v, fke.Q().n.aG());
-         $$0x.a(her.w, (int)a);
-      });
-      this.g();
+   public static hew a(axe $$0) {
+      return new hew($$0.a(), axg.b, 1.0F, 1.0F, hfb.t(), false, 0, hfb.a.a, 0.0, 0.0, 0.0, true);
    }
 
-   private static long a(long $$0) {
-      return $$0 / 1000L;
+   public static hew a(axe $$0, fbs $$1) {
+      return new hew($$0, axg.c, 4.0F, 1.0F, hfb.t(), false, 0, hfb.a.b, $$1.d, $$1.e, $$1.f);
+   }
+
+   public static hew b(axe $$0, float $$1, float $$2) {
+      return new hew($$0.a(), axg.i, $$2, $$1, hfb.t(), false, 0, hfb.a.a, 0.0, 0.0, 0.0, true);
+   }
+
+   public static hew b(axe $$0) {
+      return b($$0, 1.0F, 1.0F);
+   }
+
+   public static hew a(axe $$0, bam $$1, double $$2, double $$3, double $$4) {
+      return new hew($$0, axg.i, 1.0F, 1.0F, $$1, false, 0, hfb.a.b, $$2, $$3, $$4);
+   }
+
+   public hew(axe $$0, axg $$1, float $$2, float $$3, bam $$4, double $$5, double $$6, double $$7) {
+      this($$0, $$1, $$2, $$3, $$4, false, 0, hfb.a.b, $$5, $$6, $$7);
+   }
+
+   private hew(axe $$0, axg $$1, float $$2, float $$3, bam $$4, boolean $$5, int $$6, hfb.a $$7, double $$8, double $$9, double $$10) {
+      this($$0.a(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, false);
+   }
+
+   public hew(alz $$0, axg $$1, float $$2, float $$3, bam $$4, boolean $$5, int $$6, hfb.a $$7, double $$8, double $$9, double $$10, boolean $$11) {
+      super($$0, $$1, $$4);
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$8;
+      this.g = $$9;
+      this.h = $$10;
+      this.i = $$5;
+      this.j = $$6;
+      this.k = $$7;
+      this.l = $$11;
    }
 }

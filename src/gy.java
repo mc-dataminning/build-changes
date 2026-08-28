@@ -12,7 +12,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class gy implements ArgumentType<gu> {
    private static final Collection<String> b = Arrays.asList("0 0", "~ ~", "0.1 -0.5", "~1 ~-2");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xj.c("argument.pos2d.incomplete"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xv.c("argument.pos2d.incomplete"));
    private final boolean c;
 
    public gy(boolean $$0) {
@@ -27,9 +27,9 @@ public class gy implements ArgumentType<gu> {
       return new gy($$0);
    }
 
-   public static ezx a(CommandContext<ew> $$0, String $$1) {
-      ezy $$2 = ((gu)$$0.getArgument($$1, gu.class)).a((ew)$$0.getSource());
-      return new ezx((float)$$2.d, (float)$$2.f);
+   public static fbr a(CommandContext<ew> $$0, String $$1) {
+      fbs $$2 = ((gu)$$0.getArgument($$1, gu.class)).a((ew)$$0.getSource());
+      return new fbr((float)$$2.d, (float)$$2.f);
    }
 
    public gu a(StringReader $$0) throws CommandSyntaxException {
@@ -58,7 +58,7 @@ public class gy implements ArgumentType<gu> {
          if (!$$2.isEmpty() && $$2.charAt(0) == '^') {
             $$3 = Collections.singleton(fb.b.a);
          } else {
-            $$3 = ((fb)$$0.getSource()).C();
+            $$3 = ((fb)$$0.getSource()).B();
          }
 
          return fb.b($$2, $$3, $$1, ex.a(this::a));

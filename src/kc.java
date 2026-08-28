@@ -1,10 +1,10 @@
 import com.mojang.serialization.Lifecycle;
 import java.util.Optional;
 
-public record kc(Optional<auj> b, Lifecycle c) {
+public record kc(Optional<avc> b, Lifecycle c) {
    public static final kc a = new kc(Optional.empty(), Lifecycle.stable());
 
-   public Optional<auj> a() {
+   public Optional<avc> a() {
       return this.b;
    }
 

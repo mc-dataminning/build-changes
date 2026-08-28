@@ -1,19 +1,18 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class wi extends ChannelInboundHandlerAdapter {
-   private final vw a;
+public class wi {
+   private final AtomicInteger a = new AtomicInteger();
+   private final bny b;
 
-   public wi(vw $$0) {
-      this.a = $$0;
+   public wi(bny $$0) {
+      this.b = $$0;
    }
 
-   public void channelRead(ChannelHandlerContext $$0, Object $$1) {
-      if ($$1 instanceof ByteBuf $$2) {
-         this.a.a($$2.readableBytes());
-      }
+   public void a(int $$0) {
+      this.a.getAndAdd($$0);
+   }
 
-      $$0.fireChannelRead($$1);
+   public void a() {
+      this.b.a((long)this.a.getAndSet(0));
    }
 }

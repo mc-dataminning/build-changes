@@ -1,180 +1,144 @@
 import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.HashMap;
 import java.util.List;
-import java.util.function.Function;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class auk {
-   private static final Logger a = LogUtils.getLogger();
-   private final atn b;
-   private final auk.c c;
-   private final auk.a d;
-   private final atp e;
+public class auk implements aug {
+   private static final Logger c = LogUtils.getLogger();
+   private final auf d;
+   private final aty e;
+   private final Set<String> f;
+   private final List<Path> g;
+   private final Map<aui, List<Path>> h;
 
-   @Nullable
-   public static auk a(atn $$0, auk.c $$1, atq $$2, atp $$3) {
-      int $$4 = ab.b().a($$2);
-      auk.a $$5 = a($$0, $$1, $$4);
-      return $$5 != null ? new auk($$0, $$1, $$5, $$3) : null;
-   }
-
-   public auk(atn $$0, auk.c $$1, auk.a $$2, atp $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   auk(auf $$0, aty $$1, Set<String> $$2, List<Path> $$3, Map<aui, List<Path>> $$4) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
    }
 
    @Nullable
-   public static auk.a a(atn $$0, auk.c $$1, int $$2) {
-      try {
-         auk.a var11;
-         try (ato $$3 = $$1.a($$0)) {
-            aud $$4 = $$3.a(aud.b);
-            if ($$4 == null) {
-               a.warn("Missing metadata in pack {}", $$0.a());
-               return null;
+   @Override
+   public avn<InputStream> a(String... $$0) {
+      v.a($$0);
+      List<String> $$1 = List.of($$0);
+
+      for (Path $$2 : this.g) {
+         Path $$3 = v.a($$2, $$1);
+         if (Files.exists($$3) && auj.a($$3)) {
+            return avn.create($$3);
+         }
+      }
+
+      return null;
+   }
+
+   public void a(aui $$0, alz $$1, Consumer<Path> $$2) {
+      v.d($$1.a()).ifSuccess($$3 -> {
+         String $$4 = $$1.b();
+
+         for (Path $$5 : this.h.get($$0)) {
+            Path $$6 = $$5.resolve($$4);
+            $$2.accept(v.a($$6, $$3));
+         }
+      }).ifError($$1x -> c.error("Invalid path {}: {}", $$1, $$1x.message()));
+   }
+
+   @Override
+   public void a(aui $$0, String $$1, String $$2, aug.a $$3) {
+      v.d($$2).ifSuccess($$3x -> {
+         List<Path> $$4 = this.h.get($$0);
+         int $$5 = $$4.size();
+         if ($$5 == 1) {
+            a($$3, $$1, $$4.get(0), $$3x);
+         } else if ($$5 > 1) {
+            Map<alz, avn<InputStream>> $$6 = new HashMap<>();
+
+            for (int $$7 = 0; $$7 < $$5 - 1; $$7++) {
+               a($$6::putIfAbsent, $$1, $$4.get($$7), $$3x);
             }
 
-            atk $$5 = $$3.a(atk.a);
-            crq $$6 = $$5 != null ? $$5.a() : crq.a();
-            aze<Integer> $$7 = a($$0.a(), $$4);
-            aul $$8 = aul.a($$7, $$2);
-            atm $$9 = $$3.a(atm.a);
-            List<String> $$10 = $$9 != null ? $$9.a($$2) : List.of();
-            var11 = new auk.a($$4.a(), $$8, $$6, $$10);
+            Path $$8 = $$4.get($$5 - 1);
+            if ($$6.isEmpty()) {
+               a($$3, $$1, $$8, $$3x);
+            } else {
+               a($$6::putIfAbsent, $$1, $$8, $$3x);
+               $$6.forEach($$3);
+            }
+         }
+      }).ifError($$1x -> c.error("Invalid path {}: {}", $$2, $$1x.message()));
+   }
+
+   private static void a(aug.a $$0, String $$1, Path $$2, List<String> $$3) {
+      Path $$4 = $$2.resolve($$1);
+      auj.a($$1, $$4, $$3, $$0);
+   }
+
+   @Nullable
+   @Override
+   public avn<InputStream> a(aui $$0, alz $$1) {
+      return (avn<InputStream>)v.d($$1.a()).mapOrElse($$2 -> {
+         String $$3 = $$1.b();
+
+         for (Path $$4 : this.h.get($$0)) {
+            Path $$5 = v.a($$4.resolve($$3), $$2);
+            if (Files.exists($$5) && auj.a($$5)) {
+               return avn.create($$5);
+            }
          }
 
-         return var11;
-      } catch (Exception var14) {
-         a.warn("Failed to read pack {} metadata", $$0.a(), var14);
          return null;
-      }
-   }
-
-   private static aze<Integer> a(String $$0, aud $$1) {
-      int $$2 = $$1.b();
-      if ($$1.c().isEmpty()) {
-         return new aze<>($$2);
-      } else {
-         aze<Integer> $$3 = $$1.c().get();
-         if (!$$3.a($$2)) {
-            a.warn("Pack {} declared support for versions {} but declared main format is {}, defaulting to {}", new Object[]{$$0, $$3, $$2, $$2});
-            return new aze<>($$2);
-         } else {
-            return $$3;
-         }
-      }
-   }
-
-   public atn a() {
-      return this.b;
-   }
-
-   public xj b() {
-      return this.b.b();
-   }
-
-   public xj c() {
-      return this.d.a();
-   }
-
-   public xj a(boolean $$0) {
-      return this.b.a($$0, this.d.a);
-   }
-
-   public aul d() {
-      return this.d.b();
-   }
-
-   public crq e() {
-      return this.d.c();
-   }
-
-   public ato f() {
-      return this.c.a(this.b, this.d);
-   }
-
-   public String g() {
-      return this.b.a();
-   }
-
-   public atp h() {
-      return this.e;
-   }
-
-   public boolean i() {
-      return this.e.a();
-   }
-
-   public boolean j() {
-      return this.e.c();
-   }
-
-   public auk.b k() {
-      return this.e.b();
-   }
-
-   public auo l() {
-      return this.b.c();
+      }, $$1x -> {
+         c.error("Invalid path {}: {}", $$1, $$1x.message());
+         return null;
+      });
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof auk $$1) ? false : this.b.equals($$1.b);
-      }
+   public Set<String> a(aui $$0) {
+      return this.f;
    }
 
+   @Nullable
    @Override
-   public int hashCode() {
-      return this.b.hashCode();
-   }
-
-   public static record a(xj a, aul b, crq c, List<String> d) {
-   }
-
-   public static enum b {
-      a,
-      b;
-
-      public <T> int a(List<T> $$0, T $$1, Function<T, atp> $$2, boolean $$3) {
-         auk.b $$4 = $$3 ? this.a() : this;
-         if ($$4 == b) {
-            int $$5;
-            for ($$5 = 0; $$5 < $$0.size(); $$5++) {
-               atp $$6 = $$2.apply($$0.get($$5));
-               if (!$$6.c() || $$6.b() != this) {
-                  break;
-               }
+   public <T> T a(aut<T> $$0) {
+      avn<InputStream> $$1 = this.a("pack.mcmeta");
+      if ($$1 != null) {
+         try (InputStream $$2 = $$1.get()) {
+            T $$3 = atx.a($$0, $$2);
+            if ($$3 != null) {
+               return $$3;
             }
 
-            $$0.add($$5, $$1);
-            return $$5;
-         } else {
-            int $$7;
-            for ($$7 = $$0.size() - 1; $$7 >= 0; $$7--) {
-               atp $$8 = $$2.apply($$0.get($$7));
-               if (!$$8.c() || $$8.b() != this) {
-                  break;
-               }
-            }
-
-            $$0.add($$7 + 1, $$1);
-            return $$7 + 1;
+            return this.e.a($$0);
+         } catch (IOException var8) {
          }
       }
 
-      public auk.b a() {
-         return this == a ? b : a;
-      }
+      return this.e.a($$0);
    }
 
-   public interface c {
-      ato a(atn var1);
+   @Override
+   public auf a() {
+      return this.d;
+   }
 
-      ato a(atn var1, auk.a var2);
+   @Override
+   public void close() {
+   }
+
+   public avy d() {
+      return $$0 -> Optional.ofNullable(this.a(aui.a, $$0)).map($$0x -> new avt(this, $$0x));
    }
 }

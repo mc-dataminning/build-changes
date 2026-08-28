@@ -1,11 +1,32 @@
-public final class axi {
-   public static final axs<eru> a = a("water");
-   public static final axs<eru> b = a("lava");
+public class axi {
+   protected final axj a = new axj();
 
-   private axi() {
+   public boolean a(cun $$0) {
+      return this.a.a($$0);
    }
 
-   private static axs<eru> a(String $$0) {
-      return axs.a(ma.D, alj.b($$0));
+   public void a(cun $$0, boolean $$1) {
+      this.a.a($$0, $$1);
+   }
+
+   public boolean b(cun $$0) {
+      return this.a.b($$0);
+   }
+
+   public void b(cun $$0, boolean $$1) {
+      this.a.b($$0, $$1);
+   }
+
+   public void a(axj $$0) {
+      this.a.a($$0);
+   }
+
+   public axj a() {
+      return this.a.a();
+   }
+
+   public void a(cun $$0, boolean $$1, boolean $$2) {
+      this.a.a($$0, $$1);
+      this.a.b($$0, $$2);
    }
 }

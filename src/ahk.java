@@ -1,23 +1,182 @@
-import io.netty.buffer.ByteBuf;
+public class ahk {
+   public static final aae<add> a = a("bundle");
+   public static final aae<adc> b = a("bundle_delimiter");
+   public static final aae<acs> c = a("add_entity");
+   public static final aae<act> d = a("add_experience_orb");
+   public static final aae<acu> e = a("animate");
+   public static final aae<acv> f = a("award_stats");
+   public static final aae<acw> g = a("block_changed_ack");
+   public static final aae<acx> h = a("block_destruction");
+   public static final aae<acy> i = a("block_entity_data");
+   public static final aae<acz> j = a("block_event");
+   public static final aae<ada> k = a("block_update");
+   public static final aae<adb> l = a("boss_event");
+   public static final aae<ade> m = a("change_difficulty");
+   public static final aae<adf> n = a("chunk_batch_finished");
+   public static final aae<adg> o = a("chunk_batch_start");
+   public static final aae<adh> p = a("chunks_biomes");
+   public static final aae<adi> q = a("clear_titles");
+   public static final aae<adj> r = a("command_suggestions");
+   public static final aae<adk> s = a("commands");
+   public static final aae<adl> t = a("container_close");
+   public static final aae<adm> u = a("container_set_content");
+   public static final aae<adn> v = a("container_set_data");
+   public static final aae<ado> w = a("container_set_slot");
+   public static final aae<adp> x = a("cooldown");
+   public static final aae<adq> y = a("custom_chat_completions");
+   public static final aae<adr> z = a("damage_event");
+   public static final aae<ads> A = a("debug_sample");
+   public static final aae<adt> B = a("delete_chat");
+   public static final aae<adu> C = a("disguised_chat");
+   public static final aae<adv> D = a("entity_event");
+   public static final aae<adx> E = a("explode");
+   public static final aae<ady> F = a("forget_level_chunk");
+   public static final aae<adz> G = a("game_event");
+   public static final aae<aea> H = a("horse_screen_open");
+   public static final aae<aeb> I = a("hurt_animation");
+   public static final aae<aec> J = a("initialize_border");
+   public static final aae<aee> K = a("level_chunk_with_light");
+   public static final aae<aef> L = a("level_event");
+   public static final aae<aeg> M = a("level_particles");
+   public static final aae<aeh> N = a("light_update");
+   public static final aae<aej> O = a("login");
+   public static final aae<aek> P = a("map_item_data");
+   public static final aae<ael> Q = a("merchant_offers");
+   public static final aae<aem.a> R = a("move_entity_pos");
+   public static final aae<aem.b> S = a("move_entity_pos_rot");
+   public static final aae<aen> T = a("move_minecart_along_track");
+   public static final aae<aem.c> U = a("move_entity_rot");
+   public static final aae<aeo> V = a("move_vehicle");
+   public static final aae<aep> W = a("open_book");
+   public static final aae<aeq> X = a("open_screen");
+   public static final aae<aer> Y = a("open_sign_editor");
+   public static final aae<aes> Z = a("place_ghost_recipe");
+   public static final aae<aet> aa = a("player_abilities");
+   public static final aae<aeu> ab = a("player_chat");
+   public static final aae<aev> ac = a("player_combat_end");
+   public static final aae<aew> ad = a("player_combat_enter");
+   public static final aae<aex> ae = a("player_combat_kill");
+   public static final aae<aey> af = a("player_info_remove");
+   public static final aae<aez> ag = a("player_info_update");
+   public static final aae<afa> ah = a("player_look_at");
+   public static final aae<afb> ai = a("player_position");
+   public static final aae<afc> aj = a("player_rotation");
+   public static final aae<afe> ak = a("recipe_book_add");
+   public static final aae<aff> al = a("recipe_book_remove");
+   public static final aae<afg> am = a("recipe_book_settings");
+   public static final aae<afh> an = a("remove_entities");
+   public static final aae<afi> ao = a("remove_mob_effect");
+   public static final aae<afk> ap = a("respawn");
+   public static final aae<afl> aq = a("rotate_head");
+   public static final aae<afm> ar = a("section_blocks_update");
+   public static final aae<afn> as = a("select_advancements_tab");
+   public static final aae<afo> at = a("server_data");
+   public static final aae<afp> au = a("set_action_bar_text");
+   public static final aae<afq> av = a("set_border_center");
+   public static final aae<afr> aw = a("set_border_lerp_size");
+   public static final aae<afs> ax = a("set_border_size");
+   public static final aae<aft> ay = a("set_border_warning_delay");
+   public static final aae<afu> az = a("set_border_warning_distance");
+   public static final aae<afv> aA = a("set_camera");
+   public static final aae<afw> aB = a("set_chunk_cache_center");
+   public static final aae<afx> aC = a("set_chunk_cache_radius");
+   public static final aae<afz> aD = a("set_default_spawn_position");
+   public static final aae<aga> aE = a("set_display_objective");
+   public static final aae<agb> aF = a("set_entity_data");
+   public static final aae<agc> aG = a("set_entity_link");
+   public static final aae<agd> aH = a("set_entity_motion");
+   public static final aae<age> aI = a("set_equipment");
+   public static final aae<agf> aJ = a("set_experience");
+   public static final aae<agg> aK = a("set_health");
+   public static final aae<agh> aL = a("set_held_slot");
+   public static final aae<agi> aM = a("set_objective");
+   public static final aae<agj> aN = a("set_passengers");
+   public static final aae<agl> aO = a("set_player_team");
+   public static final aae<agm> aP = a("set_score");
+   public static final aae<agn> aQ = a("set_simulation_distance");
+   public static final aae<ago> aR = a("set_subtitle_text");
+   public static final aae<agp> aS = a("set_time");
+   public static final aae<agq> aT = a("set_title_text");
+   public static final aae<agr> aU = a("set_titles_animation");
+   public static final aae<ags> aV = a("sound_entity");
+   public static final aae<agt> aW = a("sound");
+   public static final aae<agu> aX = a("start_configuration");
+   public static final aae<agv> aY = a("stop_sound");
+   public static final aae<agw> aZ = a("system_chat");
+   public static final aae<agx> ba = a("tab_list");
+   public static final aae<agy> bb = a("tag_query");
+   public static final aae<agz> bc = a("take_item_entity");
+   public static final aae<aha> bd = a("teleport_entity");
+   public static final aae<adw> be = a("entity_position_sync");
+   public static final aae<ahd> bf = a("update_advancements");
+   public static final aae<ahe> bg = a("update_attributes");
+   public static final aae<ahf> bh = a("update_mob_effect");
+   public static final aae<ahg> bi = a("update_recipes");
+   public static final aae<afd> bj = a("projectile_power");
+   public static final aae<aho> bk = b("accept_teleportation");
+   public static final aae<ahp> bl = b("block_entity_tag_query");
+   public static final aae<aiy> bm = b("bundle_item_selected");
+   public static final aae<ahq> bn = b("change_difficulty");
+   public static final aae<ahr> bo = b("chat_ack");
+   public static final aae<ahs> bp = b("chat_command");
+   public static final aae<aht> bq = b("chat_command_signed");
+   public static final aae<ahu> br = b("chat");
+   public static final aae<ahv> bs = b("chat_session_update");
+   public static final aae<ahw> bt = b("chunk_batch_received");
+   public static final aae<ahx> bu = b("client_command");
+   public static final aae<ahy> bv = b("client_tick_end");
+   public static final aae<ahz> bw = b("command_suggestion");
+   public static final aae<aia> bx = b("configuration_acknowledged");
+   public static final aae<aib> by = b("container_button_click");
+   public static final aae<aic> bz = b("container_click");
+   public static final aae<aid> bA = b("container_close");
+   public static final aae<aie> bB = b("container_slot_state_changed");
+   public static final aae<aif> bC = b("debug_sample_subscription");
+   public static final aae<aig> bD = b("edit_book");
+   public static final aae<aih> bE = b("entity_tag_query");
+   public static final aae<aii> bF = b("interact");
+   public static final aae<aij> bG = b("jigsaw_generate");
+   public static final aae<aik> bH = b("lock_difficulty");
+   public static final aae<ail.a> bI = b("move_player_pos");
+   public static final aae<ail.b> bJ = b("move_player_pos_rot");
+   public static final aae<ail.c> bK = b("move_player_rot");
+   public static final aae<ail.d> bL = b("move_player_status_only");
+   public static final aae<aim> bM = b("move_vehicle");
+   public static final aae<ain> bN = b("paddle_boat");
+   public static final aae<aio> bO = b("pick_item");
+   public static final aae<aip> bP = b("place_recipe");
+   public static final aae<aiq> bQ = b("player_abilities");
+   public static final aae<air> bR = b("player_action");
+   public static final aae<ais> bS = b("player_command");
+   public static final aae<ait> bT = b("player_input");
+   public static final aae<aiu> bU = b("recipe_book_change_settings");
+   public static final aae<aiv> bV = b("recipe_book_seen_recipe");
+   public static final aae<aiw> bW = b("rename_item");
+   public static final aae<aix> bX = b("seen_advancements");
+   public static final aae<aiz> bY = b("select_trade");
+   public static final aae<aja> bZ = b("set_beacon");
+   public static final aae<ajb> ca = b("set_carried_item");
+   public static final aae<ajc> cb = b("set_command_block");
+   public static final aae<ajd> cc = b("set_command_minecart");
+   public static final aae<aje> cd = b("set_creative_mode_slot");
+   public static final aae<ajf> ce = b("set_jigsaw_block");
+   public static final aae<ajg> cf = b("set_structure_block");
+   public static final aae<ajh> cg = b("sign_update");
+   public static final aae<aji> ch = b("swing");
+   public static final aae<ajj> ci = b("teleport_to_entity");
+   public static final aae<ajk> cj = b("use_item_on");
+   public static final aae<ajl> ck = b("use_item");
+   public static final aae<afj> cl = a("reset_score");
+   public static final aae<ahb> cm = a("ticking_state");
+   public static final aae<ahc> cn = a("ticking_step");
+   public static final aae<afy> co = a("set_cursor_item");
+   public static final aae<agk> cp = a("set_player_inventory");
 
-public class ahk implements zq<agw> {
-   public static final ahk a = new ahk();
-   public static final zh<ByteBuf, ahk> b = zh.a(a);
-
-   private ahk() {
+   private static <T extends aac<acr>> aae<T> a(String $$0) {
+      return new aae<>(aad.b, alz.b($$0));
    }
 
-   @Override
-   public zs<ahk> a() {
-      return agu.bt;
-   }
-
-   public void a(agw $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public boolean d() {
-      return true;
+   private static <T extends aac<ahm>> aae<T> b(String $$0) {
+      return new aae<>(aad.a, alz.b($$0));
    }
 }

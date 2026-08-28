@@ -6,11 +6,11 @@ public class ll implements lq {
    private final int b;
 
    public static MapCodec<ll> a(lr<ll> $$0) {
-      return ayv.j.xmap($$1 -> new ll($$0, $$1), $$0x -> $$0x.b).fieldOf("color");
+      return azn.j.xmap($$1 -> new ll($$0, $$1), $$0x -> $$0x.b).fieldOf("color");
    }
 
-   public static zh<? super ByteBuf, ll> b(lr<ll> $$0) {
-      return zf.g.a($$1 -> new ll($$0, $$1), $$0x -> $$0x.b);
+   public static zt<? super ByteBuf, ll> b(lr<ll> $$0) {
+      return zr.g.a($$1 -> new ll($$0, $$1), $$0x -> $$0x.b);
    }
 
    private ll(lr<ll> $$0, int $$1) {
@@ -24,19 +24,19 @@ public class ll implements lq {
    }
 
    public float b() {
-      return (float)axx.b(this.b) / 255.0F;
+      return (float)ayp.b(this.b) / 255.0F;
    }
 
    public float c() {
-      return (float)axx.c(this.b) / 255.0F;
+      return (float)ayp.c(this.b) / 255.0F;
    }
 
    public float d() {
-      return (float)axx.d(this.b) / 255.0F;
+      return (float)ayp.d(this.b) / 255.0F;
    }
 
    public float e() {
-      return (float)axx.a(this.b) / 255.0F;
+      return (float)ayp.a(this.b) / 255.0F;
    }
 
    public static ll a(lr<ll> $$0, int $$1) {
@@ -44,6 +44,6 @@ public class ll implements lq {
    }
 
    public static ll a(lr<ll> $$0, float $$1, float $$2, float $$3) {
-      return a($$0, axx.a(1.0F, $$1, $$2, $$3));
+      return a($$0, ayp.a(1.0F, $$1, $$2, $$3));
    }
 }

@@ -1,26 +1,29 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bzl {
-   private static final float a = 0.3F;
+public class bzl extends bxu<bwd> {
+   private final bsj c;
+   private final float d;
+   private final float e;
+   private final float f;
 
-   public static byl<bvh> a() {
-      return can.a(
-         (Function<can.b<bvh>, ? extends App<can.c<bvh>, caq<bvh>>>)($$0 -> $$0.group($$0.a(cel.m), $$0.a(cel.n), $$0.b(cel.e), $$0.b(cel.h), $$0.c(cel.q))
-               .apply($$0, ($$1, $$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     jp $$9 = $$0.b($$3);
-                     cen $$10 = $$0.b($$4);
-                     if ($$6.G_().a(100) == 0 && $$6.ag() == $$9.a() && $$9.b().a($$7.dt(), 4.0) && $$10.d($$0xxx -> bus.bz.equals($$0xxx.aq()))) {
-                        $$10.a($$1xx -> bus.bz.equals($$1xx.aq()) && $$1xx.g((bul)$$7) <= 32.0).ifPresent($$3xx -> {
-                           $$5.a($$3xx);
-                           $$2.a(new bxl($$3xx, true));
-                           $$1.a(new ceo(new bxl($$3xx, false), 0.3F, 1));
-                        });
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+   public bzl(bsj $$0, float $$1, float $$2, float $$3) {
+      super(ImmutableMap.of(cff.n, cfg.b, cff.Q, cfg.b));
+      if ($$2 > $$3) {
+         throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + $$2 + " > " + $$3);
+      } else {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3 - $$2;
+      }
+   }
+
+   protected void a(ash $$0, bwd $$1, long $$2) {
+      bam $$3 = $$1.dY();
+      float $$4 = bae.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
+      float $$5 = bae.h($$1.dL() + 2.0F * $$3.i() * this.d - this.d);
+      fbs $$6 = fbs.a($$4, $$5);
+      $$1.eb().a(cff.n, new bxx($$1.bF().e($$6)));
+      $$1.eb().a(cff.Q, this.c.a($$3));
    }
 }

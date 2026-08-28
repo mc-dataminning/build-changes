@@ -1,23 +1,31 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import io.netty.buffer.ByteBuf;
 
-public class avc {
-   private static final Codec<avc> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.list(azv.a).fieldOf("block").forGetter($$0x -> $$0x.c)).apply($$0, avc::new)
-   );
-   public static final auc<avc> a = auc.a("filter", b);
-   private final List<azv> c;
+public record avc(String c, String d, String e) {
+   public static final zt<ByteBuf, avc> a = zt.a(zr.o, avc::b, zr.o, avc::c, zr.o, avc::d, avc::new);
+   public static final String b = "minecraft";
 
-   public avc(List<azv> $$0) {
-      this.c = List.copyOf($$0);
+   public static avc a(String $$0) {
+      return new avc("minecraft", $$0, ab.b().b());
    }
 
-   public boolean a(String $$0) {
-      return this.c.stream().anyMatch($$1 -> $$1.a().test($$0));
+   public boolean a() {
+      return this.c.equals("minecraft");
    }
 
-   public boolean b(String $$0) {
-      return this.c.stream().anyMatch($$1 -> $$1.b().test($$0));
+   @Override
+   public String toString() {
+      return this.c + ":" + this.d + ":" + this.e;
+   }
+
+   public String b() {
+      return this.c;
+   }
+
+   public String c() {
+      return this.d;
+   }
+
+   public String d() {
+      return this.e;
    }
 }

@@ -1,84 +1,47 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Locale;
-import java.util.function.Consumer;
-import net.minecraft.server.MinecraftServer;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import java.util.Collection;
+import java.util.Collections;
 
 public class aoi {
-   private static final Logger a = LogUtils.getLogger();
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xj.c("commands.perf.notRunning"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xj.c("commands.perf.alreadyRunning"));
+   public static final int a = 2;
 
    public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("perf").requires($$0x -> $$0x.c(4)))
-               .then(ex.a("start").executes($$0x -> a((ew)$$0x.getSource()))))
-            .then(ex.a("stop").executes($$0x -> b((ew)$$0x.getSource())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("gamemode").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)ex.a("gamemode", fk.a())
+                     .executes($$0x -> a($$0x, Collections.singleton(((ew)$$0x.getSource()).h()), fk.a($$0x, "gamemode"))))
+                  .then(ex.a("target", fj.d()).executes($$0x -> a($$0x, fj.f($$0x, "target"), fk.a($$0x, "gamemode"))))
+            )
       );
    }
 
-   private static int a(ew $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if ($$1.aT()) {
-         throw c.create();
+   private static void a(ew $$0, asi $$1, dgx $$2) {
+      xv $$3 = xv.c("gameMode." + $$2.b());
+      if ($$0.f() == $$1) {
+         $$0.a(() -> xv.a("commands.gamemode.success.self", $$3), true);
       } else {
-         Consumer<bos> $$2 = $$1x -> a($$0, $$1x);
-         Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
-         $$1.a($$2, $$3);
-         $$0.a(() -> xj.c("commands.perf.started"), false);
-         return 0;
+         if ($$0.e().N().b(dgw.p)) {
+            $$1.a(xv.a("gameMode.changed", $$3));
+         }
+
+         $$0.a(() -> xv.a("commands.gamemode.success.other", $$1.p_(), $$3), true);
       }
    }
 
-   private static int b(ew $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if (!$$1.aT()) {
-         throw b.create();
-      } else {
-         $$1.aV();
-         return 0;
-      }
-   }
+   private static int a(CommandContext<ew> $$0, Collection<asi> $$1, dgx $$2) {
+      int $$3 = 0;
 
-   private static void a(ew $$0, Path $$1, MinecraftServer $$2) {
-      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ae.f(), $$2.aZ().e(), ab.b().b());
-
-      String $$4;
-      try {
-         $$4 = v.a(bqo.a, $$3, ".zip");
-      } catch (IOException var11) {
-         $$0.b(xj.c("commands.perf.reportFailed"));
-         a.error("Failed to create report name", var11);
-         return;
+      for (asi $$4 : $$1) {
+         if ($$4.a($$2)) {
+            a((ew)$$0.getSource(), $$4, $$2);
+            $$3++;
+         }
       }
 
-      try (ayx $$7 = new ayx(bqo.a.resolve($$4))) {
-         $$7.a(Paths.get("system.txt"), $$2.b(new ac()).a());
-         $$7.a($$1);
-      }
-
-      try {
-         FileUtils.forceDelete($$1.toFile());
-      } catch (IOException var9) {
-         a.warn("Failed to delete temporary profiling file {}", $$1, var9);
-      }
-
-      $$0.a(() -> xj.a("commands.perf.reportSaved", $$4), false);
-   }
-
-   private static void a(ew $$0, bos $$1) {
-      if ($$1 != boo.a) {
-         int $$2 = $$1.f();
-         double $$3 = (double)$$1.g() / (double)bao.a;
-         $$0.a(() -> xj.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);
-      }
+      return $$3;
    }
 }

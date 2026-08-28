@@ -1,22 +1,9 @@
-public class ctv implements csl {
-   private final int[] a;
-
-   public ctv(int $$0) {
-      this.a = new int[$$0];
+public class ctv extends csz {
+   public ctv(int $$0, cpr $$1) {
+      super(cug.o, dcj.b, dch.e, cun.b, $$0, $$1);
    }
 
-   @Override
-   public int a(int $$0) {
-      return this.a[$$0];
-   }
-
-   @Override
-   public void a(int $$0, int $$1) {
-      this.a[$$0] = $$1;
-   }
-
-   @Override
-   public int a() {
-      return this.a.length;
+   public ctv(int $$0, cpr $$1, bsx $$2, ctj $$3) {
+      super(cug.o, dcj.b, dch.e, cun.b, $$0, $$1, $$2, $$3);
    }
 }

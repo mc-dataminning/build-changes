@@ -1,8 +1,5 @@
-public class gwx extends gwm implements gxe {
+public class gwx extends gym {
    public boolean a;
-
-   @Override
-   public boolean c() {
-      return this.a;
-   }
+   public final bux b = new bux();
+   public final bux c = new bux();
 }

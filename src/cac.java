@@ -1,104 +1,124 @@
 import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class cac extends bxa<cof> {
-   private static final int c = 80;
-   private long d;
-   private long e;
-   private int f;
-   private Optional<jh> g = Optional.empty();
+public class cac extends bxu<cpe> {
+   private static final int c = 900;
+   private static final int d = 40;
+   @Nullable
+   private cxk e;
+   private final List<cxk> f = Lists.newArrayList();
+   private int g;
+   private int h;
+   private int i;
 
-   public cac() {
-      super(ImmutableMap.of(cel.n, cem.b, cel.m, cem.b));
+   public cac(int $$0, int $$1) {
+      super(ImmutableMap.of(cff.q, cfg.a), $$0, $$1);
    }
 
-   protected boolean a(arp $$0, cof $$1) {
-      if ($$1.af % 10 == 0 && (this.e == 0L || this.e + 160L <= (long)$$1.af)) {
-         if ($$1.v().a_(cwq.rP) <= 0) {
-            return false;
-         } else {
-            this.g = this.b($$0, $$1);
-            return this.g.isPresent();
-         }
-      } else {
+   public boolean a(ash $$0, cpe $$1) {
+      bxd<?> $$2 = $$1.eb();
+      if ($$2.c(cff.q).isEmpty()) {
          return false;
+      } else {
+         bwb $$3 = $$2.c(cff.q).get();
+         return $$3.aq() == bvm.bS && $$1.bL() && $$3.bL() && !$$1.e_() && $$1.g($$3) <= 17.0;
       }
    }
 
-   protected boolean a(arp $$0, cof $$1, long $$2) {
-      return this.f < 80 && this.g.isPresent();
+   public boolean a(ash $$0, cpe $$1, long $$2) {
+      return this.a($$0, $$1) && this.i > 0 && $$1.eb().c(cff.q).isPresent();
    }
 
-   private Optional<jh> b(arp $$0, cof $$1) {
-      jh.a $$2 = new jh.a();
-      Optional<jh> $$3 = Optional.empty();
-      int $$4 = 0;
+   public void b(ash $$0, cpe $$1, long $$2) {
+      super.d($$0, $$1, $$2);
+      this.d($$1);
+      this.g = 0;
+      this.h = 0;
+      this.i = 40;
+   }
 
-      for (int $$5 = -1; $$5 <= 1; $$5++) {
-         for (int $$6 = -1; $$6 <= 1; $$6++) {
-            for (int $$7 = -1; $$7 <= 1; $$7++) {
-               $$2.a($$1.dv(), $$5, $$6, $$7);
-               if (this.a($$2, $$0)) {
-                  if ($$0.A.a(++$$4) == 0) {
-                     $$3 = Optional.of($$2.j());
-                  }
-               }
-            }
-         }
+   public void c(ash $$0, cpe $$1, long $$2) {
+      bwb $$3 = this.d($$1);
+      this.a($$3, $$1);
+      if (!this.f.isEmpty()) {
+         this.e($$1);
+      } else {
+         c($$1);
+         this.i = Math.min(this.i, 40);
       }
 
-      return $$3;
+      this.i--;
    }
 
-   private boolean a(jh $$0, arp $$1) {
-      dvv $$2 = $$1.a_($$0);
-      diq $$3 = $$2.b();
-      return $$3 instanceof dkl && !((dkl)$$3).i($$2);
+   public void d(ash $$0, cpe $$1, long $$2) {
+      super.b($$0, $$1, $$2);
+      $$1.eb().b(cff.q);
+      c($$1);
+      this.e = null;
    }
 
-   protected void b(arp $$0, cof $$1, long $$2) {
-      this.a($$1);
-      $$1.a(but.a, new cwm(cwq.rP));
-      this.d = $$2;
-      this.f = 0;
-   }
+   private void a(bwb $$0, cpe $$1) {
+      boolean $$2 = false;
+      cxk $$3 = $$0.eX();
+      if (this.e == null || !cxk.b(this.e, $$3)) {
+         this.e = $$3;
+         $$2 = true;
+         this.f.clear();
+      }
 
-   private void a(cof $$0) {
-      this.g.ifPresent($$1 -> {
-         bxd $$2 = new bxd($$1);
-         $$0.eb().a(cel.n, $$2);
-         $$0.eb().a(cel.m, new ceo($$2, 0.5F, 1));
-      });
-   }
-
-   protected void c(arp $$0, cof $$1, long $$2) {
-      $$1.a(but.a, cwm.k);
-      this.e = (long)$$1.af;
-   }
-
-   protected void d(arp $$0, cof $$1, long $$2) {
-      jh $$3 = this.g.get();
-      if ($$2 >= this.d && $$3.a($$1.dt(), 1.0)) {
-         cwm $$4 = cwm.k;
-         bsr $$5 = $$1.v();
-         int $$6 = $$5.b();
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            cwm $$8 = $$5.a($$7);
-            if ($$8.a(cwq.rP)) {
-               $$4 = $$8;
-               break;
-            }
-         }
-
-         if (!$$4.f() && cuu.a($$4, $$0, $$3)) {
-            $$0.c(1505, $$3, 15);
-            this.g = this.b($$0, $$1);
+      if ($$2 && !this.e.f()) {
+         this.b($$1);
+         if (!this.f.isEmpty()) {
+            this.i = 900;
             this.a($$1);
-            this.d = $$2 + 40L;
+         }
+      }
+   }
+
+   private void a(cpe $$0) {
+      a($$0, this.f.get(0));
+   }
+
+   private void b(cpe $$0) {
+      for (dfx $$1 : $$0.go()) {
+         if (!$$1.r() && this.a($$1)) {
+            this.f.add($$1.h());
+         }
+      }
+   }
+
+   private boolean a(dfx $$0) {
+      return cxk.b(this.e, $$0.b()) || cxk.b(this.e, $$0.c());
+   }
+
+   private static void c(cpe $$0) {
+      $$0.a(bvn.a, cxk.k);
+      $$0.a(bvn.a, 0.085F);
+   }
+
+   private static void a(cpe $$0, cxk $$1) {
+      $$0.a(bvn.a, $$1);
+      $$0.a(bvn.a, 0.0F);
+   }
+
+   private bwb d(cpe $$0) {
+      bxd<?> $$1 = $$0.eb();
+      bwb $$2 = $$1.c(cff.q).get();
+      $$1.a(cff.n, new byf($$2, true));
+      return $$2;
+   }
+
+   private void e(cpe $$0) {
+      if (this.f.size() >= 2 && ++this.g >= 40) {
+         this.h++;
+         this.g = 0;
+         if (this.h > this.f.size() - 1) {
+            this.h = 0;
          }
 
-         this.f++;
+         a($$0, this.f.get(this.h));
       }
    }
 }

@@ -1,33 +1,44 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ehr(int b, int c, int d, int e, int f, brp g, float h) implements eha {
-   public static final Codec<ehr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(ehr::a),
-               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(ehr::b),
-               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(ehr::c),
-               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(ehr::d),
-               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(ehr::f),
-               brp.c.fieldOf("extra_rare_growths").forGetter(ehr::g),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(ehr::h)
-            )
-            .apply($$0, ehr::new)
-   );
+public class ehr extends ego<eja> {
+   private static final int a = 7;
 
-   public int a() {
-      return this.b;
+   ehr(Codec<eja> $$0) {
+      super($$0);
    }
 
-   public int b() {
-      return this.c;
+   @Override
+   public boolean a(egq<eja> $$0) {
+      dhy $$1 = $$0.b();
+      bam $$2 = $$0.d();
+      eja $$3 = $$0.f();
+      jh $$4 = $$0.e();
+      int $$5 = $$2.a($$3.c + 1);
+      jh.a $$6 = new jh.a();
+
+      for (int $$7 = 0; $$7 < $$5; $$7++) {
+         this.a($$6, $$2, $$4, Math.min($$7, 7));
+         dxn $$8 = $$1.a_($$6);
+
+         for (eja.a $$9 : $$3.b) {
+            if (ehj.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
+               $$1.a($$6, $$9.c, 2);
+               break;
+            }
+         }
+      }
+
+      return true;
    }
 
-   public int c() {
-      return this.d;
+   private void a(jh.a $$0, bam $$1, jh $$2, int $$3) {
+      int $$4 = this.a($$1, $$3);
+      int $$5 = this.a($$1, $$3);
+      int $$6 = this.a($$1, $$3);
+      $$0.a($$2, $$4, $$5, $$6);
    }
 
-   public int d() {
-      return this.e;
+   private int a(bam $$0, int $$1) {
+      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
    }
 }

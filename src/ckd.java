@@ -1,80 +1,87 @@
 import javax.annotation.Nullable;
 
-public class ckd extends cjx {
-   private static final cfy b = cfy.a().d();
-   @Nullable
-   private esj c;
-   @Nullable
-   private ezy d;
+public class ckd extends ccz {
+   private final ckc a;
 
-   public ckd(cjv $$0) {
-      super($$0);
+   public ckd(ckc $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public ckl<ckd> h() {
-      return ckl.c;
+   public boolean b() {
+      return this.a.dV().a(this.a.dA(), this.a.dC(), this.a.dG(), 10.0);
    }
 
    @Override
-   public void c() {
-      this.c = null;
-      this.d = null;
-   }
-
-   @Override
-   public void a(arp $$0) {
-      double $$1 = this.d == null ? 0.0 : this.d.c(this.a.dA(), this.a.dC(), this.a.dG());
-      if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
-         this.b($$0);
-      }
-   }
-
-   @Nullable
-   @Override
-   public ezy f() {
-      return this.d;
-   }
-
-   private void b(arp $$0) {
-      if (this.c == null || this.c.c()) {
-         int $$1 = this.a.v();
-         jh $$2 = $$0.a(ebq.a.f, eev.a(this.a.n()));
-         cou $$3 = $$0.a(b, this.a, (double)$$2.u(), (double)$$2.v(), (double)$$2.w());
-         int $$5;
+   public void a() {
+      ash $$0 = (ash)this.a.dV();
+      btc $$1 = $$0.d_(this.a.dv());
+      this.a.x(false);
+      this.a.y(true);
+      this.a.c_(0);
+      bwa $$2 = bvm.ax.a($$0, bvl.k);
+      if ($$2 != null) {
+         $$2.e(this.a.dA(), this.a.dC(), this.a.dG());
+         $$2.a(true);
+         $$0.b($$2);
+         cna $$3 = this.a($$1, this.a);
          if ($$3 != null) {
-            ezy $$4 = new ezy($$3.dA(), 0.0, $$3.dG()).d();
-            $$5 = this.a.q(-$$4.d * 40.0, 105.0, -$$4.f * 40.0);
-         } else {
-            $$5 = this.a.q(40.0, (double)$$2.v(), 0.0);
-         }
+            $$3.n(this.a);
+            $$0.a_($$3);
 
-         esh $$7 = new esh($$2.u(), $$2.v(), $$2.w());
-         this.c = this.a.a($$1, $$5, $$7);
-         if (this.c != null) {
-            this.c.a();
+            for (int $$4 = 0; $$4 < 3; $$4++) {
+               cjw $$5 = this.a($$1);
+               if ($$5 != null) {
+                  cna $$6 = this.a($$1, $$5);
+                  if ($$6 != null) {
+                     $$6.n($$5);
+                     $$5.j(this.a.dY().a(0.0, 1.1485), 0.0, this.a.dY().a(0.0, 1.1485));
+                     $$0.a_($$5);
+                  }
+               }
+            }
          }
-      }
-
-      this.i();
-      if (this.c != null && this.c.c()) {
-         this.a.gj().a(ckl.d);
       }
    }
 
-   private void i() {
-      if (this.c != null && !this.c.c()) {
-         kl $$0 = this.c.g();
-         this.c.a();
-         double $$1 = (double)$$0.u();
-         double $$2 = (double)$$0.w();
-
-         double $$3;
-         do {
-            $$3 = (double)((float)$$0.v() + this.a.dY().i() * 20.0F);
-         } while ($$3 < (double)$$0.v());
-
-         this.d = new ezy($$1, $$3, $$2);
+   @Nullable
+   private cjw a(btc $$0) {
+      ckc $$1 = bvm.bg.a(this.a.dV(), bvl.k);
+      if ($$1 != null) {
+         $$1.a((ash)this.a.dV(), $$0, bvl.k, null);
+         $$1.a_(this.a.dA(), this.a.dC(), this.a.dG());
+         $$1.aj = 60;
+         $$1.ai();
+         $$1.y(true);
+         $$1.c_(0);
       }
+
+      return $$1;
+   }
+
+   @Nullable
+   private cna a(btc $$0, cjw $$1) {
+      cna $$2 = bvm.bf.a($$1.dV(), bvl.k);
+      if ($$2 != null) {
+         $$2.a((ash)$$1.dV(), $$0, bvl.k, null);
+         $$2.a_($$1.dA(), $$1.dC(), $$1.dG());
+         $$2.aj = 60;
+         $$2.ai();
+         if ($$2.a(bvn.f).f()) {
+            $$2.a(bvn.f, new cxk(cxo.qc));
+         }
+
+         this.a($$2, bvn.a, $$0);
+         this.a($$2, bvn.f, $$0);
+      }
+
+      return $$2;
+   }
+
+   private void a(cna $$0, bvn $$1, btc $$2) {
+      cxk $$3 = $$0.a($$1);
+      $$3.b(ku.l, ddx.a);
+      ddt.a($$3, $$0.dV().K_(), dff.a, $$2, $$0.dY());
+      $$0.a($$1, $$3);
    }
 }

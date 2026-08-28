@@ -1,45 +1,93 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
+import java.util.function.Function;
 
-public class eec extends eew<egt> {
-   public eec(Codec<egt> $$0) {
-      super($$0);
+public interface eec {
+   Codec<eec> a = Codec.xor(eec.b.d, Codec.xor(eec.a.d, eec.c.d)).xmap(eec::a, eec::a);
+   eec b = b(0);
+   eec c = c(0);
+
+   static eec a(int $$0) {
+      return new eec.b($$0);
    }
 
-   @Override
-   public boolean a(eey<egt> $$0) {
-      jh $$1 = $$0.e();
-      dgk $$2 = $$0.b();
-      azu $$3 = $$0.d();
+   static eec b(int $$0) {
+      return new eec.a($$0);
+   }
 
-      egt $$4;
-      for ($$4 = $$0.f(); $$1.v() > $$2.K_() + 3; $$1 = $$1.e()) {
-         if (!$$2.u($$1.e())) {
-            dvv $$5 = $$2.a_($$1.e());
-            if (b($$5) || a($$5)) {
-               break;
-            }
-         }
+   static eec c(int $$0) {
+      return new eec.c($$0);
+   }
+
+   static eec a() {
+      return b;
+   }
+
+   static eec b() {
+      return c;
+   }
+
+   private static eec a(Either<eec.b, Either<eec.a, eec.c>> $$0) {
+      return (eec)$$0.map(Function.identity(), Either::unwrap);
+   }
+
+   private static Either<eec.b, Either<eec.a, eec.c>> a(eec $$0) {
+      return $$0 instanceof eec.b ? Either.left((eec.b)$$0) : Either.right($$0 instanceof eec.a ? Either.left((eec.a)$$0) : Either.right((eec.c)$$0));
+   }
+
+   int a(eef var1);
+
+   public static record a(int e) implements eec {
+      public static final Codec<eec.a> d = Codec.intRange(ebi.e, ebi.d).fieldOf("above_bottom").xmap(eec.a::new, eec.a::c).codec();
+
+      @Override
+      public int a(eef $$0) {
+         return $$0.a() + this.e;
       }
 
-      if ($$1.v() <= $$2.K_() + 3) {
-         return false;
-      } else {
-         for (int $$6 = 0; $$6 < 3; $$6++) {
-            int $$7 = $$3.a(2);
-            int $$8 = $$3.a(2);
-            int $$9 = $$3.a(2);
-            float $$10 = (float)($$7 + $$8 + $$9) * 0.333F + 0.5F;
+      @Override
+      public String toString() {
+         return this.e + " above bottom";
+      }
 
-            for (jh $$11 : jh.c($$1.b(-$$7, -$$8, -$$9), $$1.b($$7, $$8, $$9))) {
-               if ($$11.j($$1) <= (double)($$10 * $$10)) {
-                  $$2.a($$11, $$4.b, 3);
-               }
-            }
+      public int c() {
+         return this.e;
+      }
+   }
 
-            $$1 = $$1.b(-1 + $$3.a(2), -$$3.a(2), -1 + $$3.a(2));
-         }
+   public static record b(int e) implements eec {
+      public static final Codec<eec.b> d = Codec.intRange(ebi.e, ebi.d).fieldOf("absolute").xmap(eec.b::new, eec.b::c).codec();
 
-         return true;
+      @Override
+      public int a(eef $$0) {
+         return this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " absolute";
+      }
+
+      public int c() {
+         return this.e;
+      }
+   }
+
+   public static record c(int e) implements eec {
+      public static final Codec<eec.c> d = Codec.intRange(ebi.e, ebi.d).fieldOf("below_top").xmap(eec.c::new, eec.c::c).codec();
+
+      @Override
+      public int a(eef $$0) {
+         return $$0.b() - 1 + $$0.a() - this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " below top";
+      }
+
+      public int c() {
+         return this.e;
       }
    }
 }

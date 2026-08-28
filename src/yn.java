@@ -1,70 +1,75 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Supplier;
+import com.mojang.brigadier.ParseResults;
+import com.mojang.brigadier.context.CommandContextBuilder;
+import com.mojang.brigadier.context.ParsedArgument;
+import com.mojang.brigadier.context.ParsedCommandNode;
+import com.mojang.brigadier.tree.ArgumentCommandNode;
+import com.mojang.brigadier.tree.CommandNode;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class yn implements xk {
-   public static final MapCodec<yn> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("keybind").forGetter($$0x -> $$0x.c)).apply($$0, yn::new)
-   );
-   public static final xk.a<yn> b = new xk.a<>(a, "keybind");
-   private final String c;
-   @Nullable
-   private Supplier<xj> d;
-
-   public yn(String $$0) {
-      this.c = $$0;
+public record yn<S>(List<yn.a<S>> a) {
+   public static <S> boolean a(ParseResults<S> $$0) {
+      return !b($$0).a().isEmpty();
    }
 
-   private xj c() {
-      if (this.d == null) {
-         this.d = yo.a.apply(this.c);
+   public static <S> yn<S> b(ParseResults<S> $$0) {
+      String $$1 = $$0.getReader().getString();
+      CommandContextBuilder<S> $$2 = $$0.getContext();
+      CommandContextBuilder<S> $$3 = $$2;
+      List<yn.a<S>> $$4 = a($$1, $$2);
+
+      CommandContextBuilder<S> $$5;
+      while (($$5 = $$3.getChild()) != null && $$5.getRootNode() != $$2.getRootNode()) {
+         $$4.addAll(a($$1, $$5));
+         $$3 = $$5;
       }
 
-      return this.d.get();
+      return new yn<>($$4);
    }
 
-   @Override
-   public <T> Optional<T> a(xo.a<T> $$0) {
-      return this.c().a($$0);
-   }
+   private static <S> List<yn.a<S>> a(String $$0, CommandContextBuilder<S> $$1) {
+      List<yn.a<S>> $$2 = new ArrayList<>();
 
-   @Override
-   public <T> Optional<T> a(xo.b<T> $$0, yg $$1) {
-      return this.c().a($$0, $$1);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof yn $$1 && this.c.equals($$1.c)) {
-            return true;
+      for (ParsedCommandNode<S> $$3 : $$1.getNodes()) {
+         CommandNode $$5 = $$3.getNode();
+         if ($$5 instanceof ArgumentCommandNode) {
+            ArgumentCommandNode<S, ?> $$4 = (ArgumentCommandNode<S, ?>)$$5;
+            if ($$4.getType() instanceof gd) {
+               ParsedArgument<S, ?> $$5x = (ParsedArgument<S, ?>)$$1.getArguments().get($$4.getName());
+               if ($$5x != null) {
+                  String $$6 = $$5x.getRange().get($$0);
+                  $$2.add(new yn.a<>($$4, $$6));
+               }
+            }
          }
-
-         return false;
       }
+
+      return $$2;
    }
 
-   @Override
-   public int hashCode() {
-      return this.c.hashCode();
+   @Nullable
+   public yn.a<S> a(String $$0) {
+      for (yn.a<S> $$1 : this.a) {
+         if ($$0.equals($$1.a())) {
+            return $$1;
+         }
+      }
+
+      return null;
    }
 
-   @Override
-   public String toString() {
-      return "keybind{" + this.c + "}";
-   }
+   public static record a<S>(ArgumentCommandNode<S, ?> a, String b) {
+      public String a() {
+         return this.a.getName();
+      }
 
-   public String b() {
-      return this.c;
-   }
+      public ArgumentCommandNode<S, ?> b() {
+         return this.a;
+      }
 
-   @Override
-   public xk.a<?> a() {
-      return b;
+      public String c() {
+         return this.b;
+      }
    }
 }

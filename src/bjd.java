@@ -1,21 +1,19 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 
-public class bjd extends bgv {
-   private static final String a = "CanPickUpLoot";
-
-   public bjd(Schema $$0) {
-      super($$0, true, "Villager CanPickUpLoot default value", bia.B, "Villager");
+public abstract class bjd extends bfb {
+   public bjd(String $$0, Schema $$1, boolean $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), bjd::a);
+   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
+      Pair<String, Dynamic<?>> $$2 = this.a($$0, (Dynamic<?>)$$1.getOrCreate(DSL.remainderFinder()));
+      return Pair.of((String)$$2.getFirst(), $$1.set(DSL.remainderFinder(), (Dynamic)$$2.getSecond()));
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.set("CanPickUpLoot", $$0.createBoolean(true));
-   }
+   protected abstract Pair<String, Dynamic<?>> a(String var1, Dynamic<?> var2);
 }

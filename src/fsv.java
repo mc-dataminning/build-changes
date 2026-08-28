@@ -1,96 +1,156 @@
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class fsv extends fsl<csh> {
-   private static final alj G = alj.b("container/cartography_table/error");
-   private static final alj H = alj.b("container/cartography_table/scaled_map");
-   private static final alj I = alj.b("container/cartography_table/duplicated_map");
-   private static final alj J = alj.b("container/cartography_table/map");
-   private static final alj K = alj.b("container/cartography_table/locked");
-   private static final alj L = alj.b("textures/gui/container/cartography_table.png");
-   private final gyn M = new gyn();
+public class fsv extends ftr {
+   private static final alz a = alz.b("icon/draft_report");
+   private int b;
+   private final xv c;
+   private final boolean d;
+   private xv s;
+   private final List<fny> u = Lists.newArrayList();
+   @Nullable
+   private fny v;
 
-   public fsv(csh $$0, cot $$1, xj $$2) {
-      super($$0, $$1, $$2);
-      this.w -= 2;
+   public fsv(@Nullable xv $$0, boolean $$1) {
+      super(xv.c($$1 ? "deathScreen.title.hardcore" : "deathScreen.title"));
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public void a(flq $$0, int $$1, int $$2, float $$3) {
+   protected void aT_() {
+      this.b = 0;
+      this.u.clear();
+      xv $$0 = this.d ? xv.c("deathScreen.spectate") : xv.c("deathScreen.respawn");
+      this.u.add(this.c(fny.a($$0, $$0x -> {
+         this.m.t.ge();
+         $$0x.j = false;
+      }).a(this.n / 2 - 100, this.o / 4 + 72, 200, 20).a()));
+      this.v = this.c(
+         fny.a(xv.c("deathScreen.titleScreen"), $$0x -> this.m.bb().a(this.m, this, this::l, true)).a(this.n / 2 - 100, this.o / 4 + 96, 200, 20).a()
+      );
+      this.u.add(this.v);
+      this.c(false);
+      this.s = xv.a("deathScreen.score.value", xv.b(Integer.toString(this.m.t.gb())).a(n.o));
+   }
+
+   @Override
+   public boolean aH_() {
+      return false;
+   }
+
+   private void l() {
+      if (this.d) {
+         this.E();
+      } else {
+         fsp $$0 = new fsv.a($$0x -> {
+            if ($$0x) {
+               this.E();
+            } else {
+               this.m.t.ge();
+               this.m.a(null);
+            }
+         }, xv.c("deathScreen.quit.confirm"), xu.a, xv.c("deathScreen.titleScreen"), xv.c("deathScreen.respawn"));
+         this.m.a($$0);
+         $$0.b(20);
+      }
+   }
+
+   private void E() {
+      if (this.m.s != null) {
+         this.m.s.ab();
+      }
+
+      this.m.b(new ftc(xv.c("menu.savingLevel")));
+      this.m.a(new ftt());
+   }
+
+   @Override
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+      $$0.c().a();
+      $$0.c().b(2.0F, 2.0F, 2.0F);
+      $$0.a(this.p, this.l, this.n / 2 / 2, 30, 16777215);
+      $$0.c().b();
+      if (this.c != null) {
+         $$0.a(this.p, this.c, this.n / 2, 85, 16777215);
+      }
+
+      $$0.a(this.p, this.s, this.n / 2, 100, 16777215);
+      if (this.c != null && $$2 > 85 && $$2 < 85 + 9) {
+         ys $$4 = this.a($$1);
+         $$0.a(this.p, $$4, $$1, $$2);
+      }
+
+      if (this.v != null && this.m.bb().c()) {
+         $$0.a(glo::B, a, this.v.D() + this.v.y() - 17, this.v.E() + 3, 15, 15);
+      }
    }
 
    @Override
-   protected void a(flq $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.C;
-      int $$5 = this.D;
-      $$0.a(gjq::B, L, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      cwm $$6 = this.z.b(1).g();
-      boolean $$7 = $$6.a(cwq.uB);
-      boolean $$8 = $$6.a(cwq.qP);
-      boolean $$9 = $$6.a(cwq.fT);
-      cwm $$10 = this.z.b(0).g();
-      etn $$11 = $$10.a(ku.L);
-      boolean $$12 = false;
-      etp $$13;
-      if ($$11 != null) {
-         $$13 = cwz.a($$11, this.m.s);
-         if ($$13 != null) {
-            if ($$13.h) {
-               $$12 = true;
-               if ($$8 || $$9) {
-                  $$0.a(gjq::B, G, $$4 + 35, $$5 + 31, 28, 21);
-               }
-            }
+   public void b(fnl $$0, int $$1, int $$2, float $$3) {
+      a($$0, this.n, this.o);
+   }
 
-            if ($$8 && $$13.f >= 4) {
-               $$12 = true;
-               $$0.a(gjq::B, G, $$4 + 35, $$5 + 31, 28, 21);
-            }
+   static void a(fnl $$0, int $$1, int $$2) {
+      $$0.b(0, 0, $$1, $$2, 1615855616, -1602211792);
+   }
+
+   @Nullable
+   private ys a(int $$0) {
+      if (this.c == null) {
+         return null;
+      } else {
+         int $$1 = this.m.h.a(this.c);
+         int $$2 = this.n / 2 - $$1 / 2;
+         int $$3 = this.n / 2 + $$1 / 2;
+         return $$0 >= $$2 && $$0 <= $$3 ? this.m.h.b().a(this.c, $$0 - $$2) : null;
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.c != null && $$1 > 85.0 && $$1 < (double)(85 + 9)) {
+         ys $$3 = this.a((int)$$0);
+         if ($$3 != null && $$3.h() != null && $$3.h().a() == xt.a.a) {
+            this.a($$3);
+            return false;
          }
-      } else {
-         $$13 = null;
       }
 
-      this.a($$0, $$11, $$13, $$7, $$8, $$9, $$12);
+      return super.a($$0, $$1, $$2);
    }
 
-   private void a(flq $$0, @Nullable etn $$1, @Nullable etp $$2, boolean $$3, boolean $$4, boolean $$5, boolean $$6) {
-      int $$7 = this.C;
-      int $$8 = this.D;
-      if ($$4 && !$$6) {
-         $$0.a(gjq::B, H, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 85, $$8 + 31, 0.226F);
-      } else if ($$3) {
-         $$0.a(gjq::B, I, $$7 + 67 + 16, $$8 + 13, 50, 66);
-         this.a($$0, $$1, $$2, $$7 + 86, $$8 + 16, 0.34F);
-         $$0.c().a();
-         $$0.c().a(0.0F, 0.0F, 1.0F);
-         $$0.a(gjq::B, I, $$7 + 67, $$8 + 13 + 16, 50, 66);
-         this.a($$0, $$1, $$2, $$7 + 70, $$8 + 32, 0.34F);
-         $$0.c().b();
-      } else if ($$5) {
-         $$0.a(gjq::B, J, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
-         $$0.c().a();
-         $$0.c().a(0.0F, 0.0F, 1.0F);
-         $$0.a(gjq::B, K, $$7 + 118, $$8 + 60, 10, 14);
-         $$0.c().b();
-      } else {
-         $$0.a(gjq::B, J, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
+   @Override
+   public boolean j() {
+      return false;
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.b++;
+      if (this.b == 20) {
+         this.c(true);
       }
    }
 
-   private void a(flq $$0, @Nullable etn $$1, @Nullable etp $$2, int $$3, int $$4, float $$5) {
-      if ($$1 != null && $$2 != null) {
-         $$0.c().a();
-         $$0.c().a((float)$$3, (float)$$4, 1.0F);
-         $$0.c().b($$5, $$5, 1.0F);
-         gjf $$6 = this.m.at();
-         $$6.a($$1, $$2, this.M);
-         $$0.a($$2x -> $$6.a(this.M, $$0.c(), $$2x, true, 15728880));
-         $$0.c().b();
+   private void c(boolean $$0) {
+      for (fny $$1 : this.u) {
+         $$1.j = $$0;
+      }
+   }
+
+   public static class a extends fsp {
+      public a(BooleanConsumer $$0, xv $$1, xv $$2, xv $$3, xv $$4) {
+         super($$0, $$1, $$2, $$3, $$4);
+      }
+
+      @Override
+      public void b(fnl $$0, int $$1, int $$2, float $$3) {
+         fsv.a($$0, this.n, this.o);
       }
    }
 }

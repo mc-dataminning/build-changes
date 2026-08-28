@@ -1,12 +1,12 @@
 public class ez extends Exception {
-   private final xj a;
+   private final xv a;
 
-   public ez(xj $$0) {
+   public ez(xv $$0) {
       super($$0.getString());
       this.a = $$0;
    }
 
-   public xj a() {
+   public xv a() {
       return this.a;
    }
 }

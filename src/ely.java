@@ -1,113 +1,76 @@
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
+import com.mojang.datafixers.Products.P3;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 
-public class ely {
-   public static final ali<elx> a = a("normal");
-   public static final ali<elx> b = a("flat");
-   public static final ali<elx> c = a("large_biomes");
-   public static final ali<elx> d = a("amplified");
-   public static final ali<elx> e = a("single_biome_surface");
-   public static final ali<elx> f = a("debug_all_block_states");
+public abstract class ely {
+   public static final Codec<ely> c = ma.V.q().dispatch(ely::a, elz::a);
+   private static final int a = 32;
+   private static final int b = 24;
+   public static final int d = 80;
+   protected final int e;
+   protected final int f;
+   protected final int g;
 
-   public static void a(qz<elx> $$0) {
-      new ely.a($$0).a();
+   protected static <P extends ely> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
+         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
+         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
+      );
    }
 
-   private static ali<elx> a(String $$0) {
-      return ali.a(ma.aZ, alj.b($$0));
+   public ely(int $$0, int $$1, int $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public static Optional<ali<elx>> a(ecl $$0) {
-      return $$0.a(dzr.b).flatMap($$0x -> {
-         Object var10000;
-         Objects.requireNonNull(var10000);
-         dxr $$1 = (dxr)var10000;
+   protected abstract elz<?> a();
 
-         $$0x.b();
-         return switch ($$1) {
-            case ebl $$3 -> Optional.of(b);
-            case ebh $$4 -> Optional.of(f);
-            case ebt $$5 -> Optional.of(a);
-            default -> Optional.empty();
-         };
-      });
+   public abstract List<eke.a> a(dhg var1, BiConsumer<jh, dxn> var2, bam var3, int var4, jh var5, ejo var6);
+
+   public int a(bam $$0) {
+      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
    }
 
-   public static ecl a(js.a $$0) {
-      return $$0.d(ma.aZ).b(a).a().a();
+   private static boolean c(dhg $$0, jh $$1) {
+      return $$0.a($$1, $$0x -> ego.b($$0x) && !$$0x.a(dkg.i) && !$$0x.a(dkg.fz));
    }
 
-   public static dzr b(js.a $$0) {
-      return $$0.d(ma.aZ).b(a).a().b().orElseThrow();
+   protected static void a(dhg $$0, BiConsumer<jh, dxn> $$1, bam $$2, jh $$3, ejo $$4) {
+      if ($$4.k || !c($$0, $$3)) {
+         $$1.accept($$3, $$4.c.a($$2, $$3));
+      }
    }
 
-   public static ecl c(js.a $$0) {
-      return $$0.d(ma.aZ).b(b).a().a();
+   protected boolean b(dhg $$0, BiConsumer<jh, dxn> $$1, bam $$2, jh $$3, ejo $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
    }
 
-   static class a {
-      private final qz<elx> a;
-      private final jr<ebv> b;
-      private final jr<dgo> c;
-      private final jr<elm> d;
-      private final jr<emo> e;
-      private final jr<dhc> f;
-      private final jq<dzq> g;
-      private final dzr h;
-      private final dzr i;
-
-      a(qz<elx> $$0) {
-         this.a = $$0;
-         jr<dzq> $$1 = $$0.a(ma.aL);
-         this.b = $$0.a(ma.aP);
-         this.c = $$0.a(ma.aG);
-         this.d = $$0.a(ma.aR);
-         this.e = $$0.a(ma.aU);
-         this.f = $$0.a(ma.ba);
-         this.g = $$1.b(dzo.a);
-         jq<dzq> $$2 = $$1.b(dzo.b);
-         jq<ebv> $$3 = this.b.b(ebv.f);
-         jq.c<dhc> $$4 = this.f.b(dhd.a);
-         this.h = new dzr($$2, new ebt(dhb.a($$4), $$3));
-         jq<dzq> $$5 = $$1.b(dzo.c);
-         jq<ebv> $$6 = this.b.b(ebv.g);
-         this.i = new dzr($$5, new ebt(dhf.a(this.c), $$6));
+   protected boolean a(dhg $$0, BiConsumer<jh, dxn> $$1, bam $$2, jh $$3, ejo $$4, Function<dxn, dxn> $$5) {
+      if (this.a($$0, $$3)) {
+         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
+         return true;
+      } else {
+         return false;
       }
+   }
 
-      private dzr a(dxr $$0) {
-         return new dzr(this.g, $$0);
+   protected void a(dhg $$0, BiConsumer<jh, dxn> $$1, bam $$2, jh.a $$3, ejo $$4) {
+      if (this.b($$0, $$3)) {
+         this.b($$0, $$1, $$2, $$3, $$4);
       }
+   }
 
-      private dzr a(dgs $$0, jq<ebv> $$1) {
-         return this.a(new ebt($$0, $$1));
-      }
+   protected boolean a(dhg $$0, jh $$1) {
+      return eia.c($$0, $$1);
+   }
 
-      private elx a(dzr $$0) {
-         return new elx(Map.of(dzr.b, $$0, dzr.c, this.h, dzr.d, this.i));
-      }
-
-      private void a(ali<elx> $$0, dzr $$1) {
-         this.a.a($$0, this.a($$1));
-      }
-
-      private void a(dgs $$0) {
-         jq<ebv> $$1 = this.b.b(ebv.c);
-         this.a(ely.a, this.a($$0, $$1));
-         jq<ebv> $$2 = this.b.b(ebv.d);
-         this.a(ely.c, this.a($$0, $$2));
-         jq<ebv> $$3 = this.b.b(ebv.e);
-         this.a(ely.d, this.a($$0, $$3));
-      }
-
-      public void a() {
-         jq.c<dhc> $$0 = this.f.b(dhd.b);
-         this.a(dhb.a($$0));
-         jq<ebv> $$1 = this.b.b(ebv.c);
-         jq.c<dgo> $$2 = this.c.b(dgv.b);
-         this.a(ely.e, this.a(new dgz($$2), $$1));
-         this.a(ely.b, this.a(new ebl(ekl.a(this.c, this.e, this.d))));
-         this.a(ely.f, this.a(new ebh($$2)));
-      }
+   public boolean b(dhg $$0, jh $$1) {
+      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(axu.u));
    }
 }

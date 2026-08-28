@@ -1,8 +1,4 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gyg {
+public class gyg extends gyf {
+   public fbs[] a = new fbs[0];
+   public boolean i;
 }

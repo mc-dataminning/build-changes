@@ -1,41 +1,45 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
+import java.util.function.Consumer;
 
-public class ewq extends ewa {
-   public static final MapCodec<ewq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  evz.e.a(czb.c, 256).optionalFieldOf("explosions").forGetter($$0x -> $$0x.c),
-                  ayv.k.optionalFieldOf("flight_duration").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, ewq::new)
-   );
-   public static final czc b = new czc(0, List.of());
-   private final Optional<evz.e<czb>> c;
-   private final Optional<Integer> d;
+public abstract class ewq extends ewx {
+   protected final List<ewx> d;
+   private final ewp a;
 
-   protected ewq(List<exy> $$0, Optional<evz.e<czb>> $$1, Optional<Integer> $$2) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
+   protected ewq(List<ewx> $$0, List<ezs> $$1) {
+      super($$1);
+      this.d = $$0;
+      this.a = this.a($$0);
    }
 
    @Override
-   protected cwm a(cwm $$0, eun $$1) {
-      $$0.a(ku.af, b, this::a);
-      return $$0;
+   public void a(ewn $$0) {
+      super.a($$0);
+      if (this.d.isEmpty()) {
+         $$0.b("Empty children list");
+      }
+
+      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
+         this.d.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+      }
    }
 
-   private czc a(czc $$0) {
-      return new czc(this.d.orElseGet($$0::a), this.c.<List<czb>>map($$1 -> $$1.a($$0.b())).orElse($$0.b()));
-   }
+   protected abstract ewp a(List<? extends ewp> var1);
 
    @Override
-   public ewc<ewq> b() {
-      return ewd.K;
+   public final boolean expand(ewh $$0, Consumer<eww> $$1) {
+      return !this.a($$0) ? false : this.a.expand($$0, $$1);
+   }
+
+   public static <T extends ewq> MapCodec<T> a(ewq.a<T> $$0) {
+      return RecordCodecBuilder.mapCodec(
+         $$1 -> $$1.group(ewv.a.listOf().optionalFieldOf("children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
+      );
+   }
+
+   @FunctionalInterface
+   public interface a<T extends ewq> {
+      T create(List<ewx> var1, List<ezs> var2);
    }
 }

@@ -1,70 +1,39 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class euz extends euw {
-   public static final MapCodec<euz> a = a(euz::new);
+public abstract class euz {
+   protected final dqj a;
 
-   euz(List<evd> $$0, List<exy> $$1) {
-      super($$0, $$1);
+   protected euz(dqj $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public eve a() {
-      return evb.i;
+   public abstract void a(dha var1, jh var2, dxn var3, @Nullable eux var4, boolean var5);
+
+   protected int a(dha $$0, jh $$1) {
+      return this.a.a($$0, $$1);
    }
 
-   @Override
-   protected euv a(List<? extends euv> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (euv)$$0.get(0);
-         case 2 -> {
-            euv $$1 = $$0.get(0);
-            euv $$2 = $$0.get(1);
-            yield ($$2x, $$3) -> {
-               $$1.expand($$2x, $$3);
-               $$2.expand($$2x, $$3);
-               return true;
-            };
-         }
-         default -> ($$1x, $$2x) -> {
-         for (euv $$3 : $$0) {
-            $$3.expand($$1x, $$2x);
-         }
-
-         return true;
-      };
-      };
+   protected int a(jh $$0, dxn $$1) {
+      return $$1.a(this.a) ? $$1.c(dqj.f) : 0;
    }
 
-   public static euz.a a(evd.a<?>... $$0) {
-      return new euz.a($$0);
-   }
+   protected int b(dha $$0, jh $$1) {
+      int $$2 = 0;
 
-   public static class a extends evd.a<euz.a> {
-      private final Builder<evd> a = ImmutableList.builder();
-
-      public a(evd.a<?>... $$0) {
-         for (evd.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
+      for (jm $$3 : jm.c.a) {
+         jh $$4 = $$1.a($$3);
+         dxn $$5 = $$0.a_($$4);
+         $$2 = Math.max($$2, this.a($$4, $$5));
+         jh $$6 = $$1.d();
+         if ($$5.d($$0, $$4) && !$$0.a_($$6).d($$0, $$6)) {
+            jh $$7 = $$4.d();
+            $$2 = Math.max($$2, this.a($$7, $$0.a_($$7)));
+         } else if (!$$5.d($$0, $$4)) {
+            jh $$8 = $$4.e();
+            $$2 = Math.max($$2, this.a($$8, $$0.a_($$8)));
          }
       }
 
-      protected euz.a a() {
-         return this;
-      }
-
-      @Override
-      public euz.a b(evd.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public evd b() {
-         return new euz(this.a.build(), this.f());
-      }
+      return Math.max(0, $$2 - 1);
    }
 }

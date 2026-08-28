@@ -1,29 +1,48 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eki {
-   public static final Codec<eki> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.intRange(0, dzq.c).fieldOf("height").forGetter(eki::a), lz.e.q().fieldOf("block").orElse(dis.a).forGetter($$0x -> $$0x.b().b()))
-            .apply($$0, eki::new)
+public class eki extends eke {
+   public static final MapCodec<eki> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(bsj.b(0, 24).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, eki::new)
    );
-   private final diq b;
-   private final int c;
+   private final bsj b;
 
-   public eki(int $$0, diq $$1) {
-      this.c = $$0;
-      this.b = $$1;
-   }
-
-   public int a() {
-      return this.c;
-   }
-
-   public dvv b() {
-      return this.b.m();
+   public eki(bsj $$0, bsj $$1, bsj $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
-   public String toString() {
-      return (this.c != 1 ? this.c + "*" : "") + lz.e.b(this.b);
+   protected ekf<?> a() {
+      return ekf.c;
+   }
+
+   @Override
+   protected void a(dhg $$0, eke.b $$1, bam $$2, ejo $$3, int $$4, eke.a $$5, int $$6, int $$7, int $$8) {
+      int $$9 = 0;
+
+      for (int $$10 = $$8; $$10 >= $$8 - $$6; $$10--) {
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$9, $$10, $$5.c());
+         if ($$9 >= 1 && $$10 == $$8 - $$6 + 1) {
+            $$9--;
+         } else if ($$9 < $$7 + $$5.b()) {
+            $$9++;
+         }
+      }
+   }
+
+   @Override
+   public int a(bam $$0, int $$1) {
+      return super.a($$0, $$1) + $$0.a(Math.max($$1 + 1, 1));
+   }
+
+   @Override
+   public int a(bam $$0, int $$1, ejo $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(bam $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

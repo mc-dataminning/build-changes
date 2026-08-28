@@ -1,103 +1,93 @@
 import com.mojang.serialization.MapCodec;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class dms extends dic {
+public class dms extends djq {
    public static final MapCodec<dms> a = b(dms::new);
-   public static final dwm b = dwl.n;
+   protected static final fcm b = dke.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0);
+   public static final List<jh> c = jh.a(-2, 0, -2, 2, 1, 2).filter($$0 -> Math.abs($$0.u()) == 2 || Math.abs($$0.w()) == 2).map(jh::j).toList();
 
    @Override
    public MapCodec<dms> a() {
       return a;
    }
 
-   protected dms(dvu.d $$0) {
+   protected dms(dxm.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, Boolean.valueOf(false)));
+   }
+
+   public static boolean a(dha $$0, jh $$1, jh $$2) {
+      return $$0.a_($$1.a((kl)$$2)).a(axu.cy) && $$0.a_($$1.b($$2.u() / 2, $$2.v(), $$2.w() / 2)).a(axu.cz);
    }
 
    @Override
-   public void a(dfm $$0, jh $$1, dvv $$2, @Nullable bvh $$3, cwm $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      cyv $$5 = $$4.a(ku.Y, cyv.a);
-      if ($$5.a("RecordItem")) {
-         $$0.a($$1, $$2.b(b, Boolean.valueOf(true)), 2);
-      }
+   protected boolean g_(dxn $$0) {
+      return true;
    }
 
    @Override
-   protected bsk a(dvv $$0, dfm $$1, jh $$2, cou $$3, ezu $$4) {
-      if ($$0.c(b) && $$1.c_($$2) instanceof dub $$5) {
-         $$5.t();
-         return bsk.a;
-      } else {
-         return bsk.e;
-      }
+   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
+      return b;
    }
 
    @Override
-   protected bsk a(cwm $$0, dvv $$1, dfm $$2, jh $$3, cou $$4, bsj $$5, ezu $$6) {
-      if ($$1.c(b)) {
-         return bsk.f;
-      } else {
-         cwm $$7 = $$4.b($$5);
-         bsk $$8 = cwr.a($$2, $$3, $$7, $$4);
-         return (bsk)(!$$8.a() ? bsk.f : $$8);
-      }
-   }
+   public void a(dxn $$0, dha $$1, jh $$2, bam $$3) {
+      super.a($$0, $$1, $$2, $$3);
 
-   @Override
-   protected void a(dvv $$0, dfm $$1, jh $$2, dvv $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$1.c_($$2) instanceof dub $$5) {
-            $$5.t();
+      for (jh $$4 : c) {
+         if ($$3.a(16) == 0 && a($$1, $$2, $$4)) {
+            $$1.a(
+               ls.s,
+               (double)$$2.u() + 0.5,
+               (double)$$2.v() + 2.0,
+               (double)$$2.w() + 0.5,
+               (double)((float)$$4.u() + $$3.i()) - 0.5,
+               (double)((float)$$4.v() - $$3.i() - 1.0F),
+               (double)((float)$$4.w() + $$3.i()) - 0.5
+            );
          }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
    @Override
-   public dsy a(jh $$0, dvv $$1) {
-      return new dub($$0, $$1);
+   protected dqn a_(dxn $$0) {
+      return dqn.c;
    }
 
    @Override
-   public boolean f_(dvv $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dvv $$0, der $$1, jh $$2, jm $$3) {
-      if ($$1.c_($$2) instanceof dub $$4 && $$4.j().a()) {
-         return 15;
-      }
-
-      return 0;
-   }
-
-   @Override
-   protected boolean c_(dvv $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dvv $$0, dfm $$1, jh $$2) {
-      return $$1.c_($$2) instanceof dub $$3 ? $$3.u() : 0;
-   }
-
-   @Override
-   protected dow a_(dvv $$0) {
-      return dow.c;
-   }
-
-   @Override
-   protected void a(dvw.a<diq, dvv> $$0) {
-      $$0.a(b);
+   public dup a(jh $$0, dxn $$1) {
+      return new dvl($$0, $$1);
    }
 
    @Nullable
    @Override
-   public <T extends dsy> dsz<T> a(dfm $$0, dvv $$1, dta<T> $$2) {
-      return $$1.c(b) ? a($$2, dta.e, dub::a) : null;
+   public <T extends dup> duq<T> a(dha $$0, dxn $$1, dur<T> $$2) {
+      return $$0.C ? a($$2, dur.n, dvl::a) : null;
+   }
+
+   @Override
+   protected bte a(dxn $$0, dha $$1, jh $$2, cps $$3, fbo $$4) {
+      if (!$$1.C) {
+         $$3.a($$0.c($$1, $$2));
+      }
+
+      return bte.a;
+   }
+
+   @Nullable
+   @Override
+   protected btg b(dxn $$0, dha $$1, jh $$2) {
+      dup $$3 = $$1.c_($$2);
+      if ($$3 instanceof dvl) {
+         xv $$4 = ((bth)$$3).p_();
+         return new btm(($$2x, $$3x, $$4x) -> new ctt($$2x, $$3x, ctk.a($$1, $$2)), $$4);
+      } else {
+         return null;
+      }
+   }
+
+   @Override
+   protected boolean a(dxn $$0, eue $$1) {
+      return false;
    }
 }

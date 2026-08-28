@@ -4,28 +4,32 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bmd extends bjo {
+public class bmd extends bkg {
    public bmd(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "minecraft:breeze", () -> bjp.a($$0));
-      $$0.registerSimple($$1, "minecraft:wind_charge");
-      $$0.registerSimple($$1, "minecraft:breeze_wind_charge");
-      return $$1;
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.register(
-         $$1,
-         "minecraft:trial_spawner",
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(
+         false,
+         bis.c,
          () -> DSL.optionalFields(
-               "spawn_potentials", DSL.list(DSL.fields("data", DSL.fields("entity", bia.A.in($$0)))), "spawn_data", DSL.fields("entity", bia.A.in($$0))
+               "entities",
+               DSL.list(bis.A.in($$0)),
+               "block_entities",
+               DSL.list(DSL.or(bis.s.in($$0), DSL.remainder())),
+               "block_ticks",
+               DSL.list(DSL.fields("i", bis.C.in($$0))),
+               "sections",
+               DSL.list(
+                  DSL.optionalFields(
+                     "biomes", DSL.optionalFields("palette", DSL.list(bis.K.in($$0))), "block_states", DSL.optionalFields("palette", DSL.list(bis.u.in($$0)))
+                  )
+               ),
+               "structures",
+               DSL.optionalFields("starts", DSL.compoundList(bis.G.in($$0)))
             )
       );
-      return $$1;
    }
 }

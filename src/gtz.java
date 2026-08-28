@@ -1,25 +1,42 @@
-public class gtz<S extends gwm & gxe, M extends fzj<? super S>> extends gty<S, M> {
-   private final alj a;
-   private final M b;
-   private final M c;
+public class gtz extends gqa<csf, gyq> {
+   private final gmh b;
 
-   public gtz(grh<S, M> $$0, M $$1, M $$2, alj $$3) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
-      this.a = $$3;
+   public gtz(grj.a $$0) {
+      super($$0, geg.dd);
+      this.b = $$0.d();
    }
 
-   public gtz(grh<S, M> $$0, M $$1, alj $$2) {
-      this($$0, $$1, $$1, $$2);
-   }
-
-   public void a(fer $$0, gjg $$1, int $$2, S $$3, float $$4, float $$5) {
-      if ($$3.c()) {
-         M $$6 = $$3.ae ? this.c : this.b;
-         $$6.a($$3);
-         fev $$7 = $$1.getBuffer(gjq.f(this.a));
-         $$6.a($$0, $$7, $$2, gyv.d);
+   protected void a(gyq $$0, dxn $$1, fgl $$2, gle $$3, int $$4) {
+      float $$5 = $$0.C;
+      if ($$5 > -1.0F && $$5 < 10.0F) {
+         float $$6 = 1.0F - $$5 / 10.0F;
+         $$6 = bae.a($$6, 0.0F, 1.0F);
+         $$6 *= $$6;
+         $$6 *= $$6;
+         float $$7 = 1.0F + $$6 * 0.3F;
+         $$2.b($$7, $$7, $$7);
       }
+
+      a(this.b, $$1, $$2, $$3, $$4, $$5 > -1.0F && (int)$$5 / 5 % 2 == 0);
+   }
+
+   public static void a(gmh $$0, dxn $$1, fgl $$2, gle $$3, int $$4, boolean $$5) {
+      int $$6;
+      if ($$5) {
+         $$6 = hav.a(hav.a(1.0F), 10);
+      } else {
+         $$6 = hav.d;
+      }
+
+      $$0.a($$1, $$2, $$3, $$4, $$6);
+   }
+
+   public gyq a() {
+      return new gyq();
+   }
+
+   public void a(csf $$0, gyq $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.C = $$0.x() > -1 ? (float)$$0.x() - $$2 + 1.0F : -1.0F;
    }
 }

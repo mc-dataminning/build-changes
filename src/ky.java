@@ -1,9 +1,9 @@
-public record ky(arp a, jh b, dvv c, dtr d) {
-   public ezy a() {
+public record ky(ash a, jh b, dxn c, dvj d) {
+   public fbs a() {
       return this.b.b();
    }
 
-   public arp b() {
+   public ash b() {
       return this.a;
    }
 
@@ -11,11 +11,11 @@ public record ky(arp a, jh b, dvv c, dtr d) {
       return this.b;
    }
 
-   public dvv d() {
+   public dxn d() {
       return this.c;
    }
 
-   public dtr e() {
+   public dvj e() {
       return this.d;
    }
 }

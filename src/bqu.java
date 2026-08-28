@@ -1,48 +1,22 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.time.Duration;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public interface bqu {
-   bqt a();
-
-   static <T> bqu.b<T> a(T $$0, int $$1) {
-      return new bqu.b<>($$0, bqt.a($$1));
-   }
-
-   public static class a implements bqu {
-      private final bqt a;
-
-      public a(int $$0) {
-         this.a = bqt.a($$0);
-      }
-
-      public a(bqt $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public bqt a() {
-         return this.a;
-      }
-   }
-
-   public static record b<T>(T a, bqt b) implements bqu {
-      @Override
-      public bqt a() {
-         return this.b;
-      }
-
-      public static <E> Codec<bqu.b<E>> a(Codec<E> $$0) {
-         return RecordCodecBuilder.create(
-            $$1 -> $$1.group($$0.fieldOf("data").forGetter(bqu.b::b), bqt.a.fieldOf("weight").forGetter(bqu.b::c)).apply($$1, bqu.b::new)
-         );
-      }
-
-      public T b() {
-         return this.a;
-      }
-
-      public bqt c() {
-         return this.b;
+public record bqu<T extends bqt>(T a, T b, @Nullable T c, int d, Map<Integer, Double> e, Duration f) {
+   public static <T extends bqt> bqu<T> a(List<T> $$0) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("No values");
+      } else {
+         List<T> $$1 = $$0.stream().sorted(Comparator.comparing(bqt::a)).toList();
+         Duration $$2 = $$1.stream().map(bqt::a).reduce(Duration::plus).orElse(Duration.ZERO);
+         T $$3 = (T)$$1.get(0);
+         T $$4 = (T)$$1.get($$1.size() - 1);
+         T $$5 = $$1.size() > 1 ? $$1.get($$1.size() - 2) : null;
+         int $$6 = $$1.size();
+         Map<Integer, Double> $$7 = bpx.a($$1.stream().mapToLong($$0x -> $$0x.a().toNanos()).toArray());
+         return new bqu<>($$3, $$4, $$5, $$6, $$7, $$2);
       }
    }
 }

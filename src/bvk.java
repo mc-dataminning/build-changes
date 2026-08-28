@@ -1,57 +1,55 @@
-import com.mojang.serialization.Codec;
+import com.google.common.base.Predicates;
+import java.util.function.Predicate;
 
-public enum bvk implements bai {
-   a("monster", 70, false, false, 128),
-   b("creature", 10, true, true, 128),
-   c("ambient", 15, true, false, 128),
-   d("axolotls", 5, true, false, 128),
-   e("underground_water_creature", 5, true, false, 128),
-   f("water_creature", 5, true, false, 128),
-   g("water_ambient", 20, true, false, 64),
-   h("misc", -1, true, true, 128);
+public final class bvk {
+   public static final Predicate<bvf> a = bvf::bL;
+   public static final Predicate<bvf> b = $$0 -> $$0.bL() && $$0 instanceof bwb;
+   public static final Predicate<bvf> c = $$0 -> $$0.bL() && !$$0.ca() && !$$0.bZ();
+   public static final Predicate<bvf> d = $$0 -> $$0 instanceof bsx && $$0.bL();
+   public static final Predicate<bvf> e = $$0 -> !($$0 instanceof cps) || !$$0.aa_() && !((cps)$$0).b();
+   public static final Predicate<bvf> f = $$0 -> !$$0.aa_();
+   public static final Predicate<bvf> g = f.and(bvf::bN);
+   public static final Predicate<bvf> h = f.and(bvf::bH);
 
-   public static final Codec<bvk> i = bai.a(bvk::values);
-   private final int j;
-   private final boolean k;
-   private final boolean l;
-   private final String m;
-   private final int n = 32;
-   private final int o;
-
-   private bvk(final String $$0, final int $$1, final boolean $$2, final boolean $$3, final int $$4) {
-      this.m = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.o = $$4;
+   private bvk() {
    }
 
-   public String a() {
-      return this.m;
+   public static Predicate<bvf> a(double $$0, double $$1, double $$2, double $$3) {
+      double $$4 = $$3 * $$3;
+      return $$4x -> $$4x != null && $$4x.i($$0, $$1, $$2) <= $$4;
    }
 
-   @Override
-   public String c() {
-      return this.m;
+   public static Predicate<bvf> a(bvf $$0) {
+      fcz $$1 = $$0.cr();
+      fcz.a $$2 = $$1 == null ? fcz.a.a : $$1.l();
+      return (Predicate<bvf>)($$2 == fcz.a.b ? Predicates.alwaysFalse() : f.and($$3 -> {
+         if (!$$3.bI()) {
+            return false;
+         } else if (!$$0.dV().C || $$3 instanceof cps && ((cps)$$3).c()) {
+            fcz $$4 = $$3.cr();
+            fcz.a $$5 = $$4 == null ? fcz.a.a : $$4.l();
+            if ($$5 == fcz.a.b) {
+               return false;
+            } else {
+               boolean $$6 = $$1 != null && $$1.a($$4);
+               return ($$2 == fcz.a.d || $$5 == fcz.a.d) && $$6 ? false : $$2 != fcz.a.c && $$5 != fcz.a.c || $$6;
+            }
+         } else {
+            return false;
+         }
+      }));
    }
 
-   public int b() {
-      return this.j;
-   }
+   public static Predicate<bvf> b(bvf $$0) {
+      return $$1 -> {
+         while ($$1.bZ()) {
+            $$1 = $$1.dk();
+            if ($$1 == $$0) {
+               return false;
+            }
+         }
 
-   public boolean d() {
-      return this.k;
-   }
-
-   public boolean e() {
-      return this.l;
-   }
-
-   public int f() {
-      return this.o;
-   }
-
-   public int g() {
-      return 32;
+         return true;
+      };
    }
 }

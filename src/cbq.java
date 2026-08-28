@@ -1,62 +1,40 @@
-import java.util.EnumSet;
+import com.google.common.collect.ImmutableMap;
 
-public class cbq extends ccf {
-   private final bvp a;
+public class cbq extends bxu<cov> {
+   private static final int c = 25;
+   private static final int d = 20;
 
-   public cbq(bvp $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(ccf.a.a, ccf.a.b));
+   public cbq() {
+      super(ImmutableMap.of(cff.ay, cfg.a, cff.o, cfg.b, cff.aF, cfg.c, cff.aD, cfg.c), cow.b);
    }
 
-   @Override
-   public boolean b() {
-      return this.a.ct() < 140;
+   protected void a(ash $$0, cov $$1, long $$2) {
+      bxd<cov> $$3 = $$1.eb();
+      $$3.a(cff.aD, bbk.a, 25L);
+      $$3.b(cff.m);
+      bwb $$4 = $$1.eb().c(cff.ay).get();
+      bxw.a($$1, $$4);
+      $$1.b(bwn.l);
+      $$1.a($$4, 20, false);
    }
 
-   @Override
-   public boolean c() {
-      return this.b();
+   protected boolean b(ash $$0, cov $$1, long $$2) {
+      return true;
    }
 
-   @Override
-   public boolean S_() {
-      return false;
+   protected void c(ash $$0, cov $$1, long $$2) {
+      if (!$$1.eb().a(cff.aD) && !$$1.eb().a(cff.aF)) {
+         $$1.eb().a(cff.aF, bbk.a, (long)(cow.b - 25));
+         $$1.a(axf.Cs, 3.0F, 1.0F);
+      }
    }
 
-   @Override
-   public void d() {
-      this.h();
-   }
-
-   private void h() {
-      Iterable<jh> $$0 = jh.b(
-         azm.a(this.a.dA() - 1.0), this.a.dB(), azm.a(this.a.dG() - 1.0), azm.a(this.a.dA() + 1.0), azm.a(this.a.dC() + 8.0), azm.a(this.a.dG() + 1.0)
-      );
-      jh $$1 = null;
-
-      for (jh $$2 : $$0) {
-         if (this.a(this.a.dV(), $$2)) {
-            $$1 = $$2;
-            break;
-         }
+   protected void d(ash $$0, cov $$1, long $$2) {
+      if ($$1.c(bwn.l)) {
+         $$1.b(bwn.a);
       }
 
-      if ($$1 == null) {
-         $$1 = jh.a(this.a.dA(), this.a.dC() + 8.0, this.a.dG());
-      }
-
-      this.a.L().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
-   }
-
-   @Override
-   public void a() {
-      this.h();
-      this.a.a(0.02F, new ezy((double)this.a.bn, (double)this.a.bo, (double)this.a.bp));
-      this.a.a(bvl.a, this.a.dy());
-   }
-
-   private boolean a(dfp $$0, jh $$1) {
-      dvv $$2 = $$0.a_($$1);
-      return ($$0.b_($$1).c() || $$2.a(dis.nd)) && $$2.a(esk.a);
+      $$1.eb().c(cff.ay).ifPresent($$1::j);
+      $$1.eb().b(cff.ay);
    }
 }

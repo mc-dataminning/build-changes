@@ -1,33 +1,50 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class cfo extends cfr<bvh> {
-   @Override
-   public Set<cel<?>> a() {
-      return ImmutableSet.of(cel.j, cel.k, cel.l);
+public class cfo extends cfm {
+   @Nullable
+   private jh p;
+
+   public cfo(bwd $$0, dha $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected void a(arp $$0, bvh $$1) {
-      List<cou> $$2 = $$0.y()
-         .stream()
-         .filter(buq.f)
-         .filter($$1x -> $$1.a($$1x, this.a($$1)))
-         .sorted(Comparator.comparingDouble($$1::g))
-         .collect(Collectors.toList());
-      bwj<?> $$3 = $$1.eb();
-      $$3.a(cel.j, $$2);
-      List<cou> $$4 = $$2.stream().filter($$2x -> b($$0, $$1, $$2x)).collect(Collectors.toList());
-      $$3.a(cel.k, $$4.isEmpty() ? null : $$4.get(0));
-      Optional<cou> $$5 = $$4.stream().filter($$2x -> c($$0, $$1, $$2x)).findFirst();
-      $$3.a(cel.l, $$5);
+   public eud a(jh $$0, int $$1) {
+      this.p = $$0;
+      return super.a($$0, $$1);
    }
 
-   protected double a(bvh $$0) {
-      return $$0.h(bwp.m);
+   @Override
+   public eud a(bvf $$0, int $$1) {
+      this.p = $$0.dv();
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(bvf $$0, double $$1) {
+      eud $$2 = this.a($$0, 0);
+      if ($$2 != null) {
+         return this.a($$2, $$1);
+      } else {
+         this.p = $$0.dv();
+         this.d = $$1;
+         return true;
+      }
+   }
+
+   @Override
+   public void c() {
+      if (!this.m()) {
+         super.c();
+      } else {
+         if (this.p != null) {
+            if (!this.p.a(this.a.dt(), (double)this.a.dq())
+               && (!(this.a.dC() > (double)this.p.v()) || !jh.a((double)this.p.u(), this.a.dC(), (double)this.p.w()).a(this.a.dt(), (double)this.a.dq()))) {
+               this.a.I().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
+            } else {
+               this.p = null;
+            }
+         }
+      }
    }
 }

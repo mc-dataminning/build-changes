@@ -1,22 +1,97 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqi extends drc implements dih {
-   public static final MapCodec<dqi> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cvj.q.fieldOf("color").forGetter(dqi::b), t()).apply($$0, dqi::new));
-   private final cvj c;
+public class dqi extends dke {
+   public static final MapCodec<dqi> a = b(dqi::new);
+   public static final dye b = dql.d;
 
    @Override
    public MapCodec<dqi> a() {
       return a;
    }
 
-   public dqi(cvj $$0, dvu.d $$1) {
-      super($$1);
-      this.c = $$0;
+   public dqi(dxm.d $$0) {
+      super($$0);
+      this.l(this.m().b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public cvj b() {
-      return this.c;
+   protected void a_(dxn $$0, dha $$1, jh $$2, cps $$3) {
+      e($$0, $$1, $$2);
+      super.a_($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(dha $$0, jh $$1, dxn $$2, bvf $$3) {
+      if (!$$3.ce()) {
+         e($$2, $$0, $$1);
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected bte a(cxk $$0, dxn $$1, dha $$2, jh $$3, cps $$4, btd $$5, fbo $$6) {
+      if ($$2.C) {
+         a($$2, $$3);
+      } else {
+         e($$1, $$2, $$3);
+      }
+
+      return (bte)($$0.h() instanceof cvq && new dbb($$4, $$5, $$0, $$6).b() ? bte.e : bte.a);
+   }
+
+   private static void e(dxn $$0, dha $$1, jh $$2) {
+      a($$1, $$2);
+      if (!$$0.c(b)) {
+         $$1.a($$2, $$0.b(b, Boolean.valueOf(true)), 3);
+      }
+   }
+
+   @Override
+   protected boolean f(dxn $$0) {
+      return $$0.c(b);
+   }
+
+   @Override
+   protected void b(dxn $$0, ash $$1, jh $$2, bam $$3) {
+      if ($$0.c(b)) {
+         $$1.a($$2, $$0.b(b, Boolean.valueOf(false)), 3);
+      }
+   }
+
+   @Override
+   protected void a(dxn $$0, ash $$1, jh $$2, cxk $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         this.a($$1, $$2, $$3, bsp.a(1, 5));
+      }
+   }
+
+   @Override
+   public void a(dxn $$0, dha $$1, jh $$2, bam $$3) {
+      if ($$0.c(b)) {
+         a($$1, $$2);
+      }
+   }
+
+   private static void a(dha $$0, jh $$1) {
+      double $$2 = 0.5625;
+      bam $$3 = $$0.A;
+
+      for (jm $$4 : jm.values()) {
+         jh $$5 = $$1.a($$4);
+         if (!$$0.a_($$5).s()) {
+            jm.a $$6 = $$4.o();
+            double $$7 = $$6 == jm.a.a ? 0.5 + 0.5625 * (double)$$4.j() : (double)$$3.i();
+            double $$8 = $$6 == jm.a.b ? 0.5 + 0.5625 * (double)$$4.k() : (double)$$3.i();
+            double $$9 = $$6 == jm.a.c ? 0.5 + 0.5625 * (double)$$4.l() : (double)$$3.i();
+            $$0.a(ln.b, (double)$$1.u() + $$7, (double)$$1.v() + $$8, (double)$$1.w() + $$9, 0.0, 0.0, 0.0);
+         }
+      }
+   }
+
+   @Override
+   protected void a(dxo.a<dke, dxn> $$0) {
+      $$0.a(b);
    }
 }

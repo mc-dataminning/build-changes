@@ -1,84 +1,81 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dqo extends dic implements dlx {
+public class dqo extends dmi {
    public static final MapCodec<dqo> a = b(dqo::new);
-   public static final dws<dxe> b = dwl.bj;
+   public static final dye b = dyd.t;
+   public static final dym e = dyd.aB;
 
    @Override
    public MapCodec<dqo> a() {
       return a;
    }
 
-   protected dqo(dvu.d $$0) {
+   protected dqo(dxm.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, dxe.b));
+      this.l(this.F.b().b(aF, jm.c).b(e, Integer.valueOf(1)).b(b, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public dsy a(jh $$0, dvv $$1) {
-      return new dup($$0, $$1);
-   }
-
-   @Override
-   protected bsk a(dvv $$0, dfm $$1, jh $$2, cou $$3, ezu $$4) {
-      dsy $$5 = $$1.c_($$2);
-      if ($$5 instanceof dup) {
-         return (bsk)(((dup)$$5).a($$3) ? bsk.a : bsk.e);
+   protected bte a(dxn $$0, dha $$1, jh $$2, cps $$3, fbo $$4) {
+      if (!$$3.gh().e) {
+         return bte.e;
       } else {
-         return bsk.e;
+         $$1.a($$2, $$0.a(e), 3);
+         return bte.a;
       }
    }
 
    @Override
-   public void a(dfm $$0, jh $$1, dvv $$2, @Nullable bvh $$3, cwm $$4) {
-      if (!$$0.C) {
-         if ($$3 != null) {
-            dsy $$5 = $$0.c_($$1);
-            if ($$5 instanceof dup) {
-               ((dup)$$5).a($$3);
-            }
+   protected int h(dxn $$0) {
+      return $$0.c(e) * 2;
+   }
+
+   @Override
+   public dxn a(dbb $$0) {
+      dxn $$1 = super.a($$0);
+      return $$1.b(b, Boolean.valueOf(this.c($$0.q(), $$0.a(), $$1)));
+   }
+
+   @Override
+   protected dxn a(dxn $$0, dhd $$1, dhp $$2, jh $$3, jm $$4, jh $$5, dxn $$6, bam $$7) {
+      if ($$4 == jm.a && !this.b($$1, $$5, $$6)) {
+         return dkg.a.m();
+      } else {
+         return !$$1.B_() && $$4.o() != $$0.c(aF).o() ? $$0.b(b, Boolean.valueOf(this.c($$1, $$3, $$0))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
+   }
+
+   @Override
+   public boolean c(dhd $$0, jh $$1, dxn $$2) {
+      return this.a((dhs)$$0, $$1, $$2) > 0;
+   }
+
+   @Override
+   protected boolean b() {
+      return true;
+   }
+
+   @Override
+   public void a(dxn $$0, dha $$1, jh $$2, bam $$3) {
+      if ($$0.c(d)) {
+         jm $$4 = $$0.c(aF);
+         double $$5 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         double $$6 = (double)$$2.v() + 0.4 + ($$3.j() - 0.5) * 0.2;
+         double $$7 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         float $$8 = -5.0F;
+         if ($$3.h()) {
+            $$8 = (float)($$0.c(e) * 2 - 1);
          }
+
+         $$8 /= 16.0F;
+         double $$9 = (double)($$8 * (float)$$4.j());
+         double $$10 = (double)($$8 * (float)$$4.l());
+         $$1.a(ln.b, $$5 + $$9, $$6, $$7 + $$10, 0.0, 0.0, 0.0);
       }
    }
 
    @Override
-   protected dow a_(dvv $$0) {
-      return dow.c;
-   }
-
-   @Override
-   protected void a(dvw.a<diq, dvv> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected void a(dvv $$0, dfm $$1, jh $$2, diq $$3, @Nullable etd $$4, boolean $$5) {
-      if ($$1 instanceof arp) {
-         if ($$1.c_($$2) instanceof dup $$7) {
-            boolean $$8 = $$1.C($$2);
-            boolean $$9 = $$7.D();
-            if ($$8 && !$$9) {
-               $$7.c(true);
-               this.a((arp)$$1, $$7);
-            } else if (!$$8 && $$9) {
-               $$7.c(false);
-            }
-         }
-      }
-   }
-
-   private void a(arp $$0, dup $$1) {
-      switch ($$1.v()) {
-         case a:
-            $$1.b(false);
-            break;
-         case b:
-            $$1.c($$0);
-            break;
-         case c:
-            $$1.B();
-         case d:
-      }
+   protected void a(dxo.a<dke, dxn> $$0) {
+      $$0.a(aF, e, b, d);
    }
 }

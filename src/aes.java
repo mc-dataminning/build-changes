@@ -1,23 +1,16 @@
-import javax.annotation.Nullable;
-
-public record aes(int b, jq<bto> c) implements zq<acf> {
-   public static final zh<wu, aes> a = zh.a(zf.h, aes::b, bto.b, aes::e, aes::new);
+public record aes(int b, ddc c) implements aac<acr> {
+   public static final zt<xg, aes> a = zt.a(zr.w, aes::b, ddc.e, aes::e, aes::new);
 
    @Override
-   public zs<aes> a() {
-      return agu.al;
+   public aae<aes> a() {
+      return ahk.Z;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bul a(dfm $$0) {
-      return $$0.a(this.b);
-   }
-
-   public jq<bto> e() {
+   public ddc e() {
       return this.c;
    }
 }

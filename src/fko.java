@@ -1,44 +1,58 @@
-import org.joml.Vector2i;
+import com.google.gson.annotations.SerializedName;
+import com.mojang.logging.LogUtils;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import org.slf4j.Logger;
 
 public class fko {
-   private double a;
-   private double b;
+   private static final String a = "realms_persistence.json";
+   private static final fht b = new fht();
+   private static final Logger c = LogUtils.getLogger();
 
-   public Vector2i a(double $$0, double $$1) {
-      if (this.a != 0.0 && Math.signum($$0) != Math.signum(this.a)) {
-         this.a = 0.0;
+   public fko.a a() {
+      return b();
+   }
+
+   public void a(fko.a $$0) {
+      b($$0);
+   }
+
+   public static fko.a b() {
+      Path $$0 = c();
+
+      try {
+         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
+         fko.a $$2 = b.a($$1, fko.a.class);
+         if ($$2 != null) {
+            return $$2;
+         }
+      } catch (NoSuchFileException var3) {
+      } catch (Exception var4) {
+         c.warn("Failed to read Realms storage {}", $$0, var4);
       }
 
-      if (this.b != 0.0 && Math.signum($$1) != Math.signum(this.b)) {
-         this.b = 0.0;
-      }
+      return new fko.a();
+   }
 
-      this.a += $$0;
-      this.b += $$1;
-      int $$2 = (int)this.a;
-      int $$3 = (int)this.b;
-      if ($$2 == 0 && $$3 == 0) {
-         return new Vector2i(0, 0);
-      } else {
-         this.a -= (double)$$2;
-         this.b -= (double)$$3;
-         return new Vector2i($$2, $$3);
+   public static void b(fko.a $$0) {
+      Path $$1 = c();
+
+      try {
+         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
+      } catch (Exception var3) {
       }
    }
 
-   public static int a(double $$0, int $$1, int $$2) {
-      int $$3 = (int)Math.signum($$0);
-      $$1 -= $$3;
-      $$1 = Math.max(-1, $$1);
+   private static Path c() {
+      return flz.Q().q.toPath().resolve("realms_persistence.json");
+   }
 
-      while ($$1 < 0) {
-         $$1 += $$2;
-      }
-
-      while ($$1 >= $$2) {
-         $$1 -= $$2;
-      }
-
-      return $$1;
+   public static class a implements fik {
+      @SerializedName("newsLink")
+      public String a;
+      @SerializedName("hasUnreadNews")
+      public boolean b;
    }
 }

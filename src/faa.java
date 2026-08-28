@@ -1,46 +1,61 @@
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import java.util.Arrays;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public class faa extends fas {
-   private final DoubleList b;
-   private final DoubleList c;
-   private final DoubleList d;
+public record faa(Optional<Long> b, ewg c) implements ezs {
+   public static final MapCodec<faa> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.LONG.optionalFieldOf("period").forGetter(faa::c), ewg.a.fieldOf("value").forGetter(faa::d)).apply($$0, faa::new)
+   );
 
-   protected faa(fah $$0, double[] $$1, double[] $$2, double[] $$3) {
-      this(
-         $$0,
-         DoubleArrayList.wrap(Arrays.copyOf($$1, $$0.b() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf($$2, $$0.c() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf($$3, $$0.d() + 1))
-      );
-   }
-
-   faa(fah $$0, DoubleList $$1, DoubleList $$2, DoubleList $$3) {
-      super($$0);
-      int $$4 = $$0.b() + 1;
-      int $$5 = $$0.c() + 1;
-      int $$6 = $$0.d() + 1;
-      if ($$4 == $$1.size() && $$5 == $$2.size() && $$6 == $$3.size()) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      } else {
-         throw (IllegalArgumentException)ae.b(new IllegalArgumentException("Lengths of point arrays must be consistent with the size of the VoxelShape."));
-      }
+   @Override
+   public ezt b() {
+      return ezu.q;
    }
 
    @Override
-   public DoubleList a(jm.a $$0) {
-      switch ($$0) {
-         case a:
-            return this.b;
-         case b:
-            return this.c;
-         case c:
-            return this.d;
-         default:
-            throw new IllegalArgumentException();
+   public Set<eza<?>> a() {
+      return this.c.a();
+   }
+
+   public boolean a(ewh $$0) {
+      ash $$1 = $$0.d();
+      long $$2 = $$1.ad();
+      if (this.b.isPresent()) {
+         $$2 %= this.b.get();
+      }
+
+      return this.c.b($$0, (int)$$2);
+   }
+
+   public static faa.a a(ewg $$0) {
+      return new faa.a($$0);
+   }
+
+   public Optional<Long> c() {
+      return this.b;
+   }
+
+   public ewg d() {
+      return this.c;
+   }
+
+   public static class a implements ezs.a {
+      private Optional<Long> a = Optional.empty();
+      private final ewg b;
+
+      public a(ewg $$0) {
+         this.b = $$0;
+      }
+
+      public faa.a a(long $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public faa a() {
+         return new faa(this.a, this.b);
       }
    }
 }

@@ -1,5 +1,5 @@
-public class adn implements zq<acf> {
-   public static final zh<wg, adn> a = zq.a(adn::a, adn::new);
+public class adn implements aac<acr> {
+   public static final zt<ws, adn> a = aac.a(adn::a, adn::new);
    private final int b;
    private final int c;
    private final int d;
@@ -10,24 +10,24 @@ public class adn implements zq<acf> {
       this.d = $$2;
    }
 
-   private adn(wg $$0) {
+   private adn(ws $$0) {
       this.b = $$0.x();
-      this.c = $$0.l();
-      this.d = $$0.readInt();
+      this.c = $$0.readShort();
+      this.d = $$0.readShort();
    }
 
-   private void a(wg $$0) {
+   private void a(ws $$0) {
       $$0.f(this.b);
-      $$0.c(this.c);
-      $$0.q(this.d);
+      $$0.m(this.c);
+      $$0.m(this.d);
    }
 
    @Override
-   public zs<adn> a() {
-      return agu.H;
+   public aae<adn> a() {
+      return ahk.v;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
    }
 

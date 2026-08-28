@@ -1,84 +1,42 @@
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
+import com.mojang.serialization.Dynamic;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.function.Supplier;
+import java.util.Optional;
 
-public class bjp extends Schema {
-   public bjp(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class bjp extends bho {
+   public bjp(Schema $$0) {
+      super($$0, true, "Trial Spawner config tag fixer", bis.s, "minecraft:trial_spawner");
    }
 
-   protected static TypeTemplate a(Schema $$0) {
-      return DSL.optionalFields("ArmorItems", DSL.list(bia.t.in($$0)), "HandItems", DSL.list(bia.t.in($$0)), "body_armor_item", bia.t.in($$0));
-   }
-
-   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register($$1, $$2, () -> a($$0));
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      a($$0, $$1, "ArmorStand");
-      a($$0, $$1, "Creeper");
-      a($$0, $$1, "Skeleton");
-      a($$0, $$1, "Spider");
-      a($$0, $$1, "Giant");
-      a($$0, $$1, "Zombie");
-      a($$0, $$1, "Slime");
-      a($$0, $$1, "Ghast");
-      a($$0, $$1, "PigZombie");
-      $$0.register($$1, "Enderman", $$1x -> DSL.optionalFields("carried", bia.C.in($$0), a($$0)));
-      a($$0, $$1, "CaveSpider");
-      a($$0, $$1, "Silverfish");
-      a($$0, $$1, "Blaze");
-      a($$0, $$1, "LavaSlime");
-      a($$0, $$1, "EnderDragon");
-      a($$0, $$1, "WitherBoss");
-      a($$0, $$1, "Bat");
-      a($$0, $$1, "Witch");
-      a($$0, $$1, "Endermite");
-      a($$0, $$1, "Guardian");
-      a($$0, $$1, "Pig");
-      a($$0, $$1, "Sheep");
-      a($$0, $$1, "Cow");
-      a($$0, $$1, "Chicken");
-      a($$0, $$1, "Squid");
-      a($$0, $$1, "Wolf");
-      a($$0, $$1, "MushroomCow");
-      a($$0, $$1, "SnowMan");
-      a($$0, $$1, "Ozelot");
-      a($$0, $$1, "VillagerGolem");
-      $$0.register(
-         $$1, "EntityHorse", $$1x -> DSL.optionalFields("Items", DSL.list(bia.t.in($$0)), "ArmorItem", bia.t.in($$0), "SaddleItem", bia.t.in($$0), a($$0))
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      List<String> $$1 = List.of(
+         "spawn_range",
+         "total_mobs",
+         "simultaneous_mobs",
+         "total_mobs_added_per_player",
+         "simultaneous_mobs_added_per_player",
+         "ticks_between_spawn",
+         "spawn_potentials",
+         "loot_tables_to_eject",
+         "items_to_drop_when_ominous"
       );
-      a($$0, $$1, "Rabbit");
-      $$0.register(
-         $$1,
-         "Villager",
-         $$1x -> DSL.optionalFields("Inventory", DSL.list(bia.t.in($$0)), "Offers", DSL.optionalFields("Recipes", DSL.list(bia.x.in($$0))), a($$0))
-      );
-      a($$0, $$1, "Shulker");
-      $$0.register($$1, "AreaEffectCloud", $$1x -> DSL.optionalFields("Particle", bia.y.in($$0)));
-      $$0.registerSimple($$1, "ShulkerBullet");
-      return $$1;
+      Map<Dynamic<T>, Dynamic<T>> $$2 = new HashMap<>($$1.size());
+
+      for (String $$3 : $$1) {
+         Optional<Dynamic<T>> $$4 = $$0.get($$3).get().result();
+         if ($$4.isPresent()) {
+            $$2.put($$0.createString($$3), $$4.get());
+            $$0 = $$0.remove($$3);
+         }
+      }
+
+      return $$2.isEmpty() ? $$0 : $$0.set("normal_config", $$0.createMap($$2));
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         false,
-         bia.f,
-         () -> DSL.optionalFields(
-               "entities",
-               DSL.list(DSL.optionalFields("nbt", bia.A.in($$0))),
-               "blocks",
-               DSL.list(DSL.optionalFields("nbt", bia.s.in($$0))),
-               "palette",
-               DSL.list(bia.u.in($$0))
-            )
-      );
-      $$0.registerType(false, bia.u, DSL::remainder);
-      $$0.registerType(false, bia.v, DSL::remainder);
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return b($$0);
    }
 }

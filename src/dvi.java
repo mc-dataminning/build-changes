@@ -1,116 +1,95 @@
-public enum dvi implements bai {
-   a("inactive", dvi.a.a) {
-      @Override
-      protected void a(arp $$0, jh $$1, dvf $$2, dvh $$3, boolean $$4) {
-         $$3.a(cwm.k);
-         $$0.c(3016, $$1, $$4 ? 1 : 0);
-      }
-   },
-   b("active", dvi.a.b) {
-      @Override
-      protected void a(arp $$0, jh $$1, dvf $$2, dvh $$3, boolean $$4) {
-         if (!$$3.b()) {
-            dvd.b.a($$0, this, $$2, $$3, $$1);
-         }
+import java.util.Map;
+import javax.annotation.Nullable;
 
-         $$0.c(3015, $$1, $$4 ? 1 : 0);
-      }
-   },
-   c("unlocking", dvi.a.b) {
-      @Override
-      protected void a(arp $$0, jh $$1, dvf $$2, dvh $$3, boolean $$4) {
-         $$0.a(null, $$1, awn.AN, awo.e);
-      }
-   },
-   d("ejecting", dvi.a.b) {
-      @Override
-      protected void a(arp $$0, jh $$1, dvf $$2, dvh $$3, boolean $$4) {
-         $$0.a(null, $$1, awn.AP, awo.e);
-      }
+public class dvi {
+   public static final aly<dvh> a = a("blank");
+   public static final aly<dvh> b = a("angler");
+   public static final aly<dvh> c = a("archer");
+   public static final aly<dvh> d = a("arms_up");
+   public static final aly<dvh> e = a("blade");
+   public static final aly<dvh> f = a("brewer");
+   public static final aly<dvh> g = a("burn");
+   public static final aly<dvh> h = a("danger");
+   public static final aly<dvh> i = a("explorer");
+   public static final aly<dvh> j = a("flow");
+   public static final aly<dvh> k = a("friend");
+   public static final aly<dvh> l = a("guster");
+   public static final aly<dvh> m = a("heart");
+   public static final aly<dvh> n = a("heartbreak");
+   public static final aly<dvh> o = a("howl");
+   public static final aly<dvh> p = a("miner");
+   public static final aly<dvh> q = a("mourner");
+   public static final aly<dvh> r = a("plenty");
+   public static final aly<dvh> s = a("prize");
+   public static final aly<dvh> t = a("scrape");
+   public static final aly<dvh> u = a("sheaf");
+   public static final aly<dvh> v = a("shelter");
+   public static final aly<dvh> w = a("skull");
+   public static final aly<dvh> x = a("snort");
+   private static final Map<cxg, aly<dvh>> y = Map.ofEntries(
+      Map.entry(cxo.rj, a),
+      Map.entry(cxo.yF, b),
+      Map.entry(cxo.yG, c),
+      Map.entry(cxo.yH, d),
+      Map.entry(cxo.yI, e),
+      Map.entry(cxo.yJ, f),
+      Map.entry(cxo.yK, g),
+      Map.entry(cxo.yL, h),
+      Map.entry(cxo.yM, i),
+      Map.entry(cxo.yN, j),
+      Map.entry(cxo.yO, k),
+      Map.entry(cxo.yP, l),
+      Map.entry(cxo.yQ, m),
+      Map.entry(cxo.yR, n),
+      Map.entry(cxo.yS, o),
+      Map.entry(cxo.yT, p),
+      Map.entry(cxo.yU, q),
+      Map.entry(cxo.yV, r),
+      Map.entry(cxo.yW, s),
+      Map.entry(cxo.yX, t),
+      Map.entry(cxo.yY, u),
+      Map.entry(cxo.yZ, v),
+      Map.entry(cxo.za, w),
+      Map.entry(cxo.zb, x)
+   );
 
-      @Override
-      protected void a(arp $$0, jh $$1, dvf $$2, dvh $$3) {
-         $$0.a(null, $$1, awn.AH, awo.e);
-      }
-   };
-
-   private static final int e = 20;
-   private static final int f = 20;
-   private static final int g = 20;
-   private static final int h = 20;
-   private final String i;
-   private final dvi.a j;
-
-   dvi(final String $$0, final dvi.a $$1) {
-      this.i = $$0;
-      this.j = $$1;
+   @Nullable
+   public static aly<dvh> a(cxg $$0) {
+      return y.get($$0);
    }
 
-   @Override
-   public String c() {
-      return this.i;
+   private static aly<dvh> a(String $$0) {
+      return aly.a(mb.ax, alz.b($$0));
    }
 
-   public int a() {
-      return this.j.c;
+   public static dvh a(kd<dvh> $$0) {
+      a($$0, b, "angler_pottery_pattern");
+      a($$0, c, "archer_pottery_pattern");
+      a($$0, d, "arms_up_pottery_pattern");
+      a($$0, e, "blade_pottery_pattern");
+      a($$0, f, "brewer_pottery_pattern");
+      a($$0, g, "burn_pottery_pattern");
+      a($$0, h, "danger_pottery_pattern");
+      a($$0, i, "explorer_pottery_pattern");
+      a($$0, j, "flow_pottery_pattern");
+      a($$0, k, "friend_pottery_pattern");
+      a($$0, l, "guster_pottery_pattern");
+      a($$0, m, "heart_pottery_pattern");
+      a($$0, n, "heartbreak_pottery_pattern");
+      a($$0, o, "howl_pottery_pattern");
+      a($$0, p, "miner_pottery_pattern");
+      a($$0, q, "mourner_pottery_pattern");
+      a($$0, r, "plenty_pottery_pattern");
+      a($$0, s, "prize_pottery_pattern");
+      a($$0, t, "scrape_pottery_pattern");
+      a($$0, u, "sheaf_pottery_pattern");
+      a($$0, v, "shelter_pottery_pattern");
+      a($$0, w, "skull_pottery_pattern");
+      a($$0, x, "snort_pottery_pattern");
+      return a($$0, a, "decorated_pot_side");
    }
 
-   public dvi a(arp $$0, jh $$1, dvf $$2, dvg $$3, dvh $$4) {
-      return switch (this) {
-         case a -> a($$0, $$1, $$2, $$3, $$4, $$2.c());
-         case b -> a($$0, $$1, $$2, $$3, $$4, $$2.d());
-         case c -> {
-            $$3.b($$0.ab() + 20L);
-            yield d;
-         }
-         case d -> {
-            if ($$3.d().isEmpty()) {
-               $$3.e();
-               yield a($$0, $$1, $$2, $$3, $$4, $$2.d());
-            } else {
-               float $$5 = $$3.h();
-               this.a($$0, $$1, $$3.g(), $$5);
-               $$4.a($$3.f());
-               boolean $$6 = $$3.d().isEmpty();
-               int $$7 = $$6 ? 20 : 20;
-               $$3.b($$0.ab() + (long)$$7);
-               yield d;
-            }
-         }
-      };
-   }
-
-   private static dvi a(arp $$0, jh $$1, dvf $$2, dvg $$3, dvh $$4, double $$5) {
-      $$4.a($$0, $$1, $$3, $$2, $$5);
-      $$3.b($$0.ab() + 20L);
-      return $$4.c() ? b : a;
-   }
-
-   public void a(arp $$0, jh $$1, dvi $$2, dvf $$3, dvh $$4, boolean $$5) {
-      this.a($$0, $$1, $$3, $$4);
-      $$2.a($$0, $$1, $$3, $$4, $$5);
-   }
-
-   protected void a(arp $$0, jh $$1, dvf $$2, dvh $$3, boolean $$4) {
-   }
-
-   protected void a(arp $$0, jh $$1, dvf $$2, dvh $$3) {
-   }
-
-   private void a(arp $$0, jh $$1, cwm $$2, float $$3) {
-      la.a($$0, $$2, 2, jm.b, ezy.c($$1).a(jm.b, 1.2));
-      $$0.c(3017, $$1, 0);
-      $$0.a(null, $$1, awn.AJ, awo.e, 1.0F, 0.8F + 0.4F * $$3);
-   }
-
-   static enum a {
-      a(6),
-      b(12);
-
-      final int c;
-
-      private a(final int $$0) {
-         this.c = $$0;
-      }
+   private static dvh a(kd<dvh> $$0, aly<dvh> $$1, String $$2) {
+      return kd.a($$0, $$1, new dvh(alz.b($$2)));
    }
 }

@@ -1,17 +1,10 @@
-import java.io.IOException;
-
-public class gzy extends avi<int[]> {
-   private static final alj a = alj.b("textures/colormap/grass.png");
-
-   protected int[] a(avd $$0, bou $$1) {
-      try {
-         return haa.a($$0, a);
-      } catch (IOException var4) {
-         throw new IllegalStateException("Failed to load grass color texture", var4);
-      }
-   }
-
-   protected void a(int[] $$0, avd $$1, bou $$2) {
-      dfk.a($$0);
-   }
+public class gzy extends gym {
+   public float a;
+   public float b;
+   public final bux c = new bux();
+   public final bux d = new bux();
+   public final bux e = new bux();
+   public final bux f = new bux();
+   public final bux g = new bux();
+   public final bux h = new bux();
 }

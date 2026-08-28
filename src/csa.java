@@ -1,86 +1,51 @@
-import java.util.List;
-
-public abstract class csa extends cto {
-   private final int o;
-   private final int p;
-   protected final csr m;
-   protected final ctr n = new ctr();
-
-   public csa(cti<?> $$0, int $$1, int $$2, int $$3) {
+public class csa extends crs {
+   public csa(bvm<? extends csa> $$0, dha $$1) {
       super($$0, $$1);
-      this.o = $$2;
-      this.p = $$3;
-      this.m = new cud(this, $$2, $$3);
-   }
-
-   protected ctw a(cou $$0, int $$1, int $$2) {
-      return this.a(new cts($$0, this.m, this.n, 0, $$1, $$2));
    }
 
    @Override
-   protected void d(int $$0, int $$1) {
-      for (int $$2 = 0; $$2 < this.o; $$2++) {
-         for (int $$3 = 0; $$3 < this.p; $$3++) {
-            this.a(new ctw(this.m, $$3 + $$2 * this.o, $$0 + $$3 * 18, $$1 + $$2 * 18));
-         }
-      }
+   protected cxg u() {
+      return cxo.og;
    }
 
    @Override
-   public cto.a a(boolean $$0, boolean $$1, dbc<?> $$2, cot $$3) {
-      dbc<daq> $$4 = (dbc<daq>)$$2;
-      this.l();
+   public cxk dI() {
+      return new cxk(cxo.og);
+   }
 
-      cto.a var7;
-      try {
-         List<ctw> $$5 = this.n();
-         var7 = akv.a(new akv.a<daq>() {
-            @Override
-            public void a(coz $$0) {
-               csa.this.a($$0);
-            }
+   @Override
+   public int b() {
+      return 27;
+   }
 
-            @Override
-            public void a() {
-               csa.this.n.a();
-               csa.this.m.a();
-            }
+   @Override
+   public dxn w() {
+      return dkg.cD.m().b(dli.c, jm.c);
+   }
 
-            @Override
-            public boolean a(dbc<daq> $$0) {
-               return $$0.b().a(csa.this.m.aB_(), csa.this.q().dV());
-            }
-         }, this.o, this.p, $$5, $$5, $$3, $$4, $$0, $$1);
-      } finally {
-         this.a((dbc<daq>)$$2);
+   @Override
+   public int z() {
+      return 8;
+   }
+
+   @Override
+   public csx a(int $$0, cpr $$1) {
+      return ctg.a($$0, $$1, this);
+   }
+
+   @Override
+   public void c(cps $$0) {
+      this.dV().a(ecj.j, this.dt(), ecj.a.a($$0));
+   }
+
+   @Override
+   public bte a(cps $$0, btd $$1) {
+      bte $$2 = this.b_($$0);
+      if ($$2.a() && $$0.dV() instanceof ash $$3) {
+         this.a(ecj.k, $$0);
+         coh.a($$3, $$0, true);
       }
 
-      return var7;
-   }
-
-   @Override
-   protected void l() {
-   }
-
-   protected void a(dbc<daq> $$0) {
-   }
-
-   public abstract ctw m();
-
-   public abstract List<ctw> n();
-
-   public int o() {
-      return this.o;
-   }
-
-   public int p() {
-      return this.p;
-   }
-
-   protected abstract cou q();
-
-   @Override
-   public void a(coz $$0) {
-      this.m.fillStackedContents($$0);
+      return $$2;
    }
 }

@@ -1,96 +1,101 @@
-public class ftf {
-   private static final alj a = alj.b("alt");
-   private static final yg b = yg.a.a(a);
-   private static final ftf c = new ftf();
-   private final azu d = azu.a();
-   private final String[] e = new String[]{
-      "the",
-      "elder",
-      "scrolls",
-      "klaatu",
-      "berata",
-      "niktu",
-      "xyzzy",
-      "bless",
-      "curse",
-      "light",
-      "darkness",
-      "fire",
-      "air",
-      "earth",
-      "water",
-      "hot",
-      "dry",
-      "cold",
-      "wet",
-      "ignite",
-      "snuff",
-      "embiggen",
-      "twist",
-      "shorten",
-      "stretch",
-      "fiddle",
-      "destroy",
-      "imbue",
-      "galvanize",
-      "enchant",
-      "free",
-      "limited",
-      "range",
-      "of",
-      "towards",
-      "inside",
-      "sphere",
-      "cube",
-      "self",
-      "other",
-      "ball",
-      "mental",
-      "physical",
-      "grow",
-      "shrink",
-      "demon",
-      "elemental",
-      "spirit",
-      "animal",
-      "creature",
-      "beast",
-      "humanoid",
-      "undead",
-      "fresh",
-      "stale",
-      "phnglui",
-      "mglwnafh",
-      "cthulhu",
-      "rlyeh",
-      "wgahnagl",
-      "fhtagn",
-      "baguette"
-   };
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-   private ftf() {
+public class ftf extends ftr {
+   private static final long a = 2000L;
+   private final asv b;
+   private long c = -1L;
+   private boolean d;
+   private static final Object2IntMap<eaj> s = ae.a(new Object2IntOpenHashMap(), $$0 -> {
+      $$0.defaultReturnValue(0);
+      $$0.put(eaj.c, 5526612);
+      $$0.put(eaj.d, 10066329);
+      $$0.put(eaj.e, 6250897);
+      $$0.put(eaj.f, 8434258);
+      $$0.put(eaj.g, 13750737);
+      $$0.put(eaj.h, 7497737);
+      $$0.put(eaj.i, 3159410);
+      $$0.put(eaj.j, 2213376);
+      $$0.put(eaj.k, 13421772);
+      $$0.put(eaj.l, 16769184);
+      $$0.put(eaj.m, 15884384);
+      $$0.put(eaj.n, 16777215);
+   });
+
+   public ftf(asv $$0) {
+      super(flq.a);
+      this.b = $$0;
    }
 
-   public static ftf a() {
-      return c;
+   @Override
+   public boolean aH_() {
+      return false;
    }
 
-   public xo a(flo $$0, int $$1) {
-      StringBuilder $$2 = new StringBuilder();
-      int $$3 = this.d.a(2) + 3;
+   @Override
+   protected boolean aS_() {
+      return false;
+   }
 
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         if ($$4 != 0) {
-            $$2.append(" ");
-         }
+   @Override
+   public void aJ_() {
+      this.d = true;
+      this.d(true);
+   }
 
-         $$2.append(ae.a(this.e, this.d));
+   @Override
+   protected void b(frw $$0) {
+      if (this.d) {
+         $$0.a(frv.a, xv.c("narrator.loading.done"));
+      } else {
+         $$0.a(frv.a, this.l());
+      }
+   }
+
+   private xv l() {
+      return xv.a("loading.progress", bae.a(this.b.f(), 0, 100));
+   }
+
+   @Override
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      long $$4 = ae.c();
+      if ($$4 - this.c > 2000L) {
+         this.c = $$4;
+         this.d(true);
       }
 
-      return $$0.b().a(xj.b($$2.toString()).c(b), $$1, yg.a);
+      int $$5 = this.n / 2;
+      int $$6 = this.o / 2;
+      a($$0, this.b, $$5, $$6, 2, 0);
+      int $$7 = this.b.e() + 9 + 2;
+      $$0.a(this.p, this.l(), $$5, $$6 - $$7, 16777215);
    }
 
-   public void a(long $$0) {
-      this.d.b($$0);
+   public static void a(fnl $$0, asv $$1, int $$2, int $$3, int $$4, int $$5) {
+      int $$6 = $$4 + $$5;
+      int $$7 = $$1.d();
+      int $$8 = $$7 * $$6 - $$5;
+      int $$9 = $$1.e();
+      int $$10 = $$9 * $$6 - $$5;
+      int $$11 = $$2 - $$10 / 2;
+      int $$12 = $$3 - $$10 / 2;
+      int $$13 = $$8 / 2 + 1;
+      int $$14 = -16772609;
+      if ($$5 != 0) {
+         $$0.a($$2 - $$13, $$3 - $$13, $$2 - $$13 + 1, $$3 + $$13, -16772609);
+         $$0.a($$2 + $$13 - 1, $$3 - $$13, $$2 + $$13, $$3 + $$13, -16772609);
+         $$0.a($$2 - $$13, $$3 - $$13, $$2 + $$13, $$3 - $$13 + 1, -16772609);
+         $$0.a($$2 - $$13, $$3 + $$13 - 1, $$2 + $$13, $$3 + $$13, -16772609);
+      }
+
+      for (int $$15 = 0; $$15 < $$9; $$15++) {
+         for (int $$16 = 0; $$16 < $$9; $$16++) {
+            eaj $$17 = $$1.a($$15, $$16);
+            int $$18 = $$11 + $$15 * $$6;
+            int $$19 = $$12 + $$16 * $$6;
+            $$0.a($$18, $$19, $$18 + $$4, $$19 + $$4, ayp.f(s.getInt($$17)));
+         }
+      }
    }
 }

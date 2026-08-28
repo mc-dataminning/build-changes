@@ -1,137 +1,118 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.microsoft.aad.msal4j.ClientCredentialFactory;
-import com.microsoft.aad.msal4j.ClientCredentialParameters;
-import com.microsoft.aad.msal4j.ConfidentialClientApplication;
-import com.microsoft.aad.msal4j.IAuthenticationResult;
-import com.microsoft.aad.msal4j.IClientCertificate;
-import com.microsoft.aad.msal4j.ConfidentialClientApplication.Builder;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Set;
-import java.util.concurrent.ExecutorService;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2ByteMap;
+import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.ArrayList;
+import java.util.List;
 
-public class aso extends asx {
-   private final ConfidentialClientApplication b;
-   private final ClientCredentialParameters c;
-   private final Set<String> d;
-   private final int e;
+public class aso extends arq {
+   public static final int a = 33;
+   private static final int c = 4;
+   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
+   private final Long2ObjectOpenHashMap<baw<asm<?>>> d = new Long2ObjectOpenHashMap();
 
-   private aso(URL $$0, asx.b $$1, asx.a $$2, ExecutorService $$3, ConfidentialClientApplication $$4, ClientCredentialParameters $$5, Set<String> $$6, int $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.b = $$4;
-      this.c = $$5;
-      this.d = $$6;
-      this.e = $$7;
+   public aso() {
+      super(34, 16, 256);
+      this.b.defaultReturnValue((byte)33);
    }
 
-   @Nullable
-   public static asx a(String $$0) {
-      JsonObject $$1 = azc.a($$0);
-      URI $$2 = URI.create(azc.i($$1, "apiServer"));
-      String $$3 = azc.i($$1, "apiPath");
-      String $$4 = azc.i($$1, "scope");
-      String $$5 = azc.a($$1, "serverId", "");
-      String $$6 = azc.i($$1, "applicationId");
-      String $$7 = azc.i($$1, "tenantId");
-      String $$8 = azc.a($$1, "roomId", "Java:Chat");
-      String $$9 = azc.i($$1, "certificatePath");
-      String $$10 = azc.a($$1, "certificatePassword", "");
-      int $$11 = azc.a($$1, "hashesToDrop", -1);
-      int $$12 = azc.a($$1, "maxConcurrentRequests", 7);
-      JsonArray $$13 = azc.v($$1, "fullyFilteredEvents");
-      Set<String> $$14 = new HashSet<>();
-      $$13.forEach($$1x -> $$14.add(azc.a($$1x, "filteredEvent")));
-      int $$15 = azc.a($$1, "connectionReadTimeoutMs", 2000);
+   private baw<asm<?>> g(long $$0) {
+      return (baw<asm<?>>)this.d.computeIfAbsent($$0, $$0x -> baw.a(4));
+   }
 
-      URL $$16;
-      try {
-         $$16 = $$2.resolve($$3).toURL();
-      } catch (MalformedURLException var26) {
-         throw new RuntimeException(var26);
+   private int a(baw<asm<?>> $$0) {
+      return $$0.isEmpty() ? 34 : $$0.b().b();
+   }
+
+   public void a(long $$0, asm<?> $$1) {
+      baw<asm<?>> $$2 = this.g($$0);
+      int $$3 = this.a($$2);
+      $$2.add($$1);
+      if ($$1.b() < $$3) {
+         this.b($$0, $$1.b(), true);
+      }
+   }
+
+   public void b(long $$0, asm<?> $$1) {
+      baw<asm<?>> $$2 = this.g($$0);
+      $$2.remove($$1);
+      if ($$2.isEmpty()) {
+         this.d.remove($$0);
       }
 
-      asx.b $$19 = ($$2x, $$3x) -> {
-         JsonObject $$4x = new JsonObject();
-         $$4x.addProperty("userId", $$2x.getId().toString());
-         $$4x.addProperty("userDisplayName", $$2x.getName());
-         $$4x.addProperty("server", $$5);
-         $$4x.addProperty("room", $$8);
-         $$4x.addProperty("area", "JavaChatRealms");
-         $$4x.addProperty("data", $$3x);
-         $$4x.addProperty("language", "*");
-         return $$4x;
-      };
-      asx.a $$20 = asx.a.select($$11);
-      ExecutorService $$21 = a($$12);
-
-      IClientCertificate $$23;
-      try (InputStream $$22 = Files.newInputStream(Path.of($$9))) {
-         $$23 = ClientCredentialFactory.createFromCertificate($$22, $$10);
-      } catch (Exception var28) {
-         a.warn("Failed to open certificate file");
-         return null;
-      }
-
-      ConfidentialClientApplication $$27;
-      try {
-         $$27 = ((Builder)((Builder)ConfidentialClientApplication.builder($$6, $$23).sendX5c(true).executorService($$21))
-               .authority(String.format(Locale.ROOT, "https://login.microsoftonline.com/%s/", $$7)))
-            .build();
-      } catch (Exception var25) {
-         a.warn("Failed to create confidential client application");
-         return null;
-      }
-
-      ClientCredentialParameters $$30 = ClientCredentialParameters.builder(Set.of($$4)).build();
-      return new aso($$16, $$19, $$20, $$21, $$27, $$30, $$14, $$15);
+      this.b($$0, this.a($$2), false);
    }
 
-   private IAuthenticationResult b() {
-      return (IAuthenticationResult)this.b.acquireToken(this.c).join();
+   public <T> void a(asn<T> $$0, dgg $$1, int $$2, T $$3) {
+      this.a($$1.a(), new asm<>($$0, $$2, $$3));
    }
 
-   @Override
-   protected void a(HttpURLConnection $$0) {
-      IAuthenticationResult $$1 = this.b();
-      $$0.setRequestProperty("Authorization", "Bearer " + $$1.accessToken());
+   public <T> void b(asn<T> $$0, dgg $$1, int $$2, T $$3) {
+      asm<T> $$4 = new asm<>($$0, $$2, $$3);
+      this.b($$1.a(), $$4);
    }
 
-   @Override
-   protected asi a(String $$0, asx.a $$1, JsonObject $$2) {
-      JsonObject $$3 = azc.a($$2, "result", null);
-      if ($$3 == null) {
-         return asi.b($$0);
-      } else {
-         boolean $$4 = azc.a($$3, "filtered", true);
-         if (!$$4) {
-            return asi.a($$0);
-         } else {
-            for (JsonElement $$6 : azc.a($$3, "events", new JsonArray())) {
-               JsonObject $$7 = $$6.getAsJsonObject();
-               String $$8 = azc.a($$7, "id", "");
-               if (this.d.contains($$8)) {
-                  return asi.b($$0);
-               }
+   public void a(int $$0) {
+      List<Pair<asm<dgg>, Long>> $$1 = new ArrayList<>();
+      ObjectIterator var3 = this.d.long2ObjectEntrySet().iterator();
+
+      while (var3.hasNext()) {
+         Entry<baw<asm<?>>> $$2 = (Entry<baw<asm<?>>>)var3.next();
+
+         for (asm<?> $$3 : (baw)$$2.getValue()) {
+            if ($$3.a() == asn.c) {
+               $$1.add(Pair.of($$3, $$2.getLongKey()));
             }
-
-            JsonArray $$9 = azc.a($$3, "redactedTextIndex", new JsonArray());
-            return new asi($$0, this.a($$0, $$9, $$1));
          }
       }
+
+      for (Pair<asm<dgg>, Long> $$4 : $$1) {
+         Long $$5 = (Long)$$4.getSecond();
+         asm<dgg> $$6 = (asm<dgg>)$$4.getFirst();
+         this.b($$5, $$6);
+         dgg $$7 = new dgg($$5);
+         asn<dgg> $$8 = $$6.a();
+         this.a($$8, $$7, $$0, $$7);
+      }
    }
 
    @Override
-   protected int a() {
-      return this.e;
+   protected int b(long $$0) {
+      baw<asm<?>> $$1 = (baw<asm<?>>)this.d.get($$0);
+      return $$1 != null && !$$1.isEmpty() ? $$1.b().b() : Integer.MAX_VALUE;
+   }
+
+   public int a(dgg $$0) {
+      return this.c($$0.a());
+   }
+
+   @Override
+   protected int c(long $$0) {
+      return this.b.get($$0);
+   }
+
+   @Override
+   protected void a(long $$0, int $$1) {
+      if ($$1 >= 33) {
+         this.b.remove($$0);
+      } else {
+         this.b.put($$0, (byte)$$1);
+      }
+   }
+
+   public LongSet a() {
+      return this.b.keySet();
+   }
+
+   public void b() {
+      this.b(Integer.MAX_VALUE);
+   }
+
+   public String d(long $$0) {
+      baw<asm<?>> $$1 = (baw<asm<?>>)this.d.get($$0);
+      return $$1 != null && !$$1.isEmpty() ? $$1.b().toString() : "no_ticket";
    }
 }

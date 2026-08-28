@@ -1,188 +1,171 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.context.ContextChain;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.SuggestionProvider;
-import com.mojang.datafixers.util.Pair;
 import java.util.Collection;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class anr {
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xj.b("commands.function.error.argument_not_compound", $$0));
-   static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> xj.b("commands.function.scheduled.no_functions", $$0));
-   @VisibleForTesting
-   public static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> xj.b("commands.function.instantiationFailure", $$0, $$1));
-   public static final SuggestionProvider<ew> b = ($$0, $$1) -> {
-      aly $$2 = ((ew)$$0.getSource()).l().aE();
-      fb.a($$2.e(), $$1, "#");
-      return fb.a($$2.d(), $$1);
-   };
-   static final anr.b<ew> e = new anr.b<ew>() {
-      public void a(ew $$0, alj $$1, int $$2) {
-         $$0.a(() -> xj.a("commands.function.result", xj.a($$1), $$2), true);
-      }
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xv.b("commands.datapack.unknown", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xv.b("commands.datapack.enable.failed", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xv.b("commands.datapack.disable.failed", $$0));
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> xv.b("commands.datapack.disable.failed.feature", $$0));
+   private static final Dynamic2CommandExceptionType e = new Dynamic2CommandExceptionType(
+      ($$0, $$1) -> xv.b("commands.datapack.enable.failed.no_flags", $$0, $$1)
+   );
+   private static final SuggestionProvider<ew> f = ($$0, $$1) -> fb.b(
+         ((ew)$$0.getSource()).l().aF().e().stream().map(StringArgumentType::escapeIfRequired), $$1
+      );
+   private static final SuggestionProvider<ew> g = ($$0, $$1) -> {
+      avg $$2 = ((ew)$$0.getSource()).l().aF();
+      Collection<String> $$3 = $$2.e();
+      cso $$4 = ((ew)$$0.getSource()).v();
+      return fb.b(
+         $$2.d().stream().filter($$1x -> $$1x.e().a($$4)).map(avd::g).filter($$1x -> !$$3.contains($$1x)).map(StringArgumentType::escapeIfRequired), $$1
+      );
    };
 
    public static void a(CommandDispatcher<ew> $$0) {
-      LiteralArgumentBuilder<ew> $$1 = ex.a("with");
-
-      for (aqa.c $$2 : aqa.c) {
-         $$2.a($$1, $$1x -> $$1x.executes(new anr.c() {
-               @Override
-               protected ul a(CommandContext<ew> $$0) throws CommandSyntaxException {
-                  return $$2.a($$0).a();
-               }
-            }).then(ex.a("path", fo.a()).executes(new anr.c() {
-               @Override
-               protected ul a(CommandContext<ew> $$0) throws CommandSyntaxException {
-                  return anr.a(fo.a($$0, "path"), $$2.a($$0));
-               }
-            })));
-      }
-
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("function").requires($$0x -> $$0x.c(2)))
-            .then(((RequiredArgumentBuilder)((RequiredArgumentBuilder)ex.a("name", he.a()).suggests(b).executes(new anr.c() {
-               @Nullable
-               @Override
-               protected ul a(CommandContext<ew> $$0) {
-                  return null;
-               }
-            })).then(ex.a("arguments", fg.a()).executes(new anr.c() {
-               @Override
-               protected ul a(CommandContext<ew> $$0) {
-                  return fg.a($$0, "arguments");
-               }
-            }))).then($$1))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("datapack").requires($$0x -> $$0x.c(2)))
+                  .then(
+                     ex.a("enable")
+                        .then(
+                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ex.a(
+                                             "name", StringArgumentType.string()
+                                          )
+                                          .suggests(g)
+                                          .executes(
+                                             $$0x -> a((ew)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$1.k().a($$0xx, $$1, avd::h, false))
+                                          ))
+                                       .then(
+                                          ex.a("after")
+                                             .then(
+                                                ex.a("existing", StringArgumentType.string())
+                                                   .suggests(f)
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (ew)$$0x.getSource(),
+                                                            a($$0x, "name", true),
+                                                            ($$1, $$2) -> $$1.add($$1.indexOf(a($$0x, "existing", false)) + 1, $$2)
+                                                         )
+                                                   )
+                                             )
+                                       ))
+                                    .then(
+                                       ex.a("before")
+                                          .then(
+                                             ex.a("existing", StringArgumentType.string())
+                                                .suggests(f)
+                                                .executes(
+                                                   $$0x -> a(
+                                                         (ew)$$0x.getSource(),
+                                                         a($$0x, "name", true),
+                                                         ($$1, $$2) -> $$1.add($$1.indexOf(a($$0x, "existing", false)), $$2)
+                                                      )
+                                                )
+                                          )
+                                    ))
+                                 .then(ex.a("last").executes($$0x -> a((ew)$$0x.getSource(), a($$0x, "name", true), List::add))))
+                              .then(ex.a("first").executes($$0x -> a((ew)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$0xx.add(0, $$1))))
+                        )
+                  ))
+               .then(
+                  ex.a("disable").then(ex.a("name", StringArgumentType.string()).suggests(f).executes($$0x -> a((ew)$$0x.getSource(), a($$0x, "name", false))))
+               ))
+            .then(
+               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("list").executes($$0x -> a((ew)$$0x.getSource())))
+                     .then(ex.a("available").executes($$0x -> b((ew)$$0x.getSource()))))
+                  .then(ex.a("enabled").executes($$0x -> c((ew)$$0x.getSource())))
+            )
       );
    }
 
-   static ul a(fo.g $$0, apz $$1) throws CommandSyntaxException {
-      vi $$2 = aqa.a($$0, $$1);
-      if ($$2 instanceof ul) {
-         return (ul)$$2;
+   private static int a(ew $$0, avd $$1, anr.a $$2) throws CommandSyntaxException {
+      avg $$3 = $$0.l().aF();
+      List<avd> $$4 = Lists.newArrayList($$3.g());
+      $$2.apply($$4, $$1);
+      $$0.a(() -> xv.a("commands.datapack.modify.enable", $$1.a(true)), true);
+      apg.a($$4.stream().map(avd::g).collect(Collectors.toList()), $$0);
+      return $$4.size();
+   }
+
+   private static int a(ew $$0, avd $$1) {
+      avg $$2 = $$0.l().aF();
+      List<avd> $$3 = Lists.newArrayList($$2.g());
+      $$3.remove($$1);
+      $$0.a(() -> xv.a("commands.datapack.modify.disable", $$1.a(true)), true);
+      apg.a($$3.stream().map(avd::g).collect(Collectors.toList()), $$0);
+      return $$3.size();
+   }
+
+   private static int a(ew $$0) {
+      return c($$0) + b($$0);
+   }
+
+   private static int b(ew $$0) {
+      avg $$1 = $$0.l().aF();
+      $$1.a();
+      Collection<avd> $$2 = $$1.g();
+      Collection<avd> $$3 = $$1.d();
+      cso $$4 = $$0.v();
+      List<avd> $$5 = $$3.stream().filter($$2x -> !$$2.contains($$2x) && $$2x.e().a($$4)).toList();
+      if ($$5.isEmpty()) {
+         $$0.a(() -> xv.c("commands.datapack.list.available.none"), false);
       } else {
-         throw c.create($$2.c().a());
+         $$0.a(() -> xv.a("commands.datapack.list.available.success", $$5.size(), xy.b($$5, $$0xx -> $$0xx.a(false))), false);
       }
+
+      return $$5.size();
    }
 
-   public static ew a(ew $$0) {
-      return $$0.a().b(2);
-   }
-
-   public static <T extends ey<T>> void a(Collection<ik<T>> $$0, @Nullable ul $$1, T $$2, T $$3, hx<T> $$4, anr.b<T> $$5, hr $$6) throws CommandSyntaxException {
-      if ($$6.c()) {
-         a($$0, $$1, $$2, $$3, $$4, $$5);
+   private static int c(ew $$0) {
+      avg $$1 = $$0.l().aF();
+      $$1.a();
+      Collection<? extends avd> $$2 = $$1.g();
+      if ($$2.isEmpty()) {
+         $$0.a(() -> xv.c("commands.datapack.list.enabled.none"), false);
       } else {
-         b($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
-
-   private static <T extends ey<T>> void a(@Nullable ul $$0, hx<T> $$1, CommandDispatcher<T> $$2, T $$3, ik<T> $$4, alj $$5, et $$6, boolean $$7) throws CommandSyntaxException {
-      try {
-         im<T> $$8 = $$4.a($$0, $$2);
-         $$1.a(new id<>($$8, $$6, $$7).bind($$3));
-      } catch (ez var9) {
-         throw a.create($$5, var9.a());
-      }
-   }
-
-   private static <T extends ey<T>> et a(T $$0, anr.b<T> $$1, alj $$2, et $$3) {
-      return $$0.y() ? $$3 : ($$4, $$5) -> {
-         $$1.a($$0, $$2, $$5);
-         $$3.onResult($$4, $$5);
-      };
-   }
-
-   private static <T extends ey<T>> void a(Collection<ik<T>> $$0, @Nullable ul $$1, T $$2, T $$3, hx<T> $$4, anr.b<T> $$5) throws CommandSyntaxException {
-      CommandDispatcher<T> $$6 = $$2.x();
-      T $$7 = $$3.a_();
-      et $$8 = et.chain($$2.p(), $$4.b().d());
-
-      for (ik<T> $$9 : $$0) {
-         alj $$10 = $$9.a();
-         et $$11 = a($$2, $$5, $$10, $$8);
-         a($$1, $$4, $$6, $$7, $$9, $$10, $$11, true);
+         $$0.a(() -> xv.a("commands.datapack.list.enabled.success", $$2.size(), xy.b($$2, $$0xx -> $$0xx.a(true))), false);
       }
 
-      $$4.a(ih.a());
+      return $$2.size();
    }
 
-   private static <T extends ey<T>> void b(Collection<ik<T>> $$0, @Nullable ul $$1, T $$2, T $$3, hx<T> $$4, anr.b<T> $$5) throws CommandSyntaxException {
-      CommandDispatcher<T> $$6 = $$2.x();
-      T $$7 = $$3.a_();
-      et $$8 = $$2.p();
-      if (!$$0.isEmpty()) {
-         if ($$0.size() == 1) {
-            ik<T> $$9 = $$0.iterator().next();
-            alj $$10 = $$9.a();
-            et $$11 = a($$2, $$5, $$10, $$8);
-            a($$1, $$4, $$6, $$7, $$9, $$10, $$11, false);
-         } else if ($$8 == et.a) {
-            for (ik<T> $$12 : $$0) {
-               alj $$13 = $$12.a();
-               et $$14 = a($$2, $$5, $$13, $$8);
-               a($$1, $$4, $$6, $$7, $$12, $$13, $$14, false);
-            }
+   private static avd a(CommandContext<ew> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
+      String $$3 = StringArgumentType.getString($$0, $$1);
+      avg $$4 = ((ew)$$0.getSource()).l().aF();
+      avd $$5 = $$4.c($$3);
+      if ($$5 == null) {
+         throw a.create($$3);
+      } else {
+         boolean $$6 = $$4.g().contains($$5);
+         if ($$2 && $$6) {
+            throw b.create($$3);
+         } else if (!$$2 && !$$6) {
+            throw c.create($$3);
          } else {
-            class a {
-               boolean a;
-               int b;
-
-               public void a(int $$0) {
-                  this.a = true;
-                  this.b += $$0;
-               }
-            }
-
-            a $$15 = new a();
-            et $$16 = ($$1x, $$2x) -> $$15.a($$2x);
-
-            for (ik<T> $$17 : $$0) {
-               alj $$18 = $$17.a();
-               et $$19 = a($$2, $$5, $$18, $$16);
-               a($$1, $$4, $$6, $$7, $$17, $$18, $$19, false);
-            }
-
-            $$4.a(($$2x, $$3x) -> {
-               if ($$15.a) {
-                  $$8.onSuccess($$15.b);
-               }
-            });
-         }
-      }
-   }
-
-   public interface b<T> {
-      void a(T var1, alj var2, int var3);
-   }
-
-   abstract static class c extends ht.b<ew> implements ht.a<ew> {
-      @Nullable
-      protected abstract ul a(CommandContext<ew> var1) throws CommandSyntaxException;
-
-      public void a(ew $$0, ContextChain<ew> $$1, hr $$2, hx<ew> $$3) throws CommandSyntaxException {
-         CommandContext<ew> $$4 = $$1.getTopContext().copyFor($$0);
-         Pair<alj, Collection<ik<ew>>> $$5 = he.c($$4, "name");
-         Collection<ik<ew>> $$6 = (Collection<ik<ew>>)$$5.getSecond();
-         if ($$6.isEmpty()) {
-            throw anr.d.create(xj.a((alj)$$5.getFirst()));
-         } else {
-            ul $$7 = this.a($$4);
-            ew $$8 = anr.a($$0);
-            if ($$6.size() == 1) {
-               $$0.a(() -> xj.a("commands.function.scheduled.single", xj.a($$6.iterator().next().a())), true);
+            cso $$7 = ((ew)$$0.getSource()).v();
+            cso $$8 = $$5.e();
+            if (!$$2 && !$$8.b() && $$5.l() == avh.d) {
+               throw d.create($$3);
+            } else if (!$$8.a($$7)) {
+               throw e.create($$3, csq.a($$7, $$8));
             } else {
-               $$0.a(() -> xj.a("commands.function.scheduled.multiple", xm.b($$6.stream().map(ik::a).toList(), xj::a)), true);
+               return $$5;
             }
-
-            anr.a($$6, $$7, $$0, $$8, $$3, anr.e, $$2);
          }
       }
+   }
+
+   interface a {
+      void apply(List<avd> var1, avd var2) throws CommandSyntaxException;
    }
 }

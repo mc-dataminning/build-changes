@@ -1,78 +1,102 @@
-public class cer extends cet {
-   public cer(bvj $$0, dfm $$1) {
-      super($$0, $$1);
+import java.util.EnumSet;
+import java.util.Iterator;
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class cer extends cez {
+   private static final cgs a = cgs.a().d().e();
+   private static final int b = 10;
+   private boolean c;
+   private int d;
+   private final Class<?>[] i;
+   @Nullable
+   private Class<?>[] j;
+
+   public cer(bwj $$0, Class<?>... $$1) {
+      super($$0, true);
+      this.i = $$1;
+      this.a(EnumSet.of(ccz.a.d));
    }
 
    @Override
-   protected esl a(int $$0) {
-      this.o = new esg();
-      this.o.a(true);
-      return new esl(this.o, $$0);
+   public boolean b() {
+      int $$0 = this.e.eq();
+      bwb $$1 = this.e.ep();
+      if ($$0 != this.d && $$1 != null) {
+         if ($$1.aq() == bvm.bS && a(this.e).N().b(dgw.O)) {
+            return false;
+         } else {
+            for (Class<?> $$2 : this.i) {
+               if ($$2.isAssignableFrom($$1.getClass())) {
+                  return false;
+               }
+            }
+
+            return this.a($$1, a);
+         }
+      } else {
+         return false;
+      }
+   }
+
+   public cer a(Class<?>... $$0) {
+      this.c = true;
+      this.j = $$0;
+      return this;
    }
 
    @Override
-   protected boolean a(ezy $$0, ezy $$1) {
-      return a(this.a, $$0, $$1, true);
-   }
-
-   @Override
-   protected boolean a() {
-      return this.q() && this.a.bn() || !this.a.bZ();
-   }
-
-   @Override
-   protected ezy b() {
-      return this.a.dt();
-   }
-
-   @Override
-   public esj a(bul $$0, int $$1) {
-      return this.a($$0.dv(), $$1);
-   }
-
-   @Override
-   public void c() {
-      this.e++;
-      if (this.m) {
-         this.j();
+   public void d() {
+      this.e.h(this.e.ep());
+      this.g = this.e.O_();
+      this.d = this.e.eq();
+      this.h = 300;
+      if (this.c) {
+         this.h();
       }
 
-      if (!this.m()) {
-         if (this.a()) {
-            this.l();
-         } else if (this.c != null && !this.c.c()) {
-            ezy $$0 = this.c.a(this.a);
-            if (this.a.dz() == azm.a($$0.d) && this.a.dB() == azm.a($$0.e) && this.a.dF() == azm.a($$0.f)) {
-               this.c.a();
+      super.d();
+   }
+
+   protected void h() {
+      double $$0 = this.l();
+      fbn $$1 = fbn.a(this.e.dt()).c($$0, 10.0, $$0);
+      List<? extends bwd> $$2 = this.e.dV().a((Class<? extends bwd>)this.e.getClass(), $$1, bvk.f);
+      Iterator var5 = $$2.iterator();
+
+      while (true) {
+         bwd $$3;
+         while (true) {
+            if (!var5.hasNext()) {
+               return;
+            }
+
+            $$3 = (bwd)var5.next();
+            if (this.e != $$3 && $$3.O_() == null && (!(this.e instanceof bwy) || ((bwy)this.e).ah_() == ((bwy)$$3).ah_()) && !$$3.s(this.e.ep())) {
+               if (this.j == null) {
+                  break;
+               }
+
+               boolean $$4 = false;
+
+               for (Class<?> $$5 : this.j) {
+                  if ($$3.getClass() == $$5) {
+                     $$4 = true;
+                     break;
+                  }
+               }
+
+               if (!$$4) {
+                  break;
+               }
             }
          }
 
-         agt.a(this.b, this.a, this.c, this.l);
-         if (!this.m()) {
-            ezy $$1 = this.c.a(this.a);
-            this.a.I().a($$1.d, $$1.e, $$1.f, this.d);
-         }
+         this.a($$3, this.e.ep());
       }
    }
 
-   public void b(boolean $$0) {
-      this.o.b($$0);
-   }
-
-   public boolean d() {
-      return this.o.d();
-   }
-
-   public void c(boolean $$0) {
-      this.o.a($$0);
-   }
-
-   public boolean e() {
-      return this.o.d();
-   }
-
-   @Override
-   public boolean a(jh $$0) {
-      return this.b.a_($$0).a(this.b, $$0, this.a);
+   protected void a(bwd $$0, bwb $$1) {
+      $$0.h($$1);
    }
 }

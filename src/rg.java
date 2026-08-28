@@ -1,29 +1,31 @@
 import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 
 public class rg {
-   public static final ali<ens> a = a("empty");
+   public static final aly<epm> a = rr.a("bastion/starts");
 
-   public static ali<ens> a(String $$0) {
-      return ali.a(ma.aV, alj.b($$0));
-   }
-
-   public static ali<ens> b(String $$0) {
-      return ali.a(ma.aV, alj.a($$0));
-   }
-
-   public static void a(qz<ens> $$0, String $$1, ens $$2) {
-      $$0.a(a($$1), $$2);
-   }
-
-   public static void a(qz<ens> $$0) {
-      jr<ens> $$1 = $$0.a(ma.aV);
-      jq<ens> $$2 = $$1.b(a);
-      $$0.a(a, new ens($$2, ImmutableList.of(), ens.a.b));
-      qv.a($$0);
+   public static void a(rk<epm> $$0) {
+      jr<esc> $$1 = $$0.a(mb.aU);
+      jq<esc> $$2 = $$1.b(rs.w);
+      jr<epm> $$3 = $$0.a(mb.aW);
+      jq<epm> $$4 = $$3.b(rr.a);
+      $$0.a(
+         a,
+         new epm(
+            $$4,
+            ImmutableList.of(
+               Pair.of(epk.b("bastion/units/air_base", $$2), 1),
+               Pair.of(epk.b("bastion/hoglin_stable/air_base", $$2), 1),
+               Pair.of(epk.b("bastion/treasure/big_air_full", $$2), 1),
+               Pair.of(epk.b("bastion/bridge/starting_pieces/entrance_base", $$2), 1)
+            ),
+            epm.a.b
+         )
+      );
+      rf.a($$0);
       re.a($$0);
-      rr.a($$0);
-      qq.a($$0);
-      rp.a($$0);
-      rq.a($$0);
+      ri.a($$0);
+      rd.a($$0);
+      rh.a($$0);
    }
 }

@@ -1,55 +1,99 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dpi extends dic {
-   public static final MapCodec<dpi> a = b(dpi::new);
-   public static final dwm b = dwl.E;
-   private final brp c = brm.a(5);
+public class dpi extends dko implements dkh {
+   public static final MapCodec<dpi> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(aly.a(mb.aK).fieldOf("feature").forGetter($$0x -> $$0x.d), t()).apply($$0, dpi::new)
+   );
+   protected static final float b = 3.0F;
+   protected static final fcm c = dke.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
+   private final aly<ega<?, ?>> d;
 
    @Override
    public MapCodec<dpi> a() {
       return a;
    }
 
-   public dpi(dvu.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, Boolean.valueOf(false)));
+   public dpi(aly<ega<?, ?>> $$0, dxm.d $$1) {
+      super($$1);
+      this.d = $$0;
    }
 
    @Override
-   protected void a(dvw.a<diq, dvv> $$0) {
-      $$0.a(b);
+   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
+      return c;
    }
 
    @Override
-   protected void a(dvv $$0, arp $$1, jh $$2, azu $$3) {
-      if ($$0.c(b)) {
-         $$1.a($$2, $$0.b(b, Boolean.valueOf(false)), 3);
+   protected void b(dxn $$0, ash $$1, jh $$2, bam $$3) {
+      if ($$3.a(25) == 0) {
+         int $$4 = 5;
+         int $$5 = 4;
+
+         for (jh $$6 : jh.c($$2.b(-4, -1, -4), $$2.b(4, 1, 4))) {
+            if ($$1.a_($$6).a(this)) {
+               if (--$$4 <= 0) {
+                  return;
+               }
+            }
+         }
+
+         jh $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
+
+         for (int $$8 = 0; $$8 < 4; $$8++) {
+            if ($$1.u($$7) && $$0.a($$1, $$7)) {
+               $$2 = $$7;
+            }
+
+            $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
+         }
+
+         if ($$1.u($$7) && $$0.a($$1, $$7)) {
+            $$1.a($$7, $$0, 2);
+         }
       }
    }
 
-   @Nullable
    @Override
-   public dsy a(jh $$0, dvv $$1) {
-      return new dug($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dsy> dsz<T> a(dfm $$0, dvv $$1, dta<T> $$2) {
-      return $$0.C ? null : a($$2, dta.K, dug::a);
+   protected boolean b(dxn $$0, dgf $$1, jh $$2) {
+      return $$0.s();
    }
 
    @Override
-   protected dow a_(dvv $$0) {
-      return dow.c;
+   protected boolean a(dxn $$0, dhd $$1, jh $$2) {
+      jh $$3 = $$2.e();
+      dxn $$4 = $$1.a_($$3);
+      return $$4.a(axu.bc) ? true : $$1.b($$2, 0) < 13 && this.b($$4, $$1, $$3);
    }
 
-   @Override
-   protected void a(dvv $$0, arp $$1, jh $$2, cwm $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, this.c);
+   public boolean a(ash $$0, jh $$1, dxn $$2, bam $$3) {
+      Optional<? extends jq<ega<?, ?>>> $$4 = $$0.K_().e(mb.aK).a(this.d);
+      if ($$4.isEmpty()) {
+         return false;
+      } else {
+         $$0.a($$1, false);
+         if ($$4.get().a().a($$0, $$0.m().g(), $$3, $$1)) {
+            return true;
+         } else {
+            $$0.a($$1, $$2, 3);
+            return false;
+         }
       }
+   }
+
+   @Override
+   public boolean b(dhd $$0, jh $$1, dxn $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(dha $$0, bam $$1, jh $$2, dxn $$3) {
+      return (double)$$1.i() < 0.4;
+   }
+
+   @Override
+   public void a(ash $$0, bam $$1, jh $$2, dxn $$3) {
+      this.a($$0, $$2, $$3, $$1);
    }
 }

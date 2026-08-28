@@ -13,223 +13,223 @@ public interface kn {
    kn.a f = a("powder_snow");
 
    static kn.a a(String $$0) {
-      Object2ObjectOpenHashMap<cwi, kn> $$1 = new Object2ObjectOpenHashMap();
-      $$1.defaultReturnValue((kn)($$0x, $$1x, $$2x, $$3, $$4, $$5) -> bsk.f);
+      Object2ObjectOpenHashMap<cxg, kn> $$1 = new Object2ObjectOpenHashMap();
+      $$1.defaultReturnValue((kn)($$0x, $$1x, $$2x, $$3, $$4, $$5) -> bte.f);
       kn.a $$2 = new kn.a($$0, $$1);
       a.put($$0, $$2);
       return $$2;
    }
 
-   bsk interact(dvv var1, dfm var2, jh var3, cou var4, bsj var5, cwm var6);
+   bte interact(dxn var1, dha var2, jh var3, cps var4, btd var5, cxk var6);
 
    static void a() {
-      Map<cwi, kn> $$0 = c.b();
+      Map<cxg, kn> $$0 = c.b();
       a($$0);
-      $$0.put(cwq.sC, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> {
-         cyl $$6 = $$5.a(ku.Q);
-         if ($$6 != null && $$6.a(cym.a)) {
+      $$0.put(cxo.sZ, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> {
+         czj $$6 = $$5.a(ku.Q);
+         if ($$6 != null && $$6.a(czk.a)) {
             if (!$$1x.C) {
-               cwi $$7 = $$5.h();
-               $$3x.a($$4, cwp.a($$5, $$3x, new cwm(cwq.sB)));
-               $$3x.a(awx.W);
-               $$3x.b(awx.c.b($$7));
-               $$1x.b($$2x, dis.fu.m());
-               $$1x.a(null, $$2x, awn.cB, awo.e, 1.0F, 1.0F);
-               $$1x.a(null, ear.z, $$2x);
+               cxg $$7 = $$5.h();
+               $$3x.a($$4, cxn.a($$5, $$3x, new cxk(cxo.sY)));
+               $$3x.a(axp.W);
+               $$3x.b(axp.c.b($$7));
+               $$1x.b($$2x, dkg.fI.m());
+               $$1x.a(null, $$2x, axf.cB, axg.e, 1.0F, 1.0F);
+               $$1x.a(null, ecj.z, $$2x);
             }
 
-            return bsk.a;
+            return bte.a;
          } else {
-            return bsk.f;
+            return bte.f;
          }
       });
-      Map<cwi, kn> $$1 = d.b();
+      Map<cxg, kn> $$1 = d.b();
       a($$1);
-      $$1.put(cwq.qz, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> a($$0x, $$1x, $$2x, $$3x, $$4, $$5, new cwm(cwq.qA), $$0xx -> $$0xx.c(dmy.g) == 3, awn.di));
-      $$1.put(cwq.sB, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> {
+      $$1.put(cxo.qW, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> a($$0x, $$1x, $$2x, $$3x, $$4, $$5, new cxk(cxo.qX), $$0xx -> $$0xx.c(dop.g) == 3, axf.di));
+      $$1.put(cxo.sY, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> {
          if (!$$1x.C) {
-            cwi $$6 = $$5.h();
-            $$3x.a($$4, cwp.a($$5, $$3x, cyl.a(cwq.sC, cym.a)));
-            $$3x.a(awx.W);
-            $$3x.b(awx.c.b($$6));
-            dmy.e($$0x, $$1x, $$2x);
-            $$1x.a(null, $$2x, awn.cC, awo.e, 1.0F, 1.0F);
-            $$1x.a(null, ear.y, $$2x);
+            cxg $$6 = $$5.h();
+            $$3x.a($$4, cxn.a($$5, $$3x, czj.a(cxo.sZ, czk.a)));
+            $$3x.a(axp.W);
+            $$3x.b(axp.c.b($$6));
+            dop.e($$0x, $$1x, $$2x);
+            $$1x.a(null, $$2x, axf.cC, axg.e, 1.0F, 1.0F);
+            $$1x.a(null, ecj.y, $$2x);
          }
 
-         return bsk.a;
+         return bte.a;
       });
-      $$1.put(cwq.sC, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> {
-         if ($$0x.c(dmy.g) == 3) {
-            return bsk.f;
+      $$1.put(cxo.sZ, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> {
+         if ($$0x.c(dop.g) == 3) {
+            return bte.f;
          } else {
-            cyl $$6 = $$5.a(ku.Q);
-            if ($$6 != null && $$6.a(cym.a)) {
+            czj $$6 = $$5.a(ku.Q);
+            if ($$6 != null && $$6.a(czk.a)) {
                if (!$$1x.C) {
-                  $$3x.a($$4, cwp.a($$5, $$3x, new cwm(cwq.sB)));
-                  $$3x.a(awx.W);
-                  $$3x.b(awx.c.b($$5.h()));
-                  $$1x.b($$2x, $$0x.a(dmy.g));
-                  $$1x.a(null, $$2x, awn.cB, awo.e, 1.0F, 1.0F);
-                  $$1x.a(null, ear.z, $$2x);
+                  $$3x.a($$4, cxn.a($$5, $$3x, new cxk(cxo.sY)));
+                  $$3x.a(axp.W);
+                  $$3x.b(axp.c.b($$5.h()));
+                  $$1x.b($$2x, $$0x.a(dop.g));
+                  $$1x.a(null, $$2x, axf.cB, axg.e, 1.0F, 1.0F);
+                  $$1x.a(null, ecj.z, $$2x);
                }
 
-               return bsk.a;
+               return bte.a;
             } else {
-               return bsk.f;
+               return bte.f;
             }
          }
       });
-      $$1.put(cwq.pC, kn::f);
-      $$1.put(cwq.pB, kn::f);
-      $$1.put(cwq.pA, kn::f);
-      $$1.put(cwq.pz, kn::f);
-      $$1.put(cwq.vb, kn::f);
-      $$1.put(cwq.os, kn::f);
-      $$1.put(cwq.vh, kn::e);
-      $$1.put(cwq.vo, kn::e);
-      $$1.put(cwq.vw, kn::e);
-      $$1.put(cwq.vs, kn::e);
-      $$1.put(cwq.vt, kn::e);
-      $$1.put(cwq.vq, kn::e);
-      $$1.put(cwq.vu, kn::e);
-      $$1.put(cwq.vk, kn::e);
-      $$1.put(cwq.vp, kn::e);
-      $$1.put(cwq.vm, kn::e);
-      $$1.put(cwq.vj, kn::e);
-      $$1.put(cwq.vi, kn::e);
-      $$1.put(cwq.vn, kn::e);
-      $$1.put(cwq.vr, kn::e);
-      $$1.put(cwq.vv, kn::e);
-      $$1.put(cwq.vl, kn::e);
-      $$1.put(cwq.jd, kn::d);
-      $$1.put(cwq.jk, kn::d);
-      $$1.put(cwq.js, kn::d);
-      $$1.put(cwq.jo, kn::d);
-      $$1.put(cwq.jp, kn::d);
-      $$1.put(cwq.jm, kn::d);
-      $$1.put(cwq.jq, kn::d);
-      $$1.put(cwq.jg, kn::d);
-      $$1.put(cwq.jl, kn::d);
-      $$1.put(cwq.ji, kn::d);
-      $$1.put(cwq.jf, kn::d);
-      $$1.put(cwq.je, kn::d);
-      $$1.put(cwq.jj, kn::d);
-      $$1.put(cwq.jn, kn::d);
-      $$1.put(cwq.jr, kn::d);
-      $$1.put(cwq.jh, kn::d);
-      Map<cwi, kn> $$2 = e.b();
-      $$2.put(cwq.qz, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> a($$0x, $$1x, $$2x, $$3x, $$4, $$5, new cwm(cwq.qB), $$0xx -> true, awn.dl));
+      $$1.put(cxo.pX, kn::f);
+      $$1.put(cxo.pW, kn::f);
+      $$1.put(cxo.pV, kn::f);
+      $$1.put(cxo.pU, kn::f);
+      $$1.put(cxo.vz, kn::f);
+      $$1.put(cxo.oN, kn::f);
+      $$1.put(cxo.vF, kn::e);
+      $$1.put(cxo.vM, kn::e);
+      $$1.put(cxo.vU, kn::e);
+      $$1.put(cxo.vQ, kn::e);
+      $$1.put(cxo.vR, kn::e);
+      $$1.put(cxo.vO, kn::e);
+      $$1.put(cxo.vS, kn::e);
+      $$1.put(cxo.vI, kn::e);
+      $$1.put(cxo.vN, kn::e);
+      $$1.put(cxo.vK, kn::e);
+      $$1.put(cxo.vH, kn::e);
+      $$1.put(cxo.vG, kn::e);
+      $$1.put(cxo.vL, kn::e);
+      $$1.put(cxo.vP, kn::e);
+      $$1.put(cxo.vT, kn::e);
+      $$1.put(cxo.vJ, kn::e);
+      $$1.put(cxo.jr, kn::d);
+      $$1.put(cxo.jy, kn::d);
+      $$1.put(cxo.jG, kn::d);
+      $$1.put(cxo.jC, kn::d);
+      $$1.put(cxo.jD, kn::d);
+      $$1.put(cxo.jA, kn::d);
+      $$1.put(cxo.jE, kn::d);
+      $$1.put(cxo.ju, kn::d);
+      $$1.put(cxo.jz, kn::d);
+      $$1.put(cxo.jw, kn::d);
+      $$1.put(cxo.jt, kn::d);
+      $$1.put(cxo.js, kn::d);
+      $$1.put(cxo.jx, kn::d);
+      $$1.put(cxo.jB, kn::d);
+      $$1.put(cxo.jF, kn::d);
+      $$1.put(cxo.jv, kn::d);
+      Map<cxg, kn> $$2 = e.b();
+      $$2.put(cxo.qW, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> a($$0x, $$1x, $$2x, $$3x, $$4, $$5, new cxk(cxo.qY), $$0xx -> true, axf.dl));
       a($$2);
-      Map<cwi, kn> $$3 = f.b();
-      $$3.put(cwq.qz, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> a($$0x, $$1x, $$2x, $$3x, $$4, $$5, new cwm(cwq.qC), $$0xx -> $$0xx.c(dmy.g) == 3, awn.dm));
+      Map<cxg, kn> $$3 = f.b();
+      $$3.put(cxo.qW, ($$0x, $$1x, $$2x, $$3x, $$4, $$5) -> a($$0x, $$1x, $$2x, $$3x, $$4, $$5, new cxk(cxo.qZ), $$0xx -> $$0xx.c(dop.g) == 3, axf.dm));
       a($$3);
    }
 
-   static void a(Map<cwi, kn> $$0) {
-      $$0.put(cwq.qB, kn::b);
-      $$0.put(cwq.qA, kn::a);
-      $$0.put(cwq.qC, kn::c);
+   static void a(Map<cxg, kn> $$0) {
+      $$0.put(cxo.qY, kn::b);
+      $$0.put(cxo.qX, kn::a);
+      $$0.put(cxo.qZ, kn::c);
    }
 
-   static bsk a(dvv $$0, dfm $$1, jh $$2, cou $$3, bsj $$4, cwm $$5, cwm $$6, Predicate<dvv> $$7, awm $$8) {
+   static bte a(dxn $$0, dha $$1, jh $$2, cps $$3, btd $$4, cxk $$5, cxk $$6, Predicate<dxn> $$7, axe $$8) {
       if (!$$7.test($$0)) {
-         return bsk.f;
+         return bte.f;
       } else {
          if (!$$1.C) {
-            cwi $$9 = $$5.h();
-            $$3.a($$4, cwp.a($$5, $$3, $$6));
-            $$3.a(awx.W);
-            $$3.b(awx.c.b($$9));
-            $$1.b($$2, dis.ft.m());
-            $$1.a(null, $$2, $$8, awo.e, 1.0F, 1.0F);
-            $$1.a(null, ear.y, $$2);
+            cxg $$9 = $$5.h();
+            $$3.a($$4, cxn.a($$5, $$3, $$6));
+            $$3.a(axp.W);
+            $$3.b(axp.c.b($$9));
+            $$1.b($$2, dkg.fH.m());
+            $$1.a(null, $$2, $$8, axg.e, 1.0F, 1.0F);
+            $$1.a(null, ecj.y, $$2);
          }
 
-         return bsk.a;
+         return bte.a;
       }
    }
 
-   static bsk a(dfm $$0, jh $$1, cou $$2, bsj $$3, cwm $$4, dvv $$5, awm $$6) {
+   static bte a(dha $$0, jh $$1, cps $$2, btd $$3, cxk $$4, dxn $$5, axe $$6) {
       if (!$$0.C) {
-         cwi $$7 = $$4.h();
-         $$2.a($$3, cwp.a($$4, $$2, new cwm(cwq.qz)));
-         $$2.a(awx.V);
-         $$2.b(awx.c.b($$7));
+         cxg $$7 = $$4.h();
+         $$2.a($$3, cxn.a($$4, $$2, new cxk(cxo.qW)));
+         $$2.a(axp.V);
+         $$2.b(axp.c.b($$7));
          $$0.b($$1, $$5);
-         $$0.a(null, $$1, $$6, awo.e, 1.0F, 1.0F);
-         $$0.a(null, ear.z, $$1);
+         $$0.a(null, $$1, $$6, axg.e, 1.0F, 1.0F);
+         $$0.a(null, ecj.z, $$1);
       }
 
-      return bsk.a;
+      return bte.a;
    }
 
-   private static bsk a(dvv $$0, dfm $$1, jh $$2, cou $$3, bsj $$4, cwm $$5) {
-      return a($$1, $$2, $$3, $$4, $$5, dis.fu.m().b(dmy.g, Integer.valueOf(3)), awn.dc);
+   private static bte a(dxn $$0, dha $$1, jh $$2, cps $$3, btd $$4, cxk $$5) {
+      return a($$1, $$2, $$3, $$4, $$5, dkg.fI.m().b(dop.g, Integer.valueOf(3)), axf.dc);
    }
 
-   private static bsk b(dvv $$0, dfm $$1, jh $$2, cou $$3, bsj $$4, cwm $$5) {
-      return (bsk)(a($$1, $$2) ? bsk.c : a($$1, $$2, $$3, $$4, $$5, dis.fv.m(), awn.df));
+   private static bte b(dxn $$0, dha $$1, jh $$2, cps $$3, btd $$4, cxk $$5) {
+      return (bte)(a($$1, $$2) ? bte.c : a($$1, $$2, $$3, $$4, $$5, dkg.fJ.m(), axf.df));
    }
 
-   private static bsk c(dvv $$0, dfm $$1, jh $$2, cou $$3, bsj $$4, cwm $$5) {
-      return (bsk)(a($$1, $$2) ? bsk.c : a($$1, $$2, $$3, $$4, $$5, dis.fw.m().b(dmy.g, Integer.valueOf(3)), awn.dg));
+   private static bte c(dxn $$0, dha $$1, jh $$2, cps $$3, btd $$4, cxk $$5) {
+      return (bte)(a($$1, $$2) ? bte.c : a($$1, $$2, $$3, $$4, $$5, dkg.fK.m().b(dop.g, Integer.valueOf(3)), axf.dg));
    }
 
-   private static bsk d(dvv $$0, dfm $$1, jh $$2, cou $$3, bsj $$4, cwm $$5) {
-      diq $$6 = diq.a($$5.h());
-      if (!($$6 instanceof dpp)) {
-         return bsk.f;
+   private static bte d(dxn $$0, dha $$1, jh $$2, cps $$3, btd $$4, cxk $$5) {
+      dke $$6 = dke.a($$5.h());
+      if (!($$6 instanceof drg)) {
+         return bte.f;
       } else {
          if (!$$1.C) {
-            cwm $$7 = $$5.a(dis.kP, 1);
-            $$3.a($$4, cwp.a($$5, $$3, $$7, false));
-            $$3.a(awx.Z);
-            dmy.e($$0, $$1, $$2);
+            cxk $$7 = $$5.a(dkg.lk, 1);
+            $$3.a($$4, cxn.a($$5, $$3, $$7, false));
+            $$3.a(axp.Z);
+            dop.e($$0, $$1, $$2);
          }
 
-         return bsk.a;
+         return bte.a;
       }
    }
 
-   private static bsk e(dvv $$0, dfm $$1, jh $$2, cou $$3, bsj $$4, cwm $$5) {
-      dsp $$6 = $$5.a(ku.ai, dsp.a);
+   private static bte e(dxn $$0, dha $$1, jh $$2, cps $$3, btd $$4, cxk $$5) {
+      dug $$6 = $$5.a(ku.ai, dug.a);
       if ($$6.b().isEmpty()) {
-         return bsk.f;
+         return bte.f;
       } else {
          if (!$$1.C) {
-            cwm $$7 = $$5.c(1);
+            cxk $$7 = $$5.c(1);
             $$7.b(ku.ai, $$6.a());
-            $$3.a($$4, cwp.a($$5, $$3, $$7, false));
-            $$3.a(awx.Y);
-            dmy.e($$0, $$1, $$2);
+            $$3.a($$4, cxn.a($$5, $$3, $$7, false));
+            $$3.a(axp.Y);
+            dop.e($$0, $$1, $$2);
          }
 
-         return bsk.a;
+         return bte.a;
       }
    }
 
-   private static bsk f(dvv $$0, dfm $$1, jh $$2, cou $$3, bsj $$4, cwm $$5) {
-      if (!$$5.a(axl.bQ)) {
-         return bsk.f;
+   private static bte f(dxn $$0, dha $$1, jh $$2, cps $$3, btd $$4, cxk $$5) {
+      if (!$$5.a(ayd.bR)) {
+         return bte.f;
       } else if (!$$5.b(ku.J)) {
-         return bsk.f;
+         return bte.f;
       } else {
          if (!$$1.C) {
             $$5.c(ku.J);
-            $$3.a(awx.X);
-            dmy.e($$0, $$1, $$2);
+            $$3.a(axp.X);
+            dop.e($$0, $$1, $$2);
          }
 
-         return bsk.a;
+         return bte.a;
       }
    }
 
-   private static boolean a(dfm $$0, jh $$1) {
-      erv $$2 = $$0.b_($$1.d());
-      return $$2.a(axi.a);
+   private static boolean a(dha $$0, jh $$1) {
+      etp $$2 = $$0.b_($$1.d());
+      return $$2.a(aya.a);
    }
 
-   public static record a(String a, Map<cwi, kn> b) {
+   public static record a(String a, Map<cxg, kn> b) {
    }
 }

@@ -1,149 +1,41 @@
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
+import com.mojang.brigadier.Message;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
 
-public class uj extends vb {
-   private static final int w = 9;
-   public static final vk<uj> a = new vk.a<uj>() {
-      public uj a(DataInput $$0, uu $$1) throws IOException {
-         return uj.a(d($$0, $$1));
+public class uj implements ArgumentType<String> {
+   private static final Collection<String> a = Arrays.asList("techtests", "mobtests");
+
+   public String a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.readUnquotedString();
+      if (tu.b($$1)) {
+         return $$1;
+      } else {
+         Message $$2 = xv.b("No such test class: " + $$1);
+         throw new CommandSyntaxException(new SimpleCommandExceptionType($$2), $$2);
       }
-
-      @Override
-      public vf.b a(DataInput $$0, vf $$1, uu $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
-      }
-
-      private static byte d(DataInput $$0, uu $$1) throws IOException {
-         $$1.b(9L);
-         return $$0.readByte();
-      }
-
-      @Override
-      public int c() {
-         return 1;
-      }
-
-      @Override
-      public String a() {
-         return "BYTE";
-      }
-
-      @Override
-      public String b() {
-         return "TAG_Byte";
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-   };
-   public static final uj b = a((byte)0);
-   public static final uj c = a((byte)1);
-   private final byte x;
-
-   uj(byte $$0) {
-      this.x = $$0;
    }
 
-   public static uj a(byte $$0) {
-      return uj.a.a[128 + $$0];
+   public static uj a() {
+      return new uj();
    }
 
-   public static uj a(boolean $$0) {
-      return $$0 ? c : b;
+   public static String a(CommandContext<ew> $$0, String $$1) {
+      return (String)$$0.getArgument($$1, String.class);
    }
 
-   @Override
-   public void a(DataOutput $$0) throws IOException {
-      $$0.writeByte(this.x);
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return fb.b(tu.b().stream(), $$1);
    }
 
-   @Override
-   public int a() {
-      return 9;
-   }
-
-   @Override
-   public byte b() {
-      return 1;
-   }
-
-   @Override
-   public vk<uj> c() {
+   public Collection<String> getExamples() {
       return a;
-   }
-
-   public uj e() {
-      return this;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof uj && this.x == ((uj)$$0).x;
-   }
-
-   @Override
-   public int hashCode() {
-      return this.x;
-   }
-
-   @Override
-   public void a(vm $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public long f() {
-      return (long)this.x;
-   }
-
-   @Override
-   public int g() {
-      return this.x;
-   }
-
-   @Override
-   public short h() {
-      return (short)this.x;
-   }
-
-   @Override
-   public byte i() {
-      return this.x;
-   }
-
-   @Override
-   public double j() {
-      return (double)this.x;
-   }
-
-   @Override
-   public float k() {
-      return (float)this.x;
-   }
-
-   @Override
-   public Number l() {
-      return this.x;
-   }
-
-   @Override
-   public vf.b a(vf $$0) {
-      return $$0.a(this.x);
-   }
-
-   static class a {
-      static final uj[] a = new uj[256];
-
-      private a() {
-      }
-
-      static {
-         for (int $$0 = 0; $$0 < a.length; $$0++) {
-            a[$$0] = new uj((byte)($$0 - 128));
-         }
-      }
    }
 }

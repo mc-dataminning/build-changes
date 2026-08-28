@@ -1,39 +1,24 @@
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Consumer;
+import io.netty.buffer.ByteBuf;
+import java.nio.charset.StandardCharsets;
 
-public class atb implements asg {
-   public static final asg.a a = new asg.a("synchronize_registries");
-   private final List<auj> b;
-   private final jx<als> c;
+public class atb {
+   public static final int a = 250;
+   public static final String b = "MC|PingHost";
+   public static final int c = 254;
+   public static final int d = 1;
+   public static final int e = 255;
+   public static final int f = 127;
 
-   public atb(List<auj> $$0, jx<als> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public static void a(ByteBuf $$0, String $$1) {
+      $$0.writeShort($$1.length());
+      $$0.writeCharSequence($$1, StandardCharsets.UTF_16BE);
    }
 
-   @Override
-   public void a(Consumer<zq<?>> $$0) {
-      $$0.accept(new abr(this.b));
-   }
-
-   private void a(Consumer<zq<?>> $$0, Set<auj> $$1) {
-      DynamicOps<vi> $$2 = this.c.a().a(uz.a);
-      kh.a($$2, this.c.c(als.b), $$1, ($$1x, $$2x) -> $$0.accept(new abp($$1x, $$2x)));
-      $$0.accept(new aah(axu.a(this.c)));
-   }
-
-   public void a(List<auj> $$0, Consumer<zq<?>> $$1) {
-      if ($$0.equals(this.b)) {
-         this.a($$1, Set.copyOf(this.b));
-      } else {
-         this.a($$1, Set.of());
-      }
-   }
-
-   @Override
-   public asg.a a() {
-      return a;
+   public static String a(ByteBuf $$0) {
+      int $$1 = $$0.readShort();
+      int $$2 = $$1 * 2;
+      String $$3 = $$0.toString($$0.readerIndex(), $$2, StandardCharsets.UTF_16BE);
+      $$0.skipBytes($$2);
+      return $$3;
    }
 }

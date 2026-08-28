@@ -1,76 +1,83 @@
-public abstract class cpv extends cpn {
-   private static final float a = 12.25F;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.security.PublicKey;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Arrays;
+import java.util.UUID;
 
-   protected cpv(bus<? extends cpv> $$0, dfm $$1) {
-      super($$0, $$1);
-   }
+public record cpv(cpv.a d) {
+   public static final xv a = xv.c("multiplayer.disconnect.expired_public_key");
+   private static final xv e = xv.c("multiplayer.disconnect.invalid_public_key_signature");
+   public static final Duration b = Duration.ofHours(8L);
+   public static final Codec<cpv> c = cpv.a.a.xmap(cpv::new, cpv::b);
 
-   protected cpv(bus<? extends cpv> $$0, double $$1, double $$2, double $$3, dfm $$4) {
-      this($$0, $$4);
-      this.a_($$1, $$2, $$3);
-   }
-
-   @Override
-   public boolean a(double $$0) {
-      if (this.af < 2 && $$0 < 12.25) {
-         return false;
+   public static cpv a(bar $$0, UUID $$1, cpv.a $$2) throws cpv.b {
+      if (!$$2.a($$0, $$1)) {
+         throw new cpv.b(e);
       } else {
-         double $$1 = this.cR().a() * 4.0;
-         if (Double.isNaN($$1)) {
-            $$1 = 4.0;
-         }
-
-         $$1 *= 64.0;
-         return $$0 < $$1 * $$1;
+         return new cpv($$2);
       }
    }
 
-   @Override
-   public boolean o(boolean $$0) {
-      return true;
+   public bar a() {
+      return bar.a(this.d.c, "SHA256withRSA");
    }
 
-   @Override
-   public void h() {
-      ezw $$0 = cpp.a(this, this::b);
-      this.bf();
-      this.l();
-      ezy $$1;
-      if ($$0.d() != ezw.a.a) {
-         $$1 = $$0.g();
-      } else {
-         $$1 = this.dt().e(this.dy());
+   public cpv.a b() {
+      return this.d;
+   }
+
+   public static record a(Instant b, PublicKey c, byte[] d) {
+      private static final int e = 4096;
+      public static final Codec<cpv.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  azn.q.fieldOf("expires_at").forGetter(cpv.a::b), azc.f.fieldOf("key").forGetter(cpv.a::c), azn.r.fieldOf("signature_v2").forGetter(cpv.a::d)
+               )
+               .apply($$0, cpv.a::new)
+      );
+
+      public a(ws $$0) {
+         this($$0.t(), $$0.u(), $$0.a(4096));
       }
 
-      this.b($$1);
-      this.C();
-      this.aK();
-      super.h();
-      if ($$0.d() != ezw.a.a && this.bL()) {
-         this.b($$0);
+      public void a(ws $$0) {
+         $$0.a(this.b);
+         $$0.a(this.c);
+         $$0.a(this.d);
+      }
+
+      boolean a(bar $$0, UUID $$1) {
+         return $$0.a(this.a($$1), this.d);
+      }
+
+      private byte[] a(UUID $$0) {
+         byte[] $$1 = this.c.getEncoded();
+         byte[] $$2 = new byte[24 + $$1.length];
+         ByteBuffer $$3 = ByteBuffer.wrap($$2).order(ByteOrder.BIG_ENDIAN);
+         $$3.putLong($$0.getMostSignificantBits()).putLong($$0.getLeastSignificantBits()).putLong(this.b.toEpochMilli()).put($$1);
+         return $$2;
+      }
+
+      public boolean a() {
+         return this.b.isBefore(Instant.now());
+      }
+
+      public boolean a(Duration $$0) {
+         return this.b.plus($$0).isBefore(Instant.now());
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         return !($$0 instanceof cpv.a $$1) ? false : this.b.equals($$1.b) && this.c.equals($$1.c) && Arrays.equals(this.d, $$1.d);
       }
    }
 
-   private void l() {
-      ezy $$0 = this.dy();
-      ezy $$1 = this.dt();
-      float $$4;
-      if (this.bj()) {
-         for (int $$2 = 0; $$2 < 4; $$2++) {
-            float $$3 = 0.25F;
-            this.dV().a(ls.d, $$1.d - $$0.d * 0.25, $$1.e - $$0.e * 0.25, $$1.f - $$0.f * 0.25, $$0.d, $$0.e, $$0.f);
-         }
-
-         $$4 = 0.8F;
-      } else {
-         $$4 = 0.99F;
+   public static class b extends yv {
+      public b(xv $$0) {
+         super($$0);
       }
-
-      this.h($$0.c((double)$$4));
-   }
-
-   @Override
-   protected double bd() {
-      return 0.03;
    }
 }

@@ -13,5 +13,5 @@ public abstract class lr<T extends lq> {
 
    public abstract MapCodec<T> c();
 
-   public abstract zh<? super wu, T> d();
+   public abstract zt<? super xg, T> d();
 }

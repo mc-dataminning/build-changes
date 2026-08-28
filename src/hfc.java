@@ -1,4 +1,5 @@
-public class hfc implements hfj {
-   public hfc(hfi $$0) {
-   }
+public interface hfc extends hfb {
+   boolean m();
+
+   void q();
 }

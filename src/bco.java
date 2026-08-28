@@ -1,26 +1,33 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
 
-public class bco extends DataFix {
+public class bco extends bhn {
    public bco(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+      super($$0, $$1, "BlockEntityBlockStateFix", bis.s, "minecraft:piston");
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.get("Name").asString().result();
-      if ($$1.equals(Optional.of("minecraft:cauldron"))) {
-         Dynamic<?> $$2 = $$0.get("Properties").orElseEmptyMap();
-         return $$2.get("level").asString("0").equals("0") ? $$0.remove("Properties") : $$0.set("Name", $$0.createString("minecraft:water_cauldron"));
-      } else {
-         return $$0;
-      }
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("cauldron_rename_fix", this.getInputSchema().getType(bia.u), $$0 -> $$0.update(DSL.remainderFinder(), bco::a));
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      Type<?> $$1 = this.getOutputSchema().getChoiceType(bis.s, "minecraft:piston");
+      Type<?> $$2 = $$1.findFieldType("blockState");
+      OpticFinder<?> $$3 = DSL.fieldFinder("blockState", $$2);
+      Dynamic<?> $$4 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
+      int $$5 = $$4.get("blockId").asInt(0);
+      $$4 = $$4.remove("blockId");
+      int $$6 = $$4.get("blockData").asInt(0) & 15;
+      $$4 = $$4.remove("blockData");
+      Dynamic<?> $$7 = bdb.b($$5 << 4 | $$6);
+      Typed<?> $$8 = (Typed<?>)$$1.pointTyped($$0.getOps()).orElseThrow(() -> new IllegalStateException("Could not create new piston block entity."));
+      return $$8.set(DSL.remainderFinder(), $$4)
+         .set(
+            $$3,
+            (Typed)((Pair)$$2.readTyped($$7).result().orElseThrow(() -> new IllegalStateException("Could not parse newly created block state tag.")))
+               .getFirst()
+         );
    }
 }

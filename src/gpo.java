@@ -1,56 +1,44 @@
-public class gpo extends gpj<bux, gvs> {
-   private static final alj a = alj.b("textures/entity/experience_orb.png");
-   private static final gjq b = gjq.h(a);
+import com.google.common.collect.Lists;
+import java.util.Collection;
 
-   public gpo(gpk.a $$0) {
-      super($$0);
-      this.f = 0.15F;
-      this.g = 0.75F;
+public class gpo implements gpe.a {
+   private static final int a = 160;
+   private static final float b = 0.04F;
+   private final flz c;
+   private Collection<jh> d = Lists.newArrayList();
+
+   public gpo(flz $$0) {
+      this.c = $$0;
    }
 
-   protected int a(bux $$0, jh $$1) {
-      return azm.a(super.a($$0, $$1) + 7, 0, 15);
+   public void a(Collection<jh> $$0) {
+      this.d = $$0;
    }
 
-   public void a(gvs $$0, fer $$1, gjg $$2, int $$3) {
-      $$1.a();
-      int $$4 = $$0.a;
-      float $$5 = (float)($$4 % 4 * 16 + 0) / 64.0F;
-      float $$6 = (float)($$4 % 4 * 16 + 16) / 64.0F;
-      float $$7 = (float)($$4 / 4 * 16 + 0) / 64.0F;
-      float $$8 = (float)($$4 / 4 * 16 + 16) / 64.0F;
-      float $$9 = 1.0F;
-      float $$10 = 0.5F;
-      float $$11 = 0.25F;
-      float $$12 = 255.0F;
-      float $$13 = $$0.p / 2.0F;
-      int $$14 = (int)((azm.a($$13 + 0.0F) + 1.0F) * 0.5F * 255.0F);
-      int $$15 = 255;
-      int $$16 = (int)((azm.a($$13 + (float) (Math.PI * 4.0 / 3.0)) + 1.0F) * 0.1F * 255.0F);
-      $$1.a(0.0F, 0.1F, 0.0F);
-      $$1.a(this.e.b());
-      float $$17 = 0.3F;
-      $$1.b(0.3F, 0.3F, 0.3F);
-      fev $$18 = $$2.getBuffer(b);
-      fer.a $$19 = $$1.c();
-      a($$18, $$19, -0.5F, -0.25F, $$14, 255, $$16, $$5, $$8, $$3);
-      a($$18, $$19, 0.5F, -0.25F, $$14, 255, $$16, $$6, $$8, $$3);
-      a($$18, $$19, 0.5F, 0.75F, $$14, 255, $$16, $$6, $$7, $$3);
-      a($$18, $$19, -0.5F, 0.75F, $$14, 255, $$16, $$5, $$7, $$3);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   @Override
+   public void a(fgl $$0, gle $$1, double $$2, double $$3, double $$4) {
+      jh $$5 = this.b().c();
+
+      for (jh $$6 : this.d) {
+         if ($$5.a($$6, 160.0)) {
+            a($$0, $$1, $$6);
+         }
+      }
    }
 
-   private static void a(fev $$0, fer.a $$1, float $$2, float $$3, int $$4, int $$5, int $$6, float $$7, float $$8, int $$9) {
-      $$0.a($$1, $$2, $$3, 0.0F).a($$4, $$5, $$6, 128).a($$7, $$8).b(gyv.d).c($$9).b($$1, 0.0F, 1.0F, 0.0F);
+   private static void a(fgl $$0, gle $$1, jh $$2) {
+      gpe.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
+      a($$0, $$1, "Raid center", $$2, -65536);
    }
 
-   public gvs a() {
-      return new gvs();
+   private static void a(fgl $$0, gle $$1, String $$2, jh $$3, int $$4) {
+      double $$5 = (double)$$3.u() + 0.5;
+      double $$6 = (double)$$3.v() + 1.3;
+      double $$7 = (double)$$3.w() + 0.5;
+      gpe.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
    }
 
-   public void a(bux $$0, gvs $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.l();
+   private fli b() {
+      return this.c.j.k();
    }
 }

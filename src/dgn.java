@@ -1,23 +1,27 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
 public class dgn {
-   public static final Codec<dgn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ls.bf.fieldOf("options").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.c)).apply($$0, dgn::new)
+   public static final dgn a = new dgn(ImmutableList.of("vanilla"), ImmutableList.of());
+   public static final Codec<dgn> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
+            .apply($$0, dgn::new)
    );
-   private final lq b;
-   private final float c;
+   private final List<String> c;
+   private final List<String> d;
 
-   public dgn(lq $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public dgn(List<String> $$0, List<String> $$1) {
+      this.c = ImmutableList.copyOf($$0);
+      this.d = ImmutableList.copyOf($$1);
    }
 
-   public lq a() {
-      return this.b;
+   public List<String> a() {
+      return this.c;
    }
 
-   public boolean a(azu $$0) {
-      return $$0.i() <= this.c;
+   public List<String> b() {
+      return this.d;
    }
 }

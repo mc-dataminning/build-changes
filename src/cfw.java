@@ -1,25 +1,22 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
+import java.util.UUID;
 
-public class cfw extends cfk<cnw> {
+public class cfw extends cgf {
+   public static final float a = 10.0F;
+
    @Override
-   public Set<cel<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cel.B)));
+   protected boolean a(ash $$0, bwb $$1, bwb $$2) {
+      return !$$1.eb().a(cff.U) && cgl.c($$0, $$1, $$2) && cjm.j($$2) && !this.a($$1, $$2) ? $$2.a($$1, 10.0) : false;
    }
 
-   protected void a(arp $$0, cnw $$1) {
-      super.a($$0, $$1);
-      a($$1, $$0x -> $$0x.aq() == bus.bO)
-         .or(() -> a($$1, $$0xx -> $$0xx.aq() != bus.bO))
-         .ifPresentOrElse($$1x -> $$1.eb().a(cel.B, $$1x), () -> $$1.eb().b(cel.B));
+   private boolean a(bwb $$0, bwb $$1) {
+      List<UUID> $$2 = $$0.eb().c(cff.aa).orElseGet(ArrayList::new);
+      return $$2.contains($$1.cG());
    }
 
-   private static Optional<bvh> a(cnw $$0, Predicate<bvh> $$1) {
-      return $$0.eb().c(cel.g).stream().flatMap(Collection::stream).filter($$0::b).filter($$1).findFirst();
+   @Override
+   protected cff<bwb> b() {
+      return cff.B;
    }
 }

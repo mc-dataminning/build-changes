@@ -1,28 +1,26 @@
-import java.util.EnumMap;
+public class gdm extends gbf<gzt> {
+   private final geh a;
 
-public class gdm {
-   public static final int a = 5000;
-   private final gdi b;
-   private final fml c;
-   private final EnumMap<bnf, Long> d;
-
-   public gdm(gdi $$0, fml $$1) {
-      this.c = $$1;
-      this.b = $$0;
-      this.d = new EnumMap<>(bnf.class);
+   public gdm(geh $$0) {
+      super($$0);
+      this.a = $$0.b("tail");
    }
 
-   public void a() {
-      if (this.c.g()) {
-         this.a(bnf.a);
-      }
+   public static gen a(gel $$0) {
+      gep $$1 = new gep();
+      ger $$2 = $$1.a();
+      int $$3 = 22;
+      $$2.a("body", gem.c().a(0, 0).a(-1.0F, -1.5F, -3.0F, 2.0F, 3.0F, 6.0F, $$0), gej.a(0.0F, 22.0F, 0.0F));
+      $$2.a("tail", gem.c().a(22, -6).a(0.0F, -1.5F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), gej.a(0.0F, 22.0F, 3.0F));
+      $$2.a("right_fin", gem.c().a(2, 16).a(-2.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), gej.a(-1.0F, 22.5F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$2.a("left_fin", gem.c().a(2, 12).a(0.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), gej.a(1.0F, 22.5F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$2.a("top_fin", gem.c().a(10, -5).a(0.0F, -3.0F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), gej.a(0.0F, 20.5F, -3.0F));
+      return gen.a($$1, 32, 32);
    }
 
-   private void a(bnf $$0) {
-      long $$1 = ae.c();
-      if ($$1 > this.d.getOrDefault($$0, Long.valueOf(0L)) + 5000L) {
-         this.b.b(new ahp($$0));
-         this.d.put($$0, $$1);
-      }
+   public void a(gzt $$0) {
+      super.a($$0);
+      float $$1 = $$0.af ? 1.0F : 1.5F;
+      this.a.f = -$$1 * 0.45F * bae.a(0.6F * $$0.p);
    }
 }

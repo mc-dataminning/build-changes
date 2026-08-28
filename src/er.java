@@ -2,16 +2,16 @@ import com.mojang.serialization.Codec;
 import java.util.Optional;
 
 public class er {
-   public static final Codec<er> a = alj.a.xmap(er::new, er::a);
-   private final alj b;
+   public static final Codec<er> a = alz.a.xmap(er::new, er::a);
+   private final alz b;
    private boolean c;
    private Optional<ik<ew>> d = Optional.empty();
 
-   public er(alj $$0) {
+   public er(alz $$0) {
       this.b = $$0;
    }
 
-   public Optional<ik<ew>> a(aly $$0) {
+   public Optional<ik<ew>> a(amo $$0) {
       if (!this.c) {
          this.d = $$0.a(this.b);
          this.c = true;
@@ -20,7 +20,7 @@ public class er {
       return this.d;
    }
 
-   public alj a() {
+   public alz a() {
       return this.b;
    }
 

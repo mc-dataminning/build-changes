@@ -1,23 +1,25 @@
-import com.mojang.datafixers.schemas.Schema;
-import java.util.List;
+public class bbj<A, B> {
+   private A a;
+   private B b;
 
-public class bbj extends bbl {
-   private static final List<String> a = List.of("generic.", "horse.", "player.", "zombie.");
-
-   public bbj(Schema $$0) {
-      super($$0, "AttributeIdPrefixFix", bbj::a);
+   public bbj(A $$0, B $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   private static String a(String $$0) {
-      String $$1 = bjo.a($$0);
+   public A a() {
+      return this.a;
+   }
 
-      for (String $$2 : a) {
-         String $$3 = bjo.a($$2);
-         if ($$1.startsWith($$3)) {
-            return "minecraft:" + $$1.substring($$3.length());
-         }
-      }
+   public void a(A $$0) {
+      this.a = $$0;
+   }
 
-      return $$0;
+   public B b() {
+      return this.b;
+   }
+
+   public void b(B $$0) {
+      this.b = $$0;
    }
 }

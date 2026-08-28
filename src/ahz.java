@@ -1,33 +1,29 @@
-public class ahz implements zq<agw> {
-   public static final zh<wg, ahz> a = zq.a(ahz::a, ahz::new);
+public class ahz implements aac<ahm> {
+   public static final zt<ws, ahz> a = aac.a(ahz::a, ahz::new);
    private final int b;
-   private final alj c;
-   private final boolean d;
+   private final String c;
 
-   public ahz(int $$0, dbc<?> $$1, boolean $$2) {
+   public ahz(int $$0, String $$1) {
       this.b = $$0;
-      this.c = $$1.a();
-      this.d = $$2;
+      this.c = $$1;
    }
 
-   private ahz(wg $$0) {
-      this.b = $$0.x();
-      this.c = $$0.q();
-      this.d = $$0.readBoolean();
+   private ahz(ws $$0) {
+      this.b = $$0.l();
+      this.c = $$0.d(32500);
    }
 
-   private void a(wg $$0) {
-      $$0.f(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
+   private void a(ws $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c, 32500);
    }
 
    @Override
-   public zs<ahz> a() {
-      return agu.bL;
+   public aae<ahz> a() {
+      return ahk.bw;
    }
 
-   public void a(agw $$0) {
+   public void a(ahm $$0) {
       $$0.a(this);
    }
 
@@ -35,11 +31,7 @@ public class ahz implements zq<agw> {
       return this.b;
    }
 
-   public alj e() {
+   public String e() {
       return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
    }
 }

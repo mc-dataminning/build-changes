@@ -1,14 +1,9 @@
-import io.netty.buffer.ByteBuf;
-
-public record zz(xj b) implements zq<zw> {
-   public static final zh<ByteBuf, zz> a = xl.f.a(zz::new, zz::b);
+public abstract class zz<T extends xb> implements aac<T> {
+   @Override
+   public final void a(T $$0) {
+      throw new AssertionError("This packet should be handled by pipeline");
+   }
 
    @Override
-   public zs<zz> a() {
-      return aai.c;
-   }
-
-   public void a(zw $$0) {
-      $$0.a(this);
-   }
+   public abstract aae<? extends zz<T>> a();
 }

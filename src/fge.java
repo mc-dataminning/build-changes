@@ -1,55 +1,90 @@
-import com.google.gson.annotations.SerializedName;
-import java.util.UUID;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Optional;
+import javax.annotation.Nullable;
+import org.lwjgl.opengl.ARBTimerQuery;
+import org.lwjgl.opengl.GL;
+import org.lwjgl.opengl.GL32C;
 
-public class fge extends fgv implements fgp {
-   @SerializedName("name")
-   private String a;
-   @SerializedName("uuid")
-   private UUID b;
-   @SerializedName("operator")
-   private boolean c;
-   @SerializedName("accepted")
-   private boolean d;
-   @SerializedName("online")
-   private boolean e;
+public class fge {
+   private int a;
 
-   public String a() {
-      return this.a;
+   public static Optional<fge> a() {
+      return fge.b.a;
    }
 
-   public void a(String $$0) {
-      this.a = $$0;
+   public void b() {
+      RenderSystem.assertOnRenderThread();
+      if (this.a != 0) {
+         throw new IllegalStateException("Current profile not ended");
+      } else {
+         this.a = GL32C.glGenQueries();
+         GL32C.glBeginQuery(35007, this.a);
+      }
    }
 
-   public UUID b() {
-      return this.b;
+   public fge.a c() {
+      RenderSystem.assertOnRenderThread();
+      if (this.a == 0) {
+         throw new IllegalStateException("endProfile called before beginProfile");
+      } else {
+         GL32C.glEndQuery(35007);
+         fge.a $$0 = new fge.a(this.a);
+         this.a = 0;
+         return $$0;
+      }
    }
 
-   public void a(UUID $$0) {
-      this.b = $$0;
+   public static class a {
+      private static final long a = 0L;
+      private static final long b = -1L;
+      private final int c;
+      private long d;
+
+      a(int $$0) {
+         this.c = $$0;
+      }
+
+      public void a() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d == 0L) {
+            this.d = -1L;
+            GL32C.glDeleteQueries(this.c);
+         }
+      }
+
+      public boolean b() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d != 0L) {
+            return true;
+         } else if (1 == GL32C.glGetQueryObjecti(this.c, 34919)) {
+            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
+            GL32C.glDeleteQueries(this.c);
+            return true;
+         } else {
+            return false;
+         }
+      }
+
+      public long c() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d == 0L) {
+            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
+            GL32C.glDeleteQueries(this.c);
+         }
+
+         return this.d;
+      }
    }
 
-   public boolean c() {
-      return this.c;
-   }
+   static class b {
+      static final Optional<fge> a = Optional.ofNullable(a());
 
-   public void a(boolean $$0) {
-      this.c = $$0;
-   }
+      private b() {
+      }
 
-   public boolean d() {
-      return this.d;
-   }
-
-   public void b(boolean $$0) {
-      this.d = $$0;
-   }
-
-   public boolean e() {
-      return this.e;
-   }
-
-   public void c(boolean $$0) {
-      this.e = $$0;
+      @Nullable
+      private static fge a() {
+         return !GL.getCapabilities().GL_ARB_timer_query ? null : new fge();
+      }
    }
 }

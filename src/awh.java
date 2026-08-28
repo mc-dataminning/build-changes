@@ -1,146 +1,436 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.io.Files;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.ProfileLookupCallback;
+import com.mojang.authlib.yggdrasil.ProfileNotFoundException;
 import com.mojang.logging.LogUtils;
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
+import java.io.File;
 import java.io.IOException;
-import java.net.Socket;
 import java.nio.charset.StandardCharsets;
+import java.text.ParseException;
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class awh extends awf {
-   private static final Logger d = LogUtils.getLogger();
-   private static final int e = 3;
-   private static final int f = 2;
-   private static final int g = 0;
-   private static final int h = 2;
-   private static final int i = -1;
-   private boolean j;
-   private final Socket k;
-   private final byte[] l = new byte[1460];
-   private final String m;
-   private final ama n;
+public class awh {
+   static final Logger e = LogUtils.getLogger();
+   public static final File a = new File("banned-ips.txt");
+   public static final File b = new File("banned-players.txt");
+   public static final File c = new File("ops.txt");
+   public static final File d = new File("white-list.txt");
 
-   awh(ama $$0, String $$1, Socket $$2) {
-      super("RCON Client " + $$2.getInetAddress());
-      this.n = $$0;
-      this.k = $$2;
+   static List<String> a(File $$0, Map<String, String[]> $$1) throws IOException {
+      List<String> $$2 = Files.readLines($$0, StandardCharsets.UTF_8);
 
-      try {
-         this.k.setSoTimeout(0);
-      } catch (Exception var5) {
-         this.a = false;
+      for (String $$3 : $$2) {
+         $$3 = $$3.trim();
+         if (!$$3.startsWith("#") && $$3.length() >= 1) {
+            String[] $$4 = $$3.split("\\|");
+            $$1.put($$4[0].toLowerCase(Locale.ROOT), $$4);
+         }
       }
 
-      this.m = $$1;
+      return $$2;
    }
 
-   @Override
-   public void run() {
-      try {
+   private static void a(MinecraftServer $$0, Collection<String> $$1, ProfileLookupCallback $$2) {
+      String[] $$3 = $$1.stream().filter($$0x -> !bbb.b($$0x)).toArray(String[]::new);
+      if ($$0.aa()) {
+         $$0.as().findProfilesByNames($$3, $$2);
+      } else {
+         for (String $$4 : $$3) {
+            $$2.onProfileLookupSucceeded(kk.b($$4));
+         }
+      }
+   }
+
+   public static boolean a(final MinecraftServer $$0) {
+      final awo $$1 = new awo(awi.a);
+      if (b.exists() && b.isFile()) {
+         if ($$1.b().exists()) {
+            try {
+               $$1.f();
+            } catch (IOException var6) {
+               e.warn("Could not load existing file {}", $$1.b().getName(), var6);
+            }
+         }
+
          try {
-            while (this.a) {
-               BufferedInputStream $$0 = new BufferedInputStream(this.k.getInputStream());
-               int $$1 = $$0.read(this.l, 0, 1460);
-               if (10 > $$1) {
-                  return;
+            final Map<String, String[]> $$3 = Maps.newHashMap();
+            a(b, $$3);
+            ProfileLookupCallback $$4 = new ProfileLookupCallback() {
+               public void onProfileLookupSucceeded(GameProfile $$0x) {
+                  $$0.at().a($$0);
+                  String[] $$1 = $$3.get($$0.getName().toLowerCase(Locale.ROOT));
+                  if ($$1 == null) {
+                     awh.e.warn("Could not convert user banlist entry for {}", $$0.getName());
+                     throw new awh.a("Profile not in the conversionlist");
+                  } else {
+                     Date $$2 = $$1.length > 1 ? awh.a($$1[1], null) : null;
+                     String $$3 = $$1.length > 2 ? $$1[2] : null;
+                     Date $$4 = $$1.length > 3 ? awh.a($$1[3], null) : null;
+                     String $$5 = $$1.length > 4 ? $$1[4] : null;
+                     $$1.a(new awp($$0, $$2, $$3, $$4, $$5));
+                  }
                }
 
-               int $$2 = 0;
-               int $$3 = awc.b(this.l, 0, $$1);
-               if ($$3 != $$1 - 4) {
-                  return;
+               public void onProfileLookupFailed(String $$0x, Exception $$1x) {
+                  awh.e.warn("Could not lookup user banlist entry for {}", $$0, $$1);
+                  if (!($$1 instanceof ProfileNotFoundException)) {
+                     throw new awh.a("Could not request user " + $$0 + " from backend systems", $$1);
+                  }
                }
+            };
+            a($$0, $$3.keySet(), $$4);
+            $$1.e();
+            b(b);
+            return true;
+         } catch (IOException var4) {
+            e.warn("Could not read old user banlist to convert it!", var4);
+            return false;
+         } catch (awh.a var5) {
+            e.error("Conversion failed, please try again later", var5);
+            return false;
+         }
+      } else {
+         return true;
+      }
+   }
 
-               $$2 += 4;
-               int $$4 = awc.b(this.l, $$2, $$1);
-               $$2 += 4;
-               int $$5 = awc.a(this.l, $$2);
-               $$2 += 4;
-               switch ($$5) {
-                  case 2:
-                     if (this.j) {
-                        String $$7 = awc.a(this.l, $$2, $$1);
+   public static boolean b(MinecraftServer $$0) {
+      awf $$1 = new awf(awi.b);
+      if (a.exists() && a.isFile()) {
+         if ($$1.b().exists()) {
+            try {
+               $$1.f();
+            } catch (IOException var11) {
+               e.warn("Could not load existing file {}", $$1.b().getName(), var11);
+            }
+         }
 
-                        try {
-                           this.a($$4, this.n.a($$7));
-                        } catch (Exception var15) {
-                           this.a($$4, "Error executing: " + $$7 + " (" + var15.getMessage() + ")");
-                        }
-                        break;
-                     }
+         try {
+            Map<String, String[]> $$3 = Maps.newHashMap();
+            a(a, $$3);
 
-                     this.d();
-                     break;
-                  case 3:
-                     String $$6 = awc.a(this.l, $$2, $$1);
-                     $$2 += $$6.length();
-                     if (!$$6.isEmpty() && $$6.equals(this.m)) {
-                        this.j = true;
-                        this.a($$4, 2, "");
-                        break;
-                     }
-
-                     this.j = false;
-                     this.d();
-                     break;
-                  default:
-                     this.a($$4, String.format(Locale.ROOT, "Unknown request %s", Integer.toHexString($$5)));
-               }
+            for (String $$4 : $$3.keySet()) {
+               String[] $$5 = $$3.get($$4);
+               Date $$6 = $$5.length > 1 ? a($$5[1], null) : null;
+               String $$7 = $$5.length > 2 ? $$5[2] : null;
+               Date $$8 = $$5.length > 3 ? a($$5[3], null) : null;
+               String $$9 = $$5.length > 4 ? $$5[4] : null;
+               $$1.a(new awg($$4, $$6, $$7, $$8, $$9));
             }
 
-            return;
-         } catch (IOException var16) {
-         } catch (Exception var17) {
-            d.error("Exception whilst parsing RCON input", var17);
+            $$1.e();
+            b(a);
+            return true;
+         } catch (IOException var10) {
+            e.warn("Could not parse old ip banlist to convert it!", var10);
+            return false;
          }
-      } finally {
-         this.e();
-         d.info("Thread {} shutting down", this.b);
-         this.a = false;
+      } else {
+         return true;
       }
    }
 
-   private void a(int $$0, int $$1, String $$2) throws IOException {
-      ByteArrayOutputStream $$3 = new ByteArrayOutputStream(1248);
-      DataOutputStream $$4 = new DataOutputStream($$3);
-      byte[] $$5 = $$2.getBytes(StandardCharsets.UTF_8);
-      $$4.writeInt(Integer.reverseBytes($$5.length + 10));
-      $$4.writeInt(Integer.reverseBytes($$0));
-      $$4.writeInt(Integer.reverseBytes($$1));
-      $$4.write($$5);
-      $$4.write(0);
-      $$4.write(0);
-      this.k.getOutputStream().write($$3.toByteArray());
+   public static boolean c(final MinecraftServer $$0) {
+      final awj $$1 = new awj(awi.c);
+      if (c.exists() && c.isFile()) {
+         if ($$1.b().exists()) {
+            try {
+               $$1.f();
+            } catch (IOException var6) {
+               e.warn("Could not load existing file {}", $$1.b().getName(), var6);
+            }
+         }
+
+         try {
+            List<String> $$3 = Files.readLines(c, StandardCharsets.UTF_8);
+            ProfileLookupCallback $$4 = new ProfileLookupCallback() {
+               public void onProfileLookupSucceeded(GameProfile $$0x) {
+                  $$0.at().a($$0);
+                  $$1.a(new awk($$0, $$0.k(), false));
+               }
+
+               public void onProfileLookupFailed(String $$0x, Exception $$1x) {
+                  awh.e.warn("Could not lookup oplist entry for {}", $$0, $$1);
+                  if (!($$1 instanceof ProfileNotFoundException)) {
+                     throw new awh.a("Could not request user " + $$0 + " from backend systems", $$1);
+                  }
+               }
+            };
+            a($$0, $$3, $$4);
+            $$1.e();
+            b(c);
+            return true;
+         } catch (IOException var4) {
+            e.warn("Could not read old oplist to convert it!", var4);
+            return false;
+         } catch (awh.a var5) {
+            e.error("Conversion failed, please try again later", var5);
+            return false;
+         }
+      } else {
+         return true;
+      }
    }
 
-   private void d() throws IOException {
-      this.a(-1, 2, "");
+   public static boolean d(final MinecraftServer $$0) {
+      final awq $$1 = new awq(awi.d);
+      if (d.exists() && d.isFile()) {
+         if ($$1.b().exists()) {
+            try {
+               $$1.f();
+            } catch (IOException var6) {
+               e.warn("Could not load existing file {}", $$1.b().getName(), var6);
+            }
+         }
+
+         try {
+            List<String> $$3 = Files.readLines(d, StandardCharsets.UTF_8);
+            ProfileLookupCallback $$4 = new ProfileLookupCallback() {
+               public void onProfileLookupSucceeded(GameProfile $$0x) {
+                  $$0.at().a($$0);
+                  $$1.a(new awr($$0));
+               }
+
+               public void onProfileLookupFailed(String $$0x, Exception $$1x) {
+                  awh.e.warn("Could not lookup user whitelist entry for {}", $$0, $$1);
+                  if (!($$1 instanceof ProfileNotFoundException)) {
+                     throw new awh.a("Could not request user " + $$0 + " from backend systems", $$1);
+                  }
+               }
+            };
+            a($$0, $$3, $$4);
+            $$1.e();
+            b(d);
+            return true;
+         } catch (IOException var4) {
+            e.warn("Could not read old whitelist to convert it!", var4);
+            return false;
+         } catch (awh.a var5) {
+            e.error("Conversion failed, please try again later", var5);
+            return false;
+         }
+      } else {
+         return true;
+      }
    }
 
-   private void a(int $$0, String $$1) throws IOException {
-      int $$2 = $$1.length();
+   @Nullable
+   public static UUID a(final MinecraftServer $$0, String $$1) {
+      if (!bbb.b($$1) && $$1.length() <= 16) {
+         Optional<UUID> $$3 = $$0.at().a($$1).map(GameProfile::getId);
+         if ($$3.isPresent()) {
+            return $$3.get();
+         } else if (!$$0.U() && $$0.aa()) {
+            final List<GameProfile> $$4 = Lists.newArrayList();
+            ProfileLookupCallback $$5 = new ProfileLookupCallback() {
+               public void onProfileLookupSucceeded(GameProfile $$0x) {
+                  $$0.at().a($$0);
+                  $$4.add($$0);
+               }
 
-      do {
-         int $$3 = 4096 <= $$2 ? 4096 : $$2;
-         this.a($$0, 0, $$1.substring(0, $$3));
-         $$1 = $$1.substring($$3);
-         $$2 = $$1.length();
-      } while (0 != $$2);
+               public void onProfileLookupFailed(String $$0x, Exception $$1) {
+                  awh.e.warn("Could not lookup user whitelist entry for {}", $$0, $$1);
+               }
+            };
+            a($$0, Lists.newArrayList(new String[]{$$1}), $$5);
+            return !$$4.isEmpty() ? $$4.get(0).getId() : null;
+         } else {
+            return kk.a($$1);
+         }
+      } else {
+         try {
+            return UUID.fromString($$1);
+         } catch (IllegalArgumentException var5) {
+            return null;
+         }
+      }
    }
 
-   @Override
-   public void b() {
-      this.a = false;
-      this.e();
-      super.b();
+   public static boolean a(final aqy $$0) {
+      final File $$1 = g($$0);
+      final File $$2 = new File($$1.getParentFile(), "playerdata");
+      final File $$3 = new File($$1.getParentFile(), "unknownplayers");
+      if ($$1.exists() && $$1.isDirectory()) {
+         File[] $$4 = $$1.listFiles();
+         List<String> $$5 = Lists.newArrayList();
+
+         for (File $$6 : $$4) {
+            String $$7 = $$6.getName();
+            if ($$7.toLowerCase(Locale.ROOT).endsWith(".dat")) {
+               String $$8 = $$7.substring(0, $$7.length() - ".dat".length());
+               if (!$$8.isEmpty()) {
+                  $$5.add($$8);
+               }
+            }
+         }
+
+         try {
+            final String[] $$9 = $$5.toArray(new String[$$5.size()]);
+            ProfileLookupCallback $$10 = new ProfileLookupCallback() {
+               public void onProfileLookupSucceeded(GameProfile $$0x) {
+                  $$0.at().a($$0);
+                  UUID $$1 = $$0.getId();
+                  this.a($$2, this.a($$0.getName()), $$1.toString());
+               }
+
+               public void onProfileLookupFailed(String $$0x, Exception $$1x) {
+                  awh.e.warn("Could not lookup user uuid for {}", $$0, $$1);
+                  if ($$1 instanceof ProfileNotFoundException) {
+                     String $$2 = this.a($$0);
+                     this.a($$3, $$2, $$2);
+                  } else {
+                     throw new awh.a("Could not request user " + $$0 + " from backend systems", $$1);
+                  }
+               }
+
+               private void a(File $$0x, String $$1x, String $$2x) {
+                  File $$3 = new File($$1, $$1 + ".dat");
+                  File $$4 = new File($$0, $$2 + ".dat");
+                  awh.a($$0);
+                  if (!$$3.renameTo($$4)) {
+                     throw new awh.a("Could not convert file for " + $$1);
+                  }
+               }
+
+               private String a(String $$0x) {
+                  String $$1 = null;
+
+                  for (String $$2 : $$9) {
+                     if ($$2 != null && $$2.equalsIgnoreCase($$0)) {
+                        $$1 = $$2;
+                        break;
+                     }
+                  }
+
+                  if ($$1 == null) {
+                     throw new awh.a("Could not find the filename for " + $$0 + " anymore");
+                  } else {
+                     return $$1;
+                  }
+               }
+            };
+            a($$0, Lists.newArrayList($$9), $$10);
+            return true;
+         } catch (awh.a var12) {
+            e.error("Conversion failed, please try again later", var12);
+            return false;
+         }
+      } else {
+         return true;
+      }
    }
 
-   private void e() {
+   static void a(File $$0) {
+      if ($$0.exists()) {
+         if (!$$0.isDirectory()) {
+            throw new awh.a("Can't create directory " + $$0.getName() + " in world save directory.");
+         }
+      } else if (!$$0.mkdirs()) {
+         throw new awh.a("Can't create directory " + $$0.getName() + " in world save directory.");
+      }
+   }
+
+   public static boolean e(MinecraftServer $$0) {
+      boolean $$1 = a();
+      return $$1 && f($$0);
+   }
+
+   private static boolean a() {
+      boolean $$0 = false;
+      if (b.exists() && b.isFile()) {
+         $$0 = true;
+      }
+
+      boolean $$1 = false;
+      if (a.exists() && a.isFile()) {
+         $$1 = true;
+      }
+
+      boolean $$2 = false;
+      if (c.exists() && c.isFile()) {
+         $$2 = true;
+      }
+
+      boolean $$3 = false;
+      if (d.exists() && d.isFile()) {
+         $$3 = true;
+      }
+
+      if (!$$0 && !$$1 && !$$2 && !$$3) {
+         return true;
+      } else {
+         e.warn("**** FAILED TO START THE SERVER AFTER ACCOUNT CONVERSION!");
+         e.warn("** please remove the following files and restart the server:");
+         if ($$0) {
+            e.warn("* {}", b.getName());
+         }
+
+         if ($$1) {
+            e.warn("* {}", a.getName());
+         }
+
+         if ($$2) {
+            e.warn("* {}", c.getName());
+         }
+
+         if ($$3) {
+            e.warn("* {}", d.getName());
+         }
+
+         return false;
+      }
+   }
+
+   private static boolean f(MinecraftServer $$0) {
+      File $$1 = g($$0);
+      if (!$$1.exists() || !$$1.isDirectory() || $$1.list().length <= 0 && $$1.delete()) {
+         return true;
+      } else {
+         e.warn("**** DETECTED OLD PLAYER DIRECTORY IN THE WORLD SAVE");
+         e.warn("**** THIS USUALLY HAPPENS WHEN THE AUTOMATIC CONVERSION FAILED IN SOME WAY");
+         e.warn("** please restart the server and if the problem persists, remove the directory '{}'", $$1.getPath());
+         return false;
+      }
+   }
+
+   private static File g(MinecraftServer $$0) {
+      return $$0.a(evt.d).toFile();
+   }
+
+   private static void b(File $$0) {
+      File $$1 = new File($$0.getName() + ".converted");
+      $$0.renameTo($$1);
+   }
+
+   static Date a(String $$0, Date $$1) {
+      Date $$2;
       try {
-         this.k.close();
-      } catch (IOException var2) {
-         d.warn("Failed to close socket", var2);
+         $$2 = awd.a.parse($$0);
+      } catch (ParseException var4) {
+         $$2 = $$1;
+      }
+
+      return $$2;
+   }
+
+   static class a extends RuntimeException {
+      a(String $$0, Throwable $$1) {
+         super($$0, $$1);
+      }
+
+      a(String $$0) {
+         super($$0);
       }
    }
 }

@@ -1,159 +1,218 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Consumer;
-import java.util.function.IntSupplier;
 
-public class frm extends frq {
-   public static final alj a = alj.b("textures/gui/title/mojangstudios.png");
-   private static final int d = axx.a(255, 239, 50, 61);
-   private static final int e = axx.a(255, 0, 0, 0);
-   private static final IntSupplier f = () -> fke.Q().n.a().c() ? e : d;
-   private static final int g = 240;
-   private static final float h = 60.0F;
-   private static final int i = 60;
-   private static final int j = 120;
-   private static final float k = 0.0625F;
-   private static final float l = 0.95F;
-   public static final long b = 1000L;
-   public static final long c = 500L;
-   private final fke m;
-   private final auz n;
-   private final Consumer<Optional<Throwable>> o;
-   private final boolean p;
-   private float q;
-   private long r = -1L;
-   private long s = -1L;
+public class frm extends fri {
+   private final List<frp> c = new ArrayList<>();
+   private final List<frm.a> d = new ArrayList<>();
+   private final frq e = frq.i();
+   private int f = 0;
+   private int g = 0;
 
-   public frm(fke $$0, auz $$1, Consumer<Optional<Throwable>> $$2, boolean $$3) {
-      this.m = $$0;
-      this.n = $$1;
-      this.o = $$2;
-      this.p = $$3;
+   public frm() {
+      this(0, 0);
    }
 
-   public static void a(fke $$0) {
-      $$0.aa().a(a, new frm.a());
-   }
-
-   private static int a(int $$0, int $$1) {
-      return $$0 & 16777215 | $$1 << 24;
+   public frm(int $$0, int $$1) {
+      super($$0, $$1, 0, 0);
    }
 
    @Override
-   public void a(flq $$0, int $$1, int $$2, float $$3) {
-      int $$4 = $$0.a();
-      int $$5 = $$0.b();
-      long $$6 = ae.c();
-      if (this.p && this.s == -1L) {
-         this.s = $$6;
+   public void a() {
+      super.a();
+      int $$0 = 0;
+      int $$1 = 0;
+
+      for (frm.a $$2 : this.d) {
+         $$0 = Math.max($$2.c(), $$0);
+         $$1 = Math.max($$2.d(), $$1);
       }
 
-      float $$7 = this.r > -1L ? (float)($$6 - this.r) / 1000.0F : -1.0F;
-      float $$8 = this.s > -1L ? (float)($$6 - this.s) / 500.0F : -1.0F;
-      float $$10;
-      if ($$7 >= 1.0F) {
-         if (this.m.z != null) {
-            this.m.z.a($$0, 0, 0, $$3);
+      int[] $$3 = new int[$$1 + 1];
+      int[] $$4 = new int[$$0 + 1];
+
+      for (frm.a $$5 : this.d) {
+         int $$6 = $$5.a() - ($$5.e - 1) * this.f;
+         c $$7 = new c($$6, $$5.e);
+
+         for (int $$8 = $$5.c; $$8 <= $$5.c(); $$8++) {
+            $$4[$$8] = Math.max($$4[$$8], $$7.nextInt());
          }
 
-         int $$9 = azm.f((1.0F - azm.a($$7 - 1.0F, 0.0F, 1.0F)) * 255.0F);
-         $$0.a(gjq.G(), 0, 0, $$4, $$5, a(f.getAsInt(), $$9));
-         $$10 = 1.0F - azm.a($$7 - 1.0F, 0.0F, 1.0F);
-      } else if (this.p) {
-         if (this.m.z != null && $$8 < 1.0F) {
-            this.m.z.a($$0, $$1, $$2, $$3);
+         int $$9 = $$5.b() - ($$5.f - 1) * this.g;
+         c $$10 = new c($$9, $$5.f);
+
+         for (int $$11 = $$5.d; $$11 <= $$5.d(); $$11++) {
+            $$3[$$11] = Math.max($$3[$$11], $$10.nextInt());
+         }
+      }
+
+      int[] $$12 = new int[$$1 + 1];
+      int[] $$13 = new int[$$0 + 1];
+      $$12[0] = 0;
+
+      for (int $$14 = 1; $$14 <= $$1; $$14++) {
+         $$12[$$14] = $$12[$$14 - 1] + $$3[$$14 - 1] + this.g;
+      }
+
+      $$13[0] = 0;
+
+      for (int $$15 = 1; $$15 <= $$0; $$15++) {
+         $$13[$$15] = $$13[$$15 - 1] + $$4[$$15 - 1] + this.f;
+      }
+
+      for (frm.a $$16 : this.d) {
+         int $$17 = 0;
+
+         for (int $$18 = $$16.d; $$18 <= $$16.d(); $$18++) {
+            $$17 += $$3[$$18];
          }
 
-         int $$11 = azm.c(azm.a((double)$$8, 0.15, 1.0) * 255.0);
-         $$0.a(gjq.G(), 0, 0, $$4, $$5, a(f.getAsInt(), $$11));
-         $$10 = azm.a($$8, 0.0F, 1.0F);
+         $$17 += this.g * ($$16.f - 1);
+         $$16.a(this.D() + $$12[$$16.d], $$17);
+         int $$19 = 0;
+
+         for (int $$20 = $$16.c; $$20 <= $$16.c(); $$20++) {
+            $$19 += $$4[$$20];
+         }
+
+         $$19 += this.f * ($$16.e - 1);
+         $$16.b(this.E() + $$13[$$16.c], $$19);
+      }
+
+      this.a = $$12[$$1] + $$3[$$1];
+      this.b = $$13[$$0] + $$4[$$0];
+   }
+
+   public <T extends frp> T a(T $$0, int $$1, int $$2) {
+      return this.a($$0, $$1, $$2, this.b());
+   }
+
+   public <T extends frp> T a(T $$0, int $$1, int $$2, frq $$3) {
+      return this.a($$0, $$1, $$2, 1, 1, $$3);
+   }
+
+   public <T extends frp> T a(T $$0, int $$1, int $$2, Consumer<frq> $$3) {
+      return this.a($$0, $$1, $$2, 1, 1, ae.a(this.b(), $$3));
+   }
+
+   public <T extends frp> T a(T $$0, int $$1, int $$2, int $$3, int $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4, this.b());
+   }
+
+   public <T extends frp> T a(T $$0, int $$1, int $$2, int $$3, int $$4, frq $$5) {
+      if ($$3 < 1) {
+         throw new IllegalArgumentException("Occupied rows must be at least 1");
+      } else if ($$4 < 1) {
+         throw new IllegalArgumentException("Occupied columns must be at least 1");
       } else {
-         int $$13 = f.getAsInt();
-         float $$14 = (float)($$13 >> 16 & 0xFF) / 255.0F;
-         float $$15 = (float)($$13 >> 8 & 0xFF) / 255.0F;
-         float $$16 = (float)($$13 & 0xFF) / 255.0F;
-         GlStateManager._clearColor($$14, $$15, $$16, 1.0F);
-         GlStateManager._clear(16384);
-         $$10 = 1.0F;
-      }
-
-      int $$18 = (int)((double)$$0.a() * 0.5);
-      int $$19 = (int)((double)$$0.b() * 0.5);
-      double $$20 = Math.min((double)$$0.a() * 0.75, (double)$$0.b()) * 0.25;
-      int $$21 = (int)($$20 * 0.5);
-      double $$22 = $$20 * 4.0;
-      int $$23 = (int)($$22 * 0.5);
-      int $$24 = axx.a($$10);
-      $$0.a($$0x -> gjq.K(), a, $$18 - $$23, $$19 - $$21, -0.0625F, 0.0F, $$23, (int)$$20, 120, 60, 120, 120, $$24);
-      $$0.a($$0x -> gjq.K(), a, $$18, $$19 - $$21, 0.0625F, 60.0F, $$23, (int)$$20, 120, 60, 120, 120, $$24);
-      int $$25 = (int)((double)$$0.b() * 0.8325);
-      float $$26 = this.n.b();
-      this.q = azm.a(this.q * 0.95F + $$26 * 0.050000012F, 0.0F, 1.0F);
-      if ($$7 < 1.0F) {
-         this.a($$0, $$4 / 2 - $$23, $$25 - 5, $$4 / 2 + $$23, $$25 + 5, 1.0F - azm.a($$7, 0.0F, 1.0F));
-      }
-
-      if ($$7 >= 2.0F) {
-         this.m.a(null);
-      }
-
-      if (this.r == -1L && this.n.c() && (!this.p || $$8 >= 2.0F)) {
-         try {
-            this.n.d();
-            this.o.accept(Optional.empty());
-         } catch (Throwable var24) {
-            this.o.accept(Optional.of(var24));
-         }
-
-         this.r = ae.c();
-         if (this.m.z != null) {
-            this.m.z.b(this.m, $$0.a(), $$0.b());
-         }
+         this.d.add(new frm.a($$0, $$1, $$2, $$3, $$4, $$5));
+         this.c.add($$0);
+         return $$0;
       }
    }
 
-   private void a(flq $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
-      int $$6 = azm.f((float)($$3 - $$1 - 2) * this.q);
-      int $$7 = Math.round($$5 * 255.0F);
-      int $$8 = axx.a($$7, 255, 255, 255);
-      $$0.a($$1 + 2, $$2 + 2, $$1 + $$6, $$4 - 2, $$8);
-      $$0.a($$1 + 1, $$2, $$3 - 1, $$2 + 1, $$8);
-      $$0.a($$1 + 1, $$4, $$3 - 1, $$4 - 1, $$8);
-      $$0.a($$1, $$2, $$1 + 1, $$4, $$8);
-      $$0.a($$3, $$2, $$3 - 1, $$4, $$8);
+   public <T extends frp> T a(T $$0, int $$1, int $$2, int $$3, int $$4, Consumer<frq> $$5) {
+      return this.a($$0, $$1, $$2, $$3, $$4, ae.a(this.b(), $$5));
+   }
+
+   public frm a(int $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public frm b(int $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public frm c(int $$0) {
+      return this.a($$0).b($$0);
    }
 
    @Override
-   public boolean a() {
-      return true;
+   public void b(Consumer<frp> $$0) {
+      this.c.forEach($$0);
    }
 
-   static class a extends gyx {
-      public a() {
-         super(frm.a);
+   public frq b() {
+      return this.e.g();
+   }
+
+   public frq c() {
+      return this.e;
+   }
+
+   public frm.b d(int $$0) {
+      return new frm.b($$0);
+   }
+
+   static class a extends fri.a {
+      final int c;
+      final int d;
+      final int e;
+      final int f;
+
+      a(frp $$0, int $$1, int $$2, int $$3, int $$4, frq $$5) {
+         super($$0, $$5.h());
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
       }
 
-      @Override
-      protected gyx.a b(avd $$0) {
-         ats $$1 = fke.Q().ae();
-         auu<InputStream> $$2 = $$1.a(atq.a, frm.a);
-         if ($$2 == null) {
-            return new gyx.a(new FileNotFoundException(frm.a.toString()));
-         } else {
-            try {
-               gyx.a var5;
-               try (InputStream $$3 = $$2.get()) {
-                  var5 = new gyx.a(new hbc(true, true), fdr.a($$3));
-               }
+      public int c() {
+         return this.c + this.e - 1;
+      }
 
-               return var5;
-            } catch (IOException var9) {
-               return new gyx.a(var9);
-            }
+      public int d() {
+         return this.d + this.f - 1;
+      }
+   }
+
+   public final class b {
+      private final int b;
+      private int c;
+
+      b(final int $$1) {
+         this.b = $$1;
+      }
+
+      public <T extends frp> T a(T $$0) {
+         return this.a($$0, 1);
+      }
+
+      public <T extends frp> T a(T $$0, int $$1) {
+         return this.a($$0, $$1, this.c());
+      }
+
+      public <T extends frp> T a(T $$0, frq $$1) {
+         return this.a($$0, 1, $$1);
+      }
+
+      public <T extends frp> T a(T $$0, int $$1, frq $$2) {
+         int $$3 = this.c / this.b;
+         int $$4 = this.c % this.b;
+         if ($$4 + $$1 > this.b) {
+            $$3++;
+            $$4 = 0;
+            this.c = bae.d(this.c, this.b);
          }
+
+         this.c += $$1;
+         return frm.this.a($$0, $$3, $$4, 1, $$1, $$2);
+      }
+
+      public frm a() {
+         return frm.this;
+      }
+
+      public frq b() {
+         return frm.this.b();
+      }
+
+      public frq c() {
+         return frm.this.c();
       }
    }
 }

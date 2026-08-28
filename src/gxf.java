@@ -1,3 +1,4 @@
-public class gxf extends gwm {
-   public cht.a a = cht.a.b;
+public class gxf extends gym {
+   public float a;
+   public float b;
 }

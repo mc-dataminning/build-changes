@@ -1,46 +1,78 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import java.util.Queue;
 
 public class amv {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xj.c("commands.ban.failed"));
+   private static final int a = 8;
+   private final Queue<amv.a> b = new ayr<>();
+   private final Object2IntLinkedOpenHashMap<amv.b> c = new Object2IntLinkedOpenHashMap();
 
-   public static void a(CommandDispatcher<ew> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("ban").requires($$0x -> $$0x.c(3)))
-            .then(
-               ((RequiredArgumentBuilder)ex.a("targets", fl.a()).executes($$0x -> a((ew)$$0x.getSource(), fl.a($$0x, "targets"), null)))
-                  .then(ex.a("reason", fn.a()).executes($$0x -> a((ew)$$0x.getSource(), fl.a($$0x, "targets"), fn.a($$0x, "reason"))))
-            )
-      );
+   private static long b() {
+      return System.currentTimeMillis();
    }
 
-   private static int a(ew $$0, Collection<GameProfile> $$1, @Nullable xj $$2) throws CommandSyntaxException {
-      avw $$3 = $$0.l().ag().f();
-      int $$4 = 0;
+   public synchronized void a(String $$0, Throwable $$1) {
+      long $$2 = b();
+      String $$3 = $$1.getMessage();
+      this.b.add(new amv.a($$2, $$0, (Class<? extends Throwable>)$$1.getClass(), $$3));
 
-      for (GameProfile $$5 : $$1) {
-         if (!$$3.a($$5)) {
-            avx $$6 = new avx($$5, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
-            $$3.a($$6);
-            $$4++;
-            $$0.a(() -> xj.a("commands.ban.success", xj.b($$5.getName()), $$6.d()), true);
-            arq $$7 = $$0.l().ag().a($$5.getId());
-            if ($$7 != null) {
-               $$7.f.a(xj.c("multiplayer.disconnect.banned"));
-            }
+      while (this.b.size() > 8) {
+         this.b.remove();
+      }
+
+      amv.b $$4 = new amv.b($$0, (Class<? extends Throwable>)$$1.getClass());
+      int $$5 = this.c.getInt($$4);
+      this.c.putAndMoveToFirst($$4, $$5 + 1);
+   }
+
+   public synchronized String a() {
+      long $$0 = b();
+      StringBuilder $$1 = new StringBuilder();
+      if (!this.b.isEmpty()) {
+         $$1.append("\n\t\tLatest entries:\n");
+
+         for (amv.a $$2 : this.b) {
+            $$1.append("\t\t\t")
+               .append($$2.b)
+               .append(":")
+               .append($$2.c)
+               .append(": ")
+               .append($$2.d)
+               .append(" (")
+               .append($$0 - $$2.a)
+               .append("ms ago)")
+               .append("\n");
          }
       }
 
-      if ($$4 == 0) {
-         throw a.create();
-      } else {
-         return $$4;
+      if (!this.c.isEmpty()) {
+         if ($$1.isEmpty()) {
+            $$1.append("\n");
+         }
+
+         $$1.append("\t\tEntry counts:\n");
+         ObjectIterator var6 = Object2IntMaps.fastIterable(this.c).iterator();
+
+         while (var6.hasNext()) {
+            Entry<amv.b> $$3 = (Entry<amv.b>)var6.next();
+            $$1.append("\t\t\t")
+               .append(((amv.b)$$3.getKey()).a)
+               .append(":")
+               .append(((amv.b)$$3.getKey()).b)
+               .append(" x ")
+               .append($$3.getIntValue())
+               .append("\n");
+         }
       }
+
+      return $$1.isEmpty() ? "~~NONE~~" : $$1.toString();
+   }
+
+   static record a(long a, String b, Class<? extends Throwable> c, String d) {
+   }
+
+   static record b(String a, Class<? extends Throwable> b) {
    }
 }

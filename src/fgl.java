@@ -1,81 +1,130 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.yggdrasil.ProfileResult;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-import org.slf4j.Logger;
+import com.google.common.collect.Queues;
+import java.util.Deque;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class fgl extends fgv {
-   private static final Logger b = LogUtils.getLogger();
-   public Map<Long, List<ProfileResult>> a = Map.of();
+public class fgl {
+   private final Deque<fgl.a> a = ae.a(Queues.newArrayDeque(), $$0 -> {
+      Matrix4f $$1 = new Matrix4f();
+      Matrix3f $$2 = new Matrix3f();
+      $$0.add(new fgl.a($$1, $$2));
+   });
 
-   public static fgl a(String $$0) {
-      fgl $$1 = new fgl();
-      Builder<Long, List<ProfileResult>> $$2 = ImmutableMap.builder();
-
-      try {
-         JsonObject $$3 = azc.a($$0);
-         if (azc.d($$3, "lists")) {
-            for (JsonElement $$5 : $$3.getAsJsonArray("lists")) {
-               JsonObject $$6 = $$5.getAsJsonObject();
-               String $$7 = fir.b("playerList", $$6, null);
-               List<ProfileResult> $$9;
-               if ($$7 != null) {
-                  JsonElement $$8 = JsonParser.parseString($$7);
-                  if ($$8.isJsonArray()) {
-                     $$9 = a($$8.getAsJsonArray());
-                  } else {
-                     $$9 = Lists.newArrayList();
-                  }
-               } else {
-                  $$9 = Lists.newArrayList();
-               }
-
-               $$2.put(fir.a("serverId", $$6, -1L), $$9);
-            }
-         }
-      } catch (Exception var11) {
-         b.error("Could not parse RealmsServerPlayerLists: {}", var11.getMessage());
-      }
-
-      $$1.a = $$2.build();
-      return $$1;
+   public void a(double $$0, double $$1, double $$2) {
+      this.a((float)$$0, (float)$$1, (float)$$2);
    }
 
-   private static List<ProfileResult> a(JsonArray $$0) {
-      List<ProfileResult> $$1 = new ArrayList<>($$0.size());
-      MinecraftSessionService $$2 = fke.Q().am();
-
-      for (JsonElement $$3 : $$0) {
-         if ($$3.isJsonObject()) {
-            UUID $$4 = fir.a("playerId", $$3.getAsJsonObject(), null);
-            if ($$4 != null && !fke.Q().b($$4)) {
-               try {
-                  ProfileResult $$5 = $$2.fetchProfile($$4, false);
-                  if ($$5 != null) {
-                     $$1.add($$5);
-                  }
-               } catch (Exception var7) {
-                  b.error("Could not get name for {}", $$4, var7);
-               }
-            }
-         }
-      }
-
-      return $$1;
+   public void a(float $$0, float $$1, float $$2) {
+      fgl.a $$3 = this.a.getLast();
+      $$3.a.translate($$0, $$1, $$2);
    }
 
-   public List<ProfileResult> a(long $$0) {
-      List<ProfileResult> $$1 = this.a.get($$0);
-      return $$1 != null ? $$1 : List.of();
+   public void a(fbs $$0) {
+      this.a($$0.d, $$0.e, $$0.f);
+   }
+
+   public void b(float $$0, float $$1, float $$2) {
+      fgl.a $$3 = this.a.getLast();
+      $$3.a.scale($$0, $$1, $$2);
+      if (Math.abs($$0) == Math.abs($$1) && Math.abs($$1) == Math.abs($$2)) {
+         if ($$0 < 0.0F || $$1 < 0.0F || $$2 < 0.0F) {
+            $$3.b.scale(Math.signum($$0), Math.signum($$1), Math.signum($$2));
+         }
+      } else {
+         $$3.b.scale(1.0F / $$0, 1.0F / $$1, 1.0F / $$2);
+         $$3.c = false;
+      }
+   }
+
+   public void a(Quaternionf $$0) {
+      fgl.a $$1 = this.a.getLast();
+      $$1.a.rotate($$0);
+      $$1.b.rotate($$0);
+   }
+
+   public void a(Quaternionf $$0, float $$1, float $$2, float $$3) {
+      fgl.a $$4 = this.a.getLast();
+      $$4.a.rotateAround($$0, $$1, $$2, $$3);
+      $$4.b.rotate($$0);
+   }
+
+   public void a() {
+      this.a.addLast(new fgl.a(this.a.getLast()));
+   }
+
+   public void b() {
+      this.a.removeLast();
+   }
+
+   public fgl.a c() {
+      return this.a.getLast();
+   }
+
+   public boolean d() {
+      return this.a.size() == 1;
+   }
+
+   public void e() {
+      fgl.a $$0 = this.a.getLast();
+      $$0.a.identity();
+      $$0.b.identity();
+      $$0.c = true;
+   }
+
+   public void a(Matrix4f $$0) {
+      fgl.a $$1 = this.a.getLast();
+      $$1.a.mul($$0);
+      if (!f.a($$0)) {
+         if (f.b($$0)) {
+            $$1.b.mul(new Matrix3f($$0));
+         } else {
+            $$1.d();
+         }
+      }
+   }
+
+   public static final class a {
+      final Matrix4f a;
+      final Matrix3f b;
+      boolean c = true;
+
+      a(Matrix4f $$0, Matrix3f $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      a(fgl.a $$0) {
+         this.a = new Matrix4f($$0.a);
+         this.b = new Matrix3f($$0.b);
+         this.c = $$0.c;
+      }
+
+      void d() {
+         this.b.set(this.a).invert().transpose();
+         this.c = false;
+      }
+
+      public Matrix4f a() {
+         return this.a;
+      }
+
+      public Matrix3f b() {
+         return this.b;
+      }
+
+      public Vector3f a(Vector3f $$0, Vector3f $$1) {
+         return this.a($$0.x, $$0.y, $$0.z, $$1);
+      }
+
+      public Vector3f a(float $$0, float $$1, float $$2, Vector3f $$3) {
+         Vector3f $$4 = this.b.transform($$0, $$1, $$2, $$3);
+         return this.c ? $$4 : $$4.normalize();
+      }
+
+      public fgl.a c() {
+         return new fgl.a(this);
+      }
    }
 }

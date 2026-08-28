@@ -1,98 +1,55 @@
+import com.google.common.annotations.VisibleForTesting;
 import java.util.ArrayList;
-import java.util.EnumMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
+import java.util.function.ToIntFunction;
 
-public class bun {
-   private final Map<bum, List<ezy>> a;
+class bun extends bui {
+   private static final int d = 2;
+   public static final int c = 2;
+   private final ToIntFunction<bam> e;
 
-   bun(Map<bum, List<ezy>> $$0) {
-      this.a = $$0;
+   protected bun(buj $$0, int $$1, ToIntFunction<bam> $$2) {
+      super($$0, $$1, ls.V);
+      this.e = $$2;
    }
 
-   public static bun a(float $$0, float $$1) {
-      return a().a($$0, $$1);
+   @VisibleForTesting
+   protected static int a(int $$0, bun.a $$1, int $$2) {
+      return $$0 < 1 ? $$2 : bae.a(0, $$0 - $$1.count($$0), $$2);
    }
 
-   public static bun.a a() {
-      return new bun.a();
-   }
+   @Override
+   public void a(ash $$0, bwb $$1, int $$2, bvf.c $$3) {
+      if ($$3 == bvf.c.a) {
+         int $$4 = this.e.applyAsInt($$1.dY());
+         int $$5 = $$0.N().c(dgw.u);
+         int $$6 = a($$5, bun.a.a($$1), $$4);
 
-   public bun a(float $$0, float $$1, float $$2) {
-      Map<bum, List<ezy>> $$3 = new EnumMap<>(bum.class);
-
-      for (Entry<bum, List<ezy>> $$4 : this.a.entrySet()) {
-         $$3.put($$4.getKey(), a($$4.getValue(), $$0, $$1, $$2));
-      }
-
-      return new bun($$3);
-   }
-
-   private static List<ezy> a(List<ezy> $$0, float $$1, float $$2, float $$3) {
-      List<ezy> $$4 = new ArrayList<>($$0.size());
-
-      for (ezy $$5 : $$0) {
-         $$4.add($$5.d((double)$$1, (double)$$2, (double)$$3));
-      }
-
-      return $$4;
-   }
-
-   @Nullable
-   public ezy a(bum $$0, int $$1, float $$2) {
-      List<ezy> $$3 = this.a.get($$0);
-      return $$1 >= 0 && $$1 < $$3.size() ? a($$3.get($$1), $$2) : null;
-   }
-
-   public ezy b(bum $$0, int $$1, float $$2) {
-      ezy $$3 = this.a($$0, $$1, $$2);
-      if ($$3 == null) {
-         throw new IllegalStateException("Had no attachment point of type: " + $$0 + " for index: " + $$1);
-      } else {
-         return $$3;
-      }
-   }
-
-   public ezy c(bum $$0, int $$1, float $$2) {
-      List<ezy> $$3 = this.a.get($$0);
-      if ($$3.isEmpty()) {
-         throw new IllegalStateException("Had no attachment points of type: " + $$0);
-      } else {
-         ezy $$4 = $$3.get(azm.a($$1, 0, $$3.size() - 1));
-         return a($$4, $$2);
-      }
-   }
-
-   private static ezy a(ezy $$0, float $$1) {
-      return $$0.b(-$$1 * (float) (Math.PI / 180.0));
-   }
-
-   public static class a {
-      private final Map<bum, List<ezy>> a = new EnumMap<>(bum.class);
-
-      a() {
-      }
-
-      public bun.a a(bum $$0, float $$1, float $$2, float $$3) {
-         return this.a($$0, new ezy((double)$$1, (double)$$2, (double)$$3));
-      }
-
-      public bun.a a(bum $$0, ezy $$1) {
-         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>(1)).add($$1);
-         return this;
-      }
-
-      public bun a(float $$0, float $$1) {
-         Map<bum, List<ezy>> $$2 = new EnumMap<>(bum.class);
-
-         for (bum $$3 : bum.values()) {
-            List<ezy> $$4 = this.a.get($$3);
-            $$2.put($$3, $$4 != null ? List.copyOf($$4) : $$3.a($$0, $$1));
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            this.a($$1.dV(), $$1.dA(), $$1.dC() + 0.5, $$1.dG());
          }
+      }
+   }
 
-         return new bun($$2);
+   private void a(dha $$0, double $$1, double $$2, double $$3) {
+      cnb $$4 = bvm.bh.a($$0, bvl.k);
+      if ($$4 != null) {
+         $$4.a(2, true);
+         $$4.b($$1, $$2, $$3, $$0.H_().i() * 360.0F, 0.0F);
+         $$0.b($$4);
+      }
+   }
+
+   @FunctionalInterface
+   protected interface a {
+      int count(int var1);
+
+      static bun.a a(bwb $$0) {
+         return $$1 -> {
+            List<cnb> $$2 = new ArrayList<>();
+            $$0.dV().a(bvm.bh, $$0.cR().g(2.0), $$1x -> $$1x != $$0, $$2, $$1);
+            return $$2.size();
+         };
       }
    }
 }

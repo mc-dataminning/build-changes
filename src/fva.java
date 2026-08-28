@@ -1,67 +1,96 @@
-import javax.annotation.Nullable;
+public class fva {
+   private static final alz a = alz.b("alt");
+   private static final ys b = ys.a.a(a);
+   private static final fva c = new fva();
+   private final bam d = bam.a();
+   private final String[] e = new String[]{
+      "the",
+      "elder",
+      "scrolls",
+      "klaatu",
+      "berata",
+      "niktu",
+      "xyzzy",
+      "bless",
+      "curse",
+      "light",
+      "darkness",
+      "fire",
+      "air",
+      "earth",
+      "water",
+      "hot",
+      "dry",
+      "cold",
+      "wet",
+      "ignite",
+      "snuff",
+      "embiggen",
+      "twist",
+      "shorten",
+      "stretch",
+      "fiddle",
+      "destroy",
+      "imbue",
+      "galvanize",
+      "enchant",
+      "free",
+      "limited",
+      "range",
+      "of",
+      "towards",
+      "inside",
+      "sphere",
+      "cube",
+      "self",
+      "other",
+      "ball",
+      "mental",
+      "physical",
+      "grow",
+      "shrink",
+      "demon",
+      "elemental",
+      "spirit",
+      "animal",
+      "creature",
+      "beast",
+      "humanoid",
+      "undead",
+      "fresh",
+      "stale",
+      "phnglui",
+      "mglwnafh",
+      "cthulhu",
+      "rlyeh",
+      "wgahnagl",
+      "fhtagn",
+      "baguette"
+   };
 
-public abstract class fva extends frw {
-   protected final frw b;
-   protected final fki c;
-   @Nullable
-   protected fna d;
-   public final fps s = new fps(this);
-
-   public fva(frw $$0, fki $$1, xj $$2) {
-      super($$2);
-      this.b = $$0;
-      this.c = $$1;
+   private fva() {
    }
 
-   @Override
-   protected void aR_() {
-      this.J();
-      this.G();
-      this.F();
-      this.s.a($$1 -> {
-         fmb var10000 = this.c($$1);
-      });
-      this.c();
+   public static fva a() {
+      return c;
    }
 
-   protected void J() {
-      this.s.a(this.l, this.p);
-   }
+   public ya a(fnj $$0, int $$1) {
+      StringBuilder $$2 = new StringBuilder();
+      int $$3 = this.d.a(2) + 3;
 
-   protected void G() {
-      this.d = this.s.c(new fna(this.m, this.n, this));
-      this.m();
-      if (this.d.b(this.c.au()) instanceof fmk $$0) {
-         this.q = $$0;
-         this.q.j = this.m.aZ().a();
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if ($$4 != 0) {
+            $$2.append(" ");
+         }
+
+         $$2.append(ae.a(this.e, this.d));
       }
+
+      return $$0.b().a(xv.b($$2.toString()).c(b), $$1, ys.a);
    }
 
-   protected abstract void m();
-
-   protected void F() {
-      this.s.b(fmd.a(xi.d, $$0 -> this.aO_()).a(200).a());
-   }
-
-   @Override
-   protected void c() {
-      this.s.a();
-      if (this.d != null) {
-         this.d.a(this.n, this.s);
-      }
-   }
-
-   @Override
-   public void j() {
-      this.m.n.ay();
-   }
-
-   @Override
-   public void aO_() {
-      if (this.d != null) {
-         this.d.c();
-      }
-
-      this.m.a(this.b);
+   public void a(long $$0) {
+      this.d.b($$0);
    }
 }

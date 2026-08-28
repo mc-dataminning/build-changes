@@ -1,30 +1,44 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public class elv extends elo {
-   public static final MapCodec<elv> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.INT.fieldOf("max_water_depth").forGetter($$0x -> $$0x.c)).apply($$0, elv::new)
-   );
-   private final int c;
+public class elv extends ely {
+   public static final MapCodec<elv> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, elv::new));
 
-   private elv(int $$0) {
-      this.c = $$0;
-   }
-
-   public static elv a(int $$0) {
-      return new elv($$0);
+   public elv(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected boolean a(eln $$0, azu $$1, jh $$2) {
-      int $$3 = $$0.a(ebq.a.d, $$2.u(), $$2.w());
-      int $$4 = $$0.a(ebq.a.b, $$2.u(), $$2.w());
-      return $$4 - $$3 <= this.c;
+   protected elz<?> a() {
+      return elz.c;
    }
 
    @Override
-   public elq<?> b() {
-      return elq.d;
+   public List<eke.a> a(dhg $$0, BiConsumer<jh, dxn> $$1, bam $$2, int $$3, jh $$4, ejo $$5) {
+      jh $$6 = $$4.e();
+      a($$0, $$1, $$2, $$6, $$5);
+      a($$0, $$1, $$2, $$6.i(), $$5);
+      a($$0, $$1, $$2, $$6.g(), $$5);
+      a($$0, $$1, $$2, $$6.g().i(), $$5);
+      jh.a $$7 = new jh.a();
+
+      for (int $$8 = 0; $$8 < $$3; $$8++) {
+         this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 0);
+         if ($$8 < $$3 - 1) {
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 0);
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 1);
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 1);
+         }
+      }
+
+      return ImmutableList.of(new eke.a($$4.b($$3), 0, true));
+   }
+
+   private void a(dhg $$0, BiConsumer<jh, dxn> $$1, bam $$2, jh.a $$3, ejo $$4, jh $$5, int $$6, int $$7, int $$8) {
+      $$3.a($$5, $$6, $$7, $$8);
+      this.a($$0, $$1, $$2, $$3, $$4);
    }
 }

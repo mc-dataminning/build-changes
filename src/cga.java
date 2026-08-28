@@ -1,25 +1,18 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
 
-public class cga {
-   @Nullable
-   public static ezy a(bvp $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      boolean $$7 = cgd.a($$0, $$1);
-      return cgg.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+public class cga extends cgl<bwb> {
+   @Override
+   public Set<cff<?>> a() {
+      return ImmutableSet.of(cff.X);
    }
 
-   @Nullable
-   public static jh a(bvp $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
-      jh $$8 = cgg.a($$0.dY(), $$1, $$2, $$3, $$4, $$5, $$6);
-      if ($$8 == null) {
-         return null;
+   @Override
+   protected void a(ash $$0, bwb $$1) {
+      if ($$1.bj()) {
+         $$1.eb().a(cff.X, bbk.a);
       } else {
-         jh $$9 = cgg.a($$0, $$1, $$0.dY(), $$8);
-         if (!cgd.a($$9, $$0) && !cgd.a($$7, $$0, $$9)) {
-            $$9 = cgg.a($$9, $$0.dV().al(), $$1x -> cgd.c($$0, $$1x));
-            return cgd.b($$0, $$9) ? null : $$9;
-         } else {
-            return null;
-         }
+         $$1.eb().b(cff.X);
       }
    }
 }

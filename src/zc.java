@@ -1,36 +1,53 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class zc implements yz {
-   public static final za<zc> a = new za<zc>() {
-      private static final MapCodec<zc> a = yg.b.a.xmap(zc::new, $$0 -> $$0.e);
-      private static final zh<wu, zc> b = zh.a(yg.b.c, $$0 -> $$0.e, zc::new);
-
+public interface zc extends xw {
+   MapCodec<zc> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("text").forGetter(zc::b)).apply($$0, zc::a));
+   xw.a<zc> b = new xw.a<>(a, "text");
+   zc c = new zc() {
       @Override
-      public MapCodec<zc> a() {
-         return a;
+      public String toString() {
+         return "empty";
       }
 
       @Override
-      public zh<wu, zc> b() {
-         return b;
+      public String b() {
+         return "";
       }
    };
-   public static final zc b = new zc(yg.a);
-   public static final zc c = new zc(yg.a.a(n.m));
-   public static final zc d = new zc(yg.a.a(n.o));
-   final yg e;
 
-   public zc(yg $$0) {
-      this.e = $$0;
+   static zc a(String $$0) {
+      return (zc)($$0.isEmpty() ? c : new zc.a($$0));
    }
 
-   @Override
-   public xx a(int $$0) {
-      return xj.b(Integer.toString($$0)).c(this.e);
-   }
+   String b();
 
    @Override
-   public za<zc> a() {
-      return a;
+   default xw.a<?> a() {
+      return b;
+   }
+
+   public static record a(String d) implements zc {
+      @Override
+      public <T> Optional<T> a(ya.a<T> $$0) {
+         return $$0.accept(this.d);
+      }
+
+      @Override
+      public <T> Optional<T> a(ya.b<T> $$0, ys $$1) {
+         return $$0.accept($$1, this.d);
+      }
+
+      @Override
+      public String toString() {
+         return "literal{" + this.d + "}";
+      }
+
+      @Override
+      public String b() {
+         return this.d;
+      }
    }
 }

@@ -1,24 +1,15 @@
-public class cxc extends cwi {
-   public cxc(cwi.a $$0) {
+public class cxc extends cxg implements cyo {
+   public cxc(cxg.a $$0) {
       super($$0);
    }
 
    @Override
-   public bsk a(cwm $$0, cou $$1, bvh $$2, bsj $$3) {
-      xj $$4 = $$0.a(ku.g);
-      if ($$4 != null && !($$2 instanceof cou)) {
-         if (!$$1.dV().C && $$2.bL()) {
-            $$2.b($$4);
-            if ($$2 instanceof bvj $$5) {
-               $$5.ai();
-            }
-
-            $$0.h(1);
-         }
-
-         return bsk.a;
+   public boolean a(dha $$0, dwc $$1, boolean $$2, cps $$3) {
+      if ($$1.a($$0x -> $$0x.a(false), $$2)) {
+         $$0.a(null, $$1.aB_(), axf.nC, axg.e, 1.0F, 1.0F);
+         return true;
       } else {
-         return bsk.e;
+         return false;
       }
    }
 }

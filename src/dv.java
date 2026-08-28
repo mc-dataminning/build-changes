@@ -8,21 +8,21 @@ public class dv extends dy<dv.a> {
       return dv.a.a;
    }
 
-   public void a(arq $$0, dbc<?> $$1) {
+   public void a(asi $$0, dcd<?> $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public static ap<dv.a> a(alj $$0) {
+   public static ap<dv.a> a(aly<dbz<?>> $$0) {
       return ao.g.a(new dv.a(Optional.empty(), $$0));
    }
 
-   public static record a(Optional<bh> b, alj c) implements dy.a {
+   public static record a(Optional<bh> b, aly<dbz<?>> c) implements dy.a {
       public static final Codec<dv.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bw.b.optionalFieldOf("player").forGetter(dv.a::a), alj.a.fieldOf("recipe").forGetter(dv.a::b)).apply($$0, dv.a::new)
+         $$0 -> $$0.group(bw.b.optionalFieldOf("player").forGetter(dv.a::a), aly.a(mb.bj).fieldOf("recipe").forGetter(dv.a::b)).apply($$0, dv.a::new)
       );
 
-      public boolean a(dbc<?> $$0) {
-         return this.c.equals($$0.a());
+      public boolean a(dcd<?> $$0) {
+         return this.c == $$0.a();
       }
 
       @Override
@@ -30,7 +30,7 @@ public class dv extends dy<dv.a> {
          return this.b;
       }
 
-      public alj b() {
+      public aly<dbz<?>> b() {
          return this.c;
       }
    }

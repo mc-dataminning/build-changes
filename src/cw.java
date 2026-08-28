@@ -17,7 +17,7 @@ public class cw {
    public static final cv.a<cs> n = a("jukebox_playable", cs.a);
 
    private static <T extends cv> cv.a<T> a(String $$0, Codec<T> $$1) {
-      return kd.a(lz.aq, $$0, new cv.a<>($$1));
+      return kd.a(ma.aq, $$0, new cv.a<>($$1));
    }
 
    public static cv.a<?> a(kd<cv.a<?>> $$0) {

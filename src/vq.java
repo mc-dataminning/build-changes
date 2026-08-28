@@ -1,148 +1,241 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.regex.Pattern;
 
-public class vq implements vf {
-   private String a = "";
-   @Nullable
-   private vi b;
-   private final Deque<Consumer<vi>> c = new ArrayDeque<>();
+public class vq implements vy {
+   private static final Map<String, List<String>> a = ae.a(Maps.newHashMap(), $$0 -> {
+      $$0.put("{}", Lists.newArrayList(new String[]{"DataVersion", "author", "size", "data", "entities", "palette", "palettes"}));
+      $$0.put("{}.data.[].{}", Lists.newArrayList(new String[]{"pos", "state", "nbt"}));
+      $$0.put("{}.entities.[].{}", Lists.newArrayList(new String[]{"blockPos", "pos"}));
+   });
+   private static final Set<String> b = Sets.newHashSet(new String[]{"{}.size.[]", "{}.data.[].{}", "{}.palette.[].{}", "{}.entities.[].{}"});
+   private static final Pattern c = Pattern.compile("[A-Za-z0-9._+-]+");
+   private static final String d = String.valueOf(':');
+   private static final String e = String.valueOf(',');
+   private static final String f = "[";
+   private static final String g = "]";
+   private static final String h = ";";
+   private static final String i = " ";
+   private static final String j = "{";
+   private static final String k = "}";
+   private static final String l = "\n";
+   private final String m;
+   private final int n;
+   private final List<String> o;
+   private String p = "";
 
-   @Nullable
-   public vi d() {
-      return this.b;
+   public vq() {
+      this("    ", 0, Lists.newArrayList());
    }
 
-   protected int e() {
-      return this.c.size();
+   public vq(String $$0, int $$1, List<String> $$2) {
+      this.m = $$0;
+      this.n = $$1;
+      this.o = $$2;
    }
 
-   private void a(vi $$0) {
-      this.c.getLast().accept($$0);
-   }
-
-   @Override
-   public vf.b a() {
-      this.a(un.b);
-      return vf.b.a;
-   }
-
-   @Override
-   public vf.b a(String $$0) {
-      this.a(vg.a($$0));
-      return vf.b.a;
-   }
-
-   @Override
-   public vf.b a(byte $$0) {
-      this.a(uj.a($$0));
-      return vf.b.a;
-   }
-
-   @Override
-   public vf.b a(short $$0) {
-      this.a(vd.a($$0));
-      return vf.b.a;
-   }
-
-   @Override
-   public vf.b a(int $$0) {
-      this.a(uq.a($$0));
-      return vf.b.a;
+   public String a(vu $$0) {
+      $$0.a(this);
+      return this.p;
    }
 
    @Override
-   public vf.b a(long $$0) {
-      this.a(ut.a($$0));
-      return vf.b.a;
+   public void a(vs $$0) {
+      this.p = vs.b($$0.u_());
    }
 
    @Override
-   public vf.b a(float $$0) {
-      this.a(uo.a($$0));
-      return vf.b.a;
+   public void a(uv $$0) {
+      this.p = $$0.l() + "b";
    }
 
    @Override
-   public vf.b a(double $$0) {
-      this.a(um.a($$0));
-      return vf.b.a;
+   public void a(vp $$0) {
+      this.p = $$0.l() + "s";
    }
 
    @Override
-   public vf.b a(byte[] $$0) {
-      this.a(new ui($$0));
-      return vf.b.a;
+   public void a(vc $$0) {
+      this.p = String.valueOf($$0.l());
    }
 
    @Override
-   public vf.b a(int[] $$0) {
-      this.a(new up($$0));
-      return vf.b.a;
+   public void a(vf $$0) {
+      this.p = $$0.l() + "L";
    }
 
    @Override
-   public vf.b a(long[] $$0) {
-      this.a(new us($$0));
-      return vf.b.a;
+   public void a(va $$0) {
+      this.p = $$0.k() + "f";
    }
 
    @Override
-   public vf.b a(vk<?> $$0, int $$1) {
-      return vf.b.a;
+   public void a(uy $$0) {
+      this.p = $$0.j() + "d";
    }
 
    @Override
-   public vf.a b(vk<?> $$0, int $$1) {
-      this.c($$0);
-      return vf.a.a;
-   }
+   public void a(uu $$0) {
+      StringBuilder $$1 = new StringBuilder("[").append("B").append(";");
+      byte[] $$2 = $$0.e();
 
-   @Override
-   public vf.a a(vk<?> $$0) {
-      return vf.a.a;
-   }
-
-   @Override
-   public vf.a a(vk<?> $$0, String $$1) {
-      this.a = $$1;
-      this.c($$0);
-      return vf.a.a;
-   }
-
-   private void c(vk<?> $$0) {
-      if ($$0 == ur.a) {
-         ur $$1 = new ur();
-         this.a($$1);
-         this.c.addLast($$1::add);
-      } else if ($$0 == ul.b) {
-         ul $$2 = new ul();
-         this.a($$2);
-         this.c.addLast($$1 -> $$2.a(this.a, $$1));
+      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+         $$1.append(" ").append($$2[$$3]).append("B");
+         if ($$3 != $$2.length - 1) {
+            $$1.append(e);
+         }
       }
+
+      $$1.append("]");
+      this.p = $$1.toString();
    }
 
    @Override
-   public vf.b b() {
-      this.c.removeLast();
-      return vf.b.a;
+   public void a(vb $$0) {
+      StringBuilder $$1 = new StringBuilder("[").append("I").append(";");
+      int[] $$2 = $$0.g();
+
+      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+         $$1.append(" ").append($$2[$$3]);
+         if ($$3 != $$2.length - 1) {
+            $$1.append(e);
+         }
+      }
+
+      $$1.append("]");
+      this.p = $$1.toString();
    }
 
    @Override
-   public vf.b b(vk<?> $$0) {
-      if ($$0 == ur.a) {
-         ur $$1 = new ur();
-         this.b = $$1;
-         this.c.addLast($$1::add);
-      } else if ($$0 == ul.b) {
-         ul $$2 = new ul();
-         this.b = $$2;
-         this.c.addLast($$1 -> $$2.a(this.a, $$1));
+   public void a(ve $$0) {
+      String $$1 = "L";
+      StringBuilder $$2 = new StringBuilder("[").append("L").append(";");
+      long[] $$3 = $$0.g();
+
+      for (int $$4 = 0; $$4 < $$3.length; $$4++) {
+         $$2.append(" ").append($$3[$$4]).append("L");
+         if ($$4 != $$3.length - 1) {
+            $$2.append(e);
+         }
+      }
+
+      $$2.append("]");
+      this.p = $$2.toString();
+   }
+
+   @Override
+   public void a(vd $$0) {
+      if ($$0.isEmpty()) {
+         this.p = "[]";
       } else {
-         this.c.addLast($$0x -> this.b = $$0x);
+         StringBuilder $$1 = new StringBuilder("[");
+         this.b("[]");
+         String $$2 = b.contains(this.a()) ? "" : this.m;
+         if (!$$2.isEmpty()) {
+            $$1.append("\n");
+         }
+
+         for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+            $$1.append(Strings.repeat($$2, this.n + 1));
+            $$1.append(new vq($$2, this.n + 1, this.o).a($$0.k($$3)));
+            if ($$3 != $$0.size() - 1) {
+               $$1.append(e).append($$2.isEmpty() ? " " : "\n");
+            }
+         }
+
+         if (!$$2.isEmpty()) {
+            $$1.append("\n").append(Strings.repeat($$2, this.n));
+         }
+
+         $$1.append("]");
+         this.p = $$1.toString();
+         this.b();
+      }
+   }
+
+   @Override
+   public void a(ux $$0) {
+      if ($$0.g()) {
+         this.p = "{}";
+      } else {
+         StringBuilder $$1 = new StringBuilder("{");
+         this.b("{}");
+         String $$2 = b.contains(this.a()) ? "" : this.m;
+         if (!$$2.isEmpty()) {
+            $$1.append("\n");
+         }
+
+         Collection<String> $$3 = this.b($$0);
+         Iterator<String> $$4 = $$3.iterator();
+
+         while ($$4.hasNext()) {
+            String $$5 = $$4.next();
+            vu $$6 = $$0.c($$5);
+            this.b($$5);
+            $$1.append(Strings.repeat($$2, this.n + 1)).append(a($$5)).append(d).append(" ").append(new vq($$2, this.n + 1, this.o).a($$6));
+            this.b();
+            if ($$4.hasNext()) {
+               $$1.append(e).append($$2.isEmpty() ? " " : "\n");
+            }
+         }
+
+         if (!$$2.isEmpty()) {
+            $$1.append("\n").append(Strings.repeat($$2, this.n));
+         }
+
+         $$1.append("}");
+         this.p = $$1.toString();
+         this.b();
+      }
+   }
+
+   private void b() {
+      this.o.remove(this.o.size() - 1);
+   }
+
+   private void b(String $$0) {
+      this.o.add($$0);
+   }
+
+   protected List<String> b(ux $$0) {
+      Set<String> $$1 = Sets.newHashSet($$0.e());
+      List<String> $$2 = Lists.newArrayList();
+      List<String> $$3 = a.get(this.a());
+      if ($$3 != null) {
+         for (String $$4 : $$3) {
+            if ($$1.remove($$4)) {
+               $$2.add($$4);
+            }
+         }
+
+         if (!$$1.isEmpty()) {
+            $$1.stream().sorted().forEach($$2::add);
+         }
+      } else {
+         $$2.addAll($$1);
+         Collections.sort($$2);
       }
 
-      return vf.b.a;
+      return $$2;
+   }
+
+   public String a() {
+      return String.join(".", this.o);
+   }
+
+   protected static String a(String $$0) {
+      return c.matcher($$0).matches() ? $$0 : vs.b($$0);
+   }
+
+   @Override
+   public void a(uz $$0) {
    }
 }

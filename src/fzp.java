@@ -1,5 +1,8 @@
-public class fzp extends fyc<gyd> {
-   public fzp(gcl $$0) {
-      super($$0);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fzp {
 }

@@ -1,37 +1,54 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record ded(alj e, jq<cwi> f, xj g, boolean h) {
-   public static final Codec<ded> a = RecordCodecBuilder.create(
+public record ded(ju<bui> d, ddy e, ddy f, ddy g, ddy h) implements dei {
+   public static final MapCodec<ded> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               alj.a.fieldOf("asset_id").forGetter(ded::a),
-               alg.a(ma.K).fieldOf("template_item").forGetter(ded::b),
-               xl.a.fieldOf("description").forGetter(ded::c),
-               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(ded::d)
+               kf.a(mb.W).fieldOf("to_apply").forGetter(ded::b),
+               ddy.b.fieldOf("min_duration").forGetter(ded::c),
+               ddy.b.fieldOf("max_duration").forGetter(ded::d),
+               ddy.b.fieldOf("min_amplifier").forGetter(ded::e),
+               ddy.b.fieldOf("max_amplifier").forGetter(ded::f)
             )
             .apply($$0, ded::new)
    );
-   public static final zh<wu, ded> b = zh.a(alj.b, ded::a, zf.b(ma.K), ded::b, xl.b, ded::c, zf.b, ded::d, ded::new);
-   public static final Codec<jq<ded>> c = alf.a(ma.aY, a);
-   public static final zh<wu, jq<ded>> d = zf.a(ma.aY, b);
 
-   public xj a(jq<deb> $$0) {
-      return this.g.f().c($$0.a().e().a());
+   @Override
+   public void a(ash $$0, int $$1, ddq $$2, bvf $$3, fbs $$4) {
+      if ($$3 instanceof bwb $$5) {
+         bam $$6 = $$5.dY();
+         Optional<jq<bui>> $$7 = this.d.a($$6);
+         if ($$7.isPresent()) {
+            int $$8 = Math.round(bae.b($$6, this.e.a($$1), this.f.a($$1)) * 20.0F);
+            int $$9 = Math.max(0, Math.round(bae.b($$6, this.g.a($$1), this.h.a($$1))));
+            $$5.a(new buk($$7.get(), $$8, $$9));
+         }
+      }
    }
 
-   public alj a() {
+   @Override
+   public MapCodec<ded> a() {
+      return a;
+   }
+
+   public ju<bui> b() {
+      return this.d;
+   }
+
+   public ddy c() {
       return this.e;
    }
 
-   public jq<cwi> b() {
+   public ddy d() {
       return this.f;
    }
 
-   public xj c() {
+   public ddy e() {
       return this.g;
    }
 
-   public boolean d() {
+   public ddy f() {
       return this.h;
    }
 }

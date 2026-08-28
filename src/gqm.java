@@ -1,32 +1,31 @@
-public class gqm extends gof<cjf, gwn, gab> {
-   private static final alj a = alj.b("textures/entity/llama/creamy.png");
-   private static final alj b = alj.b("textures/entity/llama/white.png");
-   private static final alj k = alj.b("textures/entity/llama/brown.png");
-   private static final alj l = alj.b("textures/entity/llama/gray.png");
+import java.util.function.UnaryOperator;
 
-   public gqm(gpk.a $$0, gcj $$1, gcj $$2) {
-      super($$0, new gab($$0.a($$1)), new gab($$0.a($$2)), 0.7F);
-      this.a(new gts(this, $$0.f(), $$0.h()));
+public class gqm extends gpx {
+   private final gca a;
+   private final alz b;
+   private final gbf<gxa> h;
+
+   public gqm(grj.a $$0, gef $$1) {
+      super($$0);
+      this.b = $$1.a().a((UnaryOperator<String>)($$0x -> "textures/entity/" + $$0x + ".png"));
+      this.a = new gca.a($$0.a(geg.B), $$0x -> glo.i());
+      this.h = new gam($$0.a($$1));
    }
 
-   public alj a(gwn $$0) {
-      return switch ($$0.a) {
-         case a -> a;
-         case b -> b;
-         case c -> k;
-         case d -> l;
-      };
+   @Override
+   protected gbf<gxa> a() {
+      return this.h;
    }
 
-   public gwn b() {
-      return new gwn();
+   @Override
+   protected glo b() {
+      return this.h.a(this.b);
    }
 
-   public void a(cjf $$0, gwn $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gz();
-      $$1.b = !$$0.e_() && $$0.q();
-      $$1.c = $$0.af();
-      $$1.d = $$0.gp();
+   @Override
+   protected void b(gxa $$0, fgl $$1, gle $$2, int $$3) {
+      if (!$$0.f) {
+         this.a.a($$1, $$2.getBuffer(this.a.a(this.b)), $$3, hav.d);
+      }
    }
 }

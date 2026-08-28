@@ -1,37 +1,34 @@
-public class ahx implements zq<agw> {
-   public static final zh<wg, ahx> a = zq.a(ahx::a, ahx::new);
-   private final boolean b;
-   private final boolean c;
+public class ahx implements aac<ahm> {
+   public static final zt<ws, ahx> a = aac.a(ahx::a, ahx::new);
+   private final ahx.a b;
 
-   public ahx(boolean $$0, boolean $$1) {
+   public ahx(ahx.a $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   private ahx(wg $$0) {
-      this.b = $$0.readBoolean();
-      this.c = $$0.readBoolean();
+   private ahx(ws $$0) {
+      this.b = $$0.b(ahx.a.class);
    }
 
-   private void a(wg $$0) {
+   private void a(ws $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
-   }
-
-   public void a(agw $$0) {
-      $$0.a(this);
    }
 
    @Override
-   public zs<ahx> a() {
-      return agu.bJ;
+   public aae<ahx> a() {
+      return ahk.bu;
    }
 
-   public boolean b() {
+   public void a(ahm $$0) {
+      $$0.a(this);
+   }
+
+   public ahx.a b() {
       return this.b;
    }
 
-   public boolean e() {
-      return this.c;
+   public static enum a {
+      a,
+      b;
    }
 }

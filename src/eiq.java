@@ -1,48 +1,46 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eiq extends eim {
-   public static final MapCodec<eiq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0).and(brp.b(0, 24).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, eiq::new)
+public class eiq implements eis {
+   public static final Codec<eiq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").forGetter($$0x -> $$0x.b),
+               bsj.b(1, 128).fieldOf("height").forGetter($$0x -> $$0x.c),
+               bsj.b(1, 128).fieldOf("radius").forGetter($$0x -> $$0x.d),
+               Codec.intRange(0, 64).fieldOf("max_stalagmite_stalactite_height_diff").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("height_deviation").forGetter($$0x -> $$0x.f),
+               bsj.b(0, 128).fieldOf("dripstone_block_layer_thickness").forGetter($$0x -> $$0x.g),
+               bsh.a(0.0F, 2.0F).fieldOf("density").forGetter($$0x -> $$0x.h),
+               bsh.a(0.0F, 2.0F).fieldOf("wetness").forGetter($$0x -> $$0x.i),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_dripstone_column_at_max_distance_from_center").forGetter($$0x -> $$0x.j),
+               Codec.intRange(1, 64).fieldOf("max_distance_from_edge_affecting_chance_of_dripstone_column").forGetter($$0x -> $$0x.k),
+               Codec.intRange(1, 64).fieldOf("max_distance_from_center_affecting_height_bias").forGetter($$0x -> $$0x.l)
+            )
+            .apply($$0, eiq::new)
    );
-   private final brp b;
+   public final int b;
+   public final bsj c;
+   public final bsj d;
+   public final int e;
+   public final int f;
+   public final bsj g;
+   public final bsh h;
+   public final bsh i;
+   public final float j;
+   public final int k;
+   public final int l;
 
-   public eiq(brp $$0, brp $$1, brp $$2) {
-      super($$0, $$1);
-      this.b = $$2;
-   }
-
-   @Override
-   protected ein<?> a() {
-      return ein.c;
-   }
-
-   @Override
-   protected void a(dfs $$0, eim.b $$1, azu $$2, ehw $$3, int $$4, eim.a $$5, int $$6, int $$7, int $$8) {
-      int $$9 = 0;
-
-      for (int $$10 = $$8; $$10 >= $$8 - $$6; $$10--) {
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$9, $$10, $$5.c());
-         if ($$9 >= 1 && $$10 == $$8 - $$6 + 1) {
-            $$9--;
-         } else if ($$9 < $$7 + $$5.b()) {
-            $$9++;
-         }
-      }
-   }
-
-   @Override
-   public int a(azu $$0, int $$1) {
-      return super.a($$0, $$1) + $$0.a(Math.max($$1 + 1, 1));
-   }
-
-   @Override
-   public int a(azu $$0, int $$1, ehw $$2) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   protected boolean a(azu $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   public eiq(int $$0, bsj $$1, bsj $$2, int $$3, int $$4, bsj $$5, bsh $$6, bsh $$7, float $$8, int $$9, int $$10) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
+      this.l = $$10;
    }
 }

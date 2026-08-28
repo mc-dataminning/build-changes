@@ -1,66 +1,18 @@
-import it.unimi.dsi.fastutil.shorts.ShortIterator;
-import it.unimi.dsi.fastutil.shorts.ShortSet;
-import java.util.function.BiConsumer;
+import io.netty.buffer.ByteBuf;
 
-public class aew implements zq<acf> {
-   public static final zh<wg, aew> a = zq.a(aew::a, aew::new);
-   private static final int b = 12;
-   private final kj c;
-   private final short[] d;
-   private final dvv[] e;
+public class aew implements aac<acr> {
+   public static final aew a = new aew();
+   public static final zt<ByteBuf, aew> b = zt.a(a);
 
-   public aew(kj $$0, ShortSet $$1, dyb $$2) {
-      this.c = $$0;
-      int $$3 = $$1.size();
-      this.d = new short[$$3];
-      this.e = new dvv[$$3];
-      int $$4 = 0;
-
-      for (ShortIterator var6 = $$1.iterator(); var6.hasNext(); $$4++) {
-         short $$5 = (Short)var6.next();
-         this.d[$$4] = $$5;
-         this.e[$$4] = $$2.a(kj.a($$5), kj.b($$5), kj.c($$5));
-      }
-   }
-
-   private aew(wg $$0) {
-      this.c = kj.a($$0.readLong());
-      int $$1 = $$0.l();
-      this.d = new short[$$1];
-      this.e = new dvv[$$1];
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         long $$3 = $$0.m();
-         this.d[$$2] = (short)((int)($$3 & 4095L));
-         this.e[$$2] = diq.q.a((int)($$3 >>> 12));
-      }
-   }
-
-   private void a(wg $$0) {
-      $$0.b(this.c.s());
-      $$0.c(this.d.length);
-
-      for (int $$1 = 0; $$1 < this.d.length; $$1++) {
-         $$0.a((long)diq.j(this.e[$$1]) << 12 | (long)this.d[$$1]);
-      }
+   private aew() {
    }
 
    @Override
-   public zs<aew> a() {
-      return agu.ao;
+   public aae<aew> a() {
+      return ahk.ad;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
-   }
-
-   public void a(BiConsumer<jh, dvv> $$0) {
-      jh.a $$1 = new jh.a();
-
-      for (int $$2 = 0; $$2 < this.d.length; $$2++) {
-         short $$3 = this.d[$$2];
-         $$1.d(this.c.d($$3), this.c.e($$3), this.c.f($$3));
-         $$0.accept($$1, this.e[$$2]);
-      }
    }
 }

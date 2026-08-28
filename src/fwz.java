@@ -1,81 +1,168 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2BooleanLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.Optional;
 
-public class fwz extends frw {
-   private static final xj a = xj.c("selectWorld.experiments");
-   private static final xj b = xj.c("selectWorld.experiments.info").a(n.m);
-   private static final int c = 310;
-   private final fps d = new fps(this);
-   private final frw s;
-   private final aun u;
-   private final Consumer<aun> v;
-   private final Object2BooleanMap<auk> w = new Object2BooleanLinkedOpenHashMap();
+public class fwz extends fwv {
+   private static final xv a = xv.c("options.videoTitle");
+   private static final xv u = xv.c("options.graphics.fabulous").a(n.u);
+   private static final xv v = xv.a("options.graphics.warning.message", u, u);
+   private static final xv w = xv.c("options.graphics.warning.title").a(n.m);
+   private static final xv x = xv.c("options.graphics.warning.accept");
+   private static final xv y = xv.c("options.graphics.warning.cancel");
+   private final gkv z;
+   private final int A;
 
-   public fwz(frw $$0, aun $$1, Consumer<aun> $$2) {
-      super(a);
-      this.s = $$0;
-      this.u = $$1;
-      this.v = $$2;
+   private static fmc<?>[] a(fmd $$0) {
+      return new fmc[]{
+         $$0.k(),
+         $$0.e(),
+         $$0.m(),
+         $$0.f(),
+         $$0.l(),
+         $$0.h(),
+         $$0.Q(),
+         $$0.i(),
+         $$0.at(),
+         $$0.F(),
+         $$0.as(),
+         $$0.j(),
+         $$0.ad(),
+         $$0.au(),
+         $$0.E(),
+         $$0.R(),
+         $$0.am(),
+         $$0.g(),
+         $$0.an(),
+         $$0.ai(),
+         $$0.ap(),
+         $$0.aq(),
+         $$0.q(),
+         $$0.ae()
+      };
+   }
 
-      for (auk $$3 : $$1.d()) {
-         if ($$3.l() == auo.d) {
-            this.w.put($$3, $$1.g().contains($$3));
+   public fwz(ftr $$0, flz $$1, fmd $$2) {
+      super($$0, $$2, a);
+      this.z = $$1.aj();
+      this.z.i();
+      if ($$2.k().c() == flr.c) {
+         this.z.e();
+      }
+
+      this.A = $$2.E().c();
+   }
+
+   @Override
+   protected void l() {
+      int $$0 = -1;
+      ffo $$1 = this.m.aO();
+      ffj $$2 = $$1.t();
+      int $$3;
+      if ($$2 == null) {
+         $$3 = -1;
+      } else {
+         Optional<ffn> $$4 = $$1.e();
+         $$3 = $$4.<Integer>map($$2::a).orElse(-1);
+      }
+
+      fmc<Integer> $$6 = new fmc<>("options.fullscreen.resolution", fmc.a(), ($$1x, $$2x) -> {
+         if ($$2 == null) {
+            return xv.c("options.fullscreen.unavailable");
+         } else if ($$2x == -1) {
+            return fmd.a($$1x, xv.c("options.fullscreen.current"));
+         } else {
+            ffn $$3x = $$2.a($$2x);
+            return fmd.a($$1x, xv.a("options.fullscreen.entry", $$3x.a(), $$3x.b(), $$3x.f(), $$3x.c() + $$3x.d() + $$3x.e()));
          }
+      }, new fmc.f(-1, $$2 != null ? $$2.e() - 1 : -1), $$3, $$2x -> {
+         if ($$2 != null) {
+            $$1.a($$2x == -1 ? Optional.empty() : Optional.of($$2.a($$2x)));
+         }
+      });
+      this.d.a($$6);
+      this.d.a(this.c.G());
+      this.d.a(a(this.c));
+   }
+
+   @Override
+   public void aP_() {
+      this.m.aO().f();
+      super.aP_();
+   }
+
+   @Override
+   public void aJ_() {
+      if (this.c.E().c() != this.A) {
+         this.m.a(this.c.E().c());
+         this.m.R();
+      }
+
+      super.aJ_();
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (super.a($$0, $$1, $$2)) {
+         if (this.z.g()) {
+            List<xv> $$3 = Lists.newArrayList(new xv[]{v, xu.s});
+            String $$4 = this.z.j();
+            if ($$4 != null) {
+               $$3.add(xu.s);
+               $$3.add(xv.a("options.graphics.warning.renderer", $$4).a(n.h));
+            }
+
+            String $$5 = this.z.l();
+            if ($$5 != null) {
+               $$3.add(xu.s);
+               $$3.add(xv.a("options.graphics.warning.vendor", $$5).a(n.h));
+            }
+
+            String $$6 = this.z.k();
+            if ($$6 != null) {
+               $$3.add(xu.s);
+               $$3.add(xv.a("options.graphics.warning.version", $$6).a(n.h));
+            }
+
+            this.m.a(new fwy(w, $$3, ImmutableList.of(new fwy.a(x, $$0x -> {
+               this.c.k().a(flr.c);
+               flz.Q().f.e();
+               this.z.e();
+               this.m.a(this);
+            }), new fwy.a(y, $$0x -> {
+               this.z.f();
+               this.m.a(this);
+            }))));
+         }
+
+         return true;
+      } else {
+         return false;
       }
    }
 
    @Override
-   protected void aR_() {
-      this.d.a(a, this.p);
-      fpw $$0 = this.d.c(fpw.d());
-      $$0.a(new fmx(b, this.p).d(310), $$0x -> $$0x.e(15));
-      fxe.a $$1 = fxe.a(310).a(2, true).b(4);
-      this.w.forEach(($$1x, $$2x) -> $$1.a(a($$1x), () -> this.w.getBoolean($$1x), $$1xx -> this.w.put($$1x, $$1xx)).a($$1x.c()));
-      $$1.a($$0::a);
-      fpw $$2 = this.d.b(fpw.e().a(8));
-      $$2.a(fmd.a(xi.d, $$0x -> this.m()).a());
-      $$2.a(fmd.a(xi.e, $$0x -> this.aO_()).a());
-      this.d.a($$1x -> {
-         fmb var10000 = this.c($$1x);
-      });
-      this.c();
-   }
-
-   private static xj a(auk $$0) {
-      String $$1 = "dataPack." + $$0.g() + ".name";
-      return (xj)(hal.a($$1) ? xj.c($$1) : $$0.b());
-   }
-
-   @Override
-   protected void c() {
-      this.d.a();
-   }
-
-   @Override
-   public xj i() {
-      return xi.a(super.i(), b);
-   }
-
-   @Override
-   public void aO_() {
-      this.m.a(this.s);
-   }
-
-   private void m() {
-      List<auk> $$0 = new ArrayList<>(this.u.g());
-      List<auk> $$1 = new ArrayList<>();
-      this.w.forEach(($$2, $$3) -> {
-         $$0.remove($$2);
-         if ($$3) {
-            $$1.add($$2);
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (ftr.r()) {
+         fmc<Integer> $$4 = this.c.at();
+         if ($$4.e() instanceof fmc.c $$5) {
+            int $$6 = $$4.c();
+            int $$7 = $$6 == 0 ? $$5.b() + 1 : $$6;
+            int $$8 = $$7 + (int)Math.signum($$3);
+            if ($$8 != 0 && $$8 <= $$5.b() && $$8 >= $$5.d()) {
+               fof<Integer> $$9 = (fof<Integer>)this.d.b($$4);
+               if ($$9 != null) {
+                  $$4.a($$8);
+                  $$9.a($$8);
+                  this.d.b(0.0);
+                  return true;
+               }
+            }
          }
-      });
-      $$0.addAll(Lists.reverse($$1));
-      this.u.b($$0.stream().map(auk::g).toList());
-      this.v.accept(this.u);
+
+         return false;
+      } else {
+         return super.a($$0, $$1, $$2, $$3);
+      }
    }
 }

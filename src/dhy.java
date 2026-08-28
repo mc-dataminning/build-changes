@@ -1,20 +1,13 @@
-import com.mojang.serialization.MapCodec;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class dhy extends dia {
-   public static final MapCodec<dhy> a = b(dhy::new);
-   private static final fas b = diq.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
+public interface dhy extends dhr {
+   long D();
 
-   @Override
-   public MapCodec<? extends dhy> a() {
-      return a;
+   default boolean f_(jh $$0) {
+      return true;
    }
 
-   protected dhy(dvu.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
-      return b;
+   default void a(@Nullable Supplier<String> $$0) {
    }
 }

@@ -1,81 +1,95 @@
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class bxi<E extends bvj & cll, T extends bvh> extends bxa<E> {
-   private static final int c = 1200;
-   private int d;
-   private bxi.a e = bxi.a.a;
+public class bxi {
+   private final Map<jq<bxe>, bxf> a;
 
-   public bxi() {
-      super(ImmutableMap.of(cel.n, cem.c, cel.o, cem.a), 1200);
+   bxi(Map<jq<bxe>, bxf> $$0) {
+      this.a = $$0;
    }
 
-   protected boolean a(arp $$0, E $$1) {
-      bvh $$2 = b($$1);
-      return $$1.b(cwq.wn) && bxc.b($$1, $$2) && bxc.a($$1, $$2, 0);
-   }
-
-   protected boolean a(arp $$0, E $$1, long $$2) {
-      return $$1.eb().a(cel.o) && this.a($$0, $$1);
-   }
-
-   protected void b(arp $$0, E $$1, long $$2) {
-      bvh $$3 = b($$1);
-      this.b($$1, $$3);
-      this.a($$1, $$3);
-   }
-
-   protected void c(arp $$0, E $$1, long $$2) {
-      if ($$1.fx()) {
-         $$1.fD();
-      }
-
-      if ($$1.b(cwq.wn)) {
-         $$1.b(false);
-         $$1.fz().b(ku.O, cyr.a);
+   private bxf d(jq<bxe> $$0) {
+      bxf $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("Can't find attribute " + $$0.g());
+      } else {
+         return $$1;
       }
    }
 
-   private void a(E $$0, bvh $$1) {
-      if (this.e == bxi.a.a) {
-         $$0.c(cpp.a($$0, cwq.wn));
-         this.e = bxi.a.b;
-         $$0.b(true);
-      } else if (this.e == bxi.a.b) {
-         if (!$$0.fx()) {
-            this.e = bxi.a.a;
-         }
+   public double a(jq<bxe> $$0) {
+      return this.d($$0).g();
+   }
 
-         int $$2 = $$0.fB();
-         cwm $$3 = $$0.fz();
-         if ($$2 >= cvd.b($$3, $$0)) {
-            $$0.fC();
-            this.e = bxi.a.c;
-            this.d = 20 + $$0.dY().a(20);
-            $$0.b(false);
-         }
-      } else if (this.e == bxi.a.c) {
-         this.d--;
-         if (this.d == 0) {
-            this.e = bxi.a.d;
-         }
-      } else if (this.e == bxi.a.d) {
-         $$0.a($$1, 1.0F);
-         this.e = bxi.a.a;
+   public double b(jq<bxe> $$0) {
+      return this.d($$0).b();
+   }
+
+   public double a(jq<bxe> $$0, alz $$1) {
+      bxh $$2 = this.d($$0).a($$1);
+      if ($$2 == null) {
+         throw new IllegalArgumentException("Can't find modifier " + $$1 + " on attribute " + $$0.g());
+      } else {
+         return $$2.c();
       }
    }
 
-   private void b(bvj $$0, bvh $$1) {
-      $$0.eb().a(cel.n, new bxl($$1, true));
+   @Nullable
+   public bxf a(Consumer<bxf> $$0, jq<bxe> $$1) {
+      bxf $$2 = this.a.get($$1);
+      if ($$2 == null) {
+         return null;
+      } else {
+         bxf $$3 = new bxf($$1, $$0);
+         $$3.a($$2);
+         return $$3;
+      }
    }
 
-   private static bvh b(bvh $$0) {
-      return $$0.eb().c(cel.o).get();
+   public static bxi.a a() {
+      return new bxi.a();
    }
 
-   static enum a {
-      a,
-      b,
-      c,
-      d;
+   public boolean c(jq<bxe> $$0) {
+      return this.a.containsKey($$0);
+   }
+
+   public boolean b(jq<bxe> $$0, alz $$1) {
+      bxf $$2 = this.a.get($$0);
+      return $$2 != null && $$2.a($$1) != null;
+   }
+
+   public static class a {
+      private final Builder<jq<bxe>, bxf> a = ImmutableMap.builder();
+      private boolean b;
+
+      private bxf b(jq<bxe> $$0) {
+         bxf $$1 = new bxf($$0, $$1x -> {
+            if (this.b) {
+               throw new UnsupportedOperationException("Tried to change value for default attribute instance: " + $$0.g());
+            }
+         });
+         this.a.put($$0, $$1);
+         return $$1;
+      }
+
+      public bxi.a a(jq<bxe> $$0) {
+         this.b($$0);
+         return this;
+      }
+
+      public bxi.a a(jq<bxe> $$0, double $$1) {
+         bxf $$2 = this.b($$0);
+         $$2.a($$1);
+         return this;
+      }
+
+      public bxi a() {
+         this.b = true;
+         return new bxi(this.a.buildKeepingLast());
+      }
    }
 }

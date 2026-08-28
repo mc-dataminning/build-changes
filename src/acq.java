@@ -1,6 +1,8 @@
-public class acq extends zn<acf> {
-   @Override
-   public zs<acq> a() {
-      return agu.b;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface acq {
 }

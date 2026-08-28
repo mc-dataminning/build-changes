@@ -2,27 +2,27 @@ import com.mojang.serialization.Codec;
 import io.netty.buffer.ByteBuf;
 import javax.annotation.Nullable;
 
-public record dm(ul c) {
-   public static final Codec<dm> a = vj.j.xmap(dm::new, dm::a);
-   public static final zh<ByteBuf, dm> b = zf.q.a(dm::new, dm::a);
+public record dm(ux c) {
+   public static final Codec<dm> a = vv.j.xmap(dm::new, dm::a);
+   public static final zt<ByteBuf, dm> b = zr.r.a(dm::new, dm::a);
 
-   public boolean a(cwm $$0) {
-      cyv $$1 = $$0.a(ku.b, cyv.a);
+   public boolean a(cxk $$0) {
+      czt $$1 = $$0.a(ku.b, czt.a);
       return $$1.b(this.c);
    }
 
-   public boolean a(bul $$0) {
+   public boolean a(bvf $$0) {
       return this.a(b($$0));
    }
 
-   public boolean a(@Nullable vi $$0) {
-      return $$0 != null && va.a(this.c, $$0, true);
+   public boolean a(@Nullable vu $$0) {
+      return $$0 != null && vm.a(this.c, $$0, true);
    }
 
-   public static ul b(bul $$0) {
-      ul $$1 = $$0.f(new ul());
-      if ($$0 instanceof cou) {
-         cwm $$2 = ((cou)$$0).gg().f();
+   public static ux b(bvf $$0) {
+      ux $$1 = $$0.f(new ux());
+      if ($$0 instanceof cps) {
+         cxk $$2 = ((cps)$$0).gg().f();
          if (!$$2.f()) {
             $$1.a("SelectedItem", $$2.a($$0.dX()));
          }
@@ -31,7 +31,7 @@ public record dm(ul c) {
       return $$1;
    }
 
-   public ul a() {
+   public ux a() {
       return this.c;
    }
 }

@@ -1,11 +1,8 @@
-public interface fed<T> {
-   fed<?> a = () -> {
-      throw new IllegalStateException("Cannot dereference handle with no underlying resource");
-   };
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   static <T> fed<T> a() {
-      return (fed<T>)a;
-   }
-
-   T get();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@fdu
+@fdt
+interface fed {
 }

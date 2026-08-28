@@ -1,11 +1,11 @@
 import javax.annotation.Nullable;
 
-public class gxi extends gwm {
-   public ezy a = ezy.c;
+public abstract class gxi extends gxo {
    @Nullable
-   public cvj b;
+   public bvd.k b;
    public float c;
    public float d;
    public float e;
-   public jm f = jm.a;
+
+   public abstract boolean a();
 }

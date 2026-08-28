@@ -1,28 +1,30 @@
-public class gts extends gty<gwn, gab> {
-   private final gab a;
-   private final gab b;
-   private final gtj c;
+public class gts<T extends cir> extends gqd<T, gzm, gdi> {
+   private static final alz a = alz.b("textures/entity/squid/squid.png");
 
-   public gts(grh<gwn, gab> $$0, gch $$1, gtj $$2) {
-      super($$0);
-      this.c = $$2;
-      this.a = new gab($$1.a(gck.br));
-      this.b = new gab($$1.a(gck.bq));
+   public gts(grj.a $$0, gdi $$1, gdi $$2) {
+      super($$0, $$1, $$2, 0.7F);
    }
 
-   public void a(fer $$0, gjg $$1, int $$2, gwn $$3, float $$4, float $$5) {
-      cwm $$6 = $$3.c;
-      ddy $$7 = $$6.a(ku.D);
-      if ($$7 != null && $$7.c().isPresent()) {
-         this.a($$0, $$1, $$3, $$6, $$7.c().get(), $$2);
-      } else if ($$3.d) {
-         this.a($$0, $$1, $$3, cwm.k, ddx.k, $$2);
-      }
+   public alz a(gzm $$0) {
+      return a;
    }
 
-   private void a(fer $$0, gjg $$1, gwn $$2, cwm $$3, alj $$4, int $$5) {
-      gab $$6 = $$2.ae ? this.b : this.a;
-      $$6.a($$2);
-      this.c.a(ddw.d.f, $$4, $$6, $$3, gjq::f, $$0, $$1, $$5);
+   public gzm b() {
+      return new gzm();
+   }
+
+   public void a(T $$0, gzm $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = bae.h($$2, $$0.cg, $$0.cf);
+      $$1.b = bae.h($$2, $$0.ca, $$0.bZ);
+      $$1.c = bae.h($$2, $$0.cc, $$0.cb);
+   }
+
+   protected void a(gzm $$0, fgl $$1, float $$2, float $$3) {
+      $$1.a(0.0F, $$0.ae ? 0.25F : 0.5F, 0.0F);
+      $$1.a(a.d.rotationDegrees(180.0F - $$2));
+      $$1.a(a.b.rotationDegrees($$0.b));
+      $$1.a(a.d.rotationDegrees($$0.c));
+      $$1.a(0.0F, $$0.ae ? -0.6F : -1.2F, 0.0F);
    }
 }

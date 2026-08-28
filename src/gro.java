@@ -1,37 +1,38 @@
-public class gro extends gqq<cmh, gxk, gbh> {
-   public static final alj a = alj.b("textures/entity/slime/slime.png");
+public class gro extends gri<clv, gxt> {
+   private final gmh a;
 
-   public gro(gpk.a $$0) {
-      super($$0, new gbh($$0.a(gck.cI)), 0.25F);
-      this.a(new guc(this, $$0.f()));
+   public gro(grj.a $$0) {
+      super($$0);
+      this.f = 0.5F;
+      this.a = $$0.d();
    }
 
-   public void a(gxk $$0, fer $$1, gjg $$2, int $$3) {
-      this.f = 0.25F * (float)$$0.b;
-      super.a($$0, $$1, $$2, $$3);
+   public boolean a(clv $$0, gov $$1, double $$2, double $$3, double $$4) {
+      return !super.a($$0, $$1, $$2, $$3, $$4) ? false : $$0.p() != $$0.dV().a_($$0.dv());
    }
 
-   protected void a(gxk $$0, fer $$1) {
-      float $$2 = 0.999F;
-      $$1.b(0.999F, 0.999F, 0.999F);
-      $$1.a(0.0F, 0.001F, 0.0F);
-      float $$3 = (float)$$0.b;
-      float $$4 = $$0.a / ($$3 * 0.5F + 1.0F);
-      float $$5 = 1.0F / ($$4 + 1.0F);
-      $$1.b($$5 * $$3, 1.0F / $$5 * $$3, $$5 * $$3);
+   public void a(gxt $$0, fgl $$1, gle $$2, int $$3) {
+      dxn $$4 = $$0.c;
+      if ($$4.o() == dqn.c) {
+         $$1.a();
+         $$1.a(-0.5, 0.0, -0.5);
+         this.a.b().a($$0, this.a.a($$4), $$4, $$0.b, $$1, $$2.getBuffer(gkw.b($$4)), false, bam.a(), $$4.b($$0.a), hav.d);
+         $$1.b();
+         super.a($$0, $$1, $$2, $$3);
+      }
    }
 
-   public alj a(gxk $$0) {
-      return a;
+   public gxt a() {
+      return new gxt();
    }
 
-   public gxk b() {
-      return new gxk();
-   }
-
-   public void a(cmh $$0, gxk $$1, float $$2) {
+   public void a(clv $$0, gxt $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = azm.h($$2, $$0.bY, $$0.bX);
-      $$1.b = $$0.gn();
+      jh $$3 = jh.a($$0.dA(), $$0.cR().e, $$0.dG());
+      $$1.a = $$0.l();
+      $$1.b = $$3;
+      $$1.c = $$0.p();
+      $$1.d = $$0.dV().t($$3);
+      $$1.e = $$0.dV();
    }
 }

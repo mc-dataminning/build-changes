@@ -8,20 +8,20 @@ public class az extends dy<az.a> {
       return az.a.a;
    }
 
-   public void a(arq $$0, jq<cyj> $$1) {
+   public void a(asi $$0, jq<czh> $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public static record a(Optional<bh> b, Optional<jq<cyj>> c) implements dy.a {
+   public static record a(Optional<bh> b, Optional<jq<czh>> c) implements dy.a {
       public static final Codec<az.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bw.b.optionalFieldOf("player").forGetter(az.a::a), cyj.a.optionalFieldOf("potion").forGetter(az.a::c)).apply($$0, az.a::new)
+         $$0 -> $$0.group(bw.b.optionalFieldOf("player").forGetter(az.a::a), czh.a.optionalFieldOf("potion").forGetter(az.a::c)).apply($$0, az.a::new)
       );
 
       public static ap<az.a> b() {
          return ao.l.a(new az.a(Optional.empty(), Optional.empty()));
       }
 
-      public boolean a(jq<cyj> $$0) {
+      public boolean a(jq<czh> $$0) {
          return !this.c.isPresent() || this.c.get().equals($$0);
       }
 

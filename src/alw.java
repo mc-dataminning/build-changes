@@ -1,57 +1,65 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
+import java.util.Optional;
 
-public class alw extends avh<ag> {
-   private static final Logger a = LogUtils.getLogger();
-   private Map<alj, ah> b = Map.of();
-   private am c = new am();
-   private final js.a d;
+public final class alw<E> implements Codec<jq<E>> {
+   private final aly<? extends kd<E>> a;
 
-   public alw(js.a $$0) {
-      super($$0, ag.a, ma.c(ma.bg));
-      this.d = $$0;
+   public static <E> alw<E> a(aly<? extends kd<E>> $$0) {
+      return new alw<>($$0);
    }
 
-   protected void a(Map<alj, ag> $$0, avd $$1, bou $$2) {
-      Builder<alj, ah> $$3 = ImmutableMap.builder();
-      $$0.forEach(($$1x, $$2x) -> {
-         this.a($$1x, $$2x);
-         $$3.put($$1x, new ah($$1x, $$2x));
-      });
-      this.b = $$3.buildOrThrow();
-      am $$4 = new am();
-      $$4.a(this.b.values());
+   private alw(aly<? extends kd<E>> $$0) {
+      this.a = $$0;
+   }
 
-      for (ai $$5 : $$4.b()) {
-         if ($$5.b().b().c().isPresent()) {
-            au.a($$5);
+   public <T> DataResult<T> a(jq<E> $$0, DynamicOps<T> $$1, T $$2) {
+      if ($$1 instanceof alx<?> $$3) {
+         Optional<jt<E>> $$4 = $$3.a(this.a);
+         if ($$4.isPresent()) {
+            if (!$$0.a($$4.get())) {
+               return DataResult.error(() -> "Element " + $$0 + " is not valid in current registry set");
+            }
+
+            return (DataResult<T>)$$0.d()
+               .map(
+                  $$2x -> alz.a.encode($$2x.a(), $$1, $$2),
+                  $$0x -> DataResult.error(() -> "Elements from registry " + this.a + " can't be serialized to a value")
+               );
          }
       }
 
-      this.c = $$4;
+      return DataResult.error(() -> "Can't access registry " + this.a);
    }
 
-   private void a(alj $$0, ag $$1) {
-      azs.a $$2 = new azs.a();
-      $$1.a($$2, this.d);
-      $$2.b().ifPresent($$1x -> a.warn("Found validation problems in advancement {}: \n{}", $$0, $$1x));
+   public <T> DataResult<Pair<jq<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
+      if ($$0 instanceof alx<?> $$2) {
+         Optional<jr<E>> $$3 = $$2.b(this.a);
+         if ($$3.isPresent()) {
+            return alz.a
+               .decode($$0, $$1)
+               .flatMap(
+                  $$1x -> {
+                     alz $$2x = (alz)$$1x.getFirst();
+                     return $$3.get()
+                        .a(aly.a(this.a, $$2x))
+                        .<DataResult>map(DataResult::success)
+                        .orElseGet(() -> DataResult.error(() -> "Failed to get element " + $$2x))
+                        .map($$1xx -> Pair.of($$1xx, $$1x.getSecond()))
+                        .setLifecycle(Lifecycle.stable());
+                  }
+               );
+         }
+      }
+
+      return DataResult.error(() -> "Can't access registry " + this.a);
    }
 
-   @Nullable
-   public ah a(alj $$0) {
-      return this.b.get($$0);
-   }
-
-   public am a() {
-      return this.c;
-   }
-
-   public Collection<ah> b() {
-      return this.b.values();
+   @Override
+   public String toString() {
+      return "RegistryFixedCodec[" + this.a + "]";
    }
 }

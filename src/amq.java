@@ -1,8 +1,17 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface amq extends amp {
+   aqz a();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface amq {
+   String b();
+
+   int d();
+
+   String h();
+
+   String[] P();
+
+   String j();
+
+   String s();
+
+   String a(String var1);
 }

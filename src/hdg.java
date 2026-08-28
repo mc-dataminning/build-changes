@@ -1,28 +1,22 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class hdg<T> extends hdh<T> {
-   private final hdl<T> c;
+public interface hdg {
+   List<gml> a(@Nullable dxn var1, @Nullable jm var2, bam var3);
 
-   public hdg(Function<T, Stream<String>> $$0, Function<T, Stream<alj>> $$1, List<T> $$2) {
-      super($$1, $$2);
-      this.c = hdl.plainText($$2, $$0);
-   }
+   boolean a();
 
-   @Override
-   protected List<T> a(String $$0) {
-      return this.c.search($$0);
-   }
+   boolean b();
 
-   @Override
-   protected List<T> a(String $$0, String $$1) {
-      List<T> $$2 = this.b.a($$0);
-      List<T> $$3 = this.b.b($$1);
-      List<T> $$4 = this.c.search($$1);
-      Iterator<T> $$5 = new hdj<T>($$3.iterator(), $$4.iterator(), this.a);
-      return ImmutableList.copyOf(new hdi<T>($$2.iterator(), $$5, this.a));
+   boolean c();
+
+   boolean d();
+
+   hbe e();
+
+   gmw f();
+
+   default gmk g() {
+      return gmk.a;
    }
 }

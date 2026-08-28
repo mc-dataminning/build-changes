@@ -1,56 +1,65 @@
-import com.google.common.collect.Sets;
 import java.util.EnumSet;
-import java.util.List;
-import java.util.Set;
 
-public class ccz<T extends cqi> extends ccf {
-   private static final int a = 20;
-   private static final float b = 1.0F;
-   private final T c;
-   private int d;
+public abstract class ccz {
+   private final EnumSet<ccz.a> a = EnumSet.noneOf(ccz.a.class);
 
-   public ccz(T $$0) {
-      this.c = $$0;
-      this.a(EnumSet.of(ccf.a.a));
-   }
+   public abstract boolean b();
 
-   @Override
-   public boolean b() {
-      return this.c.aa_() == null && !this.c.cY() && this.c.gD() && !this.c.gA().a() && !((arp)this.c.dV()).c(this.c.dv());
-   }
-
-   @Override
    public boolean c() {
-      return this.c.gD() && !this.c.gA().a() && this.c.dV() instanceof arp && !((arp)this.c.dV()).c(this.c.dv());
+      return this.b();
+   }
+
+   public boolean U_() {
+      return true;
+   }
+
+   public void d() {
+   }
+
+   public void e() {
+   }
+
+   public boolean V_() {
+      return false;
+   }
+
+   public void a() {
+   }
+
+   public void a(EnumSet<ccz.a> $$0) {
+      this.a.clear();
+      this.a.addAll($$0);
    }
 
    @Override
-   public void a() {
-      if (this.c.gD()) {
-         cqh $$0 = this.c.gA();
-         if (this.c.af > this.d) {
-            this.d = this.c.af + 20;
-            this.a($$0);
-         }
-
-         if (!this.c.gi()) {
-            ezy $$1 = cgc.a(this.c, 15, 4, ezy.c($$0.s()), (float) (Math.PI / 2));
-            if ($$1 != null) {
-               this.c.L().a($$1.d, $$1.e, $$1.f, 1.0);
-            }
-         }
-      }
+   public String toString() {
+      return this.getClass().getSimpleName();
    }
 
-   private void a(cqh $$0) {
-      if ($$0.u()) {
-         Set<cqi> $$1 = Sets.newHashSet();
-         List<cqi> $$2 = this.c.dV().a(cqi.class, this.c.cR().g(16.0), $$1x -> !$$1x.gD() && cqj.a($$1x, $$0));
-         $$1.addAll($$2);
+   public EnumSet<ccz.a> j() {
+      return this.a;
+   }
 
-         for (cqi $$3 : $$1) {
-            $$0.a($$0.k(), $$3, null, true);
-         }
-      }
+   protected int a(int $$0) {
+      return this.V_() ? $$0 : b($$0);
+   }
+
+   protected static int b(int $$0) {
+      return bae.e($$0, 2);
+   }
+
+   protected static ash a(bvf $$0) {
+      return (ash)$$0.dV();
+   }
+
+   protected static ash a(dha $$0) {
+      return (ash)$$0;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

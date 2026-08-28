@@ -1,6 +1,4 @@
-public interface wv extends wp {
-   @Override
-   default zr a() {
-      return zr.a;
-   }
+import io.netty.channel.ChannelInboundHandlerAdapter;
+
+public class wv extends ChannelInboundHandlerAdapter {
 }

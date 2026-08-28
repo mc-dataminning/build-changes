@@ -1,29 +1,25 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public record eyo(alj b) implements eym {
-   public static final MapCodec<eyo> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alj.a.fieldOf("source").forGetter(eyo::c)).apply($$0, eyo::new));
+public class eyo extends exu {
+   public static final MapCodec<eyo> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(alw.a(mb.K).fieldOf("item").forGetter($$0x -> $$0x.b)).apply($$0, eyo::new)
+   );
+   private final jq<cxg> b;
 
-   @Override
-   public eyl a() {
-      return eyn.b;
-   }
-
-   @Nullable
-   @Override
-   public vi a(eun $$0) {
-      return $$0.d().p().aK().a(this.b);
+   private eyo(List<ezs> $$0, jq<cxg> $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public Set<exg<?>> b() {
-      return ImmutableSet.of();
+   public exw<eyo> b() {
+      return exx.f;
    }
 
-   public alj c() {
-      return this.b;
+   @Override
+   public cxk a(cxk $$0, ewh $$1) {
+      return $$0.a(this.b.a());
    }
 }

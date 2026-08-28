@@ -1,118 +1,92 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class dby implements daq {
-   final String a;
-   final dao b;
-   final daw c;
-   final daw d;
-   final jq<cwi> e;
-   @Nullable
-   private daz f;
+public class dby {
+   public static final dby a = new dby(List.of(), List.of(), List.of());
+   private final List<dbv> b;
+   private final List<cpw.a<jq<cxg>>> c;
+   private final List<Optional<dby.a>> d;
 
-   public dby(String $$0, dao $$1, daw $$2, daw $$3, jq<cwi> $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   private dby(List<dbv> $$0, List<cpw.a<jq<cxg>>> $$1, List<Optional<dby.a>> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public boolean a(dap $$0, dfm $$1) {
-      boolean $$2 = false;
-      boolean $$3 = false;
+   public static cpw.a<jq<cxg>> a(dbv $$0) {
+      return cpx.a($$0.a().stream());
+   }
 
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cwm $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if (!$$2 && this.c.a($$5)) {
-               $$2 = true;
-            } else {
-               if ($$3 || !this.d.a($$5)) {
-                  return false;
-               }
+   public static dby b(dbv $$0) {
+      if ($$0.a().isEmpty()) {
+         return a;
+      } else {
+         cpw.a<jq<cxg>> $$1 = a($$0);
+         dby.a $$2 = new dby.a(0);
+         return new dby(List.of($$0), List.of($$1), List.of(Optional.of($$2)));
+      }
+   }
 
-               $$3 = true;
+   public static dby a(List<Optional<dbv>> $$0) {
+      int $$1 = $$0.size();
+      List<dbv> $$2 = new ArrayList<>($$1);
+      List<cpw.a<jq<cxg>>> $$3 = new ArrayList<>($$1);
+      List<Optional<dby.a>> $$4 = new ArrayList<>($$1);
+      int $$5 = 0;
+
+      for (Optional<dbv> $$6 : $$0) {
+         if ($$6.isPresent()) {
+            dbv $$7 = $$6.get();
+            if ($$7.a().isEmpty()) {
+               return a;
             }
+
+            $$2.add($$7);
+            $$3.add(a($$7));
+            $$4.add(Optional.of(new dby.a($$5++)));
+         } else {
+            $$4.add(Optional.empty());
          }
       }
 
-      return $$2 && $$3;
+      return new dby($$2, $$3, $$4);
    }
 
-   public cwm a(dap $$0, js.a $$1) {
-      cwm $$2 = cwm.k;
+   public static dby b(List<dbv> $$0) {
+      int $$1 = $$0.size();
+      List<cpw.a<jq<cxg>>> $$2 = new ArrayList<>($$1);
+      List<Optional<dby.a>> $$3 = new ArrayList<>($$1);
 
-      for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
-         cwm $$4 = $$0.a($$3);
-         if (!$$4.f() && this.c.a($$4)) {
-            $$2 = $$4;
+      for (int $$4 = 0; $$4 < $$1; $$4++) {
+         dbv $$5 = $$0.get($$4);
+         if ($$5.a().isEmpty()) {
+            return a;
          }
+
+         $$2.add(a($$5));
+         $$3.add(Optional.of(new dby.a($$4)));
       }
 
-      return $$2.a(this.e.a(), 1);
+      return new dby($$0, $$2, $$3);
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public List<Optional<dby.a>> a() {
+      return this.d;
    }
 
-   @Override
-   public cwm a(js.a $$0) {
-      return new cwm(this.e);
-   }
-
-   @Override
-   public dbf<?> ap_() {
-      return dbf.m;
-   }
-
-   @Override
-   public String c() {
-      return this.a;
-   }
-
-   @Override
-   public daz a() {
-      if (this.f == null) {
-         this.f = daz.b(List.of(this.c, this.d));
-      }
-
-      return this.f;
-   }
-
-   @Override
-   public dao d() {
+   public List<dbv> b() {
       return this.b;
    }
 
-   public static class a implements dbf<dby> {
-      private static final MapCodec<dby> x = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.a),
-                  dao.e.fieldOf("category").orElse(dao.d).forGetter($$0x -> $$0x.b),
-                  daw.d.fieldOf("input").forGetter($$0x -> $$0x.c),
-                  daw.d.fieldOf("material").forGetter($$0x -> $$0x.d),
-                  alg.a(ma.K).fieldOf("result").forGetter($$0x -> $$0x.e)
-               )
-               .apply($$0, dby::new)
-      );
-      public static final zh<wu, dby> w = zh.a(
-         zf.n, $$0 -> $$0.a, dao.g, $$0 -> $$0.b, daw.a, $$0 -> $$0.c, daw.a, $$0 -> $$0.d, zf.b(ma.K), $$0 -> $$0.e, dby::new
-      );
+   public List<cpw.a<jq<cxg>>> c() {
+      return this.c;
+   }
 
-      @Override
-      public MapCodec<dby> a() {
-         return x;
-      }
+   public boolean d() {
+      return this.d.isEmpty();
+   }
 
-      @Override
-      public zh<wu, dby> b() {
-         return w;
-      }
+   public static record a(int a) {
    }
 }

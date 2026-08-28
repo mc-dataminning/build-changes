@@ -1,22 +1,23 @@
-import com.google.gson.JsonObject;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public abstract class avu<T> {
-   @Nullable
-   private final T a;
+public class avu {
+   private static final Codec<avu> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.list(ban.a).fieldOf("block").forGetter($$0x -> $$0x.c)).apply($$0, avu::new)
+   );
+   public static final auu<avu> a = auu.a("filter", b);
+   private final List<ban> c;
 
-   public avu(@Nullable T $$0) {
-      this.a = $$0;
+   public avu(List<ban> $$0) {
+      this.c = List.copyOf($$0);
    }
 
-   @Nullable
-   T g() {
-      return this.a;
+   public boolean a(String $$0) {
+      return this.c.stream().anyMatch($$1 -> $$1.a().test($$0));
    }
 
-   boolean f() {
-      return false;
+   public boolean b(String $$0) {
+      return this.c.stream().anyMatch($$1 -> $$1.b().test($$0));
    }
-
-   protected abstract void a(JsonObject var1);
 }

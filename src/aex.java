@@ -1,33 +1,21 @@
-import javax.annotation.Nullable;
-
-public class aex implements zq<acf> {
-   public static final zh<wg, aex> a = zq.a(aex::a, aex::new);
-   @Nullable
-   private final alj b;
-
-   public aex(@Nullable alj $$0) {
-      this.b = $$0;
-   }
-
-   private aex(wg $$0) {
-      this.b = $$0.c(wg::q);
-   }
-
-   private void a(wg $$0) {
-      $$0.a(this.b, wg::a);
-   }
+public record aex(int b, xv c) implements aac<acr> {
+   public static final zt<xg, aex> a = zt.a(zr.h, aex::b, xx.d, aex::e, aex::new);
 
    @Override
-   public zs<aex> a() {
-      return agu.ap;
+   public aae<aex> a() {
+      return ahk.ae;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public alj b() {
-      return this.b;
+   @Override
+   public boolean c() {
+      return true;
+   }
+
+   public xv e() {
+      return this.c;
    }
 }

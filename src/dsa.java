@@ -1,33 +1,31 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dsa extends dpt implements drv {
-   public static final MapCodec<dsa> f = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(drv.a.e.fieldOf("weathering_state").forGetter(djr::c), t()).apply($$0, dsa::new)
-   );
-   private final drv.a g;
+public class dsa extends doh implements djv {
+   public static final MapCodec<dsa> j = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cwh.q.fieldOf("color").forGetter(dsa::b), t()).apply($$0, dsa::new));
+   private final cwh k;
 
    @Override
    public MapCodec<dsa> a() {
-      return f;
+      return j;
    }
 
-   public dsa(drv.a $$0, dvu.d $$1) {
+   public dsa(cwh $$0, dxm.d $$1) {
       super($$1);
-      this.g = $$0;
+      this.k = $$0;
+      this.l(
+         this.F
+            .b()
+            .b(a, Boolean.valueOf(false))
+            .b(b, Boolean.valueOf(false))
+            .b(c, Boolean.valueOf(false))
+            .b(d, Boolean.valueOf(false))
+            .b(e, Boolean.valueOf(false))
+      );
    }
 
    @Override
-   protected void b(dvv $$0, arp $$1, jh $$2, azu $$3) {
-      this.a_($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected boolean f(dvv $$0) {
-      return drv.c($$0.b()).isPresent();
-   }
-
-   public drv.a q() {
-      return this.g;
+   public cwh b() {
+      return this.k;
    }
 }

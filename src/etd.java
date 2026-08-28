@@ -1,196 +1,325 @@
-import com.google.common.annotations.VisibleForTesting;
-import io.netty.buffer.ByteBuf;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import it.unimi.dsi.fastutil.longs.Long2ByteMap;
+import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import javax.annotation.Nullable;
 
-public class etd {
-   public static final zh<ByteBuf, etd> a = zf.a(etd::a, etd::i);
-   private static final etd[] b = ae.a(() -> {
-      etd[] $$0 = new etd[48];
-      a(new etd(jm.b, jm.c, etd.a.a), $$0);
-      return $$0;
-   });
-   private final jm c;
-   private final jm d;
-   private final jm e;
-   private final etd.a f;
-   private final int g;
-   private final List<jm> h;
-   private final List<jm> i;
-   private final List<jm> j;
-   private final Map<jm, etd> k = new EnumMap<>(jm.class);
-   private final Map<jm, etd> l = new EnumMap<>(jm.class);
-   private final Map<etd.a, etd> m = new EnumMap<>(etd.a.class);
+public abstract class etd<M extends eta<M>> {
+   private final dhj i;
+   protected final dzv a;
+   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
+   private final LongSet j = new LongOpenHashSet();
+   protected volatile M c;
+   protected final M d;
+   protected final LongSet e = new LongOpenHashSet();
+   protected final LongSet f = new LongOpenHashSet();
+   protected final Long2ObjectMap<dzn> g = Long2ObjectMaps.synchronize(new Long2ObjectOpenHashMap());
+   private final LongSet k = new LongOpenHashSet();
+   private final LongSet l = new LongOpenHashSet();
+   protected volatile boolean h;
 
-   private etd(jm $$0, jm $$1, etd.a $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = $$2;
-      this.g = b($$0, $$1, $$2);
-      kl $$3 = $$1.q().d($$0.q());
-      jm $$4 = jm.a($$3, null);
-      Objects.requireNonNull($$4);
-      if (this.f == etd.a.b) {
-         this.e = $$4;
+   protected etd(dhj $$0, dzv $$1, M $$2) {
+      this.i = $$0;
+      this.a = $$1;
+      this.d = $$2;
+      this.c = $$2.b();
+      this.c.d();
+      this.b.defaultReturnValue((byte)0);
+   }
+
+   protected boolean b(long $$0) {
+      return this.a($$0, true) != null;
+   }
+
+   @Nullable
+   protected dzn a(long $$0, boolean $$1) {
+      return this.a($$1 ? this.d : this.c, $$0);
+   }
+
+   @Nullable
+   protected dzn a(M $$0, long $$1) {
+      return $$0.c($$1);
+   }
+
+   @Nullable
+   protected dzn c(long $$0) {
+      dzn $$1 = this.d.c($$0);
+      if ($$1 == null) {
+         return null;
       } else {
-         this.e = $$4.g();
+         if (this.e.add($$0)) {
+            $$1 = $$1.b();
+            this.d.a($$0, $$1);
+            this.d.c();
+         }
+
+         return $$1;
+      }
+   }
+
+   @Nullable
+   public dzn d(long $$0) {
+      dzn $$1 = (dzn)this.g.get($$0);
+      return $$1 != null ? $$1 : this.a($$0, false);
+   }
+
+   protected abstract int a(long var1);
+
+   protected int e(long $$0) {
+      long $$1 = kj.e($$0);
+      dzn $$2 = this.a($$1, true);
+      return $$2.a(kj.b(jh.a($$0)), kj.b(jh.b($$0)), kj.b(jh.c($$0)));
+   }
+
+   protected void a(long $$0, int $$1) {
+      long $$2 = kj.e($$0);
+      dzn $$3;
+      if (this.e.add($$2)) {
+         $$3 = this.d.a($$2);
+      } else {
+         $$3 = this.a($$2, true);
       }
 
-      this.h = List.of(this.d.g(), this.d, this.e, this.e.g(), this.c.g(), this.c);
-      this.i = this.h.stream().filter($$0x -> $$0x.o() != this.c.o()).toList();
-      this.j = this.h.stream().filter($$0x -> $$0x.o() == this.c.o()).toList();
+      $$3.a(kj.b(jh.a($$0)), kj.b(jh.b($$0)), kj.b(jh.c($$0)), $$1);
+      kj.a($$0, this.f::add);
    }
 
-   public static etd a(jm $$0, jm $$1, etd.a $$2) {
-      return b[b($$0, $$1, $$2)];
+   protected void f(long $$0) {
+      int $$1 = kj.b($$0);
+      int $$2 = kj.c($$0);
+      int $$3 = kj.d($$0);
+
+      for (int $$4 = -1; $$4 <= 1; $$4++) {
+         for (int $$5 = -1; $$5 <= 1; $$5++) {
+            for (int $$6 = -1; $$6 <= 1; $$6++) {
+               this.f.add(kj.b($$1 + $$5, $$2 + $$6, $$3 + $$4));
+            }
+         }
+      }
    }
 
-   public etd a(jm $$0) {
-      return this.l.get($$0);
+   protected dzn g(long $$0) {
+      dzn $$1 = (dzn)this.g.get($$0);
+      return $$1 != null ? $$1 : new dzn();
    }
 
-   public etd b(jm $$0) {
-      return this.k.get($$0);
-   }
-
-   public etd c(jm $$0) {
-      return $$0.o() == this.c.o() ? this : this.k.get($$0);
-   }
-
-   public etd d(jm $$0) {
-      etd $$1 = this.b($$0);
-      return this.d == $$1.e ? $$1.a() : $$1;
-   }
-
-   public etd a(etd.a $$0) {
-      return this.m.get($$0);
-   }
-
-   public etd a() {
-      return this.a(this.f.a());
-   }
-
-   public jm b() {
-      return this.d;
-   }
-
-   public jm c() {
-      return this.c;
-   }
-
-   public jm d() {
-      return this.e;
-   }
-
-   public etd.a e() {
-      return this.f;
-   }
-
-   public List<jm> f() {
+   protected boolean a() {
       return this.h;
    }
 
-   public List<jm> g() {
-      return this.i;
-   }
+   protected void a(etg<M, ?> $$0) {
+      if (this.h) {
+         this.h = false;
+         LongIterator $$5 = this.l.iterator();
 
-   public List<jm> h() {
-      return this.j;
-   }
-
-   @Override
-   public String toString() {
-      return "[up=" + this.c + ",front=" + this.d + ",sideBias=" + this.f + "]";
-   }
-
-   public int i() {
-      return this.g;
-   }
-
-   public static etd a(int $$0) {
-      return b[$$0];
-   }
-
-   public static etd a(azu $$0) {
-      return ae.a(b, $$0);
-   }
-
-   private static etd a(etd $$0, etd[] $$1) {
-      if ($$1[$$0.i()] != null) {
-         return $$1[$$0.i()];
-      } else {
-         $$1[$$0.i()] = $$0;
-
-         for (etd.a $$2 : etd.a.values()) {
-            $$0.m.put($$2, a(new etd($$0.c, $$0.d, $$2), $$1));
+         while ($$5.hasNext()) {
+            long $$1 = (Long)$$5.next();
+            dzn $$2 = (dzn)this.g.remove($$1);
+            dzn $$3 = this.d.d($$1);
+            if (this.k.contains(kj.f($$1))) {
+               if ($$2 != null) {
+                  this.g.put($$1, $$2);
+               } else if ($$3 != null) {
+                  this.g.put($$1, $$3);
+               }
+            }
          }
 
-         for (jm $$3 : jm.values()) {
-            jm $$4 = $$0.c;
-            if ($$3 == $$0.c) {
-               $$4 = $$0.d.g();
-            }
+         this.d.c();
+         $$5 = this.l.iterator();
 
-            if ($$3 == $$0.c.g()) {
-               $$4 = $$0.d;
-            }
-
-            $$0.k.put($$3, a(new etd($$4, $$3, $$0.f), $$1));
+         while ($$5.hasNext()) {
+            long $$4 = (Long)$$5.next();
+            this.i($$4);
+            this.e.add($$4);
          }
 
-         for (jm $$5 : jm.values()) {
-            jm $$6 = $$0.d;
-            if ($$5 == $$0.d) {
-               $$6 = $$0.c.g();
-            }
+         this.l.clear();
+         ObjectIterator<Entry<dzn>> $$5x = Long2ObjectMaps.fastIterator(this.g);
 
-            if ($$5 == $$0.d.g()) {
-               $$6 = $$0.c;
-            }
+         while ($$5x.hasNext()) {
+            Entry<dzn> $$6 = (Entry<dzn>)$$5x.next();
+            long $$7 = $$6.getLongKey();
+            if (this.b($$7)) {
+               dzn $$8 = (dzn)$$6.getValue();
+               if (this.d.c($$7) != $$8) {
+                  this.d.a($$7, $$8);
+                  this.e.add($$7);
+               }
 
-            $$0.l.put($$5, a(new etd($$5, $$6, $$0.f), $$1));
+               $$5x.remove();
+            }
          }
 
-         return $$0;
+         this.d.c();
       }
    }
 
-   @VisibleForTesting
-   protected static int b(jm $$0, jm $$1, etd.a $$2) {
-      if ($$0.o() == $$1.o()) {
-         throw new IllegalStateException("Up-vector and front-vector can not be on the same axis");
-      } else {
-         int $$3;
-         if ($$0.o() == jm.a.b) {
-            $$3 = $$1.o() == jm.a.a ? 1 : 0;
-         } else {
-            $$3 = $$1.o() == jm.a.b ? 1 : 0;
-         }
+   protected void h(long $$0) {
+   }
 
-         int $$5 = $$3 << 1 | $$1.f().ordinal();
-         return (($$0.ordinal() << 2) + $$5 << 1) + $$2.ordinal();
+   protected void i(long $$0) {
+   }
+
+   protected void b(long $$0, boolean $$1) {
+      if ($$1) {
+         this.j.add($$0);
+      } else {
+         this.j.remove($$0);
       }
    }
 
-   public static enum a {
-      a("left"),
-      b("right");
+   protected boolean j(long $$0) {
+      long $$1 = kj.f($$0);
+      return this.j.contains($$1);
+   }
 
-      private final String c;
+   protected boolean k(long $$0) {
+      return this.j.contains($$0);
+   }
 
-      private a(final String $$0) {
+   public void c(long $$0, boolean $$1) {
+      if ($$1) {
+         this.k.add($$0);
+      } else {
+         this.k.remove($$0);
+      }
+   }
+
+   protected void a(long $$0, @Nullable dzn $$1) {
+      if ($$1 != null) {
+         this.g.put($$0, $$1);
+         this.h = true;
+      } else {
+         this.g.remove($$0);
+      }
+   }
+
+   protected void d(long $$0, boolean $$1) {
+      byte $$2 = this.b.get($$0);
+      byte $$3 = etd.a.a($$2, !$$1);
+      if ($$2 != $$3) {
+         this.a($$0, $$3);
+         int $$4 = $$1 ? -1 : 1;
+
+         for (int $$5 = -1; $$5 <= 1; $$5++) {
+            for (int $$6 = -1; $$6 <= 1; $$6++) {
+               for (int $$7 = -1; $$7 <= 1; $$7++) {
+                  if ($$5 != 0 || $$6 != 0 || $$7 != 0) {
+                     long $$8 = kj.a($$0, $$5, $$6, $$7);
+                     byte $$9 = this.b.get($$8);
+                     this.a($$8, etd.a.a($$9, etd.a.b($$9) + $$4));
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   protected void a(long $$0, byte $$1) {
+      if ($$1 != 0) {
+         if (this.b.put($$0, $$1) == 0) {
+            this.m($$0);
+         }
+      } else if (this.b.remove($$0) != 0) {
+         this.n($$0);
+      }
+   }
+
+   private void m(long $$0) {
+      if (!this.l.remove($$0)) {
+         this.d.a($$0, this.g($$0));
+         this.e.add($$0);
+         this.h($$0);
+         this.f($$0);
+         this.h = true;
+      }
+   }
+
+   private void n(long $$0) {
+      this.l.add($$0);
+      this.h = true;
+   }
+
+   protected void b() {
+      if (!this.e.isEmpty()) {
+         M $$0 = this.d.b();
+         $$0.d();
          this.c = $$0;
+         this.e.clear();
       }
 
-      public etd.a a() {
-         return this == a ? b : a;
+      if (!this.f.isEmpty()) {
+         LongIterator $$1 = this.f.iterator();
+
+         while ($$1.hasNext()) {
+            long $$2 = $$1.nextLong();
+            this.a.a(this.i, kj.a($$2));
+         }
+
+         this.f.clear();
+      }
+   }
+
+   public etd.b l(long $$0) {
+      return etd.a.c(this.b.get($$0));
+   }
+
+   protected static class a {
+      public static final byte a = 0;
+      private static final int b = 0;
+      private static final int c = 26;
+      private static final byte d = 32;
+      private static final byte e = 31;
+
+      public static byte a(byte $$0, boolean $$1) {
+         return (byte)($$1 ? $$0 | 32 : $$0 & -33);
       }
 
-      @Override
-      public String toString() {
-         return this.c;
+      public static byte a(byte $$0, int $$1) {
+         if ($$1 >= 0 && $$1 <= 26) {
+            return (byte)($$0 & -32 | $$1 & 31);
+         } else {
+            throw new IllegalArgumentException("Neighbor count was not within range [0; 26]");
+         }
+      }
+
+      public static boolean a(byte $$0) {
+         return ($$0 & 32) != 0;
+      }
+
+      public static int b(byte $$0) {
+         return $$0 & 31;
+      }
+
+      public static etd.b c(byte $$0) {
+         if ($$0 == 0) {
+            return etd.b.a;
+         } else {
+            return a($$0) ? etd.b.c : etd.b.b;
+         }
+      }
+   }
+
+   public static enum b {
+      a("2"),
+      b("1"),
+      c("0");
+
+      private final String d;
+
+      private b(final String $$0) {
+         this.d = $$0;
+      }
+
+      public String a() {
+         return this.d;
       }
    }
 }

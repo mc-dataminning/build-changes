@@ -1,65 +1,61 @@
-import java.util.EnumSet;
+import com.mojang.datafixers.DataFixUtils;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class ccv extends ccf {
-   private final bvj a;
-   private bvh b;
+public class ccv extends ccz {
+   private static final int a = 200;
+   private final chq b;
    private int c;
+   private int d;
 
-   public ccv(bvj $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(ccf.a.a, ccf.a.b));
+   public ccv(chq $$0) {
+      this.b = $$0;
+      this.d = this.a($$0);
+   }
+
+   protected int a(chq $$0) {
+      return b(200 + $$0.dY().a(200) % 20);
    }
 
    @Override
    public boolean b() {
-      bvh $$0 = this.a.aa_();
-      if ($$0 == null) {
+      if (this.b.gr()) {
+         return false;
+      } else if (this.b.go()) {
+         return true;
+      } else if (this.d > 0) {
+         this.d--;
          return false;
       } else {
-         this.b = $$0;
-         return true;
+         this.d = this.a(this.b);
+         Predicate<chq> $$0 = $$0x -> $$0x.gq() || !$$0x.go();
+         List<? extends chq> $$1 = this.b.dV().a((Class<? extends chq>)this.b.getClass(), this.b.cR().c(8.0, 8.0, 8.0), $$0);
+         chq $$2 = (chq)DataFixUtils.orElse($$1.stream().filter(chq::gq).findAny(), this.b);
+         $$2.a($$1.stream().filter($$0x -> !$$0x.go()));
+         return this.b.go();
       }
    }
 
    @Override
    public boolean c() {
-      if (!this.b.bL()) {
-         return false;
-      } else {
-         return this.a.g(this.b) > 225.0 ? false : !this.a.L().m() || this.b();
-      }
+      return this.b.go() && this.b.gs();
+   }
+
+   @Override
+   public void d() {
+      this.c = 0;
    }
 
    @Override
    public void e() {
-      this.b = null;
-      this.a.L().o();
-   }
-
-   @Override
-   public boolean T_() {
-      return true;
+      this.b.gp();
    }
 
    @Override
    public void a() {
-      this.a.H().a(this.b, 30.0F, 30.0F);
-      double $$0 = (double)(this.a.dq() * 2.0F * this.a.dq() * 2.0F);
-      double $$1 = this.a.i(this.b.dA(), this.b.dC(), this.b.dG());
-      double $$2 = 0.8;
-      if ($$1 > $$0 && $$1 < 16.0) {
-         $$2 = 1.33;
-      } else if ($$1 < 225.0) {
-         $$2 = 0.6;
-      }
-
-      this.a.L().a(this.b, $$2);
-      this.c = Math.max(this.c - 1, 0);
-      if (!($$1 > $$0)) {
-         if (this.c <= 0) {
-            this.c = 20;
-            this.a.c(a(this.a), this.b);
-         }
+      if (--this.c <= 0) {
+         this.c = this.a(10);
+         this.b.gt();
       }
    }
 }

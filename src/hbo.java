@@ -1,25 +1,46 @@
-import com.mojang.datafixers.util.Either;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
-import org.joml.Vector3f;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class hbo {
-   public static final String a = "missing";
-   public static final alj b = hby.a("missing");
-   public static final hbu c = new hbu(b, "missing");
+   private final alz a;
+   private final avt b;
+   private final AtomicReference<ffl> c = new AtomicReference<>();
+   private final AtomicInteger d;
 
-   public static hbz a() {
-      gkr $$0 = new gkr(new float[]{0.0F, 0.0F, 16.0F, 16.0F}, 0);
-      Map<jm, gkp> $$1 = new EnumMap<>(jm.class);
+   public hbo(alz $$0, avt $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = new AtomicInteger($$2);
+   }
 
-      for (jm $$2 : jm.values()) {
-         $$1.put($$2, new gkp($$2, 0, gyu.b().a(), $$0));
+   public ffl a() throws IOException {
+      ffl $$0 = this.c.get();
+      if ($$0 == null) {
+         synchronized (this) {
+            $$0 = this.c.get();
+            if ($$0 == null) {
+               try (InputStream $$1 = this.b.d()) {
+                  $$0 = ffl.a($$1);
+                  this.c.set($$0);
+               } catch (IOException var9) {
+                  throw new IOException("Failed to load image " + this.a, var9);
+               }
+            }
+         }
       }
 
-      gko $$3 = new gko(new Vector3f(0.0F, 0.0F, 0.0F), new Vector3f(16.0F, 16.0F, 16.0F), $$1);
-      gks $$4 = new gks(null, List.of($$3), Map.of("particle", Either.left(new hbn(gzd.d, gyu.b()))), null, null, gky.a, List.of());
-      $$4.c = "missingno";
-      return $$4;
+      return $$0;
+   }
+
+   public void b() {
+      int $$0 = this.d.decrementAndGet();
+      if ($$0 <= 0) {
+         ffl $$1 = this.c.getAndSet(null);
+         if ($$1 != null) {
+            $$1.close();
+         }
+      }
    }
 }

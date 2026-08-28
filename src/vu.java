@@ -1,42 +1,52 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.io.DataOutput;
+import java.io.IOException;
 
-public class vu extends vq {
-   private final Deque<vs> a = new ArrayDeque<>();
+public interface vu {
+   int d = 8;
+   int e = 12;
+   int f = 4;
+   int g = 28;
+   byte h = 0;
+   byte i = 1;
+   byte j = 2;
+   byte k = 3;
+   byte l = 4;
+   byte m = 5;
+   byte n = 6;
+   byte o = 7;
+   byte p = 8;
+   byte q = 9;
+   byte r = 10;
+   byte s = 11;
+   byte t = 12;
+   byte u = 99;
+   int v = 512;
 
-   public vu(vr... $$0) {
-      vs $$1 = vs.a();
-
-      for (vr $$2 : $$0) {
-         $$1.a($$2);
-      }
-
-      this.a.push($$1);
-   }
-
-   @Override
-   public vf.a a(vk<?> $$0, String $$1) {
-      vs $$2 = this.a.element();
-      if ($$2.a($$0, $$1)) {
-         return vf.a.b;
-      } else {
-         if ($$0 == ul.b) {
-            vs $$3 = $$2.d().get($$1);
-            if ($$3 != null) {
-               this.a.push($$3);
-            }
-         }
-
-         return super.a($$0, $$1);
-      }
-   }
+   void a(DataOutput var1) throws IOException;
 
    @Override
-   public vf.b b() {
-      if (this.e() == this.a.element().b()) {
-         this.a.pop();
-      }
+   String toString();
 
-      return super.b();
+   byte b();
+
+   vw<?> c();
+
+   vu d();
+
+   int a();
+
+   default String u_() {
+      return new vt().a(this);
+   }
+
+   void a(vy var1);
+
+   vr.b a(vr var1);
+
+   default void b(vr $$0) {
+      vr.b $$1 = $$0.b(this.c());
+      if ($$1 == vr.b.a) {
+         this.a($$0);
+      }
    }
 }

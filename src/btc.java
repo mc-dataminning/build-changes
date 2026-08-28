@@ -1,263 +1,59 @@
-import javax.annotation.Nullable;
+import javax.annotation.concurrent.Immutable;
 
+@Immutable
 public class btc {
-   private final kd<btd> a;
-   private final btb b;
-   private final btb c;
+   private static final float a = -72000.0F;
+   private static final float b = 1440000.0F;
+   private static final float c = 3600000.0F;
    private final btb d;
-   private final btb e;
-   private final btb f;
-   private final btb g;
-   private final btb h;
-   private final btb i;
-   private final btb j;
-   private final btb k;
-   private final btb l;
-   private final btb m;
-   private final btb n;
-   private final btb o;
-   private final btb p;
-   private final btb q;
-   private final btb r;
-   private final btb s;
-   private final btb t;
-   private final btb u;
-   private final btb v;
-   private final btb w;
-   private final btb x;
-   private final btb y;
-   private final btb z;
+   private final float e;
 
-   public btc(ke $$0) {
-      this.a = $$0.e(ma.s);
-      this.b = this.a(bte.a);
-      this.c = this.a(bte.b);
-      this.d = this.a(bte.c);
-      this.e = this.a(bte.d);
-      this.f = this.a(bte.e);
-      this.g = this.a(bte.f);
-      this.h = this.a(bte.g);
-      this.i = this.a(bte.h);
-      this.j = this.a(bte.i);
-      this.k = this.a(bte.j);
-      this.l = this.a(bte.k);
-      this.m = this.a(bte.l);
-      this.n = this.a(bte.m);
-      this.o = this.a(bte.n);
-      this.p = this.a(bte.o);
-      this.q = this.a(bte.p);
-      this.r = this.a(bte.q);
-      this.s = this.a(bte.r);
-      this.t = this.a(bte.s);
-      this.u = this.a(bte.t);
-      this.v = this.a(bte.u);
-      this.w = this.a(bte.v);
-      this.x = this.a(bte.w);
-      this.y = this.a(bte.U);
-      this.z = this.a(bte.V);
-   }
-
-   private btb a(ali<btd> $$0) {
-      return new btb(this.a.b($$0));
-   }
-
-   private btb a(ali<btd> $$0, @Nullable bul $$1) {
-      return new btb(this.a.b($$0), $$1);
-   }
-
-   private btb a(ali<btd> $$0, @Nullable bul $$1, @Nullable bul $$2) {
-      return new btb(this.a.b($$0), $$1, $$2);
+   public btc(btb $$0, long $$1, long $$2, float $$3) {
+      this.d = $$0;
+      this.e = this.a($$0, $$1, $$2, $$3);
    }
 
    public btb a() {
-      return this.b;
-   }
-
-   public btb b() {
-      return this.c;
-   }
-
-   public btb c() {
       return this.d;
    }
 
-   public btb d() {
+   public float b() {
       return this.e;
    }
 
-   public btb e() {
-      return this.f;
+   public boolean c() {
+      return this.e >= (float)btb.d.ordinal();
    }
 
-   public btb f() {
-      return this.g;
+   public boolean a(float $$0) {
+      return this.e > $$0;
    }
 
-   public btb g() {
-      return this.h;
+   public float d() {
+      if (this.e < 2.0F) {
+         return 0.0F;
+      } else {
+         return this.e > 4.0F ? 1.0F : (this.e - 2.0F) / 2.0F;
+      }
    }
 
-   public btb h() {
-      return this.i;
-   }
+   private float a(btb $$0, long $$1, long $$2, float $$3) {
+      if ($$0 == btb.a) {
+         return 0.0F;
+      } else {
+         boolean $$4 = $$0 == btb.d;
+         float $$5 = 0.75F;
+         float $$6 = bae.a(((float)$$1 + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
+         $$5 += $$6;
+         float $$7 = 0.0F;
+         $$7 += bae.a((float)$$2 / 3600000.0F, 0.0F, 1.0F) * ($$4 ? 1.0F : 0.75F);
+         $$7 += bae.a($$3 * 0.25F, 0.0F, $$6);
+         if ($$0 == btb.b) {
+            $$7 *= 0.5F;
+         }
 
-   public btb i() {
-      return this.j;
-   }
-
-   public btb j() {
-      return this.k;
-   }
-
-   public btb k() {
-      return this.l;
-   }
-
-   public btb l() {
-      return this.m;
-   }
-
-   public btb m() {
-      return this.n;
-   }
-
-   public btb n() {
-      return this.o;
-   }
-
-   public btb o() {
-      return this.p;
-   }
-
-   public btb p() {
-      return this.q;
-   }
-
-   public btb q() {
-      return this.r;
-   }
-
-   public btb r() {
-      return this.s;
-   }
-
-   public btb s() {
-      return this.t;
-   }
-
-   public btb t() {
-      return this.u;
-   }
-
-   public btb u() {
-      return this.v;
-   }
-
-   public btb v() {
-      return this.w;
-   }
-
-   public btb w() {
-      return this.x;
-   }
-
-   public btb a(bul $$0) {
-      return this.a(bte.x, $$0);
-   }
-
-   public btb b(bul $$0) {
-      return this.a(bte.y, $$0);
-   }
-
-   public btb c(bul $$0) {
-      return this.a(bte.z, $$0);
-   }
-
-   public btb a(bvh $$0) {
-      return this.a(bte.A, $$0);
-   }
-
-   public btb b(bvh $$0) {
-      return this.a(bte.B, $$0);
-   }
-
-   public btb c(bvh $$0) {
-      return this.a(bte.C, $$0);
-   }
-
-   public btb a(cou $$0) {
-      return this.a(bte.D, $$0);
-   }
-
-   public btb a(cpb $$0, @Nullable bul $$1) {
-      return this.a(bte.E, $$0, $$1);
-   }
-
-   public btb a(bul $$0, @Nullable bul $$1) {
-      return this.a(bte.F, $$0, $$1);
-   }
-
-   public btb a(bul $$0, @Nullable bvh $$1) {
-      return this.a(bte.G, $$0, $$1);
-   }
-
-   public btb b(bul $$0, @Nullable bvh $$1) {
-      return this.a(bte.H, $$0, $$1);
-   }
-
-   public btb c(bul $$0, @Nullable bvh $$1) {
-      return this.a(bte.I, $$0, $$1);
-   }
-
-   public btb a(cpi $$0, @Nullable bul $$1) {
-      return this.a(bte.J, $$0, $$1);
-   }
-
-   public btb a(cph $$0, @Nullable bul $$1) {
-      return $$1 == null ? this.a(bte.L, $$0) : this.a(bte.K, $$0, $$1);
-   }
-
-   public btb a(cqb $$0, bul $$1) {
-      return this.a(bte.M, $$0, $$1);
-   }
-
-   public btb b(bul $$0, @Nullable bul $$1) {
-      return this.a(bte.N, $$0, $$1);
-   }
-
-   public btb c(bul $$0, @Nullable bul $$1) {
-      return this.a(bte.O, $$0, $$1);
-   }
-
-   public btb d(bul $$0) {
-      return this.a(bte.P, $$0);
-   }
-
-   public btb a(@Nullable dfe $$0) {
-      return $$0 != null ? this.d($$0.d(), $$0.c()) : this.d(null, null);
-   }
-
-   public btb d(@Nullable bul $$0, @Nullable bul $$1) {
-      return this.a($$1 != null && $$0 != null ? bte.R : bte.Q, $$0, $$1);
-   }
-
-   public btb e(bul $$0) {
-      return this.a(bte.S, $$0);
-   }
-
-   public btb a(ezy $$0) {
-      return new btb(this.a.b(bte.T), $$0);
-   }
-
-   public btb x() {
-      return this.y;
-   }
-
-   public btb y() {
-      return this.z;
-   }
-
-   public btb f(bul $$0) {
-      return this.a(bte.W, $$0);
+         $$5 += $$7;
+         return (float)$$0.a() * $$5;
+      }
    }
 }

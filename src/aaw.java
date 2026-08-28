@@ -1,17 +1,20 @@
-public record aaw(eav c, int d) implements aat {
-   public static final zh<wu, aaw> a = zh.a(eav.d, aaw::b, zf.h, aaw::c, aaw::new);
-   public static final aat.b<aaw> b = aat.a("debug/game_event_listeners");
+public record aaw(ars b) implements aac<aav> {
+   public static final zt<ws, aaw> a = aac.a(aaw::a, aaw::new);
+
+   private aaw(ws $$0) {
+      this(new ars($$0));
+   }
+
+   private void a(ws $$0) {
+      this.b.a($$0);
+   }
 
    @Override
-   public aat.b<aaw> a() {
-      return b;
+   public aae<aaw> a() {
+      return aau.l;
    }
 
-   public eav b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
+   public void a(aav $$0) {
+      $$0.a(this);
    }
 }

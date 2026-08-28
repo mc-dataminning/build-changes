@@ -1,430 +1,101 @@
-import com.google.common.collect.Lists;
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Reference2FloatMap;
-import it.unimi.dsi.fastutil.objects.Reference2FloatMaps;
-import it.unimi.dsi.fastutil.objects.Reference2FloatOpenHashMap;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import java.util.concurrent.ThreadFactory;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
+import com.google.common.collect.Queues;
+import java.util.Locale;
+import java.util.Queue;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class bry implements AutoCloseable {
-   static final Logger a = LogUtils.getLogger();
-   private static final ThreadFactory b = new ThreadFactoryBuilder().setDaemon(true).build();
-   private static final String c = "new_";
-   static final xj d = xj.c("optimizeWorld.stage.upgrading.poi");
-   static final xj e = xj.c("optimizeWorld.stage.finished.poi");
-   static final xj f = xj.c("optimizeWorld.stage.upgrading.entities");
-   static final xj g = xj.c("optimizeWorld.stage.finished.entities");
-   static final xj h = xj.c("optimizeWorld.stage.upgrading.chunks");
-   static final xj i = xj.c("optimizeWorld.stage.finished.chunks");
-   final kd<dzr> j;
-   final Set<ali<dfm>> k;
-   final boolean l;
-   final boolean m;
-   final eub.c n;
-   private final Thread o;
-   final DataFixer p;
-   volatile boolean q = true;
-   private volatile boolean r;
-   volatile float s;
-   volatile int t;
-   volatile int u;
-   volatile int v;
-   volatile int w;
-   final Reference2FloatMap<ali<dfm>> x = Reference2FloatMaps.synchronize(new Reference2FloatOpenHashMap());
-   volatile xj y = xj.c("optimizeWorld.stage.counting");
-   static final Pattern z = Pattern.compile("^r\\.(-?[0-9]+)\\.(-?[0-9]+)\\.mca$");
-   final etv A;
+public interface bry<T extends Runnable> {
+   @Nullable
+   Runnable a();
 
-   public bry(eub.c $$0, DataFixer $$1, ke $$2, boolean $$3, boolean $$4) {
-      this.j = $$2.e(ma.bc);
-      this.k = this.j.j().stream().map(ma::a).collect(Collectors.toUnmodifiableSet());
-      this.l = $$3;
-      this.p = $$1;
-      this.n = $$0;
-      this.A = new etv(this.n.a(dfm.i).resolve("data"), $$1, $$2);
-      this.m = $$4;
-      this.o = b.newThread(this::i);
-      this.o.setUncaughtExceptionHandler(($$0x, $$1x) -> {
-         a.error("Error upgrading world", $$1x);
-         this.y = xj.c("optimizeWorld.stage.failed");
-         this.r = true;
-      });
-      this.o.start();
-   }
+   boolean a(T var1);
 
-   public void a() {
-      this.q = false;
+   boolean b();
 
-      try {
-         this.o.join();
-      } catch (InterruptedException var2) {
+   int c();
+
+   public static final class a implements bry<bry.c> {
+      private final Queue<Runnable>[] a;
+      private final AtomicInteger b = new AtomicInteger();
+
+      public a(int $$0) {
+         this.a = new Queue[$$0];
+
+         for (int $$1 = 0; $$1 < $$0; $$1++) {
+            this.a[$$1] = Queues.newConcurrentLinkedQueue();
+         }
       }
-   }
 
-   private void i() {
-      long $$0 = ae.c();
-      a.info("Upgrading entities");
-      new bry.d().a();
-      a.info("Upgrading POIs");
-      new bry.f().a();
-      a.info("Upgrading blocks");
-      new bry.b().a();
-      this.A.b();
-      $$0 = ae.c() - $$0;
-      a.info("World optimizaton finished after {} seconds", $$0 / 1000L);
-      this.r = true;
-   }
-
-   public boolean b() {
-      return this.r;
-   }
-
-   public Set<ali<dfm>> c() {
-      return this.k;
-   }
-
-   public float a(ali<dfm> $$0) {
-      return this.x.getFloat($$0);
-   }
-
-   public float d() {
-      return this.s;
-   }
-
-   public int e() {
-      return this.t;
-   }
-
-   public int f() {
-      return this.v;
-   }
-
-   public int g() {
-      return this.w;
-   }
-
-   public xj h() {
-      return this.y;
-   }
-
-   @Override
-   public void close() {
-      this.A.close();
-   }
-
-   static Path a(Path $$0) {
-      return $$0.resolveSibling("new_" + $$0.getFileName().toString());
-   }
-
-   abstract class a<T extends AutoCloseable> {
-      private final xj d;
-      private final xj e;
-      private final String f;
-      private final String g;
       @Nullable
-      protected CompletableFuture<Void> a;
-      protected final baw b;
-
-      a(final baw $$0, final String $$1, final String $$2, final xj $$3, final xj $$4) {
-         this.b = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.d = $$3;
-         this.e = $$4;
-      }
-
-      public void a() {
-         bry.this.u = 0;
-         bry.this.t = 0;
-         bry.this.v = 0;
-         bry.this.w = 0;
-         List<bry.c<T>> $$0 = this.b();
-         if (bry.this.t != 0) {
-            float $$1 = (float)bry.this.u;
-            bry.this.y = this.d;
-
-            while (bry.this.q) {
-               boolean $$2 = false;
-               float $$3 = 0.0F;
-
-               for (bry.c<T> $$4 : $$0) {
-                  ali<dfm> $$5 = $$4.a;
-                  ListIterator<bry.e> $$6 = $$4.c;
-                  T $$7 = $$4.b;
-                  if ($$6.hasNext()) {
-                     bry.e $$8 = $$6.next();
-                     boolean $$9 = true;
-
-                     for (des $$10 : $$8.b) {
-                        $$9 = $$9 && this.a($$5, $$7, $$10);
-                        $$2 = true;
-                     }
-
-                     if (bry.this.m) {
-                        if ($$9) {
-                           this.a($$8.a);
-                        } else {
-                           bry.a.error("Failed to convert region file {}", $$8.a.a());
-                        }
-                     }
-                  }
-
-                  float $$11 = (float)$$6.nextIndex() / $$1;
-                  bry.this.x.put($$5, $$11);
-                  $$3 += $$11;
-               }
-
-               bry.this.s = $$3;
-               if (!$$2) {
-                  break;
-               }
-            }
-
-            bry.this.y = this.e;
-
-            for (bry.c<T> $$12 : $$0) {
-               try {
-                  $$12.b.close();
-               } catch (Exception var14) {
-                  bry.a.error("Error upgrading chunk", var14);
-               }
+      @Override
+      public Runnable a() {
+         for (Queue<Runnable> $$0 : this.a) {
+            Runnable $$1 = $$0.poll();
+            if ($$1 != null) {
+               this.b.decrementAndGet();
+               return $$1;
             }
          }
+
+         return null;
       }
 
-      private List<bry.c<T>> b() {
-         List<bry.c<T>> $$0 = Lists.newArrayList();
-
-         for (ali<dfm> $$1 : bry.this.k) {
-            dzj $$2 = new dzj(bry.this.n.f(), $$1, this.f);
-            Path $$3 = bry.this.n.a($$1).resolve(this.g);
-            T $$4 = this.a($$2, $$3);
-            ListIterator<bry.e> $$5 = this.b($$2, $$3);
-            $$0.add(new bry.c<>($$1, $$4, $$5));
-         }
-
-         return $$0;
-      }
-
-      protected abstract T a(dzj var1, Path var2);
-
-      private ListIterator<bry.e> b(dzj $$0, Path $$1) {
-         List<bry.e> $$2 = c($$0, $$1);
-         bry.this.u = bry.this.u + $$2.size();
-         bry.this.t = bry.this.t + $$2.stream().mapToInt($$0x -> $$0x.b.size()).sum();
-         return $$2.listIterator();
-      }
-
-      private static List<bry.e> c(dzj $$0, Path $$1) {
-         File[] $$2 = $$1.toFile().listFiles(($$0x, $$1x) -> $$1x.endsWith(".mca"));
-         if ($$2 == null) {
-            return List.of();
+      public boolean a(bry.c $$0) {
+         int $$1 = $$0.a;
+         if ($$1 < this.a.length && $$1 >= 0) {
+            this.a[$$1].add($$0);
+            this.b.incrementAndGet();
+            return true;
          } else {
-            List<bry.e> $$3 = Lists.newArrayList();
-
-            for (File $$4 : $$2) {
-               Matcher $$5 = bry.z.matcher($$4.getName());
-               if ($$5.matches()) {
-                  int $$6 = Integer.parseInt($$5.group(1)) << 5;
-                  int $$7 = Integer.parseInt($$5.group(2)) << 5;
-                  List<des> $$8 = Lists.newArrayList();
-
-                  try (dzg $$9 = new dzg($$0, $$4.toPath(), $$1, true)) {
-                     for (int $$10 = 0; $$10 < 32; $$10++) {
-                        for (int $$11 = 0; $$11 < 32; $$11++) {
-                           des $$12 = new des($$10 + $$6, $$11 + $$7);
-                           if ($$9.b($$12)) {
-                              $$8.add($$12);
-                           }
-                        }
-                     }
-
-                     if (!$$8.isEmpty()) {
-                        $$3.add(new bry.e($$9, $$8));
-                     }
-                  } catch (Throwable var18) {
-                     bry.a.error("Failed to read chunks from region file {}", $$4.toPath(), var18);
-                  }
-               }
-            }
-
-            return $$3;
+            throw new IndexOutOfBoundsException(String.format(Locale.ROOT, "Priority %d not supported. Expected range [0-%d]", $$1, this.a.length - 1));
          }
-      }
-
-      private boolean a(ali<dfm> $$0, T $$1, des $$2) {
-         boolean $$3 = false;
-
-         try {
-            $$3 = this.a($$1, $$2, $$0);
-         } catch (CompletionException | z var7) {
-            Throwable $$5 = var7.getCause();
-            if (!($$5 instanceof IOException)) {
-               throw var7;
-            }
-
-            bry.a.error("Error upgrading chunk {}", $$2, $$5);
-         }
-
-         if ($$3) {
-            bry.this.v++;
-         } else {
-            bry.this.w++;
-         }
-
-         return $$3;
-      }
-
-      protected abstract boolean a(T var1, des var2, ali<dfm> var3);
-
-      private void a(dzg $$0) {
-         if (bry.this.m) {
-            if (this.a != null) {
-               this.a.join();
-            }
-
-            Path $$1 = $$0.a();
-            Path $$2 = $$1.getParent();
-            Path $$3 = bry.a($$2).resolve($$1.getFileName().toString());
-
-            try {
-               if ($$3.toFile().exists()) {
-                  Files.delete($$1);
-                  Files.move($$3, $$1);
-               } else {
-                  bry.a.error("Failed to replace an old region file. New file {} does not exist.", $$3);
-               }
-            } catch (IOException var6) {
-               bry.a.error("Failed to replace an old region file", var6);
-            }
-         }
-      }
-   }
-
-   class b extends bry.a<dza> {
-      b() {
-         super(baw.c, "chunk", "region", bry.h, bry.i);
-      }
-
-      protected boolean a(dza $$0, des $$1, ali<dfm> $$2) {
-         ul $$3 = $$0.d($$1).join().orElse(null);
-         if ($$3 != null) {
-            int $$4 = dza.a($$3);
-            dxr $$5 = bry.this.j.g(ma.b($$2)).b();
-            ul $$6 = $$0.a($$2, () -> bry.this.A, $$3, $$5.c());
-            des $$7 = new des($$6.h("xPos"), $$6.h("zPos"));
-            if (!$$7.equals($$1)) {
-               bry.a.warn("Chunk {} has invalid position {}", $$1, $$7);
-            }
-
-            boolean $$8 = $$4 < ab.b().d().c();
-            if (bry.this.l) {
-               $$8 = $$8 || $$6.e("Heightmaps");
-               $$6.r("Heightmaps");
-               $$8 = $$8 || $$6.e("isLightOn");
-               $$6.r("isLightOn");
-               ur $$9 = $$6.c("sections", 10);
-
-               for (int $$10 = 0; $$10 < $$9.size(); $$10++) {
-                  ul $$11 = $$9.a($$10);
-                  $$8 = $$8 || $$11.e("BlockLight");
-                  $$11.r("BlockLight");
-                  $$8 = $$8 || $$11.e("SkyLight");
-                  $$11.r("SkyLight");
-               }
-            }
-
-            if ($$8 || bry.this.m) {
-               if (this.a != null) {
-                  this.a.join();
-               }
-
-               this.a = $$0.a($$1, () -> $$6);
-               return true;
-            }
-         }
-
-         return false;
-      }
-
-      protected dza b(dzj $$0, Path $$1) {
-         return (dza)(bry.this.m ? new dzd($$0.a("source"), $$1, $$0.a("target"), bry.a($$1), bry.this.p, true) : new dza($$0, $$1, bry.this.p, true));
-      }
-   }
-
-   static record c<T>(ali<dfm> a, T b, ListIterator<bry.e> c) {
-   }
-
-   class d extends bry.g {
-      d() {
-         super(baw.s, "entities", bry.f, bry.g);
       }
 
       @Override
-      protected ul a(dzm $$0, ul $$1) {
-         return $$0.a($$1, -1);
-      }
-   }
-
-   static record e(dzg a, List<des> b) {
-   }
-
-   class f extends bry.g {
-      f() {
-         super(baw.q, "poi", bry.d, bry.e);
+      public boolean b() {
+         return this.b.get() == 0;
       }
 
       @Override
-      protected ul a(dzm $$0, ul $$1) {
-         return $$0.a($$1, 1945);
+      public int c() {
+         return this.b.get();
       }
    }
 
-   abstract class g extends bry.a<dzm> {
-      g(final baw $$0, final String $$1, final xj $$2, final xj $$3) {
-         super($$0, $$1, $$1, $$2, $$3);
+   public static final class b implements bry<Runnable> {
+      private final Queue<Runnable> a;
+
+      public b(Queue<Runnable> $$0) {
+         this.a = $$0;
       }
 
-      protected dzm b(dzj $$0, Path $$1) {
-         return (dzm)(bry.this.m
-            ? new dze($$0.a("source"), $$1, $$0.a("target"), bry.a($$1), bry.this.p, true, this.b)
-            : new dzm($$0, $$1, bry.this.p, true, this.b));
+      @Nullable
+      @Override
+      public Runnable a() {
+         return this.a.poll();
       }
 
-      protected boolean a(dzm $$0, des $$1, ali<dfm> $$2) {
-         ul $$3 = $$0.a($$1).join().orElse(null);
-         if ($$3 != null) {
-            int $$4 = dza.a($$3);
-            ul $$5 = this.a($$0, $$3);
-            boolean $$6 = $$4 < ab.b().d().c();
-            if ($$6 || bry.this.m) {
-               if (this.a != null) {
-                  this.a.join();
-               }
-
-               this.a = $$0.a($$1, $$5);
-               return true;
-            }
-         }
-
-         return false;
+      @Override
+      public boolean a(Runnable $$0) {
+         return this.a.add($$0);
       }
 
-      protected abstract ul a(dzm var1, ul var2);
+      @Override
+      public boolean b() {
+         return this.a.isEmpty();
+      }
+
+      @Override
+      public int c() {
+         return this.a.size();
+      }
+   }
+
+   public static record c(int a, Runnable b) implements Runnable {
+
+      @Override
+      public void run() {
+         this.b.run();
+      }
    }
 }

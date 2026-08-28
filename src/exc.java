@@ -1,42 +1,61 @@
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
-public class exc extends ewa {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<exc> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, exc::new));
+public class exc extends ewz {
+   public static final MapCodec<exc> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ayk.a(mb.K).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
+            .and(b($$0))
+            .apply($$0, exc::new)
+   );
+   private final ayk<cxg> j;
+   private final boolean k;
 
-   private exc(List<exy> $$0) {
-      super($$0);
+   private exc(ayk<cxg> $$0, boolean $$1, int $$2, int $$3, List<ezs> $$4, List<exv> $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.j = $$0;
+      this.k = $$1;
    }
 
    @Override
-   public ewc<exc> b() {
-      return ewd.l;
+   public ewy a() {
+      return ewv.f;
    }
 
    @Override
-   public cwm a(cwm $$0, eun $$1) {
-      if ($$0.f()) {
-         return $$0;
+   public void a(Consumer<cxk> $$0, ewh $$1) {
+      ma.g.c(this.j).forEach($$1x -> $$0.accept(new cxk($$1x)));
+   }
+
+   private boolean a(ewh $$0, Consumer<eww> $$1) {
+      if (!this.a($$0)) {
+         return false;
       } else {
-         Optional<dbc<dbq>> $$2 = $$1.d().s().a(dbg.b, new dbp($$0), $$1.d());
-         if ($$2.isPresent()) {
-            cwm $$3 = $$2.get().b().a($$1.d().J_());
-            if (!$$3.f()) {
-               return $$3.c($$0.L());
-            }
+         for (final jq<cxg> $$2 : ma.g.c(this.j)) {
+            $$1.accept(new ewz.c() {
+               @Override
+               public void a(Consumer<cxk> $$0, ewh $$1) {
+                  $$0.accept(new cxk($$2));
+               }
+            });
          }
 
-         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
-         return $$0;
+         return true;
       }
    }
 
-   public static ewa.a<?> c() {
-      return a(exc::new);
+   @Override
+   public boolean expand(ewh $$0, Consumer<eww> $$1) {
+      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
+   }
+
+   public static ewz.a<?> a(ayk<cxg> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new exc($$0, false, $$1, $$2, $$3, $$4));
+   }
+
+   public static ewz.a<?> b(ayk<cxg> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new exc($$0, true, $$1, $$2, $$3, $$4));
    }
 }

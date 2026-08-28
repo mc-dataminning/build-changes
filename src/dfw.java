@@ -1,50 +1,41 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.OptionalInt;
+import javax.annotation.Nullable;
 
-public class dfw {
-   private final Long2ObjectMap<List<arq>> a = new Long2ObjectOpenHashMap();
-   private final Map<arq, dfw.a> b = Maps.newHashMap();
-   private final aqu c;
+public interface dfw {
+   void a(@Nullable cps var1);
 
-   public dfw(aqu $$0) {
-      this.c = $$0;
-   }
+   @Nullable
+   cps gm();
 
-   private List<arq> a(des $$0) {
-      return (List<arq>)this.a.computeIfAbsent($$0.a(), $$1 -> this.c.c($$0));
-   }
+   dfy go();
 
-   public void a(des $$0, bvk $$1) {
-      for (arq $$2 : this.a($$0)) {
-         this.b.computeIfAbsent($$2, $$0x -> new dfw.a()).a($$1);
-      }
-   }
+   void a(dfy var1);
 
-   public boolean a(bvk $$0, des $$1) {
-      for (arq $$2 : this.a($$1)) {
-         dfw.a $$3 = this.b.get($$2);
-         if ($$3 == null || $$3.b($$0)) {
-            return true;
-         }
-      }
+   void a(dfx var1);
 
+   void i(cxk var1);
+
+   int x();
+
+   void s(int var1);
+
+   boolean gp();
+
+   axe gq();
+
+   default boolean gy() {
       return false;
    }
 
-   static class a {
-      private final Object2IntMap<bvk> a = new Object2IntOpenHashMap(bvk.values().length);
-
-      public void a(bvk $$0) {
-         this.a.computeInt($$0, ($$0x, $$1) -> $$1 == null ? 1 : $$1 + 1);
-      }
-
-      public boolean b(bvk $$0) {
-         return this.a.getOrDefault($$0, 0) < $$0.b();
+   default void a(cps $$0, xv $$1, int $$2) {
+      OptionalInt $$3 = $$0.a(new btm(($$0x, $$1x, $$2x) -> new cui($$0x, $$1x, this), $$1));
+      if ($$3.isPresent()) {
+         dfy $$4 = this.go();
+         if (!$$4.isEmpty()) {
+            $$0.a($$3.getAsInt(), $$4, $$2, this.x(), this.gp(), this.gy());
+         }
       }
    }
+
+   boolean gu();
 }

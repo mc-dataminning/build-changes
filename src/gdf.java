@@ -1,106 +1,48 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class gdf extends gbf<gym> {
+   private static final String a = "upper_body";
+   private final geh b;
+   private final geh c;
+   private final geh d;
+   private final geh e;
 
-public class gdf extends gde implements abn, wx {
-   private static final Logger l = LogUtils.getLogger();
-   private final GameProfile m;
-   private crq n;
-   private final ke.b o;
-   private final gdu p = new gdu();
-   @Nullable
-   private gdn q;
-   @Nullable
-   protected fme.b k;
-
-   public gdf(fke $$0, wd $$1, gdl $$2) {
-      super($$0, $$1, $$2);
-      this.m = $$2.a();
-      this.o = $$2.c();
-      this.n = $$2.d();
-      this.k = $$2.i();
+   public gdf(geh $$0) {
+      super($$0);
+      this.c = $$0.b("head");
+      this.d = $$0.b("left_arm");
+      this.e = $$0.b("right_arm");
+      this.b = $$0.b("upper_body");
    }
 
-   @Override
-   public boolean c() {
-      return this.b.i();
+   public static gen a() {
+      gep $$0 = new gep();
+      ger $$1 = $$0.a();
+      float $$2 = 4.0F;
+      gel $$3 = new gel(-0.5F);
+      $$1.a("head", gem.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$3), gej.a(0.0F, 4.0F, 0.0F));
+      gem $$4 = gem.c().a(32, 0).a(-1.0F, 0.0F, -1.0F, 12.0F, 2.0F, 2.0F, $$3);
+      $$1.a("left_arm", $$4, gej.a(5.0F, 6.0F, 1.0F, 0.0F, 0.0F, 1.0F));
+      $$1.a("right_arm", $$4, gej.a(-5.0F, 6.0F, -1.0F, 0.0F, (float) Math.PI, -1.0F));
+      $$1.a("upper_body", gem.c().a(0, 16).a(-5.0F, -10.0F, -5.0F, 10.0F, 10.0F, 10.0F, $$3), gej.a(0.0F, 13.0F, 0.0F));
+      $$1.a("lower_body", gem.c().a(0, 36).a(-6.0F, -12.0F, -6.0F, 12.0F, 12.0F, 12.0F, $$3), gej.a(0.0F, 24.0F, 0.0F));
+      return gen.a($$0, 64, 64);
    }
 
-   @Override
-   protected void a(aat $$0) {
-      this.b($$0);
-   }
-
-   private void b(aat $$0) {
-      l.warn("Unknown custom packet payload: {}", $$0.a().a());
-   }
-
-   @Override
-   public void a(abp $$0) {
-      zt.a($$0, this, this.a);
-      this.p.a($$0.b(), $$0.e());
-   }
-
-   @Override
-   public void a(aah $$0) {
-      zt.a($$0, this, this.a);
-      this.p.a($$0.b());
-   }
-
-   @Override
-   public void a(abs $$0) {
-      this.n = crs.e.a($$0.b());
-   }
-
-   @Override
-   public void a(abr $$0) {
-      zt.a($$0, this, this.a);
-      if (this.q == null) {
-         this.q = new gdn();
-      }
-
-      List<auj> $$1 = this.q.a($$0.b());
-      this.b(new abx($$1));
-   }
-
-   @Override
-   public void a(abq $$0) {
-      this.k = null;
-   }
-
-   private <T> T a(Function<avg, T> $$0) {
-      if (this.q == null) {
-         return $$0.apply(avg.b);
-      } else {
-         Object var3;
-         try (aus $$1 = this.q.a()) {
-            var3 = $$0.apply($$1);
-         }
-
-         return (T)var3;
-      }
-   }
-
-   @Override
-   public void a(abo $$0) {
-      zt.a($$0, this, this.a);
-      ke.b $$1 = this.a($$0x -> this.p.a($$0x, this.o, this.b.e()));
-      this.b.a(agv.b.a(wu.a($$1)), new gdi(this.a, this.b, new gdl(this.m, this.e, $$1, this.n, this.d, this.c, this.f, this.h, this.k, this.i, this.j)));
-      this.b.a(abw.a);
-      this.b.a(agv.a.a(wu.a($$1)));
-   }
-
-   @Override
-   public void d() {
-      this.e();
-   }
-
-   @Override
-   public void a(wf $$0) {
+   public void a(gym $$0) {
       super.a($$0);
-      this.a.z();
+      this.c.f = $$0.U * (float) (Math.PI / 180.0);
+      this.c.e = $$0.V * (float) (Math.PI / 180.0);
+      this.b.f = $$0.U * (float) (Math.PI / 180.0) * 0.25F;
+      float $$1 = bae.a(this.b.f);
+      float $$2 = bae.b(this.b.f);
+      this.d.f = this.b.f;
+      this.e.f = this.b.f + (float) Math.PI;
+      this.d.b = $$2 * 5.0F;
+      this.d.d = -$$1 * 5.0F;
+      this.e.b = -$$2 * 5.0F;
+      this.e.d = $$1 * 5.0F;
+   }
+
+   public geh b() {
+      return this.c;
    }
 }

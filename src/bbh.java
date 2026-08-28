@@ -1,26 +1,50 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
 import java.util.function.Function;
 
-public class bbh extends DataFix {
-   private final String a;
-   private final Function<String, String> b;
+public interface bbh<C> {
+   bbh<Float> a = a($$0 -> $$0);
 
-   public bbh(Schema $$0, boolean $$1, String $$2, Function<String, String> $$3) {
-      super($$0, $$1);
-      this.a = $$2;
-      this.b = $$3;
+   float a(C var1);
+
+   float b();
+
+   float c();
+
+   static bbh<Float> a(final Float2FloatFunction $$0) {
+      return new bbh<Float>() {
+         public float a(Float $$0x) {
+            return (Float)$$0.apply($$0);
+         }
+
+         @Override
+         public float b() {
+            return Float.NEGATIVE_INFINITY;
+         }
+
+         @Override
+         public float c() {
+            return Float.POSITIVE_INFINITY;
+         }
+      };
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         this.a, this.getInputSchema().getType(bia.p), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.updateMapValues($$1 -> {
-                  String $$2 = ((Dynamic)$$1.getFirst()).asString("");
-                  return $$1.mapFirst($$2x -> $$0x.createString(this.b.apply($$2)));
-               }))
-      );
+   default <C2> bbh<C2> a(final Function<C2, C> $$0) {
+      final bbh<C> $$1 = this;
+      return new bbh<C2>() {
+         @Override
+         public float a(C2 $$0x) {
+            return $$1.a($$0.apply($$0));
+         }
+
+         @Override
+         public float b() {
+            return $$1.b();
+         }
+
+         @Override
+         public float c() {
+            return $$1.c();
+         }
+      };
    }
 }

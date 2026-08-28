@@ -1,110 +1,63 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public record ebw(ebj b, ebj c, ebj d, ebj e, ebj f, ebj g, ebj h, ebj i, ebj j, ebj k, ebj l, ebj m, ebj n, ebj o, ebj p) {
-   public static final Codec<ebw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               a("barrier", ebw::a),
-               a("fluid_level_floodedness", ebw::b),
-               a("fluid_level_spread", ebw::c),
-               a("lava", ebw::d),
-               a("temperature", ebw::e),
-               a("vegetation", ebw::f),
-               a("continents", ebw::g),
-               a("erosion", ebw::h),
-               a("depth", ebw::i),
-               a("ridges", ebw::j),
-               a("initial_density_without_jaggedness", ebw::k),
-               a("final_density", ebw::l),
-               a("vein_toggle", ebw::m),
-               a("vein_ridged", ebw::n),
-               a("vein_gap", ebw::o)
-            )
-            .apply($$0, ebw::new)
-   );
+public class ebw {
+   private Int2ObjectMap<bvf> a = new Int2ObjectLinkedOpenHashMap();
+   private Int2ObjectMap<bvf> b = new Int2ObjectLinkedOpenHashMap();
+   @Nullable
+   private Int2ObjectMap<bvf> c;
 
-   private static RecordCodecBuilder<ebw, ebj> a(String $$0, Function<ebw, ebj> $$1) {
-      return ebj.d.fieldOf($$0).forGetter($$1);
+   private void a() {
+      if (this.c == this.a) {
+         this.b.clear();
+         ObjectIterator $$1 = Int2ObjectMaps.fastIterable(this.a).iterator();
+
+         while ($$1.hasNext()) {
+            Entry<bvf> $$0 = (Entry<bvf>)$$1.next();
+            this.b.put($$0.getIntKey(), (bvf)$$0.getValue());
+         }
+
+         Int2ObjectMap<bvf> $$1x = this.a;
+         this.a = this.b;
+         this.b = $$1x;
+      }
    }
 
-   public ebw a(ebj.f $$0) {
-      return new ebw(
-         this.b.a($$0),
-         this.c.a($$0),
-         this.d.a($$0),
-         this.e.a($$0),
-         this.f.a($$0),
-         this.g.a($$0),
-         this.h.a($$0),
-         this.i.a($$0),
-         this.j.a($$0),
-         this.k.a($$0),
-         this.l.a($$0),
-         this.m.a($$0),
-         this.n.a($$0),
-         this.o.a($$0),
-         this.p.a($$0)
-      );
+   public void a(bvf $$0) {
+      this.a();
+      this.a.put($$0.ar(), $$0);
    }
 
-   public ebj a() {
-      return this.b;
+   public void b(bvf $$0) {
+      this.a();
+      this.a.remove($$0.ar());
    }
 
-   public ebj b() {
-      return this.c;
+   public boolean c(bvf $$0) {
+      return this.a.containsKey($$0.ar());
    }
 
-   public ebj c() {
-      return this.d;
-   }
+   public void a(Consumer<bvf> $$0) {
+      if (this.c != null) {
+         throw new UnsupportedOperationException("Only one concurrent iteration supported");
+      } else {
+         this.c = this.a;
 
-   public ebj d() {
-      return this.e;
-   }
+         try {
+            ObjectIterator var2 = this.a.values().iterator();
 
-   public ebj e() {
-      return this.f;
-   }
-
-   public ebj f() {
-      return this.g;
-   }
-
-   public ebj g() {
-      return this.h;
-   }
-
-   public ebj h() {
-      return this.i;
-   }
-
-   public ebj i() {
-      return this.j;
-   }
-
-   public ebj j() {
-      return this.k;
-   }
-
-   public ebj k() {
-      return this.l;
-   }
-
-   public ebj l() {
-      return this.m;
-   }
-
-   public ebj m() {
-      return this.n;
-   }
-
-   public ebj n() {
-      return this.o;
-   }
-
-   public ebj o() {
-      return this.p;
+            while (var2.hasNext()) {
+               bvf $$1 = (bvf)var2.next();
+               $$0.accept($$1);
+            }
+         } finally {
+            this.c = null;
+         }
+      }
    }
 }

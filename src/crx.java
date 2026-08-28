@@ -1,46 +1,89 @@
-public class crx {
-   public static final crw a = new crw.a().a(4).a(0.3F).b();
-   public static final crw b = new crw.a().a(5).a(0.6F).b();
-   public static final crw c = new crw.a().a(3).a(0.3F).b();
-   public static final crw d = new crw.a().a(1).a(0.6F).b();
-   public static final crw e = a(6).b();
-   public static final crw f = new crw.a().a(5).a(0.6F).b();
-   public static final crw g = new crw.a().a(3).a(0.6F).b();
-   public static final crw h = new crw.a().a(2).a(0.3F).b();
-   public static final crw i = new crw.a().a(4).a(0.3F).a().b();
-   public static final crw j = new crw.a().a(2).a(0.1F).b();
-   public static final crw k = new crw.a().a(8).a(0.8F).b();
-   public static final crw l = new crw.a().a(6).a(0.6F).b();
-   public static final crw m = new crw.a().a(5).a(0.6F).b();
-   public static final crw n = new crw.a().a(6).a(0.8F).b();
-   public static final crw o = new crw.a().a(8).a(0.8F).b();
-   public static final crw p = new crw.a().a(5).a(0.6F).b();
-   public static final crw q = new crw.a().a(6).a(0.8F).b();
-   public static final crw r = new crw.a().a(2).a(0.1F).b();
-   public static final crw s = new crw.a().a(1).a(0.3F).b();
-   public static final crw t = new crw.a().a(4).a(1.2F).a().b();
-   public static final crw u = new crw.a().a(4).a(1.2F).a().b();
-   public static final crw v = new crw.a().a(6).a(1.2F).b();
-   public static final crw w = new crw.a().a(6).a(0.1F).a().b();
-   public static final crw x = new crw.a().a(2).a(0.3F).b();
-   public static final crw y = a(6).b();
-   public static final crw z = new crw.a().a(2).a(0.3F).b();
-   public static final crw A = new crw.a().a(2).a(0.3F).b();
-   public static final crw B = new crw.a().a(3).a(0.3F).b();
-   public static final crw C = new crw.a().a(1).a(0.3F).b();
-   public static final crw D = new crw.a().a(1).a(0.1F).b();
-   public static final crw E = new crw.a().a(8).a(0.3F).b();
-   public static final crw F = new crw.a().a(3).a(0.3F).b();
-   public static final crw G = a(10).b();
-   public static final crw H = new crw.a().a(4).a(0.1F).b();
-   public static final crw I = new crw.a().a(2).a(0.1F).b();
-   public static final crw J = new crw.a().a(2).a(0.8F).b();
-   public static final crw K = a(6).a().b();
-   public static final crw L = new crw.a().a(2).a(0.1F).b();
-   public static final crw M = new crw.a().a(2).a(0.1F).b();
-   public static final crw N = new crw.a().a(1).a(0.1F).b();
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   private static crw.a a(int $$0) {
-      return new crw.a().a($$0).a(0.6F);
+public class crx {
+   public static int[][] a(jm $$0) {
+      jm $$1 = $$0.h();
+      jm $$2 = $$1.g();
+      jm $$3 = $$0.g();
+      return new int[][]{
+         {$$1.j(), $$1.l()},
+         {$$2.j(), $$2.l()},
+         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
+         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
+         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
+         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
+         {$$3.j(), $$3.l()},
+         {$$0.j(), $$0.l()}
+      };
+   }
+
+   public static boolean a(double $$0) {
+      return !Double.isInfinite($$0) && $$0 < 1.0;
+   }
+
+   public static boolean a(dgj $$0, bwb $$1, fbn $$2) {
+      for (fcm $$4 : $$0.e($$1, $$2)) {
+         if (!$$4.c()) {
+            return false;
+         }
+      }
+
+      return $$0.F_().a($$2);
+   }
+
+   public static boolean a(dgj $$0, fbs $$1, bwb $$2, bwn $$3) {
+      return a($$0, $$2, $$2.f($$3).c($$1));
+   }
+
+   public static fcm a(dgf $$0, jh $$1) {
+      dxn $$2 = $$0.a_($$1);
+      return !$$2.a(axu.aS) && (!($$2.b() instanceof dsu) || !$$2.c(dsu.b)) ? $$2.g($$0, $$1) : fcj.a();
+   }
+
+   public static double a(jh $$0, int $$1, Function<jh, fcm> $$2) {
+      jh.a $$3 = $$0.k();
+      int $$4 = 0;
+
+      while ($$4 < $$1) {
+         fcm $$5 = $$2.apply($$3);
+         if (!$$5.c()) {
+            return (double)($$0.v() + $$4) + $$5.b(jm.a.b);
+         }
+
+         $$4++;
+         $$3.c(jm.b);
+      }
+
+      return Double.POSITIVE_INFINITY;
+   }
+
+   @Nullable
+   public static fbs a(bvm<?> $$0, dgj $$1, jh $$2, boolean $$3) {
+      if ($$3 && $$0.a($$1.a_($$2))) {
+         return null;
+      } else {
+         double $$4 = $$1.a(a((dgf)$$1, $$2), () -> a((dgf)$$1, $$2.e()));
+         if (!a($$4)) {
+            return null;
+         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.e()))) {
+            return null;
+         } else {
+            fbs $$5 = fbs.a($$2, $$4);
+            fbn $$6 = $$0.n().a($$5);
+
+            for (fcm $$8 : $$1.e(null, $$6)) {
+               if (!$$8.c()) {
+                  return null;
+               }
+            }
+
+            if ($$0 != bvm.bS || !$$1.a_($$2).a(axu.ct) && !$$1.a_($$2.d()).a(axu.ct)) {
+               return !$$1.F_().a($$6) ? null : $$5;
+            } else {
+               return null;
+            }
+         }
+      }
    }
 }

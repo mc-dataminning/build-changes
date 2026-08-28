@@ -1,27 +1,23 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+public class gtp extends gsp<ciq, gym, gdf> {
+   private static final alz a = alz.b("textures/entity/snow_golem.png");
 
-public class gtp extends gty<gwh, fzy> {
-   private static final Map<bui.a, alj> a = ImmutableMap.of(
-      bui.a.b,
-      alj.b("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
-      bui.a.c,
-      alj.b("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
-      bui.a.d,
-      alj.b("textures/entity/iron_golem/iron_golem_crackiness_high.png")
-   );
-
-   public gtp(grh<gwh, fzy> $$0) {
-      super($$0);
+   public gtp(grj.a $$0) {
+      super($$0, new gdf($$0.a(geg.cP)), 0.5F);
+      this.a(new gwd(this, $$0.d(), $$0.b()));
    }
 
-   public void a(fer $$0, gjg $$1, int $$2, gwh $$3, float $$4, float $$5) {
-      if (!$$3.u) {
-         bui.a $$6 = $$3.c;
-         if ($$6 != bui.a.a) {
-            alj $$7 = a.get($$6);
-            b(this.d(), $$7, $$0, $$1, $$2, $$3, -1);
-         }
-      }
+   @Override
+   public alz b(gym $$0) {
+      return a;
+   }
+
+   public gym b() {
+      return new gym();
+   }
+
+   public void a(ciq $$0, gym $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.ao = $$0.p() ? new cxk(cxo.fy) : cxk.k;
+      $$1.an = this.i.a($$1.ao, $$0, cxi.f);
    }
 }

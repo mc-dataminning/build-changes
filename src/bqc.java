@@ -1,21 +1,49 @@
-public enum bqc {
-   a("pathfinding"),
-   b("event-loops"),
-   c("consecutive-executors"),
-   d("ticking"),
-   e("jvm"),
-   f("chunk rendering"),
-   g("chunk rendering dispatching"),
-   h("cpu"),
-   i("gpu");
+import java.net.SocketAddress;
+import jdk.jfr.Category;
+import jdk.jfr.DataAmount;
+import jdk.jfr.Enabled;
+import jdk.jfr.Event;
+import jdk.jfr.Label;
+import jdk.jfr.Name;
+import jdk.jfr.StackTrace;
 
-   private final String j;
+@Category({"Minecraft", "Network"})
+@StackTrace(false)
+@Enabled(false)
+public abstract class bqc extends Event {
+   @Name("protocolId")
+   @Label("Protocol Id")
+   public final String protocolId;
+   @Name("packetDirection")
+   @Label("Packet Direction")
+   public final String packetDirection;
+   @Name("packetId")
+   @Label("Packet Id")
+   public final String packetId;
+   @Name("remoteAddress")
+   @Label("Remote Address")
+   public final String remoteAddress;
+   @Name("bytes")
+   @Label("Bytes")
+   @DataAmount
+   public final int bytes;
 
-   private bqc(final String $$0) {
-      this.j = $$0;
+   public bqc(String $$0, String $$1, String $$2, SocketAddress $$3, int $$4) {
+      this.protocolId = $$0;
+      this.packetDirection = $$1;
+      this.packetId = $$2;
+      this.remoteAddress = $$3.toString();
+      this.bytes = $$4;
    }
 
-   public String a() {
-      return this.j;
+   public static final class a {
+      public static final String a = "remoteAddress";
+      public static final String b = "protocolId";
+      public static final String c = "packetDirection";
+      public static final String d = "packetId";
+      public static final String e = "bytes";
+
+      private a() {
+      }
    }
 }

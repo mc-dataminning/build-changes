@@ -1,102 +1,42 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class enl {
-   private final int a;
-   private final int b;
-   private final int c;
-   private final int d;
-   private final ens.a e;
+public class enl extends enj {
+   public static final MapCodec<enl> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(bsj.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), bsj.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
+            .apply($$0, enl::new)
+   );
+   private final bsj c;
+   private final bsj d;
 
-   public enl(int $$0, int $$1, int $$2, int $$3, ens.a $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   public static enl a(bsj $$0, bsj $$1) {
+      return new enl($$0, $$1);
    }
 
-   public int a() {
-      return this.a;
+   public static enl a(bsj $$0) {
+      return new enl(bsg.a(0), $$0);
    }
 
-   public int b() {
-      return this.b;
+   public static enl b(bsj $$0) {
+      return new enl($$0, bsg.a(0));
    }
 
-   public int c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.d;
-   }
-
-   public ens.a e() {
-      return this.e;
-   }
-
-   public <T> Dynamic<T> a(DynamicOps<T> $$0) {
-      Builder<T, T> $$1 = ImmutableMap.builder();
-      $$1.put($$0.createString("source_x"), $$0.createInt(this.a))
-         .put($$0.createString("source_ground_y"), $$0.createInt(this.b))
-         .put($$0.createString("source_z"), $$0.createInt(this.c))
-         .put($$0.createString("delta_y"), $$0.createInt(this.d))
-         .put($$0.createString("dest_proj"), $$0.createString(this.e.a()));
-      return new Dynamic($$0, $$0.createMap($$1.build()));
-   }
-
-   public static <T> enl a(Dynamic<T> $$0) {
-      return new enl(
-         $$0.get("source_x").asInt(0),
-         $$0.get("source_ground_y").asInt(0),
-         $$0.get("source_z").asInt(0),
-         $$0.get("delta_y").asInt(0),
-         ens.a.a($$0.get("dest_proj").asString(""))
-      );
+   private enl(bsj $$0, bsj $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         enl $$1 = (enl)$$0;
-         if (this.a != $$1.a) {
-            return false;
-         } else if (this.c != $$1.c) {
-            return false;
-         } else {
-            return this.d != $$1.d ? false : this.e == $$1.e;
-         }
-      } else {
-         return false;
-      }
+   public Stream<jh> a_(enh $$0, bam $$1, jh $$2) {
+      int $$3 = $$2.u() + this.c.a($$1);
+      int $$4 = $$2.v() + this.d.a($$1);
+      int $$5 = $$2.w() + this.c.a($$1);
+      return Stream.of(new jh($$3, $$4, $$5));
    }
 
    @Override
-   public int hashCode() {
-      int $$0 = this.a;
-      $$0 = 31 * $$0 + this.b;
-      $$0 = 31 * $$0 + this.c;
-      $$0 = 31 * $$0 + this.d;
-      return 31 * $$0 + this.e.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "JigsawJunction{sourceX="
-         + this.a
-         + ", sourceGroundY="
-         + this.b
-         + ", sourceZ="
-         + this.c
-         + ", deltaY="
-         + this.d
-         + ", destProjection="
-         + this.e
-         + "}";
+   public enk<?> b() {
+      return enk.n;
    }
 }

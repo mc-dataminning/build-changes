@@ -1,36 +1,81 @@
-public class gmh implements glr<duo> {
-   private final gpi a;
+public class gmh implements avw {
+   private final gmg a;
+   private final gmj b;
+   private final gkl c;
+   private final gmi d;
+   private final bam e = bam.a();
+   private final fnb f;
 
-   public gmh(gls.a $$0) {
-      this.a = $$0.c();
+   public gmh(gmg $$0, gkl $$1, fnb $$2) {
+      this.a = $$0;
+      this.c = $$1;
+      this.f = $$2;
+      this.b = new gmj(this.f);
+      this.d = new gmi();
    }
 
-   public void a(duo $$0, float $$1, fer $$2, gjg $$3, int $$4, int $$5) {
-      dfm $$6 = $$0.i();
-      if ($$6 != null) {
-         den $$7 = $$0.c();
-         bul $$8 = $$7.b($$6, $$0.aA_());
-         if ($$8 != null) {
-            a($$1, $$2, $$3, $$4, $$8, this.a, $$7.b(), $$7.a());
+   public gmg a() {
+      return this.a;
+   }
+
+   public void a(dxn $$0, jh $$1, dgc $$2, fgl $$3, fgp $$4) {
+      if ($$0.o() == dqn.c) {
+         hdg $$5 = this.a.b($$0);
+         long $$6 = $$0.b($$1);
+         this.b.a($$2, $$5, $$0, $$1, $$3, $$4, true, this.e, $$6, hav.d);
+      }
+   }
+
+   public void a(dxn $$0, jh $$1, dgc $$2, fgl $$3, fgp $$4, boolean $$5, bam $$6) {
+      try {
+         this.b.a($$2, this.a($$0), $$0, $$1, $$3, $$4, $$5, $$6, $$0.b($$1), hav.d);
+      } catch (Throwable var11) {
+         o $$8 = o.a(var11, "Tesselating block in world");
+         p $$9 = $$8.a("Block being tesselated");
+         p.a($$9, $$2, $$1, $$0);
+         throw new z($$8);
+      }
+   }
+
+   public void a(jh $$0, dgc $$1, fgp $$2, dxn $$3, etp $$4) {
+      try {
+         this.d.a($$1, $$0, $$2, $$3, $$4);
+      } catch (Throwable var9) {
+         o $$6 = o.a(var9, "Tesselating liquid in world");
+         p $$7 = $$6.a("Block being tesselated");
+         p.a($$7, $$1, $$0, null);
+         throw new z($$6);
+      }
+   }
+
+   public gmj b() {
+      return this.b;
+   }
+
+   public hdg a(dxn $$0) {
+      return this.a.b($$0);
+   }
+
+   public void a(dxn $$0, fgl $$1, gle $$2, int $$3, int $$4) {
+      dqn $$5 = $$0.o();
+      if ($$5 != dqn.a) {
+         switch ($$5) {
+            case c:
+               hdg $$6 = this.a($$0);
+               int $$7 = this.f.a($$0, null, null, 0);
+               float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
+               float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
+               float $$10 = (float)($$7 & 0xFF) / 255.0F;
+               this.b.a($$1.c(), $$2.getBuffer(gkw.c($$0)), $$0, $$6, $$8, $$9, $$10, $$3, $$4);
+               break;
+            case b:
+               this.c.a(new cxk($$0.b()), cxi.a, $$1, $$2, $$3, $$4);
          }
       }
    }
 
-   public static void a(float $$0, fer $$1, gjg $$2, int $$3, bul $$4, gpi $$5, double $$6, double $$7) {
-      $$1.a();
-      $$1.a(0.5F, 0.0F, 0.5F);
-      float $$8 = 0.53125F;
-      float $$9 = Math.max($$4.dq(), $$4.dr());
-      if ((double)$$9 > 1.0) {
-         $$8 /= $$9;
-      }
-
-      $$1.a(0.0F, 0.4F, 0.0F);
-      $$1.a(a.d.rotationDegrees((float)azm.d((double)$$0, $$6, $$7) * 10.0F));
-      $$1.a(0.0F, -0.2F, 0.0F);
-      $$1.a(a.b.rotationDegrees(-30.0F));
-      $$1.b($$8, $$8, $$8);
-      $$5.a($$4, 0.0, 0.0, 0.0, $$0, $$1, $$2, $$3);
-      $$1.b();
+   @Override
+   public void a(avv $$0) {
+      this.d.a();
    }
 }

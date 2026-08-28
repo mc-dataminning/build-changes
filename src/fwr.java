@@ -1,108 +1,117 @@
-import javax.annotation.Nullable;
+public class fwr extends fwv {
+   private static final xv a = xv.c("options.languageAccuracyWarning").b(-4539718);
+   private static final int u = 53;
+   private fwr.a v;
+   final hcn w;
 
-public class fwr extends frw {
-   private static final xj a = xj.c("telemetry_info.screen.title");
-   private static final xj b = xj.c("telemetry_info.screen.description").b(-4539718);
-   private static final xj c = xj.c("telemetry_info.button.privacy_statement");
-   private static final xj d = xj.c("telemetry_info.button.give_feedback");
-   private static final xj s = xj.c("telemetry_info.button.show_data");
-   private static final xj u = xj.c("telemetry_info.opt_in.description");
-   private static final int v = 8;
-   private static final boolean w = fke.Q().D();
-   private final frw x;
-   private final fki y;
-   private final fps z = new fps(this, 16 + 9 * 5 + 20, w ? 33 + fmf.a(fke.Q().h) : 33);
-   @Nullable
-   private fwq A;
-   @Nullable
-   private fmx B;
-   private double C;
-
-   public fwr(frw $$0, fki $$1) {
-      super(a);
-      this.x = $$0;
-      this.y = $$1;
+   public fwr(ftr $$0, fmd $$1, hcn $$2) {
+      super($$0, $$1, xv.c("options.language.title"));
+      this.w = $$2;
+      this.s.a(53);
    }
 
    @Override
-   public xj i() {
-      return xi.a(super.i(), b);
+   protected void F() {
+      this.v = this.s.c(new fwr.a(this.m));
    }
 
    @Override
-   protected void aR_() {
-      fpw $$0 = this.z.a(fpw.d().a(4));
+   protected void l() {
+   }
+
+   @Override
+   protected void E() {
+      frr $$0 = this.s.b(frr.d()).a(8);
       $$0.c().b();
-      $$0.a(new fnk(a, this.p));
-      this.B = $$0.a(new fmx(b, this.p).b(true));
-      fpw $$1 = $$0.a(fpw.e().a(8));
-      $$1.a(fmd.a(c, this::a).a());
-      $$1.a(fmd.a(d, this::b).a());
-      fpw $$2 = this.z.b(fpw.d().a(4));
-      if (w) {
-         $$2.a(this.m());
-      }
-
-      fpw $$3 = $$2.a(fpw.e().a(8));
-      $$3.a(fmd.a(s, this::c).a());
-      $$3.a(fmd.a(xi.d, $$0x -> this.aO_()).a());
-      fpw $$4 = this.z.c(fpw.d().a(8));
-      this.A = $$4.a(new fwq(0, 0, this.n - 40, this.z.d(), this.p));
-      this.A.a($$0x -> this.C = $$0x);
-      this.z.a($$1x -> {
-         fmb var10000 = this.c($$1x);
-      });
-      this.c();
+      $$0.a(new fpg(a, this.p));
+      frr $$1 = $$0.a(frr.e().a(8));
+      $$1.a(fny.a(xv.c("options.font"), $$0x -> this.m.a(new fwq(this, this.c))).a());
+      $$1.a(fny.a(xu.d, $$0x -> this.J()).a());
    }
 
    @Override
    protected void c() {
-      if (this.A != null) {
-         this.A.a(this.C);
-         this.A.k(this.n - 40);
-         this.A.l(this.z.d());
-         this.A.j();
+      super.c();
+      this.v.a(this.n, this.s);
+   }
+
+   void J() {
+      fwr.a.a $$0 = this.v.g();
+      if ($$0 != null && !$$0.b.equals(this.w.a())) {
+         this.w.a($$0.b);
+         this.c.ab = $$0.b;
+         this.m.l();
       }
 
-      if (this.B != null) {
-         this.B.d(this.n - 16);
+      this.m.a(this.b);
+   }
+
+   class a extends fov<fwr.a.a> {
+      public a(final flz $$0) {
+         super($$0, fwr.this.n, fwr.this.o - 33 - 53, 33, 18);
+         String $$1 = fwr.this.w.a();
+         fwr.this.w.b().forEach(($$1x, $$2) -> {
+            fwr.a.a $$3 = new fwr.a.a($$1x, $$2);
+            this.b($$3);
+            if ($$1.equals($$1x)) {
+               this.a($$3);
+            }
+         });
+         if (this.g() != null) {
+            this.e(this.g());
+         }
       }
 
-      this.z.a();
-   }
-
-   @Override
-   protected void aF_() {
-      if (this.A != null) {
-         this.b(this.A);
+      @Override
+      public int a() {
+         return super.a() + 50;
       }
-   }
 
-   private fmb m() {
-      fkh<Boolean> $$0 = this.y.ak();
-      return fmf.a(u, this.p).a($$0).a(this::a).a();
-   }
+      public class a extends fov.a<fwr.a.a> {
+         final String b;
+         private final xv c;
+         private long d;
 
-   private void a(fmb $$0, boolean $$1) {
-      if (this.A != null) {
-         this.A.b($$1);
+         public a(final String $$1, final hcm $$2) {
+            this.b = $$1;
+            this.c = $$2.a();
+         }
+
+         @Override
+         public void a(fnl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.a(fwr.this.p, this.c, a.this.g / 2, $$2 + $$5 / 2 - 9 / 2, -1);
+         }
+
+         @Override
+         public boolean a(int $$0, int $$1, int $$2) {
+            if (fsb.a($$0)) {
+               this.b();
+               fwr.this.J();
+               return true;
+            } else {
+               return super.a($$0, $$1, $$2);
+            }
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            this.b();
+            if (ae.c() - this.d < 250L) {
+               fwr.this.J();
+            }
+
+            this.d = ae.c();
+            return super.a($$0, $$1, $$2);
+         }
+
+         private void b() {
+            a.this.a(this);
+         }
+
+         @Override
+         public xv a() {
+            return xv.a("narrator.select", this.c);
+         }
       }
-   }
-
-   private void a(fmd $$0) {
-      fqt.a(this, ayi.c);
-   }
-
-   private void b(fmd $$0) {
-      fqt.a(this, ayi.i);
-   }
-
-   private void c(fmd $$0) {
-      ae.m().a(this.m.u().b());
-   }
-
-   @Override
-   public void aO_() {
-      this.m.a(this.x);
    }
 }

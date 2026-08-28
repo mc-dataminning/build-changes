@@ -1,29 +1,32 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import java.util.stream.LongStream;
 
-public record eei<FC extends eha, F extends eew<FC>>(F d, FC e) {
-   public static final Codec<eei<?, ?>> a = lz.O.q().dispatch($$0 -> $$0.d, eew::a);
-   public static final Codec<jq<eei<?, ?>>> b = alf.a(ma.aJ, a);
-   public static final Codec<ju<eei<?, ?>>> c = kf.a(ma.aJ, a);
+public class eei {
+   private long b;
+   private long c;
+   public static final Codec<eei> a = Codec.LONG_STREAM
+      .comapFlatMap($$0 -> ae.a($$0, 2).map($$0x -> new eei($$0x[0], $$0x[1])), $$0 -> LongStream.of($$0.b, $$0.c));
 
-   public boolean a(dgk $$0, dxr $$1, azu $$2, jh $$3) {
-      return this.d.a(this.e, $$0, $$1, $$2, $$3);
+   public eei(edx.a $$0) {
+      this($$0.b(), $$0.c());
    }
 
-   public Stream<eei<?, ?>> a() {
-      return Stream.concat(Stream.of(this), this.e.e());
+   public eei(long $$0, long $$1) {
+      this.b = $$0;
+      this.c = $$1;
+      if ((this.b | this.c) == 0L) {
+         this.b = -7046029254386353131L;
+         this.c = 7640891576956012809L;
+      }
    }
 
-   @Override
-   public String toString() {
-      return "Configured: " + this.d + ": " + this.e;
-   }
-
-   public F b() {
-      return this.d;
-   }
-
-   public FC c() {
-      return this.e;
+   public long a() {
+      long $$0 = this.b;
+      long $$1 = this.c;
+      long $$2 = Long.rotateLeft($$0 + $$1, 17) + $$0;
+      $$1 ^= $$0;
+      this.b = Long.rotateLeft($$0, 49) ^ $$1 ^ $$1 << 21;
+      this.c = Long.rotateLeft($$1, 28);
+      return $$2;
    }
 }

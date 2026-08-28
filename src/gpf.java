@@ -1,161 +1,151 @@
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-public class gpf extends gpj<cjv, gvm> {
-   public static final alj a = alj.b("textures/entity/end_crystal/end_crystal_beam.png");
-   private static final alj b = alj.b("textures/entity/enderdragon/dragon_exploding.png");
-   private static final alj h = alj.b("textures/entity/enderdragon/dragon.png");
-   private static final alj i = alj.b("textures/entity/enderdragon/dragon_eyes.png");
-   private static final gjq j = gjq.f(h);
-   private static final gjq k = gjq.l(h);
-   private static final gjq l = gjq.p(i);
-   private static final gjq m = gjq.k(a);
-   private static final float n = (float)(Math.sqrt(3.0) / 2.0);
-   private final gcf o;
+public class gpf implements gpe.a {
+   private final flz a;
+   private static final int b = 32;
+   private static final float c = 1.0F;
+   private final List<gpf.a> d = Lists.newArrayList();
+   private final List<gpf.b> e = Lists.newArrayList();
 
-   public gpf(gpk.a $$0) {
-      super($$0);
-      this.f = 0.5F;
-      this.o = new gcf($$0.a(gck.aF));
+   public gpf(flz $$0) {
+      this.a = $$0;
    }
 
-   public void a(gvm $$0, fer $$1, gjg $$2, int $$3) {
-      $$1.a();
-      float $$4 = $$0.a(7).b();
-      float $$5 = (float)($$0.a(5).a() - $$0.a(10).a());
-      $$1.a(a.d.rotationDegrees(-$$4));
-      $$1.a(a.b.rotationDegrees($$5 * 10.0F));
-      $$1.a(0.0F, 0.0F, 1.0F);
-      $$1.b(-1.0F, -1.0F, 1.0F);
-      $$1.a(0.0F, -1.501F, 0.0F);
-      this.o.a($$0);
-      if ($$0.b > 0.0F) {
-         float $$6 = $$0.b / 200.0F;
-         int $$7 = axx.c(azm.d($$6 * 255.0F), -1);
-         fev $$8 = $$2.getBuffer(gjq.o(b));
-         this.o.a($$1, $$8, $$3, gyv.d, $$7);
-         fev $$9 = $$2.getBuffer(k);
-         this.o.a($$1, $$9, $$3, gyv.a(0.0F, $$0.c));
+   @Override
+   public void a(fgl $$0, gle $$1, double $$2, double $$3, double $$4) {
+      dha $$5 = this.a.s;
+      if ($$5 == null) {
+         this.d.clear();
+         this.e.clear();
       } else {
-         fev $$10 = $$2.getBuffer(j);
-         this.o.a($$1, $$10, $$3, gyv.a(0.0F, $$0.c));
-      }
+         fbs $$6 = new fbs($$2, 0.0, $$4);
+         this.d.removeIf(gpf.a::a);
+         this.e.removeIf($$2x -> $$2x.a($$5, $$6));
+         fgp $$7 = $$1.getBuffer(glo.y());
 
-      fev $$11 = $$2.getBuffer(l);
-      this.o.a($$1, $$11, $$3, gyv.d);
-      if ($$0.b > 0.0F) {
-         float $$12 = $$0.b / 200.0F;
-         $$1.a();
-         $$1.a(0.0F, -1.0F, -2.0F);
-         a($$1, $$12, $$2.getBuffer(gjq.q()));
-         a($$1, $$12, $$2.getBuffer(gjq.r()));
-         $$1.b();
-      }
+         for (gpf.b $$8 : this.e) {
+            $$8.a($$5).ifPresent($$6x -> {
+               double $$7x = $$6x.a() - (double)$$8.b();
+               double $$8x = $$6x.b() - (double)$$8.b();
+               double $$9 = $$6x.c() - (double)$$8.b();
+               double $$10 = $$6x.a() + (double)$$8.b();
+               double $$11 = $$6x.b() + (double)$$8.b();
+               double $$12x = $$6x.c() + (double)$$8.b();
+               gpe.a($$0, $$7, fcj.a(new fbn($$7x, $$8x, $$9, $$10, $$11, $$12x)), -$$2, -$$3, -$$4, 1.0F, 1.0F, 0.0F, 0.35F, true);
+            });
+         }
 
-      $$1.b();
-      if ($$0.d != null) {
-         a((float)$$0.d.d, (float)$$0.d.e, (float)$$0.d.f, $$0.p, $$1, $$2, $$3);
-      }
+         fgp $$9 = $$1.getBuffer(glo.B());
 
-      super.a($$0, $$1, $$2, $$3);
+         for (gpf.b $$10 : this.e) {
+            $$10.a($$5)
+               .ifPresent(
+                  $$5x -> gly.b(
+                        $$0,
+                        $$9,
+                        $$5x.a() - 0.25 - $$2,
+                        $$5x.b() - $$3,
+                        $$5x.c() - 0.25 - $$4,
+                        $$5x.a() + 0.25 - $$2,
+                        $$5x.b() - $$3 + 1.0,
+                        $$5x.c() + 0.25 - $$4,
+                        1.0F,
+                        1.0F,
+                        0.0F,
+                        0.35F
+                     )
+               );
+         }
+
+         for (gpf.b $$11 : this.e) {
+            $$11.a($$5).ifPresent($$2x -> {
+               gpe.a($$0, $$1, "Listener Origin", $$2x.a(), $$2x.b() + 1.8F, $$2x.c(), -1, 0.025F);
+               gpe.a($$0, $$1, jh.a((ka)$$2x).toString(), $$2x.a(), $$2x.b() + 1.5, $$2x.c(), -6959665, 0.025F);
+            });
+         }
+
+         for (gpf.a $$12 : this.d) {
+            fbs $$13 = $$12.c;
+            double $$14 = 0.2F;
+            double $$15 = $$13.d - 0.2F;
+            double $$16 = $$13.e - 0.2F;
+            double $$17 = $$13.f - 0.2F;
+            double $$18 = $$13.d + 0.2F;
+            double $$19 = $$13.e + 0.2F + 0.5;
+            double $$20 = $$13.f + 0.2F;
+            a($$0, $$1, new fbn($$15, $$16, $$17, $$18, $$19, $$20), 1.0F, 1.0F, 1.0F, 0.2F);
+            gpe.a($$0, $$1, $$12.b.a().toString(), $$13.d, $$13.e + 0.85F, $$13.f, -7564911, 0.0075F);
+         }
+      }
    }
 
-   private static void a(fer $$0, float $$1, fev $$2) {
-      $$0.a();
-      float $$3 = Math.min($$1 > 0.8F ? ($$1 - 0.8F) / 0.2F : 0.0F, 1.0F);
-      int $$4 = axx.a(1.0F - $$3, 1.0F, 1.0F, 1.0F);
-      int $$5 = 16711935;
-      azu $$6 = azu.a(432L);
-      Vector3f $$7 = new Vector3f();
-      Vector3f $$8 = new Vector3f();
-      Vector3f $$9 = new Vector3f();
-      Vector3f $$10 = new Vector3f();
-      Quaternionf $$11 = new Quaternionf();
-      int $$12 = azm.d(($$1 + $$1 * $$1) / 2.0F * 60.0F);
+   private static void a(fgl $$0, gle $$1, fbn $$2, float $$3, float $$4, float $$5, float $$6) {
+      fli $$7 = flz.Q().j.k();
+      if ($$7.h()) {
+         fbs $$8 = $$7.b().e();
+         gpe.a($$0, $$1, $$2.c($$8), $$3, $$4, $$5, $$6);
+      }
+   }
 
-      for (int $$13 = 0; $$13 < $$12; $$13++) {
-         $$11.rotationXYZ($$6.i() * (float) (Math.PI * 2), $$6.i() * (float) (Math.PI * 2), $$6.i() * (float) (Math.PI * 2))
-            .rotateXYZ($$6.i() * (float) (Math.PI * 2), $$6.i() * (float) (Math.PI * 2), $$6.i() * (float) (Math.PI * 2) + $$1 * (float) (Math.PI / 2));
-         $$0.a($$11);
-         float $$14 = $$6.i() * 20.0F + 5.0F + $$3 * 10.0F;
-         float $$15 = $$6.i() * 2.0F + 1.0F + $$3 * 2.0F;
-         $$8.set(-n * $$15, $$14, -0.5F * $$15);
-         $$9.set(n * $$15, $$14, -0.5F * $$15);
-         $$10.set(0.0F, $$14, $$15);
-         fer.a $$16 = $$0.c();
-         $$2.a($$16, $$7).a($$4);
-         $$2.a($$16, $$8).a(16711935);
-         $$2.a($$16, $$9).a(16711935);
-         $$2.a($$16, $$7).a($$4);
-         $$2.a($$16, $$9).a(16711935);
-         $$2.a($$16, $$10).a(16711935);
-         $$2.a($$16, $$7).a($$4);
-         $$2.a($$16, $$10).a(16711935);
-         $$2.a($$16, $$8).a(16711935);
+   public void a(aly<ecj> $$0, fbs $$1) {
+      this.d.add(new gpf.a(ae.c(), $$0, $$1));
+   }
+
+   public void a(ecn $$0, int $$1) {
+      this.e.add(new gpf.b($$0, $$1));
+   }
+
+   static record a(long a, aly<ecj> b, fbs c) {
+
+      public boolean a() {
+         return ae.c() - this.a > 3000L;
       }
 
-      $$0.b();
-   }
-
-   public static void a(float $$0, float $$1, float $$2, float $$3, fer $$4, gjg $$5, int $$6) {
-      float $$7 = azm.c($$0 * $$0 + $$2 * $$2);
-      float $$8 = azm.c($$0 * $$0 + $$1 * $$1 + $$2 * $$2);
-      $$4.a();
-      $$4.a(0.0F, 2.0F, 0.0F);
-      $$4.a(a.d.rotation((float)(-Math.atan2((double)$$2, (double)$$0)) - (float) (Math.PI / 2)));
-      $$4.a(a.b.rotation((float)(-Math.atan2((double)$$7, (double)$$1)) - (float) (Math.PI / 2)));
-      fev $$9 = $$5.getBuffer(m);
-      float $$10 = 0.0F - $$3 * 0.01F;
-      float $$11 = $$8 / 32.0F - $$3 * 0.01F;
-      int $$12 = 8;
-      float $$13 = 0.0F;
-      float $$14 = 0.75F;
-      float $$15 = 0.0F;
-      fer.a $$16 = $$4.c();
-
-      for (int $$17 = 1; $$17 <= 8; $$17++) {
-         float $$18 = azm.a((float)$$17 * (float) (Math.PI * 2) / 8.0F) * 0.75F;
-         float $$19 = azm.b((float)$$17 * (float) (Math.PI * 2) / 8.0F) * 0.75F;
-         float $$20 = (float)$$17 / 8.0F;
-         $$9.a($$16, $$13 * 0.2F, $$14 * 0.2F, 0.0F).a(-16777216).a($$15, $$10).b(gyv.d).c($$6).b($$16, 0.0F, -1.0F, 0.0F);
-         $$9.a($$16, $$13, $$14, $$8).a(-1).a($$15, $$11).b(gyv.d).c($$6).b($$16, 0.0F, -1.0F, 0.0F);
-         $$9.a($$16, $$18, $$19, $$8).a(-1).a($$20, $$11).b(gyv.d).c($$6).b($$16, 0.0F, -1.0F, 0.0F);
-         $$9.a($$16, $$18 * 0.2F, $$19 * 0.2F, 0.0F).a(-16777216).a($$20, $$10).b(gyv.d).c($$6).b($$16, 0.0F, -1.0F, 0.0F);
-         $$13 = $$18;
-         $$14 = $$19;
-         $$15 = $$20;
+      public long b() {
+         return this.a;
       }
 
-      $$4.b();
-   }
-
-   public gvm a() {
-      return new gvm();
-   }
-
-   public void a(cjv $$0, gvm $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = azm.h($$2, $$0.d, $$0.bX);
-      $$1.b = $$0.bZ > 0 ? (float)$$0.bZ + $$2 : 0.0F;
-      $$1.c = $$0.aM > 0;
-      cju $$3 = $$0.cb;
-      if ($$3 != null) {
-         ezy $$4 = $$3.o($$2).b(0.0, (double)gpe.a((float)$$3.a + $$2), 0.0);
-         $$1.d = $$4.d($$0.o($$2));
-      } else {
-         $$1.d = null;
+      public aly<ecj> c() {
+         return this.b;
       }
 
-      ckf $$5 = $$0.gj().a();
-      $$1.e = $$5 == ckl.d || $$5 == ckl.e;
-      $$1.f = $$5.a();
-      jh $$6 = $$0.dV().a(ebq.a.f, eev.a($$0.n()));
-      $$1.g = $$6.b($$0.dt());
-      $$1.h = $$0.eE() ? 0.0F : $$2;
-      $$1.i.a($$0.b);
+      public fbs d() {
+         return this.c;
+      }
    }
 
-   protected boolean a(cjv $$0) {
-      return false;
+   static class b implements ecl {
+      public final ecn a;
+      public final int b;
+
+      public b(ecn $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public boolean a(dha $$0, fbs $$1) {
+         return this.a.a($$0).filter($$1x -> $$1x.g($$1) <= 1024.0).isPresent();
+      }
+
+      public Optional<fbs> a(dha $$0) {
+         return this.a.a($$0);
+      }
+
+      @Override
+      public ecn a() {
+         return this.a;
+      }
+
+      @Override
+      public int b() {
+         return this.b;
+      }
+
+      @Override
+      public boolean a(ash $$0, jq<ecj> $$1, ecj.a $$2, fbs $$3) {
+         return false;
+      }
    }
 }

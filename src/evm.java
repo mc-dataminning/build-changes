@@ -1,93 +1,84 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.stream.Stream;
 
-public class evm extends ewa {
-   public static final MapCodec<evm> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  lz.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
-                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dwx::f).toList())
-               )
-            )
-            .apply($$0, evm::new)
-   );
-   private final jq<diq> b;
-   private final Set<dwx<?>> c;
+public class evm {
+   private static final String a = "command_storage_";
+   private final Map<String, evm.a> b = Maps.newHashMap();
+   private final evp c;
 
-   evm(List<exy> $$0, jq<diq> $$1, Set<dwx<?>> $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   public evm(evp $$0) {
+      this.c = $$0;
    }
 
-   private evm(List<exy> $$0, jq<diq> $$1, List<String> $$2) {
-      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
+   private evm.a a(String $$0) {
+      evm.a $$1 = new evm.a();
+      this.b.put($$0, $$1);
+      return $$1;
    }
 
-   @Override
-   public ewc<evm> b() {
-      return ewd.D;
+   private evb.a<evm.a> b(String $$0) {
+      return new evb.a<>(() -> this.a($$0), ($$1, $$2) -> this.a($$0).a($$1), bbo.h);
    }
 
-   @Override
-   public Set<exg<?>> a() {
-      return ImmutableSet.of(exj.g);
+   public ux a(alz $$0) {
+      String $$1 = $$0.b();
+      evm.a $$2 = this.c.b(this.b($$1), c($$1));
+      return $$2 != null ? $$2.a($$0.a()) : new ux();
    }
 
-   @Override
-   protected cwm a(cwm $$0, eun $$1) {
-      dvv $$2 = $$1.c(exj.g);
-      if ($$2 != null) {
-         $$0.a(ku.am, cyo.a, $$1x -> {
-            for (dwx<?> $$2x : this.c) {
-               if ($$2.b($$2x)) {
-                  $$1x = $$1x.a($$2x, $$2);
-               }
-            }
-
-            return $$1x;
-         });
-      }
-
-      return $$0;
+   public void a(alz $$0, ux $$1) {
+      String $$2 = $$0.b();
+      this.c.a(this.b($$2), c($$2)).a($$0.a(), $$1);
    }
 
-   public static evm.a a(diq $$0) {
-      return new evm.a($$0);
+   public Stream<alz> a() {
+      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().b($$0.getKey()));
    }
 
-   public static class a extends ewa.a<evm.a> {
-      private final jq<diq> a;
-      private final Builder<dwx<?>> b = ImmutableSet.builder();
+   private static String c(String $$0) {
+      return "command_storage_" + $$0;
+   }
 
-      a(diq $$0) {
-         this.a = $$0.p();
-      }
+   static class a extends evb {
+      private static final String a = "contents";
+      private final Map<String, ux> b = Maps.newHashMap();
 
-      public evm.a a(dwx<?> $$0) {
-         if (!this.a.a().l().d().contains($$0)) {
-            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
-         } else {
-            this.b.add($$0);
-            return this;
+      evm.a a(ux $$0) {
+         ux $$1 = $$0.p("contents");
+
+         for (String $$2 : $$1.e()) {
+            this.b.put($$2, $$1.p($$2));
          }
-      }
 
-      protected evm.a a() {
          return this;
       }
 
       @Override
-      public ewb b() {
-         return new evm(this.g(), this.a, this.b.build());
+      public ux a(ux $$0, js.a $$1) {
+         ux $$2 = new ux();
+         this.b.forEach(($$1x, $$2x) -> $$2.a($$1x, $$2x.i()));
+         $$0.a("contents", $$2);
+         return $$0;
+      }
+
+      public ux a(String $$0) {
+         ux $$1 = this.b.get($$0);
+         return $$1 != null ? $$1 : new ux();
+      }
+
+      public void a(String $$0, ux $$1) {
+         if ($$1.g()) {
+            this.b.remove($$0);
+         } else {
+            this.b.put($$0, $$1);
+         }
+
+         this.c();
+      }
+
+      public Stream<alz> b(String $$0) {
+         return this.b.keySet().stream().map($$1 -> alz.a($$0, $$1));
       }
    }
 }

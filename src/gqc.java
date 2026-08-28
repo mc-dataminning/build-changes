@@ -1,12 +1,22 @@
-public class gqc extends gsr {
-   private static final alj a = alj.b("textures/entity/zombie/husk.png");
+public abstract class gqc<T extends cnl, S extends had, M extends gdx<S>> extends gsa<T, S, M> {
+   private static final alz a = alz.b("textures/entity/zombie/zombie.png");
 
-   public gqc(gpk.a $$0) {
-      super($$0, gck.bd, gck.be, gck.bh, gck.bi, gck.bf, gck.bg);
+   protected gqc(grj.a $$0, M $$1, M $$2, M $$3, M $$4, M $$5, M $$6) {
+      super($$0, $$1, $$2, 0.5F);
+      this.a(new gvn<>(this, $$3, $$4, $$5, $$6, $$0.h()));
    }
 
-   @Override
-   public alj a(gyd $$0) {
+   public alz a(S $$0) {
       return a;
+   }
+
+   public void a(T $$0, S $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.gb();
+      $$1.b = $$0.gs();
+   }
+
+   protected boolean b(S $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

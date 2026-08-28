@@ -1,57 +1,68 @@
-import java.util.BitSet;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class adr implements zq<acf> {
-   public static final zh<wu, adr> a = zq.a(adr::a, adr::new);
-   private final int b;
-   private final int c;
-   private final adq d;
-   private final adv e;
+public record adr(int b, jq<btx> c, int d, int e, Optional<fbs> f) implements aac<acr> {
+   public static final zt<xg, adr> a = aac.a(adr::a, adr::new);
 
-   public adr(dya $$0, erk $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      des $$4 = $$0.f();
-      this.b = $$4.g;
-      this.c = $$4.h;
-      this.d = new adq($$0);
-      this.e = new adv($$4, $$1, $$2, $$3);
+   public adr(bvf $$0, btv $$1) {
+      this($$0.ar(), $$1.l(), $$1.d() != null ? $$1.d().ar() : -1, $$1.c() != null ? $$1.c().ar() : -1, Optional.ofNullable($$1.j()));
    }
 
-   private adr(wu $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
-      this.d = new adq($$0, this.b, this.c);
-      this.e = new adv($$0, this.b, this.c);
+   private adr(xg $$0) {
+      this($$0.l(), btx.c.decode($$0), a((ws)$$0), a((ws)$$0), $$0.b($$0x -> new fbs($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble())));
    }
 
-   private void a(wu $$0) {
-      $$0.q(this.b);
-      $$0.q(this.c);
-      this.d.a($$0);
-      this.e.a($$0);
+   private static void a(ws $$0, int $$1) {
+      $$0.c($$1 + 1);
+   }
+
+   private static int a(ws $$0) {
+      return $$0.l() - 1;
+   }
+
+   private void a(xg $$0) {
+      $$0.c(this.b);
+      btx.c.encode($$0, this.c);
+      a($$0, this.d);
+      a($$0, this.e);
+      $$0.a(this.f, ($$0x, $$1) -> {
+         $$0x.a($$1.a());
+         $$0x.a($$1.b());
+         $$0x.a($$1.c());
+      });
    }
 
    @Override
-   public zs<adr> a() {
-      return agu.K;
+   public aae<adr> a() {
+      return ahk.z;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public btv a(dha $$0) {
+      if (this.f.isPresent()) {
+         return new btv(this.c, this.f.get());
+      } else {
+         bvf $$1 = $$0.a(this.d);
+         bvf $$2 = $$0.a(this.e);
+         return new btv(this.c, $$2, $$1);
+      }
    }
 
-   public int e() {
+   public jq<btx> e() {
       return this.c;
    }
 
-   public adq f() {
+   public int f() {
       return this.d;
    }
 
-   public adv g() {
+   public int g() {
       return this.e;
+   }
+
+   public Optional<fbs> h() {
+      return this.f;
    }
 }

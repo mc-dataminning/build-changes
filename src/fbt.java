@@ -1,2 +1,8 @@
-public interface fbt<T> extends fbs<T> {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fbt {
 }

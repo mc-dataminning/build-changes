@@ -1,78 +1,41 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 import com.google.gson.JsonElement;
-import java.nio.file.Path;
-import java.util.List;
+import com.google.gson.JsonObject;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.function.Supplier;
 
-public class nz implements mg {
-   private final mi.a d;
-   private final mi.a e;
+public class nz implements mh {
+   private final mj d;
+   private final Map<String, Supplier<JsonElement>> e = new HashMap<>();
 
-   public nz(mi $$0) {
-      this.d = $$0.a(mi.b.b, "blockstates");
-      this.e = $$0.a(mi.b.b, "models");
+   public nz(mj $$0) {
+      this.d = $$0;
+   }
+
+   public <T> nz a(auu<T> $$0, T $$1) {
+      this.e.put($$0.a(), () -> $$0.a($$1));
+      return this;
    }
 
    @Override
-   public CompletableFuture<?> a(me $$0) {
-      Map<diq, oa> $$1 = Maps.newHashMap();
-      Consumer<oa> $$2 = $$1x -> {
-         diq $$2x = $$1x.a();
-         oa $$3x = $$1.put($$2x, $$1x);
-         if ($$3x != null) {
-            throw new IllegalStateException("Duplicate blockstate definition for " + $$2x);
-         }
-      };
-      Map<alj, Supplier<JsonElement>> $$3 = Maps.newHashMap();
-      Set<cwi> $$4 = Sets.newHashSet();
-      BiConsumer<alj, Supplier<JsonElement>> $$5 = ($$1x, $$2x) -> {
-         Supplier<JsonElement> $$3x = $$3.put($$1x, $$2x);
-         if ($$3x != null) {
-            throw new IllegalStateException("Duplicate model definition for " + $$1x);
-         }
-      };
-      Consumer<cwi> $$6 = $$4::add;
-      new nw($$2, $$5, $$6).a();
-      new ny($$5).a();
-      List<diq> $$7 = lz.e.k().stream().filter($$0x -> true).map(Entry::getValue).filter($$1x -> !$$1.containsKey($$1x)).toList();
-      if (!$$7.isEmpty()) {
-         throw new IllegalStateException("Missing blockstate definitions for: " + $$7);
-      } else {
-         lz.e.forEach($$2x -> {
-            cwi $$3x = cwi.e.get($$2x);
-            if ($$3x != null) {
-               if ($$4.contains($$3x)) {
-                  return;
-               }
-
-               alj $$4x = ol.a($$3x);
-               if (!$$3.containsKey($$4x)) {
-                  $$3.put($$4x, new ok(ol.a($$2x)));
-               }
-            }
-         });
-         return CompletableFuture.allOf(this.a($$0, $$1, $$0x -> this.d.a($$0x.p().h().a())), this.a($$0, $$3, this.e::a));
-      }
-   }
-
-   private <T> CompletableFuture<?> a(me $$0, Map<T, ? extends Supplier<JsonElement>> $$1, Function<T, Path> $$2) {
-      return CompletableFuture.allOf($$1.entrySet().stream().map($$2x -> {
-         Path $$3 = $$2.apply((T)$$2x.getKey());
-         JsonElement $$4 = (JsonElement)((Supplier)$$2x.getValue()).get();
-         return mg.a($$0, $$4, $$3);
-      }).toArray(CompletableFuture[]::new));
+   public CompletableFuture<?> a(mf $$0) {
+      JsonObject $$1 = new JsonObject();
+      this.e.forEach(($$1x, $$2) -> $$1.add($$1x, $$2.get()));
+      return mh.a($$0, $$1, this.d.a().resolve("pack.mcmeta"));
    }
 
    @Override
    public final String a() {
-      return "Model Definitions";
+      return "Pack Metadata";
+   }
+
+   public static nz a(mj $$0, xv $$1) {
+      return new nz($$0).a(auv.b, new auv($$1, t.a.a(aui.b), Optional.empty()));
+   }
+
+   public static nz a(mj $$0, xv $$1, cso $$2) {
+      return a($$0, $$1).a(auc.a, new auc($$2));
    }
 }

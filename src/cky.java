@@ -1,43 +1,69 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record cky(int e, int f, alj g, Optional<xj> h, Optional<xj> i) {
-   public static final Codec<cky> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayv.a(1, 16).fieldOf("width").forGetter(cky::b),
-               ayv.a(1, 16).fieldOf("height").forGetter(cky::c),
-               alj.a.fieldOf("asset_id").forGetter(cky::d),
-               xl.a.optionalFieldOf("title").forGetter(cky::e),
-               xl.a.optionalFieldOf("author").forGetter(cky::f)
-            )
-            .apply($$0, cky::new)
-   );
-   public static final zh<wu, cky> b = zh.a(zf.h, cky::b, zf.h, cky::c, alj.b, cky::d, xl.e, cky::e, xl.e, cky::f, cky::new);
-   public static final Codec<jq<cky>> c = alf.a(ma.X, a);
-   public static final zh<wu, jq<cky>> d = zf.a(ma.X, b);
+public class cky extends ckr {
+   @Nullable
+   private fbs b;
 
-   public int a() {
-      return this.b() * this.c();
+   public cky(ckp $$0) {
+      super($$0);
    }
 
-   public int b() {
-      return this.e;
+   @Override
+   public void b() {
+      fbs $$0 = this.a.J(1.0F).d();
+      $$0.b((float) (-Math.PI / 4));
+      double $$1 = this.a.c.dA();
+      double $$2 = this.a.c.e(0.5);
+      double $$3 = this.a.c.dG();
+
+      for (int $$4 = 0; $$4 < 8; $$4++) {
+         bam $$5 = this.a.dY();
+         double $$6 = $$1 + $$5.k() / 2.0;
+         double $$7 = $$2 + $$5.k() / 2.0;
+         double $$8 = $$3 + $$5.k() / 2.0;
+         fbs $$9 = this.a.dy();
+         this.a.dV().a(ls.h, $$6, $$7, $$8, -$$0.d * 0.08F + $$9.d, -$$0.e * 0.3F + $$9.e, -$$0.f * 0.08F + $$9.f);
+         $$0.b((float) (Math.PI / 16));
+      }
    }
 
-   public int c() {
-      return this.f;
+   @Override
+   public void a(ash $$0) {
+      if (this.b == null) {
+         this.b = fbs.c($$0.a(edi.a.f, egn.a(this.a.m())));
+      }
+
+      if (this.b.c(this.a.dA(), this.a.dC(), this.a.dG()) < 1.0) {
+         this.a.gi().b(clf.f).i();
+         this.a.gi().a(clf.g);
+      }
    }
 
-   public alj d() {
-      return this.g;
+   @Override
+   public float e() {
+      return 1.5F;
    }
 
-   public Optional<xj> e() {
-      return this.h;
+   @Override
+   public float g() {
+      float $$0 = (float)this.a.dy().i() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return $$1 / $$0;
    }
 
-   public Optional<xj> f() {
-      return this.i;
+   @Override
+   public void c() {
+      this.b = null;
+   }
+
+   @Nullable
+   @Override
+   public fbs f() {
+      return this.b;
+   }
+
+   @Override
+   public clf<cky> h() {
+      return clf.d;
    }
 }

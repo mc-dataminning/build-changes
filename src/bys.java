@@ -1,71 +1,136 @@
+import com.google.common.collect.Sets;
 import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.kinds.OptionalBox.Mu;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.Function;
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableInt;
+import org.apache.commons.lang3.mutable.MutableObject;
 
 public class bys {
-   private static final int a = 10;
-   private static final int b = 7;
-   private static final int[][] c = new int[][]{{1, 1}, {3, 3}, {5, 5}, {6, 5}, {7, 7}, {10, 7}};
+   private static final int a = 20;
+   private static final double b = 3.0;
+   private static final double c = 2.0;
 
-   public static byl<bvp> a(float $$0) {
-      return a($$0, true);
+   public static bxv<bwb> a() {
+      MutableObject<eub> $$0 = new MutableObject(null);
+      MutableInt $$1 = new MutableInt(0);
+      return cbh.a(
+         (Function<cbh.b<bwb>, ? extends App<cbh.c<bwb>, cbk<bwb>>>)($$2 -> $$2.group($$2.b(cff.t), $$2.a(cff.v), $$2.a(cff.g))
+               .apply($$2, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     eud $$9 = $$2.b($$3);
+                     Optional<Set<jp>> $$10 = $$2.a($$4);
+                     if (!$$9.b() && !$$9.c()) {
+                        if (Objects.equals($$0.getValue(), $$9.h())) {
+                           $$1.setValue(20);
+                        } else if ($$1.decrementAndGet() > 0) {
+                           return false;
+                        }
+
+                        $$0.setValue($$9.h());
+                        eub $$11 = $$9.i();
+                        eub $$12 = $$9.h();
+                        jh $$13 = $$11.a();
+                        dxn $$14 = $$6.a_($$13);
+                        if ($$14.a(axu.i, $$0xxxx -> $$0xxxx.b() instanceof dmm)) {
+                           dmm $$15 = (dmm)$$14.b();
+                           if (!$$15.n($$14)) {
+                              $$15.a($$7, $$6, $$14, $$13, true);
+                           }
+
+                           $$10 = a($$4, $$10, $$6, $$13);
+                        }
+
+                        jh $$16 = $$12.a();
+                        dxn $$17 = $$6.a_($$16);
+                        if ($$17.a(axu.i, $$0xxxx -> $$0xxxx.b() instanceof dmm)) {
+                           dmm $$18 = (dmm)$$17.b();
+                           if (!$$18.n($$17)) {
+                              $$18.a($$7, $$6, $$17, $$16, true);
+                              $$10 = a($$4, $$10, $$6, $$16);
+                           }
+                        }
+
+                        $$10.ifPresent($$6x -> a($$6, $$7, $$11, $$12, $$6x, $$2.a($$5)));
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 
-   public static byl<bvp> a(float $$0, boolean $$1) {
-      return a($$0, $$0x -> cgf.a($$0x, 10, 7), $$1 ? $$0x -> true : $$0x -> !$$0x.bm());
-   }
+   public static void a(ash $$0, bwb $$1, @Nullable eub $$2, @Nullable eub $$3, Set<jp> $$4, Optional<List<bwb>> $$5) {
+      Iterator<jp> $$6 = $$4.iterator();
 
-   public static bxb<bvp> a(float $$0, int $$1, int $$2) {
-      return a($$0, $$2x -> cgf.a($$2x, $$1, $$2), $$0x -> true);
-   }
-
-   public static bxb<bvp> b(float $$0) {
-      return a($$0, $$0x -> a($$0x, 10, 7), $$0x -> true);
-   }
-
-   public static bxb<bvp> c(float $$0) {
-      return a($$0, bys::a, bul::bm);
-   }
-
-   private static byl<bvp> a(float $$0, Function<bvp, ezy> $$1, Predicate<bvp> $$2) {
-      return can.a((Function<can.b<bvp>, ? extends App<can.c<bvp>, caq<bvp>>>)($$3 -> $$3.group($$3.c(cel.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
-               if (!$$2.test($$5)) {
-                  return false;
+      while ($$6.hasNext()) {
+         jp $$7 = $$6.next();
+         jh $$8 = $$7.b();
+         if (($$2 == null || !$$2.a().equals($$8)) && ($$3 == null || !$$3.a().equals($$8))) {
+            if (a($$0, $$1, $$7)) {
+               $$6.remove();
+            } else {
+               dxn $$9 = $$0.a_($$8);
+               if (!$$9.a(axu.i, $$0x -> $$0x.b() instanceof dmm)) {
+                  $$6.remove();
                } else {
-                  Optional<ezy> $$7 = Optional.ofNullable($$1.apply($$5));
-                  $$3x.a($$7.map($$1xxxx -> new ceo($$1xxxx, $$0, 0)));
-                  return true;
+                  dmm $$10 = (dmm)$$9.b();
+                  if (!$$10.n($$9)) {
+                     $$6.remove();
+                  } else if (a($$1, $$8, $$5)) {
+                     $$6.remove();
+                  } else {
+                     $$10.a($$1, $$0, $$9, $$8, false);
+                     $$6.remove();
+                  }
                }
-            })));
-   }
-
-   @Nullable
-   private static ezy a(bvp $$0) {
-      ezy $$1 = null;
-      ezy $$2 = null;
-
-      for (int[] $$3 : c) {
-         if ($$1 == null) {
-            $$2 = bxc.a($$0, $$3[0], $$3[1]);
-         } else {
-            $$2 = $$0.dt().e($$0.dt().a($$1).d().d((double)$$3[0], (double)$$3[1], (double)$$3[0]));
+            }
          }
-
-         if ($$2 == null || $$0.dV().b_(jh.a((ka)$$2)).c()) {
-            return $$1;
-         }
-
-         $$1 = $$2;
       }
-
-      return $$2;
    }
 
-   @Nullable
-   private static ezy a(bvp $$0, int $$1, int $$2) {
-      ezy $$3 = $$0.g(0.0F);
-      return cga.a($$0, $$1, $$2, -2, $$3.d, $$3.f, (float) (Math.PI / 2));
+   private static boolean a(bwb $$0, jh $$1, Optional<List<bwb>> $$2) {
+      return $$2.isEmpty()
+         ? false
+         : $$2.get().stream().filter($$1x -> $$1x.aq() == $$0.aq()).filter($$1x -> $$1.a($$1x.dt(), 2.0)).anyMatch($$1x -> a($$1x.eb(), $$1));
+   }
+
+   private static boolean a(bxd<?> $$0, jh $$1) {
+      if (!$$0.a(cff.t)) {
+         return false;
+      } else {
+         eud $$2 = $$0.c(cff.t).get();
+         if ($$2.c()) {
+            return false;
+         } else {
+            eub $$3 = $$2.i();
+            if ($$3 == null) {
+               return false;
+            } else {
+               eub $$4 = $$2.h();
+               return $$1.equals($$3.a()) || $$1.equals($$4.a());
+            }
+         }
+      }
+   }
+
+   private static boolean a(ash $$0, bwb $$1, jp $$2) {
+      return $$2.a() != $$0.ah() || !$$2.b().a($$1.dt(), 3.0);
+   }
+
+   private static Optional<Set<jp>> a(cbi<Mu, Set<jp>> $$0, Optional<Set<jp>> $$1, ash $$2, jh $$3) {
+      jp $$4 = jp.a($$2.ah(), $$3);
+      return Optional.of($$1.<Set<jp>>map($$1x -> {
+         $$1x.add($$4);
+         return $$1x;
+      }).orElseGet(() -> {
+         Set<jp> $$2x = Sets.newHashSet(new jp[]{$$4});
+         $$0.a($$2x);
+         return $$2x;
+      }));
    }
 }

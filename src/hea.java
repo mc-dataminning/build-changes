@@ -1,58 +1,17 @@
-import java.io.BufferedInputStream;
-import java.io.FilterInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import javax.sound.sampled.AudioFormat;
+import java.util.Collections;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class hea implements hdu {
-   private final hea.a a;
-   private hdu b;
-   private final BufferedInputStream c;
+public class hea extends hdk {
+   private final brm<hdg> b;
 
-   public hea(hea.a $$0, InputStream $$1) throws IOException {
-      this.a = $$0;
-      this.c = new BufferedInputStream($$1);
-      this.c.mark(Integer.MAX_VALUE);
-      this.b = $$0.create(new hea.b(this.c));
+   public hea(brm<hdg> $$0) {
+      super($$0.e().getFirst().b());
+      this.b = $$0;
    }
 
    @Override
-   public AudioFormat a() {
-      return this.b.a();
-   }
-
-   @Override
-   public ByteBuffer a(int $$0) throws IOException {
-      ByteBuffer $$1 = this.b.a($$0);
-      if (!$$1.hasRemaining()) {
-         this.b.close();
-         this.c.reset();
-         this.b = this.a.create(new hea.b(this.c));
-         $$1 = this.b.a($$0);
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.b.close();
-      this.c.close();
-   }
-
-   @FunctionalInterface
-   public interface a {
-      hdu create(InputStream var1) throws IOException;
-   }
-
-   static class b extends FilterInputStream {
-      b(InputStream $$0) {
-         super($$0);
-      }
-
-      @Override
-      public void close() {
-      }
+   public List<gml> a(@Nullable dxn $$0, @Nullable jm $$1, bam $$2) {
+      return this.b.a($$2).map($$3 -> $$3.a($$0, $$1, $$2)).orElse(Collections.emptyList());
    }
 }

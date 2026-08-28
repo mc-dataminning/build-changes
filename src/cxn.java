@@ -1,59 +1,39 @@
-import java.util.List;
-
-public class cxn extends cwi {
-   public cxn(cwi.a $$0) {
-      super($$0);
+public class cxn {
+   public static bte a(dha $$0, cps $$1, btd $$2) {
+      $$1.c($$2);
+      return bte.c;
    }
 
-   public static czo b() {
-      jr<diq> $$0 = lz.a(lz.e);
-      return new czo(
-         List.of(czo.a.a(ju.a(dis.bs.p()), 15.0F), czo.a.b($$0.b(axc.P), 15.0F), czo.a.b($$0.b(axc.a), 5.0F), czo.a.b(ju.a(dis.ff.p(), dis.fg.p()), 2.0F)),
-         1.0F,
-         1
-      );
-   }
-
-   @Override
-   public boolean a(cwm $$0, dfm $$1, dvv $$2, jh $$3, bvh $$4) {
-      if (!$$1.C && !$$2.a(axc.aM)) {
-         $$0.a(1, $$4, but.a);
-      }
-
-      return $$2.a(axc.P)
-         || $$2.a(dis.bs)
-         || $$2.a(dis.bt)
-         || $$2.a(dis.bu)
-         || $$2.a(dis.bv)
-         || $$2.a(dis.sG)
-         || $$2.a(dis.ff)
-         || $$2.a(dis.fI)
-         || $$2.a(axc.a);
-   }
-
-   @Override
-   public bsk a(daf $$0) {
-      dfm $$1 = $$0.q();
-      jh $$2 = $$0.a();
-      dvv $$3 = $$1.a_($$2);
-      if ($$3.b() instanceof dme $$5 && !$$5.q($$3)) {
-         cou $$6 = $$0.o();
-         cwm $$7 = $$0.n();
-         if ($$6 instanceof arq) {
-            ao.N.a((arq)$$6, $$2, $$7);
+   public static cxk a(cxk $$0, cps $$1, cxk $$2, boolean $$3) {
+      boolean $$4 = $$1.fT();
+      if ($$3 && $$4) {
+         if (!$$1.gg().i($$2)) {
+            $$1.gg().f($$2);
          }
 
-         $$1.a($$6, $$2, awn.lo, awo.e, 1.0F, 1.0F);
-         dvv $$8 = $$5.p($$3);
-         $$1.b($$2, $$8);
-         $$1.a(ear.c, $$2, ear.a.a($$0.o(), $$8));
-         if ($$6 != null) {
-            $$7.a(1, $$6, bvh.d($$0.p()));
+         return $$0;
+      } else {
+         $$0.a(1, $$1);
+         if ($$0.f()) {
+            return $$2;
+         } else {
+            if (!$$1.gg().f($$2)) {
+               $$1.a($$2, false);
+            }
+
+            return $$0;
          }
-
-         return bsk.a;
       }
+   }
 
-      return super.a($$0);
+   public static cxk a(cxk $$0, cps $$1, cxk $$2) {
+      return a($$0, $$1, $$2, true);
+   }
+
+   public static void a(clw $$0, Iterable<cxk> $$1) {
+      dha $$2 = $$0.dV();
+      if (!$$2.C) {
+         $$1.forEach($$2x -> $$2.b(new clw($$2, $$0.dA(), $$0.dC(), $$0.dG(), $$2x)));
+      }
    }
 }

@@ -1,37 +1,111 @@
-import com.mojang.datafixers.kinds.App;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
 
-public class byj {
-   public static byl<bvh> a(float $$0) {
-      return can.a((Function<can.b<bvh>, ? extends App<can.c<bvh>, caq<bvh>>>)($$1 -> $$1.group($$1.c(cel.m)).apply($$1, $$1x -> ($$2, $$3, $$4) -> {
-               if ($$2.h($$3.dv())) {
-                  return false;
-               } else {
-                  Optional<ezy> $$5 = Optional.ofNullable(a($$2, $$3));
-                  $$5.ifPresent($$2x -> $$1x.a(new ceo($$2x, $$0, 0)));
-                  return true;
-               }
-            })));
+public class byj extends bxu<cpe> {
+   private static final int c = 5;
+   private static final int d = 600;
+   private static final int e = 6600;
+   private static final int f = 20;
+   private static final Map<cph, aly<ewm>> g = ImmutableMap.builder()
+      .put(cph.c, ewd.ar)
+      .put(cph.d, ewd.as)
+      .put(cph.e, ewd.at)
+      .put(cph.f, ewd.au)
+      .put(cph.g, ewd.av)
+      .put(cph.h, ewd.aw)
+      .put(cph.i, ewd.ax)
+      .put(cph.j, ewd.ay)
+      .put(cph.k, ewd.az)
+      .put(cph.l, ewd.aA)
+      .put(cph.n, ewd.aB)
+      .put(cph.o, ewd.aC)
+      .put(cph.p, ewd.aD)
+      .build();
+   private static final float h = 0.5F;
+   private int i = 600;
+   private boolean j;
+   private long k;
+
+   public byj(int $$0) {
+      super(ImmutableMap.of(cff.m, cfg.c, cff.n, cfg.c, cff.q, cfg.c, cff.k, cfg.a), $$0);
    }
 
-   @Nullable
-   private static ezy a(arp $$0, bvh $$1) {
-      azu $$2 = $$1.dY();
-      jh $$3 = $$1.dv();
-
-      for (int $$4 = 0; $$4 < 10; $$4++) {
-         jh $$5 = $$3.b($$2.a(20) - 10, $$2.a(6) - 3, $$2.a(20) - 10);
-         if (a($$0, $$1, $$5)) {
-            return ezy.c($$5);
-         }
+   protected boolean a(ash $$0, cpe $$1) {
+      if (!this.b($$1)) {
+         return false;
+      } else if (this.i > 0) {
+         this.i--;
+         return false;
+      } else {
+         return true;
       }
-
-      return null;
    }
 
-   public static boolean a(arp $$0, bvh $$1, jh $$2) {
-      return $$0.h($$2) && (double)$$0.a(ebq.a.e, $$2).v() <= $$1.dC();
+   protected void a(ash $$0, cpe $$1, long $$2) {
+      this.j = false;
+      this.k = $$2;
+      cps $$3 = this.c($$1).get();
+      $$1.eb().a(cff.q, $$3);
+      bxw.a($$1, $$3);
+   }
+
+   protected boolean b(ash $$0, cpe $$1, long $$2) {
+      return this.b($$1) && !this.j;
+   }
+
+   protected void c(ash $$0, cpe $$1, long $$2) {
+      cps $$3 = this.c($$1).get();
+      bxw.a($$1, $$3);
+      if (this.a($$1, $$3)) {
+         if ($$2 - this.k > 20L) {
+            this.a($$0, $$1, $$3);
+            this.j = true;
+         }
+      } else {
+         bxw.a($$1, $$3, 0.5F, 5);
+      }
+   }
+
+   protected void d(ash $$0, cpe $$1, long $$2) {
+      this.i = a($$0);
+      $$1.eb().b(cff.q);
+      $$1.eb().b(cff.m);
+      $$1.eb().b(cff.n);
+   }
+
+   private void a(ash $$0, cpe $$1, bwb $$2) {
+      $$1.a($$0, a($$1), ($$2x, $$3) -> bxw.a($$1, $$3, $$2.dt()));
+   }
+
+   private static aly<ewm> a(cpe $$0) {
+      if ($$0.e_()) {
+         return ewd.aF;
+      } else {
+         cph $$1 = $$0.gw().b();
+         return g.getOrDefault($$1, ewd.aE);
+      }
+   }
+
+   private boolean b(cpe $$0) {
+      return this.c($$0).isPresent();
+   }
+
+   private Optional<cps> c(cpe $$0) {
+      return $$0.eb().c(cff.k).filter(this::a);
+   }
+
+   private boolean a(cps $$0) {
+      return $$0.b(bum.F);
+   }
+
+   private boolean a(cpe $$0, cps $$1) {
+      jh $$2 = $$1.dv();
+      jh $$3 = $$0.dv();
+      return $$3.a($$2, 5.0);
+   }
+
+   private static int a(ash $$0) {
+      return 600 + $$0.A.a(6001);
    }
 }

@@ -1,23 +1,24 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eku extends ekp {
-   public static final MapCodec<eku> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bqs.b(ekp.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, eku::new)
-   );
-   private final bqs<ekp> b;
+public class eku<P extends ekt> {
+   public static final eku<elc> a = a("simple_state_provider", elc.b);
+   public static final eku<eld> b = a("weighted_state_provider", eld.b);
+   public static final eku<eky> c = a("noise_threshold_provider", eky.b);
+   public static final eku<ekx> d = a("noise_provider", ekx.g);
+   public static final eku<ekv> e = a("dual_noise_provider", ekv.b);
+   public static final eku<ela> f = a("rotated_block_provider", ela.b);
+   public static final eku<ekz> g = a("randomized_int_state_provider", ekz.b);
+   private final MapCodec<P> h;
 
-   public eku(bqs<ekp> $$0) {
-      this.b = $$0;
+   private static <P extends ekt> eku<P> a(String $$0, MapCodec<P> $$1) {
+      return kd.a(ma.T, $$0, new eku<>($$1));
    }
 
-   @Override
-   public int a(azu $$0, ecn $$1) {
-      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
+   private eku(MapCodec<P> $$0) {
+      this.h = $$0;
    }
 
-   @Override
-   public ekq<?> a() {
-      return ekq.f;
+   public MapCodec<P> a() {
+      return this.h;
    }
 }

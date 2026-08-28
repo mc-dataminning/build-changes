@@ -1,28 +1,10 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Codec;
 
-public class eil extends eih {
-   public static final MapCodec<eil> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eil::new));
+public class eil implements eis {
+   public static final Codec<eil> a = dxn.a.fieldOf("state").xmap(eil::new, $$0 -> $$0.b).codec();
+   public final dxn b;
 
-   public eil(brp $$0, brp $$1, int $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   @Override
-   protected ein<?> a() {
-      return ein.f;
-   }
-
-   @Override
-   protected void a(dfs $$0, eim.b $$1, azu $$2, ehw $$3, int $$4, eim.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + ($$9 != $$8 && $$9 != $$8 - $$6 ? 1 : 0);
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
-   }
-
-   @Override
-   protected boolean a(azu $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return azm.l((float)$$1 + 0.5F) + azm.l((float)$$3 + 0.5F) > (float)($$4 * $$4);
+   public eil(dxn $$0) {
+      this.b = $$0;
    }
 }

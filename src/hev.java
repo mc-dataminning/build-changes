@@ -1,74 +1,45 @@
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Ticker;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.OptionalLong;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
-import org.slf4j.Logger;
+public class hev extends hek {
+   private static final float n = 0.0F;
+   private static final float o = 0.75F;
+   private final cps p;
+   private final crr q;
+   private final boolean r;
 
-public class hev {
-   public static final hev a = new hev(Ticker.systemTicker());
-   private static final Logger b = LogUtils.getLogger();
-   private final Ticker c;
-   private final Map<her<hev.a>, Stopwatch> d = new HashMap<>();
-   private OptionalLong e = OptionalLong.empty();
-
-   protected hev(Ticker $$0) {
-      this.c = $$0;
+   public hev(cps $$0, crr $$1, boolean $$2) {
+      super($$2 ? axf.pc : axf.pd, axg.g, hfb.t());
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      this.k = hfb.a.a;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
    }
 
-   public synchronized void a(her<hev.a> $$0) {
-      this.a($$0, (Function<her<hev.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
+   @Override
+   public boolean s() {
+      return !this.q.bb();
    }
 
-   public synchronized void a(her<hev.a> $$0, Stopwatch $$1) {
-      this.a($$0, (Function<her<hev.a>, Stopwatch>)($$1x -> $$1));
+   @Override
+   public boolean r() {
+      return true;
    }
 
-   private synchronized void a(her<hev.a> $$0, Function<her<hev.a>, Stopwatch> $$1) {
-      this.d.computeIfAbsent($$0, $$1);
-   }
-
-   public synchronized void b(her<hev.a> $$0) {
-      Stopwatch $$1 = this.d.get($$0);
-      if ($$1 == null) {
-         b.warn("Attempted to end step for {} before starting it", $$0.b());
+   @Override
+   public void q() {
+      if (this.q.dQ() || !this.p.bZ() || this.p.dk() != this.q) {
+         this.n();
+      } else if (this.r != this.p.bo()) {
+         this.d = 0.0F;
       } else {
-         if ($$1.isRunning()) {
-            $$1.stop();
+         float $$0 = (float)this.q.dy().i();
+         boolean $$1 = !this.q.cq() && this.q.l() instanceof csg;
+         if ($$0 >= 0.01F && !$$1) {
+            this.d = bae.b(0.0F, 0.75F, $$0);
+         } else {
+            this.d = 0.0F;
          }
-      }
-   }
-
-   public void a(heo $$0) {
-      $$0.send(hep.g, $$0x -> {
-         synchronized (this) {
-            this.d.forEach(($$1, $$2) -> {
-               if (!$$2.isRunning()) {
-                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
-                  $$0x.a((her<hev.a>)$$1, new hev.a((int)$$3));
-               } else {
-                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), hep.g.a());
-               }
-            });
-            this.e.ifPresent($$1 -> $$0x.a(her.B, new hev.a((int)$$1)));
-            this.d.clear();
-         }
-      });
-   }
-
-   public synchronized void a(long $$0) {
-      this.e = OptionalLong.of($$0);
-   }
-
-   public static record a(int b) {
-      public static final Codec<hev.a> a = Codec.INT.xmap(hev.a::new, $$0 -> $$0.b);
-
-      public int a() {
-         return this.b;
       }
    }
 }

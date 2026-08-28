@@ -1,65 +1,58 @@
-import javax.annotation.Nullable;
-import org.jetbrains.annotations.Contract;
+import com.mojang.brigadier.builder.ArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Locale;
+import java.util.UUID;
+import java.util.function.Function;
 
-public class aqt {
-   private static final int c = 33;
-   private static final int d = 32;
-   private static final int e = 31;
-   private static final dyu f = dyq.a.a(dyr.n);
-   public static final int a = f.c().c();
-   public static final int b = 33 + a;
+public class aqt implements aqr {
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xv.c("commands.data.entity.invalid"));
+   public static final Function<String, aqs.c> a = $$0 -> new aqs.c() {
+         @Override
+         public aqr a(CommandContext<ew> $$0x) throws CommandSyntaxException {
+            return new aqt(fj.a($$0, $$0));
+         }
 
-   @Nullable
-   public static dyr a(int $$0) {
-      return a($$0 - 33, null);
-   }
-
-   @Nullable
-   @Contract("_,!null->!null;_,_->_")
-   public static dyr a(int $$0, @Nullable dyr $$1) {
-      if ($$0 > a) {
-         return $$1;
-      } else {
-         return $$0 <= 0 ? dyr.n : f.c().a($$0);
-      }
-   }
-
-   public static dyr b(int $$0) {
-      return a($$0, dyr.c);
-   }
-
-   public static int a(dyr $$0) {
-      return 33 + f.a($$0);
-   }
-
-   public static are c(int $$0) {
-      if ($$0 <= 31) {
-         return are.d;
-      } else if ($$0 <= 32) {
-         return are.c;
-      } else {
-         return $$0 <= 33 ? are.b : are.a;
-      }
-   }
-
-   public static int a(are $$0) {
-      return switch ($$0) {
-         case a -> b;
-         case b -> 33;
-         case c -> 32;
-         case d -> 31;
+         @Override
+         public ArgumentBuilder<ew, ?> a(ArgumentBuilder<ew, ?> $$0x, Function<ArgumentBuilder<ew, ?>, ArgumentBuilder<ew, ?>> $$1) {
+            return $$0.then(ex.a("entity").then($$1.apply(ex.a($$0, fj.a()))));
+         }
       };
+   private final bvf c;
+
+   public aqt(bvf $$0) {
+      this.c = $$0;
    }
 
-   public static boolean d(int $$0) {
-      return $$0 <= 31;
+   @Override
+   public void a(ux $$0) throws CommandSyntaxException {
+      if (this.c instanceof cps) {
+         throw b.create();
+      } else {
+         UUID $$1 = this.c.cG();
+         this.c.g($$0);
+         this.c.a_($$1);
+      }
    }
 
-   public static boolean e(int $$0) {
-      return $$0 <= 32;
+   @Override
+   public ux a() {
+      return dm.b(this.c);
    }
 
-   public static boolean f(int $$0) {
-      return $$0 <= b;
+   @Override
+   public xv b() {
+      return xv.a("commands.data.entity.modified", this.c.p_());
+   }
+
+   @Override
+   public xv a(vu $$0) {
+      return xv.a("commands.data.entity.query", this.c.p_(), vm.c($$0));
+   }
+
+   @Override
+   public xv a(fo.g $$0, double $$1, int $$2) {
+      return xv.a("commands.data.entity.get", $$0.a(), this.c.p_(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
    }
 }

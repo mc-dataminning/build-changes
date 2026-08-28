@@ -1,57 +1,60 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.HashMultimap;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
 
-public record deh(jq<cwi> d, int e, ks f, cwm g) {
-   public static final Codec<deh> a = RecordCodecBuilder.create(
+public record deh(alz b, jq<bxe> d, ddy e, bxh.a f) implements dej {
+   public static final MapCodec<deh> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               cwm.a.fieldOf("id").forGetter(deh::a),
-               ayv.m.fieldOf("count").orElse(1).forGetter(deh::b),
-               ks.a.optionalFieldOf("components", ks.c).forGetter(deh::c)
+               alz.a.fieldOf("id").forGetter(deh::b),
+               bxe.a.fieldOf("attribute").forGetter(deh::c),
+               ddy.b.fieldOf("amount").forGetter(deh::d),
+               bxh.a.f.fieldOf("operation").forGetter(deh::e)
             )
             .apply($$0, deh::new)
    );
-   public static final zh<wu, deh> b = zh.a(zf.b(ma.K), deh::a, zf.h, deh::b, ks.b, deh::c, deh::new);
-   public static final zh<wu, Optional<deh>> c = b.a(zf::a);
 
-   public deh(dfl $$0) {
-      this($$0, 1);
+   private alz a(bba $$0) {
+      return this.b.g("/" + $$0.c());
    }
 
-   public deh(dfl $$0, int $$1) {
-      this($$0.j().f(), $$1, ks.c);
+   public bxh a(int $$0, bba $$1) {
+      return new bxh(this.a($$1), (double)this.d().a($$0), this.e());
    }
 
-   public deh(jq<cwi> $$0, int $$1, ks $$2) {
-      this($$0, $$1, $$2, a($$0, $$1, $$2));
+   @Override
+   public void a(ash $$0, int $$1, ddq $$2, bvf $$3, fbs $$4, boolean $$5) {
+      if ($$5 && $$3 instanceof bwb $$6) {
+         $$6.eW().a(this.a($$1, $$2.b()));
+      }
    }
 
-   public deh a(UnaryOperator<ks.a> $$0) {
-      return new deh(this.d, this.e, $$0.apply(ks.a()).a());
+   @Override
+   public void a(ddq $$0, bvf $$1, fbs $$2, int $$3) {
+      if ($$1 instanceof bwb $$4) {
+         $$4.eW().b(this.a($$3, $$0.b()));
+      }
    }
 
-   private static cwm a(jq<cwi> $$0, int $$1, ks $$2) {
-      return new cwm($$0, $$1, $$2.c());
+   private HashMultimap<jq<bxe>, bxh> a(int $$0, bvn $$1) {
+      HashMultimap<jq<bxe>, bxh> $$2 = HashMultimap.create();
+      $$2.put(this.d, this.a($$0, (bba)$$1));
+      return $$2;
    }
 
-   public boolean a(cwm $$0) {
-      return $$0.a(this.d) && this.f.a($$0);
+   @Override
+   public MapCodec<deh> a() {
+      return a;
    }
 
-   public jq<cwi> a() {
+   public jq<bxe> c() {
       return this.d;
    }
 
-   public int b() {
+   public ddy d() {
       return this.e;
    }
 
-   public ks c() {
+   public bxh.a e() {
       return this.f;
-   }
-
-   public cwm d() {
-      return this.g;
    }
 }

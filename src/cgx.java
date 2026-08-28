@@ -1,56 +1,33 @@
-public abstract class cgx extends buc {
-   protected cgx(bus<? extends cgx> $$0, dfm $$1) {
-      super($$0, $$1);
-      this.a(esm.j, 0.0F);
+public class cgx {
+   public static boolean a(bwd $$0) {
+      return $$0.L() instanceof cfm;
    }
 
-   @Override
-   public boolean a(dfp $$0) {
-      return $$0.f(this);
+   public static boolean a(bwj $$0, int $$1) {
+      return $$0.fY() && $$0.fV().a($$0.dt(), (double)($$0.fW() + (float)$$1) + 1.0);
    }
 
-   @Override
-   public int Q() {
-      return 120;
+   public static boolean a(jh $$0, bwj $$1) {
+      return $$1.dV().e($$0.v());
    }
 
-   @Override
-   public int e(arp $$0) {
-      return 1 + this.ae.a(3);
+   public static boolean a(boolean $$0, bwj $$1, jh $$2) {
+      return $$0 && !$$1.a($$2);
    }
 
-   protected void r(int $$0) {
-      if (this.bL() && !this.bm()) {
-         this.j($$0 - 1);
-         if (this.ct() == -20) {
-            this.j(0);
-            this.a(this.dW().i(), 2.0F);
-         }
-      } else {
-         this.j(300);
-      }
+   public static boolean a(cfn $$0, jh $$1) {
+      return !$$0.a($$1);
    }
 
-   @Override
-   public void az() {
-      int $$0 = this.ct();
-      super.az();
-      this.r($$0);
+   public static boolean a(bwj $$0, jh $$1) {
+      return $$0.dV().b_($$1).a(aya.a);
    }
 
-   @Override
-   public boolean cJ() {
-      return false;
+   public static boolean b(bwj $$0, jh $$1) {
+      return $$0.a(eul.b($$0, $$1)) != 0.0F;
    }
 
-   @Override
-   public boolean y() {
-      return false;
-   }
-
-   public static boolean b(bus<? extends cgx> $$0, dfn $$1, bur $$2, jh $$3, azu $$4) {
-      int $$5 = $$1.O();
-      int $$6 = $$5 - 13;
-      return $$3.v() >= $$6 && $$3.v() <= $$5 && $$1.b_($$3.e()).a(axi.a) && $$1.a_($$3.d()).a(dis.G);
+   public static boolean c(bwj $$0, jh $$1) {
+      return $$0.dV().a_($$1).e();
    }
 }

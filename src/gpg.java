@@ -1,35 +1,61 @@
-public class gpg extends gqq<clo, gvn, fzh<gvn>> {
-   private static final alj a = alj.b("textures/entity/enderman/enderman.png");
-   private final azu b = azu.a();
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gpg(gpk.a $$0) {
-      super($$0, new fzh<>($$0.a(gck.aD)), 0.5F);
-      this.a(new gth(this));
-      this.a(new gsz(this, $$0.d()));
+public class gpg implements gpe.a {
+   private static final float a = 0.02F;
+   private final Map<jh, gpg.a> b = Maps.newHashMap();
+
+   public void a(jh $$0, int $$1, String $$2, int $$3) {
+      this.b.put($$0, new gpg.a($$1, $$2, ae.c() + (long)$$3));
    }
 
-   public ezy a(gvn $$0) {
-      ezy $$1 = super.a($$0);
-      if ($$0.a) {
-         double $$2 = 0.02 * (double)$$0.aa;
-         return $$1.b(this.b.k() * $$2, 0.0, this.b.k() * $$2);
-      } else {
-         return $$1;
+   @Override
+   public void a() {
+      this.b.clear();
+   }
+
+   @Override
+   public void a(fgl $$0, gle $$1, double $$2, double $$3, double $$4) {
+      long $$5 = ae.c();
+      this.b.entrySet().removeIf($$1x -> $$5 > ((gpg.a)$$1x.getValue()).c);
+      this.b.forEach(($$2x, $$3x) -> this.a($$0, $$1, $$2x, $$3x));
+   }
+
+   private void a(fgl $$0, gle $$1, jh $$2, gpg.a $$3) {
+      gpe.a($$0, $$1, $$2, 0.02F, $$3.a(), $$3.b(), $$3.c(), $$3.d() * 0.75F);
+      if (!$$3.b.isEmpty()) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v() + 1.2;
+         double $$6 = (double)$$2.w() + 0.5;
+         gpe.a($$0, $$1, $$3.b, $$4, $$5, $$6, -1, 0.01F, true, 0.0F, true);
       }
    }
 
-   public alj b(gvn $$0) {
-      return a;
-   }
+   static class a {
+      public int a;
+      public String b;
+      public long c;
 
-   public gvn a() {
-      return new gvn();
-   }
+      public a(int $$0, String $$1, long $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
 
-   public void a(clo $$0, gvn $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      gqb.a($$0, $$1, $$2);
-      $$1.a = $$0.gn();
-      $$1.b = $$0.gm();
+      public float a() {
+         return (float)(this.a >> 16 & 0xFF) / 255.0F;
+      }
+
+      public float b() {
+         return (float)(this.a >> 8 & 0xFF) / 255.0F;
+      }
+
+      public float c() {
+         return (float)(this.a & 0xFF) / 255.0F;
+      }
+
+      public float d() {
+         return (float)(this.a >> 24 & 0xFF) / 255.0F;
+      }
    }
 }

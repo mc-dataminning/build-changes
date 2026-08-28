@@ -1,11 +1,11 @@
 public class axv {
-   public static final axs<elx> a = a("normal");
-   public static final axs<elx> b = a("extended");
+   public static final ayk<chw> a = a("default_spawns");
+   public static final ayk<chw> b = a("full_moon_spawns");
 
    private axv() {
    }
 
-   private static axs<elx> a(String $$0) {
-      return axs.a(ma.aZ, alj.b($$0));
+   private static ayk<chw> a(String $$0) {
+      return ayk.a(mb.l, alz.b($$0));
    }
 }

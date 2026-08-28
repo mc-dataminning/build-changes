@@ -1,199 +1,544 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public interface evz {
-   MapCodec<evz> a = a(Integer.MAX_VALUE);
+public class evz implements ewa, ewb {
+   private static final Logger f = LogUtils.getLogger();
+   public static final String a = "LevelName";
+   protected static final String b = "Player";
+   protected static final String c = "WorldGenSettings";
+   private dhe g;
+   private final eeg h;
+   private final evz.a i;
+   private final Lifecycle j;
+   private jh k;
+   private float l;
+   private long m;
+   private long n;
+   @Nullable
+   private final ux o;
+   private final int p;
+   private int q;
+   private boolean r;
+   private int s;
+   private boolean t;
+   private int u;
+   private boolean v;
+   private boolean w;
+   private dzd.c x;
+   private ebl.a y;
+   @Nullable
+   private ux z;
+   private int A;
+   private int B;
+   @Nullable
+   private UUID C;
+   private final Set<String> D;
+   private boolean E;
+   private final Set<String> F;
+   private final fbf<MinecraftServer> G;
 
-   static MapCodec<evz> a(int $$0) {
-      return evz.f.e.dispatchMap("mode", evz::a, $$0x -> $$0x.g).validate($$1 -> {
-         if ($$1 instanceof evz.d $$2 && $$2.c().isPresent()) {
-            int $$3 = $$2.c().get();
-            if ($$3 > $$0) {
-               return DataResult.error(() -> "Size value too large: " + $$3 + ", max size is " + $$0);
-            }
-         }
-
-         return DataResult.success($$1);
-      });
+   private evz(
+      @Nullable ux $$0,
+      boolean $$1,
+      jh $$2,
+      float $$3,
+      long $$4,
+      long $$5,
+      int $$6,
+      int $$7,
+      int $$8,
+      boolean $$9,
+      int $$10,
+      boolean $$11,
+      boolean $$12,
+      boolean $$13,
+      dzd.c $$14,
+      int $$15,
+      int $$16,
+      @Nullable UUID $$17,
+      Set<String> $$18,
+      Set<String> $$19,
+      fbf<MinecraftServer> $$20,
+      @Nullable ux $$21,
+      ebl.a $$22,
+      dhe $$23,
+      eeg $$24,
+      evz.a $$25,
+      Lifecycle $$26
+   ) {
+      this.E = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.m = $$4;
+      this.n = $$5;
+      this.p = $$6;
+      this.q = $$7;
+      this.s = $$8;
+      this.r = $$9;
+      this.u = $$10;
+      this.t = $$11;
+      this.v = $$12;
+      this.w = $$13;
+      this.x = $$14;
+      this.A = $$15;
+      this.B = $$16;
+      this.C = $$17;
+      this.D = $$18;
+      this.F = $$19;
+      this.o = $$0;
+      this.G = $$20;
+      this.z = $$21;
+      this.y = $$22;
+      this.g = $$23;
+      this.h = $$24;
+      this.i = $$25;
+      this.j = $$26;
    }
 
-   evz.f a();
-
-   default <T> List<T> a(List<T> $$0, List<T> $$1) {
-      return this.a($$0, $$1, Integer.MAX_VALUE);
-   }
-
-   <T> List<T> a(List<T> var1, List<T> var2, int var3);
-
-   public static class a implements evz {
-      private static final Logger d = LogUtils.getLogger();
-      public static final evz.a b = new evz.a();
-      public static final MapCodec<evz.a> c = MapCodec.unit(() -> b);
-
-      private a() {
-      }
-
-      @Override
-      public evz.f a() {
-         return evz.f.d;
-      }
-
-      @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
-         if ($$0.size() + $$1.size() > $$2) {
-            d.error("Contents overflow in section append");
-            return $$0;
-         } else {
-            return Stream.concat($$0.stream(), $$1.stream()).toList();
-         }
-      }
-   }
-
-   public static record b(int c) implements evz {
-      private static final Logger d = LogUtils.getLogger();
-      public static final MapCodec<evz.b> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(ayv.l.optionalFieldOf("offset", 0).forGetter(evz.b::b)).apply($$0, evz.b::new)
+   public evz(dhe $$0, eeg $$1, evz.a $$2, Lifecycle $$3) {
+      this(
+         null,
+         false,
+         jh.c,
+         0.0F,
+         0L,
+         0L,
+         19133,
+         0,
+         0,
+         false,
+         0,
+         false,
+         false,
+         false,
+         dzd.d,
+         0,
+         0,
+         null,
+         Sets.newLinkedHashSet(),
+         new HashSet<>(),
+         new fbf<>(fbe.a),
+         null,
+         ebl.a.b,
+         $$0.h(),
+         $$1,
+         $$2,
+         $$3
       );
-
-      @Override
-      public evz.f a() {
-         return evz.f.c;
-      }
-
-      @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
-         int $$3 = $$0.size();
-         if (this.c > $$3) {
-            d.error("Cannot insert when offset is out of bounds");
-            return $$0;
-         } else if ($$3 + $$1.size() > $$2) {
-            d.error("Contents overflow in section insertion");
-            return $$0;
-         } else {
-            Builder<T> $$4 = ImmutableList.builder();
-            $$4.addAll($$0.subList(0, this.c));
-            $$4.addAll($$1);
-            $$4.addAll($$0.subList(this.c, $$3));
-            return $$4.build();
-         }
-      }
-
-      public int b() {
-         return this.c;
-      }
    }
 
-   public static class c implements evz {
-      public static final evz.c b = new evz.c();
-      public static final MapCodec<evz.c> c = MapCodec.unit(() -> b);
-
-      private c() {
-      }
-
-      @Override
-      public evz.f a() {
-         return evz.f.a;
-      }
-
-      @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
-         return $$1;
-      }
-   }
-
-   public static record d(int c, Optional<Integer> d) implements evz {
-      private static final Logger e = LogUtils.getLogger();
-      public static final MapCodec<evz.d> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(ayv.l.optionalFieldOf("offset", 0).forGetter(evz.d::b), ayv.l.optionalFieldOf("size").forGetter(evz.d::c)).apply($$0, evz.d::new)
+   public static <T> evz a(Dynamic<T> $$0, dhe $$1, evz.a $$2, eeg $$3, Lifecycle $$4) {
+      long $$5 = $$0.get("Time").asLong(0L);
+      return new evz(
+         (ux)$$0.get("Player").flatMap(ux.a::parse).result().orElse(null),
+         $$0.get("WasModded").asBoolean(false),
+         new jh($$0.get("SpawnX").asInt(0), $$0.get("SpawnY").asInt(0), $$0.get("SpawnZ").asInt(0)),
+         $$0.get("SpawnAngle").asFloat(0.0F),
+         $$5,
+         $$0.get("DayTime").asLong($$5),
+         evx.a($$0).a(),
+         $$0.get("clearWeatherTime").asInt(0),
+         $$0.get("rainTime").asInt(0),
+         $$0.get("raining").asBoolean(false),
+         $$0.get("thunderTime").asInt(0),
+         $$0.get("thundering").asBoolean(false),
+         $$0.get("initialized").asBoolean(true),
+         $$0.get("DifficultyLocked").asBoolean(false),
+         dzd.c.a($$0, dzd.d),
+         $$0.get("WanderingTraderSpawnDelay").asInt(0),
+         $$0.get("WanderingTraderSpawnChance").asInt(0),
+         (UUID)$$0.get("WanderingTraderId").read(kk.a).result().orElse(null),
+         $$0.get("ServerBrands").asStream().flatMap($$0x -> $$0x.asString().result().stream()).collect(Collectors.toCollection(Sets::newLinkedHashSet)),
+         $$0.get("removed_features").asStream().flatMap($$0x -> $$0x.asString().result().stream()).collect(Collectors.toSet()),
+         new fbf<>(fbe.a, $$0.get("ScheduledEvents").asStream()),
+         (ux)$$0.get("CustomBossEvents").orElseEmptyMap().getValue(),
+         $$0.get("DragonFight").read(ebl.a.a).resultOrPartial(f::error).orElse(ebl.a.b),
+         $$1,
+         $$3,
+         $$2,
+         $$4
       );
+   }
 
-      public d(int $$0) {
-         this($$0, Optional.empty());
+   @Override
+   public ux a(ke $$0, @Nullable ux $$1) {
+      if ($$1 == null) {
+         $$1 = this.o;
       }
 
-      @Override
-      public evz.f a() {
-         return evz.f.b;
+      ux $$2 = new ux();
+      this.a($$0, $$2, $$1);
+      return $$2;
+   }
+
+   private void a(ke $$0, ux $$1, @Nullable ux $$2) {
+      $$1.a("ServerBrands", a(this.D));
+      $$1.a("WasModded", this.E);
+      if (!this.F.isEmpty()) {
+         $$1.a("removed_features", a(this.F));
       }
 
-      @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
-         int $$3 = $$0.size();
-         if (this.c > $$3) {
-            e.error("Cannot replace when offset is out of bounds");
-            return $$0;
-         } else {
-            Builder<T> $$4 = ImmutableList.builder();
-            $$4.addAll($$0.subList(0, this.c));
-            $$4.addAll($$1);
-            int $$5 = this.c + this.d.orElse($$1.size());
-            if ($$5 < $$3) {
-               $$4.addAll($$0.subList($$5, $$3));
-            }
-
-            List<T> $$6 = $$4.build();
-            if ($$6.size() > $$2) {
-               e.error("Contents overflow in section replacement");
-               return $$0;
-            } else {
-               return $$6;
-            }
-         }
+      ux $$3 = new ux();
+      $$3.a("Name", ab.b().c());
+      $$3.a("Id", ab.b().d().c());
+      $$3.a("Snapshot", !ab.b().g());
+      $$3.a("Series", ab.b().d().b());
+      $$1.a("Version", $$3);
+      vm.e($$1);
+      DynamicOps<vu> $$4 = $$0.a(vl.a);
+      eee.a($$4, this.h, $$0).resultOrPartial(ae.a("WorldGenSettings: ", f::error)).ifPresent($$1x -> $$1.a("WorldGenSettings", $$1x));
+      $$1.a("GameType", this.g.b().a());
+      $$1.a("SpawnX", this.k.u());
+      $$1.a("SpawnY", this.k.v());
+      $$1.a("SpawnZ", this.k.w());
+      $$1.a("SpawnAngle", this.l);
+      $$1.a("Time", this.m);
+      $$1.a("DayTime", this.n);
+      $$1.a("LastPlayed", ae.e());
+      $$1.a("LevelName", this.g.a());
+      $$1.a("version", 19133);
+      $$1.a("clearWeatherTime", this.q);
+      $$1.a("rainTime", this.s);
+      $$1.a("raining", this.r);
+      $$1.a("thunderTime", this.u);
+      $$1.a("thundering", this.t);
+      $$1.a("hardcore", this.g.c());
+      $$1.a("allowCommands", this.g.e());
+      $$1.a("initialized", this.v);
+      this.x.a($$1);
+      $$1.a("Difficulty", (byte)this.g.d().a());
+      $$1.a("DifficultyLocked", this.w);
+      $$1.a("GameRules", this.g.f().a());
+      $$1.a("DragonFight", (vu)ebl.a.a.encodeStart(vl.a, this.y).getOrThrow());
+      if ($$2 != null) {
+         $$1.a("Player", $$2);
       }
 
-      public int b() {
-         return this.c;
+      dhx.b.encodeStart(vl.a, this.g.g()).ifSuccess($$1x -> $$1.a((ux)$$1x)).ifError($$0x -> f.warn("Failed to encode configuration {}", $$0x.message()));
+      if (this.z != null) {
+         $$1.a("CustomBossEvents", this.z);
       }
 
-      public Optional<Integer> c() {
-         return this.d;
+      $$1.a("ScheduledEvents", this.G.b());
+      $$1.a("WanderingTraderSpawnDelay", this.A);
+      $$1.a("WanderingTraderSpawnChance", this.B);
+      if (this.C != null) {
+         $$1.a("WanderingTraderId", this.C);
       }
    }
 
-   public static record e<T>(List<T> a, evz b) {
-      public static <T> Codec<evz.e<T>> a(Codec<T> $$0, int $$1) {
-         return RecordCodecBuilder.create(
-            $$2 -> $$2.group($$0.sizeLimitedListOf($$1).fieldOf("values").forGetter($$0xx -> $$0xx.a), evz.a($$1).forGetter($$0xx -> $$0xx.b))
-                  .apply($$2, evz.e::new)
-         );
-      }
-
-      public List<T> a(List<T> $$0) {
-         return this.b.a($$0, this.a);
-      }
+   private static vd a(Set<String> $$0) {
+      vd $$1 = new vd();
+      $$0.stream().map(vs::a).forEach($$1::add);
+      return $$1;
    }
 
-   public static enum f implements bai {
-      a("replace_all", evz.c.c),
-      b("replace_section", evz.d.b),
-      c("insert", evz.b.b),
-      d("append", evz.a.c);
+   @Override
+   public jh a() {
+      return this.k;
+   }
 
-      public static final Codec<evz.f> e = bai.a(evz.f::values);
-      private final String f;
-      final MapCodec<? extends evz> g;
+   @Override
+   public float b() {
+      return this.l;
+   }
 
-      private f(final String $$0, final MapCodec<? extends evz> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
+   @Override
+   public long c() {
+      return this.m;
+   }
 
-      public MapCodec<? extends evz> a() {
-         return this.g;
-      }
+   @Override
+   public long d() {
+      return this.n;
+   }
 
-      @Override
-      public String c() {
-         return this.f;
-      }
+   @Nullable
+   @Override
+   public ux w() {
+      return this.o;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.m = $$0;
+   }
+
+   @Override
+   public void b(long $$0) {
+      this.n = $$0;
+   }
+
+   @Override
+   public void a(jh $$0, float $$1) {
+      this.k = $$0.j();
+      this.l = $$1;
+   }
+
+   @Override
+   public String e() {
+      return this.g.a();
+   }
+
+   @Override
+   public int x() {
+      return this.p;
+   }
+
+   @Override
+   public int f() {
+      return this.q;
+   }
+
+   @Override
+   public void a(int $$0) {
+      this.q = $$0;
+   }
+
+   @Override
+   public boolean g() {
+      return this.t;
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.t = $$0;
+   }
+
+   @Override
+   public int h() {
+      return this.u;
+   }
+
+   @Override
+   public void b(int $$0) {
+      this.u = $$0;
+   }
+
+   @Override
+   public boolean i() {
+      return this.r;
+   }
+
+   @Override
+   public void b(boolean $$0) {
+      this.r = $$0;
+   }
+
+   @Override
+   public int j() {
+      return this.s;
+   }
+
+   @Override
+   public void c(int $$0) {
+      this.s = $$0;
+   }
+
+   @Override
+   public dgx k() {
+      return this.g.b();
+   }
+
+   @Override
+   public void a(dgx $$0) {
+      this.g = this.g.a($$0);
+   }
+
+   @Override
+   public boolean l() {
+      return this.g.c();
+   }
+
+   @Override
+   public boolean m() {
+      return this.g.e();
+   }
+
+   @Override
+   public boolean n() {
+      return this.v;
+   }
+
+   @Override
+   public void c(boolean $$0) {
+      this.v = $$0;
+   }
+
+   @Override
+   public dgw o() {
+      return this.g.f();
+   }
+
+   @Override
+   public dzd.c p() {
+      return this.x;
+   }
+
+   @Override
+   public void a(dzd.c $$0) {
+      this.x = $$0;
+   }
+
+   @Override
+   public btb q() {
+      return this.g.d();
+   }
+
+   @Override
+   public void a(btb $$0) {
+      this.g = this.g.a($$0);
+   }
+
+   @Override
+   public boolean r() {
+      return this.w;
+   }
+
+   @Override
+   public void d(boolean $$0) {
+      this.w = $$0;
+   }
+
+   @Override
+   public fbf<MinecraftServer> s() {
+      return this.G;
+   }
+
+   @Override
+   public void a(p $$0, dhc $$1) {
+      ewa.super.a($$0, $$1);
+      ewb.super.a($$0);
+   }
+
+   @Override
+   public eeg y() {
+      return this.h;
+   }
+
+   @Override
+   public boolean z() {
+      return this.i == evz.a.b;
+   }
+
+   @Override
+   public boolean A() {
+      return this.i == evz.a.c;
+   }
+
+   @Override
+   public Lifecycle B() {
+      return this.j;
+   }
+
+   @Override
+   public ebl.a C() {
+      return this.y;
+   }
+
+   @Override
+   public void a(ebl.a $$0) {
+      this.y = $$0;
+   }
+
+   @Override
+   public dhx D() {
+      return this.g.g();
+   }
+
+   @Override
+   public void a(dhx $$0) {
+      this.g = this.g.a($$0);
+   }
+
+   @Nullable
+   @Override
+   public ux E() {
+      return this.z;
+   }
+
+   @Override
+   public void a(@Nullable ux $$0) {
+      this.z = $$0;
+   }
+
+   @Override
+   public int t() {
+      return this.A;
+   }
+
+   @Override
+   public void d(int $$0) {
+      this.A = $$0;
+   }
+
+   @Override
+   public int u() {
+      return this.B;
+   }
+
+   @Override
+   public void e(int $$0) {
+      this.B = $$0;
+   }
+
+   @Nullable
+   @Override
+   public UUID v() {
+      return this.C;
+   }
+
+   @Override
+   public void a(UUID $$0) {
+      this.C = $$0;
+   }
+
+   @Override
+   public void a(String $$0, boolean $$1) {
+      this.D.add($$0);
+      this.E |= $$1;
+   }
+
+   @Override
+   public boolean F() {
+      return this.E;
+   }
+
+   @Override
+   public Set<String> G() {
+      return ImmutableSet.copyOf(this.D);
+   }
+
+   @Override
+   public Set<String> H() {
+      return Set.copyOf(this.F);
+   }
+
+   @Override
+   public ewa I() {
+      return this;
+   }
+
+   @Override
+   public dhe J() {
+      return this.g.h();
+   }
+
+   @Deprecated
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

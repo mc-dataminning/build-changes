@@ -1,16 +1,16 @@
 public interface ev {
    ev a = new ev() {
       @Override
-      public void a(xj $$0) {
-      }
-
-      @Override
-      public boolean x_() {
-         return false;
+      public void a(xv $$0) {
       }
 
       @Override
       public boolean y_() {
+         return false;
+      }
+
+      @Override
+      public boolean z_() {
          return false;
       }
 
@@ -20,15 +20,15 @@ public interface ev {
       }
    };
 
-   void a(xj var1);
-
-   boolean x_();
+   void a(xv var1);
 
    boolean y_();
 
+   boolean z_();
+
    boolean c();
 
-   default boolean s_() {
+   default boolean t_() {
       return false;
    }
 }

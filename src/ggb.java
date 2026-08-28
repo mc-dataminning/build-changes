@@ -1,136 +1,119 @@
-public class ggb extends gho {
-   private final double a;
-   private final double b;
-   private final double F;
-   private final boolean G;
-   private final ggo.a H;
+import com.mojang.authlib.GameProfile;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.UUID;
 
-   ggb(gdh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, ggo.a.a);
+public interface ggb extends gga {
+   static ggb.a a(GameProfile $$0, yl $$1, gfz $$2) {
+      return new ggb.a($$0, $$1, $$2);
    }
 
-   ggb(gdh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7, ggo.a $$8) {
-      super($$0, $$1, $$2, $$3);
-      this.G = $$7;
-      this.H = $$8;
-      this.e($$8.b());
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.a = $$1;
-      this.b = $$2;
-      this.F = $$3;
-      this.d = $$1 + $$4;
-      this.e = $$2 + $$5;
-      this.f = $$3 + $$6;
-      this.g = this.d;
-      this.h = this.e;
-      this.i = this.f;
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
-      float $$9 = this.r.i() * 0.6F + 0.4F;
-      this.v = 0.9F * $$9;
-      this.w = 0.9F * $$9;
-      this.x = $$9;
-      this.n = false;
-      this.t = (int)(Math.random() * 10.0) + 30;
+   static ggb.b a(xv $$0, Instant $$1) {
+      return new ggb.b($$0, $$1);
    }
 
-   @Override
-   public ggs b() {
-      return this.H.a() ? ggs.b : ggs.c;
+   xv b();
+
+   default xv c() {
+      return this.b();
    }
 
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
-   }
+   boolean a(UUID var1);
 
-   @Override
-   public int a(float $$0) {
-      if (this.G) {
-         return 240;
-      } else {
-         int $$1 = super.a($$0);
-         float $$2 = (float)this.s / (float)this.t;
-         $$2 *= $$2;
-         $$2 *= $$2;
-         int $$3 = $$1 & 0xFF;
-         int $$4 = $$1 >> 16 & 0xFF;
-         $$4 += (int)($$2 * 15.0F * 16.0F);
-         if ($$4 > 240) {
-            $$4 = 240;
+   public static record a(GameProfile c, yl d, gfz e) implements ggb {
+      public static final MapCodec<ggb.a> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  azn.z.fieldOf("profile").forGetter(ggb.a::f), yl.a.forGetter(ggb.a::g), gfz.d.optionalFieldOf("trust_level", gfz.a).forGetter(ggb.a::h)
+               )
+               .apply($$0, ggb.a::new)
+      );
+      private static final DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
+
+      @Override
+      public xv b() {
+         if (!this.d.o().a()) {
+            xv $$0 = this.d.o().b(this.d.c());
+            return (xv)($$0 != null ? $$0 : xv.i());
+         } else {
+            return this.d.d();
          }
+      }
 
-         return $$3 | $$4 << 16;
+      @Override
+      public xv c() {
+         xv $$0 = this.b();
+         xv $$1 = this.i();
+         return xv.a("gui.chatSelection.message.narrate", this.c.getName(), $$0, $$1);
+      }
+
+      public xv d() {
+         xv $$0 = this.i();
+         return xv.a("gui.chatSelection.heading", this.c.getName(), $$0);
+      }
+
+      private xv i() {
+         LocalDateTime $$0 = LocalDateTime.ofInstant(this.d.e(), ZoneOffset.systemDefault());
+         return xv.b($$0.format(f)).a(n.u, n.h);
+      }
+
+      @Override
+      public boolean a(UUID $$0) {
+         return this.d.a($$0);
+      }
+
+      public UUID e() {
+         return this.c.getId();
+      }
+
+      @Override
+      public gga.a a() {
+         return gga.a.a;
+      }
+
+      public GameProfile f() {
+         return this.c;
+      }
+
+      public yl g() {
+         return this.d;
+      }
+
+      public gfz h() {
+         return this.e;
       }
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = (float)this.s / (float)this.t;
-         $$0 = 1.0F - $$0;
-         float $$1 = 1.0F - $$0;
-         $$1 *= $$1;
-         $$1 *= $$1;
-         this.g = this.a + this.j * (double)$$0;
-         this.h = this.b + this.k * (double)$$0 - (double)($$1 * 1.2F);
-         this.i = this.F + this.l * (double)$$0;
-      }
-   }
+   public static record b(xv c, Instant d) implements ggb {
+      public static final MapCodec<ggb.b> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(xx.a.fieldOf("message").forGetter(ggb.b::d), azn.q.fieldOf("time_stamp").forGetter(ggb.b::e)).apply($$0, ggb.b::new)
+      );
 
-   @Override
-   public void a(fev $$0, fjn $$1, float $$2) {
-      this.e(this.H.a(this.s, this.t, $$2));
-      super.a($$0, $$1, $$2);
-   }
-
-   public static class a implements ggr<lw> {
-      private final ghj a;
-
-      public a(ghj $$0) {
-         this.a = $$0;
+      @Override
+      public xv b() {
+         return this.c;
       }
 
-      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ggb $$8 = new ggb($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class b implements ggr<lw> {
-      private final ghj a;
-
-      public b(ghj $$0) {
-         this.a = $$0;
+      @Override
+      public boolean a(UUID $$0) {
+         return false;
       }
 
-      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ggb $$8 = new ggb($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class c implements ggr<lw> {
-      private final ghj a;
-
-      public c(ghj $$0) {
-         this.a = $$0;
+      @Override
+      public gga.a a() {
+         return gga.a.b;
       }
 
-      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ggb $$8 = new ggb($$1, $$2, $$3, $$4, $$5, $$6, $$7, true, new ggo.a(0.0F, 0.6F, 0.25F, 1.0F));
-         $$8.d(1.5F);
-         $$8.a(this.a);
-         return $$8;
+      public xv d() {
+         return this.c;
+      }
+
+      public Instant e() {
+         return this.d;
       }
    }
 }

@@ -1,255 +1,108 @@
-import com.mojang.serialization.MapCodec;
-import java.util.function.BiConsumer;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
+import java.util.function.Function;
+import java.util.function.ToIntFunction;
+import java.util.stream.Collectors;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class dim extends dic {
-   public static final MapCodec<dim> a = b(dim::new);
-   public static final dws<jm> b = dml.aF;
-   public static final dws<dwj> c = dwl.V;
-   public static final dwm d = dwl.w;
-   private static final fas f = diq.a(0.0, 0.0, 4.0, 16.0, 16.0, 12.0);
-   private static final fas g = diq.a(4.0, 0.0, 0.0, 12.0, 16.0, 16.0);
-   private static final fas h = diq.a(5.0, 6.0, 5.0, 11.0, 13.0, 11.0);
-   private static final fas i = diq.a(4.0, 4.0, 4.0, 12.0, 6.0, 12.0);
-   private static final fas j = fap.a(i, h);
-   private static final fas k = fap.a(j, diq.a(7.0, 13.0, 0.0, 9.0, 15.0, 16.0));
-   private static final fas l = fap.a(j, diq.a(0.0, 13.0, 7.0, 16.0, 15.0, 9.0));
-   private static final fas m = fap.a(j, diq.a(0.0, 13.0, 7.0, 13.0, 15.0, 9.0));
-   private static final fas n = fap.a(j, diq.a(3.0, 13.0, 7.0, 16.0, 15.0, 9.0));
-   private static final fas o = fap.a(j, diq.a(7.0, 13.0, 0.0, 9.0, 15.0, 13.0));
-   private static final fas G = fap.a(j, diq.a(7.0, 13.0, 3.0, 9.0, 15.0, 16.0));
-   private static final fas H = fap.a(j, diq.a(7.0, 13.0, 7.0, 9.0, 16.0, 9.0));
-   public static final int e = 1;
+public class dim {
+   public static <T> List<dim.b> a(List<T> $$0, Function<T, List<ju<eng>>> $$1, boolean $$2) {
+      Object2IntMap<eng> $$3 = new Object2IntOpenHashMap();
+      MutableInt $$4 = new MutableInt(0);
 
-   @Override
-   public MapCodec<dim> a() {
-      return a;
-   }
-
-   public dim(dvu.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, jm.c).b(c, dwj.a).b(d, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected void a(dvv $$0, dfm $$1, jh $$2, diq $$3, @Nullable etd $$4, boolean $$5) {
-      boolean $$6 = $$1.C($$2);
-      if ($$6 != $$0.c(d)) {
-         if ($$6) {
-            this.a($$1, $$2, null);
-         }
-
-         $$1.a($$2, $$0.b(d, Boolean.valueOf($$6)), 3);
-      }
-   }
-
-   @Override
-   protected void a(dfm $$0, dvv $$1, ezu $$2, cpn $$3) {
-      bul $$4 = $$3.p();
-      cou $$5 = $$4 instanceof cou ? (cou)$$4 : null;
-      this.a($$0, $$1, $$2, $$5, true);
-   }
-
-   @Override
-   protected bsk a(dvv $$0, dfm $$1, jh $$2, cou $$3, ezu $$4) {
-      return (bsk)(this.a($$1, $$0, $$4, $$3, true) ? bsk.a : bsk.e);
-   }
-
-   public boolean a(dfm $$0, dvv $$1, ezu $$2, @Nullable cou $$3, boolean $$4) {
-      jm $$5 = $$2.c();
-      jh $$6 = $$2.b();
-      boolean $$7 = !$$4 || this.a($$1, $$5, $$2.g().e - (double)$$6.v());
-      if ($$7) {
-         boolean $$8 = this.a($$3, $$0, $$6, $$5);
-         if ($$8 && $$3 != null) {
-            $$3.a(awx.az);
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private boolean a(dvv $$0, jm $$1, double $$2) {
-      if ($$1.o() != jm.a.b && !($$2 > 0.8124F)) {
-         jm $$3 = $$0.c(b);
-         dwj $$4 = $$0.c(c);
-         switch ($$4) {
-            case a:
-               return $$3.o() == $$1.o();
-            case c:
-            case d:
-               return $$3.o() != $$1.o();
-            case b:
-               return true;
-            default:
-               return false;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   public boolean a(dfm $$0, jh $$1, @Nullable jm $$2) {
-      return this.a(null, $$0, $$1, $$2);
-   }
-
-   public boolean a(@Nullable bul $$0, dfm $$1, jh $$2, @Nullable jm $$3) {
-      dsy $$4 = $$1.c_($$2);
-      if (!$$1.C && $$4 instanceof dsw) {
-         if ($$3 == null) {
-            $$3 = $$1.a_($$2).c(b);
-         }
-
-         ((dsw)$$4).a($$3);
-         $$1.a(null, $$2, awn.bZ, awo.e, 2.0F, 1.0F);
-         $$1.a($$0, ear.c, $$2);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private fas o(dvv $$0) {
-      jm $$1 = $$0.c(b);
-      dwj $$2 = $$0.c(c);
-      if ($$2 == dwj.a) {
-         return $$1 != jm.c && $$1 != jm.d ? g : f;
-      } else if ($$2 == dwj.b) {
-         return H;
-      } else if ($$2 == dwj.d) {
-         return $$1 != jm.c && $$1 != jm.d ? l : k;
-      } else if ($$1 == jm.c) {
-         return o;
-      } else if ($$1 == jm.d) {
-         return G;
-      } else {
-         return $$1 == jm.f ? n : m;
-      }
-   }
-
-   @Override
-   protected fas b(dvv $$0, der $$1, jh $$2, fad $$3) {
-      return this.o($$0);
-   }
-
-   @Override
-   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
-      return this.o($$0);
-   }
-
-   @Override
-   protected dow a_(dvv $$0) {
-      return dow.c;
-   }
-
-   @Nullable
-   @Override
-   public dvv a(dad $$0) {
-      jm $$1 = $$0.k();
-      jh $$2 = $$0.a();
-      dfm $$3 = $$0.q();
-      jm.a $$4 = $$1.o();
-      if ($$4 == jm.a.b) {
-         dvv $$5 = this.m().b(c, $$1 == jm.a ? dwj.b : dwj.a).b(b, $$0.g());
-         if ($$5.a((dfp)$$0.q(), $$2)) {
-            return $$5;
-         }
-      } else {
-         boolean $$6 = $$4 == jm.a.a && $$3.a_($$2.h()).c($$3, $$2.h(), jm.f) && $$3.a_($$2.i()).c($$3, $$2.i(), jm.e)
-            || $$4 == jm.a.c && $$3.a_($$2.f()).c($$3, $$2.f(), jm.d) && $$3.a_($$2.g()).c($$3, $$2.g(), jm.c);
-         dvv $$7 = this.m().b(b, $$1.g()).b(c, $$6 ? dwj.d : dwj.c);
-         if ($$7.a((dfp)$$0.q(), $$0.a())) {
-            return $$7;
-         }
-
-         boolean $$8 = $$3.a_($$2.e()).c($$3, $$2.e(), jm.b);
-         $$7 = $$7.b(c, $$8 ? dwj.a : dwj.b);
-         if ($$7.a((dfp)$$0.q(), $$0.a())) {
-            return $$7;
-         }
+      record a(int a, int b, eng c) {
       }
 
-      return null;
-   }
+      Comparator<a> $$5 = Comparator.comparingInt(a::b).thenComparingInt(a::a);
+      Map<a, Set<a>> $$6 = new TreeMap<>($$5);
+      int $$7 = 0;
 
-   @Override
-   protected void a(dvv $$0, arp $$1, jh $$2, dfe $$3, BiConsumer<cwm, jh> $$4) {
-      if ($$3.g()) {
-         this.a($$1, $$2, null);
-      }
+      for (T $$8 : $$0) {
+         List<a> $$9 = Lists.newArrayList();
+         List<ju<eng>> $$10 = $$1.apply($$8);
+         $$7 = Math.max($$7, $$10.size());
 
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected dvv a(dvv $$0, dfp $$1, dgb $$2, jh $$3, jm $$4, jh $$5, dvv $$6, azu $$7) {
-      dwj $$8 = $$0.c(c);
-      jm $$9 = q($$0).g();
-      if ($$9 == $$4 && !$$0.a($$1, $$3) && $$8 != dwj.d) {
-         return dis.a.m();
-      } else {
-         if ($$4.o() == $$0.c(b).o()) {
-            if ($$8 == dwj.d && !$$6.c($$1, $$5, $$4)) {
-               return $$0.b(c, dwj.c).b(b, $$4.g());
-            }
-
-            if ($$8 == dwj.c && $$9.g() == $$4 && $$6.c($$1, $$5, $$0.c(b))) {
-               return $$0.b(c, dwj.d);
+         for (int $$11 = 0; $$11 < $$10.size(); $$11++) {
+            for (jq<eng> $$12 : $$10.get($$11)) {
+               eng $$13 = $$12.a();
+               $$9.add(new a($$3.computeIfAbsent($$13, $$1x -> $$4.getAndIncrement()), $$11, $$13));
             }
          }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         for (int $$14 = 0; $$14 < $$9.size(); $$14++) {
+            Set<a> $$15 = $$6.computeIfAbsent($$9.get($$14), $$1x -> new TreeSet<>($$5));
+            if ($$14 < $$9.size() - 1) {
+               $$15.add($$9.get($$14 + 1));
+            }
+         }
       }
-   }
 
-   @Override
-   protected boolean a(dvv $$0, dfp $$1, jh $$2) {
-      jm $$3 = q($$0).g();
-      return $$3 == jm.b ? diq.a($$1, $$2.d(), jm.a) : dlj.b($$1, $$2, $$3);
-   }
+      Set<a> $$16 = new TreeSet<>($$5);
+      Set<a> $$17 = new TreeSet<>($$5);
+      List<a> $$18 = Lists.newArrayList();
 
-   private static jm q(dvv $$0) {
-      switch ((dwj)$$0.c(c)) {
-         case a:
-            return jm.b;
-         case b:
-            return jm.a;
-         default:
-            return $$0.c(b).g();
+      for (a $$19 : $$6.keySet()) {
+         if (!$$17.isEmpty()) {
+            throw new IllegalStateException("You somehow broke the universe; DFS bork (iteration finished with non-empty in-progress vertex set");
+         }
+
+         if (!$$16.contains($$19) && azt.a($$6, $$16, $$17, $$18::add, $$19)) {
+            if (!$$2) {
+               throw new IllegalStateException("Feature order cycle found");
+            }
+
+            List<T> $$20 = new ArrayList<>($$0);
+
+            int $$21;
+            do {
+               $$21 = $$20.size();
+               ListIterator<T> $$22 = $$20.listIterator();
+
+               while ($$22.hasNext()) {
+                  T $$23 = $$22.next();
+                  $$22.remove();
+
+                  try {
+                     a($$20, $$1, false);
+                  } catch (IllegalStateException var18) {
+                     continue;
+                  }
+
+                  $$22.add($$23);
+               }
+            } while ($$21 != $$20.size());
+
+            throw new IllegalStateException("Feature order cycle found, involved sources: " + $$20);
+         }
       }
+
+      Collections.reverse($$18);
+      Builder<dim.b> $$25 = ImmutableList.builder();
+
+      for (int $$26 = 0; $$26 < $$7; $$26++) {
+         int $$27 = $$26;
+         List<eng> $$28 = $$18.stream().filter($$1x -> $$1x.b() == $$27).map(a::c).collect(Collectors.toList());
+         $$25.add(new dim.b($$28));
+      }
+
+      return $$25.build();
    }
 
-   @Override
-   protected void a(dvw.a<diq, dvv> $$0) {
-      $$0.a(b, c, d);
-   }
-
-   @Nullable
-   @Override
-   public dsy a(jh $$0, dvv $$1) {
-      return new dsw($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dsy> dsz<T> a(dfm $$0, dvv $$1, dta<T> $$2) {
-      return a($$2, dta.E, $$0.C ? dsw::a : dsw::b);
-   }
-
-   @Override
-   protected boolean a(dvv $$0, esk $$1) {
-      return false;
-   }
-
-   @Override
-   public dvv a(dvv $$0, dpd $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   public dvv a(dvv $$0, dnm $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   public static record b(List<eng> a, ToIntFunction<eng> b) {
+      b(List<eng> $$0) {
+         this($$0, ae.h($$0));
+      }
    }
 }

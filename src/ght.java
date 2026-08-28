@@ -1,54 +1,42 @@
-public class ght extends gho {
-   private final ghj a;
+public class ght extends gjl {
+   private final gjg a;
 
-   ght(gdh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ghj $$7) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+   protected ght(gfd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gjg $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.u = -0.1F;
+      this.B = 0.9F;
       this.a = $$7;
-      this.j *= 0.3F;
-      this.k = Math.random() * 0.2F + 0.1F;
-      this.l *= 0.3F;
-      this.b(0.01F, 0.01F);
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      float $$8 = this.r.i() * 0.3F + 0.7F;
+      this.v = $$8;
+      this.w = $$8;
+      this.x = $$8;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 6.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
       this.b($$7);
-      this.u = 0.0F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
    }
 
    @Override
-   public ggs b() {
-      return ggs.b;
+   public gip b() {
+      return gip.b;
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      int $$0 = 60 - this.t;
-      if (this.t-- <= 0) {
-         this.k();
-      } else {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.98F;
-         this.k *= 0.98F;
-         this.l *= 0.98F;
-         float $$1 = (float)$$0 * 0.001F;
-         this.b($$1, $$1);
-         this.a(this.a.a($$0 % 4, 4));
-      }
+      super.a();
+      this.b(this.a);
    }
 
-   public static class a implements ggr<lw> {
-      private final ghj a;
+   public static class a implements gio<lw> {
+      private final gjg a;
 
-      public a(ghj $$0) {
+      public a(gjg $$0) {
          this.a = $$0;
       }
 
-      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public gil a(lw $$0, gfd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          return new ght($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }

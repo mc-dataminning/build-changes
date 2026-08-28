@@ -1,45 +1,42 @@
-import java.util.ArrayList;
-import java.util.List;
+public abstract class bnw implements bob {
+   protected final long[] a;
+   protected final long[] b;
 
-public interface bnw<S> {
-   void a(int var1, bob<S> var2, Object var3);
-
-   default void a(int $$0, Object $$1) {
-      this.a($$0, bob.b(), $$1);
+   protected bnw(int $$0, long[] $$1) {
+      if ($$1.length != $$0) {
+         throw new IllegalArgumentException("defaults have incorrect length of " + $$1.length);
+      } else {
+         this.b = new long[$$0];
+         this.a = $$1;
+      }
    }
 
-   void a(int var1);
+   @Override
+   public void a(long[] $$0) {
+      System.arraycopy($$0, 0, this.b, 0, $$0.length);
+      this.a();
+      this.b();
+   }
 
-   public static class a<S> implements bnw<S> {
-      private final List<bnx<S>> a = new ArrayList<>();
-      private int b = -1;
+   @Override
+   public void a(long $$0) {
+      this.b[0] = $$0;
+      this.a();
+      this.b();
+   }
 
-      private void b(int $$0) {
-         if ($$0 > this.b) {
-            this.b = $$0;
-            this.a.clear();
-         }
+   @Override
+   public void a(long $$0, int $$1) {
+      if ($$1 >= 1 && $$1 < this.b.length) {
+         this.b[$$1] = $$0;
+      } else {
+         throw new IndexOutOfBoundsException($$1 + " out of bounds for dimensions " + this.b.length);
       }
+   }
 
-      @Override
-      public void a(int $$0) {
-         this.b($$0);
-      }
+   protected abstract void a();
 
-      @Override
-      public void a(int $$0, bob<S> $$1, Object $$2) {
-         this.b($$0);
-         if ($$0 == this.b) {
-            this.a.add(new bnx<>($$0, $$1, $$2));
-         }
-      }
-
-      public List<bnx<S>> a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.b;
-      }
+   protected void b() {
+      System.arraycopy(this.a, 0, this.b, 0, this.a.length);
    }
 }

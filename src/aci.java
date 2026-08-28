@@ -1,42 +1,23 @@
-public class aci implements zq<acf> {
-   public static final zh<wg, aci> a = zq.a(aci::a, aci::new);
-   public static final int b = 0;
-   public static final int c = 2;
-   public static final int d = 3;
-   public static final int e = 4;
-   public static final int f = 5;
-   private final int g;
-   private final int h;
+import io.netty.buffer.ByteBuf;
 
-   public aci(bul $$0, int $$1) {
-      this.g = $$0.ar();
-      this.h = $$1;
-   }
+public class aci implements aac<ach> {
+   public static final aci a = new aci();
+   public static final zt<ByteBuf, aci> b = zt.a(a);
 
-   private aci(wg $$0) {
-      this.g = $$0.l();
-      this.h = $$0.readUnsignedByte();
-   }
-
-   private void a(wg $$0) {
-      $$0.c(this.g);
-      $$0.l(this.h);
+   private aci() {
    }
 
    @Override
-   public zs<aci> a() {
-      return agu.e;
+   public aae<aci> a() {
+      return acf.f;
    }
 
-   public void a(acf $$0) {
+   public void a(ach $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.g;
-   }
-
-   public int e() {
-      return this.h;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

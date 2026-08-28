@@ -1,35 +1,60 @@
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
-import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
-import java.util.Set;
+public class ari implements Comparable<ari> {
+   private final int a;
+   private final jh b;
+   private int c;
+   private int d;
 
-public final class ari {
-   private final Object2BooleanMap<arq> a = new Object2BooleanOpenHashMap();
-
-   public Set<arq> a() {
-      return this.a.keySet();
+   public ari(int $$0, jh $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(arq $$0, boolean $$1) {
-      this.a.put($$0, $$1);
+   public int a() {
+      return this.a;
    }
 
-   public void a(arq $$0) {
-      this.a.removeBoolean($$0);
+   public jh b() {
+      return this.b;
    }
 
-   public void b(arq $$0) {
-      this.a.replace($$0, true);
+   public void a(int $$0) {
+      if ($$0 > 10) {
+         $$0 = 10;
+      }
+
+      this.c = $$0;
    }
 
-   public void c(arq $$0) {
-      this.a.replace($$0, false);
+   public int c() {
+      return this.c;
    }
 
-   public boolean d(arq $$0) {
-      return this.a.getOrDefault($$0, true);
+   public void b(int $$0) {
+      this.d = $$0;
    }
 
-   public boolean e(arq $$0) {
-      return this.a.getBoolean($$0);
+   public int d() {
+      return this.d;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         ari $$1 = (ari)$$0;
+         return this.a == $$1.a;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Integer.hashCode(this.a);
+   }
+
+   public int a(ari $$0) {
+      return this.c != $$0.c ? Integer.compare(this.c, $$0.c) : Integer.compare(this.a, $$0.a);
    }
 }

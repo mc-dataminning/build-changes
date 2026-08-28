@@ -1,93 +1,59 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import java.util.function.Function;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-public interface eck {
-   Codec<eck> a = Codec.xor(eck.b.d, Codec.xor(eck.a.d, eck.c.d)).xmap(eck::a, eck::a);
-   eck b = b(0);
-   eck c = c(0);
+public class eck {
+   private final ash a;
 
-   static eck a(int $$0) {
-      return new eck.b($$0);
+   public eck(ash $$0) {
+      this.a = $$0;
    }
 
-   static eck b(int $$0) {
-      return new eck.a($$0);
-   }
+   public void a(jq<ecj> $$0, fbs $$1, ecj.a $$2) {
+      int $$3 = $$0.a().a();
+      jh $$4 = jh.a((ka)$$1);
+      int $$5 = kj.a($$4.u() - $$3);
+      int $$6 = kj.a($$4.v() - $$3);
+      int $$7 = kj.a($$4.w() - $$3);
+      int $$8 = kj.a($$4.u() + $$3);
+      int $$9 = kj.a($$4.v() + $$3);
+      int $$10 = kj.a($$4.w() + $$3);
+      List<ecj.b> $$11 = new ArrayList<>();
+      ecm.a $$12 = ($$4x, $$5x) -> {
+         if ($$4x.c() == ecl.a.b) {
+            $$11.add(new ecj.b($$0, $$1, $$2, $$4x, $$5x));
+         } else {
+            $$4x.a(this.a, $$0, $$2, $$1);
+         }
+      };
+      boolean $$13 = false;
 
-   static eck c(int $$0) {
-      return new eck.c($$0);
-   }
-
-   static eck a() {
-      return b;
-   }
-
-   static eck b() {
-      return c;
-   }
-
-   private static eck a(Either<eck.b, Either<eck.a, eck.c>> $$0) {
-      return (eck)$$0.map(Function.identity(), Either::unwrap);
-   }
-
-   private static Either<eck.b, Either<eck.a, eck.c>> a(eck $$0) {
-      return $$0 instanceof eck.b ? Either.left((eck.b)$$0) : Either.right($$0 instanceof eck.a ? Either.left((eck.a)$$0) : Either.right((eck.c)$$0));
-   }
-
-   int a(ecn var1);
-
-   public static record a(int e) implements eck {
-      public static final Codec<eck.a> d = Codec.intRange(dzq.e, dzq.d).fieldOf("above_bottom").xmap(eck.a::new, eck.a::c).codec();
-
-      @Override
-      public int a(ecn $$0) {
-         return $$0.a() + this.e;
+      for (int $$14 = $$5; $$14 <= $$8; $$14++) {
+         for (int $$15 = $$7; $$15 <= $$10; $$15++) {
+            dzi $$16 = this.a.m().a($$14, $$15);
+            if ($$16 != null) {
+               for (int $$17 = $$6; $$17 <= $$9; $$17++) {
+                  $$13 |= $$16.a($$17).a($$0, $$1, $$2, $$12);
+               }
+            }
+         }
       }
 
-      @Override
-      public String toString() {
-         return this.e + " above bottom";
+      if (!$$11.isEmpty()) {
+         this.a($$11);
       }
 
-      public int c() {
-         return this.e;
+      if ($$13) {
+         ahj.a(this.a, $$0, $$1);
       }
    }
 
-   public static record b(int e) implements eck {
-      public static final Codec<eck.b> d = Codec.intRange(dzq.e, dzq.d).fieldOf("absolute").xmap(eck.b::new, eck.b::c).codec();
+   private void a(List<ecj.b> $$0) {
+      Collections.sort($$0);
 
-      @Override
-      public int a(ecn $$0) {
-         return this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " absolute";
-      }
-
-      public int c() {
-         return this.e;
-      }
-   }
-
-   public static record c(int e) implements eck {
-      public static final Codec<eck.c> d = Codec.intRange(dzq.e, dzq.d).fieldOf("below_top").xmap(eck.c::new, eck.c::c).codec();
-
-      @Override
-      public int a(ecn $$0) {
-         return $$0.b() - 1 + $$0.a() - this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " below top";
-      }
-
-      public int c() {
-         return this.e;
+      for (ecj.b $$1 : $$0) {
+         ecl $$2 = $$1.d();
+         $$2.a(this.a, $$1.a(), $$1.c(), $$1.b());
       }
    }
 }

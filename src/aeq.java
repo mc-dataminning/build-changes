@@ -1,69 +1,33 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collection;
-import java.util.List;
+public class aeq implements aac<acr> {
+   public static final zt<xg, aeq> a = zt.a(zr.w, aeq::b, zr.a(mb.V), aeq::e, xx.d, aeq::f, aeq::new);
+   private final int b;
+   private final cug<?> c;
+   private final xv d;
 
-public class aeq implements zq<acf> {
-   public static final zh<wg, aeq> a = zq.a(aeq::a, aeq::new);
-   private final aeq.a b;
-   private final List<alj> c;
-   private final List<alj> d;
-   private final awr e;
-
-   public aeq(aeq.a $$0, Collection<alj> $$1, Collection<alj> $$2, awr $$3) {
+   public aeq(int $$0, cug<?> $$1, xv $$2) {
       this.b = $$0;
-      this.c = ImmutableList.copyOf($$1);
-      this.d = ImmutableList.copyOf($$2);
-      this.e = $$3;
-   }
-
-   private aeq(wg $$0) {
-      this.b = $$0.b(aeq.a.class);
-      this.e = awr.a($$0);
-      this.c = $$0.a(wg::q);
-      if (this.b == aeq.a.a) {
-         this.d = $$0.a(wg::q);
-      } else {
-         this.d = ImmutableList.of();
-      }
-   }
-
-   private void a(wg $$0) {
-      $$0.a(this.b);
-      this.e.b($$0);
-      $$0.a(this.c, wg::a);
-      if (this.b == aeq.a.a) {
-         $$0.a(this.d, wg::a);
-      }
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public zs<aeq> a() {
-      return agu.aj;
+   public aae<aeq> a() {
+      return ahk.X;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
    }
 
-   public List<alj> b() {
-      return this.c;
-   }
-
-   public List<alj> e() {
-      return this.d;
-   }
-
-   public awr f() {
-      return this.e;
-   }
-
-   public aeq.a g() {
+   public int b() {
       return this.b;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public cug<?> e() {
+      return this.c;
+   }
+
+   public xv f() {
+      return this.d;
    }
 }

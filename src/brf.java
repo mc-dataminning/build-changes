@@ -1,45 +1,30 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
-public interface brf<R extends Runnable> extends AutoCloseable {
-   String z_();
+public class brf {
+   private final Set<String> a = new ObjectOpenHashSet();
 
-   void a_(R var1);
+   public Set<bqx> a(Supplier<bpl> $$0) {
+      Set<bqx> $$1 = $$0.get()
+         .e()
+         .stream()
+         .filter($$0x -> !this.a.contains($$0x.getLeft()))
+         .map($$1x -> a($$0, (String)$$1x.getLeft(), (bqw)$$1x.getRight()))
+         .collect(Collectors.toSet());
 
-   @Override
-   default void close() {
-   }
+      for (bqx $$2 : $$1) {
+         this.a.add($$2.d());
+      }
 
-   R f(Runnable var1);
-
-   default <Source> CompletableFuture<Source> a(Consumer<CompletableFuture<Source>> $$0) {
-      CompletableFuture<Source> $$1 = new CompletableFuture<>();
-      this.a_(this.f(() -> $$0.accept($$1)));
       return $$1;
    }
 
-   static brf<Runnable> a(final String $$0, final Executor $$1) {
-      return new brf<Runnable>() {
-         @Override
-         public String z_() {
-            return $$0;
-         }
-
-         @Override
-         public void a_(Runnable $$0x) {
-            $$1.execute($$0);
-         }
-
-         @Override
-         public Runnable f(Runnable $$0x) {
-            return $$0;
-         }
-
-         @Override
-         public String toString() {
-            return $$0;
-         }
-      };
+   private static bqx a(Supplier<bpl> $$0, String $$1, bqw $$2) {
+      return bqx.a($$1, $$2, () -> {
+         bpg.a $$2x = $$0.get().c($$1);
+         return $$2x == null ? 0.0 : (double)$$2x.b() / (double)bbg.b;
+      });
    }
 }

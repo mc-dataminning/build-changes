@@ -1,60 +1,40 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Set;
 
-public abstract class exo implements exy {
-   protected final List<exy> c;
-   private final Predicate<eun> a;
+public class exo extends exu {
+   public static final MapCodec<exo> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(ewh.b.e.fieldOf("entity").forGetter($$0x -> $$0x.b)).apply($$0, exo::new)
+   );
+   private final ewh.b b;
 
-   protected exo(List<exy> $$0, Predicate<eun> $$1) {
-      this.c = $$0;
-      this.a = $$1;
-   }
-
-   protected static <T extends exo> MapCodec<T> a(Function<List<exy>, T> $$0) {
-      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(exy.e.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
-   }
-
-   protected static <T extends exo> Codec<T> b(Function<List<exy>, T> $$0) {
-      return exy.e.listOf().xmap($$0, $$0x -> $$0x.c);
-   }
-
-   public final boolean a(eun $$0) {
-      return this.a.test($$0);
+   public exo(List<ezs> $$0, ewh.b $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public void a(eut $$0) {
-      exy.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
-      }
+   public exw<exo> b() {
+      return exx.B;
    }
 
-   public abstract static class a implements exy.a {
-      private final Builder<exy> a = ImmutableList.builder();
+   @Override
+   public Set<eza<?>> a() {
+      return ImmutableSet.of(this.b.a());
+   }
 
-      protected a(exy.a... $$0) {
-         for (exy.a $$1 : $$0) {
-            this.a.add($$1.build());
-         }
+   @Override
+   public cxk a(cxk $$0, ewh $$1) {
+      if ($$0.a(cxo.vd) && $$1.c(this.b.a()) instanceof cps $$2) {
+         $$0.b(ku.ag, new daj($$2.gf()));
       }
 
-      public void a(exy.a $$0) {
-         this.a.add($$0.build());
-      }
+      return $$0;
+   }
 
-      @Override
-      public exy build() {
-         return this.a(this.a.build());
-      }
-
-      protected abstract exy a(List<exy> var1);
+   public static exu.a<?> a(ewh.b $$0) {
+      return a($$1 -> new exo($$1, $$0));
    }
 }

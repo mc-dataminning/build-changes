@@ -1,87 +1,127 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import java.util.List;
-import java.util.stream.IntStream;
-import javax.annotation.Nullable;
+import com.mojang.authlib.GameProfile;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import org.slf4j.Logger;
 
-public class aqx {
-   public static final int a = aqt.b + 2;
-   private final List<Long2ObjectLinkedOpenHashMap<List<Runnable>>> b = IntStream.range(0, a).mapToObj($$0x -> new Long2ObjectLinkedOpenHashMap()).toList();
-   private volatile int c = a;
-   private final String d;
+public class aqx extends awi {
+   private static final Logger h = LogUtils.getLogger();
 
-   public aqx(String $$0) {
-      this.d = $$0;
-   }
-
-   protected void a(int $$0, des $$1, int $$2) {
-      if ($$0 < a) {
-         Long2ObjectLinkedOpenHashMap<List<Runnable>> $$3 = this.b.get($$0);
-         List<Runnable> $$4 = (List<Runnable>)$$3.remove($$1.a());
-         if ($$0 == this.c) {
-            while (this.b() && this.b.get(this.c).isEmpty()) {
-               this.c++;
-            }
-         }
-
-         if ($$4 != null && !$$4.isEmpty()) {
-            ((List)this.b.get($$2).computeIfAbsent($$1.a(), $$0x -> Lists.newArrayList())).addAll($$4);
-            this.c = Math.min(this.c, $$2);
-         }
+   public aqx(aqy $$0, jx<ami> $$1, evy $$2) {
+      super($$0, $$1, $$2, $$0.a().G);
+      aqz $$3 = $$0.a();
+      this.a($$3.E);
+      this.b($$3.F);
+      super.a($$3.W.get());
+      this.z();
+      this.x();
+      this.y();
+      this.w();
+      this.A();
+      this.C();
+      this.B();
+      if (!this.i().b().exists()) {
+         this.D();
       }
-   }
-
-   protected void a(Runnable $$0, long $$1, int $$2) {
-      ((List)this.b.get($$2).computeIfAbsent($$1, $$0x -> Lists.newArrayList())).add($$0);
-      this.c = Math.min(this.c, $$2);
-   }
-
-   protected void a(long $$0, boolean $$1) {
-      for (Long2ObjectLinkedOpenHashMap<List<Runnable>> $$2 : this.b) {
-         List<Runnable> $$3 = (List<Runnable>)$$2.get($$0);
-         if ($$3 != null) {
-            if ($$1) {
-               $$3.clear();
-            }
-
-            if ($$3.isEmpty()) {
-               $$2.remove($$0);
-            }
-         }
-      }
-
-      while (this.b() && this.b.get(this.c).isEmpty()) {
-         this.c++;
-      }
-   }
-
-   @Nullable
-   public aqx.a a() {
-      if (!this.b()) {
-         return null;
-      } else {
-         int $$0 = this.c;
-         Long2ObjectLinkedOpenHashMap<List<Runnable>> $$1 = this.b.get($$0);
-         long $$2 = $$1.firstLongKey();
-         List<Runnable> $$3 = (List<Runnable>)$$1.removeFirst();
-
-         while (this.b() && this.b.get(this.c).isEmpty()) {
-            this.c++;
-         }
-
-         return new aqx.a($$2, $$3);
-      }
-   }
-
-   public boolean b() {
-      return this.c < a;
    }
 
    @Override
-   public String toString() {
-      return this.d + " " + this.c + "...";
+   public void a(boolean $$0) {
+      super.a($$0);
+      this.b().i($$0);
    }
 
-   public static record a(long a, List<Runnable> b) {
+   @Override
+   public void a(GameProfile $$0) {
+      super.a($$0);
+      this.B();
+   }
+
+   @Override
+   public void b(GameProfile $$0) {
+      super.b($$0);
+      this.B();
+   }
+
+   @Override
+   public void a() {
+      this.C();
+   }
+
+   private void w() {
+      try {
+         this.g().e();
+      } catch (IOException var2) {
+         h.warn("Failed to save ip banlist: ", var2);
+      }
+   }
+
+   private void x() {
+      try {
+         this.f().e();
+      } catch (IOException var2) {
+         h.warn("Failed to save user banlist: ", var2);
+      }
+   }
+
+   private void y() {
+      try {
+         this.g().f();
+      } catch (IOException var2) {
+         h.warn("Failed to load ip banlist: ", var2);
+      }
+   }
+
+   private void z() {
+      try {
+         this.f().f();
+      } catch (IOException var2) {
+         h.warn("Failed to load user banlist: ", var2);
+      }
+   }
+
+   private void A() {
+      try {
+         this.k().f();
+      } catch (Exception var2) {
+         h.warn("Failed to load operators list: ", var2);
+      }
+   }
+
+   private void B() {
+      try {
+         this.k().e();
+      } catch (Exception var2) {
+         h.warn("Failed to save operators list: ", var2);
+      }
+   }
+
+   private void C() {
+      try {
+         this.i().f();
+      } catch (Exception var2) {
+         h.warn("Failed to load white-list: ", var2);
+      }
+   }
+
+   private void D() {
+      try {
+         this.i().e();
+      } catch (Exception var2) {
+         h.warn("Failed to save white-list: ", var2);
+      }
+   }
+
+   @Override
+   public boolean c(GameProfile $$0) {
+      return !this.o() || this.f($$0) || this.i().a($$0);
+   }
+
+   public aqy b() {
+      return (aqy)super.c();
+   }
+
+   @Override
+   public boolean d(GameProfile $$0) {
+      return this.k().a($$0);
    }
 }

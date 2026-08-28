@@ -1,48 +1,81 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class byc<E extends bvj> extends byd<E> {
-   private final axs<diq> m;
-   private final float n;
-   private final List<byd.a> o = new ArrayList<>();
-   private boolean p;
+public class byc<E extends bwd & cmf, T extends bwb> extends bxu<E> {
+   private static final int c = 1200;
+   private int d;
+   private byc.a e = byc.a.a;
 
-   public byc(brv $$0, int $$1, int $$2, float $$3, Function<E, awm> $$4, axs<diq> $$5, float $$6, BiPredicate<E, jh> $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$7);
-      this.m = $$5;
-      this.n = $$6;
+   public byc() {
+      super(ImmutableMap.of(cff.n, cfg.c, cff.o, cfg.a), 1200);
    }
 
-   @Override
-   protected void a(arp $$0, E $$1, long $$2) {
-      super.a($$0, $$1, $$2);
-      this.o.clear();
-      this.p = $$1.dY().i() < this.n;
+   protected boolean a(ash $$0, E $$1) {
+      bwb $$2 = b($$1);
+      return $$1.b(cxo.wL) && bxw.b($$1, $$2) && bxw.a($$1, $$2, 0);
    }
 
-   @Override
-   protected Optional<byd.a> a(arp $$0) {
-      if (!this.p) {
-         return super.a($$0);
-      } else {
-         jh.a $$1 = new jh.a();
+   protected boolean a(ash $$0, E $$1, long $$2) {
+      return $$1.eb().a(cff.o) && this.a($$0, $$1);
+   }
 
-         while (!this.h.isEmpty()) {
-            Optional<byd.a> $$2 = super.a($$0);
-            if ($$2.isPresent()) {
-               byd.a $$3 = $$2.get();
-               if ($$0.a_($$1.a($$3.b(), jm.a)).a(this.m)) {
-                  return $$2;
-               }
+   protected void b(ash $$0, E $$1, long $$2) {
+      bwb $$3 = b($$1);
+      this.b($$1, $$3);
+      this.a($$1, $$3);
+   }
 
-               this.o.add($$3);
-            }
+   protected void c(ash $$0, E $$1, long $$2) {
+      if ($$1.fx()) {
+         $$1.fD();
+      }
+
+      if ($$1.b(cxo.wL)) {
+         $$1.b(false);
+         $$1.fz().b(ku.O, czp.a);
+      }
+   }
+
+   private void a(E $$0, bwb $$1) {
+      if (this.e == byc.a.a) {
+         $$0.c(cqn.a($$0, cxo.wL));
+         this.e = byc.a.b;
+         $$0.b(true);
+      } else if (this.e == byc.a.b) {
+         if (!$$0.fx()) {
+            this.e = byc.a.a;
          }
 
-         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
+         int $$2 = $$0.fB();
+         cxk $$3 = $$0.fz();
+         if ($$2 >= cwb.b($$3, $$0)) {
+            $$0.fC();
+            this.e = byc.a.c;
+            this.d = 20 + $$0.dY().a(20);
+            $$0.b(false);
+         }
+      } else if (this.e == byc.a.c) {
+         this.d--;
+         if (this.d == 0) {
+            this.e = byc.a.d;
+         }
+      } else if (this.e == byc.a.d) {
+         $$0.a($$1, 1.0F);
+         this.e = byc.a.a;
       }
+   }
+
+   private void b(bwd $$0, bwb $$1) {
+      $$0.eb().a(cff.n, new byf($$1, true));
+   }
+
+   private static bwb b(bwb $$0) {
+      return $$0.eb().c(cff.o).get();
+   }
+
+   static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

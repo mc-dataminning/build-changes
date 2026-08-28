@@ -1,53 +1,103 @@
-import com.google.common.collect.Sets;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record eyq(eyu b, eyu c) implements eyu {
+public class eyq extends exu {
+   private static final Logger b = LogUtils.getLogger();
    public static final MapCodec<eyq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eyv.a.fieldOf("n").forGetter(eyq::c), eyv.a.fieldOf("p").forGetter(eyq::d)).apply($$0, eyq::new)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  xx.a.optionalFieldOf("name").forGetter($$0x -> $$0x.c),
+                  ewh.b.e.optionalFieldOf("entity").forGetter($$0x -> $$0x.d),
+                  eyq.a.c.optionalFieldOf("target", eyq.a.a).forGetter($$0x -> $$0x.e)
+               )
+            )
+            .apply($$0, eyq::new)
    );
+   private final Optional<xv> c;
+   private final Optional<ewh.b> d;
+   private final eyq.a e;
 
-   @Override
-   public eyt b() {
-      return eyv.d;
+   private eyq(List<ezs> $$0, Optional<xv> $$1, Optional<ewh.b> $$2, eyq.a $$3) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
    @Override
-   public int a(eun $$0) {
-      int $$1 = this.b.a($$0);
-      float $$2 = this.c.b($$0);
-      azu $$3 = $$0.b();
-      int $$4 = 0;
+   public exw<eyq> b() {
+      return exx.p;
+   }
 
-      for (int $$5 = 0; $$5 < $$1; $$5++) {
-         if ($$3.i() < $$2) {
-            $$4++;
+   @Override
+   public Set<eza<?>> a() {
+      return this.d.<Set<eza<?>>>map($$0 -> Set.of($$0.a())).orElse(Set.of());
+   }
+
+   public static UnaryOperator<xv> a(ewh $$0, @Nullable ewh.b $$1) {
+      if ($$1 != null) {
+         bvf $$2 = $$0.c($$1.a());
+         if ($$2 != null) {
+            ew $$3 = $$2.d($$0.d()).a(2);
+            return $$2x -> {
+               try {
+                  return xy.a($$3, $$2x, $$2, 0);
+               } catch (CommandSyntaxException var4) {
+                  b.warn("Failed to resolve text component", var4);
+                  return $$2x;
+               }
+            };
          }
       }
 
-      return $$4;
+      return $$0x -> $$0x;
    }
 
    @Override
-   public float b(eun $$0) {
-      return (float)this.a($$0);
+   public cxk a(cxk $$0, ewh $$1) {
+      this.c.ifPresent($$2 -> $$0.b(this.e.a(), a($$1, this.d.orElse(null)).apply($$2)));
+      return $$0;
    }
 
-   public static eyq a(int $$0, float $$1) {
-      return new eyq(eyr.a((float)$$0), eyr.a($$1));
+   public static exu.a<?> a(xv $$0, eyq.a $$1) {
+      return a($$2 -> new eyq($$2, Optional.of($$0), Optional.empty(), $$1));
    }
 
-   @Override
-   public Set<exg<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+   public static exu.a<?> a(xv $$0, eyq.a $$1, ewh.b $$2) {
+      return a($$3 -> new eyq($$3, Optional.of($$0), Optional.of($$2), $$1));
    }
 
-   public eyu c() {
-      return this.b;
-   }
+   public static enum a implements bba {
+      a("custom_name"),
+      b("item_name");
 
-   public eyu d() {
-      return this.c;
+      public static final Codec<eyq.a> c = bba.a(eyq.a::values);
+      private final String d;
+
+      private a(final String $$0) {
+         this.d = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
+
+      public kt<xv> a() {
+         return switch (this) {
+            case a -> ku.g;
+            case b -> ku.h;
+         };
+      }
    }
 }

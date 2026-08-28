@@ -1,16 +1,21 @@
-public interface dyy {
-   void a(Throwable var1, dzj var2, des var3);
+public enum dyy implements bba {
+   a("none"),
+   b("low"),
+   c("tall");
 
-   void b(Throwable var1, dzj var2, des var3);
+   private final String d;
 
-   static z a(des $$0, des $$1) {
-      o $$2 = o.a(new IllegalStateException("Retrieved chunk position " + $$0 + " does not match requested " + $$1), "Chunk found in invalid location");
-      p $$3 = $$2.a("Misplaced Chunk");
-      $$3.a("Stored Position", $$0::toString);
-      return new z($$2);
+   private dyy(final String $$0) {
+      this.d = $$0;
    }
 
-   default void a(des $$0, des $$1, dzj $$2) {
-      this.a(a($$0, $$1), $$2, $$1);
+   @Override
+   public String toString() {
+      return this.c();
+   }
+
+   @Override
+   public String c() {
+      return this.d;
    }
 }

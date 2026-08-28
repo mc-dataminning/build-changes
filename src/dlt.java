@@ -1,111 +1,60 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dlt extends diq {
+public class dlt extends dke {
    public static final MapCodec<dlt> a = b(dlt::new);
-   private static final int c = 2;
-   private static final int d = 5;
-   private static final int e = 3600;
-   private static final int f = 12000;
-   protected static final fas b = diq.a(0.0, 0.0, 0.0, 16.0, 1.5, 16.0);
-   private static int g = 3600;
-   private static int h = 12000;
+   public static final dye b = dyd.x;
+   public static final dye c = dyd.r;
 
    @Override
-   public MapCodec<dlt> a() {
+   protected MapCodec<? extends dlt> a() {
       return a;
    }
 
-   public dlt(dvu.d $$0) {
+   public dlt(dxm.d $$0) {
       super($$0);
+      this.l(this.m().b(c, Boolean.valueOf(false)).b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
-      return b;
-   }
-
-   @Override
-   protected boolean a(dvv $$0, dfp $$1, jh $$2) {
-      return a($$1, $$2.e());
-   }
-
-   @Override
-   protected void b(dvv $$0, dfm $$1, jh $$2, dvv $$3, boolean $$4) {
-      $$1.a($$2, this, a($$1.G_()));
-   }
-
-   private static int a(azu $$0) {
-      return $$0.b(g, h);
-   }
-
-   @Override
-   protected dvv a(dvv $$0, dfp $$1, dgb $$2, jh $$3, jm $$4, jh $$5, dvv $$6, azu $$7) {
-      return !this.a($$0, $$1, $$3) ? dis.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected void a(dvv $$0, arp $$1, jh $$2, azu $$3) {
-      if (!this.a($$0, $$1, $$2)) {
-         this.a((dfm)$$1, $$2);
-      } else {
-         this.a($$1, $$2, $$3);
+   protected void b(dxn $$0, dha $$1, jh $$2, dxn $$3, boolean $$4) {
+      if ($$3.b() != $$0.b() && $$1 instanceof ash $$5) {
+         this.a($$0, $$5, $$2);
       }
    }
 
    @Override
-   protected void a(dvv $$0, dfm $$1, jh $$2, bul $$3) {
-      if ($$3.aq().equals(bus.W)) {
-         this.a($$1, $$2);
+   protected void a(dxn $$0, dha $$1, jh $$2, dke $$3, @Nullable eux $$4, boolean $$5) {
+      if ($$1 instanceof ash $$6) {
+         this.a($$0, $$6, $$2);
       }
    }
 
-   private static boolean a(der $$0, jh $$1) {
-      erv $$2 = $$0.b_($$1);
-      erv $$3 = $$0.b_($$1.d());
-      return $$2.a() == erw.c && $$3.a() == erw.a;
-   }
-
-   private void a(arp $$0, jh $$1, azu $$2) {
-      this.a((dfm)$$0, $$1);
-      $$0.a(null, $$1, awn.jJ, awo.e, 1.0F, 1.0F);
-      this.b($$0, $$1, $$2);
-   }
-
-   private void a(dfm $$0, jh $$1) {
-      $$0.b($$1, false);
-   }
-
-   private void b(arp $$0, jh $$1, azu $$2) {
-      int $$3 = $$2.b(2, 6);
-
-      for (int $$4 = 1; $$4 <= $$3; $$4++) {
-         civ $$5 = bus.bq.a($$0, bur.e);
-         if ($$5 != null) {
-            double $$6 = (double)$$1.u() + this.b($$2);
-            double $$7 = (double)$$1.w() + this.b($$2);
-            int $$8 = $$2.b(1, 361);
-            $$5.b($$6, (double)$$1.v() - 0.5, $$7, (float)$$8, 0.0F);
-            $$5.ai();
-            $$0.b($$5);
+   public void a(dxn $$0, ash $$1, jh $$2) {
+      boolean $$3 = $$1.C($$2);
+      if ($$3 != $$0.c(b)) {
+         dxn $$4 = $$0;
+         if (!$$0.c(b)) {
+            $$4 = $$0.a(c);
+            $$1.a(null, $$2, $$4.c(c) ? axf.fH : axf.fI, axg.e);
          }
+
+         $$1.a($$2, $$4.b(b, Boolean.valueOf($$3)), 3);
       }
    }
 
-   private double b(azu $$0) {
-      double $$1 = 0.2F;
-      return azm.a($$0.j(), 0.2F, 0.7999999970197678);
+   @Override
+   protected void a(dxo.a<dke, dxn> $$0) {
+      $$0.a(c, b);
    }
 
-   @VisibleForTesting
-   public static void a(int $$0, int $$1) {
-      g = $$0;
-      h = $$1;
+   @Override
+   protected boolean c_(dxn $$0) {
+      return true;
    }
 
-   @VisibleForTesting
-   public static void b() {
-      g = 3600;
-      h = 12000;
+   @Override
+   protected int a(dxn $$0, dha $$1, jh $$2) {
+      return $$1.a_($$2).c(c) ? 15 : 0;
    }
 }

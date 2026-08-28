@@ -1,61 +1,25 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class enk extends enq {
-   public static final MapCodec<enk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(elm.b.fieldOf("feature").forGetter($$0x -> $$0x.b), e()).apply($$0, enk::new)
-   );
-   private final jq<elm> b;
-   private final ul c;
+public interface enk<P extends enj> {
+   enk<emv> a = a("block_predicate_filter", emv.a);
+   enk<enm> b = a("rarity_filter", enm.a);
+   enk<eno> c = a("surface_relative_threshold_filter", eno.a);
+   enk<enp> d = a("surface_water_depth_filter", enp.a);
+   enk<emu> e = a("biome", emu.a);
+   enk<emy> f = a("count", emy.a);
+   enk<ene> g = a("noise_based_count", ene.a);
+   enk<enf> h = a("noise_threshold_count", enf.a);
+   enk<emx> i = a("count_on_every_layer", emx.a);
+   enk<emz> j = a("environment_scan", emz.a);
+   enk<enc> k = a("heightmap", enc.a);
+   enk<enb> l = a("height_range", enb.a);
+   enk<end> m = a("in_square", end.a);
+   enk<enl> n = a("random_offset", enl.a);
+   enk<ena> o = a("fixed_placement", ena.a);
 
-   protected enk(jq<elm> $$0, ens.a $$1) {
-      super($$1);
-      this.b = $$0;
-      this.c = this.b();
-   }
+   MapCodec<P> codec();
 
-   private ul b() {
-      ul $$0 = new ul();
-      $$0.a("name", "minecraft:bottom");
-      $$0.a("final_state", "minecraft:air");
-      $$0.a("pool", "minecraft:empty");
-      $$0.a("target", "minecraft:empty");
-      $$0.a("joint", dua.a.a.c());
-      return $$0;
-   }
-
-   @Override
-   public kl a(eql $$0, dpd $$1) {
-      return kl.g;
-   }
-
-   @Override
-   public List<eqk.c> a(eql $$0, jh $$1, dpd $$2, azu $$3) {
-      List<eqk.c> $$4 = Lists.newArrayList();
-      $$4.add(new eqk.c($$1, dis.pb.m().b(dmr.b, jo.a(jm.a, jm.d)), this.c));
-      return $$4;
-   }
-
-   @Override
-   public ema a(eql $$0, jh $$1, dpd $$2) {
-      kl $$3 = this.a($$0, $$2);
-      return new ema($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
-   }
-
-   @Override
-   public boolean a(eql $$0, dgk $$1, dgi $$2, dxr $$3, jh $$4, jh $$5, dpd $$6, ema $$7, azu $$8, epu $$9, boolean $$10) {
-      return this.b.a().a($$1, $$3, $$8, $$4);
-   }
-
-   @Override
-   public enr<?> a() {
-      return enr.c;
-   }
-
-   @Override
-   public String toString() {
-      return "Feature[" + this.b + "]";
+   private static <P extends enj> enk<P> a(String $$0, MapCodec<P> $$1) {
+      return kd.a(ma.S, $$0, () -> $$1);
    }
 }

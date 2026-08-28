@@ -1,108 +1,43 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
+import java.util.function.Supplier;
 
-public class cgm {
-   private final jh a;
-   private final jq<cgo> b;
-   private int c;
-   private final Runnable d;
+public class cgm<U extends cgl<?>> {
+   public static final cgm<cfv> a = a("dummy", cfv::new);
+   public static final cgm<cgd> b = a("nearest_items", cgd::new);
+   public static final cgm<cge<bwb>> c = a("nearest_living_entities", cge::new);
+   public static final cgm<cgi> d = a("nearest_players", cgi::new);
+   public static final cgm<cgc> e = a("nearest_bed", cgc::new);
+   public static final cgm<cfz> f = a("hurt_by", cfz::new);
+   public static final cgm<cgp> g = a("villager_hostiles", cgp::new);
+   public static final cgm<cgo> h = a("villager_babies", cgo::new);
+   public static final cgm<cgj> i = a("secondary_pois", cgj::new);
+   public static final cgm<cfx> j = a("golem_detected", cfx::new);
+   public static final cgm<cgb<cjb>> k = a("armadillo_scare_detected", () -> new cgb<>(5, cjb::j, cjb::gy, cff.G, 80));
+   public static final cgm<cgh> l = a("piglin_specific_sensor", cgh::new);
+   public static final cgm<cgg> m = a("piglin_brute_specific_sensor", cgg::new);
+   public static final cgm<cfy> n = a("hoglin_specific_sensor", cfy::new);
+   public static final cgm<cfs> o = a("nearest_adult", cfs::new);
+   public static final cgm<cft> p = a("axolotl_attackables", cft::new);
+   public static final cgm<cgn> q = a("axolotl_temptations", () -> new cgn(cjf.a()));
+   public static final cgm<cgn> r = a("goat_temptations", () -> new cgn(cjt.a()));
+   public static final cgm<cgn> s = a("frog_temptations", () -> new cgn(cjn.a()));
+   public static final cgm<cgn> t = a("camel_temptations", () -> new cgn(cjk.b()));
+   public static final cgm<cgn> u = a("armadillo_temptations", () -> new cgn(cjc.b()));
+   public static final cgm<cfw> v = a("frog_attackables", cfw::new);
+   public static final cgm<cga> w = a("is_in_water", cga::new);
+   public static final cgm<cgq> x = a("warden_entity_sensor", cgq::new);
+   public static final cgm<cgn> y = a("sniffer_temptations", () -> new cgn(ckk.a()));
+   public static final cgm<cfu> z = a("breeze_attack_entity_sensor", cfu::new);
+   private final Supplier<U> A;
 
-   cgm(jh $$0, jq<cgo> $$1, int $$2, Runnable $$3) {
-      this.a = $$0.j();
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   private cgm(Supplier<U> $$0) {
+      this.A = $$0;
    }
 
-   public cgm(jh $$0, jq<cgo> $$1, Runnable $$2) {
-      this($$0, $$1, $$1.a().b(), $$2);
+   public U a() {
+      return this.A.get();
    }
 
-   public cgm.a a() {
-      return new cgm.a(this.a, this.b, this.c);
-   }
-
-   @Deprecated
-   @bat
-   public int b() {
-      return this.c;
-   }
-
-   protected boolean c() {
-      if (this.c <= 0) {
-         return false;
-      } else {
-         this.c--;
-         this.d.run();
-         return true;
-      }
-   }
-
-   protected boolean d() {
-      if (this.c >= this.b.a().b()) {
-         return false;
-      } else {
-         this.c++;
-         this.d.run();
-         return true;
-      }
-   }
-
-   public boolean e() {
-      return this.c > 0;
-   }
-
-   public boolean f() {
-      return this.c != this.b.a().b();
-   }
-
-   public jh g() {
-      return this.a;
-   }
-
-   public jq<cgo> h() {
-      return this.b;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Objects.equals(this.a, ((cgm)$$0).a) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
-   }
-
-   public static record a(jh b, jq<cgo> c, int d) {
-      public static final Codec<cgm.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  jh.a.fieldOf("pos").forGetter(cgm.a::a),
-                  alg.a(ma.aa).fieldOf("type").forGetter(cgm.a::b),
-                  Codec.INT.fieldOf("free_tickets").orElse(0).forGetter(cgm.a::c)
-               )
-               .apply($$0, cgm.a::new)
-      );
-
-      public cgm a(Runnable $$0) {
-         return new cgm(this.b, this.c, this.d, $$0);
-      }
-
-      public jh a() {
-         return this.b;
-      }
-
-      public jq<cgo> b() {
-         return this.c;
-      }
-
-      public int c() {
-         return this.d;
-      }
+   private static <U extends cgl<?>> cgm<U> a(String $$0, Supplier<U> $$1) {
+      return kd.a(ma.A, alz.b($$0), new cgm<>($$1));
    }
 }

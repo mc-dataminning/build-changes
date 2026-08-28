@@ -1,176 +1,33 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.IntSupplier;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public record ars(String b, int c, cpp d, boolean e, int f, bvv g, boolean h, boolean i, arz j) {
+   public static final int a = 16;
 
-public class ars extends erk implements AutoCloseable {
-   public static final int a = 1000;
-   private static final Logger e = LogUtils.getLogger();
-   private final bra f;
-   private final ObjectList<Pair<ars.a, Runnable>> g = new ObjectArrayList();
-   private final aqu h;
-   private final aqw i;
-   private final int j = 1000;
-   private final AtomicBoolean k = new AtomicBoolean();
-
-   public ars(dyd $$0, aqu $$1, boolean $$2, bra $$3, aqw $$4) {
-      super($$0, true, $$2);
-      this.h = $$1;
-      this.i = $$4;
-      this.f = $$3;
+   public ars(ws $$0) {
+      this(
+         $$0.d(16),
+         $$0.readByte(),
+         $$0.b(cpp.class),
+         $$0.readBoolean(),
+         $$0.readUnsignedByte(),
+         $$0.b(bvv.class),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         $$0.b(arz.class)
+      );
    }
 
-   @Override
-   public void close() {
+   public void a(ws $$0) {
+      $$0.a(this.b);
+      $$0.l(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.l(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      $$0.a(this.j);
    }
 
-   @Override
-   public int a() {
-      throw (UnsupportedOperationException)ae.b(new UnsupportedOperationException("Ran automatically on a different thread!"));
-   }
-
-   @Override
-   public void a(jh $$0) {
-      jh $$1 = $$0.j();
-      this.a(kj.a($$0.u()), kj.a($$0.w()), ars.a.a, ae.a((Runnable)(() -> super.a($$1)), (Supplier<String>)(() -> "checkBlock " + $$1)));
-   }
-
-   protected void a(des $$0) {
-      this.a($$0.g, $$0.h, () -> 0, ars.a.a, ae.a((Runnable)(() -> {
-         super.b($$0, false);
-         super.a($$0, false);
-
-         for (int $$1 = this.d(); $$1 < this.e(); $$1++) {
-            super.a(dfv.b, kj.a($$0, $$1), null);
-            super.a(dfv.a, kj.a($$0, $$1), null);
-         }
-
-         for (int $$2 = this.d.an(); $$2 <= this.d.ao(); $$2++) {
-            super.a(kj.a($$0, $$2), true);
-         }
-      }), (Supplier<String>)(() -> "updateChunkStatus " + $$0 + " true")));
-   }
-
-   @Override
-   public void a(kj $$0, boolean $$1) {
-      this.a($$0.a(), $$0.c(), () -> 0, ars.a.a, ae.a((Runnable)(() -> super.a($$0, $$1)), (Supplier<String>)(() -> "updateSectionStatus " + $$0 + " " + $$1)));
-   }
-
-   @Override
-   public void b(des $$0) {
-      this.a($$0.g, $$0.h, ars.a.a, ae.a((Runnable)(() -> super.b($$0)), (Supplier<String>)(() -> "propagateLight " + $$0)));
-   }
-
-   @Override
-   public void a(des $$0, boolean $$1) {
-      this.a($$0.g, $$0.h, ars.a.a, ae.a((Runnable)(() -> super.a($$0, $$1)), (Supplier<String>)(() -> "enableLight " + $$0 + " " + $$1)));
-   }
-
-   @Override
-   public void a(dfv $$0, kj $$1, @Nullable dxv $$2) {
-      this.a($$1.a(), $$1.c(), () -> 0, ars.a.a, ae.a((Runnable)(() -> super.a($$0, $$1, $$2)), (Supplier<String>)(() -> "queueData " + $$1)));
-   }
-
-   private void a(int $$0, int $$1, ars.a $$2, Runnable $$3) {
-      this.a($$0, $$1, this.h.c(des.c($$0, $$1)), $$2, $$3);
-   }
-
-   private void a(int $$0, int $$1, IntSupplier $$2, ars.a $$3, Runnable $$4) {
-      this.i.a(() -> {
-         this.g.add(Pair.of($$3, $$4));
-         if (this.g.size() >= 1000) {
-            this.f();
-         }
-      }, des.c($$0, $$1), $$2);
-   }
-
-   @Override
-   public void b(des $$0, boolean $$1) {
-      this.a($$0.g, $$0.h, () -> 0, ars.a.a, ae.a((Runnable)(() -> super.b($$0, $$1)), (Supplier<String>)(() -> "retainData " + $$0)));
-   }
-
-   public CompletableFuture<dxq> a(dxq $$0, boolean $$1) {
-      des $$2 = $$0.f();
-      this.a($$2.g, $$2.h, ars.a.a, ae.a((Runnable)(() -> {
-         dyb[] $$2x = $$0.d();
-
-         for (int $$3 = 0; $$3 < $$0.am(); $$3++) {
-            dyb $$4 = $$2x[$$3];
-            if (!$$4.c()) {
-               int $$5 = this.d.h($$3);
-               super.a(kj.a($$2, $$5), false);
-            }
-         }
-      }), (Supplier<String>)(() -> "initializeLight: " + $$2)));
-      return CompletableFuture.supplyAsync(() -> {
-         super.a($$2, $$1);
-         super.b($$2, false);
-         return $$0;
-      }, $$1x -> this.a($$2.g, $$2.h, ars.a.b, $$1x));
-   }
-
-   public CompletableFuture<dxq> b(dxq $$0, boolean $$1) {
-      des $$2 = $$0.f();
-      $$0.b(false);
-      this.a($$2.g, $$2.h, ars.a.a, ae.a((Runnable)(() -> {
-         if (!$$1) {
-            super.b($$2);
-         }
-      }), (Supplier<String>)(() -> "lightChunk " + $$2 + " " + $$1)));
-      return CompletableFuture.supplyAsync(() -> {
-         $$0.b(true);
-         return $$0;
-      }, $$1x -> this.a($$2.g, $$2.h, ars.a.b, $$1x));
-   }
-
-   public void b() {
-      if ((!this.g.isEmpty() || super.M_()) && this.k.compareAndSet(false, true)) {
-         this.f.a_(() -> {
-            this.f();
-            this.k.set(false);
-         });
-      }
-   }
-
-   private void f() {
-      int $$0 = Math.min(this.g.size(), 1000);
-      ObjectListIterator<Pair<ars.a, Runnable>> $$1 = this.g.iterator();
-
-      int $$2;
-      for ($$2 = 0; $$1.hasNext() && $$2 < $$0; $$2++) {
-         Pair<ars.a, Runnable> $$3 = (Pair<ars.a, Runnable>)$$1.next();
-         if ($$3.getFirst() == ars.a.a) {
-            ((Runnable)$$3.getSecond()).run();
-         }
-      }
-
-      $$1.back($$2);
-      super.a();
-
-      for (int var5 = 0; $$1.hasNext() && var5 < $$0; var5++) {
-         Pair<ars.a, Runnable> $$4 = (Pair<ars.a, Runnable>)$$1.next();
-         if ($$4.getFirst() == ars.a.b) {
-            ((Runnable)$$4.getSecond()).run();
-         }
-
-         $$1.remove();
-      }
-   }
-
-   public CompletableFuture<?> a(int $$0, int $$1) {
-      return CompletableFuture.runAsync(() -> {
-      }, $$2 -> this.a($$0, $$1, ars.a.b, $$2));
-   }
-
-   static enum a {
-      a,
-      b;
+   public static ars a() {
+      return new ars("en_us", 2, cpp.a, true, 0, cps.bH, false, false, arz.a);
    }
 }

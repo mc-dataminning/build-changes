@@ -1,46 +1,83 @@
-import org.joml.Matrix4f;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class gmk<T extends dur> implements glr<T> {
-   public static final alj a = alj.b("textures/environment/end_sky.png");
-   public static final alj b = alj.b("textures/entity/end_portal.png");
+public class gmk {
+   public static final gmk a = new gmk();
+   public static final float b = Float.NEGATIVE_INFINITY;
+   private final gmk.a[] c;
+   private final alz[] d;
 
-   public gmk(gls.a $$0) {
+   private gmk() {
+      this.c = new gmk.a[0];
+      this.d = new alz[0];
    }
 
-   public void a(T $$0, float $$1, fer $$2, gjg $$3, int $$4, int $$5) {
-      Matrix4f $$6 = $$2.c().a();
-      this.a($$0, $$6, $$3.getBuffer(this.d()));
+   public gmk(hdp $$0, List<gmu> $$1) {
+      this.d = $$1.stream().flatMap($$0x -> $$0x.b().stream()).map(gmu.b::a).distinct().toArray(alz[]::new);
+      Object2IntMap<alz> $$2 = new Object2IntOpenHashMap();
+
+      for (int $$3 = 0; $$3 < this.d.length; $$3++) {
+         $$2.put(this.d[$$3], $$3);
+      }
+
+      List<gmk.a> $$4 = Lists.newArrayList();
+
+      for (int $$5 = $$1.size() - 1; $$5 >= 0; $$5--) {
+         gmu $$6 = $$1.get($$5);
+         hdg $$7 = $$0.a($$6.a(), hdh.a);
+         gmk.b[] $$8 = $$6.b().stream().map($$1x -> {
+            int $$2x = $$2.getInt($$1x.a());
+            return new gmk.b($$2x, $$1x.b());
+         }).toArray(gmk.b[]::new);
+         $$4.add(new gmk.a($$8, $$7));
+      }
+
+      this.c = $$4.toArray(new gmk.a[0]);
    }
 
-   private void a(T $$0, Matrix4f $$1, fev $$2) {
-      float $$3 = this.c();
-      float $$4 = this.b();
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, jm.d);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, jm.c);
-      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, jm.f);
-      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, jm.e);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, jm.a);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, jm.b);
+   @Nullable
+   public hdg a(cxk $$0, @Nullable gfd $$1, @Nullable bwb $$2, int $$3) {
+      int $$4 = this.d.length;
+      if ($$4 != 0) {
+         float[] $$5 = new float[$$4];
+
+         for (int $$6 = 0; $$6 < $$4; $$6++) {
+            alz $$7 = this.d[$$6];
+            hak $$8 = haj.a($$0, $$7);
+            if ($$8 != null) {
+               $$5[$$6] = $$8.call($$0, $$1, $$2, $$3);
+            } else {
+               $$5[$$6] = Float.NEGATIVE_INFINITY;
+            }
+         }
+
+         for (gmk.a $$9 : this.c) {
+            if ($$9.a($$5)) {
+               return $$9.b;
+            }
+         }
+      }
+
+      return null;
    }
 
-   private void a(T $$0, Matrix4f $$1, fev $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, jm $$11) {
-      if ($$0.a($$11)) {
-         $$2.a($$1, $$3, $$5, $$7);
-         $$2.a($$1, $$4, $$5, $$8);
-         $$2.a($$1, $$4, $$6, $$9);
-         $$2.a($$1, $$3, $$6, $$10);
+   static record a(gmk.b[] a, @Nullable hdg b) {
+
+      boolean a(float[] $$0) {
+         for (gmk.b $$1 : this.a) {
+            float $$2 = $$0[$$1.a];
+            if ($$2 < $$1.b) {
+               return false;
+            }
+         }
+
+         return true;
       }
    }
 
-   protected float b() {
-      return 0.75F;
-   }
-
-   protected float c() {
-      return 0.375F;
-   }
-
-   protected gjq d() {
-      return gjq.t();
+   static record b(int a, float b) {
    }
 }

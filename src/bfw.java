@@ -1,82 +1,70 @@
+import com.google.common.collect.Lists;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.util.Unit;
 import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.List;
 import java.util.Optional;
 
 public class bfw extends DataFix {
-   private static final Int2ObjectMap<String> a = (Int2ObjectMap<String>)DataFixUtils.make(new Int2ObjectOpenHashMap(), $$0 -> {
-      $$0.put(0, "minecraft:protection");
-      $$0.put(1, "minecraft:fire_protection");
-      $$0.put(2, "minecraft:feather_falling");
-      $$0.put(3, "minecraft:blast_protection");
-      $$0.put(4, "minecraft:projectile_protection");
-      $$0.put(5, "minecraft:respiration");
-      $$0.put(6, "minecraft:aqua_affinity");
-      $$0.put(7, "minecraft:thorns");
-      $$0.put(8, "minecraft:depth_strider");
-      $$0.put(9, "minecraft:frost_walker");
-      $$0.put(10, "minecraft:binding_curse");
-      $$0.put(16, "minecraft:sharpness");
-      $$0.put(17, "minecraft:smite");
-      $$0.put(18, "minecraft:bane_of_arthropods");
-      $$0.put(19, "minecraft:knockback");
-      $$0.put(20, "minecraft:fire_aspect");
-      $$0.put(21, "minecraft:looting");
-      $$0.put(22, "minecraft:sweeping");
-      $$0.put(32, "minecraft:efficiency");
-      $$0.put(33, "minecraft:silk_touch");
-      $$0.put(34, "minecraft:unbreaking");
-      $$0.put(35, "minecraft:fortune");
-      $$0.put(48, "minecraft:power");
-      $$0.put(49, "minecraft:punch");
-      $$0.put(50, "minecraft:flame");
-      $$0.put(51, "minecraft:infinity");
-      $$0.put(61, "minecraft:luck_of_the_sea");
-      $$0.put(62, "minecraft:lure");
-      $$0.put(65, "minecraft:loyalty");
-      $$0.put(66, "minecraft:impaling");
-      $$0.put(67, "minecraft:riptide");
-      $$0.put(68, "minecraft:channeling");
-      $$0.put(70, "minecraft:mending");
-      $$0.put(71, "minecraft:vanishing_curse");
-   });
-
    public bfw(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bia.t);
-      OpticFinder<?> $$1 = $$0.findField("tag");
-      return this.fixTypeEverywhereTyped("ItemStackEnchantmentFix", $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a)));
+      return this.a(this.getOutputSchema().getTypeRaw(bis.J));
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<? extends Dynamic<?>> $$1 = $$0.get("ench")
-         .asStreamOpt()
-         .map($$0x -> $$0x.map($$0xx -> $$0xx.set("id", $$0xx.createString((String)a.getOrDefault($$0xx.get("id").asInt(0), "null")))))
-         .map($$0::createList)
-         .result();
-      if ($$1.isPresent()) {
-         $$0 = $$0.remove("ench").set("Enchantments", $$1.get());
+   private <R> TypeRewriteRule a(Type<R> $$0) {
+      Type<Pair<Either<Pair<List<Pair<R, Integer>>, Dynamic<?>>, Unit>, Dynamic<?>>> $$1 = DSL.and(
+         DSL.optional(DSL.field("RecipesUsed", DSL.and(DSL.compoundList($$0, DSL.intType()), DSL.remainderType()))), DSL.remainderType()
+      );
+      OpticFinder<?> $$2 = DSL.namedChoice("minecraft:furnace", this.getInputSchema().getChoiceType(bis.s, "minecraft:furnace"));
+      OpticFinder<?> $$3 = DSL.namedChoice("minecraft:blast_furnace", this.getInputSchema().getChoiceType(bis.s, "minecraft:blast_furnace"));
+      OpticFinder<?> $$4 = DSL.namedChoice("minecraft:smoker", this.getInputSchema().getChoiceType(bis.s, "minecraft:smoker"));
+      Type<?> $$5 = this.getOutputSchema().getChoiceType(bis.s, "minecraft:furnace");
+      Type<?> $$6 = this.getOutputSchema().getChoiceType(bis.s, "minecraft:blast_furnace");
+      Type<?> $$7 = this.getOutputSchema().getChoiceType(bis.s, "minecraft:smoker");
+      Type<?> $$8 = this.getInputSchema().getType(bis.s);
+      Type<?> $$9 = this.getOutputSchema().getType(bis.s);
+      return this.fixTypeEverywhereTyped(
+         "FurnaceRecipesFix",
+         $$8,
+         $$9,
+         $$8x -> $$8x.updateTyped($$2, $$5, $$2xx -> this.a($$0, $$1, $$2xx))
+               .updateTyped($$3, $$6, $$2xx -> this.a($$0, $$1, $$2xx))
+               .updateTyped($$4, $$7, $$2xx -> this.a($$0, $$1, $$2xx))
+      );
+   }
+
+   private <R> Typed<?> a(Type<R> $$0, Type<Pair<Either<Pair<List<Pair<R, Integer>>, Dynamic<?>>, Unit>, Dynamic<?>>> $$1, Typed<?> $$2) {
+      Dynamic<?> $$3 = (Dynamic<?>)$$2.getOrCreate(DSL.remainderFinder());
+      int $$4 = $$3.get("RecipesUsedSize").asInt(0);
+      $$3 = $$3.remove("RecipesUsedSize");
+      List<Pair<R, Integer>> $$5 = Lists.newArrayList();
+
+      for (int $$6 = 0; $$6 < $$4; $$6++) {
+         String $$7 = "RecipeLocation" + $$6;
+         String $$8 = "RecipeAmount" + $$6;
+         Optional<? extends Dynamic<?>> $$9 = $$3.get($$7).result();
+         int $$10 = $$3.get($$8).asInt(0);
+         if ($$10 > 0) {
+            $$9.ifPresent($$3x -> {
+               Optional<? extends Pair<R, ? extends Dynamic<?>>> $$4x = $$0.read($$3x).result();
+               $$4x.ifPresent($$2xx -> $$5.add(Pair.of($$2xx.getFirst(), $$10)));
+            });
+         }
+
+         $$3 = $$3.remove($$7).remove($$8);
       }
 
-      return $$0.update(
-         "StoredEnchantments",
-         $$0x -> (Dynamic)DataFixUtils.orElse(
-               $$0x.asStreamOpt()
-                  .map($$0xx -> $$0xx.map($$0xxx -> $$0xxx.set("id", $$0xxx.createString((String)a.getOrDefault($$0xxx.get("id").asInt(0), "null")))))
-                  .map($$0x::createList)
-                  .result(),
-               $$0x
-            )
-      );
+      return $$2.set(DSL.remainderFinder(), $$1, Pair.of(Either.left(Pair.of($$5, $$3.emptyMap())), $$3));
    }
 }

@@ -1,17 +1,32 @@
-public class abt {
-   public static final zs<abo> a = a("finish_configuration");
-   public static final zs<abp> b = a("registry_data");
-   public static final zs<abs> c = a("update_enabled_features");
-   public static final zs<abr> d = a("select_known_packs");
-   public static final zs<abq> e = a("reset_chat");
-   public static final zs<abw> f = b("finish_configuration");
-   public static final zs<abx> g = b("select_known_packs");
+import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-   private static <T extends zq<abn>> zs<T> a(String $$0) {
-      return new zs<>(zr.b, alj.b($$0));
+public record abt(long c, List<abt.a> d) implements abf {
+   public static final abf.b<abt> a = abf.a("debug/redstone_update_order");
+   public static final zt<ws, abt> b = zt.a(zr.k, abt::b, abt.a.a.a(zr.a()), abt::c, abt::new);
+
+   @Override
+   public abf.b<abt> a() {
+      return a;
    }
 
-   private static <T extends zq<abv>> zs<T> b(String $$0) {
-      return new zs<>(zr.a, alj.b($$0));
+   public long b() {
+      return this.c;
+   }
+
+   public List<abt.a> c() {
+      return this.d;
+   }
+
+   public static record a(jh b, eux c) {
+      public static final zt<ByteBuf, abt.a> a = zt.a(jh.b, abt.a::a, eux.a, abt.a::b, abt.a::new);
+
+      public jh a() {
+         return this.b;
+      }
+
+      public eux b() {
+         return this.c;
+      }
    }
 }

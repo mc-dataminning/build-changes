@@ -1,19 +1,26 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
 
-public class bid extends bgv {
-   public bid(Schema $$0, boolean $$1) {
-      super($$0, $$1, "Remove Golem Gossip Fix", bia.B, "minecraft:villager");
+public class bid extends DataFix {
+   public bid(Schema $$0) {
+      super($$0, false);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), bid::a);
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "OptionsMenuBlurrinessFix",
+         this.getInputSchema().getType(bis.e),
+         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("menuBackgroundBlurriness", $$0xx -> $$0xx.createInt(this.a($$0xx.asString("0.5")))))
+      );
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("Gossips", $$1 -> $$0.createList($$1.asStream().filter($$0xx -> !$$0xx.get("Type").asString("").equals("golem"))));
+   private int a(String $$0) {
+      try {
+         return Math.round(Float.parseFloat($$0) * 10.0F);
+      } catch (NumberFormatException var3) {
+         return 5;
+      }
    }
 }

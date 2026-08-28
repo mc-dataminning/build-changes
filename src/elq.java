@@ -1,25 +1,69 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public interface elq<P extends elp> {
-   elq<elb> a = a("block_predicate_filter", elb.a);
-   elq<els> b = a("rarity_filter", els.a);
-   elq<elu> c = a("surface_relative_threshold_filter", elu.a);
-   elq<elv> d = a("surface_water_depth_filter", elv.a);
-   elq<ela> e = a("biome", ela.a);
-   elq<ele> f = a("count", ele.a);
-   elq<elk> g = a("noise_based_count", elk.a);
-   elq<ell> h = a("noise_threshold_count", ell.a);
-   elq<eld> i = a("count_on_every_layer", eld.a);
-   elq<elf> j = a("environment_scan", elf.a);
-   elq<eli> k = a("heightmap", eli.a);
-   elq<elh> l = a("height_range", elh.a);
-   elq<elj> m = a("in_square", elj.a);
-   elq<elr> n = a("random_offset", elr.a);
-   elq<elg> o = a("fixed_placement", elg.a);
+public class elq extends ely {
+   public static final MapCodec<elq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  azn.m.optionalFieldOf("min_height_for_leaves", 1).forGetter($$0x -> $$0x.b), bsj.b(1, 64).fieldOf("bend_length").forGetter($$0x -> $$0x.h)
+               )
+            )
+            .apply($$0, elq::new)
+   );
+   private final int b;
+   private final bsj h;
 
-   MapCodec<P> codec();
+   public elq(int $$0, int $$1, int $$2, int $$3, bsj $$4) {
+      super($$0, $$1, $$2);
+      this.b = $$3;
+      this.h = $$4;
+   }
 
-   private static <P extends elp> elq<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(lz.S, $$0, () -> $$1);
+   @Override
+   protected elz<?> a() {
+      return elz.g;
+   }
+
+   @Override
+   public List<eke.a> a(dhg $$0, BiConsumer<jh, dxn> $$1, bam $$2, int $$3, jh $$4, ejo $$5) {
+      jm $$6 = jm.c.a.a($$2);
+      int $$7 = $$3 - 1;
+      jh.a $$8 = $$4.k();
+      jh $$9 = $$8.e();
+      a($$0, $$1, $$2, $$9, $$5);
+      List<eke.a> $$10 = Lists.newArrayList();
+
+      for (int $$11 = 0; $$11 <= $$7; $$11++) {
+         if ($$11 + 1 >= $$7 + $$2.a(2)) {
+            $$8.c($$6);
+         }
+
+         if (eia.c($$0, $$8)) {
+            this.b($$0, $$1, $$2, $$8, $$5);
+         }
+
+         if ($$11 >= this.b) {
+            $$10.add(new eke.a($$8.j(), 0, false));
+         }
+
+         $$8.c(jm.b);
+      }
+
+      int $$12 = this.h.a($$2);
+
+      for (int $$13 = 0; $$13 <= $$12; $$13++) {
+         if (eia.c($$0, $$8)) {
+            this.b($$0, $$1, $$2, $$8, $$5);
+         }
+
+         $$10.add(new eke.a($$8.j(), 0, false));
+         $$8.c($$6);
+      }
+
+      return $$10;
    }
 }

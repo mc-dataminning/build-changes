@@ -1,20 +1,25 @@
-import java.util.Objects;
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-@FunctionalInterface
-interface euv {
-   euv b = ($$0, $$1) -> false;
-   euv c = ($$0, $$1) -> true;
+public class euv implements euw {
+   private final dha b;
 
-   boolean expand(eun var1, Consumer<evc> var2);
-
-   default euv and(euv $$0) {
-      Objects.requireNonNull($$0);
-      return ($$1, $$2) -> this.expand($$1, $$2) && $$0.expand($$1, $$2);
+   public euv(dha $$0) {
+      this.b = $$0;
    }
 
-   default euv or(euv $$0) {
-      Objects.requireNonNull($$0);
-      return ($$1, $$2) -> this.expand($$1, $$2) || $$0.expand($$1, $$2);
+   @Override
+   public void a(jm $$0, dxn $$1, jh $$2, jh $$3, int $$4, int $$5) {
+      euw.a(this.b, $$0, $$2, $$3, $$1, $$4, $$5 - 1);
+   }
+
+   @Override
+   public void a(jh $$0, dke $$1, @Nullable eux $$2) {
+      dxn $$3 = this.b.a_($$0);
+      this.a($$3, $$0, $$1, $$2, false);
+   }
+
+   @Override
+   public void a(dxn $$0, jh $$1, dke $$2, @Nullable eux $$3, boolean $$4) {
+      euw.a(this.b, $$0, $$1, $$2, $$3, $$4);
    }
 }

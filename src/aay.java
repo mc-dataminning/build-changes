@@ -1,16 +1,29 @@
-public record aay() implements aat {
-   public static final zh<wg, aay> a = aat.a(aay::a, aay::new);
-   public static final aat.b<aay> b = aat.a("debug/game_test_clear");
+public class aay implements aac<aav> {
+   public static final zt<ws, aay> a = aac.a(aay::a, aay::new);
+   private final long b;
 
-   private aay(wg $$0) {
-      this();
+   public aay(long $$0) {
+      this.b = $$0;
    }
 
-   private void a(wg $$0) {
+   private aay(ws $$0) {
+      this.b = $$0.readLong();
+   }
+
+   private void a(ws $$0) {
+      $$0.b(this.b);
    }
 
    @Override
-   public aat.b<aay> a() {
-      return b;
+   public aae<aay> a() {
+      return aau.n;
+   }
+
+   public void a(aav $$0) {
+      $$0.a(this);
+   }
+
+   public long b() {
+      return this.b;
    }
 }

@@ -1,4 +1,3 @@
-public class gxk extends gwm {
-   public float a;
-   public int b = 1;
+public class gxk extends gxp {
+   public boolean a;
 }

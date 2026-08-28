@@ -1,26 +1,53 @@
-import java.util.Set;
+public class aeo implements aac<acr> {
+   public static final zt<ws, aeo> a = aac.a(aeo::a, aeo::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final float f;
 
-public record aeo(int b, ezy c, ezy d, float e, float f, Set<bvv> g) implements zq<acf> {
-   public static final zh<wg, aeo> a = zh.a(zf.h, aeo::b, ezy.b, aeo::e, ezy.b, aeo::f, zf.k, aeo::g, zf.k, aeo::h, bvv.m, aeo::i, aeo::new);
+   public aeo(bvf $$0) {
+      this.b = $$0.dA();
+      this.c = $$0.dC();
+      this.d = $$0.dG();
+      this.e = $$0.dL();
+      this.f = $$0.dN();
+   }
 
-   public static aeo a(int $$0, bvu $$1, Set<bvv> $$2) {
-      return new aeo($$0, $$1.a(), $$1.b(), $$1.c(), $$1.d(), $$2);
+   private aeo(ws $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+   }
+
+   private void a(ws $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
    }
 
    @Override
-   public zs<aeo> a() {
-      return agu.ai;
+   public aae<aeo> a() {
+      return ahk.V;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
    }
 
-   public ezy e() {
+   public double b() {
+      return this.b;
+   }
+
+   public double e() {
       return this.c;
    }
 
-   public ezy f() {
+   public double f() {
       return this.d;
    }
 
@@ -30,9 +57,5 @@ public record aeo(int b, ezy c, ezy d, float e, float f, Set<bvv> g) implements 
 
    public float h() {
       return this.f;
-   }
-
-   public Set<bvv> i() {
-      return this.g;
    }
 }

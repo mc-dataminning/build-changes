@@ -1,86 +1,64 @@
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class cch extends cdc {
-   private static final int i = 2;
-   private static final int j = 32;
-   private static final int k = 10;
-   private static final int l = 7;
+public class cch extends ccz {
+   private final civ a;
+   @Nullable
+   private cps b;
+   private final ash c;
+   private final float d;
+   private int e;
+   private final cgs f;
 
-   public cch(bvp $$0, double $$1) {
-      super($$0, $$1, 240, false);
+   public cch(civ $$0, float $$1) {
+      this.a = $$0;
+      this.c = a($$0);
+      this.d = $$1;
+      this.f = cgs.b().a((double)$$1);
+      this.a(EnumSet.of(ccz.a.b));
    }
 
-   @Nullable
    @Override
-   protected ezy h() {
-      float $$0 = this.b.dV().A.i();
-      if (this.b.dV().A.i() < 0.3F) {
-         return this.k();
+   public boolean b() {
+      this.b = this.c.a(this.f, this.a);
+      return this.b == null ? false : this.a(this.b);
+   }
+
+   @Override
+   public boolean c() {
+      if (!this.b.bL()) {
+         return false;
       } else {
-         ezy $$1;
-         if ($$0 < 0.7F) {
-            $$1 = this.l();
-            if ($$1 == null) {
-               $$1 = this.m();
-            }
-         } else {
-            $$1 = this.m();
-            if ($$1 == null) {
-               $$1 = this.l();
-            }
+         return this.a.g(this.b) > (double)(this.d * this.d) ? false : this.e > 0 && this.a(this.b);
+      }
+   }
+
+   @Override
+   public void d() {
+      this.a.A(true);
+      this.e = this.a(40 + this.a.dY().a(40));
+   }
+
+   @Override
+   public void e() {
+      this.a.A(false);
+      this.b = null;
+   }
+
+   @Override
+   public void a() {
+      this.a.H().a(this.b.dA(), this.b.dE(), this.b.dG(), 10.0F, (float)this.a.Z());
+      this.e--;
+   }
+
+   private boolean a(cps $$0) {
+      for (btd $$1 : btd.values()) {
+         cxk $$2 = $$0.b($$1);
+         if ($$2.a(cxo.sn) || this.a.j($$2)) {
+            return true;
          }
-
-         return $$1 == null ? this.k() : $$1;
       }
-   }
 
-   @Nullable
-   private ezy k() {
-      return cgf.a(this.b, 10, 7);
-   }
-
-   @Nullable
-   private ezy l() {
-      arp $$0 = (arp)this.b.dV();
-      List<cof> $$1 = $$0.a(bus.bz, this.b.cR().g(32.0), this::a);
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         cof $$2 = $$1.get(this.b.dV().A.a($$1.size()));
-         ezy $$3 = $$2.dt();
-         return cgf.a(this.b, 10, 7, $$3);
-      }
-   }
-
-   @Nullable
-   private ezy m() {
-      kj $$0 = this.n();
-      if ($$0 == null) {
-         return null;
-      } else {
-         jh $$1 = this.a($$0);
-         return $$1 == null ? null : cgf.a(this.b, 10, 7, ezy.c($$1));
-      }
-   }
-
-   @Nullable
-   private kj n() {
-      arp $$0 = (arp)this.b.dV();
-      List<kj> $$1 = kj.a(kj.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
-      return $$1.isEmpty() ? null : $$1.get($$0.A.a($$1.size()));
-   }
-
-   @Nullable
-   private jh a(kj $$0) {
-      arp $$1 = (arp)this.b.dV();
-      cgl $$2 = $$1.z();
-      List<jh> $$3 = $$2.c($$0x -> true, $$0.k(), 8, cgl.b.b).map(cgm::g).collect(Collectors.toList());
-      return $$3.isEmpty() ? null : $$3.get($$1.A.a($$3.size()));
-   }
-
-   private boolean a(cof $$0) {
-      return $$0.a(this.b.dV().ab());
+      return false;
    }
 }

@@ -1,75 +1,51 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class drl extends dic {
+public class drl extends dnv {
    public static final MapCodec<drl> a = b(drl::new);
-   public static final dwx<dvi> b = dwl.bz;
-   public static final dws<jm> c = dml.aF;
-   public static final dwm d = dwl.bA;
 
    @Override
    public MapCodec<drl> a() {
       return a;
    }
 
-   public drl(dvu.d $$0) {
+   public drl(dxm.d $$0) {
       super($$0);
-      this.l(this.F.b().b(c, jm.c).b(b, dvi.a).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public bsk a(cwm $$0, dvv $$1, dfm $$2, jh $$3, cou $$4, bsj $$5, ezu $$6) {
-      if (!$$0.f() && $$1.c(b) == dvi.b) {
-         if ($$2 instanceof arp $$7) {
-            if (!($$7.c_($$3) instanceof dvd $$8)) {
-               return bsk.f;
-            }
-
-            dvd.b.a($$7, $$3, $$1, $$8.f(), $$8.b(), $$8.c(), $$4, $$0);
-         }
-
-         return bsk.b;
+   public void a(dha $$0, dxn $$1, jh $$2, bvf $$3, float $$4) {
+      if ($$3.cf()) {
+         super.a($$0, $$1, $$2, $$3, $$4);
       } else {
-         return bsk.f;
+         $$3.a($$4, 0.0F, $$0.aj().l());
       }
    }
 
-   @Nullable
    @Override
-   public dsy a(jh $$0, dvv $$1) {
-      return new dvd($$0, $$1);
+   public void a(dgf $$0, bvf $$1) {
+      if ($$1.cf()) {
+         super.a($$0, $$1);
+      } else {
+         this.a($$1);
+      }
+   }
+
+   private void a(bvf $$0) {
+      fbs $$1 = $$0.dy();
+      if ($$1.e < 0.0) {
+         double $$2 = $$0 instanceof bwb ? 1.0 : 0.8;
+         $$0.n($$1.d, -$$1.e * $$2, $$1.f);
+      }
    }
 
    @Override
-   protected void a(dvw.a<diq, dvv> $$0) {
-      $$0.a(c, b, d);
-   }
+   public void a(dha $$0, jh $$1, dxn $$2, bvf $$3) {
+      double $$4 = Math.abs($$3.dy().e);
+      if ($$4 < 0.1 && !$$3.ce()) {
+         double $$5 = 0.4 + $$4 * 0.2;
+         $$3.h($$3.dy().d($$5, 1.0, $$5));
+      }
 
-   @Nullable
-   @Override
-   public <T extends dsy> dsz<T> a(dfm $$0, dvv $$1, dta<T> $$2) {
-      return $$0 instanceof arp $$3
-         ? a($$2, dta.R, ($$1x, $$2x, $$3x, $$4) -> dvd.b.a($$3, $$2x, $$3x, $$4.f(), $$4.b(), $$4.c()))
-         : a($$2, dta.R, ($$0x, $$1x, $$2x, $$3x) -> dvd.a.a($$0x, $$1x, $$2x, $$3x.d(), $$3x.c()));
-   }
-
-   @Override
-   public dvv a(dad $$0) {
-      return this.m().b(c, $$0.g().g());
-   }
-
-   @Override
-   public dvv a(dvv $$0, dpd $$1) {
-      return $$0.b(c, $$1.a($$0.c(c)));
-   }
-
-   @Override
-   public dvv a(dvv $$0, dnm $$1) {
-      return $$0.a($$1.a($$0.c(c)));
-   }
-
-   @Override
-   public dow a_(dvv $$0) {
-      return dow.c;
+      super.a($$0, $$1, $$2, $$3);
    }
 }

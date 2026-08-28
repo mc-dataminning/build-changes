@@ -1,181 +1,109 @@
-import java.util.stream.IntStream;
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.net.URI;
 
-public abstract class fso extends frw {
-   protected final duk a;
-   private dul c;
-   private final String[] d;
-   private final boolean s;
-   protected final dxh b;
-   private int u;
-   private int v;
-   @Nullable
-   private foz w;
+public class fso extends fsp {
+   private static final xv d = xv.c("chat.copy");
+   private static final xv s = xv.c("chat.link.warning");
+   private final String u;
+   private final boolean v;
 
-   public fso(duk $$0, boolean $$1, boolean $$2) {
-      this($$0, $$1, $$2, xj.c("sign.edit"));
+   public fso(BooleanConsumer $$0, String $$1, boolean $$2) {
+      this($$0, c($$2), xv.b($$1), $$1, $$2 ? xu.e : xu.g, $$2);
    }
 
-   public fso(duk $$0, boolean $$1, boolean $$2, xj $$3) {
-      super($$3);
-      this.a = $$0;
-      this.c = $$0.a($$1);
-      this.s = $$1;
-      this.b = dpq.a($$0.m().b());
-      this.d = IntStream.range(0, 4).mapToObj($$1x -> this.c.a($$1x, $$2)).map(xj::getString).toArray(String[]::new);
+   public fso(BooleanConsumer $$0, xv $$1, String $$2, boolean $$3) {
+      this($$0, $$1, a($$3, $$2), $$2, $$3 ? xu.e : xu.g, $$3);
    }
 
-   @Override
-   protected void aR_() {
-      this.c(fmd.a(xi.d, $$0 -> this.G()).a(this.n / 2 - 100, this.o / 4 + 144, 200, 20).a());
-      this.w = new foz(() -> this.d[this.v], this::a, foz.a(this.m), foz.c(this.m), $$0 -> this.m.h.b($$0) <= this.a.c());
+   public fso(BooleanConsumer $$0, xv $$1, URI $$2, boolean $$3) {
+      this($$0, $$1, $$2.toString(), $$3);
    }
 
-   @Override
-   public void e() {
-      this.u++;
-      if (!this.F()) {
-         this.G();
-      }
+   public fso(BooleanConsumer $$0, xv $$1, xv $$2, URI $$3, xv $$4, boolean $$5) {
+      this($$0, $$1, $$2, $$3.toString(), $$4, true);
    }
 
-   private boolean F() {
-      return this.m != null && this.m.t != null && !this.a.n() && !this.a.b(this.m.t.cG());
+   public fso(BooleanConsumer $$0, xv $$1, xv $$2, String $$3, xv $$4, boolean $$5) {
+      super($$0, $$1, $$2);
+      this.a = (xv)($$5 ? xv.c("chat.link.open") : xu.f);
+      this.b = $$4;
+      this.v = !$$5;
+      this.u = $$3;
+   }
+
+   protected static yj a(boolean $$0, String $$1) {
+      return c($$0).b(xu.v).b(xv.b($$1));
+   }
+
+   protected static yj c(boolean $$0) {
+      return xv.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 265) {
-         this.v = this.v - 1 & 3;
-         this.w.f();
-         return true;
-      } else if ($$0 == 264 || $$0 == 257 || $$0 == 335) {
-         this.v = this.v + 1 & 3;
-         this.w.f();
-         return true;
-      } else {
-         return this.w.a($$0) ? true : super.a($$0, $$1, $$2);
-      }
+   protected void a(int $$0) {
+      this.c(fny.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 50 - 105, $$0, 100, 20).a());
+      this.c(fny.a(d, $$0x -> {
+         this.k();
+         this.c.accept(false);
+      }).a(this.n / 2 - 50, $$0, 100, 20).a());
+      this.c(fny.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 50 + 105, $$0, 100, 20).a());
+   }
+
+   public void k() {
+      this.m.p.a(this.u);
    }
 
    @Override
-   public boolean a(char $$0, int $$1) {
-      this.w.a($$0);
-      return true;
-   }
-
-   @Override
-   public void a(flq $$0, int $$1, int $$2, float $$3) {
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.d();
-      fdn.c();
-      $$0.a(this.p, this.l, this.n / 2, 40, 16777215);
-      this.d($$0);
-      $$0.d();
-      fdn.d();
-   }
-
-   @Override
-   public void b(flq $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-   }
-
-   @Override
-   public void aO_() {
-      this.G();
-   }
-
-   @Override
-   public void j() {
-      gdi $$0 = this.m.L();
-      if ($$0 != null) {
-         $$0.b(new air(this.a.aA_(), this.s, this.d[0], this.d[1], this.d[2], this.d[3]));
+      if (this.v) {
+         $$0.a(this.p, s, this.n / 2, 110, 16764108);
       }
    }
 
-   @Override
-   public boolean k() {
-      return false;
-   }
-
-   protected abstract void c(flq var1);
-
-   protected abstract Vector3f m();
-
-   protected void a(flq $$0, dvv $$1) {
-      $$0.c().a((float)this.n / 2.0F, 90.0F, 50.0F);
-   }
-
-   private void d(flq $$0) {
-      $$0.c().a();
-      this.a($$0, this.a.m());
-      $$0.c().a();
-      this.c($$0);
-      $$0.c().b();
-      this.e($$0);
-      $$0.c().b();
-   }
-
-   private void e(flq $$0) {
-      $$0.c().a(0.0F, 0.0F, 4.0F);
-      Vector3f $$1 = this.m();
-      $$0.c().b($$1.x(), $$1.y(), $$1.z());
-      int $$2 = this.c.a() ? this.c.b().g() : gmf.a(this.c);
-      boolean $$3 = this.u / 6 % 2 == 0;
-      int $$4 = this.w.g();
-      int $$5 = this.w.h();
-      int $$6 = 4 * this.a.b() / 2;
-      int $$7 = this.v * this.a.b() - $$6;
-
-      for (int $$8 = 0; $$8 < this.d.length; $$8++) {
-         String $$9 = this.d[$$8];
-         if ($$9 != null) {
-            if (this.p.a()) {
-               $$9 = this.p.a($$9);
-            }
-
-            int $$10 = -this.p.b($$9) / 2;
-            $$0.a(this.p, $$9, $$10, $$8 * this.a.b() - $$6, $$2, false);
-            if ($$8 == this.v && $$4 >= 0 && $$3) {
-               int $$11 = this.p.b($$9.substring(0, Math.max(Math.min($$4, $$9.length()), 0)));
-               int $$12 = $$11 - this.p.b($$9) / 2;
-               if ($$4 >= $$9.length()) {
-                  $$0.a(this.p, "_", $$12, $$7, $$2, false);
-               }
-            }
+   public static void a(ftr $$0, String $$1, boolean $$2) {
+      flz $$3 = flz.Q();
+      $$3.a(new fso($$3x -> {
+         if ($$3x) {
+            ae.m().a($$1);
          }
-      }
 
-      for (int $$13 = 0; $$13 < this.d.length; $$13++) {
-         String $$14 = this.d[$$13];
-         if ($$14 != null && $$13 == this.v && $$4 >= 0) {
-            int $$15 = this.p.b($$14.substring(0, Math.max(Math.min($$4, $$14.length()), 0)));
-            int $$16 = $$15 - this.p.b($$14) / 2;
-            if ($$3 && $$4 < $$14.length()) {
-               $$0.a($$16, $$7 - 1, $$16 + 1, $$7 + this.a.b(), axx.f($$2));
-            }
+         $$3.a($$0);
+      }, $$1, $$2));
+   }
 
-            if ($$5 != $$4) {
-               int $$17 = Math.min($$4, $$5);
-               int $$18 = Math.max($$4, $$5);
-               int $$19 = this.p.b($$14.substring(0, $$17)) - this.p.b($$14) / 2;
-               int $$20 = this.p.b($$14.substring(0, $$18)) - this.p.b($$14) / 2;
-               int $$21 = Math.min($$19, $$20);
-               int $$22 = Math.max($$19, $$20);
-               $$0.a(gjq.I(), $$21, $$7, $$22, $$7 + this.a.b(), -16776961);
-            }
+   public static void a(ftr $$0, URI $$1, boolean $$2) {
+      flz $$3 = flz.Q();
+      $$3.a(new fso($$3x -> {
+         if ($$3x) {
+            ae.m().a($$1);
          }
-      }
+
+         $$3.a($$0);
+      }, $$1.toString(), $$2));
    }
 
-   private void a(String $$0) {
-      this.d[this.v] = $$0;
-      this.c = this.c.a(this.v, xj.b($$0));
-      this.a.a(this.c, this.s);
+   public static void a(ftr $$0, URI $$1) {
+      a($$0, $$1, true);
    }
 
-   private void G() {
-      this.m.a(null);
+   public static void a(ftr $$0, String $$1) {
+      a($$0, $$1, true);
+   }
+
+   public static fny.c b(ftr $$0, String $$1, boolean $$2) {
+      return $$3 -> a($$0, $$1, $$2);
+   }
+
+   public static fny.c b(ftr $$0, URI $$1, boolean $$2) {
+      return $$3 -> a($$0, $$1, $$2);
+   }
+
+   public static fny.c b(ftr $$0, String $$1) {
+      return b($$0, $$1, true);
+   }
+
+   public static fny.c b(ftr $$0, URI $$1) {
+      return b($$0, $$1, true);
    }
 }

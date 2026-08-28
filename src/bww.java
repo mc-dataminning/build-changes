@@ -1,38 +1,38 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.server.MinecraftServer;
+import javax.annotation.Nullable;
 
-public class bww {
-   public static bxb<cof> a() {
-      return can.a(
-         (Function<can.b<cof>, ? extends App<can.c<cof>, caq<cof>>>)($$0 -> $$0.group($$0.b(cel.d), $$0.a(cel.c))
-               .apply(
-                  $$0,
-                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                        jp $$6 = $$0.b($$1);
-                        if (!$$6.b().a($$4.dt(), 2.0) && !$$4.gw()) {
-                           return false;
-                        } else {
-                           $$1.b();
-                           $$2.a($$6);
-                           $$3.a($$4, (byte)14);
-                           if ($$4.gx().b() != coi.b) {
-                              return true;
-                           } else {
-                              MinecraftServer $$7 = $$3.p();
-                              Optional.ofNullable($$7.a($$6.a()))
-                                 .flatMap($$1xx -> $$1xx.z().c($$6.b()))
-                                 .flatMap($$0xxx -> lz.x.s().filter($$1xx -> $$1xx.b().test($$0xxx)).findFirst())
-                                 .ifPresent($$2xx -> {
-                                    $$4.a($$4.gx().a($$2xx));
-                                    $$4.g($$3);
-                                 });
-                              return true;
-                           }
-                        }
-                     }
-               ))
-      );
-   }
+public interface bww {
+   bwv a = ($$0, $$1, $$2) -> true;
+   bwv b = ($$0, $$1, $$2) -> {
+      if ($$2 != null && $$0.F_().a($$1)) {
+         jh $$3 = $$1.d();
+         return $$0.b_($$1).a(aya.a) && !$$0.a_($$3).d($$0, $$3);
+      } else {
+         return false;
+      }
+   };
+   bwv c = ($$0, $$1, $$2) -> $$2 != null && $$0.F_().a($$1) ? $$0.b_($$1).a(aya.b) : false;
+   bwv d = new bwv() {
+      @Override
+      public boolean isSpawnPositionOk(dhd $$0, jh $$1, @Nullable bvm<?> $$2) {
+         if ($$2 != null && $$0.F_().a($$1)) {
+            jh $$3 = $$1.d();
+            jh $$4 = $$1.e();
+            dxn $$5 = $$0.a_($$4);
+            return !$$5.a($$0, $$4, $$2) ? false : this.a($$0, $$1, $$2) && this.a($$0, $$3, $$2);
+         } else {
+            return false;
+         }
+      }
+
+      private boolean a(dhd $$0, jh $$1, bvm<?> $$2) {
+         dxn $$3 = $$0.a_($$1);
+         return dhl.a($$0, $$1, $$3, $$3.y(), $$2);
+      }
+
+      @Override
+      public jh a(dhd $$0, jh $$1) {
+         jh $$2 = $$1.e();
+         return $$0.a_($$2).a(eue.a) ? $$2 : $$1;
+      }
+   };
 }

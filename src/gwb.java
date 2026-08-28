@@ -1,19 +1,14 @@
-import javax.annotation.Nullable;
+public class gwb<S extends gzj, M extends gbf<S>> extends gvy<S, M> {
+   private final gda<S> a;
+   private final alz b;
 
-public class gwb extends gwm {
-   public float a;
-   public float b;
-   public ezy c;
-   @Nullable
-   public ezy d;
-   @Nullable
-   public ezy e;
-   @Nullable
-   public ezy f;
-   public float g;
-   public float h;
+   public gwb(gtg<S, M> $$0, ged $$1, gef $$2, alz $$3) {
+      super($$0);
+      this.b = $$3;
+      this.a = new gda<>($$1.a($$2));
+   }
 
-   public gwb() {
-      this.c = ezy.c;
+   public void a(fgl $$0, gle $$1, int $$2, S $$3, float $$4, float $$5) {
+      a(this.a, this.b, $$0, $$1, $$2, $$3, -1);
    }
 }

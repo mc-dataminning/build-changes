@@ -1,52 +1,78 @@
-import javax.annotation.Nullable;
-
 public interface dfe {
-   static btb a(dfm $$0, @Nullable bul $$1) {
-      return $$0.ai().d($$1, a($$1));
-   }
+   aly<dez> a = dff.a("trades/desert_armorer_boots_4");
+   aly<dez> b = dff.a("trades/desert_armorer_leggings_4");
+   aly<dez> c = dff.a("trades/desert_armorer_chestplate_4");
+   aly<dez> d = dff.a("trades/desert_armorer_helmet_4");
+   aly<dez> e = dff.a("trades/desert_armorer_leggings_5");
+   aly<dez> f = dff.a("trades/desert_armorer_chestplate_5");
+   aly<dez> g = dff.a("trades/plains_armorer_boots_4");
+   aly<dez> h = dff.a("trades/plains_armorer_leggings_4");
+   aly<dez> i = dff.a("trades/plains_armorer_chestplate_4");
+   aly<dez> j = dff.a("trades/plains_armorer_helmet_4");
+   aly<dez> k = dff.a("trades/plains_armorer_boots_5");
+   aly<dez> l = dff.a("trades/plains_armorer_leggings_5");
+   aly<dez> m = dff.a("trades/savanna_armorer_boots_4");
+   aly<dez> n = dff.a("trades/savanna_armorer_leggings_4");
+   aly<dez> o = dff.a("trades/savanna_armorer_chestplate_4");
+   aly<dez> p = dff.a("trades/savanna_armorer_helmet_4");
+   aly<dez> q = dff.a("trades/savanna_armorer_chestplate_5");
+   aly<dez> r = dff.a("trades/savanna_armorer_helmet_5");
+   aly<dez> s = dff.a("trades/snow_armorer_boots_4");
+   aly<dez> t = dff.a("trades/snow_armorer_helmet_4");
+   aly<dez> u = dff.a("trades/snow_armorer_boots_5");
+   aly<dez> v = dff.a("trades/snow_armorer_helmet_5");
+   aly<dez> w = dff.a("trades/jungle_armorer_boots_4");
+   aly<dez> x = dff.a("trades/jungle_armorer_leggings_4");
+   aly<dez> y = dff.a("trades/jungle_armorer_chestplate_4");
+   aly<dez> z = dff.a("trades/jungle_armorer_helmet_4");
+   aly<dez> A = dff.a("trades/jungle_armorer_boots_5");
+   aly<dez> B = dff.a("trades/jungle_armorer_helmet_5");
+   aly<dez> C = dff.a("trades/swamp_armorer_boots_4");
+   aly<dez> D = dff.a("trades/swamp_armorer_leggings_4");
+   aly<dez> E = dff.a("trades/swamp_armorer_chestplate_4");
+   aly<dez> F = dff.a("trades/swamp_armorer_helmet_4");
+   aly<dez> G = dff.a("trades/swamp_armorer_boots_5");
+   aly<dez> H = dff.a("trades/swamp_armorer_helmet_5");
+   aly<dez> I = dff.a("trades/taiga_armorer_leggings_5");
+   aly<dez> J = dff.a("trades/taiga_armorer_chestplate_5");
 
-   @Nullable
-   static bvh a(@Nullable bul $$0) {
-      return switch ($$0) {
-         case null, default -> null;
-         case cld $$1 -> $$1.j();
-         case bvh $$2 -> $$2;
-         case cpn $$3 when $$3.p() instanceof bvh $$4 -> $$4;
-      };
-   }
-
-   arp a();
-
-   dfe.a b();
-
-   @Nullable
-   bvh c();
-
-   @Nullable
-   bul d();
-
-   float e();
-
-   ezy f();
-
-   boolean g();
-
-   boolean h();
-
-   public static enum a {
-      a(false),
-      b(true),
-      c(true),
-      d(false);
-
-      private final boolean e;
-
-      private a(final boolean $$0) {
-         this.e = $$0;
-      }
-
-      public boolean a() {
-         return this.e;
-      }
+   static void a(rk<dez> $$0) {
+      jr<ddr> $$1 = $$0.a(mb.aN);
+      $$0.a(a, new dfd($$1.b(ddw.h), bsg.a(1)));
+      $$0.a(b, new dfd($$1.b(ddw.h), bsg.a(1)));
+      $$0.a(c, new dfd($$1.b(ddw.h), bsg.a(1)));
+      $$0.a(d, new dfd($$1.b(ddw.h), bsg.a(1)));
+      $$0.a(e, new dfd($$1.b(ddw.h), bsg.a(1)));
+      $$0.a(f, new dfd($$1.b(ddw.h), bsg.a(1)));
+      $$0.a(g, new dfd($$1.b(ddw.a), bsg.a(1)));
+      $$0.a(h, new dfd($$1.b(ddw.a), bsg.a(1)));
+      $$0.a(i, new dfd($$1.b(ddw.a), bsg.a(1)));
+      $$0.a(j, new dfd($$1.b(ddw.a), bsg.a(1)));
+      $$0.a(k, new dfd($$1.b(ddw.a), bsg.a(1)));
+      $$0.a(l, new dfd($$1.b(ddw.a), bsg.a(1)));
+      $$0.a(m, new dfd($$1.b(ddw.k), bsg.a(1)));
+      $$0.a(n, new dfd($$1.b(ddw.k), bsg.a(1)));
+      $$0.a(o, new dfd($$1.b(ddw.k), bsg.a(1)));
+      $$0.a(p, new dfd($$1.b(ddw.k), bsg.a(1)));
+      $$0.a(q, new dfd($$1.b(ddw.k), bsg.a(1)));
+      $$0.a(r, new dfd($$1.b(ddw.k), bsg.a(1)));
+      $$0.a(s, new dfd($$1.b(ddw.j), bsg.a(1)));
+      $$0.a(t, new dfd($$1.b(ddw.g), bsg.a(1)));
+      $$0.a(u, new dfd($$1.b(ddw.j), bsg.a(1)));
+      $$0.a(v, new dfd($$1.b(ddw.g), bsg.a(1)));
+      $$0.a(w, new dfd($$1.b(ddw.w), bsg.a(1)));
+      $$0.a(x, new dfd($$1.b(ddw.w), bsg.a(1)));
+      $$0.a(y, new dfd($$1.b(ddw.w), bsg.a(1)));
+      $$0.a(z, new dfd($$1.b(ddw.w), bsg.a(1)));
+      $$0.a(A, new dfd($$1.b(ddw.c), bsg.a(1)));
+      $$0.a(B, new dfd($$1.b(ddw.e), bsg.a(1)));
+      $$0.a(C, new dfd($$1.b(ddw.O), bsg.a(1)));
+      $$0.a(D, new dfd($$1.b(ddw.O), bsg.a(1)));
+      $$0.a(E, new dfd($$1.b(ddw.O), bsg.a(1)));
+      $$0.a(F, new dfd($$1.b(ddw.O), bsg.a(1)));
+      $$0.a(G, new dfd($$1.b(ddw.i), bsg.a(1)));
+      $$0.a(H, new dfd($$1.b(ddw.f), bsg.a(1)));
+      $$0.a(I, new dfd($$1.b(ddw.d), bsg.a(1)));
+      $$0.a(J, new dfd($$1.b(ddw.d), bsg.a(1)));
    }
 }

@@ -1,62 +1,145 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public record crw(int c, float d, boolean e) implements cyt {
-   public static final Codec<crw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayv.l.fieldOf("nutrition").forGetter(crw::a),
-               Codec.FLOAT.fieldOf("saturation").forGetter(crw::b),
-               Codec.BOOL.optionalFieldOf("can_always_eat", false).forGetter(crw::c)
-            )
-            .apply($$0, crw::new)
-   );
-   public static final zh<wu, crw> b = zh.a(zf.h, crw::a, zf.k, crw::b, zf.b, crw::c, crw::new);
+public interface crw extends bsx, btg {
+   fbs dt();
+
+   fbn cR();
+
+   @Nullable
+   aly<ewm> v();
+
+   void a(@Nullable aly<ewm> var1);
+
+   long x();
+
+   void a(long var1);
+
+   jz<cxk> B();
+
+   void C();
+
+   dha dV();
+
+   boolean dQ();
 
    @Override
-   public void a(dfm $$0, bvh $$1, cwm $$2, cys $$3) {
-      azu $$4 = $$1.dY();
-      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), $$3.e().a(), awo.g, 1.0F, $$4.a(1.0F, 0.4F));
-      if ($$1 instanceof cou $$5) {
-         $$5.gr().a(this);
-         $$0.a(null, $$5.dA(), $$5.dC(), $$5.dG(), awn.ui, awo.h, 0.5F, azm.b($$4, 0.9F, 1.0F));
+   default boolean c() {
+      return this.g();
+   }
+
+   default void a(ux $$0, js.a $$1) {
+      if (this.v() != null) {
+         $$0.a("LootTable", this.v().a().toString());
+         if (this.x() != 0L) {
+            $$0.a("LootTableSeed", this.x());
+         }
+      } else {
+         bsy.a($$0, this.B(), $$1);
       }
    }
 
-   public int a() {
-      return this.c;
+   default void b(ux $$0, js.a $$1) {
+      this.C();
+      if ($$0.b("LootTable", 8)) {
+         this.a(aly.a(mb.bf, alz.a($$0.l("LootTable"))));
+         this.a($$0.i("LootTableSeed"));
+      } else {
+         bsy.b($$0, this.B(), $$1);
+      }
    }
 
-   public float b() {
-      return this.d;
+   default void a(btv $$0, ash $$1, bvf $$2) {
+      if ($$1.N().b(dgw.i)) {
+         bta.a($$1, $$2, this);
+         bvf $$3 = $$0.c();
+         if ($$3 != null && $$3.aq() == bvm.bS) {
+            coh.a($$1, (cps)$$3, true);
+         }
+      }
    }
 
-   public boolean c() {
-      return this.e;
+   default bte b_(cps $$0) {
+      $$0.a(this);
+      return bte.a;
    }
 
-   public static class a {
-      private int a;
-      private float b;
-      private boolean c;
+   default void f(@Nullable cps $$0) {
+      MinecraftServer $$1 = this.dV().p();
+      if (this.v() != null && $$1 != null) {
+         ewm $$2 = $$1.bc().b(this.v());
+         if ($$0 != null) {
+            ao.Q.a((asi)$$0, this.v());
+         }
 
-      public crw.a a(int $$0) {
-         this.a = $$0;
-         return this;
+         this.a(null);
+         ewk.a $$3 = new ewk.a((ash)this.dV()).a(ezd.f, this.dt());
+         if ($$0 != null) {
+            $$3.a($$0.gD()).a(ezd.a, $$0);
+         }
+
+         $$2.a(this, $$3.a(ezc.c), this.x());
+      }
+   }
+
+   default void f() {
+      this.f(null);
+      this.B().clear();
+   }
+
+   default boolean g() {
+      for (cxk $$0 : this.B()) {
+         if (!$$0.f()) {
+            return false;
+         }
       }
 
-      public crw.a a(float $$0) {
-         this.b = $$0;
-         return this;
-      }
+      return true;
+   }
 
-      public crw.a a() {
-         this.c = true;
-         return this;
+   default cxk f_(int $$0) {
+      this.f(null);
+      cxk $$1 = this.B().get($$0);
+      if ($$1.f()) {
+         return cxk.k;
+      } else {
+         this.B().set($$0, cxk.k);
+         return $$1;
       }
+   }
 
-      public crw b() {
-         float $$0 = cru.a(this.a, this.b);
-         return new crw(this.a, $$0, this.c);
-      }
+   default cxk g_(int $$0) {
+      this.f(null);
+      return this.B().get($$0);
+   }
+
+   default cxk b(int $$0, int $$1) {
+      this.f(null);
+      return bsy.a(this.B(), $$0, $$1);
+   }
+
+   default void c(int $$0, cxk $$1) {
+      this.f(null);
+      this.B().set($$0, $$1);
+      $$1.f(this.e_($$1));
+   }
+
+   default bwt h_(final int $$0) {
+      return $$0 >= 0 && $$0 < this.b() ? new bwt() {
+         @Override
+         public cxk a() {
+            return crw.this.g_($$0);
+         }
+
+         @Override
+         public boolean a(cxk $$0x) {
+            crw.this.c($$0, $$0);
+            return true;
+         }
+      } : bwt.a;
+   }
+
+   default boolean g(cps $$0) {
+      return !this.dQ() && $$0.a(this.cR(), 4.0);
    }
 }

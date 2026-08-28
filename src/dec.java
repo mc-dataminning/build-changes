@@ -1,45 +1,88 @@
-import java.util.Map;
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
 
-public class dec {
-   public static final ali<deb> a = a("quartz");
-   public static final ali<deb> b = a("iron");
-   public static final ali<deb> c = a("netherite");
-   public static final ali<deb> d = a("redstone");
-   public static final ali<deb> e = a("copper");
-   public static final ali<deb> f = a("gold");
-   public static final ali<deb> g = a("emerald");
-   public static final ali<deb> h = a("diamond");
-   public static final ali<deb> i = a("lapis");
-   public static final ali<deb> j = a("amethyst");
-
-   public static void a(qz<deb> $$0) {
-      a($$0, a, cwq.oD, yg.a.a(14931140), 0.1F);
-      a($$0, b, cwq.oG, yg.a.a(15527148), 0.2F, Map.of(ddx.c, "iron_darker"));
-      a($$0, c, cwq.oL, yg.a.a(6445145), 0.3F, Map.of(ddx.g, "netherite_darker"));
-      a($$0, d, cwq.lH, yg.a.a(9901575), 0.4F);
-      a($$0, e, cwq.oI, yg.a.a(11823181), 0.5F);
-      a($$0, f, cwq.oK, yg.a.a(14594349), 0.6F, Map.of(ddx.d, "gold_darker"));
-      a($$0, g, cwq.oB, yg.a.a(1155126), 0.7F);
-      a($$0, h, cwq.oA, yg.a.a(7269586), 0.8F, Map.of(ddx.e, "diamond_darker"));
-      a($$0, i, cwq.oC, yg.a.a(4288151), 0.9F);
-      a($$0, j, cwq.oE, yg.a.a(10116294), 1.0F);
+public interface dec {
+   static <T, A extends T> MapCodec<A> a(Codec<T> $$0, Function<List<T>, A> $$1, Function<A, List<T>> $$2) {
+      return RecordCodecBuilder.mapCodec($$3 -> $$3.group($$0.listOf().fieldOf("effects").forGetter($$2)).apply($$3, $$1));
    }
 
-   public static Optional<jq.c<deb>> a(js.a $$0, cwm $$1) {
-      return $$0.d(ma.aX).c().filter($$1x -> $$1.a(((deb)$$1x.a()).b())).findFirst();
+   static dec.a a(dei... $$0) {
+      return new dec.a(List.of($$0));
    }
 
-   private static void a(qz<deb> $$0, ali<deb> $$1, cwi $$2, yg $$3, float $$4) {
-      a($$0, $$1, $$2, $$3, $$4, Map.of());
+   static dec.b a(dej... $$0) {
+      return new dec.b(List.of($$0));
    }
 
-   private static void a(qz<deb> $$0, ali<deb> $$1, cwi $$2, yg $$3, float $$4, Map<alj, String> $$5) {
-      deb $$6 = deb.a($$1.a().a(), $$2, $$4, xj.c(ae.a("trim_material", $$1.a())).c($$3), $$5);
-      $$0.a($$1, $$6);
+   static dec.c a(dek... $$0) {
+      return new dec.c(List.of($$0));
    }
 
-   private static ali<deb> a(String $$0) {
-      return ali.a(ma.aX, alj.b($$0));
+   public static record a(List<dei> d) implements dei {
+      public static final MapCodec<dec.a> a = dec.a(dei.b, dec.a::new, dec.a::b);
+
+      @Override
+      public void a(ash $$0, int $$1, ddq $$2, bvf $$3, fbs $$4) {
+         for (dei $$5 : this.d) {
+            $$5.a($$0, $$1, $$2, $$3, $$4);
+         }
+      }
+
+      @Override
+      public MapCodec<dec.a> a() {
+         return a;
+      }
+
+      public List<dei> b() {
+         return this.d;
+      }
+   }
+
+   public static record b(List<dej> b) implements dej {
+      public static final MapCodec<dec.b> a = dec.a(dej.c, dec.b::new, dec.b::b);
+
+      @Override
+      public void a(ash $$0, int $$1, ddq $$2, bvf $$3, fbs $$4, boolean $$5) {
+         for (dej $$6 : this.b) {
+            $$6.a($$0, $$1, $$2, $$3, $$4, $$5);
+         }
+      }
+
+      @Override
+      public void a(ddq $$0, bvf $$1, fbs $$2, int $$3) {
+         for (dej $$4 : this.b) {
+            $$4.a($$0, $$1, $$2, $$3);
+         }
+      }
+
+      @Override
+      public MapCodec<dec.b> a() {
+         return a;
+      }
+   }
+
+   public static record c(List<dek> c) implements dek {
+      public static final MapCodec<dec.c> a = dec.a(dek.b, dec.c::new, dec.c::b);
+
+      @Override
+      public float a(int $$0, bam $$1, float $$2) {
+         for (dek $$3 : this.c) {
+            $$2 = $$3.a($$0, $$1, $$2);
+         }
+
+         return $$2;
+      }
+
+      @Override
+      public MapCodec<dec.c> a() {
+         return a;
+      }
+
+      public List<dek> b() {
+         return this.c;
+      }
    }
 }

@@ -1,174 +1,127 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.Set;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableBoolean;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-public abstract class edw<C extends edp> {
-   public static final edw<eds> a = a("cave", new edt(eds.a));
-   public static final edw<eds> b = a("nether_cave", new edv(eds.a));
-   public static final edw<edn> c = a("canyon", new edo(edn.a));
-   protected static final dvv d = dis.a.m();
-   protected static final dvv e = dis.nc.m();
-   protected static final erv f = erw.c.g();
-   protected static final erv g = erw.e.g();
-   protected Set<eru> h = ImmutableSet.of(erw.c);
-   private final MapCodec<edu<C>> i;
+public final class edw {
+   final edv a;
+   private final jr<ess.a> b;
+   private final edo c;
+   private final dil.f d;
+   private final eea e;
+   private final edv f;
+   private final edv g;
+   private final Map<aly<ess.a>, ess> h;
+   private final Map<alz, edv> i;
 
-   private static <C extends edp, F extends edw<C>> F a(String $$0, F $$1) {
-      return kd.a(lz.N, $$0, $$1);
+   public static edw a(jr.a $$0, aly<edn> $$1, long $$2) {
+      return a($$0.b(mb.aQ).b($$1).a(), $$0.b(mb.aR), $$2);
    }
 
-   public edw(Codec<C> $$0) {
-      this.i = $$0.fieldOf("config").xmap(this::a, edu::b);
+   public static edw a(edn $$0, jr<ess.a> $$1, long $$2) {
+      return new edw($$0, $$1, $$2);
    }
 
-   public edu<C> a(C $$0) {
-      return new edu<>(this, $$0);
-   }
+   private edw(edn $$0, jr<ess.a> $$1, final long $$2) {
+      this.a = $$0.d().a($$2).e();
+      this.b = $$1;
+      this.f = this.a.a(alz.b("aquifer")).e();
+      this.g = this.a.a(alz.b("ore")).e();
+      this.h = new ConcurrentHashMap<>();
+      this.i = new ConcurrentHashMap<>();
+      this.e = new eea(this, $$0.g(), $$0.l(), this.a);
+      final boolean $$3 = $$0.n();
 
-   public MapCodec<edu<C>> c() {
-      return this.i;
-   }
+      class a implements edb.f {
+         private final Map<edb, edb> d = new HashMap<>();
 
-   public int d() {
-      return 4;
-   }
-
-   protected boolean a(
-      edr $$0, C $$1, dxq $$2, Function<jh, jq<dgo>> $$3, ebc $$4, double $$5, double $$6, double $$7, double $$8, double $$9, dxp $$10, edw.a $$11
-   ) {
-      des $$12 = $$2.f();
-      double $$13 = (double)$$12.b();
-      double $$14 = (double)$$12.c();
-      double $$15 = 16.0 + $$8 * 2.0;
-      if (!(Math.abs($$5 - $$13) > $$15) && !(Math.abs($$7 - $$14) > $$15)) {
-         int $$16 = $$12.d();
-         int $$17 = $$12.e();
-         int $$18 = Math.max(azm.a($$5 - $$8) - $$16 - 1, 0);
-         int $$19 = Math.min(azm.a($$5 + $$8) - $$16, 15);
-         int $$20 = Math.max(azm.a($$6 - $$9) - 1, $$0.a() + 1);
-         int $$21 = $$2.x() ? 0 : 7;
-         int $$22 = Math.min(azm.a($$6 + $$9) + 1, $$0.a() + $$0.b() - 1 - $$21);
-         int $$23 = Math.max(azm.a($$7 - $$8) - $$17 - 1, 0);
-         int $$24 = Math.min(azm.a($$7 + $$8) - $$17, 15);
-         boolean $$25 = false;
-         jh.a $$26 = new jh.a();
-         jh.a $$27 = new jh.a();
-
-         for (int $$28 = $$18; $$28 <= $$19; $$28++) {
-            int $$29 = $$12.a($$28);
-            double $$30 = ((double)$$29 + 0.5 - $$5) / $$8;
-
-            for (int $$31 = $$23; $$31 <= $$24; $$31++) {
-               int $$32 = $$12.b($$31);
-               double $$33 = ((double)$$32 + 0.5 - $$7) / $$8;
-               if (!($$30 * $$30 + $$33 * $$33 >= 1.0)) {
-                  MutableBoolean $$34 = new MutableBoolean(false);
-
-                  for (int $$35 = $$22; $$35 > $$20; $$35--) {
-                     double $$36 = ((double)$$35 - 0.5 - $$6) / $$9;
-                     if (!$$11.shouldSkip($$0, $$30, $$36, $$33, $$35) && (!$$10.b($$28, $$35, $$31) || b($$1))) {
-                        $$10.a($$28, $$35, $$31);
-                        $$26.d($$29, $$35, $$32);
-                        $$25 |= this.a($$0, $$1, $$2, $$3, $$10, $$26, $$27, $$4, $$34);
-                     }
-                  }
-               }
-            }
+         private bam a(long $$0) {
+            return new edj($$2 + $$0);
          }
 
-         return $$25;
-      } else {
-         return false;
-      }
-   }
+         @Override
+         public edb.c a(edb.c $$0) {
+            jq<ess.a> $$1 = $$0.b();
+            if ($$3) {
+               if ($$1.a(edr.a)) {
+                  ess $$2 = ess.a(this.a(0L), new ess.a(-7, 1.0, 1.0));
+                  return new edb.c($$1, $$2);
+               }
 
-   protected boolean a(edr $$0, C $$1, dxq $$2, Function<jh, jq<dgo>> $$3, dxp $$4, jh.a $$5, jh.a $$6, ebc $$7, MutableBoolean $$8) {
-      dvv $$9 = $$2.a_($$5);
-      if ($$9.a(dis.i) || $$9.a(dis.fl)) {
-         $$8.setTrue();
-      }
+               if ($$1.a(edr.b)) {
+                  ess $$3 = ess.a(this.a(1L), new ess.a(-7, 1.0, 1.0));
+                  return new edb.c($$1, $$3);
+               }
 
-      if (!this.a($$1, $$9) && !b($$1)) {
-         return false;
-      } else {
-         dvv $$10 = this.a($$0, $$1, $$5, $$7);
-         if ($$10 == null) {
-            return false;
-         } else {
-            $$2.a($$5, $$10, false);
-            if ($$7.a() && !$$10.y().c()) {
-               $$2.e($$5);
-            }
-
-            if ($$8.isTrue()) {
-               $$6.a($$5, jm.a);
-               if ($$2.a_($$6).a(dis.j)) {
-                  $$0.a($$3, $$2, $$6, !$$10.y().c()).ifPresent($$2x -> {
-                     $$2.a($$6, $$2x, false);
-                     if (!$$2x.y().c()) {
-                        $$2.e($$6);
-                     }
-                  });
+               if ($$1.a(edr.j)) {
+                  ess $$4 = ess.b(edw.this.a.a(edr.j.a()), new ess.a(0, 0.0));
+                  return new edb.c($$1, $$4);
                }
             }
 
-            return true;
+            ess $$5 = edw.this.a($$1.e().orElseThrow());
+            return new edb.c($$1, $$5);
+         }
+
+         private edb a(edb $$0) {
+            if ($$0 instanceof esp $$1) {
+               bam $$2 = $$3 ? this.a(0L) : edw.this.a.a(alz.b("terrain"));
+               return $$1.a($$2);
+            } else {
+               return (edb)($$0 instanceof edc.i ? new edc.i($$2) : $$0);
+            }
+         }
+
+         @Override
+         public edb apply(edb $$0) {
+            return this.d.computeIfAbsent($$0, this::a);
          }
       }
-   }
 
-   @Nullable
-   private dvv a(edr $$0, C $$1, jh $$2, ebc $$3) {
-      if ($$2.v() <= $$1.g.a($$0)) {
-         return g.g();
-      } else {
-         dvv $$4 = $$3.a(new ebj.e($$2.u(), $$2.v(), $$2.w()), 0.0);
-         if ($$4 == null) {
-            return b($$1) ? $$1.h.e() : null;
-         } else {
-            return b($$1) ? b($$1, $$4) : $$4;
+      this.c = $$0.i().a(new a());
+      edb.f $$4 = new edb.f() {
+         private final Map<edb, edb> a = new HashMap<>();
+
+         private edb a(edb $$0) {
+            if ($$0 instanceof edc.j $$1) {
+               return $$1.j().a();
+            } else {
+               return $$0 instanceof edc.l $$2 ? $$2.k() : $$0;
+            }
          }
-      }
+
+         @Override
+         public edb apply(edb $$0) {
+            return this.a.computeIfAbsent($$0, this::a);
+         }
+      };
+      this.d = new dil.f(this.c.e().a($$4), this.c.f().a($$4), this.c.g().a($$4), this.c.h().a($$4), this.c.i().a($$4), this.c.j().a($$4), $$0.k());
    }
 
-   private static dvv b(edp $$0, dvv $$1) {
-      if ($$1.a(dis.a)) {
-         return $$0.h.b();
-      } else if ($$1.a(dis.G)) {
-         dvv $$2 = $$0.h.c();
-         return $$2.b(dwl.C) ? $$2.b(dwl.C, Boolean.valueOf(true)) : $$2;
-      } else {
-         return $$1.a(dis.H) ? $$0.h.d() : $$1;
-      }
+   public ess a(aly<ess.a> $$0) {
+      return this.h.computeIfAbsent($$0, $$1 -> edr.a(this.b, this.a, $$0));
    }
 
-   public abstract boolean a(edr var1, C var2, dxq var3, Function<jh, jq<dgo>> var4, azu var5, ebc var6, des var7, dxp var8);
-
-   public abstract boolean a(C var1, azu var2);
-
-   protected boolean a(C $$0, dvv $$1) {
-      return $$1.a($$0.i);
+   public edv a(alz $$0) {
+      return this.i.computeIfAbsent($$0, $$1 -> this.a.a($$0).e());
    }
 
-   protected static boolean a(des $$0, double $$1, double $$2, int $$3, int $$4, float $$5) {
-      double $$6 = (double)$$0.b();
-      double $$7 = (double)$$0.c();
-      double $$8 = $$1 - $$6;
-      double $$9 = $$2 - $$7;
-      double $$10 = (double)($$4 - $$3);
-      double $$11 = (double)($$5 + 2.0F + 16.0F);
-      return $$8 * $$8 + $$9 * $$9 - $$10 * $$10 <= $$11 * $$11;
+   public edo a() {
+      return this.c;
    }
 
-   private static boolean b(edp $$0) {
-      return $$0.h.a();
+   public dil.f b() {
+      return this.d;
    }
 
-   public interface a {
-      boolean shouldSkip(edr var1, double var2, double var4, double var6, int var8);
+   public eea c() {
+      return this.e;
+   }
+
+   public edv d() {
+      return this.f;
+   }
+
+   public edv e() {
+      return this.g;
    }
 }

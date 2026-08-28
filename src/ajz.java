@@ -1,20 +1,20 @@
-public record ajz(long b) implements zq<ajy> {
-   public static final zh<wg, ajz> a = zq.a(ajz::a, ajz::new);
+import com.mojang.authlib.GameProfile;
+import io.netty.buffer.ByteBuf;
 
-   private ajz(wg $$0) {
-      this($$0.readLong());
+public record ajz(GameProfile b) implements aac<aju> {
+   public static final zt<ByteBuf, ajz> a = zt.a(zr.y, ajz::b, ajz::new);
+
+   @Override
+   public aae<ajz> a() {
+      return aka.b;
    }
 
-   private void a(wg $$0) {
-      $$0.b(this.b);
+   public void a(aju $$0) {
+      $$0.a(this);
    }
 
    @Override
-   public zs<ajz> a() {
-      return aka.a;
-   }
-
-   public void a(ajy $$0) {
-      $$0.a(this);
+   public boolean d() {
+      return true;
    }
 }

@@ -1,132 +1,72 @@
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
+import java.util.function.Consumer;
 
-public class um extends vb {
-   private static final int c = 16;
-   public static final um a = new um(0.0);
-   public static final vk<um> b = new vk.a<um>() {
-      public um a(DataInput $$0, uu $$1) throws IOException {
-         return um.a(d($$0, $$1));
-      }
-
-      @Override
-      public vf.b a(DataInput $$0, vf $$1, uu $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
-      }
-
-      private static double d(DataInput $$0, uu $$1) throws IOException {
-         $$1.b(16L);
-         return $$0.readDouble();
-      }
-
-      @Override
-      public int c() {
-         return 8;
-      }
-
-      @Override
-      public String a() {
-         return "DOUBLE";
-      }
-
-      @Override
-      public String b() {
-         return "TAG_Double";
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-   };
-   private final double w;
-
-   private um(double $$0) {
-      this.w = $$0;
+public record um(String a, String b, String c, dqu d, int e, long f, boolean g, boolean h, int i, int j, boolean k, Consumer<tr> l) {
+   public um(String $$0, String $$1, String $$2, int $$3, long $$4, boolean $$5, Consumer<tr> $$6) {
+      this($$0, $$1, $$2, dqu.a, $$3, $$4, $$5, false, 1, 1, false, $$6);
    }
 
-   public static um a(double $$0) {
-      return $$0 == 0.0 ? a : new um($$0);
+   public um(String $$0, String $$1, String $$2, dqu $$3, int $$4, long $$5, boolean $$6, Consumer<tr> $$7) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, 1, 1, false, $$7);
+   }
+
+   public void a(tr $$0) {
+      this.l.accept($$0);
    }
 
    @Override
-   public void a(DataOutput $$0) throws IOException {
-      $$0.writeDouble(this.w);
+   public String toString() {
+      return this.b;
    }
 
-   @Override
-   public int a() {
-      return 16;
+   public boolean a() {
+      return this.i > 1;
    }
 
-   @Override
-   public byte b() {
-      return 6;
+   public String b() {
+      return this.a;
    }
 
-   @Override
-   public vk<um> c() {
-      return b;
+   public String c() {
+      return this.b;
    }
 
-   public um e() {
-      return this;
+   public String d() {
+      return this.c;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof um && this.w == ((um)$$0).w;
+   public dqu e() {
+      return this.d;
    }
 
-   @Override
-   public int hashCode() {
-      long $$0 = Double.doubleToLongBits(this.w);
-      return (int)($$0 ^ $$0 >>> 32);
+   public int f() {
+      return this.e;
    }
 
-   @Override
-   public void a(vm $$0) {
-      $$0.a(this);
+   public long g() {
+      return this.f;
    }
 
-   @Override
-   public long f() {
-      return (long)Math.floor(this.w);
+   public boolean h() {
+      return this.g;
    }
 
-   @Override
-   public int g() {
-      return azm.a(this.w);
+   public boolean i() {
+      return this.h;
    }
 
-   @Override
-   public short h() {
-      return (short)(azm.a(this.w) & 65535);
+   public int j() {
+      return this.i;
    }
 
-   @Override
-   public byte i() {
-      return (byte)(azm.a(this.w) & 0xFF);
+   public int k() {
+      return this.j;
    }
 
-   @Override
-   public double j() {
-      return this.w;
+   public boolean l() {
+      return this.k;
    }
 
-   @Override
-   public float k() {
-      return (float)this.w;
-   }
-
-   @Override
-   public Number l() {
-      return this.w;
-   }
-
-   @Override
-   public vf.b a(vf $$0) {
-      return $$0.a(this.w);
+   public Consumer<tr> m() {
+      return this.l;
    }
 }

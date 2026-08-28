@@ -1,41 +1,21 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bxs extends bxa<cof> {
-   private static final int d = 1200;
-   final float c;
-
-   public bxs(float $$0) {
-      super(ImmutableMap.of(cel.d, cem.a), 1200);
-      this.c = $$0;
-   }
-
-   protected boolean a(arp $$0, cof $$1) {
-      return $$1.eb().g().map($$0x -> $$0x == cql.b || $$0x == cql.c || $$0x == cql.d).orElse(true);
-   }
-
-   protected boolean a(arp $$0, cof $$1, long $$2) {
-      return $$1.eb().a(cel.d);
-   }
-
-   protected void b(arp $$0, cof $$1, long $$2) {
-      bxc.a($$1, $$1.eb().c(cel.d).get().b(), this.c, 1);
-   }
-
-   protected void c(arp $$0, cof $$1, long $$2) {
-      Optional<jp> $$3 = $$1.eb().c(cel.d);
-      $$3.ifPresent($$1x -> {
-         jh $$2x = $$1x.b();
-         arp $$3x = $$0.p().a($$1x.a());
-         if ($$3x != null) {
-            cgl $$4 = $$3x.z();
-            if ($$4.a($$2x, $$0xx -> true)) {
-               $$4.b($$2x);
-            }
-
-            agt.c($$0, $$2x);
-         }
-      });
-      $$1.eb().b(cel.d);
+public class bxs {
+   public static bzf<bwd> a(int $$0, float $$1) {
+      return cbh.a(
+         (Function<cbh.b<bwd>, ? extends App<cbh.c<bwd>, cbk<bwd>>>)($$2 -> $$2.group($$2.c(cff.m), $$2.a(cff.n), $$2.b(cff.o), $$2.b(cff.h))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
+                     bwb $$9 = $$2.b($$5);
+                     if ($$9.a($$7, (double)$$0) && $$2.<cfh>b($$6).a($$9)) {
+                        $$4.a(new byf($$9, true));
+                        $$7.I().a(-$$1, 0.0F);
+                        $$7.v(bae.c($$7.dL(), $$7.aZ, 0.0F));
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

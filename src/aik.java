@@ -1,18 +1,29 @@
-import java.util.Optional;
+public class aik implements aac<ahm> {
+   public static final zt<ws, aik> a = aac.a(aik::a, aik::new);
+   private final boolean b;
 
-public record aik(Optional<jq<bto>> b, Optional<jq<bto>> c) implements zq<agw> {
-   public static final zh<wu, aik> a = zh.a(bto.b.a(zf::a), aik::b, bto.b.a(zf::a), aik::e, aik::new);
-
-   @Override
-   public zs<aik> a() {
-      return agu.bV;
+   public aik(boolean $$0) {
+      this.b = $$0;
    }
 
-   public void a(agw $$0) {
+   private aik(ws $$0) {
+      this.b = $$0.readBoolean();
+   }
+
+   private void a(ws $$0) {
+      $$0.a(this.b);
+   }
+
+   @Override
+   public aae<aik> a() {
+      return ahk.bH;
+   }
+
+   public void a(ahm $$0) {
       $$0.a(this);
    }
 
-   public Optional<jq<bto>> e() {
-      return this.c;
+   public boolean b() {
+      return this.b;
    }
 }

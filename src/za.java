@@ -1,7 +1,10 @@
-import com.mojang.serialization.MapCodec;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public interface za<T extends yz> {
-   MapCodec<T> a();
+public class za {
+   static Function<String, Supplier<xv>> a = $$0 -> () -> xv.b($$0);
 
-   zh<wu, T> b();
+   public static void a(Function<String, Supplier<xv>> $$0) {
+      a = $$0;
+   }
 }

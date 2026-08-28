@@ -1,60 +1,24 @@
-public class bup {
-   public static final byte a = 1;
-   public static final byte b = 3;
-   public static final byte c = 4;
-   public static final byte d = 5;
-   public static final byte e = 6;
-   public static final byte f = 7;
-   public static final byte g = 8;
-   public static final byte h = 9;
-   public static final byte i = 10;
-   public static final byte j = 11;
-   public static final byte k = 12;
-   public static final byte l = 13;
-   public static final byte m = 14;
-   public static final byte n = 15;
-   public static final byte o = 16;
-   public static final byte p = 17;
-   public static final byte q = 18;
-   public static final byte r = 19;
-   public static final byte s = 20;
-   public static final byte t = 21;
-   public static final byte u = 22;
-   public static final byte v = 23;
-   public static final byte w = 24;
-   public static final byte x = 25;
-   public static final byte y = 26;
-   public static final byte z = 27;
-   public static final byte A = 28;
-   public static final byte B = 29;
-   public static final byte C = 30;
-   public static final byte D = 31;
-   public static final byte E = 32;
-   public static final byte F = 34;
-   public static final byte G = 35;
-   public static final byte H = 38;
-   public static final byte I = 39;
-   public static final byte J = 40;
-   public static final byte K = 41;
-   public static final byte L = 42;
-   public static final byte M = 45;
-   public static final byte N = 46;
-   public static final byte O = 47;
-   public static final byte P = 48;
-   public static final byte Q = 49;
-   public static final byte R = 50;
-   public static final byte S = 51;
-   public static final byte T = 52;
-   public static final byte U = 53;
-   public static final byte V = 54;
-   public static final byte W = 55;
-   public static final byte X = 56;
-   public static final byte Y = 58;
-   public static final byte Z = 59;
-   public static final byte aa = 60;
-   public static final byte ab = 61;
-   public static final byte ac = 62;
-   public static final byte ad = 63;
-   public static final byte ae = 64;
-   public static final byte af = 65;
+class bup extends bui {
+   protected bup(buj $$0, int $$1, lq $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 == 1;
+   }
+
+   @Override
+   public boolean a(ash $$0, bwb $$1, int $$2) {
+      if ($$1 instanceof asi $$3 && !$$1.aa_()) {
+         jh $$4 = $$3.ag();
+         if ($$4 != null) {
+            $$0.A().a($$3, $$4);
+            $$3.af();
+            return false;
+         }
+      }
+
+      return true;
+   }
 }

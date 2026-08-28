@@ -1,146 +1,122 @@
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-public class byp<E extends bvp> extends bxa<E> {
-   public static final int c = 160;
-   private final ToIntFunction<E> d;
-   private final int e;
-   private final int f;
-   private final float g;
-   private final cfy h;
-   private final int i;
-   private final Function<E, awm> j;
-   private Optional<Long> k = Optional.empty();
-   private Optional<byp.a> l = Optional.empty();
+public class byp extends bxu<cpe> {
+   private static final int d = 200;
+   public static final float c = 0.5F;
+   @Nullable
+   private jh e;
+   private long f;
+   private int g;
+   private final List<jh> h = Lists.newArrayList();
 
-   public byp(ToIntFunction<E> $$0, int $$1, int $$2, float $$3, cfy $$4, int $$5, Function<E, awm> $$6) {
-      super(ImmutableMap.of(cel.n, cem.c, cel.V, cem.b, cel.h, cem.a, cel.W, cem.b), 160);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
+   public byp() {
+      super(ImmutableMap.of(cff.n, cfg.b, cff.m, cfg.b, cff.f, cfg.a));
    }
 
-   protected void a(arp $$0, bvp $$1, long $$2) {
-      bwj<?> $$3 = $$1.eb();
-      $$3.c(cel.h).flatMap($$2x -> $$2x.a($$2xx -> this.h.a($$0, $$1, $$2xx))).ifPresent($$1x -> this.b($$1, $$1x));
-   }
-
-   protected void b(arp $$0, E $$1, long $$2) {
-      bwj<?> $$3 = $$1.eb();
-      if (!$$3.a(cel.W)) {
-         $$0.a($$1, (byte)59);
-         $$3.a(cel.V, this.d.applyAsInt($$1));
-      }
-   }
-
-   protected boolean c(arp $$0, bvp $$1, long $$2) {
-      return this.l.isPresent() && this.l.get().c().bL();
-   }
-
-   protected void d(arp $$0, E $$1, long $$2) {
-      if (!this.l.isEmpty()) {
-         $$1.eb().a(cel.m, new ceo(this.l.get().a(), this.g, 0));
-         $$1.eb().a(cel.n, new bxl(this.l.get().c(), true));
-         boolean $$3 = !this.l.get().c().dv().equals(this.l.get().b());
-         if ($$3) {
-            $$0.a($$1, (byte)59);
-            $$1.L().o();
-            this.b($$1, this.l.get().c);
-         } else {
-            jh $$4 = $$1.dv();
-            if ($$4.equals(this.l.get().a())) {
-               $$0.a($$1, (byte)58);
-               if (this.k.isEmpty()) {
-                  this.k = Optional.of($$2);
-               }
-
-               if ($$2 - this.k.get() >= (long)this.i) {
-                  $$1.eb().a(cel.W, this.a($$4, this.l.get().b()));
-                  $$0.a(null, $$1, this.j.apply($$1), awo.g, 1.0F, $$1.ff());
-                  this.l = Optional.empty();
-               }
-            }
-         }
-      }
-   }
-
-   private ezy a(jh $$0, jh $$1) {
-      double $$2 = 0.5;
-      double $$3 = 0.5 * (double)azm.j((double)($$1.u() - $$0.u()));
-      double $$4 = 0.5 * (double)azm.j((double)($$1.w() - $$0.w()));
-      return ezy.c($$1).b($$3, 0.0, $$4);
-   }
-
-   private Optional<jh> a(bvp $$0, bvh $$1) {
-      jh $$2 = $$1.dv();
-      if (!this.a($$0, $$2)) {
-         return Optional.empty();
+   protected boolean a(ash $$0, cpe $$1) {
+      if (!$$0.N().b(dgw.c)) {
+         return false;
+      } else if ($$1.gw().b() != cph.g) {
+         return false;
       } else {
-         List<jh> $$3 = Lists.newArrayList();
-         jh.a $$4 = $$2.k();
+         jh.a $$2 = $$1.dv().k();
+         this.h.clear();
 
-         for (jm $$5 : jm.c.a) {
-            $$4.g($$2);
-
-            for (int $$6 = 0; $$6 < this.f; $$6++) {
-               if (!this.a($$0, $$4.c($$5))) {
-                  $$4.c($$5.g());
-                  break;
+         for (int $$3 = -1; $$3 <= 1; $$3++) {
+            for (int $$4 = -1; $$4 <= 1; $$4++) {
+               for (int $$5 = -1; $$5 <= 1; $$5++) {
+                  $$2.b($$1.dA() + (double)$$3, $$1.dC() + (double)$$4, $$1.dG() + (double)$$5);
+                  if (this.a($$2, $$0)) {
+                     this.h.add(new jh($$2));
+                  }
                }
-            }
-
-            if ($$4.k($$2) >= this.e) {
-               $$3.add($$4.j());
             }
          }
 
-         cet $$7 = $$0.L();
-         return $$3.stream().sorted(Comparator.comparingDouble($$0.dv()::j)).filter($$1x -> {
-            esj $$2x = $$7.a($$1x, 0);
-            return $$2x != null && $$2x.j();
-         }).findFirst();
+         this.e = this.a($$0);
+         return this.e != null;
       }
    }
 
-   private boolean a(bvp $$0, jh $$1) {
-      return $$0.L().a($$1) && $$0.a(esr.b($$0, $$1)) == 0.0F;
+   @Nullable
+   private jh a(ash $$0) {
+      return this.h.isEmpty() ? null : this.h.get($$0.H_().a(this.h.size()));
    }
 
-   private void b(bvp $$0, bvh $$1) {
-      this.k = Optional.empty();
-      this.l = this.a($$0, $$1).map($$1x -> new byp.a($$1x, $$1.dv(), $$1));
+   private boolean a(jh $$0, ash $$1) {
+      dxn $$2 = $$1.a_($$0);
+      dke $$3 = $$2.b();
+      dke $$4 = $$1.a_($$0.e()).b();
+      return $$3 instanceof dmb && ((dmb)$$3).i($$2) || $$2.l() && $$4 instanceof dnc;
    }
 
-   public static class a {
-      private final jh a;
-      private final jh b;
-      final bvh c;
-
-      public a(jh $$0, jh $$1, bvh $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+   protected void a(ash $$0, cpe $$1, long $$2) {
+      if ($$2 > this.f && this.e != null) {
+         $$1.eb().a(cff.n, new bxx(this.e));
+         $$1.eb().a(cff.m, new cfi(new bxx(this.e), 0.5F, 1));
       }
+   }
 
-      public jh a() {
-         return this.a;
-      }
+   protected void b(ash $$0, cpe $$1, long $$2) {
+      $$1.eb().b(cff.n);
+      $$1.eb().b(cff.m);
+      this.g = 0;
+      this.f = $$2 + 40L;
+   }
 
-      public jh b() {
-         return this.b;
-      }
+   protected void c(ash $$0, cpe $$1, long $$2) {
+      if (this.e == null || this.e.a($$1.dt(), 1.0)) {
+         if (this.e != null && $$2 > this.f) {
+            dxn $$3 = $$0.a_(this.e);
+            dke $$4 = $$3.b();
+            dke $$5 = $$0.a_(this.e.e()).b();
+            if ($$4 instanceof dmb && ((dmb)$$4).i($$3)) {
+               $$0.a(this.e, true, $$1);
+            }
 
-      public bvh c() {
-         return this.c;
+            if ($$3.l() && $$5 instanceof dnc && $$1.gF()) {
+               btl $$6 = $$1.t();
+
+               for (int $$7 = 0; $$7 < $$6.b(); $$7++) {
+                  cxk $$8 = $$6.a($$7);
+                  boolean $$9 = false;
+                  if (!$$8.f() && $$8.a(ayd.bP) && $$8.h() instanceof cvq $$10) {
+                     dxn $$11 = $$10.d().m();
+                     $$0.b(this.e, $$11);
+                     $$0.a(ecj.i, this.e, ecj.a.a($$1, $$11));
+                     $$9 = true;
+                  }
+
+                  if ($$9) {
+                     $$0.a(null, (double)this.e.u(), (double)this.e.v(), (double)this.e.w(), axf.gF, axg.e, 1.0F, 1.0F);
+                     $$8.h(1);
+                     if ($$8.f()) {
+                        $$6.a($$7, cxk.k);
+                     }
+                     break;
+                  }
+               }
+            }
+
+            if ($$4 instanceof dmb && !((dmb)$$4).i($$3)) {
+               this.h.remove(this.e);
+               this.e = this.a($$0);
+               if (this.e != null) {
+                  this.f = $$2 + 20L;
+                  $$1.eb().a(cff.m, new cfi(new bxx(this.e), 0.5F, 1));
+                  $$1.eb().a(cff.n, new bxx(this.e));
+               }
+            }
+         }
+
+         this.g++;
       }
+   }
+
+   protected boolean d(ash $$0, cpe $$1, long $$2) {
+      return this.g < 200;
    }
 }

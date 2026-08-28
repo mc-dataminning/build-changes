@@ -1,127 +1,55 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.BiPredicate;
+public interface ecx extends bam {
+   float b = 5.9604645E-8F;
+   double c = 1.110223E-16F;
 
-public interface ecx extends BiPredicate<dgk, jh> {
-   Codec<ecx> b = lz.M.q().dispatch(ecx::a, ecy::codec);
-   ecx c = a(dis.a);
-   ecx d = a(dis.a, dis.G);
+   int c(int var1);
 
-   ecy<?> a();
-
-   static ecx a(List<ecx> $$0) {
-      return new ecv($$0);
+   @Override
+   default int f() {
+      return this.c(32);
    }
 
-   static ecx a(ecx... $$0) {
-      return a(List.of($$0));
+   @Override
+   default int a(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Bound must be positive");
+      } else if (($$0 & $$0 - 1) == 0) {
+         return (int)((long)$$0 * (long)this.c(31) >> 31);
+      } else {
+         int $$1;
+         int $$2;
+         do {
+            $$1 = this.c(31);
+            $$2 = $$1 % $$0;
+         } while ($$1 - $$2 + ($$0 - 1) < 0);
+
+         return $$2;
+      }
    }
 
-   static ecx a(ecx $$0, ecx $$1) {
-      return a(List.of($$0, $$1));
+   @Override
+   default long g() {
+      int $$0 = this.c(32);
+      int $$1 = this.c(32);
+      long $$2 = (long)$$0 << 32;
+      return $$2 + (long)$$1;
    }
 
-   static ecx b(List<ecx> $$0) {
-      return new ecw($$0);
+   @Override
+   default boolean h() {
+      return this.c(1) != 0;
    }
 
-   static ecx b(ecx... $$0) {
-      return b(List.of($$0));
+   @Override
+   default float i() {
+      return (float)this.c(24) * 5.9604645E-8F;
    }
 
-   static ecx b(ecx $$0, ecx $$1) {
-      return b(List.of($$0, $$1));
-   }
-
-   static ecx a(kl $$0, List<diq> $$1) {
-      return new edd($$0, ju.a(diq::p, $$1));
-   }
-
-   static ecx c(List<diq> $$0) {
-      return a(kl.g, $$0);
-   }
-
-   static ecx a(kl $$0, diq... $$1) {
-      return a($$0, List.of($$1));
-   }
-
-   static ecx a(diq... $$0) {
-      return a(kl.g, $$0);
-   }
-
-   static ecx a(kl $$0, axs<diq> $$1) {
-      return new edc($$0, $$1);
-   }
-
-   static ecx a(axs<diq> $$0) {
-      return a(kl.g, $$0);
-   }
-
-   static ecx b(kl $$0, List<eru> $$1) {
-      return new ede($$0, ju.a(eru::k, $$1));
-   }
-
-   static ecx a(kl $$0, eru... $$1) {
-      return b($$0, List.of($$1));
-   }
-
-   static ecx a(eru... $$0) {
-      return a(kl.g, $$0);
-   }
-
-   static ecx a(ecx $$0) {
-      return new edf($$0);
-   }
-
-   static ecx a(kl $$0) {
-      return new edg($$0);
-   }
-
-   static ecx b() {
-      return a(kl.g);
-   }
-
-   static ecx a(dvv $$0, kl $$1) {
-      return new edl($$1, $$0);
-   }
-
-   static ecx a(kl $$0, jm $$1) {
-      return new eda($$0, $$1);
-   }
-
-   static ecx a(jm $$0) {
-      return a(kl.g, $$0);
-   }
-
-   static ecx b(kl $$0) {
-      return new edh($$0);
-   }
-
-   static ecx c() {
-      return b(kl.g);
-   }
-
-   static ecx d() {
-      return c(kl.g);
-   }
-
-   static ecx c(kl $$0) {
-      return a($$0, erw.a);
-   }
-
-   static ecx d(kl $$0) {
-      return new edb($$0);
-   }
-
-   static ecx e() {
-      return edj.a;
-   }
-
-   static ecx e(kl $$0) {
-      return new edk($$0);
-   }
-
-   static ecx f() {
-      return e(kl.g);
+   @Override
+   default double j() {
+      int $$0 = this.c(26);
+      int $$1 = this.c(27);
+      long $$2 = ((long)$$0 << 27) + (long)$$1;
+      return (double)$$2 * 1.110223E-16F;
    }
 }

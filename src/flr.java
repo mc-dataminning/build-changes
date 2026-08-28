@@ -1,22 +1,39 @@
-import java.util.Set;
+import java.util.function.IntFunction;
 
-public class flr extends hai {
-   private static final Set<aub<?>> a = Set.of(haq.a, haw.c);
+public enum flr implements bah {
+   a(0, "options.graphics.fast"),
+   b(1, "options.graphics.fancy"),
+   c(2, "options.graphics.fabulous");
 
-   public flr(gzf $$0) {
-      super($$0, alj.b("textures/atlas/gui.png"), alj.b("gui"), a);
+   private static final IntFunction<flr> d = ayv.a(flr::b, values(), ayv.a.b);
+   private final int e;
+   private final String f;
+
+   private flr(final int $$0, final String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
-   public gze a(alj $$0) {
-      return super.a($$0);
+   public int b() {
+      return this.e;
    }
 
-   public hax a(gze $$0) {
-      return this.b($$0).a();
+   @Override
+   public String a() {
+      return this.f;
    }
 
-   private haw b(gze $$0) {
-      return $$0.e().f().a(haw.c).orElse(haw.a);
+   @Override
+   public String toString() {
+      return switch (this) {
+         case a -> "fast";
+         case b -> "fancy";
+         case c -> "fabulous";
+      };
+   }
+
+   public static flr a(int $$0) {
+      return d.apply($$0);
    }
 }

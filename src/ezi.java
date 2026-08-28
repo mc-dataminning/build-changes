@@ -1,32 +1,60 @@
-import net.minecraft.server.MinecraftServer;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class ezi implements ezj<MinecraftServer> {
-   final alj a;
+public abstract class ezi implements ezs {
+   protected final List<ezs> c;
+   private final Predicate<ewh> a;
 
-   public ezi(alj $$0) {
-      this.a = $$0;
+   protected ezi(List<ezs> $$0, Predicate<ewh> $$1) {
+      this.c = $$0;
+      this.a = $$1;
    }
 
-   public void a(MinecraftServer $$0, ezl<MinecraftServer> $$1, long $$2) {
-      aly $$3 = $$0.aE();
+   protected static <T extends ezi> MapCodec<T> a(Function<List<ezs>, T> $$0) {
+      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(ezs.e.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
+   }
 
-      for (ik<ew> $$5 : $$3.b(this.a)) {
-         $$3.a($$5, $$3.c());
+   protected static <T extends ezi> Codec<T> b(Function<List<ezs>, T> $$0) {
+      return ezs.e.listOf().xmap($$0, $$0x -> $$0x.c);
+   }
+
+   public final boolean a(ewh $$0) {
+      return this.a.test($$0);
+   }
+
+   @Override
+   public void a(ewn $$0) {
+      ezs.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
       }
    }
 
-   public static class a extends ezj.a<MinecraftServer, ezi> {
-      public a() {
-         super(alj.b("function_tag"), ezi.class);
+   public abstract static class a implements ezs.a {
+      private final Builder<ezs> a = ImmutableList.builder();
+
+      protected a(ezs.a... $$0) {
+         for (ezs.a $$1 : $$0) {
+            this.a.add($$1.build());
+         }
       }
 
-      public void a(ul $$0, ezi $$1) {
-         $$0.a("Name", $$1.a.toString());
+      public void a(ezs.a $$0) {
+         this.a.add($$0.build());
       }
 
-      public ezi a(ul $$0) {
-         alj $$1 = alj.a($$0.l("Name"));
-         return new ezi($$1);
+      @Override
+      public ezs build() {
+         return this.a(this.a.build());
       }
+
+      protected abstract ezs a(List<ezs> var1);
    }
 }

@@ -1,99 +1,56 @@
+import com.google.common.collect.Sets;
 import java.util.EnumSet;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Set;
 
-public class cdt extends ccf {
-   private final ccf a;
-   private final int b;
-   private boolean c;
+public class cdt<T extends crg> extends ccz {
+   private static final int a = 20;
+   private static final float b = 1.0F;
+   private final T c;
+   private int d;
 
-   public cdt(int $$0, ccf $$1) {
-      this.b = $$0;
-      this.a = $$1;
-   }
-
-   public boolean a(cdt $$0) {
-      return this.S_() && $$0.i() < this.i();
+   public cdt(T $$0) {
+      this.c = $$0;
+      this.a(EnumSet.of(ccz.a.a));
    }
 
    @Override
    public boolean b() {
-      return this.a.b();
+      return this.c.O_() == null && !this.c.cY() && this.c.gC() && !this.c.gz().a() && !((ash)this.c.dV()).c(this.c.dv());
    }
 
    @Override
    public boolean c() {
-      return this.a.c();
-   }
-
-   @Override
-   public boolean S_() {
-      return this.a.S_();
-   }
-
-   @Override
-   public void d() {
-      if (!this.c) {
-         this.c = true;
-         this.a.d();
-      }
-   }
-
-   @Override
-   public void e() {
-      if (this.c) {
-         this.c = false;
-         this.a.e();
-      }
-   }
-
-   @Override
-   public boolean T_() {
-      return this.a.T_();
-   }
-
-   @Override
-   protected int a(int $$0) {
-      return this.a.a($$0);
+      return this.c.gC() && !this.c.gz().a() && this.c.dV() instanceof ash && !((ash)this.c.dV()).c(this.c.dv());
    }
 
    @Override
    public void a() {
-      this.a.a();
-   }
+      if (this.c.gC()) {
+         crf $$0 = this.c.gz();
+         if (this.c.af > this.d) {
+            this.d = this.c.af + 20;
+            this.a($$0);
+         }
 
-   @Override
-   public void a(EnumSet<ccf.a> $$0) {
-      this.a.a($$0);
-   }
-
-   @Override
-   public EnumSet<ccf.a> j() {
-      return this.a.j();
-   }
-
-   public boolean h() {
-      return this.c;
-   }
-
-   public int i() {
-      return this.b;
-   }
-
-   public ccf k() {
-      return this.a;
-   }
-
-   @Override
-   public boolean equals(@Nullable Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? this.a.equals(((cdt)$$0).a) : false;
+         if (!this.c.gi()) {
+            fbs $$1 = cgw.a(this.c, 15, 4, fbs.c($$0.s()), (float) (Math.PI / 2));
+            if ($$1 != null) {
+               this.c.L().a($$1.d, $$1.e, $$1.f, 1.0);
+            }
+         }
       }
    }
 
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
+   private void a(crf $$0) {
+      if ($$0.u()) {
+         Set<crg> $$1 = Sets.newHashSet();
+         List<crg> $$2 = this.c.dV().a(crg.class, this.c.cR().g(16.0), $$1x -> !$$1x.gC() && crh.a($$1x, $$0));
+         $$1.addAll($$2);
+
+         for (crg $$3 : $$1) {
+            $$0.a($$0.k(), $$3, null, true);
+         }
+      }
    }
 }

@@ -1,23 +1,31 @@
-import io.netty.buffer.ByteBuf;
+public record abo(int c, eud d, float e) implements abf {
+   public static final zt<ws, abo> a = abf.a(abo::a, abo::new);
+   public static final abf.b<abo> b = abf.a("debug/path");
 
-public class abo implements zq<abn> {
-   public static final abo a = new abo();
-   public static final zh<ByteBuf, abo> b = zh.a(a);
+   private abo(ws $$0) {
+      this($$0.readInt(), eud.b($$0), $$0.readFloat());
+   }
 
-   private abo() {
+   private void a(ws $$0) {
+      $$0.q(this.c);
+      this.d.a($$0);
+      $$0.a(this.e);
    }
 
    @Override
-   public zs<abo> a() {
-      return abt.a;
+   public abf.b<abo> a() {
+      return b;
    }
 
-   public void a(abn $$0) {
-      $$0.a(this);
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public eud c() {
+      return this.d;
+   }
+
+   public float d() {
+      return this.e;
    }
 }

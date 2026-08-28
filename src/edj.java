@@ -1,18 +1,82 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.concurrent.atomic.AtomicLong;
 
-class edj implements ecx {
-   public static edj a = new edj();
-   public static final MapCodec<edj> e = MapCodec.unit(() -> a);
+public class edj implements ecx {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final edk i = new edk(this);
 
-   private edj() {
-   }
-
-   public boolean a(dgk $$0, jh $$1) {
-      return true;
+   public edj(long $$0) {
+      this.b($$0);
    }
 
    @Override
-   public ecy<?> a() {
-      return ecy.l;
+   public bam d() {
+      return new edj(this.g());
+   }
+
+   @Override
+   public edv e() {
+      return new edj.a(this.g());
+   }
+
+   @Override
+   public void b(long $$0) {
+      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
+         throw bbd.a("LegacyRandomSource", null);
+      } else {
+         this.i.a();
+      }
+   }
+
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h.get();
+      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      if (!this.h.compareAndSet($$1, $$2)) {
+         throw bbd.a("LegacyRandomSource", null);
+      } else {
+         return (int)($$2 >> 48 - $$0);
+      }
+   }
+
+   @Override
+   public double k() {
+      return this.i.b();
+   }
+
+   public static class a implements edv {
+      private final long a;
+
+      public a(long $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public bam a(int $$0, int $$1, int $$2) {
+         long $$3 = bae.b($$0, $$1, $$2);
+         long $$4 = $$3 ^ this.a;
+         return new edj($$4);
+      }
+
+      @Override
+      public bam a(String $$0) {
+         int $$1 = $$0.hashCode();
+         return new edj((long)$$1 ^ this.a);
+      }
+
+      @Override
+      public bam a(long $$0) {
+         return new edj($$0);
+      }
+
+      @VisibleForTesting
+      @Override
+      public void a(StringBuilder $$0) {
+         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
+      }
    }
 }

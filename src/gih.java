@@ -1,36 +1,57 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
-
-public class gih implements bqf {
-   private final gjc a;
-   private final Set<bqd> b = new ObjectOpenHashSet();
-   private final bql c = new bql();
-
-   public gih(LongSupplier $$0, gjc $$1) {
-      this.a = $$1;
-      this.b.add(bqm.a($$0));
-      this.a();
-   }
-
-   private void a() {
-      this.b.addAll(bqm.a());
-      this.b.add(bqd.a("totalChunks", bqc.f, this.a, gjc::h));
-      this.b.add(bqd.a("renderedChunks", bqc.f, this.a, gjc::j));
-      this.b.add(bqd.a("lastViewDistance", bqc.f, this.a, gjc::i));
-      gmt $$0 = this.a.g();
-      this.b.add(bqd.a("toUpload", bqc.g, $$0, gmt::c));
-      this.b.add(bqd.a("freeBufferCount", bqc.g, $$0, gmt::d));
-      this.b.add(bqd.a("toBatchCount", bqc.g, $$0, gmt::b));
-      if (fek.a().isPresent()) {
-         this.b.add(bqd.a("gpuUtilization", bqc.i, fke.Q(), fke::v));
-      }
+public class gih extends gjl {
+   gih(gfd $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.u = 0.75F;
+      this.B = 0.999F;
+      this.j *= 0.8F;
+      this.k *= 0.8F;
+      this.l *= 0.8F;
+      this.k = (double)(this.r.i() * 0.4F + 0.05F);
+      this.D = this.D * (this.r.i() * 2.0F + 0.2F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
-   public Set<bqd> a(Supplier<bor> $$0) {
-      this.b.addAll(this.c.a($$0));
-      return this.b;
+   public gip b() {
+      return gip.b;
+   }
+
+   @Override
+   public int a(float $$0) {
+      int $$1 = super.a($$0);
+      int $$2 = 240;
+      int $$3 = $$1 >> 16 & 0xFF;
+      return 240 | $$3 << 16;
+   }
+
+   @Override
+   public float b(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      return this.D * (1.0F - $$1 * $$1);
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      if (!this.o) {
+         float $$0 = (float)this.s / (float)this.t;
+         if (this.r.i() > $$0) {
+            this.c.a(ls.af, this.g, this.h, this.i, this.j, this.k, this.l);
+         }
+      }
+   }
+
+   public static class a implements gio<lw> {
+      private final gjg a;
+
+      public a(gjg $$0) {
+         this.a = $$0;
+      }
+
+      public gil a(lw $$0, gfd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gih $$8 = new gih($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

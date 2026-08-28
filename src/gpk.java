@@ -1,72 +1,107 @@
-@FunctionalInterface
-public interface gpk<T extends bul> {
-   gpj<T, ?> create(gpk.a var1);
+import java.time.Duration;
+import java.time.Instant;
+import javax.annotation.Nullable;
+import org.joml.Matrix4f;
+import org.joml.Vector4f;
 
-   public static class a {
-      private final gpi a;
-      private final gqi b;
-      private final gjf c;
-      private final gkj d;
-      private final avd e;
-      private final gch f;
-      private final hbl g;
-      private final flo h;
-      private final gtj i;
+public class gpk implements gpe.a {
+   private static final Duration a = Duration.ofMillis(500L);
+   private static final int b = 10;
+   private static final Vector4f c = new Vector4f(1.0F, 1.0F, 0.0F, 0.25F);
+   private static final Vector4f d = new Vector4f(0.25F, 0.125F, 0.0F, 0.125F);
+   private final flz e;
+   private final dhj f;
+   private Instant g = Instant.now();
+   @Nullable
+   private gpk.a h;
 
-      public a(gpi $$0, gqi $$1, gjf $$2, gkj $$3, avd $$4, gch $$5, hbl $$6, flo $$7) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-         this.h = $$7;
-         this.i = new gtj($$6, this.i().a(gkb.g));
+   public gpk(flz $$0, dhj $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   @Override
+   public void a(fgl $$0, gle $$1, double $$2, double $$3, double $$4) {
+      Instant $$5 = Instant.now();
+      if (this.h == null || Duration.between(this.g, $$5).compareTo(a) > 0) {
+         this.g = $$5;
+         this.h = new gpk.a(this.e.s.C_(), kj.a(this.e.t.dv()), 10, this.f);
       }
 
-      public gpi a() {
-         return this.a;
-      }
+      a($$0, this.h.a, this.h.c, $$1, $$2, $$3, $$4, c);
+      a($$0, this.h.b, this.h.c, $$1, $$2, $$3, $$4, d);
+      fgp $$6 = $$1.getBuffer(glo.F());
+      a($$0, this.h.a, this.h.c, $$6, $$2, $$3, $$4, c);
+      a($$0, this.h.b, this.h.c, $$6, $$2, $$3, $$4, d);
+   }
 
-      public gqi b() {
-         return this.b;
-      }
+   private static void a(fgl $$0, fcb $$1, kj $$2, fgp $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
+      $$1.a(($$7x, $$8, $$9, $$10) -> {
+         int $$11 = $$8 + $$2.u();
+         int $$12 = $$9 + $$2.v();
+         int $$13 = $$10 + $$2.w();
+         a($$0, $$3, $$7x, $$4, $$5, $$6, $$11, $$12, $$13, $$7);
+      });
+   }
 
-      public gjf c() {
-         return this.c;
-      }
+   private static void a(fgl $$0, fcb $$1, kj $$2, gle $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
+      $$1.a(($$7x, $$8, $$9, $$10, $$11, $$12) -> {
+         int $$13 = $$7x + $$2.u();
+         int $$14 = $$8 + $$2.v();
+         int $$15 = $$9 + $$2.w();
+         int $$16 = $$10 + $$2.u();
+         int $$17 = $$11 + $$2.v();
+         int $$18 = $$12 + $$2.w();
+         fgp $$19 = $$3.getBuffer(glo.a(1.0));
+         a($$0, $$19, $$4, $$5, $$6, $$13, $$14, $$15, $$16, $$17, $$18, $$7);
+      }, true);
+   }
 
-      public gkj d() {
-         return this.d;
-      }
+   private static void a(fgl $$0, fgp $$1, jm $$2, double $$3, double $$4, double $$5, int $$6, int $$7, int $$8, Vector4f $$9) {
+      float $$10 = (float)((double)kj.c($$6) - $$3);
+      float $$11 = (float)((double)kj.c($$7) - $$4);
+      float $$12 = (float)((double)kj.c($$8) - $$5);
+      gly.a($$0, $$1, $$2, $$10, $$11, $$12, $$10 + 16.0F, $$11 + 16.0F, $$12 + 16.0F, $$9.x(), $$9.y(), $$9.z(), $$9.w());
+   }
 
-      public avd e() {
-         return this.e;
-      }
+   private static void a(fgl $$0, fgp $$1, double $$2, double $$3, double $$4, int $$5, int $$6, int $$7, int $$8, int $$9, int $$10, Vector4f $$11) {
+      float $$12 = (float)((double)kj.c($$5) - $$2);
+      float $$13 = (float)((double)kj.c($$6) - $$3);
+      float $$14 = (float)((double)kj.c($$7) - $$4);
+      float $$15 = (float)((double)kj.c($$8) - $$2);
+      float $$16 = (float)((double)kj.c($$9) - $$3);
+      float $$17 = (float)((double)kj.c($$10) - $$4);
+      Matrix4f $$18 = $$0.c().a();
+      $$1.a($$18, $$12, $$13, $$14).a($$11.x(), $$11.y(), $$11.z(), 1.0F);
+      $$1.a($$18, $$15, $$16, $$17).a($$11.x(), $$11.y(), $$11.z(), 1.0F);
+   }
 
-      public gch f() {
-         return this.f;
-      }
+   static final class a {
+      final fcb a;
+      final fcb b;
+      final kj c;
 
-      public hbl g() {
-         return this.g;
-      }
+      a(ete $$0, kj $$1, int $$2, dhj $$3) {
+         int $$4 = $$2 * 2 + 1;
+         this.a = new fbv($$4, $$4, $$4);
+         this.b = new fbv($$4, $$4, $$4);
 
-      public gtj h() {
-         return this.i;
-      }
+         for (int $$5 = 0; $$5 < $$4; $$5++) {
+            for (int $$6 = 0; $$6 < $$4; $$6++) {
+               for (int $$7 = 0; $$7 < $$4; $$7++) {
+                  kj $$8 = kj.a($$1.a() + $$7 - $$2, $$1.b() + $$6 - $$2, $$1.c() + $$5 - $$2);
+                  etd.b $$9 = $$0.b($$3, $$8);
+                  if ($$9 == etd.b.c) {
+                     this.a.c($$7, $$6, $$5);
+                     this.b.c($$7, $$6, $$5);
+                  } else if ($$9 == etd.b.b) {
+                     this.b.c($$7, $$6, $$5);
+                  }
+               }
+            }
+         }
 
-      public hbt i() {
-         return this.d.a().a();
-      }
-
-      public gcl a(gcj $$0) {
-         return this.f.a($$0);
-      }
-
-      public flo j() {
-         return this.h;
+         this.c = kj.a($$1.a() - $$2, $$1.b() - $$2, $$1.c() - $$2);
       }
    }
 }

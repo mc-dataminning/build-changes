@@ -1,4 +1,8 @@
-public interface aus extends avd, AutoCloseable {
-   @Override
-   void close();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aus {
 }

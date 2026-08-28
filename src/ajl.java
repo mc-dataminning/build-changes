@@ -1,6 +1,53 @@
-public class ajl {
-   public static final wr.a<ajm, wg> a = zv.a(we.d, $$0 -> $$0.a(ajk.g, ajo.a).a(ajk.h, ajp.a).a(ajk.f, ajn.a).a(ajk.i, ajq.b).a(acb.b, acd.a));
-   public static final wr<ajm> b = a.a(wg::new);
-   public static final wr.a<aje, wg> c = zv.b(we.d, $$0 -> $$0.a(ajk.e, aji.a).a(ajk.c, ajg.a).a(ajk.b, ajj.a).a(ajk.d, ajh.a).a(ajk.a, ajf.a).a(acb.a, aca.a));
-   public static final wr<aje> d = c.a(wg::new);
+public class ajl implements aac<ahm> {
+   public static final zt<ws, ajl> a = aac.a(ajl::a, ajl::new);
+   private final btd b;
+   private final int c;
+   private final float d;
+   private final float e;
+
+   public ajl(btd $$0, int $$1, float $$2, float $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+   }
+
+   private ajl(ws $$0) {
+      this.b = $$0.b(btd.class);
+      this.c = $$0.l();
+      this.d = $$0.readFloat();
+      this.e = $$0.readFloat();
+   }
+
+   private void a(ws $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+   }
+
+   @Override
+   public aae<ajl> a() {
+      return ahk.ck;
+   }
+
+   public void a(ahm $$0) {
+      $$0.a(this);
+   }
+
+   public btd b() {
+      return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public float f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
+   }
 }

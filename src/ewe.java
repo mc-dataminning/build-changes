@@ -1,40 +1,38 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.function.UnaryOperator;
+import java.util.stream.Stream;
 
-public class ewe extends ewa {
-   public static final MapCodec<ewe> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(eul.e.fieldOf("component").forGetter($$0x -> $$0x.b), ewd.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
-            .apply($$0, ewe::new)
-   );
-   private final euk<?> b;
-   private final ewb c;
+public interface ewe<T> {
+   kt<T> a();
 
-   private ewe(List<exy> $$0, euk<?> $$1, ewb $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   T b();
+
+   T a(T var1, Stream<cxk> var2);
+
+   Stream<cxk> a(T var1);
+
+   default void a(cxk $$0, T $$1, Stream<cxk> $$2) {
+      T $$3 = $$0.a(this.a(), $$1);
+      T $$4 = this.a($$3, $$2);
+      $$0.b(this.a(), $$4);
    }
 
-   @Override
-   public ewc<ewe> b() {
-      return ewd.u;
+   default void a(cxk $$0, Stream<cxk> $$1) {
+      this.a($$0, this.b(), $$1);
    }
 
-   @Override
-   public cwm a(cwm $$0, eun $$1) {
-      if ($$0.f()) {
-         return $$0;
-      } else {
-         this.b.a($$0, $$1x -> this.c.apply($$1x, $$1));
-         return $$0;
+   default void a(cxk $$0, UnaryOperator<cxk> $$1) {
+      T $$2 = $$0.a(this.a());
+      if ($$2 != null) {
+         UnaryOperator<cxk> $$3 = $$1x -> {
+            if ($$1x.f()) {
+               return $$1x;
+            } else {
+               cxk $$2x = $$1.apply($$1x);
+               $$2x.f($$2x.k());
+               return $$2x;
+            }
+         };
+         this.a($$0, this.a($$2).map($$3));
       }
-   }
-
-   @Override
-   public void a(eut $$0) {
-      super.a($$0);
-      this.c.a($$0.a(".modifier"));
    }
 }

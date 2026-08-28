@@ -1,34 +1,35 @@
-public class fja extends fjd {
-   private static final xj b = xj.c("mco.connect.connecting");
-   private final hfn c;
-   private final fgi d;
-   private final fgj e;
+import java.time.Duration;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-   public fja(frw $$0, fgi $$1, fgj $$2) {
-      this.d = $$1;
-      this.e = $$2;
-      this.c = new hfn($$0);
+public class fja {
+   public final fki a = new fki(ae.h(), TimeUnit.MILLISECONDS, ae.c);
+   private final List<fki.e<?>> i;
+   public final fki.e<List<fib>> b;
+   public final fki.e<fja.a> c;
+   public final fki.e<Integer> d;
+   public final fki.e<Boolean> e;
+   public final fki.e<fia> f;
+   public final fki.e<fif> g;
+   public final fjb h = new fjb(new fko());
+
+   public fja(fhb $$0) {
+      this.c = this.a.a("server list", () -> {
+         fie $$1 = $$0.b();
+         return fgw.b() ? new fja.a($$1.a, $$0.c()) : new fja.a($$1.a, List.of());
+      }, Duration.ofSeconds(60L), fkj.a);
+      this.d = this.a.a("pending invite count", $$0::h, Duration.ofSeconds(10L), fkj.a(360));
+      this.e = this.a.a("trial availablity", $$0::l, Duration.ofSeconds(60L), fkj.a(60));
+      this.f = this.a.a("unread news", $$0::k, Duration.ofMinutes(5L), fkj.a);
+      this.b = this.a.a("notifications", $$0::d, Duration.ofMinutes(5L), fkj.a);
+      this.g = this.a.a("online players", $$0::e, Duration.ofSeconds(10L), fkj.a);
+      this.i = List.of(this.b, this.c, this.d, this.e, this.f, this.g);
    }
 
-   @Override
-   public void run() {
-      this.c.a(this.d, gey.a(this.e.a));
+   public List<fki.e<?>> a() {
+      return this.i;
    }
 
-   @Override
-   public void b() {
-      super.b();
-      this.c.a();
-      fke.Q().af().i();
-   }
-
-   @Override
-   public void c() {
-      this.c.b();
-   }
-
-   @Override
-   public xj a() {
-      return b;
+   public static record a(List<fic> a, List<fic> b) {
    }
 }

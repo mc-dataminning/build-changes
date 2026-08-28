@@ -1,332 +1,256 @@
-import com.mojang.logging.LogUtils;
-import java.nio.file.InvalidPathException;
+import com.google.common.collect.Lists;
+import com.google.common.util.concurrent.RateLimiter;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import org.joml.Vector2i;
-import org.lwjgl.glfw.GLFWDropCallback;
-import org.slf4j.Logger;
+import java.util.Locale;
+import java.util.concurrent.CompletionException;
+import java.util.concurrent.atomic.AtomicReference;
+import javax.annotation.Nullable;
 
-public class fkf {
-   private static final Logger a = LogUtils.getLogger();
-   private final fke b;
-   private boolean c;
-   private boolean d;
-   private boolean e;
-   private double f;
-   private double g;
-   private int h;
-   private int i = -1;
-   private boolean j = true;
-   private int k;
-   private double l;
-   private final bad m = new bad();
-   private final bad n = new bad();
-   private double o;
-   private double p;
-   private final fko q;
-   private double r = Double.MIN_VALUE;
-   private boolean s;
+public class fkf extends hhp implements fhp {
+   private static final int b = 200;
+   private static final int c = 80;
+   private static final int C = 95;
+   private static final int D = 1;
+   private static final String[] E = new String[]{"", ".", ". .", ". . ."};
+   private static final xv F = xv.c("mco.upload.verifying");
+   private final fjy G;
+   private final evw H;
+   @Nullable
+   private final fla I;
+   private final long J;
+   private final int K;
+   final AtomicReference<fho> a = new AtomicReference<>();
+   private final fhf L;
+   private final RateLimiter M;
+   @Nullable
+   private volatile xv[] N;
+   private volatile xv O = xv.c("mco.upload.preparing");
+   @Nullable
+   private volatile String P;
+   private volatile boolean Q;
+   private volatile boolean R;
+   private volatile boolean S = true;
+   private volatile boolean T;
+   @Nullable
+   private fny U;
+   @Nullable
+   private fny V;
+   private int W;
+   private final frn X = new frn(this);
 
-   public fkf(fke $$0) {
-      this.b = $$0;
-      this.q = new fko();
+   public fkf(@Nullable fla $$0, long $$1, int $$2, fjy $$3, evw $$4) {
+      super(flq.a);
+      this.I = $$0;
+      this.J = $$1;
+      this.K = $$2;
+      this.G = $$3;
+      this.H = $$4;
+      this.L = new fhf();
+      this.M = RateLimiter.create(0.1F);
    }
 
-   private void a(long $$0, int $$1, int $$2, int $$3) {
-      if ($$0 == this.b.aO().h()) {
-         this.b.aP().b();
-         if (this.b.z != null) {
-            this.b.a(fkb.b);
-         }
+   @Override
+   public void aT_() {
+      this.U = this.X.b(fny.a(xu.k, $$0x -> this.E()).a());
+      this.U.k = false;
+      this.V = this.X.b(fny.a(xu.e, $$0x -> this.F()).a());
+      if (!this.T) {
+         if (this.G.b == -1) {
+            this.T = true;
+            this.J();
+         } else {
+            List<fky> $$0 = new ArrayList<>();
+            if (this.I != null) {
+               $$0.add(this.I);
+            }
 
-         boolean $$4 = $$2 == 1;
-         if (fke.a && $$1 == 0) {
-            if ($$4) {
-               if (($$3 & 2) == 2) {
-                  $$1 = 1;
-                  this.h++;
+            $$0.add(new flf(this.J, this.G.b, () -> {
+               if (!this.T) {
+                  this.T = true;
+                  this.m.execute(() -> {
+                     this.m.a(this);
+                     this.J();
+                  });
                }
-            } else if (this.h > 0) {
-               $$1 = 1;
-               this.h--;
-            }
+            }));
+            this.m.a(new fjr(this.G, $$0.toArray(new fky[0])));
+         }
+      }
+
+      this.X.a($$1 -> {
+         fnw var10000 = this.c($$1);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      this.X.a();
+   }
+
+   private void E() {
+      this.m.a(new fjl(new fgw(new ftt()), this.J));
+   }
+
+   private void F() {
+      this.Q = true;
+      fho $$0 = this.a.get();
+      if ($$0 != null) {
+         $$0.b();
+      } else {
+         this.m.a(this.G);
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         if (this.S) {
+            this.F();
+         } else {
+            this.E();
          }
 
-         int $$5 = $$1;
-         if ($$4) {
-            if (this.b.n.ab().c() && this.k++ > 0) {
-               return;
-            }
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
 
-            this.i = $$5;
-            this.l = fbx.b();
-         } else if (this.i != -1) {
-            if (this.b.n.ab().c() && --this.k > 0) {
-               return;
-            }
+   @Override
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (!this.R && this.L.c() && this.L.d() && this.V != null) {
+         this.O = F;
+         this.V.j = false;
+      }
 
-            this.i = -1;
+      $$0.a(this.p, this.O, this.n / 2, 50, -1);
+      if (this.S) {
+         $$0.a(this.p, E[this.W / 10 % E.length], this.n / 2 + this.p.a(this.O) / 2 + 5, 50, -1, false);
+      }
+
+      if (this.L.c() && !this.Q) {
+         this.c($$0);
+         this.d($$0);
+      }
+
+      xv[] $$4 = this.N;
+      if ($$4 != null) {
+         for (int $$5 = 0; $$5 < $$4.length; $$5++) {
+            $$0.a(this.p, $$4[$$5], this.n / 2, 110 + 12 * $$5, -65536);
          }
+      }
+   }
 
-         boolean[] $$6 = new boolean[]{false};
-         if (this.b.aM() == null) {
-            if (this.b.z == null) {
-               if (!this.s && $$4) {
-                  this.i();
+   private void c(fnl $$0) {
+      double $$1 = this.L.e();
+      this.P = String.format(Locale.ROOT, "%.1f", $$1 * 100.0);
+      int $$2 = (this.n - 200) / 2;
+      int $$3 = $$2 + (int)Math.round(200.0 * $$1);
+      $$0.a($$2 - 1, 79, $$3 + 1, 96, -1);
+      $$0.a($$2, 80, $$3, 95, -8355712);
+      $$0.a(this.p, xv.a("mco.upload.percent", this.P), this.n / 2, 84, -1);
+   }
+
+   private void d(fnl $$0) {
+      this.a($$0, this.L.g());
+   }
+
+   private void a(fnl $$0, long $$1) {
+      String $$2 = this.P;
+      if ($$1 > 0L && $$2 != null) {
+         int $$3 = this.p.b($$2);
+         String $$4 = "(" + fgx.b($$1) + "/s)";
+         $$0.a(this.p, $$4, this.n / 2 + $$3 / 2 + 15, 84, -1, false);
+      }
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.W++;
+      this.L.f();
+      if (this.M.tryAcquire(1)) {
+         xv $$0 = this.G();
+         this.m.aZ().c($$0);
+      }
+   }
+
+   private xv G() {
+      List<xv> $$0 = Lists.newArrayList();
+      $$0.add(this.O);
+      if (this.P != null) {
+         $$0.add(xv.a("mco.upload.percent", this.P));
+      }
+
+      xv[] $$1 = this.N;
+      if ($$1 != null) {
+         $$0.addAll(Arrays.asList($$1));
+      }
+
+      return xu.a($$0);
+   }
+
+   private void J() {
+      Path $$0 = this.m.q.toPath().resolve("saves").resolve(this.H.a());
+      fii $$1 = fii.a(this.H.g(), this.H.l().c());
+      fho $$2 = new fho($$0, $$1, this.m.X(), this.J, this.K, this);
+      if (!this.a.compareAndSet(null, $$2)) {
+         throw new IllegalStateException("Tried to start uploading but was already uploading");
+      } else {
+         $$2.a().handleAsync(($$0x, $$1x) -> {
+            if ($$1x != null) {
+               if ($$1x instanceof CompletionException $$2x) {
+                  $$1x = $$2x.getCause();
+               }
+
+               if ($$1x instanceof fhj $$3) {
+                  if ($$3.a() != null) {
+                     this.O = $$3.a();
+                  }
+
+                  this.a($$3.b());
+               } else {
+                  this.O = xv.a("mco.upload.failed", $$1x.getMessage());
                }
             } else {
-               double $$7 = this.f * (double)this.b.aO().o() / (double)this.b.aO().m();
-               double $$8 = this.g * (double)this.b.aO().p() / (double)this.b.aO().n();
-               frw $$9 = this.b.z;
-               if ($$4) {
-                  $$9.x();
-                  frw.a(() -> $$6[0] = $$9.a($$7, $$8, $$5), "mouseClicked event handler", $$9.getClass().getCanonicalName());
-               } else {
-                  frw.a(() -> $$6[0] = $$9.b($$7, $$8, $$5), "mouseReleased event handler", $$9.getClass().getCanonicalName());
-               }
-            }
-         }
-
-         if (!$$6[0] && this.b.z == null && this.b.aM() == null) {
-            if ($$5 == 0) {
-               this.c = $$4;
-            } else if ($$5 == 2) {
-               this.d = $$4;
-            } else if ($$5 == 1) {
-               this.e = $$4;
-            }
-
-            fkc.a(fdm.b.c.a($$5), $$4);
-            if ($$4) {
-               if (this.b.t.Y_() && $$5 == 2) {
-                  this.b.m.g().b();
-               } else {
-                  fkc.a(fdm.b.c.a($$5));
-               }
-            }
-         }
-      }
-   }
-
-   private void a(long $$0, double $$1, double $$2) {
-      if ($$0 == fke.Q().aO().h()) {
-         this.b.aP().b();
-         boolean $$3 = this.b.n.U().c();
-         double $$4 = this.b.n.G().c();
-         double $$5 = ($$3 ? Math.signum($$1) : $$1) * $$4;
-         double $$6 = ($$3 ? Math.signum($$2) : $$2) * $$4;
-         if (this.b.aM() == null) {
-            if (this.b.z != null) {
-               double $$7 = this.f * (double)this.b.aO().o() / (double)this.b.aO().m();
-               double $$8 = this.g * (double)this.b.aO().p() / (double)this.b.aO().n();
-               this.b.z.a($$7, $$8, $$5, $$6);
-               this.b.z.x();
-            } else if (this.b.t != null) {
-               Vector2i $$9 = this.q.a($$5, $$6);
-               if ($$9.x == 0 && $$9.y == 0) {
-                  return;
-               }
-
-               int $$10 = $$9.y == 0 ? -$$9.x : $$9.y;
-               if (this.b.t.Y_()) {
-                  if (this.b.m.g().a()) {
-                     this.b.m.g().b(-$$10);
-                  } else {
-                     float $$11 = azm.a(this.b.t.gh().a() + (float)$$9.y * 0.005F, 0.0F, 0.2F);
-                     this.b.t.gh().a($$11);
-                  }
-               } else {
-                  cot $$12 = this.b.t.gg();
-                  $$12.e(fko.a((double)$$10, $$12.j, cot.g()));
-               }
-            }
-         }
-      }
-   }
-
-   private void a(long $$0, List<Path> $$1, int $$2) {
-      this.b.aP().b();
-      if (this.b.z != null) {
-         this.b.z.a($$1);
-      }
-
-      if ($$2 > 0) {
-         fom.a(this.b, $$2);
-      }
-   }
-
-   public void a(long $$0) {
-      fdm.a(
-         $$0,
-         ($$0x, $$1, $$2) -> this.b.execute(() -> this.b($$0x, $$1, $$2)),
-         ($$0x, $$1, $$2, $$3) -> this.b.execute(() -> this.a($$0x, $$1, $$2, $$3)),
-         ($$0x, $$1, $$2) -> this.b.execute(() -> this.a($$0x, $$1, $$2)),
-         ($$0x, $$1, $$2) -> {
-            List<Path> $$3 = new ArrayList<>($$1);
-            int $$4 = 0;
-
-            for (int $$5 = 0; $$5 < $$1; $$5++) {
-               String $$6 = GLFWDropCallback.getName($$2, $$5);
-
-               try {
-                  $$3.add(Paths.get($$6));
-               } catch (InvalidPathException var11) {
-                  $$4++;
-                  a.error("Failed to parse path '{}'", $$6, var11);
+               this.O = xv.c("mco.upload.done");
+               if (this.U != null) {
+                  this.U.b(xu.d);
                }
             }
 
-            if (!$$3.isEmpty()) {
-               int $$8 = $$4;
-               this.b.execute(() -> this.a($$0x, $$3, $$8));
-            }
-         }
-      );
-   }
-
-   private void b(long $$0, double $$1, double $$2) {
-      if ($$0 == fke.Q().aO().h()) {
-         if (this.j) {
-            this.f = $$1;
-            this.g = $$2;
-            this.j = false;
-         } else {
-            if (this.b.aC()) {
-               this.o = this.o + ($$1 - this.f);
-               this.p = this.p + ($$2 - this.g);
+            this.R = true;
+            this.S = false;
+            if (this.U != null) {
+               this.U.k = true;
             }
 
-            this.f = $$1;
-            this.g = $$2;
-         }
-      }
-   }
-
-   public void a() {
-      double $$0 = fbx.b();
-      double $$1 = $$0 - this.r;
-      this.r = $$0;
-      if (this.b.aC()) {
-         frw $$2 = this.b.z;
-         boolean $$3 = this.o != 0.0 || this.p != 0.0;
-         if ($$3) {
-            this.b.aP().b();
-         }
-
-         if ($$2 != null && this.b.aM() == null && $$3) {
-            double $$4 = this.f * (double)this.b.aO().o() / (double)this.b.aO().m();
-            double $$5 = this.g * (double)this.b.aO().p() / (double)this.b.aO().n();
-            frw.a(() -> $$2.f($$4, $$5), "mouseMoved event handler", $$2.getClass().getCanonicalName());
-            if (this.i != -1 && this.l > 0.0) {
-               double $$6 = this.o * (double)this.b.aO().o() / (double)this.b.aO().m();
-               double $$7 = this.p * (double)this.b.aO().p() / (double)this.b.aO().n();
-               frw.a(() -> $$2.a($$4, $$5, this.i, $$6, $$7), "mouseDragged event handler", $$2.getClass().getCanonicalName());
+            if (this.V != null) {
+               this.V.k = false;
             }
 
-            $$2.v();
-         }
-
-         if (this.h() && this.b.t != null) {
-            this.a($$1);
-         }
-      }
-
-      this.o = 0.0;
-      this.p = 0.0;
-   }
-
-   private void a(double $$0) {
-      double $$1 = this.b.n.d().c() * 0.6F + 0.2F;
-      double $$2 = $$1 * $$1 * $$1;
-      double $$3 = $$2 * 8.0;
-      double $$6;
-      double $$7;
-      if (this.b.n.Z) {
-         double $$4 = this.m.a(this.o * $$3, $$0 * $$3);
-         double $$5 = this.n.a(this.p * $$3, $$0 * $$3);
-         $$6 = $$4;
-         $$7 = $$5;
-      } else if (this.b.n.aD().a() && this.b.t.gF()) {
-         this.m.a();
-         this.n.a();
-         $$6 = this.o * $$2;
-         $$7 = this.p * $$2;
-      } else {
-         this.m.a();
-         this.n.a();
-         $$6 = this.o * $$3;
-         $$7 = this.p * $$3;
-      }
-
-      int $$12 = 1;
-      if (this.b.n.T().c()) {
-         $$12 = -1;
-      }
-
-      this.b.aB().a($$6, $$7);
-      if (this.b.t != null) {
-         this.b.t.b($$6, $$7 * (double)$$12);
+            this.a.set(null);
+            return null;
+         }, this.m);
       }
    }
 
-   public boolean b() {
-      return this.c;
+   private void a(@Nullable xv... $$0) {
+      this.N = $$0;
    }
 
-   public boolean c() {
-      return this.d;
+   @Override
+   public fhf b() {
+      return this.L;
    }
 
-   public boolean d() {
-      return this.e;
-   }
-
-   public double e() {
-      return this.f;
-   }
-
-   public double f() {
-      return this.g;
-   }
-
-   public void g() {
-      this.j = true;
-   }
-
-   public boolean h() {
-      return this.s;
-   }
-
-   public void i() {
-      if (this.b.aC()) {
-         if (!this.s) {
-            if (!fke.a) {
-               fkc.a();
-            }
-
-            this.s = true;
-            this.f = (double)(this.b.aO().m() / 2);
-            this.g = (double)(this.b.aO().n() / 2);
-            fdm.a(this.b.aO().h(), 212995, this.f, this.g);
-            this.b.a(null);
-            this.b.x = 10000;
-            this.j = true;
-         }
-      }
-   }
-
-   public void j() {
-      if (this.s) {
-         this.s = false;
-         this.f = (double)(this.b.aO().m() / 2);
-         this.g = (double)(this.b.aO().n() / 2);
-         fdm.a(this.b.aO().h(), 212993, this.f, this.g);
-      }
-   }
-
-   public void k() {
-      this.j = true;
+   @Override
+   public void d() {
+      this.O = xv.a("mco.upload.uploading", this.H.b());
    }
 }

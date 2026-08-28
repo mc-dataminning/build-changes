@@ -1,77 +1,145 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Set;
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
 
-public class vp extends vq {
-   private int a;
-   private final Set<vk<?>> b;
-   private final Deque<vs> c = new ArrayDeque<>();
-
-   public vp(vr... $$0) {
-      this.a = $$0.length;
-      Builder<vk<?>> $$1 = ImmutableSet.builder();
-      vs $$2 = vs.a();
-
-      for (vr $$3 : $$0) {
-         $$2.a($$3);
-         $$1.add($$3.b());
+public class vp extends vn {
+   private static final int b = 10;
+   public static final vw<vp> a = new vw.a<vp>() {
+      public vp a(DataInput $$0, vg $$1) throws IOException {
+         return vp.a(d($$0, $$1));
       }
 
-      this.c.push($$2);
-      $$1.add(ul.b);
-      this.b = $$1.build();
-   }
-
-   @Override
-   public vf.b b(vk<?> $$0) {
-      return $$0 != ul.b ? vf.b.c : super.b($$0);
-   }
-
-   @Override
-   public vf.a a(vk<?> $$0) {
-      vs $$1 = this.c.element();
-      if (this.e() > $$1.b()) {
-         return super.a($$0);
-      } else if (this.a <= 0) {
-         return vf.a.d;
-      } else {
-         return !this.b.contains($$0) ? vf.a.b : super.a($$0);
+      @Override
+      public vr.b a(DataInput $$0, vr $$1, vg $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
       }
+
+      private static short d(DataInput $$0, vg $$1) throws IOException {
+         $$1.b(10L);
+         return $$0.readShort();
+      }
+
+      @Override
+      public int c() {
+         return 2;
+      }
+
+      @Override
+      public String a() {
+         return "SHORT";
+      }
+
+      @Override
+      public String b() {
+         return "TAG_Short";
+      }
+
+      @Override
+      public boolean d() {
+         return true;
+      }
+   };
+   private final short c;
+
+   vp(short $$0) {
+      this.c = $$0;
+   }
+
+   public static vp a(short $$0) {
+      return $$0 >= -128 && $$0 <= 1024 ? vp.a.a[$$0 - -128] : new vp($$0);
    }
 
    @Override
-   public vf.a a(vk<?> $$0, String $$1) {
-      vs $$2 = this.c.element();
-      if (this.e() > $$2.b()) {
-         return super.a($$0, $$1);
-      } else if ($$2.c().remove($$1, $$0)) {
-         this.a--;
-         return super.a($$0, $$1);
-      } else {
-         if ($$0 == ul.b) {
-            vs $$3 = $$2.d().get($$1);
-            if ($$3 != null) {
-               this.c.push($$3);
-               return super.a($$0, $$1);
-            }
+   public void a(DataOutput $$0) throws IOException {
+      $$0.writeShort(this.c);
+   }
+
+   @Override
+   public int a() {
+      return 10;
+   }
+
+   @Override
+   public byte b() {
+      return 2;
+   }
+
+   @Override
+   public vw<vp> c() {
+      return a;
+   }
+
+   public vp e() {
+      return this;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof vp && this.c == ((vp)$$0).c;
+   }
+
+   @Override
+   public int hashCode() {
+      return this.c;
+   }
+
+   @Override
+   public void a(vy $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public long f() {
+      return (long)this.c;
+   }
+
+   @Override
+   public int g() {
+      return this.c;
+   }
+
+   @Override
+   public short h() {
+      return this.c;
+   }
+
+   @Override
+   public byte i() {
+      return (byte)(this.c & 255);
+   }
+
+   @Override
+   public double j() {
+      return (double)this.c;
+   }
+
+   @Override
+   public float k() {
+      return (float)this.c;
+   }
+
+   @Override
+   public Number l() {
+      return this.c;
+   }
+
+   @Override
+   public vr.b a(vr $$0) {
+      return $$0.a(this.c);
+   }
+
+   static class a {
+      private static final int b = 1024;
+      private static final int c = -128;
+      static final vp[] a = new vp[1153];
+
+      private a() {
+      }
+
+      static {
+         for (int $$0 = 0; $$0 < a.length; $$0++) {
+            a[$$0] = new vp((short)(-128 + $$0));
          }
-
-         return vf.a.b;
       }
-   }
-
-   @Override
-   public vf.b b() {
-      if (this.e() == this.c.element().b()) {
-         this.c.pop();
-      }
-
-      return super.b();
-   }
-
-   public int c() {
-      return this.a;
    }
 }

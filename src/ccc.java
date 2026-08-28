@@ -1,89 +1,152 @@
-import java.util.EnumSet;
-import java.util.List;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class ccc implements cby {
+   public static final float a = 5.0E-4F;
+   public static final float b = 2.5000003E-7F;
+   protected static final int c = 90;
+   protected final bwd d;
+   protected double e;
+   protected double f;
+   protected double g;
+   protected double h;
+   protected float i;
+   protected float j;
+   protected ccc.a k = ccc.a.a;
 
-public class ccc extends ccf {
-   private final bvj a;
-   private final Predicate<bvj> b;
-   @Nullable
-   private bvj c;
-   private final double d;
-   private final cet e;
-   private int f;
-   private final float g;
-   private float h;
-   private final float i;
-
-   public ccc(bvj $$0, double $$1, float $$2, float $$3) {
-      this.a = $$0;
-      this.b = $$1x -> $$1x != null && $$0.getClass() != $$1x.getClass();
-      this.d = $$1;
-      this.e = $$0.L();
-      this.g = $$2;
-      this.i = $$3;
-      this.a(EnumSet.of(ccf.a.a, ccf.a.b));
-      if (!($$0.L() instanceof ces) && !($$0.L() instanceof cer)) {
-         throw new IllegalArgumentException("Unsupported mob type for FollowMobGoal");
-      }
+   public ccc(bwd $$0) {
+      this.d = $$0;
    }
 
-   @Override
    public boolean b() {
-      List<bvj> $$0 = this.a.dV().a(bvj.class, this.a.cR().g((double)this.i), this.b);
-      if (!$$0.isEmpty()) {
-         for (bvj $$1 : $$0) {
-            if (!$$1.cp()) {
-               this.c = $$1;
-               return true;
-            }
-         }
+      return this.k == ccc.a.b;
+   }
+
+   public double c() {
+      return this.h;
+   }
+
+   public void a(double $$0, double $$1, double $$2, double $$3) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      if (this.k != ccc.a.d) {
+         this.k = ccc.a.b;
       }
-
-      return false;
    }
 
-   @Override
-   public boolean c() {
-      return this.c != null && !this.e.m() && this.a.g(this.c) > (double)(this.g * this.g);
+   public void a(float $$0, float $$1) {
+      this.k = ccc.a.c;
+      this.i = $$0;
+      this.j = $$1;
+      this.h = 0.25;
    }
 
-   @Override
-   public void d() {
-      this.f = 0;
-      this.h = this.a.a(esm.j);
-      this.a.a(esm.j, 0.0F);
-   }
-
-   @Override
-   public void e() {
-      this.c = null;
-      this.e.o();
-      this.a.a(esm.j, this.h);
-   }
-
-   @Override
    public void a() {
-      if (this.c != null && !this.a.N_()) {
-         this.a.H().a(this.c, 10.0F, (float)this.a.Z());
-         if (--this.f <= 0) {
-            this.f = this.a(10);
-            double $$0 = this.a.dA() - this.c.dA();
-            double $$1 = this.a.dC() - this.c.dC();
-            double $$2 = this.a.dG() - this.c.dG();
-            double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
-            if (!($$3 <= (double)(this.g * this.g))) {
-               this.e.a(this.c, this.d);
-            } else {
-               this.e.o();
-               cbh $$4 = this.c.H();
-               if ($$3 <= (double)this.g || $$4.e() == this.a.dA() && $$4.f() == this.a.dC() && $$4.g() == this.a.dG()) {
-                  double $$5 = this.c.dA() - this.a.dA();
-                  double $$6 = this.c.dG() - this.a.dG();
-                  this.e.a(this.a.dA() - $$5, this.a.dC(), this.a.dG() - $$6, this.d);
-               }
-            }
+      if (this.k == ccc.a.c) {
+         float $$0 = (float)this.d.h(bxj.v);
+         float $$1 = (float)this.h * $$0;
+         float $$2 = this.i;
+         float $$3 = this.j;
+         float $$4 = bae.c($$2 * $$2 + $$3 * $$3);
+         if ($$4 < 1.0F) {
+            $$4 = 1.0F;
+         }
+
+         $$4 = $$1 / $$4;
+         $$2 *= $$4;
+         $$3 *= $$4;
+         float $$5 = bae.a(this.d.dL() * (float) (Math.PI / 180.0));
+         float $$6 = bae.b(this.d.dL() * (float) (Math.PI / 180.0));
+         float $$7 = $$2 * $$6 - $$3 * $$5;
+         float $$8 = $$3 * $$6 + $$2 * $$5;
+         if (!this.b($$7, $$8)) {
+            this.i = 1.0F;
+            this.j = 0.0F;
+         }
+
+         this.d.C($$1);
+         this.d.G(this.i);
+         this.d.I(this.j);
+         this.k = ccc.a.a;
+      } else if (this.k == ccc.a.b) {
+         this.k = ccc.a.a;
+         double $$9 = this.e - this.d.dA();
+         double $$10 = this.g - this.d.dG();
+         double $$11 = this.f - this.d.dC();
+         double $$12 = $$9 * $$9 + $$11 * $$11 + $$10 * $$10;
+         if ($$12 < 2.5000003E-7F) {
+            this.d.G(0.0F);
+            return;
+         }
+
+         float $$13 = (float)(bae.d($$10, $$9) * 180.0F / (float)Math.PI) - 90.0F;
+         this.d.v(this.b(this.d.dL(), $$13, 90.0F));
+         this.d.C((float)(this.h * this.d.h(bxj.v)));
+         jh $$14 = this.d.dv();
+         dxn $$15 = this.d.dV().a_($$14);
+         fcm $$16 = $$15.g(this.d.dV(), $$14);
+         if ($$11 > (double)this.d.dP() && $$9 * $$9 + $$10 * $$10 < (double)Math.max(1.0F, this.d.dq())
+            || !$$16.c() && this.d.dC() < $$16.c(jm.a.b) + (double)$$14.v() && !$$15.a(axu.q) && !$$15.a(axu.U)) {
+            this.d.J().a();
+            this.k = ccc.a.d;
+         }
+      } else if (this.k == ccc.a.d) {
+         this.d.C((float)(this.h * this.d.h(bxj.v)));
+         if (this.d.aJ()) {
+            this.k = ccc.a.a;
+         }
+      } else {
+         this.d.G(0.0F);
+      }
+   }
+
+   private boolean b(float $$0, float $$1) {
+      cfn $$2 = this.d.L();
+      if ($$2 != null) {
+         euc $$3 = $$2.p();
+         if ($$3 != null && $$3.a(this.d, jh.a(this.d.dA() + (double)$$0, (double)this.d.dB(), this.d.dG() + (double)$$1)) != eug.c) {
+            return false;
          }
       }
+
+      return true;
+   }
+
+   protected float b(float $$0, float $$1, float $$2) {
+      float $$3 = bae.h($$1 - $$0);
+      if ($$3 > $$2) {
+         $$3 = $$2;
+      }
+
+      if ($$3 < -$$2) {
+         $$3 = -$$2;
+      }
+
+      float $$4 = $$0 + $$3;
+      if ($$4 < 0.0F) {
+         $$4 += 360.0F;
+      } else if ($$4 > 360.0F) {
+         $$4 -= 360.0F;
+      }
+
+      return $$4;
+   }
+
+   public double d() {
+      return this.e;
+   }
+
+   public double e() {
+      return this.f;
+   }
+
+   public double f() {
+      return this.g;
+   }
+
+   protected static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

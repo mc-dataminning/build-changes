@@ -1,33 +1,54 @@
-import io.netty.buffer.ByteBuf;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record aaf(alj c, byte[] d) implements zq<zw> {
-   public static final zh<wg, aaf> a = zq.a(aaf::a, aaf::new);
-   private static final int e = 5120;
-   public static final zh<ByteBuf, byte[]> b = zf.a(5120);
+public class aaf {
+   private static final Logger a = LogUtils.getLogger();
 
-   private aaf(wg $$0) {
-      this($$0.q(), b.decode($$0));
+   public static <T extends xb> void a(aac<T> $$0, T $$1, ash $$2) throws aml {
+      a($$0, $$1, $$2.p());
    }
 
-   private void a(wg $$0) {
-      $$0.a(this.c);
-      b.encode($$0, this.d);
+   public static <T extends xb> void a(aac<T> $$0, T $$1, brt<?> $$2) throws aml {
+      if (!$$2.bx()) {
+         $$2.c(() -> {
+            if ($$1.a($$0)) {
+               try {
+                  $$0.a($$1);
+               } catch (Exception var4) {
+                  if (var4 instanceof z $$3 && $$3.getCause() instanceof OutOfMemoryError) {
+                     throw a(var4, $$0, $$1);
+                  }
+
+                  $$1.a($$0, var4);
+               }
+            } else {
+               a.debug("Ignoring packet due to disconnection: {}", $$0);
+            }
+         });
+         throw aml.a;
+      }
    }
 
-   @Override
-   public zs<aaf> a() {
-      return aai.i;
+   public static <T extends xb> z a(Exception $$0, aac<T> $$1, T $$2) {
+      if ($$0 instanceof z $$3) {
+         a($$3.a(), $$2, $$1);
+         return $$3;
+      } else {
+         o $$4 = o.a($$0, "Main thread packet handler");
+         a($$4, $$2, $$1);
+         return new z($$4);
+      }
    }
 
-   public void a(zw $$0) {
-      $$0.a(this);
-   }
+   public static <T extends xb> void a(o $$0, T $$1, @Nullable aac<T> $$2) {
+      if ($$2 != null) {
+         p $$3 = $$0.a("Incoming Packet");
+         $$3.a("Type", () -> $$2.a().toString());
+         $$3.a("Is Terminal", () -> Boolean.toString($$2.d()));
+         $$3.a("Is Skippable", () -> Boolean.toString($$2.c()));
+      }
 
-   public alj b() {
-      return this.c;
-   }
-
-   public byte[] e() {
-      return this.d;
+      $$1.a($$0);
    }
 }

@@ -1,99 +1,50 @@
-import java.util.List;
+public class gao extends gca {
+   private static final String a = "left_pages";
+   private static final String b = "right_pages";
+   private static final String c = "flip_page1";
+   private static final String d = "flip_page2";
+   private final geh e;
+   private final geh f;
+   private final geh g;
+   private final geh h;
+   private final geh i;
+   private final geh j;
 
-public class gao extends fzw<gwz> {
-   private static final String f = "left_sleeve";
-   private static final String g = "right_sleeve";
-   private static final String x = "left_pants";
-   private static final String y = "right_pants";
-   private final List<gcl> z;
-   public final gcl a;
-   public final gcl b;
-   public final gcl c;
-   public final gcl d;
-   public final gcl e;
-   private final boolean A;
-
-   public gao(gcl $$0, boolean $$1) {
-      super($$0, gjq::i);
-      this.A = $$1;
-      this.a = this.s.b("left_sleeve");
-      this.b = this.r.b("right_sleeve");
-      this.c = this.u.b("left_pants");
-      this.d = this.t.b("right_pants");
-      this.e = this.q.b("jacket");
-      this.z = List.of(this.o, this.q, this.s, this.r, this.u, this.t);
+   public gao(geh $$0) {
+      super($$0, glo::c);
+      this.e = $$0.b("left_lid");
+      this.f = $$0.b("right_lid");
+      this.g = $$0.b("left_pages");
+      this.h = $$0.b("right_pages");
+      this.i = $$0.b("flip_page1");
+      this.j = $$0.b("flip_page2");
    }
 
-   public static gct a(gcp $$0, boolean $$1) {
-      gct $$2 = fzw.a($$0, 0.0F);
-      gcv $$3 = $$2.a();
-      float $$4 = 0.25F;
-      if ($$1) {
-         gcv $$5 = $$3.a("left_arm", gcq.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0), gcn.a(5.0F, 2.0F, 0.0F));
-         gcv $$6 = $$3.a("right_arm", gcq.c().a(40, 16).a(-2.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0), gcn.a(-5.0F, 2.0F, 0.0F));
-         $$5.a("left_sleeve", gcq.c().a(48, 48).a(-1.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0.a(0.25F)), gcn.a);
-         $$6.a("right_sleeve", gcq.c().a(40, 32).a(-2.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0.a(0.25F)), gcn.a);
-      } else {
-         gcv $$7 = $$3.a("left_arm", gcq.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), gcn.a(5.0F, 2.0F, 0.0F));
-         gcv $$8 = $$3.b("right_arm");
-         $$7.a("left_sleeve", gcq.c().a(48, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), gcn.a);
-         $$8.a("right_sleeve", gcq.c().a(40, 32).a(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), gcn.a);
-      }
-
-      gcv $$9 = $$3.a("left_leg", gcq.c().a(16, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), gcn.a(1.9F, 12.0F, 0.0F));
-      gcv $$10 = $$3.b("right_leg");
-      $$9.a("left_pants", gcq.c().a(0, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), gcn.a);
-      $$10.a("right_pants", gcq.c().a(0, 32).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), gcn.a);
-      gcv $$11 = $$3.b("body");
-      $$11.a("jacket", gcq.c().a(16, 32).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0.a(0.25F)), gcn.a);
-      return $$2;
+   public static gen a() {
+      gep $$0 = new gep();
+      ger $$1 = $$0.a();
+      $$1.a("left_lid", gem.c().a(0, 0).a(-6.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), gej.a(0.0F, 0.0F, -1.0F));
+      $$1.a("right_lid", gem.c().a(16, 0).a(0.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), gej.a(0.0F, 0.0F, 1.0F));
+      $$1.a("seam", gem.c().a(12, 0).a(-1.0F, -5.0F, 0.0F, 2.0F, 10.0F, 0.005F), gej.b(0.0F, (float) (Math.PI / 2), 0.0F));
+      $$1.a("left_pages", gem.c().a(0, 10).a(0.0F, -4.0F, -0.99F, 5.0F, 8.0F, 1.0F), gej.a);
+      $$1.a("right_pages", gem.c().a(12, 10).a(0.0F, -4.0F, -0.01F, 5.0F, 8.0F, 1.0F), gej.a);
+      gem $$2 = gem.c().a(24, 10).a(0.0F, -4.0F, 0.0F, 5.0F, 8.0F, 0.005F);
+      $$1.a("flip_page1", $$2, gej.a);
+      $$1.a("flip_page2", $$2, gej.a);
+      return gen.a($$0, 64, 32);
    }
 
-   public void a(gwz $$0) {
-      boolean $$1 = !$$0.h;
-      this.q.k = $$1;
-      this.r.k = $$1;
-      this.s.k = $$1;
-      this.t.k = $$1;
-      this.u.k = $$1;
-      this.p.k = $$0.i;
-      this.e.k = $$0.j;
-      this.c.k = $$0.k;
-      this.d.k = $$0.l;
-      this.a.k = $$0.au;
-      this.b.k = $$0.av;
-      super.a($$0);
-   }
-
-   @Override
-   public void c_(boolean $$0) {
-      super.c_($$0);
-      this.a.k = $$0;
-      this.b.k = $$0;
-      this.c.k = $$0;
-      this.d.k = $$0;
-      this.e.k = $$0;
-   }
-
-   @Override
-   public void a(bvb $$0, fer $$1) {
-      this.e().a($$1);
-      gcl $$2 = this.a($$0);
-      if (this.A) {
-         float $$3 = 0.5F * (float)($$0 == bvb.b ? 1 : -1);
-         $$2.b += $$3;
-         $$2.a($$1);
-         $$2.b -= $$3;
-      } else {
-         $$2.a($$1);
-      }
-   }
-
-   public gcl a(azu $$0) {
-      return ae.a(this.z, $$0);
-   }
-
-   protected fzw.a a(gwz $$0, bvb $$1) {
-      return gur.a($$0, $$1);
+   public void a(float $$0, float $$1, float $$2, float $$3) {
+      float $$4 = (bae.a($$0 * 0.02F) * 0.1F + 1.25F) * $$3;
+      this.e.f = (float) Math.PI + $$4;
+      this.f.f = -$$4;
+      this.g.f = $$4;
+      this.h.f = -$$4;
+      this.i.f = $$4 - $$4 * 2.0F * $$1;
+      this.j.f = $$4 - $$4 * 2.0F * $$2;
+      this.g.b = bae.a($$4);
+      this.h.b = bae.a($$4);
+      this.i.b = bae.a($$4);
+      this.j.b = bae.a($$4);
    }
 }

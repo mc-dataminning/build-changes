@@ -1,25 +1,26 @@
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dqs {
-   czn b();
+public class dqs extends dko {
+   public static final MapCodec<dqs> a = b(dqs::new);
+   protected static final float b = 6.0F;
+   protected static final fcm c = dke.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
-   static List<dqs> c() {
-      return lz.g.s().map(dqs::a).filter(Objects::nonNull).collect(Collectors.toList());
+   @Override
+   public MapCodec<dqs> a() {
+      return a;
    }
 
-   @Nullable
-   static dqs a(dfl $$0) {
-      if ($$0.j() instanceof cus $$1) {
-         diq var6 = $$1.d();
-         if (var6 instanceof dqs) {
-            return (dqs)var6;
-         }
-      }
+   protected dqs(dxm.d $$0) {
+      super($$0);
+   }
 
-      cwi $$2 = $$0.j();
-      return $$2 instanceof dqs ? (dqs)$$2 : null;
+   @Override
+   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
+      return c;
+   }
+
+   @Override
+   protected boolean b(dxn $$0, dgf $$1, jh $$2) {
+      return $$0.a(axu.aO) || $$0.a(dkg.ek) || super.b($$0, $$1, $$2);
    }
 }

@@ -1,40 +1,63 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqv extends diz implements dit {
-   public static final MapCodec<dqv> a = b(dqv::new);
-   protected static final float b = 6.0F;
-   protected static final fas c = diq.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
-
-   @Override
-   public MapCodec<dqv> a() {
-      return a;
-   }
-
-   protected dqv(dvu.d $$0) {
-      super($$0);
-   }
+public class dqv extends dko implements dkh {
+   public static final MapCodec<dqv> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dxc.a.fieldOf("tree").forGetter($$0x -> $$0x.i), t()).apply($$0, dqv::new)
+   );
+   public static final dym f = dyd.aV;
+   protected static final float g = 6.0F;
+   protected static final fcm h = dke.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
+   protected final dxc i;
 
    @Override
-   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
-      return c;
+   public MapCodec<? extends dqv> a() {
+      return e;
    }
 
-   @Override
-   public boolean b(dfp $$0, jh $$1, dvv $$2) {
-      return o($$2).m().a($$0, $$1) && $$0.u($$1.d());
+   protected dqv(dxc $$0, dxm.d $$1) {
+      super($$1);
+      this.i = $$0;
+      this.l(this.F.b().b(f, Integer.valueOf(0)));
    }
 
    @Override
-   public boolean a(dfm $$0, azu $$1, jh $$2, dvv $$3) {
+   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
+      return h;
+   }
+
+   @Override
+   protected void b(dxn $$0, ash $$1, jh $$2, bam $$3) {
+      if ($$1.A($$2.d()) >= 9 && $$3.a(7) == 0) {
+         this.a($$1, $$2, $$0, $$3);
+      }
+   }
+
+   public void a(ash $$0, jh $$1, dxn $$2, bam $$3) {
+      if ($$2.c(f) == 0) {
+         $$0.a($$1, $$2.a(f), 4);
+      } else {
+         this.i.a($$0, $$0.m().g(), $$1, $$2, $$3);
+      }
+   }
+
+   @Override
+   public boolean b(dhd $$0, jh $$1, dxn $$2) {
       return true;
    }
 
    @Override
-   public void a(arp $$0, azu $$1, jh $$2, dvv $$3) {
-      dky.a($$0, o($$3).m(), $$2, 2);
+   public boolean a(dha $$0, bam $$1, jh $$2, dxn $$3) {
+      return (double)$$0.A.i() < 0.45;
    }
 
-   private static dky o(dvv $$0) {
-      return (dky)($$0.a(dis.bu) ? dis.iI : dis.iH);
+   @Override
+   public void a(ash $$0, bam $$1, jh $$2, dxn $$3) {
+      this.a($$0, $$2, $$3, $$1);
+   }
+
+   @Override
+   protected void a(dxo.a<dke, dxn> $$0) {
+      $$0.a(f);
    }
 }

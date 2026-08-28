@@ -1,64 +1,82 @@
-import java.util.Calendar;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class glx<T extends dsy & dud> implements glr<T> {
-   private final fyx a;
-   private final fyx b;
-   private final fyx c;
-   private boolean d;
+public record glx(alz b, alz c, List<glx.a> d, List<glx.b> e, glu f) {
+   public static final Codec<glx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               alz.a.fieldOf("vertex").forGetter(glx::a),
+               alz.a.fieldOf("fragment").forGetter(glx::b),
+               glx.a.a.listOf().optionalFieldOf("samplers", List.of()).forGetter(glx::c),
+               glx.b.a.listOf().optionalFieldOf("uniforms", List.of()).forGetter(glx::d),
+               glu.b.optionalFieldOf("defines", glu.a).forGetter(glx::e)
+            )
+            .apply($$0, glx::new)
+   );
 
-   public glx(gls.a $$0) {
-      Calendar $$1 = Calendar.getInstance();
-      if ($$1.get(2) + 1 == 12 && $$1.get(5) >= 24 && $$1.get(5) <= 26) {
-         this.d = true;
-      }
-
-      this.a = new fyx($$0.a(gck.S));
-      this.b = new fyx($$0.a(gck.ap));
-      this.c = new fyx($$0.a(gck.aq));
+   public alz a() {
+      return this.b;
    }
 
-   @Override
-   public void a(T $$0, float $$1, fer $$2, gjg $$3, int $$4, int $$5) {
-      dfm $$6 = $$0.i();
-      boolean $$7 = $$6 != null;
-      dvv $$8 = $$7 ? $$0.m() : dis.cv.m().b(djt.c, jm.d);
-      dwn $$9 = $$8.b(djt.d) ? $$8.c(djt.d) : dwn.a;
-      if ($$8.b() instanceof dhk<?> $$11) {
-         boolean $$12 = $$9 != dwn.a;
-         $$2.a();
-         float $$13 = $$8.c(djt.c).p();
-         $$2.a(0.5F, 0.5F, 0.5F);
-         $$2.a(a.d.rotationDegrees(-$$13));
-         $$2.a(-0.5F, -0.5F, -0.5F);
-         dkx.c<? extends dtf> $$14;
-         if ($$7) {
-            $$14 = $$11.a($$8, $$6, $$0.aA_(), true);
-         } else {
-            $$14 = dkx.b::b;
-         }
+   public alz b() {
+      return this.c;
+   }
 
-         float $$16 = $$14.apply(djt.a($$0)).get($$1);
-         $$16 = 1.0F - $$16;
-         $$16 = 1.0F - $$16 * $$16 * $$16;
-         int $$17 = $$14.apply(new glu<>()).applyAsInt($$4);
-         hbn $$18 = gkb.a($$0, $$9, this.d);
-         fev $$19 = $$18.a($$3, gjq::e);
-         if ($$12) {
-            if ($$9 == dwn.b) {
-               this.a($$2, $$19, this.b, $$16, $$17, $$5);
-            } else {
-               this.a($$2, $$19, this.c, $$16, $$17, $$5);
-            }
-         } else {
-            this.a($$2, $$19, this.a, $$16, $$17, $$5);
-         }
+   public List<glx.a> c() {
+      return this.d;
+   }
 
-         $$2.b();
+   public List<glx.b> d() {
+      return this.e;
+   }
+
+   public glu e() {
+      return this.f;
+   }
+
+   public static record a(String b) {
+      public static final Codec<glx.a> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(glx.a::a)).apply($$0, glx.a::new));
+
+      public String a() {
+         return this.b;
       }
    }
 
-   private void a(fer $$0, fev $$1, fyx $$2, float $$3, int $$4, int $$5) {
-      $$2.a($$3);
-      $$2.a($$0, $$1, $$4, $$5);
+   public static record b(String b, String c, int d, List<Float> e) {
+      public static final Codec<glx.b> a = RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     Codec.STRING.fieldOf("name").forGetter(glx.b::a),
+                     Codec.STRING.fieldOf("type").forGetter(glx.b::b),
+                     Codec.INT.fieldOf("count").forGetter(glx.b::c),
+                     Codec.FLOAT.listOf().fieldOf("values").forGetter(glx.b::d)
+                  )
+                  .apply($$0, glx.b::new)
+         )
+         .validate(glx.b::a);
+
+      private static DataResult<glx.b> a(glx.b $$0) {
+         int $$1 = $$0.d;
+         int $$2 = $$0.e.size();
+         return $$2 != $$1 && $$2 > 1
+            ? DataResult.error(() -> "Invalid amount of uniform values specified (expected " + $$1 + ", found " + $$2 + ")")
+            : DataResult.success($$0);
+      }
+
+      public String a() {
+         return this.b;
+      }
+
+      public String b() {
+         return this.c;
+      }
+
+      public int c() {
+         return this.d;
+      }
+
+      public List<Float> d() {
+         return this.e;
+      }
    }
 }

@@ -1,52 +1,109 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Predicate;
 
-public class ehq implements eha {
-   public static final Codec<ehq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               elm.b.fieldOf("feature").forGetter($$0x -> $$0x.b),
-               Codec.intRange(1, 64).fieldOf("required_vertical_space_for_tree").forGetter($$0x -> $$0x.c),
-               Codec.intRange(1, 64).fieldOf("root_radius").forGetter($$0x -> $$0x.d),
-               axs.b(ma.f).fieldOf("root_replaceable").forGetter($$0x -> $$0x.e),
-               ejb.a.fieldOf("root_state_provider").forGetter($$0x -> $$0x.f),
-               Codec.intRange(1, 256).fieldOf("root_placement_attempts").forGetter($$0x -> $$0x.g),
-               Codec.intRange(1, 4096).fieldOf("root_column_max_height").forGetter($$0x -> $$0x.h),
-               Codec.intRange(1, 64).fieldOf("hanging_root_radius").forGetter($$0x -> $$0x.i),
-               Codec.intRange(0, 16).fieldOf("hanging_roots_vertical_span").forGetter($$0x -> $$0x.j),
-               ejb.a.fieldOf("hanging_root_state_provider").forGetter($$0x -> $$0x.k),
-               Codec.intRange(1, 256).fieldOf("hanging_root_placement_attempts").forGetter($$0x -> $$0x.l),
-               Codec.intRange(1, 64).fieldOf("allowed_vertical_water_for_tree").forGetter($$0x -> $$0x.n),
-               ecx.b.fieldOf("allowed_tree_position").forGetter($$0x -> $$0x.o)
-            )
-            .apply($$0, ehq::new)
-   );
-   public final jq<elm> b;
-   public final int c;
-   public final int d;
-   public final axs<diq> e;
-   public final ejb f;
-   public final int g;
-   public final int h;
-   public final int i;
-   public final int j;
-   public final ejb k;
-   public final int l;
-   public final int n;
-   public final ecx o;
+public class ehq extends ego<eji> {
+   public ehq(Codec<eji> $$0) {
+      super($$0);
+   }
 
-   public ehq(jq<elm> $$0, int $$1, int $$2, axs<diq> $$3, ejb $$4, int $$5, int $$6, int $$7, int $$8, ejb $$9, int $$10, int $$11, ecx $$12) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
-      this.n = $$11;
-      this.o = $$12;
+   @Override
+   public boolean a(egq<eji> $$0) {
+      dhy $$1 = $$0.b();
+      jh $$2 = $$0.e();
+      if (!$$1.a_($$2).l()) {
+         return false;
+      } else {
+         bam $$3 = $$0.d();
+         jh $$4 = $$0.e();
+         eji $$5 = $$0.f();
+         jh.a $$6 = $$4.k();
+         if (a($$1, $$0.c(), $$5, $$3, $$6, $$4)) {
+            a($$1, $$5, $$3, $$4, $$6);
+         }
+
+         return true;
+      }
+   }
+
+   private static boolean a(dhy $$0, eji $$1, jh $$2) {
+      jh.a $$3 = $$2.k();
+
+      for (int $$4 = 1; $$4 <= $$1.c; $$4++) {
+         $$3.c(jm.b);
+         dxn $$5 = $$0.a_($$3);
+         if (!a($$5, $$4, $$1.n)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   private static boolean a(dxn $$0, int $$1, int $$2) {
+      if ($$0.l()) {
+         return true;
+      } else {
+         int $$3 = $$1 + 1;
+         return $$3 <= $$2 && $$0.y().a(aya.a);
+      }
+   }
+
+   private static boolean a(dhy $$0, dzj $$1, eji $$2, bam $$3, jh.a $$4, jh $$5) {
+      for (int $$6 = 0; $$6 < $$2.h; $$6++) {
+         $$4.c(jm.b);
+         if ($$2.o.test($$0, $$4) && a($$0, $$2, $$4)) {
+            jh $$7 = $$4.e();
+            if ($$0.b_($$7).a(aya.b) || !$$0.a_($$7).e()) {
+               return false;
+            }
+
+            if ($$2.b.a().a($$0, $$1, $$3, $$4)) {
+               a($$5, $$5.v() + $$6, $$0, $$2, $$3);
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   private static void a(jh $$0, int $$1, dhy $$2, eji $$3, bam $$4) {
+      int $$5 = $$0.u();
+      int $$6 = $$0.w();
+      jh.a $$7 = $$0.k();
+
+      for (int $$8 = $$0.v(); $$8 < $$1; $$8++) {
+         a($$2, $$3, $$4, $$5, $$6, $$7.d($$5, $$8, $$6));
+      }
+   }
+
+   private static void a(dhy $$0, eji $$1, bam $$2, int $$3, int $$4, jh.a $$5) {
+      int $$6 = $$1.d;
+      Predicate<dxn> $$7 = $$1x -> $$1x.a($$1.e);
+
+      for (int $$8 = 0; $$8 < $$1.g; $$8++) {
+         $$5.a($$5, $$2.a($$6) - $$2.a($$6), 0, $$2.a($$6) - $$2.a($$6));
+         if ($$7.test($$0.a_($$5))) {
+            $$0.a($$5, $$1.f.a($$2, $$5), 2);
+         }
+
+         $$5.p($$3);
+         $$5.r($$4);
+      }
+   }
+
+   private static void a(dhy $$0, eji $$1, bam $$2, jh $$3, jh.a $$4) {
+      int $$5 = $$1.i;
+      int $$6 = $$1.j;
+
+      for (int $$7 = 0; $$7 < $$1.l; $$7++) {
+         $$4.a($$3, $$2.a($$5) - $$2.a($$5), $$2.a($$6) - $$2.a($$6), $$2.a($$5) - $$2.a($$5));
+         if ($$0.u($$4)) {
+            dxn $$8 = $$1.k.a($$2, $$4);
+            if ($$8.a($$0, $$4) && $$0.a_($$4.d()).c($$0, $$4, jm.a)) {
+               $$0.a($$4, $$8, 2);
+            }
+         }
+      }
    }
 }

@@ -1,83 +1,81 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.function.Function;
 
-public class ewo extends ewa {
-   public static final MapCodec<ewo> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  Codec.unboundedMap(dcd.c, eyv.a).optionalFieldOf("enchantments", Map.of()).forGetter($$0x -> $$0x.b),
-                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
-               )
-            )
-            .apply($$0, ewo::new)
-   );
-   private final Map<jq<dcd>, eyu> b;
-   private final boolean c;
+public class ewo extends ewq {
+   public static final MapCodec<ewo> a = a(ewo::new);
 
-   ewo(List<exy> $$0, Map<jq<dcd>, eyu> $$1, boolean $$2) {
-      super($$0);
-      this.b = Map.copyOf($$1);
-      this.c = $$2;
+   ewo(List<ewx> $$0, List<ezs> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public ewc<ewo> b() {
-      return ewd.i;
+   public ewy a() {
+      return ewv.g;
    }
 
    @Override
-   public Set<exg<?>> a() {
-      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
-   }
-
-   @Override
-   public cwm a(cwm $$0, eun $$1) {
-      if ($$0.a(cwq.qQ)) {
-         $$0 = $$0.a((dfl)cwq.uO);
-      }
-
-      dcf.a($$0, $$1x -> {
-         if (this.c) {
-            this.b.forEach(($$2, $$3) -> $$1x.a((jq<dcd>)$$2, azm.a($$1x.a((jq<dcd>)$$2) + $$3.a($$1), 0, 255)));
-         } else {
-            this.b.forEach(($$2, $$3) -> $$1x.a((jq<dcd>)$$2, azm.a($$3.a($$1), 0, 255)));
+   protected ewp a(List<? extends ewp> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> b;
+         case 1 -> (ewp)$$0.get(0);
+         case 2 -> $$0.get(0).or($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (ewp $$3 : $$0) {
+            if ($$3.expand($$1, $$2)) {
+               return true;
+            }
          }
-      });
-      return $$0;
+
+         return false;
+      };
+      };
    }
 
-   public static class a extends ewa.a<ewo.a> {
-      private final Builder<jq<dcd>, eyu> a = ImmutableMap.builder();
-      private final boolean b;
+   @Override
+   public void a(ewn $$0) {
+      super.a($$0);
 
-      public a() {
-         this(false);
+      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
+         if (this.d.get($$1).e.isEmpty()) {
+            $$0.b("Unreachable entry!");
+         }
       }
+   }
 
-      public a(boolean $$0) {
-         this.b = $$0;
+   public static ewo.a a(ewx.a<?>... $$0) {
+      return new ewo.a($$0);
+   }
+
+   public static <E> ewo.a a(Collection<E> $$0, Function<E, ewx.a<?>> $$1) {
+      return new ewo.a($$0.stream().map($$1::apply).toArray(ewx.a[]::new));
+   }
+
+   public static class a extends ewx.a<ewo.a> {
+      private final Builder<ewx> a = ImmutableList.builder();
+
+      public a(ewx.a<?>... $$0) {
+         for (ewx.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
       }
 
       protected ewo.a a() {
          return this;
       }
 
-      public ewo.a a(jq<dcd> $$0, eyu $$1) {
-         this.a.put($$0, $$1);
+      @Override
+      public ewo.a a(ewx.a<?> $$0) {
+         this.a.add($$0.b());
          return this;
       }
 
       @Override
-      public ewb b() {
-         return new ewo(this.g(), this.a.build(), this.b);
+      public ewx b() {
+         return new ewo(this.a.build(), this.f());
       }
    }
 }

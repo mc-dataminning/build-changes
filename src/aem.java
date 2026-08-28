@@ -1,144 +1,166 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.collect.Multimap;
-import com.mojang.authlib.GameProfile;
-import java.util.Collection;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class aem implements zq<acf> {
-   public static final zh<wu, aem> a = zq.a(aem::a, aem::new);
-   private final EnumSet<aem.a> b;
-   private final List<aem.b> c;
+public abstract class aem implements aac<acr> {
+   protected final int a;
+   protected final short b;
+   protected final short c;
+   protected final short d;
+   protected final byte e;
+   protected final byte f;
+   protected final boolean g;
+   protected final boolean h;
+   protected final boolean i;
 
-   public aem(EnumSet<aem.a> $$0, Collection<arq> $$1) {
-      this.b = $$0;
-      this.c = $$1.stream().map(aem.b::new).toList();
-   }
-
-   public aem(aem.a $$0, arq $$1) {
-      this.b = EnumSet.of($$0);
-      this.c = List.of(new aem.b($$1));
-   }
-
-   public static aem a(Collection<arq> $$0) {
-      EnumSet<aem.a> $$1 = EnumSet.of(aem.a.a, aem.a.b, aem.a.c, aem.a.d, aem.a.e, aem.a.f, aem.a.g);
-      return new aem($$1, $$0);
-   }
-
-   private aem(wu $$0) {
-      this.b = $$0.a(aem.a.class);
-      this.c = $$0.a($$0x -> {
-         aem.c $$1 = new aem.c($$0x.n());
-
-         for (aem.a $$2 : this.b) {
-            $$2.h.read($$1, (wu)$$0x);
-         }
-
-         return $$1.a();
-      });
-   }
-
-   private void a(wu $$0) {
-      $$0.a(this.b, aem.a.class);
-      $$0.a(this.c, ($$0x, $$1) -> {
-         $$0x.a($$1.a());
-
-         for (aem.a $$2 : this.b) {
-            $$2.i.write((wu)$$0x, $$1);
-         }
-      });
+   protected aem(int $$0, short $$1, short $$2, short $$3, byte $$4, byte $$5, boolean $$6, boolean $$7, boolean $$8) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
+      this.i = $$8;
    }
 
    @Override
-   public zs<aem> a() {
-      return agu.ag;
-   }
+   public abstract aae<? extends aem> a();
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
-   }
-
-   public EnumSet<aem.a> b() {
-      return this.b;
-   }
-
-   public List<aem.b> e() {
-      return this.c;
-   }
-
-   public List<aem.b> f() {
-      return this.b.contains(aem.a.a) ? this.c : List.of();
    }
 
    @Override
    public String toString() {
-      return MoreObjects.toStringHelper(this).add("actions", this.b).add("entries", this.c).toString();
+      return "Entity_" + super.toString();
    }
 
-   public static enum a {
-      a(($$0, $$1) -> {
-         GameProfile $$2 = new GameProfile($$0.a, $$1.d(16));
-         $$2.getProperties().putAll((Multimap)zf.w.decode($$1));
-         $$0.b = $$2;
-      }, ($$0, $$1) -> {
-         GameProfile $$2 = Objects.requireNonNull($$1.b());
-         $$0.a($$2.getName(), 16);
-         zf.w.encode($$0, $$2.getProperties());
-      }),
-      b(($$0, $$1) -> $$0.h = $$1.c(ya.a::a), ($$0, $$1) -> $$0.a($$1.h, ya.a::a)),
-      c(($$0, $$1) -> $$0.e = dfj.a($$1.l()), ($$0, $$1) -> $$0.c($$1.e().a())),
-      d(($$0, $$1) -> $$0.c = $$1.readBoolean(), ($$0, $$1) -> $$0.a($$1.c())),
-      e(($$0, $$1) -> $$0.d = $$1.l(), ($$0, $$1) -> $$0.c($$1.d())),
-      f(($$0, $$1) -> $$0.f = wg.a($$1, xl.d), ($$0, $$1) -> wg.a($$0, $$1.f(), xl.d)),
-      g(($$0, $$1) -> $$0.g = $$1.l(), ($$0, $$1) -> $$0.c($$1.g));
+   @Nullable
+   public bvf a(dha $$0) {
+      return $$0.a(this.a);
+   }
 
-      final aem.a.a h;
-      final aem.a.b i;
+   public short b() {
+      return this.b;
+   }
 
-      private a(final aem.a.a $$0, final aem.a.b $$1) {
-         this.h = $$0;
-         this.i = $$1;
+   public short e() {
+      return this.c;
+   }
+
+   public short f() {
+      return this.d;
+   }
+
+   public float g() {
+      return bae.a(this.e);
+   }
+
+   public float h() {
+      return bae.a(this.f);
+   }
+
+   public boolean i() {
+      return this.h;
+   }
+
+   public boolean j() {
+      return this.i;
+   }
+
+   public boolean k() {
+      return this.g;
+   }
+
+   public static class a extends aem {
+      public static final zt<ws, aem.a> j = aac.a(aem.a::b, aem.a::a);
+
+      public a(int $$0, short $$1, short $$2, short $$3, boolean $$4) {
+         super($$0, $$1, $$2, $$3, (byte)0, (byte)0, $$4, false, true);
       }
 
-      public interface a {
-         void read(aem.c var1, wu var2);
+      private static aem.a a(ws $$0) {
+         int $$1 = $$0.l();
+         short $$2 = $$0.readShort();
+         short $$3 = $$0.readShort();
+         short $$4 = $$0.readShort();
+         boolean $$5 = $$0.readBoolean();
+         return new aem.a($$1, $$2, $$3, $$4, $$5);
       }
 
-      public interface b {
-         void write(wu var1, aem.b var2);
+      private void b(ws $$0) {
+         $$0.c(this.a);
+         $$0.m(this.b);
+         $$0.m(this.c);
+         $$0.m(this.d);
+         $$0.a(this.g);
+      }
+
+      @Override
+      public aae<aem.a> a() {
+         return ahk.R;
       }
    }
 
-   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, dfj e, @Nullable xj f, int g, @Nullable ya.a h) {
+   public static class b extends aem {
+      public static final zt<ws, aem.b> j = aac.a(aem.b::b, aem.b::a);
 
-      b(arq $$0) {
-         this($$0.cG(), $$0.gf(), true, $$0.f.k(), $$0.h.b(), $$0.O(), $$0.P(), x.a($$0.ad(), ya::a));
+      public b(int $$0, short $$1, short $$2, short $$3, byte $$4, byte $$5, boolean $$6) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, true, true);
+      }
+
+      private static aem.b a(ws $$0) {
+         int $$1 = $$0.l();
+         short $$2 = $$0.readShort();
+         short $$3 = $$0.readShort();
+         short $$4 = $$0.readShort();
+         byte $$5 = $$0.readByte();
+         byte $$6 = $$0.readByte();
+         boolean $$7 = $$0.readBoolean();
+         return new aem.b($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
+
+      private void b(ws $$0) {
+         $$0.c(this.a);
+         $$0.m(this.b);
+         $$0.m(this.c);
+         $$0.m(this.d);
+         $$0.l(this.e);
+         $$0.l(this.f);
+         $$0.a(this.g);
+      }
+
+      @Override
+      public aae<aem.b> a() {
+         return ahk.S;
       }
    }
 
-   static class c {
-      final UUID a;
-      @Nullable
-      GameProfile b;
-      boolean c;
-      int d;
-      dfj e;
-      @Nullable
-      xj f;
-      int g;
-      @Nullable
-      ya.a h;
+   public static class c extends aem {
+      public static final zt<ws, aem.c> j = aac.a(aem.c::b, aem.c::a);
 
-      c(UUID $$0) {
-         this.e = dfj.e;
-         this.a = $$0;
+      public c(int $$0, byte $$1, byte $$2, boolean $$3) {
+         super($$0, (short)0, (short)0, (short)0, $$1, $$2, $$3, true, false);
       }
 
-      aem.b a() {
-         return new aem.b(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h);
+      private static aem.c a(ws $$0) {
+         int $$1 = $$0.l();
+         byte $$2 = $$0.readByte();
+         byte $$3 = $$0.readByte();
+         boolean $$4 = $$0.readBoolean();
+         return new aem.c($$1, $$2, $$3, $$4);
+      }
+
+      private void b(ws $$0) {
+         $$0.c(this.a);
+         $$0.l(this.e);
+         $$0.l(this.f);
+         $$0.a(this.g);
+      }
+
+      @Override
+      public aae<aem.c> a() {
+         return ahk.U;
       }
    }
 }

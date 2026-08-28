@@ -1,32 +1,42 @@
-public class cdu extends ccp {
-   private final cmr b;
-   private int c;
+import java.util.EnumSet;
 
-   public cdu(cmr $$0, double $$1, boolean $$2) {
-      super($$0, $$1, $$2);
-      this.b = $$0;
+public class cdu extends ccz {
+   private final bwd a;
+   private double b;
+   private double c;
+   private int d;
+
+   public cdu(bwd $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(ccz.a.a, ccz.a.b));
+   }
+
+   @Override
+   public boolean b() {
+      return this.a.dY().i() < 0.02F;
+   }
+
+   @Override
+   public boolean c() {
+      return this.d >= 0;
    }
 
    @Override
    public void d() {
-      super.d();
-      this.c = 0;
+      double $$0 = (Math.PI * 2) * this.a.dY().j();
+      this.b = Math.cos($$0);
+      this.c = Math.sin($$0);
+      this.d = 20 + this.a.dY().a(20);
    }
 
    @Override
-   public void e() {
-      super.e();
-      this.b.w(false);
+   public boolean V_() {
+      return true;
    }
 
    @Override
    public void a() {
-      super.a();
-      this.c++;
-      if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.w(true);
-      } else {
-         this.b.w(false);
-      }
+      this.d--;
+      this.a.H().a(this.a.dA() + this.b, this.a.dE(), this.a.dG() + this.c);
    }
 }

@@ -1,53 +1,165 @@
 import com.mojang.serialization.MapCodec;
 
-public class dqg extends diq {
-   public static final MapCodec<dqg> a = b(dqg::new);
-   private static final fas b = diq.a(2.0, 13.0, 2.0, 14.0, 16.0, 14.0);
-   private static final int c = 14;
-   private static final int d = 10;
-   private static final int e = 10;
+public class dqg extends djt {
+   public static final MapCodec<dqg> d = b(dqg::new);
+   public static final dyk<dyq> e = dyd.ah;
 
    @Override
    public MapCodec<dqg> a() {
-      return a;
+      return d;
    }
 
-   public dqg(dvu.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected boolean a(dvv $$0, dfp $$1, jh $$2) {
-      return diq.a($$1, $$2.d(), jm.a) && !$$1.z($$2);
+   protected dqg(dxm.d $$0) {
+      super(false, $$0);
+      this.l(this.F.b().b(e, dyq.a).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected dvv a(dvv $$0, dfp $$1, dgb $$2, jh $$3, jm $$4, jh $$5, dvv $$6, azu $$7) {
-      return $$4 == jm.b && !this.a($$0, $$1, $$3) ? dis.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   public void a(dvv $$0, dfm $$1, jh $$2, azu $$3) {
-      int $$4 = $$2.u();
-      int $$5 = $$2.v();
-      int $$6 = $$2.w();
-      double $$7 = (double)$$4 + $$3.j();
-      double $$8 = (double)$$5 + 0.7;
-      double $$9 = (double)$$6 + $$3.j();
-      $$1.a(ls.az, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-      jh.a $$10 = new jh.a();
-
-      for (int $$11 = 0; $$11 < 14; $$11++) {
-         $$10.d($$4 + azm.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + azm.a($$3, -10, 10));
-         dvv $$12 = $$1.a_($$10);
-         if (!$$12.m($$1, $$10)) {
-            $$1.a(ls.aD, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
-         }
+   protected void a(dxn $$0, dha $$1, jh $$2, dke $$3) {
+      if ($$3.m().p() && new dqh($$1, $$2, $$0).b() == 3) {
+         this.a($$1, $$2, $$0, false);
       }
    }
 
    @Override
-   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
-      return b;
+   public dyp<dyq> c() {
+      return e;
+   }
+
+   @Override
+   protected dxn a(dxn $$0, dqu $$1) {
+      dyq $$2 = $$0.c(e);
+
+      return $$0.b(e, switch ($$1) {
+         case c -> {
+            switch ($$2) {
+               case a:
+                  yield dyq.a;
+               case b:
+                  yield dyq.b;
+               case c:
+                  yield dyq.d;
+               case d:
+                  yield dyq.c;
+               case e:
+                  yield dyq.f;
+               case f:
+                  yield dyq.e;
+               case g:
+                  yield dyq.i;
+               case h:
+                  yield dyq.j;
+               case i:
+                  yield dyq.g;
+               case j:
+                  yield dyq.h;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         case d -> {
+            switch ($$2) {
+               case a:
+                  yield dyq.b;
+               case b:
+                  yield dyq.a;
+               case c:
+                  yield dyq.e;
+               case d:
+                  yield dyq.f;
+               case e:
+                  yield dyq.d;
+               case f:
+                  yield dyq.c;
+               case g:
+                  yield dyq.j;
+               case h:
+                  yield dyq.g;
+               case i:
+                  yield dyq.h;
+               case j:
+                  yield dyq.i;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         case b -> {
+            switch ($$2) {
+               case a:
+                  yield dyq.b;
+               case b:
+                  yield dyq.a;
+               case c:
+                  yield dyq.f;
+               case d:
+                  yield dyq.e;
+               case e:
+                  yield dyq.c;
+               case f:
+                  yield dyq.d;
+               case g:
+                  yield dyq.h;
+               case h:
+                  yield dyq.i;
+               case i:
+                  yield dyq.j;
+               case j:
+                  yield dyq.g;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         default -> $$2;
+      });
+   }
+
+   @Override
+   protected dxn a(dxn $$0, dpd $$1) {
+      dyq $$2 = $$0.c(e);
+      switch ($$1) {
+         case b:
+            switch ($$2) {
+               case e:
+                  return $$0.b(e, dyq.f);
+               case f:
+                  return $$0.b(e, dyq.e);
+               case g:
+                  return $$0.b(e, dyq.j);
+               case h:
+                  return $$0.b(e, dyq.i);
+               case i:
+                  return $$0.b(e, dyq.h);
+               case j:
+                  return $$0.b(e, dyq.g);
+               default:
+                  return super.a($$0, $$1);
+            }
+         case c:
+            switch ($$2) {
+               case c:
+                  return $$0.b(e, dyq.d);
+               case d:
+                  return $$0.b(e, dyq.c);
+               case e:
+               case f:
+               default:
+                  break;
+               case g:
+                  return $$0.b(e, dyq.h);
+               case h:
+                  return $$0.b(e, dyq.g);
+               case i:
+                  return $$0.b(e, dyq.j);
+               case j:
+                  return $$0.b(e, dyq.i);
+            }
+      }
+
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(dxo.a<dke, dxn> $$0) {
+      $$0.a(e, c);
    }
 }

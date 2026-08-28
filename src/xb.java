@@ -1,48 +1,31 @@
-import io.netty.buffer.ByteBuf;
+public interface xb {
+   aad a();
 
-public class xb {
-   private static final int a = 10;
-   private static final int b = 127;
-   private static final int c = 128;
-   private static final int d = 7;
+   wq b();
 
-   public static int a(long $$0) {
-      for (int $$1 = 1; $$1 < 10; $$1++) {
-         if (($$0 & -1L << $$1 * 7) == 0L) {
-            return $$1;
-         }
-      }
+   void a(wr var1);
 
-      return 10;
+   default void a(aac $$0, Exception $$1) throws z {
+      throw aaf.a($$1, $$0, this);
    }
 
-   public static boolean a(byte $$0) {
-      return ($$0 & 128) == 128;
+   default wr a(xv $$0, Throwable $$1) {
+      return new wr($$0);
    }
 
-   public static long a(ByteBuf $$0) {
-      long $$1 = 0L;
-      int $$2 = 0;
+   boolean c();
 
-      byte $$3;
-      do {
-         $$3 = $$0.readByte();
-         $$1 |= (long)($$3 & 127) << $$2++ * 7;
-         if ($$2 > 10) {
-            throw new RuntimeException("VarLong too big");
-         }
-      } while (a($$3));
-
-      return $$1;
+   default boolean a(aac<?> $$0) {
+      return this.c();
    }
 
-   public static ByteBuf a(ByteBuf $$0, long $$1) {
-      while (($$1 & -128L) != 0L) {
-         $$0.writeByte((int)($$1 & 127L) | 128);
-         $$1 >>>= 7;
-      }
+   default void a(o $$0) {
+      p $$1 = $$0.a("Connection");
+      $$1.a("Protocol", () -> this.b().a());
+      $$1.a("Flow", () -> this.a().toString());
+      this.a($$0, $$1);
+   }
 
-      $$0.writeByte((int)$$1);
-      return $$0;
+   default void a(o $$0, p $$1) {
    }
 }

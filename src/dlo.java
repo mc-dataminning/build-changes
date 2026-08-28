@@ -1,170 +1,196 @@
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.BiConsumer;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dlo extends dml {
+public class dlo extends djq implements dnn {
    public static final MapCodec<dlo> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dxh.a.fieldOf("wood_type").forGetter($$0x -> $$0x.H), t()).apply($$0, dlo::new)
+      $$0 -> $$0.group(Codec.BOOL.fieldOf("automatic").forGetter($$0x -> $$0x.e), t()).apply($$0, dlo::new)
    );
-   public static final dwm b = dwl.u;
-   public static final dwm c = dwl.w;
-   public static final dwm d = dwl.q;
-   protected static final fas e = diq.a(0.0, 0.0, 6.0, 16.0, 16.0, 10.0);
-   protected static final fas f = diq.a(6.0, 0.0, 0.0, 10.0, 16.0, 16.0);
-   protected static final fas g = diq.a(0.0, 0.0, 6.0, 16.0, 13.0, 10.0);
-   protected static final fas h = diq.a(6.0, 0.0, 0.0, 10.0, 13.0, 16.0);
-   protected static final fas i = diq.a(0.0, 0.0, 6.0, 16.0, 24.0, 10.0);
-   protected static final fas j = diq.a(6.0, 0.0, 0.0, 10.0, 24.0, 16.0);
-   protected static final fas k = diq.a(0.0, 5.0, 6.0, 16.0, 24.0, 10.0);
-   protected static final fas l = diq.a(6.0, 5.0, 0.0, 10.0, 24.0, 16.0);
-   protected static final fas m = fap.a(diq.a(0.0, 5.0, 7.0, 2.0, 16.0, 9.0), diq.a(14.0, 5.0, 7.0, 16.0, 16.0, 9.0));
-   protected static final fas n = fap.a(diq.a(7.0, 5.0, 0.0, 9.0, 16.0, 2.0), diq.a(7.0, 5.0, 14.0, 9.0, 16.0, 16.0));
-   protected static final fas o = fap.a(diq.a(0.0, 2.0, 7.0, 2.0, 13.0, 9.0), diq.a(14.0, 2.0, 7.0, 16.0, 13.0, 9.0));
-   protected static final fas G = fap.a(diq.a(7.0, 2.0, 0.0, 9.0, 13.0, 2.0), diq.a(7.0, 2.0, 14.0, 9.0, 13.0, 16.0));
-   private final dxh H;
+   private static final Logger d = LogUtils.getLogger();
+   public static final dyk<jm> b = dmj.a;
+   public static final dye c = dyd.c;
+   private final boolean e;
 
    @Override
    public MapCodec<dlo> a() {
       return a;
    }
 
-   public dlo(dxh $$0, dvu.d $$1) {
-      super($$1.a($$0.d()));
-      this.H = $$0;
-      this.l(this.F.b().b(b, Boolean.valueOf(false)).b(c, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
+   public dlo(boolean $$0, dxm.d $$1) {
+      super($$1);
+      this.l(this.F.b().b(b, jm.c).b(c, Boolean.valueOf(false)));
+      this.e = $$0;
    }
 
    @Override
-   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
-      if ($$0.c(d)) {
-         return $$0.c(aF).o() == jm.a.a ? h : g;
-      } else {
-         return $$0.c(aF).o() == jm.a.a ? f : e;
-      }
+   public dup a(jh $$0, dxn $$1) {
+      duz $$2 = new duz($$0, $$1);
+      $$2.b(this.e);
+      return $$2;
    }
 
    @Override
-   protected dvv a(dvv $$0, dfp $$1, dgb $$2, jh $$3, jm $$4, jh $$5, dvv $$6, azu $$7) {
-      jm.a $$8 = $$4.o();
-      if ($$0.c(aF).h().o() != $$8) {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else {
-         boolean $$9 = this.o($$6) || this.o($$1.a_($$3.a($$4.g())));
-         return $$0.b(d, Boolean.valueOf($$9));
-      }
-   }
-
-   @Override
-   protected fas b_(dvv $$0, der $$1, jh $$2) {
-      if ($$0.c(b)) {
-         return fap.a();
-      } else {
-         return $$0.c(aF).o() == jm.a.c ? k : l;
-      }
-   }
-
-   @Override
-   protected fas b(dvv $$0, der $$1, jh $$2, fad $$3) {
-      if ($$0.c(b)) {
-         return fap.a();
-      } else {
-         return $$0.c(aF).o() == jm.a.c ? i : j;
-      }
-   }
-
-   @Override
-   protected fas d_(dvv $$0) {
-      if ($$0.c(d)) {
-         return $$0.c(aF).o() == jm.a.a ? G : o;
-      } else {
-         return $$0.c(aF).o() == jm.a.a ? n : m;
-      }
-   }
-
-   @Override
-   protected boolean a(dvv $$0, esk $$1) {
-      switch ($$1) {
-         case a:
-            return $$0.c(b);
-         case b:
-            return false;
-         case c:
-            return $$0.c(b);
-         default:
-            return false;
-      }
-   }
-
-   @Override
-   public dvv a(dad $$0) {
-      dfm $$1 = $$0.q();
-      jh $$2 = $$0.a();
-      boolean $$3 = $$1.C($$2);
-      jm $$4 = $$0.g();
-      jm.a $$5 = $$4.o();
-      boolean $$6 = $$5 == jm.a.c && (this.o($$1.a_($$2.h())) || this.o($$1.a_($$2.i())))
-         || $$5 == jm.a.a && (this.o($$1.a_($$2.f())) || this.o($$1.a_($$2.g())));
-      return this.m().b(aF, $$4).b(b, Boolean.valueOf($$3)).b(c, Boolean.valueOf($$3)).b(d, Boolean.valueOf($$6));
-   }
-
-   private boolean o(dvv $$0) {
-      return $$0.a(axc.M);
-   }
-
-   @Override
-   protected bsk a(dvv $$0, dfm $$1, jh $$2, cou $$3, ezu $$4) {
-      if ($$0.c(b)) {
-         $$0 = $$0.b(b, Boolean.valueOf(false));
-         $$1.a($$2, $$0, 10);
-      } else {
-         jm $$5 = $$3.cO();
-         if ($$0.c(aF) == $$5.g()) {
-            $$0 = $$0.b(aF, $$5);
-         }
-
-         $$0 = $$0.b(b, Boolean.valueOf(true));
-         $$1.a($$2, $$0, 10);
-      }
-
-      boolean $$6 = $$0.c(b);
-      $$1.a($$3, $$2, $$6 ? this.H.g() : this.H.f(), awo.e, 1.0F, $$1.G_().i() * 0.1F + 0.9F);
-      $$1.a($$3, $$6 ? ear.h : ear.d, $$2);
-      return bsk.a;
-   }
-
-   @Override
-   protected void a(dvv $$0, arp $$1, jh $$2, dfe $$3, BiConsumer<cwm, jh> $$4) {
-      if ($$3.g() && !$$0.c(c)) {
-         boolean $$5 = $$0.c(b);
-         $$1.b($$2, $$0.b(b, Boolean.valueOf(!$$5)));
-         $$1.a(null, $$2, $$5 ? this.H.f() : this.H.g(), awo.e, 1.0F, $$1.G_().i() * 0.1F + 0.9F);
-         $$1.a($$5 ? ear.d : ear.h, $$2, ear.a.a($$0));
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected void a(dvv $$0, dfm $$1, jh $$2, diq $$3, @Nullable etd $$4, boolean $$5) {
+   protected void a(dxn $$0, dha $$1, jh $$2, dke $$3, @Nullable eux $$4, boolean $$5) {
       if (!$$1.C) {
-         boolean $$6 = $$1.C($$2);
-         if ($$0.c(c) != $$6) {
-            $$1.a($$2, $$0.b(c, Boolean.valueOf($$6)).b(b, Boolean.valueOf($$6)), 2);
-            if ($$0.c(b) != $$6) {
-               $$1.a(null, $$2, $$6 ? this.H.g() : this.H.f(), awo.e, 1.0F, $$1.G_().i() * 0.1F + 0.9F);
-               $$1.a(null, $$6 ? ear.h : ear.d, $$2);
+         if ($$1.c_($$2) instanceof duz $$7) {
+            this.a($$1, $$2, $$7, $$1.C($$2));
+         }
+      }
+   }
+
+   private void a(dha $$0, jh $$1, duz $$2, boolean $$3) {
+      boolean $$4 = $$2.c();
+      if ($$3 != $$4) {
+         $$2.a($$3);
+         if ($$3) {
+            if ($$2.d() || $$2.t() == duz.a.a) {
+               return;
+            }
+
+            $$2.k();
+            $$0.a($$1, this, 1);
+         }
+      }
+   }
+
+   @Override
+   protected void a(dxn $$0, ash $$1, jh $$2, bam $$3) {
+      if ($$1.c_($$2) instanceof duz $$5) {
+         dga $$6 = $$5.b();
+         boolean $$7 = !bbb.b($$6.m());
+         duz.a $$8 = $$5.t();
+         boolean $$9 = $$5.j();
+         if ($$8 == duz.a.b) {
+            $$5.k();
+            if ($$9) {
+               this.a($$0, $$1, $$2, $$6, $$7);
+            } else if ($$5.u()) {
+               $$6.a(0);
+            }
+
+            if ($$5.c() || $$5.d()) {
+               $$1.a($$2, this, 1);
+            }
+         } else if ($$8 == duz.a.c) {
+            if ($$9) {
+               this.a($$0, $$1, $$2, $$6, $$7);
+            } else if ($$5.u()) {
+               $$6.a(0);
             }
          }
+
+         $$1.c($$2, this);
+      }
+   }
+
+   private void a(dxn $$0, ash $$1, jh $$2, dga $$3, boolean $$4) {
+      if ($$4) {
+         $$3.a($$1);
+      } else {
+         $$3.a(0);
+      }
+
+      a($$1, $$2, $$0.c(b));
+   }
+
+   @Override
+   protected bte a(dxn $$0, dha $$1, jh $$2, cps $$3, fbo $$4) {
+      dup $$5 = $$1.c_($$2);
+      if ($$5 instanceof duz && $$3.gE()) {
+         $$3.a((duz)$$5);
+         return bte.a;
+      } else {
+         return bte.e;
       }
    }
 
    @Override
-   protected void a(dvw.a<diq, dvv> $$0) {
-      $$0.a(aF, b, c, d);
+   protected boolean c_(dxn $$0) {
+      return true;
    }
 
-   public static boolean a(dvv $$0, jm $$1) {
-      return $$0.c(aF).o() == $$1.h().o();
+   @Override
+   protected int a(dxn $$0, dha $$1, jh $$2) {
+      dup $$3 = $$1.c_($$2);
+      return $$3 instanceof duz ? ((duz)$$3).b().k() : 0;
+   }
+
+   @Override
+   public void a(dha $$0, jh $$1, dxn $$2, bwb $$3, cxk $$4) {
+      if ($$0.c_($$1) instanceof duz $$6) {
+         dga $$8 = $$6.b();
+         if ($$0 instanceof ash $$9) {
+            if (!$$4.b(ku.Y)) {
+               $$8.a($$9.N().b(dgw.p));
+               $$6.b(this.e);
+            }
+
+            boolean $$10 = $$0.C($$1);
+            this.a($$0, $$1, $$6, $$10);
+         }
+      }
+   }
+
+   @Override
+   protected dqn a_(dxn $$0) {
+      return dqn.c;
+   }
+
+   @Override
+   protected dxn a(dxn $$0, dqu $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dxn a(dxn $$0, dpd $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dxo.a<dke, dxn> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   public dxn a(dbb $$0) {
+      return this.m().b(b, $$0.d().g());
+   }
+
+   private static void a(ash $$0, jh $$1, jm $$2) {
+      jh.a $$3 = $$1.k();
+      dgw $$4 = $$0.N();
+      int $$5 = $$4.c(dgw.x);
+
+      while ($$5-- > 0) {
+         $$3.c($$2);
+         dxn $$6 = $$0.a_($$3);
+         dke $$7 = $$6.b();
+         if (!$$6.a(dkg.lc) || !($$0.c_($$3) instanceof duz $$9) || $$9.t() != duz.a.a) {
+            break;
+         }
+
+         if ($$9.c() || $$9.d()) {
+            dga $$10 = $$9.b();
+            if ($$9.k()) {
+               if (!$$10.a($$0)) {
+                  break;
+               }
+
+               $$0.c($$3, $$7);
+            } else if ($$9.u()) {
+               $$10.a(0);
+            }
+         }
+
+         $$2 = $$6.c(b);
+      }
+
+      if ($$5 <= 0) {
+         int $$11 = Math.max($$4.c(dgw.x), 0);
+         d.warn("Command Block chain tried to execute more than {} steps!", $$11);
+      }
    }
 }

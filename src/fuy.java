@@ -1,58 +1,26 @@
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+public class fuy extends fug<cts> {
+   private static final alz G = alz.b("textures/gui/container/dispenser.png");
 
-public class fuy extends fva {
-   private static final xj a = xj.c("options.online.title");
-   @Nullable
-   private fkh<Unit> u;
-
-   public fuy(frw $$0, fki $$1) {
-      super($$0, $$1, a);
+   public fuy(cts $$0, cpr $$1, xv $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected void aR_() {
-      super.aR_();
-      if (this.u != null) {
-         fmb $$0 = this.d.b(this.u);
-         if ($$0 != null) {
-            $$0.j = false;
-         }
-      }
-   }
-
-   private fkh<?>[] a(fki $$0, fke $$1) {
-      List<fkh<?>> $$2 = new ArrayList<>();
-      $$2.add($$0.V());
-      $$2.add($$0.W());
-      fkh<Unit> $$3 = x.a(
-         $$1.s,
-         $$0x -> {
-            bsh $$1x = $$0x.ak();
-            return new fkh<>(
-               "options.difficulty.online",
-               fkh.a(),
-               ($$1xx, $$2x) -> $$1x.b(),
-               new fkh.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
-               Unit.INSTANCE,
-               $$0xx -> {
-               }
-            );
-         }
-      );
-      if ($$3 != null) {
-         this.u = $$3;
-         $$2.add($$3);
-      }
-
-      return $$2.toArray(new fkh[0]);
+   protected void aT_() {
+      super.aT_();
+      this.v = (this.s - this.p.a(this.l)) / 2;
    }
 
    @Override
-   protected void m() {
-      this.d.a(this.a(this.c, this.m));
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(fnl $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(glo::B, G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
    }
 }

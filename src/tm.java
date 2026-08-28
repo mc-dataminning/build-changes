@@ -1,40 +1,33 @@
-import com.google.common.collect.Lists;
 import java.util.Collection;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public class tm {
-   public static final tm a = new tm();
-   private final Collection<tg> b = Lists.newCopyOnWriteArrayList();
-   @Nullable
-   private tj c;
+public record tm(String b, Collection<ts> c, Consumer<ash> d, Consumer<ash> e) {
+   public static final String a = "defaultBatch";
 
-   private tm() {
-   }
-
-   public void a(tg $$0) {
-      this.b.add($$0);
-   }
-
-   public void a() {
-      this.b.clear();
-      if (this.c != null) {
-         this.c.c();
-         this.c = null;
+   public tm(String b, Collection<ts> c, Consumer<ash> d, Consumer<ash> e) {
+      if (c.isEmpty()) {
+         throw new IllegalArgumentException("A GameTestBatch must include at least one GameTestInfo!");
+      } else {
+         this.b = b;
+         this.c = c;
+         this.d = d;
+         this.e = e;
       }
    }
 
-   public void a(tj $$0) {
-      if (this.c != null) {
-         ae.b("The runner was already set in GameTestTicker");
-      }
-
-      this.c = $$0;
+   public String a() {
+      return this.b;
    }
 
-   public void b() {
-      if (this.c != null) {
-         this.b.forEach($$0 -> $$0.a(this.c));
-         this.b.removeIf(tg::k);
-      }
+   public Collection<ts> b() {
+      return this.c;
+   }
+
+   public Consumer<ash> c() {
+      return this.d;
+   }
+
+   public Consumer<ash> d() {
+      return this.e;
    }
 }

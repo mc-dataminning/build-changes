@@ -1,19 +1,19 @@
 import io.netty.buffer.ByteBuf;
-import java.util.function.Function;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 
-public class wu extends wg {
-   private final ke d;
+public class wu extends ChannelInboundHandlerAdapter {
+   private final wi a;
 
-   public wu(ByteBuf $$0, ke $$1) {
-      super($$0);
-      this.d = $$1;
+   public wu(wi $$0) {
+      this.a = $$0;
    }
 
-   public ke H() {
-      return this.d;
-   }
+   public void channelRead(ChannelHandlerContext $$0, Object $$1) {
+      if ($$1 instanceof ByteBuf $$2) {
+         this.a.a($$2.readableBytes());
+      }
 
-   public static Function<ByteBuf, wu> a(ke $$0) {
-      return $$1 -> new wu($$1, $$0);
+      $$0.fireChannelRead($$1);
    }
 }

@@ -2,39 +2,79 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import javax.annotation.Nullable;
+import java.util.Collection;
+import java.util.Collections;
 
 public class apf {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xj.c("commands.spectate.self"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xj.b("commands.spectate.not_spectator", $$0));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xv.c("commands.recipe.give.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xv.c("commands.recipe.take.failed"));
 
    public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("spectate").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((ew)$$0x.getSource(), null, ((ew)$$0x.getSource()).h())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("recipe").requires($$0x -> $$0x.c(2)))
+               .then(
+                  ex.a("give")
+                     .then(
+                        ((RequiredArgumentBuilder)ex.a("targets", fj.d())
+                              .then(
+                                 ex.a("recipe", fw.a(mb.bj))
+                                    .executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), Collections.singleton(fw.d($$0x, "recipe"))))
+                              ))
+                           .then(ex.a("*").executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), ((ew)$$0x.getSource()).l().aI().e())))
+                     )
+               ))
             .then(
-               ((RequiredArgumentBuilder)ex.a("target", fj.a()).executes($$0x -> a((ew)$$0x.getSource(), fj.a($$0x, "target"), ((ew)$$0x.getSource()).h())))
-                  .then(ex.a("player", fj.c()).executes($$0x -> a((ew)$$0x.getSource(), fj.a($$0x, "target"), fj.e($$0x, "player"))))
+               ex.a("take")
+                  .then(
+                     ((RequiredArgumentBuilder)ex.a("targets", fj.d())
+                           .then(
+                              ex.a("recipe", fw.a(mb.bj))
+                                 .executes($$0x -> b((ew)$$0x.getSource(), fj.f($$0x, "targets"), Collections.singleton(fw.d($$0x, "recipe"))))
+                           ))
+                        .then(ex.a("*").executes($$0x -> b((ew)$$0x.getSource(), fj.f($$0x, "targets"), ((ew)$$0x.getSource()).l().aI().e())))
+                  )
             )
       );
    }
 
-   private static int a(ew $$0, @Nullable bul $$1, arq $$2) throws CommandSyntaxException {
-      if ($$2 == $$1) {
+   private static int a(ew $$0, Collection<asi> $$1, Collection<dcd<?>> $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (asi $$4 : $$1) {
+         $$3 += $$4.a($$2);
+      }
+
+      if ($$3 == 0) {
          throw a.create();
-      } else if ($$2.h.b() != dfj.d) {
-         throw b.create($$2.o_());
       } else {
-         $$2.d($$1);
-         if ($$1 != null) {
-            $$0.a(() -> xj.a("commands.spectate.success.started", $$1.o_()), false);
+         if ($$1.size() == 1) {
+            $$0.a(() -> xv.a("commands.recipe.give.success.single", $$2.size(), $$1.iterator().next().p_()), true);
          } else {
-            $$0.a(() -> xj.c("commands.spectate.success.stopped"), false);
+            $$0.a(() -> xv.a("commands.recipe.give.success.multiple", $$2.size(), $$1.size()), true);
          }
 
-         return 1;
+         return $$3;
+      }
+   }
+
+   private static int b(ew $$0, Collection<asi> $$1, Collection<dcd<?>> $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (asi $$4 : $$1) {
+         $$3 += $$4.b($$2);
+      }
+
+      if ($$3 == 0) {
+         throw b.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> xv.a("commands.recipe.take.success.single", $$2.size(), $$1.iterator().next().p_()), true);
+         } else {
+            $$0.a(() -> xv.a("commands.recipe.take.success.multiple", $$2.size(), $$1.size()), true);
+         }
+
+         return $$3;
       }
    }
 }

@@ -1,122 +1,70 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public abstract class ccs extends ccf {
-   private static final int g = 1200;
-   private static final int h = 1200;
-   private static final int i = 200;
-   protected final bvp a;
-   public final double b;
-   protected int c;
-   protected int d;
-   private int j;
-   protected jh e = jh.c;
-   private boolean k;
-   private final int l;
-   private final int m;
-   protected int f;
+public class ccs extends ccz {
+   protected final bwj a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
+   private final dha f;
 
-   public ccs(bvp $$0, double $$1, int $$2) {
-      this($$0, $$1, $$2, 1);
-   }
-
-   public ccs(bvp $$0, double $$1, int $$2, int $$3) {
+   public ccs(bwj $$0, double $$1) {
       this.a = $$0;
-      this.b = $$1;
-      this.l = $$2;
-      this.f = 0;
-      this.m = $$3;
-      this.a(EnumSet.of(ccf.a.a, ccf.a.c));
+      this.e = $$1;
+      this.f = $$0.dV();
+      this.a(EnumSet.of(ccz.a.a));
    }
 
    @Override
    public boolean b() {
-      if (this.c > 0) {
-         this.c--;
+      if (this.a.O_() != null) {
+         return false;
+      } else if (!this.f.U()) {
+         return false;
+      } else if (!this.a.bY()) {
+         return false;
+      } else if (!this.f.h(this.a.dv())) {
          return false;
       } else {
-         this.c = this.a(this.a);
-         return this.n();
+         return !this.a.a(bvn.f).f() ? false : this.h();
       }
    }
 
-   protected int a(bvp $$0) {
-      return b(200 + $$0.dY().a(200));
+   protected boolean h() {
+      fbs $$0 = this.i();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0.d;
+         this.c = $$0.e;
+         this.d = $$0.f;
+         return true;
+      }
    }
 
    @Override
    public boolean c() {
-      return this.d >= -this.j && this.d <= 1200 && this.a(this.a.dV(), this.e);
+      return !this.a.L().m();
    }
 
    @Override
    public void d() {
-      this.h();
-      this.d = 0;
-      this.j = this.a.dY().a(this.a.dY().a(1200) + 1200) + 1200;
+      this.a.L().a(this.b, this.c, this.d, this.e);
    }
 
-   protected void h() {
-      this.a.L().a((double)this.e.u() + 0.5, (double)(this.e.v() + 1), (double)this.e.w() + 0.5, this.b);
-   }
+   @Nullable
+   protected fbs i() {
+      bam $$0 = this.a.dY();
+      jh $$1 = this.a.dv();
 
-   public double i() {
-      return 1.0;
-   }
-
-   protected jh k() {
-      return this.e.d();
-   }
-
-   @Override
-   public boolean T_() {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      jh $$0 = this.k();
-      if (!$$0.a(this.a.dt(), this.i())) {
-         this.k = false;
-         this.d++;
-         if (this.l()) {
-            this.a.L().a((double)$$0.u() + 0.5, (double)$$0.v(), (double)$$0.w() + 0.5, this.b);
-         }
-      } else {
-         this.k = true;
-         this.d--;
-      }
-   }
-
-   public boolean l() {
-      return this.d % 40 == 0;
-   }
-
-   protected boolean m() {
-      return this.k;
-   }
-
-   protected boolean n() {
-      int $$0 = this.l;
-      int $$1 = this.m;
-      jh $$2 = this.a.dv();
-      jh.a $$3 = new jh.a();
-
-      for (int $$4 = this.f; $$4 <= $$1; $$4 = $$4 > 0 ? -$$4 : 1 - $$4) {
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            for (int $$6 = 0; $$6 <= $$5; $$6 = $$6 > 0 ? -$$6 : 1 - $$6) {
-               for (int $$7 = $$6 < $$5 && $$6 > -$$5 ? $$5 : 0; $$7 <= $$5; $$7 = $$7 > 0 ? -$$7 : 1 - $$7) {
-                  $$3.a($$2, $$6, $$4 - 1, $$7);
-                  if (this.a.a($$3) && this.a(this.a.dV(), $$3)) {
-                     this.e = $$3;
-                     return true;
-                  }
-               }
-            }
+      for (int $$2 = 0; $$2 < 10; $$2++) {
+         jh $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
+         if (!this.f.h($$3) && this.a.c($$3) < 0.0F) {
+            return fbs.c($$3);
          }
       }
 
-      return false;
+      return null;
    }
-
-   protected abstract boolean a(dfp var1, jh var2);
 }

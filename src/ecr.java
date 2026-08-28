@@ -1,137 +1,60 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import org.apache.commons.lang3.tuple.Pair;
 
-public class ecr implements azu {
-   private static final float c = 5.9604645E-8F;
-   private static final double d = 1.110223E-16F;
-   public static final Codec<ecr> b = ecq.a.xmap($$0 -> new ecr($$0), $$0 -> $$0.e);
-   private ecq e;
-   private final ebs f = new ebs(this);
+public class ecr {
+   public static final Codec<ecr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ecq.a.lenientOptionalFieldOf("event").forGetter($$0x -> $$0x.b.map(Pair::getLeft)),
+               Codec.LONG.fieldOf("tick").forGetter($$0x -> $$0x.b.<Long>map(Pair::getRight).orElse(-1L))
+            )
+            .apply($$0, ecr::new)
+   );
+   private Optional<Pair<ecq, Long>> b;
 
-   public ecr(long $$0) {
-      this.e = new ecq(ecf.c($$0));
+   public ecr(Optional<ecq> $$0, long $$1) {
+      this.b = $$0.map($$1x -> Pair.of($$1x, $$1));
    }
 
-   public ecr(ecf.a $$0) {
-      this.e = new ecq($$0);
+   public ecr() {
+      this.b = Optional.empty();
    }
 
-   public ecr(long $$0, long $$1) {
-      this.e = new ecq($$0, $$1);
+   public void a(ecq $$0, long $$1) {
+      if (this.b($$0, $$1)) {
+         this.b = Optional.of(Pair.of($$0, $$1));
+      }
    }
 
-   private ecr(ecq $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public azu d() {
-      return new ecr(this.e.a(), this.e.a());
-   }
-
-   @Override
-   public ecd e() {
-      return new ecr.a(this.e.a(), this.e.a());
-   }
-
-   @Override
-   public void b(long $$0) {
-      this.e = new ecq(ecf.c($$0));
-      this.f.a();
-   }
-
-   @Override
-   public int f() {
-      return (int)this.e.a();
-   }
-
-   @Override
-   public int a(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Bound must be positive");
+   private boolean b(ecq $$0, long $$1) {
+      if (this.b.isEmpty()) {
+         return true;
       } else {
-         long $$1 = Integer.toUnsignedLong(this.f());
-         long $$2 = $$1 * (long)$$0;
-         long $$3 = $$2 & 4294967295L;
-         if ($$3 < (long)$$0) {
-            for (int $$4 = Integer.remainderUnsigned(~$$0 + 1, $$0); $$3 < (long)$$4; $$3 = $$2 & 4294967295L) {
-               $$1 = Integer.toUnsignedLong(this.f());
-               $$2 = $$1 * (long)$$0;
+         Pair<ecq, Long> $$2 = this.b.get();
+         long $$3 = (Long)$$2.getRight();
+         if ($$1 != $$3) {
+            return false;
+         } else {
+            ecq $$4 = (ecq)$$2.getLeft();
+            if ($$0.b() < $$4.b()) {
+               return true;
+            } else {
+               return $$0.b() > $$4.b() ? false : ecs.a_($$0.a()) > ecs.a_($$4.a());
             }
          }
-
-         long $$5 = $$2 >> 32;
-         return (int)$$5;
       }
    }
 
-   @Override
-   public long g() {
-      return this.e.a();
-   }
-
-   @Override
-   public boolean h() {
-      return (this.e.a() & 1L) != 0L;
-   }
-
-   @Override
-   public float i() {
-      return (float)this.c(24) * 5.9604645E-8F;
-   }
-
-   @Override
-   public double j() {
-      return (double)this.c(53) * 1.110223E-16F;
-   }
-
-   @Override
-   public double k() {
-      return this.f.b();
-   }
-
-   @Override
-   public void b(int $$0) {
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.e.a();
+   public Optional<ecq> a(long $$0) {
+      if (this.b.isEmpty()) {
+         return Optional.empty();
+      } else {
+         return this.b.get().getRight() < $$0 ? Optional.of((ecq)this.b.get().getLeft()) : Optional.empty();
       }
    }
 
-   private long c(int $$0) {
-      return this.e.a() >>> 64 - $$0;
-   }
-
-   public static class a implements ecd {
-      private final long a;
-      private final long b;
-
-      public a(long $$0, long $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public azu a(int $$0, int $$1, int $$2) {
-         long $$3 = azm.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new ecr($$4, this.b);
-      }
-
-      @Override
-      public azu a(String $$0) {
-         ecf.a $$1 = ecf.a($$0);
-         return new ecr($$1.a(this.a, this.b));
-      }
-
-      @Override
-      public azu a(long $$0) {
-         return new ecr($$0 ^ this.a, $$0 ^ this.b);
-      }
-
-      @VisibleForTesting
-      @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("seedLo: ").append(this.a).append(", seedHi: ").append(this.b);
-      }
+   public void a() {
+      this.b = Optional.empty();
    }
 }

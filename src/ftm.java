@@ -1,136 +1,168 @@
+import java.net.URI;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
 
-public class ftm extends fsn<ctc> {
-   private float G;
-   private float H;
-   private boolean I;
-   private final fte J;
+public class ftm extends ftr {
+   private static final alz a = alz.b("icon/draft_report");
+   private static final int b = 2;
+   private static final int c = 50;
+   private static final int d = 4;
+   private static final int s = 204;
+   private static final int u = 98;
+   private static final xv v = xv.c("menu.returnToGame");
+   private static final xv w = xv.c("gui.advancements");
+   private static final xv x = xv.c("gui.stats");
+   private static final xv y = xv.c("menu.sendFeedback");
+   private static final xv z = xv.c("menu.reportBugs");
+   private static final xv A = xv.c("menu.feedback");
+   private static final xv B = xv.c("menu.server_links");
+   private static final xv C = xv.c("menu.options");
+   private static final xv D = xv.c("menu.shareToLan");
+   private static final xv E = xv.c("menu.playerReporting");
+   private static final xv F = xv.c("menu.returnToMenu");
+   private static final xv G = xv.c("menu.savingLevel");
+   private static final xv H = xv.c("menu.game");
+   private static final xv I = xv.c("menu.paused");
+   private final boolean J;
+   @Nullable
+   private fny K;
 
-   public ftm(cou $$0) {
-      super($$0.cb, new fvp($$0.cb), $$0.gg(), xj.c("container.crafting"));
-      this.v = 97;
-      this.J = new fte(this);
+   public ftm(boolean $$0) {
+      super($$0 ? H : I);
+      this.J = $$0;
+   }
+
+   public boolean l() {
+      return this.J;
    }
 
    @Override
-   public void F() {
-      super.F();
-      if (this.m.r.f()) {
-         this.m.a(new ftb(this.m.t, this.m.t.i.y(), this.m.n.K().c()));
+   protected void aT_() {
+      if (this.J) {
+         this.E();
       }
+
+      this.c(new fpg(0, this.J ? 40 : 10, this.n, 9, this.l, this.p));
    }
 
-   @Override
-   protected void aR_() {
-      if (this.m.r.f()) {
-         this.m.a(new ftb(this.m.t, this.m.t.i.y(), this.m.n.K().c()));
+   private void E() {
+      frm $$0 = new frm();
+      $$0.c().a(4, 4, 4, 0);
+      frm.b $$1 = $$0.d(2);
+      $$1.a(fny.a(v, $$0x -> {
+         this.m.a(null);
+         this.m.o.i();
+      }).a(204).a(), 2, $$0.b().c(50));
+      $$1.a(this.a(w, () -> new fub(this.m.t.i.p(), this)));
+      $$1.a(this.a(x, () -> new ftv(this, this.m.t.m())));
+      amr $$2 = this.m.t.i.E();
+      if ($$2.a()) {
+         a(this, $$1);
       } else {
-         super.aR_();
+         $$1.a(this.a(A, () -> new ftm.a(this)));
+         $$1.a(this.a(B, () -> new fwj(this, $$2)));
+      }
+
+      $$1.a(this.a(C, () -> new fwu(this, this.m.n)));
+      if (this.m.U() && !this.m.V().r()) {
+         $$1.a(this.a(D, () -> new fts(this)));
+      } else {
+         $$1.a(this.a(E, () -> new fyj(this)));
+      }
+
+      xv $$3 = this.m.T() ? F : xu.p;
+      this.K = $$1.a(fny.a($$3, $$0x -> {
+         $$0x.j = false;
+         this.m.bb().a(this.m, this, this::F, true);
+      }).a(204).a(), 2);
+      $$0.a();
+      frl.a($$0, 0, 0, this.n, this.o, 0.5F, 0.25F);
+      $$0.a(this::c);
+   }
+
+   static void a(ftr $$0, frm.b $$1) {
+      $$1.a(a($$0, y, ab.b().g() ? aza.i : aza.h));
+      $$1.a(a($$0, z, aza.j)).j = !ab.b().d().a();
+   }
+
+   private void F() {
+      boolean $$0 = this.m.T();
+      gfs $$1 = this.m.S();
+      this.m.s.ab();
+      if ($$0) {
+         this.m.b(new ftc(G));
+      } else {
+         this.m.y();
+      }
+
+      ftt $$2 = new ftt();
+      if ($$0) {
+         this.m.a($$2);
+      } else if ($$1 != null && $$1.e()) {
+         this.m.a(new fgw($$2));
+      } else {
+         this.m.a(new fwh($$2));
       }
    }
 
    @Override
-   protected fqk J() {
-      return new fqk(this.C + 104, this.o / 2 - 22);
+   public void e() {
+      super.e();
    }
 
    @Override
-   protected void K() {
-      this.I = true;
-   }
-
-   @Override
-   protected void b(flq $$0, int $$1, int $$2) {
-      $$0.a(this.p, this.l, this.v, this.w, 4210752, false);
-   }
-
-   @Override
-   public void a(flq $$0, int $$1, int $$2, float $$3) {
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.J.a($$0, $$1, $$2, $$3);
-      this.G = (float)$$1;
-      this.H = (float)$$2;
+      if (this.J && this.m != null && this.m.bb().c() && this.K != null) {
+         $$0.a(glo::B, a, this.K.D() + this.K.y() - 17, this.K.E() + 3, 15, 15);
+      }
    }
 
    @Override
-   public boolean D() {
-      return this.J.a();
+   public void b(fnl $$0, int $$1, int $$2, float $$3) {
+      if (this.J) {
+         super.b($$0, $$1, $$2, $$3);
+      }
    }
 
-   @Override
-   protected boolean L() {
-      return false;
+   private fny a(xv $$0, Supplier<ftr> $$1) {
+      return fny.a($$0, $$1x -> this.m.a($$1.get())).a(98).a();
    }
 
-   @Override
-   protected void a(flq $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.C;
-      int $$5 = this.D;
-      $$0.a(gjq::B, a, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      a($$0, $$4 + 26, $$5 + 8, $$4 + 75, $$5 + 78, 30, 0.0625F, this.G, this.H, this.m.t);
+   private static fny a(ftr $$0, xv $$1, URI $$2) {
+      return fny.a($$1, fso.b($$0, $$2)).a(98).a();
    }
 
-   public static void a(flq $$0, int $$1, int $$2, int $$3, int $$4, int $$5, float $$6, float $$7, float $$8, bvh $$9) {
-      float $$10 = (float)($$1 + $$3) / 2.0F;
-      float $$11 = (float)($$2 + $$4) / 2.0F;
-      $$0.c($$1, $$2, $$3, $$4);
-      float $$12 = (float)Math.atan((double)(($$10 - $$7) / 40.0F));
-      float $$13 = (float)Math.atan((double)(($$11 - $$8) / 40.0F));
-      Quaternionf $$14 = new Quaternionf().rotateZ((float) Math.PI);
-      Quaternionf $$15 = new Quaternionf().rotateX($$13 * 20.0F * (float) (Math.PI / 180.0));
-      $$14.mul($$15);
-      float $$16 = $$9.aW;
-      float $$17 = $$9.dL();
-      float $$18 = $$9.dN();
-      float $$19 = $$9.aZ;
-      float $$20 = $$9.aY;
-      $$9.aW = 180.0F + $$12 * 20.0F;
-      $$9.v(180.0F + $$12 * 40.0F);
-      $$9.w(-$$13 * 20.0F);
-      $$9.aY = $$9.dL();
-      $$9.aZ = $$9.dL();
-      float $$21 = $$9.ej();
-      Vector3f $$22 = new Vector3f(0.0F, $$9.dr() / 2.0F + $$6 * $$21, 0.0F);
-      float $$23 = (float)$$5 / $$21;
-      a($$0, $$10, $$11, $$23, $$22, $$14, $$15, $$9);
-      $$9.aW = $$16;
-      $$9.v($$17);
-      $$9.w($$18);
-      $$9.aZ = $$19;
-      $$9.aY = $$20;
-      $$0.e();
-   }
+   static class a extends ftr {
+      private static final xv b = xv.c("menu.feedback.title");
+      public final ftr a;
+      private final frn c = new frn(this);
 
-   public static void a(flq $$0, float $$1, float $$2, float $$3, Vector3f $$4, Quaternionf $$5, @Nullable Quaternionf $$6, bvh $$7) {
-      $$0.c().a();
-      $$0.c().a((double)$$1, (double)$$2, 50.0);
-      $$0.c().b($$3, $$3, -$$3);
-      $$0.c().a($$4.x, $$4.y, $$4.z);
-      $$0.c().a($$5);
-      $$0.d();
-      fdn.e();
-      gpi $$8 = fke.Q().aq();
-      if ($$6 != null) {
-         $$8.a($$6.conjugate(new Quaternionf()).rotateY((float) Math.PI));
+      protected a(ftr $$0) {
+         super(b);
+         this.a = $$0;
       }
 
-      $$8.a(false);
-      $$0.a($$3x -> $$8.a($$7, 0.0, 0.0, 0.0, 1.0F, $$0.c(), $$3x, 15728880));
-      $$0.d();
-      $$8.a(true);
-      $$0.c().b();
-      fdn.d();
-   }
+      @Override
+      protected void aT_() {
+         this.c.a(b, this.p);
+         frm $$0 = this.c.c(new frm());
+         $$0.c().a(4, 4, 4, 0);
+         frm.b $$1 = $$0.d(2);
+         ftm.a(this, $$1);
+         this.c.b(fny.a(xu.k, $$0x -> this.aP_()).a(200).a());
+         this.c.a(this::c);
+         this.c();
+      }
 
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      if (this.I) {
-         this.I = false;
-         return true;
-      } else {
-         return super.b($$0, $$1, $$2);
+      @Override
+      protected void c() {
+         this.c.a();
+      }
+
+      @Override
+      public void aP_() {
+         this.m.a(this.a);
       }
    }
 }

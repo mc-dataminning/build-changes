@@ -1,62 +1,40 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
+import java.util.OptionalInt;
 
-public record ddd(dck d, dck e, kl f, Optional<ecx> g, ejb h, Optional<jq<ear>> i) implements dcu {
-   public static final MapCodec<ddd> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               dck.b.fieldOf("radius").forGetter(ddd::b),
-               dck.b.fieldOf("height").forGetter(ddd::c),
-               kl.f.optionalFieldOf("offset", kl.g).forGetter(ddd::d),
-               ecx.b.optionalFieldOf("predicate").forGetter(ddd::e),
-               ejb.a.fieldOf("block_state").forGetter(ddd::f),
-               ear.aj.optionalFieldOf("trigger_game_event").forGetter(ddd::g)
-            )
-            .apply($$0, ddd::new)
-   );
+public record ddd(dde b, ddc c, OptionalInt d, dbi e, Optional<List<dbv>> f) {
+   public static final zt<xg, ddd> a = zt.a(dde.a, ddd::a, ddc.e, ddd::b, zr.i, ddd::c, dbi.o, ddd::d, dbv.a.a(zr.a()).a(zr::a), ddd::e, ddd::new);
 
-   @Override
-   public void a(arp $$0, int $$1, dcc $$2, bul $$3, ezy $$4) {
-      jh $$5 = jh.a((ka)$$4).a(this.f);
-      azu $$6 = $$3.dY();
-      int $$7 = (int)this.d.a($$1);
-      int $$8 = (int)this.e.a($$1);
+   public List<cxk> a(ddi.f $$0) {
+      return this.c.d().a($$0);
+   }
 
-      for (jh $$9 : jh.c($$5.b(-$$7, 0, -$$7), $$5.b($$7, Math.min($$8 - 1, 0), $$7))) {
-         if ($$9.c($$4.a(), (double)$$9.v() + 0.5, $$4.c()) < (double)azm.h($$7)
-            && this.g.map($$2x -> $$2x.test($$0, $$9)).orElse(true)
-            && $$0.b($$9, this.h.a($$6, $$9))) {
-            this.i.ifPresent($$3x -> $$0.a($$3, $$3x, $$9));
-         }
+   public boolean a(cpx $$0) {
+      if (this.f.isEmpty()) {
+         return false;
+      } else {
+         List<cpw.a<jq<cxg>>> $$1 = this.f.get().stream().map(dby::a).toList();
+         return $$0.a($$1, null);
       }
    }
 
-   @Override
-   public MapCodec<ddd> a() {
-      return a;
+   public dde a() {
+      return this.b;
    }
 
-   public dck b() {
+   public ddc b() {
+      return this.c;
+   }
+
+   public OptionalInt c() {
       return this.d;
    }
 
-   public dck c() {
+   public dbi d() {
       return this.e;
    }
 
-   public kl d() {
+   public Optional<List<dbv>> e() {
       return this.f;
-   }
-
-   public Optional<ecx> e() {
-      return this.g;
-   }
-
-   public ejb f() {
-      return this.h;
-   }
-
-   public Optional<jq<ear>> g() {
-      return this.i;
    }
 }

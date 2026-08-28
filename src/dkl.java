@@ -1,177 +1,142 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dkl extends diz implements dit {
-   public static final MapCodec<dkl> d = b(dkl::new);
-   public static final int e = 7;
-   public static final dwu f = dwl.av;
-   private static final fas[] a = new fas[]{
-      diq.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      diq.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      diq.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      diq.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      diq.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
-      diq.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
-      diq.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
-      diq.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
-   };
+public class dkl extends dke implements dkm {
+   public static final MapCodec<dkl> a = b(dkl::new);
+   public static final dye b = dyd.e;
+   private static final int c = 5;
 
    @Override
-   public MapCodec<? extends dkl> a() {
-      return d;
+   public MapCodec<dkl> a() {
+      return a;
    }
 
-   protected dkl(dvu.d $$0) {
+   public dkl(dxm.d $$0) {
       super($$0);
-      this.l(this.F.b().b(this.b(), Integer.valueOf(0)));
+      this.l(this.F.b().b(b, Boolean.valueOf(true)));
    }
 
    @Override
-   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
-      return a[this.h($$0)];
-   }
+   protected void a(dxn $$0, dha $$1, jh $$2, bvf $$3) {
+      dxn $$4 = $$1.a_($$2.d());
+      if ($$4.l()) {
+         $$3.l($$0.c(b));
+         if (!$$1.C) {
+            ash $$5 = (ash)$$1;
 
-   @Override
-   protected boolean b(dvv $$0, der $$1, jh $$2) {
-      return $$0.a(dis.cC);
-   }
-
-   protected dwu b() {
-      return f;
-   }
-
-   public int c() {
-      return 7;
-   }
-
-   public int h(dvv $$0) {
-      return $$0.c(this.b());
-   }
-
-   public dvv b(int $$0) {
-      return this.m().b(this.b(), Integer.valueOf($$0));
-   }
-
-   public final boolean i(dvv $$0) {
-      return this.h($$0) >= this.c();
-   }
-
-   @Override
-   protected boolean f(dvv $$0) {
-      return !this.i($$0);
-   }
-
-   @Override
-   protected void b(dvv $$0, arp $$1, jh $$2, azu $$3) {
-      if ($$1.b($$2, 0) >= 9) {
-         int $$4 = this.h($$0);
-         if ($$4 < this.c()) {
-            float $$5 = a(this, $$1, $$2);
-            if ($$3.a((int)(25.0F / $$5) + 1) == 0) {
-               $$1.a($$2, this.b($$4 + 1), 2);
+            for (int $$6 = 0; $$6 < 2; $$6++) {
+               $$5.a(ls.an, (double)$$2.u() + $$1.A.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.A.j(), 1, 0.0, 0.0, 0.0, 1.0);
+               $$5.a(ls.d, (double)$$2.u() + $$1.A.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.A.j(), 1, 0.0, 0.01, 0.0, 0.2);
             }
          }
-      }
-   }
-
-   public void a(dfm $$0, jh $$1, dvv $$2) {
-      int $$3 = this.h($$2) + this.a($$0);
-      int $$4 = this.c();
-      if ($$3 > $$4) {
-         $$3 = $$4;
-      }
-
-      $$0.a($$1, this.b($$3), 2);
-   }
-
-   protected int a(dfm $$0) {
-      return azm.a($$0.A, 2, 5);
-   }
-
-   protected static float a(diq $$0, der $$1, jh $$2) {
-      float $$3 = 1.0F;
-      jh $$4 = $$2.e();
-
-      for (int $$5 = -1; $$5 <= 1; $$5++) {
-         for (int $$6 = -1; $$6 <= 1; $$6++) {
-            float $$7 = 0.0F;
-            dvv $$8 = $$1.a_($$4.b($$5, 0, $$6));
-            if ($$8.a(dis.cC)) {
-               $$7 = 1.0F;
-               if ($$8.c(dlm.b) > 0) {
-                  $$7 = 3.0F;
-               }
-            }
-
-            if ($$5 != 0 || $$6 != 0) {
-               $$7 /= 4.0F;
-            }
-
-            $$3 += $$7;
-         }
-      }
-
-      jh $$9 = $$2.f();
-      jh $$10 = $$2.g();
-      jh $$11 = $$2.h();
-      jh $$12 = $$2.i();
-      boolean $$13 = $$1.a_($$11).a($$0) || $$1.a_($$12).a($$0);
-      boolean $$14 = $$1.a_($$9).a($$0) || $$1.a_($$10).a($$0);
-      if ($$13 && $$14) {
-         $$3 /= 2.0F;
       } else {
-         boolean $$15 = $$1.a_($$11.f()).a($$0) || $$1.a_($$12.f()).a($$0) || $$1.a_($$12.g()).a($$0) || $$1.a_($$11.g()).a($$0);
-         if ($$15) {
-            $$3 /= 2.0F;
+         $$3.m($$0.c(b));
+      }
+   }
+
+   @Override
+   protected void a(dxn $$0, ash $$1, jh $$2, bam $$3) {
+      a($$1, $$2, $$0, $$1.a_($$2.e()));
+   }
+
+   @Override
+   protected etp b_(dxn $$0) {
+      return etq.c.a(false);
+   }
+
+   public static void b(dhb $$0, jh $$1, dxn $$2) {
+      a($$0, $$1, $$0.a_($$1), $$2);
+   }
+
+   public static void a(dhb $$0, jh $$1, dxn $$2, dxn $$3) {
+      if (o($$2)) {
+         dxn $$4 = q($$3);
+         $$0.a($$1, $$4, 2);
+         jh.a $$5 = $$1.k().c(jm.b);
+
+         while (o($$0.a_($$5))) {
+            if (!$$0.a($$5, $$4, 2)) {
+               return;
+            }
+
+            $$5.c(jm.b);
          }
       }
+   }
 
-      return $$3;
+   private static boolean o(dxn $$0) {
+      return $$0.a(dkg.ny) || $$0.a(dkg.J) && $$0.y().e() >= 8 && $$0.y().b();
+   }
+
+   private static dxn q(dxn $$0) {
+      if ($$0.a(dkg.ny)) {
+         return $$0;
+      } else if ($$0.a(dkg.ej)) {
+         return dkg.ny.m().b(b, Boolean.valueOf(false));
+      } else {
+         return $$0.a(dkg.le) ? dkg.ny.m().b(b, Boolean.valueOf(true)) : dkg.J.m();
+      }
    }
 
    @Override
-   protected boolean a(dvv $$0, dfp $$1, jh $$2) {
-      return a($$1, $$2) && super.a($$0, $$1, $$2);
-   }
-
-   protected static boolean a(dfp $$0, jh $$1) {
-      return $$0.b($$1, 0) >= 8;
+   public void a(dxn $$0, dha $$1, jh $$2, bam $$3) {
+      double $$4 = (double)$$2.u();
+      double $$5 = (double)$$2.v();
+      double $$6 = (double)$$2.w();
+      if ($$0.c(b)) {
+         $$1.b(ls.aq, $$4 + 0.5, $$5 + 0.8, $$6, 0.0, 0.0, 0.0);
+         if ($$3.a(200) == 0) {
+            $$1.a($$4, $$5, $$6, axf.da, axg.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
+         }
+      } else {
+         $$1.b(ls.ar, $$4 + 0.5, $$5, $$6 + 0.5, 0.0, 0.04, 0.0);
+         $$1.b(ls.ar, $$4 + (double)$$3.i(), $$5 + (double)$$3.i(), $$6 + (double)$$3.i(), 0.0, 0.04, 0.0);
+         if ($$3.a(200) == 0) {
+            $$1.a($$4, $$5, $$6, axf.cY, axg.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
+         }
+      }
    }
 
    @Override
-   protected void a(dvv $$0, dfm $$1, jh $$2, bul $$3) {
-      if ($$1 instanceof arp $$4 && $$3 instanceof cmd && $$4.N().b(dfi.c)) {
-         $$4.a($$2, true, $$3);
+   protected dxn a(dxn $$0, dhd $$1, dhp $$2, jh $$3, jm $$4, jh $$5, dxn $$6, bam $$7) {
+      $$2.a($$3, etq.c, etq.c.a($$1));
+      if (!$$0.a($$1, $$3) || $$4 == jm.a || $$4 == jm.b && !$$6.a(dkg.ny) && o($$6)) {
+         $$2.a($$3, this, 5);
       }
 
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected dfl d() {
-      return cwq.pw;
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   public cwm a(dfp $$0, jh $$1, dvv $$2) {
-      return new cwm(this.d());
+   protected boolean a(dxn $$0, dhd $$1, jh $$2) {
+      dxn $$3 = $$1.a_($$2.e());
+      return $$3.a(dkg.ny) || $$3.a(dkg.le) || $$3.a(dkg.ej);
    }
 
    @Override
-   public boolean b(dfp $$0, jh $$1, dvv $$2) {
-      return !this.i($$2);
+   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
+      return fcj.a();
    }
 
    @Override
-   public boolean a(dfm $$0, azu $$1, jh $$2, dvv $$3) {
-      return true;
+   protected dqn a_(dxn $$0) {
+      return dqn.a;
    }
 
    @Override
-   public void a(arp $$0, azu $$1, jh $$2, dvv $$3) {
-      this.a((dfm)$$0, $$2, $$3);
+   protected void a(dxo.a<dke, dxn> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected void a(dvw.a<diq, dvv> $$0) {
-      $$0.a(f);
+   public cxk a(@Nullable cps $$0, dhb $$1, jh $$2, dxn $$3) {
+      $$1.a($$2, dkg.a.m(), 11);
+      return new cxk(cxo.qX);
+   }
+
+   @Override
+   public Optional<axe> at_() {
+      return etq.c.j();
    }
 }

@@ -1,55 +1,426 @@
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 import java.util.List;
 
 public class sb {
-   public static final ali<eei<?, ?>> a = sa.a("ice_spike");
-   public static final ali<eei<?, ?>> b = sa.a("ice_patch");
-   public static final ali<eei<?, ?>> c = sa.a("forest_rock");
-   public static final ali<eei<?, ?>> d = sa.a("iceberg_packed");
-   public static final ali<eei<?, ?>> e = sa.a("iceberg_blue");
-   public static final ali<eei<?, ?>> f = sa.a("blue_ice");
-   public static final ali<eei<?, ?>> g = sa.a("lake_lava");
-   public static final ali<eei<?, ?>> h = sa.a("disk_clay");
-   public static final ali<eei<?, ?>> i = sa.a("disk_gravel");
-   public static final ali<eei<?, ?>> j = sa.a("disk_sand");
-   public static final ali<eei<?, ?>> k = sa.a("freeze_top_layer");
-   public static final ali<eei<?, ?>> l = sa.a("disk_grass");
-   public static final ali<eei<?, ?>> m = sa.a("bonus_chest");
-   public static final ali<eei<?, ?>> n = sa.a("void_start_platform");
-   public static final ali<eei<?, ?>> o = sa.a("desert_well");
-   public static final ali<eei<?, ?>> p = sa.a("spring_lava_overworld");
-   public static final ali<eei<?, ?>> q = sa.a("spring_lava_frozen");
-   public static final ali<eei<?, ?>> r = sa.a("spring_water");
+   public static final aly<epm> a = rr.a("trial_chambers/chamber/end");
+   public static final aly<epm> b = rr.a("trial_chambers/hallway/fallback");
+   public static final List<epo> c = ImmutableList.builder()
+      .add(
+         epo.a(
+            brm.<List<epo>>a()
+               .a(List.of(epo.a(a("contents/ranged"), a("ranged/skeleton")), epo.a(a("contents/slow_ranged"), a("slow_ranged/skeleton"))))
+               .a(List.of(epo.a(a("contents/ranged"), a("ranged/stray")), epo.a(a("contents/slow_ranged"), a("slow_ranged/stray"))))
+               .a(List.of(epo.a(a("contents/ranged"), a("ranged/poison_skeleton")), epo.a(a("contents/slow_ranged"), a("slow_ranged/poison_skeleton"))))
+               .a()
+         )
+      )
+      .add(epo.a(a("contents/melee"), brm.<String>a().a(a("melee/zombie")).a(a("melee/husk")).a(a("melee/spider")).a()))
+      .add(
+         epo.a(
+            a("contents/small_melee"),
+            brm.<String>a().a(a("small_melee/slime")).a(a("small_melee/cave_spider")).a(a("small_melee/silverfish")).a(a("small_melee/baby_zombie")).a()
+         )
+      )
+      .build();
 
-   public static void a(qz<eei<?, ?>> $$0) {
-      sa.a($$0, a, eew.s);
-      sa.a($$0, b, eew.G, new egx(ejj.a(dis.iC), ecx.c(List.of(dis.j, dis.i, dis.l, dis.k, dis.fl, dis.dP, dis.dO)), brv.a(2, 3), 1));
-      sa.a($$0, c, eew.F, new egt(dis.cn.m()));
-      sa.a($$0, d, eew.E, new egt(dis.iC.m()));
-      sa.a($$0, e, eew.E, new egt(dis.mW.m()));
-      sa.a($$0, f, eew.D);
-      sa.a($$0, g, eew.H, new efl.a(ejb.a(dis.H.m()), ejb.a(dis.b.m())));
-      sa.a($$0, h, eew.G, new egx(ejj.a(dis.dR), ecx.c(List.of(dis.j, dis.dR)), brv.a(2, 3), 1));
-      sa.a($$0, i, eew.G, new egx(ejj.a(dis.L), ecx.c(List.of(dis.j, dis.i)), brv.a(2, 5), 2));
-      sa.a(
-         $$0, j, eew.G, new egx(new ejj(ejb.a(dis.I), List.of(new ejj.a(ecx.a(jm.a.q(), dis.a), ejb.a(dis.aV)))), ecx.c(List.of(dis.j, dis.i)), brv.a(2, 6), 2)
-      );
-      sa.a($$0, k, eew.u);
-      sa.a(
+   public static String a(String $$0) {
+      return "trial_chambers/spawner/" + $$0;
+   }
+
+   public static void a(rk<epm> $$0) {
+      jr<epm> $$1 = $$0.a(mb.aW);
+      jq<epm> $$2 = $$1.b(rr.a);
+      jq<epm> $$3 = $$1.b(b);
+      jr<esc> $$4 = $$0.a(mb.aU);
+      jq<esc> $$5 = $$4.b(rs.M);
+      $$0.a(a, new epm($$2, List.of(Pair.of(epk.b("trial_chambers/corridor/end_1", $$5), 1), Pair.of(epk.b("trial_chambers/corridor/end_2", $$5), 1)), epm.a.b));
+      rr.a($$0, "trial_chambers/chamber/entrance_cap", new epm($$2, List.of(Pair.of(epk.b("trial_chambers/chamber/entrance_cap", $$5), 1)), epm.a.b));
+      rr.a(
          $$0,
-         l,
-         eew.G,
-         new egx(
-            new ejj(ejb.a(dis.j), List.of(new ejj.a(ecx.a(ecx.b(ecx.b(jm.b.q()), ecx.a(jm.b.q(), erw.c))), ejb.a(dis.i)))),
-            ecx.c(List.of(dis.j, dis.sI)),
-            brv.a(2, 6),
-            2
+         "trial_chambers/chambers/end",
+         new epm(
+            $$3,
+            List.of(
+               Pair.of(epk.b("trial_chambers/chamber/chamber_1", $$5), 1),
+               Pair.of(epk.b("trial_chambers/chamber/assembly", $$5), 1),
+               Pair.of(epk.b("trial_chambers/chamber/eruption", $$5), 1),
+               Pair.of(epk.b("trial_chambers/chamber/slanted", $$5), 1)
+            ),
+            epm.a.b
          )
       );
-      sa.a($$0, m, eew.ad);
-      sa.a($$0, n, eew.n);
-      sa.a($$0, o, eew.o);
-      sa.a($$0, p, eew.k, new ehv(erw.e.g(), true, 4, 1, ju.a(diq::p, dis.b, dis.c, dis.e, dis.g, dis.sJ, dis.qz, dis.qN, dis.j)));
-      sa.a($$0, q, eew.k, new ehv(erw.e.g(), true, 4, 1, ju.a(diq::p, dis.dP, dis.qP, dis.iC)));
-      sa.a($$0, r, eew.k, new ehv(erw.c.g(), true, 4, 1, ju.a(diq::p, dis.b, dis.c, dis.e, dis.g, dis.sJ, dis.qz, dis.qN, dis.j, dis.dP, dis.qP, dis.iC)));
+      rr.a(
+         $$0,
+         "trial_chambers/corridor",
+         new epm(
+            $$2,
+            List.of(
+               Pair.of(epk.b("trial_chambers/corridor/second_plate"), 1),
+               Pair.of(epk.b("trial_chambers/intersection/intersection_1", $$5), 1),
+               Pair.of(epk.b("trial_chambers/intersection/intersection_2", $$5), 1),
+               Pair.of(epk.b("trial_chambers/intersection/intersection_3", $$5), 1),
+               Pair.of(epk.b("trial_chambers/corridor/first_plate"), 1),
+               Pair.of(epk.b("trial_chambers/corridor/atrium_1", $$5), 1),
+               Pair.of(epk.b("trial_chambers/corridor/entrance_1", $$5), 1),
+               Pair.of(epk.b("trial_chambers/corridor/entrance_2", $$5), 1),
+               Pair.of(epk.b("trial_chambers/corridor/entrance_3", $$5), 1)
+            ),
+            epm.a.b
+         )
+      );
+      rr.a(
+         $$0,
+         "trial_chambers/chamber/addon",
+         new epm(
+            $$2,
+            List.of(
+               Pair.of(epk.b("trial_chambers/chamber/addon/full_stacked_walkway"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/addon/full_stacked_walkway_2"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/addon/full_corner_column"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/addon/grate_bridge"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/addon/hanging_platform"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/addon/short_grate_platform"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/addon/short_platform"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/addon/lower_staircase_down"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/addon/walkway_with_bridge_1"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/addon/c1_breeze"), 1)
+            ),
+            epm.a.b
+         )
+      );
+      rr.a(
+         $$0,
+         "trial_chambers/chamber/assembly",
+         new epm(
+            $$2,
+            List.of(
+               Pair.of(epk.b("trial_chambers/chamber/assembly/full_column"), 2),
+               Pair.of(epk.b("trial_chambers/chamber/assembly/cover_1"), 2),
+               Pair.of(epk.b("trial_chambers/chamber/assembly/cover_2"), 2),
+               Pair.of(epk.b("trial_chambers/chamber/assembly/cover_3"), 2),
+               Pair.of(epk.b("trial_chambers/chamber/assembly/cover_4"), 2),
+               Pair.of(epk.b("trial_chambers/chamber/assembly/cover_5"), 2),
+               Pair.of(epk.b("trial_chambers/chamber/assembly/cover_6"), 2),
+               Pair.of(epk.b("trial_chambers/chamber/assembly/cover_7"), 5),
+               Pair.of(epk.b("trial_chambers/chamber/assembly/platform_1"), 2),
+               Pair.of(epk.b("trial_chambers/chamber/assembly/spawner_1"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/assembly/hanging_1"), 2),
+               Pair.of(epk.b("trial_chambers/chamber/assembly/hanging_2"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/assembly/hanging_3"), 2),
+               Pair.of(epk.b("trial_chambers/chamber/assembly/hanging_4"), 2),
+               Pair.of(epk.b("trial_chambers/chamber/assembly/hanging_5"), 4),
+               Pair.of(epk.b("trial_chambers/chamber/assembly/left_staircase_1"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/assembly/left_staircase_2"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/assembly/left_staircase_3"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/assembly/right_staircase_1"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/assembly/right_staircase_2"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/assembly/right_staircase_3"), 1)
+            ),
+            epm.a.b
+         )
+      );
+      rr.a(
+         $$0,
+         "trial_chambers/chamber/eruption",
+         new epm(
+            $$2,
+            List.of(
+               Pair.of(epk.b("trial_chambers/chamber/eruption/center_1"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/eruption/breeze_slice_1"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/eruption/slice_1"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/eruption/slice_2"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/eruption/slice_3"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/eruption/quadrant_1"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/eruption/quadrant_2"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/eruption/quadrant_3"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/eruption/quadrant_4"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/eruption/quadrant_5"), 1)
+            ),
+            epm.a.b
+         )
+      );
+      rr.a(
+         $$0,
+         "trial_chambers/chamber/slanted",
+         new epm(
+            $$2,
+            List.of(
+               Pair.of(epk.b("trial_chambers/chamber/slanted/center"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/slanted/hallway_1"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/slanted/hallway_2"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/slanted/hallway_3"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/slanted/quadrant_1"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/slanted/quadrant_2"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/slanted/quadrant_3"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/slanted/quadrant_4"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/slanted/ramp_1"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/slanted/ramp_2"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/slanted/ramp_3"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/slanted/ramp_4"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/slanted/ominous_upper_arm_1"), 1)
+            ),
+            epm.a.b
+         )
+      );
+      rr.a(
+         $$0,
+         "trial_chambers/chamber/pedestal",
+         new epm(
+            $$2,
+            List.of(
+               Pair.of(epk.b("trial_chambers/chamber/pedestal/center_1"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/pedestal/slice_1"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/pedestal/slice_2"), 3),
+               Pair.of(epk.b("trial_chambers/chamber/pedestal/slice_3"), 3),
+               Pair.of(epk.b("trial_chambers/chamber/pedestal/slice_4"), 3),
+               Pair.of(epk.b("trial_chambers/chamber/pedestal/slice_5"), 3),
+               Pair.of(epk.b("trial_chambers/chamber/pedestal/ominous_slice_1"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/pedestal/quadrant_1"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/pedestal/quadrant_2"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/pedestal/quadrant_3"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/slanted/quadrant_1"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/slanted/quadrant_2"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/slanted/quadrant_3"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/slanted/quadrant_4"), 1)
+            ),
+            epm.a.b
+         )
+      );
+      rr.a(
+         $$0,
+         "trial_chambers/corridor/slices",
+         new epm(
+            $$2,
+            List.of(
+               Pair.of(epk.b("trial_chambers/corridor/straight_1", $$5), 1),
+               Pair.of(epk.b("trial_chambers/corridor/straight_2", $$5), 2),
+               Pair.of(epk.b("trial_chambers/corridor/straight_3", $$5), 2),
+               Pair.of(epk.b("trial_chambers/corridor/straight_4", $$5), 2),
+               Pair.of(epk.b("trial_chambers/corridor/straight_5", $$5), 2),
+               Pair.of(epk.b("trial_chambers/corridor/straight_6", $$5), 2),
+               Pair.of(epk.b("trial_chambers/corridor/straight_7", $$5), 1),
+               Pair.of(epk.b("trial_chambers/corridor/straight_8", $$5), 2)
+            ),
+            epm.a.b
+         )
+      );
+      $$0.a(
+         b,
+         new epm(
+            $$2,
+            List.of(
+               Pair.of(epk.b("trial_chambers/hallway/rubble"), 1),
+               Pair.of(epk.b("trial_chambers/hallway/rubble_chamber"), 1),
+               Pair.of(epk.b("trial_chambers/hallway/rubble_thin"), 1),
+               Pair.of(epk.b("trial_chambers/hallway/rubble_chamber_thin"), 1)
+            ),
+            epm.a.b
+         )
+      );
+      rr.a(
+         $$0,
+         "trial_chambers/hallway",
+         new epm(
+            $$3,
+            List.of(
+               Pair.of(epk.b("trial_chambers/hallway/corridor_connector_1"), 1),
+               Pair.of(epk.b("trial_chambers/hallway/upper_hallway_connector", $$5), 1),
+               Pair.of(epk.b("trial_chambers/hallway/lower_hallway_connector", $$5), 1),
+               Pair.of(epk.b("trial_chambers/hallway/rubble"), 1),
+               Pair.of(epk.b("trial_chambers/chamber/chamber_1", $$5), 150),
+               Pair.of(epk.b("trial_chambers/chamber/chamber_2", $$5), 150),
+               Pair.of(epk.b("trial_chambers/chamber/chamber_4", $$5), 150),
+               Pair.of(epk.b("trial_chambers/chamber/chamber_8", $$5), 150),
+               Pair.of(epk.b("trial_chambers/chamber/assembly", $$5), 150),
+               Pair.of(epk.b("trial_chambers/chamber/eruption", $$5), 150),
+               Pair.of(epk.b("trial_chambers/chamber/slanted", $$5), 150),
+               Pair.of(epk.b("trial_chambers/chamber/pedestal", $$5), 150),
+               Pair.of(epk.b("trial_chambers/hallway/rubble_chamber", $$5), 10),
+               Pair.of(epk.b("trial_chambers/hallway/rubble_chamber_thin", $$5), 1),
+               Pair.of(epk.b("trial_chambers/hallway/cache_1", $$5), 1),
+               Pair.of(epk.b("trial_chambers/hallway/left_corner", $$5), 1),
+               Pair.of(epk.b("trial_chambers/hallway/right_corner", $$5), 1),
+               Pair.of(epk.b("trial_chambers/hallway/corner_staircase", $$5), 1),
+               Pair.of(epk.b("trial_chambers/hallway/corner_staircase_down", $$5), 1),
+               Pair.of(epk.b("trial_chambers/hallway/long_straight_staircase", $$5), 1),
+               Pair.of(epk.b("trial_chambers/hallway/long_straight_staircase_down", $$5), 1),
+               Pair.of(epk.b("trial_chambers/hallway/straight", $$5), 1),
+               Pair.of(epk.b("trial_chambers/hallway/straight_staircase", $$5), 1),
+               Pair.of(epk.b("trial_chambers/hallway/straight_staircase_down", $$5), 1),
+               Pair.of(epk.b("trial_chambers/hallway/trapped_staircase", $$5), 1),
+               Pair.of(epk.b("trial_chambers/hallway/encounter_1", $$5), 1),
+               Pair.of(epk.b("trial_chambers/hallway/encounter_2", $$5), 1),
+               Pair.of(epk.b("trial_chambers/hallway/encounter_3", $$5), 1),
+               Pair.of(epk.b("trial_chambers/hallway/encounter_4", $$5), 1),
+               Pair.of(epk.b("trial_chambers/hallway/encounter_5", $$5), 1)
+            ),
+            epm.a.b
+         )
+      );
+      rr.a(
+         $$0,
+         "trial_chambers/corridors/addon/lower",
+         new epm(
+            $$2,
+            List.of(
+               Pair.of(epk.h(), 8),
+               Pair.of(epk.b("trial_chambers/corridor/addon/staircase"), 1),
+               Pair.of(epk.b("trial_chambers/corridor/addon/wall"), 1),
+               Pair.of(epk.b("trial_chambers/corridor/addon/ladder_to_middle"), 1),
+               Pair.of(epk.b("trial_chambers/corridor/addon/arrow_dispenser"), 1),
+               Pair.of(epk.b("trial_chambers/corridor/addon/bridge_lower"), 2)
+            ),
+            epm.a.b
+         )
+      );
+      rr.a(
+         $$0,
+         "trial_chambers/corridors/addon/middle",
+         new epm(
+            $$2,
+            List.of(
+               Pair.of(epk.h(), 8),
+               Pair.of(epk.b("trial_chambers/corridor/addon/open_walkway"), 2),
+               Pair.of(epk.b("trial_chambers/corridor/addon/walled_walkway"), 1)
+            ),
+            epm.a.b
+         )
+      );
+      rr.a(
+         $$0,
+         "trial_chambers/corridors/addon/middle_upper",
+         new epm(
+            $$2,
+            List.of(
+               Pair.of(epk.h(), 6),
+               Pair.of(epk.b("trial_chambers/corridor/addon/open_walkway_upper"), 2),
+               Pair.of(epk.b("trial_chambers/corridor/addon/chandelier_upper"), 1),
+               Pair.of(epk.b("trial_chambers/corridor/addon/decoration_upper"), 1),
+               Pair.of(epk.b("trial_chambers/corridor/addon/head_upper"), 1),
+               Pair.of(epk.b("trial_chambers/corridor/addon/reward_upper"), 1)
+            ),
+            epm.a.b
+         )
+      );
+      rr.a(
+         $$0,
+         "trial_chambers/atrium",
+         new epm(
+            $$2,
+            List.of(
+               Pair.of(epk.b("trial_chambers/corridor/atrium/bogged_relief"), 1),
+               Pair.of(epk.b("trial_chambers/corridor/atrium/breeze_relief"), 1),
+               Pair.of(epk.b("trial_chambers/corridor/atrium/spiral_relief"), 1),
+               Pair.of(epk.b("trial_chambers/corridor/atrium/spider_relief"), 1),
+               Pair.of(epk.b("trial_chambers/corridor/atrium/grand_staircase_1"), 1),
+               Pair.of(epk.b("trial_chambers/corridor/atrium/grand_staircase_2"), 1),
+               Pair.of(epk.b("trial_chambers/corridor/atrium/grand_staircase_3"), 1)
+            ),
+            epm.a.b
+         )
+      );
+      rr.a(
+         $$0,
+         "trial_chambers/decor",
+         new epm(
+            $$2,
+            List.of(
+               Pair.of(epk.h(), 22),
+               Pair.of(epk.b("trial_chambers/decor/empty_pot"), 2),
+               Pair.of(epk.b("trial_chambers/decor/dead_bush_pot"), 2),
+               Pair.of(epk.b("trial_chambers/decor/undecorated_pot"), 10),
+               Pair.of(epk.b("trial_chambers/decor/flow_pot"), 1),
+               Pair.of(epk.b("trial_chambers/decor/guster_pot"), 1),
+               Pair.of(epk.b("trial_chambers/decor/scrape_pot"), 1),
+               Pair.of(epk.b("trial_chambers/decor/candle_1"), 1),
+               Pair.of(epk.b("trial_chambers/decor/candle_2"), 1),
+               Pair.of(epk.b("trial_chambers/decor/candle_3"), 1),
+               Pair.of(epk.b("trial_chambers/decor/candle_4"), 1),
+               Pair.of(epk.b("trial_chambers/decor/barrel"), 2)
+            ),
+            epm.a.b
+         )
+      );
+      rr.a($$0, "trial_chambers/decor/disposal", new epm($$2, List.of(Pair.of(epk.b("trial_chambers/decor/disposal"), 1)), epm.a.b));
+      rr.a(
+         $$0,
+         "trial_chambers/decor/bed",
+         new epm(
+            $$2,
+            List.of(
+               Pair.of(epk.b("trial_chambers/decor/white_bed"), 3),
+               Pair.of(epk.b("trial_chambers/decor/light_gray_bed"), 3),
+               Pair.of(epk.b("trial_chambers/decor/gray_bed"), 3),
+               Pair.of(epk.b("trial_chambers/decor/black_bed"), 3),
+               Pair.of(epk.b("trial_chambers/decor/brown_bed"), 3),
+               Pair.of(epk.b("trial_chambers/decor/red_bed"), 3),
+               Pair.of(epk.b("trial_chambers/decor/orange_bed"), 3),
+               Pair.of(epk.b("trial_chambers/decor/yellow_bed"), 3),
+               Pair.of(epk.b("trial_chambers/decor/lime_bed"), 3),
+               Pair.of(epk.b("trial_chambers/decor/green_bed"), 3),
+               Pair.of(epk.b("trial_chambers/decor/cyan_bed"), 3),
+               Pair.of(epk.b("trial_chambers/decor/light_blue_bed"), 3),
+               Pair.of(epk.b("trial_chambers/decor/blue_bed"), 3),
+               Pair.of(epk.b("trial_chambers/decor/purple_bed"), 3),
+               Pair.of(epk.b("trial_chambers/decor/magenta_bed"), 3),
+               Pair.of(epk.b("trial_chambers/decor/pink_bed"), 1)
+            ),
+            epm.a.b
+         )
+      );
+      rr.a(
+         $$0,
+         "trial_chambers/entrance",
+         new epm(
+            $$2,
+            List.of(
+               Pair.of(epk.b("trial_chambers/corridor/addon/display_1"), 1),
+               Pair.of(epk.b("trial_chambers/corridor/addon/display_2"), 1),
+               Pair.of(epk.b("trial_chambers/corridor/addon/display_3"), 1)
+            ),
+            epm.a.b
+         )
+      );
+      rr.a($$0, "trial_chambers/decor/chamber", new epm($$2, List.of(Pair.of(epk.h(), 4), Pair.of(epk.b("trial_chambers/decor/undecorated_pot"), 1)), epm.a.b));
+      rr.a($$0, "trial_chambers/reward/all", new epm($$2, List.of(Pair.of(epk.b("trial_chambers/reward/vault"), 1)), epm.a.b));
+      rr.a($$0, "trial_chambers/reward/ominous_vault", new epm($$2, List.of(Pair.of(epk.b("trial_chambers/reward/ominous_vault"), 1)), epm.a.b));
+      rr.a($$0, "trial_chambers/reward/contents/default", new epm($$2, List.of(Pair.of(epk.b("trial_chambers/reward/vault"), 1)), epm.a.b));
+      rr.a($$0, "trial_chambers/chests/supply", new epm($$2, List.of(Pair.of(epk.b("trial_chambers/chests/connectors/supply"), 1)), epm.a.b));
+      rr.a($$0, "trial_chambers/chests/contents/supply", new epm($$2, List.of(Pair.of(epk.b("trial_chambers/chests/supply"), 1)), epm.a.b));
+      rr.a($$0, "trial_chambers/spawner/ranged", new epm($$2, List.of(Pair.of(epk.b("trial_chambers/spawner/connectors/ranged"), 1)), epm.a.b));
+      rr.a($$0, "trial_chambers/spawner/slow_ranged", new epm($$2, List.of(Pair.of(epk.b("trial_chambers/spawner/connectors/slow_ranged"), 1)), epm.a.b));
+      rr.a($$0, "trial_chambers/spawner/melee", new epm($$2, List.of(Pair.of(epk.b("trial_chambers/spawner/connectors/melee"), 1)), epm.a.b));
+      rr.a($$0, "trial_chambers/spawner/small_melee", new epm($$2, List.of(Pair.of(epk.b("trial_chambers/spawner/connectors/small_melee"), 1)), epm.a.b));
+      rr.a($$0, "trial_chambers/spawner/breeze", new epm($$2, List.of(Pair.of(epk.b("trial_chambers/spawner/connectors/breeze"), 1)), epm.a.b));
+      rr.a(
+         $$0,
+         "trial_chambers/spawner/all",
+         new epm(
+            $$2,
+            List.of(
+               Pair.of(epk.b("trial_chambers/spawner/connectors/ranged"), 1),
+               Pair.of(epk.b("trial_chambers/spawner/connectors/melee"), 1),
+               Pair.of(epk.b("trial_chambers/spawner/connectors/small_melee"), 1)
+            ),
+            epm.a.b
+         )
+      );
+      rr.a($$0, "trial_chambers/spawner/contents/breeze", new epm($$2, List.of(Pair.of(epk.b("trial_chambers/spawner/breeze/breeze"), 1)), epm.a.b));
+      rr.a(
+         $$0,
+         "trial_chambers/dispensers/chamber",
+         new epm(
+            $$2,
+            List.of(
+               Pair.of(epk.h(), 1),
+               Pair.of(epk.b("trial_chambers/dispensers/chamber"), 1),
+               Pair.of(epk.b("trial_chambers/dispensers/wall_dispenser"), 1),
+               Pair.of(epk.b("trial_chambers/dispensers/floor_dispenser"), 1)
+            ),
+            epm.a.b
+         )
+      );
+      epp.a($$0, $$2, c);
    }
 }

@@ -1,33 +1,24 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public class gvm extends gvo {
-   public float a;
-   public float b;
-   public boolean c;
-   @Nullable
-   public ezy d;
-   public boolean e;
-   public boolean f;
-   public double g;
-   public float h;
-   public final cjt i = new cjt();
+public class gvm extends gvy<gyd, gbq> {
+   private static final Map<cka, alz> a = ae.a(Maps.newEnumMap(cka.class), $$0 -> {
+      $$0.put(cka.a, null);
+      $$0.put(cka.b, alz.b("textures/entity/horse/horse_markings_white.png"));
+      $$0.put(cka.c, alz.b("textures/entity/horse/horse_markings_whitefield.png"));
+      $$0.put(cka.d, alz.b("textures/entity/horse/horse_markings_whitedots.png"));
+      $$0.put(cka.e, alz.b("textures/entity/horse/horse_markings_blackdots.png"));
+   });
 
-   public cjt.a a(int $$0) {
-      return this.i.a($$0, this.h);
+   public gvm(gtg<gyd, gbq> $$0) {
+      super($$0);
    }
 
-   public float a(int $$0, cjt.a $$1, cjt.a $$2) {
-      double $$3;
-      if (this.e) {
-         $$3 = (double)$$0 / Math.max(this.g / 4.0, 1.0);
-      } else if (this.f) {
-         $$3 = (double)$$0;
-      } else if ($$0 == 6) {
-         $$3 = 0.0;
-      } else {
-         $$3 = $$2.a() - $$1.a();
+   public void a(fgl $$0, gle $$1, int $$2, gyd $$3, float $$4, float $$5) {
+      alz $$6 = a.get($$3.h);
+      if ($$6 != null && !$$3.u) {
+         fgp $$7 = $$1.getBuffer(glo.i($$6));
+         this.d().a($$0, $$7, $$2, gsk.a($$3, 0.0F));
       }
-
-      return (float)$$3;
    }
 }

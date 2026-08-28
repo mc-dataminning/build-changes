@@ -1,14 +1,37 @@
-import java.util.concurrent.TimeUnit;
-import java.util.function.LongSupplier;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.regex.Pattern;
 
-@FunctionalInterface
-public interface ban {
-   long get(TimeUnit var1);
+public class ban {
+   public static final Codec<ban> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(azn.p.optionalFieldOf("namespace").forGetter($$0x -> $$0x.b), azn.p.optionalFieldOf("path").forGetter($$0x -> $$0x.d))
+            .apply($$0, ban::new)
+   );
+   private final Optional<Pattern> b;
+   private final Predicate<String> c;
+   private final Optional<Pattern> d;
+   private final Predicate<String> e;
+   private final Predicate<alz> f;
 
-   public interface a extends ban, LongSupplier {
-      @Override
-      default long get(TimeUnit $$0) {
-         return $$0.convert(this.getAsLong(), TimeUnit.NANOSECONDS);
-      }
+   private ban(Optional<Pattern> $$0, Optional<Pattern> $$1) {
+      this.b = $$0;
+      this.c = $$0.map(Pattern::asPredicate).orElse($$0x -> true);
+      this.d = $$1;
+      this.e = $$1.map(Pattern::asPredicate).orElse($$0x -> true);
+      this.f = $$0x -> this.c.test($$0x.b()) && this.e.test($$0x.a());
+   }
+
+   public Predicate<String> a() {
+      return this.c;
+   }
+
+   public Predicate<String> b() {
+      return this.e;
+   }
+
+   public Predicate<alz> c() {
+      return this.f;
    }
 }

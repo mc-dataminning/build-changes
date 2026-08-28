@@ -1,44 +1,81 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import com.mojang.datafixers.util.Pair;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.Map;
+import com.mojang.serialization.DynamicOps;
+import java.util.Optional;
 
-public class bbn extends DataFix {
-   public bbn(Schema $$0) {
-      super($$0, false);
+public class bbn {
+   private static final String a = b("");
+
+   public static <T> Dynamic<T> a(DynamicOps<T> $$0, String $$1) {
+      String $$2 = b($$1);
+      return new Dynamic($$0, $$0.createString($$2));
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bia.s);
-      TaggedChoiceType<?> $$1 = this.getInputSchema().findChoiceType(bia.s);
-      OpticFinder<?> $$2 = $$0.findField("components");
-      return this.fixTypeEverywhereTyped("Banner entity custom_name to item_name component fix", $$0, $$2x -> {
-         Object $$3 = ((Pair)$$2x.get($$1.finder())).getFirst();
-         return $$3.equals("minecraft:banner") ? this.a($$2x, $$2) : $$2x;
-      });
+   public static <T> Dynamic<T> a(DynamicOps<T> $$0) {
+      return new Dynamic($$0, $$0.createString(a));
    }
 
-   private Typed<?> a(Typed<?> $$0, OpticFinder<?> $$1) {
-      Dynamic<?> $$2 = (Dynamic<?>)$$0.getOptional(DSL.remainderFinder()).orElseThrow();
-      OptionalDynamic<?> $$3 = $$2.get("CustomName");
-      boolean $$4 = $$3.asString().result().flatMap(bav::a).filter($$0x -> $$0x.equals("block.minecraft.ominous_banner")).isPresent();
-      if ($$4) {
-         Typed<?> $$5 = $$0.getOrCreateTyped($$1)
-            .update(
-               DSL.remainderFinder(),
-               $$1x -> $$1x.set("minecraft:item_name", (Dynamic)$$3.result().get()).set("minecraft:hide_additional_tooltip", $$1x.createMap(Map.of()))
-            );
-         return $$0.set($$1, $$5).set(DSL.remainderFinder(), $$2.remove("CustomName"));
-      } else {
+   private static String b(String $$0) {
+      JsonObject $$1 = new JsonObject();
+      $$1.addProperty("text", $$0);
+      return azu.e($$1);
+   }
+
+   public static <T> Dynamic<T> b(DynamicOps<T> $$0, String $$1) {
+      JsonObject $$2 = new JsonObject();
+      $$2.addProperty("translate", $$1);
+      return new Dynamic($$0, $$0.createString(azu.e($$2)));
+   }
+
+   public static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return (Dynamic<T>)DataFixUtils.orElse($$0.asString().map($$1 -> a($$0.getOps(), $$1)).result(), $$0);
+   }
+
+   public static Dynamic<?> b(Dynamic<?> $$0) {
+      Optional<String> $$1 = $$0.asString().result();
+      if ($$1.isEmpty()) {
          return $$0;
+      } else {
+         String $$2 = $$1.get();
+         if (!$$2.isEmpty() && !$$2.equals("null")) {
+            char $$3 = $$2.charAt(0);
+            char $$4 = $$2.charAt($$2.length() - 1);
+            if ($$3 == '"' && $$4 == '"' || $$3 == '{' && $$4 == '}' || $$3 == '[' && $$4 == ']') {
+               try {
+                  JsonElement $$5 = JsonParser.parseString($$2);
+                  if ($$5.isJsonPrimitive()) {
+                     return a($$0.getOps(), $$5.getAsString());
+                  }
+
+                  return $$0.createString(azu.e($$5));
+               } catch (JsonParseException var6) {
+               }
+            }
+
+            return a($$0.getOps(), $$2);
+         } else {
+            return a($$0.getOps());
+         }
       }
+   }
+
+   public static Optional<String> a(String $$0) {
+      try {
+         JsonElement $$1 = JsonParser.parseString($$0);
+         if ($$1.isJsonObject()) {
+            JsonObject $$2 = $$1.getAsJsonObject();
+            JsonElement $$3 = $$2.get("translate");
+            if ($$3 != null && $$3.isJsonPrimitive()) {
+               return Optional.of($$3.getAsString());
+            }
+         }
+      } catch (JsonParseException var4) {
+      }
+
+      return Optional.empty();
    }
 }

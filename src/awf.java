@@ -1,58 +1,43 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.google.gson.JsonObject;
+import java.io.File;
+import java.net.SocketAddress;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public abstract class awf implements Runnable {
-   private static final Logger d = LogUtils.getLogger();
-   private static final AtomicInteger e = new AtomicInteger(0);
-   private static final int f = 5;
-   protected volatile boolean a;
-   protected final String b;
+public class awf extends awn<String, awg> {
+   public awf(File $$0) {
+      super($$0);
+   }
+
+   @Override
+   protected awm<String> a(JsonObject $$0) {
+      return new awg($$0);
+   }
+
+   public boolean a(SocketAddress $$0) {
+      String $$1 = this.c($$0);
+      return this.d($$1);
+   }
+
+   public boolean a(String $$0) {
+      return this.d($$0);
+   }
+
    @Nullable
-   protected Thread c;
-
-   protected awf(String $$0) {
-      this.b = $$0;
+   public awg b(SocketAddress $$0) {
+      String $$1 = this.c($$0);
+      return this.b($$1);
    }
 
-   public synchronized boolean a() {
-      if (this.a) {
-         return true;
-      } else {
-         this.a = true;
-         this.c = new Thread(this, this.b + " #" + e.incrementAndGet());
-         this.c.setUncaughtExceptionHandler(new s(d));
-         this.c.start();
-         d.info("Thread {} started", this.b);
-         return true;
+   private String c(SocketAddress $$0) {
+      String $$1 = $$0.toString();
+      if ($$1.contains("/")) {
+         $$1 = $$1.substring($$1.indexOf(47) + 1);
       }
-   }
 
-   public synchronized void b() {
-      this.a = false;
-      if (null != this.c) {
-         int $$0 = 0;
-
-         while (this.c.isAlive()) {
-            try {
-               this.c.join(1000L);
-               if (++$$0 >= 5) {
-                  d.warn("Waited {} seconds attempting force stop!", $$0);
-               } else if (this.c.isAlive()) {
-                  d.warn("Thread {} ({}) failed to exit after {} second(s)", new Object[]{this, this.c.getState(), $$0, new Exception("Stack:")});
-                  this.c.interrupt();
-               }
-            } catch (InterruptedException var3) {
-            }
-         }
-
-         d.info("Thread {} stopped", this.b);
-         this.c = null;
+      if ($$1.contains(":")) {
+         $$1 = $$1.substring(0, $$1.indexOf(58));
       }
-   }
 
-   public boolean c() {
-      return this.a;
+      return $$1;
    }
 }

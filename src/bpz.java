@@ -1,5 +1,4 @@
-import java.time.Duration;
-
+@FunctionalInterface
 public interface bpz {
-   Duration a();
+   void finish();
 }

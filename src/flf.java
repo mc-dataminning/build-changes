@@ -1,5 +1,52 @@
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public interface flf {
-   int getColor(dvv var1, @Nullable deo var2, @Nullable jh var3, int var4);
+public class flf extends fky {
+   private static final Logger b = LogUtils.getLogger();
+   private static final xv c = xv.c("mco.minigame.world.slot.screen.title");
+   private final long d;
+   private final int e;
+   private final Runnable f;
+
+   public flf(long $$0, int $$1, Runnable $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+   }
+
+   @Override
+   public void run() {
+      fhb $$0 = fhb.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            if ($$0.a(this.d, this.e)) {
+               this.f.run();
+               break;
+            }
+         } catch (fiy var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't switch world!");
+            this.a(var5);
+         }
+      }
+   }
+
+   @Override
+   public xv a() {
+      return c;
+   }
 }

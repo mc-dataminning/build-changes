@@ -1,24 +1,52 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Map;
-import java.util.Optional;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import com.mojang.datafixers.util.Pair;
 
-public class bhu extends bgw {
+public class bhu extends DataFix {
    public bhu(Schema $$0) {
-      super($$0, true, "PrimedTnt BlockState fixer", bia.B, "minecraft:tnt");
+      super($$0, false);
    }
 
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.get("Fuse").get().result();
-      return $$1.isPresent() ? $$0.set("fuse", $$1.get()) : $$0;
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bis.s);
+      Type<?> $$1 = this.getInputSchema().getType(bis.t);
+      TaggedChoiceType<?> $$2 = this.getInputSchema().findChoiceType(bis.s);
+      OpticFinder<Pair<String, String>> $$3 = DSL.fieldFinder("id", DSL.named(bis.D.typeName(), bkg.a()));
+      OpticFinder<?> $$4 = $$0.findField("components");
+      OpticFinder<?> $$5 = $$1.findField("components");
+      return TypeRewriteRule.seq(this.fixTypeEverywhereTyped("Ominous Banner block entity common rarity to uncommon rarity fix", $$0, $$2x -> {
+         Object $$3x = ((Pair)$$2x.get($$2.finder())).getFirst();
+         return $$3x.equals("minecraft:banner") ? this.a($$2x, $$4) : $$2x;
+      }), this.fixTypeEverywhereTyped("Ominous Banner item stack common rarity to uncommon rarity fix", $$1, $$2x -> {
+         String $$3x = $$2x.getOptional($$3).<String>map(Pair::getSecond).orElse("");
+         return $$3x.equals("minecraft:white_banner") ? this.a($$2x, $$5) : $$2x;
+      }));
    }
 
-   private static <T> Dynamic<T> c(Dynamic<T> $$0) {
-      return $$0.set("block_state", $$0.createMap(Map.of($$0.createString("Name"), $$0.createString("minecraft:tnt"))));
-   }
-
-   @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return b(c($$0));
+   private Typed<?> a(Typed<?> $$0, OpticFinder<?> $$1) {
+      return $$0.updateTyped(
+         $$1,
+         $$0x -> $$0x.update(
+               DSL.remainderFinder(),
+               $$0xx -> {
+                  boolean $$1x = $$0xx.get("minecraft:item_name")
+                     .asString()
+                     .result()
+                     .flatMap(bbn::a)
+                     .filter($$0xxx -> $$0xxx.equals("block.minecraft.ominous_banner"))
+                     .isPresent();
+                  return $$1x
+                     ? $$0xx.set("minecraft:rarity", $$0xx.createString("uncommon"))
+                        .set("minecraft:item_name", bbn.b($$0xx.getOps(), "block.minecraft.ominous_banner"))
+                     : $$0xx;
+               }
+            )
+      );
    }
 }

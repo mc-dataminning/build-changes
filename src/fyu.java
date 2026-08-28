@@ -1,102 +1,81 @@
-public class fyu extends fzj<gvd> {
-   private static final float a = 0.6F;
-   private static final float b = 0.8F;
-   private static final float c = 1.0F;
-   private final gcl d;
-   private final gcl e;
-   private final gcl f;
-   private final gcl g;
-   private final gcl i;
-   private final gcl j;
-   private final gcl k;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2BooleanLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
-   public fyu(gcl $$0) {
-      super($$0, gjq::i);
-      this.f = $$0.b("wind_body");
-      this.j = this.f.b("wind_bottom");
-      this.i = this.j.b("wind_mid");
-      this.g = this.i.b("wind_top");
-      this.d = $$0.b("body").b("head");
-      this.e = this.d.b("eyes");
-      this.k = $$0.b("body").b("rods");
+public class fyu extends ftr {
+   private static final xv a = xv.c("selectWorld.experiments");
+   private static final xv b = xv.c("selectWorld.experiments.info").a(n.m);
+   private static final int c = 310;
+   private final frn d = new frn(this);
+   private final ftr s;
+   private final avg u;
+   private final Consumer<avg> v;
+   private final Object2BooleanMap<avd> w = new Object2BooleanLinkedOpenHashMap();
+
+   public fyu(ftr $$0, avg $$1, Consumer<avg> $$2) {
+      super(a);
+      this.s = $$0;
+      this.u = $$1;
+      this.v = $$2;
+
+      for (avd $$3 : $$1.d()) {
+         if ($$3.l() == avh.d) {
+            this.w.put($$3, $$1.g().contains($$3));
+         }
+      }
    }
 
-   public static gcr a(int $$0, int $$1) {
-      gct $$2 = new gct();
-      gcv $$3 = $$2.a();
-      gcv $$4 = $$3.a("body", gcq.c(), gcn.a(0.0F, 0.0F, 0.0F));
-      gcv $$5 = $$4.a("rods", gcq.c(), gcn.a(0.0F, 8.0F, 0.0F));
-      $$5.a("rod_1", gcq.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new gcp(0.0F)), gcn.a(2.5981F, -3.0F, 1.5F, -2.7489F, -1.0472F, 3.1416F));
-      $$5.a("rod_2", gcq.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new gcp(0.0F)), gcn.a(-2.5981F, -3.0F, 1.5F, -2.7489F, 1.0472F, 3.1416F));
-      $$5.a("rod_3", gcq.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new gcp(0.0F)), gcn.a(0.0F, -3.0F, -3.0F, 0.3927F, 0.0F, 0.0F));
-      gcv $$6 = $$4.a(
-         "head",
-         gcq.c().a(4, 24).a(-5.0F, -5.0F, -4.2F, 10.0F, 3.0F, 4.0F, new gcp(0.0F)).a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new gcp(0.0F)),
-         gcn.a(0.0F, 4.0F, 0.0F)
-      );
-      $$6.a(
-         "eyes",
-         gcq.c().a(4, 24).a(-5.0F, -5.0F, -4.2F, 10.0F, 3.0F, 4.0F, new gcp(0.0F)).a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new gcp(0.0F)),
-         gcn.a(0.0F, 0.0F, 0.0F)
-      );
-      gcv $$7 = $$3.a("wind_body", gcq.c(), gcn.a(0.0F, 0.0F, 0.0F));
-      gcv $$8 = $$7.a("wind_bottom", gcq.c().a(1, 83).a(-2.5F, -7.0F, -2.5F, 5.0F, 7.0F, 5.0F, new gcp(0.0F)), gcn.a(0.0F, 24.0F, 0.0F));
-      gcv $$9 = $$8.a(
-         "wind_mid",
-         gcq.c()
-            .a(74, 28)
-            .a(-6.0F, -6.0F, -6.0F, 12.0F, 6.0F, 12.0F, new gcp(0.0F))
-            .a(78, 32)
-            .a(-4.0F, -6.0F, -4.0F, 8.0F, 6.0F, 8.0F, new gcp(0.0F))
-            .a(49, 71)
-            .a(-2.5F, -6.0F, -2.5F, 5.0F, 6.0F, 5.0F, new gcp(0.0F)),
-         gcn.a(0.0F, -7.0F, 0.0F)
-      );
-      $$9.a(
-         "wind_top",
-         gcq.c()
-            .a(0, 0)
-            .a(-9.0F, -8.0F, -9.0F, 18.0F, 8.0F, 18.0F, new gcp(0.0F))
-            .a(6, 6)
-            .a(-6.0F, -8.0F, -6.0F, 12.0F, 8.0F, 12.0F, new gcp(0.0F))
-            .a(105, 57)
-            .a(-2.5F, -8.0F, -2.5F, 5.0F, 8.0F, 5.0F, new gcp(0.0F)),
-         gcn.a(0.0F, -6.0F, 0.0F)
-      );
-      return gcr.a($$2, $$0, $$1);
+   @Override
+   protected void aT_() {
+      this.d.a(a, this.p);
+      frr $$0 = this.d.c(frr.d());
+      $$0.a(new fot(b, this.p).d(310), $$0x -> $$0x.e(15));
+      fyz.a $$1 = fyz.a(310).a(2, true).b(4);
+      this.w.forEach(($$1x, $$2x) -> $$1.a(a($$1x), () -> this.w.getBoolean($$1x), $$1xx -> this.w.put($$1x, $$1xx)).a($$1x.c()));
+      $$1.a($$0::a);
+      frr $$2 = this.d.b(frr.e().a(8));
+      $$2.a(fny.a(xu.d, $$0x -> this.l()).a());
+      $$2.a(fny.a(xu.e, $$0x -> this.aP_()).a());
+      this.d.a($$1x -> {
+         fnw var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
-   public void a(gvd $$0) {
-      super.a($$0);
-      float $$1 = $$0.p * (float) Math.PI * -0.1F;
-      this.g.b = azm.b($$1) * 1.0F * 0.6F;
-      this.g.d = azm.a($$1) * 1.0F * 0.6F;
-      this.i.b = azm.a($$1) * 0.5F * 0.8F;
-      this.i.d = azm.b($$1) * 0.8F;
-      this.j.b = azm.b($$1) * -0.25F * 1.0F;
-      this.j.d = azm.a($$1) * -0.25F * 1.0F;
-      this.d.c = 4.0F + azm.b($$1) / 4.0F;
-      this.k.f = $$0.p * (float) Math.PI * 0.1F;
-      this.a($$0.a, fky.a, $$0.p);
-      this.a($$0.b, fky.d, $$0.p);
-      this.a($$0.c, fky.e, $$0.p);
-      this.a($$0.d, fky.c, $$0.p);
-      this.a($$0.e, fky.b, $$0.p);
+   private static xv a(avd $$0) {
+      String $$1 = "dataPack." + $$0.g() + ".name";
+      return (xv)(hcl.a($$1) ? xv.c($$1) : $$0.b());
    }
 
-   public gcl a() {
-      return this.d;
+   @Override
+   protected void c() {
+      this.d.a();
    }
 
-   public gcl b() {
-      return this.e;
+   @Override
+   public xv i() {
+      return xu.a(super.i(), b);
    }
 
-   public gcl c() {
-      return this.k;
+   @Override
+   public void aP_() {
+      this.m.a(this.s);
    }
 
-   public gcl d() {
-      return this.f;
+   private void l() {
+      List<avd> $$0 = new ArrayList<>(this.u.g());
+      List<avd> $$1 = new ArrayList<>();
+      this.w.forEach(($$2, $$3) -> {
+         $$0.remove($$2);
+         if ($$3) {
+            $$1.add($$2);
+         }
+      });
+      $$0.addAll(Lists.reverse($$1));
+      this.u.b($$0.stream().map(avd::g).toList());
+      this.v.accept(this.u);
    }
 }

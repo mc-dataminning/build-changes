@@ -1,43 +1,40 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class ehu implements eha {
-   public static final Codec<ehu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
-               egg.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
-               jh.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
-            )
-            .apply($$0, ehu::new)
-   );
-   private final boolean b;
-   private final List<egg.a> c;
-   @Nullable
-   private final jh d;
-
-   public ehu(boolean $$0, List<egg.a> $$1, @Nullable jh $$2) {
-      this($$0, $$1, Optional.ofNullable($$2));
+public class ehu extends ego<ejc> {
+   public ehu(Codec<ejc> $$0) {
+      super($$0);
    }
 
-   private ehu(boolean $$0, List<egg.a> $$1, Optional<jh> $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2.orElse(null);
-   }
+   @Override
+   public boolean a(egq<ejc> $$0) {
+      boolean $$1 = false;
+      bam $$2 = $$0.d();
+      dhy $$3 = $$0.b();
+      jh $$4 = $$0.e();
+      ejc $$5 = $$0.f();
+      int $$6 = $$2.a(8) - $$2.a(8);
+      int $$7 = $$2.a(8) - $$2.a(8);
+      int $$8 = $$3.a(edi.a.d, $$4.u() + $$6, $$4.w() + $$7);
+      jh $$9 = new jh($$4.u() + $$6, $$8, $$4.w() + $$7);
+      if ($$3.a_($$9).a(dkg.J)) {
+         boolean $$10 = $$2.j() < (double)$$5.l;
+         dxn $$11 = $$10 ? dkg.bE.m() : dkg.bD.m();
+         if ($$11.a($$3, $$9)) {
+            if ($$10) {
+               dxn $$12 = $$11.b(dsn.d, dyi.a);
+               jh $$13 = $$9.d();
+               if ($$3.a_($$13).a(dkg.J)) {
+                  $$3.a($$9, $$11, 2);
+                  $$3.a($$13, $$12, 2);
+               }
+            } else {
+               $$3.a($$9, $$11, 2);
+            }
 
-   public boolean a() {
-      return this.b;
-   }
+            $$1 = true;
+         }
+      }
 
-   public List<egg.a> b() {
-      return this.c;
-   }
-
-   @Nullable
-   public jh c() {
-      return this.d;
+      return $$1;
    }
 }

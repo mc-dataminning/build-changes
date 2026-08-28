@@ -22,16 +22,16 @@ public class kg {
    static <T> jr<T> a(final js.b<T> $$0) {
       return new kg.c<T>($$0) {
          @Override
-         public Optional<jq.c<T>> a(ali<T> $$0x) {
+         public Optional<jq.c<T>> a(aly<T> $$0x) {
             return $$0.a($$0);
          }
       };
    }
 
-   static <T> js.b<T> a(final ali<? extends kd<? extends T>> $$0, final Lifecycle $$1, jt<T> $$2, final Map<ali<T>, jq.c<T>> $$3) {
+   static <T> js.b<T> a(final aly<? extends kd<? extends T>> $$0, final Lifecycle $$1, jt<T> $$2, final Map<aly<T>, jq.c<T>> $$3) {
       return new kg.e<T>($$2) {
          @Override
-         public ali<? extends kd<? extends T>> g() {
+         public aly<? extends kd<? extends T>> g() {
             return $$0;
          }
 
@@ -41,7 +41,7 @@ public class kg {
          }
 
          @Override
-         public Optional<jq.c<T>> a(ali<T> $$0x) {
+         public Optional<jq.c<T>> a(aly<T> $$0x) {
             return Optional.ofNullable($$3.get($$0));
          }
 
@@ -52,12 +52,12 @@ public class kg {
       };
    }
 
-   public <T> kg a(ali<? extends kd<T>> $$0, Lifecycle $$1, kg.i<T> $$2) {
+   public <T> kg a(aly<? extends kd<T>> $$0, Lifecycle $$1, kg.i<T> $$2) {
       this.a.add(new kg.k<>($$0, $$1, $$2));
       return this;
    }
 
-   public <T> kg a(ali<? extends kd<T>> $$0, kg.i<T> $$1) {
+   public <T> kg a(aly<? extends kd<T>> $$0, kg.i<T> $$1) {
       return this.a($$0, Lifecycle.stable(), $$1);
    }
 
@@ -68,39 +68,39 @@ public class kg {
    }
 
    private static js.a a(kg.m $$0, ke $$1, Stream<js.b<?>> $$2) {
-      record a<T>(js.b<T> a, alh.b<T> b) {
+      record a<T>(js.b<T> a, alx.b<T> b) {
          public static <T> a<T> a(js.b<T> $$0) {
-            return new a<>(new kg.d<>($$0, $$0), alh.b.a($$0));
+            return new a<>(new kg.d<>($$0, $$0), alx.b.a($$0));
          }
 
          public static <T> a<T> a(kg.m $$0, js.b<T> $$1) {
-            return new a<>(new kg.d<>($$0.a(), $$1), new alh.b<>($$0.a(), $$1, $$1.h()));
+            return new a<>(new kg.d<>($$0.a(), $$1), new alx.b<>($$0.a(), $$1, $$1.h()));
          }
       }
 
-      final Map<ali<? extends kd<?>>, a<?>> $$3 = new HashMap<>();
+      final Map<aly<? extends kd<?>>, a<?>> $$3 = new HashMap<>();
       $$1.a().forEach($$1x -> $$3.put($$1x.a(), kg$a.a($$1x.b())));
       $$2.forEach($$2x -> $$3.put($$2x.g(), kg$a.a($$0, $$2x)));
       return new js.a() {
          @Override
-         public Stream<ali<? extends kd<?>>> b() {
+         public Stream<aly<? extends kd<?>>> b() {
             return $$3.keySet().stream();
          }
 
-         <T> Optional<a<T>> e(ali<? extends kd<? extends T>> $$0) {
+         <T> Optional<a<T>> e(aly<? extends kd<? extends T>> $$0) {
             return Optional.ofNullable((a<T>)$$3.get($$0));
          }
 
          @Override
-         public <T> Optional<js.b<T>> a(ali<? extends kd<? extends T>> $$0) {
+         public <T> Optional<js.b<T>> a(aly<? extends kd<? extends T>> $$0) {
             return this.e($$0).map(a::a);
          }
 
          @Override
-         public <V> alh<V> a(DynamicOps<V> $$0) {
-            return alh.a($$0, new alh.c() {
+         public <V> alx<V> a(DynamicOps<V> $$0) {
+            return alx.a($$0, new alx.c() {
                @Override
-               public <T> Optional<alh.b<T>> a(ali<? extends kd<? extends T>> $$0) {
+               public <T> Optional<alx.b<T>> a(aly<? extends kd<? extends T>> $$0) {
                   return e($$0).map(a::b);
                }
             });
@@ -118,7 +118,7 @@ public class kg {
       return $$3;
    }
 
-   private js.a a(ke $$0, js.a $$1, ji.a $$2, Map<ali<? extends kd<?>>, kg.j<?>> $$3, js.a $$4) {
+   private js.a a(ke $$0, js.a $$1, ji.a $$2, Map<aly<? extends kd<?>>, kg.j<?>> $$3, js.a $$4) {
       kg.m $$5 = new kg.m();
       MutableObject<js.a> $$6 = new MutableObject();
       List<js.b<?>> $$7 = $$3.keySet().stream().map($$5x -> this.a($$5, $$2, $$5x, $$4, $$1, $$6)).collect(Collectors.toUnmodifiableList());
@@ -127,22 +127,22 @@ public class kg {
       return $$8;
    }
 
-   private <T> js.b<T> a(jt<T> $$0, ji.a $$1, ali<? extends kd<? extends T>> $$2, js.a $$3, js.a $$4, MutableObject<js.a> $$5) {
+   private <T> js.b<T> a(jt<T> $$0, ji.a $$1, aly<? extends kd<? extends T>> $$2, js.a $$3, js.a $$4, MutableObject<js.a> $$5) {
       ji<T> $$6 = $$1.a($$2);
       if ($$6 == null) {
          throw new NullPointerException("No cloner for " + $$2.a());
       } else {
-         Map<ali<T>, jq.c<T>> $$7 = new HashMap<>();
+         Map<aly<T>, jq.c<T>> $$7 = new HashMap<>();
          js.b<T> $$8 = $$3.d($$2);
          $$8.c().forEach($$5x -> {
-            ali<T> $$6x = $$5x.h();
+            aly<T> $$6x = $$5x.h();
             kg.f<T> $$7x = new kg.f<>($$0, $$6x);
             $$7x.a = () -> $$6.a((T)$$5x.a(), $$3, (js.a)$$5.getValue());
             $$7.put($$6x, $$7x);
          });
          js.b<T> $$9 = $$4.d($$2);
          $$9.c().forEach($$5x -> {
-            ali<T> $$6x = $$5x.h();
+            aly<T> $$6x = $$5x.h();
             $$7.computeIfAbsent($$6x, $$6xx -> {
                kg.f<T> $$7x = new kg.f<>($$0, $$6x);
                $$7x.a = () -> $$6.a((T)$$5x.a(), $$4, (js.a)$$5.getValue());
@@ -156,9 +156,9 @@ public class kg {
 
    public kg.g a(ke $$0, js.a $$1, ji.a $$2) {
       kg.b $$3 = this.b($$0);
-      Map<ali<? extends kd<?>>, kg.j<?>> $$4 = new HashMap<>();
+      Map<aly<? extends kd<?>>, kg.j<?>> $$4 = new HashMap<>();
       this.a.stream().map($$1x -> $$1x.a($$3)).forEach($$1x -> $$4.put($$1x.a, $$1x));
-      Set<ali<? extends kd<?>>> $$5 = $$0.b().collect(Collectors.toUnmodifiableSet());
+      Set<aly<? extends kd<?>>> $$5 = $$0.b().collect(Collectors.toUnmodifiableSet());
       $$1.b().filter($$1x -> !$$5.contains($$1x)).forEach($$1x -> $$4.putIfAbsent($$1x, new kg.j($$1x, Lifecycle.stable(), Map.of())));
       Stream<js.b<?>> $$6 = $$4.values().stream().map($$1x -> $$1x.a($$3.a));
       js.a $$7 = a($$3.a, $$0, $$6);
@@ -168,22 +168,22 @@ public class kg {
       return new kg.g($$8, $$7);
    }
 
-   static record b(kg.m a, kg.l b, Map<alj, jr<?>> c, Map<ali<?>, kg.h<?>> d, List<RuntimeException> e) {
+   static record b(kg.m a, kg.l b, Map<alz, jr<?>> c, Map<aly<?>, kg.h<?>> d, List<RuntimeException> e) {
 
-      public static kg.b a(ke $$0, Stream<ali<? extends kd<?>>> $$1) {
+      public static kg.b a(ke $$0, Stream<aly<? extends kd<?>>> $$1) {
          kg.m $$2 = new kg.m();
          List<RuntimeException> $$3 = new ArrayList<>();
          kg.l $$4 = new kg.l($$2);
-         Builder<alj, jr<?>> $$5 = ImmutableMap.builder();
+         Builder<alz, jr<?>> $$5 = ImmutableMap.builder();
          $$0.a().forEach($$1x -> $$5.put($$1x.a().a(), kg.a($$1x.b())));
          $$1.forEach($$2x -> $$5.put($$2x.a(), $$4));
          return new kg.b($$2, $$4, $$5.build(), new HashMap<>(), $$3);
       }
 
-      public <T> qz<T> a() {
-         return new qz<T>() {
+      public <T> rk<T> a() {
+         return new rk<T>() {
             @Override
-            public jq.c<T> a(ali<T> $$0, T $$1, Lifecycle $$2) {
+            public jq.c<T> a(aly<T> $$0, T $$1, Lifecycle $$2) {
                kg.h<?> $$3 = b.this.d.put($$0, new kg.h($$1, $$2));
                if ($$3 != null) {
                   b.this.e.add(new IllegalStateException("Duplicate registration for " + $$0 + ", new=" + $$1 + ", old=" + $$3.a));
@@ -193,7 +193,7 @@ public class kg {
             }
 
             @Override
-            public <S> jr<S> a(ali<? extends kd<? extends S>> $$0) {
+            public <S> jr<S> a(aly<? extends kd<? extends S>> $$0) {
                return (jr<S>)b.this.c.getOrDefault($$0.a(), b.this.b);
             }
          };
@@ -204,7 +204,7 @@ public class kg {
       }
 
       public void c() {
-         for (ali<Object> $$0 : this.b.a.keySet()) {
+         for (aly<Object> $$0 : this.b.a.keySet()) {
             this.e.add(new IllegalStateException("Unreferenced key: " + $$0));
          }
       }
@@ -229,11 +229,11 @@ public class kg {
          return this.b;
       }
 
-      public Map<alj, jr<?>> g() {
+      public Map<alz, jr<?>> g() {
          return this.c;
       }
 
-      public Map<ali<?>, kg.h<?>> h() {
+      public Map<aly<?>, kg.h<?>> h() {
          return this.d;
       }
 
@@ -250,7 +250,7 @@ public class kg {
       }
 
       @Override
-      public Optional<ju.c<T>> a(axs<T> $$0) {
+      public Optional<ju.c<T>> a(ayk<T> $$0) {
          return Optional.of(ju.a(this.d, $$0));
       }
    }
@@ -284,7 +284,7 @@ public class kg {
       @Nullable
       Supplier<T> a;
 
-      protected f(jt<T> $$0, @Nullable ali<T> $$1) {
+      protected f(jt<T> $$0, @Nullable aly<T> $$1) {
          super(jq.c.a.a, $$0, $$1, null);
       }
 
@@ -312,15 +312,15 @@ public class kg {
 
    @FunctionalInterface
    public interface i<T> {
-      void run(qz<T> var1);
+      void run(rk<T> var1);
    }
 
-   static record j<T>(ali<? extends kd<? extends T>> a, Lifecycle b, Map<ali<T>, kg.n<T>> c) {
+   static record j<T>(aly<? extends kd<? extends T>> a, Lifecycle b, Map<aly<T>, kg.n<T>> c) {
 
       public js.b<T> a(kg.m $$0) {
-         Map<ali<T>, jq.c<T>> $$1 = this.c.entrySet().stream().collect(Collectors.toUnmodifiableMap(Entry::getKey, $$1x -> {
+         Map<aly<T>, jq.c<T>> $$1 = this.c.entrySet().stream().collect(Collectors.toUnmodifiableMap(Entry::getKey, $$1x -> {
             kg.n<T> $$2 = (kg.n<T>)$$1x.getValue();
-            jq.c<T> $$3 = $$2.b().orElseGet(() -> jq.c.a($$0.a(), (ali<T>)$$1x.getKey()));
+            jq.c<T> $$3 = $$2.b().orElseGet(() -> jq.c.a($$0.a(), (aly<T>)$$1x.getKey()));
             $$3.b($$2.a().a());
             return $$3;
          }));
@@ -328,22 +328,22 @@ public class kg {
       }
    }
 
-   static record k<T>(ali<? extends kd<T>> a, Lifecycle b, kg.i<T> c) {
+   static record k<T>(aly<? extends kd<T>> a, Lifecycle b, kg.i<T> c) {
       void b(kg.b $$0) {
          this.c.run($$0.a());
       }
 
       public kg.j<T> a(kg.b $$0) {
-         Map<ali<T>, kg.n<T>> $$1 = new HashMap<>();
-         Iterator<Entry<ali<?>, kg.h<?>>> $$2 = $$0.d.entrySet().iterator();
+         Map<aly<T>, kg.n<T>> $$1 = new HashMap<>();
+         Iterator<Entry<aly<?>, kg.h<?>>> $$2 = $$0.d.entrySet().iterator();
 
          while ($$2.hasNext()) {
-            Entry<ali<?>, kg.h<?>> $$3 = $$2.next();
-            ali<?> $$4 = $$3.getKey();
+            Entry<aly<?>, kg.h<?>> $$3 = $$2.next();
+            aly<?> $$4 = $$3.getKey();
             if ($$4.c(this.a)) {
                kg.h<T> $$6 = (kg.h<T>)$$3.getValue();
                jq.c<T> $$7 = (jq.c<T>)$$0.b.a.remove($$4);
-               $$1.put((ali<T>)$$4, new kg.n<>($$6, Optional.ofNullable($$7)));
+               $$1.put((aly<T>)$$4, new kg.n<>($$6, Optional.ofNullable($$7)));
                $$2.remove();
             }
          }
@@ -353,18 +353,18 @@ public class kg {
    }
 
    static class l extends kg.c<Object> {
-      final Map<ali<Object>, jq.c<Object>> a = new HashMap<>();
+      final Map<aly<Object>, jq.c<Object>> a = new HashMap<>();
 
       public l(jt<Object> $$0) {
          super($$0);
       }
 
       @Override
-      public Optional<jq.c<Object>> a(ali<Object> $$0) {
+      public Optional<jq.c<Object>> a(aly<Object> $$0) {
          return Optional.of(this.c($$0));
       }
 
-      <T> jq.c<T> c(ali<T> $$0) {
+      <T> jq.c<T> c(aly<T> $$0) {
          return (jq.c<T>)this.a.computeIfAbsent($$0, $$0x -> jq.c.a(this.d, $$0x));
       }
    }

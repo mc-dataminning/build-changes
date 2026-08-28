@@ -1,194 +1,41 @@
-public final class axc {
-   public static final axs<diq> a = a("wool");
-   public static final axs<diq> b = a("planks");
-   public static final axs<diq> c = a("stone_bricks");
-   public static final axs<diq> d = a("wooden_buttons");
-   public static final axs<diq> e = a("stone_buttons");
-   public static final axs<diq> f = a("buttons");
-   public static final axs<diq> g = a("wool_carpets");
-   public static final axs<diq> h = a("wooden_doors");
-   public static final axs<diq> i = a("mob_interactable_doors");
-   public static final axs<diq> j = a("wooden_stairs");
-   public static final axs<diq> k = a("wooden_slabs");
-   public static final axs<diq> l = a("wooden_fences");
-   public static final axs<diq> m = a("pressure_plates");
-   public static final axs<diq> n = a("wooden_pressure_plates");
-   public static final axs<diq> o = a("stone_pressure_plates");
-   public static final axs<diq> p = a("wooden_trapdoors");
-   public static final axs<diq> q = a("doors");
-   public static final axs<diq> r = a("saplings");
-   public static final axs<diq> s = a("logs_that_burn");
-   public static final axs<diq> t = a("overworld_natural_logs");
-   public static final axs<diq> u = a("logs");
-   public static final axs<diq> v = a("dark_oak_logs");
-   public static final axs<diq> w = a("oak_logs");
-   public static final axs<diq> x = a("birch_logs");
-   public static final axs<diq> y = a("acacia_logs");
-   public static final axs<diq> z = a("cherry_logs");
-   public static final axs<diq> A = a("jungle_logs");
-   public static final axs<diq> B = a("spruce_logs");
-   public static final axs<diq> C = a("mangrove_logs");
-   public static final axs<diq> D = a("crimson_stems");
-   public static final axs<diq> E = a("warped_stems");
-   public static final axs<diq> F = a("bamboo_blocks");
-   public static final axs<diq> G = a("wart_blocks");
-   public static final axs<diq> H = a("banners");
-   public static final axs<diq> I = a("sand");
-   public static final axs<diq> J = a("smelts_to_glass");
-   public static final axs<diq> K = a("stairs");
-   public static final axs<diq> L = a("slabs");
-   public static final axs<diq> M = a("walls");
-   public static final axs<diq> N = a("anvil");
-   public static final axs<diq> O = a("rails");
-   public static final axs<diq> P = a("leaves");
-   public static final axs<diq> Q = a("trapdoors");
-   public static final axs<diq> R = a("small_flowers");
-   public static final axs<diq> S = a("beds");
-   public static final axs<diq> T = a("fences");
-   public static final axs<diq> U = a("tall_flowers");
-   public static final axs<diq> V = a("flowers");
-   public static final axs<diq> W = a("piglin_repellents");
-   public static final axs<diq> X = a("gold_ores");
-   public static final axs<diq> Y = a("iron_ores");
-   public static final axs<diq> Z = a("diamond_ores");
-   public static final axs<diq> aa = a("redstone_ores");
-   public static final axs<diq> ab = a("lapis_ores");
-   public static final axs<diq> ac = a("coal_ores");
-   public static final axs<diq> ad = a("emerald_ores");
-   public static final axs<diq> ae = a("copper_ores");
-   public static final axs<diq> af = a("candles");
-   public static final axs<diq> ag = a("dirt");
-   public static final axs<diq> ah = a("terracotta");
-   public static final axs<diq> ai = a("badlands_terracotta");
-   public static final axs<diq> aj = a("concrete_powder");
-   public static final axs<diq> ak = a("completes_find_tree_tutorial");
-   public static final axs<diq> al = a("shulker_boxes");
-   public static final axs<diq> am = a("flower_pots");
-   public static final axs<diq> an = a("enderman_holdable");
-   public static final axs<diq> ao = a("ice");
-   public static final axs<diq> ap = a("valid_spawn");
-   public static final axs<diq> aq = a("impermeable");
-   public static final axs<diq> ar = a("underwater_bonemeals");
-   public static final axs<diq> as = a("coral_blocks");
-   public static final axs<diq> at = a("wall_corals");
-   public static final axs<diq> au = a("coral_plants");
-   public static final axs<diq> av = a("corals");
-   public static final axs<diq> aw = a("bamboo_plantable_on");
-   public static final axs<diq> ax = a("standing_signs");
-   public static final axs<diq> ay = a("wall_signs");
-   public static final axs<diq> az = a("signs");
-   public static final axs<diq> aA = a("ceiling_hanging_signs");
-   public static final axs<diq> aB = a("wall_hanging_signs");
-   public static final axs<diq> aC = a("all_hanging_signs");
-   public static final axs<diq> aD = a("all_signs");
-   public static final axs<diq> aE = a("dragon_immune");
-   public static final axs<diq> aF = a("dragon_transparent");
-   public static final axs<diq> aG = a("wither_immune");
-   public static final axs<diq> aH = a("wither_summon_base_blocks");
-   public static final axs<diq> aI = a("beehives");
-   public static final axs<diq> aJ = a("crops");
-   public static final axs<diq> aK = a("bee_growables");
-   public static final axs<diq> aL = a("portals");
-   public static final axs<diq> aM = a("fire");
-   public static final axs<diq> aN = a("nylium");
-   public static final axs<diq> aO = a("beacon_base_blocks");
-   public static final axs<diq> aP = a("soul_speed_blocks");
-   public static final axs<diq> aQ = a("wall_post_override");
-   public static final axs<diq> aR = a("climbable");
-   public static final axs<diq> aS = a("fall_damage_resetting");
-   public static final axs<diq> aT = a("hoglin_repellents");
-   public static final axs<diq> aU = a("soul_fire_base_blocks");
-   public static final axs<diq> aV = a("strider_warm_blocks");
-   public static final axs<diq> aW = a("campfires");
-   public static final axs<diq> aX = a("guarded_by_piglins");
-   public static final axs<diq> aY = a("prevent_mob_spawning_inside");
-   public static final axs<diq> aZ = a("fence_gates");
-   public static final axs<diq> ba = a("unstable_bottom_center");
-   public static final axs<diq> bb = a("mushroom_grow_block");
-   public static final axs<diq> bc = a("infiniburn_overworld");
-   public static final axs<diq> bd = a("infiniburn_nether");
-   public static final axs<diq> be = a("infiniburn_end");
-   public static final axs<diq> bf = a("base_stone_overworld");
-   public static final axs<diq> bg = a("stone_ore_replaceables");
-   public static final axs<diq> bh = a("deepslate_ore_replaceables");
-   public static final axs<diq> bi = a("base_stone_nether");
-   public static final axs<diq> bj = a("overworld_carver_replaceables");
-   public static final axs<diq> bk = a("nether_carver_replaceables");
-   public static final axs<diq> bl = a("candle_cakes");
-   public static final axs<diq> bm = a("cauldrons");
-   public static final axs<diq> bn = a("crystal_sound_blocks");
-   public static final axs<diq> bo = a("inside_step_sound_blocks");
-   public static final axs<diq> bp = a("combination_step_sound_blocks");
-   public static final axs<diq> bq = a("camel_sand_step_sound_blocks");
-   public static final axs<diq> br = a("occludes_vibration_signals");
-   public static final axs<diq> bs = a("dampens_vibrations");
-   public static final axs<diq> bt = a("dripstone_replaceable_blocks");
-   public static final axs<diq> bu = a("cave_vines");
-   public static final axs<diq> bv = a("moss_replaceable");
-   public static final axs<diq> bw = a("lush_ground_replaceable");
-   public static final axs<diq> bx = a("azalea_root_replaceable");
-   public static final axs<diq> by = a("small_dripleaf_placeable");
-   public static final axs<diq> bz = a("big_dripleaf_placeable");
-   public static final axs<diq> bA = a("snow");
-   public static final axs<diq> bB = a("mineable/axe");
-   public static final axs<diq> bC = a("mineable/hoe");
-   public static final axs<diq> bD = a("mineable/pickaxe");
-   public static final axs<diq> bE = a("mineable/shovel");
-   public static final axs<diq> bF = a("sword_efficient");
-   public static final axs<diq> bG = a("needs_diamond_tool");
-   public static final axs<diq> bH = a("needs_iron_tool");
-   public static final axs<diq> bI = a("needs_stone_tool");
-   public static final axs<diq> bJ = a("incorrect_for_netherite_tool");
-   public static final axs<diq> bK = a("incorrect_for_diamond_tool");
-   public static final axs<diq> bL = a("incorrect_for_iron_tool");
-   public static final axs<diq> bM = a("incorrect_for_stone_tool");
-   public static final axs<diq> bN = a("incorrect_for_gold_tool");
-   public static final axs<diq> bO = a("incorrect_for_wooden_tool");
-   public static final axs<diq> bP = a("features_cannot_replace");
-   public static final axs<diq> bQ = a("lava_pool_stone_cannot_replace");
-   public static final axs<diq> bR = a("geode_invalid_blocks");
-   public static final axs<diq> bS = a("frog_prefer_jump_to");
-   public static final axs<diq> bT = a("sculk_replaceable");
-   public static final axs<diq> bU = a("sculk_replaceable_world_gen");
-   public static final axs<diq> bV = a("ancient_city_replaceable");
-   public static final axs<diq> bW = a("vibration_resonators");
-   public static final axs<diq> bX = a("animals_spawnable_on");
-   public static final axs<diq> bY = a("armadillo_spawnable_on");
-   public static final axs<diq> bZ = a("axolotls_spawnable_on");
-   public static final axs<diq> ca = a("goats_spawnable_on");
-   public static final axs<diq> cb = a("mooshrooms_spawnable_on");
-   public static final axs<diq> cc = a("parrots_spawnable_on");
-   public static final axs<diq> cd = a("polar_bears_spawnable_on_alternate");
-   public static final axs<diq> ce = a("rabbits_spawnable_on");
-   public static final axs<diq> cf = a("foxes_spawnable_on");
-   public static final axs<diq> cg = a("wolves_spawnable_on");
-   public static final axs<diq> ch = a("frogs_spawnable_on");
-   public static final axs<diq> ci = a("bats_spawnable_on");
-   public static final axs<diq> cj = a("azalea_grows_on");
-   public static final axs<diq> ck = a("convertable_to_mud");
-   public static final axs<diq> cl = a("mangrove_logs_can_grow_through");
-   public static final axs<diq> cm = a("mangrove_roots_can_grow_through");
-   public static final axs<diq> cn = a("dead_bush_may_place_on");
-   public static final axs<diq> co = a("snaps_goat_horn");
-   public static final axs<diq> cp = a("replaceable_by_trees");
-   public static final axs<diq> cq = a("snow_layer_cannot_survive_on");
-   public static final axs<diq> cr = a("snow_layer_can_survive_on");
-   public static final axs<diq> cs = a("invalid_spawn_inside");
-   public static final axs<diq> ct = a("sniffer_diggable_block");
-   public static final axs<diq> cu = a("sniffer_egg_hatch_boost");
-   public static final axs<diq> cv = a("trail_ruins_replaceable");
-   public static final axs<diq> cw = a("replaceable");
-   public static final axs<diq> cx = a("enchantment_power_provider");
-   public static final axs<diq> cy = a("enchantment_power_transmitter");
-   public static final axs<diq> cz = a("maintains_farmland");
-   public static final axs<diq> cA = a("blocks_wind_charge_explosions");
-   public static final axs<diq> cB = a("does_not_block_hoppers");
-   public static final axs<diq> cC = a("air");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   private axc() {
+public class axc {
+   public static final Codec<axc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               axe.b.fieldOf("sound").forGetter($$0x -> $$0x.b),
+               Codec.INT.fieldOf("min_delay").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("max_delay").forGetter($$0x -> $$0x.d),
+               Codec.BOOL.fieldOf("replace_current_music").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, axc::new)
+   );
+   private final jq<axe> b;
+   private final int c;
+   private final int d;
+   private final boolean e;
+
+   public axc(jq<axe> $$0, int $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   private static axs<diq> a(String $$0) {
-      return axs.a(ma.f, alj.b($$0));
+   public jq<axe> a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
    }
 }

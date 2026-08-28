@@ -1,39 +1,110 @@
-public class fzo extends fzj<gvz> {
-   private final gcl[] a = new gcl[9];
+import com.mojang.authlib.GameProfile;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Supplier;
 
-   public fzo(gcl $$0) {
-      super($$0);
+public class fzo implements fzj, fzk {
+   private static final alz a = alz.b("spectator/teleport_to_team");
+   private static final xv b = xv.c("spectatorMenu.team_teleport");
+   private static final xv c = xv.c("spectatorMenu.team_teleport.prompt");
+   private final List<fzk> d;
 
-      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-         this.a[$$1] = $$0.b(a($$1));
+   public fzo() {
+      flz $$0 = flz.Q();
+      this.d = a($$0, $$0.s.Q());
+   }
+
+   private static List<fzk> a(flz $$0, fcx $$1) {
+      return $$1.g().stream().flatMap($$1x -> fzo.a.a($$0, $$1x).stream()).toList();
+   }
+
+   @Override
+   public List<fzk> a() {
+      return this.d;
+   }
+
+   @Override
+   public xv b() {
+      return c;
+   }
+
+   @Override
+   public void a(fzi $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public xv aU_() {
+      return b;
+   }
+
+   @Override
+   public void a(fnl $$0, float $$1, float $$2) {
+      $$0.a(glo::B, a, 0, 0, 16, 16, ayp.a($$2, $$1, $$1, $$1));
+   }
+
+   @Override
+   public boolean aV_() {
+      return !this.d.isEmpty();
+   }
+
+   static class a implements fzk {
+      private final fcs a;
+      private final Supplier<hcf> b;
+      private final List<gfp> c;
+
+      private a(fcs $$0, List<gfp> $$1, Supplier<hcf> $$2) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = $$2;
       }
-   }
 
-   private static String a(int $$0) {
-      return "tentacle" + $$0;
-   }
+      public static Optional<fzk> a(flz $$0, fcs $$1) {
+         List<gfp> $$2 = new ArrayList<>();
 
-   public static gcr a() {
-      gct $$0 = new gct();
-      gcv $$1 = $$0.a();
-      $$1.a("body", gcq.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), gcn.a(0.0F, 17.6F, 0.0F));
-      azu $$2 = azu.a(1660L);
+         for (String $$3 : $$1.g()) {
+            gfp $$4 = $$0.L().a($$3);
+            if ($$4 != null && $$4.e() != dgx.d) {
+               $$2.add($$4);
+            }
+         }
 
-      for (int $$3 = 0; $$3 < 9; $$3++) {
-         float $$4 = (((float)($$3 % 3) - (float)($$3 / 3 % 2) * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 5.0F;
-         float $$5 = ((float)($$3 / 3) / 2.0F * 2.0F - 1.0F) * 5.0F;
-         int $$6 = $$2.a(7) + 8;
-         $$1.a(a($$3), gcq.c().a(0, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, (float)$$6, 2.0F), gcn.a($$4, 24.6F, $$5));
+         if ($$2.isEmpty()) {
+            return Optional.empty();
+         } else {
+            GameProfile $$5 = $$2.get(bam.a().a($$2.size())).a();
+            Supplier<hcf> $$6 = $$0.an().a($$5);
+            return Optional.of(new fzo.a($$1, $$2, $$6));
+         }
       }
 
-      return gcr.a($$0, 64, 32).a(gcu.scaling(4.5F));
-   }
+      @Override
+      public void a(fzi $$0) {
+         $$0.a(new fzn(this.c));
+      }
 
-   public void a(gvz $$0) {
-      super.a($$0);
+      @Override
+      public xv aU_() {
+         return this.a.c();
+      }
 
-      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-         this.a[$$1].e = 0.2F * azm.a($$0.p * 0.3F + (float)$$1) + 0.4F;
+      @Override
+      public void a(fnl $$0, float $$1, float $$2) {
+         Integer $$3 = this.a.n().f();
+         if ($$3 != null) {
+            float $$4 = (float)($$3 >> 16 & 0xFF) / 255.0F;
+            float $$5 = (float)($$3 >> 8 & 0xFF) / 255.0F;
+            float $$6 = (float)($$3 & 0xFF) / 255.0F;
+            $$0.a(1, 1, 15, 15, ayp.a($$2, $$4 * $$1, $$5 * $$1, $$6 * $$1));
+         }
+
+         foy.a($$0, this.b.get(), 2, 2, 12, ayp.a($$2, $$1, $$1, $$1));
+      }
+
+      @Override
+      public boolean aV_() {
+         return true;
       }
    }
 }

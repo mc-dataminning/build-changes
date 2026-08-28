@@ -1,27 +1,59 @@
-public class gsd extends gof<chz, gxu, gbs> {
-   private static final alj a = alj.b("textures/entity/turtle/big_sea_turtle.png");
+import java.util.Arrays;
 
-   public gsd(gpk.a $$0) {
-      super($$0, new gbs($$0.a(gck.di)), new gbs($$0.a(gck.dj)), 0.7F);
+public class gsd extends gsc<cmq, gyg> {
+   private static final alz a = alz.b("textures/entity/illager/illusioner.png");
+
+   public gsd(grj.a $$0) {
+      super($$0, new gbt<>($$0.a(geg.bk)), 0.5F);
+      this.a(new gvq<gyg, gbt<gyg>>(this, $$0.b()) {
+         public void a(fgl $$0, gle $$1, int $$2, gyg $$3, float $$4, float $$5) {
+            if ($$3.i || $$3.c) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5);
+            }
+         }
+      });
+      this.h.c().k = true;
    }
 
-   protected float a(gxu $$0) {
-      float $$1 = super.g($$0);
-      return $$0.ae ? $$1 * 0.83F : $$1;
-   }
-
-   public gxu b() {
-      return new gxu();
-   }
-
-   public void a(chz $$0, gxu $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = !$$0.bj() && $$0.aJ();
-      $$1.b = $$0.q();
-      $$1.c = !$$0.e_() && $$0.n();
-   }
-
-   public alj b(gxu $$0) {
+   public alz a(gyg $$0) {
       return a;
+   }
+
+   public gyg b() {
+      return new gyg();
+   }
+
+   public void a(cmq $$0, gyg $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      fbs[] $$3 = $$0.J($$2);
+      $$1.a = Arrays.copyOf($$3, $$3.length);
+      $$1.i = $$0.gv();
+   }
+
+   public void a(gyg $$0, fgl $$1, gle $$2, int $$3) {
+      if ($$0.u) {
+         fbs[] $$4 = $$0.a;
+
+         for (int $$5 = 0; $$5 < $$4.length; $$5++) {
+            $$1.a();
+            $$1.a(
+               $$4[$$5].d + (double)bae.b((float)$$5 + $$0.p * 0.5F) * 0.025,
+               $$4[$$5].e + (double)bae.b((float)$$5 + $$0.p * 0.75F) * 0.0125,
+               $$4[$$5].f + (double)bae.b((float)$$5 + $$0.p * 0.7F) * 0.025
+            );
+            super.a($$0, $$1, $$2, $$3);
+            $$1.b();
+         }
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   protected boolean b(gyg $$0) {
+      return true;
+   }
+
+   protected fbn a(cmq $$0) {
+      return super.a($$0).c(3.0, 0.0, 3.0);
    }
 }

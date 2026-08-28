@@ -1,42 +1,25 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.BiConsumer;
+import java.util.stream.Stream;
 
-public class epn extends eqh {
-   public static final MapCodec<epn> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               kf.a(ma.f).optionalFieldOf("rottable_blocks").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter($$0x -> $$0x.c)
-            )
-            .apply($$0, epn::new)
+record epn(aly<epm> c, aly<epm> d) implements epo {
+   static MapCodec<epn> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(aly.a(mb.aW).fieldOf("alias").forGetter(epn::c), aly.a(mb.aW).fieldOf("target").forGetter(epn::d)).apply($$0, epn::new)
    );
-   private final Optional<ju<diq>> b;
-   private final float c;
 
-   public epn(ju<diq> $$0, float $$1) {
-      this(Optional.of($$0), $$1);
-   }
-
-   public epn(float $$0) {
-      this(Optional.empty(), $$0);
-   }
-
-   private epn(Optional<ju<diq>> $$0, float $$1) {
-      this.c = $$1;
-      this.b = $$0;
-   }
-
-   @Nullable
    @Override
-   public eqk.c a(dfp $$0, jh $$1, jh $$2, eqk.c $$3, eqk.c $$4, eqg $$5) {
-      azu $$6 = $$5.b($$4.a());
-      return (!this.b.isPresent() || $$3.b().a(this.b.get())) && !($$6.i() <= this.c) ? null : $$4;
+   public void a(bam $$0, BiConsumer<aly<epm>, aly<epm>> $$1) {
+      $$1.accept(this.c, this.d);
    }
 
    @Override
-   protected eqj<?> a() {
-      return eqj.f;
+   public Stream<aly<epm>> a() {
+      return Stream.of(this.d);
+   }
+
+   @Override
+   public MapCodec<epn> b() {
+      return a;
    }
 }

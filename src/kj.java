@@ -35,11 +35,11 @@ public class kj extends kl {
       return new kj(a($$0.u()), a($$0.v()), a($$0.w()));
    }
 
-   public static kj a(des $$0, int $$1) {
+   public static kj a(dgg $$0, int $$1) {
       return new kj($$0.g, $$1, $$0.h);
    }
 
-   public static kj a(dzy $$0) {
+   public static kj a(ebq $$0) {
       return a($$0.dv());
    }
 
@@ -51,8 +51,8 @@ public class kj extends kl {
       return new kj(b($$0), c($$0), d($$0));
    }
 
-   public static kj a(dxq $$0) {
-      return a($$0.f(), $$0.an());
+   public static kj a(dzi $$0) {
+      return a($$0.f(), $$0.ao());
    }
 
    public static long a(long $$0, jm $$1) {
@@ -64,7 +64,7 @@ public class kj extends kl {
    }
 
    public static int a(double $$0) {
-      return a(azm.a($$0));
+      return a(bae.a($$0));
    }
 
    public static int a(int $$0) {
@@ -72,7 +72,7 @@ public class kj extends kl {
    }
 
    public static int b(double $$0) {
-      return azm.a($$0) >> 4;
+      return bae.a($$0) >> 4;
    }
 
    public static int b(int $$0) {
@@ -191,8 +191,8 @@ public class kj extends kl {
       return this.j().b(8, 8, 8);
    }
 
-   public des r() {
-      return new des(this.a(), this.c());
+   public dgg r() {
+      return new dgg(this.a(), this.c());
    }
 
    public static long c(jh $$0) {
@@ -225,7 +225,7 @@ public class kj extends kl {
       return a($$2 - $$1, $$3 - $$1, $$4 - $$1, $$2 + $$1, $$3 + $$1, $$4 + $$1);
    }
 
-   public static Stream<kj> a(des $$0, int $$1, int $$2, int $$3) {
+   public static Stream<kj> a(dgg $$0, int $$1, int $$2, int $$3) {
       int $$4 = $$0.g;
       int $$5 = $$0.h;
       return a($$4 - $$1, $$2, $$5 - $$1, $$4 + $$1, $$3, $$5 + $$1);

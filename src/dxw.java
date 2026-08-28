@@ -1,74 +1,51 @@
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class dxw extends dya {
-   private final jq<dgo> o;
+public class dxw implements Predicate<dxn> {
+   public static final Predicate<dxn> a = $$0 -> true;
+   private final dxo<dke, dxn> b;
+   private final Map<dyp<?>, Predicate<Object>> c = Maps.newHashMap();
 
-   public dxw(dfm $$0, des $$1, jq<dgo> $$2) {
-      super($$0, $$1);
-      this.o = $$2;
+   private dxw(dxo<dke, dxn> $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public dvv a_(jh $$0) {
-      return dis.nb.m();
+   public static dxw a(dke $$0) {
+      return new dxw($$0.l());
    }
 
-   @Nullable
-   @Override
-   public dvv a(jh $$0, dvv $$1, boolean $$2) {
-      return null;
+   public boolean a(@Nullable dxn $$0) {
+      if ($$0 != null && $$0.b().equals(this.b.c())) {
+         if (this.c.isEmpty()) {
+            return true;
+         } else {
+            for (Entry<dyp<?>, Predicate<Object>> $$1 : this.c.entrySet()) {
+               if (!this.a($$0, $$1.getKey(), $$1.getValue())) {
+                  return false;
+               }
+            }
+
+            return true;
+         }
+      } else {
+         return false;
+      }
    }
 
-   @Override
-   public erv b_(jh $$0) {
-      return erw.a.g();
+   protected <T extends Comparable<T>> boolean a(dxn $$0, dyp<T> $$1, Predicate<Object> $$2) {
+      T $$3 = $$0.c($$1);
+      return $$2.test($$3);
    }
 
-   @Override
-   public int i(jh $$0) {
-      return 0;
-   }
-
-   @Nullable
-   @Override
-   public dsy a(jh $$0, dya.b $$1) {
-      return null;
-   }
-
-   @Override
-   public void b(dsy $$0) {
-   }
-
-   @Override
-   public void a(dsy $$0) {
-   }
-
-   @Override
-   public void d(jh $$0) {
-   }
-
-   @Override
-   public boolean B() {
-      return true;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public boolean c(int $$0) {
-      return true;
-   }
-
-   @Override
-   public are C() {
-      return are.b;
-   }
-
-   @Override
-   public jq<dgo> getNoiseBiome(int $$0, int $$1, int $$2) {
-      return this.o;
+   public <V extends Comparable<V>> dxw a(dyp<V> $$0, Predicate<Object> $$1) {
+      if (!this.b.d().contains($$0)) {
+         throw new IllegalArgumentException(this.b + " cannot support property " + $$0);
+      } else {
+         this.c.put($$0, $$1);
+         return this;
+      }
    }
 }

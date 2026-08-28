@@ -1,194 +1,31 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.UUID;
 
-public class fom implements fon {
-   private static final alj a = alj.b("toast/system");
-   private static final int e = 200;
-   private static final int f = 12;
-   private static final int g = 10;
-   private final fom.a h;
-   private xj i;
-   private List<ayy> j;
-   private long k;
-   private boolean l;
-   private final int m;
-   private boolean n;
-   private fon.a o = fon.a.b;
+public class fom extends bsu {
+   private static final long j = 100L;
+   protected float h;
+   protected long i;
 
-   public fom(fom.a $$0, xj $$1, @Nullable xj $$2) {
-      this($$0, $$1, a($$2), Math.max(160, 30 + Math.max(fke.Q().h.a($$1), $$2 == null ? 0 : fke.Q().h.a($$2))));
+   public fom(UUID $$0, xv $$1, float $$2, bsu.a $$3, bsu.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      super($$0, $$1, $$3, $$4);
+      this.h = $$2;
+      this.b = $$2;
+      this.i = ae.c();
+      this.a($$5);
+      this.b($$6);
+      this.c($$7);
    }
 
-   public static fom a(fke $$0, fom.a $$1, xj $$2, xj $$3) {
-      flo $$4 = $$0.h;
-      List<ayy> $$5 = $$4.c($$3, 200);
-      int $$6 = Math.max(200, $$5.stream().mapToInt($$4::a).max().orElse(200));
-      return new fom($$1, $$2, $$5, $$6 + 30);
-   }
-
-   private fom(fom.a $$0, xj $$1, List<ayy> $$2, int $$3) {
+   @Override
+   public void a(float $$0) {
+      this.b = this.j();
       this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
-      this.m = $$3;
-   }
-
-   private static ImmutableList<ayy> a(@Nullable xj $$0) {
-      return $$0 == null ? ImmutableList.of() : ImmutableList.of($$0.g());
+      this.i = ae.c();
    }
 
    @Override
-   public int b() {
-      return this.m;
-   }
-
-   @Override
-   public int c() {
-      return 20 + Math.max(this.j.size(), 1) * 12;
-   }
-
-   public void d() {
-      this.n = true;
-   }
-
-   @Override
-   public fon.a a() {
-      return this.o;
-   }
-
-   @Override
-   public void a(foo $$0, long $$1) {
-      if (this.l) {
-         this.k = $$1;
-         this.l = false;
-      }
-
-      double $$2 = (double)this.h.l * $$0.d();
-      long $$3 = $$1 - this.k;
-      this.o = !this.n && (double)$$3 < $$2 ? fon.a.a : fon.a.b;
-   }
-
-   @Override
-   public void a(flq $$0, flo $$1, long $$2) {
-      int $$3 = this.b();
-      if ($$3 == 160 && this.j.size() <= 1) {
-         $$0.a(gjq::B, a, 0, 0, $$3, this.c());
-      } else {
-         int $$4 = this.c();
-         int $$5 = 28;
-         int $$6 = Math.min(4, $$4 - 28);
-         this.a($$0, $$3, 0, 0, 28);
-
-         for (int $$7 = 28; $$7 < $$4 - $$6; $$7 += 10) {
-            this.a($$0, $$3, 16, $$7, Math.min(16, $$4 - $$7 - $$6));
-         }
-
-         this.a($$0, $$3, 32 - $$6, $$4 - $$6, $$6);
-      }
-
-      if (this.j.isEmpty()) {
-         $$0.a($$1, this.i, 18, 12, -256, false);
-      } else {
-         $$0.a($$1, this.i, 18, 7, -256, false);
-
-         for (int $$8 = 0; $$8 < this.j.size(); $$8++) {
-            $$0.a($$1, this.j.get($$8), 18, 18 + $$8 * 12, -1, false);
-         }
-      }
-   }
-
-   private void a(flq $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$2 == 0 ? 20 : 5;
-      int $$6 = Math.min(60, $$1 - $$5);
-      alj $$7 = a;
-      $$0.a(gjq::B, $$7, 160, 32, 0, $$2, 0, $$3, $$5, $$4);
-
-      for (int $$8 = $$5; $$8 < $$1 - $$6; $$8 += 64) {
-         $$0.a(gjq::B, $$7, 160, 32, 32, $$2, $$8, $$3, Math.min(64, $$1 - $$8 - $$6), $$4);
-      }
-
-      $$0.a(gjq::B, $$7, 160, 32, 160 - $$6, $$2, $$1 - $$6, $$3, $$6, $$4);
-   }
-
-   public void a(xj $$0, @Nullable xj $$1) {
-      this.i = $$0;
-      this.j = a($$1);
-      this.l = true;
-   }
-
-   public fom.a e() {
-      return this.h;
-   }
-
-   public static void a(foo $$0, fom.a $$1, xj $$2, @Nullable xj $$3) {
-      $$0.a(new fom($$1, $$2, $$3));
-   }
-
-   public static void b(foo $$0, fom.a $$1, xj $$2, @Nullable xj $$3) {
-      fom $$4 = $$0.a(fom.class, $$1);
-      if ($$4 == null) {
-         a($$0, $$1, $$2, $$3);
-      } else {
-         $$4.a($$2, $$3);
-      }
-   }
-
-   public static void a(foo $$0, fom.a $$1) {
-      fom $$2 = $$0.a(fom.class, $$1);
-      if ($$2 != null) {
-         $$2.d();
-      }
-   }
-
-   public static void a(fke $$0, String $$1) {
-      a($$0.aA(), fom.a.d, xj.c("selectWorld.access_failure"), xj.b($$1));
-   }
-
-   public static void b(fke $$0, String $$1) {
-      a($$0.aA(), fom.a.d, xj.c("selectWorld.delete_failure"), xj.b($$1));
-   }
-
-   public static void c(fke $$0, String $$1) {
-      a($$0.aA(), fom.a.e, xj.c("pack.copyFailure"), xj.b($$1));
-   }
-
-   public static void a(fke $$0, int $$1) {
-      a($$0.aA(), fom.a.f, xj.c("gui.fileDropFailure.title"), xj.a("gui.fileDropFailure.detail", $$1));
-   }
-
-   public static void a(fke $$0) {
-      b($$0.aA(), fom.a.h, xj.c("chunk.toast.lowDiskSpace"), xj.c("chunk.toast.lowDiskSpace.description"));
-   }
-
-   public static void a(fke $$0, des $$1) {
-      b($$0.aA(), fom.a.i, xj.a("chunk.toast.loadFailure", xj.a($$1)).a(n.m), xj.c("chunk.toast.checkLog"));
-   }
-
-   public static void b(fke $$0, des $$1) {
-      b($$0.aA(), fom.a.j, xj.a("chunk.toast.saveFailure", xj.a($$1)).a(n.m), xj.c("chunk.toast.checkLog"));
-   }
-
-   public static class a {
-      public static final fom.a a = new fom.a();
-      public static final fom.a b = new fom.a();
-      public static final fom.a c = new fom.a();
-      public static final fom.a d = new fom.a();
-      public static final fom.a e = new fom.a();
-      public static final fom.a f = new fom.a();
-      public static final fom.a g = new fom.a();
-      public static final fom.a h = new fom.a(10000L);
-      public static final fom.a i = new fom.a();
-      public static final fom.a j = new fom.a();
-      public static final fom.a k = new fom.a(10000L);
-      final long l;
-
-      public a(long $$0) {
-         this.l = $$0;
-      }
-
-      public a() {
-         this(5000L);
-      }
+   public float j() {
+      long $$0 = ae.c() - this.i;
+      float $$1 = bae.a((float)$$0 / 100.0F, 0.0F, 1.0F);
+      return bae.h($$1, this.b, this.h);
    }
 }

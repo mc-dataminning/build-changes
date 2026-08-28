@@ -1,26 +1,25 @@
-public enum aiy {
-   a,
-   b,
-   c;
+public record aiy(int b, int c) implements aac<ahm> {
+   public static final zt<ws, aiy> a = aac.a(aiy::a, aiy::new);
 
-   private static final int d = 1;
-   private static final int e = 2;
-   private static final int f = 3;
-
-   public static aiy a(int $$0) {
-      return switch ($$0) {
-         case 1 -> a;
-         case 2 -> b;
-         case 3 -> c;
-         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
-      };
+   private aiy(ws $$0) {
+      this($$0.l(), $$0.l());
    }
 
-   public int a() {
-      return switch (this) {
-         case a -> 1;
-         case b -> 2;
-         case c -> 3;
-      };
+   private void a(ws $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
+   }
+
+   @Override
+   public aae<aiy> a() {
+      return ahk.bm;
+   }
+
+   public void a(ahm $$0) {
+      $$0.a(this);
+   }
+
+   public int e() {
+      return this.c;
    }
 }

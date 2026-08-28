@@ -1,55 +1,43 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class dlv extends diz implements dit {
-   public static final MapCodec<dlv> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ali.a(ma.aJ).fieldOf("feature").forGetter($$0x -> $$0x.e), lz.e.q().fieldOf("grows_on").forGetter($$0x -> $$0x.d), t())
-            .apply($$0, dlv::new)
-   );
-   protected static final fas b = diq.a(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
-   private static final double c = 0.4;
-   private final diq d;
-   private final ali<eei<?, ?>> e;
+public class dlv extends djm {
+   public static final MapCodec<dlv> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dlu.a.forGetter($$0x -> $$0x.c), t()).apply($$0, dlv::new));
+   private final dke c;
 
    @Override
    public MapCodec<dlv> a() {
-      return a;
-   }
-
-   protected dlv(ali<eei<?, ?>> $$0, diq $$1, dvu.d $$2) {
-      super($$2);
-      this.e = $$0;
-      this.d = $$1;
-   }
-
-   @Override
-   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
       return b;
    }
 
-   @Override
-   protected boolean b(dvv $$0, der $$1, jh $$2) {
-      return $$0.a(axc.aN) || $$0.a(dis.fl) || $$0.a(dis.dX) || super.b($$0, $$1, $$2);
-   }
-
-   private Optional<? extends jq<eei<?, ?>>> a(dfp $$0) {
-      return $$0.J_().e(ma.aJ).a(this.e);
+   protected dlv(dke $$0, dxm.d $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
    @Override
-   public boolean b(dfp $$0, jh $$1, dvv $$2) {
-      dvv $$3 = $$0.a_($$1.e());
-      return $$3.a(this.d);
+   protected void b(dxn $$0, dha $$1, jh $$2, dxn $$3, boolean $$4) {
+      this.a($$0, $$1, $$1, $$1.A, $$2);
    }
 
    @Override
-   public boolean a(dfm $$0, azu $$1, jh $$2, dvv $$3) {
-      return (double)$$1.i() < 0.4;
+   protected void a(dxn $$0, ash $$1, jh $$2, bam $$3) {
+      if (!d($$0, $$1, $$2)) {
+         $$1.a($$2, this.c.m().b(d, Boolean.valueOf(false)), 2);
+      }
    }
 
    @Override
-   public void a(arp $$0, azu $$1, jh $$2, dvv $$3) {
-      this.a($$0).ifPresent($$3x -> ((eei)$$3x.a()).a($$0, $$0.m().g(), $$1, $$2));
+   protected dxn a(dxn $$0, dhd $$1, dhp $$2, jh $$3, jm $$4, jh $$5, dxn $$6, bam $$7) {
+      if ($$4 == jm.a && !$$0.a($$1, $$3)) {
+         return dkg.a.m();
+      } else {
+         this.a($$0, $$1, $$2, $$7, $$3);
+         if ($$0.c(d)) {
+            $$2.a($$3, etq.c, etq.c.a($$1));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
    }
 }

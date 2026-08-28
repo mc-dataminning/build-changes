@@ -1,37 +1,19 @@
 import com.mojang.serialization.Codec;
 
-public enum ddv implements bai {
-   a(but.f, 11, "helmet"),
-   b(but.e, 16, "chestplate"),
-   c(but.d, 15, "leggings"),
-   d(but.c, 13, "boots"),
-   e(but.g, 16, "body");
+public enum ddv implements bba {
+   a("attacker"),
+   b("damaging_entity"),
+   c("victim");
 
-   public static final Codec<ddv> f = bai.b(ddv::values);
-   private final but g;
-   private final String h;
-   private final int i;
+   public static final Codec<ddv> d = bba.a(ddv::values);
+   private final String e;
 
-   private ddv(final but $$0, final int $$1, final String $$2) {
-      this.g = $$0;
-      this.h = $$2;
-      this.i = $$1;
-   }
-
-   public int a(int $$0) {
-      return this.i * $$0;
-   }
-
-   public but a() {
-      return this.g;
-   }
-
-   public String b() {
-      return this.h;
+   private ddv(final String $$0) {
+      this.e = $$0;
    }
 
    @Override
    public String c() {
-      return this.h;
+      return this.e;
    }
 }

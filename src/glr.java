@@ -1,15 +1,30 @@
-public interface glr<T extends dsy> {
-   void a(T var1, float var2, fer var3, gjg var4, int var5, int var6);
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.List;
+import java.util.Map;
 
-   default boolean a(T $$0) {
-      return false;
+public class glr implements AutoCloseable {
+   private static final List<glo> b = glo.M();
+   public static final int a = b.stream().mapToInt(glo::N).sum();
+   private final Map<glo, fgi> c = ae.a(new Reference2ObjectArrayMap(b.size()), $$0 -> {
+      for (glo $$1 : b) {
+         $$0.put($$1, new fgi($$1.N()));
+      }
+   });
+
+   public fgi a(glo $$0) {
+      return this.c.get($$0);
    }
 
-   default int aU_() {
-      return 64;
+   public void a() {
+      this.c.values().forEach(fgi::b);
    }
 
-   default boolean a(T $$0, ezy $$1) {
-      return ezy.b($$0.aA_()).a((ka)$$1, (double)this.aU_());
+   public void b() {
+      this.c.values().forEach(fgi::c);
+   }
+
+   @Override
+   public void close() {
+      this.c.values().forEach(fgi::close);
    }
 }

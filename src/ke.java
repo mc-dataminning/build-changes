@@ -13,25 +13,25 @@ public interface ke extends js.a {
    ke.b b = new ke.c(Map.of()).e();
 
    @Override
-   <E> Optional<kd<E>> a(ali<? extends kd<? extends E>> var1);
+   <E> Optional<kd<E>> a(aly<? extends kd<? extends E>> var1);
 
-   default <E> kd<E> e(ali<? extends kd<? extends E>> $$0) {
+   default <E> kd<E> e(aly<? extends kd<? extends E>> $$0) {
       return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing registry: " + $$0));
    }
 
    Stream<ke.d<?>> a();
 
    @Override
-   default Stream<ali<? extends kd<?>>> b() {
+   default Stream<aly<? extends kd<?>>> b() {
       return this.a().map($$0 -> $$0.a);
    }
 
    static ke.b a(final kd<? extends kd<?>> $$0) {
       return new ke.b() {
          @Override
-         public <T> Optional<kd<T>> a(ali<? extends kd<? extends T>> $$0x) {
+         public <T> Optional<kd<T>> a(aly<? extends kd<? extends T>> $$0x) {
             kd<kd<T>> $$1 = (kd<kd<T>>)$$0;
-            return $$1.f((ali<kd<T>>)$$0);
+            return $$1.f((aly<kd<T>>)$$0);
          }
 
          @Override
@@ -60,13 +60,13 @@ public interface ke extends js.a {
    }
 
    public static class c implements ke {
-      private final Map<? extends ali<? extends kd<?>>, ? extends kd<?>> c;
+      private final Map<? extends aly<? extends kd<?>>, ? extends kd<?>> c;
 
       public c(List<? extends kd<?>> $$0) {
          this.c = $$0.stream().collect(Collectors.toUnmodifiableMap(kd::g, $$0x -> $$0x));
       }
 
-      public c(Map<? extends ali<? extends kd<?>>, ? extends kd<?>> $$0) {
+      public c(Map<? extends aly<? extends kd<?>>, ? extends kd<?>> $$0) {
          this.c = Map.copyOf($$0);
       }
 
@@ -75,7 +75,7 @@ public interface ke extends js.a {
       }
 
       @Override
-      public <E> Optional<kd<E>> a(ali<? extends kd<? extends E>> $$0) {
+      public <E> Optional<kd<E>> a(aly<? extends kd<? extends E>> $$0) {
          return Optional.ofNullable(this.c.get($$0)).map($$0x -> $$0x);
       }
 
@@ -85,14 +85,14 @@ public interface ke extends js.a {
       }
    }
 
-   public static record d<T>(ali<? extends kd<T>> a, kd<T> b) {
+   public static record d<T>(aly<? extends kd<T>> a, kd<T> b) {
 
-      private static <T, R extends kd<? extends T>> ke.d<T> a(Entry<? extends ali<? extends kd<?>>, R> $$0) {
-         return a((ali<? extends kd<?>>)$$0.getKey(), $$0.getValue());
+      private static <T, R extends kd<? extends T>> ke.d<T> a(Entry<? extends aly<? extends kd<?>>, R> $$0) {
+         return a((aly<? extends kd<?>>)$$0.getKey(), $$0.getValue());
       }
 
-      private static <T> ke.d<T> a(ali<? extends kd<?>> $$0, kd<?> $$1) {
-         return new ke.d<>((ali<? extends kd<T>>)$$0, (kd<T>)$$1);
+      private static <T> ke.d<T> a(aly<? extends kd<?>> $$0, kd<?> $$1) {
+         return new ke.d<>((aly<? extends kd<T>>)$$0, (kd<T>)$$1);
       }
 
       private ke.d<T> c() {

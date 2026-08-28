@@ -1,18 +1,29 @@
-public class amg implements Runnable {
-   private final int a;
-   private final Runnable b;
+import com.mojang.logging.LogUtils;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public amg(int $$0, Runnable $$1) {
+public class amg extends PrintStream {
+   private static final Logger b = LogUtils.getLogger();
+   protected final String a;
+
+   public amg(String $$0, OutputStream $$1) {
+      super($$1);
       this.a = $$0;
-      this.b = $$1;
-   }
-
-   public int a() {
-      return this.a;
    }
 
    @Override
-   public void run() {
-      this.b.run();
+   public void println(@Nullable String $$0) {
+      this.a($$0);
+   }
+
+   @Override
+   public void println(Object $$0) {
+      this.a(String.valueOf($$0));
+   }
+
+   protected void a(@Nullable String $$0) {
+      b.info("[{}]: {}", this.a, $$0);
    }
 }

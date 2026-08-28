@@ -1,12 +1,101 @@
-public class cuq extends cwi {
-   private final axs<dso> a;
+public class cuq extends cuu {
+   private final ctp a;
+   private final cps b;
+   private int g;
 
-   public cuq(axs<dso> $$0, cwi.a $$1) {
-      super($$1);
-      this.a = $$0;
+   public cuq(cps $$0, ctp $$1, bsx $$2, int $$3, int $$4, int $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.b = $$0;
+      this.a = $$1;
    }
 
-   public axs<dso> b() {
-      return this.a;
+   @Override
+   public boolean a(cxk $$0) {
+      return false;
+   }
+
+   @Override
+   public cxk a(int $$0) {
+      if (this.h()) {
+         this.g = this.g + Math.min($$0, this.g().L());
+      }
+
+      return super.a($$0);
+   }
+
+   @Override
+   protected void a(cxk $$0, int $$1) {
+      this.g += $$1;
+      this.b_($$0);
+   }
+
+   @Override
+   protected void b(int $$0) {
+      this.g += $$0;
+   }
+
+   @Override
+   protected void b_(cxk $$0) {
+      if (this.g > 0) {
+         $$0.a(this.b.dV(), this.b, this.g);
+      }
+
+      if (this.c instanceof cuo $$1) {
+         $$1.a(this.b, this.a.h());
+      }
+
+      this.g = 0;
+   }
+
+   private static jz<cxk> a(dbo $$0) {
+      jz<cxk> $$1 = jz.a($$0.a(), cxk.k);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         $$1.set($$2, $$0.a($$2));
+      }
+
+      return $$1;
+   }
+
+   private jz<cxk> a(dbo $$0, dha $$1) {
+      return $$1 instanceof ash $$2 ? $$2.s().a(dcj.a, $$0, $$2).map($$1x -> ((dbp)$$1x.b()).a($$0)).orElseGet(() -> a($$0)) : dbp.b($$0);
+   }
+
+   @Override
+   public void a(cps $$0, cxk $$1) {
+      this.b_($$1);
+      dbo.a $$2 = this.a.aD_();
+      dbo $$3 = $$2.a();
+      int $$4 = $$2.b();
+      int $$5 = $$2.c();
+      jz<cxk> $$6 = this.a($$3, $$0.dV());
+
+      for (int $$7 = 0; $$7 < $$3.g(); $$7++) {
+         for (int $$8 = 0; $$8 < $$3.f(); $$8++) {
+            int $$9 = $$8 + $$4 + ($$7 + $$5) * this.a.az_();
+            cxk $$10 = this.a.a($$9);
+            cxk $$11 = $$6.get($$8 + $$7 * $$3.f());
+            if (!$$10.f()) {
+               this.a.a($$9, 1);
+               $$10 = this.a.a($$9);
+            }
+
+            if (!$$11.f()) {
+               if ($$10.f()) {
+                  this.a.a($$9, $$11);
+               } else if (cxk.c($$10, $$11)) {
+                  $$11.g($$10.L());
+                  this.a.a($$9, $$11);
+               } else if (!this.b.gg().f($$11)) {
+                  this.b.a($$11, false);
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   public boolean f() {
+      return true;
    }
 }

@@ -1,29 +1,16 @@
-public class afc implements zq<acf> {
-   public static final zh<wg, afc> a = zq.a(afc::a, afc::new);
-   private final double b;
-
-   public afc(dxl $$0) {
-      this.b = $$0.k();
-   }
-
-   private afc(wg $$0) {
-      this.b = $$0.readDouble();
-   }
-
-   private void a(wg $$0) {
-      $$0.a(this.b);
-   }
+public record afc(float b, float c) implements aac<acr> {
+   public static final zt<ws, afc> a = zt.a(zr.l, afc::b, zr.l, afc::e, afc::new);
 
    @Override
-   public zs<afc> a() {
-      return agu.au;
+   public aae<afc> a() {
+      return ahk.aj;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
    }
 
-   public double b() {
-      return this.b;
+   public float e() {
+      return this.c;
    }
 }

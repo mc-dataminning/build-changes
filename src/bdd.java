@@ -1,86 +1,77 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.shorts.ShortArrayList;
-import it.unimi.dsi.fastutil.shorts.ShortList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.util.Optional;
 
 public class bdd extends DataFix {
-   private static final int a = 16;
+   public bdd(Schema $$0) {
+      super($$0, true);
+   }
 
-   public bdd(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   private static boolean a(String $$0) {
+      return $$0.equals("minecraft:boat");
+   }
+
+   private static boolean b(String $$0) {
+      return $$0.equals("minecraft:chest_boat");
+   }
+
+   private static boolean c(String $$0) {
+      return a($$0) || b($$0);
+   }
+
+   private static String d(String $$0) {
+      return switch ($$0) {
+         case "spruce" -> "minecraft:spruce_boat";
+         case "birch" -> "minecraft:birch_boat";
+         case "jungle" -> "minecraft:jungle_boat";
+         case "acacia" -> "minecraft:acacia_boat";
+         case "cherry" -> "minecraft:cherry_boat";
+         case "dark_oak" -> "minecraft:dark_oak_boat";
+         case "mangrove" -> "minecraft:mangrove_boat";
+         case "bamboo" -> "minecraft:bamboo_raft";
+         default -> "minecraft:oak_boat";
+      };
+   }
+
+   private static String e(String $$0) {
+      return switch ($$0) {
+         case "spruce" -> "minecraft:spruce_chest_boat";
+         case "birch" -> "minecraft:birch_chest_boat";
+         case "jungle" -> "minecraft:jungle_chest_boat";
+         case "acacia" -> "minecraft:acacia_chest_boat";
+         case "cherry" -> "minecraft:cherry_chest_boat";
+         case "dark_oak" -> "minecraft:dark_oak_chest_boat";
+         case "mangrove" -> "minecraft:mangrove_chest_boat";
+         case "bamboo" -> "minecraft:bamboo_chest_raft";
+         default -> "minecraft:oak_chest_boat";
+      };
    }
 
    public TypeRewriteRule makeRule() {
-      return this.writeFixAndRead(
-         "ChunkToProtoChunkFix", this.getInputSchema().getType(bia.c), this.getOutputSchema().getType(bia.c), $$0 -> $$0.update("Level", bdd::a)
-      );
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      boolean $$1 = $$0.get("TerrainPopulated").asBoolean(false);
-      boolean $$2 = $$0.get("LightPopulated").asNumber().result().isEmpty() || $$0.get("LightPopulated").asBoolean(false);
-      String $$3;
-      if ($$1) {
-         if ($$2) {
-            $$3 = "mobs_spawned";
-         } else {
-            $$3 = "decorated";
-         }
-      } else {
-         $$3 = "carved";
-      }
-
-      return c(b($$0)).set("Status", $$0.createString($$3)).set("hasLegacyStructureData", $$0.createBoolean(true));
-   }
-
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      return $$0.update("Biomes", $$1 -> (Dynamic)DataFixUtils.orElse($$1.asByteBufferOpt().result().map($$1x -> {
-            int[] $$2 = new int[256];
-
-            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-               if ($$3 < $$1x.capacity()) {
-                  $$2[$$3] = $$1x.get($$3) & 255;
-               }
+      OpticFinder<String> $$0 = DSL.fieldFinder("id", bkg.a());
+      Type<?> $$1 = this.getInputSchema().getType(bis.B);
+      Type<?> $$2 = this.getOutputSchema().getType(bis.B);
+      return this.fixTypeEverywhereTyped("BoatSplitFix", $$1, $$2, $$2x -> {
+         Optional<String> $$3 = $$2x.getOptional($$0);
+         if ($$3.isPresent() && c($$3.get())) {
+            Dynamic<?> $$4 = (Dynamic<?>)$$2x.getOrCreate(DSL.remainderFinder());
+            Optional<String> $$5 = $$4.get("Type").asString().result();
+            String $$6;
+            if (b($$3.get())) {
+               $$6 = $$5.map(bdd::e).orElse("minecraft:oak_chest_boat");
+            } else {
+               $$6 = $$5.map(bdd::d).orElse("minecraft:oak_boat");
             }
 
-            return $$0.createIntList(Arrays.stream($$2));
-         }), $$1));
-   }
-
-   private static <T> Dynamic<T> c(Dynamic<T> $$0) {
-      return (Dynamic<T>)DataFixUtils.orElse(
-         $$0.get("TileTicks")
-            .asStreamOpt()
-            .result()
-            .map(
-               $$1 -> {
-                  List<ShortList> $$2 = IntStream.range(0, 16).mapToObj($$0xx -> new ShortArrayList()).collect(Collectors.toList());
-                  $$1.forEach($$1x -> {
-                     int $$2x = $$1x.get("x").asInt(0);
-                     int $$3 = $$1x.get("y").asInt(0);
-                     int $$4 = $$1x.get("z").asInt(0);
-                     short $$5 = a($$2x, $$3, $$4);
-                     $$2.get($$3 >> 4).add($$5);
-                  });
-                  return $$0.remove("TileTicks")
-                     .set(
-                        "ToBeTicked",
-                        $$0.createList($$2.stream().map($$1x -> $$0.createList($$1x.intStream().mapToObj($$1xx -> $$0.createShort((short)$$1xx)))))
-                     );
-               }
-            ),
-         $$0
-      );
-   }
-
-   private static short a(int $$0, int $$1, int $$2) {
-      return (short)($$0 & 15 | ($$1 & 15) << 4 | ($$2 & 15) << 8);
+            return bbq.a($$2, $$2x).update(DSL.remainderFinder(), $$0xx -> $$0xx.remove("Type")).set($$0, $$6);
+         } else {
+            return bbq.a($$2, $$2x);
+         }
+      });
    }
 }

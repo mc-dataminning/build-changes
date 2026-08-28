@@ -1,60 +1,45 @@
-import com.mojang.brigadier.context.StringRange;
-import com.mojang.brigadier.suggestion.Suggestion;
-import com.mojang.brigadier.suggestion.Suggestions;
-import java.util.List;
-import java.util.Optional;
+public class acx implements aac<acr> {
+   public static final zt<ws, acx> a = aac.a(acx::a, acx::new);
+   private final int b;
+   private final jh c;
+   private final int d;
 
-public record acx(int b, int c, int d, List<acx.a> e) implements zq<acf> {
-   public static final zh<wu, acx> a = zh.a(zf.h, acx::e, zf.h, acx::f, zf.h, acx::g, acx.a.a.a(zf.a()), acx::h, acx::new);
+   public acx(int $$0, jh $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+   }
 
-   public acx(int $$0, Suggestions $$1) {
-      this(
-         $$0,
-         $$1.getRange().getStart(),
-         $$1.getRange().getLength(),
-         $$1.getList().stream().map($$0x -> new acx.a($$0x.getText(), Optional.ofNullable($$0x.getTooltip()).map(xm::a))).toList()
-      );
+   private acx(ws $$0) {
+      this.b = $$0.l();
+      this.c = $$0.e();
+      this.d = $$0.readUnsignedByte();
+   }
+
+   private void a(ws $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.l(this.d);
    }
 
    @Override
-   public zs<acx> a() {
-      return agu.r;
+   public aae<acx> a() {
+      return ahk.h;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
    }
 
-   public Suggestions b() {
-      StringRange $$0 = StringRange.between(this.c, this.c + this.d);
-      return new Suggestions($$0, this.e.stream().map($$1 -> new Suggestion($$0, $$1.a(), $$1.b().orElse(null))).toList());
-   }
-
-   public int e() {
+   public int b() {
       return this.b;
    }
 
-   public int f() {
+   public jh e() {
       return this.c;
    }
 
-   public int g() {
+   public int f() {
       return this.d;
-   }
-
-   public List<acx.a> h() {
-      return this.e;
-   }
-
-   public static record a(String b, Optional<xj> c) {
-      public static final zh<wu, acx.a> a = zh.a(zf.n, acx.a::a, xl.e, acx.a::b, acx.a::new);
-
-      public String a() {
-         return this.b;
-      }
-
-      public Optional<xj> b() {
-         return this.c;
-      }
    }
 }

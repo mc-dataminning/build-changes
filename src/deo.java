@@ -1,19 +1,38 @@
-public interface deo extends der {
-   float a(jm var1, boolean var2);
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   erk B_();
+public record deo(jq<axe> d, bsh e, bsh f) implements dei {
+   public static final MapCodec<deo> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               axe.b.fieldOf("sound").forGetter(deo::b),
+               bsh.a(1.0E-5F, 10.0F).fieldOf("volume").forGetter(deo::c),
+               bsh.a(1.0E-5F, 2.0F).fieldOf("pitch").forGetter(deo::d)
+            )
+            .apply($$0, deo::new)
+   );
 
-   int a(jh var1, dew var2);
-
-   default int a(dfv $$0, jh $$1) {
-      return this.B_().a($$0).b($$1);
+   @Override
+   public void a(ash $$0, int $$1, ddq $$2, bvf $$3, fbs $$4) {
+      bam $$5 = $$3.dY();
+      if (!$$3.bb()) {
+         $$0.a(null, $$4.a(), $$4.b(), $$4.c(), this.d, $$3.dm(), this.e.a($$5), this.f.a($$5));
+      }
    }
 
-   default int b(jh $$0, int $$1) {
-      return this.B_().a($$0, $$1);
+   @Override
+   public MapCodec<deo> a() {
+      return a;
    }
 
-   default boolean h(jh $$0) {
-      return this.a(dfv.a, $$0) >= 15;
+   public jq<axe> b() {
+      return this.d;
+   }
+
+   public bsh c() {
+      return this.e;
+   }
+
+   public bsh d() {
+      return this.f;
    }
 }

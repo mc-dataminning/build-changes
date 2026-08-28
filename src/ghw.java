@@ -1,26 +1,66 @@
-public class ghw extends gfg {
-   private static final int a = 12235202;
-
-   protected ghw(gdh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, ghj $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
-      this.v = (float)axx.b(12235202) / 255.0F;
-      this.w = (float)axx.c(12235202) / 255.0F;
-      this.x = (float)axx.d(12235202) / 255.0F;
+public class ghw extends git {
+   ghw(gfd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   public static class a implements ggr<lw> {
-      private final ghj a;
+   @Override
+   public gip b() {
+      return gip.b;
+   }
 
-      public a(ghj $$0) {
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
+   }
+
+   @Override
+   public float b(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      return this.D * (1.0F - $$1 * $$1 * 0.5F);
+   }
+
+   @Override
+   public int a(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      $$1 = bae.a($$1, 0.0F, 1.0F);
+      int $$2 = super.a($$0);
+      int $$3 = $$2 & 0xFF;
+      int $$4 = $$2 >> 16 & 0xFF;
+      $$3 += (int)($$1 * 15.0F * 16.0F);
+      if ($$3 > 240) {
+         $$3 = 240;
+      }
+
+      return $$3 | $$4 << 16;
+   }
+
+   public static class a implements gio<lw> {
+      private final gjg a;
+
+      public a(gjg $$0) {
          this.a = $$0;
       }
 
-      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         azu $$8 = $$1.A;
-         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
-         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         return new ghw($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
+      public gil a(lw $$0, gfd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ghw $$8 = new ghw($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements gio<lw> {
+      private final gjg a;
+
+      public b(gjg $$0) {
+         this.a = $$0;
+      }
+
+      public gil a(lw $$0, gfd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ghw $$8 = new ghw($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.d(0.5F);
+         return $$8;
       }
    }
 }

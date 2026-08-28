@@ -1,7 +1,8 @@
-public record ajt() implements ajr {
-   public static final ajt a = new ajt();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public void a(wg $$0) {
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ajt {
 }

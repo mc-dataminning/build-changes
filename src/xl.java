@@ -1,153 +1,52 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonParser;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.MapDecoder;
-import com.mojang.serialization.MapEncoder;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
+import io.netty.buffer.ByteBufUtil;
+import io.netty.handler.codec.DecoderException;
+import io.netty.handler.codec.EncoderException;
+import java.nio.charset.StandardCharsets;
 
 public class xl {
-   public static final Codec<xj> a = Codec.recursive("Component", xl::a);
-   public static final zh<wu, xj> b = zf.d(a);
-   public static final zh<wu, Optional<xj>> c = b.a(zf::a);
-   public static final zh<wu, xj> d = zf.c(a);
-   public static final zh<wu, Optional<xj>> e = d.a(zf::a);
-   public static final zh<ByteBuf, xj> f = zf.a(a);
-   public static final Codec<xj> g = a(Integer.MAX_VALUE);
-
-   public static Codec<xj> a(int $$0) {
-      final Codec<String> $$1 = Codec.string(0, $$0);
-      return new Codec<xj>() {
-         public <T> DataResult<Pair<xj, T>> decode(DynamicOps<T> $$0, T $$1x) {
-            DynamicOps<JsonElement> $$2 = a($$0);
-            return $$1.decode($$0, $$1).flatMap($$1xxx -> {
-               try {
-                  JsonElement $$2x = JsonParser.parseString((String)$$1xxx.getFirst());
-                  return xl.a.parse($$2, $$2x).map($$1xxxxx -> Pair.of($$1xxxxx, $$1xxx.getSecond()));
-               } catch (JsonParseException var3x) {
-                  return DataResult.error(var3x::getMessage);
-               }
-            });
-         }
-
-         public <T> DataResult<T> a(xj $$0, DynamicOps<T> $$1x, T $$2) {
-            DynamicOps<JsonElement> $$3 = a($$1);
-            return xl.a.encodeStart($$3, $$0).flatMap($$2x -> {
-               try {
-                  return $$1.encodeStart($$1, azc.e($$2x));
-               } catch (IllegalArgumentException var4x) {
-                  return DataResult.error(var4x::getMessage);
-               }
-            });
-         }
-
-         private static <T> DynamicOps<JsonElement> a(DynamicOps<T> $$0) {
-            return (DynamicOps<JsonElement>)($$0 instanceof alh<T> $$1 ? $$1.a(JsonOps.INSTANCE) : JsonOps.INSTANCE);
-         }
-      };
-   }
-
-   private static xx a(List<xj> $$0) {
-      xx $$1 = $$0.get(0).f();
-
-      for (int $$2 = 1; $$2 < $$0.size(); $$2++) {
-         $$1.b($$0.get($$2));
-      }
-
-      return $$1;
-   }
-
-   public static <T extends bai, E> MapCodec<E> a(T[] $$0, Function<T, MapCodec<? extends E>> $$1, Function<E, T> $$2, String $$3) {
-      MapCodec<E> $$4 = new xl.a<>(Stream.<T>of($$0).map($$1).toList(), $$2x -> (MapEncoder<? extends E>)$$1.apply($$2.apply((E)$$2x)));
-      Codec<T> $$5 = bai.b((Supplier<T[]>)(() -> $$0));
-      MapCodec<E> $$6 = $$5.dispatchMap($$3, $$2, $$1);
-      MapCodec<E> $$7 = new xl.b($$3, $$6, $$4);
-      return ayv.a($$7, $$6);
-   }
-
-   private static Codec<xj> a(Codec<xj> $$0) {
-      xk.a<?>[] $$1 = new xk.a[]{yq.b, yu.c, yn.b, yr.c, ys.b, yp.b};
-      MapCodec<xk> $$2 = a($$1, xk.a::a, xk::a, "type");
-      Codec<xj> $$3 = RecordCodecBuilder.create(
-         $$2x -> $$2x.group($$2.forGetter(xj::b), ayv.a($$0.listOf()).optionalFieldOf("extra", List.of()).forGetter(xj::c), yg.b.a.forGetter(xj::a))
-               .apply($$2x, xx::new)
-      );
-      return Codec.either(Codec.either(Codec.STRING, ayv.a($$0.listOf())), $$3)
-         .xmap($$0x -> (xj)$$0x.map($$0xx -> (xj)$$0xx.map(xj::b, xl::a), $$0xx -> $$0xx), $$0x -> {
-            String $$1x = $$0x.d();
-            return $$1x != null ? Either.left(Either.left($$1x)) : Either.right($$0x);
-         });
-   }
-
-   static class a<T> extends MapCodec<T> {
-      private final List<MapCodec<? extends T>> a;
-      private final Function<T, MapEncoder<? extends T>> b;
-
-      public a(List<MapCodec<? extends T>> $$0, Function<T, MapEncoder<? extends T>> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public <S> DataResult<T> decode(DynamicOps<S> $$0, MapLike<S> $$1) {
-         for (MapDecoder<? extends T> $$2 : this.a) {
-            DataResult<? extends T> $$3 = $$2.decode($$0, $$1);
-            if ($$3.result().isPresent()) {
-               return (DataResult<T>)$$3;
+   public static String a(ByteBuf $$0, int $$1) {
+      int $$2 = ByteBufUtil.utf8MaxBytes($$1);
+      int $$3 = xm.a($$0);
+      if ($$3 > $$2) {
+         throw new DecoderException("The received encoded string buffer length is longer than maximum allowed (" + $$3 + " > " + $$2 + ")");
+      } else if ($$3 < 0) {
+         throw new DecoderException("The received encoded string buffer length is less than zero! Weird string!");
+      } else {
+         int $$4 = $$0.readableBytes();
+         if ($$3 > $$4) {
+            throw new DecoderException("Not enough bytes in buffer, expected " + $$3 + ", but got " + $$4);
+         } else {
+            String $$5 = $$0.toString($$0.readerIndex(), $$3, StandardCharsets.UTF_8);
+            $$0.readerIndex($$0.readerIndex() + $$3);
+            if ($$5.length() > $$1) {
+               throw new DecoderException("The received string length is longer than maximum allowed (" + $$5.length() + " > " + $$1 + ")");
+            } else {
+               return $$5;
             }
          }
-
-         return DataResult.error(() -> "No matching codec found");
-      }
-
-      public <S> RecordBuilder<S> encode(T $$0, DynamicOps<S> $$1, RecordBuilder<S> $$2) {
-         MapEncoder<T> $$3 = (MapEncoder<T>)this.b.apply($$0);
-         return $$3.encode($$0, $$1, $$2);
-      }
-
-      public <S> Stream<S> keys(DynamicOps<S> $$0) {
-         return this.a.stream().flatMap($$1 -> $$1.keys($$0)).distinct();
-      }
-
-      public String toString() {
-         return "FuzzyCodec[" + this.a + "]";
       }
    }
 
-   static class b<T> extends MapCodec<T> {
-      private final String a;
-      private final MapCodec<T> b;
-      private final MapCodec<T> c;
+   public static void a(ByteBuf $$0, CharSequence $$1, int $$2) {
+      if ($$1.length() > $$2) {
+         throw new EncoderException("String too big (was " + $$1.length() + " characters, max " + $$2 + ")");
+      } else {
+         int $$3 = ByteBufUtil.utf8MaxBytes($$1);
+         ByteBuf $$4 = $$0.alloc().buffer($$3);
 
-      public b(String $$0, MapCodec<T> $$1, MapCodec<T> $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
+         try {
+            int $$5 = ByteBufUtil.writeUtf8($$4, $$1);
+            int $$6 = ByteBufUtil.utf8MaxBytes($$2);
+            if ($$5 > $$6) {
+               throw new EncoderException("String too big (was " + $$5 + " bytes encoded, max " + $$6 + ")");
+            }
 
-      public <O> DataResult<T> decode(DynamicOps<O> $$0, MapLike<O> $$1) {
-         return $$1.get(this.a) != null ? this.b.decode($$0, $$1) : this.c.decode($$0, $$1);
-      }
-
-      public <O> RecordBuilder<O> encode(T $$0, DynamicOps<O> $$1, RecordBuilder<O> $$2) {
-         return this.c.encode($$0, $$1, $$2);
-      }
-
-      public <T1> Stream<T1> keys(DynamicOps<T1> $$0) {
-         return Stream.concat(this.b.keys($$0), this.c.keys($$0)).distinct();
+            xm.a($$0, $$5);
+            $$0.writeBytes($$4);
+         } finally {
+            $$4.release();
+         }
       }
    }
 }

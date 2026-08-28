@@ -1,82 +1,49 @@
-import com.mojang.authlib.GameProfile;
+public class gid extends gjl {
+   private final gjg a;
 
-public class gid extends ghz {
-   private ezy h = ezy.c;
-   private int i;
-
-   public gid(gdh $$0, GameProfile $$1) {
-      super($$0, $$1);
-      this.ad = true;
+   protected gid(gfd $$0, double $$1, double $$2, double $$3, double $$4, gjg $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.t = 6 + this.r.a(4);
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
+      this.a = $$5;
+      this.b($$5);
    }
 
    @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cR().a() * 10.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 1.0;
-      }
-
-      $$1 *= 64.0 * cK();
-      return $$0 < $$1 * $$1;
+   public int a(float $$0) {
+      return 15728880;
    }
 
    @Override
-   public boolean b(btb $$0) {
-      return true;
-   }
-
-   @Override
-   public void h() {
-      super.h();
-      this.s(false);
-   }
-
-   @Override
-   public void d_() {
-      if (this.bq > 0) {
-         this.a(this.bq, this.br, this.bs, this.bt, this.bu, this.bv);
-         this.bq--;
-      }
-
-      if (this.bx > 0) {
-         this.a(this.bx, this.bw);
-         this.bx--;
-      }
-
-      if (this.i > 0) {
-         this.i(new ezy((this.h.d - this.dy().d) / (double)this.i, (this.h.e - this.dy().e) / (double)this.i, (this.h.f - this.dy().f) / (double)this.i));
-         this.i--;
-      }
-
-      this.cf = this.cg;
-      this.eV();
-      float $$1;
-      if (this.aJ() && !this.eE()) {
-         $$1 = (float)Math.min(0.1, this.dy().i());
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
       } else {
-         $$1 = 0.0F;
-      }
-
-      this.cg = this.cg + ($$1 - this.cg) * 0.4F;
-
-      try (boz $$2 = bot.a().d("push")) {
-         this.o();
+         this.b(this.a);
       }
    }
 
    @Override
-   public void l(double $$0, double $$1, double $$2) {
-      this.h = new ezy($$0, $$1, $$2);
-      this.i = this.aq().p() + 1;
+   public gip b() {
+      return gip.b;
    }
 
-   @Override
-   protected void ga() {
-   }
+   public static class a implements gio<lw> {
+      private final gjg a;
 
-   @Override
-   public void a(acg $$0) {
-      super.a($$0);
-      this.bz();
+      public a(gjg $$0) {
+         this.a = $$0;
+      }
+
+      public gil a(lw $$0, gfd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gid($$1, $$2, $$3, $$4, $$5, this.a);
+      }
    }
 }

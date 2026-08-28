@@ -1,37 +1,48 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
+import com.mojang.serialization.DataResult;
+import java.util.Optional;
+import java.util.function.Function;
 
-public enum cwk implements bai {
-   a(0, "none"),
-   b(1, "thirdperson_lefthand"),
-   c(2, "thirdperson_righthand"),
-   d(3, "firstperson_lefthand"),
-   e(4, "firstperson_righthand"),
-   f(5, "head"),
-   g(6, "gui"),
-   h(7, "ground"),
-   i(8, "fixed");
-
-   public static final Codec<cwk> j = bai.a(cwk::values);
-   public static final IntFunction<cwk> k = ayd.a(cwk::a, values(), ayd.a.a);
-   private final byte l;
-   private final String m;
-
-   private cwk(final int $$0, final String $$1) {
-      this.m = $$1;
-      this.l = (byte)$$0;
+public record cwk<T>(Optional<jq<T>> a, aly<T> b) {
+   public cwk(jq<T> $$0) {
+      this(Optional.of($$0), $$0.e().orElseThrow());
    }
 
-   @Override
-   public String c() {
-      return this.m;
+   public cwk(aly<T> $$0) {
+      this(Optional.empty(), $$0);
    }
 
-   public byte a() {
-      return this.l;
+   public static <T> Codec<cwk<T>> a(aly<kd<T>> $$0, Codec<jq<T>> $$1) {
+      return Codec.either($$1, aly.a($$0).comapFlatMap($$0x -> DataResult.error(() -> "Cannot parse as key without registry"), Function.identity()))
+         .xmap(cwk::a, cwk::a);
    }
 
-   public boolean b() {
-      return this == d || this == e;
+   public static <T> zt<xg, cwk<T>> a(aly<kd<T>> $$0, zt<xg, jq<T>> $$1) {
+      return zt.a(zr.a($$1, aly.b($$0)), cwk::a, cwk::a);
+   }
+
+   public Either<jq<T>, aly<T>> a() {
+      return this.a.<Either<jq<T>, aly<T>>>map(Either::left).orElseGet(() -> Either.right(this.b));
+   }
+
+   public static <T> cwk<T> a(Either<jq<T>, aly<T>> $$0) {
+      return (cwk<T>)$$0.map(cwk::new, cwk::new);
+   }
+
+   public Optional<T> a(kd<T> $$0) {
+      return this.a.<T>map(jq::a).or(() -> $$0.f(this.b));
+   }
+
+   public Optional<jq<T>> a(js.a $$0) {
+      return this.a.or(() -> $$0.d(this.b.c()).a(this.b));
+   }
+
+   public Optional<jq<T>> b() {
+      return this.a;
+   }
+
+   public aly<T> c() {
+      return this.b;
    }
 }

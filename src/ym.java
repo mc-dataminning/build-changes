@@ -1,74 +1,44 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import com.mojang.authlib.GameProfile;
+import java.time.Duration;
+import java.util.UUID;
 
-public record ym(String d, @Nullable hl e) implements yl {
-   public static final MapCodec<ym> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("entity").forGetter(ym::b)).apply($$0, ym::new));
-   public static final yl.a<ym> b = new yl.a<>(a, "entity");
-
-   public ym(String $$0) {
-      this($$0, a($$0));
+public record ym(UUID a, cpv b) {
+   public yr a(Duration $$0) {
+      return new yr.a(this.b.a(), () -> this.b.b().a($$0));
    }
 
-   @Nullable
-   private static hl a(String $$0) {
-      try {
-         hm $$1 = new hm(new StringReader($$0), true);
-         return $$1.t();
-      } catch (CommandSyntaxException var2) {
-         return null;
+   public yp.b a(UUID $$0) {
+      return new yp($$0, this.a).a(this.b);
+   }
+
+   public ym.a a() {
+      return new ym.a(this.a, this.b.b());
+   }
+
+   public boolean b() {
+      return this.b.b().a();
+   }
+
+   public UUID c() {
+      return this.a;
+   }
+
+   public cpv d() {
+      return this.b;
+   }
+
+   public static record a(UUID a, cpv.a b) {
+      public static ym.a a(ws $$0) {
+         return new ym.a($$0.n(), new cpv.a($$0));
       }
-   }
 
-   @Override
-   public Stream<ul> a(ew $$0) throws CommandSyntaxException {
-      if (this.e != null) {
-         List<? extends bul> $$1 = this.e.b($$0);
-         return $$1.stream().map(dm::b);
-      } else {
-         return Stream.empty();
+      public static void a(ws $$0, ym.a $$1) {
+         $$0.a($$1.a);
+         $$1.b.a($$0);
       }
-   }
 
-   @Override
-   public yl.a<?> a() {
-      return b;
-   }
-
-   @Override
-   public String toString() {
-      return "entity=" + this.d;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof ym $$1 && this.d.equals($$1.d)) {
-            return true;
-         }
-
-         return false;
+      public ym a(GameProfile $$0, bar $$1) throws cpv.b {
+         return new ym(this.a, cpv.a($$1, $$0.getId(), this.b));
       }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.d.hashCode();
-   }
-
-   public String b() {
-      return this.d;
-   }
-
-   @Nullable
-   public hl c() {
-      return this.e;
    }
 }

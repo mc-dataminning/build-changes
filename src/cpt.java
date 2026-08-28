@@ -1,51 +1,37 @@
-import javax.annotation.Nullable;
+public enum cpt {
+   a(0, "cape"),
+   b(1, "jacket"),
+   c(2, "left_sleeve"),
+   d(3, "right_sleeve"),
+   e(4, "left_pants_leg"),
+   f(5, "right_pants_leg"),
+   g(6, "hat");
 
-public class cpt extends cpb {
-   private int e = 200;
+   private final int h;
+   private final int i;
+   private final String j;
+   private final xv k;
 
-   public cpt(bus<? extends cpt> $$0, dfm $$1) {
-      super($$0, $$1);
+   private cpt(final int $$0, final String $$1) {
+      this.h = $$0;
+      this.i = 1 << $$0;
+      this.j = $$1;
+      this.k = xv.c("options.modelPart." + $$1);
    }
 
-   public cpt(dfm $$0, bvh $$1, cwm $$2, @Nullable cwm $$3) {
-      super(bus.bj, $$1, $$0, $$2, $$3);
+   public int a() {
+      return this.i;
    }
 
-   public cpt(dfm $$0, double $$1, double $$2, double $$3, cwm $$4, @Nullable cwm $$5) {
-      super(bus.bj, $$1, $$2, $$3, $$0, $$4, $$5);
+   public int b() {
+      return this.h;
    }
 
-   @Override
-   public void h() {
-      super.h();
-      if (this.dV().C && !this.a) {
-         this.dV().a(ls.R, this.dA(), this.dC(), this.dG(), 0.0, 0.0, 0.0);
-      }
+   public String c() {
+      return this.j;
    }
 
-   @Override
-   protected void a(bvh $$0) {
-      super.a($$0);
-      btq $$1 = new btq(bts.x, this.e, 0);
-      $$0.b($$1, this.B());
-   }
-
-   @Override
-   public void a(ul $$0) {
-      super.a($$0);
-      if ($$0.e("Duration")) {
-         this.e = $$0.h("Duration");
-      }
-   }
-
-   @Override
-   public void b(ul $$0) {
-      super.b($$0);
-      $$0.a("Duration", this.e);
-   }
-
-   @Override
-   protected cwm s() {
-      return new cwm(cwq.vH);
+   public xv d() {
+      return this.k;
    }
 }

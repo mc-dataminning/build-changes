@@ -1,2 +1,8 @@
-public interface coe {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface coe {
 }

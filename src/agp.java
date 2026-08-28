@@ -1,94 +1,20 @@
-public class agp implements zq<acf> {
-   public static final zh<wu, agp> a = zq.a(agp::a, agp::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private static final int e = 8;
-   private final int f;
-   private final jq<bto> g;
-   private final int h;
-   private final int i;
-   private final byte j;
-
-   public agp(int $$0, btq $$1, boolean $$2) {
-      this.f = $$0;
-      this.g = $$1.c();
-      this.h = $$1.e();
-      this.i = $$1.d();
-      byte $$3 = 0;
-      if ($$1.f()) {
-         $$3 = (byte)($$3 | 1);
-      }
-
-      if ($$1.g()) {
-         $$3 = (byte)($$3 | 2);
-      }
-
-      if ($$1.h()) {
-         $$3 = (byte)($$3 | 4);
-      }
-
-      if ($$2) {
-         $$3 = (byte)($$3 | 8);
-      }
-
-      this.j = $$3;
-   }
-
-   private agp(wu $$0) {
-      this.f = $$0.l();
-      this.g = bto.b.decode($$0);
-      this.h = $$0.l();
-      this.i = $$0.l();
-      this.j = $$0.readByte();
-   }
-
-   private void a(wu $$0) {
-      $$0.c(this.f);
-      bto.b.encode($$0, this.g);
-      $$0.c(this.h);
-      $$0.c(this.i);
-      $$0.l(this.j);
-   }
+public record agp(long b, long c, boolean d) implements aac<acr> {
+   public static final zt<ws, agp> a = zt.a(zr.j, agp::b, zr.j, agp::e, zr.b, agp::f, agp::new);
 
    @Override
-   public zs<agp> a() {
-      return agu.bd;
+   public aae<agp> a() {
+      return ahk.aS;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.f;
+   public long e() {
+      return this.c;
    }
 
-   public jq<bto> e() {
-      return this.g;
-   }
-
-   public int f() {
-      return this.h;
-   }
-
-   public int g() {
-      return this.i;
-   }
-
-   public boolean h() {
-      return (this.j & 2) != 0;
-   }
-
-   public boolean i() {
-      return (this.j & 1) != 0;
-   }
-
-   public boolean j() {
-      return (this.j & 4) != 0;
-   }
-
-   public boolean k() {
-      return (this.j & 8) != 0;
+   public boolean f() {
+      return this.d;
    }
 }

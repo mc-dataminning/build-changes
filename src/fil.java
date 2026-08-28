@@ -1,40 +1,23 @@
-import javax.annotation.Nullable;
+import com.google.gson.annotations.SerializedName;
+import java.util.Locale;
 
-public class fil {
-   public final int a;
-   @Nullable
-   public final String b;
+public class fil extends fiq implements fik {
+   @SerializedName("regionName")
+   private final String a;
+   @SerializedName("ping")
+   private final int b;
 
-   fil(int $$0, String $$1) {
+   public fil(String $$0, int $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
-   @Nullable
-   public String a() {
-      if (this.a >= 200 && this.a < 300) {
-         return null;
-      } else {
-         return this.a == 400 && this.b != null ? this.b : String.valueOf(this.a);
-      }
+   public int a() {
+      return this.b;
    }
 
-   public static class a {
-      private int a = -1;
-      private String b;
-
-      public fil.a a(int $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public fil.a a(@Nullable String $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public fil a() {
-         return new fil(this.a, this.b);
-      }
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "%s --> %.2f ms", this.a, (float)this.b);
    }
 }

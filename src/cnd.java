@@ -1,210 +1,187 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cnd {
-   public static final int a = 8;
-   public static final int b = 4;
-   private static final brv c = bao.a(5, 20);
-   private static final int d = 200;
-   private static final int e = 8;
-   private static final int f = 15;
-   private static final int g = 40;
-   private static final int h = 15;
-   private static final int i = 200;
-   private static final brv j = brv.a(5, 16);
-   private static final float k = 1.0F;
-   private static final float l = 1.3F;
-   private static final float m = 0.6F;
-   private static final float n = 0.4F;
-   private static final float o = 0.6F;
+public class cnd extends cms {
+   private static final alc<Byte> a = alg.a(cnd.class, ale.a);
+   private static final float b = 0.1F;
 
-   protected static bwj<?> a(bwj<cnc> $$0) {
-      b($$0);
-      c($$0);
-      d($$0);
-      e($$0);
-      $$0.a(ImmutableSet.of(cql.a));
-      $$0.b(cql.b);
-      $$0.f();
-      return $$0;
+   public cnd(bvm<? extends cnd> $$0, dha $$1) {
+      super($$0, $$1);
    }
 
-   private static void b(bwj<cnc> $$0) {
-      $$0.a(cql.a, 0, ImmutableList.of(new byg(45, 90), new byk()));
+   @Override
+   protected void B() {
+      this.bT.a(1, new cct(this));
+      this.bT.a(2, new ccg<>(this, cjb.class, 6.0F, 1.0, 1.2, $$0 -> !((cjb)$$0).t()));
+      this.bT.a(3, new cdf(this, 0.4F));
+      this.bT.a(4, new cnd.a(this));
+      this.bT.a(5, new cem(this, 0.8));
+      this.bT.a(6, new cdh(this, cps.class, 8.0F));
+      this.bT.a(6, new cdu(this));
+      this.bU.a(1, new cer(this));
+      this.bU.a(2, new cnd.c<>(this, cps.class));
+      this.bU.a(3, new cnd.c<>(this, cie.class));
    }
 
-   private static void c(bwj<cnc> $$0) {
-      $$0.a(
-         cql.b,
-         10,
-         ImmutableList.of(
-            bwz.a(cel.aw, 200),
-            new bwu(bus.ai, 0.6F, 2),
-            bze.a(cel.aw, 1.0F, 8, true),
-            bzm.a(cnd::a),
-            can.a(cnc::q, bze.b(cel.aq, 0.4F, 8, false)),
-            bza.a(8.0F, brv.a(30, 60)),
-            bwx.a(j, 0.6F),
-            a()
-         )
-      );
+   @Override
+   protected cfn b(dha $$0) {
+      return new cfo(this, $$0);
    }
 
-   private static void d(bwj<cnc> $$0) {
-      $$0.a(
-         cql.k,
-         10,
-         ImmutableList.of(
-            bwz.a(cel.aw, 200), new bwu(bus.ai, 0.6F, 2), bzf.a(1.0F), can.a(cnc::q, byh.a(40)), can.a(buc::e_, byh.a(15)), bzp.a(), bxm.a(cnd::h, cel.o)
-         ),
-         cel.o
-      );
+   @Override
+   protected void a(alg.a $$0) {
+      super.a($$0);
+      $$0.a(a, (byte)0);
    }
 
-   private static void e(bwj<cnc> $$0) {
-      $$0.a(cql.n, 10, ImmutableList.of(bze.b(cel.z, 1.3F, 15, false), a(), bza.a(8.0F, brv.a(30, 60)), bxm.a(cnd::d, cel.z)), cel.z);
+   @Override
+   public void h() {
+      super.h();
+      if (!this.dV().C) {
+         this.x(this.P);
+      }
    }
 
-   private static byx<cnc> a() {
-      return new byx<>(ImmutableList.of(Pair.of(bys.a(0.4F), 2), Pair.of(bzh.a(0.4F, 3), 2), Pair.of(new bxk(30, 60), 1)));
+   public static bxi.a p() {
+      return cms.gr().a(bxj.s, 16.0).a(bxj.v, 0.3F);
    }
 
-   protected static void a(cnc $$0) {
-      bwj<cnc> $$1 = $$0.eb();
-      cql $$2 = $$1.g().orElse(null);
-      $$1.a(ImmutableList.of(cql.k, cql.n, cql.b));
-      cql $$3 = $$1.g().orElse(null);
-      if ($$2 != $$3) {
-         b($$0).ifPresent($$0::b);
+   @Override
+   protected axe u() {
+      return axf.zj;
+   }
+
+   @Override
+   protected axe e(btv $$0) {
+      return axf.zl;
+   }
+
+   @Override
+   protected axe o_() {
+      return axf.zk;
+   }
+
+   @Override
+   protected void b(jh $$0, dxn $$1) {
+      this.a(axf.zm, 0.15F, 1.0F);
+   }
+
+   @Override
+   public boolean q_() {
+      return this.t();
+   }
+
+   @Override
+   public void a(dxn $$0, fbs $$1) {
+      if (!$$0.a(dkg.bz)) {
+         super.a($$0, $$1);
+      }
+   }
+
+   @Override
+   public boolean b(buk $$0) {
+      return $$0.a(bum.s) ? false : super.b($$0);
+   }
+
+   public boolean t() {
+      return (this.al.a(a) & 1) != 0;
+   }
+
+   public void x(boolean $$0) {
+      byte $$1 = this.al.a(a);
+      if ($$0) {
+         $$1 = (byte)($$1 | 1);
+      } else {
+         $$1 = (byte)($$1 & -2);
       }
 
-      $$0.w($$1.a(cel.o));
+      this.al.a(a, $$1);
    }
 
-   protected static void a(cnc $$0, bvh $$1) {
-      if (!$$0.e_()) {
-         if ($$1.aq() == bus.aO && e($$0)) {
-            d($$0, $$1);
-            b($$0, $$1);
+   @Nullable
+   @Override
+   public bwu a(dhr $$0, btc $$1, bvl $$2, @Nullable bwu $$3) {
+      $$3 = super.a($$0, $$1, $$2, $$3);
+      bam $$4 = $$0.H_();
+      if ($$4.a(100) == 0) {
+         cna $$5 = bvm.bf.a(this.dV(), bvl.g);
+         if ($$5 != null) {
+            $$5.b(this.dA(), this.dC(), this.dG(), this.dL(), 0.0F);
+            $$5.a($$0, $$1, $$2, null);
+            $$5.n(this);
+         }
+      }
+
+      if ($$3 == null) {
+         $$3 = new cnd.b();
+         if ($$0.al() == btb.d && $$4.i() < 0.1F * $$1.d()) {
+            ((cnd.b)$$3).a($$4);
+         }
+      }
+
+      if ($$3 instanceof cnd.b $$6) {
+         jq<bui> $$7 = $$6.a;
+         if ($$7 != null) {
+            this.a(new buk($$7, -1));
+         }
+      }
+
+      return $$3;
+   }
+
+   @Override
+   public fbs l(bvf $$0) {
+      return $$0.dq() <= this.dq() ? new fbs(0.0, 0.3125 * (double)this.ej(), 0.0) : super.l($$0);
+   }
+
+   static class a extends cdj {
+      public a(cnd $$0) {
+         super($$0, 1.0, true);
+      }
+
+      @Override
+      public boolean b() {
+         return super.b() && !this.a.ca();
+      }
+
+      @Override
+      public boolean c() {
+         float $$0 = this.a.by();
+         if ($$0 >= 0.5F && this.a.dY().a(100) == 0) {
+            this.a.h(null);
+            return false;
          } else {
-            f($$0, $$1);
+            return super.c();
          }
       }
    }
 
-   private static void b(cnc $$0, bvh $$1) {
-      f($$0).forEach($$1x -> c($$1x, $$1));
-   }
+   public static class b implements bwu {
+      @Nullable
+      public jq<bui> a;
 
-   private static void c(cnc $$0, bvh $$1) {
-      bwj<cnc> $$3 = $$0.eb();
-      bvh $$2 = bxc.a($$0, $$3.c(cel.z), $$1);
-      $$2 = bxc.a($$0, $$3.c(cel.o), $$2);
-      d($$0, $$2);
-   }
-
-   private static void d(cnc $$0, bvh $$1) {
-      $$0.eb().b(cel.o);
-      $$0.eb().b(cel.m);
-      $$0.eb().a(cel.z, $$1, (long)c.a($$0.dV().A));
-   }
-
-   private static Optional<? extends bvh> a(arp $$0, cnc $$1) {
-      return !c($$1) && !h($$1) ? $$1.eb().c(cel.l) : Optional.empty();
-   }
-
-   static boolean a(cnc $$0, jh $$1) {
-      Optional<jh> $$2 = $$0.eb().c(cel.aw);
-      return $$2.isPresent() && $$2.get().a($$1, 8.0);
-   }
-
-   private static boolean d(cnc $$0) {
-      return $$0.q() && !e($$0);
-   }
-
-   private static boolean e(cnc $$0) {
-      if ($$0.e_()) {
-         return false;
-      } else {
-         int $$1 = $$0.eb().c(cel.as).orElse(0);
-         int $$2 = $$0.eb().c(cel.at).orElse(0) + 1;
-         return $$1 > $$2;
-      }
-   }
-
-   protected static void a(arp $$0, cnc $$1, bvh $$2) {
-      bwj<cnc> $$3 = $$1.eb();
-      $$3.b(cel.ax);
-      $$3.b(cel.r);
-      if ($$1.e_()) {
-         c($$1, $$2);
-      } else {
-         b($$0, $$1, $$2);
-      }
-   }
-
-   private static void b(arp $$0, cnc $$1, bvh $$2) {
-      if (!$$1.eb().c(cql.n) || $$2.aq() != bus.aO) {
-         if ($$2.aq() != bus.ai) {
-            if (!bxc.a($$1, $$2, 4.0)) {
-               if (cfr.c($$0, $$1, $$2)) {
-                  e($$1, $$2);
-                  f($$1, $$2);
-               }
-            }
+      public void a(bam $$0) {
+         int $$1 = $$0.a(5);
+         if ($$1 <= 1) {
+            this.a = bum.a;
+         } else if ($$1 <= 2) {
+            this.a = bum.e;
+         } else if ($$1 <= 3) {
+            this.a = bum.j;
+         } else if ($$1 <= 4) {
+            this.a = bum.n;
          }
       }
    }
 
-   private static void e(cnc $$0, bvh $$1) {
-      bwj<cnc> $$2 = $$0.eb();
-      $$2.b(cel.E);
-      $$2.b(cel.r);
-      $$2.a(cel.o, $$1, 200L);
-   }
-
-   private static void f(cnc $$0, bvh $$1) {
-      f($$0).forEach($$1x -> g($$1x, $$1));
-   }
-
-   private static void g(cnc $$0, bvh $$1) {
-      if (!c($$0)) {
-         Optional<bvh> $$2 = $$0.eb().c(cel.o);
-         bvh $$3 = bxc.a($$0, $$2, $$1);
-         e($$0, $$3);
+   static class c<T extends bwb> extends ces<T> {
+      public c(cnd $$0, Class<T> $$1) {
+         super($$0, $$1, true);
       }
-   }
 
-   public static Optional<awm> b(cnc $$0) {
-      return $$0.eb().g().map($$1 -> a($$0, $$1));
-   }
-
-   private static awm a(cnc $$0, cql $$1) {
-      if ($$1 == cql.n || $$0.v()) {
-         return awn.mt;
-      } else if ($$1 == cql.k) {
-         return awn.mo;
-      } else {
-         return g($$0) ? awn.mt : awn.mn;
+      @Override
+      public boolean b() {
+         float $$0 = this.e.by();
+         return $$0 >= 0.5F ? false : super.b();
       }
-   }
-
-   private static List<cnc> f(cnc $$0) {
-      return $$0.eb().c(cel.ap).orElse(ImmutableList.of());
-   }
-
-   private static boolean g(cnc $$0) {
-      return $$0.eb().a(cel.aw);
-   }
-
-   private static boolean h(cnc $$0) {
-      return $$0.eb().a(cel.r);
-   }
-
-   protected static boolean c(cnc $$0) {
-      return $$0.eb().a(cel.ax);
    }
 }

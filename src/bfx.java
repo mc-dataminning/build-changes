@@ -1,35 +1,26 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.Optional;
 
-public class bfx extends DataFix {
-   public bfx(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class bfx extends bgr {
+   private static final String[] a = new String[]{
+      "minecraft:ponder_goat_horn",
+      "minecraft:sing_goat_horn",
+      "minecraft:seek_goat_horn",
+      "minecraft:feel_goat_horn",
+      "minecraft:admire_goat_horn",
+      "minecraft:call_goat_horn",
+      "minecraft:yearn_goat_horn",
+      "minecraft:dream_goat_horn"
+   };
+
+   public bfx(Schema $$0) {
+      super($$0, "GoatHornIdFix", $$0x -> $$0x.equals("minecraft:goat_horn"));
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bia.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bia.D.typeName(), bjo.a()));
-      OpticFinder<?> $$2 = $$0.findField("tag");
-      return this.fixTypeEverywhereTyped("ItemInstanceMapIdFix", $$0, $$2x -> {
-         Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
-         if ($$3.isPresent() && Objects.equals($$3.get().getSecond(), "minecraft:filled_map")) {
-            Dynamic<?> $$4 = (Dynamic<?>)$$2x.get(DSL.remainderFinder());
-            Typed<?> $$5 = $$2x.getOrCreateTyped($$2);
-            Dynamic<?> $$6 = (Dynamic<?>)$$5.get(DSL.remainderFinder());
-            $$6 = $$6.set("map", $$6.createInt($$4.get("Damage").asInt(0)));
-            return $$2x.set($$2, $$5.set(DSL.remainderFinder(), $$6));
-         } else {
-            return $$2x;
-         }
-      });
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      int $$1 = $$0.get("SoundVariant").asInt(0);
+      String $$2 = a[$$1 >= 0 && $$1 < a.length ? $$1 : 0];
+      return $$0.remove("SoundVariant").set("instrument", $$0.createString($$2));
    }
 }

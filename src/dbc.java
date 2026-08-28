@@ -1,34 +1,62 @@
-public record dbc<T extends dba<?>>(alj b, T c) {
-   public static final zh<wu, dbc<?>> a = zh.a(alj.b, dbc::a, dba.i, dbc::b, dbc::new);
+public class dbc extends dbb {
+   private final jm b;
+
+   public dbc(dha $$0, jh $$1, jm $$2, cxk $$3, jm $$4) {
+      super($$0, null, btd.a, $$3, new fbo(fbs.c($$1), $$4, $$1, false));
+      this.b = $$2;
+   }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof dbc<?> $$1 && this.b.equals($$1.b)) {
-            return true;
-         }
+   public jh a() {
+      return this.j().b();
+   }
 
-         return false;
+   @Override
+   public boolean b() {
+      return this.q().a_(this.j().b()).a(this);
+   }
+
+   @Override
+   public boolean c() {
+      return this.b();
+   }
+
+   @Override
+   public jm d() {
+      return jm.a;
+   }
+
+   @Override
+   public jm[] f() {
+      switch (this.b) {
+         case a:
+         default:
+            return new jm[]{jm.a, jm.c, jm.f, jm.d, jm.e, jm.b};
+         case b:
+            return new jm[]{jm.a, jm.b, jm.c, jm.f, jm.d, jm.e};
+         case c:
+            return new jm[]{jm.a, jm.c, jm.f, jm.e, jm.b, jm.d};
+         case d:
+            return new jm[]{jm.a, jm.d, jm.f, jm.e, jm.b, jm.c};
+         case e:
+            return new jm[]{jm.a, jm.e, jm.d, jm.b, jm.c, jm.f};
+         case f:
+            return new jm[]{jm.a, jm.f, jm.d, jm.b, jm.c, jm.e};
       }
    }
 
    @Override
-   public int hashCode() {
-      return this.b.hashCode();
+   public jm g() {
+      return this.b.o() == jm.a.b ? jm.c : this.b;
    }
 
    @Override
-   public String toString() {
-      return this.b.toString();
+   public boolean h() {
+      return false;
    }
 
-   public alj a() {
-      return this.b;
-   }
-
-   public T b() {
-      return this.c;
+   @Override
+   public float i() {
+      return (float)(this.b.e() * 90);
    }
 }

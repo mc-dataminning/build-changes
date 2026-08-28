@@ -1,42 +1,65 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class exl extends exo {
-   public static final MapCodec<exl> a = a(exl::new);
-   public static final Codec<exl> b = b(exl::new);
+public class exl extends exu {
+   public static final MapCodec<exl> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and($$0.group(fap.a.fieldOf("levels").forGetter($$0x -> $$0x.b), kf.a(mb.aN).optionalFieldOf("options").forGetter($$0x -> $$0x.c)))
+            .apply($$0, exl::new)
+   );
+   private final fao b;
+   private final Optional<ju<ddr>> c;
 
-   exl(List<exy> $$0) {
-      super($$0, ae.a($$0));
-   }
-
-   public static exl a(List<exy> $$0) {
-      return new exl(List.copyOf($$0));
+   exl(List<ezs> $$0, fao $$1, Optional<ju<ddr>> $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public exz b() {
-      return eya.c;
+   public exw<exl> b() {
+      return exx.g;
    }
 
-   public static exl.a a(exy.a... $$0) {
-      return new exl.a($$0);
+   @Override
+   public Set<eza<?>> a() {
+      return this.b.a();
    }
 
-   public static class a extends exo.a {
-      public a(exy.a... $$0) {
-         super($$0);
+   @Override
+   public cxk a(cxk $$0, ewh $$1) {
+      bam $$2 = $$1.b();
+      ke $$3 = $$1.d().K_();
+      return ddt.a($$2, $$0, this.b.a($$1), $$3, this.c);
+   }
+
+   public static exl.a a(js.a $$0, fao $$1) {
+      return new exl.a($$1).a($$0.d(mb.aN).b(axx.n));
+   }
+
+   public static class a extends exu.a<exl.a> {
+      private final fao a;
+      private Optional<ju<ddr>> b = Optional.empty();
+
+      public a(fao $$0) {
+         this.a = $$0;
       }
 
-      @Override
-      public exl.a and(exy.a $$0) {
-         this.a($$0);
+      protected exl.a a() {
+         return this;
+      }
+
+      public exl.a a(ju<ddr> $$0) {
+         this.b = Optional.of($$0);
          return this;
       }
 
       @Override
-      protected exy a(List<exy> $$0) {
-         return new exl($$0);
+      public exv b() {
+         return new exl(this.g(), this.a, this.b);
       }
    }
 }

@@ -1,6 +1,19 @@
-import com.mojang.serialization.Codec;
+public record dcr(cxk a) implements dce {
+   @Override
+   public cxk a(int $$0) {
+      if ($$0 != 0) {
+         throw new IllegalArgumentException("No item for index " + $$0);
+      } else {
+         return this.a;
+      }
+   }
 
-public record dcr() {
-   public static final dcr a = new dcr();
-   public static final Codec<dcr> b = Codec.unit(() -> a);
+   @Override
+   public int a() {
+      return 1;
+   }
+
+   public cxk c() {
+      return this.a;
+   }
 }

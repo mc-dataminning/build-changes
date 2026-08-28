@@ -1,9 +1,10 @@
-public class gxx extends gwm implements gxw {
-   public boolean a;
-   public cog b = new cog(cok.c, coi.b, 1);
-
-   @Override
-   public cog a() {
-      return this.b;
-   }
+public class gxx extends gym {
+   public float a;
+   public float b;
+   public boolean c;
+   public boolean d;
+   public boolean e;
+   public boolean f;
+   public boolean g;
+   public cic.v h = cic.v.a;
 }

@@ -1,36 +1,37 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+public class aer implements aac<acr> {
+   public static final zt<ws, aer> a = aac.a(aer::a, aer::new);
+   private final jh b;
+   private final boolean c;
 
-public class aer implements zq<acf> {
-   public static final zh<wg, aer> a = zq.a(aer::a, aer::new);
-   private final IntList b;
-
-   public aer(IntList $$0) {
-      this.b = new IntArrayList($$0);
+   public aer(jh $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public aer(int... $$0) {
-      this.b = new IntArrayList($$0);
+   private aer(ws $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readBoolean();
    }
 
-   private aer(wg $$0) {
-      this.b = $$0.a();
-   }
-
-   private void a(wg $$0) {
+   private void a(ws $$0) {
       $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zs<aer> a() {
-      return agu.ak;
+   public aae<aer> a() {
+      return ahk.Y;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
    }
 
-   public IntList b() {
+   public jh b() {
       return this.b;
+   }
+
+   public boolean e() {
+      return this.c;
    }
 }

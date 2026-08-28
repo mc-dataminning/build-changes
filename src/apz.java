@@ -1,13 +1,12 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
-public interface apz {
-   void a(ul var1) throws CommandSyntaxException;
-
-   ul a() throws CommandSyntaxException;
-
-   xj b();
-
-   xj a(vi var1);
-
-   xj a(fo.g var1, double var2, int var4);
+public class apz {
+   public static void a(CommandDispatcher<ew> $$0) {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("stop").requires($$0x -> $$0x.c(4))).executes($$0x -> {
+         ((ew)$$0x.getSource()).a(() -> xv.c("commands.stop.stopping"), true);
+         ((ew)$$0x.getSource()).l().a(false);
+         return 1;
+      }));
+   }
 }

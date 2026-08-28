@@ -1,42 +1,25 @@
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
 
-public class eln extends ecn {
-   private final dgk a;
-   private final dxr b;
-   private final Optional<elm> c;
+public class eln<P extends elm> {
+   public static final eln<elo> a = a("trunk_vine", elo.a);
+   public static final eln<elk> b = a("leave_vine", elk.a);
+   public static final eln<ell> c = a("pale_moss", ell.a);
+   public static final eln<elj> d = a("creaking_heart", elj.a);
+   public static final eln<eli> e = a("cocoa", eli.a);
+   public static final eln<elh> f = a("beehive", elh.a);
+   public static final eln<elf> g = a("alter_ground", elf.a);
+   public static final eln<elg> h = a("attached_to_leaves", elg.a);
+   private final MapCodec<P> i;
 
-   public eln(dgk $$0, dxr $$1, Optional<elm> $$2) {
-      super($$1, $$0);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   private static <P extends elm> eln<P> a(String $$0, MapCodec<P> $$1) {
+      return kd.a(ma.X, $$0, new eln<>($$1));
    }
 
-   public int a(ebq.a $$0, int $$1, int $$2) {
-      return this.a.a($$0, $$1, $$2);
+   private eln(MapCodec<P> $$0) {
+      this.i = $$0;
    }
 
-   public dxp a(des $$0) {
-      return ((dyk)this.a.a($$0.g, $$0.h)).C();
-   }
-
-   public dvv a(jh $$0) {
-      return this.a.a_($$0);
-   }
-
-   public int c() {
-      return this.a.K_();
-   }
-
-   public dgk d() {
-      return this.a;
-   }
-
-   public Optional<elm> e() {
-      return this.c;
-   }
-
-   public dxr f() {
-      return this.b;
+   public MapCodec<P> a() {
+      return this.i;
    }
 }

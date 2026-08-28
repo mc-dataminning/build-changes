@@ -1,100 +1,65 @@
-public class fsy extends fsl<csp> {
-   private static final alj G = alj.b("container/crafter/disabled_slot");
-   private static final alj H = alj.b("container/crafter/powered_redstone");
-   private static final alj I = alj.b("container/crafter/unpowered_redstone");
-   private static final alj J = alj.b("textures/gui/container/crafter.png");
-   private static final xj K = xj.c("gui.togglable_slot");
-   private final cou L;
+public class fsy extends ftr {
+   private static final xv a = xv.c("gui.toMenu");
+   private static final xv b = xv.c("gui.toTitle");
+   private static final xv c = xv.c("gui.report_to_server");
+   private static final xv d = xv.c("gui.open_report_dir");
+   private final ftr s;
+   private final wr u;
+   private final xv v;
+   private final frr w = frr.d();
 
-   public fsy(csp $$0, cot $$1, xj $$2) {
-      super($$0, $$1, $$2);
-      this.L = $$1.k;
+   public fsy(ftr $$0, xv $$1, xv $$2) {
+      this($$0, $$1, new wr($$2));
+   }
+
+   public fsy(ftr $$0, xv $$1, xv $$2, xv $$3) {
+      this($$0, $$1, new wr($$2), $$3);
+   }
+
+   public fsy(ftr $$0, xv $$1, wr $$2) {
+      this($$0, $$1, $$2, a);
+   }
+
+   public fsy(ftr $$0, xv $$1, wr $$2, xv $$3) {
+      super($$1);
+      this.s = $$0;
+      this.u = $$2;
+      this.v = $$3;
    }
 
    @Override
-   protected void aR_() {
-      super.aR_();
-      this.v = (this.s - this.p.a(this.l)) / 2;
-   }
-
-   @Override
-   protected void a(ctw $$0, int $$1, int $$2, csk $$3) {
-      if ($$0 instanceof csq && !$$0.h() && !this.L.Y_()) {
-         switch ($$3) {
-            case a:
-               if (this.z.e($$1)) {
-                  this.a($$1);
-               } else if (this.z.g().f()) {
-                  this.b($$1);
-               }
-               break;
-            case c:
-               cwm $$4 = this.L.gg().a($$2);
-               if (this.z.e($$1) && !$$4.f()) {
-                  this.a($$1);
-               }
-         }
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   private void a(int $$0) {
-      this.a($$0, true);
-   }
-
-   private void b(int $$0) {
-      this.a($$0, false);
-   }
-
-   private void a(int $$0, boolean $$1) {
-      this.z.a($$0, $$1);
-      super.a($$0, this.z.l, $$1);
-      float $$2 = $$1 ? 1.0F : 0.75F;
-      this.L.a(awn.Av.a(), 0.4F, $$2);
-   }
-
-   @Override
-   public void a(flq $$0, ctw $$1) {
-      if ($$1 instanceof csq $$2 && this.z.e($$1.d)) {
-         this.a($$0, $$2);
-         return;
-      }
-
-      super.a($$0, $$1);
-   }
-
-   private void a(flq $$0, csq $$1) {
-      $$0.a(gjq::B, G, $$1.e - 1, $$1.f - 1, 18, 18);
-   }
-
-   @Override
-   public void a(flq $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.d($$0);
-      this.a($$0, $$1, $$2);
-      if (this.B instanceof csq && !this.z.e(this.B.d) && this.z.g().f() && !this.B.h() && !this.L.Y_()) {
-         $$0.a(this.p, K, $$1, $$2);
-      }
-   }
-
-   private void d(flq $$0) {
-      int $$1 = this.n / 2 + 9;
-      int $$2 = this.o / 2 - 48;
-      alj $$3;
-      if (this.z.l()) {
-         $$3 = H;
+   protected void aT_() {
+      this.w.c().b().a(10);
+      this.w.a(new fpg(this.l, this.p));
+      this.w.a(new fot(this.u.a(), this.p).d(this.n - 50).b(true));
+      this.w.c().a(2);
+      this.u.c().ifPresent($$0 -> this.w.a(fny.a(c, fso.b(this, $$0, false)).a(200).a()));
+      this.u.b().ifPresent($$0 -> this.w.a(fny.a(d, $$1x -> ae.m().a($$0.getParent())).a(200).a()));
+      fny $$0;
+      if (this.m.F()) {
+         $$0 = fny.a(this.v, $$0x -> this.m.a(this.s)).a(200).a();
       } else {
-         $$3 = I;
+         $$0 = fny.a(b, $$0x -> this.m.a(new ftt())).a(200).a();
       }
 
-      $$0.a(gjq::B, $$3, $$1, $$2, 16, 16);
+      this.w.a($$0);
+      this.w.a();
+      this.w.a(this::c);
+      this.c();
    }
 
    @Override
-   protected void a(flq $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.s) / 2;
-      int $$5 = (this.o - this.u) / 2;
-      $$0.a(gjq::B, J, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+   protected void c() {
+      frl.a(this.w, this.H());
+   }
+
+   @Override
+   public xv i() {
+      return xu.a(this.l, this.u.a());
+   }
+
+   @Override
+   public boolean aH_() {
+      return false;
    }
 }

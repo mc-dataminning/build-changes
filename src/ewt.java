@@ -1,56 +1,70 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
-import org.slf4j.Logger;
 
-public class ewt extends ewa {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<ewt> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(eyv.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
-            .apply($$0, ewt::new)
-   );
-   private final eyu c;
-   private final boolean d;
+public class ewt extends ewq {
+   public static final MapCodec<ewt> a = a(ewt::new);
 
-   private ewt(List<exy> $$0, eyu $$1, boolean $$2) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
+   ewt(List<ewx> $$0, List<ezs> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public ewc<ewt> b() {
-      return ewd.n;
+   public ewy a() {
+      return ewv.i;
    }
 
    @Override
-   public Set<exg<?>> a() {
-      return this.c.a();
+   protected ewp a(List<? extends ewp> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (ewp)$$0.get(0);
+         case 2 -> {
+            ewp $$1 = $$0.get(0);
+            ewp $$2 = $$0.get(1);
+            yield ($$2x, $$3) -> {
+               $$1.expand($$2x, $$3);
+               $$2.expand($$2x, $$3);
+               return true;
+            };
+         }
+         default -> ($$1x, $$2x) -> {
+         for (ewp $$3 : $$0) {
+            $$3.expand($$1x, $$2x);
+         }
+
+         return true;
+      };
+      };
    }
 
-   @Override
-   public cwm a(cwm $$0, eun $$1) {
-      if ($$0.m()) {
-         int $$2 = $$0.p();
-         float $$3 = this.d ? 1.0F - (float)$$0.o() / (float)$$2 : 0.0F;
-         float $$4 = 1.0F - azm.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
-         $$0.b(azm.d($$4 * (float)$$2));
-      } else {
-         b.warn("Couldn't set damage of loot item {}", $$0);
+   public static ewt.a a(ewx.a<?>... $$0) {
+      return new ewt.a($$0);
+   }
+
+   public static class a extends ewx.a<ewt.a> {
+      private final Builder<ewx> a = ImmutableList.builder();
+
+      public a(ewx.a<?>... $$0) {
+         for (ewx.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
       }
 
-      return $$0;
-   }
+      protected ewt.a a() {
+         return this;
+      }
 
-   public static ewa.a<?> a(eyu $$0) {
-      return a($$1 -> new ewt($$1, $$0, false));
-   }
+      @Override
+      public ewt.a b(ewx.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
 
-   public static ewa.a<?> a(eyu $$0, boolean $$1) {
-      return a($$2 -> new ewt($$2, $$0, $$1));
+      @Override
+      public ewx b() {
+         return new ewt(this.a.build(), this.f());
+      }
    }
 }

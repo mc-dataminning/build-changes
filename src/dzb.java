@@ -1,122 +1,58 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.io.IOException;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import org.slf4j.Logger;
+public interface dzb {
+   void a(dzd var1, double var2);
 
-public class dzb implements eab<bul> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "Entities";
-   private static final String c = "Position";
-   private final arp d;
-   private final dzm e;
-   private final LongSet f = new LongOpenHashSet();
-   private final bra g;
+   void a(dzd var1, double var2, double var4, long var6);
 
-   public dzb(dzm $$0, arp $$1, Executor $$2) {
-      this.e = $$0;
-      this.d = $$1;
-      this.g = new bra($$2, "entity-deserializer");
-   }
+   void a(dzd var1, double var2, double var4);
 
-   @Override
-   public CompletableFuture<dzw<bul>> a(des $$0) {
-      if (this.f.contains($$0.a())) {
-         return CompletableFuture.completedFuture(b($$0));
-      } else {
-         CompletableFuture<Optional<ul>> $$1 = this.e.a($$0);
-         this.b($$1, $$0);
-         return $$1.thenApplyAsync($$1x -> {
-            if ($$1x.isEmpty()) {
-               this.f.add($$0.a());
-               return b($$0);
-            } else {
-               try {
-                  des $$2 = a((ul)$$1x.get());
-                  if (!Objects.equals($$0, $$2)) {
-                     a.error("Chunk file at {} is in the wrong location. (Expected {}, got {})", new Object[]{$$0, $$0, $$2});
-                     this.d.p().a($$2, $$0, this.e.a());
-                  }
-               } catch (Exception var6) {
-                  a.warn("Failed to parse chunk {} position info", $$0, var6);
-                  this.d.p().a(var6, this.e.a(), $$0);
-               }
+   void a(dzd var1, int var2);
 
-               ul $$4 = this.e.a((ul)$$1x.get(), -1);
-               ur $$5 = $$4.c("Entities", 10);
-               List<bul> $$6 = bus.a($$5, this.d, bur.r).collect(ImmutableList.toImmutableList());
-               return new dzw<>($$0, $$6);
-            }
-         }, this.g::a_);
+   void b(dzd var1, int var2);
+
+   void b(dzd var1, double var2);
+
+   void c(dzd var1, double var2);
+
+   public static class a implements dzb {
+      private final dzd a;
+
+      public a(dzd $$0) {
+         this.a = $$0;
       }
-   }
 
-   private static des a(ul $$0) {
-      int[] $$1 = $$0.n("Position");
-      return new des($$1[0], $$1[1]);
-   }
-
-   private static void a(ul $$0, des $$1) {
-      $$0.a("Position", new up(new int[]{$$1.g, $$1.h}));
-   }
-
-   private static dzw<bul> b(des $$0) {
-      return new dzw<>($$0, ImmutableList.of());
-   }
-
-   @Override
-   public void a(dzw<bul> $$0) {
-      des $$1 = $$0.a();
-      if ($$0.c()) {
-         if (this.f.add($$1.a())) {
-            this.a(this.e.a($$1, null), $$1);
-         }
-      } else {
-         ur $$2 = new ur();
-         $$0.b().forEach($$1x -> {
-            ul $$2x = new ul();
-            if ($$1x.e($$2x)) {
-               $$2.add($$2x);
-            }
-         });
-         ul $$3 = va.e(new ul());
-         $$3.a("Entities", $$2);
-         a($$3, $$1);
-         this.a(this.e.a($$1, $$3), $$1);
-         this.f.remove($$1.a());
+      @Override
+      public void a(dzd $$0, double $$1) {
+         this.a.a($$1);
       }
-   }
 
-   private void a(CompletableFuture<?> $$0, des $$1) {
-      $$0.exceptionally($$1x -> {
-         a.error("Failed to store entity chunk {}", $$1, $$1x);
-         this.d.p().b($$1x, this.e.a(), $$1);
-         return null;
-      });
-   }
+      @Override
+      public void a(dzd $$0, double $$1, double $$2, long $$3) {
+         this.a.a($$1, $$2, $$3);
+      }
 
-   private void b(CompletableFuture<?> $$0, des $$1) {
-      $$0.exceptionally($$1x -> {
-         a.error("Failed to load entity chunk {}", $$1, $$1x);
-         this.d.p().a($$1x, this.e.a(), $$1);
-         return null;
-      });
-   }
+      @Override
+      public void a(dzd $$0, double $$1, double $$2) {
+         this.a.c($$1, $$2);
+      }
 
-   @Override
-   public void a(boolean $$0) {
-      this.e.a($$0).join();
-      this.g.a();
-   }
+      @Override
+      public void a(dzd $$0, int $$1) {
+         this.a.b($$1);
+      }
 
-   @Override
-   public void close() throws IOException {
-      this.e.close();
+      @Override
+      public void b(dzd $$0, int $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void b(dzd $$0, double $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void c(dzd $$0, double $$1) {
+         this.a.b($$1);
+      }
    }
 }

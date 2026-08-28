@@ -1,7 +1,8 @@
-public class gwr extends gwm {
-   public chl.a a;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public gwr() {
-      this.a = chl.a.a;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gwr {
 }

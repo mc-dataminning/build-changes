@@ -1,60 +1,48 @@
-import java.util.UUID;
+import java.util.BitSet;
 import javax.annotation.Nullable;
 
-public record aeh(UUID b, int c, @Nullable xv d, yc.a e, @Nullable xj f, xn g, xf.a h) implements zq<acf> {
-   public static final zh<wu, aeh> a = zq.a(aeh::a, aeh::new);
+public class aeh implements aac<acr> {
+   public static final zt<ws, aeh> a = aac.a(aeh::a, aeh::new);
+   private final int b;
+   private final int c;
+   private final aei d;
 
-   private aeh(wu $$0) {
-      this($$0.n(), $$0.l(), $$0.c(xv::a), new yc.a($$0), wg.a($$0, xl.d), xn.a($$0), xf.a.a.decode($$0));
+   public aeh(dgg $$0, ete $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.b = $$0.g;
+      this.c = $$0.h;
+      this.d = new aei($$0, $$1, $$2, $$3);
    }
 
-   private void a(wu $$0) {
-      $$0.a(this.b);
+   private aeh(ws $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
+      this.d = new aei($$0, this.b, this.c);
+   }
+
+   private void a(ws $$0) {
+      $$0.c(this.b);
       $$0.c(this.c);
-      $$0.a(this.d, xv::a);
-      this.e.a($$0);
-      wg.a($$0, this.f, xl.d);
-      xn.a($$0, this.g);
-      xf.a.a.encode($$0, this.h);
+      this.d.a($$0);
    }
 
    @Override
-   public zs<aeh> a() {
-      return agu.ab;
+   public aae<aeh> a() {
+      return ahk.N;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
+   public int b() {
+      return this.b;
    }
 
    public int e() {
       return this.c;
    }
 
-   @Nullable
-   public xv f() {
+   public aei f() {
       return this.d;
-   }
-
-   public yc.a g() {
-      return this.e;
-   }
-
-   @Nullable
-   public xj h() {
-      return this.f;
-   }
-
-   public xn i() {
-      return this.g;
-   }
-
-   public xf.a j() {
-      return this.h;
    }
 }

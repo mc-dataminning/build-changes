@@ -1,38 +1,30 @@
-import javax.annotation.Nullable;
+public class gtx extends gri<cqy, gzq> {
+   public static final alz a = alz.b("textures/entity/trident.png");
+   private final gdl b;
 
-public class gtx<S extends gwz, M extends fzj<S> & fyg & fzs> extends gtr<S, M> {
-   private final gqi a;
-   private static final float b = (float) (-Math.PI / 6);
-   private static final float c = (float) (Math.PI / 2);
-
-   public gtx(grh<S, M> $$0, gqi $$1) {
-      super($$0, $$1);
-      this.a = $$1;
+   public gtx(grj.a $$0) {
+      super($$0);
+      this.b = new gdl($$0.a(geg.dg));
    }
 
-   protected void a(S $$0, @Nullable hbg $$1, cwm $$2, cwk $$3, bvb $$4, fer $$5, gjg $$6, int $$7) {
-      if ($$1 != null) {
-         bsj $$8 = $$4 == $$0.ap ? bsj.a : bsj.b;
-         if ($$0.M && $$0.H == $$8 && $$0.C < 1.0E-5F && $$2.a(cwq.ro)) {
-            this.a($$1, $$2, $$4, $$5, $$6, $$7);
-         } else {
-            super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         }
-      }
+   public void a(gzq $$0, fgl $$1, gle $$2, int $$3) {
+      $$1.a();
+      $$1.a(a.d.rotationDegrees($$0.b - 90.0F));
+      $$1.a(a.f.rotationDegrees($$0.a + 90.0F));
+      fgp $$4 = gsh.a($$2, this.b.a(a), false, $$0.c);
+      this.b.a($$1, $$4, $$3, hav.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   private void a(hbg $$0, cwm $$1, bvb $$2, fer $$3, gjg $$4, int $$5) {
-      $$3.a();
-      this.d().e().a($$3);
-      gcl $$6 = this.d().b();
-      float $$7 = $$6.e;
-      $$6.e = azm.a($$6.e, (float) (-Math.PI / 6), (float) (Math.PI / 2));
-      $$6.a($$3);
-      $$6.e = $$7;
-      gtd.a($$3, gtd.a.a);
-      boolean $$8 = $$2 == bvb.a;
-      $$3.a(($$8 ? -2.5F : 2.5F) / 16.0F, -0.0625F, 0.0F);
-      this.a.a($$1, cwk.f, false, $$3, $$4, $$5, gyv.d, $$0);
-      $$3.b();
+   public gzq a() {
+      return new gzq();
+   }
+
+   public void a(cqy $$0, gzq $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b = $$0.k($$2);
+      $$1.a = $$0.j($$2);
+      $$1.c = $$0.C();
    }
 }

@@ -1,14 +1,16 @@
-public class fuv extends fva {
-   private static fkh<?>[] a(fki $$0) {
-      return new fkh[]{$$0.R(), $$0.S()};
-   }
+public class fuv implements ctl {
+   private final flz a;
 
-   public fuv(frw $$0, fki $$1) {
-      super($$0, $$1, xj.c("options.font.title"));
+   public fuv(flz $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected void m() {
-      this.d.a(a(this.c));
+   public void a(csx $$0, int $$1, cxk $$2) {
+      this.a.r.a($$2, $$1);
+   }
+
+   @Override
+   public void a(csx $$0, int $$1, int $$2) {
    }
 }

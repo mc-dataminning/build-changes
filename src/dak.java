@@ -1,15 +1,16 @@
-public class dak extends dah {
-   public dak(String $$0, dan $$1, daw $$2, cwm $$3, float $$4, int $$5) {
-      super(dbg.c, $$0, $$1, $$2, $$3, $$4, $$5);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record dak(aly<ewm> b, long c) {
+   public static final Codec<dak> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aly.a(mb.bf).fieldOf("loot_table").forGetter(dak::a), Codec.LONG.optionalFieldOf("seed", 0L).forGetter(dak::b)).apply($$0, dak::new)
+   );
+
+   public aly<ewm> a() {
+      return this.b;
    }
 
-   @Override
-   public cwm g() {
-      return new cwm(dis.nW);
-   }
-
-   @Override
-   public dbf<?> ap_() {
-      return dbf.p;
+   public long b() {
+      return this.c;
    }
 }

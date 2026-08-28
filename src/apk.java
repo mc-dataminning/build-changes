@@ -1,116 +1,29 @@
-import com.google.common.collect.Sets;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import java.util.Set;
+import net.minecraft.server.MinecraftServer;
 
 public class apk {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xj.c("commands.tag.add.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xj.c("commands.tag.remove.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xv.c("commands.save.failed"));
 
    public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("tag").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ex.a("targets", fj.b())
-                        .then(
-                           ex.a("add")
-                              .then(
-                                 ex.a("name", StringArgumentType.word())
-                                    .executes($$0x -> a((ew)$$0x.getSource(), fj.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
-                              )
-                        ))
-                     .then(
-                        ex.a("remove")
-                           .then(
-                              ex.a("name", StringArgumentType.word())
-                                 .suggests(($$0x, $$1) -> fb.b(a(fj.b($$0x, "targets")), $$1))
-                                 .executes($$0x -> b((ew)$$0x.getSource(), fj.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
-                           )
-                     ))
-                  .then(ex.a("list").executes($$0x -> a((ew)$$0x.getSource(), fj.b($$0x, "targets"))))
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("save-all").requires($$0x -> $$0x.c(4)))
+               .executes($$0x -> a((ew)$$0x.getSource(), false)))
+            .then(ex.a("flush").executes($$0x -> a((ew)$$0x.getSource(), true)))
       );
    }
 
-   private static Collection<String> a(Collection<? extends bul> $$0) {
-      Set<String> $$1 = Sets.newHashSet();
-
-      for (bul $$2 : $$0) {
-         $$1.addAll($$2.as());
-      }
-
-      return $$1;
-   }
-
-   private static int a(ew $$0, Collection<? extends bul> $$1, String $$2) throws CommandSyntaxException {
-      int $$3 = 0;
-
-      for (bul $$4 : $$1) {
-         if ($$4.a($$2)) {
-            $$3++;
-         }
-      }
-
-      if ($$3 == 0) {
+   private static int a(ew $$0, boolean $$1) throws CommandSyntaxException {
+      $$0.a(() -> xv.c("commands.save.saving"), false);
+      MinecraftServer $$2 = $$0.l();
+      boolean $$3 = $$2.b(true, $$1, true);
+      if (!$$3) {
          throw a.create();
       } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> xj.a("commands.tag.add.success.single", $$2, $$1.iterator().next().o_()), true);
-         } else {
-            $$0.a(() -> xj.a("commands.tag.add.success.multiple", $$2, $$1.size()), true);
-         }
-
-         return $$3;
+         $$0.a(() -> xv.c("commands.save.success"), true);
+         return 1;
       }
-   }
-
-   private static int b(ew $$0, Collection<? extends bul> $$1, String $$2) throws CommandSyntaxException {
-      int $$3 = 0;
-
-      for (bul $$4 : $$1) {
-         if ($$4.b($$2)) {
-            $$3++;
-         }
-      }
-
-      if ($$3 == 0) {
-         throw b.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> xj.a("commands.tag.remove.success.single", $$2, $$1.iterator().next().o_()), true);
-         } else {
-            $$0.a(() -> xj.a("commands.tag.remove.success.multiple", $$2, $$1.size()), true);
-         }
-
-         return $$3;
-      }
-   }
-
-   private static int a(ew $$0, Collection<? extends bul> $$1) {
-      Set<String> $$2 = Sets.newHashSet();
-
-      for (bul $$3 : $$1) {
-         $$2.addAll($$3.as());
-      }
-
-      if ($$1.size() == 1) {
-         bul $$4 = $$1.iterator().next();
-         if ($$2.isEmpty()) {
-            $$0.a(() -> xj.a("commands.tag.list.single.empty", $$4.o_()), false);
-         } else {
-            $$0.a(() -> xj.a("commands.tag.list.single.success", $$4.o_(), $$2.size(), xm.a($$2)), false);
-         }
-      } else if ($$2.isEmpty()) {
-         $$0.a(() -> xj.a("commands.tag.list.multiple.empty", $$1.size()), false);
-      } else {
-         $$0.a(() -> xj.a("commands.tag.list.multiple.success", $$1.size(), $$2.size(), xm.a($$2)), false);
-      }
-
-      return $$2.size();
    }
 }

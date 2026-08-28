@@ -1,7 +1,11 @@
+import java.util.Set;
+
 public interface csl {
-   int a(int var1);
+   Set<aly<? extends kd<? extends csl>>> bU = Set.of(mb.K, mb.f, mb.z, mb.V, mb.ad, mb.W);
 
-   void a(int var1, int var2);
+   cso i();
 
-   int a();
+   default boolean a(cso $$0) {
+      return this.i().a($$0);
+   }
 }

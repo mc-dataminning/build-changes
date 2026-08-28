@@ -1,19 +1,15 @@
-import java.util.List;
-
-public class cwx extends cyb {
-   public cwx(cwi.a $$0) {
+public class cwx extends cxg implements cyo {
+   public cwx(cxg.a $$0) {
       super($$0);
    }
 
    @Override
-   public void a(cwm $$0, cwi.b $$1, List<xj> $$2, cye $$3) {
-      cyl $$4 = $$0.a(ku.Q, cyl.a);
-      $$4.a($$2::add, 0.25F, $$1.b());
-   }
-
-   @Override
-   public bsk a(dfm $$0, cou $$1, bsj $$2) {
-      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awn.nW, awo.g, 0.5F, 0.4F / ($$0.G_().i() * 0.4F + 0.8F));
-      return super.a($$0, $$1, $$2);
+   public boolean a(dha $$0, dwc $$1, boolean $$2, cps $$3) {
+      if ($$1.a($$0x -> $$0x.a(true), $$2)) {
+         $$0.a(null, $$1.aB_(), axf.kT, axg.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

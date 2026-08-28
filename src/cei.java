@@ -1,32 +1,40 @@
-import com.mojang.serialization.Codec;
+import java.util.EnumSet;
 
-public enum cei implements bai {
-   a("major_negative", -5, 100, 10, 10),
-   b("minor_negative", -1, 200, 20, 20),
-   c("minor_positive", 1, 25, 1, 5),
-   d("major_positive", 5, 20, 0, 20),
-   e("trading", 1, 25, 2, 20);
+public class cei extends ccz {
+   private final coz a;
 
-   public static final int f = 25;
-   public static final int g = 20;
-   public static final int h = 2;
-   public final String i;
-   public final int j;
-   public final int k;
-   public final int l;
-   public final int m;
-   public static final Codec<cei> n = bai.a(cei::values);
-
-   private cei(final String $$0, final int $$1, final int $$2, final int $$3, final int $$4) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.m = $$4;
+   public cei(coz $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(ccz.a.c, ccz.a.a));
    }
 
    @Override
-   public String c() {
-      return this.i;
+   public boolean b() {
+      if (!this.a.bL()) {
+         return false;
+      } else if (this.a.bj()) {
+         return false;
+      } else if (!this.a.aJ()) {
+         return false;
+      } else if (this.a.T) {
+         return false;
+      } else {
+         cps $$0 = this.a.gm();
+         if ($$0 == null) {
+            return false;
+         } else {
+            return this.a.g($$0) > 16.0 ? false : $$0.cd != null;
+         }
+      }
+   }
+
+   @Override
+   public void d() {
+      this.a.L().o();
+   }
+
+   @Override
+   public void e() {
+      this.a.a(null);
    }
 }

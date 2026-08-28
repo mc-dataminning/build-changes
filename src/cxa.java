@@ -1,47 +1,73 @@
-public class cxa extends cwi {
-   private final bus<? extends cqt> a;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
+import java.util.Map;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
-   public cxa(bus<? extends cqt> $$0, cwi.a $$1) {
-      super($$1);
-      this.a = $$0;
+public class cxa extends cwd {
+   protected static final Map<dke, Pair<Predicate<dbd>, Consumer<dbd>>> a = Maps.newHashMap(
+      ImmutableMap.of(
+         dkg.i,
+         Pair.of(cxa::b, a(dkg.cK.m())),
+         dkg.kZ,
+         Pair.of(cxa::b, a(dkg.cK.m())),
+         dkg.j,
+         Pair.of(cxa::b, a(dkg.cK.m())),
+         dkg.k,
+         Pair.of(cxa::b, a(dkg.j.m())),
+         dkg.tc,
+         Pair.of((Predicate<dbd>)$$0 -> true, a(dkg.j.m(), cxo.dY))
+      )
+   );
+
+   public cxa(czb $$0, float $$1, float $$2, cxg.a $$3) {
+      super($$0, axu.bD, $$1, $$2, $$3);
    }
 
    @Override
-   public bsk a(daf $$0) {
-      dfm $$1 = $$0.q();
+   public bte a(dbd $$0) {
+      dha $$1 = $$0.q();
       jh $$2 = $$0.a();
-      dvv $$3 = $$1.a_($$2);
-      if (!$$3.a(axc.O)) {
-         return bsk.d;
+      Pair<Predicate<dbd>, Consumer<dbd>> $$3 = a.get($$1.a_($$2).b());
+      if ($$3 == null) {
+         return bte.e;
       } else {
-         cwm $$4 = $$0.n();
-         dwy $$5 = $$3.b() instanceof dif ? $$3.c(((dif)$$3.b()).c()) : dwy.a;
-         double $$6 = 0.0;
-         if ($$5.b()) {
-            $$6 = 0.5;
-         }
-
-         ezy $$7 = new ezy((double)$$2.u() + 0.5, (double)$$2.v() + 0.0625 + $$6, (double)$$2.w() + 0.5);
-         cqt $$8 = cqt.a($$1, $$7.d, $$7.e, $$7.f, this.a, bur.o, $$4, $$0.o());
-         if ($$8 == null) {
-            return bsk.d;
-         } else {
-            if (cqt.b($$1)) {
-               for (bul $$10 : $$1.a_(null, $$8.cR())) {
-                  if ($$10 instanceof cqt) {
-                     return bsk.d;
-                  }
+         Predicate<dbd> $$4 = (Predicate<dbd>)$$3.getFirst();
+         Consumer<dbd> $$5 = (Consumer<dbd>)$$3.getSecond();
+         if ($$4.test($$0)) {
+            cps $$6 = $$0.o();
+            $$1.a($$6, $$2, axf.mE, axg.e, 1.0F, 1.0F);
+            if (!$$1.C) {
+               $$5.accept($$0);
+               if ($$6 != null) {
+                  $$0.n().a(1, $$6, bwb.d($$0.p()));
                }
             }
 
-            if ($$1 instanceof arp $$11) {
-               $$11.b($$8);
-               $$11.a(ear.t, $$2, ear.a.a($$0.o(), $$11.a_($$2.e())));
-            }
-
-            $$4.h(1);
-            return bsk.a;
+            return bte.a;
+         } else {
+            return bte.e;
          }
       }
+   }
+
+   public static Consumer<dbd> a(dxn $$0) {
+      return $$1 -> {
+         $$1.q().a($$1.a(), $$0, 11);
+         $$1.q().a(ecj.c, $$1.a(), ecj.a.a($$1.o(), $$0));
+      };
+   }
+
+   public static Consumer<dbd> a(dxn $$0, dgz $$1) {
+      return $$2 -> {
+         $$2.q().a($$2.a(), $$0, 11);
+         $$2.q().a(ecj.c, $$2.a(), ecj.a.a($$2.o(), $$0));
+         dke.a($$2.q(), $$2.a(), $$2.k(), new cxk($$1));
+      };
+   }
+
+   public static boolean b(dbd $$0) {
+      return $$0.k() != jm.a && $$0.q().a_($$0.a().d()).l();
    }
 }

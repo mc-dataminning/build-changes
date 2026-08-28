@@ -7,35 +7,35 @@ import java.util.List;
 import java.util.Optional;
 import net.minecraft.server.MinecraftServer;
 
-public record al(int c, List<ali<eus>> d, List<alj> e, Optional<er> f) {
+public record al(int c, List<aly<ewm>> d, List<aly<dbz<?>>> e, Optional<er> f) {
    public static final Codec<al> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                Codec.INT.optionalFieldOf("experience", 0).forGetter(al::a),
-               ali.a(ma.bd).listOf().optionalFieldOf("loot", List.of()).forGetter(al::b),
-               alj.a.listOf().optionalFieldOf("recipes", List.of()).forGetter(al::c),
+               aly.a(mb.bf).listOf().optionalFieldOf("loot", List.of()).forGetter(al::b),
+               aly.a(mb.bj).listOf().optionalFieldOf("recipes", List.of()).forGetter(al::c),
                er.a.optionalFieldOf("function").forGetter(al::d)
             )
             .apply($$0, al::new)
    );
    public static final al b = new al(0, List.of(), List.of(), Optional.empty());
 
-   public void a(arq $$0) {
+   public void a(asi $$0) {
       $$0.d(this.c);
-      euq $$1 = new euq.a($$0.y()).a(exj.a, $$0).a(exj.f, $$0.dt()).a(exi.m);
+      ewk $$1 = new ewk.a($$0.y()).a(ezd.a, $$0).a(ezd.f, $$0.dt()).a(ezc.m);
       boolean $$2 = false;
 
-      for (ali<eus> $$3 : this.d) {
+      for (aly<ewm> $$3 : this.d) {
          ObjectListIterator var6 = $$0.g.bc().b($$3).a($$1).iterator();
 
          while (var6.hasNext()) {
-            cwm $$4 = (cwm)var6.next();
+            cxk $$4 = (cxk)var6.next();
             if ($$0.i($$4)) {
-               $$0.dV().a(null, $$0.dA(), $$0.dC(), $$0.dG(), awn.nB, awo.h, 0.2F, (($$0.dY().i() - $$0.dY().i()) * 0.7F + 1.0F) * 2.0F);
+               $$0.dV().a(null, $$0.dA(), $$0.dC(), $$0.dG(), axf.nT, axg.h, 0.2F, (($$0.dY().i() - $$0.dY().i()) * 0.7F + 1.0F) * 2.0F);
                $$2 = true;
             } else {
-               clc $$5 = $$0.a($$4, false);
+               clw $$5 = $$0.a($$4, false);
                if ($$5 != null) {
-                  $$5.q();
+                  $$5.t();
                   $$5.b($$0.cG());
                }
             }
@@ -43,7 +43,7 @@ public record al(int c, List<ali<eus>> d, List<alj> e, Optional<er> f) {
       }
 
       if ($$2) {
-         $$0.cc.d();
+         $$0.cd.d();
       }
 
       if (!this.e.isEmpty()) {
@@ -58,11 +58,11 @@ public record al(int c, List<ali<eus>> d, List<alj> e, Optional<er> f) {
       return this.c;
    }
 
-   public List<ali<eus>> b() {
+   public List<aly<ewm>> b() {
       return this.d;
    }
 
-   public List<alj> c() {
+   public List<aly<dbz<?>>> c() {
       return this.e;
    }
 
@@ -72,9 +72,9 @@ public record al(int c, List<ali<eus>> d, List<alj> e, Optional<er> f) {
 
    public static class a {
       private int a;
-      private final Builder<ali<eus>> b = ImmutableList.builder();
-      private final Builder<alj> c = ImmutableList.builder();
-      private Optional<alj> d = Optional.empty();
+      private final Builder<aly<ewm>> b = ImmutableList.builder();
+      private final Builder<aly<dbz<?>>> c = ImmutableList.builder();
+      private Optional<alz> d = Optional.empty();
 
       public static al.a a(int $$0) {
          return new al.a().b($$0);
@@ -85,29 +85,29 @@ public record al(int c, List<ali<eus>> d, List<alj> e, Optional<er> f) {
          return this;
       }
 
-      public static al.a a(ali<eus> $$0) {
+      public static al.a a(aly<ewm> $$0) {
          return new al.a().b($$0);
       }
 
-      public al.a b(ali<eus> $$0) {
+      public al.a b(aly<ewm> $$0) {
          this.b.add($$0);
          return this;
       }
 
-      public static al.a a(alj $$0) {
-         return new al.a().b($$0);
+      public static al.a c(aly<dbz<?>> $$0) {
+         return new al.a().d($$0);
       }
 
-      public al.a b(alj $$0) {
+      public al.a d(aly<dbz<?>> $$0) {
          this.c.add($$0);
          return this;
       }
 
-      public static al.a c(alj $$0) {
-         return new al.a().d($$0);
+      public static al.a a(alz $$0) {
+         return new al.a().b($$0);
       }
 
-      public al.a d(alj $$0) {
+      public al.a b(alz $$0) {
          this.d = Optional.of($$0);
          return this;
       }

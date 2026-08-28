@@ -1,78 +1,62 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
+import org.slf4j.Logger;
 
-public class dmr extends diq implements dli, dlx {
-   public static final MapCodec<dmr> a = b(dmr::new);
-   public static final dws<jo> b = dwl.T;
+public class dmr extends dml {
+   private static final Logger f = LogUtils.getLogger();
+   public static final MapCodec<dmr> e = b(dmr::new);
+   private static final lb g = new la();
 
    @Override
    public MapCodec<dmr> a() {
-      return a;
+      return e;
    }
 
-   protected dmr(dvu.d $$0) {
+   public dmr(dxm.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, jo.k));
    }
 
    @Override
-   protected void a(dvw.a<diq, dvv> $$0) {
-      $$0.a(b);
+   protected lb a(dha $$0, cxk $$1) {
+      return g;
    }
 
    @Override
-   protected dvv a(dvv $$0, dpd $$1) {
-      return $$0.b(b, $$1.a().a($$0.c(b)));
+   public dup a(jh $$0, dxn $$1) {
+      return new dvk($$0, $$1);
    }
 
    @Override
-   protected dvv a(dvv $$0, dnm $$1) {
-      return $$0.b(b, $$1.a().a($$0.c(b)));
-   }
-
-   @Override
-   public dvv a(dad $$0) {
-      jm $$1 = $$0.k();
-      jm $$2;
-      if ($$1.o() == jm.a.b) {
-         $$2 = $$0.g().g();
+   protected void a(ash $$0, dxn $$1, jh $$2) {
+      dvj $$3 = $$0.a($$2, dur.g).orElse(null);
+      if ($$3 == null) {
+         f.warn("Ignoring dispensing attempt for Dropper without matching block entity at {}", $$2);
       } else {
-         $$2 = jm.b;
+         ky $$4 = new ky($$0, $$2, $$1, $$3);
+         int $$5 = $$3.a($$0.A);
+         if ($$5 < 0) {
+            $$0.c(1001, $$2, 0);
+         } else {
+            cxk $$6 = $$3.a($$5);
+            if (!$$6.f()) {
+               jm $$7 = $$0.a_($$2).c(b);
+               bsx $$8 = dvr.a($$0, $$2.a($$7));
+               cxk $$9;
+               if ($$8 == null) {
+                  $$9 = g.dispense($$4, $$6);
+               } else {
+                  $$9 = dvr.a($$3, $$8, $$6.c(1), $$7.g());
+                  if ($$9.f()) {
+                     $$9 = $$6.v();
+                     $$9.h(1);
+                  } else {
+                     $$9 = $$6.v();
+                  }
+               }
+
+               $$3.a($$5, $$9);
+            }
+         }
       }
-
-      return this.m().b(b, jo.a($$1, $$2));
-   }
-
-   @Override
-   public dsy a(jh $$0, dvv $$1) {
-      return new dua($$0, $$1);
-   }
-
-   @Override
-   protected bsk a(dvv $$0, dfm $$1, jh $$2, cou $$3, ezu $$4) {
-      dsy $$5 = $$1.c_($$2);
-      if ($$5 instanceof dua && $$3.gE()) {
-         $$3.a((dua)$$5);
-         return bsk.a;
-      } else {
-         return bsk.e;
-      }
-   }
-
-   public static boolean a(eqk.c $$0, eqk.c $$1) {
-      jm $$2 = o($$0.b());
-      jm $$3 = o($$1.b());
-      jm $$4 = p($$0.b());
-      jm $$5 = p($$1.b());
-      dua.a $$6 = dua.a.a($$0.c().l("joint")).orElseGet(() -> $$2.o().d() ? dua.a.b : dua.a.a);
-      boolean $$7 = $$6 == dua.a.a;
-      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.c().l("target").equals($$1.c().l("name"));
-   }
-
-   public static jm o(dvv $$0) {
-      return $$0.c(b).a();
-   }
-
-   public static jm p(dvv $$0) {
-      return $$0.c(b).b();
    }
 }

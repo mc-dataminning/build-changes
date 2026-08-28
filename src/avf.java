@@ -1,71 +1,55 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonObject;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.Collection;
-import java.util.Optional;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public interface avf {
-   avf a = new avf() {
-      @Override
-      public <T> Optional<T> a(aub<T> $$0) {
-         return Optional.empty();
-      }
-   };
-   auu<avf> b = () -> a;
+public abstract class avf<T> {
+   private final fbi a;
 
-   static avf a(InputStream $$0) throws IOException {
-      avf var3;
-      try (BufferedReader $$1 = new BufferedReader(new InputStreamReader($$0, StandardCharsets.UTF_8))) {
-         final JsonObject $$2 = azc.a($$1);
-         var3 = new avf() {
-            @Override
-            public <T> Optional<T> a(aub<T> $$0) {
-               String $$1 = $$0.a();
-               return $$2.has($$1) ? Optional.of($$0.a(azc.u($$2, $$1))) : Optional.empty();
-            }
-         };
-      }
-
-      return var3;
+   protected avf(fbi $$0) {
+      this.a = $$0;
    }
 
-   <T> Optional<T> a(aub<T> var1);
+   @Nullable
+   public T a(Path $$0, List<fbj> $$1) throws IOException {
+      Path $$2 = $$0;
 
-   default avf a(Collection<aub<?>> $$0) {
-      avf.a $$1 = new avf.a();
-
-      for (aub<?> $$2 : $$0) {
-         this.a($$1, $$2);
+      BasicFileAttributes $$3;
+      try {
+         $$3 = Files.readAttributes($$0, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
+      } catch (NoSuchFileException var6) {
+         return null;
       }
 
-      return $$1.a();
-   }
+      if ($$3.isSymbolicLink()) {
+         this.a.a($$0, $$1);
+         if (!$$1.isEmpty()) {
+            return null;
+         }
 
-   private <T> void a(avf.a $$0, aub<T> $$1) {
-      this.a($$1).ifPresent($$2 -> $$0.a($$1, (T)$$2));
-   }
-
-   public static class a {
-      private final Builder<aub<?>, Object> a = ImmutableMap.builder();
-
-      public <T> avf.a a(aub<T> $$0, T $$1) {
-         this.a.put($$0, $$1);
-         return this;
+         $$2 = Files.readSymbolicLink($$0);
+         $$3 = Files.readAttributes($$2, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
       }
 
-      public avf a() {
-         final ImmutableMap<aub<?>, Object> $$0 = this.a.build();
-         return $$0.isEmpty() ? avf.a : new avf() {
-            @Override
-            public <T> Optional<T> a(aub<T> $$0x) {
-               return Optional.ofNullable((T)$$0.get($$0));
-            }
-         };
+      if ($$3.isDirectory()) {
+         this.a.b($$2, $$1);
+         if (!$$1.isEmpty()) {
+            return null;
+         } else {
+            return !Files.isRegularFile($$2.resolve("pack.mcmeta")) ? null : this.c($$2);
+         }
+      } else {
+         return $$3.isRegularFile() && $$2.getFileName().toString().endsWith(".zip") ? this.d($$2) : null;
       }
    }
+
+   @Nullable
+   protected abstract T d(Path var1) throws IOException;
+
+   @Nullable
+   protected abstract T c(Path var1) throws IOException;
 }

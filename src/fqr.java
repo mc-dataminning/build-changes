@@ -1,92 +1,181 @@
-import com.mojang.authlib.minecraft.BanDetails;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.net.URI;
-import java.time.Duration;
-import java.time.Instant;
-import org.apache.commons.lang3.StringUtils;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.function.IntFunction;
 
-public class fqr {
-   private static final xj b = xj.c("gui.banned.title.temporary").a(n.r);
-   private static final xj c = xj.c("gui.banned.title.permanent").a(n.r);
-   public static final xj a = xj.c("gui.banned.name.title").a(n.r);
-   private static final xj d = xj.c("gui.banned.skin.title").a(n.r);
-   private static final xj e = xj.a("gui.banned.skin.description", xj.a(ayi.n));
+public class fqr implements AutoCloseable {
+   private static final bam a = bam.a();
+   private static final float b = 32.0F;
+   private final hbf c;
+   private final alz d;
+   private fqv e;
+   private fqv f;
+   private List<fek.a> g = List.of();
+   private List<fek> h = List.of();
+   private final fqo<fqv> i = new fqo<>(fqv[]::new, fqv[][]::new);
+   private final fqo<fqr.a> j = new fqo<>(fqr.a[]::new, fqr.a[][]::new);
+   private final Int2ObjectMap<IntList> k = new Int2ObjectOpenHashMap();
+   private final List<fqs> l = Lists.newArrayList();
+   private final IntFunction<fqr.a> m = this::b;
+   private final IntFunction<fqv> n = this::c;
 
-   public static fqt a(BooleanConsumer $$0, BanDetails $$1) {
-      return new fqt($$0, a($$1), b($$1), ayi.n, xi.m, true);
+   public fqr(hbf $$0, alz $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public static fqt a(Runnable $$0) {
-      URI $$1 = ayi.n;
-      return new fqt($$2 -> {
-         if ($$2) {
-            ae.m().a($$1);
+   public void a(List<fek.a> $$0, Set<fqq> $$1) {
+      this.g = $$0;
+      this.a($$1);
+   }
+
+   public void a(Set<fqq> $$0) {
+      this.h = List.of();
+      this.c();
+      this.h = this.b(this.g, $$0);
+   }
+
+   private void c() {
+      this.d();
+      this.i.a();
+      this.j.a();
+      this.k.clear();
+      this.e = fqx.b.bake(this::a);
+      this.f = fqx.a.bake(this::a);
+   }
+
+   private List<fek> b(List<fek.a> $$0, Set<fqq> $$1) {
+      IntSet $$2 = new IntOpenHashSet();
+      List<fek> $$3 = new ArrayList<>();
+
+      for (fek.a $$4 : $$0) {
+         if ($$4.b().a($$1)) {
+            $$3.add($$4.a());
+            $$2.addAll($$4.a().a());
          }
+      }
 
-         $$0.run();
-      }, d, e, $$1, xi.m, true);
-   }
-
-   public static fqt a(String $$0, Runnable $$1) {
-      URI $$2 = ayi.n;
-      return new fqt($$2x -> {
-         if ($$2x) {
-            ae.m().a($$2);
+      Set<fek> $$5 = Sets.newHashSet();
+      $$2.forEach($$2x -> {
+         for (fek $$3x : $$3) {
+            fej $$4x = $$3x.a($$2x);
+            if ($$4x != null) {
+               $$5.add($$3x);
+               if ($$4x != fqx.b) {
+                  ((IntList)this.k.computeIfAbsent(bae.f($$4x.a(false)), $$0xx -> new IntArrayList())).add($$2x);
+               }
+               break;
+            }
          }
-
-         $$1.run();
-      }, a, xj.a("gui.banned.name.description", xj.b($$0).a(n.o), xj.a(ayi.n)), $$2, xi.m, true);
+      });
+      return $$3.stream().filter($$5::contains).toList();
    }
 
-   private static xj a(BanDetails $$0) {
-      return f($$0) ? b : c;
+   @Override
+   public void close() {
+      this.d();
    }
 
-   private static xj b(BanDetails $$0) {
-      return xj.a("gui.banned.description", c($$0), d($$0), xj.a(ayi.n));
+   private void d() {
+      for (fqs $$0 : this.l) {
+         $$0.close();
+      }
+
+      this.l.clear();
    }
 
-   private static xj c(BanDetails $$0) {
-      String $$1 = $$0.reason();
-      String $$2 = $$0.reasonMessage();
-      if (StringUtils.isNumeric($$1)) {
-         int $$3 = Integer.parseInt($$1);
-         geh $$4 = geh.a($$3);
-         xj $$5;
-         if ($$4 != null) {
-            $$5 = xm.a($$4.a().f(), yg.a.a(true));
-         } else if ($$2 != null) {
-            $$5 = xj.a("gui.banned.description.reason_id_message", $$3, $$2).a(n.r);
-         } else {
-            $$5 = xj.a("gui.banned.description.reason_id", $$3).a(n.r);
-         }
-
-         return xj.a("gui.banned.description.reason", $$5);
+   private static boolean b(fej $$0) {
+      float $$1 = $$0.a(false);
+      if (!($$1 < 0.0F) && !($$1 > 32.0F)) {
+         float $$2 = $$0.a(true);
+         return $$2 < 0.0F || $$2 > 32.0F;
       } else {
-         return xj.c("gui.banned.description.unknownreason");
+         return true;
       }
    }
 
-   private static xj d(BanDetails $$0) {
-      if (f($$0)) {
-         xj $$1 = e($$0);
-         return xj.a("gui.banned.description.temporary", xj.a("gui.banned.description.temporary.duration", $$1).a(n.r));
-      } else {
-         return xj.c("gui.banned.description.permanent").a(n.r);
+   private fqr.a b(int $$0) {
+      fej $$1 = null;
+
+      for (fek $$2 : this.h) {
+         fej $$3 = $$2.a($$0);
+         if ($$3 != null) {
+            if ($$1 == null) {
+               $$1 = $$3;
+            }
+
+            if (!b($$3)) {
+               return new fqr.a($$1, $$3);
+            }
+         }
       }
+
+      return $$1 != null ? new fqr.a($$1, fqx.b) : fqr.a.c;
    }
 
-   private static xj e(BanDetails $$0) {
-      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
-      long $$2 = $$1.toHours();
-      if ($$2 > 72L) {
-         return xi.a($$1.toDays());
-      } else {
-         return $$2 < 1L ? xi.c($$1.toMinutes()) : xi.b($$1.toHours());
-      }
+   public fej a(int $$0, boolean $$1) {
+      return this.j.a($$0, this.m).a($$1);
    }
 
-   private static boolean f(BanDetails $$0) {
-      return $$0.expires() != null;
+   private fqv c(int $$0) {
+      for (fek $$1 : this.h) {
+         fej $$2 = $$1.a($$0);
+         if ($$2 != null) {
+            return $$2.bake(this::a);
+         }
+      }
+
+      return this.e;
+   }
+
+   public fqv a(int $$0) {
+      return this.i.a($$0, this.n);
+   }
+
+   private fqv a(fel $$0) {
+      for (fqs $$1 : this.l) {
+         fqv $$2 = $$1.a($$0);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
+
+      alz $$3 = this.d.g("/" + this.l.size());
+      boolean $$4 = $$0.c();
+      fqt $$5 = $$4 ? fqt.b($$3) : fqt.a($$3);
+      fqs $$6 = new fqs($$5, $$4);
+      this.l.add($$6);
+      this.c.a($$3, $$6);
+      fqv $$7 = $$6.a($$0);
+      return $$7 == null ? this.e : $$7;
+   }
+
+   public fqv a(fej $$0) {
+      IntList $$1 = (IntList)this.k.get(bae.f($$0.a(false)));
+      return $$1 != null && !$$1.isEmpty() ? this.a($$1.getInt(a.a($$1.size()))) : this.e;
+   }
+
+   public alz a() {
+      return this.d;
+   }
+
+   public fqv b() {
+      return this.f;
+   }
+
+   static record a(fej a, fej b) {
+      static final fqr.a c = new fqr.a(fqx.b, fqx.b);
+
+      fej a(boolean $$0) {
+         return $$0 ? this.b : this.a;
+      }
    }
 }

@@ -1,63 +1,27 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayDeque;
-import java.util.List;
-import java.util.Set;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.jetbrains.annotations.VisibleForTesting;
 
-public class xw {
-   public static final int a = -1;
-   private static final int b = 128;
-   private final xv[] c;
-
-   public xw(int $$0) {
-      this.c = new xv[$$0];
+public interface xw {
+   default <T> Optional<T> a(ya.b<T> $$0, ys $$1) {
+      return Optional.empty();
    }
 
-   public static xw a() {
-      return new xw(128);
+   default <T> Optional<T> a(ya.a<T> $$0) {
+      return Optional.empty();
    }
 
-   public int a(xv $$0) {
-      for (int $$1 = 0; $$1 < this.c.length; $$1++) {
-         if ($$0.equals(this.c[$$1])) {
-            return $$1;
-         }
-      }
-
-      return -1;
+   default yj a(@Nullable ew $$0, @Nullable bvf $$1, int $$2) throws CommandSyntaxException {
+      return yj.a(this);
    }
 
-   @Nullable
-   public xv a(int $$0) {
-      return this.c[$$0];
-   }
+   xw.a<?> a();
 
-   public void a(yc $$0, @Nullable xv $$1) {
-      List<xv> $$2 = $$0.d().a();
-      ArrayDeque<xv> $$3 = new ArrayDeque<>($$2.size() + 1);
-      $$3.addAll($$2);
-      if ($$1 != null) {
-         $$3.add($$1);
-      }
-
-      this.a($$3);
-   }
-
-   @VisibleForTesting
-   void a(List<xv> $$0) {
-      this.a(new ArrayDeque<>($$0));
-   }
-
-   private void a(ArrayDeque<xv> $$0) {
-      Set<xv> $$1 = new ObjectOpenHashSet($$0);
-
-      for (int $$2 = 0; !$$0.isEmpty() && $$2 < this.c.length; $$2++) {
-         xv $$3 = this.c[$$2];
-         this.c[$$2] = $$0.removeLast();
-         if ($$3 != null && !$$1.contains($$3)) {
-            $$0.addFirst($$3);
-         }
+   public static record a<T extends xw>(MapCodec<T> a, String b) implements bba {
+      @Override
+      public String c() {
+         return this.b;
       }
    }
 }

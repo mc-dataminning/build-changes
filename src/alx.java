@@ -1,97 +1,128 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.List;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import java.util.concurrent.Executor;
-import org.slf4j.Logger;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
 
-public class alx implements auw {
-   private static final Logger b = LogUtils.getLogger();
-   public static final ali<kd<ik<ew>>> a = ali.a(alj.b("function"));
-   private static final alc c = new alc(ma.c(a), ".mcfunction");
-   private volatile Map<alj, ik<ew>> d = ImmutableMap.of();
-   private final axt<ik<ew>> e = new axt<>(this::a, ma.d(a));
-   private volatile Map<alj, List<ik<ew>>> f = Map.of();
-   private final int g;
-   private final CommandDispatcher<ew> h;
+public class alx<T> extends alq<T> {
+   private final alx.c b;
 
-   public Optional<ik<ew>> a(alj $$0) {
-      return Optional.ofNullable(this.d.get($$0));
+   public static <T> alx<T> a(DynamicOps<T> $$0, js.a $$1) {
+      return a($$0, new alx.a($$1));
    }
 
-   public Map<alj, ik<ew>> a() {
-      return this.d;
+   public static <T> alx<T> a(DynamicOps<T> $$0, alx.c $$1) {
+      return new alx<>($$0, $$1);
    }
 
-   public List<ik<ew>> b(alj $$0) {
-      return this.f.getOrDefault($$0, List.of());
+   public static <T> Dynamic<T> a(Dynamic<T> $$0, js.a $$1) {
+      return new Dynamic($$1.a($$0.getOps()), $$0.getValue());
    }
 
-   public Iterable<alj> b() {
-      return this.f.keySet();
+   private alx(DynamicOps<T> $$0, alx.c $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
-   public alx(int $$0, CommandDispatcher<ew> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public <U> alx<U> a(DynamicOps<U> $$0) {
+      return (alx<U>)($$0 == this.a ? this : new alx((DynamicOps<T>)$$0, this.b));
+   }
+
+   public <E> Optional<jt<E>> a(aly<? extends kd<? extends E>> $$0) {
+      return this.b.a($$0).map(alx.b::a);
+   }
+
+   public <E> Optional<jr<E>> b(aly<? extends kd<? extends E>> $$0) {
+      return this.b.a($$0).map(alx.b::b);
    }
 
    @Override
-   public CompletableFuture<Void> a(auw.a $$0, avd $$1, Executor $$2, Executor $$3) {
-      CompletableFuture<Map<alj, List<axt.a>>> $$4 = CompletableFuture.supplyAsync(() -> this.e.a($$1), $$2);
-      CompletableFuture<Map<alj, CompletableFuture<ik<ew>>>> $$5 = CompletableFuture.<Map<alj, avb>>supplyAsync(() -> c.a($$1), $$2).thenCompose($$1x -> {
-         Map<alj, CompletableFuture<ik<ew>>> $$2x = Maps.newHashMap();
-         ew $$3x = new ew(ev.a, ezy.c, ezx.a, null, this.g, "", xi.a, null, null);
-
-         for (Entry<alj, avb> $$4x : $$1x.entrySet()) {
-            alj $$5x = $$4x.getKey();
-            alj $$6 = c.b($$5x);
-            $$2x.put($$6, CompletableFuture.supplyAsync(() -> {
-               List<String> $$3xx = a($$4x.getValue());
-               return ik.a($$6, this.h, $$3x, $$3xx);
-            }, $$2));
-         }
-
-         CompletableFuture<?>[] $$7 = $$2x.values().toArray(new CompletableFuture[0]);
-         return CompletableFuture.allOf($$7).handle(($$1xx, $$2xx) -> $$2x);
-      });
-      return $$4.thenCombine($$5, Pair::of).thenCompose($$0::a).thenAcceptAsync($$0x -> {
-         Map<alj, CompletableFuture<ik<ew>>> $$1x = (Map<alj, CompletableFuture<ik<ew>>>)$$0x.getSecond();
-         Builder<alj, ik<ew>> $$2x = ImmutableMap.builder();
-         $$1x.forEach(($$1xx, $$2xx) -> $$2xx.handle(($$2xxx, $$3x) -> {
-               if ($$3x != null) {
-                  b.error("Failed to load function {}", $$1xx, $$3x);
-               } else {
-                  $$2x.put($$1xx, $$2xxx);
-               }
-
-               return null;
-            }).join());
-         this.d = $$2x.build();
-         this.f = this.e.a((Map<alj, List<axt.a>>)$$0x.getFirst());
-      }, $$3);
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         alx<?> $$1 = (alx<?>)$$0;
+         return this.a.equals($$1.a) && this.b.equals($$1.b);
+      } else {
+         return false;
+      }
    }
 
-   private static List<String> a(avb $$0) {
-      try {
-         List var2;
-         try (BufferedReader $$1 = $$0.e()) {
-            var2 = $$1.lines().toList();
-         }
+   @Override
+   public int hashCode() {
+      return this.a.hashCode() * 31 + this.b.hashCode();
+   }
 
-         return var2;
-      } catch (IOException var6) {
-         throw new CompletionException(var6);
+   public static <E, O> RecordCodecBuilder<O, jr<E>> c(aly<? extends kd<? extends E>> $$0) {
+      return azn.a(
+            (Function<DynamicOps<?>, DataResult<E>>)($$1 -> $$1 instanceof alx<?> $$2
+                  ? $$2.b.a($$0).map($$0xx -> DataResult.success($$0xx.b(), $$0xx.c())).orElseGet(() -> DataResult.error(() -> "Unknown registry: " + $$0))
+                  : DataResult.error(() -> "Not a registry ops"))
+         )
+         .forGetter($$0x -> null);
+   }
+
+   public static <E, O> RecordCodecBuilder<O, jq.c<E>> d(aly<E> $$0) {
+      aly<? extends kd<E>> $$1 = aly.a($$0.b());
+      return azn.a(
+            (Function<DynamicOps<?>, DataResult<E>>)($$2 -> $$2 instanceof alx<?> $$3
+                  ? $$3.b
+                     .a($$1)
+                     .flatMap($$1xx -> $$1xx.b().a($$0))
+                     .<DataResult<E>>map(DataResult::success)
+                     .orElseGet(() -> DataResult.error(() -> "Can't find value: " + $$0))
+                  : DataResult.error(() -> "Not a registry ops"))
+         )
+         .forGetter($$0x -> null);
+   }
+
+   static final class a implements alx.c {
+      private final js.a a;
+      private final Map<aly<? extends kd<?>>, Optional<? extends alx.b<?>>> b = new ConcurrentHashMap<>();
+
+      public a(js.a $$0) {
+         this.a = $$0;
       }
+
+      @Override
+      public <E> Optional<alx.b<E>> a(aly<? extends kd<? extends E>> $$0) {
+         return (Optional<alx.b<E>>)this.b.computeIfAbsent($$0, this::b);
+      }
+
+      private Optional<alx.b<Object>> b(aly<? extends kd<?>> $$0) {
+         return this.a.a($$0).map(alx.b::a);
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else {
+            if ($$0 instanceof alx.a $$1 && this.a.equals($$1.a)) {
+               return true;
+            }
+
+            return false;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         return this.a.hashCode();
+      }
+   }
+
+   public static record b<T>(jt<T> a, jr<T> b, Lifecycle c) {
+      public static <T> alx.b<T> a(js.b<T> $$0) {
+         return new alx.b<>($$0, $$0, $$0.h());
+      }
+   }
+
+   public interface c {
+      <T> Optional<alx.b<T>> a(aly<? extends kd<? extends T>> var1);
    }
 }

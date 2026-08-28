@@ -1,46 +1,61 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.floats.FloatConsumer;
-import java.nio.ByteBuffer;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.Collections;
 import java.util.List;
-import org.lwjgl.BufferUtils;
+import java.util.Map;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class hdw implements FloatConsumer {
-   private final List<ByteBuffer> a = Lists.newArrayList();
-   private final int b;
-   private int c;
-   private ByteBuffer d;
+public class hdw extends hdk {
+   private final List<hdw.a> b;
+   private final Map<dxn, BitSet> c = new Reference2ObjectOpenHashMap();
 
-   public hdw(int $$0) {
-      this.b = $$0 + 1 & -2;
-      this.d = BufferUtils.createByteBuffer($$0);
-   }
-
-   public void accept(float $$0) {
-      if (this.d.remaining() == 0) {
-         this.d.flip();
-         this.a.add(this.d);
-         this.d = BufferUtils.createByteBuffer(this.b);
-      }
-
-      int $$1 = azm.a((int)($$0 * 32767.5F - 0.5F), -32768, 32767);
-      this.d.putShort((short)$$1);
-      this.c += 2;
-   }
-
-   public ByteBuffer a() {
-      this.d.flip();
-      if (this.a.isEmpty()) {
-         return this.d;
+   private static hdg a(List<hdw.a> $$0) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Model must have at least one selector");
       } else {
-         ByteBuffer $$0 = BufferUtils.createByteBuffer(this.c);
-         this.a.forEach($$0::put);
-         $$0.put(this.d);
-         $$0.flip();
-         return $$0;
+         return $$0.getFirst().b();
       }
    }
 
-   public int b() {
-      return this.c;
+   public hdw(List<hdw.a> $$0) {
+      super(a($$0));
+      this.b = $$0;
+   }
+
+   @Override
+   public List<gml> a(@Nullable dxn $$0, @Nullable jm $$1, bam $$2) {
+      if ($$0 == null) {
+         return Collections.emptyList();
+      } else {
+         BitSet $$3 = this.c.get($$0);
+         if ($$3 == null) {
+            $$3 = new BitSet();
+
+            for (int $$4 = 0; $$4 < this.b.size(); $$4++) {
+               if (this.b.get($$4).a.test($$0)) {
+                  $$3.set($$4);
+               }
+            }
+
+            this.c.put($$0, $$3);
+         }
+
+         List<gml> $$5 = new ArrayList<>();
+         long $$6 = $$2.g();
+
+         for (int $$7 = 0; $$7 < $$3.length(); $$7++) {
+            if ($$3.get($$7)) {
+               $$2.b($$6);
+               $$5.addAll(this.b.get($$7).b.a($$0, $$1, $$2));
+            }
+         }
+
+         return $$5;
+      }
+   }
+
+   public static record a(Predicate<dxn> a, hdg b) {
    }
 }

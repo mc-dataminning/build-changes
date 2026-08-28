@@ -1,30 +1,65 @@
-public class cdp extends ccf {
-   private final bvp a;
+import java.util.EnumSet;
 
-   public cdp(bvp $$0) {
+public class cdp extends ccz {
+   private final bwd a;
+   private bwb b;
+   private int c;
+
+   public cdp(bwd $$0) {
       this.a = $$0;
+      this.a(EnumSet.of(ccz.a.a, ccz.a.b));
    }
 
    @Override
    public boolean b() {
-      return this.a.aJ() && !this.a.dV().b_(this.a.dv()).a(axi.a);
+      bwb $$0 = this.a.O_();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0;
+         return true;
+      }
    }
 
    @Override
-   public void d() {
-      jh $$0 = null;
+   public boolean c() {
+      if (!this.b.bL()) {
+         return false;
+      } else {
+         return this.a.g(this.b) > 225.0 ? false : !this.a.L().m() || this.b();
+      }
+   }
 
-      for (jh $$2 : jh.b(
-         azm.a(this.a.dA() - 2.0), azm.a(this.a.dC() - 2.0), azm.a(this.a.dG() - 2.0), azm.a(this.a.dA() + 2.0), this.a.dB(), azm.a(this.a.dG() + 2.0)
-      )) {
-         if (this.a.dV().b_($$2).a(axi.a)) {
-            $$0 = $$2;
-            break;
-         }
+   @Override
+   public void e() {
+      this.b = null;
+      this.a.L().o();
+   }
+
+   @Override
+   public boolean V_() {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.a.H().a(this.b, 30.0F, 30.0F);
+      double $$0 = (double)(this.a.dq() * 2.0F * this.a.dq() * 2.0F);
+      double $$1 = this.a.i(this.b.dA(), this.b.dC(), this.b.dG());
+      double $$2 = 0.8;
+      if ($$1 > $$0 && $$1 < 16.0) {
+         $$2 = 1.33;
+      } else if ($$1 < 225.0) {
+         $$2 = 0.6;
       }
 
-      if ($$0 != null) {
-         this.a.I().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
+      this.a.L().a(this.b, $$2);
+      this.c = Math.max(this.c - 1, 0);
+      if (!($$1 > $$0)) {
+         if (this.c <= 0) {
+            this.c = 20;
+            this.a.c(a(this.a), this.b);
+         }
       }
    }
 }

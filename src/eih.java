@@ -1,43 +1,96 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class eih extends eim {
-   public static final MapCodec<eih> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eih::new));
-   protected final int b;
+public class eih extends ego<eiz> {
+   private static final jm[] a = jm.values();
 
-   protected static <P extends eih> P3<Mu<P>, brp, brp, Integer> a(Instance<P> $$0) {
-      return b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b));
-   }
-
-   public eih(brp $$0, brp $$1, int $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+   public eih(Codec<eiz> $$0) {
+      super($$0);
    }
 
    @Override
-   protected ein<?> a() {
-      return ein.a;
-   }
-
-   @Override
-   protected void a(dfs $$0, eim.b $$1, azu $$2, ehw $$3, int $$4, eim.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = Math.max($$7 + $$5.b() - 1 - $$9 / 2, 0);
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+   public boolean a(egq<eiz> $$0) {
+      dhy $$1 = $$0.b();
+      jh $$2 = $$0.e();
+      bam $$3 = $$0.d();
+      if (!$$1.u($$2)) {
+         return false;
+      } else {
+         dxn $$4 = $$1.a_($$2.d());
+         if (!$$4.a(dkg.ei) && !$$4.a(dkg.lf)) {
+            return false;
+         } else {
+            this.a($$1, $$3, $$2);
+            this.b($$1, $$3, $$2);
+            return true;
+         }
       }
    }
 
-   @Override
-   public int a(azu $$0, int $$1, ehw $$2) {
-      return this.b;
+   private void a(dhb $$0, bam $$1, jh $$2) {
+      $$0.a($$2, dkg.lf.m(), 2);
+      jh.a $$3 = new jh.a();
+      jh.a $$4 = new jh.a();
+
+      for (int $$5 = 0; $$5 < 200; $$5++) {
+         $$3.a($$2, $$1.a(6) - $$1.a(6), $$1.a(2) - $$1.a(5), $$1.a(6) - $$1.a(6));
+         if ($$0.u($$3)) {
+            int $$6 = 0;
+
+            for (jm $$7 : a) {
+               dxn $$8 = $$0.a_($$4.a($$3, $$7));
+               if ($$8.a(dkg.ei) || $$8.a(dkg.lf)) {
+                  $$6++;
+               }
+
+               if ($$6 > 1) {
+                  break;
+               }
+            }
+
+            if ($$6 == 1) {
+               $$0.a($$3, dkg.lf.m(), 2);
+            }
+         }
+      }
    }
 
-   @Override
-   protected boolean a(azu $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && ($$0.a(2) == 0 || $$2 == 0);
+   private void b(dhb $$0, bam $$1, jh $$2) {
+      jh.a $$3 = new jh.a();
+
+      for (int $$4 = 0; $$4 < 100; $$4++) {
+         $$3.a($$2, $$1.a(8) - $$1.a(8), $$1.a(2) - $$1.a(7), $$1.a(8) - $$1.a(8));
+         if ($$0.u($$3)) {
+            dxn $$5 = $$0.a_($$3.d());
+            if ($$5.a(dkg.ei) || $$5.a(dkg.lf)) {
+               int $$6 = bae.a($$1, 1, 8);
+               if ($$1.a(6) == 0) {
+                  $$6 *= 2;
+               }
+
+               if ($$1.a(5) == 0) {
+                  $$6 = 1;
+               }
+
+               int $$7 = 17;
+               int $$8 = 25;
+               a($$0, $$1, $$3, $$6, 17, 25);
+            }
+         }
+      }
+   }
+
+   public static void a(dhb $$0, bam $$1, jh.a $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = 0; $$6 <= $$3; $$6++) {
+         if ($$0.u($$2)) {
+            if ($$6 == $$3 || !$$0.u($$2.e())) {
+               $$0.a($$2, dkg.oU.m().b(dnu.e, Integer.valueOf(bae.a($$1, $$4, $$5))), 2);
+               break;
+            }
+
+            $$0.a($$2, dkg.oV.m(), 2);
+         }
+
+         $$2.c(jm.a);
+      }
    }
 }

@@ -1,178 +1,196 @@
-public final class axl {
-   public static final axs<cwi> a = a("wool");
-   public static final axs<cwi> b = a("planks");
-   public static final axs<cwi> c = a("stone_bricks");
-   public static final axs<cwi> d = a("wooden_buttons");
-   public static final axs<cwi> e = a("stone_buttons");
-   public static final axs<cwi> f = a("buttons");
-   public static final axs<cwi> g = a("wool_carpets");
-   public static final axs<cwi> h = a("wooden_doors");
-   public static final axs<cwi> i = a("wooden_stairs");
-   public static final axs<cwi> j = a("wooden_slabs");
-   public static final axs<cwi> k = a("wooden_fences");
-   public static final axs<cwi> l = a("fence_gates");
-   public static final axs<cwi> m = a("wooden_pressure_plates");
-   public static final axs<cwi> n = a("wooden_trapdoors");
-   public static final axs<cwi> o = a("doors");
-   public static final axs<cwi> p = a("saplings");
-   public static final axs<cwi> q = a("logs_that_burn");
-   public static final axs<cwi> r = a("logs");
-   public static final axs<cwi> s = a("dark_oak_logs");
-   public static final axs<cwi> t = a("oak_logs");
-   public static final axs<cwi> u = a("birch_logs");
-   public static final axs<cwi> v = a("acacia_logs");
-   public static final axs<cwi> w = a("cherry_logs");
-   public static final axs<cwi> x = a("jungle_logs");
-   public static final axs<cwi> y = a("spruce_logs");
-   public static final axs<cwi> z = a("mangrove_logs");
-   public static final axs<cwi> A = a("crimson_stems");
-   public static final axs<cwi> B = a("warped_stems");
-   public static final axs<cwi> C = a("bamboo_blocks");
-   public static final axs<cwi> D = a("wart_blocks");
-   public static final axs<cwi> E = a("banners");
-   public static final axs<cwi> F = a("sand");
-   public static final axs<cwi> G = a("smelts_to_glass");
-   public static final axs<cwi> H = a("stairs");
-   public static final axs<cwi> I = a("slabs");
-   public static final axs<cwi> J = a("walls");
-   public static final axs<cwi> K = a("anvil");
-   public static final axs<cwi> L = a("rails");
-   public static final axs<cwi> M = a("leaves");
-   public static final axs<cwi> N = a("trapdoors");
-   public static final axs<cwi> O = a("small_flowers");
-   public static final axs<cwi> P = a("beds");
-   public static final axs<cwi> Q = a("fences");
-   public static final axs<cwi> R = a("tall_flowers");
-   public static final axs<cwi> S = a("flowers");
-   public static final axs<cwi> T = a("piglin_repellents");
-   public static final axs<cwi> U = a("piglin_loved");
-   public static final axs<cwi> V = a("ignored_by_piglin_babies");
-   public static final axs<cwi> W = a("piglin_safe_armor");
-   public static final axs<cwi> X = a("duplicates_allays");
-   public static final axs<cwi> Y = a("brewing_fuel");
-   public static final axs<cwi> Z = a("shulker_boxes");
-   public static final axs<cwi> aa = a("meat");
-   public static final axs<cwi> ab = a("sniffer_food");
-   public static final axs<cwi> ac = a("piglin_food");
-   public static final axs<cwi> ad = a("fox_food");
-   public static final axs<cwi> ae = a("cow_food");
-   public static final axs<cwi> af = a("goat_food");
-   public static final axs<cwi> ag = a("sheep_food");
-   public static final axs<cwi> ah = a("wolf_food");
-   public static final axs<cwi> ai = a("cat_food");
-   public static final axs<cwi> aj = a("horse_food");
-   public static final axs<cwi> ak = a("horse_tempt_items");
-   public static final axs<cwi> al = a("camel_food");
-   public static final axs<cwi> am = a("armadillo_food");
-   public static final axs<cwi> an = a("bee_food");
-   public static final axs<cwi> ao = a("chicken_food");
-   public static final axs<cwi> ap = a("frog_food");
-   public static final axs<cwi> aq = a("hoglin_food");
-   public static final axs<cwi> ar = a("llama_food");
-   public static final axs<cwi> as = a("llama_tempt_items");
-   public static final axs<cwi> at = a("ocelot_food");
-   public static final axs<cwi> au = a("panda_food");
-   public static final axs<cwi> av = a("panda_eats_from_ground");
-   public static final axs<cwi> aw = a("pig_food");
-   public static final axs<cwi> ax = a("rabbit_food");
-   public static final axs<cwi> ay = a("strider_food");
-   public static final axs<cwi> az = a("strider_tempt_items");
-   public static final axs<cwi> aA = a("turtle_food");
-   public static final axs<cwi> aB = a("parrot_food");
-   public static final axs<cwi> aC = a("parrot_poisonous_food");
-   public static final axs<cwi> aD = a("axolotl_food");
-   public static final axs<cwi> aE = a("gold_ores");
-   public static final axs<cwi> aF = a("iron_ores");
-   public static final axs<cwi> aG = a("diamond_ores");
-   public static final axs<cwi> aH = a("redstone_ores");
-   public static final axs<cwi> aI = a("lapis_ores");
-   public static final axs<cwi> aJ = a("coal_ores");
-   public static final axs<cwi> aK = a("emerald_ores");
-   public static final axs<cwi> aL = a("copper_ores");
-   public static final axs<cwi> aM = a("non_flammable_wood");
-   public static final axs<cwi> aN = a("soul_fire_base_blocks");
-   public static final axs<cwi> aO = a("candles");
-   public static final axs<cwi> aP = a("dirt");
-   public static final axs<cwi> aQ = a("terracotta");
-   public static final axs<cwi> aR = a("completes_find_tree_tutorial");
-   public static final axs<cwi> aS = a("boats");
-   public static final axs<cwi> aT = a("chest_boats");
-   public static final axs<cwi> aU = a("fishes");
-   public static final axs<cwi> aV = a("signs");
-   public static final axs<cwi> aW = a("creeper_drop_music_discs");
-   public static final axs<cwi> aX = a("coals");
-   public static final axs<cwi> aY = a("arrows");
-   public static final axs<cwi> aZ = a("lectern_books");
-   public static final axs<cwi> ba = a("bookshelf_books");
-   public static final axs<cwi> bb = a("beacon_payment_items");
-   public static final axs<cwi> bc = a("wooden_tool_materials");
-   public static final axs<cwi> bd = a("stone_tool_materials");
-   public static final axs<cwi> be = a("iron_tool_materials");
-   public static final axs<cwi> bf = a("gold_tool_materials");
-   public static final axs<cwi> bg = a("diamond_tool_materials");
-   public static final axs<cwi> bh = a("netherite_tool_materials");
-   public static final axs<cwi> bi = a("repairs_leather_armor");
-   public static final axs<cwi> bj = a("repairs_chain_armor");
-   public static final axs<cwi> bk = a("repairs_iron_armor");
-   public static final axs<cwi> bl = a("repairs_gold_armor");
-   public static final axs<cwi> bm = a("repairs_diamond_armor");
-   public static final axs<cwi> bn = a("repairs_netherite_armor");
-   public static final axs<cwi> bo = a("repairs_turtle_helmet");
-   public static final axs<cwi> bp = a("repairs_wolf_armor");
-   public static final axs<cwi> bq = a("stone_crafting_materials");
-   public static final axs<cwi> br = a("freeze_immune_wearables");
-   public static final axs<cwi> bs = a("dampens_vibrations");
-   public static final axs<cwi> bt = a("cluster_max_harvestables");
-   public static final axs<cwi> bu = a("compasses");
-   public static final axs<cwi> bv = a("hanging_signs");
-   public static final axs<cwi> bw = a("creeper_igniters");
-   public static final axs<cwi> bx = a("noteblock_top_instruments");
-   public static final axs<cwi> by = a("foot_armor");
-   public static final axs<cwi> bz = a("leg_armor");
-   public static final axs<cwi> bA = a("chest_armor");
-   public static final axs<cwi> bB = a("head_armor");
-   public static final axs<cwi> bC = a("skulls");
-   public static final axs<cwi> bD = a("trimmable_armor");
-   public static final axs<cwi> bE = a("trim_materials");
-   public static final axs<cwi> bF = a("trim_templates");
-   public static final axs<cwi> bG = a("decorated_pot_sherds");
-   public static final axs<cwi> bH = a("decorated_pot_ingredients");
-   public static final axs<cwi> bI = a("swords");
-   public static final axs<cwi> bJ = a("axes");
-   public static final axs<cwi> bK = a("hoes");
-   public static final axs<cwi> bL = a("pickaxes");
-   public static final axs<cwi> bM = a("shovels");
-   public static final axs<cwi> bN = a("breaks_decorated_pots");
-   public static final axs<cwi> bO = a("villager_plantable_seeds");
-   public static final axs<cwi> bP = a("villager_picks_up");
-   public static final axs<cwi> bQ = a("dyeable");
-   public static final axs<cwi> bR = a("furnace_minecart_fuel");
-   public static final axs<cwi> bS = a("bundles");
-   public static final axs<cwi> bT = a("enchantable/foot_armor");
-   public static final axs<cwi> bU = a("enchantable/leg_armor");
-   public static final axs<cwi> bV = a("enchantable/chest_armor");
-   public static final axs<cwi> bW = a("enchantable/head_armor");
-   public static final axs<cwi> bX = a("enchantable/armor");
-   public static final axs<cwi> bY = a("enchantable/sword");
-   public static final axs<cwi> bZ = a("enchantable/fire_aspect");
-   public static final axs<cwi> ca = a("enchantable/sharp_weapon");
-   public static final axs<cwi> cb = a("enchantable/weapon");
-   public static final axs<cwi> cc = a("enchantable/mining");
-   public static final axs<cwi> cd = a("enchantable/mining_loot");
-   public static final axs<cwi> ce = a("enchantable/fishing");
-   public static final axs<cwi> cf = a("enchantable/trident");
-   public static final axs<cwi> cg = a("enchantable/durability");
-   public static final axs<cwi> ch = a("enchantable/bow");
-   public static final axs<cwi> ci = a("enchantable/equippable");
-   public static final axs<cwi> cj = a("enchantable/crossbow");
-   public static final axs<cwi> ck = a("enchantable/vanishing");
-   public static final axs<cwi> cl = a("enchantable/mace");
-   public static final axs<cwi> cm = a("map_invisibility_equipment");
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.internal.Streams;
+import com.google.gson.stream.JsonReader;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.io.File;
+import java.io.IOException;
+import java.io.StringReader;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.Map.Entry;
+import net.minecraft.server.MinecraftServer;
+import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
 
-   private axl() {
+public class axl extends axq {
+   private static final Logger b = LogUtils.getLogger();
+   private final MinecraftServer c;
+   private final File d;
+   private final Set<axm<?>> e = Sets.newHashSet();
+
+   public axl(MinecraftServer $$0, File $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      if ($$1.isFile()) {
+         try {
+            this.a($$0.aC(), FileUtils.readFileToString($$1));
+         } catch (IOException var4) {
+            b.error("Couldn't read statistics file {}", $$1, var4);
+         } catch (JsonParseException var5) {
+            b.error("Couldn't parse statistics file {}", $$1, var5);
+         }
+      }
    }
 
-   private static axs<cwi> a(String $$0) {
-      return axs.a(ma.K, alj.b($$0));
+   public void a() {
+      try {
+         FileUtils.writeStringToFile(this.d, this.b());
+      } catch (IOException var2) {
+         b.error("Couldn't save stats", var2);
+      }
+   }
+
+   @Override
+   public void a(cps $$0, axm<?> $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.e.add($$1);
+   }
+
+   private Set<axm<?>> d() {
+      Set<axm<?>> $$0 = Sets.newHashSet(this.e);
+      this.e.clear();
+      return $$0;
+   }
+
+   public void a(DataFixer $$0, String $$1) {
+      try {
+         JsonReader $$2 = new JsonReader(new StringReader($$1));
+
+         label47: {
+            try {
+               $$2.setLenient(false);
+               JsonElement $$3 = Streams.parse($$2);
+               if (!$$3.isJsonNull()) {
+                  ux $$4 = a($$3.getAsJsonObject());
+                  $$4 = bbo.g.a($$0, $$4, vm.b($$4, 1343));
+                  if (!$$4.b("stats", 10)) {
+                     break label47;
+                  }
+
+                  ux $$5 = $$4.p("stats");
+                  Iterator var7 = $$5.e().iterator();
+
+                  while (true) {
+                     if (!var7.hasNext()) {
+                        break label47;
+                     }
+
+                     String $$6 = (String)var7.next();
+                     if ($$5.b($$6, 10)) {
+                        ae.a(
+                           ma.v.b(alz.a($$6)),
+                           $$2x -> {
+                              ux $$3x = $$5.p($$6);
+
+                              for (String $$4x : $$3x.e()) {
+                                 if ($$3x.b($$4x, 99)) {
+                                    ae.a(
+                                       this.a($$2x, $$4x),
+                                       $$2xx -> this.a.put($$2xx, $$3x.h($$4x)),
+                                       () -> b.warn("Invalid statistic in {}: Don't know what {} is", this.d, $$4x)
+                                    );
+                                 } else {
+                                    b.warn("Invalid statistic value in {}: Don't know what {} is for key {}", new Object[]{this.d, $$3x.c($$4x), $$4x});
+                                 }
+                              }
+                           },
+                           () -> b.warn("Invalid statistic type in {}: Don't know what {} is", this.d, $$6)
+                        );
+                     }
+                  }
+               }
+
+               b.error("Unable to parse Stat data from {}", this.d);
+            } catch (Throwable var10) {
+               try {
+                  $$2.close();
+               } catch (Throwable var9) {
+                  var10.addSuppressed(var9);
+               }
+
+               throw var10;
+            }
+
+            $$2.close();
+            return;
+         }
+
+         $$2.close();
+      } catch (IOException | JsonParseException var11) {
+         b.error("Unable to parse Stat data from {}", this.d, var11);
+      }
+   }
+
+   private <T> Optional<axm<T>> a(axo<T> $$0, String $$1) {
+      return Optional.ofNullable(alz.c($$1)).flatMap($$0.b()::b).map($$0::b);
+   }
+
+   private static ux a(JsonObject $$0) {
+      ux $$1 = new ux();
+
+      for (Entry<String, JsonElement> $$2 : $$0.entrySet()) {
+         JsonElement $$3 = $$2.getValue();
+         if ($$3.isJsonObject()) {
+            $$1.a($$2.getKey(), a($$3.getAsJsonObject()));
+         } else if ($$3.isJsonPrimitive()) {
+            JsonPrimitive $$4 = $$3.getAsJsonPrimitive();
+            if ($$4.isNumber()) {
+               $$1.a($$2.getKey(), $$4.getAsInt());
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   protected String b() {
+      Map<axo<?>, JsonObject> $$0 = Maps.newHashMap();
+      ObjectIterator $$3 = this.a.object2IntEntrySet().iterator();
+
+      while ($$3.hasNext()) {
+         it.unimi.dsi.fastutil.objects.Object2IntMap.Entry<axm<?>> $$1 = (it.unimi.dsi.fastutil.objects.Object2IntMap.Entry<axm<?>>)$$3.next();
+         axm<?> $$2 = (axm<?>)$$1.getKey();
+         $$0.computeIfAbsent($$2.a(), $$0x -> new JsonObject()).addProperty(b($$2).toString(), $$1.getIntValue());
+      }
+
+      JsonObject $$3x = new JsonObject();
+
+      for (Entry<axo<?>, JsonObject> $$4 : $$0.entrySet()) {
+         $$3x.add(ma.v.b($$4.getKey()).toString(), (JsonElement)$$4.getValue());
+      }
+
+      JsonObject $$5 = new JsonObject();
+      $$5.add("stats", $$3x);
+      $$5.addProperty("DataVersion", ab.b().d().c());
+      return $$5.toString();
+   }
+
+   private static <T> alz b(axm<T> $$0) {
+      return $$0.a().b().b($$0.b());
+   }
+
+   public void c() {
+      this.e.addAll(this.a.keySet());
+   }
+
+   public void a(asi $$0) {
+      Object2IntMap<axm<?>> $$1 = new Object2IntOpenHashMap();
+
+      for (axm<?> $$2 : this.d()) {
+         $$1.put($$2, this.a($$2));
+      }
+
+      $$0.f.b(new acv($$1));
    }
 }

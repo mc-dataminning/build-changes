@@ -1,82 +1,83 @@
-import javax.annotation.Nullable;
+public abstract class fri implements fro {
+   private int c;
+   private int d;
+   protected int a;
+   protected int b;
 
-public class fri extends frw {
-   private static final int a = 80;
-   private static final int b = 120;
-   private static final int c = 360;
-   @Nullable
-   private final xj d;
-   private final xj s;
-   private final Runnable u;
-   @Nullable
-   private fmw v;
-   private fmd w;
-   private int x;
-
-   public static fri a(xj $$0, xj $$1, Runnable $$2) {
-      return new fri($$0, null, $$1, $$2, 0);
-   }
-
-   public static fri a(xj $$0, xj $$1, xj $$2, Runnable $$3) {
-      return new fri($$0, $$1, $$2, $$3, 20);
-   }
-
-   protected fri(xj $$0, @Nullable xj $$1, xj $$2, Runnable $$3, int $$4) {
-      super($$0);
+   public fri(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
       this.d = $$1;
-      this.s = $$2;
-      this.u = $$3;
-      this.x = $$4;
+      this.a = $$2;
+      this.b = $$3;
    }
 
    @Override
-   protected void aR_() {
-      super.aR_();
-      if (this.d != null) {
-         this.v = fmw.a(this.p, this.d, 360);
+   public void m(int $$0) {
+      this.b($$1 -> {
+         int $$2 = $$1.D() + ($$0 - this.D());
+         $$1.m($$2);
+      });
+      this.c = $$0;
+   }
+
+   @Override
+   public void n(int $$0) {
+      this.b($$1 -> {
+         int $$2 = $$1.E() + ($$0 - this.E());
+         $$1.n($$2);
+      });
+      this.d = $$0;
+   }
+
+   @Override
+   public int D() {
+      return this.c;
+   }
+
+   @Override
+   public int E() {
+      return this.d;
+   }
+
+   @Override
+   public int y() {
+      return this.a;
+   }
+
+   @Override
+   public int w() {
+      return this.b;
+   }
+
+   protected abstract static class a {
+      public final frp a;
+      public final frq.a b;
+
+      protected a(frp $$0, frq $$1) {
+         this.a = $$0;
+         this.b = $$1.h();
       }
 
-      int $$0 = 150;
-      int $$1 = 20;
-      int $$2 = this.v != null ? this.v.a() : 1;
-      int $$3 = Math.max($$2, 5) * 9;
-      int $$4 = Math.min(120 + $$3, this.o - 40);
-      this.w = this.c(fmd.a(this.s, $$0x -> this.aO_()).a((this.n - 150) / 2, $$4, 150, 20).a());
-   }
-
-   @Override
-   public void e() {
-      if (this.x > 0) {
-         this.x--;
+      public int a() {
+         return this.a.w() + this.b.b + this.b.d;
       }
 
-      this.w.j = this.x == 0;
-   }
-
-   @Override
-   public void a(flq $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 80, 16777215);
-      if (this.v == null) {
-         String $$4 = frl.a(ae.c());
-         $$0.a(this.p, $$4, this.n / 2, 120, 10526880);
-      } else {
-         this.v.a($$0, this.n / 2, 120);
+      public int b() {
+         return this.a.y() + this.b.a + this.b.c;
       }
-   }
 
-   @Override
-   public boolean aG_() {
-      return this.v != null && this.w.j;
-   }
+      public void a(int $$0, int $$1) {
+         float $$2 = (float)this.b.a;
+         float $$3 = (float)($$1 - this.a.y() - this.b.c);
+         int $$4 = (int)bae.h(this.b.e, $$2, $$3);
+         this.a.m($$4 + $$0);
+      }
 
-   @Override
-   public void aO_() {
-      this.u.run();
-   }
-
-   @Override
-   public xj i() {
-      return xi.a(this.l, this.d != null ? this.d : xi.a);
+      public void b(int $$0, int $$1) {
+         float $$2 = (float)this.b.b;
+         float $$3 = (float)($$1 - this.a.w() - this.b.d);
+         int $$4 = Math.round(bae.h(this.b.f, $$2, $$3));
+         this.a.n($$4 + $$0);
+      }
    }
 }

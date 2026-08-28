@@ -1,29 +1,19 @@
-import it.unimi.dsi.fastutil.floats.FloatConsumer;
-import java.io.IOException;
-import java.nio.ByteBuffer;
+import java.util.List;
+import java.util.Map;
 
-public interface hdy extends hdx {
-   int a = 8192;
+public class hdy {
+   public static final alz a = a("generated");
+   public static final alz b = a("entity");
+   public static final hdz c = a("generation marker", gmq.b.a);
+   public static final hdz d = a("block entity marker", gmq.b.b);
 
-   boolean a(FloatConsumer var1) throws IOException;
-
-   @Override
-   default ByteBuffer a(int $$0) throws IOException {
-      hdw $$1 = new hdw($$0 + 8192);
-
-      while (this.a($$1) && $$1.b() < $$0) {
-      }
-
-      return $$1.a();
+   public static alz a(String $$0) {
+      return alz.b("builtin/" + $$0);
    }
 
-   @Override
-   default ByteBuffer b() throws IOException {
-      hdw $$0 = new hdw(16384);
-
-      while (this.a($$0)) {
-      }
-
-      return $$0.a();
+   private static hdz a(String $$0, gmq.b $$1) {
+      gmq $$2 = new gmq(null, List.of(), Map.of(), null, $$1, gmw.a, List.of());
+      $$2.d = $$0;
+      return $$2;
    }
 }

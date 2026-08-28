@@ -1,8 +1,41 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface aug {
+public interface aug extends AutoCloseable {
+   String a = ".mcmeta";
+   String b = "pack.mcmeta";
+
+   @Nullable
+   avn<InputStream> a(String... var1);
+
+   @Nullable
+   avn<InputStream> a(aui var1, alz var2);
+
+   void a(aui var1, String var2, String var3, aug.a var4);
+
+   Set<String> a(aui var1);
+
+   @Nullable
+   <T> T a(aut<T> var1) throws IOException;
+
+   auf a();
+
+   default String b() {
+      return this.a().a();
+   }
+
+   default Optional<avc> c() {
+      return this.a().d();
+   }
+
+   @Override
+   void close();
+
+   @FunctionalInterface
+   public interface a extends BiConsumer<alz, avn<InputStream>> {
+   }
 }

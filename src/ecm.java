@@ -1,26 +1,34 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface ecm {
+   ecm a = new ecm() {
+      @Override
+      public boolean a() {
+         return true;
+      }
 
-public record ecm(eco b, ecl c) {
-   public static final Codec<ecm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eco.a.forGetter(ecm::a), ecl.a.forGetter(ecm::b)).apply($$0, $$0.stable(ecm::new))
-   );
+      @Override
+      public void a(ecl $$0) {
+      }
 
-   public static <T> DataResult<T> a(DynamicOps<T> $$0, eco $$1, ecl $$2) {
-      return a.encodeStart($$0, new ecm($$1, $$2));
-   }
+      @Override
+      public void b(ecl $$0) {
+      }
 
-   public static <T> DataResult<T> a(DynamicOps<T> $$0, eco $$1, ke $$2) {
-      return a($$0, $$1, new ecl($$2.e(ma.bc)));
-   }
+      @Override
+      public boolean a(jq<ecj> $$0, fbs $$1, ecj.a $$2, ecm.a $$3) {
+         return false;
+      }
+   };
 
-   public eco a() {
-      return this.b;
-   }
+   boolean a();
 
-   public ecl b() {
-      return this.c;
+   void a(ecl var1);
+
+   void b(ecl var1);
+
+   boolean a(jq<ecj> var1, fbs var2, ecj.a var3, ecm.a var4);
+
+   @FunctionalInterface
+   public interface a {
+      void visit(ecl var1, fbs var2);
    }
 }

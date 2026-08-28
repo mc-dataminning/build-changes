@@ -1,30 +1,21 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.serialization.Dynamic;
 
-public class bjv extends Schema {
-   public bjv(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class bjv extends bhn {
+   private static final String a = "CanPickUpLoot";
+
+   public bjv(Schema $$0) {
+      super($$0, true, "Villager CanPickUpLoot default value", bis.B, "Villager");
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         false,
-         bia.b,
-         () -> DSL.optionalFields(
-               "RootVehicle",
-               DSL.optionalFields("Entity", bia.A.in($$0)),
-               "ender_pearls",
-               DSL.list(bia.A.in($$0)),
-               "Inventory",
-               DSL.list(bia.t.in($$0)),
-               "EnderItems",
-               DSL.list(bia.t.in($$0))
-            )
-      );
-      $$0.registerType(true, bia.A, () -> DSL.optionalFields("Passengers", DSL.list(bia.A.in($$0)), bia.B.in($$0)));
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), bjv::a);
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.set("CanPickUpLoot", $$0.createBoolean(true));
    }
 }

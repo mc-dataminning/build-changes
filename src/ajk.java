@@ -1,19 +1,45 @@
-public class ajk {
-   public static final zs<ajf> a = a("custom_query");
-   public static final zs<ajj> b = a("login_finished");
-   public static final zs<ajg> c = a("hello");
-   public static final zs<ajh> d = a("login_compression");
-   public static final zs<aji> e = a("login_disconnect");
-   public static final zs<ajn> f = b("custom_query_answer");
-   public static final zs<ajo> g = b("hello");
-   public static final zs<ajp> h = b("key");
-   public static final zs<ajq> i = b("login_acknowledged");
+public class ajk implements aac<ahm> {
+   public static final zt<ws, ajk> a = aac.a(ajk::a, ajk::new);
+   private final fbo b;
+   private final btd c;
+   private final int d;
 
-   private static <T extends zq<aje>> zs<T> a(String $$0) {
-      return new zs<>(zr.b, alj.b($$0));
+   public ajk(btd $$0, fbo $$1, int $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.d = $$2;
    }
 
-   private static <T extends zq<ajm>> zs<T> b(String $$0) {
-      return new zs<>(zr.a, alj.b($$0));
+   private ajk(ws $$0) {
+      this.c = $$0.b(btd.class);
+      this.b = $$0.v();
+      this.d = $$0.l();
+   }
+
+   private void a(ws $$0) {
+      $$0.a(this.c);
+      $$0.a(this.b);
+      $$0.c(this.d);
+   }
+
+   @Override
+   public aae<ajk> a() {
+      return ahk.cj;
+   }
+
+   public void a(ahm $$0) {
+      $$0.a(this);
+   }
+
+   public btd b() {
+      return this.c;
+   }
+
+   public fbo e() {
+      return this.b;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

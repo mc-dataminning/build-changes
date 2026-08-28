@@ -1,97 +1,84 @@
-import java.util.Objects;
+import java.util.function.BooleanSupplier;
+import javax.annotation.Nullable;
 
-public class ftp extends fst implements ftr<ctf> {
-   private final ctf y;
-   private final csn z = new csn() {
-      @Override
-      public void a(crz $$0, int $$1, cwm $$2) {
-         ftp.this.N();
-      }
+public class ftp extends ftr {
+   private static final xv a = xv.c("multiplayer.downloadingTerrain");
+   private static final long b = 30000L;
+   private final long c;
+   private final BooleanSupplier d;
+   private final ftp.a s;
+   @Nullable
+   private hbe u;
 
-      @Override
-      public void a(crz $$0, int $$1, int $$2) {
-         if ($$1 == 0) {
-            ftp.this.O();
-         }
-      }
-   };
-
-   public ftp(ctf $$0, cot $$1, xj $$2) {
-      this.y = $$0;
-   }
-
-   public ctf M() {
-      return this.y;
+   public ftp(BooleanSupplier $$0, ftp.a $$1) {
+      super(flq.a);
+      this.d = $$0;
+      this.s = $$1;
+      this.c = ae.c();
    }
 
    @Override
-   protected void aR_() {
-      super.aR_();
-      this.y.a(this.z);
-   }
-
-   @Override
-   public void aO_() {
-      this.m.t.p();
-      super.aO_();
-   }
-
-   @Override
-   public void j() {
-      super.j();
-      this.y.b(this.z);
-   }
-
-   @Override
-   protected void m() {
-      if (this.m.t.gt()) {
-         this.c(fmd.a(xi.d, $$0 -> this.aO_()).a(this.n / 2 - 100, 196, 98, 20).a());
-         this.c(fmd.a(xj.c("lectern.take_book"), $$0 -> this.g(3)).a(this.n / 2 + 2, 196, 98, 20).a());
-      } else {
-         super.m();
-      }
-   }
-
-   @Override
-   protected void J() {
-      this.g(1);
-   }
-
-   @Override
-   protected void K() {
-      this.g(2);
-   }
-
-   @Override
-   protected boolean b(int $$0) {
-      if ($$0 != this.y.m()) {
-         this.g(100 + $$0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private void g(int $$0) {
-      this.m.r.a(this.y.l, $$0);
-   }
-
-   @Override
-   public boolean k() {
+   public boolean aH_() {
       return false;
    }
 
-   void N() {
-      cwm $$0 = this.y.l();
-      this.a(Objects.requireNonNullElse(fst.a.a($$0), fst.d));
-   }
-
-   void O() {
-      this.a(this.y.m());
+   @Override
+   protected boolean aS_() {
+      return false;
    }
 
    @Override
-   protected void L() {
-      this.m.t.p();
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, a, this.n / 2, this.o / 2 - 50, -1);
+   }
+
+   @Override
+   public void b(fnl $$0, int $$1, int $$2, float $$3) {
+      switch (this.s) {
+         case a:
+            $$0.a(glo::A, this.l(), 0, 0, $$0.a(), $$0.b());
+            break;
+         case b:
+            $$0.b(glo.t(), 0, 0, this.n, this.o, 0);
+            break;
+         case c:
+            this.a($$0, $$3);
+            this.q();
+            this.a($$0);
+      }
+   }
+
+   private hbe l() {
+      if (this.u != null) {
+         return this.u;
+      } else {
+         this.u = this.m.ap().a().a(dkg.eq.m());
+         return this.u;
+      }
+   }
+
+   @Override
+   public void e() {
+      if (this.d.getAsBoolean() || ae.c() > this.c + 30000L) {
+         this.aP_();
+      }
+   }
+
+   @Override
+   public void aP_() {
+      this.m.aZ().c(xv.c("narrator.ready_to_play"));
+      super.aP_();
+   }
+
+   @Override
+   public boolean j() {
+      return false;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

@@ -1,57 +1,69 @@
-import java.util.OptionalInt;
+import com.google.common.collect.Maps;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public interface cxh {
-   cpn a(dfm var1, ka var2, cwm var3, jm var4);
+public class cxh {
+   private final Map<alz, cxh.a> a = Maps.newHashMap();
+   private int b;
 
-   default cxh.a b() {
-      return cxh.a.a;
+   public boolean a(cxk $$0) {
+      return this.a($$0, 0.0F) > 0.0F;
    }
 
-   default void a(cpn $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
-      $$0.c($$1, $$2, $$3, $$4, $$5);
-   }
-
-   public static record a(cxh.b b, float c, float d, OptionalInt e) {
-      public static final cxh.a a = a().a();
-
-      public static cxh.a.a a() {
-         return new cxh.a.a();
+   public float a(cxk $$0, float $$1) {
+      alz $$2 = this.b($$0);
+      cxh.a $$3 = this.a.get($$2);
+      if ($$3 != null) {
+         float $$4 = (float)($$3.b - $$3.a);
+         float $$5 = (float)$$3.b - ((float)this.b + $$1);
+         return bae.a($$5 / $$4, 0.0F, 1.0F);
+      } else {
+         return 0.0F;
       }
+   }
 
-      public static class a {
-         private cxh.b a = ($$0, $$1) -> dkv.a($$0, 0.7, new ezy(0.0, 0.1, 0.0));
-         private float b = 6.0F;
-         private float c = 1.1F;
-         private OptionalInt d = OptionalInt.empty();
+   public void a() {
+      this.b++;
+      if (!this.a.isEmpty()) {
+         Iterator<Entry<alz, cxh.a>> $$0 = this.a.entrySet().iterator();
 
-         public cxh.a.a a(cxh.b $$0) {
-            this.a = $$0;
-            return this;
-         }
-
-         public cxh.a.a a(float $$0) {
-            this.b = $$0;
-            return this;
-         }
-
-         public cxh.a.a b(float $$0) {
-            this.c = $$0;
-            return this;
-         }
-
-         public cxh.a.a a(int $$0) {
-            this.d = OptionalInt.of($$0);
-            return this;
-         }
-
-         public cxh.a a() {
-            return new cxh.a(this.a, this.b, this.c, this.d);
+         while ($$0.hasNext()) {
+            Entry<alz, cxh.a> $$1 = $$0.next();
+            if ($$1.getValue().b <= this.b) {
+               $$0.remove();
+               this.b($$1.getKey());
+            }
          }
       }
    }
 
-   @FunctionalInterface
-   public interface b {
-      ka getDispensePosition(ky var1, jm var2);
+   public alz b(cxk $$0) {
+      dap $$1 = $$0.a(ku.z);
+      alz $$2 = ma.g.b($$0.h());
+      return $$1 == null ? $$2 : $$1.c().orElse($$2);
+   }
+
+   public void a(cxk $$0, int $$1) {
+      this.a(this.b($$0), $$1);
+   }
+
+   public void a(alz $$0, int $$1) {
+      this.a.put($$0, new cxh.a(this.b, this.b + $$1));
+      this.b($$0, $$1);
+   }
+
+   public void a(alz $$0) {
+      this.a.remove($$0);
+      this.b($$0);
+   }
+
+   protected void b(alz $$0, int $$1) {
+   }
+
+   protected void b(alz $$0) {
+   }
+
+   static record a(int a, int b) {
    }
 }

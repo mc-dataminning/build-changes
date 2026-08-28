@@ -1,46 +1,48 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bzy {
-   public static bxb<bvp> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return can.a(
-         (Function<can.b<bvp>, ? extends App<can.c<bvp>, caq<bvp>>>)($$3 -> $$3.group($$3.c(cel.o), $$3.c(cel.m), $$3.a(cel.n))
-               .apply(
-                  $$3,
-                  ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                        if ($$5x.b_($$6.dv()).a(axi.a)) {
-                           return false;
-                        } else if ($$7 < $$2.getValue()) {
-                           $$2.setValue($$7 + 40L);
-                           return true;
-                        } else {
-                           fad $$8 = fad.a($$6);
-                           jh $$9 = $$6.dv();
-                           jh.a $$10 = new jh.a();
+   public static bxv<bwj> a(cff<jh> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, fbs::c);
+   }
 
-                           label45:
-                           for (jh $$11 : jh.a($$9, $$0, $$0, $$0)) {
-                              if (($$11.u() != $$9.u() || $$11.w() != $$9.w())
-                                 && $$5x.a_($$11).b($$5x, $$11, $$8).c()
-                                 && !$$5x.a_($$10.a($$11, jm.a)).b($$5x, $$11, $$8).c()) {
-                                 for (jm $$12 : jm.c.a) {
-                                    $$10.a($$11, $$12);
-                                    if ($$5x.a_($$10).l() && $$5x.a_($$10.c(jm.a)).a(dis.G)) {
-                                       $$5.a(new bxd($$11));
-                                       $$4.a(new ceo(new bxd($$11), $$1, 0));
-                                       break label45;
-                                    }
-                                 }
-                              }
+   public static bzf<bwj> b(cff<? extends bvf> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, bvf::dt);
+   }
+
+   private static <T> bzf<bwj> a(cff<T> $$0, float $$1, int $$2, boolean $$3, Function<T, fbs> $$4) {
+      return cbh.a(
+         (Function<cbh.b<bwj>, ? extends App<cbh.c<bwj>, cbk<bwj>>>)($$5 -> $$5.group($$5.a(cff.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                  Optional<cfi> $$10 = $$5.a($$5x);
+                  if ($$10.isPresent() && !$$3) {
+                     return false;
+                  } else {
+                     fbs $$11 = $$8.dt();
+                     fbs $$12 = $$4.apply($$5.b($$6));
+                     if (!$$11.a((ka)$$12, (double)$$2)) {
+                        return false;
+                     } else {
+                        if ($$10.isPresent() && $$10.get().b() == $$1) {
+                           fbs $$13 = $$10.get().a().a().d($$11);
+                           fbs $$14 = $$12.d($$11);
+                           if ($$13.b($$14) < 0.0) {
+                              return false;
                            }
-
-                           $$2.setValue($$7 + 40L);
-                           return true;
                         }
+
+                        for (int $$15 = 0; $$15 < 10; $$15++) {
+                           fbs $$16 = cgz.b($$8, 16, 7, $$12);
+                           if ($$16 != null) {
+                              $$5x.a(new cfi($$16, $$1, 0));
+                              break;
+                           }
+                        }
+
+                        return true;
                      }
-               ))
+                  }
+               }))
       );
    }
 }

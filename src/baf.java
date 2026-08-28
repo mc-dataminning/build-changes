@@ -1,69 +1,159 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.sun.jna.Memory;
+import com.sun.jna.Native;
+import com.sun.jna.Platform;
+import com.sun.jna.Pointer;
+import com.sun.jna.platform.win32.Kernel32;
+import com.sun.jna.platform.win32.Kernel32Util;
+import com.sun.jna.platform.win32.Version;
+import com.sun.jna.platform.win32.Win32Exception;
+import com.sun.jna.platform.win32.Tlhelp32.MODULEENTRY32W;
+import com.sun.jna.ptr.IntByReference;
+import com.sun.jna.ptr.PointerByReference;
+import java.nio.charset.StandardCharsets;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
 public class baf {
-   public static <T extends bvj> Optional<T> a(bus<T> $$0, bur $$1, arp $$2, jh $$3, int $$4, int $$5, int $$6, baf.a $$7) {
-      jh.a $$8 = $$3.k();
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 65535;
+   private static final int c = 1033;
+   private static final int d = -65536;
+   private static final int e = 78643200;
 
-      for (int $$9 = 0; $$9 < $$4; $$9++) {
-         int $$10 = azm.b($$2.A, -$$5, $$5);
-         int $$11 = azm.b($$2.A, -$$5, $$5);
-         $$8.a($$3, $$10, $$6, $$11);
-         if ($$2.E_().a($$8) && a($$2, $$6, $$8, $$7)) {
-            T $$12 = (T)$$0.b($$2, null, $$8, $$1, false, false);
-            if ($$12 != null) {
-               if ($$12.a($$2, $$1) && $$12.a((dfp)$$2)) {
-                  $$2.a_($$12);
-                  return Optional.of($$12);
+   public static List<baf.a> a() {
+      if (!Platform.isWindows()) {
+         return ImmutableList.of();
+      } else {
+         int $$0 = Kernel32.INSTANCE.GetCurrentProcessId();
+         Builder<baf.a> $$1 = ImmutableList.builder();
+
+         for (MODULEENTRY32W $$3 : Kernel32Util.getModules($$0)) {
+            String $$4 = $$3.szModule();
+            Optional<baf.b> $$5 = a($$3.szExePath());
+            $$1.add(new baf.a($$4, $$5));
+         }
+
+         return $$1.build();
+      }
+   }
+
+   private static Optional<baf.b> a(String $$0) {
+      try {
+         IntByReference $$1 = new IntByReference();
+         int $$2 = Version.INSTANCE.GetFileVersionInfoSize($$0, $$1);
+         if ($$2 == 0) {
+            int $$3 = Native.getLastError();
+            if ($$3 != 1813 && $$3 != 1812) {
+               throw new Win32Exception($$3);
+            } else {
+               return Optional.empty();
+            }
+         } else {
+            Pointer $$4 = new Memory((long)$$2);
+            if (!Version.INSTANCE.GetFileVersionInfo($$0, 0, $$2, $$4)) {
+               throw new Win32Exception(Native.getLastError());
+            } else {
+               IntByReference $$5 = new IntByReference();
+               Pointer $$6 = a($$4, "\\VarFileInfo\\Translation", $$5);
+               int[] $$7 = $$6.getIntArray(0L, $$5.getValue() / 4);
+               OptionalInt $$8 = a($$7);
+               if ($$8.isEmpty()) {
+                  return Optional.empty();
+               } else {
+                  int $$9 = $$8.getAsInt();
+                  int $$10 = $$9 & 65535;
+                  int $$11 = ($$9 & -65536) >> 16;
+                  String $$12 = b($$4, a("FileDescription", $$10, $$11), $$5);
+                  String $$13 = b($$4, a("CompanyName", $$10, $$11), $$5);
+                  String $$14 = b($$4, a("FileVersion", $$10, $$11), $$5);
+                  return Optional.of(new baf.b($$12, $$14, $$13));
                }
-
-               $$12.at();
             }
          }
+      } catch (Exception var14) {
+         a.info("Failed to find module info for {}", $$0, var14);
+         return Optional.empty();
       }
-
-      return Optional.empty();
    }
 
-   private static boolean a(arp $$0, int $$1, jh.a $$2, baf.a $$3) {
-      jh.a $$4 = new jh.a().g($$2);
-      dvv $$5 = $$0.a_($$4);
+   private static String a(String $$0, int $$1, int $$2) {
+      return String.format(Locale.ROOT, "\\StringFileInfo\\%04x%04x\\%s", $$1, $$2, $$0);
+   }
 
-      for (int $$6 = $$1; $$6 >= -$$1; $$6--) {
-         $$2.c(jm.a);
-         $$4.a($$2, jm.b);
-         dvv $$7 = $$0.a_($$2);
-         if ($$3.canSpawnOn($$0, $$2, $$7, $$4, $$5)) {
-            $$2.c(jm.b);
-            return true;
+   private static OptionalInt a(int[] $$0) {
+      OptionalInt $$1 = OptionalInt.empty();
+
+      for (int $$2 : $$0) {
+         if (($$2 & -65536) == 78643200 && ($$2 & 65535) == 1033) {
+            return OptionalInt.of($$2);
          }
 
-         $$5 = $$7;
+         $$1 = OptionalInt.of($$2);
       }
 
-      return false;
+      return $$1;
    }
 
-   public interface a {
-      @Deprecated
-      baf.a a = ($$0, $$1, $$2, $$3, $$4) -> !$$2.a(dis.bs)
-               && !$$2.a(dis.dQ)
-               && !$$2.a(dis.eY)
-               && !($$2.b() instanceof dqj)
-               && !($$2.b() instanceof dqi)
-               && !($$2.b() instanceof dmz)
-               && !$$2.a(dis.mX)
-               && !$$2.a(dis.dO)
-               && !$$2.a(dis.ck)
-               && !$$2.a(dis.ec)
-               && !$$2.a(dis.fO)
-               && !$$2.a(dis.ii)
-               && !$$2.a(dis.kI)
-               && !$$2.a(dis.qO)
-               && !$$2.a(dis.aQ)
-            ? ($$4.l() || $$4.n()) && ($$2.e() || $$2.a(dis.qP))
-            : false;
-      baf.a b = ($$0, $$1, $$2, $$3, $$4) -> $$4.g($$0, $$3).c() && diq.a($$2.g($$0, $$1), jm.b);
+   private static Pointer a(Pointer $$0, String $$1, IntByReference $$2) {
+      PointerByReference $$3 = new PointerByReference();
+      if (!Version.INSTANCE.VerQueryValue($$0, $$1, $$3, $$2)) {
+         throw new UnsupportedOperationException("Can't get version value " + $$1);
+      } else {
+         return $$3.getValue();
+      }
+   }
 
-      boolean canSpawnOn(arp var1, jh var2, dvv var3, jh var4, dvv var5);
+   private static String b(Pointer $$0, String $$1, IntByReference $$2) {
+      try {
+         Pointer $$3 = a($$0, $$1, $$2);
+         byte[] $$4 = $$3.getByteArray(0L, ($$2.getValue() - 1) * 2);
+         return new String($$4, StandardCharsets.UTF_16LE);
+      } catch (Exception var5) {
+         return "";
+      }
+   }
+
+   public static void a(p $$0) {
+      $$0.a("Modules", () -> a().stream().sorted(Comparator.comparing($$0x -> $$0x.a)).map($$0x -> "\n\t\t" + $$0x).collect(Collectors.joining()));
+   }
+
+   public static class a {
+      public final String a;
+      public final Optional<baf.b> b;
+
+      public a(String $$0, Optional<baf.b> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public String toString() {
+         return this.b.<String>map($$0 -> this.a + ":" + $$0).orElse(this.a);
+      }
+   }
+
+   public static class b {
+      public final String a;
+      public final String b;
+      public final String c;
+
+      public b(String $$0, String $$1, String $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      @Override
+      public String toString() {
+         return this.a + ":" + this.b + ":" + this.c;
+      }
    }
 }

@@ -1,63 +1,44 @@
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
-import org.joml.Quaternionf;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collection;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public enum hbh implements hbv {
-   a(0, 0),
-   b(0, 90),
-   c(0, 180),
-   d(0, 270),
-   e(90, 0),
-   f(90, 90),
-   g(90, 180),
-   h(90, 270),
-   i(180, 0),
-   j(180, 90),
-   k(180, 180),
-   l(180, 270),
-   m(270, 0),
-   n(270, 90),
-   o(270, 180),
-   p(270, 270);
+@FunctionalInterface
+public interface hbh {
+   Logger a = LogUtils.getLogger();
 
-   private static final int q = 360;
-   private static final Map<Integer, hbh> r = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.u, $$0 -> (hbh)$$0));
-   private final j s;
-   private final h t;
-   private final int u;
+   static hbh create(Collection<aut<?>> $$0) {
+      return ($$1, $$2) -> {
+         avx $$3;
+         try {
+            $$3 = $$2.f().a($$0);
+         } catch (Exception var9) {
+            a.error("Unable to parse metadata from {}", $$1, var9);
+            return null;
+         }
 
-   private static int b(int $$0, int $$1) {
-      return $$0 * 360 + $$1;
+         ffl $$7;
+         try (InputStream $$6 = $$2.d()) {
+            $$7 = ffl.a($$6);
+         } catch (IOException var11) {
+            a.error("Using missing texture, unable to load {}", $$1, var11);
+            return null;
+         }
+
+         hcq $$11 = $$3.a(hcq.a).orElse(hcq.e);
+         hcs $$12 = $$11.a($$7.a(), $$7.b());
+         if (bae.c($$7.a(), $$12.a()) && bae.c($$7.b(), $$12.b())) {
+            return new hay($$1, $$12, $$7, $$3);
+         } else {
+            a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
+            $$7.close();
+            return null;
+         }
+      };
    }
 
-   private hbh(final int $$0, final int $$1) {
-      this.u = b($$0, $$1);
-      Quaternionf $$2 = new Quaternionf().rotateYXZ((float)(-$$1) * (float) (Math.PI / 180.0), (float)(-$$0) * (float) (Math.PI / 180.0), 0.0F);
-      h $$3 = h.a;
-
-      for (int $$4 = 0; $$4 < $$1; $$4 += 90) {
-         $$3 = $$3.a(h.u);
-      }
-
-      for (int $$5 = 0; $$5 < $$0; $$5 += 90) {
-         $$3 = $$3.a(h.s);
-      }
-
-      this.s = new j(null, $$2, null, null);
-      this.t = $$3;
-   }
-
-   @Override
-   public j b() {
-      return this.s;
-   }
-
-   public static hbh a(int $$0, int $$1) {
-      return r.get(b(azm.b($$0, 360), azm.b($$1, 360)));
-   }
-
-   public h a() {
-      return this.t;
-   }
+   @Nullable
+   hay loadSprite(alz var1, avt var2);
 }

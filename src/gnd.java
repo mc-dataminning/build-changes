@@ -1,154 +1,59 @@
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import org.joml.Matrix4f;
-import org.joml.Vector4f;
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Splitter;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.function.Predicate;
 
-public class gnd implements gng.a {
-   public static final jm[] a = jm.values();
-   private final fke b;
+public class gnd implements gnc {
+   private static final Splitter a = Splitter.on('|').omitEmptyStrings();
+   private final String d;
+   private final String e;
 
-   public gnd(fke $$0) {
-      this.b = $$0;
+   public gnd(String $$0, String $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
    @Override
-   public void a(fer $$0, gjg $$1, double $$2, double $$3, double $$4) {
-      gjc $$5 = this.b.f;
-      if (this.b.C || this.b.D) {
-         gjv $$6 = $$5.x();
-         ObjectListIterator $$27 = $$5.w().iterator();
+   public Predicate<dxn> getPredicate(dxo<dke, dxn> $$0) {
+      dyp<?> $$1 = $$0.a(this.d);
+      if ($$1 == null) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown property '%s' on '%s'", this.d, $$0.c()));
+      } else {
+         String $$2 = this.e;
+         boolean $$3 = !$$2.isEmpty() && $$2.charAt(0) == '!';
+         if ($$3) {
+            $$2 = $$2.substring(1);
+         }
 
-         while ($$27.hasNext()) {
-            gmt.b $$7 = (gmt.b)$$27.next();
-            gjv.d $$8 = $$6.b($$7);
-            if ($$8 != null) {
-               jh $$9 = $$7.f();
-               $$0.a();
-               $$0.a((double)$$9.u() - $$2, (double)$$9.v() - $$3, (double)$$9.w() - $$4);
-               Matrix4f $$10 = $$0.c().a();
-               if (this.b.C) {
-                  fev $$11 = $$1.getBuffer(gjq.y());
-                  int $$12 = $$8.b == 0 ? 0 : azm.g((float)$$8.b / 50.0F, 0.9F, 0.9F);
-                  int $$13 = $$12 >> 16 & 0xFF;
-                  int $$14 = $$12 >> 8 & 0xFF;
-                  int $$15 = $$12 & 0xFF;
-
-                  for (int $$16 = 0; $$16 < a.length; $$16++) {
-                     if ($$8.a($$16)) {
-                        jm $$17 = a[$$16];
-                        $$11.a($$10, 8.0F, 8.0F, 8.0F).a($$13, $$14, $$15, 255).b((float)$$17.j(), (float)$$17.k(), (float)$$17.l());
-                        $$11.a($$10, (float)(8 - 16 * $$17.j()), (float)(8 - 16 * $$17.k()), (float)(8 - 16 * $$17.l()))
-                           .a($$13, $$14, $$15, 255)
-                           .b((float)$$17.j(), (float)$$17.k(), (float)$$17.l());
-                     }
-                  }
-               }
-
-               if (this.b.D && $$7.d().a()) {
-                  fev $$18 = $$1.getBuffer(gjq.y());
-                  int $$19 = 0;
-
-                  for (jm $$20 : a) {
-                     for (jm $$21 : a) {
-                        boolean $$22 = $$7.d().a($$20, $$21);
-                        if (!$$22) {
-                           $$19++;
-                           $$18.a($$10, (float)(8 + 8 * $$20.j()), (float)(8 + 8 * $$20.k()), (float)(8 + 8 * $$20.l()))
-                              .a(255, 0, 0, 255)
-                              .b((float)$$20.j(), (float)$$20.k(), (float)$$20.l());
-                           $$18.a($$10, (float)(8 + 8 * $$21.j()), (float)(8 + 8 * $$21.k()), (float)(8 + 8 * $$21.l()))
-                              .a(255, 0, 0, 255)
-                              .b((float)$$21.j(), (float)$$21.k(), (float)$$21.l());
-                        }
-                     }
-                  }
-
-                  if ($$19 > 0) {
-                     fev $$23 = $$1.getBuffer(gjq.B());
-                     float $$24 = 0.5F;
-                     float $$25 = 0.2F;
-                     $$23.a($$10, 0.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 15.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 15.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 0.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 0.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 15.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 15.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 0.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 0.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 0.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 0.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 0.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 15.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 15.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 15.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 15.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 0.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 15.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 15.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 0.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 0.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 15.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 15.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                     $$23.a($$10, 0.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
-                  }
-               }
-
-               $$0.b();
+         List<String> $$4 = a.splitToList($$2);
+         if ($$4.isEmpty()) {
+            throw new RuntimeException(String.format(Locale.ROOT, "Empty value '%s' for property '%s' on '%s'", this.e, this.d, $$0.c()));
+         } else {
+            Predicate<dxn> $$5;
+            if ($$4.size() == 1) {
+               $$5 = this.a($$0, $$1, $$2);
+            } else {
+               $$5 = ae.b($$4.stream().map($$2x -> this.a($$0, $$1, $$2x)).toList());
             }
+
+            return $$3 ? $$5.negate() : $$5;
          }
       }
+   }
 
-      gmx $$26 = $$5.y();
-      if ($$26 != null) {
-         $$0.a();
-         $$0.a((float)($$26.b() - $$2), (float)($$26.c() - $$3), (float)($$26.d() - $$4));
-         Matrix4f $$27 = $$0.c().a();
-         Vector4f[] $$28 = $$26.a();
-         fev $$29 = $$1.getBuffer(gjq.B());
-         this.a($$29, $$27, $$28, 0, 1, 2, 3, 0, 1, 1);
-         this.a($$29, $$27, $$28, 4, 5, 6, 7, 1, 0, 0);
-         this.a($$29, $$27, $$28, 0, 1, 5, 4, 1, 1, 0);
-         this.a($$29, $$27, $$28, 2, 3, 7, 6, 0, 0, 1);
-         this.a($$29, $$27, $$28, 0, 4, 7, 3, 0, 1, 0);
-         this.a($$29, $$27, $$28, 1, 5, 6, 2, 1, 0, 1);
-         fev $$30 = $$1.getBuffer(gjq.y());
-         this.a($$30, $$27, $$28[0]);
-         this.a($$30, $$27, $$28[1]);
-         this.a($$30, $$27, $$28[1]);
-         this.a($$30, $$27, $$28[2]);
-         this.a($$30, $$27, $$28[2]);
-         this.a($$30, $$27, $$28[3]);
-         this.a($$30, $$27, $$28[3]);
-         this.a($$30, $$27, $$28[0]);
-         this.a($$30, $$27, $$28[4]);
-         this.a($$30, $$27, $$28[5]);
-         this.a($$30, $$27, $$28[5]);
-         this.a($$30, $$27, $$28[6]);
-         this.a($$30, $$27, $$28[6]);
-         this.a($$30, $$27, $$28[7]);
-         this.a($$30, $$27, $$28[7]);
-         this.a($$30, $$27, $$28[4]);
-         this.a($$30, $$27, $$28[0]);
-         this.a($$30, $$27, $$28[4]);
-         this.a($$30, $$27, $$28[1]);
-         this.a($$30, $$27, $$28[5]);
-         this.a($$30, $$27, $$28[2]);
-         this.a($$30, $$27, $$28[6]);
-         this.a($$30, $$27, $$28[3]);
-         this.a($$30, $$27, $$28[7]);
-         $$0.b();
+   private Predicate<dxn> a(dxo<dke, dxn> $$0, dyp<?> $$1, String $$2) {
+      Optional<?> $$3 = $$1.b($$2);
+      if ($$3.isEmpty()) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown value '%s' for property '%s' on '%s' in '%s'", $$2, this.d, $$0.c(), this.e));
+      } else {
+         return $$2x -> $$2x.c($$1).equals($$3.get());
       }
    }
 
-   private void a(fev $$0, Matrix4f $$1, Vector4f $$2) {
-      $$0.a($$1, $$2.x(), $$2.y(), $$2.z()).a(-16777216).b(0.0F, 0.0F, -1.0F);
-   }
-
-   private void a(fev $$0, Matrix4f $$1, Vector4f[] $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8, int $$9) {
-      float $$10 = 0.25F;
-      $$0.a($$1, $$2[$$3].x(), $$2[$$3].y(), $$2[$$3].z()).a((float)$$7, (float)$$8, (float)$$9, 0.25F);
-      $$0.a($$1, $$2[$$4].x(), $$2[$$4].y(), $$2[$$4].z()).a((float)$$7, (float)$$8, (float)$$9, 0.25F);
-      $$0.a($$1, $$2[$$5].x(), $$2[$$5].y(), $$2[$$5].z()).a((float)$$7, (float)$$8, (float)$$9, 0.25F);
-      $$0.a($$1, $$2[$$6].x(), $$2[$$6].y(), $$2[$$6].z()).a((float)$$7, (float)$$8, (float)$$9, 0.25F);
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("key", this.d).add("value", this.e).toString();
    }
 }

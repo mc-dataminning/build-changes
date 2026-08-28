@@ -1,110 +1,69 @@
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.Arrays;
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
+import java.util.OptionalInt;
 
-public class fot<T> {
-   private static final int a = 8;
-   private static final int b = 256;
-   private static final int c = 255;
-   private static final int d = 4351;
-   private static final int e = 4352;
-   private final T[] f;
-   private final T[][] g;
-   private final IntFunction<T[]> h;
+public class fot extends fnv {
+   private OptionalInt a = OptionalInt.empty();
+   private OptionalInt b = OptionalInt.empty();
+   private final bau<fot.a, fos> c;
+   private boolean d = false;
 
-   public fot(IntFunction<T[]> $$0, IntFunction<T[][]> $$1) {
-      this.f = (T[])((Object[])$$0.apply(256));
-      this.g = (T[][])((Object[][])$$1.apply(4352));
-      Arrays.fill(this.g, this.f);
-      this.h = $$0;
+   public fot(xv $$0, fnj $$1) {
+      this(0, 0, $$0, $$1);
    }
 
-   public void a() {
-      Arrays.fill(this.g, this.f);
+   public fot(int $$0, int $$1, xv $$2, fnj $$3) {
+      super($$0, $$1, 0, 0, $$2, $$3);
+      this.c = ae.a($$1x -> $$1x.c.isPresent() ? fos.a($$3, $$1x.b, $$1x.c.getAsInt(), $$1x.a) : fos.a($$3, $$1x.a, $$1x.b));
+      this.j = false;
    }
 
-   @Nullable
-   public T a(int $$0) {
-      int $$1 = $$0 >> 8;
-      int $$2 = $$0 & 0xFF;
-      return this.g[$$1][$$2];
+   public fot c(int $$0) {
+      super.a($$0);
+      return this;
    }
 
-   @Nullable
-   public T a(int $$0, T $$1) {
-      int $$2 = $$0 >> 8;
-      int $$3 = $$0 & 0xFF;
-      T[] $$4 = this.g[$$2];
-      if ($$4 == this.f) {
-         $$4 = (T[])((Object[])this.h.apply(256));
-         this.g[$$2] = $$4;
-         $$4[$$3] = $$1;
-         return null;
+   public fot d(int $$0) {
+      this.a = OptionalInt.of($$0);
+      return this;
+   }
+
+   public fot e(int $$0) {
+      this.b = OptionalInt.of($$0);
+      return this;
+   }
+
+   public fot b(boolean $$0) {
+      this.d = $$0;
+      return this;
+   }
+
+   @Override
+   public int y() {
+      return this.c.a(this.c()).b();
+   }
+
+   @Override
+   public int w() {
+      return this.c.a(this.c()).a() * 9;
+   }
+
+   @Override
+   public void b(fnl $$0, int $$1, int $$2, float $$3) {
+      fos $$4 = this.c.a(this.c());
+      int $$5 = this.D();
+      int $$6 = this.E();
+      int $$7 = 9;
+      int $$8 = this.b();
+      if (this.d) {
+         $$4.a($$0, $$5 + this.y() / 2, $$6, $$7, $$8);
       } else {
-         T $$5 = $$4[$$3];
-         $$4[$$3] = $$1;
-         return $$5;
+         $$4.b($$0, $$5, $$6, $$7, $$8);
       }
    }
 
-   public T a(int $$0, IntFunction<T> $$1) {
-      int $$2 = $$0 >> 8;
-      int $$3 = $$0 & 0xFF;
-      T[] $$4 = this.g[$$2];
-      T $$5 = $$4[$$3];
-      if ($$5 != null) {
-         return $$5;
-      } else {
-         if ($$4 == this.f) {
-            $$4 = (T[])((Object[])this.h.apply(256));
-            this.g[$$2] = $$4;
-         }
-
-         T $$6 = $$1.apply($$0);
-         $$4[$$3] = $$6;
-         return $$6;
-      }
+   private fot.a c() {
+      return new fot.a(this.z(), this.a.orElse(Integer.MAX_VALUE), this.b);
    }
 
-   @Nullable
-   public T b(int $$0) {
-      int $$1 = $$0 >> 8;
-      int $$2 = $$0 & 0xFF;
-      T[] $$3 = this.g[$$1];
-      if ($$3 == this.f) {
-         return null;
-      } else {
-         T $$4 = $$3[$$2];
-         $$3[$$2] = null;
-         return $$4;
-      }
-   }
-
-   public void a(fot.a<T> $$0) {
-      for (int $$1 = 0; $$1 < this.g.length; $$1++) {
-         T[] $$2 = this.g[$$1];
-         if ($$2 != this.f) {
-            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-               T $$4 = $$2[$$3];
-               if ($$4 != null) {
-                  int $$5 = $$1 << 8 | $$3;
-                  $$0.accept($$5, $$4);
-               }
-            }
-         }
-      }
-   }
-
-   public IntSet b() {
-      IntOpenHashSet $$0 = new IntOpenHashSet();
-      this.a(($$1, $$2) -> $$0.add($$1));
-      return $$0;
-   }
-
-   @FunctionalInterface
-   public interface a<T> {
-      void accept(int var1, T var2);
+   static record a(xv a, int b, OptionalInt c) {
    }
 }

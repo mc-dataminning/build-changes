@@ -1,100 +1,32 @@
-import com.mojang.datafixers.util.Pair;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Comparator;
+import java.nio.file.Path;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
 
-public record bpm(
-   Instant a,
-   Instant b,
-   Duration c,
-   @Nullable Duration d,
-   List<bpy> e,
-   List<bps> f,
-   bpu.a g,
-   bpx.a h,
-   bpv<bpw> i,
-   bpv<bpw> j,
-   bpv<bpr> k,
-   bpv<bpr> l,
-   bpt.a m,
-   bpt.a n,
-   List<bpq> o
-) {
-   public List<Pair<dyr, bqa<bpq>>> a() {
-      Map<dyr, List<bpq>> $$0 = this.o.stream().collect(Collectors.groupingBy(bpq::d));
-      return $$0.entrySet()
-         .stream()
-         .map($$0x -> Pair.of((dyr)$$0x.getKey(), bqa.a((List)$$0x.getValue())))
-         .sorted(Comparator.<Pair<dyr, bqa<bpq>>, Duration>comparing($$0x -> ((bqa)$$0x.getSecond()).f()).reversed())
-         .toList();
+public interface bpm {
+   char d = '\u001e';
+
+   List<bpq> a(String var1);
+
+   boolean a(Path var1);
+
+   long a();
+
+   int b();
+
+   long c();
+
+   int d();
+
+   default long g() {
+      return this.c() - this.a();
    }
 
-   public String b() {
-      return new bpo().a(this);
+   default int f() {
+      return this.d() - this.b();
    }
 
-   public Instant c() {
-      return this.a;
-   }
+   String e();
 
-   public Instant d() {
-      return this.b;
-   }
-
-   public Duration e() {
-      return this.c;
-   }
-
-   @Nullable
-   public Duration f() {
-      return this.d;
-   }
-
-   public List<bpy> g() {
-      return this.e;
-   }
-
-   public List<bps> h() {
-      return this.f;
-   }
-
-   public bpu.a i() {
-      return this.g;
-   }
-
-   public bpx.a j() {
-      return this.h;
-   }
-
-   public bpv<bpw> k() {
-      return this.i;
-   }
-
-   public bpv<bpw> l() {
-      return this.j;
-   }
-
-   public bpv<bpr> m() {
-      return this.k;
-   }
-
-   public bpv<bpr> n() {
-      return this.l;
-   }
-
-   public bpt.a o() {
-      return this.m;
-   }
-
-   public bpt.a p() {
-      return this.n;
-   }
-
-   public List<bpq> q() {
-      return this.o;
+   static String b(String $$0) {
+      return $$0.replace('\u001e', '.');
    }
 }

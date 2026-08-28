@@ -1,48 +1,29 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class cal extends bxa<cof> {
-   private static final int c = 300;
-   private static final double d = 1.73;
-   private long e;
+public class cal {
+   private static final int a = 180;
+   private static final int b = 8;
+   private static final int c = 6;
 
-   public cal() {
-      super(ImmutableMap.of(cel.c, cem.a, cel.n, cem.c));
-   }
-
-   protected boolean b(arp $$0, cof $$1) {
-      if ($$0.ab() - this.e < 300L) {
-         return false;
-      } else if ($$0.A.a(2) != 0) {
-         return false;
-      } else {
-         this.e = $$0.ab();
-         jp $$2 = $$1.eb().c(cel.c).get();
-         return $$2.a() == $$0.ag() && $$2.b().a($$1.dt(), 1.73);
-      }
-   }
-
-   protected void a(arp $$0, cof $$1, long $$2) {
-      bwj<cof> $$3 = $$1.eb();
-      $$3.a(cel.J, $$2);
-      $$3.c(cel.c).ifPresent($$1x -> $$3.a(cel.n, new bxd($$1x.b())));
-      $$1.gB();
-      this.a($$0, $$1);
-      if ($$1.gA()) {
-         $$1.gz();
-      }
-   }
-
-   protected void a(arp $$0, cof $$1) {
-   }
-
-   protected boolean b(arp $$0, cof $$1, long $$2) {
-      Optional<jp> $$3 = $$1.eb().c(cel.c);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         jp $$4 = $$3.get();
-         return $$4.a() == $$0.ag() && $$4.b().a($$1.dt(), 1.73);
-      }
+   public static bzf<bwj> a(cff<jp> $$0, float $$1, int $$2) {
+      MutableLong $$3 = new MutableLong(0L);
+      return cbh.a(
+         (Function<cbh.b<bwj>, ? extends App<cbh.c<bwj>, cbk<bwj>>>)($$4 -> $$4.group($$4.a(cff.m), $$4.b($$0)).apply($$4, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
+                  jp $$9 = $$4.b($$5);
+                  if ($$6.ah() != $$9.a() || !$$9.b().a($$7.dt(), (double)$$2)) {
+                     return false;
+                  } else if ($$8 <= $$3.getValue()) {
+                     return true;
+                  } else {
+                     Optional<fbs> $$10 = Optional.ofNullable(cgz.a($$7, 8, 6));
+                     $$4x.a($$10.map($$1xxxx -> new cfi($$1xxxx, $$1, 1)));
+                     $$3.setValue($$8 + 180L);
+                     return true;
+                  }
+               }))
+      );
    }
 }

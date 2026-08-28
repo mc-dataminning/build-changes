@@ -1,145 +1,384 @@
-import java.util.Set;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import java.util.List;
+import java.util.UUID;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public abstract class fya<T extends gvp> extends fzj<T> {
-   private static final float e = 2.1816616F;
-   private static final float f = (float) (Math.PI / 3);
-   private static final float g = (float) (Math.PI / 4);
-   private static final float i = (float) (Math.PI / 6);
-   private static final float j = (float) (Math.PI / 12);
-   protected static final String a = "head_parts";
-   private static final String k = "saddle";
-   private static final String l = "left_saddle_mouth";
-   private static final String m = "left_saddle_line";
-   private static final String n = "right_saddle_mouth";
-   private static final String o = "right_saddle_line";
-   private static final String p = "head_saddle";
-   private static final String q = "mouth_saddle_wrap";
-   protected static final gcu b = new fyl(true, 16.2F, 1.36F, 2.7272F, 2.0F, 20.0F, Set.of("head_parts"));
-   protected final gcl c;
-   protected final gcl d;
-   private final gcl r;
-   private final gcl s;
-   private final gcl t;
-   private final gcl u;
-   private final gcl x;
-   private final gcl[] y;
-   private final gcl[] z;
+public class fya extends ftr {
+   static final alz a = alz.b("icon/checkmark");
+   private static final xv b = xv.c("gui.chatSelection.title");
+   private static final xv c = xv.c("gui.chatSelection.context");
+   @Nullable
+   private final ftr d;
+   private final ggm s;
+   private fny u;
+   private fos v;
+   @Nullable
+   private fya.a w;
+   final ggf.a x;
+   private final Consumer<ggf.a> y;
+   private fxz z;
 
-   public fya(gcl $$0) {
-      super($$0);
-      this.c = $$0.b("body");
-      this.d = $$0.b("head_parts");
-      this.r = $$0.b("right_hind_leg");
-      this.s = $$0.b("left_hind_leg");
-      this.t = $$0.b("right_front_leg");
-      this.u = $$0.b("left_front_leg");
-      this.x = this.c.b("tail");
-      gcl $$1 = this.c.b("saddle");
-      gcl $$2 = this.d.b("left_saddle_mouth");
-      gcl $$3 = this.d.b("right_saddle_mouth");
-      gcl $$4 = this.d.b("left_saddle_line");
-      gcl $$5 = this.d.b("right_saddle_line");
-      gcl $$6 = this.d.b("head_saddle");
-      gcl $$7 = this.d.b("mouth_saddle_wrap");
-      this.y = new gcl[]{$$1, $$2, $$3, $$6, $$7};
-      this.z = new gcl[]{$$4, $$5};
+   public fya(@Nullable ftr $$0, ggm $$1, ggf.a $$2, Consumer<ggf.a> $$3) {
+      super(b);
+      this.d = $$0;
+      this.s = $$1;
+      this.x = $$2.d();
+      this.y = $$3;
    }
 
-   public static gct a(gcp $$0) {
-      gct $$1 = new gct();
-      gcv $$2 = $$1.a();
-      gcv $$3 = $$2.a("body", gcq.c().a(0, 32).a(-5.0F, -8.0F, -17.0F, 10.0F, 10.0F, 22.0F, new gcp(0.05F)), gcn.a(0.0F, 11.0F, 5.0F));
-      gcv $$4 = $$2.a("head_parts", gcq.c().a(0, 35).a(-2.05F, -6.0F, -2.0F, 4.0F, 12.0F, 7.0F), gcn.a(0.0F, 4.0F, -12.0F, (float) (Math.PI / 6), 0.0F, 0.0F));
-      gcv $$5 = $$4.a("head", gcq.c().a(0, 13).a(-3.0F, -11.0F, -2.0F, 6.0F, 5.0F, 7.0F, $$0), gcn.a);
-      $$4.a("mane", gcq.c().a(56, 36).a(-1.0F, -11.0F, 5.01F, 2.0F, 16.0F, 2.0F, $$0), gcn.a);
-      $$4.a("upper_mouth", gcq.c().a(0, 25).a(-2.0F, -11.0F, -7.0F, 4.0F, 5.0F, 5.0F, $$0), gcn.a);
-      $$2.a("left_hind_leg", gcq.c().a(48, 21).a().a(-3.0F, -1.01F, -1.0F, 4.0F, 11.0F, 4.0F, $$0), gcn.a(4.0F, 14.0F, 7.0F));
-      $$2.a("right_hind_leg", gcq.c().a(48, 21).a(-1.0F, -1.01F, -1.0F, 4.0F, 11.0F, 4.0F, $$0), gcn.a(-4.0F, 14.0F, 7.0F));
-      $$2.a("left_front_leg", gcq.c().a(48, 21).a().a(-3.0F, -1.01F, -1.9F, 4.0F, 11.0F, 4.0F, $$0), gcn.a(4.0F, 14.0F, -10.0F));
-      $$2.a("right_front_leg", gcq.c().a(48, 21).a(-1.0F, -1.01F, -1.9F, 4.0F, 11.0F, 4.0F, $$0), gcn.a(-4.0F, 14.0F, -10.0F));
-      $$3.a("tail", gcq.c().a(42, 36).a(-1.5F, 0.0F, 0.0F, 3.0F, 14.0F, 4.0F, $$0), gcn.a(0.0F, -5.0F, 2.0F, (float) (Math.PI / 6), 0.0F, 0.0F));
-      $$3.a("saddle", gcq.c().a(26, 0).a(-5.0F, -8.0F, -9.0F, 10.0F, 9.0F, 9.0F, new gcp(0.5F)), gcn.a);
-      $$4.a("left_saddle_mouth", gcq.c().a(29, 5).a(2.0F, -9.0F, -6.0F, 1.0F, 2.0F, 2.0F, $$0), gcn.a);
-      $$4.a("right_saddle_mouth", gcq.c().a(29, 5).a(-3.0F, -9.0F, -6.0F, 1.0F, 2.0F, 2.0F, $$0), gcn.a);
-      $$4.a("left_saddle_line", gcq.c().a(32, 2).a(3.1F, -6.0F, -8.0F, 0.0F, 3.0F, 16.0F), gcn.b((float) (-Math.PI / 6), 0.0F, 0.0F));
-      $$4.a("right_saddle_line", gcq.c().a(32, 2).a(-3.1F, -6.0F, -8.0F, 0.0F, 3.0F, 16.0F), gcn.b((float) (-Math.PI / 6), 0.0F, 0.0F));
-      $$4.a("head_saddle", gcq.c().a(1, 1).a(-3.0F, -11.0F, -1.9F, 6.0F, 5.0F, 6.0F, new gcp(0.22F)), gcn.a);
-      $$4.a("mouth_saddle_wrap", gcq.c().a(19, 0).a(-2.0F, -11.0F, -4.0F, 4.0F, 5.0F, 2.0F, new gcp(0.2F)), gcn.a);
-      $$5.a("left_ear", gcq.c().a(19, 16).a(0.55F, -13.0F, 4.0F, 2.0F, 3.0F, 1.0F, new gcp(-0.001F)), gcn.a);
-      $$5.a("right_ear", gcq.c().a(19, 16).a(-2.55F, -13.0F, 4.0F, 2.0F, 3.0F, 1.0F, new gcp(-0.001F)), gcn.a);
-      return $$1;
+   @Override
+   protected void aT_() {
+      this.z = new fxz(this.s, this::a);
+      this.v = fos.a(this.p, c, this.n - 16);
+      this.w = this.c(new fya.a(this.m, (this.v.a() + 1) * 9));
+      this.c(fny.a(xu.k, $$0 -> this.aP_()).a(this.n / 2 - 155, this.o - 32, 150, 20).a());
+      this.u = this.c(fny.a(xu.d, $$0 -> {
+         this.y.accept(this.x);
+         this.aP_();
+      }).a(this.n / 2 - 155 + 160, this.o - 32, 150, 20).a());
+      this.F();
+      this.l();
+      this.w.b((double)this.w.p());
    }
 
-   public static gct b(gcp $$0) {
-      return b.apply(c($$0));
+   private boolean a(ggb $$0) {
+      return $$0.a(this.x.f());
    }
 
-   protected static gct c(gcp $$0) {
-      gct $$1 = a($$0);
-      gcv $$2 = $$1.a();
-      gcp $$3 = $$0.a(0.0F, 5.5F, 0.0F);
-      $$2.a("left_hind_leg", gcq.c().a(48, 21).a().a(-3.0F, -1.01F, -1.0F, 4.0F, 11.0F, 4.0F, $$3), gcn.a(4.0F, 14.0F, 7.0F));
-      $$2.a("right_hind_leg", gcq.c().a(48, 21).a(-1.0F, -1.01F, -1.0F, 4.0F, 11.0F, 4.0F, $$3), gcn.a(-4.0F, 14.0F, 7.0F));
-      $$2.a("left_front_leg", gcq.c().a(48, 21).a().a(-3.0F, -1.01F, -1.9F, 4.0F, 11.0F, 4.0F, $$3), gcn.a(4.0F, 14.0F, -10.0F));
-      $$2.a("right_front_leg", gcq.c().a(48, 21).a(-1.0F, -1.01F, -1.9F, 4.0F, 11.0F, 4.0F, $$3), gcn.a(-4.0F, 14.0F, -10.0F));
-      return $$1;
+   private void l() {
+      int $$0 = this.w.b();
+      this.z.a($$0, this.w);
    }
 
-   public void a(T $$0) {
-      super.a($$0);
+   void E() {
+      this.l();
+   }
 
-      for (gcl $$1 : this.y) {
-         $$1.k = $$0.b;
+   void F() {
+      this.u.j = !this.x.a().isEmpty();
+   }
+
+   @Override
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 10, 16777215);
+      AbuseReportLimits $$4 = this.s.a().b();
+      int $$5 = this.x.a().size();
+      int $$6 = $$4.maxReportedMessageCount();
+      xv $$7 = xv.a("gui.chatSelection.selected", $$5, $$6);
+      $$0.a(this.p, $$7, this.n / 2, 16 + 9 * 3 / 2, -1);
+      this.v.a($$0, this.n / 2, this.w.c());
+   }
+
+   @Override
+   public void aP_() {
+      this.m.a(this.d);
+   }
+
+   @Override
+   public xv i() {
+      return xu.a(super.i(), c);
+   }
+
+   public class a extends fov<fya.a.b> implements fxz.a {
+      @Nullable
+      private fya.a.c m;
+
+      public a(final flz $$1, final int $$2) {
+         super($$1, fya.this.n, fya.this.o - $$2 - 80, 40, 16);
       }
 
-      for (gcl $$2 : this.z) {
-         $$2.k = $$0.c && $$0.b;
+      @Override
+      public void b(double $$0) {
+         double $$1 = this.n();
+         super.b($$0);
+         if ((float)this.p() > 1.0E-5F && $$0 <= 1.0E-5F && !bae.b($$0, $$1)) {
+            fya.this.E();
+         }
       }
 
-      float $$3 = azm.a($$0.U, -20.0F, 20.0F);
-      float $$4 = $$0.V * (float) (Math.PI / 180.0);
-      float $$5 = $$0.Y;
-      float $$6 = $$0.X;
-      if ($$5 > 0.2F) {
-         $$4 += azm.b($$6 * 0.8F) * 0.15F * $$5;
+      @Override
+      public void a(int $$0, ggb.a $$1) {
+         boolean $$2 = $$1.a(fya.this.x.f());
+         gfz $$3 = $$1.h();
+         flt $$4 = $$3.a($$1.g());
+         fya.a.b $$5 = new fya.a.d($$0, $$1.b(), $$1.c(), $$4, $$2, true);
+         this.c($$5);
+         this.a($$1, $$2);
       }
 
-      float $$7 = $$0.e;
-      float $$8 = $$0.f;
-      float $$9 = 1.0F - $$8;
-      float $$10 = $$0.g;
-      boolean $$11 = $$0.d;
-      this.d.e = (float) (Math.PI / 6) + $$4;
-      this.d.f = $$3 * (float) (Math.PI / 180.0);
-      float $$12 = $$0.af ? 0.2F : 1.0F;
-      float $$13 = azm.b($$12 * $$6 * 0.6662F + (float) Math.PI);
-      float $$14 = $$13 * 0.8F * $$5;
-      float $$15 = (1.0F - Math.max($$8, $$7)) * ((float) (Math.PI / 6) + $$4 + $$10 * azm.a($$0.p) * 0.05F);
-      this.d.e = $$8 * ((float) (Math.PI / 12) + $$4) + $$7 * (2.1816616F + azm.a($$0.p) * 0.05F) + $$15;
-      this.d.f = $$8 * $$3 * (float) (Math.PI / 180.0) + (1.0F - Math.max($$8, $$7)) * this.d.f;
-      float $$16 = $$0.ab;
-      this.d.c = this.d.c + azm.h($$7, azm.h($$8, 0.0F, -8.0F * $$16), 7.0F * $$16);
-      this.d.d = azm.h($$8, this.d.d, -4.0F * $$16);
-      this.c.e = $$8 * (float) (-Math.PI / 4) + $$9 * this.c.e;
-      float $$17 = (float) (Math.PI / 12) * $$8;
-      float $$18 = azm.b($$0.p * 0.6F + (float) Math.PI);
-      this.u.c -= 12.0F * $$16 * $$8;
-      this.u.d += 4.0F * $$16 * $$8;
-      this.t.c = this.u.c;
-      this.t.d = this.u.d;
-      float $$19 = ((float) (-Math.PI / 3) + $$18) * $$8 + $$14 * $$9;
-      float $$20 = ((float) (-Math.PI / 3) - $$18) * $$8 - $$14 * $$9;
-      this.s.e = $$17 - $$13 * 0.5F * $$5 * $$9;
-      this.r.e = $$17 + $$13 * 0.5F * $$5 * $$9;
-      this.u.e = $$19;
-      this.t.e = $$20;
-      this.x.e = (float) (Math.PI / 6) + $$5 * 0.75F;
-      this.x.c += $$5 * $$16;
-      this.x.d += $$5 * 2.0F * $$16;
-      if ($$11) {
-         this.x.f = azm.b($$0.p * 0.7F);
-      } else {
-         this.x.f = 0.0F;
+      private void a(ggb.a $$0, boolean $$1) {
+         fya.a.b $$2 = new fya.a.e($$0.f(), $$0.d(), $$1);
+         this.c($$2);
+         fya.a.c $$3 = new fya.a.c($$0.e(), $$2);
+         if (this.m != null && this.m.a($$3)) {
+            this.d(this.m.b());
+         }
+
+         this.m = $$3;
+      }
+
+      @Override
+      public void a(xv $$0) {
+         this.c(new fya.a.f());
+         this.c(new fya.a.a($$0));
+         this.c(new fya.a.f());
+         this.m = null;
+      }
+
+      @Override
+      public int a() {
+         return Math.min(350, this.g - 50);
+      }
+
+      @Override
+      public int b() {
+         return bae.e(this.h, this.d);
+      }
+
+      @Override
+      protected void a(fnl $$0, int $$1, int $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+         fya.a.b $$9 = this.d($$4);
+         if (this.b($$9)) {
+            boolean $$10 = this.g() == $$9;
+            int $$11 = this.aN_() && $$10 ? -1 : -8355712;
+            this.a($$0, $$6, $$7, $$8, $$11, -16777216);
+         }
+
+         $$9.a($$0, $$4, $$6, $$5, $$7, $$8, $$1, $$2, this.v() == $$9, $$3);
+      }
+
+      private boolean b(fya.a.b $$0) {
+         if ($$0.c()) {
+            boolean $$1 = this.g() == $$0;
+            boolean $$2 = this.g() == null;
+            boolean $$3 = this.v() == $$0;
+            return $$1 || $$2 && $$3 && $$0.d();
+         } else {
+            return false;
+         }
+      }
+
+      @Nullable
+      protected fya.a.b b(fse $$0) {
+         return this.a($$0, fya.a.b::c);
+      }
+
+      public void a(@Nullable fya.a.b $$0) {
+         super.a($$0);
+         fya.a.b $$1 = this.b(fse.a);
+         if ($$1 == null) {
+            fya.this.E();
+         }
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1, int $$2) {
+         fya.a.b $$3 = this.g();
+         return $$3 != null && $$3.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+      }
+
+      @Override
+      public int c() {
+         return this.G() + 9;
+      }
+
+      public class a extends fya.a.b {
+         private final xv b;
+
+         public a(final xv $$1) {
+            this.b = $$1;
+         }
+
+         @Override
+         public void a(fnl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            int $$10 = $$2 + $$5 / 2;
+            int $$11 = $$3 + $$4 - 8;
+            int $$12 = fya.this.p.a(this.b);
+            int $$13 = ($$3 + $$11 - $$12) / 2;
+            int $$14 = $$10 - 9 / 2;
+            $$0.b(fya.this.p, this.b, $$13, $$14, -6250336);
+         }
+
+         @Override
+         public xv a() {
+            return this.b;
+         }
+      }
+
+      public abstract class b extends fov.a<fya.a.b> {
+         @Override
+         public xv a() {
+            return xu.a;
+         }
+
+         public boolean b() {
+            return false;
+         }
+
+         public boolean c() {
+            return false;
+         }
+
+         public boolean d() {
+            return this.c();
+         }
+      }
+
+      static record c(UUID a, fya.a.b b) {
+         public boolean a(fya.a.c $$0) {
+            return $$0.a.equals(this.a);
+         }
+      }
+
+      public class d extends fya.a.b {
+         private static final int b = 9;
+         private static final int c = 8;
+         private static final int d = 11;
+         private static final int e = 4;
+         private final int f;
+         private final ya g;
+         private final xv h;
+         @Nullable
+         private final List<azq> i;
+         @Nullable
+         private final flt.a j;
+         @Nullable
+         private final List<azq> k;
+         private final boolean l;
+         private final boolean m;
+
+         public d(final int $$1, final xv $$2, final xv $$3, @Nullable final flt $$4, final boolean $$5, final boolean $$6) {
+            this.f = $$1;
+            this.j = x.a($$4, flt::f);
+            this.k = $$4 != null && $$4.g() != null ? fya.this.p.c($$4.g(), a.this.a()) : null;
+            this.l = $$5;
+            this.m = $$6;
+            ya $$7 = fya.this.p.a($$2, this.e() - fya.this.p.a(xu.u));
+            if ($$2 != $$7) {
+               this.g = ya.a($$7, xu.u);
+               this.i = fya.this.p.c($$2, a.this.a());
+            } else {
+               this.g = $$2;
+               this.i = null;
+            }
+
+            this.h = $$3;
+         }
+
+         @Override
+         public void a(fnl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            if (this.b() && this.l) {
+               this.a($$0, $$2, $$3, $$5);
+            }
+
+            int $$10 = $$3 + this.g();
+            int $$11 = $$2 + 1 + ($$5 - 9) / 2;
+            $$0.b(fya.this.p, us.a().a(this.g), $$10, $$11, this.l ? -1 : -1593835521);
+            if (this.i != null && $$8) {
+               fya.this.b(this.i);
+            }
+
+            int $$12 = fya.this.p.a(this.g);
+            this.a($$0, $$10 + $$12 + 4, $$2, $$5, $$6, $$7);
+         }
+
+         private void a(fnl $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+            if (this.j != null) {
+               int $$6 = $$2 + ($$3 - this.j.d) / 2;
+               this.j.a($$0, $$1, $$6);
+               if (this.k != null && $$4 >= $$1 && $$4 <= $$1 + this.j.c && $$5 >= $$6 && $$5 <= $$6 + this.j.d) {
+                  fya.this.b(this.k);
+               }
+            }
+         }
+
+         private void a(fnl $$0, int $$1, int $$2, int $$3) {
+            int $$5 = $$1 + ($$3 - 8) / 2;
+            $$0.a(glo::B, fya.a, $$2, $$5, 9, 8);
+         }
+
+         private int e() {
+            int $$0 = this.j != null ? this.j.c + 4 : 0;
+            return a.this.a() - this.g() - 4 - $$0;
+         }
+
+         private int g() {
+            return this.m ? 11 : 0;
+         }
+
+         @Override
+         public xv a() {
+            return (xv)(this.b() ? xv.a("narrator.select", this.h) : this.h);
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(null);
+            return this.h();
+         }
+
+         @Override
+         public boolean a(int $$0, int $$1, int $$2) {
+            return fsb.a($$0) ? this.h() : false;
+         }
+
+         @Override
+         public boolean b() {
+            return fya.this.x.b(this.f);
+         }
+
+         @Override
+         public boolean c() {
+            return true;
+         }
+
+         @Override
+         public boolean d() {
+            return this.l;
+         }
+
+         private boolean h() {
+            if (this.l) {
+               fya.this.x.a(this.f);
+               fya.this.F();
+               return true;
+            } else {
+               return false;
+            }
+         }
+      }
+
+      public class e extends fya.a.b {
+         private static final int b = 12;
+         private static final int c = 4;
+         private final xv d;
+         private final Supplier<hcf> e;
+         private final boolean f;
+
+         public e(final GameProfile $$1, final xv $$2, final boolean $$3) {
+            this.d = $$2;
+            this.f = $$3;
+            this.e = a.this.c.an().a($$1);
+         }
+
+         @Override
+         public void a(fnl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            int $$10 = $$3 - 12 + 4;
+            int $$11 = $$2 + ($$5 - 12) / 2;
+            foy.a($$0, this.e.get(), $$10, $$11, 12);
+            int $$12 = $$2 + 1 + ($$5 - 9) / 2;
+            $$0.b(fya.this.p, this.d, $$10 + 12 + 4, $$12, this.f ? -1 : -1593835521);
+         }
+      }
+
+      public class f extends fya.a.b {
+         @Override
+         public void a(fnl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         }
       }
    }
 }

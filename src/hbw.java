@@ -1,61 +1,45 @@
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.authlib.GameProfile;
+import java.util.UUID;
 
-public class hbw extends hbk {
-   private final List<hbw.a> b;
-   private final Map<dvv, BitSet> c = new Reference2ObjectOpenHashMap();
+public class hbw {
+   private static final hcf[] a = new hcf[]{
+      a("textures/entity/player/slim/alex.png", hcf.a.a),
+      a("textures/entity/player/slim/ari.png", hcf.a.a),
+      a("textures/entity/player/slim/efe.png", hcf.a.a),
+      a("textures/entity/player/slim/kai.png", hcf.a.a),
+      a("textures/entity/player/slim/makena.png", hcf.a.a),
+      a("textures/entity/player/slim/noor.png", hcf.a.a),
+      a("textures/entity/player/slim/steve.png", hcf.a.a),
+      a("textures/entity/player/slim/sunny.png", hcf.a.a),
+      a("textures/entity/player/slim/zuri.png", hcf.a.a),
+      a("textures/entity/player/wide/alex.png", hcf.a.b),
+      a("textures/entity/player/wide/ari.png", hcf.a.b),
+      a("textures/entity/player/wide/efe.png", hcf.a.b),
+      a("textures/entity/player/wide/kai.png", hcf.a.b),
+      a("textures/entity/player/wide/makena.png", hcf.a.b),
+      a("textures/entity/player/wide/noor.png", hcf.a.b),
+      a("textures/entity/player/wide/steve.png", hcf.a.b),
+      a("textures/entity/player/wide/sunny.png", hcf.a.b),
+      a("textures/entity/player/wide/zuri.png", hcf.a.b)
+   };
 
-   private static hbg a(List<hbw.a> $$0) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Model must have at least one selector");
-      } else {
-         return $$0.getFirst().b();
-      }
+   public static alz a() {
+      return b().a();
    }
 
-   public hbw(List<hbw.a> $$0) {
-      super(a($$0));
-      this.b = $$0;
+   public static hcf b() {
+      return a[6];
    }
 
-   @Override
-   public List<gkn> a(@Nullable dvv $$0, @Nullable jm $$1, azu $$2) {
-      if ($$0 == null) {
-         return Collections.emptyList();
-      } else {
-         BitSet $$3 = this.c.get($$0);
-         if ($$3 == null) {
-            $$3 = new BitSet();
-
-            for (int $$4 = 0; $$4 < this.b.size(); $$4++) {
-               if (this.b.get($$4).a.test($$0)) {
-                  $$3.set($$4);
-               }
-            }
-
-            this.c.put($$0, $$3);
-         }
-
-         List<gkn> $$5 = new ArrayList<>();
-         long $$6 = $$2.g();
-
-         for (int $$7 = 0; $$7 < $$3.length(); $$7++) {
-            if ($$3.get($$7)) {
-               $$2.b($$6);
-               $$5.addAll(this.b.get($$7).b.a($$0, $$1, $$2));
-            }
-         }
-
-         return $$5;
-      }
+   public static hcf a(UUID $$0) {
+      return a[Math.floorMod($$0.hashCode(), a.length)];
    }
 
-   public static record a(Predicate<dvv> a, hbg b) {
+   public static hcf a(GameProfile $$0) {
+      return a($$0.getId());
+   }
+
+   private static hcf a(String $$0, hcf.a $$1) {
+      return new hcf(alz.b($$0), null, null, null, $$1, true);
    }
 }

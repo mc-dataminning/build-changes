@@ -1,41 +1,60 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.google.common.collect.Maps;
 import java.util.Collection;
+import java.util.Map;
+import javax.annotation.Nullable;
 
 public class anc {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xj.c("commands.deop.failed"));
+   private final Map<alz, anb> a = Maps.newHashMap();
 
-   public static void a(CommandDispatcher<ew> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("deop").requires($$0x -> $$0x.c(3)))
-            .then(
-               ex.a("targets", fl.a())
-                  .suggests(($$0x, $$1) -> fb.a(((ew)$$0x.getSource()).l().ag().l(), $$1))
-                  .executes($$0x -> a((ew)$$0x.getSource(), fl.a($$0x, "targets")))
-            )
-      );
+   @Nullable
+   public anb a(alz $$0) {
+      return this.a.get($$0);
    }
 
-   private static int a(ew $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      avq $$2 = $$0.l().ag();
-      int $$3 = 0;
+   public anb a(alz $$0, xv $$1) {
+      anb $$2 = new anb($$0, $$1);
+      this.a.put($$0, $$2);
+      return $$2;
+   }
 
-      for (GameProfile $$4 : $$1) {
-         if ($$2.f($$4)) {
-            $$2.b($$4);
-            $$3++;
-            $$0.a(() -> xj.a("commands.deop.success", $$1.iterator().next().getName()), true);
-         }
+   public void a(anb $$0) {
+      this.a.remove($$0.a());
+   }
+
+   public Collection<alz> a() {
+      return this.a.keySet();
+   }
+
+   public Collection<anb> b() {
+      return this.a.values();
+   }
+
+   public ux a(js.a $$0) {
+      ux $$1 = new ux();
+
+      for (anb $$2 : this.a.values()) {
+         $$1.a($$2.a().toString(), $$2.a($$0));
       }
 
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         $$0.l().a($$0);
-         return $$3;
+      return $$1;
+   }
+
+   public void a(ux $$0, js.a $$1) {
+      for (String $$2 : $$0.e()) {
+         alz $$3 = alz.a($$2);
+         this.a.put($$3, anb.a($$0.p($$2), $$3, $$1));
+      }
+   }
+
+   public void a(asi $$0) {
+      for (anb $$1 : this.a.values()) {
+         $$1.c($$0);
+      }
+   }
+
+   public void b(asi $$0) {
+      for (anb $$1 : this.a.values()) {
+         $$1.d($$0);
       }
    }
 }

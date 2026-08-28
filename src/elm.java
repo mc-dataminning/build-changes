@@ -1,57 +1,71 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
-import org.apache.commons.lang3.mutable.MutableBoolean;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Comparator;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Predicate;
 
-public record elm(jq<eei<?, ?>> e, List<elp> f) {
-   public static final Codec<elm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eei.b.fieldOf("feature").forGetter($$0x -> $$0x.e), elp.b.listOf().fieldOf("placement").forGetter($$0x -> $$0x.f)).apply($$0, elm::new)
-   );
-   public static final Codec<jq<elm>> b = alf.a(ma.aR, a);
-   public static final Codec<ju<elm>> c = kf.a(ma.aR, a);
-   public static final Codec<List<ju<elm>>> d = kf.a(ma.aR, a, true).listOf();
+public abstract class elm {
+   public static final Codec<elm> h = ma.X.q().dispatch(elm::a, eln::a);
 
-   public boolean a(dgk $$0, dxr $$1, azu $$2, jh $$3) {
-      return this.a(new eln($$0, $$1, Optional.empty()), $$2, $$3);
-   }
+   protected abstract eln<?> a();
 
-   public boolean b(dgk $$0, dxr $$1, azu $$2, jh $$3) {
-      return this.a(new eln($$0, $$1, Optional.of(this)), $$2, $$3);
-   }
+   public abstract void a(elm.a var1);
 
-   private boolean a(eln $$0, azu $$1, jh $$2) {
-      Stream<jh> $$3 = Stream.of($$2);
+   public static final class a {
+      private final dhg a;
+      private final BiConsumer<jh, dxn> b;
+      private final bam c;
+      private final ObjectArrayList<jh> d;
+      private final ObjectArrayList<jh> e;
+      private final ObjectArrayList<jh> f;
 
-      for (elp $$4 : this.f) {
-         $$3 = $$3.flatMap($$3x -> $$4.a_($$0, $$1, $$3x));
+      public a(dhg $$0, BiConsumer<jh, dxn> $$1, bam $$2, Set<jh> $$3, Set<jh> $$4, Set<jh> $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = new ObjectArrayList($$5);
+         this.d = new ObjectArrayList($$3);
+         this.e = new ObjectArrayList($$4);
+         this.d.sort(Comparator.comparingInt(kl::v));
+         this.e.sort(Comparator.comparingInt(kl::v));
+         this.f.sort(Comparator.comparingInt(kl::v));
       }
 
-      eei<?, ?> $$5 = this.e.a();
-      MutableBoolean $$6 = new MutableBoolean();
-      $$3.forEach($$4 -> {
-         if ($$5.a($$0.d(), $$0.f(), $$1, $$4)) {
-            $$6.setTrue();
-         }
-      });
-      return $$6.isTrue();
-   }
+      public void a(jh $$0, dye $$1) {
+         this.a($$0, dkg.ft.m().b($$1, Boolean.valueOf(true)));
+      }
 
-   public Stream<eei<?, ?>> a() {
-      return this.e.a().a();
-   }
+      public void a(jh $$0, dxn $$1) {
+         this.b.accept($$0, $$1);
+      }
 
-   @Override
-   public String toString() {
-      return "Placed " + this.e;
-   }
+      public boolean a(jh $$0) {
+         return this.a.a($$0, dxm.a::l);
+      }
 
-   public jq<eei<?, ?>> b() {
-      return this.e;
-   }
+      public boolean a(jh $$0, Predicate<dxn> $$1) {
+         return this.a.a($$0, $$1);
+      }
 
-   public List<elp> c() {
-      return this.f;
+      public dhg a() {
+         return this.a;
+      }
+
+      public bam b() {
+         return this.c;
+      }
+
+      public ObjectArrayList<jh> c() {
+         return this.d;
+      }
+
+      public ObjectArrayList<jh> d() {
+         return this.e;
+      }
+
+      public ObjectArrayList<jh> e() {
+         return this.f;
+      }
    }
 }

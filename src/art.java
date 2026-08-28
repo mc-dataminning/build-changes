@@ -1,40 +1,42 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.concurrent.Executor;
-import java.util.stream.Collectors;
-import org.jetbrains.annotations.Nullable;
+public record art(int a, int b) {
+   private static final long c = 32L;
+   private static final long d = 4294967295L;
 
-public class art extends aqw {
-   private final LongSet c = new LongOpenHashSet();
-   private final int d;
-   private final String e;
+   public dgg a() {
+      return new dgg(kj.a(this.a), kj.a(this.b));
+   }
 
-   public art(brf<Runnable> $$0, Executor $$1, int $$2) {
-      super($$0, $$1);
-      this.d = $$2;
-      this.e = $$0.z_();
+   public long b() {
+      return a(this.a, this.b);
+   }
+
+   public static long a(int $$0, int $$1) {
+      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
+   }
+
+   public static int a(long $$0) {
+      return (int)($$0 & 4294967295L);
+   }
+
+   public static int b(long $$0) {
+      return (int)($$0 >>> 32 & 4294967295L);
    }
 
    @Override
-   protected void a(long $$0) {
-      this.c.remove($$0);
-   }
-
-   @Nullable
-   @Override
-   protected aqx.a c() {
-      return this.c.size() < this.d ? super.c() : null;
+   public String toString() {
+      return "[" + this.a + ", " + this.b + "]";
    }
 
    @Override
-   protected void a(aqx.a $$0) {
-      this.c.add($$0.a());
-      super.a($$0);
+   public int hashCode() {
+      return dgg.d(this.a, this.b);
    }
 
-   @VisibleForTesting
-   public String d() {
-      return this.e + "=[" + this.c.stream().map($$0 -> $$0 + ":" + new des($$0)).collect(Collectors.joining(",")) + "], s=" + this.b;
+   public int c() {
+      return this.a;
+   }
+
+   public int d() {
+      return this.b;
    }
 }

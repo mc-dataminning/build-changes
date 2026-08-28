@@ -1,98 +1,49 @@
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 import java.util.UUID;
-import javax.annotation.Nullable;
 
-public record aap(aap.a c) implements aat {
-   public static final zh<wg, aap> a = aat.a(aap::a, aap::new);
-   public static final aat.b<aap> b = aat.a("debug/bee");
+public record aap(UUID c, String d, String e, boolean f, Optional<xv> g) implements aac<aai> {
+   public static final int a = 40;
+   public static final zt<ByteBuf, aap> b = zt.a(kk.g, aap::b, zr.o, aap::e, zr.b(40), aap::f, zr.b, aap::g, xx.f.a(zr::a), aap::h, aap::new);
 
-   private aap(wg $$0) {
-      this(new aap.a($$0));
-   }
-
-   private void a(wg $$0) {
-      this.c.a($$0);
+   public aap(UUID c, String d, String e, boolean f, Optional<xv> g) {
+      if (e.length() > 40) {
+         throw new IllegalArgumentException("Hash is too long (max 40, was " + e.length() + ")");
+      } else {
+         this.c = c;
+         this.d = d;
+         this.e = e;
+         this.f = f;
+         this.g = g;
+      }
    }
 
    @Override
-   public aat.b<aap> a() {
-      return b;
+   public aae<aap> a() {
+      return aau.g;
    }
 
-   public aap.a b() {
+   public void a(aai $$0) {
+      $$0.a(this);
+   }
+
+   public UUID b() {
       return this.c;
    }
 
-   public static record a(UUID a, int b, ezy c, @Nullable esj d, @Nullable jh e, @Nullable jh f, int g, Set<String> h, List<jh> i) {
-      public a(wg $$0) {
-         this($$0.n(), $$0.readInt(), $$0.k(), $$0.c(esj::b), $$0.c(jh.b), $$0.c(jh.b), $$0.readInt(), $$0.a(HashSet::new, wg::p), $$0.a(jh.b));
-      }
+   public String e() {
+      return this.d;
+   }
 
-      public void a(wg $$0) {
-         $$0.a(this.a);
-         $$0.q(this.b);
-         $$0.a(this.c);
-         $$0.a(this.d, ($$0x, $$1) -> $$1.a($$0x));
-         $$0.a(this.e, jh.b);
-         $$0.a(this.f, jh.b);
-         $$0.q(this.g);
-         $$0.a(this.h, wg::a);
-         $$0.a(this.i, jh.b);
-      }
+   public String f() {
+      return this.e;
+   }
 
-      public boolean a(jh $$0) {
-         return Objects.equals($$0, this.e);
-      }
+   public boolean g() {
+      return this.f;
+   }
 
-      public String a() {
-         return ags.a(this.a);
-      }
-
-      @Override
-      public String toString() {
-         return this.a();
-      }
-
-      public UUID b() {
-         return this.a;
-      }
-
-      public int c() {
-         return this.b;
-      }
-
-      public ezy d() {
-         return this.c;
-      }
-
-      @Nullable
-      public esj e() {
-         return this.d;
-      }
-
-      @Nullable
-      public jh f() {
-         return this.e;
-      }
-
-      @Nullable
-      public jh g() {
-         return this.f;
-      }
-
-      public int h() {
-         return this.g;
-      }
-
-      public Set<String> i() {
-         return this.h;
-      }
-
-      public List<jh> j() {
-         return this.i;
-      }
+   public Optional<xv> h() {
+      return this.g;
    }
 }

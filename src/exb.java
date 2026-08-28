@@ -1,38 +1,64 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JavaOps;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class exb extends ewa {
-   public static final Codec<xj> a = xl.a.validate($$0 -> czu.g.encodeStart(JavaOps.INSTANCE, $$0).map($$1 -> $$0));
-   public static final MapCodec<exb> b = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and($$0.group(czu.a(a).fieldOf("pages").forGetter($$0x -> $$0x.c), evz.a.forGetter($$0x -> $$0x.d))).apply($$0, exb::new)
-   );
-   private final List<ash<xj>> c;
-   private final evz d;
+public class exb extends ewq {
+   public static final MapCodec<exb> a = a(exb::new);
 
-   protected exb(List<exy> $$0, List<ash<xj>> $$1, evz $$2) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
+   exb(List<ewx> $$0, List<ezs> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected cwm a(cwm $$0, eun $$1) {
-      $$0.a(ku.T, czu.a, this::a);
-      return $$0;
-   }
-
-   @VisibleForTesting
-   public czu a(czu $$0) {
-      List<ash<xj>> $$1 = this.d.a($$0.a(), this.c);
-      return $$0.b($$1);
+   public ewy a() {
+      return ewv.h;
    }
 
    @Override
-   public ewc<exb> b() {
-      return ewd.N;
+   protected ewp a(List<? extends ewp> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (ewp)$$0.get(0);
+         case 2 -> $$0.get(0).and($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (ewp $$3 : $$0) {
+            if (!$$3.expand($$1, $$2)) {
+               return false;
+            }
+         }
+
+         return true;
+      };
+      };
+   }
+
+   public static exb.a a(ewx.a<?>... $$0) {
+      return new exb.a($$0);
+   }
+
+   public static class a extends ewx.a<exb.a> {
+      private final Builder<ewx> a = ImmutableList.builder();
+
+      public a(ewx.a<?>... $$0) {
+         for (ewx.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
+      }
+
+      protected exb.a a() {
+         return this;
+      }
+
+      @Override
+      public exb.a c(ewx.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public ewx b() {
+         return new exb(this.a.build(), this.f());
+      }
    }
 }

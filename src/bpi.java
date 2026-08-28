@@ -1,49 +1,45 @@
-import java.net.SocketAddress;
-import jdk.jfr.Category;
-import jdk.jfr.DataAmount;
-import jdk.jfr.Enabled;
-import jdk.jfr.Event;
-import jdk.jfr.Label;
-import jdk.jfr.Name;
-import jdk.jfr.StackTrace;
+import java.nio.file.Path;
+import java.util.Collections;
+import java.util.List;
 
-@Category({"Minecraft", "Network"})
-@StackTrace(false)
-@Enabled(false)
-public abstract class bpi extends Event {
-   @Name("protocolId")
-   @Label("Protocol Id")
-   public final String protocolId;
-   @Name("packetDirection")
-   @Label("Packet Direction")
-   public final String packetDirection;
-   @Name("packetId")
-   @Label("Packet Id")
-   public final String packetId;
-   @Name("remoteAddress")
-   @Label("Remote Address")
-   public final String remoteAddress;
-   @Name("bytes")
-   @Label("Bytes")
-   @DataAmount
-   public final int bytes;
+public class bpi implements bpm {
+   public static final bpi a = new bpi();
 
-   public bpi(String $$0, String $$1, String $$2, SocketAddress $$3, int $$4) {
-      this.protocolId = $$0;
-      this.packetDirection = $$1;
-      this.packetId = $$2;
-      this.remoteAddress = $$3.toString();
-      this.bytes = $$4;
+   private bpi() {
    }
 
-   public static final class a {
-      public static final String a = "remoteAddress";
-      public static final String b = "protocolId";
-      public static final String c = "packetDirection";
-      public static final String d = "packetId";
-      public static final String e = "bytes";
+   @Override
+   public List<bpq> a(String $$0) {
+      return Collections.emptyList();
+   }
 
-      private a() {
-      }
+   @Override
+   public boolean a(Path $$0) {
+      return false;
+   }
+
+   @Override
+   public long a() {
+      return 0L;
+   }
+
+   @Override
+   public int b() {
+      return 0;
+   }
+
+   @Override
+   public long c() {
+      return 0L;
+   }
+
+   @Override
+   public int d() {
+      return 0;
+   }
+
+   @Override
+   public String e() {
+      return "";
    }
 }

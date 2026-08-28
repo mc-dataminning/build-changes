@@ -1,78 +1,45 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
+import java.util.ArrayList;
+import java.util.List;
 
-public class boq implements bor {
-   public static final boq a = new boq();
+public interface boq<S> {
+   void a(int var1, bov<S> var2, Object var3);
 
-   private boq() {
+   default void a(int $$0, Object $$1) {
+      this.a($$0, bov.b(), $$1);
    }
 
-   @Override
-   public void a() {
-   }
+   void a(int var1);
 
-   @Override
-   public void b() {
-   }
+   public static class a<S> implements boq<S> {
+      private final List<bor<S>> a = new ArrayList<>();
+      private int b = -1;
 
-   @Override
-   public void a(String $$0) {
-   }
+      private void b(int $$0) {
+         if ($$0 > this.b) {
+            this.b = $$0;
+            this.a.clear();
+         }
+      }
 
-   @Override
-   public void a(Supplier<String> $$0) {
-   }
+      @Override
+      public void a(int $$0) {
+         this.b($$0);
+      }
 
-   @Override
-   public void a(bqc $$0) {
-   }
+      @Override
+      public void a(int $$0, bov<S> $$1, Object $$2) {
+         this.b($$0);
+         if ($$0 == this.b) {
+            this.a.add(new bor<>($$0, $$1, $$2));
+         }
+      }
 
-   @Override
-   public void c() {
-   }
+      public List<bor<S>> a() {
+         return this.a;
+      }
 
-   @Override
-   public void b(String $$0) {
-   }
-
-   @Override
-   public void b(Supplier<String> $$0) {
-   }
-
-   @Override
-   public boz d(String $$0) {
-      return boz.a;
-   }
-
-   @Override
-   public boz c(Supplier<String> $$0) {
-      return boz.a;
-   }
-
-   @Override
-   public void a(String $$0, int $$1) {
-   }
-
-   @Override
-   public void a(Supplier<String> $$0, int $$1) {
-   }
-
-   @Override
-   public bos d() {
-      return boo.a;
-   }
-
-   @Nullable
-   @Override
-   public bom.a c(String $$0) {
-      return null;
-   }
-
-   @Override
-   public Set<Pair<String, bqc>> e() {
-      return ImmutableSet.of();
+      public int b() {
+         return this.b;
+      }
    }
 }

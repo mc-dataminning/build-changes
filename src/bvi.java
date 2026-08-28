@@ -1,62 +1,43 @@
-public class bvi extends bul {
-   private static final String a = "data";
-   private ul b = new ul();
-
-   public bvi(bus<?> $$0, dfm $$1) {
-      super($$0, $$1);
-      this.ad = true;
+public record bvi(float a, float b, float c, bvh d, boolean e) {
+   private bvi(float $$0, float $$1, boolean $$2) {
+      this($$0, $$1, c($$1), bvh.a($$0, $$1), $$2);
    }
 
-   @Override
-   public void h() {
+   private static float c(float $$0) {
+      return $$0 * 0.85F;
    }
 
-   @Override
-   protected void a(akq.a $$0) {
+   public fbn a(fbs $$0) {
+      return this.a($$0.d, $$0.e, $$0.f);
    }
 
-   @Override
-   protected void a(ul $$0) {
-      this.b = $$0.p("data");
+   public fbn a(double $$0, double $$1, double $$2) {
+      float $$3 = this.a / 2.0F;
+      float $$4 = this.b;
+      return new fbn($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3);
    }
 
-   @Override
-   protected void b(ul $$0) {
-      $$0.a("data", this.b.i());
+   public bvi a(float $$0) {
+      return this.a($$0, $$0);
    }
 
-   @Override
-   public zq<acf> a(arn $$0) {
-      throw new IllegalStateException("Markers should never be sent");
+   public bvi a(float $$0, float $$1) {
+      return !this.e && ($$0 != 1.0F || $$1 != 1.0F) ? new bvi(this.a * $$0, this.b * $$1, this.c * $$1, this.d.a($$0, $$1, $$0), false) : this;
    }
 
-   @Override
-   protected boolean r(bul $$0) {
-      return false;
+   public static bvi b(float $$0, float $$1) {
+      return new bvi($$0, $$1, false);
    }
 
-   @Override
-   protected boolean bR() {
-      return false;
+   public static bvi c(float $$0, float $$1) {
+      return new bvi($$0, $$1, true);
    }
 
-   @Override
-   protected void p(bul $$0) {
-      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
+   public bvi b(float $$0) {
+      return new bvi(this.a, this.b, $$0, this.d, this.e);
    }
 
-   @Override
-   public esa m_() {
-      return esa.d;
-   }
-
-   @Override
-   public boolean r_() {
-      return true;
-   }
-
-   @Override
-   public final boolean a(arp $$0, btb $$1, float $$2) {
-      return false;
+   public bvi a(bvh.a $$0) {
+      return new bvi(this.a, this.b, this.c, $$0.a(this.a, this.b), this.e);
    }
 }

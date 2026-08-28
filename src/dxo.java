@@ -1,59 +1,159 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import com.google.common.base.MoreObjects;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSortedMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Decoder;
+import com.mojang.serialization.Encoder;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class dxo implements AutoCloseable {
-   private final dfn a;
-   private final Long2ObjectMap<dyb> b = new Long2ObjectOpenHashMap();
-   @Nullable
-   private dyb c;
-   private long d;
+public class dxo<O, S extends dxp<O, S>> {
+   static final Pattern a = Pattern.compile("^[a-z0-9_]+$");
+   private final O b;
+   private final ImmutableSortedMap<String, dyp<?>> c;
+   private final ImmutableList<S> d;
 
-   public dxo(dfn $$0) {
-      this.a = $$0;
-   }
+   protected dxo(Function<O, S> $$0, O $$1, dxo.b<O, S> $$2, Map<String, dyp<?>> $$3) {
+      this.b = $$1;
+      this.c = ImmutableSortedMap.copyOf($$3);
+      Supplier<S> $$4 = () -> $$0.apply($$1);
+      MapCodec<S> $$5 = MapCodec.of(Encoder.empty(), Decoder.unit($$4));
+      UnmodifiableIterator $$7 = this.c.entrySet().iterator();
 
-   @Nullable
-   public dyb a(jh $$0) {
-      int $$1 = this.a.f($$0.v());
-      if ($$1 >= 0 && $$1 < this.a.am()) {
-         long $$2 = kj.c($$0);
-         if (this.c == null || this.d != $$2) {
-            this.c = (dyb)this.b.computeIfAbsent($$2, $$2x -> {
-               dxq $$3 = this.a.a(kj.a($$0.u()), kj.a($$0.w()));
-               dyb $$4 = $$3.b($$1);
-               $$4.a();
-               return $$4;
-            });
-            this.d = $$2;
+      while ($$7.hasNext()) {
+         Entry<String, dyp<?>> $$6 = (Entry<String, dyp<?>>)$$7.next();
+         $$5 = a($$5, $$4, $$6.getKey(), $$6.getValue());
+      }
+
+      MapCodec<S> $$7x = $$5;
+      Map<Map<dyp<?>, Comparable<?>>, S> $$8 = Maps.newLinkedHashMap();
+      List<S> $$9 = Lists.newArrayList();
+      Stream<List<Pair<dyp<?>, Comparable<?>>>> $$10 = Stream.of(Collections.emptyList());
+      UnmodifiableIterator var11 = this.c.values().iterator();
+
+      while (var11.hasNext()) {
+         dyp<?> $$11 = (dyp<?>)var11.next();
+         $$10 = $$10.flatMap($$1x -> $$11.a().stream().map($$2x -> {
+               List<Pair<dyp<?>, Comparable<?>>> $$3x = Lists.newArrayList($$1x);
+               $$3x.add(Pair.of($$11, $$2x));
+               return $$3x;
+            }));
+      }
+
+      $$10.forEach($$5x -> {
+         Reference2ObjectArrayMap<dyp<?>, Comparable<?>> $$6 = new Reference2ObjectArrayMap($$5x.size());
+
+         for (Pair<dyp<?>, Comparable<?>> $$7xx : $$5x) {
+            $$6.put((dyp)$$7xx.getFirst(), (Comparable)$$7xx.getSecond());
          }
 
-         return this.c;
-      } else {
-         return null;
+         S $$8x = $$2.create($$1, $$6, $$7);
+         $$8.put($$6, $$8x);
+         $$9.add($$8x);
+      });
+
+      for (S $$12 : $$9) {
+         $$12.a($$8);
       }
+
+      this.d = ImmutableList.copyOf($$9);
    }
 
-   public dvv b(jh $$0) {
-      dyb $$1 = this.a($$0);
-      if ($$1 == null) {
-         return dis.a.m();
-      } else {
-         int $$2 = kj.b($$0.u());
-         int $$3 = kj.b($$0.v());
-         int $$4 = kj.b($$0.w());
-         return $$1.a($$2, $$3, $$4);
-      }
+   private static <S extends dxp<?, S>, T extends Comparable<T>> MapCodec<S> a(MapCodec<S> $$0, Supplier<S> $$1, String $$2, dyp<T> $$3) {
+      return Codec.mapPair($$0, $$3.e().fieldOf($$2).orElseGet($$0x -> {
+      }, () -> $$3.a($$1.get()))).xmap($$1x -> (dxp)((dxp)$$1x.getFirst()).b($$3, ((dyp.a)$$1x.getSecond()).b()), $$1x -> Pair.of($$1x, $$3.a($$1x)));
+   }
+
+   public ImmutableList<S> a() {
+      return this.d;
+   }
+
+   public S b() {
+      return (S)this.d.get(0);
+   }
+
+   public O c() {
+      return this.b;
+   }
+
+   public Collection<dyp<?>> d() {
+      return this.c.values();
    }
 
    @Override
-   public void close() {
-      ObjectIterator var1 = this.b.values().iterator();
+   public String toString() {
+      return MoreObjects.toStringHelper(this)
+         .add("block", this.b)
+         .add("properties", this.c.values().stream().map(dyp::f).collect(Collectors.toList()))
+         .toString();
+   }
 
-      while (var1.hasNext()) {
-         dyb $$0 = (dyb)var1.next();
-         $$0.b();
+   @Nullable
+   public dyp<?> a(String $$0) {
+      return (dyp<?>)this.c.get($$0);
+   }
+
+   public static class a<O, S extends dxp<O, S>> {
+      private final O a;
+      private final Map<String, dyp<?>> b = Maps.newHashMap();
+
+      public a(O $$0) {
+         this.a = $$0;
       }
+
+      public dxo.a<O, S> a(dyp<?>... $$0) {
+         for (dyp<?> $$1 : $$0) {
+            this.a($$1);
+            this.b.put($$1.f(), $$1);
+         }
+
+         return this;
+      }
+
+      private <T extends Comparable<T>> void a(dyp<T> $$0) {
+         String $$1 = $$0.f();
+         if (!dxo.a.matcher($$1).matches()) {
+            throw new IllegalArgumentException(this.a + " has invalidly named property: " + $$1);
+         } else {
+            Collection<T> $$2 = $$0.a();
+            if ($$2.size() <= 1) {
+               throw new IllegalArgumentException(this.a + " attempted use property " + $$1 + " with <= 1 possible values");
+            } else {
+               for (T $$3 : $$2) {
+                  String $$4 = $$0.b($$3);
+                  if (!dxo.a.matcher($$4).matches()) {
+                     throw new IllegalArgumentException(this.a + " has property: " + $$1 + " with invalidly named value: " + $$4);
+                  }
+               }
+
+               if (this.b.containsKey($$1)) {
+                  throw new IllegalArgumentException(this.a + " has duplicate property: " + $$1);
+               }
+            }
+         }
+      }
+
+      public dxo<O, S> a(Function<O, S> $$0, dxo.b<O, S> $$1) {
+         return new dxo<>($$0, this.a, $$1, this.b);
+      }
+   }
+
+   public interface b<O, S> {
+      S create(O var1, Reference2ObjectArrayMap<dyp<?>, Comparable<?>> var2, MapCodec<S> var3);
    }
 }

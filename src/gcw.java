@@ -1,22 +1,30 @@
-public class gcw {
-   private final float a;
-   private final float b;
+public class gcw extends gca {
+   private static final String a = "plate";
+   private static final String b = "handle";
+   private static final int c = 10;
+   private static final int d = 20;
+   private final geh e;
+   private final geh f;
 
-   public gcw(float $$0, float $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public gcw(geh $$0) {
+      super($$0, glo::c);
+      this.e = $$0.b("plate");
+      this.f = $$0.b("handle");
    }
 
-   public float a() {
-      return this.a;
+   public static gen a() {
+      gep $$0 = new gep();
+      ger $$1 = $$0.a();
+      $$1.a("plate", gem.c().a(0, 0).a(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), gej.a);
+      $$1.a("handle", gem.c().a(26, 0).a(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), gej.a);
+      return gen.a($$0, 64, 64);
    }
 
-   public float b() {
-      return this.b;
+   public geh b() {
+      return this.e;
    }
 
-   @Override
-   public String toString() {
-      return "(" + this.a + "," + this.b + ")";
+   public geh c() {
+      return this.f;
    }
 }

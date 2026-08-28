@@ -1,22 +1,59 @@
-import java.io.File;
-import java.time.Duration;
+public interface fde extends bsx {
+   cxk f();
 
-public class fde {
-   private static final Duration a = Duration.ofSeconds(15L);
+   default cxk c(int $$0) {
+      return this.f().a($$0);
+   }
 
-   public static void a(File $$0, long $$1) {
-      Thread $$2 = new Thread(() -> {
-         try {
-            Thread.sleep(a);
-         } catch (InterruptedException var4) {
-            return;
-         }
+   void b(cxk var1);
 
-         o $$3 = aqj.a("Client shutdown", $$1);
-         fke.a($$0, $$3);
-      });
-      $$2.setDaemon(true);
-      $$2.setName("Client shutdown watchdog");
-      $$2.start();
+   default cxk h() {
+      return this.c(this.ao_());
+   }
+
+   @Override
+   default int b() {
+      return 1;
+   }
+
+   @Override
+   default boolean c() {
+      return this.f().f();
+   }
+
+   @Override
+   default void a() {
+      this.h();
+   }
+
+   @Override
+   default cxk b(int $$0) {
+      return this.a($$0, this.ao_());
+   }
+
+   @Override
+   default cxk a(int $$0) {
+      return $$0 == 0 ? this.f() : cxk.k;
+   }
+
+   @Override
+   default cxk a(int $$0, int $$1) {
+      return $$0 != 0 ? cxk.k : this.c($$1);
+   }
+
+   @Override
+   default void a(int $$0, cxk $$1) {
+      if ($$0 == 0) {
+         this.b($$1);
+      }
+   }
+
+   public interface a extends fde {
+      dup v();
+
+      @Override
+      default boolean a(cps $$0) {
+         return bsx.a(this.v(), $$0);
+      }
    }
 }

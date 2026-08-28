@@ -1,32 +1,53 @@
-public class cbj extends cbh {
-   private final int h;
-   private static final int i = 10;
-   private static final int j = 20;
+import com.mojang.datafixers.kinds.Const;
+import com.mojang.datafixers.kinds.IdF;
+import com.mojang.datafixers.kinds.K1;
+import com.mojang.datafixers.kinds.OptionalBox;
+import com.mojang.datafixers.kinds.Const.Mu;
+import com.mojang.datafixers.util.Unit;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public cbj(bvj $$0, int $$1) {
-      super($$0);
-      this.h = $$1;
-   }
+public interface cbj<F extends K1, Value> {
+   cff<Value> a();
 
-   @Override
-   public void a() {
-      if (this.d > 0) {
-         this.d--;
-         this.i().ifPresent($$0x -> this.a.aY = this.a(this.a.aY, $$0x + 20.0F, this.b));
-         this.h().ifPresent($$0x -> this.a.w(this.a(this.a.dN(), $$0x + 10.0F, this.c)));
-      } else {
-         if (this.a.L().m()) {
-            this.a.w(this.a(this.a.dN(), 0.0F, 5.0F));
-         }
+   cfg b();
 
-         this.a.aY = this.a(this.a.aY, this.a.aW, this.b);
+   @Nullable
+   cbi<F, Value> a(bxd<?> var1, Optional<Value> var2);
+
+   public static record a<Value>(cff<Value> a) implements cbj<Mu<Unit>, Value> {
+      @Override
+      public cfg b() {
+         return cfg.b;
       }
 
-      float $$0 = azm.h(this.a.aY - this.a.aW);
-      if ($$0 < (float)(-this.h)) {
-         this.a.aW -= 4.0F;
-      } else if ($$0 > (float)this.h) {
-         this.a.aW += 4.0F;
+      @Override
+      public cbi<Mu<Unit>, Value> a(bxd<?> $$0, Optional<Value> $$1) {
+         return $$1.isPresent() ? null : new cbi<>($$0, this.a, Const.create(Unit.INSTANCE));
+      }
+   }
+
+   public static record b<Value>(cff<Value> a) implements cbj<com.mojang.datafixers.kinds.IdF.Mu, Value> {
+      @Override
+      public cfg b() {
+         return cfg.a;
+      }
+
+      @Override
+      public cbi<com.mojang.datafixers.kinds.IdF.Mu, Value> a(bxd<?> $$0, Optional<Value> $$1) {
+         return $$1.isEmpty() ? null : new cbi<>($$0, this.a, IdF.create($$1.get()));
+      }
+   }
+
+   public static record c<Value>(cff<Value> a) implements cbj<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
+      @Override
+      public cfg b() {
+         return cfg.c;
+      }
+
+      @Override
+      public cbi<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> a(bxd<?> $$0, Optional<Value> $$1) {
+         return new cbi<>($$0, this.a, OptionalBox.create($$1));
       }
    }
 }

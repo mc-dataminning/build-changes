@@ -1,58 +1,56 @@
-import com.google.gson.annotations.SerializedName;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 import org.slf4j.Logger;
 
-public class fit {
-   private static final String a = "realms_persistence.json";
-   private static final ffz b = new ffz();
-   private static final Logger c = LogUtils.getLogger();
+public class fit extends fiq {
+   private static final Logger e = LogUtils.getLogger();
+   public List<fis> a;
+   public int b;
+   public int c;
+   public int d;
 
-   public fit.a a() {
-      return b();
+   public fit() {
    }
 
-   public void a(fit.a $$0) {
-      b($$0);
+   public fit(int $$0) {
+      this.a = Collections.emptyList();
+      this.b = 0;
+      this.c = $$0;
+      this.d = -1;
    }
 
-   public static fit.a b() {
-      Path $$0 = c();
+   public boolean a() {
+      return this.b * this.c >= this.d && this.b > 0 && this.d > 0 && this.c > 0;
+   }
+
+   public static fit a(String $$0) {
+      fit $$1 = new fit();
+      $$1.a = Lists.newArrayList();
 
       try {
-         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
-         fit.a $$2 = b.a($$1, fit.a.class);
-         if ($$2 != null) {
-            return $$2;
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("templates").isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.get("templates").getAsJsonArray().iterator();
+
+            while ($$4.hasNext()) {
+               $$1.a.add(fis.a($$4.next().getAsJsonObject()));
+            }
          }
-      } catch (NoSuchFileException var3) {
-      } catch (Exception var4) {
-         c.warn("Failed to read Realms storage {}", $$0, var4);
+
+         $$1.b = fkm.a("page", $$3, 0);
+         $$1.c = fkm.a("size", $$3, 0);
+         $$1.d = fkm.a("total", $$3, 0);
+      } catch (Exception var5) {
+         e.error("Could not parse WorldTemplatePaginatedList: {}", var5.getMessage());
       }
 
-      return new fit.a();
-   }
-
-   public static void b(fit.a $$0) {
-      Path $$1 = c();
-
-      try {
-         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
-      } catch (Exception var3) {
-      }
-   }
-
-   private static Path c() {
-      return fke.Q().q.toPath().resolve("realms_persistence.json");
-   }
-
-   public static class a implements fgp {
-      @SerializedName("newsLink")
-      public String a;
-      @SerializedName("hasUnreadNews")
-      public boolean b;
+      return $$1;
    }
 }

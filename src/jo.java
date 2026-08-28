@@ -1,7 +1,4 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-
-public enum jo implements bai {
+public enum jo implements bba {
    a("down_east", jm.a, jm.f),
    b("down_north", jm.a, jm.c),
    c("down_south", jm.a, jm.d),
@@ -15,40 +12,40 @@ public enum jo implements bai {
    k("north_up", jm.c, jm.b),
    l("south_up", jm.d, jm.b);
 
-   private static final Int2ObjectMap<jo> m = ae.a(new Int2ObjectOpenHashMap(values().length), $$0 -> {
+   private static final int m = jm.values().length;
+   private static final jo[] n = ae.a(new jo[m * m], $$0 -> {
       for (jo $$1 : values()) {
-         $$0.put(b($$1.p, $$1.o), $$1);
+         $$0[b($$1.q, $$1.p)] = $$1;
       }
    });
-   private final String n;
-   private final jm o;
+   private final String o;
    private final jm p;
+   private final jm q;
 
    private static int b(jm $$0, jm $$1) {
-      return $$1.ordinal() << 3 | $$0.ordinal();
+      return $$0.ordinal() * m + $$1.ordinal();
    }
 
    private jo(final String $$0, final jm $$1, final jm $$2) {
-      this.n = $$0;
-      this.p = $$1;
-      this.o = $$2;
+      this.o = $$0;
+      this.q = $$1;
+      this.p = $$2;
    }
 
    @Override
    public String c() {
-      return this.n;
+      return this.o;
    }
 
    public static jo a(jm $$0, jm $$1) {
-      int $$2 = b($$0, $$1);
-      return (jo)m.get($$2);
+      return n[b($$0, $$1)];
    }
 
    public jm a() {
-      return this.p;
+      return this.q;
    }
 
    public jm b() {
-      return this.o;
+      return this.p;
    }
 }

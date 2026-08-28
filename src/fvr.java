@@ -1,62 +1,48 @@
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
-import java.util.List;
 import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class fvr {
-   private final Reference2ObjectMap<ctw, fvr.a> a = new Reference2ObjectArrayMap();
-   private final fwa b;
+public class fvr extends fuj {
+   public static final float c = 62.500004F;
+   public static final float d = 0.9765628F;
+   private static final Vector3f s = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
+   @Nullable
+   private gca u;
 
-   public fvr(fwa $$0) {
-      this.b = $$0;
+   public fvr(dwc $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public void a() {
-      this.a.clear();
+   @Override
+   protected void aT_() {
+      super.aT_();
+      boolean $$0 = this.a.m().b() instanceof dsc;
+      this.u = god.a(this.m.aS(), this.b, $$0);
    }
 
-   public void a(cwm $$0, ctw $$1) {
-      this.a.put($$1, new fvr.a(List.of($$0), true));
-   }
-
-   public void a(List<cwm> $$0, ctw $$1) {
-      this.a.put($$1, new fvr.a($$0, false));
-   }
-
-   public void a(flq $$0, fke $$1, boolean $$2) {
-      this.a.forEach(($$3, $$4) -> {
-         int $$5 = $$3.e;
-         int $$6 = $$3.f;
-         if ($$4.b && $$2) {
-            $$0.a($$5 - 4, $$6 - 4, $$5 + 20, $$6 + 20, 822018048);
-         } else {
-            $$0.a($$5, $$6, $$5 + 16, $$6 + 16, 822018048);
-         }
-
-         cwm $$7 = $$4.a(this.b.currentIndex());
-         $$0.b($$7, $$5, $$6);
-         $$0.a(gjq.J(), $$5, $$6, $$5 + 16, $$6 + 16, 822083583);
-         if ($$4.b) {
-            $$0.a($$1.h, $$7, $$5, $$6);
-         }
-      });
-   }
-
-   public void a(flq $$0, fke $$1, int $$2, int $$3, @Nullable ctw $$4) {
-      if ($$4 != null) {
-         fvr.a $$5 = (fvr.a)this.a.get($$4);
-         if ($$5 != null) {
-            cwm $$6 = $$5.a(this.b.currentIndex());
-            $$0.a($$1.h, frw.a($$1, $$6), $$2, $$3, $$6.a(ku.G));
-         }
+   @Override
+   protected void a(fnl $$0, dxn $$1) {
+      super.a($$0, $$1);
+      boolean $$2 = $$1.b() instanceof dsc;
+      if (!$$2) {
+         $$0.c().a(0.0F, 35.0F, 0.0F);
       }
    }
 
-   static record a(List<cwm> a, boolean b) {
-
-      public cwm a(int $$0) {
-         int $$1 = this.a.size();
-         return $$1 == 0 ? cwm.k : this.a.get($$0 % $$1);
+   @Override
+   protected void c(fnl $$0) {
+      if (this.u != null) {
+         $$0.c().a(0.0F, 31.0F, 0.0F);
+         $$0.c().b(62.500004F, 62.500004F, -62.500004F);
+         $$0.a($$1 -> {
+            hdn $$2 = glz.a(this.b);
+            fgp $$3 = $$2.a($$1, this.u::a);
+            this.u.a($$0.c(), $$3, 15728880, hav.d);
+         });
       }
+   }
+
+   @Override
+   protected Vector3f l() {
+      return s;
    }
 }

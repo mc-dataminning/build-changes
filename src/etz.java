@@ -1,28 +1,145 @@
+import java.util.Arrays;
+
 public class etz {
-   public static final etz a = new etz("advancements");
-   public static final etz b = new etz("stats");
-   public static final etz c = new etz("playerdata");
-   public static final etz d = new etz("players");
-   public static final etz e = new etz("level.dat");
-   public static final etz f = new etz("level.dat_old");
-   public static final etz g = new etz("icon.png");
-   public static final etz h = new etz("session.lock");
-   public static final etz i = new etz("generated");
-   public static final etz j = new etz("datapacks");
-   public static final etz k = new etz("resources.zip");
-   public static final etz l = new etz(".");
-   private final String m;
+   private eub[] a = new eub[128];
+   private int b;
 
-   private etz(String $$0) {
-      this.m = $$0;
+   public eub a(eub $$0) {
+      if ($$0.d >= 0) {
+         throw new IllegalStateException("OW KNOWS!");
+      } else {
+         if (this.b == this.a.length) {
+            eub[] $$1 = new eub[this.b << 1];
+            System.arraycopy(this.a, 0, $$1, 0, this.b);
+            this.a = $$1;
+         }
+
+         this.a[this.b] = $$0;
+         $$0.d = this.b;
+         this.a(this.b++);
+         return $$0;
+      }
    }
 
-   public String a() {
-      return this.m;
+   public void a() {
+      this.b = 0;
    }
 
-   @Override
-   public String toString() {
-      return "/" + this.m;
+   public eub b() {
+      return this.a[0];
+   }
+
+   public eub c() {
+      eub $$0 = this.a[0];
+      this.a[0] = this.a[--this.b];
+      this.a[this.b] = null;
+      if (this.b > 0) {
+         this.b(0);
+      }
+
+      $$0.d = -1;
+      return $$0;
+   }
+
+   public void b(eub $$0) {
+      this.a[$$0.d] = this.a[--this.b];
+      this.a[this.b] = null;
+      if (this.b > $$0.d) {
+         if (this.a[$$0.d].g < $$0.g) {
+            this.a($$0.d);
+         } else {
+            this.b($$0.d);
+         }
+      }
+
+      $$0.d = -1;
+   }
+
+   public void a(eub $$0, float $$1) {
+      float $$2 = $$0.g;
+      $$0.g = $$1;
+      if ($$1 < $$2) {
+         this.a($$0.d);
+      } else {
+         this.b($$0.d);
+      }
+   }
+
+   public int d() {
+      return this.b;
+   }
+
+   private void a(int $$0) {
+      eub $$1 = this.a[$$0];
+      float $$2 = $$1.g;
+
+      while ($$0 > 0) {
+         int $$3 = $$0 - 1 >> 1;
+         eub $$4 = this.a[$$3];
+         if (!($$2 < $$4.g)) {
+            break;
+         }
+
+         this.a[$$0] = $$4;
+         $$4.d = $$0;
+         $$0 = $$3;
+      }
+
+      this.a[$$0] = $$1;
+      $$1.d = $$0;
+   }
+
+   private void b(int $$0) {
+      eub $$1 = this.a[$$0];
+      float $$2 = $$1.g;
+
+      while (true) {
+         int $$3 = 1 + ($$0 << 1);
+         int $$4 = $$3 + 1;
+         if ($$3 >= this.b) {
+            break;
+         }
+
+         eub $$5 = this.a[$$3];
+         float $$6 = $$5.g;
+         eub $$7;
+         float $$8;
+         if ($$4 >= this.b) {
+            $$7 = null;
+            $$8 = Float.POSITIVE_INFINITY;
+         } else {
+            $$7 = this.a[$$4];
+            $$8 = $$7.g;
+         }
+
+         if ($$6 < $$8) {
+            if (!($$6 < $$2)) {
+               break;
+            }
+
+            this.a[$$0] = $$5;
+            $$5.d = $$0;
+            $$0 = $$3;
+         } else {
+            if (!($$8 < $$2)) {
+               break;
+            }
+
+            this.a[$$0] = $$7;
+            $$7.d = $$0;
+            $$0 = $$4;
+         }
+      }
+
+      this.a[$$0] = $$1;
+      $$1.d = $$0;
+   }
+
+   public boolean e() {
+      return this.b == 0;
+   }
+
+   public eub[] f() {
+      return Arrays.copyOf(this.a, this.b);
    }
 }

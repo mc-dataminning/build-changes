@@ -1,134 +1,83 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.List;
-import java.util.Objects;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Map;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class fcz extends fdb {
-   public static final int a = 854;
-   public static final int b = 480;
-   static final fcz.b l = new fcz.b(854, 480);
-
-   public fcz(int $$0, int $$1) {
-      super(true);
-      this.e($$0, $$1);
+public abstract class fcz {
+   public boolean a(@Nullable fcz $$0) {
+      return $$0 == null ? false : this == $$0;
    }
 
-   private void e(int $$0, int $$1) {
-      fcz.b $$2 = this.f($$0, $$1);
-      this.h = GlStateManager.glGenFramebuffers();
-      GlStateManager._glBindFramebuffer(36160, this.h);
-      GlStateManager._bindTexture(this.i);
-      GlStateManager._texParameter(3553, 10241, 9728);
-      GlStateManager._texParameter(3553, 10240, 9728);
-      GlStateManager._texParameter(3553, 10242, 33071);
-      GlStateManager._texParameter(3553, 10243, 33071);
-      GlStateManager._glFramebufferTexture2D(36160, 36064, 3553, this.i, 0);
-      GlStateManager._bindTexture(this.j);
-      GlStateManager._texParameter(3553, 34892, 0);
-      GlStateManager._texParameter(3553, 10241, 9728);
-      GlStateManager._texParameter(3553, 10240, 9728);
-      GlStateManager._texParameter(3553, 10242, 33071);
-      GlStateManager._texParameter(3553, 10243, 33071);
-      GlStateManager._glFramebufferTexture2D(36160, 36096, 3553, this.j, 0);
-      GlStateManager._bindTexture(0);
-      this.e = $$2.a;
-      this.f = $$2.b;
-      this.c = $$2.a;
-      this.d = $$2.b;
-      this.b();
-      GlStateManager._glBindFramebuffer(36160, 0);
-   }
+   public abstract String b();
 
-   private fcz.b f(int $$0, int $$1) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      this.i = TextureUtil.generateTextureId();
-      this.j = TextureUtil.generateTextureId();
-      fcz.a $$2 = fcz.a.a;
+   public abstract yj d(xv var1);
 
-      for (fcz.b $$3 : fcz.b.a($$0, $$1)) {
-         $$2 = fcz.a.a;
-         if (this.a($$3)) {
-            $$2 = $$2.a(fcz.a.b);
-         }
+   public abstract boolean i();
 
-         if (this.b($$3)) {
-            $$2 = $$2.a(fcz.a.c);
-         }
+   public abstract boolean h();
 
-         if ($$2 == fcz.a.d) {
-            return $$3;
-         }
+   public abstract fcz.b j();
+
+   public abstract n n();
+
+   public abstract Collection<String> g();
+
+   public abstract fcz.b k();
+
+   public abstract fcz.a l();
+
+   public static enum a {
+      a("always", 0),
+      b("never", 1),
+      c("pushOtherTeams", 2),
+      d("pushOwnTeam", 3);
+
+      private static final Map<String, fcz.a> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (fcz.a)$$0));
+      public final String e;
+      public final int f;
+
+      @Nullable
+      public static fcz.a a(String $$0) {
+         return g.get($$0);
       }
 
-      throw new RuntimeException("Unrecoverable GL_OUT_OF_MEMORY (allocated attachments = " + $$2.name() + ")");
-   }
+      private a(final String $$0, final int $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
 
-   private boolean a(fcz.b $$0) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      GlStateManager._getError();
-      GlStateManager._bindTexture(this.i);
-      GlStateManager._texImage2D(3553, 0, 32856, $$0.a, $$0.b, 0, 6408, 5121, null);
-      return GlStateManager._getError() != 1285;
-   }
-
-   private boolean b(fcz.b $$0) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      GlStateManager._getError();
-      GlStateManager._bindTexture(this.j);
-      GlStateManager._texImage2D(3553, 0, 6402, $$0.a, $$0.b, 0, 6402, 5126, null);
-      return GlStateManager._getError() != 1285;
-   }
-
-   static enum a {
-      a,
-      b,
-      c,
-      d;
-
-      private static final fcz.a[] e = values();
-
-      fcz.a a(fcz.a $$0) {
-         return e[this.ordinal() | $$0.ordinal()];
+      public xv a() {
+         return xv.c("team.collision." + this.e);
       }
    }
 
-   static class b {
-      public final int a;
-      public final int b;
+   public static enum b {
+      a("always", 0),
+      b("never", 1),
+      c("hideForOtherTeams", 2),
+      d("hideForOwnTeam", 3);
 
-      b(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      private static final Map<String, fcz.b> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (fcz.b)$$0));
+      public final String e;
+      public final int f;
+
+      public static String[] a() {
+         return g.keySet().toArray(new String[0]);
       }
 
-      static List<fcz.b> a(int $$0, int $$1) {
-         RenderSystem.assertOnRenderThreadOrInit();
-         int $$2 = RenderSystem.maxSupportedTextureSize();
-         return $$0 > 0 && $$0 <= $$2 && $$1 > 0 && $$1 <= $$2 ? ImmutableList.of(new fcz.b($$0, $$1), fcz.l) : ImmutableList.of(fcz.l);
+      @Nullable
+      public static fcz.b a(String $$0) {
+         return g.get($$0);
       }
 
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            fcz.b $$1 = (fcz.b)$$0;
-            return this.a == $$1.a && this.b == $$1.b;
-         } else {
-            return false;
-         }
+      private b(final String $$0, final int $$1) {
+         this.e = $$0;
+         this.f = $$1;
       }
 
-      @Override
-      public int hashCode() {
-         return Objects.hash(this.a, this.b);
-      }
-
-      @Override
-      public String toString() {
-         return this.a + "x" + this.b;
+      public xv b() {
+         return xv.c("team.visibility." + this.e);
       }
    }
 }

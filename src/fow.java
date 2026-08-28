@@ -1,178 +1,143 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.ArrayList;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class fow implements AutoCloseable {
-   private static final azu a = azu.a();
-   private static final float b = 32.0F;
-   private final gzf c;
-   private final alj d;
-   private fpa e;
-   private fpa f;
-   private List<fcq.a> g = List.of();
-   private List<fcq> h = List.of();
-   private final fot<fpa> i = new fot<>(fpa[]::new, fpa[][]::new);
-   private final fot<fow.a> j = new fot<>(fow.a[]::new, fow.a[][]::new);
-   private final Int2ObjectMap<IntList> k = new Int2ObjectOpenHashMap();
-   private final List<fox> l = Lists.newArrayList();
+public class fow extends foe<fow.a> {
+   private static final int a = 310;
+   private static final int m = 25;
+   private final fwv n;
 
-   public fow(gzf $$0, alj $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public fow(flz $$0, int $$1, fwv $$2) {
+      super($$0, $$1, $$2.s.d(), $$2.s.c(), 25);
+      this.e = false;
+      this.n = $$2;
    }
 
-   public void a(List<fcq.a> $$0, Set<fov> $$1) {
-      this.g = $$0;
-      this.a($$1);
+   public void a(fmc<?> $$0) {
+      this.b(fow.b.a(this.c.n, $$0, this.n));
    }
 
-   public void a(Set<fov> $$0) {
-      this.h = List.of();
-      this.c();
-      this.h = this.b(this.g, $$0);
-   }
-
-   private void c() {
-      this.d();
-      this.i.a();
-      this.j.a();
-      this.k.clear();
-      this.e = fpc.b.bake(this::a);
-      this.f = fpc.a.bake(this::a);
-   }
-
-   private List<fcq> b(List<fcq.a> $$0, Set<fov> $$1) {
-      IntSet $$2 = new IntOpenHashSet();
-      List<fcq> $$3 = new ArrayList<>();
-
-      for (fcq.a $$4 : $$0) {
-         if ($$4.b().a($$1)) {
-            $$3.add($$4.a());
-            $$2.addAll($$4.a().a());
-         }
+   public void a(fmc<?>... $$0) {
+      for (int $$1 = 0; $$1 < $$0.length; $$1 += 2) {
+         fmc<?> $$2 = $$1 < $$0.length - 1 ? $$0[$$1 + 1] : null;
+         this.b(fow.b.a(this.c.n, $$0[$$1], $$2, this.n));
       }
+   }
 
-      Set<fcq> $$5 = Sets.newHashSet();
-      $$2.forEach($$2x -> {
-         for (fcq $$3x : $$3) {
-            fcp $$4x = $$3x.a($$2x);
-            if ($$4x != null) {
-               $$5.add($$3x);
-               if ($$4x != fpc.b) {
-                  ((IntList)this.k.computeIfAbsent(azm.f($$4x.a(false)), $$0xx -> new IntArrayList())).add($$2x);
-               }
-               break;
-            }
-         }
-      });
-      return $$3.stream().filter($$5::contains).toList();
+   public void a(List<fnw> $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1 += 2) {
+         this.a($$0.get($$1), $$1 < $$0.size() - 1 ? $$0.get($$1 + 1) : null);
+      }
+   }
+
+   public void a(fnw $$0, @Nullable fnw $$1) {
+      this.b(fow.a.a($$0, $$1, this.n));
    }
 
    @Override
-   public void close() {
-      this.d();
+   public int a() {
+      return 310;
    }
 
-   private void d() {
-      for (fox $$0 : this.l) {
-         $$0.close();
-      }
-
-      this.l.clear();
-   }
-
-   private static boolean b(fcp $$0) {
-      float $$1 = $$0.a(false);
-      if (!($$1 < 0.0F) && !($$1 > 32.0F)) {
-         float $$2 = $$0.a(true);
-         return $$2 < 0.0F || $$2 > 32.0F;
-      } else {
-         return true;
-      }
-   }
-
-   private fow.a b(int $$0) {
-      fcp $$1 = null;
-
-      for (fcq $$2 : this.h) {
-         fcp $$3 = $$2.a($$0);
-         if ($$3 != null) {
-            if ($$1 == null) {
-               $$1 = $$3;
-            }
-
-            if (!b($$3)) {
-               return new fow.a($$1, $$3);
+   @Nullable
+   public fnw b(fmc<?> $$0) {
+      for (fow.a $$1 : this.aI_()) {
+         if ($$1 instanceof fow.b $$2) {
+            fnw $$3 = $$2.a.get($$0);
+            if ($$3 != null) {
+               return $$3;
             }
          }
       }
 
-      return $$1 != null ? new fow.a($$1, fpc.b) : fow.a.c;
+      return null;
    }
 
-   public fcp a(int $$0, boolean $$1) {
-      return this.j.a($$0, this::b).a($$1);
+   public void b() {
+      for (fow.a $$0 : this.aI_()) {
+         if ($$0 instanceof fow.b) {
+            fow.b $$1 = (fow.b)$$0;
+
+            for (fnw $$2 : $$1.a.values()) {
+               if ($$2 instanceof fmc.i<?> $$3) {
+                  $$3.c();
+               }
+            }
+         }
+      }
    }
 
-   private fpa c(int $$0) {
-      for (fcq $$1 : this.h) {
-         fcp $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return $$2.bake(this::a);
+   public Optional<fpw> e(double $$0, double $$1) {
+      for (fow.a $$2 : this.aI_()) {
+         for (fpw $$3 : $$2.aI_()) {
+            if ($$3.c($$0, $$1)) {
+               return Optional.of($$3);
+            }
          }
       }
 
-      return this.e;
+      return Optional.empty();
    }
 
-   public fpa a(int $$0) {
-      return this.i.a($$0, this::c);
-   }
+   protected static class a extends foe.a<fow.a> {
+      private final List<fnw> a;
+      private final ftr b;
+      private static final int c = 160;
 
-   private fpa a(fcr $$0) {
-      for (fox $$1 : this.l) {
-         fpa $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return $$2;
+      a(List<fnw> $$0, ftr $$1) {
+         this.a = ImmutableList.copyOf($$0);
+         this.b = $$1;
+      }
+
+      public static fow.a a(List<fnw> $$0, ftr $$1) {
+         return new fow.a($$0, $$1);
+      }
+
+      public static fow.a a(fnw $$0, @Nullable fnw $$1, ftr $$2) {
+         return $$1 == null ? new fow.a(ImmutableList.of($$0), $$2) : new fow.a(ImmutableList.of($$0, $$1), $$2);
+      }
+
+      @Override
+      public void a(fnl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10 = 0;
+         int $$11 = this.b.n / 2 - 155;
+
+         for (fnw $$12 : this.a) {
+            $$12.c($$11 + $$10, $$2);
+            $$12.a($$0, $$6, $$7, $$9);
+            $$10 += 160;
          }
       }
 
-      alj $$3 = this.d.g("/" + this.l.size());
-      boolean $$4 = $$0.c();
-      foy $$5 = $$4 ? foy.b($$3) : foy.a($$3);
-      fox $$6 = new fox($$5, $$4);
-      this.l.add($$6);
-      this.c.a($$3, $$6);
-      fpa $$7 = $$6.a($$0);
-      return $$7 == null ? this.e : $$7;
+      @Override
+      public List<? extends fpw> aI_() {
+         return this.a;
+      }
+
+      @Override
+      public List<? extends fru> b() {
+         return this.a;
+      }
    }
 
-   public fpa a(fcp $$0) {
-      IntList $$1 = (IntList)this.k.get(azm.f($$0.a(false)));
-      return $$1 != null && !$$1.isEmpty() ? this.a($$1.getInt(a.a($$1.size()))) : this.e;
-   }
+   protected static class b extends fow.a {
+      final Map<fmc<?>, fnw> a;
 
-   public alj a() {
-      return this.d;
-   }
+      private b(Map<fmc<?>, fnw> $$0, fwv $$1) {
+         super(ImmutableList.copyOf($$0.values()), $$1);
+         this.a = $$0;
+      }
 
-   public fpa b() {
-      return this.f;
-   }
+      public static fow.b a(fmd $$0, fmc<?> $$1, fwv $$2) {
+         return new fow.b(ImmutableMap.of($$1, $$1.a($$0, 0, 0, 310)), $$2);
+      }
 
-   static record a(fcp a, fcp b) {
-      static final fow.a c = new fow.a(fpc.b, fpc.b);
-
-      fcp a(boolean $$0) {
-         return $$0 ? this.b : this.a;
+      public static fow.b a(fmd $$0, fmc<?> $$1, @Nullable fmc<?> $$2, fwv $$3) {
+         fnw $$4 = $$1.a($$0);
+         return $$2 == null ? new fow.b(ImmutableMap.of($$1, $$4), $$3) : new fow.b(ImmutableMap.of($$1, $$4, $$2, $$2.a($$0)), $$3);
       }
    }
 }

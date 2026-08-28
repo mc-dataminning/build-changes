@@ -1,38 +1,17 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public enum wq {
+   a("handshake"),
+   b("play"),
+   c("status"),
+   d("login"),
+   e("configuration");
 
-public interface wq {
-   static wq a(final Runnable $$0) {
-      return new wq() {
-         @Override
-         public void a() {
-            $$0.run();
-         }
+   private final String f;
 
-         @Nullable
-         @Override
-         public zq<?> b() {
-            $$0.run();
-            return null;
-         }
-      };
+   private wq(final String $$0) {
+      this.f = $$0;
    }
 
-   static wq a(final Supplier<zq<?>> $$0) {
-      return new wq() {
-         @Nullable
-         @Override
-         public zq<?> b() {
-            return $$0.get();
-         }
-      };
-   }
-
-   default void a() {
-   }
-
-   @Nullable
-   default zq<?> b() {
-      return null;
+   public String a() {
+      return this.f;
    }
 }

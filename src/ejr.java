@@ -1,60 +1,43 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejr extends ejs {
-   public static final MapCodec<ejr> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(ejr::new, $$0 -> $$0.b);
-   private final float b;
+public class ejr implements eis {
+   public static final Codec<ejr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayk.b(mb.f).fieldOf("replaceable").forGetter($$0x -> $$0x.b),
+               ekt.a.fieldOf("ground_state").forGetter($$0x -> $$0x.c),
+               eng.b.fieldOf("vegetation_feature").forGetter($$0x -> $$0x.d),
+               emw.c.fieldOf("surface").forGetter($$0x -> $$0x.e),
+               bsj.b(1, 128).fieldOf("depth").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_bottom_block_chance").forGetter($$0x -> $$0x.g),
+               Codec.intRange(1, 256).fieldOf("vertical_range").forGetter($$0x -> $$0x.h),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("vegetation_chance").forGetter($$0x -> $$0x.i),
+               bsj.c.fieldOf("xz_radius").forGetter($$0x -> $$0x.j),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_edge_column_chance").forGetter($$0x -> $$0x.k)
+            )
+            .apply($$0, ejr::new)
+   );
+   public final ayk<dke> b;
+   public final ekt c;
+   public final jq<eng> d;
+   public final emw e;
+   public final bsj f;
+   public final float g;
+   public final int h;
+   public final float i;
+   public final bsj j;
+   public final float k;
 
-   @Override
-   protected ejt<?> a() {
-      return ejt.b;
-   }
-
-   public ejr(float $$0) {
+   public ejr(ayk<dke> $$0, ekt $$1, jq<eng> $$2, emw $$3, bsj $$4, float $$5, int $$6, float $$7, bsj $$8, float $$9) {
       this.b = $$0;
-   }
-
-   @Override
-   public void a(ejs.a $$0) {
-      azu $$1 = $$0.b();
-      $$0.d().forEach($$2 -> {
-         if ($$1.i() < this.b) {
-            jh $$3 = $$2.h();
-            if ($$0.a($$3)) {
-               a($$3, drm.d, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            jh $$4 = $$2.i();
-            if ($$0.a($$4)) {
-               a($$4, drm.f, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            jh $$5 = $$2.f();
-            if ($$0.a($$5)) {
-               a($$5, drm.e, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            jh $$6 = $$2.g();
-            if ($$0.a($$6)) {
-               a($$6, drm.c, $$0);
-            }
-         }
-      });
-   }
-
-   private static void a(jh $$0, dwm $$1, ejs.a $$2) {
-      $$2.a($$0, $$1);
-      int $$3 = 4;
-
-      for (jh var4 = $$0.e(); $$2.a(var4) && $$3 > 0; $$3--) {
-         $$2.a(var4, $$1);
-         var4 = var4.e();
-      }
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
    }
 }

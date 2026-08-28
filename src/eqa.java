@@ -1,22 +1,31 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class eqa extends eqh {
-   public final axs<diq> a;
-   public static final MapCodec<eqa> b = axs.b(ma.f).xmap(eqa::new, $$0 -> $$0.a).fieldOf("value");
+public class eqa extends eoc {
+   public static final MapCodec<eqa> d = a(eqa::new);
 
-   public eqa(axs<diq> $$0) {
-      this.a = $$0;
-   }
-
-   @Nullable
-   @Override
-   public eqk.c a(dfp $$0, jh $$1, jh $$2, eqk.c $$3, eqk.c $$4, eqg $$5) {
-      return eew.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
+   public eqa(eoc.c $$0) {
+      super($$0);
    }
 
    @Override
-   protected eqj<?> a() {
-      return eqj.n;
+   public Optional<eoc.b> a(eoc.a $$0) {
+      dqu $$1 = dqu.a($$0.f());
+      jh $$2 = this.a($$0, $$1);
+      return $$2.v() < 60 ? Optional.empty() : Optional.of(new eoc.b($$2, (Consumer<eou>)($$3 -> this.a($$3, $$2, $$1, $$0))));
+   }
+
+   private void a(eou $$0, jh $$1, dqu $$2, eoc.a $$3) {
+      List<eog> $$4 = Lists.newArrayList();
+      epz.a($$3.e(), $$1, $$2, $$4, $$3.f());
+      $$4.forEach($$0::a);
+   }
+
+   @Override
+   public eol<?> e() {
+      return eol.c;
    }
 }

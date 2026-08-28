@@ -1,50 +1,32 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class eir extends eim {
-   public static final MapCodec<eir> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0)
-            .and(
-               $$0.group(
-                  brp.b(1, 512).fieldOf("foliage_height").forGetter($$0x -> $$0x.b),
-                  Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter($$0x -> $$0x.c)
-               )
-            )
-            .apply($$0, eir::new)
+public class eir implements eis {
+   public static final Codec<eir> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(jh.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, eir::new)
    );
-   private final brp b;
-   private final int c;
+   private final Optional<jh> b;
+   private final boolean c;
 
-   public eir(brp $$0, brp $$1, brp $$2, int $$3) {
-      super($$0, $$1);
-      this.b = $$2;
-      this.c = $$3;
+   private eir(Optional<jh> $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   protected ein<?> a() {
-      return ein.j;
+   public static eir a(jh $$0, boolean $$1) {
+      return new eir(Optional.of($$0), $$1);
    }
 
-   @Override
-   protected void a(dfs $$0, eim.b $$1, azu $$2, ehw $$3, int $$4, eim.a $$5, int $$6, int $$7, int $$8) {
-      jh $$9 = $$5.a();
-      jh.a $$10 = $$9.k();
-
-      for (int $$11 = 0; $$11 < this.c; $$11++) {
-         $$10.a($$9, $$2.a($$7) - $$2.a($$7), $$2.a($$6) - $$2.a($$6), $$2.a($$7) - $$2.a($$7));
-         a($$0, $$1, $$2, $$3, $$10);
-      }
+   public static eir a() {
+      return new eir(Optional.empty(), false);
    }
 
-   @Override
-   public int a(azu $$0, int $$1, ehw $$2) {
-      return this.b.a($$0);
+   public Optional<jh> b() {
+      return this.b;
    }
 
-   @Override
-   protected boolean a(azu $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return false;
+   public boolean c() {
+      return this.c;
    }
 }

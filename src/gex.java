@@ -1,35 +1,25 @@
-import java.net.InetSocketAddress;
+public class gex {
+   private static final int a = 49;
+   private static final int b = 3;
+   private double c = 2000000.0;
+   private int d = 1;
+   private volatile long e = ae.d();
 
-public interface gex {
-   String a();
+   public void a() {
+      this.e = ae.d();
+   }
 
-   String b();
+   public void a(int $$0) {
+      if ($$0 > 0) {
+         double $$1 = (double)(ae.d() - this.e);
+         double $$2 = $$1 / (double)$$0;
+         double $$3 = bae.a($$2, this.c / 3.0, this.c * 3.0);
+         this.c = (this.c * (double)this.d + $$3) / (double)(this.d + 1);
+         this.d = Math.min(49, this.d + 1);
+      }
+   }
 
-   int c();
-
-   InetSocketAddress d();
-
-   static gex a(final InetSocketAddress $$0) {
-      return new gex() {
-         @Override
-         public String a() {
-            return $$0.getAddress().getHostName();
-         }
-
-         @Override
-         public String b() {
-            return $$0.getAddress().getHostAddress();
-         }
-
-         @Override
-         public int c() {
-            return $$0.getPort();
-         }
-
-         @Override
-         public InetSocketAddress d() {
-            return $$0;
-         }
-      };
+   public float b() {
+      return (float)(7000000.0 / this.c);
    }
 }

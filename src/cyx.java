@@ -1,15 +1,44 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public record cyx(axs<btd> c) {
-   public static final Codec<cyx> a = RecordCodecBuilder.create($$0 -> $$0.group(axs.b(ma.s).fieldOf("types").forGetter(cyx::a)).apply($$0, cyx::new));
-   public static final zh<wu, cyx> b = zh.a(axs.c(ma.s), cyx::a, cyx::new);
+public class cyx extends cvq {
+   protected final dke a;
+   private final jm b;
 
-   public boolean a(btb $$0) {
-      return $$0.a(this.c);
+   public cyx(dke $$0, dke $$1, jm $$2, cxg.a $$3) {
+      super($$0, $$3);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   public axs<btd> a() {
-      return this.c;
+   protected boolean a(dhd $$0, dxn $$1, jh $$2) {
+      return $$1.a($$0, $$2);
+   }
+
+   @Nullable
+   @Override
+   protected dxn c(dbb $$0) {
+      dxn $$1 = this.a.a($$0);
+      dxn $$2 = null;
+      dhd $$3 = $$0.q();
+      jh $$4 = $$0.a();
+
+      for (jm $$5 : $$0.f()) {
+         if ($$5 != this.b.g()) {
+            dxn $$6 = $$5 == this.b ? this.d().a($$0) : $$1;
+            if ($$6 != null && this.a($$3, $$6, $$4)) {
+               $$2 = $$6;
+               break;
+            }
+         }
+      }
+
+      return $$2 != null && $$3.a($$2, $$4, fbx.a()) ? $$2 : null;
+   }
+
+   @Override
+   public void a(Map<dke, cxg> $$0, cxg $$1) {
+      super.a($$0, $$1);
+      $$0.put(this.a, $$1);
    }
 }

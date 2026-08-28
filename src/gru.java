@@ -1,17 +1,22 @@
-public class gru extends god<cmk, gxj> {
-   private static final alj a = alj.b("textures/entity/skeleton/stray.png");
-   private static final alj b = alj.b("textures/entity/skeleton/stray_overlay.png");
+public class gru extends gsp<cmn, had, gbs<had>> {
+   private static final alz a = alz.b("textures/entity/zombie/zombie.png");
 
-   public gru(gpk.a $$0) {
-      super($$0, gck.cT, gck.cU, gck.cV);
-      this.a(new gub<>(this, $$0.f(), gck.cW, b));
+   public gru(grj.a $$0, float $$1) {
+      super($$0, new gbl($$0.a(geg.aP)), 0.5F * $$1);
+      this.a(new gvq<>(this, $$0.b()));
+      this.a(new gvn<>(this, new gbl($$0.a(geg.aQ)), new gbl($$0.a(geg.aR)), $$0.h()));
    }
 
-   public alj b(gxj $$0) {
+   public alz a(had $$0) {
       return a;
    }
 
-   public gxj b() {
-      return new gxj();
+   public had b() {
+      return new had();
+   }
+
+   public void a(cmn $$0, had $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      gsa.a($$0, $$1, $$2);
    }
 }

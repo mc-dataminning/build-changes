@@ -1,43 +1,18 @@
-import com.mojang.authlib.GameProfileRepository;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.yggdrasil.ServicesKeySet;
-import com.mojang.authlib.yggdrasil.ServicesKeyType;
-import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
-import java.io.File;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.io.OutputStream;
+import org.slf4j.Logger;
 
-public record ame(MinecraftSessionService a, ServicesKeySet b, GameProfileRepository c, avm d) {
-   private static final String e = "usercache.json";
+public class ame extends amg {
+   private static final Logger b = LogUtils.getLogger();
 
-   public static ame a(YggdrasilAuthenticationService $$0, File $$1) {
-      MinecraftSessionService $$2 = $$0.createMinecraftSessionService();
-      GameProfileRepository $$3 = $$0.createProfileRepository();
-      avm $$4 = new avm($$3, new File($$1, "usercache.json"));
-      return new ame($$2, $$0.getServicesKeySet(), $$3, $$4);
+   public ame(String $$0, OutputStream $$1) {
+      super($$0, $$1);
    }
 
-   @Nullable
-   public azz a() {
-      return azz.a(this.b, ServicesKeyType.PROFILE_KEY);
-   }
-
-   public boolean b() {
-      return !this.b.keys(ServicesKeyType.PROFILE_KEY).isEmpty();
-   }
-
-   public MinecraftSessionService c() {
-      return this.a;
-   }
-
-   public ServicesKeySet d() {
-      return this.b;
-   }
-
-   public GameProfileRepository e() {
-      return this.c;
-   }
-
-   public avm f() {
-      return this.d;
+   @Override
+   protected void a(String $$0) {
+      StackTraceElement[] $$1 = Thread.currentThread().getStackTrace();
+      StackTraceElement $$2 = $$1[Math.min(3, $$1.length)];
+      b.info("[{}]@.({}:{}): {}", new Object[]{this.a, $$2.getFileName(), $$2.getLineNumber(), $$0});
    }
 }

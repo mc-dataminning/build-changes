@@ -1,27 +1,29 @@
-public abstract class brd<R extends Runnable> extends bqz<R> {
-   private int b;
+public class brd implements bre {
+   public static final bre a = new brd();
 
-   public brd(String $$0) {
-      super($$0);
+   @Override
+   public void a() {
    }
 
    @Override
-   public boolean ax() {
-      return this.bB() || super.ax();
-   }
-
-   protected boolean bB() {
-      return this.b != 0;
+   public void b() {
    }
 
    @Override
-   public void d(R $$0) {
-      this.b++;
+   public void c() {
+   }
 
-      try {
-         super.d($$0);
-      } finally {
-         this.b--;
-      }
+   @Override
+   public boolean e() {
+      return false;
+   }
+
+   @Override
+   public bpo f() {
+      return bpk.a;
+   }
+
+   @Override
+   public void d() {
    }
 }

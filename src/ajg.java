@@ -1,55 +1,156 @@
-import java.security.PublicKey;
+public class ajg implements aac<ahm> {
+   public static final zt<ws, ajg> a = aac.a(ajg::a, ajg::new);
+   private static final int b = 1;
+   private static final int c = 2;
+   private static final int d = 4;
+   private final jh e;
+   private final dwh.a f;
+   private final dyw g;
+   private final String h;
+   private final jh i;
+   private final kl j;
+   private final dpd k;
+   private final dqu l;
+   private final String m;
+   private final boolean n;
+   private final boolean o;
+   private final boolean p;
+   private final float q;
+   private final long r;
 
-public class ajg implements zq<aje> {
-   public static final zh<wg, ajg> a = zq.a(ajg::a, ajg::new);
-   private final String b;
-   private final byte[] c;
-   private final byte[] d;
-   private final boolean e;
-
-   public ajg(String $$0, byte[] $$1, byte[] $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   public ajg(
+      jh $$0, dwh.a $$1, dyw $$2, String $$3, jh $$4, kl $$5, dpd $$6, dqu $$7, String $$8, boolean $$9, boolean $$10, boolean $$11, float $$12, long $$13
+   ) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = $$4;
+      this.j = $$5;
+      this.k = $$6;
+      this.l = $$7;
+      this.m = $$8;
+      this.n = $$9;
+      this.o = $$10;
+      this.p = $$11;
+      this.q = $$12;
+      this.r = $$13;
    }
 
-   private ajg(wg $$0) {
-      this.b = $$0.d(20);
-      this.c = $$0.b();
-      this.d = $$0.b();
-      this.e = $$0.readBoolean();
+   private ajg(ws $$0) {
+      this.e = $$0.e();
+      this.f = $$0.b(dwh.a.class);
+      this.g = $$0.b(dyw.class);
+      this.h = $$0.p();
+      int $$1 = 48;
+      this.i = new jh(bae.a($$0.readByte(), -48, 48), bae.a($$0.readByte(), -48, 48), bae.a($$0.readByte(), -48, 48));
+      int $$2 = 48;
+      this.j = new kl(bae.a($$0.readByte(), 0, 48), bae.a($$0.readByte(), 0, 48), bae.a($$0.readByte(), 0, 48));
+      this.k = $$0.b(dpd.class);
+      this.l = $$0.b(dqu.class);
+      this.m = $$0.d(128);
+      this.q = bae.a($$0.readFloat(), 0.0F, 1.0F);
+      this.r = $$0.m();
+      int $$3 = $$0.readByte();
+      this.n = ($$3 & 1) != 0;
+      this.o = ($$3 & 2) != 0;
+      this.p = ($$3 & 4) != 0;
    }
 
-   private void a(wg $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
+   private void a(ws $$0) {
       $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+      $$0.l(this.i.u());
+      $$0.l(this.i.v());
+      $$0.l(this.i.w());
+      $$0.l(this.j.u());
+      $$0.l(this.j.v());
+      $$0.l(this.j.w());
+      $$0.a(this.k);
+      $$0.a(this.l);
+      $$0.a(this.m);
+      $$0.a(this.q);
+      $$0.a(this.r);
+      int $$1 = 0;
+      if (this.n) {
+         $$1 |= 1;
+      }
+
+      if (this.o) {
+         $$1 |= 2;
+      }
+
+      if (this.p) {
+         $$1 |= 4;
+      }
+
+      $$0.l($$1);
    }
 
    @Override
-   public zs<ajg> a() {
-      return ajk.c;
+   public aae<ajg> a() {
+      return ahk.cf;
    }
 
-   public void a(aje $$0) {
+   public void a(ahm $$0) {
       $$0.a(this);
    }
 
-   public String b() {
-      return this.b;
-   }
-
-   public PublicKey e() throws ayl {
-      return ayk.a(this.c);
-   }
-
-   public byte[] f() {
-      return this.d;
-   }
-
-   public boolean g() {
+   public jh b() {
       return this.e;
+   }
+
+   public dwh.a e() {
+      return this.f;
+   }
+
+   public dyw f() {
+      return this.g;
+   }
+
+   public String g() {
+      return this.h;
+   }
+
+   public jh h() {
+      return this.i;
+   }
+
+   public kl i() {
+      return this.j;
+   }
+
+   public dpd j() {
+      return this.k;
+   }
+
+   public dqu k() {
+      return this.l;
+   }
+
+   public String l() {
+      return this.m;
+   }
+
+   public boolean m() {
+      return this.n;
+   }
+
+   public boolean n() {
+      return this.o;
+   }
+
+   public boolean o() {
+      return this.p;
+   }
+
+   public float p() {
+      return this.q;
+   }
+
+   public long q() {
+      return this.r;
    }
 }

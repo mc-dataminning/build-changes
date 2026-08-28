@@ -1,35 +1,77 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Set;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class evy extends ewa {
-   public static final MapCodec<evy> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(eum.a.fieldOf("limit").forGetter($$0x -> $$0x.b)).apply($$0, evy::new));
-   private final eum b;
+public class evy {
+   private static final Logger b = LogUtils.getLogger();
+   private final File c;
+   protected final DataFixer a;
+   private static final DateTimeFormatter d = evq.a();
 
-   private evy(List<exy> $$0, eum $$1) {
-      super($$0);
-      this.b = $$1;
+   public evy(evv.c $$0, DataFixer $$1) {
+      this.a = $$1;
+      this.c = $$0.a(evt.c).toFile();
+      this.c.mkdirs();
    }
 
-   @Override
-   public ewc<evy> b() {
-      return ewd.w;
+   public void a(cps $$0) {
+      try {
+         ux $$1 = $$0.f(new ux());
+         Path $$2 = this.c.toPath();
+         Path $$3 = Files.createTempFile($$2, $$0.cH() + "-", ".dat");
+         vk.a($$1, $$3);
+         Path $$4 = $$2.resolve($$0.cH() + ".dat");
+         Path $$5 = $$2.resolve($$0.cH() + ".dat_old");
+         ae.a($$4, $$3, $$5);
+      } catch (Exception var7) {
+         b.warn("Failed to save player data for {}", $$0.al().getString());
+      }
    }
 
-   @Override
-   public Set<exg<?>> a() {
-      return this.b.a();
+   private void a(cps $$0, String $$1) {
+      Path $$2 = this.c.toPath();
+      Path $$3 = $$2.resolve($$0.cH() + $$1);
+      Path $$4 = $$2.resolve($$0.cH() + "_corrupted_" + LocalDateTime.now().format(d) + $$1);
+      if (Files.isRegularFile($$3)) {
+         try {
+            Files.copy($$3, $$4, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.COPY_ATTRIBUTES);
+         } catch (Exception var7) {
+            b.warn("Failed to copy the player.dat file for {}", $$0.al().getString(), var7);
+         }
+      }
    }
 
-   @Override
-   public cwm a(cwm $$0, eun $$1) {
-      int $$2 = this.b.a($$1, $$0.L());
-      $$0.e($$2);
-      return $$0;
+   private Optional<ux> b(cps $$0, String $$1) {
+      File $$2 = new File(this.c, $$0.cH() + $$1);
+      if ($$2.exists() && $$2.isFile()) {
+         try {
+            return Optional.of(vk.a($$2.toPath(), vg.a()));
+         } catch (Exception var5) {
+            b.warn("Failed to load player data for {}", $$0.al().getString());
+         }
+      }
+
+      return Optional.empty();
    }
 
-   public static ewa.a<?> a(eum $$0) {
-      return a($$1 -> new evy($$1, $$0));
+   public Optional<ux> b(cps $$0) {
+      Optional<ux> $$1 = this.b($$0, ".dat");
+      if ($$1.isEmpty()) {
+         this.a($$0, ".dat");
+      }
+
+      return $$1.or(() -> this.b($$0, ".dat_old")).map($$1x -> {
+         int $$2 = vm.b($$1x, -1);
+         $$1x = bbo.b.a(this.a, $$1x, $$2);
+         $$0.g($$1x);
+         return $$1x;
+      });
    }
 }

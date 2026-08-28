@@ -1,9 +1,10 @@
-public interface th {
-   void a(tg var1);
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-   void a(tg var1, tj var2);
-
-   void b(tg var1, tj var2);
-
-   void a(tg var1, tg var2, tj var3);
+@Target({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface th {
+   String a();
 }

@@ -1,31 +1,28 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public enum dfb implements der {
-   a;
+public record dfb(ju<ddr> c, bsj d) implements dez {
+   public static final MapCodec<dfb> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(kf.a(mb.aN).fieldOf("enchantments").forGetter(dfb::b), bsj.c.fieldOf("cost").forGetter(dfb::c)).apply($$0, dfb::new)
+   );
 
-   @Nullable
    @Override
-   public dsy c_(jh $$0) {
-      return null;
+   public void a(cxk $$0, ddx.a $$1, bam $$2, btc $$3) {
+      for (ddu $$5 : ddt.b($$2, $$0, this.d.a($$2), this.c.a())) {
+         $$1.b($$5.a, $$5.b);
+      }
    }
 
    @Override
-   public dvv a_(jh $$0) {
-      return dis.a.m();
+   public MapCodec<dfb> a() {
+      return b;
    }
 
-   @Override
-   public erv b_(jh $$0) {
-      return erw.a.g();
+   public ju<ddr> b() {
+      return this.c;
    }
 
-   @Override
-   public int K_() {
-      return 0;
-   }
-
-   @Override
-   public int L_() {
-      return 0;
+   public bsj c() {
+      return this.d;
    }
 }

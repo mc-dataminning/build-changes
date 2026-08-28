@@ -1,31 +1,44 @@
 import com.mojang.serialization.MapCodec;
 
-public class dkn extends diq {
-   public static final MapCodec<dkn> a = b(dkn::new);
+public class dkn extends djc {
+   public static final MapCodec<dkn> b = b(dkn::new);
+   public static final int c = 5;
+   private static final jm[] d = jm.values();
 
    @Override
    public MapCodec<dkn> a() {
-      return a;
+      return b;
    }
 
-   public dkn(dvu.d $$0) {
+   public dkn(dxm.d $$0) {
       super($$0);
    }
 
    @Override
-   public void a(dvv $$0, dfm $$1, jh $$2, azu $$3) {
+   protected void b(dxn $$0, ash $$1, jh $$2, bam $$3) {
       if ($$3.a(5) == 0) {
-         jm $$4 = jm.b($$3);
-         if ($$4 != jm.b) {
-            jh $$5 = $$2.a($$4);
-            dvv $$6 = $$1.a_($$5);
-            if (!$$0.t() || !$$6.c($$1, $$5, $$4.g())) {
-               double $$7 = $$4.j() == 0 ? $$3.j() : 0.5 + (double)$$4.j() * 0.6;
-               double $$8 = $$4.k() == 0 ? $$3.j() : 0.5 + (double)$$4.k() * 0.6;
-               double $$9 = $$4.l() == 0 ? $$3.j() : 0.5 + (double)$$4.l() * 0.6;
-               $$1.a(ls.aE, (double)$$2.u() + $$7, (double)$$2.v() + $$8, (double)$$2.w() + $$9, 0.0, 0.0, 0.0);
-            }
+         jm $$4 = d[$$3.a(d.length)];
+         jh $$5 = $$2.a($$4);
+         dxn $$6 = $$1.a_($$5);
+         dke $$7 = null;
+         if (h($$6)) {
+            $$7 = dkg.qT;
+         } else if ($$6.a(dkg.qT) && $$6.c(djd.d) == $$4) {
+            $$7 = dkg.qS;
+         } else if ($$6.a(dkg.qS) && $$6.c(djd.d) == $$4) {
+            $$7 = dkg.qR;
+         } else if ($$6.a(dkg.qR) && $$6.c(djd.d) == $$4) {
+            $$7 = dkg.qQ;
+         }
+
+         if ($$7 != null) {
+            dxn $$8 = $$7.m().b(djd.d, $$4).b(djd.c, Boolean.valueOf($$6.y().a() == etq.c));
+            $$1.b($$5, $$8);
          }
       }
+   }
+
+   public static boolean h(dxn $$0) {
+      return $$0.l() || $$0.a(dkg.J) && $$0.y().e() == 8;
    }
 }

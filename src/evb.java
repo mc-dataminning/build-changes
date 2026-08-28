@@ -1,18 +1,31 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import java.util.function.BiFunction;
+import java.util.function.Supplier;
 
-public class evb {
-   public static final Codec<evd> a = lz.D.q().dispatch(evd::a, eve::a);
-   public static final eve b = a("empty", euy.a);
-   public static final eve c = a("item", eva.a);
-   public static final eve d = a("loot_table", evg.a);
-   public static final eve e = a("dynamic", eux.a);
-   public static final eve f = a("tag", evi.a);
-   public static final eve g = a("alternatives", euu.a);
-   public static final eve h = a("sequence", evh.a);
-   public static final eve i = a("group", euz.a);
+public abstract class evb {
+   private boolean a;
 
-   private static eve a(String $$0, MapCodec<? extends evd> $$1) {
-      return kd.a(lz.D, alj.b($$0), new eve($$1));
+   public abstract ux a(ux var1, js.a var2);
+
+   public void c() {
+      this.a(true);
+   }
+
+   public void a(boolean $$0) {
+      this.a = $$0;
+   }
+
+   public boolean d() {
+      return this.a;
+   }
+
+   public ux a(js.a $$0) {
+      ux $$1 = new ux();
+      $$1.a("data", this.a(new ux(), $$0));
+      vm.e($$1);
+      this.a(false);
+      return $$1;
+   }
+
+   public static record a<T extends evb>(Supplier<T> a, BiFunction<ux, js.a, T> b, bbo c) {
    }
 }

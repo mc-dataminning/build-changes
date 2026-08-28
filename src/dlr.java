@@ -1,40 +1,71 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class dlr extends diz implements dqs {
-   protected static final MapCodec<czn> a = czn.c.fieldOf("suspicious_stew_effects");
-   public static final MapCodec<dlr> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter(dlr::b), t()).apply($$0, dlr::new));
-   protected static final float c = 3.0F;
-   protected static final fas d = diq.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0);
-   private final czn e;
+public class dlr extends dnb {
+   public static final MapCodec<dlr> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ma.e.q().fieldOf("concrete").forGetter($$0x -> $$0x.b), t()).apply($$0, dlr::new)
+   );
+   private final dke b;
 
    @Override
-   public MapCodec<? extends dlr> a() {
-      return b;
+   public MapCodec<dlr> a() {
+      return a;
    }
 
-   public dlr(jq<bto> $$0, float $$1, dvu.d $$2) {
-      this(a($$0, $$1), $$2);
-   }
-
-   public dlr(czn $$0, dvu.d $$1) {
+   public dlr(dke $$0, dxm.d $$1) {
       super($$1);
-      this.e = $$0;
-   }
-
-   protected static czn a(jq<bto> $$0, float $$1) {
-      return new czn(List.of(new czn.a($$0, azm.d($$1 * 20.0F))));
+      this.b = $$0;
    }
 
    @Override
-   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
-      ezy $$4 = $$0.a($$2);
-      return d.a($$4.d, $$4.e, $$4.f);
+   public void a(dha $$0, jh $$1, dxn $$2, dxn $$3, clv $$4) {
+      if (a($$0, $$1, $$3)) {
+         $$0.a($$1, this.b.m(), 3);
+      }
    }
 
    @Override
-   public czn b() {
-      return this.e;
+   public dxn a(dbb $$0) {
+      dgf $$1 = $$0.q();
+      jh $$2 = $$0.a();
+      dxn $$3 = $$1.a_($$2);
+      return a($$1, $$2, $$3) ? this.b.m() : super.a($$0);
+   }
+
+   private static boolean a(dgf $$0, jh $$1, dxn $$2) {
+      return o($$2) || a($$0, $$1);
+   }
+
+   private static boolean a(dgf $$0, jh $$1) {
+      boolean $$2 = false;
+      jh.a $$3 = $$1.k();
+
+      for (jm $$4 : jm.values()) {
+         dxn $$5 = $$0.a_($$3);
+         if ($$4 != jm.a || o($$5)) {
+            $$3.a($$1, $$4);
+            $$5 = $$0.a_($$3);
+            if (o($$5) && !$$5.c($$0, $$1, $$4.g())) {
+               $$2 = true;
+               break;
+            }
+         }
+      }
+
+      return $$2;
+   }
+
+   private static boolean o(dxn $$0) {
+      return $$0.y().a(aya.a);
+   }
+
+   @Override
+   protected dxn a(dxn $$0, dhd $$1, dhp $$2, jh $$3, jm $$4, jh $$5, dxn $$6, bam $$7) {
+      return a($$1, $$3) ? this.b.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   public int b(dxn $$0, dgf $$1, jh $$2) {
+      return $$0.a($$1, $$2).ak;
    }
 }

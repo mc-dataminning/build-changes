@@ -1,110 +1,51 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.io.DataInput;
-import java.io.DataInputStream;
-import java.io.DataOutput;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.nio.file.Path;
-import javax.annotation.Nullable;
+import java.util.BitSet;
+import java.util.stream.Stream;
 
-public final class dzh implements AutoCloseable {
-   public static final String a = ".mca";
-   private static final int b = 256;
-   private final Long2ObjectLinkedOpenHashMap<dzg> c = new Long2ObjectLinkedOpenHashMap();
-   private final dzj d;
-   private final Path e;
-   private final boolean f;
+public class dzh {
+   private final int a;
+   private final BitSet b;
+   private dzh.a c = ($$0x, $$1x, $$2) -> false;
 
-   dzh(dzj $$0, Path $$1, boolean $$2) {
-      this.e = $$1;
-      this.f = $$2;
-      this.d = $$0;
+   public dzh(int $$0, int $$1) {
+      this.a = $$1;
+      this.b = new BitSet(256 * $$0);
    }
 
-   private dzg b(des $$0) throws IOException {
-      long $$1 = des.c($$0.h(), $$0.i());
-      dzg $$2 = (dzg)this.c.getAndMoveToFirst($$1);
-      if ($$2 != null) {
-         return $$2;
-      } else {
-         if (this.c.size() >= 256) {
-            ((dzg)this.c.removeLast()).close();
-         }
-
-         v.c(this.e);
-         Path $$3 = this.e.resolve("r." + $$0.h() + "." + $$0.i() + ".mca");
-         dzg $$4 = new dzg(this.d, $$3, this.e, this.f);
-         this.c.putAndMoveToFirst($$1, $$4);
-         return $$4;
-      }
+   public void a(dzh.a $$0) {
+      this.c = $$0;
    }
 
-   @Nullable
-   public ul a(des $$0) throws IOException {
-      dzg $$1 = this.b($$0);
-
-      ul var4;
-      try (DataInputStream $$2 = $$1.a($$0)) {
-         if ($$2 == null) {
-            return null;
-         }
-
-         var4 = uy.a($$2);
-      }
-
-      return var4;
+   public dzh(long[] $$0, int $$1) {
+      this.a = $$1;
+      this.b = BitSet.valueOf($$0);
    }
 
-   public void a(des $$0, vf $$1) throws IOException {
-      dzg $$2 = this.b($$0);
-
-      try (DataInputStream $$3 = $$2.a($$0)) {
-         if ($$3 != null) {
-            uy.a((DataInput)$$3, $$1, uu.a());
-         }
-      }
+   private int c(int $$0, int $$1, int $$2) {
+      return $$0 & 15 | ($$2 & 15) << 4 | $$1 - this.a << 8;
    }
 
-   protected void a(des $$0, @Nullable ul $$1) throws IOException {
-      dzg $$2 = this.b($$0);
-      if ($$1 == null) {
-         $$2.d($$0);
-      } else {
-         try (DataOutputStream $$3 = $$2.c($$0)) {
-            uy.a($$1, (DataOutput)$$3);
-         }
-      }
+   public void a(int $$0, int $$1, int $$2) {
+      this.b.set(this.c($$0, $$1, $$2));
    }
 
-   @Override
-   public void close() throws IOException {
-      ayu<IOException> $$0 = new ayu<>();
-      ObjectIterator var2 = this.c.values().iterator();
-
-      while (var2.hasNext()) {
-         dzg $$1 = (dzg)var2.next();
-
-         try {
-            $$1.close();
-         } catch (IOException var5) {
-            $$0.a(var5);
-         }
-      }
-
-      $$0.a();
+   public boolean b(int $$0, int $$1, int $$2) {
+      return this.c.test($$0, $$1, $$2) || this.b.get(this.c($$0, $$1, $$2));
    }
 
-   public void a() throws IOException {
-      ObjectIterator var1 = this.c.values().iterator();
-
-      while (var1.hasNext()) {
-         dzg $$0 = (dzg)var1.next();
-         $$0.b();
-      }
+   public Stream<jh> a(dgg $$0) {
+      return this.b.stream().mapToObj($$1 -> {
+         int $$2 = $$1 & 15;
+         int $$3 = $$1 >> 4 & 15;
+         int $$4 = $$1 >> 8;
+         return $$0.a($$2, $$4 + this.a, $$3);
+      });
    }
 
-   public dzj b() {
-      return this.d;
+   public long[] a() {
+      return this.b.toLongArray();
+   }
+
+   public interface a {
+      boolean test(int var1, int var2, int var3);
    }
 }

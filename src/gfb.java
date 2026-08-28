@@ -1,48 +1,106 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.logging.LogUtils;
-import java.util.Hashtable;
-import java.util.Optional;
-import javax.naming.directory.Attribute;
-import javax.naming.directory.Attributes;
-import javax.naming.directory.DirContext;
-import javax.naming.directory.InitialDirContext;
+import java.util.List;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-@FunctionalInterface
-public interface gfb {
-   Logger a = LogUtils.getLogger();
-   gfb b = $$0 -> Optional.empty();
+public class gfb extends gfa implements abz, xj {
+   private static final Logger l = LogUtils.getLogger();
+   private final GameProfile m;
+   private cso n;
+   private final ke.b o;
+   private final gfr p = new gfr();
+   @Nullable
+   private gfk q;
+   @Nullable
+   protected fnz.b k;
 
-   Optional<gey> lookupRedirect(gey var1);
+   public gfb(flz $$0, wp $$1, gfi $$2) {
+      super($$0, $$1, $$2);
+      this.m = $$2.a();
+      this.o = $$2.c();
+      this.n = $$2.d();
+      this.k = $$2.i();
+   }
 
-   static gfb createDnsSrvRedirectHandler() {
-      DirContext $$2;
-      try {
-         String $$0 = "com.sun.jndi.dns.DnsContextFactory";
-         Class.forName("com.sun.jndi.dns.DnsContextFactory");
-         Hashtable<String, String> $$1 = new Hashtable<>();
-         $$1.put("java.naming.factory.initial", "com.sun.jndi.dns.DnsContextFactory");
-         $$1.put("java.naming.provider.url", "dns:");
-         $$1.put("com.sun.jndi.dns.timeout.retries", "1");
-         $$2 = new InitialDirContext($$1);
-      } catch (Throwable var3) {
-         a.error("Failed to initialize SRV redirect resolved, some servers might not work", var3);
-         return b;
+   @Override
+   public boolean c() {
+      return this.b.i();
+   }
+
+   @Override
+   protected void a(abf $$0) {
+      this.b($$0);
+   }
+
+   private void b(abf $$0) {
+      l.warn("Unknown custom packet payload: {}", $$0.a().a());
+   }
+
+   @Override
+   public void a(acb $$0) {
+      aaf.a($$0, this, this.a);
+      this.p.a($$0.b(), $$0.e());
+   }
+
+   @Override
+   public void a(aat $$0) {
+      aaf.a($$0, this, this.a);
+      this.p.a($$0.b());
+   }
+
+   @Override
+   public void a(ace $$0) {
+      this.n = csq.f.a($$0.b());
+   }
+
+   @Override
+   public void a(acd $$0) {
+      aaf.a($$0, this, this.a);
+      if (this.q == null) {
+         this.q = new gfk();
       }
 
-      return $$1x -> {
-         if ($$1x.b() == 25565) {
-            try {
-               Attributes $$2x = $$2.getAttributes("_minecraft._tcp." + $$1x.a(), new String[]{"SRV"});
-               Attribute $$3x = $$2x.get("srv");
-               if ($$3x != null) {
-                  String[] $$4x = $$3x.get().toString().split(" ", 4);
-                  return Optional.of(new gey($$4x[3], gey.c($$4x[2])));
-               }
-            } catch (Throwable var5) {
-            }
+      List<avc> $$1 = this.q.a($$0.b());
+      this.b(new acj($$1));
+   }
+
+   @Override
+   public void a(acc $$0) {
+      this.k = null;
+   }
+
+   private <T> T a(Function<avy, T> $$0) {
+      if (this.q == null) {
+         return $$0.apply(avy.b);
+      } else {
+         Object var3;
+         try (avl $$1 = this.q.a()) {
+            var3 = $$0.apply($$1);
          }
 
-         return Optional.empty();
-      };
+         return (T)var3;
+      }
+   }
+
+   @Override
+   public void a(aca $$0) {
+      aaf.a($$0, this, this.a);
+      ke.b $$1 = this.a($$0x -> this.p.a($$0x, this.o, this.b.e()));
+      this.b.a(ahl.b.a(xg.a($$1)), new gfe(this.a, this.b, new gfi(this.m, this.e, $$1, this.n, this.d, this.c, this.f, this.h, this.k, this.i, this.j)));
+      this.b.a(aci.a);
+      this.b.a(ahl.a.a(xg.a($$1)));
+   }
+
+   @Override
+   public void d() {
+      this.e();
+   }
+
+   @Override
+   public void a(wr $$0) {
+      super.a($$0);
+      this.a.z();
    }
 }

@@ -1,31 +1,14 @@
-import io.netty.buffer.ByteBuf;
-
-public class akc implements zq<akb> {
-   public static final zh<ByteBuf, akc> a = zq.a(akc::a, akc::new);
-   private final long b;
-
-   public akc(long $$0) {
-      this.b = $$0;
-   }
-
-   private akc(ByteBuf $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(ByteBuf $$0) {
-      $$0.writeLong(this.b);
-   }
-
+public interface akc extends aco {
    @Override
-   public zs<akc> a() {
-      return aka.b;
+   default wq b() {
+      return wq.d;
    }
 
-   public void a(akb $$0) {
-      $$0.a(this);
-   }
+   void a(ake var1);
 
-   public long b() {
-      return this.b;
-   }
+   void a(akf var1);
+
+   void a(akd var1);
+
+   void a(akg var1);
 }

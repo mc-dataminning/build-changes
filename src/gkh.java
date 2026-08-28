@@ -1,115 +1,72 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-
 public class gkh {
-   private static final alj a = alj.b("textures/misc/forcefield.png");
+   public static final xv a = xv.c("quickplay.error.title");
+   private static final xv b = xv.c("quickplay.error.invalid_identifier");
+   private static final xv c = xv.c("quickplay.error.realm_connect");
+   private static final xv d = xv.c("quickplay.error.realm_permission");
+   private static final xv e = xv.c("gui.toTitle");
+   private static final xv f = xv.c("gui.toWorld");
+   private static final xv g = xv.c("gui.toRealms");
 
-   public void a(dxl $$0, ezy $$1, double $$2, double $$3) {
-      double $$4 = $$0.e();
-      double $$5 = $$0.g();
-      double $$6 = $$0.f();
-      double $$7 = $$0.h();
-      if (!($$1.d < $$5 - $$2) || !($$1.d > $$4 + $$2) || !($$1.f < $$7 - $$2) || !($$1.f > $$6 + $$2)) {
-         double $$8 = 1.0 - $$0.b($$1.d, $$1.f) / $$2;
-         $$8 = Math.pow($$8, 4.0);
-         $$8 = azm.a($$8, 0.0, 1.0);
-         double $$9 = $$1.d;
-         double $$10 = $$1.f;
-         float $$11 = (float)$$3;
-         RenderSystem.enableBlend();
-         RenderSystem.enableDepthTest();
-         RenderSystem.blendFuncSeparate(
-            GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
-         );
-         RenderSystem.setShaderTexture(0, a);
-         RenderSystem.depthMask(fke.O());
-         int $$12 = $$0.d().a();
-         float $$13 = (float)axx.b($$12) / 255.0F;
-         float $$14 = (float)axx.c($$12) / 255.0F;
-         float $$15 = (float)axx.d($$12) / 255.0F;
-         RenderSystem.setShaderColor($$13, $$14, $$15, (float)$$8);
-         RenderSystem.setShader(giq.h);
-         RenderSystem.polygonOffset(-3.0F, -3.0F);
-         RenderSystem.enablePolygonOffset();
-         RenderSystem.disableCull();
-         float $$16 = (float)(ae.c() % 3000L) / 3000.0F;
-         float $$17 = (float)(-azm.e($$1.e * 0.5));
-         float $$18 = $$17 + $$11;
-         fem $$19 = fet.b().a(few.c.h, fep.i);
-         double $$20 = Math.max((double)azm.a($$10 - $$2), $$6);
-         double $$21 = Math.min((double)azm.c($$10 + $$2), $$7);
-         float $$22 = (float)(azm.a($$20) & 1) * 0.5F;
-         if ($$9 > $$5 - $$2) {
-            float $$23 = $$22;
+   public static void a(flz $$0, fzr.c $$1, fhb $$2) {
+      String $$3 = $$1.c();
+      String $$4 = $$1.d();
+      String $$5 = $$1.e();
+      if (!bbb.h($$3)) {
+         a($$0, $$3);
+      } else if (!bbb.h($$4)) {
+         b($$0, $$4);
+      } else if (!bbb.h($$5)) {
+         a($$0, $$2, $$5);
+      }
+   }
 
-            for (double $$24 = $$20; $$24 < $$21; $$23 += 0.5F) {
-               double $$25 = Math.min(1.0, $$21 - $$24);
-               float $$26 = (float)$$25 * 0.5F;
-               $$19.a((float)($$5 - $$9), -$$11, (float)($$24 - $$10)).a($$16 - $$23, $$16 + $$18);
-               $$19.a((float)($$5 - $$9), -$$11, (float)($$24 + $$25 - $$10)).a($$16 - ($$26 + $$23), $$16 + $$18);
-               $$19.a((float)($$5 - $$9), $$11, (float)($$24 + $$25 - $$10)).a($$16 - ($$26 + $$23), $$16 + $$17);
-               $$19.a((float)($$5 - $$9), $$11, (float)($$24 - $$10)).a($$16 - $$23, $$16 + $$17);
-               $$24++;
-            }
-         }
+   private static void a(flz $$0, String $$1) {
+      if (!$$0.m().b($$1)) {
+         ftr $$2 = new fyy(new ftt());
+         $$0.a(new fsy($$2, a, b, f));
+      } else {
+         $$0.x().a($$1, () -> $$0.a(new ftt()));
+      }
+   }
 
-         if ($$9 < $$4 + $$2) {
-            float $$27 = $$22;
+   private static void b(flz $$0, String $$1) {
+      gft $$2 = new gft($$0);
+      $$2.a();
+      gfs $$3 = $$2.a($$1);
+      if ($$3 == null) {
+         $$3 = new gfs(hcl.a("selectServer.defaultName"), $$1, gfs.c.c);
+         $$2.a($$3, true);
+         $$2.b();
+      }
 
-            for (double $$28 = $$20; $$28 < $$21; $$27 += 0.5F) {
-               double $$29 = Math.min(1.0, $$21 - $$28);
-               float $$30 = (float)$$29 * 0.5F;
-               $$19.a((float)($$4 - $$9), -$$11, (float)($$28 - $$10)).a($$16 + $$27, $$16 + $$18);
-               $$19.a((float)($$4 - $$9), -$$11, (float)($$28 + $$29 - $$10)).a($$16 + $$30 + $$27, $$16 + $$18);
-               $$19.a((float)($$4 - $$9), $$11, (float)($$28 + $$29 - $$10)).a($$16 + $$30 + $$27, $$16 + $$17);
-               $$19.a((float)($$4 - $$9), $$11, (float)($$28 - $$10)).a($$16 + $$27, $$16 + $$17);
-               $$28++;
-            }
-         }
+      ggv $$4 = ggv.a($$1);
+      fsq.a(new fwh(new ftt()), $$0, $$4, $$3, true, null);
+   }
 
-         $$20 = Math.max((double)azm.a($$9 - $$2), $$4);
-         $$21 = Math.min((double)azm.c($$9 + $$2), $$5);
-         $$22 = (float)(azm.a($$20) & 1) * 0.5F;
-         if ($$10 > $$7 - $$2) {
-            float $$31 = $$22;
+   private static void a(flz $$0, fhb $$1, String $$2) {
+      long $$3;
+      fie $$4;
+      try {
+         $$3 = Long.parseLong($$2);
+         $$4 = $$1.b();
+      } catch (NumberFormatException var9) {
+         ftr $$6 = new fgw(new ftt());
+         $$0.a(new fsy($$6, a, b, g));
+         return;
+      } catch (fix var10) {
+         ftr $$8 = new ftt();
+         $$0.a(new fsy($$8, a, c, e));
+         return;
+      }
 
-            for (double $$32 = $$20; $$32 < $$21; $$31 += 0.5F) {
-               double $$33 = Math.min(1.0, $$21 - $$32);
-               float $$34 = (float)$$33 * 0.5F;
-               $$19.a((float)($$32 - $$9), -$$11, (float)($$7 - $$10)).a($$16 + $$31, $$16 + $$18);
-               $$19.a((float)($$32 + $$33 - $$9), -$$11, (float)($$7 - $$10)).a($$16 + $$34 + $$31, $$16 + $$18);
-               $$19.a((float)($$32 + $$33 - $$9), $$11, (float)($$7 - $$10)).a($$16 + $$34 + $$31, $$16 + $$17);
-               $$19.a((float)($$32 - $$9), $$11, (float)($$7 - $$10)).a($$16 + $$31, $$16 + $$17);
-               $$32++;
-            }
-         }
-
-         if ($$10 < $$6 + $$2) {
-            float $$35 = $$22;
-
-            for (double $$36 = $$20; $$36 < $$21; $$35 += 0.5F) {
-               double $$37 = Math.min(1.0, $$21 - $$36);
-               float $$38 = (float)$$37 * 0.5F;
-               $$19.a((float)($$36 - $$9), -$$11, (float)($$6 - $$10)).a($$16 - $$35, $$16 + $$18);
-               $$19.a((float)($$36 + $$37 - $$9), -$$11, (float)($$6 - $$10)).a($$16 - ($$38 + $$35), $$16 + $$18);
-               $$19.a((float)($$36 + $$37 - $$9), $$11, (float)($$6 - $$10)).a($$16 - ($$38 + $$35), $$16 + $$17);
-               $$19.a((float)($$36 - $$9), $$11, (float)($$6 - $$10)).a($$16 - $$35, $$16 + $$17);
-               $$36++;
-            }
-         }
-
-         feq $$39 = $$19.a();
-         if ($$39 != null) {
-            fen.a($$39);
-         }
-
-         RenderSystem.enableCull();
-         RenderSystem.polygonOffset(0.0F, 0.0F);
-         RenderSystem.disablePolygonOffset();
-         RenderSystem.disableBlend();
-         RenderSystem.defaultBlendFunc();
-         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-         RenderSystem.depthMask(true);
+      fic $$11 = $$4.a.stream().filter($$1x -> $$1x.a == $$3).findFirst().orElse(null);
+      if ($$11 == null) {
+         ftr $$12 = new fgw(new ftt());
+         $$0.a(new fsy($$12, a, d, g));
+      } else {
+         ftt $$13 = new ftt();
+         fkx $$14 = new fkx($$13, $$11);
+         $$0.a(new fjr($$13, $$14));
       }
    }
 }

@@ -1,8 +1,11 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class gup extends gpy<cnk> {
+   private static final alz a = alz.b("textures/entity/hoglin/zoglin.png");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gup {
+   public gup(grj.a $$0) {
+      super($$0, geg.dF, geg.dG, 0.7F);
+   }
+
+   public alz a(gyc $$0) {
+      return a;
+   }
 }

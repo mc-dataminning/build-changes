@@ -1,27 +1,26 @@
-public class gtf extends gty<gvj, fzc> {
-   private final gqi a;
+public class gtf extends gsp<cmx, gzd, gcs> {
+   private static final alz a = alz.b("textures/entity/illager/ravager.png");
 
-   public gtf(grh<gvj, fzc> $$0, gqi $$1) {
-      super($$0);
-      this.a = $$1;
+   public gtf(grj.a $$0) {
+      super($$0, new gcs($$0.a(geg.cs)), 1.1F);
    }
 
-   public void a(fer $$0, gjg $$1, int $$2, gvj $$3, float $$4, float $$5) {
-      cwm $$6 = $$3.aW_();
-      hbg $$7 = $$3.b();
-      if ($$7 != null) {
-         $$0.a();
-         float $$8 = 1.0F;
-         float $$9 = -1.0F;
-         float $$10 = azm.e($$3.V) / 60.0F;
-         if ($$3.V < 0.0F) {
-            $$0.a(0.0F, 1.0F - $$10 * 0.5F, -1.0F + $$10 * 0.5F);
-         } else {
-            $$0.a(0.0F, 1.0F + $$10 * 0.8F, -1.0F + $$10 * 0.2F);
-         }
+   public alz a(gzd $$0) {
+      return a;
+   }
 
-         this.a.a($$6, cwk.h, false, $$0, $$1, $$2, gyv.d, $$7);
-         $$0.b();
+   public gzd b() {
+      return new gzd();
+   }
+
+   public void a(cmx $$0, gzd $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = (float)$$0.x() > 0.0F ? (float)$$0.x() - $$2 : 0.0F;
+      $$1.b = (float)$$0.p() > 0.0F ? (float)$$0.p() - $$2 : 0.0F;
+      if ($$0.gv() > 0) {
+         $$1.c = ((float)(20 - $$0.gv()) + $$2) / 20.0F;
+      } else {
+         $$1.c = 0.0F;
       }
    }
 }

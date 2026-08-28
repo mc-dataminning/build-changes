@@ -1,67 +1,88 @@
-public class gal extends fyb<gwy> {
-   public gal(gcl $$0) {
+import java.util.Arrays;
+
+public class gal extends gbf<gym> {
+   private final geh[] a;
+   private final geh b;
+
+   public gal(geh $$0) {
       super($$0);
+      this.b = $$0.b("head");
+      this.a = new geh[12];
+      Arrays.setAll(this.a, $$1 -> $$0.b(a($$1)));
    }
 
-   public void a(gwy $$0) {
+   private static String a(int $$0) {
+      return "part" + $$0;
+   }
+
+   public static gen a() {
+      gep $$0 = new gep();
+      ger $$1 = $$0.a();
+      $$1.a("head", gem.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), gej.a);
+      float $$2 = 0.0F;
+      gem $$3 = gem.c().a(0, 16).a(0.0F, 0.0F, 0.0F, 2.0F, 8.0F, 2.0F);
+
+      for (int $$4 = 0; $$4 < 4; $$4++) {
+         float $$5 = bae.b($$2) * 9.0F;
+         float $$6 = -2.0F + bae.b((float)($$4 * 2) * 0.25F);
+         float $$7 = bae.a($$2) * 9.0F;
+         $$1.a(a($$4), $$3, gej.a($$5, $$6, $$7));
+         $$2++;
+      }
+
+      $$2 = (float) (Math.PI / 4);
+
+      for (int $$8 = 4; $$8 < 8; $$8++) {
+         float $$9 = bae.b($$2) * 7.0F;
+         float $$10 = 2.0F + bae.b((float)($$8 * 2) * 0.25F);
+         float $$11 = bae.a($$2) * 7.0F;
+         $$1.a(a($$8), $$3, gej.a($$9, $$10, $$11));
+         $$2++;
+      }
+
+      $$2 = 0.47123894F;
+
+      for (int $$12 = 8; $$12 < 12; $$12++) {
+         float $$13 = bae.b($$2) * 5.0F;
+         float $$14 = 11.0F + bae.b((float)$$12 * 1.5F * 0.5F);
+         float $$15 = bae.a($$2) * 5.0F;
+         $$1.a(a($$12), $$3, gej.a($$13, $$14, $$15));
+         $$2++;
+      }
+
+      return gen.a($$0, 64, 32);
+   }
+
+   public void a(gym $$0) {
       super.a($$0);
-      float $$1 = (float) (Math.PI / 6);
-      float $$2 = $$0.C;
-      cnk $$3 = $$0.d;
-      if ($$3 == cnk.e) {
-         float $$4 = $$0.p / 60.0F;
-         this.f.g = (float) (Math.PI / 6) + (float) (Math.PI / 180.0) * azm.a($$4 * 30.0F) * 10.0F;
-         this.g.g = (float) (-Math.PI / 6) - (float) (Math.PI / 180.0) * azm.b($$4 * 30.0F) * 10.0F;
-         this.o.b = this.o.b + azm.a($$4 * 10.0F);
-         this.o.c = this.o.c + azm.a($$4 * 40.0F) + 0.4F;
-         this.r.g = (float) (Math.PI / 180.0) * (70.0F + azm.b($$4 * 40.0F) * 10.0F);
-         this.s.g = this.r.g * -1.0F;
-         this.r.c = this.r.c + (azm.a($$4 * 40.0F) * 0.5F - 0.5F);
-         this.s.c = this.s.c + azm.a($$4 * 40.0F) * 0.5F + 0.5F;
-         this.q.c = this.q.c + azm.a($$4 * 40.0F) * 0.35F;
-      } else if ($$3 == cnk.a && $$2 == 0.0F) {
-         this.b($$0);
-      } else if ($$3 == cnk.b) {
-         fye.a(this.r, this.s, this.o, $$0.ap == bvb.b);
-      } else if ($$3 == cnk.c) {
-         fye.a(this.r, this.s, $$0.c, $$0.F, $$0.ap == bvb.b);
-      } else if ($$3 == cnk.d) {
-         this.o.e = 0.5F;
-         this.o.f = 0.0F;
-         if ($$0.ap == bvb.a) {
-            this.r.f = -0.5F;
-            this.r.e = -0.9F;
-         } else {
-            this.s.f = 0.5F;
-            this.s.e = -0.9F;
-         }
-      }
-   }
+      float $$1 = $$0.p * (float) Math.PI * -0.1F;
 
-   protected void a(gwy $$0, float $$1) {
-      float $$2 = $$0.C;
-      if ($$2 > 0.0F && $$0.d == cnk.a) {
-         fye.a(this.r, this.s, $$0.ap, $$2, $$0.p);
-      } else {
-         super.a($$0, $$1);
+      for (int $$2 = 0; $$2 < 4; $$2++) {
+         this.a[$$2].c = -2.0F + bae.b(((float)($$2 * 2) + $$0.p) * 0.25F);
+         this.a[$$2].b = bae.b($$1) * 9.0F;
+         this.a[$$2].d = bae.a($$1) * 9.0F;
+         $$1++;
       }
-   }
 
-   private void b(gwy $$0) {
-      if ($$0.ap == bvb.a) {
-         this.s.e = -1.8F;
-      } else {
-         this.r.e = -1.8F;
+      $$1 = (float) (Math.PI / 4) + $$0.p * (float) Math.PI * 0.03F;
+
+      for (int $$3 = 4; $$3 < 8; $$3++) {
+         this.a[$$3].c = 2.0F + bae.b(((float)($$3 * 2) + $$0.p) * 0.25F);
+         this.a[$$3].b = bae.b($$1) * 7.0F;
+         this.a[$$3].d = bae.a($$1) * 7.0F;
+         $$1++;
       }
-   }
 
-   @Override
-   public void c_(boolean $$0) {
-      super.c_($$0);
-      this.a.k = $$0;
-      this.b.k = $$0;
-      this.c.k = $$0;
-      this.d.k = $$0;
-      this.e.k = $$0;
+      $$1 = 0.47123894F + $$0.p * (float) Math.PI * -0.05F;
+
+      for (int $$4 = 8; $$4 < 12; $$4++) {
+         this.a[$$4].c = 11.0F + bae.b(((float)$$4 * 1.5F + $$0.p) * 0.5F);
+         this.a[$$4].b = bae.b($$1) * 5.0F;
+         this.a[$$4].d = bae.a($$1) * 5.0F;
+         $$1++;
+      }
+
+      this.b.f = $$0.U * (float) (Math.PI / 180.0);
+      this.b.e = $$0.V * (float) (Math.PI / 180.0);
    }
 }

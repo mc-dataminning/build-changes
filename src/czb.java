@@ -1,131 +1,56 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.ArrayList;
-import java.util.function.Consumer;
-import java.util.function.IntFunction;
+import java.util.List;
 
-public record czb(czb.a e, IntList f, IntList g, boolean h, boolean i) implements czp {
-   public static final czb a = new czb(czb.a.a, IntList.of(), IntList.of(), false, false);
-   public static final Codec<IntList> b = Codec.INT.listOf().xmap(IntArrayList::new, ArrayList::new);
-   public static final Codec<czb> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               czb.a.g.fieldOf("shape").forGetter(czb::a),
-               b.optionalFieldOf("colors", IntList.of()).forGetter(czb::b),
-               b.optionalFieldOf("fade_colors", IntList.of()).forGetter(czb::c),
-               Codec.BOOL.optionalFieldOf("has_trail", false).forGetter(czb::d),
-               Codec.BOOL.optionalFieldOf("has_twinkle", false).forGetter(czb::e)
-            )
-            .apply($$0, czb::new)
-   );
-   private static final zh<ByteBuf, IntList> j = zf.g.a(zf.a()).a(IntArrayList::new, ArrayList::new);
-   public static final zh<ByteBuf, czb> d = zh.a(czb.a.f, czb::a, j, czb::b, j, czb::c, zf.b, czb::d, zf.b, czb::e, czb::new);
-   private static final xj k = xj.c("item.minecraft.firework_star.custom_color");
+public record czb(ayk<dke> g, int h, float i, float j, int k, ayk<cxg> l) {
+   public static final czb a = new czb(axu.bP, 59, 2.0F, 0.0F, 15, ayd.bd);
+   public static final czb b = new czb(axu.bN, 131, 4.0F, 1.0F, 5, ayd.be);
+   public static final czb c = new czb(axu.bM, 250, 6.0F, 2.0F, 14, ayd.bf);
+   public static final czb d = new czb(axu.bL, 1561, 8.0F, 3.0F, 10, ayd.bh);
+   public static final czb e = new czb(axu.bO, 32, 12.0F, 0.0F, 22, ayd.bg);
+   public static final czb f = new czb(axu.bK, 2031, 9.0F, 4.0F, 15, ayd.bi);
 
-   @Override
-   public void a(cwi.b $$0, Consumer<xj> $$1, cye $$2) {
-      this.a($$1);
-      this.b($$1);
+   private cxg.a a(cxg.a $$0) {
+      return $$0.b(this.h).a(this.l).c(this.k);
    }
 
-   public void a(Consumer<xj> $$0) {
-      $$0.accept(this.e.a().a(n.h));
+   public cxg.a a(cxg.a $$0, ayk<dke> $$1, float $$2, float $$3) {
+      jr<dke> $$4 = ma.a(ma.e);
+      return this.a($$0).a(ku.B, new dam(List.of(dam.a.a($$4.b(this.g)), dam.a.a($$4.b($$1), this.i)), 1.0F, 1)).a(this.a($$2, $$3));
    }
 
-   public void b(Consumer<xj> $$0) {
-      if (!this.f.isEmpty()) {
-         $$0.accept(a(xj.i().a(n.h), this.f));
-      }
-
-      if (!this.g.isEmpty()) {
-         $$0.accept(a(xj.c("item.minecraft.firework_star.fade_to").b(xi.v).a(n.h), this.g));
-      }
-
-      if (this.h) {
-         $$0.accept(xj.c("item.minecraft.firework_star.trail").a(n.h));
-      }
-
-      if (this.i) {
-         $$0.accept(xj.c("item.minecraft.firework_star.flicker").a(n.h));
-      }
+   private dab a(float $$0, float $$1) {
+      return dab.a().a(bxj.c, new bxh(cxg.f, (double)($$0 + this.j), bxh.a.a), bvo.b).a(bxj.e, new bxh(cxg.g, (double)$$1, bxh.a.a), bvo.b).a();
    }
 
-   private static xj a(xx $$0, IntList $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         if ($$2 > 0) {
-            $$0.f(", ");
-         }
-
-         $$0.b(a($$1.getInt($$2)));
-      }
-
-      return $$0;
+   public cxg.a a(cxg.a $$0, float $$1, float $$2) {
+      jr<dke> $$3 = ma.a(ma.e);
+      return this.a($$0).a(ku.B, new dam(List.of(dam.a.a(ju.a(dkg.bz.p()), 15.0F), dam.a.b($$3.b(axu.bG), 1.5F)), 1.0F, 2)).a(this.b($$1, $$2));
    }
 
-   private static xj a(int $$0) {
-      cvj $$1 = cvj.b($$0);
-      return (xj)($$1 == null ? k : xj.c("item.minecraft.firework_star." + $$1.b()));
+   private dab b(float $$0, float $$1) {
+      return dab.a().a(bxj.c, new bxh(cxg.f, (double)($$0 + this.j), bxh.a.a), bvo.b).a(bxj.e, new bxh(cxg.g, (double)$$1, bxh.a.a), bvo.b).a();
    }
 
-   public czb a(IntList $$0) {
-      return new czb(this.e, this.f, new IntArrayList($$0), this.h, this.i);
-   }
-
-   public czb.a a() {
-      return this.e;
-   }
-
-   public IntList b() {
-      return this.f;
-   }
-
-   public IntList c() {
+   public ayk<dke> a() {
       return this.g;
    }
 
-   public boolean d() {
+   public int b() {
       return this.h;
    }
 
-   public boolean e() {
+   public float c() {
       return this.i;
    }
 
-   public static enum a implements bai {
-      a(0, "small_ball"),
-      b(1, "large_ball"),
-      c(2, "star"),
-      d(3, "creeper"),
-      e(4, "burst");
+   public float d() {
+      return this.j;
+   }
 
-      private static final IntFunction<czb.a> h = ayd.a(czb.a::b, values(), ayd.a.a);
-      public static final zh<ByteBuf, czb.a> f = zf.a(h, czb.a::b);
-      public static final Codec<czb.a> g = bai.b(czb.a::values);
-      private final int i;
-      private final String j;
+   public int e() {
+      return this.k;
+   }
 
-      private a(final int $$0, final String $$1) {
-         this.i = $$0;
-         this.j = $$1;
-      }
-
-      public xx a() {
-         return xj.c("item.minecraft.firework_star.shape." + this.j);
-      }
-
-      public int b() {
-         return this.i;
-      }
-
-      public static czb.a a(int $$0) {
-         return h.apply($$0);
-      }
-
-      @Override
-      public String c() {
-         return this.j;
-      }
+   public ayk<cxg> f() {
+      return this.l;
    }
 }

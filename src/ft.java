@@ -11,8 +11,8 @@ import java.util.concurrent.CompletableFuture;
 
 public class ft implements ArgumentType<lq> {
    private static final Collection<String> c = Arrays.asList("foo", "foo:bar", "particle{foo:bar}");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xj.b("particle.notFound", $$0));
-   public static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xj.b("particle.invalidOptions", $$0));
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xv.b("particle.notFound", $$0));
+   public static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xv.b("particle.invalidOptions", $$0));
    private final js.a d;
 
    public ft(es $$0) {
@@ -36,29 +36,29 @@ public class ft implements ArgumentType<lq> {
    }
 
    public static lq a(StringReader $$0, js.a $$1) throws CommandSyntaxException {
-      lr<?> $$2 = a($$0, $$1.d(ma.Y));
+      lr<?> $$2 = a($$0, $$1.d(mb.Y));
       return a($$0, (lr<lq>)$$2, $$1);
    }
 
    private static lr<?> a(StringReader $$0, js<lr<?>> $$1) throws CommandSyntaxException {
-      alj $$2 = alj.a($$0);
-      ali<lr<?>> $$3 = ali.a(ma.Y, $$2);
+      alz $$2 = alz.a($$0);
+      aly<lr<?>> $$3 = aly.a(mb.Y, $$2);
       return $$1.a($$3).orElseThrow(() -> a.createWithContext($$0, $$2)).a();
    }
 
    private static <T extends lq> T a(StringReader $$0, lr<T> $$1, js.a $$2) throws CommandSyntaxException {
-      ul $$3;
+      ux $$3;
       if ($$0.canRead() && $$0.peek() == '{') {
-         $$3 = new vj($$0).f();
+         $$3 = new vv($$0).f();
       } else {
-         $$3 = new ul();
+         $$3 = new ux();
       }
 
-      return (T)$$1.c().codec().parse($$2.a(uz.a), $$3).getOrThrow(b::create);
+      return (T)$$1.c().codec().parse($$2.a(vl.a), $$3).getOrThrow(b::create);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      js.b<lr<?>> $$2 = this.d.d(ma.Y);
-      return fb.a($$2.c_().map(ali::a), $$1);
+      js.b<lr<?>> $$2 = this.d.d(mb.Y);
+      return fb.a($$2.c_().map(aly::a), $$1);
    }
 }

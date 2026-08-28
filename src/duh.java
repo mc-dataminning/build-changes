@@ -1,124 +1,99 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class duh {
+   public static final aly<duf> a = a("base");
+   public static final aly<duf> b = a("square_bottom_left");
+   public static final aly<duf> c = a("square_bottom_right");
+   public static final aly<duf> d = a("square_top_left");
+   public static final aly<duf> e = a("square_top_right");
+   public static final aly<duf> f = a("stripe_bottom");
+   public static final aly<duf> g = a("stripe_top");
+   public static final aly<duf> h = a("stripe_left");
+   public static final aly<duf> i = a("stripe_right");
+   public static final aly<duf> j = a("stripe_center");
+   public static final aly<duf> k = a("stripe_middle");
+   public static final aly<duf> l = a("stripe_downright");
+   public static final aly<duf> m = a("stripe_downleft");
+   public static final aly<duf> n = a("small_stripes");
+   public static final aly<duf> o = a("cross");
+   public static final aly<duf> p = a("straight_cross");
+   public static final aly<duf> q = a("triangle_bottom");
+   public static final aly<duf> r = a("triangle_top");
+   public static final aly<duf> s = a("triangles_bottom");
+   public static final aly<duf> t = a("triangles_top");
+   public static final aly<duf> u = a("diagonal_left");
+   public static final aly<duf> v = a("diagonal_up_right");
+   public static final aly<duf> w = a("diagonal_up_left");
+   public static final aly<duf> x = a("diagonal_right");
+   public static final aly<duf> y = a("circle");
+   public static final aly<duf> z = a("rhombus");
+   public static final aly<duf> A = a("half_vertical");
+   public static final aly<duf> B = a("half_horizontal");
+   public static final aly<duf> C = a("half_vertical_right");
+   public static final aly<duf> D = a("half_horizontal_bottom");
+   public static final aly<duf> E = a("border");
+   public static final aly<duf> F = a("curly_border");
+   public static final aly<duf> G = a("gradient");
+   public static final aly<duf> H = a("gradient_up");
+   public static final aly<duf> I = a("bricks");
+   public static final aly<duf> J = a("globe");
+   public static final aly<duf> K = a("creeper");
+   public static final aly<duf> L = a("skull");
+   public static final aly<duf> M = a("flower");
+   public static final aly<duf> N = a("mojang");
+   public static final aly<duf> O = a("piglin");
+   public static final aly<duf> P = a("flow");
+   public static final aly<duf> Q = a("guster");
 
-public class duh extends dsy implements eat.b<eba.b>, eba {
-   private static final Logger a = LogUtils.getLogger();
-   private eba.a b;
-   private final eba.b c;
-   private final eba.d d = this.b();
-   private int h;
-
-   protected duh(dta<?> $$0, jh $$1, dvv $$2) {
-      super($$0, $$1, $$2);
-      this.b = new eba.a();
-      this.c = new eba.b(this);
+   private static aly<duf> a(String $$0) {
+      return aly.a(mb.d, alz.b($$0));
    }
 
-   public duh(jh $$0, dvv $$1) {
-      this(dta.I, $$0, $$1);
+   public static void a(rk<duf> $$0) {
+      a($$0, a);
+      a($$0, b);
+      a($$0, c);
+      a($$0, d);
+      a($$0, e);
+      a($$0, f);
+      a($$0, g);
+      a($$0, h);
+      a($$0, i);
+      a($$0, j);
+      a($$0, k);
+      a($$0, l);
+      a($$0, m);
+      a($$0, n);
+      a($$0, o);
+      a($$0, p);
+      a($$0, q);
+      a($$0, r);
+      a($$0, s);
+      a($$0, t);
+      a($$0, u);
+      a($$0, v);
+      a($$0, w);
+      a($$0, x);
+      a($$0, y);
+      a($$0, z);
+      a($$0, A);
+      a($$0, B);
+      a($$0, C);
+      a($$0, D);
+      a($$0, E);
+      a($$0, G);
+      a($$0, H);
+      a($$0, I);
+      a($$0, F);
+      a($$0, J);
+      a($$0, K);
+      a($$0, L);
+      a($$0, M);
+      a($$0, N);
+      a($$0, O);
+      a($$0, P);
+      a($$0, Q);
    }
 
-   public eba.d b() {
-      return new duh.a(this.aA_());
-   }
-
-   @Override
-   protected void a(ul $$0, js.a $$1) {
-      super.a($$0, $$1);
-      this.h = $$0.h("last_vibration_frequency");
-      alh<vi> $$2 = $$1.a(uz.a);
-      if ($$0.b("listener", 10)) {
-         eba.a.a
-            .parse($$2, $$0.p("listener"))
-            .resultOrPartial($$0x -> a.error("Failed to parse vibration listener for Sculk Sensor: '{}'", $$0x))
-            .ifPresent($$0x -> this.b = $$0x);
-      }
-   }
-
-   @Override
-   protected void b(ul $$0, js.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("last_vibration_frequency", this.h);
-      alh<vi> $$2 = $$1.a(uz.a);
-      eba.a.a
-         .encodeStart($$2, this.b)
-         .resultOrPartial($$0x -> a.error("Failed to encode vibration listener for Sculk Sensor: '{}'", $$0x))
-         .ifPresent($$1x -> $$0.a("listener", $$1x));
-   }
-
-   @Override
-   public eba.a go() {
-      return this.b;
-   }
-
-   @Override
-   public eba.d gp() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.h;
-   }
-
-   public void a(int $$0) {
-      this.h = $$0;
-   }
-
-   public eba.b f() {
-      return this.c;
-   }
-
-   protected class a implements eba.d {
-      public static final int b = 8;
-      protected final jh c;
-      private final eav a;
-
-      public a(final jh $$1) {
-         this.c = $$1;
-         this.a = new ean($$1);
-      }
-
-      @Override
-      public int a() {
-         return 8;
-      }
-
-      @Override
-      public eav b() {
-         return this.a;
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-
-      @Override
-      public boolean a(arp $$0, jh $$1, jq<ear> $$2, @Nullable ear.a $$3) {
-         return !$$1.equals(this.c) || !$$2.a(ear.f) && !$$2.a(ear.i) ? dpj.q(duh.this.m()) : false;
-      }
-
-      @Override
-      public void a(arp $$0, jh $$1, jq<ear> $$2, @Nullable bul $$3, @Nullable bul $$4, float $$5) {
-         dvv $$6 = duh.this.m();
-         if (dpj.q($$6)) {
-            duh.this.a(eba.a_($$2));
-            int $$7 = eba.a_($$5, this.a());
-            if ($$6.b() instanceof dpj $$8) {
-               $$8.a($$3, $$0, this.c, $$6, $$7, duh.this.d());
-            }
-         }
-      }
-
-      @Override
-      public void e() {
-         duh.this.e();
-      }
-
-      @Override
-      public boolean f() {
-         return true;
-      }
+   public static void a(rk<duf> $$0, aly<duf> $$1) {
+      $$0.a($$1, new duf($$1.a(), "block.minecraft.banner." + $$1.a().e()));
    }
 }

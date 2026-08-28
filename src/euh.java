@@ -1,94 +1,40 @@
-import com.mojang.serialization.Lifecycle;
-import java.util.Locale;
-import java.util.Set;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.HashCommon;
+import org.jetbrains.annotations.Nullable;
 
-public interface euh {
-   int d = 19133;
-   int e = 19132;
+public class euh {
+   private static final int a = 4096;
+   private static final int b = 4095;
+   private final long[] c = new long[4096];
+   private final eug[] d = new eug[4096];
 
-   dgj D();
-
-   void a(dgj var1);
-
-   boolean F();
-
-   Set<String> G();
-
-   Set<String> H();
-
-   void a(String var1, boolean var2);
-
-   default void a(p $$0) {
-      $$0.a("Known server brands", () -> String.join(", ", this.G()));
-      $$0.a("Removed feature flags", () -> String.join(", ", this.H()));
-      $$0.a("Level was modded", () -> Boolean.toString(this.F()));
-      $$0.a("Level storage version", () -> {
-         int $$0x = this.x();
-         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.f($$0x));
-      });
+   public eug a(dgf $$0, jh $$1) {
+      long $$2 = $$1.a();
+      int $$3 = a($$2);
+      eug $$4 = this.a($$3, $$2);
+      return $$4 != null ? $$4 : this.a($$0, $$1, $$3, $$2);
    }
 
-   default String f(int $$0) {
-      switch ($$0) {
-         case 19132:
-            return "McRegion";
-         case 19133:
-            return "Anvil";
-         default:
-            return "Unknown?";
+   @Nullable
+   private eug a(int $$0, long $$1) {
+      return this.c[$$0] == $$1 ? this.d[$$0] : null;
+   }
+
+   private eug a(dgf $$0, jh $$1, int $$2, long $$3) {
+      eug $$4 = eul.b($$0, $$1);
+      this.c[$$2] = $$3;
+      this.d[$$2] = $$4;
+      return $$4;
+   }
+
+   public void a(jh $$0) {
+      long $$1 = $$0.a();
+      int $$2 = a($$1);
+      if (this.c[$$2] == $$1) {
+         this.d[$$2] = null;
       }
    }
 
-   @Nullable
-   ul E();
-
-   void a(@Nullable ul var1);
-
-   eug I();
-
-   dfq J();
-
-   ul a(ke var1, @Nullable ul var2);
-
-   boolean l();
-
-   int x();
-
-   String e();
-
-   dfj k();
-
-   void a(dfj var1);
-
-   boolean m();
-
-   bsh q();
-
-   void a(bsh var1);
-
-   boolean r();
-
-   void d(boolean var1);
-
-   dfi o();
-
-   @Nullable
-   ul w();
-
-   dzt.a C();
-
-   void a(dzt.a var1);
-
-   eco y();
-
-   boolean z();
-
-   boolean A();
-
-   Lifecycle B();
-
-   default crq K() {
-      return this.D().b();
+   private static int a(long $$0) {
+      return (int)HashCommon.mix($$0) & 4095;
    }
 }

@@ -1,228 +1,477 @@
-import com.google.common.collect.ImmutableList;
-import java.time.Duration;
-import java.util.ArrayList;
+import com.google.common.collect.Lists;
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import com.mojang.logging.LogUtils;
+import java.net.UnknownHostException;
+import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
-import java.util.function.Supplier;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.ThreadPoolExecutor;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fwl extends fmj.a<fwl> {
-   private static final alj f = alj.b("icon/draft_report");
-   private static final Duration g = Duration.ofMillis(500L);
-   private static final fnq h = new fnq(
-      alj.b("social_interactions/report_button"), alj.b("social_interactions/report_button_disabled"), alj.b("social_interactions/report_button_highlighted")
+public class fwl extends fov<fwl.a> {
+   static final alz a = alz.b("server_list/incompatible");
+   static final alz m = alz.b("server_list/unreachable");
+   static final alz n = alz.b("server_list/ping_1");
+   static final alz o = alz.b("server_list/ping_2");
+   static final alz p = alz.b("server_list/ping_3");
+   static final alz q = alz.b("server_list/ping_4");
+   static final alz r = alz.b("server_list/ping_5");
+   static final alz s = alz.b("server_list/pinging_1");
+   static final alz u = alz.b("server_list/pinging_2");
+   static final alz v = alz.b("server_list/pinging_3");
+   static final alz w = alz.b("server_list/pinging_4");
+   static final alz x = alz.b("server_list/pinging_5");
+   static final alz y = alz.b("server_list/join_highlighted");
+   static final alz z = alz.b("server_list/join");
+   static final alz A = alz.b("server_list/move_up_highlighted");
+   static final alz B = alz.b("server_list/move_up");
+   static final alz C = alz.b("server_list/move_down_highlighted");
+   static final alz D = alz.b("server_list/move_down");
+   static final Logger E = LogUtils.getLogger();
+   static final ThreadPoolExecutor F = new ScheduledThreadPoolExecutor(
+      5, new ThreadFactoryBuilder().setNameFormat("Server Pinger #%d").setDaemon(true).setUncaughtExceptionHandler(new r(E)).build()
    );
-   private static final fnq i = new fnq(alj.b("social_interactions/mute_button"), alj.b("social_interactions/mute_button_highlighted"));
-   private static final fnq j = new fnq(alj.b("social_interactions/unmute_button"), alj.b("social_interactions/unmute_button_highlighted"));
-   private final fke k;
-   private final List<fmb> l;
-   private final UUID m;
-   private final String n;
-   private final Supplier<haf> o;
-   private boolean p;
-   private boolean q;
-   private final boolean r;
-   private final boolean s;
-   private final boolean u;
-   @Nullable
-   private fmd v;
-   @Nullable
-   private fmd w;
-   @Nullable
-   private fmd x;
-   private float y;
-   private static final xj z = xj.c("gui.socialInteractions.status_hidden").a(n.u);
-   private static final xj A = xj.c("gui.socialInteractions.status_blocked").a(n.u);
-   private static final xj B = xj.c("gui.socialInteractions.status_offline").a(n.u);
-   private static final xj C = xj.c("gui.socialInteractions.status_hidden_offline").a(n.u);
-   private static final xj D = xj.c("gui.socialInteractions.status_blocked_offline").a(n.u);
-   private static final xj E = xj.c("gui.socialInteractions.tooltip.report.disabled");
-   private static final xj F = xj.c("gui.socialInteractions.tooltip.hide");
-   private static final xj G = xj.c("gui.socialInteractions.tooltip.show");
-   private static final xj H = xj.c("gui.socialInteractions.tooltip.report");
-   private static final int I = 24;
-   private static final int J = 4;
-   public static final int a = axx.a(190, 0, 0, 0);
-   private static final int K = 20;
-   public static final int b = axx.a(255, 74, 74, 74);
-   public static final int c = axx.a(255, 48, 48, 48);
-   public static final int d = axx.a(255, 255, 255, 255);
-   public static final int e = axx.a(140, 255, 255, 255);
+   static final xv G = xv.c("lanServer.scanning");
+   static final xv H = xv.c("multiplayer.status.cannot_resolve").b(-65536);
+   static final xv I = xv.c("multiplayer.status.cannot_connect").b(-65536);
+   static final xv J = xv.c("multiplayer.status.incompatible");
+   static final xv K = xv.c("multiplayer.status.no_connection");
+   static final xv L = xv.c("multiplayer.status.pinging");
+   static final xv M = xv.c("multiplayer.status.online");
+   private final fwh N;
+   private final List<fwl.d> O = Lists.newArrayList();
+   private final fwl.a P = new fwl.b();
+   private final List<fwl.c> Q = Lists.newArrayList();
 
-   public fwl(fke $$0, fwo $$1, UUID $$2, String $$3, Supplier<haf> $$4, boolean $$5) {
-      this.k = $$0;
-      this.m = $$2;
-      this.n = $$3;
-      this.o = $$4;
-      gep $$6 = $$0.bb();
-      this.r = $$6.a().a();
-      this.u = $$5;
-      this.s = $$6.a($$2);
-      xj $$7 = xj.a("gui.socialInteractions.narration.hide", $$3);
-      xj $$8 = xj.a("gui.socialInteractions.narration.show", $$3);
-      fwm $$9 = $$0.aN();
-      boolean $$10 = $$0.J().a($$0.T());
-      boolean $$11 = !$$0.t.cG().equals($$2);
-      if ($$11 && $$10 && !$$9.e($$2)) {
-         this.x = new fmp(0, 0, 20, 20, h, $$3x -> $$6.a($$0, $$1, () -> $$0.a(new fwh($$1, $$6, this)), false), xj.c("gui.socialInteractions.report")) {
-            @Override
-            protected xx aN_() {
-               return fwl.this.a(super.aN_());
-            }
-         };
-         this.x.j = this.r;
-         this.x.a(this.l());
-         this.x.a(g);
-         this.v = new fmp(0, 0, 20, 20, i, $$3x -> {
-            $$9.a($$2);
-            this.a(true, xj.a("gui.socialInteractions.hidden_in_chat", $$3));
-         }, xj.c("gui.socialInteractions.hide")) {
-            @Override
-            protected xx aN_() {
-               return fwl.this.a(super.aN_());
-            }
-         };
-         this.v.a(fno.a(F, $$7));
-         this.v.a(g);
-         this.w = new fmp(0, 0, 20, 20, j, $$3x -> {
-            $$9.b($$2);
-            this.a(false, xj.a("gui.socialInteractions.shown_in_chat", $$3));
-         }, xj.c("gui.socialInteractions.show")) {
-            @Override
-            protected xx aN_() {
-               return fwl.this.a(super.aN_());
-            }
-         };
-         this.w.a(fno.a(G, $$8));
-         this.w.a(g);
-         this.l = new ArrayList<>();
-         this.l.add(this.v);
-         this.l.add(this.x);
-         this.e($$9.d(this.m));
-      } else {
-         this.l = ImmutableList.of();
-      }
+   public fwl(fwh $$0, flz $$1, int $$2, int $$3, int $$4, int $$5) {
+      super($$1, $$2, $$3, $$4, $$5);
+      this.N = $$0;
    }
 
-   private fno l() {
-      return !this.r ? fno.a(E) : fno.a(H, xj.a("gui.socialInteractions.narration.report", this.n));
+   private void c() {
+      this.j();
+      this.O.forEach($$1 -> this.b($$1));
+      this.b(this.P);
+      this.Q.forEach($$1 -> this.b($$1));
+   }
+
+   public void a(@Nullable fwl.a $$0) {
+      super.a($$0);
+      this.N.E();
    }
 
    @Override
-   public void a(flq $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-      int $$10 = $$3 + 4;
-      int $$11 = $$2 + ($$5 - 24) / 2;
-      int $$12 = $$10 + 24 + 4;
-      xj $$13 = this.m();
-      int $$14;
-      if ($$13 == xi.a) {
-         $$0.a($$3, $$2, $$3 + $$4, $$2 + $$5, b);
-         $$14 = $$2 + ($$5 - 9) / 2;
-      } else {
-         $$0.a($$3, $$2, $$3 + $$4, $$2 + $$5, c);
-         $$14 = $$2 + ($$5 - (9 + 9)) / 2;
-         $$0.a(this.k.h, $$13, $$12, $$14 + 12, e, false);
+   public boolean a(int $$0, int $$1, int $$2) {
+      fwl.a $$3 = this.g();
+      return $$3 != null && $$3.a($$0, $$1, $$2) || super.a($$0, $$1, $$2);
+   }
+
+   public void a(gft $$0) {
+      this.O.clear();
+
+      for (int $$1 = 0; $$1 < $$0.c(); $$1++) {
+         this.O.add(new fwl.d(this.N, $$0.a($$1)));
       }
 
-      fnc.a($$0, this.o.get(), $$10, $$11, 24);
-      $$0.a(this.k.h, this.n, $$12, $$14, d, false);
-      if (this.p) {
-         $$0.a($$10, $$11, $$10 + 24, $$11 + 24, a);
+      this.c();
+   }
+
+   public void a(List<hfq> $$0) {
+      int $$1 = $$0.size() - this.Q.size();
+      this.Q.clear();
+
+      for (hfq $$2 : $$0) {
+         this.Q.add(new fwl.c(this.N, $$2));
       }
 
-      if (this.v != null && this.w != null && this.x != null) {
-         float $$16 = this.y;
-         this.v.m($$3 + ($$4 - this.v.y() - 4) - 20 - 4);
-         this.v.n($$2 + ($$5 - this.v.w()) / 2);
-         this.v.a($$0, $$6, $$7, $$9);
-         this.w.m($$3 + ($$4 - this.w.y() - 4) - 20 - 4);
-         this.w.n($$2 + ($$5 - this.w.w()) / 2);
-         this.w.a($$0, $$6, $$7, $$9);
-         this.x.m($$3 + ($$4 - this.w.y() - 4));
-         this.x.n($$2 + ($$5 - this.w.w()) / 2);
-         this.x.a($$0, $$6, $$7, $$9);
-         if ($$16 == this.y) {
-            this.y = 0.0F;
+      this.c();
+
+      for (int $$3 = this.Q.size() - $$1; $$3 < this.Q.size(); $$3++) {
+         fwl.c $$4 = this.Q.get($$3);
+         int $$5 = $$3 - this.Q.size() + this.aI_().size();
+         int $$6 = this.g($$5);
+         int $$7 = this.h($$5);
+         if ($$7 >= this.E() && $$6 <= this.G()) {
+            this.c.aZ().b(xv.a("multiplayer.lan.server_found", $$4.c()));
+         }
+      }
+   }
+
+   @Override
+   public int a() {
+      return 305;
+   }
+
+   public void b() {
+   }
+
+   public abstract static class a extends fov.a<fwl.a> implements AutoCloseable {
+      @Override
+      public void close() {
+      }
+   }
+
+   public static class b extends fwl.a {
+      private final flz a = flz.Q();
+
+      @Override
+      public void a(fnl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10 = $$2 + $$5 / 2 - 9 / 2;
+         $$0.a(this.a.h, fwl.G, this.a.z.n / 2 - this.a.h.a(fwl.G) / 2, $$10, 16777215, false);
+         String $$11 = ftg.a(ae.c());
+         $$0.a(this.a.h, $$11, this.a.z.n / 2 - this.a.h.b($$11) / 2, $$10 + 9, -8355712, false);
+      }
+
+      @Override
+      public xv a() {
+         return fwl.G;
+      }
+   }
+
+   public static class c extends fwl.a {
+      private static final int c = 32;
+      private static final xv d = xv.c("lanServer.title");
+      private static final xv e = xv.c("selectServer.hiddenAddress");
+      private final fwh f;
+      protected final flz a;
+      protected final hfq b;
+      private long g;
+
+      protected c(fwh $$0, hfq $$1) {
+         this.f = $$0;
+         this.b = $$1;
+         this.a = flz.Q();
+      }
+
+      @Override
+      public void a(fnl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.a(this.a.h, d, $$3 + 32 + 3, $$2 + 1, 16777215, false);
+         $$0.a(this.a.h, this.b.a(), $$3 + 32 + 3, $$2 + 12, -8355712, false);
+         if (this.a.n.l) {
+            $$0.a(this.a.h, e, $$3 + 32 + 3, $$2 + 12 + 11, 3158064, false);
+         } else {
+            $$0.a(this.a.h, this.b.b(), $$3 + 32 + 3, $$2 + 12 + 11, 3158064, false);
          }
       }
 
-      if (this.s && this.x != null) {
-         $$0.a(gjq::B, f, this.x.D() + 5, this.x.E() + 1, 15, 15);
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         this.f.a(this);
+         if (ae.c() - this.g < 250L) {
+            this.f.l();
+         }
+
+         this.g = ae.c();
+         return super.a($$0, $$1, $$2);
+      }
+
+      public hfq b() {
+         return this.b;
+      }
+
+      @Override
+      public xv a() {
+         return xv.a("narrator.select", this.c());
+      }
+
+      public xv c() {
+         return xv.i().b(d).b(xu.v).f(this.b.a());
       }
    }
 
-   @Override
-   public List<? extends foa> aH_() {
-      return this.l;
-   }
+   public class d extends fwl.a {
+      private static final int b = 32;
+      private static final int c = 32;
+      private static final int d = 5;
+      private static final int e = 10;
+      private static final int f = 8;
+      private final fwh g;
+      private final flz h;
+      private final gfs i;
+      private final ftb j;
+      @Nullable
+      private byte[] k;
+      private long l;
+      @Nullable
+      private List<xv> m;
+      @Nullable
+      private alz n;
+      @Nullable
+      private xv o;
 
-   @Override
-   public List<? extends fpz> b() {
-      return this.l;
-   }
+      protected d(final fwh $$1, final gfs $$2) {
+         this.g = $$1;
+         this.i = $$2;
+         this.h = flz.Q();
+         this.j = ftb.b(this.h.aa(), $$2.b);
+         this.d();
+      }
 
-   public String c() {
-      return this.n;
-   }
+      @Override
+      public void a(fnl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         if (this.i.g() == gfs.b.a) {
+            this.i.a(gfs.b.b);
+            this.i.d = xu.a;
+            this.i.c = xu.a;
+            fwl.F.submit(() -> {
+               try {
+                  this.g.F().a(this.i, () -> this.h.execute(this::b), () -> {
+                     this.i.a(this.i.g == ab.b().e() ? gfs.b.e : gfs.b.d);
+                     this.h.execute(this::d);
+                  });
+               } catch (UnknownHostException var2x) {
+                  this.i.a(gfs.b.c);
+                  this.i.d = fwl.H;
+                  this.h.execute(this::d);
+               } catch (Exception var3x) {
+                  this.i.a(gfs.b.c);
+                  this.i.d = fwl.I;
+                  this.h.execute(this::d);
+               }
+            });
+         }
 
-   public UUID d() {
-      return this.m;
-   }
+         $$0.a(this.h.h, this.i.a, $$3 + 32 + 3, $$2 + 1, 16777215, false);
+         List<azq> $$10 = this.h.h.c(this.i.d, $$4 - 32 - 2);
 
-   public Supplier<haf> h() {
-      return this.o;
-   }
+         for (int $$11 = 0; $$11 < Math.min($$10.size(), 2); $$11++) {
+            $$0.a(this.h.h, $$10.get($$11), $$3 + 32 + 3, $$2 + 12 + 9 * $$11, -8355712, false);
+         }
 
-   public void c(boolean $$0) {
-      this.p = $$0;
-   }
+         this.a($$0, $$3, $$2, this.j.b());
+         if (this.i.g() == gfs.b.b) {
+            int $$12 = (int)(ae.c() / 100L + (long)($$1 * 2) & 7L);
+            if ($$12 > 4) {
+               $$12 = 8 - $$12;
+            }
+            this.n = switch ($$12) {
+               case 1 -> fwl.u;
+               case 2 -> fwl.v;
+               case 3 -> fwl.w;
+               case 4 -> fwl.x;
+               default -> fwl.s;
+            };
+         }
 
-   public boolean i() {
-      return this.p;
-   }
+         int $$13 = $$3 + $$4 - 10 - 5;
+         if (this.n != null) {
+            $$0.a(glo::B, this.n, $$13, $$2, 10, 8);
+         }
 
-   public void d(boolean $$0) {
-      this.q = $$0;
-   }
+         byte[] $$14 = this.i.c();
+         if (!Arrays.equals($$14, this.k)) {
+            if (this.a($$14)) {
+               this.k = $$14;
+            } else {
+               this.i.a(null);
+               this.b();
+            }
+         }
 
-   public boolean j() {
-      return this.q;
-   }
+         xv $$15 = (xv)(this.i.g() == gfs.b.d ? this.i.h.f().a(n.m) : this.i.c);
+         int $$16 = this.h.h.a($$15);
+         int $$17 = $$13 - $$16 - 5;
+         $$0.a(this.h.h, $$15, $$17, $$2 + 1, -8355712, false);
+         if (this.o != null && $$6 >= $$13 && $$6 <= $$13 + 10 && $$7 >= $$2 && $$7 <= $$2 + 8) {
+            this.g.d(this.o);
+         } else if (this.m != null && $$6 >= $$17 && $$6 <= $$17 + $$16 && $$7 >= $$2 && $$7 <= $$2 - 1 + 9) {
+            this.g.b(Lists.transform(this.m, xv::g));
+         }
 
-   public boolean k() {
-      return this.u;
-   }
+         if (this.h.n.ac().c() || $$8) {
+            $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
+            int $$18 = $$6 - $$3;
+            int $$19 = $$7 - $$2;
+            if (this.e()) {
+               if ($$18 < 32 && $$18 > 16) {
+                  $$0.a(glo::B, fwl.y, $$3, $$2, 32, 32);
+               } else {
+                  $$0.a(glo::B, fwl.z, $$3, $$2, 32, 32);
+               }
+            }
 
-   private void a(boolean $$0, xj $$1) {
-      this.e($$0);
-      this.k.m.d().a($$1);
-      this.k.aZ().c($$1);
-   }
+            if ($$1 > 0) {
+               if ($$18 < 16 && $$19 < 16) {
+                  $$0.a(glo::B, fwl.A, $$3, $$2, 32, 32);
+               } else {
+                  $$0.a(glo::B, fwl.B, $$3, $$2, 32, 32);
+               }
+            }
 
-   private void e(boolean $$0) {
-      this.w.k = $$0;
-      this.v.k = !$$0;
-      this.l.set(0, $$0 ? this.w : this.v);
-   }
+            if ($$1 < this.g.G().c() - 1) {
+               if ($$18 < 16 && $$19 > 16) {
+                  $$0.a(glo::B, fwl.C, $$3, $$2, 32, 32);
+               } else {
+                  $$0.a(glo::B, fwl.D, $$3, $$2, 32, 32);
+               }
+            }
+         }
+      }
 
-   xx a(xx $$0) {
-      xj $$1 = this.m();
-      return $$1 == xi.a ? xj.b(this.n).f(", ").b($$0) : xj.b(this.n).f(", ").b($$1).f(", ").b($$0);
-   }
+      private void d() {
+         this.m = null;
+         switch (this.i.g()) {
+            case a:
+            case b:
+               this.n = fwl.n;
+               this.o = fwl.L;
+               break;
+            case d:
+               this.n = fwl.a;
+               this.o = fwl.J;
+               this.m = this.i.i;
+               break;
+            case c:
+               this.n = fwl.m;
+               this.o = fwl.K;
+               break;
+            case e:
+               if (this.i.f < 150L) {
+                  this.n = fwl.r;
+               } else if (this.i.f < 300L) {
+                  this.n = fwl.q;
+               } else if (this.i.f < 600L) {
+                  this.n = fwl.p;
+               } else if (this.i.f < 1000L) {
+                  this.n = fwl.o;
+               } else {
+                  this.n = fwl.n;
+               }
 
-   private xj m() {
-      boolean $$0 = this.k.aN().d(this.m);
-      boolean $$1 = this.k.aN().e(this.m);
-      if ($$1 && this.p) {
-         return D;
-      } else if ($$0 && this.p) {
-         return C;
-      } else if ($$1) {
-         return A;
-      } else if ($$0) {
-         return z;
-      } else {
-         return this.p ? B : xi.a;
+               this.o = xv.a("multiplayer.status.ping", this.i.f);
+               this.m = this.i.i;
+         }
+      }
+
+      public void b() {
+         this.g.G().b();
+      }
+
+      protected void a(fnl $$0, int $$1, int $$2, alz $$3) {
+         $$0.a(glo::B, $$3, $$1, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
+      }
+
+      private boolean e() {
+         return true;
+      }
+
+      private boolean a(@Nullable byte[] $$0) {
+         if ($$0 == null) {
+            this.j.a();
+         } else {
+            try {
+               this.j.a(ffl.a($$0));
+            } catch (Throwable var3) {
+               fwl.E.error("Invalid icon for server {} ({})", new Object[]{this.i.a, this.i.b, var3});
+               return false;
+            }
+         }
+
+         return true;
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1, int $$2) {
+         if (ftr.s()) {
+            fwl $$3 = this.g.s;
+            int $$4 = $$3.aI_().indexOf(this);
+            if ($$4 == -1) {
+               return true;
+            }
+
+            if ($$0 == 264 && $$4 < this.g.G().c() - 1 || $$0 == 265 && $$4 > 0) {
+               this.a($$4, $$0 == 264 ? $$4 + 1 : $$4 - 1);
+               return true;
+            }
+         }
+
+         return super.a($$0, $$1, $$2);
+      }
+
+      private void a(int $$0, int $$1) {
+         this.g.G().a($$0, $$1);
+         this.g.s.a(this.g.G());
+         fwl.a $$2 = this.g.s.aI_().get($$1);
+         this.g.s.a($$2);
+         fwl.this.f($$2);
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         double $$3 = $$0 - (double)fwl.this.s();
+         double $$4 = $$1 - (double)fwl.this.g(fwl.this.aI_().indexOf(this));
+         if ($$3 <= 32.0) {
+            if ($$3 < 32.0 && $$3 > 16.0 && this.e()) {
+               this.g.a(this);
+               this.g.l();
+               return true;
+            }
+
+            int $$5 = this.g.s.aI_().indexOf(this);
+            if ($$3 < 16.0 && $$4 < 16.0 && $$5 > 0) {
+               this.a($$5, $$5 - 1);
+               return true;
+            }
+
+            if ($$3 < 16.0 && $$4 > 16.0 && $$5 < this.g.G().c() - 1) {
+               this.a($$5, $$5 + 1);
+               return true;
+            }
+         }
+
+         this.g.a(this);
+         if (ae.c() - this.l < 250L) {
+            this.g.l();
+         }
+
+         this.l = ae.c();
+         return super.a($$0, $$1, $$2);
+      }
+
+      public gfs c() {
+         return this.i;
+      }
+
+      @Override
+      public xv a() {
+         yj $$0 = xv.i();
+         $$0.b(xv.a("narrator.select", this.i.a));
+         $$0.b(xu.t);
+         switch (this.i.g()) {
+            case b:
+               $$0.b(fwl.L);
+               break;
+            case d:
+               $$0.b(fwl.J);
+               $$0.b(xu.t);
+               $$0.b(xv.a("multiplayer.status.version.narration", this.i.h));
+               $$0.b(xu.t);
+               $$0.b(xv.a("multiplayer.status.motd.narration", this.i.d));
+               break;
+            case c:
+               $$0.b(fwl.K);
+               break;
+            default:
+               $$0.b(fwl.M);
+               $$0.b(xu.t);
+               $$0.b(xv.a("multiplayer.status.ping.narration", this.i.f));
+               $$0.b(xu.t);
+               $$0.b(xv.a("multiplayer.status.motd.narration", this.i.d));
+               if (this.i.e != null) {
+                  $$0.b(xu.t);
+                  $$0.b(xv.a("multiplayer.status.player_count.narration", this.i.e.b(), this.i.e.a()));
+                  $$0.b(xu.t);
+                  $$0.b(xy.a(this.i.i, xv.b(", ")));
+               }
+         }
+
+         return $$0;
+      }
+
+      @Override
+      public void close() {
+         this.j.close();
       }
    }
 }

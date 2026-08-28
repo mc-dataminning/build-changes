@@ -1,8 +1,15 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum fee {
+   a(34962),
+   b(34963),
+   c(35051),
+   d(36662),
+   e(36663),
+   f(35052),
+   g(35345);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@fca
-@fbz
-interface fee {
+   final int h;
+
+   private fee(final int $$0) {
+      this.h = $$0;
+   }
 }

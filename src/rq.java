@@ -1,426 +1,318 @@
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
-import java.util.List;
 
 public class rq {
-   public static final ali<ens> a = rg.a("trial_chambers/chamber/end");
-   public static final ali<ens> b = rg.a("trial_chambers/hallway/fallback");
-   public static final List<enu> c = ImmutableList.builder()
-      .add(
-         enu.a(
-            bqs.<List<enu>>a()
-               .a(List.of(enu.a(a("contents/ranged"), a("ranged/skeleton")), enu.a(a("contents/slow_ranged"), a("slow_ranged/skeleton"))))
-               .a(List.of(enu.a(a("contents/ranged"), a("ranged/stray")), enu.a(a("contents/slow_ranged"), a("slow_ranged/stray"))))
-               .a(List.of(enu.a(a("contents/ranged"), a("ranged/poison_skeleton")), enu.a(a("contents/slow_ranged"), a("slow_ranged/poison_skeleton"))))
-               .a()
-         )
-      )
-      .add(enu.a(a("contents/melee"), bqs.<String>a().a(a("melee/zombie")).a(a("melee/husk")).a(a("melee/spider")).a()))
-      .add(
-         enu.a(
-            a("contents/small_melee"),
-            bqs.<String>a().a(a("small_melee/slime")).a(a("small_melee/cave_spider")).a(a("small_melee/silverfish")).a(a("small_melee/baby_zombie")).a()
-         )
-      )
-      .build();
+   public static final aly<epm> a = rr.a("village/plains/town_centers");
+   private static final aly<epm> b = rr.a("village/plains/terminators");
 
-   public static String a(String $$0) {
-      return "trial_chambers/spawner/" + $$0;
-   }
-
-   public static void a(qz<ens> $$0) {
-      jr<ens> $$1 = $$0.a(ma.aV);
-      jq<ens> $$2 = $$1.b(rg.a);
-      jq<ens> $$3 = $$1.b(b);
-      jr<eqi> $$4 = $$0.a(ma.aT);
-      jq<eqi> $$5 = $$4.b(rh.M);
-      $$0.a(a, new ens($$2, List.of(Pair.of(enq.b("trial_chambers/corridor/end_1", $$5), 1), Pair.of(enq.b("trial_chambers/corridor/end_2", $$5), 1)), ens.a.b));
-      rg.a($$0, "trial_chambers/chamber/entrance_cap", new ens($$2, List.of(Pair.of(enq.b("trial_chambers/chamber/entrance_cap", $$5), 1)), ens.a.b));
-      rg.a(
-         $$0,
-         "trial_chambers/chambers/end",
-         new ens(
-            $$3,
-            List.of(
-               Pair.of(enq.b("trial_chambers/chamber/chamber_1", $$5), 1),
-               Pair.of(enq.b("trial_chambers/chamber/assembly", $$5), 1),
-               Pair.of(enq.b("trial_chambers/chamber/eruption", $$5), 1),
-               Pair.of(enq.b("trial_chambers/chamber/slanted", $$5), 1)
+   public static void a(rk<epm> $$0) {
+      jr<eng> $$1 = $$0.a(mb.aS);
+      jq<eng> $$2 = $$1.b(te.f);
+      jq<eng> $$3 = $$1.b(te.k);
+      jq<eng> $$4 = $$1.b(te.a);
+      jr<esc> $$5 = $$0.a(mb.aU);
+      jq<esc> $$6 = $$5.b(rs.f);
+      jq<esc> $$7 = $$5.b(rs.g);
+      jq<esc> $$8 = $$5.b(rs.h);
+      jq<esc> $$9 = $$5.b(rs.a);
+      jq<esc> $$10 = $$5.b(rs.i);
+      jq<esc> $$11 = $$5.b(rs.l);
+      jr<epm> $$12 = $$0.a(mb.aW);
+      jq<epm> $$13 = $$12.b(rr.a);
+      jq<epm> $$14 = $$12.b(b);
+      $$0.a(
+         a,
+         new epm(
+            $$13,
+            ImmutableList.of(
+               Pair.of(epk.a("village/plains/town_centers/plains_fountain_01", $$7), 50),
+               Pair.of(epk.a("village/plains/town_centers/plains_meeting_point_1", $$7), 50),
+               Pair.of(epk.a("village/plains/town_centers/plains_meeting_point_2"), 50),
+               Pair.of(epk.a("village/plains/town_centers/plains_meeting_point_3", $$8), 50),
+               Pair.of(epk.a("village/plains/zombie/town_centers/plains_fountain_01", $$9), 1),
+               Pair.of(epk.a("village/plains/zombie/town_centers/plains_meeting_point_1", $$9), 1),
+               Pair.of(epk.a("village/plains/zombie/town_centers/plains_meeting_point_2", $$9), 1),
+               Pair.of(epk.a("village/plains/zombie/town_centers/plains_meeting_point_3", $$9), 1)
             ),
-            ens.a.b
+            epm.a.b
          )
       );
-      rg.a(
+      rr.a(
          $$0,
-         "trial_chambers/corridor",
-         new ens(
-            $$2,
-            List.of(
-               Pair.of(enq.b("trial_chambers/corridor/second_plate"), 1),
-               Pair.of(enq.b("trial_chambers/intersection/intersection_1", $$5), 1),
-               Pair.of(enq.b("trial_chambers/intersection/intersection_2", $$5), 1),
-               Pair.of(enq.b("trial_chambers/intersection/intersection_3", $$5), 1),
-               Pair.of(enq.b("trial_chambers/corridor/first_plate"), 1),
-               Pair.of(enq.b("trial_chambers/corridor/atrium_1", $$5), 1),
-               Pair.of(enq.b("trial_chambers/corridor/entrance_1", $$5), 1),
-               Pair.of(enq.b("trial_chambers/corridor/entrance_2", $$5), 1),
-               Pair.of(enq.b("trial_chambers/corridor/entrance_3", $$5), 1)
+         "village/plains/streets",
+         new epm(
+            $$14,
+            ImmutableList.of(
+               Pair.of(epk.a("village/plains/streets/corner_01", $$10), 2),
+               Pair.of(epk.a("village/plains/streets/corner_02", $$10), 2),
+               Pair.of(epk.a("village/plains/streets/corner_03", $$10), 2),
+               Pair.of(epk.a("village/plains/streets/straight_01", $$10), 4),
+               Pair.of(epk.a("village/plains/streets/straight_02", $$10), 4),
+               Pair.of(epk.a("village/plains/streets/straight_03", $$10), 7),
+               Pair.of(epk.a("village/plains/streets/straight_04", $$10), 7),
+               Pair.of(epk.a("village/plains/streets/straight_05", $$10), 3),
+               Pair.of(epk.a("village/plains/streets/straight_06", $$10), 4),
+               Pair.of(epk.a("village/plains/streets/crossroad_01", $$10), 2),
+               Pair.of(epk.a("village/plains/streets/crossroad_02", $$10), 1),
+               Pair.of(epk.a("village/plains/streets/crossroad_03", $$10), 2),
+               new Pair[]{
+                  Pair.of(epk.a("village/plains/streets/crossroad_04", $$10), 2),
+                  Pair.of(epk.a("village/plains/streets/crossroad_05", $$10), 2),
+                  Pair.of(epk.a("village/plains/streets/crossroad_06", $$10), 2),
+                  Pair.of(epk.a("village/plains/streets/turn_01", $$10), 3)
+               }
             ),
-            ens.a.b
+            epm.a.a
          )
       );
-      rg.a(
+      rr.a(
          $$0,
-         "trial_chambers/chamber/addon",
-         new ens(
-            $$2,
-            List.of(
-               Pair.of(enq.b("trial_chambers/chamber/addon/full_stacked_walkway"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/addon/full_stacked_walkway_2"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/addon/full_corner_column"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/addon/grate_bridge"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/addon/hanging_platform"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/addon/short_grate_platform"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/addon/short_platform"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/addon/lower_staircase_down"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/addon/walkway_with_bridge_1"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/addon/c1_breeze"), 1)
+         "village/plains/zombie/streets",
+         new epm(
+            $$14,
+            ImmutableList.of(
+               Pair.of(epk.a("village/plains/zombie/streets/corner_01", $$10), 2),
+               Pair.of(epk.a("village/plains/zombie/streets/corner_02", $$10), 2),
+               Pair.of(epk.a("village/plains/zombie/streets/corner_03", $$10), 2),
+               Pair.of(epk.a("village/plains/zombie/streets/straight_01", $$10), 4),
+               Pair.of(epk.a("village/plains/zombie/streets/straight_02", $$10), 4),
+               Pair.of(epk.a("village/plains/zombie/streets/straight_03", $$10), 7),
+               Pair.of(epk.a("village/plains/zombie/streets/straight_04", $$10), 7),
+               Pair.of(epk.a("village/plains/zombie/streets/straight_05", $$10), 3),
+               Pair.of(epk.a("village/plains/zombie/streets/straight_06", $$10), 4),
+               Pair.of(epk.a("village/plains/zombie/streets/crossroad_01", $$10), 2),
+               Pair.of(epk.a("village/plains/zombie/streets/crossroad_02", $$10), 1),
+               Pair.of(epk.a("village/plains/zombie/streets/crossroad_03", $$10), 2),
+               new Pair[]{
+                  Pair.of(epk.a("village/plains/zombie/streets/crossroad_04", $$10), 2),
+                  Pair.of(epk.a("village/plains/zombie/streets/crossroad_05", $$10), 2),
+                  Pair.of(epk.a("village/plains/zombie/streets/crossroad_06", $$10), 2),
+                  Pair.of(epk.a("village/plains/zombie/streets/turn_01", $$10), 3)
+               }
             ),
-            ens.a.b
+            epm.a.a
          )
       );
-      rg.a(
+      rr.a(
          $$0,
-         "trial_chambers/chamber/assembly",
-         new ens(
-            $$2,
-            List.of(
-               Pair.of(enq.b("trial_chambers/chamber/assembly/full_column"), 2),
-               Pair.of(enq.b("trial_chambers/chamber/assembly/cover_1"), 2),
-               Pair.of(enq.b("trial_chambers/chamber/assembly/cover_2"), 2),
-               Pair.of(enq.b("trial_chambers/chamber/assembly/cover_3"), 2),
-               Pair.of(enq.b("trial_chambers/chamber/assembly/cover_4"), 2),
-               Pair.of(enq.b("trial_chambers/chamber/assembly/cover_5"), 2),
-               Pair.of(enq.b("trial_chambers/chamber/assembly/cover_6"), 2),
-               Pair.of(enq.b("trial_chambers/chamber/assembly/cover_7"), 5),
-               Pair.of(enq.b("trial_chambers/chamber/assembly/platform_1"), 2),
-               Pair.of(enq.b("trial_chambers/chamber/assembly/spawner_1"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/assembly/hanging_1"), 2),
-               Pair.of(enq.b("trial_chambers/chamber/assembly/hanging_2"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/assembly/hanging_3"), 2),
-               Pair.of(enq.b("trial_chambers/chamber/assembly/hanging_4"), 2),
-               Pair.of(enq.b("trial_chambers/chamber/assembly/hanging_5"), 4),
-               Pair.of(enq.b("trial_chambers/chamber/assembly/left_staircase_1"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/assembly/left_staircase_2"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/assembly/left_staircase_3"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/assembly/right_staircase_1"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/assembly/right_staircase_2"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/assembly/right_staircase_3"), 1)
+         "village/plains/houses",
+         new epm(
+            $$14,
+            ImmutableList.of(
+               Pair.of(epk.a("village/plains/houses/plains_small_house_1", $$6), 2),
+               Pair.of(epk.a("village/plains/houses/plains_small_house_2", $$6), 2),
+               Pair.of(epk.a("village/plains/houses/plains_small_house_3", $$6), 2),
+               Pair.of(epk.a("village/plains/houses/plains_small_house_4", $$6), 2),
+               Pair.of(epk.a("village/plains/houses/plains_small_house_5", $$6), 2),
+               Pair.of(epk.a("village/plains/houses/plains_small_house_6", $$6), 1),
+               Pair.of(epk.a("village/plains/houses/plains_small_house_7", $$6), 2),
+               Pair.of(epk.a("village/plains/houses/plains_small_house_8", $$6), 3),
+               Pair.of(epk.a("village/plains/houses/plains_medium_house_1", $$6), 2),
+               Pair.of(epk.a("village/plains/houses/plains_medium_house_2", $$6), 2),
+               Pair.of(epk.a("village/plains/houses/plains_big_house_1", $$6), 2),
+               Pair.of(epk.a("village/plains/houses/plains_butcher_shop_1", $$6), 2),
+               new Pair[]{
+                  Pair.of(epk.a("village/plains/houses/plains_butcher_shop_2", $$6), 2),
+                  Pair.of(epk.a("village/plains/houses/plains_tool_smith_1", $$6), 2),
+                  Pair.of(epk.a("village/plains/houses/plains_fletcher_house_1", $$6), 2),
+                  Pair.of(epk.a("village/plains/houses/plains_shepherds_house_1"), 2),
+                  Pair.of(epk.a("village/plains/houses/plains_armorer_house_1", $$6), 2),
+                  Pair.of(epk.a("village/plains/houses/plains_fisher_cottage_1", $$6), 2),
+                  Pair.of(epk.a("village/plains/houses/plains_tannery_1", $$6), 2),
+                  Pair.of(epk.a("village/plains/houses/plains_cartographer_1", $$6), 1),
+                  Pair.of(epk.a("village/plains/houses/plains_library_1", $$6), 5),
+                  Pair.of(epk.a("village/plains/houses/plains_library_2", $$6), 1),
+                  Pair.of(epk.a("village/plains/houses/plains_masons_house_1", $$6), 2),
+                  Pair.of(epk.a("village/plains/houses/plains_weaponsmith_1", $$6), 2),
+                  Pair.of(epk.a("village/plains/houses/plains_temple_3", $$6), 2),
+                  Pair.of(epk.a("village/plains/houses/plains_temple_4", $$6), 2),
+                  Pair.of(epk.a("village/plains/houses/plains_stable_1", $$6), 2),
+                  Pair.of(epk.a("village/plains/houses/plains_stable_2"), 2),
+                  Pair.of(epk.a("village/plains/houses/plains_large_farm_1", $$11), 4),
+                  Pair.of(epk.a("village/plains/houses/plains_small_farm_1", $$11), 4),
+                  Pair.of(epk.a("village/plains/houses/plains_animal_pen_1"), 1),
+                  Pair.of(epk.a("village/plains/houses/plains_animal_pen_2"), 1),
+                  Pair.of(epk.a("village/plains/houses/plains_animal_pen_3"), 5),
+                  Pair.of(epk.a("village/plains/houses/plains_accessory_1"), 1),
+                  Pair.of(epk.a("village/plains/houses/plains_meeting_point_4", $$8), 3),
+                  Pair.of(epk.a("village/plains/houses/plains_meeting_point_5"), 1),
+                  Pair.of(epk.h(), 10)
+               }
             ),
-            ens.a.b
+            epm.a.b
          )
       );
-      rg.a(
+      rr.a(
          $$0,
-         "trial_chambers/chamber/eruption",
-         new ens(
-            $$2,
-            List.of(
-               Pair.of(enq.b("trial_chambers/chamber/eruption/center_1"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/eruption/breeze_slice_1"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/eruption/slice_1"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/eruption/slice_2"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/eruption/slice_3"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/eruption/quadrant_1"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/eruption/quadrant_2"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/eruption/quadrant_3"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/eruption/quadrant_4"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/eruption/quadrant_5"), 1)
+         "village/plains/zombie/houses",
+         new epm(
+            $$14,
+            ImmutableList.of(
+               Pair.of(epk.a("village/plains/zombie/houses/plains_small_house_1", $$9), 2),
+               Pair.of(epk.a("village/plains/zombie/houses/plains_small_house_2", $$9), 2),
+               Pair.of(epk.a("village/plains/zombie/houses/plains_small_house_3", $$9), 2),
+               Pair.of(epk.a("village/plains/zombie/houses/plains_small_house_4", $$9), 2),
+               Pair.of(epk.a("village/plains/zombie/houses/plains_small_house_5", $$9), 2),
+               Pair.of(epk.a("village/plains/zombie/houses/plains_small_house_6", $$9), 1),
+               Pair.of(epk.a("village/plains/zombie/houses/plains_small_house_7", $$9), 2),
+               Pair.of(epk.a("village/plains/zombie/houses/plains_small_house_8", $$9), 2),
+               Pair.of(epk.a("village/plains/zombie/houses/plains_medium_house_1", $$9), 2),
+               Pair.of(epk.a("village/plains/zombie/houses/plains_medium_house_2", $$9), 2),
+               Pair.of(epk.a("village/plains/zombie/houses/plains_big_house_1", $$9), 2),
+               Pair.of(epk.a("village/plains/houses/plains_butcher_shop_1", $$9), 2),
+               new Pair[]{
+                  Pair.of(epk.a("village/plains/zombie/houses/plains_butcher_shop_2", $$9), 2),
+                  Pair.of(epk.a("village/plains/houses/plains_tool_smith_1", $$9), 2),
+                  Pair.of(epk.a("village/plains/zombie/houses/plains_fletcher_house_1", $$9), 2),
+                  Pair.of(epk.a("village/plains/zombie/houses/plains_shepherds_house_1", $$9), 2),
+                  Pair.of(epk.a("village/plains/houses/plains_armorer_house_1", $$9), 2),
+                  Pair.of(epk.a("village/plains/houses/plains_fisher_cottage_1", $$9), 2),
+                  Pair.of(epk.a("village/plains/houses/plains_tannery_1", $$9), 2),
+                  Pair.of(epk.a("village/plains/houses/plains_cartographer_1", $$9), 1),
+                  Pair.of(epk.a("village/plains/houses/plains_library_1", $$9), 3),
+                  Pair.of(epk.a("village/plains/houses/plains_library_2", $$9), 1),
+                  Pair.of(epk.a("village/plains/houses/plains_masons_house_1", $$9), 2),
+                  Pair.of(epk.a("village/plains/houses/plains_weaponsmith_1", $$9), 2),
+                  Pair.of(epk.a("village/plains/houses/plains_temple_3", $$9), 2),
+                  Pair.of(epk.a("village/plains/houses/plains_temple_4", $$9), 2),
+                  Pair.of(epk.a("village/plains/zombie/houses/plains_stable_1", $$9), 2),
+                  Pair.of(epk.a("village/plains/houses/plains_stable_2", $$9), 2),
+                  Pair.of(epk.a("village/plains/houses/plains_large_farm_1", $$9), 4),
+                  Pair.of(epk.a("village/plains/houses/plains_small_farm_1", $$9), 4),
+                  Pair.of(epk.a("village/plains/houses/plains_animal_pen_1", $$9), 1),
+                  Pair.of(epk.a("village/plains/houses/plains_animal_pen_2", $$9), 1),
+                  Pair.of(epk.a("village/plains/zombie/houses/plains_animal_pen_3", $$9), 5),
+                  Pair.of(epk.a("village/plains/zombie/houses/plains_meeting_point_4", $$9), 3),
+                  Pair.of(epk.a("village/plains/zombie/houses/plains_meeting_point_5", $$9), 1),
+                  Pair.of(epk.h(), 10)
+               }
             ),
-            ens.a.b
-         )
-      );
-      rg.a(
-         $$0,
-         "trial_chambers/chamber/slanted",
-         new ens(
-            $$2,
-            List.of(
-               Pair.of(enq.b("trial_chambers/chamber/slanted/center"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/slanted/hallway_1"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/slanted/hallway_2"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/slanted/hallway_3"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/slanted/quadrant_1"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/slanted/quadrant_2"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/slanted/quadrant_3"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/slanted/quadrant_4"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/slanted/ramp_1"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/slanted/ramp_2"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/slanted/ramp_3"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/slanted/ramp_4"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/slanted/ominous_upper_arm_1"), 1)
-            ),
-            ens.a.b
-         )
-      );
-      rg.a(
-         $$0,
-         "trial_chambers/chamber/pedestal",
-         new ens(
-            $$2,
-            List.of(
-               Pair.of(enq.b("trial_chambers/chamber/pedestal/center_1"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/pedestal/slice_1"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/pedestal/slice_2"), 3),
-               Pair.of(enq.b("trial_chambers/chamber/pedestal/slice_3"), 3),
-               Pair.of(enq.b("trial_chambers/chamber/pedestal/slice_4"), 3),
-               Pair.of(enq.b("trial_chambers/chamber/pedestal/slice_5"), 3),
-               Pair.of(enq.b("trial_chambers/chamber/pedestal/ominous_slice_1"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/pedestal/quadrant_1"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/pedestal/quadrant_2"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/pedestal/quadrant_3"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/slanted/quadrant_1"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/slanted/quadrant_2"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/slanted/quadrant_3"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/slanted/quadrant_4"), 1)
-            ),
-            ens.a.b
-         )
-      );
-      rg.a(
-         $$0,
-         "trial_chambers/corridor/slices",
-         new ens(
-            $$2,
-            List.of(
-               Pair.of(enq.b("trial_chambers/corridor/straight_1", $$5), 1),
-               Pair.of(enq.b("trial_chambers/corridor/straight_2", $$5), 2),
-               Pair.of(enq.b("trial_chambers/corridor/straight_3", $$5), 2),
-               Pair.of(enq.b("trial_chambers/corridor/straight_4", $$5), 2),
-               Pair.of(enq.b("trial_chambers/corridor/straight_5", $$5), 2),
-               Pair.of(enq.b("trial_chambers/corridor/straight_6", $$5), 2),
-               Pair.of(enq.b("trial_chambers/corridor/straight_7", $$5), 1),
-               Pair.of(enq.b("trial_chambers/corridor/straight_8", $$5), 2)
-            ),
-            ens.a.b
+            epm.a.b
          )
       );
       $$0.a(
          b,
-         new ens(
-            $$2,
-            List.of(
-               Pair.of(enq.b("trial_chambers/hallway/rubble"), 1),
-               Pair.of(enq.b("trial_chambers/hallway/rubble_chamber"), 1),
-               Pair.of(enq.b("trial_chambers/hallway/rubble_thin"), 1),
-               Pair.of(enq.b("trial_chambers/hallway/rubble_chamber_thin"), 1)
+         new epm(
+            $$13,
+            ImmutableList.of(
+               Pair.of(epk.a("village/plains/terminators/terminator_01", $$10), 1),
+               Pair.of(epk.a("village/plains/terminators/terminator_02", $$10), 1),
+               Pair.of(epk.a("village/plains/terminators/terminator_03", $$10), 1),
+               Pair.of(epk.a("village/plains/terminators/terminator_04", $$10), 1)
             ),
-            ens.a.b
+            epm.a.a
          )
       );
-      rg.a(
+      rr.a($$0, "village/plains/trees", new epm($$13, ImmutableList.of(Pair.of(epk.a($$2), 1)), epm.a.b));
+      rr.a(
          $$0,
-         "trial_chambers/hallway",
-         new ens(
-            $$3,
-            List.of(
-               Pair.of(enq.b("trial_chambers/hallway/corridor_connector_1"), 1),
-               Pair.of(enq.b("trial_chambers/hallway/upper_hallway_connector", $$5), 1),
-               Pair.of(enq.b("trial_chambers/hallway/lower_hallway_connector", $$5), 1),
-               Pair.of(enq.b("trial_chambers/hallway/rubble"), 1),
-               Pair.of(enq.b("trial_chambers/chamber/chamber_1", $$5), 150),
-               Pair.of(enq.b("trial_chambers/chamber/chamber_2", $$5), 150),
-               Pair.of(enq.b("trial_chambers/chamber/chamber_4", $$5), 150),
-               Pair.of(enq.b("trial_chambers/chamber/chamber_8", $$5), 150),
-               Pair.of(enq.b("trial_chambers/chamber/assembly", $$5), 150),
-               Pair.of(enq.b("trial_chambers/chamber/eruption", $$5), 150),
-               Pair.of(enq.b("trial_chambers/chamber/slanted", $$5), 150),
-               Pair.of(enq.b("trial_chambers/chamber/pedestal", $$5), 150),
-               Pair.of(enq.b("trial_chambers/hallway/rubble_chamber", $$5), 10),
-               Pair.of(enq.b("trial_chambers/hallway/rubble_chamber_thin", $$5), 1),
-               Pair.of(enq.b("trial_chambers/hallway/cache_1", $$5), 1),
-               Pair.of(enq.b("trial_chambers/hallway/left_corner", $$5), 1),
-               Pair.of(enq.b("trial_chambers/hallway/right_corner", $$5), 1),
-               Pair.of(enq.b("trial_chambers/hallway/corner_staircase", $$5), 1),
-               Pair.of(enq.b("trial_chambers/hallway/corner_staircase_down", $$5), 1),
-               Pair.of(enq.b("trial_chambers/hallway/long_straight_staircase", $$5), 1),
-               Pair.of(enq.b("trial_chambers/hallway/long_straight_staircase_down", $$5), 1),
-               Pair.of(enq.b("trial_chambers/hallway/straight", $$5), 1),
-               Pair.of(enq.b("trial_chambers/hallway/straight_staircase", $$5), 1),
-               Pair.of(enq.b("trial_chambers/hallway/straight_staircase_down", $$5), 1),
-               Pair.of(enq.b("trial_chambers/hallway/trapped_staircase", $$5), 1),
-               Pair.of(enq.b("trial_chambers/hallway/encounter_1", $$5), 1),
-               Pair.of(enq.b("trial_chambers/hallway/encounter_2", $$5), 1),
-               Pair.of(enq.b("trial_chambers/hallway/encounter_3", $$5), 1),
-               Pair.of(enq.b("trial_chambers/hallway/encounter_4", $$5), 1),
-               Pair.of(enq.b("trial_chambers/hallway/encounter_5", $$5), 1)
+         "village/plains/decor",
+         new epm(
+            $$13,
+            ImmutableList.of(
+               Pair.of(epk.a("village/plains/plains_lamp_1"), 2), Pair.of(epk.a($$2), 1), Pair.of(epk.a($$3), 1), Pair.of(epk.a($$4), 1), Pair.of(epk.h(), 2)
             ),
-            ens.a.b
+            epm.a.b
          )
       );
-      rg.a(
+      rr.a(
          $$0,
-         "trial_chambers/corridors/addon/lower",
-         new ens(
-            $$2,
-            List.of(
-               Pair.of(enq.h(), 8),
-               Pair.of(enq.b("trial_chambers/corridor/addon/staircase"), 1),
-               Pair.of(enq.b("trial_chambers/corridor/addon/wall"), 1),
-               Pair.of(enq.b("trial_chambers/corridor/addon/ladder_to_middle"), 1),
-               Pair.of(enq.b("trial_chambers/corridor/addon/arrow_dispenser"), 1),
-               Pair.of(enq.b("trial_chambers/corridor/addon/bridge_lower"), 2)
+         "village/plains/zombie/decor",
+         new epm(
+            $$13,
+            ImmutableList.of(
+               Pair.of(epk.a("village/plains/plains_lamp_1", $$9), 1),
+               Pair.of(epk.a($$2), 1),
+               Pair.of(epk.a($$3), 1),
+               Pair.of(epk.a($$4), 1),
+               Pair.of(epk.h(), 2)
             ),
-            ens.a.b
+            epm.a.b
          )
       );
-      rg.a(
+      rr.a(
          $$0,
-         "trial_chambers/corridors/addon/middle",
-         new ens(
-            $$2,
-            List.of(
-               Pair.of(enq.h(), 8),
-               Pair.of(enq.b("trial_chambers/corridor/addon/open_walkway"), 2),
-               Pair.of(enq.b("trial_chambers/corridor/addon/walled_walkway"), 1)
+         "village/plains/villagers",
+         new epm(
+            $$13,
+            ImmutableList.of(
+               Pair.of(epk.a("village/plains/villagers/nitwit"), 1),
+               Pair.of(epk.a("village/plains/villagers/baby"), 1),
+               Pair.of(epk.a("village/plains/villagers/unemployed"), 10)
             ),
-            ens.a.b
+            epm.a.b
          )
       );
-      rg.a(
+      rr.a(
          $$0,
-         "trial_chambers/corridors/addon/middle_upper",
-         new ens(
-            $$2,
-            List.of(
-               Pair.of(enq.h(), 6),
-               Pair.of(enq.b("trial_chambers/corridor/addon/open_walkway_upper"), 2),
-               Pair.of(enq.b("trial_chambers/corridor/addon/chandelier_upper"), 1),
-               Pair.of(enq.b("trial_chambers/corridor/addon/decoration_upper"), 1),
-               Pair.of(enq.b("trial_chambers/corridor/addon/head_upper"), 1),
-               Pair.of(enq.b("trial_chambers/corridor/addon/reward_upper"), 1)
-            ),
-            ens.a.b
+         "village/plains/zombie/villagers",
+         new epm(
+            $$13,
+            ImmutableList.of(Pair.of(epk.a("village/plains/zombie/villagers/nitwit"), 1), Pair.of(epk.a("village/plains/zombie/villagers/unemployed"), 10)),
+            epm.a.b
          )
       );
-      rg.a(
+      rr.a(
          $$0,
-         "trial_chambers/atrium",
-         new ens(
-            $$2,
-            List.of(
-               Pair.of(enq.b("trial_chambers/corridor/atrium/bogged_relief"), 1),
-               Pair.of(enq.b("trial_chambers/corridor/atrium/breeze_relief"), 1),
-               Pair.of(enq.b("trial_chambers/corridor/atrium/spiral_relief"), 1),
-               Pair.of(enq.b("trial_chambers/corridor/atrium/spider_relief"), 1),
-               Pair.of(enq.b("trial_chambers/corridor/atrium/grand_staircase_1"), 1),
-               Pair.of(enq.b("trial_chambers/corridor/atrium/grand_staircase_2"), 1),
-               Pair.of(enq.b("trial_chambers/corridor/atrium/grand_staircase_3"), 1)
+         "village/common/animals",
+         new epm(
+            $$13,
+            ImmutableList.of(
+               Pair.of(epk.a("village/common/animals/cows_1"), 7),
+               Pair.of(epk.a("village/common/animals/pigs_1"), 7),
+               Pair.of(epk.a("village/common/animals/horses_1"), 1),
+               Pair.of(epk.a("village/common/animals/horses_2"), 1),
+               Pair.of(epk.a("village/common/animals/horses_3"), 1),
+               Pair.of(epk.a("village/common/animals/horses_4"), 1),
+               Pair.of(epk.a("village/common/animals/horses_5"), 1),
+               Pair.of(epk.a("village/common/animals/sheep_1"), 1),
+               Pair.of(epk.a("village/common/animals/sheep_2"), 1),
+               Pair.of(epk.h(), 5)
             ),
-            ens.a.b
+            epm.a.b
          )
       );
-      rg.a(
+      rr.a(
          $$0,
-         "trial_chambers/decor",
-         new ens(
-            $$2,
-            List.of(
-               Pair.of(enq.h(), 22),
-               Pair.of(enq.b("trial_chambers/decor/empty_pot"), 2),
-               Pair.of(enq.b("trial_chambers/decor/dead_bush_pot"), 2),
-               Pair.of(enq.b("trial_chambers/decor/undecorated_pot"), 10),
-               Pair.of(enq.b("trial_chambers/decor/flow_pot"), 1),
-               Pair.of(enq.b("trial_chambers/decor/guster_pot"), 1),
-               Pair.of(enq.b("trial_chambers/decor/scrape_pot"), 1),
-               Pair.of(enq.b("trial_chambers/decor/candle_1"), 1),
-               Pair.of(enq.b("trial_chambers/decor/candle_2"), 1),
-               Pair.of(enq.b("trial_chambers/decor/candle_3"), 1),
-               Pair.of(enq.b("trial_chambers/decor/candle_4"), 1),
-               Pair.of(enq.b("trial_chambers/decor/barrel"), 2)
-            ),
-            ens.a.b
-         )
+         "village/common/sheep",
+         new epm($$13, ImmutableList.of(Pair.of(epk.a("village/common/animals/sheep_1"), 1), Pair.of(epk.a("village/common/animals/sheep_2"), 1)), epm.a.b)
       );
-      rg.a($$0, "trial_chambers/decor/disposal", new ens($$2, List.of(Pair.of(enq.b("trial_chambers/decor/disposal"), 1)), ens.a.b));
-      rg.a(
+      rr.a(
          $$0,
-         "trial_chambers/decor/bed",
-         new ens(
-            $$2,
-            List.of(
-               Pair.of(enq.b("trial_chambers/decor/white_bed"), 3),
-               Pair.of(enq.b("trial_chambers/decor/light_gray_bed"), 3),
-               Pair.of(enq.b("trial_chambers/decor/gray_bed"), 3),
-               Pair.of(enq.b("trial_chambers/decor/black_bed"), 3),
-               Pair.of(enq.b("trial_chambers/decor/brown_bed"), 3),
-               Pair.of(enq.b("trial_chambers/decor/red_bed"), 3),
-               Pair.of(enq.b("trial_chambers/decor/orange_bed"), 3),
-               Pair.of(enq.b("trial_chambers/decor/yellow_bed"), 3),
-               Pair.of(enq.b("trial_chambers/decor/lime_bed"), 3),
-               Pair.of(enq.b("trial_chambers/decor/green_bed"), 3),
-               Pair.of(enq.b("trial_chambers/decor/cyan_bed"), 3),
-               Pair.of(enq.b("trial_chambers/decor/light_blue_bed"), 3),
-               Pair.of(enq.b("trial_chambers/decor/blue_bed"), 3),
-               Pair.of(enq.b("trial_chambers/decor/purple_bed"), 3),
-               Pair.of(enq.b("trial_chambers/decor/magenta_bed"), 3),
-               Pair.of(enq.b("trial_chambers/decor/pink_bed"), 1)
+         "village/common/cats",
+         new epm(
+            $$13,
+            ImmutableList.of(
+               Pair.of(epk.a("village/common/animals/cat_black"), 1),
+               Pair.of(epk.a("village/common/animals/cat_british"), 1),
+               Pair.of(epk.a("village/common/animals/cat_calico"), 1),
+               Pair.of(epk.a("village/common/animals/cat_persian"), 1),
+               Pair.of(epk.a("village/common/animals/cat_ragdoll"), 1),
+               Pair.of(epk.a("village/common/animals/cat_red"), 1),
+               Pair.of(epk.a("village/common/animals/cat_siamese"), 1),
+               Pair.of(epk.a("village/common/animals/cat_tabby"), 1),
+               Pair.of(epk.a("village/common/animals/cat_white"), 1),
+               Pair.of(epk.a("village/common/animals/cat_jellie"), 1),
+               Pair.of(epk.h(), 3)
             ),
-            ens.a.b
+            epm.a.b
          )
       );
-      rg.a(
+      rr.a(
          $$0,
-         "trial_chambers/entrance",
-         new ens(
-            $$2,
-            List.of(
-               Pair.of(enq.b("trial_chambers/corridor/addon/display_1"), 1),
-               Pair.of(enq.b("trial_chambers/corridor/addon/display_2"), 1),
-               Pair.of(enq.b("trial_chambers/corridor/addon/display_3"), 1)
+         "village/common/butcher_animals",
+         new epm(
+            $$13,
+            ImmutableList.of(
+               Pair.of(epk.a("village/common/animals/cows_1"), 3),
+               Pair.of(epk.a("village/common/animals/pigs_1"), 3),
+               Pair.of(epk.a("village/common/animals/sheep_1"), 1),
+               Pair.of(epk.a("village/common/animals/sheep_2"), 1)
             ),
-            ens.a.b
+            epm.a.b
          )
       );
-      rg.a($$0, "trial_chambers/decor/chamber", new ens($$2, List.of(Pair.of(enq.h(), 4), Pair.of(enq.b("trial_chambers/decor/undecorated_pot"), 1)), ens.a.b));
-      rg.a($$0, "trial_chambers/reward/all", new ens($$2, List.of(Pair.of(enq.b("trial_chambers/reward/vault"), 1)), ens.a.b));
-      rg.a($$0, "trial_chambers/reward/ominous_vault", new ens($$2, List.of(Pair.of(enq.b("trial_chambers/reward/ominous_vault"), 1)), ens.a.b));
-      rg.a($$0, "trial_chambers/reward/contents/default", new ens($$2, List.of(Pair.of(enq.b("trial_chambers/reward/vault"), 1)), ens.a.b));
-      rg.a($$0, "trial_chambers/chests/supply", new ens($$2, List.of(Pair.of(enq.b("trial_chambers/chests/connectors/supply"), 1)), ens.a.b));
-      rg.a($$0, "trial_chambers/chests/contents/supply", new ens($$2, List.of(Pair.of(enq.b("trial_chambers/chests/supply"), 1)), ens.a.b));
-      rg.a($$0, "trial_chambers/spawner/ranged", new ens($$2, List.of(Pair.of(enq.b("trial_chambers/spawner/connectors/ranged"), 1)), ens.a.b));
-      rg.a($$0, "trial_chambers/spawner/slow_ranged", new ens($$2, List.of(Pair.of(enq.b("trial_chambers/spawner/connectors/slow_ranged"), 1)), ens.a.b));
-      rg.a($$0, "trial_chambers/spawner/melee", new ens($$2, List.of(Pair.of(enq.b("trial_chambers/spawner/connectors/melee"), 1)), ens.a.b));
-      rg.a($$0, "trial_chambers/spawner/small_melee", new ens($$2, List.of(Pair.of(enq.b("trial_chambers/spawner/connectors/small_melee"), 1)), ens.a.b));
-      rg.a($$0, "trial_chambers/spawner/breeze", new ens($$2, List.of(Pair.of(enq.b("trial_chambers/spawner/connectors/breeze"), 1)), ens.a.b));
-      rg.a(
-         $$0,
-         "trial_chambers/spawner/all",
-         new ens(
-            $$2,
-            List.of(
-               Pair.of(enq.b("trial_chambers/spawner/connectors/ranged"), 1),
-               Pair.of(enq.b("trial_chambers/spawner/connectors/melee"), 1),
-               Pair.of(enq.b("trial_chambers/spawner/connectors/small_melee"), 1)
-            ),
-            ens.a.b
-         )
-      );
-      rg.a($$0, "trial_chambers/spawner/contents/breeze", new ens($$2, List.of(Pair.of(enq.b("trial_chambers/spawner/breeze/breeze"), 1)), ens.a.b));
-      rg.a(
-         $$0,
-         "trial_chambers/dispensers/chamber",
-         new ens(
-            $$2,
-            List.of(
-               Pair.of(enq.h(), 1),
-               Pair.of(enq.b("trial_chambers/dispensers/chamber"), 1),
-               Pair.of(enq.b("trial_chambers/dispensers/wall_dispenser"), 1),
-               Pair.of(enq.b("trial_chambers/dispensers/floor_dispenser"), 1)
-            ),
-            ens.a.b
-         )
-      );
-      env.a($$0, $$2, c);
+      rr.a($$0, "village/common/iron_golem", new epm($$13, ImmutableList.of(Pair.of(epk.a("village/common/iron_golem"), 1)), epm.a.b));
+      rr.a($$0, "village/common/well_bottoms", new epm($$13, ImmutableList.of(Pair.of(epk.a("village/common/well_bottom"), 1)), epm.a.b));
    }
 }

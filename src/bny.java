@@ -1,67 +1,65 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class bny extends bnw implements boc {
+   public static final int c = 240;
+   private final long[][] d;
+   private int e;
+   private int f;
 
-public abstract class bny<S> {
-   private final Map<bny.b<?>, bny.a<?>> a = new HashMap<>();
-   private final bnv<S> b;
-   private final bnw<S> c;
-
-   protected bny(bnv<S> $$0, bnw<S> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public bny(int $$0) {
+      this($$0, new long[$$0]);
    }
 
-   public bnw<S> a() {
-      return this.c;
+   public bny(int $$0, long[] $$1) {
+      super($$0, $$1);
+      this.d = new long[240][$$0];
    }
 
-   public <T> Optional<T> a(bnt<T> $$0) {
-      Optional<T> $$1 = this.b($$0);
-      if ($$1.isPresent()) {
-         this.c.a(this.c());
-      }
-
-      return $$1;
-   }
-
-   public <T> Optional<T> b(bnt<T> $$0) {
-      bny.b<T> $$1 = new bny.b<>($$0, this.c());
-      bny.a<T> $$2 = this.a($$1);
-      if ($$2 != null) {
-         this.a($$2.b());
-         return $$2.a;
+   @Override
+   protected void a() {
+      int $$0 = this.b(this.e + this.f);
+      System.arraycopy(this.b, 0, this.d[$$0], 0, this.b.length);
+      if (this.f < 240) {
+         this.f++;
       } else {
-         bnz<S, T> $$3 = this.b.a($$0);
-         if ($$3 == null) {
-            throw new IllegalStateException("No symbol " + $$0);
-         } else {
-            Optional<T> $$4 = $$3.a(this);
-            this.a($$1, $$4);
-            return $$4;
-         }
+         this.e = this.b(this.e + 1);
       }
    }
 
-   @Nullable
-   private <T> bny.a<T> a(bny.b<T> $$0) {
-      return (bny.a<T>)this.a.get($$0);
+   @Override
+   public int c() {
+      return this.d.length;
    }
 
-   private <T> void a(bny.b<T> $$0, Optional<T> $$1) {
-      this.a.put($$0, new bny.a<>($$1, this.c()));
+   @Override
+   public int d() {
+      return this.f;
    }
 
-   public abstract S b();
-
-   public abstract int c();
-
-   public abstract void a(int var1);
-
-   static record a<T>(Optional<T> a, int b) {
+   @Override
+   public long a(int $$0) {
+      return this.a($$0, 0);
    }
 
-   static record b<T>(bnt<T> a, int b) {
+   @Override
+   public long a(int $$0, int $$1) {
+      if ($$0 >= 0 && $$0 < this.f) {
+         long[] $$2 = this.d[this.b(this.e + $$0)];
+         if ($$1 >= 0 && $$1 < $$2.length) {
+            return $$2[$$1];
+         } else {
+            throw new IndexOutOfBoundsException($$1 + " out of bounds for dimensions " + $$2.length);
+         }
+      } else {
+         throw new IndexOutOfBoundsException($$0 + " out of bounds for length " + this.f);
+      }
+   }
+
+   private int b(int $$0) {
+      return $$0 % 240;
+   }
+
+   @Override
+   public void e() {
+      this.e = 0;
+      this.f = 0;
    }
 }

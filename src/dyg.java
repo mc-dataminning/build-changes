@@ -1,24 +1,20 @@
-import java.util.List;
-import java.util.function.Predicate;
+public enum dyg implements bba {
+   a("compare"),
+   b("subtract");
 
-public interface dyg<T> {
-   int a(T var1);
+   private final String c;
 
-   boolean a(Predicate<T> var1);
+   private dyg(final String $$0) {
+      this.c = $$0;
+   }
 
-   T a(int var1);
+   @Override
+   public String toString() {
+      return this.c;
+   }
 
-   void a(wg var1);
-
-   void b(wg var1);
-
-   int a();
-
-   int b();
-
-   dyg<T> a(dyh<T> var1);
-
-   public interface a {
-      <A> dyg<A> create(int var1, jv<A> var2, dyh<A> var3, List<A> var4);
+   @Override
+   public String c() {
+      return this.c;
    }
 }

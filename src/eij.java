@@ -1,70 +1,53 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class eij extends eim {
-   public static final MapCodec<eij> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0)
-            .and(
-               $$0.group(
-                  brp.b(4, 16).fieldOf("height").forGetter($$0x -> $$0x.b),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("wide_bottom_layer_hole_chance").forGetter($$0x -> $$0x.c),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("corner_hole_chance").forGetter($$0x -> $$0x.c),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_chance").forGetter($$0x -> $$0x.h),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_extension_chance").forGetter($$0x -> $$0x.i)
-               )
+public record eij(List<eij.a> b, jm c, eep d, boolean e) implements eis {
+   public static final Codec<eij> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eij.a.a.listOf().fieldOf("layers").forGetter(eij::a),
+               jm.g.fieldOf("direction").forGetter(eij::b),
+               eep.b.fieldOf("allowed_placement").forGetter(eij::c),
+               Codec.BOOL.fieldOf("prioritize_tip").forGetter(eij::d)
             )
             .apply($$0, eij::new)
    );
-   private final brp b;
-   private final float c;
-   private final float g;
-   private final float h;
-   private final float i;
 
-   public eij(brp $$0, brp $$1, brp $$2, float $$3, float $$4, float $$5, float $$6) {
-      super($$0, $$1);
-      this.b = $$2;
-      this.c = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
+   public static eij.a a(bsj $$0, ekt $$1) {
+      return new eij.a($$0, $$1);
    }
 
-   @Override
-   protected ein<?> a() {
-      return ein.k;
+   public static eij b(bsj $$0, ekt $$1) {
+      return new eij(List.of(a($$0, $$1)), jm.b, eep.c, false);
    }
 
-   @Override
-   protected void a(dfs $$0, eim.b $$1, azu $$2, ehw $$3, int $$4, eim.a $$5, int $$6, int $$7, int $$8) {
-      boolean $$9 = $$5.c();
-      jh $$10 = $$5.a().b($$8);
-      int $$11 = $$7 + $$5.b() - 1;
-      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 2, $$6 - 3, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, $$6 - 4, $$9);
+   public List<eij.a> a() {
+      return this.b;
+   }
 
-      for (int $$12 = $$6 - 5; $$12 >= 0; $$12--) {
-         this.a($$0, $$1, $$2, $$3, $$10, $$11, $$12, $$9);
+   public jm b() {
+      return this.c;
+   }
+
+   public eep c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public static record a(bsj b, ekt c) {
+      public static final Codec<eij.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bsj.d.fieldOf("height").forGetter(eij.a::a), ekt.a.fieldOf("provider").forGetter(eij.a::b)).apply($$0, eij.a::new)
+      );
+
+      public bsj a() {
+         return this.b;
       }
 
-      this.a($$0, $$1, $$2, $$3, $$10, $$11, -1, $$9, this.h, this.i);
-      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, -2, $$9, this.h, this.i);
-   }
-
-   @Override
-   public int a(azu $$0, int $$1, ehw $$2) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   protected boolean a(azu $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      if ($$2 == -1 && ($$1 == $$4 || $$3 == $$4) && $$0.i() < this.c) {
-         return true;
-      } else {
-         boolean $$6 = $$1 == $$4 && $$3 == $$4;
-         boolean $$7 = $$4 > 2;
-         return $$7 ? $$6 || $$1 + $$3 > $$4 * 2 - 2 && $$0.i() < this.g : $$6 && $$0.i() < this.g;
+      public ekt b() {
+         return this.c;
       }
    }
 }

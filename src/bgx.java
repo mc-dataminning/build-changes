@@ -1,31 +1,35 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import java.util.Objects;
-import java.util.function.UnaryOperator;
+import com.mojang.serialization.Dynamic;
+import java.util.Map;
+import java.util.Optional;
 
 public class bgx extends DataFix {
-   private final String a;
-   private final TypeReference b;
-   private final UnaryOperator<String> c;
+   private static final Map<String, String> a = ImmutableMap.builder()
+      .put("down", "down_south")
+      .put("up", "up_north")
+      .put("north", "north_up")
+      .put("south", "south_up")
+      .put("west", "west_up")
+      .put("east", "east_up")
+      .build();
 
-   public bgx(Schema $$0, String $$1, TypeReference $$2, UnaryOperator<String> $$3) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
+   public bgx(Schema $$0, boolean $$1) {
+      super($$0, $$1);
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<String> $$1 = $$0.get("Name").asString().result();
+      return $$1.equals(Optional.of("minecraft:jigsaw")) ? $$0.update("Properties", $$0x -> {
+         String $$1x = $$0x.get("facing").asString("north");
+         return $$0x.remove("facing").set("orientation", $$0x.createString(a.getOrDefault($$1x, $$1x)));
+      }) : $$0;
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<Pair<String, String>> $$0 = DSL.named(this.b.typeName(), bjo.a());
-      if (!Objects.equals($$0, this.getInputSchema().getType(this.b))) {
-         throw new IllegalStateException("\"" + this.b.typeName() + "\" is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this.c));
-      }
+      return this.fixTypeEverywhereTyped("jigsaw_rotation_fix", this.getInputSchema().getType(bis.u), $$0 -> $$0.update(DSL.remainderFinder(), bgx::a));
    }
 }

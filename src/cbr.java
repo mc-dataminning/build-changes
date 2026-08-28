@@ -1,77 +1,21 @@
-import java.util.EnumSet;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class cbr extends ccf {
-   private static final cfy d = cfy.b().a(8.0).d();
-   protected final cgy a;
-   private final Class<? extends cgy> e;
-   protected final arp b;
-   @Nullable
-   protected cgy c;
-   private int f;
-   private final double g;
-
-   public cbr(cgy $$0, double $$1) {
-      this($$0, $$1, (Class<? extends cgy>)$$0.getClass());
-   }
-
-   public cbr(cgy $$0, double $$1, Class<? extends cgy> $$2) {
-      this.a = $$0;
-      this.b = a($$0);
-      this.e = $$2;
-      this.g = $$1;
-      this.a(EnumSet.of(ccf.a.a, ccf.a.b));
-   }
-
-   @Override
-   public boolean b() {
-      if (!this.a.gw()) {
-         return false;
-      } else {
-         this.c = this.h();
-         return this.c != null;
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return this.c.bL() && this.c.gw() && this.f < 60 && !this.c.gj();
-   }
-
-   @Override
-   public void e() {
-      this.c = null;
-      this.f = 0;
-   }
-
-   @Override
-   public void a() {
-      this.a.H().a(this.c, 10.0F, (float)this.a.Z());
-      this.a.L().a(this.c, this.g);
-      this.f++;
-      if (this.f >= this.a(60) && this.a.g(this.c) < 9.0) {
-         this.g();
-      }
-   }
-
-   @Nullable
-   private cgy h() {
-      List<? extends cgy> $$0 = this.b.a(this.e, d, this.a, this.a.cR().g(8.0));
-      double $$1 = Double.MAX_VALUE;
-      cgy $$2 = null;
-
-      for (cgy $$3 : $$0) {
-         if (this.a.a($$3) && !$$3.gj() && this.a.g($$3) < $$1) {
-            $$2 = $$3;
-            $$1 = this.a.g($$3);
-         }
-      }
-
-      return $$2;
-   }
-
-   protected void g() {
-      this.a.a(this.b, this.c);
+public class cbr {
+   public static <E extends cov> bxv<E> a(Function<E, Optional<? extends bwb>> $$0) {
+      return cbh.a(
+         (Function<cbh.b<E>, ? extends App<cbh.c<E>, cbk<E>>>)($$1 -> $$1.group($$1.c(cff.ay), $$1.c(cff.o), $$1.a(cff.E))
+               .apply($$1, ($$1x, $$2, $$3) -> ($$3x, $$4, $$5) -> {
+                     Optional<? extends bwb> $$6 = $$0.apply((E)$$4);
+                     if ($$6.filter($$4::b).isEmpty()) {
+                        return false;
+                     } else {
+                        $$1x.a($$6.get());
+                        $$3.b();
+                        return true;
+                     }
+                  }))
+      );
    }
 }

@@ -1,589 +1,255 @@
 import com.google.common.collect.Lists;
-import com.google.common.collect.Queues;
-import com.google.common.collect.Sets;
-import it.unimi.dsi.fastutil.objects.ObjectArraySet;
-import java.util.ArrayList;
-import java.util.Collection;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Either;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Queue;
-import java.util.Set;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.function.Function;
+import org.joml.Vector3f;
 
 public class gmt {
-   private final gmo a = new gmo();
-   private final Queue<Runnable> b = Queues.newConcurrentLinkedQueue();
-   final gjt c;
-   private final gju d;
-   private volatile int e;
-   private volatile boolean f;
-   private final bra g;
-   private final ad h;
-   gdh i;
-   final gjc j;
-   private ezy k = ezy.c;
-   final gms l;
+   public static final List<String> a = Lists.newArrayList(new String[]{"layer0", "layer1", "layer2", "layer3", "layer4"});
+   private static final float b = 7.5F;
+   private static final float c = 8.5F;
 
-   public gmt(gdh $$0, gjc $$1, ad $$2, gjo $$3, gkj $$4, glq $$5) {
-      this.i = $$0;
-      this.j = $$1;
-      this.c = $$3.a();
-      this.d = $$3.b();
-      this.h = $$2;
-      this.g = new bra($$2, "Section Renderer");
-      this.g.a_(this::j);
-      this.l = new gms($$4, $$5);
+   public gmq a(Function<hdn, hbe> $$0, gmq $$1) {
+      Map<String, Either<hdn, String>> $$2 = Maps.newHashMap();
+      List<gmm> $$3 = Lists.newArrayList();
+
+      for (int $$4 = 0; $$4 < a.size(); $$4++) {
+         String $$5 = a.get($$4);
+         if (!$$1.a($$5)) {
+            break;
+         }
+
+         hdn $$6 = $$1.b($$5);
+         $$2.put($$5, Either.left($$6));
+         hay $$7 = $$0.apply($$6).e();
+         $$3.addAll(this.a($$4, $$5, $$7));
+      }
+
+      $$2.put("particle", $$1.a("particle") ? Either.left($$1.b("particle")) : $$2.get("layer0"));
+      gmq $$8 = new gmq(null, $$3, $$2, false, $$1.c(), $$1.g(), $$1.e());
+      $$8.d = $$1.d;
+      return $$8;
    }
 
-   public void a(gdh $$0) {
-      this.i = $$0;
+   private List<gmm> a(int $$0, String $$1, hay $$2) {
+      Map<jm, gmn> $$3 = Maps.newHashMap();
+      $$3.put(jm.d, new gmn(null, $$0, $$1, new gmp(new float[]{0.0F, 0.0F, 16.0F, 16.0F}, 0)));
+      $$3.put(jm.c, new gmn(null, $$0, $$1, new gmp(new float[]{16.0F, 0.0F, 0.0F, 16.0F}, 0)));
+      List<gmm> $$4 = Lists.newArrayList();
+      $$4.add(new gmm(new Vector3f(0.0F, 0.0F, 7.5F), new Vector3f(16.0F, 16.0F, 8.5F), $$3));
+      $$4.addAll(this.a($$2, $$1, $$0));
+      return $$4;
    }
 
-   private void j() {
-      if (!this.f && !this.d.b()) {
-         gmt.b.a $$0 = this.a.a(this.e());
-         if ($$0 != null) {
-            gjt $$1 = Objects.requireNonNull(this.d.a());
-            this.e = this.a.a();
-            CompletableFuture.<CompletableFuture<gmt.c>>supplyAsync(() -> $$0.a($$1), this.h.a($$0.b())).thenCompose($$0x -> $$0x).whenComplete(($$2, $$3) -> {
-               if ($$3 != null) {
-                  fke.Q().a(o.a($$3, "Batching sections"));
-               } else {
-                  $$0.b.set(true);
-                  this.g.a_(() -> {
-                     if ($$2 == gmt.c.a) {
-                        $$1.a();
-                     } else {
-                        $$1.b();
-                     }
+   private List<gmm> a(hay $$0, String $$1, int $$2) {
+      float $$3 = (float)$$0.a();
+      float $$4 = (float)$$0.b();
+      List<gmm> $$5 = Lists.newArrayList();
 
-                     this.d.a($$1);
-                     this.j();
-                  });
-               }
-            });
+      for (gmt.a $$6 : this.a($$0)) {
+         float $$7 = 0.0F;
+         float $$8 = 0.0F;
+         float $$9 = 0.0F;
+         float $$10 = 0.0F;
+         float $$11 = 0.0F;
+         float $$12 = 0.0F;
+         float $$13 = 0.0F;
+         float $$14 = 0.0F;
+         float $$15 = 16.0F / $$3;
+         float $$16 = 16.0F / $$4;
+         float $$17 = (float)$$6.b();
+         float $$18 = (float)$$6.c();
+         float $$19 = (float)$$6.d();
+         gmt.b $$20 = $$6.a();
+         switch ($$20) {
+            case a:
+               $$11 = $$17;
+               $$7 = $$17;
+               $$9 = $$12 = $$18 + 1.0F;
+               $$13 = $$19;
+               $$8 = $$19;
+               $$10 = $$19;
+               $$14 = $$19 + 1.0F;
+               break;
+            case b:
+               $$13 = $$19;
+               $$14 = $$19 + 1.0F;
+               $$11 = $$17;
+               $$7 = $$17;
+               $$9 = $$12 = $$18 + 1.0F;
+               $$8 = $$19 + 1.0F;
+               $$10 = $$19 + 1.0F;
+               break;
+            case c:
+               $$11 = $$19;
+               $$7 = $$19;
+               $$9 = $$19;
+               $$12 = $$19 + 1.0F;
+               $$14 = $$17;
+               $$8 = $$17;
+               $$10 = $$13 = $$18 + 1.0F;
+               break;
+            case d:
+               $$11 = $$19;
+               $$12 = $$19 + 1.0F;
+               $$7 = $$19 + 1.0F;
+               $$9 = $$19 + 1.0F;
+               $$14 = $$17;
+               $$8 = $$17;
+               $$10 = $$13 = $$18 + 1.0F;
+         }
+
+         $$7 *= $$15;
+         $$9 *= $$15;
+         $$8 *= $$16;
+         $$10 *= $$16;
+         $$8 = 16.0F - $$8;
+         $$10 = 16.0F - $$10;
+         $$11 *= $$15;
+         $$12 *= $$15;
+         $$13 *= $$16;
+         $$14 *= $$16;
+         Map<jm, gmn> $$21 = Maps.newHashMap();
+         $$21.put($$20.a(), new gmn(null, $$2, $$1, new gmp(new float[]{$$11, $$13, $$12, $$14}, 0)));
+         switch ($$20) {
+            case a:
+               $$5.add(new gmm(new Vector3f($$7, $$8, 7.5F), new Vector3f($$9, $$8, 8.5F), $$21));
+               break;
+            case b:
+               $$5.add(new gmm(new Vector3f($$7, $$10, 7.5F), new Vector3f($$9, $$10, 8.5F), $$21));
+               break;
+            case c:
+               $$5.add(new gmm(new Vector3f($$7, $$8, 7.5F), new Vector3f($$7, $$10, 8.5F), $$21));
+               break;
+            case d:
+               $$5.add(new gmm(new Vector3f($$9, $$8, 7.5F), new Vector3f($$9, $$10, 8.5F), $$21));
          }
       }
+
+      return $$5;
    }
 
-   public String a() {
-      return String.format(Locale.ROOT, "pC: %03d, pU: %02d, aB: %02d", this.e, this.b.size(), this.d.c());
-   }
-
-   public int b() {
-      return this.e;
-   }
-
-   public int c() {
-      return this.b.size();
-   }
-
-   public int d() {
-      return this.d.c();
-   }
-
-   public void a(ezy $$0) {
-      this.k = $$0;
-   }
-
-   public ezy e() {
-      return this.k;
-   }
-
-   public void f() {
-      Runnable $$0;
-      while (($$0 = this.b.poll()) != null) {
-         $$0.run();
-      }
-   }
-
-   public void a(gmt.b $$0, gmr $$1) {
-      $$0.b($$1);
-   }
-
-   public void g() {
-      this.k();
-   }
-
-   public void a(gmt.b.a $$0) {
-      if (!this.f) {
-         this.g.a_(() -> {
-            if (!this.f) {
-               this.a.a($$0);
-               this.e = this.a.a();
-               this.j();
+   private List<gmt.a> a(hay $$0) {
+      int $$1 = $$0.a();
+      int $$2 = $$0.b();
+      List<gmt.a> $$3 = Lists.newArrayList();
+      $$0.d().forEach($$4 -> {
+         for (int $$5 = 0; $$5 < $$2; $$5++) {
+            for (int $$6 = 0; $$6 < $$1; $$6++) {
+               boolean $$7 = !this.a($$0, $$4, $$6, $$5, $$1, $$2);
+               this.a(gmt.b.a, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
+               this.a(gmt.b.b, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
+               this.a(gmt.b.c, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
+               this.a(gmt.b.d, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
             }
-         });
+         }
+      });
+      return $$3;
+   }
+
+   private void a(gmt.b $$0, List<gmt.a> $$1, hay $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8) {
+      boolean $$9 = this.a($$2, $$3, $$4 + $$0.b(), $$5 + $$0.c(), $$6, $$7) && $$8;
+      if ($$9) {
+         this.a($$1, $$0, $$4, $$5);
       }
    }
 
-   public CompletableFuture<Void> a(feq $$0, feu $$1) {
-      return this.f ? CompletableFuture.completedFuture(null) : CompletableFuture.runAsync(() -> {
-         if ($$1.e()) {
-            $$0.close();
-         } else {
-            try (boz $$2 = bot.a().d("Upload Section Layer")) {
-               $$1.a();
-               $$1.a($$0);
-               feu.b();
+   private void a(List<gmt.a> $$0, gmt.b $$1, int $$2, int $$3) {
+      gmt.a $$4 = null;
+
+      for (gmt.a $$5 : $$0) {
+         if ($$5.a() == $$1) {
+            int $$6 = $$1.d() ? $$3 : $$2;
+            if ($$5.d() == $$6) {
+               $$4 = $$5;
+               break;
             }
          }
-      }, this.b::add);
-   }
-
-   public CompletableFuture<Void> a(feo.a $$0, feu $$1) {
-      return this.f ? CompletableFuture.completedFuture(null) : CompletableFuture.runAsync(() -> {
-         if ($$1.e()) {
-            $$0.close();
-         } else {
-            try (boz $$2 = bot.a().d("Upload Section Indices")) {
-               $$1.a();
-               $$1.a($$0);
-               feu.b();
-            }
-         }
-      }, this.b::add);
-   }
-
-   private void k() {
-      this.a.b();
-      this.e = 0;
-   }
-
-   public boolean h() {
-      return this.e == 0 && this.b.isEmpty();
-   }
-
-   public void i() {
-      this.f = true;
-      this.k();
-      this.f();
-   }
-
-   public static class a {
-      public static final gmt.a a = new gmt.a() {
-         @Override
-         public boolean a(jm $$0, jm $$1) {
-            return false;
-         }
-      };
-      public static final gmt.a b = new gmt.a() {
-         @Override
-         public boolean a(jm $$0, jm $$1) {
-            return true;
-         }
-      };
-      final Set<gjq> c = new ObjectArraySet(gjq.L().size());
-      final List<dsy> d = Lists.newArrayList();
-      gmv e = new gmv();
-      @Nullable
-      feq.b f;
-
-      public boolean a() {
-         return !this.c.isEmpty();
       }
 
-      public boolean a(gjq $$0) {
-         return !this.c.contains($$0);
+      int $$7 = $$1.d() ? $$3 : $$2;
+      int $$8 = $$1.d() ? $$2 : $$3;
+      if ($$4 == null) {
+         $$0.add(new gmt.a($$1, $$8, $$7));
+      } else {
+         $$4.a($$8);
+      }
+   }
+
+   private boolean a(hay $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      return $$2 >= 0 && $$3 >= 0 && $$2 < $$4 && $$3 < $$5 ? $$0.a($$1, $$2, $$3) : true;
+   }
+
+   static class a {
+      private final gmt.b a;
+      private int b;
+      private int c;
+      private final int d;
+
+      public a(gmt.b $$0, int $$1, int $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$1;
+         this.d = $$2;
       }
 
-      public List<dsy> b() {
+      public void a(int $$0) {
+         if ($$0 < this.b) {
+            this.b = $$0;
+         } else if ($$0 > this.c) {
+            this.c = $$0;
+         }
+      }
+
+      public gmt.b a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      public int c() {
+         return this.c;
+      }
+
+      public int d() {
          return this.d;
       }
-
-      public boolean a(jm $$0, jm $$1) {
-         return this.e.a($$0, $$1);
-      }
    }
 
-   public class b {
-      public static final int a = 16;
-      public final int b;
-      public final AtomicReference<gmt.a> c = new AtomicReference<>(gmt.a.a);
-      public final AtomicReference<gmt.d> d = new AtomicReference<>(null);
-      @Nullable
-      private gmt.b.b f;
-      @Nullable
-      private gmt.b.c g;
-      private final Set<dsy> h = Sets.newHashSet();
-      private final Map<gjq, feu> i = gjq.L().stream().collect(Collectors.toMap($$0x -> $$0x, $$0x -> new feu(fcl.b)));
-      private ezt j;
-      private boolean k = true;
-      long l = kj.b(-1, -1, -1);
-      final jh.a m = new jh.a(-1, -1, -1);
-      private boolean n;
+   static enum b {
+      a(jm.b, 0, -1),
+      b(jm.a, 0, 1),
+      c(jm.f, -1, 0),
+      d(jm.e, 1, 0);
 
-      public b(final int $$1, final long $$2) {
-         this.b = $$1;
-         this.a($$2);
+      private final jm e;
+      private final int f;
+      private final int g;
+
+      private b(final jm $$0, final int $$1, final int $$2) {
+         this.e = $$0;
+         this.f = $$1;
+         this.g = $$2;
       }
 
-      private boolean b(long $$0) {
-         return gmt.this.i.a(kj.b($$0), kj.d($$0), dyr.n, false) != null;
+      public jm a() {
+         return this.e;
       }
 
-      public boolean a() {
-         int $$0 = 24;
-         return !(this.c() > 576.0)
-            ? true
-            : this.b(kj.a(this.l, jm.e)) && this.b(kj.a(this.l, jm.c)) && this.b(kj.a(this.l, jm.f)) && this.b(kj.a(this.l, jm.d));
-      }
-
-      public ezt b() {
-         return this.j;
-      }
-
-      public feu a(gjq $$0) {
-         return this.i.get($$0);
-      }
-
-      public void a(long $$0) {
-         this.n();
-         this.l = $$0;
-         int $$1 = kj.c(kj.b($$0));
-         int $$2 = kj.c(kj.c($$0));
-         int $$3 = kj.c(kj.d($$0));
-         this.m.d($$1, $$2, $$3);
-         this.j = new ezt((double)$$1, (double)$$2, (double)$$3, (double)($$1 + 16), (double)($$2 + 16), (double)($$3 + 16));
-      }
-
-      protected double c() {
-         fjn $$0 = fke.Q().j.k();
-         double $$1 = this.j.a + 8.0 - $$0.b().d;
-         double $$2 = this.j.b + 8.0 - $$0.b().e;
-         double $$3 = this.j.c + 8.0 - $$0.b().f;
-         return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
-      }
-
-      public gmt.a d() {
-         return this.c.get();
-      }
-
-      private void n() {
-         this.m();
-         this.c.set(gmt.a.a);
-         this.d.set(null);
-         this.k = true;
-      }
-
-      public void e() {
-         this.n();
-         this.i.values().forEach(feu::close);
-      }
-
-      public jh f() {
-         return this.m;
-      }
-
-      public long g() {
-         return this.l;
-      }
-
-      public void a(boolean $$0) {
-         boolean $$1 = this.k;
-         this.k = true;
-         this.n = $$0 | ($$1 && this.n);
-      }
-
-      public void h() {
-         this.k = false;
-         this.n = false;
-      }
-
-      public boolean i() {
-         return this.k;
-      }
-
-      public boolean j() {
-         return this.k && this.n;
-      }
-
-      public long a(jm $$0) {
-         return kj.a(this.l, $$0);
-      }
-
-      public void a(gmt $$0) {
-         this.g = new gmt.b.c(this.d());
-         $$0.a(this.g);
-      }
-
-      public boolean k() {
-         return this.d().c.contains(gjq.f());
-      }
-
-      public boolean l() {
-         return this.g != null && !this.g.b.get();
-      }
-
-      protected void m() {
-         if (this.f != null) {
-            this.f.a();
-            this.f = null;
-         }
-
-         if (this.g != null) {
-            this.g.a();
-            this.g = null;
-         }
-      }
-
-      public gmt.b.a a(gmr $$0) {
-         this.m();
-         gmq $$1 = $$0.a(gmt.this.i, kj.a(this.l));
-         boolean $$2 = this.c.get() != gmt.a.a;
-         this.f = new gmt.b.b($$1, $$2);
+      public int b() {
          return this.f;
       }
 
-      public void a(gmt $$0, gmr $$1) {
-         gmt.b.a $$2 = this.a($$1);
-         $$0.a($$2);
+      public int c() {
+         return this.g;
       }
 
-      void a(Collection<dsy> $$0) {
-         Set<dsy> $$1 = Sets.newHashSet($$0);
-         Set<dsy> $$2;
-         synchronized (this.h) {
-            $$2 = Sets.newHashSet(this.h);
-            $$1.removeAll(this.h);
-            $$2.removeAll($$0);
-            this.h.clear();
-            this.h.addAll($$0);
-         }
-
-         gmt.this.j.a($$2, $$1);
-      }
-
-      public void b(gmr $$0) {
-         gmt.b.a $$1 = this.a($$0);
-         $$1.a(gmt.this.c);
-      }
-
-      void a(gmt.a $$0) {
-         this.c.set($$0);
-         gmt.this.j.a(this);
-      }
-
-      fez o() {
-         ezy $$0 = gmt.this.e();
-         return fez.a((float)($$0.d - (double)this.m.u()), (float)($$0.e - (double)this.m.v()), (float)($$0.f - (double)this.m.w()));
-      }
-
-      public abstract class a {
-         protected final AtomicBoolean a = new AtomicBoolean(false);
-         protected final AtomicBoolean b = new AtomicBoolean(false);
-         protected final boolean c;
-
-         public a(final boolean $$1) {
-            this.c = $$1;
-         }
-
-         public abstract CompletableFuture<gmt.c> a(gjt var1);
-
-         public abstract void a();
-
-         protected abstract String b();
-
-         public boolean c() {
-            return this.c;
-         }
-
-         public jh d() {
-            return b.this.m;
-         }
-      }
-
-      class b extends gmt.b.a {
-         @Nullable
-         protected volatile gmq e;
-
-         public b(@Nullable final gmq $$0, final boolean $$1) {
-            super($$1);
-            this.e = $$0;
-         }
-
-         @Override
-         protected String b() {
-            return "rend_chk_rebuild";
-         }
-
-         @Override
-         public CompletableFuture<gmt.c> a(gjt $$0) {
-            if (this.a.get()) {
-               return CompletableFuture.completedFuture(gmt.c.b);
-            } else if (!b.this.a()) {
-               this.a();
-               return CompletableFuture.completedFuture(gmt.c.b);
-            } else if (this.a.get()) {
-               return CompletableFuture.completedFuture(gmt.c.b);
-            } else {
-               gmq $$1 = this.e;
-               this.e = null;
-               if ($$1 == null) {
-                  b.this.a(gmt.a.b);
-                  return CompletableFuture.completedFuture(gmt.c.a);
-               } else {
-                  kj $$2 = kj.a(b.this.m);
-                  if (this.a.get()) {
-                     return CompletableFuture.completedFuture(gmt.c.b);
-                  } else {
-                     gms.a $$4;
-                     try (boz $$3 = bot.a().d("Compile Section")) {
-                        $$4 = gmt.this.l.a($$2, $$1, b.this.o(), $$0);
-                     }
-
-                     gmt.d $$6 = gmt.d.a(gmt.this.e(), b.this.l);
-                     b.this.a($$4.a);
-                     if (this.a.get()) {
-                        $$4.a();
-                        return CompletableFuture.completedFuture(gmt.c.b);
-                     } else {
-                        gmt.a $$7 = new gmt.a();
-                        $$7.e = $$4.d;
-                        $$7.d.addAll($$4.b);
-                        $$7.f = $$4.e;
-                        List<CompletableFuture<Void>> $$8 = new ArrayList<>($$4.c.size());
-                        $$4.c.forEach(($$2x, $$3) -> {
-                           $$8.add(gmt.this.a($$3, b.this.a($$2x)));
-                           $$7.c.add($$2x);
-                        });
-                        return ae.e($$8).handle(($$2x, $$3) -> {
-                           if ($$3 != null && !($$3 instanceof CancellationException) && !($$3 instanceof InterruptedException)) {
-                              fke.Q().a(o.a($$3, "Rendering section"));
-                           }
-
-                           if (this.a.get()) {
-                              return gmt.c.b;
-                           } else {
-                              b.this.a($$7);
-                              b.this.d.set($$6);
-                              return gmt.c.a;
-                           }
-                        });
-                     }
-                  }
-               }
-            }
-         }
-
-         @Override
-         public void a() {
-            this.e = null;
-            if (this.a.compareAndSet(false, true)) {
-               b.this.a(false);
-            }
-         }
-      }
-
-      class c extends gmt.b.a {
-         private final gmt.a f;
-
-         public c(final gmt.a $$0) {
-            super(true);
-            this.f = $$0;
-         }
-
-         @Override
-         protected String b() {
-            return "rend_chk_sort";
-         }
-
-         @Override
-         public CompletableFuture<gmt.c> a(gjt $$0) {
-            if (this.a.get()) {
-               return CompletableFuture.completedFuture(gmt.c.b);
-            } else if (!b.this.a()) {
-               this.a.set(true);
-               return CompletableFuture.completedFuture(gmt.c.b);
-            } else if (this.a.get()) {
-               return CompletableFuture.completedFuture(gmt.c.b);
-            } else {
-               feq.b $$1 = this.f.f;
-               if ($$1 != null && !this.f.a(gjq.f())) {
-                  fez $$2 = b.this.o();
-                  gmt.d $$3 = gmt.d.a(gmt.this.e(), b.this.l);
-                  if ($$3.equals(b.this.d.get()) && !$$3.a()) {
-                     return CompletableFuture.completedFuture(gmt.c.b);
-                  } else {
-                     feo.a $$4 = $$1.a($$0.a(gjq.f()), $$2);
-                     if ($$4 == null) {
-                        return CompletableFuture.completedFuture(gmt.c.b);
-                     } else if (this.a.get()) {
-                        $$4.close();
-                        return CompletableFuture.completedFuture(gmt.c.b);
-                     } else {
-                        CompletableFuture<gmt.c> $$5 = gmt.this.a($$4, b.this.a(gjq.f())).thenApply($$0x -> gmt.c.b);
-                        return $$5.handle(($$1x, $$2x) -> {
-                           if ($$2x != null && !($$2x instanceof CancellationException) && !($$2x instanceof InterruptedException)) {
-                              fke.Q().a(o.a($$2x, "Rendering section"));
-                           }
-
-                           if (this.a.get()) {
-                              return gmt.c.b;
-                           } else {
-                              b.this.d.set($$3);
-                              return gmt.c.a;
-                           }
-                        });
-                     }
-                  }
-               } else {
-                  return CompletableFuture.completedFuture(gmt.c.b);
-               }
-            }
-         }
-
-         @Override
-         public void a() {
-            this.a.set(true);
-         }
-      }
-   }
-
-   static enum c {
-      a,
-      b;
-   }
-
-   public static final class d {
-      private int a;
-      private int b;
-      private int c;
-
-      public static gmt.d a(ezy $$0, long $$1) {
-         return new gmt.d().b($$0, $$1);
-      }
-
-      public gmt.d b(ezy $$0, long $$1) {
-         this.a = a($$0.a(), kj.b($$1));
-         this.b = a($$0.b(), kj.c($$1));
-         this.c = a($$0.c(), kj.d($$1));
-         return this;
-      }
-
-      private static int a(double $$0, int $$1) {
-         int $$2 = kj.b($$0) - $$1;
-         return azm.a($$2, -1, 1);
-      }
-
-      public boolean a() {
-         return this.a == 0 || this.b == 0 || this.c == 0;
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if ($$0 == this) {
-            return true;
-         } else {
-            return !($$0 instanceof gmt.d $$1) ? false : this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
-         }
+      boolean d() {
+         return this == b || this == a;
       }
    }
 }

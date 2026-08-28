@@ -1,56 +1,162 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public abstract class fjd implements Runnable {
-   protected static final int a = 25;
-   private static final Logger b = LogUtils.getLogger();
-   private boolean c = false;
+public class fjd extends fny {
+   private static final alz u = alz.b("widget/slot_frame");
+   private static final alz v = alz.b("icon/checkmark");
+   public static final alz a = alz.b("textures/gui/realms/empty_frame.png");
+   public static final alz b = alz.b("textures/gui/title/background/panorama_0.png");
+   public static final alz c = alz.b("textures/gui/title/background/panorama_2.png");
+   public static final alz d = alz.b("textures/gui/title/background/panorama_3.png");
+   private static final xv w = xv.c("mco.configure.world.slot.tooltip.active");
+   private static final xv x = xv.c("mco.configure.world.slot.tooltip.minigame");
+   private static final xv y = xv.c("mco.configure.world.slot.tooltip");
+   static final xv z = xv.c("mco.worldSlot.minigame");
+   private static final int A = 64;
+   private static final String B = "...";
+   private final int C;
+   @Nullable
+   private fjd.b D;
 
-   protected static void a(long $$0) {
-      try {
-         Thread.sleep($$0 * 1000L);
-      } catch (InterruptedException var3) {
-         Thread.currentThread().interrupt();
-         b.error("", var3);
+   public fjd(int $$0, int $$1, int $$2, int $$3, int $$4, fny.c $$5) {
+      super($$0, $$1, $$2, $$3, xu.a, $$5, q);
+      this.C = $$4;
+   }
+
+   @Nullable
+   public fjd.b a() {
+      return this.D;
+   }
+
+   public void a(fic $$0) {
+      this.D = new fjd.b($$0, this.C);
+      this.a(this.D, $$0.q);
+   }
+
+   private void a(fjd.b $$0, @Nullable String $$1) {
+      xv $$2 = switch ($$0.c) {
+         case b -> $$0.b ? x : y;
+         case c -> w;
+         default -> null;
+      };
+      if ($$2 != null) {
+         this.a(fpk.a($$2));
       }
+
+      yj $$3 = xv.b($$0.f);
+      if ($$0.b && $$1 != null) {
+         $$3 = $$3.b(xu.v).f($$1);
+      }
+
+      this.b($$3);
    }
 
-   public static void a(frw $$0) {
-      fke $$1 = fke.Q();
-      $$1.execute(() -> $$1.a($$0));
-   }
-
-   protected void a(xj $$0) {
-      this.b();
-      fke $$1 = fke.Q();
-      $$1.execute(() -> $$1.a(new fhu($$0, new ffc(new fry()))));
-   }
-
-   protected void a(Exception $$0) {
-      if ($$0 instanceof fhc $$1) {
-         this.a($$1.a.b());
+   static fjd.a a(fic $$0, boolean $$1, boolean $$2) {
+      if ($$1 && !$$0.j && $$0.e != fic.c.c) {
+         return fjd.a.c;
       } else {
-         this.a(xj.b($$0.getMessage()));
+         return $$1 || $$2 && $$0.j ? fjd.a.a : fjd.a.b;
       }
    }
 
-   protected void a(fhc $$0) {
-      this.a($$0.a.b());
+   @Override
+   public void b(fnl $$0, int $$1, int $$2, float $$3) {
+      if (this.D != null) {
+         int $$4 = this.D();
+         int $$5 = this.E();
+         boolean $$6 = this.B();
+         alz $$7;
+         if (this.D.b) {
+            $$7 = fkp.a(String.valueOf(this.D.i), this.D.j);
+         } else if (this.D.a) {
+            $$7 = a;
+         } else if (this.D.j != null && this.D.i != -1L) {
+            $$7 = fkp.a(String.valueOf(this.D.i), this.D.j);
+         } else if (this.C == 1) {
+            $$7 = b;
+         } else if (this.C == 2) {
+            $$7 = c;
+         } else if (this.C == 3) {
+            $$7 = d;
+         } else {
+            $$7 = a;
+         }
+
+         int $$14 = -1;
+         if (this.D.e) {
+            $$14 = ayp.a(1.0F, 0.56F, 0.56F, 0.56F);
+         }
+
+         $$0.a(glo::B, $$7, $$4 + 3, $$5 + 3, 0.0F, 0.0F, 74, 74, 74, 74, 74, 74, $$14);
+         if ($$6 && this.D.c != fjd.a.a) {
+            $$0.a(glo::B, u, $$4, $$5, 80, 80);
+         } else if (this.D.e) {
+            $$0.a(glo::B, u, $$4, $$5, 80, 80, ayp.a(1.0F, 0.8F, 0.8F, 0.8F));
+         } else {
+            $$0.a(glo::B, u, $$4, $$5, 80, 80, ayp.a(1.0F, 0.56F, 0.56F, 0.56F));
+         }
+
+         if (this.D.e) {
+            $$0.a(glo::B, v, $$4 + 67, $$5 + 4, 9, 8);
+         }
+
+         if (this.D.d) {
+            $$0.a(glo::B, fgw.a, $$4 + 3, $$5 + 4, 9, 8);
+         }
+
+         fnj $$15 = flz.Q().h;
+         String $$16 = this.D.f;
+         if ($$15.b($$16) > 64) {
+            $$16 = $$15.a($$16, 64 - $$15.b("...")) + "...";
+         }
+
+         $$0.a($$15, $$16, $$4 + 40, $$5 + 66, -1);
+         $$0.a($$15, fgw.a(this.D.g, this.D.h.a()), $$4 + 40, $$5 + 80 + 2, -1);
+      }
    }
 
-   public abstract xj a();
-
-   public boolean d() {
-      return this.c;
+   public static enum a {
+      a,
+      b,
+      c;
    }
 
-   public void c() {
-   }
+   public static class b {
+      final boolean e;
+      final String f;
+      final String g;
+      final fic.a h;
+      final long i;
+      @Nullable
+      final String j;
+      public final boolean a;
+      public final boolean b;
+      public final fjd.a c;
+      public final boolean d;
 
-   public void e() {
-   }
+      public b(fic $$0, int $$1) {
+         this.b = $$1 == 4;
+         if (this.b) {
+            this.e = $$0.i();
+            this.f = fjd.z.getString();
+            this.i = (long)$$0.r;
+            this.j = $$0.s;
+            this.a = $$0.r == -1;
+            this.g = "";
+            this.h = fic.a.a;
+            this.d = false;
+         } else {
+            fii $$2 = $$0.i.get($$1);
+            this.e = $$0.p == $$1 && !$$0.i();
+            this.f = $$2.a($$1);
+            this.i = $$2.k;
+            this.j = $$2.l;
+            this.a = $$2.m;
+            this.g = $$2.i;
+            this.h = $$2.j;
+            this.d = $$2.h;
+         }
 
-   public void b() {
-      this.c = true;
+         this.c = fjd.a($$0, this.e, this.b);
+      }
    }
 }

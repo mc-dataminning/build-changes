@@ -1,345 +1,365 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableMap.Builder;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
+import java.util.function.ToIntFunction;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableDouble;
-import org.apache.commons.lang3.mutable.MutableObject;
 
-public class ecs {
-   private static final ecs a = new ecs(new Long2ObjectOpenHashMap(), new Long2ObjectOpenHashMap()) {
-      @Override
-      public ecs.a a(int $$0, int $$1) {
-         return new ecs.a(1.0, 0.0);
+public interface ecs {
+   List<aly<ecj>> d_ = List.of(
+      ecj.T.h(),
+      ecj.U.h(),
+      ecj.V.h(),
+      ecj.W.h(),
+      ecj.X.h(),
+      ecj.Y.h(),
+      ecj.Z.h(),
+      ecj.aa.h(),
+      ecj.ab.h(),
+      ecj.ac.h(),
+      ecj.ad.h(),
+      ecj.ae.h(),
+      ecj.af.h(),
+      ecj.ag.h(),
+      ecj.ah.h()
+   );
+   int e_ = 0;
+   ToIntFunction<aly<ecj>> f_ = ae.a(new Reference2IntOpenHashMap(), $$0 -> {
+      $$0.defaultReturnValue(0);
+      $$0.put(ecj.P.h(), 1);
+      $$0.put(ecj.Q.h(), 1);
+      $$0.put(ecj.x.h(), 1);
+      $$0.put(ecj.J.h(), 2);
+      $$0.put(ecj.A.h(), 2);
+      $$0.put(ecj.O.h(), 2);
+      $$0.put(ecj.C.h(), 3);
+      $$0.put(ecj.K.h(), 3);
+      $$0.put(ecj.B.h(), 3);
+      $$0.put(ecj.u.h(), 4);
+      $$0.put(ecj.n.h(), 4);
+      $$0.put(ecj.S.h(), 4);
+      $$0.put(ecj.q.h(), 5);
+      $$0.put(ecj.v.h(), 5);
+      $$0.put(ecj.r.h(), 6);
+      $$0.put(ecj.M.h(), 6);
+      $$0.put(ecj.s.h(), 6);
+      $$0.put(ecj.o.h(), 7);
+      $$0.put(ecj.l.h(), 8);
+      $$0.put(ecj.m.h(), 8);
+      $$0.put(ecj.j.h(), 9);
+      $$0.put(ecj.d.h(), 9);
+      $$0.put(ecj.e.h(), 9);
+      $$0.put(ecj.g.h(), 9);
+      $$0.put(ecj.k.h(), 10);
+      $$0.put(ecj.h.h(), 10);
+      $$0.put(ecj.a.h(), 10);
+      $$0.put(ecj.b.h(), 10);
+      $$0.put(ecj.I.h(), 10);
+      $$0.put(ecj.H.h(), 10);
+      $$0.put(ecj.c.h(), 11);
+      $$0.put(ecj.f.h(), 12);
+      $$0.put(ecj.y.h(), 12);
+      $$0.put(ecj.i.h(), 13);
+      $$0.put(ecj.z.h(), 13);
+      $$0.put(ecj.t.h(), 14);
+      $$0.put(ecj.G.h(), 14);
+      $$0.put(ecj.R.h(), 14);
+      $$0.put(ecj.p.h(), 15);
+      $$0.put(ecj.w.h(), 15);
+
+      for (int $$1 = 1; $$1 <= 15; $$1++) {
+         $$0.put(b($$1), $$1);
+      }
+   });
+
+   ecs.a gn();
+
+   ecs.d go();
+
+   static int a_(jq<ecj> $$0) {
+      return $$0.e().map(ecs::a).orElse(0);
+   }
+
+   static int a(aly<ecj> $$0) {
+      return f_.applyAsInt($$0);
+   }
+
+   static aly<ecj> b(int $$0) {
+      return d_.get($$0 - 1);
+   }
+
+   static int a_(float $$0, int $$1) {
+      double $$2 = 15.0 / (double)$$1;
+      return Math.max(1, 15 - bae.a($$2 * (double)$$0));
+   }
+
+   public static final class a {
+      public static Codec<ecs.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  ecq.a.lenientOptionalFieldOf("event").forGetter($$0x -> Optional.ofNullable($$0x.c)),
+                  ecr.a.fieldOf("selector").forGetter(ecs.a::a),
+                  azn.l.fieldOf("event_delay").orElse(0).forGetter(ecs.a::c)
+               )
+               .apply($$0, ($$0x, $$1, $$2) -> new ecs.a((ecq)$$0x.orElse(null), $$1, $$2, true))
+      );
+      public static final String b = "listener";
+      @Nullable
+      ecq c;
+      private int d;
+      final ecr e;
+      private boolean f;
+
+      private a(@Nullable ecq $$0, ecr $$1, int $$2, boolean $$3) {
+         this.c = $$0;
+         this.d = $$2;
+         this.e = $$1;
+         this.f = $$3;
+      }
+
+      public a() {
+         this(null, new ecr(), 0, false);
+      }
+
+      public ecr a() {
+         return this.e;
+      }
+
+      @Nullable
+      public ecq b() {
+         return this.c;
+      }
+
+      public void a(@Nullable ecq $$0) {
+         this.c = $$0;
+      }
+
+      public int c() {
+         return this.d;
+      }
+
+      public void a(int $$0) {
+         this.d = $$0;
+      }
+
+      public void d() {
+         this.d = Math.max(0, this.d - 1);
+      }
+
+      public boolean e() {
+         return this.f;
+      }
+
+      public void a(boolean $$0) {
+         this.f = $$0;
+      }
+   }
+
+   public static class b implements ecl {
+      private final ecs a;
+
+      public b(ecs $$0) {
+         this.a = $$0;
       }
 
       @Override
-      public double a(ebj.b $$0, double $$1) {
-         return $$1;
+      public ecn a() {
+         return this.a.go().b();
       }
 
       @Override
-      public dgr a(dgr $$0) {
-         return $$0;
+      public int b() {
+         return this.a.go().a();
       }
-   };
-   private static final eqy b = eqy.b(new ecr(42L), rd.a);
-   private static final int c = kb.d(7) - 1;
-   private static final int d = kb.e(c + 3);
-   private static final int e = 2;
-   private static final int f = kb.e(5);
-   private static final double g = 8.0;
-   private final Long2ObjectOpenHashMap<ect> h;
-   private final Long2ObjectOpenHashMap<ect> i;
 
-   public static ecs a() {
-      return a;
-   }
-
-   public static ecs a(@Nullable arx $$0) {
-      if ($$0 == null) {
-         return a;
-      } else {
-         des $$1 = $$0.b();
-         if (!$$0.a($$1, d)) {
-            return a;
+      @Override
+      public boolean a(ash $$0, jq<ecj> $$1, ecj.a $$2, fbs $$3) {
+         ecs.a $$4 = this.a.gn();
+         ecs.d $$5 = this.a.go();
+         if ($$4.b() != null) {
+            return false;
+         } else if (!$$5.a($$1, $$2)) {
+            return false;
          } else {
-            Long2ObjectOpenHashMap<ect> $$2 = new Long2ObjectOpenHashMap();
-            Long2ObjectOpenHashMap<ect> $$3 = new Long2ObjectOpenHashMap();
-            int $$4 = azm.h(d + 1);
-
-            for (int $$5 = -d; $$5 <= d; $$5++) {
-               for (int $$6 = -d; $$6 <= d; $$6++) {
-                  if ($$5 * $$5 + $$6 * $$6 <= $$4) {
-                     int $$7 = $$1.g + $$5;
-                     int $$8 = $$1.h + $$6;
-                     ect $$9 = ect.a($$0, $$7, $$8);
-                     if ($$9 != null) {
-                        $$2.put(des.c($$7, $$8), $$9);
-                        if ($$5 >= -f && $$5 <= f && $$6 >= -f && $$6 <= f) {
-                           $$3.put(des.c($$7, $$8), $$9);
-                        }
-                     }
-                  }
-               }
-            }
-
-            return $$2.isEmpty() && $$3.isEmpty() ? a : new ecs($$2, $$3);
-         }
-      }
-   }
-
-   ecs(Long2ObjectOpenHashMap<ect> $$0, Long2ObjectOpenHashMap<ect> $$1) {
-      this.h = $$0;
-      this.i = $$1;
-   }
-
-   public ecs.a a(int $$0, int $$1) {
-      int $$2 = kb.a($$0);
-      int $$3 = kb.a($$1);
-      double $$4 = this.a($$2, 0, $$3, ect::a);
-      if ($$4 != Double.MAX_VALUE) {
-         return new ecs.a(0.0, a($$4));
-      } else {
-         MutableDouble $$5 = new MutableDouble(0.0);
-         MutableDouble $$6 = new MutableDouble(0.0);
-         MutableDouble $$7 = new MutableDouble(Double.POSITIVE_INFINITY);
-         this.h.forEach(($$5x, $$6x) -> $$6x.a(kb.d(des.a($$5x)), kb.d(des.b($$5x)), ($$5xx, $$6xx, $$7x) -> {
-               double $$8x = (double)azm.f((float)($$2 - $$5xx), (float)($$3 - $$6xx));
-               if (!($$8x > (double)c)) {
-                  if ($$8x < $$7.doubleValue()) {
-                     $$7.setValue($$8x);
-                  }
-
-                  double $$9x = 1.0 / ($$8x * $$8x * $$8x * $$8x);
-                  $$6.add($$7x * $$9x);
-                  $$5.add($$9x);
-               }
-            }));
-         if ($$7.doubleValue() == Double.POSITIVE_INFINITY) {
-            return new ecs.a(1.0, 0.0);
-         } else {
-            double $$8 = $$6.doubleValue() / $$5.doubleValue();
-            double $$9 = azm.a($$7.doubleValue() / (double)(c + 1), 0.0, 1.0);
-            $$9 = 3.0 * $$9 * $$9 - 2.0 * $$9 * $$9 * $$9;
-            return new ecs.a($$9, a($$8));
-         }
-      }
-   }
-
-   private static double a(double $$0) {
-      double $$1 = 1.0;
-      double $$2 = $$0 + 0.5;
-      double $$3 = azm.c($$2, 8.0);
-      return 1.0 * (32.0 * ($$2 - 128.0) - 3.0 * ($$2 - 120.0) * $$3 + 3.0 * $$3 * $$3) / (128.0 * (32.0 - 3.0 * $$3));
-   }
-
-   public double a(ebj.b $$0, double $$1) {
-      int $$2 = kb.a($$0.a());
-      int $$3 = $$0.b() / 8;
-      int $$4 = kb.a($$0.c());
-      double $$5 = this.a($$2, $$3, $$4, ect::b);
-      if ($$5 != Double.MAX_VALUE) {
-         return $$5;
-      } else {
-         MutableDouble $$6 = new MutableDouble(0.0);
-         MutableDouble $$7 = new MutableDouble(0.0);
-         MutableDouble $$8 = new MutableDouble(Double.POSITIVE_INFINITY);
-         this.i.forEach(($$6x, $$7x) -> $$7x.a(kb.d(des.a($$6x)), kb.d(des.b($$6x)), $$3 - 1, $$3 + 1, ($$6xx, $$7xx, $$8x, $$9x) -> {
-               double $$10x = azm.g((double)($$2 - $$6xx), (double)(($$3 - $$7xx) * 2), (double)($$4 - $$8x));
-               if (!($$10x > 2.0)) {
-                  if ($$10x < $$8.doubleValue()) {
-                     $$8.setValue($$10x);
-                  }
-
-                  double $$11 = 1.0 / ($$10x * $$10x * $$10x * $$10x);
-                  $$7.add($$9x * $$11);
-                  $$6.add($$11);
-               }
-            }));
-         if ($$8.doubleValue() == Double.POSITIVE_INFINITY) {
-            return $$1;
-         } else {
-            double $$9 = $$7.doubleValue() / $$6.doubleValue();
-            double $$10 = azm.a($$8.doubleValue() / 3.0, 0.0, 1.0);
-            return azm.d($$10, $$9, $$1);
-         }
-      }
-   }
-
-   private double a(int $$0, int $$1, int $$2, ecs.b $$3) {
-      int $$4 = kb.e($$0);
-      int $$5 = kb.e($$2);
-      boolean $$6 = ($$0 & 3) == 0;
-      boolean $$7 = ($$2 & 3) == 0;
-      double $$8 = this.a($$3, $$4, $$5, $$0, $$1, $$2);
-      if ($$8 == Double.MAX_VALUE) {
-         if ($$6 && $$7) {
-            $$8 = this.a($$3, $$4 - 1, $$5 - 1, $$0, $$1, $$2);
-         }
-
-         if ($$8 == Double.MAX_VALUE) {
-            if ($$6) {
-               $$8 = this.a($$3, $$4 - 1, $$5, $$0, $$1, $$2);
-            }
-
-            if ($$8 == Double.MAX_VALUE && $$7) {
-               $$8 = this.a($$3, $$4, $$5 - 1, $$0, $$1, $$2);
-            }
-         }
-      }
-
-      return $$8;
-   }
-
-   private double a(ecs.b $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      ect $$6 = (ect)this.h.get(des.c($$1, $$2));
-      return $$6 != null ? $$0.get($$6, $$3 - kb.d($$1), $$4, $$5 - kb.d($$2)) : Double.MAX_VALUE;
-   }
-
-   public dgr a(dgr $$0) {
-      return ($$1, $$2, $$3, $$4) -> {
-         jq<dgo> $$5 = this.a($$1, $$2, $$3);
-         return $$5 == null ? $$0.getNoiseBiome($$1, $$2, $$3, $$4) : $$5;
-      };
-   }
-
-   @Nullable
-   private jq<dgo> a(int $$0, int $$1, int $$2) {
-      MutableDouble $$3 = new MutableDouble(Double.POSITIVE_INFINITY);
-      MutableObject<jq<dgo>> $$4 = new MutableObject();
-      this.h.forEach(($$5x, $$6x) -> $$6x.a(kb.d(des.a($$5x)), $$1, kb.d(des.b($$5x)), ($$4xx, $$5xx, $$6xx) -> {
-            double $$7 = (double)azm.f((float)($$0 - $$4xx), (float)($$2 - $$5xx));
-            if (!($$7 > (double)c)) {
-               if ($$7 < $$3.doubleValue()) {
-                  $$4.setValue($$6xx);
-                  $$3.setValue($$7);
-               }
-            }
-         }));
-      if ($$3.doubleValue() == Double.POSITIVE_INFINITY) {
-         return null;
-      } else {
-         double $$5 = b.a((double)$$0, 0.0, (double)$$2) * 12.0;
-         double $$6 = azm.a(($$3.doubleValue() + $$5) / (double)(c + 1), 0.0, 1.0);
-         return $$6 > 0.5 ? null : (jq)$$4.getValue();
-      }
-   }
-
-   public static void a(arx $$0, dxq $$1) {
-      des $$2 = $$1.f();
-      boolean $$3 = $$1.r();
-      jh.a $$4 = new jh.a();
-      jh $$5 = new jh($$2.d(), 0, $$2.e());
-      ect $$6 = $$1.s();
-      if ($$6 != null) {
-         int $$7 = $$6.b().K_();
-         int $$8 = $$6.b().al();
-         if ($$3) {
-            for (int $$9 = 0; $$9 < 16; $$9++) {
-               for (int $$10 = 0; $$10 < 16; $$10++) {
-                  a($$1, $$4.a($$5, $$9, $$7 - 1, $$10));
-                  a($$1, $$4.a($$5, $$9, $$7, $$10));
-                  a($$1, $$4.a($$5, $$9, $$8, $$10));
-                  a($$1, $$4.a($$5, $$9, $$8 + 1, $$10));
-               }
-            }
-         }
-
-         for (jm $$11 : jm.c.a) {
-            if ($$0.a($$2.g + $$11.j(), $$2.h + $$11.l()).r() != $$3) {
-               int $$12 = $$11 == jm.f ? 15 : 0;
-               int $$13 = $$11 == jm.e ? 0 : 15;
-               int $$14 = $$11 == jm.d ? 15 : 0;
-               int $$15 = $$11 == jm.c ? 0 : 15;
-
-               for (int $$16 = $$12; $$16 <= $$13; $$16++) {
-                  for (int $$17 = $$14; $$17 <= $$15; $$17++) {
-                     int $$18 = Math.min($$8, $$1.a(ebq.a.e, $$16, $$17)) + 1;
-
-                     for (int $$19 = $$7; $$19 < $$18; $$19++) {
-                        a($$1, $$4.a($$5, $$16, $$19, $$17));
-                     }
-                  }
+            Optional<fbs> $$6 = $$5.b().a($$0);
+            if ($$6.isEmpty()) {
+               return false;
+            } else {
+               fbs $$7 = $$6.get();
+               if (!$$5.a($$0, jh.a((ka)$$3), $$1, $$2)) {
+                  return false;
+               } else if (a($$0, $$3, $$7)) {
+                  return false;
+               } else {
+                  this.a($$0, $$4, $$1, $$2, $$3, $$7);
+                  return true;
                }
             }
          }
       }
-   }
 
-   private static void a(dxq $$0, jh $$1) {
-      dvv $$2 = $$0.a_($$1);
-      if ($$2.a(axc.P)) {
-         $$0.e($$1);
+      public void b(ash $$0, jq<ecj> $$1, ecj.a $$2, fbs $$3) {
+         this.a.go().b().a($$0).ifPresent($$4 -> this.a($$0, this.a.gn(), $$1, $$2, $$3, $$4));
       }
 
-      erv $$3 = $$0.b_($$1);
-      if (!$$3.c()) {
-         $$0.e($$1);
-      }
-   }
-
-   public static void a(dgk $$0, dyk $$1) {
-      des $$2 = $$1.f();
-      Builder<jn, ect> $$3 = ImmutableMap.builder();
-
-      for (jn $$4 : jn.values()) {
-         int $$5 = $$2.g + $$4.b();
-         int $$6 = $$2.h + $$4.c();
-         ect $$7 = $$0.a($$5, $$6).s();
-         if ($$7 != null) {
-            $$3.put($$4, $$7);
-         }
+      private void a(ash $$0, ecs.a $$1, jq<ecj> $$2, ecj.a $$3, fbs $$4, fbs $$5) {
+         $$1.e.a(new ecq($$2, (float)$$4.f($$5), $$4, $$3.a()), $$0.ac());
       }
 
-      ImmutableMap<jn, ect> $$8 = $$3.build();
-      if ($$1.r() || !$$8.isEmpty()) {
-         ecs.c $$9 = a($$1.s(), $$8);
-         dxp.a $$10 = ($$1x, $$2x, $$3x) -> {
-            double $$4x = (double)$$1x + 0.5 + b.a((double)$$1x, (double)$$2x, (double)$$3x) * 4.0;
-            double $$5x = (double)$$2x + 0.5 + b.a((double)$$2x, (double)$$3x, (double)$$1x) * 4.0;
-            double $$6x = (double)$$3x + 0.5 + b.a((double)$$3x, (double)$$1x, (double)$$2x) * 4.0;
-            return $$9.getDistance($$4x, $$5x, $$6x) < 4.0;
-         };
-         $$1.C().a($$10);
-      }
-   }
-
-   public static ecs.c a(@Nullable ect $$0, Map<jn, ect> $$1) {
-      List<ecs.c> $$2 = Lists.newArrayList();
-      if ($$0 != null) {
-         $$2.add(a(null, $$0));
+      public static float a(jh $$0, jh $$1) {
+         return (float)Math.sqrt($$0.j($$1));
       }
 
-      $$1.forEach(($$1x, $$2x) -> $$2.add(a($$1x, $$2x)));
-      return ($$1x, $$2x, $$3) -> {
-         double $$4 = Double.POSITIVE_INFINITY;
+      private static boolean a(dha $$0, fbs $$1, fbs $$2) {
+         fbs $$3 = new fbs((double)bae.a($$1.d) + 0.5, (double)bae.a($$1.e) + 0.5, (double)bae.a($$1.f) + 0.5);
+         fbs $$4 = new fbs((double)bae.a($$2.d) + 0.5, (double)bae.a($$2.e) + 0.5, (double)bae.a($$2.f) + 0.5);
 
-         for (ecs.c $$5 : $$2) {
-            double $$6 = $$5.getDistance($$1x, $$2x, $$3);
-            if ($$6 < $$4) {
-               $$4 = $$6;
+         for (jm $$5 : jm.values()) {
+            fbs $$6 = $$3.a($$5, 1.0E-5F);
+            if ($$0.a(new dgh($$6, $$4, $$0x -> $$0x.a(axu.bs))).d() != fbq.a.b) {
+               return false;
             }
          }
 
-         return $$4;
-      };
-   }
-
-   private static ecs.c a(@Nullable jn $$0, ect $$1) {
-      double $$2 = 0.0;
-      double $$3 = 0.0;
-      if ($$0 != null) {
-         for (jm $$4 : $$0.a()) {
-            $$2 += (double)($$4.j() * 16);
-            $$3 += (double)($$4.l() * 16);
-         }
+         return true;
       }
-
-      double $$5 = $$2;
-      double $$6 = $$3;
-      double $$7 = (double)$$1.b().L_() / 2.0;
-      double $$8 = (double)$$1.b().K_() + $$7;
-      return ($$4x, $$5x, $$6x) -> a($$4x - 8.0 - $$5, $$5x - $$8, $$6x - 8.0 - $$6, 8.0, $$7, 8.0);
-   }
-
-   private static double a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      double $$6 = Math.abs($$0) - $$3;
-      double $$7 = Math.abs($$1) - $$4;
-      double $$8 = Math.abs($$2) - $$5;
-      return azm.g(Math.max(0.0, $$6), Math.max(0.0, $$7), Math.max(0.0, $$8));
-   }
-
-   public static record a(double a, double b) {
-   }
-
-   interface b {
-      double get(ect var1, int var2, int var3, int var4);
    }
 
    public interface c {
-      double getDistance(double var1, double var3, double var5);
+      static void a(dha $$0, ecs.a $$1, ecs.d $$2) {
+         if ($$0 instanceof ash $$3) {
+            if ($$1.c == null) {
+               a($$3, $$1, $$2);
+            }
+
+            if ($$1.c != null) {
+               boolean $$5 = $$1.c() > 0;
+               b($$3, $$1, $$2);
+               $$1.d();
+               if ($$1.c() <= 0) {
+                  $$5 = a($$3, $$1, $$2, $$1.c);
+               }
+
+               if ($$5) {
+                  $$2.e();
+               }
+            }
+         }
+      }
+
+      private static void a(ash $$0, ecs.a $$1, ecs.d $$2) {
+         $$1.a().a($$0.ac()).ifPresent($$3 -> {
+            $$1.a($$3);
+            fbs $$4 = $$3.c();
+            $$1.a($$2.a($$3.b()));
+            $$0.a(new ly($$2.b(), $$1.c()), $$4.d, $$4.e, $$4.f, 1, 0.0, 0.0, 0.0, 0.0);
+            $$2.e();
+            $$1.a().a();
+         });
+      }
+
+      private static void b(ash $$0, ecs.a $$1, ecs.d $$2) {
+         if ($$1.e()) {
+            if ($$1.c == null) {
+               $$1.a(false);
+            } else {
+               fbs $$3 = $$1.c.c();
+               ecn $$4 = $$2.b();
+               fbs $$5 = $$4.a($$0).orElse($$3);
+               int $$6 = $$1.c();
+               int $$7 = $$2.a($$1.c.b());
+               double $$8 = 1.0 - (double)$$6 / (double)$$7;
+               double $$9 = bae.d($$8, $$3.d, $$5.d);
+               double $$10 = bae.d($$8, $$3.e, $$5.e);
+               double $$11 = bae.d($$8, $$3.f, $$5.f);
+               boolean $$12 = $$0.a(new ly($$4, $$6), $$9, $$10, $$11, 1, 0.0, 0.0, 0.0, 0.0) > 0;
+               if ($$12) {
+                  $$1.a(false);
+               }
+            }
+         }
+      }
+
+      private static boolean a(ash $$0, ecs.a $$1, ecs.d $$2, ecq $$3) {
+         jh $$4 = jh.a((ka)$$3.c());
+         jh $$5 = $$2.b().a($$0).map(jh::a).orElse($$4);
+         if ($$2.f() && !a($$0, $$5)) {
+            return false;
+         } else {
+            $$2.a($$0, $$4, $$3.a(), $$3.a($$0).orElse(null), $$3.b($$0).orElse(null), ecs.b.a($$4, $$5));
+            $$1.a(null);
+            return true;
+         }
+      }
+
+      private static boolean a(dha $$0, jh $$1) {
+         dgg $$2 = new dgg($$1);
+
+         for (int $$3 = $$2.g - 1; $$3 <= $$2.g + 1; $$3++) {
+            for (int $$4 = $$2.h - 1; $$4 <= $$2.h + 1; $$4++) {
+               if (!$$0.a(dgg.c($$3, $$4)) || $$0.R().a($$3, $$4) == null) {
+                  return false;
+               }
+            }
+         }
+
+         return true;
+      }
+   }
+
+   public interface d {
+      int a();
+
+      ecn b();
+
+      boolean a(ash var1, jh var2, jq<ecj> var3, ecj.a var4);
+
+      void a(ash var1, jh var2, jq<ecj> var3, @Nullable bvf var4, @Nullable bvf var5, float var6);
+
+      default ayk<ecj> c() {
+         return ayb.a;
+      }
+
+      default boolean d() {
+         return false;
+      }
+
+      default boolean f() {
+         return false;
+      }
+
+      default int a(float $$0) {
+         return bae.d($$0);
+      }
+
+      default boolean a(jq<ecj> $$0, ecj.a $$1) {
+         if (!$$0.a(this.c())) {
+            return false;
+         } else {
+            bvf $$2 = $$1.a();
+            if ($$2 != null) {
+               if ($$2.aa_()) {
+                  return false;
+               }
+
+               if ($$2.ce() && $$0.a(ayb.d)) {
+                  if (this.d() && $$2 instanceof asi $$3) {
+                     ao.ab.a($$3);
+                  }
+
+                  return false;
+               }
+
+               if ($$2.bh()) {
+                  return false;
+               }
+            }
+
+            return $$1.b() != null ? !$$1.b().a(axu.bt) : true;
+         }
+      }
+
+      default void e() {
+      }
    }
 }

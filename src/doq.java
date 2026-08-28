@@ -1,345 +1,124 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import java.util.OptionalInt;
 
-public class doq {
-   private final dfm a;
-   private final jh b;
-   private final dif c;
-   private dvv d;
-   private final boolean e;
-   private final List<jh> f = Lists.newArrayList();
+public class doq extends dke implements dri {
+   public static final MapCodec<doq> b = b(doq::new);
+   public static final int c = 7;
+   public static final dym d = dyd.aD;
+   public static final dye e = dyd.w;
+   public static final dye f = dyd.D;
+   private static final int a = 1;
 
-   public doq(dfm $$0, jh $$1, dvv $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.d = $$2;
-      this.c = (dif)$$2.b();
-      dwy $$3 = $$2.c(this.c.c());
-      this.e = this.c.b();
-      this.a($$3);
+   @Override
+   public MapCodec<? extends doq> a() {
+      return b;
    }
 
-   public List<jh> a() {
-      return this.f;
+   public doq(dxm.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(d, Integer.valueOf(7)).b(e, Boolean.valueOf(false)).b(f, Boolean.valueOf(false)));
    }
 
-   private void a(dwy $$0) {
-      this.f.clear();
-      switch ($$0) {
-         case a:
-            this.f.add(this.b.f());
-            this.f.add(this.b.g());
-            break;
-         case b:
-            this.f.add(this.b.h());
-            this.f.add(this.b.i());
-            break;
-         case c:
-            this.f.add(this.b.h());
-            this.f.add(this.b.i().d());
-            break;
-         case d:
-            this.f.add(this.b.h().d());
-            this.f.add(this.b.i());
-            break;
-         case e:
-            this.f.add(this.b.f().d());
-            this.f.add(this.b.g());
-            break;
-         case f:
-            this.f.add(this.b.f());
-            this.f.add(this.b.g().d());
-            break;
-         case g:
-            this.f.add(this.b.i());
-            this.f.add(this.b.g());
-            break;
-         case h:
-            this.f.add(this.b.h());
-            this.f.add(this.b.g());
-            break;
-         case i:
-            this.f.add(this.b.h());
-            this.f.add(this.b.f());
-            break;
-         case j:
-            this.f.add(this.b.i());
-            this.f.add(this.b.f());
+   @Override
+   protected fcm b_(dxn $$0, dgf $$1, jh $$2) {
+      return fcj.a();
+   }
+
+   @Override
+   protected boolean f(dxn $$0) {
+      return $$0.c(d) == 7 && !$$0.c(e);
+   }
+
+   @Override
+   protected void b(dxn $$0, ash $$1, jh $$2, bam $$3) {
+      if (this.o($$0)) {
+         c($$0, $$1, $$2);
+         $$1.a($$2, false);
       }
    }
 
-   private void d() {
-      for (int $$0 = 0; $$0 < this.f.size(); $$0++) {
-         doq $$1 = this.b(this.f.get($$0));
-         if ($$1 != null && $$1.a(this)) {
-            this.f.set($$0, $$1.b);
-         } else {
-            this.f.remove($$0--);
-         }
-      }
+   protected boolean o(dxn $$0) {
+      return !$$0.c(e) && $$0.c(d) == 7;
    }
 
-   private boolean a(jh $$0) {
-      return dif.a(this.a, $$0) || dif.a(this.a, $$0.d()) || dif.a(this.a, $$0.e());
+   @Override
+   protected void a(dxn $$0, ash $$1, jh $$2, bam $$3) {
+      $$1.a($$2, a($$0, $$1, $$2), 3);
    }
 
-   @Nullable
-   private doq b(jh $$0) {
-      dvv $$2 = this.a.a_($$0);
-      if (dif.h($$2)) {
-         return new doq(this.a, $$0, $$2);
-      } else {
-         jh $$1 = $$0.d();
-         $$2 = this.a.a_($$1);
-         if (dif.h($$2)) {
-            return new doq(this.a, $$1, $$2);
-         } else {
-            $$1 = $$0.e();
-            $$2 = this.a.a_($$1);
-            return dif.h($$2) ? new doq(this.a, $$1, $$2) : null;
-         }
-      }
+   @Override
+   protected int i_(dxn $$0) {
+      return 1;
    }
 
-   private boolean a(doq $$0) {
-      return this.c($$0.b);
-   }
-
-   private boolean c(jh $$0) {
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         jh $$2 = this.f.get($$1);
-         if ($$2.u() == $$0.u() && $$2.w() == $$0.w()) {
-            return true;
-         }
+   @Override
+   protected dxn a(dxn $$0, dhd $$1, dhp $$2, jh $$3, jm $$4, jh $$5, dxn $$6, bam $$7) {
+      if ($$0.c(f)) {
+         $$2.a($$3, etq.c, etq.c.a($$1));
       }
 
-      return false;
-   }
-
-   protected int b() {
-      int $$0 = 0;
-
-      for (jm $$1 : jm.c.a) {
-         if (this.a(this.b.a($$1))) {
-            $$0++;
-         }
+      int $$8 = r($$6) + 1;
+      if ($$8 != 1 || $$0.c(d) != $$8) {
+         $$2.a($$3, this, 1);
       }
 
       return $$0;
    }
 
-   private boolean b(doq $$0) {
-      return this.a($$0) || this.f.size() != 2;
+   private static dxn a(dxn $$0, dhb $$1, jh $$2) {
+      int $$3 = 7;
+      jh.a $$4 = new jh.a();
+
+      for (jm $$5 : jm.values()) {
+         $$4.a($$2, $$5);
+         $$3 = Math.min($$3, r($$1.a_($$4)) + 1);
+         if ($$3 == 1) {
+            break;
+         }
+      }
+
+      return $$0.b(d, Integer.valueOf($$3));
    }
 
-   private void c(doq $$0) {
-      this.f.add($$0.b);
-      jh $$1 = this.b.f();
-      jh $$2 = this.b.g();
-      jh $$3 = this.b.h();
-      jh $$4 = this.b.i();
-      boolean $$5 = this.c($$1);
-      boolean $$6 = this.c($$2);
-      boolean $$7 = this.c($$3);
-      boolean $$8 = this.c($$4);
-      dwy $$9 = null;
-      if ($$5 || $$6) {
-         $$9 = dwy.a;
-      }
-
-      if ($$7 || $$8) {
-         $$9 = dwy.b;
-      }
-
-      if (!this.e) {
-         if ($$6 && $$8 && !$$5 && !$$7) {
-            $$9 = dwy.g;
-         }
-
-         if ($$6 && $$7 && !$$5 && !$$8) {
-            $$9 = dwy.h;
-         }
-
-         if ($$5 && $$7 && !$$6 && !$$8) {
-            $$9 = dwy.i;
-         }
-
-         if ($$5 && $$8 && !$$6 && !$$7) {
-            $$9 = dwy.j;
-         }
-      }
-
-      if ($$9 == dwy.a) {
-         if (dif.a(this.a, $$1.d())) {
-            $$9 = dwy.e;
-         }
-
-         if (dif.a(this.a, $$2.d())) {
-            $$9 = dwy.f;
-         }
-      }
-
-      if ($$9 == dwy.b) {
-         if (dif.a(this.a, $$4.d())) {
-            $$9 = dwy.c;
-         }
-
-         if (dif.a(this.a, $$3.d())) {
-            $$9 = dwy.d;
-         }
-      }
-
-      if ($$9 == null) {
-         $$9 = dwy.a;
-      }
-
-      this.d = this.d.b(this.c.c(), $$9);
-      this.a.a(this.b, this.d, 3);
+   private static int r(dxn $$0) {
+      return q($$0).orElse(7);
    }
 
-   private boolean d(jh $$0) {
-      doq $$1 = this.b($$0);
-      if ($$1 == null) {
-         return false;
+   public static OptionalInt q(dxn $$0) {
+      if ($$0.a(axu.u)) {
+         return OptionalInt.of(0);
       } else {
-         $$1.d();
-         return $$1.b(this);
+         return $$0.b(d) ? OptionalInt.of($$0.c(d)) : OptionalInt.empty();
       }
    }
 
-   public doq a(boolean $$0, boolean $$1, dwy $$2) {
-      jh $$3 = this.b.f();
-      jh $$4 = this.b.g();
-      jh $$5 = this.b.h();
-      jh $$6 = this.b.i();
-      boolean $$7 = this.d($$3);
-      boolean $$8 = this.d($$4);
-      boolean $$9 = this.d($$5);
-      boolean $$10 = this.d($$6);
-      dwy $$11 = null;
-      boolean $$12 = $$7 || $$8;
-      boolean $$13 = $$9 || $$10;
-      if ($$12 && !$$13) {
-         $$11 = dwy.a;
-      }
-
-      if ($$13 && !$$12) {
-         $$11 = dwy.b;
-      }
-
-      boolean $$14 = $$8 && $$10;
-      boolean $$15 = $$8 && $$9;
-      boolean $$16 = $$7 && $$10;
-      boolean $$17 = $$7 && $$9;
-      if (!this.e) {
-         if ($$14 && !$$7 && !$$9) {
-            $$11 = dwy.g;
-         }
-
-         if ($$15 && !$$7 && !$$10) {
-            $$11 = dwy.h;
-         }
-
-         if ($$17 && !$$8 && !$$10) {
-            $$11 = dwy.i;
-         }
-
-         if ($$16 && !$$8 && !$$9) {
-            $$11 = dwy.j;
-         }
-      }
-
-      if ($$11 == null) {
-         if ($$12 && $$13) {
-            $$11 = $$2;
-         } else if ($$12) {
-            $$11 = dwy.a;
-         } else if ($$13) {
-            $$11 = dwy.b;
-         }
-
-         if (!this.e) {
-            if ($$0) {
-               if ($$14) {
-                  $$11 = dwy.g;
-               }
-
-               if ($$15) {
-                  $$11 = dwy.h;
-               }
-
-               if ($$16) {
-                  $$11 = dwy.j;
-               }
-
-               if ($$17) {
-                  $$11 = dwy.i;
-               }
-            } else {
-               if ($$17) {
-                  $$11 = dwy.i;
-               }
-
-               if ($$16) {
-                  $$11 = dwy.j;
-               }
-
-               if ($$15) {
-                  $$11 = dwy.h;
-               }
-
-               if ($$14) {
-                  $$11 = dwy.g;
-               }
-            }
-         }
-      }
-
-      if ($$11 == dwy.a) {
-         if (dif.a(this.a, $$3.d())) {
-            $$11 = dwy.e;
-         }
-
-         if (dif.a(this.a, $$4.d())) {
-            $$11 = dwy.f;
-         }
-      }
-
-      if ($$11 == dwy.b) {
-         if (dif.a(this.a, $$6.d())) {
-            $$11 = dwy.c;
-         }
-
-         if (dif.a(this.a, $$5.d())) {
-            $$11 = dwy.d;
-         }
-      }
-
-      if ($$11 == null) {
-         $$11 = $$2;
-      }
-
-      this.a($$11);
-      this.d = this.d.b(this.c.c(), $$11);
-      if ($$1 || this.a.a_(this.b) != this.d) {
-         this.a.a(this.b, this.d, 3);
-
-         for (int $$18 = 0; $$18 < this.f.size(); $$18++) {
-            doq $$19 = this.b(this.f.get($$18));
-            if ($$19 != null) {
-               $$19.d();
-               if ($$19.b(this)) {
-                  $$19.c(this);
-               }
-            }
-         }
-      }
-
-      return this;
+   @Override
+   protected etp b_(dxn $$0) {
+      return $$0.c(f) ? etq.c.a(false) : super.b_($$0);
    }
 
-   public dvv c() {
-      return this.d;
+   @Override
+   public void a(dxn $$0, dha $$1, jh $$2, bam $$3) {
+      if ($$1.r($$2.d())) {
+         if ($$3.a(15) == 1) {
+            jh $$4 = $$2.e();
+            dxn $$5 = $$1.a_($$4);
+            if (!$$5.t() || !$$5.c($$1, $$4, jm.b)) {
+               bai.a($$1, $$2, $$3, ls.l);
+            }
+         }
+      }
+   }
+
+   @Override
+   protected void a(dxo.a<dke, dxn> $$0) {
+      $$0.a(d, e, f);
+   }
+
+   @Override
+   public dxn a(dbb $$0) {
+      etp $$1 = $$0.q().b_($$0.a());
+      dxn $$2 = this.m().b(e, Boolean.valueOf(true)).b(f, Boolean.valueOf($$1.a() == etq.c));
+      return a($$2, $$0.q(), $$0.a());
    }
 }

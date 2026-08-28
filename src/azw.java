@@ -1,59 +1,65 @@
-public class azw {
-   private final int a;
-   private final int b;
-   private final float c;
-   private final float d;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 
-   public azw(int $$0) {
-      if ($$0 < 2) {
-         throw new IllegalArgumentException("Precision cannot be less than 2 bits");
-      } else if ($$0 > 30) {
-         throw new IllegalArgumentException("Precision cannot be greater than 30 bits");
+public record azw<T extends Comparable<T>>(T b, T c) {
+   public static final Codec<azw<Integer>> a = a(Codec.INT);
+
+   public azw(T b, T c) {
+      if (b.compareTo(c) > 0) {
+         throw new IllegalArgumentException("min_inclusive must be less than or equal to max_inclusive");
       } else {
-         int $$1 = 1 << $$0;
-         this.a = $$1 - 1;
-         this.b = $$0;
-         this.c = (float)$$1 / 360.0F;
-         this.d = 360.0F / (float)$$1;
+         this.b = b;
+         this.c = c;
       }
    }
 
-   public boolean a(int $$0, int $$1) {
-      int $$2 = this.a() >> 1;
-      return ($$0 & $$2) == ($$1 & $$2);
+   public azw(T $$0) {
+      this($$0, $$0);
    }
 
-   public int a(jm $$0) {
-      if ($$0.o().b()) {
-         return 0;
-      } else {
-         int $$1 = $$0.e();
-         return $$1 << this.b - 2;
-      }
+   public static <T extends Comparable<T>> Codec<azw<T>> a(Codec<T> $$0) {
+      return azn.a($$0, "min_inclusive", "max_inclusive", azw::a, azw::a, azw::b);
    }
 
-   public int a(float $$0) {
-      return Math.round($$0 * this.c);
+   public static <T extends Comparable<T>> Codec<azw<T>> a(Codec<T> $$0, T $$1, T $$2) {
+      return a($$0)
+         .validate(
+            $$2x -> {
+               if ($$2x.a().compareTo($$1) < 0) {
+                  return DataResult.error(() -> "Range limit too low, expected at least " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
+               } else {
+                  return $$2x.b().compareTo($$2) > 0
+                     ? DataResult.error(() -> "Range limit too high, expected at most " + $$2 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
+                     : DataResult.success($$2x);
+               }
+            }
+         );
    }
 
-   public int b(float $$0) {
-      return this.c(this.a($$0));
+   public static <T extends Comparable<T>> DataResult<azw<T>> a(T $$0, T $$1) {
+      return $$0.compareTo($$1) <= 0
+         ? DataResult.success(new azw($$0, $$1))
+         : DataResult.error(() -> "min_inclusive must be less than or equal to max_inclusive");
    }
 
-   public float a(int $$0) {
-      return (float)$$0 * this.d;
+   public boolean a(T $$0) {
+      return $$0.compareTo(this.b) >= 0 && $$0.compareTo(this.c) <= 0;
    }
 
-   public float b(int $$0) {
-      float $$1 = this.a(this.c($$0));
-      return $$1 >= 180.0F ? $$1 - 360.0F : $$1;
+   public boolean a(azw<T> $$0) {
+      return $$0.a().compareTo(this.b) >= 0 && $$0.c.compareTo(this.c) <= 0;
    }
 
-   public int c(int $$0) {
-      return $$0 & this.a;
+   @Override
+   public String toString() {
+      return "[" + this.b + ", " + this.c + "]";
    }
 
-   public int a() {
-      return this.a;
+   public T a() {
+      return this.b;
+   }
+
+   public T b() {
+      return this.c;
    }
 }

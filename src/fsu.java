@@ -1,48 +1,31 @@
-public class fsu extends fsl<csg> {
-   private static final alj G = alj.b("container/brewing_stand/fuel_length");
-   private static final alj H = alj.b("container/brewing_stand/brew_progress");
-   private static final alj I = alj.b("container/brewing_stand/bubbles");
-   private static final alj J = alj.b("textures/gui/container/brewing_stand.png");
-   private static final int[] K = new int[]{29, 24, 20, 16, 11, 6, 0};
+public class fsu extends ftr {
+   private fos a;
+   private final Runnable b;
+   private final Runnable c;
 
-   public fsu(csg $$0, cot $$1, xj $$2) {
-      super($$0, $$1, $$2);
+   public fsu(Runnable $$0, Runnable $$1) {
+      super(xv.c("datapackFailure.title"));
+      this.a = fos.a;
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   protected void aR_() {
-      super.aR_();
-      this.v = (this.s - this.p.a(this.l)) / 2;
+   protected void aT_() {
+      super.aT_();
+      this.a = fos.a(this.p, this.m(), this.n - 50);
+      this.c(fny.a(xv.c("datapackFailure.safeMode"), $$0 -> this.c.run()).a(this.n / 2 - 155, this.o / 6 + 96, 150, 20).a());
+      this.c(fny.a(xu.k, $$0 -> this.b.run()).a(this.n / 2 - 155 + 160, this.o / 6 + 96, 150, 20).a());
    }
 
    @Override
-   public void a(flq $$0, int $$1, int $$2, float $$3) {
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+      this.a.a($$0, this.n / 2, 70);
    }
 
    @Override
-   protected void a(flq $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.s) / 2;
-      int $$5 = (this.o - this.u) / 2;
-      $$0.a(gjq::B, J, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      int $$6 = this.z.l();
-      int $$7 = azm.a((18 * $$6 + 20 - 1) / 20, 0, 18);
-      if ($$7 > 0) {
-         $$0.a(gjq::B, G, 18, 4, 0, 0, $$4 + 60, $$5 + 44, $$7, 4);
-      }
-
-      int $$8 = this.z.m();
-      if ($$8 > 0) {
-         int $$9 = (int)(28.0F * (1.0F - (float)$$8 / 400.0F));
-         if ($$9 > 0) {
-            $$0.a(gjq::B, H, 9, 28, 0, 0, $$4 + 97, $$5 + 16, 9, $$9);
-         }
-
-         $$9 = K[$$8 / 2 % 7];
-         if ($$9 > 0) {
-            $$0.a(gjq::B, I, 12, 29, 0, 29 - $$9, $$4 + 63, $$5 + 14 + 29 - $$9, 12, $$9);
-         }
-      }
+   public boolean aH_() {
+      return false;
    }
 }

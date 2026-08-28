@@ -1,72 +1,58 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+import net.minecraft.server.MinecraftServer;
 
 public class anu {
-   public static final int a = 100;
-
-   public static void a(CommandDispatcher<ew> $$0, es $$1) {
+   public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("give").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("debugconfig").requires($$0x -> $$0x.c(3)))
+               .then(ex.a("config").then(ex.a("target", fj.c()).executes($$0x -> a((ew)$$0x.getSource(), fj.e($$0x, "target"))))))
             .then(
-               ex.a("targets", fj.d())
+               ex.a("unconfig")
                   .then(
-                     ((RequiredArgumentBuilder)ex.a("item", hf.a($$1)).executes($$0x -> a((ew)$$0x.getSource(), hf.a($$0x, "item"), fj.f($$0x, "targets"), 1)))
-                        .then(
-                           ex.a("count", IntegerArgumentType.integer(1))
-                              .executes(
-                                 $$0x -> a((ew)$$0x.getSource(), hf.a($$0x, "item"), fj.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "count"))
-                              )
-                        )
+                     ex.a("target", gm.a())
+                        .suggests(($$0x, $$1) -> fb.b(a(((ew)$$0x.getSource()).l()), $$1))
+                        .executes($$0x -> a((ew)$$0x.getSource(), gm.a($$0x, "target")))
                   )
             )
       );
    }
 
-   private static int a(ew $$0, hg $$1, Collection<arq> $$2, int $$3) throws CommandSyntaxException {
-      cwm $$4 = $$1.a(1, false);
-      int $$5 = $$4.k();
-      int $$6 = $$5 * 100;
-      if ($$3 > $$6) {
-         $$0.b(xj.a("commands.give.failed.toomanyitems", $$6, $$4.J()));
-         return 0;
-      } else {
-         for (arq $$7 : $$2) {
-            int $$8 = $$3;
+   private static Iterable<String> a(MinecraftServer $$0) {
+      Set<String> $$1 = new HashSet<>();
 
-            while ($$8 > 0) {
-               int $$9 = Math.min($$5, $$8);
-               $$8 -= $$9;
-               cwm $$10 = $$1.a($$9, false);
-               boolean $$11 = $$7.gg().f($$10);
-               if ($$11 && $$10.f()) {
-                  clc $$13 = $$7.a($$4, false);
-                  if ($$13 != null) {
-                     $$13.w();
-                  }
+      for (wp $$2 : $$0.ah().e()) {
+         if ($$2.k() instanceof ati $$3) {
+            $$1.add($$3.j().getId().toString());
+         }
+      }
 
-                  $$7.dV().a(null, $$7.dA(), $$7.dC(), $$7.dG(), awn.nB, awo.h, 0.2F, (($$7.dY().i() - $$7.dY().i()) * 0.7F + 1.0F) * 2.0F);
-                  $$7.cc.d();
-               } else {
-                  clc $$12 = $$7.a($$10, false);
-                  if ($$12 != null) {
-                     $$12.q();
-                     $$12.b($$7.cG());
-                  }
-               }
+      return $$1;
+   }
+
+   private static int a(ew $$0, asi $$1) {
+      GameProfile $$2 = $$1.gf();
+      $$1.f.n();
+      $$0.a(() -> xv.b("Switched player " + $$2.getName() + "(" + $$2.getId() + ") to config mode"), false);
+      return 1;
+   }
+
+   private static int a(ew $$0, UUID $$1) {
+      for (wp $$2 : $$0.l().ah().e()) {
+         xb var5 = $$2.k();
+         if (var5 instanceof ati) {
+            ati $$3 = (ati)var5;
+            if ($$3.j().getId().equals($$1)) {
+               $$3.m();
             }
          }
-
-         if ($$2.size() == 1) {
-            $$0.a(() -> xj.a("commands.give.success.single", $$3, $$4.J(), $$2.iterator().next().o_()), true);
-         } else {
-            $$0.a(() -> xj.a("commands.give.success.single", $$3, $$4.J(), $$2.size()), true);
-         }
-
-         return $$2.size();
       }
+
+      $$0.b(xv.b("Can't find player to unconfig"));
+      return 0;
    }
 }

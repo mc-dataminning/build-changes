@@ -1,49 +1,77 @@
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
+import com.google.common.base.Stopwatch;
+import java.io.File;
+import java.time.Instant;
+import java.time.format.DateTimeFormatter;
+import java.util.concurrent.TimeUnit;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
-public class ub implements ArgumentType<ua> {
-   private static final Collection<String> a = Arrays.asList("techtests.piston", "techtests");
+public class ub implements up {
+   private final Document a;
+   private final Element b;
+   private final Stopwatch c;
+   private final File d;
 
-   public ua a(StringReader $$0) throws CommandSyntaxException {
-      String $$1 = $$0.readUnquotedString();
-      Optional<ua> $$2 = ti.e($$1);
-      if ($$2.isPresent()) {
-         return $$2.get();
-      } else {
-         Message $$3 = xj.b("No such test: " + $$1);
-         throw new CommandSyntaxException(new SimpleCommandExceptionType($$3), $$3);
+   public ub(File $$0) throws ParserConfigurationException {
+      this.d = $$0;
+      this.a = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+      this.b = this.a.createElement("testsuite");
+      Element $$1 = this.a.createElement("testsuite");
+      $$1.appendChild(this.b);
+      this.a.appendChild($$1);
+      this.b.setAttribute("timestamp", DateTimeFormatter.ISO_INSTANT.format(Instant.now()));
+      this.c = Stopwatch.createStarted();
+   }
+
+   private Element a(ts $$0, String $$1) {
+      Element $$2 = this.a.createElement("testcase");
+      $$2.setAttribute("name", $$1);
+      $$2.setAttribute("classname", $$0.t());
+      $$2.setAttribute("time", String.valueOf((double)$$0.l() / 1000.0));
+      this.b.appendChild($$2);
+      return $$2;
+   }
+
+   @Override
+   public void a(ts $$0) {
+      String $$1 = $$0.b();
+      String $$2 = $$0.n().getMessage();
+      Element $$3 = this.a.createElement($$0.r() ? "failure" : "skipped");
+      $$3.setAttribute("message", "(" + $$0.d().x() + ") " + $$2);
+      Element $$4 = this.a($$0, $$1);
+      $$4.appendChild($$3);
+   }
+
+   @Override
+   public void b(ts $$0) {
+      String $$1 = $$0.b();
+      this.a($$0, $$1);
+   }
+
+   @Override
+   public void a() {
+      this.c.stop();
+      this.b.setAttribute("time", String.valueOf((double)this.c.elapsed(TimeUnit.MILLISECONDS) / 1000.0));
+
+      try {
+         this.a(this.d);
+      } catch (TransformerException var2) {
+         throw new Error("Couldn't save test report", var2);
       }
    }
 
-   public static ub a() {
-      return new ub();
-   }
-
-   public static ua a(CommandContext<ew> $$0, String $$1) {
-      return (ua)$$0.getArgument($$1, ua.class);
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return a($$0, $$1);
-   }
-
-   public static <S> CompletableFuture<Suggestions> a(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      Stream<String> $$2 = ti.a().stream().map(ua::c);
-      return fb.b($$2, $$1);
-   }
-
-   public Collection<String> getExamples() {
-      return a;
+   public void a(File $$0) throws TransformerException {
+      TransformerFactory $$1 = TransformerFactory.newInstance();
+      Transformer $$2 = $$1.newTransformer();
+      DOMSource $$3 = new DOMSource(this.a);
+      StreamResult $$4 = new StreamResult($$0);
+      $$2.transform($$3, $$4);
    }
 }

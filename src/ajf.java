@@ -1,41 +1,85 @@
-public record ajf(int b, ajs c) implements zq<aje> {
-   public static final zh<wg, ajf> a = zq.a(ajf::a, ajf::new);
-   private static final int d = 1048576;
+public class ajf implements aac<ahm> {
+   public static final zt<ws, ajf> a = aac.a(ajf::a, ajf::new);
+   private final jh b;
+   private final alz c;
+   private final alz d;
+   private final alz e;
+   private final String f;
+   private final dvs.a g;
+   private final int h;
+   private final int i;
 
-   private ajf(wg $$0) {
-      this($$0.l(), a($$0.q(), $$0));
+   public ajf(jh $$0, alz $$1, alz $$2, alz $$3, String $$4, dvs.a $$5, int $$6, int $$7) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
    }
 
-   private static ajs a(alj $$0, wg $$1) {
-      return b($$0, $$1);
+   private ajf(ws $$0) {
+      this.b = $$0.e();
+      this.c = $$0.q();
+      this.d = $$0.q();
+      this.e = $$0.q();
+      this.f = $$0.p();
+      this.g = dvs.a.c.a($$0.p(), dvs.a.b);
+      this.h = $$0.l();
+      this.i = $$0.l();
    }
 
-   private static aju b(alj $$0, wg $$1) {
-      int $$2 = $$1.readableBytes();
-      if ($$2 >= 0 && $$2 <= 1048576) {
-         $$1.k($$2);
-         return new aju($$0);
-      } else {
-         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
-      }
-   }
-
-   private void a(wg $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c.a());
-      this.c.a($$0);
+   private void a(ws $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g.c());
+      $$0.c(this.h);
+      $$0.c(this.i);
    }
 
    @Override
-   public zs<ajf> a() {
-      return ajk.a;
+   public aae<ajf> a() {
+      return ahk.ce;
    }
 
-   public void a(aje $$0) {
+   public void a(ahm $$0) {
       $$0.a(this);
    }
 
-   public ajs e() {
+   public jh b() {
+      return this.b;
+   }
+
+   public alz e() {
       return this.c;
+   }
+
+   public alz f() {
+      return this.d;
+   }
+
+   public alz g() {
+      return this.e;
+   }
+
+   public String h() {
+      return this.f;
+   }
+
+   public dvs.a i() {
+      return this.g;
+   }
+
+   public int j() {
+      return this.h;
+   }
+
+   public int k() {
+      return this.i;
    }
 }

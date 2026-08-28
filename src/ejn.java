@@ -1,75 +1,28 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejn extends ejs {
-   public static final MapCodec<ejn> a = ejb.a.fieldOf("provider").xmap(ejn::new, $$0 -> $$0.b);
-   private final ejb b;
+public class ejn implements eis {
+   public static final Codec<ejn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               etp.a.fieldOf("state").forGetter($$0x -> $$0x.b),
+               Codec.BOOL.fieldOf("requires_block_below").orElse(true).forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("rock_count").orElse(4).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("hole_count").orElse(1).forGetter($$0x -> $$0x.e),
+               kf.a(mb.f).fieldOf("valid_blocks").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, ejn::new)
+   );
+   public final etp b;
+   public final boolean c;
+   public final int d;
+   public final int e;
+   public final ju<dke> f;
 
-   public ejn(ejb $$0) {
+   public ejn(etp $$0, boolean $$1, int $$2, int $$3, ju<dke> $$4) {
       this.b = $$0;
-   }
-
-   @Override
-   protected ejt<?> a() {
-      return ejt.e;
-   }
-
-   @Override
-   public void a(ejs.a $$0) {
-      List<jh> $$1 = Lists.newArrayList();
-      List<jh> $$2 = $$0.e();
-      List<jh> $$3 = $$0.c();
-      if ($$2.isEmpty()) {
-         $$1.addAll($$3);
-      } else if (!$$3.isEmpty() && $$2.get(0).v() == $$3.get(0).v()) {
-         $$1.addAll($$3);
-         $$1.addAll($$2);
-      } else {
-         $$1.addAll($$2);
-      }
-
-      if (!$$1.isEmpty()) {
-         int $$4 = $$1.get(0).v();
-         $$1.stream().filter($$1x -> $$1x.v() == $$4).forEach($$1x -> {
-            this.a($$0, $$1x.h().f());
-            this.a($$0, $$1x.g(2).f());
-            this.a($$0, $$1x.h().e(2));
-            this.a($$0, $$1x.g(2).e(2));
-
-            for (int $$2x = 0; $$2x < 5; $$2x++) {
-               int $$3x = $$0.b().a(64);
-               int $$4x = $$3x % 8;
-               int $$5 = $$3x / 8;
-               if ($$4x == 0 || $$4x == 7 || $$5 == 0 || $$5 == 7) {
-                  this.a($$0, $$1x.b(-3 + $$4x, 0, -3 + $$5));
-               }
-            }
-         });
-      }
-   }
-
-   private void a(ejs.a $$0, jh $$1) {
-      for (int $$2 = -2; $$2 <= 2; $$2++) {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
-               this.b($$0, $$1.b($$2, 0, $$3));
-            }
-         }
-      }
-   }
-
-   private void b(ejs.a $$0, jh $$1) {
-      for (int $$2 = 2; $$2 >= -3; $$2--) {
-         jh $$3 = $$1.b($$2);
-         if (eew.a($$0.a(), $$3)) {
-            $$0.a($$3, this.b.a($$0.b(), $$1));
-            break;
-         }
-
-         if (!$$0.a($$3) && $$2 < 0) {
-            break;
-         }
-      }
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
    }
 }

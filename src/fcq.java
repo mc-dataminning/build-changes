@@ -1,24 +1,34 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public interface fcq extends AutoCloseable {
-   float a = 7.0F;
+public record fcq(String a, int b, @Nullable xv c, @Nullable zl d) {
+   public boolean a() {
+      return this.a.startsWith("#");
+   }
 
-   @Override
-   default void close() {
+   public xv b() {
+      return (xv)(this.c != null ? this.c : xv.b(this.c()));
+   }
+
+   public yj a(zl $$0) {
+      return Objects.requireNonNullElse(this.d, $$0).a(this.b);
+   }
+
+   public String c() {
+      return this.a;
+   }
+
+   public int d() {
+      return this.b;
    }
 
    @Nullable
-   default fcp a(int $$0) {
-      return null;
+   public xv e() {
+      return this.c;
    }
 
-   IntSet a();
-
-   public static record a(fcq a, fov.a b) implements AutoCloseable {
-      @Override
-      public void close() {
-         this.a.close();
-      }
+   @Nullable
+   public zl f() {
+      return this.d;
    }
 }

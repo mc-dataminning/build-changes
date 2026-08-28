@@ -1,18 +1,47 @@
 import com.mojang.serialization.Codec;
 
-public class egv implements eha {
-   public static final Codec<egv> a = brp.b(0, 256).fieldOf("count").xmap(egv::new, egv::a).codec();
-   private final brp b;
-
-   public egv(int $$0) {
-      this.b = brm.a($$0);
+public class egv extends ego<eiz> {
+   public egv(Codec<eiz> $$0) {
+      super($$0);
    }
 
-   public egv(brp $$0) {
-      this.b = $$0;
-   }
+   @Override
+   public boolean a(egq<eiz> $$0) {
+      dhy $$1 = $$0.b();
+      jh $$2 = $$0.e();
+      bam $$3 = $$0.d();
+      if (!$$1.u($$2)) {
+         return false;
+      } else {
+         dxn $$4 = $$1.a_($$2.d());
+         if (!$$4.a(dkg.ei) && !$$4.a(dkg.el) && !$$4.a(dkg.pM)) {
+            return false;
+         } else {
+            $$1.a($$2, dkg.ep.m(), 2);
 
-   public brp a() {
-      return this.b;
+            for (int $$5 = 0; $$5 < 1500; $$5++) {
+               jh $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
+               if ($$1.a_($$6).l()) {
+                  int $$7 = 0;
+
+                  for (jm $$8 : jm.values()) {
+                     if ($$1.a_($$6.a($$8)).a(dkg.ep)) {
+                        $$7++;
+                     }
+
+                     if ($$7 > 1) {
+                        break;
+                     }
+                  }
+
+                  if ($$7 == 1) {
+                     $$1.a($$6, dkg.ep.m(), 2);
+                  }
+               }
+            }
+
+            return true;
+         }
+      }
    }
 }

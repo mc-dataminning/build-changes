@@ -1,39 +1,56 @@
-public class ckt extends ckv {
-   public ckt(bus<? extends ckv> $$0, dfm $$1) {
-      super($$0, $$1);
-   }
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public ckt(dfm $$0, jh $$1, jm $$2) {
-      super(bus.ae, $$0, $$1, $$2);
-   }
+public class ckt extends ckr {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 10;
+   @Nullable
+   private fbs d;
+   private int e;
 
-   @Override
-   public awm q() {
-      return awn.kF;
-   }
-
-   @Override
-   public awm s() {
-      return awn.kD;
+   public ckt(ckp $$0) {
+      super($$0);
    }
 
    @Override
-   public awm t() {
-      return awn.kE;
+   public void a(ash $$0) {
+      if (this.d == null) {
+         b.warn("Aborting charge player as no target was set.");
+         this.a.gi().a(clf.a);
+      } else if (this.e > 0 && this.e++ >= 10) {
+         this.a.gi().a(clf.a);
+      } else {
+         double $$1 = this.d.c(this.a.dA(), this.a.dC(), this.a.dG());
+         if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
+            this.e++;
+         }
+      }
    }
 
    @Override
-   public awm u() {
-      return awn.kC;
+   public void c() {
+      this.d = null;
+      this.e = 0;
+   }
+
+   public void a(fbs $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public awm v() {
-      return awn.kG;
+   public float e() {
+      return 3.0F;
+   }
+
+   @Nullable
+   @Override
+   public fbs f() {
+      return this.d;
    }
 
    @Override
-   protected cwm w() {
-      return new cwm(cwq.uv);
+   public clf<ckt> h() {
+      return clf.i;
    }
 }

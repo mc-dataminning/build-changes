@@ -1,115 +1,18 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import java.nio.file.Path;
-import javax.annotation.Nullable;
+public class fox extends fny {
+   private final fnj a;
+   private final xv b;
+   private final xv c;
 
-public class fox extends gyp implements gyq {
-   private static final int d = 256;
-   private final foy e;
-   private final boolean f;
-   private final fox.a g;
-
-   public fox(foy $$0, boolean $$1) {
-      this.f = $$1;
-      this.g = new fox.a(0, 0, 256, 256);
-      TextureUtil.prepareImage($$1 ? fdr.b.a : fdr.b.d, this.a(), 256, 256);
-      this.e = $$0;
+   public fox(int $$0, int $$1, int $$2, int $$3, xv $$4, fny.c $$5, fnj $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, q);
+      this.a = $$6;
+      this.b = $$4;
+      this.c = xy.a($$4.f(), ys.a.c(true));
    }
 
    @Override
-   public void a(avd $$0) {
-   }
-
-   @Override
-   public void close() {
-      this.b();
-   }
-
-   @Nullable
-   public fpa a(fcr $$0) {
-      if ($$0.c() != this.f) {
-         return null;
-      } else {
-         fox.a $$1 = this.g.a($$0);
-         if ($$1 != null) {
-            this.d();
-            $$0.a($$1.a, $$1.b);
-            float $$2 = 256.0F;
-            float $$3 = 256.0F;
-            float $$4 = 0.01F;
-            return new fpa(
-               this.e,
-               ((float)$$1.a + 0.01F) / 256.0F,
-               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
-               ((float)$$1.b + 0.01F) / 256.0F,
-               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
-               $$0.e(),
-               $$0.f(),
-               $$0.g(),
-               $$0.h()
-            );
-         } else {
-            return null;
-         }
-      }
-   }
-
-   @Override
-   public void a(alj $$0, Path $$1) {
-      String $$2 = $$0.c();
-      TextureUtil.writeAsPNG($$1, $$2, this.a(), 0, 256, 256, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
-   }
-
-   static class a {
-      final int a;
-      final int b;
-      private final int c;
-      private final int d;
-      @Nullable
-      private fox.a e;
-      @Nullable
-      private fox.a f;
-      private boolean g;
-
-      a(int $$0, int $$1, int $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      @Nullable
-      fox.a a(fcr $$0) {
-         if (this.e != null && this.f != null) {
-            fox.a $$1 = this.e.a($$0);
-            if ($$1 == null) {
-               $$1 = this.f.a($$0);
-            }
-
-            return $$1;
-         } else if (this.g) {
-            return null;
-         } else {
-            int $$2 = $$0.a();
-            int $$3 = $$0.b();
-            if ($$2 > this.c || $$3 > this.d) {
-               return null;
-            } else if ($$2 == this.c && $$3 == this.d) {
-               this.g = true;
-               return this;
-            } else {
-               int $$4 = this.c - $$2;
-               int $$5 = this.d - $$3;
-               if ($$4 > $$5) {
-                  this.e = new fox.a(this.a, this.b, $$2, this.d);
-                  this.f = new fox.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
-               } else {
-                  this.e = new fox.a(this.a, this.b, this.c, $$3);
-                  this.f = new fox.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
-               }
-
-               return this.e.a($$0);
-            }
-         }
-      }
+   public void b(fnl $$0, int $$1, int $$2, float $$3) {
+      xv $$4 = this.B() ? this.c : this.b;
+      $$0.b(this.a, $$4, this.D(), this.E(), 16777215 | bae.f(this.l * 255.0F) << 24);
    }
 }

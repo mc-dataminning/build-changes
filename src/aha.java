@@ -1,29 +1,30 @@
-public class aha implements zq<agw> {
-   public static final zh<wg, aha> a = zq.a(aha::a, aha::new);
-   private final bsh b;
+import java.util.Set;
 
-   public aha(bsh $$0) {
-      this.b = $$0;
-   }
+public record aha(int b, bwo c, Set<bwp> d, boolean e) implements aac<acr> {
+   public static final zt<ws, aha> a = zt.a(zr.h, aha::b, bwo.a, aha::e, bwp.m, aha::f, zr.b, aha::g, aha::new);
 
-   private aha(wg $$0) {
-      this.b = bsh.a($$0.readUnsignedByte());
-   }
-
-   private void a(wg $$0) {
-      $$0.l(this.b.a());
+   public static aha a(int $$0, bwo $$1, Set<bwp> $$2, boolean $$3) {
+      return new aha($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public zs<aha> a() {
-      return agu.bj;
+   public aae<aha> a() {
+      return ahk.bd;
    }
 
-   public void a(agw $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
    }
 
-   public bsh b() {
-      return this.b;
+   public bwo e() {
+      return this.c;
+   }
+
+   public Set<bwp> f() {
+      return this.d;
+   }
+
+   public boolean g() {
+      return this.e;
    }
 }

@@ -1,33 +1,37 @@
-import java.util.List;
+public class ade implements aac<acr> {
+   public static final zt<ws, ade> a = aac.a(ade::a, ade::new);
+   private final btb b;
+   private final boolean c;
 
-public record ade(ade.a b, List<String> c) implements zq<acf> {
-   public static final zh<wg, ade> a = zq.a(ade::a, ade::new);
-
-   private ade(wg $$0) {
-      this($$0.b(ade.a.class), $$0.a(wg::p));
+   public ade(btb $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private void a(wg $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, wg::a);
+   private ade(ws $$0) {
+      this.b = btb.a($$0.readUnsignedByte());
+      this.c = $$0.readBoolean();
+   }
+
+   private void a(ws $$0) {
+      $$0.l(this.b.a());
+      $$0.a(this.c);
    }
 
    @Override
-   public zs<ade> a() {
-      return agu.y;
+   public aae<ade> a() {
+      return ahk.m;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
    }
 
-   public List<String> e() {
+   public boolean b() {
       return this.c;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public btb e() {
+      return this.b;
    }
 }

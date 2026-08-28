@@ -1,7 +1,4 @@
-import io.netty.handler.codec.EncoderException;
+import io.netty.channel.ChannelOutboundHandlerAdapter;
 
-public class ww extends EncoderException {
-   public ww(Throwable $$0) {
-      super($$0);
-   }
+public class ww extends ChannelOutboundHandlerAdapter {
 }

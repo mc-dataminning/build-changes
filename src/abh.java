@@ -1,32 +1,26 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
+public record abh(aly<ecj> c, fbs d) implements abf {
+   public static final zt<ws, abh> a = abf.a(abh::a, abh::new);
+   public static final abf.b<abh> b = abf.a("debug/game_event");
 
-public record abh(long c, List<abh.a> d) implements aat {
-   public static final aat.b<abh> a = aat.a("debug/redstone_update_order");
-   public static final zh<wg, abh> b = zh.a(zf.j, abh::b, abh.a.a.a(zf.a()), abh::c, abh::new);
-
-   @Override
-   public aat.b<abh> a() {
-      return a;
+   private abh(ws $$0) {
+      this($$0.a(mb.G), $$0.k());
    }
 
-   public long b() {
+   private void a(ws $$0) {
+      $$0.b(this.c);
+      $$0.a(this.d);
+   }
+
+   @Override
+   public abf.b<abh> a() {
+      return b;
+   }
+
+   public aly<ecj> b() {
       return this.c;
    }
 
-   public List<abh.a> c() {
+   public fbs c() {
       return this.d;
-   }
-
-   public static record a(jh b, etd c) {
-      public static final zh<ByteBuf, abh.a> a = zh.a(jh.b, abh.a::a, etd.a, abh.a::b, abh.a::new);
-
-      public jh a() {
-         return this.b;
-      }
-
-      public etd b() {
-         return this.c;
-      }
    }
 }

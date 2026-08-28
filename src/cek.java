@@ -1,59 +1,41 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class cek<T> {
+public class cek<T extends bwd> extends ccz {
    private final T a;
-   private long b;
+   private final cxk b;
+   private final Predicate<? super T> c;
+   @Nullable
+   private final axe d;
 
-   public cek(T $$0, long $$1) {
+   public cek(T $$0, cxk $$1, @Nullable axe $$2, Predicate<? super T> $$3) {
       this.a = $$0;
       this.b = $$1;
-   }
-
-   public void a() {
-      if (this.e()) {
-         this.b--;
-      }
-   }
-
-   public static <T> cek<T> a(T $$0) {
-      return new cek<>($$0, Long.MAX_VALUE);
-   }
-
-   public static <T> cek<T> a(T $$0, long $$1) {
-      return new cek<>($$0, $$1);
-   }
-
-   public long b() {
-      return this.b;
-   }
-
-   public T c() {
-      return this.a;
-   }
-
-   public boolean d() {
-      return this.b <= 0L;
+      this.d = $$2;
+      this.c = $$3;
    }
 
    @Override
-   public String toString() {
-      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
+   public boolean b() {
+      return this.c.test(this.a);
    }
 
-   @bat
-   public boolean e() {
-      return this.b != Long.MAX_VALUE;
+   @Override
+   public boolean c() {
+      return this.a.fx();
    }
 
-   public static <T> Codec<cek<T>> a(Codec<T> $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(
-                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
-                  Codec.LONG.lenientOptionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
-               )
-               .apply($$1, ($$0xx, $$1x) -> new cek<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
-      );
+   @Override
+   public void d() {
+      this.a.a(bvn.a, this.b.v());
+      this.a.c(btd.a);
+   }
+
+   @Override
+   public void e() {
+      this.a.a(bvn.a, cxk.k);
+      if (this.d != null) {
+         this.a.a(this.d, 1.0F, this.a.dY().i() * 0.2F + 0.9F);
+      }
    }
 }

@@ -1,49 +1,37 @@
-import javax.annotation.Nullable;
+public class ain implements aac<ahm> {
+   public static final zt<ws, ain> a = aac.a(ain::a, ain::new);
+   private final boolean b;
+   private final boolean c;
 
-public class ain implements zq<agw> {
-   public static final zh<wg, ain> a = zq.a(ain::a, ain::new);
-   private final int b;
-   private final String c;
-   private final boolean d;
-
-   public ain(int $$0, String $$1, boolean $$2) {
+   public ain(boolean $$0, boolean $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
    }
 
-   private ain(wg $$0) {
-      this.b = $$0.l();
-      this.c = $$0.p();
-      this.d = $$0.readBoolean();
+   private ain(ws $$0) {
+      this.b = $$0.readBoolean();
+      this.c = $$0.readBoolean();
    }
 
-   private void a(wg $$0) {
-      $$0.c(this.b);
+   private void a(ws $$0) {
+      $$0.a(this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
    }
 
-   @Override
-   public zs<ain> a() {
-      return agu.bY;
-   }
-
-   public void a(agw $$0) {
+   public void a(ahm $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public dem a(dfm $$0) {
-      bul $$1 = $$0.a(this.b);
-      return $$1 instanceof crd ? ((crd)$$1).u() : null;
+   @Override
+   public aae<ain> a() {
+      return ahk.bN;
    }
 
-   public String b() {
-      return this.c;
+   public boolean b() {
+      return this.b;
    }
 
    public boolean e() {
-      return this.d;
+      return this.c;
    }
 }

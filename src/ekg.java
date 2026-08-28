@@ -1,96 +1,40 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
 
 public class ekg extends eke {
    public static final MapCodec<ekg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  brp.e.fieldOf("extra_branch_steps").forGetter($$0x -> $$0x.b),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("place_branch_per_log_probability").forGetter($$0x -> $$0x.h),
-                  brp.d.fieldOf("extra_branch_length").forGetter($$0x -> $$0x.i),
-                  kf.a(ma.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.j)
-               )
-            )
-            .apply($$0, ekg::new)
+      $$0 -> b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, ekg::new)
    );
-   private final brp b;
-   private final float h;
-   private final brp i;
-   private final ju<diq> j;
+   protected final int b;
 
-   public ekg(int $$0, int $$1, int $$2, brp $$3, float $$4, brp $$5, ju<diq> $$6) {
-      super($$0, $$1, $$2);
-      this.b = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
+   public ekg(bsj $$0, bsj $$1, int $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
    protected ekf<?> a() {
-      return ekf.h;
+      return ekf.g;
    }
 
    @Override
-   public List<eim.a> a(dfs $$0, BiConsumer<jh, dvv> $$1, azu $$2, int $$3, jh $$4, ehw $$5) {
-      List<eim.a> $$6 = Lists.newArrayList();
-      jh.a $$7 = new jh.a();
+   protected void a(dhg $$0, eke.b $$1, bam $$2, ejo $$3, int $$4, eke.a $$5, int $$6, int $$7, int $$8) {
+      int $$9 = $$5.c() ? $$6 : 1 + $$2.a(2);
 
-      for (int $$8 = 0; $$8 < $$3; $$8++) {
-         int $$9 = $$4.v() + $$8;
-         if (this.b($$0, $$1, $$2, $$7.d($$4.u(), $$9, $$4.w()), $$5) && $$8 < $$3 - 1 && $$2.i() < this.h) {
-            jm $$10 = jm.c.a.a($$2);
-            int $$11 = this.i.a($$2);
-            int $$12 = Math.max(0, $$11 - this.i.a($$2) - 1);
-            int $$13 = this.b.a($$2);
-            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$9, $$10, $$12, $$13);
-         }
-
-         if ($$8 == $$3 - 1) {
-            $$6.add(new eim.a($$7.d($$4.u(), $$9 + 1, $$4.w()), 0, false));
-         }
-      }
-
-      return $$6;
-   }
-
-   private void a(dfs $$0, BiConsumer<jh, dvv> $$1, azu $$2, int $$3, ehw $$4, List<eim.a> $$5, jh.a $$6, int $$7, jm $$8, int $$9, int $$10) {
-      int $$11 = $$7 + $$9;
-      int $$12 = $$6.u();
-      int $$13 = $$6.w();
-      int $$14 = $$9;
-
-      while ($$14 < $$3 && $$10 > 0) {
-         if ($$14 >= 1) {
-            int $$15 = $$7 + $$14;
-            $$12 += $$8.j();
-            $$13 += $$8.l();
-            $$11 = $$15;
-            if (this.b($$0, $$1, $$2, $$6.d($$12, $$15, $$13), $$4)) {
-               $$11 = $$15 + 1;
-            }
-
-            $$5.add(new eim.a($$6.j(), 0, false));
-         }
-
-         $$14++;
-         $$10--;
-      }
-
-      if ($$11 - $$7 > 1) {
-         jh $$16 = new jh($$12, $$11, $$13);
-         $$5.add(new eim.a($$16, 0, false));
-         $$5.add(new eim.a($$16.c(2), 0, false));
+      for (int $$10 = $$8; $$10 >= $$8 - $$9; $$10--) {
+         int $$11 = $$7 + $$5.b() + 1 - $$10;
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$11, $$10, $$5.c());
       }
    }
 
    @Override
-   protected boolean a(dfs $$0, jh $$1) {
-      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.j));
+   public int a(bam $$0, int $$1, ejo $$2) {
+      return this.b;
+   }
+
+   @Override
+   protected boolean a(bam $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

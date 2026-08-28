@@ -1,8 +1,3 @@
-public interface akh extends agx, akb {
-   @Override
-   default we b() {
-      return we.c;
-   }
-
-   void a(aki var1);
+public interface akh {
+   void a(ws var1);
 }

@@ -1,40 +1,66 @@
-public abstract class flu extends fmb {
-   protected static final int e = 2;
-   private static final fnq a = new fnq(alj.b("widget/button"), alj.b("widget/button_disabled"), alj.b("widget/button_highlighted"));
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DataResult;
+import java.nio.file.Path;
+import org.slf4j.Logger;
 
-   public flu(int $$0, int $$1, int $$2, int $$3, xj $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-   }
+public class flu {
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 9;
+   private final Path c;
+   private final DataFixer d;
+   private final gkc[] e = new gkc[9];
+   private boolean f;
 
-   public abstract void b();
+   public flu(Path $$0, DataFixer $$1) {
+      this.c = $$0.resolve("hotbar.nbt");
+      this.d = $$1;
 
-   @Override
-   protected void b(flq $$0, int $$1, int $$2, float $$3) {
-      fke $$4 = fke.Q();
-      $$0.a(gjq::B, a.a(this.j, this.B()), this.D(), this.E(), this.y(), this.w(), axx.a(this.l));
-      int $$5 = this.j ? 16777215 : 10526880;
-      this.a($$0, $$4.h, $$5 | azm.f(this.l * 255.0F) << 24);
-   }
-
-   public void a(flq $$0, flo $$1, int $$2) {
-      this.a($$0, $$1, 2, $$2);
-   }
-
-   @Override
-   public void a(double $$0, double $$1) {
-      this.b();
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.j || !this.k) {
-         return false;
-      } else if (fqg.a($$0)) {
-         this.a(fke.Q().ak());
-         this.b();
-         return true;
-      } else {
-         return false;
+      for (int $$2 = 0; $$2 < 9; $$2++) {
+         this.e[$$2] = new gkc();
       }
+   }
+
+   private void b() {
+      try {
+         ux $$0 = vk.a(this.c);
+         if ($$0 == null) {
+            return;
+         }
+
+         int $$1 = vm.b($$0, 1343);
+         $$0 = bbo.d.a(this.d, $$0, $$1);
+
+         for (int $$2 = 0; $$2 < 9; $$2++) {
+            this.e[$$2] = gkc.a.parse(vl.a, $$0.c(String.valueOf($$2))).resultOrPartial($$0x -> b.warn("Failed to parse hotbar: {}", $$0x)).orElseGet(gkc::new);
+         }
+      } catch (Exception var4) {
+         b.error("Failed to load creative mode options", var4);
+      }
+   }
+
+   public void a() {
+      try {
+         ux $$0 = vm.e(new ux());
+
+         for (int $$1 = 0; $$1 < 9; $$1++) {
+            gkc $$2 = this.a($$1);
+            DataResult<vu> $$3 = gkc.a.encodeStart(vl.a, $$2);
+            $$0.a(String.valueOf($$1), (vu)$$3.getOrThrow());
+         }
+
+         vk.b($$0, this.c);
+      } catch (Exception var5) {
+         b.error("Failed to save creative mode options", var5);
+      }
+   }
+
+   public gkc a(int $$0) {
+      if (!this.f) {
+         this.b();
+         this.f = true;
+      }
+
+      return this.e[$$0];
    }
 }

@@ -1,29 +1,26 @@
-import java.util.Locale;
+public abstract class fnv extends fnw {
+   private final fnj a;
+   private int b = 16777215;
 
-public class fnv extends fns {
-   private static final int f = 500;
-
-   public fnv(flo $$0, bni $$1) {
-      super($$0, $$1);
+   public fnv(int $$0, int $$1, int $$2, int $$3, xv $$4, fnj $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a = $$5;
    }
 
    @Override
-   protected void d(flq $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, "500 ms", $$1 + 1, $$3 - 60 + 1);
+   protected void a(frw $$0) {
    }
 
-   @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round($$0));
+   public fnv a(int $$0) {
+      this.b = $$0;
+      return this;
    }
 
-   @Override
-   protected int b(double $$0) {
-      return (int)Math.round($$0 * 60.0 / 500.0);
+   protected final fnj a() {
+      return this.a;
    }
 
-   @Override
-   protected int a(long $$0) {
-      return this.a((double)$$0, 0.0, -16711936, 250.0, -256, 500.0, -65536);
+   protected final int b() {
+      return this.b;
    }
 }

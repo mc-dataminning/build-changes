@@ -1,36 +1,39 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Set;
 
-public record eyr(float c) implements eyu {
-   public static final MapCodec<eyr> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(eyr::c)).apply($$0, eyr::new));
-   public static final Codec<eyr> b = Codec.FLOAT.xmap(eyr::new, eyr::c);
+public class eyr extends exu {
+   static final MapCodec<eyr> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(fap.a.fieldOf("amplifier").forGetter($$0x -> $$0x.b)).apply($$0, eyr::new));
+   private final fao b;
 
-   @Override
-   public eyt b() {
-      return eyv.b;
+   private eyr(List<ezs> $$0, fao $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public float b(eun $$0) {
-      return this.c;
-   }
-
-   public static eyr a(float $$0) {
-      return new eyr($$0);
+   public Set<eza<?>> a() {
+      return this.b.a();
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((eyr)$$0).c, this.c) == 0 : false;
-      }
+   public exw<eyr> b() {
+      return exx.Q;
    }
 
    @Override
-   public int hashCode() {
-      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
+   public cxk a(cxk $$0, ewh $$1) {
+      int $$2 = bae.a(this.b.a($$1), 0, 4);
+      $$0.b(ku.aa, new dai($$2));
+      return $$0;
+   }
+
+   public fao c() {
+      return this.b;
+   }
+
+   public static exu.a<?> a(fao $$0) {
+      return a($$1 -> new eyr($$1, $$0));
    }
 }

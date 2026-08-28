@@ -1,71 +1,82 @@
 import java.util.List;
 
 public class sp {
-   public static final elp a = eli.a(ebq.a.e);
-   public static final elp b = eli.a(ebq.a.c);
-   public static final elp c = eli.a(ebq.a.a);
-   public static final elp d = eli.a(ebq.a.d);
-   public static final elp e = elh.a(eck.a(), eck.b());
-   public static final elp f = elh.a(eck.b(10), eck.c(10));
-   public static final elp g = elh.a(eck.b(8), eck.c(8));
-   public static final elp h = elh.a(eck.b(4), eck.c(4));
-   public static final elp i = elh.a(eck.a(), eck.a(256));
+   public static final aly<ega<?, ?>> a = sm.a("ore_magma");
+   public static final aly<ega<?, ?>> b = sm.a("ore_soul_sand");
+   public static final aly<ega<?, ?>> c = sm.a("ore_nether_gold");
+   public static final aly<ega<?, ?>> d = sm.a("ore_quartz");
+   public static final aly<ega<?, ?>> e = sm.a("ore_gravel_nether");
+   public static final aly<ega<?, ?>> f = sm.a("ore_blackstone");
+   public static final aly<ega<?, ?>> g = sm.a("ore_dirt");
+   public static final aly<ega<?, ?>> h = sm.a("ore_gravel");
+   public static final aly<ega<?, ?>> i = sm.a("ore_granite");
+   public static final aly<ega<?, ?>> j = sm.a("ore_diorite");
+   public static final aly<ega<?, ?>> k = sm.a("ore_andesite");
+   public static final aly<ega<?, ?>> l = sm.a("ore_tuff");
+   public static final aly<ega<?, ?>> m = sm.a("ore_coal");
+   public static final aly<ega<?, ?>> n = sm.a("ore_coal_buried");
+   public static final aly<ega<?, ?>> o = sm.a("ore_iron");
+   public static final aly<ega<?, ?>> p = sm.a("ore_iron_small");
+   public static final aly<ega<?, ?>> q = sm.a("ore_gold");
+   public static final aly<ega<?, ?>> r = sm.a("ore_gold_buried");
+   public static final aly<ega<?, ?>> s = sm.a("ore_redstone");
+   public static final aly<ega<?, ?>> t = sm.a("ore_diamond_small");
+   public static final aly<ega<?, ?>> u = sm.a("ore_diamond_medium");
+   public static final aly<ega<?, ?>> v = sm.a("ore_diamond_large");
+   public static final aly<ega<?, ?>> w = sm.a("ore_diamond_buried");
+   public static final aly<ega<?, ?>> x = sm.a("ore_lapis");
+   public static final aly<ega<?, ?>> y = sm.a("ore_lapis_buried");
+   public static final aly<ega<?, ?>> z = sm.a("ore_infested");
+   public static final aly<ega<?, ?>> A = sm.a("ore_emerald");
+   public static final aly<ega<?, ?>> B = sm.a("ore_ancient_debris_large");
+   public static final aly<ega<?, ?>> C = sm.a("ore_ancient_debris_small");
+   public static final aly<ega<?, ?>> D = sm.a("ore_copper_small");
+   public static final aly<ega<?, ?>> E = sm.a("ore_copper_large");
+   public static final aly<ega<?, ?>> F = sm.a("ore_clay");
 
-   public static void a(qz<elm> $$0) {
-      sj.a($$0);
-      sk.a($$0);
-      sl.a($$0);
-      sm.a($$0);
-      sn.a($$0);
-      so.a($$0);
-      sq.a($$0);
-      sr.a($$0);
-      ss.a($$0);
-   }
-
-   public static ali<elm> a(String $$0) {
-      return ali.a(ma.aR, alj.b($$0));
-   }
-
-   public static void a(qz<elm> $$0, ali<elm> $$1, jq<eei<?, ?>> $$2, List<elp> $$3) {
-      $$0.a($$1, new elm($$2, List.copyOf($$3)));
-   }
-
-   public static void a(qz<elm> $$0, ali<elm> $$1, jq<eei<?, ?>> $$2, elp... $$3) {
-      a($$0, $$1, $$2, List.of($$3));
-   }
-
-   public static elp a(int $$0, float $$1, int $$2) {
-      float $$3 = 1.0F / $$1;
-      if (Math.abs($$3 - (float)((int)$$3)) > 1.0E-5F) {
-         throw new IllegalStateException("Chance data cannot be represented as list weight");
-      } else {
-         bqs<brp> $$4 = bqs.<brp>a().a(brm.a($$0), (int)$$3 - 1).a(brm.a($$0 + $$2), 1).a();
-         return ele.a(new brw($$4));
-      }
-   }
-
-   public static elo a() {
-      return elb.a(ecx.c);
-   }
-
-   public static elb a(diq $$0) {
-      return elb.a(ecx.a($$0.m(), jh.c));
-   }
-
-   public static jq<elm> a(jq<eei<?, ?>> $$0, elp... $$1) {
-      return jq.a(new elm($$0, List.of($$1)));
-   }
-
-   public static <FC extends eha, F extends eew<FC>> jq<elm> a(F $$0, FC $$1, elp... $$2) {
-      return a(jq.a(new eei($$0, $$1)), $$2);
-   }
-
-   public static <FC extends eha, F extends eew<FC>> jq<elm> a(F $$0, FC $$1) {
-      return a($$0, $$1, ecx.c);
-   }
-
-   public static <FC extends eha, F extends eew<FC>> jq<elm> a(F $$0, FC $$1, ecx $$2) {
-      return a($$0, $$1, elb.a($$2));
+   public static void a(rk<ega<?, ?>> $$0) {
+      ery $$1 = new esg(axu.bg);
+      ery $$2 = new esg(axu.bh);
+      ery $$3 = new esg(axu.bi);
+      ery $$4 = new erg(dkg.ei);
+      ery $$5 = new esg(axu.bj);
+      List<eja.a> $$6 = List.of(eja.a($$2, dkg.S.m()), eja.a($$3, dkg.T.m()));
+      List<eja.a> $$7 = List.of(eja.a($$2, dkg.Q.m()), eja.a($$3, dkg.R.m()));
+      List<eja.a> $$8 = List.of(eja.a($$2, dkg.cF.m()), eja.a($$3, dkg.cG.m()));
+      List<eja.a> $$9 = List.of(eja.a($$2, dkg.aY.m()), eja.a($$3, dkg.aZ.m()));
+      List<eja.a> $$10 = List.of(eja.a($$2, dkg.rv.m()), eja.a($$3, dkg.rw.m()));
+      List<eja.a> $$11 = List.of(eja.a($$2, dkg.U.m()), eja.a($$3, dkg.V.m()));
+      sm.a($$0, a, ego.I, new eja($$4, dkg.le.m(), 33));
+      sm.a($$0, b, ego.I, new eja($$4, dkg.ej.m(), 12));
+      sm.a($$0, c, ego.I, new eja($$4, dkg.W.m(), 10));
+      sm.a($$0, d, ego.I, new eja($$4, dkg.hr.m(), 14));
+      sm.a($$0, e, ego.I, new eja($$4, dkg.O.m(), 33));
+      sm.a($$0, f, ego.I, new eja($$4, dkg.pM.m(), 33));
+      sm.a($$0, g, ego.I, new eja($$1, dkg.j.m(), 33));
+      sm.a($$0, h, ego.I, new eja($$1, dkg.O.m(), 33));
+      sm.a($$0, i, ego.I, new eja($$1, dkg.c.m(), 64));
+      sm.a($$0, j, ego.I, new eja($$1, dkg.e.m(), 64));
+      sm.a($$0, k, ego.I, new eja($$1, dkg.g.m(), 64));
+      sm.a($$0, l, ego.I, new eja($$1, dkg.qU.m(), 64));
+      sm.a($$0, m, ego.I, new eja($$11, 17));
+      sm.a($$0, n, ego.I, new eja($$11, 17, 0.5F));
+      sm.a($$0, o, ego.I, new eja($$6, 9));
+      sm.a($$0, p, ego.I, new eja($$6, 4));
+      sm.a($$0, q, ego.I, new eja($$7, 9));
+      sm.a($$0, r, ego.I, new eja($$7, 9, 0.5F));
+      sm.a($$0, s, ego.I, new eja(List.of(eja.a($$2, dkg.dV.m()), eja.a($$3, dkg.dW.m())), 8));
+      sm.a($$0, t, ego.I, new eja($$8, 4, 0.5F));
+      sm.a($$0, v, ego.I, new eja($$8, 12, 0.7F));
+      sm.a($$0, w, ego.I, new eja($$8, 8, 1.0F));
+      sm.a($$0, u, ego.I, new eja($$8, 8, 0.5F));
+      sm.a($$0, x, ego.I, new eja($$9, 7));
+      sm.a($$0, y, ego.I, new eja($$9, 7, 1.0F));
+      sm.a($$0, z, ego.I, new eja(List.of(eja.a($$2, dkg.fb.m()), eja.a($$3, dkg.ty.m())), 9));
+      sm.a($$0, A, ego.I, new eja(List.of(eja.a($$2, dkg.fS.m()), eja.a($$3, dkg.fT.m())), 3));
+      sm.a($$0, B, ego.af, new eja($$5, dkg.pE.m(), 3, 1.0F));
+      sm.a($$0, C, ego.af, new eja($$5, dkg.pE.m(), 2, 1.0F));
+      sm.a($$0, D, ego.I, new eja($$10, 10));
+      sm.a($$0, E, ego.I, new eja($$10, 20));
+      sm.a($$0, F, ego.I, new eja($$1, dkg.ee.m(), 33));
    }
 }

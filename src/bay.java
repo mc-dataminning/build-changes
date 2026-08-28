@@ -1,77 +1,67 @@
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.RewriteResult;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.View;
-import com.mojang.datafixers.functions.PointFreeRule;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.BitSet;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.util.Locale;
+import java.util.function.Consumer;
 
-public class bay {
-   public static Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<Number> $$1 = $$0.get("X").asNumber().result();
-      Optional<Number> $$2 = $$0.get("Y").asNumber().result();
-      Optional<Number> $$3 = $$0.get("Z").asNumber().result();
-      return !$$1.isEmpty() && !$$2.isEmpty() && !$$3.isEmpty()
-         ? $$0.createIntList(IntStream.of($$1.get().intValue(), $$2.get().intValue(), $$3.get().intValue()))
-         : $$0;
+public class bay<T> {
+   private final int a;
+   private final int b;
+   private final int c;
+   private final int d;
+   private final Object[] e;
+
+   public static <T> bay<T> a(int $$0, int $$1, int $$2, bay.a<T> $$3) {
+      int $$4 = $$0 - $$2;
+      int $$5 = $$1 - $$2;
+      int $$6 = 2 * $$2 + 1;
+      return new bay<>($$4, $$5, $$6, $$6, $$3);
    }
 
-   public static <T, R> Typed<R> a(Type<R> $$0, Typed<T> $$1) {
-      return new Typed($$0, $$1.getOps(), $$1.getValue());
-   }
+   private bay(int $$0, int $$1, int $$2, int $$3, bay.a<T> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = new Object[this.c * this.d];
 
-   public static Type<?> a(Type<?> $$0, Type<?> $$1, Type<?> $$2) {
-      return $$0.all(a($$1, $$2), true, false).view().newType();
-   }
-
-   private static <A, B> TypeRewriteRule a(Type<A> $$0, Type<B> $$1) {
-      RewriteResult<A, B> $$2 = RewriteResult.create(View.create("Patcher", $$0, $$1, $$0x -> $$0xx -> {
-            throw new UnsupportedOperationException();
-         }), new BitSet());
-      return TypeRewriteRule.everywhere(TypeRewriteRule.ifSame($$0, $$2), PointFreeRule.nop(), true, true);
-   }
-
-   @SafeVarargs
-   public static <T> Function<Typed<?>, Typed<?>> a(Function<Typed<?>, Typed<?>>... $$0) {
-      return $$1 -> {
-         for (Function<Typed<?>, Typed<?>> $$2 : $$0) {
-            $$1 = $$2.apply($$1);
+      for (int $$5 = $$0; $$5 < $$0 + $$2; $$5++) {
+         for (int $$6 = $$1; $$6 < $$1 + $$3; $$6++) {
+            this.e[this.c($$5, $$6)] = $$4.get($$5, $$6);
          }
-
-         return $$1;
-      };
-   }
-
-   public static Dynamic<?> a(String $$0, Map<String, String> $$1) {
-      Dynamic<vi> $$2 = new Dynamic(uz.a, new ul());
-      Dynamic<vi> $$3 = $$2.set("Name", $$2.createString($$0));
-      if (!$$1.isEmpty()) {
-         $$3 = $$3.set(
-            "Properties",
-            $$2.createMap(
-               $$1.entrySet()
-                  .stream()
-                  .collect(Collectors.toMap($$1x -> $$2.createString((String)$$1x.getKey()), $$1x -> $$2.createString((String)$$1x.getValue())))
-            )
-         );
       }
-
-      return $$3;
    }
 
-   public static Dynamic<?> a(String $$0) {
-      return a($$0, Map.of());
+   public void a(Consumer<T> $$0) {
+      for (Object $$1 : this.e) {
+         $$0.accept((T)$$1);
+      }
    }
 
-   public static Dynamic<?> a(Dynamic<?> $$0, String $$1, UnaryOperator<String> $$2) {
-      return $$0.update($$1, $$2x -> (Dynamic)DataFixUtils.orElse($$2x.asString().map($$2).map($$0::createString).result(), $$2x));
+   public T a(int $$0, int $$1) {
+      if (!this.b($$0, $$1)) {
+         throw new IllegalArgumentException("Requested out of range value (" + $$0 + "," + $$1 + ") from " + this);
+      } else {
+         return (T)this.e[this.c($$0, $$1)];
+      }
+   }
+
+   public boolean b(int $$0, int $$1) {
+      int $$2 = $$0 - this.a;
+      int $$3 = $$1 - this.b;
+      return $$2 >= 0 && $$2 < this.c && $$3 >= 0 && $$3 < this.d;
+   }
+
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "StaticCache2D[%d, %d, %d, %d]", this.a, this.b, this.a + this.c, this.b + this.d);
+   }
+
+   private int c(int $$0, int $$1) {
+      int $$2 = $$0 - this.a;
+      int $$3 = $$1 - this.b;
+      return $$2 * this.d + $$3;
+   }
+
+   @FunctionalInterface
+   public interface a<T> {
+      T get(int var1, int var2);
    }
 }

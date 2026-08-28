@@ -1,22 +1,24 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class ebo {
-   public static final Codec<ebo> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ehb.a.fieldOf("generate_crack_chance").orElse(1.0).forGetter($$0x -> $$0x.b),
-               Codec.doubleRange(0.0, 5.0).fieldOf("base_crack_size").orElse(2.0).forGetter($$0x -> $$0x.c),
-               Codec.intRange(0, 10).fieldOf("crack_point_offset").orElse(2).forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, ebo::new)
-   );
-   public final double b;
-   public final double c;
-   public final int d;
+public class ebo<T> {
+   private final dgg a;
+   private final List<T> b;
 
-   public ebo(double $$0, double $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public ebo(dgg $$0, List<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public dgg a() {
+      return this.a;
+   }
+
+   public Stream<T> b() {
+      return this.b.stream();
+   }
+
+   public boolean c() {
+      return this.b.isEmpty();
    }
 }

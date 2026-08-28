@@ -1,22 +1,54 @@
-import java.util.Arrays;
-import java.util.function.Function;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
 
-public interface evx<T extends evx<T>> {
-   T b(ewb.a var1);
+public class evx {
+   private final int a;
+   private final long b;
+   private final String c;
+   private final evn d;
+   private final boolean e;
 
-   default <E> T a(Iterable<E> $$0, Function<E, ewb.a> $$1) {
-      T $$2 = this.c();
-
-      for (E $$3 : $$0) {
-         $$2 = $$2.b($$1.apply($$3));
-      }
-
-      return $$2;
+   private evx(int $$0, long $$1, String $$2, int $$3, String $$4, boolean $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = new evn($$3, $$4);
+      this.e = $$5;
    }
 
-   default <E> T a(E[] $$0, Function<E, ewb.a> $$1) {
-      return this.a(Arrays.asList($$0), $$1);
+   public static evx a(Dynamic<?> $$0) {
+      int $$1 = $$0.get("version").asInt(0);
+      long $$2 = $$0.get("LastPlayed").asLong(0L);
+      OptionalDynamic<?> $$3 = $$0.get("Version");
+      return $$3.result().isPresent()
+         ? new evx(
+            $$1,
+            $$2,
+            $$3.get("Name").asString(ab.b().c()),
+            $$3.get("Id").asInt(ab.b().d().c()),
+            $$3.get("Series").asString(evn.a),
+            $$3.get("Snapshot").asBoolean(!ab.b().g())
+         )
+         : new evx($$1, $$2, "", 0, evn.a, false);
    }
 
-   T c();
+   public int a() {
+      return this.a;
+   }
+
+   public long b() {
+      return this.b;
+   }
+
+   public String c() {
+      return this.c;
+   }
+
+   public evn d() {
+      return this.d;
+   }
+
+   public boolean e() {
+      return this.e;
+   }
 }

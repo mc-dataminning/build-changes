@@ -1,45 +1,44 @@
-import java.util.Arrays;
+import java.util.Set;
 
-public class gbm extends fzj<gxm> {
-   public static final gcu a = gcu.scaling(0.5F);
-   private final gcl[] b = new gcl[8];
+public class gbm extends gcp<gya> {
+   public static final geq a = new gag(true, 19.0F, 1.0F, 2.5F, 2.0F, 24.0F, Set.of("head"));
 
-   public gbm(gcl $$0) {
+   public gbm(geh $$0) {
       super($$0);
-      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
    }
 
-   private static String a(int $$0) {
-      return "tentacle" + $$0;
+   public static gen a() {
+      gep $$0 = new gep();
+      ger $$1 = $$0.a();
+      ger $$2 = $$1.a(
+         "head",
+         gem.c()
+            .a(2, 61)
+            .a("right ear", -6.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
+            .a(2, 61)
+            .a()
+            .a("left ear", 2.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
+            .a(23, 52)
+            .a("goatee", -0.5F, -3.0F, -14.0F, 0.0F, 7.0F, 5.0F),
+         gej.a(1.0F, 14.0F, 0.0F)
+      );
+      $$2.a("left_horn", gem.c().a(12, 55).a(-0.01F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), gej.a(0.0F, 0.0F, 0.0F));
+      $$2.a("right_horn", gem.c().a(12, 55).a(-2.99F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), gej.a(0.0F, 0.0F, 0.0F));
+      $$2.a("nose", gem.c().a(34, 46).a(-3.0F, -4.0F, -8.0F, 5.0F, 7.0F, 10.0F), gej.a(0.0F, -8.0F, -8.0F, 0.9599F, 0.0F, 0.0F));
+      $$1.a("body", gem.c().a(1, 1).a(-4.0F, -17.0F, -7.0F, 9.0F, 11.0F, 16.0F).a(0, 28).a(-5.0F, -18.0F, -8.0F, 11.0F, 14.0F, 11.0F), gej.a(0.0F, 24.0F, 0.0F));
+      $$1.a("left_hind_leg", gem.c().a(36, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), gej.a(1.0F, 14.0F, 4.0F));
+      $$1.a("right_hind_leg", gem.c().a(49, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), gej.a(-3.0F, 14.0F, 4.0F));
+      $$1.a("left_front_leg", gem.c().a(49, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), gej.a(1.0F, 14.0F, -6.0F));
+      $$1.a("right_front_leg", gem.c().a(35, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), gej.a(-3.0F, 14.0F, -6.0F));
+      return gen.a($$0, 64, 64);
    }
 
-   public static gcr a() {
-      gct $$0 = new gct();
-      gcv $$1 = $$0.a();
-      gcp $$2 = new gcp(0.02F);
-      int $$3 = -16;
-      $$1.a("body", gcq.c().a(0, 0).a(-6.0F, -8.0F, -6.0F, 12.0F, 16.0F, 12.0F, $$2), gcn.a(0.0F, 8.0F, 0.0F));
-      int $$4 = 8;
-      gcq $$5 = gcq.c().a(48, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 18.0F, 2.0F);
-
-      for (int $$6 = 0; $$6 < 8; $$6++) {
-         double $$7 = (double)$$6 * Math.PI * 2.0 / 8.0;
-         float $$8 = (float)Math.cos($$7) * 5.0F;
-         float $$9 = 15.0F;
-         float $$10 = (float)Math.sin($$7) * 5.0F;
-         $$7 = (double)$$6 * Math.PI * -2.0 / 8.0 + (Math.PI / 2);
-         float $$11 = (float)$$7;
-         $$1.a(a($$6), $$5, gcn.a($$8, 15.0F, $$10, 0.0F, $$11, 0.0F));
-      }
-
-      return gcr.a($$0, 64, 32);
-   }
-
-   public void a(gxm $$0) {
+   public void a(gya $$0) {
       super.a($$0);
-
-      for (gcl $$1 : this.b) {
-         $$1.e = $$0.a;
+      this.b.b("left_horn").k = $$0.a;
+      this.b.b("right_horn").k = $$0.b;
+      if ($$0.c != 0.0F) {
+         this.b.e = $$0.c;
       }
    }
 }

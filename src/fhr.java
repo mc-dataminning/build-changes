@@ -1,27 +1,50 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
+import java.util.Date;
+import java.util.Map;
+import java.util.Map.Entry;
+import org.slf4j.Logger;
 
-public class fhr extends hfq {
-   protected BooleanConsumer a;
-   private final xj b;
-   private final xj c;
+public class fhr extends fiq {
+   private static final Logger f = LogUtils.getLogger();
+   public String a;
+   public Date b;
+   public long c;
+   private boolean g;
+   public Map<String, String> d = Maps.newHashMap();
+   public Map<String, String> e = Maps.newHashMap();
 
-   public fhr(BooleanConsumer $$0, xj $$1, xj $$2) {
-      super(fjv.a);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public static fhr a(JsonElement $$0) {
+      JsonObject $$1 = $$0.getAsJsonObject();
+      fhr $$2 = new fhr();
+
+      try {
+         $$2.a = fkm.b("backupId", $$1, "");
+         $$2.b = fkm.b("lastModifiedDate", $$1);
+         $$2.c = fkm.a("size", $$1, 0L);
+         if ($$1.has("metadata")) {
+            JsonObject $$3 = $$1.getAsJsonObject("metadata");
+
+            for (Entry<String, JsonElement> $$5 : $$3.entrySet()) {
+               if (!$$5.getValue().isJsonNull()) {
+                  $$2.d.put($$5.getKey(), $$5.getValue().getAsString());
+               }
+            }
+         }
+      } catch (Exception var7) {
+         f.error("Could not parse Backup: {}", var7.getMessage());
+      }
+
+      return $$2;
    }
 
-   @Override
-   public void aR_() {
-      this.c(fmd.a(xi.f, $$0 -> this.a.accept(true)).a(this.n / 2 - 105, g(9), 100, 20).a());
-      this.c(fmd.a(xi.g, $$0 -> this.a.accept(false)).a(this.n / 2 + 5, g(9), 100, 20).a());
+   public boolean a() {
+      return this.g;
    }
 
-   @Override
-   public void a(flq $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.b, this.n / 2, g(3), -1);
-      $$0.a(this.p, this.c, this.n / 2, g(5), -1);
+   public void a(boolean $$0) {
+      this.g = $$0;
    }
 }

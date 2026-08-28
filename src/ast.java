@@ -1,68 +1,61 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ast implements ajc {
-   private static final xj b = xj.c("disconnect.ignoring_status_request");
-   private final MinecraftServer c;
-   private final wd d;
+public class ast implements asr {
+   private static final Logger a = LogUtils.getLogger();
+   private final int b;
+   private int c;
+   private long d;
+   private long e = Long.MAX_VALUE;
 
-   public ast(MinecraftServer $$0, wd $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   private ast(int $$0) {
+      this.b = $$0;
+   }
+
+   public static ast b(int $$0) {
+      return $$0 > 0 ? c($$0 + 1) : c();
+   }
+
+   public static ast c(int $$0) {
+      int $$1 = asr.a($$0);
+      return new ast($$1 * $$1);
+   }
+
+   public static ast c() {
+      return new ast(0);
    }
 
    @Override
-   public void a(aiz $$0) {
-      switch ($$0.g()) {
-         case b:
-            this.a($$0, false);
-            break;
-         case a:
-            akg $$1 = this.c.au();
-            this.d.a(akk.d);
-            if (this.c.am() && $$1 != null) {
-               this.d.a(akk.b, new asw($$1, this.d));
-            } else {
-               this.d.a(b);
-            }
-            break;
-         case c:
-            if (!this.c.bm()) {
-               this.d.a(ajl.d);
-               xj $$2 = xj.c("multiplayer.disconnect.transfers_disabled");
-               this.d.a(new aji($$2));
-               this.d.a($$2);
-            } else {
-               this.a($$0, true);
-            }
-            break;
-         default:
-            throw new UnsupportedOperationException("Invalid intention " + $$0.g());
-      }
+   public void a(dgg $$0) {
+      this.e = ae.c();
+      this.d = this.e;
    }
 
-   private void a(aiz $$0, boolean $$1) {
-      this.d.a(ajl.d);
-      if ($$0.b() != ab.b().e()) {
-         xj $$2;
-         if ($$0.b() < 754) {
-            $$2 = xj.a("multiplayer.disconnect.outdated_client", ab.b().c());
-         } else {
-            $$2 = xj.a("multiplayer.disconnect.incompatible", ab.b().c());
-         }
+   @Override
+   public void a(dgg $$0, @Nullable eaj $$1) {
+      if ($$1 == eaj.n) {
+         this.c++;
+      }
 
-         this.d.a(new aji($$2));
-         this.d.a($$2);
-      } else {
-         this.d.a(ajl.b, new asu(this.c, this.d, $$1));
+      int $$2 = this.d();
+      if (ae.c() > this.e) {
+         this.e += 500L;
+         a.info(xv.a("menu.preparingSpawn", bae.a($$2, 0, 100)).getString());
       }
    }
 
    @Override
-   public void a(wf $$0) {
+   public void a() {
    }
 
    @Override
-   public boolean c() {
-      return this.d.i();
+   public void b() {
+      a.info("Time elapsed: {} ms", ae.c() - this.d);
+      this.e = Long.MAX_VALUE;
+   }
+
+   public int d() {
+      return this.b == 0 ? 100 : bae.d((float)this.c * 100.0F / (float)this.b);
    }
 }

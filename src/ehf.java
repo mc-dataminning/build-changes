@@ -1,62 +1,115 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public class ehf implements eha {
-   public static final Codec<ehf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               lz.e.q().fieldOf("block").flatXmap(ehf::a, DataResult::success).orElse((dnp)dis.fg).forGetter($$0x -> $$0x.b),
-               Codec.intRange(1, 64).fieldOf("search_range").orElse(10).forGetter($$0x -> $$0x.c),
-               Codec.BOOL.fieldOf("can_place_on_floor").orElse(false).forGetter($$0x -> $$0x.d),
-               Codec.BOOL.fieldOf("can_place_on_ceiling").orElse(false).forGetter($$0x -> $$0x.e),
-               Codec.BOOL.fieldOf("can_place_on_wall").orElse(false).forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spreading").orElse(0.5F).forGetter($$0x -> $$0x.g),
-               kf.a(ma.f).fieldOf("can_be_placed_on").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, ehf::new)
-   );
-   public final dnp b;
-   public final int c;
-   public final boolean d;
-   public final boolean e;
-   public final boolean f;
-   public final float g;
-   public final ju<diq> h;
-   private final ObjectArrayList<jm> i;
+public class ehf extends ego<eiz> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final bvm<?>[] b = new bvm[]{bvm.bf, bvm.bO, bvm.bO, bvm.bo};
+   private static final dxn c = dkg.nx.m();
 
-   private static DataResult<dnp> a(diq $$0) {
-      return $$0 instanceof dnp $$1 ? DataResult.success($$1) : DataResult.error(() -> "Growth block should be a multiface block");
+   public ehf(Codec<eiz> $$0) {
+      super($$0);
    }
 
-   public ehf(dnp $$0, int $$1, boolean $$2, boolean $$3, boolean $$4, float $$5, ju<diq> $$6) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = new ObjectArrayList(6);
-      if ($$3) {
-         this.i.add(jm.b);
+   @Override
+   public boolean a(egq<eiz> $$0) {
+      Predicate<dxn> $$1 = ego.a(axu.bQ);
+      jh $$2 = $$0.e();
+      bam $$3 = $$0.d();
+      dhy $$4 = $$0.b();
+      int $$5 = 3;
+      int $$6 = $$3.a(2) + 2;
+      int $$7 = -$$6 - 1;
+      int $$8 = $$6 + 1;
+      int $$9 = -1;
+      int $$10 = 4;
+      int $$11 = $$3.a(2) + 2;
+      int $$12 = -$$11 - 1;
+      int $$13 = $$11 + 1;
+      int $$14 = 0;
+
+      for (int $$15 = $$7; $$15 <= $$8; $$15++) {
+         for (int $$16 = -1; $$16 <= 4; $$16++) {
+            for (int $$17 = $$12; $$17 <= $$13; $$17++) {
+               jh $$18 = $$2.b($$15, $$16, $$17);
+               boolean $$19 = $$4.a_($$18).e();
+               if ($$16 == -1 && !$$19) {
+                  return false;
+               }
+
+               if ($$16 == 4 && !$$19) {
+                  return false;
+               }
+
+               if (($$15 == $$7 || $$15 == $$8 || $$17 == $$12 || $$17 == $$13) && $$16 == 0 && $$4.u($$18) && $$4.u($$18.d())) {
+                  $$14++;
+               }
+            }
+         }
       }
 
-      if ($$2) {
-         this.i.add(jm.a);
-      }
+      if ($$14 >= 1 && $$14 <= 5) {
+         for (int $$20 = $$7; $$20 <= $$8; $$20++) {
+            for (int $$21 = 3; $$21 >= -1; $$21--) {
+               for (int $$22 = $$12; $$22 <= $$13; $$22++) {
+                  jh $$23 = $$2.b($$20, $$21, $$22);
+                  dxn $$24 = $$4.a_($$23);
+                  if ($$20 == $$7 || $$21 == -1 || $$22 == $$12 || $$20 == $$8 || $$21 == 4 || $$22 == $$13) {
+                     if ($$23.v() >= $$4.L_() && !$$4.a_($$23.e()).e()) {
+                        $$4.a($$23, c, 2);
+                     } else if ($$24.e() && !$$24.a(dkg.cD)) {
+                        if ($$21 == -1 && $$3.a(4) != 0) {
+                           this.a($$4, $$23, dkg.cu.m(), $$1);
+                        } else {
+                           this.a($$4, $$23, dkg.m.m(), $$1);
+                        }
+                     }
+                  } else if (!$$24.a(dkg.cD) && !$$24.a(dkg.cA)) {
+                     this.a($$4, $$23, c, $$1);
+                  }
+               }
+            }
+         }
 
-      if ($$4) {
-         jm.c.a.forEach(this.i::add);
+         for (int $$25 = 0; $$25 < 2; $$25++) {
+            for (int $$26 = 0; $$26 < 3; $$26++) {
+               int $$27 = $$2.u() + $$3.a($$6 * 2 + 1) - $$6;
+               int $$28 = $$2.v();
+               int $$29 = $$2.w() + $$3.a($$11 * 2 + 1) - $$11;
+               jh $$30 = new jh($$27, $$28, $$29);
+               if ($$4.u($$30)) {
+                  int $$31 = 0;
+
+                  for (jm $$32 : jm.c.a) {
+                     if ($$4.a_($$30.a($$32)).e()) {
+                        $$31++;
+                     }
+                  }
+
+                  if ($$31 == 1) {
+                     this.a($$4, $$30, eog.a($$4, $$30, dkg.cD.m()), $$1);
+                     btk.a($$4, $$3, $$30, ewd.c);
+                     break;
+                  }
+               }
+            }
+         }
+
+         this.a($$4, $$2, dkg.cA.m(), $$1);
+         if ($$4.c_($$2) instanceof dwg $$34) {
+            $$34.a(this.a($$3), $$3);
+         } else {
+            a.error("Failed to fetch mob spawner entity at ({}, {}, {})", new Object[]{$$2.u(), $$2.v(), $$2.w()});
+         }
+
+         return true;
+      } else {
+         return false;
       }
    }
 
-   public List<jm> a(azu $$0, jm $$1) {
-      return ae.a(this.i.stream().filter($$1x -> $$1x != $$1), $$0);
-   }
-
-   public List<jm> a(azu $$0) {
-      return ae.a(this.i, $$0);
+   private bvm<?> a(bam $$0) {
+      return ae.a(b, $$0);
    }
 }

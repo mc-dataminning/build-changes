@@ -1,59 +1,61 @@
-public interface dfo {
-   int L_();
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Consumer;
+import java.util.function.UnaryOperator;
 
-   int K_();
+public record dfo(jq<dfp> c, jq<dfr> d, boolean e) implements dan {
+   public static final Codec<dfo> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dfp.c.fieldOf("material").forGetter(dfo::a),
+               dfr.c.fieldOf("pattern").forGetter(dfo::b),
+               Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dfo::new)
+   );
+   public static final zt<xg, dfo> b = zt.a(dfp.d, dfo::a, dfr.d, dfo::b, zr.b, $$0 -> $$0.e, dfo::new);
+   private static final xv f = xv.c(ae.a("item", alz.b("smithing_template.upgrade"))).a(n.h);
 
-   default int al() {
-      return this.K_() + this.L_() - 1;
+   public dfo(jq<dfp> $$0, jq<dfr> $$1) {
+      this($$0, $$1, true);
    }
 
-   default int am() {
-      return this.ao() - this.an() + 1;
+   private static String a(jq<dfp> $$0, alz $$1) {
+      String $$2 = $$0.a().d().get($$1);
+      return $$2 != null ? $$2 : $$0.a().a();
    }
 
-   default int an() {
-      return kj.a(this.K_());
+   public boolean a(jq<dfr> $$0, jq<dfp> $$1) {
+      return $$0.equals(this.d) && $$1.equals(this.c);
    }
 
-   default int ao() {
-      return kj.a(this.al());
+   public alz a(dfk.d $$0, alz $$1) {
+      alz $$2 = this.d.a().a();
+      String $$3 = a(this.c, $$1);
+      return $$2.a((UnaryOperator<String>)($$2x -> "trims/entity/" + $$0.c() + "/" + $$2x + "_" + $$3));
    }
 
-   default boolean d(int $$0) {
-      return $$0 >= this.K_() && $$0 <= this.al();
+   @Override
+   public void a(cxg.b $$0, Consumer<xv> $$1, czc $$2) {
+      if (this.e) {
+         $$1.accept(f);
+         $$1.accept(xu.a().b(this.d.a().a(this.c)));
+         $$1.accept(xu.a().b(this.c.a().e()));
+      }
    }
 
-   default boolean s(jh $$0) {
-      return this.e($$0.v());
+   public dfo a(boolean $$0) {
+      return new dfo(this.c, this.d, $$0);
    }
 
-   default boolean e(int $$0) {
-      return $$0 < this.K_() || $$0 > this.al();
+   public jq<dfp> a() {
+      return this.c;
    }
 
-   default int f(int $$0) {
-      return this.g(kj.a($$0));
+   public jq<dfr> b() {
+      return this.d;
    }
 
-   default int g(int $$0) {
-      return $$0 - this.an();
-   }
-
-   default int h(int $$0) {
-      return $$0 + this.an();
-   }
-
-   static dfo e(final int $$0, final int $$1) {
-      return new dfo() {
-         @Override
-         public int L_() {
-            return $$1;
-         }
-
-         @Override
-         public int K_() {
-            return $$0;
-         }
-      };
+   public boolean c() {
+      return this.e;
    }
 }

@@ -1,41 +1,98 @@
-import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import java.util.Set;
 
-public record eup<T>(ali<kd<T>> d, Codec<T> e, eup.a<T> f) {
-   public static final eup<exy> a = new eup<>(ma.bf, exy.e, e());
-   public static final eup<ewb> b = new eup<>(ma.be, ewd.c, e());
-   public static final eup<eus> c = new eup<>(ma.bd, eus.d, f());
+public record eup(ash d, fbs e, fbs f, float g, float h, boolean i, boolean j, Set<bwp> k, eup.a l) {
+   public static final eup.a a = $$0 -> {
+   };
+   public static final eup.a b = eup::a;
+   public static final eup.a c = eup::b;
 
-   public void a(eut $$0, ali<T> $$1, T $$2) {
-      this.f.run($$0, $$1, $$2);
+   public eup(ash $$0, fbs $$1, fbs $$2, float $$3, float $$4, eup.a $$5) {
+      this($$0, $$1, $$2, $$3, $$4, Set.of(), $$5);
    }
 
-   public static Stream<eup<?>> a() {
-      return Stream.of(a, b, c);
+   public eup(ash $$0, fbs $$1, fbs $$2, float $$3, float $$4, Set<bwp> $$5, eup.a $$6) {
+      this($$0, $$1, $$2, $$3, $$4, false, false, $$5, $$6);
    }
 
-   private static <T extends euo> eup.a<T> e() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
+   public eup(ash $$0, bvf $$1, eup.a $$2) {
+      this($$0, a($$0, $$1), fbs.c, 0.0F, 0.0F, false, false, Set.of(), $$2);
    }
 
-   private static eup.a<eus> f() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
+   private static void a(bvf $$0) {
+      if ($$0 instanceof asi $$1) {
+         $$1.f.b(new aef(1032, jh.c, 0, false));
+      }
    }
 
-   public ali<kd<T>> b() {
+   private static void b(bvf $$0) {
+      $$0.f(jh.a((ka)$$0.dt()));
+   }
+
+   public static eup a(ash $$0, bvf $$1, eup.a $$2) {
+      return new eup($$0, a($$0, $$1), fbs.c, 0.0F, 0.0F, true, false, Set.of(), $$2);
+   }
+
+   private static fbs a(ash $$0, bvf $$1) {
+      return $$1.a($$0, $$0.Y()).c();
+   }
+
+   public eup a(float $$0, float $$1) {
+      return new eup(this.b(), this.c(), this.d(), $$0, $$1, this.g(), this.h(), this.i(), this.j());
+   }
+
+   public eup a(fbs $$0) {
+      return new eup(this.b(), $$0, this.d(), this.e(), this.f(), this.g(), this.h(), this.i(), this.j());
+   }
+
+   public eup a() {
+      return new eup(this.b(), this.c(), this.d(), this.e(), this.f(), this.g(), true, this.i(), this.j());
+   }
+
+   public ash b() {
       return this.d;
    }
 
-   public Codec<T> c() {
+   public fbs c() {
       return this.e;
    }
 
-   public eup.a<T> d() {
+   public fbs d() {
       return this.f;
    }
 
+   public float e() {
+      return this.g;
+   }
+
+   public float f() {
+      return this.h;
+   }
+
+   public boolean g() {
+      return this.i;
+   }
+
+   public boolean h() {
+      return this.j;
+   }
+
+   public Set<bwp> i() {
+      return this.k;
+   }
+
+   public eup.a j() {
+      return this.l;
+   }
+
    @FunctionalInterface
-   public interface a<T> {
-      void run(eut var1, ali<T> var2, T var3);
+   public interface a {
+      void onTransition(bvf var1);
+
+      default eup.a then(eup.a $$0) {
+         return $$1 -> {
+            this.onTransition($$1);
+            $$0.onTransition($$1);
+         };
+      }
    }
 }

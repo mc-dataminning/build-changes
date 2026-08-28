@@ -1,15 +1,60 @@
-public class btn extends bto {
-   public btn(btp $$0, int $$1) {
-      super($$0, $$1);
+public class btn {
+   public static final float a = 1.0F;
+   protected float b = 20.0F;
+   protected long c = bbg.a / 20L;
+   protected int d = 0;
+   protected boolean e = true;
+   protected boolean f = false;
+
+   public void a(float $$0) {
+      this.b = Math.max($$0, 1.0F);
+      this.c = (long)((double)bbg.a / (double)this.b);
    }
 
-   @Override
-   public boolean a() {
-      return true;
+   public float f() {
+      return this.b;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 1;
+   public float g() {
+      return (float)this.c / (float)bbg.b;
+   }
+
+   public long h() {
+      return this.c;
+   }
+
+   public boolean i() {
+      return this.e;
+   }
+
+   public boolean j() {
+      return this.d > 0;
+   }
+
+   public void c(int $$0) {
+      this.d = $$0;
+   }
+
+   public int k() {
+      return this.d;
+   }
+
+   public void a(boolean $$0) {
+      this.f = $$0;
+   }
+
+   public boolean l() {
+      return this.f;
+   }
+
+   public void m() {
+      this.e = !this.f || this.d > 0;
+      if (this.d > 0) {
+         this.d--;
+      }
+   }
+
+   public boolean a(bvf $$0) {
+      return !this.i() && !($$0 instanceof cps) && $$0.de() <= 0;
    }
 }

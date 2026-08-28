@@ -1,107 +1,69 @@
-public abstract class hcj implements hdb {
-   protected hcy a;
-   protected final awo b;
-   protected final alj c;
-   protected float d = 1.0F;
-   protected float e = 1.0F;
-   protected double f;
-   protected double g;
-   protected double h;
-   protected boolean i;
-   protected int j;
-   protected hdb.a k = hdb.a.b;
-   protected boolean l;
-   protected azu m;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import org.slf4j.Logger;
 
-   protected hcj(awm $$0, awo $$1, azu $$2) {
-      this($$0.a(), $$1, $$2);
-   }
+public class hcj extends us {
+   private static final Logger b = LogUtils.getLogger();
+   private final Map<String, String> c;
+   private final boolean d;
 
-   protected hcj(alj $$0, awo $$1, azu $$2) {
+   private hcj(Map<String, String> $$0, boolean $$1) {
       this.c = $$0;
-      this.b = $$1;
-      this.m = $$2;
+      this.d = $$1;
    }
 
-   @Override
-   public alj a() {
-      return this.c;
-   }
+   public static hcj a(avv $$0, List<String> $$1, boolean $$2) {
+      Map<String, String> $$3 = new HashMap<>();
 
-   @Override
-   public heh a(heg $$0) {
-      if (this.c.equals(heg.c)) {
-         this.a = heg.e;
-         return heg.d;
-      } else {
-         heh $$1 = $$0.a(this.c);
-         if ($$1 == null) {
-            this.a = heg.b;
-         } else {
-            this.a = $$1.a(this.m);
+      for (String $$4 : $$1) {
+         String $$5 = String.format(Locale.ROOT, "lang/%s.json", $$4);
+
+         for (String $$6 : $$0.a()) {
+            try {
+               alz $$7 = alz.a($$6, $$5);
+               a($$4, $$0.a($$7), $$3);
+            } catch (Exception var10) {
+               b.warn("Skipped language file: {}:{} ({})", new Object[]{$$6, $$5, var10.toString()});
+            }
          }
+      }
 
-         return $$1;
+      ur.a().a($$3);
+      return new hcj(Map.copyOf($$3), $$2);
+   }
+
+   private static void a(String $$0, List<avt> $$1, Map<String, String> $$2) {
+      for (avt $$3 : $$1) {
+         try (InputStream $$4 = $$3.d()) {
+            us.a($$4, $$2::put);
+         } catch (IOException var10) {
+            b.warn("Failed to load translations for {} from pack {}", new Object[]{$$0, $$3.b(), var10});
+         }
       }
    }
 
    @Override
-   public hcy b() {
-      return this.a;
+   public String a(String $$0, String $$1) {
+      return this.c.getOrDefault($$0, $$1);
    }
 
    @Override
-   public awo c() {
-      return this.b;
+   public boolean b(String $$0) {
+      return this.c.containsKey($$0);
    }
 
    @Override
-   public boolean d() {
-      return this.i;
+   public boolean b() {
+      return this.d;
    }
 
    @Override
-   public int e() {
-      return this.j;
-   }
-
-   @Override
-   public float f() {
-      return this.d * this.a.c().a(this.m);
-   }
-
-   @Override
-   public float g() {
-      return this.e * this.a.d().a(this.m);
-   }
-
-   @Override
-   public double h() {
-      return this.f;
-   }
-
-   @Override
-   public double i() {
-      return this.g;
-   }
-
-   @Override
-   public double j() {
-      return this.h;
-   }
-
-   @Override
-   public hdb.a k() {
-      return this.k;
-   }
-
-   @Override
-   public boolean l() {
-      return this.l;
-   }
-
-   @Override
-   public String toString() {
-      return "SoundInstance[" + this.c + "]";
+   public azq a(ya $$0) {
+      return hck.a($$0, this.d);
    }
 }

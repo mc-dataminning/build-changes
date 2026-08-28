@@ -1,26 +1,59 @@
-@FunctionalInterface
-public interface ezj<T> {
-   void handle(T var1, ezl<T> var2, long var3);
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-   public abstract static class a<T, C extends ezj<T>> {
-      private final alj a;
-      private final Class<?> b;
+public record ezj(aly<ezs> b) implements ezs {
+   private static final Logger c = LogUtils.getLogger();
+   public static final MapCodec<ezj> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(aly.a(mb.bh).fieldOf("name").forGetter(ezj::c)).apply($$0, ezj::new));
 
-      public a(alj $$0, Class<?> $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   public ezt b() {
+      return ezu.p;
+   }
+
+   @Override
+   public void a(ewn $$0) {
+      if (!$$0.b()) {
+         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
+      } else if ($$0.a(this.b)) {
+         $$0.b("Condition " + this.b.a() + " is recursively called");
+      } else {
+         ezs.super.a($$0);
+         $$0.a()
+            .c(this.b)
+            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.b.a() + "}", this.b)), () -> $$0.b("Unknown condition table called " + this.b.a()));
       }
+   }
 
-      public alj a() {
-         return this.a;
+   public boolean a(ewh $$0) {
+      ezs $$1 = $$0.a().c(this.b).map(jq.c::a).orElse(null);
+      if ($$1 == null) {
+         c.warn("Tried using unknown condition table called {}", this.b.a());
+         return false;
+      } else {
+         ewh.c<?> $$2 = ewh.a($$1);
+         if ($$0.b($$2)) {
+            boolean var4;
+            try {
+               var4 = $$1.test($$0);
+            } finally {
+               $$0.c($$2);
+            }
+
+            return var4;
+         } else {
+            c.warn("Detected infinite loop in loot tables");
+            return false;
+         }
       }
+   }
 
-      public Class<?> b() {
-         return this.b;
-      }
+   public static ezs.a a(aly<ezs> $$0) {
+      return () -> new ezj($$0);
+   }
 
-      public abstract void a(ul var1, C var2);
-
-      public abstract C b(ul var1);
+   public aly<ezs> c() {
+      return this.b;
    }
 }

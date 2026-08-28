@@ -1,49 +1,78 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class drf extends dic {
+public class drf extends dko implements dkh, dox {
    public static final MapCodec<drf> a = b(drf::new);
-   public static final dws<dvb> b = dwl.by;
-   public static final dwm c = dwl.bA;
+   protected static final float b = 6.0F;
+   protected static final fcm c = dke.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
 
    @Override
    public MapCodec<drf> a() {
       return a;
    }
 
-   public drf(dvu.d $$0) {
+   protected drf(dxm.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, dvb.a).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dvw.a<diq, dvv> $$0) {
-      $$0.a(b, c);
+   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
+      return c;
    }
 
    @Override
-   protected dow a_(dvv $$0) {
-      return dow.c;
-   }
-
-   @Nullable
-   @Override
-   public dsy a(jh $$0, dvv $$1) {
-      return new duu($$0, $$1);
+   protected boolean b(dxn $$0, dgf $$1, jh $$2) {
+      return $$0.c($$1, $$2, jm.b) && !$$0.a(dkg.le);
    }
 
    @Nullable
    @Override
-   public <T extends dsy> dsz<T> a(dfm $$0, dvv $$1, dta<T> $$2) {
-      return $$0 instanceof arp $$3
-         ? a($$2, dta.Q, ($$1x, $$2x, $$3x, $$4) -> $$4.c().a($$3, $$2x, $$3x.d(dwl.bA).orElse(false)))
-         : a($$2, dta.Q, ($$0x, $$1x, $$2x, $$3x) -> $$3x.c().a($$0x, $$1x, $$2x.d(dwl.bA).orElse(false)));
+   public dxn a(dbb $$0) {
+      etp $$1 = $$0.q().b_($$0.a());
+      return $$1.a(aya.a) && $$1.e() == 8 ? super.a($$0) : null;
    }
 
    @Override
-   public void a(cwm $$0, cwi.b $$1, List<xj> $$2, cye $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      dgh.a($$0, $$2, "spawn_data");
+   protected dxn a(dxn $$0, dhd $$1, dhp $$2, jh $$3, jm $$4, jh $$5, dxn $$6, bam $$7) {
+      dxn $$8 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      if (!$$8.l()) {
+         $$2.a($$3, etq.c, etq.c.a($$1));
+      }
+
+      return $$8;
+   }
+
+   @Override
+   public boolean b(dhd $$0, jh $$1, dxn $$2) {
+      return $$0.a_($$1.d()).a(dkg.J);
+   }
+
+   @Override
+   public boolean a(dha $$0, bam $$1, jh $$2, dxn $$3) {
+      return true;
+   }
+
+   @Override
+   protected etp b_(dxn $$0) {
+      return etq.c.a(false);
+   }
+
+   @Override
+   public void a(ash $$0, bam $$1, jh $$2, dxn $$3) {
+      dxn $$4 = dkg.bE.m();
+      dxn $$5 = $$4.b(dsn.d, dyi.a);
+      jh $$6 = $$2.d();
+      $$0.a($$2, $$4, 2);
+      $$0.a($$6, $$5, 2);
+   }
+
+   @Override
+   public boolean a(@Nullable cps $$0, dgf $$1, jh $$2, dxn $$3, eto $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(dhb $$0, jh $$1, dxn $$2, etp $$3) {
+      return false;
    }
 }

@@ -2,87 +2,84 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public interface dco {
-   static <T, A extends T> MapCodec<A> a(Codec<T> $$0, Function<List<T>, A> $$1, Function<A, List<T>> $$2) {
-      return RecordCodecBuilder.mapCodec($$3 -> $$3.group($$0.listOf().fieldOf("effects").forGetter($$2)).apply($$3, $$1));
+public class dco implements dbp {
+   final String c;
+   final dbn d;
+   final cxk e;
+   final List<dbv> f;
+   @Nullable
+   private dby g;
+
+   public dco(String $$0, dbn $$1, cxk $$2, List<dbv> $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   static dco.a a(dcu... $$0) {
-      return new dco.a(List.of($$0));
+   @Override
+   public dci<dco> a() {
+      return dci.b;
    }
 
-   static dco.b a(dcv... $$0) {
-      return new dco.b(List.of($$0));
+   @Override
+   public String j() {
+      return this.c;
    }
 
-   static dco.c a(dcw... $$0) {
-      return new dco.c(List.of($$0));
+   @Override
+   public dbn c() {
+      return this.d;
    }
 
-   public static record a(List<dcu> d) implements dcu {
-      public static final MapCodec<dco.a> a = dco.a(dcu.b, dco.a::new, dco.a::b);
-
-      @Override
-      public void a(arp $$0, int $$1, dcc $$2, bul $$3, ezy $$4) {
-         for (dcu $$5 : this.d) {
-            $$5.a($$0, $$1, $$2, $$3, $$4);
-         }
+   @Override
+   public dby ap_() {
+      if (this.g == null) {
+         this.g = dby.b(this.f);
       }
 
-      @Override
-      public MapCodec<dco.a> a() {
-         return a;
-      }
-
-      public List<dcu> b() {
-         return this.d;
-      }
+      return this.g;
    }
 
-   public static record b(List<dcv> b) implements dcv {
-      public static final MapCodec<dco.b> a = dco.a(dcv.c, dco.b::new, dco.b::b);
-
-      @Override
-      public void a(arp $$0, int $$1, dcc $$2, bul $$3, ezy $$4, boolean $$5) {
-         for (dcv $$6 : this.b) {
-            $$6.a($$0, $$1, $$2, $$3, $$4, $$5);
-         }
-      }
-
-      @Override
-      public void a(dcc $$0, bul $$1, ezy $$2, int $$3) {
-         for (dcv $$4 : this.b) {
-            $$4.a($$0, $$1, $$2, $$3);
-         }
-      }
-
-      @Override
-      public MapCodec<dco.b> a() {
-         return a;
+   public boolean a(dbo $$0, dha $$1) {
+      if ($$0.e() != this.f.size()) {
+         return false;
+      } else {
+         return $$0.a() == 1 && this.f.size() == 1 ? this.f.getFirst().a($$0.a(0)) : $$0.c().a(this, null);
       }
    }
 
-   public static record c(List<dcw> c) implements dcw {
-      public static final MapCodec<dco.c> a = dco.a(dcw.b, dco.c::new, dco.c::b);
+   public cxk a(dbo $$0, js.a $$1) {
+      return this.e.v();
+   }
+
+   @Override
+   public List<ddc> g() {
+      return List.of(new ddh(this.f.stream().map(dbv::b).toList(), new ddi.e(this.e), new ddi.d(cxo.fa)));
+   }
+
+   public static class a implements dci<dco> {
+      private static final MapCodec<dco> x = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.c),
+                  dbn.e.fieldOf("category").orElse(dbn.d).forGetter($$0x -> $$0x.d),
+                  cxk.d.fieldOf("result").forGetter($$0x -> $$0x.e),
+                  dbv.d.listOf(1, 9).fieldOf("ingredients").forGetter($$0x -> $$0x.f)
+               )
+               .apply($$0, dco::new)
+      );
+      public static final zt<xg, dco> w = zt.a(zr.o, $$0 -> $$0.c, dbn.g, $$0 -> $$0.d, cxk.i, $$0 -> $$0.e, dbv.a.a(zr.a()), $$0 -> $$0.f, dco::new);
 
       @Override
-      public float a(int $$0, azu $$1, float $$2) {
-         for (dcw $$3 : this.c) {
-            $$2 = $$3.a($$0, $$1, $$2);
-         }
-
-         return $$2;
+      public MapCodec<dco> a() {
+         return x;
       }
 
       @Override
-      public MapCodec<dco.c> a() {
-         return a;
-      }
-
-      public List<dcw> b() {
-         return this.c;
+      public zt<xg, dco> b() {
+         return w;
       }
    }
 }

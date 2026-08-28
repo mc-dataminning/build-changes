@@ -1,19 +1,26 @@
-import com.google.common.collect.ImmutableList;
+import java.util.function.Consumer;
 
-public interface fqb {
-   default void a(fqa $$0, xj $$1) {
-      this.a($$0, fqd.a($$1.getString()));
+public class fqb implements fqc {
+   private final xv b;
+   protected final frm a = new frm();
+
+   public fqb(xv $$0) {
+      this.b = $$0;
    }
 
-   default void a(fqa $$0, String $$1) {
-      this.a($$0, fqd.a($$1));
+   @Override
+   public xv a() {
+      return this.b;
    }
 
-   default void a(fqa $$0, xj... $$1) {
-      this.a($$0, fqd.a(ImmutableList.copyOf($$1)));
+   @Override
+   public void a(Consumer<fnw> $$0) {
+      this.a.a($$0);
    }
 
-   void a(fqa var1, fqd<?> var2);
-
-   fqb a();
+   @Override
+   public void a(fsg $$0) {
+      this.a.a();
+      frl.a(this.a, $$0, 0.5F, 0.16666667F);
+   }
 }

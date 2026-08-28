@@ -1,65 +1,54 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.google.common.collect.Lists;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringEscapeUtils;
 
-public record aze<T extends Comparable<T>>(T b, T c) {
-   public static final Codec<aze<Integer>> a = a(Codec.INT);
+public class aze {
+   private static final String a = "\r\n";
+   private static final String b = ",";
+   private final Writer c;
+   private final int d;
 
-   public aze(T b, T c) {
-      if (b.compareTo(c) > 0) {
-         throw new IllegalArgumentException("min_inclusive must be less than or equal to max_inclusive");
+   aze(Writer $$0, List<String> $$1) throws IOException {
+      this.c = $$0;
+      this.d = $$1.size();
+      this.a($$1.stream());
+   }
+
+   public static aze.a a() {
+      return new aze.a();
+   }
+
+   public void a(Object... $$0) throws IOException {
+      if ($$0.length != this.d) {
+         throw new IllegalArgumentException("Invalid number of columns, expected " + this.d + ", but got " + $$0.length);
       } else {
-         this.b = b;
-         this.c = c;
+         this.a(Stream.of($$0));
       }
    }
 
-   public aze(T $$0) {
-      this($$0, $$0);
+   private void a(Stream<?> $$0) throws IOException {
+      this.c.write($$0.<CharSequence>map(aze::a).collect(Collectors.joining(",")) + "\r\n");
    }
 
-   public static <T extends Comparable<T>> Codec<aze<T>> a(Codec<T> $$0) {
-      return ayv.a($$0, "min_inclusive", "max_inclusive", aze::a, aze::a, aze::b);
+   private static String a(@Nullable Object $$0) {
+      return StringEscapeUtils.escapeCsv($$0 != null ? $$0.toString() : "[null]");
    }
 
-   public static <T extends Comparable<T>> Codec<aze<T>> a(Codec<T> $$0, T $$1, T $$2) {
-      return a($$0)
-         .validate(
-            $$2x -> {
-               if ($$2x.a().compareTo($$1) < 0) {
-                  return DataResult.error(() -> "Range limit too low, expected at least " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
-               } else {
-                  return $$2x.b().compareTo($$2) > 0
-                     ? DataResult.error(() -> "Range limit too high, expected at most " + $$2 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
-                     : DataResult.success($$2x);
-               }
-            }
-         );
-   }
+   public static class a {
+      private final List<String> a = Lists.newArrayList();
 
-   public static <T extends Comparable<T>> DataResult<aze<T>> a(T $$0, T $$1) {
-      return $$0.compareTo($$1) <= 0
-         ? DataResult.success(new aze($$0, $$1))
-         : DataResult.error(() -> "min_inclusive must be less than or equal to max_inclusive");
-   }
+      public aze.a a(String $$0) {
+         this.a.add($$0);
+         return this;
+      }
 
-   public boolean a(T $$0) {
-      return $$0.compareTo(this.b) >= 0 && $$0.compareTo(this.c) <= 0;
-   }
-
-   public boolean a(aze<T> $$0) {
-      return $$0.a().compareTo(this.b) >= 0 && $$0.c.compareTo(this.c) <= 0;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.b + ", " + this.c + "]";
-   }
-
-   public T a() {
-      return this.b;
-   }
-
-   public T b() {
-      return this.c;
+      public aze a(Writer $$0) throws IOException {
+         return new aze($$0, this.a);
+      }
    }
 }

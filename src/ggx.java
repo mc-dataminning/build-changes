@@ -1,40 +1,30 @@
-public class ggx extends gho {
-   private final ghj a;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
 
-   ggx(gdh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ghj $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.a = $$7;
-      this.d(1.5F);
-      this.n = false;
-      this.b($$7);
+public class ggx {
+   public static final ggx a = new ggx(ggw.b, ggy.createDnsSrvRedirectHandler(), ggt.a());
+   private final ggw b;
+   private final ggy c;
+   private final ggt d;
+
+   @VisibleForTesting
+   ggx(ggw $$0, ggy $$1, ggt $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public int a(float $$0) {
-      return 240;
-   }
+   public Optional<ggu> a(ggv $$0) {
+      Optional<ggu> $$1 = this.b.resolve($$0);
+      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
+         Optional<ggv> $$2 = this.c.lookupRedirect($$0);
+         if ($$2.isPresent()) {
+            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
+         }
 
-   @Override
-   public ggs b() {
-      return ggs.c;
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
-   }
-
-   public static record a(ghj a) implements ggr<lu> {
-      public ggo a(lu $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ggx $$8 = new ggx($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.b($$5, $$6, $$7);
-         $$8.A = $$0.b();
-         $$8.z = $$0.b();
-         $$8.a($$1.A.a(12) + 8);
-         return $$8;
+         return $$1;
+      } else {
+         return Optional.empty();
       }
    }
 }

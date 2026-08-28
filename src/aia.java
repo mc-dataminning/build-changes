@@ -1,36 +1,23 @@
-public class aia implements zq<agw> {
-   public static final zh<wg, aia> a = zq.a(aia::a, aia::new);
-   private static final int b = 2;
-   private final boolean c;
+import io.netty.buffer.ByteBuf;
 
-   public aia(coq $$0) {
-      this.c = $$0.b;
-   }
+public class aia implements aac<ahm> {
+   public static final aia a = new aia();
+   public static final zt<ByteBuf, aia> b = zt.a(a);
 
-   private aia(wg $$0) {
-      byte $$1 = $$0.readByte();
-      this.c = ($$1 & 2) != 0;
-   }
-
-   private void a(wg $$0) {
-      byte $$1 = 0;
-      if (this.c) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.l($$1);
+   private aia() {
    }
 
    @Override
-   public zs<aia> a() {
-      return agu.bM;
+   public aae<aia> a() {
+      return ahk.bx;
    }
 
-   public void a(agw $$0) {
+   public void a(ahm $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
-      return this.c;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

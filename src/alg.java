@@ -1,65 +1,242 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import io.netty.handler.codec.DecoderException;
+import io.netty.handler.codec.EncoderException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.ObjectUtils;
+import org.slf4j.Logger;
 
-public final class alg<E> implements Codec<jq<E>> {
-   private final ali<? extends kd<E>> a;
+public class alg {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 254;
+   static final ayx c = new ayx();
+   private final alf d;
+   private final alg.b<?>[] e;
+   private boolean f;
 
-   public static <E> alg<E> a(ali<? extends kd<E>> $$0) {
-      return new alg<>($$0);
+   alg(alf $$0, alg.b<?>[] $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   private alg(ali<? extends kd<E>> $$0) {
-      this.a = $$0;
+   public static <T> alc<T> a(Class<? extends alf> $$0, ald<T> $$1) {
+      if (a.isDebugEnabled()) {
+         try {
+            Class<?> $$2 = Class.forName(Thread.currentThread().getStackTrace()[2].getClassName());
+            if (!$$2.equals($$0)) {
+               a.debug("defineId called for: {} from {}", new Object[]{$$0, $$2, new RuntimeException()});
+            }
+         } catch (ClassNotFoundException var3) {
+         }
+      }
+
+      int $$3 = c.c($$0);
+      if ($$3 > 254) {
+         throw new IllegalArgumentException("Data value id is too big with " + $$3 + "! (Max is 254)");
+      } else {
+         return $$1.a($$3);
+      }
    }
 
-   public <T> DataResult<T> a(jq<E> $$0, DynamicOps<T> $$1, T $$2) {
-      if ($$1 instanceof alh<?> $$3) {
-         Optional<jt<E>> $$4 = $$3.a(this.a);
-         if ($$4.isPresent()) {
-            if (!$$0.a($$4.get())) {
-               return DataResult.error(() -> "Element " + $$0 + " is not valid in current registry set");
+   private <T> alg.b<T> b(alc<T> $$0) {
+      return (alg.b<T>)this.e[$$0.a()];
+   }
+
+   public <T> T a(alc<T> $$0) {
+      return this.b($$0).b();
+   }
+
+   public <T> void a(alc<T> $$0, T $$1) {
+      this.a($$0, $$1, false);
+   }
+
+   public <T> void a(alc<T> $$0, T $$1, boolean $$2) {
+      alg.b<T> $$3 = this.b($$0);
+      if ($$2 || ObjectUtils.notEqual($$1, $$3.b())) {
+         $$3.a($$1);
+         this.d.a($$0);
+         $$3.a(true);
+         this.f = true;
+      }
+   }
+
+   public boolean a() {
+      return this.f;
+   }
+
+   @Nullable
+   public List<alg.c<?>> b() {
+      if (!this.f) {
+         return null;
+      } else {
+         this.f = false;
+         List<alg.c<?>> $$0 = new ArrayList<>();
+
+         for (alg.b<?> $$1 : this.e) {
+            if ($$1.c()) {
+               $$1.a(false);
+               $$0.add($$1.e());
+            }
+         }
+
+         return $$0;
+      }
+   }
+
+   @Nullable
+   public List<alg.c<?>> c() {
+      List<alg.c<?>> $$0 = null;
+
+      for (alg.b<?> $$1 : this.e) {
+         if (!$$1.d()) {
+            if ($$0 == null) {
+               $$0 = new ArrayList<>();
             }
 
-            return (DataResult<T>)$$0.d()
-               .map(
-                  $$2x -> alj.a.encode($$2x.a(), $$1, $$2),
-                  $$0x -> DataResult.error(() -> "Elements from registry " + this.a + " can't be serialized to a value")
-               );
+            $$0.add($$1.e());
          }
       }
 
-      return DataResult.error(() -> "Can't access registry " + this.a);
+      return $$0;
    }
 
-   public <T> DataResult<Pair<jq<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
-      if ($$0 instanceof alh<?> $$2) {
-         Optional<jr<E>> $$3 = $$2.b(this.a);
-         if ($$3.isPresent()) {
-            return alj.a
-               .decode($$0, $$1)
-               .flatMap(
-                  $$1x -> {
-                     alj $$2x = (alj)$$1x.getFirst();
-                     return $$3.get()
-                        .a(ali.a(this.a, $$2x))
-                        .<DataResult>map(DataResult::success)
-                        .orElseGet(() -> DataResult.error(() -> "Failed to get element " + $$2x))
-                        .map($$1xx -> Pair.of($$1xx, $$1x.getSecond()))
-                        .setLifecycle(Lifecycle.stable());
-                  }
-               );
+   public void a(List<alg.c<?>> $$0) {
+      for (alg.c<?> $$1 : $$0) {
+         alg.b<?> $$2 = this.e[$$1.a];
+         this.a($$2, $$1);
+         this.d.a($$2.a());
+      }
+
+      this.d.a($$0);
+   }
+
+   private <T> void a(alg.b<T> $$0, alg.c<?> $$1) {
+      if (!Objects.equals($$1.b(), $$0.a.b())) {
+         throw new IllegalStateException(
+            String.format(
+               Locale.ROOT,
+               "Invalid entity data item type for field %d on entity %s: old=%s(%s), new=%s(%s)",
+               $$0.a.a(),
+               this.d,
+               $$0.b,
+               $$0.b.getClass(),
+               $$1.c,
+               $$1.c.getClass()
+            )
+         );
+      } else {
+         $$0.a((T)$$1.c);
+      }
+   }
+
+   public static class a {
+      private final alf a;
+      private final alg.b<?>[] b;
+
+      public a(alf $$0) {
+         this.a = $$0;
+         this.b = new alg.b[alg.c.b($$0.getClass())];
+      }
+
+      public <T> alg.a a(alc<T> $$0, T $$1) {
+         int $$2 = $$0.a();
+         if ($$2 > this.b.length) {
+            throw new IllegalArgumentException("Data value id is too big with " + $$2 + "! (Max is " + this.b.length + ")");
+         } else if (this.b[$$2] != null) {
+            throw new IllegalArgumentException("Duplicate id value for " + $$2 + "!");
+         } else if (ale.b($$0.b()) < 0) {
+            throw new IllegalArgumentException("Unregistered serializer " + $$0.b() + " for " + $$2 + "!");
+         } else {
+            this.b[$$0.a()] = new alg.b<>($$0, $$1);
+            return this;
          }
       }
 
-      return DataResult.error(() -> "Can't access registry " + this.a);
+      public alg a() {
+         for (int $$0 = 0; $$0 < this.b.length; $$0++) {
+            if (this.b[$$0] == null) {
+               throw new IllegalStateException("Entity " + this.a.getClass() + " has not defined synched data value " + $$0);
+            }
+         }
+
+         return new alg(this.a, this.b);
+      }
    }
 
-   @Override
-   public String toString() {
-      return "RegistryFixedCodec[" + this.a + "]";
+   public static class b<T> {
+      final alc<T> a;
+      T b;
+      private final T c;
+      private boolean d;
+
+      public b(alc<T> $$0, T $$1) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = $$1;
+      }
+
+      public alc<T> a() {
+         return this.a;
+      }
+
+      public void a(T $$0) {
+         this.b = $$0;
+      }
+
+      public T b() {
+         return this.b;
+      }
+
+      public boolean c() {
+         return this.d;
+      }
+
+      public void a(boolean $$0) {
+         this.d = $$0;
+      }
+
+      public boolean d() {
+         return this.c.equals(this.b);
+      }
+
+      public alg.c<T> e() {
+         return alg.c.a(this.a, this.b);
+      }
+   }
+
+   public static record c<T>(int a, ald<T> b, T c) {
+
+      public static <T> alg.c<T> a(alc<T> $$0, T $$1) {
+         ald<T> $$2 = $$0.b();
+         return new alg.c<>($$0.a(), $$2, $$2.copy($$1));
+      }
+
+      public void a(xg $$0) {
+         int $$1 = ale.b(this.b);
+         if ($$1 < 0) {
+            throw new EncoderException("Unknown serializer type " + this.b);
+         } else {
+            $$0.l(this.a);
+            $$0.c($$1);
+            this.b.codec().encode($$0, this.c);
+         }
+      }
+
+      public static alg.c<?> a(xg $$0, int $$1) {
+         int $$2 = $$0.l();
+         ald<?> $$3 = ale.a($$2);
+         if ($$3 == null) {
+            throw new DecoderException("Unknown serializer type " + $$2);
+         } else {
+            return a($$0, $$1, $$3);
+         }
+      }
+
+      private static <T> alg.c<T> a(xg $$0, int $$1, ald<T> $$2) {
+         return new alg.c<>($$1, $$2, $$2.codec().decode($$0));
+      }
    }
 }

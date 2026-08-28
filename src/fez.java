@@ -1,36 +1,48 @@
-import com.google.common.primitives.Floats;
-import it.unimi.dsi.fastutil.ints.IntArrays;
-import org.joml.Vector3f;
+import com.google.common.base.Charsets;
+import java.nio.ByteBuffer;
+import org.lwjgl.BufferUtils;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWErrorCallback;
+import org.lwjgl.glfw.GLFWErrorCallbackI;
+import org.lwjgl.system.MemoryUtil;
 
-public interface fez {
-   fez a = a(0.0F, 0.0F, 0.0F);
-   fez b = a((fez.a)($$0 -> -$$0.z()));
+public class fez {
+   public static final int a = 65545;
+   private final ByteBuffer b = BufferUtils.createByteBuffer(8192);
 
-   static fez a(float $$0, float $$1, float $$2) {
-      return a(new Vector3f($$0, $$1, $$2));
+   public String a(long $$0, GLFWErrorCallbackI $$1) {
+      GLFWErrorCallback $$2 = GLFW.glfwSetErrorCallback($$1);
+      String $$3 = GLFW.glfwGetClipboardString($$0);
+      $$3 = $$3 != null ? baz.a($$3) : "";
+      GLFWErrorCallback $$4 = GLFW.glfwSetErrorCallback($$2);
+      if ($$4 != null) {
+         $$4.free();
+      }
+
+      return $$3;
    }
 
-   static fez a(Vector3f $$0) {
-      return a($$0::distanceSquared);
+   private static void a(long $$0, ByteBuffer $$1, byte[] $$2) {
+      $$1.clear();
+      $$1.put($$2);
+      $$1.put((byte)0);
+      $$1.flip();
+      GLFW.glfwSetClipboardString($$0, $$1);
    }
 
-   static fez a(fez.a $$0) {
-      return $$1 -> {
-         float[] $$2 = new float[$$1.length];
-         int[] $$3 = new int[$$1.length];
+   public void a(long $$0, String $$1) {
+      byte[] $$2 = $$1.getBytes(Charsets.UTF_8);
+      int $$3 = $$2.length + 1;
+      if ($$3 < this.b.capacity()) {
+         a($$0, this.b, $$2);
+      } else {
+         ByteBuffer $$4 = MemoryUtil.memAlloc($$3);
 
-         for (int $$4 = 0; $$4 < $$1.length; $$3[$$4] = $$4++) {
-            $$2[$$4] = $$0.apply($$1[$$4]);
+         try {
+            a($$0, $$4, $$2);
+         } finally {
+            MemoryUtil.memFree($$4);
          }
-
-         IntArrays.mergeSort($$3, ($$1x, $$2x) -> Floats.compare($$2[$$2x], $$2[$$1x]));
-         return $$3;
-      };
-   }
-
-   int[] sort(Vector3f[] var1);
-
-   public interface a {
-      float apply(Vector3f var1);
+      }
    }
 }

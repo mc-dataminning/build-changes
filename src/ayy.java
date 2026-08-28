@@ -1,80 +1,32 @@
-import com.google.common.collect.ImmutableList;
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Locale;
 
-@FunctionalInterface
-public interface ayy {
-   ayy a = $$0 -> true;
-
-   boolean accept(ayz var1);
-
-   static ayy codepoint(int $$0, yg $$1) {
-      return $$2 -> $$2.accept(0, $$1, $$0);
-   }
-
-   static ayy forward(String $$0, yg $$1) {
-      return $$0.isEmpty() ? a : $$2 -> bah.a($$0, $$1, $$2);
-   }
-
-   static ayy forward(String $$0, yg $$1, Int2IntFunction $$2) {
-      return $$0.isEmpty() ? a : $$3 -> bah.a($$0, $$1, decorateOutput($$3, $$2));
-   }
-
-   static ayy backward(String $$0, yg $$1) {
-      return $$0.isEmpty() ? a : $$2 -> bah.b($$0, $$1, $$2);
-   }
-
-   static ayy backward(String $$0, yg $$1, Int2IntFunction $$2) {
-      return $$0.isEmpty() ? a : $$3 -> bah.b($$0, $$1, decorateOutput($$3, $$2));
-   }
-
-   static ayz decorateOutput(ayz $$0, Int2IntFunction $$1) {
-      return ($$2, $$3, $$4) -> $$0.accept($$2, $$3, (Integer)$$1.apply($$4));
-   }
-
-   static ayy composite() {
-      return a;
-   }
-
-   static ayy composite(ayy $$0) {
-      return $$0;
-   }
-
-   static ayy composite(ayy $$0, ayy $$1) {
-      return fromPair($$0, $$1);
-   }
-
-   static ayy composite(ayy... $$0) {
-      return fromList(ImmutableList.copyOf($$0));
-   }
-
-   static ayy composite(List<ayy> $$0) {
-      int $$1 = $$0.size();
-      switch ($$1) {
-         case 0:
-            return a;
-         case 1:
-            return $$0.get(0);
-         case 2:
-            return fromPair($$0.get(0), $$0.get(1));
-         default:
-            return fromList(ImmutableList.copyOf($$0));
-      }
-   }
-
-   static ayy fromPair(ayy $$0, ayy $$1) {
-      return $$2 -> $$0.accept($$2) && $$1.accept($$2);
-   }
-
-   static ayy fromList(List<ayy> $$0) {
-      return $$1 -> {
-         for (ayy $$2 : $$0) {
-            if (!$$2.accept($$1)) {
-               return false;
-            }
+public record ayy(int b) {
+   private static final String c = "#";
+   public static final Codec<ayy> a = Codec.STRING.comapFlatMap($$0 -> {
+      if (!$$0.startsWith("#")) {
+         return DataResult.error(() -> "Not a color code: " + $$0);
+      } else {
+         try {
+            int $$1 = (int)Long.parseLong($$0.substring(1), 16);
+            return DataResult.success(new ayy($$1));
+         } catch (NumberFormatException var2) {
+            return DataResult.error(() -> "Exception parsing color code: " + var2.getMessage());
          }
+      }
+   }, ayy::b);
 
-         return true;
-      };
+   private String b() {
+      return String.format(Locale.ROOT, "#%08X", this.b);
+   }
+
+   @Override
+   public String toString() {
+      return this.b();
+   }
+
+   public int a() {
+      return this.b;
    }
 }

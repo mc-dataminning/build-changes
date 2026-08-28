@@ -1,3 +1,3 @@
-public interface bsm extends cth {
-   xj o_();
+public interface bsm {
+   float a(bam var1);
 }

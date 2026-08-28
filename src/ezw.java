@@ -1,26 +1,29 @@
-public abstract class ezw {
-   protected final ezy a;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.MapCodec;
+import java.util.Set;
 
-   protected ezw(ezy $$0) {
-      this.a = $$0;
+public class ezw implements ezs {
+   private static final ezw b = new ezw();
+   public static final MapCodec<ezw> a = MapCodec.unit(b);
+
+   private ezw() {
    }
 
-   public double a(bul $$0) {
-      double $$1 = this.a.d - $$0.dA();
-      double $$2 = this.a.e - $$0.dC();
-      double $$3 = this.a.f - $$0.dG();
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   @Override
+   public ezt b() {
+      return ezu.g;
    }
 
-   public abstract ezw.a d();
-
-   public ezy g() {
-      return this.a;
+   @Override
+   public Set<eza<?>> a() {
+      return ImmutableSet.of(ezd.b);
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public boolean a(ewh $$0) {
+      return $$0.a(ezd.b);
+   }
+
+   public static ezs.a c() {
+      return () -> b;
    }
 }

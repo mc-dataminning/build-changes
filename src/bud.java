@@ -1,53 +1,24 @@
-import java.util.function.Consumer;
-
-public class bud {
-   private static final int a = Integer.MIN_VALUE;
-   private int b = Integer.MIN_VALUE;
-
-   public void a(int $$0) {
-      this.b = $$0;
+class bud extends bui {
+   protected bud(buj $$0, int $$1) {
+      super($$0, $$1);
    }
 
-   public void b(int $$0) {
-      if (!this.b()) {
-         this.a($$0);
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return true;
+   }
+
+   @Override
+   public boolean a(ash $$0, bwb $$1, int $$2) {
+      if ($$1 instanceof asi $$3 && !$$3.aa_() && $$0.al() != btb.a && $$0.c($$3.dv())) {
+         crf $$4 = $$0.d($$3.dv());
+         if ($$4 == null || $$4.m() < $$4.l()) {
+            $$3.a(new buk(bum.I, 600, $$2));
+            $$3.c($$3.dv());
+            return false;
+         }
       }
-   }
 
-   public void a(boolean $$0, int $$1) {
-      if ($$0) {
-         this.b($$1);
-      } else {
-         this.a();
-      }
-   }
-
-   public void a() {
-      this.b = Integer.MIN_VALUE;
-   }
-
-   public void a(Consumer<bud> $$0) {
-      if (this.b()) {
-         $$0.accept(this);
-      }
-   }
-
-   public void a(int $$0, float $$1) {
-      if (this.b()) {
-         this.b -= (int)((float)$$0 * $$1);
-      }
-   }
-
-   public long a(float $$0) {
-      float $$1 = $$0 - (float)this.b;
-      return (long)($$1 * 50.0F);
-   }
-
-   public boolean b() {
-      return this.b != Integer.MIN_VALUE;
-   }
-
-   public void a(bud $$0) {
-      this.b = $$0.b;
+      return true;
    }
 }

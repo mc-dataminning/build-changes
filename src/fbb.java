@@ -1,34 +1,29 @@
-import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public interface fbb {
-   int a();
+public class fbb implements fbd<MinecraftServer> {
+   final alz a;
 
-   void a(int var1);
-
-   default int b(int $$0) {
-      int $$1 = this.a() + $$0;
-      this.a($$1);
-      return $$1;
+   public fbb(alz $$0) {
+      this.a = $$0;
    }
 
-   default int b() {
-      return this.b(1);
+   public void a(MinecraftServer $$0, fbf<MinecraftServer> $$1, long $$2) {
+      amo $$3 = $$0.aE();
+      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
    }
 
-   default void c() {
-      this.a(0);
+   public static class a extends fbd.a<MinecraftServer, fbb> {
+      public a() {
+         super(alz.b("function"), fbb.class);
+      }
+
+      public void a(ux $$0, fbb $$1) {
+         $$0.a("Name", $$1.a.toString());
+      }
+
+      public fbb a(ux $$0) {
+         alz $$1 = alz.a($$0.l("Name"));
+         return new fbb($$1);
+      }
    }
-
-   boolean d();
-
-   void e();
-
-   void f();
-
-   @Nullable
-   xj g();
-
-   void a(@Nullable xj var1);
-
-   void a(@Nullable yz var1);
 }

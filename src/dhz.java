@@ -1,21 +1,23 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dhz extends dia {
-   public static final MapCodec<dhz> a = b(dhz::new);
-   protected static final float b = 6.0F;
-   protected static final fas c = diq.a(2.0, 0.0, 2.0, 14.0, 15.0, 14.0);
+public class dhz {
+   public static final Codec<dhz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(axe.b.fieldOf("sound").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("tick_chance").forGetter($$0x -> $$0x.c)).apply($$0, dhz::new)
+   );
+   private final jq<axe> b;
+   private final double c;
 
-   @Override
-   public MapCodec<dhz> a() {
-      return a;
+   public dhz(jq<axe> $$0, double $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   protected dhz(dvu.d $$0) {
-      super($$0);
+   public jq<axe> a() {
+      return this.b;
    }
 
-   @Override
-   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
-      return c;
+   public double b() {
+      return this.c;
    }
 }

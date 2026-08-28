@@ -1,97 +1,126 @@
-import com.google.common.collect.Streams;
-import com.mojang.logging.LogUtils;
-import java.lang.management.ManagementFactory;
-import java.lang.management.ThreadInfo;
-import java.lang.management.ThreadMXBean;
-import java.nio.file.Path;
-import java.util.Locale;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.Collection;
+import java.util.function.Function;
 
-public class aqj implements Runnable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final long b = 10000L;
-   private static final int c = 1;
-   private final aqg d;
-   private final long e;
-
-   public aqj(aqg $$0) {
-      this.d = $$0;
-      this.e = $$0.bv() * bao.b;
+public class aqj {
+   public static void a(CommandDispatcher<ew> $$0, es $$1) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("title").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ex.a(
+                                    "targets", fj.d()
+                                 )
+                                 .then(ex.a("clear").executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets")))))
+                              .then(ex.a("reset").executes($$0x -> b((ew)$$0x.getSource(), fj.f($$0x, "targets")))))
+                           .then(
+                              ex.a("title")
+                                 .then(
+                                    ex.a("title", ff.a($$1))
+                                       .executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), ff.a($$0x, "title"), "title", agq::new))
+                                 )
+                           ))
+                        .then(
+                           ex.a("subtitle")
+                              .then(
+                                 ex.a("title", ff.a($$1))
+                                    .executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), ff.a($$0x, "title"), "subtitle", ago::new))
+                              )
+                        ))
+                     .then(
+                        ex.a("actionbar")
+                           .then(
+                              ex.a("title", ff.a($$1))
+                                 .executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), ff.a($$0x, "title"), "actionbar", afp::new))
+                           )
+                     ))
+                  .then(
+                     ex.a("times")
+                        .then(
+                           ex.a("fadeIn", gl.a())
+                              .then(
+                                 ex.a("stay", gl.a())
+                                    .then(
+                                       ex.a("fadeOut", gl.a())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (ew)$$0x.getSource(),
+                                                   fj.f($$0x, "targets"),
+                                                   IntegerArgumentType.getInteger($$0x, "fadeIn"),
+                                                   IntegerArgumentType.getInteger($$0x, "stay"),
+                                                   IntegerArgumentType.getInteger($$0x, "fadeOut")
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
+      );
    }
 
-   @Override
-   public void run() {
-      while (this.d.x()) {
-         long $$0 = this.d.aB();
-         long $$1 = ae.d();
-         long $$2 = $$1 - $$0;
-         if ($$2 > this.e) {
-            a.error(
-               LogUtils.FATAL_MARKER,
-               "A single server tick took {} seconds (should be max {})",
-               String.format(Locale.ROOT, "%.2f", (float)$$2 / (float)bao.a),
-               String.format(Locale.ROOT, "%.2f", this.d.aP().g() / (float)bao.c)
-            );
-            a.error(LogUtils.FATAL_MARKER, "Considering it to be crashed, server will forcibly shutdown.");
-            o $$3 = a("Watching Server", this.d.ay().threadId());
-            this.d.b($$3.f());
-            p $$4 = $$3.a("Performance stats");
-            $$4.a("Random tick rate", () -> this.d.aZ().o().a(dfi.o).toString());
-            $$4.a("Level stats", () -> Streams.stream(this.d.L()).map($$0x -> $$0x.ag() + ": " + $$0x.F()).collect(Collectors.joining(",\n")));
-            all.a("Crash report:\n" + $$3.a(y.a));
-            Path $$5 = this.d.D().resolve("crash-reports").resolve("crash-" + ae.f() + "-server.txt");
-            if ($$3.a($$5, y.a)) {
-               a.error("This crash report has been saved to: {}", $$5.toAbsolutePath());
-            } else {
-               a.error("We were unable to save this crash report to disk.");
-            }
+   private static int a(ew $$0, Collection<asi> $$1) {
+      adi $$2 = new adi(false);
 
-            this.a();
-         }
-
-         try {
-            Thread.sleep(($$0 + this.e - $$1) / bao.b);
-         } catch (InterruptedException var10) {
-         }
+      for (asi $$3 : $$1) {
+         $$3.f.b($$2);
       }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> xv.a("commands.title.cleared.single", $$1.iterator().next().p_()), true);
+      } else {
+         $$0.a(() -> xv.a("commands.title.cleared.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 
-   public static o a(String $$0, long $$1) {
-      ThreadMXBean $$2 = ManagementFactory.getThreadMXBean();
-      ThreadInfo[] $$3 = $$2.dumpAllThreads(true, true);
-      StringBuilder $$4 = new StringBuilder();
-      Error $$5 = new Error("Watchdog");
+   private static int b(ew $$0, Collection<asi> $$1) {
+      adi $$2 = new adi(true);
 
-      for (ThreadInfo $$6 : $$3) {
-         if ($$6.getThreadId() == $$1) {
-            $$5.setStackTrace($$6.getStackTrace());
-         }
-
-         $$4.append($$6);
-         $$4.append("\n");
+      for (asi $$3 : $$1) {
+         $$3.f.b($$2);
       }
 
-      o $$7 = new o($$0, $$5);
-      p $$8 = $$7.a("Thread Dump");
-      $$8.a("Threads", $$4);
-      return $$7;
+      if ($$1.size() == 1) {
+         $$0.a(() -> xv.a("commands.title.reset.single", $$1.iterator().next().p_()), true);
+      } else {
+         $$0.a(() -> xv.a("commands.title.reset.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 
-   private void a() {
-      try {
-         Timer $$0 = new Timer();
-         $$0.schedule(new TimerTask() {
-            @Override
-            public void run() {
-               Runtime.getRuntime().halt(1);
-            }
-         }, 10000L);
-         System.exit(1);
-      } catch (Throwable var2) {
-         Runtime.getRuntime().halt(1);
+   private static int a(ew $$0, Collection<asi> $$1, xv $$2, String $$3, Function<xv, aac<?>> $$4) throws CommandSyntaxException {
+      for (asi $$5 : $$1) {
+         $$5.f.b($$4.apply(xy.a($$0, $$2, $$5, 0)));
       }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> xv.a("commands.title.show." + $$3 + ".single", $$1.iterator().next().p_()), true);
+      } else {
+         $$0.a(() -> xv.a("commands.title.show." + $$3 + ".multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
+   }
+
+   private static int a(ew $$0, Collection<asi> $$1, int $$2, int $$3, int $$4) {
+      agr $$5 = new agr($$2, $$3, $$4);
+
+      for (asi $$6 : $$1) {
+         $$6.f.b($$5);
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> xv.a("commands.title.times.single", $$1.iterator().next().p_()), true);
+      } else {
+         $$0.a(() -> xv.a("commands.title.times.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 }

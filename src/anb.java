@@ -1,171 +1,166 @@
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
+import com.google.common.collect.Sets;
 import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Set;
+import java.util.UUID;
 
-public class anb {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xj.b("commands.datapack.unknown", $$0));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xj.b("commands.datapack.enable.failed", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xj.b("commands.datapack.disable.failed", $$0));
-   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> xj.b("commands.datapack.disable.failed.feature", $$0));
-   private static final Dynamic2CommandExceptionType e = new Dynamic2CommandExceptionType(
-      ($$0, $$1) -> xj.b("commands.datapack.enable.failed.no_flags", $$0, $$1)
-   );
-   private static final SuggestionProvider<ew> f = ($$0, $$1) -> fb.b(
-         ((ew)$$0.getSource()).l().aF().e().stream().map(StringArgumentType::escapeIfRequired), $$1
-      );
-   private static final SuggestionProvider<ew> g = ($$0, $$1) -> {
-      aun $$2 = ((ew)$$0.getSource()).l().aF();
-      Collection<String> $$3 = $$2.e();
-      crq $$4 = ((ew)$$0.getSource()).w();
-      return fb.b(
-         $$2.d().stream().filter($$1x -> $$1x.e().a($$4)).map(auk::g).filter($$1x -> !$$3.contains($$1x)).map(StringArgumentType::escapeIfRequired), $$1
-      );
-   };
+public class anb extends asd {
+   private final alz h;
+   private final Set<UUID> i = Sets.newHashSet();
+   private int j;
+   private int k = 100;
 
-   public static void a(CommandDispatcher<ew> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("datapack").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     ex.a("enable")
-                        .then(
-                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ex.a(
-                                             "name", StringArgumentType.string()
-                                          )
-                                          .suggests(g)
-                                          .executes(
-                                             $$0x -> a((ew)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$1.k().a($$0xx, $$1, auk::h, false))
-                                          ))
-                                       .then(
-                                          ex.a("after")
-                                             .then(
-                                                ex.a("existing", StringArgumentType.string())
-                                                   .suggests(f)
-                                                   .executes(
-                                                      $$0x -> a(
-                                                            (ew)$$0x.getSource(),
-                                                            a($$0x, "name", true),
-                                                            ($$1, $$2) -> $$1.add($$1.indexOf(a($$0x, "existing", false)) + 1, $$2)
-                                                         )
-                                                   )
-                                             )
-                                       ))
-                                    .then(
-                                       ex.a("before")
-                                          .then(
-                                             ex.a("existing", StringArgumentType.string())
-                                                .suggests(f)
-                                                .executes(
-                                                   $$0x -> a(
-                                                         (ew)$$0x.getSource(),
-                                                         a($$0x, "name", true),
-                                                         ($$1, $$2) -> $$1.add($$1.indexOf(a($$0x, "existing", false)), $$2)
-                                                      )
-                                                )
-                                          )
-                                    ))
-                                 .then(ex.a("last").executes($$0x -> a((ew)$$0x.getSource(), a($$0x, "name", true), List::add))))
-                              .then(ex.a("first").executes($$0x -> a((ew)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$0xx.add(0, $$1))))
-                        )
-                  ))
-               .then(
-                  ex.a("disable").then(ex.a("name", StringArgumentType.string()).suggests(f).executes($$0x -> a((ew)$$0x.getSource(), a($$0x, "name", false))))
-               ))
-            .then(
-               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("list").executes($$0x -> a((ew)$$0x.getSource())))
-                     .then(ex.a("available").executes($$0x -> b((ew)$$0x.getSource()))))
-                  .then(ex.a("enabled").executes($$0x -> c((ew)$$0x.getSource())))
-            )
-      );
+   public anb(alz $$0, xv $$1) {
+      super($$1, bsu.a.g, bsu.b.a);
+      this.h = $$0;
+      this.a(0.0F);
    }
 
-   private static int a(ew $$0, auk $$1, anb.a $$2) throws CommandSyntaxException {
-      aun $$3 = $$0.l().aF();
-      List<auk> $$4 = Lists.newArrayList($$3.g());
-      $$2.apply($$4, $$1);
-      $$0.a(() -> xj.a("commands.datapack.modify.enable", $$1.a(true)), true);
-      aop.a($$4.stream().map(auk::g).collect(Collectors.toList()), $$0);
-      return $$4.size();
+   public alz a() {
+      return this.h;
    }
 
-   private static int a(ew $$0, auk $$1) {
-      aun $$2 = $$0.l().aF();
-      List<auk> $$3 = Lists.newArrayList($$2.g());
-      $$3.remove($$1);
-      $$0.a(() -> xj.a("commands.datapack.modify.disable", $$1.a(true)), true);
-      aop.a($$3.stream().map(auk::g).collect(Collectors.toList()), $$0);
-      return $$3.size();
+   @Override
+   public void a(asi $$0) {
+      super.a($$0);
+      this.i.add($$0.cG());
    }
 
-   private static int a(ew $$0) {
-      return c($$0) + b($$0);
+   public void a(UUID $$0) {
+      this.i.add($$0);
    }
 
-   private static int b(ew $$0) {
-      aun $$1 = $$0.l().aF();
-      $$1.a();
-      Collection<auk> $$2 = $$1.g();
-      Collection<auk> $$3 = $$1.d();
-      crq $$4 = $$0.w();
-      List<auk> $$5 = $$3.stream().filter($$2x -> !$$2.contains($$2x) && $$2x.e().a($$4)).toList();
-      if ($$5.isEmpty()) {
-         $$0.a(() -> xj.c("commands.datapack.list.available.none"), false);
-      } else {
-         $$0.a(() -> xj.a("commands.datapack.list.available.success", $$5.size(), xm.b($$5, $$0xx -> $$0xx.a(false))), false);
-      }
-
-      return $$5.size();
+   @Override
+   public void b(asi $$0) {
+      super.b($$0);
+      this.i.remove($$0.cG());
    }
 
-   private static int c(ew $$0) {
-      aun $$1 = $$0.l().aF();
-      $$1.a();
-      Collection<? extends auk> $$2 = $$1.g();
-      if ($$2.isEmpty()) {
-         $$0.a(() -> xj.c("commands.datapack.list.enabled.none"), false);
-      } else {
-         $$0.a(() -> xj.a("commands.datapack.list.enabled.success", $$2.size(), xm.b($$2, $$0xx -> $$0xx.a(true))), false);
-      }
-
-      return $$2.size();
+   @Override
+   public void b() {
+      super.b();
+      this.i.clear();
    }
 
-   private static auk a(CommandContext<ew> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
-      String $$3 = StringArgumentType.getString($$0, $$1);
-      aun $$4 = ((ew)$$0.getSource()).l().aF();
-      auk $$5 = $$4.c($$3);
-      if ($$5 == null) {
-         throw a.create($$3);
-      } else {
-         boolean $$6 = $$4.g().contains($$5);
-         if ($$2 && $$6) {
-            throw b.create($$3);
-         } else if (!$$2 && !$$6) {
-            throw c.create($$3);
-         } else {
-            crq $$7 = ((ew)$$0.getSource()).w();
-            crq $$8 = $$5.e();
-            if (!$$2 && !$$8.b() && $$5.l() == auo.d) {
-               throw d.create($$3);
-            } else if (!$$8.a($$7)) {
-               throw e.create($$3, crs.a($$7, $$8));
-            } else {
-               return $$5;
+   public int c() {
+      return this.j;
+   }
+
+   public int d() {
+      return this.k;
+   }
+
+   public void a(int $$0) {
+      this.j = $$0;
+      this.a(bae.a((float)$$0 / (float)this.k, 0.0F, 1.0F));
+   }
+
+   public void b(int $$0) {
+      this.k = $$0;
+      this.a(bae.a((float)this.j / (float)$$0, 0.0F, 1.0F));
+   }
+
+   public final xv e() {
+      return xy.a(this.i()).a($$0 -> $$0.a(this.k().a()).a(new yb(yb.a.a, xv.b(this.a().toString()))).a(this.a().toString()));
+   }
+
+   public boolean a(Collection<asi> $$0) {
+      Set<UUID> $$1 = Sets.newHashSet();
+      Set<asi> $$2 = Sets.newHashSet();
+
+      for (UUID $$3 : this.i) {
+         boolean $$4 = false;
+
+         for (asi $$5 : $$0) {
+            if ($$5.cG().equals($$3)) {
+               $$4 = true;
+               break;
             }
          }
+
+         if (!$$4) {
+            $$1.add($$3);
+         }
+      }
+
+      for (asi $$6 : $$0) {
+         boolean $$7 = false;
+
+         for (UUID $$8 : this.i) {
+            if ($$6.cG().equals($$8)) {
+               $$7 = true;
+               break;
+            }
+         }
+
+         if (!$$7) {
+            $$2.add($$6);
+         }
+      }
+
+      for (UUID $$9 : $$1) {
+         for (asi $$10 : this.g()) {
+            if ($$10.cG().equals($$9)) {
+               this.b($$10);
+               break;
+            }
+         }
+
+         this.i.remove($$9);
+      }
+
+      for (asi $$11 : $$2) {
+         this.a($$11);
+      }
+
+      return !$$1.isEmpty() || !$$2.isEmpty();
+   }
+
+   public ux a(js.a $$0) {
+      ux $$1 = new ux();
+      $$1.a("Name", xv.a.a(this.a, $$0));
+      $$1.a("Visible", this.f());
+      $$1.a("Value", this.j);
+      $$1.a("Max", this.k);
+      $$1.a("Color", this.k().b());
+      $$1.a("Overlay", this.l().a());
+      $$1.a("DarkenScreen", this.m());
+      $$1.a("PlayBossMusic", this.n());
+      $$1.a("CreateWorldFog", this.o());
+      vd $$2 = new vd();
+
+      for (UUID $$3 : this.i) {
+         $$2.add(vm.a($$3));
+      }
+
+      $$1.a("Players", $$2);
+      return $$1;
+   }
+
+   public static anb a(ux $$0, alz $$1, js.a $$2) {
+      anb $$3 = new anb($$1, xv.a.a($$0.l("Name"), $$2));
+      $$3.d($$0.q("Visible"));
+      $$3.a($$0.h("Value"));
+      $$3.b($$0.h("Max"));
+      $$3.a(bsu.a.a($$0.l("Color")));
+      $$3.a(bsu.b.a($$0.l("Overlay")));
+      $$3.a($$0.q("DarkenScreen"));
+      $$3.b($$0.q("PlayBossMusic"));
+      $$3.c($$0.q("CreateWorldFog"));
+
+      for (vu $$5 : $$0.c("Players", 11)) {
+         $$3.a(vm.a($$5));
+      }
+
+      return $$3;
+   }
+
+   public void c(asi $$0) {
+      if (this.i.contains($$0.cG())) {
+         this.a($$0);
       }
    }
 
-   interface a {
-      void apply(List<auk> var1, auk var2) throws CommandSyntaxException;
+   public void d(asi $$0) {
+      super.b($$0);
    }
 }

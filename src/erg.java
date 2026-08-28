@@ -1,77 +1,20 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public abstract class erg<M extends erg<M>> {
-   private static final int b = 2;
-   private final long[] c = new long[2];
-   private final dxv[] d = new dxv[2];
-   private boolean e;
-   protected final Long2ObjectOpenHashMap<dxv> a;
+public class erg extends ery {
+   public static final MapCodec<erg> a = ma.e.q().fieldOf("block").xmap(erg::new, $$0 -> $$0.b);
+   private final dke b;
 
-   protected erg(Long2ObjectOpenHashMap<dxv> $$0) {
-      this.a = $$0;
-      this.c();
-      this.e = true;
+   public erg(dke $$0) {
+      this.b = $$0;
    }
 
-   public abstract M b();
-
-   public dxv a(long $$0) {
-      dxv $$1 = ((dxv)this.a.get($$0)).b();
-      this.a.put($$0, $$1);
-      this.c();
-      return $$1;
+   @Override
+   public boolean a(dxn $$0, bam $$1) {
+      return $$0.a(this.b);
    }
 
-   public boolean b(long $$0) {
-      return this.a.containsKey($$0);
-   }
-
-   @Nullable
-   public dxv c(long $$0) {
-      if (this.e) {
-         for (int $$1 = 0; $$1 < 2; $$1++) {
-            if ($$0 == this.c[$$1]) {
-               return this.d[$$1];
-            }
-         }
-      }
-
-      dxv $$2 = (dxv)this.a.get($$0);
-      if ($$2 == null) {
-         return null;
-      } else {
-         if (this.e) {
-            for (int $$3 = 1; $$3 > 0; $$3--) {
-               this.c[$$3] = this.c[$$3 - 1];
-               this.d[$$3] = this.d[$$3 - 1];
-            }
-
-            this.c[0] = $$0;
-            this.d[0] = $$2;
-         }
-
-         return $$2;
-      }
-   }
-
-   @Nullable
-   public dxv d(long $$0) {
-      return (dxv)this.a.remove($$0);
-   }
-
-   public void a(long $$0, dxv $$1) {
-      this.a.put($$0, $$1);
-   }
-
-   public void c() {
-      for (int $$0 = 0; $$0 < 2; $$0++) {
-         this.c[$$0] = Long.MAX_VALUE;
-         this.d[$$0] = null;
-      }
-   }
-
-   public void d() {
-      this.e = false;
+   @Override
+   protected erz<?> a() {
+      return erz.b;
    }
 }

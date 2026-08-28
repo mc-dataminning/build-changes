@@ -1,23 +1,21 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
+import java.util.Optional;
 
-public class biu extends DataFix {
-   public biu(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class biu extends bho {
+   public biu(Schema $$0) {
+      super($$0, false, "RemoveEmptyItemInSuspiciousBlockFix", bis.s, "minecraft:brushable_block");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bia.I.typeName(), DSL.remainderType());
-      if (!Objects.equals($$0, this.getInputSchema().getType(bia.I))) {
-         throw new IllegalStateException("Team type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere("TeamDisplayNameFix", $$0, $$0x -> $$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.update("DisplayName", bav::a)));
-      }
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("item").result();
+      return $$1.isPresent() && b($$1.get()) ? $$0.remove("item") : $$0;
+   }
+
+   private static boolean b(Dynamic<?> $$0) {
+      String $$1 = bkg.a($$0.get("id").asString("minecraft:air"));
+      int $$2 = $$0.get("count").asInt(0);
+      return $$1.equals("minecraft:air") || $$2 == 0;
    }
 }

@@ -1,13 +1,22 @@
-public abstract class ggw extends gho {
-   protected ggw(gdh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.j = this.j * 0.01F + $$4;
-      this.k = this.k * 0.01F + $$5;
-      this.l = this.l * 0.01F + $$6;
-      this.g = this.g + (double)((this.r.i() - this.r.i()) * 0.05F);
-      this.h = this.h + (double)((this.r.i() - this.r.i()) * 0.05F);
-      this.i = this.i + (double)((this.r.i() - this.r.i()) * 0.05F);
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2)) + 4;
-   }
+import com.mojang.logging.LogUtils;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.UnknownHostException;
+import java.util.Optional;
+import org.slf4j.Logger;
+
+@FunctionalInterface
+public interface ggw {
+   Logger a = LogUtils.getLogger();
+   ggw b = $$0 -> {
+      try {
+         InetAddress $$1 = InetAddress.getByName($$0.a());
+         return Optional.of(ggu.a(new InetSocketAddress($$1, $$0.b())));
+      } catch (UnknownHostException var2) {
+         a.debug("Couldn't resolve server {} address", $$0.a(), var2);
+         return Optional.empty();
+      }
+   };
+
+   Optional<ggu> resolve(ggv var1);
 }

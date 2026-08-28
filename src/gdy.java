@@ -1,90 +1,45 @@
-import java.util.IdentityHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
+public class gdy<S extends hae> extends gbs<S> implements gdq {
+   private final geh a = this.p.b("hat_rim");
 
-public class gdy {
-   private static final gdy.a a = new gdy.a();
-   private static final gdy.a b = new gdy.a();
-   private static final gdy.a c = new gdy.a();
-   private CompletableFuture<hdl<cwm>> d = CompletableFuture.completedFuture(hdl.empty());
-   private CompletableFuture<hdl<cwm>> e = CompletableFuture.completedFuture(hdl.empty());
-   private CompletableFuture<hdl<fvx>> f = CompletableFuture.completedFuture(hdl.empty());
-   private final Map<gdy.a, Runnable> g = new IdentityHashMap<>();
-
-   private void a(gdy.a $$0, Runnable $$1) {
-      $$1.run();
-      this.g.put($$0, $$1);
+   public gdy(geh $$0) {
+      super($$0);
    }
 
-   public void a() {
-      for (Runnable $$0 : this.g.values()) {
-         $$0.run();
-      }
+   public static gen a() {
+      gep $$0 = gbs.a(gel.a, 0.0F);
+      ger $$1 = $$0.a();
+      ger $$2 = $$1.a("head", new gem().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F).a(24, 0).a(-1.0F, -3.0F, -6.0F, 2.0F, 4.0F, 2.0F), gej.a);
+      ger $$3 = $$2.a("hat", gem.c().a(32, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F, new gel(0.5F)), gej.a);
+      $$3.a("hat_rim", gem.c().a(30, 47).a(-8.0F, -8.0F, -6.0F, 16.0F, 16.0F, 1.0F), gej.b((float) (-Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("body", gem.c().a(16, 20).a(-4.0F, 0.0F, -3.0F, 8.0F, 12.0F, 6.0F).a(0, 38).a(-4.0F, 0.0F, -3.0F, 8.0F, 20.0F, 6.0F, new gel(0.05F)), gej.a);
+      $$1.a("right_arm", gem.c().a(44, 22).a(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), gej.a(-5.0F, 2.0F, 0.0F));
+      $$1.a("left_arm", gem.c().a(44, 22).a().a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), gej.a(5.0F, 2.0F, 0.0F));
+      $$1.a("right_leg", gem.c().a(0, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), gej.a(-2.0F, 12.0F, 0.0F));
+      $$1.a("left_leg", gem.c().a(0, 22).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), gej.a(2.0F, 12.0F, 0.0F));
+      return gen.a($$0, 64, 64);
    }
 
-   private static Stream<String> a(Stream<cwm> $$0, cwi.b $$1, cye $$2) {
-      return $$0.<xj>flatMap($$2x -> $$2x.a($$1, null, $$2).stream()).map($$0x -> n.a($$0x.getString()).trim()).filter($$0x -> !$$0x.isEmpty());
+   public static gen a(gel $$0) {
+      gep $$1 = gbs.a($$0, 0.0F);
+      ger $$2 = $$1.a();
+      ger $$3 = $$2.a("head", gem.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), gej.a);
+      $$2.a("body", gem.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0.a(0.1F)), gej.a);
+      $$2.a("right_leg", gem.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.1F)), gej.a(-2.0F, 12.0F, 0.0F));
+      $$2.a("left_leg", gem.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.1F)), gej.a(2.0F, 12.0F, 0.0F));
+      $$3.b("hat").a("hat_rim", gem.c(), gej.a);
+      return gen.a($$1, 64, 32);
    }
 
-   public void a(fjp $$0, ke.b $$1) {
-      this.a(
-         a,
-         () -> {
-            List<fvx> $$2 = $$0.b();
-            kd<cwi> $$3 = $$1.e(ma.K);
-            cwi.b $$4 = cwi.b.a($$1);
-            cye $$5 = cye.a.a;
-            CompletableFuture<?> $$6 = this.f;
-            this.f = CompletableFuture.supplyAsync(
-               () -> new hdg<>(
-                     $$3xx -> a($$3xx.e().stream().map($$1xxxx -> $$1xxxx.b().a($$1)), $$4, $$5),
-                     $$2xx -> $$2xx.e().stream().map($$2xxx -> $$3.b($$2xxx.b().a($$1).h())),
-                     $$2
-                  ),
-               ae.g()
-            );
-            $$6.cancel(true);
-         }
-      );
+   public void a(S $$0) {
+      super.a($$0);
+      float $$1 = $$0.C;
+      fzz.a(this.s, this.r, $$0.a, $$1, $$0.p);
    }
 
-   public hdl<fvx> b() {
-      return this.f.join();
-   }
-
-   public void a(List<cwm> $$0) {
-      this.a(c, () -> {
-         CompletableFuture<?> $$1 = this.e;
-         this.e = CompletableFuture.supplyAsync(() -> new hdh<>($$0xxx -> $$0xxx.j().map(axs::b), $$0), ae.g());
-         $$1.cancel(true);
-      });
-   }
-
-   public hdl<cwm> c() {
-      return this.e.join();
-   }
-
-   public void a(js.a $$0, List<cwm> $$1) {
-      this.a(
-         b,
-         () -> {
-            cwi.b $$2 = cwi.b.a($$0);
-            cye $$3 = cye.a.a.c();
-            CompletableFuture<?> $$4 = this.d;
-            this.d = CompletableFuture.supplyAsync(
-               () -> new hdg<>($$2xx -> a(Stream.of($$2xx), $$2, $$3), $$0xxx -> $$0xxx.i().e().map(ali::a).stream(), $$1), ae.g()
-            );
-            $$4.cancel(true);
-         }
-      );
-   }
-
-   public hdl<cwm> d() {
-      return this.d.join();
-   }
-
-   static class a {
+   @Override
+   public void a(boolean $$0) {
+      this.o.k = $$0;
+      this.p.k = $$0;
+      this.a.k = $$0;
    }
 }

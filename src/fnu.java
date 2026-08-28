@@ -1,40 +1,120 @@
-import java.util.Locale;
+public abstract class fnu extends fnw {
+   private static final alz a = alz.b("widget/slider");
+   private static final alz d = alz.b("widget/slider_highlighted");
+   private static final alz e = alz.b("widget/slider_handle");
+   private static final alz f = alz.b("widget/slider_handle_highlighted");
+   protected static final int b = 2;
+   private static final int m = 8;
+   private static final int n = 4;
+   protected double c;
+   private boolean o;
 
-public class fnu extends fns {
-   private static final int f = 30;
-   private static final double g = 33.333333333333336;
+   public fnu(int $$0, int $$1, int $$2, int $$3, xv $$4, double $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
+   }
 
-   public fnu(flo $$0, bni $$1) {
-      super($$0, $$1);
+   private alz c() {
+      return this.aN_() && !this.o ? d : a;
+   }
+
+   private alz e() {
+      return !this.i && !this.o ? e : f;
    }
 
    @Override
-   protected void d(flq $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, "30 FPS", $$1 + 1, $$3 - 60 + 1);
-      this.a($$0, "60 FPS", $$1 + 1, $$3 - 30 + 1);
-      $$0.a(gjq.G(), $$1, $$1 + $$2 - 1, $$3 - 30, -1);
-      int $$4 = fke.Q().n.h().c();
-      if ($$4 > 0 && $$4 <= 250) {
-         $$0.a(gjq.G(), $$1, $$1 + $$2 - 1, $$3 - this.b(1.0E9 / (double)$$4) - 1, -16711681);
+   protected yj aR_() {
+      return xv.a("gui.narrate.slider", this.z());
+   }
+
+   @Override
+   public void a(frw $$0) {
+      $$0.a(frv.a, this.aR_());
+      if (this.j) {
+         if (this.aN_()) {
+            $$0.a(frv.d, xv.c("narration.slider.usage.focused"));
+         } else {
+            $$0.a(frv.d, xv.c("narration.slider.usage.hovered"));
+         }
       }
    }
 
    @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
+   public void b(fnl $$0, int $$1, int $$2, float $$3) {
+      flz $$4 = flz.Q();
+      $$0.a(glo::B, this.c(), this.D(), this.E(), this.y(), this.w(), ayp.a(this.l));
+      $$0.a(glo::B, this.e(), this.D() + (int)(this.c * (double)(this.g - 8)), this.E(), 8, this.w(), ayp.a(this.l));
+      int $$5 = this.j ? 16777215 : 10526880;
+      this.a($$0, $$4.h, 2, $$5 | bae.f(this.l * 255.0F) << 24);
    }
 
    @Override
-   protected int b(double $$0) {
-      return (int)Math.round(c($$0) * 60.0 / 33.333333333333336);
+   public void a(double $$0, double $$1) {
+      this.a($$0);
    }
 
    @Override
-   protected int a(long $$0) {
-      return this.a(c((double)$$0), 0.0, -16711936, 28.0, -256, 56.0, -65536);
+   public void a(boolean $$0) {
+      super.a($$0);
+      if (!$$0) {
+         this.o = false;
+      } else {
+         flw $$1 = flz.Q().aY();
+         if ($$1 == flw.b || $$1 == flw.d) {
+            this.o = true;
+         }
+      }
    }
 
-   private static double c(double $$0) {
-      return $$0 / 1000000.0;
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (fsb.a($$0)) {
+         this.o = !this.o;
+         return true;
+      } else {
+         if (this.o) {
+            boolean $$3 = $$0 == 263;
+            if ($$3 || $$0 == 262) {
+               float $$4 = $$3 ? -1.0F : 1.0F;
+               this.b(this.c + (double)($$4 / (float)(this.g - 8)));
+               return true;
+            }
+         }
+
+         return false;
+      }
    }
+
+   private void a(double $$0) {
+      this.b(($$0 - (double)(this.D() + 4)) / (double)(this.g - 8));
+   }
+
+   private void b(double $$0) {
+      double $$1 = this.c;
+      this.c = bae.a($$0, 0.0, 1.0);
+      if ($$1 != this.c) {
+         this.a();
+      }
+
+      this.b();
+   }
+
+   @Override
+   protected void b(double $$0, double $$1, double $$2, double $$3) {
+      this.a($$0);
+      super.b($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(hgg $$0) {
+   }
+
+   @Override
+   public void a_(double $$0, double $$1) {
+      super.a(flz.Q().ak());
+   }
+
+   protected abstract void b();
+
+   protected abstract void a();
 }

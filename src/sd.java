@@ -1,82 +1,17 @@
-import java.util.List;
-
 public class sd {
-   public static final ali<eei<?, ?>> a = sa.a("ore_magma");
-   public static final ali<eei<?, ?>> b = sa.a("ore_soul_sand");
-   public static final ali<eei<?, ?>> c = sa.a("ore_nether_gold");
-   public static final ali<eei<?, ?>> d = sa.a("ore_quartz");
-   public static final ali<eei<?, ?>> e = sa.a("ore_gravel_nether");
-   public static final ali<eei<?, ?>> f = sa.a("ore_blackstone");
-   public static final ali<eei<?, ?>> g = sa.a("ore_dirt");
-   public static final ali<eei<?, ?>> h = sa.a("ore_gravel");
-   public static final ali<eei<?, ?>> i = sa.a("ore_granite");
-   public static final ali<eei<?, ?>> j = sa.a("ore_diorite");
-   public static final ali<eei<?, ?>> k = sa.a("ore_andesite");
-   public static final ali<eei<?, ?>> l = sa.a("ore_tuff");
-   public static final ali<eei<?, ?>> m = sa.a("ore_coal");
-   public static final ali<eei<?, ?>> n = sa.a("ore_coal_buried");
-   public static final ali<eei<?, ?>> o = sa.a("ore_iron");
-   public static final ali<eei<?, ?>> p = sa.a("ore_iron_small");
-   public static final ali<eei<?, ?>> q = sa.a("ore_gold");
-   public static final ali<eei<?, ?>> r = sa.a("ore_gold_buried");
-   public static final ali<eei<?, ?>> s = sa.a("ore_redstone");
-   public static final ali<eei<?, ?>> t = sa.a("ore_diamond_small");
-   public static final ali<eei<?, ?>> u = sa.a("ore_diamond_medium");
-   public static final ali<eei<?, ?>> v = sa.a("ore_diamond_large");
-   public static final ali<eei<?, ?>> w = sa.a("ore_diamond_buried");
-   public static final ali<eei<?, ?>> x = sa.a("ore_lapis");
-   public static final ali<eei<?, ?>> y = sa.a("ore_lapis_buried");
-   public static final ali<eei<?, ?>> z = sa.a("ore_infested");
-   public static final ali<eei<?, ?>> A = sa.a("ore_emerald");
-   public static final ali<eei<?, ?>> B = sa.a("ore_ancient_debris_large");
-   public static final ali<eei<?, ?>> C = sa.a("ore_ancient_debris_small");
-   public static final ali<eei<?, ?>> D = sa.a("ore_copper_small");
-   public static final ali<eei<?, ?>> E = sa.a("ore_copper_large");
-   public static final ali<eei<?, ?>> F = sa.a("ore_clay");
+   public static final aly<dic> a = a("pale_garden");
 
-   public static void a(qz<eei<?, ?>> $$0) {
-      eqe $$1 = new eqm(axc.bf);
-      eqe $$2 = new eqm(axc.bg);
-      eqe $$3 = new eqm(axc.bh);
-      eqe $$4 = new epm(dis.dV);
-      eqe $$5 = new eqm(axc.bi);
-      List<ehi.a> $$6 = List.of(ehi.a($$2, dis.P.m()), ehi.a($$3, dis.Q.m()));
-      List<ehi.a> $$7 = List.of(ehi.a($$2, dis.N.m()), ehi.a($$3, dis.O.m()));
-      List<ehi.a> $$8 = List.of(ehi.a($$2, dis.cx.m()), ehi.a($$3, dis.cy.m()));
-      List<ehi.a> $$9 = List.of(ehi.a($$2, dis.aR.m()), ehi.a($$3, dis.aS.m()));
-      List<ehi.a> $$10 = List.of(ehi.a($$2, dis.ra.m()), ehi.a($$3, dis.rb.m()));
-      List<ehi.a> $$11 = List.of(ehi.a($$2, dis.R.m()), ehi.a($$3, dis.S.m()));
-      sa.a($$0, a, eew.I, new ehi($$4, dis.kJ.m(), 33));
-      sa.a($$0, b, eew.I, new ehi($$4, dis.dW.m(), 12));
-      sa.a($$0, c, eew.I, new ehi($$4, dis.T.m(), 10));
-      sa.a($$0, d, eew.I, new ehi($$4, dis.hb.m(), 14));
-      sa.a($$0, e, eew.I, new ehi($$4, dis.L.m(), 33));
-      sa.a($$0, f, eew.I, new ehi($$4, dis.pr.m(), 33));
-      sa.a($$0, g, eew.I, new ehi($$1, dis.j.m(), 33));
-      sa.a($$0, h, eew.I, new ehi($$1, dis.L.m(), 33));
-      sa.a($$0, i, eew.I, new ehi($$1, dis.c.m(), 64));
-      sa.a($$0, j, eew.I, new ehi($$1, dis.e.m(), 64));
-      sa.a($$0, k, eew.I, new ehi($$1, dis.g.m(), 64));
-      sa.a($$0, l, eew.I, new ehi($$1, dis.qz.m(), 64));
-      sa.a($$0, m, eew.I, new ehi($$11, 17));
-      sa.a($$0, n, eew.I, new ehi($$11, 17, 0.5F));
-      sa.a($$0, o, eew.I, new ehi($$6, 9));
-      sa.a($$0, p, eew.I, new ehi($$6, 4));
-      sa.a($$0, q, eew.I, new ehi($$7, 9));
-      sa.a($$0, r, eew.I, new ehi($$7, 9, 0.5F));
-      sa.a($$0, s, eew.I, new ehi(List.of(ehi.a($$2, dis.dI.m()), ehi.a($$3, dis.dJ.m())), 8));
-      sa.a($$0, t, eew.I, new ehi($$8, 4, 0.5F));
-      sa.a($$0, v, eew.I, new ehi($$8, 12, 0.7F));
-      sa.a($$0, w, eew.I, new ehi($$8, 8, 1.0F));
-      sa.a($$0, u, eew.I, new ehi($$8, 8, 0.5F));
-      sa.a($$0, x, eew.I, new ehi($$9, 7));
-      sa.a($$0, y, eew.I, new ehi($$9, 7, 1.0F));
-      sa.a($$0, z, eew.I, new ehi(List.of(ehi.a($$2, dis.eN.m()), ehi.a($$3, dis.td.m())), 9));
-      sa.a($$0, A, eew.I, new ehi(List.of(ehi.a($$2, dis.fE.m()), ehi.a($$3, dis.fF.m())), 3));
-      sa.a($$0, B, eew.af, new ehi($$5, dis.pj.m(), 3, 1.0F));
-      sa.a($$0, C, eew.af, new ehi($$5, dis.pj.m(), 2, 1.0F));
-      sa.a($$0, D, eew.I, new ehi($$10, 10));
-      sa.a($$0, E, eew.I, new ehi($$10, 20));
-      sa.a($$0, F, eew.I, new ehi($$1, dis.dR.m(), 33));
+   public static aly<dic> a(String $$0) {
+      return aly.a(mb.aH, alz.b($$0));
+   }
+
+   public static void a(rk<dic> $$0, String $$1, dic $$2) {
+      $$0.a(a($$1), $$2);
+   }
+
+   public static void a(rk<dic> $$0) {
+      jr<eng> $$1 = $$0.a(mb.aS);
+      jr<efm<?>> $$2 = $$0.a(mb.aJ);
+      $$0.a(a, sh.i($$1, $$2, true));
    }
 }

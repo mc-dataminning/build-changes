@@ -1,23 +1,23 @@
-import java.util.List;
-
-public record abg(List<jh> c) implements aat {
-   public static final zh<wg, abg> a = aat.a(abg::a, abg::new);
-   public static final aat.b<abg> b = aat.a("debug/raids");
-
-   private abg(wg $$0) {
-      this($$0.a(jh.b));
-   }
-
-   private void a(wg $$0) {
-      $$0.a(this.c, jh.b);
+public record abg(alz a) implements abf {
+   public static <T extends ws> zt<T, abg> a(alz $$0, int $$1) {
+      return abf.a(($$0x, $$1x) -> {
+      }, $$2 -> {
+         int $$3 = $$2.readableBytes();
+         if ($$3 >= 0 && $$3 <= $$1) {
+            $$2.k($$3);
+            return new abg($$0);
+         } else {
+            throw new IllegalArgumentException("Payload may not be larger than " + $$1 + " bytes");
+         }
+      });
    }
 
    @Override
-   public aat.b<abg> a() {
-      return b;
+   public abf.b<abg> a() {
+      return new abf.b<>(this.a);
    }
 
-   public List<jh> b() {
-      return this.c;
+   public alz b() {
+      return this.a;
    }
 }

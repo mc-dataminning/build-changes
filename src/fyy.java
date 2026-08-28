@@ -1,57 +1,75 @@
-import java.util.Set;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fyy extends fzj<gvg> {
-   public static final String a = "red_thing";
-   public static final gcu b = new fyl(Set.of("head", "beak", "red_thing"));
-   private final gcl c;
-   private final gcl d;
-   private final gcl e;
-   private final gcl f;
-   private final gcl g;
-   private final gcl i;
-   private final gcl j;
+public class fyy extends ftr {
+   private static final Logger d = LogUtils.getLogger();
+   public static final eeg a = new eeg((long)"test1".hashCode(), true, false);
+   protected final ftr b;
+   private fny s;
+   private fny u;
+   private fny v;
+   private fny w;
+   protected foh c;
+   private fze x;
 
-   public fyy(gcl $$0) {
-      super($$0);
-      this.c = $$0.b("head");
-      this.i = $$0.b("beak");
-      this.j = $$0.b("red_thing");
-      this.d = $$0.b("right_leg");
-      this.e = $$0.b("left_leg");
-      this.f = $$0.b("right_wing");
-      this.g = $$0.b("left_wing");
+   public fyy(ftr $$0) {
+      super(xv.c("selectWorld.title"));
+      this.b = $$0;
    }
 
-   public static gcr a() {
-      gct $$0 = new gct();
-      gcv $$1 = $$0.a();
-      int $$2 = 16;
-      $$1.a("head", gcq.c().a(0, 0).a(-2.0F, -6.0F, -2.0F, 4.0F, 6.0F, 3.0F), gcn.a(0.0F, 15.0F, -4.0F));
-      $$1.a("beak", gcq.c().a(14, 0).a(-2.0F, -4.0F, -4.0F, 4.0F, 2.0F, 2.0F), gcn.a(0.0F, 15.0F, -4.0F));
-      $$1.a("red_thing", gcq.c().a(14, 4).a(-1.0F, -2.0F, -3.0F, 2.0F, 2.0F, 2.0F), gcn.a(0.0F, 15.0F, -4.0F));
-      $$1.a("body", gcq.c().a(0, 9).a(-3.0F, -4.0F, -3.0F, 6.0F, 8.0F, 6.0F), gcn.a(0.0F, 16.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      gcq $$3 = gcq.c().a(26, 0).a(-1.0F, 0.0F, -3.0F, 3.0F, 5.0F, 3.0F);
-      $$1.a("right_leg", $$3, gcn.a(-2.0F, 19.0F, 1.0F));
-      $$1.a("left_leg", $$3, gcn.a(1.0F, 19.0F, 1.0F));
-      $$1.a("right_wing", gcq.c().a(24, 13).a(0.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), gcn.a(-4.0F, 13.0F, 0.0F));
-      $$1.a("left_wing", gcq.c().a(24, 13).a(-1.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), gcn.a(4.0F, 13.0F, 0.0F));
-      return gcr.a($$0, 64, 32);
+   @Override
+   protected void aT_() {
+      this.c = new foh(this.p, this.n / 2 - 100, 22, 200, 20, this.c, xv.c("selectWorld.search"));
+      this.c.b($$0 -> this.x.a($$0));
+      this.d(this.c);
+      this.x = this.c(new fze(this, this.m, this.n, this.o - 112, 48, 36, this.c.a(), this.x));
+      this.u = this.c(fny.a(evw.a, $$0 -> this.x.b().ifPresent(fze.c::c)).a(this.n / 2 - 154, this.o - 52, 150, 20).a());
+      this.c(fny.a(xv.c("selectWorld.create"), $$0 -> fyq.a(this.m, this)).a(this.n / 2 + 4, this.o - 52, 150, 20).a());
+      this.v = this.c(fny.a(xv.c("selectWorld.edit"), $$0 -> this.x.b().ifPresent(fze.c::g)).a(this.n / 2 - 154, this.o - 28, 72, 20).a());
+      this.s = this.c(fny.a(xv.c("selectWorld.delete"), $$0 -> this.x.b().ifPresent(fze.c::d)).a(this.n / 2 - 76, this.o - 28, 72, 20).a());
+      this.w = this.c(fny.a(xv.c("selectWorld.recreate"), $$0 -> this.x.b().ifPresent(fze.c::h)).a(this.n / 2 + 4, this.o - 28, 72, 20).a());
+      this.c(fny.a(xu.k, $$0 -> this.m.a(this.b)).a(this.n / 2 + 82, this.o - 28, 72, 20).a());
+      this.a(null);
    }
 
-   public void a(gvg $$0) {
-      super.a($$0);
-      float $$1 = (azm.a($$0.a) + 1.0F) * $$0.b;
-      this.c.e = $$0.V * (float) (Math.PI / 180.0);
-      this.c.f = $$0.U * (float) (Math.PI / 180.0);
-      this.i.e = this.c.e;
-      this.i.f = this.c.f;
-      this.j.e = this.c.e;
-      this.j.f = this.c.f;
-      float $$2 = $$0.Y;
-      float $$3 = $$0.X;
-      this.d.e = azm.b($$3 * 0.6662F) * 1.4F * $$2;
-      this.e.e = azm.b($$3 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.f.g = $$1;
-      this.g.g = -$$1;
+   @Override
+   protected void aG_() {
+      this.b(this.c);
+   }
+
+   @Override
+   public void aP_() {
+      this.m.a(this.b);
+   }
+
+   @Override
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.c.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 8, 16777215);
+   }
+
+   public void a(@Nullable evw $$0) {
+      if ($$0 == null) {
+         this.u.b(evw.a);
+         this.u.j = false;
+         this.v.j = false;
+         this.w.j = false;
+         this.s.j = false;
+      } else {
+         this.u.b($$0.t());
+         this.u.j = $$0.u();
+         this.v.j = $$0.w();
+         this.w.j = $$0.x();
+         this.s.j = $$0.y();
+      }
+   }
+
+   @Override
+   public void aJ_() {
+      if (this.x != null) {
+         this.x.aI_().forEach(fze.a::close);
+      }
    }
 }

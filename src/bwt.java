@@ -1,125 +1,82 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableLong;
+import java.util.function.Supplier;
 
-public class bwt {
-   public static final int a = 48;
-
-   public static bxb<bvp> a(Predicate<jq<cgo>> $$0, cel<jp> $$1, boolean $$2, Optional<Byte> $$3) {
-      return a($$0, $$1, $$1, $$2, $$3);
-   }
-
-   public static bxb<bvp> a(Predicate<jq<cgo>> $$0, cel<jp> $$1, cel<jp> $$2, boolean $$3, Optional<Byte> $$4) {
-      int $$5 = 5;
-      int $$6 = 20;
-      MutableLong $$7 = new MutableLong(0L);
-      Long2ObjectMap<bwt.a> $$8 = new Long2ObjectOpenHashMap();
-      byl<bvp> $$9 = can.a(
-         (Function<can.b<bvp>, ? extends App<can.c<bvp>, caq<bvp>>>)($$6x -> $$6x.group($$6x.c($$2)).apply($$6x, $$5xx -> ($$6xx, $$7x, $$8x) -> {
-                  if ($$3 && $$7x.e_()) {
-                     return false;
-                  } else if ($$7.getValue() == 0L) {
-                     $$7.setValue($$6xx.ab() + (long)$$6xx.A.a(20));
-                     return false;
-                  } else if ($$6xx.ab() < $$7.getValue()) {
-                     return false;
-                  } else {
-                     $$7.setValue($$8x + 20L + (long)$$6xx.G_().a(20));
-                     cgl $$9x = $$6xx.z();
-                     $$8.long2ObjectEntrySet().removeIf($$1xxxx -> !((bwt.a)$$1xxxx.getValue()).b($$8x));
-                     Predicate<jh> $$10 = $$2xxxx -> {
-                        bwt.a $$3xxxx = (bwt.a)$$8.get($$2xxxx.a());
-                        if ($$3xxxx == null) {
-                           return true;
-                        } else if (!$$3xxxx.c($$8x)) {
-                           return false;
-                        } else {
-                           $$3xxxx.a($$8x);
-                           return true;
-                        }
-                     };
-                     Set<Pair<jq<cgo>, jh>> $$11 = $$9x.c($$0, $$10, $$7x.dv(), 48, cgl.b.a).limit(5L).collect(Collectors.toSet());
-                     esj $$12 = a($$7x, $$11);
-                     if ($$12 != null && $$12.j()) {
-                        jh $$13 = $$12.l();
-                        $$9x.c($$13).ifPresent($$8xx -> {
-                           $$9x.a($$0, ($$1xxxxx, $$2xxxxx) -> $$2xxxxx.equals($$13), $$13, 1);
-                           $$5xx.a(jp.a($$6xx.ag(), $$13));
-                           $$4.ifPresent($$2xxxxx -> $$6xx.a($$7x, $$2xxxxx));
-                           $$8.clear();
-                           agt.c($$6xx, $$13);
-                        });
-                     } else {
-                        for (Pair<jq<cgo>, jh> $$14 : $$11) {
-                           $$8.computeIfAbsent(((jh)$$14.getSecond()).a(), $$2xxxx -> new bwt.a($$6xx.A, $$8x));
-                        }
-                     }
-
-                     return true;
-                  }
-               }))
-      );
-      return $$2 == $$1 ? $$9 : can.a((Function<can.b<bvp>, ? extends App<can.c<bvp>, caq<bvp>>>)($$2x -> $$2x.group($$2x.c($$1)).apply($$2x, $$1xx -> $$9)));
-   }
-
-   @Nullable
-   public static esj a(bvj $$0, Set<Pair<jq<cgo>, jh>> $$1) {
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         Set<jh> $$2 = new HashSet<>();
-         int $$3 = 1;
-
-         for (Pair<jq<cgo>, jh> $$4 : $$1) {
-            $$3 = Math.max($$3, ((cgo)((jq)$$4.getFirst()).a()).c());
-            $$2.add((jh)$$4.getSecond());
-         }
-
-         return $$0.L().a($$2, $$3);
-      }
-   }
-
-   static class a {
-      private static final int a = 40;
-      private static final int b = 80;
-      private static final int c = 400;
-      private final azu d;
-      private long e;
-      private long f;
-      private int g;
-
-      a(azu $$0, long $$1) {
-         this.d = $$0;
-         this.a($$1);
-      }
-
-      public void a(long $$0) {
-         this.e = $$0;
-         int $$1 = this.g + this.d.a(40) + 40;
-         this.g = Math.min($$1, 400);
-         this.f = $$0 + (long)this.g;
-      }
-
-      public boolean b(long $$0) {
-         return $$0 - this.e < 400L;
-      }
-
-      public boolean c(long $$0) {
-         return $$0 >= this.f;
+public interface bwt {
+   bwt a = new bwt() {
+      @Override
+      public cxk a() {
+         return cxk.k;
       }
 
       @Override
-      public String toString() {
-         return "RetryMarker{, previousAttemptAt=" + this.e + ", nextScheduledAttemptAt=" + this.f + ", currentDelay=" + this.g + "}";
+      public boolean a(cxk $$0) {
+         return false;
       }
+   };
+
+   static bwt a(final Supplier<cxk> $$0, final Consumer<cxk> $$1) {
+      return new bwt() {
+         @Override
+         public cxk a() {
+            return $$0.get();
+         }
+
+         @Override
+         public boolean a(cxk $$0x) {
+            $$1.accept($$0);
+            return true;
+         }
+      };
    }
+
+   static bwt a(final bsx $$0, final int $$1, final Predicate<cxk> $$2) {
+      return new bwt() {
+         @Override
+         public cxk a() {
+            return $$0.a($$1);
+         }
+
+         @Override
+         public boolean a(cxk $$0x) {
+            if (!$$2.test($$0)) {
+               return false;
+            } else {
+               $$0.a($$1, $$0);
+               return true;
+            }
+         }
+      };
+   }
+
+   static bwt a(bsx $$0, int $$1) {
+      return a($$0, $$1, $$0x -> true);
+   }
+
+   static bwt a(final bwb $$0, final bvn $$1, final Predicate<cxk> $$2) {
+      return new bwt() {
+         @Override
+         public cxk a() {
+            return $$0.a($$1);
+         }
+
+         @Override
+         public boolean a(cxk $$0x) {
+            if (!$$2.test($$0)) {
+               return false;
+            } else {
+               $$0.a($$1, $$0);
+               return true;
+            }
+         }
+      };
+   }
+
+   static bwt a(bwb $$0, bvn $$1) {
+      return a($$0, $$1, $$0x -> true);
+   }
+
+   cxk a();
+
+   boolean a(cxk var1);
 }

@@ -1,44 +1,99 @@
-import com.mojang.authlib.GameProfile;
-import java.time.Duration;
-import java.util.UUID;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.Optional;
 
-public record ya(UUID a, cox b) {
-   public yf a(Duration $$0) {
-      return new yf.a(this.b.a(), () -> this.b.b().a($$0));
-   }
-
-   public yd.b a(UUID $$0) {
-      return new yd($$0, this.a).a(this.b);
-   }
-
-   public ya.a a() {
-      return new ya.a(this.a, this.b.b());
-   }
-
-   public boolean b() {
-      return this.b.b().a();
-   }
-
-   public UUID c() {
-      return this.a;
-   }
-
-   public cox d() {
-      return this.b;
-   }
-
-   public static record a(UUID a, cox.a b) {
-      public static ya.a a(wg $$0) {
-         return new ya.a($$0.n(), new cox.a($$0));
+public interface ya {
+   Optional<bbk> a = Optional.of(bbk.a);
+   ya b = new ya() {
+      @Override
+      public <T> Optional<T> a(ya.a<T> $$0) {
+         return Optional.empty();
       }
 
-      public static void a(wg $$0, ya.a $$1) {
-         $$0.a($$1.a);
-         $$1.b.a($$0);
+      @Override
+      public <T> Optional<T> a(ya.b<T> $$0, ys $$1) {
+         return Optional.empty();
       }
+   };
 
-      public ya a(GameProfile $$0, azz $$1) throws cox.b {
-         return new ya(this.a, cox.a($$1, $$0.getId(), this.b));
-      }
+   <T> Optional<T> a(ya.a<T> var1);
+
+   <T> Optional<T> a(ya.b<T> var1, ys var2);
+
+   static ya e(final String $$0) {
+      return new ya() {
+         @Override
+         public <T> Optional<T> a(ya.a<T> $$0x) {
+            return $$0.accept($$0);
+         }
+
+         @Override
+         public <T> Optional<T> a(ya.b<T> $$0x, ys $$1) {
+            return $$0.accept($$1, $$0);
+         }
+      };
+   }
+
+   static ya a(final String $$0, final ys $$1) {
+      return new ya() {
+         @Override
+         public <T> Optional<T> a(ya.a<T> $$0x) {
+            return $$0.accept($$0);
+         }
+
+         @Override
+         public <T> Optional<T> a(ya.b<T> $$0x, ys $$1x) {
+            return $$0.accept($$1.a($$1), $$0);
+         }
+      };
+   }
+
+   static ya a(ya... $$0) {
+      return a(ImmutableList.copyOf($$0));
+   }
+
+   static ya a(final List<? extends ya> $$0) {
+      return new ya() {
+         @Override
+         public <T> Optional<T> a(ya.a<T> $$0x) {
+            for (ya $$1 : $$0) {
+               Optional<T> $$2 = $$1.a($$0);
+               if ($$2.isPresent()) {
+                  return $$2;
+               }
+            }
+
+            return Optional.empty();
+         }
+
+         @Override
+         public <T> Optional<T> a(ya.b<T> $$0x, ys $$1) {
+            for (ya $$2 : $$0) {
+               Optional<T> $$3 = $$2.a($$0, $$1);
+               if ($$3.isPresent()) {
+                  return $$3;
+               }
+            }
+
+            return Optional.empty();
+         }
+      };
+   }
+
+   default String getString() {
+      StringBuilder $$0 = new StringBuilder();
+      this.a($$1 -> {
+         $$0.append($$1);
+         return Optional.empty();
+      });
+      return $$0.toString();
+   }
+
+   public interface a<T> {
+      Optional<T> accept(String var1);
+   }
+
+   public interface b<T> {
+      Optional<T> accept(ys var1, String var2);
    }
 }

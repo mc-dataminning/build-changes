@@ -1,13 +1,25 @@
-import java.util.concurrent.CompletableFuture;
+import java.util.Vector;
+import javax.swing.JList;
+import net.minecraft.server.MinecraftServer;
 
-public interface arf {
-   arg d(long var1);
+public class arf extends JList<String> {
+   private final MinecraftServer a;
+   private int b;
 
-   void a(arg var1);
+   public arf(MinecraftServer $$0) {
+      this.a = $$0;
+      $$0.b(this::a);
+   }
 
-   CompletableFuture<dxq> a(arg var1, dyu var2, bag<arg> var3);
+   public void a() {
+      if (this.b++ % 20 == 0) {
+         Vector<String> $$0 = new Vector<>();
 
-   aqr a(dyr var1, des var2);
+         for (int $$1 = 0; $$1 < this.a.ag().t().size(); $$1++) {
+            $$0.add(this.a.ag().t().get($$1).gf().getName());
+         }
 
-   void g();
+         this.setListData($$0);
+      }
+   }
 }

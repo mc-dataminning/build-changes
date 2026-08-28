@@ -1,148 +1,60 @@
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-import java.util.Objects;
+import com.google.common.annotations.VisibleForTesting;
 
-public class vg implements vi {
-   private static final int b = 36;
-   public static final vk<vg> a = new vk.b<vg>() {
-      public vg a(DataInput $$0, uu $$1) throws IOException {
-         return vg.a(d($$0, $$1));
+public class vg {
+   private static final int a = 512;
+   private final long b;
+   private long c;
+   private final int d;
+   private int e;
+
+   public vg(long $$0, int $$1) {
+      this.b = $$0;
+      this.d = $$1;
+   }
+
+   public static vg a(long $$0) {
+      return new vg($$0, 512);
+   }
+
+   public static vg a() {
+      return new vg(Long.MAX_VALUE, 512);
+   }
+
+   public void a(long $$0, long $$1) {
+      this.b($$0 * $$1);
+   }
+
+   public void b(long $$0) {
+      if (this.c + $$0 > this.b) {
+         throw new vh("Tried to read NBT tag that was too big; tried to allocate: " + this.c + " + " + $$0 + " bytes where max allowed: " + this.b);
+      } else {
+         this.c += $$0;
       }
+   }
 
-      @Override
-      public vf.b a(DataInput $$0, vf $$1, uu $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
+   public void b() {
+      if (this.e >= this.d) {
+         throw new vh("Tried to read NBT tag with too high complexity, depth > " + this.d);
+      } else {
+         this.e++;
       }
+   }
 
-      private static String d(DataInput $$0, uu $$1) throws IOException {
-         $$1.b(36L);
-         String $$2 = $$0.readUTF();
-         $$1.a(2L, (long)$$2.length());
-         return $$2;
+   public void c() {
+      if (this.e <= 0) {
+         throw new vh("NBT-Accounter tried to pop stack-depth at top-level");
+      } else {
+         this.e--;
       }
-
-      @Override
-      public void b(DataInput $$0, uu $$1) throws IOException {
-         vg.a($$0);
-      }
-
-      @Override
-      public String a() {
-         return "STRING";
-      }
-
-      @Override
-      public String b() {
-         return "TAG_String";
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-   };
-   private static final vg c = new vg("");
-   private static final char w = '"';
-   private static final char x = '\'';
-   private static final char y = '\\';
-   private static final char z = '\u0000';
-   private final String A;
-
-   public static void a(DataInput $$0) throws IOException {
-      $$0.skipBytes($$0.readUnsignedShort());
    }
 
-   private vg(String $$0) {
-      Objects.requireNonNull($$0, "Null string not allowed");
-      this.A = $$0;
+   @VisibleForTesting
+   public long d() {
+      return this.c;
    }
 
-   public static vg a(String $$0) {
-      return $$0.isEmpty() ? c : new vg($$0);
-   }
-
-   @Override
-   public void a(DataOutput $$0) throws IOException {
-      $$0.writeUTF(this.A);
-   }
-
-   @Override
-   public int a() {
-      return 36 + 2 * this.A.length();
-   }
-
-   @Override
-   public byte b() {
-      return 8;
-   }
-
-   @Override
-   public vk<vg> c() {
-      return a;
-   }
-
-   @Override
-   public String toString() {
-      return vi.super.t_();
-   }
-
-   public vg e() {
-      return this;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof vg && Objects.equals(this.A, ((vg)$$0).A);
-   }
-
-   @Override
-   public int hashCode() {
-      return this.A.hashCode();
-   }
-
-   @Override
-   public String t_() {
-      return this.A;
-   }
-
-   @Override
-   public void a(vm $$0) {
-      $$0.a(this);
-   }
-
-   public static String b(String $$0) {
-      StringBuilder $$1 = new StringBuilder(" ");
-      char $$2 = 0;
-
-      for (int $$3 = 0; $$3 < $$0.length(); $$3++) {
-         char $$4 = $$0.charAt($$3);
-         if ($$4 == '\\') {
-            $$1.append('\\');
-         } else if ($$4 == '"' || $$4 == '\'') {
-            if ($$2 == 0) {
-               $$2 = (char)($$4 == '"' ? 39 : 34);
-            }
-
-            if ($$2 == $$4) {
-               $$1.append('\\');
-            }
-         }
-
-         $$1.append($$4);
-      }
-
-      if ($$2 == 0) {
-         $$2 = '"';
-      }
-
-      $$1.setCharAt(0, $$2);
-      $$1.append($$2);
-      return $$1.toString();
-   }
-
-   @Override
-   public vf.b a(vf $$0) {
-      return $$0.a(this.A);
+   @VisibleForTesting
+   public int e() {
+      return this.e;
    }
 }

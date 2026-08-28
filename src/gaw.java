@@ -1,88 +1,84 @@
-public class gaw extends fzj<gxd> {
-   private final gcl a;
-   private final gcl b;
-   private final gcl c;
-   private final gcl d;
-   private final gcl e;
-   private final gcl f;
-   private final gcl g;
+import java.util.List;
 
-   public gaw(gcl $$0) {
+public class gaw extends gbf<gxg> {
+   public static final List<geh> a = List.of();
+   private final geh b;
+   private final List<geh> c;
+
+   public gaw(geh $$0) {
       super($$0);
-      this.g = $$0.b("neck");
-      this.a = this.g.b("head");
-      this.b = this.a.b("mouth");
-      this.c = $$0.b("right_hind_leg");
-      this.d = $$0.b("left_hind_leg");
-      this.e = $$0.b("right_front_leg");
-      this.f = $$0.b("left_front_leg");
+      geh $$1 = $$0.b("root");
+      geh $$2 = $$1.b("upper_body");
+      this.b = $$2.b("head");
+      this.c = List.of(this.b);
    }
 
-   public static gcr a() {
-      gct $$0 = new gct();
-      gcv $$1 = $$0.a();
-      int $$2 = 16;
-      gcv $$3 = $$1.a("neck", gcq.c().a(68, 73).a(-5.0F, -1.0F, -18.0F, 10.0F, 10.0F, 18.0F), gcn.a(0.0F, -7.0F, 5.5F));
-      gcv $$4 = $$3.a(
-         "head", gcq.c().a(0, 0).a(-8.0F, -20.0F, -14.0F, 16.0F, 20.0F, 16.0F).a(0, 0).a(-2.0F, -6.0F, -18.0F, 4.0F, 8.0F, 4.0F), gcn.a(0.0F, 16.0F, -17.0F)
+   private static gep b() {
+      gep $$0 = new gep();
+      ger $$1 = $$0.a();
+      ger $$2 = $$1.a("root", gem.c(), gej.a(0.0F, 24.0F, 0.0F));
+      ger $$3 = $$2.a("upper_body", gem.c(), gej.a(-1.0F, -19.0F, 0.0F));
+      $$3.a(
+         "head",
+         gem.c()
+            .a(0, 0)
+            .a(-3.0F, -10.0F, -3.0F, 6.0F, 10.0F, 6.0F)
+            .a(28, 31)
+            .a(-3.0F, -13.0F, -3.0F, 6.0F, 3.0F, 6.0F)
+            .a(12, 40)
+            .a(3.0F, -13.0F, 0.0F, 9.0F, 14.0F, 0.0F)
+            .a(34, 12)
+            .a(-12.0F, -14.0F, 0.0F, 9.0F, 14.0F, 0.0F),
+         gej.a(-3.0F, -11.0F, 0.0F)
       );
-      $$4.a("right_horn", gcq.c().a(74, 55).a(0.0F, -14.0F, -2.0F, 2.0F, 14.0F, 4.0F), gcn.a(-10.0F, -14.0F, -8.0F, 1.0995574F, 0.0F, 0.0F));
-      $$4.a("left_horn", gcq.c().a(74, 55).a().a(0.0F, -14.0F, -2.0F, 2.0F, 14.0F, 4.0F), gcn.a(8.0F, -14.0F, -8.0F, 1.0995574F, 0.0F, 0.0F));
-      $$4.a("mouth", gcq.c().a(0, 36).a(-8.0F, 0.0F, -16.0F, 16.0F, 3.0F, 16.0F), gcn.a(0.0F, -2.0F, 2.0F));
-      $$1.a(
-         "body",
-         gcq.c().a(0, 55).a(-7.0F, -10.0F, -7.0F, 14.0F, 16.0F, 20.0F).a(0, 91).a(-6.0F, 6.0F, -7.0F, 12.0F, 13.0F, 18.0F),
-         gcn.a(0.0F, 1.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+      $$3.a("body", gem.c().a(0, 16).a(0.0F, -3.0F, -3.0F, 6.0F, 13.0F, 5.0F).a(24, 0).a(-6.0F, -4.0F, -3.0F, 6.0F, 7.0F, 5.0F), gej.a(0.0F, -7.0F, 1.0F));
+      $$3.a(
+         "right_arm", gem.c().a(22, 13).a(-2.0F, -1.5F, -1.5F, 3.0F, 21.0F, 3.0F).a(46, 0).a(-2.0F, 19.5F, -1.5F, 3.0F, 4.0F, 3.0F), gej.a(-7.0F, -9.5F, 1.5F)
       );
-      $$1.a("right_hind_leg", gcq.c().a(96, 0).a(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F), gcn.a(-8.0F, -13.0F, 18.0F));
-      $$1.a("left_hind_leg", gcq.c().a(96, 0).a().a(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F), gcn.a(8.0F, -13.0F, 18.0F));
-      $$1.a("right_front_leg", gcq.c().a(64, 0).a(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F), gcn.a(-8.0F, -13.0F, -5.0F));
-      $$1.a("left_front_leg", gcq.c().a(64, 0).a().a(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F), gcn.a(8.0F, -13.0F, -5.0F));
-      return gcr.a($$0, 128, 128);
+      $$3.a(
+         "left_arm",
+         gem.c()
+            .a(30, 40)
+            .a(0.0F, -1.0F, -1.5F, 3.0F, 16.0F, 3.0F)
+            .a(52, 12)
+            .a(0.0F, -5.0F, -1.5F, 3.0F, 4.0F, 3.0F)
+            .a(52, 19)
+            .a(0.0F, 15.0F, -1.5F, 3.0F, 4.0F, 3.0F),
+         gej.a(6.0F, -9.0F, 0.5F)
+      );
+      $$2.a(
+         "left_leg", gem.c().a(42, 40).a(-1.5F, 0.0F, -1.5F, 3.0F, 16.0F, 3.0F).a(45, 55).a(-1.5F, 15.7F, -4.5F, 5.0F, 0.0F, 9.0F), gej.a(1.5F, -16.0F, 0.5F)
+      );
+      $$2.a(
+         "right_leg",
+         gem.c()
+            .a(0, 34)
+            .a(-3.0F, -1.5F, -1.5F, 3.0F, 19.0F, 3.0F)
+            .a(45, 46)
+            .a(-5.0F, 17.2F, -4.5F, 5.0F, 0.0F, 9.0F)
+            .a(12, 34)
+            .a(-3.0F, -4.5F, -1.5F, 3.0F, 3.0F, 3.0F),
+         gej.a(-1.0F, -17.5F, 0.5F)
+      );
+      return $$0;
    }
 
-   public void a(gxd $$0) {
-      super.a($$0);
-      float $$1 = $$0.a;
-      float $$2 = $$0.b;
-      int $$3 = 10;
-      if ($$2 > 0.0F) {
-         float $$4 = azm.e($$2, 10.0F);
-         float $$5 = (1.0F + $$4) * 0.5F;
-         float $$6 = $$5 * $$5 * $$5 * 12.0F;
-         float $$7 = $$6 * azm.a(this.g.e);
-         this.g.d = -6.5F + $$6;
-         this.g.c = -7.0F - $$7;
-         if ($$2 > 5.0F) {
-            this.b.e = azm.a((-4.0F + $$2) / 4.0F) * (float) Math.PI * 0.4F;
-         } else {
-            this.b.e = (float) (Math.PI / 20) * azm.a((float) Math.PI * $$2 / 10.0F);
-         }
-      } else {
-         float $$8 = -1.0F;
-         float $$9 = -1.0F * azm.a(this.g.e);
-         this.g.b = 0.0F;
-         this.g.c = -7.0F - $$9;
-         this.g.d = 5.5F;
-         boolean $$10 = $$1 > 0.0F;
-         this.g.e = $$10 ? 0.21991149F : 0.0F;
-         this.b.e = (float) Math.PI * ($$10 ? 0.05F : 0.01F);
-         if ($$10) {
-            double $$11 = (double)$$1 / 40.0;
-            this.g.b = (float)Math.sin($$11 * 10.0) * 3.0F;
-         } else if ((double)$$0.c > 0.0) {
-            float $$12 = azm.a($$0.c * (float) Math.PI * 0.25F);
-            this.b.e = (float) (Math.PI / 2) * $$12;
-         }
+   public static gen a() {
+      gep $$0 = b();
+      return gen.a($$0, 64, 64);
+   }
+
+   public void a(gxg $$0) {
+      this.e().e().forEach(geh::c);
+      if ($$0.d) {
+         this.a(fmu.a, $$0.X, $$0.Y, 5.5F, 3.0F);
       }
 
-      this.a.e = $$0.V * (float) (Math.PI / 180.0);
-      this.a.f = $$0.U * (float) (Math.PI / 180.0);
-      float $$13 = $$0.X;
-      float $$14 = 0.4F * $$0.Y;
-      this.c.e = azm.b($$13 * 0.6662F) * $$14;
-      this.d.e = azm.b($$13 * 0.6662F + (float) Math.PI) * $$14;
-      this.e.e = azm.b($$13 * 0.6662F + (float) Math.PI) * $$14;
-      this.f.e = azm.b($$13 * 0.6662F) * $$14;
+      this.a($$0.b, fmu.b, $$0.p);
+      this.a($$0.a, fmu.c, $$0.p);
+   }
+
+   public List<geh> b(gxg $$0) {
+      return !$$0.c ? a : this.c;
    }
 }

@@ -1,45 +1,37 @@
-public class afq implements zq<acf> {
-   public static final zh<wg, afq> a = zq.a(afq::a, afq::new);
-   private final float b;
-   private final int c;
-   private final float d;
+public class afq implements aac<acr> {
+   public static final zt<ws, afq> a = aac.a(afq::a, afq::new);
+   private final double b;
+   private final double c;
 
-   public afq(float $$0, int $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public afq(dzd $$0) {
+      this.b = $$0.a();
+      this.c = $$0.b();
    }
 
-   private afq(wg $$0) {
-      this.b = $$0.readFloat();
-      this.c = $$0.l();
-      this.d = $$0.readFloat();
+   private afq(ws $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
    }
 
-   private void a(wg $$0) {
+   private void a(ws $$0) {
       $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
+      $$0.a(this.c);
    }
 
    @Override
-   public zs<afq> a() {
-      return agu.aH;
+   public aae<afq> a() {
+      return ahk.av;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
    }
 
-   public float b() {
-      return this.b;
-   }
-
-   public int e() {
+   public double b() {
       return this.c;
    }
 
-   public float f() {
-      return this.d;
+   public double e() {
+      return this.b;
    }
 }

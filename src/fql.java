@@ -1,101 +1,103 @@
 import javax.annotation.Nullable;
 
-public record fql(fqk a, int b, int c) {
-   private static final fql d = new fql(0, 0, 0, 0);
-
-   public fql(int $$0, int $$1, int $$2, int $$3) {
-      this(new fqk($$0, $$1), $$2, $$3);
-   }
-
-   public static fql a() {
-      return d;
-   }
-
-   public static fql a(fqi $$0, int $$1, int $$2, int $$3, int $$4) {
-      return switch ($$0) {
-         case a -> new fql($$1, $$2, $$3, $$4);
-         case b -> new fql($$2, $$1, $$4, $$3);
-      };
-   }
-
-   public fql a(fqj $$0) {
-      return new fql(this.a.a($$0), this.b, this.c);
-   }
-
-   public int a(fqi $$0) {
-      return switch ($$0) {
-         case a -> this.b;
-         case b -> this.c;
-      };
-   }
-
-   public int b(fqj $$0) {
-      fqi $$1 = $$0.a();
-      return $$0.c() ? this.a.a($$1) + this.a($$1) - 1 : this.a.a($$1);
-   }
-
-   public fql c(fqj $$0) {
-      int $$1 = this.b($$0);
-      fqi $$2 = $$0.a().a();
-      int $$3 = this.b($$2.c());
-      int $$4 = this.a($$2);
-      return a($$0.a(), $$1, $$3, 1, $$4).a($$0);
-   }
-
-   public boolean a(fql $$0) {
-      return this.a($$0, fqi.a) && this.a($$0, fqi.b);
-   }
-
-   public boolean a(fql $$0, fqi $$1) {
-      int $$2 = this.b($$1.c());
-      int $$3 = $$0.b($$1.c());
-      int $$4 = this.b($$1.b());
-      int $$5 = $$0.b($$1.b());
-      return Math.max($$2, $$3) <= Math.min($$4, $$5);
-   }
-
-   public int b(fqi $$0) {
-      return (this.b($$0.b()) + this.b($$0.c())) / 2;
-   }
-
+public class fql implements fqj {
+   private static final alz h = alz.b("toast/tutorial");
+   public static final int a = 154;
+   public static final int e = 1;
+   public static final int f = 3;
+   public static final int g = 28;
+   private final fql.a i;
+   private final xv j;
    @Nullable
-   public fql b(fql $$0) {
-      int $$1 = Math.max(this.d(), $$0.d());
-      int $$2 = Math.max(this.b(), $$0.b());
-      int $$3 = Math.min(this.e(), $$0.e());
-      int $$4 = Math.min(this.c(), $$0.c());
-      return $$1 < $$3 && $$2 < $$4 ? new fql($$1, $$2, $$3 - $$1, $$4 - $$2) : null;
+   private final xv k;
+   private fqj.a l = fqj.a.a;
+   private long m;
+   private float n;
+   private float o;
+   private final boolean p;
+   private final int q;
+
+   public fql(fql.a $$0, xv $$1, @Nullable xv $$2, boolean $$3, int $$4) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.p = $$3;
+      this.q = $$4;
    }
 
-   public int b() {
-      return this.a.b();
+   public fql(fql.a $$0, xv $$1, @Nullable xv $$2, boolean $$3) {
+      this($$0, $$1, $$2, $$3, 0);
    }
 
-   public int c() {
-      return this.a.b() + this.c;
+   @Override
+   public fqj.a a() {
+      return this.l;
    }
 
-   public int d() {
-      return this.a.a();
+   @Override
+   public void a(fqk $$0, long $$1) {
+      if (this.q > 0) {
+         this.o = Math.min((float)$$1 / (float)this.q, 1.0F);
+         this.n = this.o;
+         this.m = $$1;
+         if ($$1 > (long)this.q) {
+            this.d();
+         }
+      } else if (this.p) {
+         this.n = bae.b(this.n, this.o, (float)($$1 - this.m) / 100.0F);
+         this.m = $$1;
+      }
    }
 
-   public int e() {
-      return this.a.a() + this.b;
+   @Override
+   public void a(fnl $$0, fnj $$1, long $$2) {
+      $$0.a(glo::B, h, 0, 0, this.b(), this.c());
+      this.i.a($$0, 6, 6);
+      if (this.k == null) {
+         $$0.a($$1, this.j, 30, 12, -11534256, false);
+      } else {
+         $$0.a($$1, this.j, 30, 7, -11534256, false);
+         $$0.a($$1, this.k, 30, 18, -16777216, false);
+      }
+
+      if (this.p) {
+         $$0.a(3, 28, 157, 29, -1);
+         int $$3;
+         if (this.o >= this.n) {
+            $$3 = -16755456;
+         } else {
+            $$3 = -11206656;
+         }
+
+         $$0.a(3, 28, (int)(3.0F + 154.0F * this.n), 29, $$3);
+      }
    }
 
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= this.d() && $$0 < this.e() && $$1 >= this.b() && $$1 < this.c();
+   public void d() {
+      this.l = fqj.a.b;
    }
 
-   public fqk f() {
-      return this.a;
+   public void a(float $$0) {
+      this.o = $$0;
    }
 
-   public int g() {
-      return this.b;
-   }
+   public static enum a {
+      a(alz.b("toast/movement_keys")),
+      b(alz.b("toast/mouse")),
+      c(alz.b("toast/tree")),
+      d(alz.b("toast/recipe_book")),
+      e(alz.b("toast/wooden_planks")),
+      f(alz.b("toast/social_interactions")),
+      g(alz.b("toast/right_click"));
 
-   public int h() {
-      return this.c;
+      private final alz h;
+
+      private a(final alz $$0) {
+         this.h = $$0;
+      }
+
+      public void a(fnl $$0, int $$1, int $$2) {
+         $$0.a(glo::B, this.h, $$1, $$2, 20, 20);
+      }
    }
 }

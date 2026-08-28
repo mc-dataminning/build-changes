@@ -1,24 +1,42 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import java.util.Collections;
+import java.util.List;
 
-public class epd extends emi {
-   public static final MapCodec<epd> d = a(epd::new);
+public class epd extends epk {
+   public static final MapCodec<epd> a = MapCodec.unit(() -> epd.b);
+   public static final epd b = new epd();
 
-   public epd(emi.c $$0) {
-      super($$0);
+   private epd() {
+      super(epm.a.a);
    }
 
    @Override
-   public Optional<emi.b> a(emi.a $$0) {
-      return a($$0, ebq.a.a, $$1 -> a($$1, $$0));
-   }
-
-   private static void a(ena $$0, emi.a $$1) {
-      $$0.a(new epc($$1.f(), $$1.h().d(), $$1.h().e()));
+   public kl a(esf $$0, dqu $$1) {
+      return kl.g;
    }
 
    @Override
-   public emr<?> e() {
-      return emr.o;
+   public List<ese.a> a(esf $$0, jh $$1, dqu $$2, bam $$3) {
+      return Collections.emptyList();
+   }
+
+   @Override
+   public enu a(esf $$0, jh $$1, dqu $$2) {
+      throw new IllegalStateException("Invalid call to EmtyPoolElement.getBoundingBox, filter me!");
+   }
+
+   @Override
+   public boolean a(esf $$0, dhy $$1, dhw $$2, dzj $$3, jh $$4, jh $$5, dqu $$6, enu $$7, bam $$8, ero $$9, boolean $$10) {
+      return true;
+   }
+
+   @Override
+   public epl<?> a() {
+      return epl.d;
+   }
+
+   @Override
+   public String toString() {
+      return "Empty";
    }
 }

@@ -1,53 +1,36 @@
+import com.google.common.primitives.Ints;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.security.SignatureException;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public interface yq extends xk {
-   MapCodec<yq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("text").forGetter(yq::b)).apply($$0, yq::a));
-   xk.a<yq> b = new xk.a<>(a, "text");
-   yq c = new yq() {
-      @Override
-      public String toString() {
-         return "empty";
-      }
+public record yq(int b, UUID c, UUID d) {
+   public static final Codec<yq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(azn.l.fieldOf("index").forGetter(yq::b), kk.a.fieldOf("sender").forGetter(yq::c), kk.a.fieldOf("session_id").forGetter(yq::d))
+            .apply($$0, yq::new)
+   );
 
-      @Override
-      public String b() {
-         return "";
-      }
-   };
-
-   static yq a(String $$0) {
-      return (yq)($$0.isEmpty() ? c : new yq.a($$0));
+   public static yq a(UUID $$0) {
+      return a($$0, ae.e);
    }
 
-   String b();
-
-   @Override
-   default xk.a<?> a() {
-      return b;
+   public static yq a(UUID $$0, UUID $$1) {
+      return new yq(0, $$0, $$1);
    }
 
-   public static record a(String d) implements yq {
-      @Override
-      public <T> Optional<T> a(xo.a<T> $$0) {
-         return $$0.accept(this.d);
-      }
+   public void a(baq.a $$0) throws SignatureException {
+      $$0.update(kk.b(this.c));
+      $$0.update(kk.b(this.d));
+      $$0.update(Ints.toByteArray(this.b));
+   }
 
-      @Override
-      public <T> Optional<T> a(xo.b<T> $$0, yg $$1) {
-         return $$0.accept($$1, this.d);
-      }
+   public boolean a(yq $$0) {
+      return this.b > $$0.b() && this.c.equals($$0.c()) && this.d.equals($$0.d());
+   }
 
-      @Override
-      public String toString() {
-         return "literal{" + this.d + "}";
-      }
-
-      @Override
-      public String b() {
-         return this.d;
-      }
+   @Nullable
+   public yq a() {
+      return this.b == Integer.MAX_VALUE ? null : new yq(this.b + 1, this.c, this.d);
    }
 }

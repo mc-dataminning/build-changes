@@ -1,32 +1,27 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class bhv extends DataFix {
+public class bhv extends bgr {
    public bhv(Schema $$0) {
-      super($$0, true);
+      super($$0, "OminousBannerRenameFix", $$0x -> $$0x.equals("minecraft:white_banner"));
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bia.B);
-      Type<?> $$1 = this.getOutputSchema().getType(bia.B);
-      return this.fixTypeEverywhereTyped("Fix Arrow stored weapon", $$0, $$1, bay.a(this.a("minecraft:arrow"), this.a("minecraft:spectral_arrow")));
-   }
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<? extends Dynamic<?>> $$1 = $$0.get("display").result();
+      if ($$1.isPresent()) {
+         Dynamic<?> $$2 = (Dynamic<?>)$$1.get();
+         Optional<String> $$3 = $$2.get("Name").asString().result();
+         if ($$3.isPresent()) {
+            String $$4 = $$3.get();
+            $$4 = $$4.replace("\"translate\":\"block.minecraft.illager_banner\"", "\"translate\":\"block.minecraft.ominous_banner\"");
+            $$2 = $$2.set("Name", $$2.createString($$4));
+         }
 
-   private Function<Typed<?>, Typed<?>> a(String $$0) {
-      Type<?> $$1 = this.getInputSchema().getChoiceType(bia.B, $$0);
-      Type<?> $$2 = this.getOutputSchema().getChoiceType(bia.B, $$0);
-      return a($$0, $$1, $$2);
-   }
-
-   private static <T> Function<Typed<?>, Typed<?>> a(String $$0, Type<?> $$1, Type<T> $$2) {
-      OpticFinder<?> $$3 = DSL.namedChoice($$0, $$1);
-      return $$2x -> $$2x.updateTyped($$3, $$2, $$1xx -> ae.a($$1xx, $$2, UnaryOperator.identity()));
+         return $$0.set("display", $$2);
+      } else {
+         return $$0;
+      }
    }
 }

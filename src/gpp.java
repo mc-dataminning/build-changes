@@ -1,38 +1,41 @@
-public class gpp extends gpj<clb, gvt> {
-   private final gkj a;
+import com.google.common.collect.Lists;
+import java.util.Iterator;
+import java.util.List;
+import org.joml.Vector3f;
 
-   public gpp(gpk.a $$0) {
-      super($$0);
-      this.f = 0.5F;
-      this.a = $$0.d();
+public class gpp implements gpe.a {
+   public static final int a = 200;
+   private final flz b;
+   private final List<abt> c = Lists.newArrayList();
+
+   gpp(flz $$0) {
+      this.b = $$0;
    }
 
-   public boolean a(clb $$0, gmx $$1, double $$2, double $$3, double $$4) {
-      return !super.a($$0, $$1, $$2, $$3, $$4) ? false : $$0.n() != $$0.dV().a_($$0.dv());
+   public void a(abt $$0) {
+      this.c.add($$0);
    }
 
-   public void a(gvt $$0, fer $$1, gjg $$2, int $$3) {
-      dvv $$4 = $$0.c;
-      if ($$4.o() == dow.c) {
-         $$1.a();
-         $$1.a(-0.5, 0.0, -0.5);
-         this.a.b().a($$0, this.a.a($$4), $$4, $$0.b, $$1, $$2.getBuffer(giy.b($$4)), false, azu.a(), $$4.b($$0.a), gyv.d);
-         $$1.b();
-         super.a($$0, $$1, $$2, $$3);
+   @Override
+   public void a(fgl $$0, gle $$1, double $$2, double $$3, double $$4) {
+      fgp $$5 = $$1.getBuffer(glo.y());
+      long $$6 = this.b.s.ac();
+      Iterator<abt> $$7 = this.c.iterator();
+
+      while ($$7.hasNext()) {
+         abt $$8 = $$7.next();
+         long $$9 = $$6 - $$8.b();
+         if ($$9 > 200L) {
+            $$7.remove();
+         } else {
+            for (abt.a $$10 : $$8.c()) {
+               Vector3f $$11 = $$10.a().c().a($$2, $$3 - 0.1, $$4).k();
+               eux $$12 = $$10.b();
+               gly.a($$0, $$5, $$11, $$12.b().r().c(0.5), -16776961);
+               gly.a($$0, $$5, $$11, $$12.c().r().c(0.4), -65536);
+               gly.a($$0, $$5, $$11, $$12.d().r().c(0.3), -256);
+            }
+         }
       }
-   }
-
-   public gvt a() {
-      return new gvt();
-   }
-
-   public void a(clb $$0, gvt $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      jh $$3 = jh.a($$0.dA(), $$0.cR().e, $$0.dG());
-      $$1.a = $$0.j();
-      $$1.b = $$3;
-      $$1.c = $$0.n();
-      $$1.d = $$0.dV().t($$3);
-      $$1.e = $$0.dV();
    }
 }

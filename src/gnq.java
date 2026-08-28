@@ -1,44 +1,50 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
+@FunctionalInterface
+public interface gnq<T extends dup> {
+   gnp<T> create(gnq.a var1);
 
-public class gnq implements gng.a {
-   private static final int a = 160;
-   private static final float b = 0.04F;
-   private final fke c;
-   private Collection<jh> d = Lists.newArrayList();
+   public static class a {
+      private final gno a;
+      private final gmh b;
+      private final gsh c;
+      private final grh d;
+      private final ged e;
+      private final fnj f;
 
-   public gnq(fke $$0) {
-      this.c = $$0;
-   }
-
-   public void a(Collection<jh> $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public void a(fer $$0, gjg $$1, double $$2, double $$3, double $$4) {
-      jh $$5 = this.b().c();
-
-      for (jh $$6 : this.d) {
-         if ($$5.a($$6, 160.0)) {
-            a($$0, $$1, $$6);
-         }
+      public a(gno $$0, gmh $$1, gsh $$2, grh $$3, ged $$4, fnj $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
       }
-   }
 
-   private static void a(fer $$0, gjg $$1, jh $$2) {
-      gng.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
-      a($$0, $$1, "Raid center", $$2, -65536);
-   }
+      public gno a() {
+         return this.a;
+      }
 
-   private static void a(fer $$0, gjg $$1, String $$2, jh $$3, int $$4) {
-      double $$5 = (double)$$3.u() + 0.5;
-      double $$6 = (double)$$3.v() + 1.3;
-      double $$7 = (double)$$3.w() + 0.5;
-      gng.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
-   }
+      public gmh b() {
+         return this.b;
+      }
 
-   private fjn b() {
-      return this.c.j.k();
+      public grh c() {
+         return this.d;
+      }
+
+      public gsh d() {
+         return this.c;
+      }
+
+      public ged e() {
+         return this.e;
+      }
+
+      public geh a(gef $$0) {
+         return this.e.a($$0);
+      }
+
+      public fnj f() {
+         return this.f;
+      }
    }
 }

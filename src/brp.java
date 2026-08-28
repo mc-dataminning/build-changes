@@ -1,36 +1,47 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import java.util.List;
+import java.util.Optional;
 
-public abstract class brp {
-   private static final Codec<Either<Integer, brp>> a = Codec.either(Codec.INT, lz.K.q().dispatch(brp::c, brq::codec));
-   public static final Codec<brp> c = a.xmap(
-      $$0 -> (brp)$$0.map(brm::a, $$0x -> $$0x), $$0 -> $$0.c() == brq.a ? Either.left(((brm)$$0).d()) : Either.right($$0)
-   );
-   public static final Codec<brp> d = b(0, Integer.MAX_VALUE);
-   public static final Codec<brp> e = b(1, Integer.MAX_VALUE);
-
-   public static Codec<brp> b(int $$0, int $$1) {
-      return a($$0, $$1, c);
+public class brp {
+   private brp() {
    }
 
-   public static <T extends brp> Codec<T> a(int $$0, int $$1, Codec<T> $$2) {
-      return $$2.validate($$2x -> a($$0, $$1, $$2x));
-   }
+   public static int a(List<? extends bro> $$0) {
+      long $$1 = 0L;
 
-   private static <T extends brp> DataResult<T> a(int $$0, int $$1, T $$2) {
-      if ($$2.a() < $$0) {
-         return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
+      for (bro $$2 : $$0) {
+         $$1 += (long)$$2.a().a();
+      }
+
+      if ($$1 > 2147483647L) {
+         throw new IllegalArgumentException("Sum of weights must be <= 2147483647");
       } else {
-         return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
+         return (int)$$1;
       }
    }
 
-   public abstract int a(azu var1);
+   public static <T extends bro> Optional<T> a(bam $$0, List<T> $$1, int $$2) {
+      if ($$2 < 0) {
+         throw (IllegalArgumentException)ae.b(new IllegalArgumentException("Negative total weight in getRandomItem"));
+      } else if ($$2 == 0) {
+         return Optional.empty();
+      } else {
+         int $$3 = $$0.a($$2);
+         return a($$1, $$3);
+      }
+   }
 
-   public abstract int a();
+   public static <T extends bro> Optional<T> a(List<T> $$0, int $$1) {
+      for (T $$2 : $$0) {
+         $$1 -= $$2.a().a();
+         if ($$1 < 0) {
+            return Optional.of($$2);
+         }
+      }
 
-   public abstract int b();
+      return Optional.empty();
+   }
 
-   public abstract brq<?> c();
+   public static <T extends bro> Optional<T> a(bam $$0, List<T> $$1) {
+      return a($$0, $$1, a($$1));
+   }
 }

@@ -1,84 +1,49 @@
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
+import com.mojang.brigadier.Message;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 
-public class un implements vi {
-   private static final int c = 8;
-   public static final vk<un> a = new vk<un>() {
-      public un a(DataInput $$0, uu $$1) {
-         $$1.b(8L);
-         return un.b;
+public class un implements ArgumentType<um> {
+   private static final Collection<String> a = Arrays.asList("techtests.piston", "techtests");
+
+   public um a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.readUnquotedString();
+      Optional<um> $$2 = tu.e($$1);
+      if ($$2.isPresent()) {
+         return $$2.get();
+      } else {
+         Message $$3 = xv.b("No such test: " + $$1);
+         throw new CommandSyntaxException(new SimpleCommandExceptionType($$3), $$3);
       }
-
-      @Override
-      public vf.b a(DataInput $$0, vf $$1, uu $$2) {
-         $$2.b(8L);
-         return $$1.a();
-      }
-
-      @Override
-      public void a(DataInput $$0, int $$1, uu $$2) {
-      }
-
-      @Override
-      public void b(DataInput $$0, uu $$1) {
-      }
-
-      @Override
-      public String a() {
-         return "END";
-      }
-
-      @Override
-      public String b() {
-         return "TAG_End";
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-   };
-   public static final un b = new un();
-
-   private un() {
    }
 
-   @Override
-   public void a(DataOutput $$0) throws IOException {
+   public static un a() {
+      return new un();
    }
 
-   @Override
-   public int a() {
-      return 8;
+   public static um a(CommandContext<ew> $$0, String $$1) {
+      return (um)$$0.getArgument($$1, um.class);
    }
 
-   @Override
-   public byte b() {
-      return 0;
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return a($$0, $$1);
    }
 
-   @Override
-   public vk<un> c() {
+   public static <S> CompletableFuture<Suggestions> a(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      Stream<String> $$2 = tu.a().stream().map(um::c);
+      return fb.b($$2, $$1);
+   }
+
+   public Collection<String> getExamples() {
       return a;
-   }
-
-   @Override
-   public String toString() {
-      return this.t_();
-   }
-
-   public un e() {
-      return this;
-   }
-
-   @Override
-   public void a(vm $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public vf.b a(vf $$0) {
-      return $$0.a();
    }
 }

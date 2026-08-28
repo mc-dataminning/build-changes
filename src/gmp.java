@@ -1,70 +1,89 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 import javax.annotation.Nullable;
 
-class gmp {
-   private final Map<jh, dsy> a;
-   @Nullable
-   private final List<dyi<dvv>> b;
-   private final boolean c;
-   private final dya d;
+public class gmp {
+   public float[] a;
+   public final int b;
 
-   gmp(dya $$0) {
-      this.d = $$0;
-      this.c = $$0.E().ah();
-      this.a = ImmutableMap.copyOf($$0.F());
-      if ($$0 instanceof dxw) {
-         this.b = null;
+   public gmp(@Nullable float[] $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public float a(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
       } else {
-         dyb[] $$1 = $$0.d();
-         this.b = new ArrayList<>($$1.length);
-
-         for (dyb $$2 : $$1) {
-            this.b.add($$2.c() ? null : $$2.h().d());
-         }
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
       }
    }
 
-   @Nullable
-   public dsy a(jh $$0) {
-      return this.a.get($$0);
+   public float b(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
+      } else {
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
+      }
    }
 
-   public dvv b(jh $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      if (this.c) {
-         dvv $$4 = null;
-         if ($$2 == 60) {
-            $$4 = dis.hW.m();
-         }
+   private int d(int $$0) {
+      return ($$0 + this.b / 90) % 4;
+   }
 
-         if ($$2 == 70) {
-            $$4 = ebh.a($$1, $$3);
-         }
+   public int c(int $$0) {
+      return ($$0 + 4 - this.b / 90) % 4;
+   }
 
-         return $$4 == null ? dis.a.m() : $$4;
-      } else if (this.b == null) {
-         return dis.a.m();
-      } else {
-         try {
-            int $$5 = this.d.f($$2);
-            if ($$5 >= 0 && $$5 < this.b.size()) {
-               dyi<dvv> $$6 = this.b.get($$5);
-               if ($$6 != null) {
-                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
+   public void a(float[] $$0) {
+      if (this.a == null) {
+         this.a = $$0;
+      }
+   }
+
+   protected static class a implements JsonDeserializer<gmp> {
+      private static final int a = 0;
+
+      public gmp a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         float[] $$4 = this.b($$3);
+         int $$5 = this.a($$3);
+         return new gmp($$4, $$5);
+      }
+
+      protected int a(JsonObject $$0) {
+         int $$1 = azu.a($$0, "rotation", 0);
+         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
+            return $$1;
+         } else {
+            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
+         }
+      }
+
+      @Nullable
+      private float[] b(JsonObject $$0) {
+         if (!$$0.has("uv")) {
+            return null;
+         } else {
+            JsonArray $$1 = azu.v($$0, "uv");
+            if ($$1.size() != 4) {
+               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
+            } else {
+               float[] $$2 = new float[4];
+
+               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+                  $$2[$$3] = azu.e($$1.get($$3), "uv[" + $$3 + "]");
                }
-            }
 
-            return dis.a.m();
-         } catch (Throwable var8) {
-            o $$8 = o.a(var8, "Getting block state");
-            p $$9 = $$8.a("Block being got");
-            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
-            throw new z($$8);
+               return $$2;
+            }
          }
       }
    }

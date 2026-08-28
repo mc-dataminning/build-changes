@@ -1,36 +1,34 @@
 import com.mojang.serialization.MapCodec;
 
-public class dqa extends diq {
-   public static final MapCodec<dqa> b = b(dqa::new);
-   public static final dwm c = dwl.z;
+public class dqa extends dmb {
+   public static final MapCodec<dqa> a = b(dqa::new);
+   private static final fcm[] b = new fcm[]{
+      dke.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      dke.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
+      dke.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      dke.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+      dke.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      dke.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
+      dke.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      dke.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
+   };
 
    @Override
-   protected MapCodec<? extends dqa> a() {
-      return b;
+   public MapCodec<dqa> a() {
+      return a;
    }
 
-   protected dqa(dvu.d $$0) {
+   public dqa(dxm.d $$0) {
       super($$0);
-      this.l(this.F.b().b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected dvv a(dvv $$0, dfp $$1, dgb $$2, jh $$3, jm $$4, jh $$5, dvv $$6, azu $$7) {
-      return $$4 == jm.b ? $$0.b(c, Boolean.valueOf(o($$6))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected dgz d() {
+      return cxo.uW;
    }
 
    @Override
-   public dvv a(dad $$0) {
-      dvv $$1 = $$0.q().a_($$0.a().d());
-      return this.m().b(c, Boolean.valueOf(o($$1)));
-   }
-
-   private static boolean o(dvv $$0) {
-      return $$0.a(axc.bA);
-   }
-
-   @Override
-   protected void a(dvw.a<diq, dvv> $$0) {
-      $$0.a(c);
+   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
+      return b[this.h($$0)];
    }
 }

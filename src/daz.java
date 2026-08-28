@@ -1,98 +1,62 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class daz {
-   public static final daz a = new daz(List.of(), List.of());
-   private final List<coy.a<jq<cwi>>> b;
-   private final List<Optional<daz.a>> c;
+public record daz(float c) implements daw {
+   private static final float f = 16.0F;
+   public static final MapCodec<daz> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(azn.o.optionalFieldOf("diameter", 16.0F).forGetter(daz::b)).apply($$0, daz::new)
+   );
+   public static final zt<xg, daz> b = zt.a(zr.l, daz::b, daz::new);
 
-   private daz(List<coy.a<jq<cwi>>> $$0, List<Optional<daz.a>> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public daz() {
+      this(16.0F);
    }
 
-   private static coy.a<jq<cwi>> c(List<cwm> $$0) {
-      return coz.a($$0.stream().map(cwm::i));
+   @Override
+   public daw.a<daz> a() {
+      return daw.a.d;
    }
 
-   private static List<cwm> b(daw $$0) {
-      return $$0.a().stream().map(cwm::new).toList();
-   }
+   @Override
+   public boolean a(dha $$0, cxk $$1, bwb $$2) {
+      boolean $$3 = false;
 
-   public static daz a(daw $$0) {
-      List<cwm> $$1 = b($$0);
-      if ($$1.isEmpty()) {
-         return a;
-      } else {
-         coy.a<jq<cwi>> $$2 = c($$1);
-         daz.a $$3 = new daz.a($$1, 0);
-         return new daz(List.of($$2), List.of(Optional.of($$3)));
-      }
-   }
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         double $$5 = $$2.dA() + ($$2.dY().j() - 0.5) * (double)this.c;
+         double $$6 = bae.a($$2.dC() + ($$2.dY().j() - 0.5) * (double)this.c, (double)$$0.L_(), (double)($$0.L_() + ((ash)$$0).l() - 1));
+         double $$7 = $$2.dG() + ($$2.dY().j() - 0.5) * (double)this.c;
+         if ($$2.bZ()) {
+            $$2.ae();
+         }
 
-   public static daz a(List<Optional<daw>> $$0) {
-      int $$1 = $$0.size();
-      List<coy.a<jq<cwi>>> $$2 = new ArrayList<>($$1);
-      List<Optional<daz.a>> $$3 = new ArrayList<>($$1);
-      int $$4 = 0;
-
-      for (Optional<daw> $$5 : $$0) {
-         if ($$5.isPresent()) {
-            List<cwm> $$6 = b($$5.get());
-            if ($$6.isEmpty()) {
-               return a;
+         fbs $$8 = $$2.dt();
+         if ($$2.b($$5, $$6, $$7, true)) {
+            $$0.a(ecj.R, $$8, ecj.a.a($$2));
+            axg $$10;
+            axe $$9;
+            if ($$2 instanceof cic) {
+               $$9 = axf.jI;
+               $$10 = axg.g;
+            } else {
+               $$9 = axf.fi;
+               $$10 = axg.h;
             }
 
-            $$2.add(c($$6));
-            $$3.add(Optional.of(new daz.a($$6, $$4++)));
-         } else {
-            $$3.add(Optional.empty());
+            $$0.a(null, $$2.dA(), $$2.dC(), $$2.dG(), $$9, $$10);
+            $$2.k();
+            $$3 = true;
+            break;
          }
       }
 
-      return new daz($$2, $$3);
-   }
-
-   public static daz b(List<daw> $$0) {
-      int $$1 = $$0.size();
-      List<coy.a<jq<cwi>>> $$2 = new ArrayList<>($$1);
-      List<Optional<daz.a>> $$3 = new ArrayList<>($$1);
-
-      for (int $$4 = 0; $$4 < $$1; $$4++) {
-         daw $$5 = $$0.get($$4);
-         List<cwm> $$6 = b($$5);
-         if ($$6.isEmpty()) {
-            return a;
-         }
-
-         $$2.add(c($$6));
-         $$3.add(Optional.of(new daz.a($$6, $$4)));
+      if ($$3 && $$2 instanceof cps $$13) {
+         $$13.gL();
       }
 
-      return new daz($$2, $$3);
+      return $$3;
    }
 
-   public List<Optional<daz.a>> a() {
+   public float b() {
       return this.c;
-   }
-
-   public List<coy.a<jq<cwi>>> b() {
-      return this.b;
-   }
-
-   public boolean c() {
-      return this.c.isEmpty();
-   }
-
-   public static record a(List<cwm> a, int b) {
-      public a(List<cwm> a, int b) {
-         if (a.isEmpty()) {
-            throw new IllegalArgumentException("Possible items list must be not empty");
-         } else {
-            this.a = a;
-            this.b = b;
-         }
-      }
    }
 }

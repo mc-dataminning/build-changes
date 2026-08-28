@@ -1,30 +1,15 @@
-import java.util.function.IntFunction;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public enum cor implements azp {
-   a(0, "options.chat.visibility.full"),
-   b(1, "options.chat.visibility.system"),
-   c(2, "options.chat.visibility.hidden");
-
-   private static final IntFunction<cor> d = ayd.a(cor::b, values(), ayd.a.b);
-   private final int e;
-   private final String f;
-
-   private cor(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
-   }
-
-   @Override
-   public int b() {
-      return this.e;
-   }
-
-   @Override
-   public String a() {
-      return this.f;
-   }
-
-   public static cor a(int $$0) {
-      return d.apply($$0);
+public class cor {
+   public static bxv<cog> a() {
+      return cbh.a((Function<cbh.b<cog>, ? extends App<cbh.c<cog>, cbk<cog>>>)($$0 -> $$0.group($$0.c(cff.ad)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
+               if (!$$1.eY().f() && !$$1.eY().a(cxo.wi)) {
+                  coh.a($$0xx, $$1, true);
+                  return true;
+               } else {
+                  return false;
+               }
+            })));
    }
 }

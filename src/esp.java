@@ -1,122 +1,159 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Locale;
+import java.util.stream.IntStream;
 
-public class esp extends esi {
-   private final boolean k;
-   private final Long2ObjectMap<esm> l = new Long2ObjectOpenHashMap();
+public class esp implements edb.d {
+   private static final Codec<Double> e = Codec.doubleRange(0.001, 1000.0);
+   private static final MapCodec<esp> f = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               e.fieldOf("xz_scale").forGetter($$0x -> $$0x.p),
+               e.fieldOf("y_scale").forGetter($$0x -> $$0x.q),
+               e.fieldOf("xz_factor").forGetter($$0x -> $$0x.l),
+               e.fieldOf("y_factor").forGetter($$0x -> $$0x.m),
+               Codec.doubleRange(1.0, 8.0).fieldOf("smear_scale_multiplier").forGetter($$0x -> $$0x.n)
+            )
+            .apply($$0, esp::a)
+   );
+   public static final azx<esp> a = azx.a(f);
+   private final est g;
+   private final est h;
+   private final est i;
+   private final double j;
+   private final double k;
+   private final double l;
+   private final double m;
+   private final double n;
+   private final double o;
+   private final double p;
+   private final double q;
 
-   public esp(boolean $$0) {
-      this.k = $$0;
+   public static esp a(double $$0, double $$1, double $$2, double $$3, double $$4) {
+      return new esp(new eej(0L), $$0, $$1, $$2, $$3, $$4);
+   }
+
+   private esp(est $$0, est $$1, est $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.p = $$3;
+      this.q = $$4;
+      this.l = $$5;
+      this.m = $$6;
+      this.n = $$7;
+      this.j = 684.412 * this.p;
+      this.k = 684.412 * this.q;
+      this.o = $$0.a(this.k);
+   }
+
+   @VisibleForTesting
+   public esp(bam $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      this(
+         est.a($$0, IntStream.rangeClosed(-15, 0)),
+         est.a($$0, IntStream.rangeClosed(-15, 0)),
+         est.a($$0, IntStream.rangeClosed(-7, 0)),
+         $$1,
+         $$2,
+         $$3,
+         $$4,
+         $$5
+      );
+   }
+
+   public esp a(bam $$0) {
+      return new esp($$0, this.p, this.q, this.l, this.m, this.n);
    }
 
    @Override
-   public void a(dfz $$0, bvj $$1) {
-      super.a($$0, $$1);
-      this.l.clear();
-   }
+   public double a(edb.b $$0) {
+      double $$1 = (double)$$0.a() * this.j;
+      double $$2 = (double)$$0.b() * this.k;
+      double $$3 = (double)$$0.c() * this.j;
+      double $$4 = $$1 / this.l;
+      double $$5 = $$2 / this.m;
+      double $$6 = $$3 / this.l;
+      double $$7 = this.k * this.n;
+      double $$8 = $$7 / this.m;
+      double $$9 = 0.0;
+      double $$10 = 0.0;
+      double $$11 = 0.0;
+      boolean $$12 = true;
+      double $$13 = 1.0;
 
-   @Override
-   public void b() {
-      super.b();
-      this.l.clear();
-   }
-
-   @Override
-   public esh a() {
-      return this.c(azm.a(this.b.cR().a), azm.a(this.b.cR().b + 0.5), azm.a(this.b.cR().c));
-   }
-
-   @Override
-   public esq a(double $$0, double $$1, double $$2) {
-      return this.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public int a(esh[] $$0, esh $$1) {
-      int $$2 = 0;
-      Map<jm, esh> $$3 = Maps.newEnumMap(jm.class);
-
-      for (jm $$4 : jm.values()) {
-         esh $$5 = this.a($$1.a + $$4.j(), $$1.b + $$4.k(), $$1.c + $$4.l());
-         $$3.put($$4, $$5);
-         if (this.a($$5)) {
-            $$0[$$2++] = $$5;
+      for (int $$14 = 0; $$14 < 8; $$14++) {
+         esq $$15 = this.i.a($$14);
+         if ($$15 != null) {
+            $$11 += $$15.a(est.b($$4 * $$13), est.b($$5 * $$13), est.b($$6 * $$13), $$8 * $$13, $$5 * $$13) / $$13;
          }
+
+         $$13 /= 2.0;
       }
 
-      for (jm $$6 : jm.c.a) {
-         jm $$7 = $$6.h();
-         if (b($$3.get($$6)) && b($$3.get($$7))) {
-            esh $$8 = this.a($$1.a + $$6.j() + $$7.j(), $$1.b, $$1.c + $$6.l() + $$7.l());
-            if (this.a($$8)) {
-               $$0[$$2++] = $$8;
+      double $$16 = ($$11 / 10.0 + 1.0) / 2.0;
+      boolean $$17 = $$16 >= 1.0;
+      boolean $$18 = $$16 <= 0.0;
+      $$13 = 1.0;
+
+      for (int $$19 = 0; $$19 < 16; $$19++) {
+         double $$20 = est.b($$1 * $$13);
+         double $$21 = est.b($$2 * $$13);
+         double $$22 = est.b($$3 * $$13);
+         double $$23 = $$7 * $$13;
+         if (!$$17) {
+            esq $$24 = this.g.a($$19);
+            if ($$24 != null) {
+               $$9 += $$24.a($$20, $$21, $$22, $$23, $$2 * $$13) / $$13;
             }
          }
-      }
 
-      return $$2;
-   }
-
-   protected boolean a(@Nullable esh $$0) {
-      return $$0 != null && !$$0.i;
-   }
-
-   private static boolean b(@Nullable esh $$0) {
-      return $$0 != null && $$0.k >= 0.0F;
-   }
-
-   @Nullable
-   protected esh a(int $$0, int $$1, int $$2) {
-      esh $$3 = null;
-      esm $$4 = this.b($$0, $$1, $$2);
-      if (this.k && $$4 == esm.u || $$4 == esm.j) {
-         float $$5 = this.b.a($$4);
-         if ($$5 >= 0.0F) {
-            $$3 = this.c($$0, $$1, $$2);
-            $$3.l = $$4;
-            $$3.k = Math.max($$3.k, $$5);
-            if (this.a.a().b_(new jh($$0, $$1, $$2)).c()) {
-               $$3.k += 8.0F;
+         if (!$$18) {
+            esq $$25 = this.h.a($$19);
+            if ($$25 != null) {
+               $$10 += $$25.a($$20, $$21, $$22, $$23, $$2 * $$13) / $$13;
             }
          }
+
+         $$13 /= 2.0;
       }
 
-      return $$3;
-   }
-
-   protected esm b(int $$0, int $$1, int $$2) {
-      return (esm)this.l.computeIfAbsent(jh.a($$0, $$1, $$2), $$3 -> this.a(this.a, $$0, $$1, $$2));
+      return bae.b($$9 / 512.0, $$10 / 512.0, $$16) / 128.0;
    }
 
    @Override
-   public esm a(eso $$0, int $$1, int $$2, int $$3) {
-      return this.a($$0, $$1, $$2, $$3, this.b);
+   public double a() {
+      return -this.b();
    }
 
    @Override
-   public esm a(eso $$0, int $$1, int $$2, int $$3, bvj $$4) {
-      jh.a $$5 = new jh.a();
+   public double b() {
+      return this.o;
+   }
 
-      for (int $$6 = $$1; $$6 < $$1 + this.d; $$6++) {
-         for (int $$7 = $$2; $$7 < $$2 + this.e; $$7++) {
-            for (int $$8 = $$3; $$8 < $$3 + this.f; $$8++) {
-               dvv $$9 = $$0.a($$5.d($$6, $$7, $$8));
-               erv $$10 = $$9.y();
-               if ($$10.c() && $$9.a(esk.b) && $$9.l()) {
-                  return esm.u;
-               }
+   @VisibleForTesting
+   public void a(StringBuilder $$0) {
+      $$0.append("BlendedNoise{minLimitNoise=");
+      this.g.a($$0);
+      $$0.append(", maxLimitNoise=");
+      this.h.a($$0);
+      $$0.append(", mainNoise=");
+      this.i.a($$0);
+      $$0.append(
+            String.format(
+               Locale.ROOT,
+               ", xzScale=%.3f, yScale=%.3f, xzMainScale=%.3f, yMainScale=%.3f, cellWidth=4, cellHeight=8",
+               684.412,
+               684.412,
+               8.555150000000001,
+               4.277575000000001
+            )
+         )
+         .append('}');
+   }
 
-               if (!$$10.a(axi.a)) {
-                  return esm.a;
-               }
-            }
-         }
-      }
-
-      dvv $$11 = $$0.a($$5);
-      return $$11.a(esk.b) ? esm.j : esm.a;
+   @Override
+   public azx<? extends edb> c() {
+      return a;
    }
 }

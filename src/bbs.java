@@ -1,121 +1,62 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.stream.LongStream;
+import org.apache.commons.lang3.Validate;
 
-public class bbs extends DataFix {
+public class bbs {
    private static final int a = 6;
-   private static final int b = 16;
-   private static final int c = 16;
-   private static final int d = 4096;
-   private static final int e = 9;
-   private static final int f = 256;
+   private final long[] b;
+   private final int c;
+   private final long d;
+   private final int e;
 
-   public bbs(Schema $$0) {
-      super($$0, false);
+   public bbs(int $$0, int $$1) {
+      this($$0, $$1, new long[bae.d($$1 * $$0, 64) / 64]);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bia.c);
-      Type<?> $$1 = $$0.findFieldType("Level");
-      OpticFinder<?> $$2 = DSL.fieldFinder("Level", $$1);
-      OpticFinder<?> $$3 = $$2.type().findField("Sections");
-      Type<?> $$4 = ((ListType)$$3.type()).getElement();
-      OpticFinder<?> $$5 = DSL.typeFinder($$4);
-      Type<Pair<String, Dynamic<?>>> $$6 = DSL.named(bia.u.typeName(), DSL.remainderType());
-      OpticFinder<List<Pair<String, Dynamic<?>>>> $$7 = DSL.fieldFinder("Palette", DSL.list($$6));
-      return this.fixTypeEverywhereTyped(
-         "BitStorageAlignFix", $$0, this.getOutputSchema().getType(bia.c), $$4x -> $$4x.updateTyped($$2, $$3xx -> this.a(a($$3, $$5, $$7, $$3xx)))
-      );
-   }
-
-   private Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(), $$0x -> $$0x.update("Heightmaps", $$1 -> $$1.updateMapValues($$1x -> $$1x.mapSecond($$1xx -> a($$0x, $$1xx, 256, 9))))
-      );
-   }
-
-   private static Typed<?> a(OpticFinder<?> $$0, OpticFinder<?> $$1, OpticFinder<List<Pair<String, Dynamic<?>>>> $$2, Typed<?> $$3) {
-      return $$3.updateTyped(
-         $$0,
-         $$2x -> $$2x.updateTyped(
-               $$1,
-               $$1xx -> {
-                  int $$2xx = $$1xx.getOptional($$2).map($$0xxx -> Math.max(4, DataFixUtils.ceillog2($$0xxx.size()))).orElse(0);
-                  return $$2xx != 0 && !azm.d($$2xx)
-                     ? $$1xx.update(DSL.remainderFinder(), $$1xxx -> $$1xxx.update("BlockStates", $$2xxx -> a($$1xxx, $$2xxx, 4096, $$2xx)))
-                     : $$1xx;
-               }
-            )
-      );
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0, Dynamic<?> $$1, int $$2, int $$3) {
-      long[] $$4 = $$1.asLongStream().toArray();
-      long[] $$5 = a($$2, $$3, $$4);
-      return $$0.createLongList(LongStream.of($$5));
-   }
-
-   public static long[] a(int $$0, int $$1, long[] $$2) {
-      int $$3 = $$2.length;
-      if ($$3 == 0) {
-         return $$2;
-      } else {
-         long $$4 = (1L << $$1) - 1L;
-         int $$5 = 64 / $$1;
-         int $$6 = ($$0 + $$5 - 1) / $$5;
-         long[] $$7 = new long[$$6];
-         int $$8 = 0;
-         int $$9 = 0;
-         long $$10 = 0L;
-         int $$11 = 0;
-         long $$12 = $$2[0];
-         long $$13 = $$3 > 1 ? $$2[1] : 0L;
-
-         for (int $$14 = 0; $$14 < $$0; $$14++) {
-            int $$15 = $$14 * $$1;
-            int $$16 = $$15 >> 6;
-            int $$17 = ($$14 + 1) * $$1 - 1 >> 6;
-            int $$18 = $$15 ^ $$16 << 6;
-            if ($$16 != $$11) {
-               $$12 = $$13;
-               $$13 = $$16 + 1 < $$3 ? $$2[$$16 + 1] : 0L;
-               $$11 = $$16;
-            }
-
-            long $$19;
-            if ($$16 == $$17) {
-               $$19 = $$12 >>> $$18 & $$4;
-            } else {
-               int $$20 = 64 - $$18;
-               $$19 = ($$12 >>> $$18 | $$13 << $$20) & $$4;
-            }
-
-            int $$22 = $$9 + $$1;
-            if ($$22 >= 64) {
-               $$7[$$8++] = $$10;
-               $$10 = $$19;
-               $$9 = $$1;
-            } else {
-               $$10 |= $$19 << $$9;
-               $$9 = $$22;
-            }
-         }
-
-         if ($$10 != 0L) {
-            $$7[$$8] = $$10;
-         }
-
-         return $$7;
+   public bbs(int $$0, int $$1, long[] $$2) {
+      Validate.inclusiveBetween(1L, 32L, (long)$$0);
+      this.e = $$1;
+      this.c = $$0;
+      this.b = $$2;
+      this.d = (1L << $$0) - 1L;
+      int $$3 = bae.d($$1 * $$0, 64) / 64;
+      if ($$2.length != $$3) {
+         throw new IllegalArgumentException("Invalid length given for storage, got: " + $$2.length + " but expected: " + $$3);
       }
+   }
+
+   public void a(int $$0, int $$1) {
+      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
+      Validate.inclusiveBetween(0L, this.d, (long)$$1);
+      int $$2 = $$0 * this.c;
+      int $$3 = $$2 >> 6;
+      int $$4 = ($$0 + 1) * this.c - 1 >> 6;
+      int $$5 = $$2 ^ $$3 << 6;
+      this.b[$$3] = this.b[$$3] & ~(this.d << $$5) | ((long)$$1 & this.d) << $$5;
+      if ($$3 != $$4) {
+         int $$6 = 64 - $$5;
+         int $$7 = this.c - $$6;
+         this.b[$$4] = this.b[$$4] >>> $$7 << $$7 | ((long)$$1 & this.d) >> $$6;
+      }
+   }
+
+   public int a(int $$0) {
+      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
+      int $$1 = $$0 * this.c;
+      int $$2 = $$1 >> 6;
+      int $$3 = ($$0 + 1) * this.c - 1 >> 6;
+      int $$4 = $$1 ^ $$2 << 6;
+      if ($$2 == $$3) {
+         return (int)(this.b[$$2] >>> $$4 & this.d);
+      } else {
+         int $$5 = 64 - $$4;
+         return (int)((this.b[$$2] >>> $$4 | this.b[$$3] << $$5) & this.d);
+      }
+   }
+
+   public long[] a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
    }
 }

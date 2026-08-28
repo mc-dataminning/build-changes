@@ -1,71 +1,195 @@
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
+public final class axu {
+   public static final ayk<dke> a = a("wool");
+   public static final ayk<dke> b = a("planks");
+   public static final ayk<dke> c = a("stone_bricks");
+   public static final ayk<dke> d = a("wooden_buttons");
+   public static final ayk<dke> e = a("stone_buttons");
+   public static final ayk<dke> f = a("buttons");
+   public static final ayk<dke> g = a("wool_carpets");
+   public static final ayk<dke> h = a("wooden_doors");
+   public static final ayk<dke> i = a("mob_interactable_doors");
+   public static final ayk<dke> j = a("wooden_stairs");
+   public static final ayk<dke> k = a("wooden_slabs");
+   public static final ayk<dke> l = a("wooden_fences");
+   public static final ayk<dke> m = a("pressure_plates");
+   public static final ayk<dke> n = a("wooden_pressure_plates");
+   public static final ayk<dke> o = a("stone_pressure_plates");
+   public static final ayk<dke> p = a("wooden_trapdoors");
+   public static final ayk<dke> q = a("doors");
+   public static final ayk<dke> r = a("saplings");
+   public static final ayk<dke> s = a("logs_that_burn");
+   public static final ayk<dke> t = a("overworld_natural_logs");
+   public static final ayk<dke> u = a("logs");
+   public static final ayk<dke> v = a("dark_oak_logs");
+   public static final ayk<dke> w = a("pale_oak_logs");
+   public static final ayk<dke> x = a("oak_logs");
+   public static final ayk<dke> y = a("birch_logs");
+   public static final ayk<dke> z = a("acacia_logs");
+   public static final ayk<dke> A = a("cherry_logs");
+   public static final ayk<dke> B = a("jungle_logs");
+   public static final ayk<dke> C = a("spruce_logs");
+   public static final ayk<dke> D = a("mangrove_logs");
+   public static final ayk<dke> E = a("crimson_stems");
+   public static final ayk<dke> F = a("warped_stems");
+   public static final ayk<dke> G = a("bamboo_blocks");
+   public static final ayk<dke> H = a("wart_blocks");
+   public static final ayk<dke> I = a("banners");
+   public static final ayk<dke> J = a("sand");
+   public static final ayk<dke> K = a("smelts_to_glass");
+   public static final ayk<dke> L = a("stairs");
+   public static final ayk<dke> M = a("slabs");
+   public static final ayk<dke> N = a("walls");
+   public static final ayk<dke> O = a("anvil");
+   public static final ayk<dke> P = a("rails");
+   public static final ayk<dke> Q = a("leaves");
+   public static final ayk<dke> R = a("trapdoors");
+   public static final ayk<dke> S = a("small_flowers");
+   public static final ayk<dke> T = a("beds");
+   public static final ayk<dke> U = a("fences");
+   public static final ayk<dke> V = a("tall_flowers");
+   public static final ayk<dke> W = a("flowers");
+   public static final ayk<dke> X = a("piglin_repellents");
+   public static final ayk<dke> Y = a("gold_ores");
+   public static final ayk<dke> Z = a("iron_ores");
+   public static final ayk<dke> aa = a("diamond_ores");
+   public static final ayk<dke> ab = a("redstone_ores");
+   public static final ayk<dke> ac = a("lapis_ores");
+   public static final ayk<dke> ad = a("coal_ores");
+   public static final ayk<dke> ae = a("emerald_ores");
+   public static final ayk<dke> af = a("copper_ores");
+   public static final ayk<dke> ag = a("candles");
+   public static final ayk<dke> ah = a("dirt");
+   public static final ayk<dke> ai = a("terracotta");
+   public static final ayk<dke> aj = a("badlands_terracotta");
+   public static final ayk<dke> ak = a("concrete_powder");
+   public static final ayk<dke> al = a("completes_find_tree_tutorial");
+   public static final ayk<dke> am = a("shulker_boxes");
+   public static final ayk<dke> an = a("flower_pots");
+   public static final ayk<dke> ao = a("enderman_holdable");
+   public static final ayk<dke> ap = a("ice");
+   public static final ayk<dke> aq = a("valid_spawn");
+   public static final ayk<dke> ar = a("impermeable");
+   public static final ayk<dke> as = a("underwater_bonemeals");
+   public static final ayk<dke> at = a("coral_blocks");
+   public static final ayk<dke> au = a("wall_corals");
+   public static final ayk<dke> av = a("coral_plants");
+   public static final ayk<dke> aw = a("corals");
+   public static final ayk<dke> ax = a("bamboo_plantable_on");
+   public static final ayk<dke> ay = a("standing_signs");
+   public static final ayk<dke> az = a("wall_signs");
+   public static final ayk<dke> aA = a("signs");
+   public static final ayk<dke> aB = a("ceiling_hanging_signs");
+   public static final ayk<dke> aC = a("wall_hanging_signs");
+   public static final ayk<dke> aD = a("all_hanging_signs");
+   public static final ayk<dke> aE = a("all_signs");
+   public static final ayk<dke> aF = a("dragon_immune");
+   public static final ayk<dke> aG = a("dragon_transparent");
+   public static final ayk<dke> aH = a("wither_immune");
+   public static final ayk<dke> aI = a("wither_summon_base_blocks");
+   public static final ayk<dke> aJ = a("beehives");
+   public static final ayk<dke> aK = a("crops");
+   public static final ayk<dke> aL = a("bee_growables");
+   public static final ayk<dke> aM = a("portals");
+   public static final ayk<dke> aN = a("fire");
+   public static final ayk<dke> aO = a("nylium");
+   public static final ayk<dke> aP = a("beacon_base_blocks");
+   public static final ayk<dke> aQ = a("soul_speed_blocks");
+   public static final ayk<dke> aR = a("wall_post_override");
+   public static final ayk<dke> aS = a("climbable");
+   public static final ayk<dke> aT = a("fall_damage_resetting");
+   public static final ayk<dke> aU = a("hoglin_repellents");
+   public static final ayk<dke> aV = a("soul_fire_base_blocks");
+   public static final ayk<dke> aW = a("strider_warm_blocks");
+   public static final ayk<dke> aX = a("campfires");
+   public static final ayk<dke> aY = a("guarded_by_piglins");
+   public static final ayk<dke> aZ = a("prevent_mob_spawning_inside");
+   public static final ayk<dke> ba = a("fence_gates");
+   public static final ayk<dke> bb = a("unstable_bottom_center");
+   public static final ayk<dke> bc = a("mushroom_grow_block");
+   public static final ayk<dke> bd = a("infiniburn_overworld");
+   public static final ayk<dke> be = a("infiniburn_nether");
+   public static final ayk<dke> bf = a("infiniburn_end");
+   public static final ayk<dke> bg = a("base_stone_overworld");
+   public static final ayk<dke> bh = a("stone_ore_replaceables");
+   public static final ayk<dke> bi = a("deepslate_ore_replaceables");
+   public static final ayk<dke> bj = a("base_stone_nether");
+   public static final ayk<dke> bk = a("overworld_carver_replaceables");
+   public static final ayk<dke> bl = a("nether_carver_replaceables");
+   public static final ayk<dke> bm = a("candle_cakes");
+   public static final ayk<dke> bn = a("cauldrons");
+   public static final ayk<dke> bo = a("crystal_sound_blocks");
+   public static final ayk<dke> bp = a("inside_step_sound_blocks");
+   public static final ayk<dke> bq = a("combination_step_sound_blocks");
+   public static final ayk<dke> br = a("camel_sand_step_sound_blocks");
+   public static final ayk<dke> bs = a("occludes_vibration_signals");
+   public static final ayk<dke> bt = a("dampens_vibrations");
+   public static final ayk<dke> bu = a("dripstone_replaceable_blocks");
+   public static final ayk<dke> bv = a("cave_vines");
+   public static final ayk<dke> bw = a("moss_replaceable");
+   public static final ayk<dke> bx = a("lush_ground_replaceable");
+   public static final ayk<dke> by = a("azalea_root_replaceable");
+   public static final ayk<dke> bz = a("small_dripleaf_placeable");
+   public static final ayk<dke> bA = a("big_dripleaf_placeable");
+   public static final ayk<dke> bB = a("snow");
+   public static final ayk<dke> bC = a("mineable/axe");
+   public static final ayk<dke> bD = a("mineable/hoe");
+   public static final ayk<dke> bE = a("mineable/pickaxe");
+   public static final ayk<dke> bF = a("mineable/shovel");
+   public static final ayk<dke> bG = a("sword_efficient");
+   public static final ayk<dke> bH = a("needs_diamond_tool");
+   public static final ayk<dke> bI = a("needs_iron_tool");
+   public static final ayk<dke> bJ = a("needs_stone_tool");
+   public static final ayk<dke> bK = a("incorrect_for_netherite_tool");
+   public static final ayk<dke> bL = a("incorrect_for_diamond_tool");
+   public static final ayk<dke> bM = a("incorrect_for_iron_tool");
+   public static final ayk<dke> bN = a("incorrect_for_stone_tool");
+   public static final ayk<dke> bO = a("incorrect_for_gold_tool");
+   public static final ayk<dke> bP = a("incorrect_for_wooden_tool");
+   public static final ayk<dke> bQ = a("features_cannot_replace");
+   public static final ayk<dke> bR = a("lava_pool_stone_cannot_replace");
+   public static final ayk<dke> bS = a("geode_invalid_blocks");
+   public static final ayk<dke> bT = a("frog_prefer_jump_to");
+   public static final ayk<dke> bU = a("sculk_replaceable");
+   public static final ayk<dke> bV = a("sculk_replaceable_world_gen");
+   public static final ayk<dke> bW = a("ancient_city_replaceable");
+   public static final ayk<dke> bX = a("vibration_resonators");
+   public static final ayk<dke> bY = a("animals_spawnable_on");
+   public static final ayk<dke> bZ = a("armadillo_spawnable_on");
+   public static final ayk<dke> ca = a("axolotls_spawnable_on");
+   public static final ayk<dke> cb = a("goats_spawnable_on");
+   public static final ayk<dke> cc = a("mooshrooms_spawnable_on");
+   public static final ayk<dke> cd = a("parrots_spawnable_on");
+   public static final ayk<dke> ce = a("polar_bears_spawnable_on_alternate");
+   public static final ayk<dke> cf = a("rabbits_spawnable_on");
+   public static final ayk<dke> cg = a("foxes_spawnable_on");
+   public static final ayk<dke> ch = a("wolves_spawnable_on");
+   public static final ayk<dke> ci = a("frogs_spawnable_on");
+   public static final ayk<dke> cj = a("bats_spawnable_on");
+   public static final ayk<dke> ck = a("azalea_grows_on");
+   public static final ayk<dke> cl = a("convertable_to_mud");
+   public static final ayk<dke> cm = a("mangrove_logs_can_grow_through");
+   public static final ayk<dke> cn = a("mangrove_roots_can_grow_through");
+   public static final ayk<dke> co = a("dead_bush_may_place_on");
+   public static final ayk<dke> cp = a("snaps_goat_horn");
+   public static final ayk<dke> cq = a("replaceable_by_trees");
+   public static final ayk<dke> cr = a("snow_layer_cannot_survive_on");
+   public static final ayk<dke> cs = a("snow_layer_can_survive_on");
+   public static final ayk<dke> ct = a("invalid_spawn_inside");
+   public static final ayk<dke> cu = a("sniffer_diggable_block");
+   public static final ayk<dke> cv = a("sniffer_egg_hatch_boost");
+   public static final ayk<dke> cw = a("trail_ruins_replaceable");
+   public static final ayk<dke> cx = a("replaceable");
+   public static final ayk<dke> cy = a("enchantment_power_provider");
+   public static final ayk<dke> cz = a("enchantment_power_transmitter");
+   public static final ayk<dke> cA = a("maintains_farmland");
+   public static final ayk<dke> cB = a("blocks_wind_charge_explosions");
+   public static final ayk<dke> cC = a("does_not_block_hoppers");
+   public static final ayk<dke> cD = a("air");
 
-public class axu {
-   public static Map<ali<? extends kd<?>>, axu.a> a(jx<als> $$0) {
-      return kh.b($$0)
-         .map($$0x -> Pair.of($$0x.a(), a($$0x.b())))
-         .filter($$0x -> !((axu.a)$$0x.getSecond()).a())
-         .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
+   private axu() {
    }
 
-   private static <T> axu.a a(kd<T> $$0) {
-      Map<alj, IntList> $$1 = new HashMap<>();
-      $$0.l().forEach($$2 -> {
-         IntList $$3 = new IntArrayList($$2.b());
-
-         for (jq<T> $$4 : $$2) {
-            if ($$4.f() != jq.b.a) {
-               throw new IllegalStateException("Can't serialize unregistered value " + $$4);
-            }
-
-            $$3.add($$0.a($$4.a()));
-         }
-
-         $$1.put($$2.h().b(), $$3);
-      });
-      return new axu.a($$1);
-   }
-
-   static <T> axt.b<T> a(kd<T> $$0, axu.a $$1) {
-      ali<? extends kd<T>> $$2 = $$0.g();
-      Map<axs<T>, List<jq<T>>> $$3 = new HashMap<>();
-      $$1.b.forEach(($$3x, $$4) -> {
-         axs<T> $$5 = axs.a($$2, $$3x);
-         List<jq<T>> $$6 = $$4.intStream().mapToObj($$0::c).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
-         $$3.put($$5, $$6);
-      });
-      return new axt.b<>($$2, $$3);
-   }
-
-   public static final class a {
-      public static final axu.a a = new axu.a(Map.of());
-      final Map<alj, IntList> b;
-
-      a(Map<alj, IntList> $$0) {
-         this.b = $$0;
-      }
-
-      public void a(wg $$0) {
-         $$0.a(this.b, wg::a, wg::a);
-      }
-
-      public static axu.a b(wg $$0) {
-         return new axu.a($$0.a(wg::q, wg::a));
-      }
-
-      public boolean a() {
-         return this.b.isEmpty();
-      }
-
-      public <T> axt.b<T> a(kd<T> $$0) {
-         return axu.a($$0, this);
-      }
+   private static ayk<dke> a(String $$0) {
+      return ayk.a(mb.f, alz.b($$0));
    }
 }

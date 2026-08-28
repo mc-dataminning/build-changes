@@ -1,75 +1,263 @@
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.context.ParsedArgument;
-import com.mojang.brigadier.context.ParsedCommandNode;
-import com.mojang.brigadier.tree.ArgumentCommandNode;
-import com.mojang.brigadier.tree.CommandNode;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public record yb<S>(List<yb.a<S>> a) {
-   public static <S> boolean a(ParseResults<S> $$0) {
-      return !b($$0).a().isEmpty();
+public class yb {
+   public static final Codec<yb> a = Codec.withAlternative(yb.e.a.codec(), yb.e.b.codec()).xmap(yb::new, $$0 -> $$0.b);
+   private final yb.e<?> b;
+
+   public <T> yb(yb.a<T> $$0, T $$1) {
+      this(new yb.e<>($$0, $$1));
    }
 
-   public static <S> yb<S> b(ParseResults<S> $$0) {
-      String $$1 = $$0.getReader().getString();
-      CommandContextBuilder<S> $$2 = $$0.getContext();
-      CommandContextBuilder<S> $$3 = $$2;
-      List<yb.a<S>> $$4 = a($$1, $$2);
-
-      CommandContextBuilder<S> $$5;
-      while (($$5 = $$3.getChild()) != null && $$5.getRootNode() != $$2.getRootNode()) {
-         $$4.addAll(a($$1, $$5));
-         $$3 = $$5;
-      }
-
-      return new yb<>($$4);
+   private yb(yb.e<?> $$0) {
+      this.b = $$0;
    }
 
-   private static <S> List<yb.a<S>> a(String $$0, CommandContextBuilder<S> $$1) {
-      List<yb.a<S>> $$2 = new ArrayList<>();
-
-      for (ParsedCommandNode<S> $$3 : $$1.getNodes()) {
-         CommandNode $$5 = $$3.getNode();
-         if ($$5 instanceof ArgumentCommandNode) {
-            ArgumentCommandNode<S, ?> $$4 = (ArgumentCommandNode<S, ?>)$$5;
-            if ($$4.getType() instanceof gd) {
-               ParsedArgument<S, ?> $$5x = (ParsedArgument<S, ?>)$$1.getArguments().get($$4.getName());
-               if ($$5x != null) {
-                  String $$6 = $$5x.getRange().get($$0);
-                  $$2.add(new yb.a<>($$4, $$6));
-               }
-            }
-         }
-      }
-
-      return $$2;
+   public yb.a<?> a() {
+      return this.b.c;
    }
 
    @Nullable
-   public yb.a<S> a(String $$0) {
-      for (yb.a<S> $$1 : this.a) {
-         if ($$0.equals($$1.a())) {
-            return $$1;
+   public <T> T a(yb.a<T> $$0) {
+      return this.b.c == $$0 ? $$0.a(this.b.d) : null;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? ((yb)$$0).b.equals(this.b) : false;
+      }
+   }
+
+   @Override
+   public String toString() {
+      return this.b.toString();
+   }
+
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
+   }
+
+   public static class a<T> implements bba {
+      public static final yb.a<xv> a = new yb.a<>("show_text", true, xx.a, ($$0, $$1) -> DataResult.success($$0));
+      public static final yb.a<yb.c> b = new yb.a<>("show_item", true, yb.c.b, yb.c::a);
+      public static final yb.a<yb.b> c = new yb.a<>("show_entity", true, yb.b.a, yb.b::a);
+      public static final Codec<yb.a<?>> d = bba.b(() -> new yb.a[]{a, b, c});
+      public static final Codec<yb.a<?>> e = d.validate(yb.a::a);
+      private final String f;
+      private final boolean g;
+      final MapCodec<yb.e<T>> h;
+      final MapCodec<yb.e<T>> i;
+
+      public a(String $$0, boolean $$1, Codec<T> $$2, final yb.d<T> $$3) {
+         this.f = $$0;
+         this.g = $$1;
+         this.h = $$2.xmap($$0x -> new yb.e<>(this, (T)$$0x), $$0x -> $$0x.d).fieldOf("contents");
+         this.i = (new Codec<yb.e<T>>() {
+            public <D> DataResult<Pair<yb.e<T>, D>> decode(DynamicOps<D> $$0, D $$1) {
+               return xx.a.decode($$0, $$1).flatMap($$2 -> {
+                  DataResult<T> $$4;
+                  if ($$0 instanceof alx<D> $$3xx) {
+                     $$4 = $$3.parse((xv)$$2.getFirst(), $$3xx);
+                  } else {
+                     $$4 = $$3.parse((xv)$$2.getFirst(), null);
+                  }
+
+                  return $$4.map($$1xx -> Pair.of(new yb.e<>(a.this, $$1xx), $$2.getSecond()));
+               });
+            }
+
+            public <D> DataResult<D> a(yb.e<T> $$0, DynamicOps<D> $$1, D $$2) {
+               return DataResult.error(() -> "Can't encode in legacy format");
+            }
+         }).fieldOf("value");
+      }
+
+      public boolean a() {
+         return this.g;
+      }
+
+      @Override
+      public String c() {
+         return this.f;
+      }
+
+      T a(Object $$0) {
+         return (T)$$0;
+      }
+
+      @Override
+      public String toString() {
+         return "<action " + this.f + ">";
+      }
+
+      private static DataResult<yb.a<?>> a(@Nullable yb.a<?> $$0) {
+         if ($$0 == null) {
+            return DataResult.error(() -> "Unknown action");
+         } else {
+            return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
+         }
+      }
+   }
+
+   public static class b {
+      public static final Codec<yb.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  ma.f.q().fieldOf("type").forGetter($$0x -> $$0x.b),
+                  kk.f.fieldOf("id").forGetter($$0x -> $$0x.c),
+                  xx.a.lenientOptionalFieldOf("name").forGetter($$0x -> $$0x.d)
+               )
+               .apply($$0, yb.b::new)
+      );
+      public final bvm<?> b;
+      public final UUID c;
+      public final Optional<xv> d;
+      @Nullable
+      private List<xv> e;
+
+      public b(bvm<?> $$0, UUID $$1, @Nullable xv $$2) {
+         this($$0, $$1, Optional.ofNullable($$2));
+      }
+
+      public b(bvm<?> $$0, UUID $$1, Optional<xv> $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      public static DataResult<yb.b> a(xv $$0, @Nullable alx<?> $$1) {
+         try {
+            ux $$2 = vv.a($$0.getString());
+            DynamicOps<JsonElement> $$3 = (DynamicOps<JsonElement>)($$1 != null ? $$1.a(JsonOps.INSTANCE) : JsonOps.INSTANCE);
+            DataResult<xv> $$4 = xx.a.parse($$3, JsonParser.parseString($$2.l("name")));
+            bvm<?> $$5 = ma.f.a(alz.a($$2.l("type")));
+            UUID $$6 = UUID.fromString($$2.l("id"));
+            return $$4.map($$2x -> new yb.b($$5, $$6, $$2x));
+         } catch (Exception var7) {
+            return DataResult.error(() -> "Failed to parse tooltip: " + var7.getMessage());
          }
       }
 
-      return null;
+      public List<xv> a() {
+         if (this.e == null) {
+            this.e = new ArrayList<>();
+            this.d.ifPresent(this.e::add);
+            this.e.add(xv.a("gui.entity_tooltip.type", this.b.h()));
+            this.e.add(xv.b(this.c.toString()));
+         }
+
+         return this.e;
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+            yb.b $$1 = (yb.b)$$0;
+            return this.b.equals($$1.b) && this.c.equals($$1.c) && this.d.equals($$1.d);
+         } else {
+            return false;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         int $$0 = this.b.hashCode();
+         $$0 = 31 * $$0 + this.c.hashCode();
+         return 31 * $$0 + this.d.hashCode();
+      }
    }
 
-   public static record a<S>(ArgumentCommandNode<S, ?> a, String b) {
-      public String a() {
-         return this.a.getName();
+   public static class c {
+      public static final Codec<yb.c> a = cxk.b.xmap(yb.c::new, yb.c::a);
+      private static final Codec<yb.c> c = cxk.g.xmap(yb.c::new, yb.c::a);
+      public static final Codec<yb.c> b = Codec.withAlternative(a, c);
+      private final jq<cxg> d;
+      private final int e;
+      private final kr f;
+      @Nullable
+      private cxk g;
+
+      c(jq<cxg> $$0, int $$1, kr $$2) {
+         this.d = $$0;
+         this.e = $$1;
+         this.f = $$2;
       }
 
-      public ArgumentCommandNode<S, ?> b() {
-         return this.a;
+      public c(cxk $$0) {
+         this($$0.i(), $$0.L(), $$0.e());
       }
 
-      public String c() {
-         return this.b;
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+            yb.c $$1 = (yb.c)$$0;
+            return this.e == $$1.e && this.d.equals($$1.d) && this.f.equals($$1.f);
+         } else {
+            return false;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         int $$0 = this.d.hashCode();
+         $$0 = 31 * $$0 + this.e;
+         return 31 * $$0 + this.f.hashCode();
+      }
+
+      public cxk a() {
+         if (this.g == null) {
+            this.g = new cxk(this.d, this.e, this.f);
+         }
+
+         return this.g;
+      }
+
+      private static DataResult<yb.c> a(xv $$0, @Nullable alx<?> $$1) {
+         try {
+            ux $$2 = vv.a($$0.getString());
+            DynamicOps<vu> $$3 = (DynamicOps<vu>)($$1 != null ? $$1.a(vl.a) : vl.a);
+            return cxk.b.parse($$3, $$2).map(yb.c::new);
+         } catch (CommandSyntaxException var4) {
+            return DataResult.error(() -> "Failed to parse item tag: " + var4.getMessage());
+         }
+      }
+   }
+
+   public interface d<T> {
+      DataResult<T> parse(xv var1, @Nullable alx<?> var2);
+   }
+
+   static record e<T>(yb.a<T> c, T d) {
+      public static final MapCodec<yb.e<?>> a = yb.a.e.dispatchMap("action", yb.e::a, $$0 -> $$0.h);
+      public static final MapCodec<yb.e<?>> b = yb.a.e.dispatchMap("action", yb.e::a, $$0 -> $$0.i);
+
+      public yb.a<T> a() {
+         return this.c;
+      }
+
+      public T b() {
+         return this.d;
       }
    }
 }

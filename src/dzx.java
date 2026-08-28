@@ -1,4 +1,5 @@
-@FunctionalInterface
-public interface dzx {
-   void onChunkStatusChange(des var1, are var2);
+public class dzx extends RuntimeException {
+   public dzx(int $$0) {
+      super("Missing Palette entry for index " + $$0 + ".");
+   }
 }

@@ -1,70 +1,34 @@
-public abstract class dgv {
-   public static final ali<dgo> a = a("the_void");
-   public static final ali<dgo> b = a("plains");
-   public static final ali<dgo> c = a("sunflower_plains");
-   public static final ali<dgo> d = a("snowy_plains");
-   public static final ali<dgo> e = a("ice_spikes");
-   public static final ali<dgo> f = a("desert");
-   public static final ali<dgo> g = a("swamp");
-   public static final ali<dgo> h = a("mangrove_swamp");
-   public static final ali<dgo> i = a("forest");
-   public static final ali<dgo> j = a("flower_forest");
-   public static final ali<dgo> k = a("birch_forest");
-   public static final ali<dgo> l = a("dark_forest");
-   public static final ali<dgo> m = a("old_growth_birch_forest");
-   public static final ali<dgo> n = a("old_growth_pine_taiga");
-   public static final ali<dgo> o = a("old_growth_spruce_taiga");
-   public static final ali<dgo> p = a("taiga");
-   public static final ali<dgo> q = a("snowy_taiga");
-   public static final ali<dgo> r = a("savanna");
-   public static final ali<dgo> s = a("savanna_plateau");
-   public static final ali<dgo> t = a("windswept_hills");
-   public static final ali<dgo> u = a("windswept_gravelly_hills");
-   public static final ali<dgo> v = a("windswept_forest");
-   public static final ali<dgo> w = a("windswept_savanna");
-   public static final ali<dgo> x = a("jungle");
-   public static final ali<dgo> y = a("sparse_jungle");
-   public static final ali<dgo> z = a("bamboo_jungle");
-   public static final ali<dgo> A = a("badlands");
-   public static final ali<dgo> B = a("eroded_badlands");
-   public static final ali<dgo> C = a("wooded_badlands");
-   public static final ali<dgo> D = a("meadow");
-   public static final ali<dgo> E = a("cherry_grove");
-   public static final ali<dgo> F = a("grove");
-   public static final ali<dgo> G = a("snowy_slopes");
-   public static final ali<dgo> H = a("frozen_peaks");
-   public static final ali<dgo> I = a("jagged_peaks");
-   public static final ali<dgo> J = a("stony_peaks");
-   public static final ali<dgo> K = a("river");
-   public static final ali<dgo> L = a("frozen_river");
-   public static final ali<dgo> M = a("beach");
-   public static final ali<dgo> N = a("snowy_beach");
-   public static final ali<dgo> O = a("stony_shore");
-   public static final ali<dgo> P = a("warm_ocean");
-   public static final ali<dgo> Q = a("lukewarm_ocean");
-   public static final ali<dgo> R = a("deep_lukewarm_ocean");
-   public static final ali<dgo> S = a("ocean");
-   public static final ali<dgo> T = a("deep_ocean");
-   public static final ali<dgo> U = a("cold_ocean");
-   public static final ali<dgo> V = a("deep_cold_ocean");
-   public static final ali<dgo> W = a("frozen_ocean");
-   public static final ali<dgo> X = a("deep_frozen_ocean");
-   public static final ali<dgo> Y = a("mushroom_fields");
-   public static final ali<dgo> Z = a("dripstone_caves");
-   public static final ali<dgo> aa = a("lush_caves");
-   public static final ali<dgo> ab = a("deep_dark");
-   public static final ali<dgo> ac = a("nether_wastes");
-   public static final ali<dgo> ad = a("warped_forest");
-   public static final ali<dgo> ae = a("crimson_forest");
-   public static final ali<dgo> af = a("soul_sand_valley");
-   public static final ali<dgo> ag = a("basalt_deltas");
-   public static final ali<dgo> ah = a("the_end");
-   public static final ali<dgo> ai = a("end_highlands");
-   public static final ali<dgo> aj = a("end_midlands");
-   public static final ali<dgo> ak = a("small_end_islands");
-   public static final ali<dgo> al = a("end_barrens");
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-   private static ali<dgo> a(String $$0) {
-      return ali.a(ma.aG, alj.b($$0));
+public class dgv extends evb {
+   public static final String a = "chunks";
+   private static final String b = "Forced";
+   private final LongSet c;
+
+   public static evb.a<dgv> a() {
+      return new evb.a<>(dgv::new, dgv::b, bbo.i);
+   }
+
+   private dgv(LongSet $$0) {
+      this.c = $$0;
+   }
+
+   public dgv() {
+      this(new LongOpenHashSet());
+   }
+
+   public static dgv b(ux $$0, js.a $$1) {
+      return new dgv(new LongOpenHashSet($$0.o("Forced")));
+   }
+
+   @Override
+   public ux a(ux $$0, js.a $$1) {
+      $$0.a("Forced", this.c.toLongArray());
+      return $$0;
+   }
+
+   public LongSet b() {
+      return this.c;
    }
 }

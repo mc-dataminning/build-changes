@@ -1,33 +1,63 @@
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class exa extends ewa {
+public class exa extends ewz {
    public static final MapCodec<exa> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and($$0.group(czt.d.fieldOf("pages").forGetter($$0x -> $$0x.b), evz.a(100).forGetter($$0x -> $$0x.c))).apply($$0, exa::new)
+      $$0 -> $$0.group(Codec.either(aly.a(mb.bf), ewm.d).fieldOf("value").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, exa::new)
    );
-   private final List<ash<String>> b;
-   private final evz c;
+   private final Either<aly<ewm>, ewm> j;
 
-   protected exa(List<exy> $$0, List<ash<String>> $$1, evz $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   private exa(Either<aly<ewm>, ewm> $$0, int $$1, int $$2, List<ezs> $$3, List<exv> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   protected cwm a(cwm $$0, eun $$1) {
-      $$0.a(ku.S, czt.a, this::a);
-      return $$0;
-   }
-
-   public czt a(czt $$0) {
-      List<ash<String>> $$1 = this.c.a($$0.a(), this.b, 100);
-      return $$0.b($$1);
+   public ewy a() {
+      return ewv.d;
    }
 
    @Override
-   public ewc<exa> b() {
-      return ewd.O;
+   public void a(Consumer<cxk> $$0, ewh $$1) {
+      ((ewm)this.j.map($$1x -> $$1.a().c($$1x).map(jq::a).orElse(ewm.a), $$0x -> $$0x)).a($$1, $$0);
+   }
+
+   @Override
+   public void a(ewn $$0) {
+      Optional<aly<ewm>> $$1 = this.j.left();
+      if ($$1.isPresent()) {
+         aly<ewm> $$2 = $$1.get();
+         if (!$$0.b()) {
+            $$0.b("Uses reference to " + $$2.a() + ", but references are not allowed");
+            return;
+         }
+
+         if ($$0.a($$2)) {
+            $$0.b("Table " + $$2.a() + " is recursively called");
+            return;
+         }
+      }
+
+      super.a($$0);
+      this.j
+         .ifLeft(
+            $$1x -> $$0.a()
+                  .c($$1x)
+                  .ifPresentOrElse($$2x -> ((ewm)$$2x.a()).a($$0.a("->{" + $$1x.a() + "}", $$1x)), () -> $$0.b("Unknown loot table called " + $$1x.a()))
+         )
+         .ifRight($$1x -> $$1x.a($$0.a("->{inline}")));
+   }
+
+   public static ewz.a<?> a(aly<ewm> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new exa(Either.left($$0), $$1, $$2, $$3, $$4));
+   }
+
+   public static ewz.a<?> a(ewm $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new exa(Either.right($$0), $$1, $$2, $$3, $$4));
    }
 }

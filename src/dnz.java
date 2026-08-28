@@ -1,64 +1,52 @@
 import com.mojang.serialization.MapCodec;
 
-public class dnz extends diq implements dit {
+public class dnz extends dke implements dri {
    public static final MapCodec<dnz> a = b(dnz::new);
+   private static final fcm c = dke.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
+   public static final dye b = dyd.D;
+
+   public dnz(dxm.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b, Boolean.valueOf(false)));
+   }
 
    @Override
    public MapCodec<dnz> a() {
       return a;
    }
 
-   protected dnz(dvu.d $$0) {
-      super($$0);
-   }
-
-   private static boolean b(dvv $$0, dfp $$1, jh $$2) {
-      jh $$3 = $$2.d();
-      dvv $$4 = $$1.a_($$3);
-      int $$5 = erm.a($$0, $$4, jm.b, $$4.g());
-      return $$5 < 15;
+   @Override
+   protected void a(dxo.a<dke, dxn> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected void b(dvv $$0, arp $$1, jh $$2, azu $$3) {
-      if (!b($$0, $$1, $$2)) {
-         $$1.b($$2, dis.dV.m());
+   protected dxn a(dxn $$0, dhd $$1, dhp $$2, jh $$3, jm $$4, jh $$5, dxn $$6, bam $$7) {
+      if ($$0.c(b)) {
+         $$2.a($$3, etq.c, etq.c.a($$1));
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   public boolean b(dfp $$0, jh $$1, dvv $$2) {
-      return $$0.a_($$1.d()).l();
+   protected etp b_(dxn $$0) {
+      return $$0.c(b) ? etq.c.a(false) : super.b_($$0);
    }
 
    @Override
-   public boolean a(dfm $$0, azu $$1, jh $$2, dvv $$3) {
-      return true;
+   public dxn a(dbb $$0) {
+      etp $$1 = $$0.q().b_($$0.a());
+      return this.m().b(b, Boolean.valueOf($$1.b(etq.c)));
    }
 
    @Override
-   public void a(arp $$0, azu $$1, jh $$2, dvv $$3) {
-      dvv $$4 = $$0.a_($$2);
-      jh $$5 = $$2.d();
-      dxr $$6 = $$0.m().g();
-      kd<eei<?, ?>> $$7 = $$0.J_().e(ma.aJ);
-      if ($$4.a(dis.ow)) {
-         this.a($$7, sc.h, $$0, $$6, $$1, $$5);
-      } else if ($$4.a(dis.on)) {
-         this.a($$7, sc.j, $$0, $$6, $$1, $$5);
-         this.a($$7, sc.l, $$0, $$6, $$1, $$5);
-         if ($$1.a(8) == 0) {
-            this.a($$7, sc.n, $$0, $$6, $$1, $$5);
-         }
-      }
-   }
-
-   private void a(kd<eei<?, ?>> $$0, ali<eei<?, ?>> $$1, arp $$2, dxr $$3, azu $$4, jh $$5) {
-      $$0.a($$1).ifPresent($$4x -> ((eei)$$4x.a()).a($$2, $$3, $$4, $$5));
+   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
+      return c;
    }
 
    @Override
-   public dit.a aq_() {
-      return dit.a.a;
+   protected boolean a(dxn $$0, eue $$1) {
+      return false;
    }
 }

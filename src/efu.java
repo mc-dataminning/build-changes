@@ -1,28 +1,45 @@
 import com.mojang.serialization.Codec;
 
-public class efu extends eew<ehn> {
-   public efu(Codec<ehn> $$0) {
+public class efu extends ego<eil> {
+   public efu(Codec<eil> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eey<ehn> $$0) {
-      ehn $$1 = $$0.f();
-      azu $$2 = $$0.d();
-      jh $$3 = $$0.e();
-      dgk $$4 = $$0.b();
-      int $$5 = 0;
-      jh.a $$6 = new jh.a();
-      int $$7 = $$1.b() + 1;
-      int $$8 = $$1.c() + 1;
+   public boolean a(egq<eil> $$0) {
+      jh $$1 = $$0.e();
+      dhy $$2 = $$0.b();
+      bam $$3 = $$0.d();
 
-      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
-         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
-         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
-            $$5++;
+      eil $$4;
+      for ($$4 = $$0.f(); $$1.v() > $$2.L_() + 3; $$1 = $$1.e()) {
+         if (!$$2.u($$1.e())) {
+            dxn $$5 = $$2.a_($$1.e());
+            if (b($$5) || a($$5)) {
+               break;
+            }
          }
       }
 
-      return $$5 > 0;
+      if ($$1.v() <= $$2.L_() + 3) {
+         return false;
+      } else {
+         for (int $$6 = 0; $$6 < 3; $$6++) {
+            int $$7 = $$3.a(2);
+            int $$8 = $$3.a(2);
+            int $$9 = $$3.a(2);
+            float $$10 = (float)($$7 + $$8 + $$9) * 0.333F + 0.5F;
+
+            for (jh $$11 : jh.c($$1.b(-$$7, -$$8, -$$9), $$1.b($$7, $$8, $$9))) {
+               if ($$11.j($$1) <= (double)($$10 * $$10)) {
+                  $$2.a($$11, $$4.b, 3);
+               }
+            }
+
+            $$1 = $$1.b(-1 + $$3.a(2), -$$3.a(2), -1 + $$3.a(2));
+         }
+
+         return true;
+      }
    }
 }

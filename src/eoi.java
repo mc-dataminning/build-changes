@@ -1,28 +1,44 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class eoi extends emi {
-   public static final MapCodec<eoi> d = a(eoi::new);
+public record eoi(List<eoi.a> c, eoz d) {
+   public static final Codec<eoi> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eoi.a.a.listOf().fieldOf("structures").forGetter(eoi::a), eoz.b.fieldOf("placement").forGetter(eoi::b)).apply($$0, eoi::new)
+   );
+   public static final Codec<jq<eoi>> b = alv.a(mb.aV, a);
 
-   public eoi(emi.c $$0) {
-      super($$0);
+   public eoi(jq<eoc> $$0, eoz $$1) {
+      this(List.of(new eoi.a($$0, 1)), $$1);
    }
 
-   @Override
-   public Optional<emi.b> a(emi.a $$0) {
-      return a($$0, ebq.a.a, $$1 -> this.a($$1, $$0));
+   public static eoi.a a(jq<eoc> $$0, int $$1) {
+      return new eoi.a($$0, $$1);
    }
 
-   private void a(ena $$0, emi.a $$1) {
-      des $$2 = $$1.h();
-      ecp $$3 = $$1.f();
-      jh $$4 = new jh($$2.d(), 90, $$2.e());
-      dpd $$5 = dpd.a($$3);
-      eoh.a($$1.e(), $$4, $$5, $$0, $$3);
+   public static eoi.a a(jq<eoc> $$0) {
+      return new eoi.a($$0, 1);
    }
 
-   @Override
-   public emr<?> e() {
-      return emr.e;
+   public List<eoi.a> a() {
+      return this.c;
+   }
+
+   public eoz b() {
+      return this.d;
+   }
+
+   public static record a(jq<eoc> b, int c) {
+      public static final Codec<eoi.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(eoc.b.fieldOf("structure").forGetter(eoi.a::a), azn.m.fieldOf("weight").forGetter(eoi.a::b)).apply($$0, eoi.a::new)
+      );
+
+      public jq<eoc> a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
    }
 }

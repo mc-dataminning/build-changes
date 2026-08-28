@@ -1,7 +1,77 @@
-import java.util.EnumSet;
+import java.util.function.Predicate;
 
-public abstract class ccj extends ccf {
-   public ccj() {
-      this.a(EnumSet.of(ccf.a.a, ccf.a.c));
+public class ccj extends ccq {
+   private static final int g = 240;
+   private final Predicate<btb> h;
+   protected int a;
+   protected int b = -1;
+   protected int c = -1;
+
+   public ccj(bwd $$0, Predicate<btb> $$1) {
+      super($$0);
+      this.h = $$1;
+   }
+
+   public ccj(bwd $$0, int $$1, Predicate<btb> $$2) {
+      this($$0, $$2);
+      this.c = $$1;
+   }
+
+   protected int f() {
+      return Math.max(240, this.c);
+   }
+
+   @Override
+   public boolean b() {
+      if (!super.b()) {
+         return false;
+      } else {
+         return !a(this.d).N().b(dgw.c) ? false : this.a(this.d.dV().al()) && !this.h();
+      }
+   }
+
+   @Override
+   public void d() {
+      super.d();
+      this.a = 0;
+   }
+
+   @Override
+   public boolean c() {
+      return this.a <= this.f() && !this.h() && this.e.a(this.d.dt(), 2.0) && this.a(this.d.dV().al());
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.d.dV().a(this.d.ar(), this.e, -1);
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      if (this.d.dY().a(20) == 0) {
+         this.d.dV().c(1019, this.e, 0);
+         if (!this.d.aI) {
+            this.d.a(this.d.fy());
+         }
+      }
+
+      this.a++;
+      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
+      if ($$0 != this.b) {
+         this.d.dV().a(this.d.ar(), this.e, $$0);
+         this.b = $$0;
+      }
+
+      if (this.a == this.f() && this.a(this.d.dV().al())) {
+         this.d.dV().a(this.e, false);
+         this.d.dV().c(1021, this.e, 0);
+         this.d.dV().c(2001, this.e, dke.j(this.d.dV().a_(this.e)));
+      }
+   }
+
+   private boolean a(btb $$0) {
+      return this.h.test($$0);
    }
 }

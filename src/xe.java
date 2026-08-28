@@ -1,8 +1,18 @@
-import javax.annotation.Nullable;
+import io.netty.channel.ChannelHandlerContext;
 
-@FunctionalInterface
 public interface xe {
-   xe a = ($$0, $$1) -> $$1;
+   static void a(ChannelHandlerContext $$0, aac<?> $$1) {
+      if ($$1.d()) {
+         $$0.channel().config().setAutoRead(false);
+         $$0.pipeline().addBefore($$0.name(), "inbound_config", new xk.a());
+         $$0.pipeline().remove($$0.name());
+      }
+   }
 
-   xj decorate(@Nullable arq var1, xj var2);
+   static void b(ChannelHandlerContext $$0, aac<?> $$1) {
+      if ($$1.d()) {
+         $$0.pipeline().addAfter($$0.name(), "outbound_config", new xk.c());
+         $$0.pipeline().remove($$0.name());
+      }
+   }
 }

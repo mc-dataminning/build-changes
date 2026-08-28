@@ -1,42 +1,23 @@
+import java.util.Optional;
 import java.util.UUID;
 
-public record aao(UUID b, aao.a c) implements zq<aaj> {
-   public static final zh<wg, aao> a = zq.a(aao::a, aao::new);
+public record aao(Optional<UUID> b) implements aac<aai> {
+   public static final zt<ws, aao> a = aac.a(aao::a, aao::new);
 
-   private aao(wg $$0) {
-      this($$0.n(), $$0.b(aao.a.class));
+   private aao(ws $$0) {
+      this($$0.b(kk.g));
    }
 
-   private void a(wg $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(ws $$0) {
+      $$0.a(this.b, kk.g);
    }
 
    @Override
-   public zs<aao> a() {
-      return aai.p;
+   public aae<aao> a() {
+      return aau.f;
    }
 
-   public void a(aaj $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
-   }
-
-   public aao.a e() {
-      return this.c;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h;
-
-      public boolean a() {
-         return this != d && this != e;
-      }
    }
 }

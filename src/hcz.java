@@ -1,28 +1,12 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.Map;
 
-public class hcz {
-   private final List<hcy> a;
-   private final boolean b;
-   @Nullable
-   private final String c;
+public record hcz(Map<String, hcm> d) {
+   public static final Codec<String> a = Codec.string(1, 16);
+   public static final Codec<hcz> b = Codec.unboundedMap(a, hcm.a).xmap(hcz::new, hcz::a);
+   public static final auu<hcz> c = auu.a("language", b);
 
-   public hcz(List<hcy> $$0, boolean $$1, @Nullable String $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public List<hcy> a() {
-      return this.a;
-   }
-
-   public boolean b() {
-      return this.b;
-   }
-
-   @Nullable
-   public String c() {
-      return this.c;
+   public Map<String, hcm> a() {
+      return this.d;
    }
 }

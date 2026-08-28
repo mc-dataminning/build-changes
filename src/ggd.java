@@ -1,57 +1,85 @@
-public class ggd extends gho {
-   private final ghj a;
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.exceptions.MinecraftClientHttpException;
+import com.mojang.authlib.minecraft.UserApiService;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
+import com.mojang.datafixers.util.Unit;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
-   protected ggd(gdh $$0, double $$1, double $$2, double $$3, ghj $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a = $$4;
-      this.b($$4);
-      this.t = 12 + this.r.a(4);
-      this.D = 1.0F;
-      this.b(1.0F, 1.0F);
+public interface ggd {
+   static ggd a(ggj $$0, UserApiService $$1) {
+      return new ggd.b($$0, $$1);
    }
 
-   @Override
-   public ggs b() {
-      return ggs.b;
+   CompletableFuture<Unit> a(UUID var1, ggl var2, AbuseReport var3);
+
+   boolean a();
+
+   default AbuseReportLimits b() {
+      return AbuseReportLimits.DEFAULTS;
    }
 
-   @Override
-   public int a(float $$0) {
-      return 15728880;
-   }
-
-   @Override
-   public void a() {
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.a);
+   public static class a extends yv {
+      public a(xv $$0, Throwable $$1) {
+         super($$0, $$1);
       }
    }
 
-   public static class a implements ggr<lw> {
-      private final ghj a;
+   public static record b(ggj a, UserApiService b) implements ggd {
+      private static final xv c = xv.c("gui.abuseReport.send.service_unavailable");
+      private static final xv d = xv.c("gui.abuseReport.send.http_error");
+      private static final xv e = xv.c("gui.abuseReport.send.json_error");
 
-      public a(ghj $$0) {
-         this.a = $$0;
+      @Override
+      public CompletableFuture<Unit> a(UUID $$0, ggl $$1, AbuseReport $$2) {
+         return CompletableFuture.supplyAsync(() -> {
+            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
+
+            try {
+               this.b.reportAbuse($$3);
+               return Unit.INSTANCE;
+            } catch (MinecraftClientHttpException var7) {
+               xv $$5 = this.a(var7);
+               throw new CompletionException(new ggd.a($$5, var7));
+            } catch (MinecraftClientException var8) {
+               xv $$7 = this.a(var8);
+               throw new CompletionException(new ggd.a($$7, var8));
+            }
+         }, ae.h());
       }
 
-      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new ggd($$1, $$2, $$3, $$4, this.a);
-      }
-   }
-
-   public static class b implements ggr<lw> {
-      private final ghj a;
-
-      public b(ghj $$0) {
-         this.a = $$0;
+      @Override
+      public boolean a() {
+         return this.b.canSendReports();
       }
 
-      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ggo $$8 = new ggd($$1, $$2, $$3, $$4, this.a);
-         $$8.d(0.15F);
-         return $$8;
+      private xv a(MinecraftClientHttpException $$0) {
+         return xv.a("gui.abuseReport.send.error_message", $$0.getMessage());
+      }
+
+      private xv a(MinecraftClientException $$0) {
+         return switch ($$0.getType()) {
+            case SERVICE_UNAVAILABLE -> c;
+            case HTTP_ERROR -> d;
+            case JSON_ERROR -> e;
+            default -> throw new MatchException(null, null);
+         };
+      }
+
+      @Override
+      public AbuseReportLimits b() {
+         return this.b.getAbuseReportLimits();
+      }
+
+      public ggj c() {
+         return this.a;
+      }
+
+      public UserApiService d() {
+         return this.b;
       }
    }
 }

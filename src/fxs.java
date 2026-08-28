@@ -1,49 +1,95 @@
-import java.util.Collection;
-import java.util.Comparator;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class fxs implements fxo, fxp {
-   private static final alj a = alj.b("spectator/teleport_to_player");
-   private static final Comparator<gds> b = Comparator.comparing($$0 -> $$0.a().getId());
-   private static final xj c = xj.c("spectatorMenu.teleport");
-   private static final xj d = xj.c("spectatorMenu.teleport.prompt");
-   private final List<fxp> e;
+public class fxs {
+   private final List<ddd> a;
+   private final boolean b;
+   private final Set<dde> c = new HashSet<>();
+   private final Set<dde> d = new HashSet<>();
 
-   public fxs() {
-      this(fke.Q().L().l());
+   public fxs(List<ddd> $$0) {
+      this.a = $$0;
+      if ($$0.size() <= 1) {
+         this.b = true;
+      } else {
+         this.b = a(this.a);
+      }
    }
 
-   public fxs(Collection<gds> $$0) {
-      this.e = $$0.stream().filter($$0x -> $$0x.e() != dfj.d).sorted(b).map($$0x -> new fxl($$0x.a())).toList();
+   private static boolean a(List<ddd> $$0) {
+      int $$1 = $$0.size();
+      ddi $$2 = $$0.getFirst().b().d();
+
+      for (int $$3 = 1; $$3 < $$1; $$3++) {
+         ddi $$4 = $$0.get($$3).b().d();
+         if (!$$4.equals($$2)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   @Override
-   public List<fxp> a() {
-      return this.e;
+   public void a(cpx $$0, Predicate<ddc> $$1) {
+      for (ddd $$2 : this.a) {
+         boolean $$3 = $$1.test($$2.b());
+         if ($$3) {
+            this.d.add($$2.a());
+         } else {
+            this.d.remove($$2.a());
+         }
+
+         if ($$3 && $$2.a($$0)) {
+            this.c.add($$2.a());
+         } else {
+            this.c.remove($$2.a());
+         }
+      }
    }
 
-   @Override
-   public xj b() {
-      return d;
+   public boolean a(dde $$0) {
+      return this.c.contains($$0);
    }
 
-   @Override
-   public void a(fxn $$0) {
-      $$0.a(this);
+   public boolean a() {
+      return !this.c.isEmpty();
    }
 
-   @Override
-   public xj aS_() {
-      return c;
+   public boolean b() {
+      return !this.d.isEmpty();
    }
 
-   @Override
-   public void a(flq $$0, float $$1, float $$2) {
-      $$0.a(gjq::B, a, 0, 0, 16, 16, axx.a($$2, $$1, $$1, $$1));
+   public List<ddd> c() {
+      return this.a;
    }
 
-   @Override
-   public boolean aT_() {
-      return !this.e.isEmpty();
+   public List<ddd> a(fxs.a $$0) {
+      Predicate<dde> $$1 = switch ($$0) {
+         case a -> this.d::contains;
+         case b -> this.c::contains;
+         case c -> $$0x -> this.d.contains($$0x) && !this.c.contains($$0x);
+      };
+      List<ddd> $$2 = new ArrayList<>();
+
+      for (ddd $$3 : this.a) {
+         if ($$1.test($$3.a())) {
+            $$2.add($$3);
+         }
+      }
+
+      return $$2;
+   }
+
+   public boolean d() {
+      return this.b;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

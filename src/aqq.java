@@ -1,60 +1,62 @@
-public class aqq implements Comparable<aqq> {
-   private final int a;
-   private final jh b;
-   private int c;
-   private int d;
+import com.mojang.brigadier.builder.ArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Locale;
+import java.util.function.Function;
 
-   public aqq(int $$0, jh $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+public class aqq implements aqr {
+   static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xv.c("commands.data.block.invalid"));
+   public static final Function<String, aqs.c> a = $$0 -> new aqs.c() {
+         @Override
+         public aqr a(CommandContext<ew> $$0x) throws CommandSyntaxException {
+            jh $$1 = gs.a($$0, $$0 + "Pos");
+            dup $$2 = ((ew)$$0.getSource()).e().c_($$1);
+            if ($$2 == null) {
+               throw aqq.b.create();
+            } else {
+               return new aqq($$2, $$1);
+            }
+         }
 
-   public int a() {
-      return this.a;
-   }
+         @Override
+         public ArgumentBuilder<ew, ?> a(ArgumentBuilder<ew, ?> $$0x, Function<ArgumentBuilder<ew, ?>, ArgumentBuilder<ew, ?>> $$1) {
+            return $$0.then(ex.a("block").then($$1.apply(ex.a($$0 + "Pos", gs.a()))));
+         }
+      };
+   private final dup c;
+   private final jh d;
 
-   public jh b() {
-      return this.b;
-   }
-
-   public void a(int $$0) {
-      if ($$0 > 10) {
-         $$0 = 10;
-      }
-
+   public aqq(dup $$0, jh $$1) {
       this.c = $$0;
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public void b(int $$0) {
-      this.d = $$0;
-   }
-
-   public int d() {
-      return this.d;
+      this.d = $$1;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         aqq $$1 = (aqq)$$0;
-         return this.a == $$1.a;
-      } else {
-         return false;
-      }
+   public void a(ux $$0) {
+      dxn $$1 = this.c.i().a_(this.d);
+      this.c.c($$0, this.c.i().K_());
+      this.c.e();
+      this.c.i().a(this.d, $$1, $$1, 3);
    }
 
    @Override
-   public int hashCode() {
-      return Integer.hashCode(this.a);
+   public ux a() {
+      return this.c.b(this.c.i().K_());
    }
 
-   public int a(aqq $$0) {
-      return this.c != $$0.c ? Integer.compare(this.c, $$0.c) : Integer.compare(this.a, $$0.a);
+   @Override
+   public xv b() {
+      return xv.a("commands.data.block.modified", this.d.u(), this.d.v(), this.d.w());
+   }
+
+   @Override
+   public xv a(vu $$0) {
+      return xv.a("commands.data.block.query", this.d.u(), this.d.v(), this.d.w(), vm.c($$0));
+   }
+
+   @Override
+   public xv a(fo.g $$0, double $$1, int $$2) {
+      return xv.a("commands.data.block.get", $$0.a(), this.d.u(), this.d.v(), this.d.w(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
    }
 }

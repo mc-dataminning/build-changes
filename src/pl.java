@@ -1,9 +1,8 @@
-import java.util.concurrent.CompletableFuture;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class pl {
-   private static final kg a = new kg().a(ma.aN, ddq::a);
-
-   public static CompletableFuture<kg.g> a(CompletableFuture<js.a> $$0) {
-      return pk.a($$0, a);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface pl {
 }

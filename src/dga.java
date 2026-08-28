@@ -1,41 +1,201 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class dga {
-   private final List<dga.a> a = Lists.newArrayList();
+public abstract class dga implements ev {
+   private static final SimpleDateFormat b = new SimpleDateFormat("HH:mm:ss");
+   private static final xv c = xv.b("@");
+   private long d = -1L;
+   private boolean e = true;
+   private int f;
+   private boolean g = true;
+   @Nullable
+   private xv h;
+   private String i = "";
+   @Nullable
+   private xv j;
 
-   public void a(jh $$0, double $$1) {
-      if ($$1 != 0.0) {
-         this.a.add(new dga.a($$0, $$1));
+   public int k() {
+      return this.f;
+   }
+
+   public void a(int $$0) {
+      this.f = $$0;
+   }
+
+   public xv l() {
+      return this.h == null ? xu.a : this.h;
+   }
+
+   public ux a(ux $$0, js.a $$1) {
+      $$0.a("Command", this.i);
+      $$0.a("SuccessCount", this.f);
+      if (this.j != null) {
+         $$0.a("CustomName", xv.a.a(this.j, $$1));
+      }
+
+      $$0.a("TrackOutput", this.g);
+      if (this.h != null && this.g) {
+         $$0.a("LastOutput", xv.a.a(this.h, $$1));
+      }
+
+      $$0.a("UpdateLastExecution", this.e);
+      if (this.e && this.d > 0L) {
+         $$0.a("LastExecution", this.d);
+      }
+
+      return $$0;
+   }
+
+   public void b(ux $$0, js.a $$1) {
+      this.i = $$0.l("Command");
+      this.f = $$0.h("SuccessCount");
+      if ($$0.b("CustomName", 8)) {
+         this.b(dup.a($$0.l("CustomName"), $$1));
+      } else {
+         this.b(null);
+      }
+
+      if ($$0.b("TrackOutput", 1)) {
+         this.g = $$0.q("TrackOutput");
+      }
+
+      if ($$0.b("LastOutput", 8) && this.g) {
+         try {
+            this.h = xv.a.a($$0.l("LastOutput"), $$1);
+         } catch (Throwable var4) {
+            this.h = xv.b(var4.getMessage());
+         }
+      } else {
+         this.h = null;
+      }
+
+      if ($$0.e("UpdateLastExecution")) {
+         this.e = $$0.q("UpdateLastExecution");
+      }
+
+      if (this.e && $$0.e("LastExecution")) {
+         this.d = $$0.i("LastExecution");
+      } else {
+         this.d = -1L;
       }
    }
 
-   public double b(jh $$0, double $$1) {
-      if ($$1 == 0.0) {
-         return 0.0;
-      } else {
-         double $$2 = 0.0;
+   public void a(String $$0) {
+      this.i = $$0;
+      this.f = 0;
+   }
 
-         for (dga.a $$3 : this.a) {
-            $$2 += $$3.a($$0);
+   public String m() {
+      return this.i;
+   }
+
+   public boolean a(dha $$0) {
+      if ($$0.C || $$0.ac() == this.d) {
+         return false;
+      } else if ("Searge".equalsIgnoreCase(this.i)) {
+         this.h = xv.b("#itzlipofutzli");
+         this.f = 1;
+         return true;
+      } else {
+         this.f = 0;
+         MinecraftServer $$1 = this.e().p();
+         if ($$1.q() && !bbb.b(this.i)) {
+            try {
+               this.h = null;
+               ew $$2 = this.i().a((et)(($$0x, $$1x) -> {
+                  if ($$0x) {
+                     this.f++;
+                  }
+               }));
+               $$1.aG().a($$2, this.i);
+            } catch (Throwable var6) {
+               o $$4 = o.a(var6, "Executing command block");
+               p $$5 = $$4.a("Command to be executed");
+               $$5.a("Command", this::m);
+               $$5.a("Name", () -> this.n().getString());
+               throw new z($$4);
+            }
          }
 
-         return $$2 * $$1;
+         if (this.e) {
+            this.d = $$0.ac();
+         } else {
+            this.d = -1L;
+         }
+
+         return true;
       }
    }
 
-   static class a {
-      private final jh a;
-      private final double b;
+   public xv n() {
+      return this.j != null ? this.j : c;
+   }
 
-      public a(jh $$0, double $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   @Nullable
+   public xv o() {
+      return this.j;
+   }
 
-      public double a(jh $$0) {
-         double $$1 = this.a.j($$0);
-         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
+   public void b(@Nullable xv $$0) {
+      this.j = $$0;
+   }
+
+   @Override
+   public void a(xv $$0) {
+      if (this.g) {
+         this.h = xv.b("[" + b.format(new Date()) + "] ").b($$0);
+         this.f();
       }
    }
+
+   public abstract ash e();
+
+   public abstract void f();
+
+   public void c(@Nullable xv $$0) {
+      this.h = $$0;
+   }
+
+   public void a(boolean $$0) {
+      this.g = $$0;
+   }
+
+   public boolean p() {
+      return this.g;
+   }
+
+   public bte a(cps $$0) {
+      if (!$$0.gE()) {
+         return bte.e;
+      } else {
+         if ($$0.cU().C) {
+            $$0.a(this);
+         }
+
+         return bte.a;
+      }
+   }
+
+   public abstract fbs g();
+
+   public abstract ew i();
+
+   @Override
+   public boolean y_() {
+      return this.e().N().b(dgw.p) && this.g;
+   }
+
+   @Override
+   public boolean z_() {
+      return this.g;
+   }
+
+   @Override
+   public boolean c() {
+      return this.e().N().b(dgw.j);
+   }
+
+   public abstract boolean j();
 }

@@ -1,171 +1,166 @@
-public abstract class flx extends fmb {
-   private static final fnq a = new fnq(alj.b("widget/text_field"), alj.b("widget/text_field_highlighted"));
-   private static final alj b = alj.b("widget/scroller");
-   private static final int c = 4;
-   private static final int d = 8;
-   private double e;
-   private boolean f;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Supplier;
 
-   public flx(int $$0, int $$1, int $$2, int $$3, xj $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+public class flx implements Comparable<flx> {
+   private static final Map<String, flx> h = Maps.newHashMap();
+   private static final Map<ffg.a, flx> i = Maps.newHashMap();
+   private static final Set<String> j = Sets.newHashSet();
+   public static final String a = "key.categories.movement";
+   public static final String b = "key.categories.misc";
+   public static final String c = "key.categories.multiplayer";
+   public static final String d = "key.categories.gameplay";
+   public static final String e = "key.categories.inventory";
+   public static final String f = "key.categories.ui";
+   public static final String g = "key.categories.creative";
+   private static final Map<String, Integer> k = ae.a(Maps.newHashMap(), $$0 -> {
+      $$0.put("key.categories.movement", 1);
+      $$0.put("key.categories.gameplay", 2);
+      $$0.put("key.categories.inventory", 3);
+      $$0.put("key.categories.creative", 4);
+      $$0.put("key.categories.multiplayer", 5);
+      $$0.put("key.categories.ui", 6);
+      $$0.put("key.categories.misc", 7);
+   });
+   private final String l;
+   private final ffg.a m;
+   private final String n;
+   private ffg.a o;
+   private boolean p;
+   private int q;
+
+   public static void a(ffg.a $$0) {
+      flx $$1 = i.get($$0);
+      if ($$1 != null) {
+         $$1.q++;
+      }
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (!this.k) {
+   public static void a(ffg.a $$0, boolean $$1) {
+      flx $$2 = i.get($$0);
+      if ($$2 != null) {
+         $$2.a($$1);
+      }
+   }
+
+   public static void a() {
+      for (flx $$0 : h.values()) {
+         if ($$0.o.a() == ffg.b.a && $$0.o.b() != ffg.bv.b()) {
+            $$0.a(ffg.a(flz.Q().aO().h(), $$0.o.b()));
+         }
+      }
+   }
+
+   public static void b() {
+      for (flx $$0 : h.values()) {
+         $$0.n();
+      }
+   }
+
+   public static void c() {
+      for (flx $$0 : h.values()) {
+         if ($$0 instanceof fmk $$1) {
+            $$1.n();
+         }
+      }
+   }
+
+   public static void d() {
+      i.clear();
+
+      for (flx $$0 : h.values()) {
+         i.put($$0.o, $$0);
+      }
+   }
+
+   public flx(String $$0, int $$1, String $$2) {
+      this($$0, ffg.b.a, $$1, $$2);
+   }
+
+   public flx(String $$0, ffg.b $$1, int $$2, String $$3) {
+      this.l = $$0;
+      this.o = $$1.a($$2);
+      this.m = this.o;
+      this.n = $$3;
+      h.put($$0, this);
+      i.put(this.o, this);
+      j.add($$3);
+   }
+
+   public boolean e() {
+      return this.p;
+   }
+
+   public String f() {
+      return this.n;
+   }
+
+   public boolean g() {
+      if (this.q == 0) {
          return false;
       } else {
-         boolean $$3 = this.b($$0, $$1);
-         boolean $$4 = this.e()
-            && $$0 >= (double)(this.D() + this.g)
-            && $$0 <= (double)(this.D() + this.g + 8)
-            && $$1 >= (double)this.E()
-            && $$1 < (double)(this.E() + this.h);
-         if ($$4 && $$2 == 0) {
-            this.f = true;
-            return true;
-         } else {
-            return $$3 || $$4;
-         }
-      }
-   }
-
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      if ($$2 == 0) {
-         this.f = false;
-      }
-
-      return super.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if (this.k && this.aL_() && this.f) {
-         if ($$1 < (double)this.E()) {
-            this.a(0.0);
-         } else if ($$1 > (double)(this.E() + this.h)) {
-            this.a((double)this.d());
-         } else {
-            int $$5 = this.j();
-            double $$6 = (double)Math.max(1, this.d() / (this.h - $$5));
-            this.a(this.e + $$4 * $$6);
-         }
-
+         this.q--;
          return true;
-      } else {
-         return false;
       }
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if (!this.k) {
-         return false;
-      } else {
-         this.a(this.e - $$3 * this.i());
-         return true;
-      }
+   private void n() {
+      this.q = 0;
+      this.a(false);
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      boolean $$3 = $$0 == 265;
-      boolean $$4 = $$0 == 264;
-      if ($$3 || $$4) {
-         double $$5 = this.e;
-         this.a(this.e + (double)($$3 ? -1 : 1) * this.i());
-         if ($$5 != this.e) {
-            return true;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
+   public String h() {
+      return this.l;
    }
 
-   @Override
-   public void b(flq $$0, int $$1, int $$2, float $$3) {
-      if (this.k) {
-         this.b($$0);
-         $$0.c(this.D() + 1, this.E() + 1, this.D() + this.g - 1, this.E() + this.h - 1);
-         $$0.c().a();
-         $$0.c().a(0.0, -this.e, 0.0);
-         this.c($$0, $$1, $$2, $$3);
-         $$0.c().b();
-         $$0.e();
-         this.a($$0);
-      }
+   public ffg.a i() {
+      return this.m;
    }
 
-   private int j() {
-      return azm.a((int)((float)(this.h * this.h) / (float)this.k()), 32, this.h);
+   public void b(ffg.a $$0) {
+      this.o = $$0;
    }
 
-   protected void a(flq $$0) {
-      if (this.e()) {
-         this.c($$0);
-      }
+   public int a(flx $$0) {
+      return this.n.equals($$0.n) ? hcl.a(this.l).compareTo(hcl.a($$0.l)) : k.get(this.n).compareTo(k.get($$0.n));
    }
 
-   protected int a() {
-      return 4;
+   public static Supplier<xv> a(String $$0) {
+      flx $$1 = h.get($$0);
+      return $$1 == null ? () -> xv.c($$0) : $$1::k;
    }
 
-   protected int b() {
-      return this.a() * 2;
+   public boolean b(flx $$0) {
+      return this.o.equals($$0.o);
    }
 
-   protected double c() {
-      return this.e;
+   public boolean j() {
+      return this.o.equals(ffg.bv);
    }
 
-   protected void a(double $$0) {
-      this.e = azm.a($$0, 0.0, (double)this.d());
+   public boolean a(int $$0, int $$1) {
+      return $$0 == ffg.bv.b() ? this.o.a() == ffg.b.b && this.o.b() == $$1 : this.o.a() == ffg.b.a && this.o.b() == $$0;
    }
 
-   protected int d() {
-      return Math.max(0, this.k() - (this.h - 4));
+   public boolean a(int $$0) {
+      return this.o.a() == ffg.b.c && this.o.b() == $$0;
    }
 
-   private int k() {
-      return this.h() + 4;
+   public xv k() {
+      return this.o.d();
    }
 
-   protected void b(flq $$0) {
-      this.a($$0, this.D(), this.E(), this.y(), this.w());
+   public boolean l() {
+      return this.o.equals(this.m);
    }
 
-   protected void a(flq $$0, int $$1, int $$2, int $$3, int $$4) {
-      alj $$5 = a.a(this.C(), this.aL_());
-      $$0.a(gjq::B, $$5, $$1, $$2, $$3, $$4);
+   public String m() {
+      return this.o.c();
    }
 
-   private void c(flq $$0) {
-      int $$1 = this.j();
-      int $$2 = this.D() + this.g;
-      int $$3 = Math.max(this.E(), (int)this.e * (this.h - $$1) / this.d() + this.E());
-      $$0.a(gjq::B, b, $$2, $$3, 8, $$1);
+   public void a(boolean $$0) {
+      this.p = $$0;
    }
-
-   protected boolean a(int $$0, int $$1) {
-      return (double)$$1 - this.e >= (double)this.E() && (double)$$0 - this.e <= (double)(this.E() + this.h);
-   }
-
-   protected boolean b(double $$0, double $$1) {
-      return $$0 >= (double)this.D() && $$0 < (double)(this.D() + this.g) && $$1 >= (double)this.E() && $$1 < (double)(this.E() + this.h);
-   }
-
-   protected boolean e() {
-      return this.h() > this.w();
-   }
-
-   public int f() {
-      return 8;
-   }
-
-   protected abstract int h();
-
-   protected abstract double i();
-
-   protected abstract void c(flq var1, int var2, int var3, float var4);
 }

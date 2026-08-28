@@ -1,125 +1,101 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.google.common.hash.Hashing;
 
-public abstract class die extends diq {
-   protected static final fas a = diq.a(1.0, 0.0, 1.0, 15.0, 0.5, 15.0);
-   protected static final fas b = diq.a(1.0, 0.0, 1.0, 15.0, 1.0, 15.0);
-   protected static final ezt c = new ezt(0.0625, 0.0, 0.0625, 0.9375, 0.25, 0.9375);
-   protected final dwk d;
+public class die {
+   public static final int a = kb.a(8);
+   private static final int b = 2;
+   private static final int c = 4;
+   private static final int d = 3;
+   private final die.a e;
+   private final long f;
 
-   protected die(dvu.d $$0, dwk $$1) {
-      super($$0.a($$1.g()));
-      this.d = $$1;
+   public die(die.a $$0, long $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   @Override
-   protected abstract MapCodec<? extends die> a();
-
-   @Override
-   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
-      return this.h($$0) > 0 ? a : b;
+   public static long a(long $$0) {
+      return Hashing.sha256().hashLong($$0).asLong();
    }
 
-   protected int b() {
-      return 20;
+   public die a(die.a $$0) {
+      return new die($$0, this.f);
    }
 
-   @Override
-   public boolean a(dvv $$0) {
-      return true;
-   }
+   public jq<dic> a(jh $$0) {
+      int $$1 = $$0.u() - 2;
+      int $$2 = $$0.v() - 2;
+      int $$3 = $$0.w() - 2;
+      int $$4 = $$1 >> 2;
+      int $$5 = $$2 >> 2;
+      int $$6 = $$3 >> 2;
+      double $$7 = (double)($$1 & 3) / 4.0;
+      double $$8 = (double)($$2 & 3) / 4.0;
+      double $$9 = (double)($$3 & 3) / 4.0;
+      int $$10 = 0;
+      double $$11 = Double.POSITIVE_INFINITY;
 
-   @Override
-   protected dvv a(dvv $$0, dfp $$1, dgb $$2, jh $$3, jm $$4, jh $$5, dvv $$6, azu $$7) {
-      return $$4 == jm.a && !$$0.a($$1, $$3) ? dis.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected boolean a(dvv $$0, dfp $$1, jh $$2) {
-      jh $$3 = $$2.e();
-      return c($$1, $$3) || a($$1, $$3, jm.b);
-   }
-
-   @Override
-   protected void a(dvv $$0, arp $$1, jh $$2, azu $$3) {
-      int $$4 = this.h($$0);
-      if ($$4 > 0) {
-         this.a(null, $$1, $$2, $$0, $$4);
-      }
-   }
-
-   @Override
-   protected void a(dvv $$0, dfm $$1, jh $$2, bul $$3) {
-      if (!$$1.C) {
-         int $$4 = this.h($$0);
-         if ($$4 == 0) {
-            this.a($$3, $$1, $$2, $$0, $$4);
+      for (int $$12 = 0; $$12 < 8; $$12++) {
+         boolean $$13 = ($$12 & 4) == 0;
+         boolean $$14 = ($$12 & 2) == 0;
+         boolean $$15 = ($$12 & 1) == 0;
+         int $$16 = $$13 ? $$4 : $$4 + 1;
+         int $$17 = $$14 ? $$5 : $$5 + 1;
+         int $$18 = $$15 ? $$6 : $$6 + 1;
+         double $$19 = $$13 ? $$7 : $$7 - 1.0;
+         double $$20 = $$14 ? $$8 : $$8 - 1.0;
+         double $$21 = $$15 ? $$9 : $$9 - 1.0;
+         double $$22 = a(this.f, $$16, $$17, $$18, $$19, $$20, $$21);
+         if ($$11 > $$22) {
+            $$10 = $$12;
+            $$11 = $$22;
          }
       }
+
+      int $$23 = ($$10 & 4) == 0 ? $$4 : $$4 + 1;
+      int $$24 = ($$10 & 2) == 0 ? $$5 : $$5 + 1;
+      int $$25 = ($$10 & 1) == 0 ? $$6 : $$6 + 1;
+      return this.e.getNoiseBiome($$23, $$24, $$25);
    }
 
-   private void a(@Nullable bul $$0, dfm $$1, jh $$2, dvv $$3, int $$4) {
-      int $$5 = this.b($$1, $$2);
-      boolean $$6 = $$4 > 0;
-      boolean $$7 = $$5 > 0;
-      if ($$4 != $$5) {
-         dvv $$8 = this.a($$3, $$5);
-         $$1.a($$2, $$8, 2);
-         this.a($$1, $$2);
-         $$1.b($$2, $$3, $$8);
-      }
-
-      if (!$$7 && $$6) {
-         $$1.a(null, $$2, this.d.l(), awo.e);
-         $$1.a($$0, ear.e, $$2);
-      } else if ($$7 && !$$6) {
-         $$1.a(null, $$2, this.d.m(), awo.e);
-         $$1.a($$0, ear.a, $$2);
-      }
-
-      if ($$7) {
-         $$1.a(new jh($$2), this, this.b());
-      }
+   public jq<dic> a(double $$0, double $$1, double $$2) {
+      int $$3 = kb.a(bae.a($$0));
+      int $$4 = kb.a(bae.a($$1));
+      int $$5 = kb.a(bae.a($$2));
+      return this.a($$3, $$4, $$5);
    }
 
-   @Override
-   protected void a(dvv $$0, dfm $$1, jh $$2, dvv $$3, boolean $$4) {
-      if (!$$4 && !$$0.a($$3.b())) {
-         if (this.h($$0) > 0) {
-            this.a($$1, $$2);
-         }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
+   public jq<dic> b(jh $$0) {
+      int $$1 = kb.a($$0.u());
+      int $$2 = kb.a($$0.v());
+      int $$3 = kb.a($$0.w());
+      return this.a($$1, $$2, $$3);
    }
 
-   protected void a(dfm $$0, jh $$1) {
-      $$0.a($$1, this);
-      $$0.a($$1.e(), this);
+   public jq<dic> a(int $$0, int $$1, int $$2) {
+      return this.e.getNoiseBiome($$0, $$1, $$2);
    }
 
-   @Override
-   protected int a(dvv $$0, der $$1, jh $$2, jm $$3) {
-      return this.h($$0);
+   private static double a(long $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      long $$7 = azz.a($$0, (long)$$1);
+      $$7 = azz.a($$7, (long)$$2);
+      $$7 = azz.a($$7, (long)$$3);
+      $$7 = azz.a($$7, (long)$$1);
+      $$7 = azz.a($$7, (long)$$2);
+      $$7 = azz.a($$7, (long)$$3);
+      double $$8 = b($$7);
+      $$7 = azz.a($$7, $$0);
+      double $$9 = b($$7);
+      $$7 = azz.a($$7, $$0);
+      double $$10 = b($$7);
+      return bae.k($$6 + $$10) + bae.k($$5 + $$9) + bae.k($$4 + $$8);
    }
 
-   @Override
-   protected int b(dvv $$0, der $$1, jh $$2, jm $$3) {
-      return $$3 == jm.b ? this.h($$0) : 0;
+   private static double b(long $$0) {
+      double $$1 = (double)Math.floorMod($$0 >> 24, 1024) / 1024.0;
+      return ($$1 - 0.5) * 0.9;
    }
 
-   @Override
-   protected boolean f_(dvv $$0) {
-      return true;
+   public interface a {
+      jq<dic> getNoiseBiome(int var1, int var2, int var3);
    }
-
-   protected static int a(dfm $$0, ezt $$1, Class<? extends bul> $$2) {
-      return $$0.a($$2, $$1, buq.f.and($$0x -> !$$0x.r_())).size();
-   }
-
-   protected abstract int b(dfm var1, jh var2);
-
-   protected abstract int h(dvv var1);
-
-   protected abstract dvv a(dvv var1, int var2);
 }

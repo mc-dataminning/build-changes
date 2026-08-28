@@ -1,28 +1,15 @@
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-public record acd(alj b, @Nullable byte[] c) implements zq<acc> {
-   public static final zh<wg, acd> a = zq.a(acd::a, acd::new);
-
-   private acd(wg $$0) {
-      this($$0.q(), $$0.c(aaf.b));
-   }
-
-   private void a(wg $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, aaf.b);
-   }
+public record acd(List<avc> b) implements aac<abz> {
+   public static final zt<ByteBuf, acd> a = zt.a(avc.a.a(zr.a()), acd::b, acd::new);
 
    @Override
-   public zs<acd> a() {
-      return acb.b;
+   public aae<acd> a() {
+      return acf.d;
    }
 
-   public void a(acc $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
-   }
-
-   @Nullable
-   public byte[] e() {
-      return this.c;
    }
 }

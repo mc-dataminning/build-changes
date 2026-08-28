@@ -2,38 +2,55 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.function.UnaryOperator;
 
-public abstract class bfz extends DataFix {
-   private final String a;
-   private final Predicate<String> b;
-
-   public bfz(Schema $$0, String $$1, Predicate<String> $$2) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
+public class bfz extends DataFix {
+   public bfz(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   public final TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bia.t);
-      return this.fixTypeEverywhereTyped(this.a, $$0, a($$0, this.b, this::a));
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bis.c);
+      OpticFinder<?> $$1 = $$0.findField("Level");
+      return this.fixTypeEverywhereTyped("HeightmapRenamingFix", $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a)));
    }
 
-   public static UnaryOperator<Typed<?>> a(Type<?> $$0, Predicate<String> $$1, UnaryOperator<Dynamic<?>> $$2) {
-      OpticFinder<Pair<String, String>> $$3 = DSL.fieldFinder("id", DSL.named(bia.D.typeName(), bjo.a()));
-      OpticFinder<?> $$4 = $$0.findField("tag");
-      return $$4x -> {
-         Optional<Pair<String, String>> $$5 = $$4x.getOptional($$3);
-         return $$5.isPresent() && $$1.test((String)$$5.get().getSecond()) ? $$4x.updateTyped($$4, $$1xx -> $$1xx.update(DSL.remainderFinder(), $$2)) : $$4x;
-      };
-   }
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<? extends Dynamic<?>> $$1 = $$0.get("Heightmaps").result();
+      if ($$1.isEmpty()) {
+         return $$0;
+      } else {
+         Dynamic<?> $$2 = (Dynamic<?>)$$1.get();
+         Optional<? extends Dynamic<?>> $$3 = $$2.get("LIQUID").result();
+         if ($$3.isPresent()) {
+            $$2 = $$2.remove("LIQUID");
+            $$2 = $$2.set("WORLD_SURFACE_WG", $$3.get());
+         }
 
-   protected abstract <T> Dynamic<T> a(Dynamic<T> var1);
+         Optional<? extends Dynamic<?>> $$4 = $$2.get("SOLID").result();
+         if ($$4.isPresent()) {
+            $$2 = $$2.remove("SOLID");
+            $$2 = $$2.set("OCEAN_FLOOR_WG", $$4.get());
+            $$2 = $$2.set("OCEAN_FLOOR", $$4.get());
+         }
+
+         Optional<? extends Dynamic<?>> $$5 = $$2.get("LIGHT").result();
+         if ($$5.isPresent()) {
+            $$2 = $$2.remove("LIGHT");
+            $$2 = $$2.set("LIGHT_BLOCKING", $$5.get());
+         }
+
+         Optional<? extends Dynamic<?>> $$6 = $$2.get("RAIN").result();
+         if ($$6.isPresent()) {
+            $$2 = $$2.remove("RAIN");
+            $$2 = $$2.set("MOTION_BLOCKING", $$6.get());
+            $$2 = $$2.set("MOTION_BLOCKING_NO_LEAVES", $$6.get());
+         }
+
+         return $$0.set("Heightmaps", $$2);
+      }
+   }
 }

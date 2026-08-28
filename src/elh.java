@@ -1,34 +1,47 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class elh extends elp {
-   public static final MapCodec<elh> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ekp.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, elh::new));
-   private final ekp c;
+public class elh extends elm {
+   public static final MapCodec<elh> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(elh::new, $$0 -> $$0.d);
+   private static final jm b = jm.d;
+   private static final jm[] c = jm.c.a.a().filter($$0 -> $$0 != b.g()).toArray(jm[]::new);
+   private final float d;
 
-   private elh(ekp $$0) {
-      this.c = $$0;
-   }
-
-   public static elh a(ekp $$0) {
-      return new elh($$0);
-   }
-
-   public static elh a(eck $$0, eck $$1) {
-      return a(eks.a($$0, $$1));
-   }
-
-   public static elh b(eck $$0, eck $$1) {
-      return a(ekr.a($$0, $$1));
+   public elh(float $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public Stream<jh> a_(eln $$0, azu $$1, jh $$2) {
-      return Stream.of($$2.h(this.c.a($$1, $$0)));
+   protected eln<?> a() {
+      return eln.f;
    }
 
    @Override
-   public elq<?> b() {
-      return elq.l;
+   public void a(elm.a $$0) {
+      bam $$1 = $$0.b();
+      if (!($$1.i() >= this.d)) {
+         List<jh> $$2 = $$0.d();
+         List<jh> $$3 = $$0.c();
+         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
+         List<jh> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
+         if (!$$5.isEmpty()) {
+            ae.c($$5, $$1);
+            Optional<jh> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
+            if (!$$6.isEmpty()) {
+               $$0.a($$6.get(), dkg.pz.m().b(djy.b, b));
+               $$0.a().a($$6.get(), dur.I).ifPresent($$1x -> {
+                  int $$2x = 2 + $$1.a(2);
+
+                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
+                     $$1x.a(dum.c.a($$1.a(599)));
+                  }
+               });
+            }
+         }
+      }
    }
 }

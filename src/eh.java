@@ -8,8 +8,8 @@ public class eh extends dy<eh.a> {
       return eh.a.a;
    }
 
-   public void a(arq $$0, cgy $$1) {
-      eun $$2 = bw.b($$0, $$1);
+   public void a(asi $$0, chs $$1) {
+      ewh $$2 = bw.b($$0, $$1);
       this.a($$0, $$1x -> $$1x.a($$2));
    }
 
@@ -26,7 +26,7 @@ public class eh extends dy<eh.a> {
          return ao.y.a(new eh.a(Optional.empty(), Optional.of(bw.a($$0))));
       }
 
-      public boolean a(eun $$0) {
+      public boolean a(ewh $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 

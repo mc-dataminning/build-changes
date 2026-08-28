@@ -1,47 +1,28 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class btr {
+   public static final float a = 20.0F;
+   public static final float b = 25.0F;
+   public static final float c = 2.0F;
+   public static final float d = 0.2F;
+   private static final int e = 4;
 
-public final class btr {
-   public static xj a(btq $$0, float $$1, float $$2) {
-      if ($$0.b()) {
-         return xj.c("effect.duration.infinite");
+   public static float a(bwb $$0, float $$1, btv $$2, float $$3, float $$4) {
+      float $$5 = 2.0F + $$4 / 4.0F;
+      float $$6 = bae.a($$3 - $$1 / $$5, $$3 * 0.2F, 20.0F);
+      float $$7 = $$6 / 25.0F;
+      cxk $$8 = $$2.e();
+      float $$10;
+      if ($$8 != null && $$0.dV() instanceof ash $$9) {
+         $$10 = bae.a(ddt.c($$9, $$8, $$0, $$2, $$7), 0.0F, 1.0F);
       } else {
-         int $$3 = azm.d((float)$$0.d() * $$1);
-         return xj.b(baj.a($$3, $$2));
-      }
-   }
-
-   public static boolean a(bvh $$0) {
-      return $$0.b(bts.c) || $$0.b(bts.C);
-   }
-
-   public static int b(bvh $$0) {
-      int $$1 = 0;
-      int $$2 = 0;
-      if ($$0.b(bts.c)) {
-         $$1 = $$0.c(bts.c).e();
+         $$10 = $$7;
       }
 
-      if ($$0.b(bts.C)) {
-         $$2 = $$0.c(bts.C).e();
-      }
-
-      return Math.max($$1, $$2);
+      float $$12 = 1.0F - $$10;
+      return $$1 * $$12;
    }
 
-   public static boolean c(bvh $$0) {
-      return $$0.b(bts.m) || $$0.b(bts.C);
-   }
-
-   public static List<arq> a(arp $$0, @Nullable bul $$1, ezy $$2, double $$3, btq $$4, int $$5) {
-      jq<bto> $$6 = $$4.c();
-      List<arq> $$7 = $$0.a(
-         $$6x -> $$6x.h.d()
-               && ($$1 == null || !$$1.s($$6x))
-               && $$2.a((ka)$$6x.dt(), $$3)
-               && (!$$6x.b($$6) || $$6x.c($$6).e() < $$4.e() || $$6x.c($$6).a($$5 - 1))
-      );
-      $$7.forEach($$2x -> $$2x.b(new btq($$4), $$1));
-      return $$7;
+   public static float a(float $$0, float $$1) {
+      float $$2 = bae.a($$1, 0.0F, 20.0F);
+      return $$0 * (1.0F - $$2 / 25.0F);
    }
 }

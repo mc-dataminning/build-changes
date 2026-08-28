@@ -1,29 +1,36 @@
-public class afh implements zq<acf> {
-   public static final zh<wg, afh> a = zq.a(afh::a, afh::new);
-   private final int b;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-   public afh(int $$0) {
-      this.b = $$0;
+public class afh implements aac<acr> {
+   public static final zt<ws, afh> a = aac.a(afh::a, afh::new);
+   private final IntList b;
+
+   public afh(IntList $$0) {
+      this.b = new IntArrayList($$0);
    }
 
-   private afh(wg $$0) {
-      this.b = $$0.l();
+   public afh(int... $$0) {
+      this.b = new IntArrayList($$0);
    }
 
-   private void a(wg $$0) {
-      $$0.c(this.b);
+   private afh(ws $$0) {
+      this.b = $$0.a();
+   }
+
+   private void a(ws $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zs<afh> a() {
-      return agu.az;
+   public aae<afh> a() {
+      return ahk.an;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public IntList b() {
       return this.b;
    }
 }

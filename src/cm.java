@@ -4,7 +4,7 @@ public record cm(dm c) implements cv {
    public static final Codec<cm> a = dm.a.xmap(cm::new, cm::a);
 
    @Override
-   public boolean a(cwm $$0) {
+   public boolean a(cxk $$0) {
       return this.c.a($$0);
    }
 

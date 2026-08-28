@@ -1,81 +1,49 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public interface bsq extends bsd {
-   String b = "LootTable";
-   String c = "LootTableSeed";
+public class bsq extends bsj {
+   public static final MapCodec<bsq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(brm.b(bsj.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, bsq::new)
+   );
+   private final brm<bsj> b;
+   private final int f;
+   private final int g;
 
-   @Nullable
-   ali<eus> aw_();
+   public bsq(brm<bsj> $$0) {
+      this.b = $$0;
+      List<bro.b<bsj>> $$1 = $$0.e();
+      int $$2 = Integer.MAX_VALUE;
+      int $$3 = Integer.MIN_VALUE;
 
-   void a(@Nullable ali<eus> var1);
+      for (bro.b<bsj> $$4 : $$1) {
+         int $$5 = $$4.b().a();
+         int $$6 = $$4.b().b();
+         $$2 = Math.min($$2, $$5);
+         $$3 = Math.max($$3, $$6);
+      }
 
-   default void a(ali<eus> $$0, long $$1) {
-      this.a($$0);
-      this.a($$1);
+      this.f = $$2;
+      this.g = $$3;
    }
 
-   long az_();
-
-   void a(long var1);
-
-   jh aA_();
-
-   @Nullable
-   dfm i();
-
-   static void a(der $$0, azu $$1, jh $$2, ali<eus> $$3) {
-      if ($$0.c_($$2) instanceof bsq $$5) {
-         $$5.a($$3, $$1.g());
-      }
+   @Override
+   public int a(bam $$0) {
+      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0);
    }
 
-   default boolean b_(ul $$0) {
-      if ($$0.b("LootTable", 8)) {
-         this.a(ali.a(ma.bd, alj.a($$0.l("LootTable"))));
-         if ($$0.b("LootTableSeed", 4)) {
-            this.a($$0.i("LootTableSeed"));
-         } else {
-            this.a(0L);
-         }
-
-         return true;
-      } else {
-         return false;
-      }
+   @Override
+   public int a() {
+      return this.f;
    }
 
-   default boolean c_(ul $$0) {
-      ali<eus> $$1 = this.aw_();
-      if ($$1 == null) {
-         return false;
-      } else {
-         $$0.a("LootTable", $$1.a().toString());
-         long $$2 = this.az_();
-         if ($$2 != 0L) {
-            $$0.a("LootTableSeed", $$2);
-         }
-
-         return true;
-      }
+   @Override
+   public int b() {
+      return this.g;
    }
 
-   default void d_(@Nullable cou $$0) {
-      dfm $$1 = this.i();
-      jh $$2 = this.aA_();
-      ali<eus> $$3 = this.aw_();
-      if ($$3 != null && $$1 != null && $$1.p() != null) {
-         eus $$4 = $$1.p().bc().b($$3);
-         if ($$0 instanceof arq) {
-            ao.Q.a((arq)$$0, $$3);
-         }
-
-         this.a(null);
-         euq.a $$5 = new euq.a((arp)$$1).a(exj.f, ezy.b($$2));
-         if ($$0 != null) {
-            $$5.a($$0.gD()).a(exj.a, $$0);
-         }
-
-         $$4.a(this, $$5.a(exi.c), this.az_());
-      }
+   @Override
+   public bsk<?> c() {
+      return bsk.e;
    }
 }

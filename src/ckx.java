@@ -1,163 +1,80 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class ckx extends cku implements bwh<jq<cky>> {
-   private static final akm<jq<cky>> g = akq.a(ckx.class, ako.A);
-   public static final MapCodec<jq<cky>> d = cky.c.fieldOf("variant");
-   public static final Codec<jq<cky>> e = d.codec();
-   public static final float f = 0.0625F;
+public class ckx extends ckr {
+   private static final cgs b = cgs.a().d();
+   @Nullable
+   private eud c;
+   @Nullable
+   private fbs d;
 
-   public ckx(bus<? extends ckx> $$0, dfm $$1) {
-      super($$0, $$1);
+   public ckx(ckp $$0) {
+      super($$0);
    }
 
    @Override
-   protected void a(akq.a $$0) {
-      $$0.a(g, this.dX().e(ma.X).a().orElseThrow());
+   public clf<ckx> h() {
+      return clf.c;
    }
 
    @Override
-   public void a(akm<?> $$0) {
-      if (g.equals($$0)) {
-         this.j();
+   public void c() {
+      this.c = null;
+      this.d = null;
+   }
+
+   @Override
+   public void a(ash $$0) {
+      double $$1 = this.d == null ? 0.0 : this.d.c(this.a.dA(), this.a.dC(), this.a.dG());
+      if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
+         this.b($$0);
       }
    }
 
-   public void b(jq<cky> $$0) {
-      this.al.a(g, $$0);
+   @Nullable
+   @Override
+   public fbs f() {
+      return this.d;
    }
 
-   public jq<cky> q() {
-      return this.al.a(g);
-   }
-
-   public static Optional<ckx> a(dfm $$0, jh $$1, jm $$2) {
-      ckx $$3 = new ckx($$0, $$1);
-      List<jq<cky>> $$4 = new ArrayList<>();
-      $$0.J_().e(ma.X).c(axm.a).forEach($$4::add);
-      if ($$4.isEmpty()) {
-         return Optional.empty();
-      } else {
-         $$3.a($$2);
-         $$4.removeIf($$1x -> {
-            $$3.b($$1x);
-            return !$$3.l();
-         });
-         if ($$4.isEmpty()) {
-            return Optional.empty();
+   private void b(ash $$0) {
+      if (this.c == null || this.c.c()) {
+         int $$1 = this.a.t();
+         jh $$2 = $$0.a(edi.a.f, egn.a(this.a.m()));
+         cps $$3 = $$0.a(b, this.a, (double)$$2.u(), (double)$$2.v(), (double)$$2.w());
+         int $$5;
+         if ($$3 != null) {
+            fbs $$4 = new fbs($$3.dA(), 0.0, $$3.dG()).d();
+            $$5 = this.a.q(-$$4.d * 40.0, 105.0, -$$4.f * 40.0);
          } else {
-            int $$5 = $$4.stream().mapToInt(ckx::c).max().orElse(0);
-            $$4.removeIf($$1x -> c($$1x) < $$5);
-            Optional<jq<cky>> $$6 = ae.b($$4, $$3.ae);
-            if ($$6.isEmpty()) {
-               return Optional.empty();
-            } else {
-               $$3.b($$6.get());
-               $$3.a($$2);
-               return Optional.of($$3);
-            }
+            $$5 = this.a.q(40.0, (double)$$2.v(), 0.0);
          }
+
+         eub $$7 = new eub($$2.u(), $$2.v(), $$2.w());
+         this.c = this.a.a($$1, $$5, $$7);
+         if (this.c != null) {
+            this.c.a();
+         }
+      }
+
+      this.i();
+      if (this.c != null && this.c.c()) {
+         this.a.gi().a(clf.d);
       }
    }
 
-   private static int c(jq<cky> $$0) {
-      return $$0.a().a();
-   }
+   private void i() {
+      if (this.c != null && !this.c.c()) {
+         kl $$0 = this.c.g();
+         this.c.a();
+         double $$1 = (double)$$0.u();
+         double $$2 = (double)$$0.w();
 
-   private ckx(dfm $$0, jh $$1) {
-      super(bus.aJ, $$0, $$1);
-   }
+         double $$3;
+         do {
+            $$3 = (double)((float)$$0.v() + this.a.dY().i() * 20.0F);
+         } while ($$3 < (double)$$0.v());
 
-   public ckx(dfm $$0, jh $$1, jm $$2, jq<cky> $$3) {
-      this($$0, $$1);
-      this.b($$3);
-      this.a($$2);
-   }
-
-   @Override
-   public void b(ul $$0) {
-      e.encodeStart(this.dX().a(uz.a), this.q()).ifSuccess($$1 -> $$0.a((ul)$$1));
-      $$0.a("facing", (byte)this.c.e());
-      super.b($$0);
-   }
-
-   @Override
-   public void a(ul $$0) {
-      e.parse(this.dX().a(uz.a), $$0).ifSuccess(this::b);
-      this.c = jm.b($$0.f("facing"));
-      super.a($$0);
-      this.a(this.c);
-   }
-
-   @Override
-   protected ezt a(jh $$0, jm $$1) {
-      float $$2 = 0.46875F;
-      ezy $$3 = ezy.b($$0).a($$1, -0.46875);
-      cky $$4 = this.q().a();
-      double $$5 = this.b($$4.b());
-      double $$6 = this.b($$4.c());
-      jm $$7 = $$1.i();
-      ezy $$8 = $$3.a($$7, $$5).a(jm.b, $$6);
-      jm.a $$9 = $$1.o();
-      double $$10 = $$9 == jm.a.a ? 0.0625 : (double)$$4.b();
-      double $$11 = (double)$$4.c();
-      double $$12 = $$9 == jm.a.c ? 0.0625 : (double)$$4.b();
-      return ezt.a($$8, $$10, $$11, $$12);
-   }
-
-   private double b(int $$0) {
-      return $$0 % 2 == 0 ? 0.5 : 0.0;
-   }
-
-   @Override
-   public void a(arp $$0, @Nullable bul $$1) {
-      if ($$0.N().b(dfi.i)) {
-         this.a(awn.sr, 1.0F, 1.0F);
-         if ($$1 instanceof cou $$2 && $$2.fT()) {
-            return;
-         }
-
-         this.a($$0, cwq.qa);
+         this.d = new fbs($$1, $$3, $$2);
       }
-   }
-
-   @Override
-   public void y() {
-      this.a(awn.ss, 1.0F, 1.0F);
-   }
-
-   @Override
-   public void b(double $$0, double $$1, double $$2, float $$3, float $$4) {
-      this.a_($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
-      this.a_($$0, $$1, $$2);
-   }
-
-   @Override
-   public ezy du() {
-      return ezy.a(this.a);
-   }
-
-   @Override
-   public zq<acf> a(arn $$0) {
-      return new acg(this, this.c.d(), this.n());
-   }
-
-   @Override
-   public void a(acg $$0) {
-      super.a($$0);
-      this.a(jm.a($$0.p()));
-   }
-
-   @Override
-   public cwm dI() {
-      return new cwm(cwq.qa);
    }
 }

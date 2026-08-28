@@ -1,6 +1,13 @@
 import javax.annotation.Nullable;
 
-@Deprecated
-public interface gyk {
-   float call(cwm var1, @Nullable gdh var2, @Nullable bvh var3, int var4);
+public class gyk extends gxo {
+   public jm a = jm.c;
+   public cxk b = cxk.k;
+   public int c;
+   public boolean d;
+   @Nullable
+   public hdg e;
+   @Nullable
+   public evh f;
+   public final han g = new han();
 }

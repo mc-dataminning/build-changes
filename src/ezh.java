@@ -1,29 +1,48 @@
-import net.minecraft.server.MinecraftServer;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
-public class ezh implements ezj<MinecraftServer> {
-   final alj a;
+public record ezh(jq<ddr> b, List<Float> c) implements ezs {
+   public static final MapCodec<ezh> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ddr.c.fieldOf("enchantment").forGetter(ezh::c), azn.a(Codec.FLOAT.listOf()).fieldOf("chances").forGetter(ezh::d)).apply($$0, ezh::new)
+   );
 
-   public ezh(alj $$0) {
-      this.a = $$0;
+   @Override
+   public ezt b() {
+      return ezu.k;
    }
 
-   public void a(MinecraftServer $$0, ezl<MinecraftServer> $$1, long $$2) {
-      aly $$3 = $$0.aE();
-      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
+   @Override
+   public Set<eza<?>> a() {
+      return ImmutableSet.of(ezd.i);
    }
 
-   public static class a extends ezj.a<MinecraftServer, ezh> {
-      public a() {
-         super(alj.b("function"), ezh.class);
+   public boolean a(ewh $$0) {
+      cxk $$1 = $$0.c(ezd.i);
+      int $$2 = $$1 != null ? ddt.a(this.b, $$1) : 0;
+      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
+      return $$0.b().i() < $$3;
+   }
+
+   public static ezs.a a(jq<ddr> $$0, float... $$1) {
+      List<Float> $$2 = new ArrayList<>($$1.length);
+
+      for (float $$3 : $$1) {
+         $$2.add($$3);
       }
 
-      public void a(ul $$0, ezh $$1) {
-         $$0.a("Name", $$1.a.toString());
-      }
+      return () -> new ezh($$0, $$2);
+   }
 
-      public ezh a(ul $$0) {
-         alj $$1 = alj.a($$0.l("Name"));
-         return new ezh($$1);
-      }
+   public jq<ddr> c() {
+      return this.b;
+   }
+
+   public List<Float> d() {
+      return this.c;
    }
 }

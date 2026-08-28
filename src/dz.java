@@ -1,11 +1,11 @@
 public interface dz<T> extends cv {
    @Override
-   default boolean a(cwm $$0) {
+   default boolean a(cxk $$0) {
       T $$1 = $$0.a(this.a());
       return $$1 != null && this.a($$0, $$1);
    }
 
    kt<T> a();
 
-   boolean a(cwm var1, T var2);
+   boolean a(cxk var1, T var2);
 }

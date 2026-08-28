@@ -1,101 +1,163 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class frk extends frw {
-   private static final long a = 2000L;
-   private final asd b;
-   private long c = -1L;
-   private boolean d;
-   private static final Object2IntMap<dyr> s = ae.a(new Object2IntOpenHashMap(), $$0 -> {
-      $$0.defaultReturnValue(0);
-      $$0.put(dyr.c, 5526612);
-      $$0.put(dyr.d, 10066329);
-      $$0.put(dyr.e, 6250897);
-      $$0.put(dyr.f, 8434258);
-      $$0.put(dyr.g, 13750737);
-      $$0.put(dyr.h, 7497737);
-      $$0.put(dyr.i, 3159410);
-      $$0.put(dyr.j, 2213376);
-      $$0.put(dyr.k, 13421772);
-      $$0.put(dyr.l, 16769184);
-      $$0.put(dyr.m, 15884384);
-      $$0.put(dyr.n, 16777215);
-   });
+public class frk extends fri {
+   private final frk.b c;
+   private final List<frk.a> d = new ArrayList<>();
+   private final frq e = frq.i();
 
-   public frk(asd $$0) {
-      super(fjv.a);
-      this.b = $$0;
+   public frk(int $$0, int $$1, frk.b $$2) {
+      this(0, 0, $$0, $$1, $$2);
+   }
+
+   public frk(int $$0, int $$1, int $$2, int $$3, frk.b $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.c = $$4;
    }
 
    @Override
-   public boolean aG_() {
-      return false;
-   }
+   public void a() {
+      super.a();
+      if (!this.d.isEmpty()) {
+         int $$0 = 0;
+         int $$1 = this.c.b(this);
 
-   @Override
-   protected boolean aQ_() {
-      return false;
-   }
-
-   @Override
-   public void j() {
-      this.d = true;
-      this.d(true);
-   }
-
-   @Override
-   protected void b(fqb $$0) {
-      if (this.d) {
-         $$0.a(fqa.a, xj.c("narrator.loading.done"));
-      } else {
-         $$0.a(fqa.a, this.m());
-      }
-   }
-
-   private xj m() {
-      return xj.a("loading.progress", azm.a(this.b.f(), 0, 100));
-   }
-
-   @Override
-   public void a(flq $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      long $$4 = ae.c();
-      if ($$4 - this.c > 2000L) {
-         this.c = $$4;
-         this.d(true);
-      }
-
-      int $$5 = this.n / 2;
-      int $$6 = this.o / 2;
-      a($$0, this.b, $$5, $$6, 2, 0);
-      int $$7 = this.b.e() + 9 + 2;
-      $$0.a(this.p, this.m(), $$5, $$6 - $$7, 16777215);
-   }
-
-   public static void a(flq $$0, asd $$1, int $$2, int $$3, int $$4, int $$5) {
-      int $$6 = $$4 + $$5;
-      int $$7 = $$1.d();
-      int $$8 = $$7 * $$6 - $$5;
-      int $$9 = $$1.e();
-      int $$10 = $$9 * $$6 - $$5;
-      int $$11 = $$2 - $$10 / 2;
-      int $$12 = $$3 - $$10 / 2;
-      int $$13 = $$8 / 2 + 1;
-      int $$14 = -16772609;
-      if ($$5 != 0) {
-         $$0.a($$2 - $$13, $$3 - $$13, $$2 - $$13 + 1, $$3 + $$13, -16772609);
-         $$0.a($$2 + $$13 - 1, $$3 - $$13, $$2 + $$13, $$3 + $$13, -16772609);
-         $$0.a($$2 - $$13, $$3 - $$13, $$2 + $$13, $$3 - $$13 + 1, -16772609);
-         $$0.a($$2 - $$13, $$3 + $$13 - 1, $$2 + $$13, $$3 + $$13, -16772609);
-      }
-
-      for (int $$15 = 0; $$15 < $$9; $$15++) {
-         for (int $$16 = 0; $$16 < $$9; $$16++) {
-            dyr $$17 = $$1.a($$15, $$16);
-            int $$18 = $$11 + $$15 * $$6;
-            int $$19 = $$12 + $$16 * $$6;
-            $$0.a($$18, $$19, $$18 + $$4, $$19 + $$4, axx.f(s.getInt($$17)));
+         for (frk.a $$2 : this.d) {
+            $$0 += this.c.a($$2);
+            $$1 = Math.max($$1, this.c.b($$2));
          }
+
+         int $$3 = this.c.a(this) - $$0;
+         int $$4 = this.c.c(this);
+         Iterator<frk.a> $$5 = this.d.iterator();
+         frk.a $$6 = $$5.next();
+         this.c.a($$6, $$4);
+         $$4 += this.c.a($$6);
+         if (this.d.size() >= 2) {
+            c $$7 = new c($$3, this.d.size() - 1);
+
+            while ($$7.hasNext()) {
+               $$4 += $$7.nextInt();
+               frk.a $$8 = $$5.next();
+               this.c.a($$8, $$4);
+               $$4 += this.c.a($$8);
+            }
+         }
+
+         int $$9 = this.c.d(this);
+
+         for (frk.a $$10 : this.d) {
+            this.c.a($$10, $$9, $$1);
+         }
+
+         switch (this.c) {
+            case a:
+               this.b = $$1;
+               break;
+            case b:
+               this.a = $$1;
+         }
+      }
+   }
+
+   @Override
+   public void b(Consumer<frp> $$0) {
+      this.d.forEach($$1 -> $$0.accept($$1.a));
+   }
+
+   public frq b() {
+      return this.e.g();
+   }
+
+   public frq c() {
+      return this.e;
+   }
+
+   public <T extends frp> T a(T $$0) {
+      return this.a($$0, this.b());
+   }
+
+   public <T extends frp> T a(T $$0, frq $$1) {
+      this.d.add(new frk.a($$0, $$1));
+      return $$0;
+   }
+
+   public <T extends frp> T a(T $$0, Consumer<frq> $$1) {
+      return this.a($$0, ae.a(this.b(), $$1));
+   }
+
+   static class a extends fri.a {
+      protected a(frp $$0, frq $$1) {
+         super($$0, $$1);
+      }
+   }
+
+   public static enum b {
+      a,
+      b;
+
+      int a(frp $$0) {
+         return switch (this) {
+            case a -> $$0.y();
+            case b -> $$0.w();
+         };
+      }
+
+      int a(frk.a $$0) {
+         return switch (this) {
+            case a -> $$0.b();
+            case b -> $$0.a();
+         };
+      }
+
+      int b(frp $$0) {
+         return switch (this) {
+            case a -> $$0.w();
+            case b -> $$0.y();
+         };
+      }
+
+      int b(frk.a $$0) {
+         return switch (this) {
+            case a -> $$0.a();
+            case b -> $$0.b();
+         };
+      }
+
+      void a(frk.a $$0, int $$1) {
+         switch (this) {
+            case a:
+               $$0.a($$1, $$0.b());
+               break;
+            case b:
+               $$0.b($$1, $$0.a());
+         }
+      }
+
+      void a(frk.a $$0, int $$1, int $$2) {
+         switch (this) {
+            case a:
+               $$0.b($$1, $$2);
+               break;
+            case b:
+               $$0.a($$1, $$2);
+         }
+      }
+
+      int c(frp $$0) {
+         return switch (this) {
+            case a -> $$0.D();
+            case b -> $$0.E();
+         };
+      }
+
+      int d(frp $$0) {
+         return switch (this) {
+            case a -> $$0.E();
+            case b -> $$0.D();
+         };
       }
    }
 }

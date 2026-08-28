@@ -1,43 +1,61 @@
-import java.util.concurrent.Executor;
-import javax.annotation.Nullable;
-
-public class asc implements arz {
-   private final arz a;
-   private final bra b;
-   private boolean c;
-
-   private asc(arz $$0, Executor $$1) {
-      this.a = $$0;
-      this.b = new bra($$1, "progressListener");
-   }
-
-   public static asc a(arz $$0, Executor $$1) {
-      asc $$2 = new asc($$0, $$1);
-      $$2.a();
-      return $$2;
+public abstract class asc extends etb {
+   protected asc(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public void a(des $$0) {
-      this.b.a_(() -> this.a.a($$0));
-   }
-
-   @Override
-   public void a(des $$0, @Nullable dyr $$1) {
-      if (this.c) {
-         this.b.a_(() -> this.a.a($$0, $$1));
+   protected void a(long $$0, int $$1, boolean $$2) {
+      if (!$$2 || $$1 < this.f - 2) {
+         for (int $$3 = -1; $$3 <= 1; $$3++) {
+            for (int $$4 = -1; $$4 <= 1; $$4++) {
+               for (int $$5 = -1; $$5 <= 1; $$5++) {
+                  long $$6 = kj.a($$0, $$3, $$4, $$5);
+                  if ($$6 != $$0) {
+                     this.b($$0, $$6, $$1, $$2);
+                  }
+               }
+            }
+         }
       }
    }
 
    @Override
-   public void a() {
-      this.c = true;
-      this.b.a_(this.a::a);
+   protected int a(long $$0, long $$1, int $$2) {
+      int $$3 = $$2;
+
+      for (int $$4 = -1; $$4 <= 1; $$4++) {
+         for (int $$5 = -1; $$5 <= 1; $$5++) {
+            for (int $$6 = -1; $$6 <= 1; $$6++) {
+               long $$7 = kj.a($$0, $$4, $$5, $$6);
+               if ($$7 == $$0) {
+                  $$7 = Long.MAX_VALUE;
+               }
+
+               if ($$7 != $$1) {
+                  int $$8 = this.b($$7, $$0, this.c($$7));
+                  if ($$3 > $$8) {
+                     $$3 = $$8;
+                  }
+
+                  if ($$3 == 0) {
+                     return $$3;
+                  }
+               }
+            }
+         }
+      }
+
+      return $$3;
    }
 
    @Override
-   public void b() {
-      this.c = false;
-      this.b.a_(this.a::b);
+   protected int b(long $$0, long $$1, int $$2) {
+      return this.a($$0) ? this.b($$1) : $$2 + 1;
+   }
+
+   protected abstract int b(long var1);
+
+   public void b(long $$0, int $$1, boolean $$2) {
+      this.a(Long.MAX_VALUE, $$0, $$1, $$2);
    }
 }

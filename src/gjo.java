@@ -1,59 +1,54 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.SequencedMap;
+public class gjo extends gjl {
+   private final fbs a;
 
-public class gjo {
-   private final gjt a = new gjt();
-   private final gju b;
-   private final gjg.a c;
-   private final gjg.a d;
-   private final gji e;
-
-   public gjo(int $$0) {
-      this.b = gju.a($$0);
-      SequencedMap<gjq, feo> $$1 = ae.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
-         $$0x.put(gkb.h(), this.a.a(gjq.c()));
-         $$0x.put(gkb.i(), this.a.a(gjq.e()));
-         $$0x.put(gkb.a(), this.a.a(gjq.d()));
-         $$0x.put(gkb.j(), this.a.a(gjq.f()));
-         a($$0x, gkb.b());
-         a($$0x, gkb.c());
-         a($$0x, gkb.d());
-         a($$0x, gkb.e());
-         a($$0x, gkb.f());
-         $$0x.put(gkb.g(), new feo(786432));
-         a($$0x, gjq.j());
-         a($$0x, gjq.l());
-         a($$0x, gjq.k());
-         a($$0x, gjq.m());
-         a($$0x, gjq.i());
-      });
-      this.c = gjg.a($$1, new feo(786432));
-      this.e = new gji(this.c);
-      SequencedMap<gjq, feo> $$2 = ae.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> hbq.l.forEach($$1x -> a($$0x, $$1x)));
-      this.d = gjg.a($$2, new feo(0));
+   gjo(gfd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fbs $$7, int $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      $$8 = ayp.a($$8, 0.875F + this.r.i() * 0.25F, 0.875F + this.r.i() * 0.25F, 0.875F + this.r.i() * 0.25F);
+      this.v = (float)ayp.b($$8) / 255.0F;
+      this.w = (float)ayp.c($$8) / 255.0F;
+      this.x = (float)ayp.d($$8) / 255.0F;
+      this.D = 0.26F;
+      this.a = $$7;
    }
 
-   private static void a(Object2ObjectLinkedOpenHashMap<gjq, feo> $$0, gjq $$1) {
-      $$0.put($$1, new feo($$1.M()));
+   @Override
+   public gip b() {
+      return gip.b;
    }
 
-   public gjt a() {
-      return this.a;
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         int $$0 = this.t - this.s;
+         double $$1 = 1.0 / (double)$$0;
+         this.g = bae.d($$1, this.g, this.a.a());
+         this.h = bae.d($$1, this.h, this.a.b());
+         this.i = bae.d($$1, this.i, this.a.c());
+      }
    }
 
-   public gju b() {
-      return this.b;
+   @Override
+   public int a(float $$0) {
+      return 15728880;
    }
 
-   public gjg.a c() {
-      return this.c;
-   }
+   public static class a implements gio<lx> {
+      private final gjg a;
 
-   public gjg.a d() {
-      return this.d;
-   }
+      public a(gjg $$0) {
+         this.a = $$0;
+      }
 
-   public gji e() {
-      return this.e;
+      public gil a(lx $$0, gfd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gjo $$8 = new gjo($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.b(), $$0.c());
+         $$8.a(this.a);
+         $$8.a($$1.A.a(40) + 10);
+         return $$8;
+      }
    }
 }

@@ -1,175 +1,79 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.SequencedSet;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class axt {
+   public static final ayk<dic> a = a("is_deep_ocean");
+   public static final ayk<dic> b = a("is_ocean");
+   public static final ayk<dic> c = a("is_beach");
+   public static final ayk<dic> d = a("is_river");
+   public static final ayk<dic> e = a("is_mountain");
+   public static final ayk<dic> f = a("is_badlands");
+   public static final ayk<dic> g = a("is_hill");
+   public static final ayk<dic> h = a("is_taiga");
+   public static final ayk<dic> i = a("is_jungle");
+   public static final ayk<dic> j = a("is_forest");
+   public static final ayk<dic> k = a("is_savanna");
+   public static final ayk<dic> l = a("is_overworld");
+   public static final ayk<dic> m = a("is_nether");
+   public static final ayk<dic> n = a("is_end");
+   public static final ayk<dic> o = a("stronghold_biased_to");
+   public static final ayk<dic> p = a("has_structure/buried_treasure");
+   public static final ayk<dic> q = a("has_structure/desert_pyramid");
+   public static final ayk<dic> r = a("has_structure/igloo");
+   public static final ayk<dic> s = a("has_structure/jungle_temple");
+   public static final ayk<dic> t = a("has_structure/mineshaft");
+   public static final ayk<dic> u = a("has_structure/mineshaft_mesa");
+   public static final ayk<dic> v = a("has_structure/ocean_monument");
+   public static final ayk<dic> w = a("has_structure/ocean_ruin_cold");
+   public static final ayk<dic> x = a("has_structure/ocean_ruin_warm");
+   public static final ayk<dic> y = a("has_structure/pillager_outpost");
+   public static final ayk<dic> z = a("has_structure/ruined_portal_desert");
+   public static final ayk<dic> A = a("has_structure/ruined_portal_jungle");
+   public static final ayk<dic> B = a("has_structure/ruined_portal_ocean");
+   public static final ayk<dic> C = a("has_structure/ruined_portal_swamp");
+   public static final ayk<dic> D = a("has_structure/ruined_portal_mountain");
+   public static final ayk<dic> E = a("has_structure/ruined_portal_standard");
+   public static final ayk<dic> F = a("has_structure/shipwreck_beached");
+   public static final ayk<dic> G = a("has_structure/shipwreck");
+   public static final ayk<dic> H = a("has_structure/stronghold");
+   public static final ayk<dic> I = a("has_structure/trial_chambers");
+   public static final ayk<dic> J = a("has_structure/swamp_hut");
+   public static final ayk<dic> K = a("has_structure/village_desert");
+   public static final ayk<dic> L = a("has_structure/village_plains");
+   public static final ayk<dic> M = a("has_structure/village_savanna");
+   public static final ayk<dic> N = a("has_structure/village_snowy");
+   public static final ayk<dic> O = a("has_structure/village_taiga");
+   public static final ayk<dic> P = a("has_structure/trail_ruins");
+   public static final ayk<dic> Q = a("has_structure/woodland_mansion");
+   public static final ayk<dic> R = a("has_structure/nether_fortress");
+   public static final ayk<dic> S = a("has_structure/nether_fossil");
+   public static final ayk<dic> T = a("has_structure/bastion_remnant");
+   public static final ayk<dic> U = a("has_structure/ancient_city");
+   public static final ayk<dic> V = a("has_structure/ruined_portal_nether");
+   public static final ayk<dic> W = a("has_structure/end_city");
+   public static final ayk<dic> X = a("required_ocean_monument_surrounding");
+   public static final ayk<dic> Y = a("mineshaft_blocking");
+   public static final ayk<dic> Z = a("plays_underwater_music");
+   public static final ayk<dic> aa = a("has_closer_water_fog");
+   public static final ayk<dic> ab = a("water_on_map_outlines");
+   public static final ayk<dic> ac = a("produces_corals_from_bonemeal");
+   public static final ayk<dic> ad = a("increased_fire_burnout");
+   public static final ayk<dic> ae = a("snow_golem_melts");
+   public static final ayk<dic> af = a("without_zombie_sieges");
+   public static final ayk<dic> ag = a("without_patrol_spawns");
+   public static final ayk<dic> ah = a("without_wandering_trader_spawns");
+   public static final ayk<dic> ai = a("spawns_cold_variant_frogs");
+   public static final ayk<dic> aj = a("spawns_warm_variant_frogs");
+   public static final ayk<dic> ak = a("spawns_gold_rabbits");
+   public static final ayk<dic> al = a("spawns_white_rabbits");
+   public static final ayk<dic> am = a("reduce_water_ambient_spawns");
+   public static final ayk<dic> an = a("allows_tropical_fish_spawns_at_any_height");
+   public static final ayk<dic> ao = a("polar_bears_spawn_on_alternate_blocks");
+   public static final ayk<dic> ap = a("more_frequent_drowned_spawns");
+   public static final ayk<dic> aq = a("allows_surface_slime_spawns");
+   public static final ayk<dic> ar = a("spawns_snow_foxes");
 
-public class axt<T> {
-   private static final Logger a = LogUtils.getLogger();
-   final Function<alj, Optional<? extends T>> b;
-   private final String c;
-
-   public axt(Function<alj, Optional<? extends T>> $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private axt() {
    }
 
-   public Map<alj, List<axt.a>> a(avd $$0) {
-      Map<alj, List<axt.a>> $$1 = new HashMap<>();
-      alc $$2 = alc.a(this.c);
-
-      for (Entry<alj, List<avb>> $$3 : $$2.b($$0).entrySet()) {
-         alj $$4 = $$3.getKey();
-         alj $$5 = $$2.b($$4);
-
-         for (avb $$6 : $$3.getValue()) {
-            try (Reader $$7 = $$6.e()) {
-               JsonElement $$8 = JsonParser.parseReader($$7);
-               List<axt.a> $$9 = $$1.computeIfAbsent($$5, $$0x -> new ArrayList<>());
-               axr $$10 = (axr)axr.a.parse(new Dynamic(JsonOps.INSTANCE, $$8)).getOrThrow();
-               if ($$10.b()) {
-                  $$9.clear();
-               }
-
-               String $$11 = $$6.b();
-               $$10.a().forEach($$2x -> $$9.add(new axt.a($$2x, $$11)));
-            } catch (Exception var17) {
-               a.error("Couldn't read tag list {} from {} in data pack {}", new Object[]{$$5, $$4, $$6.b(), var17});
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   private Either<List<axt.a>, List<T>> a(axq.a<T> $$0, List<axt.a> $$1) {
-      SequencedSet<T> $$2 = new LinkedHashSet<>();
-      List<axt.a> $$3 = new ArrayList<>();
-
-      for (axt.a $$4 : $$1) {
-         if (!$$4.a().a($$0, $$2::add)) {
-            $$3.add($$4);
-         }
-      }
-
-      return $$3.isEmpty() ? Either.right(List.copyOf($$2)) : Either.left($$3);
-   }
-
-   public Map<alj, List<T>> a(Map<alj, List<axt.a>> $$0) {
-      final Map<alj, List<T>> $$1 = new HashMap<>();
-      axq.a<T> $$2 = new axq.a<T>() {
-         @Nullable
-         @Override
-         public T a(alj $$0) {
-            return (T)axt.this.b.apply($$0).orElse(null);
-         }
-
-         @Nullable
-         @Override
-         public Collection<T> b(alj $$0) {
-            return $$1.get($$0);
-         }
-      };
-      ayr<alj, axt.c> $$3 = new ayr<>();
-      $$0.forEach(($$1x, $$2x) -> $$3.a($$1x, new axt.c($$2x)));
-      $$3.a(
-         ($$2x, $$3x) -> this.a($$2, $$3x.a)
-               .ifLeft(
-                  $$1xx -> a.error(
-                        "Couldn't load tag {} as it is missing following references: {}",
-                        $$2x,
-                        $$1xx.stream().map(Objects::toString).collect(Collectors.joining(", "))
-                     )
-               )
-               .ifRight($$2xx -> $$1.put($$2x, $$2xx))
-      );
-      return $$1;
-   }
-
-   public static <T> void a(axu.a $$0, km<T> $$1) {
-      $$0.a($$1).b.forEach($$1::a);
-   }
-
-   public static List<kd.a<?>> a(avd $$0, ke $$1) {
-      return $$1.a().map($$1x -> a($$0, $$1x.b())).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
-   }
-
-   public static <T> void a(avd $$0, km<T> $$1) {
-      ali<? extends kd<T>> $$2 = $$1.g();
-      jr<T> $$3 = $$1.p();
-      axt<jq<T>> $$4 = new axt<>($$2x -> $$3.a(ali.a($$2, $$2x)), ma.d($$2));
-      $$4.a($$4.a($$0)).forEach(($$2x, $$3x) -> $$1.a(axs.a($$2, $$2x), $$3x));
-   }
-
-   private static <T> Map<axs<T>, List<jq<T>>> a(ali<? extends kd<T>> $$0, Map<alj, List<jq<T>>> $$1) {
-      return $$1.entrySet().stream().collect(Collectors.toUnmodifiableMap($$1x -> axs.a($$0, (alj)$$1x.getKey()), Entry::getValue));
-   }
-
-   private static <T> Optional<kd.a<T>> a(avd $$0, kd<T> $$1) {
-      ali<? extends kd<T>> $$2 = $$1.g();
-      axt<jq<T>> $$3 = new axt<>($$1::c, ma.d($$2));
-      axt.b<T> $$4 = new axt.b<>($$2, a($$1.g(), $$3.a($$3.a($$0))));
-      return $$4.b().isEmpty() ? Optional.empty() : Optional.of($$1.a($$4));
-   }
-
-   public static List<js.b<?>> a(ke.b $$0, List<kd.a<?>> $$1) {
-      List<js.b<?>> $$2 = new ArrayList<>();
-      $$0.a().forEach($$2x -> {
-         kd.a<?> $$3 = a($$1, $$2x.a());
-         $$2.add((js.b<?>)($$3 != null ? $$3.b() : $$2x.b()));
-      });
-      return $$2;
-   }
-
-   @Nullable
-   private static kd.a<?> a(List<kd.a<?>> $$0, ali<? extends kd<?>> $$1) {
-      for (kd.a<?> $$2 : $$0) {
-         if ($$2.a() == $$1) {
-            return $$2;
-         }
-      }
-
-      return null;
-   }
-
-   public static record a(axq a, String b) {
-
-      @Override
-      public String toString() {
-         return this.a + " (from " + this.b + ")";
-      }
-   }
-
-   public static record b<T>(ali<? extends kd<T>> a, Map<axs<T>, List<jq<T>>> b) {
-   }
-
-   static record c(List<axt.a> a) implements ayr.a<alj> {
-
-      @Override
-      public void a(Consumer<alj> $$0) {
-         this.a.forEach($$1 -> $$1.a.a($$0));
-      }
-
-      @Override
-      public void b(Consumer<alj> $$0) {
-         this.a.forEach($$1 -> $$1.a.b($$0));
-      }
+   private static ayk<dic> a(String $$0) {
+      return ayk.a(mb.aH, alz.b($$0));
    }
 }

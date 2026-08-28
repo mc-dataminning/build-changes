@@ -1,29 +1,14 @@
-public class aaa implements zq<zw> {
-   public static final zh<wg, aaa> a = zq.a(aaa::a, aaa::new);
-   private final long b;
+public abstract class aaa<T extends xb> implements aac<T> {
+   private final Iterable<aac<? super T>> a;
 
-   public aaa(long $$0) {
-      this.b = $$0;
+   protected aaa(Iterable<aac<? super T>> $$0) {
+      this.a = $$0;
    }
 
-   private aaa(wg $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(wg $$0) {
-      $$0.b(this.b);
+   public final Iterable<aac<? super T>> b() {
+      return this.a;
    }
 
    @Override
-   public zs<aaa> a() {
-      return aai.d;
-   }
-
-   public void a(zw $$0) {
-      $$0.a(this);
-   }
-
-   public long b() {
-      return this.b;
-   }
+   public abstract aae<? extends aaa<T>> a();
 }

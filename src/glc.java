@@ -1,51 +1,141 @@
-import com.google.common.base.Splitter;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.Objects;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class glc {
-   private static final Splitter a = Splitter.on(',');
-   private static final Splitter b = Splitter.on('=').limit(2);
+public class glc implements AutoCloseable {
+   public static final int a = 15728880;
+   public static final int b = 15728640;
+   public static final int c = 240;
+   private static final int d = 16;
+   private final few e;
+   private boolean f;
+   private float g;
+   private final gku h;
+   private final flz i;
 
-   public static <O, S extends dvx<O, S>> Predicate<dvx<O, S>> a(dvw<O, S> $$0, String $$1) {
-      Map<dwx<?>, Comparable<?>> $$2 = new HashMap<>();
-
-      for (String $$3 : a.split($$1)) {
-         Iterator<String> $$4 = b.split($$3).iterator();
-         if ($$4.hasNext()) {
-            String $$5 = $$4.next();
-            dwx<?> $$6 = $$0.a($$5);
-            if ($$6 != null && $$4.hasNext()) {
-               String $$7 = $$4.next();
-               Comparable<?> $$8 = a((dwx<Comparable<?>>)$$6, $$7);
-               if ($$8 == null) {
-                  throw new RuntimeException("Unknown value: '" + $$7 + "' for blockstate property: '" + $$5 + "' " + $$6.a());
-               }
-
-               $$2.put($$6, $$8);
-            } else if (!$$5.isEmpty()) {
-               throw new RuntimeException("Unknown blockstate property: '" + $$5 + "'");
-            }
-         }
-      }
-
-      return $$1x -> {
-         for (Entry<dwx<?>, Comparable<?>> $$2x : $$2.entrySet()) {
-            if (!Objects.equals($$1x.c($$2x.getKey()), $$2x.getValue())) {
-               return false;
-            }
-         }
-
-         return true;
-      };
+   public glc(gku $$0, flz $$1) {
+      this.h = $$0;
+      this.i = $$1;
+      this.e = new few(16, 16, false);
+      this.e.a(9729);
+      this.e.a(1.0F, 1.0F, 1.0F, 1.0F);
+      this.e.f();
    }
 
-   @Nullable
-   private static <T extends Comparable<T>> T a(dwx<T> $$0, String $$1) {
-      return $$0.b($$1).orElse(null);
+   @Override
+   public void close() {
+      this.e.a();
+   }
+
+   public void a() {
+      this.g = this.g + (float)((Math.random() - Math.random()) * Math.random() * Math.random() * 0.1);
+      this.g *= 0.9F;
+      this.f = true;
+   }
+
+   public void b() {
+      RenderSystem.setShaderTexture(2, 0);
+   }
+
+   public void c() {
+      RenderSystem.setShaderTexture(2, this.e.g());
+   }
+
+   private float b(float $$0) {
+      buk $$1 = this.i.t.c(bum.G);
+      return $$1 != null ? $$1.a(this.i.t, $$0) : 0.0F;
+   }
+
+   private float a(bwb $$0, float $$1, float $$2) {
+      float $$3 = 0.45F * $$1;
+      return Math.max(0.0F, bae.b(((float)$$0.af - $$2) * (float) Math.PI * 0.025F) * $$3);
+   }
+
+   public void a(float $$0) {
+      if (this.f) {
+         this.f = false;
+         bpo $$1 = bpn.a();
+         $$1.a("lightTex");
+         gfd $$2 = this.i.s;
+         if ($$2 != null) {
+            float $$3 = $$2.g(1.0F);
+            float $$4;
+            if ($$2.i() > 0) {
+               $$4 = 1.0F;
+            } else {
+               $$4 = $$3 * 0.95F + 0.05F;
+            }
+
+            float $$6 = this.i.n.ao().c().floatValue();
+            float $$7 = this.b($$0) * $$6;
+            float $$8 = this.a(this.i.t, $$7, $$0) * $$6;
+            float $$9 = this.i.t.F();
+            float $$10;
+            if (this.i.t.b(bum.p)) {
+               $$10 = gku.a(this.i.t, $$0);
+            } else if ($$9 > 0.0F && this.i.t.b(bum.C)) {
+               $$10 = $$9;
+            } else {
+               $$10 = 0.0F;
+            }
+
+            Vector3f $$13 = new Vector3f($$3, $$3, 1.0F).lerp(new Vector3f(1.0F, 1.0F, 1.0F), 0.35F);
+            float $$14 = this.g + 1.5F;
+            float $$15 = $$2.G_().s();
+            boolean $$16 = $$2.c().d();
+            float $$17 = this.i.n.as().c().floatValue();
+            gkn $$18 = Objects.requireNonNull(RenderSystem.setShader(gko.b), "Lightmap shader not loaded");
+            $$18.b("AmbientLightFactor").a($$15);
+            $$18.b("SkyFactor").a($$4);
+            $$18.b("BlockFactor").a($$14);
+            $$18.b("UseBrightLightmap").a($$16 ? 1 : 0);
+            $$18.b("SkyLightColor").a($$13);
+            $$18.b("NightVisionFactor").a($$10);
+            $$18.b("DarknessScale").a($$8);
+            $$18.b("DarkenWorldFactor").a(this.h.c($$0));
+            $$18.b("BrightnessFactor").a(Math.max(0.0F, $$17 - $$7));
+            this.e.a(true);
+            fgg $$19 = RenderSystem.renderThreadTesselator().a(fgq.c.h, fgj.a);
+            $$19.a(0.0F, 0.0F, 0.0F);
+            $$19.a(1.0F, 0.0F, 0.0F);
+            $$19.a(1.0F, 1.0F, 0.0F);
+            $$19.a(0.0F, 1.0F, 0.0F);
+            fgh.a($$19.b());
+            this.e.e();
+            $$1.c();
+         }
+      }
+   }
+
+   public static float a(ebi $$0, int $$1) {
+      return a($$0.s(), $$1);
+   }
+
+   public static float a(float $$0, int $$1) {
+      float $$2 = (float)$$1 / 15.0F;
+      float $$3 = $$2 / (4.0F - 3.0F * $$2);
+      return bae.h($$0, $$3, 1.0F);
+   }
+
+   public static int a(int $$0, int $$1) {
+      return $$0 << 4 | $$1 << 20;
+   }
+
+   public static int a(int $$0) {
+      return $$0 >>> 4 & 15;
+   }
+
+   public static int b(int $$0) {
+      return $$0 >>> 20 & 15;
+   }
+
+   public static int b(int $$0, int $$1) {
+      if ($$1 == 0) {
+         return $$0;
+      } else {
+         int $$2 = Math.max(b($$0), $$1);
+         int $$3 = Math.max(a($$0), $$1);
+         return a($$3, $$2);
+      }
    }
 }

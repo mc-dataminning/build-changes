@@ -1,89 +1,61 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class efi extends eew<ehh> {
-   public efi(Codec<ehh> $$0) {
-      super($$0);
+public class efi {
+   public static final efi a = new efi(false, dkg.gO.m(), dkg.qg.m(), dkg.ew.m(), dkg.aX.m());
+   public static final Codec<efi> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(efi::a),
+               dxn.a.optionalFieldOf("air_state", a.b()).forGetter(efi::b),
+               dxn.a.optionalFieldOf("water_state", a.b()).forGetter(efi::c),
+               dxn.a.optionalFieldOf("lava_state", a.b()).forGetter(efi::d),
+               dxn.a.optionalFieldOf("barrier_state", a.b()).forGetter(efi::e)
+            )
+            .apply($$0, efi::new)
+   );
+   private final boolean c;
+   private final dxn d;
+   private final dxn e;
+   private final dxn f;
+   private final dxn g;
+
+   public static efi a(boolean $$0, dxn $$1, dxn $$2, dxn $$3, dxn $$4) {
+      return new efi($$0, $$1, $$2, $$3, $$4);
    }
 
-   @Override
-   public boolean a(eey<ehh> $$0) {
-      jh $$1 = $$0.e();
-      azu $$2 = $$0.d();
-      dgk $$3 = $$0.b();
+   public static efi a(dxn $$0, dxn $$1, dxn $$2, dxn $$3) {
+      return new efi(false, $$0, $$1, $$2, $$3);
+   }
 
-      while ($$3.u($$1) && $$1.v() > $$3.K_() + 2) {
-         $$1 = $$1.e();
-      }
+   public static efi a(boolean $$0, dxn $$1) {
+      return new efi($$0, $$1, a.c(), a.d(), a.e());
+   }
 
-      if (!$$3.a_($$1).a(dis.dP)) {
-         return false;
-      } else {
-         $$1 = $$1.b($$2.a(4));
-         int $$4 = $$2.a(4) + 7;
-         int $$5 = $$4 / 4 + $$2.a(2);
-         if ($$5 > 1 && $$2.a(60) == 0) {
-            $$1 = $$1.b(10 + $$2.a(30));
-         }
+   private efi(boolean $$0, dxn $$1, dxn $$2, dxn $$3, dxn $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+   }
 
-         for (int $$6 = 0; $$6 < $$4; $$6++) {
-            float $$7 = (1.0F - (float)$$6 / (float)$$4) * (float)$$5;
-            int $$8 = azm.f($$7);
+   public boolean a() {
+      return this.c;
+   }
 
-            for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-               float $$10 = (float)azm.a($$9) - 0.25F;
+   public dxn b() {
+      return this.d;
+   }
 
-               for (int $$11 = -$$8; $$11 <= $$8; $$11++) {
-                  float $$12 = (float)azm.a($$11) - 0.25F;
-                  if (($$9 == 0 && $$11 == 0 || !($$10 * $$10 + $$12 * $$12 > $$7 * $$7))
-                     && ($$9 != -$$8 && $$9 != $$8 && $$11 != -$$8 && $$11 != $$8 || !($$2.i() > 0.75F))) {
-                     dvv $$13 = $$3.a_($$1.b($$9, $$6, $$11));
-                     if ($$13.l() || b($$13) || $$13.a(dis.dP) || $$13.a(dis.dO)) {
-                        this.a($$3, $$1.b($$9, $$6, $$11), dis.iC.m());
-                     }
+   public dxn c() {
+      return this.e;
+   }
 
-                     if ($$6 != 0 && $$8 > 1) {
-                        $$13 = $$3.a_($$1.b($$9, -$$6, $$11));
-                        if ($$13.l() || b($$13) || $$13.a(dis.dP) || $$13.a(dis.dO)) {
-                           this.a($$3, $$1.b($$9, -$$6, $$11), dis.iC.m());
-                        }
-                     }
-                  }
-               }
-            }
-         }
+   public dxn d() {
+      return this.f;
+   }
 
-         int $$14 = $$5 - 1;
-         if ($$14 < 0) {
-            $$14 = 0;
-         } else if ($$14 > 1) {
-            $$14 = 1;
-         }
-
-         for (int $$15 = -$$14; $$15 <= $$14; $$15++) {
-            for (int $$16 = -$$14; $$16 <= $$14; $$16++) {
-               jh $$17 = $$1.b($$15, -1, $$16);
-               int $$18 = 50;
-               if (Math.abs($$15) == 1 && Math.abs($$16) == 1) {
-                  $$18 = $$2.a(5);
-               }
-
-               while ($$17.v() > 50) {
-                  dvv $$19 = $$3.a_($$17);
-                  if (!$$19.l() && !b($$19) && !$$19.a(dis.dP) && !$$19.a(dis.dO) && !$$19.a(dis.iC)) {
-                     break;
-                  }
-
-                  this.a($$3, $$17, dis.iC.m());
-                  $$17 = $$17.e();
-                  if (--$$18 <= 0) {
-                     $$17 = $$17.c($$2.a(5) + 1);
-                     $$18 = $$2.a(5);
-                  }
-               }
-            }
-         }
-
-         return true;
-      }
+   public dxn e() {
+      return this.g;
    }
 }

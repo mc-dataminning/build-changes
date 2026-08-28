@@ -1,9 +1,7 @@
-import java.util.stream.Stream;
+public interface bob {
+   void a(long[] var1);
 
-public interface bob<S> {
-   Stream<String> possibleValues(bny<S> var1);
+   void a(long var1);
 
-   static <S> bob<S> b() {
-      return $$0 -> Stream.empty();
-   }
+   void a(long var1, int var3);
 }

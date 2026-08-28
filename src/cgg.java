@@ -1,118 +1,30 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.function.ToDoubleFunction;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class cgg {
-   private static final int a = 10;
-
-   public static jh a(azu $$0, int $$1, int $$2) {
-      int $$3 = $$0.a(2 * $$1 + 1) - $$1;
-      int $$4 = $$0.a(2 * $$2 + 1) - $$2;
-      int $$5 = $$0.a(2 * $$1 + 1) - $$1;
-      return new jh($$3, $$4, $$5);
+public class cgg extends cgl<bwb> {
+   @Override
+   public Set<cff<?>> a() {
+      return ImmutableSet.of(cff.h, cff.M, cff.an);
    }
 
-   @Nullable
-   public static jh a(azu $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      double $$7 = azm.d($$5, $$4) - (float) (Math.PI / 2);
-      double $$8 = $$7 + (double)(2.0F * $$0.i() - 1.0F) * $$6;
-      double $$9 = Math.sqrt($$0.j()) * (double)azm.g * (double)$$1;
-      double $$10 = -$$9 * Math.sin($$8);
-      double $$11 = $$9 * Math.cos($$8);
-      if (!(Math.abs($$10) > (double)$$1) && !(Math.abs($$11) > (double)$$1)) {
-         int $$12 = $$0.a(2 * $$2 + 1) - $$2 + $$3;
-         return jh.a($$10, (double)$$12, $$11);
-      } else {
-         return null;
-      }
-   }
+   @Override
+   protected void a(ash $$0, bwb $$1) {
+      bxd<?> $$2 = $$1.eb();
+      List<cof> $$3 = Lists.newArrayList();
+      cfh $$4 = $$2.c(cff.h).orElse(cfh.a());
+      Optional<bwd> $$5 = $$4.a($$0x -> $$0x instanceof cnj || $$0x instanceof clj).map(bwd.class::cast);
 
-   @VisibleForTesting
-   public static jh a(jh $$0, int $$1, Predicate<jh> $$2) {
-      if (!$$2.test($$0)) {
-         return $$0;
-      } else {
-         jh.a $$3 = $$0.k().c(jm.b);
-
-         while ($$3.v() <= $$1 && $$2.test($$3)) {
-            $$3.c(jm.b);
-         }
-
-         return $$3.j();
-      }
-   }
-
-   @VisibleForTesting
-   public static jh a(jh $$0, int $$1, int $$2, Predicate<jh> $$3) {
-      if ($$1 < 0) {
-         throw new IllegalArgumentException("aboveSolidAmount was " + $$1 + ", expected >= 0");
-      } else if (!$$3.test($$0)) {
-         return $$0;
-      } else {
-         jh.a $$4 = $$0.k().c(jm.b);
-
-         while ($$4.v() <= $$2 && $$3.test($$4)) {
-            $$4.c(jm.b);
-         }
-
-         int $$5 = $$4.v();
-
-         while ($$4.v() <= $$2 && $$4.v() - $$5 < $$1) {
-            $$4.c(jm.b);
-            if ($$3.test($$4)) {
-               $$4.c(jm.a);
-               break;
-            }
-         }
-
-         return $$4.j();
-      }
-   }
-
-   @Nullable
-   public static ezy a(bvp $$0, Supplier<jh> $$1) {
-      return a($$1, $$0::c);
-   }
-
-   @Nullable
-   public static ezy a(Supplier<jh> $$0, ToDoubleFunction<jh> $$1) {
-      double $$2 = Double.NEGATIVE_INFINITY;
-      jh $$3 = null;
-
-      for (int $$4 = 0; $$4 < 10; $$4++) {
-         jh $$5 = $$0.get();
-         if ($$5 != null) {
-            double $$6 = $$1.applyAsDouble($$5);
-            if ($$6 > $$2) {
-               $$2 = $$6;
-               $$3 = $$5;
-            }
+      for (bwb $$7 : $$2.c(cff.g).orElse(ImmutableList.of())) {
+         if ($$7 instanceof cof && ((cof)$$7).gm()) {
+            $$3.add((cof)$$7);
          }
       }
 
-      return $$3 != null ? ezy.c($$3) : null;
-   }
-
-   public static jh a(bvp $$0, int $$1, azu $$2, jh $$3) {
-      int $$4 = $$3.u();
-      int $$5 = $$3.w();
-      if ($$0.fY() && $$1 > 1) {
-         jh $$6 = $$0.fV();
-         if ($$0.dA() > (double)$$6.u()) {
-            $$4 -= $$2.a($$1 / 2);
-         } else {
-            $$4 += $$2.a($$1 / 2);
-         }
-
-         if ($$0.dG() > (double)$$6.w()) {
-            $$5 -= $$2.a($$1 / 2);
-         } else {
-            $$5 += $$2.a($$1 / 2);
-         }
-      }
-
-      return jh.a((double)$$4 + $$0.dA(), (double)$$3.v() + $$0.dC(), (double)$$5 + $$0.dG());
+      $$2.a(cff.M, $$5);
+      $$2.a(cff.an, $$3);
    }
 }

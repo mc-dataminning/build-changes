@@ -1,6 +1,8 @@
-public interface wa extends wp {
-   @Override
-   default zr a() {
-      return zr.b;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface wa {
 }

@@ -1,46 +1,69 @@
-import java.util.Arrays;
-
-public class fzz extends fzj<gxk> {
-   private static final int a = 8;
-   private final gcl[] b = new gcl[8];
-
-   public fzz(gcl $$0) {
-      super($$0);
-      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
+public class fzz {
+   public static void a(geh $$0, geh $$1, geh $$2, boolean $$3) {
+      geh $$4 = $$3 ? $$0 : $$1;
+      geh $$5 = $$3 ? $$1 : $$0;
+      $$4.f = ($$3 ? -0.3F : 0.3F) + $$2.f;
+      $$5.f = ($$3 ? 0.6F : -0.6F) + $$2.f;
+      $$4.e = (float) (-Math.PI / 2) + $$2.e + 0.1F;
+      $$5.e = -1.5F + $$2.e;
    }
 
-   private static String a(int $$0) {
-      return "cube" + $$0;
+   public static void a(geh $$0, geh $$1, float $$2, int $$3, boolean $$4) {
+      geh $$5 = $$4 ? $$0 : $$1;
+      geh $$6 = $$4 ? $$1 : $$0;
+      $$5.f = $$4 ? -0.8F : 0.8F;
+      $$5.e = -0.97079635F;
+      $$6.e = $$5.e;
+      float $$7 = bae.a((float)$$3, 0.0F, $$2);
+      float $$8 = $$7 / $$2;
+      $$6.f = bae.h($$8, 0.4F, 0.85F) * (float)($$4 ? 1 : -1);
+      $$6.e = bae.h($$8, $$6.e, (float) (-Math.PI / 2));
    }
 
-   public static gcr a() {
-      gct $$0 = new gct();
-      gcv $$1 = $$0.a();
-
-      for (int $$2 = 0; $$2 < 8; $$2++) {
-         int $$3 = 0;
-         int $$4 = $$2;
-         if ($$2 == 2) {
-            $$3 = 24;
-            $$4 = 10;
-         } else if ($$2 == 3) {
-            $$3 = 24;
-            $$4 = 19;
-         }
-
-         $$1.a(a($$2), gcq.c().a($$3, $$4).a(-4.0F, (float)(16 + $$2), -4.0F, 8.0F, 1.0F, 8.0F), gcn.a);
+   public static void a(geh $$0, geh $$1, bvv $$2, float $$3, float $$4) {
+      float $$5 = bae.a($$3 * (float) Math.PI);
+      float $$6 = bae.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
+      $$0.g = 0.0F;
+      $$1.g = 0.0F;
+      $$0.f = (float) (Math.PI / 20);
+      $$1.f = (float) (-Math.PI / 20);
+      if ($$2 == bvv.b) {
+         $$0.e = -1.8849558F + bae.b($$4 * 0.09F) * 0.15F;
+         $$1.e = -0.0F + bae.b($$4 * 0.19F) * 0.5F;
+         $$0.e += $$5 * 2.2F - $$6 * 0.4F;
+         $$1.e += $$5 * 1.2F - $$6 * 0.4F;
+      } else {
+         $$0.e = -0.0F + bae.b($$4 * 0.19F) * 0.5F;
+         $$1.e = -1.8849558F + bae.b($$4 * 0.09F) * 0.15F;
+         $$0.e += $$5 * 1.2F - $$6 * 0.4F;
+         $$1.e += $$5 * 2.2F - $$6 * 0.4F;
       }
 
-      $$1.a("inside_cube", gcq.c().a(0, 16).a(-2.0F, 18.0F, -2.0F, 4.0F, 4.0F, 4.0F), gcn.a);
-      return gcr.a($$0, 64, 32);
+      a($$0, $$1, $$4);
    }
 
-   public void a(gxk $$0) {
-      super.a($$0);
-      float $$1 = Math.max(0.0F, $$0.a);
+   public static void a(geh $$0, float $$1, float $$2) {
+      $$0.g = $$0.g + $$2 * (bae.b($$1 * 0.09F) * 0.05F + 0.05F);
+      $$0.e = $$0.e + $$2 * bae.a($$1 * 0.067F) * 0.05F;
+   }
 
-      for (int $$2 = 0; $$2 < this.b.length; $$2++) {
-         this.b[$$2].c = (float)(-(4 - $$2)) * $$1 * 1.7F;
-      }
+   public static void a(geh $$0, geh $$1, float $$2) {
+      a($$0, $$2, 1.0F);
+      a($$1, $$2, -1.0F);
+   }
+
+   public static void a(geh $$0, geh $$1, boolean $$2, float $$3, float $$4) {
+      float $$5 = bae.a($$3 * (float) Math.PI);
+      float $$6 = bae.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
+      $$1.g = 0.0F;
+      $$0.g = 0.0F;
+      $$1.f = -(0.1F - $$5 * 0.6F);
+      $$0.f = 0.1F - $$5 * 0.6F;
+      float $$7 = (float) -Math.PI / ($$2 ? 1.5F : 2.25F);
+      $$1.e = $$7;
+      $$0.e = $$7;
+      $$1.e += $$5 * 1.2F - $$6 * 0.4F;
+      $$0.e += $$5 * 1.2F - $$6 * 0.4F;
+      a($$1, $$0, $$4);
    }
 }

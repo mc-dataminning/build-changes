@@ -1,114 +1,38 @@
 import java.util.List;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.Validate;
+import java.util.Optional;
 
-public class dye<T> implements dyg<T> {
-   private final jv<T> a;
-   private final T[] b;
-   private final dyh<T> c;
-   private final int d;
-   private int e;
+public final class dye extends dyp<Boolean> {
+   private static final List<Boolean> a = List.of(true, false);
+   private static final int b = 0;
+   private static final int c = 1;
 
-   private dye(jv<T> $$0, int $$1, dyh<T> $$2, List<T> $$3) {
-      this.a = $$0;
-      this.b = (T[])(new Object[1 << $$1]);
-      this.d = $$1;
-      this.c = $$2;
-      Validate.isTrue($$3.size() <= this.b.length, "Can't initialize LinearPalette of size %d with %d entries", new Object[]{this.b.length, $$3.size()});
-
-      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         this.b[$$4] = $$3.get($$4);
-      }
-
-      this.e = $$3.size();
-   }
-
-   private dye(jv<T> $$0, T[] $$1, dyh<T> $$2, int $$3, int $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-   }
-
-   public static <A> dyg<A> a(int $$0, jv<A> $$1, dyh<A> $$2, List<A> $$3) {
-      return new dye<>($$1, $$0, $$2, $$3);
+   private dye(String $$0) {
+      super($$0, Boolean.class);
    }
 
    @Override
-   public int a(T $$0) {
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         if (this.b[$$1] == $$0) {
-            return $$1;
-         }
-      }
+   public List<Boolean> a() {
+      return a;
+   }
 
-      int $$2 = this.e;
-      if ($$2 < this.b.length) {
-         this.b[$$2] = $$0;
-         this.e++;
-         return $$2;
-      } else {
-         return this.c.onResize(this.d + 1, $$0);
-      }
+   public static dye a(String $$0) {
+      return new dye($$0);
    }
 
    @Override
-   public boolean a(Predicate<T> $$0) {
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         if ($$0.test(this.b[$$1])) {
-            return true;
-         }
-      }
-
-      return false;
+   public Optional<Boolean> b(String $$0) {
+      return switch ($$0) {
+         case "true" -> Optional.of(true);
+         case "false" -> Optional.of(false);
+         default -> Optional.empty();
+      };
    }
 
-   @Override
-   public T a(int $$0) {
-      if ($$0 >= 0 && $$0 < this.e) {
-         return this.b[$$0];
-      } else {
-         throw new dyf($$0);
-      }
+   public String a(Boolean $$0) {
+      return $$0.toString();
    }
 
-   @Override
-   public void a(wg $$0) {
-      this.e = $$0.l();
-
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         this.b[$$1] = this.a.b($$0.l());
-      }
-   }
-
-   @Override
-   public void b(wg $$0) {
-      $$0.c(this.e);
-
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         $$0.c(this.a.a(this.b[$$1]));
-      }
-   }
-
-   @Override
-   public int a() {
-      int $$0 = xa.a(this.b());
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         $$0 += xa.a(this.a.a(this.b[$$1]));
-      }
-
-      return $$0;
-   }
-
-   @Override
-   public int b() {
-      return this.e;
-   }
-
-   @Override
-   public dyg<T> a(dyh<T> $$0) {
-      return new dye<>(this.a, (T[])((Object[])this.b.clone()), $$0, this.d, this.e);
+   public int b(Boolean $$0) {
+      return $$0 ? 0 : 1;
    }
 }

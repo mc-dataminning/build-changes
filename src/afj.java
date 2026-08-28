@@ -1,37 +1,28 @@
-public class afj implements zq<acf> {
-   public static final zh<wg, afj> a = zq.a(afj::a, afj::new);
-   private final jh b;
-   private final float c;
+import javax.annotation.Nullable;
 
-   public afj(jh $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public record afj(String b, @Nullable String c) implements aac<acr> {
+   public static final zt<ws, afj> a = aac.a(afj::a, afj::new);
+
+   private afj(ws $$0) {
+      this($$0.p(), $$0.c(ws::p));
    }
 
-   private afj(wg $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readFloat();
-   }
-
-   private void a(wg $$0) {
+   private void a(ws $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
+      $$0.a(this.c, ws::a);
    }
 
    @Override
-   public zs<afj> a() {
-      return agu.aA;
+   public aae<afj> a() {
+      return ahk.cl;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
    }
 
-   public jh b() {
-      return this.b;
-   }
-
-   public float e() {
+   @Nullable
+   public String e() {
       return this.c;
    }
 }

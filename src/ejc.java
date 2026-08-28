@@ -1,24 +1,13 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejc<P extends ejb> {
-   public static final ejc<ejk> a = a("simple_state_provider", ejk.b);
-   public static final ejc<ejl> b = a("weighted_state_provider", ejl.b);
-   public static final ejc<ejg> c = a("noise_threshold_provider", ejg.b);
-   public static final ejc<ejf> d = a("noise_provider", ejf.g);
-   public static final ejc<ejd> e = a("dual_noise_provider", ejd.b);
-   public static final ejc<eji> f = a("rotated_block_provider", eji.b);
-   public static final ejc<ejh> g = a("randomized_int_state_provider", ejh.b);
-   private final MapCodec<P> h;
+public class ejc implements eis {
+   public static final Codec<ejc> k = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l)).apply($$0, ejc::new)
+   );
+   public final float l;
 
-   private static <P extends ejb> ejc<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(lz.T, $$0, new ejc<>($$1));
-   }
-
-   private ejc(MapCodec<P> $$0) {
-      this.h = $$0;
-   }
-
-   public MapCodec<P> a() {
-      return this.h;
+   public ejc(float $$0) {
+      this.l = $$0;
    }
 }

@@ -1,71 +1,114 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dkc extends dll {
-   public static final MapCodec<dkc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(lz.e.q().fieldOf("concrete").forGetter($$0x -> $$0x.b), t()).apply($$0, dkc::new)
-   );
-   private final diq b;
+public class dkc extends doc implements dkh, dri {
+   public static final MapCodec<dkc> a = b(dkc::new);
+   private static final dye f = dyd.D;
+   private static final int g = 6;
+   protected static final fcm b = dke.a(5.0, 0.0, 9.0, 11.0, 16.0, 15.0);
+   protected static final fcm c = dke.a(5.0, 0.0, 1.0, 11.0, 16.0, 7.0);
+   protected static final fcm d = dke.a(1.0, 0.0, 5.0, 7.0, 16.0, 11.0);
+   protected static final fcm e = dke.a(9.0, 0.0, 5.0, 15.0, 16.0, 11.0);
 
    @Override
    public MapCodec<dkc> a() {
       return a;
    }
 
-   public dkc(diq $$0, dvu.d $$1) {
-      super($$1);
-      this.b = $$0;
+   protected dkc(dxm.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(f, Boolean.valueOf(false)).b(aF, jm.c));
    }
 
    @Override
-   public void a(dfm $$0, jh $$1, dvv $$2, dvv $$3, clb $$4) {
-      if (a($$0, $$1, $$3)) {
-         $$0.a($$1, this.b.m(), 3);
+   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
+      switch ((jm)$$0.c(aF)) {
+         case d:
+            return c;
+         case c:
+         default:
+            return b;
+         case e:
+            return e;
+         case f:
+            return d;
       }
    }
 
    @Override
-   public dvv a(dad $$0) {
-      der $$1 = $$0.q();
-      jh $$2 = $$0.a();
-      dvv $$3 = $$1.a_($$2);
-      return a($$1, $$2, $$3) ? this.b.m() : super.a($$0);
+   protected void a(dxo.a<dke, dxn> $$0) {
+      $$0.a(f, aF);
    }
 
-   private static boolean a(der $$0, jh $$1, dvv $$2) {
-      return o($$2) || a($$0, $$1);
+   @Override
+   protected etp b_(dxn $$0) {
+      return $$0.c(f) ? etq.c.a(false) : super.b_($$0);
    }
 
-   private static boolean a(der $$0, jh $$1) {
-      boolean $$2 = false;
-      jh.a $$3 = $$1.k();
+   @Override
+   protected boolean a(dxn $$0, dhd $$1, jh $$2) {
+      jh $$3 = $$2.e();
+      dxn $$4 = $$1.a_($$3);
+      dxn $$5 = $$1.a_($$2.d());
+      return ($$4.a(this) || $$4.a(axu.bA)) && ($$5.a(this) || $$5.a(dkg.sY));
+   }
 
-      for (jm $$4 : jm.values()) {
-         dvv $$5 = $$0.a_($$3);
-         if ($$4 != jm.a || o($$5)) {
-            $$3.a($$1, $$4);
-            $$5 = $$0.a_($$3);
-            if (o($$5) && !$$5.c($$0, $$1, $$4.g())) {
-               $$2 = true;
-               break;
-            }
-         }
+   protected static boolean a(dhb $$0, jh $$1, etp $$2, jm $$3) {
+      dxn $$4 = dkg.sZ.m().b(f, Boolean.valueOf($$2.a(etq.c))).b(aF, $$3);
+      return $$0.a($$1, $$4, 3);
+   }
+
+   @Override
+   protected dxn a(dxn $$0, dhd $$1, dhp $$2, jh $$3, jm $$4, jh $$5, dxn $$6, bam $$7) {
+      if (($$4 == jm.a || $$4 == jm.b) && !$$0.a($$1, $$3)) {
+         $$2.a($$3, this, 1);
       }
 
-      return $$2;
-   }
+      if ($$0.c(f)) {
+         $$2.a($$3, etq.c, etq.c.a($$1));
+      }
 
-   private static boolean o(dvv $$0) {
-      return $$0.y().a(axi.a);
-   }
-
-   @Override
-   protected dvv a(dvv $$0, dfp $$1, dgb $$2, jh $$3, jm $$4, jh $$5, dvv $$6, azu $$7) {
-      return a($$1, $$3) ? this.b.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   public int b(dvv $$0, der $$1, jh $$2) {
-      return $$0.a($$1, $$2).ak;
+   protected void a(dxn $$0, ash $$1, jh $$2, bam $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
+   }
+
+   @Override
+   public boolean b(dhd $$0, jh $$1, dxn $$2) {
+      Optional<jh> $$3 = l.a($$0, $$1, $$2.b(), jm.b, dkg.sY);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         jh $$4 = $$3.get().d();
+         dxn $$5 = $$0.a_($$4);
+         return dkb.a($$0, $$4, $$5);
+      }
+   }
+
+   @Override
+   public boolean a(dha $$0, bam $$1, jh $$2, dxn $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(ash $$0, bam $$1, jh $$2, dxn $$3) {
+      Optional<jh> $$4 = l.a($$0, $$2, $$3.b(), jm.b, dkg.sY);
+      if (!$$4.isEmpty()) {
+         jh $$5 = $$4.get();
+         jh $$6 = $$5.d();
+         jm $$7 = $$3.c(aF);
+         a($$0, $$5, $$0.b_($$5), $$7);
+         dkb.a($$0, $$6, $$0.b_($$6), $$7);
+      }
+   }
+
+   @Override
+   public cxk a(dhd $$0, jh $$1, dxn $$2) {
+      return new cxk(dkg.sY);
    }
 }

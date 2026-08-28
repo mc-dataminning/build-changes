@@ -1,17 +1,33 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
+import com.mojang.datafixers.util.Pair;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bkj extends bjo {
+public class bkj extends Schema {
    public bkj(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$1.put("minecraft:cod", $$1.remove("minecraft:cod_mob"));
-      $$1.put("minecraft:salmon", $$1.remove("minecraft:salmon_mob"));
-      return $$1;
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(false, bis.J, () -> DSL.constType(bkg.a()));
+      $$0.registerType(
+         false,
+         bis.b,
+         () -> DSL.optionalFields(
+               new Pair[]{
+                  Pair.of("RootVehicle", DSL.optionalFields("Entity", bis.A.in($$0))),
+                  Pair.of("ender_pearls", DSL.list(bis.A.in($$0))),
+                  Pair.of("Inventory", DSL.list(bis.t.in($$0))),
+                  Pair.of("EnderItems", DSL.list(bis.t.in($$0))),
+                  Pair.of("ShoulderEntityLeft", bis.A.in($$0)),
+                  Pair.of("ShoulderEntityRight", bis.A.in($$0)),
+                  Pair.of("recipeBook", DSL.optionalFields("recipes", DSL.list(bis.J.in($$0)), "toBeDisplayed", DSL.list(bis.J.in($$0))))
+               }
+            )
+      );
+      $$0.registerType(false, bis.d, () -> DSL.compoundList(DSL.list(bis.t.in($$0))));
    }
 }

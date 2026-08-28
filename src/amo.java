@@ -1,141 +1,95 @@
-import com.google.common.base.Charsets;
+import com.google.common.collect.ImmutableList;
+import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.StringReader;
-import java.net.Socket;
+import java.util.Collection;
 import java.util.List;
-import java.util.Locale;
-import java.util.NoSuchElementException;
 import java.util.Optional;
-import java.util.Scanner;
-import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 
 public class amo {
    private static final Logger a = LogUtils.getLogger();
-   private static final int b = 5;
-   private final String c;
-   private final int d;
-   private final MinecraftServer e;
-   private volatile boolean f;
-   @Nullable
-   private Socket g;
-   @Nullable
-   private Thread h;
+   private static final alz b = alz.b("tick");
+   private static final alz c = alz.b("load");
+   private final MinecraftServer d;
+   private List<ik<ew>> e = ImmutableList.of();
+   private boolean f;
+   private amn g;
 
-   public amo(String $$0, int $$1, MinecraftServer $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public amo(MinecraftServer $$0, amn $$1) {
+      this.d = $$0;
+      this.g = $$1;
+      this.b($$1);
    }
 
-   public void a() {
-      if (this.h != null && this.h.isAlive()) {
-         a.warn("Remote control client was asked to start, but it is already running. Will ignore.");
-      }
-
-      this.f = true;
-      this.h = new Thread(this::c, "chase-client");
-      this.h.setDaemon(true);
-      this.h.start();
+   public CommandDispatcher<ew> a() {
+      return this.d.aG().a();
    }
 
    public void b() {
-      this.f = false;
-      IOUtils.closeQuietly(this.g);
-      this.g = null;
-      this.h = null;
-   }
-
-   public void c() {
-      String $$0 = this.c + ":" + this.d;
-
-      while (this.f) {
-         try {
-            a.info("Connecting to remote control server {}", $$0);
-            this.g = new Socket(this.c, this.d);
-            a.info("Connected to remote control server! Will continuously execute the command broadcasted by that server.");
-
-            try (BufferedReader $$1 = new BufferedReader(new InputStreamReader(this.g.getInputStream(), Charsets.US_ASCII))) {
-               while (this.f) {
-                  String $$2 = $$1.readLine();
-                  if ($$2 == null) {
-                     a.warn("Lost connection to remote control server {}. Will retry in {}s.", $$0, 5);
-                     break;
-                  }
-
-                  this.a($$2);
-               }
-            } catch (IOException var8) {
-               a.warn("Lost connection to remote control server {}. Will retry in {}s.", $$0, 5);
-            }
-         } catch (IOException var9) {
-            a.warn("Failed to connect to remote control server {}. Will retry in {}s.", $$0, 5);
-         }
-
+      if (this.d.aP().i()) {
          if (this.f) {
-            try {
-               Thread.sleep(5000L);
-            } catch (InterruptedException var5) {
-            }
+            this.f = false;
+            Collection<ik<ew>> $$0 = this.g.b(c);
+            this.a($$0, c);
          }
+
+         this.a(this.e, b);
       }
    }
 
-   private void a(String $$0) {
-      try (Scanner $$1 = new Scanner(new StringReader($$0))) {
-         $$1.useLocale(Locale.ROOT);
-         String $$2 = $$1.next();
-         if ("t".equals($$2)) {
-            this.a($$1);
-         } else {
-            a.warn("Unknown message type '{}'", $$2);
-         }
-      } catch (NoSuchElementException var7) {
-         a.warn("Could not parse message '{}', ignoring", $$0);
+   private void a(Collection<ik<ew>> $$0, alz $$1) {
+      bpn.a().a($$1::toString);
+
+      for (ik<ew> $$2 : $$0) {
+         this.a($$2, this.c());
+      }
+
+      bpn.a().c();
+   }
+
+   public void a(ik<ew> $$0, ew $$1) {
+      bpo $$2 = bpn.a();
+      $$2.a(() -> "function " + $$0.a());
+
+      try {
+         im<ew> $$3 = $$0.a(null, this.a());
+         ex.a($$1, $$2x -> hw.a($$2x, $$3, $$1, et.a));
+      } catch (ez var9) {
+      } catch (Exception var10) {
+         a.warn("Failed to execute function {}", $$0.a(), var10);
+      } finally {
+         $$2.c();
       }
    }
 
-   private void a(Scanner $$0) {
-      this.b($$0)
-         .ifPresent(
-            $$0x -> this.b(
-                  String.format(Locale.ROOT, "execute in %s run tp @s %.3f %.3f %.3f %.3f %.3f", $$0x.a.a(), $$0x.b.d, $$0x.b.e, $$0x.b.f, $$0x.c.j, $$0x.c.i)
-               )
-         );
+   public void a(amn $$0) {
+      this.g = $$0;
+      this.b($$0);
    }
 
-   private Optional<amo.a> b(Scanner $$0) {
-      ali<dfm> $$1 = (ali<dfm>)amx.a.get($$0.next());
-      if ($$1 == null) {
-         return Optional.empty();
-      } else {
-         float $$2 = $$0.nextFloat();
-         float $$3 = $$0.nextFloat();
-         float $$4 = $$0.nextFloat();
-         float $$5 = $$0.nextFloat();
-         float $$6 = $$0.nextFloat();
-         return Optional.of(new amo.a($$1, new ezy((double)$$2, (double)$$3, (double)$$4), new ezx($$6, $$5)));
-      }
+   private void b(amn $$0) {
+      this.e = List.copyOf($$0.b(b));
+      this.f = true;
    }
 
-   private void b(String $$0) {
-      this.e.execute(() -> {
-         List<arq> $$1 = this.e.ag().t();
-         if (!$$1.isEmpty()) {
-            arq $$2 = $$1.get(0);
-            arp $$3 = this.e.J();
-            ew $$4 = new ew($$2.z(), ezy.a($$3.X()), ezx.a, $$3, 4, "", xi.a, this.e, $$2);
-            ex $$5 = this.e.aG();
-            $$5.a($$4, $$0);
-         }
-      });
+   public ew c() {
+      return this.d.aH().a(2).a();
    }
 
-   static record a(ali<dfm> a, ezy b, ezx c) {
+   public Optional<ik<ew>> a(alz $$0) {
+      return this.g.a($$0);
+   }
+
+   public List<ik<ew>> b(alz $$0) {
+      return this.g.b($$0);
+   }
+
+   public Iterable<alz> d() {
+      return this.g.a().keySet();
+   }
+
+   public Iterable<alz> e() {
+      return this.g.b();
    }
 }

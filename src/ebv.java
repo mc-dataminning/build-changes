@@ -1,117 +1,122 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import it.unimi.dsi.fastutil.longs.Long2ObjectFunction;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongAVLTreeSet;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.LongSortedSet;
+import java.util.Objects;
+import java.util.Spliterators;
+import java.util.PrimitiveIterator.OfLong;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
 
-public record ebv(eby j, dvv k, dvv l, ebw m, ech.o n, List<dgx.d> o, int p, boolean q, boolean r, boolean s, boolean t) {
-   public static final Codec<ebv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eby.a.fieldOf("noise").forGetter(ebv::f),
-               dvv.a.fieldOf("default_block").forGetter(ebv::g),
-               dvv.a.fieldOf("default_fluid").forGetter(ebv::h),
-               ebw.a.fieldOf("noise_router").forGetter(ebv::i),
-               ech.o.b.fieldOf("surface_rule").forGetter(ebv::j),
-               dgx.d.a.listOf().fieldOf("spawn_target").forGetter(ebv::k),
-               Codec.INT.fieldOf("sea_level").forGetter(ebv::l),
-               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(ebv::a),
-               Codec.BOOL.fieldOf("aquifers_enabled").forGetter(ebv::b),
-               Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(ebv::c),
-               Codec.BOOL.fieldOf("legacy_random_source").forGetter(ebv::n)
-            )
-            .apply($$0, ebv::new)
-   );
-   public static final Codec<jq<ebv>> b = alf.a(ma.aP, a);
-   public static final ali<ebv> c = ali.a(ma.aP, alj.b("overworld"));
-   public static final ali<ebv> d = ali.a(ma.aP, alj.b("large_biomes"));
-   public static final ali<ebv> e = ali.a(ma.aP, alj.b("amplified"));
-   public static final ali<ebv> f = ali.a(ma.aP, alj.b("nether"));
-   public static final ali<ebv> g = ali.a(ma.aP, alj.b("end"));
-   public static final ali<ebv> h = ali.a(ma.aP, alj.b("caves"));
-   public static final ali<ebv> i = ali.a(ma.aP, alj.b("floating_islands"));
+public class ebv<T extends ebq> {
+   public static final int a = 2;
+   public static final int b = 4;
+   private final Class<T> c;
+   private final Long2ObjectFunction<ecd> d;
+   private final Long2ObjectMap<ebu<T>> e = new Long2ObjectOpenHashMap();
+   private final LongSortedSet f = new LongAVLTreeSet();
 
-   @Deprecated
-   public boolean a() {
-      return this.q;
+   public ebv(Class<T> $$0, Long2ObjectFunction<ecd> $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public boolean b() {
-      return this.r;
+   public void a(fbn $$0, ayq<ebu<T>> $$1) {
+      int $$2 = kj.a($$0.a - 2.0);
+      int $$3 = kj.a($$0.b - 4.0);
+      int $$4 = kj.a($$0.c - 2.0);
+      int $$5 = kj.a($$0.d + 2.0);
+      int $$6 = kj.a($$0.e + 0.0);
+      int $$7 = kj.a($$0.f + 2.0);
+
+      for (int $$8 = $$2; $$8 <= $$5; $$8++) {
+         long $$9 = kj.b($$8, 0, 0);
+         long $$10 = kj.b($$8, -1, -1);
+         LongIterator $$11 = this.f.subSet($$9, $$10 + 1L).iterator();
+
+         while ($$11.hasNext()) {
+            long $$12 = $$11.nextLong();
+            int $$13 = kj.c($$12);
+            int $$14 = kj.d($$12);
+            if ($$13 >= $$3 && $$13 <= $$6 && $$14 >= $$4 && $$14 <= $$7) {
+               ebu<T> $$15 = (ebu<T>)this.e.get($$12);
+               if ($$15 != null && !$$15.a() && $$15.c().b() && $$1.accept($$15).a()) {
+                  return;
+               }
+            }
+         }
+      }
    }
 
-   public boolean c() {
-      return this.s;
+   public LongStream a(long $$0) {
+      int $$1 = dgg.a($$0);
+      int $$2 = dgg.b($$0);
+      LongSortedSet $$3 = this.a($$1, $$2);
+      if ($$3.isEmpty()) {
+         return LongStream.empty();
+      } else {
+         OfLong $$4 = $$3.iterator();
+         return StreamSupport.longStream(Spliterators.spliteratorUnknownSize($$4, 1301), false);
+      }
    }
 
-   public ecp.a d() {
-      return this.t ? ecp.a.a : ecp.a.b;
+   private LongSortedSet a(int $$0, int $$1) {
+      long $$2 = kj.b($$0, 0, $$1);
+      long $$3 = kj.b($$0, -1, $$1);
+      return this.f.subSet($$2, $$3 + 1L);
    }
 
-   public static void a(qz<ebv> $$0) {
-      $$0.a(c, a($$0, false, false));
-      $$0.a(d, a($$0, false, true));
-      $$0.a(e, a($$0, true, false));
-      $$0.a(f, c($$0));
-      $$0.a(g, b($$0));
-      $$0.a(h, d($$0));
-      $$0.a(i, e($$0));
+   public Stream<ebu<T>> b(long $$0) {
+      return this.a($$0).<ebu<T>>mapToObj(this.e::get).filter(Objects::nonNull);
    }
 
-   private static ebv b(qz<?> $$0) {
-      return new ebv(eby.d, dis.fz.m(), dis.a.m(), ebx.a($$0.a(ma.aK)), rm.c(), List.of(), 0, true, false, false, true);
+   private static long f(long $$0) {
+      return dgg.c(kj.b($$0), kj.d($$0));
    }
 
-   private static ebv c(qz<?> $$0) {
-      return new ebv(eby.c, dis.dV.m(), dis.H.m(), ebx.a($$0.a(ma.aK), $$0.a(ma.aQ)), rm.b(), List.of(), 32, false, false, false, true);
+   public ebu<T> c(long $$0) {
+      return (ebu<T>)this.e.computeIfAbsent($$0, this::g);
    }
 
-   private static ebv a(qz<?> $$0, boolean $$1, boolean $$2) {
-      return new ebv(eby.b, dis.b.m(), dis.G.m(), ebx.a($$0.a(ma.aK), $$0.a(ma.aQ), $$2, $$1), rm.a(), new dhe().a(), 63, false, true, true, false);
+   @Nullable
+   public ebu<T> d(long $$0) {
+      return (ebu<T>)this.e.get($$0);
    }
 
-   private static ebv d(qz<?> $$0) {
-      return new ebv(eby.e, dis.b.m(), dis.G.m(), ebx.b($$0.a(ma.aK), $$0.a(ma.aQ)), rm.a(false, true, true), List.of(), 32, false, false, false, true);
+   private ebu<T> g(long $$0) {
+      long $$1 = f($$0);
+      ecd $$2 = (ecd)this.d.get($$1);
+      this.f.add($$0);
+      return new ebu<>(this.c, $$2);
    }
 
-   private static ebv e(qz<?> $$0) {
-      return new ebv(eby.f, dis.b.m(), dis.G.m(), ebx.c($$0.a(ma.aK), $$0.a(ma.aQ)), rm.a(false, false, false), List.of(), -64, false, false, false, true);
+   public LongSet a() {
+      LongSet $$0 = new LongOpenHashSet();
+      this.e.keySet().forEach($$1 -> $$0.add(f($$1)));
+      return $$0;
    }
 
-   public static ebv e() {
-      return new ebv(eby.b, dis.b.m(), dis.a.m(), ebx.a(), rm.d(), List.of(), 63, true, false, false, false);
+   public void b(fbn $$0, ayq<T> $$1) {
+      this.a($$0, $$2 -> $$2.a($$0, $$1));
    }
 
-   public eby f() {
-      return this.j;
+   public <U extends T> void a(ebx<T, U> $$0, fbn $$1, ayq<U> $$2) {
+      this.a($$1, $$3 -> $$3.a($$0, $$1, $$2));
    }
 
-   public dvv g() {
-      return this.k;
+   public void e(long $$0) {
+      this.e.remove($$0);
+      this.f.remove($$0);
    }
 
-   public dvv h() {
-      return this.l;
-   }
-
-   public ebw i() {
-      return this.m;
-   }
-
-   public ech.o j() {
-      return this.n;
-   }
-
-   public List<dgx.d> k() {
-      return this.o;
-   }
-
-   public int l() {
-      return this.p;
-   }
-
-   public boolean m() {
-      return this.r;
-   }
-
-   public boolean n() {
-      return this.t;
+   @bbl
+   public int b() {
+      return this.f.size();
    }
 }

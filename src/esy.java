@@ -1,35 +1,24 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-public class esy extends etf {
-   public esy(dos $$0) {
-      super($$0);
+public class esy extends etd<esy.a> {
+   protected esy(dzv $$0) {
+      super(dhj.b, $$0, new esy.a(new Long2ObjectOpenHashMap()));
    }
 
    @Override
-   public void a(dfm $$0, jh $$1, dvv $$2, @Nullable etd $$3, boolean $$4) {
-      int $$5 = this.c($$0, $$1);
-      if ($$2.c(dos.f) != $$5) {
-         if ($$0.a_($$1) == $$2) {
-            $$0.a($$1, $$2.b(dos.f, Integer.valueOf($$5)), 2);
-         }
-
-         Set<jh> $$6 = Sets.newHashSet();
-         $$6.add($$1);
-
-         for (jm $$7 : jm.values()) {
-            $$6.add($$1.a($$7));
-         }
-
-         for (jh $$8 : $$6) {
-            $$0.a($$8, this.a);
-         }
-      }
+   protected int a(long $$0) {
+      long $$1 = kj.e($$0);
+      dzn $$2 = this.a($$1, false);
+      return $$2 == null ? 0 : $$2.a(kj.b(jh.a($$0)), kj.b(jh.b($$0)), kj.b(jh.c($$0)));
    }
 
-   private int c(dfm $$0, jh $$1) {
-      int $$2 = this.a($$0, $$1);
-      return $$2 == 15 ? $$2 : Math.max($$2, this.b($$0, $$1));
+   protected static final class a extends eta<esy.a> {
+      public a(Long2ObjectOpenHashMap<dzn> $$0) {
+         super($$0);
+      }
+
+      public esy.a a() {
+         return new esy.a(this.a.clone());
+      }
    }
 }

@@ -1,156 +1,240 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import it.unimi.dsi.fastutil.ints.IntSets;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fra extends frw {
-   private static final alj a = alj.b("icon/draft_report");
-   private int b;
-   private final xj c;
-   private final boolean d;
-   private xj s;
-   private final List<fmd> u = Lists.newArrayList();
-   @Nullable
-   private fmd v;
+public class fra implements fek {
+   static final Logger b = LogUtils.getLogger();
+   private final ffl c;
+   private final fqo<fra.b> d;
 
-   public fra(@Nullable xj $$0, boolean $$1) {
-      super(xj.c($$1 ? "deathScreen.title.hardcore" : "deathScreen.title"));
+   fra(ffl $$0, fqo<fra.b> $$1) {
       this.c = $$0;
       this.d = $$1;
    }
 
    @Override
-   protected void aR_() {
-      this.b = 0;
-      this.u.clear();
-      xj $$0 = this.d ? xj.c("deathScreen.spectate") : xj.c("deathScreen.respawn");
-      this.u.add(this.c(fmd.a($$0, $$0x -> {
-         this.m.t.ge();
-         $$0x.j = false;
-      }).a(this.n / 2 - 100, this.o / 4 + 72, 200, 20).a()));
-      this.v = this.c(
-         fmd.a(xj.c("deathScreen.titleScreen"), $$0x -> this.m.bb().a(this.m, this, this::m, true)).a(this.n / 2 - 100, this.o / 4 + 96, 200, 20).a()
-      );
-      this.u.add(this.v);
-      this.c(false);
-      this.s = xj.a("deathScreen.score.value", xj.b(Integer.toString(this.m.t.gb())).a(n.o));
-   }
-
-   @Override
-   public boolean aG_() {
-      return false;
-   }
-
-   private void m() {
-      if (this.d) {
-         this.F();
-      } else {
-         fqu $$0 = new fra.a($$0x -> {
-            if ($$0x) {
-               this.F();
-            } else {
-               this.m.t.ge();
-               this.m.a(null);
-            }
-         }, xj.c("deathScreen.quit.confirm"), xi.a, xj.c("deathScreen.titleScreen"), xj.c("deathScreen.respawn"));
-         this.m.a($$0);
-         $$0.b(20);
-      }
-   }
-
-   private void F() {
-      if (this.m.s != null) {
-         this.m.s.aa();
-      }
-
-      this.m.b(new frh(xj.c("menu.savingLevel")));
-      this.m.a(new fry());
-   }
-
-   @Override
-   public void a(flq $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.c().a();
-      $$0.c().b(2.0F, 2.0F, 2.0F);
-      $$0.a(this.p, this.l, this.n / 2 / 2, 30, 16777215);
-      $$0.c().b();
-      if (this.c != null) {
-         $$0.a(this.p, this.c, this.n / 2, 85, 16777215);
-      }
-
-      $$0.a(this.p, this.s, this.n / 2, 100, 16777215);
-      if (this.c != null && $$2 > 85 && $$2 < 85 + 9) {
-         yg $$4 = this.a($$1);
-         $$0.a(this.p, $$4, $$1, $$2);
-      }
-
-      if (this.v != null && this.m.bb().c()) {
-         $$0.a(gjq::B, a, this.v.D() + this.v.y() - 17, this.v.E() + 3, 15, 15);
-      }
-   }
-
-   @Override
-   public void b(flq $$0, int $$1, int $$2, float $$3) {
-      a($$0, this.n, this.o);
-   }
-
-   static void a(flq $$0, int $$1, int $$2) {
-      $$0.b(0, 0, $$1, $$2, 1615855616, -1602211792);
+   public void close() {
+      this.c.close();
    }
 
    @Nullable
-   private yg a(int $$0) {
-      if (this.c == null) {
-         return null;
-      } else {
-         int $$1 = this.m.h.a(this.c);
-         int $$2 = this.n / 2 - $$1 / 2;
-         int $$3 = this.n / 2 + $$1 / 2;
-         return $$0 >= $$2 && $$0 <= $$3 ? this.m.h.b().a(this.c, $$0 - $$2) : null;
-      }
+   @Override
+   public fej a(int $$0) {
+      return this.d.a($$0);
    }
 
    @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.c != null && $$1 > 85.0 && $$1 < (double)(85 + 9)) {
-         yg $$3 = this.a((int)$$0);
-         if ($$3 != null && $$3.h() != null && $$3.h().a() == xh.a.a) {
-            this.a($$3);
-            return false;
+   public IntSet a() {
+      return IntSets.unmodifiable(this.d.b());
+   }
+
+   public static record a(alz c, int d, int e, int[][] f) implements frc {
+      private static final Codec<int[][]> g = Codec.STRING.listOf().xmap($$0 -> {
+         int $$1 = $$0.size();
+         int[][] $$2 = new int[$$1][];
+
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            $$2[$$3] = ((String)$$0.get($$3)).codePoints().toArray();
+         }
+
+         return $$2;
+      }, $$0 -> {
+         List<String> $$1 = new ArrayList<>($$0.length);
+
+         for (int[] $$2 : $$0) {
+            $$1.add(new String($$2, 0, $$2.length));
+         }
+
+         return $$1;
+      }).validate(fra.a::a);
+      public static final MapCodec<fra.a> a = RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     alz.a.fieldOf("file").forGetter(fra.a::c),
+                     Codec.INT.optionalFieldOf("height", 8).forGetter(fra.a::d),
+                     Codec.INT.fieldOf("ascent").forGetter(fra.a::e),
+                     g.fieldOf("chars").forGetter(fra.a::f)
+                  )
+                  .apply($$0, fra.a::new)
+         )
+         .validate(fra.a::a);
+
+      private static DataResult<int[][]> a(int[][] $$0) {
+         int $$1 = $$0.length;
+         if ($$1 == 0) {
+            return DataResult.error(() -> "Expected to find data in codepoint grid");
+         } else {
+            int[] $$2 = $$0[0];
+            int $$3 = $$2.length;
+            if ($$3 == 0) {
+               return DataResult.error(() -> "Expected to find data in codepoint grid");
+            } else {
+               for (int $$4 = 1; $$4 < $$1; $$4++) {
+                  int[] $$5 = $$0[$$4];
+                  if ($$5.length != $$3) {
+                     return DataResult.error(
+                        () -> "Lines in codepoint grid have to be the same length (found: "
+                              + $$5.length
+                              + " codepoints, expected: "
+                              + $$3
+                              + "), pad with \\u0000"
+                     );
+                  }
+               }
+
+               return DataResult.success($$0);
+            }
          }
       }
 
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean k() {
-      return false;
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.b++;
-      if (this.b == 20) {
-         this.c(true);
-      }
-   }
-
-   private void c(boolean $$0) {
-      for (fmd $$1 : this.u) {
-         $$1.j = $$0;
-      }
-   }
-
-   public static class a extends fqu {
-      public a(BooleanConsumer $$0, xj $$1, xj $$2, xj $$3, xj $$4) {
-         super($$0, $$1, $$2, $$3, $$4);
+      private static DataResult<fra.a> a(fra.a $$0) {
+         return $$0.e > $$0.d ? DataResult.error(() -> "Ascent " + $$0.e + " higher than height " + $$0.d) : DataResult.success($$0);
       }
 
       @Override
-      public void b(flq $$0, int $$1, int $$2, float $$3) {
-         fra.a($$0, this.n, this.o);
+      public frd a() {
+         return frd.a;
+      }
+
+      @Override
+      public Either<frc.b, frc.c> b() {
+         return Either.left(this::a);
+      }
+
+      private fek a(avv $$0) throws IOException {
+         alz $$1 = this.c.f("textures/");
+
+         fra var22;
+         try (InputStream $$2 = $$0.open($$1)) {
+            ffl $$3 = ffl.a(ffl.a.a, $$2);
+            int $$4 = $$3.a();
+            int $$5 = $$3.b();
+            int $$6 = $$4 / this.f[0].length;
+            int $$7 = $$5 / this.f.length;
+            float $$8 = (float)this.d / (float)$$7;
+            fqo<fra.b> $$9 = new fqo<>(fra.b[]::new, fra.b[][]::new);
+
+            for (int $$10 = 0; $$10 < this.f.length; $$10++) {
+               int $$11 = 0;
+
+               for (int $$12 : this.f[$$10]) {
+                  int $$13 = $$11++;
+                  if ($$12 != 0) {
+                     int $$14 = this.a($$3, $$6, $$7, $$13, $$10);
+                     fra.b $$15 = $$9.a($$12, new fra.b($$8, $$3, $$13 * $$6, $$10 * $$7, $$6, $$7, (int)(0.5 + (double)((float)$$14 * $$8)) + 1, this.e));
+                     if ($$15 != null) {
+                        fra.b.warn("Codepoint '{}' declared multiple times in {}", Integer.toHexString($$12), $$1);
+                     }
+                  }
+               }
+            }
+
+            var22 = new fra($$3, $$9);
+         }
+
+         return var22;
+      }
+
+      private int a(ffl $$0, int $$1, int $$2, int $$3, int $$4) {
+         int $$5;
+         for ($$5 = $$1 - 1; $$5 >= 0; $$5--) {
+            int $$6 = $$3 * $$1 + $$5;
+
+            for (int $$7 = 0; $$7 < $$2; $$7++) {
+               int $$8 = $$4 * $$2 + $$7;
+               if ($$0.b($$6, $$8) != 0) {
+                  return $$5 + 1;
+               }
+            }
+         }
+
+         return $$5 + 1;
+      }
+   }
+
+   static record b(float a, ffl b, int c, int d, int e, int f, int g, int h) implements fej {
+
+      @Override
+      public float getAdvance() {
+         return (float)this.g;
+      }
+
+      @Override
+      public fqv bake(Function<fel, fqv> $$0) {
+         return $$0.apply(new fel() {
+            @Override
+            public float d() {
+               return 1.0F / b.this.a;
+            }
+
+            @Override
+            public int a() {
+               return b.this.e;
+            }
+
+            @Override
+            public int b() {
+               return b.this.f;
+            }
+
+            @Override
+            public float j() {
+               return (float)b.this.h;
+            }
+
+            @Override
+            public void a(int $$0, int $$1) {
+               b.this.b.a(0, $$0, $$1, b.this.c, b.this.d, b.this.e, b.this.f, false, false);
+            }
+
+            @Override
+            public boolean c() {
+               return b.this.b.c().a() > 1;
+            }
+         });
+      }
+
+      public float c() {
+         return this.a;
+      }
+
+      public ffl d() {
+         return this.b;
+      }
+
+      public int e() {
+         return this.c;
+      }
+
+      public int f() {
+         return this.d;
+      }
+
+      public int g() {
+         return this.e;
+      }
+
+      public int h() {
+         return this.f;
+      }
+
+      public int i() {
+         return this.g;
+      }
+
+      public int j() {
+         return this.h;
       }
    }
 }

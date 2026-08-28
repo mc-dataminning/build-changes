@@ -1,16 +1,67 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface brq<P extends brp> {
-   brq<brm> a = a("constant", brm.b);
-   brq<brv> b = a("uniform", brv.a);
-   brq<brh> c = a("biased_to_bottom", brh.a);
-   brq<bri> d = a("clamped", bri.a);
-   brq<brw> e = a("weighted_list", brw.a);
-   brq<brk> f = a("clamped_normal", brk.a);
+public class brq<E extends bro> {
+   private final int a;
+   private final ImmutableList<E> b;
 
-   MapCodec<P> codec();
+   brq(List<? extends E> $$0) {
+      this.b = ImmutableList.copyOf($$0);
+      this.a = brp.a($$0);
+   }
 
-   static <P extends brp> brq<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(lz.K, $$0, () -> $$1);
+   public static <E extends bro> brq<E> c() {
+      return new brq<>(ImmutableList.of());
+   }
+
+   @SafeVarargs
+   public static <E extends bro> brq<E> a(E... $$0) {
+      return new brq<>(ImmutableList.copyOf($$0));
+   }
+
+   public static <E extends bro> brq<E> a(List<E> $$0) {
+      return new brq<>($$0);
+   }
+
+   public boolean d() {
+      return this.b.isEmpty();
+   }
+
+   public Optional<E> b(bam $$0) {
+      if (this.a == 0) {
+         return Optional.empty();
+      } else {
+         int $$1 = $$0.a(this.a);
+         return brp.a(this.b, $$1);
+      }
+   }
+
+   public List<E> e() {
+      return this.b;
+   }
+
+   public static <E extends bro> Codec<brq<E>> c(Codec<E> $$0) {
+      return $$0.listOf().xmap(brq::a, brq::e);
+   }
+
+   @Override
+   public boolean equals(@Nullable Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         brq<?> $$1 = (brq<?>)$$0;
+         return this.a == $$1.a && Objects.equals(this.b, $$1.b);
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.a, this.b);
    }
 }

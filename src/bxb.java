@@ -1,11 +1,5 @@
-public interface bxb<E extends bvh> {
-   bxa.a a();
+public interface bxb<T> {
+   void a(T var1);
 
-   boolean e(arp var1, E var2, long var3);
-
-   void f(arp var1, E var2, long var3);
-
-   void g(arp var1, E var2, long var3);
-
-   String b();
+   T d();
 }

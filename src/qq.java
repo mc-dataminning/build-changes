@@ -1,26 +1,25 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
+import java.util.concurrent.CompletableFuture;
 
-public class qq {
-   public static final ali<ens> a = rg.a("ancient_city/city_center");
+public class qq extends qp<ddr> {
+   public qq(mj $$0, CompletableFuture<js.a> $$1) {
+      super($$0, mb.aN, $$1);
+   }
 
-   public static void a(qz<ens> $$0) {
-      jr<eqi> $$1 = $$0.a(ma.aT);
-      jq<eqi> $$2 = $$1.b(rh.G);
-      jr<ens> $$3 = $$0.a(ma.aV);
-      jq<ens> $$4 = $$3.b(rg.a);
-      $$0.a(
-         a,
-         new ens(
-            $$4,
-            ImmutableList.of(
-               Pair.of(enq.b("ancient_city/city_center/city_center_1", $$2), 1),
-               Pair.of(enq.b("ancient_city/city_center/city_center_2", $$2), 1),
-               Pair.of(enq.b("ancient_city/city_center/city_center_3", $$2), 1)
-            ),
-            ens.a.b
-         )
-      );
-      qr.a($$0);
+   @Override
+   protected void a(js.a $$0) {
+      this.b(axx.w).a(ddw.b, ddw.h, ddw.B);
+      this.b(axx.x).a(ddw.c, ddw.e, ddw.y);
+      this.b(axx.y).a(ddw.z, ddw.o, ddw.p);
+      this.b(axx.z).a(ddw.q, ddw.k, ddw.t);
+      this.b(axx.A).a(ddw.g, ddw.s, ddw.j);
+      this.b(axx.B).a(ddw.i, ddw.f, ddw.P);
+      this.b(axx.C).a(ddw.d, ddw.r, ddw.A);
+      this.b(axx.D).a(ddw.u);
+      this.b(axx.E).a(ddw.w);
+      this.b(axx.F).a(ddw.a);
+      this.b(axx.G).a(ddw.n);
+      this.b(axx.H).a(ddw.v);
+      this.b(axx.I).a(ddw.O);
+      this.b(axx.J).a(ddw.x);
    }
 }

@@ -1,30 +1,62 @@
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.List;
-import java.util.Map;
-
-public class gjt implements AutoCloseable {
-   private static final List<gjq> b = gjq.L();
-   public static final int a = b.stream().mapToInt(gjq::M).sum();
-   private final Map<gjq, feo> c = ae.a(new Reference2ObjectArrayMap(b.size()), $$0 -> {
-      for (gjq $$1 : b) {
-         $$0.put($$1, new feo($$1.M()));
-      }
-   });
-
-   public feo a(gjq $$0) {
-      return this.c.get($$0);
-   }
-
-   public void a() {
-      this.c.values().forEach(feo::b);
-   }
-
-   public void b() {
-      this.c.values().forEach(feo::c);
+public class gjt extends gjl {
+   protected gjt(gfd $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.j *= 0.3F;
+      this.k = Math.random() * 0.2F + 0.1F;
+      this.l *= 0.3F;
+      this.b(0.01F, 0.01F);
+      this.u = 0.06F;
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
-   public void close() {
-      this.c.values().forEach(feo::close);
+   public gip b() {
+      return gip.b;
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.t-- <= 0) {
+         this.k();
+      } else {
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.98F;
+         this.k *= 0.98F;
+         this.l *= 0.98F;
+         if (this.m) {
+            if (Math.random() < 0.5) {
+               this.k();
+            }
+
+            this.j *= 0.7F;
+            this.l *= 0.7F;
+         }
+
+         jh $$0 = jh.a(this.g, this.h, this.i);
+         double $$1 = Math.max(
+            this.c.a_($$0).g(this.c, $$0).b(jm.a.b, this.g - (double)$$0.u(), this.i - (double)$$0.w()), (double)this.c.b_($$0).a(this.c, $$0)
+         );
+         if ($$1 > 0.0 && this.h < (double)$$0.v() + $$1) {
+            this.k();
+         }
+      }
+   }
+
+   public static class a implements gio<lw> {
+      private final gjg a;
+
+      public a(gjg $$0) {
+         this.a = $$0;
+      }
+
+      public gil a(lw $$0, gfd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gjt $$8 = new gjt($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

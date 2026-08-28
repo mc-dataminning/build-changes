@@ -1,19 +1,19 @@
-public class dnv {
-   private static final double b = 0.826;
-   public static final double a = 0.1;
+import com.mojang.serialization.MapCodec;
 
-   public static boolean a(dvv $$0) {
-      return $$0.l();
+public class dnv extends dke {
+   public static final MapCodec<dnv> d = b(dnv::new);
+
+   @Override
+   protected MapCodec<? extends dnv> a() {
+      return d;
    }
 
-   public static int a(azu $$0) {
-      double $$1 = 1.0;
+   protected dnv(dxm.d $$0) {
+      super($$0);
+   }
 
-      int $$2;
-      for ($$2 = 0; $$0.j() < $$1; $$2++) {
-         $$1 *= 0.826;
-      }
-
-      return $$2;
+   @Override
+   protected boolean b(dxn $$0, dxn $$1, jm $$2) {
+      return $$1.a(this) ? true : super.b($$0, $$1, $$2);
    }
 }

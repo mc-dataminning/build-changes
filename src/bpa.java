@@ -1,20 +1,11 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.brigadier.StringReader;
+import java.util.stream.Stream;
 
-public enum bpa {
-   a("client"),
-   b("server");
+public interface bpa extends bov<StringReader> {
+   Stream<alz> a();
 
-   private final String c;
-
-   private bpa(final String $$0) {
-      this.c = $$0;
-   }
-
-   public static bpa a(MinecraftServer $$0) {
-      return $$0.n() ? b : a;
-   }
-
-   public String a() {
-      return this.c;
+   @Override
+   default Stream<String> possibleValues(bos<StringReader> $$0) {
+      return this.a().map(alz::toString);
    }
 }

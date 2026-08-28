@@ -1,30 +1,45 @@
-public class gas extends fzj<gvo> {
-   private final gcl a;
-   private final gcl b;
+public class gas extends gca {
+   private static final String a = "bottom";
+   private static final String b = "lid";
+   private static final String c = "lock";
+   private final geh d;
+   private final geh e;
 
-   public gas(gcl $$0) {
-      super($$0);
-      this.a = $$0.b("left_fin");
-      this.b = $$0.b("right_fin");
+   public gas(geh $$0) {
+      super($$0, glo::c);
+      this.d = $$0.b("lid");
+      this.e = $$0.b("lock");
    }
 
-   public static gcr a() {
-      gct $$0 = new gct();
-      gcv $$1 = $$0.a();
-      int $$2 = 23;
-      $$1.a("body", gcq.c().a(0, 27).a(-1.5F, -2.0F, -1.5F, 3.0F, 2.0F, 3.0F), gcn.a(0.0F, 23.0F, 0.0F));
-      $$1.a("right_eye", gcq.c().a(24, 6).a(-1.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), gcn.a(0.0F, 20.0F, 0.0F));
-      $$1.a("left_eye", gcq.c().a(28, 6).a(0.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), gcn.a(0.0F, 20.0F, 0.0F));
-      $$1.a("back_fin", gcq.c().a(-3, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 0.0F, 3.0F), gcn.a(0.0F, 22.0F, 1.5F));
-      $$1.a("right_fin", gcq.c().a(25, 0).a(-1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), gcn.a(-1.5F, 22.0F, -1.5F));
-      $$1.a("left_fin", gcq.c().a(25, 0).a(0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), gcn.a(1.5F, 22.0F, -1.5F));
-      return gcr.a($$0, 32, 32);
+   public static gen a() {
+      gep $$0 = new gep();
+      ger $$1 = $$0.a();
+      $$1.a("bottom", gem.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 14.0F, 10.0F, 14.0F), gej.a);
+      $$1.a("lid", gem.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 14.0F, 5.0F, 14.0F), gej.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", gem.c().a(0, 0).a(7.0F, -2.0F, 14.0F, 2.0F, 4.0F, 1.0F), gej.a(0.0F, 9.0F, 1.0F));
+      return gen.a($$0, 64, 64);
    }
 
-   @Override
-   public void a(gvo $$0) {
-      super.a($$0);
-      this.b.g = -0.2F + 0.4F * azm.a($$0.p * 0.2F);
-      this.a.g = 0.2F - 0.4F * azm.a($$0.p * 0.2F);
+   public static gen b() {
+      gep $$0 = new gep();
+      ger $$1 = $$0.a();
+      $$1.a("bottom", gem.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), gej.a);
+      $$1.a("lid", gem.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), gej.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", gem.c().a(0, 0).a(15.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), gej.a(0.0F, 9.0F, 1.0F));
+      return gen.a($$0, 64, 64);
+   }
+
+   public static gen c() {
+      gep $$0 = new gep();
+      ger $$1 = $$0.a();
+      $$1.a("bottom", gem.c().a(0, 19).a(0.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), gej.a);
+      $$1.a("lid", gem.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), gej.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", gem.c().a(0, 0).a(0.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), gej.a(0.0F, 9.0F, 1.0F));
+      return gen.a($$0, 64, 64);
+   }
+
+   public void a(float $$0) {
+      this.d.e = -($$0 * (float) (Math.PI / 2));
+      this.e.e = this.d.e;
    }
 }

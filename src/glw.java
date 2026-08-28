@@ -1,30 +1,7 @@
-public class glw implements glr<dte> {
-   private static final float a = 0.375F;
-   private final gqi b;
-
-   public glw(gls.a $$0) {
-      this.b = $$0.d();
-   }
-
-   public void a(dte $$0, float $$1, fer $$2, gjg $$3, int $$4, int $$5) {
-      jm $$6 = $$0.m().c(dje.f);
-      jz<cwm> $$7 = $$0.b();
-      int $$8 = (int)$$0.aA_().a();
-
-      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
-         cwm $$10 = $$7.get($$9);
-         if ($$10 != cwm.k) {
-            $$2.a();
-            $$2.a(0.5F, 0.44921875F, 0.5F);
-            jm $$11 = jm.b(($$9 + $$6.e()) % 4);
-            float $$12 = -$$11.p();
-            $$2.a(a.d.rotationDegrees($$12));
-            $$2.a(a.b.rotationDegrees(90.0F));
-            $$2.a(-0.3125F, -0.3125F, 0.0F);
-            $$2.b(0.375F, 0.375F, 0.375F);
-            this.b.a($$10, cwk.i, $$4, $$5, $$2, $$3, $$0.i(), $$8 + $$9);
-            $$2.b();
-         }
-      }
+public record glw(alz a, fgq b, glu c) {
+   @Override
+   public String toString() {
+      String $$0 = this.a + " (" + this.b + ")";
+      return !this.c.c() ? $$0 + " with " + this.c : $$0;
    }
 }

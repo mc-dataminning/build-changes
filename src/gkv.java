@@ -1,255 +1,169 @@
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.Reader;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-import org.joml.Vector3f;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gkv {
-   public static final List<String> a = Lists.newArrayList(new String[]{"layer0", "layer1", "layer2", "layer3", "layer4"});
-   private static final float b = 7.5F;
-   private static final float c = 8.5F;
+public class gkv extends awa<gkv.a> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final alz b = alz.b("gpu_warnlist.json");
+   private ImmutableMap<String, String> c = ImmutableMap.of();
+   private boolean d;
+   private boolean e;
+   private boolean f;
 
-   public gks a(Function<hbn, gze> $$0, gks $$1) {
-      Map<String, Either<hbn, String>> $$2 = Maps.newHashMap();
-      List<gko> $$3 = Lists.newArrayList();
-
-      for (int $$4 = 0; $$4 < a.size(); $$4++) {
-         String $$5 = a.get($$4);
-         if (!$$1.a($$5)) {
-            break;
-         }
-
-         hbn $$6 = $$1.b($$5);
-         $$2.put($$5, Either.left($$6));
-         gyy $$7 = $$0.apply($$6).e();
-         $$3.addAll(this.a($$4, $$5, $$7));
-      }
-
-      $$2.put("particle", $$1.a("particle") ? Either.left($$1.b("particle")) : $$2.get("layer0"));
-      gks $$8 = new gks(null, $$3, $$2, false, $$1.c(), $$1.g(), $$1.e());
-      $$8.c = $$1.c;
-      return $$8;
+   public boolean a() {
+      return !this.c.isEmpty();
    }
 
-   private List<gko> a(int $$0, String $$1, gyy $$2) {
-      Map<jm, gkp> $$3 = Maps.newHashMap();
-      $$3.put(jm.d, new gkp(null, $$0, $$1, new gkr(new float[]{0.0F, 0.0F, 16.0F, 16.0F}, 0)));
-      $$3.put(jm.c, new gkp(null, $$0, $$1, new gkr(new float[]{16.0F, 0.0F, 0.0F, 16.0F}, 0)));
-      List<gko> $$4 = Lists.newArrayList();
-      $$4.add(new gko(new Vector3f(0.0F, 0.0F, 7.5F), new Vector3f(16.0F, 16.0F, 8.5F), $$3));
-      $$4.addAll(this.a($$2, $$1, $$0));
-      return $$4;
+   public boolean b() {
+      return this.a() && !this.e;
    }
 
-   private List<gko> a(gyy $$0, String $$1, int $$2) {
-      float $$3 = (float)$$0.a();
-      float $$4 = (float)$$0.b();
-      List<gko> $$5 = Lists.newArrayList();
+   public void d() {
+      this.d = true;
+   }
 
-      for (gkv.a $$6 : this.a($$0)) {
-         float $$7 = 0.0F;
-         float $$8 = 0.0F;
-         float $$9 = 0.0F;
-         float $$10 = 0.0F;
-         float $$11 = 0.0F;
-         float $$12 = 0.0F;
-         float $$13 = 0.0F;
-         float $$14 = 0.0F;
-         float $$15 = 16.0F / $$3;
-         float $$16 = 16.0F / $$4;
-         float $$17 = (float)$$6.b();
-         float $$18 = (float)$$6.c();
-         float $$19 = (float)$$6.d();
-         gkv.b $$20 = $$6.a();
-         switch ($$20) {
-            case a:
-               $$11 = $$17;
-               $$7 = $$17;
-               $$9 = $$12 = $$18 + 1.0F;
-               $$13 = $$19;
-               $$8 = $$19;
-               $$10 = $$19;
-               $$14 = $$19 + 1.0F;
-               break;
-            case b:
-               $$13 = $$19;
-               $$14 = $$19 + 1.0F;
-               $$11 = $$17;
-               $$7 = $$17;
-               $$9 = $$12 = $$18 + 1.0F;
-               $$8 = $$19 + 1.0F;
-               $$10 = $$19 + 1.0F;
-               break;
-            case c:
-               $$11 = $$19;
-               $$7 = $$19;
-               $$9 = $$19;
-               $$12 = $$19 + 1.0F;
-               $$14 = $$17;
-               $$8 = $$17;
-               $$10 = $$13 = $$18 + 1.0F;
-               break;
-            case d:
-               $$11 = $$19;
-               $$12 = $$19 + 1.0F;
-               $$7 = $$19 + 1.0F;
-               $$9 = $$19 + 1.0F;
-               $$14 = $$17;
-               $$8 = $$17;
-               $$10 = $$13 = $$18 + 1.0F;
-         }
+   public void e() {
+      this.e = true;
+   }
 
-         $$7 *= $$15;
-         $$9 *= $$15;
-         $$8 *= $$16;
-         $$10 *= $$16;
-         $$8 = 16.0F - $$8;
-         $$10 = 16.0F - $$10;
-         $$11 *= $$15;
-         $$12 *= $$15;
-         $$13 *= $$16;
-         $$14 *= $$16;
-         Map<jm, gkp> $$21 = Maps.newHashMap();
-         $$21.put($$20.a(), new gkp(null, $$2, $$1, new gkr(new float[]{$$11, $$13, $$12, $$14}, 0)));
-         switch ($$20) {
-            case a:
-               $$5.add(new gko(new Vector3f($$7, $$8, 7.5F), new Vector3f($$9, $$8, 8.5F), $$21));
-               break;
-            case b:
-               $$5.add(new gko(new Vector3f($$7, $$10, 7.5F), new Vector3f($$9, $$10, 8.5F), $$21));
-               break;
-            case c:
-               $$5.add(new gko(new Vector3f($$7, $$8, 7.5F), new Vector3f($$7, $$10, 8.5F), $$21));
-               break;
-            case d:
-               $$5.add(new gko(new Vector3f($$9, $$8, 7.5F), new Vector3f($$9, $$10, 8.5F), $$21));
+   public void f() {
+      this.e = true;
+      this.f = true;
+   }
+
+   public boolean g() {
+      return this.d && !this.e;
+   }
+
+   public boolean h() {
+      return this.f;
+   }
+
+   public void i() {
+      this.d = false;
+      this.e = false;
+      this.f = false;
+   }
+
+   @Nullable
+   public String j() {
+      return (String)this.c.get("renderer");
+   }
+
+   @Nullable
+   public String k() {
+      return (String)this.c.get("version");
+   }
+
+   @Nullable
+   public String l() {
+      return (String)this.c.get("vendor");
+   }
+
+   @Nullable
+   public String m() {
+      StringBuilder $$0 = new StringBuilder();
+      this.c.forEach(($$1, $$2) -> $$0.append($$1).append(": ").append($$2));
+      return $$0.length() == 0 ? null : $$0.toString();
+   }
+
+   protected gkv.a a(avv $$0, bpo $$1) {
+      List<Pattern> $$2 = Lists.newArrayList();
+      List<Pattern> $$3 = Lists.newArrayList();
+      List<Pattern> $$4 = Lists.newArrayList();
+      JsonObject $$5 = c($$0, $$1);
+      if ($$5 != null) {
+         try (bpt $$6 = $$1.d("compile_regex")) {
+            a($$5.getAsJsonArray("renderer"), $$2);
+            a($$5.getAsJsonArray("version"), $$3);
+            a($$5.getAsJsonArray("vendor"), $$4);
          }
       }
 
-      return $$5;
+      return new gkv.a($$2, $$3, $$4);
    }
 
-   private List<gkv.a> a(gyy $$0) {
-      int $$1 = $$0.a();
-      int $$2 = $$0.b();
-      List<gkv.a> $$3 = Lists.newArrayList();
-      $$0.d().forEach($$4 -> {
-         for (int $$5 = 0; $$5 < $$2; $$5++) {
-            for (int $$6 = 0; $$6 < $$1; $$6++) {
-               boolean $$7 = !this.a($$0, $$4, $$6, $$5, $$1, $$2);
-               this.a(gkv.b.a, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
-               this.a(gkv.b.b, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
-               this.a(gkv.b.c, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
-               this.a(gkv.b.d, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
-            }
+   protected void a(gkv.a $$0, avv $$1, bpo $$2) {
+      this.c = $$0.a();
+   }
+
+   private static void a(JsonArray $$0, List<Pattern> $$1) {
+      $$0.forEach($$1x -> $$1.add(Pattern.compile($$1x.getAsString(), 2)));
+   }
+
+   @Nullable
+   private static JsonObject c(avv $$0, bpo $$1) {
+      try {
+         JsonObject var4;
+         try (
+            bpt $$2 = $$1.d("parse_json");
+            Reader $$3 = $$0.openAsReader(b);
+         ) {
+            var4 = JsonParser.parseReader($$3).getAsJsonObject();
          }
-      });
-      return $$3;
-   }
 
-   private void a(gkv.b $$0, List<gkv.a> $$1, gyy $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8) {
-      boolean $$9 = this.a($$2, $$3, $$4 + $$0.b(), $$5 + $$0.c(), $$6, $$7) && $$8;
-      if ($$9) {
-         this.a($$1, $$0, $$4, $$5);
+         return var4;
+      } catch (JsonSyntaxException | IOException var10) {
+         a.warn("Failed to load GPU warnlist");
+         return null;
       }
    }
 
-   private void a(List<gkv.a> $$0, gkv.b $$1, int $$2, int $$3) {
-      gkv.a $$4 = null;
+   protected static final class a {
+      private final List<Pattern> a;
+      private final List<Pattern> b;
+      private final List<Pattern> c;
 
-      for (gkv.a $$5 : $$0) {
-         if ($$5.a() == $$1) {
-            int $$6 = $$1.d() ? $$3 : $$2;
-            if ($$5.d() == $$6) {
-               $$4 = $$5;
-               break;
-            }
-         }
-      }
-
-      int $$7 = $$1.d() ? $$3 : $$2;
-      int $$8 = $$1.d() ? $$2 : $$3;
-      if ($$4 == null) {
-         $$0.add(new gkv.a($$1, $$8, $$7));
-      } else {
-         $$4.a($$8);
-      }
-   }
-
-   private boolean a(gyy $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      return $$2 >= 0 && $$3 >= 0 && $$2 < $$4 && $$3 < $$5 ? $$0.a($$1, $$2, $$3) : true;
-   }
-
-   static class a {
-      private final gkv.b a;
-      private int b;
-      private int c;
-      private final int d;
-
-      public a(gkv.b $$0, int $$1, int $$2) {
+      a(List<Pattern> $$0, List<Pattern> $$1, List<Pattern> $$2) {
          this.a = $$0;
          this.b = $$1;
-         this.c = $$1;
-         this.d = $$2;
+         this.c = $$2;
       }
 
-      public void a(int $$0) {
-         if ($$0 < this.b) {
-            this.b = $$0;
-         } else if ($$0 > this.c) {
-            this.c = $$0;
+      private static String a(List<Pattern> $$0, String $$1) {
+         List<String> $$2 = Lists.newArrayList();
+
+         for (Pattern $$3 : $$0) {
+            Matcher $$4 = $$3.matcher($$1);
+
+            while ($$4.find()) {
+               $$2.add($$4.group());
+            }
          }
+
+         return String.join(", ", $$2);
       }
 
-      public gkv.b a() {
-         return this.a;
-      }
+      ImmutableMap<String, String> a() {
+         Builder<String, String> $$0 = new Builder();
+         String $$1 = a(this.a, ffe.c());
+         if (!$$1.isEmpty()) {
+            $$0.put("renderer", $$1);
+         }
 
-      public int b() {
-         return this.b;
-      }
+         String $$2 = a(this.b, ffe.d());
+         if (!$$2.isEmpty()) {
+            $$0.put("version", $$2);
+         }
 
-      public int c() {
-         return this.c;
-      }
+         String $$3 = a(this.c, ffe.a());
+         if (!$$3.isEmpty()) {
+            $$0.put("vendor", $$3);
+         }
 
-      public int d() {
-         return this.d;
-      }
-   }
-
-   static enum b {
-      a(jm.b, 0, -1),
-      b(jm.a, 0, 1),
-      c(jm.f, -1, 0),
-      d(jm.e, 1, 0);
-
-      private final jm e;
-      private final int f;
-      private final int g;
-
-      private b(final jm $$0, final int $$1, final int $$2) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
-      }
-
-      public jm a() {
-         return this.e;
-      }
-
-      public int b() {
-         return this.f;
-      }
-
-      public int c() {
-         return this.g;
-      }
-
-      boolean d() {
-         return this == b || this == a;
+         return $$0.build();
       }
    }
 }

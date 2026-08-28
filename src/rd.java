@@ -1,72 +1,61 @@
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
+
 public class rd {
-   @Deprecated
-   public static final eqy.a a = new eqy.a(-3, 1.0, 1.0, 1.0, 0.0);
-
-   public static void a(qz<eqy.a> $$0) {
-      a($$0, 0, ebz.a, ebz.b, ebz.c, ebz.d);
-      a($$0, -2, ebz.e, ebz.f, ebz.g, ebz.h);
-      a($$0, ebz.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
-      $$0.a(ebz.j, a);
-      a($$0, ebz.k, -3, 1.0);
-      a($$0, ebz.l, -7, 1.0);
-      a($$0, ebz.m, -1, 1.0);
-      a($$0, ebz.n, -5, 1.0);
-      a($$0, ebz.o, -7, 1.0, 1.0);
-      a($$0, ebz.p, -8, 1.0);
-      a($$0, ebz.q, -8, 1.0);
-      a($$0, ebz.r, -7, 1.0);
-      a($$0, ebz.s, -8, 1.0);
-      a($$0, ebz.t, -11, 1.0);
-      a($$0, ebz.u, -11, 1.0);
-      a($$0, ebz.v, -7, 1.0);
-      a($$0, ebz.w, -7, 1.0);
-      a($$0, ebz.x, -11, 1.0);
-      a($$0, ebz.y, -8, 1.0);
-      a($$0, ebz.z, -5, 1.0);
-      a($$0, ebz.A, -8, 1.0);
-      a($$0, ebz.B, -7, 0.4, 0.5, 1.0);
-      a($$0, ebz.C, -8, 1.0);
-      a($$0, ebz.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
-      a($$0, ebz.E, -8, 1.0);
-      a($$0, ebz.F, -7, 1.0);
-      a($$0, ebz.G, -7, 1.0);
-      a($$0, ebz.H, -5, 1.0);
-      a($$0, ebz.I, -8, 1.0);
-      a($$0, ebz.J, -8, 1.0);
-      a($$0, ebz.K, -7, 1.0);
-      a($$0, ebz.L, -7, 1.0);
-      a($$0, ebz.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebz.N, -6, 1.0, 1.0, 1.0);
-      a($$0, ebz.O, -6, 1.0, 1.0, 0.0, 1.0);
-      a($$0, ebz.P, -8, 1.0);
-      a($$0, ebz.Q, -2, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebz.R, -8, 1.0);
-      a($$0, ebz.S, -6, 1.0, 1.0, 1.0);
-      a($$0, ebz.T, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebz.U, -3, 1.0);
-      a($$0, ebz.V, -6, 1.0, 1.0, 1.0);
-      a($$0, ebz.W, -2, 1.0);
-      a($$0, ebz.X, -9, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebz.Y, -8, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebz.Z, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebz.aa, -7, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebz.ab, -4, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebz.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, ebz.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, ebz.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, ebz.af, -3, 1.0, 0.0, 0.0, 0.35);
-      a($$0, ebz.ag, -3, 1.0, 0.0, 0.0, 0.9);
-      a($$0, ebz.ah, -4, 1.0);
-   }
-
-   private static void a(qz<eqy.a> $$0, int $$1, ali<eqy.a> $$2, ali<eqy.a> $$3, ali<eqy.a> $$4, ali<eqy.a> $$5) {
-      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
-      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
-      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
-   }
-
-   private static void a(qz<eqy.a> $$0, ali<eqy.a> $$1, int $$2, double $$3, double... $$4) {
-      $$0.a($$1, new eqy.a($$2, $$3, $$4));
+   public static void a(rk<epm> $$0) {
+      jr<esc> $$1 = $$0.a(mb.aU);
+      jq<esc> $$2 = $$1.b(rs.y);
+      jq<esc> $$3 = $$1.b(rs.w);
+      jq<esc> $$4 = $$1.b(rs.z);
+      jq<esc> $$5 = $$1.b(rs.x);
+      jr<epm> $$6 = $$0.a(mb.aW);
+      jq<epm> $$7 = $$6.b(rr.a);
+      rr.a(
+         $$0,
+         "bastion/bridge/starting_pieces",
+         new epm(
+            $$7,
+            ImmutableList.of(
+               Pair.of(epk.b("bastion/bridge/starting_pieces/entrance", $$2), 1), Pair.of(epk.b("bastion/bridge/starting_pieces/entrance_face", $$3), 1)
+            ),
+            epm.a.b
+         )
+      );
+      rr.a($$0, "bastion/bridge/bridge_pieces", new epm($$7, ImmutableList.of(Pair.of(epk.b("bastion/bridge/bridge_pieces/bridge", $$4), 1)), epm.a.b));
+      rr.a(
+         $$0,
+         "bastion/bridge/legs",
+         new epm($$7, ImmutableList.of(Pair.of(epk.b("bastion/bridge/legs/leg_0", $$3), 1), Pair.of(epk.b("bastion/bridge/legs/leg_1", $$3), 1)), epm.a.b)
+      );
+      rr.a(
+         $$0,
+         "bastion/bridge/walls",
+         new epm(
+            $$7,
+            ImmutableList.of(Pair.of(epk.b("bastion/bridge/walls/wall_base_0", $$5), 1), Pair.of(epk.b("bastion/bridge/walls/wall_base_1", $$5), 1)),
+            epm.a.b
+         )
+      );
+      rr.a(
+         $$0,
+         "bastion/bridge/ramparts",
+         new epm(
+            $$7,
+            ImmutableList.of(Pair.of(epk.b("bastion/bridge/ramparts/rampart_0", $$5), 1), Pair.of(epk.b("bastion/bridge/ramparts/rampart_1", $$5), 1)),
+            epm.a.b
+         )
+      );
+      rr.a($$0, "bastion/bridge/rampart_plates", new epm($$7, ImmutableList.of(Pair.of(epk.b("bastion/bridge/rampart_plates/plate_0", $$5), 1)), epm.a.b));
+      rr.a(
+         $$0,
+         "bastion/bridge/connectors",
+         new epm(
+            $$7,
+            ImmutableList.of(
+               Pair.of(epk.b("bastion/bridge/connectors/back_bridge_top", $$3), 1), Pair.of(epk.b("bastion/bridge/connectors/back_bridge_bottom", $$3), 1)
+            ),
+            epm.a.b
+         )
+      );
    }
 }

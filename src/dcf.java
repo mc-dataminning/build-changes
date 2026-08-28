@@ -1,504 +1,238 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.JsonOps;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.IdentityHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import java.util.function.BiConsumer;
+import java.util.OptionalInt;
+import java.util.SortedMap;
+import java.util.TreeMap;
 import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableBoolean;
-import org.apache.commons.lang3.mutable.MutableFloat;
-import org.apache.commons.lang3.mutable.MutableObject;
+import org.slf4j.Logger;
 
-public class dcf {
-   public static int a(jq<dcd> $$0, cwm $$1) {
-      dcj $$2 = $$1.a(ku.l, dcj.a);
-      return $$2.a($$0);
+public class dcf extends awa<dcg> implements dca {
+   private static final Logger a = LogUtils.getLogger();
+   private final js.a b;
+   private dcg c = dcg.a;
+   private Map<aly<dch>, dch> d = Map.of();
+   private dcl.b<dcy> e = dcl.b.a();
+   private List<dcf.b> f = List.of();
+   private Map<aly<dbz<?>>, List<dcf.b>> g = Map.of();
+
+   public dcf(js.a $$0) {
+      this.b = $$0;
    }
 
-   public static dcj a(cwm $$0, Consumer<dcj.a> $$1) {
-      kt<dcj> $$2 = d($$0);
-      dcj $$3 = $$0.a($$2);
-      if ($$3 == null) {
-         return dcj.a;
-      } else {
-         dcj.a $$4 = new dcj.a($$3);
-         $$1.accept($$4);
-         dcj $$5 = $$4.b();
-         $$0.b($$2, $$5);
-         return $$5;
-      }
+   protected dcg a(avv $$0, bpo $$1) {
+      SortedMap<alz, dbz<?>> $$2 = new TreeMap<>();
+      avz.a($$0, mb.c(mb.bj), this.b.a(JsonOps.INSTANCE), dbz.a, $$2);
+      List<dcd<?>> $$3 = new ArrayList<>($$2.size());
+      $$2.forEach(($$1x, $$2x) -> {
+         aly<dbz<?>> $$3x = aly.a(mb.bj, $$1x);
+         dcd<?> $$4 = new dcd($$3x, $$2x);
+         $$3.add($$4);
+      });
+      return dcg.a($$3);
    }
 
-   public static boolean a(cwm $$0) {
-      return $$0.b(d($$0));
+   protected void a(dcg $$0, avv $$1, bpo $$2) {
+      this.c = $$0;
+      a.info("Loaded {} recipes", $$0.a().size());
    }
 
-   public static void a(cwm $$0, dcj $$1) {
-      $$0.b(d($$0), $$1);
+   public void a(cso $$0) {
+      List<dbv> $$1 = new ArrayList<>();
+      List<dbv> $$2 = new ArrayList<>();
+      List<dbv> $$3 = new ArrayList<>();
+      List<dbv> $$4 = new ArrayList<>();
+      List<dbv> $$5 = new ArrayList<>();
+      List<dbv> $$6 = new ArrayList<>();
+      List<dbv> $$7 = new ArrayList<>();
+      List<dcl.a<dcy>> $$8 = new ArrayList<>();
+      this.c.a().forEach($$9 -> {
+         dbz<?> $$10 = $$9.b();
+         if (!$$10.aq_() && $$10.ap_().d()) {
+            a.warn("Recipe {} can't be placed due to empty ingredients and will be ignored", $$9.a().a());
+         } else {
+            if ($$10 instanceof dct $$11) {
+               $$11.k().ifPresent($$3::add);
+               $$11.f().ifPresent($$2::add);
+               $$11.c().ifPresent($$1::add);
+            }
+
+            if ($$10 instanceof dbf $$12) {
+               if ($$12.b() == dcj.b) {
+                  $$4.add($$12.k());
+               } else if ($$12.b() == dcj.c) {
+                  $$5.add($$12.k());
+               } else if ($$12.b() == dcj.d) {
+                  $$6.add($$12.k());
+               } else if ($$12.b() == dcj.e) {
+                  $$7.add($$12.k());
+               }
+            }
+
+            if ($$10 instanceof dcy $$13 && a($$0, $$13.k()) && $$13.c().a($$0)) {
+               $$8.add(new dcl.a<>($$13.k(), new dcl<>($$13.c(), Optional.of((dcd<dcy>)$$9))));
+            }
+         }
+      });
+      this.d = Map.of(
+         dch.d,
+         dch.a(a($$0, $$3)),
+         dch.b,
+         dch.a(a($$0, $$2)),
+         dch.c,
+         dch.a(a($$0, $$1)),
+         dch.e,
+         dch.a(a($$0, $$4)),
+         dch.f,
+         dch.a(a($$0, $$5)),
+         dch.g,
+         dch.a(a($$0, $$6)),
+         dch.h,
+         dch.a(a($$0, $$7))
+      );
+      this.e = new dcl.b<>($$8);
+      this.f = a(this.c.a(), $$0);
+      this.g = this.f.stream().collect(Collectors.groupingBy($$0x -> $$0x.b.a(), IdentityHashMap::new, Collectors.toList()));
    }
 
-   public static dcj b(cwm $$0) {
-      return $$0.a(d($$0), dcj.a);
-   }
-
-   private static kt<dcj> d(cwm $$0) {
-      return $$0.a(cwq.uO) ? ku.I : ku.l;
-   }
-
-   public static boolean c(cwm $$0) {
-      return !$$0.a(ku.l, dcj.a).d() || !$$0.a(ku.I, dcj.a).d();
-   }
-
-   public static int a(arp $$0, cwm $$1, int $$2) {
-      MutableFloat $$3 = new MutableFloat((float)$$2);
-      a($$1, ($$3x, $$4) -> ((dcd)$$3x.a()).a($$0, $$4, $$1, $$3));
-      return $$3.intValue();
-   }
-
-   public static int a(arp $$0, cwm $$1, cwm $$2, int $$3) {
-      MutableFloat $$4 = new MutableFloat((float)$$3);
-      a($$1, ($$3x, $$4x) -> ((dcd)$$3x.a()).b($$0, $$4x, $$2, $$4));
-      return $$4.intValue();
-   }
-
-   public static int b(arp $$0, cwm $$1, int $$2) {
-      MutableFloat $$3 = new MutableFloat((float)$$2);
-      a($$1, ($$3x, $$4) -> ((dcd)$$3x.a()).d($$0, $$4, $$1, $$3));
-      return $$3.intValue();
-   }
-
-   public static int a(arp $$0, @Nullable bul $$1, bul $$2, int $$3) {
-      if ($$1 instanceof bvh $$4) {
-         MutableFloat $$5 = new MutableFloat((float)$$3);
-         a($$4, ($$3x, $$4x, $$5x) -> ((dcd)$$3x.a()).a($$0, $$4x, $$5x.a(), $$2, $$5));
-         return $$5.intValue();
-      } else {
-         return $$3;
-      }
-   }
-
-   public static cwm a(dcg $$0) {
-      cwm $$1 = new cwm(cwq.uO);
-      $$1.a($$0.a, $$0.b);
+   private static List<dbv> a(cso $$0, List<dbv> $$1) {
+      $$1.removeIf($$1x -> !a($$0, $$1x));
       return $$1;
    }
 
-   private static void a(cwm $$0, dcf.b $$1) {
-      dcj $$2 = $$0.a(ku.l, dcj.a);
-
-      for (Entry<jq<dcd>> $$3 : $$2.b()) {
-         $$1.accept((jq<dcd>)$$3.getKey(), $$3.getIntValue());
-      }
+   private static boolean a(cso $$0, dbv $$1) {
+      return $$1.a().stream().allMatch($$1x -> ((cxg)$$1x.a()).a($$0));
    }
 
-   private static void a(cwm $$0, but $$1, bvh $$2, dcf.a $$3) {
-      if (!$$0.f()) {
-         dcj $$4 = $$0.a(ku.l);
-         if ($$4 != null && !$$4.d()) {
-            dcc $$5 = new dcc($$0, $$1, $$2);
-
-            for (Entry<jq<dcd>> $$6 : $$4.b()) {
-               jq<dcd> $$7 = (jq<dcd>)$$6.getKey();
-               if ($$7.a().a($$1)) {
-                  $$3.accept($$7, $$6.getIntValue(), $$5);
-               }
-            }
-         }
-      }
+   public <I extends dce, T extends dbz<I>> Optional<dcd<T>> a(dcj<T> $$0, I $$1, dha $$2, @Nullable aly<dbz<?>> $$3) {
+      dcd<T> $$4 = $$3 != null ? this.a($$0, $$3) : null;
+      return this.a($$0, $$1, $$2, $$4);
    }
 
-   private static void a(bvh $$0, dcf.a $$1) {
-      for (but $$2 : but.i) {
-         a($$0.a($$2), $$2, $$0, $$1);
-      }
+   public <I extends dce, T extends dbz<I>> Optional<dcd<T>> a(dcj<T> $$0, I $$1, dha $$2, @Nullable dcd<T> $$3) {
+      return $$3 != null && $$3.b().a($$1, $$2) ? Optional.of($$3) : this.a($$0, $$1, $$2);
    }
 
-   public static boolean a(arp $$0, bvh $$1, btb $$2) {
-      MutableBoolean $$3 = new MutableBoolean();
-      a($$1, ($$4, $$5, $$6) -> $$3.setValue($$3.isTrue() || $$4.a().a($$0, $$5, $$1, $$2)));
-      return $$3.isTrue();
+   public <I extends dce, T extends dbz<I>> Optional<dcd<T>> a(dcj<T> $$0, I $$1, dha $$2) {
+      return this.c.a($$0, $$1, $$2).findFirst();
    }
 
-   public static float b(arp $$0, bvh $$1, btb $$2) {
-      MutableFloat $$3 = new MutableFloat(0.0F);
-      a($$1, ($$4, $$5, $$6) -> $$4.a().a($$0, $$5, $$6.a(), $$1, $$2, $$3));
-      return $$3.floatValue();
-   }
-
-   public static float a(arp $$0, cwm $$1, bul $$2, btb $$3, float $$4) {
-      MutableFloat $$5 = new MutableFloat($$4);
-      a($$1, ($$5x, $$6) -> ((dcd)$$5x.a()).b($$0, $$6, $$1, $$2, $$3, $$5));
-      return $$5.floatValue();
-   }
-
-   public static float b(arp $$0, cwm $$1, bul $$2, btb $$3, float $$4) {
-      MutableFloat $$5 = new MutableFloat($$4);
-      a($$1, ($$5x, $$6) -> ((dcd)$$5x.a()).c($$0, $$6, $$1, $$2, $$3, $$5));
-      return $$5.floatValue();
-   }
-
-   public static float c(arp $$0, cwm $$1, bul $$2, btb $$3, float $$4) {
-      MutableFloat $$5 = new MutableFloat($$4);
-      a($$1, ($$5x, $$6) -> ((dcd)$$5x.a()).e($$0, $$6, $$1, $$2, $$3, $$5));
-      return $$5.floatValue();
-   }
-
-   public static float d(arp $$0, cwm $$1, bul $$2, btb $$3, float $$4) {
-      MutableFloat $$5 = new MutableFloat($$4);
-      a($$1, ($$5x, $$6) -> ((dcd)$$5x.a()).d($$0, $$6, $$1, $$2, $$3, $$5));
-      return $$5.floatValue();
-   }
-
-   public static void a(arp $$0, bul $$1, btb $$2) {
-      if ($$2.d() instanceof bvh $$3) {
-         a($$0, $$1, $$2, $$3.dZ());
-      } else {
-         a($$0, $$1, $$2, null);
-      }
-   }
-
-   public static void a(arp $$0, bul $$1, btb $$2, @Nullable cwm $$3) {
-      a($$0, $$1, $$2, $$3, null);
-   }
-
-   public static void a(arp $$0, bul $$1, btb $$2, @Nullable cwm $$3, @Nullable Consumer<cwi> $$4) {
-      if ($$1 instanceof bvh $$5) {
-         a($$5, ($$3x, $$4x, $$5x) -> ((dcd)$$3x.a()).a($$0, $$4x, $$5x, dch.c, $$1, $$2));
-      }
-
-      if ($$3 != null) {
-         if ($$2.d() instanceof bvh $$6) {
-            a($$3, but.a, $$6, ($$3x, $$4x, $$5) -> ((dcd)$$3x.a()).a($$0, $$4x, $$5, dch.a, $$1, $$2));
-         } else if ($$4 != null) {
-            dcc $$7 = new dcc($$3, null, null, $$4);
-            a($$3, ($$4x, $$5) -> ((dcd)$$4x.a()).a($$0, $$5, $$7, dch.a, $$1, $$2));
-         }
-      }
-   }
-
-   public static void a(arp $$0, bvh $$1) {
-      a($$1, ($$2, $$3, $$4) -> $$2.a().a($$0, $$3, $$4, $$1));
-   }
-
-   public static void a(arp $$0, cwm $$1, bvh $$2, but $$3) {
-      a($$1, $$3, $$2, ($$2x, $$3x, $$4) -> ((dcd)$$2x.a()).a($$0, $$3x, $$4, $$2));
-   }
-
-   public static void a(bvh $$0) {
-      a($$0, ($$1, $$2, $$3) -> $$1.a().a($$2, $$3, $$0));
-   }
-
-   public static void a(cwm $$0, bvh $$1, but $$2) {
-      a($$0, $$2, $$1, ($$1x, $$2x, $$3) -> ((dcd)$$1x.a()).a($$2x, $$3, $$1));
-   }
-
-   public static void b(arp $$0, bvh $$1) {
-      a($$1, ($$2, $$3, $$4) -> $$2.a().a($$0, $$3, $$4, (bul)$$1));
-   }
-
-   public static int a(jq<dcd> $$0, bvh $$1) {
-      Iterable<cwm> $$2 = $$0.a().a($$1).values();
-      int $$3 = 0;
-
-      for (cwm $$4 : $$2) {
-         int $$5 = a($$0, $$4);
-         if ($$5 > $$3) {
-            $$3 = $$5;
-         }
-      }
-
-      return $$3;
-   }
-
-   public static int a(arp $$0, cwm $$1, bul $$2, int $$3) {
-      MutableFloat $$4 = new MutableFloat((float)$$3);
-      a($$1, ($$4x, $$5) -> ((dcd)$$4x.a()).e($$0, $$5, $$1, $$2, $$4));
-      return Math.max(0, $$4.intValue());
-   }
-
-   public static float a(arp $$0, cwm $$1, bul $$2, float $$3) {
-      MutableFloat $$4 = new MutableFloat($$3);
-      a($$1, ($$4x, $$5) -> ((dcd)$$4x.a()).f($$0, $$5, $$1, $$2, $$4));
-      return Math.max(0.0F, $$4.floatValue());
-   }
-
-   public static int a(arp $$0, cwm $$1, cwm $$2) {
-      MutableFloat $$3 = new MutableFloat(0.0F);
-      a($$1, ($$3x, $$4) -> ((dcd)$$3x.a()).c($$0, $$4, $$2, $$3));
-      return Math.max(0, $$3.intValue());
-   }
-
-   public static void a(arp $$0, cwm $$1, cpn $$2, Consumer<cwi> $$3) {
-      bvh $$5 = $$2.p() instanceof bvh $$4 ? $$4 : null;
-      dcc $$6 = new dcc($$1, null, $$5, $$3);
-      a($$1, ($$3x, $$4x) -> ((dcd)$$3x.a()).b($$0, $$4x, $$6, $$2));
-   }
-
-   public static void a(arp $$0, cwm $$1, @Nullable bvh $$2, bul $$3, @Nullable but $$4, ezy $$5, dvv $$6, Consumer<cwi> $$7) {
-      dcc $$8 = new dcc($$1, $$4, $$2, $$7);
-      a($$1, ($$5x, $$6x) -> ((dcd)$$5x.a()).a($$0, $$6x, $$8, $$3, $$5, $$6));
-   }
-
-   public static int c(arp $$0, cwm $$1, int $$2) {
-      MutableFloat $$3 = new MutableFloat((float)$$2);
-      a($$1, ($$3x, $$4) -> ((dcd)$$3x.a()).e($$0, $$4, $$1, $$3));
-      return Math.max(0, $$3.intValue());
-   }
-
-   public static float a(arp $$0, bvh $$1, btb $$2, float $$3) {
-      MutableFloat $$4 = new MutableFloat($$3);
-      azu $$5 = $$1.dY();
-      a($$1, ($$5x, $$6, $$7x) -> {
-         eun $$8 = dcd.b($$0, $$6, $$1, $$2);
-         ((dcd)$$5x.a()).a(dce.m).forEach($$4xx -> {
-            if ($$4xx.a() == dch.c && $$4xx.b() == dch.c && $$4xx.a($$8)) {
-               $$4.setValue(((dcw)$$4xx.c()).a($$6, $$5, $$4.floatValue()));
-            }
-         });
-      });
-      if ($$2.d() instanceof bvh $$7) {
-         a($$7, ($$5x, $$6, $$7x) -> {
-            eun $$8 = dcd.b($$0, $$6, $$1, $$2);
-            ((dcd)$$5x.a()).a(dce.m).forEach($$4xx -> {
-               if ($$4xx.a() == dch.a && $$4xx.b() == dch.c && $$4xx.a($$8)) {
-                  $$4.setValue(((dcw)$$4xx.c()).a($$6, $$5, $$4.floatValue()));
-               }
-            });
-         });
-      }
-
-      return $$4.floatValue();
-   }
-
-   public static void a(cwm $$0, buu $$1, BiConsumer<jq<bwk>, bwn> $$2) {
-      a($$0, ($$2x, $$3) -> ((dcd)$$2x.a()).a(dce.l).forEach($$4 -> {
-            if (((dcd)$$2x.a()).g().h().contains($$1)) {
-               $$2.accept($$4.c(), $$4.a($$3, $$1));
-            }
-         }));
-   }
-
-   public static void a(cwm $$0, but $$1, BiConsumer<jq<bwk>, bwn> $$2) {
-      a($$0, ($$2x, $$3) -> ((dcd)$$2x.a()).a(dce.l).forEach($$4 -> {
-            if (((dcd)$$2x.a()).a($$1)) {
-               $$2.accept($$4.c(), $$4.a($$3, $$1));
-            }
-         }));
-   }
-
-   public static int a(arp $$0, cwm $$1, bul $$2) {
-      MutableFloat $$3 = new MutableFloat(0.0F);
-      a($$1, ($$4, $$5) -> $$4.a().d($$0, $$5, $$1, $$2, $$3));
-      return Math.max(0, $$3.intValue());
-   }
-
-   public static float b(arp $$0, cwm $$1, bul $$2) {
-      MutableFloat $$3 = new MutableFloat(0.0F);
-      a($$1, ($$4, $$5) -> $$4.a().c($$0, $$5, $$1, $$2, $$3));
-      return Math.max(0.0F, $$3.floatValue());
-   }
-
-   public static int c(arp $$0, cwm $$1, bul $$2) {
-      MutableFloat $$3 = new MutableFloat(0.0F);
-      a($$1, ($$4, $$5) -> $$4.a().b($$0, $$5, $$1, $$2, $$3));
-      return Math.max(0, $$3.intValue());
-   }
-
-   public static float a(cwm $$0, bvh $$1, float $$2) {
-      MutableFloat $$3 = new MutableFloat($$2);
-      a($$0, ($$2x, $$3x) -> ((dcd)$$2x.a()).b($$1.dY(), $$3x, $$3));
-      return Math.max(0.0F, $$3.floatValue());
-   }
-
-   public static float a(cwm $$0, bvh $$1) {
-      MutableFloat $$2 = new MutableFloat(0.0F);
-      a($$0, ($$2x, $$3) -> ((dcd)$$2x.a()).a($$1.dY(), $$3, $$2));
-      return $$2.floatValue();
-   }
-
-   public static boolean a(cwm $$0, axs<dcd> $$1) {
-      dcj $$2 = $$0.a(ku.l, dcj.a);
-
-      for (Entry<jq<dcd>> $$3 : $$2.b()) {
-         jq<dcd> $$4 = (jq<dcd>)$$3.getKey();
-         if ($$4.a($$1)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public static boolean a(cwm $$0, kt<?> $$1) {
-      MutableBoolean $$2 = new MutableBoolean(false);
-      a($$0, ($$2x, $$3) -> {
-         if (((dcd)$$2x.a()).i().b($$1)) {
-            $$2.setTrue();
-         }
-      });
-      return $$2.booleanValue();
-   }
-
-   public static <T> Optional<T> b(cwm $$0, kt<List<T>> $$1) {
-      Pair<List<T>, Integer> $$2 = c($$0, $$1);
-      if ($$2 != null) {
-         List<T> $$3 = (List<T>)$$2.getFirst();
-         int $$4 = (Integer)$$2.getSecond();
-         return Optional.of($$3.get(Math.min($$4, $$3.size()) - 1));
-      } else {
-         return Optional.empty();
-      }
+   public Optional<dcd<?>> b(aly<dbz<?>> $$0) {
+      return Optional.ofNullable(this.c.a($$0));
    }
 
    @Nullable
-   public static <T> Pair<T, Integer> c(cwm $$0, kt<T> $$1) {
-      MutableObject<Pair<T, Integer>> $$2 = new MutableObject();
-      a($$0, ($$2x, $$3) -> {
-         if ($$2.getValue() == null || (Integer)((Pair)$$2.getValue()).getSecond() < $$3) {
-            T $$4 = ((dcd)$$2x.a()).i().a($$1);
-            if ($$4 != null) {
-               $$2.setValue(Pair.of($$4, $$3));
-            }
-         }
-      });
-      return (Pair<T, Integer>)$$2.getValue();
+   private <T extends dbz<?>> dcd<T> a(dcj<T> $$0, aly<dbz<?>> $$1) {
+      dcd<?> $$2 = this.c.a($$1);
+      return (dcd<T>)($$2 != null && $$2.b().b().equals($$0) ? $$2 : null);
    }
 
-   public static Optional<dcc> a(kt<?> $$0, bvh $$1, Predicate<cwm> $$2) {
-      List<dcc> $$3 = new ArrayList<>();
-
-      for (but $$4 : but.i) {
-         cwm $$5 = $$1.a($$4);
-         if ($$2.test($$5)) {
-            dcj $$6 = $$5.a(ku.l, dcj.a);
-
-            for (Entry<jq<dcd>> $$7 : $$6.b()) {
-               jq<dcd> $$8 = (jq<dcd>)$$7.getKey();
-               if ($$8.a().i().b($$0) && $$8.a().a($$4)) {
-                  $$3.add(new dcc($$5, $$4, $$1));
-               }
-            }
-         }
-      }
-
-      return ae.b($$3, $$1.dY());
+   public Map<aly<dch>, dch> b() {
+      return this.d;
    }
 
-   public static int a(azu $$0, int $$1, int $$2, cwm $$3) {
-      dcb $$4 = $$3.a(ku.C);
-      if ($$4 == null) {
-         return 0;
-      } else {
-         if ($$2 > 15) {
-            $$2 = 15;
-         }
+   public dcl.b<dcy> d() {
+      return this.e;
+   }
 
-         int $$5 = $$0.a(8) + 1 + ($$2 >> 1) + $$0.a($$2 + 1);
-         if ($$1 == 0) {
-            return Math.max($$5 / 3, 1);
+   @Override
+   public dch a(aly<dch> $$0) {
+      return this.d.getOrDefault($$0, dch.j);
+   }
+
+   @Override
+   public dcl.b<dcy> a() {
+      return this.e;
+   }
+
+   public Collection<dcd<?>> e() {
+      return this.c.a();
+   }
+
+   @Nullable
+   public dcf.b a(dde $$0) {
+      return this.f.get($$0.a());
+   }
+
+   public void a(aly<dbz<?>> $$0, Consumer<ddd> $$1) {
+      this.g.get($$0).forEach($$1x -> $$1.accept($$1x.a));
+   }
+
+   @VisibleForTesting
+   protected static dcd<?> a(aly<dbz<?>> $$0, JsonObject $$1, js.a $$2) {
+      dbz<?> $$3 = (dbz<?>)dbz.a.parse($$2.a(JsonOps.INSTANCE), $$1).getOrThrow(JsonParseException::new);
+      return new dcd<>($$0, $$3);
+   }
+
+   public static <I extends dce, T extends dbz<I>> dcf.a<I, T> a(final dcj<T> $$0) {
+      return new dcf.a<I, T>() {
+         @Nullable
+         private aly<dbz<?>> b;
+
+         @Override
+         public Optional<dcd<T>> a(I $$0x, ash $$1) {
+            dcf $$2 = $$1.s();
+            Optional<dcd<T>> $$3 = $$2.a($$0, $$0, $$1, this.b);
+            if ($$3.isPresent()) {
+               dcd<T> $$4 = $$3.get();
+               this.b = $$4.a();
+               return Optional.of($$4);
+            } else {
+               return Optional.empty();
+            }
+         }
+      };
+   }
+
+   private static List<dcf.b> a(Iterable<dcd<?>> $$0, cso $$1) {
+      List<dcf.b> $$2 = new ArrayList<>();
+      Object2IntMap<String> $$3 = new Object2IntOpenHashMap();
+
+      for (dcd<?> $$4 : $$0) {
+         dbz<?> $$5 = $$4.b();
+         OptionalInt $$6;
+         if ($$5.j().isEmpty()) {
+            $$6 = OptionalInt.empty();
          } else {
-            return $$1 == 1 ? $$5 * 2 / 3 + 1 : Math.max($$5, $$2 * 2);
+            $$6 = OptionalInt.of($$3.computeIfAbsent($$5.j(), $$1x -> $$3.size()));
          }
-      }
-   }
 
-   public static cwm a(azu $$0, cwm $$1, int $$2, ke $$3, Optional<? extends ju<dcd>> $$4) {
-      return a($$0, $$1, $$2, $$4.<Stream<jq<dcd>>>map(ju::a).orElseGet(() -> $$3.e(ma.aM).c().map($$0xx -> $$0xx)));
-   }
+         Optional<List<dbv>> $$8;
+         if ($$5.aq_()) {
+            $$8 = Optional.empty();
+         } else {
+            $$8 = Optional.of($$5.ap_().b());
+         }
 
-   public static cwm a(azu $$0, cwm $$1, int $$2, Stream<jq<dcd>> $$3) {
-      List<dcg> $$4 = b($$0, $$1, $$2, $$3);
-      if ($$1.a(cwq.qQ)) {
-         $$1 = new cwm(cwq.uO);
-      }
-
-      for (dcg $$5 : $$4) {
-         $$1.a($$5.a, $$5.b);
-      }
-
-      return $$1;
-   }
-
-   public static List<dcg> b(azu $$0, cwm $$1, int $$2, Stream<jq<dcd>> $$3) {
-      List<dcg> $$4 = Lists.newArrayList();
-      dcb $$5 = $$1.a(ku.C);
-      if ($$5 == null) {
-         return $$4;
-      } else {
-         $$2 += 1 + $$0.a($$5.a() / 4 + 1) + $$0.a($$5.a() / 4 + 1);
-         float $$6 = ($$0.i() + $$0.i() - 1.0F) * 0.15F;
-         $$2 = azm.a(Math.round((float)$$2 + (float)$$2 * $$6), 1, Integer.MAX_VALUE);
-         List<dcg> $$7 = a($$2, $$1, $$3);
-         if (!$$7.isEmpty()) {
-            bqv.a($$0, $$7).ifPresent($$4::add);
-
-            while ($$0.a(50) <= $$2) {
-               if (!$$4.isEmpty()) {
-                  a($$7, ae.c($$4));
-               }
-
-               if ($$7.isEmpty()) {
-                  break;
-               }
-
-               bqv.a($$0, $$7).ifPresent($$4::add);
-               $$2 /= 2;
+         for (ddc $$10 : $$5.g()) {
+            if ($$10.a($$1)) {
+               int $$11 = $$2.size();
+               dde $$12 = new dde($$11);
+               ddd $$13 = new ddd($$12, $$10, $$6, $$5.h(), $$8);
+               $$2.add(new dcf.b($$13, $$4));
             }
          }
-
-         return $$4;
-      }
-   }
-
-   public static void a(List<dcg> $$0, dcg $$1) {
-      $$0.removeIf($$1x -> !dcd.a($$1.a, $$1x.a));
-   }
-
-   public static boolean a(Collection<jq<dcd>> $$0, jq<dcd> $$1) {
-      for (jq<dcd> $$2 : $$0) {
-         if (!dcd.a($$2, $$1)) {
-            return false;
-         }
       }
 
-      return true;
+      return $$2;
    }
 
-   public static List<dcg> a(int $$0, cwm $$1, Stream<jq<dcd>> $$2) {
-      List<dcg> $$3 = Lists.newArrayList();
-      boolean $$4 = $$1.a(cwq.qQ);
-      $$2.filter($$2x -> ((dcd)$$2x.a()).a($$1) || $$4).forEach($$2x -> {
-         dcd $$3x = (dcd)$$2x.a();
-
-         for (int $$4x = $$3x.e(); $$4x >= $$3x.d(); $$4x--) {
-            if ($$0 >= $$3x.b($$4x) && $$0 <= $$3x.c($$4x)) {
-               $$3.add(new dcg($$2x, $$4x));
-               break;
-            }
-         }
-      });
-      return $$3;
+   public interface a<I extends dce, T extends dbz<I>> {
+      Optional<dcd<T>> a(I var1, ash var2);
    }
 
-   public static void a(cwm $$0, ke $$1, ali<ddl> $$2, bsi $$3, azu $$4) {
-      ddl $$5 = $$1.e(ma.aN).c($$2);
-      if ($$5 != null) {
-         a($$0, $$4x -> $$5.a($$0, $$4x, $$4, $$3));
-      }
-   }
-
-   @FunctionalInterface
-   interface a {
-      void accept(jq<dcd> var1, int var2, dcc var3);
-   }
-
-   @FunctionalInterface
-   interface b {
-      void accept(jq<dcd> var1, int var2);
+   public static record b(ddd a, dcd<?> b) {
    }
 }

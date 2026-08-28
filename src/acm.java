@@ -1,44 +1,20 @@
-import java.util.function.BiFunction;
+public record acm(alz b) implements aac<acl> {
+   public static final zt<ws, acm> a = aac.a(acm::a, acm::new);
 
-public class acm implements zq<acf> {
-   public static final zh<wu, acm> a = zh.a(jh.b, acm::b, zf.a(ma.h), acm::e, zf.r, acm::f, acm::new);
-   private final jh b;
-   private final dta<?> c;
-   private final ul d;
-
-   public static acm a(dsy $$0, BiFunction<dsy, ke, ul> $$1) {
-      ke $$2 = $$0.i().J_();
-      return new acm($$0.aA_(), $$0.q(), $$1.apply($$0, $$2));
+   private acm(ws $$0) {
+      this($$0.q());
    }
 
-   public static acm a(dsy $$0) {
-      return a($$0, dsy::a);
-   }
-
-   private acm(jh $$0, dta<?> $$1, ul $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   private void a(ws $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zs<acm> a() {
-      return agu.i;
+   public aae<acm> a() {
+      return acn.a;
    }
 
-   public void a(acf $$0) {
+   public void a(acl $$0) {
       $$0.a(this);
-   }
-
-   public jh b() {
-      return this.b;
-   }
-
-   public dta<?> e() {
-      return this.c;
-   }
-
-   public ul f() {
-      return this.d;
    }
 }

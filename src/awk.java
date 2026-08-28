@@ -1,41 +1,57 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class awk {
-   public static final Codec<awk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               awm.b.fieldOf("sound").forGetter($$0x -> $$0x.b),
-               Codec.INT.fieldOf("min_delay").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("max_delay").forGetter($$0x -> $$0x.d),
-               Codec.BOOL.fieldOf("replace_current_music").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, awk::new)
-   );
-   private final jq<awm> b;
-   private final int c;
-   private final int d;
-   private final boolean e;
+public class awk extends awm<GameProfile> {
+   private final int a;
+   private final boolean b;
 
-   public awk(jq<awm> $$0, int $$1, int $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   public awk(GameProfile $$0, int $$1, boolean $$2) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   public jq<awm> a() {
+   public awk(JsonObject $$0) {
+      super(b($$0));
+      this.a = $$0.has("level") ? $$0.get("level").getAsInt() : 0;
+      this.b = $$0.has("bypassesPlayerLimit") && $$0.get("bypassesPlayerLimit").getAsBoolean();
+   }
+
+   public int a() {
+      return this.a;
+   }
+
+   public boolean b() {
       return this.b;
    }
 
-   public int b() {
-      return this.c;
+   @Override
+   protected void a(JsonObject $$0) {
+      if (this.g() != null) {
+         $$0.addProperty("uuid", this.g().getId().toString());
+         $$0.addProperty("name", this.g().getName());
+         $$0.addProperty("level", this.a);
+         $$0.addProperty("bypassesPlayerLimit", this.b);
+      }
    }
 
-   public int c() {
-      return this.d;
-   }
+   @Nullable
+   private static GameProfile b(JsonObject $$0) {
+      if ($$0.has("uuid") && $$0.has("name")) {
+         String $$1 = $$0.get("uuid").getAsString();
 
-   public boolean d() {
-      return this.e;
+         UUID $$2;
+         try {
+            $$2 = UUID.fromString($$1);
+         } catch (Throwable var4) {
+            return null;
+         }
+
+         return new GameProfile($$2, $$0.get("name").getAsString());
+      } else {
+         return null;
+      }
    }
 }

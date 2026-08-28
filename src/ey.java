@@ -16,11 +16,11 @@ public interface ey<T extends ey<T>> {
       return this.b(et.a);
    }
 
-   CommandDispatcher<T> x();
+   CommandDispatcher<T> w();
 
    void a(CommandExceptionType var1, Message var2, boolean var3, @Nullable hz var4);
 
-   boolean y();
+   boolean x();
 
    default void a(CommandSyntaxException $$0, boolean $$1, @Nullable hz $$2) {
       this.a($$0.getType(), $$0.getRawMessage(), $$1, $$2);

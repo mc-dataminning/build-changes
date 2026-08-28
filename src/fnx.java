@@ -1,58 +1,160 @@
-import java.util.Locale;
-import java.util.function.Supplier;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.UUID;
 
-public class fnx extends fns {
-   private static final int f = -6745839;
-   private static final int g = -4548257;
-   private static final int h = -10547572;
-   private final Supplier<Float> i;
+public class fnx {
+   private static final int a = 182;
+   private static final int b = 5;
+   private static final alz[] c = new alz[]{
+      alz.b("boss_bar/pink_background"),
+      alz.b("boss_bar/blue_background"),
+      alz.b("boss_bar/red_background"),
+      alz.b("boss_bar/green_background"),
+      alz.b("boss_bar/yellow_background"),
+      alz.b("boss_bar/purple_background"),
+      alz.b("boss_bar/white_background")
+   };
+   private static final alz[] d = new alz[]{
+      alz.b("boss_bar/pink_progress"),
+      alz.b("boss_bar/blue_progress"),
+      alz.b("boss_bar/red_progress"),
+      alz.b("boss_bar/green_progress"),
+      alz.b("boss_bar/yellow_progress"),
+      alz.b("boss_bar/purple_progress"),
+      alz.b("boss_bar/white_progress")
+   };
+   private static final alz[] e = new alz[]{
+      alz.b("boss_bar/notched_6_background"),
+      alz.b("boss_bar/notched_10_background"),
+      alz.b("boss_bar/notched_12_background"),
+      alz.b("boss_bar/notched_20_background")
+   };
+   private static final alz[] f = new alz[]{
+      alz.b("boss_bar/notched_6_progress"), alz.b("boss_bar/notched_10_progress"), alz.b("boss_bar/notched_12_progress"), alz.b("boss_bar/notched_20_progress")
+   };
+   private final flz g;
+   final Map<UUID, fom> h = Maps.newLinkedHashMap();
 
-   public fnx(flo $$0, bni $$1, Supplier<Float> $$2) {
-      super($$0, $$1);
-      this.i = $$2;
+   public fnx(flz $$0) {
+      this.g = $$0;
    }
 
-   @Override
-   protected void d(flq $$0, int $$1, int $$2, int $$3) {
-      float $$4 = (float)bao.c / this.i.get();
-      this.a($$0, String.format(Locale.ROOT, "%.1f TPS", $$4), $$1 + 1, $$3 - 60 + 1);
+   public void a(fnl $$0) {
+      if (!this.h.isEmpty()) {
+         bpo $$1 = bpn.a();
+         $$1.a("bossHealth");
+         int $$2 = $$0.a();
+         int $$3 = 12;
+
+         for (fom $$4 : this.h.values()) {
+            int $$5 = $$2 / 2 - 91;
+            this.a($$0, $$5, $$3, $$4);
+            xv $$7 = $$4.i();
+            int $$8 = this.g.h.a($$7);
+            int $$9 = $$2 / 2 - $$8 / 2;
+            int $$10 = $$3 - 9;
+            $$0.b(this.g.h, $$7, $$9, $$10, 16777215);
+            $$3 += 10 + 9;
+            if ($$3 >= $$0.b() / 3) {
+               break;
+            }
+         }
+
+         $$1.c();
+      }
    }
 
-   @Override
-   protected void c(flq $$0, int $$1, int $$2, int $$3) {
-      long $$4 = this.e.a($$3, bnj.b.ordinal());
-      int $$5 = this.b((double)$$4);
-      $$0.a(gjq.G(), $$2, $$1 - $$5, $$2 + 1, $$1, -6745839);
-      long $$6 = this.e.a($$3, bnj.c.ordinal());
-      int $$7 = this.b((double)$$6);
-      $$0.a(gjq.G(), $$2, $$1 - $$5 - $$7, $$2 + 1, $$1 - $$5, -4548257);
-      long $$8 = this.e.a($$3) - this.e.a($$3, bnj.d.ordinal()) - $$4 - $$6;
-      int $$9 = this.b((double)$$8);
-      $$0.a(gjq.G(), $$2, $$1 - $$9 - $$7 - $$5, $$2 + 1, $$1 - $$7 - $$5, -10547572);
+   private void a(fnl $$0, int $$1, int $$2, bsu $$3) {
+      this.a($$0, $$1, $$2, $$3, 182, c, e);
+      int $$4 = bae.b($$3.j(), 0, 182);
+      if ($$4 > 0) {
+         this.a($$0, $$1, $$2, $$3, $$4, d, f);
+      }
    }
 
-   @Override
-   protected long b(int $$0) {
-      return this.e.a($$0) - this.e.a($$0, bnj.d.ordinal());
+   private void a(fnl $$0, int $$1, int $$2, bsu $$3, int $$4, alz[] $$5, alz[] $$6) {
+      $$0.a(glo::B, $$5[$$3.k().ordinal()], 182, 5, 0, 0, $$1, $$2, $$4, 5);
+      if ($$3.l() != bsu.b.a) {
+         $$0.a(glo::B, $$6[$$3.l().ordinal() - 1], 182, 5, 0, 0, $$1, $$2, $$4, 5);
+      }
    }
 
-   @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
+   public void a(adb $$0) {
+      $$0.a(new adb.b() {
+         @Override
+         public void a(UUID $$0, xv $$1, float $$2, bsu.a $$3, bsu.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+            fnx.this.h.put($$0, new fom($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         }
+
+         @Override
+         public void a(UUID $$0) {
+            fnx.this.h.remove($$0);
+         }
+
+         @Override
+         public void a(UUID $$0, float $$1) {
+            fnx.this.h.get($$0).a($$1);
+         }
+
+         @Override
+         public void a(UUID $$0, xv $$1) {
+            fnx.this.h.get($$0).a($$1);
+         }
+
+         @Override
+         public void a(UUID $$0, bsu.a $$1, bsu.b $$2) {
+            fom $$3 = fnx.this.h.get($$0);
+            $$3.a($$1);
+            $$3.a($$2);
+         }
+
+         @Override
+         public void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
+            fom $$4 = fnx.this.h.get($$0);
+            $$4.a($$1);
+            $$4.b($$2);
+            $$4.c($$3);
+         }
+      });
    }
 
-   @Override
-   protected int b(double $$0) {
-      return (int)Math.round(c($$0) * 60.0 / (double)this.i.get().floatValue());
+   public void a() {
+      this.h.clear();
    }
 
-   @Override
-   protected int a(long $$0) {
-      float $$1 = this.i.get();
-      return this.a(c((double)$$0), (double)$$1, -16711936, (double)$$1 * 1.125, -256, (double)$$1 * 1.25, -65536);
+   public boolean b() {
+      if (!this.h.isEmpty()) {
+         for (bsu $$0 : this.h.values()) {
+            if ($$0.n()) {
+               return true;
+            }
+         }
+      }
+
+      return false;
    }
 
-   private static double c(double $$0) {
-      return $$0 / 1000000.0;
+   public boolean c() {
+      if (!this.h.isEmpty()) {
+         for (bsu $$0 : this.h.values()) {
+            if ($$0.m()) {
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   public boolean d() {
+      if (!this.h.isEmpty()) {
+         for (bsu $$0 : this.h.values()) {
+            if ($$0.o()) {
+               return true;
+            }
+         }
+      }
+
+      return false;
    }
 }

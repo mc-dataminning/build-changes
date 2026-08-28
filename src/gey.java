@@ -1,85 +1,103 @@
-import com.google.common.net.HostAndPort;
 import com.mojang.logging.LogUtils;
-import java.net.IDN;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public final class gey {
+public class gey {
    private static final Logger a = LogUtils.getLogger();
-   private final HostAndPort b;
-   private static final gey c = new gey(HostAndPort.fromParts("server.invalid", 25565));
+   private final flz b;
+   private final hgt c;
+   private final am d = new am();
+   private final Map<ah, aj> e = new Object2ObjectOpenHashMap();
+   @Nullable
+   private gey.a f;
+   @Nullable
+   private ah g;
 
-   public gey(String $$0, int $$1) {
-      this(HostAndPort.fromParts($$0, $$1));
-   }
-
-   private gey(HostAndPort $$0) {
+   public gey(flz $$0, hgt $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
-   public String a() {
-      try {
-         return IDN.toASCII(this.b.getHost());
-      } catch (IllegalArgumentException var2) {
-         return "";
+   public void a(ahd $$0) {
+      if ($$0.g()) {
+         this.d.a();
+         this.e.clear();
       }
-   }
 
-   public int b() {
-      return this.b.getPort();
-   }
+      this.d.a($$0.e());
+      this.d.a($$0.b());
 
-   public static gey a(String $$0) {
-      if ($$0 == null) {
-         return c;
-      } else {
-         try {
-            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
-            return $$1.getHost().isEmpty() ? c : new gey($$1);
-         } catch (IllegalArgumentException var2) {
-            a.info("Failed to parse URL {}", $$0, var2);
-            return c;
+      for (Entry<alz, aj> $$1 : $$0.f().entrySet()) {
+         ai $$2 = this.d.a($$1.getKey());
+         if ($$2 != null) {
+            aj $$3 = $$1.getValue();
+            $$3.a($$2.a().f());
+            this.e.put($$2.b(), $$3);
+            if (this.f != null) {
+               this.f.a($$2, $$3);
+            }
+
+            if (!$$0.g() && $$3.a()) {
+               if (this.b.s != null) {
+                  this.c.a(this.b.s, $$2.b());
+               }
+
+               Optional<at> $$4 = $$2.a().c();
+               if ($$4.isPresent() && $$4.get().h()) {
+                  this.b.aA().a(new fqg($$2.b()));
+               }
+            }
+         } else {
+            a.warn("Server informed client about progress for unknown advancement {}", $$1.getKey());
          }
       }
    }
 
-   public static boolean b(String $$0) {
-      try {
-         HostAndPort $$1 = HostAndPort.fromString($$0);
-         String $$2 = $$1.getHost();
-         if (!$$2.isEmpty()) {
-            IDN.toASCII($$2);
-            return true;
+   public am a() {
+      return this.d;
+   }
+
+   public void a(@Nullable ah $$0, boolean $$1) {
+      gfe $$2 = this.b.L();
+      if ($$2 != null && $$0 != null && $$1) {
+         $$2.b(aix.a($$0));
+      }
+
+      if (this.g != $$0) {
+         this.g = $$0;
+         if (this.f != null) {
+            this.f.a($$0);
          }
-      } catch (IllegalArgumentException var3) {
-      }
-
-      return false;
-   }
-
-   static int c(String $$0) {
-      try {
-         return Integer.parseInt($$0.trim());
-      } catch (Exception var2) {
-         return 25565;
       }
    }
 
-   @Override
-   public String toString() {
-      return this.b.toString();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 instanceof gey ? this.b.equals(((gey)$$0).b) : false;
+   public void a(@Nullable gey.a $$0) {
+      this.f = $$0;
+      this.d.a($$0);
+      if ($$0 != null) {
+         this.e.forEach(($$1, $$2) -> {
+            ai $$3 = this.d.a($$1);
+            if ($$3 != null) {
+               $$0.a($$3, $$2);
+            }
+         });
+         $$0.a(this.g);
       }
    }
 
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
+   @Nullable
+   public ah a(alz $$0) {
+      ai $$1 = this.d.a($$0);
+      return $$1 != null ? $$1.b() : null;
+   }
+
+   public interface a extends am.a {
+      void a(ai var1, aj var2);
+
+      void a(@Nullable ah var1);
    }
 }

@@ -1,44 +1,43 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class doz extends dkt {
-   protected static final float f = 6.0F;
-   protected static final float g = 10.0F;
-   protected static final fas h = diq.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
-   protected static final fas i = diq.a(6.0, 6.0, 0.0, 10.0, 10.0, 16.0);
-   protected static final fas j = diq.a(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
+public class doz extends dke {
+   public static final MapCodec<doz> a = b(doz::new);
+   private static final int b = 20;
 
-   protected doz(dvu.d $$0) {
+   @Override
+   public MapCodec<doz> a() {
+      return a;
+   }
+
+   public doz(dxm.d $$0) {
       super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends doz> a();
-
-   @Override
-   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
-      switch ($$0.c(a).o()) {
-         case a:
-         default:
-            return j;
-         case c:
-            return i;
-         case b:
-            return h;
+   public void a(dha $$0, jh $$1, dxn $$2, bvf $$3) {
+      if (!$$3.ce() && $$3 instanceof bwb) {
+         $$3.a($$0.aj().f(), 1.0F);
       }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected dvv a(dvv $$0, dpd $$1) {
-      return $$0.b(a, $$1.a($$0.c(a)));
+   protected void a(dxn $$0, ash $$1, jh $$2, bam $$3) {
+      dkl.b($$1, $$2.d(), $$0);
    }
 
    @Override
-   protected dvv a(dvv $$0, dnm $$1) {
-      return $$0.b(a, $$1.b($$0.c(a)));
+   protected dxn a(dxn $$0, dhd $$1, dhp $$2, jh $$3, jm $$4, jh $$5, dxn $$6, bam $$7) {
+      if ($$4 == jm.b && $$6.a(dkg.J)) {
+         $$2.a($$3, this, 20);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected boolean a(dvv $$0, esk $$1) {
-      return false;
+   protected void b(dxn $$0, dha $$1, jh $$2, dxn $$3, boolean $$4) {
+      $$1.a($$2, this, 20);
    }
 }

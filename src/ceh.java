@@ -1,235 +1,103 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-import java.util.function.DoublePredicate;
+import java.util.EnumSet;
 import java.util.function.Predicate;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class ceh {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 2;
-   private final Map<UUID, ceh.a> c = Maps.newHashMap();
+public class ceh extends ccz {
+   private static final cgs c = cgs.b().d();
+   private final cgs d;
+   protected final bwj a;
+   private final double e;
+   private double f;
+   private double g;
+   private double h;
+   private double i;
+   private double j;
+   @Nullable
+   protected cps b;
+   private int k;
+   private boolean l;
+   private final Predicate<cxk> m;
+   private final boolean n;
 
-   @bat
-   public Map<UUID, Object2IntMap<cei>> a() {
-      Map<UUID, Object2IntMap<cei>> $$0 = Maps.newHashMap();
-      this.c.keySet().forEach($$1 -> {
-         ceh.a $$2 = this.c.get($$1);
-         $$0.put($$1, $$2.a);
-      });
-      return $$0;
+   public ceh(bwj $$0, double $$1, Predicate<cxk> $$2, boolean $$3) {
+      this.a = $$0;
+      this.e = $$1;
+      this.m = $$2;
+      this.n = $$3;
+      this.a(EnumSet.of(ccz.a.a, ccz.a.b));
+      this.d = c.c().a(($$0x, $$1x) -> this.a($$0x));
    }
 
-   public void b() {
-      Iterator<ceh.a> $$0 = this.c.values().iterator();
-
-      while ($$0.hasNext()) {
-         ceh.a $$1 = $$0.next();
-         $$1.a();
-         if ($$1.b()) {
-            $$0.remove();
-         }
-      }
-   }
-
-   private Stream<ceh.b> c() {
-      return this.c.entrySet().stream().flatMap($$0 -> $$0.getValue().a($$0.getKey()));
-   }
-
-   private Collection<ceh.b> a(azu $$0, int $$1) {
-      List<ceh.b> $$2 = this.c().toList();
-      if ($$2.isEmpty()) {
-         return Collections.emptyList();
+   @Override
+   public boolean b() {
+      if (this.k > 0) {
+         this.k--;
+         return false;
       } else {
-         int[] $$3 = new int[$$2.size()];
-         int $$4 = 0;
-
-         for (int $$5 = 0; $$5 < $$2.size(); $$5++) {
-            ceh.b $$6 = $$2.get($$5);
-            $$4 += Math.abs($$6.a());
-            $$3[$$5] = $$4 - 1;
-         }
-
-         Set<ceh.b> $$7 = Sets.newIdentityHashSet();
-
-         for (int $$8 = 0; $$8 < $$1; $$8++) {
-            int $$9 = $$0.a($$4);
-            int $$10 = Arrays.binarySearch($$3, $$9);
-            $$7.add($$2.get($$10 < 0 ? -$$10 - 1 : $$10));
-         }
-
-         return $$7;
+         this.b = a(this.a).a(this.d.a(this.a.h(bxj.E)), this.a);
+         return this.b != null;
       }
    }
 
-   private ceh.a a(UUID $$0) {
-      return this.c.computeIfAbsent($$0, $$0x -> new ceh.a());
+   private boolean a(bwb $$0) {
+      return this.m.test($$0.eX()) || this.m.test($$0.eY());
    }
 
-   public void a(ceh $$0, azu $$1, int $$2) {
-      Collection<ceh.b> $$3 = $$0.a($$1, $$2);
-      $$3.forEach($$0x -> {
-         int $$1x = $$0x.e - $$0x.d.m;
-         if ($$1x >= 2) {
-            this.a($$0x.c).a.mergeInt($$0x.d, $$1x, ceh::a);
-         }
-      });
-   }
-
-   public int a(UUID $$0, Predicate<cei> $$1) {
-      ceh.a $$2 = this.c.get($$0);
-      return $$2 != null ? $$2.a($$1) : 0;
-   }
-
-   public long a(cei $$0, DoublePredicate $$1) {
-      return this.c.values().stream().filter($$2 -> $$1.test((double)($$2.a.getOrDefault($$0, 0) * $$0.j))).count();
-   }
-
-   public void a(UUID $$0, cei $$1, int $$2) {
-      ceh.a $$3 = this.a($$0);
-      $$3.a.mergeInt($$1, $$2, ($$1x, $$2x) -> this.a($$1, $$1x, $$2x));
-      $$3.a($$1);
-      if ($$3.b()) {
-         this.c.remove($$0);
-      }
-   }
-
-   public void b(UUID $$0, cei $$1, int $$2) {
-      this.a($$0, $$1, -$$2);
-   }
-
-   public void a(UUID $$0, cei $$1) {
-      ceh.a $$2 = this.c.get($$0);
-      if ($$2 != null) {
-         $$2.b($$1);
-         if ($$2.b()) {
-            this.c.remove($$0);
-         }
-      }
-   }
-
-   public void a(cei $$0) {
-      Iterator<ceh.a> $$1 = this.c.values().iterator();
-
-      while ($$1.hasNext()) {
-         ceh.a $$2 = $$1.next();
-         $$2.b($$0);
-         if ($$2.b()) {
-            $$1.remove();
-         }
-      }
-   }
-
-   public <T> T a(DynamicOps<T> $$0) {
-      return (T)ceh.b.b.encodeStart($$0, this.c().toList()).resultOrPartial($$0x -> b.warn("Failed to serialize gossips: {}", $$0x)).orElseGet($$0::emptyList);
-   }
-
-   public void a(Dynamic<?> $$0) {
-      ceh.b.b
-         .decode($$0)
-         .resultOrPartial($$0x -> b.warn("Failed to deserialize gossips: {}", $$0x))
-         .stream()
-         .flatMap($$0x -> ((List)$$0x.getFirst()).stream())
-         .forEach($$0x -> this.a($$0x.c).a.put($$0x.d, $$0x.e));
-   }
-
-   private static int a(int $$0, int $$1) {
-      return Math.max($$0, $$1);
-   }
-
-   private int a(cei $$0, int $$1, int $$2) {
-      int $$3 = $$1 + $$2;
-      return $$3 > $$0.k ? Math.max($$0.k, $$1) : $$3;
-   }
-
-   static class a {
-      final Object2IntMap<cei> a = new Object2IntOpenHashMap();
-
-      public int a(Predicate<cei> $$0) {
-         return this.a
-            .object2IntEntrySet()
-            .stream()
-            .filter($$1 -> $$0.test((cei)$$1.getKey()))
-            .mapToInt($$0x -> $$0x.getIntValue() * ((cei)$$0x.getKey()).j)
-            .sum();
-      }
-
-      public Stream<ceh.b> a(UUID $$0) {
-         return this.a.object2IntEntrySet().stream().map($$1 -> new ceh.b($$0, (cei)$$1.getKey(), $$1.getIntValue()));
-      }
-
-      public void a() {
-         ObjectIterator<Entry<cei>> $$0 = this.a.object2IntEntrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<cei> $$1 = (Entry<cei>)$$0.next();
-            int $$2 = $$1.getIntValue() - ((cei)$$1.getKey()).l;
-            if ($$2 < 2) {
-               $$0.remove();
-            } else {
-               $$1.setValue($$2);
+   @Override
+   public boolean c() {
+      if (this.h()) {
+         if (this.a.g(this.b) < 36.0) {
+            if (this.b.i(this.f, this.g, this.h) > 0.010000000000000002) {
+               return false;
             }
-         }
-      }
 
-      public boolean b() {
-         return this.a.isEmpty();
-      }
-
-      public void a(cei $$0) {
-         int $$1 = this.a.getInt($$0);
-         if ($$1 > $$0.k) {
-            this.a.put($$0, $$0.k);
+            if (Math.abs((double)this.b.dN() - this.i) > 5.0 || Math.abs((double)this.b.dL() - this.j) > 5.0) {
+               return false;
+            }
+         } else {
+            this.f = this.b.dA();
+            this.g = this.b.dC();
+            this.h = this.b.dG();
          }
 
-         if ($$1 < 2) {
-            this.b($$0);
-         }
+         this.i = (double)this.b.dN();
+         this.j = (double)this.b.dL();
       }
 
-      public void b(cei $$0) {
-         this.a.removeInt($$0);
+      return this.b();
+   }
+
+   protected boolean h() {
+      return this.n;
+   }
+
+   @Override
+   public void d() {
+      this.f = this.b.dA();
+      this.g = this.b.dC();
+      this.h = this.b.dG();
+      this.l = true;
+   }
+
+   @Override
+   public void e() {
+      this.b = null;
+      this.a.L().o();
+      this.k = b(100);
+      this.l = false;
+   }
+
+   @Override
+   public void a() {
+      this.a.H().a(this.b, (float)(this.a.aa() + 20), (float)this.a.Z());
+      if (this.a.g(this.b) < 6.25) {
+         this.a.L().o();
+      } else {
+         this.a.L().a(this.b, this.e);
       }
    }
 
-   static record b(UUID c, cei d, int e) {
-      public static final Codec<ceh.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(kk.a.fieldOf("Target").forGetter(ceh.b::b), cei.n.fieldOf("Type").forGetter(ceh.b::c), ayv.m.fieldOf("Value").forGetter(ceh.b::d))
-               .apply($$0, ceh.b::new)
-      );
-      public static final Codec<List<ceh.b>> b = a.listOf();
-
-      public int a() {
-         return this.e * this.d.j;
-      }
-
-      public UUID b() {
-         return this.c;
-      }
-
-      public cei c() {
-         return this.d;
-      }
-
-      public int d() {
-         return this.e;
-      }
+   public boolean i() {
+      return this.l;
    }
 }

@@ -1,66 +1,297 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Streams;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.Map.Entry;
-import java.util.function.Predicate;
+import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
 public class gli {
-   private final gle a;
-   private final gkz b;
+   public static final alz a = alz.b("main");
+   private final List<glk> b;
+   private final Map<alz, glj.d> c;
+   private final Set<alz> d;
 
-   public gli(gle $$0, gkz $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   private gli(List<glk> $$0, Map<alz, glj.d> $$1, Set<alz> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public gkz a() {
-      return this.b;
-   }
+   public static gli a(glj $$0, hbf $$1, glv $$2, Set<alz> $$3) throws glv.b {
+      Stream<alz> $$4 = $$0.b().stream().flatMap($$0x -> $$0x.b().stream()).flatMap($$0x -> $$0x.b().stream());
+      Set<alz> $$5 = $$4.filter($$1x -> !$$0.a().containsKey($$1x)).collect(Collectors.toSet());
+      Set<alz> $$6 = Sets.difference($$5, $$3);
+      if (!$$6.isEmpty()) {
+         throw new glv.b("Referenced external targets are not available in this context: " + $$6);
+      } else {
+         Builder<glk> $$7 = ImmutableList.builder();
 
-   public Predicate<dvv> a(dvw<diq, dvv> $$0) {
-      return this.a.getPredicate($$0);
-   }
+         for (glj.e $$8 : $$0.b()) {
+            $$7.add(a($$1, $$2, $$8));
+         }
 
-   public static class a implements JsonDeserializer<gli> {
-      public gli a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         return new gli(this.b($$3), (gkz)$$2.deserialize($$3.get("apply"), gkz.class));
+         return new gli($$7.build(), $$0.a(), $$5);
       }
+   }
 
-      private gle b(JsonObject $$0) {
-         return $$0.has("when") ? a(azc.u($$0, "when")) : gle.b;
-      }
+   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
+   private static glk a(hbf $$0, glv $$1, glj.e $$2) throws glv.b {
+      alz $$3 = $$2.a();
+      gkn $$4 = $$1.b(new glw($$3, fgj.e, glu.a));
 
-      @VisibleForTesting
-      static gle a(JsonObject $$0) {
-         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
-         if ($$1.isEmpty()) {
-            throw new JsonParseException("No elements found in selector");
-         } else if ($$1.size() == 1) {
-            if ($$0.has("OR")) {
-               List<gle> $$2 = Streams.stream(azc.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new glh($$2);
-            } else if ($$0.has("AND")) {
-               List<gle> $$3 = Streams.stream(azc.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new gld($$3);
-            } else {
-               return a($$1.iterator().next());
-            }
-         } else {
-            return new gld($$1.stream().map(gli.a::a).collect(Collectors.toList()));
+      for (glj.h $$5 : $$2.d()) {
+         String $$6 = $$5.a();
+         if ($$4.a($$6) == null) {
+            throw new glv.b("Uniform '" + $$6 + "' does not exist for " + $$3);
          }
       }
 
-      private static gle a(Entry<String, JsonElement> $$0) {
-         return new glf($$0.getKey(), $$0.getValue().getAsString());
+      String $$7 = $$3.toString();
+      glk $$8 = new glk($$7, $$4, $$2.c(), $$2.d());
+
+      for (glj.c $$9 : $$2.b()) {
+         Objects.requireNonNull($$9);
+         Throwable var45;
+         switch ($$9) {
+            case glj.g var11:
+               glj.g var53 = var11;
+
+               try {
+                  var54 = var53.a();
+               } catch (Throwable var31) {
+                  var45 = var31;
+                  boolean var66 = false;
+                  break;
+               }
+
+               String var36 = var54;
+               glj.g var55 = var11;
+
+               try {
+                  var56 = var55.c();
+               } catch (Throwable var30) {
+                  var45 = var30;
+                  boolean var67 = false;
+                  break;
+               }
+
+               alz var37 = var56;
+               glj.g var57 = var11;
+
+               try {
+                  var58 = var57.d();
+               } catch (Throwable var29) {
+                  var45 = var29;
+                  boolean var68 = false;
+                  break;
+               }
+
+               int var38 = var58;
+               glj.g var59 = var11;
+
+               try {
+                  var60 = var59.e();
+               } catch (Throwable var28) {
+                  var45 = var28;
+                  boolean var69 = false;
+                  break;
+               }
+
+               int var39 = var60;
+               glj.g var61 = var11;
+
+               try {
+                  var62 = var61.f();
+               } catch (Throwable var27) {
+                  var45 = var27;
+                  boolean var70 = false;
+                  break;
+               }
+
+               boolean var40 = var62;
+               hap $$15x = $$0.a(var37.a((UnaryOperator<String>)($$0x -> "textures/effect/" + $$0x + ".png")));
+               $$15x.a(var40, false);
+               $$8.a(new glk.c(var36, $$15x, var38, var39));
+               continue;
+            case glj.f $$15:
+               glj.f var10000 = $$15;
+
+               try {
+                  var46 = var10000.a();
+               } catch (Throwable var26) {
+                  var45 = var26;
+                  boolean var10001 = false;
+                  break;
+               }
+
+               String var22 = var46;
+               glj.f var47 = $$15;
+
+               try {
+                  var48 = var47.c();
+               } catch (Throwable var25) {
+                  var45 = var25;
+                  boolean var63 = false;
+                  break;
+               }
+
+               alz var42 = var48;
+               glj.f var49 = $$15;
+
+               try {
+                  var50 = var49.d();
+               } catch (Throwable var24) {
+                  var45 = var24;
+                  boolean var64 = false;
+                  break;
+               }
+
+               boolean var43 = var50;
+               glj.f var51 = $$15;
+
+               try {
+                  var52 = var51.e();
+               } catch (Throwable var23) {
+                  var45 = var23;
+                  boolean var65 = false;
+                  break;
+               }
+
+               boolean var44 = var52;
+               $$8.a(new glk.b(var22, var42, var43, var44));
+               continue;
+            default:
+               throw new MatchException(null, null);
+         }
+
+         Throwable var35 = var45;
+         throw new MatchException(var35.toString(), var35);
+      }
+
+      return $$8;
+   }
+
+   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
+   public void a(fep $$0, int $$1, int $$2, gli.a $$3) {
+      Matrix4f $$4 = new Matrix4f().setOrtho(0.0F, (float)$$1, 0.0F, (float)$$2, 0.1F, 1000.0F);
+      Map<alz, ffx<fev>> $$5 = new HashMap<>(this.c.size() + this.d.size());
+
+      for (alz $$6 : this.d) {
+         $$5.put($$6, $$3.b($$6));
+      }
+
+      for (Entry<alz, glj.d> $$7 : this.c.entrySet()) {
+         alz $$8 = $$7.getKey();
+         glj.d var35;
+         Objects.requireNonNull(var35);
+         Object var11 = var35;
+
+         var35 = $$7.getValue();
+         ffv $$11 = switch (var11) {
+            case glj.a var13 -> {
+               glj.a var29 = var13;
+
+               int var26;
+               label56: {
+                  label76: {
+                     try {
+                        var31 = var29.a();
+                     } catch (Throwable var18) {
+                        var30 = var18;
+                        boolean var10001 = false;
+                        break label76;
+                     }
+
+                     var26 = var31;
+                     glj.a var32 = var13;
+
+                     try {
+                        var33 = var32.b();
+                        break label56;
+                     } catch (Throwable var17) {
+                        var30 = var17;
+                        boolean var34 = false;
+                     }
+                  }
+
+                  Throwable var20 = var30;
+                  throw new MatchException(var20.toString(), var20);
+               }
+
+               int var27 = var33;
+               yield new ffv(var26, var27, true);
+            }
+            case glj.b var16 -> new ffv($$1, $$2, true);
+            default -> throw new MatchException(null, null);
+         };
+         $$5.put($$8, $$0.a($$8.toString(), $$11));
+      }
+
+      for (glk $$12 : this.b) {
+         $$12.a($$0, $$5, $$4);
+      }
+
+      for (alz $$13 : this.d) {
+         $$3.a($$13, $$5.get($$13));
+      }
+   }
+
+   @Deprecated
+   public void a(fev $$0, ffu $$1) {
+      fep $$2 = new fep();
+      gli.a $$3 = gli.a.b(a, $$2.a("main", $$0));
+      this.a($$2, $$0.c, $$0.d, $$3);
+      $$2.a($$1);
+   }
+
+   public void a(String $$0, float $$1) {
+      for (glk $$2 : this.b) {
+         $$2.a().b($$0).a($$1);
+      }
+   }
+
+   public interface a {
+      static gli.a b(final alz $$0, final ffx<fev> $$1) {
+         return new gli.a() {
+            private ffx<fev> c = $$1;
+
+            @Override
+            public void a(alz $$0x, ffx<fev> $$1x) {
+               if ($$0.equals($$0)) {
+                  this.c = $$1;
+               } else {
+                  throw new IllegalArgumentException("No target with id " + $$0);
+               }
+            }
+
+            @Nullable
+            @Override
+            public ffx<fev> a(alz $$0x) {
+               return $$0.equals($$0) ? this.c : null;
+            }
+         };
+      }
+
+      void a(alz var1, ffx<fev> var2);
+
+      @Nullable
+      ffx<fev> a(alz var1);
+
+      default ffx<fev> b(alz $$0) {
+         ffx<fev> $$1 = this.a($$0);
+         if ($$1 == null) {
+            throw new IllegalArgumentException("Missing target with id " + $$0);
+         } else {
+            return $$1;
+         }
       }
    }
 }

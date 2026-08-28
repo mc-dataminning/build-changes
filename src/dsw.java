@@ -1,144 +1,49 @@
+import com.mojang.serialization.MapCodec;
 import java.util.List;
-import org.apache.commons.lang3.mutable.MutableInt;
+import javax.annotation.Nullable;
 
-public class dsw extends dsy {
-   private static final int d = 50;
-   private static final int e = 60;
-   private static final int f = 60;
-   private static final int g = 40;
-   private static final int h = 5;
-   private static final int i = 48;
-   private static final int j = 32;
-   private static final int k = 48;
-   private long l;
-   public int a;
-   public boolean b;
-   public jm c;
-   private List<bvh> m;
-   private boolean n;
-   private int r;
+public class dsw extends djq {
+   public static final MapCodec<dsw> a = b(dsw::new);
+   public static final dyk<dwt> b = dyd.bz;
+   public static final dye c = dyd.bC;
 
-   public dsw(jh $$0, dvv $$1) {
-      super(dta.E, $$0, $$1);
+   @Override
+   public MapCodec<dsw> a() {
+      return a;
+   }
+
+   public dsw(dxm.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b, dwt.a).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.b();
-         this.r = 0;
-         this.c = jm.a($$1);
-         this.a = 0;
-         this.b = true;
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
+   protected void a(dxo.a<dke, dxn> $$0) {
+      $$0.a(b, c);
    }
 
-   private static void a(dfm $$0, jh $$1, dvv $$2, dsw $$3, dsw.a $$4) {
-      if ($$3.b) {
-         $$3.a++;
-      }
-
-      if ($$3.a >= 50) {
-         $$3.b = false;
-         $$3.a = 0;
-      }
-
-      if ($$3.a >= 5 && $$3.r == 0 && a($$1, $$3.m)) {
-         $$3.n = true;
-         $$0.a(null, $$1, awn.ca, awo.e, 1.0F, 1.0F);
-      }
-
-      if ($$3.n) {
-         if ($$3.r < 40) {
-            $$3.r++;
-         } else {
-            $$4.run($$0, $$1, $$3.m);
-            $$3.n = false;
-         }
-      }
+   @Override
+   protected dqn a_(dxn $$0) {
+      return dqn.c;
    }
 
-   public static void a(dfm $$0, jh $$1, dvv $$2, dsw $$3) {
-      a($$0, $$1, $$2, $$3, dsw::b);
+   @Nullable
+   @Override
+   public dup a(jh $$0, dxn $$1) {
+      return new dwm($$0, $$1);
    }
 
-   public static void b(dfm $$0, jh $$1, dvv $$2, dsw $$3) {
-      a($$0, $$1, $$2, $$3, dsw::a);
+   @Nullable
+   @Override
+   public <T extends dup> duq<T> a(dha $$0, dxn $$1, dur<T> $$2) {
+      return $$0 instanceof ash $$3
+         ? a($$2, dur.R, ($$1x, $$2x, $$3x, $$4) -> $$4.c().a($$3, $$2x, $$3x.d(dyd.bC).orElse(false)))
+         : a($$2, dur.R, ($$0x, $$1x, $$2x, $$3x) -> $$3x.c().a($$0x, $$1x, $$2x.d(dyd.bC).orElse(false)));
    }
 
-   public void a(jm $$0) {
-      jh $$1 = this.aA_();
-      this.c = $$0;
-      if (this.b) {
-         this.a = 0;
-      } else {
-         this.b = true;
-      }
-
-      this.o.a($$1, this.m().b(), 1, $$0.d());
-   }
-
-   private void b() {
-      jh $$0 = this.aA_();
-      if (this.o.ab() > this.l + 60L || this.m == null) {
-         this.l = this.o.ab();
-         ezt $$1 = new ezt($$0).g(48.0);
-         this.m = this.o.a(bvh.class, $$1);
-      }
-
-      if (!this.o.C) {
-         for (bvh $$2 : this.m) {
-            if ($$2.bL() && !$$2.dQ() && $$0.a($$2.dt(), 32.0)) {
-               $$2.eb().a(cel.D, this.o.ab());
-            }
-         }
-      }
-   }
-
-   private static boolean a(jh $$0, List<bvh> $$1) {
-      for (bvh $$2 : $$1) {
-         if ($$2.bL() && !$$2.dQ() && $$0.a($$2.dt(), 32.0) && $$2.aq().a(axg.c)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private static void a(dfm $$0, jh $$1, List<bvh> $$2) {
-      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach(dsw::a);
-   }
-
-   private static void b(dfm $$0, jh $$1, List<bvh> $$2) {
-      MutableInt $$3 = new MutableInt(16700985);
-      int $$4 = (int)$$2.stream().filter($$1x -> $$1.a($$1x.dt(), 48.0)).count();
-      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach($$4x -> {
-         float $$5 = 1.0F;
-         double $$6 = Math.sqrt(($$4x.dA() - (double)$$1.u()) * ($$4x.dA() - (double)$$1.u()) + ($$4x.dG() - (double)$$1.w()) * ($$4x.dG() - (double)$$1.w()));
-         double $$7 = (double)((float)$$1.u() + 0.5F) + 1.0 / $$6 * ($$4x.dA() - (double)$$1.u());
-         double $$8 = (double)((float)$$1.w() + 0.5F) + 1.0 / $$6 * ($$4x.dG() - (double)$$1.w());
-         int $$9 = azm.a(($$4 - 21) / -2, 3, 15);
-
-         for (int $$10 = 0; $$10 < $$9; $$10++) {
-            int $$11 = $$3.addAndGet(5);
-            $$0.a(ll.a(ls.u, $$11), $$7, (double)((float)$$1.v() + 0.5F), $$8, 0.0, 0.0, 0.0);
-         }
-      });
-   }
-
-   private static boolean a(jh $$0, bvh $$1) {
-      return $$1.bL() && !$$1.dQ() && $$0.a($$1.dt(), 48.0) && $$1.aq().a(axg.c);
-   }
-
-   private static void a(bvh $$0) {
-      $$0.a(new btq(bts.x, 60));
-   }
-
-   @FunctionalInterface
-   interface a {
-      void run(dfm var1, jh var2, List<bvh> var3);
+   @Override
+   public void a(cxk $$0, cxg.b $$1, List<xv> $$2, czc $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      dhv.a($$0, $$2, "spawn_data");
    }
 }

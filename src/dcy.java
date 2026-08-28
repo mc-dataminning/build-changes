@@ -1,20 +1,31 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public record dcy(dck d) implements dcu {
-   public static final MapCodec<dcy> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dck.b.fieldOf("duration").forGetter($$0x -> $$0x.d)).apply($$0, dcy::new));
-
-   @Override
-   public void a(arp $$0, int $$1, dcc $$2, bul $$3, ezy $$4) {
-      $$3.d(this.d.a($$1));
+public class dcy extends dcq {
+   public dcy(String $$0, dbv $$1, cxk $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public MapCodec<dcy> a() {
-      return a;
+   public dcj<dcy> b() {
+      return dcj.f;
    }
 
-   public dck b() {
-      return this.d;
+   @Override
+   public dci<dcy> a() {
+      return dci.s;
+   }
+
+   @Override
+   public List<ddc> g() {
+      return List.of(new ddl(this.c(), new ddi.d(cxo.xh)));
+   }
+
+   public ddi c() {
+      return new ddi.e(this.l());
+   }
+
+   @Override
+   public dbi h() {
+      return dbi.k;
    }
 }

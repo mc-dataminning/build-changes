@@ -1,60 +1,84 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import java.nio.charset.StandardCharsets;
-import java.util.Optional;
-import java.util.UUID;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Locale;
+import java.util.function.Consumer;
+import net.minecraft.server.MinecraftServer;
+import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
 
 public class aoz {
+   private static final Logger a = LogUtils.getLogger();
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xv.c("commands.perf.notRunning"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xv.c("commands.perf.alreadyRunning"));
+
    public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("serverpack").requires($$0x -> $$0x.c(2)))
-               .then(
-                  ex.a("push")
-                     .then(
-                        ((RequiredArgumentBuilder)ex.a("url", StringArgumentType.string())
-                              .then(
-                                 ((RequiredArgumentBuilder)ex.a("uuid", gm.a())
-                                       .then(
-                                          ex.a("hash", StringArgumentType.word())
-                                             .executes(
-                                                $$0x -> a(
-                                                      (ew)$$0x.getSource(),
-                                                      StringArgumentType.getString($$0x, "url"),
-                                                      Optional.of(gm.a($$0x, "uuid")),
-                                                      Optional.of(StringArgumentType.getString($$0x, "hash"))
-                                                   )
-                                             )
-                                       ))
-                                    .executes(
-                                       $$0x -> a(
-                                             (ew)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.of(gm.a($$0x, "uuid")), Optional.empty()
-                                          )
-                                    )
-                              ))
-                           .executes($$0x -> a((ew)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.empty(), Optional.empty()))
-                     )
-               ))
-            .then(ex.a("pop").then(ex.a("uuid", gm.a()).executes($$0x -> a((ew)$$0x.getSource(), gm.a($$0x, "uuid")))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("perf").requires($$0x -> $$0x.c(4)))
+               .then(ex.a("start").executes($$0x -> a((ew)$$0x.getSource()))))
+            .then(ex.a("stop").executes($$0x -> b((ew)$$0x.getSource())))
       );
    }
 
-   private static void a(ew $$0, zq<?> $$1) {
-      $$0.l().ah().e().forEach($$1x -> $$1x.a($$1));
+   private static int a(ew $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if ($$1.aT()) {
+         throw c.create();
+      } else {
+         Consumer<bpm> $$2 = $$1x -> a($$0, $$1x);
+         Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
+         $$1.a($$2, $$3);
+         $$0.a(() -> xv.c("commands.perf.started"), false);
+         return 0;
+      }
    }
 
-   private static int a(ew $$0, String $$1, Optional<UUID> $$2, Optional<String> $$3) {
-      UUID $$4 = $$2.orElseGet(() -> UUID.nameUUIDFromBytes($$1.getBytes(StandardCharsets.UTF_8)));
-      String $$5 = $$3.orElse("");
-      aad $$6 = new aad($$4, $$1, $$5, false, null);
-      a($$0, $$6);
-      return 0;
+   private static int b(ew $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if (!$$1.aT()) {
+         throw b.create();
+      } else {
+         $$1.aV();
+         return 0;
+      }
    }
 
-   private static int a(ew $$0, UUID $$1) {
-      aac $$2 = new aac(Optional.of($$1));
-      a($$0, $$2);
-      return 0;
+   private static void a(ew $$0, Path $$1, MinecraftServer $$2) {
+      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ae.f(), $$2.aZ().e(), ab.b().b());
+
+      String $$4;
+      try {
+         $$4 = v.a(bri.a, $$3, ".zip");
+      } catch (IOException var11) {
+         $$0.b(xv.c("commands.perf.reportFailed"));
+         a.error("Failed to create report name", var11);
+         return;
+      }
+
+      try (azp $$7 = new azp(bri.a.resolve($$4))) {
+         $$7.a(Paths.get("system.txt"), $$2.b(new ac()).a());
+         $$7.a($$1);
+      }
+
+      try {
+         FileUtils.forceDelete($$1.toFile());
+      } catch (IOException var9) {
+         a.warn("Failed to delete temporary profiling file {}", $$1, var9);
+      }
+
+      $$0.a(() -> xv.a("commands.perf.reportSaved", $$4), false);
+   }
+
+   private static void a(ew $$0, bpm $$1) {
+      if ($$1 != bpi.a) {
+         int $$2 = $$1.f();
+         double $$3 = (double)$$1.g() / (double)bbg.a;
+         $$0.a(() -> xv.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);
+      }
    }
 }

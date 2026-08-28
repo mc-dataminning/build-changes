@@ -1,54 +1,45 @@
 import java.util.List;
-import java.util.Locale;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public interface hdk<T> {
-   static <T> hdk<T> a() {
-      return new hdk<T>() {
-         @Override
-         public List<T> a(String $$0) {
-            return List.of();
-         }
+public abstract class hdk implements hdg {
+   protected final hdg a;
 
-         @Override
-         public List<T> b(String $$0) {
-            return List.of();
-         }
-      };
+   public hdk(hdg $$0) {
+      this.a = $$0;
    }
 
-   static <T> hdk<T> a(List<T> $$0, Function<T, Stream<alj>> $$1) {
-      if ($$0.isEmpty()) {
-         return a();
-      } else {
-         final hdm<T> $$2 = new hdm<>();
-         final hdm<T> $$3 = new hdm<>();
-
-         for (T $$4 : $$0) {
-            $$1.apply($$4).forEach($$3x -> {
-               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
-               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
-            });
-         }
-
-         $$2.a();
-         $$3.a();
-         return new hdk<T>() {
-            @Override
-            public List<T> a(String $$0) {
-               return $$2.a($$0);
-            }
-
-            @Override
-            public List<T> b(String $$0) {
-               return $$3.a($$0);
-            }
-         };
-      }
+   @Override
+   public List<gml> a(@Nullable dxn $$0, @Nullable jm $$1, bam $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   List<T> a(String var1);
+   @Override
+   public boolean a() {
+      return this.a.a();
+   }
 
-   List<T> b(String var1);
+   @Override
+   public boolean b() {
+      return this.a.b();
+   }
+
+   @Override
+   public boolean c() {
+      return this.a.c();
+   }
+
+   @Override
+   public boolean d() {
+      return this.a.d();
+   }
+
+   @Override
+   public hbe e() {
+      return this.a.e();
+   }
+
+   @Override
+   public gmw f() {
+      return this.a.f();
+   }
 }

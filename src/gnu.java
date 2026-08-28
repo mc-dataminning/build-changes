@@ -1,74 +1,30 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.DoubleSupplier;
+public class gnu implements gnp<duv> {
+   private static final float a = 0.375F;
+   private final gsh b;
 
-public class gnu implements gng.a {
-   private final fke a;
-   private double b = Double.MIN_VALUE;
-   private List<bul> c = Collections.emptyList();
-
-   public gnu(fke $$0) {
-      this.a = $$0;
+   public gnu(gnq.a $$0) {
+      this.b = $$0.d();
    }
 
-   @Override
-   public void a(fer $$0, gjg $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ae.d();
-      if ($$5 - this.b > 1.0E8) {
-         this.b = $$5;
-         bul $$6 = this.a.j.k().g();
-         this.c = ImmutableList.copyOf($$6.dV().a_($$6, $$6.cR().g(16.0)));
-      }
+   public void a(duv $$0, float $$1, fgl $$2, gle $$3, int $$4, int $$5) {
+      jm $$6 = $$0.m().c(dkt.f);
+      jz<cxk> $$7 = $$0.b();
+      int $$8 = (int)$$0.aB_().a();
 
-      cou $$7 = this.a.t;
-      if ($$7 != null && $$7.ax.isPresent()) {
-         this.a($$0, $$1, $$2, $$3, $$4, $$7, () -> 0.0, 1.0F, 0.0F, 0.0F);
-      }
-
-      for (bul $$8 : this.c) {
-         if ($$8 != $$7) {
-            this.a($$0, $$1, $$2, $$3, $$4, $$8, () -> this.a($$8), 0.0F, 1.0F, 0.0F);
+      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
+         cxk $$10 = $$7.get($$9);
+         if ($$10 != cxk.k) {
+            $$2.a();
+            $$2.a(0.5F, 0.44921875F, 0.5F);
+            jm $$11 = jm.b(($$9 + $$6.e()) % 4);
+            float $$12 = -$$11.p();
+            $$2.a(a.d.rotationDegrees($$12));
+            $$2.a(a.b.rotationDegrees(90.0F));
+            $$2.a(-0.3125F, -0.3125F, 0.0F);
+            $$2.b(0.375F, 0.375F, 0.375F);
+            this.b.a($$10, cxi.i, $$4, $$5, $$2, $$3, $$0.i(), $$8 + $$9);
+            $$2.b();
          }
       }
-   }
-
-   private void a(fer $$0, gjg $$1, double $$2, double $$3, double $$4, bul $$5, DoubleSupplier $$6, float $$7, float $$8, float $$9) {
-      $$5.ax.ifPresent($$10 -> {
-         double $$11 = $$6.getAsDouble();
-         jh $$12 = $$5.aR();
-         this.a($$12, $$0, $$2, $$3, $$4, $$1, 0.02 + $$11, $$7, $$8, $$9);
-         jh $$13 = $$5.aP();
-         if (!$$13.equals($$12)) {
-            this.a($$13, $$0, $$2, $$3, $$4, $$1, 0.04 + $$11, 0.0F, 1.0F, 1.0F);
-         }
-      });
-   }
-
-   private double a(bul $$0) {
-      return 0.02 * (double)(String.valueOf((double)$$0.ar() + 0.132453657).hashCode() % 1000) / 1000.0;
-   }
-
-   private void a(jh $$0, fer $$1, double $$2, double $$3, double $$4, gjg $$5, double $$6, float $$7, float $$8, float $$9) {
-      double $$10 = (double)$$0.u() - $$2 - 2.0 * $$6;
-      double $$11 = (double)$$0.v() - $$3 - 2.0 * $$6;
-      double $$12 = (double)$$0.w() - $$4 - 2.0 * $$6;
-      double $$13 = $$10 + 1.0 + 4.0 * $$6;
-      double $$14 = $$11 + 1.0 + 4.0 * $$6;
-      double $$15 = $$12 + 1.0 + 4.0 * $$6;
-      gka.a($$1, $$5.getBuffer(gjq.y()), $$10, $$11, $$12, $$13, $$14, $$15, $$7, $$8, $$9, 0.4F);
-      gng.a(
-         $$1,
-         $$5.getBuffer(gjq.y()),
-         this.a.s.a_($$0).b(this.a.s, $$0, fad.a()).a((double)$$0.u(), (double)$$0.v(), (double)$$0.w()),
-         -$$2,
-         -$$3,
-         -$$4,
-         $$7,
-         $$8,
-         $$9,
-         1.0F,
-         false
-      );
    }
 }

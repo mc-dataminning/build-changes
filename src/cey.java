@@ -1,19 +1,39 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.List;
 
-public class cey extends cfr<buc> {
+public class cey<T extends bwd & bwg> extends ccz {
+   private static final int a = 10;
+   private final T b;
+   private final boolean c;
+   private int d;
+
+   public cey(T $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
    @Override
-   public Set<cel<?>> a() {
-      return ImmutableSet.of(cel.K, cel.h);
+   public boolean b() {
+      return a(this.b).N().b(dgw.O) && this.h();
    }
 
-   protected void a(arp $$0, buc $$1) {
-      $$1.eb().c(cel.h).ifPresent($$1x -> this.a($$1, $$1x));
+   private boolean h() {
+      return this.b.ep() != null && this.b.ep().aq() == bvm.bS && this.b.eq() > this.d;
    }
 
-   private void a(buc $$0, cen $$1) {
-      Optional<buc> $$2 = $$1.a($$1x -> $$1x.aq() == $$0.aq() && !$$1x.e_()).map(buc.class::cast);
-      $$0.eb().a(cel.K, $$2);
+   @Override
+   public void d() {
+      this.d = this.b.eq();
+      this.b.ae_();
+      if (this.c) {
+         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bwg)$$0).forEach(bwg::ae_);
+      }
+
+      super.d();
+   }
+
+   private List<? extends bwd> i() {
+      double $$0 = this.b.h(bxj.m);
+      fbn $$1 = fbn.a(this.b.dt()).c($$0, 10.0, $$0);
+      return this.b.dV().a((Class<? extends bwd>)this.b.getClass(), $$1, bvk.f);
    }
 }

@@ -1,32 +1,47 @@
-import java.util.function.UnaryOperator;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class ol {
-   @Deprecated
-   public static alj a(String $$0) {
-      return alj.b("block/" + $$0);
+public class ol implements Supplier<JsonElement> {
+   private final Map<on<?>, on<?>.a> a = Maps.newLinkedHashMap();
+
+   public <T> ol a(on<T> $$0, T $$1) {
+      on<?>.a $$2 = this.a.put($$0, $$0.a($$1));
+      if ($$2 != null) {
+         throw new IllegalStateException("Replacing value of " + $$2 + " with " + $$1);
+      } else {
+         return this;
+      }
    }
 
-   public static alj b(String $$0) {
-      return alj.b("item/" + $$0);
+   public static ol a() {
+      return new ol();
    }
 
-   public static alj a(diq $$0, String $$1) {
-      alj $$2 = lz.e.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "block/" + $$1x + $$1));
+   public static ol a(ol $$0, ol $$1) {
+      ol $$2 = new ol();
+      $$2.a.putAll($$0.a);
+      $$2.a.putAll($$1.a);
+      return $$2;
    }
 
-   public static alj a(diq $$0) {
-      alj $$1 = lz.e.b($$0);
-      return $$1.f("block/");
+   public JsonElement b() {
+      JsonObject $$0 = new JsonObject();
+      this.a.values().forEach($$1 -> $$1.a($$0));
+      return $$0;
    }
 
-   public static alj a(cwi $$0) {
-      alj $$1 = lz.g.b($$0);
-      return $$1.f("item/");
-   }
-
-   public static alj a(cwi $$0, String $$1) {
-      alj $$2 = lz.g.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "item/" + $$1x + $$1));
+   public static JsonElement a(List<ol> $$0) {
+      if ($$0.size() == 1) {
+         return $$0.get(0).b();
+      } else {
+         JsonArray $$1 = new JsonArray();
+         $$0.forEach($$1x -> $$1.add($$1x.b()));
+         return $$1;
+      }
    }
 }

@@ -1,25 +1,166 @@
-public record aii(int b, int c) implements zq<agw> {
-   public static final zh<wg, aii> a = zq.a(aii::a, aii::new);
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   private aii(wg $$0) {
-      this($$0.l(), $$0.l());
+public class aii implements aac<ahm> {
+   public static final zt<ws, aii> a = aac.a(aii::a, aii::new);
+   private final int b;
+   private final aii.a c;
+   private final boolean d;
+   static final aii.a e = new aii.a() {
+      @Override
+      public aii.b a() {
+         return aii.b.b;
+      }
+
+      @Override
+      public void a(aii.c $$0) {
+         $$0.a();
+      }
+
+      @Override
+      public void a(ws $$0) {
+      }
+   };
+
+   private aii(int $$0, boolean $$1, aii.a $$2) {
+      this.b = $$0;
+      this.c = $$2;
+      this.d = $$1;
    }
 
-   private void a(wg $$0) {
+   public static aii a(bvf $$0, boolean $$1) {
+      return new aii($$0.ar(), $$1, e);
+   }
+
+   public static aii a(bvf $$0, boolean $$1, btd $$2) {
+      return new aii($$0.ar(), $$1, new aii.d($$2));
+   }
+
+   public static aii a(bvf $$0, boolean $$1, btd $$2, fbs $$3) {
+      return new aii($$0.ar(), $$1, new aii.e($$2, $$3));
+   }
+
+   private aii(ws $$0) {
+      this.b = $$0.l();
+      aii.b $$1 = $$0.b(aii.b.class);
+      this.c = $$1.d.apply($$0);
+      this.d = $$0.readBoolean();
+   }
+
+   private void a(ws $$0) {
       $$0.c(this.b);
-      $$0.c(this.c);
+      $$0.a(this.c.a());
+      this.c.a($$0);
+      $$0.a(this.d);
    }
 
    @Override
-   public zs<aii> a() {
-      return agu.bi;
+   public aae<aii> a() {
+      return ahk.bF;
    }
 
-   public void a(agw $$0) {
+   public void a(ahm $$0) {
       $$0.a(this);
    }
 
-   public int e() {
-      return this.c;
+   @Nullable
+   public bvf a(ash $$0) {
+      return $$0.b(this.b);
+   }
+
+   public boolean b() {
+      return this.d;
+   }
+
+   public void a(aii.c $$0) {
+      this.c.a($$0);
+   }
+
+   interface a {
+      aii.b a();
+
+      void a(aii.c var1);
+
+      void a(ws var1);
+   }
+
+   static enum b {
+      a(aii.d::new),
+      b($$0 -> aii.e),
+      c(aii.e::new);
+
+      final Function<ws, aii.a> d;
+
+      private b(final Function<ws, aii.a> $$0) {
+         this.d = $$0;
+      }
+   }
+
+   public interface c {
+      void a(btd var1);
+
+      void a(btd var1, fbs var2);
+
+      void a();
+   }
+
+   static class d implements aii.a {
+      private final btd a;
+
+      d(btd $$0) {
+         this.a = $$0;
+      }
+
+      private d(ws $$0) {
+         this.a = $$0.b(btd.class);
+      }
+
+      @Override
+      public aii.b a() {
+         return aii.b.a;
+      }
+
+      @Override
+      public void a(aii.c $$0) {
+         $$0.a(this.a);
+      }
+
+      @Override
+      public void a(ws $$0) {
+         $$0.a(this.a);
+      }
+   }
+
+   static class e implements aii.a {
+      private final btd a;
+      private final fbs b;
+
+      e(btd $$0, fbs $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      private e(ws $$0) {
+         this.b = new fbs((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
+         this.a = $$0.b(btd.class);
+      }
+
+      @Override
+      public aii.b a() {
+         return aii.b.c;
+      }
+
+      @Override
+      public void a(aii.c $$0) {
+         $$0.a(this.a, this.b);
+      }
+
+      @Override
+      public void a(ws $$0) {
+         $$0.a((float)this.b.d);
+         $$0.a((float)this.b.e);
+         $$0.a((float)this.b.f);
+         $$0.a(this.a);
+      }
    }
 }

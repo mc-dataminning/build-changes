@@ -1,42 +1,74 @@
-public class gps extends gof<chi, gvx, fzm> {
-   private static final alj a = alj.b("textures/entity/fox/fox.png");
-   private static final alj b = alj.b("textures/entity/fox/fox_sleep.png");
-   private static final alj k = alj.b("textures/entity/fox/snow_fox.png");
-   private static final alj l = alj.b("textures/entity/fox/snow_fox_sleep.png");
+import com.google.common.collect.ImmutableList;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.DoubleSupplier;
 
-   public gps(gpk.a $$0) {
-      super($$0, new fzm($$0.a(gck.aJ)), new fzm($$0.a(gck.aK)), 0.4F);
-      this.a(new gtl(this, $$0.b()));
+public class gps implements gpe.a {
+   private final flz a;
+   private double b = Double.MIN_VALUE;
+   private List<bvf> c = Collections.emptyList();
+
+   public gps(flz $$0) {
+      this.a = $$0;
    }
 
-   protected void a(gvx $$0, fer $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$0.g || $$0.f) {
-         $$1.a(a.b.rotationDegrees(-$$0.V));
+   @Override
+   public void a(fgl $$0, gle $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ae.d();
+      if ($$5 - this.b > 1.0E8) {
+         this.b = $$5;
+         bvf $$6 = this.a.j.k().g();
+         this.c = ImmutableList.copyOf($$6.dV().a_($$6, $$6.cR().g(16.0)));
+      }
+
+      cps $$7 = this.a.t;
+      if ($$7 != null && $$7.ax.isPresent()) {
+         this.a($$0, $$1, $$2, $$3, $$4, $$7, () -> 0.0, 1.0F, 0.0F, 0.0F);
+      }
+
+      for (bvf $$8 : this.c) {
+         if ($$8 != $$7) {
+            this.a($$0, $$1, $$2, $$3, $$4, $$8, () -> this.a($$8), 0.0F, 1.0F, 0.0F);
+         }
       }
    }
 
-   public alj a(gvx $$0) {
-      if ($$0.h == chi.v.a) {
-         return $$0.d ? b : a;
-      } else {
-         return $$0.d ? l : k;
-      }
+   private void a(fgl $$0, gle $$1, double $$2, double $$3, double $$4, bvf $$5, DoubleSupplier $$6, float $$7, float $$8, float $$9) {
+      $$5.ax.ifPresent($$10 -> {
+         double $$11 = $$6.getAsDouble();
+         jh $$12 = $$5.aR();
+         this.a($$12, $$0, $$2, $$3, $$4, $$1, 0.02 + $$11, $$7, $$8, $$9);
+         jh $$13 = $$5.aP();
+         if (!$$13.equals($$12)) {
+            this.a($$13, $$0, $$2, $$3, $$4, $$1, 0.04 + $$11, 0.0F, 1.0F, 1.0F);
+         }
+      });
    }
 
-   public gvx b() {
-      return new gvx();
+   private double a(bvf $$0) {
+      return 0.02 * (double)(String.valueOf((double)$$0.ar() + 0.132453657).hashCode() % 1000) / 1000.0;
    }
 
-   public void a(chi $$0, gvx $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
-      $$1.c = $$0.ci();
-      $$1.b = $$0.K($$2);
-      $$1.d = $$0.fP();
-      $$1.e = $$0.v();
-      $$1.f = $$0.gm();
-      $$1.g = $$0.gn();
-      $$1.h = $$0.q();
+   private void a(jh $$0, fgl $$1, double $$2, double $$3, double $$4, gle $$5, double $$6, float $$7, float $$8, float $$9) {
+      double $$10 = (double)$$0.u() - $$2 - 2.0 * $$6;
+      double $$11 = (double)$$0.v() - $$3 - 2.0 * $$6;
+      double $$12 = (double)$$0.w() - $$4 - 2.0 * $$6;
+      double $$13 = $$10 + 1.0 + 4.0 * $$6;
+      double $$14 = $$11 + 1.0 + 4.0 * $$6;
+      double $$15 = $$12 + 1.0 + 4.0 * $$6;
+      gly.a($$1, $$5.getBuffer(glo.y()), $$10, $$11, $$12, $$13, $$14, $$15, $$7, $$8, $$9, 0.4F);
+      gpe.a(
+         $$1,
+         $$5.getBuffer(glo.y()),
+         this.a.s.a_($$0).b(this.a.s, $$0, fbx.a()).a((double)$$0.u(), (double)$$0.v(), (double)$$0.w()),
+         -$$2,
+         -$$3,
+         -$$4,
+         $$7,
+         $$8,
+         $$9,
+         1.0F,
+         false
+      );
    }
 }

@@ -1,63 +1,26 @@
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class gju extends ghd {
+   private static final int a = 12235202;
 
-public class gju {
-   private static final Logger a = LogUtils.getLogger();
-   private final Queue<gjt> b;
-   private volatile int c;
-
-   private gju(List<gjt> $$0) {
-      this.b = Queues.newArrayDeque($$0);
-      this.c = this.b.size();
+   protected gju(gfd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gjg $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
+      this.v = (float)ayp.b(12235202) / 255.0F;
+      this.w = (float)ayp.c(12235202) / 255.0F;
+      this.x = (float)ayp.d(12235202) / 255.0F;
    }
 
-   public static gju a(int $$0) {
-      int $$1 = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / gjt.a);
-      int $$2 = Math.max(1, Math.min($$0, $$1));
-      List<gjt> $$3 = new ArrayList<>($$2);
+   public static class a implements gio<lw> {
+      private final gjg a;
 
-      try {
-         for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3.add(new gjt());
-         }
-      } catch (OutOfMemoryError var7) {
-         a.warn("Allocated only {}/{} buffers", $$3.size(), $$2);
-         int $$6 = Math.min($$3.size() * 2 / 3, $$3.size() - 1);
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            $$3.remove($$3.size() - 1).close();
-         }
+      public a(gjg $$0) {
+         this.a = $$0;
       }
 
-      return new gju($$3);
-   }
-
-   @Nullable
-   public gjt a() {
-      gjt $$0 = this.b.poll();
-      if ($$0 != null) {
-         this.c = this.b.size();
-         return $$0;
-      } else {
-         return null;
+      public gil a(lw $$0, gfd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         bam $$8 = $$1.A;
+         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
+         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         return new gju($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
       }
-   }
-
-   public void a(gjt $$0) {
-      this.b.add($$0);
-      this.c = this.b.size();
-   }
-
-   public boolean b() {
-      return this.b.isEmpty();
-   }
-
-   public int c() {
-      return this.c;
    }
 }

@@ -1,41 +1,34 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
+import java.util.function.BiConsumer;
 
-public class nu implements mg {
-   private final mi d;
-   private final Map<String, Supplier<JsonElement>> e = new HashMap<>();
-
-   public nu(mi $$0) {
-      this.d = $$0;
-   }
-
-   public <T> nu a(auc<T> $$0, T $$1) {
-      this.e.put($$0.a(), () -> $$0.a($$1));
-      return this;
-   }
-
+public record nu(js.a a) implements nh {
    @Override
-   public CompletableFuture<?> a(me $$0) {
-      JsonObject $$1 = new JsonObject();
-      this.e.forEach(($$1x, $$2) -> $$1.add($$1x, $$2.get()));
-      return mg.a($$0, $$1, this.d.a().resolve("pack.mcmeta"));
-   }
-
-   @Override
-   public final String a() {
-      return "Pack Metadata";
-   }
-
-   public static nu a(mi $$0, xj $$1) {
-      return new nu($$0).a(aud.b, new aud($$1, t.a.a(atq.b), Optional.empty()));
-   }
-
-   public static nu a(mi $$0, xj $$1, crq $$2) {
-      return a($$0, $$1).a(atk.a, new atk($$2));
+   public void generate(BiConsumer<aly<ewm>, ewm.a> $$0) {
+      js.b<ddr> $$1 = this.a.d(mb.aN);
+      $$0.accept(
+         ewd.aK,
+         ewm.b()
+            .a(
+               ewl.a()
+                  .a(fal.a(1.0F))
+                  .a(ewu.a(cxo.rn).a(5).a(new exk.a().a($$1.b(ddw.l))))
+                  .a(ewu.a(cxo.qf).a(8).a(new exk.a().a($$1.b(ddw.l))))
+                  .a(ewu.a(cxo.sZ).a(8).a(eys.a(czk.l)))
+                  .a(ewu.a(cxo.we).a(8).a(eys.a(czk.l)))
+                  .a(ewu.a(cxo.sZ).a(10).a(eys.a(czk.a)))
+                  .a(ewu.a(cxo.wl).a(10).a(eym.a(fas.a(10.0F, 36.0F))))
+                  .a(ewu.a(cxo.sT).a(10).a(eym.a(fas.a(2.0F, 4.0F))))
+                  .a(ewu.a(cxo.pO).a(20).a(eym.a(fas.a(3.0F, 9.0F))))
+                  .a(ewu.a(cxo.oY).a(20).a(eym.a(fas.a(5.0F, 12.0F))))
+                  .a(ewu.a(cxo.eP).a(40))
+                  .a(ewu.a(cxo.xw).a(40).a(eym.a(fas.a(1.0F, 3.0F))))
+                  .a(ewu.a(cxo.uM).a(40))
+                  .a(ewu.a(cxo.rb).a(40).a(eym.a(fas.a(2.0F, 4.0F))))
+                  .a(ewu.a(cxo.fB).a(40).a(eym.a(fas.a(2.0F, 8.0F))))
+                  .a(ewu.a(cxo.vn).a(40).a(eym.a(fas.a(2.0F, 8.0F))))
+                  .a(ewu.a(cxo.wf).a(40).a(eym.a(fas.a(6.0F, 12.0F))))
+                  .a(ewu.a(cxo.al).a(40).a(eym.a(fas.a(8.0F, 16.0F))))
+                  .a(ewu.a(cxo.xx).a(40).a(eym.a(fas.a(8.0F, 16.0F))))
+            )
+      );
    }
 }

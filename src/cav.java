@@ -1,17 +1,11 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class cav extends bxa<bvh> {
-   public cav() {
-      super(ImmutableMap.of());
-   }
-
-   @Override
-   protected boolean a(arp $$0, bvh $$1) {
-      return $$1.bZ();
-   }
-
-   @Override
-   protected void d(arp $$0, bvh $$1, long $$2) {
-      $$1.ao();
+public class cav {
+   public static bxv<bwb> a() {
+      return cbh.a((Function<cbh.b<bwb>, ? extends App<cbh.c<bwb>, cbk<bwb>>>)($$0 -> $$0.a((cbk<bwb>)(($$0x, $$1, $$2) -> {
+            $$1.eb().a($$0x.ad(), $$0x.ac());
+            return true;
+         }))));
    }
 }

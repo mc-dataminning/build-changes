@@ -1,81 +1,32 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+public class ccd extends ccb {
+   private final int h;
+   private static final int i = 10;
+   private static final int j = 20;
 
-public class ccd extends ccf {
-   private final bwe a;
-   @Nullable
-   private bvh b;
-   private final double c;
-   private final cet d;
-   private int e;
-   private final float f;
-   private final float g;
-   private float h;
-
-   public ccd(bwe $$0, double $$1, float $$2, float $$3) {
-      this.a = $$0;
-      this.c = $$1;
-      this.d = $$0.L();
-      this.g = $$2;
-      this.f = $$3;
-      this.a(EnumSet.of(ccf.a.a, ccf.a.b));
-      if (!($$0.L() instanceof ces) && !($$0.L() instanceof cer)) {
-         throw new IllegalArgumentException("Unsupported mob type for FollowOwnerGoal");
-      }
-   }
-
-   @Override
-   public boolean b() {
-      bvh $$0 = this.a.ag_();
-      if ($$0 == null) {
-         return false;
-      } else if (this.a.gp()) {
-         return false;
-      } else if (this.a.g((bul)$$0) < (double)(this.g * this.g)) {
-         return false;
-      } else {
-         this.b = $$0;
-         return true;
-      }
-   }
-
-   @Override
-   public boolean c() {
-      if (this.d.m()) {
-         return false;
-      } else {
-         return this.a.gp() ? false : !(this.a.g((bul)this.b) <= (double)(this.f * this.f));
-      }
-   }
-
-   @Override
-   public void d() {
-      this.e = 0;
-      this.h = this.a.a(esm.j);
-      this.a.a(esm.j, 0.0F);
-   }
-
-   @Override
-   public void e() {
-      this.b = null;
-      this.d.o();
-      this.a.a(esm.j, this.h);
+   public ccd(bwd $$0, int $$1) {
+      super($$0);
+      this.h = $$1;
    }
 
    @Override
    public void a() {
-      boolean $$0 = this.a.go();
-      if (!$$0) {
-         this.a.H().a(this.b, 10.0F, (float)this.a.Z());
+      if (this.d > 0) {
+         this.d--;
+         this.i().ifPresent($$0x -> this.a.aZ = this.a(this.a.aZ, $$0x + 20.0F, this.b));
+         this.h().ifPresent($$0x -> this.a.w(this.a(this.a.dN(), $$0x + 10.0F, this.c)));
+      } else {
+         if (this.a.L().m()) {
+            this.a.w(this.a(this.a.dN(), 0.0F, 5.0F));
+         }
+
+         this.a.aZ = this.a(this.a.aZ, this.a.aX, this.b);
       }
 
-      if (--this.e <= 0) {
-         this.e = this.a(10);
-         if ($$0) {
-            this.a.gn();
-         } else {
-            this.d.a(this.b, this.c);
-         }
+      float $$0 = bae.h(this.a.aZ - this.a.aX);
+      if ($$0 < (float)(-this.h)) {
+         this.a.aX -= 4.0F;
+      } else if ($$0 > (float)this.h) {
+         this.a.aX += 4.0F;
       }
    }
 }

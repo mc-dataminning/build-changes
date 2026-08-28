@@ -1,50 +1,142 @@
-public class bts {
-   private static final int N = 22;
-   public static final jq<bto> a = a("speed", new bto(btp.a, 3402751).a(bwp.v, alj.b("effect.speed"), 0.2F, bwn.a.c));
-   public static final jq<bto> b = a("slowness", new bto(btp.b, 9154528).a(bwp.v, alj.b("effect.slowness"), -0.15F, bwn.a.c));
-   public static final jq<bto> c = a("haste", new bto(btp.a, 14270531).a(bwp.e, alj.b("effect.haste"), 0.1F, bwn.a.c));
-   public static final jq<bto> d = a("mining_fatigue", new bto(btp.b, 4866583).a(bwp.e, alj.b("effect.mining_fatigue"), -0.1F, bwn.a.c));
-   public static final jq<bto> e = a("strength", new bto(btp.a, 16762624).a(bwp.c, alj.b("effect.strength"), 3.0, bwn.a.a));
-   public static final jq<bto> f = a("instant_health", new btk(btp.a, 16262179, false));
-   public static final jq<bto> g = a("instant_damage", new btk(btp.b, 11101546, true));
-   public static final jq<bto> h = a("jump_boost", new bto(btp.a, 16646020).a(bwp.x, alj.b("effect.jump_boost"), 1.0, bwn.a.a));
-   public static final jq<bto> i = a("nausea", new bto(btp.b, 5578058));
-   public static final jq<bto> j = a("regeneration", new btw(btp.a, 13458603));
-   public static final jq<bto> k = a("resistance", new bto(btp.a, 9520880));
-   public static final jq<bto> l = a("fire_resistance", new bto(btp.a, 16750848));
-   public static final jq<bto> m = a("water_breathing", new bto(btp.a, 10017472));
-   public static final jq<bto> n = a("invisibility", new bto(btp.a, 16185078));
-   public static final jq<bto> o = a("blindness", new bto(btp.b, 2039587));
-   public static final jq<bto> p = a("night_vision", new bto(btp.a, 12779366));
-   public static final jq<bto> q = a("hunger", new btl(btp.b, 5797459));
-   public static final jq<bto> r = a("weakness", new bto(btp.b, 4738376).a(bwp.c, alj.b("effect.weakness"), -4.0, bwn.a.a));
-   public static final jq<bto> s = a("poison", new btu(btp.b, 8889187));
-   public static final jq<bto> t = a("wither", new bua(btp.b, 7561558));
-   public static final jq<bto> u = a("health_boost", new bto(btp.a, 16284963).a(bwp.s, alj.b("effect.health_boost"), 4.0, bwn.a.a));
-   public static final jq<bto> v = a("absorption", new bti(btp.a, 2445989).a(bwp.r, alj.b("effect.absorption"), 4.0, bwn.a.a));
-   public static final jq<bto> w = a("saturation", new btx(btp.a, 16262179));
-   public static final jq<bto> x = a("glowing", new bto(btp.c, 9740385));
-   public static final jq<bto> y = a("levitation", new bto(btp.b, 13565951));
-   public static final jq<bto> z = a("luck", new bto(btp.a, 5882118).a(bwp.q, alj.b("effect.luck"), 1.0, bwn.a.a));
-   public static final jq<bto> A = a("unluck", new bto(btp.b, 12624973).a(bwp.q, alj.b("effect.unluck"), -1.0, bwn.a.a));
-   public static final jq<bto> B = a("slow_falling", new bto(btp.a, 15978425));
-   public static final jq<bto> C = a("conduit_power", new bto(btp.a, 1950417));
-   public static final jq<bto> D = a("dolphins_grace", new bto(btp.a, 8954814));
-   public static final jq<bto> E = a("bad_omen", new btj(btp.c, 745784).a(awn.DU));
-   public static final jq<bto> F = a("hero_of_the_village", new bto(btp.a, 4521796));
-   public static final jq<bto> G = a("darkness", new bto(btp.b, 2696993).a(22));
-   public static final jq<bto> H = a("trial_omen", new bto(btp.c, 1484454, ls.be).a(awn.DV));
-   public static final jq<bto> I = a("raid_omen", new btv(btp.c, 14565464, ls.bd).a(awn.DW));
-   public static final jq<bto> J = a("wind_charged", new btz(btp.b, 12438015));
-   public static final jq<bto> K = a("weaving", new bty(btp.b, 7891290, $$0 -> azm.b($$0, 2, 3)));
-   public static final jq<bto> L = a("oozing", new btt(btp.b, 10092451, $$0 -> 2));
-   public static final jq<bto> M = a("infested", new btm(btp.b, 9214860, 0.1F, $$0 -> azm.b($$0, 1, 2)));
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   private static jq<bto> a(String $$0, bto $$1) {
-      return kd.b(lz.d, alj.b($$0), $$1);
+public class bts {
+   public static final int a = 100;
+   public static final int b = 300;
+   private static final ys c = ys.a.a(new xt(xt.a.a, "https://bugs.mojang.com/browse/MCPE-28723")).a(new yb(yb.a.a, xv.b("MCPE-28723")));
+   private final List<btq> d = Lists.newArrayList();
+   private final bwb e;
+   private int f;
+   private int g;
+   private int h;
+   private boolean i;
+   private boolean j;
+
+   public bts(bwb $$0) {
+      this.e = $$0;
    }
 
-   public static jq<bto> a(kd<bto> $$0) {
-      return a;
+   public void a(btv $$0, float $$1) {
+      this.c();
+      bua $$2 = bua.a(this.e);
+      btq $$3 = new btq($$0, $$1, $$2, this.e.Z);
+      this.d.add($$3);
+      this.f = this.e.af;
+      this.j = true;
+      if (!this.i && this.e.bL() && a($$0)) {
+         this.i = true;
+         this.g = this.e.af;
+         this.h = this.g;
+         this.e.i_();
+      }
+   }
+
+   private static boolean a(btv $$0) {
+      return $$0.d() instanceof bwb;
+   }
+
+   private xv a(bvf $$0, xv $$1, String $$2, String $$3) {
+      cxk $$5 = $$0 instanceof bwb $$4 ? $$4.eX() : cxk.k;
+      return !$$5.f() && $$5.b(ku.g) ? xv.a($$2, this.e.p_(), $$1, $$5.J()) : xv.a($$3, this.e.p_(), $$1);
+   }
+
+   private xv a(btq $$0, @Nullable bvf $$1) {
+      btv $$2 = $$0.a();
+      if (!$$2.a(axw.m) && !$$2.a(axw.s)) {
+         xv $$4 = a($$1);
+         bvf $$5 = $$2.d();
+         xv $$6 = a($$5);
+         if ($$6 != null && !$$6.equals($$4)) {
+            return this.a($$5, $$6, "death.fell.assist.item", "death.fell.assist");
+         } else {
+            return (xv)($$4 != null ? this.a($$1, $$4, "death.fell.finish.item", "death.fell.finish") : xv.a("death.fell.killer", this.e.p_()));
+         }
+      } else {
+         bua $$3 = Objects.requireNonNullElse($$0.c(), bua.a);
+         return xv.a($$3.a(), this.e.p_());
+      }
+   }
+
+   @Nullable
+   private static xv a(@Nullable bvf $$0) {
+      return $$0 == null ? null : $$0.p_();
+   }
+
+   public xv a() {
+      if (this.d.isEmpty()) {
+         return xv.a("death.attack.generic", this.e.p_());
+      } else {
+         btq $$0 = this.d.get(this.d.size() - 1);
+         btv $$1 = $$0.a();
+         btq $$2 = this.d();
+         btz $$3 = $$1.k().e();
+         if ($$3 == btz.b && $$2 != null) {
+            return this.a($$2, $$1.d());
+         } else if ($$3 == btz.c) {
+            String $$4 = "death.attack." + $$1.f();
+            xv $$5 = xy.a((xv)xv.c($$4 + ".link")).c(c);
+            return xv.a($$4 + ".message", this.e.p_(), $$5);
+         } else {
+            return $$1.a(this.e);
+         }
+      }
+   }
+
+   @Nullable
+   private btq d() {
+      btq $$0 = null;
+      btq $$1 = null;
+      float $$2 = 0.0F;
+      float $$3 = 0.0F;
+
+      for (int $$4 = 0; $$4 < this.d.size(); $$4++) {
+         btq $$5 = this.d.get($$4);
+         btq $$6 = $$4 > 0 ? this.d.get($$4 - 1) : null;
+         btv $$7 = $$5.a();
+         boolean $$8 = $$7.a(axw.s);
+         float $$9 = $$8 ? Float.MAX_VALUE : $$5.d();
+         if (($$7.a(axw.m) || $$8) && $$9 > 0.0F && ($$0 == null || $$9 > $$3)) {
+            if ($$4 > 0) {
+               $$0 = $$6;
+            } else {
+               $$0 = $$5;
+            }
+
+            $$3 = $$9;
+         }
+
+         if ($$5.c() != null && ($$1 == null || $$5.b() > $$2)) {
+            $$1 = $$5;
+            $$2 = $$5.b();
+         }
+      }
+
+      if ($$3 > 5.0F && $$0 != null) {
+         return $$0;
+      } else {
+         return $$2 > 5.0F && $$1 != null ? $$1 : null;
+      }
+   }
+
+   public int b() {
+      return this.i ? this.e.af - this.g : this.h - this.g;
+   }
+
+   public void c() {
+      int $$0 = this.i ? 300 : 100;
+      if (this.j && (!this.e.bL() || this.e.af - this.f > $$0)) {
+         boolean $$1 = this.i;
+         this.j = false;
+         this.i = false;
+         this.h = this.e.af;
+         if ($$1) {
+            this.e.j_();
+         }
+
+         this.d.clear();
+      }
    }
 }

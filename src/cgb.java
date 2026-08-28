@@ -1,13 +1,53 @@
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 
-public class cgb {
-   @Nullable
-   public static ezy a(bvp $$0, int $$1, int $$2, int $$3, ezy $$4, double $$5) {
-      ezy $$6 = $$4.a($$0.dA(), $$0.dC(), $$0.dG());
-      boolean $$7 = cgd.a($$0, $$1);
-      return cgg.a($$0, () -> {
-         jh $$7x = cga.a($$0, $$1, $$2, $$3, $$6.d, $$6.f, $$5, $$7);
-         return $$7x != null && !cgd.a($$0, $$7x) ? $$7x : null;
-      });
+public class cgb<T extends bwb> extends cgl<T> {
+   private final BiPredicate<T, bwb> a;
+   private final Predicate<T> b;
+   private final cff<Boolean> c;
+   private final int d;
+
+   public cgb(int $$0, BiPredicate<T, bwb> $$1, Predicate<T> $$2, cff<Boolean> $$3, int $$4) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
+      this.d = $$4;
+   }
+
+   @Override
+   protected void a(ash $$0, T $$1) {
+      if (!this.b.test($$1)) {
+         this.c($$1);
+      } else {
+         this.a($$1);
+      }
+   }
+
+   @Override
+   public Set<cff<?>> a() {
+      return Set.of(cff.g);
+   }
+
+   @Override
+   public void a(T $$0) {
+      Optional<List<bwb>> $$1 = $$0.eb().c(cff.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
+         if ($$2) {
+            this.b($$0);
+         }
+      }
+   }
+
+   public void b(T $$0) {
+      $$0.eb().a(this.c, true, (long)this.d);
+   }
+
+   public void c(T $$0) {
+      $$0.eb().b(this.c);
    }
 }

@@ -1,49 +1,37 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import java.util.Collection;
+import java.util.Collections;
 
 public class apu {
    public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("warden_spawn_tracker").requires($$0x -> $$0x.c(2)))
-               .then(ex.a("clear").executes($$0x -> a((ew)$$0x.getSource(), ImmutableList.of(((ew)$$0x.getSource()).h())))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("spawnpoint").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((ew)$$0x.getSource(), Collections.singleton(((ew)$$0x.getSource()).h()), jh.a((ka)((ew)$$0x.getSource()).d()), 0.0F)))
             .then(
-               ex.a("set")
+               ((RequiredArgumentBuilder)ex.a("targets", fj.d())
+                     .executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), jh.a((ka)((ew)$$0x.getSource()).d()), 0.0F)))
                   .then(
-                     ex.a("warning_level", IntegerArgumentType.integer(0, 4))
-                        .executes(
-                           $$0x -> a((ew)$$0x.getSource(), ImmutableList.of(((ew)$$0x.getSource()).h()), IntegerArgumentType.getInteger($$0x, "warning_level"))
-                        )
+                     ((RequiredArgumentBuilder)ex.a("pos", gs.a()).executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), gs.c($$0x, "pos"), 0.0F)))
+                        .then(ex.a("angle", fc.a()).executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), gs.c($$0x, "pos"), fc.a($$0x, "angle"))))
                   )
             )
       );
    }
 
-   private static int a(ew $$0, Collection<? extends cou> $$1, int $$2) {
-      for (cou $$3 : $$1) {
-         $$3.ac().ifPresent($$1x -> $$1x.a($$2));
+   private static int a(ew $$0, Collection<asi> $$1, jh $$2, float $$3) {
+      aly<dha> $$4 = $$0.e().ah();
+
+      for (asi $$5 : $$1) {
+         $$5.a($$4, $$2, $$3, true, false);
       }
 
+      String $$6 = $$4.a().toString();
       if ($$1.size() == 1) {
-         $$0.a(() -> xj.a("commands.warden_spawn_tracker.set.success.single", $$1.iterator().next().o_()), true);
+         $$0.a(() -> xv.a("commands.spawnpoint.success.single", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.iterator().next().p_()), true);
       } else {
-         $$0.a(() -> xj.a("commands.warden_spawn_tracker.set.success.multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
-   }
-
-   private static int a(ew $$0, Collection<? extends cou> $$1) {
-      for (cou $$2 : $$1) {
-         $$2.ac().ifPresent(cny::b);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> xj.a("commands.warden_spawn_tracker.clear.success.single", $$1.iterator().next().o_()), true);
-      } else {
-         $$0.a(() -> xj.a("commands.warden_spawn_tracker.clear.success.multiple", $$1.size()), true);
+         $$0.a(() -> xv.a("commands.spawnpoint.success.multiple", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.size()), true);
       }
 
       return $$1.size();

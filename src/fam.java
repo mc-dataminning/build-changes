@@ -1,37 +1,25 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class fam extends fai {
-   @Nullable
-   private jh b;
-   @Nullable
-   private jh c;
+public record fam(ddy b) implements fao {
+   public static final MapCodec<fam> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ddy.b.fieldOf("amount").forGetter(fam::c)).apply($$0, fam::new));
 
-   protected fam(cqt $$0, boolean $$1) {
-      super($$0, $$1);
-      this.a($$0);
-   }
-
-   private void a(cqt $$0) {
-      jh $$1 = $$0.n();
-      dvv $$2 = $$0.dV().a_($$1);
-      boolean $$3 = dif.h($$2);
-      if ($$3) {
-         this.b = $$1.e();
-         dwy $$4 = $$2.c(((dif)$$2.b()).c());
-         if ($$4.b()) {
-            this.c = switch ($$4) {
-               case c -> $$1.i();
-               case d -> $$1.h();
-               case e -> $$1.f();
-               case f -> $$1.g();
-               default -> null;
-            };
-         }
-      }
+   @Override
+   public float b(ewh $$0) {
+      int $$1 = $$0.b(ezd.k);
+      return this.b.a($$1);
    }
 
    @Override
-   public fas a(dvv $$0, dev $$1, jh $$2) {
-      return !$$2.equals(this.b) && !$$2.equals(this.c) ? super.a($$0, $$1, $$2) : fap.a();
+   public fan b() {
+      return fap.g;
+   }
+
+   public static fam a(ddy $$0) {
+      return new fam($$0);
+   }
+
+   public ddy c() {
+      return this.b;
    }
 }

@@ -1,32 +1,68 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public final class eds {
+   private static final float a = 0.4F;
+   private static final int b = 20;
+   private static final double c = 0.2;
+   private static final float d = 0.7F;
+   private static final float e = 0.1F;
+   private static final float f = 0.3F;
+   private static final float g = 0.6F;
+   private static final float h = 0.02F;
+   private static final float i = -0.3F;
 
-public class eds extends edp {
-   public static final Codec<eds> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               edp.d.forGetter($$0x -> $$0x),
-               brn.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
-               brn.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
-               brn.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
-            )
-            .apply($$0, eds::new)
-   );
-   public final brn b;
-   public final brn c;
-   final brn j;
-
-   public eds(float $$0, ekp $$1, brn $$2, eck $$3, edq $$4, ju<diq> $$5, brn $$6, brn $$7, brn $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.b = $$6;
-      this.c = $$7;
-      this.j = $$8;
+   private eds() {
    }
 
-   public eds(float $$0, ekp $$1, brn $$2, eck $$3, ju<diq> $$4, brn $$5, brn $$6, brn $$7) {
-      this($$0, $$1, $$2, $$3, edq.a, $$4, $$5, $$6, $$7);
+   protected static edm.c a(edb $$0, edb $$1, edb $$2, edv $$3) {
+      dxn $$4 = null;
+      return $$5 -> {
+         double $$6 = $$0.a($$5);
+         int $$7 = $$5.b();
+         eds.a $$8 = $$6 > 0.0 ? eds.a.a : eds.a.b;
+         double $$9 = Math.abs($$6);
+         int $$10 = $$8.d - $$7;
+         int $$11 = $$7 - $$8.c;
+         if ($$11 >= 0 && $$10 >= 0) {
+            int $$12 = Math.min($$10, $$11);
+            double $$13 = bae.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
+            if ($$9 + $$13 < 0.4F) {
+               return $$4;
+            } else {
+               bam $$14 = $$3.a($$5.a(), $$7, $$5.c());
+               if ($$14.i() > 0.7F) {
+                  return $$4;
+               } else if ($$1.a($$5) >= 0.0) {
+                  return $$4;
+               } else {
+                  double $$15 = bae.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
+                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
+                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
+                  } else {
+                     return $$8.g;
+                  }
+               }
+            }
+         } else {
+            return $$4;
+         }
+      };
    }
 
-   public eds(edp $$0, brn $$1, brn $$2, brn $$3) {
-      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
+   protected static enum a {
+      a(dkg.rv.m(), dkg.tB.m(), dkg.c.m(), 0, 50),
+      b(dkg.T.m(), dkg.tA.m(), dkg.qU.m(), -60, -8);
+
+      final dxn e;
+      final dxn f;
+      final dxn g;
+      protected final int c;
+      protected final int d;
+
+      private a(final dxn $$0, final dxn $$1, final dxn $$2, final int $$3, final int $$4) {
+         this.e = $$0;
+         this.f = $$1;
+         this.g = $$2;
+         this.c = $$3;
+         this.d = $$4;
+      }
    }
 }

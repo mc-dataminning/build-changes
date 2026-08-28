@@ -1,26 +1,44 @@
-public interface dbr extends dba<dbs> {
-   @Override
-   default dbg<?> e() {
-      return dbg.g;
+public class dbr extends dbq {
+   public dbr(dbn $$0) {
+      super($$0);
+   }
+
+   public boolean a(dbo $$0, dha $$1) {
+      if ($$0.f() == 3 && $$0.g() == 3) {
+         for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
+            cxk $$3 = $$0.a($$2);
+            switch ($$2) {
+               case 1:
+               case 3:
+               case 5:
+               case 7:
+                  if (!$$3.a(ayd.bI)) {
+                     return false;
+                  }
+                  break;
+               case 2:
+               case 4:
+               case 6:
+               default:
+                  if (!$$3.a(cxo.a)) {
+                     return false;
+                  }
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public cxk a(dbo $$0, js.a $$1) {
+      dvw $$2 = new dvw($$0.a(1).h(), $$0.a(3).h(), $$0.a(5).h(), $$0.a(7).h());
+      return dvg.a($$2);
    }
 
    @Override
-   default boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 1;
+   public dci<dbr> a() {
+      return dci.v;
    }
-
-   @Override
-   default cwm g() {
-      return new cwm(dis.ob);
-   }
-
-   default boolean a(dbs $$0, dfm $$1) {
-      return this.a($$0.c()) && this.b($$0.d()) && this.c($$0.e());
-   }
-
-   boolean a(cwm var1);
-
-   boolean b(cwm var1);
-
-   boolean c(cwm var1);
 }

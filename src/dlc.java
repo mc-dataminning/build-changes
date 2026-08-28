@@ -1,93 +1,72 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import javax.annotation.Nullable;
 
-public class dlc extends dic {
-   public static final MapCodec<dlc> a = b(dlc::new);
-   protected static final fas b = diq.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0);
-   public static final List<jh> c = jh.a(-2, 0, -2, 2, 1, 2).filter($$0 -> Math.abs($$0.u()) == 2 || Math.abs($$0.w()) == 2).map(jh::j).toList();
+public class dlc extends dnu implements dlb {
+   public static final MapCodec<dlc> c = b(dlc::new);
+   private static final float g = 0.11F;
 
    @Override
    public MapCodec<dlc> a() {
-      return a;
+      return c;
    }
 
-   protected dlc(dvu.d $$0) {
-      super($$0);
-   }
-
-   public static boolean a(dfm $$0, jh $$1, jh $$2) {
-      return $$0.a_($$1.a((kl)$$2)).a(axc.cx) && $$0.a_($$1.b($$2.u() / 2, $$2.v(), $$2.w() / 2)).a(axc.cy);
+   public dlc(dxm.d $$0) {
+      super($$0, jm.a, s_, false, 0.1);
+      this.l(this.F.b().b(e, Integer.valueOf(0)).b(t_, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean g_(dvv $$0) {
+   protected int a(bam $$0) {
+      return 1;
+   }
+
+   @Override
+   protected boolean h(dxn $$0) {
+      return $$0.l();
+   }
+
+   @Override
+   protected dke b() {
+      return dkg.sR;
+   }
+
+   @Override
+   protected dxn a(dxn $$0, dxn $$1) {
+      return $$1.b(t_, $$0.c(t_));
+   }
+
+   @Override
+   protected dxn a(dxn $$0, bam $$1) {
+      return super.a($$0, $$1).b(t_, Boolean.valueOf($$1.i() < 0.11F));
+   }
+
+   @Override
+   public cxk a(dhd $$0, jh $$1, dxn $$2) {
+      return new cxk(cxo.xm);
+   }
+
+   @Override
+   protected bte a(dxn $$0, dha $$1, jh $$2, cps $$3, fbo $$4) {
+      return dlb.a($$3, $$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(dxo.a<dke, dxn> $$0) {
+      super.a($$0);
+      $$0.a(t_);
+   }
+
+   @Override
+   public boolean b(dhd $$0, jh $$1, dxn $$2) {
+      return !$$2.c(t_);
+   }
+
+   @Override
+   public boolean a(dha $$0, bam $$1, jh $$2, dxn $$3) {
       return true;
    }
 
    @Override
-   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
-      return b;
-   }
-
-   @Override
-   public void a(dvv $$0, dfm $$1, jh $$2, azu $$3) {
-      super.a($$0, $$1, $$2, $$3);
-
-      for (jh $$4 : c) {
-         if ($$3.a(16) == 0 && a($$1, $$2, $$4)) {
-            $$1.a(
-               ls.s,
-               (double)$$2.u() + 0.5,
-               (double)$$2.v() + 2.0,
-               (double)$$2.w() + 0.5,
-               (double)((float)$$4.u() + $$3.i()) - 0.5,
-               (double)((float)$$4.v() - $$3.i() - 1.0F),
-               (double)((float)$$4.w() + $$3.i()) - 0.5
-            );
-         }
-      }
-   }
-
-   @Override
-   protected dow a_(dvv $$0) {
-      return dow.c;
-   }
-
-   @Override
-   public dsy a(jh $$0, dvv $$1) {
-      return new dtt($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dsy> dsz<T> a(dfm $$0, dvv $$1, dta<T> $$2) {
-      return $$0.C ? a($$2, dta.m, dtt::a) : null;
-   }
-
-   @Override
-   protected bsk a(dvv $$0, dfm $$1, jh $$2, cou $$3, ezu $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.c($$1, $$2));
-      }
-
-      return bsk.a;
-   }
-
-   @Nullable
-   @Override
-   protected bsm b(dvv $$0, dfm $$1, jh $$2) {
-      dsy $$3 = $$1.c_($$2);
-      if ($$3 instanceof dtt) {
-         xj $$4 = ((bsn)$$3).o_();
-         return new bss(($$2x, $$3x, $$4x) -> new csv($$2x, $$3x, csm.a($$1, $$2)), $$4);
-      } else {
-         return null;
-      }
-   }
-
-   @Override
-   protected boolean a(dvv $$0, esk $$1) {
-      return false;
+   public void a(ash $$0, bam $$1, jh $$2, dxn $$3) {
+      $$0.a($$2, $$3.b(t_, Boolean.valueOf(true)), 2);
    }
 }

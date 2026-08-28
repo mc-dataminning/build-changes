@@ -1,40 +1,76 @@
-public class ggn extends gho {
-   ggn(gdh $$0, double $$1, double $$2, double $$3, double $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.66F;
-      this.C = true;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.2;
-      this.v = Math.max(0.0F, azm.a(((float)$$4 + 0.0F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.w = Math.max(0.0F, azm.a(((float)$$4 + 0.33333334F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.x = Math.max(0.0F, azm.a(((float)$$4 + 0.6666667F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.D *= 1.5F;
-      this.t = 6;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.minecraft.report.ReportedEntity;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
+
+public class ggn extends ggi {
+   final Supplier<hcf> g;
+
+   ggn(UUID $$0, Instant $$1, UUID $$2, Supplier<hcf> $$3) {
+      super($$0, $$1, $$2);
+      this.g = $$3;
+   }
+
+   public Supplier<hcf> a() {
+      return this.g;
+   }
+
+   public ggn c() {
+      ggn $$0 = new ggn(this.a, this.b, this.c, this.g);
+      $$0.d = this.d;
+      $$0.e = this.e;
+      $$0.f = this.f;
+      return $$0;
    }
 
    @Override
-   public ggs b() {
-      return ggs.b;
+   public ftr a(ftr $$0, ggm $$1) {
+      return new fye($$0, $$1, this);
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * azm.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   public static class a implements ggr<lw> {
-      private final ghj a;
-
-      public a(ghj $$0) {
-         this.a = $$0;
+   public static class a extends ggi.a<ggn> {
+      public a(ggn $$0, AbuseReportLimits $$1) {
+         super($$0, $$1);
       }
 
-      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ggn $$8 = new ggn($$1, $$2, $$3, $$4, $$5);
-         $$8.a(this.a);
-         return $$8;
+      public a(UUID $$0, Supplier<hcf> $$1, AbuseReportLimits $$2) {
+         super(new ggn(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
+      }
+
+      @Override
+      public boolean b() {
+         return StringUtils.isNotEmpty(this.g()) || this.i() != null;
+      }
+
+      @Nullable
+      @Override
+      public ggi.b c() {
+         if (this.a.e == null) {
+            return ggi.b.a;
+         } else {
+            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? ggi.b.d : super.c();
+         }
+      }
+
+      @Override
+      public Either<ggi.c, ggi.b> a(ggm $$0) {
+         ggi.b $$1 = this.c();
+         if ($$1 != null) {
+            return Either.right($$1);
+         } else {
+            String $$2 = Objects.requireNonNull(this.a.e).a();
+            ReportedEntity $$3 = new ReportedEntity(this.a.c);
+            hcf $$4 = this.a.g.get();
+            String $$5 = $$4.b();
+            AbuseReport $$6 = AbuseReport.skin(this.a.d, $$2, $$5, $$3, this.a.b);
+            return Either.left(new ggi.c(this.a.a, ggl.b, $$6));
+         }
       }
    }
 }

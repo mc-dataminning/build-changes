@@ -2,14 +2,14 @@ import io.netty.buffer.ByteBuf;
 import java.util.Iterator;
 
 public record jf(jh b, jh c) implements Iterable<jh> {
-   public static final zh<ByteBuf, jf> a = new zh<ByteBuf, jf>() {
+   public static final zt<ByteBuf, jf> a = new zt<ByteBuf, jf>() {
       public jf a(ByteBuf $$0) {
-         return new jf(wg.b($$0), wg.b($$0));
+         return new jf(ws.b($$0), ws.b($$0));
       }
 
       public void a(ByteBuf $$0, jf $$1) {
-         wg.a($$0, $$1.f());
-         wg.a($$0, $$1.g());
+         ws.a($$0, $$1.f());
+         ws.a($$0, $$1.g());
       }
    };
 
@@ -38,8 +38,8 @@ public record jf(jh b, jh c) implements Iterable<jh> {
       return $$0.u() >= this.b.u() && $$0.v() >= this.b.v() && $$0.w() >= this.b.w() && $$0.u() <= this.c.u() && $$0.v() <= this.c.v() && $$0.w() <= this.c.w();
    }
 
-   public ezt b() {
-      return ezt.a(this.b, this.c);
+   public fbn b() {
+      return fbn.a(this.b, this.c);
    }
 
    @Override

@@ -3,52 +3,29 @@ import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.util.Unit;
 import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
 public class bed extends DataFix {
-   private static final int[][] a = new int[][]{{0, 0, 1}, {-1, 0, 0}, {0, 0, -1}, {1, 0, 0}};
-
-   public bed(Schema $$0, boolean $$1) {
-      super($$0, $$1);
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0, boolean $$1, boolean $$2) {
-      if (($$1 || $$2) && $$0.get("Facing").asNumber().result().isEmpty()) {
-         int $$3;
-         if ($$0.get("Direction").asNumber().result().isPresent()) {
-            $$3 = $$0.get("Direction").asByte((byte)0) % a.length;
-            int[] $$4 = a[$$3];
-            $$0 = $$0.set("TileX", $$0.createInt($$0.get("TileX").asInt(0) + $$4[0]));
-            $$0 = $$0.set("TileY", $$0.createInt($$0.get("TileY").asInt(0) + $$4[1]));
-            $$0 = $$0.set("TileZ", $$0.createInt($$0.get("TileZ").asInt(0) + $$4[2]));
-            $$0 = $$0.remove("Direction");
-            if ($$2 && $$0.get("ItemRotation").asNumber().result().isPresent()) {
-               $$0 = $$0.set("ItemRotation", $$0.createByte((byte)($$0.get("ItemRotation").asByte((byte)0) * 2)));
-            }
-         } else {
-            $$3 = $$0.get("Dir").asByte((byte)0) % a.length;
-            $$0 = $$0.remove("Dir");
-         }
-
-         $$0 = $$0.set("Facing", $$0.createByte((byte)$$3));
-      }
-
-      return $$0;
+   public bed(Schema $$0) {
+      super($$0, false);
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getChoiceType(bia.B, "Painting");
-      OpticFinder<?> $$1 = DSL.namedChoice("Painting", $$0);
-      Type<?> $$2 = this.getInputSchema().getChoiceType(bia.B, "ItemFrame");
-      OpticFinder<?> $$3 = DSL.namedChoice("ItemFrame", $$2);
-      Type<?> $$4 = this.getInputSchema().getType(bia.B);
-      TypeRewriteRule $$5 = this.fixTypeEverywhereTyped(
-         "EntityPaintingFix", $$4, $$2x -> $$2x.updateTyped($$1, $$0, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> this.a($$0xxx, true, false)))
+      OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> $$0 = DSL.typeFinder(
+         this.getInputSchema().getType(bis.t)
       );
-      TypeRewriteRule $$6 = this.fixTypeEverywhereTyped(
-         "EntityItemFrameFix", $$4, $$2x -> $$2x.updateTyped($$3, $$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> this.a($$0xxx, false, true)))
+      return this.fixTypeEverywhereTyped(
+         "EmptyItemInHotbarFix", this.getInputSchema().getType(bis.d), $$1 -> $$1.update($$0, $$0xx -> $$0xx.mapSecond($$0xxx -> {
+                  Optional<String> $$1x = ((Either)$$0xxx.getFirst()).left().map(Pair::getSecond);
+                  Dynamic<?> $$2 = (Dynamic<?>)((Pair)$$0xxx.getSecond()).getSecond();
+                  boolean $$3 = $$1x.isEmpty() || $$1x.get().equals("minecraft:air");
+                  boolean $$4 = $$2.get("Count").asInt(0) <= 0;
+                  return !$$3 && !$$4 ? $$0xxx : Pair.of(Either.right(Unit.INSTANCE), Pair.of(Either.right(Unit.INSTANCE), $$2.emptyMap()));
+               }))
       );
-      return TypeRewriteRule.seq($$5, $$6);
    }
 }

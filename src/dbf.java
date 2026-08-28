@@ -1,34 +1,77 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public interface dbf<T extends dba<?>> {
-   dbf<dbi> a = a("crafting_shaped", new dbi.a());
-   dbf<dbk> b = a("crafting_shapeless", new dbk.a());
-   dbf<dai> c = a("crafting_special_armordye", new dbn<>(dai::new));
-   dbf<dal> d = a("crafting_special_bookcloning", new dbn<>(dal::new));
-   dbf<dax> e = a("crafting_special_mapcloning", new dbn<>(dax::new));
-   dbf<day> f = a("crafting_special_mapextending", new dbn<>(day::new));
-   dbf<dat> g = a("crafting_special_firework_rocket", new dbn<>(dat::new));
-   dbf<dav> h = a("crafting_special_firework_star", new dbn<>(dav::new));
-   dbf<dau> i = a("crafting_special_firework_star_fade", new dbn<>(dau::new));
-   dbf<dbx> j = a("crafting_special_tippedarrow", new dbn<>(dbx::new));
-   dbf<daj> k = a("crafting_special_bannerduplicate", new dbn<>(daj::new));
-   dbf<dbl> l = a("crafting_special_shielddecoration", new dbn<>(dbl::new));
-   dbf<dby> m = a("crafting_transmute", new dby.a());
-   dbf<dbh> n = a("crafting_special_repairitem", new dbn<>(dbh::new));
-   dbf<dbq> o = a("smelting", new dbm<>(dbq::new, 200));
-   dbf<dak> p = a("blasting", new dbm<>(dak::new, 100));
-   dbf<dbv> q = a("smoking", new dbm<>(dbv::new, 100));
-   dbf<dam> r = a("campfire_cooking", new dbm<>(dam::new, 100));
-   dbf<dbw> s = a("stonecutting", new dbo.b<>(dbw::new));
-   dbf<dbt> t = a("smithing_transform", new dbt.a());
-   dbf<dbu> u = a("smithing_trim", new dbu.a());
-   dbf<das> v = a("crafting_decorated_pot", new dbn<>(das::new));
+public abstract class dbf extends dcq {
+   private final dbm c;
+   private final float d;
+   private final int e;
 
-   MapCodec<T> a();
+   public dbf(String $$0, dbm $$1, dbv $$2, cxk $$3, float $$4, int $$5) {
+      super($$0, $$2, $$3);
+      this.c = $$1;
+      this.d = $$4;
+      this.e = $$5;
+   }
 
-   zh<wu, T> b();
+   @Override
+   public abstract dci<? extends dbf> a();
 
-   static <S extends dbf<T>, T extends dba<?>> S a(String $$0, S $$1) {
-      return kd.a(lz.r, $$0, $$1);
+   @Override
+   public abstract dcj<? extends dbf> b();
+
+   public float c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
+   }
+
+   public dbm e() {
+      return this.c;
+   }
+
+   protected abstract cxg f();
+
+   @Override
+   public List<ddc> g() {
+      return List.of(new ddb(this.k().b(), ddi.a.c, new ddi.e(this.l()), new ddi.d(this.f())));
+   }
+
+   @FunctionalInterface
+   public interface a<T extends dbf> {
+      T create(String var1, dbm var2, dbv var3, cxk var4, float var5, int var6);
+   }
+
+   public static class b<T extends dbf> implements dci<T> {
+      private final MapCodec<T> w;
+      private final zt<xg, T> x;
+
+      public b(dbf.a<T> $$0, int $$1) {
+         this.w = RecordCodecBuilder.mapCodec(
+            $$2 -> $$2.group(
+                     Codec.STRING.optionalFieldOf("group", "").forGetter(dcq::j),
+                     dbm.d.fieldOf("category").orElse(dbm.c).forGetter(dbf::e),
+                     dbv.d.fieldOf("ingredient").forGetter(dcq::k),
+                     cxk.e.fieldOf("result").forGetter(dcq::l),
+                     Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter(dbf::c),
+                     Codec.INT.fieldOf("cookingtime").orElse($$1).forGetter(dbf::d)
+                  )
+                  .apply($$2, $$0::create)
+         );
+         this.x = zt.a(zr.o, dcq::j, dbm.e, dbf::e, dbv.a, dcq::k, cxk.i, dcq::l, zr.l, dbf::c, zr.g, dbf::d, $$0::create);
+      }
+
+      @Override
+      public MapCodec<T> a() {
+         return this.w;
+      }
+
+      @Override
+      public zt<xg, T> b() {
+         return this.x;
+      }
    }
 }

@@ -1,66 +1,60 @@
-public class gfz extends ggw {
-   gfz(gdh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+import com.mojang.serialization.Codec;
+import java.time.Instant;
+import java.util.Optional;
+import javax.annotation.Nullable;
+
+public enum gfz implements bba {
+   a("secure"),
+   b("modified"),
+   c("not_secure");
+
+   public static final Codec<gfz> d = bba.a(gfz::values);
+   private final String e;
+
+   private gfz(final String $$0) {
+      this.e = $$0;
+   }
+
+   public static gfz a(yl $$0, xv $$1, Instant $$2) {
+      if (!$$0.i() || $$0.b($$2)) {
+         return c;
+      } else {
+         return a($$0, $$1) ? b : a;
+      }
+   }
+
+   private static boolean a(yl $$0, xv $$1) {
+      if (!$$1.getString().contains($$0.c())) {
+         return true;
+      } else {
+         xv $$2 = $$0.n();
+         return $$2 == null ? false : a($$2);
+      }
+   }
+
+   private static boolean a(xv $$0) {
+      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), ys.a).orElse(false);
+   }
+
+   private static boolean a(ys $$0) {
+      return !$$0.k().equals(ys.b);
+   }
+
+   public boolean a() {
+      return this == c;
+   }
+
+   @Nullable
+   public flt a(yl $$0) {
+      return switch (this) {
+         case b -> flt.a($$0.c());
+         case c -> flt.c();
+         default -> null;
+      };
    }
 
    @Override
-   public ggs b() {
-      return ggs.b;
-   }
-
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
-   }
-
-   @Override
-   public float b(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      return this.D * (1.0F - $$1 * $$1 * 0.5F);
-   }
-
-   @Override
-   public int a(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      $$1 = azm.a($$1, 0.0F, 1.0F);
-      int $$2 = super.a($$0);
-      int $$3 = $$2 & 0xFF;
-      int $$4 = $$2 >> 16 & 0xFF;
-      $$3 += (int)($$1 * 15.0F * 16.0F);
-      if ($$3 > 240) {
-         $$3 = 240;
-      }
-
-      return $$3 | $$4 << 16;
-   }
-
-   public static class a implements ggr<lw> {
-      private final ghj a;
-
-      public a(ghj $$0) {
-         this.a = $$0;
-      }
-
-      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gfz $$8 = new gfz($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class b implements ggr<lw> {
-      private final ghj a;
-
-      public b(ghj $$0) {
-         this.a = $$0;
-      }
-
-      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gfz $$8 = new gfz($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         $$8.d(0.5F);
-         return $$8;
-      }
+   public String c() {
+      return this.e;
    }
 }

@@ -1,57 +1,118 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class efs extends eew<ehj> {
-   public efs(Codec<ehj> $$0) {
+public class efs extends ego<eim> {
+   private static final ImmutableList<dke> a = ImmutableList.of(dkg.K, dkg.I, dkg.le, dkg.ej, dkg.fB, dkg.fC, dkg.fD, dkg.fE, dkg.cD, dkg.cA);
+   private static final int b = 5;
+   private static final int c = 50;
+   private static final int d = 8;
+   private static final int ao = 15;
+
+   public efs(Codec<eim> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eey<ehj> $$0) {
-      dfn $$1 = $$0.b();
+   public boolean a(egq<eim> $$0) {
+      int $$1 = $$0.c().f();
       jh $$2 = $$0.e();
-      azu $$3 = $$0.d();
-      ehj $$4 = $$0.f();
-      Optional<jm> $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
+      dhy $$3 = $$0.b();
+      bam $$4 = $$0.d();
+      eim $$5 = $$0.f();
+      if (!a($$3, $$1, $$2.k())) {
          return false;
       } else {
-         jh $$6 = $$2.a($$5.get().g());
-         a($$1, $$3, $$6, $$4);
-         int $$7 = $$3.i() < $$4.b && eer.c($$1.a_($$2.a($$5.get()))) ? 2 : 1;
-         eer.a($$1, $$2, $$5.get(), $$7, false);
-         return true;
+         int $$6 = $$5.b().a($$4);
+         boolean $$7 = $$4.i() < 0.9F;
+         int $$8 = Math.min($$6, $$7 ? 5 : 8);
+         int $$9 = $$7 ? 50 : 15;
+         boolean $$10 = false;
+
+         for (jh $$11 : jh.a($$4, $$9, $$2.u() - $$8, $$2.v(), $$2.w() - $$8, $$2.u() + $$8, $$2.v(), $$2.w() + $$8)) {
+            int $$12 = $$6 - $$11.k($$2);
+            if ($$12 >= 0) {
+               $$10 |= this.a($$3, $$1, $$11, $$12, $$5.a().a($$4));
+            }
+         }
+
+         return $$10;
       }
    }
 
-   private static Optional<jm> a(dfn $$0, jh $$1, azu $$2) {
-      boolean $$3 = eer.b($$0.a_($$1.d()));
-      boolean $$4 = eer.b($$0.a_($$1.e()));
-      if ($$3 && $$4) {
-         return Optional.of($$2.h() ? jm.a : jm.b);
-      } else if ($$3) {
-         return Optional.of(jm.a);
-      } else {
-         return $$4 ? Optional.of(jm.b) : Optional.empty();
-      }
-   }
+   private boolean a(dhb $$0, int $$1, jh $$2, int $$3, int $$4) {
+      boolean $$5 = false;
 
-   private static void a(dfn $$0, azu $$1, jh $$2, ehj $$3) {
-      eer.c($$0, $$2);
+      for (jh $$6 : jh.b($$2.u() - $$4, $$2.v(), $$2.w() - $$4, $$2.u() + $$4, $$2.v(), $$2.w() + $$4)) {
+         int $$7 = $$6.k($$2);
+         jh $$8 = a($$0, $$1, $$6) ? a($$0, $$1, $$6.k(), $$7) : a($$0, $$6.k(), $$7);
+         if ($$8 != null) {
+            int $$9 = $$3 - $$7 / 2;
 
-      for (jm $$4 : jm.c.a) {
-         if (!($$1.i() > $$3.c)) {
-            jh $$5 = $$2.a($$4);
-            eer.c($$0, $$5);
-            if (!($$1.i() > $$3.d)) {
-               jh $$6 = $$5.a(jm.b($$1));
-               eer.c($$0, $$6);
-               if (!($$1.i() > $$3.e)) {
-                  jh $$7 = $$6.a(jm.b($$1));
-                  eer.c($$0, $$7);
+            for (jh.a $$10 = $$8.k(); $$9 >= 0; $$9--) {
+               if (a($$0, $$1, (jh)$$10)) {
+                  this.a($$0, $$10, dkg.el.m());
+                  $$10.c(jm.b);
+                  $$5 = true;
+               } else {
+                  if (!$$0.a_($$10).a(dkg.el)) {
+                     break;
+                  }
+
+                  $$10.c(jm.b);
                }
             }
          }
       }
+
+      return $$5;
+   }
+
+   @Nullable
+   private static jh a(dhb $$0, int $$1, jh.a $$2, int $$3) {
+      while ($$2.v() > $$0.L_() + 1 && $$3 > 0) {
+         $$3--;
+         if (a($$0, $$1, $$2)) {
+            return $$2;
+         }
+
+         $$2.c(jm.a);
+      }
+
+      return null;
+   }
+
+   private static boolean a(dhb $$0, int $$1, jh.a $$2) {
+      if (!a($$0, $$1, (jh)$$2)) {
+         return false;
+      } else {
+         dxn $$3 = $$0.a_($$2.c(jm.a));
+         $$2.c(jm.b);
+         return !$$3.l() && !a.contains($$3.b());
+      }
+   }
+
+   @Nullable
+   private static jh a(dhb $$0, jh.a $$1, int $$2) {
+      while ($$1.v() <= $$0.am() && $$2 > 0) {
+         $$2--;
+         dxn $$3 = $$0.a_($$1);
+         if (a.contains($$3.b())) {
+            return null;
+         }
+
+         if ($$3.l()) {
+            return $$1;
+         }
+
+         $$1.c(jm.b);
+      }
+
+      return null;
+   }
+
+   private static boolean a(dhb $$0, int $$1, jh $$2) {
+      dxn $$3 = $$0.a_($$2);
+      return $$3.l() || $$3.a(dkg.K) && $$2.v() <= $$1;
    }
 }

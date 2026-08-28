@@ -1,12 +1,18 @@
-public class fhc extends Exception {
-   public final ffj a;
+import java.net.Proxy;
+import javax.annotation.Nullable;
 
-   public fhc(ffj $$0) {
-      this.a = $$0;
+public class fhc {
+   @Nullable
+   private static Proxy a;
+
+   @Nullable
+   public static Proxy a() {
+      return a;
    }
 
-   @Override
-   public String getMessage() {
-      return this.a.c();
+   public static void a(Proxy $$0) {
+      if (a == null) {
+         a = $$0;
+      }
    }
 }

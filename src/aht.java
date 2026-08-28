@@ -1,45 +1,42 @@
-public class aht implements zq<agw> {
-   public static final zh<wg, aht> a = zq.a(aht::a, aht::new);
-   private final jh b;
-   private final int c;
-   private final boolean d;
+import java.time.Instant;
 
-   public aht(jh $$0, int $$1, boolean $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+public record aht(String b, Instant c, long d, fd e, yc.b f) implements aac<ahm> {
+   public static final zt<ws, aht> a = aac.a(aht::a, aht::new);
+
+   private aht(ws $$0) {
+      this($$0.p(), $$0.t(), $$0.readLong(), new fd($$0), new yc.b($$0));
    }
 
-   private aht(wg $$0) {
-      this.b = $$0.e();
-      this.c = $$0.l();
-      this.d = $$0.readBoolean();
-   }
-
-   private void a(wg $$0) {
+   private void a(ws $$0) {
       $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
+      $$0.a(this.c);
+      $$0.b(this.d);
+      this.e.a($$0);
+      this.f.a($$0);
    }
 
    @Override
-   public zs<aht> a() {
-      return agu.bC;
+   public aae<aht> a() {
+      return ahk.bq;
    }
 
-   public void a(agw $$0) {
+   public void a(ahm $$0) {
       $$0.a(this);
    }
 
-   public jh b() {
-      return this.b;
-   }
-
-   public int e() {
+   public Instant e() {
       return this.c;
    }
 
-   public boolean f() {
+   public long f() {
       return this.d;
+   }
+
+   public fd g() {
+      return this.e;
+   }
+
+   public yc.b h() {
+      return this.f;
    }
 }

@@ -1,42 +1,57 @@
-public class gsa extends goc<crh, gwq> {
-   private final gkj b;
-
-   public gsa(gpk.a $$0) {
-      super($$0, gck.da);
-      this.b = $$0.d();
+public abstract class gsa<T extends bwd, S extends gye, M extends gbs<S>> extends gqd<T, S, M> {
+   public gsa(grj.a $$0, M $$1, float $$2) {
+      this($$0, $$1, $$1, $$2);
    }
 
-   protected void a(gwq $$0, dvv $$1, fer $$2, gjg $$3, int $$4) {
-      float $$5 = $$0.C;
-      if ($$5 > -1.0F && $$5 < 10.0F) {
-         float $$6 = 1.0F - $$5 / 10.0F;
-         $$6 = azm.a($$6, 0.0F, 1.0F);
-         $$6 *= $$6;
-         $$6 *= $$6;
-         float $$7 = 1.0F + $$6 * 0.3F;
-         $$2.b($$7, $$7, $$7);
-      }
-
-      a(this.b, $$1, $$2, $$3, $$4, $$5 > -1.0F && (int)$$5 / 5 % 2 == 0);
+   public gsa(grj.a $$0, M $$1, M $$2, float $$3) {
+      this($$0, $$1, $$2, $$3, gvc.a.a);
    }
 
-   public static void a(gkj $$0, dvv $$1, fer $$2, gjg $$3, int $$4, boolean $$5) {
-      int $$6;
-      if ($$5) {
-         $$6 = gyv.a(gyv.a(1.0F), 10);
-      } else {
-         $$6 = gyv.d;
-      }
-
-      $$0.a($$1, $$2, $$3, $$4, $$6);
+   public gsa(grj.a $$0, M $$1, M $$2, float $$3, gvc.a $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a(new gvc<>(this, $$0.f(), $$4, $$0.b()));
+      this.a(new gwj<>(this, $$0.f(), $$0.h()));
+      this.a(new gvq<>(this, $$0.b()));
    }
 
-   public gwq a() {
-      return new gwq();
-   }
-
-   public void a(crh $$0, gwq $$1, float $$2) {
+   public void a(T $$0, S $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.C = $$0.v() > -1 ? (float)$$0.v() - $$2 + 1.0F : -1.0F;
+      a($$0, $$1, $$2);
+   }
+
+   public static void a(bwb $$0, gye $$1, float $$2) {
+      $$1.I = $$0.ci();
+      $$1.J = $$0.fH();
+      $$1.K = $$0.cl();
+      $$1.L = $$0.bZ();
+      $$1.D = 1.0F;
+      if ($$1.J) {
+         $$1.D = (float)$$0.dy().h();
+         $$1.D /= 0.2F;
+         $$1.D = $$1.D * $$1.D * $$1.D;
+      }
+
+      if ($$1.D < 1.0F) {
+         $$1.D = 1.0F;
+      }
+
+      $$1.C = $$0.D($$2);
+      $$1.B = $$0.a($$2);
+      $$1.G = c($$0);
+      $$1.H = $$0.fy();
+      $$1.E = (float)cwb.b($$0.fz(), $$0);
+      $$1.F = $$0.fB();
+      $$1.M = $$0.fx();
+      $$1.N = $$0.bb.a($$2);
+      $$1.O = $$0.bb.b($$2);
+      $$1.P = $$0.bb.c($$2);
+      $$1.Q = $$0.a(bvn.e).v();
+      $$1.R = $$0.a(bvn.d).v();
+      $$1.S = $$0.a(bvn.c).v();
+   }
+
+   private static bvv c(bwb $$0) {
+      bvv $$1 = $$0.fw();
+      return $$0.aJ == btd.a ? $$1 : $$1.e();
    }
 }

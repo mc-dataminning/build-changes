@@ -1,24 +1,18 @@
-public class cdi extends ccf {
-   private final bvp a;
+public class cdi extends cdh {
+   private final coz h;
 
-   public cdi(bvp $$0) {
-      this.a = $$0;
+   public cdi(coz $$0) {
+      super($$0, cps.class, 8.0F);
+      this.h = $$0;
    }
 
    @Override
    public boolean b() {
-      return this.a.dV().T() && this.a.a(but.f).f() && cgd.a(this.a);
-   }
-
-   @Override
-   public void d() {
-      ((ces)this.a.L()).d(true);
-   }
-
-   @Override
-   public void e() {
-      if (cgd.a(this.a)) {
-         ((ces)this.a.L()).d(false);
+      if (this.h.gn()) {
+         this.c = this.h.gm();
+         return true;
+      } else {
+         return false;
       }
    }
 }

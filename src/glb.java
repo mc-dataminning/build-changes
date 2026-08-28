@@ -1,110 +1,81 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.Objects;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public class glb implements hbv {
-   private final alj a;
-   private final j b;
-   private final boolean c;
-   private final int d;
-
-   public glb(alj $$0, j $$1, boolean $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   public alj a() {
-      return this.a;
-   }
-
-   @Override
-   public j b() {
-      return this.b;
-   }
+public class glb implements gli.a {
+   public static final alz a = gli.a;
+   public static final alz b = alz.b("translucent");
+   public static final alz c = alz.b("item_entity");
+   public static final alz d = alz.b("particles");
+   public static final alz e = alz.b("weather");
+   public static final alz f = alz.b("clouds");
+   public static final alz g = alz.b("entity_outline");
+   public static final Set<alz> h = Set.of(a);
+   public static final Set<alz> i = Set.of(a, g);
+   public static final Set<alz> j = Set.of(a, b, c, d, e, f);
+   public ffx<fev> k = ffx.a();
+   @Nullable
+   public ffx<fev> l;
+   @Nullable
+   public ffx<fev> m;
+   @Nullable
+   public ffx<fev> n;
+   @Nullable
+   public ffx<fev> o;
+   @Nullable
+   public ffx<fev> p;
+   @Nullable
+   public ffx<fev> q;
 
    @Override
-   public boolean c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.d;
-   }
-
-   @Override
-   public String toString() {
-      return "Variant{modelLocation=" + this.a + ", rotation=" + this.b + ", uvLock=" + this.c + ", weight=" + this.d + "}";
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
+   public void a(alz $$0, ffx<fev> $$1) {
+      if ($$0.equals(a)) {
+         this.k = $$1;
+      } else if ($$0.equals(b)) {
+         this.l = $$1;
+      } else if ($$0.equals(c)) {
+         this.m = $$1;
+      } else if ($$0.equals(d)) {
+         this.n = $$1;
+      } else if ($$0.equals(e)) {
+         this.o = $$1;
+      } else if ($$0.equals(f)) {
+         this.p = $$1;
       } else {
-         return !($$0 instanceof glb $$1) ? false : this.a.equals($$1.a) && Objects.equals(this.b, $$1.b) && this.c == $$1.c && this.d == $$1.d;
+         if (!$$0.equals(g)) {
+            throw new IllegalArgumentException("No target with id " + $$0);
+         }
+
+         this.q = $$1;
       }
    }
 
+   @Nullable
    @Override
-   public int hashCode() {
-      int $$0 = this.a.hashCode();
-      $$0 = 31 * $$0 + this.b.hashCode();
-      $$0 = 31 * $$0 + Boolean.valueOf(this.c).hashCode();
-      return 31 * $$0 + this.d;
+   public ffx<fev> a(alz $$0) {
+      if ($$0.equals(a)) {
+         return this.k;
+      } else if ($$0.equals(b)) {
+         return this.l;
+      } else if ($$0.equals(c)) {
+         return this.m;
+      } else if ($$0.equals(d)) {
+         return this.n;
+      } else if ($$0.equals(e)) {
+         return this.o;
+      } else if ($$0.equals(f)) {
+         return this.p;
+      } else {
+         return $$0.equals(g) ? this.q : null;
+      }
    }
 
-   public static class a implements JsonDeserializer<glb> {
-      @VisibleForTesting
-      static final boolean a = false;
-      @VisibleForTesting
-      static final int b = 1;
-      @VisibleForTesting
-      static final int c = 0;
-      @VisibleForTesting
-      static final int d = 0;
-
-      public glb a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         alj $$4 = this.b($$3);
-         hbh $$5 = this.a($$3);
-         boolean $$6 = this.d($$3);
-         int $$7 = this.c($$3);
-         return new glb($$4, $$5.b(), $$6, $$7);
-      }
-
-      private boolean d(JsonObject $$0) {
-         return azc.a($$0, "uvlock", false);
-      }
-
-      protected hbh a(JsonObject $$0) {
-         int $$1 = azc.a($$0, "x", 0);
-         int $$2 = azc.a($$0, "y", 0);
-         hbh $$3 = hbh.a($$1, $$2);
-         if ($$3 == null) {
-            throw new JsonParseException("Invalid BlockModelRotation x: " + $$1 + ", y: " + $$2);
-         } else {
-            return $$3;
-         }
-      }
-
-      protected alj b(JsonObject $$0) {
-         return alj.a(azc.i($$0, "model"));
-      }
-
-      protected int c(JsonObject $$0) {
-         int $$1 = azc.a($$0, "weight", 1);
-         if ($$1 < 1) {
-            throw new JsonParseException("Invalid weight " + $$1 + " found, expected integer >= 1");
-         } else {
-            return $$1;
-         }
-      }
+   public void a() {
+      this.k = ffx.a();
+      this.l = null;
+      this.m = null;
+      this.n = null;
+      this.o = null;
+      this.p = null;
+      this.q = null;
    }
 }

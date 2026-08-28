@@ -1,318 +1,356 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Lists;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
 import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fou implements auw, AutoCloseable {
-   static final Logger b = LogUtils.getLogger();
-   private static final String c = "fonts.json";
-   public static final alj a = alj.b("missing");
-   private static final alc d = alc.a("font");
-   private static final Gson e = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-   private final fow f;
-   private final List<fcq> g = new ArrayList<>();
-   private final Map<alj, fow> h = new HashMap<>();
-   private final gzf i;
-   @Nullable
-   private volatile fow j;
+public class fou {
+   public static final int a = Integer.MAX_VALUE;
+   private static final int b = 2;
+   private final fnj c;
+   private final List<fou.a> d = Lists.newArrayList();
+   private String e;
+   private int f;
+   private int g;
+   private boolean h;
+   private int i = Integer.MAX_VALUE;
+   private final int j;
+   private Consumer<String> k = $$0x -> {
+   };
+   private Runnable l = () -> {
+   };
 
-   public fou(gzf $$0) {
-      this.i = $$0;
-      this.f = ae.a(new fow($$0, a), $$0x -> $$0x.a(List.of(d()), Set.of()));
+   public fou(fnj $$0, int $$1) {
+      this.c = $$0;
+      this.j = $$1;
+      this.a("");
    }
 
-   private static fcq.a d() {
-      return new fcq.a(new fos(), fov.a.b);
+   public int a() {
+      return this.i;
    }
 
-   @Override
-   public CompletableFuture<Void> a(auw.a $$0, avd $$1, Executor $$2, Executor $$3) {
-      return this.a($$1, $$2).thenCompose($$0::a).thenAcceptAsync($$0x -> this.a($$0x, bot.a()), $$3);
-   }
-
-   private CompletableFuture<fou.d> a(avd $$0, Executor $$1) {
-      List<CompletableFuture<fou.e>> $$2 = new ArrayList<>();
-
-      for (Entry<alj, List<avb>> $$3 : d.b($$0).entrySet()) {
-         alj $$4 = d.b($$3.getKey());
-         $$2.add(CompletableFuture.supplyAsync(() -> {
-            List<Pair<fou.a, fph.a>> $$4x = a($$3.getValue(), $$4);
-            fou.e $$5 = new fou.e($$4);
-
-            for (Pair<fou.a, fph.a> $$6 : $$4x) {
-               fou.a $$7 = (fou.a)$$6.getFirst();
-               fov.a $$8 = ((fph.a)$$6.getSecond()).b();
-               ((fph.a)$$6.getSecond()).a().b().ifLeft($$5x -> {
-                  CompletableFuture<Optional<fcq>> $$6x = this.a($$7, $$5x, $$0, $$1);
-                  $$5.a($$7, $$8, $$6x);
-               }).ifRight($$3xx -> $$5.a($$7, $$8, $$3xx));
-            }
-
-            return $$5;
-         }, $$1));
-      }
-
-      return ae.d($$2)
-         .thenCompose(
-            $$1x -> {
-               List<CompletableFuture<Optional<fcq>>> $$2x = $$1x.stream().flatMap(fou.e::d).collect(ae.b());
-               fcq.a $$3x = d();
-               $$2x.add(CompletableFuture.completedFuture(Optional.of($$3x.a())));
-               return ae.d($$2x)
-                  .thenCompose(
-                     $$3xx -> {
-                        Map<alj, List<fcq.a>> $$4x = this.a($$1x);
-                        CompletableFuture<?>[] $$5 = $$4x.values()
-                           .stream()
-                           .map($$2xxx -> CompletableFuture.runAsync(() -> this.a($$2xxx, $$3x), $$1))
-                           .toArray(CompletableFuture[]::new);
-                        return CompletableFuture.allOf($$5).thenApply($$2xxx -> {
-                           List<fcq> $$3xxx = $$3xx.stream().flatMap(Optional::stream).toList();
-                           return new fou.d($$4x, $$3xxx);
-                        });
-                     }
-                  );
-            }
-         );
-   }
-
-   private CompletableFuture<Optional<fcq>> a(fou.a $$0, fph.b $$1, avd $$2, Executor $$3) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            return Optional.of($$1.load($$2));
-         } catch (Exception var4x) {
-            b.warn("Failed to load builder {}, rejecting", $$0, var4x);
-            return Optional.empty();
-         }
-      }, $$3);
-   }
-
-   private Map<alj, List<fcq.a>> a(List<fou.e> $$0) {
-      Map<alj, List<fcq.a>> $$1 = new HashMap<>();
-      ayr<alj, fou.e> $$2 = new ayr<>();
-      $$0.forEach($$1x -> $$2.a($$1x.a, $$1x));
-      $$2.a(($$1x, $$2x) -> $$2x.a($$1::get).ifPresent($$2xx -> $$1.put($$1x, $$2xx)));
-      return $$1;
-   }
-
-   private void a(List<fcq.a> $$0, fcq.a $$1) {
-      $$0.add(0, $$1);
-      IntSet $$2 = new IntOpenHashSet();
-
-      for (fcq.a $$3 : $$0) {
-         $$2.addAll($$3.a().a());
-      }
-
-      $$2.forEach($$1x -> {
-         if ($$1x != 32) {
-            for (fcq.a $$2x : Lists.reverse($$0)) {
-               if ($$2x.a().a($$1x) != null) {
-                  break;
-               }
-            }
-         }
-      });
-   }
-
-   private static Set<fov> b(fki $$0) {
-      Set<fov> $$1 = EnumSet.noneOf(fov.class);
-      if ($$0.R().c()) {
-         $$1.add(fov.a);
-      }
-
-      if ($$0.S().c()) {
-         $$1.add(fov.b);
-      }
-
-      return $$1;
-   }
-
-   private void a(fou.d $$0, bou $$1) {
-      $$1.a("closing");
-      this.j = null;
-      this.h.values().forEach(fow::close);
-      this.h.clear();
-      this.g.forEach(fcq::close);
-      this.g.clear();
-      Set<fov> $$2 = b(fke.Q().n);
-      $$1.b("reloading");
-      $$0.a().forEach(($$1x, $$2x) -> {
-         fow $$3 = new fow(this.i, $$1x);
-         $$3.a(Lists.reverse($$2x), $$2);
-         this.h.put($$1x, $$3);
-      });
-      this.g.addAll($$0.b);
-      $$1.c();
-      if (!this.h.containsKey(fke.b)) {
-         throw new IllegalStateException("Default font failed to load");
-      }
-   }
-
-   public void a(fki $$0) {
-      Set<fov> $$1 = b($$0);
-
-      for (fow $$2 : this.h.values()) {
-         $$2.a($$1);
-      }
-   }
-
-   private static List<Pair<fou.a, fph.a>> a(List<avb> $$0, alj $$1) {
-      List<Pair<fou.a, fph.a>> $$2 = new ArrayList<>();
-
-      for (avb $$3 : $$0) {
-         try (Reader $$4 = $$3.e()) {
-            JsonElement $$5 = (JsonElement)e.fromJson($$4, JsonElement.class);
-            fou.c $$6 = (fou.c)fou.c.a.parse(JsonOps.INSTANCE, $$5).getOrThrow(JsonParseException::new);
-            List<fph.a> $$7 = $$6.b;
-
-            for (int $$8 = $$7.size() - 1; $$8 >= 0; $$8--) {
-               fou.a $$9 = new fou.a($$1, $$3.b(), $$8);
-               $$2.add(Pair.of($$9, $$7.get($$8)));
-            }
-         } catch (Exception var13) {
-            b.warn("Unable to load font '{}' in {} in resourcepack: '{}'", new Object[]{$$1, "fonts.json", $$3.b(), var13});
-         }
-      }
-
-      return $$2;
-   }
-
-   public flo a() {
-      return new flo(this::b, false);
-   }
-
-   public flo b() {
-      return new flo(this::b, true);
-   }
-
-   private fow a(alj $$0) {
-      return this.h.getOrDefault($$0, this.f);
-   }
-
-   private fow b(alj $$0) {
-      fow $$1 = this.j;
-      if ($$1 != null && $$0.equals($$1.a())) {
-         return $$1;
+   public void a(int $$0) {
+      if ($$0 < 0) {
+         throw new IllegalArgumentException("Character limit cannot be negative");
       } else {
-         fow $$2 = this.a($$0);
-         this.j = $$2;
-         return $$2;
+         this.i = $$0;
       }
    }
 
-   @Override
-   public void close() {
-      this.h.values().forEach(fow::close);
-      this.g.forEach(fcq::close);
-      this.f.close();
+   public boolean b() {
+      return this.i != Integer.MAX_VALUE;
    }
 
-   static record a(alj a, String b, int c) {
-      @Override
-      public String toString() {
-         return "(" + this.a + ": builder #" + this.c + " from pack " + this.b + ")";
-      }
+   public void a(Consumer<String> $$0) {
+      this.k = $$0;
    }
 
-   static record b(fou.a a, fov.a b, Either<CompletableFuture<Optional<fcq>>, alj> c) {
-
-      public Optional<List<fcq.a>> a(Function<alj, List<fcq.a>> $$0) {
-         return (Optional<List<fcq.a>>)this.c.map($$0x -> ((Optional)$$0x.join()).map($$0xx -> List.of(new fcq.a($$0xx, this.b))), $$1 -> {
-            List<fcq.a> $$2 = $$0.apply($$1);
-            if ($$2 == null) {
-               fou.b.warn("Can't find font {} referenced by builder {}, either because it's missing, failed to load or is part of loading cycle", $$1, this.a);
-               return Optional.empty();
-            } else {
-               return Optional.of($$2.stream().map(this::a).toList());
-            }
-         });
-      }
-
-      private fcq.a a(fcq.a $$0) {
-         return new fcq.a($$0.a(), this.b.a($$0.b()));
-      }
+   public void a(Runnable $$0) {
+      this.l = $$0;
    }
 
-   static record c(List<fph.a> b) {
-      public static final Codec<fou.c> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(fph.a.a.listOf().fieldOf("providers").forGetter(fou.c::a)).apply($$0, fou.c::new)
-      );
+   public void a(String $$0) {
+      this.e = this.c($$0);
+      this.f = this.e.length();
+      this.g = this.f;
+      this.n();
+   }
 
-      public List<fph.a> a() {
-         return this.b;
+   public String c() {
+      return this.e;
+   }
+
+   public void b(String $$0) {
+      if (!$$0.isEmpty() || this.i()) {
+         String $$1 = this.d(bbb.a($$0, true));
+         fou.a $$2 = this.e();
+         this.e = new StringBuilder(this.e).replace($$2.a, $$2.b, $$1).toString();
+         this.f = $$2.a + $$1.length();
+         this.g = this.f;
+         this.n();
       }
    }
 
-   static record d(Map<alj, List<fcq.a>> a, List<fcq> b) {
+   public void b(int $$0) {
+      if (!this.i()) {
+         this.g = bae.a(this.f + $$0, 0, this.e.length());
+      }
+
+      this.b("");
    }
 
-   static record e(alj a, List<fou.b> b, Set<alj> c) implements ayr.a<alj> {
+   public int d() {
+      return this.f;
+   }
 
-      public e(alj $$0) {
-         this($$0, new ArrayList<>(), new HashSet<>());
+   public void a(boolean $$0) {
+      this.h = $$0;
+   }
+
+   public fou.a e() {
+      return new fou.a(Math.min(this.g, this.f), Math.max(this.g, this.f));
+   }
+
+   public int f() {
+      return this.d.size();
+   }
+
+   public int g() {
+      for (int $$0 = 0; $$0 < this.d.size(); $$0++) {
+         fou.a $$1 = this.d.get($$0);
+         if (this.f >= $$1.a && this.f <= $$1.b) {
+            return $$0;
+         }
       }
 
-      public void a(fou.a $$0, fov.a $$1, fph.c $$2) {
-         this.b.add(new fou.b($$0, $$1, Either.right($$2.a())));
-         this.c.add($$2.a());
+      return -1;
+   }
+
+   public fou.a c(int $$0) {
+      return this.d.get(bae.a($$0, 0, this.d.size() - 1));
+   }
+
+   public void a(fpl $$0, int $$1) {
+      switch ($$0) {
+         case a:
+            this.f = $$1;
+            break;
+         case b:
+            this.f += $$1;
+            break;
+         case c:
+            this.f = this.e.length() + $$1;
       }
 
-      public void a(fou.a $$0, fov.a $$1, CompletableFuture<Optional<fcq>> $$2) {
-         this.b.add(new fou.b($$0, $$1, Either.left($$2)));
+      this.f = bae.a(this.f, 0, this.e.length());
+      this.l.run();
+      if (!this.h) {
+         this.g = this.f;
       }
+   }
 
-      private Stream<CompletableFuture<Optional<fcq>>> d() {
-         return this.b.stream().flatMap($$0 -> $$0.c.left().stream());
+   public void d(int $$0) {
+      if ($$0 != 0) {
+         int $$1 = this.c.b(this.e.substring(this.m().a, this.f)) + 2;
+         fou.a $$2 = this.f($$0);
+         int $$3 = this.c.a(this.e.substring($$2.a, $$2.b), $$1).length();
+         this.a(fpl.a, $$2.a + $$3);
       }
+   }
 
-      public Optional<List<fcq.a>> a(Function<alj, List<fcq.a>> $$0) {
-         List<fcq.a> $$1 = new ArrayList<>();
+   public void a(double $$0, double $$1) {
+      int $$2 = bae.a($$0);
+      int $$3 = bae.a($$1 / 9.0);
+      fou.a $$4 = this.d.get(bae.a($$3, 0, this.d.size() - 1));
+      int $$5 = this.c.a(this.e.substring($$4.a, $$4.b), $$2).length();
+      this.a(fpl.a, $$4.a + $$5);
+   }
 
-         for (fou.b $$2 : this.b) {
-            Optional<List<fcq.a>> $$3 = $$2.a($$0);
-            if (!$$3.isPresent()) {
-               return Optional.empty();
-            }
+   public boolean e(int $$0) {
+      this.h = ftr.s();
+      if (ftr.f($$0)) {
+         this.f = this.e.length();
+         this.g = 0;
+         return true;
+      } else if (ftr.e($$0)) {
+         flz.Q().p.a(this.j());
+         return true;
+      } else if (ftr.d($$0)) {
+         this.b(flz.Q().p.a());
+         return true;
+      } else if (ftr.c($$0)) {
+         flz.Q().p.a(this.j());
+         this.b("");
+         return true;
+      } else {
+         switch ($$0) {
+            case 257:
+            case 335:
+               this.b("\n");
+               return true;
+            case 259:
+               if (ftr.r()) {
+                  fou.a $$3 = this.k();
+                  this.b($$3.a - this.f);
+               } else {
+                  this.b(-1);
+               }
 
-            $$1.addAll($$3.get());
+               return true;
+            case 261:
+               if (ftr.r()) {
+                  fou.a $$4 = this.l();
+                  this.b($$4.a - this.f);
+               } else {
+                  this.b(1);
+               }
+
+               return true;
+            case 262:
+               if (ftr.r()) {
+                  fou.a $$2 = this.l();
+                  this.a(fpl.a, $$2.a);
+               } else {
+                  this.a(fpl.b, 1);
+               }
+
+               return true;
+            case 263:
+               if (ftr.r()) {
+                  fou.a $$1 = this.k();
+                  this.a(fpl.a, $$1.a);
+               } else {
+                  this.a(fpl.b, -1);
+               }
+
+               return true;
+            case 264:
+               if (!ftr.r()) {
+                  this.d(1);
+               }
+
+               return true;
+            case 265:
+               if (!ftr.r()) {
+                  this.d(-1);
+               }
+
+               return true;
+            case 266:
+               this.a(fpl.a, 0);
+               return true;
+            case 267:
+               this.a(fpl.c, 0);
+               return true;
+            case 268:
+               if (ftr.r()) {
+                  this.a(fpl.a, 0);
+               } else {
+                  this.a(fpl.a, this.m().a);
+               }
+
+               return true;
+            case 269:
+               if (ftr.r()) {
+                  this.a(fpl.c, 0);
+               } else {
+                  this.a(fpl.a, this.m().b);
+               }
+
+               return true;
+            default:
+               return false;
+         }
+      }
+   }
+
+   public Iterable<fou.a> h() {
+      return this.d;
+   }
+
+   public boolean i() {
+      return this.g != this.f;
+   }
+
+   @VisibleForTesting
+   public String j() {
+      fou.a $$0 = this.e();
+      return this.e.substring($$0.a, $$0.b);
+   }
+
+   private fou.a m() {
+      return this.f(0);
+   }
+
+   private fou.a f(int $$0) {
+      int $$1 = this.g();
+      if ($$1 < 0) {
+         throw new IllegalStateException("Cursor is not within text (cursor = " + this.f + ", length = " + this.e.length() + ")");
+      } else {
+         return this.d.get(bae.a($$1 + $$0, 0, this.d.size() - 1));
+      }
+   }
+
+   @VisibleForTesting
+   public fou.a k() {
+      if (this.e.isEmpty()) {
+         return fou.a.c;
+      } else {
+         int $$0 = bae.a(this.f, 0, this.e.length() - 1);
+
+         while ($$0 > 0 && Character.isWhitespace(this.e.charAt($$0 - 1))) {
+            $$0--;
          }
 
-         return Optional.of($$1);
+         while ($$0 > 0 && !Character.isWhitespace(this.e.charAt($$0 - 1))) {
+            $$0--;
+         }
+
+         return new fou.a($$0, this.g($$0));
+      }
+   }
+
+   @VisibleForTesting
+   public fou.a l() {
+      if (this.e.isEmpty()) {
+         return fou.a.c;
+      } else {
+         int $$0 = bae.a(this.f, 0, this.e.length() - 1);
+
+         while ($$0 < this.e.length() && !Character.isWhitespace(this.e.charAt($$0))) {
+            $$0++;
+         }
+
+         while ($$0 < this.e.length() && Character.isWhitespace(this.e.charAt($$0))) {
+            $$0++;
+         }
+
+         return new fou.a($$0, this.g($$0));
+      }
+   }
+
+   private int g(int $$0) {
+      int $$1 = $$0;
+
+      while ($$1 < this.e.length() && !Character.isWhitespace(this.e.charAt($$1))) {
+         $$1++;
       }
 
-      @Override
-      public void a(Consumer<alj> $$0) {
-         this.c.forEach($$0);
-      }
+      return $$1;
+   }
 
-      @Override
-      public void b(Consumer<alj> $$0) {
+   private void n() {
+      this.o();
+      this.k.accept(this.e);
+      this.l.run();
+   }
+
+   private void o() {
+      this.d.clear();
+      if (this.e.isEmpty()) {
+         this.d.add(fou.a.c);
+      } else {
+         this.c.b().a(this.e, this.j, ys.a, false, ($$0, $$1, $$2) -> this.d.add(new fou.a($$1, $$2)));
+         if (this.e.charAt(this.e.length() - 1) == '\n') {
+            this.d.add(new fou.a(this.e.length(), this.e.length()));
+         }
       }
+   }
+
+   private String c(String $$0) {
+      return this.b() ? bbb.a($$0, this.i, false) : $$0;
+   }
+
+   private String d(String $$0) {
+      if (this.b()) {
+         int $$1 = this.i - this.e.length();
+         return bbb.a($$0, $$1, false);
+      } else {
+         return $$0;
+      }
+   }
+
+   protected static record a(int a, int b) {
+      static final fou.a c = new fou.a(0, 0);
    }
 }

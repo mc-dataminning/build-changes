@@ -1,3 +1,3 @@
-public class gxb extends gwm {
-   public int a;
+public class gxb extends gzj {
+   public boolean a;
 }

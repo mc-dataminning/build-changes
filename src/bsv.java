@@ -1,3 +1,11 @@
+import javax.annotation.Nullable;
+
 public interface bsv {
-   bsu a(dvv var1, dfn var2, jh var3);
+   void a();
+
+   static void a(@Nullable Object $$0) {
+      if ($$0 instanceof bsv) {
+         ((bsv)$$0).a();
+      }
+   }
 }

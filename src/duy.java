@@ -1,134 +1,139 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public record duy(int d, float e, float f, float g, float h, int i, bqs<dgg> j, bqs<ali<eus>> k, ali<eus> l) {
-   public static final duy a = b().a();
-   public static final Codec<duy> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 128).optionalFieldOf("spawn_range", a.d).forGetter(duy::c),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs", a.e).forGetter(duy::d),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs", a.f).forGetter(duy::e),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs_added_per_player", a.g).forGetter(duy::f),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs_added_per_player", a.h).forGetter(duy::g),
-               Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("ticks_between_spawn", a.i).forGetter(duy::h),
-               dgg.c.optionalFieldOf("spawn_potentials", bqs.b()).forGetter(duy::i),
-               bqs.a(ali.a(ma.bd)).optionalFieldOf("loot_tables_to_eject", a.k).forGetter(duy::j),
-               ali.a(ma.bd).optionalFieldOf("items_to_drop_when_ominous", a.l).forGetter(duy::k)
-            )
-            .apply($$0, duy::new)
-   );
-   public static final Codec<jq<duy>> c = alf.a(ma.aF, b);
+public class duy extends dup implements bsx {
+   public static final int b = 6;
+   private static final Logger c = LogUtils.getLogger();
+   private final jz<cxk> d = jz.a(6, cxk.k);
+   private int e = -1;
 
-   public int a(int $$0) {
-      return (int)Math.floor((double)(this.e + this.g * (float)$$0));
+   public duy(jh $$0, dxn $$1) {
+      super(dur.N, $$0, $$1);
    }
 
-   public int b(int $$0) {
-      return (int)Math.floor((double)(this.f + this.h * (float)$$0));
+   private void c(int $$0) {
+      if ($$0 >= 0 && $$0 < 6) {
+         this.e = $$0;
+         dxn $$1 = this.m();
+
+         for (int $$2 = 0; $$2 < dlj.c.size(); $$2++) {
+            boolean $$3 = !this.a($$2).f();
+            dye $$4 = dlj.c.get($$2);
+            $$1 = $$1.b($$4, Boolean.valueOf($$3));
+         }
+
+         Objects.requireNonNull(this.o).a(this.p, $$1, 3);
+         this.o.a(ecj.c, this.p, ecj.a.a($$1));
+      } else {
+         c.error("Expected slot 0-5, got {}", $$0);
+      }
    }
 
-   public long a() {
-      return 160L;
+   @Override
+   protected void a(ux $$0, js.a $$1) {
+      super.a($$0, $$1);
+      this.d.clear();
+      bsy.b($$0, this.d, $$1);
+      this.e = $$0.h("last_interacted_slot");
    }
 
-   public static duy.a b() {
-      return new duy.a();
+   @Override
+   protected void b(ux $$0, js.a $$1) {
+      super.b($$0, $$1);
+      bsy.a($$0, this.d, true, $$1);
+      $$0.a("last_interacted_slot", this.e);
    }
 
-   public int c() {
-      return this.d;
+   public int f() {
+      return (int)this.d.stream().filter(Predicate.not(cxk::f)).count();
    }
 
-   public float d() {
+   @Override
+   public void a() {
+      this.d.clear();
+   }
+
+   @Override
+   public int b() {
+      return 6;
+   }
+
+   @Override
+   public boolean c() {
+      return this.d.stream().allMatch(cxk::f);
+   }
+
+   @Override
+   public cxk a(int $$0) {
+      return this.d.get($$0);
+   }
+
+   @Override
+   public cxk a(int $$0, int $$1) {
+      cxk $$2 = Objects.requireNonNullElse(this.d.get($$0), cxk.k);
+      this.d.set($$0, cxk.k);
+      if (!$$2.f()) {
+         this.c($$0);
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public cxk b(int $$0) {
+      return this.a($$0, 1);
+   }
+
+   @Override
+   public void a(int $$0, cxk $$1) {
+      if ($$1.a(ayd.bb)) {
+         this.d.set($$0, $$1);
+         this.c($$0);
+      } else if ($$1.f()) {
+         this.a($$0, 1);
+      }
+   }
+
+   @Override
+   public boolean a(bsx $$0, int $$1, cxk $$2) {
+      return $$0.a_($$2x -> $$2x.f() ? true : cxk.c($$2, $$2x) && $$2x.L() + $$2.L() <= $$0.e_($$2x));
+   }
+
+   @Override
+   public int ao_() {
+      return 1;
+   }
+
+   @Override
+   public boolean a(cps $$0) {
+      return bsx.a(this, $$0);
+   }
+
+   @Override
+   public boolean b(int $$0, cxk $$1) {
+      return $$1.a(ayd.bb) && this.a($$0).f() && $$1.L() == this.ao_();
+   }
+
+   public int j() {
       return this.e;
    }
 
-   public float e() {
-      return this.f;
+   @Override
+   protected void a(dup.b $$0) {
+      super.a($$0);
+      $$0.a(ku.al, dac.a).a(this.d);
    }
 
-   public float f() {
-      return this.g;
+   @Override
+   protected void a(kq.a $$0) {
+      super.a($$0);
+      $$0.a(ku.al, dac.a(this.d));
    }
 
-   public float g() {
-      return this.h;
-   }
-
-   public int h() {
-      return this.i;
-   }
-
-   public bqs<dgg> i() {
-      return this.j;
-   }
-
-   public bqs<ali<eus>> j() {
-      return this.k;
-   }
-
-   public ali<eus> k() {
-      return this.l;
-   }
-
-   public static class a {
-      private int a = 4;
-      private float b = 6.0F;
-      private float c = 2.0F;
-      private float d = 2.0F;
-      private float e = 1.0F;
-      private int f = 40;
-      private bqs<dgg> g = bqs.b();
-      private bqs<ali<eus>> h = bqs.<ali<eus>>a().a(euj.aM).a(euj.aL).a();
-      private ali<eus> i = euj.aP;
-
-      public duy.a a(int $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public duy.a a(float $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public duy.a b(float $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public duy.a c(float $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public duy.a d(float $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public duy.a b(int $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public duy.a a(bqs<dgg> $$0) {
-         this.g = $$0;
-         return this;
-      }
-
-      public duy.a b(bqs<ali<eus>> $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public duy.a a(ali<eus> $$0) {
-         this.i = $$0;
-         return this;
-      }
-
-      public duy a() {
-         return new duy(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i);
-      }
+   @Override
+   public void a(ux $$0) {
+      $$0.r("Items");
    }
 }

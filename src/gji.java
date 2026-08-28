@@ -1,81 +1,99 @@
 import java.util.Optional;
 
-public class gji implements gjg {
-   private final gjg.a a;
-   private final gjg.a b = gjg.a(new feo(1536));
-   private int c = 255;
-   private int d = 255;
-   private int e = 255;
-   private int f = 255;
+public class gji extends gjl {
+   gji(gfd $$0, gjg $$1, double $$2, double $$3, double $$4) {
+      super($$0, $$2, $$3 - 0.125, $$4);
+      this.b(0.01F, 0.01F);
+      this.a($$1);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      this.n = false;
+      this.B = 1.0F;
+      this.u = 0.0F;
+   }
 
-   public gji(gjg.a $$0) {
-      this.a = $$0;
+   gji(gfd $$0, gjg $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      super($$0, $$2, $$3 - 0.125, $$4, $$5, $$6, $$7);
+      this.b(0.01F, 0.01F);
+      this.a($$1);
+      this.D = this.D * (this.r.i() * 0.6F + 0.6F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      this.n = false;
+      this.B = 1.0F;
+      this.u = 0.0F;
    }
 
    @Override
-   public fev getBuffer(gjq $$0) {
-      if ($$0.Q()) {
-         fev $$1 = this.b.getBuffer($$0);
-         return new gji.a($$1, this.c, this.d, this.e, this.f);
-      } else {
-         fev $$2 = this.a.getBuffer($$0);
-         Optional<gjq> $$3 = $$0.P();
-         if ($$3.isPresent()) {
-            fev $$4 = this.b.getBuffer($$3.get());
-            gji.a $$5 = new gji.a($$4, this.c, this.d, this.e, this.f);
-            return fey.a($$5, $$2);
-         } else {
-            return $$2;
-         }
+   public gip b() {
+      return gip.b;
+   }
+
+   public static class a implements gio<lw> {
+      private final gjg a;
+
+      public a(gjg $$0) {
+         this.a = $$0;
+      }
+
+      public gil a(lw $$0, gfd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         bam $$8 = $$1.A;
+         double $$9 = $$8.k() * 1.0E-6F;
+         double $$10 = $$8.k() * 1.0E-4F;
+         double $$11 = $$8.k() * 1.0E-6F;
+         gji $$12 = new gji($$1, this.a, $$2, $$3, $$4, $$9, $$10, $$11);
+         $$12.a(0.9F, 0.4F, 0.5F);
+         return $$12;
       }
    }
 
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public static class b implements gio<lw> {
+      private final gjg a;
+
+      public b(gjg $$0) {
+         this.a = $$0;
+      }
+
+      public gil a(lw $$0, gfd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gji $$8 = new gji($$1, this.a, $$2, $$3, $$4, 0.0, -0.8F, 0.0) {
+            @Override
+            public Optional<lp> o() {
+               return Optional.of(lp.a);
+            }
+         };
+         $$8.t = bae.b($$1.A, 500, 1000);
+         $$8.u = 0.01F;
+         $$8.a(0.32F, 0.5F, 0.22F);
+         return $$8;
+      }
    }
 
-   public void a() {
-      this.b.b();
+   public static class c implements gio<lw> {
+      private final gjg a;
+
+      public c(gjg $$0) {
+         this.a = $$0;
+      }
+
+      public gil a(lw $$0, gfd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gji $$8 = new gji($$1, this.a, $$2, $$3, $$4);
+         $$8.a(0.4F, 0.4F, 0.7F);
+         return $$8;
+      }
    }
 
-   static record a(fev a, int b) implements fev {
-      public a(fev $$0, int $$1, int $$2, int $$3, int $$4) {
-         this($$0, axx.a($$4, $$1, $$2, $$3));
+   public static class d implements gio<lw> {
+      private final gjg a;
+
+      public d(gjg $$0) {
+         this.a = $$0;
       }
 
-      @Override
-      public fev a(float $$0, float $$1, float $$2) {
-         this.a.a($$0, $$1, $$2).a(this.b);
-         return this;
-      }
-
-      @Override
-      public fev a(int $$0, int $$1, int $$2, int $$3) {
-         return this;
-      }
-
-      @Override
-      public fev a(float $$0, float $$1) {
-         this.a.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fev a(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public fev b(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public fev b(float $$0, float $$1, float $$2) {
-         return this;
+      public gil a(lw $$0, gfd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         double $$8 = (double)$$1.A.i() * -1.9 * (double)$$1.A.i() * 0.1;
+         gji $$9 = new gji($$1, this.a, $$2, $$3, $$4, 0.0, $$8, 0.0);
+         $$9.a(0.1F, 0.1F, 0.3F);
+         $$9.b(0.001F, 0.001F);
+         return $$9;
       }
    }
 }

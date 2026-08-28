@@ -1,64 +1,80 @@
-import java.io.Serializable;
-import java.util.Deque;
-import java.util.List;
-import java.util.RandomAccess;
-import javax.annotation.Nullable;
+import java.io.DataOutput;
+import java.io.IOException;
 
-public interface azi<T> extends Serializable, Cloneable, Deque<T>, List<T>, RandomAccess {
-   azi<T> b();
+public class azi implements DataOutput {
+   private final DataOutput a;
 
-   @Override
-   T getFirst();
-
-   @Override
-   T getLast();
-
-   @Override
-   void addFirst(T var1);
-
-   @Override
-   void addLast(T var1);
-
-   @Override
-   T removeFirst();
-
-   @Override
-   T removeLast();
-
-   @Override
-   default boolean offer(T $$0) {
-      return this.offerLast($$0);
+   public azi(DataOutput $$0) {
+      this.a = $$0;
    }
 
    @Override
-   default T remove() {
-      return this.removeFirst();
-   }
-
-   @Nullable
-   @Override
-   default T poll() {
-      return this.pollFirst();
+   public void write(int $$0) throws IOException {
+      this.a.write($$0);
    }
 
    @Override
-   default T element() {
-      return this.getFirst();
-   }
-
-   @Nullable
-   @Override
-   default T peek() {
-      return this.peekFirst();
+   public void write(byte[] $$0) throws IOException {
+      this.a.write($$0);
    }
 
    @Override
-   default void push(T $$0) {
-      this.addFirst($$0);
+   public void write(byte[] $$0, int $$1, int $$2) throws IOException {
+      this.a.write($$0, $$1, $$2);
    }
 
    @Override
-   default T pop() {
-      return this.removeFirst();
+   public void writeBoolean(boolean $$0) throws IOException {
+      this.a.writeBoolean($$0);
+   }
+
+   @Override
+   public void writeByte(int $$0) throws IOException {
+      this.a.writeByte($$0);
+   }
+
+   @Override
+   public void writeShort(int $$0) throws IOException {
+      this.a.writeShort($$0);
+   }
+
+   @Override
+   public void writeChar(int $$0) throws IOException {
+      this.a.writeChar($$0);
+   }
+
+   @Override
+   public void writeInt(int $$0) throws IOException {
+      this.a.writeInt($$0);
+   }
+
+   @Override
+   public void writeLong(long $$0) throws IOException {
+      this.a.writeLong($$0);
+   }
+
+   @Override
+   public void writeFloat(float $$0) throws IOException {
+      this.a.writeFloat($$0);
+   }
+
+   @Override
+   public void writeDouble(double $$0) throws IOException {
+      this.a.writeDouble($$0);
+   }
+
+   @Override
+   public void writeBytes(String $$0) throws IOException {
+      this.a.writeBytes($$0);
+   }
+
+   @Override
+   public void writeChars(String $$0) throws IOException {
+      this.a.writeChars($$0);
+   }
+
+   @Override
+   public void writeUTF(String $$0) throws IOException {
+      this.a.writeUTF($$0);
    }
 }

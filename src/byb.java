@@ -1,34 +1,34 @@
 import com.google.common.collect.ImmutableMap;
 
-public class byb extends bxa<bvj> {
-   public static final int c = 100;
-   private final brv d;
-   private final awm e;
+public class byb extends bxu<cjm> {
+   private static final int c = 60;
+   private static final int d = 100;
+   private int e;
 
-   public byb(brv $$0, awm $$1) {
-      super(ImmutableMap.of(cel.n, cem.c, cel.T, cem.a), 100);
-      this.d = $$0;
-      this.e = $$1;
+   public byb() {
+      super(ImmutableMap.of(cff.m, cfg.b), 100);
    }
 
-   protected boolean a(arp $$0, bvj $$1, long $$2) {
-      return !$$1.aJ();
+   protected boolean a(ash $$0, cjm $$1) {
+      return $$1.aw() == bwn.a;
    }
 
-   protected void b(arp $$0, bvj $$1, long $$2) {
-      $$1.r(true);
-      $$1.b(bvt.g);
+   protected boolean a(ash $$0, cjm $$1, long $$2) {
+      return this.e < 60;
    }
 
-   protected void c(arp $$0, bvj $$1, long $$2) {
-      if ($$1.aJ()) {
-         $$1.h($$1.dy().d(0.1F, 1.0, 0.1F));
-         $$0.a(null, $$1, this.e, awo.g, 2.0F, 1.0F);
+   protected void b(ash $$0, cjm $$1, long $$2) {
+      if (!$$1.bn()) {
+         $$1.b(bwn.i);
+         this.e = 0;
       }
+   }
 
-      $$1.r(false);
-      $$1.b(bvt.a);
-      $$1.eb().b(cel.T);
-      $$1.eb().a(cel.S, this.d.a($$0.A));
+   protected void c(ash $$0, cjm $$1, long $$2) {
+      $$1.b(bwn.a);
+   }
+
+   protected void d(ash $$0, cjm $$1, long $$2) {
+      this.e++;
    }
 }

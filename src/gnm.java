@@ -1,107 +1,53 @@
-import java.time.Duration;
-import java.time.Instant;
-import javax.annotation.Nullable;
-import org.joml.Matrix4f;
-import org.joml.Vector4f;
+public class gnm implements gnp<dul> {
+   private final gca a;
+   private final gca b;
 
-public class gnm implements gng.a {
-   private static final Duration a = Duration.ofMillis(500L);
-   private static final int b = 10;
-   private static final Vector4f c = new Vector4f(1.0F, 1.0F, 0.0F, 0.25F);
-   private static final Vector4f d = new Vector4f(0.25F, 0.125F, 0.0F, 0.125F);
-   private final fke e;
-   private final dfv f;
-   private Instant g = Instant.now();
-   @Nullable
-   private gnm.a h;
-
-   public gnm(fke $$0, dfv $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public gnm(gnq.a $$0) {
+      this.a = new gca.a($$0.a(geg.t), glo::c);
+      this.b = new gca.a($$0.a(geg.s), glo::c);
    }
 
-   @Override
-   public void a(fer $$0, gjg $$1, double $$2, double $$3, double $$4) {
-      Instant $$5 = Instant.now();
-      if (this.h == null || Duration.between(this.g, $$5).compareTo(a) > 0) {
-         this.g = $$5;
-         this.h = new gnm.a(this.e.s.B_(), kj.a(this.e.t.dv()), 10, this.f);
+   public static gen b() {
+      gep $$0 = new gep();
+      ger $$1 = $$0.a();
+      $$1.a("main", gem.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), gej.a);
+      $$1.a("left_leg", gem.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), gej.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
+      $$1.a("right_leg", gem.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), gej.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
+      return gen.a($$0, 64, 64);
+   }
+
+   public static gen c() {
+      gep $$0 = new gep();
+      ger $$1 = $$0.a();
+      $$1.a("main", gem.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), gej.a);
+      $$1.a("left_leg", gem.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), gej.b((float) (Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("right_leg", gem.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), gej.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
+      return gen.a($$0, 64, 64);
+   }
+
+   public void a(dul $$0, float $$1, fgl $$2, gle $$3, int $$4, int $$5) {
+      hdn $$6 = glz.r[$$0.c().a()];
+      dha $$7 = $$0.i();
+      if ($$7 != null) {
+         dxn $$8 = $$0.m();
+         dmn.c<? extends dul> $$9 = dmn.a(dur.z, djx::i, djx::h, dli.c, $$8, $$7, $$0.aB_(), ($$0x, $$1x) -> false);
+         int $$10 = $$9.apply(new gns<>()).get($$4);
+         this.a($$2, $$3, $$8.c(djx.b) == dya.a ? this.a : this.b, $$8.c(djx.aF), $$6, $$10, $$5, false);
+      } else {
+         this.a($$2, $$3, this.a, jm.d, $$6, $$4, $$5, false);
+         this.a($$2, $$3, this.b, jm.d, $$6, $$4, $$5, true);
       }
-
-      a($$0, this.h.a, this.h.c, $$1, $$2, $$3, $$4, c);
-      a($$0, this.h.b, this.h.c, $$1, $$2, $$3, $$4, d);
-      fev $$6 = $$1.getBuffer(gjq.E());
-      a($$0, this.h.a, this.h.c, $$6, $$2, $$3, $$4, c);
-      a($$0, this.h.b, this.h.c, $$6, $$2, $$3, $$4, d);
    }
 
-   private static void a(fer $$0, fah $$1, kj $$2, fev $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
-      $$1.a(($$7x, $$8, $$9, $$10) -> {
-         int $$11 = $$8 + $$2.u();
-         int $$12 = $$9 + $$2.v();
-         int $$13 = $$10 + $$2.w();
-         a($$0, $$3, $$7x, $$4, $$5, $$6, $$11, $$12, $$13, $$7);
-      });
-   }
-
-   private static void a(fer $$0, fah $$1, kj $$2, gjg $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
-      $$1.a(($$7x, $$8, $$9, $$10, $$11, $$12) -> {
-         int $$13 = $$7x + $$2.u();
-         int $$14 = $$8 + $$2.v();
-         int $$15 = $$9 + $$2.w();
-         int $$16 = $$10 + $$2.u();
-         int $$17 = $$11 + $$2.v();
-         int $$18 = $$12 + $$2.w();
-         fev $$19 = $$3.getBuffer(gjq.a(1.0));
-         a($$0, $$19, $$4, $$5, $$6, $$13, $$14, $$15, $$16, $$17, $$18, $$7);
-      }, true);
-   }
-
-   private static void a(fer $$0, fev $$1, jm $$2, double $$3, double $$4, double $$5, int $$6, int $$7, int $$8, Vector4f $$9) {
-      float $$10 = (float)((double)kj.c($$6) - $$3);
-      float $$11 = (float)((double)kj.c($$7) - $$4);
-      float $$12 = (float)((double)kj.c($$8) - $$5);
-      gka.a($$0, $$1, $$2, $$10, $$11, $$12, $$10 + 16.0F, $$11 + 16.0F, $$12 + 16.0F, $$9.x(), $$9.y(), $$9.z(), $$9.w());
-   }
-
-   private static void a(fer $$0, fev $$1, double $$2, double $$3, double $$4, int $$5, int $$6, int $$7, int $$8, int $$9, int $$10, Vector4f $$11) {
-      float $$12 = (float)((double)kj.c($$5) - $$2);
-      float $$13 = (float)((double)kj.c($$6) - $$3);
-      float $$14 = (float)((double)kj.c($$7) - $$4);
-      float $$15 = (float)((double)kj.c($$8) - $$2);
-      float $$16 = (float)((double)kj.c($$9) - $$3);
-      float $$17 = (float)((double)kj.c($$10) - $$4);
-      Matrix4f $$18 = $$0.c().a();
-      $$1.a($$18, $$12, $$13, $$14).a($$11.x(), $$11.y(), $$11.z(), 1.0F);
-      $$1.a($$18, $$15, $$16, $$17).a($$11.x(), $$11.y(), $$11.z(), 1.0F);
-   }
-
-   static final class a {
-      final fah a;
-      final fah b;
-      final kj c;
-
-      a(erk $$0, kj $$1, int $$2, dfv $$3) {
-         int $$4 = $$2 * 2 + 1;
-         this.a = new fab($$4, $$4, $$4);
-         this.b = new fab($$4, $$4, $$4);
-
-         for (int $$5 = 0; $$5 < $$4; $$5++) {
-            for (int $$6 = 0; $$6 < $$4; $$6++) {
-               for (int $$7 = 0; $$7 < $$4; $$7++) {
-                  kj $$8 = kj.a($$1.a() + $$7 - $$2, $$1.b() + $$6 - $$2, $$1.c() + $$5 - $$2);
-                  erj.b $$9 = $$0.b($$3, $$8);
-                  if ($$9 == erj.b.c) {
-                     this.a.c($$7, $$6, $$5);
-                     this.b.c($$7, $$6, $$5);
-                  } else if ($$9 == erj.b.b) {
-                     this.b.c($$7, $$6, $$5);
-                  }
-               }
-            }
-         }
-
-         this.c = kj.a($$1.a() - $$2, $$1.b() - $$2, $$1.c() - $$2);
-      }
+   private void a(fgl $$0, gle $$1, gca $$2, jm $$3, hdn $$4, int $$5, int $$6, boolean $$7) {
+      $$0.a();
+      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
+      $$0.a(a.b.rotationDegrees(90.0F));
+      $$0.a(0.5F, 0.5F, 0.5F);
+      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
+      $$0.a(-0.5F, -0.5F, -0.5F);
+      fgp $$8 = $$4.a($$1, glo::c);
+      $$2.a($$0, $$8, $$5, $$6);
+      $$0.b();
    }
 }

@@ -1,4 +1,4 @@
-public class gxh extends gvo {
+public class gxh extends gym {
    public float a;
-   public float b;
+   public boolean b;
 }

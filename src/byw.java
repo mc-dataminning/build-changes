@@ -1,26 +1,48 @@
-import com.mojang.datafixers.kinds.App;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
 
-public class byw {
-   private static final float b = 0.95F;
-   public static final int a = 3;
+public class byw<E extends bwd> extends byx<E> {
+   private final ayk<dke> m;
+   private final float n;
+   private final List<byx.a> o = new ArrayList<>();
+   private boolean p;
 
-   public static bxb<bvh> a() {
-      return can.a((Function<can.b<bvh>, ? extends App<can.c<bvh>, caq<bvh>>>)($$0 -> $$0.group($$0.b(cel.e)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
-               if ($$2.A.i() <= 0.95F) {
-                  return false;
-               } else {
-                  jh $$5 = $$0.<jp>b($$1).b();
-                  if ($$5.a($$3.dv(), 3.0)) {
-                     dvv $$6 = $$2.a_($$5);
-                     if ($$6.a(dis.od)) {
-                        dim $$7 = (dim)$$6.b();
-                        $$7.a($$3, $$2, $$5, null);
-                     }
-                  }
+   public byw(bsp $$0, int $$1, int $$2, float $$3, Function<E, axe> $$4, ayk<dke> $$5, float $$6, BiPredicate<E, jh> $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$7);
+      this.m = $$5;
+      this.n = $$6;
+   }
 
-                  return true;
+   @Override
+   protected void a(ash $$0, E $$1, long $$2) {
+      super.a($$0, $$1, $$2);
+      this.o.clear();
+      this.p = $$1.dY().i() < this.n;
+   }
+
+   @Override
+   protected Optional<byx.a> a(ash $$0) {
+      if (!this.p) {
+         return super.a($$0);
+      } else {
+         jh.a $$1 = new jh.a();
+
+         while (!this.h.isEmpty()) {
+            Optional<byx.a> $$2 = super.a($$0);
+            if ($$2.isPresent()) {
+               byx.a $$3 = $$2.get();
+               if ($$0.a_($$1.a($$3.b(), jm.a)).a(this.m)) {
+                  return $$2;
                }
-            })));
+
+               this.o.add($$3);
+            }
+         }
+
+         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
+      }
    }
 }

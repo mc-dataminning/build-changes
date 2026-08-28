@@ -1,312 +1,47 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.Dynamic4CommandExceptionType;
+import com.mojang.logging.LogUtils;
 import java.util.Collection;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
 public class apg {
-   private static final int a = 10000;
-   private static final Dynamic4CommandExceptionType b = new Dynamic4CommandExceptionType(
-      ($$0, $$1, $$2, $$3) -> xj.b("commands.spreadplayers.failed.teams", $$0, $$1, $$2, $$3)
-   );
-   private static final Dynamic4CommandExceptionType c = new Dynamic4CommandExceptionType(
-      ($$0, $$1, $$2, $$3) -> xj.b("commands.spreadplayers.failed.entities", $$0, $$1, $$2, $$3)
-   );
-   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(
-      ($$0, $$1) -> xj.b("commands.spreadplayers.failed.invalid.height", $$0, $$1)
-   );
+   private static final Logger a = LogUtils.getLogger();
+
+   public static void a(Collection<String> $$0, ew $$1) {
+      $$1.l().a($$0).exceptionally($$1x -> {
+         a.warn("Failed to execute reload", $$1x);
+         $$1.b(xv.c("commands.reload.failure"));
+         return null;
+      });
+   }
+
+   private static Collection<String> a(avg $$0, ewb $$1, Collection<String> $$2) {
+      $$0.a();
+      Collection<String> $$3 = Lists.newArrayList($$2);
+      Collection<String> $$4 = $$1.D().a().b();
+
+      for (String $$5 : $$0.c()) {
+         if (!$$4.contains($$5) && !$$3.contains($$5)) {
+            $$3.add($$5);
+         }
+      }
+
+      return $$3;
+   }
 
    public static void a(CommandDispatcher<ew> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("spreadplayers").requires($$0x -> $$0x.c(2)))
-            .then(
-               ex.a("center", gy.a())
-                  .then(
-                     ex.a("spreadDistance", FloatArgumentType.floatArg(0.0F))
-                        .then(
-                           ((RequiredArgumentBuilder)ex.a("maxRange", FloatArgumentType.floatArg(1.0F))
-                                 .then(
-                                    ex.a("respectTeams", BoolArgumentType.bool())
-                                       .then(
-                                          ex.a("targets", fj.b())
-                                             .executes(
-                                                $$0x -> a(
-                                                      (ew)$$0x.getSource(),
-                                                      gy.a($$0x, "center"),
-                                                      FloatArgumentType.getFloat($$0x, "spreadDistance"),
-                                                      FloatArgumentType.getFloat($$0x, "maxRange"),
-                                                      ((ew)$$0x.getSource()).e().al() + 1,
-                                                      BoolArgumentType.getBool($$0x, "respectTeams"),
-                                                      fj.b($$0x, "targets")
-                                                   )
-                                             )
-                                       )
-                                 ))
-                              .then(
-                                 ex.a("under")
-                                    .then(
-                                       ex.a("maxHeight", IntegerArgumentType.integer())
-                                          .then(
-                                             ex.a("respectTeams", BoolArgumentType.bool())
-                                                .then(
-                                                   ex.a("targets", fj.b())
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (ew)$$0x.getSource(),
-                                                               gy.a($$0x, "center"),
-                                                               FloatArgumentType.getFloat($$0x, "spreadDistance"),
-                                                               FloatArgumentType.getFloat($$0x, "maxRange"),
-                                                               IntegerArgumentType.getInteger($$0x, "maxHeight"),
-                                                               BoolArgumentType.getBool($$0x, "respectTeams"),
-                                                               fj.b($$0x, "targets")
-                                                            )
-                                                      )
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static int a(ew $$0, ezx $$1, float $$2, float $$3, int $$4, boolean $$5, Collection<? extends bul> $$6) throws CommandSyntaxException {
-      arp $$7 = $$0.e();
-      int $$8 = $$7.K_();
-      if ($$4 < $$8) {
-         throw d.create($$4, $$8);
-      } else {
-         azu $$9 = azu.a();
-         double $$10 = (double)($$1.i - $$3);
-         double $$11 = (double)($$1.j - $$3);
-         double $$12 = (double)($$1.i + $$3);
-         double $$13 = (double)($$1.j + $$3);
-         apg.a[] $$14 = a($$9, $$5 ? a($$6) : $$6.size(), $$10, $$11, $$12, $$13);
-         a($$1, (double)$$2, $$7, $$9, $$10, $$11, $$12, $$13, $$4, $$14, $$5);
-         double $$15 = a($$6, $$7, $$14, $$4, $$5);
-         $$0.a(
-            () -> xj.a("commands.spreadplayers.success." + ($$5 ? "teams" : "entities"), $$14.length, $$1.i, $$1.j, String.format(Locale.ROOT, "%.2f", $$15)),
-            true
-         );
-         return $$14.length;
-      }
-   }
-
-   private static int a(Collection<? extends bul> $$0) {
-      Set<fbf> $$1 = Sets.newHashSet();
-
-      for (bul $$2 : $$0) {
-         if ($$2 instanceof cou) {
-            $$1.add($$2.cr());
-         } else {
-            $$1.add(null);
-         }
-      }
-
-      return $$1.size();
-   }
-
-   private static void a(ezx $$0, double $$1, arp $$2, azu $$3, double $$4, double $$5, double $$6, double $$7, int $$8, apg.a[] $$9, boolean $$10) throws CommandSyntaxException {
-      boolean $$11 = true;
-      double $$12 = Float.MAX_VALUE;
-
-      int $$13;
-      for ($$13 = 0; $$13 < 10000 && $$11; $$13++) {
-         $$11 = false;
-         $$12 = Float.MAX_VALUE;
-
-         for (int $$14 = 0; $$14 < $$9.length; $$14++) {
-            apg.a $$15 = $$9[$$14];
-            int $$16 = 0;
-            apg.a $$17 = new apg.a();
-
-            for (int $$18 = 0; $$18 < $$9.length; $$18++) {
-               if ($$14 != $$18) {
-                  apg.a $$19 = $$9[$$18];
-                  double $$20 = $$15.a($$19);
-                  $$12 = Math.min($$20, $$12);
-                  if ($$20 < $$1) {
-                     $$16++;
-                     $$17.a = $$17.a + ($$19.a - $$15.a);
-                     $$17.b = $$17.b + ($$19.b - $$15.b);
-                  }
-               }
-            }
-
-            if ($$16 > 0) {
-               $$17.a /= (double)$$16;
-               $$17.b /= (double)$$16;
-               double $$21 = $$17.b();
-               if ($$21 > 0.0) {
-                  $$17.a();
-                  $$15.b($$17);
-               } else {
-                  $$15.a($$3, $$4, $$5, $$6, $$7);
-               }
-
-               $$11 = true;
-            }
-
-            if ($$15.a($$4, $$5, $$6, $$7)) {
-               $$11 = true;
-            }
-         }
-
-         if (!$$11) {
-            for (apg.a $$22 : $$9) {
-               if (!$$22.b($$2, $$8)) {
-                  $$22.a($$3, $$4, $$5, $$6, $$7);
-                  $$11 = true;
-               }
-            }
-         }
-      }
-
-      if ($$12 == Float.MAX_VALUE) {
-         $$12 = 0.0;
-      }
-
-      if ($$13 >= 10000) {
-         if ($$10) {
-            throw b.create($$9.length, $$0.i, $$0.j, String.format(Locale.ROOT, "%.2f", $$12));
-         } else {
-            throw c.create($$9.length, $$0.i, $$0.j, String.format(Locale.ROOT, "%.2f", $$12));
-         }
-      }
-   }
-
-   private static double a(Collection<? extends bul> $$0, arp $$1, apg.a[] $$2, int $$3, boolean $$4) {
-      double $$5 = 0.0;
-      int $$6 = 0;
-      Map<fbf, apg.a> $$7 = Maps.newHashMap();
-
-      for (bul $$8 : $$0) {
-         apg.a $$10;
-         if ($$4) {
-            fbf $$9 = $$8 instanceof cou ? $$8.cr() : null;
-            if (!$$7.containsKey($$9)) {
-               $$7.put($$9, $$2[$$6++]);
-            }
-
-            $$10 = $$7.get($$9);
-         } else {
-            $$10 = $$2[$$6++];
-         }
-
-         $$8.a($$1, (double)azm.a($$10.a) + 0.5, (double)$$10.a($$1, $$3), (double)azm.a($$10.b) + 0.5, Set.of(), $$8.dL(), $$8.dN(), true);
-         double $$12 = Double.MAX_VALUE;
-
-         for (apg.a $$13 : $$2) {
-            if ($$10 != $$13) {
-               double $$14 = $$10.a($$13);
-               $$12 = Math.min($$14, $$12);
-            }
-         }
-
-         $$5 += $$12;
-      }
-
-      return $$0.size() < 2 ? 0.0 : $$5 / (double)$$0.size();
-   }
-
-   private static apg.a[] a(azu $$0, int $$1, double $$2, double $$3, double $$4, double $$5) {
-      apg.a[] $$6 = new apg.a[$$1];
-
-      for (int $$7 = 0; $$7 < $$6.length; $$7++) {
-         apg.a $$8 = new apg.a();
-         $$8.a($$0, $$2, $$3, $$4, $$5);
-         $$6[$$7] = $$8;
-      }
-
-      return $$6;
-   }
-
-   static class a {
-      double a;
-      double b;
-
-      double a(apg.a $$0) {
-         double $$1 = this.a - $$0.a;
-         double $$2 = this.b - $$0.b;
-         return Math.sqrt($$1 * $$1 + $$2 * $$2);
-      }
-
-      void a() {
-         double $$0 = this.b();
-         this.a /= $$0;
-         this.b /= $$0;
-      }
-
-      double b() {
-         return Math.sqrt(this.a * this.a + this.b * this.b);
-      }
-
-      public void b(apg.a $$0) {
-         this.a = this.a - $$0.a;
-         this.b = this.b - $$0.b;
-      }
-
-      public boolean a(double $$0, double $$1, double $$2, double $$3) {
-         boolean $$4 = false;
-         if (this.a < $$0) {
-            this.a = $$0;
-            $$4 = true;
-         } else if (this.a > $$2) {
-            this.a = $$2;
-            $$4 = true;
-         }
-
-         if (this.b < $$1) {
-            this.b = $$1;
-            $$4 = true;
-         } else if (this.b > $$3) {
-            this.b = $$3;
-            $$4 = true;
-         }
-
-         return $$4;
-      }
-
-      public int a(der $$0, int $$1) {
-         jh.a $$2 = new jh.a(this.a, (double)($$1 + 1), this.b);
-         boolean $$3 = $$0.a_($$2).l();
-         $$2.c(jm.a);
-         boolean $$4 = $$0.a_($$2).l();
-
-         while ($$2.v() > $$0.K_()) {
-            $$2.c(jm.a);
-            boolean $$5 = $$0.a_($$2).l();
-            if (!$$5 && $$4 && $$3) {
-               return $$2.v() + 1;
-            }
-
-            $$3 = $$4;
-            $$4 = $$5;
-         }
-
-         return $$1 + 1;
-      }
-
-      public boolean b(der $$0, int $$1) {
-         jh $$2 = jh.a(this.a, (double)(this.a($$0, $$1) - 1), this.b);
-         dvv $$3 = $$0.a_($$2);
-         return $$2.v() < $$1 && !$$3.n() && !$$3.a(axc.aM);
-      }
-
-      public void a(azu $$0, double $$1, double $$2, double $$3, double $$4) {
-         this.a = azm.a($$0, $$1, $$3);
-         this.b = azm.a($$0, $$2, $$4);
-      }
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("reload").requires($$0x -> $$0x.c(2))).executes($$0x -> {
+         ew $$1 = (ew)$$0x.getSource();
+         MinecraftServer $$2 = $$1.l();
+         avg $$3 = $$2.aF();
+         ewb $$4 = $$2.aZ();
+         Collection<String> $$5 = $$3.e();
+         Collection<String> $$6 = a($$3, $$4, $$5);
+         $$1.a(() -> xv.c("commands.reload.success"), true);
+         a($$6, $$1);
+         return 0;
+      }));
    }
 }

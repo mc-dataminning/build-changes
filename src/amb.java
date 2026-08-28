@@ -1,94 +1,117 @@
-import com.mojang.datafixers.util.Either;
-import io.netty.buffer.ByteBuf;
-import java.net.URI;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.IntFunction;
+import com.mojang.logging.LogUtils;
+import java.io.PrintStream;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import org.slf4j.Logger;
 
-public record amb(List<amb.a> d) {
-   public static final amb a = new amb(List.of());
-   public static final zh<ByteBuf, Either<amb.b, xj>> b = zf.a(amb.b.k, xl.f);
-   public static final zh<ByteBuf, List<amb.c>> c = amb.c.a.a(zf.a());
+public class amb {
+   public static final PrintStream a = System.out;
+   private static volatile boolean c;
+   private static final Logger d = LogUtils.getLogger();
+   public static final AtomicLong b = new AtomicLong(-1L);
 
-   public boolean a() {
-      return this.d.isEmpty();
-   }
-
-   public Optional<amb.a> a(amb.b $$0) {
-      return this.d.stream().filter($$1 -> (Boolean)$$1.a.map($$1x -> $$1x == $$0, $$0xx -> false)).findFirst();
-   }
-
-   public List<amb.c> b() {
-      return this.d.stream().map($$0 -> new amb.c($$0.a, $$0.b.toString())).toList();
-   }
-
-   public List<amb.a> c() {
-      return this.d;
-   }
-
-   public static record a(Either<amb.b, xj> a, URI b) {
-
-      public static amb.a a(amb.b $$0, URI $$1) {
-         return new amb.a(Either.left($$0), $$1);
-      }
-
-      public static amb.a a(xj $$0, URI $$1) {
-         return new amb.a(Either.right($$0), $$1);
-      }
-
-      public xj a() {
-         return (xj)this.a.map(amb.b::a, $$0 -> $$0);
-      }
-
-      public Either<amb.b, xj> b() {
-         return this.a;
-      }
-
-      public URI c() {
-         return this.b;
+   public static void a() {
+      if (!c) {
+         c = true;
+         Instant $$0 = Instant.now();
+         if (ma.aB.i().isEmpty()) {
+            throw new IllegalStateException("Unable to load registries");
+         } else {
+            dnf.b();
+            dlq.b();
+            if (bvm.a(bvm.bS) == null) {
+               throw new IllegalStateException("Failed loading EntityTypes");
+            } else {
+               ho.a();
+               lb.a();
+               kn.a();
+               ma.a();
+               cwa.a();
+               d();
+               b.set(Duration.between($$0, Instant.now()).toMillis());
+            }
+         }
       }
    }
 
-   public static enum b {
-      a(0, "report_bug"),
-      b(1, "community_guidelines"),
-      c(2, "support"),
-      d(3, "status"),
-      e(4, "feedback"),
-      f(5, "community"),
-      g(6, "website"),
-      h(7, "forums"),
-      i(8, "news"),
-      j(9, "announcements");
+   private static <T> void a(Iterable<T> $$0, Function<T, String> $$1, Set<String> $$2) {
+      us $$3 = us.a();
+      $$0.forEach($$3x -> {
+         String $$4 = $$1.apply((T)$$3x);
+         if (!$$3.b($$4)) {
+            $$2.add($$4);
+         }
+      });
+   }
 
-      private static final IntFunction<amb.b> l = ayd.a($$0 -> $$0.m, values(), ayd.a.a);
-      public static final zh<ByteBuf, amb.b> k = zf.a(l, $$0 -> $$0.m);
-      private final int m;
-      private final String n;
+   private static void a(final Set<String> $$0) {
+      final us $$1 = us.a();
+      dgw $$2 = new dgw(csq.f.a());
+      $$2.a(new dgw.c() {
+         @Override
+         public <T extends dgw.g<T>> void a(dgw.e<T> $$0x, dgw.f<T> $$1x) {
+            if (!$$1.b($$0.b())) {
+               $$0.add($$0.a());
+            }
+         }
+      });
+   }
 
-      private b(final int $$0, final String $$1) {
-         this.m = $$0;
-         this.n = $$1;
-      }
+   public static Set<String> b() {
+      Set<String> $$0 = new TreeSet<>();
+      a(ma.s, bxe::c, $$0);
+      a(ma.f, bvm::g, $$0);
+      a(ma.d, bui::d, $$0);
+      a(ma.g, cxg::l, $$0);
+      a(ma.e, dxm::v, $$0);
+      a(ma.k, $$0x -> "stat." + $$0x.toString().replace(':', '.'), $$0);
+      a($$0);
+      return $$0;
+   }
 
-      private xj a() {
-         return xj.c("known_server_link." + this.n);
-      }
-
-      public amb.a a(URI $$0) {
-         return amb.a.a(this, $$0);
+   public static void a(Supplier<String> $$0) {
+      if (!c) {
+         throw b($$0);
       }
    }
 
-   public static record c(Either<amb.b, xj> b, String c) {
-      public static final zh<ByteBuf, amb.c> a = zh.a(amb.b, amb.c::a, zf.n, amb.c::b, amb.c::new);
+   private static RuntimeException b(Supplier<String> $$0) {
+      try {
+         String $$1 = $$0.get();
+         return new IllegalArgumentException("Not bootstrapped (called from " + $$1 + ")");
+      } catch (Exception var3) {
+         RuntimeException $$3 = new IllegalArgumentException("Not bootstrapped (failed to resolve location)");
+         $$3.addSuppressed(var3);
+         return $$3;
+      }
+   }
 
-      public Either<amb.b, xj> a() {
-         return this.b;
+   public static void c() {
+      a(() -> "validate");
+      if (ab.aU) {
+         b().forEach($$0 -> d.error("Missing translations: {}", $$0));
+         ex.b();
       }
 
-      public String b() {
-         return this.c;
+      bxk.a();
+   }
+
+   private static void d() {
+      if (d.isDebugEnabled()) {
+         System.setErr(new ame("STDERR", System.err));
+         System.setOut(new ame("STDOUT", a));
+      } else {
+         System.setErr(new amg("STDERR", System.err));
+         System.setOut(new amg("STDOUT", a));
       }
+   }
+
+   public static void a(String $$0) {
+      a.println($$0);
    }
 }

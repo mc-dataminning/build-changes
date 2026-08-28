@@ -1,247 +1,137 @@
-import com.google.common.collect.Lists;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class fvs implements fng, foa {
-   private static final alj b = alj.b("recipe_book/overlay_recipe");
-   private static final int c = 4;
-   private static final int d = 5;
-   private static final float e = 0.375F;
-   public static final int a = 25;
-   private final List<fvs.b> f = Lists.newArrayList();
-   private boolean g;
-   private int h;
-   private int i;
-   private fvx j;
+public class fvs extends fvi<cux> {
+   private static final alz G = alz.b("container/smithing/error");
+   private static final alz H = alz.b("item/empty_slot_smithing_template_armor_trim");
+   private static final alz I = alz.b("item/empty_slot_smithing_template_netherite_upgrade");
+   private static final xv J = xv.c("container.upgrade.missing_template_tooltip");
+   private static final xv K = xv.c("container.upgrade.error_tooltip");
+   private static final List<alz> L = List.of(H, I);
+   private static final int M = 44;
+   private static final int N = 15;
+   private static final int O = 28;
+   private static final int P = 21;
+   private static final int Q = 65;
+   private static final int R = 46;
+   private static final int S = 115;
+   private static final int T = 210;
+   private static final int U = 25;
+   private static final Vector3f V = new Vector3f();
+   private static final Quaternionf W = new Quaternionf().rotationXYZ(0.43633232F, 0.0F, (float) Math.PI);
+   private static final int X = 25;
+   private static final int Y = 75;
+   private static final int Z = 141;
+   private final fux aa = new fux(0);
+   private final fux ab = new fux(1);
+   private final fux ac = new fux(2);
    @Nullable
-   private dbc<?> k;
-   final fwa l;
-   private final boolean m;
+   private cll ad;
 
-   public fvs(fwa $$0, boolean $$1) {
-      this.l = $$0;
-      this.m = $$1;
-   }
-
-   public void a(fvx $$0, boolean $$1, int $$2, int $$3, int $$4, int $$5, float $$6) {
-      this.j = $$0;
-      List<dbc<?>> $$7 = $$0.a(fvx.a.b);
-      List<dbc<?>> $$8 = $$1 ? Collections.emptyList() : $$0.a(fvx.a.c);
-      int $$9 = $$7.size();
-      int $$10 = $$9 + $$8.size();
-      int $$11 = $$10 <= 16 ? 4 : 5;
-      int $$12 = (int)Math.ceil((double)((float)$$10 / (float)$$11));
-      this.h = $$2;
-      this.i = $$3;
-      float $$13 = (float)(this.h + Math.min($$10, $$11) * 25);
-      float $$14 = (float)($$4 + 50);
-      if ($$13 > $$14) {
-         this.h = (int)((float)this.h - $$6 * (float)((int)(($$13 - $$14) / $$6)));
-      }
-
-      float $$15 = (float)(this.i + $$12 * 25);
-      float $$16 = (float)($$5 + 50);
-      if ($$15 > $$16) {
-         this.i = (int)((float)this.i - $$6 * (float)azm.f(($$15 - $$16) / $$6));
-      }
-
-      float $$17 = (float)this.i;
-      float $$18 = (float)($$5 - 100);
-      if ($$17 < $$18) {
-         this.i = (int)((float)this.i - $$6 * (float)azm.f(($$17 - $$18) / $$6));
-      }
-
-      this.g = true;
-      this.f.clear();
-
-      for (int $$19 = 0; $$19 < $$10; $$19++) {
-         boolean $$20 = $$19 < $$9;
-         dbc<?> $$21 = $$20 ? $$7.get($$19) : $$8.get($$19 - $$9);
-         int $$22 = this.h + 4 + 25 * ($$19 % $$11);
-         int $$23 = this.i + 5 + 25 * ($$19 / $$11);
-         if (this.m) {
-            this.f.add(new fvs.c($$22, $$23, $$21, $$20));
-         } else {
-            this.f.add(new fvs.a($$22, $$23, $$21, $$20));
-         }
-      }
-
-      this.k = null;
-   }
-
-   public fvx a() {
-      return this.j;
-   }
-
-   @Nullable
-   public dbc<?> b() {
-      return this.k;
+   public fvs(cux $$0, cpr $$1, xv $$2) {
+      super($$0, $$1, $$2, alz.b("textures/gui/container/smithing.png"));
+      this.v = 44;
+      this.w = 15;
    }
 
    @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if ($$2 != 0) {
-         return false;
-      } else {
-         for (fvs.b $$3 : this.f) {
-            if ($$3.a($$0, $$1, $$2)) {
-               this.k = $$3.b;
-               return true;
+   protected void G() {
+      this.ad = new cll(this.m.s, 0.0, 0.0, 0.0);
+      this.ad.b(true);
+      this.ad.a(true);
+      this.ad.aX = 210.0F;
+      this.ad.w(25.0F);
+      this.ad.aZ = this.ad.dL();
+      this.ad.ba = this.ad.dL();
+      this.b(this.z.b(3).g());
+   }
+
+   @Override
+   public void E() {
+      super.E();
+      Optional<cyq> $$0 = this.J();
+      this.aa.a(L);
+      this.ab.a($$0.map(cyq::d).orElse(List.of()));
+      this.ac.a($$0.map(cyq::o).orElse(List.of()));
+   }
+
+   private Optional<cyq> J() {
+      cxk $$0 = this.z.b(0).g();
+      return !$$0.f() && $$0.h() instanceof cyq $$1 ? Optional.of($$1) : Optional.empty();
+   }
+
+   @Override
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d($$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(fnl $$0, float $$1, int $$2, int $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.aa.a(this.z, $$0, $$1, this.C, this.D);
+      this.ab.a(this.z, $$0, $$1, this.C, this.D);
+      this.ac.a(this.z, $$0, $$1, this.C, this.D);
+      fvh.a($$0, (float)(this.C + 141), (float)(this.D + 75), 25.0F, V, W, null, this.ad);
+   }
+
+   @Override
+   public void a(csx $$0, int $$1, cxk $$2) {
+      if ($$1 == 3) {
+         this.b($$2);
+      }
+   }
+
+   private void b(cxk $$0) {
+      if (this.ad != null) {
+         for (bvn $$1 : bvn.i) {
+            this.ad.a($$1, cxk.k);
+         }
+
+         if (!$$0.f()) {
+            dfm $$2 = $$0.a(ku.D);
+            bvn $$3 = $$2 != null ? $$2.a() : bvn.b;
+            this.ad.a($$3, $$0.v());
+         }
+      }
+   }
+
+   @Override
+   protected void c(fnl $$0, int $$1, int $$2) {
+      if (this.K()) {
+         $$0.a(glo::B, G, $$1 + 65, $$2 + 46, 28, 21);
+      }
+   }
+
+   private void d(fnl $$0, int $$1, int $$2) {
+      Optional<xv> $$3 = Optional.empty();
+      if (this.K() && this.a(65, 46, 28, 21, (double)$$1, (double)$$2)) {
+         $$3 = Optional.of(K);
+      }
+
+      if (this.B != null) {
+         cxk $$4 = this.z.b(0).g();
+         cxk $$5 = this.B.g();
+         if ($$4.f()) {
+            if (this.B.d == 0) {
+               $$3 = Optional.of(J);
+            }
+         } else if ($$4.h() instanceof cyq $$6 && $$5.f()) {
+            if (this.B.d == 1) {
+               $$3 = Optional.of($$6.b());
+            } else if (this.B.d == 2) {
+               $$3 = Optional.of($$6.c());
             }
          }
-
-         return false;
       }
+
+      $$3.ifPresent($$3x -> $$0.b(this.p, this.p.c($$3x, 115), $$1, $$2));
    }
 
-   @Override
-   public boolean c(double $$0, double $$1) {
-      return false;
-   }
-
-   @Override
-   public void a(flq $$0, int $$1, int $$2, float $$3) {
-      if (this.g) {
-         $$0.c().a();
-         $$0.c().a(0.0F, 0.0F, 1000.0F);
-         int $$4 = this.f.size() <= 16 ? 4 : 5;
-         int $$5 = Math.min(this.f.size(), $$4);
-         int $$6 = azm.f((float)this.f.size() / (float)$$4);
-         int $$7 = 4;
-         $$0.a(gjq::B, b, this.h, this.i, $$5 * 25 + 8, $$6 * 25 + 8);
-
-         for (fvs.b $$8 : this.f) {
-            $$8.a($$0, $$1, $$2, $$3);
-         }
-
-         $$0.c().b();
-      }
-   }
-
-   public void b(boolean $$0) {
-      this.g = $$0;
-   }
-
-   public boolean c() {
-      return this.g;
-   }
-
-   @Override
-   public void a(boolean $$0) {
-   }
-
-   @Override
-   public boolean aL_() {
-      return false;
-   }
-
-   class a extends fvs.b {
-      private static final alj b = alj.b("recipe_book/crafting_overlay");
-      private static final alj c = alj.b("recipe_book/crafting_overlay_highlighted");
-      private static final alj d = alj.b("recipe_book/crafting_overlay_disabled");
-      private static final alj e = alj.b("recipe_book/crafting_overlay_disabled_highlighted");
-
-      public a(final int $$0, final int $$1, final dbc<?> $$2, final boolean $$3) {
-         super($$0, $$1, $$2, $$3, a($$2));
-      }
-
-      private static List<fvs.b.a> a(dbc<?> $$0) {
-         List<fvs.b.a> $$1 = new ArrayList<>();
-         aku.a(3, 3, $$0, $$0.b().a().a(), ($$1x, $$2, $$3, $$4) -> $$1x.ifPresent($$3x -> $$1.add(a($$3, $$4, $$3x.a()))));
-         return $$1;
-      }
-
-      @Override
-      protected alj b(boolean $$0) {
-         if ($$0) {
-            return this.B() ? c : b;
-         } else {
-            return this.B() ? e : d;
-         }
-      }
-   }
-
-   abstract class b extends fmb {
-      final dbc<?> b;
-      private final boolean c;
-      private final List<fvs.b.a> d;
-
-      public b(final int $$0, final int $$1, final dbc<?> $$2, final boolean $$3, final List<fvs.b.a> $$4) {
-         super($$0, $$1, 24, 24, xi.a);
-         this.d = $$4;
-         this.b = $$2;
-         this.c = $$3;
-      }
-
-      protected static fvs.b.a a(int $$0, int $$1, List<cwm> $$2) {
-         return new fvs.b.a(3 + $$0 * 7, 3 + $$1 * 7, $$2);
-      }
-
-      protected abstract alj b(boolean var1);
-
-      @Override
-      public void a(fqb $$0) {
-         this.c($$0);
-      }
-
-      @Override
-      public void b(flq $$0, int $$1, int $$2, float $$3) {
-         $$0.a(gjq::B, this.b(this.c), this.D(), this.E(), this.g, this.h);
-         float $$4 = (float)(this.D() + 2);
-         float $$5 = (float)(this.E() + 2);
-         float $$6 = 150.0F;
-
-         for (fvs.b.a $$7 : this.d) {
-            $$0.c().a();
-            $$0.c().a($$4 + (float)$$7.a, $$5 + (float)$$7.b, 150.0F);
-            $$0.c().b(0.375F, 0.375F, 1.0F);
-            $$0.c().a(-8.0F, -8.0F, 0.0F);
-            $$0.a($$7.a(fvs.this.l.currentIndex()), 0, 0);
-            $$0.c().b();
-         }
-      }
-
-      protected static record a(int a, int b, List<cwm> c) {
-
-         public a(int a, int b, List<cwm> c) {
-            if (c.isEmpty()) {
-               throw new IllegalArgumentException("Ingredient list must be non-empty");
-            } else {
-               this.a = a;
-               this.b = b;
-               this.c = c;
-            }
-         }
-
-         public cwm a(int $$0) {
-            return this.c.get($$0 % this.c.size());
-         }
-      }
-   }
-
-   class c extends fvs.b {
-      private static final alj b = alj.b("recipe_book/furnace_overlay");
-      private static final alj c = alj.b("recipe_book/furnace_overlay_highlighted");
-      private static final alj d = alj.b("recipe_book/furnace_overlay_disabled");
-      private static final alj e = alj.b("recipe_book/furnace_overlay_disabled_highlighted");
-
-      public c(final int $$0, final int $$1, final dbc<?> $$2, final boolean $$3) {
-         super($$0, $$1, $$2, $$3, a($$2));
-      }
-
-      private static List<fvs.b.a> a(dbc<?> $$0) {
-         return $$0.b().a().a().getFirst().<List<fvs.b.a>>map($$0x -> List.of(a(1, 1, $$0x.a()))).orElse(List.of());
-      }
-
-      @Override
-      protected alj b(boolean $$0) {
-         if ($$0) {
-            return this.B() ? c : b;
-         } else {
-            return this.B() ? e : d;
-         }
-      }
+   private boolean K() {
+      return this.z.b(0).h() && this.z.b(1).h() && this.z.b(2).h() && !this.z.b(this.z.n()).h();
    }
 }

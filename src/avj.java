@@ -1,88 +1,56 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionStage;
-import java.util.concurrent.Executor;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.google.common.annotations.VisibleForTesting;
+import java.nio.file.Path;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class avj<S> implements auz {
-   private static final int c = 2;
-   private static final int d = 2;
-   private static final int e = 1;
-   protected final CompletableFuture<bas> a = new CompletableFuture<>();
-   protected CompletableFuture<List<S>> b;
-   final Set<auw> f;
-   private final int g;
-   private int h;
-   private int i;
-   private final AtomicInteger j = new AtomicInteger();
-   private final AtomicInteger k = new AtomicInteger();
+public class avj extends ava {
+   private static final auv c = new auv(xv.c("dataPack.vanilla.description"), ab.b().a(aui.b), Optional.empty());
+   private static final auc d = new auc(csq.i);
+   private static final aty e = aty.a(auv.b, c, auc.a, d);
+   private static final auf f = new auf("vanilla", xv.c("dataPack.vanilla.name"), avh.c, Optional.of(b));
+   private static final auh g = new auh(false, avd.b.b, false);
+   private static final auh h = new auh(false, avd.b.a, false);
+   private static final alz i = alz.b("datapacks");
 
-   public static avj<Void> a(avd $$0, List<auw> $$1, Executor $$2, Executor $$3, CompletableFuture<bas> $$4) {
-      return new avj<>($$2, $$3, $$0, $$1, ($$1x, $$2x, $$3x, $$4x, $$5) -> $$3x.a($$1x, $$2x, $$2, $$5), $$4);
+   public avj(fbi $$0) {
+      super(aui.b, b(), i, $$0);
    }
 
-   protected avj(Executor $$0, final Executor $$1, avd $$2, List<auw> $$3, avj.a<S> $$4, CompletableFuture<bas> $$5) {
-      this.g = $$3.size();
-      this.j.incrementAndGet();
-      $$5.thenRun(this.k::incrementAndGet);
-      List<CompletableFuture<S>> $$6 = Lists.newArrayList();
-      CompletableFuture<?> $$7 = $$5;
-      this.f = Sets.newHashSet($$3);
+   private static auf a(String $$0, xv $$1) {
+      return new auf($$0, $$1, avh.d, Optional.of(avc.a($$0)));
+   }
 
-      for (final auw $$8 : $$3) {
-         final CompletableFuture<?> $$9 = $$7;
-         CompletableFuture<S> $$10 = $$4.create(new auw.a() {
-            @Override
-            public <T> CompletableFuture<T> a(T $$0) {
-               $$1.execute(() -> {
-                  avj.this.f.remove($$8);
-                  if (avj.this.f.isEmpty()) {
-                     avj.this.a.complete(bas.a);
-                  }
-               });
-               return avj.this.a.thenCombine((CompletionStage<? extends T>)$$9, ($$1xx, $$2) -> $$0);
-            }
-         }, $$2, $$8, $$1x -> {
-            this.j.incrementAndGet();
-            $$0.execute(() -> {
-               $$1x.run();
-               this.k.incrementAndGet();
-            });
-         }, $$1x -> {
-            this.h++;
-            $$1.execute(() -> {
-               $$1x.run();
-               this.i++;
-            });
-         });
-         $$6.add($$10);
-         $$7 = $$10;
-      }
-
-      this.b = ae.e($$6);
+   @VisibleForTesting
+   public static auk b() {
+      return new aul().a(e).a("minecraft").b().a().a(f);
    }
 
    @Override
-   public CompletableFuture<?> a() {
-      return this.b;
+   protected xv a(String $$0) {
+      return xv.b($$0);
    }
 
+   @Nullable
    @Override
-   public float b() {
-      int $$0 = this.g - this.f.size();
-      float $$1 = (float)(this.k.get() * 2 + this.i * 2 + $$0 * 1);
-      float $$2 = (float)(this.j.get() * 2 + this.h * 2 + this.g * 1);
-      return $$1 / $$2;
+   protected avd a(aug $$0) {
+      return avd.a(f, b($$0), aui.b, g);
    }
 
-   public static auz a(avd $$0, List<auw> $$1, Executor $$2, Executor $$3, CompletableFuture<bas> $$4, boolean $$5) {
-      return (auz)($$5 ? new auy($$0, $$1, $$2, $$3, $$4) : a($$0, $$1, $$2, $$3, $$4));
+   @Nullable
+   @Override
+   protected avd a(String $$0, avd.c $$1, xv $$2) {
+      return avd.a(a($$0, $$2), $$1, aui.b, h);
    }
 
-   protected interface a<S> {
-      CompletableFuture<S> create(auw.a var1, avd var2, auw var3, Executor var4, Executor var5);
+   public static avg a(Path $$0, fbi $$1) {
+      return new avg(new avj($$1), new avb($$0, aui.b, avh.e, $$1));
+   }
+
+   public static avg c() {
+      return new avg(new avj(new fbi($$0 -> true)));
+   }
+
+   public static avg a(evv.c $$0) {
+      return a($$0.a(evt.j), $$0.d().e());
    }
 }

@@ -1,144 +1,62 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cpf extends bul implements bwg {
-   public static final int a = 20;
-   public static final int b = 2;
-   public static final int c = 14;
-   private int d;
-   private boolean e;
-   private int f = 22;
-   private boolean g;
-   @Nullable
-   private bvh h;
-   @Nullable
-   private UUID i;
+public class cpf {
+   public static final int a = 1;
+   public static final int b = 5;
+   private static final int[] e = new int[]{0, 10, 70, 150, 250};
+   public static final Codec<cpf> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ma.w.q().fieldOf("type").orElseGet(() -> cpj.c).forGetter($$0x -> $$0x.f),
+               ma.x.q().fieldOf("profession").orElseGet(() -> cph.b).forGetter($$0x -> $$0x.g),
+               Codec.INT.fieldOf("level").orElse(1).forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, cpf::new)
+   );
+   public static final zt<xg, cpf> d = zt.a(zr.a(mb.aw), $$0 -> $$0.f, zr.a(mb.av), $$0 -> $$0.g, zr.h, $$0 -> $$0.h, cpf::new);
+   private final cpj f;
+   private final cph g;
+   private final int h;
 
-   public cpf(bus<? extends cpf> $$0, dfm $$1) {
-      super($$0, $$1);
+   public cpf(cpj $$0, cph $$1, int $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = Math.max(1, $$2);
    }
 
-   public cpf(dfm $$0, double $$1, double $$2, double $$3, float $$4, int $$5, bvh $$6) {
-      this(bus.S, $$0);
-      this.d = $$5;
-      this.a($$6);
-      this.v($$4 * (180.0F / (float)Math.PI));
-      this.a_($$1, $$2, $$3);
+   public cpj a() {
+      return this.f;
    }
 
-   @Override
-   protected void a(akq.a $$0) {
+   public cph b() {
+      return this.g;
    }
 
-   public void a(@Nullable bvh $$0) {
-      this.h = $$0;
-      this.i = $$0 == null ? null : $$0.cG();
-   }
-
-   @Nullable
-   public bvh j() {
-      if (this.h == null && this.i != null && this.dV() instanceof arp) {
-         bul $$0 = ((arp)this.dV()).a(this.i);
-         if ($$0 instanceof bvh) {
-            this.h = (bvh)$$0;
-         }
-      }
-
+   public int c() {
       return this.h;
    }
 
-   @Override
-   protected void a(ul $$0) {
-      this.d = $$0.h("Warmup");
-      if ($$0.b("Owner")) {
-         this.i = $$0.a("Owner");
-      }
+   public cpf a(cpj $$0) {
+      return new cpf($$0, this.g, this.h);
    }
 
-   @Override
-   protected void b(ul $$0) {
-      $$0.a("Warmup", this.d);
-      if (this.i != null) {
-         $$0.a("Owner", this.i);
-      }
+   public cpf a(cph $$0) {
+      return new cpf(this.f, $$0, this.h);
    }
 
-   @Override
-   public void h() {
-      super.h();
-      if (this.dV().C) {
-         if (this.g) {
-            this.f--;
-            if (this.f == 14) {
-               for (int $$0 = 0; $$0 < 12; $$0++) {
-                  double $$1 = this.dA() + (this.ae.j() * 2.0 - 1.0) * (double)this.dq() * 0.5;
-                  double $$2 = this.dC() + 0.05 + this.ae.j();
-                  double $$3 = this.dG() + (this.ae.j() * 2.0 - 1.0) * (double)this.dq() * 0.5;
-                  double $$4 = (this.ae.j() * 2.0 - 1.0) * 0.3;
-                  double $$5 = 0.3 + this.ae.j() * 0.3;
-                  double $$6 = (this.ae.j() * 2.0 - 1.0) * 0.3;
-                  this.dV().a(ls.f, $$1, $$2 + 1.0, $$3, $$4, $$5, $$6);
-               }
-            }
-         }
-      } else if (--this.d < 0) {
-         if (this.d == -8) {
-            for (bvh $$8 : this.dV().a(bvh.class, this.cR().c(0.2, 0.0, 0.2))) {
-               this.c($$8);
-            }
-         }
-
-         if (!this.e) {
-            this.dV().a(this, (byte)4);
-            this.e = true;
-         }
-
-         if (--this.f < 0) {
-            this.at();
-         }
-      }
+   public cpf a(int $$0) {
+      return new cpf(this.f, this.g, $$0);
    }
 
-   private void c(bvh $$0) {
-      bvh $$1 = this.j();
-      if ($$0.bL() && !$$0.cC() && $$0 != $$1) {
-         if ($$1 == null) {
-            $$0.a(this.dW().q(), 6.0F);
-         } else {
-            if ($$1.s($$0)) {
-               return;
-            }
-
-            btb $$2 = this.dW().c(this, (bul)$$1);
-            if (this.dV() instanceof arp $$3 && $$0.a($$3, $$2, 6.0F)) {
-               dcf.a($$3, (bul)$$0, $$2);
-            }
-         }
-      }
+   public static int b(int $$0) {
+      return d($$0) ? e[$$0 - 1] : 0;
    }
 
-   @Override
-   public void b(byte $$0) {
-      super.b($$0);
-      if ($$0 == 4) {
-         this.g = true;
-         if (!this.bb()) {
-            this.dV().a(this.dA(), this.dC(), this.dG(), awn.iC, this.dm(), 1.0F, this.ae.i() * 0.2F + 0.85F, false);
-         }
-      }
+   public static int c(int $$0) {
+      return d($$0) ? e[$$0] : 0;
    }
 
-   public float a(float $$0) {
-      if (!this.g) {
-         return 0.0F;
-      } else {
-         int $$1 = this.f - 2;
-         return $$1 <= 0 ? 1.0F : 1.0F - ((float)$$1 - $$0) / 20.0F;
-      }
-   }
-
-   @Override
-   public boolean a(arp $$0, btb $$1, float $$2) {
-      return false;
+   public static boolean d(int $$0) {
+      return $$0 >= 1 && $$0 < 5;
    }
 }

@@ -1,85 +1,127 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import javax.annotation.Nullable;
+import com.google.common.base.Objects;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Set;
+import java.util.function.Function;
 
-public class asd implements arz {
-   private final asb a;
-   private final Long2ObjectOpenHashMap<dyr> b = new Long2ObjectOpenHashMap();
-   private des c = new des(0, 0);
-   private final int d;
-   private final int e;
-   private final int f;
-   private boolean g;
+public class asd extends bsu {
+   private final Set<asi> h = Sets.newHashSet();
+   private final Set<asi> i = Collections.unmodifiableSet(this.h);
+   private boolean j = true;
 
-   private asd(asb $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-   }
-
-   public static asd b(int $$0) {
-      return $$0 > 0 ? c($$0 + 1) : c();
-   }
-
-   public static asd c(int $$0) {
-      asb $$1 = asb.c($$0);
-      int $$2 = arz.a($$0);
-      int $$3 = $$0 + aqt.a;
-      int $$4 = arz.a($$3);
-      return new asd($$1, $$2, $$3, $$4);
-   }
-
-   public static asd c() {
-      return new asd(asb.c(), 0, 0, 0);
+   public asd(xv $$0, bsu.a $$1, bsu.b $$2) {
+      super(bae.a(), $$0, $$1, $$2);
    }
 
    @Override
-   public void a(des $$0) {
-      if (this.g) {
-         this.a.a($$0);
-         this.c = $$0;
+   public void a(float $$0) {
+      if ($$0 != this.b) {
+         super.a($$0);
+         this.a(adb::b);
       }
    }
 
    @Override
-   public void a(des $$0, @Nullable dyr $$1) {
-      if (this.g) {
-         this.a.a($$0, $$1);
-         if ($$1 == null) {
-            this.b.remove($$0.a());
-         } else {
-            this.b.put($$0.a(), $$1);
+   public void a(bsu.a $$0) {
+      if ($$0 != this.c) {
+         super.a($$0);
+         this.a(adb::d);
+      }
+   }
+
+   @Override
+   public void a(bsu.b $$0) {
+      if ($$0 != this.d) {
+         super.a($$0);
+         this.a(adb::d);
+      }
+   }
+
+   @Override
+   public bsu a(boolean $$0) {
+      if ($$0 != this.e) {
+         super.a($$0);
+         this.a(adb::e);
+      }
+
+      return this;
+   }
+
+   @Override
+   public bsu b(boolean $$0) {
+      if ($$0 != this.f) {
+         super.b($$0);
+         this.a(adb::e);
+      }
+
+      return this;
+   }
+
+   @Override
+   public bsu c(boolean $$0) {
+      if ($$0 != this.g) {
+         super.c($$0);
+         this.a(adb::e);
+      }
+
+      return this;
+   }
+
+   @Override
+   public void a(xv $$0) {
+      if (!Objects.equal($$0, this.a)) {
+         super.a($$0);
+         this.a(adb::c);
+      }
+   }
+
+   private void a(Function<bsu, adb> $$0) {
+      if (this.j) {
+         adb $$1 = $$0.apply(this);
+
+         for (asi $$2 : this.h) {
+            $$2.f.b($$1);
          }
       }
    }
 
-   @Override
-   public void a() {
-      this.g = true;
-      this.b.clear();
-      this.a.a();
+   public void a(asi $$0) {
+      if (this.h.add($$0) && this.j) {
+         $$0.f.b(adb.a(this));
+      }
    }
 
-   @Override
+   public void b(asi $$0) {
+      if (this.h.remove($$0) && this.j) {
+         $$0.f.b(adb.a(this.h()));
+      }
+   }
+
    public void b() {
-      this.g = false;
-      this.a.b();
+      if (!this.h.isEmpty()) {
+         for (asi $$0 : Lists.newArrayList(this.h)) {
+            this.b($$0);
+         }
+      }
    }
 
-   public int d() {
-      return this.d;
+   public boolean f() {
+      return this.j;
    }
 
-   public int e() {
-      return this.f;
+   public void d(boolean $$0) {
+      if ($$0 != this.j) {
+         this.j = $$0;
+
+         for (asi $$1 : this.h) {
+            $$1.f.b($$0 ? adb.a(this) : adb.a(this.h()));
+         }
+      }
    }
 
-   public int f() {
-      return this.a.d();
-   }
-
-   @Nullable
-   public dyr a(int $$0, int $$1) {
-      return (dyr)this.b.get(des.c($$0 + this.c.g - this.e, $$1 + this.c.h - this.e));
+   public Collection<asi> g() {
+      return this.i;
    }
 }

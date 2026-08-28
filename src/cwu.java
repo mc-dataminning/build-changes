@@ -1,51 +1,40 @@
-public interface cwu {
-   ali<cws> a = a("13");
-   ali<cws> b = a("cat");
-   ali<cws> c = a("blocks");
-   ali<cws> d = a("chirp");
-   ali<cws> e = a("far");
-   ali<cws> f = a("mall");
-   ali<cws> g = a("mellohi");
-   ali<cws> h = a("stal");
-   ali<cws> i = a("strad");
-   ali<cws> j = a("ward");
-   ali<cws> k = a("11");
-   ali<cws> l = a("wait");
-   ali<cws> m = a("pigstep");
-   ali<cws> n = a("otherside");
-   ali<cws> o = a("5");
-   ali<cws> p = a("relic");
-   ali<cws> q = a("precipice");
-   ali<cws> r = a("creator");
-   ali<cws> s = a("creator_music_box");
-
-   private static ali<cws> a(String $$0) {
-      return ali.a(ma.L, alj.b($$0));
+public class cwu extends cxg {
+   public cwu(cxg.a $$0) {
+      super($$0);
    }
 
-   private static void a(qz<cws> $$0, ali<cws> $$1, jq.c<awm> $$2, int $$3, int $$4) {
-      $$0.a($$1, new cws($$2, xj.c(ae.a("jukebox_song", $$1.a())), (float)$$3, $$4));
-   }
+   @Override
+   public bte a(dbd $$0) {
+      cps $$1 = $$0.o();
+      dha $$2 = $$0.q();
+      jh $$3 = $$0.a();
+      dxn $$4 = $$2.a_($$3);
+      if (!dkt.i($$4) && !dku.h($$4) && !dkv.h($$4)) {
+         jh $$5 = $$3.a($$0.k());
+         if (djr.a($$2, $$5, $$0.g())) {
+            $$2.a($$1, $$5, axf.js, axg.e, 1.0F, $$2.H_().i() * 0.4F + 0.8F);
+            dxn $$6 = djr.a($$2, $$5);
+            $$2.a($$5, $$6, 11);
+            $$2.a($$1, ecj.i, $$3);
+            cxk $$7 = $$0.n();
+            if ($$1 instanceof asi) {
+               ao.z.a((asi)$$1, $$5, $$7);
+               $$7.a(1, $$1, bwb.d($$0.p()));
+            }
 
-   static void a(qz<cws> $$0) {
-      a($$0, a, awn.pH, 178, 1);
-      a($$0, b, awn.pJ, 185, 2);
-      a($$0, c, awn.pI, 345, 3);
-      a($$0, d, awn.pK, 185, 4);
-      a($$0, e, awn.pL, 174, 5);
-      a($$0, f, awn.pM, 197, 6);
-      a($$0, g, awn.pN, 96, 7);
-      a($$0, h, awn.pP, 150, 8);
-      a($$0, i, awn.pQ, 188, 9);
-      a($$0, j, awn.pS, 251, 10);
-      a($$0, k, awn.pG, 71, 11);
-      a($$0, l, awn.pR, 238, 12);
-      a($$0, m, awn.pO, 149, 13);
-      a($$0, n, awn.pT, 195, 14);
-      a($$0, o, awn.pF, 178, 15);
-      a($$0, p, awn.pU, 218, 14);
-      a($$0, q, awn.pX, 299, 13);
-      a($$0, r, awn.pV, 176, 12);
-      a($$0, s, awn.pW, 73, 11);
+            return bte.a;
+         } else {
+            return bte.d;
+         }
+      } else {
+         $$2.a($$1, $$3, axf.js, axg.e, 1.0F, $$2.H_().i() * 0.4F + 0.8F);
+         $$2.a($$3, $$4.b(dyd.r, Boolean.valueOf(true)), 11);
+         $$2.a($$1, ecj.c, $$3);
+         if ($$1 != null) {
+            $$0.n().a(1, $$1, bwb.d($$0.p()));
+         }
+
+         return bte.a;
+      }
    }
 }

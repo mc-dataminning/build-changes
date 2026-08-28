@@ -1,51 +1,67 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
 import java.util.Map;
 
-public class bby extends DataFix {
-   private static final Map<String, String> a = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
-      $$0.put("Airportal", "minecraft:end_portal");
-      $$0.put("Banner", "minecraft:banner");
-      $$0.put("Beacon", "minecraft:beacon");
-      $$0.put("Cauldron", "minecraft:brewing_stand");
-      $$0.put("Chest", "minecraft:chest");
-      $$0.put("Comparator", "minecraft:comparator");
-      $$0.put("Control", "minecraft:command_block");
-      $$0.put("DLDetector", "minecraft:daylight_detector");
-      $$0.put("Dropper", "minecraft:dropper");
-      $$0.put("EnchantTable", "minecraft:enchanting_table");
-      $$0.put("EndGateway", "minecraft:end_gateway");
-      $$0.put("EnderChest", "minecraft:ender_chest");
-      $$0.put("FlowerPot", "minecraft:flower_pot");
-      $$0.put("Furnace", "minecraft:furnace");
-      $$0.put("Hopper", "minecraft:hopper");
-      $$0.put("MobSpawner", "minecraft:mob_spawner");
-      $$0.put("Music", "minecraft:noteblock");
-      $$0.put("Piston", "minecraft:piston");
-      $$0.put("RecordPlayer", "minecraft:jukebox");
-      $$0.put("Sign", "minecraft:sign");
-      $$0.put("Skull", "minecraft:skull");
-      $$0.put("Structure", "minecraft:structure_block");
-      $$0.put("Trap", "minecraft:dispenser");
-   });
+public class bby extends bbz {
+   private static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:recipes/brewing/speckled_melon", "minecraft:recipes/brewing/glistering_melon_slice")
+      .put("minecraft:recipes/building_blocks/black_stained_hardened_clay", "minecraft:recipes/building_blocks/black_terracotta")
+      .put("minecraft:recipes/building_blocks/blue_stained_hardened_clay", "minecraft:recipes/building_blocks/blue_terracotta")
+      .put("minecraft:recipes/building_blocks/brown_stained_hardened_clay", "minecraft:recipes/building_blocks/brown_terracotta")
+      .put("minecraft:recipes/building_blocks/cyan_stained_hardened_clay", "minecraft:recipes/building_blocks/cyan_terracotta")
+      .put("minecraft:recipes/building_blocks/gray_stained_hardened_clay", "minecraft:recipes/building_blocks/gray_terracotta")
+      .put("minecraft:recipes/building_blocks/green_stained_hardened_clay", "minecraft:recipes/building_blocks/green_terracotta")
+      .put("minecraft:recipes/building_blocks/light_blue_stained_hardened_clay", "minecraft:recipes/building_blocks/light_blue_terracotta")
+      .put("minecraft:recipes/building_blocks/light_gray_stained_hardened_clay", "minecraft:recipes/building_blocks/light_gray_terracotta")
+      .put("minecraft:recipes/building_blocks/lime_stained_hardened_clay", "minecraft:recipes/building_blocks/lime_terracotta")
+      .put("minecraft:recipes/building_blocks/magenta_stained_hardened_clay", "minecraft:recipes/building_blocks/magenta_terracotta")
+      .put("minecraft:recipes/building_blocks/orange_stained_hardened_clay", "minecraft:recipes/building_blocks/orange_terracotta")
+      .put("minecraft:recipes/building_blocks/pink_stained_hardened_clay", "minecraft:recipes/building_blocks/pink_terracotta")
+      .put("minecraft:recipes/building_blocks/purple_stained_hardened_clay", "minecraft:recipes/building_blocks/purple_terracotta")
+      .put("minecraft:recipes/building_blocks/red_stained_hardened_clay", "minecraft:recipes/building_blocks/red_terracotta")
+      .put("minecraft:recipes/building_blocks/white_stained_hardened_clay", "minecraft:recipes/building_blocks/white_terracotta")
+      .put("minecraft:recipes/building_blocks/yellow_stained_hardened_clay", "minecraft:recipes/building_blocks/yellow_terracotta")
+      .put("minecraft:recipes/building_blocks/acacia_wooden_slab", "minecraft:recipes/building_blocks/acacia_slab")
+      .put("minecraft:recipes/building_blocks/birch_wooden_slab", "minecraft:recipes/building_blocks/birch_slab")
+      .put("minecraft:recipes/building_blocks/dark_oak_wooden_slab", "minecraft:recipes/building_blocks/dark_oak_slab")
+      .put("minecraft:recipes/building_blocks/jungle_wooden_slab", "minecraft:recipes/building_blocks/jungle_slab")
+      .put("minecraft:recipes/building_blocks/oak_wooden_slab", "minecraft:recipes/building_blocks/oak_slab")
+      .put("minecraft:recipes/building_blocks/spruce_wooden_slab", "minecraft:recipes/building_blocks/spruce_slab")
+      .put("minecraft:recipes/building_blocks/brick_block", "minecraft:recipes/building_blocks/bricks")
+      .put("minecraft:recipes/building_blocks/chiseled_stonebrick", "minecraft:recipes/building_blocks/chiseled_stone_bricks")
+      .put("minecraft:recipes/building_blocks/end_bricks", "minecraft:recipes/building_blocks/end_stone_bricks")
+      .put("minecraft:recipes/building_blocks/lit_pumpkin", "minecraft:recipes/building_blocks/jack_o_lantern")
+      .put("minecraft:recipes/building_blocks/magma", "minecraft:recipes/building_blocks/magma_block")
+      .put("minecraft:recipes/building_blocks/melon_block", "minecraft:recipes/building_blocks/melon")
+      .put("minecraft:recipes/building_blocks/mossy_stonebrick", "minecraft:recipes/building_blocks/mossy_stone_bricks")
+      .put("minecraft:recipes/building_blocks/nether_brick", "minecraft:recipes/building_blocks/nether_bricks")
+      .put("minecraft:recipes/building_blocks/pillar_quartz_block", "minecraft:recipes/building_blocks/quartz_pillar")
+      .put("minecraft:recipes/building_blocks/red_nether_brick", "minecraft:recipes/building_blocks/red_nether_bricks")
+      .put("minecraft:recipes/building_blocks/snow", "minecraft:recipes/building_blocks/snow_block")
+      .put("minecraft:recipes/building_blocks/smooth_red_sandstone", "minecraft:recipes/building_blocks/cut_red_sandstone")
+      .put("minecraft:recipes/building_blocks/smooth_sandstone", "minecraft:recipes/building_blocks/cut_sandstone")
+      .put("minecraft:recipes/building_blocks/stonebrick", "minecraft:recipes/building_blocks/stone_bricks")
+      .put("minecraft:recipes/building_blocks/stone_stairs", "minecraft:recipes/building_blocks/cobblestone_stairs")
+      .put("minecraft:recipes/building_blocks/string_to_wool", "minecraft:recipes/building_blocks/white_wool_from_string")
+      .put("minecraft:recipes/decorations/fence", "minecraft:recipes/decorations/oak_fence")
+      .put("minecraft:recipes/decorations/purple_shulker_box", "minecraft:recipes/decorations/shulker_box")
+      .put("minecraft:recipes/decorations/slime", "minecraft:recipes/decorations/slime_block")
+      .put("minecraft:recipes/decorations/snow_layer", "minecraft:recipes/decorations/snow")
+      .put("minecraft:recipes/misc/bone_meal_from_block", "minecraft:recipes/misc/bone_meal_from_bone_block")
+      .put("minecraft:recipes/misc/bone_meal_from_bone", "minecraft:recipes/misc/bone_meal")
+      .put("minecraft:recipes/misc/gold_ingot_from_block", "minecraft:recipes/misc/gold_ingot_from_gold_block")
+      .put("minecraft:recipes/misc/iron_ingot_from_block", "minecraft:recipes/misc/iron_ingot_from_iron_block")
+      .put("minecraft:recipes/redstone/fence_gate", "minecraft:recipes/redstone/oak_fence_gate")
+      .put("minecraft:recipes/redstone/noteblock", "minecraft:recipes/redstone/note_block")
+      .put("minecraft:recipes/redstone/trapdoor", "minecraft:recipes/redstone/oak_trapdoor")
+      .put("minecraft:recipes/redstone/wooden_button", "minecraft:recipes/redstone/oak_button")
+      .put("minecraft:recipes/redstone/wooden_door", "minecraft:recipes/redstone/oak_door")
+      .put("minecraft:recipes/redstone/wooden_pressure_plate", "minecraft:recipes/redstone/oak_pressure_plate")
+      .put("minecraft:recipes/transportation/boat", "minecraft:recipes/transportation/oak_boat")
+      .put("minecraft:recipes/transportation/golden_rail", "minecraft:recipes/transportation/powered_rail")
+      .build();
 
    public bby(Schema $$0, boolean $$1) {
-      super($$0, $$1);
-   }
-
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bia.t);
-      Type<?> $$1 = this.getOutputSchema().getType(bia.t);
-      TaggedChoiceType<String> $$2 = this.getInputSchema().findChoiceType(bia.s);
-      TaggedChoiceType<String> $$3 = this.getOutputSchema().findChoiceType(bia.s);
-      return TypeRewriteRule.seq(
-         this.convertUnchecked("item stack block entity name hook converter", $$0, $$1),
-         this.fixTypeEverywhere("BlockEntityIdFix", $$2, $$3, $$0x -> $$0xx -> $$0xx.mapFirst($$0xxx -> a.getOrDefault($$0xxx, $$0xxx)))
-      );
+      super($$0, $$1, "AdvancementsFix", $$0x -> a.getOrDefault($$0x, $$0x));
    }
 }

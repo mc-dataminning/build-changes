@@ -1,61 +1,29 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import java.util.List;
 
-public record eyg(Optional<Long> b, eum c) implements exy {
-   public static final MapCodec<eyg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.LONG.optionalFieldOf("period").forGetter(eyg::c), eum.a.fieldOf("value").forGetter(eyg::d)).apply($$0, eyg::new)
-   );
+public class eyg extends exu {
+   public static final MapCodec<eyg> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(vv.j.fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, eyg::new));
+   private final ux b;
 
-   @Override
-   public exz b() {
-      return eya.q;
+   private eyg(List<ezs> $$0, ux $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public Set<exg<?>> a() {
-      return this.c.a();
+   public exw<eyg> b() {
+      return exx.j;
    }
 
-   public boolean a(eun $$0) {
-      arp $$1 = $$0.d();
-      long $$2 = $$1.ac();
-      if (this.b.isPresent()) {
-         $$2 %= this.b.get();
-      }
-
-      return this.c.b($$0, (int)$$2);
+   @Override
+   public cxk a(cxk $$0, ewh $$1) {
+      czt.a(ku.b, $$0, $$0x -> $$0x.a(this.b));
+      return $$0;
    }
 
-   public static eyg.a a(eum $$0) {
-      return new eyg.a($$0);
-   }
-
-   public Optional<Long> c() {
-      return this.b;
-   }
-
-   public eum d() {
-      return this.c;
-   }
-
-   public static class a implements exy.a {
-      private Optional<Long> a = Optional.empty();
-      private final eum b;
-
-      public a(eum $$0) {
-         this.b = $$0;
-      }
-
-      public eyg.a a(long $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public eyg a() {
-         return new eyg(this.a, this.b);
-      }
+   @Deprecated
+   public static exu.a<?> a(ux $$0) {
+      return a($$1 -> new eyg($$1, $$0));
    }
 }

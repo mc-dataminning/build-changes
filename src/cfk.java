@@ -1,22 +1,41 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
-
-public class cfk<T extends bvh> extends cfr<T> {
-   @Override
-   protected void a(arp $$0, T $$1) {
-      double $$2 = $$1.h(bwp.m);
-      ezt $$3 = $$1.cR().c($$2, $$2, $$2);
-      List<bvh> $$4 = $$0.a(bvh.class, $$3, $$1x -> $$1x != $$1 && $$1x.bL());
-      $$4.sort(Comparator.comparingDouble($$1::g));
-      bwj<?> $$5 = $$1.eb();
-      $$5.a(cel.g, $$4);
-      $$5.a(cel.h, new cen($$0, $$1, $$4));
+public class cfk extends cfn {
+   public cfk(bwd $$0, dha $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public Set<cel<?>> a() {
-      return ImmutableSet.of(cel.g, cel.h);
+   protected euf a(int $$0) {
+      this.o = new ety(false);
+      this.o.a(true);
+      return new euf(this.o, $$0);
+   }
+
+   @Override
+   protected boolean a() {
+      return true;
+   }
+
+   @Override
+   protected fbs b() {
+      return new fbs(this.a.dA(), this.a.e(0.5), this.a.dG());
+   }
+
+   @Override
+   protected double a(fbs $$0) {
+      return $$0.e;
+   }
+
+   @Override
+   protected boolean a(fbs $$0, fbs $$1) {
+      return this.a.bn() ? a(this.a, $$0, $$1, false) : false;
+   }
+
+   @Override
+   public boolean a(jh $$0) {
+      return !this.b.a_($$0.e()).l();
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

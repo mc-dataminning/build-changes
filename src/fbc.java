@@ -1,53 +1,32 @@
-import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public interface fbc {
-   String cz = "*";
-   fbc cA = new fbc() {
-      @Override
-      public String cI() {
-         return "*";
-      }
-   };
+public class fbc implements fbd<MinecraftServer> {
+   final alz a;
 
-   String cI();
-
-   @Nullable
-   default xj o_() {
-      return null;
+   public fbc(alz $$0) {
+      this.a = $$0;
    }
 
-   default xj ha() {
-      xj $$0 = this.o_();
-      return $$0 != null ? $$0.f().a($$0x -> $$0x.a(new xp(xp.a.a, xj.b(this.cI())))) : xj.b(this.cI());
-   }
+   public void a(MinecraftServer $$0, fbf<MinecraftServer> $$1, long $$2) {
+      amo $$3 = $$0.aE();
 
-   static fbc c(final String $$0) {
-      if ($$0.equals("*")) {
-         return cA;
-      } else {
-         final xj $$1 = xj.b($$0);
-         return new fbc() {
-            @Override
-            public String cI() {
-               return $$0;
-            }
-
-            @Override
-            public xj ha() {
-               return $$1;
-            }
-         };
+      for (ik<ew> $$5 : $$3.b(this.a)) {
+         $$3.a($$5, $$3.c());
       }
    }
 
-   static fbc a(GameProfile $$0) {
-      final String $$1 = $$0.getName();
-      return new fbc() {
-         @Override
-         public String cI() {
-            return $$1;
-         }
-      };
+   public static class a extends fbd.a<MinecraftServer, fbc> {
+      public a() {
+         super(alz.b("function_tag"), fbc.class);
+      }
+
+      public void a(ux $$0, fbc $$1) {
+         $$0.a("Name", $$1.a.toString());
+      }
+
+      public fbc a(ux $$0) {
+         alz $$1 = alz.a($$0.l("Name"));
+         return new fbc($$1);
+      }
    }
 }

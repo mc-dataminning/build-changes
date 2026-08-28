@@ -1,25 +1,44 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
+import org.joml.Vector2i;
 
 public class fmi {
-   private static final ayy a = ayy.codepoint(32, yg.a);
+   private double a;
+   private double b;
 
-   private static String a(String $$0) {
-      return fke.Q().n.M().c() ? $$0 : n.a($$0);
+   public Vector2i a(double $$0, double $$1) {
+      if (this.a != 0.0 && Math.signum($$0) != Math.signum(this.a)) {
+         this.a = 0.0;
+      }
+
+      if (this.b != 0.0 && Math.signum($$1) != Math.signum(this.b)) {
+         this.b = 0.0;
+      }
+
+      this.a += $$0;
+      this.b += $$1;
+      int $$2 = (int)this.a;
+      int $$3 = (int)this.b;
+      if ($$2 == 0 && $$3 == 0) {
+         return new Vector2i(0, 0);
+      } else {
+         this.a -= (double)$$2;
+         this.b -= (double)$$3;
+         return new Vector2i($$2, $$3);
+      }
    }
 
-   public static List<ayy> a(xo $$0, int $$1, flo $$2) {
-      fjs $$3 = new fjs();
-      $$0.a(($$1x, $$2x) -> {
-         $$3.a(xo.a(a($$2x), $$1x));
-         return Optional.empty();
-      }, yg.a);
-      List<ayy> $$4 = Lists.newArrayList();
-      $$2.b().a($$3.b(), $$1, yg.a, ($$1x, $$2x) -> {
-         ayy $$3x = ug.a().a($$1x);
-         $$4.add($$2x ? ayy.composite(a, $$3x) : $$3x);
-      });
-      return (List<ayy>)($$4.isEmpty() ? Lists.newArrayList(new ayy[]{ayy.a}) : $$4);
+   public static int a(double $$0, int $$1, int $$2) {
+      int $$3 = (int)Math.signum($$0);
+      $$1 -= $$3;
+      $$1 = Math.max(-1, $$1);
+
+      while ($$1 < 0) {
+         $$1 += $$2;
+      }
+
+      while ($$1 >= $$2) {
+         $$1 -= $$2;
+      }
+
+      return $$1;
    }
 }

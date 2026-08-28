@@ -1,43 +1,47 @@
-public interface cne {
-   int m_ = 10;
-   float n_ = 0.2F;
+import javax.annotation.Nullable;
 
-   int gm();
-
-   static boolean a(arp $$0, bvh $$1, bvh $$2) {
-      float $$3 = (float)$$1.h(bwp.c);
-      float $$4;
-      if (!$$1.e_() && (int)$$3 > 0) {
-         $$4 = $$3 / 2.0F + (float)$$0.A.a((int)$$3);
-      } else {
-         $$4 = $$3;
-      }
-
-      btb $$6 = $$1.dW().b($$1);
-      boolean $$7 = $$2.a($$0, $$6, $$4);
-      if ($$7) {
-         dcf.a($$0, (bul)$$2, $$6);
-         if (!$$1.e_()) {
-            a($$1, $$2);
-         }
-      }
-
-      return $$7;
+public class cne extends cma {
+   public cne(bvm<? extends cne> $$0, dha $$1) {
+      super($$0, $$1);
    }
 
-   static void a(bvh $$0, bvh $$1) {
-      double $$2 = $$0.h(bwp.d);
-      double $$3 = $$1.h(bwp.p);
-      double $$4 = $$2 - $$3;
-      if (!($$4 <= 0.0)) {
-         double $$5 = $$1.dA() - $$0.dA();
-         double $$6 = $$1.dG() - $$0.dG();
-         float $$7 = (float)($$0.dV().A.a(21) - 10);
-         double $$8 = $$4 * (double)($$0.dV().A.i() * 0.5F + 0.2F);
-         ezy $$9 = new ezy($$5, 0.0, $$6).d().c($$8).b($$7);
-         double $$10 = $$4 * (double)$$0.dV().A.i() * 0.5;
-         $$1.j($$9.d, $$10, $$9.f);
-         $$1.T = true;
+   public static boolean a(bvm<cne> $$0, dhr $$1, bvl $$2, jh $$3, bam $$4) {
+      jh $$5 = $$3;
+
+      do {
+         $$5 = $$5.d();
+      } while ($$1.a_($$5).a(dkg.rk));
+
+      return b($$0, $$1, $$2, $$3, $$4) && (bvl.a($$2) || $$1.h($$5.e()));
+   }
+
+   @Override
+   protected axe u() {
+      return axf.zK;
+   }
+
+   @Override
+   protected axe e(btv $$0) {
+      return axf.zM;
+   }
+
+   @Override
+   protected axe o_() {
+      return axf.zL;
+   }
+
+   @Override
+   axe p() {
+      return axf.zN;
+   }
+
+   @Override
+   protected cpz a(cxk $$0, float $$1, @Nullable cxk $$2) {
+      cpz $$3 = super.a($$0, $$1, $$2);
+      if ($$3 instanceof cqb) {
+         ((cqb)$$3).a(new buk(bum.b, 600));
       }
+
+      return $$3;
    }
 }

@@ -2,269 +2,227 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class ri {
-   public static final ali<ens> a = rg.a("village/savanna/town_centers");
-   private static final ali<ens> b = rg.a("village/savanna/terminators");
-   private static final ali<ens> c = rg.a("village/savanna/zombie/terminators");
-
-   public static void a(qz<ens> $$0) {
-      jr<elm> $$1 = $$0.a(ma.aR);
-      jq<elm> $$2 = $$1.b(ss.g);
-      jq<elm> $$3 = $$1.b(ss.a);
-      jq<elm> $$4 = $$1.b(ss.b);
-      jr<eqi> $$5 = $$0.a(ma.aT);
-      jq<eqi> $$6 = $$5.b(rh.b);
-      jq<eqi> $$7 = $$5.b(rh.j);
-      jq<eqi> $$8 = $$5.b(rh.m);
-      jr<ens> $$9 = $$0.a(ma.aV);
-      jq<ens> $$10 = $$9.b(rg.a);
-      jq<ens> $$11 = $$9.b(b);
-      jq<ens> $$12 = $$9.b(c);
-      $$0.a(
-         a,
-         new ens(
-            $$10,
-            ImmutableList.of(
-               Pair.of(enq.a("village/savanna/town_centers/savanna_meeting_point_1"), 100),
-               Pair.of(enq.a("village/savanna/town_centers/savanna_meeting_point_2"), 50),
-               Pair.of(enq.a("village/savanna/town_centers/savanna_meeting_point_3"), 150),
-               Pair.of(enq.a("village/savanna/town_centers/savanna_meeting_point_4"), 150),
-               Pair.of(enq.a("village/savanna/zombie/town_centers/savanna_meeting_point_1", $$6), 2),
-               Pair.of(enq.a("village/savanna/zombie/town_centers/savanna_meeting_point_2", $$6), 1),
-               Pair.of(enq.a("village/savanna/zombie/town_centers/savanna_meeting_point_3", $$6), 3),
-               Pair.of(enq.a("village/savanna/zombie/town_centers/savanna_meeting_point_4", $$6), 3)
-            ),
-            ens.a.b
-         )
-      );
-      rg.a(
+   public static void a(rk<epm> $$0) {
+      jr<esc> $$1 = $$0.a(mb.aU);
+      jq<esc> $$2 = $$1.b(rs.s);
+      jq<esc> $$3 = $$1.b(rs.B);
+      jq<esc> $$4 = $$1.b(rs.r);
+      jq<esc> $$5 = $$1.b(rs.C);
+      jq<esc> $$6 = $$1.b(rs.A);
+      jr<epm> $$7 = $$0.a(mb.aW);
+      jq<epm> $$8 = $$7.b(rr.a);
+      rr.a($$0, "bastion/treasure/bases", new epm($$8, ImmutableList.of(Pair.of(epk.b("bastion/treasure/bases/lava_basin", $$2), 1)), epm.a.b));
+      rr.a($$0, "bastion/treasure/stairs", new epm($$8, ImmutableList.of(Pair.of(epk.b("bastion/treasure/stairs/lower_stairs", $$2), 1)), epm.a.b));
+      rr.a(
          $$0,
-         "village/savanna/streets",
-         new ens(
-            $$11,
+         "bastion/treasure/bases/centers",
+         new epm(
+            $$8,
             ImmutableList.of(
-               Pair.of(enq.a("village/savanna/streets/corner_01", $$7), 2),
-               Pair.of(enq.a("village/savanna/streets/corner_03", $$7), 2),
-               Pair.of(enq.a("village/savanna/streets/straight_02", $$7), 4),
-               Pair.of(enq.a("village/savanna/streets/straight_04", $$7), 7),
-               Pair.of(enq.a("village/savanna/streets/straight_05", $$7), 3),
-               Pair.of(enq.a("village/savanna/streets/straight_06", $$7), 4),
-               Pair.of(enq.a("village/savanna/streets/straight_08", $$7), 4),
-               Pair.of(enq.a("village/savanna/streets/straight_09", $$7), 4),
-               Pair.of(enq.a("village/savanna/streets/straight_10", $$7), 4),
-               Pair.of(enq.a("village/savanna/streets/straight_11", $$7), 4),
-               Pair.of(enq.a("village/savanna/streets/crossroad_02", $$7), 1),
-               Pair.of(enq.a("village/savanna/streets/crossroad_03", $$7), 2),
-               new Pair[]{
-                  Pair.of(enq.a("village/savanna/streets/crossroad_04", $$7), 2),
-                  Pair.of(enq.a("village/savanna/streets/crossroad_05", $$7), 2),
-                  Pair.of(enq.a("village/savanna/streets/crossroad_06", $$7), 2),
-                  Pair.of(enq.a("village/savanna/streets/crossroad_07", $$7), 2),
-                  Pair.of(enq.a("village/savanna/streets/split_01", $$7), 2),
-                  Pair.of(enq.a("village/savanna/streets/split_02", $$7), 2),
-                  Pair.of(enq.a("village/savanna/streets/turn_01", $$7), 3)
-               }
+               Pair.of(epk.b("bastion/treasure/bases/centers/center_0", $$2), 1),
+               Pair.of(epk.b("bastion/treasure/bases/centers/center_1", $$2), 1),
+               Pair.of(epk.b("bastion/treasure/bases/centers/center_2", $$2), 1),
+               Pair.of(epk.b("bastion/treasure/bases/centers/center_3", $$2), 1)
             ),
-            ens.a.a
+            epm.a.b
          )
       );
-      rg.a(
+      rr.a($$0, "bastion/treasure/brains", new epm($$8, ImmutableList.of(Pair.of(epk.b("bastion/treasure/brains/center_brain", $$2), 1)), epm.a.b));
+      rr.a(
          $$0,
-         "village/savanna/zombie/streets",
-         new ens(
-            $$12,
-            ImmutableList.of(
-               Pair.of(enq.a("village/savanna/zombie/streets/corner_01", $$7), 2),
-               Pair.of(enq.a("village/savanna/zombie/streets/corner_03", $$7), 2),
-               Pair.of(enq.a("village/savanna/zombie/streets/straight_02", $$7), 4),
-               Pair.of(enq.a("village/savanna/zombie/streets/straight_04", $$7), 7),
-               Pair.of(enq.a("village/savanna/zombie/streets/straight_05", $$7), 3),
-               Pair.of(enq.a("village/savanna/zombie/streets/straight_06", $$7), 4),
-               Pair.of(enq.a("village/savanna/zombie/streets/straight_08", $$7), 4),
-               Pair.of(enq.a("village/savanna/zombie/streets/straight_09", $$7), 4),
-               Pair.of(enq.a("village/savanna/zombie/streets/straight_10", $$7), 4),
-               Pair.of(enq.a("village/savanna/zombie/streets/straight_11", $$7), 4),
-               Pair.of(enq.a("village/savanna/zombie/streets/crossroad_02", $$7), 1),
-               Pair.of(enq.a("village/savanna/zombie/streets/crossroad_03", $$7), 2),
-               new Pair[]{
-                  Pair.of(enq.a("village/savanna/zombie/streets/crossroad_04", $$7), 2),
-                  Pair.of(enq.a("village/savanna/zombie/streets/crossroad_05", $$7), 2),
-                  Pair.of(enq.a("village/savanna/zombie/streets/crossroad_06", $$7), 2),
-                  Pair.of(enq.a("village/savanna/zombie/streets/crossroad_07", $$7), 2),
-                  Pair.of(enq.a("village/savanna/zombie/streets/split_01", $$7), 2),
-                  Pair.of(enq.a("village/savanna/zombie/streets/split_02", $$7), 2),
-                  Pair.of(enq.a("village/savanna/zombie/streets/turn_01", $$7), 3)
-               }
-            ),
-            ens.a.a
+         "bastion/treasure/walls",
+         new epm(
+            $$8,
+            ImmutableList.of(Pair.of(epk.b("bastion/treasure/walls/lava_wall", $$2), 1), Pair.of(epk.b("bastion/treasure/walls/entrance_wall", $$3), 1)),
+            epm.a.b
          )
       );
-      rg.a(
+      rr.a(
          $$0,
-         "village/savanna/houses",
-         new ens(
-            $$11,
+         "bastion/treasure/walls/outer",
+         new epm(
+            $$8,
             ImmutableList.of(
-               Pair.of(enq.a("village/savanna/houses/savanna_small_house_1"), 2),
-               Pair.of(enq.a("village/savanna/houses/savanna_small_house_2"), 2),
-               Pair.of(enq.a("village/savanna/houses/savanna_small_house_3"), 2),
-               Pair.of(enq.a("village/savanna/houses/savanna_small_house_4"), 2),
-               Pair.of(enq.a("village/savanna/houses/savanna_small_house_5"), 2),
-               Pair.of(enq.a("village/savanna/houses/savanna_small_house_6"), 2),
-               Pair.of(enq.a("village/savanna/houses/savanna_small_house_7"), 2),
-               Pair.of(enq.a("village/savanna/houses/savanna_small_house_8"), 2),
-               Pair.of(enq.a("village/savanna/houses/savanna_medium_house_1"), 2),
-               Pair.of(enq.a("village/savanna/houses/savanna_medium_house_2"), 2),
-               Pair.of(enq.a("village/savanna/houses/savanna_butchers_shop_1"), 2),
-               Pair.of(enq.a("village/savanna/houses/savanna_butchers_shop_2"), 2),
-               new Pair[]{
-                  Pair.of(enq.a("village/savanna/houses/savanna_tool_smith_1"), 2),
-                  Pair.of(enq.a("village/savanna/houses/savanna_fletcher_house_1"), 2),
-                  Pair.of(enq.a("village/savanna/houses/savanna_shepherd_1"), 7),
-                  Pair.of(enq.a("village/savanna/houses/savanna_armorer_1"), 1),
-                  Pair.of(enq.a("village/savanna/houses/savanna_fisher_cottage_1"), 3),
-                  Pair.of(enq.a("village/savanna/houses/savanna_tannery_1"), 2),
-                  Pair.of(enq.a("village/savanna/houses/savanna_cartographer_1"), 2),
-                  Pair.of(enq.a("village/savanna/houses/savanna_library_1"), 2),
-                  Pair.of(enq.a("village/savanna/houses/savanna_mason_1"), 2),
-                  Pair.of(enq.a("village/savanna/houses/savanna_weaponsmith_1"), 2),
-                  Pair.of(enq.a("village/savanna/houses/savanna_weaponsmith_2"), 2),
-                  Pair.of(enq.a("village/savanna/houses/savanna_temple_1"), 2),
-                  Pair.of(enq.a("village/savanna/houses/savanna_temple_2"), 3),
-                  Pair.of(enq.a("village/savanna/houses/savanna_large_farm_1", $$8), 4),
-                  Pair.of(enq.a("village/savanna/houses/savanna_large_farm_2", $$8), 6),
-                  Pair.of(enq.a("village/savanna/houses/savanna_small_farm", $$8), 4),
-                  Pair.of(enq.a("village/savanna/houses/savanna_animal_pen_1"), 2),
-                  Pair.of(enq.a("village/savanna/houses/savanna_animal_pen_2"), 2),
-                  Pair.of(enq.a("village/savanna/houses/savanna_animal_pen_3"), 2),
-                  Pair.of(enq.h(), 5)
-               }
+               Pair.of(epk.b("bastion/treasure/walls/outer/top_corner", $$3), 1),
+               Pair.of(epk.b("bastion/treasure/walls/outer/mid_corner", $$3), 1),
+               Pair.of(epk.b("bastion/treasure/walls/outer/bottom_corner", $$3), 1),
+               Pair.of(epk.b("bastion/treasure/walls/outer/outer_wall", $$3), 1),
+               Pair.of(epk.b("bastion/treasure/walls/outer/medium_outer_wall", $$3), 1),
+               Pair.of(epk.b("bastion/treasure/walls/outer/tall_outer_wall", $$3), 1)
             ),
-            ens.a.b
+            epm.a.b
          )
       );
-      rg.a(
+      rr.a(
          $$0,
-         "village/savanna/zombie/houses",
-         new ens(
-            $$12,
+         "bastion/treasure/walls/bottom",
+         new epm(
+            $$8,
             ImmutableList.of(
-               Pair.of(enq.a("village/savanna/zombie/houses/savanna_small_house_1", $$6), 2),
-               Pair.of(enq.a("village/savanna/zombie/houses/savanna_small_house_2", $$6), 2),
-               Pair.of(enq.a("village/savanna/zombie/houses/savanna_small_house_3", $$6), 2),
-               Pair.of(enq.a("village/savanna/zombie/houses/savanna_small_house_4", $$6), 2),
-               Pair.of(enq.a("village/savanna/zombie/houses/savanna_small_house_5", $$6), 2),
-               Pair.of(enq.a("village/savanna/zombie/houses/savanna_small_house_6", $$6), 2),
-               Pair.of(enq.a("village/savanna/zombie/houses/savanna_small_house_7", $$6), 2),
-               Pair.of(enq.a("village/savanna/zombie/houses/savanna_small_house_8", $$6), 2),
-               Pair.of(enq.a("village/savanna/zombie/houses/savanna_medium_house_1", $$6), 2),
-               Pair.of(enq.a("village/savanna/zombie/houses/savanna_medium_house_2", $$6), 2),
-               Pair.of(enq.a("village/savanna/houses/savanna_butchers_shop_1", $$6), 2),
-               Pair.of(enq.a("village/savanna/houses/savanna_butchers_shop_2", $$6), 2),
-               new Pair[]{
-                  Pair.of(enq.a("village/savanna/houses/savanna_tool_smith_1", $$6), 2),
-                  Pair.of(enq.a("village/savanna/houses/savanna_fletcher_house_1", $$6), 2),
-                  Pair.of(enq.a("village/savanna/houses/savanna_shepherd_1", $$6), 2),
-                  Pair.of(enq.a("village/savanna/houses/savanna_armorer_1", $$6), 1),
-                  Pair.of(enq.a("village/savanna/houses/savanna_fisher_cottage_1", $$6), 2),
-                  Pair.of(enq.a("village/savanna/houses/savanna_tannery_1", $$6), 2),
-                  Pair.of(enq.a("village/savanna/houses/savanna_cartographer_1", $$6), 2),
-                  Pair.of(enq.a("village/savanna/houses/savanna_library_1", $$6), 2),
-                  Pair.of(enq.a("village/savanna/houses/savanna_mason_1", $$6), 2),
-                  Pair.of(enq.a("village/savanna/houses/savanna_weaponsmith_1", $$6), 2),
-                  Pair.of(enq.a("village/savanna/houses/savanna_weaponsmith_2", $$6), 2),
-                  Pair.of(enq.a("village/savanna/houses/savanna_temple_1", $$6), 1),
-                  Pair.of(enq.a("village/savanna/houses/savanna_temple_2", $$6), 3),
-                  Pair.of(enq.a("village/savanna/houses/savanna_large_farm_1", $$6), 4),
-                  Pair.of(enq.a("village/savanna/zombie/houses/savanna_large_farm_2", $$6), 4),
-                  Pair.of(enq.a("village/savanna/houses/savanna_small_farm", $$6), 4),
-                  Pair.of(enq.a("village/savanna/houses/savanna_animal_pen_1", $$6), 2),
-                  Pair.of(enq.a("village/savanna/zombie/houses/savanna_animal_pen_2", $$6), 2),
-                  Pair.of(enq.a("village/savanna/zombie/houses/savanna_animal_pen_3", $$6), 2),
-                  Pair.of(enq.h(), 5)
-               }
+               Pair.of(epk.b("bastion/treasure/walls/bottom/wall_0", $$2), 1),
+               Pair.of(epk.b("bastion/treasure/walls/bottom/wall_1", $$2), 1),
+               Pair.of(epk.b("bastion/treasure/walls/bottom/wall_2", $$2), 1),
+               Pair.of(epk.b("bastion/treasure/walls/bottom/wall_3", $$2), 1)
             ),
-            ens.a.b
+            epm.a.b
          )
       );
-      $$0.a(
-         b,
-         new ens(
-            $$10,
-            ImmutableList.of(
-               Pair.of(enq.a("village/plains/terminators/terminator_01", $$7), 1),
-               Pair.of(enq.a("village/plains/terminators/terminator_02", $$7), 1),
-               Pair.of(enq.a("village/plains/terminators/terminator_03", $$7), 1),
-               Pair.of(enq.a("village/plains/terminators/terminator_04", $$7), 1),
-               Pair.of(enq.a("village/savanna/terminators/terminator_05", $$7), 1)
-            ),
-            ens.a.a
-         )
-      );
-      $$0.a(
-         c,
-         new ens(
-            $$10,
-            ImmutableList.of(
-               Pair.of(enq.a("village/plains/terminators/terminator_01", $$7), 1),
-               Pair.of(enq.a("village/plains/terminators/terminator_02", $$7), 1),
-               Pair.of(enq.a("village/plains/terminators/terminator_03", $$7), 1),
-               Pair.of(enq.a("village/plains/terminators/terminator_04", $$7), 1),
-               Pair.of(enq.a("village/savanna/zombie/terminators/terminator_05", $$7), 1)
-            ),
-            ens.a.a
-         )
-      );
-      rg.a($$0, "village/savanna/trees", new ens($$10, ImmutableList.of(Pair.of(enq.a($$2), 1)), ens.a.b));
-      rg.a(
+      rr.a(
          $$0,
-         "village/savanna/decor",
-         new ens(
-            $$10,
+         "bastion/treasure/walls/mid",
+         new epm(
+            $$8,
             ImmutableList.of(
-               Pair.of(enq.a("village/savanna/savanna_lamp_post_01"), 4),
-               Pair.of(enq.a($$2), 4),
-               Pair.of(enq.a($$3), 4),
-               Pair.of(enq.a($$4), 1),
-               Pair.of(enq.h(), 4)
+               Pair.of(epk.b("bastion/treasure/walls/mid/wall_0", $$2), 1),
+               Pair.of(epk.b("bastion/treasure/walls/mid/wall_1", $$2), 1),
+               Pair.of(epk.b("bastion/treasure/walls/mid/wall_2", $$2), 1)
             ),
-            ens.a.b
+            epm.a.b
          )
       );
-      rg.a(
+      rr.a(
          $$0,
-         "village/savanna/zombie/decor",
-         new ens(
-            $$10,
+         "bastion/treasure/walls/top",
+         new epm(
+            $$8,
             ImmutableList.of(
-               Pair.of(enq.a("village/savanna/savanna_lamp_post_01", $$6), 4),
-               Pair.of(enq.a($$2), 4),
-               Pair.of(enq.a($$3), 4),
-               Pair.of(enq.a($$4), 1),
-               Pair.of(enq.h(), 4)
+               Pair.of(epk.b("bastion/treasure/walls/top/main_entrance", $$2), 1),
+               Pair.of(epk.b("bastion/treasure/walls/top/wall_0", $$2), 1),
+               Pair.of(epk.b("bastion/treasure/walls/top/wall_1", $$2), 1)
             ),
-            ens.a.b
+            epm.a.b
          )
       );
-      rg.a(
+      rr.a(
          $$0,
-         "village/savanna/villagers",
-         new ens(
-            $$10,
+         "bastion/treasure/connectors",
+         new epm(
+            $$8,
             ImmutableList.of(
-               Pair.of(enq.a("village/savanna/villagers/nitwit"), 1),
-               Pair.of(enq.a("village/savanna/villagers/baby"), 1),
-               Pair.of(enq.a("village/savanna/villagers/unemployed"), 10)
+               Pair.of(epk.b("bastion/treasure/connectors/center_to_wall_middle", $$2), 1),
+               Pair.of(epk.b("bastion/treasure/connectors/center_to_wall_top", $$2), 1),
+               Pair.of(epk.b("bastion/treasure/connectors/center_to_wall_top_entrance", $$2), 1)
             ),
-            ens.a.b
+            epm.a.b
          )
       );
-      rg.a(
+      rr.a($$0, "bastion/treasure/entrances", new epm($$8, ImmutableList.of(Pair.of(epk.b("bastion/treasure/entrances/entrance_0", $$2), 1)), epm.a.b));
+      rr.a(
          $$0,
-         "village/savanna/zombie/villagers",
-         new ens(
-            $$10,
-            ImmutableList.of(Pair.of(enq.a("village/savanna/zombie/villagers/nitwit"), 1), Pair.of(enq.a("village/savanna/zombie/villagers/unemployed"), 10)),
-            ens.a.b
+         "bastion/treasure/ramparts",
+         new epm(
+            $$8,
+            ImmutableList.of(
+               Pair.of(epk.b("bastion/treasure/ramparts/mid_wall_main", $$2), 1),
+               Pair.of(epk.b("bastion/treasure/ramparts/mid_wall_side", $$2), 1),
+               Pair.of(epk.b("bastion/treasure/ramparts/bottom_wall_0", $$4), 1),
+               Pair.of(epk.b("bastion/treasure/ramparts/top_wall", $$5), 1),
+               Pair.of(epk.b("bastion/treasure/ramparts/lava_basin_side", $$2), 1),
+               Pair.of(epk.b("bastion/treasure/ramparts/lava_basin_main", $$2), 1)
+            ),
+            epm.a.b
+         )
+      );
+      rr.a(
+         $$0,
+         "bastion/treasure/corners/bottom",
+         new epm(
+            $$8,
+            ImmutableList.of(
+               Pair.of(epk.b("bastion/treasure/corners/bottom/corner_0", $$2), 1), Pair.of(epk.b("bastion/treasure/corners/bottom/corner_1", $$2), 1)
+            ),
+            epm.a.b
+         )
+      );
+      rr.a(
+         $$0,
+         "bastion/treasure/corners/edges",
+         new epm(
+            $$8,
+            ImmutableList.of(
+               Pair.of(epk.b("bastion/treasure/corners/edges/bottom", $$3), 1),
+               Pair.of(epk.b("bastion/treasure/corners/edges/middle", $$3), 1),
+               Pair.of(epk.b("bastion/treasure/corners/edges/top", $$3), 1)
+            ),
+            epm.a.b
+         )
+      );
+      rr.a(
+         $$0,
+         "bastion/treasure/corners/middle",
+         new epm(
+            $$8,
+            ImmutableList.of(
+               Pair.of(epk.b("bastion/treasure/corners/middle/corner_0", $$2), 1), Pair.of(epk.b("bastion/treasure/corners/middle/corner_1", $$2), 1)
+            ),
+            epm.a.b
+         )
+      );
+      rr.a(
+         $$0,
+         "bastion/treasure/corners/top",
+         new epm(
+            $$8,
+            ImmutableList.of(Pair.of(epk.b("bastion/treasure/corners/top/corner_0", $$2), 1), Pair.of(epk.b("bastion/treasure/corners/top/corner_1", $$2), 1)),
+            epm.a.b
+         )
+      );
+      rr.a(
+         $$0,
+         "bastion/treasure/extensions/large_pool",
+         new epm(
+            $$8,
+            ImmutableList.of(
+               Pair.of(epk.b("bastion/treasure/extensions/empty", $$2), 1),
+               Pair.of(epk.b("bastion/treasure/extensions/empty", $$2), 1),
+               Pair.of(epk.b("bastion/treasure/extensions/fire_room", $$2), 1),
+               Pair.of(epk.b("bastion/treasure/extensions/large_bridge_0", $$2), 1),
+               Pair.of(epk.b("bastion/treasure/extensions/large_bridge_1", $$2), 1),
+               Pair.of(epk.b("bastion/treasure/extensions/large_bridge_2", $$2), 1),
+               Pair.of(epk.b("bastion/treasure/extensions/large_bridge_3", $$2), 1),
+               Pair.of(epk.b("bastion/treasure/extensions/roofed_bridge", $$2), 1),
+               Pair.of(epk.b("bastion/treasure/extensions/empty", $$2), 1)
+            ),
+            epm.a.b
+         )
+      );
+      rr.a(
+         $$0,
+         "bastion/treasure/extensions/small_pool",
+         new epm(
+            $$8,
+            ImmutableList.of(
+               Pair.of(epk.b("bastion/treasure/extensions/empty", $$2), 1),
+               Pair.of(epk.b("bastion/treasure/extensions/fire_room", $$2), 1),
+               Pair.of(epk.b("bastion/treasure/extensions/empty", $$2), 1),
+               Pair.of(epk.b("bastion/treasure/extensions/small_bridge_0", $$2), 1),
+               Pair.of(epk.b("bastion/treasure/extensions/small_bridge_1", $$2), 1),
+               Pair.of(epk.b("bastion/treasure/extensions/small_bridge_2", $$2), 1),
+               Pair.of(epk.b("bastion/treasure/extensions/small_bridge_3", $$2), 1)
+            ),
+            epm.a.b
+         )
+      );
+      rr.a(
+         $$0,
+         "bastion/treasure/extensions/houses",
+         new epm(
+            $$8,
+            ImmutableList.of(Pair.of(epk.b("bastion/treasure/extensions/house_0", $$2), 1), Pair.of(epk.b("bastion/treasure/extensions/house_1", $$2), 1)),
+            epm.a.b
+         )
+      );
+      rr.a(
+         $$0,
+         "bastion/treasure/roofs",
+         new epm(
+            $$8,
+            ImmutableList.of(
+               Pair.of(epk.b("bastion/treasure/roofs/wall_roof", $$6), 1),
+               Pair.of(epk.b("bastion/treasure/roofs/corner_roof", $$6), 1),
+               Pair.of(epk.b("bastion/treasure/roofs/center_roof", $$6), 1)
+            ),
+            epm.a.b
          )
       );
    }

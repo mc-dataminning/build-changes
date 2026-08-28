@@ -1,21 +1,32 @@
-public class ghu extends gho {
-   private float a;
+import javax.annotation.Nullable;
 
-   ghu(gdh $$0, double $$1, double $$2, double $$3) {
+public class ghu extends gjl {
+   private final float a;
+   private final gjg b;
+
+   ghu(gfd $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, gjg $$7) {
       super($$0, $$1, $$2, $$3);
-      this.t = (int)(Math.random() * 60.0) + 30;
-      this.n = false;
-      this.j = 0.0;
-      this.k = -0.05;
-      this.l = 0.0;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.u = 0.002F;
+      this.b = $$7;
+      this.v = $$4;
+      this.w = $$5;
+      this.x = $$6;
+      float $$8 = 0.9F;
+      this.D *= 0.67499995F;
+      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
+      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
+      this.b($$7);
+      this.a = ((float)Math.random() - 0.5F) * 0.1F;
+      this.z = (float)Math.random() * (float) (Math.PI * 2);
    }
 
    @Override
-   public ggs b() {
-      return ggs.b;
+   public gip b() {
+      return gip.b;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * bae.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
@@ -26,31 +37,43 @@ public class ghu extends gho {
       if (this.s++ >= this.t) {
          this.k();
       } else {
-         float $$0 = 0.6F;
-         this.j = this.j + (double)(0.6F * azm.b(this.a));
-         this.l = this.l + (double)(0.6F * azm.a(this.a));
-         this.j *= 0.07;
-         this.l *= 0.07;
-         this.a(this.j, this.k, this.l);
-         if (!this.c.b_(jh.a(this.g, this.h, this.i)).a(axi.a) || this.m) {
-            this.k();
+         this.b(this.b);
+         this.A = this.z;
+         this.z = this.z + (float) Math.PI * this.a * 2.0F;
+         if (this.m) {
+            this.A = this.z = 0.0F;
          }
 
-         this.a += 0.08F;
+         this.a(this.j, this.k, this.l);
+         this.k -= 0.003F;
+         this.k = Math.max(this.k, -0.14F);
       }
    }
 
-   public static class a implements ggr<lw> {
-      private final ghj a;
+   public static class a implements gio<lk> {
+      private final gjg a;
 
-      public a(ghj $$0) {
+      public a(gjg $$0) {
          this.a = $$0;
       }
 
-      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ghu $$8 = new ghu($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+      @Nullable
+      public gil a(lk $$0, gfd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         dxn $$8 = $$0.b();
+         if (!$$8.l() && $$8.o() == dqn.a) {
+            return null;
+         } else {
+            jh $$9 = jh.a($$2, $$3, $$4);
+            int $$10 = flz.Q().aw().a($$8, $$1, $$9);
+            if ($$8.b() instanceof dnb) {
+               $$10 = ((dnb)$$8.b()).b($$8, $$1, $$9);
+            }
+
+            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
+            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
+            float $$13 = (float)($$10 & 0xFF) / 255.0F;
+            return new ghu($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
+         }
       }
    }
 }

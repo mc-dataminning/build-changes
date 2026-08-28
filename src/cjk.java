@@ -1,137 +1,107 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import java.util.function.Predicate;
 
-public class cjk extends cjf {
-   private int bY = 47999;
+public class cjk {
+   private static final float a = 4.0F;
+   private static final float b = 2.0F;
+   private static final float c = 2.5F;
+   private static final float d = 2.5F;
+   private static final float e = 1.0F;
+   private static final bsp f = bsp.a(5, 16);
+   private static final ImmutableList<cgm<? extends cgl<? super cjj>>> g = ImmutableList.of(cgm.c, cgm.f, cgm.t, cgm.o);
+   private static final ImmutableList<cff<?>> h = ImmutableList.of(
+      cff.Z, cff.x, cff.y, cff.m, cff.n, cff.E, cff.t, cff.h, cff.O, cff.P, cff.Q, cff.R, new cff[]{cff.r, cff.K}
+   );
 
-   public cjk(bus<? extends cjk> $$0, dfm $$1) {
-      super($$0, $$1);
+   protected static void a(cjj $$0, bam $$1) {
    }
 
-   @Override
-   public boolean gp() {
-      return true;
+   public static bxd.b<cjj> a() {
+      return bxd.a(h, g);
    }
 
-   @Nullable
-   @Override
-   protected cjf gA() {
-      return bus.bu.a(this.dV(), bur.e);
+   protected static bxd<?> a(bxd<cjj> $$0) {
+      b($$0);
+      c($$0);
+      $$0.a(ImmutableSet.of(crj.a));
+      $$0.b(crj.b);
+      $$0.f();
+      return $$0;
    }
 
-   @Override
-   public void b(ul $$0) {
-      super.b($$0);
-      $$0.a("DespawnDelay", this.bY);
+   private static void b(bxd<cjj> $$0) {
+      $$0.a(crj.a, 0, ImmutableList.of(new cao(0.8F), new cjk.a(4.0F), new bza(45, 90), new bze(), new bya(cff.P), new bya(cff.Q)));
    }
 
-   @Override
-   public void a(ul $$0) {
-      super.a($$0);
-      if ($$0.b("DespawnDelay", 99)) {
-         this.bY = $$0.h("DespawnDelay");
+   private static void c(bxd<cjj> $$0) {
+      $$0.a(
+         crj.b,
+         ImmutableList.of(
+            Pair.of(0, bzu.a(bvm.bS, 6.0F, bsp.a(30, 60))),
+            Pair.of(1, new bxo(bvm.t)),
+            Pair.of(
+               2,
+               new bzr(
+                  ImmutableList.of(Pair.of(new byh($$0x -> 2.5F, $$0x -> $$0x.e_() ? 2.5 : 3.5), 1), Pair.of(cbh.a(Predicate.not(cjj::t), bxr.a(f, 2.5F)), 1))
+               )
+            ),
+            Pair.of(3, new bzl(bsp.a(150, 250), 30.0F, 0.0F, 0.0F)),
+            Pair.of(
+               4,
+               new bzr(
+                  ImmutableMap.of(cff.m, cfg.b),
+                  ImmutableList.of(
+                     Pair.of(cbh.a(Predicate.not(cjj::t), bzm.a(2.0F)), 1),
+                     Pair.of(cbh.a(Predicate.not(cjj::t), cab.a(2.0F, 3)), 1),
+                     Pair.of(new cjk.b(20), 1),
+                     Pair.of(new bye(30, 60), 1)
+                  )
+               )
+            )
+         )
+      );
+   }
+
+   public static void a(cjj $$0) {
+      $$0.eb().a(ImmutableList.of(crj.b));
+   }
+
+   public static Predicate<cxk> b() {
+      return $$0 -> $$0.a(ayd.am);
+   }
+
+   public static class a extends bxp<cjj> {
+      public a(float $$0) {
+         super($$0);
+      }
+
+      protected void a(ash $$0, cjj $$1, long $$2) {
+         $$1.gB();
+         super.b($$0, $$1, $$2);
       }
    }
 
-   @Override
-   protected void B() {
-      super.B();
-      this.bS.a(1, new ccy(this, 2.0));
-      this.bT.a(1, new cjk.a(this));
-      this.bT.a(2, new cdy<>(this, cmr.class, true, ($$0, $$1) -> $$0.aq() != bus.bN));
-      this.bT.a(2, new cdy<>(this, clf.class, true));
-   }
+   public static class b extends bxu<cjj> {
+      private final int c;
 
-   @Override
-   public void w(int $$0) {
-      this.bY = $$0;
-   }
-
-   @Override
-   protected void a(cou $$0) {
-      bul $$1 = this.A();
-      if (!($$1 instanceof col)) {
-         super.a($$0);
+      public b(int $$0) {
+         super(ImmutableMap.of());
+         this.c = $$0 * 20;
       }
-   }
 
-   @Override
-   public void d_() {
-      super.d_();
-      if (!this.dV().C) {
-         this.hb();
+      protected boolean a(ash $$0, cjj $$1) {
+         return !$$1.bj() && $$1.gC() >= (long)this.c && !$$1.P_() && $$1.aJ() && !$$1.cY() && $$1.gm();
       }
-   }
 
-   private void hb() {
-      if (this.hc()) {
-         this.bY = this.hd() ? ((col)this.A()).gv() - 1 : this.bY - 1;
-         if (this.bY <= 0) {
-            this.a(true, false);
-            this.at();
+      protected void a(ash $$0, cjj $$1, long $$2) {
+         if ($$1.gp()) {
+            $$1.gA();
+         } else if (!$$1.gj()) {
+            $$1.gz();
          }
-      }
-   }
-
-   private boolean hc() {
-      return !this.gD() && !this.he() && !this.df();
-   }
-
-   private boolean hd() {
-      return this.A() instanceof col;
-   }
-
-   private boolean he() {
-      return this.N_() && !this.hd();
-   }
-
-   @Nullable
-   @Override
-   public bwa a(dgd $$0, bsi $$1, bur $$2, @Nullable bwa $$3) {
-      if ($$2 == bur.h) {
-         this.c_(0);
-      }
-
-      if ($$3 == null) {
-         $$3 = new buc.a(false);
-      }
-
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected static class a extends cef {
-      private final cjf a;
-      private bvh b;
-      private int c;
-
-      public a(cjf $$0) {
-         super($$0, false);
-         this.a = $$0;
-         this.a(EnumSet.of(ccf.a.d));
-      }
-
-      @Override
-      public boolean b() {
-         if (!this.a.N_()) {
-            return false;
-         } else if (!(this.a.A() instanceof col $$1)) {
-            return false;
-         } else {
-            this.b = $$1.ep();
-            int $$2 = $$1.eq();
-            return $$2 != this.c && this.a(this.b, cfy.a);
-         }
-      }
-
-      @Override
-      public void d() {
-         this.e.h(this.b);
-         bul $$0 = this.a.A();
-         if ($$0 instanceof col) {
-            this.c = ((col)$$0).eq();
-         }
-
-         super.d();
       }
    }
 }

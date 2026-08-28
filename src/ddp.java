@@ -1,26 +1,20 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 
-public record ddp(jq<dcd> c, brp d) implements ddl {
-   public static final MapCodec<ddp> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dcd.c.fieldOf("enchantment").forGetter(ddp::b), brp.c.fieldOf("level").forGetter(ddp::c)).apply($$0, ddp::new)
-   );
+public record ddp(int c) {
+   public static final Codec<ddp> a = RecordCodecBuilder.create($$0 -> $$0.group(azn.m.fieldOf("value").forGetter(ddp::a)).apply($$0, ddp::new));
+   public static final zt<ByteBuf, ddp> b = zt.a(zr.h, ddp::a, ddp::new);
 
-   @Override
-   public void a(cwm $$0, dcj.a $$1, azu $$2, bsi $$3) {
-      $$1.b(this.c, azm.a(this.d.a($$2), this.c.a().d(), this.c.a().e()));
+   public ddp(int c) {
+      if (c <= 0) {
+         throw new IllegalArgumentException("Enchantment value must be positive, but was " + c);
+      } else {
+         this.c = c;
+      }
    }
 
-   @Override
-   public MapCodec<ddp> a() {
-      return b;
-   }
-
-   public jq<dcd> b() {
+   public int a() {
       return this.c;
-   }
-
-   public brp c() {
-      return this.d;
    }
 }

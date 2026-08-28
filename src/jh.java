@@ -23,18 +23,18 @@ public class jh extends kl {
    public static final Codec<jh> a = Codec.INT_STREAM
       .comapFlatMap($$0 -> ae.a($$0, 3).map($$0x -> new jh($$0x[0], $$0x[1], $$0x[2])), $$0 -> IntStream.of($$0.u(), $$0.v(), $$0.w()))
       .stable();
-   public static final zh<ByteBuf, jh> b = new zh<ByteBuf, jh>() {
+   public static final zt<ByteBuf, jh> b = new zt<ByteBuf, jh>() {
       public jh a(ByteBuf $$0) {
-         return wg.b($$0);
+         return ws.b($$0);
       }
 
       public void a(ByteBuf $$0, jh $$1) {
-         wg.a($$0, $$1);
+         ws.a($$0, $$1);
       }
    };
    private static final Logger e = LogUtils.getLogger();
    public static final jh c = new jh(0, 0, 0);
-   private static final int h = 1 + azm.f(azm.c(30000000));
+   private static final int h = 1 + bae.f(bae.c(30000000));
    private static final int i = h;
    public static final int d = 64 - h - i;
    private static final long j = (1L << h) - 1L;
@@ -77,7 +77,7 @@ public class jh extends kl {
    }
 
    public static jh a(double $$0, double $$1, double $$2) {
-      return new jh(azm.a($$0), azm.a($$1), azm.a($$2));
+      return new jh(bae.a($$0), bae.a($$1), bae.a($$2));
    }
 
    public static jh a(ka $$0) {
@@ -111,12 +111,12 @@ public class jh extends kl {
       return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new jh(this.u() + $$0, this.v() + $$1, this.w() + $$2);
    }
 
-   public ezy b() {
-      return ezy.b(this);
+   public fbs b() {
+      return fbs.b(this);
    }
 
-   public ezy c() {
-      return ezy.c(this);
+   public fbs c() {
+      return fbs.c(this);
    }
 
    public jh a(kl $$0) {
@@ -202,7 +202,7 @@ public class jh extends kl {
       }
    }
 
-   public jh a(dpd $$0) {
+   public jh a(dqu $$0) {
       switch ($$0) {
          case a:
          default:
@@ -232,15 +232,15 @@ public class jh extends kl {
       return new jh.a(this.u(), this.v(), this.w());
    }
 
-   public ezy a(ezy $$0) {
-      return new ezy(
-         azm.a($$0.d, (double)((float)this.u() + 1.0E-5F), (double)this.u() + 1.0 - 1.0E-5F),
-         azm.a($$0.e, (double)((float)this.v() + 1.0E-5F), (double)this.v() + 1.0 - 1.0E-5F),
-         azm.a($$0.f, (double)((float)this.w() + 1.0E-5F), (double)this.w() + 1.0 - 1.0E-5F)
+   public fbs a(fbs $$0) {
+      return new fbs(
+         bae.a($$0.d, (double)((float)this.u() + 1.0E-5F), (double)this.u() + 1.0 - 1.0E-5F),
+         bae.a($$0.e, (double)((float)this.v() + 1.0E-5F), (double)this.v() + 1.0 - 1.0E-5F),
+         bae.a($$0.f, (double)((float)this.w() + 1.0E-5F), (double)this.w() + 1.0 - 1.0E-5F)
       );
    }
 
-   public static Iterable<jh> a(azu $$0, int $$1, jh $$2, int $$3) {
+   public static Iterable<jh> a(bam $$0, int $$1, jh $$2, int $$3) {
       return a($$0, $$1, $$2.u() - $$3, $$2.v() - $$3, $$2.w() - $$3, $$2.u() + $$3, $$2.v() + $$3, $$2.w() + $$3);
    }
 
@@ -249,7 +249,7 @@ public class jh extends kl {
       return Stream.of($$0, $$0.g(), $$0.i(), $$0.g().i());
    }
 
-   public static Iterable<jh> a(azu $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+   public static Iterable<jh> a(bam $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
       int $$8 = $$5 - $$2 + 1;
       int $$9 = $$6 - $$3 + 1;
       int $$10 = $$7 - $$4 + 1;
@@ -336,7 +336,7 @@ public class jh extends kl {
       return StreamSupport.stream(a($$0, $$1, $$2, $$3).spliterator(), false);
    }
 
-   public static Iterable<jh> a(ezt $$0) {
+   public static Iterable<jh> a(fbn $$0) {
       jh $$1 = a($$0.a, $$0.b, $$0.c);
       jh $$2 = a($$0.d, $$0.e, $$0.f);
       return c($$1, $$2);
@@ -357,7 +357,7 @@ public class jh extends kl {
       return StreamSupport.stream(c($$0, $$1).spliterator(), false);
    }
 
-   public static Stream<jh> a(ema $$0) {
+   public static Stream<jh> a(enu $$0) {
       return a(
          Math.min($$0.h(), $$0.k()),
          Math.min($$0.i(), $$0.l()),
@@ -368,8 +368,8 @@ public class jh extends kl {
       );
    }
 
-   public static Stream<jh> b(ezt $$0) {
-      return a(azm.a($$0.a), azm.a($$0.b), azm.a($$0.c), azm.a($$0.d), azm.a($$0.e), azm.a($$0.f));
+   public static Stream<jh> b(fbn $$0) {
+      return a(bae.a($$0.a), bae.a($$0.b), bae.a($$0.c), bae.a($$0.d), bae.a($$0.e), bae.a($$0.f));
    }
 
    public static Stream<jh> a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
@@ -469,7 +469,7 @@ public class jh extends kl {
       }
 
       public a(double $$0, double $$1, double $$2) {
-         this(azm.a($$0), azm.a($$1), azm.a($$2));
+         this(bae.a($$0), bae.a($$1), bae.a($$2));
       }
 
       @Override
@@ -493,7 +493,7 @@ public class jh extends kl {
       }
 
       @Override
-      public jh a(dpd $$0) {
+      public jh a(dqu $$0) {
          return super.a($$0).j();
       }
 
@@ -505,7 +505,7 @@ public class jh extends kl {
       }
 
       public jh.a b(double $$0, double $$1, double $$2) {
-         return this.d(azm.a($$0), azm.a($$1), azm.a($$2));
+         return this.d(bae.a($$0), bae.a($$1), bae.a($$2));
       }
 
       public jh.a g(kl $$0) {
@@ -551,11 +551,11 @@ public class jh extends kl {
       public jh.a a(jm.a $$0, int $$1, int $$2) {
          switch ($$0) {
             case a:
-               return this.d(azm.a(this.u(), $$1, $$2), this.v(), this.w());
+               return this.d(bae.a(this.u(), $$1, $$2), this.v(), this.w());
             case b:
-               return this.d(this.u(), azm.a(this.v(), $$1, $$2), this.w());
+               return this.d(this.u(), bae.a(this.v(), $$1, $$2), this.w());
             case c:
-               return this.d(this.u(), this.v(), azm.a(this.w(), $$1, $$2));
+               return this.d(this.u(), this.v(), bae.a(this.w(), $$1, $$2));
             default:
                throw new IllegalStateException("Unable to clamp axis " + $$0);
          }

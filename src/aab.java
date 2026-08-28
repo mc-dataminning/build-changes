@@ -1,29 +1,56 @@
-public class aab implements zq<zw> {
-   public static final zh<wg, aab> a = zq.a(aab::a, aab::new);
-   private final int b;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public aab(int $$0) {
-      this.b = $$0;
+public interface aab {
+   int a = 4096;
+
+   static <T extends xb, P extends aaa<? super T>> aab a(final aae<P> $$0, final Function<Iterable<aac<? super T>>, P> $$1, final zz<? super T> $$2) {
+      return new aab() {
+         @Override
+         public void a(aac<?> $$0x, Consumer<aac<?>> $$1x) {
+            if ($$0.a() == $$0) {
+               P $$2 = (P)$$0;
+               $$1.accept($$2);
+               $$2.b().forEach($$1);
+               $$1.accept($$2);
+            } else {
+               $$1.accept($$0);
+            }
+         }
+
+         @Nullable
+         @Override
+         public aab.a a(aac<?> $$0x) {
+            return $$0 == $$2 ? new aab.a() {
+               private final List<aac<? super T>> b = new ArrayList<>();
+
+               @Nullable
+               @Override
+               public aac<?> a(aac<?> $$0x) {
+                  if ($$0 == $$2) {
+                     return $$1.apply(this.b);
+                  } else if (this.b.size() >= 4096) {
+                     throw new IllegalStateException("Too many packets in a bundle");
+                  } else {
+                     this.b.add((aac<? super T>)$$0);
+                     return null;
+                  }
+               }
+            } : null;
+         }
+      };
    }
 
-   private aab(wg $$0) {
-      this.b = $$0.readInt();
-   }
+   void a(aac<?> var1, Consumer<aac<?>> var2);
 
-   private void a(wg $$0) {
-      $$0.q(this.b);
-   }
+   @Nullable
+   aab.a a(aac<?> var1);
 
-   @Override
-   public zs<aab> a() {
-      return aai.e;
-   }
-
-   public void a(zw $$0) {
-      $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
+   public interface a {
+      @Nullable
+      aac<?> a(aac<?> var1);
    }
 }

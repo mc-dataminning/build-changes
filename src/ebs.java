@@ -1,34 +1,61 @@
-public class ebs {
-   public final azu a;
-   private double b;
-   private boolean c;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.Map;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public ebs(azu $$0) {
-      this.a = $$0;
-   }
+public class ebs<T extends ebq> {
+   private static final Logger a = LogUtils.getLogger();
+   private final Int2ObjectMap<T> b = new Int2ObjectLinkedOpenHashMap();
+   private final Map<UUID, T> c = Maps.newHashMap();
 
-   public void a() {
-      this.c = false;
-   }
+   public <U extends T> void a(ebx<T, U> $$0, ayq<U> $$1) {
+      ObjectIterator var3 = this.b.values().iterator();
 
-   public double b() {
-      if (this.c) {
-         this.c = false;
-         return this.b;
-      } else {
-         double $$0;
-         double $$1;
-         double $$2;
-         do {
-            $$0 = 2.0 * this.a.j() - 1.0;
-            $$1 = 2.0 * this.a.j() - 1.0;
-            $$2 = azm.k($$0) + azm.k($$1);
-         } while ($$2 >= 1.0 || $$2 == 0.0);
-
-         double $$3 = Math.sqrt(-2.0 * Math.log($$2) / $$2);
-         this.b = $$1 * $$3;
-         this.c = true;
-         return $$0 * $$3;
+      while (var3.hasNext()) {
+         T $$2 = (T)var3.next();
+         U $$3 = (U)$$0.a($$2);
+         if ($$3 != null && $$1.accept($$3).a()) {
+            return;
+         }
       }
+   }
+
+   public Iterable<T> a() {
+      return Iterables.unmodifiableIterable(this.b.values());
+   }
+
+   public void a(T $$0) {
+      UUID $$1 = $$0.cG();
+      if (this.c.containsKey($$1)) {
+         a.warn("Duplicate entity UUID {}: {}", $$1, $$0);
+      } else {
+         this.c.put($$1, $$0);
+         this.b.put($$0.ar(), $$0);
+      }
+   }
+
+   public void b(T $$0) {
+      this.c.remove($$0.cG());
+      this.b.remove($$0.ar());
+   }
+
+   @Nullable
+   public T a(int $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   @Nullable
+   public T a(UUID $$0) {
+      return this.c.get($$0);
+   }
+
+   public int b() {
+      return this.c.size();
    }
 }

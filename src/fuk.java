@@ -1,34 +1,121 @@
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+public class fuk extends fvi<cta> {
+   private static final alz G = alz.b("container/anvil/text_field");
+   private static final alz H = alz.b("container/anvil/text_field_disabled");
+   private static final alz I = alz.b("container/anvil/error");
+   private static final alz J = alz.b("textures/gui/container/anvil.png");
+   private static final xv K = xv.c("container.repair.expensive");
+   private foh L;
+   private final cps M;
 
-public class fuk {
-   private static final alj f = alj.b("tooltip/background");
-   private static final alj g = alj.b("tooltip/frame");
-   public static final int a = 12;
-   private static final int h = 3;
-   public static final int b = 3;
-   public static final int c = 3;
-   public static final int d = 3;
-   public static final int e = 3;
-   private static final int i = 9;
-
-   public static void a(flq $$0, int $$1, int $$2, int $$3, int $$4, int $$5, @Nullable alj $$6) {
-      int $$7 = $$1 - 3 - 9;
-      int $$8 = $$2 - 3 - 9;
-      int $$9 = $$3 + 3 + 3 + 18;
-      int $$10 = $$4 + 3 + 3 + 18;
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, (float)$$5);
-      $$0.a(gjq::B, a($$6), $$7, $$8, $$9, $$10);
-      $$0.a(gjq::B, b($$6), $$7, $$8, $$9, $$10);
-      $$0.c().b();
+   public fuk(cta $$0, cpr $$1, xv $$2) {
+      super($$0, $$1, $$2, J);
+      this.M = $$1.k;
+      this.v = 60;
    }
 
-   private static alj a(@Nullable alj $$0) {
-      return $$0 == null ? f : $$0.a((UnaryOperator<String>)($$0x -> "tooltip/" + $$0x + "_background"));
+   @Override
+   protected void G() {
+      int $$0 = (this.n - this.s) / 2;
+      int $$1 = (this.o - this.u) / 2;
+      this.L = new foh(this.p, $$0 + 62, $$1 + 24, 103, 12, xv.c("container.repair"));
+      this.L.f(false);
+      this.L.g(-1);
+      this.L.h(-1);
+      this.L.d(false);
+      this.L.f(50);
+      this.L.b(this::a);
+      this.L.a("");
+      this.d(this.L);
+      this.L.e(this.z.b(0).h());
    }
 
-   private static alj b(@Nullable alj $$0) {
-      return $$0 == null ? g : $$0.a((UnaryOperator<String>)($$0x -> "tooltip/" + $$0x + "_frame"));
+   @Override
+   protected void aG_() {
+      this.b(this.L);
+   }
+
+   @Override
+   public void a(flz $$0, int $$1, int $$2) {
+      String $$3 = this.L.a();
+      this.b($$0, $$1, $$2);
+      this.L.a($$3);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.m.t.p();
+      }
+
+      return !this.L.a($$0, $$1, $$2) && !this.L.c() ? super.a($$0, $$1, $$2) : true;
+   }
+
+   private void a(String $$0) {
+      cuu $$1 = this.z.b(0);
+      if ($$1.h()) {
+         String $$2 = $$0;
+         if (!$$1.g().b(ku.g) && $$0.equals($$1.g().y().getString())) {
+            $$2 = "";
+         }
+
+         if (this.z.a($$2)) {
+            this.m.t.i.b(new aiw($$2));
+         }
+      }
+   }
+
+   @Override
+   protected void b(fnl $$0, int $$1, int $$2) {
+      super.b($$0, $$1, $$2);
+      int $$3 = this.z.m();
+      if ($$3 > 0) {
+         int $$4 = 8453920;
+         xv $$5;
+         if ($$3 >= 40 && !this.m.t.gh().d) {
+            $$5 = K;
+            $$4 = 16736352;
+         } else if (!this.z.b(2).h()) {
+            $$5 = null;
+         } else {
+            $$5 = xv.a("container.repair.cost", $$3);
+            if (!this.z.b(2).a(this.M)) {
+               $$4 = 16736352;
+            }
+         }
+
+         if ($$5 != null) {
+            int $$8 = this.s - 8 - this.p.a($$5) - 2;
+            int $$9 = 69;
+            $$0.a($$8 - 2, 67, this.s - 8, 79, 1325400064);
+            $$0.b(this.p, $$5, $$8, 69, $$4);
+         }
+      }
+   }
+
+   @Override
+   protected void a(fnl $$0, float $$1, int $$2, int $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(glo::B, this.z.b(0).h() ? G : H, this.C + 59, this.D + 20, 110, 16);
+   }
+
+   @Override
+   public void d(fnl $$0, int $$1, int $$2, float $$3) {
+      this.L.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected void c(fnl $$0, int $$1, int $$2) {
+      if ((this.z.b(0).h() || this.z.b(1).h()) && !this.z.b(this.z.n()).h()) {
+         $$0.a(glo::B, I, $$1 + 99, $$2 + 45, 28, 21);
+      }
+   }
+
+   @Override
+   public void a(csx $$0, int $$1, cxk $$2) {
+      if ($$1 == 0) {
+         this.L.a($$2.f() ? "" : $$2.y().getString());
+         this.L.e(!$$2.f());
+         this.a(this.L);
+      }
    }
 }

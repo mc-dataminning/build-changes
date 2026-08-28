@@ -1,30 +1,20 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public enum elc implements bai {
-   a(jm.b, 1, "ceiling"),
-   b(jm.a, -1, "floor");
+public class elc extends ekt {
+   public static final MapCodec<elc> b = dxn.a.fieldOf("state").xmap(elc::new, $$0 -> $$0.c);
+   private final dxn c;
 
-   public static final Codec<elc> c = bai.a(elc::values);
-   private final jm d;
-   private final int e;
-   private final String f;
-
-   private elc(final jm $$0, final int $$1, final String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public jm a() {
-      return this.d;
-   }
-
-   public int b() {
-      return this.e;
+   protected elc(dxn $$0) {
+      this.c = $$0;
    }
 
    @Override
-   public String c() {
-      return this.f;
+   protected eku<?> a() {
+      return eku.a;
+   }
+
+   @Override
+   public dxn a(bam $$0, jh $$1) {
+      return this.c;
    }
 }

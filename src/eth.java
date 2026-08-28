@@ -1,31 +1,17 @@
-import java.util.function.BiFunction;
-import java.util.function.Supplier;
+public interface eth {
+   void a(jh var1);
 
-public abstract class eth {
-   private boolean a;
+   boolean N_();
 
-   public abstract ul a(ul var1, js.a var2);
+   int a();
 
-   public void c() {
-      this.a(true);
+   default void a(jh $$0, boolean $$1) {
+      this.a(kj.a($$0), $$1);
    }
 
-   public void a(boolean $$0) {
-      this.a = $$0;
-   }
+   void a(kj var1, boolean var2);
 
-   public boolean d() {
-      return this.a;
-   }
+   void a(dgg var1, boolean var2);
 
-   public ul a(js.a $$0) {
-      ul $$1 = new ul();
-      $$1.a("data", this.a(new ul(), $$0));
-      va.e($$1);
-      this.a(false);
-      return $$1;
-   }
-
-   public static record a<T extends eth>(Supplier<T> a, BiFunction<ul, js.a, T> b, baw c) {
-   }
+   void b(dgg var1);
 }

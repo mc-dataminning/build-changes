@@ -1,7 +1,15 @@
-import java.util.Map;
-import java.util.UUID;
-import java.util.function.Consumer;
+public class hce extends hci {
+   private static final alz a = alz.b("back");
 
-public interface hce {
-   void a(Map<UUID, atj.c> var1, Consumer<atj.b> var2);
+   public hce(hbf $$0) {
+      super($$0, alz.b("textures/atlas/paintings.png"), alz.b("paintings"));
+   }
+
+   public hbe a(cls $$0) {
+      return this.a($$0.d());
+   }
+
+   public hbe a() {
+      return this.a(a);
+   }
 }

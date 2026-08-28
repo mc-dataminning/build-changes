@@ -1,20 +1,29 @@
-public record afx(int b) implements zq<acf> {
-   public static final zh<wg, afx> a = zq.a(afx::a, afx::new);
+public class afx implements aac<acr> {
+   public static final zt<ws, afx> a = aac.a(afx::a, afx::new);
+   private final int b;
 
-   private afx(wg $$0) {
-      this($$0.l());
+   public afx(int $$0) {
+      this.b = $$0;
    }
 
-   private void a(wg $$0) {
+   private afx(ws $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(ws $$0) {
       $$0.c(this.b);
    }
 
    @Override
-   public zs<afx> a() {
-      return agu.aN;
+   public aae<afx> a() {
+      return ahk.aC;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
    }
 }

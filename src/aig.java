@@ -1,29 +1,30 @@
-public class aig implements zq<agw> {
-   public static final zh<wg, aig> a = zq.a(aig::a, aig::new);
-   private final String b;
+import java.util.List;
+import java.util.Optional;
 
-   public aig(String $$0) {
-      this.b = $$0;
-   }
+public record aig(int b, List<String> c, Optional<String> d) implements aac<ahm> {
+   public static final zt<ws, aig> a = zt.a(zr.h, aig::b, zr.b(1024).a(zr.c(100)), aig::e, zr.b(32).a(zr::a), aig::f, aig::new);
 
-   private aig(wg $$0) {
-      this.b = $$0.p();
-   }
-
-   private void a(wg $$0) {
-      $$0.a(this.b);
+   public aig(int b, List<String> c, Optional<String> d) {
+      c = List.copyOf(c);
+      this.b = b;
+      this.c = c;
+      this.d = d;
    }
 
    @Override
-   public zs<aig> a() {
-      return agu.bS;
+   public aae<aig> a() {
+      return ahk.bD;
    }
 
-   public void a(agw $$0) {
+   public void a(ahm $$0) {
       $$0.a(this);
    }
 
-   public String b() {
-      return this.b;
+   public List<String> e() {
+      return this.c;
+   }
+
+   public Optional<String> f() {
+      return this.d;
    }
 }

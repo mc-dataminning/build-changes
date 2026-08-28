@@ -1,68 +1,68 @@
-public abstract class cph extends cpc implements cpk {
-   private static final float d = 12.25F;
-   private static final akm<cwm> e = akq.a(cph.class, ako.h);
+import com.google.common.collect.ImmutableSet;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   public cph(bus<? extends cph> $$0, dfm $$1) {
-      super($$0, $$1);
-   }
-
-   public cph(bus<? extends cph> $$0, double $$1, double $$2, double $$3, ezy $$4, dfm $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public cph(bus<? extends cph> $$0, bvh $$1, ezy $$2, dfm $$3) {
-      super($$0, $$1, $$2, $$3);
-   }
-
-   public void a(cwm $$0) {
-      if ($$0.f()) {
-         this.au().a(e, this.t());
-      } else {
-         this.au().a(e, $$0.c(1));
-      }
-   }
+public record cph(String q, Predicate<jq<chi>> r, Predicate<jq<chi>> s, ImmutableSet<cxg> t, ImmutableSet<dke> u, @Nullable axe v) {
+   public static final Predicate<jq<chi>> a = $$0 -> $$0.a(ayf.a);
+   public static final cph b = a("none", chi.a, a, null);
+   public static final cph c = a("armorer", chj.a, axf.Bx);
+   public static final cph d = a("butcher", chj.b, axf.By);
+   public static final cph e = a("cartographer", chj.c, axf.Bz);
+   public static final cph f = a("cleric", chj.d, axf.BA);
+   public static final cph g = a("farmer", chj.e, ImmutableSet.of(cxo.pS, cxo.pR, cxo.wb, cxo.sm), ImmutableSet.of(dkg.cK), axf.BB);
+   public static final cph h = a("fisherman", chj.f, axf.BC);
+   public static final cph i = a("fletcher", chj.g, axf.BD);
+   public static final cph j = a("leatherworker", chj.h, axf.BE);
+   public static final cph k = a("librarian", chj.i, axf.BF);
+   public static final cph l = a("mason", chj.j, axf.BG);
+   public static final cph m = a("nitwit", chi.a, chi.a, null);
+   public static final cph n = a("shepherd", chj.k, axf.BH);
+   public static final cph o = a("toolsmith", chj.l, axf.BI);
+   public static final cph p = a("weaponsmith", chj.m, axf.BJ);
 
    @Override
-   protected void aM() {
+   public String toString() {
+      return this.q;
    }
 
-   @Override
-   public cwm j() {
-      return this.au().a(e);
+   private static cph a(String $$0, aly<chi> $$1, @Nullable axe $$2) {
+      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2);
    }
 
-   @Override
-   protected void a(akq.a $$0) {
-      $$0.a(e, this.t());
+   private static cph a(String $$0, Predicate<jq<chi>> $$1, Predicate<jq<chi>> $$2, @Nullable axe $$3) {
+      return a($$0, $$1, $$2, ImmutableSet.of(), ImmutableSet.of(), $$3);
    }
 
-   @Override
-   public void b(ul $$0) {
-      super.b($$0);
-      $$0.a("Item", this.j().a(this.dX()));
+   private static cph a(String $$0, aly<chi> $$1, ImmutableSet<cxg> $$2, ImmutableSet<dke> $$3, @Nullable axe $$4) {
+      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2, $$3, $$4);
    }
 
-   @Override
-   public void a(ul $$0) {
-      super.a($$0);
-      if ($$0.b("Item", 10)) {
-         this.a(cwm.a(this.dX(), (vi)$$0.p("Item")).orElse(this.t()));
-      } else {
-         this.a(this.t());
-      }
+   private static cph a(String $$0, Predicate<jq<chi>> $$1, Predicate<jq<chi>> $$2, ImmutableSet<cxg> $$3, ImmutableSet<dke> $$4, @Nullable axe $$5) {
+      return kd.a(ma.x, alz.b($$0), new cph($$0, $$1, $$2, $$3, $$4, $$5));
    }
 
-   private cwm t() {
-      return new cwm(cwq.uo);
+   public String a() {
+      return this.q;
    }
 
-   @Override
-   public bvz a_(int $$0) {
-      return $$0 == 0 ? bvz.a(this::j, this::a) : super.a_($$0);
+   public Predicate<jq<chi>> b() {
+      return this.r;
    }
 
-   @Override
-   public boolean a(double $$0) {
-      return this.af < 2 && $$0 < 12.25 ? false : super.a($$0);
+   public Predicate<jq<chi>> c() {
+      return this.s;
+   }
+
+   public ImmutableSet<cxg> d() {
+      return this.t;
+   }
+
+   public ImmutableSet<dke> e() {
+      return this.u;
+   }
+
+   @Nullable
+   public axe f() {
+      return this.v;
    }
 }

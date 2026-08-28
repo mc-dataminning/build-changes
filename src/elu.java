@@ -1,40 +1,77 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.OptionalInt;
+import java.util.function.BiConsumer;
 
-public class elu extends elo {
-   public static final MapCodec<elu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ebq.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
-               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
-               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, elu::new)
-   );
-   private final ebq.a c;
-   private final int d;
-   private final int e;
+public class elu extends ely {
+   public static final MapCodec<elu> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, elu::new));
 
-   private elu(ebq.a $$0, int $$1, int $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   public static elu a(ebq.a $$0, int $$1, int $$2) {
-      return new elu($$0, $$1, $$2);
+   public elu(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected boolean a(eln $$0, azu $$1, jh $$2) {
-      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
-      long $$4 = $$3 + (long)this.d;
-      long $$5 = $$3 + (long)this.e;
-      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
+   protected elz<?> a() {
+      return elz.b;
    }
 
    @Override
-   public elq<?> b() {
-      return elq.c;
+   public List<eke.a> a(dhg $$0, BiConsumer<jh, dxn> $$1, bam $$2, int $$3, jh $$4, ejo $$5) {
+      a($$0, $$1, $$2, $$4.e(), $$5);
+      List<eke.a> $$6 = Lists.newArrayList();
+      jm $$7 = jm.c.a.a($$2);
+      int $$8 = $$3 - $$2.a(4) - 1;
+      int $$9 = 3 - $$2.a(3);
+      jh.a $$10 = new jh.a();
+      int $$11 = $$4.u();
+      int $$12 = $$4.w();
+      OptionalInt $$13 = OptionalInt.empty();
+
+      for (int $$14 = 0; $$14 < $$3; $$14++) {
+         int $$15 = $$4.v() + $$14;
+         if ($$14 >= $$8 && $$9 > 0) {
+            $$11 += $$7.j();
+            $$12 += $$7.l();
+            $$9--;
+         }
+
+         if (this.b($$0, $$1, $$2, $$10.d($$11, $$15, $$12), $$5)) {
+            $$13 = OptionalInt.of($$15 + 1);
+         }
+      }
+
+      if ($$13.isPresent()) {
+         $$6.add(new eke.a(new jh($$11, $$13.getAsInt(), $$12), 1, false));
+      }
+
+      $$11 = $$4.u();
+      $$12 = $$4.w();
+      jm $$16 = jm.c.a.a($$2);
+      if ($$16 != $$7) {
+         int $$17 = $$8 - $$2.a(2) - 1;
+         int $$18 = 1 + $$2.a(3);
+         $$13 = OptionalInt.empty();
+
+         for (int $$19 = $$17; $$19 < $$3 && $$18 > 0; $$18--) {
+            if ($$19 >= 1) {
+               int $$20 = $$4.v() + $$19;
+               $$11 += $$16.j();
+               $$12 += $$16.l();
+               if (this.b($$0, $$1, $$2, $$10.d($$11, $$20, $$12), $$5)) {
+                  $$13 = OptionalInt.of($$20 + 1);
+               }
+            }
+
+            $$19++;
+         }
+
+         if ($$13.isPresent()) {
+            $$6.add(new eke.a(new jh($$11, $$13.getAsInt(), $$12), 0, false));
+         }
+      }
+
+      return $$6;
    }
 }

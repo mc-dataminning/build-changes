@@ -1,24 +1,30 @@
-public record agm(int b) implements zq<acf> {
-   public static final zh<wg, agm> a = zq.a(agm::a, agm::new);
+import java.util.Optional;
 
-   private agm(wg $$0) {
-      this($$0.l());
-   }
-
-   public static agm a(bst $$0) {
-      return new agm($$0.k());
-   }
-
-   private void a(wg $$0) {
-      $$0.c(this.b);
-   }
+public record agm(String b, String c, int d, Optional<xv> e, Optional<zl> f) implements aac<acr> {
+   public static final zt<xg, agm> a = zt.a(zr.o, agm::b, zr.o, agm::e, zr.h, agm::f, xx.e, agm::g, zn.d, agm::h, agm::new);
 
    @Override
-   public zs<agm> a() {
-      return agu.cj;
+   public aae<agm> a() {
+      return ahk.aP;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
+   }
+
+   public String e() {
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   public Optional<xv> g() {
+      return this.e;
+   }
+
+   public Optional<zl> h() {
+      return this.f;
    }
 }

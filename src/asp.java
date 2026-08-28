@@ -1,173 +1,417 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.logging.LogUtils;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public abstract class asp implements aaj {
-   private static final Logger f = LogUtils.getLogger();
-   public static final int b = 15000;
-   private static final int g = 15000;
-   private static final xj h = xj.c("disconnect.timeout");
-   static final xj c = xj.c("multiplayer.disconnect.unexpected_query_response");
-   protected final MinecraftServer d;
-   protected final wd e;
-   private final boolean i;
-   private long j;
-   private boolean k;
-   private long l;
-   private long m;
-   private boolean n = false;
-   private int o;
-   private volatile boolean p = false;
+public class asp implements dhy {
+   private static final Logger a = LogUtils.getLogger();
+   private final bay<ary> b;
+   private final dzi c;
+   private final ash d;
+   private final long e;
+   private final evr f;
+   private final bam h;
+   private final ebi i;
+   private final fdp<dke> j = new fdp<>($$0x -> this.y($$0x).o());
+   private final fdp<eto> k = new fdp<>($$0x -> this.y($$0x).p());
+   private final die l;
+   private final eam m;
+   @Nullable
+   private Supplier<String> n;
+   private final AtomicLong o = new AtomicLong();
+   private static final alz p = alz.b("worldgen_region_random");
 
-   public asp(MinecraftServer $$0, wd $$1, asf $$2) {
+   public asp(ash $$0, bay<ary> $$1, eam $$2, dzi $$3) {
+      this.m = $$2;
+      this.b = $$1;
+      this.c = $$3;
       this.d = $$0;
-      this.e = $$1;
-      this.j = ae.c();
-      this.o = $$2.b();
-      this.i = $$2.d();
+      this.e = $$0.D();
+      this.f = $$0.D_();
+      this.h = $$0.m().i().a(p).a(this.c.f().l());
+      this.i = $$0.G_();
+      this.l = new die(this, die.a(this.e));
    }
 
-   private void l() {
-      if (!this.n) {
-         this.m = ae.c();
-         this.n = true;
-      }
+   public boolean a(dgg $$0, int $$1) {
+      return this.d.m().a.b($$0, $$1);
    }
 
-   @Override
-   public void a(wf $$0) {
-      if (this.h()) {
-         f.info("Stopping singleplayer server as player logged out");
-         this.d.a(false);
-      }
+   public dgg b() {
+      return this.c.f();
    }
 
    @Override
-   public void a(zq $$0, Exception $$1) throws z {
-      aaj.super.a($$0, $$1);
-      this.d.a($$1, $$0.a());
+   public void a(@Nullable Supplier<String> $$0) {
+      this.n = $$0;
    }
 
    @Override
-   public void a(aam $$0) {
-      if (this.k && $$0.b() == this.l) {
-         int $$1 = (int)(ae.c() - this.j);
-         this.o = (this.o * 3 + $$1) / 4;
-         this.k = false;
-      } else if (!this.h()) {
-         this.a(h);
-      }
+   public dzi a(int $$0, int $$1) {
+      return this.a($$0, $$1, eaj.c);
    }
 
+   @Nullable
    @Override
-   public void a(aan $$0) {
-   }
-
-   @Override
-   public void a(aal $$0) {
-   }
-
-   @Override
-   public void a(aao $$0) {
-      zt.a($$0, this, this.d);
-      if ($$0.e() == aao.a.b && this.d.Z()) {
-         f.info("Disconnecting {} due to resource pack {} rejection", this.i().getName(), $$0.b());
-         this.a(xj.c("multiplayer.requiredTexturePrompt.disconnect"));
-      }
-   }
-
-   @Override
-   public void a(acd $$0) {
-      this.a(c);
-   }
-
-   protected void e() {
-      bot.a().a("keepAlive");
-      long $$0 = ae.c();
-      if (!this.h() && $$0 - this.j >= 15000L) {
-         if (this.k) {
-            this.a(h);
-         } else if (this.a($$0)) {
-            this.k = true;
-            this.j = $$0;
-            this.l = $$0;
-            this.b(new aaa(this.l));
+   public dzi a(int $$0, int $$1, eaj $$2, boolean $$3) {
+      int $$4 = this.c.f().e($$0, $$1);
+      eaj $$5 = $$4 >= this.m.b().b() ? null : this.m.b().a($$4);
+      ary $$6;
+      if ($$5 != null) {
+         $$6 = this.b.a($$0, $$1);
+         if ($$2.c($$5)) {
+            dzi $$7 = $$6.a($$5);
+            if ($$7 != null) {
+               return $$7;
+            }
          }
+      } else {
+         $$6 = null;
       }
 
-      bot.a().c();
+      o $$9 = o.a(new IllegalStateException("Requested chunk unavailable during world generation"), "Exception generating new chunk");
+      p $$10 = $$9.a("Chunk request details");
+      $$10.a("Requested chunk", String.format(Locale.ROOT, "%d, %d", $$0, $$1));
+      $$10.a("Generating status", () -> this.m.a().f());
+      $$10.a("Requested status", $$2::f);
+      $$10.a("Actual status", () -> $$6 == null ? "[out of cache bounds]" : $$6.p().f());
+      $$10.a("Maximum allowed status", () -> $$5 == null ? "null" : $$5.f());
+      $$10.a("Dependencies", this.m.b()::toString);
+      $$10.a("Requested distance", $$4);
+      $$10.a("Generating chunk", this.c.f()::toString);
+      throw new z($$9);
    }
 
-   private boolean a(long $$0) {
-      if (this.n) {
-         if ($$0 - this.m >= 15000L) {
-            this.a(h);
-         }
+   @Override
+   public boolean b(int $$0, int $$1) {
+      int $$2 = this.c.f().e($$0, $$1);
+      return $$2 < this.m.b().b();
+   }
 
+   @Override
+   public dxn a_(jh $$0) {
+      return this.a(kj.a($$0.u()), kj.a($$0.w())).a_($$0);
+   }
+
+   @Override
+   public etp b_(jh $$0) {
+      return this.y($$0).b_($$0);
+   }
+
+   @Nullable
+   @Override
+   public cps a(double $$0, double $$1, double $$2, double $$3, Predicate<bvf> $$4) {
+      return null;
+   }
+
+   @Override
+   public int E_() {
+      return 0;
+   }
+
+   @Override
+   public die I_() {
+      return this.l;
+   }
+
+   @Override
+   public jq<dic> a(int $$0, int $$1, int $$2) {
+      return this.d.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public float a(jm $$0, boolean $$1) {
+      return 1.0F;
+   }
+
+   @Override
+   public ete C_() {
+      return this.d.C_();
+   }
+
+   @Override
+   public boolean a(jh $$0, boolean $$1, @Nullable bvf $$2, int $$3) {
+      dxn $$4 = this.a_($$0);
+      if ($$4.l()) {
          return false;
       } else {
+         if ($$1) {
+            dup $$5 = $$4.x() ? this.c_($$0) : null;
+            dke.a($$4, (dha)this.d, $$0, $$5, $$2, cxk.k);
+         }
+
+         return this.a($$0, dkg.a.m(), 3, $$3);
+      }
+   }
+
+   @Nullable
+   @Override
+   public dup c_(jh $$0) {
+      dzi $$1 = this.y($$0);
+      dup $$2 = $$1.c_($$0);
+      if ($$2 != null) {
+         return $$2;
+      } else {
+         ux $$3 = $$1.f($$0);
+         dxn $$4 = $$1.a_($$0);
+         if ($$3 != null) {
+            if ("DUMMY".equals($$3.l("id"))) {
+               if (!$$4.x()) {
+                  return null;
+               }
+
+               $$2 = ((dmy)$$4.b()).a($$0, $$4);
+            } else {
+               $$2 = dup.a($$0, $$4, $$3, this.d.K_());
+            }
+
+            if ($$2 != null) {
+               $$1.a($$2);
+               return $$2;
+            }
+         }
+
+         if ($$4.x()) {
+            a.warn("Tried to access a block entity before it was created. {}", $$0);
+         }
+
+         return null;
+      }
+   }
+
+   @Override
+   public boolean f_(jh $$0) {
+      int $$1 = kj.a($$0.u());
+      int $$2 = kj.a($$0.w());
+      dgg $$3 = this.b();
+      int $$4 = Math.abs($$3.g - $$1);
+      int $$5 = Math.abs($$3.h - $$2);
+      if ($$4 <= this.m.d() && $$5 <= this.m.d()) {
+         if (this.c.x()) {
+            dhc $$6 = this.c.y();
+            if ($$6.e($$0.v())) {
+               return false;
+            }
+         }
+
+         return true;
+      } else {
+         ae.b(
+            "Detected setBlock in a far chunk ["
+               + $$1
+               + ", "
+               + $$2
+               + "], pos: "
+               + $$0
+               + ", status: "
+               + this.m.a()
+               + (this.n == null ? "" : ", currently generating: " + this.n.get())
+         );
+         return false;
+      }
+   }
+
+   @Override
+   public boolean a(jh $$0, dxn $$1, int $$2, int $$3) {
+      if (!this.f_($$0)) {
+         return false;
+      } else {
+         dzi $$4 = this.y($$0);
+         dxn $$5 = $$4.a($$0, $$1, false);
+         if ($$5 != null) {
+            this.d.a($$0, $$5, $$1);
+         }
+
+         if ($$1.x()) {
+            if ($$4.j().d() == ean.b) {
+               dup $$6 = ((dmy)$$1.b()).a($$0, $$1);
+               if ($$6 != null) {
+                  $$4.a($$6);
+               } else {
+                  $$4.d($$0);
+               }
+            } else {
+               ux $$7 = new ux();
+               $$7.a("x", $$0.u());
+               $$7.a("y", $$0.v());
+               $$7.a("z", $$0.w());
+               $$7.a("id", "DUMMY");
+               $$4.a($$7);
+            }
+         } else if ($$5 != null && $$5.x()) {
+            $$4.d($$0);
+         }
+
+         if ($$1.l(this, $$0)) {
+            this.f($$0);
+         }
+
          return true;
       }
    }
 
-   public void f() {
-      this.p = true;
+   private void f(jh $$0) {
+      this.y($$0).e($$0);
    }
 
-   public void g() {
-      this.p = false;
-      this.e.a();
+   @Override
+   public boolean b(bvf $$0) {
+      int $$1 = kj.a($$0.dz());
+      int $$2 = kj.a($$0.dF());
+      this.a($$1, $$2).a($$0);
+      return true;
    }
 
-   public void b(zq<?> $$0) {
-      this.a($$0, null);
+   @Override
+   public boolean a(jh $$0, boolean $$1) {
+      return this.a($$0, dkg.a.m(), 3);
    }
 
-   public void a(zq<?> $$0, @Nullable wq $$1) {
-      if ($$0.d()) {
-         this.l();
+   @Override
+   public dzd F_() {
+      return this.d.F_();
+   }
+
+   @Override
+   public boolean B_() {
+      return false;
+   }
+
+   @Deprecated
+   @Override
+   public ash a() {
+      return this.d;
+   }
+
+   @Override
+   public ke K_() {
+      return this.d.K_();
+   }
+
+   @Override
+   public cso J() {
+      return this.d.J();
+   }
+
+   @Override
+   public evr D_() {
+      return this.f;
+   }
+
+   @Override
+   public btc d_(jh $$0) {
+      if (!this.b(kj.a($$0.u()), kj.a($$0.w()))) {
+         throw new RuntimeException("We are asking a region for a chunk out of bound");
+      } else {
+         return new btc(this.d.al(), this.d.ad(), 0L, this.d.aq());
       }
-
-      boolean $$2 = !this.p || !this.d.bx();
-
-      try {
-         this.e.a($$0, $$1, $$2);
-      } catch (Throwable var7) {
-         o $$4 = o.a(var7, "Sending packet");
-         p $$5 = $$4.a("Packet being sent");
-         $$5.a("Packet class", () -> $$0.getClass().getCanonicalName());
-         throw new z($$4);
-      }
    }
 
-   public void a(xj $$0) {
-      this.b(new wf($$0));
+   @Nullable
+   @Override
+   public MinecraftServer p() {
+      return this.d.p();
    }
 
-   public void b(wf $$0) {
-      this.e.a(new zz($$0.a()), wq.a(() -> this.e.a($$0)));
-      this.e.m();
-      this.d.h(this.e::n);
+   @Override
+   public dzm R() {
+      return this.d.m();
    }
 
-   protected boolean h() {
-      return this.d.a(this.i());
+   @Override
+   public long D() {
+      return this.e;
    }
 
-   protected abstract GameProfile i();
-
-   @bat
-   public GameProfile j() {
-      return this.i();
+   @Override
+   public fdg<dke> T() {
+      return this.j;
    }
 
-   public int k() {
-      return this.o;
+   @Override
+   public fdg<eto> S() {
+      return this.k;
    }
 
-   protected asf a(ara $$0) {
-      return new asf(this.i(), this.o, $$0, this.i);
+   @Override
+   public int O() {
+      return this.d.O();
+   }
+
+   @Override
+   public bam H_() {
+      return this.h;
+   }
+
+   @Override
+   public int a(edi.a $$0, int $$1, int $$2) {
+      return this.a(kj.a($$1), kj.a($$2)).a($$0, $$1 & 15, $$2 & 15) + 1;
+   }
+
+   @Override
+   public void a(@Nullable cps $$0, jh $$1, axe $$2, axg $$3, float $$4, float $$5) {
+   }
+
+   @Override
+   public void a(lq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+   }
+
+   @Override
+   public void a(@Nullable cps $$0, int $$1, jh $$2, int $$3) {
+   }
+
+   @Override
+   public void a(jq<ecj> $$0, fbs $$1, ecj.a $$2) {
+   }
+
+   @Override
+   public ebi G_() {
+      return this.i;
+   }
+
+   @Override
+   public boolean a(jh $$0, Predicate<dxn> $$1) {
+      return $$1.test(this.a_($$0));
+   }
+
+   @Override
+   public boolean b(jh $$0, Predicate<etp> $$1) {
+      return $$1.test(this.b_($$0));
+   }
+
+   @Override
+   public <T extends bvf> List<T> a(ebx<bvf, T> $$0, fbn $$1, Predicate<? super T> $$2) {
+      return Collections.emptyList();
+   }
+
+   @Override
+   public List<bvf> a(@Nullable bvf $$0, fbn $$1, @Nullable Predicate<? super bvf> $$2) {
+      return Collections.emptyList();
+   }
+
+   @Override
+   public List<cps> y() {
+      return Collections.emptyList();
+   }
+
+   @Override
+   public int L_() {
+      return this.d.L_();
+   }
+
+   @Override
+   public int M_() {
+      return this.d.M_();
+   }
+
+   @Override
+   public long J_() {
+      return this.o.getAndIncrement();
    }
 }

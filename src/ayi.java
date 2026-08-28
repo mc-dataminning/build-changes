@@ -1,34 +1,109 @@
-import com.mojang.util.UndashedUuid;
-import java.net.URI;
-import java.util.UUID;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
 public class ayi {
-   public static final URI a = URI.create("https://aka.ms/MinecraftGDPR");
-   public static final URI b = URI.create("https://aka.ms/MinecraftEULA");
-   public static final URI c = URI.create("http://go.microsoft.com/fwlink/?LinkId=521839");
-   public static final URI d = URI.create("https://aka.ms/MinecraftJavaAttribution");
-   public static final URI e = URI.create("https://aka.ms/MinecraftJavaLicenses");
-   public static final URI f = URI.create("https://aka.ms/BuyMinecraftJava");
-   public static final URI g = URI.create("https://aka.ms/JavaAccountSettings");
-   public static final URI h = URI.create("https://aka.ms/snapshotfeedback?ref=game");
-   public static final URI i = URI.create("https://aka.ms/javafeedback?ref=game");
-   public static final URI j = URI.create("https://aka.ms/snapshotbugs?ref=game");
-   public static final URI k = URI.create("https://aka.ms/Minecraft-Support");
-   public static final URI l = URI.create("https://aka.ms/MinecraftJavaAccessibility");
-   public static final URI m = URI.create("https://aka.ms/aboutjavareporting");
-   public static final URI n = URI.create("https://aka.ms/mcjavamoderation");
-   public static final URI o = URI.create("https://aka.ms/javablocking");
-   public static final URI p = URI.create("https://aka.ms/MinecraftSymLinks");
-   public static final URI q = URI.create("https://aka.ms/startjavarealmstrial");
-   public static final URI r = URI.create("https://aka.ms/BuyJavaRealms");
-   public static final URI s = URI.create("https://aka.ms/MinecraftRealmsTerms");
-   public static final URI t = URI.create("https://aka.ms/MinecraftRealmsContentCreator");
+   private static final Codec<ayi> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(azn.t.fieldOf("id").forGetter(ayi::a), Codec.BOOL.optionalFieldOf("required", true).forGetter($$0x -> $$0x.e)).apply($$0, ayi::new)
+   );
+   public static final Codec<ayi> a = Codec.either(azn.t, b)
+      .xmap($$0 -> (ayi)$$0.map($$0x -> new ayi($$0x, true), $$0x -> $$0x), $$0 -> $$0.e ? Either.left($$0.a()) : Either.right($$0));
+   private final alz c;
+   private final boolean d;
+   private final boolean e;
 
-   public static String a(String $$0, UUID $$1, boolean $$2) {
-      return a($$0, $$1) + "&ref=" + ($$2 ? "expiredTrial" : "expiredRealm");
+   private ayi(alz $$0, boolean $$1, boolean $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public static String a(String $$0, UUID $$1) {
-      return "https://aka.ms/ExtendJavaRealms?subscriptionId=" + $$0 + "&profileId=" + UndashedUuid.toString($$1);
+   private ayi(azn.c $$0, boolean $$1) {
+      this.c = $$0.a();
+      this.d = $$0.b();
+      this.e = $$1;
+   }
+
+   private azn.c a() {
+      return new azn.c(this.c, this.d);
+   }
+
+   public static ayi a(alz $$0) {
+      return new ayi($$0, false, true);
+   }
+
+   public static ayi b(alz $$0) {
+      return new ayi($$0, false, false);
+   }
+
+   public static ayi c(alz $$0) {
+      return new ayi($$0, true, true);
+   }
+
+   public static ayi d(alz $$0) {
+      return new ayi($$0, true, false);
+   }
+
+   public <T> boolean a(ayi.a<T> $$0, Consumer<T> $$1) {
+      if (this.d) {
+         Collection<T> $$2 = $$0.a(this.c);
+         if ($$2 == null) {
+            return !this.e;
+         }
+
+         $$2.forEach($$1);
+      } else {
+         T $$3 = $$0.a(this.c, this.e);
+         if ($$3 == null) {
+            return !this.e;
+         }
+
+         $$1.accept($$3);
+      }
+
+      return true;
+   }
+
+   public void a(Consumer<alz> $$0) {
+      if (this.d && this.e) {
+         $$0.accept(this.c);
+      }
+   }
+
+   public void b(Consumer<alz> $$0) {
+      if (this.d && !this.e) {
+         $$0.accept(this.c);
+      }
+   }
+
+   public boolean a(Predicate<alz> $$0, Predicate<alz> $$1) {
+      return !this.e || (this.d ? $$1 : $$0).test(this.c);
+   }
+
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder();
+      if (this.d) {
+         $$0.append('#');
+      }
+
+      $$0.append(this.c);
+      if (!this.e) {
+         $$0.append('?');
+      }
+
+      return $$0.toString();
+   }
+
+   public interface a<T> {
+      @Nullable
+      T a(alz var1, boolean var2);
+
+      @Nullable
+      Collection<T> a(alz var1);
    }
 }

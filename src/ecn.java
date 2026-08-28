@@ -1,17 +1,11 @@
-public class ecn {
-   private final int a;
-   private final int b;
+import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-   public ecn(dxr $$0, dfo $$1) {
-      this.a = Math.max($$1.K_(), $$0.g());
-      this.b = Math.min($$1.L_(), $$0.e());
-   }
+public interface ecn {
+   Codec<ecn> c = ma.t.q().dispatch(ecn::a, eco::a);
+   zt<xg, ecn> d = zr.a(mb.ab).b(ecn::a, eco::b);
 
-   public int a() {
-      return this.a;
-   }
+   Optional<fbs> a(dha var1);
 
-   public int b() {
-      return this.b;
-   }
+   eco<? extends ecn> a();
 }

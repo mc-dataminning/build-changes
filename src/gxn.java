@@ -1,10 +1,7 @@
-public class gxn extends gwm implements gxe {
-   public boolean a;
-   public boolean b;
-   public boolean c;
+import javax.annotation.Nullable;
 
-   @Override
-   public boolean c() {
-      return this.a;
-   }
+public class gxn extends gye {
+   public boolean a;
+   @Nullable
+   public dxn b;
 }

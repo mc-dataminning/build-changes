@@ -1,71 +1,56 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dkd extends dic implements dpr {
-   public static final MapCodec<dkd> a = b(dkd::new);
-   public static final dwm b = dwl.C;
-   private static final int d = 3;
-   protected static final fas c = diq.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
+public class dkd extends diz {
+   public static final MapCodec<dkd> c = b(dkd::new);
 
    @Override
    public MapCodec<dkd> a() {
-      return a;
-   }
-
-   public dkd(dvu.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, Boolean.valueOf(true)));
-   }
-
-   @Override
-   protected void a(dvw.a<diq, dvv> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public dsy a(jh $$0, dvv $$1) {
-      return new dtk($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dsy> dsz<T> a(dfm $$0, dvv $$1, dta<T> $$2) {
-      return a($$2, dta.z, $$0.C ? dtk::a : dtk::b);
-   }
-
-   @Override
-   protected dow a_(dvv $$0) {
-      return dow.b;
-   }
-
-   @Override
-   protected erv b_(dvv $$0) {
-      return $$0.c(b) ? erw.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected dvv a(dvv $$0, dfp $$1, dgb $$2, jh $$3, jm $$4, jh $$5, dvv $$6, azu $$7) {
-      if ($$0.c(b)) {
-         $$2.a($$3, erw.c, erw.c.a($$1));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
       return c;
    }
 
-   @Nullable
-   @Override
-   public dvv a(dad $$0) {
-      erv $$1 = $$0.q().b_($$0.a());
-      return this.m().b(b, Boolean.valueOf($$1.a(axi.a) && $$1.e() == 8));
+   protected dkd(dxm.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(dvv $$0, esk $$1) {
-      return false;
+   public dup a(jh $$0, dxn $$1) {
+      return new duo($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dup> duq<T> a(dha $$0, dxn $$1, dur<T> $$2) {
+      return a($$0, $$2, dur.D);
+   }
+
+   @Override
+   protected void a(dha $$0, jh $$1, cps $$2) {
+      dup $$3 = $$0.c_($$1);
+      if ($$3 instanceof duo) {
+         $$2.a((btg)$$3);
+         $$2.a(axp.as);
+      }
+   }
+
+   @Override
+   public void a(dxn $$0, dha $$1, jh $$2, bam $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, axf.cA, axg.e, 1.0F, 1.0F, false);
+         }
+
+         jm $$7 = $$0.c(a);
+         jm.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == jm.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 9.0 / 16.0;
+         double $$13 = $$8 == jm.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(ls.af, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+      }
    }
 }

@@ -1,47 +1,43 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqe extends dic {
-   public static final MapCodec<dqe> a = b(dqe::new);
+public class dqe extends djs {
+   public static final MapCodec<dqe> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dyc.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), t()).apply($$0, dqe::new)
+   );
+   public static final dye f = dyd.x;
 
    @Override
    public MapCodec<dqe> a() {
-      return a;
+      return e;
    }
 
-   protected dqe(dvu.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public dsy a(jh $$0, dvv $$1) {
-      return new duo($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dsy> dsz<T> a(dfm $$0, dvv $$1, dta<T> $$2) {
-      return a($$2, dta.j, $$0.C ? duo::a : duo::b);
+   protected dqe(dyc $$0, dxm.d $$1) {
+      super($$1, $$0);
+      this.l(this.F.b().b(f, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dvv $$0, arp $$1, jh $$2, cwm $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         int $$5 = 15 + $$1.A.a(15) + $$1.A.a(15);
-         this.a($$1, $$2, $$5);
-      }
+   protected int h(dxn $$0) {
+      return $$0.c(f) ? 15 : 0;
    }
 
    @Override
-   protected dow a_(dvv $$0) {
-      return dow.c;
+   protected dxn a(dxn $$0, int $$1) {
+      return $$0.b(f, Boolean.valueOf($$1 > 0));
    }
 
    @Override
-   public void a(cwm $$0, cwi.b $$1, List<xj> $$2, cye $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      dgh.a($$0, $$2, "SpawnData");
+   protected int b(dha $$0, jh $$1) {
+      Class<? extends bvf> $$2 = switch (this.d.f()) {
+         case a -> bvf.class;
+         case b -> bwb.class;
+      };
+      return a($$0, c.a($$1), $$2) > 0 ? 15 : 0;
+   }
+
+   @Override
+   protected void a(dxo.a<dke, dxn> $$0) {
+      $$0.a(f);
    }
 }

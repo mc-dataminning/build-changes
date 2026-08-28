@@ -1,20 +1,10 @@
-public class fhx extends fhw {
-   private final fjd a;
+import com.google.common.collect.Lists;
+import com.google.gson.annotations.SerializedName;
+import java.util.List;
 
-   public fhx(frw $$0, fjd $$1) {
-      super($$0, $$1);
-      this.a = $$1;
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.a.c();
-   }
-
-   @Override
-   protected void f() {
-      this.a.b();
-      super.f();
-   }
+public class fhx extends fiq implements fik {
+   @SerializedName("pingResults")
+   public List<fil> a = Lists.newArrayList();
+   @SerializedName("worldIds")
+   public List<Long> b = Lists.newArrayList();
 }

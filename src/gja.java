@@ -1,28 +1,44 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.function.Supplier;
+public class gja extends gjl {
+   private final gjg a;
 
-public class gja {
-   private final Map<alj, hbg> a = new HashMap<>();
-   private final Supplier<hbg> b;
-   private final Function<alj, hbg> c;
-
-   public gja(hbt $$0) {
-      this.b = $$0::a;
-      this.c = $$1 -> $$0.a(hbu.a($$1));
+   protected gja(gfd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gjg $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.u = 0.225F;
+      this.B = 1.0F;
+      this.a = $$7;
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 1.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
+      this.b($$7);
    }
 
-   public hbg a(cwm $$0) {
-      alj $$1 = $$0.a(ku.i);
-      return $$1 == null ? this.b.get() : this.a($$1);
+   @Override
+   public gip b() {
+      return gip.b;
    }
 
-   public hbg a(alj $$0) {
-      return this.a.computeIfAbsent($$0, this.c);
-   }
-
+   @Override
    public void a() {
-      this.a.clear();
+      super.a();
+      this.b(this.a);
+      this.j *= 0.95F;
+      this.k *= 0.9F;
+      this.l *= 0.95F;
+   }
+
+   public static class a implements gio<lw> {
+      private final gjg a;
+
+      public a(gjg $$0) {
+         this.a = $$0;
+      }
+
+      public gil a(lw $$0, gfd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gja $$8 = new gja($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.a(0.923F, 0.964F, 0.999F);
+         return $$8;
+      }
    }
 }

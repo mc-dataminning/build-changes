@@ -1,23 +1,37 @@
-public class gpt extends gqq<cis, gvy, fzn> {
-   public gpt(gpk.a $$0) {
-      super($$0, new fzn($$0.a(gck.aL)), 0.3F);
+import com.google.common.collect.Sets;
+import java.util.Set;
+
+public class gpt implements gpe.a {
+   private static final int a = 60;
+   private final Set<kj> b = Sets.newHashSet();
+
+   gpt() {
    }
 
-   public alj a(gvy $$0) {
-      return $$0.f;
+   @Override
+   public void a() {
+      this.b.clear();
    }
 
-   public gvy b() {
-      return new gvy();
+   public void a(kj $$0) {
+      this.b.add($$0);
    }
 
-   public void a(cis $$0, gvy $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.bm();
-      $$1.b.a($$0.cc);
-      $$1.c.a($$0.cd);
-      $$1.d.a($$0.ce);
-      $$1.e.a($$0.cf);
-      $$1.f = $$0.v().a().a();
+   public void b(kj $$0) {
+      this.b.remove($$0);
+   }
+
+   @Override
+   public void a(fgl $$0, gle $$1, double $$2, double $$3, double $$4) {
+      jh $$5 = jh.a($$2, $$3, $$4);
+      this.b.forEach($$3x -> {
+         if ($$5.a($$3x.k(), 60.0)) {
+            a($$0, $$1, $$3x);
+         }
+      });
+   }
+
+   private static void a(fgl $$0, gle $$1, kj $$2) {
+      gpe.a($$0, $$1, $$2.k(), 0.2F, 1.0F, 0.2F, 0.15F);
    }
 }

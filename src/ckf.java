@@ -1,26 +1,35 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
 
-public interface ckf {
-   boolean a();
+public enum ckf implements bba {
+   a(0, "white"),
+   b(1, "creamy"),
+   c(2, "chestnut"),
+   d(3, "brown"),
+   e(4, "black"),
+   f(5, "gray"),
+   g(6, "dark_brown");
 
-   void b();
+   public static final Codec<ckf> h = bba.a(ckf::values);
+   private static final IntFunction<ckf> i = ayv.a(ckf::a, values(), ayv.a.b);
+   private final int j;
+   private final String k;
 
-   void a(arp var1);
+   private ckf(final int $$0, final String $$1) {
+      this.j = $$0;
+      this.k = $$1;
+   }
 
-   void a(cju var1, jh var2, btb var3, @Nullable cou var4);
+   public int a() {
+      return this.j;
+   }
 
-   void c();
+   public static ckf a(int $$0) {
+      return i.apply($$0);
+   }
 
-   void d();
-
-   float e();
-
-   float g();
-
-   ckl<? extends ckf> h();
-
-   @Nullable
-   ezy f();
-
-   float a(btb var1, float var2);
+   @Override
+   public String c() {
+      return this.k;
+   }
 }

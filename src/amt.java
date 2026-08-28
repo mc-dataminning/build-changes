@@ -1,59 +1,113 @@
-import com.google.common.net.InetAddresses;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.List;
-import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class amt {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xj.c("commands.banip.invalid"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xj.c("commands.banip.failed"));
+public class amt extends btn {
+   private long g = 0L;
+   private long h = 0L;
+   private long i = 0L;
+   private long j = 0L;
+   private boolean k = false;
+   private final MinecraftServer l;
 
-   public static void a(CommandDispatcher<ew> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("ban-ip").requires($$0x -> $$0x.c(3)))
-            .then(
-               ((RequiredArgumentBuilder)ex.a("target", StringArgumentType.word())
-                     .executes($$0x -> a((ew)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), null)))
-                  .then(ex.a("reason", fn.a()).executes($$0x -> a((ew)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), fn.a($$0x, "reason"))))
-            )
-      );
+   public amt(MinecraftServer $$0) {
+      this.l = $$0;
    }
 
-   private static int a(ew $$0, String $$1, @Nullable xj $$2) throws CommandSyntaxException {
-      if (InetAddresses.isInetAddress($$1)) {
-         return b($$0, $$1, $$2);
+   public boolean a() {
+      return this.j > 0L;
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      super.a($$0);
+      this.n();
+   }
+
+   private void n() {
+      this.l.ag().a(ahb.a(this));
+   }
+
+   private void o() {
+      this.l.ag().a(ahc.a(this));
+   }
+
+   public boolean a(int $$0) {
+      if (!this.l()) {
+         return false;
       } else {
-         arq $$3 = $$0.l().ag().a($$1);
-         if ($$3 != null) {
-            return b($$0, $$3.B(), $$2);
-         } else {
-            throw a.create();
-         }
+         this.d = $$0;
+         this.o();
+         return true;
       }
    }
 
-   private static int b(ew $$0, String $$1, @Nullable xj $$2) throws CommandSyntaxException {
-      avn $$3 = $$0.l().ag().g();
-      if ($$3.a($$1)) {
-         throw b.create();
+   public boolean b() {
+      if (this.d > 0) {
+         this.d = 0;
+         this.o();
+         return true;
       } else {
-         List<arq> $$4 = $$0.l().ag().b($$1);
-         avo $$5 = new avo($$1, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
-         $$3.a($$5);
-         $$0.a(() -> xj.a("commands.banip.success", $$1, $$5.d()), true);
-         if (!$$4.isEmpty()) {
-            $$0.a(() -> xj.a("commands.banip.info", $$4.size(), hl.a($$4)), true);
-         }
-
-         for (arq $$6 : $$4) {
-            $$6.f.a(xj.c("multiplayer.disconnect.ip_banned"));
-         }
-
-         return $$4.size();
+         return false;
       }
+   }
+
+   public boolean c() {
+      if (this.g > 0L) {
+         this.p();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean b(int $$0) {
+      boolean $$1 = this.g > 0L;
+      this.i = 0L;
+      this.j = (long)$$0;
+      this.g = (long)$$0;
+      this.k = this.l();
+      this.a(false);
+      return $$1;
+   }
+
+   private void p() {
+      long $$0 = this.j - this.g;
+      double $$1 = Math.max(1.0, (double)this.i) / (double)bbg.b;
+      int $$2 = (int)((double)(bbg.c * $$0) / $$1);
+      String $$3 = String.format("%.2f", $$0 == 0L ? (double)this.g() : $$1 / (double)$$0);
+      this.j = 0L;
+      this.i = 0L;
+      this.l.aH().a(() -> xv.a("commands.tick.sprint.report", $$2, $$3), true);
+      this.g = 0L;
+      this.a(this.k);
+      this.l.F();
+   }
+
+   public boolean d() {
+      if (!this.e) {
+         return false;
+      } else if (this.g > 0L) {
+         this.h = System.nanoTime();
+         this.g--;
+         return true;
+      } else {
+         this.p();
+         return false;
+      }
+   }
+
+   public void e() {
+      this.i = this.i + (System.nanoTime() - this.h);
+   }
+
+   @Override
+   public void a(float $$0) {
+      super.a($$0);
+      this.l.F();
+      this.n();
+   }
+
+   public void a(asi $$0) {
+      $$0.f.b(ahb.a(this));
+      $$0.f.b(ahc.a(this));
    }
 }

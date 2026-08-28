@@ -1,61 +1,48 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 
-public class evi extends evf {
-   public static final MapCodec<evi> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(axs.a(ma.K).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
-            .and(b($$0))
-            .apply($$0, evi::new)
-   );
-   private final axs<cwi> j;
-   private final boolean k;
+public class evi extends evb {
+   public static final String a = "idcounts";
+   private final Object2IntMap<String> b = new Object2IntOpenHashMap();
 
-   private evi(axs<cwi> $$0, boolean $$1, int $$2, int $$3, List<exy> $$4, List<ewb> $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.j = $$0;
-      this.k = $$1;
+   public static evb.a<evi> a() {
+      return new evb.a<>(evi::new, evi::b, bbo.k);
    }
 
-   @Override
-   public eve a() {
-      return evb.f;
+   public evi() {
+      this.b.defaultReturnValue(-1);
    }
 
-   @Override
-   public void a(Consumer<cwm> $$0, eun $$1) {
-      lz.g.c(this.j).forEach($$1x -> $$0.accept(new cwm($$1x)));
-   }
+   public static evi b(ux $$0, js.a $$1) {
+      evi $$2 = new evi();
 
-   private boolean a(eun $$0, Consumer<evc> $$1) {
-      if (!this.a($$0)) {
-         return false;
-      } else {
-         for (final jq<cwi> $$2 : lz.g.c(this.j)) {
-            $$1.accept(new evf.c() {
-               @Override
-               public void a(Consumer<cwm> $$0, eun $$1) {
-                  $$0.accept(new cwm($$2));
-               }
-            });
+      for (String $$3 : $$0.e()) {
+         if ($$0.b($$3, 99)) {
+            $$2.b.put($$3, $$0.h($$3));
          }
-
-         return true;
       }
+
+      return $$2;
    }
 
    @Override
-   public boolean expand(eun $$0, Consumer<evc> $$1) {
-      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
+   public ux a(ux $$0, js.a $$1) {
+      ObjectIterator var3 = this.b.object2IntEntrySet().iterator();
+
+      while (var3.hasNext()) {
+         Entry<String> $$2 = (Entry<String>)var3.next();
+         $$0.a((String)$$2.getKey(), $$2.getIntValue());
+      }
+
+      return $$0;
    }
 
-   public static evf.a<?> a(axs<cwi> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new evi($$0, false, $$1, $$2, $$3, $$4));
-   }
-
-   public static evf.a<?> b(axs<cwi> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new evi($$0, true, $$1, $$2, $$3, $$4));
+   public evh b() {
+      int $$0 = this.b.getInt("map") + 1;
+      this.b.put("map", $$0);
+      this.c();
+      return new evh($$0);
    }
 }

@@ -1,16 +1,17 @@
-public class hcm extends hco {
-   public hcm(cgz $$0) {
-      super($$0, awn.bQ, awo.g);
-      this.j = 0;
-   }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   @Override
-   protected hck o() {
-      return new hcn(this.n);
-   }
+public record hcm(String b, String c, boolean d) {
+   public static final Codec<hcm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               azn.A.fieldOf("region").forGetter(hcm::b),
+               azn.A.fieldOf("name").forGetter(hcm::c),
+               Codec.BOOL.optionalFieldOf("bidirectional", false).forGetter(hcm::d)
+            )
+            .apply($$0, hcm::new)
+   );
 
-   @Override
-   protected boolean p() {
-      return !this.n.ac_();
+   public xv a() {
+      return xv.b(this.c + " (" + this.b + ")");
    }
 }

@@ -1,112 +1,62 @@
-import com.google.common.base.MoreObjects;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
 
-public abstract class dwx<T extends Comparable<T>> {
-   private final Class<T> a;
-   private final String b;
-   @Nullable
-   private Integer c;
-   private final Codec<T> d = Codec.STRING
-      .comapFlatMap(
-         $$0x -> this.b($$0x)
-               .<DataResult>map(DataResult::success)
-               .orElseGet(() -> DataResult.error(() -> "Unable to read property: " + this + " with value: " + $$0x)),
-         this::b
-      );
-   private final Codec<dwx.a<T>> e = this.d.xmap(this::c, dwx.a::b);
+public record dwx(aly<ewm> d, double e, double f, cxk g, Optional<aly<ewm>> h, dwo i, dwo.a j) {
+   static final String a = "config";
+   static dwx b = new dwx();
+   static Codec<dwx> c = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  aly.a(mb.bf).lenientOptionalFieldOf("loot_table", b.b()).forGetter(dwx::b),
+                  Codec.DOUBLE.lenientOptionalFieldOf("activation_range", b.c()).forGetter(dwx::c),
+                  Codec.DOUBLE.lenientOptionalFieldOf("deactivation_range", b.d()).forGetter(dwx::d),
+                  cxk.a("key_item").forGetter(dwx::e),
+                  aly.a(mb.bf).lenientOptionalFieldOf("override_loot_table_to_display").forGetter(dwx::f)
+               )
+               .apply($$0, dwx::new)
+      )
+      .validate(dwx::h);
 
-   protected dwx(String $$0, Class<T> $$1) {
-      this.a = $$1;
-      this.b = $$0;
+   private dwx() {
+      this(ewd.R, 4.0, 4.5, new cxk(cxo.zt), Optional.empty(), dwo.b, dwo.a.a);
    }
 
-   public dwx.a<T> c(T $$0) {
-      return new dwx.a<>(this, $$0);
+   public dwx(aly<ewm> $$0, double $$1, double $$2, cxk $$3, Optional<aly<ewm>> $$4) {
+      this($$0, $$1, $$2, $$3, $$4, b.a(), b.g());
    }
 
-   public dwx.a<T> a(dvx<?, ?> $$0) {
-      return new dwx.a<>(this, $$0.c(this));
+   public dwo a() {
+      return this.i;
    }
 
-   public Stream<dwx.a<T>> c() {
-      return this.a().stream().map(this::c);
+   private DataResult<dwx> h() {
+      return this.e > this.f
+         ? DataResult.error(() -> "Activation range must (" + this.e + ") be less or equal to deactivation range (" + this.f + ")")
+         : DataResult.success(this);
    }
 
-   public Codec<T> d() {
+   public aly<ewm> b() {
       return this.d;
    }
 
-   public Codec<dwx.a<T>> e() {
+   public double c() {
       return this.e;
    }
 
-   public String f() {
-      return this.b;
+   public double d() {
+      return this.f;
    }
 
-   public Class<T> g() {
-      return this.a;
+   public cxk e() {
+      return this.g;
    }
 
-   public abstract List<T> a();
-
-   public abstract String b(T var1);
-
-   public abstract Optional<T> b(String var1);
-
-   public abstract int a(T var1);
-
-   @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this).add("name", this.b).add("clazz", this.a).add("values", this.a()).toString();
+   public Optional<aly<ewm>> f() {
+      return this.h;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof dwx<?> $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
-      }
-   }
-
-   @Override
-   public final int hashCode() {
-      if (this.c == null) {
-         this.c = this.b();
-      }
-
-      return this.c;
-   }
-
-   public int b() {
-      return 31 * this.a.hashCode() + this.b.hashCode();
-   }
-
-   public <U, S extends dvx<?, S>> DataResult<S> a(DynamicOps<U> $$0, S $$1, U $$2) {
-      DataResult<T> $$3 = this.d.parse($$0, $$2);
-      return $$3.map($$1x -> $$1.b(this, $$1x)).setPartial($$1);
-   }
-
-   public static record a<T extends Comparable<T>>(dwx<T> a, T b) {
-      public a(dwx<T> a, T b) {
-         if (!a.a().contains(b)) {
-            throw new IllegalArgumentException("Value " + b + " does not belong to property " + a);
-         } else {
-            this.a = a;
-            this.b = b;
-         }
-      }
-
-      @Override
-      public String toString() {
-         return this.a.f() + "=" + this.a.b(this.b);
-      }
+   public dwo.a g() {
+      return this.j;
    }
 }

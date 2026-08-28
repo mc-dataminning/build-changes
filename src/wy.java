@@ -1,101 +1,18 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelDuplexHandler;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandler;
-import io.netty.channel.ChannelOutboundHandler;
-import io.netty.channel.ChannelOutboundHandlerAdapter;
-import io.netty.channel.ChannelPromise;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.EncoderException;
-import io.netty.util.ReferenceCountUtil;
+import io.netty.handler.codec.MessageToMessageEncoder;
+import java.util.List;
 
-public class wy {
-   public static <T extends wp> wy.b a(wr<T> $$0) {
-      return a(new wn<T>($$0));
+public class wy extends MessageToMessageEncoder<aac<?>> {
+   private final aab a;
+
+   public wy(aab $$0) {
+      this.a = $$0;
    }
 
-   private static wy.b a(ChannelInboundHandler $$0) {
-      return $$1 -> {
-         $$1.pipeline().replace($$1.name(), "decoder", $$0);
-         $$1.channel().config().setAutoRead(true);
-      };
-   }
-
-   public static <T extends wp> wy.d b(wr<T> $$0) {
-      return a(new wo<T>($$0));
-   }
-
-   private static wy.d a(ChannelOutboundHandler $$0) {
-      return $$1 -> $$1.pipeline().replace($$1.name(), "encoder", $$0);
-   }
-
-   public static class a extends ChannelDuplexHandler {
-      public void channelRead(ChannelHandlerContext $$0, Object $$1) {
-         if (!($$1 instanceof ByteBuf) && !($$1 instanceof zq)) {
-            $$0.fireChannelRead($$1);
-         } else {
-            ReferenceCountUtil.release($$1);
-            throw new DecoderException("Pipeline has no inbound protocol configured, can't process packet " + $$1);
-         }
-      }
-
-      public void write(ChannelHandlerContext $$0, Object $$1, ChannelPromise $$2) throws Exception {
-         if ($$1 instanceof wy.b $$3) {
-            try {
-               $$3.run($$0);
-            } finally {
-               ReferenceCountUtil.release($$1);
-            }
-
-            $$2.setSuccess();
-         } else {
-            $$0.write($$1, $$2);
-         }
-      }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      void run(ChannelHandlerContext var1);
-
-      default wy.b andThen(wy.b $$0) {
-         return $$1 -> {
-            this.run($$1);
-            $$0.run($$1);
-         };
-      }
-   }
-
-   public static class c extends ChannelOutboundHandlerAdapter {
-      public void write(ChannelHandlerContext $$0, Object $$1, ChannelPromise $$2) throws Exception {
-         if ($$1 instanceof zq) {
-            ReferenceCountUtil.release($$1);
-            throw new EncoderException("Pipeline has no outbound protocol configured, can't process packet " + $$1);
-         } else {
-            if ($$1 instanceof wy.d $$3) {
-               try {
-                  $$3.run($$0);
-               } finally {
-                  ReferenceCountUtil.release($$1);
-               }
-
-               $$2.setSuccess();
-            } else {
-               $$0.write($$1, $$2);
-            }
-         }
-      }
-   }
-
-   @FunctionalInterface
-   public interface d {
-      void run(ChannelHandlerContext var1);
-
-      default wy.d andThen(wy.d $$0) {
-         return $$1 -> {
-            this.run($$1);
-            $$0.run($$1);
-         };
+   protected void a(ChannelHandlerContext $$0, aac<?> $$1, List<Object> $$2) throws Exception {
+      this.a.a($$1, $$2::add);
+      if ($$1.d()) {
+         $$0.pipeline().remove($$0.name());
       }
    }
 }

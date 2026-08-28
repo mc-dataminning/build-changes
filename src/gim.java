@@ -1,21 +1,27 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import java.util.List;
+
 public class gim {
-   public static final dew a = dgo::a;
-   public static final dew b = ($$0, $$1, $$2) -> $$0.f();
-   public static final dew c = ($$0, $$1, $$2) -> $$0.i();
+   private final List<alz> a;
 
-   private static int a(deo $$0, jh $$1, dew $$2) {
-      return $$0.a($$1, $$2);
+   private gim(List<alz> $$0) {
+      this.a = $$0;
    }
 
-   public static int a(deo $$0, jh $$1) {
-      return a($$0, $$1, a);
+   public List<alz> a() {
+      return this.a;
    }
 
-   public static int b(deo $$0, jh $$1) {
-      return a($$0, $$1, b);
-   }
-
-   public static int c(deo $$0, jh $$1) {
-      return a($$0, $$1, c);
+   public static gim a(JsonObject $$0) {
+      JsonArray $$1 = azu.a($$0, "textures", null);
+      if ($$1 == null) {
+         return new gim(List.of());
+      } else {
+         List<alz> $$2 = Streams.stream($$1).map($$0x -> azu.a($$0x, "texture")).map(alz::a).collect(ImmutableList.toImmutableList());
+         return new gim($$2);
+      }
    }
 }

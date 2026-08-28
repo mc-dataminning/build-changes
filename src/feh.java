@@ -1,14 +1,28 @@
-public enum feh {
-   a(0),
-   b(1);
+import com.mojang.blaze3d.platform.GlStateManager;
 
-   private final int c;
+public class feh implements AutoCloseable {
+   private long a = GlStateManager._glFenceSync(37143, 0);
 
-   private feh(final int $$0) {
-      this.c = $$0;
+   @Override
+   public void close() {
+      if (this.a != 0L) {
+         GlStateManager._glDeleteSync(this.a);
+         this.a = 0L;
+      }
    }
 
-   public int a() {
-      return this.c;
+   public boolean a(long $$0) {
+      if (this.a == 0L) {
+         return true;
+      } else {
+         int $$1 = GlStateManager._glClientWaitSync(this.a, 0, $$0);
+         if ($$1 == 37147) {
+            return false;
+         } else if ($$1 == 37149) {
+            throw new IllegalStateException("Failed to complete gpu fence");
+         } else {
+            return true;
+         }
+      }
    }
 }

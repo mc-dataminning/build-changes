@@ -1,20 +1,141 @@
-import java.util.concurrent.CompletableFuture;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.nio.file.Path;
+import java.time.Instant;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
+import java.util.function.LongSupplier;
+import javax.annotation.Nullable;
 
-public class brc extends bqy<bre.c> {
-   public brc(int $$0, Executor $$1, String $$2) {
-      super(new bre.a($$0), $$1, $$2);
-      bqe.a.a(this);
+public class brc implements bre {
+   public static final int a = 10;
+   @Nullable
+   private static Consumer<Path> b = null;
+   private final Map<bqx, List<brj>> c = new Object2ObjectOpenHashMap();
+   private final bph d;
+   private final Executor e;
+   private final bri f;
+   private final Consumer<bpm> g;
+   private final Consumer<Path> h;
+   private final bqz i;
+   private final LongSupplier j;
+   private final long k;
+   private int l;
+   private bpl m;
+   private volatile boolean n;
+   private Set<bqx> o = ImmutableSet.of();
+
+   private brc(bqz $$0, LongSupplier $$1, Executor $$2, bri $$3, Consumer<bpm> $$4, Consumer<Path> $$5) {
+      this.i = $$0;
+      this.j = $$1;
+      this.d = new bph($$1, () -> this.l);
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = b == null ? $$5 : $$5.andThen(b);
+      this.k = $$1.getAsLong() + TimeUnit.NANOSECONDS.convert(10L, TimeUnit.SECONDS);
+      this.m = new bpg(this.j, () -> this.l, false);
+      this.d.c();
    }
 
-   public bre.c b(Runnable $$0) {
-      return new bre.c(0, $$0);
+   public static brc a(bqz $$0, LongSupplier $$1, Executor $$2, bri $$3, Consumer<bpm> $$4, Consumer<Path> $$5) {
+      return new brc($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public <Source> CompletableFuture<Source> a(int $$0, Consumer<CompletableFuture<Source>> $$1) {
-      CompletableFuture<Source> $$2 = new CompletableFuture<>();
-      this.a_(new bre.c($$0, () -> $$1.accept($$2)));
-      return $$2;
+   @Override
+   public synchronized void a() {
+      if (this.e()) {
+         this.n = true;
+      }
+   }
+
+   @Override
+   public synchronized void b() {
+      if (this.e()) {
+         this.m = bpk.a;
+         this.g.accept(bpi.a);
+         this.a(this.o);
+      }
+   }
+
+   @Override
+   public void c() {
+      this.g();
+      this.o = this.i.a(() -> this.m);
+
+      for (bqx $$0 : this.o) {
+         $$0.a();
+      }
+
+      this.l++;
+   }
+
+   @Override
+   public void d() {
+      this.g();
+      if (this.l != 0) {
+         for (bqx $$0 : this.o) {
+            $$0.a(this.l);
+            if ($$0.g()) {
+               brj $$1 = new brj(Instant.now(), this.l, this.m.d());
+               this.c.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
+            }
+         }
+
+         if (!this.n && this.j.getAsLong() <= this.k) {
+            this.m = new bpg(this.j, () -> this.l, false);
+         } else {
+            this.n = false;
+            bpm $$2 = this.d.e();
+            this.m = bpk.a;
+            this.g.accept($$2);
+            this.a($$2);
+         }
+      }
+   }
+
+   @Override
+   public boolean e() {
+      return this.d.a();
+   }
+
+   @Override
+   public bpo f() {
+      return bpo.a(this.d.d(), this.m);
+   }
+
+   private void g() {
+      if (!this.e()) {
+         throw new IllegalStateException("Not started!");
+      }
+   }
+
+   private void a(bpm $$0) {
+      HashSet<bqx> $$1 = new HashSet<>(this.o);
+      this.e.execute(() -> {
+         Path $$2 = this.f.a($$1, this.c, $$0);
+         this.a($$1);
+         this.h.accept($$2);
+      });
+   }
+
+   private void a(Collection<bqx> $$0) {
+      for (bqx $$1 : $$0) {
+         $$1.b();
+      }
+
+      this.c.clear();
+      this.d.b();
+   }
+
+   public static void a(Consumer<Path> $$0) {
+      b = $$0;
    }
 }

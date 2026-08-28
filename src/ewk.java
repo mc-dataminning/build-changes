@@ -1,75 +1,136 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Stream;
-import java.util.stream.Stream.Builder;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.Set;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class ewk extends ewa {
-   public static final MapCodec<ewk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(eul.e.fieldOf("component").forGetter($$0x -> $$0x.b), evb.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
-            .apply($$0, ewk::new)
-   );
-   private final euk<?> b;
-   private final List<evd> c;
+public class ewk {
+   private final ash a;
+   private final Map<eza<?>, Object> b;
+   private final Map<alz, ewk.b> c;
+   private final float d;
 
-   ewk(List<exy> $$0, euk<?> $$1, List<evd> $$2) {
-      super($$0);
+   public ewk(ash $$0, Map<eza<?>, Object> $$1, Map<alz, ewk.b> $$2, float $$3) {
+      this.a = $$0;
       this.b = $$1;
-      this.c = List.copyOf($$2);
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   public ewc<ewk> b() {
-      return ewd.t;
+   public ash a() {
+      return this.a;
    }
 
-   @Override
-   public cwm a(cwm $$0, eun $$1) {
-      if ($$0.f()) {
-         return $$0;
+   public boolean a(eza<?> $$0) {
+      return this.b.containsKey($$0);
+   }
+
+   public <T> T b(eza<T> $$0) {
+      T $$1 = (T)this.b.get($$0);
+      if ($$1 == null) {
+         throw new NoSuchElementException($$0.a().toString());
       } else {
-         Builder<cwm> $$2 = Stream.builder();
-         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(eus.a($$1.d(), $$2::add), $$1)));
-         this.b.a($$0, $$2.build());
-         return $$0;
+         return $$1;
       }
    }
 
-   @Override
-   public void a(eut $$0) {
-      super.a($$0);
+   @Nullable
+   public <T> T c(eza<T> $$0) {
+      return (T)this.b.get($$0);
+   }
 
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+   @Nullable
+   public <T> T d(eza<T> $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   public void a(alz $$0, Consumer<cxk> $$1) {
+      ewk.b $$2 = this.c.get($$0);
+      if ($$2 != null) {
+         $$2.add($$1);
       }
    }
 
-   public static ewk.a a(euk<?> $$0) {
-      return new ewk.a($$0);
+   public float b() {
+      return this.d;
    }
 
-   public static class a extends ewa.a<ewk.a> {
-      private final com.google.common.collect.ImmutableList.Builder<evd> a = ImmutableList.builder();
-      private final euk<?> b;
+   public static class a {
+      private final ash a;
+      private final Map<eza<?>, Object> b = Maps.newIdentityHashMap();
+      private final Map<alz, ewk.b> c = Maps.newHashMap();
+      private float d;
 
-      public a(euk<?> $$0) {
-         this.b = $$0;
+      public a(ash $$0) {
+         this.a = $$0;
       }
 
-      protected ewk.a a() {
+      public ash a() {
+         return this.a;
+      }
+
+      public <T> ewk.a a(eza<T> $$0, T $$1) {
+         this.b.put($$0, $$1);
          return this;
       }
 
-      public ewk.a a(evd.a<?> $$0) {
-         this.a.add($$0.b());
+      public <T> ewk.a b(eza<T> $$0, @Nullable T $$1) {
+         if ($$1 == null) {
+            this.b.remove($$0);
+         } else {
+            this.b.put($$0, $$1);
+         }
+
          return this;
       }
 
-      @Override
-      public ewb b() {
-         return new ewk(this.g(), this.b, this.a.build());
+      public <T> T a(eza<T> $$0) {
+         T $$1 = (T)this.b.get($$0);
+         if ($$1 == null) {
+            throw new NoSuchElementException($$0.a().toString());
+         } else {
+            return $$1;
+         }
       }
+
+      @Nullable
+      public <T> T b(eza<T> $$0) {
+         return (T)this.b.get($$0);
+      }
+
+      public ewk.a a(alz $$0, ewk.b $$1) {
+         ewk.b $$2 = this.c.put($$0, $$1);
+         if ($$2 != null) {
+            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
+         } else {
+            return this;
+         }
+      }
+
+      public ewk.a a(float $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public ewk a(ezb $$0) {
+         Set<eza<?>> $$1 = Sets.difference(this.b.keySet(), $$0.b());
+         if (!$$1.isEmpty()) {
+            throw new IllegalArgumentException("Parameters not allowed in this parameter set: " + $$1);
+         } else {
+            Set<eza<?>> $$2 = Sets.difference($$0.a(), this.b.keySet());
+            if (!$$2.isEmpty()) {
+               throw new IllegalArgumentException("Missing required parameters: " + $$2);
+            } else {
+               return new ewk(this.a, this.b, this.c, this.d);
+            }
+         }
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      void add(Consumer<cxk> var1);
    }
 }

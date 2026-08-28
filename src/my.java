@@ -1,43 +1,27 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.mojang.brigadier.CommandDispatcher;
 import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class my implements mg {
-   private final mi d;
+public class my implements mh {
+   private final mj d;
+   private final CompletableFuture<js.a> e;
 
-   public my(mi $$0) {
+   public my(mj $$0, CompletableFuture<js.a> $$1) {
       this.d = $$0;
+      this.e = $$1;
    }
 
    @Override
-   public CompletableFuture<?> a(me $$0) {
-      Path $$1 = this.d.a(mi.b.c).resolve("packets.json");
-      return mg.a($$0, this.b(), $$1);
-   }
-
-   private JsonElement b() {
-      JsonObject $$0 = new JsonObject();
-      Stream.of(ajb.a, akk.c, akk.a, ajl.c, ajl.a, abu.c, abu.a, agv.b, agv.a).collect(Collectors.groupingBy(wr.a::a)).forEach(($$1, $$2) -> {
-         JsonObject $$3 = new JsonObject();
-         $$0.add($$1.a(), $$3);
-         $$2.forEach($$1x -> {
-            JsonObject $$2x = new JsonObject();
-            $$3.add($$1x.b().b(), $$2x);
-            $$1x.a(($$1xx, $$2xx) -> {
-               JsonObject $$3x = new JsonObject();
-               $$3x.addProperty("protocol_id", $$2xx);
-               $$2x.add($$1xx.b().toString(), $$3x);
-            });
-         });
+   public CompletableFuture<?> a(mf $$0) {
+      Path $$1 = this.d.a(mj.b.c).resolve("commands.json");
+      return this.e.thenCompose($$2 -> {
+         CommandDispatcher<ew> $$3 = new ex(ex.a.a, ex.a($$2)).a();
+         return mh.a($$0, iu.a($$3, $$3.getRoot()), $$1);
       });
-      return $$0;
    }
 
    @Override
-   public String a() {
-      return "Packet Report";
+   public final String a() {
+      return "Command Syntax";
    }
 }

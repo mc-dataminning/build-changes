@@ -1,30 +1,27 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+import java.util.function.Consumer;
 
-public enum dao implements bai {
-   a("building", 0),
-   b("redstone", 1),
-   c("equipment", 2),
-   d("misc", 3);
-
-   public static final Codec<dao> e = bai.a(dao::values);
-   public static final IntFunction<dao> f = ayd.a(dao::a, values(), ayd.a.a);
-   public static final zh<ByteBuf, dao> g = zf.a(f, dao::a);
-   private final String h;
-   private final int i;
-
-   private dao(final String $$0, final int $$1) {
-      this.h = $$0;
-      this.i = $$1;
-   }
+public record dao(boolean c) implements dan {
+   public static final Codec<dao> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(dao::a)).apply($$0, dao::new)
+   );
+   public static final zt<ByteBuf, dao> b = zr.b.a(dao::new, dao::a);
+   private static final xv d = xv.c("item.unbreakable").a(n.j);
 
    @Override
-   public String c() {
-      return this.h;
+   public void a(cxg.b $$0, Consumer<xv> $$1, czc $$2) {
+      if (this.c) {
+         $$1.accept(d);
+      }
    }
 
-   private int a() {
-      return this.i;
+   public dao a(boolean $$0) {
+      return new dao($$0);
+   }
+
+   public boolean a() {
+      return this.c;
    }
 }

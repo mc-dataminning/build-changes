@@ -1,24 +1,14 @@
-import java.util.Objects;
-import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class bac<K, V> {
-   private final Function<K, V> a;
+public class bac {
    @Nullable
-   private K b = (K)null;
-   @Nullable
-   private V c;
+   private static byte[] a = null;
 
-   public bac(Function<K, V> $$0) {
-      this.a = $$0;
+   public static void a() {
+      a = new byte[10485760];
    }
 
-   public V a(K $$0) {
-      if (this.c == null || !Objects.equals(this.b, $$0)) {
-         this.c = this.a.apply($$0);
-         this.b = $$0;
-      }
-
-      return this.c;
+   public static void b() {
+      a = new byte[0];
    }
 }

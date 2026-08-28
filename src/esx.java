@@ -1,154 +1,113 @@
-import com.mojang.logging.LogUtils;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.annotations.VisibleForTesting;
 
-public class esx implements etc {
-   private static final Logger b = LogUtils.getLogger();
-   private final dfm c;
-   private final int d;
-   private final ArrayDeque<esx.c> e = new ArrayDeque<>();
-   private final List<esx.c> f = new ArrayList<>();
-   private int g = 0;
+public final class esx extends etg<esy.a, esy> {
+   private final jh.a g = new jh.a();
 
-   public esx(dfm $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public esx(dzv $$0) {
+      this($$0, new esy($$0));
+   }
+
+   @VisibleForTesting
+   public esx(dzv $$0, esy $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public void a(jm $$0, dvv $$1, jh $$2, jh $$3, int $$4, int $$5) {
-      this.a($$2, new esx.d($$0, $$1, $$2.j(), $$3.j(), $$4, $$5));
-   }
-
-   @Override
-   public void a(jh $$0, diq $$1, @Nullable etd $$2) {
-      this.a($$0, new esx.e($$0, $$1, $$2));
-   }
-
-   @Override
-   public void a(dvv $$0, jh $$1, diq $$2, @Nullable etd $$3, boolean $$4) {
-      this.a($$1, new esx.a($$0, $$1.j(), $$2, $$3, $$4));
-   }
-
-   @Override
-   public void a(jh $$0, diq $$1, @Nullable jm $$2, @Nullable etd $$3) {
-      this.a($$0, new esx.b($$0.j(), $$1, $$3, $$2));
-   }
-
-   private void a(jh $$0, esx.c $$1) {
-      boolean $$2 = this.g > 0;
-      boolean $$3 = this.d >= 0 && this.g >= this.d;
-      this.g++;
-      if (!$$3) {
-         if ($$2) {
-            this.f.add($$1);
+   protected void a(long $$0) {
+      long $$1 = kj.e($$0);
+      if (this.f.b($$1)) {
+         dxn $$2 = this.c(this.g.f($$0));
+         int $$3 = this.a($$0, $$2);
+         int $$4 = this.f.e($$0);
+         if ($$3 < $$4) {
+            this.f.a($$0, 0);
+            this.b($$0, etg.a.a($$4));
          } else {
-            this.e.push($$1);
+            this.b($$0, c);
          }
-      } else if (this.g - 1 == this.d) {
-         b.error("Too many chained neighbor updates. Skipping the rest. First skipped position: " + $$0.x());
-      }
 
-      if (!$$2) {
-         this.a();
+         if ($$3 > 0) {
+            this.c($$0, etg.a.a($$3, a($$2)));
+         }
       }
    }
 
-   private void a() {
-      try {
-         while (!this.e.isEmpty() || !this.f.isEmpty()) {
-            for (int $$0 = this.f.size() - 1; $$0 >= 0; $$0--) {
-               this.e.push(this.f.get($$0));
-            }
+   @Override
+   protected void a(long $$0, long $$1, int $$2) {
+      dxn $$3 = null;
 
-            this.f.clear();
-            esx.c $$1 = this.e.peek();
+      for (jm $$4 : d) {
+         if (etg.a.a($$1, $$4)) {
+            long $$5 = jh.a($$0, $$4);
+            if (this.f.b(kj.e($$5))) {
+               int $$6 = this.f.e($$5);
+               int $$7 = $$2 - 1;
+               if ($$7 > $$6) {
+                  this.g.f($$5);
+                  dxn $$8 = this.c(this.g);
+                  int $$9 = $$2 - this.b($$8);
+                  if ($$9 > $$6) {
+                     if ($$3 == null) {
+                        $$3 = etg.a.b($$1) ? dkg.a.m() : this.c(this.g.f($$0));
+                     }
 
-            while (this.f.isEmpty()) {
-               if (!$$1.a(this.c)) {
-                  this.e.pop();
-                  break;
+                     if (!this.a($$3, $$8, $$4)) {
+                        this.f.a($$5, $$9);
+                        if ($$9 > 1) {
+                           this.c($$5, etg.a.a($$9, a($$8), $$4.g()));
+                        }
+                     }
+                  }
                }
             }
          }
-      } finally {
-         this.e.clear();
-         this.f.clear();
-         this.g = 0;
       }
    }
 
-   static record a(dvv a, jh b, diq c, @Nullable etd d, boolean e) implements esx.c {
-      @Override
-      public boolean a(dfm $$0) {
-         etc.a($$0, this.a, this.b, this.c, this.d, this.e);
-         return false;
-      }
-   }
+   @Override
+   protected void a(long $$0, long $$1) {
+      int $$2 = etg.a.a($$1);
 
-   static final class b implements esx.c {
-      private final jh a;
-      private final diq b;
-      @Nullable
-      private etd c;
-      @Nullable
-      private final jm d;
-      private int e = 0;
+      for (jm $$3 : d) {
+         if (etg.a.a($$1, $$3)) {
+            long $$4 = jh.a($$0, $$3);
+            if (this.f.b(kj.e($$4))) {
+               int $$5 = this.f.e($$4);
+               if ($$5 != 0) {
+                  if ($$5 <= $$2 - 1) {
+                     dxn $$6 = this.c(this.g.f($$4));
+                     int $$7 = this.a($$4, $$6);
+                     this.f.a($$4, 0);
+                     if ($$7 < $$5) {
+                        this.b($$4, etg.a.a($$5, $$3.g()));
+                     }
 
-      b(jh $$0, diq $$1, @Nullable etd $$2, @Nullable jm $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         if (etc.a[this.e] == $$3) {
-            this.e++;
-         }
-      }
-
-      @Override
-      public boolean a(dfm $$0) {
-         jm $$1 = etc.a[this.e++];
-         jh $$2 = this.a.a($$1);
-         dvv $$3 = $$0.a_($$2);
-         etd $$4 = null;
-         if ($$0.J().b(crs.c)) {
-            if (this.c == null) {
-               this.c = esz.a($$0, this.d == null ? null : this.d.g(), null);
+                     if ($$7 > 0) {
+                        this.c($$4, etg.a.a($$7, a($$6)));
+                     }
+                  } else {
+                     this.c($$4, etg.a.b($$5, false, $$3.g()));
+                  }
+               }
             }
-
-            $$4 = this.c.b($$1);
          }
-
-         etc.a($$0, $$3, $$2, this.b, $$4, false);
-         if (this.e < etc.a.length && etc.a[this.e] == this.d) {
-            this.e++;
-         }
-
-         return this.e < etc.a.length;
       }
    }
 
-   interface c {
-      boolean a(dfm var1);
+   private int a(long $$0, dxn $$1) {
+      int $$2 = $$1.k();
+      return $$2 > 0 && this.f.j(kj.e($$0)) ? $$2 : 0;
    }
 
-   static record d(jm a, dvv b, jh c, jh d, int e, int f) implements esx.c {
-      @Override
-      public boolean a(dfm $$0) {
-         etc.a($$0, this.a, this.c, this.d, this.b, this.e, this.f);
-         return false;
-      }
-   }
-
-   static record e(jh a, diq b, @Nullable etd c) implements esx.c {
-      @Override
-      public boolean a(dfm $$0) {
-         dvv $$1 = $$0.a_(this.a);
-         etc.a($$0, $$1, this.a, this.b, this.c, false);
-         return false;
+   @Override
+   public void b(dgg $$0) {
+      this.a($$0, true);
+      dzu $$1 = this.e.c($$0.g, $$0.h);
+      if ($$1 != null) {
+         $$1.a(($$0x, $$1x) -> {
+            int $$2 = $$1x.k();
+            this.c($$0x.a(), etg.a.a($$2, a($$1x)));
+         });
       }
    }
 }

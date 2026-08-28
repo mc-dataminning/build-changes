@@ -1,9 +1,29 @@
-public interface fls {
-   boolean a(ctw var1);
+import javax.annotation.Nullable;
 
-   boolean a(double var1, double var3, int var5, cwm var6);
+public record fls(int a, xv b, @Nullable yh c, @Nullable flt d) {
+   @Nullable
+   public flt.a a() {
+      return this.d != null ? this.d.f() : null;
+   }
 
-   void b(ctw var1);
+   public int b() {
+      return this.a;
+   }
 
-   void a(ctw var1, csk var2);
+   public xv c() {
+      return this.b;
+   }
+
+   @Nullable
+   public yh d() {
+      return this.c;
+   }
+
+   @Nullable
+   public flt e() {
+      return this.d;
+   }
+
+   public static record a(int a, azq b, @Nullable flt c, boolean d) {
+   }
 }

@@ -1,27 +1,32 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import java.util.Optional;
+import java.util.UUID;
 
-public class bfg extends bgv {
-   public bfg(Schema $$0, String $$1) {
-      super($$0, false, "Gossip for for " + $$1, bia.B, $$1);
+public class bfg extends DataFix {
+   public bfg(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> $$0x.update(
-               "Gossips",
-               $$0xx -> (Dynamic)DataFixUtils.orElse(
-                     $$0xx.asStreamOpt()
-                        .result()
-                        .map($$0xxx -> $$0xxx.map($$0xxxx -> (Dynamic)bbd.c($$0xxxx, "Target", "Target").orElse($$0xxxx)))
-                        .map($$0xx::createList),
-                     $$0xx
-                  )
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "EntityStringUuidFix",
+         this.getInputSchema().getType(bis.B),
+         $$0 -> $$0.update(
+               DSL.remainderFinder(),
+               $$0x -> {
+                  Optional<String> $$1 = $$0x.get("UUID").asString().result();
+                  if ($$1.isPresent()) {
+                     UUID $$2 = UUID.fromString($$1.get());
+                     return $$0x.remove("UUID")
+                        .set("UUIDMost", $$0x.createLong($$2.getMostSignificantBits()))
+                        .set("UUIDLeast", $$0x.createLong($$2.getLeastSignificantBits()));
+                  } else {
+                     return $$0x;
+                  }
+               }
             )
       );
    }

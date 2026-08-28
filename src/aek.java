@@ -1,21 +1,42 @@
-public record aek(int b, xj c) implements zq<acf> {
-   public static final zh<wu, aek> a = zh.a(zf.h, aek::b, xl.d, aek::e, aek::new);
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   @Override
-   public zs<aek> a() {
-      return agu.ae;
+public record aek(evh b, byte c, boolean d, Optional<List<evd>> e, Optional<evj.c> f) implements aac<acr> {
+   public static final zt<xg, aek> a = zt.a(evh.b, aek::b, zr.c, aek::e, zr.b, aek::f, evd.a.a(zr.a()).a(zr::a), aek::g, evj.c.a, aek::h, aek::new);
+
+   public aek(evh $$0, byte $$1, boolean $$2, @Nullable Collection<evd> $$3, @Nullable evj.c $$4) {
+      this($$0, $$1, $$2, $$3 != null ? Optional.of(List.copyOf($$3)) : Optional.empty(), Optional.ofNullable($$4));
    }
 
-   public void a(acf $$0) {
+   @Override
+   public aae<aek> a() {
+      return ahk.P;
+   }
+
+   public void a(acr $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
+   public void a(evj $$0) {
+      this.e.ifPresent($$0::a);
+      this.f.ifPresent($$1 -> $$1.a($$0));
    }
 
-   public xj e() {
+   public byte e() {
       return this.c;
+   }
+
+   public boolean f() {
+      return this.d;
+   }
+
+   public Optional<List<evd>> g() {
+      return this.e;
+   }
+
+   public Optional<evj.c> h() {
+      return this.f;
    }
 }

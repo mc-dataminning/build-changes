@@ -1,4 +1,3 @@
-import com.mojang.serialization.MapCodec;
-
-public record ewc<T extends ewb>(MapCodec<T> a) {
+public interface ewc extends evr {
+   void a(jh var1, float var2);
 }

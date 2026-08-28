@@ -1,31 +1,20 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public interface ged {
-   Codec<ged> a = bai.a(ged.a::values).dispatch(ged::a, ged.a::a);
+public class ged implements avw {
+   private Map<gef, gen> a = ImmutableMap.of();
 
-   ged.a a();
-
-   public static enum a implements bai {
-      a("player", () -> gee.a.b),
-      b("system", () -> gee.b.b);
-
-      private final String c;
-      private final Supplier<MapCodec<? extends ged>> d;
-
-      private a(final String $$0, final Supplier<MapCodec<? extends ged>> $$1) {
-         this.c = $$0;
-         this.d = $$1;
+   public geh a(gef $$0) {
+      gen $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("No model for layer " + $$0);
+      } else {
+         return $$1.a();
       }
+   }
 
-      private MapCodec<? extends ged> a() {
-         return this.d.get();
-      }
-
-      @Override
-      public String c() {
-         return this.c;
-      }
+   @Override
+   public void a(avv $$0) {
+      this.a = ImmutableMap.copyOf(gee.a());
    }
 }

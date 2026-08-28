@@ -1,106 +1,100 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class dme extends dmc implements dit {
-   public static final dwu e = dwl.ax;
-   public static final int f = 25;
-   private final double c;
+public class dme extends djq {
+   public static final MapCodec<dme> a = b(dme::new);
+   public static final dym b = dyd.aU;
+   public static final dye c = dyd.p;
+   protected static final fcm d = dke.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0);
 
-   protected dme(dvu.d $$0, jm $$1, fas $$2, boolean $$3, double $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.c = $$4;
-      this.l(this.F.b().b(e, Integer.valueOf(0)));
+   @Override
+   public MapCodec<dme> a() {
+      return a;
+   }
+
+   public dme(dxm.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b, Integer.valueOf(0)).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected abstract MapCodec<? extends dme> a();
-
-   @Override
-   public dvv b(azu $$0) {
-      return this.m().b(e, Integer.valueOf($$0.a(25)));
+   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
+      return d;
    }
 
    @Override
-   protected boolean f(dvv $$0) {
-      return $$0.c(e) < 25;
-   }
-
-   @Override
-   protected void b(dvv $$0, arp $$1, jh $$2, azu $$3) {
-      if ($$0.c(e) < 25 && $$3.j() < this.c) {
-         jh $$4 = $$2.a(this.a);
-         if (this.h($$1.a_($$4))) {
-            $$1.b($$4, this.a($$0, $$1.A));
-         }
-      }
-   }
-
-   protected dvv a(dvv $$0, azu $$1) {
-      return $$0.a(e);
-   }
-
-   public dvv p(dvv $$0) {
-      return $$0.b(e, Integer.valueOf(25));
-   }
-
-   public boolean q(dvv $$0) {
-      return $$0.c(e) == 25;
-   }
-
-   protected dvv a(dvv $$0, dvv $$1) {
-      return $$1;
-   }
-
-   @Override
-   protected dvv a(dvv $$0, dfp $$1, dgb $$2, jh $$3, jm $$4, jh $$5, dvv $$6, azu $$7) {
-      if ($$4 == this.a.g() && !$$0.a($$1, $$3)) {
-         $$2.a($$3, this, 1);
-      }
-
-      if ($$4 != this.a || !$$6.a(this) && !$$6.a(this.b())) {
-         if (this.b) {
-            $$2.a($$3, erw.c, erw.c.a($$1));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else {
-         return this.a($$0, this.b().m());
-      }
-   }
-
-   @Override
-   protected void a(dvw.a<diq, dvv> $$0) {
-      $$0.a(e);
-   }
-
-   @Override
-   public boolean b(dfp $$0, jh $$1, dvv $$2) {
-      return this.h($$0.a_($$1.a(this.a)));
-   }
-
-   @Override
-   public boolean a(dfm $$0, azu $$1, jh $$2, dvv $$3) {
+   protected boolean g_(dxn $$0) {
       return true;
    }
 
    @Override
-   public void a(arp $$0, azu $$1, jh $$2, dvv $$3) {
-      jh $$4 = $$2.a(this.a);
-      int $$5 = Math.min($$3.c(e) + 1, 25);
-      int $$6 = this.a($$1);
+   protected int a(dxn $$0, dgf $$1, jh $$2, jm $$3) {
+      return $$0.c(b);
+   }
 
-      for (int $$7 = 0; $$7 < $$6 && this.h($$0.a_($$4)); $$7++) {
-         $$0.b($$4, $$3.b(e, Integer.valueOf($$5)));
-         $$4 = $$4.a(this.a);
-         $$5 = Math.min($$5 + 1, 25);
+   private static void e(dxn $$0, dha $$1, jh $$2) {
+      int $$3 = $$1.a(dhj.a, $$2) - $$1.E_();
+      float $$4 = $$1.a(1.0F);
+      boolean $$5 = $$0.c(c);
+      if ($$5) {
+         $$3 = 15 - $$3;
+      } else if ($$3 > 0) {
+         float $$6 = $$4 < (float) Math.PI ? 0.0F : (float) (Math.PI * 2);
+         $$4 += ($$6 - $$4) * 0.2F;
+         $$3 = Math.round((float)$$3 * bae.b($$4));
+      }
+
+      $$3 = bae.a($$3, 0, 15);
+      if ($$0.c(b) != $$3) {
+         $$1.a($$2, $$0.b(b, Integer.valueOf($$3)), 3);
       }
    }
 
-   protected abstract int a(azu var1);
+   @Override
+   protected bte a(dxn $$0, dha $$1, jh $$2, cps $$3, fbo $$4) {
+      if (!$$3.gt()) {
+         return super.a($$0, $$1, $$2, $$3, $$4);
+      } else {
+         if (!$$1.C) {
+            dxn $$5 = $$0.a(c);
+            $$1.a($$2, $$5, 2);
+            $$1.a(ecj.c, $$2, ecj.a.a($$3, $$5));
+            e($$5, $$1, $$2);
+         }
 
-   protected abstract boolean h(dvv var1);
+         return bte.a;
+      }
+   }
 
    @Override
-   protected dme c() {
-      return this;
+   protected dqn a_(dxn $$0) {
+      return dqn.c;
+   }
+
+   @Override
+   protected boolean f_(dxn $$0) {
+      return true;
+   }
+
+   @Override
+   public dup a(jh $$0, dxn $$1) {
+      return new dvf($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dup> duq<T> a(dha $$0, dxn $$1, dur<T> $$2) {
+      return !$$0.C && $$0.G_().g() ? a($$2, dur.r, dme::a) : null;
+   }
+
+   private static void a(dha $$0, jh $$1, dxn $$2, dvf $$3) {
+      if ($$0.ac() % 20L == 0L) {
+         e($$2, $$0, $$1);
+      }
+   }
+
+   @Override
+   protected void a(dxo.a<dke, dxn> $$0) {
+      $$0.a(b, c);
    }
 }

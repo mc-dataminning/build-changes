@@ -1,23 +1,18 @@
-public class cvl extends cwi implements cxh {
-   public cvl(cwi.a $$0) {
+import javax.annotation.Nullable;
+
+public class cvl extends cxg implements cyf {
+   public cvl(cxg.a $$0) {
       super($$0);
    }
 
-   @Override
-   public bsk a(dfm $$0, cou $$1, bsj $$2) {
-      cwm $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awn.hO, awo.h, 0.5F, 0.4F / ($$0.G_().i() * 0.4F + 0.8F));
-      if ($$0 instanceof arp $$4) {
-         cpn.a(cpw::new, $$4, $$3, $$1, 0.0F, 1.5F, 1.0F);
-      }
-
-      $$1.b(awx.c.b(this));
-      $$3.a(1, $$1);
-      return bsk.a;
+   public cpz a(dha $$0, cxk $$1, bwb $$2, @Nullable cxk $$3) {
+      return new cqb($$0, $$2, $$1.c(1), $$3);
    }
 
    @Override
-   public cpn a(dfm $$0, ka $$1, cwm $$2, jm $$3) {
-      return new cpw($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
+   public cql a(dha $$0, ka $$1, cxk $$2, jm $$3) {
+      cqb $$4 = new cqb($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1), null);
+      $$4.c = cpz.a.b;
+      return $$4;
    }
 }

@@ -8,16 +8,16 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 public interface ik<T> {
-   alj a();
+   alz a();
 
-   im<T> a(@Nullable ul var1, CommandDispatcher<T> var2) throws ez;
+   im<T> a(@Nullable ux var1, CommandDispatcher<T> var2) throws ez;
 
    private static boolean b(CharSequence $$0) {
       int $$1 = $$0.length();
       return $$1 > 0 && $$0.charAt($$1 - 1) == '\\';
    }
 
-   static <T extends ey<T>> ik<T> a(alj $$0, CommandDispatcher<T> $$1, T $$2, List<String> $$3) {
+   static <T extends ey<T>> ik<T> a(alz $$0, CommandDispatcher<T> $$1, T $$2, List<String> $$3) {
       il<T> $$4 = new il<>();
 
       for (int $$5 = 0; $$5 < $$3.size(); $$5++) {

@@ -1,24 +1,18 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
-
-public class wt extends wd {
-   private static final Logger h = LogUtils.getLogger();
-   private static final xj i = xj.c("disconnect.exceeded_packet_rate");
-   private final int j;
-
-   public wt(int $$0) {
-      super(zr.a);
-      this.j = $$0;
-   }
-
-   @Override
-   protected void c() {
-      super.c();
-      float $$0 = this.o();
-      if ($$0 > (float)this.j) {
-         h.warn("Player exceeded rate-limit (sent {} packets per second)", $$0);
-         this.a(new zz(i), wq.a(() -> this.a(i)));
-         this.m();
-      }
-   }
+public class wt {
+   public static final String a = "decompress";
+   public static final String b = "compress";
+   public static final String c = "decoder";
+   public static final String d = "encoder";
+   public static final String e = "inbound_config";
+   public static final String f = "outbound_config";
+   public static final String g = "splitter";
+   public static final String h = "prepender";
+   public static final String i = "decrypt";
+   public static final String j = "encrypt";
+   public static final String k = "unbundler";
+   public static final String l = "bundler";
+   public static final String m = "packet_handler";
+   public static final String n = "timeout";
+   public static final String o = "legacy_query";
+   public static final String p = "latency";
 }

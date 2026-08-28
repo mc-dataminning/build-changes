@@ -1,15 +1,50 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class caj {
-   public static bxb<bvh> a() {
-      return can.a((Function<can.b<bvh>, ? extends App<can.c<bvh>, caq<bvh>>>)($$0 -> $$0.a((caq<bvh>)(($$0x, $$1, $$2) -> {
-            if (!$$1.eb().c(cql.e) && $$1.fP()) {
-               $$1.fQ();
-               return true;
-            } else {
-               return false;
-            }
-         }))));
+   private static final int a = 200;
+
+   public static <E extends bwd> bxv<E> a(caj.b<E> $$0) {
+      return a(($$0x, $$1) -> false, $$0, true);
+   }
+
+   public static <E extends bwd> bxv<E> a(caj.a $$0) {
+      return a($$0, ($$0x, $$1, $$2) -> {
+      }, true);
+   }
+
+   public static <E extends bwd> bxv<E> a() {
+      return a(($$0, $$1) -> false, ($$0, $$1, $$2) -> {
+      }, true);
+   }
+
+   public static <E extends bwd> bxv<E> a(caj.a $$0, caj.b<E> $$1, boolean $$2) {
+      return cbh.a(
+         (Function<cbh.b<E>, ? extends App<cbh.c<E>, cbk<E>>>)($$3 -> $$3.group($$3.b(cff.o), $$3.a(cff.E)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                  bwb $$9 = $$3.b($$4);
+                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bL() && $$9.dV() == $$7.dV() && !$$0.test($$6, $$9)) {
+                     return true;
+                  } else {
+                     $$1.accept($$6, (E)$$7, $$9);
+                     $$4.b();
+                     return true;
+                  }
+               }))
+      );
+   }
+
+   private static boolean a(bwb $$0, Optional<Long> $$1) {
+      return $$1.isPresent() && $$0.dV().ac() - $$1.get() > 200L;
+   }
+
+   @FunctionalInterface
+   public interface a {
+      boolean test(ash var1, bwb var2);
+   }
+
+   @FunctionalInterface
+   public interface b<E> {
+      void accept(ash var1, E var2, bwb var3);
    }
 }

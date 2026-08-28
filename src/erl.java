@@ -1,65 +1,46 @@
-import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class erl {
-   private final int a;
-   private final LongLinkedOpenHashSet[] b;
-   private int c;
+public class erl extends esb {
+   private static final Logger c = LogUtils.getLogger();
+   public static final MapCodec<erl> a = MapCodec.unit(() -> erl.b);
+   public static final erl b = new erl();
 
-   public erl(int $$0, final int $$1) {
-      this.a = $$0;
-      this.b = new LongLinkedOpenHashSet[$$0];
+   private erl() {
+   }
 
-      for (int $$2 = 0; $$2 < $$0; $$2++) {
-         this.b[$$2] = new LongLinkedOpenHashSet($$1, 0.5F) {
-            protected void rehash(int $$0) {
-               if ($$0 > $$1) {
-                  super.rehash($$0);
-               }
+   @Nullable
+   @Override
+   public ese.d a(dhd $$0, jh $$1, jh $$2, ese.d $$3, ese.d $$4, esa $$5) {
+      dxn $$6 = $$4.b();
+      if ($$6.a(dkg.pw)) {
+         if ($$4.c() == null) {
+            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
+            return $$4;
+         } else {
+            String $$7 = $$4.c().l("final_state");
+
+            dxn $$9;
+            try {
+               gq.a $$8 = gq.a($$0.a(mb.f), $$7, true);
+               $$9 = $$8.a();
+            } catch (CommandSyntaxException var11) {
+               c.error("Failed to parse jigsaw replacement state '{}' at {}: {}", new Object[]{$$7, $$1, var11.getMessage()});
+               return null;
             }
-         };
-      }
 
-      this.c = $$0;
-   }
-
-   public long a() {
-      LongLinkedOpenHashSet $$0 = this.b[this.c];
-      long $$1 = $$0.removeFirstLong();
-      if ($$0.isEmpty()) {
-         this.a(this.a);
-      }
-
-      return $$1;
-   }
-
-   public boolean b() {
-      return this.c >= this.a;
-   }
-
-   public void a(long $$0, int $$1, int $$2) {
-      LongLinkedOpenHashSet $$3 = this.b[$$1];
-      $$3.remove($$0);
-      if ($$3.isEmpty() && this.c == $$1) {
-         this.a($$2);
-      }
-   }
-
-   public void a(long $$0, int $$1) {
-      this.b[$$1].add($$0);
-      if (this.c > $$1) {
-         this.c = $$1;
-      }
-   }
-
-   private void a(int $$0) {
-      int $$1 = this.c;
-      this.c = $$0;
-
-      for (int $$2 = $$1 + 1; $$2 < $$0; $$2++) {
-         if (!this.b[$$2].isEmpty()) {
-            this.c = $$2;
-            break;
+            return $$9.a(dkg.li) ? null : new ese.d($$4.a(), $$9, null);
          }
+      } else {
+         return $$4;
       }
+   }
+
+   @Override
+   protected esd<?> a() {
+      return esd.h;
    }
 }

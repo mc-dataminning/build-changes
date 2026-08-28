@@ -1,19 +1,35 @@
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 
-public enum btf implements bai {
-   a("default"),
-   b("fall_variants"),
-   c("intentional_game_design");
+public record btf(cu d) {
+   public static final btf a = new btf(cu.a.a().b());
+   public static final Codec<btf> b = cu.a.xmap(btf::new, btf::a);
+   public static final String c = "lock";
 
-   public static final Codec<btf> d = bai.a(btf::values);
-   private final String e;
-
-   private btf(final String $$0) {
-      this.e = $$0;
+   public boolean a(cxk $$0) {
+      return this.d.a($$0);
    }
 
-   @Override
-   public String c() {
-      return this.e;
+   public void a(ux $$0, js.a $$1) {
+      if (this != a) {
+         DataResult<vu> $$2 = b.encode(this, $$1.a(vl.a), new ux());
+         $$2.result().ifPresent($$1x -> $$0.a("lock", $$1x));
+      }
+   }
+
+   public static btf b(ux $$0, js.a $$1) {
+      if ($$0.b("lock", 10)) {
+         DataResult<Pair<btf, vu>> $$2 = b.decode($$1.a(vl.a), $$0.c("lock"));
+         if ($$2.isSuccess()) {
+            return (btf)((Pair)$$2.getOrThrow()).getFirst();
+         }
+      }
+
+      return a;
+   }
+
+   public cu a() {
+      return this.d;
    }
 }

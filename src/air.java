@@ -1,53 +1,67 @@
-public class air implements zq<agw> {
-   public static final zh<wg, air> a = zq.a(air::a, air::new);
-   private static final int b = 384;
-   private final jh c;
-   private final String[] d;
-   private final boolean e;
+public class air implements aac<ahm> {
+   public static final zt<ws, air> a = aac.a(air::a, air::new);
+   private final jh b;
+   private final jm c;
+   private final air.a d;
+   private final int e;
 
-   public air(jh $$0, boolean $$1, String $$2, String $$3, String $$4, String $$5) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = new String[]{$$2, $$3, $$4, $$5};
+   public air(air.a $$0, jh $$1, jm $$2, int $$3) {
+      this.d = $$0;
+      this.b = $$1.j();
+      this.c = $$2;
+      this.e = $$3;
    }
 
-   private air(wg $$0) {
-      this.c = $$0.e();
-      this.e = $$0.readBoolean();
-      this.d = new String[4];
-
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         this.d[$$1] = $$0.d(384);
-      }
+   public air(air.a $$0, jh $$1, jm $$2) {
+      this($$0, $$1, $$2, 0);
    }
 
-   private void a(wg $$0) {
-      $$0.a(this.c);
-      $$0.a(this.e);
+   private air(ws $$0) {
+      this.d = $$0.b(air.a.class);
+      this.b = $$0.e();
+      this.c = jm.a($$0.readUnsignedByte());
+      this.e = $$0.l();
+   }
 
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         $$0.a(this.d[$$1]);
-      }
+   private void a(ws $$0) {
+      $$0.a(this.d);
+      $$0.a(this.b);
+      $$0.l(this.c.d());
+      $$0.c(this.e);
    }
 
    @Override
-   public zs<air> a() {
-      return agu.cc;
+   public aae<air> a() {
+      return ahk.bR;
    }
 
-   public void a(agw $$0) {
+   public void a(ahm $$0) {
       $$0.a(this);
    }
 
    public jh b() {
+      return this.b;
+   }
+
+   public jm e() {
       return this.c;
    }
 
-   public boolean e() {
+   public air.a f() {
+      return this.d;
+   }
+
+   public int g() {
       return this.e;
    }
 
-   public String[] f() {
-      return this.d;
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g;
    }
 }

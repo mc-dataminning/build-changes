@@ -1,27 +1,15 @@
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
-
-public class fgj extends fgv {
-   private static final Logger d = LogUtils.getLogger();
-   public String a;
-   public String b;
-   public String c;
-
-   public static fgj a(String $$0) {
-      JsonParser $$1 = new JsonParser();
-      fgj $$2 = new fgj();
-
-      try {
-         JsonObject $$3 = $$1.parse($$0).getAsJsonObject();
-         $$2.a = fir.b("address", $$3, null);
-         $$2.b = fir.b("resourcePackUrl", $$3, null);
-         $$2.c = fir.b("resourcePackHash", $$3, null);
-      } catch (Exception var4) {
-         d.error("Could not parse RealmsServerAddress: {}", var4.getMessage());
-      }
-
-      return $$2;
-   }
+public class fgj {
+   public static final fgq a = fgq.a().a("Position", fgr.b).a();
+   public static final fgq b = fgq.a().a("Position", fgr.b).a("Color", fgr.c).a("UV0", fgr.d).a("UV2", fgr.g).a("Normal", fgr.h).a(1).a();
+   public static final fgq c = fgq.a().a("Position", fgr.b).a("Color", fgr.c).a("UV0", fgr.d).a("UV1", fgr.f).a("UV2", fgr.g).a("Normal", fgr.h).a(1).a();
+   public static final fgq d = fgq.a().a("Position", fgr.b).a("UV0", fgr.d).a("Color", fgr.c).a("UV2", fgr.g).a();
+   public static final fgq e = fgq.a().a("Position", fgr.b).a();
+   public static final fgq f = fgq.a().a("Position", fgr.b).a("Color", fgr.c).a();
+   public static final fgq g = fgq.a().a("Position", fgr.b).a("Color", fgr.c).a("Normal", fgr.h).a(1).a();
+   public static final fgq h = fgq.a().a("Position", fgr.b).a("Color", fgr.c).a("UV2", fgr.g).a();
+   public static final fgq i = fgq.a().a("Position", fgr.b).a("UV0", fgr.d).a();
+   public static final fgq j = fgq.a().a("Position", fgr.b).a("UV0", fgr.d).a("Color", fgr.c).a();
+   public static final fgq k = fgq.a().a("Position", fgr.b).a("Color", fgr.c).a("UV0", fgr.d).a("UV2", fgr.g).a();
+   public static final fgq l = fgq.a().a("Position", fgr.b).a("UV0", fgr.d).a("UV2", fgr.g).a("Color", fgr.c).a();
+   public static final fgq m = fgq.a().a("Position", fgr.b).a("UV0", fgr.d).a("Color", fgr.c).a("Normal", fgr.h).a(1).a();
 }

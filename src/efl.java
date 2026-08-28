@@ -1,154 +1,171 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-@Deprecated
-public class efl extends eew<efl.a> {
-   private static final dvv a = dis.nc.m();
-
-   public efl(Codec<efl.a> $$0) {
+public class efl extends efo<efk> {
+   public efl(Codec<efk> $$0) {
       super($$0);
    }
 
-   @Override
-   public boolean a(eey<efl.a> $$0) {
-      jh $$1 = $$0.e();
-      dgk $$2 = $$0.b();
-      azu $$3 = $$0.d();
-      efl.a $$4 = $$0.f();
-      if ($$1.v() <= $$2.K_() + 4) {
-         return false;
-      } else {
-         $$1 = $$1.c(4);
-         boolean[] $$5 = new boolean[2048];
-         int $$6 = $$3.a(4) + 4;
+   public boolean a(efk $$0, bam $$1) {
+      return $$1.i() <= $$0.l;
+   }
 
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            double $$8 = $$3.j() * 6.0 + 3.0;
-            double $$9 = $$3.j() * 4.0 + 2.0;
-            double $$10 = $$3.j() * 6.0 + 3.0;
-            double $$11 = $$3.j() * (16.0 - $$8 - 2.0) + 1.0 + $$8 / 2.0;
-            double $$12 = $$3.j() * (8.0 - $$9 - 4.0) + 2.0 + $$9 / 2.0;
-            double $$13 = $$3.j() * (16.0 - $$10 - 2.0) + 1.0 + $$10 / 2.0;
+   public boolean a(efj $$0, efk $$1, dzi $$2, Function<jh, jq<dic>> $$3, bam $$4, ecu $$5, dgg $$6, dzh $$7) {
+      int $$8 = kj.c(this.d() * 2 - 1);
+      int $$9 = $$4.a($$4.a($$4.a(this.a()) + 1) + 1);
 
-            for (int $$14 = 1; $$14 < 15; $$14++) {
-               for (int $$15 = 1; $$15 < 15; $$15++) {
-                  for (int $$16 = 1; $$16 < 7; $$16++) {
-                     double $$17 = ((double)$$14 - $$11) / ($$8 / 2.0);
-                     double $$18 = ((double)$$16 - $$12) / ($$9 / 2.0);
-                     double $$19 = ((double)$$15 - $$13) / ($$10 / 2.0);
-                     double $$20 = $$17 * $$17 + $$18 * $$18 + $$19 * $$19;
-                     if ($$20 < 1.0) {
-                        $$5[($$14 * 16 + $$15) * 8 + $$16] = true;
-                     }
-                  }
-               }
-            }
+      for (int $$10 = 0; $$10 < $$9; $$10++) {
+         double $$11 = (double)$$6.a($$4.a(16));
+         double $$12 = (double)$$1.e.a($$4, $$0);
+         double $$13 = (double)$$6.b($$4.a(16));
+         double $$14 = (double)$$1.b.a($$4);
+         double $$15 = (double)$$1.c.a($$4);
+         double $$16 = (double)$$1.j.a($$4);
+         efo.a $$17 = ($$1x, $$2x, $$3x, $$4x, $$5x) -> a($$2x, $$3x, $$4x, $$16);
+         int $$18 = 1;
+         if ($$4.a(4) == 0) {
+            double $$19 = (double)$$1.f.a($$4);
+            float $$20 = 1.0F + $$4.i() * 6.0F;
+            this.a($$0, $$1, $$2, $$3, $$5, $$11, $$12, $$13, $$20, $$19, $$7, $$17);
+            $$18 += $$4.a(4);
          }
 
-         dvv $$21 = $$4.a().a($$3, $$1);
+         for (int $$21 = 0; $$21 < $$18; $$21++) {
+            float $$22 = $$4.i() * (float) (Math.PI * 2);
+            float $$23 = ($$4.i() - 0.5F) / 4.0F;
+            float $$24 = this.a($$4);
+            int $$25 = $$8 - $$4.a($$8 / 4);
+            int $$26 = 0;
+            this.a($$0, $$1, $$2, $$3, $$4.g(), $$5, $$11, $$12, $$13, $$14, $$15, $$24, $$22, $$23, 0, $$25, this.b(), $$7, $$17);
+         }
+      }
 
-         for (int $$22 = 0; $$22 < 16; $$22++) {
-            for (int $$23 = 0; $$23 < 16; $$23++) {
-               for (int $$24 = 0; $$24 < 8; $$24++) {
-                  boolean $$25 = !$$5[($$22 * 16 + $$23) * 8 + $$24]
-                     && (
-                        $$22 < 15 && $$5[(($$22 + 1) * 16 + $$23) * 8 + $$24]
-                           || $$22 > 0 && $$5[(($$22 - 1) * 16 + $$23) * 8 + $$24]
-                           || $$23 < 15 && $$5[($$22 * 16 + $$23 + 1) * 8 + $$24]
-                           || $$23 > 0 && $$5[($$22 * 16 + ($$23 - 1)) * 8 + $$24]
-                           || $$24 < 7 && $$5[($$22 * 16 + $$23) * 8 + $$24 + 1]
-                           || $$24 > 0 && $$5[($$22 * 16 + $$23) * 8 + ($$24 - 1)]
-                     );
-                  if ($$25) {
-                     dvv $$26 = $$2.a_($$1.b($$22, $$24, $$23));
-                     if ($$24 >= 4 && $$26.n()) {
-                        return false;
-                     }
+      return true;
+   }
 
-                     if ($$24 < 4 && !$$26.e() && $$2.a_($$1.b($$22, $$24, $$23)) != $$21) {
-                        return false;
-                     }
-                  }
-               }
-            }
+   protected int a() {
+      return 15;
+   }
+
+   protected float a(bam $$0) {
+      float $$1 = $$0.i() * 2.0F + $$0.i();
+      if ($$0.a(10) == 0) {
+         $$1 *= $$0.i() * $$0.i() * 3.0F + 1.0F;
+      }
+
+      return $$1;
+   }
+
+   protected double b() {
+      return 1.0;
+   }
+
+   protected void a(
+      efj $$0, efk $$1, dzi $$2, Function<jh, jq<dic>> $$3, ecu $$4, double $$5, double $$6, double $$7, float $$8, double $$9, dzh $$10, efo.a $$11
+   ) {
+      double $$12 = 1.5 + (double)(bae.a((float) (Math.PI / 2)) * $$8);
+      double $$13 = $$12 * $$9;
+      this.a($$0, $$1, $$2, $$3, $$4, $$5 + 1.0, $$6, $$7, $$12, $$13, $$10, $$11);
+   }
+
+   protected void a(
+      efj $$0,
+      efk $$1,
+      dzi $$2,
+      Function<jh, jq<dic>> $$3,
+      long $$4,
+      ecu $$5,
+      double $$6,
+      double $$7,
+      double $$8,
+      double $$9,
+      double $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      int $$14,
+      int $$15,
+      double $$16,
+      dzh $$17,
+      efo.a $$18
+   ) {
+      bam $$19 = bam.a($$4);
+      int $$20 = $$19.a($$15 / 2) + $$15 / 4;
+      boolean $$21 = $$19.a(6) == 0;
+      float $$22 = 0.0F;
+      float $$23 = 0.0F;
+
+      for (int $$24 = $$14; $$24 < $$15; $$24++) {
+         double $$25 = 1.5 + (double)(bae.a((float) Math.PI * (float)$$24 / (float)$$15) * $$11);
+         double $$26 = $$25 * $$16;
+         float $$27 = bae.b($$13);
+         $$6 += (double)(bae.b($$12) * $$27);
+         $$7 += (double)bae.a($$13);
+         $$8 += (double)(bae.a($$12) * $$27);
+         $$13 *= $$21 ? 0.92F : 0.7F;
+         $$13 += $$23 * 0.1F;
+         $$12 += $$22 * 0.1F;
+         $$23 *= 0.9F;
+         $$22 *= 0.75F;
+         $$23 += ($$19.i() - $$19.i()) * $$19.i() * 2.0F;
+         $$22 += ($$19.i() - $$19.i()) * $$19.i() * 4.0F;
+         if ($$24 == $$20 && $$11 > 1.0F) {
+            this.a(
+               $$0,
+               $$1,
+               $$2,
+               $$3,
+               $$19.g(),
+               $$5,
+               $$6,
+               $$7,
+               $$8,
+               $$9,
+               $$10,
+               $$19.i() * 0.5F + 0.5F,
+               $$12 - (float) (Math.PI / 2),
+               $$13 / 3.0F,
+               $$24,
+               $$15,
+               1.0,
+               $$17,
+               $$18
+            );
+            this.a(
+               $$0,
+               $$1,
+               $$2,
+               $$3,
+               $$19.g(),
+               $$5,
+               $$6,
+               $$7,
+               $$8,
+               $$9,
+               $$10,
+               $$19.i() * 0.5F + 0.5F,
+               $$12 + (float) (Math.PI / 2),
+               $$13 / 3.0F,
+               $$24,
+               $$15,
+               1.0,
+               $$17,
+               $$18
+            );
+            return;
          }
 
-         for (int $$27 = 0; $$27 < 16; $$27++) {
-            for (int $$28 = 0; $$28 < 16; $$28++) {
-               for (int $$29 = 0; $$29 < 8; $$29++) {
-                  if ($$5[($$27 * 16 + $$28) * 8 + $$29]) {
-                     jh $$30 = $$1.b($$27, $$29, $$28);
-                     if (this.c($$2.a_($$30))) {
-                        boolean $$31 = $$29 >= 4;
-                        $$2.a($$30, $$31 ? a : $$21, 2);
-                        if ($$31) {
-                           $$2.a($$30, a.b(), 0);
-                           this.a($$2, $$30);
-                        }
-                     }
-                  }
-               }
+         if ($$19.a(4) != 0) {
+            if (!a($$2.f(), $$6, $$8, $$24, $$15, $$11)) {
+               return;
             }
-         }
 
-         dvv $$32 = $$4.b().a($$3, $$1);
-         if (!$$32.l()) {
-            for (int $$33 = 0; $$33 < 16; $$33++) {
-               for (int $$34 = 0; $$34 < 16; $$34++) {
-                  for (int $$35 = 0; $$35 < 8; $$35++) {
-                     boolean $$36 = !$$5[($$33 * 16 + $$34) * 8 + $$35]
-                        && (
-                           $$33 < 15 && $$5[(($$33 + 1) * 16 + $$34) * 8 + $$35]
-                              || $$33 > 0 && $$5[(($$33 - 1) * 16 + $$34) * 8 + $$35]
-                              || $$34 < 15 && $$5[($$33 * 16 + $$34 + 1) * 8 + $$35]
-                              || $$34 > 0 && $$5[($$33 * 16 + ($$34 - 1)) * 8 + $$35]
-                              || $$35 < 7 && $$5[($$33 * 16 + $$34) * 8 + $$35 + 1]
-                              || $$35 > 0 && $$5[($$33 * 16 + $$34) * 8 + ($$35 - 1)]
-                        );
-                     if ($$36 && ($$35 < 4 || $$3.a(2) != 0)) {
-                        dvv $$37 = $$2.a_($$1.b($$33, $$35, $$34));
-                        if ($$37.e() && !$$37.a(axc.bQ)) {
-                           jh $$38 = $$1.b($$33, $$35, $$34);
-                           $$2.a($$38, $$32, 2);
-                           this.a($$2, $$38);
-                        }
-                     }
-                  }
-               }
-            }
+            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$8, $$25 * $$9, $$26 * $$10, $$17, $$18);
          }
-
-         if ($$21.y().a(axi.a)) {
-            for (int $$39 = 0; $$39 < 16; $$39++) {
-               for (int $$40 = 0; $$40 < 16; $$40++) {
-                  int $$41 = 4;
-                  jh $$42 = $$1.b($$39, 4, $$40);
-                  if ($$2.t($$42).a().a($$2, $$42, false) && this.c($$2.a_($$42))) {
-                     $$2.a($$42, dis.dO.m(), 2);
-                  }
-               }
-            }
-         }
-
-         return true;
       }
    }
 
-   private boolean c(dvv $$0) {
-      return !$$0.a(axc.bP);
-   }
-
-   public static record a(ejb b, ejb c) implements eha {
-      public static final Codec<efl.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(ejb.a.fieldOf("fluid").forGetter(efl.a::a), ejb.a.fieldOf("barrier").forGetter(efl.a::b)).apply($$0, efl.a::new)
-      );
-
-      public ejb a() {
-         return this.b;
-      }
-
-      public ejb b() {
-         return this.c;
-      }
+   private static boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return $$1 <= $$3 ? true : $$0 * $$0 + $$1 * $$1 + $$2 * $$2 >= 1.0;
    }
 }

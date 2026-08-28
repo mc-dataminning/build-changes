@@ -1,4 +1,3 @@
-public class gxj extends gwe {
-   public boolean b;
-   public boolean c;
+public class gxj extends gym {
+   public boolean a;
 }

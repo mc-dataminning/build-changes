@@ -1,46 +1,48 @@
-public final class far extends fah {
-   private final fah d;
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final int j;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 
-   protected far(fah $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      super($$4 - $$1, $$5 - $$2, $$6 - $$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
+public record far(alz b, fo.g c) implements fao {
+   public static final MapCodec<far> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alz.a.fieldOf("storage").forGetter(far::c), fo.g.a.fieldOf("path").forGetter(far::d)).apply($$0, far::new)
+   );
+
+   @Override
+   public fan b() {
+      return fap.f;
+   }
+
+   private Optional<vn> c(ewh $$0) {
+      ux $$1 = $$0.d().p().aK().a(this.b);
+
+      try {
+         List<vu> $$2 = this.c.a($$1);
+         if ($$2.size() == 1 && $$2.get(0) instanceof vn $$3) {
+            return Optional.of($$3);
+         }
+      } catch (CommandSyntaxException var6) {
+      }
+
+      return Optional.empty();
    }
 
    @Override
-   public boolean b(int $$0, int $$1, int $$2) {
-      return this.d.b(this.e + $$0, this.f + $$1, this.g + $$2);
+   public float b(ewh $$0) {
+      return this.c($$0).map(vn::k).orElse(0.0F);
    }
 
    @Override
-   public void c(int $$0, int $$1, int $$2) {
-      this.d.c(this.e + $$0, this.f + $$1, this.g + $$2);
+   public int a(ewh $$0) {
+      return this.c($$0).map(vn::g).orElse(0);
    }
 
-   @Override
-   public int a(jm.a $$0) {
-      return this.a($$0, this.d.a($$0));
+   public alz c() {
+      return this.b;
    }
 
-   @Override
-   public int b(jm.a $$0) {
-      return this.a($$0, this.d.b($$0));
-   }
-
-   private int a(jm.a $$0, int $$1) {
-      int $$2 = $$0.a(this.e, this.f, this.g);
-      int $$3 = $$0.a(this.h, this.i, this.j);
-      return azm.a($$1, $$2, $$3) - $$2;
+   public fo.g d() {
+      return this.c;
    }
 }

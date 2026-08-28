@@ -1,35 +1,13 @@
 import javax.annotation.Nullable;
 
-public abstract class cgv extends bvp {
-   protected cgv(bus<? extends cgv> $$0, dfm $$1) {
-      super($$0, $$1);
-   }
-
+public class cgv {
    @Nullable
-   @Override
-   protected awm t() {
-      return null;
-   }
-
-   @Nullable
-   @Override
-   protected awm e(btb $$0) {
-      return null;
-   }
-
-   @Nullable
-   @Override
-   protected awm n_() {
-      return null;
-   }
-
-   @Override
-   public int Q() {
-      return 120;
-   }
-
-   @Override
-   public boolean h(double $$0) {
-      return false;
+   public static fbs a(bwj $$0, int $$1, int $$2, int $$3, fbs $$4, double $$5) {
+      fbs $$6 = $$4.a($$0.dA(), $$0.dC(), $$0.dG());
+      boolean $$7 = cgx.a($$0, $$1);
+      return cha.a($$0, () -> {
+         jh $$7x = cgu.a($$0, $$1, $$2, $$3, $$6.d, $$6.f, $$5, $$7);
+         return $$7x != null && !cgx.a($$0, $$7x) ? $$7x : null;
+      });
    }
 }

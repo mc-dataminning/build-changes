@@ -1,63 +1,24 @@
-import java.util.Arrays;
-import java.util.function.IntConsumer;
-import org.apache.commons.lang3.Validate;
+import java.util.Objects;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class bau implements ayb {
-   public static final long[] a = new long[0];
-   private final int b;
+public class bau<K, V> {
+   private final Function<K, V> a;
+   @Nullable
+   private K b = (K)null;
+   @Nullable
+   private V c;
 
-   public bau(int $$0) {
-      this.b = $$0;
+   public bau(Function<K, V> $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public int a(int $$0, int $$1) {
-      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
-      Validate.inclusiveBetween(0L, 0L, (long)$$1);
-      return 0;
-   }
-
-   @Override
-   public void b(int $$0, int $$1) {
-      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
-      Validate.inclusiveBetween(0L, 0L, (long)$$1);
-   }
-
-   @Override
-   public int a(int $$0) {
-      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
-      return 0;
-   }
-
-   @Override
-   public long[] a() {
-      return a;
-   }
-
-   @Override
-   public int b() {
-      return this.b;
-   }
-
-   @Override
-   public int c() {
-      return 0;
-   }
-
-   @Override
-   public void a(IntConsumer $$0) {
-      for (int $$1 = 0; $$1 < this.b; $$1++) {
-         $$0.accept(0);
+   public V a(K $$0) {
+      if (this.c == null || !Objects.equals(this.b, $$0)) {
+         this.c = this.a.apply($$0);
+         this.b = $$0;
       }
-   }
 
-   @Override
-   public void a(int[] $$0) {
-      Arrays.fill($$0, 0, this.b, 0);
-   }
-
-   @Override
-   public ayb d() {
-      return this;
+      return this.c;
    }
 }

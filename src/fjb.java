@@ -1,70 +1,40 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class fjb {
+   private final fko a;
+   private boolean b;
+   private String c;
 
-public class fjb extends fjd {
-   private static final Logger b = LogUtils.getLogger();
-   private static final xj c = xj.c("mco.download.preparing");
-   private final long d;
-   private final int e;
-   private final frw f;
-   private final String g;
-
-   public fjb(long $$0, int $$1, String $$2, frw $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$3;
-      this.g = $$2;
+   public fjb(fko $$0) {
+      this.a = $$0;
+      fko.a $$1 = $$0.a();
+      this.b = $$1.b;
+      this.c = $$1.a;
    }
 
-   @Override
-   public void run() {
-      ffh $$0 = ffh.a();
-      int $$1 = 0;
+   public boolean a() {
+      return this.b;
+   }
 
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
+   public String b() {
+      return this.c;
+   }
 
-            fgw $$2 = $$0.b(this.d, this.e);
-            a(1L);
-            if (this.d()) {
-               return;
-            }
+   public void a(fia $$0) {
+      fko.a $$1 = this.b($$0);
+      this.b = $$1.b;
+      this.c = $$1.a;
+   }
 
-            a(new fht(this.f, $$2, this.g, $$0x -> {
-            }));
-            return;
-         } catch (fhd var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (fhc var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var5);
-            a(new fhu(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var6);
-            this.a(var6);
-            return;
-         }
+   private fko.a b(fia $$0) {
+      fko.a $$1 = new fko.a();
+      $$1.a = $$0.a;
+      fko.a $$2 = this.a.a();
+      boolean $$3 = $$1.a == null || $$1.a.equals($$2.a);
+      if ($$3) {
+         return $$2;
+      } else {
+         $$1.b = true;
+         this.a.a($$1);
+         return $$1;
       }
-   }
-
-   @Override
-   public xj a() {
-      return c;
    }
 }

@@ -1,33 +1,81 @@
-import com.mojang.datafixers.kinds.App;
+import com.google.common.collect.ImmutableMap;
+import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
+import java.util.Set;
 
-public class cae {
-   private static final int a = 10;
-   private static final int b = 7;
+public class cae extends bxu<bwb> {
+   public static final int c = 100;
+   private long d;
 
-   public static byl<bvp> a(float $$0) {
-      return a($$0, 10, 7);
+   public cae() {
+      super(ImmutableMap.of(cff.b, cfg.a, cff.I, cfg.c));
    }
 
-   public static byl<bvp> a(float $$0, int $$1, int $$2) {
-      return can.a((Function<can.b<bvp>, ? extends App<can.c<bvp>, caq<bvp>>>)($$3 -> $$3.group($$3.c(cel.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
-               jh $$7 = $$5.dv();
-               ezy $$8;
-               if ($$4.c($$7)) {
-                  $$8 = cgf.a($$5, $$1, $$2);
-               } else {
-                  kj $$9 = kj.a($$7);
-                  kj $$10 = bxc.a($$4, $$9, 2);
-                  if ($$10 != $$9) {
-                     $$8 = cgc.a($$5, $$1, $$2, ezy.c($$10.k()), (float) (Math.PI / 2));
-                  } else {
-                     $$8 = cgf.a($$5, $$1, $$2);
-                  }
+   @Override
+   protected boolean a(ash $$0, bwb $$1) {
+      if ($$1.bZ()) {
+         return false;
+      } else {
+         bxd<?> $$2 = $$1.eb();
+         jp $$3 = $$2.c(cff.b).get();
+         if ($$0.ah() != $$3.a()) {
+            return false;
+         } else {
+            Optional<Long> $$4 = $$2.c(cff.I);
+            if ($$4.isPresent()) {
+               long $$5 = $$0.ac() - $$4.get();
+               if ($$5 > 0L && $$5 < 100L) {
+                  return false;
                }
+            }
 
-               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new ceo($$1xxxx, $$0, 0)));
-               return true;
-            })));
+            dxn $$6 = $$0.a_($$3.b());
+            return $$3.b().a($$1.dt(), 2.0) && $$6.a(axu.T) && !$$6.c(djx.c);
+         }
+      }
+   }
+
+   @Override
+   protected boolean a(ash $$0, bwb $$1, long $$2) {
+      Optional<jp> $$3 = $$1.eb().c(cff.b);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         jh $$4 = $$3.get().b();
+         return $$1.eb().c(crj.e) && $$1.dC() > (double)$$4.v() + 0.4 && $$4.a($$1.dt(), 1.14);
+      }
+   }
+
+   @Override
+   protected void d(ash $$0, bwb $$1, long $$2) {
+      if ($$2 > this.d) {
+         bxd<?> $$3 = $$1.eb();
+         if ($$3.a(cff.v)) {
+            Set<jp> $$4 = $$3.c(cff.v).get();
+            Optional<List<bwb>> $$5;
+            if ($$3.a(cff.g)) {
+               $$5 = $$3.c(cff.g);
+            } else {
+               $$5 = Optional.empty();
+            }
+
+            bys.a($$0, $$1, null, null, $$4, $$5);
+         }
+
+         $$1.b($$1.eb().c(cff.b).get().b());
+      }
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   @Override
+   protected void b(ash $$0, bwb $$1, long $$2) {
+      if ($$1.fP()) {
+         $$1.fQ();
+         this.d = $$2 + 40L;
+      }
    }
 }

@@ -1,49 +1,21 @@
-public class gff extends gho {
-   private final ghj a;
+import java.util.Map;
 
-   gff(gdh $$0, double $$1, double $$2, double $$3, double $$4, ghj $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$5;
-      this.t = 4;
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 1.0F - (float)$$4 * 0.5F;
-      this.b($$5);
+public class gff implements dca {
+   private final Map<aly<dch>, dch> a;
+   private final dcl.b<dcy> b;
+
+   public gff(Map<aly<dch>, dch> $$0, dcl.b<dcy> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
    @Override
-   public int a(float $$0) {
-      return 15728880;
+   public dch a(aly<dch> $$0) {
+      return this.a.getOrDefault($$0, dch.j);
    }
 
    @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.a);
-      }
-   }
-
-   @Override
-   public ggs b() {
-      return ggs.b;
-   }
-
-   public static class a implements ggr<lw> {
-      private final ghj a;
-
-      public a(ghj $$0) {
-         this.a = $$0;
-      }
-
-      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gff($$1, $$2, $$3, $$4, $$5, this.a);
-      }
+   public dcl.b<dcy> a() {
+      return this.b;
    }
 }

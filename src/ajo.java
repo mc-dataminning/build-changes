@@ -1,27 +1,26 @@
-import java.util.UUID;
+public enum ajo {
+   a,
+   b,
+   c;
 
-public record ajo(String b, UUID c) implements zq<ajm> {
-   public static final zh<wg, ajo> a = zq.a(ajo::a, ajo::new);
+   private static final int d = 1;
+   private static final int e = 2;
+   private static final int f = 3;
 
-   private ajo(wg $$0) {
-      this($$0.d(16), $$0.n());
+   public static ajo a(int $$0) {
+      return switch ($$0) {
+         case 1 -> a;
+         case 2 -> b;
+         case 3 -> c;
+         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
+      };
    }
 
-   private void a(wg $$0) {
-      $$0.a(this.b, 16);
-      $$0.a(this.c);
-   }
-
-   @Override
-   public zs<ajo> a() {
-      return ajk.g;
-   }
-
-   public void a(ajm $$0) {
-      $$0.a(this);
-   }
-
-   public UUID e() {
-      return this.c;
+   public int a() {
+      return switch (this) {
+         case a -> 1;
+         case b -> 2;
+         case c -> 3;
+      };
    }
 }

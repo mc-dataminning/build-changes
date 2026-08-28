@@ -1,15 +1,48 @@
-import java.util.List;
+public interface vr {
+   vr.b a();
 
-public record vr(List<String> a, vk<?> b, String c) {
-   public vr(vk<?> $$0, String $$1) {
-      this(List.of(), $$0, $$1);
+   vr.b a(String var1);
+
+   vr.b a(byte var1);
+
+   vr.b a(short var1);
+
+   vr.b a(int var1);
+
+   vr.b a(long var1);
+
+   vr.b a(float var1);
+
+   vr.b a(double var1);
+
+   vr.b a(byte[] var1);
+
+   vr.b a(int[] var1);
+
+   vr.b a(long[] var1);
+
+   vr.b a(vw<?> var1, int var2);
+
+   vr.a a(vw<?> var1);
+
+   vr.a a(vw<?> var1, String var2);
+
+   vr.a b(vw<?> var1, int var2);
+
+   vr.b b();
+
+   vr.b b(vw<?> var1);
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 
-   public vr(String $$0, vk<?> $$1, String $$2) {
-      this(List.of($$0), $$1, $$2);
-   }
-
-   public vr(String $$0, String $$1, vk<?> $$2, String $$3) {
-      this(List.of($$0, $$1), $$2, $$3);
+   public static enum b {
+      a,
+      b,
+      c;
    }
 }

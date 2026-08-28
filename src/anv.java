@@ -1,48 +1,19 @@
-import com.google.common.collect.Iterables;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.context.ParsedCommandNode;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.CommandNode;
-import java.util.Map;
 
 public class anv {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xj.c("commands.help.failed"));
-
    public static void a(CommandDispatcher<ew> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("help").executes($$1 -> {
-               Map<CommandNode<ew>, String> $$2 = $$0.getSmartUsage($$0.getRoot(), (ew)$$1.getSource());
+      LiteralArgumentBuilder<ew> $$1 = (LiteralArgumentBuilder<ew>)ex.a("debugmobspawning").requires($$0x -> $$0x.c(2));
 
-               for (String $$3 : $$2.values()) {
-                  ((ew)$$1.getSource()).a(() -> xj.b("/" + $$3), false);
-               }
+      for (bwe $$2 : bwe.values()) {
+         $$1.then(ex.a($$2.a()).then(ex.a("at", gs.a()).executes($$1x -> a((ew)$$1x.getSource(), $$2, gs.a($$1x, "at")))));
+      }
 
-               return $$2.size();
-            }))
-            .then(
-               ex.a("command", StringArgumentType.greedyString())
-                  .executes(
-                     $$1 -> {
-                        ParseResults<ew> $$2 = $$0.parse(StringArgumentType.getString($$1, "command"), (ew)$$1.getSource());
-                        if ($$2.getContext().getNodes().isEmpty()) {
-                           throw a.create();
-                        } else {
-                           Map<CommandNode<ew>, String> $$3 = $$0.getSmartUsage(
-                              ((ParsedCommandNode)Iterables.getLast($$2.getContext().getNodes())).getNode(), (ew)$$1.getSource()
-                           );
+      $$0.register($$1);
+   }
 
-                           for (String $$4 : $$3.values()) {
-                              ((ew)$$1.getSource()).a(() -> xj.b("/" + $$2.getReader().getString() + " " + $$4), false);
-                           }
-
-                           return $$3.size();
-                        }
-                     }
-                  )
-            )
-      );
+   private static int a(ew $$0, bwe $$1, jh $$2) {
+      dhl.a($$1, $$0.e(), $$2);
+      return 1;
    }
 }

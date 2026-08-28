@@ -1,30 +1,41 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class ewj extends ewa {
-   public static final MapCodec<ewj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(kr.b.fieldOf("components").forGetter($$0x -> $$0x.b)).apply($$0, ewj::new)
-   );
-   private final kr b;
+public record ewj<T>(aly<kd<T>> d, Codec<T> e, ewj.a<T> f) {
+   public static final ewj<ezs> a = new ewj<>(mb.bh, ezs.e, e());
+   public static final ewj<exv> b = new ewj<>(mb.bg, exx.c, e());
+   public static final ewj<ewm> c = new ewj<>(mb.bf, ewm.d, f());
 
-   private ewj(List<exy> $$0, kr $$1) {
-      super($$0);
-      this.b = $$1;
+   public void a(ewn $$0, aly<T> $$1, T $$2) {
+      this.f.run($$0, $$1, $$2);
    }
 
-   @Override
-   public ewc<ewj> b() {
-      return ewd.k;
+   public static Stream<ewj<?>> a() {
+      return Stream.of(a, b, c);
    }
 
-   @Override
-   public cwm a(cwm $$0, eun $$1) {
-      $$0.a(this.b);
-      return $$0;
+   private static <T extends ewi> ewj.a<T> e() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
    }
 
-   public static <T> ewa.a<?> a(kt<T> $$0, T $$1) {
-      return a($$2 -> new ewj($$2, kr.a().a($$0, $$1).a()));
+   private static ewj.a<ewm> f() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
+   }
+
+   public aly<kd<T>> b() {
+      return this.d;
+   }
+
+   public Codec<T> c() {
+      return this.e;
+   }
+
+   public ewj.a<T> d() {
+      return this.f;
+   }
+
+   @FunctionalInterface
+   public interface a<T> {
+      void run(ewn var1, aly<T> var2, T var3);
    }
 }

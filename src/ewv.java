@@ -1,93 +1,18 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
 
-public class ewv extends ewa {
-   public static final MapCodec<ewv> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  xl.a.sizeLimitedListOf(256).fieldOf("lore").forGetter($$0x -> $$0x.b),
-                  evz.a(256).forGetter($$0x -> $$0x.c),
-                  eun.b.e.optionalFieldOf("entity").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, ewv::new)
-   );
-   private final List<xj> b;
-   private final evz c;
-   private final Optional<eun.b> d;
+public class ewv {
+   public static final Codec<ewx> a = ma.D.q().dispatch(ewx::a, ewy::a);
+   public static final ewy b = a("empty", ews.a);
+   public static final ewy c = a("item", ewu.a);
+   public static final ewy d = a("loot_table", exa.a);
+   public static final ewy e = a("dynamic", ewr.a);
+   public static final ewy f = a("tag", exc.a);
+   public static final ewy g = a("alternatives", ewo.a);
+   public static final ewy h = a("sequence", exb.a);
+   public static final ewy i = a("group", ewt.a);
 
-   public ewv(List<exy> $$0, List<xj> $$1, evz $$2, Optional<eun.b> $$3) {
-      super($$0);
-      this.b = List.copyOf($$1);
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   @Override
-   public ewc<ewv> b() {
-      return ewd.A;
-   }
-
-   @Override
-   public Set<exg<?>> a() {
-      return this.d.<Set<exg<?>>>map($$0 -> Set.of($$0.a())).orElseGet(Set::of);
-   }
-
-   @Override
-   public cwm a(cwm $$0, eun $$1) {
-      $$0.a(ku.j, czf.a, $$1x -> new czf(this.a($$1x, $$1)));
-      return $$0;
-   }
-
-   private List<xj> a(@Nullable czf $$0, eun $$1) {
-      if ($$0 == null && this.b.isEmpty()) {
-         return List.of();
-      } else {
-         UnaryOperator<xj> $$2 = eww.a($$1, this.d.orElse(null));
-         List<xj> $$3 = this.b.stream().map($$2).toList();
-         return this.c.a($$0.a(), $$3, 256);
-      }
-   }
-
-   public static ewv.a c() {
-      return new ewv.a();
-   }
-
-   public static class a extends ewa.a<ewv.a> {
-      private Optional<eun.b> a = Optional.empty();
-      private final Builder<xj> b = ImmutableList.builder();
-      private evz c = evz.a.b;
-
-      public ewv.a a(evz $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public ewv.a a(eun.b $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public ewv.a a(xj $$0) {
-         this.b.add($$0);
-         return this;
-      }
-
-      protected ewv.a a() {
-         return this;
-      }
-
-      @Override
-      public ewb b() {
-         return new ewv(this.g(), this.b.build(), this.c, this.a);
-      }
+   private static ewy a(String $$0, MapCodec<? extends ewx> $$1) {
+      return kd.a(ma.D, alz.b($$0), new ewy($$1));
    }
 }

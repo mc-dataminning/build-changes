@@ -1,8 +1,27 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class gcg extends gdc {
+   private final geh a;
+   private final geh b;
+   private final geh c;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gcg {
+   public gcg(geh $$0) {
+      super($$0);
+      this.a = $$0.b("head");
+      this.b = this.a.b("left_ear");
+      this.c = this.a.b("right_ear");
+   }
+
+   public static gep a() {
+      gep $$0 = new gep();
+      gch.a(gel.a, $$0);
+      return $$0;
+   }
+
+   @Override
+   public void a(float $$0, float $$1, float $$2) {
+      this.a.f = $$1 * (float) (Math.PI / 180.0);
+      this.a.e = $$2 * (float) (Math.PI / 180.0);
+      float $$3 = 1.2F;
+      this.b.g = (float)(-(Math.cos((double)($$0 * (float) Math.PI * 0.2F * 1.2F)) + 2.5)) * 0.2F;
+      this.c.g = (float)(Math.cos((double)($$0 * (float) Math.PI * 0.2F)) + 2.5) * 0.2F;
+   }
 }

@@ -1,165 +1,95 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dop extends dif {
-   public static final MapCodec<dop> d = b(dop::new);
-   public static final dws<dwy> e = dwl.ag;
+public class dop extends dix {
+   public static final MapCodec<dop> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dic.c.d.fieldOf("precipitation").forGetter($$0x -> $$0x.j), kn.b.fieldOf("interactions").forGetter($$0x -> $$0x.c), t())
+            .apply($$0, dop::new)
+   );
+   public static final int e = 1;
+   public static final int f = 3;
+   public static final dym g = dyd.aL;
+   private static final int h = 6;
+   private static final double i = 3.0;
+   private final dic.c j;
 
    @Override
    public MapCodec<dop> a() {
       return d;
    }
 
-   protected dop(dvu.d $$0) {
-      super(false, $$0);
-      this.l(this.F.b().b(e, dwy.a).b(c, Boolean.valueOf(false)));
+   public dop(dic.c $$0, kn.a $$1, dxm.d $$2) {
+      super($$2, $$1);
+      this.j = $$0;
+      this.l(this.F.b().b(g, Integer.valueOf(1)));
    }
 
    @Override
-   protected void a(dvv $$0, dfm $$1, jh $$2, diq $$3) {
-      if ($$3.m().p() && new doq($$1, $$2, $$0).b() == 3) {
-         this.a($$1, $$2, $$0, false);
+   public boolean d(dxn $$0) {
+      return $$0.c(g) == 3;
+   }
+
+   @Override
+   protected boolean a(eto $$0) {
+      return $$0 == etq.c && this.j == dic.c.b;
+   }
+
+   @Override
+   protected double b(dxn $$0) {
+      return (6.0 + (double)$$0.c(g).intValue() * 3.0) / 16.0;
+   }
+
+   @Override
+   protected void a(dxn $$0, dha $$1, jh $$2, bvf $$3) {
+      if ($$1 instanceof ash $$4 && $$3.bY() && this.a($$0, $$2, $$3)) {
+         $$3.aH();
+         if ($$3.c($$4, $$2)) {
+            this.f($$0, $$1, $$2);
+         }
+      }
+   }
+
+   private void f(dxn $$0, dha $$1, jh $$2) {
+      if (this.j == dic.c.c) {
+         e(dkg.fI.m().b(g, $$0.c(g)), $$1, $$2);
+      } else {
+         e($$0, $$1, $$2);
+      }
+   }
+
+   public static void e(dxn $$0, dha $$1, jh $$2) {
+      int $$3 = $$0.c(g) - 1;
+      dxn $$4 = $$3 == 0 ? dkg.fH.m() : $$0.b(g, Integer.valueOf($$3));
+      $$1.b($$2, $$4);
+      $$1.a(ecj.c, $$2, ecj.a.a($$4));
+   }
+
+   @Override
+   public void a(dxn $$0, dha $$1, jh $$2, dic.c $$3) {
+      if (dla.a($$1, $$3) && $$0.c(g) != 3 && $$3 == this.j) {
+         dxn $$4 = $$0.a(g);
+         $$1.b($$2, $$4);
+         $$1.a(ecj.c, $$2, ecj.a.a($$4));
       }
    }
 
    @Override
-   public dwx<dwy> c() {
-      return e;
+   protected int a(dxn $$0, dha $$1, jh $$2) {
+      return $$0.c(g);
    }
 
    @Override
-   protected dvv a(dvv $$0, dpd $$1) {
-      dwy $$2 = $$0.c(e);
-
-      return $$0.b(e, switch ($$1) {
-         case c -> {
-            switch ($$2) {
-               case a:
-                  yield dwy.a;
-               case b:
-                  yield dwy.b;
-               case c:
-                  yield dwy.d;
-               case d:
-                  yield dwy.c;
-               case e:
-                  yield dwy.f;
-               case f:
-                  yield dwy.e;
-               case g:
-                  yield dwy.i;
-               case h:
-                  yield dwy.j;
-               case i:
-                  yield dwy.g;
-               case j:
-                  yield dwy.h;
-               default:
-                  throw new MatchException(null, null);
-            }
-         }
-         case d -> {
-            switch ($$2) {
-               case a:
-                  yield dwy.b;
-               case b:
-                  yield dwy.a;
-               case c:
-                  yield dwy.e;
-               case d:
-                  yield dwy.f;
-               case e:
-                  yield dwy.d;
-               case f:
-                  yield dwy.c;
-               case g:
-                  yield dwy.j;
-               case h:
-                  yield dwy.g;
-               case i:
-                  yield dwy.h;
-               case j:
-                  yield dwy.i;
-               default:
-                  throw new MatchException(null, null);
-            }
-         }
-         case b -> {
-            switch ($$2) {
-               case a:
-                  yield dwy.b;
-               case b:
-                  yield dwy.a;
-               case c:
-                  yield dwy.f;
-               case d:
-                  yield dwy.e;
-               case e:
-                  yield dwy.c;
-               case f:
-                  yield dwy.d;
-               case g:
-                  yield dwy.h;
-               case h:
-                  yield dwy.i;
-               case i:
-                  yield dwy.j;
-               case j:
-                  yield dwy.g;
-               default:
-                  throw new MatchException(null, null);
-            }
-         }
-         default -> $$2;
-      });
+   protected void a(dxo.a<dke, dxn> $$0) {
+      $$0.a(g);
    }
 
    @Override
-   protected dvv a(dvv $$0, dnm $$1) {
-      dwy $$2 = $$0.c(e);
-      switch ($$1) {
-         case b:
-            switch ($$2) {
-               case e:
-                  return $$0.b(e, dwy.f);
-               case f:
-                  return $$0.b(e, dwy.e);
-               case g:
-                  return $$0.b(e, dwy.j);
-               case h:
-                  return $$0.b(e, dwy.i);
-               case i:
-                  return $$0.b(e, dwy.h);
-               case j:
-                  return $$0.b(e, dwy.g);
-               default:
-                  return super.a($$0, $$1);
-            }
-         case c:
-            switch ($$2) {
-               case c:
-                  return $$0.b(e, dwy.d);
-               case d:
-                  return $$0.b(e, dwy.c);
-               case e:
-               case f:
-               default:
-                  break;
-               case g:
-                  return $$0.b(e, dwy.h);
-               case h:
-                  return $$0.b(e, dwy.g);
-               case i:
-                  return $$0.b(e, dwy.j);
-               case j:
-                  return $$0.b(e, dwy.i);
-            }
+   protected void a(dxn $$0, dha $$1, jh $$2, eto $$3) {
+      if (!this.d($$0)) {
+         dxn $$4 = $$0.b(g, Integer.valueOf($$0.c(g) + 1));
+         $$1.b($$2, $$4);
+         $$1.a(ecj.c, $$2, ecj.a.a($$4));
+         $$1.c(1047, $$2, 0);
       }
-
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   protected void a(dvw.a<diq, dvv> $$0) {
-      $$0.a(e, c);
    }
 }

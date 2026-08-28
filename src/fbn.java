@@ -1,265 +1,433 @@
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongMaps;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2LongMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.LongSummaryStatistics;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.LongPredicate;
-import java.util.function.Predicate;
+import java.util.Optional;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class fbn<T> implements fbm<T> {
-   private static final Comparator<fbl<?>> a = ($$0, $$1) -> fbq.b.compare($$0.b(), $$1.b());
-   private final LongPredicate b;
-   private final Long2ObjectMap<fbl<T>> c = new Long2ObjectOpenHashMap();
-   private final Long2LongMap d = ae.a(new Long2LongOpenHashMap(), $$0x -> $$0x.defaultReturnValue(Long.MAX_VALUE));
-   private final Queue<fbl<T>> e = new PriorityQueue<>(a);
-   private final Queue<fbq<T>> f = new ArrayDeque<>();
-   private final List<fbq<T>> g = new ArrayList<>();
-   private final Set<fbq<?>> h = new ObjectOpenCustomHashSet(fbq.c);
-   private final BiConsumer<fbl<T>, fbq<T>> i = ($$0x, $$1) -> {
-      if ($$1.equals($$0x.b())) {
-         this.b($$1);
-      }
-   };
+public class fbn {
+   private static final double g = 1.0E-7;
+   public final double a;
+   public final double b;
+   public final double c;
+   public final double d;
+   public final double e;
+   public final double f;
 
-   public fbn(LongPredicate $$0) {
-      this.b = $$0;
+   public fbn(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      this.a = Math.min($$0, $$3);
+      this.b = Math.min($$1, $$4);
+      this.c = Math.min($$2, $$5);
+      this.d = Math.max($$0, $$3);
+      this.e = Math.max($$1, $$4);
+      this.f = Math.max($$2, $$5);
    }
 
-   public void a(des $$0, fbl<T> $$1) {
-      long $$2 = $$0.a();
-      this.c.put($$2, $$1);
-      fbq<T> $$3 = $$1.b();
-      if ($$3 != null) {
-         this.d.put($$2, $$3.c());
-      }
-
-      $$1.a(this.i);
+   public fbn(jh $$0) {
+      this((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), (double)($$0.u() + 1), (double)($$0.v() + 1), (double)($$0.w() + 1));
    }
 
-   public void a(des $$0) {
-      long $$1 = $$0.a();
-      fbl<T> $$2 = (fbl<T>)this.c.remove($$1);
-      this.d.remove($$1);
-      if ($$2 != null) {
-         $$2.a(null);
-      }
+   public fbn(fbs $$0, fbs $$1) {
+      this($$0.d, $$0.e, $$0.f, $$1.d, $$1.e, $$1.f);
+   }
+
+   public static fbn a(enu $$0) {
+      return new fbn((double)$$0.h(), (double)$$0.i(), (double)$$0.j(), (double)($$0.k() + 1), (double)($$0.l() + 1), (double)($$0.m() + 1));
+   }
+
+   public static fbn a(fbs $$0) {
+      return new fbn($$0.d, $$0.e, $$0.f, $$0.d + 1.0, $$0.e + 1.0, $$0.f + 1.0);
+   }
+
+   public static fbn a(jh $$0, jh $$1) {
+      return new fbn(
+         (double)Math.min($$0.u(), $$1.u()),
+         (double)Math.min($$0.v(), $$1.v()),
+         (double)Math.min($$0.w(), $$1.w()),
+         (double)(Math.max($$0.u(), $$1.u()) + 1),
+         (double)(Math.max($$0.v(), $$1.v()) + 1),
+         (double)(Math.max($$0.w(), $$1.w()) + 1)
+      );
+   }
+
+   public fbn a(double $$0) {
+      return new fbn($$0, this.b, this.c, this.d, this.e, this.f);
+   }
+
+   public fbn b(double $$0) {
+      return new fbn(this.a, $$0, this.c, this.d, this.e, this.f);
+   }
+
+   public fbn c(double $$0) {
+      return new fbn(this.a, this.b, $$0, this.d, this.e, this.f);
+   }
+
+   public fbn d(double $$0) {
+      return new fbn(this.a, this.b, this.c, $$0, this.e, this.f);
+   }
+
+   public fbn e(double $$0) {
+      return new fbn(this.a, this.b, this.c, this.d, $$0, this.f);
+   }
+
+   public fbn f(double $$0) {
+      return new fbn(this.a, this.b, this.c, this.d, this.e, $$0);
+   }
+
+   public double a(jm.a $$0) {
+      return $$0.a(this.a, this.b, this.c);
+   }
+
+   public double b(jm.a $$0) {
+      return $$0.a(this.d, this.e, this.f);
    }
 
    @Override
-   public void a(fbq<T> $$0) {
-      long $$1 = des.a($$0.b());
-      fbl<T> $$2 = (fbl<T>)this.c.get($$1);
-      if ($$2 == null) {
-         ae.b("Trying to schedule tick in not loaded position " + $$0.b());
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if (!($$0 instanceof fbn $$1)) {
+         return false;
+      } else if (Double.compare($$1.a, this.a) != 0) {
+         return false;
+      } else if (Double.compare($$1.b, this.b) != 0) {
+         return false;
+      } else if (Double.compare($$1.c, this.c) != 0) {
+         return false;
+      } else if (Double.compare($$1.d, this.d) != 0) {
+         return false;
       } else {
-         $$2.a($$0);
+         return Double.compare($$1.e, this.e) != 0 ? false : Double.compare($$1.f, this.f) == 0;
       }
-   }
-
-   public void a(long $$0, int $$1, BiConsumer<jh, T> $$2) {
-      bou $$3 = bot.a();
-      $$3.a("collect");
-      this.a($$0, $$1, $$3);
-      $$3.b("run");
-      $$3.a("ticksToRun", this.f.size());
-      this.a($$2);
-      $$3.b("cleanup");
-      this.c();
-      $$3.c();
-   }
-
-   private void a(long $$0, int $$1, bou $$2) {
-      this.a($$0);
-      $$2.a("containersToTick", this.e.size());
-      this.a($$0, $$1);
-      this.b();
-   }
-
-   private void a(long $$0) {
-      ObjectIterator<Entry> $$1 = Long2LongMaps.fastIterator(this.d);
-
-      while ($$1.hasNext()) {
-         Entry $$2 = (Entry)$$1.next();
-         long $$3 = $$2.getLongKey();
-         long $$4 = $$2.getLongValue();
-         if ($$4 <= $$0) {
-            fbl<T> $$5 = (fbl<T>)this.c.get($$3);
-            if ($$5 == null) {
-               $$1.remove();
-            } else {
-               fbq<T> $$6 = $$5.b();
-               if ($$6 == null) {
-                  $$1.remove();
-               } else if ($$6.c() > $$0) {
-                  $$2.setValue($$6.c());
-               } else if (this.b.test($$3)) {
-                  $$1.remove();
-                  this.e.add($$5);
-               }
-            }
-         }
-      }
-   }
-
-   private void a(long $$0, int $$1) {
-      fbl<T> $$2;
-      while (this.a($$1) && ($$2 = this.e.poll()) != null) {
-         fbq<T> $$3 = $$2.c();
-         this.c($$3);
-         this.a(this.e, $$2, $$0, $$1);
-         fbq<T> $$4 = $$2.b();
-         if ($$4 != null) {
-            if ($$4.c() <= $$0 && this.a($$1)) {
-               this.e.add($$2);
-            } else {
-               this.b($$4);
-            }
-         }
-      }
-   }
-
-   private void b() {
-      for (fbl<T> $$0 : this.e) {
-         this.b($$0.b());
-      }
-   }
-
-   private void b(fbq<T> $$0) {
-      this.d.put(des.a($$0.b()), $$0.c());
-   }
-
-   private void a(Queue<fbl<T>> $$0, fbl<T> $$1, long $$2, int $$3) {
-      if (this.a($$3)) {
-         fbl<T> $$4 = $$0.peek();
-         fbq<T> $$5 = $$4 != null ? $$4.b() : null;
-
-         while (this.a($$3)) {
-            fbq<T> $$6 = $$1.b();
-            if ($$6 == null || $$6.c() > $$2 || $$5 != null && fbq.b.compare($$6, $$5) > 0) {
-               break;
-            }
-
-            $$1.c();
-            this.c($$6);
-         }
-      }
-   }
-
-   private void c(fbq<T> $$0) {
-      this.f.add($$0);
-   }
-
-   private boolean a(int $$0) {
-      return this.f.size() < $$0;
-   }
-
-   private void a(BiConsumer<jh, T> $$0) {
-      while (!this.f.isEmpty()) {
-         fbq<T> $$1 = this.f.poll();
-         if (!this.h.isEmpty()) {
-            this.h.remove($$1);
-         }
-
-         this.g.add($$1);
-         $$0.accept($$1.b(), $$1.a());
-      }
-   }
-
-   private void c() {
-      this.f.clear();
-      this.e.clear();
-      this.g.clear();
-      this.h.clear();
    }
 
    @Override
-   public boolean a(jh $$0, T $$1) {
-      fbl<T> $$2 = (fbl<T>)this.c.get(des.a($$0));
-      return $$2 != null && $$2.a($$0, $$1);
+   public int hashCode() {
+      long $$0 = Double.doubleToLongBits(this.a);
+      int $$1 = (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.b);
+      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.c);
+      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.d);
+      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.e);
+      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.f);
+      return 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
    }
 
-   @Override
-   public boolean b(jh $$0, T $$1) {
-      this.d();
-      return this.h.contains(fbq.a($$1, $$0));
+   public fbn a(double $$0, double $$1, double $$2) {
+      double $$3 = this.a;
+      double $$4 = this.b;
+      double $$5 = this.c;
+      double $$6 = this.d;
+      double $$7 = this.e;
+      double $$8 = this.f;
+      if ($$0 < 0.0) {
+         $$3 -= $$0;
+      } else if ($$0 > 0.0) {
+         $$6 -= $$0;
+      }
+
+      if ($$1 < 0.0) {
+         $$4 -= $$1;
+      } else if ($$1 > 0.0) {
+         $$7 -= $$1;
+      }
+
+      if ($$2 < 0.0) {
+         $$5 -= $$2;
+      } else if ($$2 > 0.0) {
+         $$8 -= $$2;
+      }
+
+      return new fbn($$3, $$4, $$5, $$6, $$7, $$8);
    }
 
-   private void d() {
-      if (this.h.isEmpty() && !this.f.isEmpty()) {
-         this.h.addAll(this.f);
+   public fbn b(fbs $$0) {
+      return this.b($$0.d, $$0.e, $$0.f);
+   }
+
+   public fbn b(double $$0, double $$1, double $$2) {
+      double $$3 = this.a;
+      double $$4 = this.b;
+      double $$5 = this.c;
+      double $$6 = this.d;
+      double $$7 = this.e;
+      double $$8 = this.f;
+      if ($$0 < 0.0) {
+         $$3 += $$0;
+      } else if ($$0 > 0.0) {
+         $$6 += $$0;
+      }
+
+      if ($$1 < 0.0) {
+         $$4 += $$1;
+      } else if ($$1 > 0.0) {
+         $$7 += $$1;
+      }
+
+      if ($$2 < 0.0) {
+         $$5 += $$2;
+      } else if ($$2 > 0.0) {
+         $$8 += $$2;
+      }
+
+      return new fbn($$3, $$4, $$5, $$6, $$7, $$8);
+   }
+
+   public fbn c(double $$0, double $$1, double $$2) {
+      double $$3 = this.a - $$0;
+      double $$4 = this.b - $$1;
+      double $$5 = this.c - $$2;
+      double $$6 = this.d + $$0;
+      double $$7 = this.e + $$1;
+      double $$8 = this.f + $$2;
+      return new fbn($$3, $$4, $$5, $$6, $$7, $$8);
+   }
+
+   public fbn g(double $$0) {
+      return this.c($$0, $$0, $$0);
+   }
+
+   public fbn a(fbn $$0) {
+      double $$1 = Math.max(this.a, $$0.a);
+      double $$2 = Math.max(this.b, $$0.b);
+      double $$3 = Math.max(this.c, $$0.c);
+      double $$4 = Math.min(this.d, $$0.d);
+      double $$5 = Math.min(this.e, $$0.e);
+      double $$6 = Math.min(this.f, $$0.f);
+      return new fbn($$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   public fbn b(fbn $$0) {
+      double $$1 = Math.min(this.a, $$0.a);
+      double $$2 = Math.min(this.b, $$0.b);
+      double $$3 = Math.min(this.c, $$0.c);
+      double $$4 = Math.max(this.d, $$0.d);
+      double $$5 = Math.max(this.e, $$0.e);
+      double $$6 = Math.max(this.f, $$0.f);
+      return new fbn($$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   public fbn d(double $$0, double $$1, double $$2) {
+      return new fbn(this.a + $$0, this.b + $$1, this.c + $$2, this.d + $$0, this.e + $$1, this.f + $$2);
+   }
+
+   public fbn a(jh $$0) {
+      return new fbn(
+         this.a + (double)$$0.u(),
+         this.b + (double)$$0.v(),
+         this.c + (double)$$0.w(),
+         this.d + (double)$$0.u(),
+         this.e + (double)$$0.v(),
+         this.f + (double)$$0.w()
+      );
+   }
+
+   public fbn c(fbs $$0) {
+      return this.d($$0.d, $$0.e, $$0.f);
+   }
+
+   public fbn a(Vector3f $$0) {
+      return this.d((double)$$0.x, (double)$$0.y, (double)$$0.z);
+   }
+
+   public boolean c(fbn $$0) {
+      return this.a($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
+   }
+
+   public boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      return this.a < $$3 && this.d > $$0 && this.b < $$4 && this.e > $$1 && this.c < $$5 && this.f > $$2;
+   }
+
+   public boolean a(fbs $$0, fbs $$1) {
+      return this.a(
+         Math.min($$0.d, $$1.d), Math.min($$0.e, $$1.e), Math.min($$0.f, $$1.f), Math.max($$0.d, $$1.d), Math.max($$0.e, $$1.e), Math.max($$0.f, $$1.f)
+      );
+   }
+
+   public boolean d(fbs $$0) {
+      return this.e($$0.d, $$0.e, $$0.f);
+   }
+
+   public boolean e(double $$0, double $$1, double $$2) {
+      return $$0 >= this.a && $$0 < this.d && $$1 >= this.b && $$1 < this.e && $$2 >= this.c && $$2 < this.f;
+   }
+
+   public double a() {
+      double $$0 = this.b();
+      double $$1 = this.c();
+      double $$2 = this.d();
+      return ($$0 + $$1 + $$2) / 3.0;
+   }
+
+   public double b() {
+      return this.d - this.a;
+   }
+
+   public double c() {
+      return this.e - this.b;
+   }
+
+   public double d() {
+      return this.f - this.c;
+   }
+
+   public fbn f(double $$0, double $$1, double $$2) {
+      return this.c(-$$0, -$$1, -$$2);
+   }
+
+   public fbn h(double $$0) {
+      return this.g(-$$0);
+   }
+
+   public Optional<fbs> b(fbs $$0, fbs $$1) {
+      return a(this.a, this.b, this.c, this.d, this.e, this.f, $$0, $$1);
+   }
+
+   public static Optional<fbs> a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, fbs $$6, fbs $$7) {
+      double[] $$8 = new double[]{1.0};
+      double $$9 = $$7.d - $$6.d;
+      double $$10 = $$7.e - $$6.e;
+      double $$11 = $$7.f - $$6.f;
+      jm $$12 = a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$8, null, $$9, $$10, $$11);
+      if ($$12 == null) {
+         return Optional.empty();
+      } else {
+         double $$13 = $$8[0];
+         return Optional.of($$6.b($$13 * $$9, $$13 * $$10, $$13 * $$11));
       }
    }
 
-   private void a(ema $$0, fbn.a<T> $$1) {
-      int $$2 = kj.a((double)$$0.h());
-      int $$3 = kj.a((double)$$0.j());
-      int $$4 = kj.a((double)$$0.k());
-      int $$5 = kj.a((double)$$0.m());
+   @Nullable
+   public static fbo a(Iterable<fbn> $$0, fbs $$1, fbs $$2, jh $$3) {
+      double[] $$4 = new double[]{1.0};
+      jm $$5 = null;
+      double $$6 = $$2.d - $$1.d;
+      double $$7 = $$2.e - $$1.e;
+      double $$8 = $$2.f - $$1.f;
 
-      for (int $$6 = $$2; $$6 <= $$4; $$6++) {
-         for (int $$7 = $$3; $$7 <= $$5; $$7++) {
-            long $$8 = des.c($$6, $$7);
-            fbl<T> $$9 = (fbl<T>)this.c.get($$8);
-            if ($$9 != null) {
-               $$1.accept($$8, $$9);
-            }
-         }
+      for (fbn $$9 : $$0) {
+         $$5 = a($$9.a($$3), $$1, $$4, $$5, $$6, $$7, $$8);
+      }
+
+      if ($$5 == null) {
+         return null;
+      } else {
+         double $$10 = $$4[0];
+         return new fbo($$1.b($$10 * $$6, $$10 * $$7, $$10 * $$8), $$5, $$3, false);
       }
    }
 
-   public void a(ema $$0) {
-      Predicate<fbq<T>> $$1 = $$1x -> $$0.b($$1x.b());
-      this.a($$0, ($$1x, $$2) -> {
-         fbq<T> $$3 = $$2.b();
-         $$2.a($$1);
-         fbq<T> $$4 = $$2.b();
-         if ($$4 != $$3) {
-            if ($$4 != null) {
-               this.b($$4);
-            } else {
-               this.d.remove($$1x);
-            }
+   @Nullable
+   private static jm a(fbn $$0, fbs $$1, double[] $$2, @Nullable jm $$3, double $$4, double $$5, double $$6) {
+      return a($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   @Nullable
+   private static jm a(
+      double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, fbs $$6, double[] $$7, @Nullable jm $$8, double $$9, double $$10, double $$11
+   ) {
+      if ($$9 > 1.0E-7) {
+         $$8 = a($$7, $$8, $$9, $$10, $$11, $$0, $$1, $$4, $$2, $$5, jm.e, $$6.d, $$6.e, $$6.f);
+      } else if ($$9 < -1.0E-7) {
+         $$8 = a($$7, $$8, $$9, $$10, $$11, $$3, $$1, $$4, $$2, $$5, jm.f, $$6.d, $$6.e, $$6.f);
+      }
+
+      if ($$10 > 1.0E-7) {
+         $$8 = a($$7, $$8, $$10, $$11, $$9, $$1, $$2, $$5, $$0, $$3, jm.a, $$6.e, $$6.f, $$6.d);
+      } else if ($$10 < -1.0E-7) {
+         $$8 = a($$7, $$8, $$10, $$11, $$9, $$4, $$2, $$5, $$0, $$3, jm.b, $$6.e, $$6.f, $$6.d);
+      }
+
+      if ($$11 > 1.0E-7) {
+         $$8 = a($$7, $$8, $$11, $$9, $$10, $$2, $$0, $$3, $$1, $$4, jm.c, $$6.f, $$6.d, $$6.e);
+      } else if ($$11 < -1.0E-7) {
+         $$8 = a($$7, $$8, $$11, $$9, $$10, $$5, $$0, $$3, $$1, $$4, jm.d, $$6.f, $$6.d, $$6.e);
+      }
+
+      return $$8;
+   }
+
+   @Nullable
+   private static jm a(
+      double[] $$0,
+      @Nullable jm $$1,
+      double $$2,
+      double $$3,
+      double $$4,
+      double $$5,
+      double $$6,
+      double $$7,
+      double $$8,
+      double $$9,
+      jm $$10,
+      double $$11,
+      double $$12,
+      double $$13
+   ) {
+      double $$14 = ($$5 - $$11) / $$2;
+      double $$15 = $$12 + $$14 * $$3;
+      double $$16 = $$13 + $$14 * $$4;
+      if (0.0 < $$14 && $$14 < $$0[0] && $$6 - 1.0E-7 < $$15 && $$15 < $$7 + 1.0E-7 && $$8 - 1.0E-7 < $$16 && $$16 < $$9 + 1.0E-7) {
+         $$0[0] = $$14;
+         return $$10;
+      } else {
+         return $$1;
+      }
+   }
+
+   public boolean a(fbs $$0, List<fbn> $$1) {
+      fbs $$2 = this.f();
+      fbs $$3 = $$2.e($$0);
+
+      for (fbn $$4 : $$1) {
+         fbn $$5 = $$4.c(this.b() * 0.5, this.c() * 0.5, this.d() * 0.5);
+         if ($$5.d($$3) || $$5.d($$2)) {
+            return true;
          }
-      });
-      this.g.removeIf($$1);
-      this.f.removeIf($$1);
+
+         if ($$5.b($$2, $$3).isPresent()) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   public void a(ema $$0, kl $$1) {
-      this.a(this, $$0, $$1);
-   }
-
-   public void a(fbn<T> $$0, ema $$1, kl $$2) {
-      List<fbq<T>> $$3 = new ArrayList<>();
-      Predicate<fbq<T>> $$4 = $$1x -> $$1.b($$1x.b());
-      $$0.g.stream().filter($$4).forEach($$3::add);
-      $$0.f.stream().filter($$4).forEach($$3::add);
-      $$0.a($$1, ($$2x, $$3x) -> $$3x.d().filter($$4).forEach($$3::add));
-      LongSummaryStatistics $$5 = $$3.stream().mapToLong(fbq::e).summaryStatistics();
-      long $$6 = $$5.getMin();
-      long $$7 = $$5.getMax();
-      $$3.forEach($$3x -> this.a(new fbq<>((T)$$3x.a(), $$3x.b().a($$2), $$3x.c(), $$3x.d(), $$3x.e() - $$6 + $$7 + 1L)));
+   public double e(fbs $$0) {
+      double $$1 = Math.max(Math.max(this.a - $$0.d, $$0.d - this.d), 0.0);
+      double $$2 = Math.max(Math.max(this.b - $$0.e, $$0.e - this.e), 0.0);
+      double $$3 = Math.max(Math.max(this.c - $$0.f, $$0.f - this.f), 0.0);
+      return bae.f($$1, $$2, $$3);
    }
 
    @Override
-   public int a() {
-      return this.c.values().stream().mapToInt(fbs::a).sum();
+   public String toString() {
+      return "AABB[" + this.a + ", " + this.b + ", " + this.c + "] -> [" + this.d + ", " + this.e + ", " + this.f + "]";
    }
 
-   @FunctionalInterface
-   interface a<T> {
-      void accept(long var1, fbl<T> var3);
+   public boolean e() {
+      return Double.isNaN(this.a) || Double.isNaN(this.b) || Double.isNaN(this.c) || Double.isNaN(this.d) || Double.isNaN(this.e) || Double.isNaN(this.f);
+   }
+
+   public fbs f() {
+      return new fbs(bae.d(0.5, this.a, this.d), bae.d(0.5, this.b, this.e), bae.d(0.5, this.c, this.f));
+   }
+
+   public fbs g() {
+      return new fbs(bae.d(0.5, this.a, this.d), this.b, bae.d(0.5, this.c, this.f));
+   }
+
+   public fbs h() {
+      return new fbs(this.a, this.b, this.c);
+   }
+
+   public fbs i() {
+      return new fbs(this.d, this.e, this.f);
+   }
+
+   public static fbn a(fbs $$0, double $$1, double $$2, double $$3) {
+      return new fbn($$0.d - $$1 / 2.0, $$0.e - $$2 / 2.0, $$0.f - $$3 / 2.0, $$0.d + $$1 / 2.0, $$0.e + $$2 / 2.0, $$0.f + $$3 / 2.0);
    }
 }

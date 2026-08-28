@@ -1,37 +1,27 @@
-import com.google.common.base.MoreObjects;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.List;
+import com.google.common.math.Quantiles;
+import com.google.common.math.Quantiles.ScaleAndIndexes;
+import it.unimi.dsi.fastutil.ints.Int2DoubleRBTreeMap;
+import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMap;
+import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMaps;
+import java.util.Comparator;
 import java.util.Map;
-import java.util.TreeMap;
-import java.util.stream.Collectors;
-import jdk.jfr.consumer.RecordedEvent;
-import jdk.jfr.consumer.RecordedThread;
 
-public record bpx(Instant a, String b, long c) {
-   private static final String d = "unknown";
+public class bpx {
+   public static final ScaleAndIndexes a = Quantiles.scale(100).indexes(new int[]{50, 75, 90, 99});
 
-   public static bpx a(RecordedEvent $$0) {
-      RecordedThread $$1 = $$0.getThread("thread");
-      String $$2 = $$1 == null ? "unknown" : (String)MoreObjects.firstNonNull($$1.getJavaName(), "unknown");
-      return new bpx($$0.getStartTime(), $$2, $$0.getLong("allocated"));
+   private bpx() {
    }
 
-   public static bpx.a a(List<bpx> $$0) {
-      Map<String, Double> $$1 = new TreeMap<>();
-      Map<String, List<bpx>> $$2 = $$0.stream().collect(Collectors.groupingBy($$0x -> $$0x.b));
-      $$2.forEach(($$1x, $$2x) -> {
-         if ($$2x.size() >= 2) {
-            bpx $$3 = (bpx)$$2x.get(0);
-            bpx $$4 = (bpx)$$2x.get($$2x.size() - 1);
-            long $$5 = Duration.between($$3.a, $$4.a).getSeconds();
-            long $$6 = $$4.c - $$3.c;
-            $$1.put($$1x, (double)$$6 / (double)$$5);
-         }
-      });
-      return new bpx.a($$1);
+   public static Map<Integer, Double> a(long[] $$0) {
+      return $$0.length == 0 ? Map.of() : a(a.compute($$0));
    }
 
-   public static record a(Map<String, Double> a) {
+   public static Map<Integer, Double> a(double[] $$0) {
+      return $$0.length == 0 ? Map.of() : a(a.compute($$0));
+   }
+
+   private static Map<Integer, Double> a(Map<Integer, Double> $$0) {
+      Int2DoubleSortedMap $$1 = ae.a(new Int2DoubleRBTreeMap(Comparator.reverseOrder()), $$1x -> $$1x.putAll($$0));
+      return Int2DoubleSortedMaps.unmodifiable($$1);
    }
 }

@@ -1,202 +1,219 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Pair;
 
 public class rm {
-   private static final ech.o a = a(dis.a);
-   private static final ech.o b = a(dis.F);
-   private static final ech.o c = a(dis.hj);
-   private static final ech.o d = a(dis.hk);
-   private static final ech.o e = a(dis.iA);
-   private static final ech.o f = a(dis.K);
-   private static final ech.o g = a(dis.jp);
-   private static final ech.o h = a(dis.b);
-   private static final ech.o i = a(dis.sJ);
-   private static final ech.o j = a(dis.j);
-   private static final ech.o k = a(dis.l);
-   private static final ech.o l = a(dis.k);
-   private static final ech.o m = a(dis.fl);
-   private static final ech.o n = a(dis.i);
-   private static final ech.o o = a(dis.qN);
-   private static final ech.o p = a(dis.L);
-   private static final ech.o q = a(dis.I);
-   private static final ech.o r = a(dis.aV);
-   private static final ech.o s = a(dis.iC);
-   private static final ech.o t = a(dis.dP);
-   private static final ech.o u = a(dis.sI);
-   private static final ech.o v = a(dis.qP);
-   private static final ech.o w = a(dis.dO);
-   private static final ech.o x = a(dis.G);
-   private static final ech.o y = a(dis.H);
-   private static final ech.o z = a(dis.dV);
-   private static final ech.o A = a(dis.dW);
-   private static final ech.o B = a(dis.dX);
-   private static final ech.o C = a(dis.dY);
-   private static final ech.o D = a(dis.pr);
-   private static final ech.o E = a(dis.op);
-   private static final ech.o F = a(dis.on);
-   private static final ech.o G = a(dis.kK);
-   private static final ech.o H = a(dis.ow);
-   private static final ech.o I = a(dis.fz);
+   public static final aly<epm> a = rr.a("village/desert/town_centers");
+   private static final aly<epm> b = rr.a("village/desert/terminators");
+   private static final aly<epm> c = rr.a("village/desert/zombie/terminators");
 
-   private static ech.o a(diq $$0) {
-      return ech.a($$0.m());
-   }
-
-   public static ech.o a() {
-      return a(true, false, true);
-   }
-
-   public static ech.o a(boolean $$0, boolean $$1, boolean $$2) {
-      ech.f $$3 = ech.a(eck.a(97), 2);
-      ech.f $$4 = ech.a(eck.a(256), 0);
-      ech.f $$5 = ech.b(eck.a(63), -1);
-      ech.f $$6 = ech.b(eck.a(74), 1);
-      ech.f $$7 = ech.a(eck.a(60), 0);
-      ech.f $$8 = ech.a(eck.a(62), 0);
-      ech.f $$9 = ech.a(eck.a(63), 0);
-      ech.f $$10 = ech.a(-1, 0);
-      ech.f $$11 = ech.a(0, 0);
-      ech.f $$12 = ech.b(-6, -1);
-      ech.f $$13 = ech.b();
-      ech.f $$14 = ech.a(dgv.W, dgv.X);
-      ech.f $$15 = ech.a();
-      ech.o $$16 = ech.a(ech.a($$11, n), j);
-      ech.o $$17 = ech.a(ech.a(ech.e, r), q);
-      ech.o $$18 = ech.a(ech.a(ech.e, h), p);
-      ech.f $$19 = ech.a(dgv.P, dgv.M, dgv.N);
-      ech.f $$20 = ech.a(dgv.f);
-      ech.o $$21 = ech.a(
-         ech.a(ech.a(dgv.J), ech.a(ech.a(ech.a(ebz.X, -0.0125, 0.0125), o), h)),
-         ech.a(ech.a(dgv.O), ech.a(ech.a(ech.a(ebz.Y, -0.05, 0.05), $$18), h)),
-         ech.a(ech.a(dgv.t), ech.a(a(1.0), h)),
-         ech.a($$19, $$17),
-         ech.a($$20, $$17),
-         ech.a(ech.a(dgv.Z), h)
+   public static void a(rk<epm> $$0) {
+      jr<eng> $$1 = $$0.a(mb.aS);
+      jq<eng> $$2 = $$1.b(te.j);
+      jq<eng> $$3 = $$1.b(te.a);
+      jr<esc> $$4 = $$0.a(mb.aU);
+      jq<esc> $$5 = $$4.b(rs.e);
+      jq<esc> $$6 = $$4.b(rs.p);
+      jr<epm> $$7 = $$0.a(mb.aW);
+      jq<epm> $$8 = $$7.b(rr.a);
+      jq<epm> $$9 = $$7.b(b);
+      jq<epm> $$10 = $$7.b(c);
+      $$0.a(
+         a,
+         new epm(
+            $$8,
+            ImmutableList.of(
+               Pair.of(epk.a("village/desert/town_centers/desert_meeting_point_1"), 98),
+               Pair.of(epk.a("village/desert/town_centers/desert_meeting_point_2"), 98),
+               Pair.of(epk.a("village/desert/town_centers/desert_meeting_point_3"), 49),
+               Pair.of(epk.a("village/desert/zombie/town_centers/desert_meeting_point_1", $$5), 2),
+               Pair.of(epk.a("village/desert/zombie/town_centers/desert_meeting_point_2", $$5), 2),
+               Pair.of(epk.a("village/desert/zombie/town_centers/desert_meeting_point_3", $$5), 1)
+            ),
+            epm.a.b
+         )
       );
-      ech.o $$22 = ech.a(ech.a(ebz.Z, 0.45, 0.58), ech.a($$11, v));
-      ech.o $$23 = ech.a(ech.a(ebz.Z, 0.35, 0.6), ech.a($$11, v));
-      ech.o $$24 = ech.a(
-         ech.a(ech.a(dgv.H), ech.a(ech.a($$15, s), ech.a(ech.a(ebz.aa, -0.5, 0.2), s), ech.a(ech.a(ebz.ab, -0.0625, 0.025), w), ech.a($$11, t))),
-         ech.a(ech.a(dgv.G), ech.a(ech.a($$15, h), $$22, ech.a($$11, t))),
-         ech.a(ech.a(dgv.I), h),
-         ech.a(ech.a(dgv.F), ech.a($$22, j)),
-         $$21,
-         ech.a(ech.a(dgv.w), ech.a(a(1.75), h)),
-         ech.a(ech.a(dgv.u), ech.a(ech.a(a(2.0), $$18), ech.a(a(1.0), h), ech.a(a(-1.0), j), $$18)),
-         ech.a(ech.a(dgv.h), u),
-         j
+      rr.a(
+         $$0,
+         "village/desert/streets",
+         new epm(
+            $$9,
+            ImmutableList.of(
+               Pair.of(epk.a("village/desert/streets/corner_01"), 3),
+               Pair.of(epk.a("village/desert/streets/corner_02"), 3),
+               Pair.of(epk.a("village/desert/streets/straight_01"), 4),
+               Pair.of(epk.a("village/desert/streets/straight_02"), 4),
+               Pair.of(epk.a("village/desert/streets/straight_03"), 3),
+               Pair.of(epk.a("village/desert/streets/crossroad_01"), 3),
+               Pair.of(epk.a("village/desert/streets/crossroad_02"), 3),
+               Pair.of(epk.a("village/desert/streets/crossroad_03"), 3),
+               Pair.of(epk.a("village/desert/streets/square_01"), 3),
+               Pair.of(epk.a("village/desert/streets/square_02"), 3),
+               Pair.of(epk.a("village/desert/streets/turn_01"), 3)
+            ),
+            epm.a.a
+         )
       );
-      ech.o $$25 = ech.a(
-         ech.a(ech.a(dgv.H), ech.a(ech.a($$15, s), ech.a(ech.a(ebz.aa, 0.0, 0.2), s), ech.a(ech.a(ebz.ab, 0.0, 0.025), w), ech.a($$11, t))),
-         ech.a(ech.a(dgv.G), ech.a(ech.a($$15, h), $$23, ech.a($$11, t))),
-         ech.a(ech.a(dgv.I), ech.a(ech.a($$15, h), ech.a($$11, t))),
-         ech.a(ech.a(dgv.F), ech.a($$23, ech.a($$11, t))),
-         $$21,
-         ech.a(ech.a(dgv.w), ech.a(ech.a(a(1.75), h), ech.a(a(-0.5), l))),
-         ech.a(ech.a(dgv.u), ech.a(ech.a(a(2.0), $$18), ech.a(a(1.0), h), ech.a(a(-1.0), $$16), $$18)),
-         ech.a(ech.a(dgv.n, dgv.o), ech.a(ech.a(a(1.75), l), ech.a(a(-0.95), k))),
-         ech.a(ech.a(dgv.e), ech.a($$11, t)),
-         ech.a(ech.a(dgv.h), u),
-         ech.a(ech.a(dgv.Y), m),
-         $$16
+      rr.a(
+         $$0,
+         "village/desert/zombie/streets",
+         new epm(
+            $$10,
+            ImmutableList.of(
+               Pair.of(epk.a("village/desert/zombie/streets/corner_01"), 3),
+               Pair.of(epk.a("village/desert/zombie/streets/corner_02"), 3),
+               Pair.of(epk.a("village/desert/zombie/streets/straight_01"), 4),
+               Pair.of(epk.a("village/desert/zombie/streets/straight_02"), 4),
+               Pair.of(epk.a("village/desert/zombie/streets/straight_03"), 3),
+               Pair.of(epk.a("village/desert/zombie/streets/crossroad_01"), 3),
+               Pair.of(epk.a("village/desert/zombie/streets/crossroad_02"), 3),
+               Pair.of(epk.a("village/desert/zombie/streets/crossroad_03"), 3),
+               Pair.of(epk.a("village/desert/zombie/streets/square_01"), 3),
+               Pair.of(epk.a("village/desert/zombie/streets/square_02"), 3),
+               Pair.of(epk.a("village/desert/zombie/streets/turn_01"), 3)
+            ),
+            epm.a.a
+         )
       );
-      ech.f $$26 = ech.a(ebz.N, -0.909, -0.5454);
-      ech.f $$27 = ech.a(ebz.N, -0.1818, 0.1818);
-      ech.f $$28 = ech.a(ebz.N, 0.5454, 0.909);
-      ech.o $$29 = ech.a(
-         ech.a(
-            ech.a,
-            ech.a(
-               ech.a(ech.a(dgv.C), ech.a($$3, ech.a(ech.a($$26, l), ech.a($$27, l), ech.a($$28, l), $$16))),
-               ech.a(ech.a(dgv.g), ech.a($$8, ech.a(ech.a($$9), ech.a(ech.a(ebz.W, 0.0), x)))),
-               ech.a(ech.a(dgv.h), ech.a($$7, ech.a(ech.a($$9), ech.a(ech.a(ebz.W, 0.0), x))))
-            )
-         ),
-         ech.a(
-            ech.a(dgv.A, dgv.B, dgv.C),
-            ech.a(
-               ech.a(
-                  ech.a,
-                  ech.a(
-                     ech.a($$4, d),
-                     ech.a($$6, ech.a(ech.a($$26, e), ech.a($$27, e), ech.a($$28, e), ech.e())),
-                     ech.a($$10, ech.a(ech.a(ech.e, g), f)),
-                     ech.a(ech.a($$13), d),
-                     ech.a($$12, c),
-                     $$18
-                  )
-               ),
-               ech.a($$5, ech.a(ech.a($$9, ech.a(ech.a($$6), d)), ech.e())),
-               ech.a(ech.b, ech.a($$12, c))
-            )
-         ),
-         ech.a(ech.a, ech.a($$10, ech.a(ech.a($$14, ech.a($$13, ech.a(ech.a($$11, a), ech.a(ech.d(), w), x))), $$25))),
-         ech.a($$12, ech.a(ech.a(ech.a, ech.a($$14, ech.a($$13, x))), ech.a(ech.b, $$24), ech.a($$19, ech.a(ech.c, r)), ech.a($$20, ech.a(ech.d, r)))),
-         ech.a(ech.a, ech.a(ech.a(ech.a(dgv.H, dgv.I), h), ech.a(ech.a(dgv.P, dgv.Q, dgv.R), $$17), $$18))
+      rr.a(
+         $$0,
+         "village/desert/houses",
+         new epm(
+            $$9,
+            ImmutableList.of(
+               Pair.of(epk.a("village/desert/houses/desert_small_house_1"), 2),
+               Pair.of(epk.a("village/desert/houses/desert_small_house_2"), 2),
+               Pair.of(epk.a("village/desert/houses/desert_small_house_3"), 2),
+               Pair.of(epk.a("village/desert/houses/desert_small_house_4"), 2),
+               Pair.of(epk.a("village/desert/houses/desert_small_house_5"), 2),
+               Pair.of(epk.a("village/desert/houses/desert_small_house_6"), 1),
+               Pair.of(epk.a("village/desert/houses/desert_small_house_7"), 2),
+               Pair.of(epk.a("village/desert/houses/desert_small_house_8"), 2),
+               Pair.of(epk.a("village/desert/houses/desert_medium_house_1"), 2),
+               Pair.of(epk.a("village/desert/houses/desert_medium_house_2"), 2),
+               Pair.of(epk.a("village/desert/houses/desert_butcher_shop_1"), 2),
+               Pair.of(epk.a("village/desert/houses/desert_tool_smith_1"), 2),
+               new Pair[]{
+                  Pair.of(epk.a("village/desert/houses/desert_fletcher_house_1"), 2),
+                  Pair.of(epk.a("village/desert/houses/desert_shepherd_house_1"), 2),
+                  Pair.of(epk.a("village/desert/houses/desert_armorer_1"), 1),
+                  Pair.of(epk.a("village/desert/houses/desert_fisher_1"), 2),
+                  Pair.of(epk.a("village/desert/houses/desert_tannery_1"), 2),
+                  Pair.of(epk.a("village/desert/houses/desert_cartographer_house_1"), 2),
+                  Pair.of(epk.a("village/desert/houses/desert_library_1"), 2),
+                  Pair.of(epk.a("village/desert/houses/desert_mason_1"), 2),
+                  Pair.of(epk.a("village/desert/houses/desert_weaponsmith_1"), 2),
+                  Pair.of(epk.a("village/desert/houses/desert_temple_1"), 2),
+                  Pair.of(epk.a("village/desert/houses/desert_temple_2"), 2),
+                  Pair.of(epk.a("village/desert/houses/desert_large_farm_1", $$6), 11),
+                  Pair.of(epk.a("village/desert/houses/desert_farm_1", $$6), 4),
+                  Pair.of(epk.a("village/desert/houses/desert_farm_2", $$6), 4),
+                  Pair.of(epk.a("village/desert/houses/desert_animal_pen_1"), 2),
+                  Pair.of(epk.a("village/desert/houses/desert_animal_pen_2"), 2),
+                  Pair.of(epk.h(), 5)
+               }
+            ),
+            epm.a.b
+         )
       );
-      Builder<ech.o> $$30 = ImmutableList.builder();
-      if ($$1) {
-         $$30.add(ech.a(ech.a(ech.a("bedrock_roof", eck.c(5), eck.b())), b));
-      }
-
-      if ($$2) {
-         $$30.add(ech.a(ech.a("bedrock_floor", eck.a(), eck.b(5)), b));
-      }
-
-      ech.o $$31 = ech.a(ech.c(), $$29);
-      $$30.add($$0 ? $$31 : $$29);
-      $$30.add(ech.a(ech.a("deepslate", eck.a(0), eck.a(8)), i));
-      return ech.a((ech.o[])$$30.build().toArray(ech.o[]::new));
-   }
-
-   public static ech.o b() {
-      ech.f $$0 = ech.a(eck.a(31), 0);
-      ech.f $$1 = ech.a(eck.a(32), 0);
-      ech.f $$2 = ech.b(eck.a(30), 0);
-      ech.f $$3 = ech.a(ech.b(eck.a(35), 0));
-      ech.f $$4 = ech.a(eck.c(5), 0);
-      ech.f $$5 = ech.b();
-      ech.f $$6 = ech.a(ebz.ac, -0.012);
-      ech.f $$7 = ech.a(ebz.ad, -0.012);
-      ech.f $$8 = ech.a(ebz.ae, -0.012);
-      ech.f $$9 = ech.a(ebz.af, 0.54);
-      ech.f $$10 = ech.a(ebz.ag, 1.17);
-      ech.f $$11 = ech.a(ebz.ah, 0.0);
-      ech.o $$12 = ech.a($$8, ech.a($$2, ech.a($$3, p)));
-      return ech.a(
-         ech.a(ech.a("bedrock_floor", eck.a(), eck.b(5)), b),
-         ech.a(ech.a(ech.a("bedrock_roof", eck.c(5), eck.b())), b),
-         ech.a($$4, z),
-         ech.a(ech.a(dgv.ag), ech.a(ech.a(ech.f, C), ech.a(ech.b, ech.a($$12, ech.a($$11, C), D)))),
-         ech.a(ech.a(dgv.af), ech.a(ech.a(ech.f, ech.a(ech.a($$11, A), B)), ech.a(ech.b, ech.a($$12, ech.a($$11, A), B)))),
-         ech.a(
-            ech.a,
-            ech.a(
-               ech.a(ech.a($$1), ech.a($$5, y)),
-               ech.a(ech.a(dgv.ad), ech.a(ech.a($$9), ech.a($$0, ech.a(ech.a($$10, E), F)))),
-               ech.a(ech.a(dgv.ae), ech.a(ech.a($$9), ech.a($$0, ech.a(ech.a($$10, G), H))))
-            )
-         ),
-         ech.a(
-            ech.a(dgv.ac),
-            ech.a(
-               ech.a(ech.b, ech.a($$6, ech.a(ech.a(ech.a($$5), ech.a($$2, ech.a($$3, A))), z))),
-               ech.a(ech.a, ech.a($$0, ech.a($$3, ech.a($$7, ech.a(ech.a($$1, p), ech.a(ech.a($$5), p))))))
-            )
-         ),
-         z
+      rr.a(
+         $$0,
+         "village/desert/zombie/houses",
+         new epm(
+            $$10,
+            ImmutableList.of(
+               Pair.of(epk.a("village/desert/zombie/houses/desert_small_house_1", $$5), 2),
+               Pair.of(epk.a("village/desert/zombie/houses/desert_small_house_2", $$5), 2),
+               Pair.of(epk.a("village/desert/zombie/houses/desert_small_house_3", $$5), 2),
+               Pair.of(epk.a("village/desert/zombie/houses/desert_small_house_4", $$5), 2),
+               Pair.of(epk.a("village/desert/zombie/houses/desert_small_house_5", $$5), 2),
+               Pair.of(epk.a("village/desert/zombie/houses/desert_small_house_6", $$5), 1),
+               Pair.of(epk.a("village/desert/zombie/houses/desert_small_house_7", $$5), 2),
+               Pair.of(epk.a("village/desert/zombie/houses/desert_small_house_8", $$5), 2),
+               Pair.of(epk.a("village/desert/zombie/houses/desert_medium_house_1", $$5), 2),
+               Pair.of(epk.a("village/desert/zombie/houses/desert_medium_house_2", $$5), 2),
+               Pair.of(epk.a("village/desert/houses/desert_butcher_shop_1", $$5), 2),
+               Pair.of(epk.a("village/desert/houses/desert_tool_smith_1", $$5), 2),
+               new Pair[]{
+                  Pair.of(epk.a("village/desert/houses/desert_fletcher_house_1", $$5), 2),
+                  Pair.of(epk.a("village/desert/houses/desert_shepherd_house_1", $$5), 2),
+                  Pair.of(epk.a("village/desert/houses/desert_armorer_1", $$5), 1),
+                  Pair.of(epk.a("village/desert/houses/desert_fisher_1", $$5), 2),
+                  Pair.of(epk.a("village/desert/houses/desert_tannery_1", $$5), 2),
+                  Pair.of(epk.a("village/desert/houses/desert_cartographer_house_1", $$5), 2),
+                  Pair.of(epk.a("village/desert/houses/desert_library_1", $$5), 2),
+                  Pair.of(epk.a("village/desert/houses/desert_mason_1", $$5), 2),
+                  Pair.of(epk.a("village/desert/houses/desert_weaponsmith_1", $$5), 2),
+                  Pair.of(epk.a("village/desert/houses/desert_temple_1", $$5), 2),
+                  Pair.of(epk.a("village/desert/houses/desert_temple_2", $$5), 2),
+                  Pair.of(epk.a("village/desert/houses/desert_large_farm_1", $$5), 7),
+                  Pair.of(epk.a("village/desert/houses/desert_farm_1", $$5), 4),
+                  Pair.of(epk.a("village/desert/houses/desert_farm_2", $$5), 4),
+                  Pair.of(epk.a("village/desert/houses/desert_animal_pen_1", $$5), 2),
+                  Pair.of(epk.a("village/desert/houses/desert_animal_pen_2", $$5), 2),
+                  Pair.of(epk.h(), 5)
+               }
+            ),
+            epm.a.b
+         )
       );
-   }
-
-   public static ech.o c() {
-      return I;
-   }
-
-   public static ech.o d() {
-      return a;
-   }
-
-   private static ech.f a(double $$0) {
-      return ech.a(ebz.N, $$0 / 8.25, Double.MAX_VALUE);
+      $$0.a(
+         b,
+         new epm(
+            $$8,
+            ImmutableList.of(Pair.of(epk.a("village/desert/terminators/terminator_01"), 1), Pair.of(epk.a("village/desert/terminators/terminator_02"), 1)),
+            epm.a.a
+         )
+      );
+      $$0.a(
+         c,
+         new epm(
+            $$8,
+            ImmutableList.of(
+               Pair.of(epk.a("village/desert/terminators/terminator_01"), 1), Pair.of(epk.a("village/desert/zombie/terminators/terminator_02"), 1)
+            ),
+            epm.a.a
+         )
+      );
+      rr.a(
+         $$0,
+         "village/desert/decor",
+         new epm(
+            $$8,
+            ImmutableList.of(Pair.of(epk.a("village/desert/desert_lamp_1"), 10), Pair.of(epk.a($$2), 4), Pair.of(epk.a($$3), 4), Pair.of(epk.h(), 10)),
+            epm.a.b
+         )
+      );
+      rr.a(
+         $$0,
+         "village/desert/zombie/decor",
+         new epm(
+            $$8,
+            ImmutableList.of(Pair.of(epk.a("village/desert/desert_lamp_1", $$5), 10), Pair.of(epk.a($$2), 4), Pair.of(epk.a($$3), 4), Pair.of(epk.h(), 10)),
+            epm.a.b
+         )
+      );
+      rr.a(
+         $$0,
+         "village/desert/villagers",
+         new epm(
+            $$8,
+            ImmutableList.of(
+               Pair.of(epk.a("village/desert/villagers/nitwit"), 1),
+               Pair.of(epk.a("village/desert/villagers/baby"), 1),
+               Pair.of(epk.a("village/desert/villagers/unemployed"), 10)
+            ),
+            epm.a.b
+         )
+      );
+      rr.a($$0, "village/desert/camel", new epm($$8, ImmutableList.of(Pair.of(epk.a("village/desert/camel_spawn"), 1)), epm.a.b));
+      rr.a(
+         $$0,
+         "village/desert/zombie/villagers",
+         new epm(
+            $$8,
+            ImmutableList.of(Pair.of(epk.a("village/desert/zombie/villagers/nitwit"), 1), Pair.of(epk.a("village/desert/zombie/villagers/unemployed"), 10)),
+            epm.a.b
+         )
+      );
    }
 }

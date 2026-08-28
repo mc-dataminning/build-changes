@@ -1,23 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dgl {
-   public static final Codec<dgl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(awm.b.fieldOf("sound").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("tick_chance").forGetter($$0x -> $$0x.c)).apply($$0, dgl::new)
-   );
-   private final jq<awm> b;
-   private final double c;
-
-   public dgl(jq<awm> $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public interface dgl extends dgr, dhd, dhf {
+   @Override
+   default <T extends dup> Optional<T> a(jh $$0, dur<T> $$1) {
+      return dhd.super.a($$0, $$1);
    }
 
-   public jq<awm> a() {
-      return this.b;
+   @Override
+   default List<fcm> c(@Nullable bvf $$0, fbn $$1) {
+      return dgr.super.c($$0, $$1);
    }
 
-   public double b() {
-      return this.c;
+   @Override
+   default boolean a(@Nullable bvf $$0, fcm $$1) {
+      return dgr.super.a($$0, $$1);
+   }
+
+   @Override
+   default jh a(edi.a $$0, jh $$1) {
+      return dhd.super.a($$0, $$1);
    }
 }

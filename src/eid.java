@@ -1,46 +1,96 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class eid extends eib {
-   public static final MapCodec<eid> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.intRange(0, 80).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 80).fieldOf("upper_limit").orElse(1).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.g),
-               Codec.intRange(0, 16).fieldOf("middle_size").orElse(1).forGetter($$0x -> $$0x.h),
-               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.i),
-               a()
-            )
-            .apply($$0, eid::new)
-   );
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
-
-   public eid(int $$0, int $$1, int $$2, int $$3, int $$4, OptionalInt $$5) {
-      super($$5);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
+public class eid extends ego<ejr> {
+   public eid(Codec<ejr> $$0) {
+      super($$0);
    }
 
    @Override
-   protected eic<?> b() {
-      return eic.b;
+   public boolean a(egq<ejr> $$0) {
+      dhy $$1 = $$0.b();
+      ejr $$2 = $$0.f();
+      bam $$3 = $$0.d();
+      jh $$4 = $$0.e();
+      Predicate<dxn> $$5 = $$1x -> $$1x.a($$2.b);
+      int $$6 = $$2.j.a($$3) + 1;
+      int $$7 = $$2.j.a($$3) + 1;
+      Set<jh> $$8 = this.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      this.a($$0, $$1, $$2, $$3, $$8, $$6, $$7);
+      return !$$8.isEmpty();
    }
 
-   @Override
-   public int a(int $$0, int $$1) {
-      if ($$1 < this.e) {
-         return this.g;
-      } else {
-         return $$1 >= $$0 - this.f ? this.i : this.h;
+   protected Set<jh> a(dhy $$0, ejr $$1, bam $$2, jh $$3, Predicate<dxn> $$4, int $$5, int $$6) {
+      jh.a $$7 = $$3.k();
+      jh.a $$8 = $$7.k();
+      jm $$9 = $$1.e.a();
+      jm $$10 = $$9.g();
+      Set<jh> $$11 = new HashSet<>();
+
+      for (int $$12 = -$$5; $$12 <= $$5; $$12++) {
+         boolean $$13 = $$12 == -$$5 || $$12 == $$5;
+
+         for (int $$14 = -$$6; $$14 <= $$6; $$14++) {
+            boolean $$15 = $$14 == -$$6 || $$14 == $$6;
+            boolean $$16 = $$13 || $$15;
+            boolean $$17 = $$13 && $$15;
+            boolean $$18 = $$16 && !$$17;
+            if (!$$17 && (!$$18 || $$1.k != 0.0F && !($$2.i() > $$1.k))) {
+               $$7.a($$3, $$12, 0, $$14);
+
+               for (int $$19 = 0; $$0.a($$7, dxm.a::l) && $$19 < $$1.h; $$19++) {
+                  $$7.c($$9);
+               }
+
+               for (int var25 = 0; $$0.a($$7, $$0x -> !$$0x.l()) && var25 < $$1.h; var25++) {
+                  $$7.c($$10);
+               }
+
+               $$8.a($$7, $$1.e.a());
+               dxn $$20 = $$0.a_($$8);
+               if ($$0.u($$7) && $$20.c($$0, $$8, $$1.e.a().g())) {
+                  int $$21 = $$1.f.a($$2) + ($$1.g > 0.0F && $$2.i() < $$1.g ? 1 : 0);
+                  jh $$22 = $$8.j();
+                  boolean $$23 = this.a($$0, $$1, $$4, $$2, $$8, $$21);
+                  if ($$23) {
+                     $$11.add($$22);
+                  }
+               }
+            }
+         }
       }
+
+      return $$11;
+   }
+
+   protected void a(egq<ejr> $$0, dhy $$1, ejr $$2, bam $$3, Set<jh> $$4, int $$5, int $$6) {
+      for (jh $$7 : $$4) {
+         if ($$2.i > 0.0F && $$3.i() < $$2.i) {
+            this.a($$1, $$2, $$0.c(), $$3, $$7);
+         }
+      }
+   }
+
+   protected boolean a(dhy $$0, ejr $$1, dzj $$2, bam $$3, jh $$4) {
+      return $$1.d.a().a($$0, $$2, $$3, $$4.a($$1.e.a().g()));
+   }
+
+   protected boolean a(dhy $$0, ejr $$1, Predicate<dxn> $$2, bam $$3, jh.a $$4, int $$5) {
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         dxn $$7 = $$1.c.a($$3, $$4);
+         dxn $$8 = $$0.a_($$4);
+         if (!$$7.a($$8.b())) {
+            if (!$$2.test($$8)) {
+               return $$6 != 0;
+            }
+
+            $$0.a($$4, $$7, 2);
+            $$4.c($$1.e.a());
+         }
+      }
+
+      return true;
    }
 }

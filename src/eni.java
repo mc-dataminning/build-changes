@@ -1,30 +1,10 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import java.util.stream.Stream;
 
-public record eni(int c, int d) {
-   private static final Codec<eni> e = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayv.l.lenientOptionalFieldOf("bottom", 0).forGetter($$0x -> $$0x.c), ayv.l.lenientOptionalFieldOf("top", 0).forGetter($$0x -> $$0x.d))
-            .apply($$0, eni::new)
-   );
-   public static final Codec<eni> a = Codec.either(ayv.l, e)
-      .xmap($$0 -> (eni)$$0.map(eni::new, Function.identity()), $$0 -> $$0.a() ? Either.left($$0.c) : Either.right($$0));
-   public static final eni b = new eni(0);
-
-   public eni(int $$0) {
-      this($$0, $$0);
+public abstract class eni extends enj {
+   @Override
+   public final Stream<jh> a_(enh $$0, bam $$1, jh $$2) {
+      return this.a($$0, $$1, $$2) ? Stream.of($$2) : Stream.of();
    }
 
-   public boolean a() {
-      return this.d == this.c;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
+   protected abstract boolean a(enh var1, bam var2, jh var3);
 }

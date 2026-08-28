@@ -1,65 +1,313 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import org.slf4j.Logger;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class evw extends ewa {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<evw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(ali.a(ma.be).fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, evw::new)
-   );
-   private final ali<ewb> c;
+public class evw implements Comparable<evw> {
+   public static final xv a = xv.c("selectWorld.select");
+   private final dhe b;
+   private final evx c;
+   private final String d;
+   private final boolean e;
+   private final boolean f;
+   private final boolean g;
+   private final Path h;
+   @Nullable
+   private xv i;
 
-   private evw(List<exy> $$0, ali<ewb> $$1) {
-      super($$0);
+   public evw(dhe $$0, evx $$1, String $$2, boolean $$3, boolean $$4, boolean $$5, Path $$6) {
+      this.b = $$0;
       this.c = $$1;
+      this.d = $$2;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.e = $$3;
    }
 
-   @Override
-   public ewc<evw> b() {
-      return ewd.H;
+   public String a() {
+      return this.d;
    }
 
-   @Override
-   public void a(eut $$0) {
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.c.a() + ", but references are not allowed");
-      } else if ($$0.a(this.c)) {
-         $$0.b("Function " + this.c.a() + " is recursively called");
+   public String b() {
+      return StringUtils.isEmpty(this.b.a()) ? this.d : this.b.a();
+   }
+
+   public Path c() {
+      return this.h;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public boolean e() {
+      return this.g;
+   }
+
+   public long f() {
+      return this.c.b();
+   }
+
+   public int a(evw $$0) {
+      if (this.f() < $$0.f()) {
+         return 1;
       } else {
-         super.a($$0);
-         $$0.a()
-            .c(this.c)
-            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.c.a() + "}", this.c)), () -> $$0.b("Unknown function table called " + this.c.a()));
+         return this.f() > $$0.f() ? -1 : this.d.compareTo($$0.d);
       }
    }
 
-   @Override
-   protected cwm a(cwm $$0, eun $$1) {
-      ewb $$2 = $$1.a().c(this.c).map(jq::a).orElse(null);
-      if ($$2 == null) {
-         b.warn("Unknown function: {}", this.c.a());
-         return $$0;
-      } else {
-         eun.c<?> $$3 = eun.a($$2);
-         if ($$1.b($$3)) {
-            cwm var5;
-            try {
-               var5 = $$2.apply($$0, $$1);
-            } finally {
-               $$1.c($$3);
-            }
+   public dhe g() {
+      return this.b;
+   }
 
-            return var5;
-         } else {
-            b.warn("Detected infinite loop in loot tables");
-            return $$0;
+   public dgx h() {
+      return this.b.b();
+   }
+
+   public boolean i() {
+      return this.b.c();
+   }
+
+   public boolean j() {
+      return this.b.e();
+   }
+
+   public yj k() {
+      return bbb.b(this.c.c()) ? xv.c("selectWorld.versionUnknown") : xv.b(this.c.c());
+   }
+
+   public evx l() {
+      return this.c;
+   }
+
+   public boolean m() {
+      return this.o().a();
+   }
+
+   public boolean n() {
+      return this.o() == evw.a.b;
+   }
+
+   public evw.a o() {
+      af $$0 = ab.b();
+      int $$1 = $$0.d().c();
+      int $$2 = this.c.d().c();
+      if (!$$0.g() && $$2 < $$1) {
+         return evw.a.c;
+      } else {
+         return $$2 > $$1 ? evw.a.b : evw.a.a;
+      }
+   }
+
+   public boolean p() {
+      return this.f;
+   }
+
+   public boolean q() {
+      return !this.p() && !this.d() ? !this.r() : true;
+   }
+
+   public boolean r() {
+      return ab.b().d().a(this.c.d());
+   }
+
+   public xv s() {
+      if (this.i == null) {
+         this.i = this.z();
+      }
+
+      return this.i;
+   }
+
+   private xv z() {
+      if (this.p()) {
+         return xv.c("selectWorld.locked").a(n.m);
+      } else if (this.d()) {
+         return xv.c("selectWorld.conversion").a(n.m);
+      } else if (!this.r()) {
+         return xv.a("selectWorld.incompatible.info", this.k()).a(n.m);
+      } else {
+         yj $$0 = this.i() ? xv.i().b(xv.c("gameMode.hardcore").b(-65536)) : xv.c("gameMode." + this.h().b());
+         if (this.j()) {
+            $$0.f(", ").b(xv.c("selectWorld.commands"));
          }
+
+         if (this.e()) {
+            $$0.f(", ").b(xv.c("selectWorld.experimental").a(n.o));
+         }
+
+         yj $$1 = this.k();
+         yj $$2 = xv.b(", ").b(xv.c("selectWorld.version")).b(xu.v);
+         if (this.m()) {
+            $$2.b($$1.a(this.n() ? n.m : n.u));
+         } else {
+            $$2.b($$1);
+         }
+
+         $$0.b($$2);
+         return $$0;
       }
    }
 
-   public static ewa.a<?> a(ali<ewb> $$0) {
-      return a($$1 -> new evw($$1, $$0));
+   public xv t() {
+      return a;
+   }
+
+   public boolean u() {
+      return !this.q();
+   }
+
+   public boolean v() {
+      return !this.d() && !this.p();
+   }
+
+   public boolean w() {
+      return !this.q();
+   }
+
+   public boolean x() {
+      return !this.q();
+   }
+
+   public boolean y() {
+      return true;
+   }
+
+   public static enum a {
+      a(false, false, ""),
+      b(true, true, "downgrade"),
+      c(true, false, "snapshot");
+
+      private final boolean d;
+      private final boolean e;
+      private final String f;
+
+      private a(final boolean $$0, final boolean $$1, final String $$2) {
+         this.d = $$0;
+         this.e = $$1;
+         this.f = $$2;
+      }
+
+      public boolean a() {
+         return this.d;
+      }
+
+      public boolean b() {
+         return this.e;
+      }
+
+      public String c() {
+         return this.f;
+      }
+   }
+
+   public static class b extends evw {
+      private static final xv b = xv.c("recover_world.warning").a($$0 -> $$0.a(-65536));
+      private static final xv c = xv.c("recover_world.button");
+      private final long d;
+
+      public b(String $$0, Path $$1, long $$2) {
+         super(null, null, $$0, false, false, false, $$1);
+         this.d = $$2;
+      }
+
+      @Override
+      public String b() {
+         return this.a();
+      }
+
+      @Override
+      public xv s() {
+         return b;
+      }
+
+      @Override
+      public long f() {
+         return this.d;
+      }
+
+      @Override
+      public boolean q() {
+         return false;
+      }
+
+      @Override
+      public xv t() {
+         return c;
+      }
+
+      @Override
+      public boolean u() {
+         return true;
+      }
+
+      @Override
+      public boolean v() {
+         return false;
+      }
+
+      @Override
+      public boolean w() {
+         return false;
+      }
+
+      @Override
+      public boolean x() {
+         return false;
+      }
+   }
+
+   public static class c extends evw {
+      private static final xv b = xv.c("symlink_warning.more_info");
+      private static final xv c = xv.c("symlink_warning.title").b(-65536);
+
+      public c(String $$0, Path $$1) {
+         super(null, null, $$0, false, false, false, $$1);
+      }
+
+      @Override
+      public String b() {
+         return this.a();
+      }
+
+      @Override
+      public xv s() {
+         return c;
+      }
+
+      @Override
+      public long f() {
+         return -1L;
+      }
+
+      @Override
+      public boolean q() {
+         return false;
+      }
+
+      @Override
+      public xv t() {
+         return b;
+      }
+
+      @Override
+      public boolean u() {
+         return true;
+      }
+
+      @Override
+      public boolean v() {
+         return false;
+      }
+
+      @Override
+      public boolean w() {
+         return false;
+      }
+
+      @Override
+      public boolean x() {
+         return false;
+      }
    }
 }

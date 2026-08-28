@@ -1,200 +1,108 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
-public class dui extends dsy implements eat.b<eba.b>, eba {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 10;
-   private static final int c = 20;
-   private static final int d = 5;
-   private static final int h = 6;
-   private static final int i = 40;
-   private static final int j = 90;
-   private static final Int2ObjectMap<awm> k = ae.a(new Int2ObjectOpenHashMap(), $$0 -> {
-      $$0.put(1, awn.BV);
-      $$0.put(2, awn.BW);
-      $$0.put(3, awn.BX);
-      $$0.put(4, awn.BU);
-   });
-   private int l;
-   private final eba.d m = new dui.a();
-   private eba.a n = new eba.a();
-   private final eba.b r = new eba.b(this);
-
-   public dui(jh $$0, dvv $$1) {
-      super(dta.L, $$0, $$1);
-   }
-
-   @Override
-   public eba.a go() {
-      return this.n;
-   }
-
-   @Override
-   public eba.d gp() {
-      return this.m;
-   }
-
-   @Override
-   protected void a(ul $$0, js.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.b("warning_level", 99)) {
-         this.l = $$0.h("warning_level");
+public class dui extends dvx {
+   private jz<cxk> d = jz.a(27, cxk.k);
+   private final dvc e = new dvc() {
+      @Override
+      protected void a(dha $$0, jh $$1, dxn $$2) {
+         dui.this.a($$2, axf.bz);
+         dui.this.a($$2, true);
       }
 
-      alh<vi> $$2 = $$1.a(uz.a);
-      if ($$0.b("listener", 10)) {
-         eba.a.a
-            .parse($$2, $$0.p("listener"))
-            .resultOrPartial($$0x -> a.error("Failed to parse vibration listener for Sculk Shrieker: '{}'", $$0x))
-            .ifPresent($$0x -> this.n = $$0x);
+      @Override
+      protected void b(dha $$0, jh $$1, dxn $$2) {
+         dui.this.a($$2, axf.by);
+         dui.this.a($$2, false);
       }
+
+      @Override
+      protected void a(dha $$0, jh $$1, dxn $$2, int $$3, int $$4) {
+      }
+
+      @Override
+      protected boolean a(cps $$0) {
+         if ($$0.cd instanceof ctg) {
+            bsx $$1 = ((ctg)$$0.cd).l();
+            return $$1 == dui.this;
+         } else {
+            return false;
+         }
+      }
+   };
+
+   public dui(jh $$0, dxn $$1) {
+      super(dur.B, $$0, $$1);
    }
 
    @Override
-   protected void b(ul $$0, js.a $$1) {
+   protected void b(ux $$0, js.a $$1) {
       super.b($$0, $$1);
-      $$0.a("warning_level", this.l);
-      alh<vi> $$2 = $$1.a(uz.a);
-      eba.a.a
-         .encodeStart($$2, this.n)
-         .resultOrPartial($$0x -> a.error("Failed to encode vibration listener for Sculk Shrieker: '{}'", $$0x))
-         .ifPresent($$1x -> $$0.a("listener", $$1x));
-   }
-
-   @Nullable
-   public static arq a(@Nullable bul $$0) {
-      if ($$0 instanceof arq) {
-         return (arq)$$0;
-      } else {
-         if ($$0 != null) {
-            bvh $$6 = $$0.cX();
-            if ($$6 instanceof arq) {
-               return (arq)$$6;
-            }
-         }
-
-         if ($$0 instanceof cpn $$3) {
-            bul var3 = $$3.p();
-            if (var3 instanceof arq) {
-               return (arq)var3;
-            }
-         }
-
-         if ($$0 instanceof clc $$5) {
-            bul var9 = $$5.p();
-            if (var9 instanceof arq) {
-               return (arq)var9;
-            }
-         }
-
-         return null;
+      if (!this.c_($$0)) {
+         bsy.a($$0, this.d, $$1);
       }
    }
 
-   public void a(arp $$0, @Nullable arq $$1) {
-      if ($$1 != null) {
-         dvv $$2 = this.m();
-         if (!$$2.c(dpk.b)) {
-            this.l = 0;
-            if (!this.b($$0) || this.b($$0, $$1)) {
-               this.a($$0, (bul)$$1);
-            }
-         }
+   @Override
+   protected void a(ux $$0, js.a $$1) {
+      super.a($$0, $$1);
+      this.d = jz.a(this.b(), cxk.k);
+      if (!this.b_($$0)) {
+         bsy.b($$0, this.d, $$1);
       }
    }
 
-   private boolean b(arp $$0, arq $$1) {
-      OptionalInt $$2 = cny.a($$0, this.aA_(), $$1);
-      $$2.ifPresent($$0x -> this.l = $$0x);
-      return $$2.isPresent();
+   @Override
+   public int b() {
+      return 27;
    }
 
-   private void a(arp $$0, @Nullable bul $$1) {
-      jh $$2 = this.aA_();
-      dvv $$3 = this.m();
-      $$0.a($$2, $$3.b(dpk.b, Boolean.valueOf(true)), 2);
-      $$0.a($$2, $$3.b(), 90);
-      $$0.c(3007, $$2, 0);
-      $$0.a(ear.N, $$2, ear.a.a($$1));
+   @Override
+   protected jz<cxk> f() {
+      return this.d;
    }
 
-   private boolean b(arp $$0) {
-      return this.m().c(dpk.d) && $$0.ak() != bsh.a && $$0.N().b(dfi.M);
+   @Override
+   protected void a(jz<cxk> $$0) {
+      this.d = $$0;
    }
 
-   public void a(arp $$0) {
-      if (this.b($$0) && this.l > 0) {
-         if (!this.c($$0)) {
-            this.b((dfm)$$0);
-         }
-
-         cnw.a($$0, ezy.b(this.aA_()), null, 40);
-      }
+   @Override
+   protected xv j() {
+      return xv.c("container.barrel");
    }
 
-   private void b(dfm $$0) {
-      awm $$1 = (awm)k.get(this.l);
-      if ($$1 != null) {
-         jh $$2 = this.aA_();
-         int $$3 = $$2.u() + azm.b($$0.A, -10, 10);
-         int $$4 = $$2.v() + azm.b($$0.A, -10, 10);
-         int $$5 = $$2.w() + azm.b($$0.A, -10, 10);
-         $$0.a(null, (double)$$3, (double)$$4, (double)$$5, $$1, awo.f, 5.0F, 1.0F);
+   @Override
+   protected csx a(int $$0, cpr $$1) {
+      return ctg.a($$0, $$1, this);
+   }
+
+   @Override
+   public void c_(cps $$0) {
+      if (!this.q && !$$0.aa_()) {
+         this.e.a($$0, this.i(), this.aB_(), this.m());
       }
    }
 
-   private boolean c(arp $$0) {
-      return this.l < 4 ? false : baf.a(bus.bC, bur.k, $$0, this.aA_(), 20, 5, 6, baf.a.b).isPresent();
+   @Override
+   public void c(cps $$0) {
+      if (!this.q && !$$0.aa_()) {
+         this.e.b($$0, this.i(), this.aB_(), this.m());
+      }
    }
 
-   public eba.b b() {
-      return this.r;
+   public void k() {
+      if (!this.q) {
+         this.e.c(this.i(), this.aB_(), this.m());
+      }
    }
 
-   class a implements eba.d {
-      private static final int b = 8;
-      private final eav c = new ean(dui.this.p);
+   void a(dxn $$0, boolean $$1) {
+      this.o.a(this.aB_(), $$0.b(djk.c, Boolean.valueOf($$1)), 3);
+   }
 
-      public a() {
-      }
-
-      @Override
-      public int a() {
-         return 8;
-      }
-
-      @Override
-      public eav b() {
-         return this.c;
-      }
-
-      @Override
-      public axs<ear> c() {
-         return axj.c;
-      }
-
-      @Override
-      public boolean a(arp $$0, jh $$1, jq<ear> $$2, ear.a $$3) {
-         return !dui.this.m().c(dpk.b) && dui.a($$3.a()) != null;
-      }
-
-      @Override
-      public void a(arp $$0, jh $$1, jq<ear> $$2, @Nullable bul $$3, @Nullable bul $$4, float $$5) {
-         dui.this.a($$0, dui.a($$4 != null ? $$4 : $$3));
-      }
-
-      @Override
-      public void e() {
-         dui.this.e();
-      }
-
-      @Override
-      public boolean f() {
-         return true;
-      }
+   void a(dxn $$0, axe $$1) {
+      kl $$2 = $$0.c(djk.b).q();
+      double $$3 = (double)this.p.u() + 0.5 + (double)$$2.u() / 2.0;
+      double $$4 = (double)this.p.v() + 0.5 + (double)$$2.v() / 2.0;
+      double $$5 = (double)this.p.w() + 0.5 + (double)$$2.w() / 2.0;
+      this.o.a(null, $$3, $$4, $$5, $$1, axg.e, 0.5F, this.o.A.i() * 0.1F + 0.9F);
    }
 }

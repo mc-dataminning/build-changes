@@ -1,12 +1,20 @@
-public class acb {
-   public static final zs<aca> a = a("cookie_request");
-   public static final zs<acd> b = b("cookie_response");
+import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-   private static <T extends zq<abz>> zs<T> a(String $$0) {
-      return new zs<>(zr.b, alj.b($$0));
+public record acb(aly<? extends kd<?>> b, List<kh.a> c) implements aac<abz> {
+   private static final zt<ByteBuf, aly<? extends kd<?>>> d = alz.b.a(aly::a, aly::a);
+   public static final zt<ws, acb> a = zt.a(d, acb::b, kh.a.a.a(zr.a()), acb::e, acb::new);
+
+   @Override
+   public aae<acb> a() {
+      return acf.b;
    }
 
-   private static <T extends zq<acc>> zs<T> b(String $$0) {
-      return new zs<>(zr.a, alj.b($$0));
+   public void a(abz $$0) {
+      $$0.a(this);
+   }
+
+   public List<kh.a> e() {
+      return this.c;
    }
 }

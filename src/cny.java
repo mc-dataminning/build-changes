@@ -1,115 +1,147 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
+import javax.annotation.Nullable;
 
-public class cny {
-   public static final Codec<cny> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayv.l.fieldOf("ticks_since_last_warning").orElse(0).forGetter($$0x -> $$0x.g),
-               ayv.l.fieldOf("warning_level").orElse(0).forGetter($$0x -> $$0x.h),
-               ayv.l.fieldOf("cooldown_ticks").orElse(0).forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, cny::new)
-   );
-   public static final int b = 4;
-   private static final double c = 16.0;
-   private static final int d = 48;
-   private static final int e = 12000;
-   private static final int f = 200;
-   private int g;
-   private int h;
-   private int i;
+public class cny extends cnw {
+   public static final int cb = 8;
+   private int cc;
+   @Nullable
+   jh cd;
 
-   public cny(int $$0, int $$1, int $$2) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
+   public cny(bvm<? extends cnw> $$0, dha $$1) {
+      super($$0, $$1);
    }
 
-   public void a() {
-      if (this.g >= 12000) {
-         this.f();
-         this.g = 0;
-      } else {
-         this.g++;
-      }
-
-      if (this.i > 0) {
-         this.i--;
-      }
+   public void h(jh $$0) {
+      this.cd = $$0;
    }
 
-   public void b() {
-      this.g = 0;
-      this.h = 0;
-      this.i = 0;
-   }
-
-   public static OptionalInt a(arp $$0, jh $$1, arq $$2) {
-      if (a($$0, $$1)) {
-         return OptionalInt.empty();
-      } else {
-         List<arq> $$3 = b($$0, $$1);
-         if (!$$3.contains($$2)) {
-            $$3.add($$2);
+   @Override
+   public boolean a(ash $$0, btv $$1, float $$2) {
+      if (this.dV().C) {
+         return super.a($$0, $$1, $$2);
+      } else if ($$1.a(axw.d)) {
+         return super.a($$0, $$1, $$2);
+      } else if (!this.a($$0, $$1) && this.cc <= 0 && $$1.d() instanceof cps) {
+         this.cc = 8;
+         this.dV().a(this, (byte)66);
+         if (this.dV().c_(this.cd) instanceof dve $$3 && $$3.a(this)) {
+            $$3.c();
+            this.f($$1);
          }
 
-         if ($$3.stream().anyMatch($$0x -> $$0x.ac().map(cny::d).orElse(false))) {
-            return OptionalInt.empty();
+         return true;
+      } else {
+         return true;
+      }
+   }
+
+   @Override
+   public void d_() {
+      if (this.cc > 0) {
+         this.cc--;
+      }
+
+      super.d_();
+   }
+
+   @Override
+   public void h() {
+      if (this.dV().C || this.cd != null && this.dV().c_(this.cd) instanceof dve $$0 && $$0.a(this)) {
+         super.h();
+         if (this.dV().C) {
+            this.gm();
+         }
+      } else {
+         this.c(bvf.c.b);
+      }
+   }
+
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 66) {
+         this.cc = 8;
+         this.f(this.dW().p());
+      } else {
+         super.b($$0);
+      }
+   }
+
+   private void gm() {
+      this.ca.a(this.cc > 0, this.af);
+   }
+
+   public void h(@Nullable btv $$0) {
+      if (this.dV() instanceof ash $$1) {
+         fbn $$2 = this.cR();
+         fbs $$3 = $$2.f();
+         double $$4 = $$2.b() * 0.3;
+         double $$5 = $$2.c() * 0.3;
+         double $$6 = $$2.d() * 0.3;
+         $$1.a(new lk(ls.bg, dkg.u.m()), $$3.d, $$3.e, $$3.f, 100, $$4, $$5, $$6, 0.0);
+         $$1.a(new lk(ls.bg, dkg.cB.m().b(dma.c, dma.a.c)), $$3.d, $$3.e, $$3.f, 10, $$4, $$5, $$6, 0.0);
+      }
+
+      this.b(this.o_());
+      if (this.bl >= 0 && $$0 != null && $$0.d() instanceof bwb $$7) {
+         $$7.a(this, this.bl, $$0);
+      }
+
+      this.a(bvf.c.b);
+   }
+
+   @Override
+   protected boolean r(bvf $$0) {
+      return false;
+   }
+
+   @Override
+   protected boolean bR() {
+      return false;
+   }
+
+   @Override
+   protected void p(bvf $$0) {
+      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
+   }
+
+   @Override
+   public boolean o(boolean $$0) {
+      return false;
+   }
+
+   @Override
+   protected cfn b(dha $$0) {
+      return new cny.a(this, $$0);
+   }
+
+   class a extends cfm {
+      a(final cnw $$0, final dha $$1) {
+         super($$0, $$1);
+      }
+
+      @Override
+      public void c() {
+         if (cny.this.p()) {
+            super.c();
+         }
+      }
+
+      @Override
+      protected euf a(int $$0) {
+         this.o = cny.this.new b();
+         return new euf(this.o, $$0);
+      }
+   }
+
+   class b extends eul {
+      @Override
+      public eug a(eui $$0, int $$1, int $$2, int $$3) {
+         jh $$4 = cny.this.cd;
+         if ($$4 == null) {
+            return super.a($$0, $$1, $$2, $$3);
          } else {
-            Optional<cny> $$4 = $$3.stream().flatMap($$0x -> $$0x.ac().stream()).max(Comparator.comparingInt(cny::c));
-            if ($$4.isPresent()) {
-               cny $$5 = $$4.get();
-               $$5.e();
-               $$3.forEach($$1x -> $$1x.ac().ifPresent($$1xx -> $$1xx.a($$5)));
-               return OptionalInt.of($$5.h);
-            } else {
-               return OptionalInt.empty();
-            }
+            double $$5 = $$4.j(new kl($$1, $$2, $$3));
+            return $$5 > 1024.0 && $$5 >= $$4.j($$0.b()) ? eug.a : super.a($$0, $$1, $$2, $$3);
          }
       }
-   }
-
-   private boolean d() {
-      return this.i > 0;
-   }
-
-   private static boolean a(arp $$0, jh $$1) {
-      ezt $$2 = ezt.a(ezy.b($$1), 48.0, 48.0, 48.0);
-      return !$$0.a(cnw.class, $$2).isEmpty();
-   }
-
-   private static List<arq> b(arp $$0, jh $$1) {
-      ezy $$2 = ezy.b($$1);
-      return $$0.a($$1x -> !$$1x.Y_() && $$1x.dt().a((ka)$$2, 16.0) && $$1x.bL());
-   }
-
-   private void e() {
-      if (!this.d()) {
-         this.g = 0;
-         this.i = 200;
-         this.a(this.c() + 1);
-      }
-   }
-
-   private void f() {
-      this.a(this.c() - 1);
-   }
-
-   public void a(int $$0) {
-      this.h = azm.a($$0, 0, 4);
-   }
-
-   public int c() {
-      return this.h;
-   }
-
-   private void a(cny $$0) {
-      this.h = $$0.h;
-      this.i = $$0.i;
-      this.g = $$0.g;
    }
 }

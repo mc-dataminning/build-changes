@@ -1,45 +1,63 @@
-import java.util.UUID;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.UnaryOperator;
 
-public class eai<T extends dzy> implements eah<T> {
-   private final eaa<T> a;
-   private final ead<T> b;
+public record eai(ImmutableList<eam> c) {
+   public static final eai a = new eai.a()
+      .a(eaj.c, $$0 -> $$0)
+      .a(eaj.d, $$0 -> $$0.a(eal::b))
+      .a(eaj.e, $$0 -> $$0.a(eaj.d, 8).a(eal::d))
+      .a(eaj.f, $$0 -> $$0.a(eaj.d, 8).a(eal::e))
+      .a(eaj.g, $$0 -> $$0.a(eaj.d, 8).a(eaj.f, 1).a(0).a(eal::f))
+      .a(eaj.h, $$0 -> $$0.a(eaj.d, 8).a(eaj.f, 1).a(0).a(eal::g))
+      .a(eaj.i, $$0 -> $$0.a(eaj.d, 8).a(0).a(eal::h))
+      .a(eaj.j, $$0 -> $$0.a(eaj.d, 8).a(eaj.i, 1).a(1).a(eal::i))
+      .a(eaj.k, $$0 -> $$0.a(eal::j))
+      .a(eaj.l, $$0 -> $$0.a(eaj.k, 1).a(eal::k))
+      .a(eaj.m, $$0 -> $$0.a(eaj.f, 1).a(eal::l))
+      .a(eaj.n, $$0 -> $$0.a(eal::m))
+      .a();
+   public static final eai b = new eai.a()
+      .a(eaj.c, $$0 -> $$0)
+      .a(eaj.d, $$0 -> $$0.a(eal::c))
+      .a(eaj.e, $$0 -> $$0)
+      .a(eaj.f, $$0 -> $$0)
+      .a(eaj.g, $$0 -> $$0)
+      .a(eaj.h, $$0 -> $$0)
+      .a(eaj.i, $$0 -> $$0)
+      .a(eaj.j, $$0 -> $$0)
+      .a(eaj.k, $$0 -> $$0.a(eal::j))
+      .a(eaj.l, $$0 -> $$0.a(eaj.k, 1).a(eal::k))
+      .a(eaj.m, $$0 -> $$0)
+      .a(eaj.n, $$0 -> $$0.a(eal::m))
+      .a();
 
-   public eai(eaa<T> $$0, ead<T> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public eam a(eaj $$0) {
+      return (eam)this.c.get($$0.b());
    }
 
-   @Nullable
-   @Override
-   public T a(int $$0) {
-      return this.a.a($$0);
+   public ImmutableList<eam> a() {
+      return this.c;
    }
 
-   @Nullable
-   @Override
-   public T a(UUID $$0) {
-      return this.a.a($$0);
-   }
+   public static class a {
+      private final List<eam> a = new ArrayList<>();
 
-   @Override
-   public Iterable<T> a() {
-      return this.a.a();
-   }
+      public eai a() {
+         return new eai(ImmutableList.copyOf(this.a));
+      }
 
-   @Override
-   public <U extends T> void a(eaf<T, U> $$0, axy<U> $$1) {
-      this.a.a($$0, $$1);
-   }
+      public eai.a a(eaj $$0, UnaryOperator<eam.a> $$1) {
+         eam.a $$2;
+         if (this.a.isEmpty()) {
+            $$2 = new eam.a($$0);
+         } else {
+            $$2 = new eam.a($$0, this.a.getLast());
+         }
 
-   @Override
-   public void a(ezt $$0, Consumer<T> $$1) {
-      this.b.b($$0, axy.forConsumer($$1));
-   }
-
-   @Override
-   public <U extends T> void a(eaf<T, U> $$0, ezt $$1, axy<U> $$2) {
-      this.b.a($$0, $$1, $$2);
+         this.a.add($$1.apply($$2).a());
+         return this;
+      }
    }
 }

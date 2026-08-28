@@ -1,21 +1,169 @@
-public class gfs extends gft<ln> {
-   protected gfs(gdh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ln $$7, ghj $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      this.v = this.a($$7.b().x(), $$9);
-      this.w = this.a($$7.b().y(), $$9);
-      this.x = this.a($$7.b().z(), $$9);
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.Base64;
+import java.util.Collections;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
+
+public class gfs {
+   private static final Logger j = LogUtils.getLogger();
+   private static final int k = 1024;
+   public String a;
+   public String b;
+   public xv c;
+   public xv d;
+   @Nullable
+   public akw.b e;
+   public long f;
+   public int g = ab.b().e();
+   public xv h = xv.b(ab.b().c());
+   public List<xv> i = Collections.emptyList();
+   private gfs.a l = gfs.a.c;
+   @Nullable
+   private byte[] m;
+   private gfs.c n;
+   private gfs.b o = gfs.b.a;
+
+   public gfs(String $$0, String $$1, gfs.c $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.n = $$2;
    }
 
-   public static class a implements ggr<ln> {
-      private final ghj a;
-
-      public a(ghj $$0) {
-         this.a = $$0;
+   public ux a() {
+      ux $$0 = new ux();
+      $$0.a("name", this.a);
+      $$0.a("ip", this.b);
+      if (this.m != null) {
+         $$0.a("icon", Base64.getEncoder().encodeToString(this.m));
       }
 
-      public ggo a(ln $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gfs($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
+      if (this.l == gfs.a.a) {
+         $$0.a("acceptTextures", true);
+      } else if (this.l == gfs.a.b) {
+         $$0.a("acceptTextures", false);
       }
+
+      return $$0;
+   }
+
+   public gfs.a b() {
+      return this.l;
+   }
+
+   public void a(gfs.a $$0) {
+      this.l = $$0;
+   }
+
+   public static gfs a(ux $$0) {
+      gfs $$1 = new gfs($$0.l("name"), $$0.l("ip"), gfs.c.c);
+      if ($$0.b("icon", 8)) {
+         try {
+            byte[] $$2 = Base64.getDecoder().decode($$0.l("icon"));
+            $$1.a(b($$2));
+         } catch (IllegalArgumentException var3) {
+            j.warn("Malformed base64 server icon", var3);
+         }
+      }
+
+      if ($$0.b("acceptTextures", 99)) {
+         if ($$0.q("acceptTextures")) {
+            $$1.a(gfs.a.a);
+         } else {
+            $$1.a(gfs.a.b);
+         }
+      } else {
+         $$1.a(gfs.a.c);
+      }
+
+      return $$1;
+   }
+
+   @Nullable
+   public byte[] c() {
+      return this.m;
+   }
+
+   public void a(@Nullable byte[] $$0) {
+      this.m = $$0;
+   }
+
+   public boolean d() {
+      return this.n == gfs.c.a;
+   }
+
+   public boolean e() {
+      return this.n == gfs.c.b;
+   }
+
+   public gfs.c f() {
+      return this.n;
+   }
+
+   public void a(gfs $$0) {
+      this.b = $$0.b;
+      this.a = $$0.a;
+      this.m = $$0.m;
+   }
+
+   public void b(gfs $$0) {
+      this.a($$0);
+      this.a($$0.b());
+      this.n = $$0.n;
+   }
+
+   public gfs.b g() {
+      return this.o;
+   }
+
+   public void a(gfs.b $$0) {
+      this.o = $$0;
+   }
+
+   @Nullable
+   public static byte[] b(@Nullable byte[] $$0) {
+      if ($$0 != null) {
+         try {
+            baj $$1 = baj.a($$0);
+            if ($$1.a() <= 1024 && $$1.b() <= 1024) {
+               return $$0;
+            }
+         } catch (IOException var2) {
+            j.warn("Failed to decode server icon", var2);
+         }
+      }
+
+      return null;
+   }
+
+   public static enum a {
+      a("enabled"),
+      b("disabled"),
+      c("prompt");
+
+      private final xv d;
+
+      private a(final String $$0) {
+         this.d = xv.c("addServer.resourcePack." + $$0);
+      }
+
+      public xv a() {
+         return this.d;
+      }
+   }
+
+   public static enum b {
+      a,
+      b,
+      c,
+      d,
+      e;
+   }
+
+   public static enum c {
+      a,
+      b,
+      c;
    }
 }

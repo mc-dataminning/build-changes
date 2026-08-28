@@ -1,10 +1,8 @@
-public class axh {
-   public static final axs<ekj> a = a("visible");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private axh() {
-   }
-
-   private static axs<ekj> a(String $$0) {
-      return axs.a(ma.aO, alj.b($$0));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface axh {
 }

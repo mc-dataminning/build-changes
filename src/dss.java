@@ -1,147 +1,61 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public abstract class dss extends dsy implements bsd, bsm, bsn {
-   private bsl d = bsl.a;
-   @Nullable
-   private xj e;
+public class dss extends dmb {
+   public static final MapCodec<dss> a = b(dss::new);
+   public static final int b = 2;
+   public static final dym c = dyd.ar;
+   private static final float g = 3.0F;
+   private static final fcm[] h = new fcm[]{dke.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0), dke.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0)};
+   private static final int i = 1;
 
-   protected dss(dta<?> $$0, jh $$1, dvv $$2) {
-      super($$0, $$1, $$2);
+   @Override
+   public MapCodec<dss> a() {
+      return a;
+   }
+
+   public dss(dxm.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected void a(ul $$0, js.a $$1) {
-      super.a($$0, $$1);
-      this.d = bsl.b($$0);
-      if ($$0.b("CustomName", 8)) {
-         this.e = a($$0.l("CustomName"), $$1);
+   protected void a(dxo.a<dke, dxn> $$0) {
+      $$0.a(c);
+   }
+
+   @Override
+   public fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
+      return h[this.h($$0)];
+   }
+
+   @Override
+   protected dym b() {
+      return c;
+   }
+
+   @Override
+   public int c() {
+      return 2;
+   }
+
+   @Override
+   protected dgz d() {
+      return cxo.vY;
+   }
+
+   @Override
+   public dxn b(int $$0) {
+      return $$0 == 2 ? dkg.bZ.m() : super.b($$0);
+   }
+
+   @Override
+   public void b(dxn $$0, ash $$1, jh $$2, bam $$3) {
+      if ($$3.a(3) != 0) {
+         super.b($$0, $$1, $$2, $$3);
       }
    }
 
    @Override
-   protected void b(ul $$0, js.a $$1) {
-      super.b($$0, $$1);
-      this.d.a($$0);
-      if (this.e != null) {
-         $$0.a("CustomName", xj.a.a(this.e, $$1));
-      }
-   }
-
-   @Override
-   public xj al() {
-      return this.e != null ? this.e : this.j();
-   }
-
-   @Override
-   public xj o_() {
-      return this.al();
-   }
-
-   @Nullable
-   @Override
-   public xj an() {
-      return this.e;
-   }
-
-   protected abstract xj j();
-
-   public boolean d(cou $$0) {
-      return a($$0, this.d, this.o_());
-   }
-
-   public static boolean a(cou $$0, bsl $$1, xj $$2) {
-      if (!$$0.Y_() && !$$1.a($$0.eX())) {
-         $$0.a(xj.a("container.isLocked", $$2), true);
-         $$0.a(awn.eQ, awo.e, 1.0F, 1.0F);
-         return false;
-      } else {
-         return true;
-      }
-   }
-
-   protected abstract jz<cwm> f();
-
-   protected abstract void a(jz<cwm> var1);
-
-   @Override
-   public boolean c() {
-      for (cwm $$0 : this.f()) {
-         if (!$$0.f()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public cwm a(int $$0) {
-      return this.f().get($$0);
-   }
-
-   @Override
-   public cwm a(int $$0, int $$1) {
-      cwm $$2 = bse.a(this.f(), $$0, $$1);
-      if (!$$2.f()) {
-         this.e();
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public cwm b(int $$0) {
-      return bse.a(this.f(), $$0);
-   }
-
-   @Override
-   public void a(int $$0, cwm $$1) {
-      this.f().set($$0, $$1);
-      $$1.f(this.e_($$1));
-      this.e();
-   }
-
-   @Override
-   public boolean a(cou $$0) {
-      return bsd.a(this, $$0);
-   }
-
-   @Override
-   public void a() {
-      this.f().clear();
-   }
-
-   @Nullable
-   @Override
-   public crz createMenu(int $$0, cot $$1, cou $$2) {
-      return this.d($$2) ? this.a($$0, $$1) : null;
-   }
-
-   protected abstract crz a(int var1, cot var2);
-
-   @Override
-   protected void a(dsy.b $$0) {
-      super.a($$0);
-      this.e = $$0.a(ku.g);
-      this.d = $$0.a(ku.ao, bsl.a);
-      $$0.a(ku.al, cze.a).a(this.f());
-   }
-
-   @Override
-   protected void a(kq.a $$0) {
-      super.a($$0);
-      $$0.a(ku.g, this.e);
-      if (!this.d.equals(bsl.a)) {
-         $$0.a(ku.ao, this.d);
-      }
-
-      $$0.a(ku.al, cze.a(this.f()));
-   }
-
-   @Override
-   public void a(ul $$0) {
-      $$0.r("CustomName");
-      $$0.r("lock");
-      $$0.r("Items");
+   protected int a(dha $$0) {
+      return 1;
    }
 }

@@ -1,76 +1,33 @@
-import jdk.jfr.Category;
-import jdk.jfr.Enabled;
-import jdk.jfr.Event;
-import jdk.jfr.Label;
-import jdk.jfr.Name;
-import jdk.jfr.StackTrace;
+import java.util.function.IntSupplier;
+import java.util.function.LongSupplier;
 
-@Category({"Minecraft", "Storage"})
-@StackTrace(false)
-@Enabled(false)
-public abstract class bph extends Event {
-   @Name("regionPosX")
-   @Label("Region X Position")
-   public final int regionPosX;
-   @Name("regionPosZ")
-   @Label("Region Z Position")
-   public final int regionPosZ;
-   @Name("localPosX")
-   @Label("Local X Position")
-   public final int localChunkPosX;
-   @Name("localPosZ")
-   @Label("Local Z Position")
-   public final int localChunkPosZ;
-   @Name("chunkPosX")
-   @Label("Chunk X Position")
-   public final int chunkPosX;
-   @Name("chunkPosZ")
-   @Label("Chunk Z Position")
-   public final int chunkPosZ;
-   @Name("level")
-   @Label("Level Id")
-   public final String levelId;
-   @Name("dimension")
-   @Label("Dimension")
-   public final String dimension;
-   @Name("type")
-   @Label("Type")
-   public final String type;
-   @Name("compression")
-   @Label("Compression")
-   public final String compression;
-   @Name("bytes")
-   @Label("Bytes")
-   public final int bytes;
+public class bph {
+   private final LongSupplier a;
+   private final IntSupplier b;
+   private bpl c = bpk.a;
 
-   public bph(dzj $$0, des $$1, dzi $$2, int $$3) {
-      this.regionPosX = $$1.h();
-      this.regionPosZ = $$1.i();
-      this.localChunkPosX = $$1.j();
-      this.localChunkPosZ = $$1.k();
-      this.chunkPosX = $$1.g;
-      this.chunkPosZ = $$1.h;
-      this.levelId = $$0.a();
-      this.dimension = $$0.b().a().toString();
-      this.type = $$0.c();
-      this.compression = "standard:" + $$2.b();
-      this.bytes = $$3;
+   public bph(LongSupplier $$0, IntSupplier $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static class a {
-      public static final String a = "regionPosX";
-      public static final String b = "regionPosZ";
-      public static final String c = "localPosX";
-      public static final String d = "localPosZ";
-      public static final String e = "chunkPosX";
-      public static final String f = "chunkPosZ";
-      public static final String g = "level";
-      public static final String h = "dimension";
-      public static final String i = "type";
-      public static final String j = "compression";
-      public static final String k = "bytes";
+   public boolean a() {
+      return this.c != bpk.a;
+   }
 
-      private a() {
-      }
+   public void b() {
+      this.c = bpk.a;
+   }
+
+   public void c() {
+      this.c = new bpg(this.a, this.b, true);
+   }
+
+   public bpo d() {
+      return this.c;
+   }
+
+   public bpm e() {
+      return this.c.d();
    }
 }

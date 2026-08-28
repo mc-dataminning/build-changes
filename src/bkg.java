@@ -1,29 +1,42 @@
-import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.Const.PrimitiveType;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.codecs.PrimitiveCodec;
 
-public class bkg extends bjo {
+public class bkg extends Schema {
+   public static final PrimitiveCodec<String> a = new PrimitiveCodec<String>() {
+      public <T> DataResult<String> read(DynamicOps<T> $$0, T $$1) {
+         return $$0.getStringValue($$1).map(bkg::a);
+      }
+
+      public <T> T a(DynamicOps<T> $$0, String $$1) {
+         return (T)$$0.createString($$1);
+      }
+
+      @Override
+      public String toString() {
+         return "NamespacedString";
+      }
+   };
+   private static final Type<String> b = new PrimitiveType(a);
+
    public bkg(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register($$1, $$2, () -> bjp.a($$0));
+   public static String a(String $$0) {
+      alz $$1 = alz.c($$0);
+      return $$1 != null ? $$1.toString() : $$0;
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      a($$0, $$1, "minecraft:turtle");
-      a($$0, $$1, "minecraft:cod_mob");
-      a($$0, $$1, "minecraft:tropical_fish");
-      a($$0, $$1, "minecraft:salmon_mob");
-      a($$0, $$1, "minecraft:puffer_fish");
-      a($$0, $$1, "minecraft:phantom");
-      a($$0, $$1, "minecraft:dolphin");
-      a($$0, $$1, "minecraft:drowned");
-      $$0.register($$1, "minecraft:trident", $$1x -> DSL.optionalFields("inBlockState", bia.u.in($$0), "Trident", bia.t.in($$0)));
-      return $$1;
+   public static Type<String> a() {
+      return b;
+   }
+
+   public Type<?> getChoiceType(TypeReference $$0, String $$1) {
+      return super.getChoiceType($$0, a($$1));
    }
 }

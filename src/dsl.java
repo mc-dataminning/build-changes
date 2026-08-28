@@ -1,21 +1,29 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dsl extends djh {
-   public static final MapCodec<dsl> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cvj.q.fieldOf("color").forGetter(dsl::b), t()).apply($$0, dsl::new));
-   private final cvj d;
+public class dsl extends dmo implements dkh {
+   public static final MapCodec<dsl> c = b(dsl::new);
 
    @Override
    public MapCodec<dsl> a() {
       return c;
    }
 
-   protected dsl(cvj $$0, dvu.d $$1) {
-      super($$1);
-      this.d = $$0;
+   public dsl(dxm.d $$0) {
+      super($$0);
    }
 
-   public cvj b() {
-      return this.d;
+   @Override
+   public boolean b(dhd $$0, jh $$1, dxn $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(dha $$0, bam $$1, jh $$2, dxn $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(ash $$0, bam $$1, jh $$2, dxn $$3) {
+      a($$0, $$2, new cxk(this));
    }
 }

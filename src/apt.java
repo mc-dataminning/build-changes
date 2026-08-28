@@ -1,107 +1,23 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
 public class apt {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xj.c("commands.trigger.failed.unprimed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xj.c("commands.trigger.failed.invalid"));
-
    public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)ex.a("trigger")
-            .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ex.a("objective", fq.a())
-                        .suggests(($$0x, $$1) -> a((ew)$$0x.getSource(), $$1))
-                        .executes($$0x -> a((ew)$$0x.getSource(), ((ew)$$0x.getSource()).h(), fq.a($$0x, "objective"))))
-                     .then(
-                        ex.a("add")
-                           .then(
-                              ex.a("value", IntegerArgumentType.integer())
-                                 .executes(
-                                    $$0x -> a(
-                                          (ew)$$0x.getSource(),
-                                          ((ew)$$0x.getSource()).h(),
-                                          fq.a($$0x, "objective"),
-                                          IntegerArgumentType.getInteger($$0x, "value")
-                                       )
-                                 )
-                           )
-                     ))
-                  .then(
-                     ex.a("set")
-                        .then(
-                           ex.a("value", IntegerArgumentType.integer())
-                              .executes(
-                                 $$0x -> b(
-                                       (ew)$$0x.getSource(), ((ew)$$0x.getSource()).h(), fq.a($$0x, "objective"), IntegerArgumentType.getInteger($$0x, "value")
-                                    )
-                              )
-                        )
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("setidletimeout").requires($$0x -> $$0x.c(3)))
+            .then(ex.a("minutes", IntegerArgumentType.integer(0)).executes($$0x -> a((ew)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "minutes"))))
       );
    }
 
-   public static CompletableFuture<Suggestions> a(ew $$0, SuggestionsBuilder $$1) {
-      fbc $$2 = $$0.f();
-      List<String> $$3 = Lists.newArrayList();
-      if ($$2 != null) {
-         fbd $$4 = $$0.l().aJ();
-
-         for (fav $$5 : $$4.c()) {
-            if ($$5.c() == fbg.c) {
-               faz $$6 = $$4.d($$2, $$5);
-               if ($$6 != null && !$$6.b()) {
-                  $$3.add($$5.b());
-               }
-            }
-         }
-      }
-
-      return fb.b($$3, $$1);
-   }
-
-   private static int a(ew $$0, arq $$1, fav $$2, int $$3) throws CommandSyntaxException {
-      fbb $$4 = a($$0.l().aJ(), $$1, $$2);
-      int $$5 = $$4.b($$3);
-      $$0.a(() -> xj.a("commands.trigger.add.success", $$2.g(), $$3), true);
-      return $$5;
-   }
-
-   private static int b(ew $$0, arq $$1, fav $$2, int $$3) throws CommandSyntaxException {
-      fbb $$4 = a($$0.l().aJ(), $$1, $$2);
-      $$4.a($$3);
-      $$0.a(() -> xj.a("commands.trigger.set.success", $$2.g(), $$3), true);
-      return $$3;
-   }
-
-   private static int a(ew $$0, arq $$1, fav $$2) throws CommandSyntaxException {
-      fbb $$3 = a($$0.l().aJ(), $$1, $$2);
-      int $$4 = $$3.b(1);
-      $$0.a(() -> xj.a("commands.trigger.simple.success", $$2.g()), true);
-      return $$4;
-   }
-
-   private static fbb a(fbd $$0, fbc $$1, fav $$2) throws CommandSyntaxException {
-      if ($$2.c() != fbg.c) {
-         throw b.create();
+   private static int a(ew $$0, int $$1) {
+      $$0.l().c($$1);
+      if ($$1 > 0) {
+         $$0.a(() -> xv.a("commands.setidletimeout.success", $$1), true);
       } else {
-         faz $$3 = $$0.d($$1, $$2);
-         if ($$3 != null && !$$3.b()) {
-            fbb $$4 = $$0.c($$1, $$2);
-            $$4.f();
-            return $$4;
-         } else {
-            throw a.create();
-         }
+         $$0.a(() -> xv.c("commands.setidletimeout.success.disabled"), true);
       }
+
+      return $$1;
    }
 }

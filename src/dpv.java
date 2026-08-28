@@ -1,113 +1,171 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dpv extends dky implements dit, dpr {
+public class dpv extends dmo implements dkh {
    public static final MapCodec<dpv> c = b(dpv::new);
-   private static final dwm g = dwl.C;
-   public static final dws<jm> d = dwl.R;
-   protected static final float e = 6.0F;
-   protected static final fas f = diq.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+   public static final dym d = dyd.au;
+   public static final int e = 4;
+   private static final int f = 3;
+   private static final int g = 1;
+   private static final fcm h = dke.a(3.0, 0.0, 3.0, 13.0, 15.0, 13.0);
+   private static final fcm i = dke.a(3.0, -1.0, 3.0, 13.0, 16.0, 13.0);
+   private static final fcm j = dke.a(5.0, -1.0, 5.0, 11.0, 3.0, 11.0);
+   private static final fcm k = dke.a(3.0, -1.0, 3.0, 13.0, 5.0, 13.0);
+   private static final fcm[] l = new fcm[]{dke.a(3.0, 0.0, 3.0, 13.0, 11.0, 13.0), h};
+   private static final fcm[] m = new fcm[]{j, dke.a(3.0, -1.0, 3.0, 13.0, 14.0, 13.0), i, i, i};
 
    @Override
    public MapCodec<dpv> a() {
       return c;
    }
 
-   public dpv(dvu.d $$0) {
+   public dpv(dxm.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, dwq.b).b(g, Boolean.valueOf(false)).b(d, jm.c));
-   }
-
-   @Override
-   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
-      return f;
-   }
-
-   @Override
-   protected boolean b(dvv $$0, der $$1, jh $$2) {
-      return $$0.a(axc.by) || $$1.b_($$2.d()).a(erw.c) && super.b($$0, $$1, $$2);
    }
 
    @Nullable
    @Override
-   public dvv a(dad $$0) {
-      dvv $$1 = super.a($$0);
-      return $$1 != null ? c($$0.q(), $$0.a(), $$1.b(d, $$0.g().g())) : null;
+   public dxn a(dbb $$0) {
+      return this.m();
    }
 
    @Override
-   public void a(dfm $$0, jh $$1, dvv $$2, bvh $$3, cwm $$4) {
-      if (!$$0.A_()) {
-         jh $$5 = $$1.d();
-         dvv $$6 = dky.c($$0, $$5, this.m().b(b, dwq.a).b(d, $$2.c(d)));
-         $$0.a($$5, $$6, 3);
-      }
+   public fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
+      return $$0.c(b) == dyi.a ? l[Math.min(Math.abs(4 - ($$0.c(d) + 1)), l.length - 1)] : m[$$0.c(d)];
    }
 
    @Override
-   protected erv b_(dvv $$0) {
-      return $$0.c(g) ? erw.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a(dvv $$0, dfp $$1, jh $$2) {
-      if ($$0.c(b) == dwq.a) {
-         return super.a($$0, $$1, $$2);
+   public fcm b(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
+      if ($$0.c(d) == 0) {
+         return j;
       } else {
-         jh $$3 = $$2.e();
-         dvv $$4 = $$1.a_($$3);
-         return this.b($$4, $$1, $$3);
+         return $$0.c(b) == dyi.b ? k : super.b($$0, $$1, $$2, $$3);
       }
    }
 
    @Override
-   protected dvv a(dvv $$0, dfp $$1, dgb $$2, jh $$3, jm $$4, jh $$5, dvv $$6, azu $$7) {
-      if ($$0.c(g)) {
-         $$2.a($$3, erw.c, erw.c.a($$1));
+   public dxn a(dxn $$0, dhd $$1, dhp $$2, jh $$3, jm $$4, jh $$5, dxn $$6, bam $$7) {
+      if (b($$0.c(d))) {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      } else {
+         return $$0.a($$1, $$3) ? $$0 : dkg.a.m();
+      }
+   }
+
+   @Override
+   public boolean a(dxn $$0, dhd $$1, jh $$2) {
+      return o($$0) && !b($$1, $$2) ? false : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected boolean b(dxn $$0, dgf $$1, jh $$2) {
+      return $$0.a(dkg.cK);
+   }
+
+   @Override
+   protected void a(dxo.a<dke, dxn> $$0) {
+      $$0.a(d);
+      super.a($$0);
+   }
+
+   @Override
+   public void a(dxn $$0, dha $$1, jh $$2, bvf $$3) {
+      if ($$1 instanceof ash $$4 && $$3 instanceof cmx && $$4.N().b(dgw.c)) {
+         $$4.a($$2, true, $$3);
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected void a(dvw.a<diq, dvv> $$0) {
-      $$0.a(b, g, d);
+   public boolean a(dxn $$0, dbb $$1) {
+      return false;
    }
 
    @Override
-   public boolean b(dfp $$0, jh $$1, dvv $$2) {
+   public void a(dha $$0, jh $$1, dxn $$2, bwb $$3, cxk $$4) {
+   }
+
+   @Override
+   public boolean f(dxn $$0) {
+      return $$0.c(b) == dyi.b && !this.q($$0);
+   }
+
+   @Override
+   public void b(dxn $$0, ash $$1, jh $$2, bam $$3) {
+      float $$4 = dmb.a(this, $$1, $$2);
+      boolean $$5 = $$3.a((int)(25.0F / $$4) + 1) == 0;
+      if ($$5) {
+         this.a($$1, $$0, $$2, 1);
+      }
+   }
+
+   private void a(ash $$0, dxn $$1, jh $$2, int $$3) {
+      int $$4 = Math.min($$1.c(d) + $$3, 4);
+      if (this.a($$0, $$2, $$1, $$4)) {
+         dxn $$5 = $$1.b(d, Integer.valueOf($$4));
+         $$0.a($$2, $$5, 2);
+         if (b($$4)) {
+            $$0.a($$2.d(), $$5.b(b, dyi.a), 3);
+         }
+      }
+   }
+
+   private static boolean a(dhd $$0, jh $$1) {
+      dxn $$2 = $$0.a_($$1);
+      return $$2.l() || $$2.a(dkg.kW);
+   }
+
+   private static boolean b(dhd $$0, jh $$1) {
+      return dmb.a($$0, $$1);
+   }
+
+   private static boolean o(dxn $$0) {
+      return $$0.a(dkg.kW) && $$0.c(b) == dyi.b;
+   }
+
+   private static boolean b(int $$0) {
+      return $$0 >= 3;
+   }
+
+   private boolean a(dhd $$0, jh $$1, dxn $$2, int $$3) {
+      return !this.q($$2) && b($$0, $$1) && (!b($$3) || a($$0, $$1.d()));
+   }
+
+   private boolean q(dxn $$0) {
+      return $$0.c(d) >= 4;
+   }
+
+   @Nullable
+   private dpv.a d(dhd $$0, jh $$1, dxn $$2) {
+      if (o($$2)) {
+         return new dpv.a($$1, $$2);
+      } else {
+         jh $$3 = $$1.e();
+         dxn $$4 = $$0.a_($$3);
+         return o($$4) ? new dpv.a($$3, $$4) : null;
+      }
+   }
+
+   @Override
+   public boolean b(dhd $$0, jh $$1, dxn $$2) {
+      dpv.a $$3 = this.d($$0, $$1, $$2);
+      return $$3 == null ? false : this.a($$0, $$3.a, $$3.b, $$3.b.c(d) + 1);
+   }
+
+   @Override
+   public boolean a(dha $$0, bam $$1, jh $$2, dxn $$3) {
       return true;
    }
 
    @Override
-   public boolean a(dfm $$0, azu $$1, jh $$2, dvv $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arp $$0, azu $$1, jh $$2, dvv $$3) {
-      if ($$3.c(dky.b) == dwq.b) {
-         jh $$4 = $$2.d();
-         $$0.a($$4, $$0.b_($$4).g(), 18);
-         din.a($$0, $$1, $$2, $$3.c(d));
-      } else {
-         jh $$5 = $$2.e();
-         this.a($$0, $$1, $$5, $$0.a_($$5));
+   public void a(ash $$0, bam $$1, jh $$2, dxn $$3) {
+      dpv.a $$4 = this.d($$0, $$2, $$3);
+      if ($$4 != null) {
+         this.a($$0, $$4.b, $$4.a, 1);
       }
    }
 
-   @Override
-   protected dvv a(dvv $$0, dpd $$1) {
-      return $$0.b(d, $$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected dvv a(dvv $$0, dnm $$1) {
-      return $$0.a($$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected float at_() {
-      return 0.1F;
+   static record a(jh a, dxn b) {
    }
 }

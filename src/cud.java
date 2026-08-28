@@ -1,97 +1,88 @@
-import java.util.List;
+public class cud extends csx {
+   private static final int q = 1;
+   private static final int r = 1;
+   public static final int m = 1;
+   public static final int n = 2;
+   public static final int o = 3;
+   public static final int p = 100;
+   private final bsx s;
+   private final ctj t;
 
-public class cud implements csr {
-   private final jz<cwm> b;
-   private final int c;
-   private final int d;
-   private final crz e;
-
-   public cud(crz $$0, int $$1, int $$2) {
-      this($$0, $$1, $$2, jz.a($$1 * $$2, cwm.k));
+   public cud(int $$0) {
+      this($$0, new btl(1), new cut(1));
    }
 
-   private cud(crz $$0, int $$1, int $$2, jz<cwm> $$3) {
-      this.b = $$3;
-      this.e = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public cud(int $$0, bsx $$1, ctj $$2) {
+      super(cug.r, $$0);
+      a($$1, 1);
+      a($$2, 1);
+      this.s = $$1;
+      this.t = $$2;
+      this.a(new cuu($$1, 0, 0, 0) {
+         @Override
+         public void c() {
+            super.c();
+            cud.this.a(this.c);
+         }
+      });
+      this.a($$2);
    }
 
    @Override
-   public int b() {
-      return this.b.size();
-   }
+   public boolean a(cps $$0, int $$1) {
+      if ($$1 >= 100) {
+         int $$2 = $$1 - 100;
+         this.b(0, $$2);
+         return true;
+      } else {
+         switch ($$1) {
+            case 1:
+               int $$4 = this.t.a(0);
+               this.b(0, $$4 - 1);
+               return true;
+            case 2:
+               int $$3 = this.t.a(0);
+               this.b(0, $$3 + 1);
+               return true;
+            case 3:
+               if (!$$0.gt()) {
+                  return false;
+               }
 
-   @Override
-   public boolean c() {
-      for (cwm $$0 : this.b) {
-         if (!$$0.f()) {
-            return false;
+               cxk $$5 = this.s.b(0);
+               this.s.e();
+               if (!$$0.gg().f($$5)) {
+                  $$0.a($$5, false);
+               }
+
+               return true;
+            default:
+               return false;
          }
       }
-
-      return true;
    }
 
    @Override
-   public cwm a(int $$0) {
-      return $$0 >= this.b() ? cwm.k : this.b.get($$0);
+   public cxk b(cps $$0, int $$1) {
+      return cxk.k;
    }
 
    @Override
-   public cwm b(int $$0) {
-      return bse.a(this.b, $$0);
+   public void b(int $$0, int $$1) {
+      super.b($$0, $$1);
+      this.d();
    }
 
    @Override
-   public cwm a(int $$0, int $$1) {
-      cwm $$2 = bse.a(this.b, $$0, $$1);
-      if (!$$2.f()) {
-         this.e.a(this);
-      }
-
-      return $$2;
+   public boolean b(cps $$0) {
+      return this.s.a($$0);
    }
 
-   @Override
-   public void a(int $$0, cwm $$1) {
-      this.b.set($$0, $$1);
-      this.e.a(this);
+   public cxk l() {
+      return this.s.a(0);
    }
 
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cou $$0) {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      this.b.clear();
-   }
-
-   @Override
-   public int g() {
-      return this.d;
-   }
-
-   @Override
-   public int ay_() {
-      return this.c;
-   }
-
-   @Override
-   public List<cwm> h() {
-      return List.copyOf(this.b);
-   }
-
-   @Override
-   public void fillStackedContents(coz $$0) {
-      for (cwm $$1 : this.b) {
-         $$0.a($$1);
-      }
+   public int m() {
+      return this.t.a(0);
    }
 }

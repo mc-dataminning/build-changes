@@ -1,60 +1,37 @@
-import javax.annotation.Nullable;
+public class aih implements aac<ahm> {
+   public static final zt<ws, aih> a = aac.a(aih::a, aih::new);
+   private final int b;
+   private final int c;
 
-public class aih implements zq<agw> {
-   public static final zh<wg, aih> a = zq.a(aih::a, aih::new);
-   private final aih.a b;
-   @Nullable
-   private final alj c;
-
-   public aih(aih.a $$0, @Nullable alj $$1) {
+   public aih(int $$0, int $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   public static aih a(ah $$0) {
-      return new aih(aih.a.a, $$0.a());
+   private aih(ws $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
    }
 
-   public static aih b() {
-      return new aih(aih.a.b, null);
-   }
-
-   private aih(wg $$0) {
-      this.b = $$0.b(aih.a.class);
-      if (this.b == aih.a.a) {
-         this.c = $$0.q();
-      } else {
-         this.c = null;
-      }
-   }
-
-   private void a(wg $$0) {
-      $$0.a(this.b);
-      if (this.b == aih.a.a) {
-         $$0.a(this.c);
-      }
+   private void a(ws $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public zs<aih> a() {
-      return agu.bT;
+   public aae<aih> a() {
+      return ahk.bE;
    }
 
-   public void a(agw $$0) {
+   public void a(ahm $$0) {
       $$0.a(this);
    }
 
-   public aih.a e() {
+   public int b() {
       return this.b;
    }
 
-   @Nullable
-   public alj f() {
+   public int e() {
       return this.c;
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

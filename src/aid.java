@@ -1,12 +1,29 @@
-public record aid(cos b) implements zq<agw> {
-   public static final zh<wg, aid> a = zh.a(cos.a, aid::b, aid::new);
+public class aid implements aac<ahm> {
+   public static final zt<ws, aid> a = aac.a(aid::a, aid::new);
+   private final int b;
 
-   @Override
-   public zs<aid> a() {
-      return agu.bP;
+   public aid(int $$0) {
+      this.b = $$0;
    }
 
-   public void a(agw $$0) {
+   private aid(ws $$0) {
+      this.b = $$0.x();
+   }
+
+   private void a(ws $$0) {
+      $$0.f(this.b);
+   }
+
+   @Override
+   public aae<aid> a() {
+      return ahk.bA;
+   }
+
+   public void a(ahm $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
    }
 }

@@ -1,29 +1,79 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalInt;
 
-public abstract class eib {
-   public static final Codec<eib> a = lz.Y.q().dispatch(eib::b, eic::a);
-   protected static final int b = 16;
-   protected final OptionalInt c;
-
-   protected static <S extends eib> RecordCodecBuilder<S, OptionalInt> a() {
-      return Codec.intRange(0, 80)
-         .optionalFieldOf("min_clipped_height")
-         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
-         .forGetter($$0 -> $$0.c);
+public class eib extends ego<ejp> {
+   public eib(Codec<ejp> $$0) {
+      super($$0);
    }
 
-   public eib(OptionalInt $$0) {
-      this.c = $$0;
+   @Override
+   public boolean a(egq<ejp> $$0) {
+      dhy $$1 = $$0.b();
+      jh $$2 = $$0.e();
+      if (a($$1, $$2)) {
+         return false;
+      } else {
+         bam $$3 = $$0.d();
+         ejp $$4 = $$0.f();
+         int $$5 = $$4.a();
+         int $$6 = $$4.b();
+         int $$7 = $$4.c();
+         jh.a $$8 = new jh.a();
+
+         for (int $$9 = 0; $$9 < $$5 * $$5; $$9++) {
+            $$8.g($$2).e(bae.a($$3, -$$5, $$5), bae.a($$3, -$$6, $$6), bae.a($$3, -$$5, $$5));
+            if (a($$1, $$8) && !a($$1, (jh)$$8)) {
+               int $$10 = bae.a($$3, 1, $$7);
+               if ($$3.a(6) == 0) {
+                  $$10 *= 2;
+               }
+
+               if ($$3.a(5) == 0) {
+                  $$10 = 1;
+               }
+
+               int $$11 = 17;
+               int $$12 = 25;
+               a($$1, $$3, $$8, $$10, 17, 25);
+            }
+         }
+
+         return true;
+      }
    }
 
-   protected abstract eic<?> b();
+   private static boolean a(dhb $$0, jh.a $$1) {
+      do {
+         $$1.e(0, -1, 0);
+         if ($$0.s($$1)) {
+            return false;
+         }
+      } while ($$0.a_($$1).l());
 
-   public abstract int a(int var1, int var2);
+      $$1.e(0, 1, 0);
+      return true;
+   }
 
-   public OptionalInt c() {
-      return this.c;
+   public static void a(dhb $$0, bam $$1, jh.a $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = 1; $$6 <= $$3; $$6++) {
+         if ($$0.u($$2)) {
+            if ($$6 == $$3 || !$$0.u($$2.d())) {
+               $$0.a($$2, dkg.oW.m().b(dnu.e, Integer.valueOf(bae.a($$1, $$4, $$5))), 2);
+               break;
+            }
+
+            $$0.a($$2, dkg.oX.m(), 2);
+         }
+
+         $$2.c(jm.b);
+      }
+   }
+
+   private static boolean a(dhb $$0, jh $$1) {
+      if (!$$0.u($$1)) {
+         return true;
+      } else {
+         dxn $$2 = $$0.a_($$1.e());
+         return !$$2.a(dkg.ei) && !$$2.a(dkg.oI) && !$$2.a(dkg.oK);
+      }
    }
 }

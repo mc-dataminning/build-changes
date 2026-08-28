@@ -1,34 +1,52 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Codec;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class eig extends eim {
-   public static final MapCodec<eig> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, eig::new));
-
-   public eig(brp $$0, brp $$1) {
-      super($$0, $$1);
+public class eig extends eid {
+   public eig(Codec<ejr> $$0) {
+      super($$0);
    }
 
    @Override
-   protected ein<?> a() {
-      return ein.d;
+   protected Set<jh> a(dhy $$0, ejr $$1, bam $$2, jh $$3, Predicate<dxn> $$4, int $$5, int $$6) {
+      Set<jh> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      Set<jh> $$8 = new HashSet<>();
+      jh.a $$9 = new jh.a();
+
+      for (jh $$10 : $$7) {
+         if (!a($$0, $$7, $$10, $$9)) {
+            $$8.add($$10);
+         }
+      }
+
+      for (jh $$11 : $$8) {
+         $$0.a($$11, dkg.J.m(), 2);
+      }
+
+      return $$8;
+   }
+
+   private static boolean a(dhy $$0, Set<jh> $$1, jh $$2, jh.a $$3) {
+      return a($$0, $$2, $$3, jm.c) || a($$0, $$2, $$3, jm.f) || a($$0, $$2, $$3, jm.d) || a($$0, $$2, $$3, jm.e) || a($$0, $$2, $$3, jm.a);
+   }
+
+   private static boolean a(dhy $$0, jh $$1, jh.a $$2, jm $$3) {
+      $$2.a($$1, $$3);
+      return !$$0.a_($$2).c($$0, $$2, $$3.g());
    }
 
    @Override
-   protected void a(dfs $$0, eim.b $$1, azu $$2, ehw $$3, int $$4, eim.a $$5, int $$6, int $$7, int $$8) {
-      boolean $$9 = $$5.c();
-      jh $$10 = $$5.a().b($$8);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b(), -1 - $$6, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 - 1, -$$6, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b() - 1, 0, $$9);
-   }
+   protected boolean a(dhy $$0, ejr $$1, dzj $$2, bam $$3, jh $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4.e())) {
+         dxn $$5 = $$0.a_($$4);
+         if ($$5.b(dyd.D) && !$$5.c(dyd.D)) {
+            $$0.a($$4, $$5.b(dyd.D, Boolean.valueOf(true)), 2);
+         }
 
-   @Override
-   public int a(azu $$0, int $$1, ehw $$2) {
-      return 0;
-   }
-
-   @Override
-   protected boolean a(azu $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$2 == 0 ? ($$1 > 1 || $$3 > 1) && $$1 != 0 && $$3 != 0 : $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+         return true;
+      } else {
+         return false;
+      }
    }
 }

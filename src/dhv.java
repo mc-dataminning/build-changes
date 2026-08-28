@@ -1,61 +1,34 @@
-import com.google.common.collect.Maps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class dhv extends dhh {
-   public static final MapCodec<dhv> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cvj.q.fieldOf("color").forGetter(dhh::b), t()).apply($$0, dhv::new));
-   public static final dwu b = dwl.ba;
-   private static final Map<cvj, diq> c = Maps.newHashMap();
-   private static final fas d = diq.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
+public interface dhv {
+   void a(bvm<?> var1, bam var2);
 
-   @Override
-   public MapCodec<dhv> a() {
-      return a;
+   static void a(cxk $$0, List<xv> $$1, String $$2) {
+      xv $$3 = a($$0, $$2);
+      if ($$3 != null) {
+         $$1.add($$3);
+      } else {
+         $$1.add(xu.a);
+         $$1.add(xv.c("block.minecraft.spawner.desc1").a(n.h));
+         $$1.add(xu.a().b(xv.c("block.minecraft.spawner.desc2").a(n.j)));
+      }
    }
 
-   public dhv(cvj $$0, dvu.d $$1) {
-      super($$0, $$1);
-      this.l(this.F.b().b(b, Integer.valueOf(0)));
-      c.put($$0, this);
+   @Nullable
+   static xv a(cxk $$0, String $$1) {
+      ux $$2 = $$0.a(ku.Y, czt.a).d();
+      alz $$3 = a($$2, $$1);
+      return $$3 != null ? ma.f.b($$3).map($$0x -> xv.c($$0x.g()).a(n.h)).orElse(null) : null;
    }
 
-   @Override
-   protected boolean a(dvv $$0, dfp $$1, jh $$2) {
-      return $$1.a_($$2.e()).e();
-   }
-
-   @Override
-   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
-      return d;
-   }
-
-   @Override
-   public dvv a(dad $$0) {
-      return this.m().b(b, Integer.valueOf(dxa.a($$0.i() + 180.0F)));
-   }
-
-   @Override
-   protected dvv a(dvv $$0, dfp $$1, dgb $$2, jh $$3, jm $$4, jh $$5, dvv $$6, azu $$7) {
-      return $$4 == jm.a && !$$0.a($$1, $$3) ? dis.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected dvv a(dvv $$0, dpd $$1) {
-      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
-
-   @Override
-   protected dvv a(dvv $$0, dnm $$1) {
-      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
-
-   @Override
-   protected void a(dvw.a<diq, dvv> $$0) {
-      $$0.a(b);
-   }
-
-   public static diq a(cvj $$0) {
-      return c.getOrDefault($$0, dis.iJ);
+   @Nullable
+   private static alz a(ux $$0, String $$1) {
+      if ($$0.b($$1, 10)) {
+         String $$2 = $$0.p($$1).p("entity").l("id");
+         return alz.c($$2);
+      } else {
+         return null;
+      }
    }
 }

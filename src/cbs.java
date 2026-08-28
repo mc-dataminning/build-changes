@@ -1,50 +1,20 @@
-import java.util.EnumSet;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class cbs extends ccs {
-   private final chb g;
-
-   public cbs(chb $$0, double $$1, int $$2) {
-      super($$0, $$1, $$2, 6);
-      this.g = $$0;
-      this.f = -2;
-      this.a(EnumSet.of(ccf.a.c, ccf.a.a));
-   }
-
-   @Override
-   public boolean b() {
-      return this.g.n() && !this.g.gm() && !this.g.gz() && super.b();
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.g.y(false);
-   }
-
-   @Override
-   protected int a(bvp $$0) {
-      return 40;
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.g.A(false);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.g.y(false);
-      if (!this.m()) {
-         this.g.A(false);
-      } else if (!this.g.gz()) {
-         this.g.A(true);
-      }
-   }
-
-   @Override
-   protected boolean a(dfp $$0, jh $$1) {
-      return $$0.u($$1.d()) && $$0.a_($$1).a(axc.S);
+public class cbs {
+   public static bxv<bwb> a() {
+      return cbh.a(
+         (Function<cbh.b<bwb>, ? extends App<cbh.c<bwb>, cbk<bwb>>>)($$0 -> $$0.group($$0.a(cff.n), $$0.a(cff.az), $$0.a(cff.ay), $$0.c(cff.o))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$4x, $$5, $$6) -> {
+                     Optional<jh> $$7 = $$0.<bwb>a($$3).map(bvf::dv).or(() -> $$0.a($$2));
+                     if ($$7.isEmpty()) {
+                        return false;
+                     } else {
+                        $$1.a(new bxx($$7.get()));
+                        return true;
+                     }
+                  }))
+      );
    }
 }

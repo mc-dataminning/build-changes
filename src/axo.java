@@ -1,26 +1,45 @@
-public interface axo {
-   axs<emi> a = a("eye_of_ender_located");
-   axs<emi> b = a("dolphin_located");
-   axs<emi> c = a("on_woodland_explorer_maps");
-   axs<emi> d = a("on_ocean_explorer_maps");
-   axs<emi> e = a("on_savanna_village_maps");
-   axs<emi> f = a("on_desert_village_maps");
-   axs<emi> g = a("on_plains_village_maps");
-   axs<emi> h = a("on_taiga_village_maps");
-   axs<emi> i = a("on_snowy_village_maps");
-   axs<emi> j = a("on_jungle_explorer_maps");
-   axs<emi> k = a("on_swamp_explorer_maps");
-   axs<emi> l = a("on_treasure_maps");
-   axs<emi> m = a("on_trial_chambers_maps");
-   axs<emi> n = a("cats_spawn_in");
-   axs<emi> o = a("cats_spawn_as_black");
-   axs<emi> p = a("village");
-   axs<emi> q = a("mineshaft");
-   axs<emi> r = a("shipwreck");
-   axs<emi> s = a("ruined_portal");
-   axs<emi> t = a("ocean_ruin");
+import java.util.IdentityHashMap;
+import java.util.Iterator;
+import java.util.Map;
 
-   private static axs<emi> a(String $$0) {
-      return axs.a(ma.aS, alj.b($$0));
+public class axo<T> implements Iterable<axm<T>> {
+   private final kd<T> a;
+   private final Map<T, axm<T>> b = new IdentityHashMap<>();
+   private final xv c;
+   private final zt<xg, axm<T>> d;
+
+   public axo(kd<T> $$0, xv $$1) {
+      this.a = $$0;
+      this.c = $$1;
+      this.d = zr.a($$0.g()).a(this::b, axm::b);
+   }
+
+   public zt<xg, axm<T>> a() {
+      return this.d;
+   }
+
+   public boolean a(T $$0) {
+      return this.b.containsKey($$0);
+   }
+
+   public axm<T> a(T $$0, axn $$1) {
+      return this.b.computeIfAbsent($$0, $$1x -> new axm<>(this, (T)$$1x, $$1));
+   }
+
+   public kd<T> b() {
+      return this.a;
+   }
+
+   @Override
+   public Iterator<axm<T>> iterator() {
+      return this.b.values().iterator();
+   }
+
+   public axm<T> b(T $$0) {
+      return this.a($$0, axn.b);
+   }
+
+   public xv c() {
+      return this.c;
    }
 }

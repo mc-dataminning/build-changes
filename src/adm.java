@@ -1,69 +1,60 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.List;
 
-public class adm implements zq<acf> {
-   public static final zh<wg, adm> a = zq.a(adm::a, adm::new);
-   public static final adm.a b = new adm.a(0);
-   public static final adm.a c = new adm.a(1);
-   public static final adm.a d = new adm.a(2);
-   public static final adm.a e = new adm.a(3);
-   public static final adm.a f = new adm.a(4);
-   public static final adm.a g = new adm.a(5);
-   public static final adm.a h = new adm.a(6);
-   public static final adm.a i = new adm.a(7);
-   public static final adm.a j = new adm.a(8);
-   public static final adm.a k = new adm.a(9);
-   public static final adm.a l = new adm.a(10);
-   public static final adm.a m = new adm.a(11);
-   public static final adm.a n = new adm.a(12);
-   public static final adm.a o = new adm.a(13);
-   public static final int p = 0;
-   public static final int q = 101;
-   public static final int r = 102;
-   public static final int s = 103;
-   public static final int t = 104;
-   private final adm.a u;
-   private final float v;
+public class adm implements aac<acr> {
+   public static final zt<xg, adm> a = aac.a(adm::a, adm::new);
+   private final int b;
+   private final int c;
+   private final List<cxk> d;
+   private final cxk e;
 
-   public adm(adm.a $$0, float $$1) {
-      this.u = $$0;
-      this.v = $$1;
+   public adm(int $$0, int $$1, jz<cxk> $$2, cxk $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = jz.a($$2.size(), cxk.k);
+
+      for (int $$4 = 0; $$4 < $$2.size(); $$4++) {
+         this.d.set($$4, $$2.get($$4).v());
+      }
+
+      this.e = $$3.v();
    }
 
-   private adm(wg $$0) {
-      this.u = (adm.a)adm.a.a.get($$0.readUnsignedByte());
-      this.v = $$0.readFloat();
+   private adm(xg $$0) {
+      this.b = $$0.x();
+      this.c = $$0.l();
+      this.d = cxk.j.decode($$0);
+      this.e = cxk.h.decode($$0);
    }
 
-   private void a(wg $$0) {
-      $$0.l(this.u.b);
-      $$0.a(this.v);
+   private void a(xg $$0) {
+      $$0.f(this.b);
+      $$0.c(this.c);
+      cxk.j.encode($$0, this.d);
+      cxk.h.encode($$0, this.e);
    }
 
    @Override
-   public zs<adm> a() {
-      return agu.G;
+   public aae<adm> a() {
+      return ahk.u;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
    }
 
-   public adm.a b() {
-      return this.u;
+   public int b() {
+      return this.b;
    }
 
-   public float e() {
-      return this.v;
+   public List<cxk> e() {
+      return this.d;
    }
 
-   public static class a {
-      static final Int2ObjectMap<adm.a> a = new Int2ObjectOpenHashMap();
-      final int b;
+   public cxk f() {
+      return this.e;
+   }
 
-      public a(int $$0) {
-         this.b = $$0;
-         a.put($$0, this);
-      }
+   public int g() {
+      return this.c;
    }
 }

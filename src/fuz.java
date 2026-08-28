@@ -1,124 +1,109 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.google.common.collect.Ordering;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
-public class fuz extends frw {
-   private static final xj a = xj.c("options.title");
-   private static final xj b = xj.c("options.skinCustomisation");
-   private static final xj c = xj.c("options.sounds");
-   private static final xj d = xj.c("options.video");
-   private static final xj s = xj.c("options.controls");
-   private static final xj u = xj.c("options.language");
-   private static final xj v = xj.c("options.chat");
-   private static final xj w = xj.c("options.resourcepack");
-   private static final xj x = xj.c("options.accessibility");
-   private static final xj y = xj.c("options.telemetry");
-   private static final fno z = fno.a(xj.c("options.telemetry.disabled"));
-   private static final xj A = xj.c("options.credits_and_attribution");
-   private static final int B = 2;
-   private final fps C = new fps(this, 61, 33);
-   private final frw D;
-   private final fki E;
-   @Nullable
-   private fmk<bsh> F;
-   @Nullable
-   private fmt G;
+public class fuz {
+   private static final alz a = alz.b("container/inventory/effect_background_large");
+   private static final alz b = alz.b("container/inventory/effect_background_small");
+   private final fug<?> c;
+   private final flz d;
 
-   public fuz(frw $$0, fki $$1) {
-      super(a);
-      this.D = $$0;
-      this.E = $$1;
+   public fuz(fug<?> $$0) {
+      this.c = $$0;
+      this.d = flz.Q();
    }
 
-   @Override
-   protected void aR_() {
-      fpw $$0 = this.C.a(fpw.d().a(8));
-      $$0.a(new fnk(a, this.p), fpv::b);
-      fpw $$1 = $$0.a(fpw.e()).a(8);
-      $$1.a(this.E.aj().a(this.m.n));
-      $$1.a(this.m());
-      fpr $$2 = new fpr();
-      $$2.c().f(4).e(4).b();
-      fpr.b $$3 = $$2.d(2);
-      $$3.a(this.a(b, () -> new fvb(this, this.E)));
-      $$3.a(this.a(c, () -> new fvc(this, this.E)));
-      $$3.a(this.a(d, () -> new fve(this, this.m, this.E)));
-      $$3.a(this.a(s, () -> new fvf(this, this.E)));
-      $$3.a(this.a(u, () -> new fuw(this, this.E, this.m.ah())));
-      $$3.a(this.a(v, () -> new fuu(this, this.E)));
-      $$3.a(this.a(w, () -> new fvm(this.m.ad(), this::a, this.m.ag(), xj.c("resourcePack.title"))));
-      $$3.a(this.a(x, () -> new fut(this, this.E)));
-      fmd $$4 = $$3.a(this.a(y, () -> new fwr(this, this.E)));
-      if (!this.m.E()) {
-         $$4.j = false;
-         $$4.a(z);
-      }
-
-      $$3.a(this.a(A, () -> new fqy(this)));
-      this.C.c($$2);
-      this.C.b(fmd.a(xi.d, $$0x -> this.aO_()).a(200).a());
-      this.C.a($$1x -> {
-         fmb var10000 = this.c($$1x);
-      });
-      this.c();
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+      this.a($$0, $$1, $$2);
    }
 
-   @Override
-   protected void c() {
-      this.C.a();
+   public boolean a() {
+      int $$0 = this.c.C + this.c.s + 2;
+      int $$1 = this.c.n - $$0;
+      return $$1 >= 32;
    }
 
-   @Override
-   public void aO_() {
-      this.m.a(this.D);
-   }
-
-   private void a(aun $$0) {
-      this.E.a($$0);
-      this.m.a(this);
-   }
-
-   private fpu m() {
-      if (this.m.s != null && this.m.U()) {
-         this.F = a(0, 0, "options.difficulty", this.m);
-         if (!this.m.s.j().l()) {
-            this.G = new fmt(0, 0, $$0x -> this.m.a(new fqu(this::c, xj.c("difficulty.lock.title"), xj.a("difficulty.lock.question", this.m.s.j().q().b()))));
-            this.F.k(this.F.y() - this.G.y());
-            this.G.b(this.m.s.j().r());
-            this.G.j = !this.G.a();
-            this.F.j = !this.G.a();
-            fpp $$0 = new fpp(150, 0, fpp.b.a);
-            $$0.a(this.F);
-            $$0.a(this.G);
-            return $$0;
-         } else {
-            this.F.j = false;
-            return this.F;
+   private void a(fnl $$0, int $$1, int $$2) {
+      int $$3 = this.c.C + this.c.s + 2;
+      int $$4 = this.c.n - $$3;
+      Collection<buk> $$5 = this.d.t.eA();
+      if (!$$5.isEmpty() && $$4 >= 32) {
+         boolean $$6 = $$4 >= 120;
+         int $$7 = 33;
+         if ($$5.size() > 5) {
+            $$7 = 132 / ($$5.size() - 1);
          }
-      } else {
-         return fmd.a(xj.c("options.online"), $$0x -> this.m.a(new fuy(this, this.E))).a(this.n / 2 + 5, this.o / 6 - 12 + 24, 150, 20).a();
+
+         Iterable<buk> $$8 = Ordering.natural().sortedCopy($$5);
+         this.a($$0, $$3, $$7, $$8, $$6);
+         this.b($$0, $$3, $$7, $$8, $$6);
+         if ($$6) {
+            this.a($$0, $$3, $$7, $$8);
+         } else if ($$1 >= $$3 && $$1 <= $$3 + 33) {
+            int $$9 = this.c.D;
+            buk $$10 = null;
+
+            for (buk $$11 : $$8) {
+               if ($$2 >= $$9 && $$2 <= $$9 + $$7) {
+                  $$10 = $$11;
+               }
+
+               $$9 += $$7;
+            }
+
+            if ($$10 != null) {
+               List<xv> $$12 = List.of(this.a($$10), bul.a($$10, 1.0F, this.d.s.t().f()));
+               $$0.a(this.c.B(), $$12, Optional.empty(), $$1, $$2);
+            }
+         }
       }
    }
 
-   public static fmk<bsh> a(int $$0, int $$1, String $$2, fke $$3) {
-      return fmk.a(bsh::b).a(bsh.values()).a($$3.s.ak()).a($$0, $$1, 150, 20, xj.c($$2), ($$1x, $$2x) -> $$3.L().b(new aha($$2x)));
-   }
+   private void a(fnl $$0, int $$1, int $$2, Iterable<buk> $$3, boolean $$4) {
+      int $$5 = this.c.D;
 
-   private void c(boolean $$0) {
-      this.m.a(this);
-      if ($$0 && this.m.s != null && this.G != null && this.F != null) {
-         this.m.L().b(new ahu(true));
-         this.G.b(true);
-         this.G.j = false;
-         this.F.j = false;
+      for (buk $$6 : $$3) {
+         if ($$4) {
+            $$0.a(glo::B, a, $$1, $$5, 120, 32);
+         } else {
+            $$0.a(glo::B, b, $$1, $$5, 32, 32);
+         }
+
+         $$5 += $$2;
       }
    }
 
-   @Override
-   public void j() {
-      this.E.ay();
+   private void b(fnl $$0, int $$1, int $$2, Iterable<buk> $$3, boolean $$4) {
+      hcd $$5 = this.d.aG();
+      int $$6 = this.c.D;
+
+      for (buk $$7 : $$3) {
+         jq<bui> $$8 = $$7.c();
+         hbe $$9 = $$5.a($$8);
+         $$0.a(glo::B, $$9, $$1 + ($$4 ? 6 : 7), $$6 + 7, 18, 18);
+         $$6 += $$2;
+      }
    }
 
-   private fmd a(xj $$0, Supplier<frw> $$1) {
-      return fmd.a($$0, $$1x -> this.m.a($$1.get())).a();
+   private void a(fnl $$0, int $$1, int $$2, Iterable<buk> $$3) {
+      int $$4 = this.c.D;
+
+      for (buk $$5 : $$3) {
+         xv $$6 = this.a($$5);
+         $$0.b(this.c.B(), $$6, $$1 + 10 + 18, $$4 + 6, 16777215);
+         xv $$7 = bul.a($$5, 1.0F, this.d.s.t().f());
+         $$0.b(this.c.B(), $$7, $$1 + 10 + 18, $$4 + 6 + 10, 8355711);
+         $$4 += $$2;
+      }
+   }
+
+   private xv a(buk $$0) {
+      yj $$1 = $$0.c().a().e().f();
+      if ($$0.e() >= 1 && $$0.e() <= 9) {
+         $$1.b(xu.v).b(xv.c("enchantment.level." + ($$0.e() + 1)));
+      }
+
+      return $$1;
    }
 }

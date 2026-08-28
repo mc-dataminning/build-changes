@@ -1,28 +1,32 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehv implements eha {
-   public static final Codec<ehv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               erv.a.fieldOf("state").forGetter($$0x -> $$0x.b),
-               Codec.BOOL.fieldOf("requires_block_below").orElse(true).forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("rock_count").orElse(4).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("hole_count").orElse(1).forGetter($$0x -> $$0x.e),
-               kf.a(ma.f).fieldOf("valid_blocks").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, ehv::new)
-   );
-   public final erv b;
-   public final boolean c;
-   public final int d;
-   public final int e;
-   public final ju<diq> f;
+public class ehv extends ego<ejk> {
+   public ehv(Codec<ejk> $$0) {
+      super($$0);
+   }
 
-   public ehv(erv $$0, boolean $$1, int $$2, int $$3, ju<diq> $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
+   @Override
+   public boolean a(egq<ejk> $$0) {
+      ejk $$1 = $$0.f();
+      dhy $$2 = $$0.b();
+      jh $$3 = $$0.e();
+      dxn $$4 = $$1.a().a($$0.d(), $$3);
+      if ($$4.a($$2, $$3)) {
+         if ($$4.b() instanceof dmo) {
+            if (!$$2.u($$3.d())) {
+               return false;
+            }
+
+            dmo.a($$2, $$4, $$3, 2);
+         } else if ($$4.b() instanceof dpe) {
+            dpe.a($$2, $$3, $$2.H_(), 2);
+         } else {
+            $$2.a($$3, $$4, 2);
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 }

@@ -1,74 +1,37 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dqf extends diq {
+public class dqf extends dke {
    public static final MapCodec<dqf> a = b(dqf::new);
-   public static final int b = 6;
-   public static final int c = 64;
-   private static final jm[] d = jm.values();
 
    @Override
    public MapCodec<dqf> a() {
       return a;
    }
 
-   protected dqf(dvu.d $$0) {
+   protected dqf(dxm.d $$0) {
       super($$0);
    }
 
    @Override
-   protected void b(dvv $$0, dfm $$1, jh $$2, dvv $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2);
+   protected bte a(cxk $$0, dxn $$1, dha $$2, jh $$3, cps $$4, btd $$5, fbo $$6) {
+      if (!$$0.a(cxo.sJ)) {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      } else if ($$2.C) {
+         return bte.a;
+      } else {
+         jm $$7 = $$6.c();
+         jm $$8 = $$7.o() == jm.a.b ? $$4.cO().g() : $$7;
+         $$2.a(null, $$3, axf.vp, axg.e, 1.0F, 1.0F);
+         $$2.a($$3, dkg.er.m().b(dkz.b, $$8), 11);
+         clw $$9 = new clw(
+            $$2, (double)$$3.u() + 0.5 + (double)$$8.j() * 0.65, (double)$$3.v() + 0.1, (double)$$3.w() + 0.5 + (double)$$8.l() * 0.65, new cxk(cxo.sM, 4)
+         );
+         $$9.n(0.05 * (double)$$8.j() + $$2.A.j() * 0.02, 0.05, 0.05 * (double)$$8.l() + $$2.A.j() * 0.02);
+         $$2.b($$9);
+         $$0.a(1, $$4, bwb.d($$5));
+         $$2.a($$4, ecj.M, $$3);
+         $$4.b(axp.c.b(cxo.sJ));
+         return bte.a;
       }
-   }
-
-   @Override
-   protected void a(dvv $$0, dfm $$1, jh $$2, diq $$3, @Nullable etd $$4, boolean $$5) {
-      this.a($$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   protected void a(dfm $$0, jh $$1) {
-      if (this.b($$0, $$1)) {
-         $$0.a($$1, dis.aP.m(), 2);
-         $$0.a(null, $$1, awn.za, awo.e, 1.0F, 1.0F);
-      }
-   }
-
-   private boolean b(dfm $$0, jh $$1) {
-      return jh.a($$1, 6, 65, ($$0x, $$1x) -> {
-         for (jm $$2 : d) {
-            $$1x.accept($$0x.a($$2));
-         }
-      }, $$2 -> {
-         if ($$2.equals($$1)) {
-            return true;
-         } else {
-            dvv $$3 = $$0.a_($$2);
-            erv $$4 = $$0.b_($$2);
-            if (!$$4.a(axi.a)) {
-               return false;
-            } else {
-               if ($$3.b() instanceof dix $$6 && !$$6.a(null, $$0, $$2, $$3).f()) {
-                  return true;
-               }
-
-               if ($$3.b() instanceof dnf) {
-                  $$0.a($$2, dis.a.m(), 3);
-               } else {
-                  if (!$$3.a(dis.mc) && !$$3.a(dis.md) && !$$3.a(dis.bw) && !$$3.a(dis.bx)) {
-                     return false;
-                  }
-
-                  dsy $$7 = $$3.x() ? $$0.c_($$2) : null;
-                  a($$3, $$0, $$2, $$7);
-                  $$0.a($$2, dis.a.m(), 3);
-               }
-
-               return true;
-            }
-         }
-      }) > 1;
    }
 }

@@ -1,14 +1,8 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface auw {
-   CompletableFuture<Void> a(auw.a var1, avd var2, Executor var3, Executor var4);
-
-   default String c() {
-      return this.getClass().getSimpleName();
-   }
-
-   public interface a {
-      <T> CompletableFuture<T> a(T var1);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface auw {
 }

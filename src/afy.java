@@ -1,12 +1,12 @@
-public record afy(xj b) implements zq<acf> {
-   public static final zh<wu, afy> a = zh.a(xl.d, afy::b, afy::new);
+public record afy(cxk b) implements aac<acr> {
+   public static final zt<xg, afy> a = zt.a(cxk.h, afy::b, afy::new);
 
    @Override
-   public zs<afy> a() {
-      return agu.aO;
+   public aae<afy> a() {
+      return ahk.co;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
    }
 }

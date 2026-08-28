@@ -1,23 +1,60 @@
-public class fnh {
-   public static final fnh a = new fnh("Merry X-mas!");
-   public static final fnh b = new fnh("Happy new year!");
-   public static final fnh c = new fnh("OOoooOOOoooo! Spooky!");
-   private static final int d = 123;
-   private static final int e = 69;
-   private final String f;
+import org.joml.Vector2i;
 
-   public fnh(String $$0) {
-      this.f = $$0;
+public class fnh implements fnn {
+   private final flz a;
+   private final fmi b;
+
+   public fnh(flz $$0) {
+      this.a = $$0;
+      this.b = new fmi();
    }
 
-   public void a(flq $$0, int $$1, flo $$2, int $$3) {
-      $$0.c().a();
-      $$0.c().a((float)$$1 / 2.0F + 123.0F, 69.0F, 0.0F);
-      $$0.c().a(a.f.rotationDegrees(-20.0F));
-      float $$4 = 1.8F - azm.e(azm.a((float)(ae.c() % 1000L) / 1000.0F * (float) (Math.PI * 2)) * 0.1F);
-      $$4 = $$4 * 100.0F / (float)($$2.b(this.f) + 32);
-      $$0.c().b($$4, $$4, $$4);
-      $$0.a($$2, this.f, 0, -8, 16776960 | $$3);
-      $$0.c().b();
+   @Override
+   public boolean a(cuu $$0) {
+      return $$0.g().a(ayd.bT);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, cxk $$3) {
+      int $$4 = cvx.j($$3);
+      if ($$4 == 0) {
+         return false;
+      } else {
+         Vector2i $$5 = this.b.a($$0, $$1);
+         int $$6 = $$5.y == 0 ? -$$5.x : $$5.y;
+         if ($$6 != 0) {
+            int $$7 = cvx.h($$3);
+            int $$8 = fmi.a((double)$$6, $$7, $$4);
+            if ($$7 != $$8) {
+               this.a($$3, $$2, $$8);
+            }
+         }
+
+         return true;
+      }
+   }
+
+   @Override
+   public void b(cuu $$0) {
+      this.a($$0.g(), $$0.d);
+   }
+
+   @Override
+   public void a(cuu $$0, cti $$1) {
+      if ($$1 == cti.b || $$1 == cti.c) {
+         this.a($$0.g(), $$0.d);
+      }
+   }
+
+   private void a(cxk $$0, int $$1, int $$2) {
+      if (this.a.L() != null && $$2 < cvx.j($$0)) {
+         gfe $$3 = this.a.L();
+         cvx.a($$0, $$2);
+         $$3.b(new aiy($$1, $$2));
+      }
+   }
+
+   public void a(cxk $$0, int $$1) {
+      this.a($$0, $$1, -1);
    }
 }

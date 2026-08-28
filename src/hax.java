@@ -1,131 +1,118 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.Closeable;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface hax {
-   Codec<hax> a = hax.d.d.dispatch(hax::a, hax.d::a);
-   hax b = new hax.b();
+public class hax extends hap {
+   static final Logger e = LogUtils.getLogger();
+   protected final alz d;
 
-   hax.d a();
+   public hax(alz $$0) {
+      this.d = $$0;
+   }
 
-   public static record a(int d, int e, hax.a.a f, boolean g) implements hax {
-      public static final MapCodec<hax.a> c = RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(
-                     ayv.m.fieldOf("width").forGetter(hax.a::b),
-                     ayv.m.fieldOf("height").forGetter(hax.a::c),
-                     hax.a.a.g.fieldOf("border").forGetter(hax.a::d),
-                     Codec.BOOL.optionalFieldOf("stretch_inner", false).forGetter(hax.a::e)
-                  )
-                  .apply($$0, hax.a::new)
-         )
-         .validate(hax.a::a);
+   @Override
+   public void a(avv $$0) throws IOException {
+      hax.a $$1 = this.b($$0);
+      $$1.c();
+      hdc $$2 = $$1.a();
+      boolean $$3;
+      if ($$2 != null) {
+         this.c = $$2.a();
+         $$3 = $$2.b();
+      } else {
+         this.c = false;
+         $$3 = false;
+      }
 
-      private static DataResult<hax.a> a(hax.a $$0) {
-         hax.a.a $$1 = $$0.d();
-         if ($$1.a() + $$1.c() >= $$0.b()) {
-            return DataResult.error(() -> "Nine-sliced texture has no horizontal center slice: " + $$1.a() + " + " + $$1.c() + " >= " + $$0.b());
+      ffl $$5 = $$1.b();
+      if (!RenderSystem.isOnRenderThreadOrInit()) {
+         RenderSystem.recordRenderCall(() -> this.a($$5, this.c, $$3));
+      } else {
+         this.a($$5, this.c, $$3);
+      }
+   }
+
+   private void a(ffl $$0, boolean $$1, boolean $$2) {
+      TextureUtil.prepareImage(this.a(), 0, $$0.a(), $$0.b());
+      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), $$1, $$2, false, true);
+   }
+
+   protected hax.a b(avv $$0) {
+      return hax.a.a($$0, this.d);
+   }
+
+   protected static class a implements Closeable {
+      @Nullable
+      private final hdc a;
+      @Nullable
+      private final ffl b;
+      @Nullable
+      private final IOException c;
+
+      public a(IOException $$0) {
+         this.c = $$0;
+         this.a = null;
+         this.b = null;
+      }
+
+      public a(@Nullable hdc $$0, ffl $$1) {
+         this.c = null;
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public static hax.a a(avv $$0, alz $$1) {
+         try {
+            avt $$2 = $$0.getResourceOrThrow($$1);
+
+            ffl $$4;
+            try (InputStream $$3 = $$2.d()) {
+               $$4 = ffl.a($$3);
+            }
+
+            hdc $$6 = null;
+
+            try {
+               $$6 = $$2.f().a(hdc.a).orElse(null);
+            } catch (RuntimeException var8) {
+               hax.e.warn("Failed reading metadata of: {}", $$1, var8);
+            }
+
+            return new hax.a($$6, $$4);
+         } catch (IOException var10) {
+            return new hax.a(var10);
+         }
+      }
+
+      @Nullable
+      public hdc a() {
+         return this.a;
+      }
+
+      public ffl b() throws IOException {
+         if (this.c != null) {
+            throw this.c;
          } else {
-            return $$1.b() + $$1.d() >= $$0.c()
-               ? DataResult.error(() -> "Nine-sliced texture has no vertical center slice: " + $$1.b() + " + " + $$1.d() + " >= " + $$0.c())
-               : DataResult.success($$0);
+            return this.b;
          }
       }
 
       @Override
-      public hax.d a() {
-         return hax.d.c;
-      }
-
-      public int b() {
-         return this.d;
-      }
-
-      public int c() {
-         return this.e;
-      }
-
-      public hax.a.a d() {
-         return this.f;
-      }
-
-      public boolean e() {
-         return this.g;
-      }
-
-      public static record a(int a, int b, int c, int d) {
-         private static final Codec<hax.a.a> e = ayv.m.flatComapMap($$0 -> new hax.a.a($$0, $$0, $$0, $$0), $$0 -> {
-            OptionalInt $$1 = $$0.e();
-            return $$1.isPresent() ? DataResult.success($$1.getAsInt()) : DataResult.error(() -> "Border has different side sizes");
-         });
-         private static final Codec<hax.a.a> f = RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     ayv.l.fieldOf("left").forGetter(hax.a.a::a),
-                     ayv.l.fieldOf("top").forGetter(hax.a.a::b),
-                     ayv.l.fieldOf("right").forGetter(hax.a.a::c),
-                     ayv.l.fieldOf("bottom").forGetter(hax.a.a::d)
-                  )
-                  .apply($$0, hax.a.a::new)
-         );
-         static final Codec<hax.a.a> g = Codec.either(e, f).xmap(Either::unwrap, $$0 -> $$0.e().isPresent() ? Either.left($$0) : Either.right($$0));
-
-         private OptionalInt e() {
-            return this.a() == this.b() && this.b() == this.c() && this.c() == this.d() ? OptionalInt.of(this.a()) : OptionalInt.empty();
+      public void close() {
+         if (this.b != null) {
+            this.b.close();
          }
       }
-   }
 
-   public static record b() implements hax {
-      public static final MapCodec<hax.b> c = MapCodec.unit(hax.b::new);
-
-      @Override
-      public hax.d a() {
-         return hax.d.a;
-      }
-   }
-
-   public static record c(int d, int e) implements hax {
-      public static final MapCodec<hax.c> c = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(ayv.m.fieldOf("width").forGetter(hax.c::b), ayv.m.fieldOf("height").forGetter(hax.c::c)).apply($$0, hax.c::new)
-      );
-
-      @Override
-      public hax.d a() {
-         return hax.d.b;
-      }
-
-      public int b() {
-         return this.d;
-      }
-
-      public int c() {
-         return this.e;
-      }
-   }
-
-   public static enum d implements bai {
-      a("stretch", hax.b.c),
-      b("tile", hax.c.c),
-      c("nine_slice", hax.a.c);
-
-      public static final Codec<hax.d> d = bai.a(hax.d::values);
-      private final String e;
-      private final MapCodec<? extends hax> f;
-
-      private d(final String $$0, final MapCodec<? extends hax> $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      @Override
-      public String c() {
-         return this.e;
-      }
-
-      public MapCodec<? extends hax> a() {
-         return this.f;
+      public void c() throws IOException {
+         if (this.c != null) {
+            throw this.c;
+         }
       }
    }
 }

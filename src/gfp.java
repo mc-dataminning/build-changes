@@ -1,83 +1,110 @@
-public class gfp extends gho {
-   private static final int a = 11993298;
-   private static final int b = 14614777;
-   private static final float F = 0.7176471F;
-   private static final float G = 0.0F;
-   private static final float H = 0.8235294F;
-   private static final float I = 0.8745098F;
-   private static final float J = 0.0F;
-   private static final float K = 0.9764706F;
-   private boolean L;
-   private final ghj M;
+import com.google.common.base.Suppliers;
+import com.mojang.authlib.GameProfile;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-   gfp(gdh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ghj $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.B = 0.96F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.v = azm.a(this.r, 0.7176471F, 0.8745098F);
-      this.w = azm.a(this.r, 0.0F, 0.0F);
-      this.x = azm.a(this.r, 0.8235294F, 0.9764706F);
-      this.D *= 0.75F;
-      this.t = (int)(20.0 / ((double)this.r.i() * 0.8 + 0.2));
-      this.L = false;
-      this.n = false;
-      this.M = $$7;
-      this.b($$7);
+public class gfp {
+   private final GameProfile a;
+   private final Supplier<hcf> b;
+   private dgx c = dgx.e;
+   private int d;
+   @Nullable
+   private xv e;
+   @Nullable
+   private ym f;
+   private yr g;
+   private int h;
+
+   public gfp(GameProfile $$0, boolean $$1) {
+      this.a = $$0;
+      this.g = b($$1);
+      Supplier<Supplier<hcf>> $$2 = Suppliers.memoize(() -> a($$0));
+      this.b = () -> $$2.get().get();
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.M);
-         if (this.m) {
-            this.k = 0.0;
-            this.L = true;
-         }
-
-         if (this.L) {
-            this.k += 0.002;
-         }
-
-         this.a(this.j, this.k, this.l);
-         if (this.h == this.e) {
-            this.j *= 1.1;
-            this.l *= 1.1;
-         }
-
-         this.j = this.j * (double)this.B;
-         this.l = this.l * (double)this.B;
-         if (this.L) {
-            this.k = this.k * (double)this.B;
-         }
-      }
+   private static Supplier<hcf> a(GameProfile $$0) {
+      flz $$1 = flz.Q();
+      hcg $$2 = $$1.an();
+      CompletableFuture<hcf> $$3 = $$2.c($$0);
+      boolean $$4 = !$$1.b($$0.getId());
+      hcf $$5 = hbw.a($$0);
+      return () -> {
+         hcf $$3x = $$3.getNow($$5);
+         return $$4 && !$$3x.f() ? $$5 : $$3x;
+      };
    }
 
-   @Override
-   public ggs b() {
-      return ggs.b;
+   public GameProfile a() {
+      return this.a;
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * azm.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   @Nullable
+   public ym b() {
+      return this.f;
    }
 
-   public static class a implements ggr<lw> {
-      private final ghj a;
+   public yr c() {
+      return this.g;
+   }
 
-      public a(ghj $$0) {
-         this.a = $$0;
-      }
+   public boolean d() {
+      return this.f != null;
+   }
 
-      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gfp($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
+   protected void a(ym $$0) {
+      this.f = $$0;
+      this.g = $$0.a(cpv.b);
+   }
+
+   protected void a(boolean $$0) {
+      this.f = null;
+      this.g = b($$0);
+   }
+
+   private static yr b(boolean $$0) {
+      return $$0 ? yr.c : yr.b;
+   }
+
+   public dgx e() {
+      return this.c;
+   }
+
+   protected void a(dgx $$0) {
+      this.c = $$0;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   protected void a(int $$0) {
+      this.d = $$0;
+   }
+
+   public hcf g() {
+      return this.b.get();
+   }
+
+   @Nullable
+   public fcs h() {
+      return flz.Q().s.Q().e(this.a().getName());
+   }
+
+   public void a(@Nullable xv $$0) {
+      this.e = $$0;
+   }
+
+   @Nullable
+   public xv i() {
+      return this.e;
+   }
+
+   public void b(int $$0) {
+      this.h = $$0;
+   }
+
+   public int j() {
+      return this.h;
    }
 }

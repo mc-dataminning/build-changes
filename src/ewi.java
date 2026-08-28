@@ -1,44 +1,11 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
+import java.util.Set;
 
-public class ewi extends ewa {
-   public static final MapCodec<ewi> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  ash.a(Codec.string(0, 32)).optionalFieldOf("title").forGetter($$0x -> $$0x.c),
-                  Codec.STRING.optionalFieldOf("author").forGetter($$0x -> $$0x.b),
-                  ayv.a(0, 3).optionalFieldOf("generation").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, ewi::new)
-   );
-   private final Optional<String> b;
-   private final Optional<ash<String>> c;
-   private final Optional<Integer> d;
-
-   public ewi(List<exy> $$0, Optional<ash<String>> $$1, Optional<String> $$2, Optional<Integer> $$3) {
-      super($$0);
-      this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
+public interface ewi {
+   default Set<eza<?>> a() {
+      return Set.of();
    }
 
-   @Override
-   protected cwm a(cwm $$0, eun $$1) {
-      $$0.a(ku.T, czu.a, this::a);
-      return $$0;
-   }
-
-   private czu a(czu $$0) {
-      return new czu(this.c.orElseGet($$0::d), this.b.orElseGet($$0::e), this.d.orElseGet($$0::f), $$0.a(), $$0.g());
-   }
-
-   @Override
-   public ewc<ewi> b() {
-      return ewd.M;
+   default void a(ewn $$0) {
+      $$0.a(this);
    }
 }

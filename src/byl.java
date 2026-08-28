@@ -1,37 +1,37 @@
-public abstract class byl<E extends bvh> implements bxb<E>, caq<E> {
-   private bxa.a a;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-   public byl() {
-      this.a = bxa.a.a;
-   }
+public class byl {
+   public static bxv<cpe> a(float $$0, int $$1) {
+      return cbh.a((Function<cbh.b<cpe>, ? extends App<cbh.c<cpe>, cbk<cpe>>>)($$2 -> $$2.group($$2.c(cff.m)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               if ($$3.c($$4.dv())) {
+                  return false;
+               } else {
+                  chf $$6 = $$3.z();
+                  int $$7 = $$6.a(kj.a($$4.dv()));
+                  fbs $$8 = null;
 
-   @Override
-   public final bxa.a a() {
-      return this.a;
-   }
+                  for (int $$9 = 0; $$9 < 5; $$9++) {
+                     fbs $$10 = cgz.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(kj.a($$1xxxx))));
+                     if ($$10 != null) {
+                        int $$11 = $$6.a(kj.a(jh.a((ka)$$10)));
+                        if ($$11 < $$7) {
+                           $$8 = $$10;
+                           break;
+                        }
 
-   @Override
-   public final boolean e(arp $$0, E $$1, long $$2) {
-      if (this.trigger($$0, $$1, $$2)) {
-         this.a = bxa.a.b;
-         return true;
-      } else {
-         return false;
-      }
-   }
+                        if ($$11 == $$7) {
+                           $$8 = $$10;
+                        }
+                     }
+                  }
 
-   @Override
-   public final void f(arp $$0, E $$1, long $$2) {
-      this.g($$0, $$1, $$2);
-   }
+                  if ($$8 != null) {
+                     $$2x.a(new cfi($$8, $$0, $$1));
+                  }
 
-   @Override
-   public final void g(arp $$0, E $$1, long $$2) {
-      this.a = bxa.a.a;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+                  return true;
+               }
+            })));
    }
 }

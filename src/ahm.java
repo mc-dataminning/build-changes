@@ -1,83 +1,106 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-
-public class ahm implements zq<agw> {
-   public static final zh<wu, ahm> a = zq.a(ahm::a, ahm::new);
-   private static final int b = 128;
-   private static final zh<wu, Int2ObjectMap<cwm>> c = zf.a(Int2ObjectOpenHashMap::new, zf.e.a(Short::intValue, Integer::shortValue), cwm.h, 128);
-   private final int d;
-   private final int e;
-   private final int f;
-   private final int g;
-   private final csk h;
-   private final cwm i;
-   private final Int2ObjectMap<cwm> j;
-
-   public ahm(int $$0, int $$1, int $$2, int $$3, csk $$4, cwm $$5, Int2ObjectMap<cwm> $$6) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = Int2ObjectMaps.unmodifiable($$6);
-   }
-
-   private ahm(wu $$0) {
-      this.d = $$0.x();
-      this.e = $$0.l();
-      this.f = $$0.readShort();
-      this.g = $$0.readByte();
-      this.h = $$0.b(csk.class);
-      this.j = Int2ObjectMaps.unmodifiable(c.decode($$0));
-      this.i = cwm.h.decode($$0);
-   }
-
-   private void a(wu $$0) {
-      $$0.f(this.d);
-      $$0.c(this.e);
-      $$0.m(this.f);
-      $$0.l(this.g);
-      $$0.a(this.h);
-      c.encode($$0, this.j);
-      cwm.h.encode($$0, this.i);
-   }
-
+public interface ahm extends aav, akr {
    @Override
-   public zs<ahm> a() {
-      return agu.bv;
+   default wq b() {
+      return wq.b;
    }
 
-   public void a(agw $$0) {
-      $$0.a(this);
-   }
+   void a(aji var1);
 
-   public int b() {
-      return this.d;
-   }
+   void a(ahu var1);
 
-   public int e() {
-      return this.f;
-   }
+   void a(ahs var1);
 
-   public int f() {
-      return this.g;
-   }
+   void a(aht var1);
 
-   public cwm g() {
-      return this.i;
-   }
+   void a(ahr var1);
 
-   public Int2ObjectMap<cwm> h() {
-      return this.j;
-   }
+   void a(ahx var1);
 
-   public csk i() {
-      return this.h;
-   }
+   void a(aib var1);
 
-   public int j() {
-      return this.e;
-   }
+   void a(aic var1);
+
+   void a(aip var1);
+
+   void a(aid var1);
+
+   void a(aii var1);
+
+   void a(ail var1);
+
+   void a(aiq var1);
+
+   void a(air var1);
+
+   void a(ais var1);
+
+   void a(ait var1);
+
+   void a(ajb var1);
+
+   void a(aje var1);
+
+   void a(ajh var1);
+
+   void a(ajk var1);
+
+   void a(ajl var1);
+
+   void a(ajj var1);
+
+   void a(ain var1);
+
+   void a(aim var1);
+
+   void a(aho var1);
+
+   void a(aiv var1);
+
+   void a(aiy var1);
+
+   void a(aiu var1);
+
+   void a(aix var1);
+
+   void a(ahz var1);
+
+   void a(ajc var1);
+
+   void a(ajd var1);
+
+   void a(aio var1);
+
+   void a(aiw var1);
+
+   void a(aja var1);
+
+   void a(ajg var1);
+
+   void a(aiz var1);
+
+   void a(aig var1);
+
+   void a(aih var1);
+
+   void a(aie var1);
+
+   void a(ahp var1);
+
+   void a(ajf var1);
+
+   void a(aij var1);
+
+   void a(ahq var1);
+
+   void a(aik var1);
+
+   void a(ahv var1);
+
+   void a(aia var1);
+
+   void a(ahw var1);
+
+   void a(aif var1);
+
+   void a(ahy var1);
 }

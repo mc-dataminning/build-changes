@@ -1,24 +1,25 @@
-public abstract class gti<S extends gvo, M extends fzj<S>> extends gty<S, M> {
-   public gti(grh<S, M> $$0) {
-      super($$0);
+public class gti extends gqd<cio, gzg, gcv> {
+   private static final alz a = alz.b("textures/entity/sheep/sheep.png");
+
+   public gti(grj.a $$0) {
+      super($$0, new gcv($$0.a(geg.cw)), new gcv($$0.a(geg.cx)), 0.7F);
+      this.a(new gwa(this, $$0.f()));
    }
 
-   @Override
-   public void a(fer $$0, gjg $$1, int $$2, S $$3, float $$4, float $$5) {
-      if (this.a($$3)) {
-         float $$6 = $$3.p;
-         M $$7 = this.c();
-         fev $$8 = $$1.getBuffer(gjq.b(this.a(), this.a($$6) % 1.0F, $$6 * 0.01F % 1.0F));
-         $$7.a($$3);
-         $$7.a($$0, $$8, $$2, gyv.d, -8355712);
-      }
+   public alz a(gzg $$0) {
+      return a;
    }
 
-   protected abstract boolean a(S var1);
+   public gzg b() {
+      return new gzg();
+   }
 
-   protected abstract float a(float var1);
-
-   protected abstract alj a();
-
-   protected abstract M c();
+   public void a(cio $$0, gzg $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b = $$0.K($$2);
+      $$1.a = $$0.J($$2);
+      $$1.c = $$0.x();
+      $$1.d = $$0.t();
+      $$1.e = $$0.ar();
+   }
 }

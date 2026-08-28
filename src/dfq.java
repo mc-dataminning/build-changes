@@ -1,78 +1,45 @@
-import com.mojang.serialization.Dynamic;
+import java.util.Map;
+import java.util.Optional;
 
-public final class dfq {
-   private final String a;
-   private final dfj b;
-   private final boolean c;
-   private final bsh d;
-   private final boolean e;
-   private final dfi f;
-   private final dgj g;
+public class dfq {
+   public static final aly<dfp> a = a("quartz");
+   public static final aly<dfp> b = a("iron");
+   public static final aly<dfp> c = a("netherite");
+   public static final aly<dfp> d = a("redstone");
+   public static final aly<dfp> e = a("copper");
+   public static final aly<dfp> f = a("gold");
+   public static final aly<dfp> g = a("emerald");
+   public static final aly<dfp> h = a("diamond");
+   public static final aly<dfp> i = a("lapis");
+   public static final aly<dfp> j = a("amethyst");
 
-   public dfq(String $$0, dfj $$1, boolean $$2, bsh $$3, boolean $$4, dfi $$5, dgj $$6) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
+   public static void a(rk<dfp> $$0) {
+      a($$0, a, cxo.oY, ys.a.a(14931140), 0.1F);
+      a($$0, b, cxo.pb, ys.a.a(15527148), 0.2F, Map.of(dfl.c, "iron_darker"));
+      a($$0, c, cxo.pg, ys.a.a(6445145), 0.3F, Map.of(dfl.g, "netherite_darker"));
+      a($$0, d, cxo.lV, ys.a.a(9901575), 0.4F);
+      a($$0, e, cxo.pd, ys.a.a(11823181), 0.5F);
+      a($$0, f, cxo.pf, ys.a.a(14594349), 0.6F, Map.of(dfl.d, "gold_darker"));
+      a($$0, g, cxo.oW, ys.a.a(1155126), 0.7F);
+      a($$0, h, cxo.oV, ys.a.a(7269586), 0.8F, Map.of(dfl.e, "diamond_darker"));
+      a($$0, i, cxo.oX, ys.a.a(4288151), 0.9F);
+      a($$0, j, cxo.oZ, ys.a.a(10116294), 1.0F);
    }
 
-   public static dfq a(Dynamic<?> $$0, dgj $$1) {
-      dfj $$2 = dfj.a($$0.get("GameType").asInt(0));
-      return new dfq(
-         $$0.get("LevelName").asString(""),
-         $$2,
-         $$0.get("hardcore").asBoolean(false),
-         $$0.get("Difficulty").asNumber().map($$0x -> bsh.a($$0x.byteValue())).result().orElse(bsh.c),
-         $$0.get("allowCommands").asBoolean($$2 == dfj.b),
-         new dfi($$1.b(), $$0.get("GameRules")),
-         $$1
-      );
+   public static Optional<jq.c<dfp>> a(js.a $$0, cxk $$1) {
+      return $$0.d(mb.aY).c().filter($$1x -> $$1.a(((dfp)$$1x.a()).b())).findFirst();
    }
 
-   public String a() {
-      return this.a;
+   private static void a(rk<dfp> $$0, aly<dfp> $$1, cxg $$2, ys $$3, float $$4) {
+      a($$0, $$1, $$2, $$3, $$4, Map.of());
    }
 
-   public dfj b() {
-      return this.b;
+   private static void a(rk<dfp> $$0, aly<dfp> $$1, cxg $$2, ys $$3, float $$4, Map<alz, String> $$5) {
+      dfp $$6 = dfp.a($$1.a().a(), $$2, $$4, xv.c(ae.a("trim_material", $$1.a())).c($$3), $$5);
+      $$0.a($$1, $$6);
    }
 
-   public boolean c() {
-      return this.c;
-   }
-
-   public bsh d() {
-      return this.d;
-   }
-
-   public boolean e() {
-      return this.e;
-   }
-
-   public dfi f() {
-      return this.f;
-   }
-
-   public dgj g() {
-      return this.g;
-   }
-
-   public dfq a(dfj $$0) {
-      return new dfq(this.a, $$0, this.c, this.d, this.e, this.f, this.g);
-   }
-
-   public dfq a(bsh $$0) {
-      return new dfq(this.a, this.b, this.c, $$0, this.e, this.f, this.g);
-   }
-
-   public dfq a(dgj $$0) {
-      return new dfq(this.a, this.b, this.c, this.d, this.e, this.f, $$0);
-   }
-
-   public dfq h() {
-      return new dfq(this.a, this.b, this.c, this.d, this.e, this.f.a(this.g.b()), this.g);
+   private static aly<dfp> a(String $$0) {
+      return aly.a(mb.aY, alz.b($$0));
    }
 }

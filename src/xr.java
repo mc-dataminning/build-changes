@@ -1,77 +1,86 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import java.util.BitSet;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class xr {
-   private final xt[] a;
-   private int b;
-   private int c;
-   @Nullable
-   private xv d;
+public record xr(xs l, xs m) {
+   public static final Codec<xr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(xs.a.fieldOf("chat").forGetter(xr::a), xs.a.fieldOf("narration").forGetter(xr::b)).apply($$0, xr::new)
+   );
+   public static final zt<xg, xr> b = zt.a(xs.b, xr::a, xs.b, xr::b, xr::new);
+   public static final zt<xg, jq<xr>> c = zr.a(mb.aI, b);
+   public static final xs d = xs.a("chat.type.text");
+   public static final aly<xr> e = a("chat");
+   public static final aly<xr> f = a("say_command");
+   public static final aly<xr> g = a("msg_command_incoming");
+   public static final aly<xr> h = a("msg_command_outgoing");
+   public static final aly<xr> i = a("team_msg_command_incoming");
+   public static final aly<xr> j = a("team_msg_command_outgoing");
+   public static final aly<xr> k = a("emote_command");
 
-   public xr(int $$0) {
-      this.a = new xt[$$0];
+   private static aly<xr> a(String $$0) {
+      return aly.a(mb.aI, alz.b($$0));
    }
 
-   public boolean a(xv $$0, boolean $$1) {
-      if (Objects.equals($$0, this.d)) {
-         return false;
-      } else {
-         this.d = $$0;
-         this.a($$1 ? new xt($$0, true) : null);
-         return true;
-      }
+   public static void a(rk<xr> $$0) {
+      $$0.a(e, new xr(d, xs.a("chat.type.text.narrate")));
+      $$0.a(f, new xr(xs.a("chat.type.announcement"), xs.a("chat.type.text.narrate")));
+      $$0.a(g, new xr(xs.b("commands.message.display.incoming"), xs.a("chat.type.text.narrate")));
+      $$0.a(h, new xr(xs.c("commands.message.display.outgoing"), xs.a("chat.type.text.narrate")));
+      $$0.a(i, new xr(xs.d("chat.type.team.text"), xs.a("chat.type.text.narrate")));
+      $$0.a(j, new xr(xs.d("chat.type.team.sent"), xs.a("chat.type.text.narrate")));
+      $$0.a(k, new xr(xs.a("chat.type.emote"), xs.a("chat.type.emote")));
    }
 
-   private void a(@Nullable xt $$0) {
-      int $$1 = this.b;
-      this.b = ($$1 + 1) % this.a.length;
-      this.c++;
-      this.a[$$1] = $$0;
+   public static xr.a a(aly<xr> $$0, bvf $$1) {
+      return a($$0, $$1.dV().K_(), $$1.p_());
    }
 
-   public void a(xv $$0) {
-      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-         xt $$2 = this.a[$$1];
-         if ($$2 != null && $$2.c() && $$0.equals($$2.b())) {
-            this.a[$$1] = null;
-            break;
-         }
-      }
+   public static xr.a a(aly<xr> $$0, ew $$1) {
+      return a($$0, $$1.u(), $$1.b());
    }
 
-   public int a() {
-      int $$0 = this.c;
-      this.c = 0;
-      return $$0;
+   public static xr.a a(aly<xr> $$0, ke $$1, xv $$2) {
+      kd<xr> $$3 = $$1.e(mb.aI);
+      return new xr.a($$3.b($$0), $$2);
    }
 
-   public xr.a b() {
-      int $$0 = this.a();
-      BitSet $$1 = new BitSet(this.a.length);
-      ObjectList<xv> $$2 = new ObjectArrayList(this.a.length);
+   public xs a() {
+      return this.l;
+   }
 
-      for (int $$3 = 0; $$3 < this.a.length; $$3++) {
-         int $$4 = (this.b + $$3) % this.a.length;
-         xt $$5 = this.a[$$4];
-         if ($$5 != null) {
-            $$1.set($$3, true);
-            $$2.add($$5.b());
-            this.a[$$4] = $$5.a();
-         }
+   public xs b() {
+      return this.m;
+   }
+
+   public static record a(jq<xr> b, xv c, Optional<xv> d) {
+      public static final zt<xg, xr.a> a = zt.a(xr.c, xr.a::a, xx.d, xr.a::b, xx.e, xr.a::c, xr.a::new);
+
+      a(jq<xr> $$0, xv $$1) {
+         this($$0, $$1, Optional.empty());
       }
 
-      xq $$6 = new xq($$2);
-      xq.b $$7 = new xq.b($$0, $$1);
-      return new xr.a($$6, $$7);
-   }
+      public xv a(xv $$0) {
+         return this.b.a().a().a($$0, this);
+      }
 
-   public int c() {
-      return this.c;
-   }
+      public xv b(xv $$0) {
+         return this.b.a().b().a($$0, this);
+      }
 
-   public static record a(xq a, xq.b b) {
+      public xr.a c(xv $$0) {
+         return new xr.a(this.b, this.c, Optional.of($$0));
+      }
+
+      public jq<xr> a() {
+         return this.b;
+      }
+
+      public xv b() {
+         return this.c;
+      }
+
+      public Optional<xv> c() {
+         return this.d;
+      }
    }
 }

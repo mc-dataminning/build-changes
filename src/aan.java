@@ -1,25 +1,25 @@
-public class aan implements zq<aaj> {
-   public static final zh<wg, aan> a = zq.a(aan::a, aan::new);
+public class aan implements aac<aai> {
+   public static final zt<ws, aan> a = aac.a(aan::a, aan::new);
    private final int b;
 
    public aan(int $$0) {
       this.b = $$0;
    }
 
-   private aan(wg $$0) {
+   private aan(ws $$0) {
       this.b = $$0.readInt();
    }
 
-   private void a(wg $$0) {
+   private void a(ws $$0) {
       $$0.q(this.b);
    }
 
    @Override
-   public zs<aan> a() {
-      return aai.o;
+   public aae<aan> a() {
+      return aau.e;
    }
 
-   public void a(aaj $$0) {
+   public void a(aai $$0) {
       $$0.a(this);
    }
 

@@ -1,7 +1,80 @@
-public interface cbe {
-   default float a(float $$0, float $$1, float $$2) {
-      float $$3 = azm.c($$0, $$1);
-      float $$4 = azm.a($$3, -$$2, $$2);
-      return $$0 + $$4;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.Optional;
+
+public class cbe extends cbf {
+   private static final List<cxg> c = ImmutableList.of(cxo.pR, cxo.wb);
+
+   @Override
+   protected void a(ash $$0, cpe $$1) {
+      Optional<jp> $$2 = $$1.eb().c(cff.c);
+      if (!$$2.isEmpty()) {
+         jp $$3 = $$2.get();
+         dxn $$4 = $$0.a_($$3.b());
+         if ($$4.a(dkg.px)) {
+            this.c($$0, $$1);
+            this.a($$0, $$1, $$3, $$4);
+         }
+      }
+   }
+
+   private void a(ash $$0, cpe $$1, jp $$2, dxn $$3) {
+      jh $$4 = $$2.b();
+      if ($$3.c(dlq.e) == 8) {
+         $$3 = dlq.a($$1, $$3, (dha)$$0, $$4);
+      }
+
+      int $$5 = 20;
+      int $$6 = 10;
+      int[] $$7 = new int[c.size()];
+      btl $$8 = $$1.t();
+      int $$9 = $$8.b();
+      dxn $$10 = $$3;
+
+      for (int $$11 = $$9 - 1; $$11 >= 0 && $$5 > 0; $$11--) {
+         cxk $$12 = $$8.a($$11);
+         int $$13 = c.indexOf($$12.h());
+         if ($$13 != -1) {
+            int $$14 = $$12.L();
+            int $$15 = $$7[$$13] + $$14;
+            $$7[$$13] = $$15;
+            int $$16 = Math.min(Math.min($$15 - 10, $$5), $$14);
+            if ($$16 > 0) {
+               $$5 -= $$16;
+
+               for (int $$17 = 0; $$17 < $$16; $$17++) {
+                  $$10 = dlq.a($$1, $$10, $$0, $$12, $$4);
+                  if ($$10.c(dlq.e) == 7) {
+                     this.a($$0, $$3, $$4, $$10);
+                     return;
+                  }
+               }
+            }
+         }
+      }
+
+      this.a($$0, $$3, $$4, $$10);
+   }
+
+   private void a(ash $$0, dxn $$1, jh $$2, dxn $$3) {
+      $$0.c(1500, $$2, $$3 != $$1 ? 1 : 0);
+   }
+
+   private void c(ash $$0, cpe $$1) {
+      btl $$2 = $$1.t();
+      if ($$2.a_(cxo.pT) <= 36) {
+         int $$3 = $$2.a_(cxo.pS);
+         int $$4 = 3;
+         int $$5 = 3;
+         int $$6 = Math.min(3, $$3 / 3);
+         if ($$6 != 0) {
+            int $$7 = $$6 * 3;
+            $$2.a(cxo.pS, $$7);
+            cxk $$8 = $$2.b(new cxk(cxo.pT, $$6));
+            if (!$$8.f()) {
+               $$1.a($$0, $$8, 0.5F);
+            }
+         }
+      }
    }
 }

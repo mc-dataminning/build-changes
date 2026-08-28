@@ -1,40 +1,31 @@
-public class gsm extends gqq<ckp, gya, gbz> {
-   private static final alj a = alj.b("textures/entity/wither/wither_invulnerable.png");
-   private static final alj b = alj.b("textures/entity/wither/wither.png");
+public class gsm extends gri<cqk, gyo> {
+   private static final alz a = alz.b("textures/entity/llama/spit.png");
+   private final gby b;
 
-   public gsm(gpk.a $$0) {
-      super($$0, new gbz($$0.a(gck.dr)), 1.0F);
-      this.a(new gum(this, $$0.f()));
+   public gsm(grj.a $$0) {
+      super($$0);
+      this.b = new gby($$0.a(geg.bt));
    }
 
-   protected int a(ckp $$0, jh $$1) {
-      return 15;
+   public void a(gyo $$0, fgl $$1, gle $$2, int $$3) {
+      $$1.a();
+      $$1.a(0.0F, 0.15F, 0.0F);
+      $$1.a(a.d.rotationDegrees($$0.a - 90.0F));
+      $$1.a(a.f.rotationDegrees($$0.b));
+      this.b.a($$0);
+      fgp $$4 = $$2.getBuffer(this.b.a(a));
+      this.b.a($$1, $$4, $$3, hav.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public alj a(gya $$0) {
-      int $$1 = azm.d($$0.c);
-      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : b;
+   public gyo a() {
+      return new gyo();
    }
 
-   public gya b() {
-      return new gya();
-   }
-
-   protected void a(gya $$0, fer $$1) {
-      float $$2 = 2.0F;
-      if ($$0.c > 0.0F) {
-         $$2 -= $$0.c / 220.0F * 0.5F;
-      }
-
-      $$1.b($$2, $$2, $$2);
-   }
-
-   public void a(ckp $$0, gya $$1, float $$2) {
+   public void a(cqk $$0, gyo $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      int $$3 = $$0.gn();
-      $$1.c = $$3 > 0 ? (float)$$3 - $$2 : 0.0F;
-      System.arraycopy($$0.gm(), 0, $$1.a, 0, $$1.a.length);
-      System.arraycopy($$0.v(), 0, $$1.b, 0, $$1.b.length);
-      $$1.d = $$0.go();
+      $$1.b = $$0.j($$2);
+      $$1.a = $$0.k($$2);
    }
 }

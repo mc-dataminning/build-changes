@@ -1,32 +1,28 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
 
-public abstract class bgv extends DataFix {
-   private final String a;
-   private final String b;
-   private final TypeReference c;
-
-   public bgv(Schema $$0, boolean $$1, String $$2, TypeReference $$3, String $$4) {
+public class bgv extends DataFix {
+   public bgv(Schema $$0, boolean $$1) {
       super($$0, $$1);
-      this.a = $$2;
-      this.c = $$3;
-      this.b = $$4;
    }
 
-   public TypeRewriteRule makeRule() {
-      OpticFinder<?> $$0 = DSL.namedChoice(this.b, this.getInputSchema().getChoiceType(this.c, this.b));
-      return this.fixTypeEverywhereTyped(
-         this.a,
-         this.getInputSchema().getType(this.c),
-         this.getOutputSchema().getType(this.c),
-         $$1 -> $$1.updateTyped($$0, this.getOutputSchema().getChoiceType(this.c, this.b), this::a)
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.update(
+         "pages", $$1 -> (Dynamic)DataFixUtils.orElse($$1.asStreamOpt().map($$0xx -> $$0xx.map(bbn::b)).map($$0::createList).result(), $$0.emptyList())
       );
    }
 
-   protected abstract Typed<?> a(Typed<?> var1);
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bis.t);
+      OpticFinder<?> $$1 = $$0.findField("tag");
+      return this.fixTypeEverywhereTyped(
+         "ItemWrittenBookPagesStrictJsonFix", $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a))
+      );
+   }
 }

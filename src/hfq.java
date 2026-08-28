@@ -1,33 +1,23 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
+public class hfq {
+   private final String a;
+   private final String b;
+   private long c;
 
-public abstract class hfq extends frw {
-   protected static final int d = 17;
-   protected static final int s = 7;
-   protected static final long u = 5368709120L;
-   protected static final int v = 5000268;
-   protected static final int w = 7105644;
-   protected static final int x = 8388479;
-   protected static final int y = 3368635;
-   protected static final int z = 7107012;
-   protected static final int A = 32;
-   private final List<hfo> a = Lists.newArrayList();
-
-   public hfq(xj $$0) {
-      super($$0);
+   public hfq(String $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = ae.c();
    }
 
-   protected static int g(int $$0) {
-      return 40 + $$0 * 13;
+   public String a() {
+      return this.a;
    }
 
-   protected hfo a(hfo $$0) {
-      this.a.add($$0);
-      return this.a($$0);
+   public String b() {
+      return this.b;
    }
 
-   public xj m() {
-      return xi.a(this.a.stream().map(hfo::a).collect(Collectors.toList()));
+   public void c() {
+      this.c = ae.c();
    }
 }

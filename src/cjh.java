@@ -1,49 +1,21 @@
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class cjh extends cjb {
-   public cjh(bus<? extends cjh> $$0, dfm $$1) {
-      super($$0, $$1);
-   }
+public class cjh {
+   public static bxv<bwb> a() {
+      return cbh.a(
+         (Function<cbh.b<bwb>, ? extends App<cbh.c<bwb>, cbk<bwb>>>)($$0 -> $$0.group($$0.b(cff.N), $$0.a(cff.y)).apply($$0, ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                  int $$6 = $$0.<Integer>b($$1);
+                  if ($$6 <= 0) {
+                     $$1.b();
+                     $$2.b();
+                     $$4.eb().f();
+                  } else {
+                     $$1.a($$6 - 1);
+                  }
 
-   @Override
-   protected awm t() {
-      return awn.pw;
-   }
-
-   @Override
-   protected awm gN() {
-      return awn.px;
-   }
-
-   @Override
-   protected awm n_() {
-      return awn.pz;
-   }
-
-   @Nullable
-   @Override
-   protected awm go() {
-      return awn.pA;
-   }
-
-   @Override
-   protected awm e(btb $$0) {
-      return awn.pB;
-   }
-
-   @Override
-   protected void gU() {
-      this.a(awn.pC, 0.4F, 1.0F);
-   }
-
-   @Override
-   protected void v() {
-      this.a(awn.py, 1.0F, (this.ae.i() - this.ae.i()) * 0.2F + 1.0F);
-   }
-
-   @Nullable
-   @Override
-   public buc a(arp $$0, buc $$1) {
-      return bus.aE.a($$0, bur.e);
+                  return true;
+               }))
+      );
    }
 }

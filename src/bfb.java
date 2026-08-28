@@ -1,64 +1,52 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.DynamicOps;
+import java.util.Locale;
 import java.util.function.Function;
 
-public class bfb extends DataFix {
-   private static final String a = "minecraft:empty";
+public abstract class bfb extends DataFix {
+   protected final String a;
 
-   public bfb(Schema $$0) {
-      super($$0, true);
+   public bfb(String $$0, Schema $$1, boolean $$2) {
+      super($$1, $$2);
+      this.a = $$0;
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bia.B);
-      Type<?> $$1 = this.getOutputSchema().getType(bia.B);
-      return this.fixTypeEverywhereTyped(
-         "Fix AbstractArrow item type",
+   public TypeRewriteRule makeRule() {
+      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bis.B);
+      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bis.B);
+      Function<String, Type<?>> $$2 = ae.b($$2x -> {
+         Type<?> $$3 = (Type<?>)$$0.types().get($$2x);
+         return bbq.a($$3, $$0, $$1);
+      });
+      return this.fixTypeEverywhere(
+         this.a,
          $$0,
          $$1,
-         bay.a(this.a("minecraft:trident", bfb::c), this.a("minecraft:arrow", bfb::a), this.a("minecraft:spectral_arrow", bfb::b))
+         $$2x -> $$3 -> {
+               String $$4 = (String)$$3.getFirst();
+               Type<?> $$5 = $$2.apply($$4);
+               Pair<String, Typed<?>> $$6 = this.a($$4, this.a($$3.getSecond(), $$2x, $$5));
+               Type<?> $$7 = (Type<?>)$$1.types().get($$6.getFirst());
+               if (!$$7.equals(((Typed)$$6.getSecond()).getType(), true, true)) {
+                  throw new IllegalStateException(
+                     String.format(Locale.ROOT, "Dynamic type check failed: %s not equal to %s", $$7, ((Typed)$$6.getSecond()).getType())
+                  );
+               } else {
+                  return Pair.of((String)$$6.getFirst(), ((Typed)$$6.getSecond()).getValue());
+               }
+            }
       );
    }
 
-   private Function<Typed<?>, Typed<?>> a(String $$0, bfb.a<?> $$1) {
-      Type<?> $$2 = this.getInputSchema().getChoiceType(bia.B, $$0);
-      Type<?> $$3 = this.getOutputSchema().getChoiceType(bia.B, $$0);
-      return a($$0, $$1, $$2, $$3);
+   private <A> Typed<A> a(Object $$0, DynamicOps<?> $$1, Type<A> $$2) {
+      return new Typed($$2, $$1, $$0);
    }
 
-   private static <T> Function<Typed<?>, Typed<?>> a(String $$0, bfb.a<?> $$1, Type<?> $$2, Type<T> $$3) {
-      OpticFinder<?> $$4 = DSL.namedChoice($$0, $$2);
-      return $$3x -> $$3x.updateTyped($$4, $$3, $$2xx -> $$1.fix($$2xx, $$3));
-   }
-
-   private static <T> Typed<T> a(Typed<?> $$0, Type<T> $$1) {
-      return ae.a($$0, $$1, $$0x -> $$0x.set("item", a($$0x, a($$0x))));
-   }
-
-   private static String a(Dynamic<?> $$0) {
-      return $$0.get("Potion").asString("minecraft:empty").equals("minecraft:empty") ? "minecraft:arrow" : "minecraft:tipped_arrow";
-   }
-
-   private static <T> Typed<T> b(Typed<?> $$0, Type<T> $$1) {
-      return ae.a($$0, $$1, $$0x -> $$0x.set("item", a($$0x, "minecraft:spectral_arrow")));
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0, String $$1) {
-      return $$0.createMap(ImmutableMap.of($$0.createString("id"), $$0.createString($$1), $$0.createString("Count"), $$0.createInt(1)));
-   }
-
-   private static <T> Typed<T> c(Typed<?> $$0, Type<T> $$1) {
-      return new Typed($$1, $$0.getOps(), $$0.getValue());
-   }
-
-   interface a<F> {
-      Typed<F> fix(Typed<?> var1, Type<F> var2);
-   }
+   protected abstract Pair<String, Typed<?>> a(String var1, Typed<?> var2);
 }

@@ -1,105 +1,166 @@
-import java.util.Optional;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-
-public class duz {
-   private static final duz.a a = duz.a.a("trial_chamber/breeze");
-   private static final duz.a b = duz.a.a("trial_chamber/melee/husk");
-   private static final duz.a c = duz.a.a("trial_chamber/melee/spider");
-   private static final duz.a d = duz.a.a("trial_chamber/melee/zombie");
-   private static final duz.a e = duz.a.a("trial_chamber/ranged/poison_skeleton");
-   private static final duz.a f = duz.a.a("trial_chamber/ranged/skeleton");
-   private static final duz.a g = duz.a.a("trial_chamber/ranged/stray");
-   private static final duz.a h = duz.a.a("trial_chamber/slow_ranged/poison_skeleton");
-   private static final duz.a i = duz.a.a("trial_chamber/slow_ranged/skeleton");
-   private static final duz.a j = duz.a.a("trial_chamber/slow_ranged/stray");
-   private static final duz.a k = duz.a.a("trial_chamber/small_melee/baby_zombie");
-   private static final duz.a l = duz.a.a("trial_chamber/small_melee/cave_spider");
-   private static final duz.a m = duz.a.a("trial_chamber/small_melee/silverfish");
-   private static final duz.a n = duz.a.a("trial_chamber/small_melee/slime");
-
-   public static void a(qz<duy> $$0) {
-      a(
-         $$0,
-         a,
-         duy.b().b(1.0F).d(0.5F).b(20).a(2.0F).c(1.0F).a(bqs.a(a(bus.r))).a(),
-         duy.b().d(0.5F).b(20).a(4.0F).c(1.0F).a(bqs.a(a(bus.r))).b(bqs.<ali<eus>>a().a(euj.aN, 3).a(euj.aO, 7).a()).a()
-      );
-      a($$0, b, c().a(bqs.a(a(bus.al))).a(), c().a(bqs.a(a(bus.al, euj.ak))).b(bqs.<ali<eus>>a().a(euj.aN, 3).a(euj.aO, 7).a()).a());
-      a($$0, c, c().a(bqs.a(a(bus.bk))).a(), a().a(bqs.a(a(bus.bk))).b(bqs.<ali<eus>>a().a(euj.aN, 3).a(euj.aO, 7).a()).a());
-      a($$0, d, c().a(bqs.a(a(bus.bK))).a(), c().b(bqs.<ali<eus>>a().a(euj.aN, 3).a(euj.aO, 7).a()).a(bqs.a(a(bus.bK, euj.ak))).a());
-      a($$0, e, c().a(bqs.a(a(bus.q))).a(), c().b(bqs.<ali<eus>>a().a(euj.aN, 3).a(euj.aO, 7).a()).a(bqs.a(a(bus.q, euj.aj))).a());
-      a($$0, f, c().a(bqs.a(a(bus.bb))).a(), c().b(bqs.<ali<eus>>a().a(euj.aN, 3).a(euj.aO, 7).a()).a(bqs.a(a(bus.bb, euj.aj))).a());
-      a($$0, g, c().a(bqs.a(a(bus.bo))).a(), c().b(bqs.<ali<eus>>a().a(euj.aN, 3).a(euj.aO, 7).a()).a(bqs.a(a(bus.bo, euj.aj))).a());
-      a($$0, h, b().a(bqs.a(a(bus.q))).a(), b().b(bqs.<ali<eus>>a().a(euj.aN, 3).a(euj.aO, 7).a()).a(bqs.a(a(bus.q, euj.aj))).a());
-      a($$0, i, b().a(bqs.a(a(bus.bb))).a(), b().b(bqs.<ali<eus>>a().a(euj.aN, 3).a(euj.aO, 7).a()).a(bqs.a(a(bus.bb, euj.aj))).a());
-      a($$0, j, b().a(bqs.a(a(bus.bo))).a(), b().b(bqs.<ali<eus>>a().a(euj.aN, 3).a(euj.aO, 7).a()).a(bqs.a(a(bus.bo, euj.aj))).a());
-      a(
-         $$0,
-         k,
-         duy.b().d(0.5F).b(20).a(bqs.a(a(bus.bK, $$0x -> $$0x.a("IsBaby", true), null))).a(),
-         duy.b().d(0.5F).b(20).b(bqs.<ali<eus>>a().a(euj.aN, 3).a(euj.aO, 7).a()).a(bqs.a(a(bus.bK, $$0x -> $$0x.a("IsBaby", true), euj.ak))).a()
-      );
-      a($$0, l, c().a(bqs.a(a(bus.v))).a(), a().b(bqs.<ali<eus>>a().a(euj.aN, 3).a(euj.aO, 7).a()).a(bqs.a(a(bus.v))).a());
-      a($$0, m, c().a(bqs.a(a(bus.ba))).a(), a().b(bqs.<ali<eus>>a().a(euj.aN, 3).a(euj.aO, 7).a()).a(bqs.a(a(bus.ba))).a());
-      a(
-         $$0,
-         n,
-         c().a(bqs.<dgg>a().a(a(bus.bd, $$0x -> $$0x.a("Size", (byte)1)), 3).a(a(bus.bd, $$0x -> $$0x.a("Size", (byte)2)), 1).a()).a(),
-         a()
-            .b(bqs.<ali<eus>>a().a(euj.aN, 3).a(euj.aO, 7).a())
-            .a(bqs.<dgg>a().a(a(bus.bd, $$0x -> $$0x.a("Size", (byte)1)), 3).a(a(bus.bd, $$0x -> $$0x.a("Size", (byte)2)), 1).a())
-            .a()
-      );
-   }
-
-   private static <T extends bul> dgg a(bus<T> $$0) {
-      return a($$0, $$0x -> {
-      }, null);
-   }
-
-   private static <T extends bul> dgg a(bus<T> $$0, Consumer<ul> $$1) {
-      return a($$0, $$1, null);
-   }
-
-   private static <T extends bul> dgg a(bus<T> $$0, ali<eus> $$1) {
-      return a($$0, $$0x -> {
-      }, $$1);
-   }
-
-   private static <T extends bul> dgg a(bus<T> $$0, Consumer<ul> $$1, @Nullable ali<eus> $$2) {
-      ul $$3 = new ul();
-      $$3.a("id", lz.f.b($$0).toString());
-      $$1.accept($$3);
-      Optional<buv> $$4 = Optional.ofNullable($$2).map($$0x -> new buv($$0x, 0.0F));
-      return new dgg($$3, Optional.empty(), $$4);
-   }
-
-   private static void a(qz<duy> $$0, duz.a $$1, duy $$2, duy $$3) {
-      $$0.a($$1.a, $$2);
-      $$0.a($$1.b, $$3);
-   }
-
-   static ali<duy> a(String $$0) {
-      return ali.a(ma.aF, alj.b($$0));
-   }
-
-   private static duy.a a() {
-      return duy.b().b(4.0F).d(0.5F).b(20).a(12.0F);
-   }
-
-   private static duy.a b() {
-      return duy.b().b(4.0F).d(2.0F).b(160);
-   }
-
-   private static duy.a c() {
-      return duy.b().b(3.0F).d(0.5F).b(20);
-   }
-
-   static record a(ali<duy> a, ali<duy> b) {
-
-      public static duz.a a(String $$0) {
-         return new duz.a(duz.a($$0 + "/normal"), duz.a($$0 + "/ominous"));
+public class duz extends dup {
+   private boolean a;
+   private boolean b;
+   private boolean c;
+   private final dga d = new dga() {
+      @Override
+      public void a(String $$0) {
+         super.a($$0);
+         duz.this.e();
       }
+
+      @Override
+      public ash e() {
+         return (ash)duz.this.o;
+      }
+
+      @Override
+      public void f() {
+         dxn $$0 = duz.this.o.a_(duz.this.p);
+         this.e().a(duz.this.p, $$0, $$0, 3);
+      }
+
+      @Override
+      public fbs g() {
+         return fbs.b(duz.this.p);
+      }
+
+      @Override
+      public ew i() {
+         jm $$0 = duz.this.m().c(dlo.b);
+         return new ew(this, fbs.b(duz.this.p), new fbr(0.0F, $$0.p()), this.e(), 2, this.n().getString(), this.n(), this.e().p(), null);
+      }
+
+      @Override
+      public boolean j() {
+         return !duz.this.n();
+      }
+   };
+
+   public duz(jh $$0, dxn $$1) {
+      super(dur.x, $$0, $$1);
+   }
+
+   @Override
+   protected void b(ux $$0, js.a $$1) {
+      super.b($$0, $$1);
+      this.d.a($$0, $$1);
+      $$0.a("powered", this.c());
+      $$0.a("conditionMet", this.j());
+      $$0.a("auto", this.d());
+   }
+
+   @Override
+   protected void a(ux $$0, js.a $$1) {
+      super.a($$0, $$1);
+      this.d.b($$0, $$1);
+      this.a = $$0.q("powered");
+      this.c = $$0.q("conditionMet");
+      this.b($$0.q("auto"));
+   }
+
+   @Override
+   public boolean p() {
+      return true;
+   }
+
+   public dga b() {
+      return this.d;
+   }
+
+   public void a(boolean $$0) {
+      this.a = $$0;
+   }
+
+   public boolean c() {
+      return this.a;
+   }
+
+   public boolean d() {
+      return this.b;
+   }
+
+   public void b(boolean $$0) {
+      boolean $$1 = this.b;
+      this.b = $$0;
+      if (!$$1 && $$0 && !this.a && this.o != null && this.t() != duz.a.a) {
+         this.v();
+      }
+   }
+
+   public void f() {
+      duz.a $$0 = this.t();
+      if ($$0 == duz.a.b && (this.a || this.b) && this.o != null) {
+         this.v();
+      }
+   }
+
+   private void v() {
+      dke $$0 = this.m().b();
+      if ($$0 instanceof dlo) {
+         this.k();
+         this.o.a(this.p, $$0, 1);
+      }
+   }
+
+   public boolean j() {
+      return this.c;
+   }
+
+   public boolean k() {
+      this.c = true;
+      if (this.u()) {
+         jh $$0 = this.p.a(this.o.a_(this.p).c(dlo.b).g());
+         if (this.o.a_($$0).b() instanceof dlo) {
+            dup $$1 = this.o.c_($$0);
+            this.c = $$1 instanceof duz && ((duz)$$1).b().k() > 0;
+         } else {
+            this.c = false;
+         }
+      }
+
+      return this.c;
+   }
+
+   public duz.a t() {
+      dxn $$0 = this.m();
+      if ($$0.a(dkg.gb)) {
+         return duz.a.c;
+      } else if ($$0.a(dkg.lb)) {
+         return duz.a.b;
+      } else {
+         return $$0.a(dkg.lc) ? duz.a.a : duz.a.c;
+      }
+   }
+
+   public boolean u() {
+      dxn $$0 = this.o.a_(this.aB_());
+      return $$0.b() instanceof dlo ? $$0.c(dlo.c) : false;
+   }
+
+   @Override
+   protected void a(dup.b $$0) {
+      super.a($$0);
+      this.d.b($$0.a(ku.g));
+   }
+
+   @Override
+   protected void a(kq.a $$0) {
+      super.a($$0);
+      $$0.a(ku.g, this.d.o());
+   }
+
+   @Override
+   public void a(ux $$0) {
+      super.a($$0);
+      $$0.r("CustomName");
+      $$0.r("conditionMet");
+      $$0.r("powered");
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

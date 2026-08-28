@@ -1,44 +1,32 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class efk extends eew<ehh> {
-   public efk(Codec<ehh> $$0) {
-      super($$0);
+public class efk extends efh {
+   public static final Codec<efk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               efh.d.forGetter($$0x -> $$0x),
+               bsh.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
+               bsh.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
+               bsh.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
+            )
+            .apply($$0, efk::new)
+   );
+   public final bsh b;
+   public final bsh c;
+   final bsh j;
+
+   public efk(float $$0, emj $$1, bsh $$2, eec $$3, efi $$4, ju<dke> $$5, bsh $$6, bsh $$7, bsh $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
+      this.j = $$8;
    }
 
-   @Override
-   public boolean a(eey<ehh> $$0) {
-      int $$1 = 0;
-      dgk $$2 = $$0.b();
-      jh $$3 = $$0.e();
-      azu $$4 = $$0.d();
-      int $$5 = $$2.a(ebq.a.d, $$3.u(), $$3.w());
-      jh $$6 = new jh($$3.u(), $$5, $$3.w());
-      if ($$2.a_($$6).a(dis.G)) {
-         dvv $$7 = dis.mc.m();
-         dvv $$8 = dis.md.m();
-         int $$9 = 1 + $$4.a(10);
+   public efk(float $$0, emj $$1, bsh $$2, eec $$3, ju<dke> $$4, bsh $$5, bsh $$6, bsh $$7) {
+      this($$0, $$1, $$2, $$3, efi.a, $$4, $$5, $$6, $$7);
+   }
 
-         for (int $$10 = 0; $$10 <= $$9; $$10++) {
-            if ($$2.a_($$6).a(dis.G) && $$2.a_($$6.d()).a(dis.G) && $$8.a($$2, $$6)) {
-               if ($$10 == $$9) {
-                  $$2.a($$6, $$7.b(dmt.e, Integer.valueOf($$4.a(4) + 20)), 2);
-                  $$1++;
-               } else {
-                  $$2.a($$6, $$8, 2);
-               }
-            } else if ($$10 > 0) {
-               jh $$11 = $$6.e();
-               if ($$7.a($$2, $$11) && !$$2.a_($$11.e()).a(dis.mc)) {
-                  $$2.a($$11, $$7.b(dmt.e, Integer.valueOf($$4.a(4) + 20)), 2);
-                  $$1++;
-               }
-               break;
-            }
-
-            $$6 = $$6.d();
-         }
-      }
-
-      return $$1 > 0;
+   public efk(efh $$0, bsh $$1, bsh $$2, bsh $$3) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
    }
 }

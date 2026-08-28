@@ -1,66 +1,61 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
-import java.util.UUID;
+import java.util.Set;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import org.joml.Vector3f;
 
-public class gek extends gel {
-   private final String g;
+public final class gek {
+   @Nullable
+   private final String a;
+   private final Vector3f b;
+   private final Vector3f c;
+   private final gel d;
+   private final boolean e;
+   private final ges f;
+   private final ges g;
+   private final Set<jm> h;
 
-   gek(UUID $$0, Instant $$1, UUID $$2, String $$3) {
-      super($$0, $$1, $$2);
-      this.g = $$3;
+   protected gek(
+      @Nullable String $$0,
+      float $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      gel $$9,
+      boolean $$10,
+      float $$11,
+      float $$12,
+      Set<jm> $$13
+   ) {
+      this.a = $$0;
+      this.f = new ges($$1, $$2);
+      this.b = new Vector3f($$3, $$4, $$5);
+      this.c = new Vector3f($$6, $$7, $$8);
+      this.d = $$9;
+      this.e = $$10;
+      this.g = new ges($$11, $$12);
+      this.h = $$13;
    }
 
-   public String a() {
-      return this.g;
-   }
-
-   public gek c() {
-      gek $$0 = new gek(this.a, this.b, this.c, this.g);
-      $$0.d = this.d;
-      $$0.f = this.f;
-      return $$0;
-   }
-
-   @Override
-   public frw a(frw $$0, gep $$1) {
-      return new fwg($$0, $$1, this);
-   }
-
-   public static class a extends gel.a<gek> {
-      public a(gek $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
-
-      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
-         super(new gek(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
-      }
-
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g());
-      }
-
-      @Nullable
-      @Override
-      public gel.b c() {
-         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? gel.b.d : super.c();
-      }
-
-      @Override
-      public Either<gel.c, gel.b> a(gep $$0) {
-         gel.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            ReportedEntity $$2 = new ReportedEntity(this.a.c);
-            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
-            return Either.left(new gel.c(this.a.a, geo.c, $$3));
-         }
-      }
+   public geh.a a(int $$0, int $$1) {
+      return new geh.a(
+         (int)this.f.a(),
+         (int)this.f.b(),
+         this.b.x(),
+         this.b.y(),
+         this.b.z(),
+         this.c.x(),
+         this.c.y(),
+         this.c.z(),
+         this.d.b,
+         this.d.c,
+         this.d.d,
+         this.e,
+         (float)$$0 * this.g.a(),
+         (float)$$1 * this.g.b(),
+         this.h
+      );
    }
 }

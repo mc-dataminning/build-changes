@@ -1,31 +1,21 @@
-public record abd(jh c, String d, int e) implements aat {
-   public static final zh<wg, abd> a = aat.a(abd::a, abd::new);
-   public static final aat.b<abd> b = aat.a("debug/poi_added");
+public record abd(String c) implements abf {
+   public static final zt<ws, abd> a = abf.a(abd::a, abd::new);
+   public static final abf.b<abd> b = abf.a("brand");
 
-   private abd(wg $$0) {
-      this($$0.e(), $$0.p(), $$0.readInt());
+   private abd(ws $$0) {
+      this($$0.p());
    }
 
-   private void a(wg $$0) {
+   private void a(ws $$0) {
       $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.q(this.e);
    }
 
    @Override
-   public aat.b<abd> a() {
+   public abf.b<abd> a() {
       return b;
    }
 
-   public jh b() {
+   public String b() {
       return this.c;
-   }
-
-   public String c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
    }
 }

@@ -1,64 +1,43 @@
-import javax.annotation.Nullable;
+public interface coc {
+   int m_ = 10;
+   float n_ = 0.2F;
 
-public class coc implements dei {
-   private final cou a;
-   private dek b = new dek();
-   private int c;
+   int x();
 
-   public coc(cou $$0) {
-      this.a = $$0;
+   static boolean a(ash $$0, bwb $$1, bwb $$2) {
+      float $$3 = (float)$$1.h(bxj.c);
+      float $$4;
+      if (!$$1.e_() && (int)$$3 > 0) {
+         $$4 = $$3 / 2.0F + (float)$$0.A.a((int)$$3);
+      } else {
+         $$4 = $$3;
+      }
+
+      btv $$6 = $$1.dW().b($$1);
+      boolean $$7 = $$2.a($$0, $$6, $$4);
+      if ($$7) {
+         ddt.a($$0, (bvf)$$2, $$6);
+         if (!$$1.e_()) {
+            a($$1, $$2);
+         }
+      }
+
+      return $$7;
    }
 
-   @Override
-   public cou gm() {
-      return this.a;
-   }
-
-   @Override
-   public void a(@Nullable cou $$0) {
-   }
-
-   @Override
-   public dek go() {
-      return this.b;
-   }
-
-   @Override
-   public void a(dek $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public void a(dej $$0) {
-      $$0.l();
-   }
-
-   @Override
-   public void i(cwm $$0) {
-   }
-
-   @Override
-   public boolean gu() {
-      return this.a.dV().C;
-   }
-
-   @Override
-   public int q() {
-      return this.c;
-   }
-
-   @Override
-   public void s(int $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public boolean gp() {
-      return true;
-   }
-
-   @Override
-   public awm gq() {
-      return awn.Bc;
+   static void a(bwb $$0, bwb $$1) {
+      double $$2 = $$0.h(bxj.d);
+      double $$3 = $$1.h(bxj.p);
+      double $$4 = $$2 - $$3;
+      if (!($$4 <= 0.0)) {
+         double $$5 = $$1.dA() - $$0.dA();
+         double $$6 = $$1.dG() - $$0.dG();
+         float $$7 = (float)($$0.dV().A.a(21) - 10);
+         double $$8 = $$4 * (double)($$0.dV().A.i() * 0.5F + 0.2F);
+         fbs $$9 = new fbs($$5, 0.0, $$6).d().c($$8).b($$7);
+         double $$10 = $$4 * (double)$$0.dV().A.i() * 0.5;
+         $$1.j($$9.d, $$10, $$9.f);
+         $$1.T = true;
+      }
    }
 }

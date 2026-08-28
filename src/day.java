@@ -1,54 +1,33 @@
-import java.util.Map;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class day extends dbi {
-   public day(dao $$0) {
-      super("", $$0, dbj.a(Map.of('#', daw.a(cwq.qP), 'x', daw.a(cwq.sl)), "###", "#x#", "###"), new cwm(cwq.uB));
+public record day(ju<bui> c) implements daw {
+   public static final MapCodec<day> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kf.a(mb.W).fieldOf("effects").forGetter(day::b)).apply($$0, day::new));
+   public static final zt<xg, day> b = zt.a(zr.c(mb.W), day::b, day::new);
+
+   public day(jq<bui> $$0) {
+      this(ju.a($$0));
    }
 
    @Override
-   public boolean a(dap $$0, dfm $$1) {
-      if (!super.a($$0, $$1)) {
-         return false;
-      } else {
-         cwm $$2 = a($$0);
-         if ($$2.f()) {
-            return false;
-         } else {
-            etp $$3 = cwz.b($$2, $$1);
-            if ($$3 == null) {
-               return false;
-            } else {
-               return $$3.g() ? false : $$3.f < 4;
-            }
-         }
-      }
+   public daw.a<day> a() {
+      return daw.a.b;
    }
 
    @Override
-   public cwm a(dap $$0, js.a $$1) {
-      cwm $$2 = a($$0).c(1);
-      $$2.b(ku.N, czj.b);
-      return $$2;
-   }
+   public boolean a(dha $$0, cxk $$1, bwb $$2) {
+      boolean $$3 = false;
 
-   private static cwm a(dap $$0) {
-      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
-         cwm $$2 = $$0.a($$1);
-         if ($$2.b(ku.L)) {
-            return $$2;
+      for (jq<bui> $$4 : this.c) {
+         if ($$2.e($$4)) {
+            $$3 = true;
          }
       }
 
-      return cwm.k;
+      return $$3;
    }
 
-   @Override
-   public boolean ao_() {
-      return true;
-   }
-
-   @Override
-   public dbf<?> ap_() {
-      return dbf.f;
+   public ju<bui> b() {
+      return this.c;
    }
 }

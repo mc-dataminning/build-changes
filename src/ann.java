@@ -1,143 +1,132 @@
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.Collection;
-import java.util.function.BiConsumer;
-import java.util.function.BiPredicate;
-import java.util.function.ToIntFunction;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class ann {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xj.c("commands.experience.set.points.invalid"));
+   private static final Logger b = LogUtils.getLogger();
+   private static final String c = "localhost";
+   private static final String d = "0.0.0.0";
+   private static final int e = 10000;
+   private static final int f = 100;
+   public static BiMap<String, aly<dha>> a = ImmutableBiMap.of("o", dha.i, "n", dha.j, "e", dha.k);
+   @Nullable
+   private static anf g;
+   @Nullable
+   private static ane h;
 
    public static void a(CommandDispatcher<ew> $$0) {
-      LiteralCommandNode<ew> $$1 = $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("experience").requires($$0x -> $$0x.c(2)))
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("chase")
                   .then(
-                     ex.a("add")
-                        .then(
-                           ex.a("target", fj.d())
-                              .then(
-                                 ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ex.a("amount", IntegerArgumentType.integer())
-                                          .executes(
-                                             $$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), ann.a.a)
-                                          ))
-                                       .then(
-                                          ex.a("points")
-                                             .executes(
-                                                $$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), ann.a.a)
+                     ((LiteralArgumentBuilder)ex.a("follow")
+                           .then(
+                              ((RequiredArgumentBuilder)ex.a("host", StringArgumentType.string())
+                                    .executes($$0x -> b((ew)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), 10000)))
+                                 .then(
+                                    ex.a("port", IntegerArgumentType.integer(1, 65535))
+                                       .executes(
+                                          $$0x -> b(
+                                                (ew)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), IntegerArgumentType.getInteger($$0x, "port")
                                              )
-                                       ))
-                                    .then(
-                                       ex.a("levels")
-                                          .executes(
-                                             $$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), ann.a.b)
+                                       )
+                                 )
+                           ))
+                        .executes($$0x -> b((ew)$$0x.getSource(), "localhost", 10000))
+                  ))
+               .then(
+                  ((LiteralArgumentBuilder)ex.a("lead")
+                        .then(
+                           ((RequiredArgumentBuilder)ex.a("bind_address", StringArgumentType.string())
+                                 .executes($$0x -> a((ew)$$0x.getSource(), StringArgumentType.getString($$0x, "bind_address"), 10000)))
+                              .then(
+                                 ex.a("port", IntegerArgumentType.integer(1024, 65535))
+                                    .executes(
+                                       $$0x -> a(
+                                             (ew)$$0x.getSource(),
+                                             StringArgumentType.getString($$0x, "bind_address"),
+                                             IntegerArgumentType.getInteger($$0x, "port")
                                           )
                                     )
                               )
-                        )
-                  ))
-               .then(
-                  ex.a("set")
-                     .then(
-                        ex.a("target", fj.d())
-                           .then(
-                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ex.a("amount", IntegerArgumentType.integer(0))
-                                       .executes($$0x -> b((ew)$$0x.getSource(), fj.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), ann.a.a)))
-                                    .then(
-                                       ex.a("points")
-                                          .executes(
-                                             $$0x -> b((ew)$$0x.getSource(), fj.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), ann.a.a)
-                                          )
-                                    ))
-                                 .then(
-                                    ex.a("levels")
-                                       .executes($$0x -> b((ew)$$0x.getSource(), fj.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), ann.a.b))
-                                 )
-                           )
-                     )
+                        ))
+                     .executes($$0x -> a((ew)$$0x.getSource(), "0.0.0.0", 10000))
                ))
-            .then(
-               ex.a("query")
-                  .then(
-                     ((RequiredArgumentBuilder)ex.a("target", fj.c())
-                           .then(ex.a("points").executes($$0x -> a((ew)$$0x.getSource(), fj.e($$0x, "target"), ann.a.a))))
-                        .then(ex.a("levels").executes($$0x -> a((ew)$$0x.getSource(), fj.e($$0x, "target"), ann.a.b)))
-                  )
-            )
+            .then(ex.a("stop").executes($$0x -> a((ew)$$0x.getSource())))
       );
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("xp").requires($$0x -> $$0x.c(2))).redirect($$1));
    }
 
-   private static int a(ew $$0, arq $$1, ann.a $$2) {
-      int $$3 = $$2.f.applyAsInt($$1);
-      $$0.a(() -> xj.a("commands.experience.query." + $$2.e, $$1.o_(), $$3), false);
-      return $$3;
+   private static int a(ew $$0) {
+      if (h != null) {
+         h.b();
+         $$0.a(() -> xv.b("You have now stopped chasing"), false);
+         h = null;
+      }
+
+      if (g != null) {
+         g.b();
+         $$0.a(() -> xv.b("You are no longer being chased"), false);
+         g = null;
+      }
+
+      return 0;
    }
 
-   private static int a(ew $$0, Collection<? extends arq> $$1, int $$2, ann.a $$3) {
-      for (arq $$4 : $$1) {
-         $$3.c.accept($$4, $$2);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> xj.a("commands.experience.add." + $$3.e + ".success.single", $$2, $$1.iterator().next().o_()), true);
-      } else {
-         $$0.a(() -> xj.a("commands.experience.add." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
-      }
-
-      return $$1.size();
-   }
-
-   private static int b(ew $$0, Collection<? extends arq> $$1, int $$2, ann.a $$3) throws CommandSyntaxException {
-      int $$4 = 0;
-
-      for (arq $$5 : $$1) {
-         if ($$3.d.test($$5, $$2)) {
-            $$4++;
-         }
-      }
-
-      if ($$4 == 0) {
-         throw a.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> xj.a("commands.experience.set." + $$3.e + ".success.single", $$2, $$1.iterator().next().o_()), true);
-         } else {
-            $$0.a(() -> xj.a("commands.experience.set." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
-         }
-
-         return $$1.size();
-      }
-   }
-
-   static enum a {
-      a("points", cou::d, ($$0, $$1) -> {
-         if ($$1 >= $$0.gq()) {
-            return false;
-         } else {
-            $$0.a($$1);
-            return true;
-         }
-      }, $$0 -> azm.d($$0.cr * (float)$$0.gq())),
-      b("levels", arq::c, ($$0, $$1) -> {
-         $$0.b($$1);
+   private static boolean b(ew $$0) {
+      if (g != null) {
+         $$0.b(xv.b("Chase server is already running. Stop it using /chase stop"));
          return true;
-      }, $$0 -> $$0.cp);
+      } else if (h != null) {
+         $$0.b(xv.b("You are already chasing someone. Stop it using /chase stop"));
+         return true;
+      } else {
+         return false;
+      }
+   }
 
-      public final BiConsumer<arq, Integer> c;
-      public final BiPredicate<arq, Integer> d;
-      public final String e;
-      final ToIntFunction<arq> f;
+   private static int a(ew $$0, String $$1, int $$2) {
+      if (b($$0)) {
+         return 0;
+      } else {
+         g = new anf($$1, $$2, $$0.l().ag(), 100);
 
-      private a(final String $$0, final BiConsumer<arq, Integer> $$1, final BiPredicate<arq, Integer> $$2, final ToIntFunction<arq> $$3) {
-         this.c = $$1;
-         this.e = $$0;
-         this.d = $$2;
-         this.f = $$3;
+         try {
+            g.a();
+            $$0.a(() -> xv.b("Chase server is now running on port " + $$2 + ". Clients can follow you using /chase follow <ip> <port>"), false);
+         } catch (IOException var4) {
+            b.error("Failed to start chase server", var4);
+            $$0.b(xv.b("Failed to start chase server on port " + $$2));
+            g = null;
+         }
+
+         return 0;
+      }
+   }
+
+   private static int b(ew $$0, String $$1, int $$2) {
+      if (b($$0)) {
+         return 0;
+      } else {
+         h = new ane($$1, $$2, $$0.l());
+         h.a();
+         $$0.a(
+            () -> xv.b(
+                  "You are now chasing "
+                     + $$1
+                     + ":"
+                     + $$2
+                     + ". If that server does '/chase lead' then you will automatically go to the same position. Use '/chase stop' to stop chasing."
+               ),
+            false
+         );
+         return 0;
       }
    }
 }

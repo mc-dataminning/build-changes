@@ -1,42 +1,37 @@
-public class ghq extends ggm {
-   private final bul a;
-   private int b;
-   private final int D;
-   private final lq E;
+public class ghq<T extends lt> extends gjl {
+   private final gjg a;
 
-   public ghq(gdh $$0, bul $$1, lq $$2) {
-      this($$0, $$1, $$2, 3);
+   protected ghq(gfd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, T $$7, gjg $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.C = true;
+      this.a = $$8;
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.D = this.D * 0.75F * $$7.d();
+      int $$9 = (int)(8.0 / (this.r.j() * 0.8 + 0.2));
+      this.t = (int)Math.max((float)$$9 * $$7.d(), 1.0F);
+      this.b($$8);
    }
 
-   public ghq(gdh $$0, bul $$1, lq $$2, int $$3) {
-      this($$0, $$1, $$2, $$3, $$1.dy());
+   protected float a(float $$0, float $$1) {
+      return (this.r.i() * 0.2F + 0.8F) * $$0 * $$1;
    }
 
-   private ghq(gdh $$0, bul $$1, lq $$2, int $$3, ezy $$4) {
-      super($$0, $$1.dA(), $$1.e(0.5), $$1.dG(), $$4.d, $$4.e, $$4.f);
-      this.a = $$1;
-      this.D = $$3;
-      this.E = $$2;
-      this.a();
+   @Override
+   public gip b() {
+      return gip.b;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * bae.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
    public void a() {
-      for (int $$0 = 0; $$0 < 16; $$0++) {
-         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
-         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
-            double $$4 = this.a.c($$1 / 4.0);
-            double $$5 = this.a.e(0.5 + $$2 / 4.0);
-            double $$6 = this.a.f($$3 / 4.0);
-            this.c.a(this.E, false, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
-         }
-      }
-
-      this.b++;
-      if (this.b >= this.D) {
-         this.k();
-      }
+      super.a();
+      this.b(this.a);
    }
 }

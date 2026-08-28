@@ -1,21 +1,27 @@
-public class gqt extends gof<chm, gvu, gaf> {
-   private static final alj a = alj.b("textures/entity/cat/ocelot.png");
+public class gqt extends gsp<chy, gym, gau> {
+   private static final alz a = alz.b("textures/entity/fish/cod.png");
 
-   public gqt(gpk.a $$0) {
-      super($$0, new gaf($$0.a(gck.bD)), new gaf($$0.a(gck.bE)), 0.4F);
+   public gqt(grj.a $$0) {
+      super($$0, new gau($$0.a(geg.W)), 0.3F);
    }
 
-   public alj a(gvu $$0) {
+   @Override
+   public alz b(gym $$0) {
       return a;
    }
 
-   public gvu b() {
-      return new gvu();
+   public gym a() {
+      return new gym();
    }
 
-   public void a(chm $$0, gvu $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.d = $$0.ci();
-      $$1.e = $$0.cj();
+   @Override
+   protected void a(gym $$0, fgl $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      float $$4 = 4.3F * bae.a(0.6F * $$0.p);
+      $$1.a(a.d.rotationDegrees($$4));
+      if (!$$0.af) {
+         $$1.a(0.1F, 0.1F, -0.1F);
+         $$1.a(a.f.rotationDegrees(90.0F));
+      }
    }
 }

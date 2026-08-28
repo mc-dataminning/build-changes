@@ -1,121 +1,105 @@
-import java.util.List;
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
+public class ctz extends csx {
+   private final bsx m;
+   private final bsx n;
+   private final cjw o;
+   private static final int p = 1;
+   private static final int q = 2;
 
-public class ctz extends ctd {
-   public static final int m = 0;
-   public static final int n = 1;
-   public static final int o = 2;
-   public static final int p = 3;
-   public static final int u = 8;
-   public static final int v = 26;
-   public static final int w = 44;
-   private static final int y = 98;
-   public static final int x = 48;
-   private final dfm z;
-   @Nullable
-   private dbc<dbr> A;
-   private final List<dbc<dbr>> B;
+   public ctz(int $$0, cpr $$1, bsx $$2, final cjw $$3, int $$4) {
+      super(null, $$0);
+      this.m = $$2;
+      this.n = $$3.gX();
+      this.o = $$3;
+      $$2.c_($$1.k);
+      this.a(new cuu($$2, 0, 8, 18) {
+         @Override
+         public boolean a(cxk $$0) {
+            return $$0.a(cxo.oe) && !this.h() && $$3.f();
+         }
 
-   public ctz(int $$0, cot $$1) {
-      this($$0, $$1, csm.a);
-   }
+         @Override
+         public boolean d() {
+            return $$3.f();
+         }
+      });
+      this.a(new ctb(this.n, $$3, bvn.g, 0, 8, 36, null) {
+         @Override
+         public boolean a(cxk $$0) {
+            return $$3.a($$0, bvn.g);
+         }
 
-   public ctz(int $$0, cot $$1, csm $$2) {
-      super(cti.v, $$0, $$1, $$2);
-      this.z = $$1.k.dV();
-      this.B = this.z.s().a(dbg.g);
-   }
-
-   @Override
-   protected cte l() {
-      return cte.a()
-         .a(0, 8, 48, $$0 -> this.B.stream().anyMatch($$1 -> $$1.b().a($$0)))
-         .a(1, 26, 48, $$0 -> this.B.stream().anyMatch($$1 -> $$1.b().b($$0)))
-         .a(2, 44, 48, $$0 -> this.B.stream().anyMatch($$1 -> $$1.b().c($$0)))
-         .a(3, 98, 48)
-         .a();
-   }
-
-   @Override
-   protected boolean a(dvv $$0) {
-      return $$0.a(dis.ob);
-   }
-
-   @Override
-   protected boolean a(cou $$0, boolean $$1) {
-      return this.A != null && this.A.b().a(this.p(), this.z);
-   }
-
-   @Override
-   protected void a(cou $$0, cwm $$1) {
-      $$1.a($$0.dV(), $$0, $$1.L());
-      this.t.a($$0, this.n());
-      this.e(0);
-      this.e(1);
-      this.e(2);
-      this.q.a(($$0x, $$1x) -> $$0x.c(1044, $$1x, 0));
-   }
-
-   private List<cwm> n() {
-      return List.of(this.s.a(0), this.s.a(1), this.s.a(2));
-   }
-
-   private dbs p() {
-      return new dbs(this.s.a(0), this.s.a(1), this.s.a(2));
-   }
-
-   private void e(int $$0) {
-      cwm $$1 = this.s.a($$0);
-      if (!$$1.f()) {
-         $$1.h(1);
-         this.s.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void m() {
-      dbs $$0 = this.p();
-      List<dbc<dbr>> $$1 = this.z.s().b(dbg.g, $$0, this.z);
-      if ($$1.isEmpty()) {
-         this.t.a(0, cwm.k);
-      } else {
-         dbc<dbr> $$2 = $$1.get(0);
-         cwm $$3 = $$2.b().a($$0, this.z.J_());
-         if ($$3.a(this.z.J())) {
-            this.A = $$2;
-            this.t.a($$2);
-            this.t.a(0, $$3);
+         @Override
+         public boolean d() {
+            return $$3.e(bvn.g);
+         }
+      });
+      if ($$4 > 0) {
+         for (int $$5 = 0; $$5 < 3; $$5++) {
+            for (int $$6 = 0; $$6 < $$4; $$6++) {
+               this.a(new cuu($$2, 1 + $$6 + $$5 * $$4, 80 + $$6 * 18, 18 + $$5 * 18));
+            }
          }
       }
+
+      this.c($$1, 8, 84);
    }
 
    @Override
-   public int d(cwm $$0) {
-      return this.e($$0).orElse(0);
+   public boolean b(cps $$0) {
+      return !this.o.b(this.m) && this.m.a($$0) && this.n.a($$0) && this.o.bL() && $$0.b(this.o, 4.0);
    }
 
-   private static OptionalInt a(dbr $$0, cwm $$1) {
-      if ($$0.a($$1)) {
-         return OptionalInt.of(0);
-      } else if ($$0.b($$1)) {
-         return OptionalInt.of(1);
-      } else {
-         return $$0.c($$1) ? OptionalInt.of(2) : OptionalInt.empty();
+   @Override
+   public cxk b(cps $$0, int $$1) {
+      cxk $$2 = cxk.k;
+      cuu $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cxk $$4 = $$3.g();
+         $$2 = $$4.v();
+         int $$5 = this.m.b() + 1;
+         if ($$1 < $$5) {
+            if (!this.a($$4, $$5, this.k.size(), true)) {
+               return cxk.k;
+            }
+         } else if (this.b(1).a($$4) && !this.b(1).h()) {
+            if (!this.a($$4, 1, 2, false)) {
+               return cxk.k;
+            }
+         } else if (this.b(0).a($$4)) {
+            if (!this.a($$4, 0, 1, false)) {
+               return cxk.k;
+            }
+         } else if ($$5 <= 1 || !this.a($$4, 2, $$5, false)) {
+            int $$7 = $$5 + 27;
+            int $$9 = $$7 + 9;
+            if ($$1 >= $$7 && $$1 < $$9) {
+               if (!this.a($$4, $$5, $$7, false)) {
+                  return cxk.k;
+               }
+            } else if ($$1 >= $$5 && $$1 < $$7) {
+               if (!this.a($$4, $$7, $$9, false)) {
+                  return cxk.k;
+               }
+            } else if (!this.a($$4, $$7, $$7, false)) {
+               return cxk.k;
+            }
+
+            return cxk.k;
+         }
+
+         if ($$4.f()) {
+            $$3.e(cxk.k);
+         } else {
+            $$3.c();
+         }
       }
+
+      return $$2;
    }
 
    @Override
-   public boolean a(cwm $$0, ctw $$1) {
-      return $$1.c != this.t && super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean c(cwm $$0) {
-      return this.e($$0).isPresent();
-   }
-
-   private OptionalInt e(cwm $$0) {
-      return this.B.stream().flatMapToInt($$1 -> a($$1.b(), $$0).stream()).filter($$0x -> !this.b($$0x).h()).findFirst();
+   public void a(cps $$0) {
+      super.a($$0);
+      this.m.c($$0);
    }
 }

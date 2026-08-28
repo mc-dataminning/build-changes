@@ -1,65 +1,44 @@
-import javax.annotation.Nullable;
-
-public class bvs {
-   private final doi a;
-   private jh b;
-   private int c;
-   private boolean d;
-
-   public bvs(doi $$0, jh $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.d = true;
+public abstract class bvs extends bwd {
+   protected bvs(bvm<? extends bvs> $$0, dha $$1) {
+      super($$0, $$1);
    }
 
-   public boolean a(arp $$0, bul $$1, boolean $$2) {
-      if (!this.d) {
-         this.f();
-         return false;
-      } else {
-         this.d = false;
-         return $$2 && this.c++ >= this.a.a($$0, $$1);
+   @Override
+   protected void a(double $$0, boolean $$1, dxn $$2, jh $$3) {
+   }
+
+   @Override
+   public void a_(fbs $$0) {
+      if (this.di()) {
+         if (this.bj()) {
+            this.a(0.02F, $$0);
+            this.a(bwf.a, this.dy());
+            this.h(this.dy().c(0.8F));
+         } else if (this.bx()) {
+            this.a(0.02F, $$0);
+            this.a(bwf.a, this.dy());
+            this.h(this.dy().c(0.5));
+         } else {
+            float $$1 = 0.91F;
+            if (this.aJ()) {
+               $$1 = this.dV().a_(this.aQ()).b().g() * 0.91F;
+            }
+
+            float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
+            $$1 = 0.91F;
+            if (this.aJ()) {
+               $$1 = this.dV().a_(this.aQ()).b().g() * 0.91F;
+            }
+
+            this.a(this.aJ() ? 0.1F * $$2 : 0.02F, $$0);
+            this.a(bwf.a, this.dy());
+            this.h(this.dy().c((double)$$1));
+         }
       }
    }
 
-   @Nullable
-   public est a(arp $$0, bul $$1) {
-      return this.a.a($$0, $$1, this.b);
-   }
-
-   public doi.a a() {
-      return this.a.b();
-   }
-
-   private void f() {
-      this.c = Math.max(this.c - 4, 0);
-   }
-
-   public boolean b() {
-      return this.c <= 0;
-   }
-
-   public jh c() {
-      return this.b;
-   }
-
-   public void a(jh $$0) {
-      this.b = $$0;
-   }
-
-   public int d() {
-      return this.c;
-   }
-
-   public boolean e() {
-      return this.d;
-   }
-
-   public void a(boolean $$0) {
-      this.d = $$0;
-   }
-
-   public boolean a(doi $$0) {
-      return this.a == $$0;
+   @Override
+   public boolean q_() {
+      return false;
    }
 }

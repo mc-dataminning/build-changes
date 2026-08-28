@@ -1,35 +1,46 @@
-public interface fcr {
-   int a();
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.Collections;
+import java.util.Map;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   int b();
+class fcr {
+   private final Reference2ObjectOpenHashMap<fcp, fcu> a = new Reference2ObjectOpenHashMap(16, 0.5F);
 
-   void a(int var1, int var2);
-
-   boolean c();
-
-   float d();
-
-   default float e() {
-      return this.i();
+   @Nullable
+   public fcu a(fcp $$0) {
+      return (fcu)this.a.get($$0);
    }
 
-   default float f() {
-      return this.e() + (float)this.a() / this.d();
+   public fcu a(fcp $$0, Consumer<fcu> $$1) {
+      return (fcu)this.a.computeIfAbsent($$0, $$1x -> {
+         fcu $$2 = new fcu();
+         $$1.accept($$2);
+         return $$2;
+      });
    }
 
-   default float g() {
-      return 7.0F - this.j();
+   public boolean b(fcp $$0) {
+      return this.a.remove($$0) != null;
    }
 
-   default float h() {
-      return this.g() + (float)this.b() / this.d();
+   public boolean a() {
+      return !this.a.isEmpty();
    }
 
-   default float i() {
-      return 0.0F;
+   public Object2IntMap<fcp> b() {
+      Object2IntMap<fcp> $$0 = new Object2IntOpenHashMap();
+      this.a.forEach(($$1, $$2) -> $$0.put($$1, $$2.a()));
+      return $$0;
    }
 
-   default float j() {
-      return 7.0F;
+   void a(fcp $$0, fcu $$1) {
+      this.a.put($$0, $$1);
+   }
+
+   Map<fcp, fcu> c() {
+      return Collections.unmodifiableMap(this.a);
    }
 }

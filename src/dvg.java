@@ -1,124 +1,174 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class dvg {
-   static final String a = "server_data";
-   static Codec<dvg> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               kk.c.lenientOptionalFieldOf("rewarded_players", Set.of()).forGetter($$0x -> $$0x.e),
-               Codec.LONG.lenientOptionalFieldOf("state_updating_resumes_at", 0L).forGetter($$0x -> $$0x.f),
-               cwm.b.listOf().lenientOptionalFieldOf("items_to_eject", List.of()).forGetter($$0x -> $$0x.g),
-               Codec.INT.lenientOptionalFieldOf("total_ejections_needed", 0).forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, dvg::new)
-   );
-   private static final int d = 128;
-   private final Set<UUID> e = new ObjectLinkedOpenHashSet();
-   private long f;
-   private final List<cwm> g = new ObjectArrayList();
-   private long h;
-   private int i;
-   boolean c;
+public class dvg extends dup implements btk, fde.a {
+   public static final String d = "sherds";
+   public static final String e = "item";
+   public static final int f = 1;
+   public long g;
+   @Nullable
+   public dvg.a h;
+   private dvw k;
+   private cxk l = cxk.k;
+   @Nullable
+   protected aly<ewm> i;
+   protected long j;
 
-   dvg(Set<UUID> $$0, long $$1, List<cwm> $$2, int $$3) {
-      this.e.addAll($$0);
-      this.f = $$1;
-      this.g.addAll($$2);
-      this.i = $$3;
+   public dvg(jh $$0, dxn $$1) {
+      super(dur.P, $$0, $$1);
+      this.k = dvw.a;
    }
 
-   dvg() {
+   @Override
+   protected void b(ux $$0, js.a $$1) {
+      super.b($$0, $$1);
+      this.k.a($$0);
+      if (!this.c_($$0) && !this.l.f()) {
+         $$0.a("item", this.l.a($$1));
+      }
    }
 
-   void a(long $$0) {
-      this.h = $$0;
-   }
-
-   long a() {
-      return this.h;
-   }
-
-   Set<UUID> b() {
-      return this.e;
-   }
-
-   boolean a(cou $$0) {
-      return this.e.contains($$0.cG());
-   }
-
-   @VisibleForTesting
-   public void b(cou $$0) {
-      this.e.add($$0.cG());
-      if (this.e.size() > 128) {
-         Iterator<UUID> $$1 = this.e.iterator();
-         if ($$1.hasNext()) {
-            $$1.next();
-            $$1.remove();
+   @Override
+   protected void a(ux $$0, js.a $$1) {
+      super.a($$0, $$1);
+      this.k = dvw.b($$0);
+      if (!this.b_($$0)) {
+         if ($$0.b("item", 10)) {
+            this.l = cxk.a($$1, (vu)$$0.p("item")).orElse(cxk.k);
+         } else {
+            this.l = cxk.k;
          }
       }
-
-      this.i();
    }
 
-   long c() {
-      return this.f;
+   public acy j() {
+      return acy.a(this);
    }
 
-   void b(long $$0) {
-      this.f = $$0;
-      this.i();
+   @Override
+   public ux a(js.a $$0) {
+      return this.e($$0);
    }
 
-   List<cwm> d() {
-      return this.g;
+   public jm k() {
+      return this.m().c(dyd.S);
    }
 
-   void e() {
-      this.i = 0;
-      this.i();
+   public dvw t() {
+      return this.k;
    }
 
-   void a(List<cwm> $$0) {
-      this.g.clear();
-      this.g.addAll($$0);
-      this.i = this.g.size();
-      this.i();
+   public void c(cxk $$0) {
+      this.a($$0);
    }
 
-   cwm f() {
-      return this.g.isEmpty() ? cwm.k : Objects.requireNonNullElse(this.g.get(this.g.size() - 1), cwm.k);
+   public cxk u() {
+      cxk $$0 = cxo.eN.n();
+      $$0.b(this.r());
+      return $$0;
    }
 
-   cwm g() {
-      if (this.g.isEmpty()) {
-         return cwm.k;
-      } else {
-         this.i();
-         return Objects.requireNonNullElse(this.g.remove(this.g.size() - 1), cwm.k);
+   public static cxk a(dvw $$0) {
+      cxk $$1 = cxo.eN.n();
+      $$1.b(ku.ak, $$0);
+      return $$1;
+   }
+
+   @Nullable
+   @Override
+   public aly<ewm> ax_() {
+      return this.i;
+   }
+
+   @Override
+   public void a(@Nullable aly<ewm> $$0) {
+      this.i = $$0;
+   }
+
+   @Override
+   public long aA_() {
+      return this.j;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.j = $$0;
+   }
+
+   @Override
+   protected void a(kq.a $$0) {
+      super.a($$0);
+      $$0.a(ku.ak, this.k);
+      $$0.a(ku.al, dac.a(List.of(this.l)));
+   }
+
+   @Override
+   protected void a(dup.b $$0) {
+      super.a($$0);
+      this.k = $$0.a(ku.ak, dvw.a);
+      this.l = $$0.a(ku.al, dac.a).a();
+   }
+
+   @Override
+   public void a(ux $$0) {
+      super.a($$0);
+      $$0.r("sherds");
+      $$0.r("item");
+   }
+
+   @Override
+   public cxk f() {
+      this.d_(null);
+      return this.l;
+   }
+
+   @Override
+   public cxk c(int $$0) {
+      this.d_(null);
+      cxk $$1 = this.l.a($$0);
+      if (this.l.f()) {
+         this.l = cxk.k;
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public void b(cxk $$0) {
+      this.d_(null);
+      this.l = $$0;
+   }
+
+   @Override
+   public dup v() {
+      return this;
+   }
+
+   public void a(dvg.a $$0) {
+      if (this.o != null && !this.o.B_()) {
+         this.o.a(this.aB_(), this.m().b(), 1, $$0.ordinal());
       }
    }
 
-   void a(dvg $$0) {
-      this.f = $$0.c();
-      this.g.clear();
-      this.g.addAll($$0.g);
-      this.e.clear();
-      this.e.addAll($$0.e);
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if (this.o != null && $$0 == 1 && $$1 >= 0 && $$1 < dvg.a.values().length) {
+         this.g = this.o.ac();
+         this.h = dvg.a.values()[$$1];
+         return true;
+      } else {
+         return super.a_($$0, $$1);
+      }
    }
 
-   private void i() {
-      this.c = true;
-   }
+   public static enum a {
+      a(7),
+      b(10);
 
-   public float h() {
-      return this.i == 1 ? 1.0F : 1.0F - azm.f((float)this.d().size(), 1.0F, (float)this.i);
+      public final int c;
+
+      private a(final int $$0) {
+         this.c = $$0;
+      }
    }
 }

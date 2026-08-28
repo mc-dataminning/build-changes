@@ -1,35 +1,28 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
 
-public final class cao<F extends K1, Value> {
-   private final bwj<?> a;
-   private final cel<Value> b;
-   private final App<F, Value> c;
+public class cao<T extends bwd> extends bxu<T> {
+   private final float c;
 
-   public cao(bwj<?> $$0, cel<Value> $$1, App<F, Value> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public cao(float $$0) {
+      super(ImmutableMap.of());
+      this.c = $$0;
    }
 
-   public App<F, Value> a() {
-      return this.c;
+   public static <T extends bwd> boolean a(T $$0) {
+      return $$0.bj() && $$0.b(aya.a) > $$0.dp() || $$0.bx();
    }
 
-   public void a(Value $$0) {
-      this.a.a(this.b, Optional.of($$0));
+   protected boolean a(ash $$0, bwd $$1) {
+      return a($$1);
    }
 
-   public void a(Optional<Value> $$0) {
-      this.a.a(this.b, $$0);
+   protected boolean a(ash $$0, bwd $$1, long $$2) {
+      return this.a($$0, $$1);
    }
 
-   public void a(Value $$0, long $$1) {
-      this.a.a(this.b, $$0, $$1);
-   }
-
-   public void b() {
-      this.a.b(this.b);
+   protected void b(ash $$0, bwd $$1, long $$2) {
+      if ($$1.dY().i() < this.c) {
+         $$1.J().a();
+      }
    }
 }

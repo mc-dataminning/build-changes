@@ -1,44 +1,59 @@
-import java.time.Instant;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import io.netty.buffer.ByteBuf;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
-public record ahe(String b, Instant c, long d, @Nullable xv e, xq.b f) implements zq<agw> {
-   public static final zh<wg, ahe> a = zq.a(ahe::a, ahe::new);
+public class ahe implements aac<acr> {
+   public static final zt<xg, ahe> a = zt.a(zr.h, ahe::b, ahe.a.b.a(zr.a()), ahe::e, ahe::new);
+   private final int b;
+   private final List<ahe.a> c;
 
-   private ahe(wg $$0) {
-      this($$0.d(256), $$0.t(), $$0.readLong(), $$0.c(xv::a), new xq.b($$0));
+   public ahe(int $$0, Collection<bxf> $$1) {
+      this.b = $$0;
+      this.c = Lists.newArrayList();
+
+      for (bxf $$2 : $$1) {
+         this.c.add(new ahe.a($$2.a(), $$2.b(), $$2.c()));
+      }
    }
 
-   private void a(wg $$0) {
-      $$0.a(this.b, 256);
-      $$0.a(this.c);
-      $$0.b(this.d);
-      $$0.a(this.e, xv::a);
-      this.f.a($$0);
+   private ahe(int $$0, List<ahe.a> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public zs<ahe> a() {
-      return agu.bn;
+   public aae<ahe> a() {
+      return ahk.bg;
    }
 
-   public void a(agw $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
    }
 
-   public Instant e() {
+   public int b() {
+      return this.b;
+   }
+
+   public List<ahe.a> e() {
       return this.c;
    }
 
-   public long f() {
-      return this.d;
-   }
+   public static record a(jq<bxe> c, double d, Collection<bxh> e) {
+      public static final zt<ByteBuf, bxh> a = zt.a(alz.b, bxh::b, zr.m, bxh::c, bxh.a.e, bxh::d, bxh::new);
+      public static final zt<xg, ahe.a> b = zt.a(bxe.b, ahe.a::a, zr.m, ahe.a::b, a.a(zr.a(ArrayList::new)), ahe.a::c, ahe.a::new);
 
-   @Nullable
-   public xv g() {
-      return this.e;
-   }
+      public jq<bxe> a() {
+         return this.c;
+      }
 
-   public xq.b h() {
-      return this.f;
+      public double b() {
+         return this.d;
+      }
+
+      public Collection<bxh> c() {
+         return this.e;
+      }
    }
 }

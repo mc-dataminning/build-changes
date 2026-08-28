@@ -1,40 +1,28 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class cai extends bxa<cof> {
-   public cai() {
-      super(ImmutableMap.of());
-   }
-
-   protected boolean a(arp $$0, cof $$1, long $$2) {
-      return c($$1) || b($$1);
-   }
-
-   protected void b(arp $$0, cof $$1, long $$2) {
-      if (c($$1) || b($$1)) {
-         bwj<?> $$3 = $$1.eb();
-         if (!$$3.c(cql.g)) {
-            $$3.b(cel.t);
-            $$3.b(cel.m);
-            $$3.b(cel.n);
-            $$3.b(cel.r);
-            $$3.b(cel.q);
-         }
-
-         $$3.a(cql.g);
-      }
-   }
-
-   protected void c(arp $$0, cof $$1, long $$2) {
-      if ($$2 % 100L == 0L) {
-         $$1.a($$0, $$2, 3);
-      }
-   }
-
-   public static boolean b(bvh $$0) {
-      return $$0.eb().a(cel.A);
-   }
-
-   public static boolean c(bvh $$0) {
-      return $$0.eb().a(cel.x);
+public class cai {
+   public static bxv<bwb> a(Function<bwb, Optional<bzi>> $$0, Predicate<bwb> $$1, int $$2, int $$3, float $$4) {
+      return cbh.a(
+         (Function<cbh.b<bwb>, ? extends App<cbh.c<bwb>, cbk<bwb>>>)($$5 -> $$5.group($$5.a(cff.n), $$5.a(cff.m))
+               .apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                     Optional<bzi> $$10 = $$0.apply($$8);
+                     if (!$$10.isEmpty() && $$1.test($$8)) {
+                        bzi $$11 = $$10.get();
+                        if ($$8.dt().a((ka)$$11.a(), (double)$$3)) {
+                           return false;
+                        } else {
+                           bzi $$12 = $$10.get();
+                           $$5x.a($$12);
+                           $$6.a(new cfi($$12, $$4, $$2));
+                           return true;
+                        }
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

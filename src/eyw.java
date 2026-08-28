@@ -1,62 +1,43 @@
-import com.mojang.serialization.Codec;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public record eyw(ezd b, String c, float d) implements eyu {
-   public static final MapCodec<eyw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               eze.a.fieldOf("target").forGetter(eyw::c),
-               Codec.STRING.fieldOf("score").forGetter(eyw::d),
-               Codec.FLOAT.fieldOf("scale").orElse(1.0F).forGetter(eyw::e)
-            )
-            .apply($$0, eyw::new)
-   );
+public class eyw extends exu {
+   private static final Logger b = LogUtils.getLogger();
+   public static final MapCodec<eyw> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eyw::new));
 
-   @Override
-   public eyt b() {
-      return eyv.e;
+   private eyw(List<ezs> $$0) {
+      super($$0);
    }
 
    @Override
-   public Set<exg<?>> a() {
-      return this.b.b();
-   }
-
-   public static eyw a(eun.b $$0, String $$1) {
-      return a($$0, $$1, 1.0F);
-   }
-
-   public static eyw a(eun.b $$0, String $$1, float $$2) {
-      return new eyw(eza.a($$0), $$1, $$2);
+   public exw<eyw> b() {
+      return exx.l;
    }
 
    @Override
-   public float b(eun $$0) {
-      fbc $$1 = this.b.a($$0);
-      if ($$1 == null) {
-         return 0.0F;
+   public cxk a(cxk $$0, ewh $$1) {
+      if ($$0.f()) {
+         return $$0;
       } else {
-         fbd $$2 = $$0.d().g();
-         fav $$3 = $$2.a(this.c);
-         if ($$3 == null) {
-            return 0.0F;
-         } else {
-            faz $$4 = $$2.d($$1, $$3);
-            return $$4 == null ? 0.0F : (float)$$4.a() * this.d;
+         dcr $$2 = new dcr($$0);
+         Optional<dcd<dcs>> $$3 = $$1.d().s().a(dcj.b, $$2, $$1.d());
+         if ($$3.isPresent()) {
+            cxk $$4 = $$3.get().b().a($$2, $$1.d().K_());
+            if (!$$4.f()) {
+               return $$4.c($$0.L());
+            }
          }
+
+         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
+         return $$0;
       }
    }
 
-   public ezd c() {
-      return this.b;
-   }
-
-   public String d() {
-      return this.c;
-   }
-
-   public float e() {
-      return this.d;
+   public static exu.a<?> c() {
+      return a(eyw::new);
    }
 }

@@ -1,19 +1,16 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class byg extends bxa<bvj> {
-   public byg(int $$0, int $$1) {
-      super(ImmutableMap.of(cel.n, cem.a), $$0, $$1);
-   }
-
-   protected boolean a(arp $$0, bvj $$1, long $$2) {
-      return $$1.eb().c(cel.n).filter($$1x -> $$1x.a($$1)).isPresent();
-   }
-
-   protected void b(arp $$0, bvj $$1, long $$2) {
-      $$1.eb().b(cel.n);
-   }
-
-   protected void c(arp $$0, bvj $$1, long $$2) {
-      $$1.eb().c(cel.n).ifPresent($$1x -> $$1.H().a($$1x.a()));
+public class byg {
+   public static <E extends bwb> bxv<E> a(Predicate<E> $$0, cff<?> $$1) {
+      return cbh.a((Function<cbh.b<E>, ? extends App<cbh.c<E>, cbk<E>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$1xx -> ($$2x, $$3, $$4) -> {
+               if ($$0.test((E)$$3)) {
+                  $$1xx.b();
+                  return true;
+               } else {
+                  return false;
+               }
+            })));
    }
 }

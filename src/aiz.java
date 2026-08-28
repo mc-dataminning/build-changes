@@ -1,49 +1,29 @@
-public record aiz(int b, String c, int d, aiy e) implements zq<ajc> {
-   public static final zh<wg, aiz> a = zq.a(aiz::a, aiz::new);
-   private static final int f = 255;
+public class aiz implements aac<ahm> {
+   public static final zt<ws, aiz> a = aac.a(aiz::a, aiz::new);
+   private final int b;
 
-   @Deprecated
-   public aiz(int b, String c, int d, aiy e) {
-      this.b = b;
-      this.c = c;
-      this.d = d;
-      this.e = e;
+   public aiz(int $$0) {
+      this.b = $$0;
    }
 
-   private aiz(wg $$0) {
-      this($$0.l(), $$0.d(255), $$0.readUnsignedShort(), aiy.a($$0.l()));
+   private aiz(ws $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(wg $$0) {
+   private void a(ws $$0) {
       $$0.c(this.b);
-      $$0.a(this.c);
-      $$0.m(this.d);
-      $$0.c(this.e.a());
    }
 
    @Override
-   public zs<aiz> a() {
-      return aja.a;
+   public aae<aiz> a() {
+      return ahk.bY;
    }
 
-   public void a(ajc $$0) {
+   public void a(ahm $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean d() {
-      return true;
-   }
-
-   public String e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public aiy g() {
-      return this.e;
+   public int b() {
+      return this.b;
    }
 }

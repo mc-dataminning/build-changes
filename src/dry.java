@@ -1,33 +1,46 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dry extends diq implements drv {
-   public static final MapCodec<dry> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(drv.a.e.fieldOf("weathering_state").forGetter(djr::c), t()).apply($$0, dry::new)
-   );
-   private final drv.a e;
-
-   @Override
-   public MapCodec<dry> a() {
-      return d;
+public abstract class dry extends drr {
+   protected dry(dxm.d $$0) {
+      super($$0);
    }
 
-   public dry(drv.a $$0, dvu.d $$1) {
-      super($$1);
-      this.e = $$0;
-   }
-
-   @Override
-   protected void b(dvv $$0, arp $$1, jh $$2, azu $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   private static boolean b(dxn $$0, dhd $$1, jh $$2) {
+      jh $$3 = $$2.d();
+      dxn $$4 = $$1.a_($$3);
+      if ($$4.a(dkg.ea) && $$4.c(drq.c) == 1) {
+         return true;
+      } else if ($$4.y().e() == 8) {
+         return false;
+      } else {
+         int $$5 = etg.a($$0, $$4, jm.b, $$4.g());
+         return $$5 < 15;
+      }
    }
 
    @Override
-   protected boolean f(dvv $$0) {
-      return drv.c($$0.b()).isPresent();
+   protected abstract MapCodec<? extends dry> a();
+
+   private static boolean c(dxn $$0, dhd $$1, jh $$2) {
+      jh $$3 = $$2.d();
+      return b($$0, $$1, $$2) && !$$1.b_($$3).a(aya.a);
    }
 
-   public drv.a q() {
-      return this.e;
+   @Override
+   protected void b(dxn $$0, ash $$1, jh $$2, bam $$3) {
+      if (!b($$0, $$1, $$2)) {
+         $$1.b($$2, dkg.j.m());
+      } else {
+         if ($$1.A($$2.d()) >= 9) {
+            dxn $$4 = this.m();
+
+            for (int $$5 = 0; $$5 < 4; $$5++) {
+               jh $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
+               if ($$1.a_($$6).a(dkg.j) && c($$4, $$1, $$6)) {
+                  $$1.b($$6, $$4.b(c, Boolean.valueOf($$1.a_($$6.d()).a(dkg.ea))));
+               }
+            }
+         }
+      }
    }
 }

@@ -1,33 +1,43 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.Collection;
+import com.mojang.authlib.GameProfileRepository;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.authlib.yggdrasil.ServicesKeySet;
+import com.mojang.authlib.yggdrasil.ServicesKeyType;
+import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
+import java.io.File;
+import javax.annotation.Nullable;
 
-public class amu {
-   public static void a(CommandDispatcher<ew> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("banlist").requires($$0x -> $$0x.c(3)))
-                  .executes($$0x -> {
-                     avq $$1 = ((ew)$$0x.getSource()).l().ag();
-                     return a((ew)$$0x.getSource(), Lists.newArrayList(Iterables.concat($$1.f().d(), $$1.g().d())));
-                  }))
-               .then(ex.a("ips").executes($$0x -> a((ew)$$0x.getSource(), ((ew)$$0x.getSource()).l().ag().g().d()))))
-            .then(ex.a("players").executes($$0x -> a((ew)$$0x.getSource(), ((ew)$$0x.getSource()).l().ag().f().d())))
-      );
+public record amu(MinecraftSessionService a, ServicesKeySet b, GameProfileRepository c, awe d) {
+   private static final String e = "usercache.json";
+
+   public static amu a(YggdrasilAuthenticationService $$0, File $$1) {
+      MinecraftSessionService $$2 = $$0.createMinecraftSessionService();
+      GameProfileRepository $$3 = $$0.createProfileRepository();
+      awe $$4 = new awe($$3, new File($$1, "usercache.json"));
+      return new amu($$2, $$0.getServicesKeySet(), $$3, $$4);
    }
 
-   private static int a(ew $$0, Collection<? extends avl<?>> $$1) {
-      if ($$1.isEmpty()) {
-         $$0.a(() -> xj.c("commands.banlist.none"), false);
-      } else {
-         $$0.a(() -> xj.a("commands.banlist.list", $$1.size()), false);
+   @Nullable
+   public bar a() {
+      return bar.a(this.b, ServicesKeyType.PROFILE_KEY);
+   }
 
-         for (avl<?> $$2 : $$1) {
-            $$0.a(() -> xj.a("commands.banlist.entry", $$2.e(), $$2.b(), $$2.d()), false);
-         }
-      }
+   public boolean b() {
+      return !this.b.keys(ServicesKeyType.PROFILE_KEY).isEmpty();
+   }
 
-      return $$1.size();
+   public MinecraftSessionService c() {
+      return this.a;
+   }
+
+   public ServicesKeySet d() {
+      return this.b;
+   }
+
+   public GameProfileRepository e() {
+      return this.c;
+   }
+
+   public awe f() {
+      return this.d;
    }
 }

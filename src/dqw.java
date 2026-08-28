@@ -1,73 +1,151 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dqw extends dky implements dng {
-   public static final MapCodec<dqw> c = b(dqw::new);
-   public static final dws<dwq> d = dky.b;
-   protected static final float e = 6.0F;
-   protected static final fas f = diq.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
+public class dqw extends dke implements dri {
+   public static final MapCodec<dqw> a = b(dqw::new);
+   private static final int f = 1;
+   private static final fcm g;
+   private static final fcm h;
+   private static final fcm i = dke.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
+   private static final fcm j = fcj.b().a(0.0, -1.0, 0.0);
+   public static final int b = 7;
+   public static final dym c = dyd.aX;
+   public static final dye d = dyd.D;
+   public static final dye e = dyd.b;
 
    @Override
    public MapCodec<dqw> a() {
-      return c;
+      return a;
    }
 
-   public dqw(dvu.d $$0) {
+   protected dqw(dxm.d $$0) {
       super($$0);
+      this.l(this.F.b().b(c, Integer.valueOf(7)).b(d, Boolean.valueOf(false)).b(e, Boolean.valueOf(false)));
    }
 
    @Override
-   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
-      return f;
+   protected void a(dxo.a<dke, dxn> $$0) {
+      $$0.a(c, d, e);
    }
 
    @Override
-   protected boolean b(dvv $$0, der $$1, jh $$2) {
-      return $$0.c($$1, $$2, jm.b) && !$$0.a(dis.kJ);
+   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
+      if (!$$3.a($$0.b().j())) {
+         return $$0.c(e) ? h : g;
+      } else {
+         return fcj.b();
+      }
    }
 
    @Override
-   public cwm a(dfp $$0, jh $$1, dvv $$2) {
-      return new cwm(dis.bw);
+   protected fcm a(dxn $$0, dgf $$1, jh $$2) {
+      return fcj.b();
    }
 
-   @Nullable
    @Override
-   public dvv a(dad $$0) {
-      dvv $$1 = super.a($$0);
-      if ($$1 != null) {
-         erv $$2 = $$0.q().b_($$0.a().d());
-         if ($$2.a(axi.a) && $$2.e() == 8) {
-            return $$1;
+   protected boolean a(dxn $$0, dbb $$1) {
+      return $$1.n().a(this.j());
+   }
+
+   @Override
+   public dxn a(dbb $$0) {
+      jh $$1 = $$0.a();
+      dha $$2 = $$0.q();
+      int $$3 = a($$2, $$1);
+      return this.m().b(d, Boolean.valueOf($$2.b_($$1).a() == etq.c)).b(c, Integer.valueOf($$3)).b(e, Boolean.valueOf(this.a($$2, $$1, $$3)));
+   }
+
+   @Override
+   protected void b(dxn $$0, dha $$1, jh $$2, dxn $$3, boolean $$4) {
+      if (!$$1.C) {
+         $$1.a($$2, this, 1);
+      }
+   }
+
+   @Override
+   protected dxn a(dxn $$0, dhd $$1, dhp $$2, jh $$3, jm $$4, jh $$5, dxn $$6, bam $$7) {
+      if ($$0.c(d)) {
+         $$2.a($$3, etq.c, etq.c.a($$1));
+      }
+
+      if (!$$1.B_()) {
+         $$2.a($$3, this, 1);
+      }
+
+      return $$0;
+   }
+
+   @Override
+   protected void a(dxn $$0, ash $$1, jh $$2, bam $$3) {
+      int $$4 = a($$1, $$2);
+      dxn $$5 = $$0.b(c, Integer.valueOf($$4)).b(e, Boolean.valueOf(this.a($$1, $$2, $$4)));
+      if ($$5.c(c) == 7) {
+         if ($$0.c(c) == 7) {
+            clv.a($$1, $$2, $$5);
+         } else {
+            $$1.b($$2, true);
+         }
+      } else if ($$0 != $$5) {
+         $$1.a($$2, $$5, 3);
+      }
+   }
+
+   @Override
+   protected boolean a(dxn $$0, dhd $$1, jh $$2) {
+      return a($$1, $$2) < 7;
+   }
+
+   @Override
+   protected fcm b(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
+      if ($$3.a(fcj.b(), $$2, true) && !$$3.b()) {
+         return g;
+      } else {
+         return $$0.c(c) != 0 && $$0.c(e) && $$3.a(j, $$2, true) ? i : fcj.a();
+      }
+   }
+
+   @Override
+   protected etp b_(dxn $$0) {
+      return $$0.c(d) ? etq.c.a(false) : super.b_($$0);
+   }
+
+   private boolean a(dgf $$0, jh $$1, int $$2) {
+      return $$2 > 0 && !$$0.a_($$1.e()).a(this);
+   }
+
+   public static int a(dgf $$0, jh $$1) {
+      jh.a $$2 = $$1.k().c(jm.a);
+      dxn $$3 = $$0.a_($$2);
+      int $$4 = 7;
+      if ($$3.a(dkg.on)) {
+         $$4 = $$3.c(c);
+      } else if ($$3.c($$0, $$2, jm.b)) {
+         return 0;
+      }
+
+      for (jm $$5 : jm.c.a) {
+         dxn $$6 = $$0.a_($$2.a($$1, $$5));
+         if ($$6.a(dkg.on)) {
+            $$4 = Math.min($$4, $$6.c(c) + 1);
+            if ($$4 == 1) {
+               break;
+            }
          }
       }
 
-      return null;
+      return $$4;
    }
 
-   @Override
-   protected boolean a(dvv $$0, dfp $$1, jh $$2) {
-      if ($$0.c(d) == dwq.a) {
-         dvv $$3 = $$1.a_($$2.e());
-         return $$3.a(this) && $$3.c(d) == dwq.b;
-      } else {
-         erv $$4 = $$1.b_($$2);
-         return super.a($$0, $$1, $$2) && $$4.a(axi.a) && $$4.e() == 8;
-      }
-   }
-
-   @Override
-   protected erv b_(dvv $$0) {
-      return erw.c.a(false);
-   }
-
-   @Override
-   public boolean a(@Nullable cou $$0, der $$1, jh $$2, dvv $$3, eru $$4) {
-      return false;
-   }
-
-   @Override
-   public boolean a(dfn $$0, jh $$1, dvv $$2, erv $$3) {
-      return false;
+   static {
+      fcm $$0 = dke.a(0.0, 14.0, 0.0, 16.0, 16.0, 16.0);
+      fcm $$1 = dke.a(0.0, 0.0, 0.0, 2.0, 16.0, 2.0);
+      fcm $$2 = dke.a(14.0, 0.0, 0.0, 16.0, 16.0, 2.0);
+      fcm $$3 = dke.a(0.0, 0.0, 14.0, 2.0, 16.0, 16.0);
+      fcm $$4 = dke.a(14.0, 0.0, 14.0, 16.0, 16.0, 16.0);
+      g = fcj.a($$0, $$1, $$2, $$3, $$4);
+      fcm $$5 = dke.a(0.0, 0.0, 0.0, 2.0, 2.0, 16.0);
+      fcm $$6 = dke.a(14.0, 0.0, 0.0, 16.0, 2.0, 16.0);
+      fcm $$7 = dke.a(0.0, 0.0, 14.0, 16.0, 2.0, 16.0);
+      fcm $$8 = dke.a(0.0, 0.0, 0.0, 16.0, 2.0, 2.0);
+      h = fcj.a(dqw.i, g, $$6, $$5, $$8, $$7);
    }
 }

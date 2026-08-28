@@ -1,29 +1,45 @@
-public class afr implements zq<acf> {
-   public static final zh<wg, afr> a = zq.a(afr::a, afr::new);
-   private final int b;
+public class afr implements aac<acr> {
+   public static final zt<ws, afr> a = aac.a(afr::a, afr::new);
+   private final double b;
+   private final double c;
+   private final long d;
 
-   public afr(int $$0) {
-      this.b = $$0;
+   public afr(dzd $$0) {
+      this.b = $$0.i();
+      this.c = $$0.k();
+      this.d = $$0.j();
    }
 
-   private afr(wg $$0) {
-      this.b = $$0.readByte();
+   private afr(ws $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.m();
    }
 
-   private void a(wg $$0) {
-      $$0.l(this.b);
+   private void a(ws $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zs<afr> a() {
-      return agu.aI;
+   public aae<afr> a() {
+      return ahk.aw;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public double b() {
       return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public long f() {
+      return this.d;
    }
 }

@@ -1,22 +1,41 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public class dho extends diq {
-   public static final MapCodec<dho> a = b(dho::new);
+public class dho {
+   private final List<dho.a> a = Lists.newArrayList();
 
-   @Override
-   public MapCodec<? extends dho> a() {
-      return a;
+   public void a(jh $$0, double $$1) {
+      if ($$1 != 0.0) {
+         this.a.add(new dho.a($$0, $$1));
+      }
    }
 
-   public dho(dvu.d $$0) {
-      super($$0);
+   public double b(jh $$0, double $$1) {
+      if ($$1 == 0.0) {
+         return 0.0;
+      } else {
+         double $$2 = 0.0;
+
+         for (dho.a $$3 : this.a) {
+            $$2 += $$3.a($$0);
+         }
+
+         return $$2 * $$1;
+      }
    }
 
-   @Override
-   protected void a(dfm $$0, dvv $$1, ezu $$2, cpn $$3) {
-      if (!$$0.C) {
-         jh $$4 = $$2.b();
-         $$0.a(null, $$4, awn.E, awo.e, 1.0F, 0.5F + $$0.A.i() * 1.2F);
+   static class a {
+      private final jh a;
+      private final double b;
+
+      public a(jh $$0, double $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public double a(jh $$0) {
+         double $$1 = this.a.j($$0);
+         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
       }
    }
 }

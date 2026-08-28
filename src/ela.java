@@ -1,26 +1,21 @@
 import com.mojang.serialization.MapCodec;
 
-public class ela extends elo {
-   private static final ela c = new ela();
-   public static MapCodec<ela> a = MapCodec.unit(() -> c);
+public class ela extends ekt {
+   public static final MapCodec<ela> b = dxn.a.fieldOf("state").xmap(dxm.a::b, dke::m).xmap(ela::new, $$0 -> $$0.c);
+   private final dke c;
 
-   private ela() {
-   }
-
-   public static ela a() {
-      return c;
+   public ela(dke $$0) {
+      this.c = $$0;
    }
 
    @Override
-   protected boolean a(eln $$0, azu $$1, jh $$2) {
-      elm $$3 = $$0.e()
-         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
-      jq<dgo> $$4 = $$0.d().t($$2);
-      return $$0.f().a($$4).a($$3);
+   protected eku<?> a() {
+      return eku.f;
    }
 
    @Override
-   public elq<?> b() {
-      return elq.e;
+   public dxn a(bam $$0, jh $$1) {
+      jm.a $$2 = jm.a.a($$0);
+      return this.c.m().c(dqt.i, $$2);
    }
 }

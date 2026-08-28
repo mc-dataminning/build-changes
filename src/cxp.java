@@ -1,59 +1,59 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Consumer;
 
-public class cxp extends cvf {
-   protected static final Map<diq, dvv> a = Maps.newHashMap(
-      new Builder()
-         .put(dis.i, dis.kE.m())
-         .put(dis.j, dis.kE.m())
-         .put(dis.l, dis.kE.m())
-         .put(dis.k, dis.kE.m())
-         .put(dis.fl, dis.kE.m())
-         .put(dis.sH, dis.kE.m())
-         .build()
+public record cxp(cwk<cxq> c, boolean d) implements dan {
+   public static final Codec<cxp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cwk.a(mb.L, cxq.c).fieldOf("song").forGetter(cxp::a), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cxp::b))
+            .apply($$0, cxp::new)
    );
-
-   public cxp(cyd $$0, float $$1, float $$2, cwi.a $$3) {
-      super($$0, axc.bE, $$1, $$2, $$3);
-   }
+   public static final zt<xg, cxp> b = zt.a(cwk.a(mb.L, cxq.d), cxp::a, zr.b, cxp::b, cxp::new);
 
    @Override
-   public bsk a(daf $$0) {
-      dfm $$1 = $$0.q();
-      jh $$2 = $$0.a();
-      dvv $$3 = $$1.a_($$2);
-      if ($$0.k() == jm.a) {
-         return bsk.e;
+   public void a(cxg.b $$0, Consumer<xv> $$1, czc $$2) {
+      js.a $$3 = $$0.a();
+      if (this.d && $$3 != null) {
+         this.c.a($$3).ifPresent($$1x -> {
+            yj $$2x = ((cxq)$$1x.a()).c().f();
+            xy.a($$2x, ys.a.a(n.h));
+            $$1.accept($$2x);
+         });
+      }
+   }
+
+   public cxp a(boolean $$0) {
+      return new cxp(this.c, $$0);
+   }
+
+   public static bte a(dha $$0, jh $$1, cxk $$2, cps $$3) {
+      cxp $$4 = $$2.a(ku.ab);
+      if ($$4 == null) {
+         return bte.f;
       } else {
-         cou $$4 = $$0.o();
-         dvv $$5 = a.get($$3.b());
-         dvv $$6 = null;
-         if ($$5 != null && $$1.a_($$2.d()).l()) {
-            $$1.a($$4, $$2, awn.wJ, awo.e, 1.0F, 1.0F);
-            $$6 = $$5;
-         } else if ($$3.b() instanceof dje && $$3.c(dje.c)) {
-            if (!$$1.A_()) {
-               $$1.a(null, 1009, $$2, 0);
-            }
-
-            dje.a($$0.o(), $$1, $$2, $$3);
-            $$6 = $$3.b(dje.c, Boolean.valueOf(false));
-         }
-
-         if ($$6 != null) {
-            if (!$$1.C) {
-               $$1.a($$2, $$6, 11);
-               $$1.a(ear.c, $$2, ear.a.a($$4, $$6));
-               if ($$4 != null) {
-                  $$0.n().a(1, $$4, bvh.d($$0.p()));
+         dxn $$5 = $$0.a_($$1);
+         if ($$5.a(dkg.eg) && !$$5.c(doj.b)) {
+            if (!$$0.C) {
+               cxk $$6 = $$2.b(1, $$3);
+               if ($$0.c_($$1) instanceof dvt $$7) {
+                  $$7.b($$6);
+                  $$0.a(ecj.c, $$1, ecj.a.a($$3, $$5));
                }
+
+               $$3.a(axp.al);
             }
 
-            return bsk.a;
+            return bte.a;
          } else {
-            return bsk.e;
+            return bte.f;
          }
       }
+   }
+
+   public cwk<cxq> a() {
+      return this.c;
+   }
+
+   public boolean b() {
+      return this.d;
    }
 }

@@ -1,25 +1,28 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public record eys(dck b) implements eyu {
-   public static final MapCodec<eys> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dck.b.fieldOf("amount").forGetter(eys::c)).apply($$0, eys::new));
+public class eys extends exu {
+   public static final MapCodec<eys> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(czh.a.fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, eys::new));
+   private final jq<czh> b;
 
-   @Override
-   public float b(eun $$0) {
-      int $$1 = $$0.b(exj.k);
-      return this.b.a($$1);
+   private eys(List<ezs> $$0, jq<czh> $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public eyt b() {
-      return eyv.g;
+   public exw<eys> b() {
+      return exx.F;
    }
 
-   public static eys a(dck $$0) {
-      return new eys($$0);
+   @Override
+   public cxk a(cxk $$0, ewh $$1) {
+      $$0.a(ku.Q, czj.a, this.b, czj::b);
+      return $$0;
    }
 
-   public dck c() {
-      return this.b;
+   public static exu.a<?> a(jq<czh> $$0) {
+      return a($$1 -> new eys($$1, $$0));
    }
 }

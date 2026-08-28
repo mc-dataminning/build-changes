@@ -1,63 +1,124 @@
-import com.google.common.collect.Sets;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.HashMap;
-import java.util.Iterator;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class hbs {
-   static final int a = -1;
-   private static final int b = 0;
+public class hbs implements hbi {
+   static final Logger c = LogUtils.getLogger();
+   public static final MapCodec<hbs> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               alz.a.fieldOf("resource").forGetter($$0x -> $$0x.d),
+               azn.a(hbs.a.a.listOf()).fieldOf("regions").forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.optionalFieldOf("divisor_x", 1.0).forGetter($$0x -> $$0x.f),
+               Codec.DOUBLE.optionalFieldOf("divisor_y", 1.0).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, hbs::new)
+   );
+   private final alz d;
+   private final List<hbs.a> e;
+   private final double f;
+   private final double g;
 
-   public static Object2IntMap<dvv> a(flg $$0, hbi.c $$1) {
-      Map<diq, List<dwx<?>>> $$2 = new HashMap<>();
-      Map<hbs.a, Set<dvv>> $$3 = new HashMap<>();
-      $$1.a().forEach(($$3x, $$4x) -> {
-         List<dwx<?>> $$5x = $$2.computeIfAbsent($$4x.a().b(), $$1xx -> List.copyOf($$0.a($$1xx)));
-         hbs.a $$6x = hbs.a.a($$4x.a(), $$4x.b(), $$5x);
-         $$3.computeIfAbsent($$6x, $$0xx -> Sets.newIdentityHashSet()).add($$4x.a());
-      });
-      int $$4 = 1;
-      Object2IntMap<dvv> $$5 = new Object2IntOpenHashMap();
-      $$5.defaultReturnValue(-1);
-
-      for (Set<dvv> $$6 : $$3.values()) {
-         Iterator<dvv> $$7 = $$6.iterator();
-
-         while ($$7.hasNext()) {
-            dvv $$8 = $$7.next();
-            if ($$8.o() != dow.c) {
-               $$7.remove();
-               $$5.put($$8, 0);
-            }
-         }
-
-         if ($$6.size() > 1) {
-            int $$9 = $$4++;
-            $$6.forEach($$2x -> $$5.put($$2x, $$9));
-         }
-      }
-
-      return $$5;
+   public hbs(alz $$0, List<hbs.a> $$1, double $$2, double $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
-   static record a(Object a, List<Object> b) {
-      public static hbs.a a(dvv $$0, hbz $$1, List<dwx<?>> $$2) {
-         List<Object> $$3 = a($$0, $$2);
-         Object $$5 = $$1 instanceof gla $$4 ? $$4.a($$0) : $$1;
-         return new hbs.a($$5, $$3);
+   @Override
+   public void a(avv $$0, hbi.a $$1) {
+      alz $$2 = a.a(this.d);
+      Optional<avt> $$3 = $$0.getResource($$2);
+      if ($$3.isPresent()) {
+         hbo $$4 = new hbo($$2, $$3.get(), this.e.size());
+
+         for (hbs.a $$5 : this.e) {
+            $$1.a($$5.b, new hbs.b($$4, $$5, this.f, this.g));
+         }
+      } else {
+         c.warn("Missing sprite: {}", $$2);
+      }
+   }
+
+   @Override
+   public hbk a() {
+      return hbl.d;
+   }
+
+   static record a(alz b, double c, double d, double e, double f) {
+      public static final Codec<hbs.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  alz.a.fieldOf("sprite").forGetter(hbs.a::a),
+                  Codec.DOUBLE.fieldOf("x").forGetter(hbs.a::b),
+                  Codec.DOUBLE.fieldOf("y").forGetter(hbs.a::c),
+                  Codec.DOUBLE.fieldOf("width").forGetter(hbs.a::d),
+                  Codec.DOUBLE.fieldOf("height").forGetter(hbs.a::e)
+               )
+               .apply($$0, hbs.a::new)
+      );
+
+      public alz a() {
+         return this.b;
       }
 
-      private static List<Object> a(dvv $$0, List<dwx<?>> $$1) {
-         Object[] $$2 = new Object[$$1.size()];
+      public double b() {
+         return this.c;
+      }
 
-         for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
-            $$2[$$3] = $$0.c($$1.get($$3));
+      public double c() {
+         return this.d;
+      }
+
+      public double d() {
+         return this.e;
+      }
+
+      public double e() {
+         return this.f;
+      }
+   }
+
+   static class b implements hbi.b {
+      private final hbo a;
+      private final hbs.a b;
+      private final double c;
+      private final double d;
+
+      b(hbo $$0, hbs.a $$1, double $$2, double $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public hay a(hbh $$0) {
+         try {
+            ffl $$1 = this.a.a();
+            double $$2 = (double)$$1.a() / this.c;
+            double $$3 = (double)$$1.b() / this.d;
+            int $$4 = bae.a(this.b.c * $$2);
+            int $$5 = bae.a(this.b.d * $$3);
+            int $$6 = bae.a(this.b.e * $$2);
+            int $$7 = bae.a(this.b.f * $$3);
+            ffl $$8 = new ffl(ffl.a.a, $$6, $$7, false);
+            $$1.a($$8, $$4, $$5, 0, 0, $$6, $$7, false, false);
+            return new hay(this.b.b, new hcs($$6, $$7), $$8, avx.a);
+         } catch (Exception var16) {
+            hbs.c.error("Failed to unstitch region {}", this.b.b, var16);
+         } finally {
+            this.a.b();
          }
 
-         return List.of($$2);
+         return hau.a();
+      }
+
+      @Override
+      public void a() {
+         this.a.b();
       }
    }
 }

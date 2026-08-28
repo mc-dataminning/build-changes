@@ -1,58 +1,61 @@
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Locale;
-import java.util.UUID;
-import java.util.function.Function;
 
-public class aqb implements apz {
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xj.c("commands.data.entity.invalid"));
-   public static final Function<String, aqa.c> a = $$0 -> new aqa.c() {
-         @Override
-         public apz a(CommandContext<ew> $$0x) throws CommandSyntaxException {
-            return new aqb(fj.a($$0, $$0));
-         }
+public class aqb {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xv.c("commands.summon.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xv.c("commands.summon.failed.uuid"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xv.c("commands.summon.invalidPosition"));
 
-         @Override
-         public ArgumentBuilder<ew, ?> a(ArgumentBuilder<ew, ?> $$0x, Function<ArgumentBuilder<ew, ?>, ArgumentBuilder<ew, ?>> $$1) {
-            return $$0.then(ex.a("entity").then($$1.apply(ex.a($$0, fj.a()))));
-         }
-      };
-   private final bul c;
-
-   public aqb(bul $$0) {
-      this.c = $$0;
+   public static void a(CommandDispatcher<ew> $$0, es $$1) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("summon").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)ex.a("entity", fv.a($$1, mb.z))
+                     .suggests(iw.c)
+                     .executes($$0x -> b((ew)$$0x.getSource(), fv.e($$0x, "entity"), ((ew)$$0x.getSource()).d(), new ux(), true)))
+                  .then(
+                     ((RequiredArgumentBuilder)ex.a("pos", gz.a())
+                           .executes($$0x -> b((ew)$$0x.getSource(), fv.e($$0x, "entity"), gz.a($$0x, "pos"), new ux(), true)))
+                        .then(ex.a("nbt", fg.a()).executes($$0x -> b((ew)$$0x.getSource(), fv.e($$0x, "entity"), gz.a($$0x, "pos"), fg.a($$0x, "nbt"), false)))
+                  )
+            )
+      );
    }
 
-   @Override
-   public void a(ul $$0) throws CommandSyntaxException {
-      if (this.c instanceof cou) {
-         throw b.create();
+   public static bvf a(ew $$0, jq.c<bvm<?>> $$1, fbs $$2, ux $$3, boolean $$4) throws CommandSyntaxException {
+      jh $$5 = jh.a((ka)$$2);
+      if (!dha.l($$5)) {
+         throw c.create();
       } else {
-         UUID $$1 = this.c.cG();
-         this.c.g($$0);
-         this.c.a_($$1);
+         ux $$6 = $$3.i();
+         $$6.a("id", $$1.h().a().toString());
+         ash $$7 = $$0.e();
+         bvf $$8 = bvm.a($$6, $$7, bvl.n, $$1x -> {
+            $$1x.b($$2.d, $$2.e, $$2.f, $$1x.dL(), $$1x.dN());
+            return $$1x;
+         });
+         if ($$8 == null) {
+            throw a.create();
+         } else {
+            if ($$4 && $$8 instanceof bwd) {
+               ((bwd)$$8).a($$0.e(), $$0.e().d_($$8.dv()), bvl.n, null);
+            }
+
+            if (!$$7.e($$8)) {
+               throw b.create();
+            } else {
+               return $$8;
+            }
+         }
       }
    }
 
-   @Override
-   public ul a() {
-      return dm.b(this.c);
-   }
-
-   @Override
-   public xj b() {
-      return xj.a("commands.data.entity.modified", this.c.o_());
-   }
-
-   @Override
-   public xj a(vi $$0) {
-      return xj.a("commands.data.entity.query", this.c.o_(), va.c($$0));
-   }
-
-   @Override
-   public xj a(fo.g $$0, double $$1, int $$2) {
-      return xj.a("commands.data.entity.get", $$0.a(), this.c.o_(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+   private static int b(ew $$0, jq.c<bvm<?>> $$1, fbs $$2, ux $$3, boolean $$4) throws CommandSyntaxException {
+      bvf $$5 = a($$0, $$1, $$2, $$3, $$4);
+      $$0.a(() -> xv.a("commands.summon.success", $$5.p_()), true);
+      return 1;
    }
 }

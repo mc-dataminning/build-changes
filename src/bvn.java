@@ -1,149 +1,88 @@
-public class bvn extends bul {
-   private static final int b = 60;
-   private static final int c = 120;
-   private static final String d = "spawn_item_after_ticks";
-   private static final String e = "item";
-   private static final akm<cwm> f = akq.a(bvn.class, ako.h);
-   public static final int a = 36;
-   private long g;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.function.IntFunction;
 
-   public bvn(bus<? extends bvn> $$0, dfm $$1) {
-      super($$0, $$1);
-      this.ad = true;
+public enum bvn implements bba {
+   a(bvn.a.a, 0, 0, "mainhand"),
+   b(bvn.a.a, 1, 5, "offhand"),
+   c(bvn.a.b, 0, 1, 1, "feet"),
+   d(bvn.a.b, 1, 1, 2, "legs"),
+   e(bvn.a.b, 2, 1, 3, "chest"),
+   f(bvn.a.b, 3, 1, 4, "head"),
+   g(bvn.a.c, 0, 1, 6, "body");
+
+   public static final int h = 0;
+   public static final List<bvn> i = List.of(values());
+   public static final IntFunction<bvn> j = ayv.a($$0 -> $$0.p, values(), ayv.a.a);
+   public static final bba.a<bvn> k = bba.a(bvn::values);
+   public static final zt<ByteBuf, bvn> l = zr.a(j, $$0 -> $$0.p);
+   private final bvn.a m;
+   private final int n;
+   private final int o;
+   private final int p;
+   private final String q;
+
+   private bvn(final bvn.a $$0, final int $$1, final int $$2, final int $$3, final String $$4) {
+      this.m = $$0;
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
+      this.q = $$4;
    }
 
-   public static bvn a(dfm $$0, cwm $$1) {
-      bvn $$2 = new bvn(bus.aI, $$0);
-      $$2.g = (long)$$0.A.a(60, 120);
-      $$2.a($$1);
-      return $$2;
+   private bvn(final bvn.a $$0, final int $$1, final int $$2, final String $$3) {
+      this($$0, $$1, 0, $$2, $$3);
+   }
+
+   public bvn.a a() {
+      return this.m;
+   }
+
+   public int b() {
+      return this.n;
+   }
+
+   public int a(int $$0) {
+      return $$0 + this.n;
+   }
+
+   public cxk a(cxk $$0) {
+      return this.o > 0 ? $$0.a(this.o) : $$0;
+   }
+
+   public int d() {
+      return this.p;
+   }
+
+   public int b(int $$0) {
+      return this.p + $$0;
+   }
+
+   public String e() {
+      return this.q;
+   }
+
+   public boolean f() {
+      return this.m == bvn.a.b || this.m == bvn.a.c;
    }
 
    @Override
-   public void h() {
-      super.h();
-      if (this.dV() instanceof arp $$0) {
-         this.a($$0);
+   public String c() {
+      return this.q;
+   }
+
+   public static bvn a(String $$0) {
+      bvn $$1 = k.a($$0);
+      if ($$1 != null) {
+         return $$1;
       } else {
-         this.n();
+         throw new IllegalArgumentException("Invalid slot '" + $$0 + "'");
       }
    }
 
-   private void a(arp $$0) {
-      if ((long)this.af == this.g - 36L) {
-         $$0.a(null, this.dv(), awn.mc, awo.g);
-      }
-
-      if ((long)this.af >= this.g) {
-         this.q();
-         this.c($$0);
-      }
-   }
-
-   private void n() {
-      if (this.dV().ab() % 5L == 0L) {
-         this.j();
-      }
-   }
-
-   private void q() {
-      if (this.dV() instanceof arp $$0) {
-         cwm $$2 = this.l();
-         if (!$$2.f()) {
-            bul $$4;
-            if ($$2.h() instanceof cxh $$3) {
-               $$4 = this.a($$0, $$3, $$2);
-            } else {
-               $$4 = new clc($$0, this.dA(), this.dC(), this.dG(), $$2);
-               $$0.b($$4);
-            }
-
-            $$0.c(3021, this.dv(), 1);
-            $$0.a($$4, ear.t, this.dt());
-            this.a(cwm.k);
-         }
-      }
-   }
-
-   private bul a(arp $$0, cxh $$1, cwm $$2) {
-      cxh.a $$3 = $$1.b();
-      $$3.e().ifPresent($$1x -> $$0.c($$1x, this.dv(), 0));
-      jm $$4 = jm.a;
-      cpn $$5 = cpn.a($$1.a($$0, this.dt(), $$2, $$4), $$0, $$2, (double)$$4.j(), (double)$$4.k(), (double)$$4.l(), $$3.d(), $$3.c());
-      $$5.c(this);
-      return $$5;
-   }
-
-   @Override
-   protected void a(akq.a $$0) {
-      $$0.a(f, cwm.k);
-   }
-
-   @Override
-   protected void a(ul $$0) {
-      cwm $$1 = $$0.b("item", 10) ? cwm.a(this.dX(), (vi)$$0.p("item")).orElse(cwm.k) : cwm.k;
-      this.a($$1);
-      this.g = $$0.i("spawn_item_after_ticks");
-   }
-
-   @Override
-   protected void b(ul $$0) {
-      if (!this.l().f()) {
-         $$0.a("item", this.l().a(this.dX()).d());
-      }
-
-      $$0.a("spawn_item_after_ticks", this.g);
-   }
-
-   @Override
-   protected boolean r(bul $$0) {
-      return false;
-   }
-
-   @Override
-   protected boolean bR() {
-      return false;
-   }
-
-   @Override
-   protected void p(bul $$0) {
-      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
-   }
-
-   @Override
-   public esa m_() {
-      return esa.d;
-   }
-
-   @Override
-   public boolean r_() {
-      return true;
-   }
-
-   public void j() {
-      ezy $$0 = this.dt();
-      int $$1 = this.ae.a(1, 3);
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         double $$3 = 0.4;
-         ezy $$4 = new ezy(
-            this.dA() + 0.4 * (this.ae.k() - this.ae.k()), this.dC() + 0.4 * (this.ae.k() - this.ae.k()), this.dG() + 0.4 * (this.ae.k() - this.ae.k())
-         );
-         ezy $$5 = $$0.a($$4);
-         this.dV().a(ls.bc, $$0.a(), $$0.b(), $$0.c(), $$5.a(), $$5.b(), $$5.c());
-      }
-   }
-
-   public cwm l() {
-      return this.au().a(f);
-   }
-
-   private void a(cwm $$0) {
-      this.au().a(f, $$0);
-   }
-
-   @Override
-   public final boolean a(arp $$0, btb $$1, float $$2) {
-      return false;
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

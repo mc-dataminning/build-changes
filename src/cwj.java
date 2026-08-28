@@ -1,69 +1,23 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-
-public class cwj {
-   private final Map<alj, cwj.a> a = Maps.newHashMap();
-   private int b;
-
-   public boolean a(cwm $$0) {
-      return this.a($$0, 0.0F) > 0.0F;
+public class cwj extends cxg implements cyf {
+   public cwj(cxg.a $$0) {
+      super($$0);
    }
 
-   public float a(cwm $$0, float $$1) {
-      alj $$2 = this.b($$0);
-      cwj.a $$3 = this.a.get($$2);
-      if ($$3 != null) {
-         float $$4 = (float)($$3.b - $$3.a);
-         float $$5 = (float)$$3.b - ((float)this.b + $$1);
-         return azm.a($$5 / $$4, 0.0F, 1.0F);
-      } else {
-         return 0.0F;
+   @Override
+   public bte a(dha $$0, cps $$1, btd $$2) {
+      cxk $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), axf.ig, axg.h, 0.5F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
+      if ($$0 instanceof ash $$4) {
+         cql.a(cqu::new, $$4, $$3, $$1, 0.0F, 1.5F, 1.0F);
       }
+
+      $$1.b(axp.c.b(this));
+      $$3.a(1, $$1);
+      return bte.a;
    }
 
-   public void a() {
-      this.b++;
-      if (!this.a.isEmpty()) {
-         Iterator<Entry<alj, cwj.a>> $$0 = this.a.entrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<alj, cwj.a> $$1 = $$0.next();
-            if ($$1.getValue().b <= this.b) {
-               $$0.remove();
-               this.b($$1.getKey());
-            }
-         }
-      }
-   }
-
-   public alj b(cwm $$0) {
-      czr $$1 = $$0.a(ku.z);
-      alj $$2 = lz.g.b($$0.h());
-      return $$1 == null ? $$2 : $$1.c().orElse($$2);
-   }
-
-   public void a(cwm $$0, int $$1) {
-      this.a(this.b($$0), $$1);
-   }
-
-   public void a(alj $$0, int $$1) {
-      this.a.put($$0, new cwj.a(this.b, this.b + $$1));
-      this.b($$0, $$1);
-   }
-
-   public void a(alj $$0) {
-      this.a.remove($$0);
-      this.b($$0);
-   }
-
-   protected void b(alj $$0, int $$1) {
-   }
-
-   protected void b(alj $$0) {
-   }
-
-   static record a(int a, int b) {
+   @Override
+   public cql a(dha $$0, ka $$1, cxk $$2, jm $$3) {
+      return new cqu($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
    }
 }

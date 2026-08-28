@@ -1,45 +1,36 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+public record afk(ahh e, byte f) implements aac<acr> {
+   public static final zt<xg, afk> a = aac.a(afk::a, afk::new);
+   public static final byte b = 1;
+   public static final byte c = 2;
+   public static final byte d = 3;
 
-public class afk implements zq<acf> {
-   public static final zh<wg, afk> a = zq.a(afk::a, afk::new);
-   private final fau b;
-   private final String c;
-
-   public afk(fau $$0, @Nullable fav $$1) {
-      this.b = $$0;
-      if ($$1 == null) {
-         this.c = "";
-      } else {
-         this.c = $$1.b();
-      }
+   private afk(xg $$0) {
+      this(new ahh($$0), $$0.readByte());
    }
 
-   private afk(wg $$0) {
-      this.b = $$0.a(fau.u);
-      this.c = $$0.p();
-   }
-
-   private void a(wg $$0) {
-      $$0.a(fau::a, this.b);
-      $$0.a(this.c);
+   private void a(xg $$0) {
+      this.e.a($$0);
+      $$0.l(this.f);
    }
 
    @Override
-   public zs<afk> a() {
-      return agu.aB;
+   public aae<afk> a() {
+      return ahk.ap;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
    }
 
-   public fau b() {
-      return this.b;
+   public boolean a(byte $$0) {
+      return (this.f & $$0) != 0;
    }
 
-   @Nullable
-   public String e() {
-      return Objects.equals(this.c, "") ? null : this.c;
+   public ahh b() {
+      return this.e;
+   }
+
+   public byte e() {
+      return this.f;
    }
 }

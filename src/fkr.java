@@ -1,77 +1,172 @@
-import com.mojang.util.UndashedUuid;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
 import java.util.Arrays;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.List;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
 public class fkr {
-   private final String a;
-   private final UUID b;
-   private final String c;
-   private final Optional<String> d;
-   private final Optional<String> e;
-   private final fkr.a f;
-
-   public fkr(String $$0, UUID $$1, String $$2, Optional<String> $$3, Optional<String> $$4, fkr.a $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+   private fkr() {
    }
 
-   public String a() {
-      return "token:" + this.c + ":" + UndashedUuid.toString(this.b);
+   @VisibleForTesting
+   protected static List<String> a(String $$0) {
+      return Arrays.asList($$0.split("\\n"));
    }
 
-   public UUID b() {
-      return this.b;
+   public static List<fkr.a> a(String $$0, fkr.b... $$1) {
+      return a($$0, Arrays.asList($$1));
    }
 
-   public String c() {
-      return this.a;
+   private static List<fkr.a> a(String $$0, List<fkr.b> $$1) {
+      List<String> $$2 = a($$0);
+      return a($$2, $$1);
    }
 
-   public String d() {
-      return this.c;
-   }
+   private static List<fkr.a> a(List<String> $$0, List<fkr.b> $$1) {
+      int $$2 = 0;
+      List<fkr.a> $$3 = Lists.newArrayList();
 
-   public Optional<String> e() {
-      return this.e;
-   }
+      for (String $$4 : $$0) {
+         List<fkr.b> $$5 = Lists.newArrayList();
 
-   public Optional<String> f() {
-      return this.d;
-   }
+         for (String $$7 : a($$4, "%link")) {
+            if ("%link".equals($$7)) {
+               $$5.add($$1.get($$2++));
+            } else {
+               $$5.add(fkr.b.a($$7));
+            }
+         }
 
-   public fkr.a g() {
-      return this.f;
-   }
-
-   public static enum a {
-      a("legacy"),
-      b("mojang"),
-      c("msa");
-
-      private static final Map<String, fkr.a> d = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, Function.identity()));
-      private final String e;
-
-      private a(final String $$0) {
-         this.e = $$0;
+         $$3.add(new fkr.a($$5));
       }
 
+      return $$3;
+   }
+
+   public static List<String> a(String $$0, String $$1) {
+      if ($$1.isEmpty()) {
+         throw new IllegalArgumentException("Delimiter cannot be the empty string");
+      } else {
+         List<String> $$2 = Lists.newArrayList();
+         int $$3 = 0;
+
+         int $$4;
+         while (($$4 = $$0.indexOf($$1, $$3)) != -1) {
+            if ($$4 > $$3) {
+               $$2.add($$0.substring($$3, $$4));
+            }
+
+            $$2.add($$1);
+            $$3 = $$4 + $$1.length();
+         }
+
+         if ($$3 < $$0.length()) {
+            $$2.add($$0.substring($$3));
+         }
+
+         return $$2;
+      }
+   }
+
+   public static class a {
+      public final List<fkr.b> a;
+
+      a(fkr.b... $$0) {
+         this(Arrays.asList($$0));
+      }
+
+      a(List<fkr.b> $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public String toString() {
+         return "Line{segments=" + this.a + "}";
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+            fkr.a $$1 = (fkr.a)$$0;
+            return Objects.equals(this.a, $$1.a);
+         } else {
+            return false;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         return Objects.hash(this.a);
+      }
+   }
+
+   public static class b {
+      private final String a;
       @Nullable
-      public static fkr.a a(String $$0) {
-         return d.get($$0.toLowerCase(Locale.ROOT));
+      private final String b;
+      @Nullable
+      private final String c;
+
+      private b(String $$0) {
+         this.a = $$0;
+         this.b = null;
+         this.c = null;
+      }
+
+      private b(String $$0, @Nullable String $$1, @Nullable String $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+            fkr.b $$1 = (fkr.b)$$0;
+            return Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b) && Objects.equals(this.c, $$1.c);
+         } else {
+            return false;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         return Objects.hash(this.a, this.b, this.c);
+      }
+
+      @Override
+      public String toString() {
+         return "Segment{fullText='" + this.a + "', linkTitle='" + this.b + "', linkUrl='" + this.c + "'}";
       }
 
       public String a() {
-         return this.e;
+         return this.b() ? this.b : this.a;
+      }
+
+      public boolean b() {
+         return this.b != null;
+      }
+
+      public String c() {
+         if (!this.b()) {
+            throw new IllegalStateException("Not a link: " + this);
+         } else {
+            return this.c;
+         }
+      }
+
+      public static fkr.b a(String $$0, String $$1) {
+         return new fkr.b(null, $$0, $$1);
+      }
+
+      @VisibleForTesting
+      protected static fkr.b a(String $$0) {
+         return new fkr.b($$0);
       }
    }
 }

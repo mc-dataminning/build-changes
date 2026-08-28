@@ -1,130 +1,84 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class djk extends dml {
+public class djk extends djq {
    public static final MapCodec<djk> a = b(djk::new);
-   public static final dws<jm> b = dml.aF;
-   @Nullable
-   private dwa c;
-   @Nullable
-   private dwa d;
-   @Nullable
-   private dwa e;
-   @Nullable
-   private dwa f;
-   private static final Predicate<dvv> g = $$0 -> $$0 != null && ($$0.a(dis.ee) || $$0.a(dis.ef));
+   public static final dyk<jm> b = dyd.Q;
+   public static final dye c = dyd.v;
 
    @Override
-   public MapCodec<? extends djk> a() {
+   public MapCodec<djk> a() {
       return a;
    }
 
-   protected djk(dvu.d $$0) {
+   public djk(dxm.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, jm.c));
+      this.l(this.F.b().b(b, jm.c).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void b(dvv $$0, dfm $$1, jh $$2, dvv $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2);
-      }
-   }
-
-   public boolean a(dfp $$0, jh $$1) {
-      return this.b().a($$0, $$1) != null || this.r().a($$0, $$1) != null;
-   }
-
-   private void a(dfm $$0, jh $$1) {
-      dwa.b $$2 = this.q().a($$0, $$1);
-      if ($$2 != null) {
-         chw $$3 = bus.bh.a($$0, bur.k);
-         if ($$3 != null) {
-            a($$0, $$2, $$3, $$2.a(0, 2, 0).d());
-         }
-      } else {
-         dwa.b $$4 = this.y().a($$0, $$1);
-         if ($$4 != null) {
-            chk $$5 = bus.ao.a($$0, bur.k);
-            if ($$5 != null) {
-               $$5.y(true);
-               a($$0, $$4, $$5, $$4.a(1, 2, 0).d());
-            }
-         }
-      }
-   }
-
-   private static void a(dfm $$0, dwa.b $$1, bul $$2, jh $$3) {
-      a($$0, $$1);
-      $$2.b((double)$$3.u() + 0.5, (double)$$3.v() + 0.05, (double)$$3.w() + 0.5, 0.0F, 0.0F);
-      $$0.b($$2);
-
-      for (arq $$4 : $$0.a(arq.class, $$2.cR().g(5.0))) {
-         ao.o.a($$4, $$2);
+   protected bte a(dxn $$0, dha $$1, jh $$2, cps $$3, fbo $$4) {
+      if ($$1 instanceof ash $$5 && $$1.c_($$2) instanceof dui $$6) {
+         $$3.a($$6);
+         $$3.a(axp.ar);
+         coh.a($$5, $$3, true);
       }
 
-      b($$0, $$1);
-   }
-
-   public static void a(dfm $$0, dwa.b $$1) {
-      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
-         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
-            dvz $$4 = $$1.a($$2, $$3, 0);
-            $$0.a($$4.d(), dis.a.m(), 2);
-            $$0.c(2001, $$4.d(), diq.j($$4.a()));
-         }
-      }
-   }
-
-   public static void b(dfm $$0, dwa.b $$1) {
-      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
-         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
-            dvz $$4 = $$1.a($$2, $$3, 0);
-            $$0.b($$4.d(), dis.a);
-         }
-      }
+      return bte.a;
    }
 
    @Override
-   public dvv a(dad $$0) {
-      return this.m().b(b, $$0.g().g());
+   protected void a(dxn $$0, dha $$1, jh $$2, dxn $$3, boolean $$4) {
+      bta.a($$0, $$3, $$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   protected void a(dvw.a<diq, dvv> $$0) {
-      $$0.a(b);
+   protected void a(dxn $$0, ash $$1, jh $$2, bam $$3) {
+      dup $$4 = $$1.c_($$2);
+      if ($$4 instanceof dui) {
+         ((dui)$$4).k();
+      }
    }
 
-   private dwa b() {
-      if (this.c == null) {
-         this.c = dwb.a().a(" ", "#", "#").a('#', dvz.a(dwe.a(dis.dP))).b();
-      }
-
-      return this.c;
+   @Nullable
+   @Override
+   public dup a(jh $$0, dxn $$1) {
+      return new dui($$0, $$1);
    }
 
-   private dwa q() {
-      if (this.d == null) {
-         this.d = dwb.a().a("^", "#", "#").a('^', dvz.a(g)).a('#', dvz.a(dwe.a(dis.dP))).b();
-      }
-
-      return this.d;
+   @Override
+   protected dqn a_(dxn $$0) {
+      return dqn.c;
    }
 
-   private dwa r() {
-      if (this.e == null) {
-         this.e = dwb.a().a("~ ~", "###", "~#~").a('#', dvz.a(dwe.a(dis.ci))).a('~', $$0 -> $$0.a().l()).b();
-      }
-
-      return this.e;
+   @Override
+   protected boolean c_(dxn $$0) {
+      return true;
    }
 
-   private dwa y() {
-      if (this.f == null) {
-         this.f = dwb.a().a("~^~", "###", "~#~").a('^', dvz.a(g)).a('#', dvz.a(dwe.a(dis.ci))).a('~', $$0 -> $$0.a().l()).b();
-      }
+   @Override
+   protected int a(dxn $$0, dha $$1, jh $$2) {
+      return csx.a($$1.c_($$2));
+   }
 
-      return this.f;
+   @Override
+   protected dxn a(dxn $$0, dqu $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dxn a(dxn $$0, dpd $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dxo.a<dke, dxn> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   public dxn a(dbb $$0) {
+      return this.m().b(b, $$0.d().g());
    }
 }

@@ -1,19 +1,54 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class eho implements eha {
-   public static final Codec<eho> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.list(ehi.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, eho::new)
-   );
-   public final List<ehi.a> b;
-
-   public eho(dvv $$0, dvv $$1) {
-      this(ImmutableList.of(ehi.a(new epo($$0), $$1)));
+public class eho extends ego<ejh> {
+   public eho(Codec<ejh> $$0) {
+      super($$0);
    }
 
-   public eho(List<ehi.a> $$0) {
-      this.b = $$0;
+   @Override
+   public boolean a(egq<ejh> $$0) {
+      ejh $$1 = $$0.f();
+      dhy $$2 = $$0.b();
+      bam $$3 = $$0.d();
+      dke $$4 = $$1.b.b();
+      jh $$5 = a($$2, $$0.e().k().a(jm.a.b, $$2.L_() + 1, $$2.am()), $$4);
+      if ($$5 == null) {
+         return false;
+      } else {
+         int $$6 = $$1.a().a($$3);
+         int $$7 = $$1.a().a($$3);
+         int $$8 = $$1.a().a($$3);
+         int $$9 = Math.max($$6, Math.max($$7, $$8));
+         boolean $$10 = false;
+
+         for (jh $$11 : jh.a($$5, $$6, $$7, $$8)) {
+            if ($$11.k($$5) > $$9) {
+               break;
+            }
+
+            dxn $$12 = $$2.a_($$11);
+            if ($$12.a($$4)) {
+               this.a($$2, $$11, $$1.c);
+               $$10 = true;
+            }
+         }
+
+         return $$10;
+      }
+   }
+
+   @Nullable
+   private static jh a(dhb $$0, jh.a $$1, dke $$2) {
+      while ($$1.v() > $$0.L_() + 1) {
+         dxn $$3 = $$0.a_($$1);
+         if ($$3.a($$2)) {
+            return $$1;
+         }
+
+         $$1.c(jm.a);
+      }
+
+      return null;
    }
 }

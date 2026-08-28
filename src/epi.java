@@ -1,49 +1,81 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class epi extends epx {
+public class epi extends epk {
    public static final MapCodec<epi> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
-               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
-               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f),
-               jm.a.e.fieldOf("axis").orElse(jm.a.b).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, epi::new)
+      $$0 -> $$0.group(epk.f.listOf().fieldOf("elements").forGetter($$0x -> $$0x.b), e()).apply($$0, epi::new)
    );
-   private final float b;
-   private final float d;
-   private final int e;
-   private final int f;
-   private final jm.a g;
+   private final List<epk> b;
 
-   public epi(float $$0, float $$1, int $$2, int $$3, jm.a $$4) {
-      if ($$2 >= $$3) {
-         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
+   public epi(List<epk> $$0, epm.a $$1) {
+      super($$1);
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Elements are empty");
       } else {
          this.b = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-         this.g = $$4;
+         this.b($$1);
       }
    }
 
    @Override
-   public boolean a(jh $$0, jh $$1, jh $$2, azu $$3) {
-      jm $$4 = jm.a(jm.b.a, this.g);
-      float $$5 = (float)Math.abs(($$1.u() - $$2.u()) * $$4.j());
-      float $$6 = (float)Math.abs(($$1.v() - $$2.v()) * $$4.k());
-      float $$7 = (float)Math.abs(($$1.w() - $$2.w()) * $$4.l());
-      int $$8 = (int)($$5 + $$6 + $$7);
-      float $$9 = $$3.i();
-      return $$9 <= azm.b(this.b, this.d, azm.f((float)$$8, (float)this.e, (float)this.f));
+   public kl a(esf $$0, dqu $$1) {
+      int $$2 = 0;
+      int $$3 = 0;
+      int $$4 = 0;
+
+      for (epk $$5 : this.b) {
+         kl $$6 = $$5.a($$0, $$1);
+         $$2 = Math.max($$2, $$6.u());
+         $$3 = Math.max($$3, $$6.v());
+         $$4 = Math.max($$4, $$6.w());
+      }
+
+      return new kl($$2, $$3, $$4);
    }
 
    @Override
-   protected epy<?> a() {
-      return epy.c;
+   public List<ese.a> a(esf $$0, jh $$1, dqu $$2, bam $$3) {
+      return this.b.get(0).a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public enu a(esf $$0, jh $$1, dqu $$2) {
+      Stream<enu> $$3 = this.b.stream().filter($$0x -> $$0x != epd.b).map($$3x -> $$3x.a($$0, $$1, $$2));
+      return enu.b($$3::iterator).orElseThrow(() -> new IllegalStateException("Unable to calculate boundingbox for ListPoolElement"));
+   }
+
+   @Override
+   public boolean a(esf $$0, dhy $$1, dhw $$2, dzj $$3, jh $$4, jh $$5, dqu $$6, enu $$7, bam $$8, ero $$9, boolean $$10) {
+      for (epk $$11 : this.b) {
+         if (!$$11.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public epl<?> a() {
+      return epl.b;
+   }
+
+   @Override
+   public epk a(epm.a $$0) {
+      super.a($$0);
+      this.b($$0);
+      return this;
+   }
+
+   @Override
+   public String toString() {
+      return "List[" + this.b.stream().map(Object::toString).collect(Collectors.joining(", ")) + "]";
+   }
+
+   private void b(epm.a $$0) {
+      this.b.forEach($$1 -> $$1.a($$0));
    }
 }

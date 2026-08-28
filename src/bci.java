@@ -1,74 +1,48 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.types.templates.List.ListType;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.Function;
 
-public abstract class bci extends DataFix {
-   private final String a;
-
-   public bci(Schema $$0, String $$1) {
-      super($$0, false);
-      this.a = $$1;
-   }
-
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bia.C);
-      Type<Pair<String, String>> $$1 = DSL.named(bia.C.typeName(), bjo.a());
-      if (!Objects.equals($$0, $$1)) {
-         throw new IllegalStateException("block type is not what was expected.");
-      } else {
-         TypeRewriteRule $$2 = this.fixTypeEverywhere(this.a + " for block", $$1, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
-         TypeRewriteRule $$3 = this.fixTypeEverywhereTyped(
-            this.a + " for block_state", this.getInputSchema().getType(bia.u), $$0x -> $$0x.update(DSL.remainderFinder(), this::a)
-         );
-         TypeRewriteRule $$4 = this.fixTypeEverywhereTyped(
-            this.a + " for flat_block_state",
-            this.getInputSchema().getType(bia.v),
-            $$0x -> $$0x.update(
-                  DSL.remainderFinder(), $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().result().map(this::b).map($$0xx::createString), $$0xx)
-               )
-         );
-         return TypeRewriteRule.seq($$2, new TypeRewriteRule[]{$$3, $$4});
-      }
+public class bci extends DataFix {
+   public bci(Schema $$0) {
+      super($$0, true);
    }
 
    private Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.get("Name").asString().result();
-      return $$1.isPresent() ? $$0.set("Name", $$0.createString(this.a($$1.get()))) : $$0;
+      return $$0.remove("Bees");
    }
 
-   private String b(String $$0) {
-      int $$1 = $$0.indexOf(91);
-      int $$2 = $$0.indexOf(123);
-      int $$3 = $$0.length();
-      if ($$1 > 0) {
-         $$3 = $$1;
-      }
-
-      if ($$2 > 0) {
-         $$3 = Math.min($$3, $$2);
-      }
-
-      String $$4 = $$0.substring(0, $$3);
-      String $$5 = this.a($$4);
-      return $$5 + $$0.substring($$3);
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      $$0 = $$0.remove("EntityData");
+      $$0 = $$0.renameField("TicksInHive", "ticks_in_hive");
+      return $$0.renameField("MinOccupationTicks", "min_ticks_in_hive");
    }
 
-   protected abstract String a(String var1);
-
-   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
-      return new bci($$0, $$1) {
-         @Override
-         protected String a(String $$0) {
-            return $$2.apply($$0);
-         }
-      };
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getChoiceType(bis.s, "minecraft:beehive");
+      OpticFinder<?> $$1 = DSL.namedChoice("minecraft:beehive", $$0);
+      ListType<?> $$2 = (ListType<?>)$$0.findFieldType("Bees");
+      Type<?> $$3 = $$2.getElement();
+      OpticFinder<?> $$4 = DSL.fieldFinder("Bees", $$2);
+      OpticFinder<?> $$5 = DSL.typeFinder($$3);
+      Type<?> $$6 = this.getInputSchema().getType(bis.s);
+      Type<?> $$7 = this.getOutputSchema().getType(bis.s);
+      return this.fixTypeEverywhereTyped(
+         "BeehiveFieldRenameFix",
+         $$6,
+         $$7,
+         $$4x -> bbq.a(
+               $$7,
+               $$4x.updateTyped(
+                  $$1,
+                  $$2xx -> $$2xx.update(DSL.remainderFinder(), this::a)
+                        .updateTyped($$4, $$1xxx -> $$1xxx.updateTyped($$5, $$0xxxx -> $$0xxxx.update(DSL.remainderFinder(), this::b)))
+               )
+            )
+      );
    }
 }

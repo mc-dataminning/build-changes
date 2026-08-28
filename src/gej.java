@@ -1,102 +1,67 @@
-import it.unimi.dsi.fastutil.ints.IntCollection;
-import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+public record gej(float b, float c, float d, float e, float f, float g, float h, float i, float j) {
+   public static final gej a = a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
 
-public class gej {
-   final int a;
-   private final List<gej.a> b = new ArrayList<>();
-
-   public gej(int $$0) {
-      this.a = $$0;
+   public static gej a(float $$0, float $$1, float $$2) {
+      return a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F);
    }
 
-   public void a(geb $$0, IntCollection $$1, gej.b $$2) {
-      IntSortedSet $$3 = new IntRBTreeSet($$1);
-
-      for (int $$4 = $$3.lastInt(); $$4 >= $$0.a() && (this.a() || !$$3.isEmpty()); $$4--) {
-         ged $$6 = $$0.b($$4);
-         if ($$6 instanceof gee.a) {
-            gee.a $$5 = (gee.a)$$6;
-            boolean $$6x = this.b($$5.g());
-            if ($$3.remove($$4)) {
-               this.a($$5.g());
-               $$2.accept($$4, $$5);
-            } else if ($$6x) {
-               $$2.accept($$4, $$5);
-            }
-         }
-      }
+   public static gej b(float $$0, float $$1, float $$2) {
+      return a(0.0F, 0.0F, 0.0F, $$0, $$1, $$2);
    }
 
-   public void a(xz $$0) {
-      this.b.add(new gej.a($$0));
+   public static gej a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      return new gej($$0, $$1, $$2, $$3, $$4, $$5, 1.0F, 1.0F, 1.0F);
    }
 
-   public boolean b(xz $$0) {
-      boolean $$1 = false;
-      Iterator<gej.a> $$2 = this.b.iterator();
-
-      while ($$2.hasNext()) {
-         gej.a $$3 = $$2.next();
-         if ($$3.a($$0)) {
-            $$1 = true;
-            if ($$3.a()) {
-               $$2.remove();
-            }
-         }
-      }
-
-      return $$1;
+   public gej c(float $$0, float $$1, float $$2) {
+      return new gej(this.b + $$0, this.c + $$1, this.d + $$2, this.e, this.f, this.g, this.h, this.i, this.j);
    }
 
-   public boolean a() {
-      return !this.b.isEmpty();
+   public gej a(float $$0) {
+      return new gej(this.b, this.c, this.d, this.e, this.f, this.g, $$0, $$0, $$0);
    }
 
-   class a {
-      private final Set<xv> b;
-      private xz c;
-      private boolean d = true;
-      private int e;
-
-      a(final xz $$0) {
-         this.b = new ObjectOpenHashSet($$0.m().d().a());
-         this.c = $$0;
-      }
-
-      boolean a(xz $$0) {
-         if ($$0.equals(this.c)) {
-            return false;
-         } else {
-            boolean $$1 = this.b.remove($$0.l());
-            if (this.d && this.c.g().equals($$0.g())) {
-               if (this.c.k().a($$0.k())) {
-                  $$1 = true;
-                  this.c = $$0;
-               } else {
-                  this.d = false;
-               }
-            }
-
-            if ($$1) {
-               this.e++;
-            }
-
-            return $$1;
-         }
-      }
-
-      boolean a() {
-         return this.e >= gej.this.a || !this.d && this.b.isEmpty();
-      }
+   public gej b(float $$0) {
+      return $$0 == 1.0F ? this : this.d($$0, $$0, $$0);
    }
 
-   public interface b {
-      void accept(int var1, gee.a var2);
+   public gej d(float $$0, float $$1, float $$2) {
+      return new gej(this.b * $$0, this.c * $$1, this.d * $$2, this.e, this.f, this.g, this.h * $$0, this.i * $$1, this.j * $$2);
+   }
+
+   public float a() {
+      return this.b;
+   }
+
+   public float b() {
+      return this.c;
+   }
+
+   public float c() {
+      return this.d;
+   }
+
+   public float d() {
+      return this.e;
+   }
+
+   public float e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
+   }
+
+   public float g() {
+      return this.h;
+   }
+
+   public float h() {
+      return this.i;
+   }
+
+   public float i() {
+      return this.j;
    }
 }

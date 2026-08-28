@@ -1,20 +1,9 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+public interface fao extends ewi {
+   float b(ewh var1);
 
-public class fao extends AbstractDoubleList {
-   private final DoubleList a;
-   private final double b;
-
-   public fao(DoubleList $$0, double $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   default int a(ewh $$0) {
+      return Math.round(this.b($$0));
    }
 
-   public double getDouble(int $$0) {
-      return this.a.getDouble($$0) + this.b;
-   }
-
-   public int size() {
-      return this.a.size();
-   }
+   fan b();
 }

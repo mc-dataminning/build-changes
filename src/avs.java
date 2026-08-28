@@ -1,57 +1,70 @@
-import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class avs extends avu<GameProfile> {
-   private final int a;
-   private final boolean b;
+public class avs implements avv, AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private avl c;
+   private final List<avp> d = Lists.newArrayList();
+   private final aui e;
 
-   public avs(GameProfile $$0, int $$1, boolean $$2) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
-   }
-
-   public avs(JsonObject $$0) {
-      super(b($$0));
-      this.a = $$0.has("level") ? $$0.get("level").getAsInt() : 0;
-      this.b = $$0.has("bypassesPlayerLimit") && $$0.get("bypassesPlayerLimit").getAsBoolean();
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   public boolean b() {
-      return this.b;
+   public avs(aui $$0) {
+      this.e = $$0;
+      this.c = new avo($$0, List.of());
    }
 
    @Override
-   protected void a(JsonObject $$0) {
-      if (this.g() != null) {
-         $$0.addProperty("uuid", this.g().getId().toString());
-         $$0.addProperty("name", this.g().getName());
-         $$0.addProperty("level", this.a);
-         $$0.addProperty("bypassesPlayerLimit", this.b);
-      }
+   public void close() {
+      this.c.close();
    }
 
-   @Nullable
-   private static GameProfile b(JsonObject $$0) {
-      if ($$0.has("uuid") && $$0.has("name")) {
-         String $$1 = $$0.get("uuid").getAsString();
+   public void a(avp $$0) {
+      this.d.add($$0);
+   }
 
-         UUID $$2;
-         try {
-            $$2 = UUID.fromString($$1);
-         } catch (Throwable var4) {
-            return null;
-         }
+   public avr a(Executor $$0, Executor $$1, CompletableFuture<bbk> $$2, List<aug> $$3) {
+      a.info("Reloading ResourceManager: {}", LogUtils.defer(() -> $$3.stream().map(aug::b).collect(Collectors.joining(", "))));
+      this.c.close();
+      this.c = new avo(this.e, $$3);
+      return awb.a(this.c, this.d, $$0, $$1, $$2, a.isDebugEnabled());
+   }
 
-         return new GameProfile($$2, $$0.get("name").getAsString());
-      } else {
-         return null;
-      }
+   @Override
+   public Optional<avt> getResource(alz $$0) {
+      return this.c.getResource($$0);
+   }
+
+   @Override
+   public Set<String> a() {
+      return this.c.a();
+   }
+
+   @Override
+   public List<avt> a(alz $$0) {
+      return this.c.a($$0);
+   }
+
+   @Override
+   public Map<alz, avt> b(String $$0, Predicate<alz> $$1) {
+      return this.c.b($$0, $$1);
+   }
+
+   @Override
+   public Map<alz, List<avt>> c(String $$0, Predicate<alz> $$1) {
+      return this.c.c($$0, $$1);
+   }
+
+   @Override
+   public Stream<aug> b() {
+      return this.c.b();
    }
 }

@@ -1,13 +1,7 @@
-import javax.annotation.Nullable;
+public interface ffp {
+   void a(boolean var1);
 
-public abstract class ffp extends RuntimeException {
-   @Nullable
-   public xj a() {
-      return null;
-   }
+   void a();
 
-   @Nullable
-   public xj[] b() {
-      return null;
-   }
+   void b();
 }

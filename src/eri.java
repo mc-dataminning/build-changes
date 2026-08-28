@@ -1,49 +1,20 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface eri extends ern {
-   @Nullable
-   dxv a(kj var1);
+public class eri extends ery {
+   public static final MapCodec<eri> a = dxn.a.fieldOf("block_state").xmap(eri::new, $$0 -> $$0.b);
+   private final dxn b;
 
-   int b(jh var1);
+   public eri(dxn $$0) {
+      this.b = $$0;
+   }
 
-   public static enum a implements eri {
-      a;
+   @Override
+   public boolean a(dxn $$0, bam $$1) {
+      return $$0 == this.b;
+   }
 
-      @Nullable
-      @Override
-      public dxv a(kj $$0) {
-         return null;
-      }
-
-      @Override
-      public int b(jh $$0) {
-         return 0;
-      }
-
-      @Override
-      public void a(jh $$0) {
-      }
-
-      @Override
-      public boolean M_() {
-         return false;
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-
-      @Override
-      public void a(kj $$0, boolean $$1) {
-      }
-
-      @Override
-      public void a(des $$0, boolean $$1) {
-      }
-
-      @Override
-      public void b(des $$0) {
-      }
+   @Override
+   protected erz<?> a() {
+      return erz.c;
    }
 }

@@ -1,15 +1,3 @@
-public enum btp {
-   a(n.j),
-   b(n.m),
-   c(n.j);
-
-   private final n d;
-
-   private btp(final n $$0) {
-      this.d = $$0;
-   }
-
-   public n a() {
-      return this.d;
-   }
+public interface btp {
+   bto a(dxn var1, dhb var2, jh var3);
 }

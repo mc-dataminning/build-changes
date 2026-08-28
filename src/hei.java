@@ -1,7 +1,8 @@
-public interface hei<T> {
-   int e();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   T b(azu var1);
-
-   void a(hed var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface hei {
 }

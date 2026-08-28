@@ -1,48 +1,87 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.stream.IntStream;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalLong;
+import org.apache.commons.lang3.StringUtils;
 
-public class eeg extends eew<ehh> {
-   public eeg(Codec<ehh> $$0) {
-      super($$0);
+public class eeg {
+   public static final MapCodec<eeg> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.LONG.fieldOf("seed").stable().forGetter(eeg::c),
+               Codec.BOOL.fieldOf("generate_features").orElse(true).stable().forGetter(eeg::d),
+               Codec.BOOL.fieldOf("bonus_chest").orElse(false).stable().forGetter(eeg::e),
+               Codec.STRING.lenientOptionalFieldOf("legacy_custom_options").stable().forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, $$0.stable(eeg::new))
+   );
+   public static final eeg b = new eeg((long)"North Carolina".hashCode(), true, true);
+   private final long c;
+   private final boolean d;
+   private final boolean e;
+   private final Optional<String> f;
+
+   public eeg(long $$0, boolean $$1, boolean $$2) {
+      this($$0, $$1, $$2, Optional.empty());
    }
 
-   @Override
-   public boolean a(eey<ehh> $$0) {
-      azu $$1 = $$0.d();
-      dgk $$2 = $$0.b();
-      des $$3 = new des($$0.e());
-      IntArrayList $$4 = ae.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
-      IntArrayList $$5 = ae.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
-      jh.a $$6 = new jh.a();
-      IntListIterator var8 = $$4.iterator();
+   public static eeg a() {
+      return new eeg(g(), true, false);
+   }
 
-      while (var8.hasNext()) {
-         Integer $$7 = (Integer)var8.next();
-         IntListIterator var10 = $$5.iterator();
+   public static eeg b() {
+      return new eeg(g(), false, false);
+   }
 
-         while (var10.hasNext()) {
-            Integer $$8 = (Integer)var10.next();
-            $$6.d($$7, 0, $$8);
-            jh $$9 = $$2.a(ebq.a.f, $$6);
-            if ($$2.u($$9) || $$2.a_($$9).g($$2, $$9).c()) {
-               $$2.a($$9, dis.cv.m(), 2);
-               bsq.a($$2, $$1, $$9, euj.a);
-               dvv $$10 = dis.cp.m();
+   private eeg(long $$0, boolean $$1, boolean $$2, Optional<String> $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
 
-               for (jm $$11 : jm.c.a) {
-                  jh $$12 = $$9.a($$11);
-                  if ($$10.a($$2, $$12)) {
-                     $$2.a($$12, $$10, 2);
-                  }
-               }
+   public long c() {
+      return this.c;
+   }
 
-               return true;
-            }
+   public boolean d() {
+      return this.d;
+   }
+
+   public boolean e() {
+      return this.e;
+   }
+
+   public boolean f() {
+      return this.f.isPresent();
+   }
+
+   public eeg a(boolean $$0) {
+      return new eeg(this.c, this.d, $$0, this.f);
+   }
+
+   public eeg b(boolean $$0) {
+      return new eeg(this.c, $$0, this.e, this.f);
+   }
+
+   public eeg a(OptionalLong $$0) {
+      return new eeg($$0.orElse(g()), this.d, this.e, this.f);
+   }
+
+   public static OptionalLong a(String $$0) {
+      $$0 = $$0.trim();
+      if (StringUtils.isEmpty($$0)) {
+         return OptionalLong.empty();
+      } else {
+         try {
+            return OptionalLong.of(Long.parseLong($$0));
+         } catch (NumberFormatException var2) {
+            return OptionalLong.of((long)$$0.hashCode());
          }
       }
+   }
 
-      return false;
+   public static long g() {
+      return bam.a().g();
    }
 }

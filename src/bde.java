@@ -1,14 +1,32 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class bde extends bgv {
-   public bde(Schema $$0, boolean $$1) {
-      super($$0, $$1, "Colorless shulker entity fix", bia.B, "minecraft:shulker");
+public class bde extends DataFix {
+   public bde(Schema $$0) {
+      super($$0, false);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), $$0x -> $$0x.get("Color").asInt(0) == 10 ? $$0x.set("Color", $$0x.createByte((byte)16)) : $$0x);
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped("CarvingStepRemoveFix", this.getInputSchema().getType(bis.c), bde::a);
+   }
+
+   private static Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), $$0x -> {
+         Dynamic<?> $$1 = $$0x;
+         Optional<? extends Dynamic<?>> $$2 = $$0x.get("CarvingMasks").result();
+         if ($$2.isPresent()) {
+            Optional<? extends Dynamic<?>> $$3 = $$2.get().get("AIR").result();
+            if ($$3.isPresent()) {
+               $$1 = $$0x.set("carving_mask", $$3.get());
+            }
+         }
+
+         return $$1.remove("CarvingMasks");
+      });
    }
 }

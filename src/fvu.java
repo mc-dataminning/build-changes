@@ -1,184 +1,178 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public class fvu extends fug<cva> {
+   private static final alz G = alz.b("container/stonecutter/scroller");
+   private static final alz H = alz.b("container/stonecutter/scroller_disabled");
+   private static final alz I = alz.b("container/stonecutter/recipe_selected");
+   private static final alz J = alz.b("container/stonecutter/recipe_highlighted");
+   private static final alz K = alz.b("container/stonecutter/recipe");
+   private static final alz L = alz.b("textures/gui/container/stonecutter.png");
+   private static final int M = 12;
+   private static final int N = 15;
+   private static final int O = 4;
+   private static final int P = 3;
+   private static final int Q = 16;
+   private static final int R = 18;
+   private static final int S = 54;
+   private static final int T = 52;
+   private static final int U = 14;
+   private float V;
+   private boolean W;
+   private int X;
+   private boolean Y;
 
-public class fvu {
-   public static final int a = 20;
-   private static final fnq b = new fnq(alj.b("recipe_book/page_forward"), alj.b("recipe_book/page_forward_highlighted"));
-   private static final fnq c = new fnq(alj.b("recipe_book/page_backward"), alj.b("recipe_book/page_backward_highlighted"));
-   private final List<fvw> d = Lists.newArrayListWithCapacity(20);
-   @Nullable
-   private fvw e;
-   private final fvs f;
-   private fke g;
-   private final List<fvy> h = Lists.newArrayList();
-   private List<fvx> i = ImmutableList.of();
-   private fnj j;
-   private fnj k;
-   private int l;
-   private int m;
-   private awq n;
-   @Nullable
-   private dbc<?> o;
-   @Nullable
-   private fvx p;
-   private boolean q;
+   public fvu(cva $$0, cpr $$1, xv $$2) {
+      super($$0, $$1, $$2);
+      $$0.a(this::K);
+      this.w--;
+   }
 
-   public fvu(fwa $$0, boolean $$1) {
-      this.f = new fvs($$0, $$1);
+   @Override
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
 
-      for (int $$2 = 0; $$2 < 20; $$2++) {
-         this.d.add(new fvw($$0));
+   @Override
+   protected void a(fnl $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.C;
+      int $$5 = this.D;
+      $$0.a(glo::B, L, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      int $$6 = (int)(41.0F * this.V);
+      alz $$7 = this.J() ? G : H;
+      $$0.a(glo::B, $$7, $$4 + 119, $$5 + 15 + $$6, 12, 15);
+      int $$8 = this.C + 52;
+      int $$9 = this.D + 14;
+      int $$10 = this.X + 12;
+      this.a($$0, $$2, $$3, $$8, $$9, $$10);
+      this.a($$0, $$8, $$9, $$10);
+   }
+
+   @Override
+   protected void a(fnl $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      if (this.Y) {
+         int $$3 = this.C + 52;
+         int $$4 = this.D + 14;
+         int $$5 = this.X + 12;
+         dcl.b<dcy> $$6 = this.z.m();
+
+         for (int $$7 = this.X; $$7 < $$5 && $$7 < $$6.d(); $$7++) {
+            int $$8 = $$7 - this.X;
+            int $$9 = $$3 + $$8 % 4 * 16;
+            int $$10 = $$4 + $$8 / 4 * 18 + 2;
+            if ($$1 >= $$9 && $$1 < $$9 + 16 && $$2 >= $$10 && $$2 < $$10 + 18) {
+               ddi.f $$11 = ddi.f.a(this.m.s);
+               ddi $$12 = $$6.e().get($$7).c().b();
+               $$0.b(this.p, $$12.b($$11), $$1, $$2);
+            }
+         }
       }
    }
 
-   public void a(fke $$0, int $$1, int $$2) {
-      this.g = $$0;
-      this.n = $$0.t.n();
-
-      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
-         this.d.get($$3).c($$1 + 11 + 25 * ($$3 % 5), $$2 + 31 + 25 * ($$3 / 5));
-      }
-
-      this.j = new fnj($$1 + 93, $$2 + 137, 12, 17, false);
-      this.j.a(b);
-      this.k = new fnj($$1 + 38, $$2 + 137, 12, 17, true);
-      this.k.a(c);
-   }
-
-   public void a(fvt $$0) {
-      this.h.remove($$0);
-      this.h.add($$0);
-   }
-
-   public void a(List<fvx> $$0, boolean $$1, boolean $$2) {
-      this.i = $$0;
-      this.q = $$2;
-      this.l = (int)Math.ceil((double)$$0.size() / 20.0);
-      if (this.l <= this.m || $$1) {
-         this.m = 0;
-      }
-
-      this.e();
-   }
-
-   private void e() {
-      int $$0 = 20 * this.m;
-
-      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
-         fvw $$2 = this.d.get($$1);
-         if ($$0 + $$1 < this.i.size()) {
-            fvx $$3 = this.i.get($$0 + $$1);
-            $$2.a($$3, this.q, this);
-            $$2.k = true;
+   private void a(fnl $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = this.X; $$6 < $$5 && $$6 < this.z.n(); $$6++) {
+         int $$7 = $$6 - this.X;
+         int $$8 = $$3 + $$7 % 4 * 16;
+         int $$9 = $$7 / 4;
+         int $$10 = $$4 + $$9 * 18 + 2;
+         alz $$11;
+         if ($$6 == this.z.l()) {
+            $$11 = I;
+         } else if ($$1 >= $$8 && $$2 >= $$10 && $$1 < $$8 + 16 && $$2 < $$10 + 18) {
+            $$11 = J;
          } else {
-            $$2.k = false;
-         }
-      }
-
-      this.f();
-   }
-
-   private void f() {
-      this.j.k = this.l > 1 && this.m < this.l - 1;
-      this.k.k = this.l > 1 && this.m > 0;
-   }
-
-   public void a(flq $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
-      if (this.l > 1) {
-         xj $$6 = xj.a("gui.recipebook.page", this.m + 1, this.l);
-         int $$7 = this.g.h.a($$6);
-         $$0.a(this.g.h, $$6, $$1 - $$7 / 2 + 73, $$2 + 141, -1, false);
-      }
-
-      this.e = null;
-
-      for (fvw $$8 : this.d) {
-         $$8.a($$0, $$3, $$4, $$5);
-         if ($$8.k && $$8.B()) {
-            this.e = $$8;
-         }
-      }
-
-      this.k.a($$0, $$3, $$4, $$5);
-      this.j.a($$0, $$3, $$4, $$5);
-      this.f.a($$0, $$3, $$4, $$5);
-   }
-
-   public void a(flq $$0, int $$1, int $$2) {
-      if (this.g.z != null && this.e != null && !this.f.c()) {
-         alj $$3 = this.e.e().a(ku.G);
-         $$0.a(this.g.h, this.e.f(), $$1, $$2, $$3);
-      }
-   }
-
-   @Nullable
-   public dbc<?> a() {
-      return this.o;
-   }
-
-   @Nullable
-   public fvx b() {
-      return this.p;
-   }
-
-   public void c() {
-      this.f.b(false);
-   }
-
-   public boolean a(double $$0, double $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      this.o = null;
-      this.p = null;
-      if (this.f.c()) {
-         if (this.f.a($$0, $$1, $$2)) {
-            this.o = this.f.b();
-            this.p = this.f.a();
-         } else {
-            this.f.b(false);
+            $$11 = K;
          }
 
-         return true;
-      } else if (this.j.a($$0, $$1, $$2)) {
-         this.m++;
-         this.e();
-         return true;
-      } else if (this.k.a($$0, $$1, $$2)) {
-         this.m--;
-         this.e();
-         return true;
-      } else {
-         for (fvw $$7 : this.d) {
-            if ($$7.a($$0, $$1, $$2)) {
-               if ($$2 == 0) {
-                  this.o = $$7.c();
-                  this.p = $$7.a();
-               } else if ($$2 == 1 && !this.f.c() && !$$7.b()) {
-                  this.f.a($$7.a(), this.q, $$7.D(), $$7.E(), $$3 + $$5 / 2, $$4 + 13 + $$6 / 2, (float)$$7.y());
-               }
+         $$0.a(glo::B, $$11, $$8, $$10 - 1, 16, 18);
+      }
+   }
 
+   private void a(fnl $$0, int $$1, int $$2, int $$3) {
+      dcl.b<dcy> $$4 = this.z.m();
+      ddi.f $$5 = ddi.f.a(this.m.s);
+
+      for (int $$6 = this.X; $$6 < $$3 && $$6 < $$4.d(); $$6++) {
+         int $$7 = $$6 - this.X;
+         int $$8 = $$1 + $$7 % 4 * 16;
+         int $$9 = $$7 / 4;
+         int $$10 = $$2 + $$9 * 18 + 2;
+         ddi $$11 = $$4.e().get($$6).c().b();
+         $$0.a($$11.b($$5), $$8, $$10);
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      this.W = false;
+      if (this.Y) {
+         int $$3 = this.C + 52;
+         int $$4 = this.D + 14;
+         int $$5 = this.X + 12;
+
+         for (int $$6 = this.X; $$6 < $$5; $$6++) {
+            int $$7 = $$6 - this.X;
+            double $$8 = $$0 - (double)($$3 + $$7 % 4 * 16);
+            double $$9 = $$1 - (double)($$4 + $$7 / 4 * 18);
+            if ($$8 >= 0.0 && $$9 >= 0.0 && $$8 < 16.0 && $$9 < 18.0 && this.z.a(this.m.t, $$6)) {
+               flz.Q().ak().a(hew.a(axf.AU, 1.0F));
+               this.m.r.a(this.z.l, $$6);
                return true;
             }
          }
 
-         return false;
+         $$3 = this.C + 119;
+         $$4 = this.D + 9;
+         if ($$0 >= (double)$$3 && $$0 < (double)($$3 + 12) && $$1 >= (double)$$4 && $$1 < (double)($$4 + 54)) {
+            this.W = true;
+         }
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      if (this.W && this.J()) {
+         int $$5 = this.D + 14;
+         int $$6 = $$5 + 54;
+         this.V = ((float)$$1 - (float)$$5 - 7.5F) / ((float)($$6 - $$5) - 15.0F);
+         this.V = bae.a(this.V, 0.0F, 1.0F);
+         this.X = (int)((double)(this.V * (float)this.G()) + 0.5) * 4;
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
-   public void a(List<dbc<?>> $$0) {
-      for (fvy $$1 : this.h) {
-         $$1.a($$0);
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (super.a($$0, $$1, $$2, $$3)) {
+         return true;
+      } else {
+         if (this.J()) {
+            int $$4 = this.G();
+            float $$5 = (float)$$3 / (float)$$4;
+            this.V = bae.a(this.V - $$5, 0.0F, 1.0F);
+            this.X = (int)((double)(this.V * (float)$$4) + 0.5) * 4;
+         }
+
+         return true;
       }
    }
 
-   public awq d() {
-      return this.n;
+   private boolean J() {
+      return this.Y && this.z.n() > 12;
    }
 
-   protected void a(Consumer<fmb> $$0) {
-      $$0.accept(this.j);
-      $$0.accept(this.k);
-      this.d.forEach($$0);
+   protected int G() {
+      return (this.z.n() + 4 - 1) / 4 - 3;
+   }
+
+   private void K() {
+      this.Y = this.z.o();
+      if (!this.Y) {
+         this.V = 0.0F;
+         this.X = 0;
+      }
    }
 }

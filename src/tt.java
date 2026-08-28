@@ -1,29 +1,9 @@
-public record tt(int a, boolean b) {
-   private static final tt c = new tt(1, true);
+public interface tt {
+   void a(ts var1);
 
-   public static tt a() {
-      return c;
-   }
+   void a(ts var1, tv var2);
 
-   public boolean b() {
-      return this.a < 1;
-   }
+   void b(ts var1, tv var2);
 
-   public boolean a(int $$0, int $$1) {
-      boolean $$2 = $$0 != $$1;
-      boolean $$3 = this.b() || $$0 < this.a;
-      return $$3 && (!$$2 || !this.b);
-   }
-
-   public boolean c() {
-      return this.a != 1;
-   }
-
-   public int d() {
-      return this.a;
-   }
-
-   public boolean e() {
-      return this.b;
-   }
+   void a(ts var1, ts var2, tv var3);
 }

@@ -1,218 +1,128 @@
-public class eok extends emg {
-   public static final int h = 12;
-   public static final int i = 15;
-   private boolean j;
-   private boolean k;
-   private boolean l;
-   private boolean m;
-   private static final eok.a n = new eok.a();
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public eok(azu $$0, int $$1, int $$2) {
-      super(emz.G, $$1, 64, $$2, 12, 10, 15, a($$0));
+public final class eok {
+   public static final String a = "INVALID";
+   public static final eok b = new eok(null, new dgg(0, 0), 0, new eor(List.of()));
+   private static final Logger c = LogUtils.getLogger();
+   private final eoc d;
+   private final eor e;
+   private final dgg f;
+   private int g;
+   @Nullable
+   private volatile enu h;
+
+   public eok(eoc $$0, dgg $$1, int $$2, eor $$3) {
+      this.d = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.e = $$3;
    }
 
-   public eok(ul $$0) {
-      super(emz.G, $$0);
-      this.j = $$0.q("placedMainChest");
-      this.k = $$0.q("placedHiddenChest");
-      this.l = $$0.q("placedTrap1");
-      this.m = $$0.q("placedTrap2");
-   }
-
-   @Override
-   protected void a(emy $$0, ul $$1) {
-      super.a($$0, $$1);
-      $$1.a("placedMainChest", this.j);
-      $$1.a("placedHiddenChest", this.k);
-      $$1.a("placedTrap1", this.l);
-      $$1.a("placedTrap2", this.m);
-   }
-
-   @Override
-   public void a(dgk $$0, dgi $$1, dxr $$2, azu $$3, ema $$4, des $$5, jh $$6) {
-      if (this.a($$0, $$4, 0)) {
-         this.a($$0, $$4, 0, -4, 0, this.a - 1, 0, this.c - 1, false, $$3, n);
-         this.a($$0, $$4, 2, 1, 2, 9, 2, 2, false, $$3, n);
-         this.a($$0, $$4, 2, 1, 12, 9, 2, 12, false, $$3, n);
-         this.a($$0, $$4, 2, 1, 3, 2, 2, 11, false, $$3, n);
-         this.a($$0, $$4, 9, 1, 3, 9, 2, 11, false, $$3, n);
-         this.a($$0, $$4, 1, 3, 1, 10, 6, 1, false, $$3, n);
-         this.a($$0, $$4, 1, 3, 13, 10, 6, 13, false, $$3, n);
-         this.a($$0, $$4, 1, 3, 2, 1, 6, 12, false, $$3, n);
-         this.a($$0, $$4, 10, 3, 2, 10, 6, 12, false, $$3, n);
-         this.a($$0, $$4, 2, 3, 2, 9, 3, 12, false, $$3, n);
-         this.a($$0, $$4, 2, 6, 2, 9, 6, 12, false, $$3, n);
-         this.a($$0, $$4, 3, 7, 3, 8, 7, 11, false, $$3, n);
-         this.a($$0, $$4, 4, 8, 4, 7, 8, 10, false, $$3, n);
-         this.a($$0, $$4, 3, 1, 3, 8, 2, 11);
-         this.a($$0, $$4, 4, 3, 6, 7, 3, 9);
-         this.a($$0, $$4, 2, 4, 2, 9, 5, 12);
-         this.a($$0, $$4, 4, 6, 5, 7, 6, 9);
-         this.a($$0, $$4, 5, 7, 6, 6, 7, 8);
-         this.a($$0, $$4, 5, 1, 2, 6, 2, 2);
-         this.a($$0, $$4, 5, 2, 12, 6, 2, 12);
-         this.a($$0, $$4, 5, 5, 1, 6, 5, 1);
-         this.a($$0, $$4, 5, 5, 13, 6, 5, 13);
-         this.a($$0, dis.a.m(), 1, 5, 5, $$4);
-         this.a($$0, dis.a.m(), 10, 5, 5, $$4);
-         this.a($$0, dis.a.m(), 1, 5, 9, $$4);
-         this.a($$0, dis.a.m(), 10, 5, 9, $$4);
-
-         for (int $$7 = 0; $$7 <= 14; $$7 += 14) {
-            this.a($$0, $$4, 2, 4, $$7, 2, 5, $$7, false, $$3, n);
-            this.a($$0, $$4, 4, 4, $$7, 4, 5, $$7, false, $$3, n);
-            this.a($$0, $$4, 7, 4, $$7, 7, 5, $$7, false, $$3, n);
-            this.a($$0, $$4, 9, 4, $$7, 9, 5, $$7, false, $$3, n);
-         }
-
-         this.a($$0, $$4, 5, 6, 0, 6, 6, 0, false, $$3, n);
-
-         for (int $$8 = 0; $$8 <= 11; $$8 += 11) {
-            for (int $$9 = 2; $$9 <= 12; $$9 += 2) {
-               this.a($$0, $$4, $$8, 4, $$9, $$8, 5, $$9, false, $$3, n);
-            }
-
-            this.a($$0, $$4, $$8, 6, 5, $$8, 6, 5, false, $$3, n);
-            this.a($$0, $$4, $$8, 6, 9, $$8, 6, 9, false, $$3, n);
-         }
-
-         this.a($$0, $$4, 2, 7, 2, 2, 9, 2, false, $$3, n);
-         this.a($$0, $$4, 9, 7, 2, 9, 9, 2, false, $$3, n);
-         this.a($$0, $$4, 2, 7, 12, 2, 9, 12, false, $$3, n);
-         this.a($$0, $$4, 9, 7, 12, 9, 9, 12, false, $$3, n);
-         this.a($$0, $$4, 4, 9, 4, 4, 9, 4, false, $$3, n);
-         this.a($$0, $$4, 7, 9, 4, 7, 9, 4, false, $$3, n);
-         this.a($$0, $$4, 4, 9, 10, 4, 9, 10, false, $$3, n);
-         this.a($$0, $$4, 7, 9, 10, 7, 9, 10, false, $$3, n);
-         this.a($$0, $$4, 5, 9, 7, 6, 9, 7, false, $$3, n);
-         dvv $$10 = dis.cQ.m().b(dqk.b, jm.f);
-         dvv $$11 = dis.cQ.m().b(dqk.b, jm.e);
-         dvv $$12 = dis.cQ.m().b(dqk.b, jm.d);
-         dvv $$13 = dis.cQ.m().b(dqk.b, jm.c);
-         this.a($$0, $$13, 5, 9, 6, $$4);
-         this.a($$0, $$13, 6, 9, 6, $$4);
-         this.a($$0, $$12, 5, 9, 8, $$4);
-         this.a($$0, $$12, 6, 9, 8, $$4);
-         this.a($$0, $$13, 4, 0, 0, $$4);
-         this.a($$0, $$13, 5, 0, 0, $$4);
-         this.a($$0, $$13, 6, 0, 0, $$4);
-         this.a($$0, $$13, 7, 0, 0, $$4);
-         this.a($$0, $$13, 4, 1, 8, $$4);
-         this.a($$0, $$13, 4, 2, 9, $$4);
-         this.a($$0, $$13, 4, 3, 10, $$4);
-         this.a($$0, $$13, 7, 1, 8, $$4);
-         this.a($$0, $$13, 7, 2, 9, $$4);
-         this.a($$0, $$13, 7, 3, 10, $$4);
-         this.a($$0, $$4, 4, 1, 9, 4, 1, 9, false, $$3, n);
-         this.a($$0, $$4, 7, 1, 9, 7, 1, 9, false, $$3, n);
-         this.a($$0, $$4, 4, 1, 10, 7, 2, 10, false, $$3, n);
-         this.a($$0, $$4, 5, 4, 5, 6, 4, 5, false, $$3, n);
-         this.a($$0, $$10, 4, 4, 5, $$4);
-         this.a($$0, $$11, 7, 4, 5, $$4);
-
-         for (int $$14 = 0; $$14 < 4; $$14++) {
-            this.a($$0, $$12, 5, 0 - $$14, 6 + $$14, $$4);
-            this.a($$0, $$12, 6, 0 - $$14, 6 + $$14, $$4);
-            this.a($$0, $$4, 5, 0 - $$14, 7 + $$14, 6, 0 - $$14, 9 + $$14);
-         }
-
-         this.a($$0, $$4, 1, -3, 12, 10, -1, 13);
-         this.a($$0, $$4, 1, -3, 1, 3, -1, 13);
-         this.a($$0, $$4, 1, -3, 1, 9, -1, 5);
-
-         for (int $$15 = 1; $$15 <= 13; $$15 += 2) {
-            this.a($$0, $$4, 1, -3, $$15, 1, -2, $$15, false, $$3, n);
-         }
-
-         for (int $$16 = 2; $$16 <= 12; $$16 += 2) {
-            this.a($$0, $$4, 1, -1, $$16, 3, -1, $$16, false, $$3, n);
-         }
-
-         this.a($$0, $$4, 2, -2, 1, 5, -2, 1, false, $$3, n);
-         this.a($$0, $$4, 7, -2, 1, 9, -2, 1, false, $$3, n);
-         this.a($$0, $$4, 6, -3, 1, 6, -3, 1, false, $$3, n);
-         this.a($$0, $$4, 6, -1, 1, 6, -1, 1, false, $$3, n);
-         this.a($$0, dis.fH.m().b(drh.b, jm.f).b(drh.d, Boolean.valueOf(true)), 1, -3, 8, $$4);
-         this.a($$0, dis.fH.m().b(drh.b, jm.e).b(drh.d, Boolean.valueOf(true)), 4, -3, 8, $$4);
-         this.a($$0, dis.fI.m().b(drg.f, Boolean.valueOf(true)).b(drg.h, Boolean.valueOf(true)).b(drg.c, Boolean.valueOf(true)), 2, -3, 8, $$4);
-         this.a($$0, dis.fI.m().b(drg.f, Boolean.valueOf(true)).b(drg.h, Boolean.valueOf(true)).b(drg.c, Boolean.valueOf(true)), 3, -3, 8, $$4);
-         dvv $$17 = dis.cw.m().b(dos.b, dwz.b).b(dos.d, dwz.b);
-         this.a($$0, $$17, 5, -3, 7, $$4);
-         this.a($$0, $$17, 5, -3, 6, $$4);
-         this.a($$0, $$17, 5, -3, 5, $$4);
-         this.a($$0, $$17, 5, -3, 4, $$4);
-         this.a($$0, $$17, 5, -3, 3, $$4);
-         this.a($$0, $$17, 5, -3, 2, $$4);
-         this.a($$0, dis.cw.m().b(dos.b, dwz.b).b(dos.e, dwz.b), 5, -3, 1, $$4);
-         this.a($$0, dis.cw.m().b(dos.c, dwz.b).b(dos.e, dwz.b), 4, -3, 1, $$4);
-         this.a($$0, dis.cn.m(), 3, -3, 1, $$4);
-         if (!this.l) {
-            this.l = this.a($$0, $$4, $$3, 3, -2, 1, jm.c, euj.A);
-         }
-
-         this.a($$0, dis.ff.m().b(drm.e, Boolean.valueOf(true)), 3, -2, 2, $$4);
-         this.a($$0, dis.fH.m().b(drh.b, jm.c).b(drh.d, Boolean.valueOf(true)), 7, -3, 1, $$4);
-         this.a($$0, dis.fH.m().b(drh.b, jm.d).b(drh.d, Boolean.valueOf(true)), 7, -3, 5, $$4);
-         this.a($$0, dis.fI.m().b(drg.e, Boolean.valueOf(true)).b(drg.g, Boolean.valueOf(true)).b(drg.c, Boolean.valueOf(true)), 7, -3, 2, $$4);
-         this.a($$0, dis.fI.m().b(drg.e, Boolean.valueOf(true)).b(drg.g, Boolean.valueOf(true)).b(drg.c, Boolean.valueOf(true)), 7, -3, 3, $$4);
-         this.a($$0, dis.fI.m().b(drg.e, Boolean.valueOf(true)).b(drg.g, Boolean.valueOf(true)).b(drg.c, Boolean.valueOf(true)), 7, -3, 4, $$4);
-         this.a($$0, dis.cw.m().b(dos.c, dwz.b).b(dos.e, dwz.b), 8, -3, 6, $$4);
-         this.a($$0, dis.cw.m().b(dos.e, dwz.b).b(dos.d, dwz.b), 9, -3, 6, $$4);
-         this.a($$0, dis.cw.m().b(dos.b, dwz.b).b(dos.d, dwz.a), 9, -3, 5, $$4);
-         this.a($$0, dis.cn.m(), 9, -3, 4, $$4);
-         this.a($$0, $$17, 9, -2, 4, $$4);
-         if (!this.m) {
-            this.m = this.a($$0, $$4, $$3, 9, -2, 3, jm.e, euj.A);
-         }
-
-         this.a($$0, dis.ff.m().b(drm.d, Boolean.valueOf(true)), 8, -1, 3, $$4);
-         this.a($$0, dis.ff.m().b(drm.d, Boolean.valueOf(true)), 8, -2, 3, $$4);
-         if (!this.j) {
-            this.j = this.a($$0, $$4, $$3, 8, -3, 3, euj.z);
-         }
-
-         this.a($$0, dis.cn.m(), 9, -3, 2, $$4);
-         this.a($$0, dis.cn.m(), 8, -3, 1, $$4);
-         this.a($$0, dis.cn.m(), 4, -3, 5, $$4);
-         this.a($$0, dis.cn.m(), 5, -2, 5, $$4);
-         this.a($$0, dis.cn.m(), 5, -1, 5, $$4);
-         this.a($$0, dis.cn.m(), 6, -3, 5, $$4);
-         this.a($$0, dis.cn.m(), 7, -2, 5, $$4);
-         this.a($$0, dis.cn.m(), 7, -1, 5, $$4);
-         this.a($$0, dis.cn.m(), 8, -3, 5, $$4);
-         this.a($$0, $$4, 9, -1, 1, 9, -1, 5, false, $$3, n);
-         this.a($$0, $$4, 8, -3, 8, 10, -1, 10);
-         this.a($$0, dis.eK.m(), 8, -2, 11, $$4);
-         this.a($$0, dis.eK.m(), 9, -2, 11, $$4);
-         this.a($$0, dis.eK.m(), 10, -2, 11, $$4);
-         dvv $$18 = dis.dw.m().b(dnc.aF, jm.c).b(dnc.L, dwg.b);
-         this.a($$0, $$18, 8, -2, 12, $$4);
-         this.a($$0, $$18, 9, -2, 12, $$4);
-         this.a($$0, $$18, 10, -2, 12, $$4);
-         this.a($$0, $$4, 8, -3, 8, 8, -3, 10, false, $$3, n);
-         this.a($$0, $$4, 10, -3, 8, 10, -3, 10, false, $$3, n);
-         this.a($$0, dis.cn.m(), 10, -2, 9, $$4);
-         this.a($$0, $$17, 8, -2, 9, $$4);
-         this.a($$0, $$17, 8, -2, 10, $$4);
-         this.a($$0, dis.cw.m().b(dos.b, dwz.b).b(dos.d, dwz.b).b(dos.c, dwz.b).b(dos.e, dwz.b), 10, -1, 9, $$4);
-         this.a($$0, dis.br.m().b(dvo.a, jm.b), 9, -2, 8, $$4);
-         this.a($$0, dis.br.m().b(dvo.a, jm.e), 10, -2, 8, $$4);
-         this.a($$0, dis.br.m().b(dvo.a, jm.e), 10, -1, 8, $$4);
-         this.a($$0, dis.eh.m().b(dox.aF, jm.c), 10, -2, 10, $$4);
-         if (!this.k) {
-            this.k = this.a($$0, $$4, $$3, 9, -3, 10, euj.z);
-         }
-      }
-   }
-
-   static class a extends emm.a {
-      @Override
-      public void a(azu $$0, int $$1, int $$2, int $$3, boolean $$4) {
-         if ($$0.i() < 0.4F) {
-            this.a = dis.m.m();
+   @Nullable
+   public static eok a(eos $$0, ux $$1, long $$2) {
+      String $$3 = $$1.l("id");
+      if ("INVALID".equals($$3)) {
+         return b;
+      } else {
+         kd<eoc> $$4 = $$0.b().e(mb.aT);
+         eoc $$5 = $$4.a(alz.a($$3));
+         if ($$5 == null) {
+            c.error("Unknown stucture id: {}", $$3);
+            return null;
          } else {
-            this.a = dis.cn.m();
+            dgg $$6 = new dgg($$1.h("ChunkX"), $$1.h("ChunkZ"));
+            int $$7 = $$1.h("references");
+            vd $$8 = $$1.c("Children", 10);
+
+            try {
+               eor $$9 = eor.a($$8, $$0);
+               if ($$5 instanceof eqn) {
+                  $$9 = eqn.a($$6, $$2, $$9);
+               }
+
+               return new eok($$5, $$6, $$7, $$9);
+            } catch (Exception var11) {
+               c.error("Failed Start with id {}", $$3, var11);
+               return null;
+            }
          }
       }
+   }
+
+   public enu a() {
+      enu $$0 = this.h;
+      if ($$0 == null) {
+         $$0 = this.d.a(this.e.b());
+         this.h = $$0;
+      }
+
+      return $$0;
+   }
+
+   public void a(dhy $$0, dhw $$1, dzj $$2, bam $$3, enu $$4, dgg $$5) {
+      List<eog> $$6 = this.e.c();
+      if (!$$6.isEmpty()) {
+         enu $$7 = $$6.get(0).f;
+         jh $$8 = $$7.g();
+         jh $$9 = new jh($$8.u(), $$7.i(), $$8.w());
+
+         for (eog $$10 : $$6) {
+            if ($$10.f().a($$4)) {
+               $$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$9);
+            }
+         }
+
+         this.d.a($$0, $$1, $$2, $$3, $$4, $$5, this.e);
+      }
+   }
+
+   public ux a(eos $$0, dgg $$1) {
+      ux $$2 = new ux();
+      if (this.b()) {
+         $$2.a("id", $$0.b().e(mb.aT).b(this.d).toString());
+         $$2.a("ChunkX", $$1.g);
+         $$2.a("ChunkZ", $$1.h);
+         $$2.a("references", this.g);
+         $$2.a("Children", this.e.a($$0));
+         return $$2;
+      } else {
+         $$2.a("id", "INVALID");
+         return $$2;
+      }
+   }
+
+   public boolean b() {
+      return !this.e.a();
+   }
+
+   public dgg c() {
+      return this.f;
+   }
+
+   public boolean d() {
+      return this.g < this.g();
+   }
+
+   public void e() {
+      this.g++;
+   }
+
+   public int f() {
+      return this.g;
+   }
+
+   protected int g() {
+      return 1;
+   }
+
+   public eoc h() {
+      return this.d;
+   }
+
+   public List<eog> i() {
+      return this.e.c();
    }
 }

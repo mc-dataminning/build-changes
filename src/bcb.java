@@ -1,26 +1,23 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import java.util.function.UnaryOperator;
+import java.util.List;
 
-public class bcb extends DataFix {
-   private final String a;
-   private final UnaryOperator<String> b;
+public class bcb extends bcd {
+   private static final List<String> a = List.of("generic.", "horse.", "player.", "zombie.");
 
-   private bcb(Schema $$0, String $$1, UnaryOperator<String> $$2) {
-      super($$0, true);
-      this.a = $$1;
-      this.b = $$2;
+   public bcb(Schema $$0) {
+      super($$0, "AttributeIdPrefixFix", bcb::a);
    }
 
-   public TypeRewriteRule makeRule() {
-      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bia.s);
-      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bia.s);
-      return this.fixTypeEverywhere(this.a, $$0, $$1, $$0x -> $$0xx -> $$0xx.mapFirst(this.b));
-   }
+   private static String a(String $$0) {
+      String $$1 = bkg.a($$0);
 
-   public static DataFix a(Schema $$0, String $$1, UnaryOperator<String> $$2) {
-      return new bcb($$0, $$1, $$2);
+      for (String $$2 : a) {
+         String $$3 = bkg.a($$2);
+         if ($$1.startsWith($$3)) {
+            return "minecraft:" + $$1.substring($$3.length());
+         }
+      }
+
+      return $$0;
    }
 }

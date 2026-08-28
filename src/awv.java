@@ -1,37 +1,45 @@
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
-import java.util.Locale;
+import net.minecraft.server.MinecraftServer;
 
-public interface awv {
-   DecimalFormat a = ae.a(new DecimalFormat("########0.00"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
-   awv b = NumberFormat.getIntegerInstance(Locale.US)::format;
-   awv c = $$0 -> a.format((double)$$0 * 0.1);
-   awv d = $$0 -> {
-      double $$1 = (double)$$0 / 100.0;
-      double $$2 = $$1 / 1000.0;
-      if ($$2 > 0.5) {
-         return a.format($$2) + " km";
-      } else {
-         return $$1 > 0.5 ? a.format($$1) + " m" : $$0 + " cm";
-      }
-   };
-   awv e = $$0 -> {
-      double $$1 = (double)$$0 / 20.0;
-      double $$2 = $$1 / 60.0;
-      double $$3 = $$2 / 60.0;
-      double $$4 = $$3 / 24.0;
-      double $$5 = $$4 / 365.0;
-      if ($$5 > 0.5) {
-         return a.format($$5) + " y";
-      } else if ($$4 > 0.5) {
-         return a.format($$4) + " d";
-      } else if ($$3 > 0.5) {
-         return a.format($$3) + " h";
-      } else {
-         return $$2 > 0.5 ? a.format($$2) + " min" : $$1 + " s";
-      }
-   };
+public class awv implements ev {
+   private static final String b = "Rcon";
+   private static final xv c = xv.b("Rcon");
+   private final StringBuffer d = new StringBuffer();
+   private final MinecraftServer e;
 
-   String format(int var1);
+   public awv(MinecraftServer $$0) {
+      this.e = $$0;
+   }
+
+   public void e() {
+      this.d.setLength(0);
+   }
+
+   public String f() {
+      return this.d.toString();
+   }
+
+   public ew g() {
+      ash $$0 = this.e.J();
+      return new ew(this, fbs.a($$0.Y()), fbr.a, $$0, 4, "Rcon", c, this.e, null);
+   }
+
+   @Override
+   public void a(xv $$0) {
+      this.d.append($$0.getString());
+   }
+
+   @Override
+   public boolean y_() {
+      return true;
+   }
+
+   @Override
+   public boolean z_() {
+      return true;
+   }
+
+   @Override
+   public boolean c() {
+      return this.e.m();
+   }
 }

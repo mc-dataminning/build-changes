@@ -1,40 +1,60 @@
-import javax.annotation.Nullable;
+import com.mojang.brigadier.context.StringRange;
+import com.mojang.brigadier.suggestion.Suggestion;
+import com.mojang.brigadier.suggestion.Suggestions;
+import java.util.List;
+import java.util.Optional;
 
-public class adj implements zq<acf> {
-   public static final zh<wg, adj> a = zq.a(adj::a, adj::new);
-   private final int b;
-   private final byte c;
+public record adj(int b, int c, int d, List<adj.a> e) implements aac<acr> {
+   public static final zt<xg, adj> a = zt.a(zr.h, adj::e, zr.h, adj::f, zr.h, adj::g, adj.a.a.a(zr.a()), adj::h, adj::new);
 
-   public adj(bul $$0, byte $$1) {
-      this.b = $$0.ar();
-      this.c = $$1;
-   }
-
-   private adj(wg $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readByte();
-   }
-
-   private void a(wg $$0) {
-      $$0.q(this.b);
-      $$0.l(this.c);
+   public adj(int $$0, Suggestions $$1) {
+      this(
+         $$0,
+         $$1.getRange().getStart(),
+         $$1.getRange().getLength(),
+         $$1.getList().stream().map($$0x -> new adj.a($$0x.getText(), Optional.ofNullable($$0x.getTooltip()).map(xy::a))).toList()
+      );
    }
 
    @Override
-   public zs<adj> a() {
-      return agu.D;
+   public aae<adj> a() {
+      return ahk.r;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bul a(dfm $$0) {
-      return $$0.a(this.b);
+   public Suggestions b() {
+      StringRange $$0 = StringRange.between(this.c, this.c + this.d);
+      return new Suggestions($$0, this.e.stream().map($$1 -> new Suggestion($$0, $$1.a(), $$1.b().orElse(null))).toList());
    }
 
-   public byte b() {
+   public int e() {
+      return this.b;
+   }
+
+   public int f() {
       return this.c;
+   }
+
+   public int g() {
+      return this.d;
+   }
+
+   public List<adj.a> h() {
+      return this.e;
+   }
+
+   public static record a(String b, Optional<xv> c) {
+      public static final zt<xg, adj.a> a = zt.a(zr.o, adj.a::a, xx.e, adj.a::b, adj.a::new);
+
+      public String a() {
+         return this.b;
+      }
+
+      public Optional<xv> b() {
+         return this.c;
+      }
    }
 }

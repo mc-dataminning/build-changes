@@ -1,51 +1,54 @@
-public class dbx extends dar {
-   public dbx(dao $$0) {
-      super($$0);
+import java.util.Map;
+
+public class dbx extends dcm {
+   public dbx(dbn $$0) {
+      super("", $$0, dcn.a(Map.of('#', dbv.a(cxo.rm), 'x', dbv.a(cxo.sI)), "###", "#x#", "###"), new cxk(cxo.uZ));
    }
 
-   public boolean a(dap $$0, dfm $$1) {
-      if ($$0.f() == 3 && $$0.g() == 3) {
-         for (int $$2 = 0; $$2 < $$0.g(); $$2++) {
-            for (int $$3 = 0; $$3 < $$0.f(); $$3++) {
-               cwm $$4 = $$0.a($$3, $$2);
-               if ($$4.f()) {
-                  return false;
-               }
-
-               if ($$3 == 1 && $$2 == 1) {
-                  if (!$$4.a(cwq.vJ)) {
-                     return false;
-                  }
-               } else if (!$$4.a(cwq.ox)) {
-                  return false;
-               }
+   @Override
+   public boolean a(dbo $$0, dha $$1) {
+      if (!super.a($$0, $$1)) {
+         return false;
+      } else {
+         cxk $$2 = c($$0);
+         if ($$2.f()) {
+            return false;
+         } else {
+            evj $$3 = cxx.b($$2, $$1);
+            if ($$3 == null) {
+               return false;
+            } else {
+               return $$3.g() ? false : $$3.f < 4;
             }
          }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public cwm a(dap $$0, js.a $$1) {
-      cwm $$2 = $$0.a(1, 1);
-      if (!$$2.a(cwq.vJ)) {
-         return cwm.k;
-      } else {
-         cwm $$3 = new cwm(cwq.vI, 8);
-         $$3.b(ku.Q, $$2.a(ku.Q));
-         return $$3;
       }
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
+   public cxk a(dbo $$0, js.a $$1) {
+      cxk $$2 = c($$0).c(1);
+      $$2.b(ku.N, dah.b);
+      return $$2;
+   }
+
+   private static cxk c(dbo $$0) {
+      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
+         cxk $$2 = $$0.a($$1);
+         if ($$2.b(ku.L)) {
+            return $$2;
+         }
+      }
+
+      return cxk.k;
    }
 
    @Override
-   public dbf<?> ap_() {
-      return dbf.j;
+   public boolean aq_() {
+      return true;
+   }
+
+   @Override
+   public dci<dbx> a() {
+      return dci.f;
    }
 }

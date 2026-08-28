@@ -1,23 +1,19 @@
-import java.util.Optional;
-import java.util.UUID;
+import io.netty.buffer.ByteBuf;
 
-public record aac(Optional<UUID> b) implements zq<zw> {
-   public static final zh<wg, aac> a = zq.a(aac::a, aac::new);
+public interface aac<T extends xb> {
+   aae<? extends aac<T>> a();
 
-   private aac(wg $$0) {
-      this($$0.b(kk.g));
+   void a(T var1);
+
+   default boolean c() {
+      return false;
    }
 
-   private void a(wg $$0) {
-      $$0.a(this.b, kk.g);
+   default boolean d() {
+      return false;
    }
 
-   @Override
-   public zs<aac> a() {
-      return aai.f;
-   }
-
-   public void a(zw $$0) {
-      $$0.a(this);
+   static <B extends ByteBuf, T extends aac<?>> zt<B, T> a(zw<B, T> $$0, zu<B, T> $$1) {
+      return zt.a($$0, $$1);
    }
 }

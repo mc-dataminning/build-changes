@@ -1,27 +1,30 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public class dbn<T extends daq> implements dbf<T> {
-   private final MapCodec<T> w;
-   private final zh<wu, T> x;
+public enum dbn implements bba {
+   a("building", 0),
+   b("redstone", 1),
+   c("equipment", 2),
+   d("misc", 3);
 
-   public dbn(dbn.a<T> $$0) {
-      this.w = RecordCodecBuilder.mapCodec($$1 -> $$1.group(dao.e.fieldOf("category").orElse(dao.d).forGetter(daq::d)).apply($$1, $$0::create));
-      this.x = zh.a(dao.g, daq::d, $$0::create);
+   public static final Codec<dbn> e = bba.a(dbn::values);
+   public static final IntFunction<dbn> f = ayv.a(dbn::a, values(), ayv.a.a);
+   public static final zt<ByteBuf, dbn> g = zr.a(f, dbn::a);
+   private final String h;
+   private final int i;
+
+   private dbn(final String $$0, final int $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    @Override
-   public MapCodec<T> a() {
-      return this.w;
+   public String c() {
+      return this.h;
    }
 
-   @Override
-   public zh<wu, T> b() {
-      return this.x;
-   }
-
-   @FunctionalInterface
-   public interface a<T extends daq> {
-      T create(dao var1);
+   private int a() {
+      return this.i;
    }
 }

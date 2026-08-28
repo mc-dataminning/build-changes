@@ -1,39 +1,65 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
 
-public abstract class etf {
-   protected final dos a;
+public class etf {
+   private final int a;
+   private final LongLinkedOpenHashSet[] b;
+   private int c;
 
-   protected etf(dos $$0) {
+   public etf(int $$0, final int $$1) {
       this.a = $$0;
-   }
+      this.b = new LongLinkedOpenHashSet[$$0];
 
-   public abstract void a(dfm var1, jh var2, dvv var3, @Nullable etd var4, boolean var5);
-
-   protected int a(dfm $$0, jh $$1) {
-      return this.a.a($$0, $$1);
-   }
-
-   protected int a(jh $$0, dvv $$1) {
-      return $$1.a(this.a) ? $$1.c(dos.f) : 0;
-   }
-
-   protected int b(dfm $$0, jh $$1) {
-      int $$2 = 0;
-
-      for (jm $$3 : jm.c.a) {
-         jh $$4 = $$1.a($$3);
-         dvv $$5 = $$0.a_($$4);
-         $$2 = Math.max($$2, this.a($$4, $$5));
-         jh $$6 = $$1.d();
-         if ($$5.d($$0, $$4) && !$$0.a_($$6).d($$0, $$6)) {
-            jh $$7 = $$4.d();
-            $$2 = Math.max($$2, this.a($$7, $$0.a_($$7)));
-         } else if (!$$5.d($$0, $$4)) {
-            jh $$8 = $$4.e();
-            $$2 = Math.max($$2, this.a($$8, $$0.a_($$8)));
-         }
+      for (int $$2 = 0; $$2 < $$0; $$2++) {
+         this.b[$$2] = new LongLinkedOpenHashSet($$1, 0.5F) {
+            protected void rehash(int $$0) {
+               if ($$0 > $$1) {
+                  super.rehash($$0);
+               }
+            }
+         };
       }
 
-      return Math.max(0, $$2 - 1);
+      this.c = $$0;
+   }
+
+   public long a() {
+      LongLinkedOpenHashSet $$0 = this.b[this.c];
+      long $$1 = $$0.removeFirstLong();
+      if ($$0.isEmpty()) {
+         this.a(this.a);
+      }
+
+      return $$1;
+   }
+
+   public boolean b() {
+      return this.c >= this.a;
+   }
+
+   public void a(long $$0, int $$1, int $$2) {
+      LongLinkedOpenHashSet $$3 = this.b[$$1];
+      $$3.remove($$0);
+      if ($$3.isEmpty() && this.c == $$1) {
+         this.a($$2);
+      }
+   }
+
+   public void a(long $$0, int $$1) {
+      this.b[$$1].add($$0);
+      if (this.c > $$1) {
+         this.c = $$1;
+      }
+   }
+
+   private void a(int $$0) {
+      int $$1 = this.c;
+      this.c = $$0;
+
+      for (int $$2 = $$1 + 1; $$2 < $$0; $$2++) {
+         if (!this.b[$$2].isEmpty()) {
+            this.c = $$2;
+            break;
+         }
+      }
    }
 }

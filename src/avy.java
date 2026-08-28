@@ -1,28 +1,29 @@
-import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.io.File;
-import java.util.Objects;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Map;
+import java.util.Optional;
 
-public class avy extends avv<GameProfile, avz> {
-   public avy(File $$0) {
-      super($$0);
+@FunctionalInterface
+public interface avy {
+   avy b = $$0 -> Optional.empty();
+
+   Optional<avt> getResource(alz var1);
+
+   default avt getResourceOrThrow(alz $$0) throws FileNotFoundException {
+      return this.getResource($$0).orElseThrow(() -> new FileNotFoundException($$0.toString()));
    }
 
-   @Override
-   protected avu<GameProfile> a(JsonObject $$0) {
-      return new avz($$0);
+   default InputStream open(alz $$0) throws IOException {
+      return this.getResourceOrThrow($$0).d();
    }
 
-   public boolean a(GameProfile $$0) {
-      return this.d($$0);
+   default BufferedReader openAsReader(alz $$0) throws IOException {
+      return this.getResourceOrThrow($$0).e();
    }
 
-   @Override
-   public String[] a() {
-      return this.d().stream().map(avu::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
-   }
-
-   protected String b(GameProfile $$0) {
-      return $$0.getId().toString();
+   static avy fromMap(Map<alz, avt> $$0) {
+      return $$1 -> Optional.ofNullable($$0.get($$1));
    }
 }

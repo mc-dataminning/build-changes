@@ -1,40 +1,51 @@
-public interface axe {
-   axs<btd> a = a("damages_helmet");
-   axs<btd> b = a("bypasses_armor");
-   axs<btd> c = a("bypasses_shield");
-   axs<btd> d = a("bypasses_invulnerability");
-   axs<btd> e = a("bypasses_cooldown");
-   axs<btd> f = a("bypasses_effects");
-   axs<btd> g = a("bypasses_resistance");
-   axs<btd> h = a("bypasses_enchantments");
-   axs<btd> i = a("is_fire");
-   axs<btd> j = a("is_projectile");
-   axs<btd> k = a("witch_resistant_to");
-   axs<btd> l = a("is_explosion");
-   axs<btd> m = a("is_fall");
-   axs<btd> n = a("is_drowning");
-   axs<btd> o = a("is_freezing");
-   axs<btd> p = a("is_lightning");
-   axs<btd> q = a("no_anger");
-   axs<btd> r = a("no_impact");
-   axs<btd> s = a("always_most_significant_fall");
-   axs<btd> t = a("wither_immune_to");
-   axs<btd> u = a("ignites_armor_stands");
-   axs<btd> v = a("burns_armor_stands");
-   axs<btd> w = a("avoids_guardian_thorns");
-   axs<btd> x = a("always_triggers_silverfish");
-   axs<btd> y = a("always_hurts_ender_dragons");
-   axs<btd> z = a("no_knockback");
-   axs<btd> A = a("always_kills_armor_stands");
-   axs<btd> B = a("can_break_armor_stand");
-   axs<btd> C = a("bypasses_wolf_armor");
-   axs<btd> D = a("is_player_attack");
-   axs<btd> E = a("burn_from_stepping");
-   axs<btd> F = a("panic_causes");
-   axs<btd> G = a("panic_environmental_causes");
-   axs<btd> H = a("mace_smash");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-   private static axs<btd> a(String $$0) {
-      return axs.a(ma.s, alj.b($$0));
+public class axe {
+   public static final Codec<axe> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(alz.a.fieldOf("sound_id").forGetter(axe::a), Codec.FLOAT.lenientOptionalFieldOf("range").forGetter(axe::b)).apply($$0, axe::a)
+   );
+   public static final Codec<jq<axe>> b = alv.a(mb.al, a);
+   public static final zt<ByteBuf, axe> c = zt.a(alz.b, axe::a, zr.l.a(zr::a), axe::b, axe::a);
+   public static final zt<xg, jq<axe>> d = zr.a(mb.al, c);
+   private static final float e = 16.0F;
+   private final alz f;
+   private final float g;
+   private final boolean h;
+
+   private static axe a(alz $$0, Optional<Float> $$1) {
+      return $$1.<axe>map($$1x -> a($$0, $$1x.floatValue())).orElseGet(() -> a($$0));
+   }
+
+   public static axe a(alz $$0) {
+      return new axe($$0, 16.0F, false);
+   }
+
+   public static axe a(alz $$0, float $$1) {
+      return new axe($$0, $$1, true);
+   }
+
+   private axe(alz $$0, float $$1, boolean $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+   }
+
+   public alz a() {
+      return this.f;
+   }
+
+   public float a(float $$0) {
+      if (this.h) {
+         return this.g;
+      } else {
+         return $$0 > 1.0F ? 16.0F * $$0 : 16.0F;
+      }
+   }
+
+   private Optional<Float> b() {
+      return this.h ? Optional.of(this.g) : Optional.empty();
    }
 }

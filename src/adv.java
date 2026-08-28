@@ -1,88 +1,40 @@
-import com.google.common.collect.Lists;
-import io.netty.buffer.ByteBuf;
-import java.util.BitSet;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class adv {
-   private static final zh<ByteBuf, byte[]> a = zf.a(2048);
-   private final BitSet b;
-   private final BitSet c;
-   private final BitSet d;
-   private final BitSet e;
-   private final List<byte[]> f;
-   private final List<byte[]> g;
+public class adv implements aac<acr> {
+   public static final zt<ws, adv> a = aac.a(adv::a, adv::new);
+   private final int b;
+   private final byte c;
 
-   public adv(des $$0, erk $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      this.b = new BitSet();
-      this.c = new BitSet();
-      this.d = new BitSet();
-      this.e = new BitSet();
-      this.f = Lists.newArrayList();
-      this.g = Lists.newArrayList();
-
-      for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
-         if ($$2 == null || $$2.get($$4)) {
-            this.a($$0, $$1, dfv.a, $$4, this.b, this.d, this.f);
-         }
-
-         if ($$3 == null || $$3.get($$4)) {
-            this.a($$0, $$1, dfv.b, $$4, this.c, this.e, this.g);
-         }
-      }
+   public adv(bvf $$0, byte $$1) {
+      this.b = $$0.ar();
+      this.c = $$1;
    }
 
-   public adv(wg $$0, int $$1, int $$2) {
-      this.b = $$0.w();
-      this.c = $$0.w();
-      this.d = $$0.w();
-      this.e = $$0.w();
-      this.f = $$0.a(a);
-      this.g = $$0.a(a);
+   private adv(ws $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readByte();
    }
 
-   public void a(wg $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f, a);
-      $$0.a(this.g, a);
+   private void a(ws $$0) {
+      $$0.q(this.b);
+      $$0.l(this.c);
    }
 
-   private void a(des $$0, erk $$1, dfv $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
-      dxv $$7 = $$1.a($$2).a(kj.a($$0, $$1.d() + $$3));
-      if ($$7 != null) {
-         if ($$7.d()) {
-            $$5.set($$3);
-         } else {
-            $$4.set($$3);
-            $$6.add($$7.b().a());
-         }
-      }
+   @Override
+   public aae<adv> a() {
+      return ahk.D;
    }
 
-   public BitSet a() {
-      return this.b;
+   public void a(acr $$0) {
+      $$0.a(this);
    }
 
-   public BitSet b() {
-      return this.d;
+   @Nullable
+   public bvf a(dha $$0) {
+      return $$0.a(this.b);
    }
 
-   public List<byte[]> c() {
-      return this.f;
-   }
-
-   public BitSet d() {
+   public byte b() {
       return this.c;
-   }
-
-   public BitSet e() {
-      return this.e;
-   }
-
-   public List<byte[]> f() {
-      return this.g;
    }
 }

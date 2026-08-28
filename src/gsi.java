@@ -1,27 +1,25 @@
-public class gsi extends gqq<col, gxx, gbv> {
-   private static final alj a = alj.b("textures/entity/wandering_trader.png");
+public class gsi extends gri<clq, gxo> {
+   private static final alz a = alz.b("textures/entity/lead_knot.png");
+   private final gbw b;
 
-   public gsi(gpk.a $$0) {
-      super($$0, new gbv($$0.a(gck.dn)), 0.5F);
-      this.a(new gtd<>(this, $$0.f(), $$0.b()));
-      this.a(new gtc<>(this, $$0.b()));
+   public gsi(grj.a $$0) {
+      super($$0);
+      this.b = new gbw($$0.a(geg.bo));
    }
 
-   public alj a(gxx $$0) {
-      return a;
+   @Override
+   public void a(gxo $$0, fgl $$1, gle $$2, int $$3) {
+      $$1.a();
+      $$1.b(-1.0F, -1.0F, 1.0F);
+      this.b.a($$0);
+      fgp $$4 = $$2.getBuffer(this.b.a(a));
+      this.b.a($$1, $$4, $$3, hav.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   protected void a(gxx $$0, fer $$1) {
-      float $$2 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
-   }
-
-   public gxx b() {
-      return new gxx();
-   }
-
-   public void a(col $$0, gxx $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.n() > 0;
+   @Override
+   public gxo d() {
+      return new gxo();
    }
 }

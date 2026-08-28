@@ -1,169 +1,69 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.util.Base64;
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class gdv extends gbf<haa> {
+   private static final String a = "ribcage";
+   private static final String b = "center_head";
+   private static final String c = "right_head";
+   private static final String d = "left_head";
+   private static final float e = 0.065F;
+   private static final float f = 0.265F;
+   private final geh g;
+   private final geh i;
+   private final geh j;
+   private final geh k;
+   private final geh l;
 
-public class gdv {
-   private static final Logger j = LogUtils.getLogger();
-   private static final int k = 1024;
-   public String a;
-   public String b;
-   public xj c;
-   public xj d;
-   @Nullable
-   public akg.b e;
-   public long f;
-   public int g = ab.b().e();
-   public xj h = xj.b(ab.b().c());
-   public List<xj> i = Collections.emptyList();
-   private gdv.a l = gdv.a.c;
-   @Nullable
-   private byte[] m;
-   private gdv.c n;
-   private gdv.b o = gdv.b.a;
-
-   public gdv(String $$0, String $$1, gdv.c $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.n = $$2;
+   public gdv(geh $$0) {
+      super($$0);
+      this.k = $$0.b("ribcage");
+      this.l = $$0.b("tail");
+      this.g = $$0.b("center_head");
+      this.i = $$0.b("right_head");
+      this.j = $$0.b("left_head");
    }
 
-   public ul a() {
-      ul $$0 = new ul();
-      $$0.a("name", this.a);
-      $$0.a("ip", this.b);
-      if (this.m != null) {
-         $$0.a("icon", Base64.getEncoder().encodeToString(this.m));
-      }
-
-      if (this.l == gdv.a.a) {
-         $$0.a("acceptTextures", true);
-      } else if (this.l == gdv.a.b) {
-         $$0.a("acceptTextures", false);
-      }
-
-      return $$0;
+   public static gen a(gel $$0) {
+      gep $$1 = new gep();
+      ger $$2 = $$1.a();
+      $$2.a("shoulders", gem.c().a(0, 16).a(-10.0F, 3.9F, -0.5F, 20.0F, 3.0F, 3.0F, $$0), gej.a);
+      float $$3 = 0.20420352F;
+      $$2.a(
+         "ribcage",
+         gem.c()
+            .a(0, 22)
+            .a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F, $$0)
+            .a(24, 22)
+            .a(-4.0F, 1.5F, 0.5F, 11.0F, 2.0F, 2.0F, $$0)
+            .a(24, 22)
+            .a(-4.0F, 4.0F, 0.5F, 11.0F, 2.0F, 2.0F, $$0)
+            .a(24, 22)
+            .a(-4.0F, 6.5F, 0.5F, 11.0F, 2.0F, 2.0F, $$0),
+         gej.a(-2.0F, 6.9F, -0.5F, 0.20420352F, 0.0F, 0.0F)
+      );
+      $$2.a(
+         "tail",
+         gem.c().a(12, 22).a(0.0F, 0.0F, 0.0F, 3.0F, 6.0F, 3.0F, $$0),
+         gej.a(-2.0F, 6.9F + bae.b(0.20420352F) * 10.0F, -0.5F + bae.a(0.20420352F) * 10.0F, 0.83252203F, 0.0F, 0.0F)
+      );
+      $$2.a("center_head", gem.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), gej.a);
+      gem $$4 = gem.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, $$0);
+      $$2.a("right_head", $$4, gej.a(-8.0F, 4.0F, 0.0F));
+      $$2.a("left_head", $$4, gej.a(10.0F, 4.0F, 0.0F));
+      return gen.a($$1, 64, 64);
    }
 
-   public gdv.a b() {
-      return this.l;
+   public void a(haa $$0) {
+      super.a($$0);
+      a($$0, this.i, 0);
+      a($$0, this.j, 1);
+      float $$1 = bae.b($$0.p * 0.1F);
+      this.k.e = (0.065F + 0.05F * $$1) * (float) Math.PI;
+      this.l.a(-2.0F, 6.9F + bae.b(this.k.e) * 10.0F, -0.5F + bae.a(this.k.e) * 10.0F);
+      this.l.e = (0.265F + 0.1F * $$1) * (float) Math.PI;
+      this.g.f = $$0.U * (float) (Math.PI / 180.0);
+      this.g.e = $$0.V * (float) (Math.PI / 180.0);
    }
 
-   public void a(gdv.a $$0) {
-      this.l = $$0;
-   }
-
-   public static gdv a(ul $$0) {
-      gdv $$1 = new gdv($$0.l("name"), $$0.l("ip"), gdv.c.c);
-      if ($$0.b("icon", 8)) {
-         try {
-            byte[] $$2 = Base64.getDecoder().decode($$0.l("icon"));
-            $$1.a(b($$2));
-         } catch (IllegalArgumentException var3) {
-            j.warn("Malformed base64 server icon", var3);
-         }
-      }
-
-      if ($$0.b("acceptTextures", 99)) {
-         if ($$0.q("acceptTextures")) {
-            $$1.a(gdv.a.a);
-         } else {
-            $$1.a(gdv.a.b);
-         }
-      } else {
-         $$1.a(gdv.a.c);
-      }
-
-      return $$1;
-   }
-
-   @Nullable
-   public byte[] c() {
-      return this.m;
-   }
-
-   public void a(@Nullable byte[] $$0) {
-      this.m = $$0;
-   }
-
-   public boolean d() {
-      return this.n == gdv.c.a;
-   }
-
-   public boolean e() {
-      return this.n == gdv.c.b;
-   }
-
-   public gdv.c f() {
-      return this.n;
-   }
-
-   public void a(gdv $$0) {
-      this.b = $$0.b;
-      this.a = $$0.a;
-      this.m = $$0.m;
-   }
-
-   public void b(gdv $$0) {
-      this.a($$0);
-      this.a($$0.b());
-      this.n = $$0.n;
-   }
-
-   public gdv.b g() {
-      return this.o;
-   }
-
-   public void a(gdv.b $$0) {
-      this.o = $$0;
-   }
-
-   @Nullable
-   public static byte[] b(@Nullable byte[] $$0) {
-      if ($$0 != null) {
-         try {
-            azr $$1 = azr.a($$0);
-            if ($$1.a() <= 1024 && $$1.b() <= 1024) {
-               return $$0;
-            }
-         } catch (IOException var2) {
-            j.warn("Failed to decode server icon", var2);
-         }
-      }
-
-      return null;
-   }
-
-   public static enum a {
-      a("enabled"),
-      b("disabled"),
-      c("prompt");
-
-      private final xj d;
-
-      private a(final String $$0) {
-         this.d = xj.c("addServer.resourcePack." + $$0);
-      }
-
-      public xj a() {
-         return this.d;
-      }
-   }
-
-   public static enum b {
-      a,
-      b,
-      c,
-      d,
-      e;
-   }
-
-   public static enum c {
-      a,
-      b,
-      c;
+   private static void a(haa $$0, geh $$1, int $$2) {
+      $$1.f = ($$0.b[$$2] - $$0.T) * (float) (Math.PI / 180.0);
+      $$1.e = $$0.a[$$2] * (float) (Math.PI / 180.0);
    }
 }

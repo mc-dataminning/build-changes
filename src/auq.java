@@ -1,56 +1,181 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Splitter;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.nio.file.FileStore;
+import java.nio.file.FileSystem;
 import java.nio.file.Path;
-import java.util.Optional;
+import java.nio.file.PathMatcher;
+import java.nio.file.WatchService;
+import java.nio.file.attribute.UserPrincipalLookupService;
+import java.nio.file.spi.FileSystemProvider;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class auq extends auh {
-   private static final aud c = new aud(xj.c("dataPack.vanilla.description"), ab.b().a(atq.b), Optional.empty());
-   private static final atk d = new atk(crs.h);
-   private static final atg e = atg.a(aud.b, c, atk.a, d);
-   private static final atn f = new atn("vanilla", xj.c("dataPack.vanilla.name"), auo.c, Optional.of(b));
-   private static final atp g = new atp(false, auk.b.b, false);
-   private static final atp h = new atp(false, auk.b.a, false);
-   private static final alj i = alj.b("datapacks");
+public class auq extends FileSystem {
+   private static final Set<String> b = Set.of("basic");
+   public static final String a = "/";
+   private static final Splitter c = Splitter.on('/');
+   private final FileStore d;
+   private final FileSystemProvider e = new aup();
+   private final auo f;
 
-   public auq(ezo $$0) {
-      super(atq.b, b(), i, $$0);
+   auq(String $$0, auq.b $$1) {
+      this.d = new aun($$0);
+      this.f = a($$1, this, "", null);
    }
 
-   private static atn a(String $$0, xj $$1) {
-      return new atn($$0, $$1, auo.d, Optional.of(auj.a($$0)));
-   }
-
-   @VisibleForTesting
-   public static ats b() {
-      return new att().a(e).a("minecraft").b().a().a(f);
+   private static auo a(auq.b $$0, auq $$1, String $$2, @Nullable auo $$3) {
+      Object2ObjectOpenHashMap<String, auo> $$4 = new Object2ObjectOpenHashMap();
+      auo $$5 = new auo($$1, $$2, $$3, new aur.a($$4));
+      $$0.b.forEach(($$3x, $$4x) -> $$4.put($$3x, new auo($$1, $$3x, $$5, new aur.b($$4x))));
+      $$0.a.forEach(($$3x, $$4x) -> $$4.put($$3x, a($$4x, $$1, $$3x, $$5)));
+      $$4.trim();
+      return $$5;
    }
 
    @Override
-   protected xj a(String $$0) {
-      return xj.b($$0);
+   public FileSystemProvider provider() {
+      return this.e;
    }
 
-   @Nullable
    @Override
-   protected auk a(ato $$0) {
-      return auk.a(f, b($$0), atq.b, g);
+   public void close() {
    }
 
-   @Nullable
    @Override
-   protected auk a(String $$0, auk.c $$1, xj $$2) {
-      return auk.a(a($$0, $$2), $$1, atq.b, h);
+   public boolean isOpen() {
+      return true;
    }
 
-   public static aun a(Path $$0, ezo $$1) {
-      return new aun(new auq($$1), new aui($$0, atq.b, auo.e, $$1));
+   @Override
+   public boolean isReadOnly() {
+      return true;
    }
 
-   public static aun c() {
-      return new aun(new auq(new ezo($$0 -> true)));
+   @Override
+   public String getSeparator() {
+      return "/";
    }
 
-   public static aun a(eub.c $$0) {
-      return a($$0.a(etz.j), $$0.d().e());
+   @Override
+   public Iterable<Path> getRootDirectories() {
+      return List.of(this.f);
+   }
+
+   @Override
+   public Iterable<FileStore> getFileStores() {
+      return List.of(this.d);
+   }
+
+   @Override
+   public Set<String> supportedFileAttributeViews() {
+      return b;
+   }
+
+   @Override
+   public Path getPath(String $$0, String... $$1) {
+      Stream<String> $$2 = Stream.of($$0);
+      if ($$1.length > 0) {
+         $$2 = Stream.concat($$2, Stream.of($$1));
+      }
+
+      String $$3 = $$2.collect(Collectors.joining("/"));
+      if ($$3.equals("/")) {
+         return this.f;
+      } else if ($$3.startsWith("/")) {
+         auo $$4 = this.f;
+
+         for (String $$5 : c.split($$3.substring(1))) {
+            if ($$5.isEmpty()) {
+               throw new IllegalArgumentException("Empty paths not allowed");
+            }
+
+            $$4 = $$4.a($$5);
+         }
+
+         return $$4;
+      } else {
+         auo $$6 = null;
+
+         for (String $$7 : c.split($$3)) {
+            if ($$7.isEmpty()) {
+               throw new IllegalArgumentException("Empty paths not allowed");
+            }
+
+            $$6 = new auo(this, $$7, $$6, aur.b);
+         }
+
+         if ($$6 == null) {
+            throw new IllegalArgumentException("Empty paths not allowed");
+         } else {
+            return $$6;
+         }
+      }
+   }
+
+   @Override
+   public PathMatcher getPathMatcher(String $$0) {
+      throw new UnsupportedOperationException();
+   }
+
+   @Override
+   public UserPrincipalLookupService getUserPrincipalLookupService() {
+      throw new UnsupportedOperationException();
+   }
+
+   @Override
+   public WatchService newWatchService() {
+      throw new UnsupportedOperationException();
+   }
+
+   public FileStore a() {
+      return this.d;
+   }
+
+   public auo b() {
+      return this.f;
+   }
+
+   public static auq.a c() {
+      return new auq.a();
+   }
+
+   public static class a {
+      private final auq.b a = new auq.b();
+
+      public auq.a a(List<String> $$0, String $$1, Path $$2) {
+         auq.b $$3 = this.a;
+
+         for (String $$4 : $$0) {
+            $$3 = $$3.a.computeIfAbsent($$4, $$0x -> new auq.b());
+         }
+
+         $$3.b.put($$1, $$2);
+         return this;
+      }
+
+      public auq.a a(List<String> $$0, Path $$1) {
+         if ($$0.isEmpty()) {
+            throw new IllegalArgumentException("Path can't be empty");
+         } else {
+            int $$2 = $$0.size() - 1;
+            return this.a($$0.subList(0, $$2), $$0.get($$2), $$1);
+         }
+      }
+
+      public FileSystem a(String $$0) {
+         return new auq($$0, this.a);
+      }
+   }
+
+   static record b(Map<String, auq.b> a, Map<String, Path> b) {
+
+      public b() {
+         this(new HashMap<>(), new HashMap<>());
+      }
    }
 }

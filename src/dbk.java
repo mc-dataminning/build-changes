@@ -1,90 +1,92 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import javax.annotation.Nullable;
-
-public class dbk implements daq {
-   final String a;
-   final dao b;
-   final cwm c;
-   final List<daw> d;
-   @Nullable
-   private daz e;
-
-   public dbk(String $$0, dao $$1, cwm $$2, List<daw> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+public class dbk extends dbq {
+   public dbk(dbn $$0) {
+      super($$0);
    }
 
-   @Override
-   public dbf<?> ap_() {
-      return dbf.b;
-   }
+   public boolean a(dbo $$0, dha $$1) {
+      int $$2 = 0;
+      cxk $$3 = cxk.k;
 
-   @Override
-   public String c() {
-      return this.a;
-   }
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cxk $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.a(cxo.uP)) {
+               if (!$$3.f()) {
+                  return false;
+               }
 
-   @Override
-   public dao d() {
-      return this.b;
-   }
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cxo.uO)) {
+                  return false;
+               }
 
-   @Override
-   public cwm a(js.a $$0) {
-      return this.c;
-   }
-
-   @Override
-   public daz a() {
-      if (this.e == null) {
-         this.e = daz.b(this.d);
+               $$2++;
+            }
+         }
       }
 
-      return this.e;
+      return !$$3.f() && $$2 > 0;
    }
 
-   public boolean a(dap $$0, dfm $$1) {
-      if ($$0.e() != this.d.size()) {
-         return false;
+   public cxk a(dbo $$0, js.a $$1) {
+      int $$2 = 0;
+      cxk $$3 = cxk.k;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cxk $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.a(cxo.uP)) {
+               if (!$$3.f()) {
+                  return cxk.k;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cxo.uO)) {
+                  return cxk.k;
+               }
+
+               $$2++;
+            }
+         }
+      }
+
+      das $$6 = $$3.a(ku.T);
+      if (!$$3.f() && $$2 >= 1 && $$6 != null) {
+         das $$7 = $$6.b();
+         if ($$7 == null) {
+            return cxk.k;
+         } else {
+            cxk $$8 = $$3.c($$2);
+            $$8.b(ku.T, $$7);
+            return $$8;
+         }
       } else {
-         return $$0.a() == 1 && this.d.size() == 1 ? this.d.getFirst().a($$0.a(0)) : $$0.c().a(this, null);
+         return cxk.k;
       }
-   }
-
-   public cwm a(dap $$0, js.a $$1) {
-      return this.c.v();
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= this.d.size();
+   public jz<cxk> a(dbo $$0) {
+      jz<cxk> $$1 = jz.a($$0.a(), cxk.k);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cxk $$3 = $$0.a($$2);
+         cxk $$4 = $$3.h().k();
+         if (!$$4.f()) {
+            $$1.set($$2, $$4);
+         } else if ($$3.h() instanceof czg) {
+            $$1.set($$2, $$3.c(1));
+            break;
+         }
+      }
+
+      return $$1;
    }
 
-   public static class a implements dbf<dbk> {
-      private static final MapCodec<dbk> x = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.a),
-                  dao.e.fieldOf("category").orElse(dao.d).forGetter($$0x -> $$0x.b),
-                  cwm.d.fieldOf("result").forGetter($$0x -> $$0x.c),
-                  daw.d.listOf(1, 9).fieldOf("ingredients").forGetter($$0x -> $$0x.d)
-               )
-               .apply($$0, dbk::new)
-      );
-      public static final zh<wu, dbk> w = zh.a(zf.n, $$0 -> $$0.a, dao.g, $$0 -> $$0.b, cwm.i, $$0 -> $$0.c, daw.a.a(zf.a()), $$0 -> $$0.d, dbk::new);
-
-      @Override
-      public MapCodec<dbk> a() {
-         return x;
-      }
-
-      @Override
-      public zh<wu, dbk> b() {
-         return w;
-      }
+   @Override
+   public dci<dbk> a() {
+      return dci.d;
    }
 }

@@ -1,122 +1,89 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectFunction;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongAVLTreeSet;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.LongSortedSet;
-import java.util.Objects;
-import java.util.Spliterators;
-import java.util.PrimitiveIterator.OfLong;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
+import java.util.List;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
 
-public class ead<T extends dzy> {
-   public static final int a = 2;
-   public static final int b = 4;
-   private final Class<T> c;
-   private final Long2ObjectFunction<eal> d;
-   private final Long2ObjectMap<eac<T>> e = new Long2ObjectOpenHashMap();
-   private final LongSortedSet f = new LongAVLTreeSet();
-
-   public ead(Class<T> $$0, Long2ObjectFunction<eal> $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   public void a(ezt $$0, axy<eac<T>> $$1) {
-      int $$2 = kj.a($$0.a - 2.0);
-      int $$3 = kj.a($$0.b - 4.0);
-      int $$4 = kj.a($$0.c - 2.0);
-      int $$5 = kj.a($$0.d + 2.0);
-      int $$6 = kj.a($$0.e + 0.0);
-      int $$7 = kj.a($$0.f + 2.0);
-
-      for (int $$8 = $$2; $$8 <= $$5; $$8++) {
-         long $$9 = kj.b($$8, 0, 0);
-         long $$10 = kj.b($$8, -1, -1);
-         LongIterator $$11 = this.f.subSet($$9, $$10 + 1L).iterator();
-
-         while ($$11.hasNext()) {
-            long $$12 = $$11.nextLong();
-            int $$13 = kj.c($$12);
-            int $$14 = kj.d($$12);
-            if ($$13 >= $$3 && $$13 <= $$6 && $$14 >= $$4 && $$14 <= $$7) {
-               eac<T> $$15 = (eac<T>)this.e.get($$12);
-               if ($$15 != null && !$$15.a() && $$15.c().b() && $$1.accept($$15).a()) {
-                  return;
-               }
-            }
-         }
-      }
-   }
-
-   public LongStream a(long $$0) {
-      int $$1 = des.a($$0);
-      int $$2 = des.b($$0);
-      LongSortedSet $$3 = this.a($$1, $$2);
-      if ($$3.isEmpty()) {
-         return LongStream.empty();
-      } else {
-         OfLong $$4 = $$3.iterator();
-         return StreamSupport.longStream(Spliterators.spliteratorUnknownSize($$4, 1301), false);
-      }
-   }
-
-   private LongSortedSet a(int $$0, int $$1) {
-      long $$2 = kj.b($$0, 0, $$1);
-      long $$3 = kj.b($$0, -1, $$1);
-      return this.f.subSet($$2, $$3 + 1L);
-   }
-
-   public Stream<eac<T>> b(long $$0) {
-      return this.a($$0).<eac<T>>mapToObj(this.e::get).filter(Objects::nonNull);
-   }
-
-   private static long f(long $$0) {
-      return des.c(kj.b($$0), kj.d($$0));
-   }
-
-   public eac<T> c(long $$0) {
-      return (eac<T>)this.e.computeIfAbsent($$0, this::g);
-   }
-
+public class ead<T> implements dzy<T> {
+   private final jv<T> a;
    @Nullable
-   public eac<T> d(long $$0) {
-      return (eac<T>)this.e.get($$0);
+   private T b;
+   private final dzz<T> c;
+
+   public ead(jv<T> $$0, dzz<T> $$1, List<T> $$2) {
+      this.a = $$0;
+      this.c = $$1;
+      if ($$2.size() > 0) {
+         Validate.isTrue($$2.size() <= 1, "Can't initialize SingleValuePalette with %d values.", (long)$$2.size());
+         this.b = $$2.get(0);
+      }
    }
 
-   private eac<T> g(long $$0) {
-      long $$1 = f($$0);
-      eal $$2 = (eal)this.d.get($$1);
-      this.f.add($$0);
-      return new eac<>(this.c, $$2);
+   public static <A> dzy<A> a(int $$0, jv<A> $$1, dzz<A> $$2, List<A> $$3) {
+      return new ead<>($$1, $$2, $$3);
    }
 
-   public LongSet a() {
-      LongSet $$0 = new LongOpenHashSet();
-      this.e.keySet().forEach($$1 -> $$0.add(f($$1)));
-      return $$0;
+   @Override
+   public int a(T $$0) {
+      if (this.b != null && this.b != $$0) {
+         return this.c.onResize(1, $$0);
+      } else {
+         this.b = $$0;
+         return 0;
+      }
    }
 
-   public void b(ezt $$0, axy<T> $$1) {
-      this.a($$0, $$2 -> $$2.a($$0, $$1));
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return $$0.test(this.b);
+      }
    }
 
-   public <U extends T> void a(eaf<T, U> $$0, ezt $$1, axy<U> $$2) {
-      this.a($$1, $$3 -> $$3.a($$0, $$1, $$2));
+   @Override
+   public T a(int $$0) {
+      if (this.b != null && $$0 == 0) {
+         return this.b;
+      } else {
+         throw new IllegalStateException("Missing Palette entry for id " + $$0 + ".");
+      }
    }
 
-   public void e(long $$0) {
-      this.e.remove($$0);
-      this.f.remove($$0);
+   @Override
+   public void a(ws $$0) {
+      this.b = this.a.b($$0.l());
    }
 
-   @bat
+   @Override
+   public void b(ws $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         $$0.c(this.a.a(this.b));
+      }
+   }
+
+   @Override
+   public int a() {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return xm.a(this.a.a(this.b));
+      }
+   }
+
+   @Override
    public int b() {
-      return this.f.size();
+      return 1;
+   }
+
+   @Override
+   public dzy<T> a(dzz<T> $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return this;
+      }
    }
 }

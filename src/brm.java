@@ -1,45 +1,52 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Optional;
 
-public class brm extends brp {
-   public static final brm a = new brm(0);
-   public static final MapCodec<brm> b = Codec.INT.fieldOf("value").xmap(brm::a, brm::d);
-   private final int f;
-
-   public static brm a(int $$0) {
-      return $$0 == 0 ? a : new brm($$0);
+public class brm<E> extends brq<bro.b<E>> {
+   public static <E> Codec<brm<E>> a(Codec<E> $$0) {
+      return bro.b.a($$0).listOf().xmap(brm::new, brq::e);
    }
 
-   private brm(int $$0) {
-      this.f = $$0;
+   public static <E> Codec<brm<E>> b(Codec<E> $$0) {
+      return azn.a(bro.b.a($$0).listOf()).xmap(brm::new, brq::e);
    }
 
-   public int d() {
-      return this.f;
+   brm(List<? extends bro.b<E>> $$0) {
+      super($$0);
    }
 
-   @Override
-   public int a(azu $$0) {
-      return this.f;
+   public static <E> brm.a<E> a() {
+      return new brm.a<>();
    }
 
-   @Override
-   public int a() {
-      return this.f;
+   public static <E> brm<E> b() {
+      return new brm<>(List.of());
    }
 
-   @Override
-   public int b() {
-      return this.f;
+   public static <E> brm<E> a(E $$0) {
+      return new brm<>(List.of(bro.a($$0, 1)));
    }
 
-   @Override
-   public brq<?> c() {
-      return brq.a;
+   public Optional<E> a(bam $$0) {
+      return this.b($$0).map(bro.b::b);
    }
 
-   @Override
-   public String toString() {
-      return Integer.toString(this.f);
+   public static class a<E> {
+      private final Builder<bro.b<E>> a = ImmutableList.builder();
+
+      public brm.a<E> a(E $$0) {
+         return this.a($$0, 1);
+      }
+
+      public brm.a<E> a(E $$0, int $$1) {
+         this.a.add(bro.a($$0, $$1));
+         return this;
+      }
+
+      public brm<E> a() {
+         return new brm<>(this.a.build());
+      }
    }
 }

@@ -1,54 +1,61 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
-
-public class etm {
-   private final jh a;
-   private final int b;
-   private final int c;
-
-   public etm(jh $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public class etm extends eto {
+   @Override
+   public cxg a() {
+      return cxo.a;
    }
 
-   @Nullable
-   public static etm a(ul $$0) {
-      Optional<jh> $$1 = va.a($$0, "pos");
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         int $$2 = $$0.h("rotation");
-         int $$3 = $$0.h("entity_id");
-         return new etm($$1.get(), $$2, $$3);
-      }
+   @Override
+   public boolean a(etp $$0, dgf $$1, jh $$2, eto $$3, jm $$4) {
+      return true;
    }
 
-   public ul a() {
-      ul $$0 = new ul();
-      $$0.a("pos", va.a(this.a));
-      $$0.a("rotation", this.b);
-      $$0.a("entity_id", this.c);
-      return $$0;
+   @Override
+   public fbs a(dgf $$0, jh $$1, etp $$2) {
+      return fbs.c;
    }
 
-   public jh b() {
-      return this.a;
+   @Override
+   public int a(dhd $$0) {
+      return 0;
    }
 
-   public int c() {
-      return this.b;
+   @Override
+   protected boolean b() {
+      return true;
    }
 
-   public int d() {
-      return this.c;
+   @Override
+   protected float c() {
+      return 0.0F;
    }
 
-   public String e() {
-      return a(this.a);
+   @Override
+   public float a(etp $$0, dgf $$1, jh $$2) {
+      return 0.0F;
    }
 
-   public static String a(jh $$0) {
-      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
+   @Override
+   public float a(etp $$0) {
+      return 0.0F;
+   }
+
+   @Override
+   protected dxn b(etp $$0) {
+      return dkg.a.m();
+   }
+
+   @Override
+   public boolean c(etp $$0) {
+      return false;
+   }
+
+   @Override
+   public int d(etp $$0) {
+      return 0;
+   }
+
+   @Override
+   public fcm b(etp $$0, dgf $$1, jh $$2) {
+      return fcj.a();
    }
 }

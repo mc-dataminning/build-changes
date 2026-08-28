@@ -1,56 +1,13 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.Executor;
 
-public class bru extends brn {
-   public static final MapCodec<bru> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.FLOAT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("max_exclusive").forGetter($$0x -> $$0x.d))
-               .apply($$0, bru::new)
-      )
-      .validate(
-         $$0 -> $$0.d <= $$0.b
-               ? DataResult.error(() -> "Max must be larger than min, min_inclusive: " + $$0.b + ", max_exclusive: " + $$0.d)
-               : DataResult.success($$0)
-      );
-   private final float b;
-   private final float d;
-
-   private bru(float $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
-   }
-
-   public static bru b(float $$0, float $$1) {
-      if ($$1 <= $$0) {
-         throw new IllegalArgumentException("Max must exceed min");
-      } else {
-         return new bru($$0, $$1);
-      }
+public class bru extends brs<Runnable> {
+   public bru(Executor $$0, String $$1) {
+      super(new bry.b(new ConcurrentLinkedQueue<>()), $$0, $$1);
    }
 
    @Override
-   public float a(azu $$0) {
-      return azm.b($$0, this.b, this.d);
-   }
-
-   @Override
-   public float a() {
-      return this.b;
-   }
-
-   @Override
-   public float b() {
-      return this.d;
-   }
-
-   @Override
-   public bro<?> c() {
-      return bro.b;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.b + "-" + this.d + "]";
+   public Runnable f(Runnable $$0) {
+      return $$0;
    }
 }

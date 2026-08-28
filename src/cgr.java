@@ -1,10 +1,8 @@
-public abstract class cgr extends bvj {
-   protected cgr(bus<? extends cgr> $$0, dfm $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public boolean y() {
-      return false;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cgr {
 }

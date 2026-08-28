@@ -1,20 +1,37 @@
-import java.util.UUID;
+import javax.annotation.Nullable;
 
-public interface hcf {
-   void a(UUID var1, hcf.b var2);
-
-   void a(UUID var1, hcf.a var2);
-
+public record hcf(alz a, @Nullable String b, @Nullable alz c, @Nullable alz d, hcf.a e, boolean f) {
    public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e;
-   }
+      a("slim"),
+      b("default");
 
-   public static enum b {
-      a,
-      b;
+      private final String c;
+
+      private a(final String $$0) {
+         this.c = $$0;
+      }
+
+      public static hcf.a a(@Nullable String $$0) {
+         if ($$0 == null) {
+            return b;
+         } else {
+            byte var2 = -1;
+            switch ($$0.hashCode()) {
+               case 3533117:
+                  if ($$0.equals("slim")) {
+                     var2 = 0;
+                  }
+               default:
+                  return switch (var2) {
+                     case 0 -> a;
+                     default -> b;
+                  };
+            }
+         }
+      }
+
+      public String a() {
+         return this.c;
+      }
    }
 }

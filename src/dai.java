@@ -1,70 +1,26 @@
-import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class dai extends dar {
-   public dai(dao $$0) {
-      super($$0);
-   }
+public record dai(int f) implements czr, dan {
+   public static final int a = 120000;
+   public static final int b = 0;
+   public static final int c = 4;
+   public static final Codec<dai> d = azn.a(0, 4).xmap(dai::new, dai::a);
+   public static final zt<xg, dai> e = zt.a(zr.h, dai::a, dai::new);
 
-   public boolean a(dap $$0, dfm $$1) {
-      cwm $$2 = cwm.k;
-      List<cwm> $$3 = Lists.newArrayList();
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cwm $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.a(axl.bQ)) {
-               if (!$$2.f()) {
-                  return false;
-               }
-
-               $$2 = $$5;
-            } else {
-               if (!($$5.h() instanceof cvk)) {
-                  return false;
-               }
-
-               $$3.add($$5);
-            }
-         }
-      }
-
-      return !$$2.f() && !$$3.isEmpty();
-   }
-
-   public cwm a(dap $$0, js.a $$1) {
-      List<cvk> $$2 = Lists.newArrayList();
-      cwm $$3 = cwm.k;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cwm $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.a(axl.bQ)) {
-               if (!$$3.f()) {
-                  return cwm.k;
-               }
-
-               $$3 = $$5.v();
-            } else {
-               if (!($$5.h() instanceof cvk $$6)) {
-                  return cwm.k;
-               }
-
-               $$2.add($$6);
-            }
-         }
-      }
-
-      return !$$3.f() && !$$2.isEmpty() ? cza.a($$3, $$2) : cwm.k;
+   @Override
+   public void a(dha $$0, bwb $$1, cxk $$2, czq $$3) {
+      $$1.a(new buk(bum.E, 120000, this.f, false, false, true));
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public void a(cxg.b $$0, Consumer<xv> $$1, czc $$2) {
+      List<buk> $$3 = List.of(new buk(bum.E, 120000, this.f, false, false, true));
+      czj.a($$3, $$1, 1.0F, $$0.b());
    }
 
-   @Override
-   public dbf<?> ap_() {
-      return dbf.c;
+   public int a() {
+      return this.f;
    }
 }

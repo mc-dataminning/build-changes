@@ -1,18 +1,92 @@
-import java.util.concurrent.atomic.AtomicInteger;
+import java.io.DataInput;
+import java.io.IOException;
 
-public class vw {
-   private final AtomicInteger a = new AtomicInteger();
-   private final bne b;
+public interface vw<T extends vu> {
+   T c(DataInput var1, vg var2) throws IOException;
 
-   public vw(bne $$0) {
-      this.b = $$0;
+   vr.b a(DataInput var1, vr var2, vg var3) throws IOException;
+
+   default void b(DataInput $$0, vr $$1, vg $$2) throws IOException {
+      switch ($$1.b(this)) {
+         case a:
+            this.a($$0, $$1, $$2);
+         case c:
+         default:
+            break;
+         case b:
+            this.b($$0, $$2);
+      }
    }
 
-   public void a(int $$0) {
-      this.a.getAndAdd($$0);
+   void a(DataInput var1, int var2, vg var3) throws IOException;
+
+   void b(DataInput var1, vg var2) throws IOException;
+
+   default boolean d() {
+      return false;
    }
 
-   public void a() {
-      this.b.a((long)this.a.getAndSet(0));
+   String a();
+
+   String b();
+
+   static vw<uz> a(final int $$0) {
+      return new vw<uz>() {
+         private IOException c() {
+            return new IOException("Invalid tag id: " + $$0);
+         }
+
+         public uz a(DataInput $$0x, vg $$1) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public vr.b a(DataInput $$0x, vr $$1, vg $$2) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public void a(DataInput $$0x, int $$1, vg $$2) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public void b(DataInput $$0x, vg $$1) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public String a() {
+            return "INVALID[" + $$0 + "]";
+         }
+
+         @Override
+         public String b() {
+            return "UNKNOWN_" + $$0;
+         }
+      };
+   }
+
+   public interface a<T extends vu> extends vw<T> {
+      @Override
+      default void b(DataInput $$0, vg $$1) throws IOException {
+         $$0.skipBytes(this.c());
+      }
+
+      @Override
+      default void a(DataInput $$0, int $$1, vg $$2) throws IOException {
+         $$0.skipBytes(this.c() * $$1);
+      }
+
+      int c();
+   }
+
+   public interface b<T extends vu> extends vw<T> {
+      @Override
+      default void a(DataInput $$0, int $$1, vg $$2) throws IOException {
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            this.b($$0, $$2);
+         }
+      }
    }
 }

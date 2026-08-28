@@ -1,36 +1,30 @@
-import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Set;
 
-public record eyh(eyu b, eum c) implements exy {
-   public static final MapCodec<eyh> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eyv.a.fieldOf("value").forGetter(eyh::c), eum.a.fieldOf("range").forGetter(eyh::d)).apply($$0, eyh::new)
-   );
+public class eyh extends exu {
+   static final MapCodec<eyh> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(fap.a.fieldOf("value").forGetter($$0x -> $$0x.b)).apply($$0, eyh::new));
+   private final fao b;
 
-   @Override
-   public exz b() {
-      return eya.r;
+   private eyh(List<ezs> $$0, fao $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public Set<exg<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+   public Set<eza<?>> a() {
+      return this.b.a();
    }
 
-   public boolean a(eun $$0) {
-      return this.c.b($$0, this.b.a($$0));
+   @Override
+   public exw<eyh> b() {
+      return exx.R;
    }
 
-   public static exy.a a(eyu $$0, eum $$1) {
-      return () -> new eyh($$0, $$1);
-   }
-
-   public eyu c() {
-      return this.b;
-   }
-
-   public eum d() {
-      return this.c;
+   @Override
+   public cxk a(cxk $$0, ewh $$1) {
+      $$0.b(ku.p, new czu(this.b.a($$1)));
+      return $$0;
    }
 }

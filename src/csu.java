@@ -1,72 +1,62 @@
-public class csu extends crz {
-   private static final int m = 9;
-   private static final int n = 9;
-   private static final int o = 36;
-   private static final int p = 36;
-   private static final int q = 45;
-   private final bsd r;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public csu(int $$0, cot $$1) {
-      this($$0, $$1, new bsr(9));
-   }
+public record csu(int c, float d, boolean e) implements czr {
+   public static final Codec<csu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               azn.l.fieldOf("nutrition").forGetter(csu::a),
+               Codec.FLOAT.fieldOf("saturation").forGetter(csu::b),
+               Codec.BOOL.optionalFieldOf("can_always_eat", false).forGetter(csu::c)
+            )
+            .apply($$0, csu::new)
+   );
+   public static final zt<xg, csu> b = zt.a(zr.h, csu::a, zr.l, csu::b, zr.b, csu::c, csu::new);
 
-   public csu(int $$0, cot $$1, bsd $$2) {
-      super(cti.g, $$0);
-      a($$2, 9);
-      this.r = $$2;
-      $$2.c_($$1.k);
-      this.d($$2, 62, 17);
-      this.c($$1, 8, 84);
-   }
-
-   protected void d(bsd $$0, int $$1, int $$2) {
-      for (int $$3 = 0; $$3 < 3; $$3++) {
-         for (int $$4 = 0; $$4 < 3; $$4++) {
-            int $$5 = $$4 + $$3 * 3;
-            this.a(new ctw($$0, $$5, $$1 + $$4 * 18, $$2 + $$3 * 18));
-         }
+   @Override
+   public void a(dha $$0, bwb $$1, cxk $$2, czq $$3) {
+      bam $$4 = $$1.dY();
+      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), $$3.e().a(), axg.g, 1.0F, $$4.a(1.0F, 0.4F));
+      if ($$1 instanceof cps $$5) {
+         $$5.gr().a(this);
+         $$0.a(null, $$5.dA(), $$5.dC(), $$5.dG(), axf.uC, axg.h, 0.5F, bae.b($$4, 0.9F, 1.0F));
       }
    }
 
-   @Override
-   public boolean b(cou $$0) {
-      return this.r.a($$0);
+   public int a() {
+      return this.c;
    }
 
-   @Override
-   public cwm b(cou $$0, int $$1) {
-      cwm $$2 = cwm.k;
-      ctw $$3 = this.k.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cwm $$4 = $$3.g();
-         $$2 = $$4.v();
-         if ($$1 < 9) {
-            if (!this.a($$4, 9, 45, true)) {
-               return cwm.k;
-            }
-         } else if (!this.a($$4, 0, 9, false)) {
-            return cwm.k;
-         }
+   public float b() {
+      return this.d;
+   }
 
-         if ($$4.f()) {
-            $$3.e(cwm.k);
-         } else {
-            $$3.c();
-         }
+   public boolean c() {
+      return this.e;
+   }
 
-         if ($$4.L() == $$2.L()) {
-            return cwm.k;
-         }
+   public static class a {
+      private int a;
+      private float b;
+      private boolean c;
 
-         $$3.a($$0, $$4);
+      public csu.a a(int $$0) {
+         this.a = $$0;
+         return this;
       }
 
-      return $$2;
-   }
+      public csu.a a(float $$0) {
+         this.b = $$0;
+         return this;
+      }
 
-   @Override
-   public void a(cou $$0) {
-      super.a($$0);
-      this.r.c($$0);
+      public csu.a a() {
+         this.c = true;
+         return this;
+      }
+
+      public csu b() {
+         float $$0 = css.a(this.a, this.b);
+         return new csu(this.a, $$0, this.c);
+      }
    }
 }

@@ -1,43 +1,16 @@
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.MessageToMessageDecoder;
-import java.util.List;
-import javax.annotation.Nullable;
+import io.netty.handler.codec.MessageToByteEncoder;
+import javax.crypto.Cipher;
 
-public class wl extends MessageToMessageDecoder<zq<?>> {
-   private final zp a;
-   @Nullable
-   private zp.a b;
+public class wl extends MessageToByteEncoder<ByteBuf> {
+   private final wj a;
 
-   public wl(zp $$0) {
-      this.a = $$0;
+   public wl(Cipher $$0) {
+      this.a = new wj($$0);
    }
 
-   protected void a(ChannelHandlerContext $$0, zq<?> $$1, List<Object> $$2) throws Exception {
-      if (this.b != null) {
-         a($$1);
-         zq<?> $$3 = this.b.a($$1);
-         if ($$3 != null) {
-            this.b = null;
-            $$2.add($$3);
-         }
-      } else {
-         zp.a $$4 = this.a.a($$1);
-         if ($$4 != null) {
-            a($$1);
-            this.b = $$4;
-         } else {
-            $$2.add($$1);
-            if ($$1.d()) {
-               $$0.pipeline().remove($$0.name());
-            }
-         }
-      }
-   }
-
-   private static void a(zq<?> $$0) {
-      if ($$0.d()) {
-         throw new DecoderException("Terminal message received in bundle");
-      }
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) throws Exception {
+      this.a.a($$1, $$2);
    }
 }

@@ -1,67 +1,35 @@
-public record gcn(float b, float c, float d, float e, float f, float g, float h, float i, float j) {
-   public static final gcn a = a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+public class gcn extends gbf<gxo> {
+   private final geh a;
+   private final geh b;
 
-   public static gcn a(float $$0, float $$1, float $$2) {
-      return a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F);
+   public gcn(geh $$0) {
+      super($$0);
+      this.a = $$0.b("left_blue_fin");
+      this.b = $$0.b("right_blue_fin");
    }
 
-   public static gcn b(float $$0, float $$1, float $$2) {
-      return a(0.0F, 0.0F, 0.0F, $$0, $$1, $$2);
+   public static gen a() {
+      gep $$0 = new gep();
+      ger $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", gem.c().a(12, 22).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F), gej.a(0.0F, 22.0F, 0.0F));
+      $$1.a("right_blue_fin", gem.c().a(24, 0).a(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), gej.a(-2.5F, 18.0F, -1.5F));
+      $$1.a("left_blue_fin", gem.c().a(24, 3).a(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), gej.a(2.5F, 18.0F, -1.5F));
+      $$1.a("top_front_fin", gem.c().a(19, 17).a(-2.5F, -1.0F, 0.0F, 5.0F, 1.0F, 0.0F), gej.a(0.0F, 17.0F, -2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("top_back_fin", gem.c().a(11, 17).a(-2.5F, -1.0F, 0.0F, 5.0F, 1.0F, 0.0F), gej.a(0.0F, 17.0F, 2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_front_fin", gem.c().a(5, 17).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), gej.a(-2.5F, 22.0F, -2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("right_back_fin", gem.c().a(9, 17).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), gej.a(-2.5F, 22.0F, 2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("left_back_fin", gem.c().a(1, 17).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), gej.a(2.5F, 22.0F, 2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("left_front_fin", gem.c().a(1, 17).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), gej.a(2.5F, 22.0F, -2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("bottom_back_fin", gem.c().a(18, 20).a(0.0F, 0.0F, 0.0F, 5.0F, 1.0F, 0.0F), gej.a(-2.5F, 22.0F, 2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("bottom_front_fin", gem.c().a(17, 19).a(-2.5F, 0.0F, 0.0F, 5.0F, 1.0F, 1.0F), gej.a(0.0F, 22.0F, -2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      return gen.a($$0, 32, 32);
    }
 
-   public static gcn a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      return new gcn($$0, $$1, $$2, $$3, $$4, $$5, 1.0F, 1.0F, 1.0F);
-   }
-
-   public gcn c(float $$0, float $$1, float $$2) {
-      return new gcn(this.b + $$0, this.c + $$1, this.d + $$2, this.e, this.f, this.g, this.h, this.i, this.j);
-   }
-
-   public gcn a(float $$0) {
-      return new gcn(this.b, this.c, this.d, this.e, this.f, this.g, $$0, $$0, $$0);
-   }
-
-   public gcn b(float $$0) {
-      return $$0 == 1.0F ? this : this.d($$0, $$0, $$0);
-   }
-
-   public gcn d(float $$0, float $$1, float $$2) {
-      return new gcn(this.b * $$0, this.c * $$1, this.d * $$2, this.e, this.f, this.g, this.h * $$0, this.i * $$1, this.j * $$2);
-   }
-
-   public float a() {
-      return this.b;
-   }
-
-   public float b() {
-      return this.c;
-   }
-
-   public float c() {
-      return this.d;
-   }
-
-   public float d() {
-      return this.e;
-   }
-
-   public float e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
-   }
-
-   public float g() {
-      return this.h;
-   }
-
-   public float h() {
-      return this.i;
-   }
-
-   public float i() {
-      return this.j;
+   @Override
+   public void a(gxo $$0) {
+      super.a($$0);
+      this.b.g = -0.2F + 0.4F * bae.a($$0.p * 0.2F);
+      this.a.g = 0.2F - 0.4F * bae.a($$0.p * 0.2F);
    }
 }

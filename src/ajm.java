@@ -1,14 +1,51 @@
-public interface ajm extends acc {
-   @Override
-   default we b() {
-      return we.d;
+import org.jetbrains.annotations.VisibleForTesting;
+
+public class ajm {
+   private static final double a = 4096.0;
+   private fbs b = fbs.c;
+
+   @VisibleForTesting
+   static long a(double $$0) {
+      return Math.round($$0 * 4096.0);
    }
 
-   void a(ajo var1);
+   @VisibleForTesting
+   static double a(long $$0) {
+      return (double)$$0 / 4096.0;
+   }
 
-   void a(ajp var1);
+   public fbs a(long $$0, long $$1, long $$2) {
+      if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
+         return this.b;
+      } else {
+         double $$3 = $$0 == 0L ? this.b.d : a(a(this.b.d) + $$0);
+         double $$4 = $$1 == 0L ? this.b.e : a(a(this.b.e) + $$1);
+         double $$5 = $$2 == 0L ? this.b.f : a(a(this.b.f) + $$2);
+         return new fbs($$3, $$4, $$5);
+      }
+   }
 
-   void a(ajn var1);
+   public long a(fbs $$0) {
+      return a($$0.d) - a(this.b.d);
+   }
 
-   void a(ajq var1);
+   public long b(fbs $$0) {
+      return a($$0.e) - a(this.b.e);
+   }
+
+   public long c(fbs $$0) {
+      return a($$0.f) - a(this.b.f);
+   }
+
+   public fbs d(fbs $$0) {
+      return $$0.d(this.b);
+   }
+
+   public void e(fbs $$0) {
+      this.b = $$0;
+   }
+
+   public fbs a() {
+      return this.b;
+   }
 }

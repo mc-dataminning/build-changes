@@ -1,20 +1,25 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.stream.Stream;
 
-public class eps extends eqh {
-   public static final MapCodec<eps> a = MapCodec.unit(() -> eps.b);
-   public static final eps b = new eps();
+record eps(brm<List<epo>> c) implements epo {
+   static MapCodec<eps> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(brm.b(Codec.list(epo.b)).fieldOf("groups").forGetter(eps::c)).apply($$0, eps::new));
 
-   @Nullable
    @Override
-   public eqk.c a(dfp $$0, jh $$1, jh $$2, eqk.c $$3, eqk.c $$4, eqg $$5) {
-      jh $$6 = $$4.a();
-      boolean $$7 = $$0.a_($$6).a(dis.H);
-      return $$7 && !diq.a($$4.b().f($$0, $$6)) ? new eqk.c($$6, dis.H.m(), $$4.c()) : $$4;
+   public void a(bam $$0, BiConsumer<aly<epm>, aly<epm>> $$1) {
+      this.c.b($$0).ifPresent($$2 -> $$2.b().forEach($$2x -> $$2x.a($$0, $$1)));
    }
 
    @Override
-   protected eqj<?> a() {
-      return eqj.m;
+   public Stream<aly<epm>> a() {
+      return this.c.e().stream().flatMap($$0 -> $$0.b().stream()).flatMap(epo::a);
+   }
+
+   @Override
+   public MapCodec<eps> b() {
+      return a;
    }
 }

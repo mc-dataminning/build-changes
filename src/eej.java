@@ -1,57 +1,137 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.stream.Stream;
 
-public class eej extends eek {
-   public eej(Codec<ehh> $$0) {
-      super($$0);
+public class eej implements bam {
+   private static final float c = 5.9604645E-8F;
+   private static final double d = 1.110223E-16F;
+   public static final Codec<eej> b = eei.a.xmap($$0 -> new eej($$0), $$0 -> $$0.e);
+   private eei e;
+   private final edk f = new edk(this);
+
+   public eej(long $$0) {
+      this.e = new eei(edx.c($$0));
+   }
+
+   public eej(edx.a $$0) {
+      this.e = new eei($$0);
+   }
+
+   public eej(long $$0, long $$1) {
+      this.e = new eei($$0, $$1);
+   }
+
+   private eej(eei $$0) {
+      this.e = $$0;
    }
 
    @Override
-   protected boolean a(dfn $$0, azu $$1, jh $$2, dvv $$3) {
-      if (!this.b($$0, $$1, $$2, $$3)) {
-         return false;
+   public bam d() {
+      return new eej(this.e.a(), this.e.a());
+   }
+
+   @Override
+   public edv e() {
+      return new eej.a(this.e.a(), this.e.a());
+   }
+
+   @Override
+   public void b(long $$0) {
+      this.e = new eei(edx.c($$0));
+      this.f.a();
+   }
+
+   @Override
+   public int f() {
+      return (int)this.e.a();
+   }
+
+   @Override
+   public int a(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Bound must be positive");
       } else {
-         jm $$4 = jm.c.a.a($$1);
-         int $$5 = $$1.a(2) + 2;
-         List<jm> $$6 = ae.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
-
-         for (jm $$8 : $$6.subList(0, $$5)) {
-            jh.a $$9 = $$2.k();
-            int $$10 = $$1.a(2) + 1;
-            $$9.c($$8);
-            int $$12;
-            jm $$11;
-            if ($$8 == $$4) {
-               $$11 = $$4;
-               $$12 = $$1.a(3) + 2;
-            } else {
-               $$9.c(jm.b);
-               jm[] $$13 = new jm[]{$$8, jm.b};
-               $$11 = ae.a($$13, $$1);
-               $$12 = $$1.a(3) + 3;
-            }
-
-            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
-               $$9.c($$11);
-            }
-
-            $$9.c($$11.g());
-            $$9.c(jm.b);
-
-            for (int $$17 = 0; $$17 < $$12; $$17++) {
-               $$9.c($$4);
-               if (!this.b($$0, $$1, $$9, $$3)) {
-                  break;
-               }
-
-               if ($$1.i() < 0.25F) {
-                  $$9.c(jm.b);
-               }
+         long $$1 = Integer.toUnsignedLong(this.f());
+         long $$2 = $$1 * (long)$$0;
+         long $$3 = $$2 & 4294967295L;
+         if ($$3 < (long)$$0) {
+            for (int $$4 = Integer.remainderUnsigned(~$$0 + 1, $$0); $$3 < (long)$$4; $$3 = $$2 & 4294967295L) {
+               $$1 = Integer.toUnsignedLong(this.f());
+               $$2 = $$1 * (long)$$0;
             }
          }
 
-         return true;
+         long $$5 = $$2 >> 32;
+         return (int)$$5;
+      }
+   }
+
+   @Override
+   public long g() {
+      return this.e.a();
+   }
+
+   @Override
+   public boolean h() {
+      return (this.e.a() & 1L) != 0L;
+   }
+
+   @Override
+   public float i() {
+      return (float)this.c(24) * 5.9604645E-8F;
+   }
+
+   @Override
+   public double j() {
+      return (double)this.c(53) * 1.110223E-16F;
+   }
+
+   @Override
+   public double k() {
+      return this.f.b();
+   }
+
+   @Override
+   public void b(int $$0) {
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.e.a();
+      }
+   }
+
+   private long c(int $$0) {
+      return this.e.a() >>> 64 - $$0;
+   }
+
+   public static class a implements edv {
+      private final long a;
+      private final long b;
+
+      public a(long $$0, long $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public bam a(int $$0, int $$1, int $$2) {
+         long $$3 = bae.b($$0, $$1, $$2);
+         long $$4 = $$3 ^ this.a;
+         return new eej($$4, this.b);
+      }
+
+      @Override
+      public bam a(String $$0) {
+         edx.a $$1 = edx.a($$0);
+         return new eej($$1.a(this.a, this.b));
+      }
+
+      @Override
+      public bam a(long $$0) {
+         return new eej($$0 ^ this.a, $$0 ^ this.b);
+      }
+
+      @VisibleForTesting
+      @Override
+      public void a(StringBuilder $$0) {
+         $$0.append("seedLo: ").append(this.a).append(", seedHi: ").append(this.b);
       }
    }
 }

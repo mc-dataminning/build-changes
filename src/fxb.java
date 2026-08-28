@@ -1,103 +1,181 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
-import java.util.function.ToIntFunction;
+import com.google.common.collect.ImmutableList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.apache.commons.lang3.ArrayUtils;
 
-public class fxb extends frw {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ToIntFunction<ali<dfm>> b = ae.a(new Reference2IntOpenHashMap(), $$0 -> {
-      $$0.put(dfm.i, -13408734);
-      $$0.put(dfm.j, -10075085);
-      $$0.put(dfm.k, -8943531);
-      $$0.defaultReturnValue(-2236963);
-   });
-   private final BooleanConsumer c;
-   private final bry d;
+public class fxb extends foe<fxb.b> {
+   private static final int a = 20;
+   final fxc m;
+   private int n;
 
-   @Nullable
-   public static fxb a(fke $$0, BooleanConsumer $$1, DataFixer $$2, eub.c $$3, boolean $$4) {
-      try {
-         fxi $$5 = $$0.x();
-         aun $$6 = auq.a($$3);
+   public fxb(fxc $$0, flz $$1) {
+      super($$1, $$0.n, $$0.s.d(), $$0.s.c(), 20);
+      this.m = $$0;
+      flx[] $$2 = (flx[])ArrayUtils.clone($$1.n.V);
+      Arrays.sort((Object[])$$2);
+      String $$3 = null;
 
-         fxb var10;
-         try (ami $$7 = $$5.a($$3.h(), false, $$6)) {
-            euh $$8 = $$7.d();
-            ke.b $$9 = $$7.c().a();
-            $$3.a($$9, $$8);
-            var10 = new fxb($$1, $$2, $$3, $$8.J(), $$4, $$9);
+      for (flx $$4 : $$2) {
+         String $$5 = $$4.f();
+         if (!$$5.equals($$3)) {
+            $$3 = $$5;
+            this.b(new fxb.a(xv.c($$5)));
          }
 
-         return var10;
-      } catch (Exception var13) {
-         a.warn("Failed to load datapacks, can't optimize world", var13);
+         xv $$6 = xv.c($$4.h());
+         int $$7 = $$1.h.a($$6);
+         if ($$7 > this.n) {
+            this.n = $$7;
+         }
+
+         this.b(new fxb.c($$4, $$6));
+      }
+   }
+
+   public void b() {
+      flx.d();
+      this.c();
+   }
+
+   public void c() {
+      this.aI_().forEach(fxb.b::c);
+   }
+
+   @Override
+   public int a() {
+      return 340;
+   }
+
+   public class a extends fxb.b {
+      final xv b;
+      private final int c;
+
+      public a(final xv $$1) {
+         this.b = $$1;
+         this.c = fxb.this.c.h.a(this.b);
+      }
+
+      @Override
+      public void a(fnl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.a(fxb.this.c.h, this.b, fxb.this.g / 2 - this.c / 2, $$2 + $$5 - 9 - 1, -1, false);
+      }
+
+      @Nullable
+      @Override
+      public fni a(fsc $$0) {
          return null;
       }
-   }
 
-   private fxb(BooleanConsumer $$0, DataFixer $$1, eub.c $$2, dfq $$3, boolean $$4, ke $$5) {
-      super(xj.a("optimizeWorld.title", $$3.a()));
-      this.c = $$0;
-      this.d = new bry($$2, $$1, $$5, $$4, false);
-   }
+      @Override
+      public List<? extends fpw> aI_() {
+         return Collections.emptyList();
+      }
 
-   @Override
-   protected void aR_() {
-      super.aR_();
-      this.c(fmd.a(xi.e, $$0 -> {
-         this.d.a();
-         this.c.accept(false);
-      }).a(this.n / 2 - 100, this.o / 4 + 150, 200, 20).a());
-   }
+      @Override
+      public List<? extends fru> b() {
+         return ImmutableList.of(new fru() {
+            @Override
+            public fru.a u() {
+               return fru.a.b;
+            }
 
-   @Override
-   public void e() {
-      if (this.d.b()) {
-         this.c.accept(true);
+            @Override
+            public void b(frw $$0) {
+               $$0.a(frv.a, a.this.b);
+            }
+         });
+      }
+
+      @Override
+      protected void c() {
       }
    }
 
-   @Override
-   public void aO_() {
-      this.c.accept(false);
+   public abstract static class b extends foe.a<fxb.b> {
+      abstract void c();
    }
 
-   @Override
-   public void j() {
-      this.d.a();
-      this.d.close();
-   }
+   public class c extends fxb.b {
+      private static final xv b = xv.c("controls.reset");
+      private static final int c = 10;
+      private final flx d;
+      private final xv e;
+      private final fny f;
+      private final fny g;
+      private boolean h = false;
 
-   @Override
-   public void a(flq $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
-      int $$4 = this.n / 2 - 150;
-      int $$5 = this.n / 2 + 150;
-      int $$6 = this.o / 4 + 100;
-      int $$7 = $$6 + 10;
-      $$0.a(this.p, this.d.h(), this.n / 2, $$6 - 9 - 2, 10526880);
-      if (this.d.e() > 0) {
-         $$0.a($$4 - 1, $$6 - 1, $$5 + 1, $$7 + 1, -16777216);
-         $$0.b(this.p, xj.a("optimizeWorld.info.converted", this.d.f()), $$4, 40, 10526880);
-         $$0.b(this.p, xj.a("optimizeWorld.info.skipped", this.d.g()), $$4, 40 + 9 + 3, 10526880);
-         $$0.b(this.p, xj.a("optimizeWorld.info.total", this.d.e()), $$4, 40 + (9 + 3) * 2, 10526880);
-         int $$8 = 0;
+      c(final flx $$1, final xv $$2) {
+         this.d = $$1;
+         this.e = $$2;
+         this.f = fny.a($$2, $$1x -> {
+            fxb.this.m.a = $$1;
+            fxb.this.b();
+         }).a(0, 0, 75, 20).a($$2x -> $$1.j() ? xv.a("narrator.controls.unbound", $$2) : xv.a("narrator.controls.bound", $$2, $$2x.get())).a();
+         this.g = fny.a(b, $$1x -> {
+            $$1.b($$1.i());
+            fxb.this.b();
+         }).a(0, 0, 50, 20).a($$1x -> xv.a("narrator.controls.reset", $$2)).a();
+         this.c();
+      }
 
-         for (ali<dfm> $$9 : this.d.c()) {
-            int $$10 = azm.d(this.d.a($$9) * (float)($$5 - $$4));
-            $$0.a($$4 + $$8, $$6, $$4 + $$8 + $$10, $$7, b.applyAsInt($$9));
-            $$8 += $$10;
+      @Override
+      public void a(fnl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10 = fxb.this.q() - this.g.y() - 10;
+         int $$11 = $$2 - 2;
+         this.g.c($$10, $$11);
+         this.g.a($$0, $$6, $$7, $$9);
+         int $$12 = $$10 - 5 - this.f.y();
+         this.f.c($$12, $$11);
+         this.f.a($$0, $$6, $$7, $$9);
+         $$0.b(fxb.this.c.h, this.e, $$3, $$2 + $$5 / 2 - 9 / 2, -1);
+         if (this.h) {
+            int $$13 = 3;
+            int $$14 = this.f.D() - 6;
+            $$0.a($$14, $$2 - 1, $$14 + 3, $$2 + $$5, -65536);
+         }
+      }
+
+      @Override
+      public List<? extends fpw> aI_() {
+         return ImmutableList.of(this.f, this.g);
+      }
+
+      @Override
+      public List<? extends fru> b() {
+         return ImmutableList.of(this.f, this.g);
+      }
+
+      @Override
+      protected void c() {
+         this.f.b(this.d.k());
+         this.g.j = !this.d.l();
+         this.h = false;
+         yj $$0 = xv.i();
+         if (!this.d.j()) {
+            for (flx $$1 : fxb.this.c.n.V) {
+               if ($$1 != this.d && this.d.b($$1)) {
+                  if (this.h) {
+                     $$0.f(", ");
+                  }
+
+                  this.h = true;
+                  $$0.b(xv.c($$1.h()));
+               }
+            }
          }
 
-         int $$11 = this.d.f() + this.d.g();
-         xj $$12 = xj.a("optimizeWorld.progress.counter", $$11, this.d.e());
-         xj $$13 = xj.a("optimizeWorld.progress.percentage", azm.d(this.d.d() * 100.0F));
-         $$0.a(this.p, $$12, this.n / 2, $$6 + 2 * 9 + 2, 10526880);
-         $$0.a(this.p, $$13, this.n / 2, $$6 + ($$7 - $$6) / 2 - 9 / 2, 10526880);
+         if (this.h) {
+            this.f.b(xv.b("[ ").b(this.f.z().f().a(n.p)).f(" ]").a(n.m));
+            this.f.a(fpk.a(xv.a("controls.keybinds.duplicateKeybinds", $$0)));
+         } else {
+            this.f.a(null);
+         }
+
+         if (fxb.this.m.a == this.d) {
+            this.f.b(xv.b("> ").b(this.f.z().f().a(n.p, n.t)).f(" <").a(n.o));
+         }
       }
    }
 }

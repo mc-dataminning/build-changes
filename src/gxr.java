@@ -1,3 +1,3 @@
-public class gxr extends guw {
-   public boolean d;
+public class gxr extends gyf {
+   public boolean a;
 }

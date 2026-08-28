@@ -1,144 +1,65 @@
-import com.google.common.collect.Multimap;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public class bwm {
-   private static final Logger a = LogUtils.getLogger();
-   private final Map<jq<bwk>, bwl> b = new Object2ObjectOpenHashMap();
-   private final Set<bwl> c = new ObjectOpenHashSet();
-   private final Set<bwl> d = new ObjectOpenHashSet();
-   private final bwo e;
+   private final dpz a;
+   private jh b;
+   private int c;
+   private boolean d;
 
-   public bwm(bwo $$0) {
-      this.e = $$0;
+   public bwm(dpz $$0, jh $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = true;
    }
 
-   private void a(bwl $$0) {
-      this.d.add($$0);
-      if ($$0.a().a().b()) {
-         this.c.add($$0);
+   public boolean a(ash $$0, bvf $$1, boolean $$2) {
+      if (!this.d) {
+         this.f();
+         return false;
+      } else {
+         this.d = false;
+         return $$2 && this.c++ >= this.a.a($$0, $$1);
       }
-   }
-
-   public Set<bwl> a() {
-      return this.c;
-   }
-
-   public Set<bwl> b() {
-      return this.d;
-   }
-
-   public Collection<bwl> c() {
-      return this.b.values().stream().filter($$0 -> $$0.a().a().b()).collect(Collectors.toList());
    }
 
    @Nullable
-   public bwl a(jq<bwk> $$0) {
-      return this.b.computeIfAbsent($$0, $$0x -> this.e.a(this::a, $$0x));
+   public eup a(ash $$0, bvf $$1) {
+      return this.a.a($$0, $$1, this.b);
    }
 
-   public boolean b(jq<bwk> $$0) {
-      return this.b.get($$0) != null || this.e.c($$0);
+   public dpz.a a() {
+      return this.a.b();
    }
 
-   public boolean a(jq<bwk> $$0, alj $$1) {
-      bwl $$2 = this.b.get($$0);
-      return $$2 != null ? $$2.a($$1) != null : this.e.b($$0, $$1);
+   private void f() {
+      this.c = Math.max(this.c - 4, 0);
    }
 
-   public double c(jq<bwk> $$0) {
-      bwl $$1 = this.b.get($$0);
-      return $$1 != null ? $$1.g() : this.e.a($$0);
+   public boolean b() {
+      return this.c <= 0;
    }
 
-   public double d(jq<bwk> $$0) {
-      bwl $$1 = this.b.get($$0);
-      return $$1 != null ? $$1.b() : this.e.b($$0);
+   public jh c() {
+      return this.b;
    }
 
-   public double b(jq<bwk> $$0, alj $$1) {
-      bwl $$2 = this.b.get($$0);
-      return $$2 != null ? $$2.a($$1).c() : this.e.a($$0, $$1);
+   public void a(jh $$0) {
+      this.b = $$0;
    }
 
-   public void a(Multimap<jq<bwk>, bwn> $$0) {
-      $$0.forEach(($$0x, $$1) -> {
-         bwl $$2 = this.a($$0x);
-         if ($$2 != null) {
-            $$2.c($$1.b());
-            $$2.b($$1);
-         }
-      });
+   public int d() {
+      return this.c;
    }
 
-   public void b(Multimap<jq<bwk>, bwn> $$0) {
-      $$0.asMap().forEach(($$0x, $$1) -> {
-         bwl $$2 = this.b.get($$0x);
-         if ($$2 != null) {
-            $$1.forEach($$1x -> $$2.c($$1x.b()));
-         }
-      });
+   public boolean e() {
+      return this.d;
    }
 
-   public void a(bwm $$0) {
-      $$0.b.values().forEach($$0x -> {
-         bwl $$1 = this.a($$0x.a());
-         if ($$1 != null) {
-            $$1.a($$0x);
-         }
-      });
+   public void a(boolean $$0) {
+      this.d = $$0;
    }
 
-   public void b(bwm $$0) {
-      $$0.b.values().forEach($$0x -> {
-         bwl $$1 = this.a($$0x.a());
-         if ($$1 != null) {
-            $$1.a($$0x.b());
-         }
-      });
-   }
-
-   public void c(bwm $$0) {
-      $$0.b.values().forEach($$0x -> {
-         bwl $$1 = this.a($$0x.a());
-         if ($$1 != null) {
-            $$1.a($$0x.d());
-         }
-      });
-   }
-
-   public ur d() {
-      ur $$0 = new ur();
-
-      for (bwl $$1 : this.b.values()) {
-         $$0.add($$1.h());
-      }
-
-      return $$0;
-   }
-
-   public void a(ur $$0) {
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         ul $$2 = $$0.a($$1);
-         String $$3 = $$2.l("id");
-         alj $$4 = alj.c($$3);
-         if ($$4 != null) {
-            ae.a(lz.s.c($$4), $$1x -> {
-               bwl $$2x = this.a($$1x);
-               if ($$2x != null) {
-                  $$2x.a($$2);
-               }
-            }, () -> a.warn("Ignoring unknown attribute '{}'", $$4));
-         } else {
-            a.warn("Ignoring malformed attribute '{}'", $$3);
-         }
-      }
+   public boolean a(dpz $$0) {
+      return this.a == $$0;
    }
 }

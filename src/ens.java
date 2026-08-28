@@ -1,112 +1,113 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableObject;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 
 public class ens {
-   private static final int c = Integer.MIN_VALUE;
-   private static final MutableObject<Codec<jq<ens>>> d = new MutableObject();
-   public static final Codec<ens> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.lazyInitialized(d::getValue).fieldOf("fallback").forGetter(ens::a),
-               Codec.mapPair(enq.f.fieldOf("element"), Codec.intRange(1, 150).fieldOf("weight")).codec().listOf().fieldOf("elements").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, ens::new)
-   );
-   public static final Codec<jq<ens>> b = ae.a(alf.a(ma.aV, a), d::setValue);
-   private final List<Pair<enq, Integer>> e;
-   private final ObjectArrayList<enq> f;
-   private final jq<ens> g;
-   private int h = Integer.MIN_VALUE;
+   public static final aly<enr> a = a("normal");
+   public static final aly<enr> b = a("flat");
+   public static final aly<enr> c = a("large_biomes");
+   public static final aly<enr> d = a("amplified");
+   public static final aly<enr> e = a("single_biome_surface");
+   public static final aly<enr> f = a("debug_all_block_states");
 
-   public ens(jq<ens> $$0, List<Pair<enq, Integer>> $$1) {
-      this.e = $$1;
-      this.f = new ObjectArrayList();
-
-      for (Pair<enq, Integer> $$2 : $$1) {
-         enq $$3 = (enq)$$2.getFirst();
-
-         for (int $$4 = 0; $$4 < $$2.getSecond(); $$4++) {
-            this.f.add($$3);
-         }
-      }
-
-      this.g = $$0;
+   public static void a(rk<enr> $$0) {
+      new ens.a($$0).a();
    }
 
-   public ens(jq<ens> $$0, List<Pair<Function<ens.a, ? extends enq>, Integer>> $$1, ens.a $$2) {
-      this.e = Lists.newArrayList();
-      this.f = new ObjectArrayList();
-
-      for (Pair<Function<ens.a, ? extends enq>, Integer> $$3 : $$1) {
-         enq $$4 = (enq)((Function)$$3.getFirst()).apply($$2);
-         this.e.add(Pair.of($$4, (Integer)$$3.getSecond()));
-
-         for (int $$5 = 0; $$5 < $$3.getSecond(); $$5++) {
-            this.f.add($$4);
-         }
-      }
-
-      this.g = $$0;
+   private static aly<enr> a(String $$0) {
+      return aly.a(mb.ba, alz.b($$0));
    }
 
-   public int a(eql $$0) {
-      if (this.h == Integer.MIN_VALUE) {
-         this.h = this.f.stream().filter($$0x -> $$0x != enj.b).mapToInt($$1 -> $$1.a($$0, jh.c, dpd.a).e()).max().orElse(0);
-      }
+   public static Optional<aly<enr>> a(eed $$0) {
+      return $$0.a(ebj.b).flatMap($$0x -> {
+         Object var10000;
+         Objects.requireNonNull(var10000);
+         dzj $$1 = (dzj)var10000;
 
-      return this.h;
+         $$0x.b();
+         return switch ($$1) {
+            case edd $$3 -> Optional.of(b);
+            case ecz $$4 -> Optional.of(f);
+            case edl $$5 -> Optional.of(a);
+            default -> Optional.empty();
+         };
+      });
    }
 
-   public jq<ens> a() {
-      return this.g;
+   public static eed a(js.a $$0) {
+      return $$0.d(mb.ba).b(a).a().a();
    }
 
-   public enq a(azu $$0) {
-      return (enq)(this.f.isEmpty() ? enj.b : (enq)this.f.get($$0.a(this.f.size())));
+   public static ebj b(js.a $$0) {
+      return $$0.d(mb.ba).b(a).a().b().orElseThrow();
    }
 
-   public List<enq> b(azu $$0) {
-      return ae.a(this.f, $$0);
+   public static eed c(js.a $$0) {
+      return $$0.d(mb.ba).b(b).a().a();
    }
 
-   public int b() {
-      return this.f.size();
-   }
+   static class a {
+      private final rk<enr> a;
+      private final jr<edn> b;
+      private final jr<dic> c;
+      private final jr<eng> d;
+      private final jr<eoi> e;
+      private final jr<diq> f;
+      private final jq<ebi> g;
+      private final ebj h;
+      private final ebj i;
 
-   public static enum a implements bai {
-      a("terrain_matching", ImmutableList.of(new epq(ebq.a.a, -1))),
-      b("rigid", ImmutableList.of());
-
-      public static final bai.a<ens.a> c = bai.a(ens.a::values);
-      private final String d;
-      private final ImmutableList<eqh> e;
-
-      private a(final String $$0, final ImmutableList<eqh> $$1) {
-         this.d = $$0;
-         this.e = $$1;
+      a(rk<enr> $$0) {
+         this.a = $$0;
+         jr<ebi> $$1 = $$0.a(mb.aM);
+         this.b = $$0.a(mb.aQ);
+         this.c = $$0.a(mb.aH);
+         this.d = $$0.a(mb.aS);
+         this.e = $$0.a(mb.aV);
+         this.f = $$0.a(mb.bb);
+         this.g = $$1.b(ebg.a);
+         jq<ebi> $$2 = $$1.b(ebg.b);
+         jq<edn> $$3 = this.b.b(edn.f);
+         jq.c<diq> $$4 = this.f.b(dir.a);
+         this.h = new ebj($$2, new edl(dip.a($$4), $$3));
+         jq<ebi> $$5 = $$1.b(ebg.c);
+         jq<edn> $$6 = this.b.b(edn.g);
+         this.i = new ebj($$5, new edl(dit.a(this.c), $$6));
       }
 
-      public String a() {
-         return this.d;
+      private ebj a(dzj $$0) {
+         return new ebj(this.g, $$0);
       }
 
-      public static ens.a a(String $$0) {
-         return c.a($$0);
+      private ebj a(dig $$0, jq<edn> $$1) {
+         return this.a(new edl($$0, $$1));
       }
 
-      public ImmutableList<eqh> b() {
-         return this.e;
+      private enr a(ebj $$0) {
+         return new enr(Map.of(ebj.b, $$0, ebj.c, this.h, ebj.d, this.i));
       }
 
-      @Override
-      public String c() {
-         return this.d;
+      private void a(aly<enr> $$0, ebj $$1) {
+         this.a.a($$0, this.a($$1));
+      }
+
+      private void a(dig $$0) {
+         jq<edn> $$1 = this.b.b(edn.c);
+         this.a(ens.a, this.a($$0, $$1));
+         jq<edn> $$2 = this.b.b(edn.d);
+         this.a(ens.c, this.a($$0, $$2));
+         jq<edn> $$3 = this.b.b(edn.e);
+         this.a(ens.d, this.a($$0, $$3));
+      }
+
+      public void a() {
+         jq.c<diq> $$0 = this.f.b(dir.b);
+         this.a(dip.a($$0));
+         jq<edn> $$1 = this.b.b(edn.c);
+         jq.c<dic> $$2 = this.c.b(dij.b);
+         this.a(ens.e, this.a(new din($$2), $$1));
+         this.a(ens.b, this.a(new edd(emf.a(this.c, this.e, this.d))));
+         this.a(ens.f, this.a(new ecz($$2)));
       }
    }
 }

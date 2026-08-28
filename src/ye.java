@@ -1,36 +1,72 @@
-import com.google.common.primitives.Ints;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.security.SignatureException;
-import java.util.UUID;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record ye(int b, UUID c, UUID d) {
-   public static final Codec<ye> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayv.l.fieldOf("index").forGetter(ye::b), kk.a.fieldOf("sender").forGetter(ye::c), kk.a.fieldOf("session_id").forGetter(ye::d))
-            .apply($$0, ye::new)
-   );
-
-   public static ye a(UUID $$0) {
-      return a($$0, ae.e);
-   }
-
-   public static ye a(UUID $$0, UUID $$1) {
-      return new ye(0, $$0, $$1);
-   }
-
-   public void a(azy.a $$0) throws SignatureException {
-      $$0.update(kk.b(this.c));
-      $$0.update(kk.b(this.d));
-      $$0.update(Ints.toByteArray(this.b));
-   }
-
-   public boolean a(ye $$0) {
-      return this.b > $$0.b() && this.c.equals($$0.c()) && this.d.equals($$0.d());
-   }
-
+public class ye {
+   private final int a;
+   private final ObjectList<yf> b = new ObjectArrayList();
    @Nullable
-   public ye a() {
-      return this.b == Integer.MAX_VALUE ? null : new ye(this.b + 1, this.c, this.d);
+   private yh c;
+
+   public ye(int $$0) {
+      this.a = $$0;
+
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.b.add(null);
+      }
+   }
+
+   public void a(yh $$0) {
+      if (!$$0.equals(this.c)) {
+         this.b.add(new yf($$0, true));
+         this.c = $$0;
+      }
+   }
+
+   public int a() {
+      return this.b.size();
+   }
+
+   public boolean a(int $$0) {
+      int $$1 = this.b.size() - this.a;
+      if ($$0 >= 0 && $$0 <= $$1) {
+         this.b.removeElements(0, $$0);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public Optional<yc> a(yc.b $$0) {
+      if (!this.a($$0.a())) {
+         return Optional.empty();
+      } else {
+         ObjectList<yh> $$1 = new ObjectArrayList($$0.b().cardinality());
+         if ($$0.b().length() > this.a) {
+            return Optional.empty();
+         } else {
+            for (int $$2 = 0; $$2 < this.a; $$2++) {
+               boolean $$3 = $$0.b().get($$2);
+               yf $$4 = (yf)this.b.get($$2);
+               if ($$3) {
+                  if ($$4 == null) {
+                     return Optional.empty();
+                  }
+
+                  this.b.set($$2, $$4.a());
+                  $$1.add($$4.b());
+               } else {
+                  if ($$4 != null && !$$4.c()) {
+                     return Optional.empty();
+                  }
+
+                  this.b.set($$2, null);
+               }
+            }
+
+            return Optional.of(new yc($$1));
+         }
+      }
    }
 }

@@ -1,48 +1,62 @@
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public enum fov implements bai {
-   a("uniform"),
-   b("jp");
+public abstract class fov<E extends fov.a<E>> extends fnt<E> {
+   private static final xv a = xv.c("narration.selection.usage");
 
-   public static final Codec<fov> c = bai.a(fov::values);
-   private final String d;
+   public fov(flz $$0, int $$1, int $$2, int $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+   }
 
-   private fov(final String $$0) {
-      this.d = $$0;
+   @Nullable
+   @Override
+   public fni a(fsc $$0) {
+      if (this.k() == 0) {
+         return null;
+      } else if (this.aN_() && $$0 instanceof fsc.a $$1) {
+         E $$2 = this.a($$1.b());
+         return $$2 != null ? fni.a(this, fni.a($$2)) : null;
+      } else if (!this.aN_()) {
+         E $$3 = this.g();
+         if ($$3 == null) {
+            $$3 = this.a($$0.a());
+         }
+
+         return $$3 == null ? null : fni.a(this, fni.a($$3));
+      } else {
+         return null;
+      }
    }
 
    @Override
-   public String c() {
-      return this.d;
-   }
-
-   public static class a {
-      private final Map<fov, Boolean> c;
-      public static final Codec<fov.a> a = Codec.unboundedMap(fov.c, Codec.BOOL).xmap(fov.a::new, $$0 -> $$0.c);
-      public static final fov.a b = new fov.a(Map.of());
-
-      public a(Map<fov, Boolean> $$0) {
-         this.c = $$0;
+   public void a(frw $$0) {
+      E $$1 = this.v();
+      if ($$1 != null) {
+         this.a($$0.a(), $$1);
+         $$1.b($$0);
+      } else {
+         E $$2 = this.g();
+         if ($$2 != null) {
+            this.a($$0.a(), $$2);
+            $$2.b($$0);
+         }
       }
 
-      public boolean a(Set<fov> $$0) {
-         for (Entry<fov, Boolean> $$1 : this.c.entrySet()) {
-            if ($$0.contains($$1.getKey()) != $$1.getValue()) {
-               return false;
-            }
-         }
+      if (this.aN_()) {
+         $$0.a(frv.d, a);
+      }
+   }
 
+   public abstract static class a<E extends fov.a<E>> extends fnt.a<E> implements frx {
+      public abstract xv a();
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
          return true;
       }
 
-      public fov.a a(fov.a $$0) {
-         Map<fov, Boolean> $$1 = new HashMap<>($$0.c);
-         $$1.putAll(this.c);
-         return new fov.a(Map.copyOf($$1));
+      @Override
+      public void b(frw $$0) {
+         $$0.a(frv.a, this.a());
       }
    }
 }

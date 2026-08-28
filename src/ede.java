@@ -1,24 +1,33 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Codec;
 
-class ede extends edi {
-   private final ju<eru> e;
-   public static final MapCodec<ede> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(kf.a(ma.D).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, ede::new)
-   );
+public class ede {
+   public static enum a implements bba {
+      a("raw_generation"),
+      b("lakes"),
+      c("local_modifications"),
+      d("underground_structures"),
+      e("surface_structures"),
+      f("strongholds"),
+      g("underground_ores"),
+      h("underground_decoration"),
+      i("fluid_springs"),
+      j("vegetal_decoration"),
+      k("top_layer_modification");
 
-   public ede(kl $$0, ju<eru> $$1) {
-      super($$0);
-      this.e = $$1;
-   }
+      public static final Codec<ede.a> l = bba.a(ede.a::values);
+      private final String m;
 
-   @Override
-   protected boolean a(dvv $$0) {
-      return $$0.y().a(this.e);
-   }
+      private a(final String $$0) {
+         this.m = $$0;
+      }
 
-   @Override
-   public ecy<?> a() {
-      return ecy.c;
+      public String a() {
+         return this.m;
+      }
+
+      @Override
+      public String c() {
+         return this.m;
+      }
    }
 }

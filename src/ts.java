@@ -1,173 +1,342 @@
-import com.google.common.base.MoreObjects;
-import java.util.Arrays;
+import com.google.common.base.Stopwatch;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2LongMap;
+import it.unimi.dsi.fastutil.objects.Object2LongOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2LongMap.Entry;
+import java.util.Collection;
 import java.util.List;
-import org.apache.commons.lang3.exception.ExceptionUtils;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-class ts implements th {
-   private int a = 0;
-   private int b = 0;
+public class ts {
+   private final um a;
+   @Nullable
+   private jh b;
+   @Nullable
+   private jh c;
+   private final ash d;
+   private final Collection<tt> e = Lists.newArrayList();
+   private final int f;
+   private final Collection<tw> g = Lists.newCopyOnWriteArrayList();
+   private final Object2LongMap<Runnable> h = new Object2LongOpenHashMap();
+   private long i;
+   private int j = 20;
+   private boolean k;
+   private boolean l;
+   private long m;
+   private boolean n;
+   private final uf o;
+   private final Stopwatch p = Stopwatch.createUnstarted();
+   private boolean q;
+   private final dqu r;
+   @Nullable
+   private Throwable s;
+   @Nullable
+   private dwh t;
 
-   public ts() {
+   public ts(um $$0, dqu $$1, ash $$2, uf $$3) {
+      this.a = $$0;
+      this.d = $$2;
+      this.o = $$3;
+      this.f = $$0.f();
+      this.r = $$0.e().a($$1);
    }
 
-   @Override
-   public void a(tg $$0) {
-      a($$0, dis.eq);
-      this.a++;
+   void a(jh $$0) {
+      this.b = $$0;
    }
 
-   private void a(tg $$0, tj $$1, boolean $$2) {
-      tt $$3 = $$0.A();
-      String $$4 = String.format("[Run: %4d, Ok: %4d, Fail: %4d", this.a, this.b, this.a - this.b);
-      if (!$$3.b()) {
-         $$4 = $$4 + String.format(", Left: %4d", $$3.d() - this.a);
-      }
+   public ts a(int $$0) {
+      this.i = this.d.ac() + this.a.g() + (long)$$0;
+      this.p.start();
+      return this;
+   }
 
-      $$4 = $$4 + "]";
-      String $$5 = $$0.b() + " " + ($$2 ? "passed" : "failed") + "! " + $$0.l() + "ms";
-      String $$6 = String.format("%-53s%s", $$4, $$5);
-      if ($$2) {
-         a($$0, $$6);
+   public ts a() {
+      if (this.k) {
+         return this;
       } else {
-         a($$0.g(), n.m, $$6);
-      }
-
-      if ($$3.a(this.a, this.b)) {
-         $$1.a($$0);
+         this.j = 0;
+         this.k = true;
+         dwh $$0 = this.f();
+         $$0.c(this.d);
+         enu $$1 = ui.b($$0);
+         this.d.n().a($$1);
+         this.d.a($$1);
+         return this;
       }
    }
 
-   @Override
-   public void a(tg $$0, tj $$1) {
-      this.b++;
-      if ($$0.A().c()) {
-         this.a($$0, $$1, true);
-      } else if (!$$0.x()) {
-         a($$0, $$0.b() + " passed! (" + $$0.l() + "ms)");
+   private boolean E() {
+      if (this.k) {
+         return true;
+      } else if (this.j > 0) {
+         this.j--;
+         return false;
       } else {
-         if (this.b >= $$0.z()) {
-            a($$0, $$0 + " passed " + this.b + " times of " + this.a + " attempts.");
+         this.a().a(0);
+         return true;
+      }
+   }
+
+   public void a(tv $$0) {
+      if (!this.k()) {
+         if (this.t == null) {
+            this.a(new IllegalStateException("Running test without structure block entity"));
+         }
+
+         if (this.l || ui.b(this.t).b().allMatch($$0x -> this.d.f($$0x.l()))) {
+            this.l = true;
+            if (this.E()) {
+               this.F();
+               if (this.k()) {
+                  if (this.s != null) {
+                     this.e.forEach($$1 -> $$1.b(this, $$0));
+                  } else {
+                     this.e.forEach($$1 -> $$1.a(this, $$0));
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private void F() {
+      this.m = this.d.ac() - this.i;
+      if (this.m >= 0L) {
+         if (!this.n) {
+            this.G();
+         }
+
+         ObjectIterator<Entry<Runnable>> $$0 = this.h.object2LongEntrySet().iterator();
+
+         while ($$0.hasNext()) {
+            Entry<Runnable> $$1 = (Entry<Runnable>)$$0.next();
+            if ($$1.getLongValue() <= this.m) {
+               try {
+                  ((Runnable)$$1.getKey()).run();
+               } catch (Exception var4) {
+                  this.a(var4);
+               }
+
+               $$0.remove();
+            }
+         }
+
+         if (this.m > (long)this.f) {
+            if (this.g.isEmpty()) {
+               this.a(new tz("Didn't succeed or fail within " + this.a.f() + " ticks"));
+            } else {
+               this.g.forEach($$0x -> $$0x.b(this.m));
+               if (this.s == null) {
+                  this.a(new tz("No sequences finished"));
+               }
+            }
          } else {
-            a($$0.g(), n.k, "Flaky test " + $$0 + " succeeded, attempt: " + this.a + " successes: " + this.b);
-            $$1.a($$0);
+            this.g.forEach($$0x -> $$0x.a(this.m));
          }
       }
+   }
+
+   private void G() {
+      if (!this.n) {
+         this.n = true;
+
+         try {
+            this.a.a(new tr(this));
+         } catch (Exception var2) {
+            this.a(var2);
+         }
+      }
+   }
+
+   public void a(long $$0, Runnable $$1) {
+      this.h.put($$1, $$0);
+   }
+
+   public String b() {
+      return this.a.c();
+   }
+
+   @Nullable
+   public jh c() {
+      return this.b;
+   }
+
+   public jh d() {
+      return ui.c(this.t);
+   }
+
+   public fbn e() {
+      dwh $$0 = this.f();
+      return ui.a($$0);
+   }
+
+   public dwh f() {
+      if (this.t == null) {
+         if (this.b == null) {
+            throw new IllegalStateException("Could not find a structureBlockEntity for this GameTestInfo");
+         }
+
+         this.t = (dwh)this.d.c_(this.b);
+         if (this.t == null) {
+            throw new IllegalStateException("Could not find a structureBlockEntity at the given coordinate " + this.b);
+         }
+      }
+
+      return this.t;
+   }
+
+   public ash g() {
+      return this.d;
+   }
+
+   public boolean h() {
+      return this.q && this.s == null;
+   }
+
+   public boolean i() {
+      return this.s != null;
+   }
+
+   public boolean j() {
+      return this.n;
+   }
+
+   public boolean k() {
+      return this.q;
+   }
+
+   public long l() {
+      return this.p.elapsed(TimeUnit.MILLISECONDS);
+   }
+
+   private void H() {
+      if (!this.q) {
+         this.q = true;
+         if (this.p.isRunning()) {
+            this.p.stop();
+         }
+      }
+   }
+
+   public void m() {
+      if (this.s == null) {
+         this.H();
+         fbn $$0 = this.e();
+         List<bvf> $$1 = this.g().a(bvf.class, $$0.g(1.0), $$0x -> !($$0x instanceof cps));
+         $$1.forEach($$0x -> $$0x.a(bvf.c.b));
+      }
+   }
+
+   public void a(Throwable $$0) {
+      this.s = $$0;
+      this.H();
+   }
+
+   @Nullable
+   public Throwable n() {
+      return this.s;
    }
 
    @Override
-   public void b(tg $$0, tj $$1) {
-      if (!$$0.x()) {
-         a($$0, $$0.n());
-         if ($$0.A().c()) {
-            this.a($$0, $$1, false);
-         }
-      } else {
-         ua $$2 = $$0.v();
-         String $$3 = "Flaky test " + $$0 + " failed, attempt: " + this.a + "/" + $$2.j();
-         if ($$2.k() > 1) {
-            $$3 = $$3 + ", successes: " + this.b + " (" + $$2.k() + " required)";
-         }
-
-         a($$0.g(), n.o, $$3);
-         if ($$0.y() - this.a + this.b >= $$0.z()) {
-            $$1.a($$0);
-         } else {
-            a($$0, new sw(this.a, this.b, $$0));
-         }
-      }
+   public String toString() {
+      return this.b();
    }
 
-   @Override
-   public void a(tg $$0, tg $$1, tj $$2) {
-      $$1.a(this);
+   public void a(tt $$0) {
+      this.e.add($$0);
    }
 
-   public static void a(tg $$0, String $$1) {
-      b($$0, dis.en);
-      b($$0, $$1);
+   public ts o() {
+      jh $$0 = this.D();
+      this.t = ui.b(this, $$0, this.u(), this.d);
+      this.b = this.t.aB_();
+      ui.a(this.b, new jh(1, 0, -1), this.u(), this.d);
+      ui.a(this.e(), this.d, !this.a.l());
+      this.e.forEach($$0x -> $$0x.a(this));
+      return this;
    }
 
-   private static void b(tg $$0, String $$1) {
-      a($$0.g(), n.k, $$1);
-      to.b($$0);
+   long p() {
+      return this.m;
    }
 
-   protected static void a(tg $$0, Throwable $$1) {
-      b($$0, $$0.r() ? dis.ew : dis.ej);
-      c($$0, ae.c($$1));
-      b($$0, $$1);
+   tw q() {
+      tw $$0 = new tw(this);
+      this.g.add($$0);
+      return $$0;
    }
 
-   protected static void b(tg $$0, Throwable $$1) {
-      String $$2 = $$1.getMessage() + ($$1.getCause() == null ? "" : " cause: " + ae.c($$1.getCause()));
-      String $$3 = ($$0.r() ? "" : "(optional) ") + $$0.b() + " failed! " + $$2;
-      a($$0.g(), $$0.r() ? n.m : n.o, $$3);
-      Throwable $$4 = (Throwable)MoreObjects.firstNonNull(ExceptionUtils.getRootCause($$1), $$1);
-      if ($$4 instanceof sz $$5) {
-         a($$0.g(), $$5.c(), $$5.a());
-      }
-
-      to.a($$0);
+   public boolean r() {
+      return this.a.h();
    }
 
-   protected static void a(tg $$0, diq $$1) {
-      arp $$2 = $$0.g();
-      jh $$3 = b($$0);
-      $$2.b($$3, dis.fO.m().a($$0.u()));
-      b($$0, $$1);
-
-      for (int $$4 = -1; $$4 <= 1; $$4++) {
-         for (int $$5 = -1; $$5 <= 1; $$5++) {
-            jh $$6 = $$3.b($$4, -1, $$5);
-            $$2.b($$6, dis.ci.m());
-         }
-      }
+   public boolean s() {
+      return !this.a.h();
    }
 
-   private static jh b(tg $$0) {
-      jh $$1 = $$0.c();
-      jh $$2 = new jh(-1, -2, -1);
-      return eqk.a($$1.a((kl)$$2), dnm.a, $$0.u(), $$1);
+   public String t() {
+      return this.a.d();
    }
 
-   private static void b(tg $$0, diq $$1) {
-      arp $$2 = $$0.g();
-      jh $$3 = b($$0);
-      if ($$2.a_($$3).a(dis.fO)) {
-         jh $$4 = $$3.b(0, 1, 0);
-         $$2.b($$4, $$1.m());
-      }
+   public dqu u() {
+      return this.r;
    }
 
-   private static void c(tg $$0, String $$1) {
-      arp $$2 = $$0.g();
-      jh $$3 = $$0.c();
-      jh $$4 = new jh(-1, 0, -1);
-      jh $$5 = eqk.a($$3.a((kl)$$4), dnm.a, $$0.u(), $$3);
-      $$2.b($$5, dis.oa.m().a($$0.u()));
-      dvv $$6 = $$2.a_($$5);
-      cwm $$7 = a($$0.b(), $$0.r(), $$1);
-      dna.a(null, $$2, $$5, $$6, $$7);
+   public um v() {
+      return this.a;
    }
 
-   private static cwm a(String $$0, boolean $$1, String $$2) {
-      StringBuffer $$3 = new StringBuffer();
-      Arrays.stream($$0.split("\\.")).forEach($$1x -> $$3.append($$1x).append('\n'));
-      if (!$$1) {
-         $$3.append("(optional)\n");
+   public int w() {
+      return this.f;
+   }
+
+   public boolean x() {
+      return this.a.a();
+   }
+
+   public int y() {
+      return this.a.j();
+   }
+
+   public int z() {
+      return this.a.k();
+   }
+
+   public uf A() {
+      return this.o;
+   }
+
+   public Stream<tt> B() {
+      return this.e.stream();
+   }
+
+   public ts C() {
+      ts $$0 = new ts(this.a, this.r, this.d, this.A());
+      if (this.c != null) {
+         $$0.b(this.c);
       }
 
-      $$3.append("-------------------\n");
-      cwm $$4 = new cwm(cwq.uq);
-      $$4.b(ku.S, new czt(List.of(ash.a($$3 + $$2))));
-      return $$4;
+      if (this.b != null) {
+         $$0.a(this.b);
+      }
+
+      return $$0;
    }
 
-   protected static void a(arp $$0, n $$1, String $$2) {
-      $$0.a($$0x -> true).forEach($$2x -> $$2x.a(xj.b($$2).a($$1)));
+   public jh D() {
+      if (this.c == null) {
+         enu $$0 = ui.b(this.f());
+         this.c = new jh($$0.h(), $$0.i(), $$0.j());
+      }
+
+      return this.c;
    }
 
-   private static void a(arp $$0, jh $$1, String $$2) {
-      agt.a($$0, $$1, $$2, -2130771968, Integer.MAX_VALUE);
+   public void b(jh $$0) {
+      this.c = $$0;
    }
 }

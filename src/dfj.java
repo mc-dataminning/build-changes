@@ -1,103 +1,37 @@
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
-import org.jetbrains.annotations.Contract;
+import com.mojang.serialization.Codec;
 
-public enum dfj implements bai {
-   a(0, "survival"),
-   b(1, "creative"),
-   c(2, "adventure"),
-   d(3, "spectator");
+public enum dfj implements bba {
+   a(bvn.f, 11, "helmet"),
+   b(bvn.e, 16, "chestplate"),
+   c(bvn.d, 15, "leggings"),
+   d(bvn.c, 13, "boots"),
+   e(bvn.g, 16, "body");
 
-   public static final dfj e = a;
-   public static final bai.a<dfj> f = bai.a(dfj::values);
-   private static final IntFunction<dfj> g = ayd.a(dfj::a, values(), ayd.a.a);
-   private static final int h = -1;
+   public static final Codec<dfj> f = bba.b(dfj::values);
+   private final bvn g;
+   private final String h;
    private final int i;
-   private final String j;
-   private final xj k;
-   private final xj l;
 
-   private dfj(final int $$0, final String $$1) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = xj.c("selectWorld.gameMode." + $$1);
-      this.l = xj.c("gameMode." + $$1);
+   private dfj(final bvn $$0, final int $$1, final String $$2) {
+      this.g = $$0;
+      this.h = $$2;
+      this.i = $$1;
    }
 
-   public int a() {
-      return this.i;
+   public int a(int $$0) {
+      return this.i * $$0;
+   }
+
+   public bvn a() {
+      return this.g;
    }
 
    public String b() {
-      return this.j;
+      return this.h;
    }
 
    @Override
    public String c() {
-      return this.j;
-   }
-
-   public xj d() {
-      return this.l;
-   }
-
-   public xj e() {
-      return this.k;
-   }
-
-   public void a(coq $$0) {
-      if (this == b) {
-         $$0.c = true;
-         $$0.d = true;
-         $$0.a = true;
-      } else if (this == d) {
-         $$0.c = true;
-         $$0.d = false;
-         $$0.a = true;
-         $$0.b = true;
-      } else {
-         $$0.c = false;
-         $$0.d = false;
-         $$0.a = false;
-         $$0.b = false;
-      }
-
-      $$0.e = !this.f();
-   }
-
-   public boolean f() {
-      return this == c || this == d;
-   }
-
-   public boolean g() {
-      return this == b;
-   }
-
-   public boolean h() {
-      return this == a || this == c;
-   }
-
-   public static dfj a(int $$0) {
-      return g.apply($$0);
-   }
-
-   public static dfj a(String $$0) {
-      return a($$0, a);
-   }
-
-   @Nullable
-   @Contract("_,!null->!null;_,null->_")
-   public static dfj a(String $$0, @Nullable dfj $$1) {
-      dfj $$2 = f.a($$0);
-      return $$2 != null ? $$2 : $$1;
-   }
-
-   public static int a(@Nullable dfj $$0) {
-      return $$0 != null ? $$0.i : -1;
-   }
-
-   @Nullable
-   public static dfj b(int $$0) {
-      return $$0 == -1 ? null : a($$0);
+      return this.h;
    }
 }

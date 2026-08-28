@@ -1,49 +1,65 @@
-import java.util.function.Supplier;
-import org.apache.commons.lang3.ObjectUtils;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
 
-public record azl(azl.a a, String b) {
-   public static azl a(String $$0, Supplier<String> $$1, String $$2, Class<?> $$3) {
-      String $$4 = $$1.get();
-      if (!$$0.equals($$4)) {
-         return new azl(azl.a.c, $$2 + " brand changed to '" + $$4 + "'");
-      } else {
-         return $$3.getSigners() == null
-            ? new azl(azl.a.b, $$2 + " jar signature invalidated")
-            : new azl(azl.a.a, $$2 + " jar signature and brand is untouched");
+public class azl {
+   final LoadingCache<azl.a<?, ?>, DataResult<?>> a;
+
+   public azl(int $$0) {
+      this.a = CacheBuilder.newBuilder().maximumSize((long)$$0).concurrencyLevel(1).softValues().build(new CacheLoader<azl.a<?, ?>, DataResult<?>>() {
+         public DataResult<?> a(azl.a<?, ?> $$0) {
+            return $$0.a();
+         }
+      });
+   }
+
+   public <A> Codec<A> a(final Codec<A> $$0) {
+      return new Codec<A>() {
+         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1) {
+            return $$0.decode($$0, $$1);
+         }
+
+         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1, T $$2) {
+            return ((DataResult)azl.this.a.getUnchecked(new azl.a($$0, $$0, $$1))).map($$0xx -> $$0xx instanceof vu $$1x ? $$1x.d() : $$0xx);
+         }
+      };
+   }
+
+   static record a<A, T>(Codec<A> a, A b, DynamicOps<T> c) {
+      public DataResult<T> a() {
+         return this.a.encodeStart(this.c, this.b);
       }
-   }
 
-   public boolean a() {
-      return this.a.e;
-   }
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else {
+            return !($$0 instanceof azl.a<?, ?> $$1) ? false : this.a == $$1.a && this.b.equals($$1.b) && this.c.equals($$1.c);
+         }
+      }
 
-   public azl a(azl $$0) {
-      return new azl((azl.a)ObjectUtils.max(new azl.a[]{this.a, $$0.a}), this.b + "; " + $$0.b);
-   }
+      @Override
+      public int hashCode() {
+         int $$0 = System.identityHashCode(this.a);
+         $$0 = 31 * $$0 + this.b.hashCode();
+         return 31 * $$0 + this.c.hashCode();
+      }
 
-   public String b() {
-      return this.a.d + " " + this.b;
-   }
+      public Codec<A> b() {
+         return this.a;
+      }
 
-   public azl.a c() {
-      return this.a;
-   }
+      public A c() {
+         return this.b;
+      }
 
-   public String d() {
-      return this.b;
-   }
-
-   public static enum a {
-      a("Probably not.", false),
-      b("Very likely;", true),
-      c("Definitely;", true);
-
-      final String d;
-      final boolean e;
-
-      private a(final String $$0, final boolean $$1) {
-         this.d = $$0;
-         this.e = $$1;
+      public DynamicOps<T> d() {
+         return this.c;
       }
    }
 }

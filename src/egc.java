@@ -1,40 +1,52 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class egc extends eew<ehk> {
-   public egc(Codec<ehk> $$0) {
+public abstract class egc extends ego<eiz> {
+   public egc(Codec<eiz> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eey<ehk> $$0) {
-      boolean $$1 = false;
-      azu $$2 = $$0.d();
-      dgk $$3 = $$0.b();
-      jh $$4 = $$0.e();
-      ehk $$5 = $$0.f();
-      int $$6 = $$2.a(8) - $$2.a(8);
-      int $$7 = $$2.a(8) - $$2.a(8);
-      int $$8 = $$3.a(ebq.a.d, $$4.u() + $$6, $$4.w() + $$7);
-      jh $$9 = new jh($$4.u() + $$6, $$8, $$4.w() + $$7);
-      if ($$3.a_($$9).a(dis.G)) {
-         boolean $$10 = $$2.j() < (double)$$5.l;
-         dvv $$11 = $$10 ? dis.bx.m() : dis.bw.m();
-         if ($$11.a($$3, $$9)) {
-            if ($$10) {
-               dvv $$12 = $$11.b(dqw.d, dwq.a);
-               jh $$13 = $$9.d();
-               if ($$3.a_($$13).a(dis.G)) {
-                  $$3.a($$9, $$11, 2);
-                  $$3.a($$13, $$12, 2);
-               }
-            } else {
-               $$3.a($$9, $$11, 2);
-            }
+   public boolean a(egq<eiz> $$0) {
+      bam $$1 = $$0.d();
+      dhy $$2 = $$0.b();
+      jh $$3 = $$0.e();
+      Optional<dke> $$4 = ma.e.a(axu.at, $$1).map(jq::a);
+      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().m());
+   }
 
-            $$1 = true;
+   protected abstract boolean a(dhb var1, bam var2, jh var3, dxn var4);
+
+   protected boolean b(dhb $$0, bam $$1, jh $$2, dxn $$3) {
+      jh $$4 = $$2.d();
+      dxn $$5 = $$0.a_($$2);
+      if (($$5.a(dkg.J) || $$5.a(axu.aw)) && $$0.a_($$4).a(dkg.J)) {
+         $$0.a($$2, $$3, 3);
+         if ($$1.i() < 0.25F) {
+            ma.e.a(axu.aw, $$1).map(jq::a).ifPresent($$2x -> $$0.a($$4, $$2x.m(), 2));
+         } else if ($$1.i() < 0.05F) {
+            $$0.a($$4, dkg.nq.m().b(dre.c, Integer.valueOf($$1.a(4) + 1)), 2);
          }
-      }
 
-      return $$1;
+         for (jm $$6 : jm.c.a) {
+            if ($$1.i() < 0.2F) {
+               jh $$7 = $$2.a($$6);
+               if ($$0.a_($$7).a(dkg.J)) {
+                  ma.e.a(axu.au, $$1).map(jq::a).ifPresent($$3x -> {
+                     dxn $$4x = $$3x.m();
+                     if ($$4x.b(djp.c)) {
+                        $$4x = $$4x.b(djp.c, $$6);
+                     }
+
+                     $$0.a($$7, $$4x, 2);
+                  });
+               }
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 }

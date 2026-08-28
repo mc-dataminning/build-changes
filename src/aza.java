@@ -1,43 +1,34 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
+import com.mojang.util.UndashedUuid;
+import java.net.URI;
+import java.util.UUID;
 
-public class aza implements bak, AutoCloseable {
-   private static final Logger b = LogUtils.getLogger();
-   private CompletableFuture<?> c = CompletableFuture.completedFuture(null);
-   private final Executor d;
-   private volatile boolean e;
+public class aza {
+   public static final URI a = URI.create("https://aka.ms/MinecraftGDPR");
+   public static final URI b = URI.create("https://aka.ms/MinecraftEULA");
+   public static final URI c = URI.create("http://go.microsoft.com/fwlink/?LinkId=521839");
+   public static final URI d = URI.create("https://aka.ms/MinecraftJavaAttribution");
+   public static final URI e = URI.create("https://aka.ms/MinecraftJavaLicenses");
+   public static final URI f = URI.create("https://aka.ms/BuyMinecraftJava");
+   public static final URI g = URI.create("https://aka.ms/JavaAccountSettings");
+   public static final URI h = URI.create("https://aka.ms/snapshotfeedback?ref=game");
+   public static final URI i = URI.create("https://aka.ms/javafeedback?ref=game");
+   public static final URI j = URI.create("https://aka.ms/snapshotbugs?ref=game");
+   public static final URI k = URI.create("https://aka.ms/Minecraft-Support");
+   public static final URI l = URI.create("https://aka.ms/MinecraftJavaAccessibility");
+   public static final URI m = URI.create("https://aka.ms/aboutjavareporting");
+   public static final URI n = URI.create("https://aka.ms/mcjavamoderation");
+   public static final URI o = URI.create("https://aka.ms/javablocking");
+   public static final URI p = URI.create("https://aka.ms/MinecraftSymLinks");
+   public static final URI q = URI.create("https://aka.ms/startjavarealmstrial");
+   public static final URI r = URI.create("https://aka.ms/BuyJavaRealms");
+   public static final URI s = URI.create("https://aka.ms/MinecraftRealmsTerms");
+   public static final URI t = URI.create("https://aka.ms/MinecraftRealmsContentCreator");
 
-   public aza(Executor $$0) {
-      this.d = $$0;
+   public static String a(String $$0, UUID $$1, boolean $$2) {
+      return a($$0, $$1) + "&ref=" + ($$2 ? "expiredTrial" : "expiredRealm");
    }
 
-   @Override
-   public <T> void append(CompletableFuture<T> $$0, Consumer<T> $$1) {
-      this.c = this.c.<T, Object>thenCombine($$0, ($$0x, $$1x) -> $$1x).thenAcceptAsync($$1x -> {
-         if (!this.e) {
-            $$1.accept((T)$$1x);
-         }
-      }, this.d).exceptionally($$0x -> {
-         if ($$0x instanceof CompletionException $$1x) {
-            $$0x = $$1x.getCause();
-         }
-
-         if ($$0x instanceof CancellationException $$2) {
-            throw $$2;
-         } else {
-            b.error("Chain link failed, continuing to next one", $$0x);
-            return null;
-         }
-      });
-   }
-
-   @Override
-   public void close() {
-      this.e = true;
+   public static String a(String $$0, UUID $$1) {
+      return "https://aka.ms/ExtendJavaRealms?subscriptionId=" + $$0 + "&profileId=" + UndashedUuid.toString($$1);
    }
 }

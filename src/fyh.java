@@ -1,37 +1,78 @@
-public class fyh extends fzw<guv> {
-   public fyh(gcl $$0) {
-      super($$0);
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+
+public class fyh {
+   private final flz a;
+   private final Set<UUID> b = Sets.newHashSet();
+   private final UserApiService c;
+   private final Map<String, UUID> d = Maps.newHashMap();
+   private boolean e;
+   private CompletableFuture<?> f = CompletableFuture.completedFuture(null);
+
+   public fyh(flz $$0, UserApiService $$1) {
+      this.a = $$0;
+      this.c = $$1;
    }
 
-   public static gcr a(gcp $$0) {
-      gct $$1 = fzw.a($$0, 0.0F);
-      gcv $$2 = $$1.a();
-      gcv $$3 = $$2.a("head", gcq.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), gcn.a(0.0F, 1.0F, 0.0F));
-      $$3.a("hat", gcq.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0.a(0.5F)), gcn.a);
-      $$2.a("right_leg", gcq.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), gcn.a(-1.9F, 11.0F, 0.0F));
-      $$2.a("left_leg", gcq.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), gcn.a(1.9F, 11.0F, 0.0F));
-      return gcr.a($$1, 64, 32);
+   public void a(UUID $$0) {
+      this.b.add($$0);
    }
 
-   public void a(guv $$0) {
-      super.a($$0);
-      this.o.e = (float) (Math.PI / 180.0) * $$0.g.b();
-      this.o.f = (float) (Math.PI / 180.0) * $$0.g.c();
-      this.o.g = (float) (Math.PI / 180.0) * $$0.g.d();
-      this.q.e = (float) (Math.PI / 180.0) * $$0.h.b();
-      this.q.f = (float) (Math.PI / 180.0) * $$0.h.c();
-      this.q.g = (float) (Math.PI / 180.0) * $$0.h.d();
-      this.s.e = (float) (Math.PI / 180.0) * $$0.i.b();
-      this.s.f = (float) (Math.PI / 180.0) * $$0.i.c();
-      this.s.g = (float) (Math.PI / 180.0) * $$0.i.d();
-      this.r.e = (float) (Math.PI / 180.0) * $$0.j.b();
-      this.r.f = (float) (Math.PI / 180.0) * $$0.j.c();
-      this.r.g = (float) (Math.PI / 180.0) * $$0.j.d();
-      this.u.e = (float) (Math.PI / 180.0) * $$0.k.b();
-      this.u.f = (float) (Math.PI / 180.0) * $$0.k.c();
-      this.u.g = (float) (Math.PI / 180.0) * $$0.k.d();
-      this.t.e = (float) (Math.PI / 180.0) * $$0.l.b();
-      this.t.f = (float) (Math.PI / 180.0) * $$0.l.c();
-      this.t.g = (float) (Math.PI / 180.0) * $$0.l.d();
+   public void b(UUID $$0) {
+      this.b.remove($$0);
+   }
+
+   public boolean c(UUID $$0) {
+      return this.d($$0) || this.e($$0);
+   }
+
+   public boolean d(UUID $$0) {
+      return this.b.contains($$0);
+   }
+
+   public void a() {
+      this.e = true;
+      this.f = this.f.thenRunAsync(this.c::refreshBlockList, ae.h());
+   }
+
+   public void b() {
+      this.e = false;
+   }
+
+   public boolean e(UUID $$0) {
+      if (!this.e) {
+         return false;
+      } else {
+         this.f.join();
+         return this.c.isBlockedPlayer($$0);
+      }
+   }
+
+   public Set<UUID> c() {
+      return this.b;
+   }
+
+   public UUID a(String $$0) {
+      return this.d.getOrDefault($$0, ae.e);
+   }
+
+   public void a(gfp $$0) {
+      GameProfile $$1 = $$0.a();
+      this.d.put($$1.getName(), $$1.getId());
+      if (this.a.z instanceof fyj $$2) {
+         $$2.a($$0);
+      }
+   }
+
+   public void f(UUID $$0) {
+      if (this.a.z instanceof fyj $$1) {
+         $$1.a($$0);
+      }
    }
 }

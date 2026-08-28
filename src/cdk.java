@@ -1,44 +1,27 @@
-import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cdk extends ccf {
-   private final bwe a;
+public class cdk extends cdw {
+   private static final int i = 10;
+   private static final int j = 7;
 
-   public cdk(bwe $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(ccf.a.c, ccf.a.a));
-   }
-
-   @Override
-   public boolean c() {
-      return this.a.gm();
+   public cdk(bwj $$0, double $$1, boolean $$2) {
+      super($$0, $$1, 10, $$2);
    }
 
    @Override
    public boolean b() {
-      if (!this.a.n()) {
-         return false;
-      } else if (this.a.bm()) {
-         return false;
-      } else if (!this.a.aJ()) {
-         return false;
-      } else {
-         bvh $$0 = this.a.ag_();
-         if ($$0 == null) {
-            return true;
-         } else {
-            return this.a.g((bul)$$0) < 144.0 && $$0.ep() != null ? false : this.a.gm();
-         }
-      }
+      ash $$0 = (ash)this.b.dV();
+      jh $$1 = this.b.dv();
+      return $$0.c($$1) ? false : super.b();
    }
 
+   @Nullable
    @Override
-   public void d() {
-      this.a.L().o();
-      this.a.y(true);
-   }
-
-   @Override
-   public void e() {
-      this.a.y(false);
+   protected fbs h() {
+      ash $$0 = (ash)this.b.dV();
+      jh $$1 = this.b.dv();
+      kj $$2 = kj.a($$1);
+      kj $$3 = bxw.a($$0, $$2, 2);
+      return $$3 != $$2 ? cgw.a(this.b, 10, 7, fbs.c($$3.k()), (float) (Math.PI / 2)) : null;
    }
 }

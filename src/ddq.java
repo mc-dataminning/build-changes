@@ -1,78 +1,8 @@
-public interface ddq {
-   ali<ddl> a = ddr.a("trades/desert_armorer_boots_4");
-   ali<ddl> b = ddr.a("trades/desert_armorer_leggings_4");
-   ali<ddl> c = ddr.a("trades/desert_armorer_chestplate_4");
-   ali<ddl> d = ddr.a("trades/desert_armorer_helmet_4");
-   ali<ddl> e = ddr.a("trades/desert_armorer_leggings_5");
-   ali<ddl> f = ddr.a("trades/desert_armorer_chestplate_5");
-   ali<ddl> g = ddr.a("trades/plains_armorer_boots_4");
-   ali<ddl> h = ddr.a("trades/plains_armorer_leggings_4");
-   ali<ddl> i = ddr.a("trades/plains_armorer_chestplate_4");
-   ali<ddl> j = ddr.a("trades/plains_armorer_helmet_4");
-   ali<ddl> k = ddr.a("trades/plains_armorer_boots_5");
-   ali<ddl> l = ddr.a("trades/plains_armorer_leggings_5");
-   ali<ddl> m = ddr.a("trades/savanna_armorer_boots_4");
-   ali<ddl> n = ddr.a("trades/savanna_armorer_leggings_4");
-   ali<ddl> o = ddr.a("trades/savanna_armorer_chestplate_4");
-   ali<ddl> p = ddr.a("trades/savanna_armorer_helmet_4");
-   ali<ddl> q = ddr.a("trades/savanna_armorer_chestplate_5");
-   ali<ddl> r = ddr.a("trades/savanna_armorer_helmet_5");
-   ali<ddl> s = ddr.a("trades/snow_armorer_boots_4");
-   ali<ddl> t = ddr.a("trades/snow_armorer_helmet_4");
-   ali<ddl> u = ddr.a("trades/snow_armorer_boots_5");
-   ali<ddl> v = ddr.a("trades/snow_armorer_helmet_5");
-   ali<ddl> w = ddr.a("trades/jungle_armorer_boots_4");
-   ali<ddl> x = ddr.a("trades/jungle_armorer_leggings_4");
-   ali<ddl> y = ddr.a("trades/jungle_armorer_chestplate_4");
-   ali<ddl> z = ddr.a("trades/jungle_armorer_helmet_4");
-   ali<ddl> A = ddr.a("trades/jungle_armorer_boots_5");
-   ali<ddl> B = ddr.a("trades/jungle_armorer_helmet_5");
-   ali<ddl> C = ddr.a("trades/swamp_armorer_boots_4");
-   ali<ddl> D = ddr.a("trades/swamp_armorer_leggings_4");
-   ali<ddl> E = ddr.a("trades/swamp_armorer_chestplate_4");
-   ali<ddl> F = ddr.a("trades/swamp_armorer_helmet_4");
-   ali<ddl> G = ddr.a("trades/swamp_armorer_boots_5");
-   ali<ddl> H = ddr.a("trades/swamp_armorer_helmet_5");
-   ali<ddl> I = ddr.a("trades/taiga_armorer_leggings_5");
-   ali<ddl> J = ddr.a("trades/taiga_armorer_chestplate_5");
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   static void a(qz<ddl> $$0) {
-      jr<dcd> $$1 = $$0.a(ma.aM);
-      $$0.a(a, new ddp($$1.b(dci.h), brm.a(1)));
-      $$0.a(b, new ddp($$1.b(dci.h), brm.a(1)));
-      $$0.a(c, new ddp($$1.b(dci.h), brm.a(1)));
-      $$0.a(d, new ddp($$1.b(dci.h), brm.a(1)));
-      $$0.a(e, new ddp($$1.b(dci.h), brm.a(1)));
-      $$0.a(f, new ddp($$1.b(dci.h), brm.a(1)));
-      $$0.a(g, new ddp($$1.b(dci.a), brm.a(1)));
-      $$0.a(h, new ddp($$1.b(dci.a), brm.a(1)));
-      $$0.a(i, new ddp($$1.b(dci.a), brm.a(1)));
-      $$0.a(j, new ddp($$1.b(dci.a), brm.a(1)));
-      $$0.a(k, new ddp($$1.b(dci.a), brm.a(1)));
-      $$0.a(l, new ddp($$1.b(dci.a), brm.a(1)));
-      $$0.a(m, new ddp($$1.b(dci.k), brm.a(1)));
-      $$0.a(n, new ddp($$1.b(dci.k), brm.a(1)));
-      $$0.a(o, new ddp($$1.b(dci.k), brm.a(1)));
-      $$0.a(p, new ddp($$1.b(dci.k), brm.a(1)));
-      $$0.a(q, new ddp($$1.b(dci.k), brm.a(1)));
-      $$0.a(r, new ddp($$1.b(dci.k), brm.a(1)));
-      $$0.a(s, new ddp($$1.b(dci.j), brm.a(1)));
-      $$0.a(t, new ddp($$1.b(dci.g), brm.a(1)));
-      $$0.a(u, new ddp($$1.b(dci.j), brm.a(1)));
-      $$0.a(v, new ddp($$1.b(dci.g), brm.a(1)));
-      $$0.a(w, new ddp($$1.b(dci.w), brm.a(1)));
-      $$0.a(x, new ddp($$1.b(dci.w), brm.a(1)));
-      $$0.a(y, new ddp($$1.b(dci.w), brm.a(1)));
-      $$0.a(z, new ddp($$1.b(dci.w), brm.a(1)));
-      $$0.a(A, new ddp($$1.b(dci.c), brm.a(1)));
-      $$0.a(B, new ddp($$1.b(dci.e), brm.a(1)));
-      $$0.a(C, new ddp($$1.b(dci.O), brm.a(1)));
-      $$0.a(D, new ddp($$1.b(dci.O), brm.a(1)));
-      $$0.a(E, new ddp($$1.b(dci.O), brm.a(1)));
-      $$0.a(F, new ddp($$1.b(dci.O), brm.a(1)));
-      $$0.a(G, new ddp($$1.b(dci.i), brm.a(1)));
-      $$0.a(H, new ddp($$1.b(dci.f), brm.a(1)));
-      $$0.a(I, new ddp($$1.b(dci.d), brm.a(1)));
-      $$0.a(J, new ddp($$1.b(dci.d), brm.a(1)));
+public record ddq(cxk a, @Nullable bvn b, @Nullable bwb c, Consumer<cxg> d) {
+   public ddq(cxk $$0, bvn $$1, bwb $$2) {
+      this($$0, $$1, $$2, $$2x -> $$2.a($$2x, $$1));
    }
 }

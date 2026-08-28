@@ -1,31 +1,68 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dmp extends dmo {
-   public static final MapCodec<dmp> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(lz.e.q().fieldOf("host").forGetter(dmo::b), t()).apply($$0, dmp::new));
+public class dmp extends dnb {
+   public static final MapCodec<dmp> a = b(dmp::new);
+   protected static final fcm b = dke.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
    public MapCodec<dmp> a() {
+      return a;
+   }
+
+   public dmp(dxm.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
       return b;
    }
 
-   public dmp(diq $$0, dvu.d $$1) {
-      super($$0, $$1);
-      this.l(this.m().b(dpc.i, jm.a.b));
+   @Override
+   protected bte a(dxn $$0, dha $$1, jh $$2, cps $$3, fbo $$4) {
+      this.e($$0, $$1, $$2);
+      return bte.a;
    }
 
    @Override
-   protected dvv a(dvv $$0, dpd $$1) {
-      return dpc.b($$0, $$1);
+   protected void a_(dxn $$0, dha $$1, jh $$2, cps $$3) {
+      this.e($$0, $$1, $$2);
+   }
+
+   private void e(dxn $$0, dha $$1, jh $$2) {
+      dzd $$3 = $$1.F_();
+
+      for (int $$4 = 0; $$4 < 1000; $$4++) {
+         jh $$5 = $$2.b($$1.A.a(16) - $$1.A.a(16), $$1.A.a(8) - $$1.A.a(8), $$1.A.a(16) - $$1.A.a(16));
+         if ($$1.a_($$5).l() && $$3.a($$5)) {
+            if ($$1.C) {
+               for (int $$6 = 0; $$6 < 128; $$6++) {
+                  double $$7 = $$1.A.j();
+                  float $$8 = ($$1.A.i() - 0.5F) * 0.2F;
+                  float $$9 = ($$1.A.i() - 0.5F) * 0.2F;
+                  float $$10 = ($$1.A.i() - 0.5F) * 0.2F;
+                  double $$11 = bae.d($$7, (double)$$5.u(), (double)$$2.u()) + ($$1.A.j() - 0.5) + 0.5;
+                  double $$12 = bae.d($$7, (double)$$5.v(), (double)$$2.v()) + $$1.A.j() - 0.5;
+                  double $$13 = bae.d($$7, (double)$$5.w(), (double)$$2.w()) + ($$1.A.j() - 0.5) + 0.5;
+                  $$1.a(ls.ad, $$11, $$12, $$13, (double)$$8, (double)$$9, (double)$$10);
+               }
+            } else {
+               $$1.a($$5, $$0, 2);
+               $$1.a($$2, false);
+            }
+
+            return;
+         }
+      }
    }
 
    @Override
-   protected void a(dvw.a<diq, dvv> $$0) {
-      $$0.a(dpc.i);
+   protected int b() {
+      return 5;
    }
 
    @Override
-   public dvv a(dad $$0) {
-      return this.m().b(dpc.i, $$0.k().o());
+   protected boolean a(dxn $$0, eue $$1) {
+      return false;
    }
 }

@@ -1,37 +1,25 @@
-import com.mojang.authlib.GameProfile;
-import java.net.SocketAddress;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.util.Either;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
+import org.joml.Vector3f;
 
-public class hdo extends avq {
-   @Nullable
-   private ul h;
+public class hdo {
+   public static final String a = "missing";
+   public static final alz b = hdy.a("missing");
+   public static final hdu c = new hdu(b, "missing");
 
-   public hdo(hdp $$0, jx<als> $$1, eue $$2) {
-      super($$0, $$1, $$2, 8);
-      this.a(10);
-   }
+   public static hdz a() {
+      gmp $$0 = new gmp(new float[]{0.0F, 0.0F, 16.0F, 16.0F}, 0);
+      Map<jm, gmn> $$1 = new EnumMap<>(jm.class);
 
-   @Override
-   protected void b(arq $$0) {
-      if (this.b().a($$0.gf())) {
-         this.h = $$0.f(new ul());
+      for (jm $$2 : jm.values()) {
+         $$1.put($$2, new gmn($$2, 0, hau.b().a(), $$0));
       }
 
-      super.b($$0);
-   }
-
-   @Override
-   public xj a(SocketAddress $$0, GameProfile $$1) {
-      return (xj)(this.b().a($$1) && this.a($$1.getName()) != null ? xj.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
-   }
-
-   public hdp b() {
-      return (hdp)super.c();
-   }
-
-   @Nullable
-   @Override
-   public ul r() {
-      return this.h;
+      gmm $$3 = new gmm(new Vector3f(0.0F, 0.0F, 0.0F), new Vector3f(16.0F, 16.0F, 16.0F), $$1);
+      gmq $$4 = new gmq(null, List.of($$3), Map.of("particle", Either.left(gmq.c)), null, null, gmw.a, List.of());
+      $$4.d = "missingno";
+      return $$4;
    }
 }

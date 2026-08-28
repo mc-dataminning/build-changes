@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface vo {
+public class vo extends z {
+   public vo(o $$0) {
+      super($$0);
+   }
 }

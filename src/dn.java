@@ -9,8 +9,8 @@ public class dn extends dy<dn.a> {
       return dn.a.a;
    }
 
-   public void a(arq $$0, cwm $$1, @Nullable bul $$2) {
-      eun $$3 = bw.b($$0, $$2);
+   public void a(asi $$0, cxk $$1, @Nullable bvf $$2) {
+      ewh $$3 = bw.b($$0, $$2);
       this.a($$0, $$3x -> $$3x.a($$0, $$1, $$3));
    }
 
@@ -32,7 +32,7 @@ public class dn extends dy<dn.a> {
          return ao.S.a(new dn.a($$0, $$1, $$2));
       }
 
-      public boolean a(arq $$0, cwm $$1, eun $$2) {
+      public boolean a(asi $$0, cxk $$1, ewh $$2) {
          return this.c.isPresent() && !this.c.get().a($$1) ? false : !this.d.isPresent() || this.d.get().a($$2);
       }
 

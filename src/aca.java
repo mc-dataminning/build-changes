@@ -1,20 +1,23 @@
-public record aca(alj b) implements zq<abz> {
-   public static final zh<wg, aca> a = zq.a(aca::a, aca::new);
+import io.netty.buffer.ByteBuf;
 
-   private aca(wg $$0) {
-      this($$0.q());
-   }
+public class aca implements aac<abz> {
+   public static final aca a = new aca();
+   public static final zt<ByteBuf, aca> b = zt.a(a);
 
-   private void a(wg $$0) {
-      $$0.a(this.b);
+   private aca() {
    }
 
    @Override
-   public zs<aca> a() {
-      return acb.a;
+   public aae<aca> a() {
+      return acf.a;
    }
 
    public void a(abz $$0) {
       $$0.a(this);
+   }
+
+   @Override
+   public boolean d() {
+      return true;
    }
 }

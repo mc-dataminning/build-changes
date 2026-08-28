@@ -1,29 +1,53 @@
-public record ado(int b, float c) implements zq<acf> {
-   public static final zh<wg, ado> a = zq.a(ado::a, ado::new);
+public class ado implements aac<acr> {
+   public static final zt<xg, ado> a = aac.a(ado::a, ado::new);
+   private final int b;
+   private final int c;
+   private final int d;
+   private final cxk e;
 
-   public ado(bvh $$0) {
-      this($$0.ar(), $$0.eJ());
+   public ado(int $$0, int $$1, int $$2, cxk $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3.v();
    }
 
-   private ado(wg $$0) {
-      this($$0.l(), $$0.readFloat());
+   private ado(xg $$0) {
+      this.b = $$0.x();
+      this.c = $$0.l();
+      this.d = $$0.readShort();
+      this.e = cxk.h.decode($$0);
    }
 
-   private void a(wg $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
+   private void a(xg $$0) {
+      $$0.f(this.b);
+      $$0.c(this.c);
+      $$0.m(this.d);
+      cxk.h.encode($$0, this.e);
    }
 
    @Override
-   public zs<ado> a() {
-      return agu.I;
+   public aae<ado> a() {
+      return ahk.w;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
    }
 
-   public float e() {
+   public int b() {
+      return this.b;
+   }
+
+   public int e() {
+      return this.d;
+   }
+
+   public cxk f() {
+      return this.e;
+   }
+
+   public int g() {
       return this.c;
    }
 }

@@ -1,139 +1,221 @@
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.lwjgl.system.MemoryStack;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Objects;
 
-public interface fev {
-   fev a(float var1, float var2, float var3);
+public abstract class fev {
+   private static final int a = 0;
+   private static final int b = 1;
+   private static final int l = 2;
+   private static final int m = 3;
+   public int c;
+   public int d;
+   public int e;
+   public int f;
+   public final boolean g;
+   public int h;
+   protected int i;
+   protected int j;
+   private final float[] n = ae.a(() -> new float[]{1.0F, 1.0F, 1.0F, 0.0F});
+   public int k;
 
-   fev a(int var1, int var2, int var3, int var4);
-
-   fev a(float var1, float var2);
-
-   fev a(int var1, int var2);
-
-   fev b(int var1, int var2);
-
-   fev b(float var1, float var2, float var3);
-
-   default void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-      this.a($$0, $$1, $$2);
-      this.a($$3);
-      this.a($$4, $$5);
-      this.b($$6);
-      this.c($$7);
-      this.b($$8, $$9, $$10);
+   public fev(boolean $$0) {
+      this.g = $$0;
+      this.h = -1;
+      this.i = -1;
+      this.j = -1;
    }
 
-   default fev a(float $$0, float $$1, float $$2, float $$3) {
-      return this.a((int)($$0 * 255.0F), (int)($$1 * 255.0F), (int)($$2 * 255.0F), (int)($$3 * 255.0F));
-   }
-
-   default fev a(int $$0) {
-      return this.a(axx.b($$0), axx.c($$0), axx.d($$0), axx.a($$0));
-   }
-
-   default fev d(int $$0) {
-      return this.a(axx.c($$0, -1));
-   }
-
-   default fev c(int $$0) {
-      return this.b($$0 & 65535, $$0 >> 16 & 65535);
-   }
-
-   default fev b(int $$0) {
-      return this.a($$0 & 65535, $$0 >> 16 & 65535);
-   }
-
-   default void a(fer.a $$0, gkn $$1, float $$2, float $$3, float $$4, float $$5, int $$6, int $$7) {
-      this.a($$0, $$1, new float[]{1.0F, 1.0F, 1.0F, 1.0F}, $$2, $$3, $$4, $$5, new int[]{$$6, $$6, $$6, $$6}, $$7, false);
-   }
-
-   default void a(fer.a $$0, gkn $$1, float[] $$2, float $$3, float $$4, float $$5, float $$6, int[] $$7, int $$8, boolean $$9) {
-      int[] $$10 = $$1.b();
-      kl $$11 = $$1.e().q();
-      Matrix4f $$12 = $$0.a();
-      Vector3f $$13 = $$0.a((float)$$11.u(), (float)$$11.v(), (float)$$11.w(), new Vector3f());
-      int $$14 = 8;
-      int $$15 = $$10.length / 8;
-      int $$16 = (int)($$6 * 255.0F);
-      int $$17 = $$1.g();
-      MemoryStack $$18 = MemoryStack.stackPush();
-
-      try {
-         ByteBuffer $$19 = $$18.malloc(fep.b.b());
-         IntBuffer $$20 = $$19.asIntBuffer();
-
-         for (int $$21 = 0; $$21 < $$15; $$21++) {
-            $$20.clear();
-            $$20.put($$10, $$21 * 8, 8);
-            float $$22 = $$19.getFloat(0);
-            float $$23 = $$19.getFloat(4);
-            float $$24 = $$19.getFloat(8);
-            float $$28;
-            float $$29;
-            float $$30;
-            if ($$9) {
-               float $$25 = (float)($$19.get(12) & 255);
-               float $$26 = (float)($$19.get(13) & 255);
-               float $$27 = (float)($$19.get(14) & 255);
-               $$28 = $$25 * $$2[$$21] * $$3;
-               $$29 = $$26 * $$2[$$21] * $$4;
-               $$30 = $$27 * $$2[$$21] * $$5;
-            } else {
-               $$28 = $$2[$$21] * $$3 * 255.0F;
-               $$29 = $$2[$$21] * $$4 * 255.0F;
-               $$30 = $$2[$$21] * $$5 * 255.0F;
-            }
-
-            int $$34 = axx.a($$16, (int)$$28, (int)$$29, (int)$$30);
-            int $$35 = gje.b($$7[$$21], $$17);
-            float $$36 = $$19.getFloat(16);
-            float $$37 = $$19.getFloat(20);
-            Vector3f $$38 = $$12.transformPosition($$22, $$23, $$24, new Vector3f());
-            this.a($$38.x(), $$38.y(), $$38.z(), $$34, $$36, $$37, $$8, $$35, $$13.x(), $$13.y(), $$13.z());
-         }
-      } catch (Throwable var35) {
-         if ($$18 != null) {
-            try {
-               $$18.close();
-            } catch (Throwable var34) {
-               var35.addSuppressed(var34);
-            }
-         }
-
-         throw var35;
+   public void a(int $$0, int $$1) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._enableDepthTest();
+      if (this.h >= 0) {
+         this.a();
       }
 
-      if ($$18 != null) {
-         $$18.close();
+      this.b($$0, $$1);
+      GlStateManager._glBindFramebuffer(36160, 0);
+   }
+
+   public void a() {
+      RenderSystem.assertOnRenderThreadOrInit();
+      this.d();
+      this.e();
+      if (this.j > -1) {
+         TextureUtil.releaseTextureId(this.j);
+         this.j = -1;
+      }
+
+      if (this.i > -1) {
+         TextureUtil.releaseTextureId(this.i);
+         this.i = -1;
+      }
+
+      if (this.h > -1) {
+         GlStateManager._glBindFramebuffer(36160, 0);
+         GlStateManager._glDeleteFramebuffers(this.h);
+         this.h = -1;
       }
    }
 
-   default fev a(Vector3f $$0) {
-      return this.a($$0.x(), $$0.y(), $$0.z());
+   public void a(fev $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._glBindFramebuffer(36008, $$0.h);
+      GlStateManager._glBindFramebuffer(36009, this.h);
+      GlStateManager._glBlitFrameBuffer(0, 0, $$0.c, $$0.d, 0, 0, this.c, this.d, 256, 9728);
+      GlStateManager._glBindFramebuffer(36160, 0);
    }
 
-   default fev a(fer.a $$0, Vector3f $$1) {
-      return this.a($$0, $$1.x(), $$1.y(), $$1.z());
+   public void b(int $$0, int $$1) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      int $$2 = RenderSystem.maxSupportedTextureSize();
+      if ($$0 > 0 && $$0 <= $$2 && $$1 > 0 && $$1 <= $$2) {
+         this.e = $$0;
+         this.f = $$1;
+         this.c = $$0;
+         this.d = $$1;
+         this.h = GlStateManager.glGenFramebuffers();
+         this.i = TextureUtil.generateTextureId();
+         if (this.g) {
+            this.j = TextureUtil.generateTextureId();
+            GlStateManager._bindTexture(this.j);
+            GlStateManager._texParameter(3553, 10241, 9728);
+            GlStateManager._texParameter(3553, 10240, 9728);
+            GlStateManager._texParameter(3553, 34892, 0);
+            GlStateManager._texParameter(3553, 10242, 33071);
+            GlStateManager._texParameter(3553, 10243, 33071);
+            GlStateManager._texImage2D(3553, 0, 6402, this.c, this.d, 0, 6402, 5126, null);
+         }
+
+         this.a(9728, true);
+         GlStateManager._bindTexture(this.i);
+         GlStateManager._texParameter(3553, 10242, 33071);
+         GlStateManager._texParameter(3553, 10243, 33071);
+         GlStateManager._texImage2D(3553, 0, 32856, this.c, this.d, 0, 6408, 5121, null);
+         GlStateManager._glBindFramebuffer(36160, this.h);
+         GlStateManager._glFramebufferTexture2D(36160, 36064, 3553, this.i, 0);
+         if (this.g) {
+            GlStateManager._glFramebufferTexture2D(36160, 36096, 3553, this.j, 0);
+         }
+
+         this.b();
+         this.f();
+         this.d();
+      } else {
+         throw new IllegalArgumentException("Window " + $$0 + "x" + $$1 + " size out of bounds (max. size: " + $$2 + ")");
+      }
    }
 
-   default fev a(fer.a $$0, float $$1, float $$2, float $$3) {
-      return this.a($$0.a(), $$1, $$2, $$3);
+   public void a(int $$0) {
+      this.a($$0, false);
    }
 
-   default fev a(Matrix4f $$0, float $$1, float $$2, float $$3) {
-      Vector3f $$4 = $$0.transformPosition($$1, $$2, $$3, new Vector3f());
-      return this.a($$4.x(), $$4.y(), $$4.z());
+   private void a(int $$0, boolean $$1) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      if ($$1 || $$0 != this.k) {
+         this.k = $$0;
+         GlStateManager._bindTexture(this.i);
+         GlStateManager._texParameter(3553, 10241, $$0);
+         GlStateManager._texParameter(3553, 10240, $$0);
+         GlStateManager._bindTexture(0);
+      }
    }
 
-   default fev b(fer.a $$0, float $$1, float $$2, float $$3) {
-      Vector3f $$4 = $$0.a($$1, $$2, $$3, new Vector3f());
-      return this.b($$4.x(), $$4.y(), $$4.z());
+   public void b() {
+      RenderSystem.assertOnRenderThreadOrInit();
+      int $$0 = GlStateManager.glCheckFramebufferStatus(36160);
+      if ($$0 != 36053) {
+         if ($$0 == 36054) {
+            throw new RuntimeException("GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT");
+         } else if ($$0 == 36055) {
+            throw new RuntimeException("GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT");
+         } else if ($$0 == 36059) {
+            throw new RuntimeException("GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER");
+         } else if ($$0 == 36060) {
+            throw new RuntimeException("GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER");
+         } else if ($$0 == 36061) {
+            throw new RuntimeException("GL_FRAMEBUFFER_UNSUPPORTED");
+         } else if ($$0 == 1285) {
+            throw new RuntimeException("GL_OUT_OF_MEMORY");
+         } else {
+            throw new RuntimeException("glCheckFramebufferStatus returned unknown status:" + $$0);
+         }
+      }
    }
 
-   default fev b(fer.a $$0, Vector3f $$1) {
-      return this.b($$0, $$1.x(), $$1.y(), $$1.z());
+   public void c() {
+      RenderSystem.assertOnRenderThread();
+      GlStateManager._bindTexture(this.i);
+   }
+
+   public void d() {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._bindTexture(0);
+   }
+
+   public void a(boolean $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._glBindFramebuffer(36160, this.h);
+      if ($$0) {
+         GlStateManager._viewport(0, 0, this.e, this.f);
+      }
+   }
+
+   public void e() {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._glBindFramebuffer(36160, 0);
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3) {
+      this.n[0] = $$0;
+      this.n[1] = $$1;
+      this.n[2] = $$2;
+      this.n[3] = $$3;
+   }
+
+   public void c(int $$0, int $$1) {
+      GlStateManager._glBindFramebuffer(36008, this.h);
+      GlStateManager._glBlitFrameBuffer(0, 0, this.c, this.d, 0, 0, $$0, $$1, 16384, 9728);
+      GlStateManager._glBindFramebuffer(36008, 0);
+   }
+
+   public void d(int $$0, int $$1) {
+      RenderSystem.assertOnRenderThread();
+      GlStateManager._colorMask(true, true, true, false);
+      GlStateManager._disableDepthTest();
+      GlStateManager._depthMask(false);
+      GlStateManager._viewport(0, 0, $$0, $$1);
+      gkn $$2 = Objects.requireNonNull(RenderSystem.setShader(gko.a), "Blit shader not loaded");
+      $$2.a("InSampler", this.i);
+      fgg $$3 = RenderSystem.renderThreadTesselator().a(fgq.c.h, fgj.a);
+      $$3.a(0.0F, 0.0F, 0.0F);
+      $$3.a(1.0F, 0.0F, 0.0F);
+      $$3.a(1.0F, 1.0F, 0.0F);
+      $$3.a(0.0F, 1.0F, 0.0F);
+      fgh.a($$3.b());
+      GlStateManager._depthMask(true);
+      GlStateManager._colorMask(true, true, true, true);
+   }
+
+   public void f() {
+      RenderSystem.assertOnRenderThreadOrInit();
+      this.a(true);
+      GlStateManager._clearColor(this.n[0], this.n[1], this.n[2], this.n[3]);
+      int $$0 = 16384;
+      if (this.g) {
+         GlStateManager._clearDepth(1.0);
+         $$0 |= 256;
+      }
+
+      GlStateManager._clear($$0);
+      this.e();
+   }
+
+   public int g() {
+      return this.i;
+   }
+
+   public int h() {
+      return this.j;
    }
 }

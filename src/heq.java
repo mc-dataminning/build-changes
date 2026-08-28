@@ -1,59 +1,31 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.nio.file.Path;
-import java.time.LocalDate;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class heq implements hel {
+   private final gka a;
+   private boolean b;
+   private boolean c = true;
 
-public class heq implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = ".json";
-   private static final int c = 7;
-   private final bnl d;
-   @Nullable
-   private CompletableFuture<Optional<hem>> e;
-
-   private heq(bnl $$0) {
-      this.d = $$0;
-   }
-
-   public static CompletableFuture<Optional<heq>> a(Path $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            bnl $$1 = bnl.a($$0, ".json");
-            $$1.a().a(LocalDate.now(), 7).a();
-            return Optional.of(new heq($$1));
-         } catch (Exception var2) {
-            a.error("Failed to create telemetry log manager", var2);
-            return Optional.empty();
-         }
-      }, ae.g());
-   }
-
-   public CompletableFuture<Optional<hen>> a() {
-      if (this.e == null) {
-         this.e = CompletableFuture.supplyAsync(() -> {
-            try {
-               bnl.e $$0 = this.d.a(LocalDate.now());
-               FileChannel $$1 = $$0.e();
-               return Optional.of(new hem($$1, ae.g()));
-            } catch (IOException var3) {
-               a.error("Failed to open channel for telemetry event log", var3);
-               return Optional.empty();
-            }
-         }, ae.g());
-      }
-
-      return this.e.thenApply($$0 -> $$0.map(hem::a));
+   public heq(gka $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void close() {
-      if (this.e != null) {
-         this.e.thenAccept($$0 -> $$0.ifPresent(hem::close));
+   public void a() {
+      dha $$0 = this.a.dV();
+      dxn $$1 = $$0.c(this.a.cR().c(0.0, -0.4F, 0.0).h(1.0E-6)).filter($$0x -> $$0x.a(dkg.ny)).findFirst().orElse(null);
+      if ($$1 != null) {
+         if (!this.b && !this.c && $$1.a(dkg.ny) && !this.a.aa_()) {
+            boolean $$2 = $$1.c(dkl.b);
+            if ($$2) {
+               this.a.a(axf.db, 1.0F, 1.0F);
+            } else {
+               this.a.a(axf.cZ, 1.0F, 1.0F);
+            }
+         }
+
+         this.b = true;
+      } else {
+         this.b = false;
       }
+
+      this.c = false;
    }
 }

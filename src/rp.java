@@ -1,167 +1,41 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
-import java.util.List;
 
 public class rp {
-   public static final ali<ens> a = rg.a("trail_ruins/tower");
+   public static final aly<epm> a = rr.a("pillager_outpost/base_plates");
 
-   public static void a(qz<ens> $$0) {
-      jr<ens> $$1 = $$0.a(ma.aV);
-      jq<ens> $$2 = $$1.b(rg.a);
-      jr<eqi> $$3 = $$0.a(ma.aT);
-      jq<eqi> $$4 = $$3.b(rh.J);
-      jq<eqi> $$5 = $$3.b(rh.K);
-      jq<eqi> $$6 = $$3.b(rh.L);
-      $$0.a(
-         a,
-         new ens(
-            $$2,
-            List.of(
-               Pair.of(enq.b("trail_ruins/tower/tower_1", $$4), 1),
-               Pair.of(enq.b("trail_ruins/tower/tower_2", $$4), 1),
-               Pair.of(enq.b("trail_ruins/tower/tower_3", $$4), 1),
-               Pair.of(enq.b("trail_ruins/tower/tower_4", $$4), 1),
-               Pair.of(enq.b("trail_ruins/tower/tower_5", $$4), 1)
-            ),
-            ens.a.b
+   public static void a(rk<epm> $$0) {
+      jr<esc> $$1 = $$0.a(mb.aU);
+      jq<esc> $$2 = $$1.b(rs.q);
+      jr<epm> $$3 = $$0.a(mb.aW);
+      jq<epm> $$4 = $$3.b(rr.a);
+      $$0.a(a, new epm($$4, ImmutableList.of(Pair.of(epk.a("pillager_outpost/base_plate"), 1)), epm.a.b));
+      rr.a(
+         $$0,
+         "pillager_outpost/towers",
+         new epm(
+            $$4,
+            ImmutableList.of(Pair.of(epk.b(ImmutableList.of(epk.a("pillager_outpost/watchtower"), epk.a("pillager_outpost/watchtower_overgrown", $$2))), 1)),
+            epm.a.b
          )
       );
-      rg.a(
+      rr.a($$0, "pillager_outpost/feature_plates", new epm($$4, ImmutableList.of(Pair.of(epk.a("pillager_outpost/feature_plate"), 1)), epm.a.a));
+      rr.a(
          $$0,
-         "trail_ruins/tower/tower_top",
-         new ens(
-            $$2,
-            List.of(
-               Pair.of(enq.b("trail_ruins/tower/tower_top_1", $$6), 1),
-               Pair.of(enq.b("trail_ruins/tower/tower_top_2", $$6), 1),
-               Pair.of(enq.b("trail_ruins/tower/tower_top_3", $$6), 1),
-               Pair.of(enq.b("trail_ruins/tower/tower_top_4", $$6), 1),
-               Pair.of(enq.b("trail_ruins/tower/tower_top_5", $$6), 1)
+         "pillager_outpost/features",
+         new epm(
+            $$4,
+            ImmutableList.of(
+               Pair.of(epk.a("pillager_outpost/feature_cage1"), 1),
+               Pair.of(epk.a("pillager_outpost/feature_cage2"), 1),
+               Pair.of(epk.a("pillager_outpost/feature_cage_with_allays"), 1),
+               Pair.of(epk.a("pillager_outpost/feature_logs"), 1),
+               Pair.of(epk.a("pillager_outpost/feature_tent1"), 1),
+               Pair.of(epk.a("pillager_outpost/feature_tent2"), 1),
+               Pair.of(epk.a("pillager_outpost/feature_targets"), 1),
+               Pair.of(epk.h(), 6)
             ),
-            ens.a.b
-         )
-      );
-      rg.a(
-         $$0,
-         "trail_ruins/tower/additions",
-         new ens(
-            $$2,
-            List.of(
-               Pair.of(enq.b("trail_ruins/tower/hall_1", $$4), 1),
-               Pair.of(enq.b("trail_ruins/tower/hall_2", $$4), 1),
-               Pair.of(enq.b("trail_ruins/tower/hall_3", $$4), 1),
-               Pair.of(enq.b("trail_ruins/tower/hall_4", $$4), 1),
-               Pair.of(enq.b("trail_ruins/tower/hall_5", $$4), 1),
-               Pair.of(enq.b("trail_ruins/tower/large_hall_1", $$4), 1),
-               Pair.of(enq.b("trail_ruins/tower/large_hall_2", $$4), 1),
-               Pair.of(enq.b("trail_ruins/tower/large_hall_3", $$4), 1),
-               Pair.of(enq.b("trail_ruins/tower/large_hall_4", $$4), 1),
-               Pair.of(enq.b("trail_ruins/tower/large_hall_5", $$4), 1),
-               Pair.of(enq.b("trail_ruins/tower/one_room_1", $$4), 1),
-               Pair.of(enq.b("trail_ruins/tower/one_room_2", $$4), 1),
-               Pair.of(enq.b("trail_ruins/tower/one_room_3", $$4), 1),
-               Pair.of(enq.b("trail_ruins/tower/one_room_4", $$4), 1),
-               Pair.of(enq.b("trail_ruins/tower/one_room_5", $$4), 1),
-               Pair.of(enq.b("trail_ruins/tower/platform_1", $$4), 1),
-               Pair.of(enq.b("trail_ruins/tower/platform_2", $$4), 1),
-               Pair.of(enq.b("trail_ruins/tower/platform_3", $$4), 1),
-               Pair.of(enq.b("trail_ruins/tower/platform_4", $$4), 1),
-               Pair.of(enq.b("trail_ruins/tower/platform_5", $$4), 1),
-               Pair.of(enq.b("trail_ruins/tower/stable_1", $$4), 1),
-               Pair.of(enq.b("trail_ruins/tower/stable_2", $$4), 1),
-               Pair.of(enq.b("trail_ruins/tower/stable_3", $$4), 1),
-               Pair.of(enq.b("trail_ruins/tower/stable_4", $$4), 1),
-               Pair.of(enq.b("trail_ruins/tower/stable_5", $$4), 1)
-            ),
-            ens.a.b
-         )
-      );
-      rg.a(
-         $$0,
-         "trail_ruins/roads",
-         new ens(
-            $$2,
-            List.of(
-               Pair.of(enq.b("trail_ruins/roads/long_road_end", $$5), 1),
-               Pair.of(enq.b("trail_ruins/roads/road_end_1", $$5), 1),
-               Pair.of(enq.b("trail_ruins/roads/road_section_1", $$5), 1),
-               Pair.of(enq.b("trail_ruins/roads/road_section_2", $$5), 1),
-               Pair.of(enq.b("trail_ruins/roads/road_section_3", $$5), 1),
-               Pair.of(enq.b("trail_ruins/roads/road_section_4", $$5), 1),
-               Pair.of(enq.b("trail_ruins/roads/road_spacer_1", $$5), 1)
-            ),
-            ens.a.b
-         )
-      );
-      rg.a(
-         $$0,
-         "trail_ruins/buildings",
-         new ens(
-            $$2,
-            List.of(
-               Pair.of(enq.b("trail_ruins/buildings/group_hall_1", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/group_hall_2", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/group_hall_3", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/group_hall_4", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/group_hall_5", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/large_room_1", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/large_room_2", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/large_room_3", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/large_room_4", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/large_room_5", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/one_room_1", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/one_room_2", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/one_room_3", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/one_room_4", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/one_room_5", $$4), 1)
-            ),
-            ens.a.b
-         )
-      );
-      rg.a(
-         $$0,
-         "trail_ruins/buildings/grouped",
-         new ens(
-            $$2,
-            List.of(
-               Pair.of(enq.b("trail_ruins/buildings/group_full_1", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/group_full_2", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/group_full_3", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/group_full_4", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/group_full_5", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/group_lower_1", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/group_lower_2", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/group_lower_3", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/group_lower_4", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/group_lower_5", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/group_upper_1", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/group_upper_2", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/group_upper_3", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/group_upper_4", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/group_upper_5", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/group_room_1", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/group_room_2", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/group_room_3", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/group_room_4", $$4), 1),
-               Pair.of(enq.b("trail_ruins/buildings/group_room_5", $$4), 1)
-            ),
-            ens.a.b
-         )
-      );
-      rg.a(
-         $$0,
-         "trail_ruins/decor",
-         new ens(
-            $$2,
-            List.of(
-               Pair.of(enq.b("trail_ruins/decor/decor_1", $$4), 1),
-               Pair.of(enq.b("trail_ruins/decor/decor_2", $$4), 1),
-               Pair.of(enq.b("trail_ruins/decor/decor_3", $$4), 1),
-               Pair.of(enq.b("trail_ruins/decor/decor_4", $$4), 1),
-               Pair.of(enq.b("trail_ruins/decor/decor_5", $$4), 1),
-               Pair.of(enq.b("trail_ruins/decor/decor_6", $$4), 1),
-               Pair.of(enq.b("trail_ruins/decor/decor_7", $$4), 1)
-            ),
-            ens.a.b
+            epm.a.b
          )
       );
    }

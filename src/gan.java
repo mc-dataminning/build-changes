@@ -1,21 +1,37 @@
-public class gan extends fzw<gwz> {
-   public gan(gcl $$0) {
+public class gan extends gda<gxb> {
+   private final geh a;
+
+   public gan(geh $$0) {
       super($$0);
+      this.a = $$0.b("head").b("mushrooms");
    }
 
-   public static gcr a() {
-      gct $$0 = fzw.a(gcp.a, 0.0F);
-      gcv $$1 = $$0.a();
-      gcv $$2 = $$1.a("head");
-      $$2.a("hat");
-      $$1.a("body");
-      $$1.a("left_arm");
-      $$1.a("right_arm");
-      $$1.a("left_leg");
-      $$1.a("right_leg");
-      gcq $$3 = gcq.c().a(24, 0).a(-3.0F, -6.0F, -1.0F, 6.0F, 6.0F, 1.0F, new gcp(1.0F));
-      $$2.a("left_ear", $$3, gcn.a(-6.0F, -6.0F, 0.0F));
-      $$2.a("right_ear", $$3, gcn.a(6.0F, -6.0F, 0.0F));
-      return gcr.a($$0, 64, 64);
+   public static gen a() {
+      gep $$0 = gbs.a(gel.a, 0.0F);
+      ger $$1 = $$0.a();
+      gda.a($$1);
+      ger $$2 = $$1.b("head").a("mushrooms");
+      $$2.a("red_mushroom_1", gem.c().a(50, 16).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), gej.a(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$2.a("red_mushroom_2", gem.c().a(50, 16).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), gej.a(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F));
+      $$2.a("brown_mushroom_1", gem.c().a(50, 22).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), gej.a(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$2.a(
+         "brown_mushroom_2", gem.c().a(50, 22).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), gej.a(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F)
+      );
+      $$2.a(
+         "brown_mushroom_3",
+         gem.c().a(50, 28).a(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
+         gej.a(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI / 4))
+      );
+      $$2.a(
+         "brown_mushroom_4",
+         gem.c().a(50, 28).a(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
+         gej.a(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 4.0))
+      );
+      return gen.a($$0, 64, 32);
+   }
+
+   public void a(gxb $$0) {
+      super.a($$0);
+      this.a.k = !$$0.a;
    }
 }

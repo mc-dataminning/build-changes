@@ -1,36 +1,56 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.DSL.TypeReference;
 
-public class bis extends DataFix {
-   public bis(Schema $$0) {
-      super($$0, false);
-   }
+public class bis {
+   public static final TypeReference a = a("level");
+   public static final TypeReference b = a("player");
+   public static final TypeReference c = a("chunk");
+   public static final TypeReference d = a("hotbar");
+   public static final TypeReference e = a("options");
+   public static final TypeReference f = a("structure");
+   public static final TypeReference g = a("stats");
+   public static final TypeReference h = a("saved_data/command_storage");
+   public static final TypeReference i = a("saved_data/chunks");
+   public static final TypeReference j = a("saved_data/map_data");
+   public static final TypeReference k = a("saved_data/idcounts");
+   public static final TypeReference l = a("saved_data/raids");
+   public static final TypeReference m = a("saved_data/random_sequences");
+   public static final TypeReference n = a("saved_data/structure_feature_indices");
+   public static final TypeReference o = a("saved_data/scoreboard");
+   public static final TypeReference p = a("advancements");
+   public static final TypeReference q = a("poi_chunk");
+   public static final TypeReference r = a("entity_chunk");
+   public static final TypeReference s = a("block_entity");
+   public static final TypeReference t = a("item_stack");
+   public static final TypeReference u = a("block_state");
+   public static final TypeReference v = a("flat_block_state");
+   public static final TypeReference w = a("data_components");
+   public static final TypeReference x = a("villager_trade");
+   public static final TypeReference y = a("particle");
+   public static final TypeReference z = a("entity_name");
+   public static final TypeReference A = a("entity_tree");
+   public static final TypeReference B = a("entity");
+   public static final TypeReference C = a("block_name");
+   public static final TypeReference D = a("item_name");
+   public static final TypeReference E = a("game_event_name");
+   public static final TypeReference F = a("untagged_spawner");
+   public static final TypeReference G = a("structure_feature");
+   public static final TypeReference H = a("objective");
+   public static final TypeReference I = a("team");
+   public static final TypeReference J = a("recipe");
+   public static final TypeReference K = a("biome");
+   public static final TypeReference L = a("multi_noise_biome_source_parameter_list");
+   public static final TypeReference M = a("world_gen_settings");
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bia.M);
-      OpticFinder<?> $$1 = $$0.findField("dimensions");
-      return this.fixTypeEverywhereTyped(
-         "StructureSettingsFlatten", $$0, $$1x -> $$1x.updateTyped($$1, $$1xx -> ae.a($$1xx, $$1.type(), $$0xxx -> $$0xxx.updateMapValues(bis::a)))
-      );
-   }
+   public static TypeReference a(final String $$0) {
+      return new TypeReference() {
+         public String typeName() {
+            return $$0;
+         }
 
-   private static Pair<Dynamic<?>, Dynamic<?>> a(Pair<Dynamic<?>, Dynamic<?>> $$0) {
-      Dynamic<?> $$1 = (Dynamic<?>)$$0.getSecond();
-      return Pair.of((Dynamic)$$0.getFirst(), $$1.update("generator", $$0x -> $$0x.update("settings", $$0xx -> $$0xx.update("structures", bis::a))));
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      Dynamic<?> $$1 = $$0.get("structures")
-         .orElseEmptyMap()
-         .updateMapValues($$1x -> $$1x.mapSecond($$1xx -> $$1xx.set("type", $$0.createString("minecraft:random_spread"))));
-      return (Dynamic<?>)DataFixUtils.orElse(
-         $$0.get("stronghold").result().map($$2 -> $$1.set("minecraft:stronghold", $$2.set("type", $$0.createString("minecraft:concentric_rings")))), $$1
-      );
+         @Override
+         public String toString() {
+            return "@" + $$0;
+         }
+      };
    }
 }

@@ -1,32 +1,30 @@
-import com.google.common.collect.Maps;
-import java.util.Locale;
-import java.util.Map;
+public class gok implements gnp<dwv> {
+   private final gsh a;
+   private final bam b = bam.a();
 
-public class gok extends gof<cik, gux, fyk> {
-   private static final Map<cik.e, alj> a = ae.a(Maps.newHashMap(), $$0 -> {
-      for (cik.e $$1 : cik.e.values()) {
-         $$0.put($$1, alj.b(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
+   public gok(gnq.a $$0) {
+      this.a = $$0.d();
+   }
+
+   public void a(dwv $$0, float $$1, fgl $$2, gle $$3, int $$4, int $$5) {
+      if (dwv.a.a($$0.c())) {
+         dha $$6 = $$0.i();
+         if ($$6 != null) {
+            cxk $$7 = $$0.c().a();
+            if (!$$7.f()) {
+               this.b.b((long)gsf.a($$7));
+               dww $$8 = $$0.d();
+               a($$1, $$6, $$2, $$3, $$4, $$7, this.a, $$8.b(), $$8.a(), this.b);
+            }
+         }
       }
-   });
-
-   public gok(gpk.a $$0) {
-      super($$0, new fyk($$0.a(gck.m)), new fyk($$0.a(gck.n)), 0.5F);
    }
 
-   public alj a(gux $$0) {
-      return a.get($$0.a);
-   }
-
-   public gux a() {
-      return new gux();
-   }
-
-   public void a(cik $$0, gux $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gm();
-      $$1.b = $$0.cf.a($$2);
-      $$1.d = $$0.cg.a($$2);
-      $$1.e = $$0.ch.a($$2);
-      $$1.c = $$0.ci.a($$2);
+   public static void a(float $$0, dha $$1, fgl $$2, gle $$3, int $$4, cxk $$5, gsh $$6, float $$7, float $$8, bam $$9) {
+      $$2.a();
+      $$2.a(0.5F, 0.4F, 0.5F);
+      $$2.a(a.d.rotationDegrees(bae.i($$0, $$7, $$8)));
+      gsf.a($$6, $$2, $$3, $$4, $$5, $$9, $$1);
+      $$2.b();
    }
 }

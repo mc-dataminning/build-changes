@@ -1,8 +1,18 @@
-public class aky {
-   public static final ali<cwi> a = a("pumpkin_seeds");
-   public static final ali<cwi> b = a("melon_seeds");
+import io.netty.buffer.ByteBuf;
 
-   private static ali<cwi> a(String $$0) {
-      return ali.a(ma.K, alj.b($$0));
+public class aky implements aac<akx> {
+   public static final aky a = new aky();
+   public static final zt<ByteBuf, aky> b = zt.a(a);
+
+   private aky() {
+   }
+
+   @Override
+   public aae<aky> a() {
+      return akz.b;
+   }
+
+   public void a(akx $$0) {
+      $$0.a(this);
    }
 }

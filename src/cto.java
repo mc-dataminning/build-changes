@@ -1,16 +1,19 @@
-public abstract class cto extends crz {
-   public cto(cti<?> $$0, int $$1) {
-      super($$0, $$1);
+public class cto extends cuu {
+   private final ctn a;
+
+   public cto(bsx $$0, int $$1, int $$2, int $$3, ctn $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$4;
    }
 
-   public abstract cto.a a(boolean var1, boolean var2, dbc<?> var3, cot var4);
+   @Override
+   public boolean a(cxk $$0) {
+      return !this.a.e(this.d) && super.a($$0);
+   }
 
-   public abstract void a(coz var1);
-
-   public abstract ctp am_();
-
-   public static enum a {
-      a,
-      b;
+   @Override
+   public void c() {
+      super.c();
+      this.a.a(this.c);
    }
 }

@@ -1,86 +1,61 @@
-public class agd implements zq<acf> {
-   public static final zh<wu, agd> a = zq.a(agd::a, agd::new);
-   public static final float b = 8.0F;
-   private final jq<awm> c;
-   private final awo d;
+public class agd implements aac<acr> {
+   public static final zt<ws, agd> a = aac.a(agd::a, agd::new);
+   private final int b;
+   private final int c;
+   private final int d;
    private final int e;
-   private final int f;
-   private final int g;
-   private final float h;
-   private final float i;
-   private final long j;
 
-   public agd(jq<awm> $$0, awo $$1, double $$2, double $$3, double $$4, float $$5, float $$6, long $$7) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = (int)($$2 * 8.0);
-      this.f = (int)($$3 * 8.0);
-      this.g = (int)($$4 * 8.0);
-      this.h = $$5;
-      this.i = $$6;
-      this.j = $$7;
+   public agd(bvf $$0) {
+      this($$0.ar(), $$0.dy());
    }
 
-   private agd(wu $$0) {
-      this.c = awm.d.decode($$0);
-      this.d = $$0.b(awo.class);
-      this.e = $$0.readInt();
-      this.f = $$0.readInt();
-      this.g = $$0.readInt();
-      this.h = $$0.readFloat();
-      this.i = $$0.readFloat();
-      this.j = $$0.readLong();
+   public agd(int $$0, fbs $$1) {
+      this.b = $$0;
+      double $$2 = 3.9;
+      double $$3 = bae.a($$1.d, -3.9, 3.9);
+      double $$4 = bae.a($$1.e, -3.9, 3.9);
+      double $$5 = bae.a($$1.f, -3.9, 3.9);
+      this.c = (int)($$3 * 8000.0);
+      this.d = (int)($$4 * 8000.0);
+      this.e = (int)($$5 * 8000.0);
    }
 
-   private void a(wu $$0) {
-      awm.d.encode($$0, this.c);
-      $$0.a(this.d);
-      $$0.q(this.e);
-      $$0.q(this.f);
-      $$0.q(this.g);
-      $$0.a(this.h);
-      $$0.a(this.i);
-      $$0.b(this.j);
+   private agd(ws $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readShort();
+      this.d = $$0.readShort();
+      this.e = $$0.readShort();
+   }
+
+   private void a(ws $$0) {
+      $$0.c(this.b);
+      $$0.m(this.c);
+      $$0.m(this.d);
+      $$0.m(this.e);
    }
 
    @Override
-   public zs<agd> a() {
-      return agu.aT;
+   public aae<agd> a() {
+      return ahk.aH;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
    }
 
-   public jq<awm> b() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 
-   public awo e() {
-      return this.d;
+   public double e() {
+      return (double)this.c / 8000.0;
    }
 
    public double f() {
-      return (double)((float)this.e / 8.0F);
+      return (double)this.d / 8000.0;
    }
 
    public double g() {
-      return (double)((float)this.f / 8.0F);
-   }
-
-   public double h() {
-      return (double)((float)this.g / 8.0F);
-   }
-
-   public float i() {
-      return this.h;
-   }
-
-   public float j() {
-      return this.i;
-   }
-
-   public long k() {
-      return this.j;
+      return (double)this.e / 8000.0;
    }
 }

@@ -1,14 +1,35 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class ayh {
-   public static final int a = -1;
-   public static final int b = -16777216;
-   public static final int c = -8355712;
-   public static final int d = -6250336;
-   public static final int e = -4539718;
-   public static final int f = -65536;
-   public static final int g = -2142128;
-   public static final int h = -16711936;
-   public static final int i = -16776961;
-   public static final int j = -256;
-   public static final int k = -171;
-   public static final int l = -11534256;
+   private final List<ayi> a = new ArrayList<>();
+
+   public static ayh a() {
+      return new ayh();
+   }
+
+   public List<ayi> b() {
+      return List.copyOf(this.a);
+   }
+
+   public ayh a(ayi $$0) {
+      this.a.add($$0);
+      return this;
+   }
+
+   public ayh a(alz $$0) {
+      return this.a(ayi.a($$0));
+   }
+
+   public ayh b(alz $$0) {
+      return this.a(ayi.b($$0));
+   }
+
+   public ayh c(alz $$0) {
+      return this.a(ayi.c($$0));
+   }
+
+   public ayh d(alz $$0) {
+      return this.a(ayi.d($$0));
+   }
 }

@@ -1,6 +1,7 @@
-import javax.annotation.Nullable;
-
-public interface bwf {
-   @Nullable
-   bvh aa_();
+public enum bwf {
+   a,
+   b,
+   c,
+   d,
+   e;
 }

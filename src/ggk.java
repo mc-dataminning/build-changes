@@ -1,57 +1,47 @@
-public class ggk extends gho {
-   ggk(gdh $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.u = 0.75F;
-      this.B = 0.999F;
-      this.j *= 0.8F;
-      this.k *= 0.8F;
-      this.l *= 0.8F;
-      this.k = (double)(this.r.i() * 0.4F + 0.05F);
-      this.D = this.D * (this.r.i() * 2.0F + 0.2F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+import java.util.List;
+import java.util.Locale;
+
+public enum ggk {
+   a("i_want_to_report_them"),
+   b("hate_speech"),
+   c("harassment_or_bullying"),
+   d("self_harm_or_suicide"),
+   e("imminent_harm"),
+   f("defamation_impersonation_false_information"),
+   g("alcohol_tobacco_drugs"),
+   h("child_sexual_exploitation_or_abuse"),
+   i("terrorism_or_violent_extremism"),
+   j("non_consensual_intimate_imagery"),
+   k("sexually_inappropriate");
+
+   private final String l;
+   private final xv m;
+   private final xv n;
+
+   private ggk(final String $$0) {
+      this.l = $$0.toUpperCase(Locale.ROOT);
+      String $$1 = "gui.abuseReport.reason." + $$0;
+      this.m = xv.c($$1);
+      this.n = xv.c($$1 + ".description");
    }
 
-   @Override
-   public ggs b() {
-      return ggs.b;
+   public String a() {
+      return this.l;
    }
 
-   @Override
-   public int a(float $$0) {
-      int $$1 = super.a($$0);
-      int $$2 = 240;
-      int $$3 = $$1 >> 16 & 0xFF;
-      return 240 | $$3 << 16;
+   public xv b() {
+      return this.m;
    }
 
-   @Override
-   public float b(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      return this.D * (1.0F - $$1 * $$1);
+   public xv c() {
+      return this.n;
    }
 
-   @Override
-   public void a() {
-      super.a();
-      if (!this.o) {
-         float $$0 = (float)this.s / (float)this.t;
-         if (this.r.i() > $$0) {
-            this.c.a(ls.ae, this.g, this.h, this.i, this.j, this.k, this.l);
-         }
-      }
-   }
-
-   public static class a implements ggr<lw> {
-      private final ghj a;
-
-      public a(ghj $$0) {
-         this.a = $$0;
-      }
-
-      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ggk $$8 = new ggk($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
-      }
+   public static List<ggk> a(ggl $$0) {
+      return switch ($$0) {
+         case a -> List.of(k);
+         case b -> List.of(e, f);
+         default -> List.of();
+      };
    }
 }

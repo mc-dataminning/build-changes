@@ -1,56 +1,48 @@
+import com.google.common.collect.Iterables;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.ParseResults;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.context.ParsedCommandNode;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.tree.CommandNode;
+import java.util.Map;
 
 public class aol {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xj.c("commands.publish.failed"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xj.b("commands.publish.alreadyPublished", $$0));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xv.c("commands.help.failed"));
 
    public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("publish").requires($$0x -> $$0x.c(4)))
-               .executes($$0x -> a((ew)$$0x.getSource(), azd.a(), false, null)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("help").executes($$1 -> {
+               Map<CommandNode<ew>, String> $$2 = $$0.getSmartUsage($$0.getRoot(), (ew)$$1.getSource());
+
+               for (String $$3 : $$2.values()) {
+                  ((ew)$$1.getSource()).a(() -> xv.b("/" + $$3), false);
+               }
+
+               return $$2.size();
+            }))
             .then(
-               ((RequiredArgumentBuilder)ex.a("allowCommands", BoolArgumentType.bool())
-                     .executes($$0x -> a((ew)$$0x.getSource(), azd.a(), BoolArgumentType.getBool($$0x, "allowCommands"), null)))
-                  .then(
-                     ((RequiredArgumentBuilder)ex.a("gamemode", fk.a())
-                           .executes($$0x -> a((ew)$$0x.getSource(), azd.a(), BoolArgumentType.getBool($$0x, "allowCommands"), fk.a($$0x, "gamemode"))))
-                        .then(
-                           ex.a("port", IntegerArgumentType.integer(0, 65535))
-                              .executes(
-                                 $$0x -> a(
-                                       (ew)$$0x.getSource(),
-                                       IntegerArgumentType.getInteger($$0x, "port"),
-                                       BoolArgumentType.getBool($$0x, "allowCommands"),
-                                       fk.a($$0x, "gamemode")
-                                    )
-                              )
-                        )
+               ex.a("command", StringArgumentType.greedyString())
+                  .executes(
+                     $$1 -> {
+                        ParseResults<ew> $$2 = $$0.parse(StringArgumentType.getString($$1, "command"), (ew)$$1.getSource());
+                        if ($$2.getContext().getNodes().isEmpty()) {
+                           throw a.create();
+                        } else {
+                           Map<CommandNode<ew>, String> $$3 = $$0.getSmartUsage(
+                              ((ParsedCommandNode)Iterables.getLast($$2.getContext().getNodes())).getNode(), (ew)$$1.getSource()
+                           );
+
+                           for (String $$4 : $$3.values()) {
+                              ((ew)$$1.getSource()).a(() -> xv.b("/" + $$2.getReader().getString() + " " + $$4), false);
+                           }
+
+                           return $$3.size();
+                        }
+                     }
                   )
             )
       );
-   }
-
-   private static int a(ew $$0, int $$1, boolean $$2, @Nullable dfj $$3) throws CommandSyntaxException {
-      if ($$0.l().r()) {
-         throw b.create($$0.l().S());
-      } else if (!$$0.l().a($$3, $$2, $$1)) {
-         throw a.create();
-      } else {
-         $$0.a(() -> a($$1), true);
-         return $$1;
-      }
-   }
-
-   public static xx a(int $$0) {
-      xj $$1 = xm.a(String.valueOf($$0));
-      return xj.a("commands.publish.started", $$1);
    }
 }

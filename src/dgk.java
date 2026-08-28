@@ -1,13 +1,4 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-
-public interface dgk extends dgd {
-   long D();
-
-   default boolean f_(jh $$0) {
-      return true;
-   }
-
-   default void a(@Nullable Supplier<String> $$0) {
-   }
+@FunctionalInterface
+public interface dgk {
+   int getColor(dic var1, double var2, double var4);
 }

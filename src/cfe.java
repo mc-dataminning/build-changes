@@ -1,43 +1,59 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.Set;
 
-public class cfe extends cfr<cnc> {
-   @Override
-   public Set<cel<?>> a() {
-      return ImmutableSet.of(cel.h, cel.aw, cel.aq, cel.ap, cel.as, cel.at, new cel[0]);
+public class cfe<T> {
+   private final T a;
+   private long b;
+
+   public cfe(T $$0, long $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   protected void a(arp $$0, cnc $$1) {
-      bwj<?> $$2 = $$1.eb();
-      $$2.a(cel.aw, this.b($$0, $$1));
-      Optional<cni> $$3 = Optional.empty();
-      int $$4 = 0;
-      List<cnc> $$5 = Lists.newArrayList();
-      cen $$6 = $$2.c(cel.h).orElse(cen.a());
-
-      for (bvh $$7 : $$6.b($$0x -> !$$0x.e_() && ($$0x instanceof cni || $$0x instanceof cnc))) {
-         if ($$7 instanceof cni $$8) {
-            $$4++;
-            if ($$3.isEmpty()) {
-               $$3 = Optional.of($$8);
-            }
-         }
-
-         if ($$7 instanceof cnc $$9) {
-            $$5.add($$9);
-         }
+   public void a() {
+      if (this.e()) {
+         this.b--;
       }
-
-      $$2.a(cel.aq, $$3);
-      $$2.a(cel.ap, $$5);
-      $$2.a(cel.as, $$4);
-      $$2.a(cel.at, $$5.size());
    }
 
-   private Optional<jh> b(arp $$0, cnc $$1) {
-      return jh.a($$1.dv(), 8, 4, $$1x -> $$0.a_($$1x).a(axc.aT));
+   public static <T> cfe<T> a(T $$0) {
+      return new cfe<>($$0, Long.MAX_VALUE);
+   }
+
+   public static <T> cfe<T> a(T $$0, long $$1) {
+      return new cfe<>($$0, $$1);
+   }
+
+   public long b() {
+      return this.b;
+   }
+
+   public T c() {
+      return this.a;
+   }
+
+   public boolean d() {
+      return this.b <= 0L;
+   }
+
+   @Override
+   public String toString() {
+      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
+   }
+
+   @bbl
+   public boolean e() {
+      return this.b != Long.MAX_VALUE;
+   }
+
+   public static <T> Codec<cfe<T>> a(Codec<T> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(
+                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
+                  Codec.LONG.lenientOptionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
+               )
+               .apply($$1, ($$0xx, $$1x) -> new cfe<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
+      );
    }
 }

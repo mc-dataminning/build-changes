@@ -1,41 +1,28 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class hfg implements hfj {
-   private static final int a = 600;
-   private static final xj b = xj.c("tutorial.open_inventory.title");
-   private static final xj c = xj.a("tutorial.open_inventory.description", hfi.a("inventory"));
-   private final hfi d;
-   @Nullable
-   private fop e;
-   private int f;
+public class hfg<T> extends hfh<T> {
+   private final hfl<T> c;
 
-   public hfg(hfi $$0) {
-      this.d = $$0;
+   public hfg(Function<T, Stream<String>> $$0, Function<T, Stream<alz>> $$1, List<T> $$2) {
+      super($$1, $$2);
+      this.c = hfl.plainText($$2, $$0);
    }
 
    @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(hfk.f);
-      } else {
-         if (this.f >= 600 && this.e == null) {
-            this.e = new fop(fop.a.d, b, c, false);
-            this.d.e().aA().a(this.e);
-         }
-      }
+   protected List<T> a(String $$0) {
+      return this.c.search($$0);
    }
 
    @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.d();
-         this.e = null;
-      }
-   }
-
-   @Override
-   public void c() {
-      this.d.a(hfk.e);
+   protected List<T> a(String $$0, String $$1) {
+      List<T> $$2 = this.b.a($$0);
+      List<T> $$3 = this.b.b($$1);
+      List<T> $$4 = this.c.search($$1);
+      Iterator<T> $$5 = new hfj<T>($$3.iterator(), $$4.iterator(), this.a);
+      return ImmutableList.copyOf(new hfi<T>($$2.iterator(), $$5, this.a));
    }
 }

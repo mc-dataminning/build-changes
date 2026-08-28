@@ -1,12 +1,23 @@
-public record afi(cwm b) implements zq<acf> {
-   public static final zh<wu, afi> a = zh.a(cwm.h, afi::b, afi::new);
+import javax.annotation.Nullable;
+
+public record afi(int b, jq<bui> c) implements aac<acr> {
+   public static final zt<xg, afi> a = zt.a(zr.h, afi::b, bui.b, afi::e, afi::new);
 
    @Override
-   public zs<afi> a() {
-      return agu.ck;
+   public aae<afi> a() {
+      return ahk.ao;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
+   }
+
+   @Nullable
+   public bvf a(dha $$0) {
+      return $$0.a(this.b);
+   }
+
+   public jq<bui> e() {
+      return this.c;
    }
 }

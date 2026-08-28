@@ -1,61 +1,69 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import java.util.Map;
+import javax.annotation.Nullable;
 
 public class bjc extends DataFix {
-   private static final int a = 2;
-   private static final int[] b = new int[]{0, 10, 50, 100, 150};
+   private static final Map<String, String> a = ImmutableMap.builder()
+      .put("slot_0", "list")
+      .put("slot_1", "sidebar")
+      .put("slot_2", "below_name")
+      .put("slot_3", "sidebar.team.black")
+      .put("slot_4", "sidebar.team.dark_blue")
+      .put("slot_5", "sidebar.team.dark_green")
+      .put("slot_6", "sidebar.team.dark_aqua")
+      .put("slot_7", "sidebar.team.dark_red")
+      .put("slot_8", "sidebar.team.dark_purple")
+      .put("slot_9", "sidebar.team.gold")
+      .put("slot_10", "sidebar.team.gray")
+      .put("slot_11", "sidebar.team.dark_gray")
+      .put("slot_12", "sidebar.team.blue")
+      .put("slot_13", "sidebar.team.green")
+      .put("slot_14", "sidebar.team.aqua")
+      .put("slot_15", "sidebar.team.red")
+      .put("slot_16", "sidebar.team.light_purple")
+      .put("slot_17", "sidebar.team.yellow")
+      .put("slot_18", "sidebar.team.white")
+      .build();
 
-   public static int a(int $$0) {
-      return b[azm.a($$0 - 1, 0, b.length - 1)];
+   public bjc(Schema $$0) {
+      super($$0, false);
    }
 
-   public bjc(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   @Nullable
+   private static String a(String $$0) {
+      return a.get($$0);
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getChoiceType(bia.B, "minecraft:villager");
-      OpticFinder<?> $$1 = DSL.namedChoice("minecraft:villager", $$0);
-      OpticFinder<?> $$2 = $$0.findField("Offers");
-      Type<?> $$3 = $$2.type();
-      OpticFinder<?> $$4 = $$3.findField("Recipes");
-      ListType<?> $$5 = (ListType<?>)$$4.type();
-      OpticFinder<?> $$6 = $$5.getElement().finder();
-      return this.fixTypeEverywhereTyped("Villager level and xp rebuild", this.getInputSchema().getType(bia.B), $$5x -> $$5x.updateTyped($$1, $$0, $$3xx -> {
-            Dynamic<?> $$4xx = (Dynamic<?>)$$3xx.get(DSL.remainderFinder());
-            int $$5xx = $$4xx.get("VillagerData").get("level").asInt(0);
-            Typed<?> $$6x = $$3xx;
-            if ($$5xx == 0 || $$5xx == 1) {
-               int $$7 = $$3xx.getOptionalTyped($$2).flatMap($$1xxx -> $$1xxx.getOptionalTyped($$4)).map($$1xxx -> $$1xxx.getAllTyped($$6).size()).orElse(0);
-               $$5xx = azm.a($$7 / 2, 1, 5);
-               if ($$5xx > 1) {
-                  $$6x = a($$3xx, $$5xx);
-               }
-            }
-
-            Optional<Number> $$8 = $$4xx.get("Xp").asNumber().result();
-            if ($$8.isEmpty()) {
-               $$6x = b($$6x, $$5xx);
-            }
-
-            return $$6x;
-         }));
-   }
-
-   private static Typed<?> a(Typed<?> $$0, int $$1) {
-      return $$0.update(DSL.remainderFinder(), $$1x -> $$1x.update("VillagerData", $$1xx -> $$1xx.set("level", $$1xx.createInt($$1))));
-   }
-
-   private static Typed<?> b(Typed<?> $$0, int $$1) {
-      int $$2 = a($$1);
-      return $$0.update(DSL.remainderFinder(), $$1x -> $$1x.set("Xp", $$1x.createInt($$2)));
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bis.o);
+      OpticFinder<?> $$1 = $$0.findField("data");
+      return this.fixTypeEverywhereTyped(
+         "Scoreboard DisplaySlot rename",
+         $$0,
+         $$1x -> $$1x.updateTyped(
+               $$1,
+               $$0xx -> $$0xx.update(
+                     DSL.remainderFinder(),
+                     $$0xxx -> $$0xxx.update(
+                           "DisplaySlots",
+                           $$0xxxx -> $$0xxxx.updateMapValues(
+                                 $$0xxxxx -> $$0xxxxx.mapFirst(
+                                       $$0xxxxxx -> (Dynamic)DataFixUtils.orElse(
+                                             $$0xxxxxx.asString().result().map(bjc::a).map($$0xxxxxx::createString), $$0xxxxxx
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
+      );
    }
 }

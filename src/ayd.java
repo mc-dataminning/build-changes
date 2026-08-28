@@ -1,83 +1,180 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.function.IntFunction;
-import java.util.function.ToIntFunction;
+public final class ayd {
+   public static final ayk<cxg> a = a("wool");
+   public static final ayk<cxg> b = a("planks");
+   public static final ayk<cxg> c = a("stone_bricks");
+   public static final ayk<cxg> d = a("wooden_buttons");
+   public static final ayk<cxg> e = a("stone_buttons");
+   public static final ayk<cxg> f = a("buttons");
+   public static final ayk<cxg> g = a("wool_carpets");
+   public static final ayk<cxg> h = a("wooden_doors");
+   public static final ayk<cxg> i = a("wooden_stairs");
+   public static final ayk<cxg> j = a("wooden_slabs");
+   public static final ayk<cxg> k = a("wooden_fences");
+   public static final ayk<cxg> l = a("fence_gates");
+   public static final ayk<cxg> m = a("wooden_pressure_plates");
+   public static final ayk<cxg> n = a("wooden_trapdoors");
+   public static final ayk<cxg> o = a("doors");
+   public static final ayk<cxg> p = a("saplings");
+   public static final ayk<cxg> q = a("logs_that_burn");
+   public static final ayk<cxg> r = a("logs");
+   public static final ayk<cxg> s = a("dark_oak_logs");
+   public static final ayk<cxg> t = a("pale_oak_logs");
+   public static final ayk<cxg> u = a("oak_logs");
+   public static final ayk<cxg> v = a("birch_logs");
+   public static final ayk<cxg> w = a("acacia_logs");
+   public static final ayk<cxg> x = a("cherry_logs");
+   public static final ayk<cxg> y = a("jungle_logs");
+   public static final ayk<cxg> z = a("spruce_logs");
+   public static final ayk<cxg> A = a("mangrove_logs");
+   public static final ayk<cxg> B = a("crimson_stems");
+   public static final ayk<cxg> C = a("warped_stems");
+   public static final ayk<cxg> D = a("bamboo_blocks");
+   public static final ayk<cxg> E = a("wart_blocks");
+   public static final ayk<cxg> F = a("banners");
+   public static final ayk<cxg> G = a("sand");
+   public static final ayk<cxg> H = a("smelts_to_glass");
+   public static final ayk<cxg> I = a("stairs");
+   public static final ayk<cxg> J = a("slabs");
+   public static final ayk<cxg> K = a("walls");
+   public static final ayk<cxg> L = a("anvil");
+   public static final ayk<cxg> M = a("rails");
+   public static final ayk<cxg> N = a("leaves");
+   public static final ayk<cxg> O = a("trapdoors");
+   public static final ayk<cxg> P = a("small_flowers");
+   public static final ayk<cxg> Q = a("beds");
+   public static final ayk<cxg> R = a("fences");
+   public static final ayk<cxg> S = a("tall_flowers");
+   public static final ayk<cxg> T = a("flowers");
+   public static final ayk<cxg> U = a("piglin_repellents");
+   public static final ayk<cxg> V = a("piglin_loved");
+   public static final ayk<cxg> W = a("ignored_by_piglin_babies");
+   public static final ayk<cxg> X = a("piglin_safe_armor");
+   public static final ayk<cxg> Y = a("duplicates_allays");
+   public static final ayk<cxg> Z = a("brewing_fuel");
+   public static final ayk<cxg> aa = a("shulker_boxes");
+   public static final ayk<cxg> ab = a("meat");
+   public static final ayk<cxg> ac = a("sniffer_food");
+   public static final ayk<cxg> ad = a("piglin_food");
+   public static final ayk<cxg> ae = a("fox_food");
+   public static final ayk<cxg> af = a("cow_food");
+   public static final ayk<cxg> ag = a("goat_food");
+   public static final ayk<cxg> ah = a("sheep_food");
+   public static final ayk<cxg> ai = a("wolf_food");
+   public static final ayk<cxg> aj = a("cat_food");
+   public static final ayk<cxg> ak = a("horse_food");
+   public static final ayk<cxg> al = a("horse_tempt_items");
+   public static final ayk<cxg> am = a("camel_food");
+   public static final ayk<cxg> an = a("armadillo_food");
+   public static final ayk<cxg> ao = a("bee_food");
+   public static final ayk<cxg> ap = a("chicken_food");
+   public static final ayk<cxg> aq = a("frog_food");
+   public static final ayk<cxg> ar = a("hoglin_food");
+   public static final ayk<cxg> as = a("llama_food");
+   public static final ayk<cxg> at = a("llama_tempt_items");
+   public static final ayk<cxg> au = a("ocelot_food");
+   public static final ayk<cxg> av = a("panda_food");
+   public static final ayk<cxg> aw = a("panda_eats_from_ground");
+   public static final ayk<cxg> ax = a("pig_food");
+   public static final ayk<cxg> ay = a("rabbit_food");
+   public static final ayk<cxg> az = a("strider_food");
+   public static final ayk<cxg> aA = a("strider_tempt_items");
+   public static final ayk<cxg> aB = a("turtle_food");
+   public static final ayk<cxg> aC = a("parrot_food");
+   public static final ayk<cxg> aD = a("parrot_poisonous_food");
+   public static final ayk<cxg> aE = a("axolotl_food");
+   public static final ayk<cxg> aF = a("gold_ores");
+   public static final ayk<cxg> aG = a("iron_ores");
+   public static final ayk<cxg> aH = a("diamond_ores");
+   public static final ayk<cxg> aI = a("redstone_ores");
+   public static final ayk<cxg> aJ = a("lapis_ores");
+   public static final ayk<cxg> aK = a("coal_ores");
+   public static final ayk<cxg> aL = a("emerald_ores");
+   public static final ayk<cxg> aM = a("copper_ores");
+   public static final ayk<cxg> aN = a("non_flammable_wood");
+   public static final ayk<cxg> aO = a("soul_fire_base_blocks");
+   public static final ayk<cxg> aP = a("candles");
+   public static final ayk<cxg> aQ = a("dirt");
+   public static final ayk<cxg> aR = a("terracotta");
+   public static final ayk<cxg> aS = a("completes_find_tree_tutorial");
+   public static final ayk<cxg> aT = a("boats");
+   public static final ayk<cxg> aU = a("chest_boats");
+   public static final ayk<cxg> aV = a("fishes");
+   public static final ayk<cxg> aW = a("signs");
+   public static final ayk<cxg> aX = a("creeper_drop_music_discs");
+   public static final ayk<cxg> aY = a("coals");
+   public static final ayk<cxg> aZ = a("arrows");
+   public static final ayk<cxg> ba = a("lectern_books");
+   public static final ayk<cxg> bb = a("bookshelf_books");
+   public static final ayk<cxg> bc = a("beacon_payment_items");
+   public static final ayk<cxg> bd = a("wooden_tool_materials");
+   public static final ayk<cxg> be = a("stone_tool_materials");
+   public static final ayk<cxg> bf = a("iron_tool_materials");
+   public static final ayk<cxg> bg = a("gold_tool_materials");
+   public static final ayk<cxg> bh = a("diamond_tool_materials");
+   public static final ayk<cxg> bi = a("netherite_tool_materials");
+   public static final ayk<cxg> bj = a("repairs_leather_armor");
+   public static final ayk<cxg> bk = a("repairs_chain_armor");
+   public static final ayk<cxg> bl = a("repairs_iron_armor");
+   public static final ayk<cxg> bm = a("repairs_gold_armor");
+   public static final ayk<cxg> bn = a("repairs_diamond_armor");
+   public static final ayk<cxg> bo = a("repairs_netherite_armor");
+   public static final ayk<cxg> bp = a("repairs_turtle_helmet");
+   public static final ayk<cxg> bq = a("repairs_wolf_armor");
+   public static final ayk<cxg> br = a("stone_crafting_materials");
+   public static final ayk<cxg> bs = a("freeze_immune_wearables");
+   public static final ayk<cxg> bt = a("dampens_vibrations");
+   public static final ayk<cxg> bu = a("cluster_max_harvestables");
+   public static final ayk<cxg> bv = a("compasses");
+   public static final ayk<cxg> bw = a("hanging_signs");
+   public static final ayk<cxg> bx = a("creeper_igniters");
+   public static final ayk<cxg> by = a("noteblock_top_instruments");
+   public static final ayk<cxg> bz = a("foot_armor");
+   public static final ayk<cxg> bA = a("leg_armor");
+   public static final ayk<cxg> bB = a("chest_armor");
+   public static final ayk<cxg> bC = a("head_armor");
+   public static final ayk<cxg> bD = a("skulls");
+   public static final ayk<cxg> bE = a("trimmable_armor");
+   public static final ayk<cxg> bF = a("trim_materials");
+   public static final ayk<cxg> bG = a("trim_templates");
+   public static final ayk<cxg> bH = a("decorated_pot_sherds");
+   public static final ayk<cxg> bI = a("decorated_pot_ingredients");
+   public static final ayk<cxg> bJ = a("swords");
+   public static final ayk<cxg> bK = a("axes");
+   public static final ayk<cxg> bL = a("hoes");
+   public static final ayk<cxg> bM = a("pickaxes");
+   public static final ayk<cxg> bN = a("shovels");
+   public static final ayk<cxg> bO = a("breaks_decorated_pots");
+   public static final ayk<cxg> bP = a("villager_plantable_seeds");
+   public static final ayk<cxg> bQ = a("villager_picks_up");
+   public static final ayk<cxg> bR = a("dyeable");
+   public static final ayk<cxg> bS = a("furnace_minecart_fuel");
+   public static final ayk<cxg> bT = a("bundles");
+   public static final ayk<cxg> bU = a("enchantable/foot_armor");
+   public static final ayk<cxg> bV = a("enchantable/leg_armor");
+   public static final ayk<cxg> bW = a("enchantable/chest_armor");
+   public static final ayk<cxg> bX = a("enchantable/head_armor");
+   public static final ayk<cxg> bY = a("enchantable/armor");
+   public static final ayk<cxg> bZ = a("enchantable/sword");
+   public static final ayk<cxg> ca = a("enchantable/fire_aspect");
+   public static final ayk<cxg> cb = a("enchantable/sharp_weapon");
+   public static final ayk<cxg> cc = a("enchantable/weapon");
+   public static final ayk<cxg> cd = a("enchantable/mining");
+   public static final ayk<cxg> ce = a("enchantable/mining_loot");
+   public static final ayk<cxg> cf = a("enchantable/fishing");
+   public static final ayk<cxg> cg = a("enchantable/trident");
+   public static final ayk<cxg> ch = a("enchantable/durability");
+   public static final ayk<cxg> ci = a("enchantable/bow");
+   public static final ayk<cxg> cj = a("enchantable/equippable");
+   public static final ayk<cxg> ck = a("enchantable/crossbow");
+   public static final ayk<cxg> cl = a("enchantable/vanishing");
+   public static final ayk<cxg> cm = a("enchantable/mace");
+   public static final ayk<cxg> cn = a("map_invisibility_equipment");
+   public static final ayk<cxg> co = a("gaze_disguise_equipment");
 
-public class ayd {
-   private static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1) {
-      if ($$1.length == 0) {
-         throw new IllegalArgumentException("Empty value list");
-      } else {
-         Int2ObjectMap<T> $$2 = new Int2ObjectOpenHashMap();
-
-         for (T $$3 : $$1) {
-            int $$4 = $$0.applyAsInt($$3);
-            T $$5 = (T)$$2.put($$4, $$3);
-            if ($$5 != null) {
-               throw new IllegalArgumentException("Duplicate entry on id " + $$4 + ": current=" + $$3 + ", previous=" + $$5);
-            }
-         }
-
-         return $$2;
-      }
+   private ayd() {
    }
 
-   public static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1, T $$2) {
-      IntFunction<T> $$3 = a($$0, $$1);
-      return $$2x -> Objects.requireNonNullElse($$3.apply($$2x), $$2);
-   }
-
-   private static <T> T[] b(ToIntFunction<T> $$0, T[] $$1) {
-      int $$2 = $$1.length;
-      if ($$2 == 0) {
-         throw new IllegalArgumentException("Empty value list");
-      } else {
-         T[] $$3 = (T[])$$1.clone();
-         Arrays.fill($$3, null);
-
-         for (T $$4 : $$1) {
-            int $$5 = $$0.applyAsInt($$4);
-            if ($$5 < 0 || $$5 >= $$2) {
-               throw new IllegalArgumentException("Values are not continous, found index " + $$5 + " for value " + $$4);
-            }
-
-            T $$6 = $$3[$$5];
-            if ($$6 != null) {
-               throw new IllegalArgumentException("Duplicate entry on id " + $$5 + ": current=" + $$4 + ", previous=" + $$6);
-            }
-
-            $$3[$$5] = $$4;
-         }
-
-         for (int $$7 = 0; $$7 < $$2; $$7++) {
-            if ($$3[$$7] == null) {
-               throw new IllegalArgumentException("Missing value at index: " + $$7);
-            }
-         }
-
-         return $$3;
-      }
-   }
-
-   public static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1, ayd.a $$2) {
-      T[] $$3 = b($$0, $$1);
-      int $$4 = $$3.length;
-
-      return switch ($$2) {
-         case a -> {
-            T $$5 = $$3[0];
-            yield $$3x -> $$3x >= 0 && $$3x < $$4 ? $$3[$$3x] : $$5;
-         }
-         case b -> $$2x -> $$3[azm.b($$2x, $$4)];
-         case c -> $$2x -> $$3[azm.a($$2x, 0, $$4 - 1)];
-      };
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
+   private static ayk<cxg> a(String $$0) {
+      return ayk.a(mb.K, alz.b($$0));
    }
 }

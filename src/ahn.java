@@ -1,29 +1,11 @@
-public class ahn implements zq<agw> {
-   public static final zh<wg, ahn> a = zq.a(ahn::a, ahn::new);
-   private final int b;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public ahn(int $$0) {
-      this.b = $$0;
-   }
-
-   private ahn(wg $$0) {
-      this.b = $$0.x();
-   }
-
-   private void a(wg $$0) {
-      $$0.f(this.b);
-   }
+public interface ahn extends xh {
+   Logger a = LogUtils.getLogger();
 
    @Override
-   public zs<ahn> a() {
-      return agu.bw;
-   }
-
-   public void a(agw $$0) {
-      $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
+   default void a(aac $$0, Exception $$1) throws z {
+      a.error("Failed to handle packet {}, suppressing error", $$0, $$1);
    }
 }

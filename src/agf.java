@@ -1,68 +1,45 @@
-import javax.annotation.Nullable;
+public class agf implements aac<acr> {
+   public static final zt<ws, agf> a = aac.a(agf::a, agf::new);
+   private final float b;
+   private final int c;
+   private final int d;
 
-public class agf implements zq<acf> {
-   public static final zh<wg, agf> a = zq.a(agf::a, agf::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   @Nullable
-   private final alj d;
-   @Nullable
-   private final awo e;
-
-   public agf(@Nullable alj $$0, @Nullable awo $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public agf(float $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private agf(wg $$0) {
-      int $$1 = $$0.readByte();
-      if (($$1 & 1) > 0) {
-         this.e = $$0.b(awo.class);
-      } else {
-         this.e = null;
-      }
-
-      if (($$1 & 2) > 0) {
-         this.d = $$0.q();
-      } else {
-         this.d = null;
-      }
+   private agf(ws $$0) {
+      this.b = $$0.readFloat();
+      this.d = $$0.l();
+      this.c = $$0.l();
    }
 
-   private void a(wg $$0) {
-      if (this.e != null) {
-         if (this.d != null) {
-            $$0.l(3);
-            $$0.a(this.e);
-            $$0.a(this.d);
-         } else {
-            $$0.l(1);
-            $$0.a(this.e);
-         }
-      } else if (this.d != null) {
-         $$0.l(2);
-         $$0.a(this.d);
-      } else {
-         $$0.l(0);
-      }
+   private void a(ws $$0) {
+      $$0.a(this.b);
+      $$0.c(this.d);
+      $$0.c(this.c);
    }
 
    @Override
-   public zs<agf> a() {
-      return agu.aV;
+   public aae<agf> a() {
+      return ahk.aJ;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public alj b() {
-      return this.d;
+   public float b() {
+      return this.b;
    }
 
-   @Nullable
-   public awo e() {
-      return this.e;
+   public int e() {
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

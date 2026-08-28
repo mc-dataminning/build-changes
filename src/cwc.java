@@ -1,73 +1,83 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Pair;
-import java.util.Map;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-public class cwc extends cvf {
-   protected static final Map<diq, Pair<Predicate<daf>, Consumer<daf>>> a = Maps.newHashMap(
-      ImmutableMap.of(
-         dis.i,
-         Pair.of(cwc::b, a(dis.cC.m())),
-         dis.kE,
-         Pair.of(cwc::b, a(dis.cC.m())),
-         dis.j,
-         Pair.of(cwc::b, a(dis.cC.m())),
-         dis.k,
-         Pair.of(cwc::b, a(dis.j.m())),
-         dis.sH,
-         Pair.of((Predicate<daf>)$$0 -> true, a(dis.j.m(), cwq.dO))
-      )
-   );
-
-   public cwc(cyd $$0, float $$1, float $$2, cwi.a $$3) {
-      super($$0, axc.bC, $$1, $$2, $$3);
+public class cwc extends cxg {
+   public cwc(cxg.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bsk a(daf $$0) {
-      dfm $$1 = $$0.q();
-      jh $$2 = $$0.a();
-      Pair<Predicate<daf>, Consumer<daf>> $$3 = a.get($$1.a_($$2).b());
-      if ($$3 == null) {
-         return bsk.e;
-      } else {
-         Predicate<daf> $$4 = (Predicate<daf>)$$3.getFirst();
-         Consumer<daf> $$5 = (Consumer<daf>)$$3.getSecond();
-         if ($$4.test($$0)) {
-            cou $$6 = $$0.o();
-            $$1.a($$6, $$2, awn.mm, awo.e, 1.0F, 1.0F);
-            if (!$$1.C) {
-               $$5.accept($$0);
-               if ($$6 != null) {
-                  $$0.n().a(1, $$6, bvh.d($$0.p()));
-               }
-            }
+   public boolean a(dxn $$0, dha $$1, jh $$2, cps $$3) {
+      if (!$$1.C) {
+         this.a($$3, $$0, $$1, $$2, false, $$3.b(btd.a));
+      }
 
-            return bsk.a;
+      return false;
+   }
+
+   @Override
+   public bte a(dbd $$0) {
+      cps $$1 = $$0.o();
+      dha $$2 = $$0.q();
+      if (!$$2.C && $$1 != null) {
+         jh $$3 = $$0.a();
+         if (!this.a($$1, $$2.a_($$3), $$2, $$3, true, $$0.n())) {
+            return bte.d;
+         }
+      }
+
+      return bte.a;
+   }
+
+   private boolean a(cps $$0, dxn $$1, dhb $$2, jh $$3, boolean $$4, cxk $$5) {
+      if (!$$0.gE()) {
+         return false;
+      } else {
+         jq<dke> $$6 = $$1.c();
+         dxo<dke, dxn> $$7 = $$6.a().l();
+         Collection<dyp<?>> $$8 = $$7.d();
+         if ($$8.isEmpty()) {
+            a($$0, xv.a(this.k + ".empty", $$6.g()));
+            return false;
          } else {
-            return bsk.e;
+            czx $$9 = $$5.a(ku.V);
+            if ($$9 == null) {
+               return false;
+            } else {
+               dyp<?> $$10 = $$9.a().get($$6);
+               if ($$4) {
+                  if ($$10 == null) {
+                     $$10 = $$8.iterator().next();
+                  }
+
+                  dxn $$11 = a($$1, $$10, $$0.fW());
+                  $$2.a($$3, $$11, 18);
+                  a($$0, xv.a(this.k + ".update", $$10.f(), a($$11, $$10)));
+               } else {
+                  $$10 = a($$8, $$10, $$0.fW());
+                  $$5.b(ku.V, $$9.a($$6, $$10));
+                  a($$0, xv.a(this.k + ".select", $$10.f(), a($$1, $$10)));
+               }
+
+               return true;
+            }
          }
       }
    }
 
-   public static Consumer<daf> a(dvv $$0) {
-      return $$1 -> {
-         $$1.q().a($$1.a(), $$0, 11);
-         $$1.q().a(ear.c, $$1.a(), ear.a.a($$1.o(), $$0));
-      };
+   private static <T extends Comparable<T>> dxn a(dxn $$0, dyp<T> $$1, boolean $$2) {
+      return $$0.b($$1, a($$1.a(), $$0.c($$1), $$2));
    }
 
-   public static Consumer<daf> a(dvv $$0, dfl $$1) {
-      return $$2 -> {
-         $$2.q().a($$2.a(), $$0, 11);
-         $$2.q().a(ear.c, $$2.a(), ear.a.a($$2.o(), $$0));
-         diq.a($$2.q(), $$2.a(), $$2.k(), new cwm($$1));
-      };
+   private static <T> T a(Iterable<T> $$0, @Nullable T $$1, boolean $$2) {
+      return $$2 ? ae.b($$0, $$1) : ae.a($$0, $$1);
    }
 
-   public static boolean b(daf $$0) {
-      return $$0.k() != jm.a && $$0.q().a_($$0.a().d()).l();
+   private static void a(cps $$0, xv $$1) {
+      ((asi)$$0).b($$1, true);
+   }
+
+   private static <T extends Comparable<T>> String a(dxn $$0, dyp<T> $$1) {
+      return $$1.b($$0.c($$1));
    }
 }

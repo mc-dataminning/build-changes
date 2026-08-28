@@ -1,109 +1,112 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
-import java.util.Locale;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public class eme extends emm {
-   private static final Logger d = LogUtils.getLogger();
-   protected final enq a;
-   protected jh b;
-   private final int h;
-   protected final dpd c;
-   private final List<enl> i = Lists.newArrayList();
-   private final eql j;
-   private final epu k;
+public class eme {
+   public static final aly<emd> a = a("classic_flat");
+   public static final aly<emd> b = a("tunnelers_dream");
+   public static final aly<emd> c = a("water_world");
+   public static final aly<emd> d = a("overworld");
+   public static final aly<emd> e = a("snowy_kingdom");
+   public static final aly<emd> f = a("bottomless_pit");
+   public static final aly<emd> g = a("desert");
+   public static final aly<emd> h = a("redstone_ready");
+   public static final aly<emd> i = a("the_void");
 
-   public eme(eql $$0, enq $$1, jh $$2, int $$3, dpd $$4, ema $$5, epu $$6) {
-      super(emz.ad, 0, $$5);
-      this.j = $$0;
-      this.a = $$1;
-      this.b = $$2;
-      this.h = $$3;
-      this.c = $$4;
-      this.k = $$6;
+   public static void a(rk<emd> $$0) {
+      new eme.a($$0).a();
    }
 
-   public eme(emy $$0, ul $$1) {
-      super(emz.ad, $$1);
-      this.j = $$0.c();
-      this.b = new jh($$1.h("PosX"), $$1.h("PosY"), $$1.h("PosZ"));
-      this.h = $$1.h("ground_level_delta");
-      DynamicOps<vi> $$2 = $$0.b().a(uz.a);
-      this.a = (enq)enq.f.parse($$2, $$1.p("pool_element")).getPartialOrThrow($$0x -> new IllegalStateException("Invalid pool element found: " + $$0x));
-      this.c = dpd.valueOf($$1.l("rotation"));
-      this.f = this.a.a(this.j, this.b, this.c);
-      ur $$3 = $$1.c("junctions", 10);
-      this.i.clear();
-      $$3.forEach($$1x -> this.i.add(enl.a(new Dynamic($$2, $$1x))));
-      this.k = epu.c.parse(uz.a, $$1.c("liquid_settings")).result().orElse(eoj.e);
+   private static aly<emd> a(String $$0) {
+      return aly.a(mb.aP, alz.b($$0));
    }
 
-   @Override
-   protected void a(emy $$0, ul $$1) {
-      $$1.a("PosX", this.b.u());
-      $$1.a("PosY", this.b.v());
-      $$1.a("PosZ", this.b.w());
-      $$1.a("ground_level_delta", this.h);
-      DynamicOps<vi> $$2 = $$0.b().a(uz.a);
-      enq.f.encodeStart($$2, this.a).resultOrPartial(d::error).ifPresent($$1x -> $$1.a("pool_element", $$1x));
-      $$1.a("rotation", this.c.name());
-      ur $$3 = new ur();
+   static class a {
+      private final rk<emd> a;
 
-      for (enl $$4 : this.i) {
-         $$3.add((vi)$$4.a($$2).getValue());
+      a(rk<emd> $$0) {
+         this.a = $$0;
       }
 
-      $$1.a("junctions", $$3);
-      if (this.k != eoj.e) {
-         $$1.a("liquid_settings", (vi)epu.c.encodeStart(uz.a, this.k).getOrThrow());
+      private void a(aly<emd> $$0, dgz $$1, aly<dic> $$2, Set<aly<eoi>> $$3, boolean $$4, boolean $$5, emc... $$6) {
+         jr<eoi> $$7 = this.a.a(mb.aV);
+         jr<eng> $$8 = this.a.a(mb.aS);
+         jr<dic> $$9 = this.a.a(mb.aH);
+         ju.a<eoi> $$10 = ju.a($$3.stream().map($$7::b).collect(Collectors.toList()));
+         emf $$11 = new emf(Optional.of($$10), $$9.b($$2), emf.b($$8));
+         if ($$4) {
+            $$11.a();
+         }
+
+         if ($$5) {
+            $$11.b();
+         }
+
+         for (int $$12 = $$6.length - 1; $$12 >= 0; $$12--) {
+            $$11.e().add($$6[$$12]);
+         }
+
+         this.a.a($$0, new emd($$1.j().f(), $$11));
       }
-   }
 
-   @Override
-   public void a(dgk $$0, dgi $$1, dxr $$2, azu $$3, ema $$4, des $$5, jh $$6) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$6, false);
-   }
-
-   public void a(dgk $$0, dgi $$1, dxr $$2, azu $$3, ema $$4, jh $$5, boolean $$6) {
-      this.a.a(this.j, $$0, $$1, $$2, this.b, $$5, this.c, $$4, $$3, this.k, $$6);
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.b = this.b.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public dpd a() {
-      return this.c;
-   }
-
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "<%s | %s | %s | %s>", this.getClass().getSimpleName(), this.b, this.c, this.a);
-   }
-
-   public enq b() {
-      return this.a;
-   }
-
-   public jh c() {
-      return this.b;
-   }
-
-   public int d() {
-      return this.h;
-   }
-
-   public void a(enl $$0) {
-      this.i.add($$0);
-   }
-
-   public List<enl> e() {
-      return this.i;
+      public void a() {
+         this.a(eme.a, dkg.i, dij.b, ImmutableSet.of(env.a), false, false, new emc(1, dkg.i), new emc(2, dkg.j), new emc(1, dkg.I));
+         this.a(eme.b, dkg.b, dij.t, ImmutableSet.of(env.j, env.r), true, false, new emc(1, dkg.i), new emc(5, dkg.j), new emc(230, dkg.b), new emc(1, dkg.I));
+         this.a(
+            eme.c,
+            cxo.qX,
+            dij.T,
+            ImmutableSet.of(env.m, env.l, env.g),
+            false,
+            false,
+            new emc(90, dkg.J),
+            new emc(5, dkg.O),
+            new emc(5, dkg.j),
+            new emc(5, dkg.b),
+            new emc(64, dkg.te),
+            new emc(1, dkg.I)
+         );
+         this.a(
+            eme.d,
+            dkg.bA,
+            dij.b,
+            ImmutableSet.of(env.a, env.j, env.f, env.k, env.r),
+            true,
+            true,
+            new emc(1, dkg.i),
+            new emc(3, dkg.j),
+            new emc(59, dkg.b),
+            new emc(1, dkg.I)
+         );
+         this.a(
+            eme.e,
+            dkg.ea,
+            dij.d,
+            ImmutableSet.of(env.a, env.c),
+            false,
+            false,
+            new emc(1, dkg.ea),
+            new emc(1, dkg.i),
+            new emc(3, dkg.j),
+            new emc(59, dkg.b),
+            new emc(1, dkg.I)
+         );
+         this.a(eme.f, cxo.pP, dij.b, ImmutableSet.of(env.a), false, false, new emc(1, dkg.i), new emc(3, dkg.j), new emc(2, dkg.m));
+         this.a(
+            eme.g,
+            dkg.L,
+            dij.f,
+            ImmutableSet.of(env.a, env.b, env.j, env.r),
+            true,
+            false,
+            new emc(8, dkg.L),
+            new emc(52, dkg.bc),
+            new emc(3, dkg.b),
+            new emc(1, dkg.I)
+         );
+         this.a(eme.h, cxo.lV, dij.f, ImmutableSet.of(), false, false, new emc(116, dkg.bc), new emc(3, dkg.b), new emc(1, dkg.I));
+         this.a(eme.i, dkg.in, dij.a, ImmutableSet.of(), true, false, new emc(1, dkg.a));
+      }
    }
 }

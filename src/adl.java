@@ -1,20 +1,29 @@
-public record adl(des b) implements zq<acf> {
-   public static final zh<wg, adl> a = zq.a(adl::a, adl::new);
+public class adl implements aac<acr> {
+   public static final zt<ws, adl> a = aac.a(adl::a, adl::new);
+   private final int b;
 
-   private adl(wg $$0) {
-      this($$0.f());
+   public adl(int $$0) {
+      this.b = $$0;
    }
 
-   private void a(wg $$0) {
-      $$0.a(this.b);
+   private adl(ws $$0) {
+      this.b = $$0.x();
+   }
+
+   private void a(ws $$0) {
+      $$0.f(this.b);
    }
 
    @Override
-   public zs<adl> a() {
-      return agu.F;
+   public aae<adl> a() {
+      return ahk.t;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
    }
 }

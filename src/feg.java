@@ -1,86 +1,132 @@
 import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.jtracy.MemoryPool;
+import com.mojang.jtracy.TracyClient;
+import java.nio.ByteBuffer;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
 public class feg implements AutoCloseable {
-   private static final int a = -1;
-   private final alj b;
-   private int c;
+   private static final MemoryPool c = TracyClient.createMemoryPool("GPU Buffers");
+   private final fee d;
+   private final fef e;
+   private boolean f;
+   private boolean g = false;
+   public final int a;
+   public int b;
 
-   private feg(int $$0, alj $$1) {
-      this.b = $$1;
-      this.c = $$0;
+   public feg(fee $$0, fef $$1, int $$2) {
+      this.d = $$0;
+      this.b = $$2;
+      this.e = $$1;
+      this.a = GlStateManager._glGenBuffers();
    }
 
-   public static feg a(alj $$0, feg.a $$1, String $$2) throws gjx.b {
-      RenderSystem.assertOnRenderThread();
-      int $$3 = GlStateManager.glCreateShader($$1.b());
-      GlStateManager.glShaderSource($$3, $$2);
-      GlStateManager.glCompileShader($$3);
-      if (GlStateManager.glGetShaderi($$3, 35713) == 0) {
-         String $$4 = StringUtils.trim(GlStateManager.glGetShaderInfoLog($$3, 32768));
-         throw new gjx.b("Couldn't compile " + $$1.a() + " shader (" + $$0 + ") : " + $$4);
+   public feg(fee $$0, fef $$1, ByteBuffer $$2) {
+      this($$0, $$1, $$2.remaining());
+      this.a($$2, 0);
+   }
+
+   public void a(int $$0) {
+      if (this.f) {
+         throw new IllegalStateException("Buffer already closed");
       } else {
-         return new feg($$3, $$0);
+         if (this.g) {
+            c.free((long)this.a);
+         }
+
+         this.b = $$0;
+         if (this.e.l) {
+            this.g = false;
+         } else {
+            this.b();
+            GlStateManager._glBufferData(this.d.h, (long)$$0, this.e.j);
+            c.malloc((long)this.a, $$0);
+            this.g = true;
+         }
+      }
+   }
+
+   public void a(ByteBuffer $$0, int $$1) {
+      if (this.f) {
+         throw new IllegalStateException("Buffer already closed");
+      } else if (!this.e.l) {
+         throw new IllegalStateException("Buffer is not writable");
+      } else {
+         int $$2 = $$0.remaining();
+         if ($$2 + $$1 > this.b) {
+            throw new IllegalArgumentException(
+               "Cannot write more data than this buffer can hold (attempting to write " + $$2 + " bytes at offset " + $$1 + " to " + this.b + " size buffer)"
+            );
+         } else {
+            this.b();
+            if (this.g) {
+               GlStateManager._glBufferSubData(this.d.h, $$1, $$0);
+            } else if ($$1 == 0 && $$2 == this.b) {
+               GlStateManager._glBufferData(this.d.h, $$0, this.e.j);
+               c.malloc((long)this.a, this.b);
+               this.g = true;
+            } else {
+               GlStateManager._glBufferData(this.d.h, (long)this.b, this.e.j);
+               GlStateManager._glBufferSubData(this.d.h, $$1, $$0);
+               c.malloc((long)this.a, this.b);
+               this.g = true;
+            }
+         }
+      }
+   }
+
+   @Nullable
+   public feg.a a() {
+      return this.a(0, this.b);
+   }
+
+   @Nullable
+   public feg.a a(int $$0, int $$1) {
+      if (this.f) {
+         throw new IllegalStateException("Buffer already closed");
+      } else if (!this.e.k) {
+         throw new IllegalStateException("Buffer is not readable");
+      } else if ($$0 + $$1 > this.b) {
+         throw new IllegalArgumentException(
+            "Cannot read more data than this buffer can hold (attempting to read " + $$1 + " bytes at offset " + $$0 + " from " + this.b + " size buffer)"
+         );
+      } else {
+         this.b();
+         ByteBuffer $$2 = GlStateManager._glMapBufferRange(this.d.h, $$0, $$1, 1);
+         return $$2 == null ? null : new feg.a(this.d.h, $$2);
       }
    }
 
    @Override
    public void close() {
-      if (this.c == -1) {
-         throw new IllegalStateException("Already closed");
-      } else {
-         RenderSystem.assertOnRenderThread();
-         GlStateManager.glDeleteShader(this.c);
-         this.c = -1;
-      }
-   }
-
-   public alj a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public static enum a {
-      a("vertex", ".vsh", 35633),
-      b("fragment", ".fsh", 35632);
-
-      private static final feg.a[] c = values();
-      private final String d;
-      private final String e;
-      private final int f;
-
-      private a(final String $$0, final String $$1, final int $$2) {
-         this.d = $$0;
-         this.e = $$1;
-         this.f = $$2;
-      }
-
-      @Nullable
-      public static feg.a a(alj $$0) {
-         for (feg.a $$1 : c) {
-            if ($$0.a().endsWith($$1.e)) {
-               return $$1;
-            }
+      if (!this.f) {
+         this.f = true;
+         GlStateManager._glDeleteBuffers(this.a);
+         if (this.g) {
+            c.free((long)this.a);
          }
+      }
+   }
 
-         return null;
+   public void b() {
+      GlStateManager._glBindBuffer(this.d.h, this.a);
+   }
+
+   public static class a implements AutoCloseable {
+      private final int a;
+      private final ByteBuffer b;
+
+      protected a(int $$0, ByteBuffer $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      public String a() {
-         return this.d;
+      public ByteBuffer a() {
+         return this.b;
       }
 
-      public int b() {
-         return this.f;
-      }
-
-      public alc c() {
-         return new alc("shaders", this.e);
+      @Override
+      public void close() {
+         GlStateManager._glUnmapBuffer(this.a);
       }
    }
 }

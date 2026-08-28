@@ -1,37 +1,29 @@
-public class aev implements zq<acf> {
-   public static final zh<wg, aev> a = zq.a(aev::a, aev::new);
+public class aev implements aac<acr> {
+   public static final zt<ws, aev> a = aac.a(aev::a, aev::new);
    private final int b;
-   private final byte c;
 
-   public aev(bul $$0, byte $$1) {
-      this.b = $$0.ar();
-      this.c = $$1;
+   public aev(bts $$0) {
+      this($$0.b());
    }
 
-   private aev(wg $$0) {
+   public aev(int $$0) {
+      this.b = $$0;
+   }
+
+   private aev(ws $$0) {
       this.b = $$0.l();
-      this.c = $$0.readByte();
    }
 
-   private void a(wg $$0) {
+   private void a(ws $$0) {
       $$0.c(this.b);
-      $$0.l(this.c);
    }
 
    @Override
-   public zs<aev> a() {
-      return agu.an;
+   public aae<aev> a() {
+      return ahk.ac;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
-   }
-
-   public bul a(dfm $$0) {
-      return $$0.a(this.b);
-   }
-
-   public float b() {
-      return azm.a(this.c);
    }
 }

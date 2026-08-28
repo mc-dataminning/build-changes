@@ -1,53 +1,29 @@
-public class eob {
-   public static class a extends emm {
-      public a(jh $$0) {
-         super(emz.aa, 0, new ema($$0));
-      }
+import java.util.Optional;
 
-      public a(ul $$0) {
-         super(emz.aa, $$0);
-      }
+public abstract class eob extends eoc {
+   private final eob.a d;
+   private final int e;
+   private final int f;
 
-      @Override
-      protected void a(emy $$0, ul $$1) {
-      }
+   protected eob(eob.a $$0, int $$1, int $$2, eoc.c $$3) {
+      super($$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+   }
 
-      @Override
-      public void a(dgk $$0, dgi $$1, dxr $$2, azu $$3, ema $$4, des $$5, jh $$6) {
-         int $$7 = $$0.a(ebq.a.c, this.f.h(), this.f.j());
-         jh.a $$8 = new jh.a(this.f.h(), $$7, this.f.j());
+   @Override
+   public Optional<eoc.b> a(eoc.a $$0) {
+      return a($$0, this.e, this.f) < $$0.b().f() ? Optional.empty() : a($$0, edi.a.a, $$1 -> this.a($$1, $$0));
+   }
 
-         while ($$8.v() > $$0.K_()) {
-            dvv $$9 = $$0.a_($$8);
-            dvv $$10 = $$0.a_($$8.e());
-            if ($$10 == dis.aV.m() || $$10 == dis.b.m() || $$10 == dis.g.m() || $$10 == dis.c.m() || $$10 == dis.e.m()) {
-               dvv $$11 = !$$9.l() && !this.b($$9) ? $$9 : dis.I.m();
+   private void a(eou $$0, eoc.a $$1) {
+      dgg $$2 = $$1.h();
+      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
+   }
 
-               for (jm $$12 : jm.values()) {
-                  jh $$13 = $$8.a($$12);
-                  dvv $$14 = $$0.a_($$13);
-                  if ($$14.l() || this.b($$14)) {
-                     jh $$15 = $$13.e();
-                     dvv $$16 = $$0.a_($$15);
-                     if (($$16.l() || this.b($$16)) && $$12 != jm.b) {
-                        $$0.a($$13, $$10, 3);
-                     } else {
-                        $$0.a($$13, $$11, 3);
-                     }
-                  }
-               }
-
-               this.f = new ema($$8);
-               this.a($$0, $$4, $$3, $$8, euj.F, null);
-               return;
-            }
-
-            $$8.e(0, -1, 0);
-         }
-      }
-
-      private boolean b(dvv $$0) {
-         return $$0 == dis.G.m() || $$0 == dis.H.m();
-      }
+   @FunctionalInterface
+   protected interface a {
+      eog construct(eeh var1, int var2, int var3);
    }
 }

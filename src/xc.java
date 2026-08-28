@@ -1,57 +1,38 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.ByteToMessageDecoder;
-import io.netty.handler.codec.CorruptedFrameException;
-import java.util.List;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class xc extends ByteToMessageDecoder {
-   private static final int a = 3;
-   private final ByteBuf b = Unpooled.directBuffer(3);
+public interface xc {
+   static xc a(final Runnable $$0) {
+      return new xc() {
+         @Override
+         public void a() {
+            $$0.run();
+         }
+
+         @Nullable
+         @Override
+         public aac<?> b() {
+            $$0.run();
+            return null;
+         }
+      };
+   }
+
+   static xc a(final Supplier<aac<?>> $$0) {
+      return new xc() {
+         @Nullable
+         @Override
+         public aac<?> b() {
+            return $$0.get();
+         }
+      };
+   }
+
+   default void a() {
+   }
+
    @Nullable
-   private final vw c;
-
-   public xc(@Nullable vw $$0) {
-      this.c = $$0;
-   }
-
-   protected void handlerRemoved0(ChannelHandlerContext $$0) {
-      this.b.release();
-   }
-
-   private static boolean a(ByteBuf $$0, ByteBuf $$1) {
-      for (int $$2 = 0; $$2 < 3; $$2++) {
-         if (!$$0.isReadable()) {
-            return false;
-         }
-
-         byte $$3 = $$0.readByte();
-         $$1.writeByte($$3);
-         if (!xa.a($$3)) {
-            return true;
-         }
-      }
-
-      throw new CorruptedFrameException("length wider than 21-bit");
-   }
-
-   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) {
-      $$1.markReaderIndex();
-      this.b.clear();
-      if (!a($$1, this.b)) {
-         $$1.resetReaderIndex();
-      } else {
-         int $$3 = xa.a(this.b);
-         if ($$1.readableBytes() < $$3) {
-            $$1.resetReaderIndex();
-         } else {
-            if (this.c != null) {
-               this.c.a($$3 + xa.a($$3));
-            }
-
-            $$2.add($$1.readBytes($$3));
-         }
-      }
+   default aac<?> b() {
+      return null;
    }
 }

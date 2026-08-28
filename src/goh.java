@@ -1,23 +1,41 @@
-public class goh extends gof<cih, guu, fyf> {
-   private static final alj a = alj.b("textures/entity/armadillo.png");
+public class goh extends goi<dwi> {
+   private static final alz c = alz.b("textures/entity/end_gateway_beam.png");
 
-   public goh(gpk.a $$0) {
-      super($$0, new fyf($$0.a(gck.d)), new fyf($$0.a(gck.e)), 0.4F);
+   public goh(gnq.a $$0) {
+      super($$0);
    }
 
-   public alj a(guu $$0) {
-      return a;
+   public void a(dwi $$0, float $$1, fgl $$2, gle $$3, int $$4, int $$5) {
+      if ($$0.b() || $$0.c()) {
+         float $$6 = $$0.b() ? $$0.a($$1) : $$0.b($$1);
+         double $$7 = $$0.b() ? (double)$$0.i().am() : 50.0;
+         $$6 = bae.a($$6 * (float) Math.PI);
+         int $$8 = bae.a((double)$$6 * $$7);
+         int $$9 = $$0.b() ? cwh.c.d() : cwh.k.d();
+         long $$10 = $$0.i().ac();
+         gnl.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public guu a() {
-      return new guu();
+   @Override
+   protected float b() {
+      return 1.0F;
    }
 
-   public void a(cih $$0, guu $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.v();
-      $$1.d.a($$0.ce);
-      $$1.b.a($$0.cc);
-      $$1.c.a($$0.cd);
+   @Override
+   protected float c() {
+      return 0.0F;
+   }
+
+   @Override
+   protected glo d() {
+      return glo.u();
+   }
+
+   @Override
+   public int aW_() {
+      return 256;
    }
 }

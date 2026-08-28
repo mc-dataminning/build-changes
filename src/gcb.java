@@ -1,5 +1,5 @@
-public class gcb<S extends gyd> extends fyc<S> {
-   public gcb(gcl $$0) {
+public class gcb extends gbh<gxu> {
+   public gcb(geh $$0) {
       super($$0);
    }
 }

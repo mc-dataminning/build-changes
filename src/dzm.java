@@ -1,49 +1,49 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.serialization.Dynamic;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
 
-public class dzm implements AutoCloseable {
-   private final dzc a;
-   private final DataFixer b;
-   private final baw c;
-
-   public dzm(dzj $$0, Path $$1, DataFixer $$2, boolean $$3, baw $$4) {
-      this.b = $$2;
-      this.c = $$4;
-      this.a = new dzc($$0, $$1, $$3);
+public abstract class dzm implements dzv, AutoCloseable {
+   @Nullable
+   public dzs a(int $$0, int $$1, boolean $$2) {
+      return (dzs)this.a($$0, $$1, eaj.n, $$2);
    }
 
-   public CompletableFuture<Optional<ul>> a(des $$0) {
-      return this.a.a($$0);
+   @Nullable
+   public dzs a(int $$0, int $$1) {
+      return this.a($$0, $$1, false);
    }
 
-   public CompletableFuture<Void> a(des $$0, @Nullable ul $$1) {
-      return this.a.a($$0, $$1);
+   @Nullable
+   @Override
+   public dzu c(int $$0, int $$1) {
+      return this.a($$0, $$1, eaj.c, false);
    }
 
-   public ul a(ul $$0, int $$1) {
-      int $$2 = va.b($$0, $$1);
-      return this.c.a(this.b, $$0, $$2);
+   public boolean b(int $$0, int $$1) {
+      return this.a($$0, $$1, eaj.n, false) != null;
    }
 
-   public Dynamic<vi> a(Dynamic<vi> $$0, int $$1) {
-      return this.c.a(this.b, $$0, $$1);
+   @Nullable
+   public abstract dzi a(int var1, int var2, eaj var3, boolean var4);
+
+   public abstract void a(BooleanSupplier var1, boolean var2);
+
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
    }
 
-   public CompletableFuture<Void> a(boolean $$0) {
-      return this.a.a($$0);
-   }
+   public abstract String e();
+
+   public abstract int j();
 
    @Override
    public void close() throws IOException {
-      this.a.close();
    }
 
-   public dzj a() {
-      return this.a.a();
+   public abstract ete p();
+
+   public void b(boolean $$0) {
+   }
+
+   public void a(dgg $$0, boolean $$1) {
    }
 }

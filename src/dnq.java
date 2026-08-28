@@ -1,160 +1,78 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class dnq {
-   public static final dnq.e[] a = new dnq.e[]{dnq.e.a, dnq.e.b, dnq.e.c};
-   private final dnq.b b;
+public class dnq extends dry implements dkh {
+   public static final MapCodec<dnq> a = b(dnq::new);
 
-   public dnq(dnp $$0) {
-      this(new dnq.a($$0));
+   @Override
+   public MapCodec<dnq> a() {
+      return a;
    }
 
-   public dnq(dnq.b $$0) {
-      this.b = $$0;
+   public dnq(dxm.d $$0) {
+      super($$0);
    }
 
-   public boolean a(dvv $$0, der $$1, jh $$2, jm $$3) {
-      return jm.a().anyMatch($$4 -> this.a($$0, $$1, $$2, $$3, $$4, this.b::a).isPresent());
+   @Override
+   public boolean b(dhd $$0, jh $$1, dxn $$2) {
+      return $$0.a_($$1.d()).l();
    }
 
-   public Optional<dnq.c> a(dvv $$0, dfn $$1, jh $$2, azu $$3) {
-      return jm.a($$3)
-         .stream()
-         .filter($$1x -> this.b.b($$0, $$1x))
-         .map($$4 -> this.a($$0, $$1, $$2, $$4, $$3, false))
-         .filter(Optional::isPresent)
-         .findFirst()
-         .orElse(Optional.empty());
+   @Override
+   public boolean a(dha $$0, bam $$1, jh $$2, dxn $$3) {
+      return true;
    }
 
-   public long a(dvv $$0, dfn $$1, jh $$2, boolean $$3) {
-      return jm.a().filter($$1x -> this.b.b($$0, $$1x)).map($$4 -> this.a($$0, $$1, $$2, $$4, $$3)).reduce(0L, Long::sum);
-   }
+   @Override
+   public void a(ash $$0, bam $$1, jh $$2, dxn $$3) {
+      jh $$4 = $$2.d();
+      dxn $$5 = dkg.bA.m();
+      Optional<jq.c<eng>> $$6 = $$0.K_().e(mb.aS).a(td.n);
 
-   public Optional<dnq.c> a(dvv $$0, dfn $$1, jh $$2, jm $$3, azu $$4, boolean $$5) {
-      return jm.a($$4).stream().map($$5x -> this.a($$0, $$1, $$2, $$3, $$5x, $$5)).filter(Optional::isPresent).findFirst().orElse(Optional.empty());
-   }
+      label51:
+      for (int $$7 = 0; $$7 < 128; $$7++) {
+         jh $$8 = $$4;
 
-   private long a(dvv $$0, dfn $$1, jh $$2, jm $$3, boolean $$4) {
-      return jm.a().map($$5 -> this.a($$0, $$1, $$2, $$3, $$5, $$4)).filter(Optional::isPresent).count();
-   }
-
-   @VisibleForTesting
-   public Optional<dnq.c> a(dvv $$0, dfn $$1, jh $$2, jm $$3, jm $$4, boolean $$5) {
-      return this.a($$0, $$1, $$2, $$3, $$4, this.b::a).flatMap($$2x -> this.a($$1, $$2x, $$5));
-   }
-
-   public Optional<dnq.c> a(dvv $$0, der $$1, jh $$2, jm $$3, jm $$4, dnq.d $$5) {
-      if ($$4.o() == $$3.o()) {
-         return Optional.empty();
-      } else if (this.b.a($$0) || this.b.a($$0, $$3) && !this.b.a($$0, $$4)) {
-         for (dnq.e $$6 : this.b.a()) {
-            dnq.c $$7 = $$6.a($$2, $$4, $$3);
-            if ($$5.test($$1, $$2, $$7)) {
-               return Optional.of($$7);
+         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
+            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
+            if (!$$0.a_($$8.e()).a(this) || $$0.a_($$8).m($$0, $$8)) {
+               continue label51;
             }
          }
 
-         return Optional.empty();
-      } else {
-         return Optional.empty();
-      }
-   }
+         dxn $$10 = $$0.a_($$8);
+         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
+            dkh $$11 = (dkh)$$5.b();
+            if ($$11.b($$0, $$8, $$10)) {
+               $$11.a($$0, $$1, $$8, $$10);
+            }
+         }
 
-   public Optional<dnq.c> a(dfn $$0, dnq.c $$1, boolean $$2) {
-      dvv $$3 = $$0.a_($$1.a());
-      return this.b.a($$0, $$1, $$3, $$2) ? Optional.of($$1) : Optional.empty();
-   }
+         if ($$10.l()) {
+            jq<eng> $$13;
+            if ($$1.a(8) == 0) {
+               List<ega<?, ?>> $$12 = $$0.t($$8).a().d().b();
+               if ($$12.isEmpty()) {
+                  continue;
+               }
 
-   public static class a implements dnq.b {
-      protected dnp a;
+               $$13 = ((ejf)$$12.get(0).c()).d();
+            } else {
+               if (!$$6.isPresent()) {
+                  continue;
+               }
 
-      public a(dnp $$0) {
-         this.a = $$0;
-      }
-
-      @Nullable
-      @Override
-      public dvv a(dvv $$0, der $$1, jh $$2, jm $$3) {
-         return this.a.c($$0, $$1, $$2, $$3);
-      }
-
-      protected boolean a(der $$0, jh $$1, jh $$2, jm $$3, dvv $$4) {
-         return $$4.l() || $$4.a(this.a) || $$4.a(dis.G) && $$4.y().b();
-      }
-
-      @Override
-      public boolean a(der $$0, jh $$1, dnq.c $$2) {
-         dvv $$3 = $$0.a_($$2.a());
-         return this.a($$0, $$1, $$2.a(), $$2.b(), $$3) && this.a.a($$0, $$3, $$2.a(), $$2.b());
-      }
-   }
-
-   public interface b {
-      @Nullable
-      dvv a(dvv var1, der var2, jh var3, jm var4);
-
-      boolean a(der var1, jh var2, dnq.c var3);
-
-      default dnq.e[] a() {
-         return dnq.a;
-      }
-
-      default boolean a(dvv $$0, jm $$1) {
-         return dnp.a($$0, $$1);
-      }
-
-      default boolean a(dvv $$0) {
-         return false;
-      }
-
-      default boolean b(dvv $$0, jm $$1) {
-         return this.a($$0) || this.a($$0, $$1);
-      }
-
-      default boolean a(dfn $$0, dnq.c $$1, dvv $$2, boolean $$3) {
-         dvv $$4 = this.a($$2, $$0, $$1.a(), $$1.b());
-         if ($$4 != null) {
-            if ($$3) {
-               $$0.y($$1.a()).e($$1.a());
+               $$13 = $$6.get();
             }
 
-            return $$0.a($$1.a(), $$4, 2);
-         } else {
-            return false;
+            $$13.a().a($$0, $$0.m().g(), $$1, $$8);
          }
       }
    }
 
-   public static record c(jh a, jm b) {
-   }
-
-   @FunctionalInterface
-   public interface d {
-      boolean test(der var1, jh var2, dnq.c var3);
-   }
-
-   public static enum e {
-      a {
-         @Override
-         public dnq.c a(jh $$0, jm $$1, jm $$2) {
-            return new dnq.c($$0, $$1);
-         }
-      },
-      b {
-         @Override
-         public dnq.c a(jh $$0, jm $$1, jm $$2) {
-            return new dnq.c($$0.a($$1), $$2);
-         }
-      },
-      c {
-         @Override
-         public dnq.c a(jh $$0, jm $$1, jm $$2) {
-            return new dnq.c($$0.a($$1).a($$2), $$1.g());
-         }
-      };
-
-      public abstract dnq.c a(jh var1, jm var2, jm var3);
+   @Override
+   public dkh.a ar_() {
+      return dkh.a.a;
    }
 }

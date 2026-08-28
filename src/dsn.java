@@ -1,109 +1,73 @@
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dsn extends dsy implements bsn {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 6;
-   private static final String c = "patterns";
+public class dsn extends dmo implements dox {
+   public static final MapCodec<dsn> c = b(dsn::new);
+   public static final dyk<dyi> d = dmo.b;
+   protected static final float e = 6.0F;
+   protected static final fcm f = dke.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
+
+   @Override
+   public MapCodec<dsn> a() {
+      return c;
+   }
+
+   public dsn(dxm.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
+      return f;
+   }
+
+   @Override
+   protected boolean b(dxn $$0, dgf $$1, jh $$2) {
+      return $$0.c($$1, $$2, jm.b) && !$$0.a(dkg.le);
+   }
+
+   @Override
+   public cxk a(dhd $$0, jh $$1, dxn $$2) {
+      return new cxk(dkg.bD);
+   }
+
    @Nullable
-   private xj d;
-   private cvj e;
-   private dsp f = dsp.a;
-
-   public dsn(jh $$0, dvv $$1) {
-      super(dta.t, $$0, $$1);
-      this.e = ((dhh)$$1.b()).b();
-   }
-
-   public dsn(jh $$0, dvv $$1, cvj $$2) {
-      this($$0, $$1);
-      this.e = $$2;
-   }
-
-   public void a(cwm $$0, cvj $$1) {
-      this.e = $$1;
-      this.a($$0);
-   }
-
    @Override
-   public xj al() {
-      return (xj)(this.d != null ? this.d : xj.c("block.minecraft.banner"));
-   }
-
-   @Nullable
-   @Override
-   public xj an() {
-      return this.d;
-   }
-
-   @Override
-   protected void b(ul $$0, js.a $$1) {
-      super.b($$0, $$1);
-      if (!this.f.equals(dsp.a)) {
-         $$0.a("patterns", (vi)dsp.b.encodeStart($$1.a(uz.a), this.f).getOrThrow());
+   public dxn a(dbb $$0) {
+      dxn $$1 = super.a($$0);
+      if ($$1 != null) {
+         etp $$2 = $$0.q().b_($$0.a().d());
+         if ($$2.a(aya.a) && $$2.e() == 8) {
+            return $$1;
+         }
       }
 
-      if (this.d != null) {
-         $$0.a("CustomName", xj.a.a(this.d, $$1));
+      return null;
+   }
+
+   @Override
+   protected boolean a(dxn $$0, dhd $$1, jh $$2) {
+      if ($$0.c(d) == dyi.a) {
+         dxn $$3 = $$1.a_($$2.e());
+         return $$3.a(this) && $$3.c(d) == dyi.b;
+      } else {
+         etp $$4 = $$1.b_($$2);
+         return super.a($$0, $$1, $$2) && $$4.a(aya.a) && $$4.e() == 8;
       }
    }
 
    @Override
-   protected void a(ul $$0, js.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.b("CustomName", 8)) {
-         this.d = a($$0.l("CustomName"), $$1);
-      }
-
-      if ($$0.e("patterns")) {
-         dsp.b
-            .parse($$1.a(uz.a), $$0.c("patterns"))
-            .resultOrPartial($$0x -> b.error("Failed to parse banner patterns: '{}'", $$0x))
-            .ifPresent($$0x -> this.f = $$0x);
-      }
-   }
-
-   public acm a() {
-      return acm.a(this);
+   protected etp b_(dxn $$0) {
+      return etq.c.a(false);
    }
 
    @Override
-   public ul a(js.a $$0) {
-      return this.d($$0);
-   }
-
-   public dsp b() {
-      return this.f;
-   }
-
-   public cwm c() {
-      cwm $$0 = new cwm(dhv.a(this.e));
-      $$0.b(this.r());
-      return $$0;
-   }
-
-   public cvj f() {
-      return this.e;
+   public boolean a(@Nullable cps $$0, dgf $$1, jh $$2, dxn $$3, eto $$4) {
+      return false;
    }
 
    @Override
-   protected void a(dsy.b $$0) {
-      super.a($$0);
-      this.f = $$0.a(ku.ai, dsp.a);
-      this.d = $$0.a(ku.g);
-   }
-
-   @Override
-   protected void a(kq.a $$0) {
-      super.a($$0);
-      $$0.a(ku.ai, this.f);
-      $$0.a(ku.g, this.d);
-   }
-
-   @Override
-   public void a(ul $$0) {
-      $$0.r("patterns");
-      $$0.r("CustomName");
+   public boolean a(dhb $$0, jh $$1, dxn $$2, etp $$3) {
+      return false;
    }
 }

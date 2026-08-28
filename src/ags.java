@@ -1,93 +1,69 @@
-import java.util.UUID;
+public class ags implements aac<acr> {
+   public static final zt<xg, ags> a = aac.a(ags::a, ags::new);
+   private final jq<axe> b;
+   private final axg c;
+   private final int d;
+   private final float e;
+   private final float f;
+   private final long g;
 
-public class ags {
-   private static final String[] a = new String[]{
-      "Slim",
-      "Far",
-      "River",
-      "Silly",
-      "Fat",
-      "Thin",
-      "Fish",
-      "Bat",
-      "Dark",
-      "Oak",
-      "Sly",
-      "Bush",
-      "Zen",
-      "Bark",
-      "Cry",
-      "Slack",
-      "Soup",
-      "Grim",
-      "Hook",
-      "Dirt",
-      "Mud",
-      "Sad",
-      "Hard",
-      "Crook",
-      "Sneak",
-      "Stink",
-      "Weird",
-      "Fire",
-      "Soot",
-      "Soft",
-      "Rough",
-      "Cling",
-      "Scar"
-   };
-   private static final String[] b = new String[]{
-      "Fox",
-      "Tail",
-      "Jaw",
-      "Whisper",
-      "Twig",
-      "Root",
-      "Finder",
-      "Nose",
-      "Brow",
-      "Blade",
-      "Fry",
-      "Seek",
-      "Wart",
-      "Tooth",
-      "Foot",
-      "Leaf",
-      "Stone",
-      "Fall",
-      "Face",
-      "Tongue",
-      "Voice",
-      "Lip",
-      "Mouth",
-      "Snail",
-      "Toe",
-      "Ear",
-      "Hair",
-      "Beard",
-      "Shirt",
-      "Fist"
-   };
-
-   public static String a(bul $$0) {
-      if ($$0 instanceof cou) {
-         return $$0.al().getString();
-      } else {
-         xj $$1 = $$0.an();
-         return $$1 != null ? $$1.getString() : a($$0.cG());
-      }
+   public ags(jq<axe> $$0, axg $$1, bvf $$2, float $$3, float $$4, long $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.ar();
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
-   public static String a(UUID $$0) {
-      azu $$1 = b($$0);
-      return a($$1, a) + a($$1, b);
+   private ags(xg $$0) {
+      this.b = axe.d.decode($$0);
+      this.c = $$0.b(axg.class);
+      this.d = $$0.l();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+      this.g = $$0.readLong();
    }
 
-   private static String a(azu $$0, String[] $$1) {
-      return ae.a($$1, $$0);
+   private void a(xg $$0) {
+      axe.d.encode($$0, this.b);
+      $$0.a(this.c);
+      $$0.c(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.b(this.g);
    }
 
-   private static azu b(UUID $$0) {
-      return azu.a((long)($$0.hashCode() >> 2));
+   @Override
+   public aae<ags> a() {
+      return ahk.aV;
+   }
+
+   public void a(acr $$0) {
+      $$0.a(this);
+   }
+
+   public jq<axe> b() {
+      return this.b;
+   }
+
+   public axg e() {
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
+   }
+
+   public float h() {
+      return this.f;
+   }
+
+   public long i() {
+      return this.g;
    }
 }

@@ -1,123 +1,123 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.util.List;
-import java.util.Locale;
-import java.util.function.BiConsumer;
 
-public record czd(List<czd.b> e, boolean f) {
-   public static final czd a = new czd(List.of(), true);
-   private static final Codec<czd> g = RecordCodecBuilder.create(
-      $$0 -> $$0.group(czd.b.a.listOf().fieldOf("modifiers").forGetter(czd::b), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(czd::c))
-            .apply($$0, czd::new)
-   );
-   public static final Codec<czd> b = Codec.withAlternative(g, czd.b.a.listOf(), $$0 -> new czd($$0, true));
-   public static final zh<wu, czd> c = zh.a(czd.b.b.a(zf.a()), czd::b, zf.b, czd::c, czd::new);
-   public static final DecimalFormat d = ae.a(new DecimalFormat("#.##"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
+public class czd extends cxg implements cyf {
+   public static final int a = 10;
+   public static final float b = 8.0F;
+   public static final float c = 2.5F;
 
-   public czd a(boolean $$0) {
-      return new czd(this.e, $$0);
+   public czd(cxg.a $$0) {
+      super($$0);
    }
 
-   public static czd.a a() {
-      return new czd.a();
+   public static dab c() {
+      return dab.a().a(bxj.c, new bxh(f, 8.0, bxh.a.a), bvo.b).a(bxj.e, new bxh(g, -2.9F, bxh.a.a), bvo.b).a();
    }
 
-   public czd a(jq<bwk> $$0, bwn $$1, buu $$2) {
-      Builder<czd.b> $$3 = ImmutableList.builderWithExpectedSize(this.e.size() + 1);
+   public static dam d() {
+      return new dam(List.of(), 1.0F, 2);
+   }
 
-      for (czd.b $$4 : this.e) {
-         if (!$$4.a($$0, $$1.b())) {
-            $$3.add($$4);
+   @Override
+   public boolean a(dxn $$0, dha $$1, jh $$2, cps $$3) {
+      return !$$3.b();
+   }
+
+   @Override
+   public cxm b(cxk $$0) {
+      return cxm.f;
+   }
+
+   @Override
+   public int a(cxk $$0, bwb $$1) {
+      return 72000;
+   }
+
+   @Override
+   public boolean a(cxk $$0, dha $$1, bwb $$2, int $$3) {
+      if ($$2 instanceof cps $$4) {
+         int $$6 = this.a($$0, $$2) - $$3;
+         if ($$6 < 10) {
+            return false;
+         } else {
+            float $$7 = ddt.a($$0, $$4);
+            if ($$7 > 0.0F && !$$4.bk()) {
+               return false;
+            } else if ($$0.r()) {
+               return false;
+            } else {
+               jq<axe> $$8 = ddt.b($$0, dds.C).orElse(axf.Ae);
+               if ($$1 instanceof ash $$9) {
+                  $$0.a(1, $$4);
+                  if ($$7 == 0.0F) {
+                     cqy $$10 = cql.a(cqy::new, $$9, $$0, $$4, 0.0F, 2.5F, 1.0F);
+                     if ($$4.fT()) {
+                        $$10.c = cpz.a.c;
+                     } else {
+                        $$4.gg().h($$0);
+                     }
+
+                     $$1.a(null, $$10, $$8.a(), axg.h, 1.0F, 1.0F);
+                     return true;
+                  }
+               }
+
+               $$4.b(axp.c.b(this));
+               if ($$7 > 0.0F) {
+                  float $$11 = $$4.dL();
+                  float $$12 = $$4.dN();
+                  float $$13 = -bae.a($$11 * (float) (Math.PI / 180.0)) * bae.b($$12 * (float) (Math.PI / 180.0));
+                  float $$14 = -bae.a($$12 * (float) (Math.PI / 180.0));
+                  float $$15 = bae.b($$11 * (float) (Math.PI / 180.0)) * bae.b($$12 * (float) (Math.PI / 180.0));
+                  float $$16 = bae.c($$13 * $$13 + $$14 * $$14 + $$15 * $$15);
+                  $$13 *= $$7 / $$16;
+                  $$14 *= $$7 / $$16;
+                  $$15 *= $$7 / $$16;
+                  $$4.j((double)$$13, (double)$$14, (double)$$15);
+                  $$4.a(20, 8.0F, $$0);
+                  if ($$4.aJ()) {
+                     float $$17 = 1.1999999F;
+                     $$4.a(bwf.a, new fbs(0.0, 1.1999999F, 0.0));
+                  }
+
+                  $$1.a(null, $$4, $$8.a(), axg.h, 1.0F, 1.0F);
+                  return true;
+               } else {
+                  return false;
+               }
+            }
          }
-      }
-
-      $$3.add(new czd.b($$0, $$1, $$2));
-      return new czd($$3.build(), this.f);
-   }
-
-   public void a(buu $$0, BiConsumer<jq<bwk>, bwn> $$1) {
-      for (czd.b $$2 : this.e) {
-         if ($$2.e.equals($$0)) {
-            $$1.accept($$2.c, $$2.d);
-         }
+      } else {
+         return false;
       }
    }
 
-   public void a(but $$0, BiConsumer<jq<bwk>, bwn> $$1) {
-      for (czd.b $$2 : this.e) {
-         if ($$2.e.b($$0)) {
-            $$1.accept($$2.c, $$2.d);
-         }
+   @Override
+   public bte a(dha $$0, cps $$1, btd $$2) {
+      cxk $$3 = $$1.b($$2);
+      if ($$3.r()) {
+         return bte.d;
+      } else if (ddt.a($$3, $$1) > 0.0F && !$$1.bk()) {
+         return bte.d;
+      } else {
+         $$1.c($$2);
+         return bte.c;
       }
    }
 
-   public double a(double $$0, but $$1) {
-      double $$2 = $$0;
-
-      for (czd.b $$3 : this.e) {
-         if ($$3.e.b($$1)) {
-            double $$4 = $$3.d.c();
-
-            $$2 += switch ($$3.d.d()) {
-               case a -> $$4;
-               case b -> $$4 * $$0;
-               case c -> $$4 * $$2;
-            };
-         }
-      }
-
-      return $$2;
+   @Override
+   public boolean a(cxk $$0, bwb $$1, bwb $$2) {
+      return true;
    }
 
-   public List<czd.b> b() {
-      return this.e;
+   @Override
+   public void b(cxk $$0, bwb $$1, bwb $$2) {
+      $$0.a(1, $$2, bvn.a);
    }
 
-   public boolean c() {
-      return this.f;
-   }
-
-   public static class a {
-      private final Builder<czd.b> a = ImmutableList.builder();
-
-      a() {
-      }
-
-      public czd.a a(jq<bwk> $$0, bwn $$1, buu $$2) {
-         this.a.add(new czd.b($$0, $$1, $$2));
-         return this;
-      }
-
-      public czd a() {
-         return new czd(this.a.build(), true);
-      }
-   }
-
-   public static record b(jq<bwk> c, bwn d, buu e) {
-      public static final Codec<czd.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bwk.a.fieldOf("type").forGetter(czd.b::a), bwn.a.forGetter(czd.b::b), buu.l.optionalFieldOf("slot", buu.a).forGetter(czd.b::c))
-               .apply($$0, czd.b::new)
-      );
-      public static final zh<wu, czd.b> b = zh.a(bwk.b, czd.b::a, bwn.c, czd.b::b, buu.m, czd.b::c, czd.b::new);
-
-      public boolean a(jq<bwk> $$0, alj $$1) {
-         return $$0.equals(this.c) && this.d.a($$1);
-      }
-
-      public jq<bwk> a() {
-         return this.c;
-      }
-
-      public bwn b() {
-         return this.d;
-      }
-
-      public buu c() {
-         return this.e;
-      }
+   @Override
+   public cql a(dha $$0, ka $$1, cxk $$2, jm $$3) {
+      cqy $$4 = new cqy($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1));
+      $$4.c = cpz.a.b;
+      return $$4;
    }
 }

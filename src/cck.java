@@ -1,36 +1,62 @@
-public class cck extends ccf {
-   private final chv a;
-   private arq b;
-   private boolean c;
+import java.util.EnumSet;
 
-   public cck(chv $$0) {
+public class cck extends ccz {
+   private final bwj a;
+
+   public cck(bwj $$0) {
       this.a = $$0;
+      this.a(EnumSet.of(ccz.a.a, ccz.a.b));
    }
 
    @Override
    public boolean b() {
-      arq $$0 = (arq)this.a.ag_();
-      boolean $$1 = $$0 != null && !$$0.Y_() && !$$0.gh().b && !$$0.bj() && !$$0.av;
-      return !this.a.gm() && $$1 && this.a.gC();
+      return this.a.ct() < 140;
    }
 
    @Override
-   public boolean S_() {
-      return !this.c;
+   public boolean c() {
+      return this.b();
+   }
+
+   @Override
+   public boolean U_() {
+      return false;
    }
 
    @Override
    public void d() {
-      this.b = (arq)this.a.ag_();
-      this.c = false;
+      this.h();
+   }
+
+   private void h() {
+      Iterable<jh> $$0 = jh.b(
+         bae.a(this.a.dA() - 1.0), this.a.dB(), bae.a(this.a.dG() - 1.0), bae.a(this.a.dA() + 1.0), bae.a(this.a.dC() + 8.0), bae.a(this.a.dG() + 1.0)
+      );
+      jh $$1 = null;
+
+      for (jh $$2 : $$0) {
+         if (this.a(this.a.dV(), $$2)) {
+            $$1 = $$2;
+            break;
+         }
+      }
+
+      if ($$1 == null) {
+         $$1 = jh.a(this.a.dA(), this.a.dC() + 8.0, this.a.dG());
+      }
+
+      this.a.L().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
    }
 
    @Override
    public void a() {
-      if (!this.c && !this.a.v() && !this.a.N_()) {
-         if (this.a.cR().c(this.b.cR())) {
-            this.c = this.a.b(this.b);
-         }
-      }
+      this.h();
+      this.a.a(0.02F, new fbs((double)this.a.bo, (double)this.a.bp, (double)this.a.bq));
+      this.a.a(bwf.a, this.a.dy());
+   }
+
+   private boolean a(dhd $$0, jh $$1) {
+      dxn $$2 = $$0.a_($$1);
+      return ($$0.b_($$1).c() || $$2.a(dkg.ny)) && $$2.a(eue.a);
    }
 }

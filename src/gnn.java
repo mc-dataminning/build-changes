@@ -1,59 +1,14 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Ordering;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+public class gnn implements gnp<dun> {
+   public static final hdn a = new hdn(hbd.d, alz.b("entity/bell/bell_body"));
+   private final gak b;
 
-public class gnn implements gng.a {
-   private final fke a;
-   private final Map<Long, Map<jh, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
-
-   gnn(fke $$0) {
-      this.a = $$0;
+   public gnn(gnq.a $$0) {
+      this.b = new gak($$0.a(geg.x));
    }
 
-   public void a(long $$0, jh $$1) {
-      Map<jh, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
-      int $$3 = $$2.getOrDefault($$1, 0);
-      $$2.put($$1, $$3 + 1);
-   }
-
-   @Override
-   public void a(fer $$0, gjg $$1, double $$2, double $$3, double $$4) {
-      long $$5 = this.a.s.ab();
-      int $$6 = 200;
-      double $$7 = 0.0025;
-      Set<jh> $$8 = Sets.newHashSet();
-      Map<jh, Integer> $$9 = Maps.newHashMap();
-      fev $$10 = $$1.getBuffer(gjq.y());
-      Iterator<Entry<Long, Map<jh, Integer>>> $$11 = this.b.entrySet().iterator();
-
-      while ($$11.hasNext()) {
-         Entry<Long, Map<jh, Integer>> $$12 = $$11.next();
-         Long $$13 = $$12.getKey();
-         Map<jh, Integer> $$14 = $$12.getValue();
-         long $$15 = $$5 - $$13;
-         if ($$15 > 200L) {
-            $$11.remove();
-         } else {
-            for (Entry<jh, Integer> $$16 : $$14.entrySet()) {
-               jh $$17 = $$16.getKey();
-               Integer $$18 = $$16.getValue();
-               if ($$8.add($$17)) {
-                  ezt $$19 = new ezt(jh.c).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
-                  gka.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
-                  $$9.put($$17, $$18);
-               }
-            }
-         }
-      }
-
-      for (Entry<jh, Integer> $$20 : $$9.entrySet()) {
-         jh $$21 = $$20.getKey();
-         Integer $$22 = $$20.getValue();
-         gng.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
-      }
+   public void a(dun $$0, float $$1, fgl $$2, gle $$3, int $$4, int $$5) {
+      fgp $$6 = a.a($$3, glo::c);
+      this.b.a($$0, $$1);
+      this.b.a($$2, $$6, $$4, $$5);
    }
 }

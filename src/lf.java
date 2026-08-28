@@ -1,22 +1,22 @@
 public class lf extends la {
-   private final cxh c;
-   private final cxh.a d;
+   private final cyf c;
+   private final cyf.a d;
 
-   public lf(cwi $$0) {
-      if ($$0 instanceof cxh $$1) {
+   public lf(cxg $$0) {
+      if ($$0 instanceof cyf $$1) {
          this.c = $$1;
          this.d = $$1.b();
       } else {
-         throw new IllegalArgumentException($$0 + " not instance of " + cxh.class.getSimpleName());
+         throw new IllegalArgumentException($$0 + " not instance of " + cyf.class.getSimpleName());
       }
    }
 
    @Override
-   public cwm a(ky $$0, cwm $$1) {
-      arp $$2 = $$0.b();
-      jm $$3 = $$0.d().c(dkv.b);
+   public cxk a(ky $$0, cxk $$1) {
+      ash $$2 = $$0.b();
+      jm $$3 = $$0.d().c(dml.b);
       ka $$4 = this.d.b().getDispensePosition($$0, $$3);
-      cpn.a(this.c.a($$2, $$4, $$1, $$3), $$2, $$1, (double)$$3.j(), (double)$$3.k(), (double)$$3.l(), this.d.d(), this.d.c());
+      cql.a(this.c.a($$2, $$4, $$1, $$3), $$2, $$1, (double)$$3.j(), (double)$$3.k(), (double)$$3.l(), this.d.d(), this.d.c());
       $$1.h(1);
       return $$1;
    }

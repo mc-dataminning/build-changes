@@ -1,193 +1,248 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class drg extends diq {
+public class drg extends djq {
    public static final MapCodec<drg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(lz.e.q().fieldOf("hook").forGetter($$0x -> $$0x.m), t()).apply($$0, drg::new)
+      $$0 -> $$0.group(cwh.q.optionalFieldOf("color").forGetter($$0x -> Optional.ofNullable($$0x.m)), t())
+            .apply($$0, ($$0x, $$1) -> new drg((cwh)$$0x.orElse(null), $$1))
    );
-   public static final dwm b = dwl.w;
-   public static final dwm c = dwl.a;
-   public static final dwm d = dwl.d;
-   public static final dwm e = dod.b;
-   public static final dwm f = dod.c;
-   public static final dwm g = dod.d;
-   public static final dwm h = dod.e;
-   private static final Map<jm, dwm> k = dkm.f;
-   protected static final fas i = diq.a(0.0, 1.0, 0.0, 16.0, 2.5, 16.0);
-   protected static final fas j = diq.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   private static final int l = 10;
-   private final diq m;
+   private static final xv d = xv.c("container.shulkerBox.unknownContents");
+   private static final float e = 1.0F;
+   private static final fcm f = dke.a(0.0, 15.0, 0.0, 16.0, 16.0, 16.0);
+   private static final fcm g = dke.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
+   private static final fcm h = dke.a(0.0, 0.0, 0.0, 1.0, 16.0, 16.0);
+   private static final fcm i = dke.a(15.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   private static final fcm j = dke.a(0.0, 0.0, 0.0, 16.0, 16.0, 1.0);
+   private static final fcm k = dke.a(0.0, 0.0, 15.0, 16.0, 16.0, 16.0);
+   private static final Map<jm, fcm> l = ae.a(Maps.newEnumMap(jm.class), $$0 -> {
+      $$0.put(jm.c, j);
+      $$0.put(jm.f, i);
+      $$0.put(jm.d, k);
+      $$0.put(jm.e, h);
+      $$0.put(jm.b, f);
+      $$0.put(jm.a, g);
+   });
+   public static final dyk<jm> b = dmj.a;
+   public static final alz c = alz.b("contents");
+   @Nullable
+   private final cwh m;
 
    @Override
    public MapCodec<drg> a() {
       return a;
    }
 
-   public drg(diq $$0, dvu.d $$1) {
+   public drg(@Nullable cwh $$0, dxm.d $$1) {
       super($$1);
-      this.l(
-         this.F
-            .b()
-            .b(b, Boolean.valueOf(false))
-            .b(c, Boolean.valueOf(false))
-            .b(d, Boolean.valueOf(false))
-            .b(e, Boolean.valueOf(false))
-            .b(f, Boolean.valueOf(false))
-            .b(g, Boolean.valueOf(false))
-            .b(h, Boolean.valueOf(false))
-      );
       this.m = $$0;
+      this.l(this.F.b().b(b, jm.b));
    }
 
    @Override
-   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
-      return $$0.c(c) ? i : j;
+   public dup a(jh $$0, dxn $$1) {
+      return new dwb(this.m, $$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dup> duq<T> a(dha $$0, dxn $$1, dur<T> $$2) {
+      return a($$2, dur.y, dwb::a);
    }
 
    @Override
-   public dvv a(dad $$0) {
-      der $$1 = $$0.q();
-      jh $$2 = $$0.a();
-      return this.m()
-         .b(e, Boolean.valueOf(this.a($$1.a_($$2.f()), jm.c)))
-         .b(f, Boolean.valueOf(this.a($$1.a_($$2.i()), jm.f)))
-         .b(g, Boolean.valueOf(this.a($$1.a_($$2.g()), jm.d)))
-         .b(h, Boolean.valueOf(this.a($$1.a_($$2.h()), jm.e)));
+   protected dqn a_(dxn $$0) {
+      return dqn.b;
    }
 
    @Override
-   protected dvv a(dvv $$0, dfp $$1, dgb $$2, jh $$3, jm $$4, jh $$5, dvv $$6, azu $$7) {
-      return $$4.o().d() ? $$0.b(k.get($$4), Boolean.valueOf(this.a($$6, $$4))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected bte a(dxn $$0, dha $$1, jh $$2, cps $$3, fbo $$4) {
+      if ($$1 instanceof ash $$5 && $$1.c_($$2) instanceof dwb $$6 && a($$0, $$1, $$2, $$6)) {
+         $$3.a($$6);
+         $$3.a(axp.aq);
+         coh.a($$5, $$3, true);
+      }
+
+      return bte.a;
    }
 
-   @Override
-   protected void b(dvv $$0, dfm $$1, jh $$2, dvv $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2, $$0);
+   private static boolean a(dxn $$0, dha $$1, jh $$2, dwb $$3) {
+      if ($$3.k() != dwb.a.a) {
+         return true;
+      } else {
+         fbn $$4 = cmy.a(1.0F, $$0.c(b), 0.0F, 0.5F).a($$2).h(1.0E-6);
+         return $$1.b($$4);
       }
    }
 
    @Override
-   protected void a(dvv $$0, dfm $$1, jh $$2, dvv $$3, boolean $$4) {
-      if (!$$4 && !$$0.a($$3.b())) {
-         this.a($$1, $$2, $$0.b(b, Boolean.valueOf(true)));
-      }
+   public dxn a(dbb $$0) {
+      return this.m().b(b, $$0.k());
    }
 
    @Override
-   public dvv a(dfm $$0, jh $$1, dvv $$2, cou $$3) {
-      if (!$$0.C && !$$3.eX().f() && $$3.eX().a(cwq.sm)) {
-         $$0.a($$1, $$2.b(d, Boolean.valueOf(true)), 4);
-         $$0.a($$3, ear.M, $$1);
+   protected void a(dxo.a<dke, dxn> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   public dxn a(dha $$0, jh $$1, dxn $$2, cps $$3) {
+      dup $$4 = $$0.c_($$1);
+      if ($$4 instanceof dwb $$5) {
+         if (!$$0.C && $$3.b() && !$$5.c()) {
+            cxk $$6 = b(this.b());
+            $$6.b($$4.r());
+            clw $$7 = new clw($$0, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, $$6);
+            $$7.s();
+            $$0.b($$7);
+         } else {
+            $$5.d_($$3);
+         }
       }
 
       return super.a($$0, $$1, $$2, $$3);
    }
 
-   private void a(dfm $$0, jh $$1, dvv $$2) {
-      for (jm $$3 : new jm[]{jm.d, jm.e}) {
-         for (int $$4 = 1; $$4 < 42; $$4++) {
-            jh $$5 = $$1.a($$3, $$4);
-            dvv $$6 = $$0.a_($$5);
-            if ($$6.a(this.m)) {
-               if ($$6.c(drh.b) == $$3.g()) {
-                  drh.a($$0, $$5, $$6, false, true, $$4, $$2);
-               }
-               break;
+   @Override
+   protected List<cxk> a(dxn $$0, ewk.a $$1) {
+      dup $$2 = $$1.b(ezd.h);
+      if ($$2 instanceof dwb $$3) {
+         $$1 = $$1.a(c, $$1x -> {
+            for (int $$2x = 0; $$2x < $$3.b(); $$2x++) {
+               $$1x.accept($$3.a($$2x));
             }
+         });
+      }
 
-            if (!$$6.a(this)) {
-               break;
-            }
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(dxn $$0, dha $$1, jh $$2, dxn $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         dup $$5 = $$1.c_($$2);
+         super.a($$0, $$1, $$2, $$3, $$4);
+         if ($$5 instanceof dwb) {
+            $$1.c($$2, $$0.b());
          }
       }
    }
 
    @Override
-   protected fas a_(dvv $$0, dfm $$1, jh $$2) {
-      return $$0.f($$1, $$2);
-   }
-
-   @Override
-   protected void a(dvv $$0, dfm $$1, jh $$2, bul $$3) {
-      if (!$$1.C) {
-         if (!$$0.c(b)) {
-            this.a($$1, $$2, List.of($$3));
-         }
+   public void a(cxk $$0, cxg.b $$1, List<xv> $$2, czc $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$0.b(ku.ap)) {
+         $$2.add(d);
       }
-   }
 
-   @Override
-   protected void a(dvv $$0, arp $$1, jh $$2, azu $$3) {
-      if ($$1.a_($$2).c(b)) {
-         this.a($$1, $$2);
-      }
-   }
+      int $$4 = 0;
+      int $$5 = 0;
 
-   private void a(dfm $$0, jh $$1) {
-      dvv $$2 = $$0.a_($$1);
-      List<? extends bul> $$3 = $$0.a_(null, $$2.f($$0, $$1).a().a($$1));
-      this.a($$0, $$1, $$3);
-   }
-
-   private void a(dfm $$0, jh $$1, List<? extends bul> $$2) {
-      dvv $$3 = $$0.a_($$1);
-      boolean $$4 = $$3.c(b);
-      boolean $$5 = false;
-      if (!$$2.isEmpty()) {
-         for (bul $$6 : $$2) {
-            if (!$$6.r_()) {
-               $$5 = true;
-               break;
-            }
+      for (cxk $$6 : $$0.a(ku.al, dac.a).d()) {
+         $$5++;
+         if ($$4 <= 4) {
+            $$4++;
+            $$2.add(xv.a("container.shulkerBox.itemCount", $$6.y(), $$6.L()));
          }
       }
 
-      if ($$5 != $$4) {
-         $$3 = $$3.b(b, Boolean.valueOf($$5));
-         $$0.a($$1, $$3, 3);
-         this.a($$0, $$1, $$3);
-      }
-
-      if ($$5) {
-         $$0.a(new jh($$1), this, 10);
-      }
-   }
-
-   public boolean a(dvv $$0, jm $$1) {
-      return $$0.a(this.m) ? $$0.c(drh.b) == $$1.g() : $$0.a(this);
-   }
-
-   @Override
-   protected dvv a(dvv $$0, dpd $$1) {
-      switch ($$1) {
-         case c:
-            return $$0.b(e, $$0.c(g)).b(f, $$0.c(h)).b(g, $$0.c(e)).b(h, $$0.c(f));
-         case d:
-            return $$0.b(e, $$0.c(f)).b(f, $$0.c(g)).b(g, $$0.c(h)).b(h, $$0.c(e));
-         case b:
-            return $$0.b(e, $$0.c(h)).b(f, $$0.c(e)).b(g, $$0.c(f)).b(h, $$0.c(g));
-         default:
-            return $$0;
+      if ($$5 - $$4 > 0) {
+         $$2.add(xv.a("container.shulkerBox.more", $$5 - $$4).a(n.u));
       }
    }
 
    @Override
-   protected dvv a(dvv $$0, dnm $$1) {
-      switch ($$1) {
-         case b:
-            return $$0.b(e, $$0.c(g)).b(g, $$0.c(e));
-         case c:
-            return $$0.b(f, $$0.c(h)).b(h, $$0.c(f));
-         default:
-            return super.a($$0, $$1);
+   protected fcm b_(dxn $$0, dgf $$1, jh $$2) {
+      if ($$1.c_($$2) instanceof dwb $$4 && !$$4.u()) {
+         return l.get($$0.c(b).g());
       }
+
+      return fcj.b();
    }
 
    @Override
-   protected void a(dvw.a<diq, dvv> $$0) {
-      $$0.a(b, c, d, e, f, h, g);
+   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
+      dup $$4 = $$1.c_($$2);
+      return $$4 instanceof dwb ? fcj.a(((dwb)$$4).a($$0)) : fcj.b();
+   }
+
+   @Override
+   protected boolean e_(dxn $$0) {
+      return false;
+   }
+
+   @Override
+   protected boolean c_(dxn $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dxn $$0, dha $$1, jh $$2) {
+      return csx.a($$1.c_($$2));
+   }
+
+   @Override
+   public cxk a(dhd $$0, jh $$1, dxn $$2) {
+      cxk $$3 = super.a($$0, $$1, $$2);
+      $$0.a($$1, dur.y).ifPresent($$2x -> $$2x.a($$3, $$0.K_()));
+      return $$3;
+   }
+
+   @Nullable
+   public static cwh b(cxg $$0) {
+      return a(dke.a($$0));
+   }
+
+   @Nullable
+   public static cwh a(dke $$0) {
+      return $$0 instanceof drg ? ((drg)$$0).b() : null;
+   }
+
+   public static dke a(@Nullable cwh $$0) {
+      if ($$0 == null) {
+         return dkg.lk;
+      } else {
+         return switch ($$0) {
+            case a -> dkg.ll;
+            case b -> dkg.lm;
+            case c -> dkg.ln;
+            case d -> dkg.lo;
+            case e -> dkg.lp;
+            case f -> dkg.lq;
+            case g -> dkg.lr;
+            case h -> dkg.ls;
+            case i -> dkg.lt;
+            case j -> dkg.lu;
+            case l -> dkg.lw;
+            case m -> dkg.lx;
+            case n -> dkg.ly;
+            case o -> dkg.lz;
+            case p -> dkg.lA;
+            case k -> dkg.lv;
+         };
+      }
+   }
+
+   @Nullable
+   public cwh b() {
+      return this.m;
+   }
+
+   public static cxk b(@Nullable cwh $$0) {
+      return new cxk(a($$0));
+   }
+
+   @Override
+   protected dxn a(dxn $$0, dqu $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dxn a(dxn $$0, dpd $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 }

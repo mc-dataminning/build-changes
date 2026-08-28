@@ -1,26 +1,52 @@
-import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import org.slf4j.Logger;
 
-public abstract class brn implements brs {
-   private static final Codec<Either<Float, brn>> a = Codec.either(Codec.FLOAT, lz.J.q().dispatch(brn::c, bro::codec));
-   public static final Codec<brn> c = a.xmap(
-      $$0 -> (brn)$$0.map(brl::a, $$0x -> $$0x), $$0 -> $$0.c() == bro.a ? Either.left(((brl)$$0).d()) : Either.right($$0)
-   );
+public class brn {
+   public static final Codec<brn> a = Codec.INT.xmap(brn::a, brn::a);
+   private static final brn b = new brn(1);
+   private static final Logger c = LogUtils.getLogger();
+   private final int d;
 
-   public static Codec<brn> a(float $$0, float $$1) {
-      return c.validate($$2 -> {
-         if ($$2.a() < $$0) {
-            return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
-         } else {
-            return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
-         }
-      });
+   private brn(int $$0) {
+      this.d = $$0;
    }
 
-   public abstract float a();
+   public static brn a(int $$0) {
+      if ($$0 == 1) {
+         return b;
+      } else {
+         b($$0);
+         return new brn($$0);
+      }
+   }
 
-   public abstract float b();
+   public int a() {
+      return this.d;
+   }
 
-   public abstract bro<?> c();
+   private static void b(int $$0) {
+      if ($$0 < 0) {
+         throw (IllegalArgumentException)ae.b(new IllegalArgumentException("Weight should be >= 0"));
+      } else {
+         if ($$0 == 0 && ab.aU) {
+            c.warn("Found 0 weight, make sure this is intentional!");
+         }
+      }
+   }
+
+   @Override
+   public String toString() {
+      return Integer.toString(this.d);
+   }
+
+   @Override
+   public int hashCode() {
+      return Integer.hashCode(this.d);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof brn && this.d == ((brn)$$0).d;
+   }
 }

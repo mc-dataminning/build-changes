@@ -1,19 +1,33 @@
-public class gsx extends gty<gvd, fyu> {
-   private static final alj a = alj.b("textures/entity/breeze/breeze_wind.png");
-   private final fyu b;
+public class gsx extends gsp<cmu, gyw, gce> {
+   private static final alz a = alz.b("textures/entity/phantom.png");
 
-   public gsx(gpk.a $$0, grh<gvd, fyu> $$1) {
-      super($$1);
-      this.b = new fyu($$0.a(gck.I));
+   public gsx(grj.a $$0) {
+      super($$0, new gce($$0.a(geg.bL)), 0.75F);
+      this.a(new gvw(this));
    }
 
-   public void a(fer $$0, gjg $$1, int $$2, gvd $$3, float $$4, float $$5) {
-      fev $$6 = $$1.getBuffer(gjq.a(a, this.a($$3.p) % 1.0F, 0.0F));
-      this.b.a($$3);
-      goq.a(this.b, this.b.d()).a($$0, $$6, $$2, gyv.d);
+   public alz a(gyw $$0) {
+      return a;
    }
 
-   private float a(float $$0) {
-      return $$0 * 0.02F;
+   public gyw b() {
+      return new gyw();
+   }
+
+   public void a(cmu $$0, gyw $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = (float)$$0.p() + $$1.p;
+      $$1.b = $$0.m();
+   }
+
+   protected void a(gyw $$0, fgl $$1) {
+      float $$2 = 1.0F + 0.15F * (float)$$0.b;
+      $$1.b($$2, $$2, $$2);
+      $$1.a(0.0F, 1.3125F, 0.1875F);
+   }
+
+   protected void a(gyw $$0, fgl $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$1.a(a.b.rotationDegrees($$0.V));
    }
 }

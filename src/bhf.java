@@ -1,34 +1,25 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class bhf extends DataFix {
-   public bhf(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class bhf extends bgl {
+   public bhf(Schema $$0) {
+      super($$0, "LockComponentPredicateFix", "minecraft:lock");
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "OptionsAddTextBackgroundFix",
-         this.getInputSchema().getType(bia.e),
-         $$0 -> $$0.update(
-               DSL.remainderFinder(),
-               $$0x -> (Dynamic)DataFixUtils.orElse(
-                     $$0x.get("chatOpacity").asString().map($$1 -> $$0x.set("textBackgroundOpacity", $$0x.createDouble(this.a($$1)))).result(), $$0x
-                  )
-            )
-      );
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return b($$0);
    }
 
-   private double a(String $$0) {
-      try {
-         double $$1 = 0.9 * Double.parseDouble($$0) + 0.1;
-         return $$1 / 2.0;
-      } catch (NumberFormatException var4) {
-         return 0.5;
+   public static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      Optional<String> $$1 = $$0.asString().result();
+      if ($$1.isPresent()) {
+         Dynamic<T> $$2 = $$0.createString("\"" + $$1.get().replace("\"", "\\\"") + "\"");
+         Dynamic<T> $$3 = $$0.emptyMap().set("minecraft:custom_name", $$2);
+         return $$0.emptyMap().set("components", $$3);
+      } else {
+         return $$0.emptyMap();
       }
    }
 }

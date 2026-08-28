@@ -1,22 +1,45 @@
-public class gpv extends gqq<clt, gyd, fzw<gyd>> {
-   private static final alj a = alj.b("textures/entity/zombie/zombie.png");
+import com.google.common.collect.Lists;
+import java.util.List;
 
-   public gpv(gpk.a $$0, float $$1) {
-      super($$0, new fzp($$0.a(gck.aO)), 0.5F * $$1);
-      this.a(new gtr<>(this, $$0.b()));
-      this.a(new gto<>(this, new fzp($$0.a(gck.aP)), new fzp($$0.a(gck.aQ)), $$0.h()));
+public class gpv implements gpe.a {
+   private final List<jh> a = Lists.newArrayList();
+   private final List<Float> b = Lists.newArrayList();
+   private final List<Float> c = Lists.newArrayList();
+   private final List<Float> d = Lists.newArrayList();
+   private final List<Float> e = Lists.newArrayList();
+   private final List<Float> f = Lists.newArrayList();
+
+   public void a(jh $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a.add($$0);
+      this.b.add($$1);
+      this.c.add($$5);
+      this.d.add($$2);
+      this.e.add($$3);
+      this.f.add($$4);
    }
 
-   public alj a(gyd $$0) {
-      return a;
-   }
+   @Override
+   public void a(fgl $$0, gle $$1, double $$2, double $$3, double $$4) {
+      fgp $$5 = $$1.getBuffer(glo.B());
 
-   public gyd b() {
-      return new gyd();
-   }
-
-   public void a(clt $$0, gyd $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      gqb.a($$0, $$1, $$2);
+      for (int $$6 = 0; $$6 < this.a.size(); $$6++) {
+         jh $$7 = this.a.get($$6);
+         Float $$8 = this.b.get($$6);
+         float $$9 = $$8 / 2.0F;
+         gly.b(
+            $$0,
+            $$5,
+            (double)((float)$$7.u() + 0.5F - $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F - $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F - $$9) - $$4,
+            (double)((float)$$7.u() + 0.5F + $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F + $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F + $$9) - $$4,
+            this.d.get($$6),
+            this.e.get($$6),
+            this.f.get($$6),
+            this.c.get($$6)
+         );
+      }
    }
 }

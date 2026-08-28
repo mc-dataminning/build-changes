@@ -1,45 +1,43 @@
-public abstract class gho extends ghb {
-   protected gze E;
+import org.joml.Vector3f;
 
-   protected gho(gdh $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
+public class gho extends ghq<lm> {
+   private final Vector3f a;
+   private final Vector3f b;
+
+   protected gho(gfd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, lm $$7, gjg $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      this.a = this.a($$7.b(), $$9);
+      this.b = this.a($$7.c(), $$9);
    }
 
-   protected gho(gdh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   private Vector3f a(Vector3f $$0, float $$1) {
+      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
    }
 
-   protected void a(gze $$0) {
-      this.E = $$0;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.c();
-   }
-
-   @Override
-   protected float d() {
-      return this.E.d();
-   }
-
-   @Override
-   protected float e() {
-      return this.E.g();
+   private void f(float $$0) {
+      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
+      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
+      this.v = $$2.x();
+      this.w = $$2.y();
+      this.x = $$2.z();
    }
 
    @Override
-   protected float f() {
-      return this.E.h();
+   public void a(fgp $$0, fli $$1, float $$2) {
+      this.f($$2);
+      super.a($$0, $$1, $$2);
    }
 
-   public void a(ghj $$0) {
-      this.a($$0.a(this.r));
-   }
+   public static class a implements gio<lm> {
+      private final gjg a;
 
-   public void b(ghj $$0) {
-      if (!this.o) {
-         this.a($$0.a(this.s, this.t));
+      public a(gjg $$0) {
+         this.a = $$0;
+      }
+
+      public gil a(lm $$0, gfd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gho($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
       }
    }
 }

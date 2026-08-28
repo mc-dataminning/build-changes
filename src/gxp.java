@@ -1,7 +1,8 @@
-import javax.annotation.Nullable;
-
-public class gxp extends gvo {
-   @Nullable
-   public hbg a;
-   public cwm b = cwm.k;
+public class gxp extends gym {
+   public boolean b;
+   public boolean c;
+   public boolean d;
+   public float e;
+   public float f;
+   public float g;
 }

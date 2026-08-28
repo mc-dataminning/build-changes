@@ -1,30 +1,42 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
+import org.slf4j.Logger;
 
-public class bjb extends bgv {
-   private static final double a = 16.0;
-   private static final double b = 48.0;
+public class bjb extends bbv {
+   private static final Logger b = LogUtils.getLogger();
 
    public bjb(Schema $$0) {
-      super($$0, false, "Villager Follow Range Fix", bia.B, "minecraft:villager");
+      super($$0, bis.l);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), bjb::a);
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update(
-         "Attributes",
-         $$1 -> $$0.createList(
-               $$1.asStream()
-                  .map(
-                     $$0xx -> $$0xx.get("Name").asString("").equals("generic.follow_range") && $$0xx.get("Base").asDouble(0.0) == 16.0
-                           ? $$0xx.set("Base", $$0xx.createDouble(48.0))
-                           : $$0xx
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "SavedDataUUIDFix",
+         this.getInputSchema().getType(this.a),
+         $$0 -> $$0.update(
+               DSL.remainderFinder(),
+               $$0x -> $$0x.update(
+                     "data",
+                     $$0xx -> $$0xx.update(
+                           "Raids",
+                           $$0xxx -> $$0xxx.createList(
+                                 $$0xxx.asStream()
+                                    .map(
+                                       $$0xxxx -> $$0xxxx.update(
+                                             "HeroesOfTheVillage",
+                                             $$0xxxxx -> $$0xxxxx.createList(
+                                                   $$0xxxxx.asStream().map($$0xxxxxx -> (Dynamic)d($$0xxxxxx, "UUIDMost", "UUIDLeast").orElseGet(() -> {
+                                                         b.warn("HeroesOfTheVillage contained invalid UUIDs.");
+                                                         return $$0xxxxxx;
+                                                      }))
+                                                )
+                                          )
+                                    )
+                              )
+                        )
                   )
             )
       );

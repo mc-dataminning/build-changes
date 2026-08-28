@@ -1,15 +1,93 @@
-import io.netty.buffer.ByteBuf;
+import java.util.UUID;
 
-public record ahi() implements zq<agw> {
-   public static final ahi a = new ahi();
-   public static final zh<ByteBuf, ahi> b = zh.a(a);
+public class ahi {
+   private static final String[] a = new String[]{
+      "Slim",
+      "Far",
+      "River",
+      "Silly",
+      "Fat",
+      "Thin",
+      "Fish",
+      "Bat",
+      "Dark",
+      "Oak",
+      "Sly",
+      "Bush",
+      "Zen",
+      "Bark",
+      "Cry",
+      "Slack",
+      "Soup",
+      "Grim",
+      "Hook",
+      "Dirt",
+      "Mud",
+      "Sad",
+      "Hard",
+      "Crook",
+      "Sneak",
+      "Stink",
+      "Weird",
+      "Fire",
+      "Soot",
+      "Soft",
+      "Rough",
+      "Cling",
+      "Scar"
+   };
+   private static final String[] b = new String[]{
+      "Fox",
+      "Tail",
+      "Jaw",
+      "Whisper",
+      "Twig",
+      "Root",
+      "Finder",
+      "Nose",
+      "Brow",
+      "Blade",
+      "Fry",
+      "Seek",
+      "Wart",
+      "Tooth",
+      "Foot",
+      "Leaf",
+      "Stone",
+      "Fall",
+      "Face",
+      "Tongue",
+      "Voice",
+      "Lip",
+      "Mouth",
+      "Snail",
+      "Toe",
+      "Ear",
+      "Hair",
+      "Beard",
+      "Shirt",
+      "Fist"
+   };
 
-   @Override
-   public zs<ahi> a() {
-      return agu.br;
+   public static String a(bvf $$0) {
+      if ($$0 instanceof cps) {
+         return $$0.al().getString();
+      } else {
+         xv $$1 = $$0.an();
+         return $$1 != null ? $$1.getString() : a($$0.cG());
+      }
    }
 
-   public void a(agw $$0) {
-      $$0.a(this);
+   public static String a(UUID $$0) {
+      bam $$1 = b($$0);
+      return a($$1, a) + a($$1, b);
+   }
+
+   private static String a(bam $$0, String[] $$1) {
+      return ae.a($$1, $$0);
+   }
+
+   private static bam b(UUID $$0) {
+      return bam.a((long)($$0.hashCode() >> 2));
    }
 }

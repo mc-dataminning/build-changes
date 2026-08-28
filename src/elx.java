@@ -1,44 +1,29 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public class elx {
-   public static final Codec<elx> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.unboundedMap(ali.a(ma.bc), dzr.a).fieldOf("dimensions").forGetter($$0x -> $$0x.c)).apply($$0, elx::new)
-      )
-      .validate(elx::a);
-   public static final Codec<jq<elx>> b = alf.a(ma.aZ, a);
-   private final Map<ali<dzr>, dzr> c;
+public class elx extends ely {
+   public static final MapCodec<elx> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, elx::new));
 
-   public elx(Map<ali<dzr>, dzr> $$0) {
-      this.c = $$0;
+   public elx(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private ImmutableMap<ali<dzr>, dzr> c() {
-      Builder<ali<dzr>, dzr> $$0 = ImmutableMap.builder();
-      ecl.a(this.c.keySet().stream()).forEach($$1 -> {
-         dzr $$2 = this.c.get($$1);
-         if ($$2 != null) {
-            $$0.put($$1, $$2);
-         }
-      });
-      return $$0.build();
+   @Override
+   protected elz<?> a() {
+      return elz.a;
    }
 
-   public ecl a() {
-      return new ecl(this.c());
-   }
+   @Override
+   public List<eke.a> a(dhg $$0, BiConsumer<jh, dxn> $$1, bam $$2, int $$3, jh $$4, ejo $$5) {
+      a($$0, $$1, $$2, $$4.e(), $$5);
 
-   public Optional<dzr> b() {
-      return Optional.ofNullable(this.c.get(dzr.b));
-   }
+      for (int $$6 = 0; $$6 < $$3; $$6++) {
+         this.b($$0, $$1, $$2, $$4.b($$6), $$5);
+      }
 
-   private static DataResult<elx> a(elx $$0) {
-      return $$0.b().isEmpty() ? DataResult.error(() -> "Missing overworld dimension") : DataResult.success($$0, Lifecycle.stable());
+      return ImmutableList.of(new eke.a($$4.b($$3), 0, false));
    }
 }

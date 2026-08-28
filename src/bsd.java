@@ -1,86 +1,61 @@
-import java.util.Set;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface bsd extends bsb {
-   float r_ = 4.0F;
+public class bsd extends bsh {
+   public static final MapCodec<bsd> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.d),
+                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.e),
+                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.f)
+               )
+               .apply($$0, bsd::new)
+      )
+      .validate($$0 -> $$0.f < $$0.e ? DataResult.error(() -> "Max must be larger than min: [" + $$0.e + ", " + $$0.f + "]") : DataResult.success($$0));
+   private final float b;
+   private final float d;
+   private final float e;
+   private final float f;
 
-   int b();
-
-   boolean c();
-
-   cwm a(int var1);
-
-   cwm a(int var1, int var2);
-
-   cwm b(int var1);
-
-   void a(int var1, cwm var2);
-
-   default int an_() {
-      return 99;
+   public static bsd a(float $$0, float $$1, float $$2, float $$3) {
+      return new bsd($$0, $$1, $$2, $$3);
    }
 
-   default int e_(cwm $$0) {
-      return Math.min(this.an_(), $$0.k());
+   private bsd(float $$0, float $$1, float $$2, float $$3) {
+      this.b = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   void e();
-
-   boolean a(cou var1);
-
-   default void c_(cou $$0) {
+   @Override
+   public float a(bam $$0) {
+      return a($$0, this.b, this.d, this.e, this.f);
    }
 
-   default void c(cou $$0) {
+   public static float a(bam $$0, float $$1, float $$2, float $$3, float $$4) {
+      return bae.a(bae.c($$0, $$1, $$2), $$3, $$4);
    }
 
-   default boolean b(int $$0, cwm $$1) {
-      return true;
+   @Override
+   public float a() {
+      return this.e;
    }
 
-   default boolean a(bsd $$0, int $$1, cwm $$2) {
-      return true;
+   @Override
+   public float b() {
+      return this.f;
    }
 
-   default int a_(cwi $$0) {
-      int $$1 = 0;
-
-      for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         cwm $$3 = this.a($$2);
-         if ($$3.h().equals($$0)) {
-            $$1 += $$3.L();
-         }
-      }
-
-      return $$1;
+   @Override
+   public bsi<?> c() {
+      return bsi.c;
    }
 
-   default boolean a(Set<cwi> $$0) {
-      return this.a_($$1 -> !$$1.f() && $$0.contains($$1.h()));
-   }
-
-   default boolean a_(Predicate<cwm> $$0) {
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         cwm $$2 = this.a($$1);
-         if ($$0.test($$2)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   static boolean a(dsy $$0, cou $$1) {
-      return a($$0, $$1, 4.0F);
-   }
-
-   static boolean a(dsy $$0, cou $$1, float $$2) {
-      dfm $$3 = $$0.i();
-      jh $$4 = $$0.aA_();
-      if ($$3 == null) {
-         return false;
-      } else {
-         return $$3.c_($$4) != $$0 ? false : $$1.a($$4, (double)$$2);
-      }
+   @Override
+   public String toString() {
+      return "normal(" + this.b + ", " + this.d + ") in [" + this.e + "-" + this.f + "]";
    }
 }

@@ -1,89 +1,138 @@
-public interface vt extends vf {
-   vt a = new vt() {
-   };
+import com.google.common.collect.Lists;
+import java.util.Collections;
+import java.util.List;
+import java.util.regex.Pattern;
 
-   @Override
-   default vf.b a() {
-      return vf.b.a;
+public class vt implements vy {
+   private static final Pattern a = Pattern.compile("[A-Za-z0-9._+-]+");
+   private final StringBuilder b = new StringBuilder();
+
+   public String a(vu $$0) {
+      $$0.a(this);
+      return this.b.toString();
    }
 
    @Override
-   default vf.b a(String $$0) {
-      return vf.b.a;
+   public void a(vs $$0) {
+      this.b.append(vs.b($$0.u_()));
    }
 
    @Override
-   default vf.b a(byte $$0) {
-      return vf.b.a;
+   public void a(uv $$0) {
+      this.b.append($$0.l()).append('b');
    }
 
    @Override
-   default vf.b a(short $$0) {
-      return vf.b.a;
+   public void a(vp $$0) {
+      this.b.append($$0.l()).append('s');
    }
 
    @Override
-   default vf.b a(int $$0) {
-      return vf.b.a;
+   public void a(vc $$0) {
+      this.b.append($$0.l());
    }
 
    @Override
-   default vf.b a(long $$0) {
-      return vf.b.a;
+   public void a(vf $$0) {
+      this.b.append($$0.l()).append('L');
    }
 
    @Override
-   default vf.b a(float $$0) {
-      return vf.b.a;
+   public void a(va $$0) {
+      this.b.append($$0.k()).append('f');
    }
 
    @Override
-   default vf.b a(double $$0) {
-      return vf.b.a;
+   public void a(uy $$0) {
+      this.b.append($$0.j()).append('d');
    }
 
    @Override
-   default vf.b a(byte[] $$0) {
-      return vf.b.a;
+   public void a(uu $$0) {
+      this.b.append("[B;");
+      byte[] $$1 = $$0.e();
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 != 0) {
+            this.b.append(',');
+         }
+
+         this.b.append($$1[$$2]).append('B');
+      }
+
+      this.b.append(']');
    }
 
    @Override
-   default vf.b a(int[] $$0) {
-      return vf.b.a;
+   public void a(vb $$0) {
+      this.b.append("[I;");
+      int[] $$1 = $$0.g();
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 != 0) {
+            this.b.append(',');
+         }
+
+         this.b.append($$1[$$2]);
+      }
+
+      this.b.append(']');
    }
 
    @Override
-   default vf.b a(long[] $$0) {
-      return vf.b.a;
+   public void a(ve $$0) {
+      this.b.append("[L;");
+      long[] $$1 = $$0.g();
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 != 0) {
+            this.b.append(',');
+         }
+
+         this.b.append($$1[$$2]).append('L');
+      }
+
+      this.b.append(']');
    }
 
    @Override
-   default vf.b a(vk<?> $$0, int $$1) {
-      return vf.b.a;
+   public void a(vd $$0) {
+      this.b.append('[');
+
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         if ($$1 != 0) {
+            this.b.append(',');
+         }
+
+         this.b.append(new vt().a($$0.k($$1)));
+      }
+
+      this.b.append(']');
    }
 
    @Override
-   default vf.a b(vk<?> $$0, int $$1) {
-      return vf.a.b;
+   public void a(ux $$0) {
+      this.b.append('{');
+      List<String> $$1 = Lists.newArrayList($$0.e());
+      Collections.sort($$1);
+
+      for (String $$2 : $$1) {
+         if (this.b.length() != 1) {
+            this.b.append(',');
+         }
+
+         this.b.append(a($$2)).append(':').append(new vt().a($$0.c($$2)));
+      }
+
+      this.b.append('}');
+   }
+
+   protected static String a(String $$0) {
+      return a.matcher($$0).matches() ? $$0 : vs.b($$0);
    }
 
    @Override
-   default vf.a a(vk<?> $$0) {
-      return vf.a.b;
-   }
-
-   @Override
-   default vf.a a(vk<?> $$0, String $$1) {
-      return vf.a.b;
-   }
-
-   @Override
-   default vf.b b() {
-      return vf.b.a;
-   }
-
-   @Override
-   default vf.b b(vk<?> $$0) {
-      return vf.b.a;
+   public void a(uz $$0) {
+      this.b.append("END");
    }
 }

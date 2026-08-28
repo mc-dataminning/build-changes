@@ -1,37 +1,28 @@
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
+import java.util.List;
+import javax.annotation.Nullable;
 
 public class hez {
-   private static final int a = -1;
-   private Optional<Instant> b = Optional.empty();
-   private long c;
-   private long d;
+   private final List<hey> a;
+   private final boolean b;
+   @Nullable
+   private final String c;
 
-   public void a() {
-      this.d = -1L;
-      if (this.b.isEmpty()) {
-         this.b = Optional.of(Instant.now());
-      }
+   public hez(List<hey> $$0, boolean $$1, @Nullable String $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public void a(long $$0) {
-      if (this.d != -1L) {
-         this.c = this.c + Math.max(0L, $$0 - this.d);
-      }
-
-      this.d = $$0;
+   public List<hey> a() {
+      return this.a;
    }
 
-   private int a(Instant $$0) {
-      Duration $$1 = Duration.between($$0, Instant.now());
-      return (int)$$1.toSeconds();
+   public boolean b() {
+      return this.b;
    }
 
-   public void a(heo $$0) {
-      this.b.ifPresent($$1 -> $$0.send(hep.e, $$1x -> {
-            $$1x.a(her.p, this.a($$1));
-            $$1x.a(her.q, (int)this.c);
-         }));
+   @Nullable
+   public String c() {
+      return this.c;
    }
 }

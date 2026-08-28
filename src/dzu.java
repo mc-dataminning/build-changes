@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.BiConsumer;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dzu {
+public interface dzu extends dgf {
+   void a(BiConsumer<jh, dxn> var1);
+
+   esz A();
 }

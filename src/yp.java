@@ -1,131 +1,108 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.time.Instant;
+import java.util.UUID;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class yp implements xk {
-   private static final Logger d = LogUtils.getLogger();
-   public static final MapCodec<yp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("nbt").forGetter(yp::b),
-               Codec.BOOL.lenientOptionalFieldOf("interpret", false).forGetter(yp::c),
-               xl.a.lenientOptionalFieldOf("separator").forGetter(yp::d),
-               yl.c.forGetter(yp::e)
-            )
-            .apply($$0, yp::new)
-   );
-   public static final xk.a<yp> b = new xk.a<>(a, "nbt");
-   private final boolean e;
-   private final Optional<xj> f;
-   private final String g;
-   private final yl h;
+public class yp {
+   static final Logger a = LogUtils.getLogger();
    @Nullable
-   protected final fo.g c;
+   yq b;
+   Instant c = Instant.EPOCH;
 
-   public yp(String $$0, boolean $$1, Optional<xj> $$2, yl $$3) {
-      this($$0, a($$0), $$1, $$2, $$3);
+   public yp(UUID $$0, UUID $$1) {
+      this.b = yq.a($$0, $$1);
    }
 
-   private yp(String $$0, @Nullable fo.g $$1, boolean $$2, Optional<xj> $$3, yl $$4) {
-      this.g = $$0;
-      this.c = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.h = $$4;
-   }
-
-   @Nullable
-   private static fo.g a(String $$0) {
-      try {
-         return new fo().a(new StringReader($$0));
-      } catch (CommandSyntaxException var2) {
-         return null;
-      }
-   }
-
-   public String b() {
-      return this.g;
-   }
-
-   public boolean c() {
-      return this.e;
-   }
-
-   public Optional<xj> d() {
-      return this.f;
-   }
-
-   public yl e() {
-      return this.h;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof yp $$1 && this.h.equals($$1.h) && this.f.equals($$1.f) && this.e == $$1.e && this.g.equals($$1.g)) {
-            return true;
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.e ? 1 : 0;
-      $$0 = 31 * $$0 + this.f.hashCode();
-      $$0 = 31 * $$0 + this.g.hashCode();
-      return 31 * $$0 + this.h.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "nbt{" + this.h + ", interpreting=" + this.e + ", separator=" + this.f + "}";
-   }
-
-   @Override
-   public xx a(@Nullable ew $$0, @Nullable bul $$1, int $$2) throws CommandSyntaxException {
-      if ($$0 != null && this.c != null) {
-         Stream<String> $$3 = this.h.a($$0).flatMap($$0x -> {
-            try {
-               return this.c.a($$0x).stream();
-            } catch (CommandSyntaxException var3x) {
-               return Stream.empty();
-            }
-         }).map(vi::t_);
-         if (this.e) {
-            xj $$4 = (xj)DataFixUtils.orElse(xm.a($$0, this.f, $$1, $$2), xm.c);
-            return $$3.flatMap($$3x -> {
-               try {
-                  xx $$4x = xj.a.a($$3x, $$0.v());
-                  return Stream.of(xm.a($$0, $$4x, $$1, $$2));
-               } catch (Exception var5x) {
-                  d.warn("Failed to parse component: {}", $$3x, var5x);
-                  return Stream.of();
-               }
-            }).reduce(($$1x, $$2x) -> $$1x.b($$4).b($$2x)).orElseGet(xj::i);
+   public yp.c a(bas $$0) {
+      return $$1 -> {
+         yq $$2 = this.b;
+         if ($$2 == null) {
+            return null;
          } else {
-            return xm.a($$0, this.f, $$1, $$2)
-               .map($$1x -> $$3.map(xj::b).reduce(($$1xx, $$2x) -> $$1xx.b($$1x).b($$2x)).orElseGet(xj::i))
-               .orElseGet(() -> xj.b($$3.collect(Collectors.joining(", "))));
+            this.b = $$2.a();
+            return new yh($$0.sign($$2x -> yl.a($$2x, $$2, $$1)));
          }
-      } else {
-         return xj.i();
+      };
+   }
+
+   public yp.b a(final cpv $$0) {
+      final bar $$1 = $$0.a();
+      return new yp.b() {
+         @Override
+         public yl unpack(@Nullable yh $$0x, yo $$1x) throws yp.a {
+            if ($$0 == null) {
+               throw new yp.a(yp.a.a);
+            } else if ($$0.b().a()) {
+               throw new yp.a(yp.a.c);
+            } else {
+               yq $$2 = yp.this.b;
+               if ($$2 == null) {
+                  throw new yp.a(yp.a.b);
+               } else if ($$1.b().isBefore(yp.this.c)) {
+                  this.setChainBroken();
+                  throw new yp.a(yp.a.e);
+               } else {
+                  yp.this.c = $$1.b();
+                  yl $$3 = new yl($$2, $$0, $$1, null, xz.c);
+                  if (!$$3.a($$1)) {
+                     this.setChainBroken();
+                     throw new yp.a(yp.a.d);
+                  } else {
+                     if ($$3.a(Instant.now())) {
+                        yp.a.warn("Received expired chat: '{}'. Is the client/server system time unsynchronized?", $$1.a());
+                     }
+
+                     yp.this.b = $$2.a();
+                     return $$3;
+                  }
+               }
+            }
+         }
+
+         @Override
+         public void setChainBroken() {
+            yp.this.b = null;
+         }
+      };
+   }
+
+   public static class a extends yv {
+      static final xv a = xv.c("chat.disabled.missingProfileKey");
+      static final xv b = xv.c("chat.disabled.chain_broken");
+      static final xv c = xv.c("chat.disabled.expiredProfileKey");
+      static final xv d = xv.c("chat.disabled.invalid_signature");
+      static final xv e = xv.c("chat.disabled.out_of_order_chat");
+
+      public a(xv $$0) {
+         super($$0);
       }
    }
 
-   @Override
-   public xk.a<?> a() {
-      return b;
+   @FunctionalInterface
+   public interface b {
+      static yp.b unsigned(UUID $$0, BooleanSupplier $$1) {
+         return ($$2, $$3) -> {
+            if ($$1.getAsBoolean()) {
+               throw new yp.a(yp.a.a);
+            } else {
+               return yl.a($$0, $$3.a());
+            }
+         };
+      }
+
+      yl unpack(@Nullable yh var1, yo var2) throws yp.a;
+
+      default void setChainBroken() {
+      }
+   }
+
+   @FunctionalInterface
+   public interface c {
+      yp.c a = $$0 -> null;
+
+      @Nullable
+      yh pack(yo var1);
    }
 }

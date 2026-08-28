@@ -1,59 +1,52 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
-import java.util.Collection;
-import java.util.List;
-
-public class cqp {
-   private final List<cqm> a = Lists.newArrayList();
-   private int b;
-
-   public ImmutableList<cqm> a() {
-      return ImmutableList.copyOf(this.a);
+public class cqp extends cqf {
+   public cqp(bvm<? extends cqp> $$0, dha $$1) {
+      super($$0, $$1);
    }
 
-   public cqp a(int $$0, float $$1) {
-      this.a.add(new cqm($$0, $$1));
-      this.b();
-      return this;
+   public cqp(dha $$0, bwb $$1, fbs $$2) {
+      super(bvm.bi, $$1, $$2, $$0);
    }
 
-   public cqp a(Collection<cqm> $$0) {
-      this.a.addAll($$0);
-      this.b();
-      return this;
+   public cqp(dha $$0, double $$1, double $$2, double $$3, fbs $$4) {
+      super(bvm.bi, $$1, $$2, $$3, $$4, $$0);
    }
 
-   private void b() {
-      Int2ObjectSortedMap<cqm> $$0 = new Int2ObjectAVLTreeMap();
-      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
-      this.a.clear();
-      this.a.addAll($$0.values());
-      this.b = 0;
-   }
-
-   public float a(int $$0) {
-      if (this.a.size() <= 0) {
-         return 0.0F;
-      } else {
-         cqm $$1 = this.a.get(this.b);
-         cqm $$2 = this.a.get(this.a.size() - 1);
-         boolean $$3 = $$0 < $$1.a();
-         int $$4 = $$3 ? 0 : this.b;
-         float $$5 = $$3 ? $$2.b() : $$1.b();
-
-         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
-            cqm $$7 = this.a.get($$6);
-            if ($$7.a() > $$0) {
-               break;
-            }
-
-            this.b = $$6;
-            $$5 = $$7.b();
+   @Override
+   protected void a(fbp $$0) {
+      super.a($$0);
+      if (this.dV() instanceof ash $$1) {
+         bvf var7 = $$0.a();
+         bvf $$4 = this.p();
+         int $$5 = var7.aG();
+         var7.d(5.0F);
+         btv $$6 = this.dW().a((cqf)this, $$4);
+         if (!var7.a($$1, $$6, 5.0F)) {
+            var7.h($$5);
+         } else {
+            ddt.a($$1, var7, $$6);
          }
+      }
+   }
 
-         return $$5;
+   @Override
+   protected void a(fbo $$0) {
+      super.a($$0);
+      if (this.dV() instanceof ash $$1) {
+         bvf $$3 = this.p();
+         if (!($$3 instanceof bwd) || $$1.N().b(dgw.c)) {
+            jh $$4 = $$0.b().a($$0.c());
+            if (this.dV().u($$4)) {
+               this.dV().b($$4, djr.a(this.dV(), $$4));
+            }
+         }
+      }
+   }
+
+   @Override
+   protected void a(fbq $$0) {
+      super.a($$0);
+      if (!this.dV().C) {
+         this.at();
       }
    }
 }

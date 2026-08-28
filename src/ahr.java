@@ -1,37 +1,20 @@
-public class ahr implements zq<agw> {
-   public static final zh<wg, ahr> a = zq.a(ahr::a, ahr::new);
-   private final int b;
-   private final int c;
+public record ahr(int b) implements aac<ahm> {
+   public static final zt<ws, ahr> a = aac.a(ahr::a, ahr::new);
 
-   public ahr(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private ahr(ws $$0) {
+      this($$0.l());
    }
 
-   private ahr(wg $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-   }
-
-   private void a(wg $$0) {
+   private void a(ws $$0) {
       $$0.c(this.b);
-      $$0.c(this.c);
    }
 
    @Override
-   public zs<ahr> a() {
-      return agu.bA;
+   public aae<ahr> a() {
+      return ahk.bo;
    }
 
-   public void a(agw $$0) {
+   public void a(ahm $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
    }
 }

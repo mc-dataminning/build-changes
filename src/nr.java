@@ -1,34 +1,61 @@
 import java.util.function.BiConsumer;
 
-public record nr(js.a a) implements ne {
+public record nr(js.a a) implements nh {
    @Override
-   public void generate(BiConsumer<ali<eus>, eus.a> $$0) {
-      js.b<dcd> $$1 = this.a.d(ma.aM);
+   public void generate(BiConsumer<aly<ewm>, ewm.a> $$0) {
+      js.b<dic> $$1 = this.a.d(mb.aH);
       $$0.accept(
-         euj.aK,
-         eus.b()
+         ewd.am,
+         ewm.b()
             .a(
-               eur.a()
-                  .a(eyr.a(1.0F))
-                  .a(eva.a(cwq.qQ).a(5).a(new evq.a().a($$1.b(dci.l))))
-                  .a(eva.a(cwq.pK).a(8).a(new evq.a().a($$1.b(dci.l))))
-                  .a(eva.a(cwq.sC).a(8).a(ewy.a(cym.l)))
-                  .a(eva.a(cwq.vG).a(8).a(ewy.a(cym.l)))
-                  .a(eva.a(cwq.sC).a(10).a(ewy.a(cym.a)))
-                  .a(eva.a(cwq.vN).a(10).a(ews.a(eyy.a(10.0F, 36.0F))))
-                  .a(eva.a(cwq.sw).a(10).a(ews.a(eyy.a(2.0F, 4.0F))))
-                  .a(eva.a(cwq.pt).a(20).a(ews.a(eyy.a(3.0F, 9.0F))))
-                  .a(eva.a(cwq.oD).a(20).a(ews.a(eyy.a(5.0F, 12.0F))))
-                  .a(eva.a(cwq.eE).a(40))
-                  .a(eva.a(cwq.wY).a(40).a(ews.a(eyy.a(1.0F, 3.0F))))
-                  .a(eva.a(cwq.uo).a(40))
-                  .a(eva.a(cwq.qE).a(40).a(ews.a(eyy.a(2.0F, 4.0F))))
-                  .a(eva.a(cwq.fo).a(40).a(ews.a(eyy.a(2.0F, 8.0F))))
-                  .a(eva.a(cwq.uP).a(40).a(ews.a(eyy.a(2.0F, 8.0F))))
-                  .a(eva.a(cwq.vH).a(40).a(ews.a(eyy.a(6.0F, 12.0F))))
-                  .a(eva.a(cwq.aj).a(40).a(ews.a(eyy.a(8.0F, 16.0F))))
-                  .a(eva.a(cwq.wZ).a(40).a(ews.a(eyy.a(8.0F, 16.0F))))
+               ewl.a()
+                  .a(fal.a(1.0F))
+                  .a(exa.a(ewd.an).a(10).b(-2))
+                  .a(exa.a(ewd.ao).a(5).b(2).a(ezv.a(ewh.b.a, bw.a.a().a(cc.a(true)))))
+                  .a(exa.a(ewd.ap).a(85).b(-1))
             )
       );
+      $$0.accept(ewd.ap, a());
+      $$0.accept(
+         ewd.an,
+         ewm.b()
+            .a(
+               ewl.a()
+                  .a(ewu.a(dkg.fA).a(17))
+                  .a(ewu.a(cxo.pX).a(10).a(eyn.a(fas.a(0.0F, 0.9F))))
+                  .a(ewu.a(cxo.rb).a(10))
+                  .a(ewu.a(cxo.sn).a(10))
+                  .a(ewu.a(cxo.sZ).a(10).a(eys.a(czk.a)))
+                  .a(ewu.a(cxo.pO).a(5))
+                  .a(ewu.a(cxo.rJ).a(2).a(eyn.a(fas.a(0.0F, 0.9F))))
+                  .a(ewu.a(cxo.oP).a(10))
+                  .a(ewu.a(cxo.pM).a(5))
+                  .a(ewu.a(cxo.rT).a(1).a(eym.a(fal.a(10.0F))))
+                  .a(ewu.a(dkg.fV).a(10))
+                  .a(ewu.a(cxo.sS).a(10))
+                  .a(ewu.a(dkg.nu).a(ezq.a(dh.a.a().a(ju.a($$1.b(dij.x), $$1.b(dij.y), $$1.b(dij.z))))).a(10))
+            )
+      );
+      $$0.accept(
+         ewd.ao,
+         ewm.b()
+            .a(
+               ewl.a()
+                  .a(ewu.a(cxo.vB))
+                  .a(ewu.a(cxo.oe))
+                  .a(ewu.a(cxo.oR).a(eyn.a(fas.a(0.0F, 0.25F))).a(exl.a(this.a, fal.a(30.0F))))
+                  .a(ewu.a(cxo.rJ).a(eyn.a(fas.a(0.0F, 0.25F))).a(exl.a(this.a, fal.a(30.0F))))
+                  .a(ewu.a(cxo.rn).a(exl.a(this.a, fal.a(30.0F))))
+                  .a(ewu.a(cxo.wJ))
+            )
+      );
+   }
+
+   public static ewm.a a() {
+      return ewm.b().a(ewl.a().a(ewu.a(cxo.rN).a(60)).a(ewu.a(cxo.rO).a(25)).a(ewu.a(cxo.rP).a(2)).a(ewu.a(cxo.rQ).a(13)));
+   }
+
+   public js.a b() {
+      return this.a;
    }
 }

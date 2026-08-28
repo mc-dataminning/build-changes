@@ -1,47 +1,21 @@
-import java.util.List;
-import java.util.Locale;
+public class gen {
+   private final gep a;
+   private final geo b;
 
-public enum gen {
-   a("i_want_to_report_them"),
-   b("hate_speech"),
-   c("harassment_or_bullying"),
-   d("self_harm_or_suicide"),
-   e("imminent_harm"),
-   f("defamation_impersonation_false_information"),
-   g("alcohol_tobacco_drugs"),
-   h("child_sexual_exploitation_or_abuse"),
-   i("terrorism_or_violent_extremism"),
-   j("non_consensual_intimate_imagery"),
-   k("sexually_inappropriate");
-
-   private final String l;
-   private final xj m;
-   private final xj n;
-
-   private gen(final String $$0) {
-      this.l = $$0.toUpperCase(Locale.ROOT);
-      String $$1 = "gui.abuseReport.reason." + $$0;
-      this.m = xj.c($$1);
-      this.n = xj.c($$1 + ".description");
+   private gen(gep $$0, geo $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public String a() {
-      return this.l;
+   public gen a(geq $$0) {
+      return new gen($$0.apply(this.a), this.b);
    }
 
-   public xj b() {
-      return this.m;
+   public geh a() {
+      return this.a.a().a(this.b.a, this.b.b);
    }
 
-   public xj c() {
-      return this.n;
-   }
-
-   public static List<gen> a(geo $$0) {
-      return switch ($$0) {
-         case a -> List.of(k);
-         case b -> List.of(e, f);
-         default -> List.of();
-      };
+   public static gen a(gep $$0, int $$1, int $$2) {
+      return new gen($$0, new geo($$1, $$2));
    }
 }

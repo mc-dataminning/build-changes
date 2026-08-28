@@ -1,27 +1,40 @@
-import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public interface exy extends euo, Predicate<eun> {
-   Codec<exy> d = lz.F.q().dispatch("condition", exy::b, exz::a);
-   Codec<exy> e = Codec.lazyInitialized(() -> Codec.withAlternative(d, exl.b));
-   Codec<jq<exy>> f = alf.a(ma.bf, e);
+public class exy extends exu {
+   public static final MapCodec<exy> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and($$0.group(ewf.e.fieldOf("component").forGetter($$0x -> $$0x.b), exx.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
+            .apply($$0, exy::new)
+   );
+   private final ewe<?> b;
+   private final exv c;
 
-   exz b();
+   private exy(List<ezs> $$0, ewe<?> $$1, exv $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
+   }
 
-   @FunctionalInterface
-   public interface a {
-      exy build();
+   @Override
+   public exw<exy> b() {
+      return exx.u;
+   }
 
-      default exy.a invert() {
-         return exv.a(this);
+   @Override
+   public cxk a(cxk $$0, ewh $$1) {
+      if ($$0.f()) {
+         return $$0;
+      } else {
+         this.b.a($$0, $$1x -> this.c.apply($$1x, $$1));
+         return $$0;
       }
+   }
 
-      default exm.a or(exy.a $$0) {
-         return exm.a(this, $$0);
-      }
-
-      default exl.a and(exy.a $$0) {
-         return exl.a(this, $$0);
-      }
+   @Override
+   public void a(ewn $$0) {
+      super.a($$0);
+      this.c.a($$0.a(".modifier"));
    }
 }

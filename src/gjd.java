@@ -1,81 +1,108 @@
-import java.util.Set;
-import javax.annotation.Nullable;
+public class gjd extends gjl {
+   private static final bam a = bam.a();
+   private final gjg b;
+   private float F = 1.0F;
 
-public class gjd implements gjk.a {
-   public static final alj a = gjk.a;
-   public static final alj b = alj.b("translucent");
-   public static final alj c = alj.b("item_entity");
-   public static final alj d = alj.b("particles");
-   public static final alj e = alj.b("weather");
-   public static final alj f = alj.b("clouds");
-   public static final alj g = alj.b("entity_outline");
-   public static final Set<alj> h = Set.of(a);
-   public static final Set<alj> i = Set.of(a, g);
-   public static final Set<alj> j = Set.of(a, b, c, d, e, f);
-   public fed<fdb> k = fed.a();
-   @Nullable
-   public fed<fdb> l;
-   @Nullable
-   public fed<fdb> m;
-   @Nullable
-   public fed<fdb> n;
-   @Nullable
-   public fed<fdb> o;
-   @Nullable
-   public fed<fdb> p;
-   @Nullable
-   public fed<fdb> q;
+   gjd(gfd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gjg $$7) {
+      super($$0, $$1, $$2, $$3, 0.5 - a.j(), $$5, 0.5 - a.j());
+      this.B = 0.96F;
+      this.u = -0.1F;
+      this.C = true;
+      this.b = $$7;
+      this.k *= 0.2F;
+      if ($$4 == 0.0 && $$6 == 0.0) {
+         this.j *= 0.1F;
+         this.l *= 0.1F;
+      }
 
-   @Override
-   public void a(alj $$0, fed<fdb> $$1) {
-      if ($$0.equals(a)) {
-         this.k = $$1;
-      } else if ($$0.equals(b)) {
-         this.l = $$1;
-      } else if ($$0.equals(c)) {
-         this.m = $$1;
-      } else if ($$0.equals(d)) {
-         this.n = $$1;
-      } else if ($$0.equals(e)) {
-         this.o = $$1;
-      } else if ($$0.equals(f)) {
-         this.p = $$1;
-      } else {
-         if (!$$0.equals(g)) {
-            throw new IllegalArgumentException("No target with id " + $$0);
-         }
-
-         this.q = $$1;
+      this.D *= 0.75F;
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+      this.n = false;
+      this.b($$7);
+      if (this.g()) {
+         this.e(0.0F);
       }
    }
 
-   @Nullable
    @Override
-   public fed<fdb> a(alj $$0) {
-      if ($$0.equals(a)) {
-         return this.k;
-      } else if ($$0.equals(b)) {
-         return this.l;
-      } else if ($$0.equals(c)) {
-         return this.m;
-      } else if ($$0.equals(d)) {
-         return this.n;
-      } else if ($$0.equals(e)) {
-         return this.o;
-      } else if ($$0.equals(f)) {
-         return this.p;
-      } else {
-         return $$0.equals(g) ? this.q : null;
-      }
+   public gip b() {
+      return gip.c;
    }
 
+   @Override
    public void a() {
-      this.k = fed.a();
-      this.l = null;
-      this.m = null;
-      this.n = null;
-      this.o = null;
-      this.p = null;
-      this.q = null;
+      super.a();
+      this.b(this.b);
+      if (this.g()) {
+         this.y = 0.0F;
+      } else {
+         this.y = bae.h(0.05F, this.y, this.F);
+      }
+   }
+
+   @Override
+   protected void e(float $$0) {
+      super.e($$0);
+      this.F = $$0;
+   }
+
+   private boolean g() {
+      flz $$0 = flz.Q();
+      gka $$1 = $$0.t;
+      return $$1 != null && $$1.bF().c(this.g, this.h, this.i) <= 9.0 && $$0.n.aE().a() && $$1.gF();
+   }
+
+   public static class a implements gio<lw> {
+      private final gjg a;
+
+      public a(gjg $$0) {
+         this.a = $$0;
+      }
+
+      public gil a(lw $$0, gfd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gjd($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
+   }
+
+   public static class b implements gio<ll> {
+      private final gjg a;
+
+      public b(gjg $$0) {
+         this.a = $$0;
+      }
+
+      public gil a(ll $$0, gfd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gil $$8 = new gjd($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.a($$0.b(), $$0.c(), $$0.d());
+         $$8.e($$0.e());
+         return $$8;
+      }
+   }
+
+   public static class c implements gio<lw> {
+      private final gjg a;
+
+      public c(gjg $$0) {
+         this.a = $$0;
+      }
+
+      public gil a(lw $$0, gfd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gjd($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
+   }
+
+   public static class d implements gio<lw> {
+      private final gjg a;
+
+      public d(gjg $$0) {
+         this.a = $$0;
+      }
+
+      public gil a(lw $$0, gfd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gjd $$8 = new gjd($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         float $$9 = $$1.A.i() * 0.5F + 0.35F;
+         $$8.a(1.0F * $$9, 0.0F * $$9, 1.0F * $$9);
+         return $$8;
+      }
    }
 }

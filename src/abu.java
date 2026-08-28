@@ -1,27 +1,57 @@
-public class abu {
-   public static final wr.a<abv, wg> a = zv.a(
-      we.e, $$0 -> $$0.a(aai.l, aak.a).a(acb.b, acd.a).a(aai.m, aal.a).a(abt.f, abw.b).a(aai.n, aam.a).a(aai.o, aan.a).a(aai.p, aao.a).a(abt.g, abx.a)
-   );
-   public static final wr<abv> b = a.a(wg::new);
-   public static final wr.a<abn, wg> c = zv.b(
-      we.e,
-      $$0 -> $$0.a(acb.a, aca.a)
-            .a(aai.a, zx.b)
-            .a(aai.c, zz.a)
-            .a(abt.a, abo.b)
-            .a(aai.d, aaa.a)
-            .a(aai.e, aab.a)
-            .a(abt.e, abq.b)
-            .a(abt.b, abp.a)
-            .a(aai.f, aac.a)
-            .a(aai.g, aad.b)
-            .a(aai.i, aaf.a)
-            .a(aai.j, aag.a)
-            .a(abt.c, abs.a)
-            .a(aai.k, aah.a)
-            .a(abt.d, abr.a)
-            .a(aai.b, zy.a)
-            .a(aai.h, aae.a)
-   );
-   public static final wr<abn> d = c.a(wg::new);
+import java.util.List;
+
+public record abu(aly<dha> c, enu d, List<abu.a> e) implements abf {
+   public static final zt<ws, abu> a = abf.a(abu::a, abu::new);
+   public static final abf.b<abu> b = abf.a("debug/structures");
+
+   private abu(ws $$0) {
+      this($$0.a(mb.bd), b($$0), $$0.a(abu.a::new));
+   }
+
+   private void a(ws $$0) {
+      $$0.b(this.c);
+      a($$0, this.d);
+      $$0.a(this.e, ($$1, $$2) -> $$2.a($$0));
+   }
+
+   @Override
+   public abf.b<abu> a() {
+      return b;
+   }
+
+   static enu b(ws $$0) {
+      return new enu($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
+   }
+
+   static void a(ws $$0, enu $$1) {
+      $$0.q($$1.h());
+      $$0.q($$1.i());
+      $$0.q($$1.j());
+      $$0.q($$1.k());
+      $$0.q($$1.l());
+      $$0.q($$1.m());
+   }
+
+   public aly<dha> b() {
+      return this.c;
+   }
+
+   public enu c() {
+      return this.d;
+   }
+
+   public List<abu.a> d() {
+      return this.e;
+   }
+
+   public static record a(enu a, boolean b) {
+      public a(ws $$0) {
+         this(abu.b($$0), $$0.readBoolean());
+      }
+
+      public void a(ws $$0) {
+         abu.a($$0, this.a);
+         $$0.a(this.b);
+      }
+   }
 }

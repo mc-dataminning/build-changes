@@ -1,52 +1,28 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bzz {
-   public static bxb<bvp> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return can.a(
-         (Function<can.b<bvp>, ? extends App<can.c<bvp>, caq<bvp>>>)($$3 -> $$3.group($$3.c(cel.o), $$3.c(cel.m), $$3.a(cel.n))
-               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                     if ($$5x.b_($$6.dv()).a(axi.a)) {
-                        return false;
-                     } else if ($$7 < $$2.getValue()) {
-                        $$2.setValue($$7 + 20L + 2L);
-                        return true;
+   private static final int a = 1;
+
+   public static bxv<bwd> a(float $$0) {
+      return a($$1 -> $$0);
+   }
+
+   public static bxv<bwd> a(Function<bwb, Float> $$0) {
+      return cbh.a(
+         (Function<cbh.b<bwd>, ? extends App<cbh.c<bwd>, cbk<bwd>>>)($$1 -> $$1.group($$1.a(cff.m), $$1.a(cff.n), $$1.b(cff.o), $$1.a(cff.h))
+               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     bwb $$9 = $$1.b($$4);
+                     Optional<cfh> $$10 = $$1.a($$5);
+                     if ($$10.isPresent() && $$10.get().a($$9) && bxw.a($$7, $$9, 1)) {
+                        $$2.b();
                      } else {
-                        jh $$8 = null;
-                        jh $$9 = null;
-                        jh $$10 = $$6.dv();
-
-                        for (jh $$12 : jh.a($$10, $$0, $$0, $$0)) {
-                           if ($$12.u() != $$10.u() || $$12.w() != $$10.w()) {
-                              dvv $$13 = $$6.dV().a_($$12.d());
-                              dvv $$14 = $$6.dV().a_($$12);
-                              if ($$14.a(dis.G)) {
-                                 if ($$13.l()) {
-                                    $$8 = $$12.j();
-                                    break;
-                                 }
-
-                                 if ($$9 == null && !$$12.a($$6.dt(), 1.5)) {
-                                    $$9 = $$12.j();
-                                 }
-                              }
-                           }
-                        }
-
-                        if ($$8 == null) {
-                           $$8 = $$9;
-                        }
-
-                        if ($$8 != null) {
-                           $$5.a(new bxd($$8));
-                           $$4.a(new ceo(new bxd($$8), $$1, 0));
-                        }
-
-                        $$2.setValue($$7 + 40L);
-                        return true;
+                        $$3.a(new byf($$9, true));
+                        $$2.a(new cfi(new byf($$9, false), $$0.apply($$7), 0));
                      }
+
+                     return true;
                   }))
       );
    }

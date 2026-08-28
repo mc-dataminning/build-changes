@@ -1,52 +1,38 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class fjk extends hhp {
+   private static final xv a = xv.c("mco.client.incompatible.title").b(-65536);
+   private static final xv b = xv.b(ab.b().c()).b(-65536);
+   private static final xv c = xv.a("mco.client.unsupported.snapshot.version", b);
+   private static final xv C = xv.a("mco.client.outdated.stable.version", b);
+   private final ftr D;
+   private final frn E = new frn(this);
 
-public class fjk extends fjd {
-   private static final Logger b = LogUtils.getLogger();
-   private static final xj c = xj.c("mco.minigame.world.slot.screen.title");
-   private final long d;
-   private final int e;
-   private final Runnable f;
-
-   public fjk(long $$0, int $$1, Runnable $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public fjk(ftr $$0) {
+      super(a);
+      this.D = $$0;
    }
 
    @Override
-   public void run() {
-      ffh $$0 = ffh.a();
-
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            if ($$0.a(this.d, this.e)) {
-               this.f.run();
-               break;
-            }
-         } catch (fhd var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't switch world!");
-            this.a(var5);
-         }
-      }
+   public void aT_() {
+      this.E.a(a, this.p);
+      this.E.c(new fot(this.E(), this.p).b(true));
+      this.E.b(fny.a(xu.k, $$0 -> this.aP_()).a(200).a());
+      this.E.a($$1 -> {
+         fnw var10000 = this.c($$1);
+      });
+      this.c();
    }
 
    @Override
-   public xj a() {
-      return c;
+   protected void c() {
+      this.E.a();
+   }
+
+   @Override
+   public void aP_() {
+      this.m.a(this.D);
+   }
+
+   private xv E() {
+      return ab.b().g() ? C : c;
    }
 }

@@ -1,144 +1,187 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
 
-public record ddy(but c, jq<awm> d, Optional<alj> e, Optional<ju<bus<?>>> f, boolean g, boolean h, boolean i) {
-   public static final Codec<ddy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               but.k.fieldOf("slot").forGetter(ddy::a),
-               awm.b.optionalFieldOf("equip_sound", awn.as).forGetter(ddy::b),
-               alj.a.optionalFieldOf("model").forGetter(ddy::c),
-               kf.a(ma.z).optionalFieldOf("allowed_entities").forGetter(ddy::d),
-               Codec.BOOL.optionalFieldOf("dispensable", true).forGetter(ddy::e),
-               Codec.BOOL.optionalFieldOf("swappable", true).forGetter(ddy::f),
-               Codec.BOOL.optionalFieldOf("damage_on_hurt", true).forGetter(ddy::g)
-            )
-            .apply($$0, ddy::new)
-   );
-   public static final zh<wu, ddy> b = zh.a(
-      but.l, ddy::a, awm.d, ddy::b, alj.b.a(zf::a), ddy::c, zf.c(ma.z).a(zf::a), ddy::d, zf.b, ddy::e, zf.b, ddy::f, zf.b, ddy::g, ddy::new
-   );
+public interface ddy {
+   Codec<ddy> a = ma.at.q().dispatch(ddy::a, $$0 -> $$0);
+   Codec<ddy> b = Codec.either(ddy.b.c, a)
+      .xmap($$0 -> (ddy)$$0.map($$0x -> $$0x, $$0x -> $$0x), $$0 -> $$0 instanceof ddy.b $$1 ? Either.left($$1) : Either.right($$0));
 
-   public static ddy a(cvj $$0) {
-      return a(but.g).a(awn.of).a(ddx.j.get($$0)).a(bus.aw, bus.bu).a();
+   static MapCodec<? extends ddy> a(kd<MapCodec<? extends ddy>> $$0) {
+      kd.a($$0, "clamped", ddy.a.c);
+      kd.a($$0, "fraction", ddy.c.c);
+      kd.a($$0, "levels_squared", ddy.d.c);
+      kd.a($$0, "linear", ddy.e.c);
+      return kd.a($$0, "lookup", ddy.f.c);
    }
 
-   public static ddy.a a(but $$0) {
-      return new ddy.a($$0);
+   static ddy.b a(float $$0) {
+      return new ddy.b($$0);
    }
 
-   public bsk a(cwm $$0, cou $$1) {
-      if (!$$1.e(this.c)) {
-         return bsk.e;
-      } else {
-         cwm $$2 = $$1.a(this.c);
-         if ((!dcf.a($$2, dce.E) || $$1.b()) && !cwm.c($$0, $$2)) {
-            if (!$$1.dV().A_()) {
-               $$1.b(awx.c.b($$0.h()));
-            }
+   static ddy.e a(float $$0, float $$1) {
+      return new ddy.e($$0, $$1);
+   }
 
-            if ($$0.L() <= 1) {
-               cwm $$3 = $$2.f() ? $$0 : $$2.g();
-               cwm $$4 = $$1.b() ? $$0.v() : $$0.g();
-               $$1.a(this.c, $$4);
-               return bsk.a.a($$3);
-            } else {
-               cwm $$5 = $$2.g();
-               cwm $$6 = $$0.b(1, $$1);
-               $$1.a(this.c, $$6);
-               if (!$$1.gg().f($$5)) {
-                  $$1.a($$5, false);
-               }
+   static ddy.e b(float $$0) {
+      return a($$0, $$0);
+   }
 
-               return bsk.a.a($$0);
-            }
-         } else {
-            return bsk.d;
-         }
+   static ddy.f a(List<Float> $$0, ddy $$1) {
+      return new ddy.f($$0, $$1);
+   }
+
+   float a(int var1);
+
+   MapCodec<? extends ddy> a();
+
+   public static record a(ddy d, float e, float f) implements ddy {
+      public static final MapCodec<ddy.a> c = RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     ddy.b.fieldOf("value").forGetter(ddy.a::b), Codec.FLOAT.fieldOf("min").forGetter(ddy.a::c), Codec.FLOAT.fieldOf("max").forGetter(ddy.a::d)
+                  )
+                  .apply($$0, ddy.a::new)
+         )
+         .validate($$0 -> $$0.f <= $$0.e ? DataResult.error(() -> "Max must be larger than min, min: " + $$0.e + ", max: " + $$0.f) : DataResult.success($$0));
+
+      @Override
+      public float a(int $$0) {
+         return bae.a(this.d.a($$0), this.e, this.f);
+      }
+
+      @Override
+      public MapCodec<ddy.a> a() {
+         return c;
+      }
+
+      public ddy b() {
+         return this.d;
+      }
+
+      public float c() {
+         return this.e;
+      }
+
+      public float d() {
+         return this.f;
       }
    }
 
-   public boolean a(bus<?> $$0) {
-      return this.f.isEmpty() || this.f.get().a($$0.r());
-   }
+   public static record b(float e) implements ddy {
+      public static final Codec<ddy.b> c = Codec.FLOAT.xmap(ddy.b::new, ddy.b::b);
+      public static final MapCodec<ddy.b> d = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(ddy.b::b)).apply($$0, ddy.b::new)
+      );
 
-   public but a() {
-      return this.c;
-   }
-
-   public jq<awm> b() {
-      return this.d;
-   }
-
-   public Optional<alj> c() {
-      return this.e;
-   }
-
-   public Optional<ju<bus<?>>> d() {
-      return this.f;
-   }
-
-   public boolean e() {
-      return this.g;
-   }
-
-   public boolean f() {
-      return this.h;
-   }
-
-   public boolean g() {
-      return this.i;
-   }
-
-   public static class a {
-      private final but a;
-      private jq<awm> b = awn.as;
-      private Optional<alj> c = Optional.empty();
-      private Optional<ju<bus<?>>> d = Optional.empty();
-      private boolean e = true;
-      private boolean f = true;
-      private boolean g = true;
-
-      a(but $$0) {
-         this.a = $$0;
+      @Override
+      public float a(int $$0) {
+         return this.e;
       }
 
-      public ddy.a a(jq<awm> $$0) {
-         this.b = $$0;
-         return this;
+      @Override
+      public MapCodec<ddy.b> a() {
+         return d;
       }
 
-      public ddy.a a(alj $$0) {
-         this.c = Optional.of($$0);
-         return this;
+      public float b() {
+         return this.e;
+      }
+   }
+
+   public static record c(ddy d, ddy e) implements ddy {
+      public static final MapCodec<ddy.c> c = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ddy.b.fieldOf("numerator").forGetter(ddy.c::b), ddy.b.fieldOf("denominator").forGetter(ddy.c::c)).apply($$0, ddy.c::new)
+      );
+
+      @Override
+      public float a(int $$0) {
+         float $$1 = this.e.a($$0);
+         return $$1 == 0.0F ? 0.0F : this.d.a($$0) / $$1;
       }
 
-      public ddy.a a(bus<?>... $$0) {
-         return this.a(ju.a(bus::r, $$0));
+      @Override
+      public MapCodec<ddy.c> a() {
+         return c;
       }
 
-      public ddy.a a(ju<bus<?>> $$0) {
-         this.d = Optional.of($$0);
-         return this;
+      public ddy b() {
+         return this.d;
       }
 
-      public ddy.a a(boolean $$0) {
-         this.e = $$0;
-         return this;
+      public ddy c() {
+         return this.e;
+      }
+   }
+
+   public static record d(float d) implements ddy {
+      public static final MapCodec<ddy.d> c = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.FLOAT.fieldOf("added").forGetter(ddy.d::b)).apply($$0, ddy.d::new)
+      );
+
+      @Override
+      public float a(int $$0) {
+         return (float)bae.h($$0) + this.d;
       }
 
-      public ddy.a b(boolean $$0) {
-         this.f = $$0;
-         return this;
+      @Override
+      public MapCodec<ddy.d> a() {
+         return c;
       }
 
-      public ddy.a c(boolean $$0) {
-         this.g = $$0;
-         return this;
+      public float b() {
+         return this.d;
+      }
+   }
+
+   public static record e(float d, float e) implements ddy {
+      public static final MapCodec<ddy.e> c = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.FLOAT.fieldOf("base").forGetter(ddy.e::b), Codec.FLOAT.fieldOf("per_level_above_first").forGetter(ddy.e::c))
+               .apply($$0, ddy.e::new)
+      );
+
+      @Override
+      public float a(int $$0) {
+         return this.d + this.e * (float)($$0 - 1);
       }
 
-      public ddy a() {
-         return new ddy(this.a, this.b, this.c, this.d, this.e, this.f, this.g);
+      @Override
+      public MapCodec<ddy.e> a() {
+         return c;
+      }
+
+      public float b() {
+         return this.d;
+      }
+
+      public float c() {
+         return this.e;
+      }
+   }
+
+   public static record f(List<Float> d, ddy e) implements ddy {
+      public static final MapCodec<ddy.f> c = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.FLOAT.listOf().fieldOf("values").forGetter(ddy.f::b), ddy.b.fieldOf("fallback").forGetter(ddy.f::c)).apply($$0, ddy.f::new)
+      );
+
+      @Override
+      public float a(int $$0) {
+         return $$0 <= this.d.size() ? this.d.get($$0 - 1) : this.e.a($$0);
+      }
+
+      @Override
+      public MapCodec<ddy.f> a() {
+         return c;
+      }
+
+      public List<Float> b() {
+         return this.d;
+      }
+
+      public ddy c() {
+         return this.e;
       }
    }
 }

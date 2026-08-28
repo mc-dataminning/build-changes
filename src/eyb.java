@@ -1,47 +1,63 @@
-import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import java.util.List;
 
-public record eyb(Optional<bw> b, eun.b c) implements exy {
+public class eyb extends exu {
    public static final MapCodec<eyb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bw.a.optionalFieldOf("predicate").forGetter(eyb::c), eun.b.e.fieldOf("entity").forGetter(eyb::d)).apply($$0, eyb::new)
+      $$0 -> a($$0)
+            .and($$0.group(dug.b.fieldOf("patterns").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.c)))
+            .apply($$0, eyb::new)
    );
+   private final dug b;
+   private final boolean c;
 
-   @Override
-   public exz b() {
-      return eya.f;
+   eyb(List<ezs> $$0, dug $$1, boolean $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public Set<exg<?>> a() {
-      return ImmutableSet.of(exj.f, this.c.a());
+   protected cxk a(cxk $$0, ewh $$1) {
+      if (this.c) {
+         $$0.a(ku.ai, dug.a, this.b, ($$0x, $$1x) -> new dug.a().a($$0x).a($$1x).a());
+      } else {
+         $$0.b(ku.ai, this.b);
+      }
+
+      return $$0;
    }
 
-   public boolean a(eun $$0) {
-      bul $$1 = $$0.c(this.c.a());
-      ezy $$2 = $$0.c(exj.f);
-      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
+   @Override
+   public exw<eyb> b() {
+      return exx.E;
    }
 
-   public static exy.a a(eun.b $$0) {
-      return a($$0, bw.a.a());
+   public static eyb.a a(boolean $$0) {
+      return new eyb.a($$0);
    }
 
-   public static exy.a a(eun.b $$0, bw.a $$1) {
-      return () -> new eyb(Optional.of($$1.b()), $$0);
-   }
+   public static class a extends exu.a<eyb.a> {
+      private final dug.a a = new dug.a();
+      private final boolean b;
 
-   public static exy.a a(eun.b $$0, bw $$1) {
-      return () -> new eyb(Optional.of($$1), $$0);
-   }
+      a(boolean $$0) {
+         this.b = $$0;
+      }
 
-   public Optional<bw> c() {
-      return this.b;
-   }
+      protected eyb.a a() {
+         return this;
+      }
 
-   public eun.b d() {
-      return this.c;
+      @Override
+      public exv b() {
+         return new eyb(this.g(), this.a.a(), this.b);
+      }
+
+      public eyb.a a(jq<duf> $$0, cwh $$1) {
+         this.a.a($$0, $$1);
+         return this;
+      }
    }
 }

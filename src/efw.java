@@ -1,54 +1,45 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public class efw extends eew<ehp> {
-   public efw(Codec<ehp> $$0) {
+public class efw extends ego<eik> {
+   public efw(Codec<eik> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eey<ehp> $$0) {
-      ehp $$1 = $$0.f();
-      dgk $$2 = $$0.b();
-      azu $$3 = $$0.d();
-      diq $$4 = $$1.b.b();
-      jh $$5 = a($$2, $$0.e().k().a(jm.a.b, $$2.K_() + 1, $$2.al()), $$4);
-      if ($$5 == null) {
+   public boolean a(egq<eik> $$0) {
+      jh $$1 = $$0.e();
+      dhy $$2 = $$0.b();
+      bam $$3 = $$0.d();
+      eik $$4 = $$0.f();
+      if ($$1.v() < $$2.L_() + 5) {
          return false;
       } else {
-         int $$6 = $$1.a().a($$3);
-         int $$7 = $$1.a().a($$3);
-         int $$8 = $$1.a().a($$3);
-         int $$9 = Math.max($$6, Math.max($$7, $$8));
-         boolean $$10 = false;
+         int $$5 = 2 + $$3.a(2);
+         int $$6 = 2 + $$3.a(2);
 
-         for (jh $$11 : jh.a($$5, $$6, $$7, $$8)) {
-            if ($$11.k($$5) > $$9) {
-               break;
-            }
-
-            dvv $$12 = $$2.a_($$11);
-            if ($$12.a($$4)) {
-               this.a($$2, $$11, $$1.c);
-               $$10 = true;
+         for (jh $$7 : jh.c($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
+            int $$8 = $$1.u() - $$7.u();
+            int $$9 = $$1.w() - $$7.w();
+            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
+               this.a($$2, $$7, $$3, $$4);
+            } else if ((double)$$3.i() < 0.031) {
+               this.a($$2, $$7, $$3, $$4);
             }
          }
 
-         return $$10;
+         return true;
       }
    }
 
-   @Nullable
-   private static jh a(dfn $$0, jh.a $$1, diq $$2) {
-      while ($$1.v() > $$0.K_() + 1) {
-         dvv $$3 = $$0.a_($$1);
-         if ($$3.a($$2)) {
-            return $$1;
-         }
+   private boolean a(dhb $$0, jh $$1, bam $$2) {
+      jh $$3 = $$1.e();
+      dxn $$4 = $$0.a_($$3);
+      return $$4.a(dkg.kZ) ? $$2.h() : $$4.c($$0, $$3, jm.b);
+   }
 
-         $$1.c(jm.a);
+   private void a(dhb $$0, jh $$1, bam $$2, eik $$3) {
+      if ($$0.u($$1) && this.a($$0, $$1, $$2)) {
+         $$0.a($$1, $$3.b.a($$2, $$1), 4);
       }
-
-      return null;
    }
 }

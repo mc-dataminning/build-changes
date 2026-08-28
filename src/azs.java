@@ -1,65 +1,43 @@
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import java.util.Optional;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public interface azs {
-   azs a(String var1);
+public class azs implements bbc, AutoCloseable {
+   private static final Logger b = LogUtils.getLogger();
+   private CompletableFuture<?> c = CompletableFuture.completedFuture(null);
+   private final Executor d;
+   private volatile boolean e;
 
-   void b(String var1);
+   public azs(Executor $$0) {
+      this.d = $$0;
+   }
 
-   public static class a implements azs {
-      private final Multimap<String, String> a;
-      private final Supplier<String> b;
-      @Nullable
-      private String c;
-
-      public a() {
-         this(HashMultimap.create(), () -> "");
-      }
-
-      private a(Multimap<String, String> $$0, Supplier<String> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      private String c() {
-         if (this.c == null) {
-            this.c = this.b.get();
+   @Override
+   public <T> void append(CompletableFuture<T> $$0, Consumer<T> $$1) {
+      this.c = this.c.<T, Object>thenCombine($$0, ($$0x, $$1x) -> $$1x).thenAcceptAsync($$1x -> {
+         if (!this.e) {
+            $$1.accept((T)$$1x);
+         }
+      }, this.d).exceptionally($$0x -> {
+         if ($$0x instanceof CompletionException $$1x) {
+            $$0x = $$1x.getCause();
          }
 
-         return this.c;
-      }
-
-      @Override
-      public azs a(String $$0) {
-         return new azs.a(this.a, () -> this.c() + $$0);
-      }
-
-      @Override
-      public void b(String $$0) {
-         this.a.put(this.c(), $$0);
-      }
-
-      public Multimap<String, String> a() {
-         return ImmutableMultimap.copyOf(this.a);
-      }
-
-      public Optional<String> b() {
-         Multimap<String, String> $$0 = this.a();
-         if (!$$0.isEmpty()) {
-            String $$1 = $$0.asMap()
-               .entrySet()
-               .stream()
-               .map($$0x -> " at " + (String)$$0x.getKey() + ": " + String.join("; ", (Iterable<? extends CharSequence>)$$0x.getValue()))
-               .collect(Collectors.joining("\n"));
-            return Optional.of($$1);
+         if ($$0x instanceof CancellationException $$2) {
+            throw $$2;
          } else {
-            return Optional.empty();
+            b.error("Chain link failed, continuing to next one", $$0x);
+            return null;
          }
-      }
+      });
+   }
+
+   @Override
+   public void close() {
+      this.e = true;
    }
 }

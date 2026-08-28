@@ -1,32 +1,15 @@
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-public class aff implements zq<acf> {
-   public static final zh<wg, aff> a = zq.a(aff::a, aff::new);
-   private final int b;
-
-   public aff(bul $$0) {
-      this.b = $$0.ar();
-   }
-
-   private aff(wg $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(wg $$0) {
-      $$0.c(this.b);
-   }
+public record aff(List<dde> b) implements aac<acr> {
+   public static final zt<ByteBuf, aff> a = zt.a(dde.a.a(zr.a()), aff::b, aff::new);
 
    @Override
-   public zs<aff> a() {
-      return agu.ax;
+   public aae<aff> a() {
+      return ahk.al;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
-   }
-
-   @Nullable
-   public bul a(dfm $$0) {
-      return $$0.a(this.b);
    }
 }

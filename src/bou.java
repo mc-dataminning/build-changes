@@ -1,148 +1,66 @@
-import java.util.function.Supplier;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public interface bou {
-   String b = "root";
+public final class bou {
+   private final Object2ObjectMap<bon<?>, Object> a = new Object2ObjectArrayMap();
 
-   void a();
-
-   void b();
-
-   void a(String var1);
-
-   void a(Supplier<String> var1);
-
-   void c();
-
-   void b(String var1);
-
-   void b(Supplier<String> var1);
-
-   default void e(String $$0) {
+   public <T> void a(bon<T> $$0, @Nullable T $$1) {
+      this.a.put($$0, $$1);
    }
 
-   default void a(long $$0) {
+   @Nullable
+   public <T> T a(bon<T> $$0) {
+      return (T)this.a.get($$0);
    }
 
-   default void a(int $$0) {
+   public <T> T b(bon<T> $$0) {
+      return Objects.requireNonNull(this.a($$0));
    }
 
-   default boz d(String $$0) {
-      this.a($$0);
-      return new boz(this);
+   public <T> T b(bon<T> $$0, T $$1) {
+      return Objects.requireNonNullElse(this.a($$0), $$1);
    }
 
-   default boz c(Supplier<String> $$0) {
-      this.a($$0);
-      return new boz(this);
+   @Nullable
+   @SafeVarargs
+   public final <T> T a(bon<T>... $$0) {
+      for (bon<T> $$1 : $$0) {
+         T $$2 = this.a($$1);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
+
+      return null;
    }
 
-   void a(bqc var1);
-
-   default void f(String $$0) {
-      this.a($$0, 1);
+   @SafeVarargs
+   public final <T> T b(bon<T>... $$0) {
+      return Objects.requireNonNull(this.a($$0));
    }
 
-   void a(String var1, int var2);
-
-   default void d(Supplier<String> $$0) {
-      this.a($$0, 1);
+   @Override
+   public String toString() {
+      return this.a.toString();
    }
 
-   void a(Supplier<String> var1, int var2);
+   public void a(bou $$0) {
+      this.a.putAll($$0.a);
+   }
 
-   static bou a(bou $$0, bou $$1) {
-      if ($$0 == boq.a) {
-         return $$1;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         return (bou)($$1 == boq.a ? $$0 : new bou.a($$0, $$1));
+         return $$0 instanceof bou $$1 ? this.a.equals($$1.a) : false;
       }
    }
 
-   public static class a implements bou {
-      private final bou a;
-      private final bou c;
-
-      public a(bou $$0, bou $$1) {
-         this.a = $$0;
-         this.c = $$1;
-      }
-
-      @Override
-      public void a() {
-         this.a.a();
-         this.c.a();
-      }
-
-      @Override
-      public void b() {
-         this.a.b();
-         this.c.b();
-      }
-
-      @Override
-      public void a(String $$0) {
-         this.a.a($$0);
-         this.c.a($$0);
-      }
-
-      @Override
-      public void a(Supplier<String> $$0) {
-         this.a.a($$0);
-         this.c.a($$0);
-      }
-
-      @Override
-      public void a(bqc $$0) {
-         this.a.a($$0);
-         this.c.a($$0);
-      }
-
-      @Override
-      public void c() {
-         this.a.c();
-         this.c.c();
-      }
-
-      @Override
-      public void b(String $$0) {
-         this.a.b($$0);
-         this.c.b($$0);
-      }
-
-      @Override
-      public void b(Supplier<String> $$0) {
-         this.a.b($$0);
-         this.c.b($$0);
-      }
-
-      @Override
-      public void a(String $$0, int $$1) {
-         this.a.a($$0, $$1);
-         this.c.a($$0, $$1);
-      }
-
-      @Override
-      public void a(Supplier<String> $$0, int $$1) {
-         this.a.a($$0, $$1);
-         this.c.a($$0, $$1);
-      }
-
-      @Override
-      public void e(String $$0) {
-         this.a.e($$0);
-         this.c.e($$0);
-      }
-
-      @Override
-      public void a(long $$0) {
-         this.a.a($$0);
-         this.c.a($$0);
-      }
-
-      @Override
-      public void a(int $$0) {
-         this.a.a($$0);
-         this.c.a($$0);
-      }
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

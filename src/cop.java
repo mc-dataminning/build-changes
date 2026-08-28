@@ -1,8 +1,24 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@u
-@w
-interface cop {
+public class cop<E extends cog> {
+   public static bxv<bwb> a(int $$0) {
+      return cbh.a(
+         (Function<cbh.b<bwb>, ? extends App<cbh.c<bwb>, cbk<bwb>>>)($$1 -> $$1.group($$1.b(cff.ad), $$1.a(cff.L))
+               .apply($$1, ($$2, $$3) -> ($$4, $$5, $$6) -> {
+                     if (!$$5.eY().f()) {
+                        return false;
+                     } else {
+                        Optional<clw> $$7 = $$1.a($$3);
+                        if ($$7.isPresent() && $$7.get().a($$5, (double)$$0)) {
+                           return false;
+                        } else {
+                           $$2.b();
+                           return true;
+                        }
+                     }
+                  }))
+      );
+   }
 }

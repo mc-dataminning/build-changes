@@ -1,4 +1,8 @@
-@FunctionalInterface
-public interface bpf {
-   void finish();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bpf {
 }

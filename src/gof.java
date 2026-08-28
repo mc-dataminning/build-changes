@@ -1,17 +1,36 @@
-@Deprecated
-public abstract class gof<T extends bvj, S extends gwm, M extends fzj<? super S>> extends gqq<T, S, M> {
-   private final M a;
-   private final M b;
+public class gof implements gnp<dwg> {
+   private final grh a;
 
-   public gof(gpk.a $$0, M $$1, M $$2, float $$3) {
-      super($$0, $$1, $$3);
-      this.a = $$1;
-      this.b = $$2;
+   public gof(gnq.a $$0) {
+      this.a = $$0.c();
    }
 
-   @Override
-   public void a(S $$0, fer $$1, gjg $$2, int $$3) {
-      this.h = $$0.ae ? this.b : this.a;
-      super.a($$0, $$1, $$2, $$3);
+   public void a(dwg $$0, float $$1, fgl $$2, gle $$3, int $$4, int $$5) {
+      dha $$6 = $$0.i();
+      if ($$6 != null) {
+         dgb $$7 = $$0.c();
+         bvf $$8 = $$7.b($$6, $$0.aB_());
+         if ($$8 != null) {
+            a($$1, $$2, $$3, $$4, $$8, this.a, $$7.b(), $$7.a());
+         }
+      }
+   }
+
+   public static void a(float $$0, fgl $$1, gle $$2, int $$3, bvf $$4, grh $$5, double $$6, double $$7) {
+      $$1.a();
+      $$1.a(0.5F, 0.0F, 0.5F);
+      float $$8 = 0.53125F;
+      float $$9 = Math.max($$4.dq(), $$4.dr());
+      if ((double)$$9 > 1.0) {
+         $$8 /= $$9;
+      }
+
+      $$1.a(0.0F, 0.4F, 0.0F);
+      $$1.a(a.d.rotationDegrees((float)bae.d((double)$$0, $$6, $$7) * 10.0F));
+      $$1.a(0.0F, -0.2F, 0.0F);
+      $$1.a(a.b.rotationDegrees(-30.0F));
+      $$1.b($$8, $$8, $$8);
+      $$5.a($$4, 0.0, 0.0, 0.0, $$0, $$1, $$2, $$3);
+      $$1.b();
    }
 }

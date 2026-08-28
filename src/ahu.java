@@ -1,29 +1,44 @@
-public class ahu implements zq<agw> {
-   public static final zh<wg, ahu> a = zq.a(ahu::a, ahu::new);
-   private final boolean b;
+import java.time.Instant;
+import javax.annotation.Nullable;
 
-   public ahu(boolean $$0) {
-      this.b = $$0;
+public record ahu(String b, Instant c, long d, @Nullable yh e, yc.b f) implements aac<ahm> {
+   public static final zt<ws, ahu> a = aac.a(ahu::a, ahu::new);
+
+   private ahu(ws $$0) {
+      this($$0.d(256), $$0.t(), $$0.readLong(), $$0.c(yh::a), new yc.b($$0));
    }
 
-   private ahu(wg $$0) {
-      this.b = $$0.readBoolean();
-   }
-
-   private void a(wg $$0) {
-      $$0.a(this.b);
+   private void a(ws $$0) {
+      $$0.a(this.b, 256);
+      $$0.a(this.c);
+      $$0.b(this.d);
+      $$0.a(this.e, yh::a);
+      this.f.a($$0);
    }
 
    @Override
-   public zs<ahu> a() {
-      return agu.bD;
+   public aae<ahu> a() {
+      return ahk.br;
    }
 
-   public void a(agw $$0) {
+   public void a(ahm $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
-      return this.b;
+   public Instant e() {
+      return this.c;
+   }
+
+   public long f() {
+      return this.d;
+   }
+
+   @Nullable
+   public yh g() {
+      return this.e;
+   }
+
+   public yc.b h() {
+      return this.f;
    }
 }

@@ -48,86 +48,88 @@ public class ls {
    public static final lw Q = a("heart", false);
    public static final lw R = a("instant_effect", false);
    public static final lr<lo> S = a("item", false, lo::a, lo::b);
-   public static final lr<lx> T = a("vibration", true, $$0 -> lx.a, $$0 -> lx.b);
-   public static final lw U = a("item_slime", false);
-   public static final lw V = a("item_cobweb", false);
-   public static final lw W = a("item_snowball", false);
-   public static final lw X = a("large_smoke", false);
-   public static final lw Y = a("lava", false);
-   public static final lw Z = a("mycelium", false);
-   public static final lw aa = a("note", false);
-   public static final lw ab = a("poof", true);
-   public static final lw ac = a("portal", false);
-   public static final lw ad = a("rain", false);
-   public static final lw ae = a("smoke", false);
-   public static final lw af = a("white_smoke", false);
-   public static final lw ag = a("sneeze", false);
-   public static final lw ah = a("spit", true);
-   public static final lw ai = a("squid_ink", true);
-   public static final lw aj = a("sweep_attack", true);
-   public static final lw ak = a("totem_of_undying", false);
-   public static final lw al = a("underwater", false);
-   public static final lw am = a("splash", false);
-   public static final lw an = a("witch", false);
-   public static final lw ao = a("bubble_pop", false);
-   public static final lw ap = a("current_down", false);
-   public static final lw aq = a("bubble_column_up", false);
-   public static final lw ar = a("nautilus", false);
-   public static final lw as = a("dolphin", false);
-   public static final lw at = a("campfire_cosy_smoke", true);
-   public static final lw au = a("campfire_signal_smoke", true);
-   public static final lw av = a("dripping_honey", false);
-   public static final lw aw = a("falling_honey", false);
-   public static final lw ax = a("landing_honey", false);
-   public static final lw ay = a("falling_nectar", false);
-   public static final lw az = a("falling_spore_blossom", false);
-   public static final lw aA = a("ash", false);
-   public static final lw aB = a("crimson_spore", false);
-   public static final lw aC = a("warped_spore", false);
-   public static final lw aD = a("spore_blossom_air", false);
-   public static final lw aE = a("dripping_obsidian_tear", false);
-   public static final lw aF = a("falling_obsidian_tear", false);
-   public static final lw aG = a("landing_obsidian_tear", false);
-   public static final lw aH = a("reverse_portal", false);
-   public static final lw aI = a("white_ash", false);
-   public static final lw aJ = a("small_flame", false);
-   public static final lw aK = a("snowflake", false);
-   public static final lw aL = a("dripping_dripstone_lava", false);
-   public static final lw aM = a("falling_dripstone_lava", false);
-   public static final lw aN = a("dripping_dripstone_water", false);
-   public static final lw aO = a("falling_dripstone_water", false);
-   public static final lw aP = a("glow_squid_ink", true);
-   public static final lw aQ = a("glow", true);
-   public static final lw aR = a("wax_on", true);
-   public static final lw aS = a("wax_off", true);
-   public static final lw aT = a("electric_spark", true);
-   public static final lw aU = a("scrape", true);
-   public static final lr<lv> aV = a("shriek", false, $$0 -> lv.a, $$0 -> lv.b);
-   public static final lw aW = a("egg_crack", false);
-   public static final lw aX = a("dust_plume", false);
-   public static final lw aY = a("trial_spawner_detection", true);
-   public static final lw aZ = a("trial_spawner_detection_ominous", true);
-   public static final lw ba = a("vault_connection", true);
-   public static final lr<lk> bb = a("dust_pillar", false, lk::a, lk::b);
-   public static final lw bc = a("ominous_spawning", true);
-   public static final lw bd = a("raid_omen", false);
-   public static final lw be = a("trial_omen", false);
-   public static final Codec<lq> bf = lz.i.q().dispatch("type", lq::a, lr::c);
-   public static final zh<wu, lq> bg = zf.a(ma.Y).b(lq::a, lr::d);
+   public static final lr<ly> T = a("vibration", true, $$0 -> ly.a, $$0 -> ly.b);
+   public static final lr<lx> U = a("trail", false, $$0 -> lx.a, $$0 -> lx.b);
+   public static final lw V = a("item_slime", false);
+   public static final lw W = a("item_cobweb", false);
+   public static final lw X = a("item_snowball", false);
+   public static final lw Y = a("large_smoke", false);
+   public static final lw Z = a("lava", false);
+   public static final lw aa = a("mycelium", false);
+   public static final lw ab = a("note", false);
+   public static final lw ac = a("poof", true);
+   public static final lw ad = a("portal", false);
+   public static final lw ae = a("rain", false);
+   public static final lw af = a("smoke", false);
+   public static final lw ag = a("white_smoke", false);
+   public static final lw ah = a("sneeze", false);
+   public static final lw ai = a("spit", true);
+   public static final lw aj = a("squid_ink", true);
+   public static final lw ak = a("sweep_attack", true);
+   public static final lw al = a("totem_of_undying", false);
+   public static final lw am = a("underwater", false);
+   public static final lw an = a("splash", false);
+   public static final lw ao = a("witch", false);
+   public static final lw ap = a("bubble_pop", false);
+   public static final lw aq = a("current_down", false);
+   public static final lw ar = a("bubble_column_up", false);
+   public static final lw as = a("nautilus", false);
+   public static final lw at = a("dolphin", false);
+   public static final lw au = a("campfire_cosy_smoke", true);
+   public static final lw av = a("campfire_signal_smoke", true);
+   public static final lw aw = a("dripping_honey", false);
+   public static final lw ax = a("falling_honey", false);
+   public static final lw ay = a("landing_honey", false);
+   public static final lw az = a("falling_nectar", false);
+   public static final lw aA = a("falling_spore_blossom", false);
+   public static final lw aB = a("ash", false);
+   public static final lw aC = a("crimson_spore", false);
+   public static final lw aD = a("warped_spore", false);
+   public static final lw aE = a("spore_blossom_air", false);
+   public static final lw aF = a("dripping_obsidian_tear", false);
+   public static final lw aG = a("falling_obsidian_tear", false);
+   public static final lw aH = a("landing_obsidian_tear", false);
+   public static final lw aI = a("reverse_portal", false);
+   public static final lw aJ = a("white_ash", false);
+   public static final lw aK = a("small_flame", false);
+   public static final lw aL = a("snowflake", false);
+   public static final lw aM = a("dripping_dripstone_lava", false);
+   public static final lw aN = a("falling_dripstone_lava", false);
+   public static final lw aO = a("dripping_dripstone_water", false);
+   public static final lw aP = a("falling_dripstone_water", false);
+   public static final lw aQ = a("glow_squid_ink", true);
+   public static final lw aR = a("glow", true);
+   public static final lw aS = a("wax_on", true);
+   public static final lw aT = a("wax_off", true);
+   public static final lw aU = a("electric_spark", true);
+   public static final lw aV = a("scrape", true);
+   public static final lr<lv> aW = a("shriek", false, $$0 -> lv.a, $$0 -> lv.b);
+   public static final lw aX = a("egg_crack", false);
+   public static final lw aY = a("dust_plume", false);
+   public static final lw aZ = a("trial_spawner_detection", true);
+   public static final lw ba = a("trial_spawner_detection_ominous", true);
+   public static final lw bb = a("vault_connection", true);
+   public static final lr<lk> bc = a("dust_pillar", false, lk::a, lk::b);
+   public static final lw bd = a("ominous_spawning", true);
+   public static final lw be = a("raid_omen", false);
+   public static final lw bf = a("trial_omen", false);
+   public static final lr<lk> bg = a("block_crumble", false, lk::a, lk::b);
+   public static final Codec<lq> bh = ma.i.q().dispatch("type", lq::a, lr::c);
+   public static final zt<xg, lq> bi = zr.a(mb.Y).b(lq::a, lr::d);
 
    private static lw a(String $$0, boolean $$1) {
-      return kd.a(lz.i, $$0, new lw($$1));
+      return kd.a(ma.i, $$0, new lw($$1));
    }
 
-   private static <T extends lq> lr<T> a(String $$0, boolean $$1, final Function<lr<T>, MapCodec<T>> $$2, final Function<lr<T>, zh<? super wu, T>> $$3) {
-      return kd.a(lz.i, $$0, new lr<T>($$1) {
+   private static <T extends lq> lr<T> a(String $$0, boolean $$1, final Function<lr<T>, MapCodec<T>> $$2, final Function<lr<T>, zt<? super xg, T>> $$3) {
+      return kd.a(ma.i, $$0, new lr<T>($$1) {
          @Override
          public MapCodec<T> c() {
             return $$2.apply(this);
          }
 
          @Override
-         public zh<? super wu, T> d() {
+         public zt<? super xg, T> d() {
             return $$3.apply(this);
          }
       });

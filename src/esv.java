@@ -1,200 +1,189 @@
-import java.util.Optional;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableInt;
-
 public class esv {
-   private static final int c = 2;
-   public static final int a = 21;
-   private static final int d = 3;
-   public static final int b = 21;
-   private static final dvu.f e = ($$0, $$1, $$2) -> $$0.a(dis.co);
-   private static final float f = 4.0F;
-   private static final double g = 1.0;
-   private final jm.a h;
-   private final jm i;
-   private final int j;
-   private final jh k;
-   private final int l;
-   private final int m;
+   protected static final int[][] a = new int[][]{
+      {1, 1, 0},
+      {-1, 1, 0},
+      {1, -1, 0},
+      {-1, -1, 0},
+      {1, 0, 1},
+      {-1, 0, 1},
+      {1, 0, -1},
+      {-1, 0, -1},
+      {0, 1, 1},
+      {0, -1, 1},
+      {0, 1, -1},
+      {0, -1, -1},
+      {1, 1, 0},
+      {0, -1, 1},
+      {-1, 1, 0},
+      {0, -1, -1}
+   };
+   private static final double e = Math.sqrt(3.0);
+   private static final double f = 0.5 * (e - 1.0);
+   private static final double g = (3.0 - e) / 6.0;
+   private final int[] h = new int[512];
+   public final double b;
+   public final double c;
+   public final double d;
 
-   private esv(jm.a $$0, int $$1, jm $$2, jh $$3, int $$4, int $$5) {
-      this.h = $$0;
-      this.j = $$1;
-      this.i = $$2;
-      this.k = $$3;
-      this.m = $$4;
-      this.l = $$5;
-   }
+   public esv(bam $$0) {
+      this.b = $$0.j() * 256.0;
+      this.c = $$0.j() * 256.0;
+      this.d = $$0.j() * 256.0;
+      int $$1 = 0;
 
-   public static Optional<esv> a(dfn $$0, jh $$1, jm.a $$2) {
-      return a($$0, $$1, $$0x -> $$0x.a() && $$0x.j == 0, $$2);
-   }
+      while ($$1 < 256) {
+         this.h[$$1] = $$1++;
+      }
 
-   public static Optional<esv> a(dfn $$0, jh $$1, Predicate<esv> $$2, jm.a $$3) {
-      Optional<esv> $$4 = Optional.of(a((der)$$0, $$1, $$3)).filter($$2);
-      if ($$4.isPresent()) {
-         return $$4;
-      } else {
-         jm.a $$5 = $$3 == jm.a.a ? jm.a.c : jm.a.a;
-         return Optional.of(a((der)$$0, $$1, $$5)).filter($$2);
+      for (int $$2 = 0; $$2 < 256; $$2++) {
+         int $$3 = $$0.a(256 - $$2);
+         int $$4 = this.h[$$2];
+         this.h[$$2] = this.h[$$3 + $$2];
+         this.h[$$3 + $$2] = $$4;
       }
    }
 
-   public static esv a(der $$0, jh $$1, jm.a $$2) {
-      jm $$3 = $$2 == jm.a.a ? jm.e : jm.d;
-      jh $$4 = a($$0, $$3, $$1);
-      if ($$4 == null) {
-         return new esv($$2, 0, $$3, $$1, 0, 0);
+   private int a(int $$0) {
+      return this.h[$$0 & 0xFF];
+   }
+
+   protected static double a(int[] $$0, double $$1, double $$2, double $$3) {
+      return (double)$$0[0] * $$1 + (double)$$0[1] * $$2 + (double)$$0[2] * $$3;
+   }
+
+   private double a(int $$0, double $$1, double $$2, double $$3, double $$4) {
+      double $$5 = $$4 - $$1 * $$1 - $$2 * $$2 - $$3 * $$3;
+      double $$6;
+      if ($$5 < 0.0) {
+         $$6 = 0.0;
       } else {
-         int $$5 = a($$0, $$4, $$3);
-         if ($$5 == 0) {
-            return new esv($$2, 0, $$3, $$4, 0, 0);
+         $$5 *= $$5;
+         $$6 = $$5 * $$5 * a(a[$$0], $$1, $$2, $$3);
+      }
+
+      return $$6;
+   }
+
+   public double a(double $$0, double $$1) {
+      double $$2 = ($$0 + $$1) * f;
+      int $$3 = bae.a($$0 + $$2);
+      int $$4 = bae.a($$1 + $$2);
+      double $$5 = (double)($$3 + $$4) * g;
+      double $$6 = (double)$$3 - $$5;
+      double $$7 = (double)$$4 - $$5;
+      double $$8 = $$0 - $$6;
+      double $$9 = $$1 - $$7;
+      int $$10;
+      int $$11;
+      if ($$8 > $$9) {
+         $$10 = 1;
+         $$11 = 0;
+      } else {
+         $$10 = 0;
+         $$11 = 1;
+      }
+
+      double $$14 = $$8 - (double)$$10 + g;
+      double $$15 = $$9 - (double)$$11 + g;
+      double $$16 = $$8 - 1.0 + 2.0 * g;
+      double $$17 = $$9 - 1.0 + 2.0 * g;
+      int $$18 = $$3 & 0xFF;
+      int $$19 = $$4 & 0xFF;
+      int $$20 = this.a($$18 + this.a($$19)) % 12;
+      int $$21 = this.a($$18 + $$10 + this.a($$19 + $$11)) % 12;
+      int $$22 = this.a($$18 + 1 + this.a($$19 + 1)) % 12;
+      double $$23 = this.a($$20, $$8, $$9, 0.0, 0.5);
+      double $$24 = this.a($$21, $$14, $$15, 0.0, 0.5);
+      double $$25 = this.a($$22, $$16, $$17, 0.0, 0.5);
+      return 70.0 * ($$23 + $$24 + $$25);
+   }
+
+   public double a(double $$0, double $$1, double $$2) {
+      double $$3 = 0.3333333333333333;
+      double $$4 = ($$0 + $$1 + $$2) * 0.3333333333333333;
+      int $$5 = bae.a($$0 + $$4);
+      int $$6 = bae.a($$1 + $$4);
+      int $$7 = bae.a($$2 + $$4);
+      double $$8 = 0.16666666666666666;
+      double $$9 = (double)($$5 + $$6 + $$7) * 0.16666666666666666;
+      double $$10 = (double)$$5 - $$9;
+      double $$11 = (double)$$6 - $$9;
+      double $$12 = (double)$$7 - $$9;
+      double $$13 = $$0 - $$10;
+      double $$14 = $$1 - $$11;
+      double $$15 = $$2 - $$12;
+      int $$16;
+      int $$17;
+      int $$18;
+      int $$19;
+      int $$20;
+      int $$21;
+      if ($$13 >= $$14) {
+         if ($$14 >= $$15) {
+            $$16 = 1;
+            $$17 = 0;
+            $$18 = 0;
+            $$19 = 1;
+            $$20 = 1;
+            $$21 = 0;
+         } else if ($$13 >= $$15) {
+            $$16 = 1;
+            $$17 = 0;
+            $$18 = 0;
+            $$19 = 1;
+            $$20 = 0;
+            $$21 = 1;
          } else {
-            MutableInt $$6 = new MutableInt();
-            int $$7 = a($$0, $$4, $$3, $$5, $$6);
-            return new esv($$2, $$6.getValue(), $$3, $$4, $$5, $$7);
+            $$16 = 0;
+            $$17 = 0;
+            $$18 = 1;
+            $$19 = 1;
+            $$20 = 0;
+            $$21 = 1;
          }
-      }
-   }
-
-   @Nullable
-   private static jh a(der $$0, jm $$1, jh $$2) {
-      int $$3 = Math.max($$0.K_(), $$2.v() - 21);
-
-      while ($$2.v() > $$3 && a($$0.a_($$2.e()))) {
-         $$2 = $$2.e();
-      }
-
-      jm $$4 = $$1.g();
-      int $$5 = b($$0, $$2, $$4) - 1;
-      return $$5 < 0 ? null : $$2.a($$4, $$5);
-   }
-
-   private static int a(der $$0, jh $$1, jm $$2) {
-      int $$3 = b($$0, $$1, $$2);
-      return $$3 >= 2 && $$3 <= 21 ? $$3 : 0;
-   }
-
-   private static int b(der $$0, jh $$1, jm $$2) {
-      jh.a $$3 = new jh.a();
-
-      for (int $$4 = 0; $$4 <= 21; $$4++) {
-         $$3.g($$1).c($$2, $$4);
-         dvv $$5 = $$0.a_($$3);
-         if (!a($$5)) {
-            if (e.test($$5, $$0, $$3)) {
-               return $$4;
-            }
-            break;
-         }
-
-         dvv $$6 = $$0.a_($$3.c(jm.a));
-         if (!e.test($$6, $$0, $$3)) {
-            break;
-         }
-      }
-
-      return 0;
-   }
-
-   private static int a(der $$0, jh $$1, jm $$2, int $$3, MutableInt $$4) {
-      jh.a $$5 = new jh.a();
-      int $$6 = a($$0, $$1, $$2, $$5, $$3, $$4);
-      return $$6 >= 3 && $$6 <= 21 && a($$0, $$1, $$2, $$5, $$3, $$6) ? $$6 : 0;
-   }
-
-   private static boolean a(der $$0, jh $$1, jm $$2, jh.a $$3, int $$4, int $$5) {
-      for (int $$6 = 0; $$6 < $$4; $$6++) {
-         jh.a $$7 = $$3.g($$1).c(jm.b, $$5).c($$2, $$6);
-         if (!e.test($$0.a_($$7), $$0, $$7)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private static int a(der $$0, jh $$1, jm $$2, jh.a $$3, int $$4, MutableInt $$5) {
-      for (int $$6 = 0; $$6 < 21; $$6++) {
-         $$3.g($$1).c(jm.b, $$6).c($$2, -1);
-         if (!e.test($$0.a_($$3), $$0, $$3)) {
-            return $$6;
-         }
-
-         $$3.g($$1).c(jm.b, $$6).c($$2, $$4);
-         if (!e.test($$0.a_($$3), $$0, $$3)) {
-            return $$6;
-         }
-
-         for (int $$7 = 0; $$7 < $$4; $$7++) {
-            $$3.g($$1).c(jm.b, $$6).c($$2, $$7);
-            dvv $$8 = $$0.a_($$3);
-            if (!a($$8)) {
-               return $$6;
-            }
-
-            if ($$8.a(dis.ed)) {
-               $$5.increment();
-            }
-         }
-      }
-
-      return 21;
-   }
-
-   private static boolean a(dvv $$0) {
-      return $$0.l() || $$0.a(axc.aM) || $$0.a(dis.ed);
-   }
-
-   public boolean a() {
-      return this.m >= 2 && this.m <= 21 && this.l >= 3 && this.l <= 21;
-   }
-
-   public void a(dfn $$0) {
-      dvv $$1 = dis.ed.m().b(dnt.b, this.h);
-      jh.c(this.k, this.k.a(jm.b, this.l - 1).a(this.i, this.m - 1)).forEach($$2 -> $$0.a($$2, $$1, 18));
-   }
-
-   public boolean b() {
-      return this.a() && this.j == this.m * this.l;
-   }
-
-   public static ezy a(l.a $$0, jm.a $$1, ezy $$2, buo $$3) {
-      double $$4 = (double)$$0.b - (double)$$3.a();
-      double $$5 = (double)$$0.c - (double)$$3.b();
-      jh $$6 = $$0.a;
-      double $$8;
-      if ($$4 > 0.0) {
-         double $$7 = (double)$$6.a($$1) + (double)$$3.a() / 2.0;
-         $$8 = azm.a(azm.c($$2.a($$1) - $$7, 0.0, $$4), 0.0, 1.0);
+      } else if ($$14 < $$15) {
+         $$16 = 0;
+         $$17 = 0;
+         $$18 = 1;
+         $$19 = 0;
+         $$20 = 1;
+         $$21 = 1;
+      } else if ($$13 < $$15) {
+         $$16 = 0;
+         $$17 = 1;
+         $$18 = 0;
+         $$19 = 0;
+         $$20 = 1;
+         $$21 = 1;
       } else {
-         $$8 = 0.5;
+         $$16 = 0;
+         $$17 = 1;
+         $$18 = 0;
+         $$19 = 1;
+         $$20 = 1;
+         $$21 = 0;
       }
 
-      double $$11;
-      if ($$5 > 0.0) {
-         jm.a $$10 = jm.a.b;
-         $$11 = azm.a(azm.c($$2.a($$10) - (double)$$6.a($$10), 0.0, $$5), 0.0, 1.0);
-      } else {
-         $$11 = 0.0;
-      }
-
-      jm.a $$13 = $$1 == jm.a.a ? jm.a.c : jm.a.a;
-      double $$14 = $$2.a($$13) - ((double)$$6.a($$13) + 0.5);
-      return new ezy($$8, $$11, $$14);
-   }
-
-   public static ezy a(ezy $$0, arp $$1, bul $$2, buo $$3) {
-      if (!($$3.a() > 4.0F) && !($$3.b() > 4.0F)) {
-         double $$4 = (double)$$3.b() / 2.0;
-         ezy $$5 = $$0.b(0.0, $$4, 0.0);
-         fas $$6 = fap.a(ezt.a($$5, (double)$$3.a(), 0.0, (double)$$3.a()).b(0.0, 1.0, 0.0).g(1.0E-6));
-         Optional<ezy> $$7 = $$1.a($$2, $$6, $$5, (double)$$3.a(), (double)$$3.b(), (double)$$3.a());
-         Optional<ezy> $$8 = $$7.map($$1x -> $$1x.a(0.0, $$4, 0.0));
-         return $$8.orElse($$0);
-      } else {
-         return $$0;
-      }
+      double $$52 = $$13 - (double)$$16 + 0.16666666666666666;
+      double $$53 = $$14 - (double)$$17 + 0.16666666666666666;
+      double $$54 = $$15 - (double)$$18 + 0.16666666666666666;
+      double $$55 = $$13 - (double)$$19 + 0.3333333333333333;
+      double $$56 = $$14 - (double)$$20 + 0.3333333333333333;
+      double $$57 = $$15 - (double)$$21 + 0.3333333333333333;
+      double $$58 = $$13 - 1.0 + 0.5;
+      double $$59 = $$14 - 1.0 + 0.5;
+      double $$60 = $$15 - 1.0 + 0.5;
+      int $$61 = $$5 & 0xFF;
+      int $$62 = $$6 & 0xFF;
+      int $$63 = $$7 & 0xFF;
+      int $$64 = this.a($$61 + this.a($$62 + this.a($$63))) % 12;
+      int $$65 = this.a($$61 + $$16 + this.a($$62 + $$17 + this.a($$63 + $$18))) % 12;
+      int $$66 = this.a($$61 + $$19 + this.a($$62 + $$20 + this.a($$63 + $$21))) % 12;
+      int $$67 = this.a($$61 + 1 + this.a($$62 + 1 + this.a($$63 + 1))) % 12;
+      double $$68 = this.a($$64, $$13, $$14, $$15, 0.6);
+      double $$69 = this.a($$65, $$52, $$53, $$54, 0.6);
+      double $$70 = this.a($$66, $$55, $$56, $$57, 0.6);
+      double $$71 = this.a($$67, $$58, $$59, $$60, 0.6);
+      return 32.0 * ($$68 + $$69 + $$70 + $$71);
    }
 }

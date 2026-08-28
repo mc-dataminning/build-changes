@@ -1,16 +1,25 @@
-import com.google.common.collect.Streams;
-import java.util.function.Predicate;
+public class glh {
+   public static final alz a = alz.b("textures/gui/title/background/panorama_overlay.png");
+   private final flz b;
+   private final gkp c;
+   private float d;
 
-public class glh implements gle {
-   public static final String a = "OR";
-   private final Iterable<? extends gle> d;
-
-   public glh(Iterable<? extends gle> $$0) {
-      this.d = $$0;
+   public glh(gkp $$0) {
+      this.c = $$0;
+      this.b = flz.Q();
    }
 
-   @Override
-   public Predicate<dvv> getPredicate(dvw<diq, dvv> $$0) {
-      return ae.b(Streams.stream(this.d).map($$1 -> $$1.getPredicate($$0)).toList());
+   public void a(fnl $$0, int $$1, int $$2, float $$3, float $$4) {
+      float $$5 = this.b.av().b();
+      float $$6 = (float)((double)$$5 * this.b.n.t().c());
+      this.d = a(this.d + $$6 * 0.1F, 360.0F);
+      $$0.d();
+      this.c.a(this.b, 10.0F, -this.d, $$3);
+      $$0.d();
+      $$0.a(glo::B, a, 0, 0, 0.0F, 0.0F, $$1, $$2, 16, 128, 16, 128, ayp.a($$3));
+   }
+
+   private static float a(float $$0, float $$1) {
+      return $$0 > $$1 ? $$0 - $$1 : $$0;
    }
 }

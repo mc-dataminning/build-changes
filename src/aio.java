@@ -1,20 +1,29 @@
-public record aio(short b, cwm c) implements zq<agw> {
-   public static final zh<wu, aio> a = zh.a(zf.e, aio::b, cwm.a(cwm.h), aio::e, aio::new);
+public class aio implements aac<ahm> {
+   public static final zt<ws, aio> a = aac.a(aio::a, aio::new);
+   private final int b;
 
-   public aio(int $$0, cwm $$1) {
-      this((short)$$0, $$1);
+   public aio(int $$0) {
+      this.b = $$0;
+   }
+
+   private aio(ws $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(ws $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zs<aio> a() {
-      return agu.bZ;
+   public aae<aio> a() {
+      return ahk.bO;
    }
 
-   public void a(agw $$0) {
+   public void a(ahm $$0) {
       $$0.a(this);
    }
 
-   public cwm e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 }

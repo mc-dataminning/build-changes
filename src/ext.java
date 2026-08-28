@@ -1,85 +1,199 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public record ext(Map<String, eum> b, eun.b c) implements exy {
-   public static final MapCodec<ext> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.unboundedMap(Codec.STRING, eum.a).fieldOf("scores").forGetter(ext::c), eun.b.e.fieldOf("entity").forGetter(ext::d))
-            .apply($$0, ext::new)
-   );
+public interface ext {
+   MapCodec<ext> a = a(Integer.MAX_VALUE);
 
-   @Override
-   public exz b() {
-      return eya.h;
-   }
-
-   @Override
-   public Set<exg<?>> a() {
-      return Stream.concat(Stream.of(this.c.a()), this.b.values().stream().flatMap($$0 -> $$0.a().stream())).collect(ImmutableSet.toImmutableSet());
-   }
-
-   public boolean a(eun $$0) {
-      bul $$1 = $$0.c(this.c.a());
-      if ($$1 == null) {
-         return false;
-      } else {
-         fbd $$2 = $$0.d().g();
-
-         for (Entry<String, eum> $$3 : this.b.entrySet()) {
-            if (!this.a($$0, $$1, $$2, $$3.getKey(), $$3.getValue())) {
-               return false;
+   static MapCodec<ext> a(int $$0) {
+      return ext.f.e.dispatchMap("mode", ext::a, $$0x -> $$0x.g).validate($$1 -> {
+         if ($$1 instanceof ext.d $$2 && $$2.c().isPresent()) {
+            int $$3 = $$2.c().get();
+            if ($$3 > $$0) {
+               return DataResult.error(() -> "Size value too large: " + $$3 + ", max size is " + $$0);
             }
          }
 
-         return true;
-      }
+         return DataResult.success($$1);
+      });
    }
 
-   protected boolean a(eun $$0, bul $$1, fbd $$2, String $$3, eum $$4) {
-      fav $$5 = $$2.a($$3);
-      if ($$5 == null) {
-         return false;
-      } else {
-         faz $$6 = $$2.d($$1, $$5);
-         return $$6 == null ? false : $$4.b($$0, $$6.a());
-      }
+   ext.f a();
+
+   default <T> List<T> a(List<T> $$0, List<T> $$1) {
+      return this.a($$0, $$1, Integer.MAX_VALUE);
    }
 
-   public static ext.a a(eun.b $$0) {
-      return new ext.a($$0);
-   }
+   <T> List<T> a(List<T> var1, List<T> var2, int var3);
 
-   public Map<String, eum> c() {
-      return this.b;
-   }
+   public static class a implements ext {
+      private static final Logger d = LogUtils.getLogger();
+      public static final ext.a b = new ext.a();
+      public static final MapCodec<ext.a> c = MapCodec.unit(() -> b);
 
-   public eun.b d() {
-      return this.c;
-   }
-
-   public static class a implements exy.a {
-      private final Builder<String, eum> a = ImmutableMap.builder();
-      private final eun.b b;
-
-      public a(eun.b $$0) {
-         this.b = $$0;
-      }
-
-      public ext.a a(String $$0, eum $$1) {
-         this.a.put($$0, $$1);
-         return this;
+      private a() {
       }
 
       @Override
-      public exy build() {
-         return new ext(this.a.build(), this.b);
+      public ext.f a() {
+         return ext.f.d;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         if ($$0.size() + $$1.size() > $$2) {
+            d.error("Contents overflow in section append");
+            return $$0;
+         } else {
+            return Stream.concat($$0.stream(), $$1.stream()).toList();
+         }
+      }
+   }
+
+   public static record b(int c) implements ext {
+      private static final Logger d = LogUtils.getLogger();
+      public static final MapCodec<ext.b> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(azn.l.optionalFieldOf("offset", 0).forGetter(ext.b::b)).apply($$0, ext.b::new)
+      );
+
+      @Override
+      public ext.f a() {
+         return ext.f.c;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         int $$3 = $$0.size();
+         if (this.c > $$3) {
+            d.error("Cannot insert when offset is out of bounds");
+            return $$0;
+         } else if ($$3 + $$1.size() > $$2) {
+            d.error("Contents overflow in section insertion");
+            return $$0;
+         } else {
+            Builder<T> $$4 = ImmutableList.builder();
+            $$4.addAll($$0.subList(0, this.c));
+            $$4.addAll($$1);
+            $$4.addAll($$0.subList(this.c, $$3));
+            return $$4.build();
+         }
+      }
+
+      public int b() {
+         return this.c;
+      }
+   }
+
+   public static class c implements ext {
+      public static final ext.c b = new ext.c();
+      public static final MapCodec<ext.c> c = MapCodec.unit(() -> b);
+
+      private c() {
+      }
+
+      @Override
+      public ext.f a() {
+         return ext.f.a;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         return $$1;
+      }
+   }
+
+   public static record d(int c, Optional<Integer> d) implements ext {
+      private static final Logger e = LogUtils.getLogger();
+      public static final MapCodec<ext.d> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(azn.l.optionalFieldOf("offset", 0).forGetter(ext.d::b), azn.l.optionalFieldOf("size").forGetter(ext.d::c)).apply($$0, ext.d::new)
+      );
+
+      public d(int $$0) {
+         this($$0, Optional.empty());
+      }
+
+      @Override
+      public ext.f a() {
+         return ext.f.b;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         int $$3 = $$0.size();
+         if (this.c > $$3) {
+            e.error("Cannot replace when offset is out of bounds");
+            return $$0;
+         } else {
+            Builder<T> $$4 = ImmutableList.builder();
+            $$4.addAll($$0.subList(0, this.c));
+            $$4.addAll($$1);
+            int $$5 = this.c + this.d.orElse($$1.size());
+            if ($$5 < $$3) {
+               $$4.addAll($$0.subList($$5, $$3));
+            }
+
+            List<T> $$6 = $$4.build();
+            if ($$6.size() > $$2) {
+               e.error("Contents overflow in section replacement");
+               return $$0;
+            } else {
+               return $$6;
+            }
+         }
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public Optional<Integer> c() {
+         return this.d;
+      }
+   }
+
+   public static record e<T>(List<T> a, ext b) {
+      public static <T> Codec<ext.e<T>> a(Codec<T> $$0, int $$1) {
+         return RecordCodecBuilder.create(
+            $$2 -> $$2.group($$0.sizeLimitedListOf($$1).fieldOf("values").forGetter($$0xx -> $$0xx.a), ext.a($$1).forGetter($$0xx -> $$0xx.b))
+                  .apply($$2, ext.e::new)
+         );
+      }
+
+      public List<T> a(List<T> $$0) {
+         return this.b.a($$0, this.a);
+      }
+   }
+
+   public static enum f implements bba {
+      a("replace_all", ext.c.c),
+      b("replace_section", ext.d.b),
+      c("insert", ext.b.b),
+      d("append", ext.a.c);
+
+      public static final Codec<ext.f> e = bba.a(ext.f::values);
+      private final String f;
+      final MapCodec<? extends ext> g;
+
+      private f(final String $$0, final MapCodec<? extends ext> $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public MapCodec<? extends ext> a() {
+         return this.g;
+      }
+
+      @Override
+      public String c() {
+         return this.f;
       }
    }
 }

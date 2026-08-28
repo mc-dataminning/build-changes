@@ -1,41 +1,51 @@
-import com.google.common.collect.Lists;
-import java.util.Iterator;
-import java.util.List;
-import org.joml.Vector3f;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
 
-public class gnr implements gng.a {
-   public static final int a = 200;
-   private final fke b;
-   private final List<abh> c = Lists.newArrayList();
+public class gnr {
+   private static final Map<dur<?>, gnq<?>> a = Maps.newHashMap();
 
-   gnr(fke $$0) {
-      this.b = $$0;
+   private static <T extends dup> void a(dur<? extends T> $$0, gnq<T> $$1) {
+      a.put($$0, $$1);
    }
 
-   public void a(abh $$0) {
-      this.c.add($$0);
-   }
-
-   @Override
-   public void a(fer $$0, gjg $$1, double $$2, double $$3, double $$4) {
-      fev $$5 = $$1.getBuffer(gjq.y());
-      long $$6 = this.b.s.ab();
-      Iterator<abh> $$7 = this.c.iterator();
-
-      while ($$7.hasNext()) {
-         abh $$8 = $$7.next();
-         long $$9 = $$6 - $$8.b();
-         if ($$9 > 200L) {
-            $$7.remove();
-         } else {
-            for (abh.a $$10 : $$8.c()) {
-               Vector3f $$11 = $$10.a().c().a($$2, $$3 - 0.1, $$4).k();
-               etd $$12 = $$10.b();
-               gka.a($$0, $$5, $$11, $$12.b().r().c(0.5), -16776961);
-               gka.a($$0, $$5, $$11, $$12.c().r().c(0.4), -65536);
-               gka.a($$0, $$5, $$11, $$12.d().r().c(0.3), -256);
-            }
+   public static Map<dur<?>, gnp<?>> a(gnq.a $$0) {
+      Builder<dur<?>, gnp<?>> $$1 = ImmutableMap.builder();
+      a.forEach(($$2, $$3) -> {
+         try {
+            $$1.put($$2, $$3.create($$0));
+         } catch (Exception var5) {
+            throw new IllegalStateException("Failed to create model for " + ma.j.b((dur<?>)$$2), var5);
          }
-      }
+      });
+      return $$1.build();
+   }
+
+   static {
+      a(dur.h, god::new);
+      a(dur.i, gnz::new);
+      a(dur.j, gof::new);
+      a(dur.l, gob::new);
+      a(dur.b, gnv::new);
+      a(dur.d, gnv::new);
+      a(dur.c, gnv::new);
+      a(dur.n, gny::new);
+      a(dur.E, goa::new);
+      a(dur.o, goi::new);
+      a(dur.w, goh::new);
+      a(dur.p, gnl::new);
+      a(dur.q, goe::new);
+      a(dur.u, gnk::new);
+      a(dur.v, gog::new);
+      a(dur.y, goc::new);
+      a(dur.z, gnm::new);
+      a(dur.A, gnw::new);
+      a(dur.F, gnn::new);
+      a(dur.H, gnu::new);
+      a(dur.O, gnt::new);
+      a(dur.P, gnx::new);
+      a(dur.R, goj::new);
+      a(dur.S, gok::new);
    }
 }

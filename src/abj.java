@@ -1,29 +1,36 @@
-import java.util.HashSet;
-import java.util.Set;
+public record abj(jh c, int d, String e, int f) implements abf {
+   public static final zt<ws, abj> a = abf.a(abj::a, abj::new);
+   public static final abf.b<abj> b = abf.a("debug/game_test_add_marker");
 
-public record abj(Set<kj> c, Set<kj> d) implements aat {
-   public static final zh<wg, abj> a = aat.a(abj::a, abj::new);
-   public static final aat.b<abj> b = aat.a("debug/village_sections");
-
-   private abj(wg $$0) {
-      this($$0.a(HashSet::new, wg::g), $$0.a(HashSet::new, wg::g));
+   private abj(ws $$0) {
+      this($$0.e(), $$0.readInt(), $$0.p(), $$0.readInt());
    }
 
-   private void a(wg $$0) {
-      $$0.a(this.c, wg::a);
-      $$0.a(this.d, wg::a);
+   private void a(ws $$0) {
+      $$0.a(this.c);
+      $$0.q(this.d);
+      $$0.a(this.e);
+      $$0.q(this.f);
    }
 
    @Override
-   public aat.b<abj> a() {
+   public abf.b<abj> a() {
       return b;
    }
 
-   public Set<kj> b() {
+   public jh b() {
       return this.c;
    }
 
-   public Set<kj> c() {
+   public int c() {
       return this.d;
+   }
+
+   public String d() {
+      return this.e;
+   }
+
+   public int e() {
+      return this.f;
    }
 }

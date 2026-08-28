@@ -1,111 +1,79 @@
-import com.google.common.collect.ImmutableMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class bxp extends bxa<cof> {
-   private static final int c = 5;
-   private static final int d = 600;
-   private static final int e = 6600;
-   private static final int f = 20;
-   private static final Map<coi, ali<eus>> g = ImmutableMap.builder()
-      .put(coi.c, euj.ar)
-      .put(coi.d, euj.as)
-      .put(coi.e, euj.at)
-      .put(coi.f, euj.au)
-      .put(coi.g, euj.av)
-      .put(coi.h, euj.aw)
-      .put(coi.i, euj.ax)
-      .put(coi.j, euj.ay)
-      .put(coi.k, euj.az)
-      .put(coi.l, euj.aA)
-      .put(coi.n, euj.aB)
-      .put(coi.o, euj.aC)
-      .put(coi.p, euj.aD)
-      .build();
-   private static final float h = 0.5F;
-   private int i = 600;
-   private boolean j;
-   private long k;
+public class bxp<E extends bwj> extends bxu<E> {
+   private static final int c = 100;
+   private static final int d = 120;
+   private static final int e = 5;
+   private static final int f = 4;
+   private final float g;
+   private final Function<bwj, ayk<btx>> h;
 
-   public bxp(int $$0) {
-      super(ImmutableMap.of(cel.m, cem.c, cel.n, cem.c, cel.q, cem.c, cel.k, cem.a), $$0);
+   public bxp(float $$0) {
+      this($$0, $$0x -> axw.F);
    }
 
-   protected boolean a(arp $$0, cof $$1) {
-      if (!this.b($$1)) {
-         return false;
-      } else if (this.i > 0) {
-         this.i--;
-         return false;
-      } else {
-         return true;
-      }
+   public bxp(float $$0, Function<bwj, ayk<btx>> $$1) {
+      super(Map.of(cff.Z, cfg.c, cff.x, cfg.c), 100, 120);
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   protected void a(arp $$0, cof $$1, long $$2) {
-      this.j = false;
-      this.k = $$2;
-      cou $$3 = this.c($$1).get();
-      $$1.eb().a(cel.q, $$3);
-      bxc.a($$1, $$3);
+   protected boolean a(ash $$0, E $$1) {
+      return $$1.eb().c(cff.x).map($$1x -> $$1x.a(this.h.apply($$1))).orElse(false) || $$1.eb().a(cff.Z);
    }
 
-   protected boolean b(arp $$0, cof $$1, long $$2) {
-      return this.b($$1) && !this.j;
+   protected boolean a(ash $$0, E $$1, long $$2) {
+      return true;
    }
 
-   protected void c(arp $$0, cof $$1, long $$2) {
-      cou $$3 = this.c($$1).get();
-      bxc.a($$1, $$3);
-      if (this.a($$1, $$3)) {
-         if ($$2 - this.k > 20L) {
-            this.a($$0, $$1, $$3);
-            this.j = true;
+   protected void b(ash $$0, E $$1, long $$2) {
+      $$1.eb().a(cff.Z, true);
+      $$1.eb().b(cff.m);
+   }
+
+   protected void c(ash $$0, E $$1, long $$2) {
+      bxd<?> $$3 = $$1.eb();
+      $$3.b(cff.Z);
+   }
+
+   protected void d(ash $$0, E $$1, long $$2) {
+      if ($$1.L().m()) {
+         fbs $$3 = this.a($$1, $$0);
+         if ($$3 != null) {
+            $$1.eb().a(cff.m, new cfi($$3, this.g, 0));
          }
-      } else {
-         bxc.a($$1, $$3, 0.5F, 5);
       }
    }
 
-   protected void d(arp $$0, cof $$1, long $$2) {
-      this.i = a($$0);
-      $$1.eb().b(cel.q);
-      $$1.eb().b(cel.m);
-      $$1.eb().b(cel.n);
-   }
-
-   private void a(arp $$0, cof $$1, bvh $$2) {
-      $$1.a($$0, a($$1), ($$2x, $$3) -> bxc.a($$1, $$3, $$2.dt()));
-   }
-
-   private static ali<eus> a(cof $$0) {
-      if ($$0.e_()) {
-         return euj.aF;
-      } else {
-         coi $$1 = $$0.gx().b();
-         return g.getOrDefault($$1, euj.aE);
+   @Nullable
+   private fbs a(E $$0, ash $$1) {
+      if ($$0.bY()) {
+         Optional<fbs> $$2 = this.a((dgf)$$1, $$0).map(fbs::c);
+         if ($$2.isPresent()) {
+            return $$2.get();
+         }
       }
+
+      return cgz.a($$0, 5, 4);
    }
 
-   private boolean b(cof $$0) {
-      return this.c($$0).isPresent();
-   }
-
-   private Optional<cou> c(cof $$0) {
-      return $$0.eb().c(cel.k).filter(this::a);
-   }
-
-   private boolean a(cou $$0) {
-      return $$0.b(bts.F);
-   }
-
-   private boolean a(cof $$0, cou $$1) {
+   private Optional<jh> a(dgf $$0, bvf $$1) {
       jh $$2 = $$1.dv();
-      jh $$3 = $$0.dv();
-      return $$3.a($$2, 5.0);
-   }
+      if (!$$0.a_($$2).g($$0, $$2).c()) {
+         return Optional.empty();
+      } else {
+         Predicate<jh> $$3;
+         if (bae.f($$1.dq()) == 2) {
+            $$3 = $$1x -> jh.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(aya.a));
+         } else {
+            $$3 = $$1x -> $$0.b_($$1x).a(aya.a);
+         }
 
-   private static int a(arp $$0) {
-      return 600 + $$0.A.a(6001);
+         return jh.a($$2, 5, 1, $$3);
+      }
    }
 }

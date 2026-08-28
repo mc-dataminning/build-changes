@@ -1,62 +1,101 @@
-import org.apache.commons.lang3.Validate;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Keyable;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.Objects;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.function.ToIntFunction;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class bba {
-   private static final int a = 6;
-   private final long[] b;
-   private final int c;
-   private final long d;
-   private final int e;
+public interface bba {
+   int W = 16;
 
-   public bba(int $$0, int $$1) {
-      this($$0, $$1, new long[azm.d($$1 * $$0, 64) / 64]);
+   String c();
+
+   static <E extends Enum<E> & bba> bba.a<E> a(Supplier<E[]> $$0) {
+      return a($$0, $$0x -> $$0x);
    }
 
-   public bba(int $$0, int $$1, long[] $$2) {
-      Validate.inclusiveBetween(1L, 32L, (long)$$0);
-      this.e = $$1;
-      this.c = $$0;
-      this.b = $$2;
-      this.d = (1L << $$0) - 1L;
-      int $$3 = azm.d($$1 * $$0, 64) / 64;
-      if ($$2.length != $$3) {
-         throw new IllegalArgumentException("Invalid length given for storage, got: " + $$2.length + " but expected: " + $$3);
-      }
+   static <E extends Enum<E> & bba> bba.a<E> a(Supplier<E[]> $$0, Function<String, String> $$1) {
+      E[] $$2 = (E[])$$0.get();
+      Function<String, E> $$3 = a($$2, $$1);
+      return new bba.a<>($$2, $$3);
    }
 
-   public void a(int $$0, int $$1) {
-      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
-      Validate.inclusiveBetween(0L, this.d, (long)$$1);
-      int $$2 = $$0 * this.c;
-      int $$3 = $$2 >> 6;
-      int $$4 = ($$0 + 1) * this.c - 1 >> 6;
-      int $$5 = $$2 ^ $$3 << 6;
-      this.b[$$3] = this.b[$$3] & ~(this.d << $$5) | ((long)$$1 & this.d) << $$5;
-      if ($$3 != $$4) {
-         int $$6 = 64 - $$5;
-         int $$7 = this.c - $$6;
-         this.b[$$4] = this.b[$$4] >>> $$7 << $$7 | ((long)$$1 & this.d) >> $$6;
-      }
+   static <T extends bba> Codec<T> b(Supplier<T[]> $$0) {
+      T[] $$1 = (T[])$$0.get();
+      Function<String, T> $$2 = a($$1, $$0x -> $$0x);
+      ToIntFunction<T> $$3 = ae.g(Arrays.asList($$1));
+      return new bba.b<>($$1, $$2, $$3);
    }
 
-   public int a(int $$0) {
-      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
-      int $$1 = $$0 * this.c;
-      int $$2 = $$1 >> 6;
-      int $$3 = ($$0 + 1) * this.c - 1 >> 6;
-      int $$4 = $$1 ^ $$2 << 6;
-      if ($$2 == $$3) {
-         return (int)(this.b[$$2] >>> $$4 & this.d);
+   static <T extends bba> Function<String, T> a(T[] $$0, Function<String, String> $$1) {
+      if ($$0.length > 16) {
+         Map<String, T> $$2 = Arrays.<bba>stream($$0).collect(Collectors.toMap($$1x -> $$1.apply($$1x.c()), $$0x -> (T)$$0x));
+         return $$1x -> $$1x == null ? null : $$2.get($$1x);
       } else {
-         int $$5 = 64 - $$4;
-         return (int)((this.b[$$2] >>> $$4 | this.b[$$3] << $$5) & this.d);
+         return $$2x -> {
+            for (T $$3 : $$0) {
+               if ($$1.apply($$3.c()).equals($$2x)) {
+                  return $$3;
+               }
+            }
+
+            return null;
+         };
       }
    }
 
-   public long[] a() {
-      return this.b;
+   static Keyable a(final bba[] $$0) {
+      return new Keyable() {
+         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
+            return Arrays.stream($$0).map(bba::c).map($$0::createString);
+         }
+      };
    }
 
-   public int b() {
-      return this.c;
+   @Deprecated
+   public static class a<E extends Enum<E> & bba> extends bba.b<E> {
+      private final Function<String, E> a;
+
+      public a(E[] $$0, Function<String, E> $$1) {
+         super($$0, $$1, $$0x -> ((Enum)$$0x).ordinal());
+         this.a = $$1;
+      }
+
+      @Nullable
+      public E a(@Nullable String $$0) {
+         return this.a.apply($$0);
+      }
+
+      public E a(@Nullable String $$0, E $$1) {
+         return Objects.requireNonNullElse(this.a($$0), $$1);
+      }
+
+      public E a(@Nullable String $$0, Supplier<? extends E> $$1) {
+         return Objects.requireNonNullElseGet(this.a($$0), $$1);
+      }
+   }
+
+   public static class b<S extends bba> implements Codec<S> {
+      private final Codec<S> a;
+
+      public b(S[] $$0, Function<String, S> $$1, ToIntFunction<S> $$2) {
+         this.a = azn.a(Codec.stringResolver(bba::c, $$1), azn.a($$2, $$1x -> $$1x >= 0 && $$1x < $$0.length ? $$0[$$1x] : null, -1));
+      }
+
+      public <T> DataResult<Pair<S, T>> decode(DynamicOps<T> $$0, T $$1) {
+         return this.a.decode($$0, $$1);
+      }
+
+      public <T> DataResult<T> a(S $$0, DynamicOps<T> $$1, T $$2) {
+         return this.a.encode($$0, $$1, $$2);
+      }
    }
 }

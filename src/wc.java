@@ -1,48 +1,148 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToByteEncoder;
-import java.util.zip.Deflater;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class wc extends MessageToByteEncoder<ByteBuf> {
-   private final byte[] a = new byte[8192];
-   private final Deflater b;
-   private int c;
+public class wc implements vr {
+   private String a = "";
+   @Nullable
+   private vu b;
+   private final Deque<Consumer<vu>> c = new ArrayDeque<>();
 
-   public wc(int $$0) {
-      this.c = $$0;
-      this.b = new Deflater();
+   @Nullable
+   public vu d() {
+      return this.b;
    }
 
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) {
-      int $$3 = $$1.readableBytes();
-      if ($$3 > 8388608) {
-         throw new IllegalArgumentException("Packet too big (is " + $$3 + ", should be less than 8388608)");
-      } else {
-         if ($$3 < this.c) {
-            xa.a($$2, 0);
-            $$2.writeBytes($$1);
-         } else {
-            byte[] $$4 = new byte[$$3];
-            $$1.readBytes($$4);
-            xa.a($$2, $$4.length);
-            this.b.setInput($$4, 0, $$3);
-            this.b.finish();
+   protected int e() {
+      return this.c.size();
+   }
 
-            while (!this.b.finished()) {
-               int $$5 = this.b.deflate(this.a);
-               $$2.writeBytes(this.a, 0, $$5);
-            }
+   private void a(vu $$0) {
+      this.c.getLast().accept($$0);
+   }
 
-            this.b.reset();
-         }
+   @Override
+   public vr.b a() {
+      this.a(uz.b);
+      return vr.b.a;
+   }
+
+   @Override
+   public vr.b a(String $$0) {
+      this.a(vs.a($$0));
+      return vr.b.a;
+   }
+
+   @Override
+   public vr.b a(byte $$0) {
+      this.a(uv.a($$0));
+      return vr.b.a;
+   }
+
+   @Override
+   public vr.b a(short $$0) {
+      this.a(vp.a($$0));
+      return vr.b.a;
+   }
+
+   @Override
+   public vr.b a(int $$0) {
+      this.a(vc.a($$0));
+      return vr.b.a;
+   }
+
+   @Override
+   public vr.b a(long $$0) {
+      this.a(vf.a($$0));
+      return vr.b.a;
+   }
+
+   @Override
+   public vr.b a(float $$0) {
+      this.a(va.a($$0));
+      return vr.b.a;
+   }
+
+   @Override
+   public vr.b a(double $$0) {
+      this.a(uy.a($$0));
+      return vr.b.a;
+   }
+
+   @Override
+   public vr.b a(byte[] $$0) {
+      this.a(new uu($$0));
+      return vr.b.a;
+   }
+
+   @Override
+   public vr.b a(int[] $$0) {
+      this.a(new vb($$0));
+      return vr.b.a;
+   }
+
+   @Override
+   public vr.b a(long[] $$0) {
+      this.a(new ve($$0));
+      return vr.b.a;
+   }
+
+   @Override
+   public vr.b a(vw<?> $$0, int $$1) {
+      return vr.b.a;
+   }
+
+   @Override
+   public vr.a b(vw<?> $$0, int $$1) {
+      this.c($$0);
+      return vr.a.a;
+   }
+
+   @Override
+   public vr.a a(vw<?> $$0) {
+      return vr.a.a;
+   }
+
+   @Override
+   public vr.a a(vw<?> $$0, String $$1) {
+      this.a = $$1;
+      this.c($$0);
+      return vr.a.a;
+   }
+
+   private void c(vw<?> $$0) {
+      if ($$0 == vd.a) {
+         vd $$1 = new vd();
+         this.a($$1);
+         this.c.addLast($$1::add);
+      } else if ($$0 == ux.b) {
+         ux $$2 = new ux();
+         this.a($$2);
+         this.c.addLast($$1 -> $$2.a(this.a, $$1));
       }
    }
 
-   public int a() {
-      return this.c;
+   @Override
+   public vr.b b() {
+      this.c.removeLast();
+      return vr.b.a;
    }
 
-   public void a(int $$0) {
-      this.c = $$0;
+   @Override
+   public vr.b b(vw<?> $$0) {
+      if ($$0 == vd.a) {
+         vd $$1 = new vd();
+         this.b = $$1;
+         this.c.addLast($$1::add);
+      } else if ($$0 == ux.b) {
+         ux $$2 = new ux();
+         this.b = $$2;
+         this.c.addLast($$1 -> $$2.a(this.a, $$1));
+      } else {
+         this.c.addLast($$0x -> this.b = $$0x);
+      }
+
+      return vr.b.a;
    }
 }

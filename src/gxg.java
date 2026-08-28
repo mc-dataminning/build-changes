@@ -1,7 +1,6 @@
-public class gxg extends gwm {
-   public float a;
-   public float b;
+public class gxg extends gym {
+   public bux a = new bux();
+   public bux b = new bux();
    public boolean c;
-   public cvj d = cvj.a;
-   public int e;
+   public boolean d;
 }

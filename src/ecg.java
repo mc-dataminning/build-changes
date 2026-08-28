@@ -1,40 +1,43 @@
-public class ecg implements ebf {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private long h;
-   private final ebs i = new ebs(this);
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   public ecg(long $$0) {
-      this.b($$0);
+public class ecg<T extends ecl> {
+   private final T a;
+   @Nullable
+   private kj b;
+
+   public ecg(T $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public azu d() {
-      return new ecg(this.g());
+   public void a(ash $$0) {
+      this.c($$0);
    }
 
-   @Override
-   public ecd e() {
-      return new ebr.a(this.g());
+   public T a() {
+      return this.a;
    }
 
-   @Override
-   public void b(long $$0) {
-      this.h = ($$0 ^ 25214903917L) & 281474976710655L;
-      this.i.a();
+   public void b(ash $$0) {
+      a($$0, this.b, $$0x -> $$0x.b(this.a));
    }
 
-   @Override
-   public int c(int $$0) {
-      long $$1 = this.h * 25214903917L + 11L & 281474976710655L;
-      this.h = $$1;
-      return (int)($$1 >> 48 - $$0);
+   public void c(ash $$0) {
+      this.a.a().a($$0).map(kj::a).ifPresent($$1 -> {
+         if (this.b == null || !this.b.equals($$1)) {
+            a($$0, this.b, $$0xx -> $$0xx.b(this.a));
+            this.b = $$1;
+            a($$0, this.b, $$0xx -> $$0xx.a(this.a));
+         }
+      });
    }
 
-   @Override
-   public double k() {
-      return this.i.b();
+   private static void a(dhd $$0, @Nullable kj $$1, Consumer<ecm> $$2) {
+      if ($$1 != null) {
+         dzi $$3 = $$0.a($$1.a(), $$1.c(), eaj.n, false);
+         if ($$3 != null) {
+            $$2.accept($$3.a($$1.b()));
+         }
+      }
    }
 }

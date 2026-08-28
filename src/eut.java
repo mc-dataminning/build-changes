@@ -1,62 +1,26 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.Set;
+import javax.annotation.Nullable;
 
 public class eut {
-   private final azs a;
-   private final exh b;
-   private final Optional<jr.a> c;
-   private final Set<ali<?>> d;
+   @Nullable
+   public static eux a(dha $$0, @Nullable jm $$1, @Nullable jm $$2) {
+      if ($$0.J().b(csq.d)) {
+         eux $$3 = eux.a($$0.A).a(eux.a.a);
+         if ($$2 != null) {
+            $$3 = $$3.a($$2);
+         }
 
-   public eut(azs $$0, exh $$1, jr.a $$2) {
-      this($$0, $$1, Optional.of($$2), Set.of());
+         if ($$1 != null) {
+            $$3 = $$3.b($$1);
+         }
+
+         return $$3;
+      } else {
+         return null;
+      }
    }
 
-   public eut(azs $$0, exh $$1) {
-      this($$0, $$1, Optional.empty(), Set.of());
-   }
-
-   private eut(azs $$0, exh $$1, Optional<jr.a> $$2, Set<ali<?>> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   public eut a(String $$0) {
-      return new eut(this.a.a($$0), this.b, this.c, this.d);
-   }
-
-   public eut a(String $$0, ali<?> $$1) {
-      Set<ali<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
-      return new eut(this.a.a($$0), this.b, this.c, $$2);
-   }
-
-   public boolean a(ali<?> $$0) {
-      return this.d.contains($$0);
-   }
-
-   public void b(String $$0) {
-      this.a.b($$0);
-   }
-
-   public void a(euo $$0) {
-      this.b.a(this, $$0);
-   }
-
-   public jr.a a() {
-      return this.c.orElseThrow(() -> new UnsupportedOperationException("References not allowed"));
-   }
-
-   public boolean b() {
-      return this.c.isPresent();
-   }
-
-   public eut a(exh $$0) {
-      return new eut(this.a, $$0, this.c, this.d);
-   }
-
-   public azs c() {
-      return this.a;
+   @Nullable
+   public static eux a(@Nullable eux $$0, jm $$1) {
+      return $$0 == null ? null : $$0.b($$1);
    }
 }

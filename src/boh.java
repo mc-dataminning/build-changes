@@ -1,24 +1,44 @@
-import com.mojang.brigadier.StringReader;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonReader;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import java.io.Closeable;
+import java.io.EOFException;
+import java.io.IOException;
+import java.io.Reader;
+import javax.annotation.Nullable;
 
-public class boh extends bny<StringReader> {
-   private final StringReader a;
+public interface boh<T> extends Closeable {
+   static <T> boh<T> a(final Codec<T> $$0, Reader $$1) {
+      final JsonReader $$2 = new JsonReader($$1);
+      $$2.setLenient(true);
+      return new boh<T>() {
+         @Nullable
+         @Override
+         public T a() throws IOException {
+            try {
+               if (!$$2.hasNext()) {
+                  return null;
+               } else {
+                  JsonElement $$0 = JsonParser.parseReader($$2);
+                  return (T)$$0.parse(JsonOps.INSTANCE, $$0).getOrThrow(IOException::new);
+               }
+            } catch (JsonParseException var2) {
+               throw new IOException(var2);
+            } catch (EOFException var3) {
+               return null;
+            }
+         }
 
-   public boh(bnv<StringReader> $$0, bnw<StringReader> $$1, StringReader $$2) {
-      super($$0, $$1);
-      this.a = $$2;
+         @Override
+         public void close() throws IOException {
+            $$2.close();
+         }
+      };
    }
 
-   public StringReader d() {
-      return this.a;
-   }
-
-   @Override
-   public int c() {
-      return this.a.getCursor();
-   }
-
-   @Override
-   public void a(int $$0) {
-      this.a.setCursor($$0);
-   }
+   @Nullable
+   T a() throws IOException;
 }

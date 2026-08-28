@@ -8,9 +8,9 @@ public class bj extends dy<bj.a> {
       return bj.a.a;
    }
 
-   public void a(arq $$0, cmr $$1, cof $$2) {
-      eun $$3 = bw.b($$0, $$1);
-      eun $$4 = bw.b($$0, $$2);
+   public void a(asi $$0, cnl $$1, cpe $$2) {
+      ewh $$3 = bw.b($$0, $$1);
+      ewh $$4 = bw.b($$0, $$2);
       this.a($$0, $$2x -> $$2x.a($$3, $$4));
    }
 
@@ -28,7 +28,7 @@ public class bj extends dy<bj.a> {
          return ao.s.a(new bj.a(Optional.empty(), Optional.empty(), Optional.empty()));
       }
 
-      public boolean a(eun $$0, eun $$1) {
+      public boolean a(ewh $$0, ewh $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || this.d.get().a($$1);
       }
 

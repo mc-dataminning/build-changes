@@ -1,29 +1,101 @@
-import com.google.common.util.concurrent.RateLimiter;
-import java.time.Duration;
-import java.util.concurrent.atomic.AtomicReference;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.MulticastSocket;
+import java.net.SocketTimeoutException;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class hfr {
-   private final float a;
-   private final AtomicReference<hfr.a> b = new AtomicReference<>();
+   static final AtomicInteger a = new AtomicInteger(0);
+   static final Logger b = LogUtils.getLogger();
 
-   public hfr(Duration $$0) {
-      this.a = 1000.0F / (float)$$0.toMillis();
-   }
+   public static class a extends Thread {
+      private final hfr.b a;
+      private final InetAddress b;
+      private final MulticastSocket c;
 
-   public void a(fjv $$0, xj $$1) {
-      hfr.a $$2 = this.b.updateAndGet($$1x -> $$1x != null && $$1.equals($$1x.a) ? $$1x : new hfr.a($$1, RateLimiter.create((double)this.a)));
-      if ($$2.b.tryAcquire(1)) {
-         $$0.c($$1);
+      public a(hfr.b $$0) throws IOException {
+         super("LanServerDetector #" + hfr.a.incrementAndGet());
+         this.a = $$0;
+         this.setDaemon(true);
+         this.setUncaughtExceptionHandler(new r(hfr.b));
+         this.c = new MulticastSocket(4445);
+         this.b = InetAddress.getByName("224.0.2.60");
+         this.c.setSoTimeout(5000);
+         this.c.joinGroup(this.b);
+      }
+
+      @Override
+      public void run() {
+         byte[] $$0 = new byte[1024];
+
+         while (!this.isInterrupted()) {
+            DatagramPacket $$1 = new DatagramPacket($$0, $$0.length);
+
+            try {
+               this.c.receive($$1);
+            } catch (SocketTimeoutException var5) {
+               continue;
+            } catch (IOException var6) {
+               hfr.b.error("Couldn't ping server", var6);
+               break;
+            }
+
+            String $$4 = new String($$1.getData(), $$1.getOffset(), $$1.getLength(), StandardCharsets.UTF_8);
+            hfr.b.debug("{}: {}", $$1.getAddress(), $$4);
+            this.a.a($$4, $$1.getAddress());
+         }
+
+         try {
+            this.c.leaveGroup(this.b);
+         } catch (IOException var4) {
+         }
+
+         this.c.close();
       }
    }
 
-   static class a {
-      final xj a;
-      final RateLimiter b;
+   public static class b {
+      private final List<hfq> a = Lists.newArrayList();
+      private boolean b;
 
-      a(xj $$0, RateLimiter $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      @Nullable
+      public synchronized List<hfq> a() {
+         if (this.b) {
+            List<hfq> $$0 = List.copyOf(this.a);
+            this.b = false;
+            return $$0;
+         } else {
+            return null;
+         }
+      }
+
+      public synchronized void a(String $$0, InetAddress $$1) {
+         String $$2 = hfs.a($$0);
+         String $$3 = hfs.b($$0);
+         if ($$3 != null) {
+            $$3 = $$1.getHostAddress() + ":" + $$3;
+            boolean $$4 = false;
+
+            for (hfq $$5 : this.a) {
+               if ($$5.b().equals($$3)) {
+                  $$5.c();
+                  $$4 = true;
+                  break;
+               }
+            }
+
+            if (!$$4) {
+               this.a.add(new hfq($$2, $$3));
+               this.b = true;
+            }
+         }
       }
    }
 }

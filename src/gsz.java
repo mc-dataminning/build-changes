@@ -1,24 +1,30 @@
-public class gsz extends gty<gvn, fzh<gvn>> {
-   private final gkj a;
+public class gsz extends gsa<cof, gyy, gch> {
+   private static final alz b = alz.b("textures/entity/piglin/piglin.png");
+   private static final alz k = alz.b("textures/entity/piglin/piglin_brute.png");
+   public static final gvc.a a = new gvc.a(0.0F, 0.0F, 1.0019531F);
 
-   public gsz(grh<gvn, fzh<gvn>> $$0, gkj $$1) {
-      super($$0);
-      this.a = $$1;
+   public gsz(grj.a $$0, gef $$1, gef $$2, gef $$3, gef $$4, gef $$5, gef $$6) {
+      super($$0, new gch($$0.a($$1)), new gch($$0.a($$2)), 0.5F, a);
+      this.a(new gvn<>(this, new gbr($$0.a($$3)), new gbr($$0.a($$4)), new gbr($$0.a($$5)), new gbr($$0.a($$6)), $$0.h()));
    }
 
-   public void a(fer $$0, gjg $$1, int $$2, gvn $$3, float $$4, float $$5) {
-      dvv $$6 = $$3.b;
-      if ($$6 != null) {
-         $$0.a();
-         $$0.a(0.0F, 0.6875F, -0.75F);
-         $$0.a(a.b.rotationDegrees(20.0F));
-         $$0.a(a.d.rotationDegrees(45.0F));
-         $$0.a(0.25F, 0.1875F, 0.25F);
-         float $$7 = 0.5F;
-         $$0.b(-0.5F, -0.5F, 0.5F);
-         $$0.a(a.d.rotationDegrees(90.0F));
-         this.a.a($$6, $$0, $$1, $$2, gyv.d);
-         $$0.b();
-      }
+   public alz a(gyy $$0) {
+      return $$0.a ? k : b;
+   }
+
+   public gyy b() {
+      return new gyy();
+   }
+
+   public void a(cof $$0, gyy $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.aq() == bvm.aT;
+      $$1.d = $$0.gn();
+      $$1.c = (float)cwb.b($$0.fz(), $$0);
+      $$1.b = $$0.x();
+   }
+
+   protected boolean b(gyy $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

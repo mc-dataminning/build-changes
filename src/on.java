@@ -1,170 +1,43 @@
-import java.util.Optional;
-import java.util.stream.IntStream;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.function.Function;
 
-public class on {
-   public static final om a = a("cube", op.c, op.j, op.k, op.l, op.m, op.n, op.o);
-   public static final om b = a("cube_directional", op.c, op.j, op.k, op.l, op.m, op.n, op.o);
-   public static final om c = a("cube_all", op.a);
-   public static final om d = a("cube_all_inner_faces", op.a);
-   public static final om e = a("cube_mirrored_all", "_mirrored", op.a);
-   public static final om f = a("cube_north_west_mirrored_all", "_north_west_mirrored", op.a);
-   public static final om g = a("cube_column_uv_locked_x", "_x", op.d, op.i);
-   public static final om h = a("cube_column_uv_locked_y", "_y", op.d, op.i);
-   public static final om i = a("cube_column_uv_locked_z", "_z", op.d, op.i);
-   public static final om j = a("cube_column", op.d, op.i);
-   public static final om k = a("cube_column_horizontal", "_horizontal", op.d, op.i);
-   public static final om l = a("cube_column_mirrored", "_mirrored", op.d, op.i);
-   public static final om m = a("cube_top", op.f, op.i);
-   public static final om n = a("cube_bottom_top", op.f, op.e, op.i);
-   public static final om o = a("cube_bottom_top_inner_faces", op.f, op.e, op.i);
-   public static final om p = a("orientable", op.f, op.g, op.i);
-   public static final om q = a("orientable_with_bottom", op.f, op.e, op.i, op.g);
-   public static final om r = a("orientable_vertical", "_vertical", op.g, op.i);
-   public static final om s = a("button", op.b);
-   public static final om t = a("button_pressed", "_pressed", op.b);
-   public static final om u = a("button_inventory", "_inventory", op.b);
-   public static final om v = a("door_bottom_left", "_bottom_left", op.f, op.e);
-   public static final om w = a("door_bottom_left_open", "_bottom_left_open", op.f, op.e);
-   public static final om x = a("door_bottom_right", "_bottom_right", op.f, op.e);
-   public static final om y = a("door_bottom_right_open", "_bottom_right_open", op.f, op.e);
-   public static final om z = a("door_top_left", "_top_left", op.f, op.e);
-   public static final om A = a("door_top_left_open", "_top_left_open", op.f, op.e);
-   public static final om B = a("door_top_right", "_top_right", op.f, op.e);
-   public static final om C = a("door_top_right_open", "_top_right_open", op.f, op.e);
-   public static final om D = a("custom_fence_post", "_post", op.b, op.c);
-   public static final om E = a("custom_fence_side_north", "_side_north", op.b);
-   public static final om F = a("custom_fence_side_east", "_side_east", op.b);
-   public static final om G = a("custom_fence_side_south", "_side_south", op.b);
-   public static final om H = a("custom_fence_side_west", "_side_west", op.b);
-   public static final om I = a("custom_fence_inventory", "_inventory", op.b);
-   public static final om J = a("fence_post", "_post", op.b);
-   public static final om K = a("fence_side", "_side", op.b);
-   public static final om L = a("fence_inventory", "_inventory", op.b);
-   public static final om M = a("template_wall_post", "_post", op.r);
-   public static final om N = a("template_wall_side", "_side", op.r);
-   public static final om O = a("template_wall_side_tall", "_side_tall", op.r);
-   public static final om P = a("wall_inventory", "_inventory", op.r);
-   public static final om Q = a("template_custom_fence_gate", op.b, op.c);
-   public static final om R = a("template_custom_fence_gate_open", "_open", op.b, op.c);
-   public static final om S = a("template_custom_fence_gate_wall", "_wall", op.b, op.c);
-   public static final om T = a("template_custom_fence_gate_wall_open", "_wall_open", op.b, op.c);
-   public static final om U = a("template_fence_gate", op.b);
-   public static final om V = a("template_fence_gate_open", "_open", op.b);
-   public static final om W = a("template_fence_gate_wall", "_wall", op.b);
-   public static final om X = a("template_fence_gate_wall_open", "_wall_open", op.b);
-   public static final om Y = a("pressure_plate_up", op.b);
-   public static final om Z = a("pressure_plate_down", "_down", op.b);
-   public static final om aa = a(op.c);
-   public static final om ab = a("slab", op.e, op.f, op.i);
-   public static final om ac = a("slab_top", "_top", op.e, op.f, op.i);
-   public static final om ad = a("leaves", op.a);
-   public static final om ae = a("stairs", op.e, op.f, op.i);
-   public static final om af = a("inner_stairs", "_inner", op.e, op.f, op.i);
-   public static final om ag = a("outer_stairs", "_outer", op.e, op.f, op.i);
-   public static final om ah = a("template_trapdoor_top", "_top", op.b);
-   public static final om ai = a("template_trapdoor_bottom", "_bottom", op.b);
-   public static final om aj = a("template_trapdoor_open", "_open", op.b);
-   public static final om ak = a("template_orientable_trapdoor_top", "_top", op.b);
-   public static final om al = a("template_orientable_trapdoor_bottom", "_bottom", op.b);
-   public static final om am = a("template_orientable_trapdoor_open", "_open", op.b);
-   public static final om an = a("pointed_dripstone", op.p);
-   public static final om ao = a("cross", op.p);
-   public static final om ap = a("tinted_cross", op.p);
-   public static final om aq = a("flower_pot_cross", op.q);
-   public static final om ar = a("tinted_flower_pot_cross", op.q);
-   public static final om as = a("rail_flat", op.s);
-   public static final om at = a("rail_curved", "_corner", op.s);
-   public static final om au = a("template_rail_raised_ne", "_raised_ne", op.s);
-   public static final om av = a("template_rail_raised_sw", "_raised_sw", op.s);
-   public static final om aw = a("carpet", op.t);
-   public static final om ax = a("flowerbed_1", "_1", op.P, op.y);
-   public static final om ay = a("flowerbed_2", "_2", op.P, op.y);
-   public static final om az = a("flowerbed_3", "_3", op.P, op.y);
-   public static final om aA = a("flowerbed_4", "_4", op.P, op.y);
-   public static final om aB = a("coral_fan", op.x);
-   public static final om aC = a("coral_wall_fan", op.x);
-   public static final om aD = a("template_glazed_terracotta", op.u);
-   public static final om aE = a("template_chorus_flower", op.b);
-   public static final om aF = a("template_daylight_detector", op.f, op.i);
-   public static final om aG = a("template_glass_pane_noside", "_noside", op.v);
-   public static final om aH = a("template_glass_pane_noside_alt", "_noside_alt", op.v);
-   public static final om aI = a("template_glass_pane_post", "_post", op.v, op.w);
-   public static final om aJ = a("template_glass_pane_side", "_side", op.v, op.w);
-   public static final om aK = a("template_glass_pane_side_alt", "_side_alt", op.v, op.w);
-   public static final om aL = a("template_command_block", op.g, op.h, op.i);
-   public static final om aM = a("template_chiseled_bookshelf_slot_top_left", "_slot_top_left", op.b);
-   public static final om aN = a("template_chiseled_bookshelf_slot_top_mid", "_slot_top_mid", op.b);
-   public static final om aO = a("template_chiseled_bookshelf_slot_top_right", "_slot_top_right", op.b);
-   public static final om aP = a("template_chiseled_bookshelf_slot_bottom_left", "_slot_bottom_left", op.b);
-   public static final om aQ = a("template_chiseled_bookshelf_slot_bottom_mid", "_slot_bottom_mid", op.b);
-   public static final om aR = a("template_chiseled_bookshelf_slot_bottom_right", "_slot_bottom_right", op.b);
-   public static final om aS = a("template_anvil", op.f);
-   public static final om[] aT = IntStream.range(0, 8).mapToObj($$0 -> a("stem_growth" + $$0, "_stage" + $$0, op.y)).toArray(om[]::new);
-   public static final om aU = a("stem_fruit", op.y, op.z);
-   public static final om aV = a("crop", op.A);
-   public static final om aW = a("template_farmland", op.B, op.f);
-   public static final om aX = a("template_fire_floor", op.C);
-   public static final om aY = a("template_fire_side", op.C);
-   public static final om aZ = a("template_fire_side_alt", op.C);
-   public static final om ba = a("template_fire_up", op.C);
-   public static final om bb = a("template_fire_up_alt", op.C);
-   public static final om bc = a("template_campfire", op.C, op.K);
-   public static final om bd = a("template_lantern", op.D);
-   public static final om be = a("template_hanging_lantern", "_hanging", op.D);
-   public static final om bf = a("template_torch", op.G);
-   public static final om bg = a("template_torch_unlit", op.G);
-   public static final om bh = a("template_torch_wall", op.G);
-   public static final om bi = a("template_torch_wall_unlit", op.G);
-   public static final om bj = a("template_redstone_torch", op.G);
-   public static final om bk = a("template_redstone_torch_wall", op.G);
-   public static final om bl = a("template_piston", op.E, op.e, op.i);
-   public static final om bm = a("template_piston_head", op.E, op.i, op.F);
-   public static final om bn = a("template_piston_head_short", op.E, op.i, op.F);
-   public static final om bo = a("template_seagrass", op.b);
-   public static final om bp = a("template_turtle_egg", op.a);
-   public static final om bq = a("template_two_turtle_eggs", op.a);
-   public static final om br = a("template_three_turtle_eggs", op.a);
-   public static final om bs = a("template_four_turtle_eggs", op.a);
-   public static final om bt = a("template_single_face", op.b);
-   public static final om bu = a("template_cauldron_level1", op.N, op.M, op.c, op.f, op.e, op.i);
-   public static final om bv = a("template_cauldron_level2", op.N, op.M, op.c, op.f, op.e, op.i);
-   public static final om bw = a("template_cauldron_full", op.N, op.M, op.c, op.f, op.e, op.i);
-   public static final om bx = a("template_azalea", op.f, op.i);
-   public static final om by = a("template_potted_azalea_bush", op.q, op.f, op.i);
-   public static final om bz = a("template_potted_azalea_bush", op.q, op.f, op.i);
-   public static final om bA = a("sniffer_egg", op.f, op.e, op.j, op.k, op.l, op.m);
-   public static final om bB = b("generated", op.H);
-   public static final om bC = b("template_music_disc", op.H);
-   public static final om bD = b("handheld", op.H);
-   public static final om bE = b("handheld_rod", op.H);
-   public static final om bF = b("generated", op.H, op.I);
-   public static final om bG = b("generated", op.H, op.I, op.J);
-   public static final om bH = b("template_shulker_box", op.c);
-   public static final om bI = b("template_bed", op.c);
-   public static final om bJ = b("template_banner");
-   public static final om bK = b("template_skull");
-   public static final om bL = a("template_candle", op.a, op.c);
-   public static final om bM = a("template_two_candles", op.a, op.c);
-   public static final om bN = a("template_three_candles", op.a, op.c);
-   public static final om bO = a("template_four_candles", op.a, op.c);
-   public static final om bP = a("template_cake_with_candle", op.L, op.e, op.i, op.f, op.c);
-   public static final om bQ = a("template_sculk_shrieker", op.e, op.i, op.f, op.c, op.O);
-   public static final om bR = a("template_vault", op.f, op.e, op.i, op.g);
-   public static final om bS = b("handheld_mace", op.H);
+public class on<T> {
+   final String a;
+   final Function<T, JsonElement> b;
 
-   private static om a(op... $$0) {
-      return new om(Optional.empty(), Optional.empty(), $$0);
+   public on(String $$0, Function<T, JsonElement> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   private static om a(String $$0, op... $$1) {
-      return new om(Optional.of(alj.b("block/" + $$0)), Optional.empty(), $$1);
+   public on<T>.a a(T $$0) {
+      return new on.a($$0);
    }
 
-   private static om b(String $$0, op... $$1) {
-      return new om(Optional.of(alj.b("item/" + $$0)), Optional.empty(), $$1);
+   @Override
+   public String toString() {
+      return this.a;
    }
 
-   private static om a(String $$0, String $$1, op... $$2) {
-      return new om(Optional.of(alj.b("block/" + $$0)), Optional.of($$1), $$2);
+   public class a {
+      private final T b;
+
+      public a(final T $$1) {
+         this.b = $$1;
+      }
+
+      public on<T> a() {
+         return on.this;
+      }
+
+      public void a(JsonObject $$0) {
+         $$0.add(on.this.a, on.this.b.apply(this.b));
+      }
+
+      @Override
+      public String toString() {
+         return on.this.a + "=" + this.b;
+      }
    }
 }

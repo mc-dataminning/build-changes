@@ -1,24 +1,37 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gtn extends gsp<cnb, gzk, gdd> {
+   public static final alz a = alz.b("textures/entity/slime/slime.png");
 
-public class gtn extends gty<gwd, fzu> {
-   private static final Map<cjg, alj> a = ae.a(Maps.newEnumMap(cjg.class), $$0 -> {
-      $$0.put(cjg.a, null);
-      $$0.put(cjg.b, alj.b("textures/entity/horse/horse_markings_white.png"));
-      $$0.put(cjg.c, alj.b("textures/entity/horse/horse_markings_whitefield.png"));
-      $$0.put(cjg.d, alj.b("textures/entity/horse/horse_markings_whitedots.png"));
-      $$0.put(cjg.e, alj.b("textures/entity/horse/horse_markings_blackdots.png"));
-   });
-
-   public gtn(grh<gwd, fzu> $$0) {
-      super($$0);
+   public gtn(grj.a $$0) {
+      super($$0, new gdd($$0.a(geg.cL)), 0.25F);
+      this.a(new gwc(this, $$0.f()));
    }
 
-   public void a(fer $$0, gjg $$1, int $$2, gwd $$3, float $$4, float $$5) {
-      alj $$6 = a.get($$3.h);
-      if ($$6 != null && !$$3.u) {
-         fev $$7 = $$1.getBuffer(gjq.i($$6));
-         this.d().a($$0, $$7, $$2, gql.a($$3, 0.0F));
-      }
+   public void a(gzk $$0, fgl $$1, gle $$2, int $$3) {
+      this.f = 0.25F * (float)$$0.b;
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected void a(gzk $$0, fgl $$1) {
+      float $$2 = 0.999F;
+      $$1.b(0.999F, 0.999F, 0.999F);
+      $$1.a(0.0F, 0.001F, 0.0F);
+      float $$3 = (float)$$0.b;
+      float $$4 = $$0.a / ($$3 * 0.5F + 1.0F);
+      float $$5 = 1.0F / ($$4 + 1.0F);
+      $$1.b($$5 * $$3, 1.0F / $$5 * $$3, $$5 * $$3);
+   }
+
+   public alz a(gzk $$0) {
+      return a;
+   }
+
+   public gzk b() {
+      return new gzk();
+   }
+
+   public void a(cnb $$0, gzk $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = bae.h($$2, $$0.bZ, $$0.bY);
+      $$1.b = $$0.gm();
    }
 }

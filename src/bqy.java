@@ -1,130 +1,79 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.concurrent.Executor;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.atomic.AtomicReference;
-import org.slf4j.Logger;
+import java.util.Map;
+import java.util.Objects;
+import java.util.WeakHashMap;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public abstract class bqy<T extends Runnable> implements bqg, brf<T>, Runnable {
-   private static final Logger a = LogUtils.getLogger();
-   private final AtomicReference<bqy.a> b = new AtomicReference<>(bqy.a.a);
-   private final bre<T> c;
-   private final Executor d;
-   private final String e;
+public class bqy {
+   public static final bqy a = new bqy();
+   private final WeakHashMap<bra, Void> b = new WeakHashMap<>();
 
-   public bqy(bre<T> $$0, Executor $$1, String $$2) {
-      this.d = $$1;
-      this.c = $$0;
-      this.e = $$2;
-      bqe.a.a(this);
+   private bqy() {
    }
 
-   private boolean e() {
-      return !this.k() && !this.c.b();
+   public void a(bra $$0) {
+      this.b.put($$0, null);
    }
 
-   @Override
-   public void close() {
-      this.b.set(bqy.a.c);
+   public List<bqx> a() {
+      Map<String, List<bqx>> $$0 = this.b.keySet().stream().flatMap($$0x -> $$0x.bw().stream()).collect(Collectors.groupingBy(bqx::d));
+      return a($$0);
    }
 
-   private boolean f() {
-      if (!this.j()) {
-         return false;
-      } else {
-         Runnable $$0 = this.c.a();
-         if ($$0 == null) {
+   private static List<bqx> a(Map<String, List<bqx>> $$0) {
+      return $$0.entrySet().stream().map($$0x -> {
+         String $$1 = (String)$$0x.getKey();
+         List<bqx> $$2 = (List<bqx>)$$0x.getValue();
+         return (bqx)($$2.size() > 1 ? new bqy.a($$1, $$2) : $$2.get(0));
+      }).collect(Collectors.toList());
+   }
+
+   static class a extends bqx {
+      private final List<bqx> b;
+
+      a(String $$0, List<bqx> $$1) {
+         super($$0, $$1.get(0).e(), () -> c($$1), () -> b($$1), a($$1));
+         this.b = $$1;
+      }
+
+      private static bqx.c a(List<bqx> $$0) {
+         return $$1 -> $$0.stream().anyMatch($$1x -> $$1x.a != null ? $$1x.a.test($$1) : false);
+      }
+
+      private static void b(List<bqx> $$0) {
+         for (bqx $$1 : $$0) {
+            $$1.a();
+         }
+      }
+
+      private static double c(List<bqx> $$0) {
+         double $$1 = 0.0;
+
+         for (bqx $$2 : $$0) {
+            $$1 += $$2.c().getAsDouble();
+         }
+
+         return $$1 / (double)$$0.size();
+      }
+
+      @Override
+      public boolean equals(@Nullable Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 == null || this.getClass() != $$0.getClass()) {
+            return false;
+         } else if (!super.equals($$0)) {
             return false;
          } else {
-            ae.a($$0, this.e);
-            return true;
+            bqy.a $$1 = (bqy.a)$$0;
+            return this.b.equals($$1.b);
          }
       }
-   }
 
-   @Override
-   public void run() {
-      try {
-         this.f();
-      } finally {
-         this.i();
-         this.g();
+      @Override
+      public int hashCode() {
+         return Objects.hash(super.hashCode(), this.b);
       }
-   }
-
-   public void a() {
-      try {
-         while (this.f()) {
-         }
-      } finally {
-         this.i();
-         this.g();
-      }
-   }
-
-   @Override
-   public void a_(T $$0) {
-      this.c.a($$0);
-      this.g();
-   }
-
-   private void g() {
-      if (this.e() && this.h()) {
-         try {
-            this.d.execute(this);
-         } catch (RejectedExecutionException var4) {
-            try {
-               this.d.execute(this);
-            } catch (RejectedExecutionException var3) {
-               a.error("Could not schedule ConsecutiveExecutor", var3);
-            }
-         }
-      }
-   }
-
-   public int b() {
-      return this.c.c();
-   }
-
-   public boolean c() {
-      return this.j() && !this.c.b();
-   }
-
-   @Override
-   public String toString() {
-      return this.e + " " + this.b.get() + " " + this.c.b();
-   }
-
-   @Override
-   public String z_() {
-      return this.e;
-   }
-
-   @Override
-   public List<bqd> bw() {
-      return ImmutableList.of(bqd.a(this.e + "-queue-size", bqc.c, this::b));
-   }
-
-   private boolean h() {
-      return this.b.compareAndSet(bqy.a.a, bqy.a.b);
-   }
-
-   private void i() {
-      this.b.compareAndSet(bqy.a.b, bqy.a.a);
-   }
-
-   private boolean j() {
-      return this.b.get() == bqy.a.b;
-   }
-
-   private boolean k() {
-      return this.b.get() == bqy.a.c;
-   }
-
-   static enum a {
-      a,
-      b,
-      c;
    }
 }

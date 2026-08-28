@@ -1,54 +1,75 @@
-import com.google.common.collect.Lists;
-import java.io.IOException;
-import java.io.Writer;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringEscapeUtils;
 
 public class aym {
-   private static final String a = "\r\n";
-   private static final String b = ",";
-   private final Writer c;
-   private final int d;
-
-   aym(Writer $$0, List<String> $$1) throws IOException {
-      this.c = $$0;
-      this.d = $$1.size();
-      this.a($$1.stream());
+   public static Map<aly<? extends kd<?>>, aym.a> a(jx<ami> $$0) {
+      return kh.b($$0)
+         .map($$0x -> Pair.of($$0x.a(), a($$0x.b())))
+         .filter($$0x -> !((aym.a)$$0x.getSecond()).a())
+         .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
    }
 
-   public static aym.a a() {
-      return new aym.a();
+   private static <T> aym.a a(kd<T> $$0) {
+      Map<alz, IntList> $$1 = new HashMap<>();
+      $$0.l().forEach($$2 -> {
+         IntList $$3 = new IntArrayList($$2.b());
+
+         for (jq<T> $$4 : $$2) {
+            if ($$4.f() != jq.b.a) {
+               throw new IllegalStateException("Can't serialize unregistered value " + $$4);
+            }
+
+            $$3.add($$0.a($$4.a()));
+         }
+
+         $$1.put($$2.h().b(), $$3);
+      });
+      return new aym.a($$1);
    }
 
-   public void a(Object... $$0) throws IOException {
-      if ($$0.length != this.d) {
-         throw new IllegalArgumentException("Invalid number of columns, expected " + this.d + ", but got " + $$0.length);
-      } else {
-         this.a(Stream.of($$0));
+   static <T> ayl.c<T> a(kd<T> $$0, aym.a $$1) {
+      aly<? extends kd<T>> $$2 = $$0.g();
+      Map<ayk<T>, List<jq<T>>> $$3 = new HashMap<>();
+      $$1.b.forEach(($$3x, $$4) -> {
+         ayk<T> $$5 = ayk.a($$2, $$3x);
+         List<jq<T>> $$6 = $$4.intStream().mapToObj($$0::c).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
+         $$3.put($$5, $$6);
+      });
+      return new ayl.c<>($$2, $$3);
+   }
+
+   public static final class a {
+      public static final aym.a a = new aym.a(Map.of());
+      final Map<alz, IntList> b;
+
+      a(Map<alz, IntList> $$0) {
+         this.b = $$0;
       }
-   }
 
-   private void a(Stream<?> $$0) throws IOException {
-      this.c.write($$0.<CharSequence>map(aym::a).collect(Collectors.joining(",")) + "\r\n");
-   }
-
-   private static String a(@Nullable Object $$0) {
-      return StringEscapeUtils.escapeCsv($$0 != null ? $$0.toString() : "[null]");
-   }
-
-   public static class a {
-      private final List<String> a = Lists.newArrayList();
-
-      public aym.a a(String $$0) {
-         this.a.add($$0);
-         return this;
+      public void a(ws $$0) {
+         $$0.a(this.b, ws::a, ws::a);
       }
 
-      public aym a(Writer $$0) throws IOException {
-         return new aym($$0, this.a);
+      public static aym.a b(ws $$0) {
+         return new aym.a($$0.a(ws::q, ws::a));
+      }
+
+      public boolean a() {
+         return this.b.isEmpty();
+      }
+
+      public int b() {
+         return this.b.size();
+      }
+
+      public <T> ayl.c<T> a(kd<T> $$0) {
+         return aym.a($$0, this);
       }
    }
 }

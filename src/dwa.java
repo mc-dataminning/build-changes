@@ -1,174 +1,200 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.MoreObjects;
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import java.util.function.Predicate;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.OptionalInt;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dwa {
-   private final Predicate<dvz>[][][] a;
-   private final int b;
-   private final int c;
-   private final int d;
+public class dwa extends dup implements ecl.b<ecs.b>, ecs {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 10;
+   private static final int c = 20;
+   private static final int d = 5;
+   private static final int h = 6;
+   private static final int i = 40;
+   private static final int j = 90;
+   private static final Int2ObjectMap<axe> k = ae.a(new Int2ObjectOpenHashMap(), $$0 -> {
+      $$0.put(1, axf.Cp);
+      $$0.put(2, axf.Cq);
+      $$0.put(3, axf.Cr);
+      $$0.put(4, axf.Co);
+   });
+   private int l;
+   private final ecs.d m = new dwa.a();
+   private ecs.a n = new ecs.a();
+   private final ecs.b r = new ecs.b(this);
 
-   public dwa(Predicate<dvz>[][][] $$0) {
-      this.a = $$0;
-      this.b = $$0.length;
-      if (this.b > 0) {
-         this.c = $$0[0].length;
-         if (this.c > 0) {
-            this.d = $$0[0][0].length;
-         } else {
-            this.d = 0;
-         }
-      } else {
-         this.c = 0;
-         this.d = 0;
+   public dwa(jh $$0, dxn $$1) {
+      super(dur.M, $$0, $$1);
+   }
+
+   @Override
+   public ecs.a gn() {
+      return this.n;
+   }
+
+   @Override
+   public ecs.d go() {
+      return this.m;
+   }
+
+   @Override
+   protected void a(ux $$0, js.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.b("warning_level", 99)) {
+         this.l = $$0.h("warning_level");
+      }
+
+      alx<vu> $$2 = $$1.a(vl.a);
+      if ($$0.b("listener", 10)) {
+         ecs.a.a
+            .parse($$2, $$0.p("listener"))
+            .resultOrPartial($$0x -> a.error("Failed to parse vibration listener for Sculk Shrieker: '{}'", $$0x))
+            .ifPresent($$0x -> this.n = $$0x);
       }
    }
 
-   public int a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   @VisibleForTesting
-   public Predicate<dvz>[][][] d() {
-      return this.a;
+   @Override
+   protected void b(ux $$0, js.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("warning_level", this.l);
+      alx<vu> $$2 = $$1.a(vl.a);
+      ecs.a.a
+         .encodeStart($$2, this.n)
+         .resultOrPartial($$0x -> a.error("Failed to encode vibration listener for Sculk Shrieker: '{}'", $$0x))
+         .ifPresent($$1x -> $$0.a("listener", $$1x));
    }
 
    @Nullable
-   @VisibleForTesting
-   public dwa.b a(dfp $$0, jh $$1, jm $$2, jm $$3) {
-      LoadingCache<jh, dvz> $$4 = a($$0, false);
-      return this.a($$1, $$2, $$3, $$4);
+   public static asi a(@Nullable bvf $$0) {
+      if ($$0 instanceof asi) {
+         return (asi)$$0;
+      } else {
+         if ($$0 != null) {
+            bwb $$6 = $$0.cX();
+            if ($$6 instanceof asi) {
+               return (asi)$$6;
+            }
+         }
+
+         if ($$0 instanceof cql $$3) {
+            bvf var3 = $$3.p();
+            if (var3 instanceof asi) {
+               return (asi)var3;
+            }
+         }
+
+         if ($$0 instanceof clw $$5) {
+            bvf var9 = $$5.p();
+            if (var9 instanceof asi) {
+               return (asi)var9;
+            }
+         }
+
+         return null;
+      }
    }
 
-   @Nullable
-   private dwa.b a(jh $$0, jm $$1, jm $$2, LoadingCache<jh, dvz> $$3) {
-      for (int $$4 = 0; $$4 < this.d; $$4++) {
-         for (int $$5 = 0; $$5 < this.c; $$5++) {
-            for (int $$6 = 0; $$6 < this.b; $$6++) {
-               if (!this.a[$$6][$$5][$$4].test((dvz)$$3.getUnchecked(a($$0, $$1, $$2, $$4, $$5, $$6)))) {
-                  return null;
-               }
+   public void a(ash $$0, @Nullable asi $$1) {
+      if ($$1 != null) {
+         dxn $$2 = this.m();
+         if (!$$2.c(drb.b)) {
+            this.l = 0;
+            if (!this.b($$0) || this.b($$0, $$1)) {
+               this.a($$0, (bvf)$$1);
             }
          }
       }
-
-      return new dwa.b($$0, $$1, $$2, $$3, this.d, this.c, this.b);
    }
 
-   @Nullable
-   public dwa.b a(dfp $$0, jh $$1) {
-      LoadingCache<jh, dvz> $$2 = a($$0, false);
-      int $$3 = Math.max(Math.max(this.d, this.c), this.b);
+   private boolean b(ash $$0, asi $$1) {
+      OptionalInt $$2 = cox.a($$0, this.aB_(), $$1);
+      $$2.ifPresent($$0x -> this.l = $$0x);
+      return $$2.isPresent();
+   }
 
-      for (jh $$4 : jh.c($$1, $$1.b($$3 - 1, $$3 - 1, $$3 - 1))) {
-         for (jm $$5 : jm.values()) {
-            for (jm $$6 : jm.values()) {
-               if ($$6 != $$5 && $$6 != $$5.g()) {
-                  dwa.b $$7 = this.a($$4, $$5, $$6, $$2);
-                  if ($$7 != null) {
-                     return $$7;
-                  }
-               }
-            }
+   private void a(ash $$0, @Nullable bvf $$1) {
+      jh $$2 = this.aB_();
+      dxn $$3 = this.m();
+      $$0.a($$2, $$3.b(drb.b, Boolean.valueOf(true)), 2);
+      $$0.a($$2, $$3.b(), 90);
+      $$0.c(3007, $$2, 0);
+      $$0.a(ecj.N, $$2, ecj.a.a($$1));
+   }
+
+   private boolean b(ash $$0) {
+      return this.m().c(drb.d) && $$0.al() != btb.a && $$0.N().b(dgw.M);
+   }
+
+   public void a(ash $$0) {
+      if (this.b($$0) && this.l > 0) {
+         if (!this.c($$0)) {
+            this.b((dha)$$0);
          }
-      }
 
-      return null;
-   }
-
-   public static LoadingCache<jh, dvz> a(dfp $$0, boolean $$1) {
-      return CacheBuilder.newBuilder().build(new dwa.a($$0, $$1));
-   }
-
-   protected static jh a(jh $$0, jm $$1, jm $$2, int $$3, int $$4, int $$5) {
-      if ($$1 != $$2 && $$1 != $$2.g()) {
-         kl $$6 = new kl($$1.j(), $$1.k(), $$1.l());
-         kl $$7 = new kl($$2.j(), $$2.k(), $$2.l());
-         kl $$8 = $$6.d($$7);
-         return $$0.b(
-            $$7.u() * -$$4 + $$8.u() * $$3 + $$6.u() * $$5, $$7.v() * -$$4 + $$8.v() * $$3 + $$6.v() * $$5, $$7.w() * -$$4 + $$8.w() * $$3 + $$6.w() * $$5
-         );
-      } else {
-         throw new IllegalArgumentException("Invalid forwards & up combination");
+         cov.a($$0, fbs.b(this.aB_()), null, 40);
       }
    }
 
-   static class a extends CacheLoader<jh, dvz> {
-      private final dfp a;
-      private final boolean b;
-
-      public a(dfp $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public dvz a(jh $$0) {
-         return new dvz(this.a, $$0, this.b);
+   private void b(dha $$0) {
+      axe $$1 = (axe)k.get(this.l);
+      if ($$1 != null) {
+         jh $$2 = this.aB_();
+         int $$3 = $$2.u() + bae.b($$0.A, -10, 10);
+         int $$4 = $$2.v() + bae.b($$0.A, -10, 10);
+         int $$5 = $$2.w() + bae.b($$0.A, -10, 10);
+         $$0.a(null, (double)$$3, (double)$$4, (double)$$5, $$1, axg.f, 5.0F, 1.0F);
       }
    }
 
-   public static class b {
-      private final jh a;
-      private final jm b;
-      private final jm c;
-      private final LoadingCache<jh, dvz> d;
-      private final int e;
-      private final int f;
-      private final int g;
+   private boolean c(ash $$0) {
+      return this.l < 4 ? false : bax.a(bvm.bG, bvl.k, $$0, this.aB_(), 20, 5, 6, bax.a.b).isPresent();
+   }
 
-      public b(jh $$0, jm $$1, jm $$2, LoadingCache<jh, dvz> $$3, int $$4, int $$5, int $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-      }
+   public ecs.b b() {
+      return this.r;
+   }
 
-      public jh a() {
-         return this.a;
-      }
+   class a implements ecs.d {
+      private static final int b = 8;
+      private final ecn c = new ecf(dwa.this.p);
 
-      public jm b() {
-         return this.b;
-      }
-
-      public jm c() {
-         return this.c;
-      }
-
-      public int d() {
-         return this.e;
-      }
-
-      public int e() {
-         return this.f;
-      }
-
-      public int f() {
-         return this.g;
-      }
-
-      public dvz a(int $$0, int $$1, int $$2) {
-         return (dvz)this.d.getUnchecked(dwa.a(this.a, this.b(), this.c(), $$0, $$1, $$2));
+      public a() {
       }
 
       @Override
-      public String toString() {
-         return MoreObjects.toStringHelper(this).add("up", this.c).add("forwards", this.b).add("frontTopLeft", this.a).toString();
+      public int a() {
+         return 8;
+      }
+
+      @Override
+      public ecn b() {
+         return this.c;
+      }
+
+      @Override
+      public ayk<ecj> c() {
+         return ayb.c;
+      }
+
+      @Override
+      public boolean a(ash $$0, jh $$1, jq<ecj> $$2, ecj.a $$3) {
+         return !dwa.this.m().c(drb.b) && dwa.a($$3.a()) != null;
+      }
+
+      @Override
+      public void a(ash $$0, jh $$1, jq<ecj> $$2, @Nullable bvf $$3, @Nullable bvf $$4, float $$5) {
+         dwa.this.a($$0, dwa.a($$4 != null ? $$4 : $$3));
+      }
+
+      @Override
+      public void e() {
+         dwa.this.e();
+      }
+
+      @Override
+      public boolean f() {
+         return true;
       }
    }
 }

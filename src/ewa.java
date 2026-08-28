@@ -1,80 +1,69 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Locale;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public abstract class ewa implements ewb {
-   protected final List<exy> g;
-   private final Predicate<eun> a;
+public interface ewa extends ewc {
+   @Override
+   String e();
 
-   protected ewa(List<exy> $$0) {
-      this.g = $$0;
-      this.a = ae.a($$0);
-   }
+   void a(boolean var1);
+
+   int j();
+
+   void c(int var1);
+
+   void b(int var1);
+
+   int h();
 
    @Override
-   public abstract ewc<? extends ewa> b();
-
-   protected static <T extends ewa> P1<Mu<T>, List<exy>> a(Instance<T> $$0) {
-      return $$0.group(exy.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.g));
+   default void a(p $$0, dhc $$1) {
+      ewc.super.a($$0, $$1);
+      $$0.a("Level name", this::e);
+      $$0.a(
+         "Level game mode",
+         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
+      );
+      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
    }
 
-   public final cwm b(cwm $$0, eun $$1) {
-      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
-   }
+   int f();
 
-   protected abstract cwm a(cwm var1, eun var2);
+   void a(int var1);
 
-   @Override
-   public void a(eut $$0) {
-      ewb.super.a($$0);
+   int t();
 
-      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
-         this.g.get($$1).a($$0.a(".conditions[" + $$1 + "]"));
-      }
-   }
+   void d(int var1);
 
-   protected static ewa.a<?> a(Function<List<exy>, ewb> $$0) {
-      return new ewa.b($$0);
-   }
+   int u();
 
-   public abstract static class a<T extends ewa.a<T>> implements ewb.a, exq<T> {
-      private final Builder<exy> a = ImmutableList.builder();
+   void e(int var1);
 
-      public T a(exy.a $$0) {
-         this.a.add($$0.build());
-         return this.c();
-      }
+   @Nullable
+   UUID v();
 
-      public final T f() {
-         return this.c();
-      }
+   void a(UUID var1);
 
-      protected abstract T c();
+   dgx k();
 
-      protected List<exy> g() {
-         return this.a.build();
-      }
-   }
+   void a(dzd.c var1);
 
-   static final class b extends ewa.a<ewa.b> {
-      private final Function<List<exy>, ewb> a;
+   dzd.c p();
 
-      public b(Function<List<exy>, ewb> $$0) {
-         this.a = $$0;
-      }
+   boolean n();
 
-      protected ewa.b a() {
-         return this;
-      }
+   void c(boolean var1);
 
-      @Override
-      public ewb b() {
-         return this.a.apply(this.g());
-      }
-   }
+   boolean m();
+
+   void a(dgx var1);
+
+   fbf<MinecraftServer> s();
+
+   void a(long var1);
+
+   void b(long var1);
+
+   dgw o();
 }

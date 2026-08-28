@@ -1,67 +1,192 @@
-import java.util.Locale;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import com.mojang.serialization.RecordBuilder.AbstractUniversalBuilder;
+import java.nio.ByteBuffer;
+import java.util.List;
+import java.util.Map;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
-public class bag<T> {
-   private final int a;
-   private final int b;
-   private final int c;
-   private final int d;
-   private final Object[] e;
+public class bag implements DynamicOps<bbk> {
+   public static final bag a = new bag();
 
-   public static <T> bag<T> a(int $$0, int $$1, int $$2, bag.a<T> $$3) {
-      int $$4 = $$0 - $$2;
-      int $$5 = $$1 - $$2;
-      int $$6 = 2 * $$2 + 1;
-      return new bag<>($$4, $$5, $$6, $$6, $$3);
+   private bag() {
    }
 
-   private bag(int $$0, int $$1, int $$2, int $$3, bag.a<T> $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = new Object[this.c * this.d];
-
-      for (int $$5 = $$0; $$5 < $$0 + $$2; $$5++) {
-         for (int $$6 = $$1; $$6 < $$1 + $$3; $$6++) {
-            this.e[this.c($$5, $$6)] = $$4.get($$5, $$6);
-         }
-      }
+   public <U> U a(DynamicOps<U> $$0, bbk $$1) {
+      return (U)$$0.empty();
    }
 
-   public void a(Consumer<T> $$0) {
-      for (Object $$1 : this.e) {
-         $$0.accept((T)$$1);
-      }
+   public bbk a() {
+      return bbk.a;
    }
 
-   public T a(int $$0, int $$1) {
-      if (!this.b($$0, $$1)) {
-         throw new IllegalArgumentException("Requested out of range value (" + $$0 + "," + $$1 + ") from " + this);
-      } else {
-         return (T)this.e[this.c($$0, $$1)];
-      }
+   public bbk b() {
+      return bbk.a;
    }
 
-   public boolean b(int $$0, int $$1) {
-      int $$2 = $$0 - this.a;
-      int $$3 = $$1 - this.b;
-      return $$2 >= 0 && $$2 < this.c && $$3 >= 0 && $$3 < this.d;
+   public bbk c() {
+      return bbk.a;
+   }
+
+   public bbk a(Number $$0) {
+      return bbk.a;
+   }
+
+   public bbk a(byte $$0) {
+      return bbk.a;
+   }
+
+   public bbk a(short $$0) {
+      return bbk.a;
+   }
+
+   public bbk a(int $$0) {
+      return bbk.a;
+   }
+
+   public bbk a(long $$0) {
+      return bbk.a;
+   }
+
+   public bbk a(float $$0) {
+      return bbk.a;
+   }
+
+   public bbk a(double $$0) {
+      return bbk.a;
+   }
+
+   public bbk a(boolean $$0) {
+      return bbk.a;
+   }
+
+   public bbk a(String $$0) {
+      return bbk.a;
+   }
+
+   public DataResult<Number> a(bbk $$0) {
+      return DataResult.error(() -> "Not a number");
+   }
+
+   public DataResult<Boolean> b(bbk $$0) {
+      return DataResult.error(() -> "Not a boolean");
+   }
+
+   public DataResult<String> c(bbk $$0) {
+      return DataResult.error(() -> "Not a string");
+   }
+
+   public DataResult<bbk> a(bbk $$0, bbk $$1) {
+      return DataResult.success(bbk.a);
+   }
+
+   public DataResult<bbk> a(bbk $$0, List<bbk> $$1) {
+      return DataResult.success(bbk.a);
+   }
+
+   public DataResult<bbk> a(bbk $$0, bbk $$1, bbk $$2) {
+      return DataResult.success(bbk.a);
+   }
+
+   public DataResult<bbk> a(bbk $$0, Map<bbk, bbk> $$1) {
+      return DataResult.success(bbk.a);
+   }
+
+   public DataResult<bbk> a(bbk $$0, MapLike<bbk> $$1) {
+      return DataResult.success(bbk.a);
+   }
+
+   public DataResult<Stream<Pair<bbk, bbk>>> d(bbk $$0) {
+      return DataResult.error(() -> "Not a map");
+   }
+
+   public DataResult<Consumer<BiConsumer<bbk, bbk>>> e(bbk $$0) {
+      return DataResult.error(() -> "Not a map");
+   }
+
+   public DataResult<MapLike<bbk>> f(bbk $$0) {
+      return DataResult.error(() -> "Not a map");
+   }
+
+   public DataResult<Stream<bbk>> g(bbk $$0) {
+      return DataResult.error(() -> "Not a list");
+   }
+
+   public DataResult<Consumer<Consumer<bbk>>> h(bbk $$0) {
+      return DataResult.error(() -> "Not a list");
+   }
+
+   public DataResult<ByteBuffer> i(bbk $$0) {
+      return DataResult.error(() -> "Not a byte list");
+   }
+
+   public DataResult<IntStream> j(bbk $$0) {
+      return DataResult.error(() -> "Not an int list");
+   }
+
+   public DataResult<LongStream> k(bbk $$0) {
+      return DataResult.error(() -> "Not a long list");
+   }
+
+   public bbk a(Stream<Pair<bbk, bbk>> $$0) {
+      return bbk.a;
+   }
+
+   public bbk a(Map<bbk, bbk> $$0) {
+      return bbk.a;
+   }
+
+   public bbk b(Stream<bbk> $$0) {
+      return bbk.a;
+   }
+
+   public bbk a(ByteBuffer $$0) {
+      return bbk.a;
+   }
+
+   public bbk a(IntStream $$0) {
+      return bbk.a;
+   }
+
+   public bbk a(LongStream $$0) {
+      return bbk.a;
+   }
+
+   public bbk a(bbk $$0, String $$1) {
+      return $$0;
+   }
+
+   public RecordBuilder<bbk> mapBuilder() {
+      return new bag.a(this);
    }
 
    @Override
    public String toString() {
-      return String.format(Locale.ROOT, "StaticCache2D[%d, %d, %d, %d]", this.a, this.b, this.a + this.c, this.b + this.d);
+      return "Null";
    }
 
-   private int c(int $$0, int $$1) {
-      int $$2 = $$0 - this.a;
-      int $$3 = $$1 - this.b;
-      return $$2 * this.d + $$3;
-   }
+   static final class a extends AbstractUniversalBuilder<bbk, bbk> {
+      public a(DynamicOps<bbk> $$0) {
+         super($$0);
+      }
 
-   @FunctionalInterface
-   public interface a<T> {
-      T get(int var1, int var2);
+      protected bbk a() {
+         return bbk.a;
+      }
+
+      protected bbk a(bbk $$0, bbk $$1, bbk $$2) {
+         return $$2;
+      }
+
+      protected DataResult<bbk> a(bbk $$0, bbk $$1) {
+         return DataResult.success($$1);
+      }
    }
 }

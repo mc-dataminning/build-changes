@@ -1,5 +1,65 @@
-class sw extends Throwable {
-   public sw(int $$0, int $$1, tg $$2) {
-      super("Not enough successes: " + $$1 + " out of " + $$0 + " attempts. Required successes: " + $$2.z() + ". max attempts: " + $$2.y() + ".", $$2.n());
+public class sw {
+   public static final aly<eng> a = tb.a("monster_room");
+   public static final aly<eng> b = tb.a("monster_room_deep");
+   public static final aly<eng> c = tb.a("fossil_upper");
+   public static final aly<eng> d = tb.a("fossil_lower");
+   public static final aly<eng> e = tb.a("dripstone_cluster");
+   public static final aly<eng> f = tb.a("large_dripstone");
+   public static final aly<eng> g = tb.a("pointed_dripstone");
+   public static final aly<eng> h = tb.a("underwater_magma");
+   public static final aly<eng> i = tb.a("glow_lichen");
+   public static final aly<eng> j = tb.a("rooted_azalea_tree");
+   public static final aly<eng> k = tb.a("cave_vines");
+   public static final aly<eng> l = tb.a("lush_caves_vegetation");
+   public static final aly<eng> m = tb.a("lush_caves_clay");
+   public static final aly<eng> n = tb.a("lush_caves_ceiling_vegetation");
+   public static final aly<eng> o = tb.a("spore_blossom");
+   public static final aly<eng> p = tb.a("classic_vines_cave_feature");
+   public static final aly<eng> q = tb.a("amethyst_geode");
+   public static final aly<eng> r = tb.a("sculk_patch_deep_dark");
+   public static final aly<eng> s = tb.a("sculk_patch_ancient_city");
+   public static final aly<eng> t = tb.a("sculk_vein");
+
+   public static void a(rk<eng> $$0) {
+      jr<ega<?, ?>> $$1 = $$0.a(mb.aK);
+      jq<ega<?, ?>> $$2 = $$1.b(sk.a);
+      jq<ega<?, ?>> $$3 = $$1.b(sk.b);
+      jq<ega<?, ?>> $$4 = $$1.b(sk.c);
+      jq<ega<?, ?>> $$5 = $$1.b(sk.d);
+      jq<ega<?, ?>> $$6 = $$1.b(sk.e);
+      jq<ega<?, ?>> $$7 = $$1.b(sk.f);
+      jq<ega<?, ?>> $$8 = $$1.b(sk.g);
+      jq<ega<?, ?>> $$9 = $$1.b(sk.h);
+      jq<ega<?, ?>> $$10 = $$1.b(sk.i);
+      jq<ega<?, ?>> $$11 = $$1.b(sk.j);
+      jq<ega<?, ?>> $$12 = $$1.b(sk.m);
+      jq<ega<?, ?>> $$13 = $$1.b(sk.r);
+      jq<ega<?, ?>> $$14 = $$1.b(sk.s);
+      jq<ega<?, ?>> $$15 = $$1.b(sk.t);
+      jq<ega<?, ?>> $$16 = $$1.b(ss.c);
+      jq<ega<?, ?>> $$17 = $$1.b(sk.u);
+      jq<ega<?, ?>> $$18 = $$1.b(sk.v);
+      jq<ega<?, ?>> $$19 = $$1.b(sk.w);
+      jq<ega<?, ?>> $$20 = $$1.b(sk.x);
+      tb.a($$0, a, $$2, emy.a(10), end.a(), enb.a(eec.a(0), eec.b()), emu.a());
+      tb.a($$0, b, $$2, emy.a(4), end.a(), enb.a(eec.b(6), eec.a(-1)), emu.a());
+      tb.a($$0, c, $$3, enm.a(64), end.a(), enb.a(eec.a(0), eec.b()), emu.a());
+      tb.a($$0, d, $$4, enm.a(64), end.a(), enb.a(eec.a(), eec.a(-8)), emu.a());
+      tb.a($$0, e, $$5, emy.a(bsp.a(48, 96)), end.a(), tb.i, emu.a());
+      tb.a($$0, f, $$6, emy.a(bsp.a(10, 48)), end.a(), tb.i, emu.a());
+      tb.a($$0, g, $$7, emy.a(bsp.a(192, 256)), end.a(), tb.i, emy.a(bsp.a(1, 5)), enl.a(bse.a(0.0F, 3.0F, -10, 10), bse.a(0.0F, 0.6F, -2, 2)), emu.a());
+      tb.a($$0, h, $$8, emy.a(bsp.a(44, 52)), end.a(), tb.i, eno.a(edi.a.c, Integer.MIN_VALUE, -2), emu.a());
+      tb.a($$0, i, $$9, emy.a(bsp.a(104, 157)), tb.i, end.a(), eno.a(edi.a.c, Integer.MIN_VALUE, -13), emu.a());
+      tb.a($$0, j, $$10, emy.a(bsp.a(1, 2)), end.a(), tb.i, emz.a(jm.b, eep.c(), eep.c, 12), enl.a(bsg.a(-1)), emu.a());
+      tb.a($$0, k, $$11, emy.a(188), end.a(), tb.i, emz.a(jm.b, eep.a(jm.a), eep.c, 12), enl.a(bsg.a(-1)), emu.a());
+      tb.a($$0, l, $$12, emy.a(125), end.a(), tb.i, emz.a(jm.a, eep.c(), eep.c, 12), enl.a(bsg.a(1)), emu.a());
+      tb.a($$0, m, $$13, emy.a(62), end.a(), tb.i, emz.a(jm.a, eep.c(), eep.c, 12), enl.a(bsg.a(1)), emu.a());
+      tb.a($$0, n, $$14, emy.a(125), end.a(), tb.i, emz.a(jm.b, eep.c(), eep.c, 12), enl.a(bsg.a(-1)), emu.a());
+      tb.a($$0, o, $$15, emy.a(25), end.a(), tb.i, emz.a(jm.b, eep.c(), eep.c, 12), enl.a(bsg.a(-1)), emu.a());
+      tb.a($$0, p, $$16, emy.a(256), end.a(), tb.i, emu.a());
+      tb.a($$0, q, $$17, enm.a(24), end.a(), enb.a(eec.b(6), eec.a(30)), emu.a());
+      tb.a($$0, r, $$18, emy.a(bsg.a(256)), end.a(), tb.i, emu.a());
+      tb.a($$0, s, $$19);
+      tb.a($$0, t, $$20, emy.a(bsp.a(204, 250)), end.a(), tb.i, emu.a());
    }
 }

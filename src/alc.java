@@ -1,33 +1,23 @@
-import java.util.List;
-import java.util.Map;
-
-public class alc {
-   private final String a;
-   private final String b;
-
-   public alc(String $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public record alc<T>(int a, ald<T> b) {
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         alc<?> $$1 = (alc<?>)$$0;
+         return this.a == $$1.a;
+      } else {
+         return false;
+      }
    }
 
-   public static alc a(String $$0) {
-      return new alc($$0, ".json");
+   @Override
+   public int hashCode() {
+      return this.a;
    }
 
-   public alj a(alj $$0) {
-      return $$0.e(this.a + "/" + $$0.a() + this.b);
-   }
-
-   public alj b(alj $$0) {
-      String $$1 = $$0.a();
-      return $$0.e($$1.substring(this.a.length() + 1, $$1.length() - this.b.length()));
-   }
-
-   public Map<alj, avb> a(avd $$0) {
-      return $$0.b(this.a, $$0x -> $$0x.a().endsWith(this.b));
-   }
-
-   public Map<alj, List<avb>> b(avd $$0) {
-      return $$0.c(this.a, $$0x -> $$0x.a().endsWith(this.b));
+   @Override
+   public String toString() {
+      return "<entity data: " + this.a + ">";
    }
 }

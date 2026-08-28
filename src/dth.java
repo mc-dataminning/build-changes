@@ -1,139 +1,99 @@
-import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dth extends dsy implements bsd {
-   public static final int b = 6;
-   private static final Logger c = LogUtils.getLogger();
-   private final jz<cwm> d = jz.a(6, cwm.k);
-   private int e = -1;
+public class dth extends drh {
+   public static final MapCodec<dth> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dyz.a.fieldOf("wood_type").forGetter(drh::d), t()).apply($$0, dth::new));
+   public static final dyk<jm> b = doc.aF;
+   protected static final float c = 2.0F;
+   protected static final float d = 4.5F;
+   protected static final float e = 12.5F;
+   private static final Map<jm, fcm> i = Maps.newEnumMap(
+      ImmutableMap.of(
+         jm.c,
+         dke.a(0.0, 4.5, 14.0, 16.0, 12.5, 16.0),
+         jm.d,
+         dke.a(0.0, 4.5, 0.0, 16.0, 12.5, 2.0),
+         jm.f,
+         dke.a(0.0, 4.5, 0.0, 2.0, 12.5, 16.0),
+         jm.e,
+         dke.a(14.0, 4.5, 0.0, 16.0, 12.5, 16.0)
+      )
+   );
 
-   public dth(jh $$0, dvv $$1) {
-      super(dta.M, $$0, $$1);
+   @Override
+   public MapCodec<dth> a() {
+      return a;
    }
 
-   private void c(int $$0) {
-      if ($$0 >= 0 && $$0 < 6) {
-         this.e = $$0;
-         dvv $$1 = this.m();
+   public dth(dyz $$0, dxm.d $$1) {
+      super($$0, $$1.a($$0.d()));
+      this.l(this.F.b().b(b, jm.c).b(f, Boolean.valueOf(false)));
+   }
 
-         for (int $$2 = 0; $$2 < dju.c.size(); $$2++) {
-            boolean $$3 = !this.a($$2).f();
-            dwm $$4 = dju.c.get($$2);
-            $$1 = $$1.b($$4, Boolean.valueOf($$3));
+   @Override
+   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
+      return i.get($$0.c(b));
+   }
+
+   @Override
+   protected boolean a(dxn $$0, dhd $$1, jh $$2) {
+      return $$1.a_($$2.a($$0.c(b).g())).e();
+   }
+
+   @Nullable
+   @Override
+   public dxn a(dbb $$0) {
+      dxn $$1 = this.m();
+      etp $$2 = $$0.q().b_($$0.a());
+      dhd $$3 = $$0.q();
+      jh $$4 = $$0.a();
+      jm[] $$5 = $$0.f();
+
+      for (jm $$6 : $$5) {
+         if ($$6.o().d()) {
+            jm $$7 = $$6.g();
+            $$1 = $$1.b(b, $$7);
+            if ($$1.a($$3, $$4)) {
+               return $$1.b(f, Boolean.valueOf($$2.a() == etq.c));
+            }
          }
-
-         Objects.requireNonNull(this.o).a(this.p, $$1, 3);
-         this.o.a(ear.c, this.p, ear.a.a($$1));
-      } else {
-         c.error("Expected slot 0-5, got {}", $$0);
-      }
-   }
-
-   @Override
-   protected void a(ul $$0, js.a $$1) {
-      super.a($$0, $$1);
-      this.d.clear();
-      bse.b($$0, this.d, $$1);
-      this.e = $$0.h("last_interacted_slot");
-   }
-
-   @Override
-   protected void b(ul $$0, js.a $$1) {
-      super.b($$0, $$1);
-      bse.a($$0, this.d, true, $$1);
-      $$0.a("last_interacted_slot", this.e);
-   }
-
-   public int f() {
-      return (int)this.d.stream().filter(Predicate.not(cwm::f)).count();
-   }
-
-   @Override
-   public void a() {
-      this.d.clear();
-   }
-
-   @Override
-   public int b() {
-      return 6;
-   }
-
-   @Override
-   public boolean c() {
-      return this.d.stream().allMatch(cwm::f);
-   }
-
-   @Override
-   public cwm a(int $$0) {
-      return this.d.get($$0);
-   }
-
-   @Override
-   public cwm a(int $$0, int $$1) {
-      cwm $$2 = Objects.requireNonNullElse(this.d.get($$0), cwm.k);
-      this.d.set($$0, cwm.k);
-      if (!$$2.f()) {
-         this.c($$0);
       }
 
-      return $$2;
+      return null;
    }
 
    @Override
-   public cwm b(int $$0) {
-      return this.a($$0, 1);
+   protected dxn a(dxn $$0, dhd $$1, dhp $$2, jh $$3, jm $$4, jh $$5, dxn $$6, bam $$7) {
+      return $$4.g() == $$0.c(b) && !$$0.a($$1, $$3) ? dkg.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   public void a(int $$0, cwm $$1) {
-      if ($$1.a(axl.ba)) {
-         this.d.set($$0, $$1);
-         this.c($$0);
-      } else if ($$1.f()) {
-         this.a($$0, 1);
-      }
+   public float h(dxn $$0) {
+      return $$0.c(b).p();
    }
 
    @Override
-   public boolean a(bsd $$0, int $$1, cwm $$2) {
-      return $$0.a_($$2x -> $$2x.f() ? true : cwm.c($$2, $$2x) && $$2x.L() + $$2.L() <= $$0.e_($$2x));
+   public fbs o(dxn $$0) {
+      fcm $$1 = i.get($$0.c(b));
+      return $$1.a().f();
    }
 
    @Override
-   public int an_() {
-      return 1;
+   protected dxn a(dxn $$0, dqu $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   public boolean a(cou $$0) {
-      return bsd.a(this, $$0);
+   protected dxn a(dxn $$0, dpd $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
    @Override
-   public boolean b(int $$0, cwm $$1) {
-      return $$1.a(axl.ba) && this.a($$0).f() && $$1.L() == this.an_();
-   }
-
-   public int j() {
-      return this.e;
-   }
-
-   @Override
-   protected void a(dsy.b $$0) {
-      super.a($$0);
-      $$0.a(ku.al, cze.a).a(this.d);
-   }
-
-   @Override
-   protected void a(kq.a $$0) {
-      super.a($$0);
-      $$0.a(ku.al, cze.a(this.d));
-   }
-
-   @Override
-   public void a(ul $$0) {
-      $$0.r("Items");
+   protected void a(dxo.a<dke, dxn> $$0) {
+      $$0.a(b, f);
    }
 }

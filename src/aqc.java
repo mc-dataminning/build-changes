@@ -1,56 +1,116 @@
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import java.util.Locale;
-import java.util.function.Function;
+import com.google.common.collect.Sets;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
+import java.util.Set;
 
-public class aqc implements apz {
-   static final SuggestionProvider<ew> b = ($$0, $$1) -> fb.a(a($$0).a(), $$1);
-   public static final Function<String, aqa.c> a = $$0 -> new aqa.c() {
-         @Override
-         public apz a(CommandContext<ew> $$0x) {
-            return new aqc(aqc.a($$0), fx.c($$0, $$0));
+public class aqc {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xv.c("commands.tag.add.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xv.c("commands.tag.remove.failed"));
+
+   public static void a(CommandDispatcher<ew> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("tag").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ex.a("targets", fj.b())
+                        .then(
+                           ex.a("add")
+                              .then(
+                                 ex.a("name", StringArgumentType.word())
+                                    .executes($$0x -> a((ew)$$0x.getSource(), fj.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
+                              )
+                        ))
+                     .then(
+                        ex.a("remove")
+                           .then(
+                              ex.a("name", StringArgumentType.word())
+                                 .suggests(($$0x, $$1) -> fb.b(a(fj.b($$0x, "targets")), $$1))
+                                 .executes($$0x -> b((ew)$$0x.getSource(), fj.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
+                           )
+                     ))
+                  .then(ex.a("list").executes($$0x -> a((ew)$$0x.getSource(), fj.b($$0x, "targets"))))
+            )
+      );
+   }
+
+   private static Collection<String> a(Collection<? extends bvf> $$0) {
+      Set<String> $$1 = Sets.newHashSet();
+
+      for (bvf $$2 : $$0) {
+         $$1.addAll($$2.as());
+      }
+
+      return $$1;
+   }
+
+   private static int a(ew $$0, Collection<? extends bvf> $$1, String $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (bvf $$4 : $$1) {
+         if ($$4.a($$2)) {
+            $$3++;
+         }
+      }
+
+      if ($$3 == 0) {
+         throw a.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> xv.a("commands.tag.add.success.single", $$2, $$1.iterator().next().p_()), true);
+         } else {
+            $$0.a(() -> xv.a("commands.tag.add.success.multiple", $$2, $$1.size()), true);
          }
 
-         @Override
-         public ArgumentBuilder<ew, ?> a(ArgumentBuilder<ew, ?> $$0x, Function<ArgumentBuilder<ew, ?>, ArgumentBuilder<ew, ?>> $$1) {
-            return $$0.then(ex.a("storage").then($$1.apply(ex.a($$0, fx.a()).suggests(aqc.b))));
+         return $$3;
+      }
+   }
+
+   private static int b(ew $$0, Collection<? extends bvf> $$1, String $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (bvf $$4 : $$1) {
+         if ($$4.b($$2)) {
+            $$3++;
          }
-      };
-   private final ets c;
-   private final alj d;
+      }
 
-   static ets a(CommandContext<ew> $$0) {
-      return ((ew)$$0.getSource()).l().aK();
+      if ($$3 == 0) {
+         throw b.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> xv.a("commands.tag.remove.success.single", $$2, $$1.iterator().next().p_()), true);
+         } else {
+            $$0.a(() -> xv.a("commands.tag.remove.success.multiple", $$2, $$1.size()), true);
+         }
+
+         return $$3;
+      }
    }
 
-   aqc(ets $$0, alj $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
+   private static int a(ew $$0, Collection<? extends bvf> $$1) {
+      Set<String> $$2 = Sets.newHashSet();
 
-   @Override
-   public void a(ul $$0) {
-      this.c.a(this.d, $$0);
-   }
+      for (bvf $$3 : $$1) {
+         $$2.addAll($$3.as());
+      }
 
-   @Override
-   public ul a() {
-      return this.c.a(this.d);
-   }
+      if ($$1.size() == 1) {
+         bvf $$4 = $$1.iterator().next();
+         if ($$2.isEmpty()) {
+            $$0.a(() -> xv.a("commands.tag.list.single.empty", $$4.p_()), false);
+         } else {
+            $$0.a(() -> xv.a("commands.tag.list.single.success", $$4.p_(), $$2.size(), xy.a($$2)), false);
+         }
+      } else if ($$2.isEmpty()) {
+         $$0.a(() -> xv.a("commands.tag.list.multiple.empty", $$1.size()), false);
+      } else {
+         $$0.a(() -> xv.a("commands.tag.list.multiple.success", $$1.size(), $$2.size(), xy.a($$2)), false);
+      }
 
-   @Override
-   public xj b() {
-      return xj.a("commands.data.storage.modified", xj.a(this.d));
-   }
-
-   @Override
-   public xj a(vi $$0) {
-      return xj.a("commands.data.storage.query", xj.a(this.d), va.c($$0));
-   }
-
-   @Override
-   public xj a(fo.g $$0, double $$1, int $$2) {
-      return xj.a("commands.data.storage.get", $$0.a(), xj.a(this.d), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+      return $$2.size();
    }
 }

@@ -1,96 +1,80 @@
-import com.mojang.serialization.Codec;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.concurrent.TimeUnit;
+import org.apache.commons.lang3.mutable.MutableInt;
+import org.slf4j.Logger;
 
-public class egp extends eew<ehh> {
-   private static final jm[] a = jm.values();
-
-   public egp(Codec<ehh> $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean a(eey<ehh> $$0) {
-      dgk $$1 = $$0.b();
-      jh $$2 = $$0.e();
-      azu $$3 = $$0.d();
-      if (!$$1.u($$2)) {
-         return false;
-      } else {
-         dvv $$4 = $$1.a_($$2.d());
-         if (!$$4.a(dis.dV) && !$$4.a(dis.kK)) {
-            return false;
-         } else {
-            this.a($$1, $$3, $$2);
-            this.b($$1, $$3, $$2);
-            return true;
+public class egp {
+   private static final Logger a = LogUtils.getLogger();
+   private static final LoadingCache<ash, egp.b> b = CacheBuilder.newBuilder()
+      .weakKeys()
+      .expireAfterAccess(5L, TimeUnit.MINUTES)
+      .build(new CacheLoader<ash, egp.b>() {
+         public egp.b a(ash $$0) {
+            return new egp.b(Object2IntMaps.synchronize(new Object2IntOpenHashMap()), new MutableInt(0));
          }
+      });
+
+   public static void a(ash $$0) {
+      try {
+         ((egp.b)b.get($$0)).b().increment();
+      } catch (Exception var2) {
+         a.error("Failed to increment chunk count", var2);
       }
    }
 
-   private void a(dfn $$0, azu $$1, jh $$2) {
-      $$0.a($$2, dis.kK.m(), 2);
-      jh.a $$3 = new jh.a();
-      jh.a $$4 = new jh.a();
-
-      for (int $$5 = 0; $$5 < 200; $$5++) {
-         $$3.a($$2, $$1.a(6) - $$1.a(6), $$1.a(2) - $$1.a(5), $$1.a(6) - $$1.a(6));
-         if ($$0.u($$3)) {
-            int $$6 = 0;
-
-            for (jm $$7 : a) {
-               dvv $$8 = $$0.a_($$4.a($$3, $$7));
-               if ($$8.a(dis.dV) || $$8.a(dis.kK)) {
-                  $$6++;
-               }
-
-               if ($$6 > 1) {
-                  break;
-               }
-            }
-
-            if ($$6 == 1) {
-               $$0.a($$3, dis.kK.m(), 2);
-            }
-         }
+   public static void a(ash $$0, ega<?, ?> $$1, Optional<eng> $$2) {
+      try {
+         ((egp.b)b.get($$0)).a().computeInt(new egp.a($$1, $$2), ($$0x, $$1x) -> $$1x == null ? 1 : $$1x + 1);
+      } catch (Exception var4) {
+         a.error("Failed to increment feature count", var4);
       }
    }
 
-   private void b(dfn $$0, azu $$1, jh $$2) {
-      jh.a $$3 = new jh.a();
-
-      for (int $$4 = 0; $$4 < 100; $$4++) {
-         $$3.a($$2, $$1.a(8) - $$1.a(8), $$1.a(2) - $$1.a(7), $$1.a(8) - $$1.a(8));
-         if ($$0.u($$3)) {
-            dvv $$5 = $$0.a_($$3.d());
-            if ($$5.a(dis.dV) || $$5.a(dis.kK)) {
-               int $$6 = azm.a($$1, 1, 8);
-               if ($$1.a(6) == 0) {
-                  $$6 *= 2;
-               }
-
-               if ($$1.a(5) == 0) {
-                  $$6 = 1;
-               }
-
-               int $$7 = 17;
-               int $$8 = 25;
-               a($$0, $$1, $$3, $$6, 17, 25);
-            }
-         }
-      }
+   public static void a() {
+      b.invalidateAll();
+      a.debug("Cleared feature counts");
    }
 
-   public static void a(dfn $$0, azu $$1, jh.a $$2, int $$3, int $$4, int $$5) {
-      for (int $$6 = 0; $$6 <= $$3; $$6++) {
-         if ($$0.u($$2)) {
-            if ($$6 == $$3 || !$$0.u($$2.e())) {
-               $$0.a($$2, dis.oz.m().b(dme.e, Integer.valueOf(azm.a($$1, $$4, $$5))), 2);
-               break;
+   public static void b() {
+      a.debug("Logging feature counts:");
+      b.asMap()
+         .forEach(
+            ($$0, $$1) -> {
+               String $$2 = $$0.ah().a().toString();
+               boolean $$3 = $$0.p().x();
+               kd<eng> $$4 = $$0.K_().e(mb.aS);
+               String $$5 = ($$3 ? "running" : "dead") + " " + $$2;
+               Integer $$6 = $$1.b().getValue();
+               a.debug($$5 + " total_chunks: " + $$6);
+               $$1.a()
+                  .forEach(
+                     ($$3x, $$4x) -> a.debug(
+                           $$5
+                              + " "
+                              + String.format(Locale.ROOT, "%10d ", $$4x)
+                              + String.format(Locale.ROOT, "%10f ", (double)$$4x.intValue() / (double)$$6.intValue())
+                              + $$3x.b().flatMap($$4::d).<alz>map(aly::a)
+                              + " "
+                              + $$3x.a().b()
+                              + " "
+                              + $$3x.a()
+                        )
+                  );
             }
+         );
+   }
 
-            $$0.a($$2, dis.oA.m(), 2);
-         }
+   static record a(ega<?, ?> a, Optional<eng> b) {
+   }
 
-         $$2.c(jm.a);
-      }
+   static record b(Object2IntMap<egp.a> a, MutableInt b) {
    }
 }

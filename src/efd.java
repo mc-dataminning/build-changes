@@ -1,47 +1,25 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class efd extends eew<ehh> {
-   public efd(Codec<ehh> $$0) {
-      super($$0);
+public class efd implements eep {
+   public static final MapCodec<efd> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(kl.v(16).optionalFieldOf("offset", kl.g).forGetter($$0x -> $$0x.e), dxn.a.fieldOf("state").forGetter($$0x -> $$0x.f))
+            .apply($$0, efd::new)
+   );
+   private final kl e;
+   private final dxn f;
+
+   protected efd(kl $$0, dxn $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   public boolean a(dhy $$0, jh $$1) {
+      return this.f.a($$0, $$1.a(this.e));
    }
 
    @Override
-   public boolean a(eey<ehh> $$0) {
-      dgk $$1 = $$0.b();
-      jh $$2 = $$0.e();
-      azu $$3 = $$0.d();
-      if (!$$1.u($$2)) {
-         return false;
-      } else {
-         dvv $$4 = $$1.a_($$2.d());
-         if (!$$4.a(dis.dV) && !$$4.a(dis.dY) && !$$4.a(dis.pr)) {
-            return false;
-         } else {
-            $$1.a($$2, dis.ec.m(), 2);
-
-            for (int $$5 = 0; $$5 < 1500; $$5++) {
-               jh $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
-               if ($$1.a_($$6).l()) {
-                  int $$7 = 0;
-
-                  for (jm $$8 : jm.values()) {
-                     if ($$1.a_($$6.a($$8)).a(dis.ec)) {
-                        $$7++;
-                     }
-
-                     if ($$7 > 1) {
-                        break;
-                     }
-                  }
-
-                  if ($$7 == 1) {
-                     $$1.a($$6, dis.ec.m(), 2);
-                  }
-               }
-            }
-
-            return true;
-         }
-      }
+   public eeq<?> a() {
+      return eeq.g;
    }
 }

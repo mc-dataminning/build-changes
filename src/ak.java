@@ -11,12 +11,12 @@ public record ak(List<List<String>> c) {
    public static final Codec<ak> a = Codec.STRING.listOf().listOf().xmap(ak::new, ak::d);
    public static final ak b = new ak(List.of());
 
-   public ak(wg $$0) {
-      this($$0.a((zi<? super wg, List<String>>)($$0x -> $$0x.a(wg::p))));
+   public ak(ws $$0) {
+      this($$0.a((zu<? super ws, List<String>>)($$0x -> $$0x.a(ws::p))));
    }
 
-   public void a(wg $$0) {
-      $$0.a(this.c, ($$0x, $$1) -> $$0x.a($$1, wg::a));
+   public void a(ws $$0) {
+      $$0.a(this.c, ($$0x, $$1) -> $$0x.a($$1, ws::a));
    }
 
    public static ak a(Collection<String> $$0) {

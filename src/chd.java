@@ -1,149 +1,122 @@
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class chd extends cgy {
-   private static final buo cg = bus.z.n().a(0.5F).b(0.2975F);
-   public float bY;
-   public float bZ;
-   public float ca;
-   public float cc;
-   public float cd = 1.0F;
-   private float ch = 1.0F;
-   public int ce = this.ae.a(6000) + 6000;
-   public boolean cf;
+public class chd implements dgm {
+   private static final Logger a = LogUtils.getLogger();
+   private boolean b;
+   private chd.a c;
+   private int d;
+   private int e;
+   private int f;
+   private int g;
+   private int h;
 
-   public chd(bus<? extends chd> $$0, dfm $$1) {
-      super($$0, $$1);
-      this.a(esm.j, 0.0F);
+   public chd() {
+      this.c = chd.a.c;
    }
 
    @Override
-   protected void B() {
-      this.bS.a(0, new cbz(this));
-      this.bS.a(1, new ccy(this, 1.4));
-      this.bS.a(2, new cbr(this, 1.0));
-      this.bS.a(3, new cdn(this, 1.0, $$0 -> $$0.a(axl.ao), false));
-      this.bS.a(4, new cce(this, 1.1));
-      this.bS.a(5, new cds(this, 1.0));
-      this.bS.a(6, new ccn(this, cou.class, 6.0F));
-      this.bS.a(7, new cda(this));
-   }
-
-   @Override
-   public buo e(bvt $$0) {
-      return this.e_() ? cg : super.e($$0);
-   }
-
-   public static bwo.a n() {
-      return cgy.gr().a(bwp.s, 4.0).a(bwp.v, 0.25);
-   }
-
-   @Override
-   public void d_() {
-      super.d_();
-      this.cc = this.bY;
-      this.ca = this.bZ;
-      this.bZ = this.bZ + (this.aJ() ? -1.0F : 4.0F) * 0.3F;
-      this.bZ = azm.a(this.bZ, 0.0F, 1.0F);
-      if (!this.aJ() && this.cd < 1.0F) {
-         this.cd = 1.0F;
-      }
-
-      this.cd *= 0.9F;
-      ezy $$0 = this.dy();
-      if (!this.aJ() && $$0.e < 0.0) {
-         this.h($$0.d(1.0, 0.6, 1.0));
-      }
-
-      this.bY = this.bY + this.cd * 2.0F;
-      if (this.dV() instanceof arp $$1 && this.bL() && !this.e_() && !this.q() && --this.ce <= 0) {
-         if (this.a($$1, euj.aI, this::a)) {
-            this.a(awn.eU, 1.0F, (this.ae.i() - this.ae.i()) * 0.2F + 1.0F);
-            this.a(ear.t);
+   public int a(ash $$0, boolean $$1, boolean $$2) {
+      if (!$$0.U() && $$1) {
+         float $$3 = $$0.f(0.0F);
+         if ((double)$$3 == 0.5) {
+            this.c = $$0.A.a(10) == 0 ? chd.a.b : chd.a.c;
          }
 
-         this.ce = this.ae.a(6000) + 6000;
+         if (this.c == chd.a.c) {
+            return 0;
+         } else {
+            if (!this.b) {
+               if (!this.a($$0)) {
+                  return 0;
+               }
+
+               this.b = true;
+            }
+
+            if (this.e > 0) {
+               this.e--;
+               return 0;
+            } else {
+               this.e = 2;
+               if (this.d > 0) {
+                  this.b($$0);
+                  this.d--;
+               } else {
+                  this.c = chd.a.c;
+               }
+
+               return 1;
+            }
+         }
+      } else {
+         this.c = chd.a.c;
+         this.b = false;
+         return 0;
       }
    }
 
-   @Override
-   protected boolean ba() {
-      return this.Y > this.ch;
+   private boolean a(ash $$0) {
+      for (cps $$1 : $$0.y()) {
+         if (!$$1.aa_()) {
+            jh $$2 = $$1.dv();
+            if ($$0.c($$2) && !$$0.t($$2).a(axt.af)) {
+               for (int $$3 = 0; $$3 < 10; $$3++) {
+                  float $$4 = $$0.A.i() * (float) (Math.PI * 2);
+                  this.f = $$2.u() + bae.d(bae.b($$4) * 32.0F);
+                  this.g = $$2.v();
+                  this.h = $$2.w() + bae.d(bae.a($$4) * 32.0F);
+                  if (this.a($$0, new jh(this.f, this.g, this.h)) != null) {
+                     this.e = 0;
+                     this.d = 20;
+                     break;
+                  }
+               }
+
+               return true;
+            }
+         }
+      }
+
+      return false;
    }
 
-   @Override
-   protected void aZ() {
-      this.ch = this.Y + this.bZ / 2.0F;
-   }
+   private void b(ash $$0) {
+      fbs $$1 = this.a($$0, new jh(this.f, this.g, this.h));
+      if ($$1 != null) {
+         cnl $$2;
+         try {
+            $$2 = new cnl($$0);
+            $$2.a($$0, $$0.d_($$2.dv()), bvl.h, null);
+         } catch (Exception var5) {
+            a.warn("Failed to create zombie for village siege at {}", $$1, var5);
+            return;
+         }
 
-   @Override
-   protected awm t() {
-      return awn.eS;
-   }
-
-   @Override
-   protected awm e(btb $$0) {
-      return awn.eV;
-   }
-
-   @Override
-   protected awm n_() {
-      return awn.eT;
-   }
-
-   @Override
-   protected void b(jh $$0, dvv $$1) {
-      this.a(awn.eW, 0.15F, 1.0F);
+         $$2.b($$1.d, $$1.e, $$1.f, $$0.A.i() * 360.0F, 0.0F);
+         $$0.a_($$2);
+      }
    }
 
    @Nullable
-   public chd b(arp $$0, buc $$1) {
-      return bus.z.a($$0, bur.e);
-   }
-
-   @Override
-   public boolean j(cwm $$0) {
-      return $$0.a(axl.ao);
-   }
-
-   @Override
-   protected int e(arp $$0) {
-      return this.q() ? 10 : super.e($$0);
-   }
-
-   @Override
-   public void a(ul $$0) {
-      super.a($$0);
-      this.cf = $$0.q("IsChickenJockey");
-      if ($$0.e("EggLayTime")) {
-         this.ce = $$0.h("EggLayTime");
+   private fbs a(ash $$0, jh $$1) {
+      for (int $$2 = 0; $$2 < 10; $$2++) {
+         int $$3 = $$1.u() + $$0.A.a(16) - 8;
+         int $$4 = $$1.w() + $$0.A.a(16) - 8;
+         int $$5 = $$0.a(edi.a.b, $$3, $$4);
+         jh $$6 = new jh($$3, $$5, $$4);
+         if ($$0.c($$6) && cms.b(bvm.bO, $$0, bvl.h, $$6, $$0.A)) {
+            return fbs.c($$6);
+         }
       }
+
+      return null;
    }
 
-   @Override
-   public void b(ul $$0) {
-      super.b($$0);
-      $$0.a("IsChickenJockey", this.cf);
-      $$0.a("EggLayTime", this.ce);
-   }
-
-   @Override
-   public boolean h(double $$0) {
-      return this.q();
-   }
-
-   @Override
-   protected void a(bul $$0, bul.a $$1) {
-      super.a($$0, $$1);
-      if ($$0 instanceof bvh) {
-         ((bvh)$$0).aW = this.aW;
-      }
-   }
-
-   public boolean q() {
-      return this.cf;
-   }
-
-   public void x(boolean $$0) {
-      this.cf = $$0;
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

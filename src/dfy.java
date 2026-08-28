@@ -1,25 +1,48 @@
-public final class dfy implements dxn {
-   private final int a;
-   private final dvv[] b;
+import com.mojang.serialization.Codec;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public dfy(int $$0, dvv[] $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class dfy extends ArrayList<dfx> {
+   public static final Codec<dfy> a = dfx.a.listOf().fieldOf("Recipes").xmap(dfy::new, Function.identity()).codec();
+   public static final zt<xg, dfy> b = dfx.b.a(zr.a(dfy::new));
+
+   public dfy() {
    }
 
-   @Override
-   public dvv a(int $$0) {
-      int $$1 = $$0 - this.a;
-      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : dis.a.m();
+   private dfy(int $$0) {
+      super($$0);
    }
 
-   @Override
-   public void a(int $$0, dvv $$1) {
-      int $$2 = $$0 - this.a;
-      if ($$2 >= 0 && $$2 < this.b.length) {
-         this.b[$$2] = $$1;
+   private dfy(Collection<dfx> $$0) {
+      super($$0);
+   }
+
+   @Nullable
+   public dfx a(cxk $$0, cxk $$1, int $$2) {
+      if ($$2 > 0 && $$2 < this.size()) {
+         dfx $$3 = this.get($$2);
+         return $$3.a($$0, $$1) ? $$3 : null;
       } else {
-         throw new IllegalArgumentException("Outside of column height: " + $$0);
+         for (int $$4 = 0; $$4 < this.size(); $$4++) {
+            dfx $$5 = this.get($$4);
+            if ($$5.a($$0, $$1)) {
+               return $$5;
+            }
+         }
+
+         return null;
       }
+   }
+
+   public dfy a() {
+      dfy $$0 = new dfy(this.size());
+
+      for (dfx $$1 : this) {
+         $$0.add($$1.v());
+      }
+
+      return $$0;
    }
 }

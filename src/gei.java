@@ -1,121 +1,89 @@
-import com.google.common.collect.Lists;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportChatMessage;
-import com.mojang.authlib.minecraft.report.ReportEvidence;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.nio.ByteBuffer;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
-
-public class gei extends gel {
-   final IntSet g = new IntOpenHashSet();
-
-   gei(UUID $$0, Instant $$1, UUID $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   public void a(int $$0, AbuseReportLimits $$1) {
-      if (this.g.contains($$0)) {
-         this.g.remove($$0);
-      } else if (this.g.size() < $$1.maxReportedMessageCount()) {
-         this.g.add($$0);
-      }
-   }
-
-   public gei a() {
-      gei $$0 = new gei(this.a, this.b, this.c);
-      $$0.g.addAll(this.g);
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      return $$0;
-   }
-
-   @Override
-   public frw a(frw $$0, gep $$1) {
-      return new fwd($$0, $$1, this);
-   }
-
-   public static class a extends gel.a<gei> {
-      public a(gei $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
-
-      public a(UUID $$0, AbuseReportLimits $$1) {
-         super(new gei(UUID.randomUUID(), Instant.now(), $$0), $$1);
-      }
-
-      public IntSet a() {
-         return this.a.g;
-      }
-
-      public void a(int $$0) {
-         this.a.a($$0, this.b);
-      }
-
-      public boolean b(int $$0) {
-         return this.a.g.contains($$0);
-      }
-
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || !this.a().isEmpty() || this.i() != null;
-      }
-
-      @Nullable
-      @Override
-      public gel.b c() {
-         if (this.a.g.isEmpty()) {
-            return gel.b.b;
-         } else if (this.a.g.size() > this.b.maxReportedMessageCount()) {
-            return gel.b.c;
-         } else if (this.a.e == null) {
-            return gel.b.a;
-         } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? gel.b.d : super.c();
-         }
-      }
-
-      @Override
-      public Either<gel.c, gel.b> a(gep $$0) {
-         gel.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportEvidence $$3 = this.b($$0);
-            ReportedEntity $$4 = new ReportedEntity(this.a.c);
-            AbuseReport $$5 = AbuseReport.chat(this.a.d, $$2, $$3, $$4, this.a.b);
-            return Either.left(new gel.c(this.a.a, geo.a, $$5));
-         }
-      }
-
-      private ReportEvidence b(gep $$0) {
-         List<ReportChatMessage> $$1 = new ArrayList<>();
-         gej $$2 = new gej(this.b.leadingContextMessageCount());
-         $$2.a($$0.b(), this.a.g, ($$1x, $$2x) -> $$1.add(this.a($$2x, this.b($$1x))));
-         return new ReportEvidence(Lists.reverse($$1));
-      }
-
-      private ReportChatMessage a(gee.a $$0, boolean $$1) {
-         ye $$2 = $$0.g().k();
-         yc $$3 = $$0.g().m();
-         List<ByteBuffer> $$4 = $$3.d().a().stream().map(xv::a).toList();
-         ByteBuffer $$5 = x.a($$0.g().l(), xv::a);
-         return new ReportChatMessage($$2.b(), $$2.c(), $$2.d(), $$3.b(), $$3.c(), $$4, $$3.a(), $$5, $$1);
-      }
-
-      public gei.a d() {
-         return new gei.a(this.a.a(), this.b);
-      }
-   }
+public class gei {
+   public static final String a = "left_fin";
+   public static final String b = "right_fin";
+   public static final String c = "top_fin";
+   public static final String d = "bottom_fin";
+   public static final String e = "tail_fin";
+   public static final String f = "left_blue_fin";
+   public static final String g = "right_blue_fin";
+   public static final String h = "left_arm";
+   public static final String i = "right_arm";
+   public static final String j = "left_wing";
+   public static final String k = "right_wing";
+   public static final String l = "left_wing_base";
+   public static final String m = "right_wing_base";
+   public static final String n = "left_wing_tip";
+   public static final String o = "right_wing_tip";
+   public static final String p = "left_ear";
+   public static final String q = "right_ear";
+   public static final String r = "left_leg";
+   public static final String s = "right_leg";
+   public static final String t = "left_hind_leg";
+   public static final String u = "right_hind_leg";
+   public static final String v = "left_mid_leg";
+   public static final String w = "right_mid_leg";
+   public static final String x = "left_front_leg";
+   public static final String y = "right_front_leg";
+   public static final String z = "left_hind_foot";
+   public static final String A = "right_hind_foot";
+   public static final String B = "left_front_foot";
+   public static final String C = "right_front_foot";
+   public static final String D = "feet";
+   public static final String E = "left_hind_leg_tip";
+   public static final String F = "right_hind_leg_tip";
+   public static final String G = "left_front_leg_tip";
+   public static final String H = "right_front_leg_tip";
+   public static final String I = "left_lid";
+   public static final String J = "right_lid";
+   public static final String K = "left_chest";
+   public static final String L = "right_chest";
+   public static final String M = "left_horn";
+   public static final String N = "right_horn";
+   public static final String O = "left_eye";
+   public static final String P = "right_eye";
+   public static final String Q = "jaw";
+   public static final String R = "nose";
+   public static final String S = "arms";
+   public static final String T = "tail";
+   public static final String U = "cube";
+   public static final String V = "beak";
+   public static final String W = "back_fin";
+   public static final String X = "mane";
+   public static final String Y = "neck";
+   public static final String Z = "mouth";
+   public static final String aa = "head";
+   public static final String ab = "hat";
+   public static final String ac = "body";
+   public static final String ad = "upper_body";
+   public static final String ae = "hat_rim";
+   public static final String af = "jacket";
+   public static final String ag = "top_gills";
+   public static final String ah = "left_gills";
+   public static final String ai = "right_gills";
+   public static final String aj = "root";
+   public static final String ak = "croaking_body";
+   public static final String al = "tongue";
+   public static final String am = "tongue_r1";
+   public static final String an = "left_hand";
+   public static final String ao = "right_hand";
+   public static final String ap = "left_foot";
+   public static final String aq = "right_foot";
+   public static final String ar = "eyes";
+   public static final String as = "right_tendril";
+   public static final String at = "left_tendril";
+   public static final String au = "right_ribcage";
+   public static final String av = "left_ribcage";
+   public static final String aw = "wind_body";
+   public static final String ax = "wind_top";
+   public static final String ay = "wind_mid";
+   public static final String az = "wind_bottom";
+   public static final String aA = "rods";
+   public static final String aB = "mushrooms";
+   public static final String aC = "bone";
+   public static final String aD = "left_paddle";
+   public static final String aE = "right_paddle";
+   public static final String aF = "bottom";
+   public static final String aG = "chest_bottom";
+   public static final String aH = "chest_lid";
+   public static final String aI = "chest_lock";
 }

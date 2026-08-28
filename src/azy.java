@@ -1,11 +1,15 @@
-import java.security.SignatureException;
+import com.google.common.base.Suppliers;
+import java.util.function.Supplier;
 
-@FunctionalInterface
-public interface azy {
-   void update(azy.a var1) throws SignatureException;
+@Deprecated
+public class azy<T> {
+   private final Supplier<T> a;
 
-   @FunctionalInterface
-   public interface a {
-      void update(byte[] var1) throws SignatureException;
+   public azy(Supplier<T> $$0) {
+      this.a = Suppliers.memoize($$0::get);
+   }
+
+   public T a() {
+      return this.a.get();
    }
 }

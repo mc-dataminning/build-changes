@@ -1,95 +1,60 @@
-public class dal extends dar {
-   public dal(dao $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
-   public boolean a(dap $$0, dfm $$1) {
-      int $$2 = 0;
-      cwm $$3 = cwm.k;
+public record dal(List<dal.a> e) implements czr, dan {
+   public static final dal a = new dal(List.of());
+   public static final int b = 160;
+   public static final Codec<dal> c = dal.a.a.listOf().xmap(dal::new, dal::a);
+   public static final zt<xg, dal> d = dal.a.b.a(zr.a()).a(dal::new, dal::a);
 
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cwm $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.a(cwq.ur)) {
-               if (!$$3.f()) {
-                  return false;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cwq.uq)) {
-                  return false;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.f() && $$2 > 0;
-   }
-
-   public cwm a(dap $$0, js.a $$1) {
-      int $$2 = 0;
-      cwm $$3 = cwm.k;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cwm $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.a(cwq.ur)) {
-               if (!$$3.f()) {
-                  return cwm.k;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cwq.uq)) {
-                  return cwm.k;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      czu $$6 = $$3.a(ku.T);
-      if (!$$3.f() && $$2 >= 1 && $$6 != null) {
-         czu $$7 = $$6.b();
-         if ($$7 == null) {
-            return cwm.k;
-         } else {
-            cwm $$8 = $$3.c($$2);
-            $$8.b(ku.T, $$7);
-            return $$8;
-         }
-      } else {
-         return cwm.k;
-      }
-   }
-
-   public jz<cwm> a(dap $$0) {
-      jz<cwm> $$1 = jz.a($$0.a(), cwm.k);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cwm $$3 = $$0.a($$2);
-         if ($$3.h().l()) {
-            $$1.set($$2, new cwm($$3.h().k()));
-         } else if ($$3.h() instanceof cyi) {
-            $$1.set($$2, $$3.c(1));
-            break;
-         }
-      }
-
-      return $$1;
+   public dal a(dal.a $$0) {
+      return new dal(ae.a(this.e, $$0));
    }
 
    @Override
-   public dbf<?> ap_() {
-      return dbf.d;
+   public void a(dha $$0, bwb $$1, cxk $$2, czq $$3) {
+      for (dal.a $$4 : this.e) {
+         $$1.a($$4.a());
+      }
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
+   public void a(cxg.b $$0, Consumer<xv> $$1, czc $$2) {
+      if ($$2.b()) {
+         List<buk> $$3 = new ArrayList<>();
+
+         for (dal.a $$4 : this.e) {
+            $$3.add($$4.a());
+         }
+
+         czj.a($$3, $$1, 1.0F, $$0.b());
+      }
+   }
+
+   public List<dal.a> a() {
+      return this.e;
+   }
+
+   public static record a(jq<bui> c, int d) {
+      public static final Codec<dal.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bui.a.fieldOf("id").forGetter(dal.a::b), Codec.INT.lenientOptionalFieldOf("duration", 160).forGetter(dal.a::c))
+               .apply($$0, dal.a::new)
+      );
+      public static final zt<xg, dal.a> b = zt.a(bui.b, dal.a::b, zr.h, dal.a::c, dal.a::new);
+
+      public buk a() {
+         return new buk(this.c, this.d);
+      }
+
+      public jq<bui> b() {
+         return this.c;
+      }
+
+      public int c() {
+         return this.d;
+      }
    }
 }

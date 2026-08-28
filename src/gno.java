@@ -1,38 +1,95 @@
-import org.apache.commons.lang3.mutable.MutableInt;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class gno {
-   private final fke a;
+public class gno implements avw {
+   private Map<dur<?>, gnp<?>> d = ImmutableMap.of();
+   private final fnj e;
+   private final ged f;
+   public dha a;
+   public fli b;
+   public fbq c;
+   private final Supplier<gmh> g;
+   private final Supplier<gsh> h;
+   private final Supplier<grh> i;
 
-   public gno(fke $$0) {
-      this.a = $$0;
+   public gno(fnj $$0, ged $$1, Supplier<gmh> $$2, Supplier<gsh> $$3, Supplier<grh> $$4) {
+      this.h = $$3;
+      this.i = $$4;
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public void a(fer $$0, gmx $$1, gjg $$2, double $$3, double $$4, double $$5) {
-      gjh $$6 = this.a.f.x().c();
-      MutableInt $$7 = new MutableInt(0);
-      $$6.a(($$6x, $$7x, $$8, $$9) -> this.a($$6x, $$0, $$2, $$3, $$4, $$5, $$8, $$7x, $$7, $$9), $$1, 32);
+   @Nullable
+   public <E extends dup> gnp<E> a(E $$0) {
+      return (gnp<E>)this.d.get($$0.q());
    }
 
-   private void a(gjh.d $$0, fer $$1, gjg $$2, double $$3, double $$4, double $$5, int $$6, boolean $$7, MutableInt $$8, boolean $$9) {
-      ezt $$10 = $$0.b();
-      double $$11 = $$10.b();
-      long $$12 = Math.round($$11 / 16.0);
-      if ($$12 == 1L) {
-         $$8.add(1);
-         double $$13 = $$10.f().d;
-         double $$14 = $$10.f().e;
-         double $$15 = $$10.f().f;
-         int $$16 = $$9 ? -16711936 : -1;
-         gng.a($$1, $$2, String.valueOf($$8.getValue()), $$13, $$14, $$15, $$16, 0.3F);
+   public void a(dha $$0, fli $$1, fbq $$2) {
+      if (this.a != $$0) {
+         this.a($$0);
       }
 
-      fev $$17 = $$2.getBuffer(gjq.y());
-      long $$18 = $$12 + 5L;
-      gka.a($$1, $$17, $$10.h(0.1 * (double)$$6).d(-$$3, -$$4, -$$5), a($$18, 0.3F), a($$18, 0.8F), a($$18, 0.5F), $$7 ? 0.4F : 1.0F);
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   private static float a(long $$0, float $$1) {
-      float $$2 = 0.1F;
-      return azm.i($$1 * (float)$$0) * 0.9F + 0.1F;
+   public <E extends dup> void a(E $$0, float $$1, fgl $$2, gle $$3) {
+      gnp<E> $$4 = this.a($$0);
+      if ($$4 != null) {
+         if ($$0.l() && $$0.q().a($$0.m())) {
+            if ($$4.a($$0, this.b.b())) {
+               a($$0, () -> a($$4, $$0, $$1, $$2, $$3));
+            }
+         }
+      }
+   }
+
+   private static <T extends dup> void a(gnp<T> $$0, T $$1, float $$2, fgl $$3, gle $$4) {
+      dha $$5 = $$1.i();
+      int $$6;
+      if ($$5 != null) {
+         $$6 = gla.a($$5, $$1.aB_());
+      } else {
+         $$6 = 15728880;
+      }
+
+      $$0.a($$1, $$2, $$3, $$4, $$6, hav.d);
+   }
+
+   public <E extends dup> boolean a(E $$0, fgl $$1, gle $$2, int $$3, int $$4) {
+      gnp<E> $$5 = this.a($$0);
+      if ($$5 == null) {
+         return true;
+      } else {
+         a($$0, () -> $$5.a($$0, 0.0F, $$1, $$2, $$3, $$4));
+         return false;
+      }
+   }
+
+   private static void a(dup $$0, Runnable $$1) {
+      try {
+         $$1.run();
+      } catch (Throwable var5) {
+         o $$3 = o.a(var5, "Rendering Block Entity");
+         p $$4 = $$3.a("Block Entity Details");
+         $$0.a($$4);
+         throw new z($$3);
+      }
+   }
+
+   public void a(@Nullable dha $$0) {
+      this.a = $$0;
+      if ($$0 == null) {
+         this.b = null;
+      }
+   }
+
+   @Override
+   public void a(avv $$0) {
+      gnq.a $$1 = new gnq.a(this, this.g.get(), this.h.get(), this.i.get(), this.f, this.e);
+      this.d = gnr.a($$1);
    }
 }

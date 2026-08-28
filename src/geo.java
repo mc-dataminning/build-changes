@@ -1,17 +1,9 @@
-import java.util.Locale;
+public class geo {
+   final int a;
+   final int b;
 
-public enum geo {
-   a("chat"),
-   b("skin"),
-   c("username");
-
-   private final String d;
-
-   private geo(final String $$0) {
-      this.d = $$0.toUpperCase(Locale.ROOT);
-   }
-
-   public String a() {
-      return this.d;
+   public geo(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 }

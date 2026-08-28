@@ -1,46 +1,61 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.List;
-import java.util.Set;
+public class fbo extends fbq {
+   private final jm b;
+   private final jh c;
+   private final boolean d;
+   private final boolean e;
+   private final boolean f;
 
-public class fbo<T> implements fbr<T>, fbt<T> {
-   private final List<fbp<T>> a = Lists.newArrayList();
-   private final Set<fbp<?>> b = new ObjectOpenCustomHashSet(fbp.a);
+   public static fbo a(fbs $$0, jm $$1, jh $$2) {
+      return new fbo(true, $$0, $$1, $$2, false, false);
+   }
+
+   public fbo(fbs $$0, jm $$1, jh $$2, boolean $$3) {
+      this(false, $$0, $$1, $$2, $$3, false);
+   }
+
+   public fbo(fbs $$0, jm $$1, jh $$2, boolean $$3, boolean $$4) {
+      this(false, $$0, $$1, $$2, $$3, $$4);
+   }
+
+   private fbo(boolean $$0, fbs $$1, jm $$2, jh $$3, boolean $$4, boolean $$5) {
+      super($$1);
+      this.d = $$0;
+      this.b = $$2;
+      this.c = $$3;
+      this.e = $$4;
+      this.f = $$5;
+   }
+
+   public fbo a(jm $$0) {
+      return new fbo(this.d, this.a, $$0, this.c, this.e, this.f);
+   }
+
+   public fbo a(jh $$0) {
+      return new fbo(this.d, this.a, this.b, $$0, this.e, this.f);
+   }
+
+   public fbo a() {
+      return new fbo(this.d, this.a, this.b, this.c, this.e, true);
+   }
+
+   public jh b() {
+      return this.c;
+   }
+
+   public jm c() {
+      return this.b;
+   }
 
    @Override
-   public void a(fbq<T> $$0) {
-      fbp<T> $$1 = new fbp<>($$0.a(), $$0.b(), 0, $$0.d());
-      this.a($$1);
+   public fbq.a d() {
+      return this.d ? fbq.a.a : fbq.a.b;
    }
 
-   private void a(fbp<T> $$0) {
-      if (this.b.add($$0)) {
-         this.a.add($$0);
-      }
+   public boolean e() {
+      return this.e;
    }
 
-   @Override
-   public boolean a(jh $$0, T $$1) {
-      return this.b.contains(fbp.a($$1, $$0));
-   }
-
-   @Override
-   public int a() {
-      return this.a.size();
-   }
-
-   @Override
-   public List<fbp<T>> a(long $$0) {
-      return this.a;
-   }
-
-   public List<fbp<T>> b() {
-      return List.copyOf(this.a);
-   }
-
-   public static <T> fbo<T> a(List<fbp<T>> $$0) {
-      fbo<T> $$1 = new fbo<>();
-      $$0.forEach($$1::a);
-      return $$1;
+   public boolean f() {
+      return this.f;
    }
 }

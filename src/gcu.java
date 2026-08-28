@@ -1,9 +1,24 @@
-@FunctionalInterface
-public interface gcu {
-   static gcu scaling(float $$0) {
-      float $$1 = 24.016F * (1.0F - $$0);
-      return $$2 -> $$2.a($$2x -> $$2x.b($$0).c(0.0F, $$1, 0.0F));
+public class gcu extends gcp<gzg> {
+   public gcu(geh $$0) {
+      super($$0);
    }
 
-   gct apply(gct var1);
+   public static gen a() {
+      gep $$0 = new gep();
+      ger $$1 = $$0.a();
+      $$1.a("head", gem.c().a(0, 0).a(-3.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, new gel(0.6F)), gej.a(0.0F, 6.0F, -8.0F));
+      $$1.a("body", gem.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F, new gel(1.75F)), gej.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      gem $$2 = gem.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, new gel(0.5F));
+      $$1.a("right_hind_leg", $$2, gej.a(-3.0F, 12.0F, 7.0F));
+      $$1.a("left_hind_leg", $$2, gej.a(3.0F, 12.0F, 7.0F));
+      $$1.a("right_front_leg", $$2, gej.a(-3.0F, 12.0F, -5.0F));
+      $$1.a("left_front_leg", $$2, gej.a(3.0F, 12.0F, -5.0F));
+      return gen.a($$0, 64, 32);
+   }
+
+   public void a(gzg $$0) {
+      super.a($$0);
+      this.b.c = this.b.c + $$0.a * 9.0F * $$0.ab;
+      this.b.e = $$0.b;
+   }
 }

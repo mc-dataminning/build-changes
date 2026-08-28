@@ -1,231 +1,481 @@
-import com.mojang.datafixers.util.Pair;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.joml.Vector2i;
+import org.slf4j.Logger;
 
-public interface fnz extends foa {
-   List<? extends foa> aH_();
+public class fnz {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 100;
+   private static final int c = -1;
+   private static final int d = 4;
+   private static final int e = 4;
+   private static final int f = 40;
+   private static final int g = 60;
+   private static final xv h = xv.c("chat.deleted_marker").a(n.h, n.u);
+   private final flz i;
+   private final ayr<String> j = new ayr<>(100);
+   private final List<fls> k = Lists.newArrayList();
+   private final List<fls.a> l = Lists.newArrayList();
+   private int m;
+   private boolean n;
+   private final List<fnz.a> o = new ArrayList<>();
 
-   default Optional<foa> b_(double $$0, double $$1) {
-      for (foa $$2 : this.aH_()) {
-         if ($$2.c($$0, $$1)) {
-            return Optional.of($$2);
-         }
-      }
-
-      return Optional.empty();
+   public fnz(flz $$0) {
+      this.i = $$0;
+      this.j.addAll($$0.be().a());
    }
 
-   @Override
-   default boolean a(double $$0, double $$1, int $$2) {
-      for (foa $$3 : this.aH_()) {
-         if ($$3.a($$0, $$1, $$2)) {
-            this.a($$3);
-            if ($$2 == 0) {
-               this.b_(true);
-            }
-
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   default boolean b(double $$0, double $$1, int $$2) {
-      if ($$2 == 0 && this.aJ_()) {
-         this.b_(false);
-         if (this.aK_() != null) {
-            return this.aK_().b($$0, $$1, $$2);
-         }
-      }
-
-      return this.b_($$0, $$1).filter($$3 -> $$3.b($$0, $$1, $$2)).isPresent();
-   }
-
-   @Override
-   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      return this.aK_() != null && this.aJ_() && $$2 == 0 ? this.aK_().a($$0, $$1, $$2, $$3, $$4) : false;
-   }
-
-   boolean aJ_();
-
-   void b_(boolean var1);
-
-   @Override
-   default boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return this.b_($$0, $$1).filter($$4 -> $$4.a($$0, $$1, $$2, $$3)).isPresent();
-   }
-
-   @Override
-   default boolean a(int $$0, int $$1, int $$2) {
-      return this.aK_() != null && this.aK_().a($$0, $$1, $$2);
-   }
-
-   @Override
-   default boolean c(int $$0, int $$1, int $$2) {
-      return this.aK_() != null && this.aK_().c($$0, $$1, $$2);
-   }
-
-   @Override
-   default boolean a(char $$0, int $$1) {
-      return this.aK_() != null && this.aK_().a($$0, $$1);
-   }
-
-   @Nullable
-   foa aK_();
-
-   void a(@Nullable foa var1);
-
-   @Override
-   default void a(boolean $$0) {
-   }
-
-   @Override
-   default boolean aL_() {
-      return this.aK_() != null;
-   }
-
-   @Nullable
-   @Override
-   default fln aM_() {
-      foa $$0 = this.aK_();
-      return $$0 != null ? fln.a(this, $$0.aM_()) : null;
-   }
-
-   @Nullable
-   @Override
-   default fln a(fqh $$0) {
-      foa $$1 = this.aK_();
-      if ($$1 != null) {
-         fln $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return fln.a(this, $$2);
-         }
-      }
-
-      if ($$0 instanceof fqh.c $$3) {
-         return this.a($$3);
-      } else {
-         return $$0 instanceof fqh.a $$4 ? this.a($$4) : null;
+   public void a() {
+      if (!this.o.isEmpty()) {
+         this.m();
       }
    }
 
-   @Nullable
-   private fln a(fqh.c $$0) {
-      boolean $$1 = $$0.b();
-      foa $$2 = this.aK_();
-      List<? extends foa> $$3 = new ArrayList<>(this.aH_());
-      Collections.sort($$3, Comparator.comparingInt($$0x -> $$0x.I()));
-      int $$4 = $$3.indexOf($$2);
-      int $$5;
-      if ($$2 != null && $$4 >= 0) {
-         $$5 = $$4 + ($$1 ? 1 : 0);
-      } else if ($$1) {
-         $$5 = 0;
-      } else {
-         $$5 = $$3.size();
-      }
+   public void a(fnl $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      if (!this.l()) {
+         int $$5 = this.j();
+         int $$6 = this.l.size();
+         if ($$6 > 0) {
+            bpo $$7 = bpn.a();
+            $$7.a("chat");
+            float $$8 = (float)this.h();
+            int $$9 = bae.f((float)this.f() / $$8);
+            int $$10 = $$0.b();
+            $$0.c().a();
+            $$0.c().b($$8, $$8, 1.0F);
+            $$0.c().a(4.0F, 0.0F, 0.0F);
+            int $$11 = bae.d((float)($$10 - 40) / $$8);
+            int $$12 = this.d(this.c((double)$$2), this.d((double)$$3));
+            double $$13 = this.i.n.o().c() * 0.9F + 0.1F;
+            double $$14 = this.i.n.s().c();
+            double $$15 = this.i.n.p().c();
+            int $$16 = this.o();
+            int $$17 = (int)Math.round(-8.0 * ($$15 + 1.0) + 4.0 * $$15);
+            int $$18 = 0;
 
-      ListIterator<? extends foa> $$8 = $$3.listIterator($$5);
-      BooleanSupplier $$9 = $$1 ? $$8::hasNext : $$8::hasPrevious;
-      Supplier<? extends foa> $$10 = $$1 ? $$8::next : $$8::previous;
+            for (int $$19 = 0; $$19 + this.m < this.l.size() && $$19 < $$5; $$19++) {
+               int $$20 = $$19 + this.m;
+               fls.a $$21 = this.l.get($$20);
+               if ($$21 != null) {
+                  int $$22 = $$1 - $$21.a();
+                  if ($$22 < 200 || $$4) {
+                     double $$23 = $$4 ? 1.0 : b($$22);
+                     int $$24 = (int)(255.0 * $$23 * $$13);
+                     int $$25 = (int)(255.0 * $$23 * $$14);
+                     $$18++;
+                     if ($$24 > 3) {
+                        int $$26 = 0;
+                        int $$27 = $$11 - $$19 * $$16;
+                        int $$28 = $$27 + $$17;
+                        $$0.a(-4, $$27 - $$16, 0 + $$9 + 4 + 4, $$27, $$25 << 24);
+                        flt $$29 = $$21.c();
+                        if ($$29 != null) {
+                           int $$30 = $$29.e() | $$24 << 24;
+                           $$0.a(-4, $$27 - $$16, -2, $$27, $$30);
+                           if ($$20 == $$12 && $$29.f() != null) {
+                              int $$31 = this.a($$21);
+                              int $$32 = $$28 + 9;
+                              this.a($$0, $$31, $$32, $$29.f());
+                           }
+                        }
 
-      while ($$9.getAsBoolean()) {
-         foa $$11 = $$10.get();
-         fln $$12 = $$11.a($$0);
-         if ($$12 != null) {
-            return fln.a(this, $$12);
-         }
-      }
-
-      return null;
-   }
-
-   @Nullable
-   private fln a(fqh.a $$0) {
-      foa $$1 = this.aK_();
-      if ($$1 == null) {
-         fqj $$2 = $$0.b();
-         fql $$3 = this.H().c($$2.b());
-         return fln.a(this, this.a($$3, $$2, null, $$0));
-      } else {
-         fql $$4 = $$1.H();
-         return fln.a(this, this.a($$4, $$0.b(), $$1, $$0));
-      }
-   }
-
-   @Nullable
-   private fln a(fql $$0, fqj $$1, @Nullable foa $$2, fqh $$3) {
-      fqi $$4 = $$1.a();
-      fqi $$5 = $$4.a();
-      fqj $$6 = $$5.b();
-      int $$7 = $$0.b($$1.b());
-      List<foa> $$8 = new ArrayList<>();
-
-      for (foa $$9 : this.aH_()) {
-         if ($$9 != $$2) {
-            fql $$10 = $$9.H();
-            if ($$10.a($$0, $$5)) {
-               int $$11 = $$10.b($$1.b());
-               if ($$1.a($$11, $$7)) {
-                  $$8.add($$9);
-               } else if ($$11 == $$7 && $$1.a($$10.b($$1), $$0.b($$1))) {
-                  $$8.add($$9);
+                        $$0.c().a();
+                        $$0.c().a(0.0F, 0.0F, 50.0F);
+                        $$0.b(this.i.h, $$21.b(), 0, $$28, 16777215 + ($$24 << 24));
+                        $$0.c().b();
+                     }
+                  }
                }
             }
+
+            long $$33 = this.i.ba().c();
+            if ($$33 > 0L) {
+               int $$34 = (int)(128.0 * $$13);
+               int $$35 = (int)(255.0 * $$14);
+               $$0.c().a();
+               $$0.c().a(0.0F, (float)$$11, 0.0F);
+               $$0.a(-2, 0, $$9 + 4, 9, $$35 << 24);
+               $$0.c().a(0.0F, 0.0F, 50.0F);
+               $$0.b(this.i.h, xv.a("chat.queue", $$33), 0, 1, 16777215 + ($$34 << 24));
+               $$0.c().b();
+            }
+
+            if ($$4) {
+               int $$36 = this.o();
+               int $$37 = $$6 * $$36;
+               int $$38 = $$18 * $$36;
+               int $$39 = this.m * $$38 / $$6 - $$11;
+               int $$40 = $$38 * $$38 / $$37;
+               if ($$37 != $$38) {
+                  int $$41 = $$39 > 0 ? 170 : 96;
+                  int $$42 = this.n ? 13382451 : 3355562;
+                  int $$43 = $$9 + 4;
+                  $$0.a($$43, -$$39, $$43 + 2, -$$39 - $$40, 100, $$42 + ($$41 << 24));
+                  $$0.a($$43 + 2, -$$39, $$43 + 1, -$$39 - $$40, 100, 13421772 + ($$41 << 24));
+               }
+            }
+
+            $$0.c().b();
+            $$7.c();
          }
       }
+   }
 
-      Comparator<foa> $$12 = Comparator.comparing($$1x -> $$1x.H().b($$1.b()), $$1.d());
-      Comparator<foa> $$13 = Comparator.comparing($$1x -> $$1x.H().b($$6.b()), $$6.d());
-      $$8.sort($$12.thenComparing($$13));
+   private void a(fnl $$0, int $$1, int $$2, flt.a $$3) {
+      int $$4 = $$2 - $$3.d - 1;
+      $$3.a($$0, $$1, $$4);
+   }
 
-      for (foa $$14 : $$8) {
-         fln $$15 = $$14.a($$3);
-         if ($$15 != null) {
-            return $$15;
-         }
+   private int a(fls.a $$0) {
+      return this.i.h.a($$0.b()) + 4;
+   }
+
+   private boolean l() {
+      return this.i.n.n().c() == cpp.c;
+   }
+
+   private static double b(int $$0) {
+      double $$1 = (double)$$0 / 200.0;
+      $$1 = 1.0 - $$1;
+      $$1 *= 10.0;
+      $$1 = bae.a($$1, 0.0, 1.0);
+      return $$1 * $$1;
+   }
+
+   public void a(boolean $$0) {
+      this.i.ba().d();
+      this.o.clear();
+      this.l.clear();
+      this.k.clear();
+      if ($$0) {
+         this.j.clear();
+         this.j.addAll(this.i.be().a());
+      }
+   }
+
+   public void a(xv $$0) {
+      this.a($$0, null, this.i.W() ? flt.b() : flt.a());
+   }
+
+   public void a(xv $$0, @Nullable yh $$1, @Nullable flt $$2) {
+      fls $$3 = new fls(this.i.m.e(), $$0, $$1, $$2);
+      this.a($$3);
+      this.b($$3);
+      this.c($$3);
+   }
+
+   private void a(fls $$0) {
+      String $$1 = $$0.c().getString().replaceAll("\r", "\\\\r").replaceAll("\n", "\\\\n");
+      String $$2 = x.a($$0.e(), flt::h);
+      if ($$2 != null) {
+         a.info("[{}] [CHAT] {}", $$2, $$1);
+      } else {
+         a.info("[CHAT] {}", $$1);
+      }
+   }
+
+   private void b(fls $$0) {
+      int $$1 = bae.a((double)this.f() / this.h());
+      flt.a $$2 = $$0.a();
+      if ($$2 != null) {
+         $$1 -= $$2.c + 4 + 2;
       }
 
-      return this.b($$0, $$1, $$2, $$3);
+      List<azq> $$3 = fod.a($$0.c(), $$1, this.i.h);
+      boolean $$4 = this.e();
+
+      for (int $$5 = 0; $$5 < $$3.size(); $$5++) {
+         azq $$6 = $$3.get($$5);
+         if ($$4 && this.m > 0) {
+            this.n = true;
+            this.a(1);
+         }
+
+         boolean $$7 = $$5 == $$3.size() - 1;
+         this.l.add(0, new fls.a($$0.b(), $$6, $$0.e(), $$7));
+      }
+
+      while (this.l.size() > 100) {
+         this.l.remove(this.l.size() - 1);
+      }
+   }
+
+   private void c(fls $$0) {
+      this.k.add(0, $$0);
+
+      while (this.k.size() > 100) {
+         this.k.remove(this.k.size() - 1);
+      }
+   }
+
+   private void m() {
+      int $$0 = this.i.m.e();
+      this.o.removeIf($$1 -> $$0 >= $$1.b() ? this.b($$1.a()) == null : false);
+   }
+
+   public void a(yh $$0) {
+      fnz.a $$1 = this.b($$0);
+      if ($$1 != null) {
+         this.o.add($$1);
+      }
    }
 
    @Nullable
-   private fln b(fql $$0, fqj $$1, @Nullable foa $$2, fqh $$3) {
-      fqi $$4 = $$1.a();
-      fqi $$5 = $$4.a();
-      List<Pair<foa, Long>> $$6 = new ArrayList<>();
-      fqk $$7 = fqk.a($$4, $$0.b($$1), $$0.b($$5));
+   private fnz.a b(yh $$0) {
+      int $$1 = this.i.m.e();
+      ListIterator<fls> $$2 = this.k.listIterator();
 
-      for (foa $$8 : this.aH_()) {
-         if ($$8 != $$2) {
-            fql $$9 = $$8.H();
-            fqk $$10 = fqk.a($$4, $$9.b($$1.b()), $$9.b($$5));
-            if ($$1.a($$10.a($$4), $$7.a($$4))) {
-               long $$11 = Vector2i.distanceSquared($$7.a(), $$7.b(), $$10.a(), $$10.b());
-               $$6.add(Pair.of($$8, $$11));
+      while ($$2.hasNext()) {
+         fls $$3 = $$2.next();
+         if ($$0.equals($$3.d())) {
+            int $$4 = $$3.b() + 60;
+            if ($$1 >= $$4) {
+               $$2.set(this.d($$3));
+               this.n();
+               return null;
             }
-         }
-      }
 
-      $$6.sort(Comparator.comparingDouble(Pair::getSecond));
-
-      for (Pair<foa, Long> $$12 : $$6) {
-         fln $$13 = ((foa)$$12.getFirst()).a($$3);
-         if ($$13 != null) {
-            return $$13;
+            return new fnz.a($$0, $$4);
          }
       }
 
       return null;
+   }
+
+   private fls d(fls $$0) {
+      return new fls($$0.b(), h, null, flt.a());
+   }
+
+   public void b() {
+      this.d();
+      this.n();
+   }
+
+   private void n() {
+      this.l.clear();
+
+      for (fls $$0 : Lists.reverse(this.k)) {
+         this.b($$0);
+      }
+   }
+
+   public ayr<String> c() {
+      return this.j;
+   }
+
+   public void a(String $$0) {
+      if (!$$0.equals(this.j.peekLast())) {
+         if (this.j.size() >= 100) {
+            this.j.removeFirst();
+         }
+
+         this.j.addLast($$0);
+      }
+
+      if ($$0.startsWith("/")) {
+         this.i.be().a($$0);
+      }
+   }
+
+   public void d() {
+      this.m = 0;
+      this.n = false;
+   }
+
+   public void a(int $$0) {
+      this.m += $$0;
+      int $$1 = this.l.size();
+      if (this.m > $$1 - this.j()) {
+         this.m = $$1 - this.j();
+      }
+
+      if (this.m <= 0) {
+         this.m = 0;
+         this.n = false;
+      }
+   }
+
+   public boolean a(double $$0, double $$1) {
+      if (this.e() && !this.i.n.X && !this.l()) {
+         gfx $$2 = this.i.ba();
+         if ($$2.c() == 0L) {
+            return false;
+         } else {
+            double $$3 = $$0 - 2.0;
+            double $$4 = (double)this.i.aO().p() - $$1 - 40.0;
+            if ($$3 <= (double)bae.a((double)this.f() / this.h()) && $$4 < 0.0 && $$4 > (double)bae.a(-9.0 * this.h())) {
+               $$2.b();
+               return true;
+            } else {
+               return false;
+            }
+         }
+      } else {
+         return false;
+      }
+   }
+
+   @Nullable
+   public ys b(double $$0, double $$1) {
+      double $$2 = this.c($$0);
+      double $$3 = this.d($$1);
+      int $$4 = this.e($$2, $$3);
+      if ($$4 >= 0 && $$4 < this.l.size()) {
+         fls.a $$5 = this.l.get($$4);
+         return this.i.h.b().a($$5.b(), bae.a($$2));
+      } else {
+         return null;
+      }
+   }
+
+   @Nullable
+   public flt c(double $$0, double $$1) {
+      double $$2 = this.c($$0);
+      double $$3 = this.d($$1);
+      int $$4 = this.d($$2, $$3);
+      if ($$4 >= 0 && $$4 < this.l.size()) {
+         fls.a $$5 = this.l.get($$4);
+         flt $$6 = $$5.c();
+         if ($$6 != null && this.a($$2, $$5, $$6)) {
+            return $$6;
+         }
+      }
+
+      return null;
+   }
+
+   private boolean a(double $$0, fls.a $$1, flt $$2) {
+      if ($$0 < 0.0) {
+         return true;
+      } else {
+         flt.a $$3 = $$2.f();
+         if ($$3 == null) {
+            return false;
+         } else {
+            int $$4 = this.a($$1);
+            int $$5 = $$4 + $$3.c;
+            return $$0 >= (double)$$4 && $$0 <= (double)$$5;
+         }
+      }
+   }
+
+   private double c(double $$0) {
+      return $$0 / this.h() - 4.0;
+   }
+
+   private double d(double $$0) {
+      double $$1 = (double)this.i.aO().p() - $$0 - 40.0;
+      return $$1 / (this.h() * (double)this.o());
+   }
+
+   private int d(double $$0, double $$1) {
+      int $$2 = this.e($$0, $$1);
+      if ($$2 == -1) {
+         return -1;
+      } else {
+         while ($$2 >= 0) {
+            if (this.l.get($$2).d()) {
+               return $$2;
+            }
+
+            $$2--;
+         }
+
+         return $$2;
+      }
+   }
+
+   private int e(double $$0, double $$1) {
+      if (this.e() && !this.l()) {
+         if (!($$0 < -4.0) && !($$0 > (double)bae.a((double)this.f() / this.h()))) {
+            int $$2 = Math.min(this.j(), this.l.size());
+            if ($$1 >= 0.0 && $$1 < (double)$$2) {
+               int $$3 = bae.a($$1 + (double)this.m);
+               if ($$3 >= 0 && $$3 < this.l.size()) {
+                  return $$3;
+               }
+            }
+
+            return -1;
+         } else {
+            return -1;
+         }
+      } else {
+         return -1;
+      }
+   }
+
+   public boolean e() {
+      return this.i.z instanceof fsn;
+   }
+
+   public int f() {
+      return a(this.i.n.z().c());
+   }
+
+   public int g() {
+      return b(this.e() ? this.i.n.B().c() : this.i.n.A().c());
+   }
+
+   public double h() {
+      return this.i.n.y().c();
+   }
+
+   public static int a(double $$0) {
+      int $$1 = 320;
+      int $$2 = 40;
+      return bae.a($$0 * 280.0 + 40.0);
+   }
+
+   public static int b(double $$0) {
+      int $$1 = 180;
+      int $$2 = 20;
+      return bae.a($$0 * 160.0 + 20.0);
+   }
+
+   public static double i() {
+      int $$0 = 180;
+      int $$1 = 20;
+      return 70.0 / (double)(b(1.0) - 20);
+   }
+
+   public int j() {
+      return this.g() / this.o();
+   }
+
+   private int o() {
+      return (int)(9.0 * (this.i.n.p().c() + 1.0));
+   }
+
+   public fnz.b k() {
+      return new fnz.b(List.copyOf(this.k), List.copyOf(this.j), List.copyOf(this.o));
+   }
+
+   public void a(fnz.b $$0) {
+      this.j.clear();
+      this.j.addAll($$0.b);
+      this.o.clear();
+      this.o.addAll($$0.c);
+      this.k.clear();
+      this.k.addAll($$0.a);
+      this.n();
+   }
+
+   static record a(yh a, int b) {
+   }
+
+   public static class b {
+      final List<fls> a;
+      final List<String> b;
+      final List<fnz.a> c;
+
+      public b(List<fls> $$0, List<String> $$1, List<fnz.a> $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
    }
 }

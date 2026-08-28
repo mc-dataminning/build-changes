@@ -1,21 +1,92 @@
-import java.util.function.Function;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class pe {
-   private final Function<dao, dba<?>> a;
+public class pe implements oz {
+   private final jr<cxg> b;
+   private final pa c;
+   private final cxk d;
+   private final List<dbv> e = new ArrayList<>();
+   private final Map<String, ap<?>> f = new LinkedHashMap<>();
+   @Nullable
+   private String g;
 
-   public pe(Function<dao, dba<?>> $$0) {
-      this.a = $$0;
+   private pe(jr<cxg> $$0, pa $$1, cxk $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public static pe a(Function<dao, dba<?>> $$0) {
-      return new pe($$0);
+   public static pe a(jr<cxg> $$0, pa $$1, cxk $$2) {
+      return new pe($$0, $$1, $$2);
    }
 
-   public void a(ow $$0, String $$1) {
-      this.a($$0, alj.a($$1));
+   public static pe a(jr<cxg> $$0, pa $$1, dgz $$2) {
+      return a($$0, $$1, $$2, 1);
    }
 
-   public void a(ow $$0, alj $$1) {
-      $$0.a($$1, this.a.apply(dao.d), null);
+   public static pe a(jr<cxg> $$0, pa $$1, dgz $$2, int $$3) {
+      return new pe($$0, $$1, $$2.j().n().c($$3));
+   }
+
+   public pe a(ayk<cxg> $$0) {
+      return this.a(dbv.a(this.b.b($$0)));
+   }
+
+   public pe b(dgz $$0) {
+      return this.a($$0, 1);
+   }
+
+   public pe a(dgz $$0, int $$1) {
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         this.a(dbv.a($$0));
+      }
+
+      return this;
+   }
+
+   public pe a(dbv $$0) {
+      return this.a($$0, 1);
+   }
+
+   public pe a(dbv $$0, int $$1) {
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         this.e.add($$0);
+      }
+
+      return this;
+   }
+
+   public pe b(String $$0, ap<?> $$1) {
+      this.f.put($$0, $$1);
+      return this;
+   }
+
+   public pe b(@Nullable String $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   @Override
+   public cxg a() {
+      return this.d.h();
+   }
+
+   @Override
+   public void a(pb $$0, aly<dbz<?>> $$1) {
+      this.a($$1);
+      ag.a $$2 = $$0.a().a("has_the_recipe", dv.a($$1)).a(al.a.c($$1)).a(ak.a.b);
+      this.f.forEach($$2::a);
+      dco $$3 = new dco(Objects.requireNonNullElse(this.g, ""), oz.a(this.c), this.d, this.e);
+      $$0.a($$1, $$3, $$2.b($$1.a().f("recipes/" + this.c.a() + "/")));
+   }
+
+   private void a(aly<dbz<?>> $$0) {
+      if (this.f.isEmpty()) {
+         throw new IllegalStateException("No way of obtaining recipe " + $$0.a());
+      }
    }
 }

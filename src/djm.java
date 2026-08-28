@@ -1,29 +1,20 @@
-import java.util.function.ToIntFunction;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface djm {
-   fas s_ = diq.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
-   dwm t_ = dwl.D;
+public class djm extends djo {
+   public static final MapCodec<djm> a = b(djm::new);
+   private static final fcm b = dke.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
 
-   static bsk a(@Nullable bul $$0, dvv $$1, dfm $$2, jh $$3) {
-      if ($$1.c(t_)) {
-         diq.a($$2, $$3, new cwm(cwq.wO, 1));
-         float $$4 = azm.b($$2.A, 0.8F, 1.2F);
-         $$2.a(null, $$3, awn.ef, awo.e, 1.0F, $$4);
-         dvv $$5 = $$1.b(t_, Boolean.valueOf(false));
-         $$2.a($$3, $$5, 2);
-         $$2.a(ear.c, $$3, ear.a.a($$0, $$5));
-         return bsk.a;
-      } else {
-         return bsk.e;
-      }
+   @Override
+   public MapCodec<? extends djm> a() {
+      return a;
    }
 
-   static boolean j_(dvv $$0) {
-      return $$0.b(t_) && $$0.c(t_);
+   protected djm(dxm.d $$0) {
+      super($$0);
    }
 
-   static ToIntFunction<dvv> i_(int $$0) {
-      return $$1 -> $$1.c(dwl.D) ? $$0 : 0;
+   @Override
+   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
+      return b;
    }
 }

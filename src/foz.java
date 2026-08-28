@@ -1,276 +1,82 @@
-import java.util.function.Consumer;
-import java.util.function.Predicate;
 import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class foz {
-   private final Supplier<String> a;
-   private final Consumer<String> b;
-   private final Supplier<String> c;
-   private final Consumer<String> d;
-   private final Predicate<String> e;
-   private int f;
-   private int g;
+public class foz extends fnw {
+   private static final float a = 0.0625F;
+   private static final float b = 2.125F;
+   private static final float c = 100.0F;
+   private static final float d = 2.5F;
+   private static final float e = -5.0F;
+   private static final float f = 30.0F;
+   private static final float m = 50.0F;
+   private final foz.a n;
+   private final Supplier<hcf> o;
+   private float p = -5.0F;
+   private float q = 30.0F;
 
-   public foz(Supplier<String> $$0, Consumer<String> $$1, Supplier<String> $$2, Consumer<String> $$3, Predicate<String> $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f();
+   public foz(int $$0, int $$1, ged $$2, Supplier<hcf> $$3) {
+      super(0, 0, $$0, $$1, xu.a);
+      this.n = foz.a.a($$2);
+      this.o = $$3;
    }
 
-   public static Supplier<String> a(fke $$0) {
-      return () -> b($$0);
+   @Override
+   protected void b(fnl $$0, int $$1, int $$2, float $$3) {
+      $$0.c().a();
+      $$0.c().a((float)this.D() + (float)this.y() / 2.0F, (float)(this.E() + this.w()), 100.0F);
+      float $$4 = (float)this.w() / 2.125F;
+      $$0.c().b($$4, $$4, $$4);
+      $$0.c().a(0.0F, -0.0625F, 0.0F);
+      $$0.c().a(a.b.rotationDegrees(this.p), 0.0F, -1.0625F, 0.0F);
+      $$0.c().a(a.d.rotationDegrees(this.q));
+      $$0.d();
+      ffh.a(a.b.rotationDegrees(this.p));
+      this.n.a($$0, this.o.get());
+      $$0.d();
+      ffh.d();
+      $$0.c().b();
    }
 
-   public static String b(fke $$0) {
-      return n.a($$0.p.a().replaceAll("\\r", ""));
+   @Override
+   protected void b(double $$0, double $$1, double $$2, double $$3) {
+      this.p = bae.a(this.p - (float)$$3 * 2.5F, -50.0F, 50.0F);
+      this.q += (float)$$2 * 2.5F;
    }
 
-   public static Consumer<String> c(fke $$0) {
-      return $$1 -> a($$0, $$1);
+   @Override
+   public void a(hgg $$0) {
    }
 
-   public static void a(fke $$0, String $$1) {
-      $$0.p.a($$1);
+   @Override
+   protected void a(frw $$0) {
    }
 
-   public boolean a(char $$0) {
-      if (baj.a($$0)) {
-         this.a(this.a.get(), Character.toString($$0));
+   @Override
+   public boolean C() {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public fni a(fsc $$0) {
+      return null;
+   }
+
+   static record a(gck a, gck b) {
+      public static foz.a a(ged $$0) {
+         gck $$1 = new gck($$0.a(geg.cb), false);
+         gck $$2 = new gck($$0.a(geg.ch), true);
+         return new foz.a($$1, $$2);
       }
 
-      return true;
-   }
-
-   public boolean a(int $$0) {
-      if (frw.f($$0)) {
-         this.d();
-         return true;
-      } else if (frw.e($$0)) {
-         this.c();
-         return true;
-      } else if (frw.d($$0)) {
-         this.b();
-         return true;
-      } else if (frw.c($$0)) {
-         this.a();
-         return true;
-      } else {
-         foz.a $$1 = frw.s() ? foz.a.b : foz.a.a;
-         if ($$0 == 259) {
-            this.a(-1, $$1);
-            return true;
-         } else {
-            if ($$0 == 261) {
-               this.a(1, $$1);
-            } else {
-               if ($$0 == 263) {
-                  this.a(-1, frw.t(), $$1);
-                  return true;
-               }
-
-               if ($$0 == 262) {
-                  this.a(1, frw.t(), $$1);
-                  return true;
-               }
-
-               if ($$0 == 268) {
-                  this.a(frw.t());
-                  return true;
-               }
-
-               if ($$0 == 269) {
-                  this.b(frw.t());
-                  return true;
-               }
-            }
-
-            return false;
-         }
+      public void a(fnl $$0, hcf $$1) {
+         $$0.c().a();
+         $$0.c().b(1.0F, 1.0F, -1.0F);
+         $$0.c().a(0.0F, -1.501F, 0.0F);
+         gck $$2 = $$1.e() == hcf.a.a ? this.b : this.a;
+         glo $$3 = $$2.a($$1.a());
+         $$0.a($$3x -> $$2.a($$0.c(), $$3x.getBuffer($$3), 15728880, hav.d));
+         $$0.c().b();
       }
-   }
-
-   private int h(int $$0) {
-      return azm.a($$0, 0, this.a.get().length());
-   }
-
-   private void a(String $$0, String $$1) {
-      if (this.g != this.f) {
-         $$0 = this.c($$0);
-      }
-
-      this.f = azm.a(this.f, 0, $$0.length());
-      String $$2 = new StringBuilder($$0).insert(this.f, $$1).toString();
-      if (this.e.test($$2)) {
-         this.b.accept($$2);
-         this.g = this.f = Math.min($$2.length(), this.f + $$1.length());
-      }
-   }
-
-   public void a(String $$0) {
-      this.a(this.a.get(), $$0);
-   }
-
-   private void c(boolean $$0) {
-      if (!$$0) {
-         this.g = this.f;
-      }
-   }
-
-   public void a(int $$0, boolean $$1, foz.a $$2) {
-      switch ($$2) {
-         case a:
-            this.a($$0, $$1);
-            break;
-         case b:
-            this.b($$0, $$1);
-      }
-   }
-
-   public void b(int $$0) {
-      this.a($$0, false);
-   }
-
-   public void a(int $$0, boolean $$1) {
-      this.f = ae.a(this.a.get(), this.f, $$0);
-      this.c($$1);
-   }
-
-   public void c(int $$0) {
-      this.b($$0, false);
-   }
-
-   public void b(int $$0, boolean $$1) {
-      this.f = fkp.a(this.a.get(), $$0, this.f, true);
-      this.c($$1);
-   }
-
-   public void a(int $$0, foz.a $$1) {
-      switch ($$1) {
-         case a:
-            this.e($$0);
-            break;
-         case b:
-            this.d($$0);
-      }
-   }
-
-   public void d(int $$0) {
-      int $$1 = fkp.a(this.a.get(), $$0, this.f, true);
-      this.e($$1 - this.f);
-   }
-
-   public void e(int $$0) {
-      String $$1 = this.a.get();
-      if (!$$1.isEmpty()) {
-         String $$2;
-         if (this.g != this.f) {
-            $$2 = this.c($$1);
-         } else {
-            int $$3 = ae.a($$1, this.f, $$0);
-            int $$4 = Math.min($$3, this.f);
-            int $$5 = Math.max($$3, this.f);
-            $$2 = new StringBuilder($$1).delete($$4, $$5).toString();
-            if ($$0 < 0) {
-               this.g = this.f = $$4;
-            }
-         }
-
-         this.b.accept($$2);
-      }
-   }
-
-   public void a() {
-      String $$0 = this.a.get();
-      this.d.accept(this.b($$0));
-      this.b.accept(this.c($$0));
-   }
-
-   public void b() {
-      this.a(this.a.get(), this.c.get());
-      this.g = this.f;
-   }
-
-   public void c() {
-      this.d.accept(this.b(this.a.get()));
-   }
-
-   public void d() {
-      this.g = 0;
-      this.f = this.a.get().length();
-   }
-
-   private String b(String $$0) {
-      int $$1 = Math.min(this.f, this.g);
-      int $$2 = Math.max(this.f, this.g);
-      return $$0.substring($$1, $$2);
-   }
-
-   private String c(String $$0) {
-      if (this.g == this.f) {
-         return $$0;
-      } else {
-         int $$1 = Math.min(this.f, this.g);
-         int $$2 = Math.max(this.f, this.g);
-         String $$3 = $$0.substring(0, $$1) + $$0.substring($$2);
-         this.g = this.f = $$1;
-         return $$3;
-      }
-   }
-
-   public void e() {
-      this.a(false);
-   }
-
-   public void a(boolean $$0) {
-      this.f = 0;
-      this.c($$0);
-   }
-
-   public void f() {
-      this.b(false);
-   }
-
-   public void b(boolean $$0) {
-      this.f = this.a.get().length();
-      this.c($$0);
-   }
-
-   public int g() {
-      return this.f;
-   }
-
-   public void f(int $$0) {
-      this.c($$0, true);
-   }
-
-   public void c(int $$0, boolean $$1) {
-      this.f = this.h($$0);
-      this.c($$1);
-   }
-
-   public int h() {
-      return this.g;
-   }
-
-   public void g(int $$0) {
-      this.g = this.h($$0);
-   }
-
-   public void a(int $$0, int $$1) {
-      int $$2 = this.a.get().length();
-      this.f = azm.a($$0, 0, $$2);
-      this.g = azm.a($$1, 0, $$2);
-   }
-
-   public boolean i() {
-      return this.f != this.g;
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

@@ -1,44 +1,71 @@
-public class hcr extends hck {
-   public static final int n = 20;
-   private final gic o;
-   private int p;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
 
-   public hcr(gic $$0) {
-      super(awn.hX, awo.h, hdb.t());
-      this.o = $$0;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.1F;
+public class hcr implements aut<hcq> {
+   public hcq b(JsonObject $$0) {
+      Builder<hcp> $$1 = ImmutableList.builder();
+      int $$2 = azu.a($$0, "frametime", 1);
+      if ($$2 != 1) {
+         Validate.inclusiveBetween(1L, 2147483647L, (long)$$2, "Invalid default frame time");
+      }
+
+      if ($$0.has("frames")) {
+         try {
+            JsonArray $$3 = azu.v($$0, "frames");
+
+            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+               JsonElement $$5 = $$3.get($$4);
+               hcp $$6 = this.a($$4, $$5);
+               if ($$6 != null) {
+                  $$1.add($$6);
+               }
+            }
+         } catch (ClassCastException var8) {
+            throw new JsonParseException("Invalid animation->frames: expected array, was " + $$0.get("frames"), var8);
+         }
+      }
+
+      int $$8 = azu.a($$0, "width", -1);
+      int $$9 = azu.a($$0, "height", -1);
+      if ($$8 != -1) {
+         Validate.inclusiveBetween(1L, 2147483647L, (long)$$8, "Invalid width");
+      }
+
+      if ($$9 != -1) {
+         Validate.inclusiveBetween(1L, 2147483647L, (long)$$9, "Invalid height");
+      }
+
+      boolean $$10 = azu.a($$0, "interpolate", false);
+      return new hcq($$1.build(), $$8, $$9, $$2, $$10);
+   }
+
+   @Nullable
+   private hcp a(int $$0, JsonElement $$1) {
+      if ($$1.isJsonPrimitive()) {
+         return new hcp(azu.g($$1, "frames[" + $$0 + "]"));
+      } else if ($$1.isJsonObject()) {
+         JsonObject $$2 = azu.m($$1, "frames[" + $$0 + "]");
+         int $$3 = azu.a($$2, "time", -1);
+         if ($$2.has("time")) {
+            Validate.inclusiveBetween(1L, 2147483647L, (long)$$3, "Invalid frame time");
+         }
+
+         int $$4 = azu.o($$2, "index");
+         Validate.inclusiveBetween(0L, 2147483647L, (long)$$4, "Invalid frame index");
+         return new hcp($$4, $$3);
+      } else {
+         return null;
+      }
    }
 
    @Override
-   public void q() {
-      this.p++;
-      if (!this.o.dQ() && (this.p <= 20 || this.o.fH())) {
-         this.f = (double)((float)this.o.dA());
-         this.g = (double)((float)this.o.dC());
-         this.h = (double)((float)this.o.dG());
-         float $$0 = (float)this.o.dy().h();
-         if ((double)$$0 >= 1.0E-7) {
-            this.d = azm.a($$0 / 4.0F, 0.0F, 1.0F);
-         } else {
-            this.d = 0.0F;
-         }
-
-         if (this.p < 20) {
-            this.d = 0.0F;
-         } else if (this.p < 40) {
-            this.d = this.d * ((float)(this.p - 20) / 20.0F);
-         }
-
-         float $$1 = 0.8F;
-         if (this.d > 0.8F) {
-            this.e = 1.0F + (this.d - 0.8F);
-         } else {
-            this.e = 1.0F;
-         }
-      } else {
-         this.n();
-      }
+   public String a() {
+      return "animation";
    }
 }

@@ -1,100 +1,786 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class ese extends esr {
-   private final boolean l;
-   private float m;
-   private float n;
+public class ese {
+   public static final String a = "palette";
+   public static final String b = "palettes";
+   public static final String c = "entities";
+   public static final String d = "blocks";
+   public static final String e = "pos";
+   public static final String f = "state";
+   public static final String g = "nbt";
+   public static final String h = "pos";
+   public static final String i = "blockPos";
+   public static final String j = "nbt";
+   public static final String k = "size";
+   private final List<ese.b> l = Lists.newArrayList();
+   private final List<ese.e> m = Lists.newArrayList();
+   private kl n = kl.g;
+   private String o = "?";
 
-   public ese(boolean $$0) {
-      this.l = $$0;
+   public kl a() {
+      return this.n;
    }
 
-   @Override
-   public void a(dfz $$0, bvj $$1) {
-      super.a($$0, $$1);
-      $$1.a(esm.j, 0.0F);
-      this.m = $$1.a(esm.c);
-      $$1.a(esm.c, 6.0F);
-      this.n = $$1.a(esm.k);
-      $$1.a(esm.k, 4.0F);
+   public void a(String $$0) {
+      this.o = $$0;
    }
 
-   @Override
-   public void b() {
-      this.b.a(esm.c, this.m);
-      this.b.a(esm.k, this.n);
-      super.b();
+   public String b() {
+      return this.o;
    }
 
-   @Override
-   public esh a() {
-      return !this.b.bj() ? super.a() : this.c(new jh(azm.a(this.b.cR().a), azm.a(this.b.cR().b + 0.5), azm.a(this.b.cR().c)));
-   }
+   public void a(dha $$0, jh $$1, kl $$2, boolean $$3, @Nullable dke $$4) {
+      if ($$2.u() >= 1 && $$2.v() >= 1 && $$2.w() >= 1) {
+         jh $$5 = $$1.a($$2).b(-1, -1, -1);
+         List<ese.d> $$6 = Lists.newArrayList();
+         List<ese.d> $$7 = Lists.newArrayList();
+         List<ese.d> $$8 = Lists.newArrayList();
+         jh $$9 = new jh(Math.min($$1.u(), $$5.u()), Math.min($$1.v(), $$5.v()), Math.min($$1.w(), $$5.w()));
+         jh $$10 = new jh(Math.max($$1.u(), $$5.u()), Math.max($$1.v(), $$5.v()), Math.max($$1.w(), $$5.w()));
+         this.n = $$2;
 
-   @Override
-   public esq a(double $$0, double $$1, double $$2) {
-      return this.b($$0, $$1 + 0.5, $$2);
-   }
+         for (jh $$11 : jh.c($$9, $$10)) {
+            jh $$12 = $$11.b($$9);
+            dxn $$13 = $$0.a_($$11);
+            if ($$4 == null || !$$13.a($$4)) {
+               dup $$14 = $$0.c_($$11);
+               ese.d $$15;
+               if ($$14 != null) {
+                  $$15 = new ese.d($$12, $$13, $$14.c($$0.K_()));
+               } else {
+                  $$15 = new ese.d($$12, $$13, null);
+               }
 
-   @Override
-   public int a(esh[] $$0, esh $$1) {
-      int $$2 = super.a($$0, $$1);
-      esm $$3 = this.b($$1.a, $$1.b + 1, $$1.c);
-      esm $$4 = this.b($$1.a, $$1.b, $$1.c);
-      int $$5;
-      if (this.b.a($$3) >= 0.0F && $$4 != esm.w) {
-         $$5 = azm.d(Math.max(1.0F, this.b.dP()));
-      } else {
-         $$5 = 0;
-      }
-
-      double $$7 = this.d(new jh($$1.a, $$1.b, $$1.c));
-      esh $$8 = this.a($$1.a, $$1.b + 1, $$1.c, Math.max(0, $$5 - 1), $$7, jm.b, $$4);
-      esh $$9 = this.a($$1.a, $$1.b - 1, $$1.c, $$5, $$7, jm.a, $$4);
-      if (this.b($$8, $$1)) {
-         $$0[$$2++] = $$8;
-      }
-
-      if (this.b($$9, $$1) && $$4 != esm.e) {
-         $$0[$$2++] = $$9;
-      }
-
-      for (int $$10 = 0; $$10 < $$2; $$10++) {
-         esh $$11 = $$0[$$10];
-         if ($$11.l == esm.j && this.l && $$11.b < this.b.dV().O() - 10) {
-            $$11.k++;
-         }
-      }
-
-      return $$2;
-   }
-
-   private boolean b(@Nullable esh $$0, esh $$1) {
-      return this.a($$0, $$1) && $$0.l == esm.j;
-   }
-
-   @Override
-   protected boolean c() {
-      return true;
-   }
-
-   @Override
-   public esm a(eso $$0, int $$1, int $$2, int $$3) {
-      esm $$4 = $$0.a($$1, $$2, $$3);
-      if ($$4 == esm.j) {
-         jh.a $$5 = new jh.a();
-
-         for (jm $$6 : jm.values()) {
-            $$5.d($$1, $$2, $$3).c($$6);
-            esm $$7 = $$0.a($$5.u(), $$5.v(), $$5.w());
-            if ($$7 == esm.a) {
-               return esm.k;
+               a($$15, $$6, $$7, $$8);
             }
          }
 
-         return esm.j;
+         List<ese.d> $$17 = a($$6, $$7, $$8);
+         this.l.clear();
+         this.l.add(new ese.b($$17));
+         if ($$3) {
+            this.a($$0, $$9, $$10);
+         } else {
+            this.m.clear();
+         }
+      }
+   }
+
+   private static void a(ese.d $$0, List<ese.d> $$1, List<ese.d> $$2, List<ese.d> $$3) {
+      if ($$0.c != null) {
+         $$2.add($$0);
+      } else if (!$$0.b.b().n() && $$0.b.m(dgp.a, jh.c)) {
+         $$1.add($$0);
       } else {
-         return super.a($$0, $$1, $$2, $$3);
+         $$3.add($$0);
+      }
+   }
+
+   private static List<ese.d> a(List<ese.d> $$0, List<ese.d> $$1, List<ese.d> $$2) {
+      Comparator<ese.d> $$3 = Comparator.<ese.d>comparingInt($$0x -> $$0x.a.v()).thenComparingInt($$0x -> $$0x.a.u()).thenComparingInt($$0x -> $$0x.a.w());
+      $$0.sort($$3);
+      $$2.sort($$3);
+      $$1.sort($$3);
+      List<ese.d> $$4 = Lists.newArrayList();
+      $$4.addAll($$0);
+      $$4.addAll($$2);
+      $$4.addAll($$1);
+      return $$4;
+   }
+
+   private void a(dha $$0, jh $$1, jh $$2) {
+      List<bvf> $$3 = $$0.a(bvf.class, fbn.a($$1, $$2), $$0x -> !($$0x instanceof cps));
+      this.m.clear();
+
+      for (bvf $$4 : $$3) {
+         fbs $$5 = new fbs($$4.dA() - (double)$$1.u(), $$4.dC() - (double)$$1.v(), $$4.dG() - (double)$$1.w());
+         ux $$6 = new ux();
+         $$4.e($$6);
+         jh $$7;
+         if ($$4 instanceof clr) {
+            $$7 = ((clr)$$4).p().b($$1);
+         } else {
+            $$7 = jh.a((ka)$$5);
+         }
+
+         this.m.add(new ese.e($$5, $$7, $$6.i()));
+      }
+   }
+
+   public List<ese.d> a(jh $$0, esa $$1, dke $$2) {
+      return this.a($$0, $$1, $$2, true);
+   }
+
+   public List<ese.a> a(jh $$0, dqu $$1) {
+      if (this.l.isEmpty()) {
+         return new ArrayList<>();
+      } else {
+         esa $$2 = new esa().a($$1);
+         List<ese.a> $$3 = $$2.a(this.l, $$0).a();
+         List<ese.a> $$4 = new ArrayList<>($$3.size());
+
+         for (ese.a $$5 : $$3) {
+            ese.d $$6 = $$5.a;
+            $$4.add($$5.b(new ese.d(a($$2, $$6.a()).a((kl)$$0), $$6.b.a($$2.d()), $$6.c)));
+         }
+
+         return $$4;
+      }
+   }
+
+   public ObjectArrayList<ese.d> a(jh $$0, esa $$1, dke $$2, boolean $$3) {
+      ObjectArrayList<ese.d> $$4 = new ObjectArrayList();
+      enu $$5 = $$1.g();
+      if (this.l.isEmpty()) {
+         return $$4;
+      } else {
+         for (ese.d $$6 : $$1.a(this.l, $$0).a($$2)) {
+            jh $$7 = $$3 ? a($$1, $$6.a).a((kl)$$0) : $$6.a;
+            if ($$5 == null || $$5.b($$7)) {
+               $$4.add(new ese.d($$7, $$6.b.a($$1.d()), $$6.c));
+            }
+         }
+
+         return $$4;
+      }
+   }
+
+   public jh a(esa $$0, jh $$1, esa $$2, jh $$3) {
+      jh $$4 = a($$0, $$1);
+      jh $$5 = a($$2, $$3);
+      return $$4.b($$5);
+   }
+
+   public static jh a(esa $$0, jh $$1) {
+      return a($$1, $$0.c(), $$0.d(), $$0.e());
+   }
+
+   public boolean a(dhr $$0, jh $$1, jh $$2, esa $$3, bam $$4, int $$5) {
+      if (this.l.isEmpty()) {
+         return false;
+      } else {
+         List<ese.d> $$6 = $$3.a(this.l, $$1).b();
+         if ((!$$6.isEmpty() || !$$3.f() && !this.m.isEmpty()) && this.n.u() >= 1 && this.n.v() >= 1 && this.n.w() >= 1) {
+            enu $$7 = $$3.g();
+            List<jh> $$8 = Lists.newArrayListWithCapacity($$3.j() ? $$6.size() : 0);
+            List<jh> $$9 = Lists.newArrayListWithCapacity($$3.j() ? $$6.size() : 0);
+            List<Pair<jh, ux>> $$10 = Lists.newArrayListWithCapacity($$6.size());
+            int $$11 = Integer.MAX_VALUE;
+            int $$12 = Integer.MAX_VALUE;
+            int $$13 = Integer.MAX_VALUE;
+            int $$14 = Integer.MIN_VALUE;
+            int $$15 = Integer.MIN_VALUE;
+            int $$16 = Integer.MIN_VALUE;
+
+            for (ese.d $$18 : a($$0, $$1, $$2, $$3, $$6)) {
+               jh $$19 = $$18.a;
+               if ($$7 == null || $$7.b($$19)) {
+                  etp $$20 = $$3.j() ? $$0.b_($$19) : null;
+                  dxn $$21 = $$18.b.a($$3.c()).a($$3.d());
+                  if ($$18.c != null) {
+                     dup $$22 = $$0.c_($$19);
+                     bsv.a($$22);
+                     $$0.a($$19, dkg.in.m(), 20);
+                  }
+
+                  if ($$0.a($$19, $$21, $$5)) {
+                     $$11 = Math.min($$11, $$19.u());
+                     $$12 = Math.min($$12, $$19.v());
+                     $$13 = Math.min($$13, $$19.w());
+                     $$14 = Math.max($$14, $$19.u());
+                     $$15 = Math.max($$15, $$19.v());
+                     $$16 = Math.max($$16, $$19.w());
+                     $$10.add(Pair.of($$19, $$18.c));
+                     if ($$18.c != null) {
+                        dup $$23 = $$0.c_($$19);
+                        if ($$23 != null) {
+                           if ($$23 instanceof btk) {
+                              $$18.c.a("LootTableSeed", $$4.g());
+                           }
+
+                           $$23.c($$18.c, $$0.K_());
+                        }
+                     }
+
+                     if ($$20 != null) {
+                        if ($$21.y().b()) {
+                           $$9.add($$19);
+                        } else if ($$21.b() instanceof dox) {
+                           ((dox)$$21.b()).a($$0, $$19, $$21, $$20);
+                           if (!$$20.b()) {
+                              $$8.add($$19);
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+
+            boolean $$24 = true;
+            jm[] $$25 = new jm[]{jm.b, jm.c, jm.f, jm.d, jm.e};
+
+            while ($$24 && !$$8.isEmpty()) {
+               $$24 = false;
+               Iterator<jh> $$26 = $$8.iterator();
+
+               while ($$26.hasNext()) {
+                  jh $$27 = $$26.next();
+                  etp $$28 = $$0.b_($$27);
+
+                  for (int $$29 = 0; $$29 < $$25.length && !$$28.b(); $$29++) {
+                     jh $$30 = $$27.a($$25[$$29]);
+                     etp $$31 = $$0.b_($$30);
+                     if ($$31.b() && !$$9.contains($$30)) {
+                        $$28 = $$31;
+                     }
+                  }
+
+                  if ($$28.b()) {
+                     dxn $$32 = $$0.a_($$27);
+                     dke $$33 = $$32.b();
+                     if ($$33 instanceof dox) {
+                        ((dox)$$33).a($$0, $$27, $$32, $$28);
+                        $$24 = true;
+                        $$26.remove();
+                     }
+                  }
+               }
+            }
+
+            if ($$11 <= $$14) {
+               if (!$$3.h()) {
+                  fcb $$34 = new fbv($$14 - $$11 + 1, $$15 - $$12 + 1, $$16 - $$13 + 1);
+                  int $$35 = $$11;
+                  int $$36 = $$12;
+                  int $$37 = $$13;
+
+                  for (Pair<jh, ux> $$38 : $$10) {
+                     jh $$39 = (jh)$$38.getFirst();
+                     $$34.c($$39.u() - $$35, $$39.v() - $$36, $$39.w() - $$37);
+                  }
+
+                  a($$0, $$5, $$34, $$35, $$36, $$37);
+               }
+
+               for (Pair<jh, ux> $$40 : $$10) {
+                  jh $$41 = (jh)$$40.getFirst();
+                  if (!$$3.h()) {
+                     dxn $$42 = $$0.a_($$41);
+                     dxn $$43 = dke.b($$42, $$0, $$41);
+                     if ($$42 != $$43) {
+                        $$0.a($$41, $$43, $$5 & -2 | 16);
+                     }
+
+                     $$0.b($$41, $$43.b());
+                  }
+
+                  if ($$40.getSecond() != null) {
+                     dup $$44 = $$0.c_($$41);
+                     if ($$44 != null) {
+                        $$44.e();
+                     }
+                  }
+               }
+            }
+
+            if (!$$3.f()) {
+               this.a($$0, $$1, $$3.c(), $$3.d(), $$3.e(), $$7, $$3.k());
+            }
+
+            return true;
+         } else {
+            return false;
+         }
+      }
+   }
+
+   public static void a(dhb $$0, int $$1, fcb $$2, jh $$3) {
+      a($$0, $$1, $$2, $$3.u(), $$3.v(), $$3.w());
+   }
+
+   public static void a(dhb $$0, int $$1, fcb $$2, int $$3, int $$4, int $$5) {
+      jh.a $$6 = new jh.a();
+      jh.a $$7 = new jh.a();
+      $$2.a(($$7x, $$8, $$9, $$10) -> {
+         $$6.d($$3 + $$8, $$4 + $$9, $$5 + $$10);
+         $$7.a($$6, $$7x);
+         dxn $$11 = $$0.a_($$6);
+         dxn $$12 = $$0.a_($$7);
+         dxn $$13 = $$11.a($$0, $$0, $$6, $$7x, $$7, $$12, $$0.H_());
+         if ($$11 != $$13) {
+            $$0.a($$6, $$13, $$1 & -2);
+         }
+
+         dxn $$14 = $$12.a($$0, $$0, $$7, $$7x.g(), $$6, $$13, $$0.H_());
+         if ($$12 != $$14) {
+            $$0.a($$7, $$14, $$1 & -2);
+         }
+      });
+   }
+
+   public static List<ese.d> a(dhr $$0, jh $$1, jh $$2, esa $$3, List<ese.d> $$4) {
+      List<ese.d> $$5 = new ArrayList<>();
+      List<ese.d> $$6 = new ArrayList<>();
+
+      for (ese.d $$7 : $$4) {
+         jh $$8 = a($$3, $$7.a).a((kl)$$1);
+         ese.d $$9 = new ese.d($$8, $$7.b, $$7.c != null ? $$7.c.i() : null);
+         Iterator<esb> $$10 = $$3.i().iterator();
+
+         while ($$9 != null && $$10.hasNext()) {
+            $$9 = $$10.next().a($$0, $$1, $$2, $$7, $$9, $$3);
+         }
+
+         if ($$9 != null) {
+            $$6.add($$9);
+            $$5.add($$7);
+         }
+      }
+
+      for (esb $$11 : $$3.i()) {
+         $$6 = $$11.a($$0, $$1, $$2, $$5, $$6, $$3);
+      }
+
+      return $$6;
+   }
+
+   private void a(dhr $$0, jh $$1, dpd $$2, dqu $$3, jh $$4, @Nullable enu $$5, boolean $$6) {
+      for (ese.e $$7 : this.m) {
+         jh $$8 = a($$7.b, $$2, $$3, $$4).a((kl)$$1);
+         if ($$5 == null || $$5.b($$8)) {
+            ux $$9 = $$7.c.i();
+            fbs $$10 = a($$7.a, $$2, $$3, $$4);
+            fbs $$11 = $$10.b((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+            vd $$12 = new vd();
+            $$12.add(uy.a($$11.d));
+            $$12.add(uy.a($$11.e));
+            $$12.add(uy.a($$11.f));
+            $$9.a("Pos", $$12);
+            $$9.r("UUID");
+            a($$0, $$9).ifPresent($$5x -> {
+               float $$6x = $$5x.a($$3);
+               $$6x += $$5x.a($$2) - $$5x.dL();
+               $$5x.b($$11.d, $$11.e, $$11.f, $$6x, $$5x.dN());
+               if ($$6 && $$5x instanceof bwd) {
+                  ((bwd)$$5x).a($$0, $$0.d_(jh.a((ka)$$11)), bvl.d, null);
+               }
+
+               $$0.a_($$5x);
+            });
+         }
+      }
+   }
+
+   private static Optional<bvf> a(dhr $$0, ux $$1) {
+      try {
+         return bvm.a($$1, $$0.a(), bvl.d);
+      } catch (Exception var3) {
+         return Optional.empty();
+      }
+   }
+
+   public kl a(dqu $$0) {
+      switch ($$0) {
+         case d:
+         case b:
+            return new kl(this.n.w(), this.n.v(), this.n.u());
+         default:
+            return this.n;
+      }
+   }
+
+   public static jh a(jh $$0, dpd $$1, dqu $$2, jh $$3) {
+      int $$4 = $$0.u();
+      int $$5 = $$0.v();
+      int $$6 = $$0.w();
+      boolean $$7 = true;
+      switch ($$1) {
+         case b:
+            $$6 = -$$6;
+            break;
+         case c:
+            $$4 = -$$4;
+            break;
+         default:
+            $$7 = false;
+      }
+
+      int $$8 = $$3.u();
+      int $$9 = $$3.w();
+      switch ($$2) {
+         case d:
+            return new jh($$8 - $$9 + $$6, $$5, $$8 + $$9 - $$4);
+         case b:
+            return new jh($$8 + $$9 - $$6, $$5, $$9 - $$8 + $$4);
+         case c:
+            return new jh($$8 + $$8 - $$4, $$5, $$9 + $$9 - $$6);
+         default:
+            return $$7 ? new jh($$4, $$5, $$6) : $$0;
+      }
+   }
+
+   public static fbs a(fbs $$0, dpd $$1, dqu $$2, jh $$3) {
+      double $$4 = $$0.d;
+      double $$5 = $$0.e;
+      double $$6 = $$0.f;
+      boolean $$7 = true;
+      switch ($$1) {
+         case b:
+            $$6 = 1.0 - $$6;
+            break;
+         case c:
+            $$4 = 1.0 - $$4;
+            break;
+         default:
+            $$7 = false;
+      }
+
+      int $$8 = $$3.u();
+      int $$9 = $$3.w();
+      switch ($$2) {
+         case d:
+            return new fbs((double)($$8 - $$9) + $$6, $$5, (double)($$8 + $$9 + 1) - $$4);
+         case b:
+            return new fbs((double)($$8 + $$9 + 1) - $$6, $$5, (double)($$9 - $$8) + $$4);
+         case c:
+            return new fbs((double)($$8 + $$8 + 1) - $$4, $$5, (double)($$9 + $$9 + 1) - $$6);
+         default:
+            return $$7 ? new fbs($$4, $$5, $$6) : $$0;
+      }
+   }
+
+   public jh a(jh $$0, dpd $$1, dqu $$2) {
+      return a($$0, $$1, $$2, this.a().u(), this.a().w());
+   }
+
+   public static jh a(jh $$0, dpd $$1, dqu $$2, int $$3, int $$4) {
+      $$3--;
+      $$4--;
+      int $$5 = $$1 == dpd.c ? $$3 : 0;
+      int $$6 = $$1 == dpd.b ? $$4 : 0;
+      jh $$7 = $$0;
+      switch ($$2) {
+         case d:
+            $$7 = $$0.b($$6, 0, $$3 - $$5);
+            break;
+         case b:
+            $$7 = $$0.b($$4 - $$6, 0, $$5);
+            break;
+         case c:
+            $$7 = $$0.b($$3 - $$5, 0, $$4 - $$6);
+            break;
+         case a:
+            $$7 = $$0.b($$5, 0, $$6);
+      }
+
+      return $$7;
+   }
+
+   public enu b(esa $$0, jh $$1) {
+      return this.a($$1, $$0.d(), $$0.e(), $$0.c());
+   }
+
+   public enu a(jh $$0, dqu $$1, jh $$2, dpd $$3) {
+      return a($$0, $$1, $$2, $$3, this.n);
+   }
+
+   @VisibleForTesting
+   protected static enu a(jh $$0, dqu $$1, jh $$2, dpd $$3, kl $$4) {
+      kl $$5 = $$4.c(-1, -1, -1);
+      jh $$6 = a(jh.c, $$3, $$1, $$2);
+      jh $$7 = a(jh.c.a($$5), $$3, $$1, $$2);
+      return enu.a($$6, $$7).a((kl)$$0);
+   }
+
+   public ux a(ux $$0) {
+      if (this.l.isEmpty()) {
+         $$0.a("blocks", new vd());
+         $$0.a("palette", new vd());
+      } else {
+         List<ese.c> $$1 = Lists.newArrayList();
+         ese.c $$2 = new ese.c();
+         $$1.add($$2);
+
+         for (int $$3 = 1; $$3 < this.l.size(); $$3++) {
+            $$1.add(new ese.c());
+         }
+
+         vd $$4 = new vd();
+         List<ese.d> $$5 = this.l.get(0).b();
+
+         for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
+            ese.d $$7 = $$5.get($$6);
+            ux $$8 = new ux();
+            $$8.a("pos", this.a($$7.a.u(), $$7.a.v(), $$7.a.w()));
+            int $$9 = $$2.a($$7.b);
+            $$8.a("state", $$9);
+            if ($$7.c != null) {
+               $$8.a("nbt", $$7.c);
+            }
+
+            $$4.add($$8);
+
+            for (int $$10 = 1; $$10 < this.l.size(); $$10++) {
+               ese.c $$11 = $$1.get($$10);
+               $$11.a(this.l.get($$10).b().get($$6).b, $$9);
+            }
+         }
+
+         $$0.a("blocks", $$4);
+         if ($$1.size() == 1) {
+            vd $$12 = new vd();
+
+            for (dxn $$13 : $$2) {
+               $$12.add(vm.a($$13));
+            }
+
+            $$0.a("palette", $$12);
+         } else {
+            vd $$14 = new vd();
+
+            for (ese.c $$15 : $$1) {
+               vd $$16 = new vd();
+
+               for (dxn $$17 : $$15) {
+                  $$16.add(vm.a($$17));
+               }
+
+               $$14.add($$16);
+            }
+
+            $$0.a("palettes", $$14);
+         }
+      }
+
+      vd $$18 = new vd();
+
+      for (ese.e $$19 : this.m) {
+         ux $$20 = new ux();
+         $$20.a("pos", this.a($$19.a.d, $$19.a.e, $$19.a.f));
+         $$20.a("blockPos", this.a($$19.b.u(), $$19.b.v(), $$19.b.w()));
+         if ($$19.c != null) {
+            $$20.a("nbt", $$19.c);
+         }
+
+         $$18.add($$20);
+      }
+
+      $$0.a("entities", $$18);
+      $$0.a("size", this.a(this.n.u(), this.n.v(), this.n.w()));
+      return vm.e($$0);
+   }
+
+   public void a(jr<dke> $$0, ux $$1) {
+      this.l.clear();
+      this.m.clear();
+      vd $$2 = $$1.c("size", 3);
+      this.n = new kl($$2.e(0), $$2.e(1), $$2.e(2));
+      vd $$3 = $$1.c("blocks", 10);
+      if ($$1.b("palettes", 9)) {
+         vd $$4 = $$1.c("palettes", 9);
+
+         for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
+            this.a($$0, $$4.b($$5), $$3);
+         }
+      } else {
+         this.a($$0, $$1.c("palette", 10), $$3);
+      }
+
+      vd $$6 = $$1.c("entities", 10);
+
+      for (int $$7 = 0; $$7 < $$6.size(); $$7++) {
+         ux $$8 = $$6.a($$7);
+         vd $$9 = $$8.c("pos", 6);
+         fbs $$10 = new fbs($$9.h(0), $$9.h(1), $$9.h(2));
+         vd $$11 = $$8.c("blockPos", 3);
+         jh $$12 = new jh($$11.e(0), $$11.e(1), $$11.e(2));
+         if ($$8.e("nbt")) {
+            ux $$13 = $$8.p("nbt");
+            this.m.add(new ese.e($$10, $$12, $$13));
+         }
+      }
+   }
+
+   private void a(jr<dke> $$0, vd $$1, vd $$2) {
+      ese.c $$3 = new ese.c();
+
+      for (int $$4 = 0; $$4 < $$1.size(); $$4++) {
+         $$3.a(vm.a($$0, $$1.a($$4)), $$4);
+      }
+
+      List<ese.d> $$5 = Lists.newArrayList();
+      List<ese.d> $$6 = Lists.newArrayList();
+      List<ese.d> $$7 = Lists.newArrayList();
+
+      for (int $$8 = 0; $$8 < $$2.size(); $$8++) {
+         ux $$9 = $$2.a($$8);
+         vd $$10 = $$9.c("pos", 3);
+         jh $$11 = new jh($$10.e(0), $$10.e(1), $$10.e(2));
+         dxn $$12 = $$3.a($$9.h("state"));
+         ux $$13;
+         if ($$9.e("nbt")) {
+            $$13 = $$9.p("nbt");
+         } else {
+            $$13 = null;
+         }
+
+         ese.d $$15 = new ese.d($$11, $$12, $$13);
+         a($$15, $$5, $$6, $$7);
+      }
+
+      List<ese.d> $$16 = a($$5, $$6, $$7);
+      this.l.add(new ese.b($$16));
+   }
+
+   private vd a(int... $$0) {
+      vd $$1 = new vd();
+
+      for (int $$2 : $$0) {
+         $$1.add(vc.a($$2));
+      }
+
+      return $$1;
+   }
+
+   private vd a(double... $$0) {
+      vd $$1 = new vd();
+
+      for (double $$2 : $$0) {
+         $$1.add(uy.a($$2));
+      }
+
+      return $$1;
+   }
+
+   public static dvs.a a(ux $$0, dxn $$1) {
+      return dvs.a.c.a($$0.l("joint"), () -> doi.o($$1).o().d() ? dvs.a.b : dvs.a.a);
+   }
+
+   public static record a(ese.d a, dvs.a b, alz c, alz d, alz e, int f, int g) {
+
+      public static ese.a a(ese.d $$0) {
+         ux $$1 = Objects.requireNonNull($$0.c(), () -> $$0 + " nbt was null");
+         return new ese.a(
+            $$0,
+            ese.a($$1, $$0.b()),
+            alz.a($$1.l("name")),
+            alz.a($$1.l("pool")),
+            alz.a($$1.l("target")),
+            $$1.h("placement_priority"),
+            $$1.h("selection_priority")
+         );
+      }
+
+      @Override
+      public String toString() {
+         return String.format(
+            Locale.ROOT,
+            "<JigsawBlockInfo | %s | %s | name: %s | pool: %s | target: %s | placement: %d | selection: %d | %s>",
+            this.a.a,
+            this.a.b,
+            this.c,
+            this.d,
+            this.e,
+            this.f,
+            this.g,
+            this.a.c
+         );
+      }
+
+      public ese.a b(ese.d $$0) {
+         return new ese.a($$0, this.b, this.c, this.d, this.e, this.f, this.g);
+      }
+   }
+
+   public static final class b {
+      private final List<ese.d> a;
+      private final Map<dke, List<ese.d>> b = Maps.newHashMap();
+      @Nullable
+      private List<ese.a> c;
+
+      b(List<ese.d> $$0) {
+         this.a = $$0;
+      }
+
+      public List<ese.a> a() {
+         if (this.c == null) {
+            this.c = this.a(dkg.pw).stream().map(ese.a::a).toList();
+         }
+
+         return this.c;
+      }
+
+      public List<ese.d> b() {
+         return this.a;
+      }
+
+      public List<ese.d> a(dke $$0) {
+         return this.b.computeIfAbsent($$0, $$0x -> this.a.stream().filter($$1 -> $$1.b.a($$0x)).collect(Collectors.toList()));
+      }
+   }
+
+   static class c implements Iterable<dxn> {
+      public static final dxn a = dkg.a.m();
+      private final jw<dxn> b = new jw<>(16);
+      private int c;
+
+      public int a(dxn $$0) {
+         int $$1 = this.b.a($$0);
+         if ($$1 == -1) {
+            $$1 = this.c++;
+            this.b.a($$0, $$1);
+         }
+
+         return $$1;
+      }
+
+      @Nullable
+      public dxn a(int $$0) {
+         dxn $$1 = this.b.a($$0);
+         return $$1 == null ? a : $$1;
+      }
+
+      @Override
+      public Iterator<dxn> iterator() {
+         return this.b.iterator();
+      }
+
+      public void a(dxn $$0, int $$1) {
+         this.b.a($$0, $$1);
+      }
+   }
+
+   public static record d(jh a, dxn b, @Nullable ux c) {
+
+      @Override
+      public String toString() {
+         return String.format(Locale.ROOT, "<StructureBlockInfo | %s | %s | %s>", this.a, this.b, this.c);
+      }
+   }
+
+   public static class e {
+      public final fbs a;
+      public final jh b;
+      public final ux c;
+
+      public e(fbs $$0, jh $$1, ux $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
    }
 }

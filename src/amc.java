@@ -1,233 +1,80 @@
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import org.apache.commons.lang3.StringUtils;
 
-public class amc extends fbd {
-   private final MinecraftServer b;
-   private final Set<fav> c = Sets.newHashSet();
-   private final List<Runnable> d = Lists.newArrayList();
+public class amc extends IOException {
+   private final List<amc.a> a = Lists.newArrayList();
+   private final String b;
 
-   public amc(MinecraftServer $$0) {
+   public amc(String $$0) {
+      this.a.add(new amc.a());
       this.b = $$0;
    }
 
-   @Override
-   protected void a(fbc $$0, fav $$1, fba $$2) {
-      super.a($$0, $$1, $$2);
-      if (this.c.contains($$1)) {
-         this.b.ag().a(new afw($$0.cI(), $$1.b(), $$2.a(), Optional.ofNullable($$2.d()), Optional.ofNullable($$2.c())));
-      }
+   public amc(String $$0, Throwable $$1) {
+      super($$1);
+      this.a.add(new amc.a());
+      this.b = $$0;
+   }
 
-      this.a();
+   public void a(String $$0) {
+      this.a.get(0).a($$0);
+   }
+
+   public void b(String $$0) {
+      this.a.get(0).a = $$0;
+      this.a.add(0, new amc.a());
    }
 
    @Override
-   protected void a(fbc $$0, fav $$1) {
-      super.a($$0, $$1);
-      this.a();
+   public String getMessage() {
+      return "Invalid " + this.a.get(this.a.size() - 1) + ": " + this.b;
    }
 
-   @Override
-   public void a(fbc $$0) {
-      super.a($$0);
-      this.b.ag().a(new aet($$0.cI(), null));
-      this.a();
-   }
-
-   @Override
-   public void b(fbc $$0, fav $$1) {
-      super.b($$0, $$1);
-      if (this.c.contains($$1)) {
-         this.b.ag().a(new aet($$0.cI(), $$1.b()));
-      }
-
-      this.a();
-   }
-
-   @Override
-   public void a(fau $$0, @Nullable fav $$1) {
-      fav $$2 = this.a($$0);
-      super.a($$0, $$1);
-      if ($$2 != $$1 && $$2 != null) {
-         if (this.h($$2) > 0) {
-            this.b.ag().a(new afk($$0, $$1));
-         } else {
-            this.g($$2);
-         }
-      }
-
-      if ($$1 != null) {
-         if (this.c.contains($$1)) {
-            this.b.ag().a(new afk($$0, $$1));
-         } else {
-            this.e($$1);
-         }
-      }
-
-      this.a();
-   }
-
-   @Override
-   public boolean a(String $$0, fay $$1) {
-      if (super.a($$0, $$1)) {
-         this.b.ag().a(afv.a($$1, $$0, afv.a.a));
-         this.a();
-         return true;
+   public static amc a(Exception $$0) {
+      if ($$0 instanceof amc) {
+         return (amc)$$0;
       } else {
-         return false;
+         String $$1 = $$0.getMessage();
+         if ($$0 instanceof FileNotFoundException) {
+            $$1 = "File not found";
+         }
+
+         return new amc($$1, $$0);
       }
    }
 
-   @Override
-   public void b(String $$0, fay $$1) {
-      super.b($$0, $$1);
-      this.b.ag().a(afv.a($$1, $$0, afv.a.b));
-      this.a();
-   }
+   public static class a {
+      @Nullable
+      String a;
+      private final List<String> b = Lists.newArrayList();
 
-   @Override
-   public void a(fav $$0) {
-      super.a($$0);
-      this.a();
-   }
-
-   @Override
-   public void b(fav $$0) {
-      super.b($$0);
-      if (this.c.contains($$0)) {
-         this.b.ag().a(new afs($$0, 2));
+      a() {
       }
 
-      this.a();
-   }
-
-   @Override
-   public void c(fav $$0) {
-      super.c($$0);
-      if (this.c.contains($$0)) {
-         this.g($$0);
+      void a(String $$0) {
+         this.b.add(0, $$0);
       }
 
-      this.a();
-   }
-
-   @Override
-   public void a(fay $$0) {
-      super.a($$0);
-      this.b.ag().a(afv.a($$0, true));
-      this.a();
-   }
-
-   @Override
-   public void b(fay $$0) {
-      super.b($$0);
-      this.b.ag().a(afv.a($$0, false));
-      this.a();
-   }
-
-   @Override
-   public void c(fay $$0) {
-      super.c($$0);
-      this.b.ag().a(afv.a($$0));
-      this.a();
-   }
-
-   public void a(Runnable $$0) {
-      this.d.add($$0);
-   }
-
-   protected void a() {
-      for (Runnable $$0 : this.d) {
-         $$0.run();
+      @Nullable
+      public String a() {
+         return this.a;
       }
-   }
 
-   public List<zq<?>> d(fav $$0) {
-      List<zq<?>> $$1 = Lists.newArrayList();
-      $$1.add(new afs($$0, 0));
+      public String b() {
+         return StringUtils.join(this.b, "->");
+      }
 
-      for (fau $$2 : fau.values()) {
-         if (this.a($$2) == $$0) {
-            $$1.add(new afk($$2, $$0));
+      @Override
+      public String toString() {
+         if (this.a != null) {
+            return this.b.isEmpty() ? this.a : this.a + " " + this.b();
+         } else {
+            return this.b.isEmpty() ? "(Unknown file)" : "(Unknown file) " + this.b();
          }
       }
-
-      for (faw $$3 : this.i($$0)) {
-         $$1.add(new afw($$3.c(), $$0.b(), $$3.d(), Optional.ofNullable($$3.e()), Optional.ofNullable($$3.f())));
-      }
-
-      return $$1;
-   }
-
-   public void e(fav $$0) {
-      List<zq<?>> $$1 = this.d($$0);
-
-      for (arq $$2 : this.b.ag().t()) {
-         for (zq<?> $$3 : $$1) {
-            $$2.f.b($$3);
-         }
-      }
-
-      this.c.add($$0);
-   }
-
-   public List<zq<?>> f(fav $$0) {
-      List<zq<?>> $$1 = Lists.newArrayList();
-      $$1.add(new afs($$0, 1));
-
-      for (fau $$2 : fau.values()) {
-         if (this.a($$2) == $$0) {
-            $$1.add(new afk($$2, $$0));
-         }
-      }
-
-      return $$1;
-   }
-
-   public void g(fav $$0) {
-      List<zq<?>> $$1 = this.f($$0);
-
-      for (arq $$2 : this.b.ag().t()) {
-         for (zq<?> $$3 : $$1) {
-            $$2.f.b($$3);
-         }
-      }
-
-      this.c.remove($$0);
-   }
-
-   public int h(fav $$0) {
-      int $$1 = 0;
-
-      for (fau $$2 : fau.values()) {
-         if (this.a($$2) == $$0) {
-            $$1++;
-         }
-      }
-
-      return $$1;
-   }
-
-   public eth.a<fbe> b() {
-      return new eth.a<>(this::h, this::a, baw.n);
-   }
-
-   private fbe h() {
-      fbe $$0 = new fbe(this);
-      this.a($$0::c);
-      return $$0;
-   }
-
-   private fbe a(ul $$0, js.a $$1) {
-      return this.h().b($$0, $$1);
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

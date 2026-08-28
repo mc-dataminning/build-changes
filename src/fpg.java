@@ -1,81 +1,56 @@
-import com.mojang.logging.LogUtils;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.util.freetype.FT_Vector;
-import org.lwjgl.util.freetype.FreeType;
-import org.slf4j.Logger;
+public class fpg extends fnv {
+   private float a = 0.5F;
 
-public class fpg {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Object a = new Object();
-   private static long c = 0L;
-
-   public static long a() {
-      synchronized (a) {
-         if (c == 0L) {
-            MemoryStack $$0 = MemoryStack.stackPush();
-
-            try {
-               PointerBuffer $$1 = $$0.mallocPointer(1);
-               a(FreeType.FT_Init_FreeType($$1), "Initializing FreeType library");
-               c = $$1.get();
-            } catch (Throwable var6) {
-               if ($$0 != null) {
-                  try {
-                     $$0.close();
-                  } catch (Throwable var5) {
-                     var6.addSuppressed(var5);
-                  }
-               }
-
-               throw var6;
-            }
-
-            if ($$0 != null) {
-               $$0.close();
-            }
-         }
-
-         return c;
-      }
+   public fpg(xv $$0, fnj $$1) {
+      this(0, 0, $$1.a($$0.g()), 9, $$0, $$1);
    }
 
-   public static void a(int $$0, String $$1) {
-      if ($$0 != 0) {
-         throw new IllegalStateException("FreeType error: " + a($$0) + " (" + $$1 + ")");
-      }
+   public fpg(int $$0, int $$1, xv $$2, fnj $$3) {
+      this(0, 0, $$0, $$1, $$2, $$3);
    }
 
-   public static boolean b(int $$0, String $$1) {
-      if ($$0 != 0) {
-         b.error("FreeType error: {} ({})", a($$0), $$1);
-         return true;
-      } else {
-         return false;
-      }
+   public fpg(int $$0, int $$1, int $$2, int $$3, xv $$4, fnj $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.j = false;
    }
 
-   private static String a(int $$0) {
-      String $$1 = FreeType.FT_Error_String($$0);
-      return $$1 != null ? $$1 : "Unrecognized error: 0x" + Integer.toHexString($$0);
+   public fpg b(int $$0) {
+      super.a($$0);
+      return this;
    }
 
-   public static FT_Vector a(FT_Vector $$0, float $$1, float $$2) {
-      long $$3 = (long)Math.round($$1 * 64.0F);
-      long $$4 = (long)Math.round($$2 * 64.0F);
-      return $$0.set($$3, $$4);
+   private fpg b(float $$0) {
+      this.a = $$0;
+      return this;
    }
 
-   public static float a(FT_Vector $$0) {
-      return (float)$$0.x() / 64.0F;
+   public fpg c() {
+      return this.b(0.0F);
    }
 
-   public static void b() {
-      synchronized (a) {
-         if (c != 0L) {
-            FreeType.FT_Done_Library(c);
-            c = 0L;
-         }
-      }
+   public fpg e() {
+      return this.b(0.5F);
+   }
+
+   public fpg g() {
+      return this.b(1.0F);
+   }
+
+   @Override
+   public void b(fnl $$0, int $$1, int $$2, float $$3) {
+      xv $$4 = this.z();
+      fnj $$5 = this.a();
+      int $$6 = this.y();
+      int $$7 = $$5.a($$4);
+      int $$8 = this.D() + Math.round(this.a * (float)($$6 - $$7));
+      int $$9 = this.E() + (this.w() - 9) / 2;
+      azq $$10 = $$7 > $$6 ? this.a($$4, $$6) : $$4.g();
+      $$0.b($$5, $$10, $$8, $$9, this.b());
+   }
+
+   private azq a(xv $$0, int $$1) {
+      fnj $$2 = this.a();
+      ya $$3 = $$2.a($$0, $$1 - $$2.a(xu.u));
+      return us.a().a(ya.a($$3, xu.u));
    }
 }

@@ -1,46 +1,46 @@
-public class fdi {
-   private static final int a = 60;
-   private static final int b = 10;
-   private static final int c = 30;
-   private static final int d = 10;
-   private static final long e = 60000L;
-   private static final long f = 600000L;
-   private final fki g;
-   private final fke h;
-   private int i;
-   private long j;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
+import java.util.List;
+import java.util.Set;
 
-   public fdi(fki $$0, fke $$1) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$0.h().c();
+public class fdi<T> implements fdl<T>, fdn<T> {
+   private final List<fdj<T>> a = Lists.newArrayList();
+   private final Set<fdj<?>> b = new ObjectOpenCustomHashSet(fdj.a);
+
+   @Override
+   public void a(fdk<T> $$0) {
+      fdj<T> $$1 = new fdj<>($$0.a(), $$0.b(), 0, $$0.d());
+      this.a($$1);
    }
 
-   public int a() {
-      fka $$0 = this.g.i().c();
-      if (this.h.aO().j()) {
-         return 10;
-      } else {
-         if ($$0 == fka.b) {
-            long $$1 = ae.c() - this.j;
-            if ($$1 > 600000L) {
-               return 10;
-            }
-
-            if ($$1 > 60000L) {
-               return Math.min(this.i, 30);
-            }
-         }
-
-         return this.h.s != null || this.h.z == null && this.h.aM() == null ? this.i : 60;
+   private void a(fdj<T> $$0) {
+      if (this.b.add($$0)) {
+         this.a.add($$0);
       }
    }
 
-   public void a(int $$0) {
-      this.i = $$0;
+   @Override
+   public boolean a(jh $$0, T $$1) {
+      return this.b.contains(fdj.a($$1, $$0));
    }
 
-   public void b() {
-      this.j = ae.c();
+   @Override
+   public int a() {
+      return this.a.size();
+   }
+
+   @Override
+   public List<fdj<T>> a(long $$0) {
+      return this.a;
+   }
+
+   public List<fdj<T>> b() {
+      return List.copyOf(this.a);
+   }
+
+   public static <T> fdi<T> a(List<fdj<T>> $$0) {
+      fdi<T> $$1 = new fdi<>();
+      $$0.forEach($$1::a);
+      return $$1;
    }
 }

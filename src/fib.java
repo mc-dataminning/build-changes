@@ -1,233 +1,179 @@
-import com.google.common.collect.ImmutableList;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fib extends hfq {
+public class fib {
    static final Logger a = LogUtils.getLogger();
-   private static final xj b = xj.c("mco.configure.world.players.title");
-   static final xj c = xj.c("mco.question");
-   private static final int B = 8;
-   final fps C = new fps(this);
-   private final fhq D;
-   final fgi E;
-   @Nullable
-   private fib.b F;
-   boolean G;
+   private static final String b = "notificationUuid";
+   private static final String c = "dismissable";
+   private static final String d = "seen";
+   private static final String e = "type";
+   private static final String f = "visitUrl";
+   private static final String g = "infoPopup";
+   static final xv h = xv.c("mco.notification.visitUrl.buttonText.default");
+   final UUID i;
+   final boolean j;
+   final boolean k;
+   final String l;
 
-   public fib(fhq $$0, fgi $$1) {
-      super(b);
-      this.D = $$0;
-      this.E = $$1;
+   fib(UUID $$0, boolean $$1, boolean $$2, String $$3) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
    }
 
-   @Override
-   public void aR_() {
-      this.C.a(b, this.p);
-      this.F = this.C.c(new fib.b());
-      this.F();
-      fpw $$0 = this.C.b(fpw.e().a(8));
-      $$0.a(fmd.a(xj.c("mco.configure.world.buttons.invite"), $$0x -> this.m.a(new fhv(this.D, this, this.E))).a());
-      $$0.a(fmd.a(xi.k, $$0x -> this.aO_()).a());
-      this.C.a($$1 -> {
-         fmb var10000 = this.c($$1);
-      });
-      this.c();
+   public boolean a() {
+      return this.k;
    }
 
-   @Override
-   protected void c() {
-      this.C.a();
-      if (this.F != null) {
-         this.F.a(this.n, this.C);
-      }
+   public boolean b() {
+      return this.j;
    }
 
-   void F() {
-      if (this.F != null) {
-         this.F.aH_().clear();
+   public UUID c() {
+      return this.i;
+   }
 
-         for (fge $$0 : this.E.h) {
-            this.F.aH_().add(new fib.a($$0));
+   public static List<fib> a(String $$0) {
+      List<fib> $$1 = new ArrayList<>();
+
+      try {
+         for (JsonElement $$3 : JsonParser.parseString($$0).getAsJsonObject().get("notifications").getAsJsonArray()) {
+            $$1.add(a($$3.getAsJsonObject()));
          }
+      } catch (Exception var5) {
+         a.error("Could not parse list of RealmsNotifications", var5);
       }
+
+      return $$1;
    }
 
-   @Override
-   public void aO_() {
-      this.G();
-   }
-
-   private void G() {
-      if (this.G) {
-         this.m.a(this.D.g());
+   private static fib a(JsonObject $$0) {
+      UUID $$1 = fkm.a("notificationUuid", $$0, null);
+      if ($$1 == null) {
+         throw new IllegalStateException("Missing required property notificationUuid");
       } else {
-         this.m.a(this.D);
+         boolean $$2 = fkm.a("dismissable", $$0, true);
+         boolean $$3 = fkm.a("seen", $$0, false);
+         String $$4 = fkm.a("type", $$0);
+         fib $$5 = new fib($$1, $$2, $$3, $$4);
+
+         return (fib)(switch ($$4) {
+            case "visitUrl" -> fib.c.a($$5, $$0);
+            case "infoPopup" -> fib.a.a($$5, $$0);
+            default -> $$5;
+         });
       }
    }
 
-   class a extends fmj.a<fib.a> {
-      private static final xj b = xj.c("mco.configure.world.invites.normal.tooltip");
-      private static final xj c = xj.c("mco.configure.world.invites.ops.tooltip");
-      private static final xj d = xj.c("mco.configure.world.invites.remove.tooltip");
-      private static final alj e = alj.b("player_list/make_operator");
-      private static final alj f = alj.b("player_list/remove_operator");
-      private static final alj g = alj.b("player_list/remove_player");
-      private static final int h = 8;
-      private static final int i = 7;
-      private final fge j;
-      private final fmd k;
-      private final fmd l;
-      private final fmd m;
+   public static class a extends fib {
+      private static final String a = "title";
+      private static final String b = "message";
+      private static final String c = "image";
+      private static final String d = "urlButton";
+      private final fih e;
+      private final fih f;
+      private final alz g;
+      @Nullable
+      private final fib.b h;
 
-      public a(final fge $$0) {
-         this.j = $$0;
-         int $$1 = fib.this.E.h.indexOf(this.j);
-         this.l = fni.a(b, $$1x -> this.a($$1), false)
-            .a(e, 8, 7)
-            .a(16 + fib.this.p.a(b))
-            .a($$1x -> xi.a(xj.a("mco.invited.player.narration", $$0.a()), (xj)$$1x.get(), xj.a("narration.cycle_button.usage.focused", c)))
-            .a();
-         this.m = fni.a(c, $$1x -> this.b($$1), false)
-            .a(f, 8, 7)
-            .a(16 + fib.this.p.a(c))
-            .a($$1x -> xi.a(xj.a("mco.invited.player.narration", $$0.a()), (xj)$$1x.get(), xj.a("narration.cycle_button.usage.focused", b)))
-            .a();
-         this.k = fni.a(d, $$1x -> this.c($$1), false)
-            .a(g, 8, 7)
-            .a(16 + fib.this.p.a(d))
-            .a($$1x -> xi.a(xj.a("mco.invited.player.narration", $$0.a()), (xj)$$1x.get()))
-            .a();
-         this.c();
+      private a(fib $$0, fih $$1, fih $$2, alz $$3, @Nullable fib.b $$4) {
+         super($$0.i, $$0.j, $$0.k, $$0.l);
+         this.e = $$1;
+         this.f = $$2;
+         this.g = $$3;
+         this.h = $$4;
       }
 
-      private void a(int $$0) {
-         ffh $$1 = ffh.a();
-         UUID $$2 = fib.this.E.h.get($$0).b();
-
-         try {
-            this.a($$1.b(fib.this.E.a, $$2));
-         } catch (fhc var5) {
-            fib.a.error("Couldn't op the user", var5);
-         }
-
-         this.c();
+      public static fib.a a(fib $$0, JsonObject $$1) {
+         fih $$2 = fkm.a("title", $$1, fih::a);
+         fih $$3 = fkm.a("message", $$1, fih::a);
+         alz $$4 = alz.a(fkm.a("image", $$1));
+         fib.b $$5 = fkm.b("urlButton", $$1, fib.b::a);
+         return new fib.a($$0, $$2, $$3, $$4, $$5);
       }
 
-      private void b(int $$0) {
-         ffh $$1 = ffh.a();
-         UUID $$2 = fib.this.E.h.get($$0).b();
-
-         try {
-            this.a($$1.c(fib.this.E.a, $$2));
-         } catch (fhc var5) {
-            fib.a.error("Couldn't deop the user", var5);
-         }
-
-         this.c();
-      }
-
-      private void c(int $$0) {
-         if ($$0 >= 0 && $$0 < fib.this.E.h.size()) {
-            fge $$1 = fib.this.E.h.get($$0);
-            fhr $$2 = new fhr($$2x -> {
-               if ($$2x) {
-                  ffh $$3 = ffh.a();
-
-                  try {
-                     $$3.a(fib.this.E.a, $$1.b());
-                  } catch (fhc var6) {
-                     fib.a.error("Couldn't uninvite user", var6);
-                  }
-
-                  fib.this.E.h.remove($$0);
-                  fib.this.F();
-               }
-
-               fib.this.G = true;
-               fib.this.m.a(fib.this);
-            }, fib.c, xj.a("mco.configure.world.uninvite.player", $$1.a()));
-            fib.this.m.a($$2);
-         }
-      }
-
-      private void a(fga $$0) {
-         for (fge $$1 : fib.this.E.h) {
-            $$1.a($$0.a.contains($$1.a()));
-         }
-      }
-
-      private void c() {
-         this.l.k = !this.j.c();
-         this.m.k = !this.l.k;
-      }
-
-      private fmd d() {
-         return this.l.k ? this.l : this.m;
-      }
-
-      @Override
-      public List<? extends foa> aH_() {
-         return ImmutableList.of(this.d(), this.k);
-      }
-
-      @Override
-      public List<? extends fpz> b() {
-         return ImmutableList.of(this.d(), this.k);
-      }
-
-      @Override
-      public void a(flq $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10;
-         if (!this.j.d()) {
-            $$10 = -6250336;
-         } else if (this.j.e()) {
-            $$10 = 8388479;
+      @Nullable
+      public fpb a(ftr $$0, Consumer<UUID> $$1) {
+         xv $$2 = this.e.a();
+         if ($$2 == null) {
+            fib.a.warn("Realms info popup had title with no available translation: {}", this.e);
+            return null;
          } else {
-            $$10 = -1;
-         }
+            fpb.a $$3 = new fpb.a($$0, $$2).a(this.g).a(this.f.a(xu.a));
+            if (this.h != null) {
+               $$3.a(this.h.b.a(fib.h), $$2x -> {
+                  flz $$3x = flz.Q();
+                  $$3x.a(new fso($$3xx -> {
+                     if ($$3xx) {
+                        ae.m().a(this.h.a);
+                        $$3x.a($$0);
+                     } else {
+                        $$3x.a($$2x);
+                     }
+                  }, this.h.a, true));
+                  $$1.accept(this.c());
+               });
+            }
 
-         int $$13 = $$2 + $$5 / 2 - 16;
-         fiv.a($$0, $$3, $$13, 32, this.j.b());
-         int $$14 = $$2 + $$5 / 2 - 9 / 2;
-         $$0.a(fib.this.p, this.j.a(), $$3 + 8 + 32, $$14, $$10, false);
-         int $$15 = $$2 + $$5 / 2 - 10;
-         int $$16 = $$3 + $$4 - this.k.y();
-         this.k.c($$16, $$15);
-         this.k.a($$0, $$6, $$7, $$9);
-         int $$17 = $$16 - this.d().y() - 8;
-         this.l.c($$17, $$15);
-         this.l.a($$0, $$6, $$7, $$9);
-         this.m.c($$17, $$15);
-         this.m.a($$0, $$6, $$7, $$9);
+            $$3.a(xu.h, $$1x -> {
+               $$1x.aP_();
+               $$1.accept(this.c());
+            });
+            $$3.a(() -> $$1.accept(this.c()));
+            return $$3.a();
+         }
       }
    }
 
-   class b extends fmj<fib.a> {
-      private static final int m = 36;
+   static record b(String a, fih b) {
+      private static final String c = "url";
+      private static final String d = "urlText";
 
-      public b() {
-         super(fke.Q(), fib.this.n, fib.this.C.d(), fib.this.C.c(), 36);
-         this.a(true, (int)(9.0F * 1.5F));
+      public static fib.b a(JsonObject $$0) {
+         String $$1 = fkm.a("url", $$0);
+         fih $$2 = fkm.a("urlText", $$0, fih::a);
+         return new fib.b($$1, $$2);
+      }
+   }
+
+   public static class c extends fib {
+      private static final String a = "url";
+      private static final String b = "buttonText";
+      private static final String c = "message";
+      private final String d;
+      private final fih e;
+      private final fih f;
+
+      private c(fib $$0, String $$1, fih $$2, fih $$3) {
+         super($$0.i, $$0.j, $$0.k, $$0.l);
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
       }
 
-      @Override
-      protected void a(flq $$0, int $$1, int $$2) {
-         String $$3 = fib.this.E.h != null ? Integer.toString(fib.this.E.h.size()) : "0";
-         xj $$4 = xj.a("mco.configure.world.invited.number", $$3).a(n.t);
-         $$0.a(fib.this.p, $$4, $$1 + this.b() / 2 - fib.this.p.a($$4) / 2, $$2, -1, false);
+      public static fib.c a(fib $$0, JsonObject $$1) {
+         String $$2 = fkm.a("url", $$1);
+         fih $$3 = fkm.a("buttonText", $$1, fih::a);
+         fih $$4 = fkm.a("message", $$1, fih::a);
+         return new fib.c($$0, $$2, $$3, $$4);
       }
 
-      @Override
-      public int a() {
-         return this.l() * this.d + this.f;
+      public xv d() {
+         return this.f.a(xv.c("mco.notification.visitUrl.message.default"));
       }
 
-      @Override
-      public int b() {
-         return 300;
+      public fny a(ftr $$0) {
+         xv $$1 = this.e.a(fib.h);
+         return fny.a($$1, fso.b($$0, this.d)).a();
       }
    }
 }

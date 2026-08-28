@@ -1,37 +1,19 @@
-import org.joml.Vector3f;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public record fks(fks.c a, fku... b) {
-   public interface a {
-      Vector3f apply(Vector3f var1, float var2, fku[] var3, int var4, int var5, float var6);
+public class fks {
+   private static final Long2ObjectMap<String> a = new Long2ObjectOpenHashMap();
+
+   public static String a(long $$0) {
+      return (String)a.get($$0);
    }
 
-   public static class b {
-      public static final fks.a a = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         Vector3f $$6 = $$2[$$3].b();
-         Vector3f $$7 = $$2[$$4].b();
-         return $$6.lerp($$7, $$1, $$0).mul($$5);
-      };
-      public static final fks.a b = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         Vector3f $$6 = $$2[Math.max(0, $$3 - 1)].b();
-         Vector3f $$7 = $$2[$$3].b();
-         Vector3f $$8 = $$2[$$4].b();
-         Vector3f $$9 = $$2[Math.min($$2.length - 1, $$4 + 1)].b();
-         $$0.set(
-            azm.a($$1, $$6.x(), $$7.x(), $$8.x(), $$9.x()) * $$5,
-            azm.a($$1, $$6.y(), $$7.y(), $$8.y(), $$9.y()) * $$5,
-            azm.a($$1, $$6.z(), $$7.z(), $$8.z(), $$9.z()) * $$5
-         );
-         return $$0;
-      };
+   public static void b(long $$0) {
+      a.remove($$0);
    }
 
-   public interface c {
-      void apply(gcl var1, Vector3f var2);
-   }
-
-   public static class d {
-      public static final fks.c a = gcl::a;
-      public static final fks.c b = gcl::b;
-      public static final fks.c c = gcl::c;
+   public static void a(long $$0, @Nullable String $$1) {
+      a.put($$0, $$1);
    }
 }

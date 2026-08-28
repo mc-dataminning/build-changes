@@ -1,26 +1,23 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehp implements eha {
-   public static final Codec<ehp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dvv.a.fieldOf("target").forGetter($$0x -> $$0x.b),
-               dvv.a.fieldOf("state").forGetter($$0x -> $$0x.c),
-               brp.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, ehp::new)
-   );
-   public final dvv b;
-   public final dvv c;
-   private final brp d;
-
-   public ehp(dvv $$0, dvv $$1, brp $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+public class ehp extends ego<ejg> {
+   public ehp(Codec<ejg> $$0) {
+      super($$0);
    }
 
-   public brp a() {
-      return this.d;
+   @Override
+   public boolean a(egq<ejg> $$0) {
+      dhy $$1 = $$0.b();
+      jh $$2 = $$0.e();
+      ejg $$3 = $$0.f();
+
+      for (eja.a $$4 : $$3.b) {
+         if ($$4.b.a($$1.a_($$2), $$0.d())) {
+            $$1.a($$2, $$4.c, 2);
+            break;
+         }
+      }
+
+      return true;
    }
 }

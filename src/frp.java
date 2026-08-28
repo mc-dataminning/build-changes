@@ -1,31 +1,26 @@
-public class frp extends frw {
-   private static final xj a = xj.c("outOfMemory.title");
-   private static final xj b = xj.c("outOfMemory.message");
-   private static final int c = 300;
-   private final fps d = new fps(this);
+import java.util.function.Consumer;
 
-   public frp() {
-      super(a);
+public interface frp {
+   void m(int var1);
+
+   void n(int var1);
+
+   int D();
+
+   int E();
+
+   int y();
+
+   int w();
+
+   default fsg H() {
+      return new fsg(this.D(), this.E(), this.y(), this.w());
    }
 
-   @Override
-   protected void aR_() {
-      this.d.a(a, this.p);
-      this.d.c(new fmo(300, b, this.p));
-      fpw $$0 = this.d.b(fpw.e().a(8));
-      $$0.a(fmd.a(xi.l, $$0x -> this.m.a(new fry())).a());
-      $$0.a(fmd.a(xj.c("menu.quit"), $$0x -> this.m.q()).a());
-      this.d.a(this::c);
-      this.c();
+   default void c(int $$0, int $$1) {
+      this.m($$0);
+      this.n($$1);
    }
 
-   @Override
-   protected void c() {
-      this.d.a();
-   }
-
-   @Override
-   public boolean aG_() {
-      return false;
-   }
+   void a(Consumer<fnw> var1);
 }

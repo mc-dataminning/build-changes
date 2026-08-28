@@ -1,4 +1,4 @@
-import com.mojang.serialization.MapCodec;
-
-public record gzk(MapCodec<? extends gzi> a) {
+public class gzk extends gym {
+   public float a;
+   public int b = 1;
 }

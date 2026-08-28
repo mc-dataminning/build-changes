@@ -1,22 +1,54 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bzh {
-   public static byl<bvh> a(float $$0, int $$1) {
-      return a($$0x -> true, $$1x -> $$0, $$1);
+   public static bxv<cpe> a() {
+      return cbh.a(
+         (Function<cbh.b<cpe>, ? extends App<cbh.c<cpe>, cbk<cpe>>>)($$0 -> $$0.group($$0.b(cff.c), $$0.b(cff.g))
+               .apply(
+                  $$0,
+                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                        jp $$6 = $$0.b($$1);
+                        $$3.z()
+                           .c($$6.b())
+                           .ifPresent(
+                              $$4x -> $$0.<List<bwb>>b($$2)
+                                    .stream()
+                                    .filter($$1xxx -> $$1xxx instanceof cpe && $$1xxx != $$4)
+                                    .map($$0xxxx -> (cpe)$$0xxxx)
+                                    .filter(bwb::bL)
+                                    .filter($$2xxx -> a($$6, $$4x, $$2xxx))
+                                    .reduce($$4, bzh::a)
+                           );
+                        return true;
+                     }
+               ))
+      );
    }
 
-   public static byl<bvh> a(Predicate<bvh> $$0, Function<bvh, Float> $$1, int $$2) {
-      return can.a(
-         (Function<can.b<bvh>, ? extends App<can.c<bvh>, caq<bvh>>>)($$3 -> $$3.group($$3.c(cel.m), $$3.b(cel.n)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                  if (!$$0.test($$7)) {
-                     return false;
-                  } else {
-                     $$4.a(new ceo($$3.b($$5), $$1.apply($$7), $$2));
-                     return true;
-                  }
-               }))
-      );
+   private static cpe a(cpe $$0, cpe $$1) {
+      cpe $$2;
+      cpe $$3;
+      if ($$0.x() > $$1.x()) {
+         $$2 = $$0;
+         $$3 = $$1;
+      } else {
+         $$2 = $$1;
+         $$3 = $$0;
+      }
+
+      $$3.eb().b(cff.c);
+      return $$2;
+   }
+
+   private static boolean a(jp $$0, jq<chi> $$1, cpe $$2) {
+      Optional<jp> $$3 = $$2.eb().c(cff.c);
+      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gw().b());
+   }
+
+   private static boolean a(jq<chi> $$0, cph $$1) {
+      return $$1.b().test($$0);
    }
 }

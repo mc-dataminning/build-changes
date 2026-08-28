@@ -1,21 +1,85 @@
 import javax.annotation.Nullable;
 
-public class cxr extends cxz {
-   public cxr(diq $$0, diq $$1, cwi.a $$2) {
-      super($$0, $$1, jm.a, $$2);
+public class cxr {
+   public static final int a = 20;
+   private long b;
+   @Nullable
+   private jq<cxq> c;
+   private final jh d;
+   private final cxr.a e;
+
+   public cxr(cxr.a $$0, jh $$1) {
+      this.e = $$0;
+      this.d = $$1;
    }
 
-   public cxr(cwi.a $$0, diq $$1, diq $$2, jm $$3) {
-      super($$1, $$2, $$3, $$0);
+   public boolean a() {
+      return this.c != null;
    }
 
-   @Override
-   protected boolean a(jh $$0, dfm $$1, @Nullable cou $$2, cwm $$3, dvv $$4) {
-      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
-      if (!$$1.C && !$$5 && $$2 != null && $$1.c_($$0) instanceof duk $$6 && $$1.a_($$0).b() instanceof dpq $$7) {
-         $$7.a($$2, $$6, true);
+   @Nullable
+   public cxq b() {
+      return this.c == null ? null : this.c.a();
+   }
+
+   public long c() {
+      return this.b;
+   }
+
+   public void a(jq<cxq> $$0, long $$1) {
+      if (!$$0.a().a($$1)) {
+         this.c = $$0;
+         this.b = $$1;
       }
+   }
 
-      return $$5;
+   public void a(dhb $$0, jq<cxq> $$1) {
+      this.c = $$1;
+      this.b = 0L;
+      int $$2 = $$0.K_().e(mb.L).a(this.c.a());
+      $$0.a(null, 1010, this.d, $$2);
+      this.e.notifyChange();
+   }
+
+   public void a(dhb $$0, @Nullable dxn $$1) {
+      if (this.c != null) {
+         this.c = null;
+         this.b = 0L;
+         $$0.a(ecj.F, this.d, ecj.a.a($$1));
+         $$0.c(1011, this.d, 0);
+         this.e.notifyChange();
+      }
+   }
+
+   public void b(dhb $$0, @Nullable dxn $$1) {
+      if (this.c != null) {
+         if (this.c.a().a(this.b)) {
+            this.a($$0, $$1);
+         } else {
+            if (this.d()) {
+               $$0.a(ecj.E, this.d, ecj.a.a($$1));
+               a($$0, this.d);
+            }
+
+            this.b++;
+         }
+      }
+   }
+
+   private boolean d() {
+      return this.b % 20L == 0L;
+   }
+
+   private static void a(dhb $$0, jh $$1) {
+      if ($$0 instanceof ash $$2) {
+         fbs $$3 = fbs.c($$1).b(0.0, 1.2F, 0.0);
+         float $$4 = (float)$$0.H_().a(4) / 24.0F;
+         $$2.a(ls.ab, $$3.a(), $$3.b(), $$3.c(), 0, (double)$$4, 0.0, 0.0, 1.0);
+      }
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void notifyChange();
    }
 }

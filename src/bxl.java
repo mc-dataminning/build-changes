@@ -1,44 +1,30 @@
-import java.util.Optional;
+public class bxl extends bxe {
+   private final double c;
+   private final double d;
 
-public class bxl implements byo {
-   private final bul a;
-   private final boolean b;
-
-   public bxl(bul $$0, boolean $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   @Override
-   public ezy a() {
-      return this.b ? this.a.dt().b(0.0, (double)this.a.cS(), 0.0) : this.a.dt();
-   }
-
-   @Override
-   public jh b() {
-      return this.a.dv();
-   }
-
-   @Override
-   public boolean a(bvh $$0) {
-      if (this.a instanceof bvh $$1) {
-         if (!$$1.bL()) {
-            return false;
-         } else {
-            Optional<cen> $$3 = $$0.eb().c(cel.h);
-            return $$3.isPresent() && $$3.get().a($$1);
-         }
-      } else {
-         return true;
+   public bxl(String $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1);
+      this.c = $$2;
+      this.d = $$3;
+      if ($$2 > $$3) {
+         throw new IllegalArgumentException("Minimum value cannot be bigger than maximum value!");
+      } else if ($$1 < $$2) {
+         throw new IllegalArgumentException("Default value cannot be lower than minimum value!");
+      } else if ($$1 > $$3) {
+         throw new IllegalArgumentException("Default value cannot be bigger than maximum value!");
       }
    }
 
-   public bul c() {
-      return this.a;
+   public double d() {
+      return this.c;
+   }
+
+   public double e() {
+      return this.d;
    }
 
    @Override
-   public String toString() {
-      return "EntityTracker for " + this.a;
+   public double a(double $$0) {
+      return Double.isNaN($$0) ? this.c : bae.a($$0, this.c, this.d);
    }
 }

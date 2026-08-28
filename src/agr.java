@@ -1,32 +1,45 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class agr implements aac<acr> {
+   public static final zt<ws, agr> a = aac.a(agr::a, agr::new);
+   private final int b;
+   private final int c;
+   private final int d;
 
-public record agr(jq<dzq> a, ali<dfm> b, long c, dfj d, @Nullable dfj e, boolean f, boolean g, Optional<jp> h, int i, int j) {
-   public agr(wu $$0) {
-      this(
-         dzq.i.decode($$0),
-         $$0.a(ma.bb),
-         $$0.readLong(),
-         dfj.a($$0.readByte()),
-         dfj.b($$0.readByte()),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         $$0.b(wg::h),
-         $$0.l(),
-         $$0.l()
-      );
+   public agr(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public void a(wu $$0) {
-      dzq.i.encode($$0, this.a);
-      $$0.b(this.b);
-      $$0.b(this.c);
-      $$0.l(this.d.a());
-      $$0.l(dfj.a(this.e));
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h, wg::a);
-      $$0.c(this.i);
-      $$0.c(this.j);
+   private agr(ws $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
+      this.d = $$0.readInt();
+   }
+
+   private void a(ws $$0) {
+      $$0.q(this.b);
+      $$0.q(this.c);
+      $$0.q(this.d);
+   }
+
+   @Override
+   public aae<agr> a() {
+      return ahk.aU;
+   }
+
+   public void a(acr $$0) {
+      $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

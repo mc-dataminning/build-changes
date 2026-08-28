@@ -1,19 +1,28 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
 
-@FunctionalInterface
-public interface auu<T> {
-   static auu<InputStream> create(Path $$0) {
-      return () -> Files.newInputStream($$0);
+public interface auu<T> extends aut<T> {
+   JsonObject a(T var1);
+
+   static <T> auu<T> a(final String $$0, final Codec<T> $$1) {
+      return new auu<T>() {
+         @Override
+         public String a() {
+            return $$0;
+         }
+
+         @Override
+         public T a(JsonObject $$0x) {
+            return (T)$$1.parse(JsonOps.INSTANCE, $$0).getOrThrow(JsonParseException::new);
+         }
+
+         @Override
+         public JsonObject a(T $$0x) {
+            return ((JsonElement)$$1.encodeStart(JsonOps.INSTANCE, $$0).getOrThrow(IllegalArgumentException::new)).getAsJsonObject();
+         }
+      };
    }
-
-   static auu<InputStream> create(ZipFile $$0, ZipEntry $$1) {
-      return () -> $$0.getInputStream($$1);
-   }
-
-   T get() throws IOException;
 }

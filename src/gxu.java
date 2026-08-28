@@ -1,5 +1,8 @@
-public class gxu extends gwm {
-   public boolean a;
-   public boolean b;
-   public boolean c;
+public class gxu extends gym {
+   public boolean d;
+   public boolean e;
+   public boolean f;
+   public float g;
+   public float h;
+   public float i;
 }

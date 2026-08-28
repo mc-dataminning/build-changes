@@ -1,48 +1,23 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejp extends ejs {
-   public static final MapCodec<ejp> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(ejp::new, $$0 -> $$0.d);
-   private static final jm b = jm.d;
-   private static final jm[] c = jm.c.a.a().filter($$0 -> $$0 != b.g()).toArray(jm[]::new);
-   private final float d;
+public record ejp(int b, int c, int d) implements eis {
+   public static final Codec<ejp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               azn.m.fieldOf("spread_width").forGetter(ejp::a), azn.m.fieldOf("spread_height").forGetter(ejp::b), azn.m.fieldOf("max_height").forGetter(ejp::c)
+            )
+            .apply($$0, ejp::new)
+   );
 
-   public ejp(float $$0) {
-      this.d = $$0;
+   public int a() {
+      return this.b;
    }
 
-   @Override
-   protected ejt<?> a() {
-      return ejt.d;
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   public void a(ejs.a $$0) {
-      azu $$1 = $$0.b();
-      if (!($$1.i() >= this.d)) {
-         List<jh> $$2 = $$0.d();
-         List<jh> $$3 = $$0.c();
-         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
-         List<jh> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
-         if (!$$5.isEmpty()) {
-            Collections.shuffle($$5);
-            Optional<jh> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
-            if (!$$6.isEmpty()) {
-               $$0.a($$6.get(), dis.pe.m().b(dik.b, b));
-               $$0.a().a($$6.get(), dta.H).ifPresent($$1x -> {
-                  int $$2x = 2 + $$1.a(2);
-
-                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
-                     $$1x.a(dsv.c.a($$1.a(599)));
-                  }
-               });
-            }
-         }
-      }
+   public int c() {
+      return this.d;
    }
 }

@@ -1,29 +1,20 @@
-public class acw implements zq<acf> {
-   public static final zh<wg, acw> a = zq.a(acw::a, acw::new);
-   private final boolean b;
+public record acw(int b) implements aac<acr> {
+   public static final zt<ws, acw> a = aac.a(acw::a, acw::new);
 
-   public acw(boolean $$0) {
-      this.b = $$0;
+   private acw(ws $$0) {
+      this($$0.l());
    }
 
-   private acw(wg $$0) {
-      this.b = $$0.readBoolean();
-   }
-
-   private void a(wg $$0) {
-      $$0.a(this.b);
+   private void a(ws $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zs<acw> a() {
-      return agu.q;
+   public aae<acw> a() {
+      return ahk.g;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
-   }
-
-   public boolean b() {
-      return this.b;
    }
 }

@@ -1,85 +1,31 @@
-import javax.annotation.Nullable;
-
-public class cwt {
-   public static final int a = 20;
-   private long b;
-   @Nullable
-   private jq<cws> c;
-   private final jh d;
-   private final cwt.a e;
-
-   public cwt(cwt.a $$0, jh $$1) {
-      this.e = $$0;
-      this.d = $$1;
+public class cwt extends cxg {
+   public cwt(cxg.a $$0) {
+      super($$0);
    }
 
-   public boolean a() {
-      return this.c != null;
-   }
-
-   @Nullable
-   public cws b() {
-      return this.c == null ? null : this.c.a();
-   }
-
-   public long c() {
-      return this.b;
-   }
-
-   public void a(jq<cws> $$0, long $$1) {
-      if (!$$0.a().a($$1)) {
-         this.c = $$0;
-         this.b = $$1;
-      }
-   }
-
-   public void a(dfn $$0, jq<cws> $$1) {
-      this.c = $$1;
-      this.b = 0L;
-      int $$2 = $$0.J_().e(ma.L).a(this.c.a());
-      $$0.a(null, 1010, this.d, $$2);
-      this.e.notifyChange();
-   }
-
-   public void a(dfn $$0, @Nullable dvv $$1) {
-      if (this.c != null) {
-         this.c = null;
-         this.b = 0L;
-         $$0.a(ear.F, this.d, ear.a.a($$1));
-         $$0.c(1011, this.d, 0);
-         this.e.notifyChange();
-      }
-   }
-
-   public void b(dfn $$0, @Nullable dvv $$1) {
-      if (this.c != null) {
-         if (this.c.a().a(this.b)) {
-            this.a($$0, $$1);
-         } else {
-            if (this.d()) {
-               $$0.a(ear.E, this.d, ear.a.a($$1));
-               a($$0, this.d);
-            }
-
-            this.b++;
+   @Override
+   public bte a(dha $$0, cps $$1, btd $$2) {
+      cxk $$3 = $$1.b($$2);
+      if ($$1.cv != null) {
+         if (!$$0.C) {
+            int $$4 = $$1.cv.a($$3);
+            $$3.a($$4, $$1, bwb.d($$2));
          }
+
+         $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), axf.jp, axg.g, 1.0F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
+         $$1.a(ecj.C);
+      } else {
+         $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), axf.jr, axg.g, 0.5F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
+         if ($$0 instanceof ash $$5) {
+            int $$6 = (int)(ddt.b($$5, $$3, $$1) * 20.0F);
+            int $$7 = ddt.a($$5, $$3, $$1);
+            cql.a(new cqh($$1, $$0, $$7, $$6, $$3), $$5, $$3);
+         }
+
+         $$1.b(axp.c.b(this));
+         $$1.a(ecj.D);
       }
-   }
 
-   private boolean d() {
-      return this.b % 20L == 0L;
-   }
-
-   private static void a(dfn $$0, jh $$1) {
-      if ($$0 instanceof arp $$2) {
-         ezy $$3 = ezy.c($$1).b(0.0, 1.2F, 0.0);
-         float $$4 = (float)$$0.G_().a(4) / 24.0F;
-         $$2.a(ls.aa, $$3.a(), $$3.b(), $$3.c(), 0, (double)$$4, 0.0, 0.0, 1.0);
-      }
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void notifyChange();
+      return bte.a;
    }
 }

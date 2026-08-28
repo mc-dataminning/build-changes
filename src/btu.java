@@ -1,20 +1,19 @@
-class btu extends bto {
-   protected btu(btp $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+
+public enum btu implements bba {
+   a("never"),
+   b("when_caused_by_living_non_player"),
+   c("always");
+
+   public static final Codec<btu> d = bba.a(btu::values);
+   private final String e;
+
+   private btu(final String $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public boolean a(arp $$0, bvh $$1, int $$2) {
-      if ($$1.eD() > 1.0F) {
-         $$1.a($$0, $$1.dW().q(), 1.0F);
-      }
-
-      return true;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      int $$2 = 25 >> $$1;
-      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+   public String c() {
+      return this.e;
    }
 }

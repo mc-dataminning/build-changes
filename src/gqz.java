@@ -1,21 +1,23 @@
-public class gqz extends gof<chp, gwx, gaj> {
-   private static final alj a = alj.b("textures/entity/pig/pig.png");
+public class gqz<T extends cjv> extends gpz<T, gxk, gaz> {
+   public static final alz a = alz.b("textures/entity/horse/donkey.png");
+   public static final alz b = alz.b("textures/entity/horse/mule.png");
+   private final alz k;
 
-   public gqz(gpk.a $$0) {
-      super($$0, new gaj($$0.a(gck.bJ)), new gaj($$0.a(gck.bU)), 0.7F);
-      this.a(new gtz<>(this, new gaj($$0.a(gck.bW)), new gaj($$0.a(gck.bV)), alj.b("textures/entity/pig/pig_saddle.png")));
+   public gqz(grj.a $$0, float $$1, gef $$2, gef $$3, boolean $$4) {
+      super($$0, new gaz($$0.a($$2)), new gaz($$0.a($$3)), $$1);
+      this.k = $$4 ? b : a;
    }
 
-   public alj a(gwx $$0) {
-      return a;
+   public alz a(gxk $$0) {
+      return this.k;
    }
 
-   public gwx b() {
-      return new gwx();
+   public gxk a() {
+      return new gxk();
    }
 
-   public void a(chp $$0, gwx $$1, float $$2) {
+   public void a(T $$0, gxk $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.j();
+      $$1.a = $$0.t();
    }
 }

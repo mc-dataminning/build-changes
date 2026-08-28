@@ -1,74 +1,92 @@
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
 import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.Supplier;
 
-public class cxb extends cuy {
-   private static final MapCodec<chy.d> a = chy.d.a.fieldOf("BucketVariantTag");
-   private final bus<?> b;
-   private final awm c;
+public class cxb extends cxg implements cyo {
+   public static final Supplier<BiMap<dke, dke>> a = Suppliers.memoize(
+      () -> ImmutableBiMap.builder()
+            .put(dkg.rr, dkg.rR)
+            .put(dkg.rs, dkg.rT)
+            .put(dkg.rt, dkg.rS)
+            .put(dkg.ru, dkg.rU)
+            .put(dkg.rA, dkg.rY)
+            .put(dkg.rz, dkg.rX)
+            .put(dkg.ry, dkg.rW)
+            .put(dkg.rx, dkg.rV)
+            .put(dkg.rQ, dkg.sg)
+            .put(dkg.rP, dkg.sf)
+            .put(dkg.rO, dkg.se)
+            .put(dkg.rN, dkg.sd)
+            .put(dkg.rM, dkg.sc)
+            .put(dkg.rL, dkg.sb)
+            .put(dkg.rK, dkg.sa)
+            .put(dkg.rJ, dkg.rZ)
+            .put(dkg.rE, dkg.rI)
+            .put(dkg.rD, dkg.rH)
+            .put(dkg.rC, dkg.rG)
+            .put(dkg.rB, dkg.rF)
+            .put(dkg.sh, dkg.sl)
+            .put(dkg.si, dkg.sm)
+            .put(dkg.sk, dkg.so)
+            .put(dkg.sj, dkg.sn)
+            .put(dkg.sp, dkg.st)
+            .put(dkg.sq, dkg.su)
+            .put(dkg.ss, dkg.sw)
+            .put(dkg.sr, dkg.sv)
+            .put(dkg.sx, dkg.sB)
+            .put(dkg.sy, dkg.sC)
+            .put(dkg.sz, dkg.sD)
+            .put(dkg.sA, dkg.sE)
+            .put(dkg.sF, dkg.sJ)
+            .put(dkg.sG, dkg.sK)
+            .put(dkg.sH, dkg.sL)
+            .put(dkg.sI, dkg.sM)
+            .build()
+   );
+   public static final Supplier<BiMap<dke, dke>> b = Suppliers.memoize(() -> a.get().inverse());
 
-   public cxb(bus<?> $$0, eru $$1, awm $$2, cwi.a $$3) {
-      super($$1, $$3);
-      this.b = $$0;
-      this.c = $$2;
+   public cxb(cxg.a $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(@Nullable cou $$0, dfm $$1, cwm $$2, jh $$3) {
-      if ($$1 instanceof arp) {
-         this.a((arp)$$1, $$2, $$3);
-         $$1.a($$0, ear.t, $$3);
-      }
-   }
-
-   @Override
-   protected void a(@Nullable cou $$0, dfn $$1, jh $$2) {
-      $$1.a($$0, $$2, this.c, awo.g, 1.0F, 1.0F);
-   }
-
-   private void a(arp $$0, cwm $$1, jh $$2) {
-      bul $$3 = this.b.b($$0, bus.a($$0, $$1, null), $$2, bur.l, true, false);
-      if ($$3 instanceof cha $$4) {
-         cyv $$5 = $$1.a(ku.X, cyv.a);
-         $$4.h($$5.c());
-         $$4.x(true);
-      }
-
-      if ($$3 != null) {
-         $$0.a_($$3);
-      }
-   }
-
-   @Override
-   public void a(cwm $$0, cwi.b $$1, List<xj> $$2, cye $$3) {
-      if (this.b == bus.bw) {
-         cyv $$4 = $$0.a(ku.X, cyv.a);
-         if ($$4.b()) {
-            return;
+   public bte a(dbd $$0) {
+      dha $$1 = $$0.q();
+      jh $$2 = $$0.a();
+      dxn $$3 = $$1.a_($$2);
+      return a($$3).map($$3x -> {
+         cps $$4 = $$0.o();
+         cxk $$5 = $$0.n();
+         if ($$4 instanceof asi $$6) {
+            ao.N.a($$6, $$2, $$5);
          }
 
-         Optional<chy.d> $$5 = $$4.a(a).result();
-         if ($$5.isPresent()) {
-            chy.d $$6 = $$5.get();
-            n[] $$7 = new n[]{n.u, n.h};
-            String $$8 = "color.minecraft." + $$6.c();
-            String $$9 = "color.minecraft." + $$6.d();
-            int $$10 = chy.b.indexOf($$6);
-            if ($$10 != -1) {
-               $$2.add(xj.c(chy.b($$10)).a($$7));
-               return;
-            }
+         $$5.h(1);
+         $$1.a($$2, $$3x, 11);
+         $$1.a(ecj.c, $$2, ecj.a.a($$4, $$3x));
+         $$1.a($$4, 3003, $$2, 0);
+         return bte.a;
+      }).orElse(bte.e);
+   }
 
-            $$2.add($$6.b().d().e().a($$7));
-            xx $$11 = xj.c($$8);
-            if (!$$8.equals($$9)) {
-               $$11.f(", ").b(xj.c($$9));
-            }
+   public static Optional<dxn> a(dxn $$0) {
+      return Optional.ofNullable((dke)a.get().get($$0.b())).map($$1 -> ((dke)$$1).m($$0));
+   }
 
-            $$11.a($$7);
-            $$2.add($$11);
-         }
+   @Override
+   public boolean a(dha $$0, dwc $$1, boolean $$2, cps $$3) {
+      if ($$1.b(true)) {
+         $$0.a(null, 3003, $$1.aB_(), 0);
+         return true;
+      } else {
+         return false;
       }
+   }
+
+   @Override
+   public boolean a(dwd $$0, cps $$1) {
+      return true;
    }
 }

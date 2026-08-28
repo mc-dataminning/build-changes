@@ -1,77 +1,17 @@
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap;
 
-public class cbp extends cbw {
-   private static final int g = 240;
-   private final Predicate<bsh> h;
-   protected int a;
-   protected int b = -1;
-   protected int c = -1;
-
-   public cbp(bvj $$0, Predicate<bsh> $$1) {
-      super($$0);
-      this.h = $$1;
-   }
-
-   public cbp(bvj $$0, int $$1, Predicate<bsh> $$2) {
-      this($$0, $$2);
-      this.c = $$1;
-   }
-
-   protected int f() {
-      return Math.max(240, this.c);
+public class cbp extends bxu<bwb> {
+   public cbp() {
+      super(ImmutableMap.of());
    }
 
    @Override
-   public boolean b() {
-      if (!super.b()) {
-         return false;
-      } else {
-         return !a(this.d).N().b(dfi.c) ? false : this.a(this.d.dV().ak()) && !this.h();
-      }
+   protected boolean a(ash $$0, bwb $$1) {
+      return $$1.bZ();
    }
 
    @Override
-   public void d() {
-      super.d();
-      this.a = 0;
-   }
-
-   @Override
-   public boolean c() {
-      return this.a <= this.f() && !this.h() && this.e.a(this.d.dt(), 2.0) && this.a(this.d.dV().ak());
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.d.dV().a(this.d.ar(), this.e, -1);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      if (this.d.dY().a(20) == 0) {
-         this.d.dV().c(1019, this.e, 0);
-         if (!this.d.aH) {
-            this.d.a(this.d.fy());
-         }
-      }
-
-      this.a++;
-      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
-      if ($$0 != this.b) {
-         this.d.dV().a(this.d.ar(), this.e, $$0);
-         this.b = $$0;
-      }
-
-      if (this.a == this.f() && this.a(this.d.dV().ak())) {
-         this.d.dV().a(this.e, false);
-         this.d.dV().c(1021, this.e, 0);
-         this.d.dV().c(2001, this.e, diq.j(this.d.dV().a_(this.e)));
-      }
-   }
-
-   private boolean a(bsh $$0) {
-      return this.h.test($$0);
+   protected void d(ash $$0, bwb $$1, long $$2) {
+      $$1.ao();
    }
 }

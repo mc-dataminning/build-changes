@@ -1,30 +1,29 @@
-import java.util.List;
-import java.util.Optional;
+public class ahq implements aac<ahm> {
+   public static final zt<ws, ahq> a = aac.a(ahq::a, ahq::new);
+   private final btb b;
 
-public record ahq(int b, List<String> c, Optional<String> d) implements zq<agw> {
-   public static final zh<wg, ahq> a = zh.a(zf.h, ahq::b, zf.b(1024).a(zf.c(100)), ahq::e, zf.b(32).a(zf::a), ahq::f, ahq::new);
+   public ahq(btb $$0) {
+      this.b = $$0;
+   }
 
-   public ahq(int b, List<String> c, Optional<String> d) {
-      c = List.copyOf(c);
-      this.b = b;
-      this.c = c;
-      this.d = d;
+   private ahq(ws $$0) {
+      this.b = btb.a($$0.readUnsignedByte());
+   }
+
+   private void a(ws $$0) {
+      $$0.l(this.b.a());
    }
 
    @Override
-   public zs<ahq> a() {
-      return agu.bz;
+   public aae<ahq> a() {
+      return ahk.bn;
    }
 
-   public void a(agw $$0) {
+   public void a(ahm $$0) {
       $$0.a(this);
    }
 
-   public List<String> e() {
-      return this.c;
-   }
-
-   public Optional<String> f() {
-      return this.d;
+   public btb b() {
+      return this.b;
    }
 }

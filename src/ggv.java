@@ -1,42 +1,85 @@
-public class ggv extends ggu {
-   ggv(gdh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.D *= 1.5F;
-      this.t = (int)(Math.random() * 2.0) + 60;
+import com.google.common.net.HostAndPort;
+import com.mojang.logging.LogUtils;
+import java.net.IDN;
+import org.slf4j.Logger;
+
+public final class ggv {
+   private static final Logger a = LogUtils.getLogger();
+   private final HostAndPort b;
+   private static final ggv c = new ggv(HostAndPort.fromParts("server.invalid", 25565));
+
+   public ggv(String $$0, int $$1) {
+      this(HostAndPort.fromParts($$0, $$1));
    }
 
-   @Override
-   public float b(float $$0) {
-      float $$1 = 1.0F - ((float)this.s + $$0) / ((float)this.t * 1.5F);
-      return this.D * $$1;
+   private ggv(HostAndPort $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
+   public String a() {
+      try {
+         return IDN.toASCII(this.b.getHost());
+      } catch (IllegalArgumentException var2) {
+         return "";
+      }
+   }
+
+   public int b() {
+      return this.b.getPort();
+   }
+
+   public static ggv a(String $$0) {
+      if ($$0 == null) {
+         return c;
       } else {
-         float $$0 = (float)this.s / (float)this.t;
-         this.g = this.g + this.j * (double)$$0;
-         this.h = this.h + this.k * (double)$$0;
-         this.i = this.i + this.l * (double)$$0;
+         try {
+            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
+            return $$1.getHost().isEmpty() ? c : new ggv($$1);
+         } catch (IllegalArgumentException var2) {
+            a.info("Failed to parse URL {}", $$0, var2);
+            return c;
+         }
       }
    }
 
-   public static class a implements ggr<lw> {
-      private final ghj a;
-
-      public a(ghj $$0) {
-         this.a = $$0;
+   public static boolean b(String $$0) {
+      try {
+         HostAndPort $$1 = HostAndPort.fromString($$0);
+         String $$2 = $$1.getHost();
+         if (!$$2.isEmpty()) {
+            IDN.toASCII($$2);
+            return true;
+         }
+      } catch (IllegalArgumentException var3) {
       }
 
-      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ggv $$8 = new ggv($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      return false;
+   }
+
+   static int c(String $$0) {
+      try {
+         return Integer.parseInt($$0.trim());
+      } catch (Exception var2) {
+         return 25565;
       }
+   }
+
+   @Override
+   public String toString() {
+      return this.b.toString();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 instanceof ggv ? this.b.equals(((ggv)$$0).b) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
    }
 }

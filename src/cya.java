@@ -1,20 +1,24 @@
-public class cya extends cwi {
-   public cya(cyd $$0, float $$1, float $$2, cwi.a $$3) {
-      super($$0.a($$3, $$1, $$2));
+public class cya extends cxg {
+   public cya(cxg.a $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(dvv $$0, dfm $$1, jh $$2, cou $$3) {
-      return !$$3.b();
-   }
+   public bte a(cxk $$0, cps $$1, bwb $$2, btd $$3) {
+      xv $$4 = $$0.a(ku.g);
+      if ($$4 != null && !($$2 instanceof cps)) {
+         if (!$$1.dV().C && $$2.bL()) {
+            $$2.b($$4);
+            if ($$2 instanceof bwd $$5) {
+               $$5.ai();
+            }
 
-   @Override
-   public boolean a(cwm $$0, bvh $$1, bvh $$2) {
-      return true;
-   }
+            $$0.h(1);
+         }
 
-   @Override
-   public void b(cwm $$0, bvh $$1, bvh $$2) {
-      $$0.a(1, $$2, but.a);
+         return bte.a;
+      } else {
+         return bte.e;
+      }
    }
 }

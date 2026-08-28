@@ -42,15 +42,15 @@ public final class kr {
             if ($$4.isPresent()) {
                $$1.put(new kr.b($$3, false), $$4.get());
             } else {
-               $$1.put(new kr.b($$3, true), bas.a);
+               $$1.put(new kr.b($$3, true), bbk.a);
             }
          }
       }
 
       return $$1;
    });
-   public static final zh<wu, kr> c = new zh<wu, kr>() {
-      public kr a(wu $$0) {
+   public static final zt<xg, kr> c = new zt<xg, kr>() {
+      public kr a(xg $$0) {
          int $$1 = $$0.l();
          int $$2 = $$0.l();
          if ($$1 == 0 && $$2 == 0) {
@@ -74,7 +74,7 @@ public final class kr {
          }
       }
 
-      public void a(wu $$0, kr $$1) {
+      public void a(xg $$0, kr $$1) {
          if ($$1.d()) {
             $$0.c(0);
             $$0.c(0);
@@ -118,7 +118,7 @@ public final class kr {
          }
       }
 
-      private static <T> void a(wu $$0, kt<T> $$1, Object $$2) {
+      private static <T> void a(xg $$0, kt<T> $$1, Object $$2) {
          $$1.e().encode($$0, (T)$$2);
       }
    };
@@ -261,8 +261,8 @@ public final class kr {
             $$0 = $$0.substring("!".length());
          }
 
-         alj $$2 = alj.c($$0);
-         kt<?> $$3 = lz.ao.a($$2);
+         alz $$2 = alz.c($$0);
+         kt<?> $$3 = ma.ao.a($$2);
          if ($$3 == null) {
             return DataResult.error(() -> "No component with type: '" + $$2 + "'");
          } else {
@@ -270,7 +270,7 @@ public final class kr {
          }
       }, $$0 -> {
          kt<?> $$1 = $$0.b();
-         alj $$2 = lz.ao.b($$1);
+         alz $$2 = ma.ao.b($$1);
          return $$2 == null ? DataResult.error(() -> "Unregistered component: " + $$1) : DataResult.success($$0.c() ? "!" + $$2 : $$2.toString());
       });
 

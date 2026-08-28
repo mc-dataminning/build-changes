@@ -14,26 +14,26 @@ import java.util.concurrent.CompletableFuture;
 
 public class fv<T> implements ArgumentType<jq.c<T>> {
    private static final Collection<String> c = Arrays.asList("foo", "foo:bar", "012");
-   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> xj.b("entity.not_summonable", $$0));
-   public static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> xj.b("argument.resource.not_found", $$0, $$1));
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> xv.b("entity.not_summonable", $$0));
+   public static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> xv.b("argument.resource.not_found", $$0, $$1));
    public static final Dynamic3CommandExceptionType b = new Dynamic3CommandExceptionType(
-      ($$0, $$1, $$2) -> xj.b("argument.resource.invalid_type", $$0, $$1, $$2)
+      ($$0, $$1, $$2) -> xv.b("argument.resource.invalid_type", $$0, $$1, $$2)
    );
-   final ali<? extends kd<T>> e;
+   final aly<? extends kd<T>> e;
    private final js<T> f;
 
-   public fv(es $$0, ali<? extends kd<T>> $$1) {
+   public fv(es $$0, aly<? extends kd<T>> $$1) {
       this.e = $$1;
       this.f = $$0.d($$1);
    }
 
-   public static <T> fv<T> a(es $$0, ali<? extends kd<T>> $$1) {
+   public static <T> fv<T> a(es $$0, aly<? extends kd<T>> $$1) {
       return new fv<>($$0, $$1);
    }
 
-   public static <T> jq.c<T> a(CommandContext<ew> $$0, String $$1, ali<kd<T>> $$2) throws CommandSyntaxException {
+   public static <T> jq.c<T> a(CommandContext<ew> $$0, String $$1, aly<kd<T>> $$2) throws CommandSyntaxException {
       jq.c<T> $$3 = (jq.c<T>)$$0.getArgument($$1, jq.c.class);
-      ali<?> $$4 = $$3.h();
+      aly<?> $$4 = $$3.h();
       if ($$4.c($$2)) {
          return $$3;
       } else {
@@ -41,24 +41,24 @@ public class fv<T> implements ArgumentType<jq.c<T>> {
       }
    }
 
-   public static jq.c<bwk> a(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, ma.c);
+   public static jq.c<bxe> a(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, mb.c);
    }
 
-   public static jq.c<eei<?, ?>> b(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, ma.aJ);
+   public static jq.c<ega<?, ?>> b(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, mb.aK);
    }
 
-   public static jq.c<emi> c(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, ma.aS);
+   public static jq.c<eoc> c(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, mb.aT);
    }
 
-   public static jq.c<bus<?>> d(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, ma.z);
+   public static jq.c<bvm<?>> d(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, mb.z);
    }
 
-   public static jq.c<bus<?>> e(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
-      jq.c<bus<?>> $$2 = a($$0, $$1, ma.z);
+   public static jq.c<bvm<?>> e(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
+      jq.c<bvm<?>> $$2 = a($$0, $$1, mb.z);
       if (!$$2.a().c()) {
          throw d.create($$2.h().a().toString());
       } else {
@@ -66,22 +66,22 @@ public class fv<T> implements ArgumentType<jq.c<T>> {
       }
    }
 
-   public static jq.c<bto> f(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, ma.W);
+   public static jq.c<bui> f(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, mb.W);
    }
 
-   public static jq.c<dcd> g(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, ma.aM);
+   public static jq.c<ddr> g(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, mb.aN);
    }
 
    public jq.c<T> a(StringReader $$0) throws CommandSyntaxException {
-      alj $$1 = alj.a($$0);
-      ali<T> $$2 = ali.a(this.e, $$1);
+      alz $$1 = alz.a($$0);
+      aly<T> $$2 = aly.a(this.e, $$1);
       return this.f.a($$2).orElseThrow(() -> a.createWithContext($$0, $$1, this.e.a()));
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return fb.a(this.f.c_().map(ali::a), $$1);
+      return fb.a(this.f.c_().map(aly::a), $$1);
    }
 
    public Collection<String> getExamples() {
@@ -89,11 +89,11 @@ public class fv<T> implements ArgumentType<jq.c<T>> {
    }
 
    public static class a<T> implements is<fv<T>, fv.a<T>.a> {
-      public void a(fv.a<T>.a $$0, wg $$1) {
+      public void a(fv.a<T>.a $$0, ws $$1) {
          $$1.b($$0.b);
       }
 
-      public fv.a<T>.a a(wg $$0) {
+      public fv.a<T>.a a(ws $$0) {
          return new fv.a.a($$0.r());
       }
 
@@ -106,9 +106,9 @@ public class fv<T> implements ArgumentType<jq.c<T>> {
       }
 
       public final class a implements is.a<fv<T>> {
-         final ali<? extends kd<T>> b;
+         final aly<? extends kd<T>> b;
 
-         a(final ali<? extends kd<T>> $$1) {
+         a(final aly<? extends kd<T>> $$1) {
             this.b = $$1;
          }
 

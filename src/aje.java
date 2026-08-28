@@ -1,16 +1,20 @@
-public interface aje extends abz {
-   @Override
-   default we b() {
-      return we.d;
+public record aje(short b, cxk c) implements aac<ahm> {
+   public static final zt<xg, aje> a = zt.a(zr.e, aje::b, cxk.a(cxk.h), aje::e, aje::new);
+
+   public aje(int $$0, cxk $$1) {
+      this((short)$$0, $$1);
    }
 
-   void a(ajg var1);
+   @Override
+   public aae<aje> a() {
+      return ahk.cd;
+   }
 
-   void a(ajj var1);
+   public void a(ahm $$0) {
+      $$0.a(this);
+   }
 
-   void a(aji var1);
-
-   void a(ajh var1);
-
-   void a(ajf var1);
+   public cxk e() {
+      return this.c;
+   }
 }

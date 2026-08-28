@@ -1,77 +1,53 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 public class bcl extends DataFix {
+   private final String a;
+   private static final Set<String> b = Set.of("minecraft:empty", "minecraft:structure_starts", "minecraft:structure_references", "minecraft:biomes");
+
    public bcl(Schema $$0) {
-      super($$0, true);
+      super($$0, false);
+      this.a = "Blending Data Fix v" + $$0.getVersionKey();
    }
 
-   private static boolean a(String $$0) {
-      return $$0.equals("minecraft:boat");
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getOutputSchema().getType(bis.c);
+      return this.fixTypeEverywhereTyped(this.a, $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> a($$0xx, $$0xx.get("__context"))));
    }
 
-   private static boolean b(String $$0) {
-      return $$0.equals("minecraft:chest_boat");
-   }
-
-   private static boolean c(String $$0) {
-      return a($$0) || b($$0);
-   }
-
-   private static String d(String $$0) {
-      return switch ($$0) {
-         case "spruce" -> "minecraft:spruce_boat";
-         case "birch" -> "minecraft:birch_boat";
-         case "jungle" -> "minecraft:jungle_boat";
-         case "acacia" -> "minecraft:acacia_boat";
-         case "cherry" -> "minecraft:cherry_boat";
-         case "dark_oak" -> "minecraft:dark_oak_boat";
-         case "mangrove" -> "minecraft:mangrove_boat";
-         case "bamboo" -> "minecraft:bamboo_raft";
-         default -> "minecraft:oak_boat";
-      };
-   }
-
-   private static String e(String $$0) {
-      return switch ($$0) {
-         case "spruce" -> "minecraft:spruce_chest_boat";
-         case "birch" -> "minecraft:birch_chest_boat";
-         case "jungle" -> "minecraft:jungle_chest_boat";
-         case "acacia" -> "minecraft:acacia_chest_boat";
-         case "cherry" -> "minecraft:cherry_chest_boat";
-         case "dark_oak" -> "minecraft:dark_oak_chest_boat";
-         case "mangrove" -> "minecraft:mangrove_chest_boat";
-         case "bamboo" -> "minecraft:bamboo_chest_raft";
-         default -> "minecraft:oak_chest_boat";
-      };
-   }
-
-   public TypeRewriteRule makeRule() {
-      OpticFinder<String> $$0 = DSL.fieldFinder("id", bjo.a());
-      Type<?> $$1 = this.getInputSchema().getType(bia.B);
-      Type<?> $$2 = this.getOutputSchema().getType(bia.B);
-      return this.fixTypeEverywhereTyped("BoatSplitFix", $$1, $$2, $$2x -> {
-         Optional<String> $$3 = $$2x.getOptional($$0);
-         if ($$3.isPresent() && c($$3.get())) {
-            Dynamic<?> $$4 = (Dynamic<?>)$$2x.getOrCreate(DSL.remainderFinder());
-            Optional<String> $$5 = $$4.get("Type").asString().result();
-            String $$6;
-            if (b($$3.get())) {
-               $$6 = $$5.map(bcl::e).orElse("minecraft:oak_chest_boat");
-            } else {
-               $$6 = $$5.map(bcl::d).orElse("minecraft:oak_boat");
+   private static Dynamic<?> a(Dynamic<?> $$0, OptionalDynamic<?> $$1) {
+      $$0 = $$0.remove("blending_data");
+      boolean $$2 = "minecraft:overworld".equals($$1.get("dimension").asString().result().orElse(""));
+      Optional<? extends Dynamic<?>> $$3 = $$0.get("Status").result();
+      if ($$2 && $$3.isPresent()) {
+         String $$4 = bkg.a($$3.get().asString("empty"));
+         Optional<? extends Dynamic<?>> $$5 = $$0.get("below_zero_retrogen").result();
+         if (!b.contains($$4)) {
+            $$0 = a($$0, 384, -64);
+         } else if ($$5.isPresent()) {
+            Dynamic<?> $$6 = (Dynamic<?>)$$5.get();
+            String $$7 = bkg.a($$6.get("target_status").asString("empty"));
+            if (!b.contains($$7)) {
+               $$0 = a($$0, 256, 0);
             }
-
-            return bay.a($$2, $$2x).update(DSL.remainderFinder(), $$0xx -> $$0xx.remove("Type")).set($$0, $$6);
-         } else {
-            return bay.a($$2, $$2x);
          }
-      });
+      }
+
+      return $$0;
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0, int $$1, int $$2) {
+      return $$0.set(
+         "blending_data",
+         $$0.createMap(Map.of($$0.createString("min_section"), $$0.createInt(kj.a($$2)), $$0.createString("max_section"), $$0.createInt(kj.a($$2 + $$1))))
+      );
    }
 }

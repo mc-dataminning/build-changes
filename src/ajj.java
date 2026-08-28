@@ -1,20 +1,33 @@
-import com.mojang.authlib.GameProfile;
-import io.netty.buffer.ByteBuf;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public record ajj(GameProfile b) implements zq<aje> {
-   public static final zh<ByteBuf, ajj> a = zh.a(zf.x, ajj::b, ajj::new);
+public class ajj implements aac<ahm> {
+   public static final zt<ws, ajj> a = aac.a(ajj::a, ajj::new);
+   private final UUID b;
 
-   @Override
-   public zs<ajj> a() {
-      return ajk.b;
+   public ajj(UUID $$0) {
+      this.b = $$0;
    }
 
-   public void a(aje $$0) {
+   private ajj(ws $$0) {
+      this.b = $$0.n();
+   }
+
+   private void a(ws $$0) {
+      $$0.a(this.b);
+   }
+
+   @Override
+   public aae<ajj> a() {
+      return ahk.ci;
+   }
+
+   public void a(ahm $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   @Nullable
+   public bvf a(ash $$0) {
+      return $$0.a(this.b);
    }
 }

@@ -1,114 +1,129 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dio extends dml implements dit, dpr {
-   public static final MapCodec<dio> a = b(dio::new);
-   private static final dwm f = dwl.C;
-   private static final int g = 6;
-   protected static final fas b = diq.a(5.0, 0.0, 9.0, 11.0, 16.0, 15.0);
-   protected static final fas c = diq.a(5.0, 0.0, 1.0, 11.0, 16.0, 7.0);
-   protected static final fas d = diq.a(1.0, 0.0, 5.0, 7.0, 16.0, 11.0);
-   protected static final fas e = diq.a(9.0, 0.0, 5.0, 15.0, 16.0, 11.0);
+public class dio {
+   private static final Logger d = LogUtils.getLogger();
+   private static final float e = 0.1F;
+   public static final brq<dio.c> a = brq.c();
+   public static final dio b = new dio.a().a();
+   public static final MapCodec<dio> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 0.9999999F).optionalFieldOf("creature_spawn_probability", 0.1F).forGetter($$0x -> $$0x.f),
+               Codec.simpleMap(bwe.i, brq.c(dio.c.a).promotePartial(ae.a("Spawn data: ", d::error)), bba.a(bwe.values()))
+                  .fieldOf("spawners")
+                  .forGetter($$0x -> $$0x.g),
+               Codec.simpleMap(ma.f.q(), dio.b.a, ma.f).fieldOf("spawn_costs").forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, dio::new)
+   );
+   private final float f;
+   private final Map<bwe, brq<dio.c>> g;
+   private final Map<bvm<?>, dio.b> h;
 
-   @Override
-   public MapCodec<dio> a() {
-      return a;
+   dio(float $$0, Map<bwe, brq<dio.c>> $$1, Map<bvm<?>, dio.b> $$2) {
+      this.f = $$0;
+      this.g = ImmutableMap.copyOf($$1);
+      this.h = ImmutableMap.copyOf($$2);
    }
 
-   protected dio(dvu.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(f, Boolean.valueOf(false)).b(aF, jm.c));
+   public brq<dio.c> a(bwe $$0) {
+      return this.g.getOrDefault($$0, a);
    }
 
-   @Override
-   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
-      switch ((jm)$$0.c(aF)) {
-         case d:
-            return c;
-         case c:
-         default:
-            return b;
-         case e:
-            return e;
-         case f:
-            return d;
+   @Nullable
+   public dio.b a(bvm<?> $$0) {
+      return this.h.get($$0);
+   }
+
+   public float a() {
+      return this.f;
+   }
+
+   public static class a {
+      private final Map<bwe, List<dio.c>> a = Stream.of(bwe.values()).collect(ImmutableMap.toImmutableMap($$0 -> $$0, $$0 -> Lists.newArrayList()));
+      private final Map<bvm<?>, dio.b> b = Maps.newLinkedHashMap();
+      private float c = 0.1F;
+
+      public dio.a a(bwe $$0, dio.c $$1) {
+         this.a.get($$0).add($$1);
+         return this;
+      }
+
+      public dio.a a(bvm<?> $$0, double $$1, double $$2) {
+         this.b.put($$0, new dio.b($$2, $$1));
+         return this;
+      }
+
+      public dio.a a(float $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public dio a() {
+         return new dio(
+            this.c,
+            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> brq.a((List)$$0.getValue()))),
+            ImmutableMap.copyOf(this.b)
+         );
       }
    }
 
-   @Override
-   protected void a(dvw.a<diq, dvv> $$0) {
-      $$0.a(f, aF);
-   }
+   public static record b(double b, double c) {
+      public static final Codec<dio.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.DOUBLE.fieldOf("energy_budget").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("charge").forGetter($$0x -> $$0x.c))
+               .apply($$0, dio.b::new)
+      );
 
-   @Override
-   protected erv b_(dvv $$0) {
-      return $$0.c(f) ? erw.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a(dvv $$0, dfp $$1, jh $$2) {
-      jh $$3 = $$2.e();
-      dvv $$4 = $$1.a_($$3);
-      dvv $$5 = $$1.a_($$2.d());
-      return ($$4.a(this) || $$4.a(axc.bz)) && ($$5.a(this) || $$5.a(dis.sD));
-   }
-
-   protected static boolean a(dfn $$0, jh $$1, erv $$2, jm $$3) {
-      dvv $$4 = dis.sE.m().b(f, Boolean.valueOf($$2.a(erw.c))).b(aF, $$3);
-      return $$0.a($$1, $$4, 3);
-   }
-
-   @Override
-   protected dvv a(dvv $$0, dfp $$1, dgb $$2, jh $$3, jm $$4, jh $$5, dvv $$6, azu $$7) {
-      if (($$4 == jm.a || $$4 == jm.b) && !$$0.a($$1, $$3)) {
-         $$2.a($$3, this, 1);
+      public double a() {
+         return this.b;
       }
 
-      if ($$0.c(f)) {
-         $$2.a($$3, erw.c, erw.c.a($$1));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected void a(dvv $$0, arp $$1, jh $$2, azu $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
+      public double b() {
+         return this.c;
       }
    }
 
-   @Override
-   public boolean b(dfp $$0, jh $$1, dvv $$2) {
-      Optional<jh> $$3 = l.a($$0, $$1, $$2.b(), jm.b, dis.sD);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         jh $$4 = $$3.get().d();
-         dvv $$5 = $$0.a_($$4);
-         return din.a($$0, $$4, $$5);
+   public static class c extends bro.a {
+      public static final Codec<dio.c> a = RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     ma.f.q().fieldOf("type").forGetter($$0x -> $$0x.b),
+                     brn.a.fieldOf("weight").forGetter(bro.a::a),
+                     azn.m.fieldOf("minCount").forGetter($$0x -> $$0x.c),
+                     azn.m.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
+                  )
+                  .apply($$0, dio.c::new)
+         )
+         .validate($$0 -> $$0.c > $$0.d ? DataResult.error(() -> "minCount needs to be smaller or equal to maxCount") : DataResult.success($$0));
+      public final bvm<?> b;
+      public final int c;
+      public final int d;
+
+      public c(bvm<?> $$0, int $$1, int $$2, int $$3) {
+         this($$0, brn.a($$1), $$2, $$3);
       }
-   }
 
-   @Override
-   public boolean a(dfm $$0, azu $$1, jh $$2, dvv $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arp $$0, azu $$1, jh $$2, dvv $$3) {
-      Optional<jh> $$4 = l.a($$0, $$2, $$3.b(), jm.b, dis.sD);
-      if (!$$4.isEmpty()) {
-         jh $$5 = $$4.get();
-         jh $$6 = $$5.d();
-         jm $$7 = $$3.c(aF);
-         a($$0, $$5, $$0.b_($$5), $$7);
-         din.a($$0, $$6, $$0.b_($$6), $$7);
+      public c(bvm<?> $$0, brn $$1, int $$2, int $$3) {
+         super($$1);
+         this.b = $$0.f() == bwe.h ? bvm.aR : $$0;
+         this.c = $$2;
+         this.d = $$3;
       }
-   }
 
-   @Override
-   public cwm a(dfp $$0, jh $$1, dvv $$2) {
-      return new cwm(dis.sD);
+      @Override
+      public String toString() {
+         return bvm.a(this.b) + "*(" + this.c + "-" + this.d + "):" + this.a();
+      }
    }
 }

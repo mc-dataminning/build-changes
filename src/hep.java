@@ -1,130 +1,123 @@
-import com.mojang.authlib.minecraft.TelemetryEvent;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Stream;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class hep {
-   static final Map<String, hep> h = new Object2ObjectLinkedOpenHashMap();
-   public static final Codec<hep> a = Codec.STRING.comapFlatMap($$0 -> {
-      hep $$1 = h.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No TelemetryEventType with key: '" + $$0 + "'");
-   }, hep::a);
-   private static final List<her<?>> i = List.of(her.a, her.b, her.c, her.d, her.e, her.f, her.g, her.h, her.m, her.l);
-   private static final List<her<?>> j = Stream.concat(i.stream(), Stream.of(her.i, her.j, her.k)).toList();
-   public static final hep b = a("world_loaded", "WorldLoaded").a(j).a(her.n).a(her.o).b();
-   public static final hep c = a("performance_metrics", "PerformanceMetrics").a(j).a(her.r).a(her.s).a(her.t).a(her.u).a(her.v).a(her.w).a().b();
-   public static final hep d = a("world_load_times", "WorldLoadTimes").a(j).a(her.x).a(her.y).a().b();
-   public static final hep e = a("world_unloaded", "WorldUnloaded").a(j).a(her.p).a(her.q).b();
-   public static final hep f = a("advancement_made", "AdvancementMade").a(j).a(her.D).a(her.E).a().b();
-   public static final hep g = a("game_load_times", "GameLoadTimes").a(i).a(her.z).a(her.A).a(her.B).a(her.C).a().b();
-   private final String k;
-   private final String l;
-   private final List<her<?>> m;
-   private final boolean n;
-   private final MapCodec<hel> o;
+public class hep implements hel {
+   private static final int a = 40;
+   private static final float b = 0.001F;
+   private final gka c;
+   private final hgg d;
+   private final die e;
+   private final bam f;
+   private final Object2ObjectArrayMap<dic, hep.a> g = new Object2ObjectArrayMap();
+   private Optional<dia> h = Optional.empty();
+   private Optional<dhz> i = Optional.empty();
+   private float j;
+   @Nullable
+   private dic k;
 
-   hep(String $$0, String $$1, List<her<?>> $$2, boolean $$3) {
-      this.k = $$0;
-      this.l = $$1;
-      this.m = $$2;
-      this.n = $$3;
-      this.o = hes.a($$2).xmap($$0x -> new hel(this, $$0x), hel::b);
+   public hep(gka $$0, hgg $$1, die $$2) {
+      this.f = $$0.dV().H_();
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public static hep.a a(String $$0, String $$1) {
-      return new hep.a($$0, $$1);
-   }
-
-   public String a() {
-      return this.k;
-   }
-
-   public List<her<?>> b() {
-      return this.m;
-   }
-
-   public MapCodec<hel> c() {
-      return this.o;
-   }
-
-   public boolean d() {
-      return this.n;
-   }
-
-   public TelemetryEvent a(TelemetrySession $$0, hes $$1) {
-      TelemetryEvent $$2 = $$0.createNewEvent(this.l);
-
-      for (her<?> $$3 : this.m) {
-         $$3.a($$1, $$2);
-      }
-
-      return $$2;
-   }
-
-   public <T> boolean a(her<T> $$0) {
-      return this.m.contains($$0);
+   public float b() {
+      return this.j;
    }
 
    @Override
-   public String toString() {
-      return "TelemetryEventType[" + this.k + "]";
-   }
+   public void a() {
+      this.g.values().removeIf(hek::m);
+      dic $$0 = this.e.a(this.c.dA(), this.c.dC(), this.c.dG()).a();
+      if ($$0 != this.k) {
+         this.k = $$0;
+         this.h = $$0.m();
+         this.i = $$0.n();
+         this.g.values().forEach(hep.a::o);
+         $$0.l().ifPresent($$1 -> this.g.compute($$0, ($$1x, $$2) -> {
+               if ($$2 == null) {
+                  $$2 = new hep.a((axe)$$1.a());
+                  this.d.a((hfb)$$2);
+               }
 
-   public xx e() {
-      return this.a("title");
-   }
-
-   public xx f() {
-      return this.a("description");
-   }
-
-   private xx a(String $$0) {
-      return xj.c("telemetry.event." + this.k + "." + $$0);
-   }
-
-   public static List<hep> g() {
-      return List.copyOf(h.values());
-   }
-
-   public static class a {
-      private final String a;
-      private final String b;
-      private final List<her<?>> c = new ArrayList<>();
-      private boolean d;
-
-      a(String $$0, String $$1) {
-         this.a = $$0;
-         this.b = $$1;
+               $$2.p();
+               return $$2;
+            }));
       }
 
-      public hep.a a(List<her<?>> $$0) {
-         this.c.addAll($$0);
-         return this;
-      }
-
-      public <T> hep.a a(her<T> $$0) {
-         this.c.add($$0);
-         return this;
-      }
-
-      public hep.a a() {
-         this.d = true;
-         return this;
-      }
-
-      public hep b() {
-         hep $$0 = new hep(this.a, this.b, List.copyOf(this.c), this.d);
-         if (hep.h.putIfAbsent(this.a, $$0) != null) {
-            throw new IllegalStateException("Duplicate TelemetryEventType with key: '" + this.a + "'");
-         } else {
-            return $$0;
+      this.i.ifPresent($$0x -> {
+         if (this.f.j() < $$0x.b()) {
+            this.d.a(hew.b($$0x.a().a()));
          }
+      });
+      this.h
+         .ifPresent(
+            $$0x -> {
+               dha $$1 = this.c.dV();
+               int $$2 = $$0x.c() * 2 + 1;
+               jh $$3 = jh.a(
+                  this.c.dA() + (double)this.f.a($$2) - (double)$$0x.c(),
+                  this.c.dE() + (double)this.f.a($$2) - (double)$$0x.c(),
+                  this.c.dG() + (double)this.f.a($$2) - (double)$$0x.c()
+               );
+               int $$4 = $$1.a(dhj.a, $$3);
+               if ($$4 > 0) {
+                  this.j -= (float)$$4 / 15.0F * 0.001F;
+               } else {
+                  this.j = this.j - (float)($$1.a(dhj.b, $$3) - 1) / (float)$$0x.b();
+               }
+
+               if (this.j >= 1.0F) {
+                  double $$5 = (double)$$3.u() + 0.5;
+                  double $$6 = (double)$$3.v() + 0.5;
+                  double $$7 = (double)$$3.w() + 0.5;
+                  double $$8 = $$5 - this.c.dA();
+                  double $$9 = $$6 - this.c.dE();
+                  double $$10 = $$7 - this.c.dG();
+                  double $$11 = Math.sqrt($$8 * $$8 + $$9 * $$9 + $$10 * $$10);
+                  double $$12 = $$11 + $$0x.d();
+                  hew $$13 = hew.a($$0x.a().a(), this.f, this.c.dA() + $$8 / $$11 * $$12, this.c.dE() + $$9 / $$11 * $$12, this.c.dG() + $$10 / $$11 * $$12);
+                  this.d.a($$13);
+                  this.j = 0.0F;
+               } else {
+                  this.j = Math.max(this.j, 0.0F);
+               }
+            }
+         );
+   }
+
+   public static class a extends hek {
+      private int n;
+      private int o;
+
+      public a(axe $$0) {
+         super($$0, axg.i, hfb.t());
+         this.i = true;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
+      }
+
+      @Override
+      public void q() {
+         if (this.o < 0) {
+            this.n();
+         }
+
+         this.o = this.o + this.n;
+         this.d = bae.a((float)this.o / 40.0F, 0.0F, 1.0F);
+      }
+
+      public void o() {
+         this.o = Math.min(this.o, 40);
+         this.n = -1;
+      }
+
+      public void p() {
+         this.o = Math.max(0, this.o);
+         this.n = 1;
       }
    }
 }

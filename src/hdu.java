@@ -1,10 +1,28 @@
-import java.io.Closeable;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import javax.sound.sampled.AudioFormat;
+import java.util.Locale;
 
-public interface hdu extends Closeable {
-   AudioFormat a();
+public record hdu(alz b, String c) {
+   public static final String a = "inventory";
 
-   ByteBuffer a(int var1) throws IOException;
+   public hdu(alz b, String c) {
+      c = a(c);
+      this.b = b;
+      this.c = c;
+   }
+
+   public static hdu a(alz $$0) {
+      return new hdu($$0, "inventory");
+   }
+
+   private static String a(String $$0) {
+      return $$0.toLowerCase(Locale.ROOT);
+   }
+
+   public String a() {
+      return this.c;
+   }
+
+   @Override
+   public String toString() {
+      return this.b + "#" + this.c;
+   }
 }

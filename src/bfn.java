@@ -1,41 +1,38 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.stream.Stream;
 
-public class bfn extends DataFix {
+public class bfn extends bhn {
+   private static final int a = 6;
+
    public bfn(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+      super($$0, $$1, "EntityZombieVillagerTypeFix", bis.B, "Zombie");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bia.t);
-      OpticFinder<?> $$1 = $$0.findField("tag");
-      return this.fixTypeEverywhereTyped(
-         "Item Lore componentize",
-         $$0,
-         $$1x -> $$1x.updateTyped(
-               $$1,
-               $$0xx -> $$0xx.update(
-                     DSL.remainderFinder(),
-                     $$0xxx -> $$0xxx.update(
-                           "display",
-                           $$0xxxx -> $$0xxxx.update(
-                                 "Lore",
-                                 $$0xxxxx -> (Dynamic)DataFixUtils.orElse($$0xxxxx.asStreamOpt().map(bfn::a).map($$0xxxxx::createList).result(), $$0xxxxx)
-                              )
-                        )
-                  )
-            )
-      );
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      if ($$0.get("IsVillager").asBoolean(false)) {
+         if ($$0.get("ZombieType").result().isEmpty()) {
+            int $$1 = this.a($$0.get("VillagerProfession").asInt(-1));
+            if ($$1 == -1) {
+               $$1 = this.a(bam.a().a(6));
+            }
+
+            $$0 = $$0.set("ZombieType", $$0.createInt($$1));
+         }
+
+         $$0 = $$0.remove("IsVillager");
+      }
+
+      return $$0;
    }
 
-   private static <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
-      return $$0.map(bav::a);
+   private int a(int $$0) {
+      return $$0 >= 0 && $$0 < 6 ? $$0 : -1;
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

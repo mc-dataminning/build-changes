@@ -1,53 +1,60 @@
+import com.google.common.collect.Iterables;
+import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiPredicate;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public class cfh<T extends bvh> extends cfr<T> {
-   private final BiPredicate<T, bvh> a;
-   private final Predicate<T> b;
-   private final cel<Boolean> c;
-   private final int d;
+public class cfh {
+   private static final cfh a = new cfh();
+   private final List<bwb> b;
+   private final Predicate<bwb> c;
 
-   public cfh(int $$0, BiPredicate<T, bvh> $$1, Predicate<T> $$2, cel<Boolean> $$3, int $$4) {
-      super($$0);
-      this.a = $$1;
+   private cfh() {
+      this.b = List.of();
+      this.c = $$0 -> false;
+   }
+
+   public cfh(ash $$0, bwb $$1, List<bwb> $$2) {
       this.b = $$2;
-      this.c = $$3;
-      this.d = $$4;
+      Object2BooleanOpenHashMap<bwb> $$3 = new Object2BooleanOpenHashMap($$2.size());
+      Predicate<bwb> $$4 = $$2x -> cgl.b($$0, $$1, $$2x);
+      this.c = $$2x -> $$3.computeIfAbsent($$2x, $$4);
    }
 
-   @Override
-   protected void a(arp $$0, T $$1) {
-      if (!this.b.test($$1)) {
-         this.c($$1);
-      } else {
-         this.a($$1);
-      }
+   public static cfh a() {
+      return a;
    }
 
-   @Override
-   public Set<cel<?>> a() {
-      return Set.of(cel.g);
-   }
-
-   @Override
-   public void a(T $$0) {
-      Optional<List<bvh>> $$1 = $$0.eb().c(cel.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
-         if ($$2) {
-            this.b($$0);
+   public Optional<bwb> a(Predicate<bwb> $$0) {
+      for (bwb $$1 : this.b) {
+         if ($$0.test($$1) && this.c.test($$1)) {
+            return Optional.of($$1);
          }
       }
+
+      return Optional.empty();
    }
 
-   public void b(T $$0) {
-      $$0.eb().a(this.c, true, (long)this.d);
+   public Iterable<bwb> b(Predicate<bwb> $$0) {
+      return Iterables.filter(this.b, $$1 -> $$0.test($$1) && this.c.test($$1));
    }
 
-   public void c(T $$0) {
-      $$0.eb().b(this.c);
+   public Stream<bwb> c(Predicate<bwb> $$0) {
+      return this.b.stream().filter($$1 -> $$0.test($$1) && this.c.test($$1));
+   }
+
+   public boolean a(bwb $$0) {
+      return this.b.contains($$0) && this.c.test($$0);
+   }
+
+   public boolean d(Predicate<bwb> $$0) {
+      for (bwb $$1 : this.b) {
+         if ($$0.test($$1) && this.c.test($$1)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

@@ -1,117 +1,52 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P4;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
+public class evf {
+   private static final int J = 12741452;
+   public static final jq<eve> a = a("player", "player", false, true);
+   public static final jq<eve> b = a("frame", "frame", true, true);
+   public static final jq<eve> c = a("red_marker", "red_marker", false, true);
+   public static final jq<eve> d = a("blue_marker", "blue_marker", false, true);
+   public static final jq<eve> e = a("target_x", "target_x", true, false);
+   public static final jq<eve> f = a("target_point", "target_point", true, false);
+   public static final jq<eve> g = a("player_off_map", "player_off_map", false, true);
+   public static final jq<eve> h = a("player_off_limits", "player_off_limits", false, true);
+   public static final jq<eve> i = a("mansion", "woodland_mansion", true, 5393476, false, true);
+   public static final jq<eve> j = a("monument", "ocean_monument", true, 3830373, false, true);
+   public static final jq<eve> k = a("banner_white", "white_banner", true, true);
+   public static final jq<eve> l = a("banner_orange", "orange_banner", true, true);
+   public static final jq<eve> m = a("banner_magenta", "magenta_banner", true, true);
+   public static final jq<eve> n = a("banner_light_blue", "light_blue_banner", true, true);
+   public static final jq<eve> o = a("banner_yellow", "yellow_banner", true, true);
+   public static final jq<eve> p = a("banner_lime", "lime_banner", true, true);
+   public static final jq<eve> q = a("banner_pink", "pink_banner", true, true);
+   public static final jq<eve> r = a("banner_gray", "gray_banner", true, true);
+   public static final jq<eve> s = a("banner_light_gray", "light_gray_banner", true, true);
+   public static final jq<eve> t = a("banner_cyan", "cyan_banner", true, true);
+   public static final jq<eve> u = a("banner_purple", "purple_banner", true, true);
+   public static final jq<eve> v = a("banner_blue", "blue_banner", true, true);
+   public static final jq<eve> w = a("banner_brown", "brown_banner", true, true);
+   public static final jq<eve> x = a("banner_green", "green_banner", true, true);
+   public static final jq<eve> y = a("banner_red", "red_banner", true, true);
+   public static final jq<eve> z = a("banner_black", "black_banner", true, true);
+   public static final jq<eve> A = a("red_x", "red_x", true, false);
+   public static final jq<eve> B = a("village_desert", "desert_village", true, ett.w.ak, false, true);
+   public static final jq<eve> C = a("village_plains", "plains_village", true, ett.w.ak, false, true);
+   public static final jq<eve> D = a("village_savanna", "savanna_village", true, ett.w.ak, false, true);
+   public static final jq<eve> E = a("village_snowy", "snowy_village", true, ett.w.ak, false, true);
+   public static final jq<eve> F = a("village_taiga", "taiga_village", true, ett.w.ak, false, true);
+   public static final jq<eve> G = a("jungle_temple", "jungle_temple", true, ett.w.ak, false, true);
+   public static final jq<eve> H = a("swamp_hut", "swamp_hut", true, ett.w.ak, false, true);
+   public static final jq<eve> I = a("trial_chambers", "trial_chambers", true, 12741452, false, true);
 
-public abstract class evf extends evd {
-   public static final int d = 1;
-   public static final int f = 0;
-   protected final int g;
-   protected final int h;
-   protected final List<ewb> i;
-   final BiFunction<cwm, eun, cwm> a;
-   private final evc j = new evf.c() {
-      @Override
-      public void a(Consumer<cwm> $$0, eun $$1) {
-         evf.this.a(ewb.a(evf.this.a, $$0, $$1), $$1);
-      }
-   };
-
-   protected evf(int $$0, int $$1, List<exy> $$2, List<ewb> $$3) {
-      super($$2);
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$3;
-      this.a = ewd.a($$3);
+   public static jq<eve> a(kd<eve> $$0) {
+      return a;
    }
 
-   protected static <T extends evf> P4<Mu<T>, Integer, Integer, List<exy>, List<ewb>> b(Instance<T> $$0) {
-      return $$0.group(Codec.INT.optionalFieldOf("weight", 1).forGetter($$0x -> $$0x.g), Codec.INT.optionalFieldOf("quality", 0).forGetter($$0x -> $$0x.h))
-         .and(a($$0).t1())
-         .and(ewd.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.i));
+   private static jq<eve> a(String $$0, String $$1, boolean $$2, boolean $$3) {
+      return a($$0, $$1, $$2, -1, $$3, false);
    }
 
-   @Override
-   public void a(eut $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.i.size(); $$1++) {
-         this.i.get($$1).a($$0.a(".functions[" + $$1 + "]"));
-      }
-   }
-
-   protected abstract void a(Consumer<cwm> var1, eun var2);
-
-   @Override
-   public boolean expand(eun $$0, Consumer<evc> $$1) {
-      if (this.a($$0)) {
-         $$1.accept(this.j);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public static evf.a<?> a(evf.d $$0) {
-      return new evf.b($$0);
-   }
-
-   public abstract static class a<T extends evf.a<T>> extends evd.a<T> implements evx<T> {
-      protected int a = 1;
-      protected int b = 0;
-      private final Builder<ewb> c = ImmutableList.builder();
-
-      public T a(ewb.a $$0) {
-         this.c.add($$0.b());
-         return this.aE_();
-      }
-
-      protected List<ewb> a() {
-         return this.c.build();
-      }
-
-      public T a(int $$0) {
-         this.a = $$0;
-         return this.aE_();
-      }
-
-      public T b(int $$0) {
-         this.b = $$0;
-         return this.aE_();
-      }
-   }
-
-   static class b extends evf.a<evf.b> {
-      private final evf.d c;
-
-      public b(evf.d $$0) {
-         this.c = $$0;
-      }
-
-      protected evf.b g() {
-         return this;
-      }
-
-      @Override
-      public evd b() {
-         return this.c.build(this.a, this.b, this.f(), this.a());
-      }
-   }
-
-   protected abstract class c implements evc {
-      @Override
-      public int a(float $$0) {
-         return Math.max(azm.d((float)evf.this.g + (float)evf.this.h * $$0), 0);
-      }
-   }
-
-   @FunctionalInterface
-   protected interface d {
-      evf build(int var1, int var2, List<exy> var3, List<ewb> var4);
+   private static jq<eve> a(String $$0, String $$1, boolean $$2, int $$3, boolean $$4, boolean $$5) {
+      aly<eve> $$6 = aly.a(mb.aC, alz.b($$0));
+      eve $$7 = new eve(alz.b($$1), $$2, $$3, $$5, $$4);
+      return kd.b(ma.ar, $$6, $$7);
    }
 }

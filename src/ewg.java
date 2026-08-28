@@ -1,156 +1,109 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableSet.Builder;
 import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.EnumSet;
-import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Set;
 import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class ewg extends ewa {
-   public static final MapCodec<ewg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(ewg.b.a.listOf().fieldOf("modifiers").forGetter($$0x -> $$0x.b), Codec.BOOL.optionalFieldOf("replace", true).forGetter($$0x -> $$0x.c))
+public class ewg {
+   private static final Codec<ewg> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               fap.a.optionalFieldOf("min").forGetter($$0x -> Optional.ofNullable($$0x.c)),
+               fap.a.optionalFieldOf("max").forGetter($$0x -> Optional.ofNullable($$0x.d))
             )
             .apply($$0, ewg::new)
    );
-   private final List<ewg.b> b;
-   private final boolean c;
+   public static final Codec<ewg> a = Codec.either(Codec.INT, b).xmap($$0 -> (ewg)$$0.map(ewg::a, Function.identity()), $$0 -> {
+      OptionalInt $$1 = $$0.b();
+      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
+   });
+   @Nullable
+   private final fao c;
+   @Nullable
+   private final fao d;
+   private final ewg.b e;
+   private final ewg.a f;
 
-   ewg(List<exy> $$0, List<ewg.b> $$1, boolean $$2) {
-      super($$0);
-      this.b = List.copyOf($$1);
-      this.c = $$2;
+   public Set<eza<?>> a() {
+      Builder<eza<?>> $$0 = ImmutableSet.builder();
+      if (this.c != null) {
+         $$0.addAll(this.c.a());
+      }
+
+      if (this.d != null) {
+         $$0.addAll(this.d.a());
+      }
+
+      return $$0.build();
    }
 
-   @Override
-   public ewc<ewg> b() {
-      return ewd.o;
+   private ewg(Optional<fao> $$0, Optional<fao> $$1) {
+      this($$0.orElse(null), $$1.orElse(null));
    }
 
-   @Override
-   public Set<exg<?>> a() {
-      return this.b.stream().flatMap($$0 -> $$0.e.a().stream()).collect(ImmutableSet.toImmutableSet());
-   }
-
-   @Override
-   public cwm a(cwm $$0, eun $$1) {
-      if (this.c) {
-         $$0.b(ku.o, this.a($$1, czd.a));
+   private ewg(@Nullable fao $$0, @Nullable fao $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      if ($$0 == null) {
+         if ($$1 == null) {
+            this.e = ($$0x, $$1x) -> $$1x;
+            this.f = ($$0x, $$1x) -> true;
+         } else {
+            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
+            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
+         }
+      } else if ($$1 == null) {
+         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
+         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
       } else {
-         $$0.a(ku.o, czd.a, $$1x -> this.a($$1, $$1x));
-      }
-
-      return $$0;
-   }
-
-   private czd a(eun $$0, czd $$1) {
-      azu $$2 = $$0.b();
-
-      for (ewg.b $$3 : this.b) {
-         buu $$4 = ae.a($$3.f, $$2);
-         $$1 = $$1.a($$3.c, new bwn($$3.b, (double)$$3.e.b($$0), $$3.d), $$4);
-      }
-
-      return $$1;
-   }
-
-   public static ewg.c a(alj $$0, jq<bwk> $$1, bwn.a $$2, eyu $$3) {
-      return new ewg.c($$0, $$1, $$2, $$3);
-   }
-
-   public static ewg.a c() {
-      return new ewg.a();
-   }
-
-   public static class a extends ewa.a<ewg.a> {
-      private final boolean a;
-      private final List<ewg.b> b = Lists.newArrayList();
-
-      public a(boolean $$0) {
-         this.a = $$0;
-      }
-
-      public a() {
-         this(false);
-      }
-
-      protected ewg.a a() {
-         return this;
-      }
-
-      public ewg.a a(ewg.c $$0) {
-         this.b.add($$0.a());
-         return this;
-      }
-
-      @Override
-      public ewb b() {
-         return new ewg(this.g(), this.b, this.a);
+         this.e = ($$2, $$3) -> bae.a($$3, $$0.a($$2), $$1.a($$2));
+         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
       }
    }
 
-   static record b(alj b, jq<bwk> c, bwn.a d, eyu e, List<buu> f) {
-      private static final Codec<List<buu>> g = ayv.a(
-         Codec.either(buu.l, buu.l.listOf())
-            .xmap($$0 -> (List)$$0.map(List::of, Function.identity()), $$0 -> $$0.size() == 1 ? Either.left((buu)$$0.getFirst()) : Either.right($$0))
-      );
-      public static final Codec<ewg.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  alj.a.fieldOf("id").forGetter(ewg.b::a),
-                  bwk.a.fieldOf("attribute").forGetter(ewg.b::b),
-                  bwn.a.f.fieldOf("operation").forGetter(ewg.b::c),
-                  eyv.a.fieldOf("amount").forGetter(ewg.b::d),
-                  g.fieldOf("slot").forGetter(ewg.b::e)
-               )
-               .apply($$0, ewg.b::new)
-      );
-
-      public alj a() {
-         return this.b;
-      }
-
-      public jq<bwk> b() {
-         return this.c;
-      }
-
-      public bwn.a c() {
-         return this.d;
-      }
-
-      public eyu d() {
-         return this.e;
-      }
-
-      public List<buu> e() {
-         return this.f;
-      }
+   public static ewg a(int $$0) {
+      fal $$1 = fal.a((float)$$0);
+      return new ewg(Optional.of($$1), Optional.of($$1));
    }
 
-   public static class c {
-      private final alj a;
-      private final jq<bwk> b;
-      private final bwn.a c;
-      private final eyu d;
-      private final Set<buu> e = EnumSet.noneOf(buu.class);
+   public static ewg a(int $$0, int $$1) {
+      return new ewg(Optional.of(fal.a((float)$$0)), Optional.of(fal.a((float)$$1)));
+   }
 
-      public c(alj $$0, jq<bwk> $$1, bwn.a $$2, eyu $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
+   public static ewg b(int $$0) {
+      return new ewg(Optional.of(fal.a((float)$$0)), Optional.empty());
+   }
 
-      public ewg.c a(buu $$0) {
-         this.e.add($$0);
-         return this;
-      }
+   public static ewg c(int $$0) {
+      return new ewg(Optional.empty(), Optional.of(fal.a((float)$$0)));
+   }
 
-      public ewg.b a() {
-         return new ewg.b(this.a, this.b, this.c, this.d, List.copyOf(this.e));
-      }
+   public int a(ewh $$0, int $$1) {
+      return this.e.apply($$0, $$1);
+   }
+
+   public boolean b(ewh $$0, int $$1) {
+      return this.f.test($$0, $$1);
+   }
+
+   private OptionalInt b() {
+      return Objects.equals(this.c, this.d) && this.c instanceof fal $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
+         ? OptionalInt.of((int)$$0.c())
+         : OptionalInt.empty();
+   }
+
+   @FunctionalInterface
+   interface a {
+      boolean test(ewh var1, int var2);
+   }
+
+   @FunctionalInterface
+   interface b {
+      int apply(ewh var1, int var2);
    }
 }

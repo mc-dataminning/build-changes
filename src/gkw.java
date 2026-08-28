@@ -1,42 +1,380 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
-public record gkw(alj a, List<gkw.b> b) {
-   public gkw(alj a, List<gkw.b> b) {
-      b = List.copyOf(b);
-      this.a = a;
-      this.b = b;
+public class gkw {
+   private static final Map<dke, glo> a = ae.a(Maps.newHashMap(), $$0 -> {
+      glo $$1 = glo.s();
+      $$0.put(dkg.fW, $$1);
+      glo $$2 = glo.d();
+      $$0.put(dkg.i, $$2);
+      $$0.put(dkg.fk, $$2);
+      $$0.put(dkg.fm, $$2);
+      $$0.put(dkg.fV, $$2);
+      $$0.put(dkg.hs, $$2);
+      $$0.put(dkg.fl, $$2);
+      $$0.put(dkg.aN, $$2);
+      $$0.put(dkg.aK, $$2);
+      $$0.put(dkg.aL, $$2);
+      $$0.put(dkg.aO, $$2);
+      $$0.put(dkg.aP, $$2);
+      $$0.put(dkg.aM, $$2);
+      $$0.put(dkg.aQ, $$2);
+      $$0.put(dkg.aR, $$2);
+      $$0.put(dkg.aT, $$2);
+      $$0.put(dkg.aU, $$2);
+      $$0.put(dkg.ag, $$2);
+      $$0.put(dkg.aS, $$2);
+      glo $$3 = glo.e();
+      $$0.put(dkg.z, $$3);
+      $$0.put(dkg.A, $$3);
+      $$0.put(dkg.B, $$3);
+      $$0.put(dkg.C, $$3);
+      $$0.put(dkg.D, $$3);
+      $$0.put(dkg.E, $$3);
+      $$0.put(dkg.F, $$3);
+      $$0.put(dkg.G, $$3);
+      $$0.put(dkg.aX, $$3);
+      $$0.put(dkg.bg, $$3);
+      $$0.put(dkg.bh, $$3);
+      $$0.put(dkg.bi, $$3);
+      $$0.put(dkg.bj, $$3);
+      $$0.put(dkg.bk, $$3);
+      $$0.put(dkg.bl, $$3);
+      $$0.put(dkg.bm, $$3);
+      $$0.put(dkg.bn, $$3);
+      $$0.put(dkg.bo, $$3);
+      $$0.put(dkg.bp, $$3);
+      $$0.put(dkg.bq, $$3);
+      $$0.put(dkg.br, $$3);
+      $$0.put(dkg.bs, $$3);
+      $$0.put(dkg.bt, $$3);
+      $$0.put(dkg.bu, $$3);
+      $$0.put(dkg.bv, $$3);
+      $$0.put(dkg.bw, $$3);
+      $$0.put(dkg.bx, $$3);
+      $$0.put(dkg.bz, $$3);
+      $$0.put(dkg.bA, $$3);
+      $$0.put(dkg.bB, $$3);
+      $$0.put(dkg.bC, $$3);
+      $$0.put(dkg.bD, $$3);
+      $$0.put(dkg.bE, $$3);
+      $$0.put(dkg.bY, $$3);
+      $$0.put(dkg.ca, $$3);
+      $$0.put(dkg.cb, $$3);
+      $$0.put(dkg.cc, $$3);
+      $$0.put(dkg.cd, $$3);
+      $$0.put(dkg.ce, $$3);
+      $$0.put(dkg.cf, $$3);
+      $$0.put(dkg.cg, $$3);
+      $$0.put(dkg.ch, $$3);
+      $$0.put(dkg.ci, $$3);
+      $$0.put(dkg.cj, $$3);
+      $$0.put(dkg.ck, $$3);
+      $$0.put(dkg.cl, $$3);
+      $$0.put(dkg.cm, $$3);
+      $$0.put(dkg.cn, $$3);
+      $$0.put(dkg.cw, $$3);
+      $$0.put(dkg.cx, $$3);
+      $$0.put(dkg.en, $$3);
+      $$0.put(dkg.eo, $$3);
+      $$0.put(dkg.cy, $$3);
+      $$0.put(dkg.cz, $$3);
+      $$0.put(dkg.cA, $$3);
+      $$0.put(dkg.tM, $$3);
+      $$0.put(dkg.tN, $$3);
+      $$0.put(dkg.cE, $$3);
+      $$0.put(dkg.cJ, $$3);
+      $$0.put(dkg.cW, $$3);
+      $$0.put(dkg.cX, $$3);
+      $$0.put(dkg.cY, $$3);
+      $$0.put(dkg.dK, $$3);
+      $$0.put(dkg.dX, $$3);
+      $$0.put(dkg.dY, $$3);
+      $$0.put(dkg.ed, $$3);
+      $$0.put(dkg.ef, $$3);
+      $$0.put(dkg.eu, $$3);
+      $$0.put(dkg.eL, $$3);
+      $$0.put(dkg.eM, $$3);
+      $$0.put(dkg.eN, $$3);
+      $$0.put(dkg.eO, $$3);
+      $$0.put(dkg.eP, $$3);
+      $$0.put(dkg.eQ, $$3);
+      $$0.put(dkg.eR, $$3);
+      $$0.put(dkg.eS, $$3);
+      $$0.put(dkg.ph, $$3);
+      $$0.put(dkg.pi, $$3);
+      $$0.put(dkg.eT, $$3);
+      $$0.put(dkg.eU, $$3);
+      $$0.put(dkg.sp, $$3);
+      $$0.put(dkg.sq, $$3);
+      $$0.put(dkg.ss, $$3);
+      $$0.put(dkg.sr, $$3);
+      $$0.put(dkg.st, $$3);
+      $$0.put(dkg.su, $$3);
+      $$0.put(dkg.sw, $$3);
+      $$0.put(dkg.sv, $$3);
+      $$0.put(dkg.fp, $$3);
+      $$0.put(dkg.fq, $$3);
+      $$0.put(dkg.fr, $$3);
+      $$0.put(dkg.fs, $$3);
+      $$0.put(dkg.ft, $$3);
+      $$0.put(dkg.tQ, $$3);
+      $$0.put(dkg.tR, $$3);
+      $$0.put(dkg.fu, $$3);
+      $$0.put(dkg.fA, $$3);
+      $$0.put(dkg.fE, $$3);
+      $$0.put(dkg.fG, $$3);
+      $$0.put(dkg.fQ, $$3);
+      $$0.put(dkg.gc, $$3);
+      $$0.put(dkg.gf, $$3);
+      $$0.put(dkg.gh, $$3);
+      $$0.put(dkg.gi, $$3);
+      $$0.put(dkg.gj, $$3);
+      $$0.put(dkg.gk, $$3);
+      $$0.put(dkg.gl, $$3);
+      $$0.put(dkg.gm, $$3);
+      $$0.put(dkg.gn, $$3);
+      $$0.put(dkg.go, $$3);
+      $$0.put(dkg.gp, $$3);
+      $$0.put(dkg.gq, $$3);
+      $$0.put(dkg.gr, $$3);
+      $$0.put(dkg.gs, $$3);
+      $$0.put(dkg.gt, $$3);
+      $$0.put(dkg.gu, $$3);
+      $$0.put(dkg.gv, $$3);
+      $$0.put(dkg.gw, $$3);
+      $$0.put(dkg.gx, $$3);
+      $$0.put(dkg.gy, $$3);
+      $$0.put(dkg.gz, $$3);
+      $$0.put(dkg.gA, $$3);
+      $$0.put(dkg.gB, $$3);
+      $$0.put(dkg.gC, $$3);
+      $$0.put(dkg.gD, $$3);
+      $$0.put(dkg.gE, $$3);
+      $$0.put(dkg.gF, $$3);
+      $$0.put(dkg.gG, $$3);
+      $$0.put(dkg.gH, $$3);
+      $$0.put(dkg.tD, $$3);
+      $$0.put(dkg.tE, $$3);
+      $$0.put(dkg.gg, $$3);
+      $$0.put(dkg.gI, $$3);
+      $$0.put(dkg.gJ, $$3);
+      $$0.put(dkg.ho, $$3);
+      $$0.put(dkg.hx, $$3);
+      $$0.put(dkg.ip, $$3);
+      $$0.put(dkg.iU, $$3);
+      $$0.put(dkg.iV, $$3);
+      $$0.put(dkg.iW, $$3);
+      $$0.put(dkg.iX, $$3);
+      $$0.put(dkg.iY, $$3);
+      $$0.put(dkg.iZ, $$3);
+      $$0.put(dkg.kF, $$3);
+      $$0.put(dkg.kG, $$3);
+      $$0.put(dkg.kH, $$3);
+      $$0.put(dkg.kI, $$3);
+      $$0.put(dkg.kJ, $$3);
+      $$0.put(dkg.kK, $$3);
+      $$0.put(dkg.kL, $$3);
+      $$0.put(dkg.kM, $$3);
+      $$0.put(dkg.kN, $$3);
+      $$0.put(dkg.sh, $$3);
+      $$0.put(dkg.si, $$3);
+      $$0.put(dkg.sk, $$3);
+      $$0.put(dkg.sj, $$3);
+      $$0.put(dkg.sl, $$3);
+      $$0.put(dkg.sm, $$3);
+      $$0.put(dkg.so, $$3);
+      $$0.put(dkg.sn, $$3);
+      $$0.put(dkg.kO, $$3);
+      $$0.put(dkg.kP, $$3);
+      $$0.put(dkg.kQ, $$3);
+      $$0.put(dkg.bZ, $$3);
+      $$0.put(dkg.kV, $$3);
+      $$0.put(dkg.kX, $$3);
+      $$0.put(dkg.kW, $$3);
+      $$0.put(dkg.kY, $$3);
+      $$0.put(dkg.mx, $$3);
+      $$0.put(dkg.my, $$3);
+      $$0.put(dkg.mA, $$3);
+      $$0.put(dkg.mM, $$3);
+      $$0.put(dkg.mN, $$3);
+      $$0.put(dkg.mO, $$3);
+      $$0.put(dkg.mP, $$3);
+      $$0.put(dkg.mQ, $$3);
+      $$0.put(dkg.mR, $$3);
+      $$0.put(dkg.mS, $$3);
+      $$0.put(dkg.mT, $$3);
+      $$0.put(dkg.mU, $$3);
+      $$0.put(dkg.mV, $$3);
+      $$0.put(dkg.mW, $$3);
+      $$0.put(dkg.mX, $$3);
+      $$0.put(dkg.mY, $$3);
+      $$0.put(dkg.mZ, $$3);
+      $$0.put(dkg.na, $$3);
+      $$0.put(dkg.nb, $$3);
+      $$0.put(dkg.nc, $$3);
+      $$0.put(dkg.nd, $$3);
+      $$0.put(dkg.ne, $$3);
+      $$0.put(dkg.nf, $$3);
+      $$0.put(dkg.ng, $$3);
+      $$0.put(dkg.nh, $$3);
+      $$0.put(dkg.ni, $$3);
+      $$0.put(dkg.nj, $$3);
+      $$0.put(dkg.nk, $$3);
+      $$0.put(dkg.nl, $$3);
+      $$0.put(dkg.nm, $$3);
+      $$0.put(dkg.nn, $$3);
+      $$0.put(dkg.no, $$3);
+      $$0.put(dkg.np, $$3);
+      $$0.put(dkg.nq, $$3);
+      $$0.put(dkg.ns, $$3);
+      $$0.put(dkg.nt, $$3);
+      $$0.put(dkg.nu, $$3);
+      $$0.put(dkg.nv, $$3);
+      $$0.put(dkg.on, $$3);
+      $$0.put(dkg.ox, $$3);
+      $$0.put(dkg.oz, $$3);
+      $$0.put(dkg.oA, $$3);
+      $$0.put(dkg.oB, $$3);
+      $$0.put(dkg.oC, $$3);
+      $$0.put(dkg.oD, $$3);
+      $$0.put(dkg.oU, $$3);
+      $$0.put(dkg.oV, $$3);
+      $$0.put(dkg.oW, $$3);
+      $$0.put(dkg.oX, $$3);
+      $$0.put(dkg.oM, $$3);
+      $$0.put(dkg.oS, $$3);
+      $$0.put(dkg.oJ, $$3);
+      $$0.put(dkg.oY, $$3);
+      $$0.put(dkg.oL, $$3);
+      $$0.put(dkg.pH, $$3);
+      $$0.put(dkg.pI, $$3);
+      $$0.put(dkg.pJ, $$3);
+      $$0.put(dkg.pK, $$3);
+      $$0.put(dkg.pp, $$3);
+      $$0.put(dkg.pq, $$3);
+      $$0.put(dkg.sO, $$3);
+      $$0.put(dkg.qT, $$3);
+      $$0.put(dkg.qS, $$3);
+      $$0.put(dkg.qR, $$3);
+      $$0.put(dkg.qQ, $$3);
+      $$0.put(dkg.sN, $$3);
+      $$0.put(dkg.sQ, $$3);
+      $$0.put(dkg.sR, $$3);
+      $$0.put(dkg.sS, $$3);
+      $$0.put(dkg.sU, $$3);
+      $$0.put(dkg.sT, $$3);
+      $$0.put(dkg.sW, $$3);
+      $$0.put(dkg.sY, $$3);
+      $$0.put(dkg.sZ, $$3);
+      $$0.put(dkg.ta, $$3);
+      $$0.put(dkg.tb, $$3);
+      $$0.put(dkg.rl, $$3);
+      $$0.put(dkg.rm, $$3);
+      $$0.put(dkg.ro, $$3);
+      $$0.put(dkg.rq, $$3);
+      $$0.put(dkg.H, $$3);
+      $$0.put(dkg.tI, $$3);
+      $$0.put(dkg.sx, $$3);
+      $$0.put(dkg.sy, $$3);
+      $$0.put(dkg.sz, $$3);
+      $$0.put(dkg.sA, $$3);
+      $$0.put(dkg.sB, $$3);
+      $$0.put(dkg.sC, $$3);
+      $$0.put(dkg.sD, $$3);
+      $$0.put(dkg.sE, $$3);
+      glo $$4 = glo.f();
+      $$0.put(dkg.eb, $$4);
+      $$0.put(dkg.eq, $$4);
+      $$0.put(dkg.ev, $$4);
+      $$0.put(dkg.ew, $$4);
+      $$0.put(dkg.ex, $$4);
+      $$0.put(dkg.ey, $$4);
+      $$0.put(dkg.ez, $$4);
+      $$0.put(dkg.eA, $$4);
+      $$0.put(dkg.eB, $$4);
+      $$0.put(dkg.eC, $$4);
+      $$0.put(dkg.eD, $$4);
+      $$0.put(dkg.eE, $$4);
+      $$0.put(dkg.eF, $$4);
+      $$0.put(dkg.eG, $$4);
+      $$0.put(dkg.eH, $$4);
+      $$0.put(dkg.eI, $$4);
+      $$0.put(dkg.eJ, $$4);
+      $$0.put(dkg.eK, $$4);
+      $$0.put(dkg.hP, $$4);
+      $$0.put(dkg.hQ, $$4);
+      $$0.put(dkg.hR, $$4);
+      $$0.put(dkg.hS, $$4);
+      $$0.put(dkg.hT, $$4);
+      $$0.put(dkg.hU, $$4);
+      $$0.put(dkg.hV, $$4);
+      $$0.put(dkg.hW, $$4);
+      $$0.put(dkg.hX, $$4);
+      $$0.put(dkg.hY, $$4);
+      $$0.put(dkg.hZ, $$4);
+      $$0.put(dkg.ia, $$4);
+      $$0.put(dkg.ib, $$4);
+      $$0.put(dkg.ic, $$4);
+      $$0.put(dkg.id, $$4);
+      $$0.put(dkg.ie, $$4);
+      $$0.put(dkg.im, $$4);
+      $$0.put(dkg.pB, $$4);
+      $$0.put(dkg.ld, $$4);
+      $$0.put(dkg.ny, $$4);
+      $$0.put(dkg.rj, $$4);
+   });
+   private static final Map<eto, glo> b = ae.a(Maps.newHashMap(), $$0 -> {
+      glo $$1 = glo.f();
+      $$0.put(etq.b, $$1);
+      $$0.put(etq.c, $$1);
+   });
+   private static boolean c;
+
+   public static glo a(dxn $$0) {
+      dke $$1 = $$0.b();
+      if ($$1 instanceof doq) {
+         return c ? glo.d() : glo.c();
+      } else {
+         glo $$2 = a.get($$1);
+         return $$2 != null ? $$2 : glo.c();
+      }
    }
 
-   protected static class a implements JsonDeserializer<gkw> {
-      public gkw a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         alj $$4 = alj.a(azc.i($$3, "model"));
-         List<gkw.b> $$5 = this.a($$3);
-         return new gkw($$4, $$5);
-      }
-
-      protected List<gkw.b> a(JsonObject $$0) {
-         Map<alj, Float> $$1 = Maps.newLinkedHashMap();
-         JsonObject $$2 = azc.u($$0, "predicate");
-
-         for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
-            $$1.put(alj.a($$3.getKey()), azc.e($$3.getValue(), $$3.getKey()));
+   public static glo b(dxn $$0) {
+      dke $$1 = $$0.b();
+      if ($$1 instanceof doq) {
+         return c ? glo.d() : glo.c();
+      } else {
+         glo $$2 = a.get($$1);
+         if ($$2 != null) {
+            return $$2 == glo.f() ? glo.g() : $$2;
+         } else {
+            return glo.c();
          }
-
-         return $$1.entrySet().stream().map($$0x -> new gkw.b((alj)$$0x.getKey(), (Float)$$0x.getValue())).collect(ImmutableList.toImmutableList());
       }
    }
 
-   public static record b(alj a, float b) {
+   public static glo c(dxn $$0) {
+      glo $$1 = a($$0);
+      return $$1 == glo.f() ? glz.j() : glz.i();
+   }
+
+   public static glo a(cxk $$0) {
+      if ($$0.h() instanceof cvq $$2) {
+         dke $$3 = $$2.d();
+         return c($$3.m());
+      } else {
+         return glz.j();
+      }
+   }
+
+   public static glo a(etp $$0) {
+      glo $$1 = b.get($$0.a());
+      return $$1 != null ? $$1 : glo.c();
+   }
+
+   public static void a(boolean $$0) {
+      c = $$0;
    }
 }

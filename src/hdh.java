@@ -1,33 +1,63 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.ToIntFunction;
-import java.util.stream.Stream;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
+import org.joml.Quaternionf;
 
-public class hdh<T> implements hdl<T> {
-   protected final Comparator<T> a;
-   protected final hdk<T> b;
+public enum hdh implements hdv {
+   a(0, 0),
+   b(0, 90),
+   c(0, 180),
+   d(0, 270),
+   e(90, 0),
+   f(90, 90),
+   g(90, 180),
+   h(90, 270),
+   i(180, 0),
+   j(180, 90),
+   k(180, 180),
+   l(180, 270),
+   m(270, 0),
+   n(270, 90),
+   o(270, 180),
+   p(270, 270);
 
-   public hdh(Function<T, Stream<alj>> $$0, List<T> $$1) {
-      ToIntFunction<T> $$2 = ae.g($$1);
-      this.a = Comparator.comparingInt($$2);
-      this.b = hdk.a($$1, $$0);
+   private static final int q = 360;
+   private static final Map<Integer, hdh> r = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.u, $$0 -> (hdh)$$0));
+   private final j s;
+   private final h t;
+   private final int u;
+
+   private static int b(int $$0, int $$1) {
+      return $$0 * 360 + $$1;
+   }
+
+   private hdh(final int $$0, final int $$1) {
+      this.u = b($$0, $$1);
+      Quaternionf $$2 = new Quaternionf().rotateYXZ((float)(-$$1) * (float) (Math.PI / 180.0), (float)(-$$0) * (float) (Math.PI / 180.0), 0.0F);
+      h $$3 = h.a;
+
+      for (int $$4 = 0; $$4 < $$1; $$4 += 90) {
+         $$3 = $$3.a(h.u);
+      }
+
+      for (int $$5 = 0; $$5 < $$0; $$5 += 90) {
+         $$3 = $$3.a(h.s);
+      }
+
+      this.s = new j(null, $$2, null, null);
+      this.t = $$3;
    }
 
    @Override
-   public List<T> search(String $$0) {
-      int $$1 = $$0.indexOf(58);
-      return $$1 == -1 ? this.a($$0) : this.a($$0.substring(0, $$1).trim(), $$0.substring($$1 + 1).trim());
+   public j b() {
+      return this.s;
    }
 
-   protected List<T> a(String $$0) {
-      return this.b.b($$0);
+   public static hdh a(int $$0, int $$1) {
+      return r.get(b(bae.b($$0, 360), bae.b($$1, 360)));
    }
 
-   protected List<T> a(String $$0, String $$1) {
-      List<T> $$2 = this.b.a($$0);
-      List<T> $$3 = this.b.b($$1);
-      return ImmutableList.copyOf(new hdi<T>($$2.iterator(), $$3.iterator(), this.a));
+   public h a() {
+      return this.t;
    }
 }

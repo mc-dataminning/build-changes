@@ -1,19 +1,17 @@
-public class bng extends bnc {
-   private final bnd c;
-   private final bnf d;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-   public bng(int $$0, bnd $$1, bnf $$2) {
-      this($$0, $$1, $$2, new long[$$0]);
+public class bng extends bkg {
+   public bng(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   public bng(int $$0, bnd $$1, bnf $$2, long[] $$3) {
-      super($$0, $$3);
-      this.c = $$1;
-      this.d = $$2;
-   }
-
-   @Override
-   protected void a() {
-      this.c.a(new adg((long[])this.b.clone(), this.d));
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$0.register($$1, "minecraft:ominous_item_spawner", () -> DSL.optionalFields("item", bis.t.in($$0)));
+      return $$1;
    }
 }

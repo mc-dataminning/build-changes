@@ -1,193 +1,75 @@
-import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+import java.util.ArrayList;
+import java.util.List;
 
 public class gko {
-   private static final boolean g = false;
-   private static final float h = -16.0F;
-   private static final float i = 32.0F;
-   public final Vector3f a;
-   public final Vector3f b;
-   public final Map<jm, gkp> c;
-   public final gkq d;
-   public final boolean e;
-   public final int f;
+   private static final List<glw> ad = new ArrayList<>();
+   public static final glw a = a("blit_screen", fgj.a);
+   public static final glw b = a("lightmap", fgj.a);
+   public static final glw c = a("particle", fgj.d);
+   public static final glw d = a("position", fgj.e);
+   public static final glw e = a("position_color", fgj.f);
+   public static final glw f = a("position_color_lightmap", fgj.h);
+   public static final glw g = a("position_color_tex_lightmap", fgj.k);
+   public static final glw h = a("position_tex", fgj.i);
+   public static final glw i = a("position_tex_color", fgj.j);
+   public static final glw j = a("rendertype_solid", fgj.b);
+   public static final glw k = a("rendertype_cutout_mipped", fgj.b);
+   public static final glw l = a("rendertype_cutout", fgj.b);
+   public static final glw m = a("rendertype_translucent", fgj.b);
+   public static final glw n = a("rendertype_translucent_moving_block", fgj.b);
+   public static final glw o = a("rendertype_armor_cutout_no_cull", fgj.c);
+   public static final glw p = a("rendertype_entity_solid", fgj.c);
+   public static final glw q = a("rendertype_entity_cutout", fgj.c);
+   public static final glw r = a("rendertype_entity_cutout_no_cull", fgj.c);
+   public static final glw s = a("rendertype_entity_cutout_no_cull_z_offset", fgj.c);
+   public static final glw t = a("rendertype_item_entity_translucent_cull", fgj.c);
+   public static final glw u = a("rendertype_entity_translucent", fgj.c);
+   public static final glw v = a("rendertype_entity_translucent_emissive", fgj.c);
+   public static final glw w = a("rendertype_entity_smooth_cutout", fgj.c);
+   public static final glw x = a("rendertype_beacon_beam", fgj.b);
+   public static final glw y = a("rendertype_entity_decal", fgj.c);
+   public static final glw z = a("rendertype_entity_no_outline", fgj.c);
+   public static final glw A = a("rendertype_entity_shadow", fgj.c);
+   public static final glw B = a("rendertype_entity_alpha", fgj.c);
+   public static final glw C = a("rendertype_eyes", fgj.c);
+   public static final glw D = a("rendertype_energy_swirl", fgj.c);
+   public static final glw E = a("rendertype_leash", fgj.h);
+   public static final glw F = a("rendertype_water_mask", fgj.e);
+   public static final glw G = a("rendertype_outline", fgj.j);
+   public static final glw H = a("rendertype_armor_entity_glint", fgj.i);
+   public static final glw I = a("rendertype_glint_translucent", fgj.i);
+   public static final glw J = a("rendertype_glint", fgj.i);
+   public static final glw K = a("rendertype_entity_glint", fgj.i);
+   public static final glw L = a("rendertype_text", fgj.k);
+   public static final glw M = a("rendertype_text_background", fgj.h);
+   public static final glw N = a("rendertype_text_intensity", fgj.k);
+   public static final glw O = a("rendertype_text_see_through", fgj.k);
+   public static final glw P = a("rendertype_text_background_see_through", fgj.h);
+   public static final glw Q = a("rendertype_text_intensity_see_through", fgj.k);
+   public static final glw R = a("rendertype_lightning", fgj.f);
+   public static final glw S = a("rendertype_tripwire", fgj.b);
+   public static final glw T = a("rendertype_end_portal", fgj.e);
+   public static final glw U = a("rendertype_end_gateway", fgj.e);
+   public static final glw V = a("rendertype_clouds", fgj.f);
+   public static final glw W = a("rendertype_lines", fgj.g);
+   public static final glw X = a("rendertype_crumbling", fgj.b);
+   public static final glw Y = a("rendertype_gui", fgj.f);
+   public static final glw Z = a("rendertype_gui_overlay", fgj.f);
+   public static final glw aa = a("rendertype_gui_text_highlight", fgj.f);
+   public static final glw ab = a("rendertype_gui_ghost_recipe_overlay", fgj.f);
+   public static final glw ac = a("rendertype_breeze_wind", fgj.c);
 
-   public gko(Vector3f $$0, Vector3f $$1, Map<jm, gkp> $$2) {
-      this($$0, $$1, $$2, null, true, 0);
+   private static glw a(String $$0, fgq $$1) {
+      return a($$0, $$1, glu.a);
    }
 
-   public gko(Vector3f $$0, Vector3f $$1, Map<jm, gkp> $$2, @Nullable gkq $$3, boolean $$4, int $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.a();
+   private static glw a(String $$0, fgq $$1, glu $$2) {
+      glw $$3 = new glw(alz.b("core/" + $$0), $$1, $$2);
+      ad.add($$3);
+      return $$3;
    }
 
-   private void a() {
-      for (Entry<jm, gkp> $$0 : this.c.entrySet()) {
-         float[] $$1 = this.a($$0.getKey());
-         $$0.getValue().d().a($$1);
-      }
-   }
-
-   private float[] a(jm $$0) {
-      switch ($$0) {
-         case a:
-            return new float[]{this.a.x(), 16.0F - this.b.z(), this.b.x(), 16.0F - this.a.z()};
-         case b:
-            return new float[]{this.a.x(), this.a.z(), this.b.x(), this.b.z()};
-         case c:
-         default:
-            return new float[]{16.0F - this.b.x(), 16.0F - this.b.y(), 16.0F - this.a.x(), 16.0F - this.a.y()};
-         case d:
-            return new float[]{this.a.x(), 16.0F - this.b.y(), this.b.x(), 16.0F - this.a.y()};
-         case e:
-            return new float[]{this.a.z(), 16.0F - this.b.y(), this.b.z(), 16.0F - this.a.y()};
-         case f:
-            return new float[]{16.0F - this.b.z(), 16.0F - this.b.y(), 16.0F - this.a.z(), 16.0F - this.a.y()};
-      }
-   }
-
-   protected static class a implements JsonDeserializer<gko> {
-      private static final boolean a = true;
-      private static final int b = 0;
-
-      public gko a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         Vector3f $$4 = this.e($$3);
-         Vector3f $$5 = this.d($$3);
-         gkq $$6 = this.a($$3);
-         Map<jm, gkp> $$7 = this.a($$2, $$3);
-         if ($$3.has("shade") && !azc.c($$3, "shade")) {
-            throw new JsonParseException("Expected shade to be a Boolean");
-         } else {
-            boolean $$8 = azc.a($$3, "shade", true);
-            int $$9 = 0;
-            if ($$3.has("light_emission")) {
-               boolean $$10 = azc.b($$3, "light_emission");
-               if ($$10) {
-                  $$9 = azc.o($$3, "light_emission");
-               }
-
-               if (!$$10 || $$9 < 0 || $$9 > 15) {
-                  throw new JsonParseException("Expected light_emission to be an Integer between (inclusive) 0 and 15");
-               }
-            }
-
-            return new gko($$4, $$5, $$7, $$6, $$8, $$9);
-         }
-      }
-
-      @Nullable
-      private gkq a(JsonObject $$0) {
-         gkq $$1 = null;
-         if ($$0.has("rotation")) {
-            JsonObject $$2 = azc.u($$0, "rotation");
-            Vector3f $$3 = this.a($$2, "origin");
-            $$3.mul(0.0625F);
-            jm.a $$4 = this.c($$2);
-            float $$5 = this.b($$2);
-            boolean $$6 = azc.a($$2, "rescale", false);
-            $$1 = new gkq($$3, $$4, $$5, $$6);
-         }
-
-         return $$1;
-      }
-
-      private float b(JsonObject $$0) {
-         float $$1 = azc.m($$0, "angle");
-         if ($$1 != 0.0F && azm.e($$1) != 22.5F && azm.e($$1) != 45.0F) {
-            throw new JsonParseException("Invalid rotation " + $$1 + " found, only -45/-22.5/0/22.5/45 allowed");
-         } else {
-            return $$1;
-         }
-      }
-
-      private jm.a c(JsonObject $$0) {
-         String $$1 = azc.i($$0, "axis");
-         jm.a $$2 = jm.a.a($$1.toLowerCase(Locale.ROOT));
-         if ($$2 == null) {
-            throw new JsonParseException("Invalid rotation axis: " + $$1);
-         } else {
-            return $$2;
-         }
-      }
-
-      private Map<jm, gkp> a(JsonDeserializationContext $$0, JsonObject $$1) {
-         Map<jm, gkp> $$2 = this.b($$0, $$1);
-         if ($$2.isEmpty()) {
-            throw new JsonParseException("Expected between 1 and 6 unique faces, got 0");
-         } else {
-            return $$2;
-         }
-      }
-
-      private Map<jm, gkp> b(JsonDeserializationContext $$0, JsonObject $$1) {
-         Map<jm, gkp> $$2 = Maps.newEnumMap(jm.class);
-         JsonObject $$3 = azc.u($$1, "faces");
-
-         for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
-            jm $$5 = this.a($$4.getKey());
-            $$2.put($$5, (gkp)$$0.deserialize($$4.getValue(), gkp.class));
-         }
-
-         return $$2;
-      }
-
-      private jm a(String $$0) {
-         jm $$1 = jm.a($$0);
-         if ($$1 == null) {
-            throw new JsonParseException("Unknown facing: " + $$0);
-         } else {
-            return $$1;
-         }
-      }
-
-      private Vector3f d(JsonObject $$0) {
-         Vector3f $$1 = this.a($$0, "to");
-         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
-            return $$1;
-         } else {
-            throw new JsonParseException("'to' specifier exceeds the allowed boundaries: " + $$1);
-         }
-      }
-
-      private Vector3f e(JsonObject $$0) {
-         Vector3f $$1 = this.a($$0, "from");
-         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
-            return $$1;
-         } else {
-            throw new JsonParseException("'from' specifier exceeds the allowed boundaries: " + $$1);
-         }
-      }
-
-      private Vector3f a(JsonObject $$0, String $$1) {
-         JsonArray $$2 = azc.v($$0, $$1);
-         if ($$2.size() != 3) {
-            throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$2.size());
-         } else {
-            float[] $$3 = new float[3];
-
-            for (int $$4 = 0; $$4 < $$3.length; $$4++) {
-               $$3[$$4] = azc.e($$2.get($$4), $$1 + "[" + $$4 + "]");
-            }
-
-            return new Vector3f($$3[0], $$3[1], $$3[2]);
-         }
-      }
+   public static List<glw> a() {
+      return ad;
    }
 }

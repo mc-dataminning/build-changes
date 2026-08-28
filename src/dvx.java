@@ -1,157 +1,103 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public abstract class dvx<O, S> {
-   public static final String b = "Name";
-   public static final String c = "Properties";
-   private static final Function<Entry<dwx<?>, Comparable<?>>, String> a = new Function<Entry<dwx<?>, Comparable<?>>, String>() {
-      public String a(@Nullable Entry<dwx<?>, Comparable<?>> $$0) {
-         if ($$0 == null) {
-            return "<NULL>";
-         } else {
-            dwx<?> $$1 = $$0.getKey();
-            return $$1.f() + "=" + this.a($$1, $$0.getValue());
-         }
-      }
+public abstract class dvx extends duj implements btk {
+   @Nullable
+   protected aly<ewm> l;
+   protected long m = 0L;
 
-      private <T extends Comparable<T>> String a(dwx<T> $$0, Comparable<?> $$1) {
-         return $$0.b((T)$$1);
-      }
-   };
-   protected final O d;
-   private final Reference2ObjectArrayMap<dwx<?>, Comparable<?>> f;
-   private Map<dwx<?>, S[]> g;
-   protected final MapCodec<S> e;
-
-   protected dvx(O $$0, Reference2ObjectArrayMap<dwx<?>, Comparable<?>> $$1, MapCodec<S> $$2) {
-      this.d = $$0;
-      this.f = $$1;
-      this.e = $$2;
-   }
-
-   public <T extends Comparable<T>> S a(dwx<T> $$0) {
-      return this.b($$0, a($$0.a(), this.c($$0)));
-   }
-
-   protected static <T> T a(List<T> $$0, T $$1) {
-      int $$2 = $$0.indexOf($$1) + 1;
-      return $$2 == $$0.size() ? $$0.getFirst() : $$0.get($$2);
-   }
-
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append(this.d);
-      if (!this.G().isEmpty()) {
-         $$0.append('[');
-         $$0.append(this.G().entrySet().stream().map(a).collect(Collectors.joining(",")));
-         $$0.append(']');
-      }
-
-      return $$0.toString();
-   }
-
-   public Collection<dwx<?>> F() {
-      return Collections.unmodifiableCollection(this.f.keySet());
-   }
-
-   public <T extends Comparable<T>> boolean b(dwx<T> $$0) {
-      return this.f.containsKey($$0);
-   }
-
-   public <T extends Comparable<T>> T c(dwx<T> $$0) {
-      Comparable<?> $$1 = (Comparable<?>)this.f.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Cannot get property " + $$0 + " as it does not exist in " + this.d);
-      } else {
-         return $$0.g().cast($$1);
-      }
-   }
-
-   public <T extends Comparable<T>> Optional<T> d(dwx<T> $$0) {
-      return Optional.ofNullable(this.e($$0));
-   }
-
-   public <T extends Comparable<T>> T a(dwx<T> $$0, T $$1) {
-      return Objects.requireNonNullElse(this.e($$0), $$1);
+   protected dvx(dur<?> $$0, jh $$1, dxn $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Nullable
-   public <T extends Comparable<T>> T e(dwx<T> $$0) {
-      Comparable<?> $$1 = (Comparable<?>)this.f.get($$0);
-      return $$1 == null ? null : $$0.g().cast($$1);
+   @Override
+   public aly<ewm> ax_() {
+      return this.l;
    }
 
-   public <T extends Comparable<T>, V extends T> S b(dwx<T> $$0, V $$1) {
-      Comparable<?> $$2 = (Comparable<?>)this.f.get($$0);
-      if ($$2 == null) {
-         throw new IllegalArgumentException("Cannot set property " + $$0 + " as it does not exist in " + this.d);
+   @Override
+   public void a(@Nullable aly<ewm> $$0) {
+      this.l = $$0;
+   }
+
+   @Override
+   public long aA_() {
+      return this.m;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.m = $$0;
+   }
+
+   @Override
+   public boolean c() {
+      this.d_(null);
+      return super.c();
+   }
+
+   @Override
+   public cxk a(int $$0) {
+      this.d_(null);
+      return super.a($$0);
+   }
+
+   @Override
+   public cxk a(int $$0, int $$1) {
+      this.d_(null);
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public cxk b(int $$0) {
+      this.d_(null);
+      return super.b($$0);
+   }
+
+   @Override
+   public void a(int $$0, cxk $$1) {
+      this.d_(null);
+      super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean d(cps $$0) {
+      return super.d($$0) && (this.l == null || !$$0.aa_());
+   }
+
+   @Nullable
+   @Override
+   public csx createMenu(int $$0, cpr $$1, cps $$2) {
+      if (this.d($$2)) {
+         this.d_($$1.k);
+         return this.a($$0, $$1);
       } else {
-         return this.a($$0, $$1, $$2);
+         return null;
       }
    }
 
-   public <T extends Comparable<T>, V extends T> S c(dwx<T> $$0, V $$1) {
-      Comparable<?> $$2 = (Comparable<?>)this.f.get($$0);
-      return (S)($$2 == null ? this : this.a($$0, $$1, $$2));
-   }
-
-   private <T extends Comparable<T>, V extends T> S a(dwx<T> $$0, V $$1, Comparable<?> $$2) {
-      if ($$2.equals($$1)) {
-         return (S)this;
-      } else {
-         int $$3 = $$0.a((T)$$1);
-         if ($$3 < 0) {
-            throw new IllegalArgumentException("Cannot set property " + $$0 + " to " + $$1 + " on " + this.d + ", it is not an allowed value");
-         } else {
-            return (S)this.g.get($$0)[$$3];
-         }
+   @Override
+   protected void a(dup.b $$0) {
+      super.a($$0);
+      dak $$1 = $$0.a(ku.ap);
+      if ($$1 != null) {
+         this.l = $$1.a();
+         this.m = $$1.b();
       }
    }
 
-   public void a(Map<Map<dwx<?>, Comparable<?>>, S> $$0) {
-      if (this.g != null) {
-         throw new IllegalStateException();
-      } else {
-         Map<dwx<?>, S[]> $$1 = new Reference2ObjectArrayMap(this.f.size());
-         ObjectIterator var3 = this.f.entrySet().iterator();
-
-         while (var3.hasNext()) {
-            Entry<dwx<?>, Comparable<?>> $$2 = (Entry<dwx<?>, Comparable<?>>)var3.next();
-            dwx<?> $$3 = $$2.getKey();
-            $$1.put($$3, $$3.a().stream().map($$2x -> $$0.get(this.d($$3, $$2x))).toArray());
-         }
-
-         this.g = $$1;
+   @Override
+   protected void a(kq.a $$0) {
+      super.a($$0);
+      if (this.l != null) {
+         $$0.a(ku.ap, new dak(this.l, this.m));
       }
    }
 
-   private Map<dwx<?>, Comparable<?>> d(dwx<?> $$0, Comparable<?> $$1) {
-      Map<dwx<?>, Comparable<?>> $$2 = new Reference2ObjectArrayMap(this.f);
-      $$2.put($$0, $$1);
-      return $$2;
-   }
-
-   public Map<dwx<?>, Comparable<?>> G() {
-      return this.f;
-   }
-
-   protected static <O, S extends dvx<O, S>> Codec<S> a(Codec<O> $$0, Function<O, S> $$1) {
-      return $$0.dispatch("Name", $$0x -> $$0x.d, $$1x -> {
-         S $$2 = $$1.apply((O)$$1x);
-         return $$2.G().isEmpty() ? MapCodec.unit($$2) : $$2.e.codec().lenientOptionalFieldOf("Properties").xmap($$1xx -> $$1xx.orElse($$2), Optional::of);
-      });
+   @Override
+   public void a(ux $$0) {
+      super.a($$0);
+      $$0.r("LootTable");
+      $$0.r("LootTableSeed");
    }
 }

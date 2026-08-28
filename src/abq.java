@@ -1,18 +1,21 @@
-import io.netty.buffer.ByteBuf;
+public record abq(jh c) implements abf {
+   public static final zt<ws, abq> a = abf.a(abq::a, abq::new);
+   public static final abf.b<abq> b = abf.a("debug/poi_removed");
 
-public class abq implements zq<abn> {
-   public static final abq a = new abq();
-   public static final zh<ByteBuf, abq> b = zh.a(a);
+   private abq(ws $$0) {
+      this($$0.e());
+   }
 
-   private abq() {
+   private void a(ws $$0) {
+      $$0.a(this.c);
    }
 
    @Override
-   public zs<abq> a() {
-      return abt.e;
+   public abf.b<abq> a() {
+      return b;
    }
 
-   public void a(abn $$0) {
-      $$0.a(this);
+   public jh b() {
+      return this.c;
    }
 }

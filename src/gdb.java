@@ -1,25 +1,33 @@
-public class gdb {
-   private static final int a = 49;
-   private static final int b = 3;
-   private double c = 2000000.0;
-   private int d = 1;
-   private volatile long e = ae.d();
+public class gdb extends gdc {
+   protected final geh a;
 
-   public void a() {
-      this.e = ae.d();
+   public gdb(geh $$0) {
+      super($$0);
+      this.a = $$0.b("head");
    }
 
-   public void a(int $$0) {
-      if ($$0 > 0) {
-         double $$1 = (double)(ae.d() - this.e);
-         double $$2 = $$1 / (double)$$0;
-         double $$3 = azm.a($$2, this.c / 3.0, this.c * 3.0);
-         this.c = (this.c * (double)this.d + $$3) / (double)(this.d + 1);
-         this.d = Math.min(49, this.d + 1);
-      }
+   public static gep a() {
+      gep $$0 = new gep();
+      ger $$1 = $$0.a();
+      $$1.a("head", gem.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gej.a);
+      return $$0;
    }
 
-   public float b() {
-      return (float)(7000000.0 / this.c);
+   public static gen b() {
+      gep $$0 = a();
+      ger $$1 = $$0.a();
+      $$1.b("head").a("hat", gem.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new gel(0.25F)), gej.a);
+      return gen.a($$0, 64, 64);
+   }
+
+   public static gen c() {
+      gep $$0 = a();
+      return gen.a($$0, 64, 32);
+   }
+
+   @Override
+   public void a(float $$0, float $$1, float $$2) {
+      this.a.f = $$1 * (float) (Math.PI / 180.0);
+      this.a.e = $$2 * (float) (Math.PI / 180.0);
    }
 }

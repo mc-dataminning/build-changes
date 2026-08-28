@@ -1,135 +1,154 @@
-import com.mojang.logging.LogUtils;
-import java.text.DateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.TimeZone;
+import com.google.gson.JsonObject;
+import java.util.Objects;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fii extends hfq {
-   static final Logger a = LogUtils.getLogger();
-   private static final xj b = xj.c("mco.configure.world.subscription.title");
-   private static final xj c = xj.c("mco.configure.world.subscription.start");
-   private static final xj B = xj.c("mco.configure.world.subscription.timeleft");
-   private static final xj C = xj.c("mco.configure.world.subscription.recurring.daysleft");
-   private static final xj D = xj.c("mco.configure.world.subscription.expired");
-   private static final xj E = xj.c("mco.configure.world.subscription.less_than_a_day");
-   private static final xj F = xj.c("mco.configure.world.subscription.unknown");
-   private static final xj G = xj.c("mco.configure.world.subscription.recurring.info");
-   private final frw H;
-   final fgi I;
-   final frw J;
-   private xj K = F;
-   private xj L = F;
+public class fii extends fiq {
+   public final boolean a;
+   public final boolean b;
+   public final int c;
+   public final boolean d;
+   public final boolean e;
+   public final int f;
+   public final int g;
+   public final boolean h;
+   private final String n;
+   public final String i;
+   public final fic.a j;
+   public long k;
    @Nullable
-   private fgt.a M;
+   public String l;
+   public boolean m;
+   private static final boolean o = false;
+   private static final boolean p = true;
+   private static final boolean q = true;
+   private static final int r = 0;
+   private static final boolean s = false;
+   private static final int t = 2;
+   private static final int u = 0;
+   private static final boolean v = false;
+   private static final String w = "";
+   private static final String x = "";
+   private static final fic.a y = fic.a.a;
+   private static final long z = -1L;
+   private static final String A = null;
 
-   public fii(frw $$0, fgi $$1, frw $$2) {
-      super(fjv.a);
-      this.H = $$0;
-      this.I = $$1;
-      this.J = $$2;
+   public fii(boolean $$0, boolean $$1, int $$2, boolean $$3, int $$4, int $$5, boolean $$6, boolean $$7, String $$8, String $$9, fic.a $$10) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.e = $$7;
+      this.n = $$8;
+      this.i = $$9;
+      this.j = $$10;
    }
 
-   @Override
-   public void aR_() {
-      this.a(this.I.a);
-      this.c(fmd.a(xj.c("mco.configure.world.subscription.extend"), $$0 -> fqt.a(this, ayi.a(this.I.b, this.m.X().b()))).a(this.n / 2 - 100, g(6), 200, 20).a());
-      if (this.I.j) {
-         this.c(
-            fmd.a(xj.c("mco.configure.world.delete.button"), $$0 -> this.m.a(fic.b(this, xj.c("mco.configure.world.delete.question.line1"), $$0x -> this.F())))
-               .a(this.n / 2 - 100, g(10), 200, 20)
-               .a()
-         );
-      } else if (ffc.b() && this.I.s != null) {
-         this.c(new fmn(this.n / 2 - 100, g(8), 200, 46, xj.a("mco.snapshot.subscription.info", this.I.s), this.p));
+   public static fii a() {
+      return new fii(true, true, 0, false, 2, 0, false, false, "", "", y);
+   }
+
+   public static fii a(dgx $$0, btb $$1, boolean $$2, String $$3, String $$4) {
+      return new fii(true, true, 0, false, $$1.a(), $$0.a(), $$2, false, $$4, $$3, y);
+   }
+
+   public static fii a(dhe $$0, String $$1) {
+      return a($$0.b(), $$0.d(), $$0.c(), $$1, $$0.a());
+   }
+
+   public static fii b() {
+      fii $$0 = a();
+      $$0.a(true);
+      return $$0;
+   }
+
+   public void a(boolean $$0) {
+      this.m = $$0;
+   }
+
+   public static fii a(JsonObject $$0, fig $$1) {
+      fii $$2 = new fii(
+         fkm.a("pvp", $$0, true),
+         fkm.a("spawnMonsters", $$0, true),
+         fkm.a("spawnProtection", $$0, 0),
+         fkm.a("commandBlocks", $$0, false),
+         fkm.a("difficulty", $$0, 2),
+         fkm.a("gameMode", $$0, 0),
+         $$1.a(),
+         fkm.a("forceGameMode", $$0, false),
+         fkm.a("slotName", $$0, ""),
+         fkm.a("version", $$0, ""),
+         fic.d(fkm.a("compatibility", $$0, fic.a.a.name()))
+      );
+      $$2.k = fkm.a("worldTemplateId", $$0, -1L);
+      $$2.l = fkm.b("worldTemplateImage", $$0, A);
+      return $$2;
+   }
+
+   public String a(int $$0) {
+      if (bbb.h(this.n)) {
+         return this.m ? hcl.a("mco.configure.world.slot.empty") : this.b($$0);
       } else {
-         this.c(new fmn(this.n / 2 - 100, g(8), 200, 46, G, this.p));
-      }
-
-      this.c(fmd.a(xi.k, $$0 -> this.aO_()).a(this.n / 2 - 100, g(12), 200, 20).a());
-   }
-
-   @Override
-   public xj i() {
-      return xi.b(b, c, this.L, B, this.K);
-   }
-
-   private void F() {
-      (new Thread("Realms-delete-realm") {
-         @Override
-         public void run() {
-            try {
-               ffh $$0 = ffh.a();
-               $$0.j(fii.this.I.a);
-            } catch (fhc var2) {
-               fii.a.error("Couldn't delete world", var2);
-            }
-
-            fii.this.m.execute(() -> fii.this.m.a(fii.this.J));
-         }
-      }).start();
-      this.m.a(this);
-   }
-
-   private void a(long $$0) {
-      ffh $$1 = ffh.a();
-
-      try {
-         fgt $$2 = $$1.h($$0);
-         this.K = this.a($$2.b);
-         this.L = b($$2.a);
-         this.M = $$2.c;
-      } catch (fhc var5) {
-         a.error("Couldn't get subscription", var5);
-         this.m.a(new fhu(var5, this.H));
+         return this.n;
       }
    }
 
-   private static xj b(long $$0) {
-      Calendar $$1 = new GregorianCalendar(TimeZone.getDefault());
-      $$1.setTimeInMillis($$0);
-      return xj.b(DateFormat.getDateTimeInstance().format($$1.getTime()));
+   public String b(int $$0) {
+      return hcl.a("mco.configure.world.slot", $$0);
    }
 
-   @Override
-   public void aO_() {
-      this.m.a(this.H);
-   }
-
-   @Override
-   public void a(flq $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      int $$4 = this.n / 2 - 100;
-      $$0.a(this.p, b, this.n / 2, 17, -1);
-      $$0.a(this.p, c, $$4, g(0), -6250336, false);
-      $$0.a(this.p, this.L, $$4, g(1), -1, false);
-      if (this.M == fgt.a.a) {
-         $$0.a(this.p, B, $$4, g(3), -6250336, false);
-      } else if (this.M == fgt.a.b) {
-         $$0.a(this.p, C, $$4, g(3), -6250336, false);
+   public String c() {
+      JsonObject $$0 = new JsonObject();
+      if (!this.a) {
+         $$0.addProperty("pvp", this.a);
       }
 
-      $$0.a(this.p, this.K, $$4, g(4), -1, false);
+      if (!this.b) {
+         $$0.addProperty("spawnMonsters", this.b);
+      }
+
+      if (this.c != 0) {
+         $$0.addProperty("spawnProtection", this.c);
+      }
+
+      if (this.d) {
+         $$0.addProperty("commandBlocks", this.d);
+      }
+
+      if (this.f != 2) {
+         $$0.addProperty("difficulty", this.f);
+      }
+
+      if (this.g != 0) {
+         $$0.addProperty("gameMode", this.g);
+      }
+
+      if (this.h) {
+         $$0.addProperty("hardcore", this.h);
+      }
+
+      if (this.e) {
+         $$0.addProperty("forceGameMode", this.e);
+      }
+
+      if (!Objects.equals(this.n, "")) {
+         $$0.addProperty("slotName", this.n);
+      }
+
+      if (!Objects.equals(this.i, "")) {
+         $$0.addProperty("version", this.i);
+      }
+
+      if (this.j != y) {
+         $$0.addProperty("compatibility", this.j.name());
+      }
+
+      return $$0.toString();
    }
 
-   private xj a(int $$0) {
-      if ($$0 < 0 && this.I.j) {
-         return D;
-      } else if ($$0 <= 1) {
-         return E;
-      } else {
-         int $$1 = $$0 / 30;
-         int $$2 = $$0 % 30;
-         boolean $$3 = $$1 > 0;
-         boolean $$4 = $$2 > 0;
-         if ($$3 && $$4) {
-            return xj.a("mco.configure.world.subscription.remaining.months.days", $$1, $$2);
-         } else if ($$3) {
-            return xj.a("mco.configure.world.subscription.remaining.months", $$1);
-         } else {
-            return $$4 ? xj.a("mco.configure.world.subscription.remaining.days", $$2) : xj.i();
-         }
-      }
+   public fii d() {
+      return new fii(this.a, this.b, this.c, this.d, this.f, this.g, this.h, this.e, this.n, this.i, this.j);
    }
 }

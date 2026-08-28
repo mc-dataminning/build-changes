@@ -1,60 +1,20 @@
+import it.unimi.dsi.fastutil.Hash.Strategy;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenCustomHashSet;
+import java.util.Set;
 import javax.annotation.Nullable;
 
-public class cxl extends cus {
-   public cxl(diq $$0, cwi.a $$1) {
-      super($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public dad b(dad $$0) {
-      jh $$1 = $$0.a();
-      dfm $$2 = $$0.q();
-      dvv $$3 = $$2.a_($$1);
-      diq $$4 = this.d();
-      if (!$$3.a($$4)) {
-         return dpf.a($$2, $$1) == 7 ? null : $$0;
-      } else {
-         jm $$5;
-         if ($$0.h()) {
-            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
-         } else {
-            $$5 = $$0.k() == jm.b ? $$0.g() : jm.b;
-         }
-
-         int $$7 = 0;
-         jh.a $$8 = $$1.k().c($$5);
-
-         while ($$7 < 7) {
-            if (!$$2.C && !$$2.k($$8)) {
-               cou $$9 = $$0.o();
-               int $$10 = $$2.al();
-               if ($$9 instanceof arq && $$8.v() > $$10) {
-                  ((arq)$$9).b(xj.a("build.tooHigh", $$10).a(n.m), true);
-               }
-               break;
-            }
-
-            $$3 = $$2.a_($$8);
-            if (!$$3.a(this.d())) {
-               if ($$3.a($$0)) {
-                  return dad.a($$0, $$8, $$5);
-               }
-               break;
-            }
-
-            $$8.c($$5);
-            if ($$5.o().d()) {
-               $$7++;
-            }
-         }
-
-         return null;
+public class cxl {
+   private static final Strategy<? super cxk> a = new Strategy<cxk>() {
+      public int a(@Nullable cxk $$0) {
+         return cxk.a($$0);
       }
-   }
 
-   @Override
-   protected boolean c() {
-      return false;
+      public boolean a(@Nullable cxk $$0, @Nullable cxk $$1) {
+         return $$0 == $$1 || $$0 != null && $$1 != null && $$0.f() == $$1.f() && cxk.c($$0, $$1);
+      }
+   };
+
+   public static Set<cxk> a() {
+      return new ObjectLinkedOpenCustomHashSet(a);
    }
 }

@@ -1,19 +1,19 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public abstract class bil extends bej {
-   public bil(String $$0, Schema $$1, boolean $$2) {
-      super($$0, $$1, $$2);
+public class bil extends bbu {
+   private final Function<String, String> a;
+
+   public bil(Schema $$0, String $$1, Function<String, String> $$2) {
+      super($$0, $$1);
+      this.a = $$2;
    }
 
    @Override
-   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
-      Pair<String, Dynamic<?>> $$2 = this.a($$0, (Dynamic<?>)$$1.getOrCreate(DSL.remainderFinder()));
-      return Pair.of((String)$$2.getFirst(), $$1.set(DSL.remainderFinder(), (Dynamic)$$2.getSecond()));
+   protected <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
+      return $$0.map($$0x -> $$0x.update("type", $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().map(this.a).map($$0xx::createString).result(), $$0xx)));
    }
-
-   protected abstract Pair<String, Dynamic<?>> a(String var1, Dynamic<?> var2);
 }

@@ -1,117 +1,214 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public class cui extends csx {
+   protected static final int m = 0;
+   protected static final int n = 1;
+   protected static final int o = 2;
+   private static final int p = 3;
+   private static final int q = 30;
+   private static final int r = 30;
+   private static final int s = 39;
+   private static final int t = 136;
+   private static final int u = 162;
+   private static final int v = 220;
+   private static final int w = 37;
+   private final dfw x;
+   private final cuh y;
+   private int z;
+   private boolean A;
+   private boolean B;
 
-public class cui {
-   private static final Codec<cui> e = ax.a.flatComapMap($$0 -> new cui(List.of($$0), true), $$0 -> DataResult.error(() -> "Cannot encode"));
-   private static final Codec<cui> f = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayv.a(ax.a.listOf()).fieldOf("predicates").forGetter($$0x -> $$0x.h), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cui::a)
-            )
-            .apply($$0, cui::new)
-   );
-   public static final Codec<cui> a = Codec.withAlternative(f, e);
-   public static final zh<wu, cui> b = zh.a(ax.b.a(zf.a()), $$0 -> $$0.h, zf.b, cui::a, cui::new);
-   public static final xj c = xj.c("item.canBreak").a(n.h);
-   public static final xj d = xj.c("item.canPlace").a(n.h);
-   private static final xj g = xj.c("item.canUse.unknown").a(n.h);
-   private final List<ax> h;
-   private final boolean i;
-   private final List<xj> j;
-   @Nullable
-   private dvz k;
-   private boolean l;
-   private boolean m;
-
-   private cui(List<ax> $$0, boolean $$1, List<xj> $$2) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
+   public cui(int $$0, cpr $$1) {
+      this($$0, $$1, new cpb($$1.k));
    }
 
-   public cui(List<ax> $$0, boolean $$1) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = a($$0);
+   public cui(int $$0, cpr $$1, dfw $$2) {
+      super(cug.t, $$0);
+      this.x = $$2;
+      this.y = new cuh($$2);
+      this.a(new cuu(this.y, 0, 136, 37));
+      this.a(new cuu(this.y, 1, 162, 37));
+      this.a(new cuj($$1.k, $$2, this.y, 2, 220, 37));
+      this.c($$1, 108, 84);
    }
 
-   private static boolean a(dvz $$0, @Nullable dvz $$1, boolean $$2) {
-      if ($$1 == null || $$0.a() != $$1.a()) {
-         return false;
-      } else if (!$$2) {
-         return true;
-      } else if ($$0.b() == null && $$1.b() == null) {
-         return true;
-      } else if ($$0.b() != null && $$1.b() != null) {
-         ke $$3 = $$0.c().J_();
-         return Objects.equals($$0.b().c($$3), $$1.b().c($$3));
-      } else {
-         return false;
+   public void a(boolean $$0) {
+      this.A = $$0;
+   }
+
+   @Override
+   public void a(bsx $$0) {
+      this.y.f();
+      super.a($$0);
+   }
+
+   public void e(int $$0) {
+      this.y.c($$0);
+   }
+
+   @Override
+   public boolean b(cps $$0) {
+      return this.x.gm() == $$0;
+   }
+
+   public int l() {
+      return this.x.x();
+   }
+
+   public int m() {
+      return this.y.h();
+   }
+
+   public void f(int $$0) {
+      this.x.s($$0);
+   }
+
+   public int n() {
+      return this.z;
+   }
+
+   public void g(int $$0) {
+      this.z = $$0;
+   }
+
+   public void b(boolean $$0) {
+      this.B = $$0;
+   }
+
+   public boolean o() {
+      return this.B;
+   }
+
+   @Override
+   public boolean a(cxk $$0, cuu $$1) {
+      return false;
+   }
+
+   @Override
+   public cxk b(cps $$0, int $$1) {
+      cxk $$2 = cxk.k;
+      cuu $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cxk $$4 = $$3.g();
+         $$2 = $$4.v();
+         if ($$1 == 2) {
+            if (!this.a($$4, 3, 39, true)) {
+               return cxk.k;
+            }
+
+            $$3.b($$4, $$2);
+            this.r();
+         } else if ($$1 != 0 && $$1 != 1) {
+            if ($$1 >= 3 && $$1 < 30) {
+               if (!this.a($$4, 30, 39, false)) {
+                  return cxk.k;
+               }
+            } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
+               return cxk.k;
+            }
+         } else if (!this.a($$4, 3, 39, false)) {
+            return cxk.k;
+         }
+
+         if ($$4.f()) {
+            $$3.e(cxk.k);
+         } else {
+            $$3.c();
+         }
+
+         if ($$4.L() == $$2.L()) {
+            return cxk.k;
+         }
+
+         $$3.a($$0, $$4);
+      }
+
+      return $$2;
+   }
+
+   private void r() {
+      if (!this.x.gu()) {
+         bvf $$0 = (bvf)this.x;
+         $$0.dV().a($$0.dA(), $$0.dC(), $$0.dG(), this.x.gq(), axg.g, 1.0F, 1.0F, false);
       }
    }
 
-   public boolean a(dvz $$0) {
-      if (a($$0, this.k, this.m)) {
-         return this.l;
-      } else {
-         this.k = $$0;
-         this.m = false;
+   @Override
+   public void a(cps $$0) {
+      super.a($$0);
+      this.x.a(null);
+      if (!this.x.gu()) {
+         if (!$$0.bL() || $$0 instanceof asi && ((asi)$$0).u()) {
+            cxk $$1 = this.y.b(0);
+            if (!$$1.f()) {
+               $$0.a($$1, false);
+            }
 
-         for (ax $$1 : this.h) {
-            if ($$1.a($$0)) {
-               this.m = this.m | $$1.a();
-               this.l = true;
-               return true;
+            $$1 = this.y.b(1);
+            if (!$$1.f()) {
+               $$0.a($$1, false);
+            }
+         } else if ($$0 instanceof asi) {
+            $$0.gg().g(this.y.b(0));
+            $$0.gg().g(this.y.b(1));
+         }
+      }
+   }
+
+   public void h(int $$0) {
+      if ($$0 >= 0 && this.p().size() > $$0) {
+         cxk $$1 = this.y.a(0);
+         if (!$$1.f()) {
+            if (!this.a($$1, 3, 39, true)) {
+               return;
+            }
+
+            this.y.a(0, $$1);
+         }
+
+         cxk $$2 = this.y.a(1);
+         if (!$$2.f()) {
+            if (!this.a($$2, 3, 39, true)) {
+               return;
+            }
+
+            this.y.a(1, $$2);
+         }
+
+         if (this.y.a(0).f() && this.y.a(1).f()) {
+            dfx $$3 = this.p().get($$0);
+            this.a(0, $$3.d());
+            $$3.e().ifPresent($$0x -> this.a(1, $$0x));
+         }
+      }
+   }
+
+   private void a(int $$0, dfv $$1) {
+      for (int $$2 = 3; $$2 < 39; $$2++) {
+         cxk $$3 = this.k.get($$2).g();
+         if (!$$3.f() && $$1.a($$3)) {
+            cxk $$4 = this.y.a($$0);
+            if ($$4.f() || cxk.c($$3, $$4)) {
+               int $$5 = $$3.k();
+               int $$6 = Math.min($$5 - $$4.L(), $$3.L());
+               cxk $$7 = $$3.c($$4.L() + $$6);
+               $$3.h($$6);
+               this.y.a($$0, $$7);
+               if ($$7.L() >= $$5) {
+                  break;
+               }
             }
          }
-
-         this.l = false;
-         return false;
       }
    }
 
-   public void a(Consumer<xj> $$0) {
-      this.j.forEach($$0);
+   public void a(dfy $$0) {
+      this.x.a($$0);
    }
 
-   public cui a(boolean $$0) {
-      return new cui(this.h, $$0, this.j);
+   public dfy p() {
+      return this.x.go();
    }
 
-   private static List<xj> a(List<ax> $$0) {
-      for (ax $$1 : $$0) {
-         if ($$1.b().isEmpty()) {
-            return List.of(g);
-         }
-      }
-
-      return $$0.stream().flatMap($$0x -> $$0x.b().orElseThrow().a()).distinct().map($$0x -> ((diq)$$0x.a()).f().a(n.i)).toList();
-   }
-
-   public boolean a() {
-      return this.i;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof cui $$1) ? false : this.h.equals($$1.h) && this.i == $$1.i;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.h.hashCode() * 31 + (this.i ? 1 : 0);
-   }
-
-   @Override
-   public String toString() {
-      return "AdventureModePredicate{predicates=" + this.h + ", showInTooltip=" + this.i + "}";
+   public boolean q() {
+      return this.A;
    }
 }

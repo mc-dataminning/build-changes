@@ -1,22 +1,63 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class eqp implements eqs {
-   public static final MapCodec<eqp> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ul.a.fieldOf("data").forGetter($$0x -> $$0x.b)).apply($$0, eqp::new));
-   private final ul b;
+public class eqp extends eoc {
+   public static final MapCodec<eqp> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               a($$0),
+               eqp.a.c.fieldOf("biome_temp").forGetter($$0x -> $$0x.e),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("large_probability").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("cluster_probability").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, eqp::new)
+   );
+   public final eqp.a e;
+   public final float f;
+   public final float g;
 
-   public eqp(ul $$0) {
-      this.b = $$0;
+   public eqp(eoc.c $$0, eqp.a $$1, float $$2, float $$3) {
+      super($$0);
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
    @Override
-   public ul a(azu $$0, @Nullable ul $$1) {
-      return $$1 == null ? this.b.i() : $$1.a(this.b);
+   public Optional<eoc.b> a(eoc.a $$0) {
+      return a($$0, edi.a.c, $$1 -> this.a($$1, $$0));
+   }
+
+   private void a(eou $$0, eoc.a $$1) {
+      jh $$2 = new jh($$1.h().d(), 90, $$1.h().e());
+      dqu $$3 = dqu.a($$1.f());
+      eqo.a($$1.e(), $$2, $$3, $$0, $$1.f(), this);
    }
 
    @Override
-   public eqt<?> a() {
-      return eqt.c;
+   public eol<?> e() {
+      return eol.k;
+   }
+
+   public static enum a implements bba {
+      a("warm"),
+      b("cold");
+
+      public static final Codec<eqp.a> c = bba.a(eqp.a::values);
+      private final String d;
+
+      private a(final String $$0) {
+         this.d = $$0;
+      }
+
+      public String a() {
+         return this.d;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
    }
 }

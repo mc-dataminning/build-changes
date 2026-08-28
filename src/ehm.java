@@ -1,22 +1,28 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Stream;
 
-public class ehm implements eha {
-   public static final Codec<ehm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.apply2(ehm::new, egq.a.listOf().fieldOf("features").forGetter($$0x -> $$0x.b), elm.b.fieldOf("default").forGetter($$0x -> $$0x.c))
-   );
-   public final List<egq> b;
-   public final jq<elm> c;
-
-   public ehm(List<egq> $$0, jq<elm> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class ehm extends ego<ejf> {
+   public ehm(Codec<ejf> $$0) {
+      super($$0);
    }
 
    @Override
-   public Stream<eei<?, ?>> e() {
-      return Stream.concat(this.b.stream().flatMap($$0 -> $$0.b.a().a()), this.c.a().a());
+   public boolean a(egq<ejf> $$0) {
+      ejf $$1 = $$0.f();
+      bam $$2 = $$0.d();
+      jh $$3 = $$0.e();
+      dhy $$4 = $$0.b();
+      int $$5 = 0;
+      jh.a $$6 = new jh.a();
+      int $$7 = $$1.b() + 1;
+      int $$8 = $$1.c() + 1;
+
+      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
+         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
+         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
+            $$5++;
+         }
+      }
+
+      return $$5 > 0;
    }
 }

@@ -1,30 +1,11 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
-public class enn extends enp {
-   public static final MapCodec<enn> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(d(), b(), e(), c()).apply($$0, enn::new));
-
-   protected enn(Either<alj, eqk> $$0, jq<eqi> $$1, ens.a $$2, Optional<epu> $$3) {
-      super($$0, $$1, $$2, $$3);
-   }
+public abstract class enn extends enj {
+   protected abstract int a(bam var1, jh var2);
 
    @Override
-   protected eqg a(dpd $$0, ema $$1, epu $$2, boolean $$3) {
-      eqg $$4 = super.a($$0, $$1, $$2, $$3);
-      $$4.b(epl.b);
-      $$4.a(epl.d);
-      return $$4;
-   }
-
-   @Override
-   public enr<?> a() {
-      return enr.e;
-   }
-
-   @Override
-   public String toString() {
-      return "LegacySingle[" + this.c + "]";
+   public Stream<jh> a_(enh $$0, bam $$1, jh $$2) {
+      return IntStream.range(0, this.a($$1, $$2)).mapToObj($$1x -> $$2);
    }
 }

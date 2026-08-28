@@ -1,7 +1,19 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dng {
-   boolean a(@Nullable cou var1, der var2, jh var3, dvv var4, eru var5);
+public class dng extends dlz {
+   public static final MapCodec<dng> b = b(dng::new);
 
-   boolean a(dfn var1, jh var2, dvv var3, erv var4);
+   @Override
+   public MapCodec<dng> a() {
+      return b;
+   }
+
+   protected dng(dxm.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   protected bte a(dxn $$0, dha $$1, jh $$2, cps $$3, fbo $$4) {
+      return bte.e;
+   }
 }

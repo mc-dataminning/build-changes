@@ -1,51 +1,51 @@
-import javax.annotation.Nullable;
+public class gvt extends gvy<gyr, gav> {
+   private final gmh a;
 
-public class gvt extends gvo implements deo {
-   public jh a = jh.c;
-   public jh b = jh.c;
-   public dvv c = dis.I.m();
-   @Nullable
-   public jq<dgo> d;
-   public deo e = dfa.a;
-
-   @Override
-   public float a(jm $$0, boolean $$1) {
-      return this.e.a($$0, $$1);
+   public gvt(gtg<gyr, gav> $$0, gmh $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   @Override
-   public erk B_() {
-      return this.e.B_();
+   public void a(fgl $$0, gle $$1, int $$2, gyr $$3, float $$4, float $$5) {
+      if (!$$3.ae) {
+         boolean $$6 = $$3.aj && $$3.u;
+         if (!$$3.u || $$6) {
+            dxn $$7 = $$3.a.a();
+            int $$8 = gsk.a($$3, 0.0F);
+            hdg $$9 = this.a.a($$7);
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
+            $$0.b();
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(42.0F));
+            $$0.a(0.1F, 0.0F, -0.6F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
+            $$0.b();
+            $$0.a();
+            this.d().b().a($$0);
+            $$0.a(0.0F, -0.7F, -0.2F);
+            $$0.a(a.d.rotationDegrees(-78.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
+            $$0.b();
+         }
+      }
    }
 
-   @Override
-   public int a(jh $$0, dew $$1) {
-      return this.d == null ? -1 : $$1.getColor(this.d.a(), (double)$$0.u(), (double)$$0.w());
-   }
-
-   @Nullable
-   @Override
-   public dsy c_(jh $$0) {
-      return null;
-   }
-
-   @Override
-   public dvv a_(jh $$0) {
-      return $$0.equals(this.b) ? this.c : dis.a.m();
-   }
-
-   @Override
-   public erv b_(jh $$0) {
-      return this.a_($$0).y();
-   }
-
-   @Override
-   public int L_() {
-      return 1;
-   }
-
-   @Override
-   public int K_() {
-      return this.b.v();
+   private void a(fgl $$0, gle $$1, int $$2, boolean $$3, dxn $$4, int $$5, hdg $$6) {
+      if ($$3) {
+         this.a.b().a($$0.c(), $$1.getBuffer(glo.r(hbd.d)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
+      } else {
+         this.a.a($$4, $$0, $$1, $$2, $$5);
+      }
    }
 }

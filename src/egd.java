@@ -1,30 +1,34 @@
 import com.mojang.serialization.Codec;
 
-public class egd extends eew<ehs> {
-   public egd(Codec<ehs> $$0) {
+public class egd extends egc {
+   public egd(Codec<eiz> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eey<ehs> $$0) {
-      ehs $$1 = $$0.f();
-      dgk $$2 = $$0.b();
-      jh $$3 = $$0.e();
-      dvv $$4 = $$1.a().a($$0.d(), $$3);
-      if ($$4.a($$2, $$3)) {
-         if ($$4.b() instanceof dky) {
-            if (!$$2.u($$3.d())) {
-               return false;
+   protected boolean a(dhb $$0, bam $$1, jh $$2, dxn $$3) {
+      int $$4 = $$1.a(3) + 3;
+      int $$5 = $$1.a(3) + 3;
+      int $$6 = $$1.a(3) + 3;
+      int $$7 = $$1.a(3) + 1;
+      jh.a $$8 = $$2.k();
+
+      for (int $$9 = 0; $$9 <= $$5; $$9++) {
+         for (int $$10 = 0; $$10 <= $$4; $$10++) {
+            for (int $$11 = 0; $$11 <= $$6; $$11++) {
+               $$8.d($$9 + $$2.u(), $$10 + $$2.v(), $$11 + $$2.w());
+               $$8.c(jm.a, $$7);
+               if (($$9 != 0 && $$9 != $$5 || $$10 != 0 && $$10 != $$4)
+                  && ($$11 != 0 && $$11 != $$6 || $$10 != 0 && $$10 != $$4)
+                  && ($$9 != 0 && $$9 != $$5 || $$11 != 0 && $$11 != $$6)
+                  && ($$9 == 0 || $$9 == $$5 || $$10 == 0 || $$10 == $$4 || $$11 == 0 || $$11 == $$6)
+                  && !($$1.i() < 0.1F)
+                  && !this.b($$0, $$1, $$8, $$3)) {
+               }
             }
-
-            dky.a($$2, $$4, $$3, 2);
-         } else {
-            $$2.a($$3, $$4, 2);
          }
-
-         return true;
-      } else {
-         return false;
       }
+
+      return true;
    }
 }

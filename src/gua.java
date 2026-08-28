@@ -1,42 +1,43 @@
-public class gua extends gty<gxg, gaz> {
-   private static final alj a = alj.b("textures/entity/sheep/sheep_fur.png");
-   private final fzj<gxg> b;
-   private final fzj<gxg> c;
+public class gua extends gri<clx, gzs> {
+   private final gmh a;
 
-   public gua(grh<gxg, gaz> $$0, gch $$1) {
+   public gua(grj.a $$0) {
       super($$0);
-      this.b = new gay($$1.a(gck.cw));
-      this.c = new gay($$1.a(gck.cv));
+      this.f = 0.5F;
+      this.a = $$0.d();
    }
 
-   public void a(fer $$0, gjg $$1, int $$2, gxg $$3, float $$4, float $$5) {
-      if (!$$3.c) {
-         fzj<gxg> $$6 = $$3.ae ? this.c : this.b;
-         if ($$3.u) {
-            if ($$3.aj) {
-               $$6.a($$3);
-               fev $$7 = $$1.getBuffer(gjq.r(a));
-               $$6.a($$0, $$7, $$2, gql.a($$3, 0.0F), -16777216);
-            }
-         } else {
-            int $$17;
-            if ($$3.al != null && "jeb_".equals($$3.al.getString())) {
-               int $$8 = 25;
-               int $$9 = azm.d($$3.p);
-               int $$10 = $$9 / 25 + $$3.e;
-               int $$11 = cvj.values().length;
-               int $$12 = $$10 % $$11;
-               int $$13 = ($$10 + 1) % $$11;
-               float $$14 = ((float)($$9 % 25) + azm.i($$3.p)) / 25.0F;
-               int $$15 = chu.a(cvj.a($$12));
-               int $$16 = chu.a(cvj.a($$13));
-               $$17 = axx.a($$14, $$15, $$16);
-            } else {
-               $$17 = chu.a($$3.d);
-            }
-
-            a($$6, a, $$0, $$1, $$2, $$3, $$17);
-         }
+   public void a(gzs $$0, fgl $$1, gle $$2, int $$3) {
+      $$1.a();
+      $$1.a(0.0F, 0.5F, 0.0F);
+      float $$4 = $$0.a;
+      if ($$0.a < 10.0F) {
+         float $$5 = 1.0F - $$0.a / 10.0F;
+         $$5 = bae.a($$5, 0.0F, 1.0F);
+         $$5 *= $$5;
+         $$5 *= $$5;
+         float $$6 = 1.0F + $$5 * 0.3F;
+         $$1.b($$6, $$6, $$6);
       }
+
+      $$1.a(a.d.rotationDegrees(-90.0F));
+      $$1.a(-0.5F, -0.5F, 0.5F);
+      $$1.a(a.d.rotationDegrees(90.0F));
+      if ($$0.b != null) {
+         gtz.a(this.a, $$0.b, $$1, $$2, $$3, (int)$$4 / 5 % 2 == 0);
+      }
+
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   public gzs a() {
+      return new gzs();
+   }
+
+   public void a(clx $$0, gzs $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = (float)$$0.m() - $$2 + 1.0F;
+      $$1.b = $$0.s();
    }
 }

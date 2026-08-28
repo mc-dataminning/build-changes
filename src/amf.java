@@ -1,78 +1,51 @@
-import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.Queue;
+import com.mojang.logging.LogUtils;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Properties;
+import org.slf4j.Logger;
 
 public class amf {
-   private static final int a = 8;
-   private final Queue<amf.a> b = new axz<>();
-   private final Object2IntLinkedOpenHashMap<amf.b> c = new Object2IntLinkedOpenHashMap();
+   private static final Logger a = LogUtils.getLogger();
+   private final Path b;
+   private final boolean c;
 
-   private static long b() {
-      return System.currentTimeMillis();
+   public amf(Path $$0) {
+      this.b = $$0;
+      this.c = ab.aU || this.b();
    }
 
-   public synchronized void a(String $$0, Throwable $$1) {
-      long $$2 = b();
-      String $$3 = $$1.getMessage();
-      this.b.add(new amf.a($$2, $$0, (Class<? extends Throwable>)$$1.getClass(), $$3));
-
-      while (this.b.size() > 8) {
-         this.b.remove();
-      }
-
-      amf.b $$4 = new amf.b($$0, (Class<? extends Throwable>)$$1.getClass());
-      int $$5 = this.c.getInt($$4);
-      this.c.putAndMoveToFirst($$4, $$5 + 1);
-   }
-
-   public synchronized String a() {
-      long $$0 = b();
-      StringBuilder $$1 = new StringBuilder();
-      if (!this.b.isEmpty()) {
-         $$1.append("\n\t\tLatest entries:\n");
-
-         for (amf.a $$2 : this.b) {
-            $$1.append("\t\t\t")
-               .append($$2.b)
-               .append(":")
-               .append($$2.c)
-               .append(": ")
-               .append($$2.d)
-               .append(" (")
-               .append($$0 - $$2.a)
-               .append("ms ago)")
-               .append("\n");
-         }
-      }
-
-      if (!this.c.isEmpty()) {
-         if ($$1.isEmpty()) {
-            $$1.append("\n");
+   private boolean b() {
+      try {
+         boolean var3;
+         try (InputStream $$0 = Files.newInputStream(this.b)) {
+            Properties $$1 = new Properties();
+            $$1.load($$0);
+            var3 = Boolean.parseBoolean($$1.getProperty("eula", "false"));
          }
 
-         $$1.append("\t\tEntry counts:\n");
-         ObjectIterator var6 = Object2IntMaps.fastIterable(this.c).iterator();
+         return var3;
+      } catch (Exception var6) {
+         a.warn("Failed to load {}", this.b);
+         this.c();
+         return false;
+      }
+   }
 
-         while (var6.hasNext()) {
-            Entry<amf.b> $$3 = (Entry<amf.b>)var6.next();
-            $$1.append("\t\t\t")
-               .append(((amf.b)$$3.getKey()).a)
-               .append(":")
-               .append(((amf.b)$$3.getKey()).b)
-               .append(" x ")
-               .append($$3.getIntValue())
-               .append("\n");
+   public boolean a() {
+      return this.c;
+   }
+
+   private void c() {
+      if (!ab.aU) {
+         try (OutputStream $$0 = Files.newOutputStream(this.b)) {
+            Properties $$1 = new Properties();
+            $$1.setProperty("eula", "false");
+            $$1.store($$0, "By changing the setting below to TRUE you are indicating your agreement to our EULA (" + aza.b + ").");
+         } catch (Exception var6) {
+            a.warn("Failed to save {}", this.b, var6);
          }
       }
-
-      return $$1.isEmpty() ? "~~NONE~~" : $$1.toString();
-   }
-
-   static record a(long a, String b, Class<? extends Throwable> c, String d) {
-   }
-
-   static record b(String a, Class<? extends Throwable> b) {
    }
 }

@@ -1,64 +1,86 @@
-import it.unimi.dsi.fastutil.ints.IntList;
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Table;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.OptionalInt;
+import java.util.Set;
 
-public class flk {
-   private static final int a = -1;
-   private final jw<flj> b = new jw<>(32);
+public class flk extends axi {
+   private final Map<dde, ddd> b = new HashMap<>();
+   private final Set<dde> c = new HashSet<>();
+   private Map<dcb, List<fxs>> d = Map.of();
+   private List<fxs> e = List.of();
 
-   public static flk a(flg $$0) {
-      flk $$1 = new flk();
-      $$1.a(($$0x, $$1x) -> $$1x > 0 ? -1 : cza.a($$0x, -6265536), cwq.pz, cwq.pA, cwq.pB, cwq.pC, cwq.vb);
-      $$1.a(($$0x, $$1x) -> $$1x != 1 ? -1 : cza.a($$0x, 0), cwq.os);
-      $$1.a(($$0x, $$1x) -> dfk.a(0.5, 1.0), dis.iH, dis.iI);
-      $$1.a(($$0x, $$1x) -> {
-         if ($$1x != 1) {
-            return -1;
-         } else {
-            czb $$2x = $$0x.a(ku.ae);
-            IntList $$3 = $$2x != null ? $$2x.b() : IntList.of();
-            int $$4 = $$3.size();
-            if ($$4 == 0) {
-               return -7697782;
-            } else if ($$4 == 1) {
-               return axx.f($$3.getInt(0));
-            } else {
-               int $$5 = 0;
-               int $$6 = 0;
-               int $$7 = 0;
+   public void a(ddd $$0) {
+      this.b.put($$0.a(), $$0);
+   }
 
-               for (int $$8 = 0; $$8 < $$4; $$8++) {
-                  int $$9 = $$3.getInt($$8);
-                  $$5 += axx.b($$9);
-                  $$6 += axx.c($$9);
-                  $$7 += axx.d($$9);
-               }
+   public void a(dde $$0) {
+      this.b.remove($$0);
+      this.c.remove($$0);
+   }
 
-               return axx.a($$5 / $$4, $$6 / $$4, $$7 / $$4);
-            }
-         }
-      }, cwq.uN);
-      $$1.a(($$0x, $$1x) -> $$1x > 0 ? -1 : axx.f($$0x.a(ku.Q, cyl.a).b()), cwq.sC, cwq.vG, cwq.vJ, cwq.vI);
+   public boolean b(dde $$0) {
+      return this.c.contains($$0);
+   }
 
-      for (cxv $$2 : cxv.b()) {
-         $$1.a(($$1x, $$2x) -> axx.f($$2.a($$2x)), $$2);
+   public void c(dde $$0) {
+      this.c.remove($$0);
+   }
+
+   public void d(dde $$0) {
+      this.c.add($$0);
+   }
+
+   public void b() {
+      Map<dbi, List<List<ddd>>> $$0 = a(this.b.values());
+      Map<dcb, List<fxs>> $$1 = new HashMap<>();
+      Builder<fxs> $$2 = ImmutableList.builder();
+      $$0.forEach(($$2x, $$3x) -> $$1.put($$2x, $$3x.stream().map(fxs::new).peek($$2::add).collect(ImmutableList.toImmutableList())));
+
+      for (fxu $$3 : fxu.values()) {
+         $$1.put($$3, $$3.a().stream().flatMap($$1x -> $$1.getOrDefault($$1x, List.of()).stream()).collect(ImmutableList.toImmutableList()));
       }
 
-      $$1.a(($$1x, $$2x) -> {
-         dvv $$3 = ((cus)$$1x.h()).d().m();
-         return $$0.a($$3, null, null, $$2x);
-      }, dis.i, dis.bt, dis.bu, dis.ff, dis.aE, dis.aF, dis.aG, dis.aH, dis.aI, dis.aK, dis.fm);
-      $$1.a(($$0x, $$1x) -> dfg.d(), dis.aL);
-      $$1.a(($$0x, $$1x) -> $$1x == 0 ? -1 : axx.f($$0x.a(ku.K, czi.c).a()), cwq.sl);
+      this.d = Map.copyOf($$1);
+      this.e = $$2.build();
+   }
+
+   private static Map<dbi, List<List<ddd>>> a(Iterable<ddd> $$0) {
+      Map<dbi, List<List<ddd>>> $$1 = new HashMap<>();
+      Table<dbi, Integer, List<ddd>> $$2 = HashBasedTable.create();
+
+      for (ddd $$3 : $$0) {
+         dbi $$4 = $$3.d();
+         OptionalInt $$5 = $$3.c();
+         if ($$5.isEmpty()) {
+            $$1.computeIfAbsent($$4, $$0x -> new ArrayList<>()).add(List.of($$3));
+         } else {
+            List<ddd> $$6 = (List<ddd>)$$2.get($$4, $$5.getAsInt());
+            if ($$6 == null) {
+               $$6 = new ArrayList<>();
+               $$2.put($$4, $$5.getAsInt(), $$6);
+               $$1.computeIfAbsent($$4, $$0x -> new ArrayList<>()).add($$6);
+            }
+
+            $$6.add($$3);
+         }
+      }
+
       return $$1;
    }
 
-   public int a(cwm $$0, int $$1) {
-      flj $$2 = this.b.a(lz.g.a($$0.h()));
-      return $$2 == null ? -1 : $$2.getColor($$0, $$1);
+   public List<fxs> c() {
+      return this.e;
    }
 
-   public void a(flj $$0, dfl... $$1) {
-      for (dfl $$2 : $$1) {
-         this.b.a($$0, cwi.a($$2.j()));
-      }
+   public List<fxs> a(dcb $$0) {
+      return this.d.getOrDefault($$0, Collections.emptyList());
    }
 }

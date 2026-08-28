@@ -1,8 +1,6 @@
-import javax.annotation.Nullable;
-
-public class gwt extends gvo {
-   public jm a = jm.c;
-   @Nullable
-   public cky b;
-   public int[] c = new int[0];
+public class gwt extends gym {
+   public boolean a;
+   public final bux b = new bux();
+   public final bux c = new bux();
+   public final bux d = new bux();
 }

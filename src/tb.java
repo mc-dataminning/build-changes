@@ -1,53 +1,71 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Streams;
-import java.util.Collection;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
 
 public class tb {
-   private static final int a = 50;
+   public static final enj a = enc.a(edi.a.e);
+   public static final enj b = enc.a(edi.a.c);
+   public static final enj c = enc.a(edi.a.a);
+   public static final enj d = enc.a(edi.a.d);
+   public static final enj e = enb.a(eec.a(), eec.b());
+   public static final enj f = enb.a(eec.b(10), eec.c(10));
+   public static final enj g = enb.a(eec.b(8), eec.c(8));
+   public static final enj h = enb.a(eec.b(4), eec.c(4));
+   public static final enj i = enb.a(eec.a(), eec.a(256));
 
-   public static Collection<ta> a(Collection<ua> $$0, arp $$1) {
-      Map<String, List<ua>> $$2 = $$0.stream().collect(Collectors.groupingBy(ua::b));
-      return $$2.entrySet()
-         .stream()
-         .flatMap(
-            $$1x -> {
-               String $$2x = (String)$$1x.getKey();
-               List<ua> $$3 = (List<ua>)$$1x.getValue();
-               return Streams.mapWithIndex(
-                  Lists.partition($$3, 50).stream(), ($$2xx, $$3x) -> a($$2xx.stream().map($$1xxx -> a($$1xxx, 0, $$1)).toList(), $$2x, $$3x)
-               );
-            }
-         )
-         .toList();
+   public static void a(rk<eng> $$0) {
+      sv.a($$0);
+      sw.a($$0);
+      sx.a($$0);
+      sy.a($$0);
+      sz.a($$0);
+      ta.a($$0);
+      tc.a($$0);
+      td.a($$0);
+      te.a($$0);
    }
 
-   public static tg a(ua $$0, int $$1, arp $$2) {
-      return new tg($$0, tw.a($$1), $$2, tt.a());
+   public static aly<eng> a(String $$0) {
+      return aly.a(mb.aS, alz.b($$0));
    }
 
-   public static tj.b a() {
-      return a(50);
+   public static void a(rk<eng> $$0, aly<eng> $$1, jq<ega<?, ?>> $$2, List<enj> $$3) {
+      $$0.a($$1, new eng($$2, List.copyOf($$3)));
    }
 
-   public static tj.b a(int $$0) {
-      return $$1 -> {
-         Map<String, List<tg>> $$2 = $$1.stream().filter(Objects::nonNull).collect(Collectors.groupingBy($$0xx -> $$0xx.v().b()));
-         return $$2.entrySet().stream().flatMap($$1x -> {
-            String $$2x = (String)$$1x.getKey();
-            List<tg> $$3 = (List<tg>)$$1x.getValue();
-            return Streams.mapWithIndex(Lists.partition($$3, $$0).stream(), ($$1xx, $$2xx) -> a(List.copyOf($$1xx), $$2x, $$2xx));
-         }).toList();
-      };
+   public static void a(rk<eng> $$0, aly<eng> $$1, jq<ega<?, ?>> $$2, enj... $$3) {
+      a($$0, $$1, $$2, List.of($$3));
    }
 
-   public static ta a(Collection<tg> $$0, String $$1, long $$2) {
-      Consumer<arp> $$3 = ti.c($$1);
-      Consumer<arp> $$4 = ti.d($$1);
-      return new ta($$1 + ":" + $$2, $$0, $$3, $$4);
+   public static enj a(int $$0, float $$1, int $$2) {
+      float $$3 = 1.0F / $$1;
+      if (Math.abs($$3 - (float)((int)$$3)) > 1.0E-5F) {
+         throw new IllegalStateException("Chance data cannot be represented as list weight");
+      } else {
+         brm<bsj> $$4 = brm.<bsj>a().a(bsg.a($$0), (int)$$3 - 1).a(bsg.a($$0 + $$2), 1).a();
+         return emy.a(new bsq($$4));
+      }
+   }
+
+   public static eni a() {
+      return emv.a(eep.c);
+   }
+
+   public static emv a(dke $$0) {
+      return emv.a(eep.a($$0.m(), jh.c));
+   }
+
+   public static jq<eng> a(jq<ega<?, ?>> $$0, enj... $$1) {
+      return jq.a(new eng($$0, List.of($$1)));
+   }
+
+   public static <FC extends eis, F extends ego<FC>> jq<eng> a(F $$0, FC $$1, enj... $$2) {
+      return a(jq.a(new ega($$0, $$1)), $$2);
+   }
+
+   public static <FC extends eis, F extends ego<FC>> jq<eng> a(F $$0, FC $$1) {
+      return a($$0, $$1, eep.c);
+   }
+
+   public static <FC extends eis, F extends ego<FC>> jq<eng> a(F $$0, FC $$1, eep $$2) {
+      return a($$0, $$1, emv.a($$2));
    }
 }

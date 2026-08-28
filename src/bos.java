@@ -1,32 +1,67 @@
-import java.nio.file.Path;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface bos {
-   char d = '\u001e';
+public abstract class bos<S> {
+   private final Map<bos.b<?>, bos.a<?>> a = new HashMap<>();
+   private final bop<S> b;
+   private final boq<S> c;
 
-   List<bow> a(String var1);
-
-   boolean a(Path var1);
-
-   long a();
-
-   int b();
-
-   long c();
-
-   int d();
-
-   default long g() {
-      return this.c() - this.a();
+   protected bos(bop<S> $$0, boq<S> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   default int f() {
-      return this.d() - this.b();
+   public boq<S> a() {
+      return this.c;
    }
 
-   String e();
+   public <T> Optional<T> a(bon<T> $$0) {
+      Optional<T> $$1 = this.b($$0);
+      if ($$1.isPresent()) {
+         this.c.a(this.c());
+      }
 
-   static String b(String $$0) {
-      return $$0.replace('\u001e', '.');
+      return $$1;
+   }
+
+   public <T> Optional<T> b(bon<T> $$0) {
+      bos.b<T> $$1 = new bos.b<>($$0, this.c());
+      bos.a<T> $$2 = this.a($$1);
+      if ($$2 != null) {
+         this.a($$2.b());
+         return $$2.a;
+      } else {
+         bot<S, T> $$3 = this.b.a($$0);
+         if ($$3 == null) {
+            throw new IllegalStateException("No symbol " + $$0);
+         } else {
+            Optional<T> $$4 = $$3.a(this);
+            this.a($$1, $$4);
+            return $$4;
+         }
+      }
+   }
+
+   @Nullable
+   private <T> bos.a<T> a(bos.b<T> $$0) {
+      return (bos.a<T>)this.a.get($$0);
+   }
+
+   private <T> void a(bos.b<T> $$0, Optional<T> $$1) {
+      this.a.put($$0, new bos.a<>($$1, this.c()));
+   }
+
+   public abstract S b();
+
+   public abstract int c();
+
+   public abstract void a(int var1);
+
+   static record a<T>(Optional<T> a, int b) {
+   }
+
+   static record b<T>(bon<T> a, int b) {
    }
 }

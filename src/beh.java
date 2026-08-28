@@ -1,17 +1,19 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
-import java.util.Objects;
+import com.mojang.serialization.Dynamic;
 
-public class beh extends bim {
-   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:illager_beast_spawn_egg", "minecraft:ravager_spawn_egg").build();
+public class beh extends bhn {
+   public beh(Schema $$0) {
+      super($$0, false, "EntityBrushableBlockFieldsRenameFix", bis.s, "minecraft:brushable_block");
+   }
 
-   public beh(Schema $$0, boolean $$1) {
-      super("EntityRavagerRenameFix", $$0, $$1);
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.renameField("loot_table", "LootTable").renameField("loot_table_seed", "LootTableSeed");
    }
 
    @Override
-   protected String a(String $$0) {
-      return Objects.equals("minecraft:illager_beast", $$0) ? "minecraft:ravager" : $$0;
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

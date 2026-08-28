@@ -1,31 +1,58 @@
-public class hcq implements hcl {
-   private final gic a;
-   private boolean b;
-   private boolean c = true;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-   public hcq(gic $$0) {
-      this.a = $$0;
+public class hcq {
+   public static final hcr a = new hcr();
+   public static final String b = "animation";
+   public static final int c = 1;
+   public static final int d = -1;
+   public static final hcq e = new hcq(Lists.newArrayList(), -1, -1, 1, false) {
+      @Override
+      public hcs a(int $$0, int $$1) {
+         return new hcs($$0, $$1);
+      }
+   };
+   private final List<hcp> f;
+   private final int g;
+   private final int h;
+   private final int i;
+   private final boolean j;
+
+   public hcq(List<hcp> $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.i = $$3;
+      this.j = $$4;
    }
 
-   @Override
-   public void a() {
-      dfm $$0 = this.a.dV();
-      dvv $$1 = $$0.c(this.a.cR().c(0.0, -0.4F, 0.0).h(1.0E-6)).filter($$0x -> $$0x.a(dis.nd)).findFirst().orElse(null);
-      if ($$1 != null) {
-         if (!this.b && !this.c && $$1.a(dis.nd) && !this.a.Y_()) {
-            boolean $$2 = $$1.c(diw.b);
-            if ($$2) {
-               this.a.a(awn.db, 1.0F, 1.0F);
-            } else {
-               this.a.a(awn.cZ, 1.0F, 1.0F);
-            }
-         }
-
-         this.b = true;
+   public hcs a(int $$0, int $$1) {
+      if (this.g != -1) {
+         return this.h != -1 ? new hcs(this.g, this.h) : new hcs(this.g, $$1);
+      } else if (this.h != -1) {
+         return new hcs($$0, this.h);
       } else {
-         this.b = false;
+         int $$2 = Math.min($$0, $$1);
+         return new hcs($$2, $$2);
       }
+   }
 
-      this.c = false;
+   public int a() {
+      return this.i;
+   }
+
+   public boolean b() {
+      return this.j;
+   }
+
+   public void a(hcq.a $$0) {
+      for (hcp $$1 : this.f) {
+         $$0.accept($$1.a(), $$1.a(this.i));
+      }
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void accept(int var1, int var2);
    }
 }

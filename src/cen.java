@@ -1,60 +1,99 @@
-import com.google.common.collect.Iterables;
-import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cen {
-   private static final cen a = new cen();
-   private final List<bvh> b;
-   private final Predicate<bvh> c;
+public class cen extends ccz {
+   private final ccz a;
+   private final int b;
+   private boolean c;
 
-   private cen() {
-      this.b = List.of();
-      this.c = $$0 -> false;
+   public cen(int $$0, ccz $$1) {
+      this.b = $$0;
+      this.a = $$1;
    }
 
-   public cen(arp $$0, bvh $$1, List<bvh> $$2) {
-      this.b = $$2;
-      Object2BooleanOpenHashMap<bvh> $$3 = new Object2BooleanOpenHashMap($$2.size());
-      Predicate<bvh> $$4 = $$2x -> cfr.b($$0, $$1, $$2x);
-      this.c = $$2x -> $$3.computeIfAbsent($$2x, $$4);
+   public boolean a(cen $$0) {
+      return this.U_() && $$0.i() < this.i();
    }
 
-   public static cen a() {
-      return a;
+   @Override
+   public boolean b() {
+      return this.a.b();
    }
 
-   public Optional<bvh> a(Predicate<bvh> $$0) {
-      for (bvh $$1 : this.b) {
-         if ($$0.test($$1) && this.c.test($$1)) {
-            return Optional.of($$1);
-         }
+   @Override
+   public boolean c() {
+      return this.a.c();
+   }
+
+   @Override
+   public boolean U_() {
+      return this.a.U_();
+   }
+
+   @Override
+   public void d() {
+      if (!this.c) {
+         this.c = true;
+         this.a.d();
       }
-
-      return Optional.empty();
    }
 
-   public Iterable<bvh> b(Predicate<bvh> $$0) {
-      return Iterables.filter(this.b, $$1 -> $$0.test($$1) && this.c.test($$1));
-   }
-
-   public Stream<bvh> c(Predicate<bvh> $$0) {
-      return this.b.stream().filter($$1 -> $$0.test($$1) && this.c.test($$1));
-   }
-
-   public boolean a(bvh $$0) {
-      return this.b.contains($$0) && this.c.test($$0);
-   }
-
-   public boolean d(Predicate<bvh> $$0) {
-      for (bvh $$1 : this.b) {
-         if ($$0.test($$1) && this.c.test($$1)) {
-            return true;
-         }
+   @Override
+   public void e() {
+      if (this.c) {
+         this.c = false;
+         this.a.e();
       }
+   }
 
-      return false;
+   @Override
+   public boolean V_() {
+      return this.a.V_();
+   }
+
+   @Override
+   protected int a(int $$0) {
+      return this.a.a($$0);
+   }
+
+   @Override
+   public void a() {
+      this.a.a();
+   }
+
+   @Override
+   public void a(EnumSet<ccz.a> $$0) {
+      this.a.a($$0);
+   }
+
+   @Override
+   public EnumSet<ccz.a> j() {
+      return this.a.j();
+   }
+
+   public boolean h() {
+      return this.c;
+   }
+
+   public int i() {
+      return this.b;
+   }
+
+   public ccz k() {
+      return this.a;
+   }
+
+   @Override
+   public boolean equals(@Nullable Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? this.a.equals(((cen)$$0).a) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

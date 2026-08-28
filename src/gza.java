@@ -1,6 +1,3 @@
-public interface gza extends AutoCloseable {
-   void a(int var1, int var2);
-
-   @Override
-   void close();
+public class gza extends gym {
+   public float a;
 }

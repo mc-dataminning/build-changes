@@ -1,45 +1,92 @@
-import com.mojang.serialization.MapCodec;
+public interface dhs extends dgf {
+   jm[] D = jm.values();
 
-public class dhs extends diz implements dit {
-   public static final MapCodec<dhs> a = b(dhs::new);
-   private static final fas b = fap.a(diq.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0), diq.a(6.0, 0.0, 6.0, 10.0, 8.0, 10.0));
-
-   @Override
-   public MapCodec<dhs> a() {
-      return a;
+   default int a(jh $$0, jm $$1) {
+      return this.a_($$0).b(this, $$0, $$1);
    }
 
-   protected dhs(dvu.d $$0) {
-      super($$0);
+   default int e_(jh $$0) {
+      int $$1 = 0;
+      $$1 = Math.max($$1, this.a($$0.e(), jm.a));
+      if ($$1 >= 15) {
+         return $$1;
+      } else {
+         $$1 = Math.max($$1, this.a($$0.d(), jm.b));
+         if ($$1 >= 15) {
+            return $$1;
+         } else {
+            $$1 = Math.max($$1, this.a($$0.f(), jm.c));
+            if ($$1 >= 15) {
+               return $$1;
+            } else {
+               $$1 = Math.max($$1, this.a($$0.g(), jm.d));
+               if ($$1 >= 15) {
+                  return $$1;
+               } else {
+                  $$1 = Math.max($$1, this.a($$0.h(), jm.e));
+                  if ($$1 >= 15) {
+                     return $$1;
+                  } else {
+                     $$1 = Math.max($$1, this.a($$0.i(), jm.f));
+                     return $$1 >= 15 ? $$1 : $$1;
+                  }
+               }
+            }
+         }
+      }
    }
 
-   @Override
-   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
-      return b;
+   default int a(jh $$0, jm $$1, boolean $$2) {
+      dxn $$3 = this.a_($$0);
+      if ($$2) {
+         return dmi.n($$3) ? this.a($$0, $$1) : 0;
+      } else if ($$3.a(dkg.hq)) {
+         return 15;
+      } else if ($$3.a(dkg.cE)) {
+         return $$3.c(dqj.f);
+      } else {
+         return $$3.p() ? this.a($$0, $$1) : 0;
+      }
    }
 
-   @Override
-   protected boolean b(dvv $$0, der $$1, jh $$2) {
-      return $$0.a(dis.dR) || super.b($$0, $$1, $$2);
+   default boolean b(jh $$0, jm $$1) {
+      return this.c($$0, $$1) > 0;
    }
 
-   @Override
-   public boolean b(dfp $$0, jh $$1, dvv $$2) {
-      return $$0.b_($$1.d()).c();
+   default int c(jh $$0, jm $$1) {
+      dxn $$2 = this.a_($$0);
+      int $$3 = $$2.a(this, $$0, $$1);
+      return $$2.d(this, $$0) ? Math.max($$3, this.e_($$0)) : $$3;
    }
 
-   @Override
-   public boolean a(dfm $$0, azu $$1, jh $$2, dvv $$3) {
-      return (double)$$0.A.i() < 0.45;
+   default boolean C(jh $$0) {
+      if (this.c($$0.e(), jm.a) > 0) {
+         return true;
+      } else if (this.c($$0.d(), jm.b) > 0) {
+         return true;
+      } else if (this.c($$0.f(), jm.c) > 0) {
+         return true;
+      } else if (this.c($$0.g(), jm.d) > 0) {
+         return true;
+      } else {
+         return this.c($$0.h(), jm.e) > 0 ? true : this.c($$0.i(), jm.f) > 0;
+      }
    }
 
-   @Override
-   public void a(arp $$0, azu $$1, jh $$2, dvv $$3) {
-      dvk.e.a($$0, $$0.m().g(), $$2, $$3, $$1);
-   }
+   default int D(jh $$0) {
+      int $$1 = 0;
 
-   @Override
-   protected boolean a(dvv $$0, esk $$1) {
-      return false;
+      for (jm $$2 : D) {
+         int $$3 = this.c($$0.a($$2), $$2);
+         if ($$3 >= 15) {
+            return 15;
+         }
+
+         if ($$3 > $$1) {
+            $$1 = $$3;
+         }
+      }
+
+      return $$1;
    }
 }

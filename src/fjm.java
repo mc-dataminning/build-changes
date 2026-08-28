@@ -1,30 +1,27 @@
-import java.util.function.IntFunction;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public enum fjm implements azp {
-   a(0, "options.off"),
-   b(1, "options.attack.crosshair"),
-   c(2, "options.attack.hotbar");
+public class fjm extends hhp {
+   protected BooleanConsumer a;
+   private final xv b;
+   private final xv c;
 
-   private static final IntFunction<fjm> d = ayd.a(fjm::b, values(), ayd.a.b);
-   private final int e;
-   private final String f;
-
-   private fjm(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public fjm(BooleanConsumer $$0, xv $$1, xv $$2) {
+      super(flq.a);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public int b() {
-      return this.e;
+   public void aT_() {
+      this.c(fny.a(xu.f, $$0 -> this.a.accept(true)).a(this.n / 2 - 105, g(9), 100, 20).a());
+      this.c(fny.a(xu.g, $$0 -> this.a.accept(false)).a(this.n / 2 + 5, g(9), 100, 20).a());
    }
 
    @Override
-   public String a() {
-      return this.f;
-   }
-
-   public static fjm a(int $$0) {
-      return d.apply($$0);
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.b, this.n / 2, g(3), -1);
+      $$0.a(this.p, this.c, this.n / 2, g(5), -1);
    }
 }

@@ -1,20 +1,43 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class egq {
-   public static final Codec<egq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(elm.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
-            .apply($$0, egq::new)
-   );
-   public final jq<elm> b;
-   public final float c;
+public class egq<FC extends eis> {
+   private final Optional<ega<?, ?>> a;
+   private final dhy b;
+   private final dzj c;
+   private final bam d;
+   private final jh e;
+   private final FC f;
 
-   public egq(jq<elm> $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public egq(Optional<ega<?, ?>> $$0, dhy $$1, dzj $$2, bam $$3, jh $$4, FC $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   public boolean a(dgk $$0, dxr $$1, azu $$2, jh $$3) {
-      return this.b.a().a($$0, $$1, $$2, $$3);
+   public Optional<ega<?, ?>> a() {
+      return this.a;
+   }
+
+   public dhy b() {
+      return this.b;
+   }
+
+   public dzj c() {
+      return this.c;
+   }
+
+   public bam d() {
+      return this.d;
+   }
+
+   public jh e() {
+      return this.e;
+   }
+
+   public FC f() {
+      return this.f;
    }
 }

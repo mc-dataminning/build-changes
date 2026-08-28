@@ -1,45 +1,45 @@
-public class aiu implements zq<agw> {
-   public static final zh<wg, aiu> a = zq.a(aiu::a, aiu::new);
-   private final ezu b;
-   private final bsj c;
-   private final int d;
+public class aiu implements aac<ahm> {
+   public static final zt<ws, aiu> a = aac.a(aiu::a, aiu::new);
+   private final cun b;
+   private final boolean c;
+   private final boolean d;
 
-   public aiu(bsj $$0, ezu $$1, int $$2) {
-      this.c = $$0;
-      this.b = $$1;
+   public aiu(cun $$0, boolean $$1, boolean $$2) {
+      this.b = $$0;
+      this.c = $$1;
       this.d = $$2;
    }
 
-   private aiu(wg $$0) {
-      this.c = $$0.b(bsj.class);
-      this.b = $$0.v();
-      this.d = $$0.l();
+   private aiu(ws $$0) {
+      this.b = $$0.b(cun.class);
+      this.c = $$0.readBoolean();
+      this.d = $$0.readBoolean();
    }
 
-   private void a(wg $$0) {
-      $$0.a(this.c);
+   private void a(ws $$0) {
       $$0.a(this.b);
-      $$0.c(this.d);
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zs<aiu> a() {
-      return agu.cf;
+   public aae<aiu> a() {
+      return ahk.bU;
    }
 
-   public void a(agw $$0) {
+   public void a(ahm $$0) {
       $$0.a(this);
    }
 
-   public bsj b() {
-      return this.c;
-   }
-
-   public ezu e() {
+   public cun b() {
       return this.b;
    }
 
-   public int f() {
+   public boolean e() {
+      return this.c;
+   }
+
+   public boolean f() {
       return this.d;
    }
 }

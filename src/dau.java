@@ -1,68 +1,54 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dau extends dar {
-   private static final daw a = daw.a(cwq.uN);
+public record dau(List<buk> c, float f) implements daw {
+   public static final MapCodec<dau> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(buk.d.listOf().fieldOf("effects").forGetter(dau::b), Codec.floatRange(0.0F, 1.0F).optionalFieldOf("probability", 1.0F).forGetter(dau::c))
+            .apply($$0, dau::new)
+   );
+   public static final zt<xg, dau> b = zt.a(buk.e.a(zr.a()), dau::b, zr.l, dau::c, dau::new);
 
-   public dau(dao $$0) {
-      super($$0);
+   public dau(buk $$0, float $$1) {
+      this(List.of($$0), $$1);
    }
 
-   public boolean a(dap $$0, dfm $$1) {
-      boolean $$2 = false;
-      boolean $$3 = false;
+   public dau(List<buk> $$0) {
+      this($$0, 1.0F);
+   }
 
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cwm $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.h() instanceof cvk) {
-               $$2 = true;
-            } else {
-               if (!a.a($$5)) {
-                  return false;
-               }
+   public dau(buk $$0) {
+      this($$0, 1.0F);
+   }
 
-               if ($$3) {
-                  return false;
-               }
+   @Override
+   public daw.a<dau> a() {
+      return daw.a.a;
+   }
 
+   @Override
+   public boolean a(dha $$0, cxk $$1, bwb $$2) {
+      if ($$2.dY().i() >= this.f) {
+         return false;
+      } else {
+         boolean $$3 = false;
+
+         for (buk $$4 : this.c) {
+            if ($$2.a(new buk($$4))) {
                $$3 = true;
             }
          }
-      }
 
-      return $$3 && $$2;
-   }
-
-   public cwm a(dap $$0, js.a $$1) {
-      IntList $$2 = new IntArrayList();
-      cwm $$3 = null;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cwm $$5 = $$0.a($$4);
-         cwi $$6 = $$5.h();
-         if ($$6 instanceof cvk) {
-            $$2.add(((cvk)$$6).b().f());
-         } else if (a.a($$5)) {
-            $$3 = $$5.c(1);
-         }
-      }
-
-      if ($$3 != null && !$$2.isEmpty()) {
-         $$3.a(ku.ae, czb.a, $$2, czb::a);
          return $$3;
-      } else {
-         return cwm.k;
       }
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public List<buk> b() {
+      return this.c;
    }
 
-   @Override
-   public dbf<?> ap_() {
-      return dbf.i;
+   public float c() {
+      return this.f;
    }
 }

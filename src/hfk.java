@@ -1,36 +1,54 @@
+import java.util.List;
+import java.util.Locale;
 import java.util.function.Function;
+import java.util.stream.Stream;
 
-public enum hfk {
-   a("movement", hff::new),
-   b("find_tree", hfe::new),
-   c("punch_tree", hfh::new),
-   d("open_inventory", hfg::new),
-   e("craft_planks", hfd::new),
-   f("none", hfc::new);
-
-   private final String g;
-   private final Function<hfi, ? extends hfj> h;
-
-   private <T extends hfj> hfk(final String $$0, final Function<hfi, T> $$1) {
-      this.g = $$0;
-      this.h = $$1;
-   }
-
-   public hfj a(hfi $$0) {
-      return this.h.apply($$0);
-   }
-
-   public String a() {
-      return this.g;
-   }
-
-   public static hfk a(String $$0) {
-      for (hfk $$1 : values()) {
-         if ($$1.g.equals($$0)) {
-            return $$1;
+public interface hfk<T> {
+   static <T> hfk<T> a() {
+      return new hfk<T>() {
+         @Override
+         public List<T> a(String $$0) {
+            return List.of();
          }
-      }
 
-      return f;
+         @Override
+         public List<T> b(String $$0) {
+            return List.of();
+         }
+      };
    }
+
+   static <T> hfk<T> a(List<T> $$0, Function<T, Stream<alz>> $$1) {
+      if ($$0.isEmpty()) {
+         return a();
+      } else {
+         final hfm<T> $$2 = new hfm<>();
+         final hfm<T> $$3 = new hfm<>();
+
+         for (T $$4 : $$0) {
+            $$1.apply($$4).forEach($$3x -> {
+               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
+               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
+            });
+         }
+
+         $$2.a();
+         $$3.a();
+         return new hfk<T>() {
+            @Override
+            public List<T> a(String $$0) {
+               return $$2.a($$0);
+            }
+
+            @Override
+            public List<T> b(String $$0) {
+               return $$3.a($$0);
+            }
+         };
+      }
+   }
+
+   List<T> a(String var1);
+
+   List<T> b(String var1);
 }

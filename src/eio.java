@@ -1,40 +1,41 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eio extends eim {
-   public static final MapCodec<eio> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, eio::new)
+public class eio implements eis {
+   public static final Codec<eio> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dxn.a.fieldOf("contents").forGetter($$0x -> $$0x.b),
+               dxn.a.fieldOf("rim").forGetter($$0x -> $$0x.c),
+               bsj.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
+               bsj.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, eio::new)
    );
-   protected final int b;
+   private final dxn b;
+   private final dxn c;
+   private final bsj d;
+   private final bsj e;
 
-   public eio(brp $$0, brp $$1, int $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+   public eio(dxn $$0, dxn $$1, bsj $$2, bsj $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   @Override
-   protected ein<?> a() {
-      return ein.g;
-   }
-
-   @Override
-   protected void a(dfs $$0, eim.b $$1, azu $$2, ehw $$3, int $$4, eim.a $$5, int $$6, int $$7, int $$8) {
-      int $$9 = $$5.c() ? $$6 : 1 + $$2.a(2);
-
-      for (int $$10 = $$8; $$10 >= $$8 - $$9; $$10--) {
-         int $$11 = $$7 + $$5.b() + 1 - $$10;
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$11, $$10, $$5.c());
-      }
-   }
-
-   @Override
-   public int a(azu $$0, int $$1, ehw $$2) {
+   public dxn a() {
       return this.b;
    }
 
-   @Override
-   protected boolean a(azu $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
+   public dxn b() {
+      return this.c;
+   }
+
+   public bsj c() {
+      return this.d;
+   }
+
+   public bsj d() {
+      return this.e;
    }
 }

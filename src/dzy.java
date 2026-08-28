@@ -1,24 +1,24 @@
-import java.util.UUID;
-import java.util.stream.Stream;
+import java.util.List;
+import java.util.function.Predicate;
 
-public interface dzy {
-   int ar();
+public interface dzy<T> {
+   int a(T var1);
 
-   UUID cG();
+   boolean a(Predicate<T> var1);
 
-   jh dv();
+   T a(int var1);
 
-   ezt cR();
+   void a(ws var1);
 
-   void a(dzz var1);
+   void b(ws var1);
 
-   Stream<? extends dzy> db();
+   int a();
 
-   Stream<? extends dzy> dc();
+   int b();
 
-   void b(bul.c var1);
+   dzy<T> a(dzz<T> var1);
 
-   boolean dT();
-
-   boolean dU();
+   public interface a {
+      <A> dzy<A> create(int var1, jv<A> var2, dzz<A> var3, List<A> var4);
+   }
 }

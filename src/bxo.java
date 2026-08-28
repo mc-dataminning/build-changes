@@ -1,113 +1,84 @@
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class bxo<E extends bvh> implements bxb<E> {
-   private final Map<cel<?>, cem> a;
-   private final Set<cel<?>> b;
-   private final bxo.a c;
-   private final bxo.b d;
-   private final bzj<bxb<? super E>> e = new bzj<>();
-   private bxa.a f = bxa.a.a;
+public class bxo extends bxu<chs> {
+   private static final int c = 3;
+   private static final int d = 60;
+   private static final int e = 110;
+   private final bvm<? extends chs> f;
+   private final float g;
+   private final int h;
+   private static final int i = 2;
+   private long j;
 
-   public bxo(Map<cel<?>, cem> $$0, Set<cel<?>> $$1, bxo.a $$2, bxo.b $$3, List<Pair<? extends bxb<? super E>, Integer>> $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      $$4.forEach($$0x -> this.e.a((bxb<? super E>)$$0x.getFirst(), (Integer)$$0x.getSecond()));
+   public bxo(bvm<? extends chs> $$0) {
+      this($$0, 1.0F, 2);
    }
 
-   @Override
-   public bxa.a a() {
-      return this.f;
+   public bxo(bvm<? extends chs> $$0, float $$1, int $$2) {
+      super(ImmutableMap.of(cff.h, cfg.a, cff.r, cfg.b, cff.m, cfg.c, cff.n, cfg.c, cff.Z, cfg.b), 110);
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
    }
 
-   private boolean a(E $$0) {
-      for (Entry<cel<?>, cem> $$1 : this.a.entrySet()) {
-         cel<?> $$2 = $$1.getKey();
-         cem $$3 = $$1.getValue();
-         if (!$$0.eb().a($$2, $$3)) {
-            return false;
-         }
-      }
-
-      return true;
+   protected boolean a(ash $$0, chs $$1) {
+      return $$1.gw() && this.c($$1).isPresent();
    }
 
-   @Override
-   public final boolean e(arp $$0, E $$1, long $$2) {
-      if (this.a($$1)) {
-         this.f = bxa.a.b;
-         this.c.a(this.e);
-         this.d.a(this.e.b(), $$0, $$1, $$2);
-         return true;
-      } else {
+   protected void a(ash $$0, chs $$1, long $$2) {
+      chs $$3 = this.c($$1).get();
+      $$1.eb().a(cff.r, $$3);
+      $$3.eb().a(cff.r, $$1);
+      bxw.a($$1, (bwb)$$3, this.g, this.h);
+      int $$4 = 60 + $$1.dY().a(50);
+      this.j = $$2 + (long)$$4;
+   }
+
+   protected boolean b(ash $$0, chs $$1, long $$2) {
+      if (!this.b($$1)) {
          return false;
+      } else {
+         chs $$3 = this.a($$1);
+         return $$3.bL() && $$1.a($$3) && bxw.a($$1.eb(), $$3) && $$2 <= this.j && !$$1.gj() && !$$3.gj();
       }
    }
 
-   @Override
-   public final void f(arp $$0, E $$1, long $$2) {
-      this.e.b().filter($$0x -> $$0x.a() == bxa.a.b).forEach($$3 -> $$3.f($$0, $$1, $$2));
-      if (this.e.b().noneMatch($$0x -> $$0x.a() == bxa.a.b)) {
-         this.g($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public final void g(arp $$0, E $$1, long $$2) {
-      this.f = bxa.a.a;
-      this.e.b().filter($$0x -> $$0x.a() == bxa.a.b).forEach($$3 -> $$3.g($$0, $$1, $$2));
-      this.b.forEach($$1.eb()::b);
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
-   }
-
-   @Override
-   public String toString() {
-      Set<? extends bxb<? super E>> $$0 = this.e.b().filter($$0x -> $$0x.a() == bxa.a.b).collect(Collectors.toSet());
-      return "(" + this.getClass().getSimpleName() + "): " + $$0;
-   }
-
-   public static enum a {
-      a($$0 -> {
-      }),
-      b(bzj::a);
-
-      private final Consumer<bzj<?>> c;
-
-      private a(final Consumer<bzj<?>> $$0) {
-         this.c = $$0;
-      }
-
-      public void a(bzj<?> $$0) {
-         this.c.accept($$0);
-      }
-   }
-
-   public static enum b {
-      a {
-         @Override
-         public <E extends bvh> void a(Stream<bxb<? super E>> $$0, arp $$1, E $$2, long $$3) {
-            $$0.filter($$0x -> $$0x.a() == bxa.a.a).filter($$3x -> $$3x.e($$1, $$2, $$3)).findFirst();
+   protected void c(ash $$0, chs $$1, long $$2) {
+      chs $$3 = this.a($$1);
+      bxw.a($$1, (bwb)$$3, this.g, this.h);
+      if ($$1.a($$3, 3.0)) {
+         if ($$2 >= this.j) {
+            $$1.a($$0, $$3);
+            $$1.eb().b(cff.r);
+            $$3.eb().b(cff.r);
          }
-      },
-      b {
-         @Override
-         public <E extends bvh> void a(Stream<bxb<? super E>> $$0, arp $$1, E $$2, long $$3) {
-            $$0.filter($$0x -> $$0x.a() == bxa.a.a).forEach($$3x -> $$3x.e($$1, $$2, $$3));
-         }
-      };
+      }
+   }
 
-      public abstract <E extends bvh> void a(Stream<bxb<? super E>> var1, arp var2, E var3, long var4);
+   protected void d(ash $$0, chs $$1, long $$2) {
+      $$1.eb().b(cff.r);
+      $$1.eb().b(cff.m);
+      $$1.eb().b(cff.n);
+      this.j = 0L;
+   }
+
+   private chs a(chs $$0) {
+      return (chs)$$0.eb().c(cff.r).get();
+   }
+
+   private boolean b(chs $$0) {
+      bxd<?> $$1 = $$0.eb();
+      return $$1.a(cff.r) && $$1.c(cff.r).get().aq() == this.f;
+   }
+
+   private Optional<? extends chs> c(chs $$0) {
+      return $$0.eb().c(cff.h).get().a($$1 -> {
+         if ($$1.aq() == this.f && $$1 instanceof chs $$2 && $$0.a($$2) && !$$2.gj()) {
+            return true;
+         }
+
+         return false;
+      }).map(chs.class::cast);
    }
 }

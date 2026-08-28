@@ -1,33 +1,34 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableInt;
+import java.util.function.Predicate;
 
 public class bzb {
-   private static final int a = 300;
+   public static <T extends bwd> bzf<T> a(int $$0) {
+      return a($$0x -> true, $$0);
+   }
 
-   public static bxb<bvh> a(int $$0, int $$1) {
-      int $$2 = $$0 * 20;
-      MutableInt $$3 = new MutableInt(0);
-      return can.a(
-         (Function<can.b<bvh>, ? extends App<can.c<bvh>, caq<bvh>>>)($$3x -> $$3x.group($$3x.b(cel.C), $$3x.b(cel.D))
-               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                     long $$9 = $$3x.<Long>b($$5);
-                     boolean $$10 = $$9 + 300L <= $$8;
-                     if ($$3.getValue() <= $$2 && !$$10) {
-                        jh $$11 = $$3x.<jp>b($$4).b();
-                        if ($$11.a($$7.dv(), (double)$$1)) {
-                           $$3.increment();
-                        }
-
+   public static <T extends bwd> bzf<T> a(Predicate<T> $$0, int $$1) {
+      return cbh.a(
+         (Function<cbh.b<T>, ? extends App<cbh.c<T>, cbk<T>>>)($$2 -> $$2.group($$2.a(cff.n), $$2.b(cff.o), $$2.c(cff.p), $$2.b(cff.h))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
+                     bwb $$10 = $$2.b($$4);
+                     if ($$0.test((T)$$8) && !a($$8) && $$8.i($$10) && $$2.<cfh>b($$6).a($$10)) {
+                        $$3.a(new byf($$10, true));
+                        $$8.a(btd.a);
+                        $$8.c($$7, $$10);
+                        $$5.a(true, (long)$$1);
                         return true;
                      } else {
-                        $$5.b();
-                        $$4.b();
-                        $$7.eb().a($$6.ac(), $$6.ab());
-                        $$3.setValue(0);
-                        return true;
+                        return false;
                      }
                   }))
       );
+   }
+
+   private static boolean a(bwd $$0) {
+      return $$0.b($$1 -> {
+         cxg $$2 = $$1.h();
+         return $$2 instanceof cyg && $$0.a((cyg)$$2);
+      });
    }
 }

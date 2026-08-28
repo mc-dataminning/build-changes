@@ -1,54 +1,62 @@
-public class ghk extends gha {
-   ghk(gdh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, ghj $$8) {
-      super($$0, $$1, $$2, $$3, $$8, 0.0F);
-      this.B = 0.92F;
-      this.D = 0.5F;
-      this.e(1.0F);
-      this.a((float)axx.b($$7), (float)axx.c($$7), (float)axx.d($$7));
-      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
-      this.b($$8);
-      this.n = false;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
+public class ghk extends gjl {
+   private static final float a = 0.0025F;
+   private static final int b = 300;
+   private static final int F = 300;
+   private static final float G = 0.25F;
+   private static final float H = 2.0F;
+   private float I;
+   private final float J;
+   private final float K;
+
+   protected ghk(gfd $$0, double $$1, double $$2, double $$3, gjg $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a($$4.a(this.r.a(12), 12));
+      this.I = (float)Math.toRadians(this.r.h() ? -30.0 : 30.0);
+      this.J = this.r.i();
+      this.K = (float)Math.toRadians(this.r.h() ? -5.0 : 5.0);
+      this.t = 300;
+      this.u = 7.5E-4F;
+      float $$5 = this.r.h() ? 0.05F : 0.075F;
+      this.D = $$5;
+      this.b($$5, $$5);
+      this.B = 1.0F;
+   }
+
+   @Override
+   public gip b() {
+      return gip.b;
    }
 
    @Override
    public void a() {
-      super.a();
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.t-- <= 0) {
+         this.k();
+      }
+
       if (!this.o) {
-         this.b(this.a);
-         if (this.s > this.t / 2) {
-            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
+         float $$0 = (float)(300 - this.t);
+         float $$1 = Math.min($$0 / 300.0F, 1.0F);
+         double $$2 = Math.cos(Math.toRadians((double)(this.J * 60.0F))) * 2.0 * Math.pow((double)$$1, 1.25);
+         double $$3 = Math.sin(Math.toRadians((double)(this.J * 60.0F))) * 2.0 * Math.pow((double)$$1, 1.25);
+         this.j += $$2 * 0.0025F;
+         this.l += $$3 * 0.0025F;
+         this.k = this.k - (double)this.u;
+         this.I = this.I + this.K / 20.0F;
+         this.A = this.z;
+         this.z = this.z + this.I / 20.0F;
+         this.a(this.j, this.k, this.l);
+         if (this.m || this.t < 299 && (this.j == 0.0 || this.l == 0.0)) {
+            this.k();
          }
 
-         if (this.c.a_(jh.a(this.g, this.h, this.i)).l()) {
-            this.k -= 0.0074F;
+         if (!this.o) {
+            this.j = this.j * (double)this.B;
+            this.k = this.k * (double)this.B;
+            this.l = this.l * (double)this.B;
          }
-      }
-   }
-
-   public static class a implements ggr<lw> {
-      private final ghj a;
-
-      public a(ghj $$0) {
-         this.a = $$0;
-      }
-
-      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new ghk($$1, $$2, $$3, $$4, $$5, $$6, $$7, axx.a(255, 204, 31, 102), this.a);
-      }
-   }
-
-   public static class b implements ggr<lw> {
-      private final ghj a;
-
-      public b(ghj $$0) {
-         this.a = $$0;
-      }
-
-      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new ghk($$1, $$2, $$3, $$4, $$5, $$6, $$7, axx.a(255, 255, 255, 255), this.a);
       }
    }
 }

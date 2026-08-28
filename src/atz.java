@@ -1,29 +1,80 @@
-import java.nio.file.Path;
+import com.google.common.collect.Lists;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-interface atz {
-   atz a = new atz() {
-      @Override
-      public String toString() {
-         return "empty";
-      }
-   };
-   atz b = new atz() {
-      @Override
-      public String toString() {
-         return "relative";
-      }
-   };
+public class atz implements aug {
+   private final aug c;
+   private final List<aug> d;
 
-   public static record a(Map<String, atw> c) implements atz {
-      public Map<String, atw> a() {
-         return this.c;
-      }
+   public atz(aug $$0, List<aug> $$1) {
+      this.c = $$0;
+      List<aug> $$2 = new ArrayList<>($$1.size() + 1);
+      $$2.addAll(Lists.reverse($$1));
+      $$2.add($$0);
+      this.d = List.copyOf($$2);
    }
 
-   public static record b(Path c) implements atz {
-      public Path a() {
-         return this.c;
+   @Nullable
+   @Override
+   public avn<InputStream> a(String... $$0) {
+      return this.c.a($$0);
+   }
+
+   @Nullable
+   @Override
+   public avn<InputStream> a(aui $$0, alz $$1) {
+      for (aug $$2 : this.d) {
+         avn<InputStream> $$3 = $$2.a($$0, $$1);
+         if ($$3 != null) {
+            return $$3;
+         }
       }
+
+      return null;
+   }
+
+   @Override
+   public void a(aui $$0, String $$1, String $$2, aug.a $$3) {
+      Map<alz, avn<InputStream>> $$4 = new HashMap<>();
+
+      for (aug $$5 : this.d) {
+         $$5.a($$0, $$1, $$2, $$4::putIfAbsent);
+      }
+
+      $$4.forEach($$3);
+   }
+
+   @Override
+   public Set<String> a(aui $$0) {
+      Set<String> $$1 = new HashSet<>();
+
+      for (aug $$2 : this.d) {
+         $$1.addAll($$2.a($$0));
+      }
+
+      return $$1;
+   }
+
+   @Nullable
+   @Override
+   public <T> T a(aut<T> $$0) throws IOException {
+      return this.c.a($$0);
+   }
+
+   @Override
+   public auf a() {
+      return this.c.a();
+   }
+
+   @Override
+   public void close() {
+      this.d.forEach(aug::close);
    }
 }

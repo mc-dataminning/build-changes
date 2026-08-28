@@ -1,84 +1,79 @@
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Path;
-import java.util.function.BooleanSupplier;
-import java.util.zip.GZIPOutputStream;
-import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
-import org.apache.commons.compress.archivers.tar.TarArchiveOutputStream;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.ArrayDeque;
+import java.util.Collection;
+import java.util.Deque;
+import java.util.Iterator;
 
-public class fft {
-   private static final long a = 5368709120L;
-   private static final String b = "world";
-   private final BooleanSupplier c;
-   private final Path d;
+public class fft implements ffu, AutoCloseable {
+   private final int b;
+   private final Deque<fft.a<?>> c = new ArrayDeque<>();
 
-   public static File a(Path $$0, BooleanSupplier $$1) throws IOException {
-      return new fft($$0, $$1).a();
+   public fft(int $$0) {
+      this.b = $$0;
    }
 
-   private fft(Path $$0, BooleanSupplier $$1) {
-      this.c = $$1;
-      this.d = $$0;
-   }
+   public void a() {
+      Iterator<? extends fft.a<?>> $$0 = this.c.iterator();
 
-   private File a() throws IOException {
-      TarArchiveOutputStream $$0 = null;
-
-      File var3;
-      try {
-         File $$1 = File.createTempFile("realms-upload-file", ".tar.gz");
-         $$0 = new TarArchiveOutputStream(new GZIPOutputStream(new FileOutputStream($$1)));
-         $$0.setLongFileMode(3);
-         this.a($$0, this.d, "world", true);
-         if (this.c.getAsBoolean()) {
-            throw new ffo();
-         }
-
-         $$0.finish();
-         this.a($$1.length());
-         var3 = $$1;
-      } finally {
-         if ($$0 != null) {
-            $$0.close();
-         }
-      }
-
-      return var3;
-   }
-
-   private void a(TarArchiveOutputStream $$0, Path $$1, String $$2, boolean $$3) throws IOException {
-      if (this.c.getAsBoolean()) {
-         throw new ffo();
-      } else {
-         this.a($$0.getBytesWritten());
-         File $$4 = $$1.toFile();
-         String $$5 = $$3 ? $$2 : $$2 + $$4.getName();
-         TarArchiveEntry $$6 = new TarArchiveEntry($$4, $$5);
-         $$0.putArchiveEntry($$6);
-         if ($$4.isFile()) {
-            try (InputStream $$7 = new FileInputStream($$4)) {
-               $$7.transferTo($$0);
-            }
-
-            $$0.closeArchiveEntry();
-         } else {
-            $$0.closeArchiveEntry();
-            File[] $$8 = $$4.listFiles();
-            if ($$8 != null) {
-               for (File $$9 : $$8) {
-                  this.a($$0, $$9.toPath(), $$5 + "/", false);
-               }
-            }
+      while ($$0.hasNext()) {
+         fft.a<?> $$1 = (fft.a<?>)$$0.next();
+         if ($$1.c-- == 0) {
+            $$1.close();
+            $$0.remove();
          }
       }
    }
 
-   private void a(long $$0) {
-      if ($$0 > 5368709120L) {
-         throw new ffr(5368709120L);
+   @Override
+   public <T> T a(ffw<T> $$0) {
+      Iterator<? extends fft.a<?>> $$1 = this.c.iterator();
+
+      while ($$1.hasNext()) {
+         fft.a<?> $$2 = (fft.a<?>)$$1.next();
+         if ($$2.a.equals($$0)) {
+            $$1.remove();
+            return (T)$$2.b;
+         }
+      }
+
+      return $$0.e();
+   }
+
+   @Override
+   public <T> void a(ffw<T> $$0, T $$1) {
+      this.c.addFirst(new fft.a<>($$0, $$1, this.b));
+   }
+
+   public void b() {
+      this.c.forEach(fft.a::close);
+      this.c.clear();
+   }
+
+   @Override
+   public void close() {
+      this.b();
+   }
+
+   @VisibleForTesting
+   protected Collection<fft.a<?>> c() {
+      return this.c;
+   }
+
+   @VisibleForTesting
+   protected static final class a<T> implements AutoCloseable {
+      final ffw<T> a;
+      final T b;
+      int c;
+
+      a(ffw<T> $$0, T $$1, int $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      @Override
+      public void close() {
+         this.a.a(this.b);
       }
    }
 }

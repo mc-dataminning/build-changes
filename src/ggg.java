@@ -1,49 +1,102 @@
-public class ggg extends gho {
-   private final ghj a;
+import it.unimi.dsi.fastutil.ints.IntCollection;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-   protected ggg(gdh $$0, double $$1, double $$2, double $$3, double $$4, ghj $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 6 + this.r.a(4);
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
-      this.a = $$5;
-      this.b($$5);
+public class ggg {
+   final int a;
+   private final List<ggg.a> b = new ArrayList<>();
+
+   public ggg(int $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public int a(float $$0) {
-      return 15728880;
-   }
+   public void a(gfy $$0, IntCollection $$1, ggg.b $$2) {
+      IntSortedSet $$3 = new IntRBTreeSet($$1);
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.a);
+      for (int $$4 = $$3.lastInt(); $$4 >= $$0.a() && (this.a() || !$$3.isEmpty()); $$4--) {
+         gga $$6 = $$0.b($$4);
+         if ($$6 instanceof ggb.a) {
+            ggb.a $$5 = (ggb.a)$$6;
+            boolean $$6x = this.b($$5.g());
+            if ($$3.remove($$4)) {
+               this.a($$5.g());
+               $$2.accept($$4, $$5);
+            } else if ($$6x) {
+               $$2.accept($$4, $$5);
+            }
+         }
       }
    }
 
-   @Override
-   public ggs b() {
-      return ggs.b;
+   public void a(yl $$0) {
+      this.b.add(new ggg.a($$0));
    }
 
-   public static class a implements ggr<lw> {
-      private final ghj a;
+   public boolean b(yl $$0) {
+      boolean $$1 = false;
+      Iterator<ggg.a> $$2 = this.b.iterator();
 
-      public a(ghj $$0) {
-         this.a = $$0;
+      while ($$2.hasNext()) {
+         ggg.a $$3 = $$2.next();
+         if ($$3.a($$0)) {
+            $$1 = true;
+            if ($$3.a()) {
+               $$2.remove();
+            }
+         }
       }
 
-      public ggo a(lw $$0, gdh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new ggg($$1, $$2, $$3, $$4, $$5, this.a);
+      return $$1;
+   }
+
+   public boolean a() {
+      return !this.b.isEmpty();
+   }
+
+   class a {
+      private final Set<yh> b;
+      private yl c;
+      private boolean d = true;
+      private int e;
+
+      a(final yl $$0) {
+         this.b = new ObjectOpenHashSet($$0.m().d().a());
+         this.c = $$0;
       }
+
+      boolean a(yl $$0) {
+         if ($$0.equals(this.c)) {
+            return false;
+         } else {
+            boolean $$1 = this.b.remove($$0.l());
+            if (this.d && this.c.g().equals($$0.g())) {
+               if (this.c.k().a($$0.k())) {
+                  $$1 = true;
+                  this.c = $$0;
+               } else {
+                  this.d = false;
+               }
+            }
+
+            if ($$1) {
+               this.e++;
+            }
+
+            return $$1;
+         }
+      }
+
+      boolean a() {
+         return this.e >= ggg.this.a || !this.d && this.b.isEmpty();
+      }
+   }
+
+   public interface b {
+      void accept(int var1, ggb.a var2);
    }
 }

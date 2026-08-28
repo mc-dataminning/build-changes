@@ -1,97 +1,117 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Set;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
 
-public class ewz extends ewa {
-   private static final Codec<List<ewz.b>> b = ewz.b.a.listOf().validate($$0 -> {
-      Set<jq<bto>> $$1 = new ObjectOpenHashSet();
-
-      for (ewz.b $$2 : $$0) {
-         if (!$$1.add($$2.a())) {
-            return DataResult.error(() -> "Encountered duplicate mob effect: '" + $$2.a() + "'");
-         }
+public abstract class ewz extends ewx {
+   public static final int d = 1;
+   public static final int f = 0;
+   protected final int g;
+   protected final int h;
+   protected final List<exv> i;
+   final BiFunction<cxk, ewh, cxk> a;
+   private final eww j = new ewz.c() {
+      @Override
+      public void a(Consumer<cxk> $$0, ewh $$1) {
+         ewz.this.a(exv.a(ewz.this.a, $$0, $$1), $$1);
       }
+   };
 
-      return DataResult.success($$0);
-   });
-   public static final MapCodec<ewz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(b.optionalFieldOf("effects", List.of()).forGetter($$0x -> $$0x.c)).apply($$0, ewz::new)
-   );
-   private final List<ewz.b> c;
+   protected ewz(int $$0, int $$1, List<ezs> $$2, List<exv> $$3) {
+      super($$2);
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$3;
+      this.a = exx.a($$3);
+   }
 
-   ewz(List<exy> $$0, List<ewz.b> $$1) {
-      super($$0);
-      this.c = $$1;
+   protected static <T extends ewz> P4<Mu<T>, Integer, Integer, List<ezs>, List<exv>> b(Instance<T> $$0) {
+      return $$0.group(Codec.INT.optionalFieldOf("weight", 1).forGetter($$0x -> $$0x.g), Codec.INT.optionalFieldOf("quality", 0).forGetter($$0x -> $$0x.h))
+         .and(a($$0).t1())
+         .and(exx.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.i));
    }
 
    @Override
-   public ewc<ewz> b() {
-      return ewd.r;
+   public void a(ewn $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.i.size(); $$1++) {
+         this.i.get($$1).a($$0.a(".functions[" + $$1 + "]"));
+      }
    }
 
-   @Override
-   public Set<exg<?>> a() {
-      return this.c.stream().flatMap($$0 -> $$0.b().a().stream()).collect(ImmutableSet.toImmutableSet());
-   }
+   protected abstract void a(Consumer<cxk> var1, ewh var2);
 
    @Override
-   public cwm a(cwm $$0, eun $$1) {
-      if ($$0.a(cwq.wo) && !this.c.isEmpty()) {
-         ewz.b $$2 = ae.a(this.c, $$1.b());
-         jq<bto> $$3 = $$2.a();
-         int $$4 = $$2.b().a($$1);
-         if (!$$3.a().a()) {
-            $$4 *= 20;
-         }
-
-         czn.a $$5 = new czn.a($$3, $$4);
-         $$0.a(ku.R, czn.a, $$5, czn::a);
-         return $$0;
+   public boolean expand(ewh $$0, Consumer<eww> $$1) {
+      if (this.a($$0)) {
+         $$1.accept(this.j);
+         return true;
       } else {
-         return $$0;
+         return false;
       }
    }
 
-   public static ewz.a c() {
-      return new ewz.a();
+   public static ewz.a<?> a(ewz.d $$0) {
+      return new ewz.b($$0);
    }
 
-   public static class a extends ewa.a<ewz.a> {
-      private final Builder<ewz.b> a = ImmutableList.builder();
+   public abstract static class a<T extends ewz.a<T>> extends ewx.a<T> implements exr<T> {
+      protected int a = 1;
+      protected int b = 0;
+      private final Builder<exv> c = ImmutableList.builder();
 
-      protected ewz.a a() {
-         return this;
+      public T a(exv.a $$0) {
+         this.c.add($$0.b());
+         return this.aF_();
       }
 
-      public ewz.a a(jq<bto> $$0, eyu $$1) {
-         this.a.add(new ewz.b($$0, $$1));
+      protected List<exv> a() {
+         return this.c.build();
+      }
+
+      public T a(int $$0) {
+         this.a = $$0;
+         return this.aF_();
+      }
+
+      public T b(int $$0) {
+         this.b = $$0;
+         return this.aF_();
+      }
+   }
+
+   static class b extends ewz.a<ewz.b> {
+      private final ewz.d c;
+
+      public b(ewz.d $$0) {
+         this.c = $$0;
+      }
+
+      protected ewz.b g() {
          return this;
       }
 
       @Override
-      public ewb b() {
-         return new ewz(this.g(), this.a.build());
+      public ewx b() {
+         return this.c.build(this.a, this.b, this.f(), this.a());
       }
    }
 
-   static record b(jq<bto> b, eyu c) {
-      public static final Codec<ewz.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bto.a.fieldOf("type").forGetter(ewz.b::a), eyv.a.fieldOf("duration").forGetter(ewz.b::b)).apply($$0, ewz.b::new)
-      );
-
-      public jq<bto> a() {
-         return this.b;
+   protected abstract class c implements eww {
+      @Override
+      public int a(float $$0) {
+         return Math.max(bae.d((float)ewz.this.g + (float)ewz.this.h * $$0), 0);
       }
+   }
 
-      public eyu b() {
-         return this.c;
-      }
+   @FunctionalInterface
+   protected interface d {
+      ewz build(int var1, int var2, List<ezs> var3, List<exv> var4);
    }
 }

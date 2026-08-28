@@ -1,47 +1,162 @@
-public class fzi extends fzj<gvo> {
-   private static final int a = 4;
-   private static final int[][] b = new int[][]{{4, 3, 2}, {6, 4, 5}, {3, 3, 1}, {1, 2, 1}};
-   private static final int[][] c = new int[][]{{0, 0}, {0, 5}, {0, 14}, {0, 18}};
-   private final gcl[] d = new gcl[4];
+import com.google.common.base.MoreObjects;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-   public fzi(gcl $$0) {
-      super($$0);
+public class fzi {
+   static final alz b = alz.b("spectator/close");
+   static final alz c = alz.b("spectator/scroll_left");
+   static final alz d = alz.b("spectator/scroll_right");
+   private static final fzk e = new fzi.a();
+   private static final fzk f = new fzi.b(-1, true);
+   private static final fzk g = new fzi.b(1, true);
+   private static final fzk h = new fzi.b(1, false);
+   private static final int i = 8;
+   static final xv j = xv.c("spectatorMenu.close");
+   static final xv k = xv.c("spectatorMenu.previous_page");
+   static final xv l = xv.c("spectatorMenu.next_page");
+   public static final fzk a = new fzk() {
+      @Override
+      public void a(fzi $$0) {
+      }
 
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         this.d[$$1] = $$0.b(a($$1));
+      @Override
+      public xv aU_() {
+         return xu.a;
+      }
+
+      @Override
+      public void a(fnl $$0, float $$1, float $$2) {
+      }
+
+      @Override
+      public boolean aV_() {
+         return false;
+      }
+   };
+   private final fzl m;
+   private fzj n;
+   private int o = -1;
+   int p;
+
+   public fzi(fzl $$0) {
+      this.n = new fzh();
+      this.m = $$0;
+   }
+
+   public fzk a(int $$0) {
+      int $$1 = $$0 + this.p * 6;
+      if (this.p > 0 && $$0 == 0) {
+         return f;
+      } else if ($$0 == 7) {
+         return $$1 < this.n.a().size() ? g : h;
+      } else if ($$0 == 8) {
+         return e;
+      } else {
+         return $$1 >= 0 && $$1 < this.n.a().size() ? (fzk)MoreObjects.firstNonNull(this.n.a().get($$1), a) : a;
       }
    }
 
-   private static String a(int $$0) {
-      return "segment" + $$0;
+   public List<fzk> a() {
+      List<fzk> $$0 = Lists.newArrayList();
+
+      for (int $$1 = 0; $$1 <= 8; $$1++) {
+         $$0.add(this.a($$1));
+      }
+
+      return $$0;
    }
 
-   public static gcr a() {
-      gct $$0 = new gct();
-      gcv $$1 = $$0.a();
-      float $$2 = -3.5F;
+   public fzk b() {
+      return this.a(this.o);
+   }
 
-      for (int $$3 = 0; $$3 < 4; $$3++) {
-         $$1.a(
-            a($$3),
-            gcq.c().a(c[$$3][0], c[$$3][1]).a((float)b[$$3][0] * -0.5F, 0.0F, (float)b[$$3][2] * -0.5F, (float)b[$$3][0], (float)b[$$3][1], (float)b[$$3][2]),
-            gcn.a(0.0F, (float)(24 - b[$$3][1]), $$2)
-         );
-         if ($$3 < 3) {
-            $$2 += (float)(b[$$3][2] + b[$$3 + 1][2]) * 0.5F;
+   public fzj c() {
+      return this.n;
+   }
+
+   public void b(int $$0) {
+      fzk $$1 = this.a($$0);
+      if ($$1 != a) {
+         if (this.o == $$0 && $$1.aV_()) {
+            $$1.a(this);
+         } else {
+            this.o = $$0;
+         }
+      }
+   }
+
+   public void d() {
+      this.m.a(this);
+   }
+
+   public int e() {
+      return this.o;
+   }
+
+   public void a(fzj $$0) {
+      this.n = $$0;
+      this.o = -1;
+      this.p = 0;
+   }
+
+   public fzm f() {
+      return new fzm(this.a(), this.o);
+   }
+
+   static class a implements fzk {
+      @Override
+      public void a(fzi $$0) {
+         $$0.d();
+      }
+
+      @Override
+      public xv aU_() {
+         return fzi.j;
+      }
+
+      @Override
+      public void a(fnl $$0, float $$1, float $$2) {
+         $$0.a(glo::B, fzi.b, 0, 0, 16, 16, ayp.a($$2, $$1, $$1, $$1));
+      }
+
+      @Override
+      public boolean aV_() {
+         return true;
+      }
+   }
+
+   static class b implements fzk {
+      private final int a;
+      private final boolean b;
+
+      public b(int $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public void a(fzi $$0) {
+         $$0.p = $$0.p + this.a;
+      }
+
+      @Override
+      public xv aU_() {
+         return this.a < 0 ? fzi.k : fzi.l;
+      }
+
+      @Override
+      public void a(fnl $$0, float $$1, float $$2) {
+         int $$3 = ayp.a($$2, $$1, $$1, $$1);
+         if (this.a < 0) {
+            $$0.a(glo::B, fzi.c, 0, 0, 16, 16, $$3);
+         } else {
+            $$0.a(glo::B, fzi.d, 0, 0, 16, 16, $$3);
          }
       }
 
-      return gcr.a($$0, 64, 32);
-   }
-
-   @Override
-   public void a(gvo $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.d.length; $$1++) {
-         this.d[$$1].f = azm.b($$0.p * 0.9F + (float)$$1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.01F * (float)(1 + Math.abs($$1 - 2));
-         this.d[$$1].b = azm.a($$0.p * 0.9F + (float)$$1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.1F * (float)Math.abs($$1 - 2);
+      @Override
+      public boolean aV_() {
+         return this.b;
       }
    }
 }

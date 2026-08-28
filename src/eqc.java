@@ -1,27 +1,28 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class eqc extends eqe {
-   public static final MapCodec<eqc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dvv.a.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
-            .apply($$0, eqc::new)
-   );
-   private final dvv b;
-   private final float d;
+public class eqc extends eoc {
+   public static final MapCodec<eqc> d = a(eqc::new);
 
-   public eqc(dvv $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   public eqc(eoc.c $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(dvv $$0, azu $$1) {
-      return $$0 == this.b && $$1.i() < this.d;
+   public Optional<eoc.b> a(eoc.a $$0) {
+      return a($$0, edi.a.a, $$1 -> this.a($$1, $$0));
+   }
+
+   private void a(eou $$0, eoc.a $$1) {
+      dgg $$2 = $$1.h();
+      eeh $$3 = $$1.f();
+      jh $$4 = new jh($$2.d(), 90, $$2.e());
+      dqu $$5 = dqu.a($$3);
+      eqb.a($$1.e(), $$4, $$5, $$0, $$3);
    }
 
    @Override
-   protected eqf<?> a() {
-      return eqf.f;
+   public eol<?> e() {
+      return eol.e;
    }
 }

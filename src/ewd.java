@@ -1,76 +1,139 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.function.BiFunction;
+import java.util.Collections;
+import java.util.EnumMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 public class ewd {
-   public static final BiFunction<cwm, eun, cwm> a = ($$0, $$1) -> $$0;
-   public static final Codec<ewb> b = lz.E.q().dispatch("function", ewb::b, ewc::a);
-   public static final Codec<ewb> c = Codec.lazyInitialized(() -> Codec.withAlternative(b, ewf.b));
-   public static final Codec<jq<ewb>> d = alf.a(ma.be, c);
-   public static final ewc<ews> e = a("set_count", ews.a);
-   public static final ewc<ewu> f = a("set_item", ewu.a);
-   public static final ewc<evr> g = a("enchant_with_levels", evr.a);
-   public static final ewc<evq> h = a("enchant_randomly", evq.a);
-   public static final ewc<ewo> i = a("set_enchantments", ewo.a);
-   public static final ewc<ewm> j = a("set_custom_data", ewm.a);
-   public static final ewc<ewj> k = a("set_components", ewj.a);
-   public static final ewc<exc> l = a("furnace_smelt", exc.a);
-   public static final ewc<evs> m = a("enchanted_count_increase", evs.b);
-   public static final ewc<ewt> n = a("set_damage", ewt.a);
-   public static final ewc<ewg> o = a("set_attributes", ewg.a);
-   public static final ewc<eww> p = a("set_name", eww.a);
-   public static final ewc<evt> q = a("exploration_map", evt.f);
-   public static final ewc<ewz> r = a("set_stew_effect", ewz.a);
-   public static final ewc<evp> s = a("copy_name", evp.a);
-   public static final ewc<ewk> t = a("set_contents", ewk.a);
-   public static final ewc<ewe> u = a("modify_contents", ewe.a);
-   public static final ewc<evv> v = a("filtered", evv.a);
-   public static final ewc<evy> w = a("limit_count", evy.a);
-   public static final ewc<evk> x = a("apply_bonus", evk.a);
-   public static final ewc<ewl> y = a("set_loot_table", ewl.a);
-   public static final ewc<evl> z = a("explosion_decay", evl.a);
-   public static final ewc<ewv> A = a("set_lore", ewv.a);
-   public static final ewc<evu> B = a("fill_player_head", evu.a);
-   public static final ewc<evo> C = a("copy_custom_data", evo.a);
-   public static final ewc<evm> D = a("copy_state", evm.a);
-   public static final ewc<ewh> E = a("set_banner_pattern", ewh.a);
-   public static final ewc<ewy> F = a("set_potion", ewy.a);
-   public static final ewc<ewr> G = a("set_instrument", ewr.a);
-   public static final ewc<evw> H = a("reference", evw.a);
-   public static final ewc<ewf> I = a("sequence", ewf.a);
-   public static final ewc<evn> J = a("copy_components", evn.a);
-   public static final ewc<ewq> K = a("set_fireworks", ewq.a);
-   public static final ewc<ewp> L = a("set_firework_explosion", ewp.a);
-   public static final ewc<ewi> M = a("set_book_cover", ewi.a);
-   public static final ewc<exb> N = a("set_written_book_pages", exb.b);
-   public static final ewc<exa> O = a("set_writable_book_pages", exa.a);
-   public static final ewc<exd> P = a("toggle_tooltips", exd.a);
-   public static final ewc<ewx> Q = a("set_ominous_bottle_amplifier", ewx.a);
-   public static final ewc<ewn> R = a("set_custom_model_data", ewn.a);
+   private static final Set<aly<ewm>> bd = new HashSet<>();
+   private static final Set<aly<ewm>> be = Collections.unmodifiableSet(bd);
+   public static final aly<ewm> a = a("chests/spawn_bonus_chest");
+   public static final aly<ewm> b = a("chests/end_city_treasure");
+   public static final aly<ewm> c = a("chests/simple_dungeon");
+   public static final aly<ewm> d = a("chests/village/village_weaponsmith");
+   public static final aly<ewm> e = a("chests/village/village_toolsmith");
+   public static final aly<ewm> f = a("chests/village/village_armorer");
+   public static final aly<ewm> g = a("chests/village/village_cartographer");
+   public static final aly<ewm> h = a("chests/village/village_mason");
+   public static final aly<ewm> i = a("chests/village/village_shepherd");
+   public static final aly<ewm> j = a("chests/village/village_butcher");
+   public static final aly<ewm> k = a("chests/village/village_fletcher");
+   public static final aly<ewm> l = a("chests/village/village_fisher");
+   public static final aly<ewm> m = a("chests/village/village_tannery");
+   public static final aly<ewm> n = a("chests/village/village_temple");
+   public static final aly<ewm> o = a("chests/village/village_desert_house");
+   public static final aly<ewm> p = a("chests/village/village_plains_house");
+   public static final aly<ewm> q = a("chests/village/village_taiga_house");
+   public static final aly<ewm> r = a("chests/village/village_snowy_house");
+   public static final aly<ewm> s = a("chests/village/village_savanna_house");
+   public static final aly<ewm> t = a("chests/abandoned_mineshaft");
+   public static final aly<ewm> u = a("chests/nether_bridge");
+   public static final aly<ewm> v = a("chests/stronghold_library");
+   public static final aly<ewm> w = a("chests/stronghold_crossing");
+   public static final aly<ewm> x = a("chests/stronghold_corridor");
+   public static final aly<ewm> y = a("chests/desert_pyramid");
+   public static final aly<ewm> z = a("chests/jungle_temple");
+   public static final aly<ewm> A = a("chests/jungle_temple_dispenser");
+   public static final aly<ewm> B = a("chests/igloo_chest");
+   public static final aly<ewm> C = a("chests/woodland_mansion");
+   public static final aly<ewm> D = a("chests/underwater_ruin_small");
+   public static final aly<ewm> E = a("chests/underwater_ruin_big");
+   public static final aly<ewm> F = a("chests/buried_treasure");
+   public static final aly<ewm> G = a("chests/shipwreck_map");
+   public static final aly<ewm> H = a("chests/shipwreck_supply");
+   public static final aly<ewm> I = a("chests/shipwreck_treasure");
+   public static final aly<ewm> J = a("chests/pillager_outpost");
+   public static final aly<ewm> K = a("chests/bastion_treasure");
+   public static final aly<ewm> L = a("chests/bastion_other");
+   public static final aly<ewm> M = a("chests/bastion_bridge");
+   public static final aly<ewm> N = a("chests/bastion_hoglin_stable");
+   public static final aly<ewm> O = a("chests/ancient_city");
+   public static final aly<ewm> P = a("chests/ancient_city_ice_box");
+   public static final aly<ewm> Q = a("chests/ruined_portal");
+   public static final aly<ewm> R = a("chests/trial_chambers/reward");
+   public static final aly<ewm> S = a("chests/trial_chambers/reward_common");
+   public static final aly<ewm> T = a("chests/trial_chambers/reward_rare");
+   public static final aly<ewm> U = a("chests/trial_chambers/reward_unique");
+   public static final aly<ewm> V = a("chests/trial_chambers/reward_ominous");
+   public static final aly<ewm> W = a("chests/trial_chambers/reward_ominous_common");
+   public static final aly<ewm> X = a("chests/trial_chambers/reward_ominous_rare");
+   public static final aly<ewm> Y = a("chests/trial_chambers/reward_ominous_unique");
+   public static final aly<ewm> Z = a("chests/trial_chambers/supply");
+   public static final aly<ewm> aa = a("chests/trial_chambers/corridor");
+   public static final aly<ewm> ab = a("chests/trial_chambers/intersection");
+   public static final aly<ewm> ac = a("chests/trial_chambers/intersection_barrel");
+   public static final aly<ewm> ad = a("chests/trial_chambers/entrance");
+   public static final aly<ewm> ae = a("dispensers/trial_chambers/corridor");
+   public static final aly<ewm> af = a("dispensers/trial_chambers/chamber");
+   public static final aly<ewm> ag = a("dispensers/trial_chambers/water");
+   public static final aly<ewm> ah = a("pots/trial_chambers/corridor");
+   public static final aly<ewm> ai = a("equipment/trial_chamber");
+   public static final aly<ewm> aj = a("equipment/trial_chamber_ranged");
+   public static final aly<ewm> ak = a("equipment/trial_chamber_melee");
+   public static final Map<cwh, aly<ewm>> al = ae.a(new EnumMap<>(cwh.class), $$0 -> a((EnumMap<cwh, aly<ewm>>)$$0, "entities/sheep"));
+   public static final aly<ewm> am = a("gameplay/fishing");
+   public static final aly<ewm> an = a("gameplay/fishing/junk");
+   public static final aly<ewm> ao = a("gameplay/fishing/treasure");
+   public static final aly<ewm> ap = a("gameplay/fishing/fish");
+   public static final aly<ewm> aq = a("gameplay/cat_morning_gift");
+   public static final aly<ewm> ar = a("gameplay/hero_of_the_village/armorer_gift");
+   public static final aly<ewm> as = a("gameplay/hero_of_the_village/butcher_gift");
+   public static final aly<ewm> at = a("gameplay/hero_of_the_village/cartographer_gift");
+   public static final aly<ewm> au = a("gameplay/hero_of_the_village/cleric_gift");
+   public static final aly<ewm> av = a("gameplay/hero_of_the_village/farmer_gift");
+   public static final aly<ewm> aw = a("gameplay/hero_of_the_village/fisherman_gift");
+   public static final aly<ewm> ax = a("gameplay/hero_of_the_village/fletcher_gift");
+   public static final aly<ewm> ay = a("gameplay/hero_of_the_village/leatherworker_gift");
+   public static final aly<ewm> az = a("gameplay/hero_of_the_village/librarian_gift");
+   public static final aly<ewm> aA = a("gameplay/hero_of_the_village/mason_gift");
+   public static final aly<ewm> aB = a("gameplay/hero_of_the_village/shepherd_gift");
+   public static final aly<ewm> aC = a("gameplay/hero_of_the_village/toolsmith_gift");
+   public static final aly<ewm> aD = a("gameplay/hero_of_the_village/weaponsmith_gift");
+   public static final aly<ewm> aE = a("gameplay/hero_of_the_village/unemployed_gift");
+   public static final aly<ewm> aF = a("gameplay/hero_of_the_village/baby_gift");
+   public static final aly<ewm> aG = a("gameplay/sniffer_digging");
+   public static final aly<ewm> aH = a("gameplay/panda_sneeze");
+   public static final aly<ewm> aI = a("gameplay/chicken_lay");
+   public static final aly<ewm> aJ = a("gameplay/armadillo_shed");
+   public static final aly<ewm> aK = a("gameplay/piglin_bartering");
+   public static final aly<ewm> aL = a("spawners/trial_chamber/key");
+   public static final aly<ewm> aM = a("spawners/trial_chamber/consumables");
+   public static final aly<ewm> aN = a("spawners/ominous/trial_chamber/key");
+   public static final aly<ewm> aO = a("spawners/ominous/trial_chamber/consumables");
+   public static final aly<ewm> aP = a("spawners/trial_chamber/items_to_drop_when_ominous");
+   public static final aly<ewm> aQ = a("shearing/bogged");
+   public static final aly<ewm> aR = a("shearing/mooshroom");
+   public static final aly<ewm> aS = a("shearing/mooshroom/red");
+   public static final aly<ewm> aT = a("shearing/mooshroom/brown");
+   public static final aly<ewm> aU = a("shearing/snow_golem");
+   public static final aly<ewm> aV = a("shearing/sheep");
+   public static final Map<cwh, aly<ewm>> aW = ae.a(new EnumMap<>(cwh.class), $$0 -> a((EnumMap<cwh, aly<ewm>>)$$0, "shearing/sheep"));
+   public static final aly<ewm> aX = a("archaeology/desert_well");
+   public static final aly<ewm> aY = a("archaeology/desert_pyramid");
+   public static final aly<ewm> aZ = a("archaeology/trail_ruins_common");
+   public static final aly<ewm> ba = a("archaeology/trail_ruins_rare");
+   public static final aly<ewm> bb = a("archaeology/ocean_ruin_warm");
+   public static final aly<ewm> bc = a("archaeology/ocean_ruin_cold");
 
-   private static <T extends ewb> ewc<T> a(String $$0, MapCodec<T> $$1) {
-      return kd.a(lz.E, alj.b($$0), new ewc<>($$1));
+   private static void a(EnumMap<cwh, aly<ewm>> $$0, String $$1) {
+      for (cwh $$2 : cwh.values()) {
+         $$0.put($$2, a($$1 + "/" + $$2.b()));
+      }
    }
 
-   public static BiFunction<cwm, eun, cwm> a(List<? extends BiFunction<cwm, eun, cwm>> $$0) {
-      List<BiFunction<cwm, eun, cwm>> $$1 = List.copyOf($$0);
+   private static aly<ewm> a(String $$0) {
+      return a(aly.a(mb.bf, alz.b($$0)));
+   }
 
-      return switch ($$1.size()) {
-         case 0 -> a;
-         case 1 -> (BiFunction)$$1.get(0);
-         case 2 -> {
-            BiFunction<cwm, eun, cwm> $$2 = $$1.get(0);
-            BiFunction<cwm, eun, cwm> $$3 = $$1.get(1);
-            yield ($$2x, $$3x) -> $$3.apply($$2.apply($$2x, $$3x), $$3x);
-         }
-         default -> ($$1x, $$2x) -> {
-         for (BiFunction<cwm, eun, cwm> $$3x : $$1) {
-            $$1x = $$3x.apply($$1x, $$2x);
-         }
+   private static aly<ewm> a(aly<ewm> $$0) {
+      if (bd.add($$0)) {
+         return $$0;
+      } else {
+         throw new IllegalArgumentException($$0.a() + " is already a registered built-in loot table");
+      }
+   }
 
-         return $$1x;
-      };
-      };
+   public static Set<aly<ewm>> a() {
+      return be;
    }
 }

@@ -8,7 +8,7 @@ public class bq extends dy<bq.a> {
       return bq.a.a;
    }
 
-   public void a(arq $$0, cwm $$1, int $$2) {
+   public void a(asi $$0, cxk $$1, int $$2) {
       this.a($$0, $$2x -> $$2x.a($$1, $$2));
    }
 
@@ -26,7 +26,7 @@ public class bq extends dy<bq.a> {
          return ao.j.a(new bq.a(Optional.empty(), Optional.empty(), dj.d.c));
       }
 
-      public boolean a(cwm $$0, int $$1) {
+      public boolean a(cxk $$0, int $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : this.d.d($$1);
       }
 

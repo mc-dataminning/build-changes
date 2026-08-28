@@ -1,11 +1,9 @@
-import it.unimi.dsi.fastutil.objects.Object2LongMap;
+import java.util.stream.Stream;
 
-public interface bov {
-   long a();
+public interface bov<S> {
+   Stream<String> possibleValues(bos<S> var1);
 
-   long b();
-
-   long c();
-
-   Object2LongMap<String> d();
+   static <S> bov<S> b() {
+      return $$0 -> Stream.empty();
+   }
 }

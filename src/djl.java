@@ -1,62 +1,67 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class djl extends dhj {
-   public static final MapCodec<djl> d = b(djl::new);
-   private static final float e = 0.05F;
-   private static final float f = 0.1F;
+public class djl extends dke implements dri {
+   public static final MapCodec<djl> a = b(djl::new);
+   public static final dye b = dyd.D;
 
    @Override
    public MapCodec<djl> a() {
-      return d;
+      return a;
    }
 
-   public djl(dvu.d $$0) {
-      super($$0, kn.c);
+   protected djl(dxm.d $$0) {
+      super($$0);
+      this.l(this.m().b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean d(dvv $$0) {
-      return false;
+   protected boolean e_(dxn $$0) {
+      return $$0.y().c();
    }
 
-   protected static boolean a(dfm $$0, dgo.c $$1) {
-      if ($$1 == dgo.c.b) {
-         return $$0.G_().i() < 0.05F;
-      } else {
-         return $$1 == dgo.c.c ? $$0.G_().i() < 0.1F : false;
+   @Override
+   protected dqn a_(dxn $$0) {
+      return dqn.a;
+   }
+
+   @Override
+   protected float c(dxn $$0, dgf $$1, jh $$2) {
+      return 1.0F;
+   }
+
+   @Override
+   protected dxn a(dxn $$0, dhd $$1, dhp $$2, jh $$3, jm $$4, jh $$5, dxn $$6, bam $$7) {
+      if ($$0.c(b)) {
+         $$2.a($$3, etq.c, etq.c.a($$1));
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   public void a(dvv $$0, dfm $$1, jh $$2, dgo.c $$3) {
-      if (a($$1, $$3)) {
-         if ($$3 == dgo.c.b) {
-            $$1.b($$2, dis.fu.m());
-            $$1.a(null, ear.c, $$2);
-         } else if ($$3 == dgo.c.c) {
-            $$1.b($$2, dis.fw.m());
-            $$1.a(null, ear.c, $$2);
-         }
-      }
+   protected etp b_(dxn $$0) {
+      return $$0.c(b) ? etq.c.a(false) : super.b_($$0);
+   }
+
+   @Nullable
+   @Override
+   public dxn a(dbb $$0) {
+      return this.m().b(b, Boolean.valueOf($$0.q().b_($$0.a()).a() == etq.c));
    }
 
    @Override
-   protected boolean a(eru $$0) {
-      return true;
+   protected void a(dxo.a<dke, dxn> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected void a(dvv $$0, dfm $$1, jh $$2, eru $$3) {
-      if ($$3 == erw.c) {
-         dvv $$4 = dis.fu.m();
-         $$1.b($$2, $$4);
-         $$1.a(ear.c, $$2, ear.a.a($$4));
-         $$1.c(1047, $$2, 0);
-      } else if ($$3 == erw.e) {
-         dvv $$5 = dis.fv.m();
-         $$1.b($$2, $$5);
-         $$1.a(ear.c, $$2, ear.a.a($$5));
-         $$1.c(1046, $$2, 0);
-      }
+   public cxk a(@Nullable cps $$0, dhb $$1, jh $$2, dxn $$3) {
+      return $$0 != null && $$0.b() ? dri.super.a($$0, $$1, $$2, $$3) : cxk.k;
+   }
+
+   @Override
+   public boolean a(@Nullable cps $$0, dgf $$1, jh $$2, dxn $$3, eto $$4) {
+      return $$0 != null && $$0.b() ? dri.super.a($$0, $$1, $$2, $$3, $$4) : false;
    }
 }

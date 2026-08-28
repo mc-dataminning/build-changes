@@ -1,99 +1,110 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.jtracy.TracyClient;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class fcc implements AutoCloseable {
-   private static final int a = 320;
-   private static final int b = 180;
-   private static final int c = 4;
-   private int d;
-   private int e;
-   private int f;
-   private int g;
-   private final fdb h = new fdc(320, 180, false);
-   private final fcm i = new fcm(fck.c, fcl.f, 0);
+public class fcc implements fbx {
+   protected static final fbx a = new fcc(false, -Double.MAX_VALUE, cxk.k, $$0 -> false, null) {
+      @Override
+      public boolean a(fcm $$0, jh $$1, boolean $$2) {
+         return $$2;
+      }
+   };
+   private final boolean b;
+   private final double c;
+   private final cxk d;
+   private final Predicate<etp> e;
    @Nullable
-   private fcn j;
-   private int k;
-   private boolean l;
+   private final bvf f;
 
-   private void a(int $$0, int $$1) {
-      float $$2 = (float)$$0 / (float)$$1;
-      if ($$0 > 320) {
-         $$0 = 320;
-         $$1 = (int)(320.0F / $$2);
-      }
-
-      if ($$1 > 180) {
-         $$0 = (int)(180.0F * $$2);
-         $$1 = 180;
-      }
-
-      $$0 = $$0 / 4 * 4;
-      $$1 = $$1 / 4 * 4;
-      if (this.f != $$0 || this.g != $$1) {
-         this.f = $$0;
-         this.g = $$1;
-         this.h.a($$0, $$1);
-         this.i.a($$0 * $$1 * 4);
-         if (this.j != null) {
-            this.j.close();
-            this.j = null;
-         }
-      }
+   protected fcc(boolean $$0, double $$1, cxk $$2, Predicate<etp> $$3, @Nullable bvf $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
    }
 
-   public void a(fdb $$0) {
-      if (this.j == null && !this.l) {
-         this.l = true;
-         if ($$0.c != this.d || $$0.d != this.e) {
-            this.d = $$0.c;
-            this.e = $$0.d;
-            this.a(this.d, this.e);
-         }
-
-         GlStateManager._glBindFramebuffer(36009, this.h.h);
-         GlStateManager._glBindFramebuffer(36008, $$0.h);
-         GlStateManager._glBlitFrameBuffer(0, 0, $$0.c, $$0.d, 0, 0, this.f, this.g, 16384, 9729);
-         GlStateManager._glBindFramebuffer(36008, 0);
-         GlStateManager._glBindFramebuffer(36009, 0);
-         this.i.b();
-         GlStateManager._glBindFramebuffer(36008, this.h.h);
-         GlStateManager._readPixels(0, 0, this.f, this.g, 6408, 5121, 0L);
-         GlStateManager._glBindFramebuffer(36008, 0);
-         this.j = new fcn();
-         this.k = 0;
-      }
-   }
-
-   public void a() {
-      if (this.j != null) {
-         if (this.j.a(0L)) {
-            this.j = null;
-
-            try (fcm.a $$0 = this.i.a()) {
-               if ($$0 != null) {
-                  TracyClient.frameImage($$0.a(), this.f, this.g, this.k, true);
-               }
-            }
-         }
-      }
-   }
-
-   public void b() {
-      this.k++;
-      this.l = false;
-      TracyClient.markFrame();
+   @Deprecated
+   protected fcc(bvf $$0, boolean $$1) {
+      // $VF: Couldn't be decompiled
+      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+      // java.lang.NullPointerException: Cannot invoke "org.jetbrains.java.decompiler.struct.gen.VarType.equals(Object)" because "curType" is null
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.setLambdaGenericTypes(NewExprent.java:668)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.toJava(NewExprent.java:401)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:745)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:714)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.toJava(FunctionExprent.java:625)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:745)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:714)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.toJava(FunctionExprent.java:627)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.getCastedExprent(ExprProcessor.java:1018)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.appendParamList(InvocationExprent.java:1153)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.toJava(InvocationExprent.java:902)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.listToJava(ExprProcessor.java:895)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.BasicBlockStatement.toJava(BasicBlockStatement.java:90)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.RootStatement.toJava(RootStatement.java:36)
+      //   at org.jetbrains.java.decompiler.main.ClassWriter.writeMethod(ClassWriter.java:1283)
+      //
+      // Bytecode:
+      // 00: aload 0
+      // 01: aload 1
+      // 02: invokevirtual bvf.ch ()Z
+      // 05: aload 1
+      // 06: invokevirtual bvf.dC ()D
+      // 09: aload 1
+      // 0a: instanceof bwb
+      // 0d: ifeq 1a
+      // 10: aload 1
+      // 11: checkcast bwb
+      // 14: invokevirtual bwb.eX ()Lcxk;
+      // 17: goto 1d
+      // 1a: getstatic cxk.k Lcxk;
+      // 1d: iload 2
+      // 1e: ifeq 29
+      // 21: invokedynamic test ()Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, fcc.b (Letp;)Z, (Letp;)Z ]
+      // 26: goto 46
+      // 29: aload 1
+      // 2a: instanceof bwb
+      // 2d: ifeq 41
+      // 30: aload 1
+      // 31: checkcast bwb
+      // 34: dup
+      // 35: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
+      // 38: pop
+      // 39: invokedynamic test (Lbwb;)Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, bwb.a (Letp;)Z, (Letp;)Z ]
+      // 3e: goto 46
+      // 41: invokedynamic test ()Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, fcc.a (Letp;)Z, (Letp;)Z ]
+      // 46: aload 1
+      // 47: invokespecial fcc.<init> (ZDLcxk;Ljava/util/function/Predicate;Lbvf;)V
+      // 4a: return
    }
 
    @Override
-   public void close() {
-      if (this.j != null) {
-         this.j.close();
-         this.j = null;
-      }
+   public boolean a(cxg $$0) {
+      return this.d.a($$0);
+   }
 
-      this.i.close();
-      this.h.a();
+   @Override
+   public boolean a(etp $$0, etp $$1) {
+      return this.e.test($$1) && !$$0.a().a($$1.a());
+   }
+
+   @Override
+   public fcm a(dxn $$0, dgj $$1, jh $$2) {
+      return $$0.b($$1, $$2, this);
+   }
+
+   @Override
+   public boolean b() {
+      return this.b;
+   }
+
+   @Override
+   public boolean a(fcm $$0, jh $$1, boolean $$2) {
+      return this.c > (double)$$1.v() + $$0.c(jm.a.b) - 1.0E-5F;
+   }
+
+   @Nullable
+   public bvf c() {
+      return this.f;
    }
 }

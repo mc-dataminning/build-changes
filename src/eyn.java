@@ -1,16 +1,56 @@
-import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Set;
+import org.slf4j.Logger;
 
-public class eyn {
-   private static final Codec<eym> d = lz.H.q().dispatch(eym::a, eyl::a);
-   public static final Codec<eym> a = Codec.lazyInitialized(
-      () -> Codec.either(eyk.c, d).xmap(Either::unwrap, $$0 -> $$0 instanceof eyk $$1 ? Either.left($$1) : Either.right($$0))
+public class eyn extends exu {
+   private static final Logger b = LogUtils.getLogger();
+   public static final MapCodec<eyn> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and($$0.group(fap.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
+            .apply($$0, eyn::new)
    );
-   public static final eyl b = a("storage", eyo.a);
-   public static final eyl c = a("context", eyk.b);
+   private final fao c;
+   private final boolean d;
 
-   private static eyl a(String $$0, MapCodec<? extends eym> $$1) {
-      return kd.a(lz.H, alj.b($$0), new eyl($$1));
+   private eyn(List<ezs> $$0, fao $$1, boolean $$2) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
+   }
+
+   @Override
+   public exw<eyn> b() {
+      return exx.n;
+   }
+
+   @Override
+   public Set<eza<?>> a() {
+      return this.c.a();
+   }
+
+   @Override
+   public cxk a(cxk $$0, ewh $$1) {
+      if ($$0.m()) {
+         int $$2 = $$0.p();
+         float $$3 = this.d ? 1.0F - (float)$$0.o() / (float)$$2 : 0.0F;
+         float $$4 = 1.0F - bae.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
+         $$0.b(bae.d($$4 * (float)$$2));
+      } else {
+         b.warn("Couldn't set damage of loot item {}", $$0);
+      }
+
+      return $$0;
+   }
+
+   public static exu.a<?> a(fao $$0) {
+      return a($$1 -> new eyn($$1, $$0, false));
+   }
+
+   public static exu.a<?> a(fao $$0, boolean $$1) {
+      return a($$2 -> new eyn($$2, $$0, $$1));
    }
 }

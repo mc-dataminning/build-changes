@@ -1,6 +1,7 @@
-public class gwy extends gwe {
-   public boolean a;
-   public boolean b;
-   public float c;
-   public cnk d = cnk.f;
+public class gwy extends gym {
+   public float a;
+   public boolean b = true;
+   public boolean c;
+   public boolean d;
+   public boolean e;
 }

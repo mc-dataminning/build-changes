@@ -1,40 +1,36 @@
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.google.common.primitives.Floats;
+import it.unimi.dsi.fastutil.ints.IntArrays;
+import org.joml.Vector3f;
 
-public class fgt extends fgv {
-   private static final Logger d = LogUtils.getLogger();
-   public long a;
-   public int b;
-   public fgt.a c = fgt.a.a;
+public interface fgt {
+   fgt a = a(0.0F, 0.0F, 0.0F);
+   fgt b = a((fgt.a)($$0 -> -$$0.z()));
 
-   public static fgt a(String $$0) {
-      fgt $$1 = new fgt();
-
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         $$1.a = fir.a("startDate", $$3, 0L);
-         $$1.b = fir.a("daysLeft", $$3, 0);
-         $$1.c = b(fir.b("subscriptionType", $$3, fgt.a.a.name()));
-      } catch (Exception var4) {
-         d.error("Could not parse Subscription: {}", var4.getMessage());
-      }
-
-      return $$1;
+   static fgt a(float $$0, float $$1, float $$2) {
+      return a(new Vector3f($$0, $$1, $$2));
    }
 
-   private static fgt.a b(String $$0) {
-      try {
-         return fgt.a.valueOf($$0);
-      } catch (Exception var2) {
-         return fgt.a.a;
-      }
+   static fgt a(Vector3f $$0) {
+      return a($$0::distanceSquared);
    }
 
-   public static enum a {
-      a,
-      b;
+   static fgt a(fgt.a $$0) {
+      return $$1 -> {
+         float[] $$2 = new float[$$1.length];
+         int[] $$3 = new int[$$1.length];
+
+         for (int $$4 = 0; $$4 < $$1.length; $$3[$$4] = $$4++) {
+            $$2[$$4] = $$0.apply($$1[$$4]);
+         }
+
+         IntArrays.mergeSort($$3, ($$1x, $$2x) -> Floats.compare($$2[$$2x], $$2[$$1x]));
+         return $$3;
+      };
+   }
+
+   int[] sort(Vector3f[] var1);
+
+   public interface a {
+      float apply(Vector3f var1);
    }
 }

@@ -1,85 +1,77 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.ByteToMessageDecoder;
-import io.netty.handler.codec.DecoderException;
-import java.nio.ByteBuffer;
-import java.util.List;
-import java.util.zip.DataFormatException;
-import java.util.zip.Inflater;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Set;
 
-public class wb extends ByteToMessageDecoder {
-   public static final int a = 2097152;
-   public static final int b = 8388608;
-   private final Inflater c;
-   private int d;
-   private boolean e;
+public class wb extends wc {
+   private int a;
+   private final Set<vw<?>> b;
+   private final Deque<we> c = new ArrayDeque<>();
 
-   public wb(int $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
-      this.c = new Inflater();
-   }
+   public wb(wd... $$0) {
+      this.a = $$0.length;
+      Builder<vw<?>> $$1 = ImmutableSet.builder();
+      we $$2 = we.a();
 
-   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
-      if ($$1.readableBytes() != 0) {
-         int $$3 = xa.a($$1);
-         if ($$3 == 0) {
-            $$2.add($$1.readBytes($$1.readableBytes()));
-         } else {
-            if (this.e) {
-               if ($$3 < this.d) {
-                  throw new DecoderException("Badly compressed packet - size of " + $$3 + " is below server threshold of " + this.d);
-               }
-
-               if ($$3 > 8388608) {
-                  throw new DecoderException("Badly compressed packet - size of " + $$3 + " is larger than protocol maximum of 8388608");
-               }
-            }
-
-            this.a($$1);
-            ByteBuf $$4 = this.a($$0, $$3);
-            this.c.reset();
-            $$2.add($$4);
-         }
+      for (wd $$3 : $$0) {
+         $$2.a($$3);
+         $$1.add($$3.b());
       }
+
+      this.c.push($$2);
+      $$1.add(ux.b);
+      this.b = $$1.build();
    }
 
-   private void a(ByteBuf $$0) {
-      ByteBuffer $$1;
-      if ($$0.nioBufferCount() > 0) {
-         $$1 = $$0.nioBuffer();
-         $$0.skipBytes($$0.readableBytes());
+   @Override
+   public vr.b b(vw<?> $$0) {
+      return $$0 != ux.b ? vr.b.c : super.b($$0);
+   }
+
+   @Override
+   public vr.a a(vw<?> $$0) {
+      we $$1 = this.c.element();
+      if (this.e() > $$1.b()) {
+         return super.a($$0);
+      } else if (this.a <= 0) {
+         return vr.a.d;
       } else {
-         $$1 = ByteBuffer.allocateDirect($$0.readableBytes());
-         $$0.readBytes($$1);
-         $$1.flip();
+         return !this.b.contains($$0) ? vr.a.b : super.a($$0);
       }
-
-      this.c.setInput($$1);
    }
 
-   private ByteBuf a(ChannelHandlerContext $$0, int $$1) throws DataFormatException {
-      ByteBuf $$2 = $$0.alloc().directBuffer($$1);
-
-      try {
-         ByteBuffer $$3 = $$2.internalNioBuffer(0, $$1);
-         int $$4 = $$3.position();
-         this.c.inflate($$3);
-         int $$5 = $$3.position() - $$4;
-         if ($$5 != $$1) {
-            throw new DecoderException("Badly compressed packet - actual length of uncompressed payload " + $$5 + " is does not match declared size " + $$1);
-         } else {
-            $$2.writerIndex($$2.writerIndex() + $$5);
-            return $$2;
+   @Override
+   public vr.a a(vw<?> $$0, String $$1) {
+      we $$2 = this.c.element();
+      if (this.e() > $$2.b()) {
+         return super.a($$0, $$1);
+      } else if ($$2.c().remove($$1, $$0)) {
+         this.a--;
+         return super.a($$0, $$1);
+      } else {
+         if ($$0 == ux.b) {
+            we $$3 = $$2.d().get($$1);
+            if ($$3 != null) {
+               this.c.push($$3);
+               return super.a($$0, $$1);
+            }
          }
-      } catch (Exception var7) {
-         $$2.release();
-         throw var7;
+
+         return vr.a.b;
       }
    }
 
-   public void a(int $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   @Override
+   public vr.b b() {
+      if (this.e() == this.c.element().b()) {
+         this.c.pop();
+      }
+
+      return super.b();
+   }
+
+   public int c() {
+      return this.a;
    }
 }

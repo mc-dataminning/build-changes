@@ -1,113 +1,65 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import java.util.Map;
 
-public final class erd extends erm<ere.a, ere> {
-   private final jh.a g = new jh.a();
+public class erd extends esb {
+   public static final MapCodec<erd> a = MapCodec.unit(() -> erd.b);
+   public static final erd b = new erd();
+   private final Map<dke, dke> c = ae.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(dkg.m, dkg.pM);
+      $$0.put(dkg.cu, dkg.pM);
+      $$0.put(dkg.b, dkg.pQ);
+      $$0.put(dkg.eV, dkg.pR);
+      $$0.put(dkg.eW, dkg.pR);
+      $$0.put(dkg.cZ, dkg.pN);
+      $$0.put(dkg.nD, dkg.pN);
+      $$0.put(dkg.nF, dkg.pY);
+      $$0.put(dkg.fx, dkg.pV);
+      $$0.put(dkg.nB, dkg.pV);
+      $$0.put(dkg.ka, dkg.pP);
+      $$0.put(dkg.nR, dkg.pP);
+      $$0.put(dkg.jW, dkg.pZ);
+      $$0.put(dkg.jV, dkg.pZ);
+      $$0.put(dkg.kc, dkg.pU);
+      $$0.put(dkg.nP, dkg.pU);
+      $$0.put(dkg.of, dkg.pW);
+      $$0.put(dkg.od, dkg.pW);
+      $$0.put(dkg.gd, dkg.pO);
+      $$0.put(dkg.ge, dkg.pO);
+      $$0.put(dkg.eY, dkg.pT);
+      $$0.put(dkg.eX, dkg.pS);
+      $$0.put(dkg.fk, dkg.fl);
+   });
 
-   public erd(dyd $$0) {
-      this($$0, new ere($$0));
-   }
-
-   @VisibleForTesting
-   public erd(dyd $$0, ere $$1) {
-      super($$0, $$1);
+   private erd() {
    }
 
    @Override
-   protected void a(long $$0) {
-      long $$1 = kj.e($$0);
-      if (this.f.b($$1)) {
-         dvv $$2 = this.c(this.g.f($$0));
-         int $$3 = this.a($$0, $$2);
-         int $$4 = this.f.e($$0);
-         if ($$3 < $$4) {
-            this.f.a($$0, 0);
-            this.b($$0, erm.a.a($$4));
-         } else {
-            this.b($$0, c);
+   public ese.d a(dhd $$0, jh $$1, jh $$2, ese.d $$3, ese.d $$4, esa $$5) {
+      dke $$6 = this.c.get($$4.b().b());
+      if ($$6 == null) {
+         return $$4;
+      } else {
+         dxn $$7 = $$4.b();
+         dxn $$8 = $$6.m();
+         if ($$7.b(dsb.b)) {
+            $$8 = $$8.b(dsb.b, $$7.c(dsb.b));
          }
 
-         if ($$3 > 0) {
-            this.c($$0, erm.a.a($$3, a($$2)));
+         if ($$7.b(dsb.c)) {
+            $$8 = $$8.b(dsb.c, $$7.c(dsb.c));
          }
+
+         if ($$7.b(drk.b)) {
+            $$8 = $$8.b(drk.b, $$7.c(drk.b));
+         }
+
+         return new ese.d($$4.a(), $$8, $$4.c());
       }
    }
 
    @Override
-   protected void a(long $$0, long $$1, int $$2) {
-      dvv $$3 = null;
-
-      for (jm $$4 : d) {
-         if (erm.a.a($$1, $$4)) {
-            long $$5 = jh.a($$0, $$4);
-            if (this.f.b(kj.e($$5))) {
-               int $$6 = this.f.e($$5);
-               int $$7 = $$2 - 1;
-               if ($$7 > $$6) {
-                  this.g.f($$5);
-                  dvv $$8 = this.c(this.g);
-                  int $$9 = $$2 - this.b($$8);
-                  if ($$9 > $$6) {
-                     if ($$3 == null) {
-                        $$3 = erm.a.b($$1) ? dis.a.m() : this.c(this.g.f($$0));
-                     }
-
-                     if (!this.a($$3, $$8, $$4)) {
-                        this.f.a($$5, $$9);
-                        if ($$9 > 1) {
-                           this.c($$5, erm.a.a($$9, a($$8), $$4.g()));
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void a(long $$0, long $$1) {
-      int $$2 = erm.a.a($$1);
-
-      for (jm $$3 : d) {
-         if (erm.a.a($$1, $$3)) {
-            long $$4 = jh.a($$0, $$3);
-            if (this.f.b(kj.e($$4))) {
-               int $$5 = this.f.e($$4);
-               if ($$5 != 0) {
-                  if ($$5 <= $$2 - 1) {
-                     dvv $$6 = this.c(this.g.f($$4));
-                     int $$7 = this.a($$4, $$6);
-                     this.f.a($$4, 0);
-                     if ($$7 < $$5) {
-                        this.b($$4, erm.a.a($$5, $$3.g()));
-                     }
-
-                     if ($$7 > 0) {
-                        this.c($$4, erm.a.a($$7, a($$6)));
-                     }
-                  } else {
-                     this.c($$4, erm.a.b($$5, false, $$3.g()));
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private int a(long $$0, dvv $$1) {
-      int $$2 = $$1.k();
-      return $$2 > 0 && this.f.j(kj.e($$0)) ? $$2 : 0;
-   }
-
-   @Override
-   public void b(des $$0) {
-      this.a($$0, true);
-      dyc $$1 = this.e.c($$0.g, $$0.h);
-      if ($$1 != null) {
-         $$1.a(($$0x, $$1x) -> {
-            int $$2 = $$1x.k();
-            this.c($$0x.a(), erm.a.a($$2, a($$1x)));
-         });
-      }
+   protected esd<?> a() {
+      return esd.l;
    }
 }

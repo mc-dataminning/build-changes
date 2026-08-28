@@ -1,161 +1,115 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
-import java.util.Map;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public class gmf implements glr<duk> {
-   private static final int a = -988212;
-   private static final int b = azm.h(16);
-   private static final float c = 0.6666667F;
-   private static final ezy d = new ezy(0.0, 0.33333334F, 0.046666667F);
-   private final Map<dxh, gmf.a> e;
-   private final flo f;
+public class gmf {
+   private static final alz a = alz.b("textures/misc/forcefield.png");
 
-   public gmf(gls.a $$0) {
-      this.e = dxh.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new gmf.a(a($$0.e(), $$1, true), a($$0.e(), $$1, false))));
-      this.f = $$0.f();
-   }
+   public void a(dzd $$0, fbs $$1, double $$2, double $$3) {
+      double $$4 = $$0.e();
+      double $$5 = $$0.g();
+      double $$6 = $$0.f();
+      double $$7 = $$0.h();
+      if (!($$1.d < $$5 - $$2) || !($$1.d > $$4 + $$2) || !($$1.f < $$7 - $$2) || !($$1.f > $$6 + $$2)) {
+         double $$8 = 1.0 - $$0.b($$1.d, $$1.f) / $$2;
+         $$8 = Math.pow($$8, 4.0);
+         $$8 = bae.a($$8, 0.0, 1.0);
+         double $$9 = $$1.d;
+         double $$10 = $$1.f;
+         float $$11 = (float)$$3;
+         RenderSystem.enableBlend();
+         RenderSystem.enableDepthTest();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
+         );
+         RenderSystem.setShaderTexture(0, a);
+         RenderSystem.depthMask(flz.O());
+         int $$12 = $$0.d().a();
+         float $$13 = (float)ayp.b($$12) / 255.0F;
+         float $$14 = (float)ayp.c($$12) / 255.0F;
+         float $$15 = (float)ayp.d($$12) / 255.0F;
+         RenderSystem.setShaderColor($$13, $$14, $$15, (float)$$8);
+         RenderSystem.setShader(gko.h);
+         RenderSystem.polygonOffset(-3.0F, -3.0F);
+         RenderSystem.enablePolygonOffset();
+         RenderSystem.disableCull();
+         float $$16 = (float)(ae.c() % 3000L) / 3000.0F;
+         float $$17 = (float)(-bae.e($$1.e * 0.5));
+         float $$18 = $$17 + $$11;
+         fgg $$19 = fgn.b().a(fgq.c.h, fgj.i);
+         double $$20 = Math.max((double)bae.a($$10 - $$2), $$6);
+         double $$21 = Math.min((double)bae.c($$10 + $$2), $$7);
+         float $$22 = (float)(bae.a($$20) & 1) * 0.5F;
+         if ($$9 > $$5 - $$2) {
+            float $$23 = $$22;
 
-   public void a(duk $$0, float $$1, fer $$2, gjg $$3, int $$4, int $$5) {
-      dvv $$6 = $$0.m();
-      dpq $$7 = (dpq)$$6.b();
-      dxh $$8 = dpq.a($$7);
-      gmf.a $$9 = this.e.get($$8);
-      gae $$10 = $$6.b() instanceof dql ? $$9.a() : $$9.b();
-      this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$10);
-   }
-
-   public float b() {
-      return 0.6666667F;
-   }
-
-   public float c() {
-      return 0.6666667F;
-   }
-
-   void a(duk $$0, fer $$1, gjg $$2, int $$3, int $$4, dvv $$5, dpq $$6, dxh $$7, gae $$8) {
-      $$1.a();
-      this.a($$1, -$$6.h($$5), $$5);
-      this.a($$1, $$2, $$3, $$4, $$7, $$8);
-      this.a($$0.aA_(), $$0.j(), $$1, $$2, $$3, $$0.b(), $$0.c(), true);
-      this.a($$0.aA_(), $$0.k(), $$1, $$2, $$3, $$0.b(), $$0.c(), false);
-      $$1.b();
-   }
-
-   void a(fer $$0, float $$1, dvv $$2) {
-      $$0.a(0.5F, 0.75F * this.b(), 0.5F);
-      $$0.a(a.d.rotationDegrees($$1));
-      if (!($$2.b() instanceof dql)) {
-         $$0.a(0.0F, -0.3125F, -0.4375F);
-      }
-   }
-
-   void a(fer $$0, gjg $$1, int $$2, int $$3, dxh $$4, gae $$5) {
-      $$0.a();
-      float $$6 = this.b();
-      $$0.b($$6, -$$6, -$$6);
-      hbn $$7 = this.a($$4);
-      fev $$8 = $$7.a($$1, $$5::a);
-      $$5.a($$0, $$8, $$2, $$3);
-      $$0.b();
-   }
-
-   hbn a(dxh $$0) {
-      return gkb.a($$0);
-   }
-
-   void a(jh $$0, dul $$1, fer $$2, gjg $$3, int $$4, int $$5, int $$6, boolean $$7) {
-      $$2.a();
-      this.a($$2, $$7, this.d());
-      int $$8 = a($$1);
-      int $$9 = 4 * $$5 / 2;
-      ayy[] $$10 = $$1.a(fke.Q().aU(), $$1x -> {
-         List<ayy> $$2x = this.f.c($$1x, $$6);
-         return $$2x.isEmpty() ? ayy.a : $$2x.get(0);
-      });
-      int $$11;
-      boolean $$12;
-      int $$13;
-      if ($$1.a()) {
-         $$11 = $$1.b().g();
-         $$12 = a($$0, $$11);
-         $$13 = 15728880;
-      } else {
-         $$11 = $$8;
-         $$12 = false;
-         $$13 = $$4;
-      }
-
-      for (int $$17 = 0; $$17 < 4; $$17++) {
-         ayy $$18 = $$10[$$17];
-         float $$19 = (float)(-this.f.a($$18) / 2);
-         if ($$12) {
-            this.f.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, $$8, $$2.c().a(), $$3, $$13);
-         } else {
-            this.f.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, false, $$2.c().a(), $$3, flo.a.c, 0, $$13);
+            for (double $$24 = $$20; $$24 < $$21; $$23 += 0.5F) {
+               double $$25 = Math.min(1.0, $$21 - $$24);
+               float $$26 = (float)$$25 * 0.5F;
+               $$19.a((float)($$5 - $$9), -$$11, (float)($$24 - $$10)).a($$16 - $$23, $$16 + $$18);
+               $$19.a((float)($$5 - $$9), -$$11, (float)($$24 + $$25 - $$10)).a($$16 - ($$26 + $$23), $$16 + $$18);
+               $$19.a((float)($$5 - $$9), $$11, (float)($$24 + $$25 - $$10)).a($$16 - ($$26 + $$23), $$16 + $$17);
+               $$19.a((float)($$5 - $$9), $$11, (float)($$24 - $$10)).a($$16 - $$23, $$16 + $$17);
+               $$24++;
+            }
          }
-      }
 
-      $$2.b();
-   }
+         if ($$9 < $$4 + $$2) {
+            float $$27 = $$22;
 
-   private void a(fer $$0, boolean $$1, ezy $$2) {
-      if (!$$1) {
-         $$0.a(a.d.rotationDegrees(180.0F));
-      }
-
-      float $$3 = 0.015625F * this.c();
-      $$0.a($$2);
-      $$0.b($$3, -$$3, $$3);
-   }
-
-   ezy d() {
-      return d;
-   }
-
-   static boolean a(jh $$0, int $$1) {
-      if ($$1 == cvj.p.g()) {
-         return true;
-      } else {
-         fke $$2 = fke.Q();
-         gic $$3 = $$2.t;
-         if ($$3 != null && $$2.n.aD().a() && $$3.gF()) {
-            return true;
-         } else {
-            bul $$4 = $$2.ao();
-            return $$4 != null && $$4.f(ezy.b($$0)) < (double)b;
+            for (double $$28 = $$20; $$28 < $$21; $$27 += 0.5F) {
+               double $$29 = Math.min(1.0, $$21 - $$28);
+               float $$30 = (float)$$29 * 0.5F;
+               $$19.a((float)($$4 - $$9), -$$11, (float)($$28 - $$10)).a($$16 + $$27, $$16 + $$18);
+               $$19.a((float)($$4 - $$9), -$$11, (float)($$28 + $$29 - $$10)).a($$16 + $$30 + $$27, $$16 + $$18);
+               $$19.a((float)($$4 - $$9), $$11, (float)($$28 + $$29 - $$10)).a($$16 + $$30 + $$27, $$16 + $$17);
+               $$19.a((float)($$4 - $$9), $$11, (float)($$28 - $$10)).a($$16 + $$27, $$16 + $$17);
+               $$28++;
+            }
          }
+
+         $$20 = Math.max((double)bae.a($$9 - $$2), $$4);
+         $$21 = Math.min((double)bae.c($$9 + $$2), $$5);
+         $$22 = (float)(bae.a($$20) & 1) * 0.5F;
+         if ($$10 > $$7 - $$2) {
+            float $$31 = $$22;
+
+            for (double $$32 = $$20; $$32 < $$21; $$31 += 0.5F) {
+               double $$33 = Math.min(1.0, $$21 - $$32);
+               float $$34 = (float)$$33 * 0.5F;
+               $$19.a((float)($$32 - $$9), -$$11, (float)($$7 - $$10)).a($$16 + $$31, $$16 + $$18);
+               $$19.a((float)($$32 + $$33 - $$9), -$$11, (float)($$7 - $$10)).a($$16 + $$34 + $$31, $$16 + $$18);
+               $$19.a((float)($$32 + $$33 - $$9), $$11, (float)($$7 - $$10)).a($$16 + $$34 + $$31, $$16 + $$17);
+               $$19.a((float)($$32 - $$9), $$11, (float)($$7 - $$10)).a($$16 + $$31, $$16 + $$17);
+               $$32++;
+            }
+         }
+
+         if ($$10 < $$6 + $$2) {
+            float $$35 = $$22;
+
+            for (double $$36 = $$20; $$36 < $$21; $$35 += 0.5F) {
+               double $$37 = Math.min(1.0, $$21 - $$36);
+               float $$38 = (float)$$37 * 0.5F;
+               $$19.a((float)($$36 - $$9), -$$11, (float)($$6 - $$10)).a($$16 - $$35, $$16 + $$18);
+               $$19.a((float)($$36 + $$37 - $$9), -$$11, (float)($$6 - $$10)).a($$16 - ($$38 + $$35), $$16 + $$18);
+               $$19.a((float)($$36 + $$37 - $$9), $$11, (float)($$6 - $$10)).a($$16 - ($$38 + $$35), $$16 + $$17);
+               $$19.a((float)($$36 - $$9), $$11, (float)($$6 - $$10)).a($$16 - $$35, $$16 + $$17);
+               $$36++;
+            }
+         }
+
+         fgk $$39 = $$19.a();
+         if ($$39 != null) {
+            fgh.a($$39);
+         }
+
+         RenderSystem.enableCull();
+         RenderSystem.polygonOffset(0.0F, 0.0F);
+         RenderSystem.disablePolygonOffset();
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+         RenderSystem.depthMask(true);
       }
-   }
-
-   public static int a(dul $$0) {
-      int $$1 = $$0.b().g();
-      if ($$1 == cvj.p.g() && $$0.a()) {
-         return -988212;
-      } else {
-         double $$2 = 0.4;
-         int $$3 = (int)((double)axx.b($$1) * 0.4);
-         int $$4 = (int)((double)axx.c($$1) * 0.4);
-         int $$5 = (int)((double)axx.d($$1) * 0.4);
-         return axx.a(0, $$3, $$4, $$5);
-      }
-   }
-
-   public static gae a(gch $$0, dxh $$1, boolean $$2) {
-      gcj $$3 = $$2 ? gck.a($$1) : gck.b($$1);
-      return new gae.a($$0.a($$3), gjq::f);
-   }
-
-   public static gcr a(boolean $$0) {
-      gct $$1 = new gct();
-      gcv $$2 = $$1.a();
-      $$2.a("sign", gcq.c().a(0, 0).a(-12.0F, -14.0F, -1.0F, 24.0F, 12.0F, 2.0F), gcn.a);
-      if ($$0) {
-         $$2.a("stick", gcq.c().a(0, 14).a(-1.0F, -2.0F, -1.0F, 2.0F, 14.0F, 2.0F), gcn.a);
-      }
-
-      return gcr.a($$1, 64, 32);
-   }
-
-   static record a(gae a, gae b) {
    }
 }

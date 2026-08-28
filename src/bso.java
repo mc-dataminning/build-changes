@@ -1,37 +1,56 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class bso {
-   public static final Codec<bso> a = RecordCodecBuilder.create($$0 -> $$0.group(ecr.b.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, bso::new));
-   private final ecr b;
+public class bso extends bsh {
+   public static final MapCodec<bso> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.FLOAT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("max_exclusive").forGetter($$0x -> $$0x.d))
+               .apply($$0, bso::new)
+      )
+      .validate(
+         $$0 -> $$0.d <= $$0.b
+               ? DataResult.error(() -> "Max must be larger than min, min_inclusive: " + $$0.b + ", max_exclusive: " + $$0.d)
+               : DataResult.success($$0)
+      );
+   private final float b;
+   private final float d;
 
-   public bso(ecr $$0) {
+   private bso(float $$0, float $$1) {
       this.b = $$0;
+      this.d = $$1;
    }
 
-   public bso(long $$0, alj $$1) {
-      this(a($$0, Optional.of($$1)));
-   }
-
-   public bso(long $$0, Optional<alj> $$1) {
-      this(a($$0, $$1));
-   }
-
-   private static ecr a(long $$0, Optional<alj> $$1) {
-      ecf.a $$2 = ecf.b($$0);
-      if ($$1.isPresent()) {
-         $$2 = $$2.a(a($$1.get()));
+   public static bso b(float $$0, float $$1) {
+      if ($$1 <= $$0) {
+         throw new IllegalArgumentException("Max must exceed min");
+      } else {
+         return new bso($$0, $$1);
       }
-
-      return new ecr($$2.a());
    }
 
-   public static ecf.a a(alj $$0) {
-      return ecf.a($$0.toString());
+   @Override
+   public float a(bam $$0) {
+      return bae.b($$0, this.b, this.d);
    }
 
-   public azu a() {
+   @Override
+   public float a() {
       return this.b;
+   }
+
+   @Override
+   public float b() {
+      return this.d;
+   }
+
+   @Override
+   public bsi<?> c() {
+      return bsi.b;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.b + "-" + this.d + "]";
    }
 }

@@ -1,154 +1,76 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
 import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
 public class dgi {
-   private final dfn a;
-   private final eco b;
-   private final emj c;
+   private final fbs a;
+   private final fbs b;
+   private final dgi.a c;
+   private final dgi.b d;
+   private final fbx e;
 
-   public dgi(dfn $$0, eco $$1, emj $$2) {
+   public dgi(fbs $$0, fbs $$1, dgi.a $$2, dgi.b $$3, bvf $$4) {
+      this($$0, $$1, $$2, $$3, fbx.a($$4));
+   }
+
+   public dgi(fbs $$0, fbs $$1, dgi.a $$2, dgi.b $$3, fbx $$4) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   public dgi a(arx $$0) {
-      if ($$0.a() != this.a) {
-         throw new IllegalStateException("Using invalid structure manager (source level: " + $$0.a() + ", region: " + $$0);
-      } else {
-         return new dgi($$0, this.b, this.c);
+   public fbs a() {
+      return this.b;
+   }
+
+   public fbs b() {
+      return this.a;
+   }
+
+   public fcm a(dxn $$0, dgf $$1, jh $$2) {
+      return this.c.get($$0, $$1, $$2, this.e);
+   }
+
+   public fcm a(etp $$0, dgf $$1, jh $$2) {
+      return this.d.a($$0) ? $$0.d($$1, $$2) : fcj.a();
+   }
+
+   public static enum a implements dgi.c {
+      a(dxm.a::b),
+      b(dxm.a::a),
+      c(dxm.a::c),
+      d(($$0, $$1, $$2, $$3) -> $$0.a(axu.aT) ? fcj.b() : fcj.a());
+
+      private final dgi.c e;
+
+      private a(final dgi.c $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public fcm get(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
+         return this.e.get($$0, $$1, $$2, $$3);
       }
    }
 
-   public List<emq> a(des $$0, Predicate<emi> $$1) {
-      Map<emi, LongSet> $$2 = this.a.a($$0.g, $$0.h, dyr.e).h();
-      Builder<emq> $$3 = ImmutableList.builder();
+   public static enum b {
+      a($$0 -> false),
+      b(etp::b),
+      c($$0 -> !$$0.c()),
+      d($$0 -> $$0.a(aya.a));
 
-      for (Entry<emi, LongSet> $$4 : $$2.entrySet()) {
-         emi $$5 = $$4.getKey();
-         if ($$1.test($$5)) {
-            this.a($$5, $$4.getValue(), $$3::add);
-         }
+      private final Predicate<etp> e;
+
+      private b(final Predicate<etp> $$0) {
+         this.e = $$0;
       }
 
-      return $$3.build();
-   }
-
-   public List<emq> a(kj $$0, emi $$1) {
-      LongSet $$2 = this.a.a($$0.a(), $$0.c(), dyr.e).b($$1);
-      Builder<emq> $$3 = ImmutableList.builder();
-      this.a($$1, $$2, $$3::add);
-      return $$3.build();
-   }
-
-   public void a(emi $$0, LongSet $$1, Consumer<emq> $$2) {
-      LongIterator var4 = $$1.iterator();
-
-      while (var4.hasNext()) {
-         long $$3 = (Long)var4.next();
-         kj $$4 = kj.a(new des($$3), this.a.an());
-         emq $$5 = this.a($$4, $$0, this.a.a($$4.a(), $$4.c(), dyr.d));
-         if ($$5 != null && $$5.b()) {
-            $$2.accept($$5);
-         }
+      public boolean a(etp $$0) {
+         return this.e.test($$0);
       }
    }
 
-   @Nullable
-   public emq a(kj $$0, emi $$1, dym $$2) {
-      return $$2.a($$1);
-   }
-
-   public void a(kj $$0, emi $$1, emq $$2, dym $$3) {
-      $$3.a($$1, $$2);
-   }
-
-   public void a(kj $$0, emi $$1, long $$2, dym $$3) {
-      $$3.a($$1, $$2);
-   }
-
-   public boolean a() {
-      return this.b.d();
-   }
-
-   public emq a(jh $$0, emi $$1) {
-      for (emq $$2 : this.a(kj.a($$0), $$1)) {
-         if ($$2.a().b($$0)) {
-            return $$2;
-         }
-      }
-
-      return emq.b;
-   }
-
-   public emq a(jh $$0, axs<emi> $$1) {
-      return this.a($$0, $$1x -> $$1x.a($$1));
-   }
-
-   public emq a(jh $$0, ju<emi> $$1) {
-      return this.a($$0, $$1::a);
-   }
-
-   public emq a(jh $$0, Predicate<jq<emi>> $$1) {
-      kd<emi> $$2 = this.b().e(ma.aS);
-
-      for (emq $$3 : this.a(new des($$0), $$2x -> $$2.c($$2.a($$2x)).map($$1::test).orElse(false))) {
-         if (this.a($$0, $$3)) {
-            return $$3;
-         }
-      }
-
-      return emq.b;
-   }
-
-   public emq b(jh $$0, emi $$1) {
-      for (emq $$2 : this.a(kj.a($$0), $$1)) {
-         if (this.a($$0, $$2)) {
-            return $$2;
-         }
-      }
-
-      return emq.b;
-   }
-
-   public boolean a(jh $$0, emq $$1) {
-      for (emm $$2 : $$1.i()) {
-         if ($$2.f().b($$0)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public boolean a(jh $$0) {
-      kj $$1 = kj.a($$0);
-      return this.a.a($$1.a(), $$1.c(), dyr.e).v();
-   }
-
-   public Map<emi, LongSet> b(jh $$0) {
-      kj $$1 = kj.a($$0);
-      return this.a.a($$1.a(), $$1.c(), dyr.e).h();
-   }
-
-   public emk a(des $$0, emi $$1, enf $$2, boolean $$3) {
-      return this.c.a($$0, $$1, $$2, $$3);
-   }
-
-   public void a(emq $$0) {
-      $$0.e();
-      this.c.a($$0.c(), $$0.h());
-   }
-
-   public ke b() {
-      return this.a.J_();
+   public interface c {
+      fcm get(dxn var1, dgf var2, jh var3, fbx var4);
    }
 }

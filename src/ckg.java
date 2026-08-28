@@ -1,30 +1,57 @@
-public class ckg extends cjy {
-   private static final int b = 40;
-   private int c;
+import javax.annotation.Nullable;
 
-   public ckg(cjv $$0) {
-      super($$0);
+public class ckg extends cjw {
+   private static final bvi bZ = bvm.bP.n().a(bvh.a().a(bvg.a, 0.0F, bvm.bP.m() - 0.03125F, 0.0F)).a(0.5F);
+
+   public ckg(bvm<? extends ckg> $$0, dha $$1) {
+      super($$0, $$1);
+   }
+
+   public static bxi.a p() {
+      return gO().a(bxj.s, 15.0).a(bxj.v, 0.2F);
+   }
+
+   public static boolean c(bvm<? extends chs> $$0, dhb $$1, bvl $$2, jh $$3, bam $$4) {
+      return !bvl.a($$2) ? chs.b($$0, $$1, $$2, $$3, $$4) : bvl.b($$2) || a($$1, $$3);
    }
 
    @Override
-   public void b() {
-      this.a.dV().a(this.a.dA(), this.a.dC(), this.a.dG(), awn.if, this.a.dm(), 2.5F, 0.8F + this.a.dY().i() * 0.3F, false);
+   protected void a(bam $$0) {
+      this.g(bxj.o).a(a($$0::j));
    }
 
    @Override
-   public void a(arp $$0) {
-      if (this.c++ >= 40) {
-         this.a.gj().a(ckl.f);
-      }
+   protected axe u() {
+      return axf.DY;
    }
 
    @Override
-   public void c() {
-      this.c = 0;
+   protected axe o_() {
+      return axf.DZ;
    }
 
    @Override
-   public ckl<ckg> h() {
-      return ckl.h;
+   protected axe e(btv $$0) {
+      return axf.Ea;
+   }
+
+   @Nullable
+   @Override
+   public buw a(ash $$0, buw $$1) {
+      return bvm.bP.a($$0, bvl.e);
+   }
+
+   @Override
+   public bte b(cps $$0, btd $$1) {
+      return (bte)(!this.gD() ? bte.e : super.b($$0, $$1));
+   }
+
+   @Override
+   protected void gE() {
+   }
+
+   @Override
+   public bvi e(bwn $$0) {
+      return this.e_() ? bZ : super.e($$0);
    }
 }

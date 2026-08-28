@@ -1,21 +1,11 @@
-import java.util.function.IntConsumer;
+public class ayb {
+   public static final ayk<ecj> a = a("vibrations");
+   public static final ayk<ecj> b = a("warden_can_listen");
+   public static final ayk<ecj> c = a("shrieker_can_listen");
+   public static final ayk<ecj> d = a("ignore_vibrations_sneaking");
+   public static final ayk<ecj> e = a("allay_can_listen");
 
-public interface ayb {
-   int a(int var1, int var2);
-
-   void b(int var1, int var2);
-
-   int a(int var1);
-
-   long[] a();
-
-   int b();
-
-   int c();
-
-   void a(IntConsumer var1);
-
-   void a(int[] var1);
-
-   ayb d();
+   private static ayk<ecj> a(String $$0) {
+      return ayk.a(mb.G, alz.b($$0));
+   }
 }

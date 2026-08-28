@@ -1,111 +1,170 @@
-import java.util.EnumSet;
-import java.util.Optional;
+import com.google.common.collect.ImmutableList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class glz implements glr<dto> {
-   private static final String a = "neck";
-   private static final String b = "front";
-   private static final String c = "back";
-   private static final String d = "left";
-   private static final String e = "right";
-   private static final String f = "top";
-   private static final String g = "bottom";
-   private final gcl h;
-   private final gcl i;
-   private final gcl j;
-   private final gcl k;
-   private final gcl l;
-   private final gcl m;
-   private final gcl n;
-   private static final float o = 0.125F;
+public class glz {
+   public static final alz a = alz.b("textures/atlas/shulker_boxes.png");
+   public static final alz b = alz.b("textures/atlas/beds.png");
+   public static final alz c = alz.b("textures/atlas/banner_patterns.png");
+   public static final alz d = alz.b("textures/atlas/shield_patterns.png");
+   public static final alz e = alz.b("textures/atlas/signs.png");
+   public static final alz f = alz.b("textures/atlas/chest.png");
+   public static final alz g = alz.b("textures/atlas/armor_trims.png");
+   public static final alz h = alz.b("textures/atlas/decorated_pot.png");
+   private static final glo C = glo.f(a);
+   private static final glo D = glo.c(b);
+   private static final glo E = glo.m(c);
+   private static final glo F = glo.m(d);
+   private static final glo G = glo.f(e);
+   private static final glo H = glo.e(f);
+   private static final glo I = glo.a(g);
+   private static final glo J = glo.b(g);
+   private static final glo K = glo.c(hbd.d);
+   private static final glo L = glo.e(hbd.d);
+   private static final glo M = glo.h(hbd.d);
+   public static final hdn i = new hdn(a, alz.b("entity/shulker/shulker"));
+   public static final List<hdn> j = Stream.of(
+         "white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"
+      )
+      .map($$0 -> new hdn(a, alz.b("entity/shulker/shulker_" + $$0)))
+      .collect(ImmutableList.toImmutableList());
+   public static final Map<dyz, hdn> k = dyz.a().collect(Collectors.toMap(Function.identity(), glz::c));
+   public static final Map<dyz, hdn> l = dyz.a().collect(Collectors.toMap(Function.identity(), glz::d));
+   public static final hdn m = new hdn(c, alz.b("entity/banner/base"));
+   public static final hdn n = new hdn(d, alz.b("entity/shield/base"));
+   private static final Map<alz, hdn> N = new HashMap<>();
+   private static final Map<alz, hdn> O = new HashMap<>();
+   public static final Map<aly<dvh>, hdn> o = ma.ak.c().collect(Collectors.toMap(jq.c::h, $$0 -> a($$0.a().a())));
+   public static final hdn p = a(alz.b("decorated_pot_base"));
+   public static final hdn q = a(alz.b("decorated_pot_side"));
+   public static final hdn[] r = Arrays.stream(cwh.values())
+      .sorted(Comparator.comparingInt(cwh::a))
+      .map($$0 -> new hdn(b, alz.b("entity/bed/" + $$0.b())))
+      .toArray(hdn[]::new);
+   public static final hdn s = a("trapped");
+   public static final hdn t = a("trapped_left");
+   public static final hdn u = a("trapped_right");
+   public static final hdn v = a("christmas");
+   public static final hdn w = a("christmas_left");
+   public static final hdn x = a("christmas_right");
+   public static final hdn y = a("normal");
+   public static final hdn z = a("normal_left");
+   public static final hdn A = a("normal_right");
+   public static final hdn B = a("ender");
 
-   public glz(gls.a $$0) {
-      gcl $$1 = $$0.a(gck.aj);
-      this.h = $$1.b("neck");
-      this.m = $$1.b("top");
-      this.n = $$1.b("bottom");
-      gcl $$2 = $$0.a(gck.ak);
-      this.i = $$2.b("front");
-      this.j = $$2.b("back");
-      this.k = $$2.b("left");
-      this.l = $$2.b("right");
+   public static glo a() {
+      return E;
    }
 
-   public static gcr b() {
-      gct $$0 = new gct();
-      gcv $$1 = $$0.a();
-      gcp $$2 = new gcp(0.2F);
-      gcp $$3 = new gcp(-0.1F);
-      $$1.a(
-         "neck",
-         gcq.c().a(0, 0).a(4.0F, 17.0F, 4.0F, 8.0F, 3.0F, 8.0F, $$3).a(0, 5).a(5.0F, 20.0F, 5.0F, 6.0F, 1.0F, 6.0F, $$2),
-         gcn.a(0.0F, 37.0F, 16.0F, (float) Math.PI, 0.0F, 0.0F)
-      );
-      gcq $$4 = gcq.c().a(-14, 13).a(0.0F, 0.0F, 0.0F, 14.0F, 0.0F, 14.0F);
-      $$1.a("top", $$4, gcn.a(1.0F, 16.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      $$1.a("bottom", $$4, gcn.a(1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      return gcr.a($$0, 32, 32);
+   public static glo b() {
+      return F;
    }
 
-   public static gcr c() {
-      gct $$0 = new gct();
-      gcv $$1 = $$0.a();
-      gcq $$2 = gcq.c().a(1, 0).a(0.0F, 0.0F, 0.0F, 14.0F, 16.0F, 0.0F, EnumSet.of(jm.c));
-      $$1.a("back", $$2, gcn.a(15.0F, 16.0F, 1.0F, 0.0F, 0.0F, (float) Math.PI));
-      $$1.a("left", $$2, gcn.a(1.0F, 16.0F, 1.0F, 0.0F, (float) (-Math.PI / 2), (float) Math.PI));
-      $$1.a("right", $$2, gcn.a(15.0F, 16.0F, 15.0F, 0.0F, (float) (Math.PI / 2), (float) Math.PI));
-      $$1.a("front", $$2, gcn.a(1.0F, 16.0F, 15.0F, (float) Math.PI, 0.0F, 0.0F));
-      return gcr.a($$0, 16, 16);
+   public static glo c() {
+      return D;
    }
 
-   private static hbn a(Optional<cwi> $$0) {
-      if ($$0.isPresent()) {
-         hbn $$1 = gkb.a(dtq.a($$0.get()));
-         if ($$1 != null) {
+   public static glo d() {
+      return C;
+   }
+
+   public static glo e() {
+      return G;
+   }
+
+   public static glo f() {
+      return G;
+   }
+
+   public static glo g() {
+      return H;
+   }
+
+   public static glo a(boolean $$0) {
+      return $$0 ? J : I;
+   }
+
+   public static glo h() {
+      return K;
+   }
+
+   public static glo i() {
+      return L;
+   }
+
+   public static glo j() {
+      return M;
+   }
+
+   private static hdn c(dyz $$0) {
+      return new hdn(e, alz.b("entity/signs/" + $$0.b()));
+   }
+
+   private static hdn d(dyz $$0) {
+      return new hdn(e, alz.b("entity/signs/hanging/" + $$0.b()));
+   }
+
+   public static hdn a(dyz $$0) {
+      return k.get($$0);
+   }
+
+   public static hdn b(dyz $$0) {
+      return l.get($$0);
+   }
+
+   public static hdn a(jq<duf> $$0) {
+      return N.computeIfAbsent($$0.a().a(), $$0x -> {
+         alz $$1 = $$0x.f("entity/banner/");
+         return new hdn(c, $$1);
+      });
+   }
+
+   public static hdn b(jq<duf> $$0) {
+      return O.computeIfAbsent($$0.a().a(), $$0x -> {
+         alz $$1 = $$0x.f("entity/shield/");
+         return new hdn(d, $$1);
+      });
+   }
+
+   private static hdn a(String $$0) {
+      return new hdn(f, alz.b("entity/chest/" + $$0));
+   }
+
+   private static hdn a(alz $$0) {
+      return new hdn(h, $$0.f("entity/decorated_pot/"));
+   }
+
+   @Nullable
+   public static hdn a(@Nullable aly<dvh> $$0) {
+      return $$0 == null ? null : o.get($$0);
+   }
+
+   public static hdn a(dup $$0, dyf $$1, boolean $$2) {
+      if ($$0 instanceof dvm) {
+         return B;
+      } else if ($$2) {
+         return a($$1, v, w, x);
+      } else {
+         return $$0 instanceof dwl ? a($$1, s, t, u) : a($$1, y, z, A);
+      }
+   }
+
+   private static hdn a(dyf $$0, hdn $$1, hdn $$2, hdn $$3) {
+      switch ($$0) {
+         case b:
+            return $$2;
+         case c:
+            return $$3;
+         case a:
+         default:
             return $$1;
-         }
       }
-
-      return gkb.q;
-   }
-
-   public void a(dto $$0, float $$1, fer $$2, gjg $$3, int $$4, int $$5) {
-      $$2.a();
-      jm $$6 = $$0.k();
-      $$2.a(0.5, 0.0, 0.5);
-      $$2.a(a.d.rotationDegrees(180.0F - $$6.p()));
-      $$2.a(-0.5, 0.0, -0.5);
-      dto.a $$7 = $$0.h;
-      if ($$7 != null && $$0.i() != null) {
-         float $$8 = ((float)($$0.i().ab() - $$0.g) + $$1) / (float)$$7.c;
-         if ($$8 >= 0.0F && $$8 <= 1.0F) {
-            if ($$7 == dto.a.a) {
-               float $$9 = 0.015625F;
-               float $$10 = $$8 * (float) (Math.PI * 2);
-               float $$11 = -1.5F * (azm.b($$10) + 0.5F) * azm.a($$10 / 2.0F);
-               $$2.a(a.b.rotation($$11 * 0.015625F), 0.5F, 0.0F, 0.5F);
-               float $$12 = azm.a($$10);
-               $$2.a(a.f.rotation($$12 * 0.015625F), 0.5F, 0.0F, 0.5F);
-            } else {
-               float $$13 = azm.a(-$$8 * 3.0F * (float) Math.PI) * 0.125F;
-               float $$14 = 1.0F - $$8;
-               $$2.a(a.d.rotation($$13 * $$14), 0.5F, 0.0F, 0.5F);
-            }
-         }
-      }
-
-      fev $$15 = gkb.p.a($$3, gjq::c);
-      this.h.a($$2, $$15, $$4, $$5);
-      this.m.a($$2, $$15, $$4, $$5);
-      this.n.a($$2, $$15, $$4, $$5);
-      due $$16 = $$0.t();
-      this.a(this.i, $$2, $$3, $$4, $$5, a($$16.e()));
-      this.a(this.j, $$2, $$3, $$4, $$5, a($$16.b()));
-      this.a(this.k, $$2, $$3, $$4, $$5, a($$16.c()));
-      this.a(this.l, $$2, $$3, $$4, $$5, a($$16.d()));
-      $$2.b();
-   }
-
-   private void a(gcl $$0, fer $$1, gjg $$2, int $$3, int $$4, hbn $$5) {
-      $$0.a($$1, $$5.a($$2, gjq::c), $$3, $$4);
    }
 }

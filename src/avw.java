@@ -1,28 +1,16 @@
-import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.io.File;
-import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public class avw extends avv<GameProfile, avx> {
-   public avw(File $$0) {
-      super($$0);
-   }
-
+public interface avw extends avp {
    @Override
-   protected avu<GameProfile> a(JsonObject $$0) {
-      return new avx($$0);
+   default CompletableFuture<Void> a(avp.a $$0, avv $$1, Executor $$2, Executor $$3) {
+      return $$0.a(bbk.a).thenRunAsync(() -> {
+         bpo $$1x = bpn.a();
+         $$1x.a("listener");
+         this.a($$1);
+         $$1x.c();
+      }, $$3);
    }
 
-   public boolean a(GameProfile $$0) {
-      return this.d($$0);
-   }
-
-   @Override
-   public String[] a() {
-      return this.d().stream().map(avu::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
-   }
-
-   protected String b(GameProfile $$0) {
-      return $$0.getId().toString();
-   }
+   void a(avv var1);
 }

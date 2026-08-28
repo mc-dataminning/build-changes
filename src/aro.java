@@ -1,70 +1,91 @@
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.IntConsumer;
+import java.util.function.IntSupplier;
+import org.jetbrains.annotations.Nullable;
+import org.slf4j.Logger;
 
-public interface aro extends dfd {
-   arp a();
+public class aro implements ark.a, AutoCloseable {
+   public static final int a = 4;
+   private static final Logger c = LogUtils.getLogger();
+   private final arp d;
+   private final brz<Runnable> e;
+   private final brw f;
+   protected boolean b;
 
-   @Nullable
-   default cou a(cfy $$0, bvh $$1) {
-      return this.a(this.y(), $$0, $$1, $$1.dA(), $$1.dC(), $$1.dG());
+   public aro(brz<Runnable> $$0, Executor $$1) {
+      this.d = new arp($$0.A_() + "_queue");
+      this.e = $$0;
+      this.f = new brw(4, $$1, "dispatcher");
+      this.b = true;
    }
 
-   @Nullable
-   default cou a(cfy $$0, bvh $$1, double $$2, double $$3, double $$4) {
-      return this.a(this.y(), $$0, $$1, $$2, $$3, $$4);
+   public boolean a() {
+      return this.f.c() || this.d.b();
    }
 
-   @Nullable
-   default cou a(cfy $$0, double $$1, double $$2, double $$3) {
-      return this.a(this.y(), $$0, null, $$1, $$2, $$3);
+   @Override
+   public void onLevelChange(dgg $$0, IntSupplier $$1, int $$2, IntConsumer $$3) {
+      this.f.a_(new bry.c(0, () -> {
+         int $$4 = $$1.getAsInt();
+         this.d.a($$4, $$0, $$2);
+         $$3.accept($$2);
+      }));
    }
 
-   @Nullable
-   default <T extends bvh> T a(Class<? extends T> $$0, cfy $$1, @Nullable bvh $$2, double $$3, double $$4, double $$5, ezt $$6) {
-      return this.a(this.a($$0, $$6, $$0x -> true), $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Nullable
-   default <T extends bvh> T a(List<? extends T> $$0, cfy $$1, @Nullable bvh $$2, double $$3, double $$4, double $$5) {
-      double $$6 = -1.0;
-      T $$7 = null;
-
-      for (T $$8 : $$0) {
-         if ($$1.a(this.a(), $$2, $$8)) {
-            double $$9 = $$8.i($$3, $$4, $$5);
-            if ($$6 == -1.0 || $$9 < $$6) {
-               $$6 = $$9;
-               $$7 = $$8;
-            }
+   public void a(long $$0, Runnable $$1, boolean $$2) {
+      this.f.a_(new bry.c(1, () -> {
+         this.d.a($$0, $$2);
+         this.a($$0);
+         if (this.b) {
+            this.b = false;
+            this.b();
          }
-      }
 
-      return $$7;
+         $$1.run();
+      }));
    }
 
-   default List<cou> a(cfy $$0, bvh $$1, ezt $$2) {
-      List<cou> $$3 = new ArrayList<>();
-
-      for (cou $$4 : this.y()) {
-         if ($$2.e($$4.dA(), $$4.dC(), $$4.dG()) && $$0.a(this.a(), $$1, $$4)) {
-            $$3.add($$4);
+   public void a(Runnable $$0, long $$1, IntSupplier $$2) {
+      this.f.a_(new bry.c(2, () -> {
+         int $$3 = $$2.getAsInt();
+         this.d.a($$0, $$1, $$3);
+         if (this.b) {
+            this.b = false;
+            this.b();
          }
-      }
-
-      return $$3;
+      }));
    }
 
-   default <T extends bvh> List<T> a(Class<T> $$0, cfy $$1, bvh $$2, ezt $$3) {
-      List<T> $$4 = this.a($$0, $$3, $$0x -> true);
-      List<T> $$5 = new ArrayList<>();
-
-      for (T $$6 : $$4) {
-         if ($$1.a(this.a(), $$2, $$6)) {
-            $$5.add($$6);
+   protected void b() {
+      this.f.a_(new bry.c(3, () -> {
+         arp.a $$0 = this.c();
+         if ($$0 == null) {
+            this.b = true;
+         } else {
+            this.a($$0);
          }
-      }
+      }));
+   }
 
-      return $$5;
+   protected void a(arp.a $$0) {
+      CompletableFuture.allOf($$0.b().stream().map($$0x -> this.e.a($$1 -> {
+            $$0x.run();
+            $$1.complete(bbk.a);
+         })).toArray(CompletableFuture[]::new)).thenAccept($$0x -> this.b());
+   }
+
+   protected void a(long $$0) {
+   }
+
+   @Nullable
+   protected arp.a c() {
+      return this.d.a();
+   }
+
+   @Override
+   public void close() {
+      this.e.close();
    }
 }

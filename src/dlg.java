@@ -1,39 +1,51 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 
-public class dlg extends doz {
-   public static final MapCodec<dlg> b = b(dlg::new);
+public interface dlg<T extends Enum<T>> {
+   int x_ = 4;
 
-   @Override
-   public MapCodec<dlg> a() {
-      return b;
-   }
+   Optional<dxn> k_(dxn var1);
 
-   protected dlg(dvu.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(a, jm.b));
-   }
+   float av_();
 
-   @Override
-   public dvv a(dad $$0) {
-      jm $$1 = $$0.k();
-      dvv $$2 = $$0.q().a_($$0.a().a($$1.g()));
-      return $$2.a(this) && $$2.c(a) == $$1 ? this.m().b(a, $$1.g()) : this.m().b(a, $$1);
-   }
-
-   @Override
-   public void a(dvv $$0, dfm $$1, jh $$2, azu $$3) {
-      jm $$4 = $$0.c(a);
-      double $$5 = (double)$$2.u() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$6 = (double)$$2.v() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$7 = (double)$$2.w() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$8 = (double)(0.4F - ($$3.i() + $$3.i()) * 0.4F);
-      if ($$3.a(5) == 0) {
-         $$1.a(ls.t, $$5 + (double)$$4.j() * $$8, $$6 + (double)$$4.k() * $$8, $$7 + (double)$$4.l() * $$8, $$3.k() * 0.005, $$3.k() * 0.005, $$3.k() * 0.005);
+   default void a_(dxn $$0, ash $$1, jh $$2, bam $$3) {
+      float $$4 = 0.05688889F;
+      if ($$3.i() < 0.05688889F) {
+         this.c($$0, $$1, $$2, $$3).ifPresent($$2x -> $$1.b($$2, $$2x));
       }
    }
 
-   @Override
-   protected void a(dvw.a<diq, dvv> $$0) {
-      $$0.a(a);
+   T c();
+
+   default Optional<dxn> c(dxn $$0, ash $$1, jh $$2, bam $$3) {
+      int $$4 = this.c().ordinal();
+      int $$5 = 0;
+      int $$6 = 0;
+
+      for (jh $$7 : jh.a($$2, 4, 4, 4)) {
+         int $$8 = $$7.k($$2);
+         if ($$8 > 4) {
+            break;
+         }
+
+         if (!$$7.equals($$2) && $$1.a_($$7).b() instanceof dlg<?> $$9) {
+            Enum<?> $$10 = $$9.c();
+            if (this.c().getClass() == $$10.getClass()) {
+               int $$11 = $$10.ordinal();
+               if ($$11 < $$4) {
+                  return Optional.empty();
+               }
+
+               if ($$11 > $$4) {
+                  $$6++;
+               } else {
+                  $$5++;
+               }
+            }
+         }
+      }
+
+      float $$12 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
+      float $$13 = $$12 * $$12 * this.av_();
+      return $$3.i() < $$13 ? this.k_($$0) : Optional.empty();
    }
 }

@@ -1,29 +1,28 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import java.util.List;
 import java.util.Set;
-import java.util.function.Predicate;
 
-public record cgo(Set<dvv> b, int c, int d) {
-   public static final Predicate<jq<cgo>> a = $$0 -> false;
-
-   public cgo(Set<dvv> b, int c, int d) {
-      b = Set.copyOf(b);
-      this.b = b;
-      this.c = c;
-      this.d = d;
+public class cgo extends cgl<bwb> {
+   @Override
+   public Set<cff<?>> a() {
+      return ImmutableSet.of(cff.i);
    }
 
-   public boolean a(dvv $$0) {
-      return this.b.contains($$0);
+   @Override
+   protected void a(ash $$0, bwb $$1) {
+      $$1.eb().a(cff.i, this.a($$1));
    }
 
-   public Set<dvv> a() {
-      return this.b;
+   private List<bwb> a(bwb $$0) {
+      return ImmutableList.copyOf(this.c($$0).b(this::b));
    }
 
-   public int b() {
-      return this.c;
+   private boolean b(bwb $$0) {
+      return $$0.aq() == bvm.bD && $$0.e_();
    }
 
-   public int c() {
-      return this.d;
+   private cfh c(bwb $$0) {
+      return $$0.eb().c(cff.h).orElse(cfh.a());
    }
 }

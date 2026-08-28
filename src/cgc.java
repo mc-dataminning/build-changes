@@ -1,38 +1,56 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2LongMap;
+import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class cgc {
-   @Nullable
-   public static ezy a(bvp $$0, int $$1, int $$2) {
-      boolean $$3 = cgd.a($$0, $$1);
-      return cgg.a($$0, () -> {
-         jh $$4 = cgg.a($$0.dY(), $$1, $$2);
-         return a($$0, $$1, $$3, $$4);
-      });
+public class cgc extends cgl<bwd> {
+   private static final int a = 40;
+   private static final int b = 5;
+   private static final int c = 20;
+   private final Long2LongMap d = new Long2LongOpenHashMap();
+   private int e;
+   private long f;
+
+   public cgc() {
+      super(20);
    }
 
-   @Nullable
-   public static ezy a(bvp $$0, int $$1, int $$2, ezy $$3, double $$4) {
-      ezy $$5 = $$3.a($$0.dA(), $$0.dC(), $$0.dG());
-      boolean $$6 = cgd.a($$0, $$1);
-      return cgg.a($$0, () -> {
-         jh $$6x = cgg.a($$0.dY(), $$1, $$2, 0, $$5.d, $$5.f, $$4);
-         return $$6x == null ? null : a($$0, $$1, $$6, $$6x);
-      });
+   @Override
+   public Set<cff<?>> a() {
+      return ImmutableSet.of(cff.w);
    }
 
-   @Nullable
-   public static ezy a(bvp $$0, int $$1, int $$2, ezy $$3) {
-      ezy $$4 = $$0.dt().d($$3);
-      boolean $$5 = cgd.a($$0, $$1);
-      return cgg.a($$0, () -> {
-         jh $$5x = cgg.a($$0.dY(), $$1, $$2, 0, $$4.d, $$4.f, (float) (Math.PI / 2));
-         return $$5x == null ? null : a($$0, $$1, $$5, $$5x);
-      });
-   }
-
-   @Nullable
-   private static jh a(bvp $$0, int $$1, boolean $$2, jh $$3) {
-      jh $$4 = cgg.a($$0, $$1, $$0.dY(), $$3);
-      return !cgd.a($$4, $$0) && !cgd.a($$2, $$0, $$4) && !cgd.a($$0.L(), $$4) && !cgd.b($$0, $$4) ? $$4 : null;
+   protected void a(ash $$0, bwd $$1) {
+      if ($$1.e_()) {
+         this.e = 0;
+         this.f = $$0.ac() + (long)$$0.H_().a(20);
+         chf $$2 = $$0.z();
+         Predicate<jh> $$3 = $$0x -> {
+            long $$1x = $$0x.a();
+            if (this.d.containsKey($$1x)) {
+               return false;
+            } else if (++this.e >= 5) {
+               return false;
+            } else {
+               this.d.put($$1x, this.f + 40L);
+               return true;
+            }
+         };
+         Set<Pair<jq<chi>, jh>> $$4 = $$2.b($$0x -> $$0x.a(chj.n), $$3, $$1.dv(), 48, chf.b.c).collect(Collectors.toSet());
+         eud $$5 = bxn.a($$1, $$4);
+         if ($$5 != null && $$5.j()) {
+            jh $$6 = $$5.l();
+            Optional<jq<chi>> $$7 = $$2.c($$6);
+            if ($$7.isPresent()) {
+               $$1.eb().a(cff.w, $$6);
+            }
+         } else if (this.e < 5) {
+            this.d.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.f);
+         }
+      }
    }
 }

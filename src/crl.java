@@ -1,109 +1,39 @@
-public abstract class crl extends bul {
-   protected static final akm<Integer> e = akq.a(crl.class, ako.b);
-   protected static final akm<Integer> f = akq.a(crl.class, ako.b);
-   protected static final akm<Float> g = akq.a(crl.class, ako.d);
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
-   public crl(bus<?> $$0, dfm $$1) {
-      super($$0, $$1);
+public class crl {
+   public static final int a = 2000;
+   public static final int b = 7000;
+   public static final crl c = a("empty").a(0, crj.b).a();
+   public static final crl d = a("simple").a(5000, crj.c).a(11000, crj.e).a();
+   public static final crl e = a("villager_baby").a(10, crj.b).a(3000, crj.d).a(6000, crj.b).a(10000, crj.d).a(12000, crj.e).a();
+   public static final crl f = a("villager_default").a(10, crj.b).a(2000, crj.c).a(9000, crj.f).a(11000, crj.b).a(12000, crj.e).a();
+   private final Map<crj, crn> g = Maps.newHashMap();
+
+   protected static crm a(String $$0) {
+      crl $$1 = kd.a(ma.B, $$0, new crl());
+      return new crm($$1);
    }
 
-   @Override
-   public boolean b(btb $$0) {
-      return true;
-   }
-
-   @Override
-   public boolean a(arp $$0, btb $$1, float $$2) {
-      if (this.dQ()) {
-         return true;
-      } else if (this.d($$1)) {
-         return false;
-      } else {
-         boolean var10000;
-         label32: {
-            this.l(-this.N());
-            this.d(10);
-            this.bD();
-            this.b(this.K() + $$2 * 10.0F);
-            this.a(ear.o, $$1.d());
-            if ($$1.d() instanceof cou $$3 && $$3.gh().d) {
-               var10000 = true;
-               break label32;
-            }
-
-            var10000 = false;
-         }
-
-         boolean $$4 = var10000;
-         if (($$4 || !(this.K() > 40.0F)) && !this.a($$1)) {
-            if ($$4) {
-               this.at();
-            }
-         } else {
-            this.a($$0, $$1);
-         }
-
-         return true;
+   protected void a(crj $$0) {
+      if (!this.g.containsKey($$0)) {
+         this.g.put($$0, new crn());
       }
    }
 
-   boolean a(btb $$0) {
-      return false;
+   protected crn b(crj $$0) {
+      return this.g.get($$0);
    }
 
-   @Override
-   public boolean a(dfe $$0) {
-      return $$0.c() instanceof bvj && !$$0.a().N().b(dfi.c);
+   protected List<crn> c(crj $$0) {
+      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
    }
 
-   public void a(arp $$0, cwi $$1) {
-      this.c($$0);
-      if ($$0.N().b(dfi.i)) {
-         cwm $$2 = new cwm($$1);
-         $$2.b(ku.g, this.an());
-         this.a($$0, $$2);
-      }
+   public crj a(int $$0) {
+      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(crj.b);
    }
-
-   @Override
-   protected void a(akq.a $$0) {
-      $$0.a(e, 0);
-      $$0.a(f, 1);
-      $$0.a(g, 0.0F);
-   }
-
-   public void d(int $$0) {
-      this.al.a(e, $$0);
-   }
-
-   public void l(int $$0) {
-      this.al.a(f, $$0);
-   }
-
-   public void b(float $$0) {
-      this.al.a(g, $$0);
-   }
-
-   public float K() {
-      return this.al.a(g);
-   }
-
-   public int L() {
-      return this.al.a(e);
-   }
-
-   public int N() {
-      return this.al.a(f);
-   }
-
-   protected void a(arp $$0, btb $$1) {
-      this.a($$0, this.t());
-   }
-
-   @Override
-   public int bX() {
-      return 10;
-   }
-
-   protected abstract cwi t();
 }

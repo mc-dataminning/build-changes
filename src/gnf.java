@@ -1,29 +1,16 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
-import java.util.List;
+import com.google.common.collect.Streams;
+import java.util.function.Predicate;
 
-public class gnf implements gng.a {
-   private final fke a;
-   private double b = Double.MIN_VALUE;
-   private List<fas> c = Collections.emptyList();
+public class gnf implements gnc {
+   public static final String a = "OR";
+   private final Iterable<? extends gnc> d;
 
-   public gnf(fke $$0) {
-      this.a = $$0;
+   public gnf(Iterable<? extends gnc> $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public void a(fer $$0, gjg $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ae.d();
-      if ($$5 - this.b > 1.0E8) {
-         this.b = $$5;
-         bul $$6 = this.a.j.k().g();
-         this.c = ImmutableList.copyOf($$6.dV().d($$6, $$6.cR().g(6.0)));
-      }
-
-      fev $$7 = $$1.getBuffer(gjq.y());
-
-      for (fas $$8 : this.c) {
-         gng.a($$0, $$7, $$8, -$$2, -$$3, -$$4, 1.0F, 1.0F, 1.0F, 1.0F, true);
-      }
+   public Predicate<dxn> getPredicate(dxo<dke, dxn> $$0) {
+      return ae.b(Streams.stream(this.d).map($$1 -> $$1.getPredicate($$0)).toList());
    }
 }

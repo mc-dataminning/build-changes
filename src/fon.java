@@ -1,42 +1,39 @@
-public interface fon {
-   Object b = new Object();
-   int c = 160;
-   int d = 32;
+import javax.annotation.Nullable;
 
-   fon.a a();
+public class fon extends fnw {
+   private final fnj a;
 
-   void a(foo var1, long var2);
-
-   void a(flq var1, flo var2, long var3);
-
-   default Object f() {
-      return b;
+   public fon(fnj $$0, xv $$1) {
+      super(0, 0, $$0.a($$1), 9 * 3, $$1);
+      this.a = $$0;
    }
 
-   default int b() {
-      return 160;
+   @Override
+   protected void b(fnl $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.D() + this.y() / 2;
+      int $$5 = this.E() + this.w() / 2;
+      xv $$6 = this.z();
+      $$0.a(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1, false);
+      String $$7 = ftg.a(ae.c());
+      $$0.a(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712, false);
    }
 
-   default int c() {
-      return 32;
+   @Override
+   protected void a(frw $$0) {
    }
 
-   default int g() {
-      return azm.e(this.c(), 32);
+   @Override
+   public void a(hgg $$0) {
    }
 
-   public static enum a {
-      a(awn.AC),
-      b(awn.AD);
+   @Override
+   public boolean C() {
+      return false;
+   }
 
-      private final awm c;
-
-      private a(final awm $$0) {
-         this.c = $$0;
-      }
-
-      public void a(heg $$0) {
-         $$0.a(hcw.a(this.c, 1.0F, 1.0F));
-      }
+   @Nullable
+   @Override
+   public fni a(fsc $$0) {
+      return null;
    }
 }

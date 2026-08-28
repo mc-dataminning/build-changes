@@ -1,20 +1,21 @@
-public enum dww implements bai {
-   a("normal"),
-   b("sticky");
+public class dww {
+   public static final float a = 10.0F;
+   private float b;
+   private float c;
 
-   private final String c;
-
-   private dww(final String $$0) {
-      this.c = $$0;
+   dww() {
    }
 
-   @Override
-   public String toString() {
+   public float a() {
+      return this.b;
+   }
+
+   public float b() {
       return this.c;
    }
 
-   @Override
-   public String c() {
-      return this.c;
+   void c() {
+      this.c = this.b;
+      this.b = bae.h(this.b + 10.0F);
    }
 }

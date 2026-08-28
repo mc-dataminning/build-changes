@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gzm {
+public class gzm extends gym {
+   public float a;
+   public float b;
+   public float c;
 }

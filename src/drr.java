@@ -1,73 +1,36 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
 
-public class drr extends dhm {
-   public static final MapCodec<drr> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dps.a.b.fieldOf("kind").forGetter(dhm::b), t()).apply($$0, drr::new));
-   public static final dws<jm> d = dml.aF;
-   private static final Map<jm, fas> b = Maps.newEnumMap(
-      ImmutableMap.of(
-         jm.c,
-         diq.a(4.0, 4.0, 8.0, 12.0, 12.0, 16.0),
-         jm.d,
-         diq.a(4.0, 4.0, 0.0, 12.0, 12.0, 8.0),
-         jm.f,
-         diq.a(0.0, 4.0, 4.0, 8.0, 12.0, 12.0),
-         jm.e,
-         diq.a(8.0, 4.0, 4.0, 16.0, 12.0, 12.0)
-      )
-   );
+public class drr extends dke {
+   public static final MapCodec<drr> b = b(drr::new);
+   public static final dye c = dyd.A;
 
    @Override
-   public MapCodec<? extends drr> a() {
-      return c;
+   protected MapCodec<? extends drr> a() {
+      return b;
    }
 
-   protected drr(dps.a $$0, dvu.d $$1) {
-      super($$0, $$1);
-      this.l(this.m().b(d, jm.c));
+   protected drr(dxm.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
-      return b.get($$0.c(d));
+   protected dxn a(dxn $$0, dhd $$1, dhp $$2, jh $$3, jm $$4, jh $$5, dxn $$6, bam $$7) {
+      return $$4 == jm.b ? $$0.b(c, Boolean.valueOf(o($$6))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   public dvv a(dad $$0) {
-      dvv $$1 = super.a($$0);
-      der $$2 = $$0.q();
-      jh $$3 = $$0.a();
-      jm[] $$4 = $$0.f();
+   public dxn a(dbb $$0) {
+      dxn $$1 = $$0.q().a_($$0.a().d());
+      return this.m().b(c, Boolean.valueOf(o($$1)));
+   }
 
-      for (jm $$5 : $$4) {
-         if ($$5.o().d()) {
-            jm $$6 = $$5.g();
-            $$1 = $$1.b(d, $$6);
-            if (!$$2.a_($$3.a($$5)).a($$0)) {
-               return $$1;
-            }
-         }
-      }
-
-      return null;
+   private static boolean o(dxn $$0) {
+      return $$0.a(axu.bB);
    }
 
    @Override
-   protected dvv a(dvv $$0, dpd $$1) {
-      return $$0.b(d, $$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected dvv a(dvv $$0, dnm $$1) {
-      return $$0.a($$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected void a(dvw.a<diq, dvv> $$0) {
-      super.a($$0);
-      $$0.a(d);
+   protected void a(dxo.a<dke, dxn> $$0) {
+      $$0.a(c);
    }
 }

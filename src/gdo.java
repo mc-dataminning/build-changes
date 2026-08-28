@@ -1,68 +1,59 @@
-import com.google.common.base.Splitter;
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.SimpleChannelInboundHandler;
-import java.util.List;
+import java.util.Set;
 
-public class gdo extends SimpleChannelInboundHandler<ByteBuf> {
-   private static final Splitter a = Splitter.on('\u0000').limit(6);
-   private final gey b;
-   private final gdo.a c;
+public class gdo extends gcp<gzu> {
+   private static final String i = "egg_belly";
+   public static final geq a = new gag(true, 120.0F, 0.0F, 9.0F, 6.0F, 120.0F, Set.of("head"));
+   private final geh j;
 
-   public gdo(gey $$0, gdo.a $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public gdo(geh $$0) {
+      super($$0);
+      this.j = $$0.b("egg_belly");
    }
 
-   public void channelActive(ChannelHandlerContext $$0) throws Exception {
-      super.channelActive($$0);
-      ByteBuf $$1 = $$0.alloc().buffer();
-
-      try {
-         $$1.writeByte(254);
-         $$1.writeByte(1);
-         $$1.writeByte(250);
-         asj.a($$1, "MC|PingHost");
-         int $$2 = $$1.writerIndex();
-         $$1.writeShort(0);
-         int $$3 = $$1.writerIndex();
-         $$1.writeByte(127);
-         asj.a($$1, this.b.a());
-         $$1.writeInt(this.b.b());
-         int $$4 = $$1.writerIndex() - $$3;
-         $$1.setShort($$2, $$4);
-         $$0.channel().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
-      } catch (Exception var6) {
-         $$1.release();
-         throw var6;
-      }
+   public static gen a() {
+      gep $$0 = new gep();
+      ger $$1 = $$0.a();
+      $$1.a("head", gem.c().a(3, 0).a(-3.0F, -1.0F, -3.0F, 6.0F, 5.0F, 6.0F), gej.a(0.0F, 19.0F, -10.0F));
+      $$1.a(
+         "body",
+         gem.c().a(7, 37).a("shell", -9.5F, 3.0F, -10.0F, 19.0F, 20.0F, 6.0F).a(31, 1).a("belly", -5.5F, 3.0F, -13.0F, 11.0F, 18.0F, 3.0F),
+         gej.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+      );
+      $$1.a("egg_belly", gem.c().a(70, 33).a(-4.5F, 3.0F, -14.0F, 9.0F, 18.0F, 1.0F), gej.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      int $$2 = 1;
+      $$1.a("right_hind_leg", gem.c().a(1, 23).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), gej.a(-3.5F, 22.0F, 11.0F));
+      $$1.a("left_hind_leg", gem.c().a(1, 12).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), gej.a(3.5F, 22.0F, 11.0F));
+      $$1.a("right_front_leg", gem.c().a(27, 30).a(-13.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), gej.a(-5.0F, 21.0F, -4.0F));
+      $$1.a("left_front_leg", gem.c().a(27, 24).a(0.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), gej.a(5.0F, 21.0F, -4.0F));
+      return gen.a($$0, 128, 64);
    }
 
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1) {
-      short $$2 = $$1.readUnsignedByte();
-      if ($$2 == 255) {
-         String $$3 = asj.a($$1);
-         List<String> $$4 = a.splitToList($$3);
-         if ("§1".equals($$4.get(0))) {
-            int $$5 = azm.a($$4.get(1), 0);
-            String $$6 = $$4.get(2);
-            String $$7 = $$4.get(3);
-            int $$8 = azm.a($$4.get(4), -1);
-            int $$9 = azm.a($$4.get(5), -1);
-            this.c.handleResponse($$5, $$6, $$7, $$8, $$9);
-         }
+   public void a(gzu $$0) {
+      super.a($$0);
+      float $$1 = $$0.X;
+      float $$2 = $$0.Y;
+      if ($$0.a) {
+         float $$3 = $$0.b ? 4.0F : 1.0F;
+         float $$4 = $$0.b ? 2.0F : 1.0F;
+         float $$5 = $$1 * 5.0F;
+         float $$6 = bae.b($$3 * $$5);
+         float $$7 = bae.b($$5);
+         this.f.f = -$$6 * 8.0F * $$2 * $$4;
+         this.g.f = $$6 * 8.0F * $$2 * $$4;
+         this.d.f = -$$7 * 3.0F * $$2;
+         this.e.f = $$7 * 3.0F * $$2;
+      } else {
+         float $$8 = 0.5F * $$2;
+         float $$9 = bae.b($$1 * 0.6662F * 0.6F) * $$8;
+         this.d.e = $$9;
+         this.e.e = -$$9;
+         this.f.g = -$$9;
+         this.g.g = $$9;
       }
 
-      $$0.close();
-   }
-
-   public void exceptionCaught(ChannelHandlerContext $$0, Throwable $$1) {
-      $$0.close();
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void handleResponse(int var1, String var2, String var3, int var4, int var5);
+      this.j.k = $$0.c;
+      if (this.j.k) {
+         this.v.c--;
+      }
    }
 }

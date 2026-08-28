@@ -1,16 +1,22 @@
-public class grw extends gqq<civ, gwm, gbo> {
-   private static final alj a = alj.b("textures/entity/tadpole/tadpole.png");
+public class grw extends gqd<cjs, gya, gbm> {
+   private static final alz a = alz.b("textures/entity/goat/goat.png");
 
-   public grw(gpk.a $$0) {
-      super($$0, new gbo($$0.a(gck.cZ)), 0.14F);
+   public grw(grj.a $$0) {
+      super($$0, new gbm($$0.a(geg.aU)), new gbm($$0.a(geg.aV)), 0.7F);
    }
 
-   @Override
-   public alj b(gwm $$0) {
+   public alz a(gya $$0) {
       return a;
    }
 
-   public gwm b() {
-      return new gwm();
+   public gya b() {
+      return new gya();
+   }
+
+   public void a(cjs $$0, gya $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.gm();
+      $$1.b = $$0.gn();
+      $$1.c = $$0.gz();
    }
 }

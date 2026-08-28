@@ -1,145 +1,177 @@
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
-public interface cqy extends bsd, bsm {
-   ezy dt();
+public class cqy extends cpz {
+   private static final alc<Byte> f = alg.a(cqy.class, ale.a);
+   private static final alc<Boolean> g = alg.a(cqy.class, ale.k);
+   private boolean h;
+   public int e;
 
-   ezt cR();
+   public cqy(bvm<? extends cqy> $$0, dha $$1) {
+      super($$0, $$1);
+   }
 
-   @Nullable
-   ali<eus> u();
+   public cqy(dha $$0, bwb $$1, cxk $$2) {
+      super(bvm.bz, $$1, $$0, $$2, null);
+      this.al.a(f, this.b($$2));
+      this.al.a(g, $$2.B());
+   }
 
-   void a(@Nullable ali<eus> var1);
-
-   long v();
-
-   void a(long var1);
-
-   jz<cwm> B();
-
-   void C();
-
-   dfm dV();
-
-   boolean dQ();
+   public cqy(dha $$0, double $$1, double $$2, double $$3, cxk $$4) {
+      super(bvm.bz, $$1, $$2, $$3, $$0, $$4, $$4);
+      this.al.a(f, this.b($$4));
+      this.al.a(g, $$4.B());
+   }
 
    @Override
-   default boolean c() {
-      return this.g();
+   protected void a(alg.a $$0) {
+      super.a($$0);
+      $$0.a(f, (byte)0);
+      $$0.a(g, false);
    }
 
-   default void a(ul $$0, js.a $$1) {
-      if (this.u() != null) {
-         $$0.a("LootTable", this.u().a().toString());
-         if (this.v() != 0L) {
-            $$0.a("LootTableSeed", this.v());
-         }
-      } else {
-         bse.a($$0, this.B(), $$1);
+   @Override
+   public void h() {
+      if (this.b > 4) {
+         this.h = true;
       }
-   }
 
-   default void b(ul $$0, js.a $$1) {
-      this.C();
-      if ($$0.b("LootTable", 8)) {
-         this.a(ali.a(ma.bd, alj.a($$0.l("LootTable"))));
-         this.a($$0.i("LootTableSeed"));
-      } else {
-         bse.b($$0, this.B(), $$1);
-      }
-   }
+      bvf $$0 = this.p();
+      int $$1 = this.al.a(f);
+      if ($$1 > 0 && (this.h || this.A()) && $$0 != null) {
+         if (!this.F()) {
+            if (this.dV() instanceof ash $$2 && this.c == cpz.a.b) {
+               this.a($$2, this.t(), 0.1F);
+            }
 
-   default void a(btb $$0, arp $$1, bul $$2) {
-      if ($$1.N().b(dfi.i)) {
-         bsg.a($$1, $$2, this);
-         bul $$3 = $$0.c();
-         if ($$3 != null && $$3.aq() == bus.bO) {
-            cnj.a($$1, (cou)$$3, true);
-         }
-      }
-   }
+            this.at();
+         } else {
+            this.b(true);
+            fbs $$3 = $$0.bF().d(this.dt());
+            this.o(this.dA(), this.dC() + $$3.e * 0.015 * (double)$$1, this.dG());
+            double $$4 = 0.05 * (double)$$1;
+            this.h(this.dy().c(0.95).e($$3.d().c($$4)));
+            if (this.e == 0) {
+               this.a(axf.Aa, 10.0F, 1.0F);
+            }
 
-   default bsk b_(cou $$0) {
-      $$0.a(this);
-      return bsk.a;
-   }
-
-   default void f(@Nullable cou $$0) {
-      MinecraftServer $$1 = this.dV().p();
-      if (this.u() != null && $$1 != null) {
-         eus $$2 = $$1.bc().b(this.u());
-         if ($$0 != null) {
-            ao.Q.a((arq)$$0, this.u());
-         }
-
-         this.a(null);
-         euq.a $$3 = new euq.a((arp)this.dV()).a(exj.f, this.dt());
-         if ($$0 != null) {
-            $$3.a($$0.gD()).a(exj.a, $$0);
-         }
-
-         $$2.a(this, $$3.a(exi.c), this.v());
-      }
-   }
-
-   default void f() {
-      this.f(null);
-      this.B().clear();
-   }
-
-   default boolean g() {
-      for (cwm $$0 : this.B()) {
-         if (!$$0.f()) {
-            return false;
+            this.e++;
          }
       }
 
+      super.h();
+   }
+
+   private boolean F() {
+      bvf $$0 = this.p();
+      return $$0 == null || !$$0.bL() ? false : !($$0 instanceof asi) || !$$0.aa_();
+   }
+
+   public boolean C() {
+      return this.al.a(g);
+   }
+
+   @Nullable
+   @Override
+   protected fbp c(fbs $$0, fbs $$1) {
+      return this.h ? null : super.c($$0, $$1);
+   }
+
+   @Override
+   protected void a(fbp $$0) {
+      bvf $$1 = $$0.a();
+      float $$2 = 8.0F;
+      bvf $$3 = this.p();
+      btv $$4 = this.dW().a(this, (bvf)($$3 == null ? this : $$3));
+      if (this.dV() instanceof ash $$5) {
+         $$2 = ddt.a($$5, this.dZ(), $$1, $$4, $$2);
+      }
+
+      this.h = true;
+      if ($$1.b($$4, $$2)) {
+         if ($$1.aq() == bvm.O) {
+            return;
+         }
+
+         if (this.dV() instanceof ash $$6) {
+            ddt.a($$6, $$1, $$4, this.dZ(), $$1x -> this.c($$6));
+         }
+
+         if ($$1 instanceof bwb $$7) {
+            this.a($$7, $$4);
+            this.a($$7);
+         }
+      }
+
+      this.a(cqm.b, $$1, this.p(), false);
+      this.h(this.dy().d(0.02, 0.2, 0.02));
+      this.a(axf.zY, 1.0F, 1.0F);
+   }
+
+   @Override
+   protected void a(ash $$0, fbo $$1, cxk $$2) {
+      fbs $$3 = $$1.b().a($$1.g());
+      ddt.a($$0, $$2, this.p() instanceof bwb $$4 ? $$4 : null, this, null, $$3, $$0.a_($$1.b()), $$1x -> this.c($$0));
+   }
+
+   @Override
+   public cxk dZ() {
+      return this.v();
+   }
+
+   @Override
+   protected boolean a(cps $$0) {
+      return super.a($$0) || this.A() && this.e($$0) && $$0.gg().f(this.t());
+   }
+
+   @Override
+   protected cxk u() {
+      return new cxk(cxo.wI);
+   }
+
+   @Override
+   protected axe m() {
+      return axf.zZ;
+   }
+
+   @Override
+   public void a_(cps $$0) {
+      if (this.e($$0) || this.p() == null) {
+         super.a_($$0);
+      }
+   }
+
+   @Override
+   public void a(ux $$0) {
+      super.a($$0);
+      this.h = $$0.q("DealtDamage");
+      this.al.a(f, this.b(this.v()));
+   }
+
+   @Override
+   public void b(ux $$0) {
+      super.b($$0);
+      $$0.a("DealtDamage", this.h);
+   }
+
+   private byte b(cxk $$0) {
+      return this.dV() instanceof ash $$1 ? (byte)bae.a(ddt.c($$1, $$0, this), 0, 127) : 0;
+   }
+
+   @Override
+   public void l() {
+      int $$0 = this.al.a(f);
+      if (this.c != cpz.a.b || $$0 <= 0) {
+         super.l();
+      }
+   }
+
+   @Override
+   protected float z() {
+      return 0.99F;
+   }
+
+   @Override
+   public boolean k(double $$0, double $$1, double $$2) {
       return true;
-   }
-
-   default cwm f_(int $$0) {
-      this.f(null);
-      cwm $$1 = this.B().get($$0);
-      if ($$1.f()) {
-         return cwm.k;
-      } else {
-         this.B().set($$0, cwm.k);
-         return $$1;
-      }
-   }
-
-   default cwm g_(int $$0) {
-      this.f(null);
-      return this.B().get($$0);
-   }
-
-   default cwm b(int $$0, int $$1) {
-      this.f(null);
-      return bse.a(this.B(), $$0, $$1);
-   }
-
-   default void c(int $$0, cwm $$1) {
-      this.f(null);
-      this.B().set($$0, $$1);
-      $$1.f(this.e_($$1));
-   }
-
-   default bvz h_(final int $$0) {
-      return $$0 >= 0 && $$0 < this.b() ? new bvz() {
-         @Override
-         public cwm a() {
-            return cqy.this.g_($$0);
-         }
-
-         @Override
-         public boolean a(cwm $$0x) {
-            cqy.this.c($$0, $$0);
-            return true;
-         }
-      } : bvz.a;
-   }
-
-   default boolean g(cou $$0) {
-      return !this.dQ() && $$0.a(this.cR(), 4.0);
    }
 }

@@ -1,28 +1,20 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eii extends eih {
-   public static final MapCodec<eii> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eii::new));
+public class eii {
+   public static final Codec<eii> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eng.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
+            .apply($$0, eii::new)
+   );
+   public final jq<eng> b;
+   public final float c;
 
-   public eii(brp $$0, brp $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public eii(jq<eng> $$0, float $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   protected ein<?> a() {
-      return ein.e;
-   }
-
-   @Override
-   protected void a(dfs $$0, eim.b $$1, azu $$2, ehw $$3, int $$4, eim.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + $$5.b() - 1 - $$9;
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
-   }
-
-   @Override
-   protected boolean a(azu $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
+   public boolean a(dhy $$0, dzj $$1, bam $$2, jh $$3) {
+      return this.b.a().a($$0, $$1, $$2, $$3);
    }
 }

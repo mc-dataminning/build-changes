@@ -1,26 +1,29 @@
 import java.util.EnumSet;
 
-public class ced extends cef {
-   private final bwe a;
-   private bvh b;
-   private int c;
+public class ced extends ccz {
+   private final cjw a;
+   private final double b;
+   private double c;
+   private double d;
+   private double e;
 
-   public ced(bwe $$0) {
-      super($$0, false);
+   public ced(cjw $$0, double $$1) {
       this.a = $$0;
-      this.a(EnumSet.of(ccf.a.d));
+      this.b = $$1;
+      this.a(EnumSet.of(ccz.a.a));
    }
 
    @Override
    public boolean b() {
-      if (this.a.n() && !this.a.gm()) {
-         bvh $$0 = this.a.ag_();
+      if (!this.a.gD() && this.a.ca()) {
+         fbs $$0 = cgw.a(this.a, 5, 4);
          if ($$0 == null) {
             return false;
          } else {
-            this.b = $$0.er();
-            int $$1 = $$0.es();
-            return $$1 != this.c && this.a(this.b, cfy.a) && this.a.a(this.b, $$0);
+            this.c = $$0.d;
+            this.d = $$0.e;
+            this.e = $$0.f;
+            return true;
          }
       } else {
          return false;
@@ -29,12 +32,36 @@ public class ced extends cef {
 
    @Override
    public void d() {
-      this.e.h(this.b);
-      bvh $$0 = this.a.ag_();
-      if ($$0 != null) {
-         this.c = $$0.es();
-      }
+      this.a.L().a(this.c, this.d, this.e, this.b);
+   }
 
-      super.d();
+   @Override
+   public boolean c() {
+      return !this.a.gD() && !this.a.L().m() && this.a.ca();
+   }
+
+   @Override
+   public void a() {
+      if (!this.a.gD() && this.a.dY().a(this.a(50)) == 0) {
+         bvf $$0 = this.a.da();
+         if ($$0 == null) {
+            return;
+         }
+
+         if ($$0 instanceof cps $$1) {
+            int $$2 = this.a.gJ();
+            int $$3 = this.a.gP();
+            if ($$3 > 0 && this.a.dY().a($$3) < $$2) {
+               this.a.g($$1);
+               return;
+            }
+
+            this.a.u(5);
+         }
+
+         this.a.bP();
+         this.a.gT();
+         this.a.dV().a(this.a, (byte)6);
+      }
    }
 }

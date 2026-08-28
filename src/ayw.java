@@ -1,97 +1,77 @@
-import java.io.IOException;
-import java.io.InputStream;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.AbstractCollection;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class ayw extends InputStream {
-   private static final int a = 8192;
-   private final InputStream b;
-   private final byte[] c;
-   private int d;
-   private int e;
+public class ayw<T> extends AbstractCollection<T> {
+   private final Map<Class<?>, List<T>> a = Maps.newHashMap();
+   private final Class<T> b;
+   private final List<T> c = Lists.newArrayList();
 
-   public ayw(InputStream $$0) {
-      this($$0, 8192);
-   }
-
-   public ayw(InputStream $$0, int $$1) {
+   public ayw(Class<T> $$0) {
       this.b = $$0;
-      this.c = new byte[$$1];
+      this.a.put($$0, this.c);
    }
 
    @Override
-   public int read() throws IOException {
-      if (this.e >= this.d) {
-         this.b();
-         if (this.e >= this.d) {
-            return -1;
+   public boolean add(T $$0) {
+      boolean $$1 = false;
+
+      for (Entry<Class<?>, List<T>> $$2 : this.a.entrySet()) {
+         if ($$2.getKey().isInstance($$0)) {
+            $$1 |= $$2.getValue().add($$0);
          }
       }
 
-      return Byte.toUnsignedInt(this.c[this.e++]);
+      return $$1;
    }
 
    @Override
-   public int read(byte[] $$0, int $$1, int $$2) throws IOException {
-      int $$3 = this.a();
-      if ($$3 <= 0) {
-         if ($$2 >= this.c.length) {
-            return this.b.read($$0, $$1, $$2);
-         }
+   public boolean remove(Object $$0) {
+      boolean $$1 = false;
 
-         this.b();
-         $$3 = this.a();
-         if ($$3 <= 0) {
-            return -1;
+      for (Entry<Class<?>, List<T>> $$2 : this.a.entrySet()) {
+         if ($$2.getKey().isInstance($$0)) {
+            List<T> $$3 = $$2.getValue();
+            $$1 |= $$3.remove($$0);
          }
       }
 
-      if ($$2 > $$3) {
-         $$2 = $$3;
-      }
-
-      System.arraycopy(this.c, this.e, $$0, $$1, $$2);
-      this.e += $$2;
-      return $$2;
+      return $$1;
    }
 
    @Override
-   public long skip(long $$0) throws IOException {
-      if ($$0 <= 0L) {
-         return 0L;
+   public boolean contains(Object $$0) {
+      return this.a($$0.getClass()).contains($$0);
+   }
+
+   public <S> Collection<S> a(Class<S> $$0) {
+      if (!this.b.isAssignableFrom($$0)) {
+         throw new IllegalArgumentException("Don't know how to search for " + $$0);
       } else {
-         long $$1 = (long)this.a();
-         if ($$1 <= 0L) {
-            return this.b.skip($$0);
-         } else {
-            if ($$0 > $$1) {
-               $$0 = $$1;
-            }
-
-            this.e = (int)((long)this.e + $$0);
-            return $$0;
-         }
+         List<? extends T> $$1 = this.a.computeIfAbsent($$0, $$0x -> this.c.stream().filter($$0x::isInstance).collect(ae.b()));
+         return (Collection<S>)Collections.unmodifiableCollection($$1);
       }
    }
 
    @Override
-   public int available() throws IOException {
-      return this.a() + this.b.available();
+   public Iterator<T> iterator() {
+      return (Iterator<T>)(this.c.isEmpty() ? Collections.emptyIterator() : Iterators.unmodifiableIterator(this.c.iterator()));
+   }
+
+   public List<T> a() {
+      return ImmutableList.copyOf(this.c);
    }
 
    @Override
-   public void close() throws IOException {
-      this.b.close();
-   }
-
-   private int a() {
-      return this.d - this.e;
-   }
-
-   private void b() throws IOException {
-      this.d = 0;
-      this.e = 0;
-      int $$0 = this.b.read(this.c, 0, this.c.length);
-      if ($$0 > 0) {
-         this.d = $$0;
-      }
+   public int size() {
+      return this.c.size();
    }
 }

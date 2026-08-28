@@ -1,38 +1,60 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class elk extends elt {
-   public static final MapCodec<elk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
-               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
-               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, elk::new)
-   );
-   private final int c;
-   private final double d;
-   private final double e;
+public class elk extends elm {
+   public static final MapCodec<elk> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(elk::new, $$0 -> $$0.b);
+   private final float b;
 
-   private elk(int $$0, double $$1, double $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   @Override
+   protected eln<?> a() {
+      return eln.b;
    }
 
-   public static elk a(int $$0, double $$1, double $$2) {
-      return new elk($$0, $$1, $$2);
+   public elk(float $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected int a(azu $$0, jh $$1) {
-      double $$2 = dgo.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
-      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
+   public void a(elm.a $$0) {
+      bam $$1 = $$0.b();
+      $$0.d().forEach($$2 -> {
+         if ($$1.i() < this.b) {
+            jh $$3 = $$2.h();
+            if ($$0.a($$3)) {
+               a($$3, dtd.d, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            jh $$4 = $$2.i();
+            if ($$0.a($$4)) {
+               a($$4, dtd.f, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            jh $$5 = $$2.f();
+            if ($$0.a($$5)) {
+               a($$5, dtd.e, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            jh $$6 = $$2.g();
+            if ($$0.a($$6)) {
+               a($$6, dtd.c, $$0);
+            }
+         }
+      });
    }
 
-   @Override
-   public elq<?> b() {
-      return elq.g;
+   private static void a(jh $$0, dye $$1, elm.a $$2) {
+      $$2.a($$0, $$1);
+      int $$3 = 4;
+
+      for (jh var4 = $$0.e(); $$2.a(var4) && $$3 > 0; $$3--) {
+         $$2.a(var4, $$1);
+         var4 = var4.e();
+      }
    }
 }

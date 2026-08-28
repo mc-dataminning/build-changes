@@ -1,45 +1,35 @@
-public class cbt extends ccs {
-   private final chb g;
+import com.google.common.collect.ImmutableMap;
 
-   public cbt(chb $$0, double $$1) {
-      super($$0, $$1, 8);
-      this.g = $$0;
+public class cbt<E extends cov> extends bxu<E> {
+   private static final double c = 6.0;
+   private static final double d = 20.0;
+
+   public cbt(int $$0) {
+      super(ImmutableMap.of(cff.aB, cfg.a, cff.o, cfg.b, cff.m, cfg.b, cff.n, cfg.c, cff.B, cfg.c, cff.az, cfg.c, cff.aG, cfg.c), $$0);
    }
 
-   @Override
-   public boolean b() {
-      return this.g.n() && !this.g.gm() && super.b();
+   protected boolean a(ash $$0, E $$1, long $$2) {
+      return true;
    }
 
-   @Override
-   public void d() {
-      super.d();
-      this.g.y(false);
+   protected void b(ash $$0, E $$1, long $$2) {
+      $$1.a(axf.Ct, 5.0F, 1.0F);
    }
 
-   @Override
-   public void e() {
-      super.e();
-      this.g.y(false);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.g.y(this.m());
-   }
-
-   @Override
-   protected boolean a(dfp $$0, jh $$1) {
-      if (!$$0.u($$1.d())) {
-         return false;
-      } else {
-         dvv $$2 = $$0.a_($$1);
-         if ($$2.a(dis.cv)) {
-            return dtf.a($$0, $$1) < 1;
-         } else {
-            return $$2.a(dis.cD) && $$2.c(dlw.b) ? true : $$2.a(axc.S, $$0x -> $$0x.d(dij.b).map($$0xx -> $$0xx != dwi.a).orElse(true));
-         }
+   protected void c(ash $$0, E $$1, long $$2) {
+      if ($$1.c(bwn.m)) {
+         $$1.b(bwn.a);
       }
+
+      $$1.eb().b(cff.aB);
+      $$1.eb().c(cff.B).filter($$1::b).ifPresent($$1x -> {
+         if ($$1.a($$1x, 6.0, 20.0)) {
+            $$1.d($$1x);
+         }
+
+         if (!$$1.eb().a(cff.az)) {
+            cow.a($$1, $$1x.dv());
+         }
+      });
    }
 }

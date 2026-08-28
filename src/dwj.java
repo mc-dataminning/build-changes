@@ -1,17 +1,13 @@
-public enum dwj implements bai {
-   a("floor"),
-   b("ceiling"),
-   c("single_wall"),
-   d("double_wall");
-
-   private final String e;
-
-   private dwj(final String $$0) {
-      this.e = $$0;
+public class dwj extends dup {
+   protected dwj(dur<?> $$0, jh $$1, dxn $$2) {
+      super($$0, $$1, $$2);
    }
 
-   @Override
-   public String c() {
-      return this.e;
+   public dwj(jh $$0, dxn $$1) {
+      this(dur.o, $$0, $$1);
+   }
+
+   public boolean a(jm $$0) {
+      return $$0.o() == jm.a.b;
    }
 }

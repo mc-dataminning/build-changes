@@ -1,74 +1,132 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.Predicate;
 
-public class exh {
-   private final Set<exg<?>> a;
-   private final Set<exg<?>> b;
+public class exh extends exu {
+   public static final MapCodec<exh> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  exh.b.b.fieldOf("source").forGetter($$0x -> $$0x.b),
+                  kt.a.listOf().optionalFieldOf("include").forGetter($$0x -> $$0x.c),
+                  kt.a.listOf().optionalFieldOf("exclude").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, exh::new)
+   );
+   private final exh.b b;
+   private final Optional<List<kt<?>>> c;
+   private final Optional<List<kt<?>>> d;
+   private final Predicate<kt<?>> e;
 
-   exh(Set<exg<?>> $$0, Set<exg<?>> $$1) {
-      this.a = ImmutableSet.copyOf($$0);
-      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
-   }
-
-   public boolean a(exg<?> $$0) {
-      return this.b.contains($$0);
-   }
-
-   public Set<exg<?>> a() {
-      return this.a;
-   }
-
-   public Set<exg<?>> b() {
-      return this.b;
+   exh(List<ezs> $$0, exh.b $$1, Optional<List<kt<?>>> $$2, Optional<List<kt<?>>> $$3) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2.map(List::copyOf);
+      this.d = $$3.map(List::copyOf);
+      List<Predicate<kt<?>>> $$4 = new ArrayList<>(2);
+      $$3.ifPresent($$1x -> $$4.add($$1xx -> !$$1x.contains($$1xx)));
+      $$2.ifPresent($$1x -> $$4.add($$1x::contains));
+      this.e = ae.a($$4);
    }
 
    @Override
-   public String toString() {
-      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
+   public exw<exh> b() {
+      return exx.J;
    }
 
-   public void a(eut $$0, euo $$1) {
-      this.a($$0.c(), $$1);
+   @Override
+   public Set<eza<?>> a() {
+      return this.b.a();
    }
 
-   public void a(azs $$0, euo $$1) {
-      Set<exg<?>> $$2 = $$1.a();
-      Set<exg<?>> $$3 = Sets.difference($$2, this.b);
-      if (!$$3.isEmpty()) {
-         $$0.b("Parameters " + $$3 + " are not provided in this context");
+   @Override
+   public cxk a(cxk $$0, ewh $$1) {
+      kq $$2 = this.b.a($$1);
+      $$0.b($$2.a(this.e));
+      return $$0;
+   }
+
+   public static exh.a a(exh.b $$0) {
+      return new exh.a($$0);
+   }
+
+   public static class a extends exu.a<exh.a> {
+      private final exh.b a;
+      private Optional<Builder<kt<?>>> b = Optional.empty();
+      private Optional<Builder<kt<?>>> c = Optional.empty();
+
+      a(exh.b $$0) {
+         this.a = $$0;
+      }
+
+      public exh.a a(kt<?> $$0) {
+         if (this.b.isEmpty()) {
+            this.b = Optional.of(ImmutableList.builder());
+         }
+
+         this.b.get().add($$0);
+         return this;
+      }
+
+      public exh.a b(kt<?> $$0) {
+         if (this.c.isEmpty()) {
+            this.c = Optional.of(ImmutableList.builder());
+         }
+
+         this.c.get().add($$0);
+         return this;
+      }
+
+      protected exh.a a() {
+         return this;
+      }
+
+      @Override
+      public exv b() {
+         return new exh(this.g(), this.a, this.b.map(Builder::build), this.c.map(Builder::build));
       }
    }
 
-   public static exh.a c() {
-      return new exh.a();
-   }
+   public static enum b implements bba {
+      a("block_entity");
 
-   public static class a {
-      private final Set<exg<?>> a = Sets.newIdentityHashSet();
-      private final Set<exg<?>> b = Sets.newIdentityHashSet();
+      public static final Codec<exh.b> b = bba.b(exh.b::values);
+      private final String c;
 
-      public exh.a a(exg<?> $$0) {
-         if (this.b.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
-         } else {
-            this.a.add($$0);
-            return this;
+      private b(final String $$0) {
+         this.c = $$0;
+      }
+
+      public kq a(ewh $$0) {
+         switch (this) {
+            case a:
+               dup $$1 = $$0.c(ezd.h);
+               return $$1 != null ? $$1.r() : kq.a;
+            default:
+               throw new MatchException(null, null);
          }
       }
 
-      public exh.a b(exg<?> $$0) {
-         if (this.a.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
-         } else {
-            this.b.add($$0);
-            return this;
+      public Set<eza<?>> a() {
+         switch (this) {
+            case a:
+               return Set.of(ezd.h);
+            default:
+               throw new MatchException(null, null);
          }
       }
 
-      public exh a() {
-         return new exh(this.a, this.b);
+      @Override
+      public String c() {
+         return this.c;
       }
    }
 }

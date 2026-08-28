@@ -1,40 +1,57 @@
-public class grd extends gqq<chr, gxb, fzj<gvo>> {
-   private static final alj a = alj.b("textures/entity/fish/pufferfish.png");
-   private final fzj<gvo> b;
-   private final fzj<gvo> k;
-   private final fzj<gvo> l = this.c();
+public class grd extends gri<cko, gxl> {
+   private static final alz a = alz.b("textures/entity/end_crystal/end_crystal.png");
+   private static final glo b = glo.f(a);
+   private final gbc h;
 
-   public grd(gpk.a $$0) {
-      super($$0, new gaq($$0.a(gck.ck)), 0.2F);
-      this.k = new gar($$0.a(gck.cl));
-      this.b = new gas($$0.a(gck.cm));
+   public grd(grj.a $$0) {
+      super($$0);
+      this.f = 0.5F;
+      this.h = new gbc($$0.a(geg.aH));
    }
 
-   public alj a(gxb $$0) {
-      return a;
-   }
+   public void a(gxl $$0, fgl $$1, gle $$2, int $$3) {
+      $$1.a();
+      $$1.b(2.0F, 2.0F, 2.0F);
+      $$1.a(0.0F, -0.5F, 0.0F);
+      this.h.a($$0);
+      this.h.a($$1, $$2.getBuffer(b), $$3, hav.d);
+      $$1.b();
+      fbs $$4 = $$0.b;
+      if ($$4 != null) {
+         float $$5 = a($$0.p);
+         float $$6 = (float)$$4.d;
+         float $$7 = (float)$$4.e;
+         float $$8 = (float)$$4.f;
+         $$1.a($$4);
+         gre.a(-$$6, -$$7 + $$5, -$$8, $$0.p, $$1, $$2, $$3);
+      }
 
-   public gxb b() {
-      return new gxb();
-   }
-
-   public void a(gxb $$0, fer $$1, gjg $$2, int $$3) {
-      this.h = switch ($$0.a) {
-         case 0 -> this.b;
-         case 1 -> this.k;
-         default -> this.l;
-      };
-      this.f = 0.1F + 0.1F * (float)$$0.a;
       super.a($$0, $$1, $$2, $$3);
    }
 
-   public void a(chr $$0, gxb $$1, float $$2) {
+   public static float a(float $$0) {
+      float $$1 = bae.a($$0 * 0.2F) / 2.0F + 0.5F;
+      $$1 = ($$1 * $$1 + $$1) * 0.4F;
+      return $$1 - 1.4F;
+   }
+
+   public gxl a() {
+      return new gxl();
+   }
+
+   public void a(cko $$0, gxl $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.go();
+      $$1.p = (float)$$0.a + $$2;
+      $$1.a = $$0.m();
+      jh $$3 = $$0.l();
+      if ($$3 != null) {
+         $$1.b = fbs.b($$3).d($$0.o($$2));
+      } else {
+         $$1.b = null;
+      }
    }
 
-   protected void a(gxb $$0, fer $$1, float $$2, float $$3) {
-      $$1.a(0.0F, azm.b($$0.p * 0.05F) * 0.08F, 0.0F);
-      super.a($$0, $$1, $$2, $$3);
+   public boolean a(cko $$0, gov $$1, double $$2, double $$3, double $$4) {
+      return super.a($$0, $$1, $$2, $$3, $$4) || $$0.l() != null;
    }
 }

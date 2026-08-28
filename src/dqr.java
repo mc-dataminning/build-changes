@@ -1,28 +1,34 @@
-public enum dqr {
-   a {
-      @Override
-      public boolean a(dvv $$0, der $$1, jh $$2, jm $$3) {
-         return diq.a($$0.h($$1, $$2), $$3);
-      }
-   },
-   b {
-      private final int d = 1;
-      private final fas e = diq.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0);
+import com.mojang.serialization.MapCodec;
 
-      @Override
-      public boolean a(dvv $$0, der $$1, jh $$2, jm $$3) {
-         return !fap.c($$0.h($$1, $$2).a($$3), this.e, fac.c);
-      }
-   },
-   c {
-      private final int d = 2;
-      private final fas e = fap.a(fap.b(), diq.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0), fac.e);
+public class dqr extends dke implements dkh {
+   public static final MapCodec<dqr> a = b(dqr::new);
 
-      @Override
-      public boolean a(dvv $$0, der $$1, jh $$2, jm $$3) {
-         return !fap.c($$0.h($$1, $$2).a($$3), this.e, fac.c);
-      }
-   };
+   @Override
+   public MapCodec<dqr> a() {
+      return a;
+   }
 
-   public abstract boolean a(dvv var1, der var2, jh var3, jm var4);
+   public dqr(dxm.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   public boolean b(dhd $$0, jh $$1, dxn $$2) {
+      return $$0.a_($$1.e()).l();
+   }
+
+   @Override
+   public boolean a(dha $$0, bam $$1, jh $$2, dxn $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(ash $$0, bam $$1, jh $$2, dxn $$3) {
+      $$0.b($$2.e(), dkg.tb.m());
+   }
+
+   @Override
+   public jh a(jh $$0) {
+      return $$0.e();
+   }
 }

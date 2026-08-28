@@ -1,30 +1,29 @@
-public record aho(int b, int c, boolean d) implements zq<agw> {
-   public static final zh<wg, aho> a = zq.a(aho::a, aho::new);
+public class aho implements aac<ahm> {
+   public static final zt<ws, aho> a = aac.a(aho::a, aho::new);
+   private final int b;
 
-   private aho(wg $$0) {
-      this($$0.l(), $$0.x(), $$0.readBoolean());
+   public aho(int $$0) {
+      this.b = $$0;
    }
 
-   private void a(wg $$0) {
+   private aho(ws $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(ws $$0) {
       $$0.c(this.b);
-      $$0.f(this.c);
-      $$0.a(this.d);
    }
 
    @Override
-   public zs<aho> a() {
-      return agu.bx;
+   public aae<aho> a() {
+      return ahk.bk;
    }
 
-   public void a(agw $$0) {
+   public void a(ahm $$0) {
       $$0.a(this);
    }
 
-   public int e() {
-      return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
+   public int b() {
+      return this.b;
    }
 }

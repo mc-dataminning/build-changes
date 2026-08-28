@@ -1,71 +1,39 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-public class fwe {
-   private final geb a;
-   private final gej b;
-   private final Predicate<gee.a> c;
-   @Nullable
-   private ye d = null;
-   private int e;
-   private int f;
-   @Nullable
-   private xz g;
+public class fwe implements fwc {
+   private static final int c = 5;
+   private static final int d = 12;
+   public static final int a = 3;
+   public static final int b = 5;
+   private final fsg e;
 
-   public fwe(gep $$0, Predicate<gee.a> $$1) {
-      this.a = $$0.b();
-      this.b = new gej($$0.a().b().leadingContextMessageCount());
-      this.c = $$1;
-      this.e = this.a.b();
+   public fwe(fsg $$0) {
+      this.e = $$0;
    }
 
-   public void a(int $$0, fwe.a $$1) {
-      int $$2 = 0;
-
-      while ($$2 < $$0) {
-         ged $$3 = this.a.b(this.e);
-         if ($$3 == null) {
-            break;
-         }
-
-         int $$4 = this.e--;
-         if ($$3 instanceof gee.a $$5 && !$$5.g().equals(this.g)) {
-            if (this.a($$1, $$5)) {
-               if (this.f > 0) {
-                  $$1.a(xj.a("gui.chatSelection.fold", this.f));
-                  this.f = 0;
-               }
-
-               $$1.a($$4, $$5);
-               $$2++;
-            } else {
-               this.f++;
-            }
-
-            this.g = $$5.g();
-         }
+   @Override
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i($$2 + 12, $$3);
+      if ($$6.x + $$4 > $$0 - 5) {
+         $$6.x = Math.max($$2 - 12 - $$4, 9);
       }
-   }
 
-   private boolean a(fwe.a $$0, gee.a $$1) {
-      xz $$2 = $$1.g();
-      boolean $$3 = this.b.b($$2);
-      if (this.c.test($$1)) {
-         this.b.a($$2);
-         if (this.d != null && !this.d.a($$2.k())) {
-            $$0.a(xj.a("gui.chatSelection.join", $$1.f().getName()).a(n.o));
-         }
-
-         this.d = $$2.k();
-         return true;
+      $$6.y += 3;
+      int $$7 = $$5 + 3 + 3;
+      int $$8 = this.e.c() + 3 + a(0, 0, this.e.h());
+      int $$9 = $$1 - 5;
+      if ($$8 + $$7 <= $$9) {
+         $$6.y = $$6.y + a($$6.y, this.e.b(), this.e.h());
       } else {
-         return $$3;
+         $$6.y = $$6.y - ($$7 + a($$6.y, this.e.c(), this.e.h()));
       }
+
+      return $$6;
    }
 
-   public interface a {
-      void a(int var1, gee.a var2);
-
-      void a(xj var1);
+   private static int a(int $$0, int $$1, int $$2) {
+      int $$3 = Math.min(Math.abs($$0 - $$1), $$2);
+      return Math.round(bae.h((float)$$3 / (float)$$2, (float)($$2 - 3), 5.0F));
    }
 }

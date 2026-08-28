@@ -1,67 +1,35 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class djq extends dpc implements dpr {
-   public static final MapCodec<djq> a = b(djq::new);
-   public static final dwm b = dwl.C;
-   protected static final float c = 6.5F;
-   protected static final float d = 9.5F;
-   protected static final fas e = diq.a(6.5, 0.0, 6.5, 9.5, 16.0, 9.5);
-   protected static final fas f = diq.a(6.5, 6.5, 0.0, 9.5, 9.5, 16.0);
-   protected static final fas g = diq.a(0.0, 6.5, 6.5, 16.0, 9.5, 9.5);
-
-   @Override
-   public MapCodec<djq> a() {
-      return a;
-   }
-
-   public djq(dvu.d $$0) {
+public abstract class djq extends dke implements dmy {
+   protected djq(dxm.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, Boolean.valueOf(false)).b(i, jm.a.b));
    }
 
    @Override
-   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
-      switch ((jm.a)$$0.c(i)) {
-         case a:
-         default:
-            return g;
-         case c:
-            return f;
-         case b:
-            return e;
-      }
+   protected abstract MapCodec<? extends djq> a();
+
+   @Override
+   protected dqn a_(dxn $$0) {
+      return dqn.a;
+   }
+
+   @Override
+   protected boolean a(dxn $$0, dha $$1, jh $$2, int $$3, int $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      dup $$5 = $$1.c_($$2);
+      return $$5 == null ? false : $$5.a_($$3, $$4);
    }
 
    @Nullable
    @Override
-   public dvv a(dad $$0) {
-      erv $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == erw.c;
-      return super.a($$0).b(b, Boolean.valueOf($$2));
+   protected btg b(dxn $$0, dha $$1, jh $$2) {
+      dup $$3 = $$1.c_($$2);
+      return $$3 instanceof btg ? (btg)$$3 : null;
    }
 
-   @Override
-   protected dvv a(dvv $$0, dfp $$1, dgb $$2, jh $$3, jm $$4, jh $$5, dvv $$6, azu $$7) {
-      if ($$0.c(b)) {
-         $$2.a($$3, erw.c, erw.c.a($$1));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected void a(dvw.a<diq, dvv> $$0) {
-      $$0.a(b).a(i);
-   }
-
-   @Override
-   protected erv b_(dvv $$0) {
-      return $$0.c(b) ? erw.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a(dvv $$0, esk $$1) {
-      return false;
+   @Nullable
+   protected static <E extends dup, A extends dup> duq<A> a(dur<A> $$0, dur<E> $$1, duq<? super E> $$2) {
+      return $$1 == $$0 ? $$2 : null;
    }
 }

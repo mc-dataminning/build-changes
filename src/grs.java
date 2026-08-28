@@ -1,30 +1,23 @@
-public class grs<T extends cmj> extends gqq<T, gwm, gbk> {
-   private static final alj a = alj.b("textures/entity/spider/spider.png");
-
-   public grs(gpk.a $$0) {
-      this($$0, gck.cO);
+public class grs extends gsp<cjm, gxy, gbj> {
+   public grs(grj.a $$0) {
+      super($$0, new gbj($$0.a(geg.aM)), 0.3F);
    }
 
-   public grs(gpk.a $$0, gcj $$1) {
-      super($$0, new gbk($$0.a($$1)), 0.8F);
-      this.a(new gue<>(this));
+   public alz a(gxy $$0) {
+      return $$0.f;
    }
 
-   @Override
-   protected float aV_() {
-      return 180.0F;
+   public gxy b() {
+      return new gxy();
    }
 
-   @Override
-   public alj b(gwm $$0) {
-      return a;
-   }
-
-   public gwm b() {
-      return new gwm();
-   }
-
-   public void a(T $$0, gwm $$1, float $$2) {
+   public void a(cjm $$0, gxy $$1, float $$2) {
       super.a($$0, $$1, $$2);
+      $$1.a = $$0.bm();
+      $$1.b.a($$0.cd);
+      $$1.c.a($$0.ce);
+      $$1.d.a($$0.cf);
+      $$1.e.a($$0.cg);
+      $$1.f = $$0.x().a().a();
    }
 }

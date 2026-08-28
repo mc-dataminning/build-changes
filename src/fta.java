@@ -1,16 +1,31 @@
-public class fta implements csn {
-   private final fke a;
+public class fta extends ftr {
+   private final xv a;
 
-   public fta(fke $$0) {
-      this.a = $$0;
+   public fta(xv $$0, xv $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
    @Override
-   public void a(crz $$0, int $$1, cwm $$2) {
-      this.a.r.a($$2, $$1);
+   protected void aT_() {
+      super.aT_();
+      this.c(fny.a(xu.e, $$0 -> this.m.a(null)).a(this.n / 2 - 100, 140, 200, 20).a());
    }
 
    @Override
-   public void a(crz $$0, int $$1, int $$2) {
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 90, 16777215);
+      $$0.a(this.p, this.a, this.n / 2, 110, 16777215);
+   }
+
+   @Override
+   public void b(fnl $$0, int $$1, int $$2, float $$3) {
+      $$0.b(0, 0, this.n, this.o, -12574688, -11530224);
+   }
+
+   @Override
+   public boolean aH_() {
+      return false;
    }
 }

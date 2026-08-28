@@ -1,38 +1,26 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.function.Function;
 
-public class bbz extends bgv {
-   public bbz(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityJukeboxFix", bia.s, "minecraft:jukebox");
+public class bbz extends DataFix {
+   private final String a;
+   private final Function<String, String> b;
+
+   public bbz(Schema $$0, boolean $$1, String $$2, Function<String, String> $$3) {
+      super($$0, $$1);
+      this.a = $$2;
+      this.b = $$3;
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      Type<?> $$1 = this.getInputSchema().getChoiceType(bia.s, "minecraft:jukebox");
-      Type<?> $$2 = $$1.findFieldType("RecordItem");
-      OpticFinder<?> $$3 = DSL.fieldFinder("RecordItem", $$2);
-      Dynamic<?> $$4 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
-      int $$5 = $$4.get("Record").asInt(0);
-      if ($$5 > 0) {
-         $$4.remove("Record");
-         String $$6 = bga.a(bfm.a($$5), 0);
-         if ($$6 != null) {
-            Dynamic<?> $$7 = $$4.emptyMap();
-            $$7 = $$7.set("id", $$7.createString($$6));
-            $$7 = $$7.set("Count", $$7.createByte((byte)1));
-            return $$0.set(
-                  $$3,
-                  (Typed)((Pair)$$2.readTyped($$7).result().orElseThrow(() -> new IllegalStateException("Could not create record item stack."))).getFirst()
-               )
-               .set(DSL.remainderFinder(), $$4);
-         }
-      }
-
-      return $$0;
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         this.a, this.getInputSchema().getType(bis.p), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.updateMapValues($$1 -> {
+                  String $$2 = ((Dynamic)$$1.getFirst()).asString("");
+                  return $$1.mapFirst($$2x -> $$0x.createString(this.b.apply($$2)));
+               }))
+      );
    }
 }

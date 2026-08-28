@@ -1,13 +1,7 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class cdd extends cdc {
-   public cdd(bvp $$0, double $$1, int $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   @Nullable
-   @Override
-   protected ezy h() {
-      return bxc.a(this.b, 10, 7);
+public abstract class cdd extends ccz {
+   public cdd() {
+      this.a(EnumSet.of(ccz.a.a, ccz.a.c));
    }
 }

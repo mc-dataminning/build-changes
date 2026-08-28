@@ -1,43 +1,20 @@
-public class cev extends cet {
-   private boolean p;
+import javax.annotation.Nullable;
 
-   public cev(bvj $$0, dfm $$1) {
-      super($$0, $$1);
+public class cev<T extends bwb> extends ces<T> {
+   private final bwy i;
+
+   public cev(bwy $$0, Class<T> $$1, boolean $$2, @Nullable cgs.a $$3) {
+      super($$0, $$1, 10, $$2, false, $$3);
+      this.i = $$0;
    }
 
    @Override
-   protected esl a(int $$0) {
-      this.p = this.a.aq() == bus.G;
-      this.o = new esp(this.p);
-      return new esl(this.o, $$0);
+   public boolean b() {
+      return !this.i.p() && super.b();
    }
 
    @Override
-   protected boolean a() {
-      return this.p || this.a.bn();
-   }
-
-   @Override
-   protected ezy b() {
-      return new ezy(this.a.dA(), this.a.e(0.5), this.a.dG());
-   }
-
-   @Override
-   protected double a(ezy $$0) {
-      return $$0.e;
-   }
-
-   @Override
-   protected boolean a(ezy $$0, ezy $$1) {
-      return a(this.a, $$0, $$1, false);
-   }
-
-   @Override
-   public boolean a(jh $$0) {
-      return !this.b.a_($$0).s();
-   }
-
-   @Override
-   public void a(boolean $$0) {
+   public boolean c() {
+      return this.d != null ? this.d.a(a(this.e), this.e, this.c) : super.c();
    }
 }

@@ -1,32 +1,46 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.io.IOException;
-import java.nio.file.Files;
+import com.google.gson.JsonElement;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Encoder;
+import com.mojang.serialization.JsonOps;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.stream.Stream;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
-public class pp {
-   public static void a(String[] $$0) throws IOException {
-      ab.a(t.a);
-      all.a();
+public class pp implements mh {
+   private final mj d;
+   private final CompletableFuture<js.a> e;
 
-      for (String $$1 : $$0) {
-         a($$1);
-      }
+   public pp(mj $$0, CompletableFuture<js.a> $$1) {
+      this.e = $$1;
+      this.d = $$0;
    }
 
-   private static void a(String $$0) throws IOException {
-      try (Stream<Path> $$1 = Files.walk(Paths.get($$0))) {
-         $$1.filter($$0x -> $$0x.toString().endsWith(".snbt")).forEach($$0x -> {
-            try {
-               String $$1x = Files.readString($$0x);
-               ul $$2 = va.a($$1x);
-               ul $$3 = pr.a($$0x.toString(), $$2);
-               po.a(me.a, $$0x, va.a($$3));
-            } catch (IOException | CommandSyntaxException var4) {
-               throw new RuntimeException(var4);
-            }
-         });
-      }
+   @Override
+   public CompletableFuture<?> a(mf $$0) {
+      return this.e.thenCompose($$1 -> {
+         DynamicOps<JsonElement> $$2 = $$1.a(JsonOps.INSTANCE);
+         return CompletableFuture.allOf(alu.a.stream().flatMap($$3 -> this.a($$0, $$1, $$2, (alu.d<?>)$$3).stream()).toArray(CompletableFuture[]::new));
+      });
+   }
+
+   private <T> Optional<CompletableFuture<?>> a(mf $$0, js.a $$1, DynamicOps<JsonElement> $$2, alu.d<T> $$3) {
+      aly<? extends kd<T>> $$4 = $$3.a();
+      return $$1.a($$4).map($$4x -> {
+         mj.a $$5 = this.d.a($$4);
+         return CompletableFuture.allOf($$4x.c().map($$4xx -> a($$5.a($$4xx.h().a()), $$0, $$2, $$3.b(), $$4xx.a())).toArray(CompletableFuture[]::new));
+      });
+   }
+
+   private static <E> CompletableFuture<?> a(Path $$0, mf $$1, DynamicOps<JsonElement> $$2, Encoder<E> $$3, E $$4) {
+      return (CompletableFuture<?>)$$3.encodeStart($$2, $$4)
+         .mapOrElse(
+            $$2x -> mh.a($$1, $$2x, $$0),
+            $$1x -> CompletableFuture.failedFuture(new IllegalStateException("Couldn't generate file '" + $$0 + "': " + $$1x.message()))
+         );
+   }
+
+   @Override
+   public final String a() {
+      return "Registries";
    }
 }

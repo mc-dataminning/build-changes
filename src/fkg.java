@@ -1,37 +1,40 @@
-import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public enum fkg {
-   a(0, "options.narrator.off"),
-   b(1, "options.narrator.all"),
-   c(2, "options.narrator.chat"),
-   d(3, "options.narrator.system");
+public class fkg {
+   public final int a;
+   @Nullable
+   public final String b;
 
-   private static final IntFunction<fkg> e = ayd.a(fkg::a, values(), ayd.a.b);
-   private final int f;
-   private final xj g;
-
-   private fkg(final int $$0, final String $$1) {
-      this.f = $$0;
-      this.g = xj.c($$1);
+   fkg(int $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public int a() {
-      return this.f;
+   @Nullable
+   public String a() {
+      if (this.a >= 200 && this.a < 300) {
+         return null;
+      } else {
+         return this.a == 400 && this.b != null ? this.b : String.valueOf(this.a);
+      }
    }
 
-   public xj b() {
-      return this.g;
-   }
+   public static class a {
+      private int a = -1;
+      private String b;
 
-   public static fkg a(int $$0) {
-      return e.apply($$0);
-   }
+      public fkg.a a(int $$0) {
+         this.a = $$0;
+         return this;
+      }
 
-   public boolean c() {
-      return this == b || this == c;
-   }
+      public fkg.a a(@Nullable String $$0) {
+         this.b = $$0;
+         return this;
+      }
 
-   public boolean d() {
-      return this == b || this == d;
+      public fkg a() {
+         return new fkg(this.a, this.b);
+      }
    }
 }

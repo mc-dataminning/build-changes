@@ -1,30 +1,37 @@
-import java.util.Optional;
+public class afw implements aac<acr> {
+   public static final zt<ws, afw> a = aac.a(afw::a, afw::new);
+   private final int b;
+   private final int c;
 
-public record afw(String b, String c, int d, Optional<xj> e, Optional<yz> f) implements zq<acf> {
-   public static final zh<wu, afw> a = zh.a(zf.n, afw::b, zf.n, afw::e, zf.h, afw::f, xl.e, afw::g, zb.d, afw::h, afw::new);
-
-   @Override
-   public zs<afw> a() {
-      return agu.aM;
+   public afw(int $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public void a(acf $$0) {
+   private afw(ws $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
+   }
+
+   private void a(ws $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
+   }
+
+   @Override
+   public aae<afw> a() {
+      return ahk.aB;
+   }
+
+   public void a(acr $$0) {
       $$0.a(this);
    }
 
-   public String e() {
+   public int b() {
+      return this.b;
+   }
+
+   public int e() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public Optional<xj> g() {
-      return this.e;
-   }
-
-   public Optional<yz> h() {
-      return this.f;
    }
 }

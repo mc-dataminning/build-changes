@@ -1,69 +1,81 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
+import com.mojang.logging.LogUtils;
 import java.util.Arrays;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Function;
+import java.util.Objects;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class bbd extends DataFix {
-   protected TypeReference a;
+public class bbd {
+   private static final Logger a = LogUtils.getLogger();
+   private final String b;
+   private final Semaphore c = new Semaphore(1);
+   private final Lock d = new ReentrantLock();
+   @Nullable
+   private volatile Thread e;
+   @Nullable
+   private volatile z f;
 
-   public bbd(Schema $$0, TypeReference $$1) {
-      super($$0, false);
-      this.a = $$1;
+   public bbd(String $$0) {
+      this.b = $$0;
    }
 
-   protected Typed<?> a(Typed<?> $$0, String $$1, Function<Dynamic<?>, Dynamic<?>> $$2) {
-      Type<?> $$3 = this.getInputSchema().getChoiceType(this.a, $$1);
-      Type<?> $$4 = this.getOutputSchema().getChoiceType(this.a, $$1);
-      return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$1x -> $$1x.update(DSL.remainderFinder(), $$2));
-   }
+   public void a() {
+      boolean $$0 = false;
 
-   protected static Optional<Dynamic<?>> a(Dynamic<?> $$0, String $$1, String $$2) {
-      return a($$0, $$1).map($$3 -> $$0.remove($$1).set($$2, $$3));
-   }
+      try {
+         this.d.lock();
+         if (!this.c.tryAcquire()) {
+            this.e = Thread.currentThread();
+            $$0 = true;
+            this.d.unlock();
 
-   protected static Optional<Dynamic<?>> b(Dynamic<?> $$0, String $$1, String $$2) {
-      return $$0.get($$1).result().flatMap(bbd::a).map($$3 -> $$0.remove($$1).set($$2, $$3));
-   }
-
-   protected static Optional<Dynamic<?>> c(Dynamic<?> $$0, String $$1, String $$2) {
-      String $$3 = $$1 + "Most";
-      String $$4 = $$1 + "Least";
-      return d($$0, $$3, $$4).map($$4x -> $$0.remove($$3).remove($$4).set($$2, $$4x));
-   }
-
-   protected static Optional<Dynamic<?>> a(Dynamic<?> $$0, String $$1) {
-      return $$0.get($$1).result().flatMap($$1x -> {
-         String $$2 = $$1x.asString(null);
-         if ($$2 != null) {
             try {
-               UUID $$3 = UUID.fromString($$2);
-               return a($$0, $$3.getMostSignificantBits(), $$3.getLeastSignificantBits());
-            } catch (IllegalArgumentException var4) {
+               this.c.acquire();
+            } catch (InterruptedException var6) {
+               Thread.currentThread().interrupt();
             }
+
+            throw this.f;
+         }
+      } finally {
+         if (!$$0) {
+            this.d.unlock();
+         }
+      }
+   }
+
+   public void b() {
+      try {
+         this.d.lock();
+         Thread $$0 = this.e;
+         if ($$0 != null) {
+            z $$1 = a(this.b, $$0);
+            this.f = $$1;
+            this.c.release();
+            throw $$1;
          }
 
-         return Optional.empty();
-      });
+         this.c.release();
+      } finally {
+         this.d.unlock();
+      }
    }
 
-   protected static Optional<Dynamic<?>> a(Dynamic<?> $$0) {
-      return d($$0, "M", "L");
+   public static z a(String $$0, @Nullable Thread $$1) {
+      String $$2 = Stream.of(Thread.currentThread(), $$1).filter(Objects::nonNull).map(bbd::a).collect(Collectors.joining("\n"));
+      String $$3 = "Accessing " + $$0 + " from multiple threads";
+      o $$4 = new o($$3, new IllegalStateException($$3));
+      p $$5 = $$4.a("Thread dumps");
+      $$5.a("Thread dumps", $$2);
+      a.error("Thread dumps: \n" + $$2);
+      return new z($$4);
    }
 
-   protected static Optional<Dynamic<?>> d(Dynamic<?> $$0, String $$1, String $$2) {
-      long $$3 = $$0.get($$1).asLong(0L);
-      long $$4 = $$0.get($$2).asLong(0L);
-      return $$3 != 0L && $$4 != 0L ? a($$0, $$3, $$4) : Optional.empty();
-   }
-
-   protected static Optional<Dynamic<?>> a(Dynamic<?> $$0, long $$1, long $$2) {
-      return Optional.of($$0.createIntList(Arrays.stream(new int[]{(int)($$1 >> 32), (int)$$1, (int)($$2 >> 32), (int)$$2})));
+   private static String a(Thread $$0) {
+      return $$0.getName() + ": \n\tat " + Arrays.stream($$0.getStackTrace()).map(Object::toString).collect(Collectors.joining("\n\tat "));
    }
 }

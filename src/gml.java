@@ -1,19 +1,45 @@
-public class gml implements glr<duu> {
-   private final gpi a;
+public class gml {
+   protected final int[] a;
+   protected final int b;
+   protected final jm c;
+   protected final hbe d;
+   private final boolean e;
+   private final int f;
 
-   public gml(gls.a $$0) {
-      this.a = $$0.c();
+   public gml(int[] $$0, int $$1, jm $$2, hbe $$3, boolean $$4, int $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   public void a(duu $$0, float $$1, fer $$2, gjg $$3, int $$4, int $$5) {
-      dfm $$6 = $$0.i();
-      if ($$6 != null) {
-         dux $$7 = $$0.c();
-         dva $$8 = $$7.f();
-         bul $$9 = $$8.a($$7, $$6, $$7.i());
-         if ($$9 != null) {
-            gmh.a($$1, $$2, $$3, $$4, $$9, this.a, $$8.e(), $$8.d());
-         }
-      }
+   public hbe a() {
+      return this.d;
+   }
+
+   public int[] b() {
+      return this.a;
+   }
+
+   public boolean c() {
+      return this.b != -1;
+   }
+
+   public int d() {
+      return this.b;
+   }
+
+   public jm e() {
+      return this.c;
+   }
+
+   public boolean f() {
+      return this.e;
+   }
+
+   public int g() {
+      return this.f;
    }
 }

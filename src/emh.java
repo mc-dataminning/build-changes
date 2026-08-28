@@ -1,29 +1,53 @@
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public abstract class emh extends emi {
-   private final emh.a d;
-   private final int e;
+public class emh extends emj {
+   public static final MapCodec<emh> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               eec.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               eec.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, emh::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final eec d;
+   private final eec e;
    private final int f;
 
-   protected emh(emh.a $$0, int $$1, int $$2, emi.c $$3) {
-      super($$3);
+   private emh(eec $$0, eec $$1, int $$2) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;
    }
 
+   public static emh a(eec $$0, eec $$1, int $$2) {
+      return new emh($$0, $$1, $$2);
+   }
+
    @Override
-   public Optional<emi.b> a(emi.a $$0) {
-      return a($$0, this.e, this.f) < $$0.b().f() ? Optional.empty() : a($$0, ebq.a.a, $$1 -> this.a($$1, $$0));
+   public int a(bam $$0, eef $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$3 - $$2 - this.f + 1 <= 0) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = $$0.a($$3 - $$2 - this.f + 1);
+         return $$0.a($$4 + this.f) + $$2;
+      }
    }
 
-   private void a(ena $$0, emi.a $$1) {
-      des $$2 = $$1.h();
-      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
+   @Override
+   public emk<?> a() {
+      return emk.c;
    }
 
-   @FunctionalInterface
-   protected interface a {
-      emm construct(ecp var1, int var2, int var3);
+   @Override
+   public String toString() {
+      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
    }
 }

@@ -1,20 +1,10 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejk extends ejb {
-   public static final MapCodec<ejk> b = dvv.a.fieldOf("state").xmap(ejk::new, $$0 -> $$0.c);
-   private final dvv c;
+public record ejk(ekt b) implements eis {
+   public static final Codec<ejk> a = RecordCodecBuilder.create($$0 -> $$0.group(ekt.a.fieldOf("to_place").forGetter($$0x -> $$0x.b)).apply($$0, ejk::new));
 
-   protected ejk(dvv $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   protected ejc<?> a() {
-      return ejc.a;
-   }
-
-   @Override
-   public dvv a(azu $$0, jh $$1) {
-      return this.c;
+   public ekt a() {
+      return this.b;
    }
 }

@@ -1,8 +1,20 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface fbw {
+   fbw a = ($$0, $$1) -> false;
+   fbw b = ($$0, $$1) -> !$$0 && !$$1;
+   fbw c = ($$0, $$1) -> $$1 && !$$0;
+   fbw d = ($$0, $$1) -> !$$0;
+   fbw e = ($$0, $$1) -> $$0 && !$$1;
+   fbw f = ($$0, $$1) -> !$$1;
+   fbw g = ($$0, $$1) -> $$0 != $$1;
+   fbw h = ($$0, $$1) -> !$$0 || !$$1;
+   fbw i = ($$0, $$1) -> $$0 && $$1;
+   fbw j = ($$0, $$1) -> $$0 == $$1;
+   fbw k = ($$0, $$1) -> $$1;
+   fbw l = ($$0, $$1) -> !$$0 || $$1;
+   fbw m = ($$0, $$1) -> $$0;
+   fbw n = ($$0, $$1) -> $$0 || !$$1;
+   fbw o = ($$0, $$1) -> $$0 || $$1;
+   fbw p = ($$0, $$1) -> true;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fbw {
+   boolean apply(boolean var1, boolean var2);
 }

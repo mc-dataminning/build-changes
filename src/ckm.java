@@ -1,45 +1,63 @@
-import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ckm {
-   private static final Logger a = LogUtils.getLogger();
-   private final cjv b;
-   private final ckf[] c = new ckf[ckl.c()];
+public class ckm extends bvf {
+   public final ckp a;
+   public final String b;
+   private final bvi c;
+
+   public ckm(ckp $$0, String $$1, float $$2, float $$3) {
+      super($$0.aq(), $$0.dV());
+      this.c = bvi.b($$2, $$3);
+      this.m_();
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   @Override
+   protected void a(alg.a $$0) {
+   }
+
+   @Override
+   protected void a(ux $$0) {
+   }
+
+   @Override
+   protected void b(ux $$0) {
+   }
+
+   @Override
+   public boolean bH() {
+      return true;
+   }
+
    @Nullable
-   private ckf d;
-
-   public ckm(cjv $$0) {
-      this.b = $$0;
-      this.a(ckl.k);
+   @Override
+   public cxk dI() {
+      return this.a.dI();
    }
 
-   public void a(ckl<?> $$0) {
-      if (this.d == null || $$0 != this.d.h()) {
-         if (this.d != null) {
-            this.d.d();
-         }
-
-         this.d = this.b((ckl<ckf>)$$0);
-         if (!this.b.dV().C) {
-            this.b.au().a(cjv.a, $$0.b());
-         }
-
-         a.debug("Dragon is now in phase {} on the {}", $$0, this.b.dV().C ? "client" : "server");
-         this.d.c();
-      }
+   @Override
+   public final boolean a(ash $$0, btv $$1, float $$2) {
+      return this.d($$1) ? false : this.a.a($$0, this, $$1, $$2);
    }
 
-   public ckf a() {
-      return this.d;
+   @Override
+   public boolean u(bvf $$0) {
+      return this == $$0 || this.a == $$0;
    }
 
-   public <T extends ckf> T b(ckl<T> $$0) {
-      int $$1 = $$0.b();
-      if (this.c[$$1] == null) {
-         this.c[$$1] = $$0.a(this.b);
-      }
+   @Override
+   public aac<acr> a(asf $$0) {
+      throw new UnsupportedOperationException();
+   }
 
-      return (T)this.c[$$1];
+   @Override
+   public bvi a(bwn $$0) {
+      return this.c;
+   }
+
+   @Override
+   public boolean dT() {
+      return false;
    }
 }

@@ -1,9 +1,21 @@
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import javax.annotation.meta.TypeQualifierDefault;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
 
-@TypeQualifierDefault({ElementType.TYPE, ElementType.METHOD})
-@Retention(RetentionPolicy.CLASS)
-public @interface fby {
+public class fby extends AbstractDoubleList {
+   private final int a;
+
+   public fby(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Need at least 1 part");
+      } else {
+         this.a = $$0;
+      }
+   }
+
+   public double getDouble(int $$0) {
+      return (double)$$0 / (double)this.a;
+   }
+
+   public int size() {
+      return this.a + 1;
+   }
 }

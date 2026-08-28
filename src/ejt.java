@@ -1,23 +1,29 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalInt;
 
-public class ejt<P extends ejs> {
-   public static final ejt<eju> a = a("trunk_vine", eju.a);
-   public static final ejt<ejr> b = a("leave_vine", ejr.a);
-   public static final ejt<ejq> c = a("cocoa", ejq.a);
-   public static final ejt<ejp> d = a("beehive", ejp.a);
-   public static final ejt<ejn> e = a("alter_ground", ejn.a);
-   public static final ejt<ejo> f = a("attached_to_leaves", ejo.a);
-   private final MapCodec<P> g;
+public abstract class ejt {
+   public static final Codec<ejt> a = ma.Y.q().dispatch(ejt::b, eju::a);
+   protected static final int b = 16;
+   protected final OptionalInt c;
 
-   private static <P extends ejs> ejt<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(lz.X, $$0, new ejt<>($$1));
+   protected static <S extends ejt> RecordCodecBuilder<S, OptionalInt> a() {
+      return Codec.intRange(0, 80)
+         .optionalFieldOf("min_clipped_height")
+         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
+         .forGetter($$0 -> $$0.c);
    }
 
-   private ejt(MapCodec<P> $$0) {
-      this.g = $$0;
+   public ejt(OptionalInt $$0) {
+      this.c = $$0;
    }
 
-   public MapCodec<P> a() {
-      return this.g;
+   protected abstract eju<?> b();
+
+   public abstract int a(int var1, int var2);
+
+   public OptionalInt c() {
+      return this.c;
    }
 }

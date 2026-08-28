@@ -1,47 +1,28 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 
 public class apv {
-   private static final int a = -1;
-
    public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("weather").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     ((LiteralArgumentBuilder)ex.a("clear").executes($$0x -> a((ew)$$0x.getSource(), -1)))
-                        .then(ex.a("duration", gl.a(1)).executes($$0x -> a((ew)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
-                  ))
-               .then(
-                  ((LiteralArgumentBuilder)ex.a("rain").executes($$0x -> b((ew)$$0x.getSource(), -1)))
-                     .then(ex.a("duration", gl.a(1)).executes($$0x -> b((ew)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
-               ))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("setworldspawn").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((ew)$$0x.getSource(), jh.a((ka)((ew)$$0x.getSource()).d()), 0.0F)))
             .then(
-               ((LiteralArgumentBuilder)ex.a("thunder").executes($$0x -> c((ew)$$0x.getSource(), -1)))
-                  .then(ex.a("duration", gl.a(1)).executes($$0x -> c((ew)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
+               ((RequiredArgumentBuilder)ex.a("pos", gs.a()).executes($$0x -> a((ew)$$0x.getSource(), gs.c($$0x, "pos"), 0.0F)))
+                  .then(ex.a("angle", fc.a()).executes($$0x -> a((ew)$$0x.getSource(), gs.c($$0x, "pos"), fc.a($$0x, "angle"))))
             )
       );
    }
 
-   private static int a(ew $$0, int $$1, brp $$2) {
-      return $$1 == -1 ? $$2.a($$0.l().J().G_()) : $$1;
-   }
-
-   private static int a(ew $$0, int $$1) {
-      $$0.l().J().a(a($$0, $$1, arp.b), 0, false, false);
-      $$0.a(() -> xj.c("commands.weather.set.clear"), true);
-      return $$1;
-   }
-
-   private static int b(ew $$0, int $$1) {
-      $$0.l().J().a(0, a($$0, $$1, arp.c), true, false);
-      $$0.a(() -> xj.c("commands.weather.set.rain"), true);
-      return $$1;
-   }
-
-   private static int c(ew $$0, int $$1) {
-      $$0.l().J().a(0, a($$0, $$1, arp.d), true, true);
-      $$0.a(() -> xj.c("commands.weather.set.thunder"), true);
-      return $$1;
+   private static int a(ew $$0, jh $$1, float $$2) {
+      ash $$3 = $$0.e();
+      if ($$3.ah() != dha.i) {
+         $$0.b(xv.c("commands.setworldspawn.failure.not_overworld"));
+         return 0;
+      } else {
+         $$3.a($$1, $$2);
+         $$0.a(() -> xv.a("commands.setworldspawn.success", $$1.u(), $$1.v(), $$1.w(), $$2), true);
+         return 1;
+      }
    }
 }

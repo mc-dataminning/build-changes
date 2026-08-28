@@ -1,27 +1,64 @@
-import com.mojang.logging.LogUtils;
-import java.security.PrivateKey;
-import java.security.Signature;
-import org.slf4j.Logger;
+import java.io.Serializable;
+import java.util.Deque;
+import java.util.List;
+import java.util.RandomAccess;
+import javax.annotation.Nullable;
 
-public interface baa {
-   Logger a = LogUtils.getLogger();
+public interface baa<T> extends Serializable, Cloneable, Deque<T>, List<T>, RandomAccess {
+   baa<T> b();
 
-   byte[] sign(azy var1);
+   @Override
+   T getFirst();
 
-   default byte[] a(byte[] $$0) {
-      return this.sign($$1 -> $$1.update($$0));
+   @Override
+   T getLast();
+
+   @Override
+   void addFirst(T var1);
+
+   @Override
+   void addLast(T var1);
+
+   @Override
+   T removeFirst();
+
+   @Override
+   T removeLast();
+
+   @Override
+   default boolean offer(T $$0) {
+      return this.offerLast($$0);
    }
 
-   static baa a(PrivateKey $$0, String $$1) {
-      return $$2 -> {
-         try {
-            Signature $$3 = Signature.getInstance($$1);
-            $$3.initSign($$0);
-            $$2.update($$3::update);
-            return $$3.sign();
-         } catch (Exception var4) {
-            throw new IllegalStateException("Failed to sign message", var4);
-         }
-      };
+   @Override
+   default T remove() {
+      return this.removeFirst();
+   }
+
+   @Nullable
+   @Override
+   default T poll() {
+      return this.pollFirst();
+   }
+
+   @Override
+   default T element() {
+      return this.getFirst();
+   }
+
+   @Nullable
+   @Override
+   default T peek() {
+      return this.peekFirst();
+   }
+
+   @Override
+   default void push(T $$0) {
+      this.addFirst($$0);
+   }
+
+   @Override
+   default T pop() {
+      return this.removeFirst();
    }
 }

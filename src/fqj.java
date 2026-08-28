@@ -1,45 +1,42 @@
-import it.unimi.dsi.fastutil.ints.IntComparator;
+public interface fqj {
+   Object b = new Object();
+   int c = 160;
+   int d = 32;
 
-public enum fqj {
-   a,
-   b,
-   c,
-   d;
+   fqj.a a();
 
-   private final IntComparator e = ($$0, $$1) -> $$0 == $$1 ? 0 : (this.b($$0, $$1) ? -1 : 1);
+   void a(fqk var1, long var2);
 
-   public fqi a() {
-      return switch (this) {
-         case a, b -> fqi.b;
-         case c, d -> fqi.a;
-      };
+   void a(fnl var1, fnj var2, long var3);
+
+   default Object f() {
+      return b;
    }
 
-   public fqj b() {
-      return switch (this) {
-         case a -> b;
-         case b -> a;
-         case c -> d;
-         case d -> c;
-      };
+   default int b() {
+      return 160;
    }
 
-   public boolean c() {
-      return switch (this) {
-         case a, c -> false;
-         case b, d -> true;
-      };
+   default int c() {
+      return 32;
    }
 
-   public boolean a(int $$0, int $$1) {
-      return this.c() ? $$0 > $$1 : $$1 > $$0;
+   default int g() {
+      return bae.e(this.c(), 32);
    }
 
-   public boolean b(int $$0, int $$1) {
-      return this.c() ? $$0 < $$1 : $$1 < $$0;
-   }
+   public static enum a {
+      a(axf.AW),
+      b(axf.AX);
 
-   public IntComparator d() {
-      return this.e;
+      private final axe c;
+
+      private a(final axe $$0) {
+         this.c = $$0;
+      }
+
+      public void a(hgg $$0) {
+         $$0.a(hew.a(this.c, 1.0F, 1.0F));
+      }
    }
 }

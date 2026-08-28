@@ -1,89 +1,90 @@
-import com.google.gson.JsonElement;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.Lifecycle;
-import java.util.Collection;
-import java.util.HashMap;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
 
-public class alt {
-   private static final Logger a = LogUtils.getLogger();
-   private static final kc b = new kc(Optional.empty(), Lifecycle.experimental());
+public class alt<E> implements Codec<ju<E>> {
+   private final aly<? extends kd<E>> a;
+   private final Codec<jq<E>> b;
+   private final Codec<List<jq<E>>> c;
+   private final Codec<Either<ayk<E>, List<jq<E>>>> d;
 
-   public static CompletableFuture<alt.b> a(jx<als> $$0, List<kd.a<?>> $$1, avd $$2, Executor $$3) {
-      List<js.b<?>> $$4 = axt.a($$0.b(als.d), $$1);
-      js.a $$5 = js.a.a($$4.stream());
-      alh<JsonElement> $$6 = $$5.a(JsonOps.INSTANCE);
-      List<CompletableFuture<km<?>>> $$7 = eup.a().map($$3x -> a($$3x, $$6, $$2, $$3)).toList();
-      CompletableFuture<List<km<?>>> $$8 = ae.d($$7);
-      return $$8.thenApplyAsync($$2x -> a($$0, $$5, $$2x), $$3);
+   private static <E> Codec<List<jq<E>>> a(Codec<jq<E>> $$0, boolean $$1) {
+      Codec<List<jq<E>>> $$2 = $$0.listOf().validate(azn.b(jq::f));
+      return $$1
+         ? $$2
+         : Codec.either($$2, $$0)
+            .xmap($$0x -> (List)$$0x.map($$0xx -> $$0xx, List::of), $$0x -> $$0x.size() == 1 ? Either.right((jq)$$0x.get(0)) : Either.left($$0x));
    }
 
-   private static <T> CompletableFuture<km<?>> a(eup<T> $$0, alh<JsonElement> $$1, avd $$2, Executor $$3) {
-      return CompletableFuture.supplyAsync(() -> {
-         km<T> $$3x = new jy<>($$0.b(), Lifecycle.experimental());
-         Map<alj, T> $$4 = new HashMap<>();
-         String $$5 = ma.c($$0.b());
-         avh.a($$2, $$5, $$1, $$0.c(), $$4);
-         $$4.forEach(($$2xx, $$3xx) -> $$3x.a(ali.a($$0.b(), $$2xx), (T)$$3xx, b));
-         axt.a($$2, $$3x);
-         return $$3x;
-      }, $$3);
+   public static <E> Codec<ju<E>> a(aly<? extends kd<E>> $$0, Codec<jq<E>> $$1, boolean $$2) {
+      return new alt<>($$0, $$1, $$2);
    }
 
-   private static alt.b a(jx<als> $$0, js.a $$1, List<km<?>> $$2) {
-      jx<als> $$3 = a($$0, $$2);
-      js.a $$4 = a($$1, $$3.a(als.d));
-      a($$4);
-      return new alt.b($$3, $$4);
+   private alt(aly<? extends kd<E>> $$0, Codec<jq<E>> $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = a($$1, $$2);
+      this.d = Codec.either(ayk.b($$0), this.c);
    }
 
-   private static js.a a(js.a $$0, js.a $$1) {
-      return js.a.a(Stream.concat($$0.c(), $$1.c()));
-   }
-
-   private static void a(js.a $$0) {
-      azs.a $$1 = new azs.a();
-      eut $$2 = new eut($$1, exi.q, $$0);
-      eup.a().forEach($$2x -> a($$2, $$2x, $$0));
-      $$1.a().forEach(($$0x, $$1x) -> a.warn("Found loot table element validation problem in {}: {}", $$0x, $$1x));
-   }
-
-   private static jx<als> a(jx<als> $$0, List<km<?>> $$1) {
-      return $$0.a(als.d, new ke.c($$1).e());
-   }
-
-   private static <T> void a(eut $$0, eup<T> $$1, js.a $$2) {
-      js<T> $$3 = $$2.d($$1.b());
-      $$3.c().forEach($$2x -> $$1.a($$0, $$2x.h(), (T)$$2x.a()));
-   }
-
-   public static class a {
-      private final js.a a;
-
-      public a(js.a $$0) {
-         this.a = $$0;
+   public <T> DataResult<Pair<ju<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
+      if ($$0 instanceof alx<T> $$2) {
+         Optional<jr<E>> $$3 = $$2.b(this.a);
+         if ($$3.isPresent()) {
+            jr<E> $$4 = $$3.get();
+            return this.d.decode($$0, $$1).flatMap($$1x -> {
+               DataResult<ju<E>> $$2x = (DataResult<ju<E>>)((Either)$$1x.getFirst()).map($$1xx -> a($$4, $$1xx), $$0xx -> DataResult.success(ju.a($$0xx)));
+               return $$2x.map($$1xx -> Pair.of($$1xx, $$1x.getSecond()));
+            });
+         }
       }
 
-      public jr.a a() {
-         return this.a;
-      }
-
-      public Collection<alj> a(ali<? extends kd<?>> $$0) {
-         return this.a.d($$0).c_().map(ali::a).toList();
-      }
-
-      public eus b(ali<eus> $$0) {
-         return this.a.a(ma.bd).flatMap($$1 -> $$1.a($$0)).map(jq::a).orElse(eus.a);
-      }
+      return this.a($$0, $$1);
    }
 
-   public static record b(jx<als> a, js.a b) {
+   private static <E> DataResult<ju<E>> a(jr<E> $$0, ayk<E> $$1) {
+      return $$0.a($$1)
+         .<DataResult<ju<E>>>map(DataResult::success)
+         .orElseGet(() -> DataResult.error(() -> "Missing tag: '" + $$1.b() + "' in '" + $$1.a().a() + "'"));
+   }
+
+   public <T> DataResult<T> a(ju<E> $$0, DynamicOps<T> $$1, T $$2) {
+      if ($$1 instanceof alx<T> $$3) {
+         Optional<jt<E>> $$4 = $$3.a(this.a);
+         if ($$4.isPresent()) {
+            if (!$$0.a($$4.get())) {
+               return DataResult.error(() -> "HolderSet " + $$0 + " is not valid in current registry set");
+            }
+
+            return this.d.encode($$0.d().mapRight(List::copyOf), $$1, $$2);
+         }
+      }
+
+      return this.b($$0, $$1, $$2);
+   }
+
+   private <T> DataResult<Pair<ju<E>, T>> a(DynamicOps<T> $$0, T $$1) {
+      return this.b.listOf().decode($$0, $$1).flatMap($$0x -> {
+         List<jq.a<E>> $$1x = new ArrayList<>();
+
+         for (jq<E> $$2 : (List)$$0x.getFirst()) {
+            if (!($$2 instanceof jq.a<E> $$3)) {
+               return DataResult.error(() -> "Can't decode element " + $$2 + " without registry");
+            }
+
+            $$1x.add($$3);
+         }
+
+         return DataResult.success(new Pair(ju.a($$1x), $$0x.getSecond()));
+      });
+   }
+
+   private <T> DataResult<T> b(ju<E> $$0, DynamicOps<T> $$1, T $$2) {
+      return this.c.encode($$0.a().toList(), $$1, $$2);
    }
 }

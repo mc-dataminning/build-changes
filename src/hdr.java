@@ -1,101 +1,120 @@
-import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.InetAddress;
-import java.net.MulticastSocket;
-import java.net.SocketTimeoutException;
-import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 import org.slf4j.Logger;
 
 public class hdr {
-   static final AtomicInteger a = new AtomicInteger(0);
    static final Logger b = LogUtils.getLogger();
+   public static final String a = "item/";
+   private final Map<alz, hdz> c;
+   final hdz d;
+   private final Map<hdu, hdz> e = new HashMap<>();
+   private final Map<alz, hdz> f = new HashMap<>();
 
-   public static class a extends Thread {
-      private final hdr.b a;
-      private final InetAddress b;
-      private final MulticastSocket c;
+   public hdr(Map<alz, hdz> $$0, hdz $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      this.a(hdo.c, $$1);
+      this.f.put(hdo.b, $$1);
+   }
 
-      public a(hdr.b $$0) throws IOException {
-         super("LanServerDetector #" + hdr.a.incrementAndGet());
-         this.a = $$0;
-         this.setDaemon(true);
-         this.setUncaughtExceptionHandler(new r(hdr.b));
-         this.c = new MulticastSocket(4445);
-         this.b = InetAddress.getByName("224.0.2.60");
-         this.c.setSoTimeout(5000);
-         this.c.joinGroup(this.b);
-      }
-
-      @Override
-      public void run() {
-         byte[] $$0 = new byte[1024];
-
-         while (!this.isInterrupted()) {
-            DatagramPacket $$1 = new DatagramPacket($$0, $$0.length);
-
-            try {
-               this.c.receive($$1);
-            } catch (SocketTimeoutException var5) {
-               continue;
-            } catch (IOException var6) {
-               hdr.b.error("Couldn't ping server", var6);
-               break;
-            }
-
-            String $$4 = new String($$1.getData(), $$1.getOffset(), $$1.getLength(), StandardCharsets.UTF_8);
-            hdr.b.debug("{}: {}", $$1.getAddress(), $$4);
-            this.a.a($$4, $$1.getAddress());
+   private static Set<hdu> d() {
+      Set<hdu> $$0 = new HashSet<>();
+      ma.g.c().forEach($$1 -> {
+         alz $$2 = $$1.a().g().a(ku.i);
+         if ($$2 != null) {
+            $$0.add(hdu.a($$2));
          }
 
-         try {
-            this.c.leaveGroup(this.b);
-         } catch (IOException var4) {
+         if ($$1.a() instanceof cvx $$4) {
+            $$0.add(hdu.a($$4.b()));
+            $$0.add(hdu.a($$4.c()));
          }
+      });
+      $$0.add(gsh.i);
+      $$0.add(gsh.j);
+      return $$0;
+   }
 
-         this.c.close();
+   private void a(hdu $$0, hdz $$1) {
+      this.e.put($$0, $$1);
+   }
+
+   public void a(hdi.c $$0) {
+      this.f.put(hdy.a, hdy.c);
+      this.f.put(hdy.b, hdy.d);
+      Set<hdu> $$1 = d();
+      $$0.a().forEach(($$1x, $$2) -> {
+         this.a($$1x, $$2.b());
+         $$1.remove($$1x);
+      });
+      this.c.keySet().forEach($$1x -> {
+         if ($$1x.a().startsWith("item/")) {
+            hdu $$2 = hdu.a($$1x.a((UnaryOperator<String>)($$0xx -> $$0xx.substring("item/".length()))));
+            this.a($$2, new hdm($$1x));
+            $$1.remove($$2);
+         }
+      });
+      if (!$$1.isEmpty()) {
+         b.warn("Missing mandatory models: {}", $$1.stream().map($$0x -> "\n\t" + $$0x).collect(Collectors.joining()));
       }
    }
 
-   public static class b {
-      private final List<hdq> a = Lists.newArrayList();
-      private boolean b;
+   public void a() {
+      this.e.values().forEach($$0 -> $$0.a(new hdr.a()));
+   }
 
-      @Nullable
-      public synchronized List<hdq> a() {
-         if (this.b) {
-            List<hdq> $$0 = List.copyOf(this.a);
-            this.b = false;
-            return $$0;
+   public Map<hdu, hdz> b() {
+      return this.e;
+   }
+
+   public Map<alz, hdz> c() {
+      return this.f;
+   }
+
+   hdz a(alz $$0) {
+      return this.f.computeIfAbsent($$0, this::b);
+   }
+
+   private hdz b(alz $$0) {
+      hdz $$1 = this.c.get($$0);
+      if ($$1 == null) {
+         b.warn("Missing block model: '{}'", $$0);
+         return this.d;
+      } else {
+         return $$1;
+      }
+   }
+
+   class a implements hdz.a {
+      private final List<alz> b = new ArrayList<>();
+      private final Set<alz> c = new HashSet<>();
+
+      @Override
+      public hdz a(alz $$0) {
+         if (this.b.contains($$0)) {
+            hdr.b.warn("Detected model loading loop: {}->{}", this.a(), $$0);
+            return hdr.this.d;
          } else {
-            return null;
+            hdz $$1 = hdr.this.a($$0);
+            if (this.c.add($$0)) {
+               this.b.add($$0);
+               $$1.a(this);
+               this.b.remove($$0);
+            }
+
+            return $$1;
          }
       }
 
-      public synchronized void a(String $$0, InetAddress $$1) {
-         String $$2 = hds.a($$0);
-         String $$3 = hds.b($$0);
-         if ($$3 != null) {
-            $$3 = $$1.getHostAddress() + ":" + $$3;
-            boolean $$4 = false;
-
-            for (hdq $$5 : this.a) {
-               if ($$5.b().equals($$3)) {
-                  $$5.c();
-                  $$4 = true;
-                  break;
-               }
-            }
-
-            if (!$$4) {
-               this.a.add(new hdq($$2, $$3));
-               this.b = true;
-            }
-         }
+      private String a() {
+         return this.b.stream().map(alz::toString).collect(Collectors.joining("->"));
       }
    }
 }

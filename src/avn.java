@@ -1,43 +1,19 @@
-import com.google.gson.JsonObject;
-import java.io.File;
-import java.net.SocketAddress;
-import javax.annotation.Nullable;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
-public class avn extends avv<String, avo> {
-   public avn(File $$0) {
-      super($$0);
+@FunctionalInterface
+public interface avn<T> {
+   static avn<InputStream> create(Path $$0) {
+      return () -> Files.newInputStream($$0);
    }
 
-   @Override
-   protected avu<String> a(JsonObject $$0) {
-      return new avo($$0);
+   static avn<InputStream> create(ZipFile $$0, ZipEntry $$1) {
+      return () -> $$0.getInputStream($$1);
    }
 
-   public boolean a(SocketAddress $$0) {
-      String $$1 = this.c($$0);
-      return this.d($$1);
-   }
-
-   public boolean a(String $$0) {
-      return this.d($$0);
-   }
-
-   @Nullable
-   public avo b(SocketAddress $$0) {
-      String $$1 = this.c($$0);
-      return this.b($$1);
-   }
-
-   private String c(SocketAddress $$0) {
-      String $$1 = $$0.toString();
-      if ($$1.contains("/")) {
-         $$1 = $$1.substring($$1.indexOf(47) + 1);
-      }
-
-      if ($$1.contains(":")) {
-         $$1 = $$1.substring(0, $$1.indexOf(58));
-      }
-
-      return $$1;
-   }
+   T get() throws IOException;
 }

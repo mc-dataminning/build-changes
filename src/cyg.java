@@ -1,39 +1,103 @@
-public class cyg extends cwi implements cxh {
-   public cyg(cwi.a $$0) {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+
+public abstract class cyg extends cxg {
+   public static final Predicate<cxk> c = $$0 -> $$0.a(ayd.aZ);
+   public static final Predicate<cxk> d = c.or($$0 -> $$0.a(cxo.vk));
+
+   public cyg(cxg.a $$0) {
       super($$0);
    }
 
-   @Override
-   public bsk a(dfm $$0, cou $$1, bsj $$2) {
-      cwm $$3 = $$1.b($$2);
-      if ($$0 instanceof arp $$4) {
-         cpn.a(($$2x, $$3x, $$4x) -> new cqf($$1, $$0, $$1.dt().a(), $$1.bF().b(), $$1.dt().c()), $$4, $$3, $$1, 0.0F, 1.5F, 1.0F);
+   public Predicate<cxk> d() {
+      return this.b();
+   }
+
+   public abstract Predicate<cxk> b();
+
+   public static cxk a(bwb $$0, Predicate<cxk> $$1) {
+      if ($$1.test($$0.b(btd.b))) {
+         return $$0.b(btd.b);
+      } else {
+         return $$1.test($$0.b(btd.a)) ? $$0.b(btd.a) : cxk.k;
+      }
+   }
+
+   public abstract int c();
+
+   protected void a(ash $$0, bwb $$1, btd $$2, cxk $$3, List<cxk> $$4, float $$5, float $$6, boolean $$7, @Nullable bwb $$8) {
+      float $$9 = ddt.a($$0, $$3, $$1, 0.0F);
+      float $$10 = $$4.size() == 1 ? 0.0F : 2.0F * $$9 / (float)($$4.size() - 1);
+      float $$11 = (float)(($$4.size() - 1) % 2) * $$10 / 2.0F;
+      float $$12 = 1.0F;
+
+      for (int $$13 = 0; $$13 < $$4.size(); $$13++) {
+         cxk $$14 = $$4.get($$13);
+         if (!$$14.f()) {
+            float $$15 = $$11 + $$12 * (float)(($$13 + 1) / 2) * $$10;
+            $$12 = -$$12;
+            int $$16 = $$13;
+            cql.a(this.a($$0, $$1, $$3, $$14, $$7), $$0, $$14, $$6x -> this.a($$1, $$6x, $$16, $$5, $$6, $$15, $$8));
+            $$3.a(this.h($$14), $$1, bwb.d($$2));
+            if ($$3.f()) {
+               break;
+            }
+         }
+      }
+   }
+
+   protected int h(cxk $$0) {
+      return 1;
+   }
+
+   protected abstract void a(bwb var1, cql var2, int var3, float var4, float var5, float var6, @Nullable bwb var7);
+
+   protected cql a(dha $$0, bwb $$1, cxk $$2, cxk $$3, boolean $$4) {
+      cvl $$6 = $$3.h() instanceof cvl $$5 ? $$5 : (cvl)cxo.oS;
+      cpz $$7 = $$6.a($$0, $$3, $$1, $$2);
+      if ($$4) {
+         $$7.a(true);
       }
 
-      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awn.Cv, awo.g, 0.5F, 0.4F / ($$0.G_().i() * 0.4F + 0.8F));
-      $$1.b(awx.c.b(this));
-      $$3.a(1, $$1);
-      return bsk.a;
+      return $$7;
    }
 
-   @Override
-   public cpn a(dfm $$0, ka $$1, cwm $$2, jm $$3) {
-      azu $$4 = $$0.G_();
-      double $$5 = $$4.a((double)$$3.j(), 0.11485000000000001);
-      double $$6 = $$4.a((double)$$3.k(), 0.11485000000000001);
-      double $$7 = $$4.a((double)$$3.l(), 0.11485000000000001);
-      ezy $$8 = new ezy($$5, $$6, $$7);
-      cqf $$9 = new cqf($$0, $$1.a(), $$1.b(), $$1.c(), $$8);
-      $$9.h($$8);
-      return $$9;
+   protected static List<cxk> a(cxk $$0, cxk $$1, bwb $$2) {
+      if ($$1.f()) {
+         return List.of();
+      } else {
+         int $$4 = $$2.dV() instanceof ash $$3 ? ddt.a($$3, $$0, $$2, 1) : 1;
+         List<cxk> $$5 = new ArrayList<>($$4);
+         cxk $$6 = $$1.v();
+
+         for (int $$7 = 0; $$7 < $$4; $$7++) {
+            cxk $$8 = a($$0, $$7 == 0 ? $$1 : $$6, $$2, $$7 > 0);
+            if (!$$8.f()) {
+               $$5.add($$8);
+            }
+         }
+
+         return $$5;
+      }
    }
 
-   @Override
-   public void a(cpn $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
-   }
+   protected static cxk a(cxk $$0, cxk $$1, bwb $$2, boolean $$3) {
+      int $$5 = !$$3 && !$$2.fT() && $$2.dV() instanceof ash $$4 ? ddt.a($$4, $$0, $$1, 1) : 0;
+      if ($$5 > $$1.L()) {
+         return cxk.k;
+      } else if ($$5 == 0) {
+         cxk $$6 = $$1.c(1);
+         $$6.b(ku.v, bbk.a);
+         return $$6;
+      } else {
+         cxk $$7 = $$1.a($$5);
+         if ($$1.f() && $$2 instanceof cps $$8) {
+            $$8.gg().h($$1);
+         }
 
-   @Override
-   public cxh.a b() {
-      return cxh.a.a().a(($$0, $$1) -> dkv.a($$0, 1.0, ezy.c)).a(6.6666665F).b(1.0F).a(1051).a();
+         return $$7;
+      }
    }
 }

@@ -1,11 +1,16 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
-
-public interface agx extends wv {
-   Logger a = LogUtils.getLogger();
+public record agx(xv b, xv c) implements aac<acr> {
+   public static final zt<xg, agx> a = zt.a(xx.d, agx::b, xx.d, agx::e, agx::new);
 
    @Override
-   default void a(zq $$0, Exception $$1) throws z {
-      a.error("Failed to handle packet {}, suppressing error", $$0, $$1);
+   public aae<agx> a() {
+      return ahk.ba;
+   }
+
+   public void a(acr $$0) {
+      $$0.a(this);
+   }
+
+   public xv e() {
+      return this.c;
    }
 }

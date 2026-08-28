@@ -1,8 +1,21 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public interface cvh {
-   default void a(@Nullable cou $$0, dfm $$1, cwm $$2, jh $$3) {
+public class cvh extends cxg {
+   private final dke a;
+
+   public cvh(dke $$0, cxg.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
-   boolean a(@Nullable cou var1, dfm var2, jh var3, @Nullable ezu var4);
+   @Override
+   public void a(cxk $$0, cxg.b $$1, List<xv> $$2, czc $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public xv a(cxk $$0) {
+      return this.m();
+   }
 }

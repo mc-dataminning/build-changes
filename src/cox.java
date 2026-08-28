@@ -1,83 +1,115 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.security.PublicKey;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Arrays;
-import java.util.UUID;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
 
-public record cox(cox.a d) {
-   public static final xj a = xj.c("multiplayer.disconnect.expired_public_key");
-   private static final xj e = xj.c("multiplayer.disconnect.invalid_public_key_signature");
-   public static final Duration b = Duration.ofHours(8L);
-   public static final Codec<cox> c = cox.a.a.xmap(cox::new, cox::b);
+public class cox {
+   public static final Codec<cox> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               azn.l.fieldOf("ticks_since_last_warning").orElse(0).forGetter($$0x -> $$0x.g),
+               azn.l.fieldOf("warning_level").orElse(0).forGetter($$0x -> $$0x.h),
+               azn.l.fieldOf("cooldown_ticks").orElse(0).forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, cox::new)
+   );
+   public static final int b = 4;
+   private static final double c = 16.0;
+   private static final int d = 48;
+   private static final int e = 12000;
+   private static final int f = 200;
+   private int g;
+   private int h;
+   private int i;
 
-   public static cox a(azz $$0, UUID $$1, cox.a $$2) throws cox.b {
-      if (!$$2.a($$0, $$1)) {
-         throw new cox.b(e);
+   public cox(int $$0, int $$1, int $$2) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+   }
+
+   public void a() {
+      if (this.g >= 12000) {
+         this.f();
+         this.g = 0;
       } else {
-         return new cox($$2);
+         this.g++;
+      }
+
+      if (this.i > 0) {
+         this.i--;
       }
    }
 
-   public azz a() {
-      return azz.a(this.d.c, "SHA256withRSA");
+   public void b() {
+      this.g = 0;
+      this.h = 0;
+      this.i = 0;
    }
 
-   public cox.a b() {
-      return this.d;
-   }
+   public static OptionalInt a(ash $$0, jh $$1, asi $$2) {
+      if (a($$0, $$1)) {
+         return OptionalInt.empty();
+      } else {
+         List<asi> $$3 = b($$0, $$1);
+         if (!$$3.contains($$2)) {
+            $$3.add($$2);
+         }
 
-   public static record a(Instant b, PublicKey c, byte[] d) {
-      private static final int e = 4096;
-      public static final Codec<cox.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  ayv.q.fieldOf("expires_at").forGetter(cox.a::b), ayk.f.fieldOf("key").forGetter(cox.a::c), ayv.r.fieldOf("signature_v2").forGetter(cox.a::d)
-               )
-               .apply($$0, cox.a::new)
-      );
-
-      public a(wg $$0) {
-         this($$0.t(), $$0.u(), $$0.a(4096));
-      }
-
-      public void a(wg $$0) {
-         $$0.a(this.b);
-         $$0.a(this.c);
-         $$0.a(this.d);
-      }
-
-      boolean a(azz $$0, UUID $$1) {
-         return $$0.a(this.a($$1), this.d);
-      }
-
-      private byte[] a(UUID $$0) {
-         byte[] $$1 = this.c.getEncoded();
-         byte[] $$2 = new byte[24 + $$1.length];
-         ByteBuffer $$3 = ByteBuffer.wrap($$2).order(ByteOrder.BIG_ENDIAN);
-         $$3.putLong($$0.getMostSignificantBits()).putLong($$0.getLeastSignificantBits()).putLong(this.b.toEpochMilli()).put($$1);
-         return $$2;
-      }
-
-      public boolean a() {
-         return this.b.isBefore(Instant.now());
-      }
-
-      public boolean a(Duration $$0) {
-         return this.b.plus($$0).isBefore(Instant.now());
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         return !($$0 instanceof cox.a $$1) ? false : this.b.equals($$1.b) && this.c.equals($$1.c) && Arrays.equals(this.d, $$1.d);
+         if ($$3.stream().anyMatch($$0x -> $$0x.ac().map(cox::d).orElse(false))) {
+            return OptionalInt.empty();
+         } else {
+            Optional<cox> $$4 = $$3.stream().flatMap($$0x -> $$0x.ac().stream()).max(Comparator.comparingInt(cox::c));
+            if ($$4.isPresent()) {
+               cox $$5 = $$4.get();
+               $$5.e();
+               $$3.forEach($$1x -> $$1x.ac().ifPresent($$1xx -> $$1xx.a($$5)));
+               return OptionalInt.of($$5.h);
+            } else {
+               return OptionalInt.empty();
+            }
+         }
       }
    }
 
-   public static class b extends yj {
-      public b(xj $$0) {
-         super($$0);
+   private boolean d() {
+      return this.i > 0;
+   }
+
+   private static boolean a(ash $$0, jh $$1) {
+      fbn $$2 = fbn.a(fbs.b($$1), 48.0, 48.0, 48.0);
+      return !$$0.a(cov.class, $$2).isEmpty();
+   }
+
+   private static List<asi> b(ash $$0, jh $$1) {
+      fbs $$2 = fbs.b($$1);
+      return $$0.a($$1x -> !$$1x.aa_() && $$1x.dt().a((ka)$$2, 16.0) && $$1x.bL());
+   }
+
+   private void e() {
+      if (!this.d()) {
+         this.g = 0;
+         this.i = 200;
+         this.a(this.c() + 1);
       }
+   }
+
+   private void f() {
+      this.a(this.c() - 1);
+   }
+
+   public void a(int $$0) {
+      this.h = bae.a($$0, 0, 4);
+   }
+
+   public int c() {
+      return this.h;
+   }
+
+   private void a(cox $$0) {
+      this.h = $$0.h;
+      this.i = $$0.i;
+      this.g = $$0.g;
    }
 }

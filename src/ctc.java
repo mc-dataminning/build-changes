@@ -1,173 +1,161 @@
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class ctc extends csa {
-   public static final int o = 0;
-   public static final int p = 0;
-   private static final int I = 2;
-   private static final int J = 2;
-   public static final int q = 1;
-   public static final int r = 4;
-   public static final int s = 5;
-   public static final int t = 5;
-   public static final int u = 4;
-   public static final int v = 9;
-   public static final int w = 9;
-   public static final int x = 36;
-   public static final int y = 36;
-   public static final int z = 45;
-   public static final int A = 45;
-   public static final alj B = alj.b("textures/atlas/blocks.png");
-   public static final alj C = alj.b("item/empty_armor_slot_helmet");
-   public static final alj D = alj.b("item/empty_armor_slot_chestplate");
-   public static final alj E = alj.b("item/empty_armor_slot_leggings");
-   public static final alj F = alj.b("item/empty_armor_slot_boots");
-   public static final alj G = alj.b("item/empty_armor_slot_shield");
-   private static final Map<but, alj> K = Map.of(but.c, F, but.d, E, but.e, D, but.f, C);
-   private static final but[] L = new but[]{but.f, but.e, but.d, but.c};
-   public final boolean H;
-   private final cou M;
-
-   public ctc(cot $$0, boolean $$1, final cou $$2) {
-      super(null, 0, 2, 2);
-      this.H = $$1;
-      this.M = $$2;
-      this.a($$2, 154, 28);
-      this.d(98, 18);
-
-      for (int $$3 = 0; $$3 < 4; $$3++) {
-         but $$4 = L[$$3];
-         alj $$5 = K.get($$4);
-         this.a(new csd($$0, $$2, $$4, 39 - $$3, 8, 8 + $$3 * 18, $$5));
+public class ctc extends csx {
+   private static final int m = 0;
+   private static final int n = 1;
+   private static final int o = 3;
+   private static final int p = 1;
+   private static final int q = 28;
+   private static final int r = 28;
+   private static final int s = 37;
+   private static final int t = 0;
+   private final bsx u = new btl(1) {
+      @Override
+      public boolean b(int $$0, cxk $$1) {
+         return $$1.a(ayd.bc);
       }
 
-      this.c($$0, 8, 84);
-      this.a(new ctw($$0, 40, 77, 62) {
-         @Override
-         public void a(cwm $$0, cwm $$1) {
-            $$2.a(but.b, $$1, $$0);
-            super.a($$0, $$1);
-         }
+      @Override
+      public int ao_() {
+         return 1;
+      }
+   };
+   private final ctc.a v;
+   private final ctk w;
+   private final ctj x;
 
-         @Override
-         public Pair<alj, alj> b() {
-            return Pair.of(ctc.B, ctc.G);
-         }
-      });
+   public ctc(int $$0, bsx $$1) {
+      this($$0, $$1, new cut(3), ctk.a);
    }
 
-   public static boolean e(int $$0) {
-      return $$0 >= 36 && $$0 < 45 || $$0 == 45;
+   public ctc(int $$0, bsx $$1, ctj $$2, ctk $$3) {
+      super(cug.j, $$0);
+      a($$2, 3);
+      this.x = $$2;
+      this.w = $$3;
+      this.v = new ctc.a(this.u, 0, 136, 110);
+      this.a(this.v);
+      this.a($$2);
+      this.c($$1, 36, 137);
    }
 
    @Override
-   public void a(bsd $$0) {
-      css.a(this, this.M.dV(), this.M, this.m, this.n, null);
-   }
-
-   @Override
-   public void a(cou $$0) {
+   public void a(cps $$0) {
       super.a($$0);
-      this.n.a();
       if (!$$0.dV().C) {
-         this.a($$0, this.m);
+         cxk $$1 = this.v.a(this.v.a());
+         if (!$$1.f()) {
+            $$0.a($$1, false);
+         }
       }
    }
 
    @Override
-   public boolean b(cou $$0) {
-      return true;
+   public boolean b(cps $$0) {
+      return a(this.w, $$0, dkg.gc);
    }
 
    @Override
-   public cwm b(cou $$0, int $$1) {
-      cwm $$2 = cwm.k;
-      ctw $$3 = this.k.get($$1);
-      if ($$3.h()) {
-         cwm $$4 = $$3.g();
+   public void b(int $$0, int $$1) {
+      super.b($$0, $$1);
+      this.d();
+   }
+
+   @Override
+   public cxk b(cps $$0, int $$1) {
+      cxk $$2 = cxk.k;
+      cuu $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cxk $$4 = $$3.g();
          $$2 = $$4.v();
-         but $$5 = $$0.f($$2);
          if ($$1 == 0) {
-            if (!this.a($$4, 9, 45, true)) {
-               return cwm.k;
+            if (!this.a($$4, 1, 37, true)) {
+               return cxk.k;
             }
 
             $$3.b($$4, $$2);
-         } else if ($$1 >= 1 && $$1 < 5) {
-            if (!this.a($$4, 9, 45, false)) {
-               return cwm.k;
+         } else if (!this.v.h() && this.v.a($$4) && $$4.L() == 1) {
+            if (!this.a($$4, 0, 1, false)) {
+               return cxk.k;
             }
-         } else if ($$1 >= 5 && $$1 < 9) {
-            if (!this.a($$4, 9, 45, false)) {
-               return cwm.k;
+         } else if ($$1 >= 1 && $$1 < 28) {
+            if (!this.a($$4, 28, 37, false)) {
+               return cxk.k;
             }
-         } else if ($$5.a() == but.a.b && !this.k.get(8 - $$5.b()).h()) {
-            int $$6 = 8 - $$5.b();
-            if (!this.a($$4, $$6, $$6 + 1, false)) {
-               return cwm.k;
+         } else if ($$1 >= 28 && $$1 < 37) {
+            if (!this.a($$4, 1, 28, false)) {
+               return cxk.k;
             }
-         } else if ($$5 == but.b && !this.k.get(45).h()) {
-            if (!this.a($$4, 45, 46, false)) {
-               return cwm.k;
-            }
-         } else if ($$1 >= 9 && $$1 < 36) {
-            if (!this.a($$4, 36, 45, false)) {
-               return cwm.k;
-            }
-         } else if ($$1 >= 36 && $$1 < 45) {
-            if (!this.a($$4, 9, 36, false)) {
-               return cwm.k;
-            }
-         } else if (!this.a($$4, 9, 45, false)) {
-            return cwm.k;
+         } else if (!this.a($$4, 1, 37, false)) {
+            return cxk.k;
          }
 
          if ($$4.f()) {
-            $$3.a(cwm.k, $$2);
+            $$3.e(cxk.k);
          } else {
             $$3.c();
          }
 
          if ($$4.L() == $$2.L()) {
-            return cwm.k;
+            return cxk.k;
          }
 
          $$3.a($$0, $$4);
-         if ($$1 == 0) {
-            $$0.a($$4, false);
-         }
       }
 
       return $$2;
    }
 
-   @Override
-   public boolean a(cwm $$0, ctw $$1) {
-      return $$1.c != this.n && super.a($$0, $$1);
+   public int l() {
+      return this.x.a(0);
    }
 
-   @Override
-   public ctw m() {
-      return this.k.get(0);
+   public static int a(@Nullable jq<bui> $$0) {
+      return $$0 == null ? 0 : ma.d.t().a($$0) + 1;
    }
 
-   @Override
-   public List<ctw> n() {
-      return this.k.subList(1, 5);
+   @Nullable
+   public static jq<bui> e(int $$0) {
+      return $$0 == 0 ? null : ma.d.t().a($$0 - 1);
    }
 
-   public csr r() {
-      return this.m;
+   @Nullable
+   public jq<bui> m() {
+      return e(this.x.a(1));
    }
 
-   @Override
-   public ctp am_() {
-      return ctp.a;
+   @Nullable
+   public jq<bui> n() {
+      return e(this.x.a(2));
    }
 
-   @Override
-   protected cou q() {
-      return this.M;
+   public void a(Optional<jq<bui>> $$0, Optional<jq<bui>> $$1) {
+      if (this.v.h()) {
+         this.x.a(1, a($$0.orElse(null)));
+         this.x.a(2, a($$1.orElse(null)));
+         this.v.a(1);
+         this.w.a(dha::q);
+      }
+   }
+
+   public boolean o() {
+      return !this.u.a(0).f();
+   }
+
+   class a extends cuu {
+      public a(final bsx $$0, final int $$1, final int $$2, final int $$3) {
+         super($$0, $$1, $$2, $$3);
+      }
+
+      @Override
+      public boolean a(cxk $$0) {
+         return $$0.a(ayd.bc);
+      }
+
+      @Override
+      public int a() {
+         return 1;
+      }
    }
 }

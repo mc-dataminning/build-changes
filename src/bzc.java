@@ -1,20 +1,24 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
 
 public class bzc {
-   public static bxb<bvh> a(bus<?> $$0, int $$1) {
-      int $$2 = $$1 * $$1;
-      return can.a(
-         (Function<can.b<bvh>, ? extends App<can.c<bvh>, caq<bvh>>>)($$2x -> $$2x.group($$2x.a(cel.n), $$2x.c(cel.q), $$2x.b(cel.h))
-               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     Optional<bvh> $$9 = $$2x.<cen>b($$5).a($$3xx -> $$3xx.g((bul)$$7) <= (double)$$2 && $$0.equals($$3xx.aq()));
-                     if ($$9.isEmpty()) {
+   private static final int a = 1;
+
+   public static bxv<bwb> a(float $$0) {
+      return cbh.a(
+         (Function<cbh.b<bwb>, ? extends App<cbh.c<bwb>, cbk<bwb>>>)($$1 -> $$1.group($$1.a(cff.n), $$1.c(cff.m), $$1.b(cff.s))
+               .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
+                     if ($$6.bZ()) {
                         return false;
                      } else {
-                        bvh $$10 = $$9.get();
-                        $$4.a($$10);
-                        $$3.a(new bxl($$10, true));
+                        bvf $$8 = $$1.b($$4);
+                        if ($$8.a($$6, 1.0)) {
+                           $$6.n($$8);
+                        } else {
+                           $$2.a(new byf($$8, true));
+                           $$3.a(new cfi(new byf($$8, false), $$0, 1));
+                        }
+
                         return true;
                      }
                   }))

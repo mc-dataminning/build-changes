@@ -1,22 +1,35 @@
-import java.util.Optional;
-import java.util.function.Consumer;
-import net.minecraft.server.MinecraftServer;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class ata implements asg {
-   public static final asg.a a = new asg.a("server_resource_pack");
-   private final MinecraftServer.b b;
+public record ata(String b, xz c) {
+   public static final ata a = a("");
 
-   public ata(MinecraftServer.b $$0) {
-      this.b = $$0;
+   public static ata a(String $$0) {
+      return new ata($$0, xz.c);
    }
 
-   @Override
-   public void a(Consumer<zq<?>> $$0) {
-      $$0.accept(new aad(this.b.a(), this.b.b(), this.b.c(), this.b.d(), Optional.ofNullable(this.b.e())));
+   public static ata b(String $$0) {
+      return new ata($$0, xz.b);
    }
 
-   @Override
-   public asg.a a() {
-      return a;
+   @Nullable
+   public String a() {
+      return this.c.a(this.b);
+   }
+
+   public String b() {
+      return Objects.requireNonNullElse(this.a(), "");
+   }
+
+   public boolean c() {
+      return !this.c.a();
+   }
+
+   public String d() {
+      return this.b;
+   }
+
+   public xz e() {
+      return this.c;
    }
 }

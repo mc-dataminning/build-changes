@@ -1,26 +1,36 @@
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public interface fpu {
-   void m(int var1);
+public abstract class fpu implements fpv {
+   @Nullable
+   private fpw a;
+   private boolean b;
 
-   void n(int var1);
-
-   int D();
-
-   int E();
-
-   int y();
-
-   int w();
-
-   default fql H() {
-      return new fql(this.D(), this.E(), this.y(), this.w());
+   @Override
+   public final boolean aL_() {
+      return this.b;
    }
 
-   default void c(int $$0, int $$1) {
-      this.m($$0);
-      this.n($$1);
+   @Override
+   public final void b_(boolean $$0) {
+      this.b = $$0;
    }
 
-   void a(Consumer<fmb> var1);
+   @Nullable
+   @Override
+   public fpw aM_() {
+      return this.a;
+   }
+
+   @Override
+   public void a(@Nullable fpw $$0) {
+      if (this.a != null) {
+         this.a.a(false);
+      }
+
+      if ($$0 != null) {
+         $$0.a(true);
+      }
+
+      this.a = $$0;
+   }
 }

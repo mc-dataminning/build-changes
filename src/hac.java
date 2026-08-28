@@ -1,94 +1,26 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import javax.annotation.Nullable;
 
-public class hac implements AutoCloseable {
-   private final Int2ObjectMap<hac.a> a = new Int2ObjectOpenHashMap();
-   final gzf b;
+public class hac extends gym {
+   private static final alz j = alz.b("textures/entity/wolf/wolf.png");
+   public boolean a;
+   public boolean b;
+   public float c = (float) (Math.PI / 5);
+   public float d;
+   public float e;
+   public float f = 1.0F;
+   public alz g = j;
+   @Nullable
+   public cwh h;
+   public cxk i = cxk.k;
 
-   public hac(gzf $$0) {
-      this.b = $$0;
-   }
-
-   public void a(etn $$0, etp $$1) {
-      this.c($$0, $$1).a();
-   }
-
-   public alj b(etn $$0, etp $$1) {
-      hac.a $$2 = this.c($$0, $$1);
-      $$2.b();
-      return $$2.d;
-   }
-
-   public void a() {
-      ObjectIterator var1 = this.a.values().iterator();
-
-      while (var1.hasNext()) {
-         hac.a $$0 = (hac.a)var1.next();
-         $$0.close();
+   public float a(float $$0) {
+      float $$1 = (this.e + $$0) / 1.8F;
+      if ($$1 < 0.0F) {
+         $$1 = 0.0F;
+      } else if ($$1 > 1.0F) {
+         $$1 = 1.0F;
       }
 
-      this.a.clear();
-   }
-
-   private hac.a c(etn $$0, etp $$1) {
-      return (hac.a)this.a.compute($$0.b(), ($$1x, $$2) -> {
-         if ($$2 == null) {
-            return new hac.a($$1x, $$1);
-         } else {
-            $$2.a($$1);
-            return $$2;
-         }
-      });
-   }
-
-   @Override
-   public void close() {
-      this.a();
-   }
-
-   class a implements AutoCloseable {
-      private etp a;
-      private final gyr b;
-      private boolean c = true;
-      final alj d;
-
-      a(final int $$0, final etp $$1) {
-         this.a = $$1;
-         this.b = new gyr(128, 128, true);
-         this.d = hac.this.b.a("map/" + $$0, this.b);
-      }
-
-      void a(etp $$0) {
-         boolean $$1 = this.a != $$0;
-         this.a = $$0;
-         this.c |= $$1;
-      }
-
-      public void a() {
-         this.c = true;
-      }
-
-      void b() {
-         if (this.c) {
-            fdr $$0 = this.b.f();
-            if ($$0 != null) {
-               for (int $$1 = 0; $$1 < 128; $$1++) {
-                  for (int $$2 = 0; $$2 < 128; $$2++) {
-                     int $$3 = $$2 + $$1 * 128;
-                     $$0.a($$2, $$1, erz.b(this.a.g[$$3]));
-                  }
-               }
-            }
-
-            this.b.e();
-            this.c = false;
-         }
-      }
-
-      @Override
-      public void close() {
-         this.b.close();
-      }
+      return bae.a($$1 * (float) Math.PI) * bae.a($$1 * (float) Math.PI * 11.0F) * 0.15F * (float) Math.PI;
    }
 }

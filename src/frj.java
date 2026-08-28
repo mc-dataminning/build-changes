@@ -1,64 +1,20 @@
-public class frj extends fqs {
-   private fmd c;
+import java.util.function.Consumer;
 
-   public frj() {
-      super("");
+public class frj {
+   private static final int a = 4;
+
+   private frj() {
    }
 
-   @Override
-   protected void aR_() {
-      super.aR_();
-      this.c = fmd.a(xj.c("multiplayer.stopSleeping"), $$0 -> this.F()).a(this.n / 2 - 100, this.o - 40, 200, 20).a();
-      this.c(this.c);
+   public static fro a(fnj $$0, frp $$1, xv $$2) {
+      return a($$0, $$1, $$2, $$0x -> {
+      });
    }
 
-   @Override
-   public void a(flq $$0, int $$1, int $$2, float $$3) {
-      if (!this.m.J().a(this.m.T())) {
-         this.c.a($$0, $$1, $$2, $$3);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   public void aO_() {
-      this.F();
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return !this.m.J().a(this.m.T()) ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.F();
-      }
-
-      if (!this.m.J().a(this.m.T())) {
-         return true;
-      } else if ($$0 != 257 && $$0 != 335) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         this.b(this.b.a(), true);
-         this.b.a("");
-         this.m.m.d().d();
-         return true;
-      }
-   }
-
-   private void F() {
-      gdi $$0 = this.m.t.i;
-      $$0.b(new aic(this.m.t, aic.a.c));
-   }
-
-   public void m() {
-      if (this.b.a().isEmpty()) {
-         this.m.a(null);
-      } else {
-         this.m.a(new fqs(this.b.a()));
-      }
+   public static fro a(fnj $$0, frp $$1, xv $$2, Consumer<frq> $$3) {
+      frr $$4 = frr.d().a(4);
+      $$4.a(new fpg($$2, $$0));
+      $$4.a($$1, $$3);
+      return $$4;
    }
 }

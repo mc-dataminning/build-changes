@@ -8,7 +8,7 @@ public class ek extends dy<ek.a> {
       return ek.a.a;
    }
 
-   public void a(arq $$0, jh $$1) {
+   public void a(asi $$0, jh $$1) {
       double $$2 = $$0.dA() - (double)$$1.u();
       double $$3 = $$0.dG() - (double)$$1.w();
       double $$4 = $$2 * $$2 + $$3 * $$3;

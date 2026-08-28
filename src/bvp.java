@@ -1,64 +1,46 @@
-public abstract class bvp extends bvj {
-   protected static final float bX = 0.0F;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 
-   protected bvp(bus<? extends bvp> $$0, dfm $$1) {
-      super($$0, $$1);
+public record bvp(aly<ewm> c, Map<bvn, Float> d) {
+   public static final Codec<Map<bvn, Float>> a = Codec.either(Codec.FLOAT, Codec.unboundedMap(bvn.k, Codec.FLOAT))
+      .xmap($$0 -> (Map)$$0.map(bvp::a, Function.identity()), $$0 -> {
+         boolean $$1 = $$0.values().stream().distinct().count() == 1L;
+         boolean $$2 = $$0.keySet().containsAll(bvn.i);
+         return $$1 && $$2 ? Either.left($$0.values().stream().findFirst().orElse(0.0F)) : Either.right($$0);
+      });
+   public static final Codec<bvp> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aly.a(mb.bf).fieldOf("loot_table").forGetter(bvp::a), a.optionalFieldOf("slot_drop_chances", Map.of()).forGetter(bvp::b))
+            .apply($$0, bvp::new)
+   );
+
+   public bvp(aly<ewm> $$0, float $$1) {
+      this($$0, a($$1));
    }
 
-   public float c(jh $$0) {
-      return this.a($$0, this.dV());
+   private static Map<bvn, Float> a(float $$0) {
+      return a(List.of(bvn.values()), $$0);
    }
 
-   public float a(jh $$0, dfp $$1) {
-      return 0.0F;
-   }
+   private static Map<bvn, Float> a(List<bvn> $$0, float $$1) {
+      Map<bvn, Float> $$2 = Maps.newHashMap();
 
-   @Override
-   public boolean a(dfn $$0, bur $$1) {
-      return this.a(this.dv(), $$0) >= 0.0F;
-   }
-
-   public boolean gi() {
-      return !this.L().m();
-   }
-
-   public boolean gj() {
-      if (this.bE.a(cel.Z)) {
-         return this.bE.c(cel.Z).isPresent();
-      } else {
-         for (cdt $$0 : this.bS.b()) {
-            if ($$0.h() && $$0.k() instanceof ccy) {
-               return true;
-            }
-         }
-
-         return false;
+      for (bvn $$3 : $$0) {
+         $$2.put($$3, $$1);
       }
+
+      return $$2;
    }
 
-   protected boolean gk() {
-      return true;
+   public aly<ewm> a() {
+      return this.c;
    }
 
-   @Override
-   public void a(bul $$0) {
-      super.a($$0);
-      if (this.gk() && !this.gj()) {
-         this.bS.b(ccf.a.a);
-         float $$1 = 2.0F;
-         float $$2 = this.f($$0);
-         ezy $$3 = new ezy($$0.dA() - this.dA(), $$0.dC() - this.dC(), $$0.dG() - this.dG()).d().c((double)Math.max($$2 - 2.0F, 0.0F));
-         this.L().a(this.dA() + $$3.d, this.dC() + $$3.e, this.dG() + $$3.f, this.gl());
-      }
-   }
-
-   @Override
-   public boolean a(bul $$0, float $$1) {
-      this.a($$0.dv(), 5);
-      return true;
-   }
-
-   protected double gl() {
-      return 1.0;
+   public Map<bvn, Float> b() {
+      return this.d;
    }
 }

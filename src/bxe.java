@@ -1,48 +1,59 @@
-import com.google.common.collect.ImmutableMap;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public class bxe extends bxa<cof> {
-   @Nullable
-   private cqh c;
+public class bxe {
+   public static final Codec<jq<bxe>> a = ma.s.r();
+   public static final zt<xg, jq<bxe>> b = zr.b(mb.c);
+   private final double c;
+   private boolean d;
+   private final String e;
+   private bxe.a f = bxe.a.a;
 
-   public bxe(int $$0, int $$1) {
-      super(ImmutableMap.of(), $$0, $$1);
+   protected bxe(String $$0, double $$1) {
+      this.c = $$1;
+      this.e = $$0;
    }
 
-   protected boolean a(arp $$0, cof $$1) {
-      jh $$2 = $$1.dv();
-      this.c = $$0.d($$2);
-      return this.c != null && this.c.e() && byj.a($$0, $$1, $$2);
+   public double a() {
+      return this.c;
    }
 
-   protected boolean a(arp $$0, cof $$1, long $$2) {
-      return this.c != null && !this.c.d();
+   public boolean b() {
+      return this.d;
    }
 
-   protected void b(arp $$0, cof $$1, long $$2) {
-      this.c = null;
-      $$1.eb().a($$0.ac(), $$0.ab());
+   public bxe a(boolean $$0) {
+      this.d = $$0;
+      return this;
    }
 
-   protected void c(arp $$0, cof $$1, long $$2) {
-      azu $$3 = $$1.dY();
-      if ($$3.a(100) == 0) {
-         $$1.gr();
+   public bxe a(bxe.a $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public double a(double $$0) {
+      return $$0;
+   }
+
+   public String c() {
+      return this.e;
+   }
+
+   public n b(boolean $$0) {
+      return this.f.a($$0);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
+
+      public n a(boolean $$0) {
+         return switch (this) {
+            case a -> $$0 ? n.j : n.m;
+            case b -> n.h;
+            case c -> $$0 ? n.m : n.j;
+         };
       }
-
-      if ($$3.a(200) == 0 && byj.a($$0, $$1, $$1.dv())) {
-         cvj $$4 = ae.a(cvj.values(), $$3);
-         int $$5 = $$3.a(3);
-         cwm $$6 = this.a($$4, $$5);
-         cpn.a(new cpi($$1.dV(), $$1, $$1.dA(), $$1.dE(), $$1.dG(), $$6), $$0, $$6);
-      }
-   }
-
-   private cwm a(cvj $$0, int $$1) {
-      cwm $$2 = new cwm(cwq.uM);
-      $$2.b(ku.af, new czc((byte)$$1, List.of(new czb(czb.a.e, IntList.of($$0.f()), IntList.of(), false, false))));
-      return $$2;
    }
 }

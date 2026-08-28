@@ -1,265 +1,64 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fStack;
-import org.joml.Vector3f;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class gkc implements AutoCloseable {
-   private static final alj a = alj.b("textures/environment/sun.png");
-   private static final alj b = alj.b("textures/environment/moon_phases.png");
-   private static final alj c = alj.b("textures/environment/end_sky.png");
-   private static final float d = 512.0F;
-   private final feu e = this.a();
-   private final feu f = this.b();
-   private final feu g = this.c();
+public class gkc {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = cpr.g();
+   public static final Codec<gkc> a = Codec.PASSTHROUGH.listOf().validate($$0 -> ae.a($$0, c)).xmap(gkc::new, $$0 -> $$0.f);
+   private static final DynamicOps<vu> d = vl.a;
+   private static final Dynamic<?> e = new Dynamic(d, (vu)cxk.f.encodeStart(d, cxk.k).getOrThrow());
+   private List<Dynamic<?>> f;
 
-   private feu a() {
-      feu $$0 = new feu(fcl.b);
-      $$0.a();
-      $$0.a(this.a(fet.b()));
-      feu.b();
-      return $$0;
+   private gkc(List<Dynamic<?>> $$0) {
+      this.f = $$0;
    }
 
-   private feu b() {
-      feu $$0 = new feu(fcl.b);
-      $$0.a();
-      $$0.a(this.a(fet.b(), 16.0F));
-      feu.b();
-      return $$0;
+   public gkc() {
+      this(Collections.nCopies(c, e));
    }
 
-   private feu c() {
-      feu $$0 = new feu(fcl.b);
-      $$0.a();
-      $$0.a(this.a(fet.b(), -16.0F));
-      feu.b();
-      return $$0;
+   public List<cxk> a(js.a $$0) {
+      return this.f
+         .stream()
+         .map($$1 -> cxk.f.parse(alx.a($$1, $$0)).resultOrPartial($$0xx -> b.warn("Could not parse hotbar item: {}", $$0xx)).orElse(cxk.k))
+         .toList();
    }
 
-   private feq a(fet $$0) {
-      azu $$1 = azu.a(10842L);
-      int $$2 = 1500;
-      float $$3 = 100.0F;
-      fem $$4 = $$0.a(few.c.h, fep.e);
+   public void a(cpr $$0, ke $$1) {
+      alx<vu> $$2 = $$1.a(d);
+      Builder<Dynamic<?>> $$3 = ImmutableList.builderWithExpectedSize(c);
 
-      for (int $$5 = 0; $$5 < 1500; $$5++) {
-         float $$6 = $$1.i() * 2.0F - 1.0F;
-         float $$7 = $$1.i() * 2.0F - 1.0F;
-         float $$8 = $$1.i() * 2.0F - 1.0F;
-         float $$9 = 0.15F + $$1.i() * 0.1F;
-         float $$10 = azm.k($$6, $$7, $$8);
-         if (!($$10 <= 0.010000001F) && !($$10 >= 1.0F)) {
-            Vector3f $$11 = new Vector3f($$6, $$7, $$8).normalize(100.0F);
-            float $$12 = (float)($$1.j() * (float) Math.PI * 2.0);
-            Matrix3f $$13 = new Matrix3f().rotateTowards(new Vector3f($$11).negate(), new Vector3f(0.0F, 1.0F, 0.0F)).rotateZ(-$$12);
-            $$4.a(new Vector3f($$9, -$$9, 0.0F).mul($$13).add($$11));
-            $$4.a(new Vector3f($$9, $$9, 0.0F).mul($$13).add($$11));
-            $$4.a(new Vector3f(-$$9, $$9, 0.0F).mul($$13).add($$11));
-            $$4.a(new Vector3f(-$$9, -$$9, 0.0F).mul($$13).add($$11));
+      for (int $$4 = 0; $$4 < c; $$4++) {
+         cxk $$5 = $$0.a($$4);
+         Optional<Dynamic<?>> $$6 = cxk.f
+            .encodeStart($$2, $$5)
+            .resultOrPartial($$0x -> b.warn("Could not encode hotbar item: {}", $$0x))
+            .map($$0x -> new Dynamic(d, $$0x));
+         $$3.add($$6.orElse(e));
+      }
+
+      this.f = $$3.build();
+   }
+
+   public boolean a() {
+      for (Dynamic<?> $$0 : this.f) {
+         if (!a($$0)) {
+            return false;
          }
       }
 
-      return $$4.b();
+      return true;
    }
 
-   private feq a(fet $$0, float $$1) {
-      float $$2 = Math.signum($$1) * 512.0F;
-      fem $$3 = $$0.a(few.c.g, fep.e);
-      $$3.a(0.0F, $$1, 0.0F);
-
-      for (int $$4 = -180; $$4 <= 180; $$4 += 45) {
-         $$3.a($$2 * azm.b((float)$$4 * (float) (Math.PI / 180.0)), $$1, 512.0F * azm.a((float)$$4 * (float) (Math.PI / 180.0)));
-      }
-
-      return $$3.b();
-   }
-
-   public void a(float $$0, float $$1, float $$2) {
-      RenderSystem.depthMask(false);
-      RenderSystem.setShader(giq.d);
-      RenderSystem.setShaderColor($$0, $$1, $$2, 1.0F);
-      this.f.a();
-      this.f.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
-      feu.b();
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.depthMask(true);
-   }
-
-   public void a(fer $$0) {
-      RenderSystem.depthMask(false);
-      RenderSystem.setShader(giq.d);
-      RenderSystem.setShaderColor(0.0F, 0.0F, 0.0F, 1.0F);
-      $$0.a();
-      $$0.a(0.0F, 12.0F, 0.0F);
-      this.g.a();
-      this.g.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
-      feu.b();
-      $$0.b();
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.depthMask(true);
-   }
-
-   public void a(fer $$0, fet $$1, float $$2, int $$3, float $$4, float $$5, giu $$6) {
-      $$0.a();
-      $$0.a(a.d.rotationDegrees(-90.0F));
-      $$0.a(a.b.rotationDegrees($$2 * 360.0F));
-      this.a($$4, $$1, $$0);
-      this.a($$3, $$4, $$1, $$0);
-      if ($$5 > 0.0F) {
-         this.a($$6, $$5, $$0);
-      }
-
-      $$0.b();
-   }
-
-   private void a(float $$0, fet $$1, fer $$2) {
-      float $$3 = 30.0F;
-      float $$4 = 100.0F;
-      fem $$5 = $$1.a(few.c.h, fep.i);
-      Matrix4f $$6 = $$2.c().a();
-      RenderSystem.depthMask(false);
-      RenderSystem.overlayBlendFunc();
-      RenderSystem.setShader(giq.h);
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, $$0);
-      RenderSystem.setShaderTexture(0, a);
-      RenderSystem.enableBlend();
-      $$5.a($$6, -30.0F, 100.0F, -30.0F).a(0.0F, 0.0F);
-      $$5.a($$6, 30.0F, 100.0F, -30.0F).a(1.0F, 0.0F);
-      $$5.a($$6, 30.0F, 100.0F, 30.0F).a(1.0F, 1.0F);
-      $$5.a($$6, -30.0F, 100.0F, 30.0F).a(0.0F, 1.0F);
-      fen.a($$5.b());
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.disableBlend();
-      RenderSystem.defaultBlendFunc();
-      RenderSystem.depthMask(true);
-   }
-
-   private void a(int $$0, float $$1, fet $$2, fer $$3) {
-      float $$4 = 20.0F;
-      int $$5 = $$0 % 4;
-      int $$6 = $$0 / 4 % 2;
-      float $$7 = (float)($$5 + 0) / 4.0F;
-      float $$8 = (float)($$6 + 0) / 2.0F;
-      float $$9 = (float)($$5 + 1) / 4.0F;
-      float $$10 = (float)($$6 + 1) / 2.0F;
-      float $$11 = 100.0F;
-      fem $$12 = $$2.a(few.c.h, fep.i);
-      RenderSystem.depthMask(false);
-      RenderSystem.overlayBlendFunc();
-      RenderSystem.setShader(giq.h);
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, $$1);
-      RenderSystem.setShaderTexture(0, b);
-      RenderSystem.enableBlend();
-      Matrix4f $$13 = $$3.c().a();
-      $$12.a($$13, -20.0F, -100.0F, 20.0F).a($$9, $$10);
-      $$12.a($$13, 20.0F, -100.0F, 20.0F).a($$7, $$10);
-      $$12.a($$13, 20.0F, -100.0F, -20.0F).a($$7, $$8);
-      $$12.a($$13, -20.0F, -100.0F, -20.0F).a($$9, $$8);
-      fen.a($$12.b());
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.disableBlend();
-      RenderSystem.defaultBlendFunc();
-      RenderSystem.depthMask(true);
-   }
-
-   private void a(giu $$0, float $$1, fer $$2) {
-      Matrix4fStack $$3 = RenderSystem.getModelViewStack();
-      $$3.pushMatrix();
-      $$3.mul($$2.c().a());
-      RenderSystem.depthMask(false);
-      RenderSystem.overlayBlendFunc();
-      RenderSystem.setShader(giq.d);
-      RenderSystem.setShaderColor($$1, $$1, $$1, $$1);
-      RenderSystem.enableBlend();
-      RenderSystem.setShaderFog(giu.a);
-      this.e.a();
-      this.e.a($$3, RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
-      feu.b();
-      RenderSystem.setShaderFog($$0);
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.disableBlend();
-      RenderSystem.defaultBlendFunc();
-      RenderSystem.depthMask(true);
-      $$3.popMatrix();
-   }
-
-   public void a(fer $$0, fet $$1, float $$2, int $$3) {
-      RenderSystem.setShader(giq.e);
-      RenderSystem.depthMask(false);
-      RenderSystem.enableBlend();
-      $$0.a();
-      $$0.a(a.b.rotationDegrees(90.0F));
-      float $$4 = azm.a($$2) < 0.0F ? 180.0F : 0.0F;
-      $$0.a(a.f.rotationDegrees($$4));
-      $$0.a(a.f.rotationDegrees(90.0F));
-      Matrix4f $$5 = $$0.c().a();
-      fem $$6 = $$1.a(few.c.g, fep.f);
-      float $$7 = axx.h(axx.a($$3));
-      $$6.a($$5, 0.0F, 100.0F, 0.0F).a($$3);
-      int $$8 = axx.g($$3);
-      int $$9 = 16;
-
-      for (int $$10 = 0; $$10 <= 16; $$10++) {
-         float $$11 = (float)$$10 * (float) (Math.PI * 2) / 16.0F;
-         float $$12 = azm.a($$11);
-         float $$13 = azm.b($$11);
-         $$6.a($$5, $$12 * 120.0F, $$13 * 120.0F, -$$13 * 40.0F * $$7).a($$8);
-      }
-
-      fen.a($$6.b());
-      $$0.b();
-      RenderSystem.disableBlend();
-      RenderSystem.depthMask(true);
-   }
-
-   public void b(fer $$0) {
-      RenderSystem.enableBlend();
-      RenderSystem.depthMask(false);
-      RenderSystem.setShader(giq.i);
-      RenderSystem.setShaderTexture(0, c);
-      fet $$1 = fet.b();
-
-      for (int $$2 = 0; $$2 < 6; $$2++) {
-         $$0.a();
-         if ($$2 == 1) {
-            $$0.a(a.b.rotationDegrees(90.0F));
-         }
-
-         if ($$2 == 2) {
-            $$0.a(a.b.rotationDegrees(-90.0F));
-         }
-
-         if ($$2 == 3) {
-            $$0.a(a.b.rotationDegrees(180.0F));
-         }
-
-         if ($$2 == 4) {
-            $$0.a(a.f.rotationDegrees(90.0F));
-         }
-
-         if ($$2 == 5) {
-            $$0.a(a.f.rotationDegrees(-90.0F));
-         }
-
-         Matrix4f $$3 = $$0.c().a();
-         fem $$4 = $$1.a(few.c.h, fep.j);
-         $$4.a($$3, -100.0F, -100.0F, -100.0F).a(0.0F, 0.0F).a(-14145496);
-         $$4.a($$3, -100.0F, -100.0F, 100.0F).a(0.0F, 16.0F).a(-14145496);
-         $$4.a($$3, 100.0F, -100.0F, 100.0F).a(16.0F, 16.0F).a(-14145496);
-         $$4.a($$3, 100.0F, -100.0F, -100.0F).a(16.0F, 0.0F).a(-14145496);
-         fen.a($$4.b());
-         $$0.b();
-      }
-
-      RenderSystem.depthMask(true);
-      RenderSystem.disableBlend();
-   }
-
-   @Override
-   public void close() {
-      this.e.close();
-      this.f.close();
-      this.g.close();
+   private static boolean a(Dynamic<?> $$0) {
+      return e.equals($$0);
    }
 }

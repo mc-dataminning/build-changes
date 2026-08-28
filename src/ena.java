@@ -1,70 +1,44 @@
-import com.google.common.collect.Lists;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.stream.Stream;
 
-public class ena implements emn {
-   private final List<emm> a = Lists.newArrayList();
+public class ena extends enj {
+   public static final MapCodec<ena> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(jh.a.listOf().fieldOf("positions").forGetter($$0x -> $$0x.c)).apply($$0, ena::new)
+   );
+   private final List<jh> c;
+
+   public static ena a(jh... $$0) {
+      return new ena(List.of($$0));
+   }
+
+   private ena(List<jh> $$0) {
+      this.c = $$0;
+   }
 
    @Override
-   public void a(emm $$0) {
-      this.a.add($$0);
+   public Stream<jh> a_(enh $$0, bam $$1, jh $$2) {
+      int $$3 = kj.a($$2.u());
+      int $$4 = kj.a($$2.w());
+      boolean $$5 = false;
+
+      for (jh $$6 : this.c) {
+         if (a($$3, $$4, $$6)) {
+            $$5 = true;
+            break;
+         }
+      }
+
+      return !$$5 ? Stream.empty() : this.c.stream().filter($$2x -> a($$3, $$4, $$2x));
    }
 
-   @Nullable
+   private static boolean a(int $$0, int $$1, jh $$2) {
+      return $$0 == kj.a($$2.u()) && $$1 == kj.a($$2.w());
+   }
+
    @Override
-   public emm a(ema $$0) {
-      return emm.a(this.a, $$0);
-   }
-
-   @Deprecated
-   public void a(int $$0) {
-      for (emm $$1 : this.a) {
-         $$1.a(0, $$0, 0);
-      }
-   }
-
-   @Deprecated
-   public int a(int $$0, int $$1, azu $$2, int $$3) {
-      int $$4 = $$0 - $$3;
-      ema $$5 = this.d();
-      int $$6 = $$5.e() + $$1 + 1;
-      if ($$6 < $$4) {
-         $$6 += $$2.a($$4 - $$6);
-      }
-
-      int $$7 = $$6 - $$5.l();
-      this.a($$7);
-      return $$7;
-   }
-
-   /** @deprecated */
-   public void a(azu $$0, int $$1, int $$2) {
-      ema $$3 = this.d();
-      int $$4 = $$2 - $$1 + 1 - $$3.e();
-      int $$5;
-      if ($$4 > 1) {
-         $$5 = $$1 + $$0.a($$4);
-      } else {
-         $$5 = $$1;
-      }
-
-      int $$7 = $$5 - $$3.i();
-      this.a($$7);
-   }
-
-   public emx a() {
-      return new emx(this.a);
-   }
-
-   public void b() {
-      this.a.clear();
-   }
-
-   public boolean c() {
-      return this.a.isEmpty();
-   }
-
-   public ema d() {
-      return emm.a(this.a.stream());
+   public enk<?> b() {
+      return enk.o;
    }
 }

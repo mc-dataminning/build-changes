@@ -1,39 +1,103 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
-import java.util.function.ToIntFunction;
+public interface bty {
+   aly<btx> a = aly.a(mb.s, alz.b("in_fire"));
+   aly<btx> b = aly.a(mb.s, alz.b("campfire"));
+   aly<btx> c = aly.a(mb.s, alz.b("lightning_bolt"));
+   aly<btx> d = aly.a(mb.s, alz.b("on_fire"));
+   aly<btx> e = aly.a(mb.s, alz.b("lava"));
+   aly<btx> f = aly.a(mb.s, alz.b("hot_floor"));
+   aly<btx> g = aly.a(mb.s, alz.b("in_wall"));
+   aly<btx> h = aly.a(mb.s, alz.b("cramming"));
+   aly<btx> i = aly.a(mb.s, alz.b("drown"));
+   aly<btx> j = aly.a(mb.s, alz.b("starve"));
+   aly<btx> k = aly.a(mb.s, alz.b("cactus"));
+   aly<btx> l = aly.a(mb.s, alz.b("fall"));
+   aly<btx> m = aly.a(mb.s, alz.b("ender_pearl"));
+   aly<btx> n = aly.a(mb.s, alz.b("fly_into_wall"));
+   aly<btx> o = aly.a(mb.s, alz.b("out_of_world"));
+   aly<btx> p = aly.a(mb.s, alz.b("generic"));
+   aly<btx> q = aly.a(mb.s, alz.b("magic"));
+   aly<btx> r = aly.a(mb.s, alz.b("wither"));
+   aly<btx> s = aly.a(mb.s, alz.b("dragon_breath"));
+   aly<btx> t = aly.a(mb.s, alz.b("dry_out"));
+   aly<btx> u = aly.a(mb.s, alz.b("sweet_berry_bush"));
+   aly<btx> v = aly.a(mb.s, alz.b("freeze"));
+   aly<btx> w = aly.a(mb.s, alz.b("stalagmite"));
+   aly<btx> x = aly.a(mb.s, alz.b("falling_block"));
+   aly<btx> y = aly.a(mb.s, alz.b("falling_anvil"));
+   aly<btx> z = aly.a(mb.s, alz.b("falling_stalactite"));
+   aly<btx> A = aly.a(mb.s, alz.b("sting"));
+   aly<btx> B = aly.a(mb.s, alz.b("mob_attack"));
+   aly<btx> C = aly.a(mb.s, alz.b("mob_attack_no_aggro"));
+   aly<btx> D = aly.a(mb.s, alz.b("player_attack"));
+   aly<btx> E = aly.a(mb.s, alz.b("arrow"));
+   aly<btx> F = aly.a(mb.s, alz.b("trident"));
+   aly<btx> G = aly.a(mb.s, alz.b("mob_projectile"));
+   aly<btx> H = aly.a(mb.s, alz.b("spit"));
+   aly<btx> I = aly.a(mb.s, alz.b("wind_charge"));
+   aly<btx> J = aly.a(mb.s, alz.b("fireworks"));
+   aly<btx> K = aly.a(mb.s, alz.b("fireball"));
+   aly<btx> L = aly.a(mb.s, alz.b("unattributed_fireball"));
+   aly<btx> M = aly.a(mb.s, alz.b("wither_skull"));
+   aly<btx> N = aly.a(mb.s, alz.b("thrown"));
+   aly<btx> O = aly.a(mb.s, alz.b("indirect_magic"));
+   aly<btx> P = aly.a(mb.s, alz.b("thorns"));
+   aly<btx> Q = aly.a(mb.s, alz.b("explosion"));
+   aly<btx> R = aly.a(mb.s, alz.b("player_explosion"));
+   aly<btx> S = aly.a(mb.s, alz.b("sonic_boom"));
+   aly<btx> T = aly.a(mb.s, alz.b("bad_respawn_point"));
+   aly<btx> U = aly.a(mb.s, alz.b("outside_border"));
+   aly<btx> V = aly.a(mb.s, alz.b("generic_kill"));
+   aly<btx> W = aly.a(mb.s, alz.b("mace_smash"));
 
-class bty extends bto {
-   private final ToIntFunction<azu> c;
-
-   protected bty(btp $$0, int $$1, ToIntFunction<azu> $$2) {
-      super($$0, $$1, ls.V);
-      this.c = $$2;
-   }
-
-   @Override
-   public void a(arp $$0, bvh $$1, int $$2, bul.c $$3) {
-      if ($$3 == bul.c.a && ($$1 instanceof cou || $$0.N().b(dfi.c))) {
-         this.a($$0, $$1.dY(), $$1.dv());
-      }
-   }
-
-   private void a(arp $$0, azu $$1, jh $$2) {
-      Set<jh> $$3 = Sets.newHashSet();
-      int $$4 = this.c.applyAsInt($$1);
-
-      for (jh $$5 : jh.a($$1, 15, $$2, 1)) {
-         jh $$6 = $$5.e();
-         if (!$$3.contains($$5) && $$0.a_($$5).v() && $$0.a_($$6).c($$0, $$6, jm.b)) {
-            $$3.add($$5.j());
-            if ($$3.size() >= $$4) {
-               break;
-            }
-         }
-      }
-
-      for (jh $$7 : $$3) {
-         $$0.a($$7, dis.bs.m(), 3);
-         $$0.c(3018, $$7, 0);
-      }
+   static void a(rk<btx> $$0) {
+      $$0.a(a, new btx("inFire", 0.1F, btt.d));
+      $$0.a(b, new btx("inFire", 0.1F, btt.d));
+      $$0.a(c, new btx("lightningBolt", 0.1F));
+      $$0.a(d, new btx("onFire", 0.0F, btt.d));
+      $$0.a(e, new btx("lava", 0.1F, btt.d));
+      $$0.a(f, new btx("hotFloor", 0.1F, btt.d));
+      $$0.a(g, new btx("inWall", 0.0F));
+      $$0.a(h, new btx("cramming", 0.0F));
+      $$0.a(i, new btx("drown", 0.0F, btt.c));
+      $$0.a(j, new btx("starve", 0.0F));
+      $$0.a(k, new btx("cactus", 0.1F));
+      $$0.a(l, new btx("fall", btu.b, 0.0F, btt.a, btz.b));
+      $$0.a(m, new btx("fall", btu.b, 0.0F, btt.a, btz.b));
+      $$0.a(n, new btx("flyIntoWall", 0.0F));
+      $$0.a(o, new btx("outOfWorld", 0.0F));
+      $$0.a(p, new btx("generic", 0.0F));
+      $$0.a(q, new btx("magic", 0.0F));
+      $$0.a(r, new btx("wither", 0.0F));
+      $$0.a(s, new btx("dragonBreath", 0.0F));
+      $$0.a(t, new btx("dryout", 0.1F));
+      $$0.a(u, new btx("sweetBerryBush", 0.1F, btt.e));
+      $$0.a(v, new btx("freeze", 0.0F, btt.f));
+      $$0.a(w, new btx("stalagmite", 0.0F));
+      $$0.a(x, new btx("fallingBlock", 0.1F));
+      $$0.a(y, new btx("anvil", 0.1F));
+      $$0.a(z, new btx("fallingStalactite", 0.1F));
+      $$0.a(A, new btx("sting", 0.1F));
+      $$0.a(B, new btx("mob", 0.1F));
+      $$0.a(C, new btx("mob", 0.1F));
+      $$0.a(D, new btx("player", 0.1F));
+      $$0.a(E, new btx("arrow", 0.1F));
+      $$0.a(F, new btx("trident", 0.1F));
+      $$0.a(G, new btx("mob", 0.1F));
+      $$0.a(H, new btx("mob", 0.1F));
+      $$0.a(J, new btx("fireworks", 0.1F));
+      $$0.a(L, new btx("onFire", 0.1F, btt.d));
+      $$0.a(K, new btx("fireball", 0.1F, btt.d));
+      $$0.a(M, new btx("witherSkull", 0.1F));
+      $$0.a(N, new btx("thrown", 0.1F));
+      $$0.a(O, new btx("indirectMagic", 0.0F));
+      $$0.a(P, new btx("thorns", 0.1F, btt.b));
+      $$0.a(Q, new btx("explosion", btu.c, 0.1F));
+      $$0.a(R, new btx("explosion.player", btu.c, 0.1F));
+      $$0.a(S, new btx("sonic_boom", btu.c, 0.0F));
+      $$0.a(T, new btx("badRespawnPoint", btu.c, 0.1F, btt.a, btz.c));
+      $$0.a(U, new btx("outsideBorder", 0.0F));
+      $$0.a(V, new btx("genericKill", 0.0F));
+      $$0.a(I, new btx("mob", 0.1F));
+      $$0.a(W, new btx("mace_smash", 0.1F));
    }
 }

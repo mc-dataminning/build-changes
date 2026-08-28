@@ -1,68 +1,65 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dnx extends diq implements dit {
+public class dnx extends dke implements dri {
    public static final MapCodec<dnx> a = b(dnx::new);
+   private static final dye c = dyd.D;
+   protected static final fcm b = dke.a(2.0, 10.0, 2.0, 14.0, 16.0, 14.0);
 
    @Override
    public MapCodec<dnx> a() {
       return a;
    }
 
-   public dnx(dvu.d $$0) {
+   protected dnx(dxm.d $$0) {
       super($$0);
+      this.l(this.F.b().b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean b(dfp $$0, jh $$1, dvv $$2) {
-      if (!$$0.a_($$1.d()).f()) {
-         return false;
+   protected void a(dxo.a<dke, dxn> $$0) {
+      $$0.a(c);
+   }
+
+   @Override
+   protected etp b_(dxn $$0) {
+      return $$0.c(c) ? etq.c.a(false) : super.b_($$0);
+   }
+
+   @Nullable
+   @Override
+   public dxn a(dbb $$0) {
+      dxn $$1 = super.a($$0);
+      if ($$1 != null) {
+         etp $$2 = $$0.q().b_($$0.a());
+         return $$1.b(c, Boolean.valueOf($$2.a() == etq.c));
       } else {
-         for (jh $$3 : jh.c($$1.b(-1, -1, -1), $$1.b(1, 1, 1))) {
-            if ($$0.a_($$3).a(axc.aN)) {
-               return true;
-            }
-         }
-
-         return false;
+         return null;
       }
    }
 
    @Override
-   public boolean a(dfm $$0, azu $$1, jh $$2, dvv $$3) {
-      return true;
+   protected boolean a(dxn $$0, dhd $$1, jh $$2) {
+      jh $$3 = $$2.d();
+      dxn $$4 = $$1.a_($$3);
+      return $$4.c($$1, $$3, jm.a);
    }
 
    @Override
-   public void a(arp $$0, azu $$1, jh $$2, dvv $$3) {
-      boolean $$4 = false;
-      boolean $$5 = false;
-
-      for (jh $$6 : jh.c($$2.b(-1, -1, -1), $$2.b(1, 1, 1))) {
-         dvv $$7 = $$0.a_($$6);
-         if ($$7.a(dis.on)) {
-            $$5 = true;
-         }
-
-         if ($$7.a(dis.ow)) {
-            $$4 = true;
-         }
-
-         if ($$5 && $$4) {
-            break;
-         }
-      }
-
-      if ($$5 && $$4) {
-         $$0.a($$2, $$1.h() ? dis.on.m() : dis.ow.m(), 3);
-      } else if ($$5) {
-         $$0.a($$2, dis.on.m(), 3);
-      } else if ($$4) {
-         $$0.a($$2, dis.ow.m(), 3);
-      }
+   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
+      return b;
    }
 
    @Override
-   public dit.a aq_() {
-      return dit.a.a;
+   protected dxn a(dxn $$0, dhd $$1, dhp $$2, jh $$3, jm $$4, jh $$5, dxn $$6, bam $$7) {
+      if ($$4 == jm.b && !this.a($$0, $$1, $$3)) {
+         return dkg.a.m();
+      } else {
+         if ($$0.c(c)) {
+            $$2.a($$3, etq.c, etq.c.a($$1));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
    }
 }

@@ -1,132 +1,84 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Stream;
+import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
 public class amx {
-   private static final Logger b = LogUtils.getLogger();
-   private static final String c = "localhost";
-   private static final String d = "0.0.0.0";
-   private static final int e = 10000;
-   private static final int f = 100;
-   public static BiMap<String, ali<dfm>> a = ImmutableBiMap.of("o", dfm.i, "n", dfm.j, "e", dfm.k);
-   @Nullable
-   private static amp g;
-   @Nullable
-   private static amo h;
+   private static final Logger a = LogUtils.getLogger();
 
-   public static void a(CommandDispatcher<ew> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("chase")
-                  .then(
-                     ((LiteralArgumentBuilder)ex.a("follow")
-                           .then(
-                              ((RequiredArgumentBuilder)ex.a("host", StringArgumentType.string())
-                                    .executes($$0x -> b((ew)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), 10000)))
-                                 .then(
-                                    ex.a("port", IntegerArgumentType.integer(1, 65535))
-                                       .executes(
-                                          $$0x -> b(
-                                                (ew)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), IntegerArgumentType.getInteger($$0x, "port")
-                                             )
-                                       )
-                                 )
-                           ))
-                        .executes($$0x -> b((ew)$$0x.getSource(), "localhost", 10000))
-                  ))
-               .then(
-                  ((LiteralArgumentBuilder)ex.a("lead")
-                        .then(
-                           ((RequiredArgumentBuilder)ex.a("bind_address", StringArgumentType.string())
-                                 .executes($$0x -> a((ew)$$0x.getSource(), StringArgumentType.getString($$0x, "bind_address"), 10000)))
-                              .then(
-                                 ex.a("port", IntegerArgumentType.integer(1024, 65535))
-                                    .executes(
-                                       $$0x -> a(
-                                             (ew)$$0x.getSource(),
-                                             StringArgumentType.getString($$0x, "bind_address"),
-                                             IntegerArgumentType.getInteger($$0x, "port")
-                                          )
-                                    )
-                              )
-                        ))
-                     .executes($$0x -> a((ew)$$0x.getSource(), "0.0.0.0", 10000))
-               ))
-            .then(ex.a("stop").executes($$0x -> a((ew)$$0x.getSource())))
-      );
-   }
-
-   private static int a(ew $$0) {
-      if (h != null) {
-         h.b();
-         $$0.a(() -> xj.b("You have now stopped chasing"), false);
-         h = null;
-      }
-
-      if (g != null) {
-         g.b();
-         $$0.a(() -> xj.b("You are no longer being chased"), false);
-         g = null;
-      }
-
-      return 0;
-   }
-
-   private static boolean b(ew $$0) {
-      if (g != null) {
-         $$0.b(xj.b("Chase server is already running. Stop it using /chase stop"));
-         return true;
-      } else if (h != null) {
-         $$0.b(xj.b("You are already chasing someone. Stop it using /chase stop"));
-         return true;
-      } else {
-         return false;
+   public static <D, R> CompletableFuture<R> a(amx.c $$0, amx.f<D> $$1, amx.e<D, R> $$2, Executor $$3, Executor $$4) {
+      try {
+         Pair<dhx, avl> $$5 = $$0.a.a();
+         avl $$6 = (avl)$$5.getSecond();
+         jx<ami> $$7 = ami.a();
+         List<kd.a<?>> $$8 = ayl.a($$6, $$7.a(ami.a));
+         ke.b $$9 = $$7.b(ami.b);
+         List<js.b<?>> $$10 = ayl.a($$9, $$8);
+         ke.b $$11 = alu.a($$6, $$10, alu.a);
+         List<js.b<?>> $$12 = Stream.concat($$10.stream(), $$11.c()).toList();
+         ke.b $$13 = alu.a($$6, $$12, alu.b);
+         dhx $$14 = (dhx)$$5.getFirst();
+         js.a $$15 = js.a.a($$12.stream());
+         amx.b<D> $$16 = $$1.get(new amx.a($$6, $$14, $$15, $$13));
+         jx<ami> $$17 = $$7.a(ami.b, $$11, $$16.b);
+         return amk.a($$6, $$17, $$8, $$14.b(), $$0.b(), $$0.c(), $$3, $$4).whenComplete(($$1x, $$2x) -> {
+            if ($$2x != null) {
+               $$6.close();
+            }
+         }).thenApplyAsync($$4x -> {
+            $$4x.g();
+            return $$2.create($$6, $$4x, $$17, $$16.a);
+         }, $$4);
+      } catch (Exception var18) {
+         return CompletableFuture.failedFuture(var18);
       }
    }
 
-   private static int a(ew $$0, String $$1, int $$2) {
-      if (b($$0)) {
-         return 0;
-      } else {
-         g = new amp($$1, $$2, $$0.l().ag(), 100);
+   public static record a(avv a, dhx b, js.a c, ke.b d) {
+   }
 
-         try {
-            g.a();
-            $$0.a(() -> xj.b("Chase server is now running on port " + $$2 + ". Clients can follow you using /chase follow <ip> <port>"), false);
-         } catch (IOException var4) {
-            b.error("Failed to start chase server", var4);
-            $$0.b(xj.b("Failed to start chase server on port " + $$2));
-            g = null;
-         }
+   public static record b<D>(D a, ke.b b) {
+   }
 
-         return 0;
+   public static record c(amx.d a, ex.a b, int c) {
+   }
+
+   public static record d(avg a, dhx b, boolean c, boolean d) {
+      public Pair<dhx, avl> a() {
+         dhx $$0 = MinecraftServer.a(this.a, this.b, this.d, this.c);
+         List<aug> $$1 = this.a.h();
+         avl $$2 = new avo(aui.b, $$1);
+         return Pair.of($$0, $$2);
+      }
+
+      public avg b() {
+         return this.a;
+      }
+
+      public dhx c() {
+         return this.b;
+      }
+
+      public boolean d() {
+         return this.c;
+      }
+
+      public boolean e() {
+         return this.d;
       }
    }
 
-   private static int b(ew $$0, String $$1, int $$2) {
-      if (b($$0)) {
-         return 0;
-      } else {
-         h = new amo($$1, $$2, $$0.l());
-         h.a();
-         $$0.a(
-            () -> xj.b(
-                  "You are now chasing "
-                     + $$1
-                     + ":"
-                     + $$2
-                     + ". If that server does '/chase lead' then you will automatically go to the same position. Use '/chase stop' to stop chasing."
-               ),
-            false
-         );
-         return 0;
-      }
+   @FunctionalInterface
+   public interface e<D, R> {
+      R create(avl var1, amk var2, jx<ami> var3, D var4);
+   }
+
+   @FunctionalInterface
+   public interface f<D> {
+      amx.b<D> get(amx.a var1);
    }
 }

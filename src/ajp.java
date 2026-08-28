@@ -1,46 +1,49 @@
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.util.Arrays;
-import javax.crypto.SecretKey;
+public record ajp(int b, String c, int d, ajo e) implements aac<ajs> {
+   public static final zt<ws, ajp> a = aac.a(ajp::a, ajp::new);
+   private static final int f = 255;
 
-public class ajp implements zq<ajm> {
-   public static final zh<wg, ajp> a = zq.a(ajp::a, ajp::new);
-   private final byte[] b;
-   private final byte[] c;
-
-   public ajp(SecretKey $$0, PublicKey $$1, byte[] $$2) throws ayl {
-      this.b = ayk.a($$1, $$0.getEncoded());
-      this.c = ayk.a($$1, $$2);
+   @Deprecated
+   public ajp(int b, String c, int d, ajo e) {
+      this.b = b;
+      this.c = c;
+      this.d = d;
+      this.e = e;
    }
 
-   private ajp(wg $$0) {
-      this.b = $$0.b();
-      this.c = $$0.b();
+   private ajp(ws $$0) {
+      this($$0.l(), $$0.d(255), $$0.readUnsignedShort(), ajo.a($$0.l()));
    }
 
-   private void a(wg $$0) {
-      $$0.a(this.b);
+   private void a(ws $$0) {
+      $$0.c(this.b);
       $$0.a(this.c);
+      $$0.m(this.d);
+      $$0.c(this.e.a());
    }
 
    @Override
-   public zs<ajp> a() {
-      return ajk.h;
+   public aae<ajp> a() {
+      return ajq.a;
    }
 
-   public void a(ajm $$0) {
+   public void a(ajs $$0) {
       $$0.a(this);
    }
 
-   public SecretKey a(PrivateKey $$0) throws ayl {
-      return ayk.a($$0, this.b);
+   @Override
+   public boolean d() {
+      return true;
    }
 
-   public boolean a(byte[] $$0, PrivateKey $$1) {
-      try {
-         return Arrays.equals($$0, ayk.b($$1, this.c));
-      } catch (ayl var4) {
-         return false;
-      }
+   public String e() {
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   public ajo g() {
+      return this.e;
    }
 }

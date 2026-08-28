@@ -1,60 +1,85 @@
-import java.util.Objects;
+public class aru extends asj {
+   public static final int a = 5;
+   public static final int b = 120500;
+   private boolean e;
+   private boolean f;
+   private int g;
+   private int h;
 
-public final class aru<T> implements Comparable<aru<?>> {
-   private final arv<T> a;
-   private final int b;
-   private final T c;
-   private long d;
-
-   protected aru(arv<T> $$0, int $$1, T $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public aru(asi $$0) {
+      super($$0);
    }
 
-   public int a(aru<?> $$0) {
-      int $$1 = Integer.compare(this.b, $$0.b);
-      if ($$1 != 0) {
-         return $$1;
-      } else {
-         int $$2 = Integer.compare(System.identityHashCode(this.a), System.identityHashCode($$0.a));
-         return $$2 != 0 ? $$2 : this.a.a().compare(this.c, (T)$$0.c);
+   @Override
+   public void a() {
+      super.a();
+      this.h++;
+      long $$0 = this.c.ac();
+      long $$1 = $$0 / 24000L + 1L;
+      if (!this.e && this.h > 20) {
+         this.e = true;
+         this.d.f.b(new adz(adz.g, 0.0F));
+      }
+
+      this.f = $$0 > 120500L;
+      if (this.f) {
+         this.g++;
+      }
+
+      if ($$0 % 24000L == 500L) {
+         if ($$1 <= 6L) {
+            if ($$1 == 6L) {
+               this.d.f.b(new adz(adz.g, 104.0F));
+            } else {
+               this.d.a(xv.c("demo.day." + $$1));
+            }
+         }
+      } else if ($$1 == 1L) {
+         if ($$0 == 100L) {
+            this.d.f.b(new adz(adz.g, 101.0F));
+         } else if ($$0 == 175L) {
+            this.d.f.b(new adz(adz.g, 102.0F));
+         } else if ($$0 == 250L) {
+            this.d.f.b(new adz(adz.g, 103.0F));
+         }
+      } else if ($$1 == 5L && $$0 % 24000L == 22000L) {
+         this.d.a(xv.c("demo.day.warning"));
+      }
+   }
+
+   private void f() {
+      if (this.g > 100) {
+         this.d.a(xv.c("demo.reminder"));
+         this.g = 0;
       }
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
+   public void a(jh $$0, air.a $$1, jm $$2, int $$3, int $$4) {
+      if (this.f) {
+         this.f();
       } else {
-         return !($$0 instanceof aru<?> $$1) ? false : this.b == $$1.b && Objects.equals(this.a, $$1.a) && Objects.equals(this.c, $$1.c);
+         super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
    @Override
-   public int hashCode() {
-      return Objects.hash(this.a, this.b, this.c);
+   public bte a(asi $$0, dha $$1, cxk $$2, btd $$3) {
+      if (this.f) {
+         this.f();
+         return bte.e;
+      } else {
+         return super.a($$0, $$1, $$2, $$3);
+      }
    }
 
    @Override
-   public String toString() {
-      return "Ticket[" + this.a + " " + this.b + " (" + this.c + ")] at " + this.d;
-   }
-
-   public arv<T> a() {
-      return this.a;
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   protected void a(long $$0) {
-      this.d = $$0;
-   }
-
-   protected boolean b(long $$0) {
-      long $$1 = this.a.b();
-      return $$1 != 0L && $$0 - this.d > $$1;
+   public bte a(asi $$0, dha $$1, cxk $$2, btd $$3, fbo $$4) {
+      if (this.f) {
+         this.f();
+         return bte.e;
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
+      }
    }
 }

@@ -1,53 +1,29 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record egr(List<egr.a> b, jm c, ecx d, boolean e) implements eha {
-   public static final Codec<egr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               egr.a.a.listOf().fieldOf("layers").forGetter(egr::a),
-               jm.g.fieldOf("direction").forGetter(egr::b),
-               ecx.b.fieldOf("allowed_placement").forGetter(egr::c),
-               Codec.BOOL.fieldOf("prioritize_tip").forGetter(egr::d)
-            )
-            .apply($$0, egr::new)
-   );
-
-   public static egr.a a(brp $$0, ejb $$1) {
-      return new egr.a($$0, $$1);
+public class egr extends ego<eiw> {
+   public egr(Codec<eiw> $$0) {
+      super($$0);
    }
 
-   public static egr b(brp $$0, ejb $$1) {
-      return new egr(List.of(a($$0, $$1)), jm.b, ecx.c, false);
-   }
+   @Override
+   public boolean a(egq<eiw> $$0) {
+      jh $$1 = $$0.e();
+      eiw $$2 = $$0.f();
+      dhy $$3 = $$0.b();
+      jh.a $$4 = new jh.a();
 
-   public List<egr.a> a() {
-      return this.b;
-   }
-
-   public jm b() {
-      return this.c;
-   }
-
-   public ecx c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public static record a(brp b, ejb c) {
-      public static final Codec<egr.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(brp.d.fieldOf("height").forGetter(egr.a::a), ejb.a.fieldOf("provider").forGetter(egr.a::b)).apply($$0, egr.a::new)
-      );
-
-      public brp a() {
-         return this.b;
+      for (int $$5 = 0; $$5 < 16; $$5++) {
+         for (int $$6 = 0; $$6 < 16; $$6++) {
+            int $$7 = $$1.u() + $$5;
+            int $$8 = $$1.w() + $$6;
+            int $$9 = $$3.L_() + $$2.b;
+            $$4.d($$7, $$9, $$8);
+            if ($$3.a_($$4).l()) {
+               $$3.a($$4, $$2.c, 2);
+            }
+         }
       }
 
-      public ejb b() {
-         return this.c;
-      }
+      return true;
    }
 }

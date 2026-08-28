@@ -1,27 +1,79 @@
-public class fsx extends fsl<csi> {
-   private static final alj G = alj.b("textures/gui/container/generic_54.png");
-   private final int H;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-   public fsx(csi $$0, cot $$1, xj $$2) {
-      super($$0, $$1, $$2);
-      int $$3 = 222;
-      int $$4 = 114;
-      this.H = $$0.m();
-      this.u = 114 + this.H * 18;
-      this.y = this.u - 94;
+public class fsx extends ftr {
+   private static final xv a = xv.c("addServer.enterIp");
+   private fny b;
+   private final gfs c;
+   private foh d;
+   private final BooleanConsumer s;
+   private final ftr u;
+
+   public fsx(ftr $$0, BooleanConsumer $$1, gfs $$2) {
+      super(xv.c("selectServer.direct"));
+      this.u = $$0;
+      this.c = $$2;
+      this.s = $$1;
    }
 
    @Override
-   public void a(flq $$0, int $$1, int $$2, float $$3) {
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (!this.b.j || this.aM_() != this.d || $$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         this.l();
+         return true;
+      }
+   }
+
+   @Override
+   protected void aT_() {
+      this.d = new foh(this.p, this.n / 2 - 100, 116, 200, 20, xv.c("addServer.enterIp"));
+      this.d.f(128);
+      this.d.a(this.m.n.Y);
+      this.d.b($$0 -> this.E());
+      this.d(this.d);
+      this.b = this.c(fny.a(xv.c("selectServer.select"), $$0 -> this.l()).a(this.n / 2 - 100, this.o / 4 + 96 + 12, 200, 20).a());
+      this.c(fny.a(xu.e, $$0 -> this.s.accept(false)).a(this.n / 2 - 100, this.o / 4 + 120 + 12, 200, 20).a());
+      this.E();
+   }
+
+   @Override
+   protected void aG_() {
+      this.b(this.d);
+   }
+
+   @Override
+   public void a(flz $$0, int $$1, int $$2) {
+      String $$3 = this.d.a();
+      this.b($$0, $$1, $$2);
+      this.d.a($$3);
+   }
+
+   private void l() {
+      this.c.b = this.d.a();
+      this.s.accept(true);
+   }
+
+   @Override
+   public void aP_() {
+      this.m.a(this.u);
+   }
+
+   @Override
+   public void aJ_() {
+      this.m.n.Y = this.d.a();
+      this.m.n.az();
+   }
+
+   private void E() {
+      this.b.j = ggv.b(this.d.a());
+   }
+
+   @Override
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(flq $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.s) / 2;
-      int $$5 = (this.o - this.u) / 2;
-      $$0.a(gjq::B, G, $$4, $$5, 0.0F, 0.0F, this.s, this.H * 18 + 17, 256, 256);
-      $$0.a(gjq::B, G, $$4, $$5 + this.H * 18 + 17, 0.0F, 126.0F, this.s, 96, 256, 256);
+      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
+      $$0.b(this.p, a, this.n / 2 - 100 + 1, 100, 10526880);
+      this.d.a($$0, $$1, $$2, $$3);
    }
 }

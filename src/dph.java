@@ -1,84 +1,160 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dph extends dla implements dpg {
-   public static final MapCodec<dph> b = b(dph::new);
+public class dph {
+   public static final dph.e[] a = new dph.e[]{dph.e.a, dph.e.b, dph.e.c};
+   private final dph.b b;
 
-   @Override
-   public MapCodec<dph> a() {
-      return b;
+   public dph(dpg $$0) {
+      this(new dph.a($$0));
    }
 
-   public dph(dvu.d $$0) {
-      super(brm.a(1), $$0);
+   public dph(dph.b $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public int a(dpl.a $$0, dfn $$1, jh $$2, azu $$3, dpl $$4, boolean $$5) {
-      int $$6 = $$0.b();
-      if ($$6 != 0 && $$3.a($$4.f()) == 0) {
-         jh $$7 = $$0.a();
-         boolean $$8 = $$7.a($$2, (double)$$4.e());
-         if (!$$8 && a($$1, $$7)) {
-            int $$9 = $$4.d();
-            if ($$3.a($$9) < $$6) {
-               jh $$10 = $$7.d();
-               dvv $$11 = this.a($$1, $$10, $$3, $$4.h());
-               $$1.a($$10, $$11, 3);
-               $$1.a(null, $$7, $$11.A().e(), awo.e, 1.0F, 1.0F);
-            }
-
-            return Math.max(0, $$6 - $$9);
-         } else {
-            return $$3.a($$4.g()) != 0 ? $$6 : $$6 - ($$8 ? 1 : a($$4, $$7, $$2, $$6));
-         }
-      } else {
-         return $$6;
-      }
+   public boolean a(dxn $$0, dgf $$1, jh $$2, jm $$3) {
+      return jm.a().anyMatch($$4 -> this.a($$0, $$1, $$2, $$3, $$4, this.b::a).isPresent());
    }
 
-   private static int a(dpl $$0, jh $$1, jh $$2, int $$3) {
-      int $$4 = $$0.e();
-      float $$5 = azm.l((float)Math.sqrt($$1.j($$2)) - (float)$$4);
-      int $$6 = azm.h(24 - $$4);
-      float $$7 = Math.min(1.0F, $$5 / (float)$$6);
-      return Math.max(1, (int)((float)$$3 * $$7 * 0.5F));
+   public Optional<dph.c> a(dxn $$0, dhb $$1, jh $$2, bam $$3) {
+      return jm.a($$3)
+         .stream()
+         .filter($$1x -> this.b.b($$0, $$1x))
+         .map($$4 -> this.a($$0, $$1, $$2, $$4, $$3, false))
+         .filter(Optional::isPresent)
+         .findFirst()
+         .orElse(Optional.empty());
    }
 
-   private dvv a(dfn $$0, jh $$1, azu $$2, boolean $$3) {
-      dvv $$4;
-      if ($$2.a(11) == 0) {
-         $$4 = dis.qV.m().b(dpk.d, Boolean.valueOf($$3));
-      } else {
-         $$4 = dis.qQ.m();
-      }
-
-      return $$4.b(dwl.C) && !$$0.b_($$1).c() ? $$4.b(dwl.C, Boolean.valueOf(true)) : $$4;
+   public long a(dxn $$0, dhb $$1, jh $$2, boolean $$3) {
+      return jm.a().filter($$1x -> this.b.b($$0, $$1x)).map($$4 -> this.a($$0, $$1, $$2, $$4, $$3)).reduce(0L, Long::sum);
    }
 
-   private static boolean a(dfn $$0, jh $$1) {
-      dvv $$2 = $$0.a_($$1.d());
-      if ($$2.l() || $$2.a(dis.G) && $$2.y().b(erw.c)) {
-         int $$3 = 0;
+   public Optional<dph.c> a(dxn $$0, dhb $$1, jh $$2, jm $$3, bam $$4, boolean $$5) {
+      return jm.a($$4).stream().map($$5x -> this.a($$0, $$1, $$2, $$3, $$5x, $$5)).filter(Optional::isPresent).findFirst().orElse(Optional.empty());
+   }
 
-         for (jh $$4 : jh.c($$1.b(-4, 0, -4), $$1.b(4, 2, 4))) {
-            dvv $$5 = $$0.a_($$4);
-            if ($$5.a(dis.qQ) || $$5.a(dis.qV)) {
-               $$3++;
-            }
+   private long a(dxn $$0, dhb $$1, jh $$2, jm $$3, boolean $$4) {
+      return jm.a().map($$5 -> this.a($$0, $$1, $$2, $$3, $$5, $$4)).filter(Optional::isPresent).count();
+   }
 
-            if ($$3 > 2) {
-               return false;
+   @VisibleForTesting
+   public Optional<dph.c> a(dxn $$0, dhb $$1, jh $$2, jm $$3, jm $$4, boolean $$5) {
+      return this.a($$0, $$1, $$2, $$3, $$4, this.b::a).flatMap($$2x -> this.a($$1, $$2x, $$5));
+   }
+
+   public Optional<dph.c> a(dxn $$0, dgf $$1, jh $$2, jm $$3, jm $$4, dph.d $$5) {
+      if ($$4.o() == $$3.o()) {
+         return Optional.empty();
+      } else if (this.b.a($$0) || this.b.a($$0, $$3) && !this.b.a($$0, $$4)) {
+         for (dph.e $$6 : this.b.a()) {
+            dph.c $$7 = $$6.a($$2, $$4, $$3);
+            if ($$5.test($$1, $$2, $$7)) {
+               return Optional.of($$7);
             }
          }
 
-         return true;
+         return Optional.empty();
       } else {
+         return Optional.empty();
+      }
+   }
+
+   public Optional<dph.c> a(dhb $$0, dph.c $$1, boolean $$2) {
+      dxn $$3 = $$0.a_($$1.a());
+      return this.b.a($$0, $$1, $$3, $$2) ? Optional.of($$1) : Optional.empty();
+   }
+
+   public static class a implements dph.b {
+      protected dpg a;
+
+      public a(dpg $$0) {
+         this.a = $$0;
+      }
+
+      @Nullable
+      @Override
+      public dxn a(dxn $$0, dgf $$1, jh $$2, jm $$3) {
+         return this.a.c($$0, $$1, $$2, $$3);
+      }
+
+      protected boolean a(dgf $$0, jh $$1, jh $$2, jm $$3, dxn $$4) {
+         return $$4.l() || $$4.a(this.a) || $$4.a(dkg.J) && $$4.y().b();
+      }
+
+      @Override
+      public boolean a(dgf $$0, jh $$1, dph.c $$2) {
+         dxn $$3 = $$0.a_($$2.a());
+         return this.a($$0, $$1, $$2.a(), $$2.b(), $$3) && this.a.a($$0, $$3, $$2.a(), $$2.b());
+      }
+   }
+
+   public interface b {
+      @Nullable
+      dxn a(dxn var1, dgf var2, jh var3, jm var4);
+
+      boolean a(dgf var1, jh var2, dph.c var3);
+
+      default dph.e[] a() {
+         return dph.a;
+      }
+
+      default boolean a(dxn $$0, jm $$1) {
+         return dpg.a($$0, $$1);
+      }
+
+      default boolean a(dxn $$0) {
          return false;
       }
+
+      default boolean b(dxn $$0, jm $$1) {
+         return this.a($$0) || this.a($$0, $$1);
+      }
+
+      default boolean a(dhb $$0, dph.c $$1, dxn $$2, boolean $$3) {
+         dxn $$4 = this.a($$2, $$0, $$1.a(), $$1.b());
+         if ($$4 != null) {
+            if ($$3) {
+               $$0.y($$1.a()).e($$1.a());
+            }
+
+            return $$0.a($$1.a(), $$4, 2);
+         } else {
+            return false;
+         }
+      }
    }
 
-   @Override
-   public boolean d() {
-      return false;
+   public static record c(jh a, jm b) {
+   }
+
+   @FunctionalInterface
+   public interface d {
+      boolean test(dgf var1, jh var2, dph.c var3);
+   }
+
+   public static enum e {
+      a {
+         @Override
+         public dph.c a(jh $$0, jm $$1, jm $$2) {
+            return new dph.c($$0, $$1);
+         }
+      },
+      b {
+         @Override
+         public dph.c a(jh $$0, jm $$1, jm $$2) {
+            return new dph.c($$0.a($$1), $$2);
+         }
+      },
+      c {
+         @Override
+         public dph.c a(jh $$0, jm $$1, jm $$2) {
+            return new dph.c($$0.a($$1).a($$2), $$1.g());
+         }
+      };
+
+      public abstract dph.c a(jh var1, jm var2, jm var3);
    }
 }

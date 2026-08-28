@@ -1,111 +1,89 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.function.BiFunction;
 
-public class dpt extends diq implements dpr {
+public class dpt extends dko implements dkh {
    public static final MapCodec<dpt> a = b(dpt::new);
-   public static final dws<dxc> b = dwl.bh;
-   public static final dwm c = dwl.C;
-   protected static final fas d = diq.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   protected static final fas e = diq.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0);
+   public static final int b = 1;
+   public static final int c = 4;
+   public static final dyk<jm> d = dyd.S;
+   public static final dym e = dyd.T;
+   private static final BiFunction<jm, Integer, fcm> f = ae.a(
+      ($$0, $$1) -> {
+         fcm[] $$2 = new fcm[]{
+            dke.a(8.0, 0.0, 8.0, 16.0, 3.0, 16.0),
+            dke.a(8.0, 0.0, 0.0, 16.0, 3.0, 8.0),
+            dke.a(0.0, 0.0, 0.0, 8.0, 3.0, 8.0),
+            dke.a(0.0, 0.0, 8.0, 8.0, 3.0, 16.0)
+         };
+         fcm $$3 = fcj.a();
+
+         for (int $$4 = 0; $$4 < $$1; $$4++) {
+            int $$5 = Math.floorMod($$4 - $$0.e(), 4);
+            $$3 = fcj.a($$3, $$2[$$5]);
+         }
+
+         return $$3.b();
+      }
+   );
 
    @Override
-   public MapCodec<? extends dpt> a() {
+   public MapCodec<dpt> a() {
       return a;
    }
 
-   public dpt(dvu.d $$0) {
+   protected dpt(dxm.d $$0) {
       super($$0);
-      this.l(this.m().b(b, dxc.b).b(c, Boolean.valueOf(false)));
+      this.l(this.F.b().b(d, jm.c).b(e, Integer.valueOf(1)));
    }
 
    @Override
-   protected boolean g_(dvv $$0) {
-      return $$0.c(b) != dxc.c;
+   public dxn a(dxn $$0, dqu $$1) {
+      return $$0.b(d, $$1.a($$0.c(d)));
    }
 
    @Override
-   protected void a(dvw.a<diq, dvv> $$0) {
-      $$0.a(b, c);
+   public dxn a(dxn $$0, dpd $$1) {
+      return $$0.a($$1.a($$0.c(d)));
    }
 
    @Override
-   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
-      dxc $$4 = $$0.c(b);
-      switch ($$4) {
-         case c:
-            return fap.b();
-         case a:
-            return e;
-         default:
-            return d;
-      }
+   public boolean a(dxn $$0, dbb $$1) {
+      return !$$1.h() && $$1.n().a(this.j()) && $$0.c(e) < 4 ? true : super.a($$0, $$1);
    }
 
-   @Nullable
    @Override
-   public dvv a(dad $$0) {
-      jh $$1 = $$0.a();
-      dvv $$2 = $$0.q().a_($$1);
-      if ($$2.a(this)) {
-         return $$2.b(b, dxc.c).b(c, Boolean.valueOf(false));
+   public fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
+      return f.apply($$0.c(d), $$0.c(e));
+   }
+
+   @Override
+   public dxn a(dbb $$0) {
+      dxn $$1 = $$0.q().a_($$0.a());
+      return $$1.a(this) ? $$1.b(e, Integer.valueOf(Math.min(4, $$1.c(e) + 1))) : this.m().b(d, $$0.g().g());
+   }
+
+   @Override
+   protected void a(dxo.a<dke, dxn> $$0) {
+      $$0.a(d, e);
+   }
+
+   @Override
+   public boolean b(dhd $$0, jh $$1, dxn $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(dha $$0, bam $$1, jh $$2, dxn $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(ash $$0, bam $$1, jh $$2, dxn $$3) {
+      int $$4 = $$3.c(e);
+      if ($$4 < 4) {
+         $$0.a($$2, $$3.b(e, Integer.valueOf($$4 + 1)), 2);
       } else {
-         erv $$3 = $$0.q().b_($$1);
-         dvv $$4 = this.m().b(b, dxc.b).b(c, Boolean.valueOf($$3.a() == erw.c));
-         jm $$5 = $$0.k();
-         return $$5 != jm.a && ($$5 == jm.b || !($$0.l().e - (double)$$1.v() > 0.5)) ? $$4 : $$4.b(b, dxc.a);
-      }
-   }
-
-   @Override
-   protected boolean a(dvv $$0, dad $$1) {
-      cwm $$2 = $$1.n();
-      dxc $$3 = $$0.c(b);
-      if ($$3 == dxc.c || !$$2.a(this.j())) {
-         return false;
-      } else if ($$1.c()) {
-         boolean $$4 = $$1.l().e - (double)$$1.a().v() > 0.5;
-         jm $$5 = $$1.k();
-         return $$3 == dxc.b ? $$5 == jm.b || $$4 && $$5.o().d() : $$5 == jm.a || !$$4 && $$5.o().d();
-      } else {
-         return true;
-      }
-   }
-
-   @Override
-   protected erv b_(dvv $$0) {
-      return $$0.c(c) ? erw.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   public boolean a(dfn $$0, jh $$1, dvv $$2, erv $$3) {
-      return $$2.c(b) != dxc.c ? dpr.super.a($$0, $$1, $$2, $$3) : false;
-   }
-
-   @Override
-   public boolean a(@Nullable cou $$0, der $$1, jh $$2, dvv $$3, eru $$4) {
-      return $$3.c(b) != dxc.c ? dpr.super.a($$0, $$1, $$2, $$3, $$4) : false;
-   }
-
-   @Override
-   protected dvv a(dvv $$0, dfp $$1, dgb $$2, jh $$3, jm $$4, jh $$5, dvv $$6, azu $$7) {
-      if ($$0.c(c)) {
-         $$2.a($$3, erw.c, erw.c.a($$1));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected boolean a(dvv $$0, esk $$1) {
-      switch ($$1) {
-         case a:
-            return false;
-         case b:
-            return $$0.y().a(axi.a);
-         case c:
-            return false;
-         default:
-            return false;
+         a($$0, $$2, new cxk(this));
       }
    }
 }

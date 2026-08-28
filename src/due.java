@@ -1,61 +1,109 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record due(Optional<cwi> d, Optional<cwi> e, Optional<cwi> f, Optional<cwi> g) {
-   public static final due a = new due(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
-   public static final Codec<due> b = lz.g.q().sizeLimitedListOf(4).xmap(due::new, due::a);
-   public static final zh<wu, due> c = zf.a(ma.K).a(zf.c(4)).a(due::new, due::a);
+public class due extends dup implements bth {
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 6;
+   private static final String c = "patterns";
+   @Nullable
+   private xv d;
+   private cwh e;
+   private dug f = dug.a;
 
-   private due(List<cwi> $$0) {
-      this(a($$0, 0), a($$0, 1), a($$0, 2), a($$0, 3));
+   public due(jh $$0, dxn $$1) {
+      super(dur.u, $$0, $$1);
+      this.e = ((div)$$1.b()).b();
    }
 
-   public due(cwi $$0, cwi $$1, cwi $$2, cwi $$3) {
-      this(List.of($$0, $$1, $$2, $$3));
+   public due(jh $$0, dxn $$1, cwh $$2) {
+      this($$0, $$1);
+      this.e = $$2;
    }
 
-   private static Optional<cwi> a(List<cwi> $$0, int $$1) {
-      if ($$1 >= $$0.size()) {
-         return Optional.empty();
-      } else {
-         cwi $$2 = $$0.get($$1);
-         return $$2 == cwq.qM ? Optional.empty() : Optional.of($$2);
-      }
+   public void a(cxk $$0, cwh $$1) {
+      this.e = $$1;
+      this.a($$0);
    }
 
-   public ul a(ul $$0) {
-      if (this.equals(a)) {
-         return $$0;
-      } else {
-         $$0.a("sherds", (vi)b.encodeStart(uz.a, this).getOrThrow());
-         return $$0;
-      }
+   @Override
+   public xv al() {
+      return (xv)(this.d != null ? this.d : xv.c("block.minecraft.banner"));
    }
 
-   public List<cwi> a() {
-      return Stream.of(this.d, this.e, this.f, this.g).map($$0 -> $$0.orElse(cwq.qM)).toList();
-   }
-
-   public static due b(@Nullable ul $$0) {
-      return $$0 != null && $$0.e("sherds") ? b.parse(uz.a, $$0.c("sherds")).result().orElse(a) : a;
-   }
-
-   public Optional<cwi> b() {
+   @Nullable
+   @Override
+   public xv an() {
       return this.d;
    }
 
-   public Optional<cwi> c() {
-      return this.e;
+   @Override
+   protected void b(ux $$0, js.a $$1) {
+      super.b($$0, $$1);
+      if (!this.f.equals(dug.a)) {
+         $$0.a("patterns", (vu)dug.b.encodeStart($$1.a(vl.a), this.f).getOrThrow());
+      }
+
+      if (this.d != null) {
+         $$0.a("CustomName", xv.a.a(this.d, $$1));
+      }
    }
 
-   public Optional<cwi> d() {
+   @Override
+   protected void a(ux $$0, js.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.b("CustomName", 8)) {
+         this.d = a($$0.l("CustomName"), $$1);
+      }
+
+      if ($$0.e("patterns")) {
+         dug.b
+            .parse($$1.a(vl.a), $$0.c("patterns"))
+            .resultOrPartial($$0x -> b.error("Failed to parse banner patterns: '{}'", $$0x))
+            .ifPresent($$0x -> this.f = $$0x);
+      }
+   }
+
+   public acy a() {
+      return acy.a(this);
+   }
+
+   @Override
+   public ux a(js.a $$0) {
+      return this.d($$0);
+   }
+
+   public dug b() {
       return this.f;
    }
 
-   public Optional<cwi> e() {
-      return this.g;
+   public cxk c() {
+      cxk $$0 = new cxk(djj.a(this.e));
+      $$0.b(this.r());
+      return $$0;
+   }
+
+   public cwh f() {
+      return this.e;
+   }
+
+   @Override
+   protected void a(dup.b $$0) {
+      super.a($$0);
+      this.f = $$0.a(ku.ai, dug.a);
+      this.d = $$0.a(ku.g);
+   }
+
+   @Override
+   protected void a(kq.a $$0) {
+      super.a($$0);
+      $$0.a(ku.ai, this.f);
+      $$0.a(ku.g, this.d);
+   }
+
+   @Override
+   public void a(ux $$0) {
+      $$0.r("patterns");
+      $$0.r("CustomName");
    }
 }

@@ -3,15 +3,15 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import org.joml.Vector3f;
 
 public class lm extends lt {
-   public static final Vector3f a = ezy.a(3790560).k();
+   public static final Vector3f a = fbs.a(3790560).k();
    public static final lm b = new lm(a, ln.a, 1.0F);
    public static final MapCodec<lm> c = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               ayv.c.fieldOf("from_color").forGetter($$0x -> $$0x.h), ayv.c.fieldOf("to_color").forGetter($$0x -> $$0x.i), g.fieldOf("scale").forGetter(lt::d)
+               azn.c.fieldOf("from_color").forGetter($$0x -> $$0x.h), azn.c.fieldOf("to_color").forGetter($$0x -> $$0x.i), g.fieldOf("scale").forGetter(lt::d)
             )
             .apply($$0, lm::new)
    );
-   public static final zh<wu, lm> d = zh.a(zf.t, $$0 -> $$0.h, zf.t, $$0 -> $$0.i, zf.k, lt::d, lm::new);
+   public static final zt<xg, lm> d = zt.a(zr.u, $$0 -> $$0.h, zr.u, $$0 -> $$0.i, zr.l, lt::d, lm::new);
    private final Vector3f h;
    private final Vector3f i;
 

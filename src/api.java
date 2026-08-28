@@ -1,44 +1,56 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import java.util.Collection;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class api {
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xv.b("commands.ride.not_riding", $$0));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> xv.b("commands.ride.already_riding", $$0, $$1));
+   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> xv.b("commands.ride.mount.failure.generic", $$0, $$1));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(xv.c("commands.ride.mount.failure.cant_ride_players"));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(xv.c("commands.ride.mount.failure.loop"));
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(xv.c("commands.ride.mount.failure.wrong_dimension"));
+
    public static void a(CommandDispatcher<ew> $$0) {
-      RequiredArgumentBuilder<ew, hl> $$1 = (RequiredArgumentBuilder<ew, hl>)((RequiredArgumentBuilder)ex.a("targets", fj.d())
-            .executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), null, null)))
-         .then(ex.a("*").then(ex.a("sound", fx.a()).suggests(iw.c).executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), null, fx.c($$0x, "sound")))));
-
-      for (awo $$2 : awo.values()) {
-         $$1.then(
-            ((LiteralArgumentBuilder)ex.a($$2.a()).executes($$1x -> a((ew)$$1x.getSource(), fj.f($$1x, "targets"), $$2, null)))
-               .then(ex.a("sound", fx.a()).suggests(iw.c).executes($$1x -> a((ew)$$1x.getSource(), fj.f($$1x, "targets"), $$2, fx.c($$1x, "sound"))))
-         );
-      }
-
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("stopsound").requires($$0x -> $$0x.c(2))).then($$1));
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("ride").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)ex.a("target", fj.a())
+                     .then(ex.a("mount").then(ex.a("vehicle", fj.a()).executes($$0x -> a((ew)$$0x.getSource(), fj.a($$0x, "target"), fj.a($$0x, "vehicle"))))))
+                  .then(ex.a("dismount").executes($$0x -> a((ew)$$0x.getSource(), fj.a($$0x, "target"))))
+            )
+      );
    }
 
-   private static int a(ew $$0, Collection<arq> $$1, @Nullable awo $$2, @Nullable alj $$3) {
-      agf $$4 = new agf($$3, $$2);
-
-      for (arq $$5 : $$1) {
-         $$5.f.b($$4);
-      }
-
-      if ($$2 != null) {
-         if ($$3 != null) {
-            $$0.a(() -> xj.a("commands.stopsound.success.source.sound", xj.a($$3), $$2.a()), true);
-         } else {
-            $$0.a(() -> xj.a("commands.stopsound.success.source.any", $$2.a()), true);
-         }
-      } else if ($$3 != null) {
-         $$0.a(() -> xj.a("commands.stopsound.success.sourceless.sound", xj.a($$3)), true);
+   private static int a(ew $$0, bvf $$1, bvf $$2) throws CommandSyntaxException {
+      bvf $$3 = $$1.dk();
+      if ($$3 != null) {
+         throw b.create($$1.p_(), $$3.p_());
+      } else if ($$2.aq() == bvm.bS) {
+         throw d.create();
+      } else if ($$1.db().anyMatch($$1x -> $$1x == $$2)) {
+         throw e.create();
+      } else if ($$1.dV() != $$2.dV()) {
+         throw f.create();
+      } else if (!$$1.a($$2, true)) {
+         throw c.create($$1.p_(), $$2.p_());
       } else {
-         $$0.a(() -> xj.c("commands.stopsound.success.sourceless.any"), true);
+         $$0.a(() -> xv.a("commands.ride.mount.success", $$1.p_(), $$2.p_()), true);
+         return 1;
       }
+   }
 
-      return $$1.size();
+   private static int a(ew $$0, bvf $$1) throws CommandSyntaxException {
+      bvf $$2 = $$1.dk();
+      if ($$2 == null) {
+         throw a.create($$1.p_());
+      } else {
+         $$1.ae();
+         $$0.a(() -> xv.a("commands.ride.dismount.success", $$1.p_(), $$2.p_()), true);
+         return 1;
+      }
    }
 }

@@ -1,62 +1,32 @@
-public class dae extends dad {
-   private final jm b;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-   public dae(dfm $$0, jh $$1, jm $$2, cwm $$3, jm $$4) {
-      super($$0, null, bsj.a, $$3, new ezu(ezy.c($$1), $$4, $$1, false));
-      this.b = $$2;
-   }
+public record dae(Optional<jp> c, boolean d) {
+   public static final Codec<dae> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(jp.b.optionalFieldOf("target").forGetter(dae::a), Codec.BOOL.optionalFieldOf("tracked", true).forGetter(dae::b)).apply($$0, dae::new)
+   );
+   public static final zt<ByteBuf, dae> b = zt.a(jp.c.a(zr::a), dae::a, zr.b, dae::b, dae::new);
 
-   @Override
-   public jh a() {
-      return this.j().b();
-   }
-
-   @Override
-   public boolean b() {
-      return this.q().a_(this.j().b()).a(this);
-   }
-
-   @Override
-   public boolean c() {
-      return this.b();
-   }
-
-   @Override
-   public jm d() {
-      return jm.a;
-   }
-
-   @Override
-   public jm[] f() {
-      switch (this.b) {
-         case a:
-         default:
-            return new jm[]{jm.a, jm.c, jm.f, jm.d, jm.e, jm.b};
-         case b:
-            return new jm[]{jm.a, jm.b, jm.c, jm.f, jm.d, jm.e};
-         case c:
-            return new jm[]{jm.a, jm.c, jm.f, jm.e, jm.b, jm.d};
-         case d:
-            return new jm[]{jm.a, jm.d, jm.f, jm.e, jm.b, jm.c};
-         case e:
-            return new jm[]{jm.a, jm.e, jm.d, jm.b, jm.c, jm.f};
-         case f:
-            return new jm[]{jm.a, jm.f, jm.d, jm.b, jm.c, jm.e};
+   public dae a(ash $$0) {
+      if (this.d && !this.c.isEmpty()) {
+         if (this.c.get().a() != $$0.ah()) {
+            return this;
+         } else {
+            jh $$1 = this.c.get().b();
+            return $$0.k($$1) && $$0.z().a(chj.s, $$1) ? this : new dae(Optional.empty(), true);
+         }
+      } else {
+         return this;
       }
    }
 
-   @Override
-   public jm g() {
-      return this.b.o() == jm.a.b ? jm.c : this.b;
+   public Optional<jp> a() {
+      return this.c;
    }
 
-   @Override
-   public boolean h() {
-      return false;
-   }
-
-   @Override
-   public float i() {
-      return (float)(this.b.e() * 90);
+   public boolean b() {
+      return this.d;
    }
 }

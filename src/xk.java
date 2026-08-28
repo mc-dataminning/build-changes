@@ -1,27 +1,101 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.MapCodec;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelDuplexHandler;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandler;
+import io.netty.channel.ChannelOutboundHandler;
+import io.netty.channel.ChannelOutboundHandlerAdapter;
+import io.netty.channel.ChannelPromise;
+import io.netty.handler.codec.DecoderException;
+import io.netty.handler.codec.EncoderException;
+import io.netty.util.ReferenceCountUtil;
 
-public interface xk {
-   default <T> Optional<T> a(xo.b<T> $$0, yg $$1) {
-      return Optional.empty();
+public class xk {
+   public static <T extends xb> xk.b a(xd<T> $$0) {
+      return a(new wz<T>($$0));
    }
 
-   default <T> Optional<T> a(xo.a<T> $$0) {
-      return Optional.empty();
+   private static xk.b a(ChannelInboundHandler $$0) {
+      return $$1 -> {
+         $$1.pipeline().replace($$1.name(), "decoder", $$0);
+         $$1.channel().config().setAutoRead(true);
+      };
    }
 
-   default xx a(@Nullable ew $$0, @Nullable bul $$1, int $$2) throws CommandSyntaxException {
-      return xx.a(this);
+   public static <T extends xb> xk.d b(xd<T> $$0) {
+      return a(new xa<T>($$0));
    }
 
-   xk.a<?> a();
+   private static xk.d a(ChannelOutboundHandler $$0) {
+      return $$1 -> $$1.pipeline().replace($$1.name(), "encoder", $$0);
+   }
 
-   public static record a<T extends xk>(MapCodec<T> a, String b) implements bai {
-      @Override
-      public String c() {
-         return this.b;
+   public static class a extends ChannelDuplexHandler {
+      public void channelRead(ChannelHandlerContext $$0, Object $$1) {
+         if (!($$1 instanceof ByteBuf) && !($$1 instanceof aac)) {
+            $$0.fireChannelRead($$1);
+         } else {
+            ReferenceCountUtil.release($$1);
+            throw new DecoderException("Pipeline has no inbound protocol configured, can't process packet " + $$1);
+         }
+      }
+
+      public void write(ChannelHandlerContext $$0, Object $$1, ChannelPromise $$2) throws Exception {
+         if ($$1 instanceof xk.b $$3) {
+            try {
+               $$3.run($$0);
+            } finally {
+               ReferenceCountUtil.release($$1);
+            }
+
+            $$2.setSuccess();
+         } else {
+            $$0.write($$1, $$2);
+         }
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      void run(ChannelHandlerContext var1);
+
+      default xk.b andThen(xk.b $$0) {
+         return $$1 -> {
+            this.run($$1);
+            $$0.run($$1);
+         };
+      }
+   }
+
+   public static class c extends ChannelOutboundHandlerAdapter {
+      public void write(ChannelHandlerContext $$0, Object $$1, ChannelPromise $$2) throws Exception {
+         if ($$1 instanceof aac) {
+            ReferenceCountUtil.release($$1);
+            throw new EncoderException("Pipeline has no outbound protocol configured, can't process packet " + $$1);
+         } else {
+            if ($$1 instanceof xk.d $$3) {
+               try {
+                  $$3.run($$0);
+               } finally {
+                  ReferenceCountUtil.release($$1);
+               }
+
+               $$2.setSuccess();
+            } else {
+               $$0.write($$1, $$2);
+            }
+         }
+      }
+   }
+
+   @FunctionalInterface
+   public interface d {
+      void run(ChannelHandlerContext var1);
+
+      default xk.d andThen(xk.d $$0) {
+         return $$1 -> {
+            this.run($$1);
+            $$0.run($$1);
+         };
       }
    }
 }

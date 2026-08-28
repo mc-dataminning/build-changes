@@ -1,59 +1,103 @@
-public interface fbk extends bsd {
-   cwm f();
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.nio.file.FileSystem;
+import java.nio.file.Path;
+import java.nio.file.PathMatcher;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
+import org.slf4j.Logger;
 
-   default cwm c(int $$0) {
-      return this.f().a($$0);
+public class fbk implements PathMatcher {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "#";
+   private final List<fbk.a> c;
+   private final Map<String, PathMatcher> d = new ConcurrentHashMap<>();
+
+   public fbk(List<fbk.a> $$0) {
+      this.c = $$0;
    }
 
-   void b(cwm var1);
+   public PathMatcher a(FileSystem $$0) {
+      return this.d.computeIfAbsent($$0.provider().getScheme(), $$1 -> {
+         List<PathMatcher> $$2;
+         try {
+            $$2 = this.c.stream().map($$1x -> $$1x.a($$0)).toList();
+         } catch (Exception var5) {
+            a.error("Failed to compile file pattern list", var5);
+            return $$0xx -> false;
+         }
+         return switch ($$2.size()) {
+            case 0 -> $$0xx -> false;
+            case 1 -> (PathMatcher)$$2.get(0);
+            default -> $$1x -> {
+            for (PathMatcher $$2 : $$2) {
+               if ($$2.matches($$1x)) {
+                  return true;
+               }
+            }
 
-   default cwm h() {
-      return this.c(this.an_());
+            return false;
+         };
+         };
+      });
    }
 
    @Override
-   default int b() {
-      return 1;
+   public boolean matches(Path $$0) {
+      return this.a($$0.getFileSystem()).matches($$0);
    }
 
-   @Override
-   default boolean c() {
-      return this.f().f();
+   public static fbk a(BufferedReader $$0) {
+      return new fbk($$0.lines().flatMap($$0x -> fbk.a.a($$0x).stream()).toList());
    }
 
-   @Override
-   default void a() {
-      this.h();
-   }
+   public static record a(fbk.b a, String b) {
+      public PathMatcher a(FileSystem $$0) {
+         return this.a().compile($$0, this.b);
+      }
 
-   @Override
-   default cwm b(int $$0) {
-      return this.a($$0, this.an_());
-   }
+      static Optional<fbk.a> a(String $$0) {
+         if ($$0.isBlank() || $$0.startsWith("#")) {
+            return Optional.empty();
+         } else if (!$$0.startsWith("[")) {
+            return Optional.of(new fbk.a(fbk.b.b, $$0));
+         } else {
+            int $$1 = $$0.indexOf(93, 1);
+            if ($$1 == -1) {
+               throw new IllegalArgumentException("Unterminated type in line '" + $$0 + "'");
+            } else {
+               String $$2 = $$0.substring(1, $$1);
+               String $$3 = $$0.substring($$1 + 1);
 
-   @Override
-   default cwm a(int $$0) {
-      return $$0 == 0 ? this.f() : cwm.k;
-   }
+               return switch ($$2) {
+                  case "glob", "regex" -> Optional.of(new fbk.a(fbk.b.a, $$2 + ":" + $$3));
+                  case "prefix" -> Optional.of(new fbk.a(fbk.b.b, $$3));
+                  default -> throw new IllegalArgumentException("Unsupported definition type in line '" + $$0 + "'");
+               };
+            }
+         }
+      }
 
-   @Override
-   default cwm a(int $$0, int $$1) {
-      return $$0 != 0 ? cwm.k : this.c($$1);
-   }
+      static fbk.a b(String $$0) {
+         return new fbk.a(fbk.b.a, "glob:" + $$0);
+      }
 
-   @Override
-   default void a(int $$0, cwm $$1) {
-      if ($$0 == 0) {
-         this.b($$1);
+      static fbk.a c(String $$0) {
+         return new fbk.a(fbk.b.a, "regex:" + $$0);
+      }
+
+      static fbk.a d(String $$0) {
+         return new fbk.a(fbk.b.b, $$0);
       }
    }
 
-   public interface a extends fbk {
-      dsy v();
+   @FunctionalInterface
+   public interface b {
+      fbk.b a = FileSystem::getPathMatcher;
+      fbk.b b = ($$0, $$1) -> $$1x -> $$1x.toString().startsWith($$1);
 
-      @Override
-      default boolean a(cou $$0) {
-         return bsd.a(this.v(), $$0);
-      }
+      PathMatcher compile(FileSystem var1, String var2);
    }
 }

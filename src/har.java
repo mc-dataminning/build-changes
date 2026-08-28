@@ -1,71 +1,76 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.Path;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
+import org.slf4j.Logger;
 
-public class har implements aub<haq> {
-   public haq b(JsonObject $$0) {
-      Builder<hap> $$1 = ImmutableList.builder();
-      int $$2 = azc.a($$0, "frametime", 1);
-      if ($$2 != 1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$2, "Invalid default frame time");
+public class har extends hap implements haq {
+   private static final Logger d = LogUtils.getLogger();
+   @Nullable
+   private ffl e;
+
+   public har(ffl $$0) {
+      this.e = $$0;
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> {
+            TextureUtil.prepareImage(this.a(), this.e.a(), this.e.b());
+            this.e();
+         });
+      } else {
+         TextureUtil.prepareImage(this.a(), this.e.a(), this.e.b());
+         this.e();
       }
+   }
 
-      if ($$0.has("frames")) {
-         try {
-            JsonArray $$3 = azc.v($$0, "frames");
+   public har(int $$0, int $$1, boolean $$2) {
+      this.e = new ffl($$0, $$1, $$2);
+      TextureUtil.prepareImage(this.a(), this.e.a(), this.e.b());
+   }
 
-            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-               JsonElement $$5 = $$3.get($$4);
-               hap $$6 = this.a($$4, $$5);
-               if ($$6 != null) {
-                  $$1.add($$6);
-               }
-            }
-         } catch (ClassCastException var8) {
-            throw new JsonParseException("Invalid animation->frames: expected array, was " + $$0.get("frames"), var8);
-         }
+   @Override
+   public void a(avv $$0) {
+   }
+
+   @Override
+   public void e() {
+      if (this.e != null) {
+         this.d();
+         this.e.a(0, 0, 0, false);
+      } else {
+         d.warn("Trying to upload disposed texture {}", this.a());
       }
-
-      int $$8 = azc.a($$0, "width", -1);
-      int $$9 = azc.a($$0, "height", -1);
-      if ($$8 != -1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$8, "Invalid width");
-      }
-
-      if ($$9 != -1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$9, "Invalid height");
-      }
-
-      boolean $$10 = azc.a($$0, "interpolate", false);
-      return new haq($$1.build(), $$8, $$9, $$2, $$10);
    }
 
    @Nullable
-   private hap a(int $$0, JsonElement $$1) {
-      if ($$1.isJsonPrimitive()) {
-         return new hap(azc.g($$1, "frames[" + $$0 + "]"));
-      } else if ($$1.isJsonObject()) {
-         JsonObject $$2 = azc.m($$1, "frames[" + $$0 + "]");
-         int $$3 = azc.a($$2, "time", -1);
-         if ($$2.has("time")) {
-            Validate.inclusiveBetween(1L, 2147483647L, (long)$$3, "Invalid frame time");
-         }
+   public ffl f() {
+      return this.e;
+   }
 
-         int $$4 = azc.o($$2, "index");
-         Validate.inclusiveBetween(0L, 2147483647L, (long)$$4, "Invalid frame index");
-         return new hap($$4, $$3);
-      } else {
-         return null;
+   public void a(ffl $$0) {
+      if (this.e != null) {
+         this.e.close();
+      }
+
+      this.e = $$0;
+   }
+
+   @Override
+   public void close() {
+      if (this.e != null) {
+         this.e.close();
+         this.b();
+         this.e = null;
       }
    }
 
    @Override
-   public String a() {
-      return "animation";
+   public void a(alz $$0, Path $$1) throws IOException {
+      if (this.e != null) {
+         String $$2 = $$0.c() + ".png";
+         Path $$3 = $$1.resolve($$2);
+         this.e.a($$3);
+      }
    }
 }

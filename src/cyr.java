@@ -1,63 +1,23 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import java.util.List;
-
-public final class cyr {
-   public static final cyr a = new cyr(List.of());
-   public static final Codec<cyr> b = cwm.b.listOf().xmap(cyr::new, $$0 -> $$0.d);
-   public static final zh<wu, cyr> c = cwm.i.a(zf.a()).a(cyr::new, $$0 -> $$0.d);
-   private final List<cwm> d;
-
-   private cyr(List<cwm> $$0) {
-      this.d = $$0;
+public class cyr extends cxg implements cyf {
+   public cyr(cxg.a $$0) {
+      super($$0);
    }
 
-   public static cyr a(cwm $$0) {
-      return new cyr(List.of($$0.v()));
-   }
-
-   public static cyr a(List<cwm> $$0) {
-      return new cyr(List.copyOf(Lists.transform($$0, cwm::v)));
-   }
-
-   public boolean a(cwi $$0) {
-      for (cwm $$1 : this.d) {
-         if ($$1.a($$0)) {
-            return true;
-         }
+   @Override
+   public bte a(dha $$0, cps $$1, btd $$2) {
+      cxk $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), axf.yY, axg.g, 0.5F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
+      if ($$0 instanceof ash $$4) {
+         cql.a(cqq::new, $$4, $$3, $$1, 0.0F, 1.5F, 1.0F);
       }
 
-      return false;
-   }
-
-   public List<cwm> a() {
-      return Lists.transform(this.d, cwm::v);
-   }
-
-   public boolean b() {
-      return this.d.isEmpty();
+      $$1.b(axp.c.b(this));
+      $$3.a(1, $$1);
+      return bte.a;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof cyr $$1 && cwm.a(this.d, $$1.d)) {
-            return true;
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return cwm.a(this.d);
-   }
-
-   @Override
-   public String toString() {
-      return "ChargedProjectiles[items=" + this.d + "]";
+   public cql a(dha $$0, ka $$1, cxk $$2, jm $$3) {
+      return new cqq($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
    }
 }

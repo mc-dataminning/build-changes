@@ -1,216 +1,72 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
 
-public class eox extends emi {
-   private static final String[] e = new String[]{
-      "ruined_portal/portal_1",
-      "ruined_portal/portal_2",
-      "ruined_portal/portal_3",
-      "ruined_portal/portal_4",
-      "ruined_portal/portal_5",
-      "ruined_portal/portal_6",
-      "ruined_portal/portal_7",
-      "ruined_portal/portal_8",
-      "ruined_portal/portal_9",
-      "ruined_portal/portal_10"
-   };
-   private static final String[] f = new String[]{"ruined_portal/giant_portal_1", "ruined_portal/giant_portal_2", "ruined_portal/giant_portal_3"};
-   private static final float g = 0.05F;
-   private static final int h = 15;
-   private final List<eox.a> i;
-   public static final MapCodec<eox> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(a($$0), ayv.a(eox.a.a.listOf()).fieldOf("setups").forGetter($$0x -> $$0x.i)).apply($$0, eox::new)
-   );
-
-   public eox(emi.c $$0, List<eox.a> $$1) {
-      super($$0);
-      this.i = $$1;
-   }
-
-   public eox(emi.c $$0, eox.a $$1) {
-      this($$0, List.of($$1));
-   }
-
-   @Override
-   public Optional<emi.b> a(emi.a $$0) {
-      eow.a $$1 = new eow.a();
-      ecp $$2 = $$0.f();
-      eox.a $$3 = null;
-      if (this.i.size() > 1) {
-         float $$4 = 0.0F;
-
-         for (eox.a $$5 : this.i) {
-            $$4 += $$5.h();
-         }
-
-         float $$6 = $$2.i();
-
-         for (eox.a $$7 : this.i) {
-            $$6 -= $$7.h() / $$4;
-            if ($$6 < 0.0F) {
-               $$3 = $$7;
-               break;
-            }
-         }
-      } else {
-         $$3 = this.i.get(0);
-      }
-
-      if ($$3 == null) {
-         throw new IllegalStateException();
-      } else {
-         eox.a $$8 = $$3;
-         $$1.d = a($$2, $$8.b());
-         $$1.c = $$8.c();
-         $$1.e = $$8.d();
-         $$1.f = $$8.e();
-         $$1.g = $$8.g();
-         alj $$9;
-         if ($$2.i() < 0.05F) {
-            $$9 = alj.b(f[$$2.a(f.length)]);
-         } else {
-            $$9 = alj.b(e[$$2.a(e.length)]);
-         }
-
-         eqk $$11 = $$0.e().a($$9);
-         dpd $$12 = ae.a(dpd.values(), $$2);
-         dnm $$13 = $$2.i() < 0.5F ? dnm.a : dnm.c;
-         jh $$14 = new jh($$11.a().u() / 2, 0, $$11.a().w() / 2);
-         dxr $$15 = $$0.b();
-         dfo $$16 = $$0.i();
-         ece $$17 = $$0.d();
-         jh $$18 = $$0.h().l();
-         ema $$19 = $$11.a($$18, $$12, $$14, $$13);
-         jh $$20 = $$19.g();
-         int $$21 = $$15.a($$20.u(), $$20.w(), eow.a($$8.a()), $$16, $$17) - 1;
-         int $$22 = a($$2, $$15, $$8.a(), $$1.d, $$21, $$19.e(), $$19, $$16, $$17);
-         jh $$23 = new jh($$18.u(), $$22, $$18.w());
-         return Optional.of(new emi.b($$23, (Consumer<ena>)($$11x -> {
-            if ($$8.f()) {
-               $$1.b = a($$23, $$0.b().d().getNoiseBiome(kb.a($$23.u()), kb.a($$23.v()), kb.a($$23.w()), $$17.b()), $$15.f());
-            }
-
-            $$11x.a(new eow($$0.e(), $$23, $$8.a(), $$1, $$9, $$11, $$12, $$13, $$14));
-         })));
-      }
-   }
-
-   private static boolean a(ecp $$0, float $$1) {
-      if ($$1 == 0.0F) {
-         return false;
-      } else {
-         return $$1 == 1.0F ? true : $$0.i() < $$1;
-      }
-   }
-
-   private static boolean a(jh $$0, jq<dgo> $$1, int $$2) {
-      return $$1.a().b($$0, $$2);
-   }
-
-   private static int a(azu $$0, dxr $$1, eow.b $$2, boolean $$3, int $$4, int $$5, ema $$6, dfo $$7, ece $$8) {
-      int $$9 = $$7.K_() + 15;
-      int $$10;
-      if ($$2 == eow.b.f) {
-         if ($$3) {
-            $$10 = azm.b($$0, 32, 100);
-         } else if ($$0.i() < 0.5F) {
-            $$10 = azm.b($$0, 27, 29);
-         } else {
-            $$10 = azm.b($$0, 29, 100);
-         }
-      } else if ($$2 == eow.b.d) {
-         int $$13 = $$4 - $$5;
-         $$10 = a($$0, 70, $$13);
-      } else if ($$2 == eow.b.e) {
-         int $$15 = $$4 - $$5;
-         $$10 = a($$0, $$9, $$15);
-      } else if ($$2 == eow.b.b) {
-         $$10 = $$4 - $$5 + azm.b($$0, 2, 8);
-      } else {
-         $$10 = $$4;
-      }
-
-      List<jh> $$19 = ImmutableList.of(new jh($$6.h(), 0, $$6.j()), new jh($$6.k(), 0, $$6.j()), new jh($$6.h(), 0, $$6.m()), new jh($$6.k(), 0, $$6.m()));
-      List<dfy> $$20 = $$19.stream().map($$3x -> $$1.a($$3x.u(), $$3x.w(), $$7, $$8)).collect(Collectors.toList());
-      ebq.a $$21 = $$2 == eow.b.c ? ebq.a.c : ebq.a.a;
-
-      int $$22;
-      for ($$22 = $$10; $$22 > $$9; $$22--) {
-         int $$23 = 0;
-
-         for (dfy $$24 : $$20) {
-            dvv $$25 = $$24.a($$22);
-            if ($$21.e().test($$25)) {
-               if (++$$23 == 3) {
-                  return $$22;
-               }
-            }
-         }
-      }
-
-      return $$22;
-   }
-
-   private static int a(azu $$0, int $$1, int $$2) {
-      return $$1 < $$2 ? azm.b($$0, $$1, $$2) : $$2;
-   }
-
-   @Override
-   public emr<?> e() {
-      return emr.l;
-   }
-
-   public static record a(eow.b b, float c, float d, boolean e, boolean f, boolean g, boolean h, float i) {
-      public static final Codec<eox.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  eow.b.g.fieldOf("placement").forGetter(eox.a::a),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("air_pocket_probability").forGetter(eox.a::b),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("mossiness").forGetter(eox.a::c),
-                  Codec.BOOL.fieldOf("overgrown").forGetter(eox.a::d),
-                  Codec.BOOL.fieldOf("vines").forGetter(eox.a::e),
-                  Codec.BOOL.fieldOf("can_be_cold").forGetter(eox.a::f),
-                  Codec.BOOL.fieldOf("replace_with_blackstone").forGetter(eox.a::g),
-                  ayv.o.fieldOf("weight").forGetter(eox.a::h)
+public class eox extends eoz {
+   public static final MapCodec<eox> a = RecordCodecBuilder.mapCodec(
+         $$0 -> a($$0)
+               .and(
+                  $$0.group(
+                     Codec.intRange(0, 4096).fieldOf("spacing").forGetter(eox::a),
+                     Codec.intRange(0, 4096).fieldOf("separation").forGetter(eox::b),
+                     eoy.c.optionalFieldOf("spread_type", eoy.a).forGetter(eox::c)
+                  )
                )
-               .apply($$0, eox.a::new)
-      );
+               .apply($$0, eox::new)
+      )
+      .validate(eox::a);
+   private final int c;
+   private final int d;
+   private final eoy e;
 
-      public eow.b a() {
-         return this.b;
-      }
+   private static DataResult<eox> a(eox $$0) {
+      return $$0.c <= $$0.d ? DataResult.error(() -> "Spacing has to be larger than separation") : DataResult.success($$0);
+   }
 
-      public float b() {
-         return this.c;
-      }
+   public eox(kl $$0, eoz.c $$1, float $$2, int $$3, Optional<eoz.a> $$4, int $$5, int $$6, eoy $$7) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
+      this.d = $$6;
+      this.e = $$7;
+   }
 
-      public float c() {
-         return this.d;
-      }
+   public eox(int $$0, int $$1, eoy $$2, int $$3) {
+      this(kl.g, eoz.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
+   }
 
-      public boolean d() {
-         return this.e;
-      }
+   public int a() {
+      return this.c;
+   }
 
-      public boolean e() {
-         return this.f;
-      }
+   public int b() {
+      return this.d;
+   }
 
-      public boolean f() {
-         return this.g;
-      }
+   public eoy c() {
+      return this.e;
+   }
 
-      public boolean g() {
-         return this.h;
-      }
+   public dgg a(long $$0, int $$1, int $$2) {
+      int $$3 = Math.floorDiv($$1, this.c);
+      int $$4 = Math.floorDiv($$2, this.c);
+      eeh $$5 = new eeh(new edj(0L));
+      $$5.a($$0, $$3, $$4, this.i());
+      int $$6 = this.c - this.d;
+      int $$7 = this.e.a($$5, $$6);
+      int $$8 = this.e.a($$5, $$6);
+      return new dgg($$3 * this.c + $$7, $$4 * this.c + $$8);
+   }
 
-      public float h() {
-         return this.i;
-      }
+   @Override
+   protected boolean a(dzk $$0, int $$1, int $$2) {
+      dgg $$3 = this.a($$0.d(), $$1, $$2);
+      return $$3.g == $$1 && $$3.h == $$2;
+   }
+
+   @Override
+   public epa<?> e() {
+      return epa.a;
    }
 }

@@ -1,158 +1,41 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.math.LongMath;
-import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2BooleanFunction;
-import java.io.Reader;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.Map.Entry;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fkj extends avi<Map<String, List<fkj.a>>> implements AutoCloseable {
-   private static final Codec<Map<String, List<fkj.a>>> a = Codec.unboundedMap(
-      Codec.STRING,
-      RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     Codec.LONG.optionalFieldOf("delay", 0L).forGetter(fkj.a::a),
-                     Codec.LONG.fieldOf("period").forGetter(fkj.a::b),
-                     Codec.STRING.fieldOf("title").forGetter(fkj.a::c),
-                     Codec.STRING.fieldOf("message").forGetter(fkj.a::d)
-                  )
-                  .apply($$0, fkj.a::new)
-         )
-         .listOf()
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final alj c;
-   private final Object2BooleanFunction<String> d;
-   @Nullable
-   private Timer e;
-   @Nullable
-   private fkj.b f;
-
-   public fkj(alj $$0, Object2BooleanFunction<String> $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   protected Map<String, List<fkj.a>> a(avd $$0, bou $$1) {
-      try {
-         Map var4;
-         try (Reader $$2 = $$0.openAsReader(this.c)) {
-            var4 = (Map)a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$2)).result().orElseThrow();
-         }
-
-         return var4;
-      } catch (Exception var8) {
-         b.warn("Failed to load {}", this.c, var8);
-         return ImmutableMap.of();
-      }
-   }
-
-   protected void a(Map<String, List<fkj.a>> $$0, avd $$1, bou $$2) {
-      List<fkj.a> $$3 = $$0.entrySet()
-         .stream()
-         .filter($$0x -> (Boolean)this.d.apply((String)$$0x.getKey()))
-         .map(Entry::getValue)
-         .flatMap(Collection::stream)
-         .collect(Collectors.toList());
-      if ($$3.isEmpty()) {
-         this.a();
-      } else if ($$3.stream().anyMatch($$0x -> $$0x.b == 0L)) {
-         ae.b("A periodic notification in " + this.c + " has a period of zero minutes");
-         this.a();
-      } else {
-         long $$4 = this.a($$3);
-         long $$5 = this.a($$3, $$4);
-         if (this.e == null) {
-            this.e = new Timer();
-         }
-
-         if (this.f == null) {
-            this.f = new fkj.b($$3, $$4, $$5);
-         } else {
-            this.f = this.f.a($$3, $$5);
-         }
-
-         this.e.scheduleAtFixedRate(this.f, TimeUnit.MINUTES.toMillis($$4), TimeUnit.MINUTES.toMillis($$5));
-      }
-   }
-
-   @Override
-   public void close() {
-      this.a();
-   }
-
-   private void a() {
-      if (this.e != null) {
-         this.e.cancel();
-      }
-   }
-
-   private long a(List<fkj.a> $$0, long $$1) {
-      return $$0.stream().mapToLong($$1x -> {
-         long $$2 = $$1x.a - $$1;
-         return LongMath.gcd($$2, $$1x.b);
-      }).reduce(LongMath::gcd).orElseThrow(() -> new IllegalStateException("Empty notifications from: " + this.c));
-   }
-
-   private long a(List<fkj.a> $$0) {
-      return $$0.stream().mapToLong($$0x -> $$0x.a).min().orElse(0L);
-   }
-
-   public static record a(long a, long b, String c, String d) {
-
-      public a(final long a, final long b, final String c, final String d) {
-         this.a = a != 0L ? a : b;
-         this.b = b;
-         this.c = c;
-         this.d = d;
-      }
-   }
-
-   static class b extends TimerTask {
-      private final fke a = fke.Q();
-      private final List<fkj.a> b;
-      private final long c;
-      private final AtomicLong d;
-
-      public b(List<fkj.a> $$0, long $$1, long $$2) {
-         this.b = $$0;
-         this.c = $$2;
-         this.d = new AtomicLong($$1);
-      }
-
-      public fkj.b a(List<fkj.a> $$0, long $$1) {
-         this.cancel();
-         return new fkj.b($$0, this.d.get(), $$1);
+public interface fkj {
+   fkj a = new fkj() {
+      @Override
+      public long a() {
+         return 1L;
       }
 
       @Override
-      public void run() {
-         long $$0 = this.d.getAndAdd(this.c);
-         long $$1 = this.d.get();
-
-         for (fkj.a $$2 : this.b) {
-            if ($$0 >= $$2.a) {
-               long $$3 = $$0 / $$2.b;
-               long $$4 = $$1 / $$2.b;
-               if ($$3 != $$4) {
-                  this.a.execute(() -> fom.a(fke.Q().aA(), fom.a.g, xj.a($$2.c, $$3), xj.a($$2.d, $$3)));
-                  return;
-               }
-            }
-         }
+      public long b() {
+         return 1L;
       }
+   };
+
+   long a();
+
+   long b();
+
+   static fkj a(final int $$0) {
+      return new fkj() {
+         private static final Logger c = LogUtils.getLogger();
+         private int d;
+
+         @Override
+         public long a() {
+            this.d = 0;
+            return 1L;
+         }
+
+         @Override
+         public long b() {
+            this.d++;
+            long $$0 = Math.min(1L << this.d, (long)$$0);
+            c.debug("Skipping for {} extra cycles", $$0);
+            return $$0;
+         }
+      };
    }
 }

@@ -1,32 +1,88 @@
-import java.util.Map;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface fxc {
-   Map<Optional<ali<elx>>, fxc> a = Map.of(Optional.of(ely.b), ($$0, $$1) -> {
-      dxr $$2 = $$1.e().a();
-      ke $$3 = $$1.a();
-      jr<dgo> $$4 = $$3.e(ma.aG);
-      jr<emo> $$5 = $$3.e(ma.aU);
-      jr<elm> $$6 = $$3.e(ma.aR);
-      return new fqx($$0, $$1x -> $$0.m().a(a($$1x)), $$2 instanceof ebl ? ((ebl)$$2).h() : ekl.a($$4, $$5, $$6));
-   }, Optional.of(ely.e), ($$0, $$1) -> new fqw($$0, $$1, $$1x -> $$0.m().a(a($$1x))));
+public class fxc extends fwv {
+   private static final xv v = xv.c("controls.keybinds.title");
+   @Nullable
+   public flx a;
+   public long u;
+   private fxb w;
+   private fny x;
 
-   frw createEditScreen(fwv var1, fxf var2);
-
-   static fxf.a a(ekl $$0) {
-      return ($$1, $$2) -> {
-         dxr $$3 = new ebl($$0);
-         return $$2.a($$1, $$3);
-      };
+   public fxc(ftr $$0, fmd $$1) {
+      super($$0, $$1, v);
    }
 
-   private static fxf.a a(jq<dgo> $$0) {
-      return ($$1, $$2) -> {
-         kd<ebv> $$3 = $$1.e(ma.aP);
-         jq<ebv> $$4 = $$3.b(ebv.c);
-         dgs $$5 = new dgz($$0);
-         dxr $$6 = new ebt($$5, $$4);
-         return $$2.a($$1, $$6);
-      };
+   @Override
+   protected void F() {
+      this.w = this.s.c(new fxb(this, this.m));
+   }
+
+   @Override
+   protected void l() {
+   }
+
+   @Override
+   protected void E() {
+      this.x = fny.a(xv.c("controls.resetAll"), $$0x -> {
+         for (flx $$1 : this.c.V) {
+            $$1.b($$1.i());
+         }
+
+         this.w.b();
+      }).a();
+      frr $$0 = this.s.b(frr.e().a(8));
+      $$0.a(this.x);
+      $$0.a(fny.a(xu.d, $$0x -> this.aP_()).a());
+   }
+
+   @Override
+   protected void c() {
+      this.s.a();
+      this.w.a(this.n, this.s);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.a != null) {
+         this.a.b(ffg.b.c.a($$2));
+         this.a = null;
+         this.w.b();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.a != null) {
+         if ($$0 == 256) {
+            this.a.b(ffg.bv);
+         } else {
+            this.a.b(ffg.a($$0, $$1));
+         }
+
+         this.a = null;
+         this.u = ae.c();
+         this.w.b();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      boolean $$4 = false;
+
+      for (flx $$5 : this.c.V) {
+         if (!$$5.l()) {
+            $$4 = true;
+            break;
+         }
+      }
+
+      this.x.j = $$4;
    }
 }

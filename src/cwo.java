@@ -1,36 +1,18 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-
-public enum cwo implements bai {
-   a(0, "none"),
-   b(1, "eat"),
-   c(2, "drink"),
-   d(3, "block"),
-   e(4, "bow"),
-   f(5, "spear"),
-   g(6, "crossbow"),
-   h(7, "spyglass"),
-   i(8, "toot_horn"),
-   j(9, "brush");
-
-   private static final IntFunction<cwo> m = ayd.a(cwo::a, values(), ayd.a.a);
-   public static final Codec<cwo> k = bai.a(cwo::values);
-   public static final zh<ByteBuf, cwo> l = zf.a(m, cwo::a);
-   private final int n;
-   private final String o;
-
-   private cwo(final int $$0, final String $$1) {
-      this.n = $$0;
-      this.o = $$1;
-   }
-
-   public int a() {
-      return this.n;
+public class cwo extends cxg {
+   public cwo(cxg.a $$0) {
+      super($$0);
    }
 
    @Override
-   public String c() {
-      return this.o;
+   public bte a(dha $$0, cps $$1, btd $$2) {
+      cxk $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), axf.iM, axg.g, 0.5F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
+      if ($$0 instanceof ash $$4) {
+         cql.a(cqv::new, $$4, $$3, $$1, 0.0F, 1.5F, 1.0F);
+      }
+
+      $$1.b(axp.c.b(this));
+      $$3.a(1, $$1);
+      return bte.a;
    }
 }

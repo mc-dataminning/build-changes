@@ -2,28 +2,26 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import java.util.Optional;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
 
 public class bha extends DataFix {
-   public bha(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public bha(Schema $$0) {
+      super($$0, false);
    }
 
-   private static String a(String $$0) {
-      return $$0.equals("health") ? "hearts" : "integer";
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.update("ExitPortalLocation", bbq::a);
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bia.H);
-      return this.fixTypeEverywhereTyped("ObjectiveRenderTypeFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> {
-            Optional<String> $$1 = $$0xx.get("RenderType").asString().result();
-            if ($$1.isEmpty()) {
-               String $$2 = $$0xx.get("CriteriaName").asString("");
-               String $$3 = a($$2);
-               return $$0xx.set("RenderType", $$0xx.createString($$3));
+      return this.fixTypeEverywhereTyped("LegacyDragonFightFix", this.getInputSchema().getType(bis.a), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
+            OptionalDynamic<?> $$1 = $$0x.get("DragonFight");
+            if ($$1.result().isPresent()) {
+               return $$0x;
             } else {
-               return $$0xx;
+               Dynamic<?> $$2 = $$0x.get("DimensionData").get("1").get("DragonFight").orElseEmptyMap();
+               return $$0x.set("DragonFight", a($$2));
             }
          }));
    }

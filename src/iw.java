@@ -8,31 +8,30 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public class iw {
-   private static final Map<alj, SuggestionProvider<fb>> e = Maps.newHashMap();
-   private static final alj f = alj.b("ask_server");
-   public static final SuggestionProvider<fb> a = a(f, ($$0, $$1) -> ((fb)$$0.getSource()).a($$0));
-   public static final SuggestionProvider<ew> b = a(alj.b("all_recipes"), ($$0, $$1) -> fb.a(((fb)$$0.getSource()).t(), $$1));
-   public static final SuggestionProvider<ew> c = a(alj.b("available_sounds"), ($$0, $$1) -> fb.a(((fb)$$0.getSource()).s(), $$1));
-   public static final SuggestionProvider<ew> d = a(
-      alj.b("summonable_entities"),
-      ($$0, $$1) -> fb.a(lz.f.s().filter($$1x -> $$1x.a(((fb)$$0.getSource()).w()) && $$1x.c()), $$1, bus::a, $$0x -> xj.c(ae.a("entity", bus.a($$0x))))
+   private static final Map<alz, SuggestionProvider<fb>> d = Maps.newHashMap();
+   private static final alz e = alz.b("ask_server");
+   public static final SuggestionProvider<fb> a = a(e, ($$0, $$1) -> ((fb)$$0.getSource()).a($$0));
+   public static final SuggestionProvider<ew> b = a(alz.b("available_sounds"), ($$0, $$1) -> fb.a(((fb)$$0.getSource()).s(), $$1));
+   public static final SuggestionProvider<ew> c = a(
+      alz.b("summonable_entities"),
+      ($$0, $$1) -> fb.a(ma.f.s().filter($$1x -> $$1x.a(((fb)$$0.getSource()).v()) && $$1x.c()), $$1, bvm::a, $$0x -> xv.c(ae.a("entity", bvm.a($$0x))))
    );
 
-   public static <S extends fb> SuggestionProvider<S> a(alj $$0, SuggestionProvider<fb> $$1) {
-      if (e.containsKey($$0)) {
+   public static <S extends fb> SuggestionProvider<S> a(alz $$0, SuggestionProvider<fb> $$1) {
+      if (d.containsKey($$0)) {
          throw new IllegalArgumentException("A command suggestion provider is already registered with the name " + $$0);
       } else {
-         e.put($$0, $$1);
+         d.put($$0, $$1);
          return new iw.a($$0, $$1);
       }
    }
 
-   public static SuggestionProvider<fb> a(alj $$0) {
-      return e.getOrDefault($$0, a);
+   public static SuggestionProvider<fb> a(alz $$0) {
+      return d.getOrDefault($$0, a);
    }
 
-   public static alj a(SuggestionProvider<fb> $$0) {
-      return $$0 instanceof iw.a ? ((iw.a)$$0).b : f;
+   public static alz a(SuggestionProvider<fb> $$0) {
+      return $$0 instanceof iw.a ? ((iw.a)$$0).b : e;
    }
 
    public static SuggestionProvider<fb> b(SuggestionProvider<fb> $$0) {
@@ -41,9 +40,9 @@ public class iw {
 
    protected static class a implements SuggestionProvider<fb> {
       private final SuggestionProvider<fb> a;
-      final alj b;
+      final alz b;
 
-      public a(alj $$0, SuggestionProvider<fb> $$1) {
+      public a(alz $$0, SuggestionProvider<fb> $$1) {
          this.a = $$1;
          this.b = $$0;
       }

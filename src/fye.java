@@ -1,69 +1,57 @@
-public class fye {
-   public static void a(gcl $$0, gcl $$1, gcl $$2, boolean $$3) {
-      gcl $$4 = $$3 ? $$0 : $$1;
-      gcl $$5 = $$3 ? $$1 : $$0;
-      $$4.f = ($$3 ? -0.3F : 0.3F) + $$2.f;
-      $$5.f = ($$3 ? 0.6F : -0.6F) + $$2.f;
-      $$4.e = (float) (-Math.PI / 2) + $$2.e + 0.1F;
-      $$5.e = -1.5F + $$2.e;
+import java.util.UUID;
+import java.util.function.Supplier;
+
+public class fye extends fxx<ggn.a> {
+   private static final int C = 85;
+   private static final int D = 178;
+   private static final xv E = xv.c("gui.abuseReport.skin.title");
+   private foq F;
+   private fny G;
+
+   private fye(ftr $$0, ggm $$1, ggn.a $$2) {
+      super(E, $$0, $$1, $$2);
    }
 
-   public static void a(gcl $$0, gcl $$1, float $$2, int $$3, boolean $$4) {
-      gcl $$5 = $$4 ? $$0 : $$1;
-      gcl $$6 = $$4 ? $$1 : $$0;
-      $$5.f = $$4 ? -0.8F : 0.8F;
-      $$5.e = -0.97079635F;
-      $$6.e = $$5.e;
-      float $$7 = azm.a((float)$$3, 0.0F, $$2);
-      float $$8 = $$7 / $$2;
-      $$6.f = azm.h($$8, 0.4F, 0.85F) * (float)($$4 ? 1 : -1);
-      $$6.e = azm.h($$8, $$6.e, (float) (-Math.PI / 2));
+   public fye(ftr $$0, ggm $$1, UUID $$2, Supplier<hcf> $$3) {
+      this($$0, $$1, new ggn.a($$2, $$3, $$1.a().b()));
    }
 
-   public static void a(gcl $$0, gcl $$1, bvb $$2, float $$3, float $$4) {
-      float $$5 = azm.a($$3 * (float) Math.PI);
-      float $$6 = azm.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$0.g = 0.0F;
-      $$1.g = 0.0F;
-      $$0.f = (float) (Math.PI / 20);
-      $$1.f = (float) (-Math.PI / 20);
-      if ($$2 == bvb.b) {
-         $$0.e = -1.8849558F + azm.b($$4 * 0.09F) * 0.15F;
-         $$1.e = -0.0F + azm.b($$4 * 0.19F) * 0.5F;
-         $$0.e += $$5 * 2.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 1.2F - $$6 * 0.4F;
+   public fye(ftr $$0, ggm $$1, ggn $$2) {
+      this($$0, $$1, new ggn.a($$2, $$1.a().b()));
+   }
+
+   @Override
+   protected void E() {
+      frr $$0 = this.z.a(frr.e().a(8));
+      $$0.c().e();
+      $$0.a(new foz(85, 120, this.m.aS(), this.A.e().a()));
+      frr $$1 = $$0.a(frr.d().a(8));
+      this.G = fny.a(c, $$0x -> this.m.a(new fyd(this, this.A.i(), ggl.b, $$0xx -> {
+            this.A.a($$0xx);
+            this.G();
+         }))).a(178).a();
+      $$1.a(frj.a(this.p, this.G, b));
+      this.F = this.a(178, 9 * 8, $$0x -> {
+         this.A.a($$0x);
+         this.G();
+      });
+      $$1.a(frj.a(this.p, this.F, d, $$0x -> $$0x.e(12)));
+   }
+
+   @Override
+   protected void G() {
+      ggk $$0 = this.A.i();
+      if ($$0 != null) {
+         this.G.b($$0.b());
       } else {
-         $$0.e = -0.0F + azm.b($$4 * 0.19F) * 0.5F;
-         $$1.e = -1.8849558F + azm.b($$4 * 0.09F) * 0.15F;
-         $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 2.2F - $$6 * 0.4F;
+         this.G.b(c);
       }
 
-      a($$0, $$1, $$4);
+      super.G();
    }
 
-   public static void a(gcl $$0, float $$1, float $$2) {
-      $$0.g = $$0.g + $$2 * (azm.b($$1 * 0.09F) * 0.05F + 0.05F);
-      $$0.e = $$0.e + $$2 * azm.a($$1 * 0.067F) * 0.05F;
-   }
-
-   public static void a(gcl $$0, gcl $$1, float $$2) {
-      a($$0, $$2, 1.0F);
-      a($$1, $$2, -1.0F);
-   }
-
-   public static void a(gcl $$0, gcl $$1, boolean $$2, float $$3, float $$4) {
-      float $$5 = azm.a($$3 * (float) Math.PI);
-      float $$6 = azm.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$1.g = 0.0F;
-      $$0.g = 0.0F;
-      $$1.f = -(0.1F - $$5 * 0.6F);
-      $$0.f = 0.1F - $$5 * 0.6F;
-      float $$7 = (float) -Math.PI / ($$2 ? 1.5F : 2.25F);
-      $$1.e = $$7;
-      $$0.e = $$7;
-      $$1.e += $$5 * 1.2F - $$6 * 0.4F;
-      $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-      a($$1, $$0, $$4);
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.F.b($$0, $$1, $$2);
    }
 }

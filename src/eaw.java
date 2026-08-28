@@ -1,14 +1,31 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.datafixers.DataFixer;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.apache.commons.io.FileUtils;
 
-public interface eaw<T extends eav> {
-   eaw<ean> a = a("block", new ean.a());
-   eaw<eap> b = a("entity", new eap.a());
+public class eaw extends ebe {
+   private final eau a;
+   private final Path b;
 
-   MapCodec<T> a();
+   public eaw(ebb $$0, Path $$1, ebb $$2, Path $$3, DataFixer $$4, boolean $$5, bbo $$6) {
+      super($$0, $$1, $$4, $$5, $$6);
+      this.b = $$3;
+      this.a = new eau($$2, $$3, $$5);
+   }
 
-   zh<? super wu, T> b();
+   @Override
+   public CompletableFuture<Void> a(dgg $$0, @Nullable ux $$1) {
+      return this.a.a($$0, $$1);
+   }
 
-   static <S extends eaw<T>, T extends eav> S a(String $$0, S $$1) {
-      return kd.a(lz.t, $$0, $$1);
+   @Override
+   public void close() throws IOException {
+      super.close();
+      this.a.close();
+      if (this.b.toFile().exists()) {
+         FileUtils.deleteDirectory(this.b.toFile());
+      }
    }
 }

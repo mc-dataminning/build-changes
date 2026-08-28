@@ -1,42 +1,26 @@
-import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public record adx(etn b, byte c, boolean d, Optional<List<etj>> e, Optional<etp.c> f) implements zq<acf> {
-   public static final zh<wu, adx> a = zh.a(etn.b, adx::b, zf.c, adx::e, zf.b, adx::f, etj.a.a(zf.a()).a(zf::a), adx::g, etp.c.a, adx::h, adx::new);
-
-   public adx(etn $$0, byte $$1, boolean $$2, @Nullable Collection<etj> $$3, @Nullable etp.c $$4) {
-      this($$0, $$1, $$2, $$3 != null ? Optional.of(List.copyOf($$3)) : Optional.empty(), Optional.ofNullable($$4));
-   }
+public record adx(fbs b, Optional<fbs> c, lq d, jq<axe> e) implements aac<acr> {
+   public static final zt<xg, adx> a = zt.a(fbs.b, adx::b, fbs.b.a(zr::a), adx::e, ls.bi, adx::f, axe.d, adx::g, adx::new);
 
    @Override
-   public zs<adx> a() {
-      return agu.P;
+   public aae<adx> a() {
+      return ahk.E;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
    }
 
-   public void a(etp $$0) {
-      this.e.ifPresent($$0::a);
-      this.f.ifPresent($$1 -> $$1.a($$0));
-   }
-
-   public byte e() {
+   public Optional<fbs> e() {
       return this.c;
    }
 
-   public boolean f() {
+   public lq f() {
       return this.d;
    }
 
-   public Optional<List<etj>> g() {
+   public jq<axe> g() {
       return this.e;
-   }
-
-   public Optional<etp.c> h() {
-      return this.f;
    }
 }

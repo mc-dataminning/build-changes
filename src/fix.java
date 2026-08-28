@@ -1,19 +1,12 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import javax.annotation.Nullable;
+public class fix extends Exception {
+   public final fhd a;
 
-public class fix {
-   private static final Long2ObjectMap<String> a = new Long2ObjectOpenHashMap();
-
-   public static String a(long $$0) {
-      return (String)a.get($$0);
+   public fix(fhd $$0) {
+      this.a = $$0;
    }
 
-   public static void b(long $$0) {
-      a.remove($$0);
-   }
-
-   public static void a(long $$0, @Nullable String $$1) {
-      a.put($$0, $$1);
+   @Override
+   public String getMessage() {
+      return this.a.c();
    }
 }

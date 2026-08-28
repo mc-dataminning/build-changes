@@ -1,233 +1,111 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.OptionalLong;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
 
-public record dzq(
-   OptionalLong l, boolean m, boolean n, boolean o, boolean p, double q, boolean r, boolean s, int t, int u, int v, axs<diq> w, alj x, float y, dzq.a z
-) {
-   public static final int a = jh.d;
-   public static final int b = 16;
-   public static final int c = (1 << a) - 32;
-   public static final int d = (c >> 1) - 1;
-   public static final int e = d - c + 1;
-   public static final int f = d << 4;
-   public static final int g = e << 4;
-   public static final Codec<dzq> h = ayv.d(
-      RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  ayv.a(Codec.LONG.lenientOptionalFieldOf("fixed_time")).forGetter(dzq::f),
-                  Codec.BOOL.fieldOf("has_skylight").forGetter(dzq::g),
-                  Codec.BOOL.fieldOf("has_ceiling").forGetter(dzq::h),
-                  Codec.BOOL.fieldOf("ultrawarm").forGetter(dzq::i),
-                  Codec.BOOL.fieldOf("natural").forGetter(dzq::j),
-                  Codec.doubleRange(1.0E-5F, 3.0E7).fieldOf("coordinate_scale").forGetter(dzq::k),
-                  Codec.BOOL.fieldOf("bed_works").forGetter(dzq::l),
-                  Codec.BOOL.fieldOf("respawn_anchor_works").forGetter(dzq::m),
-                  Codec.intRange(e, d).fieldOf("min_y").forGetter(dzq::n),
-                  Codec.intRange(16, c).fieldOf("height").forGetter(dzq::o),
-                  Codec.intRange(0, c).fieldOf("logical_height").forGetter(dzq::p),
-                  axs.b(ma.f).fieldOf("infiniburn").forGetter(dzq::q),
-                  alj.a.fieldOf("effects").orElse(dzo.e).forGetter(dzq::r),
-                  Codec.FLOAT.fieldOf("ambient_light").forGetter(dzq::s),
-                  dzq.a.a.forGetter(dzq::t)
-               )
-               .apply($$0, dzq::new)
-      )
-   );
-   public static final zh<wu, jq<dzq>> i = zf.b(ma.aL);
-   private static final int A = 8;
-   public static final float[] j = new float[]{1.0F, 0.75F, 0.5F, 0.25F, 0.0F, 0.25F, 0.5F, 0.75F};
-   public static final Codec<jq<dzq>> k = alf.a(ma.aL, h);
+public class dzq<T> implements dzy<T> {
+   private final jv<T> a;
+   private final azb<T> b;
+   private final dzz<T> c;
+   private final int d;
 
-   public dzq(
-      OptionalLong l, boolean m, boolean n, boolean o, boolean p, double q, boolean r, boolean s, int t, int u, int v, axs<diq> w, alj x, float y, dzq.a z
-   ) {
-      if (u < 16) {
-         throw new IllegalStateException("height has to be at least 16");
-      } else if (t + u > d + 1) {
-         throw new IllegalStateException("min_y + height cannot be higher than: " + (d + 1));
-      } else if (v > u) {
-         throw new IllegalStateException("logical_height cannot be higher than height");
-      } else if (u % 16 != 0) {
-         throw new IllegalStateException("height has to be multiple of 16");
-      } else if (t % 16 != 0) {
-         throw new IllegalStateException("min_y has to be a multiple of 16");
+   public dzq(jv<T> $$0, int $$1, dzz<T> $$2, List<T> $$3) {
+      this($$0, $$1, $$2);
+      $$3.forEach(this.b::d);
+   }
+
+   public dzq(jv<T> $$0, int $$1, dzz<T> $$2) {
+      this($$0, $$1, $$2, azb.c(1 << $$1));
+   }
+
+   private dzq(jv<T> $$0, int $$1, dzz<T> $$2, azb<T> $$3) {
+      this.a = $$0;
+      this.d = $$1;
+      this.c = $$2;
+      this.b = $$3;
+   }
+
+   public static <A> dzy<A> a(int $$0, jv<A> $$1, dzz<A> $$2, List<A> $$3) {
+      return new dzq<>($$1, $$0, $$2, $$3);
+   }
+
+   @Override
+   public int a(T $$0) {
+      int $$1 = this.b.a($$0);
+      if ($$1 == -1) {
+         $$1 = this.b.d($$0);
+         if ($$1 >= 1 << this.d) {
+            $$1 = this.c.onResize(this.d + 1, $$0);
+         }
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         if ($$0.test(this.b.a($$1))) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   @Override
+   public T a(int $$0) {
+      T $$1 = this.b.a($$0);
+      if ($$1 == null) {
+         throw new dzx($$0);
       } else {
-         this.l = l;
-         this.m = m;
-         this.n = n;
-         this.o = o;
-         this.p = p;
-         this.q = q;
-         this.r = r;
-         this.s = s;
-         this.t = t;
-         this.u = u;
-         this.v = v;
-         this.w = w;
-         this.x = x;
-         this.y = y;
-         this.z = z;
-      }
-   }
-
-   @Deprecated
-   public static DataResult<ali<dfm>> a(Dynamic<?> $$0) {
-      Optional<Number> $$1 = $$0.asNumber().result();
-      if ($$1.isPresent()) {
-         int $$2 = $$1.get().intValue();
-         if ($$2 == -1) {
-            return DataResult.success(dfm.j);
-         }
-
-         if ($$2 == 0) {
-            return DataResult.success(dfm.i);
-         }
-
-         if ($$2 == 1) {
-            return DataResult.success(dfm.k);
-         }
-      }
-
-      return dfm.h.parse($$0);
-   }
-
-   public static double a(dzq $$0, dzq $$1) {
-      double $$2 = $$0.k();
-      double $$3 = $$1.k();
-      return $$2 / $$3;
-   }
-
-   public static Path a(ali<dfm> $$0, Path $$1) {
-      if ($$0 == dfm.i) {
          return $$1;
-      } else if ($$0 == dfm.k) {
-         return $$1.resolve("DIM1");
-      } else {
-         return $$0 == dfm.j ? $$1.resolve("DIM-1") : $$1.resolve("dimensions").resolve($$0.a().b()).resolve($$0.a().a());
       }
    }
 
-   public boolean a() {
-      return this.l.isPresent();
+   @Override
+   public void a(ws $$0) {
+      this.b.a();
+      int $$1 = $$0.l();
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         this.b.d(this.a.b($$0.l()));
+      }
    }
 
-   public float a(long $$0) {
-      double $$1 = azm.e((double)this.l.orElse($$0) / 24000.0 - 0.25);
-      double $$2 = 0.5 - Math.cos($$1 * Math.PI) / 2.0;
-      return (float)($$1 * 2.0 + $$2) / 3.0F;
+   @Override
+   public void b(ws $$0) {
+      int $$1 = this.b();
+      $$0.c($$1);
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         $$0.c(this.a.a(this.b.a($$2)));
+      }
    }
 
-   public int b(long $$0) {
-      return (int)($$0 / 24000L % 8L + 8L) % 8;
-   }
+   @Override
+   public int a() {
+      int $$0 = xm.a(this.b());
 
-   public boolean b() {
-      return this.z.a();
-   }
-
-   public boolean c() {
-      return this.z.b();
-   }
-
-   public brp d() {
-      return this.z.c();
-   }
-
-   public int e() {
-      return this.z.d();
-   }
-
-   public OptionalLong f() {
-      return this.l;
-   }
-
-   public boolean g() {
-      return this.m;
-   }
-
-   public boolean h() {
-      return this.n;
-   }
-
-   public boolean i() {
-      return this.o;
-   }
-
-   public boolean j() {
-      return this.p;
-   }
-
-   public double k() {
-      return this.q;
-   }
-
-   public boolean l() {
-      return this.r;
-   }
-
-   public boolean m() {
-      return this.s;
-   }
-
-   public int n() {
-      return this.t;
-   }
-
-   public int o() {
-      return this.u;
-   }
-
-   public int p() {
-      return this.v;
-   }
-
-   public axs<diq> q() {
-      return this.w;
-   }
-
-   public alj r() {
-      return this.x;
-   }
-
-   public float s() {
-      return this.y;
-   }
-
-   public dzq.a t() {
-      return this.z;
-   }
-
-   public static record a(boolean b, boolean c, brp d, int e) {
-      public static final MapCodec<dzq.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.BOOL.fieldOf("piglin_safe").forGetter(dzq.a::a),
-                  Codec.BOOL.fieldOf("has_raids").forGetter(dzq.a::b),
-                  brp.b(0, 15).fieldOf("monster_spawn_light_level").forGetter(dzq.a::c),
-                  Codec.intRange(0, 15).fieldOf("monster_spawn_block_light_limit").forGetter(dzq.a::d)
-               )
-               .apply($$0, dzq.a::new)
-      );
-
-      public boolean a() {
-         return this.b;
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         $$0 += xm.a(this.a.a(this.b.a($$1)));
       }
 
-      public boolean b() {
-         return this.c;
-      }
+      return $$0;
+   }
 
-      public brp c() {
-         return this.d;
-      }
+   public List<T> c() {
+      ArrayList<T> $$0 = new ArrayList<>();
+      this.b.iterator().forEachRemaining($$0::add);
+      return $$0;
+   }
 
-      public int d() {
-         return this.e;
-      }
+   @Override
+   public int b() {
+      return this.b.d();
+   }
+
+   @Override
+   public dzy<T> a(dzz<T> $$0) {
+      return new dzq<>(this.a, this.d, $$0, this.b.b());
    }
 }

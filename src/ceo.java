@@ -1,35 +1,32 @@
-public class ceo {
-   private final byo a;
-   private final float b;
-   private final int c;
+public class ceo extends cdj {
+   private final cnl b;
+   private int c;
 
-   public ceo(jh $$0, float $$1, int $$2) {
-      this(new bxd($$0), $$1, $$2);
+   public ceo(cnl $$0, double $$1, boolean $$2) {
+      super($$0, $$1, $$2);
+      this.b = $$0;
    }
 
-   public ceo(ezy $$0, float $$1, int $$2) {
-      this(new bxd(jh.a((ka)$$0)), $$1, $$2);
+   @Override
+   public void d() {
+      super.d();
+      this.c = 0;
    }
 
-   public ceo(bul $$0, float $$1, int $$2) {
-      this(new bxl($$0, false), $$1, $$2);
+   @Override
+   public void e() {
+      super.e();
+      this.b.w(false);
    }
 
-   public ceo(byo $$0, float $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public byo a() {
-      return this.a;
-   }
-
-   public float b() {
-      return this.b;
-   }
-
-   public int c() {
-      return this.c;
+   @Override
+   public void a() {
+      super.a();
+      this.c++;
+      if (this.c >= 5 && this.k() < this.l() / 2) {
+         this.b.w(true);
+      } else {
+         this.b.w(false);
+      }
    }
 }

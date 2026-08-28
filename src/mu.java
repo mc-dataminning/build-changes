@@ -1,91 +1,13 @@
-import com.google.common.collect.UnmodifiableIterator;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.serialization.JsonOps;
-import java.nio.file.Path;
-import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class mu implements mg {
-   private final mi d;
-   private final CompletableFuture<js.a> e;
-
-   public mu(mi $$0, CompletableFuture<js.a> $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
+public class mu implements ml {
    @Override
-   public CompletableFuture<?> a(me $$0) {
-      Path $$1 = this.d.a(mi.b.c).resolve("blocks.json");
-      return this.e
-         .thenCompose(
-            $$2 -> {
-               JsonObject $$3 = new JsonObject();
-               alh<JsonElement> $$4 = $$2.a(JsonOps.INSTANCE);
-               $$2.d(ma.f)
-                  .c()
-                  .forEach(
-                     $$2x -> {
-                        JsonObject $$3x = new JsonObject();
-                        dvw<diq, dvv> $$4x = ((diq)$$2x.a()).l();
-                        if (!$$4x.d().isEmpty()) {
-                           JsonObject $$5 = new JsonObject();
-
-                           for (dwx<?> $$6 : $$4x.d()) {
-                              JsonArray $$7 = new JsonArray();
-
-                              for (Comparable<?> $$8 : $$6.a()) {
-                                 $$7.add(ae.a($$6, $$8));
-                              }
-
-                              $$5.add($$6.f(), $$7);
-                           }
-
-                           $$3x.add("properties", $$5);
-                        }
-
-                        JsonArray $$9 = new JsonArray();
-                        UnmodifiableIterator var13 = $$4x.a().iterator();
-
-                        while (var13.hasNext()) {
-                           dvv $$10 = (dvv)var13.next();
-                           JsonObject $$11 = new JsonObject();
-                           JsonObject $$12 = new JsonObject();
-
-                           for (dwx<?> $$13 : $$4x.d()) {
-                              $$12.addProperty($$13.f(), ae.a($$13, $$10.c($$13)));
-                           }
-
-                           if ($$12.size() > 0) {
-                              $$11.add("properties", $$12);
-                           }
-
-                           $$11.addProperty("id", diq.j($$10));
-                           if ($$10 == ((diq)$$2x.a()).m()) {
-                              $$11.addProperty("default", true);
-                           }
-
-                           $$9.add($$11);
-                        }
-
-                        $$3x.add("states", $$9);
-                        String $$14 = $$2x.g();
-                        JsonElement $$15 = (JsonElement)dir.a
-                           .codec()
-                           .encodeStart($$4, (diq)$$2x.a())
-                           .getOrThrow($$1xxx -> new AssertionError("Failed to serialize block " + $$14 + " (is type registered in BlockTypes?): " + $$1xxx));
-                        $$3x.add("definition", $$15);
-                        $$3.add($$14, $$3x);
-                     }
-                  );
-               return mg.a($$0, $$3, $$1);
-            }
-         );
-   }
-
-   @Override
-   public final String a() {
-      return "Block List";
+   public void a(js.a $$0, Consumer<ah> $$1) {
+      ah $$2 = ml.a("adventure/root");
+      mo.a($$2, $$1, $$0.d(mb.z), Stream.concat(mo.a.stream(), Stream.of(bvm.E)).collect(Collectors.toList()));
+      ah $$3 = ml.a("adventure/sleep_in_bed");
+      mo.a($$0, $$1, $$3, diq.a.c);
    }
 }

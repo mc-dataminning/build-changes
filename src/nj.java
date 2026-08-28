@@ -1,143 +1,23 @@
-import java.util.function.BiConsumer;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public record nj(js.a a) implements ne {
-   @Override
-   public void generate(BiConsumer<ali<eus>, eus.a> $$0) {
-      $$0.accept(
-         euj.aX,
-         eus.b()
-            .a(
-               eur.a()
-                  .a(eyr.a(1.0F))
-                  .a(eva.a(cwq.yj).a(2))
-                  .a(eva.a(cwq.yl).a(2))
-                  .a(eva.a(cwq.qM))
-                  .a(eva.a(cwq.oB))
-                  .a(eva.a(cwq.pr))
-                  .a(
-                     eva.a(cwq.wo)
-                        .a(
-                           ewz.c()
-                              .a(bts.p, eyy.a(7.0F, 10.0F))
-                              .a(bts.h, eyy.a(7.0F, 10.0F))
-                              .a(bts.r, eyy.a(6.0F, 8.0F))
-                              .a(bts.o, eyy.a(5.0F, 7.0F))
-                              .a(bts.s, eyy.a(10.0F, 20.0F))
-                              .a(bts.w, eyy.a(7.0F, 10.0F))
-                        )
-                  )
-            )
-      );
-      $$0.accept(
-         euj.aY,
-         eus.b()
-            .a(
-               eur.a()
-                  .a(eyr.a(1.0F))
-                  .a(eva.a(cwq.yi))
-                  .a(eva.a(cwq.yv))
-                  .a(eva.a(cwq.yy))
-                  .a(eva.a(cwq.yC))
-                  .a(eva.a(cwq.oA))
-                  .a(eva.a(cwq.md))
-                  .a(eva.a(cwq.pv))
-                  .a(eva.a(cwq.oB))
-            )
-      );
-      $$0.accept(
-         euj.aZ,
-         eus.b()
-            .a(
-               eur.a()
-                  .a(eyr.a(1.0F))
-                  .a(eva.a(cwq.oB).a(2))
-                  .a(eva.a(cwq.px).a(2))
-                  .a(eva.a(cwq.oR).a(2))
-                  .a(eva.a(cwq.eX).a(2))
-                  .a(eva.a(cwq.qM).a(2))
-                  .a(eva.a(cwq.rD).a(2))
-                  .a(eva.a(cwq.rK).a(2))
-                  .a(eva.a(cwq.rC).a(2))
-                  .a(eva.a(cwq.rz).a(2))
-                  .a(eva.a(cwq.rA).a(2))
-                  .a(eva.a(cwq.xB).a(2))
-                  .a(eva.a(cwq.xA).a(2))
-                  .a(eva.a(cwq.xx).a(2))
-                  .a(eva.a(cwq.xz).a(2))
-                  .a(eva.a(cwq.iv))
-                  .a(eva.a(cwq.iz))
-                  .a(eva.a(cwq.iE))
-                  .a(eva.a(cwq.iw))
-                  .a(eva.a(cwq.iH))
-                  .a(eva.a(cwq.ix))
-                  .a(eva.a(cwq.iD))
-                  .a(eva.a(cwq.qp))
-                  .a(eva.a(cwq.qo))
-                  .a(eva.a(cwq.sz))
-                  .a(eva.a(cwq.oy))
-                  .a(eva.a(cwq.pw))
-                  .a(eva.a(cwq.vD))
-                  .a(eva.a(cwq.cR))
-                  .a(eva.a(cwq.uw))
-                  .a(eva.a(cwq.pt))
-                  .a(eva.a(cwq.vc))
-            )
-      );
-      $$0.accept(
-         euj.ba,
-         eus.b()
-            .a(
-               eur.a()
-                  .a(eyr.a(1.0F))
-                  .a(eva.a(cwq.ym))
-                  .a(eva.a(cwq.yn))
-                  .a(eva.a(cwq.yq))
-                  .a(eva.a(cwq.ys))
-                  .a(eva.a(cwq.yt))
-                  .a(eva.a(cwq.yu))
-                  .a(eva.a(cwq.yA))
-                  .a(eva.a(cwq.ya))
-                  .a(eva.a(cwq.yd))
-                  .a(eva.a(cwq.yb))
-                  .a(eva.a(cwq.ye))
-                  .a(eva.a(cwq.wf))
-            )
-      );
-      $$0.accept(
-         euj.bb,
-         eus.b()
-            .a(
-               eur.a()
-                  .a(eyr.a(1.0F))
-                  .a(eva.a(cwq.yh))
-                  .a(eva.a(cwq.yB))
-                  .a(eva.a(cwq.yD))
-                  .a(eva.a(cwq.kq))
-                  .a(eva.a(cwq.pf))
-                  .a(eva.a(cwq.oB).a(2))
-                  .a(eva.a(cwq.px).a(2))
-                  .a(eva.a(cwq.oR).a(2))
-                  .a(eva.a(cwq.oy).a(2))
-                  .a(eva.a(cwq.sz).a(2))
-            )
-      );
-      $$0.accept(
-         euj.bc,
-         eus.b()
-            .a(
-               eur.a()
-                  .a(eyr.a(1.0F))
-                  .a(eva.a(cwq.yk))
-                  .a(eva.a(cwq.yo))
-                  .a(eva.a(cwq.yw))
-                  .a(eva.a(cwq.yx))
-                  .a(eva.a(cwq.pf))
-                  .a(eva.a(cwq.oB).a(2))
-                  .a(eva.a(cwq.px).a(2))
-                  .a(eva.a(cwq.oR).a(2))
-                  .a(eva.a(cwq.oy).a(2))
-                  .a(eva.a(cwq.sz).a(2))
-            )
-      );
-   }
+public interface nj {
+   Map<cwh, dgz> a = ae.a(Maps.newEnumMap(cwh.class), $$0 -> {
+      $$0.put(cwh.a, dkg.bH);
+      $$0.put(cwh.b, dkg.bI);
+      $$0.put(cwh.c, dkg.bJ);
+      $$0.put(cwh.d, dkg.bK);
+      $$0.put(cwh.e, dkg.bL);
+      $$0.put(cwh.f, dkg.bM);
+      $$0.put(cwh.g, dkg.bN);
+      $$0.put(cwh.h, dkg.bO);
+      $$0.put(cwh.i, dkg.bP);
+      $$0.put(cwh.j, dkg.bQ);
+      $$0.put(cwh.k, dkg.bR);
+      $$0.put(cwh.l, dkg.bS);
+      $$0.put(cwh.m, dkg.bT);
+      $$0.put(cwh.n, dkg.bU);
+      $$0.put(cwh.o, dkg.bV);
+      $$0.put(cwh.p, dkg.bW);
+   });
 }

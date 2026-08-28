@@ -1,66 +1,38 @@
-import com.google.common.collect.Maps;
-import java.util.EnumMap;
-import java.util.LinkedList;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Queue;
+import java.util.SequencedMap;
+import java.util.function.Supplier;
 
-public class bnd {
-   public static final int a = 200;
-   public static final int b = 10000;
-   private final avq c;
-   private final EnumMap<bnf, Map<arq, bnd.b>> d;
-   private final Queue<bnd.a> e = new LinkedList<>();
-
-   public bnd(avq $$0) {
-      this.c = $$0;
-      this.d = new EnumMap<>(bnf.class);
-
-      for (bnf $$1 : bnf.values()) {
-         this.d.put($$1, Maps.newHashMap());
-      }
+public class bnd extends bkg {
+   public bnd(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   public boolean a(bnf $$0) {
-      return !this.d.get($$0).isEmpty();
+   public static SequencedMap<String, Supplier<TypeTemplate>> a(Schema $$0) {
+      SequencedMap<String, Supplier<TypeTemplate>> $$1 = new LinkedHashMap<>();
+      $$1.put("minecraft:bees", () -> DSL.list(DSL.optionalFields("entity_data", bis.A.in($$0))));
+      $$1.put("minecraft:block_entity_data", () -> bis.s.in($$0));
+      $$1.put("minecraft:bundle_contents", () -> DSL.list(bis.t.in($$0)));
+      $$1.put(
+         "minecraft:can_break", () -> DSL.optionalFields("predicates", DSL.list(DSL.optionalFields("blocks", DSL.or(bis.C.in($$0), DSL.list(bis.C.in($$0))))))
+      );
+      $$1.put(
+         "minecraft:can_place_on",
+         () -> DSL.optionalFields("predicates", DSL.list(DSL.optionalFields("blocks", DSL.or(bis.C.in($$0), DSL.list(bis.C.in($$0))))))
+      );
+      $$1.put("minecraft:charged_projectiles", () -> DSL.list(bis.t.in($$0)));
+      $$1.put("minecraft:container", () -> DSL.list(DSL.optionalFields("item", bis.t.in($$0))));
+      $$1.put("minecraft:entity_data", () -> bis.A.in($$0));
+      $$1.put("minecraft:pot_decorations", () -> DSL.list(bis.D.in($$0)));
+      $$1.put("minecraft:food", () -> DSL.optionalFields("using_converts_to", bis.t.in($$0)));
+      return $$1;
    }
 
-   public void a(adg $$0) {
-      for (arq $$2 : this.d.get($$0.e()).keySet()) {
-         $$2.f.b($$0);
-      }
-   }
-
-   public void a(arq $$0, bnf $$1) {
-      if (this.c.f($$0.gf())) {
-         this.e.add(new bnd.a($$0, $$1));
-      }
-   }
-
-   public void a(int $$0) {
-      long $$1 = ae.c();
-      this.a($$1, $$0);
-      this.b($$1, $$0);
-   }
-
-   private void a(long $$0, int $$1) {
-      for (bnd.a $$2 : this.e) {
-         this.d.get($$2.b()).put($$2.a(), new bnd.b($$0, $$1));
-      }
-   }
-
-   private void b(long $$0, int $$1) {
-      for (Map<arq, bnd.b> $$2 : this.d.values()) {
-         $$2.entrySet().removeIf($$2x -> {
-            boolean $$3 = !this.c.f(((arq)$$2x.getKey()).gf());
-            bnd.b $$4 = (bnd.b)$$2x.getValue();
-            return $$3 || $$1 > $$4.b() + 200 && $$0 > $$4.a() + 10000L;
-         });
-      }
-   }
-
-   static record a(arq a, bnf b) {
-   }
-
-   static record b(long a, int b) {
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(true, bis.w, () -> DSL.optionalFieldsLazy(a($$0)));
    }
 }

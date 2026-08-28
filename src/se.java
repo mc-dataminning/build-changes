@@ -1,15 +1,70 @@
-public class se {
-   public static final ali<eei<?, ?>> a = sa.a("pile_hay");
-   public static final ali<eei<?, ?>> b = sa.a("pile_melon");
-   public static final ali<eei<?, ?>> c = sa.a("pile_snow");
-   public static final ali<eei<?, ?>> d = sa.a("pile_ice");
-   public static final ali<eei<?, ?>> e = sa.a("pile_pumpkin");
-
-   public static void a(qz<eei<?, ?>> $$0) {
-      sa.a($$0, a, eew.j, new egs(new eji(dis.ij)));
-      sa.a($$0, b, eew.j, new egs(ejb.a(dis.fa)));
-      sa.a($$0, c, eew.j, new egs(ejb.a(dis.dN)));
-      sa.a($$0, d, eew.j, new egs(new ejl(bqs.<dvv>a().a(dis.mW.m(), 1).a(dis.iC.m(), 5))));
-      sa.a($$0, e, eew.j, new egs(new ejl(bqs.<dvv>a().a(dis.eZ.m(), 19).a(dis.ef.m(), 1))));
+public abstract class se {
+   public static void a(rk<dic> $$0) {
+      jr<eng> $$1 = $$0.a(mb.aS);
+      jr<efm<?>> $$2 = $$0.a(mb.aJ);
+      $$0.a(dij.a, sh.i($$1, $$2));
+      $$0.a(dij.b, sh.a($$1, $$2, false, false, false));
+      $$0.a(dij.c, sh.a($$1, $$2, true, false, false));
+      $$0.a(dij.d, sh.a($$1, $$2, false, true, false));
+      $$0.a(dij.e, sh.a($$1, $$2, false, true, true));
+      $$0.a(dij.f, sh.d($$1, $$2));
+      $$0.a(dij.g, sh.g($$1, $$2));
+      $$0.a(dij.h, sh.h($$1, $$2));
+      $$0.a(dij.i, sh.b($$1, $$2, false, false, false));
+      $$0.a(dij.j, sh.b($$1, $$2, false, false, true));
+      $$0.a(dij.k, sh.b($$1, $$2, true, false, false));
+      $$0.a(dij.l, sh.i($$1, $$2, false));
+      $$0.a(dij.m, sh.b($$1, $$2, true, true, false));
+      $$0.a(dij.n, sh.a($$1, $$2, false));
+      $$0.a(dij.o, sh.a($$1, $$2, true));
+      $$0.a(dij.p, sh.h($$1, $$2, false));
+      $$0.a(dij.q, sh.h($$1, $$2, true));
+      $$0.a(dij.r, sh.a($$1, $$2, false, false));
+      $$0.a(dij.s, sh.a($$1, $$2, false, true));
+      $$0.a(dij.t, sh.b($$1, $$2, false));
+      $$0.a(dij.u, sh.b($$1, $$2, false));
+      $$0.a(dij.v, sh.b($$1, $$2, true));
+      $$0.a(dij.w, sh.a($$1, $$2, true, false));
+      $$0.a(dij.x, sh.b($$1, $$2));
+      $$0.a(dij.y, sh.a($$1, $$2));
+      $$0.a(dij.z, sh.c($$1, $$2));
+      $$0.a(dij.A, sh.c($$1, $$2, false));
+      $$0.a(dij.B, sh.c($$1, $$2, false));
+      $$0.a(dij.C, sh.c($$1, $$2, true));
+      $$0.a(dij.D, sh.k($$1, $$2, false));
+      $$0.a(dij.E, sh.k($$1, $$2, true));
+      $$0.a(dij.F, sh.n($$1, $$2));
+      $$0.a(dij.G, sh.m($$1, $$2));
+      $$0.a(dij.H, sh.j($$1, $$2));
+      $$0.a(dij.I, sh.k($$1, $$2));
+      $$0.a(dij.J, sh.l($$1, $$2));
+      $$0.a(dij.K, sh.j($$1, $$2, false));
+      $$0.a(dij.L, sh.j($$1, $$2, true));
+      $$0.a(dij.M, sh.b($$1, $$2, false, false));
+      $$0.a(dij.N, sh.b($$1, $$2, true, false));
+      $$0.a(dij.O, sh.b($$1, $$2, false, true));
+      $$0.a(dij.P, sh.f($$1, $$2));
+      $$0.a(dij.Q, sh.f($$1, $$2, false));
+      $$0.a(dij.R, sh.f($$1, $$2, true));
+      $$0.a(dij.S, sh.e($$1, $$2, false));
+      $$0.a(dij.T, sh.e($$1, $$2, true));
+      $$0.a(dij.U, sh.d($$1, $$2, false));
+      $$0.a(dij.V, sh.d($$1, $$2, true));
+      $$0.a(dij.W, sh.g($$1, $$2, false));
+      $$0.a(dij.X, sh.g($$1, $$2, true));
+      $$0.a(dij.Y, sh.e($$1, $$2));
+      $$0.a(dij.Z, sh.p($$1, $$2));
+      $$0.a(dij.aa, sh.o($$1, $$2));
+      $$0.a(dij.ab, sh.q($$1, $$2));
+      $$0.a(dij.ac, sg.a($$1, $$2));
+      $$0.a(dij.ad, sg.e($$1, $$2));
+      $$0.a(dij.ae, sg.d($$1, $$2));
+      $$0.a(dij.af, sg.b($$1, $$2));
+      $$0.a(dij.ag, sg.c($$1, $$2));
+      $$0.a(dij.ah, sf.b($$1, $$2));
+      $$0.a(dij.ai, sf.d($$1, $$2));
+      $$0.a(dij.aj, sf.c($$1, $$2));
+      $$0.a(dij.ak, sf.e($$1, $$2));
+      $$0.a(dij.al, sf.a($$1, $$2));
    }
 }

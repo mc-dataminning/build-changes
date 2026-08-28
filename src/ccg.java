@@ -1,126 +1,83 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.EnumMap;
 import java.util.EnumSet;
-import java.util.Map;
-import java.util.Set;
 import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class ccg {
-   private static final cdt a = new cdt(Integer.MAX_VALUE, new ccf() {
-      @Override
-      public boolean b() {
+public class ccg<T extends bwb> extends ccz {
+   protected final bwj a;
+   private final double i;
+   private final double j;
+   @Nullable
+   protected T b;
+   protected final float c;
+   @Nullable
+   protected eud d;
+   protected final cfn e;
+   protected final Class<T> f;
+   protected final Predicate<bwb> g;
+   protected final Predicate<bwb> h;
+   private final cgs k;
+
+   public ccg(bwj $$0, Class<T> $$1, float $$2, double $$3, double $$4) {
+      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, bvk.e::test);
+   }
+
+   public ccg(bwj $$0, Class<T> $$1, Predicate<bwb> $$2, float $$3, double $$4, double $$5, Predicate<bwb> $$6) {
+      this.a = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.c = $$3;
+      this.i = $$4;
+      this.j = $$5;
+      this.h = $$6;
+      this.e = $$0.L();
+      this.a(EnumSet.of(ccz.a.a));
+      this.k = cgs.a().a((double)$$3).a(($$2x, $$3x) -> $$6.test($$2x) && $$2.test($$2x));
+   }
+
+   public ccg(bwj $$0, Class<T> $$1, float $$2, double $$3, double $$4, Predicate<bwb> $$5) {
+      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean b() {
+      this.b = a(this.a)
+         .a(this.a.dV().a(this.f, this.a.cR().c((double)this.c, 3.0, (double)this.c), $$0x -> true), this.k, this.a, this.a.dA(), this.a.dC(), this.a.dG());
+      if (this.b == null) {
          return false;
-      }
-   }) {
-      @Override
-      public boolean h() {
-         return false;
-      }
-   };
-   private final Map<ccf.a, cdt> b = new EnumMap<>(ccf.a.class);
-   private final Set<cdt> c = new ObjectLinkedOpenHashSet();
-   private final EnumSet<ccf.a> d = EnumSet.noneOf(ccf.a.class);
-
-   public void a(int $$0, ccf $$1) {
-      this.c.add(new cdt($$0, $$1));
-   }
-
-   @VisibleForTesting
-   public void a(Predicate<ccf> $$0) {
-      this.c.removeIf($$1 -> $$0.test($$1.k()));
-   }
-
-   public void a(ccf $$0) {
-      for (cdt $$1 : this.c) {
-         if ($$1.k() == $$0 && $$1.h()) {
-            $$1.e();
-         }
-      }
-
-      this.c.removeIf($$1x -> $$1x.k() == $$0);
-   }
-
-   private static boolean a(cdt $$0, EnumSet<ccf.a> $$1) {
-      for (ccf.a $$2 : $$0.j()) {
-         if ($$1.contains($$2)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private static boolean a(cdt $$0, Map<ccf.a, cdt> $$1) {
-      for (ccf.a $$2 : $$0.j()) {
-         if (!$$1.getOrDefault($$2, a).a($$0)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public void a() {
-      bou $$0 = bot.a();
-      $$0.a("goalCleanup");
-
-      for (cdt $$1 : this.c) {
-         if ($$1.h() && (a($$1, this.d) || !$$1.c())) {
-            $$1.e();
-         }
-      }
-
-      this.b.entrySet().removeIf($$0x -> !((cdt)$$0x.getValue()).h());
-      $$0.c();
-      $$0.a("goalUpdate");
-
-      for (cdt $$2 : this.c) {
-         if (!$$2.h() && !a($$2, this.d) && a($$2, this.b) && $$2.b()) {
-            for (ccf.a $$3 : $$2.j()) {
-               cdt $$4 = this.b.getOrDefault($$3, a);
-               $$4.e();
-               this.b.put($$3, $$2);
-            }
-
-            $$2.d();
-         }
-      }
-
-      $$0.c();
-      this.a(true);
-   }
-
-   public void a(boolean $$0) {
-      bou $$1 = bot.a();
-      $$1.a("goalTick");
-
-      for (cdt $$2 : this.c) {
-         if ($$2.h() && ($$0 || $$2.T_())) {
-            $$2.a();
-         }
-      }
-
-      $$1.c();
-   }
-
-   public Set<cdt> b() {
-      return this.c;
-   }
-
-   public void a(ccf.a $$0) {
-      this.d.add($$0);
-   }
-
-   public void b(ccf.a $$0) {
-      this.d.remove($$0);
-   }
-
-   public void a(ccf.a $$0, boolean $$1) {
-      if ($$1) {
-         this.b($$0);
       } else {
-         this.a($$0);
+         fbs $$0 = cgw.a(this.a, 16, 7, this.b.dt());
+         if ($$0 == null) {
+            return false;
+         } else if (this.b.i($$0.d, $$0.e, $$0.f) < this.b.g(this.a)) {
+            return false;
+         } else {
+            this.d = this.e.a($$0.d, $$0.e, $$0.f, 0);
+            return this.d != null;
+         }
+      }
+   }
+
+   @Override
+   public boolean c() {
+      return !this.e.m();
+   }
+
+   @Override
+   public void d() {
+      this.e.a(this.d, this.i);
+   }
+
+   @Override
+   public void e() {
+      this.b = null;
+   }
+
+   @Override
+   public void a() {
+      if (this.a.g((bvf)this.b) < 49.0) {
+         this.a.L().a(this.j);
+      } else {
+         this.a.L().a(this.i);
       }
    }
 }

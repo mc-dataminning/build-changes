@@ -1,45 +1,19 @@
 import com.mojang.serialization.MapCodec;
 
-public class eju extends ejs {
-   public static final MapCodec<eju> a = MapCodec.unit(() -> eju.b);
-   public static final eju b = new eju();
+public class eju<P extends ejt> {
+   public static final eju<ejw> a = a("two_layers_feature_size", ejw.d);
+   public static final eju<ejv> b = a("three_layers_feature_size", ejv.d);
+   private final MapCodec<P> c;
 
-   @Override
-   protected ejt<?> a() {
-      return ejt.a;
+   private static <P extends ejt> eju<P> a(String $$0, MapCodec<P> $$1) {
+      return kd.a(ma.Y, $$0, new eju<>($$1));
    }
 
-   @Override
-   public void a(ejs.a $$0) {
-      azu $$1 = $$0.b();
-      $$0.c().forEach($$2 -> {
-         if ($$1.a(3) > 0) {
-            jh $$3 = $$2.h();
-            if ($$0.a($$3)) {
-               $$0.a($$3, drm.d);
-            }
-         }
+   private eju(MapCodec<P> $$0) {
+      this.c = $$0;
+   }
 
-         if ($$1.a(3) > 0) {
-            jh $$4 = $$2.i();
-            if ($$0.a($$4)) {
-               $$0.a($$4, drm.f);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            jh $$5 = $$2.f();
-            if ($$0.a($$5)) {
-               $$0.a($$5, drm.e);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            jh $$6 = $$2.g();
-            if ($$0.a($$6)) {
-               $$0.a($$6, drm.c);
-            }
-         }
-      });
+   public MapCodec<P> a() {
+      return this.c;
    }
 }

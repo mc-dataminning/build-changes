@@ -1,21 +1,38 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.JavaOps;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class eyv {
-   private static final Codec<eyu> h = lz.G.q().dispatch(eyu::b, eyt::a);
-   public static final Codec<eyu> a = Codec.lazyInitialized(() -> {
-      Codec<eyu> $$0 = Codec.withAlternative(h, eyy.a.codec());
-      return Codec.either(eyr.b, $$0).xmap(Either::unwrap, $$0x -> $$0x instanceof eyr $$1 ? Either.left($$1) : Either.right($$0x));
-   });
-   public static final eyt b = a("constant", eyr.a);
-   public static final eyt c = a("uniform", eyy.a);
-   public static final eyt d = a("binomial", eyq.a);
-   public static final eyt e = a("score", eyw.a);
-   public static final eyt f = a("storage", eyx.a);
-   public static final eyt g = a("enchantment_level", eys.a);
+public class eyv extends exu {
+   public static final Codec<xv> a = xx.a.validate($$0 -> das.g.encodeStart(JavaOps.INSTANCE, $$0).map($$1 -> $$0));
+   public static final MapCodec<eyv> b = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and($$0.group(das.a(a).fieldOf("pages").forGetter($$0x -> $$0x.c), ext.a.forGetter($$0x -> $$0x.d))).apply($$0, eyv::new)
+   );
+   private final List<asz<xv>> c;
+   private final ext d;
 
-   private static eyt a(String $$0, MapCodec<? extends eyu> $$1) {
-      return kd.a(lz.G, alj.b($$0), new eyt($$1));
+   protected eyv(List<ezs> $$0, List<asz<xv>> $$1, ext $$2) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
+   }
+
+   @Override
+   protected cxk a(cxk $$0, ewh $$1) {
+      $$0.a(ku.T, das.a, this::a);
+      return $$0;
+   }
+
+   @VisibleForTesting
+   public das a(das $$0) {
+      List<asz<xv>> $$1 = this.d.a($$0.a(), this.c);
+      return $$0.b($$1);
+   }
+
+   @Override
+   public exw<eyv> b() {
+      return exx.N;
    }
 }

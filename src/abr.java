@@ -1,15 +1,26 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
+public record abr(jh c, int d) implements abf {
+   public static final zt<ws, abr> a = abf.a(abr::a, abr::new);
+   public static final abf.b<abr> b = abf.a("debug/poi_ticket_count");
 
-public record abr(List<auj> b) implements zq<abn> {
-   public static final zh<ByteBuf, abr> a = zh.a(auj.a.a(zf.a()), abr::b, abr::new);
-
-   @Override
-   public zs<abr> a() {
-      return abt.d;
+   private abr(ws $$0) {
+      this($$0.e(), $$0.readInt());
    }
 
-   public void a(abn $$0) {
-      $$0.a(this);
+   private void a(ws $$0) {
+      $$0.a(this.c);
+      $$0.q(this.d);
+   }
+
+   @Override
+   public abf.b<abr> a() {
+      return b;
+   }
+
+   public jh b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

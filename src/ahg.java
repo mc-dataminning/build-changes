@@ -1,20 +1,19 @@
-public record ahg(float b) implements zq<agw> {
-   public static final zh<wg, ahg> a = zq.a(ahg::a, ahg::new);
+import java.util.HashMap;
+import java.util.Map;
 
-   private ahg(wg $$0) {
-      this($$0.readFloat());
-   }
-
-   private void a(wg $$0) {
-      $$0.a(this.b);
-   }
+public record ahg(Map<aly<dch>, dch> b, dcl.b<dcy> c) implements aac<acr> {
+   public static final zt<xg, ahg> a = zt.a(zr.a(HashMap::new, aly.b(dch.a), dch.i), ahg::b, dcl.b.b(), ahg::e, ahg::new);
 
    @Override
-   public zs<ahg> a() {
-      return agu.bp;
+   public aae<ahg> a() {
+      return ahk.bi;
    }
 
-   public void a(agw $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
+   }
+
+   public dcl.b<dcy> e() {
+      return this.c;
    }
 }

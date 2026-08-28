@@ -1,45 +1,26 @@
-public class afb implements zq<acf> {
-   public static final zh<wg, afb> a = zq.a(afb::a, afb::new);
-   private final double b;
-   private final double c;
-   private final long d;
+import java.util.Set;
 
-   public afb(dxl $$0) {
-      this.b = $$0.i();
-      this.c = $$0.k();
-      this.d = $$0.j();
-   }
+public record afb(int b, bwo c, Set<bwp> d) implements aac<acr> {
+   public static final zt<ws, afb> a = zt.a(zr.h, afb::b, bwo.a, afb::e, bwp.m, afb::f, afb::new);
 
-   private afb(wg $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.m();
-   }
-
-   private void a(wg $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
+   public static afb a(int $$0, bwo $$1, Set<bwp> $$2) {
+      return new afb($$0, $$1, $$2);
    }
 
    @Override
-   public zs<afb> a() {
-      return agu.at;
+   public aae<afb> a() {
+      return ahk.ai;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
    }
 
-   public double b() {
-      return this.b;
-   }
-
-   public double e() {
+   public bwo e() {
       return this.c;
    }
 
-   public long f() {
+   public Set<bwp> f() {
       return this.d;
    }
 }

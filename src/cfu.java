@@ -1,28 +1,24 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public class cfu extends cfr<bvh> {
+public class cfu extends cge<cno> {
    @Override
-   public Set<cel<?>> a() {
-      return ImmutableSet.of(cel.i);
+   public Set<cff<?>> a() {
+      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cff.B)));
    }
 
-   @Override
-   protected void a(arp $$0, bvh $$1) {
-      $$1.eb().a(cel.i, this.a($$1));
-   }
-
-   private List<bvh> a(bvh $$0) {
-      return ImmutableList.copyOf(this.c($$0).b(this::b));
-   }
-
-   private boolean b(bvh $$0) {
-      return $$0.aq() == bus.bz && $$0.e_();
-   }
-
-   private cen c(bvh $$0) {
-      return $$0.eb().c(cel.h).orElse(cen.a());
+   protected void a(ash $$0, cno $$1) {
+      super.a($$0, $$1);
+      $$1.eb()
+         .c(cff.g)
+         .stream()
+         .flatMap(Collection::stream)
+         .filter(bvk.e)
+         .filter($$2 -> cgl.c($$0, $$1, $$2))
+         .findFirst()
+         .ifPresentOrElse($$1x -> $$1.eb().a(cff.B, $$1x), () -> $$1.eb().b(cff.B));
    }
 }

@@ -1,16 +1,29 @@
-public record agh(xj b, xj c) implements zq<acf> {
-   public static final zh<wu, agh> a = zh.a(xl.d, agh::b, xl.d, agh::e, agh::new);
+public class agh implements aac<acr> {
+   public static final zt<ws, agh> a = aac.a(agh::a, agh::new);
+   private final int b;
 
-   @Override
-   public zs<agh> a() {
-      return agu.aX;
+   public agh(int $$0) {
+      this.b = $$0;
    }
 
-   public void a(acf $$0) {
+   private agh(ws $$0) {
+      this.b = $$0.readByte();
+   }
+
+   private void a(ws $$0) {
+      $$0.l(this.b);
+   }
+
+   @Override
+   public aae<agh> a() {
+      return ahk.aL;
+   }
+
+   public void a(acr $$0) {
       $$0.a(this);
    }
 
-   public xj e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 }

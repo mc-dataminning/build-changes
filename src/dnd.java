@@ -1,82 +1,91 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.ToIntFunction;
 
-public class dnd extends diq implements dpr {
-   public static final MapCodec<dnd> a = b(dnd::new);
-   public static final int b = 15;
-   public static final dwu c = dwl.aP;
-   public static final dwm d = dwl.C;
-   public static final ToIntFunction<dvv> e = $$0 -> $$0.c(c);
+public class dnd extends dmc {
+   public static final MapCodec<dnd> i = b(dnd::new);
+   private final fcm[] j;
 
    @Override
    public MapCodec<dnd> a() {
-      return a;
+      return i;
    }
 
-   public dnd(dvu.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(c, Integer.valueOf(15)).b(d, Boolean.valueOf(false)));
+   public dnd(dxm.d $$0) {
+      super(2.0F, 2.0F, 16.0F, 16.0F, 24.0F, $$0);
+      this.l(
+         this.F
+            .b()
+            .b(a, Boolean.valueOf(false))
+            .b(b, Boolean.valueOf(false))
+            .b(c, Boolean.valueOf(false))
+            .b(d, Boolean.valueOf(false))
+            .b(e, Boolean.valueOf(false))
+      );
+      this.j = this.a(2.0F, 1.0F, 16.0F, 6.0F, 15.0F);
    }
 
    @Override
-   protected void a(dvw.a<diq, dvv> $$0) {
-      $$0.a(c, d);
+   protected fcm d_(dxn $$0) {
+      return this.j[this.h($$0)];
    }
 
    @Override
-   protected bsk a(dvv $$0, dfm $$1, jh $$2, cou $$3, ezu $$4) {
-      if (!$$1.C && $$3.gE()) {
-         $$1.a($$2, $$0.a(c), 2);
-         return bsk.b;
-      } else {
-         return bsk.c;
+   protected fcm c(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
+      return this.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected boolean a(dxn $$0, eue $$1) {
+      return false;
+   }
+
+   public boolean a(dxn $$0, boolean $$1, jm $$2) {
+      dke $$3 = $$0.b();
+      boolean $$4 = this.o($$0);
+      boolean $$5 = $$3 instanceof dne && dne.a($$0, $$2);
+      return !k($$0) && $$1 || $$4 || $$5;
+   }
+
+   private boolean o(dxn $$0) {
+      return $$0.a(axu.U) && $$0.a(axu.l) == this.m().a(axu.l);
+   }
+
+   @Override
+   protected bte a(dxn $$0, dha $$1, jh $$2, cps $$3, fbo $$4) {
+      return (bte)(!$$1.B_() ? cxu.a($$3, $$1, $$2) : bte.e);
+   }
+
+   @Override
+   public dxn a(dbb $$0) {
+      dgf $$1 = $$0.q();
+      jh $$2 = $$0.a();
+      etp $$3 = $$0.q().b_($$0.a());
+      jh $$4 = $$2.f();
+      jh $$5 = $$2.i();
+      jh $$6 = $$2.g();
+      jh $$7 = $$2.h();
+      dxn $$8 = $$1.a_($$4);
+      dxn $$9 = $$1.a_($$5);
+      dxn $$10 = $$1.a_($$6);
+      dxn $$11 = $$1.a_($$7);
+      return super.a($$0)
+         .b(a, Boolean.valueOf(this.a($$8, $$8.c($$1, $$4, jm.d), jm.d)))
+         .b(b, Boolean.valueOf(this.a($$9, $$9.c($$1, $$5, jm.e), jm.e)))
+         .b(c, Boolean.valueOf(this.a($$10, $$10.c($$1, $$6, jm.c), jm.c)))
+         .b(d, Boolean.valueOf(this.a($$11, $$11.c($$1, $$7, jm.f), jm.f)))
+         .b(e, Boolean.valueOf($$3.a() == etq.c));
+   }
+
+   @Override
+   protected dxn a(dxn $$0, dhd $$1, dhp $$2, jh $$3, jm $$4, jh $$5, dxn $$6, bam $$7) {
+      if ($$0.c(e)) {
+         $$2.a($$3, etq.c, etq.c.a($$1));
       }
+
+      return $$4.o().d() ? $$0.b(f.get($$4), Boolean.valueOf(this.a($$6, $$6.c($$1, $$5, $$4.g()), $$4.g()))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected fas a(dvv $$0, der $$1, jh $$2, fad $$3) {
-      return $$3.a(cwq.hC) ? fap.b() : fap.a();
-   }
-
-   @Override
-   protected boolean e_(dvv $$0) {
-      return $$0.y().c();
-   }
-
-   @Override
-   protected dow a_(dvv $$0) {
-      return dow.a;
-   }
-
-   @Override
-   protected float c(dvv $$0, der $$1, jh $$2) {
-      return 1.0F;
-   }
-
-   @Override
-   protected dvv a(dvv $$0, dfp $$1, dgb $$2, jh $$3, jm $$4, jh $$5, dvv $$6, azu $$7) {
-      if ($$0.c(d)) {
-         $$2.a($$3, erw.c, erw.c.a($$1));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected erv b_(dvv $$0) {
-      return $$0.c(d) ? erw.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   public cwm a(dfp $$0, jh $$1, dvv $$2) {
-      return a(super.a($$0, $$1, $$2), $$2.c(c));
-   }
-
-   public static cwm a(cwm $$0, int $$1) {
-      if ($$1 != 15) {
-         $$0.b(ku.am, cyo.a.a(c, $$1));
-      }
-
-      return $$0;
+   protected void a(dxo.a<dke, dxn> $$0) {
+      $$0.a(a, b, d, c, e);
    }
 }

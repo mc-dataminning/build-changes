@@ -1,61 +1,27 @@
-public class ezu extends ezw {
-   private final jm b;
-   private final jh c;
-   private final boolean d;
-   private final boolean e;
-   private final boolean f;
+import com.mojang.serialization.MapCodec;
 
-   public static ezu a(ezy $$0, jm $$1, jh $$2) {
-      return new ezu(true, $$0, $$1, $$2, false, false);
-   }
+public class ezu {
+   public static final ezt a = a("inverted", ezp.a);
+   public static final ezt b = a("any_of", ezg.a);
+   public static final ezt c = a("all_of", ezf.a);
+   public static final ezt d = a("random_chance", ezx.a);
+   public static final ezt e = a("random_chance_with_enchanted_bonus", ezy.a);
+   public static final ezt f = a("entity_properties", ezv.a);
+   public static final ezt g = a("killed_by_player", ezw.a);
+   public static final ezt h = a("entity_scores", ezn.a);
+   public static final ezt i = a("block_state_property", ezr.a);
+   public static final ezt j = a("match_tool", ezz.a);
+   public static final ezt k = a("table_bonus", ezh.a);
+   public static final ezt l = a("survives_explosion", ezo.a);
+   public static final ezt m = a("damage_source_properties", ezl.a);
+   public static final ezt n = a("location_check", ezq.a);
+   public static final ezt o = a("weather_check", fac.a);
+   public static final ezt p = a("reference", ezj.a);
+   public static final ezt q = a("time_check", faa.a);
+   public static final ezt r = a("value_check", fab.a);
+   public static final ezt s = a("enchantment_active_check", ezm.a);
 
-   public ezu(ezy $$0, jm $$1, jh $$2, boolean $$3) {
-      this(false, $$0, $$1, $$2, $$3, false);
-   }
-
-   public ezu(ezy $$0, jm $$1, jh $$2, boolean $$3, boolean $$4) {
-      this(false, $$0, $$1, $$2, $$3, $$4);
-   }
-
-   private ezu(boolean $$0, ezy $$1, jm $$2, jh $$3, boolean $$4, boolean $$5) {
-      super($$1);
-      this.d = $$0;
-      this.b = $$2;
-      this.c = $$3;
-      this.e = $$4;
-      this.f = $$5;
-   }
-
-   public ezu a(jm $$0) {
-      return new ezu(this.d, this.a, $$0, this.c, this.e, this.f);
-   }
-
-   public ezu a(jh $$0) {
-      return new ezu(this.d, this.a, this.b, $$0, this.e, this.f);
-   }
-
-   public ezu a() {
-      return new ezu(this.d, this.a, this.b, this.c, this.e, true);
-   }
-
-   public jh b() {
-      return this.c;
-   }
-
-   public jm c() {
-      return this.b;
-   }
-
-   @Override
-   public ezw.a d() {
-      return this.d ? ezw.a.a : ezw.a.b;
-   }
-
-   public boolean e() {
-      return this.e;
-   }
-
-   public boolean f() {
-      return this.f;
+   private static ezt a(String $$0, MapCodec<? extends ezs> $$1) {
+      return kd.a(ma.F, alz.b($$0), new ezt($$1));
    }
 }

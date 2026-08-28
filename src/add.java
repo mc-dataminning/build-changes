@@ -1,16 +1,14 @@
-public record add(alj b, int c) implements zq<acf> {
-   public static final zh<wu, add> a = zh.a(alj.b, add::b, zf.h, add::e, add::new);
+public class add extends aaa<acr> {
+   public add(Iterable<aac<? super acr>> $$0) {
+      super($$0);
+   }
 
    @Override
-   public zs<add> a() {
-      return agu.x;
+   public aae<add> a() {
+      return ahk.a;
    }
 
-   public void a(acf $$0) {
+   public void a(acr $$0) {
       $$0.a(this);
-   }
-
-   public int e() {
-      return this.c;
    }
 }

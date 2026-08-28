@@ -1,20 +1,15 @@
-public class hbc {
-   public static final hbd a = new hbd();
-   public static final boolean b = false;
-   public static final boolean c = false;
-   private final boolean d;
-   private final boolean e;
+import java.util.Collection;
+import java.util.Locale;
 
-   public hbc(boolean $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
+public class hbc extends RuntimeException {
+   private final Collection<hbb.a> a;
+
+   public hbc(hbb.a $$0, Collection<hbb.a> $$1) {
+      super(String.format(Locale.ROOT, "Unable to fit: %s - size: %dx%d - Maybe try a lower resolution resourcepack?", $$0.c(), $$0.a(), $$0.b()));
+      this.a = $$1;
    }
 
-   public boolean a() {
-      return this.d;
-   }
-
-   public boolean b() {
-      return this.e;
+   public Collection<hbb.a> a() {
+      return this.a;
    }
 }

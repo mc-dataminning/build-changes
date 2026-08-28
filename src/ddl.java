@@ -1,11 +1,25 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface ddl {
-   Codec<ddl> a = lz.ax.q().dispatch(ddl::a, Function.identity());
+public record ddl(ddi f, ddi g) implements ddc {
+   public static final MapCodec<ddl> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ddi.a.fieldOf("result").forGetter(ddl::d), ddi.a.fieldOf("crafting_station").forGetter(ddl::e)).apply($$0, ddl::new)
+   );
+   public static final zt<xg, ddl> b = zt.a(ddi.b, ddl::d, ddi.b, ddl::e, ddl::new);
+   public static final ddc.a<ddl> c = new ddc.a<>(a, b);
 
-   void a(cwm var1, dcj.a var2, azu var3, bsi var4);
+   @Override
+   public ddc.a<ddl> a() {
+      return c;
+   }
 
-   MapCodec<? extends ddl> a();
+   @Override
+   public ddi d() {
+      return this.f;
+   }
+
+   @Override
+   public ddi e() {
+      return this.g;
+   }
 }

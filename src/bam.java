@@ -1,24 +1,69 @@
-public class bam {
-   private final int a;
-   private final int b;
-   private int c;
+import io.netty.util.internal.ThreadLocalRandom;
 
-   public bam(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public interface bam {
+   @Deprecated
+   double a = 2.297;
+
+   static bam a() {
+      return a(edx.a());
    }
 
-   public void a() {
-      this.c = this.c + this.a;
+   @Deprecated
+   static bam b() {
+      return new eeb(edx.a());
    }
 
-   public void b() {
-      if (this.c > 0) {
-         this.c--;
+   static bam a(long $$0) {
+      return new edj($$0);
+   }
+
+   static bam c() {
+      return new edy(ThreadLocalRandom.current().nextLong());
+   }
+
+   bam d();
+
+   edv e();
+
+   void b(long var1);
+
+   int f();
+
+   int a(int var1);
+
+   default int a(int $$0, int $$1) {
+      return this.a($$1 - $$0 + 1) + $$0;
+   }
+
+   long g();
+
+   boolean h();
+
+   float i();
+
+   double j();
+
+   double k();
+
+   default double a(double $$0, double $$1) {
+      return $$0 + $$1 * (this.j() - this.j());
+   }
+
+   default float a(float $$0, float $$1) {
+      return $$0 + $$1 * (this.i() - this.i());
+   }
+
+   default void b(int $$0) {
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.f();
       }
    }
 
-   public boolean c() {
-      return this.c < this.b;
+   default int b(int $$0, int $$1) {
+      if ($$0 >= $$1) {
+         throw new IllegalArgumentException("bound - origin is non positive");
+      } else {
+         return $$0 + this.a($$1 - $$0);
+      }
    }
 }

@@ -1,85 +1,41 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.kinds.App;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.Function;
 
-public class bym {
-   private static final int a = 20;
-   private static final int b = 8;
-   private static final float c = 0.6F;
-   private static final float d = 0.6F;
-   private static final int e = 5;
-   private static final int f = 10;
+public class bym extends bxu<cpe> {
+   private static final int d = 1200;
+   final float c;
 
-   public static bxb<bvp> a() {
-      return can.a(
-         (Function<can.b<bvp>, ? extends App<can.c<bvp>, caq<bvp>>>)($$0 -> $$0.group($$0.b(cel.i), $$0.c(cel.m), $$0.a(cel.n), $$0.a(cel.q))
-               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
-                     if ($$5.G_().a(10) != 0) {
-                        return false;
-                     } else {
-                        List<bvh> $$8 = $$0.b($$1);
-                        Optional<bvh> $$9 = $$8.stream().filter($$1xx -> a((bvh)$$6, $$1xx)).findAny();
-                        if (!$$9.isPresent()) {
-                           Optional<bvh> $$12 = a($$8);
-                           if ($$12.isPresent()) {
-                              a($$4, $$3, $$2, $$12.get());
-                              return true;
-                           } else {
-                              $$8.stream().findAny().ifPresent($$3xx -> a($$4, $$3, $$2, $$3xx));
-                              return true;
-                           }
-                        } else {
-                           for (int $$10 = 0; $$10 < 10; $$10++) {
-                              ezy $$11 = cgf.a($$6, 20, 8);
-                              if ($$11 != null && $$5.c(jh.a((ka)$$11))) {
-                                 $$2.a(new ceo($$11, 0.6F, 0));
-                                 break;
-                              }
-                           }
-
-                           return true;
-                        }
-                     }
-                  }))
-      );
+   public bym(float $$0) {
+      super(ImmutableMap.of(cff.d, cfg.a), 1200);
+      this.c = $$0;
    }
 
-   private static void a(cao<?, bvh> $$0, cao<?, byo> $$1, cao<?, ceo> $$2, bvh $$3) {
-      $$0.a($$3);
-      $$1.a(new bxl($$3, true));
-      $$2.a(new ceo(new bxl($$3, false), 0.6F, 1));
+   protected boolean a(ash $$0, cpe $$1) {
+      return $$1.eb().g().map($$0x -> $$0x == crj.b || $$0x == crj.c || $$0x == crj.d).orElse(true);
    }
 
-   private static Optional<bvh> a(List<bvh> $$0) {
-      Map<bvh, Integer> $$1 = b($$0);
-      return $$1.entrySet()
-         .stream()
-         .sorted(Comparator.comparingInt(Entry::getValue))
-         .filter($$0x -> (Integer)$$0x.getValue() > 0 && (Integer)$$0x.getValue() <= 5)
-         .map(Entry::getKey)
-         .findFirst();
+   protected boolean a(ash $$0, cpe $$1, long $$2) {
+      return $$1.eb().a(cff.d);
    }
 
-   private static Map<bvh, Integer> b(List<bvh> $$0) {
-      Map<bvh, Integer> $$1 = Maps.newHashMap();
-      $$0.stream().filter(bym::b).forEach($$1x -> $$1.compute(a($$1x), ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1));
-      return $$1;
+   protected void b(ash $$0, cpe $$1, long $$2) {
+      bxw.a($$1, $$1.eb().c(cff.d).get().b(), this.c, 1);
    }
 
-   private static bvh a(bvh $$0) {
-      return $$0.eb().c(cel.q).get();
-   }
+   protected void c(ash $$0, cpe $$1, long $$2) {
+      Optional<jp> $$3 = $$1.eb().c(cff.d);
+      $$3.ifPresent($$1x -> {
+         jh $$2x = $$1x.b();
+         ash $$3x = $$0.p().a($$1x.a());
+         if ($$3x != null) {
+            chf $$4 = $$3x.z();
+            if ($$4.a($$2x, $$0xx -> true)) {
+               $$4.b($$2x);
+            }
 
-   private static boolean b(bvh $$0) {
-      return $$0.eb().c(cel.q).isPresent();
-   }
-
-   private static boolean a(bvh $$0, bvh $$1) {
-      return $$1.eb().c(cel.q).filter($$1x -> $$1x == $$0).isPresent();
+            ahj.c($$0, $$2x);
+         }
+      });
+      $$1.eb().b(cff.d);
    }
 }

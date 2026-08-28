@@ -1,151 +1,198 @@
-import com.google.common.hash.HashCode;
-import com.google.common.hash.HashFunction;
-import com.mojang.datafixers.util.Either;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.Lists;
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelException;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.ChannelPipeline;
+import io.netty.channel.EventLoopGroup;
+import io.netty.channel.epoll.Epoll;
+import io.netty.channel.epoll.EpollEventLoopGroup;
+import io.netty.channel.epoll.EpollServerSocketChannel;
+import io.netty.channel.local.LocalAddress;
+import io.netty.channel.local.LocalServerChannel;
+import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.ServerSocketChannel;
+import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.timeout.ReadTimeoutHandler;
+import io.netty.util.HashedWheelTimer;
+import io.netty.util.Timeout;
+import io.netty.util.Timer;
 import java.io.IOException;
-import java.net.Proxy;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.time.Instant;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
+import java.net.InetAddress;
+import java.net.SocketAddress;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class atj implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 20;
-   private final Path c;
-   private final bnm<atj.e> d;
-   private final bra e = new bra(ae.i(), "download-queue");
+public class atj {
+   private static final Logger d = LogUtils.getLogger();
+   public static final Supplier<NioEventLoopGroup> a = Suppliers.memoize(
+      () -> new NioEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Server IO #%d").setDaemon(true).build())
+   );
+   public static final Supplier<EpollEventLoopGroup> b = Suppliers.memoize(
+      () -> new EpollEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Epoll Server IO #%d").setDaemon(true).build())
+   );
+   final MinecraftServer e;
+   public volatile boolean c;
+   private final List<ChannelFuture> f = Collections.synchronizedList(Lists.newArrayList());
+   final List<wp> g = Collections.synchronizedList(Lists.newArrayList());
 
-   public atj(Path $$0) throws IOException {
-      this.c = $$0;
-      v.c($$0);
-      this.d = bnm.a(atj.e.a, $$0.resolve("log.json"));
-      ati.a($$0, 20);
+   public atj(MinecraftServer $$0) {
+      this.e = $$0;
+      this.c = true;
    }
 
-   private atj.b b(atj.a $$0, Map<UUID, atj.c> $$1) {
-      atj.b $$2 = new atj.b();
-      $$1.forEach(
-         ($$2x, $$3) -> {
-            Path $$4 = this.c.resolve($$2x.toString());
-            Path $$5 = null;
+   public void a(@Nullable InetAddress $$0, int $$1) throws IOException {
+      synchronized (this.f) {
+         Class<? extends ServerSocketChannel> $$2;
+         EventLoopGroup $$3;
+         if (Epoll.isAvailable() && this.e.p()) {
+            $$2 = EpollServerSocketChannel.class;
+            $$3 = (EventLoopGroup)b.get();
+            d.info("Using epoll channel type");
+         } else {
+            $$2 = NioServerSocketChannel.class;
+            $$3 = (EventLoopGroup)a.get();
+            d.info("Using default channel type");
+         }
 
-            try {
-               $$5 = azd.a($$4, $$3.a, $$0.c, $$0.a, $$3.b, $$0.b, $$0.d, $$0.e);
-               $$2.a.put($$2x, $$5);
-            } catch (Exception var9) {
-               a.error("Failed to download {}", $$3.a, var9);
-               $$2.b.add($$2x);
+         this.f.add(((ServerBootstrap)((ServerBootstrap)new ServerBootstrap().channel($$2)).childHandler(new ChannelInitializer<Channel>() {
+            protected void initChannel(Channel $$0) {
+               try {
+                  $$0.config().setOption(ChannelOption.TCP_NODELAY, true);
+               } catch (ChannelException var5) {
+               }
+
+               ChannelPipeline $$1 = $$0.pipeline().addLast("timeout", new ReadTimeoutHandler(30));
+               if (atj.this.e.am()) {
+                  $$1.addLast("legacy_query", new atc(atj.this.d()));
+               }
+
+               wp.a($$1, aad.a, false, null);
+               int $$2 = atj.this.e.o();
+               wp $$3 = (wp)($$2 > 0 ? new xf($$2) : new wp(aad.a));
+               atj.this.g.add($$3);
+               $$3.a($$1);
+               $$3.a(new atl(atj.this.e, $$3));
             }
+         }).group($$3).localAddress($$0, $$1)).bind().syncUninterruptibly());
+      }
+   }
 
-            try {
-               this.d
-                  .a(
-                     new atj.e(
-                        $$2x,
-                        $$3.a.toString(),
-                        Instant.now(),
-                        Optional.ofNullable($$3.b).map(HashCode::toString),
-                        $$5 != null ? this.a($$5) : Either.left("download_failed")
-                     )
-                  );
-            } catch (Exception var8) {
-               a.error("Failed to log download of {}", $$3.a, var8);
+   public SocketAddress a() {
+      ChannelFuture $$0;
+      synchronized (this.f) {
+         $$0 = ((ServerBootstrap)((ServerBootstrap)new ServerBootstrap().channel(LocalServerChannel.class)).childHandler(new ChannelInitializer<Channel>() {
+            protected void initChannel(Channel $$0) {
+               wp $$1 = new wp(aad.a);
+               $$1.a(new ate(atj.this.e, $$1));
+               atj.this.g.add($$1);
+               ChannelPipeline $$2 = $$0.pipeline();
+               wp.a($$2, aad.a);
+               $$1.a($$2);
+            }
+         }).group((EventLoopGroup)a.get()).localAddress(LocalAddress.ANY)).bind().syncUninterruptibly();
+         this.f.add($$0);
+      }
+
+      return $$0.channel().localAddress();
+   }
+
+   public void b() {
+      this.c = false;
+
+      for (ChannelFuture $$0 : this.f) {
+         try {
+            $$0.channel().close().sync();
+         } catch (InterruptedException var4) {
+            d.error("Interrupted whilst closing channel");
+         }
+      }
+   }
+
+   public void c() {
+      synchronized (this.g) {
+         Iterator<wp> $$0 = this.g.iterator();
+
+         while ($$0.hasNext()) {
+            wp $$1 = $$0.next();
+            if (!$$1.j()) {
+               if ($$1.i()) {
+                  try {
+                     $$1.b();
+                  } catch (Exception var7) {
+                     if ($$1.e()) {
+                        throw new z(o.a(var7, "Ticking memory connection"));
+                     }
+
+                     d.warn("Failed to handle packet for {}", $$1.a(this.e.bl()), var7);
+                     xv $$3 = xv.b("Internal server error");
+                     $$1.a(new aal($$3), xc.a(() -> $$1.a($$3)));
+                     $$1.m();
+                  }
+               } else {
+                  $$0.remove();
+                  $$1.n();
+               }
             }
          }
-      );
-      return $$2;
-   }
-
-   private Either<String, atj.d> a(Path $$0) {
-      try {
-         long $$1 = Files.size($$0);
-         Path $$2 = this.c.relativize($$0);
-         return Either.right(new atj.d($$2.toString(), $$1));
-      } catch (IOException var5) {
-         a.error("Failed to get file size of {}", $$0, var5);
-         return Either.left("no_access");
       }
    }
 
-   public CompletableFuture<atj.b> a(atj.a $$0, Map<UUID, atj.c> $$1) {
-      return CompletableFuture.supplyAsync(() -> this.b($$0, $$1), this.e::a_);
+   public MinecraftServer d() {
+      return this.e;
    }
 
-   @Override
-   public void close() throws IOException {
-      this.e.close();
-      this.d.close();
+   public List<wp> e() {
+      return this.g;
    }
 
-   public static record a(HashFunction a, int b, Map<String, String> c, Proxy d, azd.a e) {
-   }
+   static class a extends ChannelInboundHandlerAdapter {
+      private static final Timer a = new HashedWheelTimer();
+      private final int b;
+      private final int c;
+      private final List<atj.a.a> d = Lists.newArrayList();
 
-   public static record b(Map<UUID, Path> a, Set<UUID> b) {
-
-      public b() {
-         this(new HashMap<>(), new HashSet<>());
-      }
-   }
-
-   public static record c(URL a, @Nullable HashCode b) {
-   }
-
-   static record d(String b, long c) {
-      public static final Codec<atj.d> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(atj.d::a), Codec.LONG.fieldOf("size").forGetter(atj.d::b)).apply($$0, atj.d::new)
-      );
-
-      public String a() {
-         return this.b;
+      public a(int $$0, int $$1) {
+         this.b = $$0;
+         this.c = $$1;
       }
 
-      public long b() {
-         return this.c;
-      }
-   }
-
-   static record e(UUID b, String c, Instant d, Optional<String> e, Either<String, atj.d> f) {
-      public static final Codec<atj.e> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  kk.d.fieldOf("id").forGetter(atj.e::a),
-                  Codec.STRING.fieldOf("url").forGetter(atj.e::b),
-                  ayv.q.fieldOf("time").forGetter(atj.e::c),
-                  Codec.STRING.optionalFieldOf("hash").forGetter(atj.e::d),
-                  Codec.mapEither(Codec.STRING.fieldOf("error"), atj.d.a.fieldOf("file")).forGetter(atj.e::e)
-               )
-               .apply($$0, atj.e::new)
-      );
-
-      public UUID a() {
-         return this.b;
+      public void channelRead(ChannelHandlerContext $$0, Object $$1) {
+         this.a($$0, $$1);
       }
 
-      public String b() {
-         return this.c;
+      private void a(ChannelHandlerContext $$0, Object $$1) {
+         int $$2 = this.b + (int)(Math.random() * (double)this.c);
+         this.d.add(new atj.a.a($$0, $$1));
+         a.newTimeout(this::a, (long)$$2, TimeUnit.MILLISECONDS);
       }
 
-      public Instant c() {
-         return this.d;
+      private void a(Timeout $$0) {
+         atj.a.a $$1 = this.d.remove(0);
+         $$1.a.fireChannelRead($$1.b);
       }
 
-      public Optional<String> d() {
-         return this.e;
-      }
+      static class a {
+         public final ChannelHandlerContext a;
+         public final Object b;
 
-      public Either<String, atj.d> e() {
-         return this.f;
+         public a(ChannelHandlerContext $$0, Object $$1) {
+            this.a = $$0;
+            this.b = $$1;
+         }
       }
    }
 }

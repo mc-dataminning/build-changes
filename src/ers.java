@@ -1,61 +1,13 @@
-public class ers extends eru {
-   @Override
-   public cwi a() {
-      return cwq.a;
-   }
+import com.mojang.serialization.MapCodec;
 
-   @Override
-   public boolean a(erv $$0, der $$1, jh $$2, eru $$3, jm $$4) {
-      return true;
-   }
+public interface ers<P extends err> {
+   ers<erq> a = a("always_true", erq.a);
+   ers<ern> b = a("linear_pos", ern.a);
+   ers<erc> c = a("axis_aligned_linear_pos", erc.a);
 
-   @Override
-   public ezy a(der $$0, jh $$1, erv $$2) {
-      return ezy.c;
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public int a(dfp $$0) {
-      return 0;
-   }
-
-   @Override
-   protected boolean b() {
-      return true;
-   }
-
-   @Override
-   protected float c() {
-      return 0.0F;
-   }
-
-   @Override
-   public float a(erv $$0, der $$1, jh $$2) {
-      return 0.0F;
-   }
-
-   @Override
-   public float a(erv $$0) {
-      return 0.0F;
-   }
-
-   @Override
-   protected dvv b(erv $$0) {
-      return dis.a.m();
-   }
-
-   @Override
-   public boolean c(erv $$0) {
-      return false;
-   }
-
-   @Override
-   public int d(erv $$0) {
-      return 0;
-   }
-
-   @Override
-   public fas b(erv $$0, der $$1, jh $$2) {
-      return fap.a();
+   static <P extends err> ers<P> a(String $$0, MapCodec<P> $$1) {
+      return kd.a(ma.o, $$0, () -> $$1);
    }
 }

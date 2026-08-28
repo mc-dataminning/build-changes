@@ -1,8 +1,16 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import it.unimi.dsi.fastutil.ints.IntSets;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fqn {
+public class fqn implements fek {
+   @Nullable
+   @Override
+   public fej a(int $$0) {
+      return fqx.b;
+   }
+
+   @Override
+   public IntSet a() {
+      return IntSets.EMPTY_SET;
+   }
 }

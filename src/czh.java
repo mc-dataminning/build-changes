@@ -1,44 +1,43 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import java.util.List;
 
-public record czh(Map<String, czh.a> c) {
-   public static final czh a = new czh(Map.of());
-   public static final Codec<czh> b = Codec.unboundedMap(Codec.STRING, czh.a.a).xmap(czh::new, czh::a);
+public class czh implements csl {
+   public static final Codec<jq<czh>> a = ma.h.r();
+   public static final zt<xg, jq<czh>> b = zr.b(mb.ad);
+   private final String c;
+   private final List<buk> d;
+   private cso e = csq.h;
 
-   public czh a(String $$0, czh.a $$1) {
-      return new czh(ae.a(this.c, $$0, $$1));
+   public czh(String $$0, buk... $$1) {
+      this.c = $$0;
+      this.d = List.of($$1);
    }
 
-   public Map<String, czh.a> a() {
+   public czh a(csm... $$0) {
+      this.e = csq.f.a($$0);
+      return this;
+   }
+
+   @Override
+   public cso i() {
+      return this.e;
+   }
+
+   public List<buk> a() {
+      return this.d;
+   }
+
+   public String b() {
       return this.c;
    }
 
-   public static record a(jq<etk> b, double c, double d, float e) {
-      public static final Codec<czh.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  etk.b.fieldOf("type").forGetter(czh.a::a),
-                  Codec.DOUBLE.fieldOf("x").forGetter(czh.a::b),
-                  Codec.DOUBLE.fieldOf("z").forGetter(czh.a::c),
-                  Codec.FLOAT.fieldOf("rotation").forGetter(czh.a::d)
-               )
-               .apply($$0, czh.a::new)
-      );
-
-      public jq<etk> a() {
-         return this.b;
+   public boolean c() {
+      for (buk $$0 : this.d) {
+         if ($$0.c().a().a()) {
+            return true;
+         }
       }
 
-      public double b() {
-         return this.c;
-      }
-
-      public double c() {
-         return this.d;
-      }
-
-      public float d() {
-         return this.e;
-      }
+      return false;
    }
 }

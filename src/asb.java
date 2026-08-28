@@ -1,61 +1,52 @@
-import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class asb implements arz {
-   private static final Logger a = LogUtils.getLogger();
-   private final int b;
-   private int c;
-   private long d;
-   private long e = Long.MAX_VALUE;
+public class asb {
+   @Nullable
+   protected static jh a(ash $$0, int $$1, int $$2) {
+      boolean $$3 = $$0.G_().h();
+      dzs $$4 = $$0.d(kj.a($$1), kj.a($$2));
+      int $$5 = $$3 ? $$0.m().g().a($$0) : $$4.a(edi.a.e, $$1 & 15, $$2 & 15);
+      if ($$5 < $$0.L_()) {
+         return null;
+      } else {
+         int $$6 = $$4.a(edi.a.b, $$1 & 15, $$2 & 15);
+         if ($$6 <= $$5 && $$6 > $$4.a(edi.a.d, $$1 & 15, $$2 & 15)) {
+            return null;
+         } else {
+            jh.a $$7 = new jh.a();
 
-   private asb(int $$0) {
-      this.b = $$0;
-   }
+            for (int $$8 = $$5 + 1; $$8 >= $$0.L_(); $$8--) {
+               $$7.d($$1, $$8, $$2);
+               dxn $$9 = $$0.a_($$7);
+               if (!$$9.y().c()) {
+                  break;
+               }
 
-   public static asb b(int $$0) {
-      return $$0 > 0 ? c($$0 + 1) : c();
-   }
+               if (dke.a($$9.g($$0, $$7), jm.b)) {
+                  return $$7.d().j();
+               }
+            }
 
-   public static asb c(int $$0) {
-      int $$1 = arz.a($$0);
-      return new asb($$1 * $$1);
-   }
-
-   public static asb c() {
-      return new asb(0);
-   }
-
-   @Override
-   public void a(des $$0) {
-      this.e = ae.c();
-      this.d = this.e;
-   }
-
-   @Override
-   public void a(des $$0, @Nullable dyr $$1) {
-      if ($$1 == dyr.n) {
-         this.c++;
-      }
-
-      int $$2 = this.d();
-      if (ae.c() > this.e) {
-         this.e += 500L;
-         a.info(xj.a("menu.preparingSpawn", azm.a($$2, 0, 100)).getString());
+            return null;
+         }
       }
    }
 
-   @Override
-   public void a() {
-   }
+   @Nullable
+   public static jh a(ash $$0, dgg $$1) {
+      if (ab.a($$1)) {
+         return null;
+      } else {
+         for (int $$2 = $$1.d(); $$2 <= $$1.f(); $$2++) {
+            for (int $$3 = $$1.e(); $$3 <= $$1.g(); $$3++) {
+               jh $$4 = a($$0, $$2, $$3);
+               if ($$4 != null) {
+                  return $$4;
+               }
+            }
+         }
 
-   @Override
-   public void b() {
-      a.info("Time elapsed: {} ms", ae.c() - this.d);
-      this.e = Long.MAX_VALUE;
-   }
-
-   public int d() {
-      return this.b == 0 ? 100 : azm.d((float)this.c * 100.0F / (float)this.b);
+         return null;
+      }
    }
 }

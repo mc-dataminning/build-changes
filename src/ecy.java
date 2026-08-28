@@ -1,23 +1,181 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public interface ecy<P extends ecx> {
-   ecy<edd> a = a("matching_blocks", edd.a);
-   ecy<edc> b = a("matching_block_tag", edc.e);
-   ecy<ede> c = a("matching_fluids", ede.a);
-   ecy<eda> d = a("has_sturdy_face", eda.a);
-   ecy<edh> e = a("solid", edh.a);
-   ecy<edg> f = a("replaceable", edg.a);
-   ecy<edl> g = a("would_survive", edl.a);
-   ecy<edb> h = a("inside_world_bounds", edb.a);
-   ecy<ecw> i = a("any_of", ecw.a);
-   ecy<ecv> j = a("all_of", ecv.a);
-   ecy<edf> k = a("not", edf.a);
-   ecy<edj> l = a("true", edj.e);
-   ecy<edk> m = a("unobstructed", edk.a);
+public abstract class ecy {
+   public static ecy.b a(int $$0, int $$1) {
+      return new ecy.b($$0 - 1, $$1 + 1);
+   }
 
-   MapCodec<P> codec();
+   public static ecy.b b(int $$0, int $$1) {
+      return new ecy.b($$0, $$1);
+   }
 
-   private static <P extends ecx> ecy<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(lz.M, $$0, () -> $$1);
+   public static ecy a(int $$0) {
+      return new ecy.c($$0, false);
+   }
+
+   public static ecy b(int $$0) {
+      return new ecy.c($$0 + 1, false);
+   }
+
+   public static ecy c(int $$0) {
+      return new ecy.c($$0, true);
+   }
+
+   public static ecy d(int $$0) {
+      return new ecy.c($$0 - 1, true);
+   }
+
+   public static ecy a() {
+      return ecy.a.a;
+   }
+
+   public static ecy a(OptionalInt $$0, OptionalInt $$1) {
+      if ($$0.isPresent() && $$1.isPresent()) {
+         return b($$0.getAsInt(), $$1.getAsInt());
+      } else if ($$0.isPresent()) {
+         return c($$0.getAsInt());
+      } else {
+         return $$1.isPresent() ? a($$1.getAsInt()) : a();
+      }
+   }
+
+   public abstract OptionalInt b();
+
+   public abstract OptionalInt c();
+
+   public abstract OptionalInt d();
+
+   public ecy a(OptionalInt $$0) {
+      return a($$0, this.b());
+   }
+
+   public ecy b(OptionalInt $$0) {
+      return a(this.c(), $$0);
+   }
+
+   public static Optional<ecy> a(dhg $$0, jh $$1, int $$2, Predicate<dxn> $$3, Predicate<dxn> $$4) {
+      jh.a $$5 = $$1.k();
+      if (!$$0.a($$1, $$3)) {
+         return Optional.empty();
+      } else {
+         int $$6 = $$1.v();
+         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, jm.b);
+         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, jm.a);
+         return Optional.of(a($$8, $$7));
+      }
+   }
+
+   private static OptionalInt a(dhg $$0, int $$1, Predicate<dxn> $$2, Predicate<dxn> $$3, jh.a $$4, int $$5, jm $$6) {
+      $$4.q($$5);
+
+      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
+         $$4.c($$6);
+      }
+
+      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
+   }
+
+   public static final class a extends ecy {
+      static final ecy.a a = new ecy.a();
+
+      private a() {
+      }
+
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return "C(-)";
+      }
+   }
+
+   public static final class b extends ecy {
+      private final int a;
+      private final int b;
+
+      protected b(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+         if (this.g() < 0) {
+            throw new IllegalArgumentException("Column of negative height: " + this);
+         }
+      }
+
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.of(this.b);
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.of(this.a);
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.of(this.g());
+      }
+
+      public int e() {
+         return this.b;
+      }
+
+      public int f() {
+         return this.a;
+      }
+
+      public int g() {
+         return this.b - this.a - 1;
+      }
+
+      @Override
+      public String toString() {
+         return "C(" + this.b + "-" + this.a + ")";
+      }
+   }
+
+   public static final class c extends ecy {
+      private final int a;
+      private final boolean b;
+
+      public c(int $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public OptionalInt b() {
+         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
+      }
+
+      @Override
+      public OptionalInt c() {
+         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
+      }
    }
 }

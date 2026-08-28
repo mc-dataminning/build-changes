@@ -1,30 +1,40 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
 import com.mojang.datafixers.util.Pair;
+import java.util.Locale;
 import java.util.Objects;
-import java.util.function.Function;
 
-public class bje extends DataFix {
-   public bje(Schema $$0) {
-      super($$0, false);
+public abstract class bje extends DataFix {
+   private final String a;
+
+   public bje(String $$0, Schema $$1, boolean $$2) {
+      super($$1, $$2);
+      this.a = $$0;
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bia.x);
-      OpticFinder<?> $$1 = $$0.findField("buy");
-      OpticFinder<?> $$2 = $$0.findField("buyB");
-      OpticFinder<?> $$3 = $$0.findField("sell");
-      OpticFinder<Pair<String, String>> $$4 = DSL.fieldFinder("id", DSL.named(bia.D.typeName(), bjo.a()));
-      Function<Typed<?>, Typed<?>> $$5 = $$1x -> this.a($$4, $$1x);
-      return this.fixTypeEverywhereTyped("Villager trade fix", $$0, $$4x -> $$4x.updateTyped($$1, $$5).updateTyped($$2, $$5).updateTyped($$3, $$5));
+   public TypeRewriteRule makeRule() {
+      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bis.B);
+      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bis.B);
+      Type<Pair<String, String>> $$2 = DSL.named(bis.z.typeName(), bkg.a());
+      if (!Objects.equals(this.getOutputSchema().getType(bis.z), $$2)) {
+         throw new IllegalStateException("Entity name type is not what was expected.");
+      } else {
+         return TypeRewriteRule.seq(this.fixTypeEverywhere(this.a, $$0, $$1, $$2x -> $$2xx -> $$2xx.mapFirst($$2xxx -> {
+                  String $$3 = this.a($$2xxx);
+                  Type<?> $$4 = (Type<?>)$$0.types().get($$2xxx);
+                  Type<?> $$5 = (Type<?>)$$1.types().get($$3);
+                  if (!$$5.equals($$4, true, true)) {
+                     throw new IllegalStateException(String.format(Locale.ROOT, "Dynamic type check failed: %s not equal to %s", $$5, $$4));
+                  } else {
+                     return $$3;
+                  }
+               })), this.fixTypeEverywhere(this.a + " for entity name", $$2, $$0x -> $$0xx -> $$0xx.mapSecond(this::a)));
+      }
    }
 
-   private Typed<?> a(OpticFinder<Pair<String, String>> $$0, Typed<?> $$1) {
-      return $$1.update($$0, $$0x -> $$0x.mapSecond($$0xx -> Objects.equals($$0xx, "minecraft:carved_pumpkin") ? "minecraft:pumpkin" : $$0xx));
-   }
+   protected abstract String a(String var1);
 }
