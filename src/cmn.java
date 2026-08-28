@@ -10,7 +10,7 @@ public class cmn extends cmw {
    @Override
    protected void B() {
       this.bT.a(1, new ccx(this));
-      this.bT.a(1, new ccs(this, this.dV()));
+      this.bT.a(1, new ccs(this, this.dW()));
       this.bT.a(2, new cdn(this, 1.0, false));
       this.bT.a(3, new ceq(this, 1.0));
       this.bT.a(7, new cdl(this, cpw.class, 8.0F));
@@ -20,12 +20,12 @@ public class cmn extends cmw {
    }
 
    public static bxm.a m() {
-      return cmw.gr().a(bxn.s, 8.0).a(bxn.v, 0.25).a(bxn.c, 2.0);
+      return cmw.gt().a(bxn.s, 8.0).a(bxn.v, 0.25).a(bxn.c, 2.0);
    }
 
    @Override
-   protected bvj.b bg() {
-      return bvj.b.c;
+   protected bvj.c bg() {
+      return bvj.c.c;
    }
 
    @Override
@@ -62,7 +62,7 @@ public class cmn extends cmw {
 
    @Override
    public void h() {
-      this.aX = this.dL();
+      this.aX = this.dM();
       super.h();
    }
 
@@ -75,9 +75,9 @@ public class cmn extends cmw {
    @Override
    public void d_() {
       super.d_();
-      if (this.dV().C) {
+      if (this.dW().C) {
          for (int $$0 = 0; $$0 < 2; $$0++) {
-            this.dV().a(ls.ad, this.d(0.5), this.dD(), this.g(0.5), (this.ae.j() - 0.5) * 2.0, -this.ae.j(), (this.ae.j() - 0.5) * 2.0);
+            this.dW().a(ls.ad, this.d(0.5), this.dE(), this.g(0.5), (this.ae.j() - 0.5) * 2.0, -this.ae.j(), (this.ae.j() - 0.5) * 2.0);
          }
       } else {
          if (!this.aj()) {

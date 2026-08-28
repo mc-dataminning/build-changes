@@ -1,118 +1,39 @@
-import com.mojang.blaze3d.platform.TextureUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.InputStream;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class hbc extends hau {
-   static final Logger e = LogUtils.getLogger();
-   protected final alz d;
+public class hbc extends hbd {
+   @Nullable
+   private CompletableFuture<hbd.a> e;
 
-   public hbc(alz $$0) {
-      this.d = $$0;
+   public hbc(avv $$0, alz $$1, Executor $$2) {
+      super($$1);
+      this.e = CompletableFuture.supplyAsync(() -> hbd.a.a($$0, $$1), $$2);
    }
 
    @Override
-   public void a(avv $$0) throws IOException {
-      hbc.a $$1 = this.b($$0);
-      $$1.c();
-      hdh $$2 = $$1.a();
-      boolean $$3;
-      if ($$2 != null) {
-         this.c = $$2.a();
-         $$3 = $$2.b();
+   protected hbd.a b(avv $$0) {
+      if (this.e != null) {
+         hbd.a $$1 = this.e.join();
+         this.e = null;
+         return $$1;
       } else {
-         this.c = false;
-         $$3 = false;
-      }
-
-      ffq $$5 = $$1.b();
-      if (!RenderSystem.isOnRenderThreadOrInit()) {
-         RenderSystem.recordRenderCall(() -> this.a($$5, this.c, $$3));
-      } else {
-         this.a($$5, this.c, $$3);
+         return hbd.a.a($$0, this.d);
       }
    }
 
-   private void a(ffq $$0, boolean $$1, boolean $$2) {
-      TextureUtil.prepareImage(this.a(), 0, $$0.a(), $$0.b());
-      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), $$1, $$2, false, true);
+   public CompletableFuture<Void> e() {
+      return this.e == null ? CompletableFuture.completedFuture(null) : this.e.thenApply($$0 -> null);
    }
 
-   protected hbc.a b(avv $$0) {
-      return hbc.a.a($$0, this.d);
+   @Override
+   public void a(hbl $$0, avv $$1, alz $$2, Executor $$3) {
+      this.e = CompletableFuture.supplyAsync(() -> hbd.a.a($$1, this.d), ae.g());
+      this.e.thenRunAsync(() -> $$0.a(this.d, this), a($$3));
    }
 
-   protected static class a implements Closeable {
-      @Nullable
-      private final hdh a;
-      @Nullable
-      private final ffq b;
-      @Nullable
-      private final IOException c;
-
-      public a(IOException $$0) {
-         this.c = $$0;
-         this.a = null;
-         this.b = null;
-      }
-
-      public a(@Nullable hdh $$0, ffq $$1) {
-         this.c = null;
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public static hbc.a a(avv $$0, alz $$1) {
-         try {
-            avt $$2 = $$0.getResourceOrThrow($$1);
-
-            ffq $$4;
-            try (InputStream $$3 = $$2.d()) {
-               $$4 = ffq.a($$3);
-            }
-
-            hdh $$6 = null;
-
-            try {
-               $$6 = $$2.f().a(hdh.a).orElse(null);
-            } catch (RuntimeException var8) {
-               hbc.e.warn("Failed reading metadata of: {}", $$1, var8);
-            }
-
-            return new hbc.a($$6, $$4);
-         } catch (IOException var10) {
-            return new hbc.a(var10);
-         }
-      }
-
-      @Nullable
-      public hdh a() {
-         return this.a;
-      }
-
-      public ffq b() throws IOException {
-         if (this.c != null) {
-            throw this.c;
-         } else {
-            return this.b;
-         }
-      }
-
-      @Override
-      public void close() {
-         if (this.b != null) {
-            this.b.close();
-         }
-      }
-
-      public void c() throws IOException {
-         if (this.c != null) {
-            throw this.c;
-         }
-      }
+   private static Executor a(Executor $$0) {
+      return $$1 -> $$0.execute(() -> RenderSystem.recordRenderCall($$1::run));
    }
 }

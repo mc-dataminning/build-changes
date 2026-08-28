@@ -42,7 +42,7 @@ public abstract class bva extends bwn {
    }
 
    public int Z_() {
-      if (this.dV().C) {
+      if (this.dW().C) {
          return this.al.a(bZ) ? -1 : 1;
       } else {
          return this.b;
@@ -109,10 +109,10 @@ public abstract class bva extends bwn {
    @Override
    public void d_() {
       super.d_();
-      if (this.dV().C) {
+      if (this.dW().C) {
          if (this.d > 0) {
             if (this.d % 4 == 0) {
-               this.dV().a(ls.O, this.d(1.0), this.dD() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
+               this.dW().a(ls.O, this.d(1.0), this.dE() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
             }
 
             this.d--;
@@ -128,7 +128,7 @@ public abstract class bva extends bwn {
    }
 
    protected void i() {
-      if (!this.e_() && this.bZ() && this.dk() instanceof crt $$0 && !$$0.b((bvj)this)) {
+      if (!this.e_() && this.bZ() && this.dl() instanceof crt $$0 && !$$0.b((bvj)this)) {
          this.ae();
       }
    }

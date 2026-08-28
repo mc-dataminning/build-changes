@@ -37,7 +37,7 @@ public class cmu extends cng implements cna {
    }
 
    public static bxm.a p() {
-      return cmw.gr().a(bxn.v, 0.5).a(bxn.m, 18.0).a(bxn.s, 32.0);
+      return cmw.gt().a(bxn.v, 0.5).a(bxn.m, 18.0).a(bxn.s, 32.0);
    }
 
    @Override
@@ -49,7 +49,7 @@ public class cmu extends cng implements cna {
    @Override
    public void d_() {
       super.d_();
-      if (this.dV().C && this.cp()) {
+      if (this.dW().C && this.cp()) {
          this.cb--;
          if (this.cb < 0) {
             this.cb = 0;
@@ -68,10 +68,10 @@ public class cmu extends cng implements cna {
             }
 
             for (int $$3 = 0; $$3 < 16; $$3++) {
-               this.dV().a(ls.e, this.d(0.5), this.dD(), this.f(0.5), 0.0, 0.0, 0.0);
+               this.dW().a(ls.e, this.d(0.5), this.dE(), this.f(0.5), 0.0, 0.0, 0.0);
             }
 
-            this.dV().a(this.dA(), this.dC(), this.dG(), axf.nA, this.dm(), 1.0F, 1.0F, false);
+            this.dW().a(this.dB(), this.dD(), this.dH(), axf.nA, this.dn(), 1.0F, 1.0F, false);
          } else if (this.aN == this.aO - 1) {
             this.cb = 3;
 
@@ -133,23 +133,23 @@ public class cmu extends cng implements cna {
       cxo $$2 = this.b(cqr.a(this, cxs.oR));
       cxo $$3 = this.d($$2);
       cqd $$4 = cqr.a(this, $$3, $$1, $$2);
-      double $$5 = $$0.dA() - this.dA();
-      double $$6 = $$0.e(0.3333333333333333) - $$4.dC();
-      double $$7 = $$0.dG() - this.dG();
+      double $$5 = $$0.dB() - this.dB();
+      double $$6 = $$0.e(0.3333333333333333) - $$4.dD();
+      double $$7 = $$0.dH() - this.dH();
       double $$8 = Math.sqrt($$5 * $$5 + $$7 * $$7);
-      if (this.dV() instanceof ash $$9) {
+      if (this.dW() instanceof ash $$9) {
          cqp.a($$4, $$9, $$3, $$5, $$6 + $$8 * 0.2F, $$7, 1.6F, (float)(14 - $$9.al().a() * 4));
       }
 
-      this.a(axf.xH, 1.0F, 1.0F / (this.dY().i() * 0.4F + 0.8F));
+      this.a(axf.xH, 1.0F, 1.0F / (this.dZ().i() * 0.4F + 0.8F));
    }
 
    @Override
    public cmd.a m() {
-      if (this.gv()) {
+      if (this.gx()) {
          return cmd.a.c;
       } else {
-         return this.gb() ? cmd.a.d : cmd.a.a;
+         return this.gd() ? cmd.a.d : cmd.a.a;
       }
    }
 
@@ -163,7 +163,7 @@ public class cmu extends cng implements cna {
          } else if (cmu.this.O_() == null) {
             return false;
          } else {
-            return cmu.this.O_().ar() == this.e ? false : cmu.this.dV().d_(cmu.this.dv()).a((float)btf.c.ordinal());
+            return cmu.this.O_().ar() == this.e ? false : cmu.this.dW().d_(cmu.this.dw()).a((float)btf.c.ordinal());
          }
       }
 

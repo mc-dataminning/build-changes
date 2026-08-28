@@ -66,8 +66,8 @@ public class cjj {
    }
 
    private static boolean a(bwf $$0) {
-      dhh $$1 = $$0.dV();
-      Optional<bzm> $$2 = $$0.eb().c(cfj.n);
+      dhh $$1 = $$0.dW();
+      Optional<bzm> $$2 = $$0.ec().c(cfj.n);
       if ($$2.isPresent()) {
          jh $$3 = $$2.get().b();
          return $$1.z($$3) == $$0.bm();
@@ -77,7 +77,7 @@ public class cjj {
    }
 
    public static void a(cji $$0) {
-      bxh<cji> $$1 = $$0.eb();
+      bxh<cji> $$1 = $$0.ec();
       crn $$2 = $$1.g().orElse(null);
       if ($$2 != crn.p) {
          $$1.a(ImmutableList.of(crn.p, crn.k, crn.b));
@@ -100,7 +100,7 @@ public class cjj {
    }
 
    private static Optional<? extends bwf> a(ash $$0, cji $$1) {
-      return bya.a($$1) ? Optional.empty() : $$1.eb().c(cfj.B);
+      return bya.a($$1) ? Optional.empty() : $$1.ec().c(cfj.B);
    }
 
    public static Predicate<cxo> a() {

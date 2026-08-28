@@ -50,7 +50,7 @@ public class dop extends dkl implements dnf, dnu {
    @Override
    protected bti a(dxu $$0, dhh $$1, jh $$2, cpw $$3, fbt $$4) {
       duw $$5 = $$1.c_($$2);
-      if ($$5 instanceof dvz && $$3.gE()) {
+      if ($$5 instanceof dvz && $$3.gG()) {
          $$3.a((dvz)$$5);
          return bti.a;
       } else {

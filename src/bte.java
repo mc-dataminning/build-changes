@@ -4,7 +4,7 @@ public class bte {
    }
 
    public static void a(dhh $$0, bvj $$1, btb $$2) {
-      a($$0, $$1.dA(), $$1.dC(), $$1.dG(), $$2);
+      a($$0, $$1.dB(), $$1.dD(), $$1.dH(), $$2);
    }
 
    private static void a(dhh $$0, double $$1, double $$2, double $$3, btb $$4) {

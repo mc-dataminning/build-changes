@@ -6,7 +6,7 @@ public interface ebx {
 
    UUID cG();
 
-   jh dv();
+   jh dw();
 
    fbs cR();
 
@@ -16,9 +16,9 @@ public interface ebx {
 
    Stream<? extends ebx> dc();
 
-   void c(bvj.c var1);
-
-   boolean dT();
+   void c(bvj.d var1);
 
    boolean dU();
+
+   boolean dV();
 }

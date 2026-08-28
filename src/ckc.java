@@ -77,7 +77,7 @@ public class ckc extends cka implements bxf<ckj> {
 
    @Nullable
    @Override
-   protected axe go() {
+   protected axe gq() {
       return axf.nd;
    }
 
@@ -87,13 +87,13 @@ public class ckc extends cka implements bxf<ckj> {
    }
 
    @Override
-   protected axe gN() {
+   protected axe gP() {
       return axf.mZ;
    }
 
    @Override
    public bti b(cpw $$0, bth $$1) {
-      boolean $$2 = !this.e_() && this.gD() && $$0.fW();
+      boolean $$2 = !this.e_() && this.gF() && $$0.fY();
       if (!this.ca() && !$$2) {
          cxo $$3 = $$0.b($$1);
          if (!$$3.f()) {
@@ -101,8 +101,8 @@ public class ckc extends cka implements bxf<ckj> {
                return this.c($$0, $$3);
             }
 
-            if (!this.gD()) {
-               this.gT();
+            if (!this.gF()) {
+               this.gV();
                return bti.a;
             }
          }
@@ -118,7 +118,7 @@ public class ckc extends cka implements bxf<ckj> {
       if ($$0 == this) {
          return false;
       } else {
-         return !($$0 instanceof ckb) && !($$0 instanceof ckc) ? false : this.gV() && ((cka)$$0).gV();
+         return !($$0 instanceof ckb) && !($$0 instanceof ckc) ? false : this.gX() && ((cka)$$0).gX();
       }
    }
 

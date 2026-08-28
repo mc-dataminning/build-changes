@@ -85,7 +85,7 @@ public class cui extends ctb {
       });
       this.c($$1, 8, 84);
       this.a(this.s);
-      this.v = $$1.k.dX().e(mb.d);
+      this.v = $$1.k.dY().e(mb.d);
    }
 
    @Override
@@ -150,17 +150,17 @@ public class cui extends ctb {
             boolean $$14 = $$13.b().size() >= 6;
             if ($$14) {
                this.s.a(-1);
-               this.z.f(cxo.k);
+               this.z.f(cxo.j);
             } else {
                this.a($$7);
             }
          } else {
-            this.z.f(cxo.k);
+            this.z.f(cxo.j);
          }
 
          this.d();
       } else {
-         this.z.f(cxo.k);
+         this.z.f(cxo.j);
          this.t = List.of();
          this.s.a(-1);
       }
@@ -180,49 +180,49 @@ public class cui extends ctb {
 
    @Override
    public cxo b(cpw $$0, int $$1) {
-      cxo $$2 = cxo.k;
+      cxo $$2 = cxo.j;
       cuy $$3 = this.k.get($$1);
       if ($$3 != null && $$3.h()) {
          cxo $$4 = $$3.g();
          $$2 = $$4.v();
          if ($$1 == this.z.d) {
             if (!this.a($$4, 4, 40, true)) {
-               return cxo.k;
+               return cxo.j;
             }
 
             $$3.b($$4, $$2);
          } else if ($$1 != this.x.d && $$1 != this.w.d && $$1 != this.y.d) {
             if ($$4.h() instanceof cvr) {
                if (!this.a($$4, this.w.d, this.w.d + 1, false)) {
-                  return cxo.k;
+                  return cxo.j;
                }
             } else if ($$4.h() instanceof cwm) {
                if (!this.a($$4, this.x.d, this.x.d + 1, false)) {
-                  return cxo.k;
+                  return cxo.j;
                }
             } else if ($$4.h() instanceof cvs) {
                if (!this.a($$4, this.y.d, this.y.d + 1, false)) {
-                  return cxo.k;
+                  return cxo.j;
                }
             } else if ($$1 >= 4 && $$1 < 31) {
                if (!this.a($$4, 31, 40, false)) {
-                  return cxo.k;
+                  return cxo.j;
                }
             } else if ($$1 >= 31 && $$1 < 40 && !this.a($$4, 4, 31, false)) {
-               return cxo.k;
+               return cxo.j;
             }
          } else if (!this.a($$4, 4, 40, false)) {
-            return cxo.k;
+            return cxo.j;
          }
 
          if ($$4.f()) {
-            $$3.e(cxo.k);
+            $$3.e(cxo.j);
          } else {
             $$3.c();
          }
 
          if ($$4.L() == $$2.L()) {
-            return cxo.k;
+            return cxo.j;
          }
 
          $$3.a($$0, $$4);
@@ -240,7 +240,7 @@ public class cui extends ctb {
    private void a(jq<dum> $$0) {
       cxo $$1 = this.w.g();
       cxo $$2 = this.x.g();
-      cxo $$3 = cxo.k;
+      cxo $$3 = cxo.j;
       if (!$$1.f() && !$$2.f()) {
          $$3 = $$1.c(1);
          cwl $$4 = ((cwm)$$2.h()).b();

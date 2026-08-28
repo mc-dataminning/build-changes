@@ -73,9 +73,9 @@ public interface ecz {
       }
    });
 
-   ecz.a gn();
+   ecz.a gp();
 
-   ecz.d go();
+   ecz.d gq();
 
    static int a_(jq<ecq> $$0) {
       return $$0.e().map(ecz::a).orElse(0);
@@ -164,18 +164,18 @@ public interface ecz {
 
       @Override
       public ecu a() {
-         return this.a.go().b();
+         return this.a.gq().b();
       }
 
       @Override
       public int b() {
-         return this.a.go().a();
+         return this.a.gq().a();
       }
 
       @Override
       public boolean a(ash $$0, jq<ecq> $$1, ecq.a $$2, fbx $$3) {
-         ecz.a $$4 = this.a.gn();
-         ecz.d $$5 = this.a.go();
+         ecz.a $$4 = this.a.gp();
+         ecz.d $$5 = this.a.gq();
          if ($$4.b() != null) {
             return false;
          } else if (!$$5.a($$1, $$2)) {
@@ -199,7 +199,7 @@ public interface ecz {
       }
 
       public void b(ash $$0, jq<ecq> $$1, ecq.a $$2, fbx $$3) {
-         this.a.go().b().a($$0).ifPresent($$4 -> this.a($$0, this.a.gn(), $$1, $$2, $$3, $$4));
+         this.a.gq().b().a($$0).ifPresent($$4 -> this.a($$0, this.a.gp(), $$1, $$2, $$3, $$4));
       }
 
       private void a(ash $$0, ecz.a $$1, jq<ecq> $$2, ecq.a $$3, fbx $$4, fbx $$5) {

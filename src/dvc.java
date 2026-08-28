@@ -4,7 +4,7 @@ import javax.annotation.Nullable;
 public class dvc extends duw implements bsz {
    private static final int a = 2;
    private static final int b = 4;
-   private final jz<cxo> c = jz.a(4, cxo.k);
+   private final jz<cxo> c = jz.a(4, cxo.j);
    private final int[] d = new int[4];
    private final int[] e = new int[4];
 
@@ -25,7 +25,7 @@ public class dvc extends duw implements bsz {
                cxo $$9 = $$4.a($$8, $$0).map($$2x -> ((dbo)$$2x.b()).a($$8, $$0.K_())).orElse($$7);
                if ($$9.a($$0.J())) {
                   bte.a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$9);
-                  $$3.c.set($$6, cxo.k);
+                  $$3.c.set($$6, cxo.j);
                   $$0.a($$1, $$2, $$2, 3);
                   $$0.a(ecq.c, $$1, ecq.a.a($$2));
                }

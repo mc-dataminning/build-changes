@@ -8,7 +8,7 @@ public class ckk extends cka {
    }
 
    public static bxm.a p() {
-      return gO().a(bxn.s, 15.0).a(bxn.v, 0.2F);
+      return gQ().a(bxn.s, 15.0).a(bxn.v, 0.2F);
    }
 
    public static boolean c(bvq<? extends chw> $$0, dhi $$1, bvp $$2, jh $$3, bam $$4) {
@@ -43,11 +43,11 @@ public class ckk extends cka {
 
    @Override
    public bti b(cpw $$0, bth $$1) {
-      return (bti)(!this.gD() ? bti.e : super.b($$0, $$1));
+      return (bti)(!this.gF() ? bti.e : super.b($$0, $$1));
    }
 
    @Override
-   protected void gE() {
+   protected void gG() {
    }
 
    @Override

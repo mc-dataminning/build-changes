@@ -52,7 +52,7 @@ public class dsr extends dkv implements dko {
       if ($$3 instanceof bwf && $$3.aq() != bvq.ab && $$3.aq() != bvq.l) {
          $$3.a($$0, new fbx(0.8F, 0.75, 0.8F));
          if ($$1 instanceof ash $$4 && $$0.c(c) != 0) {
-            fbx $$6 = $$3 instanceof asi ? $$3.ah() : $$3.bC().d($$3.dt());
+            fbx $$6 = $$3.dj() ? $$3.ah() : $$3.bC().d($$3.du());
             if ($$6.j() > 0.0) {
                double $$7 = Math.abs($$6.a());
                double $$8 = Math.abs($$6.c());

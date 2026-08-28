@@ -96,7 +96,7 @@ public class byw {
    private static boolean a(bwf $$0, jh $$1, Optional<List<bwf>> $$2) {
       return $$2.isEmpty()
          ? false
-         : $$2.get().stream().filter($$1x -> $$1x.aq() == $$0.aq()).filter($$1x -> $$1.a($$1x.dt(), 2.0)).anyMatch($$1x -> a($$1x.eb(), $$1));
+         : $$2.get().stream().filter($$1x -> $$1x.aq() == $$0.aq()).filter($$1x -> $$1.a($$1x.du(), 2.0)).anyMatch($$1x -> a($$1x.ec(), $$1));
    }
 
    private static boolean a(bxh<?> $$0, jh $$1) {
@@ -119,7 +119,7 @@ public class byw {
    }
 
    private static boolean a(ash $$0, bwf $$1, jp $$2) {
-      return $$2.a() != $$0.ah() || !$$2.b().a($$1.dt(), 3.0);
+      return $$2.a() != $$0.ah() || !$$2.b().a($$1.du(), 3.0);
    }
 
    private static Optional<Set<jp>> a(cbm<Mu, Set<jp>> $$0, Optional<Set<jp>> $$1, ash $$2, jh $$3) {

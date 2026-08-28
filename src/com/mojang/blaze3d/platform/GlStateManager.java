@@ -608,7 +608,7 @@ public class GlStateManager {
       GL11.glTexSubImage2D($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
    }
 
-   public static void upload(int $$0, int $$1, int $$2, int $$3, int $$4, ffq.a $$5, IntBuffer $$6, Consumer<IntBuffer> $$7) {
+   public static void upload(int $$0, int $$1, int $$2, int $$3, int $$4, ffr.a $$5, IntBuffer $$6, Consumer<IntBuffer> $$7) {
       if (!RenderSystem.isOnRenderThreadOrInit()) {
          RenderSystem.recordRenderCall(() -> _upload($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
       } else {
@@ -616,7 +616,7 @@ public class GlStateManager {
       }
    }
 
-   private static void _upload(int $$0, int $$1, int $$2, int $$3, int $$4, ffq.a $$5, IntBuffer $$6, Consumer<IntBuffer> $$7) {
+   private static void _upload(int $$0, int $$1, int $$2, int $$3, int $$4, ffr.a $$5, IntBuffer $$6, Consumer<IntBuffer> $$7) {
       try {
          RenderSystem.assertOnRenderThreadOrInit();
          _pixelStore(3314, $$3);
@@ -700,7 +700,7 @@ public class GlStateManager {
    public static void _clear(int $$0) {
       RenderSystem.assertOnRenderThreadOrInit();
       GL11.glClear($$0);
-      if (ffn.a) {
+      if (ffo.a) {
          _getError();
       }
    }

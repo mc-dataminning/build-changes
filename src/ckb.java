@@ -11,7 +11,7 @@ public class ckb extends cjz {
    }
 
    @Override
-   protected axe gN() {
+   protected axe gP() {
       return axf.hA;
    }
 
@@ -22,7 +22,7 @@ public class ckb extends cjz {
 
    @Nullable
    @Override
-   protected axe go() {
+   protected axe gq() {
       return axf.hD;
    }
 
@@ -36,12 +36,12 @@ public class ckb extends cjz {
       if ($$0 == this) {
          return false;
       } else {
-         return !($$0 instanceof ckb) && !($$0 instanceof ckc) ? false : this.gV() && ((cka)$$0).gV();
+         return !($$0 instanceof ckb) && !($$0 instanceof ckc) ? false : this.gX() && ((cka)$$0).gX();
       }
    }
 
    @Override
-   protected void gU() {
+   protected void gW() {
       this.a(axf.hF, 0.4F, 1.0F);
    }
 

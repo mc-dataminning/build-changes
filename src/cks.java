@@ -18,8 +18,8 @@ public class cks extends bvj {
    }
 
    @Override
-   protected bvj.b bg() {
-      return bvj.b.a;
+   protected bvj.c bg() {
+      return bvj.c.a;
    }
 
    @Override
@@ -33,10 +33,10 @@ public class cks extends bvj {
       this.a++;
       this.aK();
       this.bW();
-      if (this.dV() instanceof ash) {
-         jh $$0 = this.dv();
-         if (((ash)this.dV()).E() != null && this.dV().a_($$0).l()) {
-            this.dV().b($$0, djy.a(this.dV(), $$0));
+      if (this.dW() instanceof ash) {
+         jh $$0 = this.dw();
+         if (((ash)this.dW()).E() != null && this.dW().a_($$0).l()) {
+            this.dW().b($$0, djy.a(this.dW(), $$0));
          }
       }
    }
@@ -75,11 +75,11 @@ public class cks extends bvj {
       } else if ($$1.d() instanceof ckt) {
          return false;
       } else {
-         if (!this.dQ()) {
-            this.a(bvj.c.a);
+         if (!this.dR()) {
+            this.a(bvj.d.a);
             if (!$$1.a(axw.l)) {
-               btz $$3 = $$1.d() != null ? this.dW().d(this, $$1.d()) : null;
-               $$0.a(this, $$3, null, this.dA(), this.dC(), this.dG(), 6.0F, false, dhh.a.b);
+               btz $$3 = $$1.d() != null ? this.dX().d(this, $$1.d()) : null;
+               $$0.a(this, $$3, null, this.dB(), this.dD(), this.dH(), 6.0F, false, dhh.a.b);
             }
 
             this.a($$0, $$1);
@@ -91,7 +91,7 @@ public class cks extends bvj {
 
    @Override
    public void c(ash $$0) {
-      this.a($$0, this.dW().p());
+      this.a($$0, this.dX().p());
       super.c($$0);
    }
 
@@ -125,7 +125,7 @@ public class cks extends bvj {
    }
 
    @Override
-   public cxo dI() {
+   public cxo dJ() {
       return new cxo(cxs.vV);
    }
 }

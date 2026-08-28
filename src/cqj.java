@@ -39,14 +39,14 @@ public abstract class cqj extends cqe implements cqm {
    @Override
    public void b(ux $$0) {
       super.b($$0);
-      $$0.a("Item", this.l().a(this.dX()));
+      $$0.a("Item", this.l().a(this.dY()));
    }
 
    @Override
    public void a(ux $$0) {
       super.a($$0);
       if ($$0.b("Item", 10)) {
-         this.a(cxo.a(this.dX(), (vu)$$0.p("Item")).orElse(this.v()));
+         this.a(cxo.a(this.dY(), (vu)$$0.p("Item")).orElse(this.v()));
       } else {
          this.a(this.v());
       }

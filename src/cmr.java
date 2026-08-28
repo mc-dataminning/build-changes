@@ -4,7 +4,7 @@ public class cmr extends cmw {
    }
 
    public static bxm.a m() {
-      return cmw.gr().a(bxn.s, 100.0).a(bxn.v, 0.5).a(bxn.c, 50.0);
+      return cmw.gt().a(bxn.s, 100.0).a(bxn.v, 0.5).a(bxn.c, 50.0);
    }
 
    @Override

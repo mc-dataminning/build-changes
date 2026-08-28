@@ -9,7 +9,7 @@ public class dvn extends duw implements bto, fdj.a {
    @Nullable
    public dvn.a h;
    private dwd k;
-   private cxo l = cxo.k;
+   private cxo l = cxo.j;
    @Nullable
    protected aly<ewt> i;
    protected long j;
@@ -34,9 +34,9 @@ public class dvn extends duw implements bto, fdj.a {
       this.k = dwd.b($$0);
       if (!this.b_($$0)) {
          if ($$0.b("item", 10)) {
-            this.l = cxo.a($$1, (vu)$$0.p("item")).orElse(cxo.k);
+            this.l = cxo.a($$1, (vu)$$0.p("item")).orElse(cxo.j);
          } else {
-            this.l = cxo.k;
+            this.l = cxo.j;
          }
       }
    }
@@ -127,7 +127,7 @@ public class dvn extends duw implements bto, fdj.a {
       this.d_(null);
       cxo $$1 = this.l.a($$0);
       if (this.l.f()) {
-         this.l = cxo.k;
+         this.l = cxo.j;
       }
 
       return $$1;

@@ -11,7 +11,7 @@ public class cgq<U extends cgp<?>> {
    public static final cgq<cgs> h = a("villager_babies", cgs::new);
    public static final cgq<cgn> i = a("secondary_pois", cgn::new);
    public static final cgq<cgb> j = a("golem_detected", cgb::new);
-   public static final cgq<cgf<cjf>> k = a("armadillo_scare_detected", () -> new cgf<>(5, cjf::j, cjf::gy, cfj.G, 80));
+   public static final cgq<cgf<cjf>> k = a("armadillo_scare_detected", () -> new cgf<>(5, cjf::j, cjf::gA, cfj.G, 80));
    public static final cgq<cgl> l = a("piglin_specific_sensor", cgl::new);
    public static final cgq<cgk> m = a("piglin_brute_specific_sensor", cgk::new);
    public static final cgq<cgc> n = a("hoglin_specific_sensor", cgc::new);

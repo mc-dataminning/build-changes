@@ -29,18 +29,18 @@ public class cjq extends chw implements bxf<jq<cih>> {
    }
 
    @Override
-   protected bxh.b<cjq> ec() {
+   protected bxh.b<cjq> ed() {
       return bxh.a(ca, bZ);
    }
 
    @Override
    protected bxh<?> a(Dynamic<?> $$0) {
-      return cjr.a(this.ec().a($$0));
+      return cjr.a(this.ed().a($$0));
    }
 
    @Override
-   public bxh<cjq> eb() {
-      return (bxh<cjq>)super.eb();
+   public bxh<cjq> ec() {
+      return (bxh<cjq>)super.ec();
    }
 
    @Override
@@ -55,7 +55,7 @@ public class cjq extends chw implements bxf<jq<cih>> {
    }
 
    public Optional<bvj> t() {
-      return this.al.a(ci).stream().mapToObj(this.dV()::a).filter(Objects::nonNull).findFirst();
+      return this.al.a(ci).stream().mapToObj(this.dW()::a).filter(Objects::nonNull).findFirst();
    }
 
    public void b(bvj $$0) {
@@ -96,7 +96,7 @@ public class cjq extends chw implements bxf<jq<cih>> {
    protected void a(ash $$0) {
       bps $$1 = bpr.a();
       $$1.a("frogBrain");
-      this.eb().a($$0, this);
+      this.ec().a($$0, this);
       $$1.c();
       $$1.a("frogActivityUpdate");
       cjr.a(this);
@@ -106,7 +106,7 @@ public class cjq extends chw implements bxf<jq<cih>> {
 
    @Override
    public void h() {
-      if (this.dV().B_()) {
+      if (this.dW().B_()) {
          this.cg.a(this.bm() && !this.aT.d(), this.af);
       }
 
@@ -152,8 +152,8 @@ public class cjq extends chw implements bxf<jq<cih>> {
    }
 
    @Override
-   public void gs() {
-      this.dV().a(null, this, axf.kh, axg.g, 2.0F, 1.0F);
+   public void gu() {
+      this.dW().a(null, this, axf.kh, axg.g, 2.0F, 1.0F);
    }
 
    @Nullable
@@ -179,12 +179,12 @@ public class cjq extends chw implements bxf<jq<cih>> {
    @Override
    public void a(ash $$0, chw $$1) {
       this.a($$0, $$1, null);
-      this.eb().a(cfj.Y, bbk.a);
+      this.ec().a(cfj.Y, bbk.a);
    }
 
    @Override
    public bwy a(dhy $$0, btg $$1, bvp $$2, @Nullable bwy $$3) {
-      jq<dij> $$4 = $$0.t(this.dv());
+      jq<dij> $$4 = $$0.t(this.dw());
       if ($$4.a(axt.ai)) {
          this.j(ma.aj.b(cih.d));
       } else if ($$4.a(axt.aj)) {
@@ -197,8 +197,8 @@ public class cjq extends chw implements bxf<jq<cih>> {
       return super.a($$0, $$1, $$2, $$3);
    }
 
-   public static bxm.a gm() {
-      return chw.gr().a(bxn.v, 1.0).a(bxn.s, 10.0).a(bxn.c, 10.0).a(bxn.B, 1.0);
+   public static bxm.a go() {
+      return chw.gt().a(bxn.v, 1.0).a(bxn.s, 10.0).a(bxn.c, 10.0).a(bxn.B, 1.0);
    }
 
    @Nullable
@@ -243,16 +243,16 @@ public class cjq extends chw implements bxf<jq<cih>> {
    @Override
    public void a_(fbx $$0) {
       if (this.di() && this.bj()) {
-         this.a(this.fn(), $$0);
-         this.a(bwj.a, this.dy());
-         this.h(this.dy().c(0.9));
+         this.a(this.fp(), $$0);
+         this.a(bwj.a, this.dz());
+         this.h(this.dz().c(0.9));
       } else {
          super.a_($$0);
       }
    }
 
    public static boolean j(bwf $$0) {
-      if ($$0 instanceof cnf $$1 && $$1.gm() != 1) {
+      if ($$0 instanceof cnf $$1 && $$1.go() != 1) {
          return false;
       }
 

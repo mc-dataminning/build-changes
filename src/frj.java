@@ -1,17 +1,28 @@
-import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record frj(alz c) implements frh {
-   public static final MapCodec<frj> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alz.a.fieldOf("id").forGetter(frj::c)).apply($$0, frj::new));
+public enum frj implements bba {
+   a("bitmap", frg.a.a),
+   b("ttf", frl.a),
+   c("space", fes.a.a),
+   d("unihex", frm.b.a),
+   e("reference", frk.a);
 
-   @Override
-   public fri a() {
-      return fri.e;
+   public static final Codec<frj> f = bba.a(frj::values);
+   private final String g;
+   private final MapCodec<? extends fri> h;
+
+   private frj(final String $$0, final MapCodec<? extends fri> $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
    @Override
-   public Either<frh.b, frh.c> b() {
-      return Either.right(new frh.c(this.c));
+   public String c() {
+      return this.g;
+   }
+
+   public MapCodec<? extends fri> a() {
+      return this.h;
    }
 }

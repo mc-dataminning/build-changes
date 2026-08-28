@@ -83,7 +83,7 @@ public class cik extends chw {
    }
 
    public static bxm.a p() {
-      return chw.gr().a(bxn.s, 10.0).a(bxn.v, 0.3F).a(bxn.c, 3.0);
+      return chw.gt().a(bxn.s, 10.0).a(bxn.v, 0.3F).a(bxn.c, 3.0);
    }
 
    @Nullable
@@ -112,14 +112,14 @@ public class cik extends chw {
       cxo $$2 = $$0.b($$1);
       if ((this.cf == null || this.cf.i()) && !this.x() && this.j($$2) && $$0.g(this) < 9.0) {
          this.a($$0, $$1, $$2);
-         if (!this.dV().C) {
+         if (!this.dW().C) {
             if (this.ae.a(3) == 0) {
                this.x(true);
                this.y(true);
-               this.dV().a(this, (byte)41);
+               this.dW().a(this, (byte)41);
             } else {
                this.y(false);
-               this.dV().a(this, (byte)40);
+               this.dW().a(this, (byte)40);
             }
          }
 
@@ -150,7 +150,7 @@ public class cik extends chw {
          double $$3 = this.ae.k() * 0.02;
          double $$4 = this.ae.k() * 0.02;
          double $$5 = this.ae.k() * 0.02;
-         this.dV().a($$1, this.d(1.0), this.dD() + 0.5, this.g(1.0), $$3, $$4, $$5);
+         this.dW().a($$1, this.d(1.0), this.dE() + 0.5, this.g(1.0), $$3, $$4, $$5);
       }
    }
 
@@ -182,7 +182,7 @@ public class cik extends chw {
    @Override
    public boolean a(dhk $$0) {
       if ($$0.f(this) && !$$0.d(this.cR())) {
-         jh $$1 = this.dv();
+         jh $$1 = this.dw();
          if ($$1.v() < $$0.O()) {
             return false;
          }
@@ -208,7 +208,7 @@ public class cik extends chw {
 
    @Override
    public fbx cT() {
-      return new fbx(0.0, (double)(0.5F * this.cS()), (double)(this.dq() * 0.4F));
+      return new fbx(0.0, (double)(0.5F * this.cS()), (double)(this.dr() * 0.4F));
    }
 
    @Override

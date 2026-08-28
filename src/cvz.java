@@ -36,7 +36,7 @@ public class cvz extends cxk {
             if ($$10) {
                jh $$11 = $$7.b();
                dxu $$12 = $$0.a_($$11);
-               bvz $$13 = $$1.fy() == bth.a ? $$4.fw() : $$4.fw().e();
+               bvz $$13 = $$1.fA() == bth.a ? $$4.fy() : $$4.fy().e();
                if ($$12.D() && $$12.o() != dqu.a) {
                   this.a($$0, $$7, $$12, $$1.g(0.0F), $$13);
                }
@@ -61,14 +61,14 @@ public class cvz extends cxk {
             return;
          }
 
-         $$1.fC();
+         $$1.fE();
       } else {
-         $$1.fC();
+         $$1.fE();
       }
    }
 
    private fbv a(cpw $$0) {
-      return cqr.a($$0, bvo.h, $$0.gH());
+      return cqr.a($$0, bvo.h, $$0.gJ());
    }
 
    private void a(dhh $$0, fbt $$1, dxu $$2, fbx $$3, bvz $$4) {

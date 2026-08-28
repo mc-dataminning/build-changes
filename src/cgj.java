@@ -14,7 +14,7 @@ public abstract class cgj extends cgp<bwf> {
 
    @Override
    protected void a(ash $$0, bwf $$1) {
-      $$1.eb().a(this.b(), this.c($$0, $$1));
+      $$1.ec().a(this.b(), this.c($$0, $$1));
    }
 
    private Optional<bwf> c(ash $$0, bwf $$1) {
@@ -22,6 +22,6 @@ public abstract class cgj extends cgp<bwf> {
    }
 
    protected Optional<cfl> a(bwf $$0) {
-      return $$0.eb().c(cfj.h);
+      return $$0.ec().c(cfj.h);
    }
 }

@@ -921,7 +921,7 @@ public class cpm {
       @Override
       public dge a(bvj $$0, bam $$1) {
          if ($$0 instanceof cpk $$2) {
-            dgc $$3 = new dgc(this.a.get($$2.gw().a()), this.b);
+            dgc $$3 = new dgc(this.a.get($$2.gy().a()), this.b);
             return new dge($$3, new cxo(cxs.oW), this.c, this.d, 0.05F);
          } else {
             return null;
@@ -948,7 +948,7 @@ public class cpm {
 
       @Override
       public dge a(bvj $$0, bam $$1) {
-         Optional<jq<ddy>> $$2 = $$0.dV().K_().e(mb.aO).a(this.b, $$1);
+         Optional<jq<ddy>> $$2 = $$0.dW().K_().e(mb.aO).a(this.b, $$1);
          int $$9;
          cxo $$8;
          if (!$$2.isEmpty()) {
@@ -997,7 +997,7 @@ public class cpm {
       @Override
       public dge a(bvj $$0, bam $$1) {
          int $$2 = 5 + $$1.a(15);
-         ke $$3 = $$0.dV().K_();
+         ke $$3 = $$0.dW().K_();
          Optional<ju.c<ddy>> $$4 = $$3.e(mb.aO).a(axx.m);
          cxo $$5 = dea.a($$1, new cxo(this.a.h()), $$2, $$3, $$4);
          int $$6 = Math.min(this.b + $$2, 64);
@@ -1053,8 +1053,8 @@ public class cpm {
       @Override
       public dge a(bvj $$0, bam $$1) {
          cxo $$2 = this.c.v();
-         dhh $$3 = $$0.dV();
-         this.g.ifPresent($$4 -> dea.a($$2, $$3.K_(), (aly<dfg>)$$4, $$3.d_($$0.dv()), $$1));
+         dhh $$3 = $$0.dW();
+         this.g.ifPresent($$4 -> dea.a($$2, $$3.K_(), (aly<dfg>)$$4, $$3.d_($$0.dw()), $$1));
          return new dge(new dgc(cxs.oW, this.b), Optional.of(this.a), $$2, 0, this.d, this.e, this.f);
       }
    }
@@ -1108,8 +1108,8 @@ public class cpm {
       @Override
       public dge a(bvj $$0, bam $$1) {
          cxo $$2 = this.a.v();
-         dhh $$3 = $$0.dV();
-         this.f.ifPresent($$4 -> dea.a($$2, $$3.K_(), (aly<dfg>)$$4, $$3.d_($$0.dv()), $$1));
+         dhh $$3 = $$0.dW();
+         this.f.ifPresent($$4 -> dea.a($$2, $$3.K_(), (aly<dfg>)$$4, $$3.d_($$0.dw()), $$1));
          return new dge(new dgc(cxs.oW, this.b), $$2, this.c, this.d, this.e);
       }
    }
@@ -1162,7 +1162,7 @@ public class cpm {
       @Override
       public dge a(bvj $$0, bam $$1) {
          dgc $$2 = new dgc(cxs.oW, this.c);
-         List<jq<czl>> $$3 = ma.h.c().filter($$1x -> !((czl)$$1x.a()).a().isEmpty() && $$0.dV().K().a($$1x)).collect(Collectors.toList());
+         List<jq<czl>> $$3 = ma.h.c().filter($$1x -> !((czl)$$1x.a()).a().isEmpty() && $$0.dW().K().a($$1x)).collect(Collectors.toList());
          jq<czl> $$4 = ae.a($$3, $$1);
          cxo $$5 = new cxo(this.a.h(), this.b);
          $$5.b(ku.Q, new czn($$4));
@@ -1190,11 +1190,11 @@ public class cpm {
       @Nullable
       @Override
       public dge a(bvj $$0, bam $$1) {
-         if (!($$0.dV() instanceof ash)) {
+         if (!($$0.dW() instanceof ash)) {
             return null;
          } else {
-            ash $$2 = (ash)$$0.dV();
-            jh $$3 = $$2.a(this.b, $$0.dv(), 100, true);
+            ash $$2 = (ash)$$0.dW();
+            jh $$3 = $$2.a(this.b, $$0.dw(), 100, true);
             if ($$3 != null) {
                cxo $$4 = cyb.a($$2, $$3.u(), $$3.w(), (byte)2, true, true);
                cyb.a($$2, $$4);
@@ -1217,7 +1217,7 @@ public class cpm {
       @Override
       public dge a(bvj $$0, bam $$1) {
          if ($$0 instanceof cpk $$2) {
-            cpn $$3 = $$2.gw().a();
+            cpn $$3 = $$2.gy().a();
             cpm.g $$4 = this.a.get($$3);
             return $$4 == null ? null : $$4.a($$0, $$1);
          } else {

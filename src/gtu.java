@@ -1,23 +1,29 @@
-public class gtu extends gsu<ciu, gyr, gdk> {
-   private static final alz a = alz.b("textures/entity/snow_golem.png");
+public class gtu extends gqj<ckn, gzr, gdk> {
+   private static final alz a = alz.b("textures/entity/sniffer/sniffer.png");
 
-   public gtu(gro.a $$0) {
-      super($$0, new gdk($$0.a(gel.cP)), 0.5F);
-      this.a(new gwi(this, $$0.d(), $$0.b()));
+   public gtu(grp.a $$0) {
+      super($$0, new gdk($$0.a(gem.cN)), new gdk($$0.a(gem.cO)), 1.1F);
    }
 
-   @Override
-   public alz b(gyr $$0) {
+   public alz a(gzr $$0) {
       return a;
    }
 
-   public gyr b() {
-      return new gyr();
+   public gzr b() {
+      return new gzr();
    }
 
-   public void a(ciu $$0, gyr $$1, float $$2) {
+   public void a(ckn $$0, gzr $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.ao = $$0.p() ? new cxo(cxs.fy) : cxo.k;
-      $$1.an = this.i.a($$1.ao, $$0, cxm.f);
+      $$1.a = $$0.t();
+      $$1.b.a($$0.cd);
+      $$1.c.a($$0.cb);
+      $$1.d.a($$0.ce);
+      $$1.e.a($$0.bZ);
+      $$1.f.a($$0.ca);
+   }
+
+   protected fbs a(ckn $$0) {
+      return super.a($$0).g(0.6F);
    }
 }

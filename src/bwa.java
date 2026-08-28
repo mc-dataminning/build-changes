@@ -104,9 +104,9 @@ public class bwa extends bvj implements bvd, bxd {
    @Override
    public boolean v(bvj $$0) {
       if ($$0 instanceof cpw $$1) {
-         this.j = new bwa.a($$1.cG(), this.dV().ac());
+         this.j = new bwa.a($$1.cG(), this.dW().ac());
          if ($$1 instanceof asi $$2) {
-            ao.h.a($$2, this, $$1.dW().p(), 1.0F, 1.0F, false);
+            ao.h.a($$2, this, $$1.dX().p(), 1.0F, 1.0F, false);
          }
 
          return !this.s();
@@ -122,10 +122,10 @@ public class bwa extends bvj implements bvd, bxd {
 
    @Override
    public bti a(cpw $$0, bth $$1) {
-      if (this.dV().C) {
+      if (this.dW().C) {
          return this.s() ? bti.a : bti.c;
       } else {
-         this.k = new bwa.a($$0.cG(), this.dV().ac());
+         this.k = new bwa.a($$0.cG(), this.dW().ac());
          return bti.c;
       }
    }
@@ -137,13 +137,13 @@ public class bwa extends bvj implements bvd, bxd {
    @Nullable
    @Override
    public bwf am() {
-      return this.j != null ? this.dV().b(this.j.a()) : null;
+      return this.j != null ? this.dW().b(this.j.a()) : null;
    }
 
    @Nullable
    @Override
    public bwf O_() {
-      return this.k != null ? this.dV().b(this.k.a()) : null;
+      return this.k != null ? this.dW().b(this.k.a()) : null;
    }
 
    private void a(float $$0) {
@@ -181,7 +181,7 @@ public class bwa extends bvj implements bvd, bxd {
 
    @Override
    protected fbs ax() {
-      return this.t().a(this.dt());
+      return this.t().a(this.du());
    }
 
    static record a(UUID b, long c) {

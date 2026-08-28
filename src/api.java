@@ -26,14 +26,14 @@ public class api {
    }
 
    private static int a(ew $$0, bvj $$1, bvj $$2) throws CommandSyntaxException {
-      bvj $$3 = $$1.dk();
+      bvj $$3 = $$1.dl();
       if ($$3 != null) {
          throw b.create($$1.p_(), $$3.p_());
       } else if ($$2.aq() == bvq.bS) {
          throw d.create();
       } else if ($$1.db().anyMatch($$1x -> $$1x == $$2)) {
          throw e.create();
-      } else if ($$1.dV() != $$2.dV()) {
+      } else if ($$1.dW() != $$2.dW()) {
          throw f.create();
       } else if (!$$1.a($$2, true)) {
          throw c.create($$1.p_(), $$2.p_());
@@ -44,7 +44,7 @@ public class api {
    }
 
    private static int a(ew $$0, bvj $$1) throws CommandSyntaxException {
-      bvj $$2 = $$1.dk();
+      bvj $$2 = $$1.dl();
       if ($$2 == null) {
          throw a.create($$1.p_());
       } else {

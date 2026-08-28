@@ -20,8 +20,8 @@ public class cev extends cfd {
 
    @Override
    public boolean b() {
-      int $$0 = this.e.eq();
-      bwf $$1 = this.e.ep();
+      int $$0 = this.e.er();
+      bwf $$1 = this.e.eq();
       if ($$0 != this.d && $$1 != null) {
          if ($$1.aq() == bvq.bS && a(this.e).N().b(dhd.P)) {
             return false;
@@ -47,9 +47,9 @@ public class cev extends cfd {
 
    @Override
    public void d() {
-      this.e.h(this.e.ep());
+      this.e.h(this.e.eq());
       this.g = this.e.O_();
-      this.d = this.e.eq();
+      this.d = this.e.er();
       this.h = 300;
       if (this.c) {
          this.h();
@@ -60,8 +60,8 @@ public class cev extends cfd {
 
    protected void h() {
       double $$0 = this.l();
-      fbs $$1 = fbs.a(this.e.dt()).c($$0, 10.0, $$0);
-      List<? extends bwh> $$2 = this.e.dV().a((Class<? extends bwh>)this.e.getClass(), $$1, bvo.f);
+      fbs $$1 = fbs.a(this.e.du()).c($$0, 10.0, $$0);
+      List<? extends bwh> $$2 = this.e.dW().a((Class<? extends bwh>)this.e.getClass(), $$1, bvo.f);
       Iterator var5 = $$2.iterator();
 
       while (true) {
@@ -72,7 +72,7 @@ public class cev extends cfd {
             }
 
             $$3 = (bwh)var5.next();
-            if (this.e != $$3 && $$3.O_() == null && (!(this.e instanceof bxc) || ((bxc)this.e).ah_() == ((bxc)$$3).ah_()) && !$$3.s(this.e.ep())) {
+            if (this.e != $$3 && $$3.O_() == null && (!(this.e instanceof bxc) || ((bxc)this.e).ah_() == ((bxc)$$3).ah_()) && !$$3.s(this.e.eq())) {
                if (this.j == null) {
                   break;
                }
@@ -92,7 +92,7 @@ public class cev extends cfd {
             }
          }
 
-         this.a($$3, this.e.ep());
+         this.a($$3, this.e.eq());
       }
    }
 

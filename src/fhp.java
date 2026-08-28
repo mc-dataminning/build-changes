@@ -1,16 +1,13 @@
-public class fhp extends fho {
-   private final xv a;
+import javax.annotation.Nullable;
 
-   public fhp(xv $$0) {
-      this.a = $$0;
-   }
-
-   public fhp(String $$0) {
-      this(xv.b($$0));
-   }
-
-   @Override
+public abstract class fhp extends RuntimeException {
+   @Nullable
    public xv a() {
-      return xv.a("mco.upload.failed", this.a);
+      return null;
+   }
+
+   @Nullable
+   public xv[] b() {
+      return null;
    }
 }

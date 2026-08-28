@@ -5,7 +5,7 @@ public class dbf extends dbh {
    protected boolean a = true;
 
    public dbf(cpw $$0, bth $$1, cxo $$2, fbt $$3) {
-      this($$0.dV(), $$0, $$1, $$2, $$3);
+      this($$0.dW(), $$0, $$1, $$2, $$3);
    }
 
    public dbf(dbh $$0) {

@@ -149,7 +149,7 @@ public class evq extends evi {
       }
 
       Predicate<cxo> $$3 = a($$1);
-      if (!$$0.gg().b($$3)) {
+      if (!$$0.gi().b($$3)) {
          this.a($$0.al().getString());
       }
 
@@ -157,9 +157,9 @@ public class evq extends evi {
          evq.a $$5 = this.o.get($$4);
          cpw $$6 = $$5.a;
          String $$7 = $$6.al().getString();
-         if (!$$6.dQ() && ($$6.gg().b($$3) || $$1.G())) {
-            if (!$$1.G() && $$6.dV().ah() == this.e && this.m) {
-               this.a(evm.a, $$6.dV(), $$7, $$6.dA(), $$6.dG(), (double)$$6.dL(), null);
+         if (!$$6.dR() && ($$6.gi().b($$3) || $$1.G())) {
+            if (!$$1.G() && $$6.dW().ah() == this.e && this.m) {
+               this.a(evm.a, $$6.dW(), $$7, $$6.dB(), $$6.dH(), (double)$$6.dM(), null);
             }
          } else {
             this.p.remove($$6);
@@ -181,7 +181,7 @@ public class evq extends evi {
          }
 
          evn $$11 = new evn($$9, $$8.cO().e() * 90, $$8.ar());
-         this.a(evm.b, $$0.dV(), b($$8.ar()), (double)$$9.u(), (double)$$9.w(), (double)($$8.cO().e() * 90), null);
+         this.a(evm.b, $$0.dW(), b($$8.ar()), (double)$$9.u(), (double)$$9.w(), (double)($$8.cO().e() * 90), null);
          this.s.put($$11.e(), $$11);
       }
 
@@ -189,7 +189,7 @@ public class evq extends evi {
       if (!this.r.keySet().containsAll($$12.a().keySet())) {
          $$12.a().forEach(($$1x, $$2) -> {
             if (!this.r.containsKey($$1x)) {
-               this.a($$2.a(), $$0.dV(), $$1x, $$2.b(), $$2.c(), (double)$$2.d(), null);
+               this.a($$2.a(), $$0.dW(), $$1x, $$2.b(), $$2.c(), (double)$$2.d(), null);
             }
          });
       }

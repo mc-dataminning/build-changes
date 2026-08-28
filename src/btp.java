@@ -11,12 +11,12 @@ public class btp implements btb, cvd {
 
    public btp(int $$0) {
       this.b = $$0;
-      this.c = jz.a($$0, cxo.k);
+      this.c = jz.a($$0, cxo.j);
    }
 
    public btp(cxo... $$0) {
       this.b = $$0.length;
-      this.c = jz.a(cxo.k, $$0);
+      this.c = jz.a(cxo.j, $$0);
    }
 
    public void a(btd $$0) {
@@ -35,7 +35,7 @@ public class btp implements btb, cvd {
 
    @Override
    public cxo a(int $$0) {
-      return $$0 >= 0 && $$0 < this.c.size() ? this.c.get($$0) : cxo.k;
+      return $$0 >= 0 && $$0 < this.c.size() ? this.c.get($$0) : cxo.j;
    }
 
    public List<cxo> f() {
@@ -78,15 +78,15 @@ public class btp implements btb, cvd {
 
    public cxo b(cxo $$0) {
       if ($$0.f()) {
-         return cxo.k;
+         return cxo.j;
       } else {
          cxo $$1 = $$0.v();
          this.e($$1);
          if ($$1.f()) {
-            return cxo.k;
+            return cxo.j;
          } else {
             this.d($$1);
-            return $$1.f() ? cxo.k : $$1;
+            return $$1.f() ? cxo.j : $$1;
          }
       }
    }
@@ -108,9 +108,9 @@ public class btp implements btb, cvd {
    public cxo b(int $$0) {
       cxo $$1 = this.c.get($$0);
       if ($$1.f()) {
-         return cxo.k;
+         return cxo.j;
       } else {
-         this.c.set($$0, cxo.k);
+         this.c.set($$0, cxo.j);
          return $$1;
       }
    }

@@ -66,11 +66,11 @@ public abstract class dcv implements dcd<dcw> {
             $$1 -> $$1.group(
                      Codec.STRING.optionalFieldOf("group", "").forGetter(dcv::j),
                      dbz.d.fieldOf("ingredient").forGetter(dcv::k),
-                     cxo.d.fieldOf("result").forGetter(dcv::l)
+                     cxo.c.fieldOf("result").forGetter(dcv::l)
                   )
                   .apply($$1, $$0::create)
          );
-         this.x = zt.a(zr.o, dcv::j, dbz.a, dcv::k, cxo.i, dcv::l, $$0::create);
+         this.x = zt.a(zr.o, dcv::j, dbz.a, dcv::k, cxo.h, dcv::l, $$0::create);
       }
 
       @Override

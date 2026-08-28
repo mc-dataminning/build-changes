@@ -1,4 +1,5 @@
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.google.common.collect.UnmodifiableIterator;
@@ -9,20 +10,20 @@ import it.unimi.dsi.fastutil.doubles.DoubleListIterator;
 import it.unimi.dsi.fastutil.floats.FloatArraySet;
 import it.unimi.dsi.fastutil.floats.FloatArrays;
 import it.unimi.dsi.fastutil.floats.FloatSet;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 import it.unimi.dsi.fastutil.objects.Object2DoubleArrayMap;
 import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
+import it.unimi.dsi.fastutil.objects.ReferenceArraySet;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
-import java.util.Map.Entry;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.BiConsumer;
 import java.util.function.Predicate;
@@ -80,7 +81,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    public boolean T;
    protected fbx U = fbx.c;
    @Nullable
-   private bvj.c aE;
+   private bvj.d aE;
    public static final float V = 0.6F;
    public static final float W = 1.8F;
    public float X;
@@ -91,81 +92,84 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    public double ab;
    public double ac;
    public boolean ad;
+   private boolean aG;
    protected final bam ae = bam.a();
    public int af;
-   private int aG = -this.dn();
+   private int aH = -this.do();
    protected boolean ag;
    protected Object2DoubleMap<ayk<etv>> ah = new Object2DoubleArrayMap(2);
    protected boolean ai;
-   private final Set<ayk<etv>> aH = new HashSet<>();
+   private final Set<ayk<etv>> aI = new HashSet<>();
    public int aj;
    protected boolean ak = true;
    protected final alg al;
    protected static final alc<Byte> am = alg.a(bvj.class, ale.a);
    protected static final int an = 0;
-   private static final int aI = 1;
-   private static final int aJ = 3;
-   private static final int aK = 4;
-   private static final int aL = 5;
+   private static final int aJ = 1;
+   private static final int aK = 3;
+   private static final int aL = 4;
+   private static final int aM = 5;
    protected static final int ao = 6;
    protected static final int ap = 7;
-   private static final alc<Integer> aM = alg.a(bvj.class, ale.b);
-   private static final alc<Optional<xv>> aN = alg.a(bvj.class, ale.g);
-   private static final alc<Boolean> aO = alg.a(bvj.class, ale.k);
+   private static final alc<Integer> aN = alg.a(bvj.class, ale.b);
+   private static final alc<Optional<xv>> aO = alg.a(bvj.class, ale.g);
    private static final alc<Boolean> aP = alg.a(bvj.class, ale.k);
    private static final alc<Boolean> aQ = alg.a(bvj.class, ale.k);
+   private static final alc<Boolean> aR = alg.a(bvj.class, ale.k);
    protected static final alc<bwr> aq = alg.a(bvj.class, ale.w);
-   private static final alc<Integer> aR = alg.a(bvj.class, ale.b);
-   private eby aS = eby.a;
-   private final ajm aT = new ajm();
+   private static final alc<Integer> aS = alg.a(bvj.class, ale.b);
+   private eby aT = eby.a;
+   private final ajm aU = new ajm();
    public boolean ar;
    @Nullable
    public bwq as;
-   private int aU;
-   private boolean aV;
+   private int aV;
+   private boolean aW;
    protected UUID at = bae.a(this.ae);
    protected String au = this.at.toString();
-   private boolean aW;
-   private final Set<String> aX = Sets.newHashSet();
-   private final double[] aY = new double[]{0.0, 0.0, 0.0};
-   private long aZ;
-   private bvm ba;
-   private float bb;
+   private boolean aX;
+   private final Set<String> aY = Sets.newHashSet();
+   private final double[] aZ = new double[]{0.0, 0.0, 0.0};
+   private long ba;
+   private bvm bb;
+   private float bc;
    public boolean av;
    public boolean aw;
    public Optional<jh> ax = Optional.empty();
-   private boolean bc = false;
-   private float bd;
-   private int be;
-   private boolean bf;
+   private boolean bd = false;
+   private float be;
+   private int bf;
+   private boolean bg;
    @Nullable
-   private dxu bg = null;
-   private final Map<jh, dxu> bh = new HashMap<>();
+   private dxu bh = null;
+   private final List<bvj.b> bi = new ArrayList<>();
+   private final Set<dxu> bj = new ReferenceArraySet();
+   private final LongSet bk = new LongOpenHashSet();
 
    public bvj(bvq<?> $$0, dhh $$1) {
       this.o = $$0;
       this.s = $$1;
-      this.ba = $$0.n();
+      this.bb = $$0.n();
       this.t = fbx.c;
       this.u = jh.c;
       this.ay = dgn.d;
       alg.a $$2 = new alg.a(this);
       $$2.a(am, (byte)0);
-      $$2.a(aM, this.cs());
-      $$2.a(aO, false);
-      $$2.a(aN, Optional.empty());
+      $$2.a(aN, this.cs());
       $$2.a(aP, false);
+      $$2.a(aO, Optional.empty());
       $$2.a(aQ, false);
+      $$2.a(aR, false);
       $$2.a(aq, bwr.a);
-      $$2.a(aR, 0);
+      $$2.a(aS, 0);
       this.a($$2);
       this.al = $$2.a();
       this.a_(0.0, 0.0, 0.0);
-      this.bb = this.ba.c();
+      this.bc = this.bb.c();
    }
 
    public boolean a(jh $$0, dxu $$1) {
-      fcr $$2 = $$1.b(this.dV(), $$0, fcc.a(this));
+      fcr $$2 = $$1.b(this.dW(), $$0, fcc.a(this));
       fcr $$3 = $$2.a((double)$$0.u(), (double)$$0.v(), (double)$$0.w());
       return fco.c($$3, fco.a(this.cR()), fcb.i);
    }
@@ -190,11 +194,11 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public void f(double $$0, double $$1, double $$2) {
-      this.aT.e(new fbx($$0, $$1, $$2));
+      this.aU.e(new fbx($$0, $$1, $$2));
    }
 
    public ajm ap() {
-      return this.aT;
+      return this.aU;
    }
 
    public bvq<?> aq() {
@@ -211,24 +215,24 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public Set<String> as() {
-      return this.aX;
+      return this.aY;
    }
 
    public boolean a(String $$0) {
-      return this.aX.size() >= 1024 ? false : this.aX.add($$0);
+      return this.aY.size() >= 1024 ? false : this.aY.add($$0);
    }
 
    public boolean b(String $$0) {
-      return this.aX.remove($$0);
+      return this.aY.remove($$0);
    }
 
    public void c(ash $$0) {
-      this.a(bvj.c.a);
+      this.a(bvj.d.a);
       this.a(ecq.p);
    }
 
    public final void at() {
-      this.a(bvj.c.b);
+      this.a(bvj.d.b);
    }
 
    protected abstract void a(alg.a var1);
@@ -247,14 +251,14 @@ public abstract class bvj implements alf, btl, ebx, fdb {
       return this.p;
    }
 
-   public void a(bvj.c $$0) {
+   public void a(bvj.d $$0) {
       this.c($$0);
    }
 
    public void av() {
    }
 
-   public void b(bvj.c $$0) {
+   public void b(bvj.d $$0) {
    }
 
    public void b(bwr $$0) {
@@ -270,13 +274,13 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public boolean a(bvj $$0, double $$1) {
-      return this.dt().a((ka)$$0.dt(), $$1);
+      return this.du().a((ka)$$0.du(), $$1);
    }
 
    public boolean a(bvj $$0, double $$1, double $$2) {
-      double $$3 = $$0.dA() - this.dA();
-      double $$4 = $$0.dC() - this.dC();
-      double $$5 = $$0.dG() - this.dG();
+      double $$3 = $$0.dB() - this.dB();
+      double $$4 = $$0.dD() - this.dD();
+      double $$5 = $$0.dH() - this.dH();
       return bae.e($$3, $$5) < bae.k($$1) && bae.k($$4) < bae.k($$2);
    }
 
@@ -295,7 +299,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    protected fbs ax() {
-      return this.ba.a(this.t);
+      return this.bb.a(this.t);
    }
 
    protected void ay() {
@@ -305,9 +309,9 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    public void b(double $$0, double $$1) {
       float $$2 = (float)$$1 * 0.15F;
       float $$3 = (float)$$0 * 0.15F;
-      this.w(this.dN() + $$2);
-      this.v(this.dL() + $$3);
-      this.w(bae.a(this.dN(), -90.0F, 90.0F));
+      this.w(this.dO() + $$2);
+      this.v(this.dM() + $$3);
+      this.w(bae.a(this.dO(), -90.0F, 90.0F));
       this.O += $$2;
       this.N += $$3;
       this.O = bae.a(this.O, -90.0F, 90.0F);
@@ -323,8 +327,8 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    public void az() {
       bps $$0 = bpr.a();
       $$0.a("entityBaseTick");
-      this.bg = null;
-      if (this.bZ() && this.dk().dQ()) {
+      this.bh = null;
+      if (this.bZ() && this.dl().dR()) {
          this.ae();
       }
 
@@ -342,24 +346,24 @@ public abstract class bvj implements alf, btl, ebx, fdb {
       this.bq();
       this.D();
       this.bp();
-      if (this.dV() instanceof ash $$1) {
-         if (this.aG > 0) {
+      if (this.dW() instanceof ash $$1) {
+         if (this.aH > 0) {
             if (this.bi()) {
-               this.h(this.aG - 4);
-               if (this.aG < 0) {
+               this.h(this.aH - 4);
+               if (this.aH < 0) {
                   this.aH();
                }
             } else {
-               if (this.aG % 20 == 0 && !this.bx()) {
-                  this.a($$1, this.dW().d(), 1.0F);
+               if (this.aH % 20 == 0 && !this.bx()) {
+                  this.a($$1, this.dX().d(), 1.0F);
                }
 
-               this.h(this.aG - 1);
+               this.h(this.aH - 1);
             }
 
             if (this.cu() > 0) {
                this.k(0);
-               this.dV().a(null, 1009, this.u, 1);
+               this.dW().a(null, 1009, this.u, 1);
             }
          }
       } else {
@@ -372,12 +376,12 @@ public abstract class bvj implements alf, btl, ebx, fdb {
       }
 
       this.aA();
-      if (!this.dV().C) {
-         this.c(this.aG > 0);
+      if (!this.dW().C) {
+         this.c(this.aH > 0);
       }
 
       this.ak = false;
-      if (this.dV() instanceof ash $$2 && this instanceof bwd) {
+      if (this.dW() instanceof ash $$2 && this instanceof bwd) {
          bwd.a_($$2, (bvj)((bwd)this));
       }
 
@@ -385,42 +389,42 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public void c(boolean $$0) {
-      this.b(0, $$0 || this.bf);
+      this.b(0, $$0 || this.bg);
    }
 
    public void aA() {
-      if (this.dC() < (double)(this.dV().L_() - 64)) {
+      if (this.dD() < (double)(this.dW().L_() - 64)) {
          this.aI();
       }
    }
 
    public void aB() {
-      this.aU = this.bX();
+      this.aV = this.bX();
    }
 
    public void f(int $$0) {
-      this.aU = $$0;
+      this.aV = $$0;
    }
 
    public int aC() {
-      return this.aU;
+      return this.aV;
    }
 
    public boolean aD() {
-      return this.aU > 0;
+      return this.aV > 0;
    }
 
    protected void M() {
       if (this.aD()) {
-         this.aU--;
+         this.aV--;
       }
    }
 
    public void aE() {
       if (!this.bi()) {
          this.d(15.0F);
-         if (this.dV() instanceof ash $$0 && this.a($$0, this.dW().e(), 4.0F) && this.aF() && !this.bb()) {
-            $$0.a(null, this.dA(), this.dC(), this.dG(), axf.ku, this.dm(), 0.4F, 2.0F + this.ae.i() * 0.4F);
+         if (this.dW() instanceof ash $$0 && this.a($$0, this.dX().e(), 4.0F) && this.aF() && !this.bb()) {
+            $$0.a(null, this.dB(), this.dD(), this.dH(), axf.ku, this.dn(), 0.4F, 2.0F + this.ae.i() * 0.4F);
          }
       }
    }
@@ -434,17 +438,17 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public void g(int $$0) {
-      if (this.aG < $$0) {
+      if (this.aH < $$0) {
          this.h($$0);
       }
    }
 
    public void h(int $$0) {
-      this.aG = $$0;
+      this.aH = $$0;
    }
 
    public int aG() {
-      return this.aG;
+      return this.aH;
    }
 
    public void aH() {
@@ -460,7 +464,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    private boolean b(fbs $$0) {
-      return this.dV().a(this, $$0) && !this.dV().d($$0);
+      return this.dW().a(this, $$0) && !this.dW().d($$0);
    }
 
    public void d(boolean $$0) {
@@ -483,7 +487,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
          fbs $$2 = this.cR();
          fbs $$3 = new fbs($$2.a, $$2.b - 1.0E-6, $$2.c, $$2.d, $$2.b, $$2.f);
          Optional<jh> $$4 = this.s.h(this, $$3);
-         if ($$4.isPresent() || this.bc) {
+         if ($$4.isPresent() || this.bd) {
             this.ax = $$4;
          } else if ($$1 != null) {
             fbs $$5 = $$3.d(-$$1.d, 0.0, -$$1.f);
@@ -491,9 +495,9 @@ public abstract class bvj implements alf, btl, ebx, fdb {
             this.ax = $$4;
          }
 
-         this.bc = $$4.isEmpty();
+         this.bd = $$4.isEmpty();
       } else {
-         this.bc = false;
+         this.bd = false;
          if (this.ax.isPresent()) {
             this.ax = Optional.empty();
          }
@@ -506,8 +510,9 @@ public abstract class bvj implements alf, btl, ebx, fdb {
 
    public void a(bwj $$0, fbx $$1) {
       if (this.ad) {
-         this.a_(this.dA() + $$1.d, this.dC() + $$1.e, this.dG() + $$1.f);
+         this.a_(this.dB() + $$1.d, this.dD() + $$1.e, this.dH() + $$1.f);
       } else {
+         this.aG = this.bY();
          if ($$0 == bwj.c) {
             $$1 = this.d($$1);
             if ($$1.equals(fbx.c)) {
@@ -528,13 +533,13 @@ public abstract class bvj implements alf, btl, ebx, fdb {
          double $$4 = $$3.h();
          if ($$4 > 1.0E-7 || $$1.h() - $$4 < 1.0E-7) {
             if (this.Z != 0.0F && $$4 >= 1.0) {
-               fbt $$5 = this.dV().a(new dgp(this.dt(), this.dt().e($$3), dgp.a.d, dgp.b.d, this));
+               fbt $$5 = this.dW().a(new dgp(this.du(), this.du().e($$3), dgp.a.d, dgp.b.d, this));
                if ($$5.d() != fbv.a.a) {
                   this.k();
                }
             }
 
-            this.a_(this.dA() + $$3.d, this.dC() + $$3.e, this.dG() + $$3.f);
+            this.a_(this.dB() + $$3.d, this.dD() + $$3.e, this.dH() + $$3.f);
          }
 
          $$2.c();
@@ -555,46 +560,46 @@ public abstract class bvj implements alf, btl, ebx, fdb {
          }
 
          jh $$8 = this.aP();
-         dxu $$9 = this.dV().a_($$8);
-         if (!this.dV().B_() || this.di()) {
+         dxu $$9 = this.dW().a_($$8);
+         if (!this.dW().B_() || this.di()) {
             this.a($$3.e, this.aJ(), $$9, $$8);
          }
 
-         if (this.dQ()) {
+         if (this.dR()) {
             $$2.c();
          } else {
             if (this.P) {
-               fbx $$10 = this.dy();
+               fbx $$10 = this.dz();
                this.n($$6 ? 0.0 : $$10.d, $$10.e, $$7 ? 0.0 : $$10.f);
             }
 
             if (this.di()) {
                dkl $$11 = $$9.b();
                if ($$1.e != $$3.e) {
-                  $$11.a(this.dV(), this);
+                  $$11.a(this.dW(), this);
                }
             }
 
-            if (!this.dV().B_() || this.di()) {
-               bvj.b $$12 = this.bg();
+            if (!this.dW().B_() || this.di()) {
+               bvj.c $$12 = this.bg();
                if ($$12.a() && !this.bZ()) {
                   this.a($$12, $$3, $$8, $$9);
                }
             }
 
             float $$13 = this.aT();
-            this.h(this.dy().d((double)$$13, 1.0, (double)$$13));
+            this.h(this.dz().d((double)$$13, 1.0, (double)$$13));
             $$2.c();
          }
       }
    }
 
-   private void a(bvj.b $$0, fbx $$1, jh $$2, dxu $$3) {
+   private void a(bvj.c $$0, fbx $$1, jh $$2, dxu $$3) {
       float $$4 = 0.6F;
       float $$5 = (float)($$1.g() * 0.6F);
       float $$6 = (float)($$1.i() * 0.6F);
       jh $$7 = this.aR();
-      dxu $$8 = this.dV().a_($$7);
+      dxu $$8 = this.dW().a_($$7);
       boolean $$9 = this.c($$8);
       this.X += $$9 ? $$5 : $$6;
       this.Y += $$5;
@@ -628,43 +633,35 @@ public abstract class bvj implements alf, btl, ebx, fdb {
 
    public void a(fbx $$0, fbx $$1) {
       if (this.aL()) {
-         boolean $$2 = this.bY();
          if (this.aJ()) {
-            jh $$3 = this.aP();
-            dxu $$4 = this.dV().a_($$3);
-            $$4.b().a(this.dV(), $$3, $$4, this);
+            jh $$2 = this.aP();
+            dxu $$3 = this.dW().a_($$2);
+            $$3.b().a(this.dW(), $$2, $$3, this);
          }
 
-         this.a(this.bh, $$0, $$1);
-         boolean $$5 = false;
-
-         for (Entry<jh, dxu> $$6 : this.bh.entrySet()) {
-            $$6.getValue().a(this.dV(), $$6.getKey(), this);
-            this.a($$6.getValue());
-            if ($$6.getValue().a(axu.aN) || $$6.getValue().a(dkn.K)) {
-               $$5 = true;
-            }
-         }
-
-         this.bh.clear();
-         if (!$$5) {
-            if (this.aG <= 0) {
-               this.h(-this.dn());
+         this.bi.add(new bvj.b($$0, $$1));
+         this.a(this.bi, this.bj);
+         boolean $$4 = Iterables.any(this.bj, $$0x -> $$0x.a(axu.aN) || $$0x.a(dkn.K));
+         this.bi.clear();
+         this.bj.clear();
+         if (!$$4) {
+            if (this.aH <= 0) {
+               this.h(-this.do());
             }
 
-            if ($$2 && (this.av || this.bl())) {
+            if (this.aG && (this.av || this.bl())) {
                this.aM();
             }
          }
 
          if (this.bY() && (this.av || this.bl())) {
-            this.h(-this.dn());
+            this.h(-this.do());
          }
       }
    }
 
    protected boolean aL() {
-      return !this.dQ() && !this.ad;
+      return !this.dR() && !this.ad;
    }
 
    private boolean c(dxu $$0) {
@@ -682,7 +679,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
             }
 
             if ($$3) {
-               this.dV().a(ecq.P, this.dt(), ecq.a.a(this, $$1));
+               this.dW().a(ecq.P, this.du(), ecq.a.a(this, $$1));
             }
 
             return true;
@@ -701,7 +698,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public void aN() {
-      if (!this.dV().C && this.bY()) {
+      if (!this.dW().C && this.aG) {
          this.aM();
       }
 
@@ -736,7 +733,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
          if (!($$0 > 1.0E-5F)) {
             return $$1;
          } else {
-            dxu $$2 = this.dV().a_($$1);
+            dxu $$2 = this.dW().a_($$1);
             return (!((double)$$0 <= 0.5) || !$$2.a(axu.U)) && !$$2.a(axu.N) && !($$2.b() instanceof dnl) ? $$1.h(bae.a(this.t.e - (double)$$0)) : $$1;
          }
       } else {
@@ -748,16 +745,16 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    protected float aS() {
-      float $$0 = this.dV().a_(this.dv()).b().k();
-      float $$1 = this.dV().a_(this.aQ()).b().k();
+      float $$0 = this.dW().a_(this.dw()).b().k();
+      float $$1 = this.dW().a_(this.aQ()).b().k();
       return (double)$$0 == 1.0 ? $$1 : $$0;
    }
 
    protected float aT() {
-      dxu $$0 = this.dV().a_(this.dv());
+      dxu $$0 = this.dW().a_(this.dw());
       float $$1 = $$0.b().h();
       if (!$$0.a(dkn.J) && !$$0.a(dkn.ny)) {
-         return (double)$$1 == 1.0 ? this.dV().a_(this.aQ()).b().h() : $$1;
+         return (double)$$1 == 1.0 ? this.dW().a_(this.aQ()).b().h() : $$1;
       } else {
          return $$1;
       }
@@ -771,10 +768,10 @@ public abstract class bvj implements alf, btl, ebx, fdb {
       if ($$0.h() <= 1.0E-7) {
          return $$0;
       } else {
-         long $$1 = this.dV().ac();
-         if ($$1 != this.aZ) {
-            Arrays.fill(this.aY, 0.0);
-            this.aZ = $$1;
+         long $$1 = this.dW().ac();
+         if ($$1 != this.ba) {
+            Arrays.fill(this.aZ, 0.0);
+            this.ba = $$1;
          }
 
          if ($$0.d != 0.0) {
@@ -794,30 +791,30 @@ public abstract class bvj implements alf, btl, ebx, fdb {
 
    private double a(jm.a $$0, double $$1) {
       int $$2 = $$0.ordinal();
-      double $$3 = bae.a($$1 + this.aY[$$2], -0.51, 0.51);
-      $$1 = $$3 - this.aY[$$2];
-      this.aY[$$2] = $$3;
+      double $$3 = bae.a($$1 + this.aZ[$$2], -0.51, 0.51);
+      $$1 = $$3 - this.aZ[$$2];
+      this.aZ[$$2] = $$3;
       return $$1;
    }
 
    private fbx a(fbx $$0) {
       fbs $$1 = this.cR();
-      List<fcr> $$2 = this.dV().c(this, $$1.b($$0));
-      fbx $$3 = $$0.h() == 0.0 ? $$0 : a(this, $$0, $$1, this.dV(), $$2);
+      List<fcr> $$2 = this.dW().c(this, $$1.b($$0));
+      fbx $$3 = $$0.h() == 0.0 ? $$0 : a(this, $$0, $$1, this.dW(), $$2);
       boolean $$4 = $$0.d != $$3.d;
       boolean $$5 = $$0.e != $$3.e;
       boolean $$6 = $$0.f != $$3.f;
       boolean $$7 = $$5 && $$0.e < 0.0;
-      if (this.dP() > 0.0F && ($$7 || this.aJ()) && ($$4 || $$6)) {
+      if (this.dQ() > 0.0F && ($$7 || this.aJ()) && ($$4 || $$6)) {
          fbs $$8 = $$7 ? $$1.d(0.0, $$3.e, 0.0) : $$1;
-         fbs $$9 = $$8.b($$0.d, (double)this.dP(), $$0.f);
+         fbs $$9 = $$8.b($$0.d, (double)this.dQ(), $$0.f);
          if (!$$7) {
             $$9 = $$9.b(0.0, -1.0E-5F, 0.0);
          }
 
          List<fcr> $$10 = a(this, this.s, $$2, $$9);
          float $$11 = (float)$$3.e;
-         float[] $$12 = a($$8, $$10, this.dP(), $$11);
+         float[] $$12 = a($$8, $$10, this.dQ(), $$11);
 
          for (float $$13 : $$12) {
             fbx $$14 = a(new fbx($$0.d, (double)$$13, $$0.f), $$8, $$10);
@@ -931,33 +928,48 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public void b(fbx $$0, fbx $$1) {
-      this.a(this.bh, $$0, $$1);
+      this.bi.add(new bvj.b($$0, $$1));
    }
 
-   private void a(Map<jh, dxu> $$0, fbx $$1, fbx $$2) {
-      fbs $$3 = this.cR().h(1.0E-5F);
+   private void a(List<bvj.b> $$0, Set<dxu> $$1) {
+      if (this.aL()) {
+         fbs $$2 = this.cR().h(1.0E-5F);
+         LongSet $$3 = this.bk;
 
-      for (jh $$4 : dgm.a($$1, $$2, $$3)) {
-         if (!this.bL()) {
-            return;
-         }
+         for (bvj.b $$4 : $$0) {
+            fbx $$5 = $$4.a();
+            fbx $$6 = $$4.b();
 
-         dxu $$5 = this.dV().a_($$4);
-         if (!$$5.l() && !$$0.containsKey($$4)) {
-            try {
-               fcr $$6 = $$5.b(this.dV(), $$4);
-               if ($$6 == fco.b() || this.a($$1, $$2, $$4, $$6)) {
-                  $$0.put($$4.j(), $$5);
+            for (jh $$7 : dgm.a($$5, $$6, $$2)) {
+               if (!this.bL()) {
+                  return;
                }
-            } catch (Throwable var12) {
-               o $$8 = o.a(var12, "Colliding entity with block");
-               p $$9 = $$8.a("Block being collided with");
-               p.a($$9, this.dV(), $$4, $$5);
-               p $$10 = $$8.a("Entity being checked for collision");
-               this.a($$10);
-               throw new z($$8);
+
+               dxu $$8 = this.dW().a_($$7);
+               if (!$$8.l() && $$3.add($$7.a())) {
+                  try {
+                     fcr $$9 = $$8.b(this.dW(), $$7);
+                     if ($$9 != fco.b() && !this.a($$5, $$6, $$7, $$9)) {
+                        continue;
+                     }
+
+                     $$8.a(this.dW(), $$7, this);
+                     this.a($$8);
+                  } catch (Throwable var16) {
+                     o $$11 = o.a(var16, "Colliding entity with block");
+                     p $$12 = $$11.a("Block being collided with");
+                     p.a($$12, this.dW(), $$7, $$8);
+                     p $$13 = $$11.a("Entity being checked for collision");
+                     this.a($$13);
+                     throw new z($$11);
+                  }
+
+                  $$1.add($$8);
+               }
             }
          }
+
+         $$3.clear();
       }
    }
 
@@ -978,7 +990,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public void a(jq<ecq> $$0, @Nullable bvj $$1) {
-      this.dV().a($$1, $$0, this.t);
+      this.dW().a($$1, $$0, this.t);
    }
 
    public void a(jq<ecq> $$0) {
@@ -995,14 +1007,14 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    protected void aY() {
       bvj $$0 = Objects.requireNonNullElse(this.cX(), this);
       float $$1 = $$0 == this ? 0.35F : 0.4F;
-      fbx $$2 = $$0.dy();
+      fbx $$2 = $$0.dz();
       float $$3 = Math.min(1.0F, (float)Math.sqrt($$2.d * $$2.d * 0.2F + $$2.e * $$2.e + $$2.f * $$2.f * 0.2F) * $$1);
       this.f($$3);
    }
 
    protected jh e(jh $$0) {
       jh $$1 = $$0.d();
-      dxu $$2 = this.dV().a_($$1);
+      dxu $$2 = this.dW().a_($$1);
       return !$$2.a(axu.bp) && !$$2.a(axu.bq) ? $$0 : $$1;
    }
 
@@ -1023,16 +1035,16 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    private boolean d(dxu $$0) {
-      return $$0.a(axu.bo) && this.af >= this.be + 20;
+      return $$0.a(axu.bo) && this.af >= this.bf + 20;
    }
 
    private void m() {
-      this.bd = this.bd * (float)Math.pow(0.997, (double)(this.af - this.be));
-      this.bd = Math.min(1.0F, this.bd + 0.07F);
-      float $$0 = 0.5F + this.bd * this.ae.i() * 1.2F;
-      float $$1 = 0.1F + this.bd * 1.2F;
+      this.be = this.be * (float)Math.pow(0.997, (double)(this.af - this.bf));
+      this.be = Math.min(1.0F, this.be + 0.07F);
+      float $$0 = 0.5F + this.be * this.ae.i() * 1.2F;
+      float $$1 = 0.1F + this.be * 1.2F;
       this.a(axf.E, $$1, $$0);
-      this.be = this.af;
+      this.bf = this.af;
    }
 
    protected void f(float $$0) {
@@ -1048,7 +1060,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
 
    public void a(axe $$0, float $$1, float $$2) {
       if (!this.bb()) {
-         this.dV().a(null, this.dA(), this.dC(), this.dG(), $$0, this.dm(), $$1, $$2);
+         this.dW().a(null, this.dB(), this.dD(), this.dH(), $$0, this.dn(), $$1, $$2);
       }
    }
 
@@ -1059,19 +1071,19 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public boolean bb() {
-      return this.al.a(aP);
-   }
-
-   public void e(boolean $$0) {
-      this.al.a(aP, $$0);
-   }
-
-   public boolean bc() {
       return this.al.a(aQ);
    }
 
-   public void f(boolean $$0) {
+   public void e(boolean $$0) {
       this.al.a(aQ, $$0);
+   }
+
+   public boolean bc() {
+      return this.al.a(aR);
+   }
+
+   public void f(boolean $$0) {
+      this.al.a(aR, $$0);
    }
 
    protected double bd() {
@@ -1085,12 +1097,12 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    protected void bf() {
       double $$0 = this.be();
       if ($$0 != 0.0) {
-         this.h(this.dy().b(0.0, -$$0, 0.0));
+         this.h(this.dz().b(0.0, -$$0, 0.0));
       }
    }
 
-   protected bvj.b bg() {
-      return bvj.b.d;
+   protected bvj.c bg() {
+      return bvj.c.d;
    }
 
    public boolean bh() {
@@ -1100,8 +1112,8 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    protected void a(double $$0, boolean $$1, dxu $$2, jh $$3) {
       if ($$1) {
          if (this.Z > 0.0F) {
-            $$2.b().a(this.dV(), $$2, $$3, this, this.Z);
-            this.dV().a(ecq.A, this.t, ecq.a.a(this, this.ax.<dxu>map($$0x -> this.dV().a_($$0x)).orElse($$2)));
+            $$2.b().a(this.dW(), $$2, $$3, this, this.Z);
+            this.dW().a(ecq.A, this.t, ecq.a.a(this, this.ax.<dxu>map($$0x -> this.dW().a_($$0x)).orElse($$2)));
          }
 
          this.k();
@@ -1133,12 +1145,12 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    private boolean s() {
-      jh $$0 = this.dv();
-      return this.dV().r($$0) || this.dV().r(jh.a((double)$$0.u(), this.cR().e, (double)$$0.w()));
+      jh $$0 = this.dw();
+      return this.dW().r($$0) || this.dW().r(jh.a((double)$$0.u(), this.cR().e, (double)$$0.w()));
    }
 
    private boolean u() {
-      return this.dw().a(dkn.ny);
+      return this.dx().a(dkn.ny);
    }
 
    public boolean bk() {
@@ -1165,20 +1177,20 @@ public abstract class bvj implements alf, btl, ebx, fdb {
       if (this.ck()) {
          this.i(this.cj() && this.bj() && !this.bZ());
       } else {
-         this.i(this.cj() && this.bo() && !this.bZ() && this.dV().b_(this.u).a(aya.a));
+         this.i(this.cj() && this.bo() && !this.bZ() && this.dW().b_(this.u).a(aya.a));
       }
    }
 
    protected boolean bq() {
       this.ah.clear();
       this.br();
-      double $$0 = this.dV().G_().i() ? 0.007 : 0.0023333333333333335;
+      double $$0 = this.dW().G_().i() ? 0.007 : 0.0023333333333333335;
       boolean $$1 = this.a(aya.b, $$0);
       return this.bj() || $$1;
    }
 
    void br() {
-      if (this.dk() instanceof crt $$0 && !$$0.bo()) {
+      if (this.dl() instanceof crt $$0 && !$$0.bo()) {
          this.ag = false;
          return;
       }
@@ -1198,24 +1210,24 @@ public abstract class bvj implements alf, btl, ebx, fdb {
 
    private void D() {
       this.ai = this.a(aya.a);
-      this.aH.clear();
-      double $$0 = this.dE();
-      if (this.dk() instanceof crt $$2 && !$$2.bo() && $$2.cR().e >= $$0 && $$2.cR().b <= $$0) {
+      this.aI.clear();
+      double $$0 = this.dF();
+      if (this.dl() instanceof crt $$2 && !$$2.bo() && $$2.cR().e >= $$0 && $$2.cR().b <= $$0) {
          return;
       }
 
-      jh $$3 = jh.a(this.dA(), $$0, this.dG());
-      etw $$4 = this.dV().b_($$3);
-      double $$5 = (double)((float)$$3.v() + $$4.a(this.dV(), $$3));
+      jh $$3 = jh.a(this.dB(), $$0, this.dH());
+      etw $$4 = this.dW().b_($$3);
+      double $$5 = (double)((float)$$3.v() + $$4.a(this.dW(), $$3));
       if ($$5 > $$0) {
-         $$4.k().forEach(this.aH::add);
+         $$4.k().forEach(this.aI::add);
       }
    }
 
    protected void bs() {
       bvj $$0 = Objects.requireNonNullElse(this.cX(), this);
       float $$1 = $$0 == this ? 0.2F : 0.9F;
-      fbx $$2 = $$0.dy();
+      fbx $$2 = $$0.dz();
       float $$3 = Math.min(1.0F, (float)Math.sqrt($$2.d * $$2.d * 0.2F + $$2.e * $$2.e + $$2.f * $$2.f * 0.2F) * $$1);
       if ($$3 < 0.25F) {
          this.a(this.aW(), $$3, 1.0F + (this.ae.i() - this.ae.i()) * 0.4F);
@@ -1223,18 +1235,18 @@ public abstract class bvj implements alf, btl, ebx, fdb {
          this.a(this.aX(), $$3, 1.0F + (this.ae.i() - this.ae.i()) * 0.4F);
       }
 
-      float $$4 = (float)bae.a(this.dC());
+      float $$4 = (float)bae.a(this.dD());
 
-      for (int $$5 = 0; (float)$$5 < 1.0F + this.ba.a() * 20.0F; $$5++) {
-         double $$6 = (this.ae.j() * 2.0 - 1.0) * (double)this.ba.a();
-         double $$7 = (this.ae.j() * 2.0 - 1.0) * (double)this.ba.a();
-         this.dV().a(ls.d, this.dA() + $$6, (double)($$4 + 1.0F), this.dG() + $$7, $$2.d, $$2.e - this.ae.j() * 0.2F, $$2.f);
+      for (int $$5 = 0; (float)$$5 < 1.0F + this.bb.a() * 20.0F; $$5++) {
+         double $$6 = (this.ae.j() * 2.0 - 1.0) * (double)this.bb.a();
+         double $$7 = (this.ae.j() * 2.0 - 1.0) * (double)this.bb.a();
+         this.dW().a(ls.d, this.dB() + $$6, (double)($$4 + 1.0F), this.dH() + $$7, $$2.d, $$2.e - this.ae.j() * 0.2F, $$2.f);
       }
 
-      for (int $$8 = 0; (float)$$8 < 1.0F + this.ba.a() * 20.0F; $$8++) {
-         double $$9 = (this.ae.j() * 2.0 - 1.0) * (double)this.ba.a();
-         double $$10 = (this.ae.j() * 2.0 - 1.0) * (double)this.ba.a();
-         this.dV().a(ls.an, this.dA() + $$9, (double)($$4 + 1.0F), this.dG() + $$10, $$2.d, $$2.e, $$2.f);
+      for (int $$8 = 0; (float)$$8 < 1.0F + this.bb.a() * 20.0F; $$8++) {
+         double $$9 = (this.ae.j() * 2.0 - 1.0) * (double)this.bb.a();
+         double $$10 = (this.ae.j() * 2.0 - 1.0) * (double)this.bb.a();
+         this.dW().a(ls.an, this.dB() + $$9, (double)($$4 + 1.0F), this.dH() + $$10, $$2.d, $$2.e, $$2.f);
       }
 
       this.a(ecq.O);
@@ -1242,11 +1254,11 @@ public abstract class bvj implements alf, btl, ebx, fdb {
 
    @Deprecated
    protected dxu bt() {
-      return this.dV().a_(this.aP());
+      return this.dW().a_(this.aP());
    }
 
    public dxu bu() {
-      return this.dV().a_(this.aR());
+      return this.dW().a_(this.aR());
    }
 
    public boolean bv() {
@@ -1255,12 +1267,12 @@ public abstract class bvj implements alf, btl, ebx, fdb {
 
    protected void bw() {
       jh $$0 = this.aP();
-      dxu $$1 = this.dV().a_($$0);
+      dxu $$1 = this.dW().a_($$0);
       if ($$1.o() != dqu.a) {
-         fbx $$2 = this.dy();
-         jh $$3 = this.dv();
-         double $$4 = this.dA() + (this.ae.j() - 0.5) * (double)this.ba.a();
-         double $$5 = this.dG() + (this.ae.j() - 0.5) * (double)this.ba.a();
+         fbx $$2 = this.dz();
+         jh $$3 = this.dw();
+         double $$4 = this.dB() + (this.ae.j() - 0.5) * (double)this.bb.a();
+         double $$5 = this.dH() + (this.ae.j() - 0.5) * (double)this.bb.a();
          if ($$3.u() != $$0.u()) {
             $$4 = bae.a($$4, (double)$$0.u(), (double)$$0.u() + 1.0);
          }
@@ -1269,12 +1281,12 @@ public abstract class bvj implements alf, btl, ebx, fdb {
             $$5 = bae.a($$5, (double)$$0.w(), (double)$$0.w() + 1.0);
          }
 
-         this.dV().a(new lk(ls.b, $$1), $$4, this.dC() + 0.1, $$5, $$2.d * -4.0, 1.5, $$2.f * -4.0);
+         this.dW().a(new lk(ls.b, $$1), $$4, this.dD() + 0.1, $$5, $$2.d * -4.0, 1.5, $$2.f * -4.0);
       }
    }
 
    public boolean a(ayk<etv> $$0) {
-      return this.aH.contains($$0);
+      return this.aI.contains($$0);
    }
 
    public boolean bx() {
@@ -1282,8 +1294,8 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public void a(float $$0, fbx $$1) {
-      fbx $$2 = a($$1, $$0, this.dL());
-      this.h(this.dy().e($$2));
+      fbx $$2 = a($$1, $$0, this.dM());
+      this.h(this.dz().e($$2));
    }
 
    protected static fbx a(fbx $$0, float $$1, float $$2) {
@@ -1300,7 +1312,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
 
    @Deprecated
    public float by() {
-      return this.dV().f(this.dz(), this.dF()) ? this.dV().x(jh.a(this.dA(), this.dE(), this.dG())) : 0.0F;
+      return this.dW().f(this.dA(), this.dG()) ? this.dW().x(jh.a(this.dB(), this.dF(), this.dH())) : 0.0F;
    }
 
    public void a(double $$0, double $$1, double $$2, float $$3, float $$4) {
@@ -1311,8 +1323,8 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    public void c(float $$0, float $$1) {
       this.v($$0 % 360.0F);
       this.w(bae.a($$1, -90.0F, 90.0F) % 360.0F);
-      this.N = this.dL();
-      this.O = this.dN();
+      this.N = this.dM();
+      this.O = this.dO();
    }
 
    public void h(double $$0, double $$1, double $$2) {
@@ -1329,7 +1341,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public void e(double $$0, double $$1, double $$2) {
-      this.b($$0, $$1, $$2, this.dL(), this.dN());
+      this.b($$0, $$1, $$2, this.dM(), this.dO());
    }
 
    public void a(jh $$0, float $$1, float $$2) {
@@ -1363,7 +1375,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public void bB() {
-      this.f(this.dL(), this.dN());
+      this.f(this.dM(), this.dO());
    }
 
    private void j(fbx $$0) {
@@ -1382,27 +1394,27 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public float f(bvj $$0) {
-      float $$1 = (float)(this.dA() - $$0.dA());
-      float $$2 = (float)(this.dC() - $$0.dC());
-      float $$3 = (float)(this.dG() - $$0.dG());
+      float $$1 = (float)(this.dB() - $$0.dB());
+      float $$2 = (float)(this.dD() - $$0.dD());
+      float $$3 = (float)(this.dH() - $$0.dH());
       return bae.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
    }
 
    public double i(double $$0, double $$1, double $$2) {
-      double $$3 = this.dA() - $$0;
-      double $$4 = this.dC() - $$1;
-      double $$5 = this.dG() - $$2;
+      double $$3 = this.dB() - $$0;
+      double $$4 = this.dD() - $$1;
+      double $$5 = this.dH() - $$2;
       return $$3 * $$3 + $$4 * $$4 + $$5 * $$5;
    }
 
    public double g(bvj $$0) {
-      return this.f($$0.dt());
+      return this.f($$0.du());
    }
 
    public double f(fbx $$0) {
-      double $$1 = this.dA() - $$0.d;
-      double $$2 = this.dC() - $$0.e;
-      double $$3 = this.dG() - $$0.f;
+      double $$1 = this.dB() - $$0.d;
+      double $$2 = this.dD() - $$0.e;
+      double $$3 = this.dH() - $$0.f;
       return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
    }
 
@@ -1412,8 +1424,8 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    public void h(bvj $$0) {
       if (!this.z($$0)) {
          if (!$$0.ad && !this.ad) {
-            double $$1 = $$0.dA() - this.dA();
-            double $$2 = $$0.dG() - this.dG();
+            double $$1 = $$0.dB() - this.dB();
+            double $$2 = $$0.dH() - this.dH();
             double $$3 = bae.a($$1, $$2);
             if ($$3 >= 0.01F) {
                $$3 = Math.sqrt($$3);
@@ -1445,7 +1457,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public void j(double $$0, double $$1, double $$2) {
-      this.h(this.dy().b($$0, $$1, $$2));
+      this.h(this.dz().b($$0, $$1, $$2));
       this.ar = true;
    }
 
@@ -1488,11 +1500,11 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public float j(float $$0) {
-      return $$0 == 1.0F ? this.dN() : bae.h($$0, this.O, this.dN());
+      return $$0 == 1.0F ? this.dO() : bae.h($$0, this.O, this.dO());
    }
 
    public float k(float $$0) {
-      return $$0 == 1.0F ? this.dL() : bae.i($$0, this.N, this.dL());
+      return $$0 == 1.0F ? this.dM() : bae.i($$0, this.N, this.dM());
    }
 
    public final fbx d(float $$0, float $$1) {
@@ -1514,13 +1526,13 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public final fbx bF() {
-      return new fbx(this.dA(), this.dE(), this.dG());
+      return new fbx(this.dB(), this.dF(), this.dH());
    }
 
    public final fbx m(float $$0) {
-      double $$1 = bae.d((double)$$0, this.K, this.dA());
-      double $$2 = bae.d((double)$$0, this.L, this.dC()) + (double)this.cS();
-      double $$3 = bae.d((double)$$0, this.M, this.dG());
+      double $$1 = bae.d((double)$$0, this.K, this.dB());
+      double $$2 = bae.d((double)$$0, this.L, this.dD()) + (double)this.cS();
+      double $$3 = bae.d((double)$$0, this.M, this.dH());
       return new fbx($$1, $$2, $$3);
    }
 
@@ -1529,9 +1541,9 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public final fbx o(float $$0) {
-      double $$1 = bae.d((double)$$0, this.K, this.dA());
-      double $$2 = bae.d((double)$$0, this.L, this.dC());
-      double $$3 = bae.d((double)$$0, this.M, this.dG());
+      double $$1 = bae.d((double)$$0, this.K, this.dB());
+      double $$2 = bae.d((double)$$0, this.L, this.dD());
+      double $$3 = bae.d((double)$$0, this.M, this.dH());
       return new fbx($$1, $$2, $$3);
    }
 
@@ -1539,7 +1551,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
       fbx $$3 = this.m($$1);
       fbx $$4 = this.g($$1);
       fbx $$5 = $$3.b($$4.d * $$0, $$4.e * $$0, $$4.f * $$0);
-      return this.dV().a(new dgp($$3, $$5, dgp.a.b, $$2 ? dgp.b.c : dgp.b.a, this));
+      return this.dW().a(new dgp($$3, $$5, dgp.a.b, $$2 ? dgp.b.c : dgp.b.a, this));
    }
 
    public boolean bG() {
@@ -1561,9 +1573,9 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public boolean k(double $$0, double $$1, double $$2) {
-      double $$3 = this.dA() - $$0;
-      double $$4 = this.dC() - $$1;
-      double $$5 = this.dG() - $$2;
+      double $$3 = this.dB() - $$0;
+      double $$4 = this.dD() - $$1;
+      double $$5 = this.dH() - $$2;
       double $$6 = $$3 * $$3 + $$4 * $$4 + $$5 * $$5;
       return this.a($$6);
    }
@@ -1600,24 +1612,24 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    public ux f(ux $$0) {
       try {
          if (this.r != null) {
-            $$0.a("Pos", this.a(this.r.dA(), this.dC(), this.r.dG()));
+            $$0.a("Pos", this.a(this.r.dB(), this.dD(), this.r.dH()));
          } else {
-            $$0.a("Pos", this.a(this.dA(), this.dC(), this.dG()));
+            $$0.a("Pos", this.a(this.dB(), this.dD(), this.dH()));
          }
 
-         fbx $$1 = this.dy();
+         fbx $$1 = this.dz();
          $$0.a("Motion", this.a($$1.d, $$1.e, $$1.f));
-         $$0.a("Rotation", this.a(this.dL(), this.dN()));
+         $$0.a("Rotation", this.a(this.dM(), this.dO()));
          $$0.a("FallDistance", this.Z);
-         $$0.a("Fire", (short)this.aG);
+         $$0.a("Fire", (short)this.aH);
          $$0.a("Air", (short)this.ct());
          $$0.a("OnGround", this.aJ());
-         $$0.a("Invulnerable", this.aV);
-         $$0.a("PortalCooldown", this.aU);
+         $$0.a("Invulnerable", this.aW);
+         $$0.a("PortalCooldown", this.aV);
          $$0.a("UUID", this.cG());
          xv $$2 = this.an();
          if ($$2 != null) {
-            $$0.a("CustomName", xv.a.a($$2, this.dX()));
+            $$0.a("CustomName", xv.a.a($$2, this.dY()));
          }
 
          if (this.cL()) {
@@ -1632,7 +1644,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
             $$0.a("NoGravity", this.bc());
          }
 
-         if (this.aW) {
+         if (this.aX) {
             $$0.a("Glowing", true);
          }
 
@@ -1641,14 +1653,14 @@ public abstract class bvj implements alf, btl, ebx, fdb {
             $$0.a("TicksFrozen", this.cu());
          }
 
-         if (this.bf) {
-            $$0.a("HasVisualFire", this.bf);
+         if (this.bg) {
+            $$0.a("HasVisualFire", this.bg);
          }
 
-         if (!this.aX.isEmpty()) {
+         if (!this.aY.isEmpty()) {
             vd $$4 = new vd();
 
-            for (String $$5 : this.aX) {
+            for (String $$5 : this.aY) {
                $$4.add(vs.a($$5));
             }
 
@@ -1695,32 +1707,32 @@ public abstract class bvj implements alf, btl, ebx, fdb {
          this.v($$3.i(0));
          this.w($$3.i(1));
          this.bz();
-         this.q(this.dL());
-         this.r(this.dL());
+         this.q(this.dM());
+         this.r(this.dM());
          this.Z = $$0.j("FallDistance");
-         this.aG = $$0.g("Fire");
+         this.aH = $$0.g("Fire");
          if ($$0.e("Air")) {
             this.j($$0.g("Air"));
          }
 
          this.aD = $$0.q("OnGround");
-         this.aV = $$0.q("Invulnerable");
-         this.aU = $$0.h("PortalCooldown");
+         this.aW = $$0.q("Invulnerable");
+         this.aV = $$0.h("PortalCooldown");
          if ($$0.b("UUID")) {
             this.at = $$0.a("UUID");
             this.au = this.at.toString();
          }
 
-         if (!Double.isFinite(this.dA()) || !Double.isFinite(this.dC()) || !Double.isFinite(this.dG())) {
+         if (!Double.isFinite(this.dB()) || !Double.isFinite(this.dD()) || !Double.isFinite(this.dH())) {
             throw new IllegalStateException("Entity has invalid position");
-         } else if (Double.isFinite((double)this.dL()) && Double.isFinite((double)this.dN())) {
+         } else if (Double.isFinite((double)this.dM()) && Double.isFinite((double)this.dO())) {
             this.ay();
-            this.b(this.dL(), this.dN());
+            this.b(this.dM(), this.dO());
             if ($$0.b("CustomName", 8)) {
                String $$8 = $$0.l("CustomName");
 
                try {
-                  this.b(xv.a.a($$8, this.dX()));
+                  this.b(xv.a.a($$8, this.dY()));
                } catch (Exception var16) {
                   b.warn("Failed to parse entity custom name {}", $$8, var16);
                }
@@ -1731,14 +1743,14 @@ public abstract class bvj implements alf, btl, ebx, fdb {
             this.f($$0.q("NoGravity"));
             this.j($$0.q("Glowing"));
             this.k($$0.h("TicksFrozen"));
-            this.bf = $$0.q("HasVisualFire");
+            this.bg = $$0.q("HasVisualFire");
             if ($$0.b("Tags", 9)) {
-               this.aX.clear();
+               this.aY.clear();
                vd $$10 = $$0.c("Tags", 8);
                int $$11 = Math.min($$10.size(), 1024);
 
                for (int $$12 = 0; $$12 < $$11; $$12++) {
-                  this.aX.add($$10.j($$12));
+                  this.aY.add($$10.j($$12));
                }
             }
 
@@ -1812,7 +1824,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
       if ($$1.f()) {
          return null;
       } else {
-         cma $$3 = new cma($$0, this.dA(), this.dC() + (double)$$2, this.dG(), $$1);
+         cma $$3 = new cma($$0, this.dB(), this.dD() + (double)$$2, this.dH(), $$1);
          $$3.s();
          $$0.b($$3);
          return $$3;
@@ -1820,22 +1832,22 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public boolean bL() {
-      return !this.dQ();
+      return !this.dR();
    }
 
    public boolean bM() {
       if (this.ad) {
          return false;
       } else {
-         float $$0 = this.ba.a() * 0.8F;
+         float $$0 = this.bb.a() * 0.8F;
          fbs $$1 = fbs.a(this.bF(), (double)$$0, 1.0E-6, (double)$$0);
          return jh.b($$1)
             .anyMatch(
                $$1x -> {
-                  dxu $$2 = this.dV().a_($$1x);
+                  dxu $$2 = this.dW().a_($$1x);
                   return !$$2.l()
-                     && $$2.j(this.dV(), $$1x)
-                     && fco.c($$2.g(this.dV(), $$1x).a((double)$$1x.u(), (double)$$1x.v(), (double)$$1x.w()), fco.a($$1), fcb.i);
+                     && $$2.j(this.dW(), $$1x)
+                     && fco.c($$2.g(this.dW(), $$1x).a((double)$$1x.u(), (double)$$1x.v(), (double)$$1x.w()), fco.a($$1), fcb.i);
                }
             );
       }
@@ -1844,8 +1856,8 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    public bti a(cpw $$0, bth $$1) {
       if (this.bL() && this instanceof bwd $$2) {
          if ($$2.A() == $$0) {
-            if (!this.dV().B_()) {
-               $$2.a(true, !$$0.fT());
+            if (!this.dW().B_()) {
+               $$2.a(true, !$$0.fV());
                this.a(ecq.r, $$0);
             }
 
@@ -1854,7 +1866,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
 
          cxo $$3 = $$0.b($$1);
          if ($$3.a(cxs.vA) && $$2.Q_()) {
-            if (!this.dV().B_()) {
+            if (!this.dW().B_()) {
                $$2.b($$0, true);
             }
 
@@ -1878,7 +1890,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
       this.h(fbx.c);
       this.h();
       if (this.bZ()) {
-         this.dk().j(this);
+         this.dl().j(this);
       }
    }
 
@@ -1898,11 +1910,11 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public fbx l(bvj $$0) {
-      return this.ds().b(bvk.b, 0, this.aA);
+      return this.dt().b(bvk.b, 0, this.aA);
    }
 
    public fbx m(bvj $$0) {
-      return this.dt().e(this.a($$0, this.ba, 1.0F));
+      return this.du().e(this.a($$0, this.bb, 1.0F));
    }
 
    protected fbx a(bvj $$0, bvm $$1, float $$2) {
@@ -1973,14 +1985,14 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    protected void p(bvj $$0) {
-      if ($$0.dk() != this) {
+      if ($$0.dl() != this) {
          throw new IllegalStateException("Use x.startRiding(y), not y.addPassenger(x)");
       } else {
          if (this.q.isEmpty()) {
             this.q = ImmutableList.of($$0);
          } else {
             List<bvj> $$1 = Lists.newArrayList(this.q);
-            if (!this.dV().C && $$0 instanceof cpw && !(this.da() instanceof cpw)) {
+            if (!this.dW().C && $$0 instanceof cpw && !(this.da() instanceof cpw)) {
                $$1.add(0, $$0);
             } else {
                $$1.add($$0);
@@ -1994,7 +2006,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    protected void q(bvj $$0) {
-      if ($$0.dk() == this) {
+      if ($$0.dl() == this) {
          throw new IllegalStateException("Use x.stopRiding(y), not y.removePassenger(x)");
       } else {
          if (this.q.size() == 1 && this.q.get(0) == $$0) {
@@ -2025,23 +2037,23 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public double R_() {
-      return this.dA();
+      return this.dB();
    }
 
    public double S_() {
-      return this.dC();
+      return this.dD();
    }
 
    public double g_() {
-      return this.dG();
+      return this.dH();
    }
 
    public float r_() {
-      return this.dN();
+      return this.dO();
    }
 
    public float h_() {
-      return this.dL();
+      return this.dM();
    }
 
    public void a(float $$0, int $$1) {
@@ -2053,21 +2065,21 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public fbx bT() {
-      return this.d(this.dN(), this.dL());
+      return this.d(this.dO(), this.dM());
    }
 
    public fbx a(cxk $$0) {
       if (!(this instanceof cpw $$1)) {
          return fbx.c;
       } else {
-         boolean $$2 = $$1.eY().a($$0) && !$$1.eX().a($$0);
-         bvz $$3 = $$2 ? $$1.fw().e() : $$1.fw();
-         return this.d(0.0F, this.dL() + (float)($$3 == bvz.b ? 80 : -80)).c(0.5);
+         boolean $$2 = $$1.fa().a($$0) && !$$1.eZ().a($$0);
+         bvz $$3 = $$2 ? $$1.fy().e() : $$1.fy();
+         return this.d(0.0F, this.dM() + (float)($$3 == bvz.b ? 80 : -80)).c(0.5);
       }
    }
 
    public fbw bU() {
-      return new fbw(this.dN(), this.dL());
+      return new fbw(this.dO(), this.dM());
    }
 
    public fbx bV() {
@@ -2088,7 +2100,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    protected void bW() {
-      if (this.dV() instanceof ash $$0) {
+      if (this.dW() instanceof ash $$0) {
          this.M();
          if (this.as != null) {
             if (this.as.a($$0, this, this.o(false))) {
@@ -2134,12 +2146,12 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public boolean bY() {
-      boolean $$0 = this.dV() != null && this.dV().C;
-      return !this.bi() && (this.aG > 0 || $$0 && this.i(0));
+      boolean $$0 = this.dW() != null && this.dW().C;
+      return !this.bi() && (this.aH > 0 || $$0 && this.i(0));
    }
 
    public boolean bZ() {
-      return this.dk() != null;
+      return this.dl() != null;
    }
 
    public boolean ca() {
@@ -2207,16 +2219,16 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public final boolean cn() {
-      return this.aW;
+      return this.aX;
    }
 
    public final void j(boolean $$0) {
-      this.aW = $$0;
+      this.aX = $$0;
       this.b(6, this.co());
    }
 
    public boolean co() {
-      return this.dV().B_() ? this.i(6) : this.aW;
+      return this.dW().B_() ? this.i(6) : this.aX;
    }
 
    public boolean cp() {
@@ -2241,7 +2253,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
 
    @Nullable
    public fcx cr() {
-      return this.dV().Q().e(this.cI());
+      return this.dW().Q().e(this.cI());
    }
 
    public final boolean s(@Nullable bvj $$0) {
@@ -2278,19 +2290,19 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public int ct() {
-      return this.al.a(aM);
+      return this.al.a(aN);
    }
 
    public void j(int $$0) {
-      this.al.a(aM, $$0);
+      this.al.a(aN, $$0);
    }
 
    public int cu() {
-      return this.al.a(aR);
+      return this.al.a(aS);
    }
 
    public void k(int $$0) {
-      this.al.a(aR, $$0);
+      this.al.a(aS, $$0);
    }
 
    public float cv() {
@@ -2307,16 +2319,16 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public void a(ash $$0, bwe $$1) {
-      this.h(this.aG + 1);
-      if (this.aG == 0) {
+      this.h(this.aH + 1);
+      if (this.aH == 0) {
          this.d(8.0F);
       }
 
-      this.a($$0, this.dW().c(), 5.0F);
+      this.a($$0, this.dX().c(), 5.0F);
    }
 
    public void l(boolean $$0) {
-      fbx $$1 = this.dy();
+      fbx $$1 = this.dz();
       double $$2;
       if ($$0) {
          $$2 = Math.max(-0.9, $$1.e - 0.03);
@@ -2328,7 +2340,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public void m(boolean $$0) {
-      fbx $$1 = this.dy();
+      fbx $$1 = this.dz();
       double $$2;
       if ($$0) {
          $$2 = Math.max(-0.3, $$1.e - 0.03);
@@ -2345,7 +2357,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public void cy() {
-      if (this.dy().b() > -0.5 && this.Z > 1.0F) {
+      if (this.dz().b() > -0.5 && this.Z > 1.0F) {
          this.Z = 1.0F;
       }
    }
@@ -2363,7 +2375,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
 
       for (jm $$8 : new jm[]{jm.c, jm.d, jm.e, jm.f, jm.b}) {
          $$5.a($$3, $$8);
-         if (!this.dV().a_($$5).m(this.dV(), $$5)) {
+         if (!this.dW().a_($$5).m(this.dW(), $$5)) {
             double $$9 = $$4.a($$8.o());
             double $$10 = $$8.f() == jm.b.a ? 1.0 - $$9 : $$9;
             if ($$10 < $$7) {
@@ -2375,7 +2387,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
 
       float $$11 = this.ae.i() * 0.2F + 0.1F;
       float $$12 = (float)$$6.f().a();
-      fbx $$13 = this.dy().c(0.75);
+      fbx $$13 = this.dz().c(0.75);
       if ($$6.o() == jm.a.a) {
          this.n((double)($$12 * $$11), $$13.e, $$13.f);
       } else if ($$6.o() == jm.a.b) {
@@ -2434,7 +2446,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
 
    @Override
    public String toString() {
-      String $$0 = this.dV() == null ? "~NULL~" : this.dV().toString();
+      String $$0 = this.dW() == null ? "~NULL~" : this.dW().toString();
       return this.aE != null
          ? String.format(
             Locale.ROOT,
@@ -2443,9 +2455,9 @@ public abstract class bvj implements alf, btl, ebx, fdb {
             this.al().getString(),
             this.p,
             $$0,
-            this.dA(),
-            this.dC(),
-            this.dG(),
+            this.dB(),
+            this.dD(),
+            this.dH(),
             this.aE
          )
          : String.format(
@@ -2455,39 +2467,39 @@ public abstract class bvj implements alf, btl, ebx, fdb {
             this.al().getString(),
             this.p,
             $$0,
-            this.dA(),
-            this.dC(),
-            this.dG()
+            this.dB(),
+            this.dD(),
+            this.dH()
          );
    }
 
    protected final boolean d(btz $$0) {
-      return this.dQ() || this.aV && !$$0.a(axw.d) && !$$0.h() || $$0.a(axw.i) && this.bi() || $$0.a(axw.m) && this.aq().a(axy.o);
+      return this.dR() || this.aW && !$$0.a(axw.d) && !$$0.h() || $$0.a(axw.i) && this.bi() || $$0.a(axw.m) && this.aq().a(axy.o);
    }
 
    public boolean cC() {
-      return this.aV;
+      return this.aW;
    }
 
    public void n(boolean $$0) {
-      this.aV = $$0;
+      this.aW = $$0;
    }
 
    public void w(bvj $$0) {
-      this.b($$0.dA(), $$0.dC(), $$0.dG(), $$0.dL(), $$0.dN());
+      this.b($$0.dB(), $$0.dD(), $$0.dH(), $$0.dM(), $$0.dO());
    }
 
    public void x(bvj $$0) {
       ux $$1 = $$0.f(new ux());
       $$1.r("Dimension");
       this.g($$1);
-      this.aU = $$0.aU;
+      this.aV = $$0.aV;
       this.as = $$0.as;
    }
 
    @Nullable
    public bvj b(euw $$0) {
-      if (this.dV() instanceof ash $$1 && !this.dQ()) {
+      if (this.dW() instanceof ash $$1 && !this.dR()) {
          ash $$3 = $$0.b();
          boolean $$4 = $$3.ah() != $$1.ah();
          if (!$$0.h()) {
@@ -2557,9 +2569,9 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    private euw a(euw $$0, bvj $$1) {
-      float $$2 = $$0.e() + ($$0.i().contains(bwt.d) ? 0.0F : $$1.dL() - this.dL());
-      float $$3 = $$0.f() + ($$0.i().contains(bwt.e) ? 0.0F : $$1.dN() - this.dN());
-      fbx $$4 = $$1.dt().d(this.dt());
+      float $$2 = $$0.e() + ($$0.i().contains(bwt.d) ? 0.0F : $$1.dM() - this.dM());
+      float $$3 = $$0.f() + ($$0.i().contains(bwt.e) ? 0.0F : $$1.dO() - this.dO());
+      fbx $$4 = $$1.du().d(this.du());
       fbx $$5 = $$0.c().b($$0.i().contains(bwt.a) ? 0.0 : $$4.a(), $$0.i().contains(bwt.b) ? 0.0 : $$4.b(), $$0.i().contains(bwt.c) ? 0.0 : $$4.c());
       return $$0.a($$5).a($$2, $$3).a();
    }
@@ -2589,7 +2601,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
       this.ay();
       this.bz();
       this.h($$3.b());
-      this.bh.clear();
+      this.bi.clear();
    }
 
    public void a(float $$0, float $$1) {
@@ -2600,20 +2612,20 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public void f(jh $$0) {
-      if (this.dV() instanceof ash $$1) {
+      if (this.dW() instanceof ash $$1) {
          $$1.m().a(asn.e, new dgn($$0), 3, $$0);
       }
    }
 
    protected void cD() {
-      this.c(bvj.c.e);
+      this.c(bvj.d.e);
       if (this instanceof bwd $$0) {
          $$0.a(true, false);
       }
    }
 
    public fbx a(jm.a $$0, l.a $$1) {
-      return euv.a($$1, $$0, this.dt(), this.a(this.aw()));
+      return euv.a($$1, $$0, this.du(), this.a(this.aw()));
    }
 
    public boolean o(boolean $$0) {
@@ -2652,12 +2664,12 @@ public abstract class bvj implements alf, btl, ebx, fdb {
       $$0.a("Entity Type", () -> bvq.a(this.aq()) + " (" + this.getClass().getCanonicalName() + ")");
       $$0.a("Entity ID", this.p);
       $$0.a("Entity Name", () -> this.al().getString());
-      $$0.a("Entity's Exact location", String.format(Locale.ROOT, "%.2f, %.2f, %.2f", this.dA(), this.dC(), this.dG()));
-      $$0.a("Entity's Block location", p.a(this.dV(), bae.a(this.dA()), bae.a(this.dC()), bae.a(this.dG())));
-      fbx $$1 = this.dy();
+      $$0.a("Entity's Exact location", String.format(Locale.ROOT, "%.2f, %.2f, %.2f", this.dB(), this.dD(), this.dH()));
+      $$0.a("Entity's Block location", p.a(this.dW(), bae.a(this.dB()), bae.a(this.dD()), bae.a(this.dH())));
+      fbx $$1 = this.dz();
       $$0.a("Entity's Momentum", String.format(Locale.ROOT, "%.2f, %.2f, %.2f", $$1.d, $$1.e, $$1.f));
       $$0.a("Entity's Passengers", () -> this.cZ().toString());
-      $$0.a("Entity's Vehicle", () -> String.valueOf(this.dk()));
+      $$0.a("Entity's Vehicle", () -> String.valueOf(this.dl()));
    }
 
    public boolean cF() {
@@ -2701,26 +2713,26 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public void b(@Nullable xv $$0) {
-      this.al.a(aN, Optional.ofNullable($$0));
+      this.al.a(aO, Optional.ofNullable($$0));
    }
 
    @Nullable
    @Override
    public xv an() {
-      return this.al.a(aN).orElse(null);
+      return this.al.a(aO).orElse(null);
    }
 
    @Override
    public boolean l_() {
-      return this.al.a(aN).isPresent();
+      return this.al.a(aO).isPresent();
    }
 
    public void p(boolean $$0) {
-      this.al.a(aO, $$0);
+      this.al.a(aP, $$0);
    }
 
    public boolean cL() {
-      return this.al.a(aO);
+      return this.al.a(aP);
    }
 
    public boolean a(ash $$0, double $$1, double $$2, double $$3, Set<bwt> $$4, float $$5, float $$6, boolean $$7) {
@@ -2734,8 +2746,8 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public void c(double $$0, double $$1, double $$2) {
-      if (this.dV() instanceof ash) {
-         this.b($$0, $$1, $$2, this.dL(), this.dN());
+      if (this.dW() instanceof ash) {
+         this.b($$0, $$1, $$2, this.dM(), this.dO());
          this.E();
       }
    }
@@ -2752,7 +2764,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public void d(double $$0, double $$1, double $$2) {
-      this.c(this.dA() + $$0, this.dC() + $$1, this.dG() + $$2);
+      this.c(this.dB() + $$0, this.dD() + $$1, this.dH() + $$2);
    }
 
    public boolean cM() {
@@ -2774,16 +2786,16 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    protected void cN() {
       bwr $$0 = this.aw();
       bvm $$1 = this.a($$0);
-      this.ba = $$1;
-      this.bb = $$1.c();
+      this.bb = $$1;
+      this.bc = $$1.c();
    }
 
    public void m_() {
-      bvm $$0 = this.ba;
+      bvm $$0 = this.bb;
       bwr $$1 = this.aw();
       bvm $$2 = this.a($$1);
-      this.ba = $$2;
-      this.bb = $$2.c();
+      this.bb = $$2;
+      this.bc = $$2.c();
       this.ay();
       boolean $$3 = $$2.a() <= 4.0F && $$2.b() <= 4.0F;
       if (!this.s.C && !this.ak && !this.ad && $$3 && ($$2.a() > $$0.a() || $$2.b() > $$0.b()) && !(this instanceof cpw)) {
@@ -2793,7 +2805,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
 
    public boolean a(bvm $$0) {
       bvm $$1 = this.a(this.aw());
-      fbx $$2 = this.dt().b(0.0, (double)$$0.b() / 2.0, 0.0);
+      fbx $$2 = this.du().b(0.0, (double)$$0.b() / 2.0, 0.0);
       double $$3 = (double)Math.max(0.0F, $$1.a() - $$0.a()) + 1.0E-6;
       double $$4 = (double)Math.max(0.0F, $$1.b() - $$0.b()) + 1.0E-6;
       fcr $$5 = fco.a(fbs.a($$2, $$3, $$4, $$3));
@@ -2816,7 +2828,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public jm cO() {
-      return jm.a((double)this.dL());
+      return jm.a((double)this.dM());
    }
 
    public jm cP() {
@@ -2845,7 +2857,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public final float cS() {
-      return this.bb;
+      return this.bc;
    }
 
    public fbx s(float $$0) {
@@ -2853,7 +2865,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    protected fbx cT() {
-      return new fbx(0.0, (double)this.cS(), (double)(this.dq() * 0.4F));
+      return new fbx(0.0, (double)this.cS(), (double)(this.dr() * 0.4F));
    }
 
    public bwx a_(int $$0) {
@@ -2861,12 +2873,12 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public dhh cU() {
-      return this.dV();
+      return this.dW();
    }
 
    @Nullable
    public MinecraftServer cV() {
-      return this.dV().p();
+      return this.dW().p();
    }
 
    public bti a(cpw $$0, fbx $$1, bth $$2) {
@@ -2884,7 +2896,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public float a(drb $$0) {
-      float $$1 = bae.h(this.dL());
+      float $$1 = bae.h(this.dM());
       switch ($$0) {
          case c:
             return $$1 + 180.0F;
@@ -2898,7 +2910,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public float a(dpk $$0) {
-      float $$1 = bae.h(this.dL());
+      float $$1 = bae.h(this.dM());
       switch ($$0) {
          case c:
             return -$$1;
@@ -2982,7 +2994,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
       bvj $$0 = this;
 
       while ($$0.bZ()) {
-         $$0 = $$0.dk();
+         $$0 = $$0.dl();
       }
 
       return $$0;
@@ -2996,7 +3008,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
       if (!$$0.bZ()) {
          return false;
       } else {
-         bvj $$1 = $$0.dk();
+         bvj $$1 = $$0.dl();
          return $$1 == this ? true : this.A($$1);
       }
    }
@@ -3006,11 +3018,16 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public boolean di() {
-      return this.cX() instanceof cpw $$0 ? $$0.c() : this.dj();
+      return this.cX() instanceof cpw $$0 ? $$0.c() : this.dk();
    }
 
    public boolean dj() {
-      return !this.dV().C;
+      bwf $$0 = this.cX();
+      return $$0 != null && $$0.dj();
+   }
+
+   public boolean dk() {
+      return !this.dW().C;
    }
 
    protected static fbx a(double $$0, double $$1, float $$2) {
@@ -3022,16 +3039,16 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public fbx b(bwf $$0) {
-      return new fbx(this.dA(), this.cR().e, this.dG());
-   }
-
-   @Nullable
-   public bvj dk() {
-      return this.r;
+      return new fbx(this.dB(), this.cR().e, this.dH());
    }
 
    @Nullable
    public bvj dl() {
+      return this.r;
+   }
+
+   @Nullable
+   public bvj dm() {
       return this.r != null && this.r.cX() == this ? this.r : null;
    }
 
@@ -3039,16 +3056,16 @@ public abstract class bvj implements alf, btl, ebx, fdb {
       return eub.a;
    }
 
-   public axg dm() {
+   public axg dn() {
       return axg.g;
    }
 
-   protected int dn() {
+   protected int do() {
       return 1;
    }
 
    public ew d(ash $$0) {
-      return new ew(ev.a, this.dt(), this.bU(), $$0, 0, this.al().getString(), this.p_(), $$0.p(), this);
+      return new ew(ev.a, this.du(), this.bU(), $$0, 0, this.al().getString(), this.p_(), $$0.p(), this);
    }
 
    public void a(fi.a $$0, fbx $$1) {
@@ -3059,9 +3076,9 @@ public abstract class bvj implements alf, btl, ebx, fdb {
       double $$6 = Math.sqrt($$3 * $$3 + $$5 * $$5);
       this.w(bae.h((float)(-(bae.d($$4, $$6) * 180.0F / (float)Math.PI))));
       this.v(bae.h((float)(bae.d($$5, $$3) * 180.0F / (float)Math.PI) - 90.0F));
-      this.q(this.dL());
-      this.O = this.dN();
-      this.N = this.dL();
+      this.q(this.dM());
+      this.O = this.dO();
+      this.N = this.dM();
    }
 
    public float t(float $$0) {
@@ -3069,7 +3086,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public boolean a(ayk<etv> $$0, double $$1) {
-      if (this.do()) {
+      if (this.dp()) {
          return false;
       } else {
          fbs $$2 = this.cR().h(0.001);
@@ -3090,14 +3107,14 @@ public abstract class bvj implements alf, btl, ebx, fdb {
             for (int $$16 = $$5; $$16 < $$6; $$16++) {
                for (int $$17 = $$7; $$17 < $$8; $$17++) {
                   $$14.d($$15, $$16, $$17);
-                  etw $$18 = this.dV().b_($$14);
+                  etw $$18 = this.dW().b_($$14);
                   if ($$18.a($$0)) {
-                     double $$19 = (double)((float)$$16 + $$18.a(this.dV(), $$14));
+                     double $$19 = (double)((float)$$16 + $$18.a(this.dW(), $$14));
                      if ($$19 >= $$2.b) {
                         $$11 = true;
                         $$9 = Math.max($$19 - $$2.b, $$9);
                         if ($$10) {
-                           fbx $$20 = $$18.c(this.dV(), $$14);
+                           fbx $$20 = $$18.c(this.dW(), $$14);
                            if ($$9 < 0.4) {
                               $$20 = $$20.c($$9);
                            }
@@ -3120,14 +3137,14 @@ public abstract class bvj implements alf, btl, ebx, fdb {
                $$12 = $$12.d();
             }
 
-            fbx $$21 = this.dy();
+            fbx $$21 = this.dz();
             $$12 = $$12.c($$1);
             double $$22 = 0.003;
             if (Math.abs($$21.d) < 0.003 && Math.abs($$21.f) < 0.003 && $$12.g() < 0.0045000000000000005) {
                $$12 = $$12.d().c(0.0045000000000000005);
             }
 
-            this.h(this.dy().e($$12));
+            this.h(this.dz().e($$12));
          }
 
          this.ah.put($$0, $$9);
@@ -3135,29 +3152,29 @@ public abstract class bvj implements alf, btl, ebx, fdb {
       }
    }
 
-   public boolean do() {
+   public boolean dp() {
       fbs $$0 = this.cR().g(1.0);
       int $$1 = bae.a($$0.a);
       int $$2 = bae.c($$0.d);
       int $$3 = bae.a($$0.c);
       int $$4 = bae.c($$0.f);
-      return !this.dV().b($$1, $$3, $$2, $$4);
+      return !this.dW().b($$1, $$3, $$2, $$4);
    }
 
    public double b(ayk<etv> $$0) {
       return this.ah.getDouble($$0);
    }
 
-   public double dp() {
+   public double dq() {
       return (double)this.cS() < 0.4 ? 0.0 : 0.4;
    }
 
-   public final float dq() {
-      return this.ba.a();
+   public final float dr() {
+      return this.bb.a();
    }
 
-   public final float dr() {
-      return this.ba.b();
+   public final float ds() {
+      return this.bb.b();
    }
 
    public aac<acr> a(asf $$0) {
@@ -3168,36 +3185,36 @@ public abstract class bvj implements alf, btl, ebx, fdb {
       return this.o.n();
    }
 
-   public final bvl ds() {
-      return this.ba.d();
-   }
-
-   public fbx dt() {
-      return this.t;
+   public final bvl dt() {
+      return this.bb.d();
    }
 
    public fbx du() {
-      return this.dt();
+      return this.t;
+   }
+
+   public fbx dv() {
+      return this.du();
    }
 
    @Override
-   public jh dv() {
+   public jh dw() {
       return this.u;
    }
 
-   public dxu dw() {
-      if (this.bg == null) {
-         this.bg = this.dV().a_(this.dv());
+   public dxu dx() {
+      if (this.bh == null) {
+         this.bh = this.dW().a_(this.dw());
       }
 
-      return this.bg;
+      return this.bh;
    }
 
-   public dgn dx() {
+   public dgn dy() {
       return this.ay;
    }
 
-   public fbx dy() {
+   public fbx dz() {
       return this.az;
    }
 
@@ -3206,59 +3223,59 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    public void i(fbx $$0) {
-      this.h(this.dy().e($$0));
+      this.h(this.dz().e($$0));
    }
 
    public void n(double $$0, double $$1, double $$2) {
       this.h(new fbx($$0, $$1, $$2));
    }
 
-   public final int dz() {
+   public final int dA() {
       return this.u.u();
    }
 
-   public final double dA() {
+   public final double dB() {
       return this.t.d;
    }
 
    public double c(double $$0) {
-      return this.t.d + (double)this.dq() * $$0;
+      return this.t.d + (double)this.dr() * $$0;
    }
 
    public double d(double $$0) {
       return this.c((2.0 * this.ae.j() - 1.0) * $$0);
    }
 
-   public final int dB() {
+   public final int dC() {
       return this.u.v();
    }
 
-   public final double dC() {
+   public final double dD() {
       return this.t.e;
    }
 
    public double e(double $$0) {
-      return this.t.e + (double)this.dr() * $$0;
-   }
-
-   public double dD() {
-      return this.e(this.ae.j());
+      return this.t.e + (double)this.ds() * $$0;
    }
 
    public double dE() {
-      return this.t.e + (double)this.bb;
+      return this.e(this.ae.j());
    }
 
-   public final int dF() {
+   public double dF() {
+      return this.t.e + (double)this.bc;
+   }
+
+   public final int dG() {
       return this.u.w();
    }
 
-   public final double dG() {
+   public final double dH() {
       return this.t.f;
    }
 
    public double f(double $$0) {
-      return this.t.f + (double)this.dq() * $$0;
+      return this.t.f + (double)this.dr() * $$0;
    }
 
    public double g(double $$0) {
@@ -3273,21 +3290,21 @@ public abstract class bvj implements alf, btl, ebx, fdb {
          int $$5 = bae.a($$2);
          if ($$3 != this.u.u() || $$4 != this.u.v() || $$5 != this.u.w()) {
             this.u = new jh($$3, $$4, $$5);
-            this.bg = null;
+            this.bh = null;
             if (kj.a($$3) != this.ay.g || kj.a($$5) != this.ay.h) {
                this.ay = new dgn(this.u);
             }
          }
 
-         this.aS.a();
+         this.aT.a();
       }
    }
 
-   public void dH() {
+   public void dI() {
    }
 
    public fbx u(float $$0) {
-      return this.o($$0).b(0.0, (double)this.bb * 0.7, 0.0);
+      return this.o($$0).b(0.0, (double)this.bc * 0.7, 0.0);
    }
 
    public void a(acs $$0) {
@@ -3304,7 +3321,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    @Nullable
-   public cxo dI() {
+   public cxo dJ() {
       return null;
    }
 
@@ -3312,20 +3329,20 @@ public abstract class bvj implements alf, btl, ebx, fdb {
       this.av = $$0;
    }
 
-   public boolean dJ() {
+   public boolean dK() {
       return !this.aq().a(axy.k);
    }
 
-   public boolean dK() {
-      return (this.av || this.aw) && this.dJ();
-   }
-
-   public float dL() {
-      return this.aA;
+   public boolean dL() {
+      return (this.av || this.aw) && this.dK();
    }
 
    public float dM() {
-      return this.dL();
+      return this.aA;
+   }
+
+   public float dN() {
+      return this.dM();
    }
 
    public void v(float $$0) {
@@ -3336,7 +3353,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
       }
    }
 
-   public float dN() {
+   public float dO() {
       return this.aB;
    }
 
@@ -3348,28 +3365,28 @@ public abstract class bvj implements alf, btl, ebx, fdb {
       }
    }
 
-   public boolean dO() {
+   public boolean dP() {
       return false;
    }
 
-   public float dP() {
+   public float dQ() {
       return 0.0F;
    }
 
    public void b_(@Nullable bvj $$0) {
    }
 
-   public final boolean dQ() {
+   public final boolean dR() {
       return this.aE != null;
    }
 
    @Nullable
-   public bvj.c dR() {
+   public bvj.d dS() {
       return this.aE;
    }
 
    @Override
-   public final void c(bvj.c $$0) {
+   public final void c(bvj.d $$0) {
       if (this.aE == null) {
          this.aE = $$0;
       }
@@ -3379,21 +3396,21 @@ public abstract class bvj implements alf, btl, ebx, fdb {
       }
 
       this.cZ().forEach(bvj::ae);
-      this.aS.a($$0);
+      this.aT.a($$0);
       this.b($$0);
    }
 
-   protected void dS() {
+   protected void dT() {
       this.aE = null;
    }
 
    @Override
    public void a(eby $$0) {
-      this.aS = $$0;
+      this.aT = $$0;
    }
 
    @Override
-   public boolean dT() {
+   public boolean dU() {
       if (this.aE != null && !this.aE.b()) {
          return false;
       } else {
@@ -3402,7 +3419,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
    }
 
    @Override
-   public boolean dU() {
+   public boolean dV() {
       return false;
    }
 
@@ -3410,7 +3427,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
       return true;
    }
 
-   public dhh dV() {
+   public dhh dW() {
       return this.s;
    }
 
@@ -3418,26 +3435,26 @@ public abstract class bvj implements alf, btl, ebx, fdb {
       this.s = $$0;
    }
 
-   public bua dW() {
-      return this.dV().aj();
+   public bua dX() {
+      return this.dW().aj();
    }
 
-   public ke dX() {
-      return this.dV().K_();
+   public ke dY() {
+      return this.dW().K_();
    }
 
    protected void a(int $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
       double $$6 = 1.0 / (double)$$0;
-      double $$7 = bae.d($$6, this.dA(), $$1);
-      double $$8 = bae.d($$6, this.dC(), $$2);
-      double $$9 = bae.d($$6, this.dG(), $$3);
-      float $$10 = (float)bae.e($$6, (double)this.dL(), $$4);
-      float $$11 = (float)bae.d($$6, (double)this.dN(), $$5);
+      double $$7 = bae.d($$6, this.dB(), $$1);
+      double $$8 = bae.d($$6, this.dD(), $$2);
+      double $$9 = bae.d($$6, this.dH(), $$3);
+      float $$10 = (float)bae.e($$6, (double)this.dM(), $$4);
+      float $$11 = (float)bae.d($$6, (double)this.dO(), $$5);
       this.a_($$7, $$8, $$9);
       this.b($$10, $$11);
    }
 
-   public bam dY() {
+   public bam dZ() {
       return this.ae;
    }
 
@@ -3446,15 +3463,15 @@ public abstract class bvj implements alf, btl, ebx, fdb {
          return $$0.ah();
       }
 
-      return this.dy();
+      return this.dz();
    }
 
    @Nullable
-   public cxo dZ() {
+   public cxo ea() {
       return null;
    }
 
-   public Optional<aly<ewt>> ea() {
+   public Optional<aly<ewt>> eb() {
       return this.o.k();
    }
 
@@ -3463,7 +3480,10 @@ public abstract class bvj implements alf, btl, ebx, fdb {
       void accept(bvj var1, double var2, double var4, double var6);
    }
 
-   public static enum b {
+   static record b(fbx a, fbx b) {
+   }
+
+   public static enum c {
       a(false, false),
       b(true, false),
       c(false, true),
@@ -3472,7 +3492,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
       final boolean e;
       final boolean f;
 
-      private b(final boolean $$0, final boolean $$1) {
+      private c(final boolean $$0, final boolean $$1) {
          this.e = $$0;
          this.f = $$1;
       }
@@ -3490,7 +3510,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
       }
    }
 
-   public static enum c {
+   public static enum d {
       a(true, false),
       b(true, false),
       c(false, true),
@@ -3500,7 +3520,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
       private final boolean f;
       private final boolean g;
 
-      private c(final boolean $$0, final boolean $$1) {
+      private d(final boolean $$0, final boolean $$1) {
          this.f = $$0;
          this.g = $$1;
       }

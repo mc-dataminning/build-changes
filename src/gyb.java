@@ -1,3 +1,8 @@
-public class gyb extends gxt {
-   public fbx a = fbx.c;
+import javax.annotation.Nullable;
+
+public class gyb extends gxu {
+   public boolean a;
+   @Nullable
+   public hdm b;
+   public cxo c = cxo.j;
 }

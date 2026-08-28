@@ -1,23 +1,51 @@
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
 
-public class gnx<S extends duw> implements dmu.b<S, Int2IntFunction> {
-   public Int2IntFunction a(S $$0, S $$1) {
-      return $$2 -> {
-         int $$3 = glf.a($$0.i(), $$0.aB_());
-         int $$4 = glf.a($$1.i(), $$1.aB_());
-         int $$5 = glh.a($$3);
-         int $$6 = glh.a($$4);
-         int $$7 = glh.b($$3);
-         int $$8 = glh.b($$4);
-         return glh.a(Math.max($$5, $$6), Math.max($$7, $$8));
-      };
+public class gnx {
+   private static final Map<duy<?>, gnw<?>> a = Maps.newHashMap();
+
+   private static <T extends duw> void a(duy<? extends T> $$0, gnw<T> $$1) {
+      a.put($$0, $$1);
    }
 
-   public Int2IntFunction a(S $$0) {
-      return $$0x -> $$0x;
+   public static Map<duy<?>, gnv<?>> a(gnw.a $$0) {
+      Builder<duy<?>, gnv<?>> $$1 = ImmutableMap.builder();
+      a.forEach(($$2, $$3) -> {
+         try {
+            $$1.put($$2, $$3.create($$0));
+         } catch (Exception var5) {
+            throw new IllegalStateException("Failed to create model for " + ma.j.b((duy<?>)$$2), var5);
+         }
+      });
+      return $$1.build();
    }
 
-   public Int2IntFunction a() {
-      return $$0 -> $$0;
+   static {
+      a(duy.h, goj::new);
+      a(duy.i, gof::new);
+      a(duy.j, gol::new);
+      a(duy.l, goh::new);
+      a(duy.b, gob::new);
+      a(duy.d, gob::new);
+      a(duy.c, gob::new);
+      a(duy.n, goe::new);
+      a(duy.E, gog::new);
+      a(duy.o, goo::new);
+      a(duy.w, gon::new);
+      a(duy.p, gnr::new);
+      a(duy.q, gok::new);
+      a(duy.u, gnq::new);
+      a(duy.v, gom::new);
+      a(duy.y, goi::new);
+      a(duy.z, gns::new);
+      a(duy.A, goc::new);
+      a(duy.F, gnt::new);
+      a(duy.H, goa::new);
+      a(duy.O, gnz::new);
+      a(duy.P, god::new);
+      a(duy.R, gop::new);
+      a(duy.S, goq::new);
    }
 }

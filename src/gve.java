@@ -1,20 +1,24 @@
-public class gve extends gwd<gxj, gaw> {
-   private static final alz a = alz.b("textures/entity/cat/cat_collar.png");
-   private final gaw b;
-   private final gaw c;
+public class gve extends gwe<gxt, gbj<gxt>> {
+   private final gmn a;
 
-   public gve(gtl<gxj, gaw> $$0, gei $$1) {
+   public gve(gtm<gxt, gbj<gxt>> $$0, gmn $$1) {
       super($$0);
-      this.b = new gaw($$1.a(gel.O));
-      this.c = new gaw($$1.a(gel.N));
+      this.a = $$1;
    }
 
-   public void a(fgq $$0, glj $$1, int $$2, gxj $$3, float $$4, float $$5) {
-      cwl $$6 = $$3.c;
+   public void a(fgr $$0, glk $$1, int $$2, gxt $$3, float $$4, float $$5) {
+      dxu $$6 = $$3.b;
       if ($$6 != null) {
-         int $$7 = $$6.d();
-         gaw $$8 = $$3.ae ? this.c : this.b;
-         a($$8, a, $$0, $$1, $$2, $$3, $$7);
+         $$0.a();
+         $$0.a(0.0F, 0.6875F, -0.75F);
+         $$0.a(a.b.rotationDegrees(20.0F));
+         $$0.a(a.d.rotationDegrees(45.0F));
+         $$0.a(0.25F, 0.1875F, 0.25F);
+         float $$7 = 0.5F;
+         $$0.b(-0.5F, -0.5F, 0.5F);
+         $$0.a(a.d.rotationDegrees(90.0F));
+         this.a.a($$6, $$0, $$1, $$2, hbb.d);
+         $$0.b();
       }
    }
 }

@@ -27,7 +27,7 @@ public class aoo {
          int $$3 = 0;
 
          for (asi $$4 : $$1) {
-            if (!$$0.l().a($$4.gf())) {
+            if (!$$0.l().a($$4.gh())) {
                $$4.f.a($$2);
                $$0.a(() -> xv.a("commands.kick.success", $$4.p_(), $$2), true);
                $$3++;

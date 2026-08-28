@@ -48,7 +48,7 @@ public class ddf implements dbs {
    }
 
    public cxo a(dbr $$0, js.a $$1) {
-      cxo $$2 = cxo.k;
+      cxo $$2 = cxo.j;
 
       for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
          cxo $$4 = $$0.a($$3);
@@ -96,7 +96,7 @@ public class ddf implements dbs {
                   dbq.e.fieldOf("category").orElse(dbq.d).forGetter($$0x -> $$0x.d),
                   dbz.d.fieldOf("input").forGetter($$0x -> $$0x.e),
                   dbz.d.fieldOf("material").forGetter($$0x -> $$0x.f),
-                  alw.a(mb.K).fieldOf("result").forGetter($$0x -> $$0x.g)
+                  cxk.e.fieldOf("result").forGetter($$0x -> $$0x.g)
                )
                .apply($$0, ddf::new)
       );

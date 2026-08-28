@@ -35,7 +35,7 @@ public class byl extends bxy<bwn> {
    }
 
    private Optional<cpw> b(bwn $$0) {
-      return $$0.eb().c(cfj.O);
+      return $$0.ec().c(cfj.O);
    }
 
    @Override
@@ -44,15 +44,15 @@ public class byl extends bxy<bwn> {
    }
 
    protected boolean a(ash $$0, bwn $$1, long $$2) {
-      return this.b($$1).isPresent() && !$$1.eb().a(cfj.r) && !$$1.eb().a(cfj.Z);
+      return this.b($$1).isPresent() && !$$1.ec().a(cfj.r) && !$$1.ec().a(cfj.Z);
    }
 
    protected void b(ash $$0, bwn $$1, long $$2) {
-      $$1.eb().a(cfj.R, true);
+      $$1.ec().a(cfj.R, true);
    }
 
    protected void c(ash $$0, bwn $$1, long $$2) {
-      bxh<?> $$3 = $$1.eb();
+      bxh<?> $$3 = $$1.ec();
       $$3.a(cfj.P, 100);
       $$3.a(cfj.R, false);
       $$3.b(cfj.m);
@@ -61,7 +61,7 @@ public class byl extends bxy<bwn> {
 
    protected void d(ash $$0, bwn $$1, long $$2) {
       cpw $$3 = this.b($$1).get();
-      bxh<?> $$4 = $$1.eb();
+      bxh<?> $$4 = $$1.ec();
       $$4.a(cfj.n, new byj($$3, true));
       double $$5 = this.g.apply($$1);
       if ($$1.g($$3) < bae.k($$5)) {

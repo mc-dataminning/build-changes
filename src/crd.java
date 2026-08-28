@@ -27,11 +27,11 @@ public class crd extends cqe {
    @Override
    protected void a(fbu $$0) {
       super.a($$0);
-      if (this.dV() instanceof ash $$1) {
+      if (this.dW() instanceof ash $$1) {
          bvj var8 = $$0.a();
          boolean $$7;
          if (this.p() instanceof bwf $$5) {
-            btz $$6 = this.dW().a(this, $$5);
+            btz $$6 = this.dX().a(this, $$5);
             $$7 = var8.a($$1, $$6, 8.0F);
             if ($$7) {
                if (var8.bL()) {
@@ -41,14 +41,14 @@ public class crd extends cqe {
                }
             }
          } else {
-            $$7 = var8.a($$1, this.dW().q(), 5.0F);
+            $$7 = var8.a($$1, this.dX().q(), 5.0F);
          }
 
          if ($$7 && var8 instanceof bwf $$9) {
             int $$10 = 0;
-            if (this.dV().al() == btf.c) {
+            if (this.dW().al() == btf.c) {
                $$10 = 10;
-            } else if (this.dV().al() == btf.d) {
+            } else if (this.dW().al() == btf.d) {
                $$10 = 40;
             }
 
@@ -62,8 +62,8 @@ public class crd extends cqe {
    @Override
    protected void a(fbv $$0) {
       super.a($$0);
-      if (!this.dV().C) {
-         this.dV().a(this, this.dA(), this.dC(), this.dG(), 1.0F, false, dhh.a.c);
+      if (!this.dW().C) {
+         this.dW().a(this, this.dB(), this.dD(), this.dH(), 1.0F, false, dhh.a.c);
          this.at();
       }
    }

@@ -14,7 +14,7 @@ public class cby extends bxy<coz> {
    }
 
    protected boolean a(ash $$0, coz $$1) {
-      return $$1.a($$1.eb().c(cfj.o).get(), 15.0, 20.0);
+      return $$1.a($$1.ec().c(cfj.o).get(), 15.0, 20.0);
    }
 
    protected boolean a(ash $$0, coz $$1, long $$2) {
@@ -22,18 +22,18 @@ public class cby extends bxy<coz> {
    }
 
    protected void b(ash $$0, coz $$1, long $$2) {
-      $$1.eb().a(cfj.p, true, (long)i);
-      $$1.eb().a(cfj.aL, bbk.a, (long)h);
+      $$1.ec().a(cfj.p, true, (long)i);
+      $$1.ec().a(cfj.aL, bbk.a, (long)h);
       $$0.a($$1, (byte)62);
       $$1.a(axf.Cw, 3.0F, 1.0F);
    }
 
    protected void c(ash $$0, coz $$1, long $$2) {
-      $$1.eb().c(cfj.o).ifPresent($$1x -> $$1.H().a($$1x.dt()));
-      if (!$$1.eb().a(cfj.aL) && !$$1.eb().a(cfj.aK)) {
-         $$1.eb().a(cfj.aK, bbk.a, (long)(i - h));
-         $$1.eb().c(cfj.o).filter($$1::b).filter($$1x -> $$1.a($$1x, 15.0, 20.0)).ifPresent($$2x -> {
-            fbx $$3 = $$1.dt().e($$1.ds().b(bvk.d, 0, $$1.dL()));
+      $$1.ec().c(cfj.o).ifPresent($$1x -> $$1.H().a($$1x.du()));
+      if (!$$1.ec().a(cfj.aL) && !$$1.ec().a(cfj.aK)) {
+         $$1.ec().a(cfj.aK, bbk.a, (long)(i - h));
+         $$1.ec().c(cfj.o).filter($$1::b).filter($$1x -> $$1.a($$1x, 15.0, 20.0)).ifPresent($$2x -> {
+            fbx $$3 = $$1.du().e($$1.dt().b(bvk.d, 0, $$1.dM()));
             fbx $$4 = $$2x.bF().d($$3);
             fbx $$5 = $$4.d();
             int $$6 = bae.a($$4.g()) + 7;
@@ -58,6 +58,6 @@ public class cby extends bxy<coz> {
    }
 
    public static void a(bwf $$0, int $$1) {
-      $$0.eb().a(cfj.aJ, bbk.a, (long)$$1);
+      $$0.ec().a(cfj.aJ, bbk.a, (long)$$1);
    }
 }

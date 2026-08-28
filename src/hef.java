@@ -1,17 +1,11 @@
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.Function;
 
-public class hef extends hdp {
-   private final brq<hdl> b;
+public interface hef {
+   void a(hef.a var1);
 
-   public hef(brq<hdl> $$0) {
-      super($$0.e().getFirst().b());
-      this.b = $$0;
-   }
+   hdm a(hdv var1, Function<hdt, hbk> var2, heb var3);
 
-   @Override
-   public List<gmq> a(@Nullable dxu $$0, @Nullable jm $$1, bam $$2) {
-      return this.b.a($$2).map($$3 -> $$3.a($$0, $$1, $$2)).orElse(Collections.emptyList());
+   public interface a {
+      hef a(alz var1);
    }
 }

@@ -40,7 +40,7 @@ public class dlb extends djd implements drp {
 
    @Override
    protected bti a(cxo $$0, dxu $$1, dhh $$2, jh $$3, cpw $$4, bth $$5, fbt $$6) {
-      if ($$0.f() && $$4.gh().e && $$1.c(g)) {
+      if ($$0.f() && $$4.gj().e && $$1.c(g)) {
          a($$4, $$1, $$2, $$3);
          return bti.a;
       } else {

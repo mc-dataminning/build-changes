@@ -1,41 +1,74 @@
+import com.google.common.hash.Hashing;
 import javax.annotation.Nullable;
 
-public class fth extends ftw {
+public class fth implements AutoCloseable {
+   private static final alz a = alz.b("textures/misc/unknown_server.png");
+   private static final int b = 64;
+   private static final int c = 64;
+   private final hbl d;
+   private final alz e;
    @Nullable
-   private foo a;
+   private hax f;
+   private boolean g;
 
-   public fth(xv $$0) {
-      super($$0);
+   private fth(hbl $$0, alz $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Override
-   protected void aT_() {
-      this.a = this.c(new foo(this.n, this.l, this.p, 12));
-      this.c();
+   public static fth a(hbl $$0, String $$1) {
+      return new fth($$0, alz.b("worlds/" + ae.a($$1, alz::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
    }
 
-   @Override
-   protected void c() {
-      if (this.a != null) {
-         this.a.b(this.n);
-         this.a.c(this.n / 2 - this.a.y() / 2, this.o / 2 - 9 / 2);
+   public static fth b(hbl $$0, String $$1) {
+      return new fth($$0, alz.b("servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
+   }
+
+   public void a(ffr $$0) {
+      if ($$0.a() == 64 && $$0.b() == 64) {
+         try {
+            this.c();
+            if (this.f == null) {
+               this.f = new hax($$0);
+            } else {
+               this.f.a($$0);
+               this.f.e();
+            }
+
+            this.d.a(this.e, this.f);
+         } catch (Throwable var3) {
+            $$0.close();
+            this.a();
+            throw var3;
+         }
+      } else {
+         $$0.close();
+         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
       }
    }
 
-   @Override
-   public boolean aH_() {
-      return false;
+   public void a() {
+      this.c();
+      if (this.f != null) {
+         this.d.b(this.e);
+         this.f.close();
+         this.f = null;
+      }
+   }
+
+   public alz b() {
+      return this.f != null ? this.e : a;
    }
 
    @Override
-   protected boolean aS_() {
-      return false;
+   public void close() {
+      this.a();
+      this.g = true;
    }
 
-   @Override
-   public void b(fnq $$0, int $$1, int $$2, float $$3) {
-      this.a($$0, $$3);
-      this.q();
-      this.a($$0);
+   private void c() {
+      if (this.g) {
+         throw new IllegalStateException("Icon already closed");
+      }
    }
 }

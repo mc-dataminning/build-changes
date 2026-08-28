@@ -1,13 +1,10 @@
-import javax.annotation.Nullable;
-
-public class gzt extends gxn {
-   @Nullable
-   public bvh.l.e a;
-   @Nullable
-   public bvh.l.b f;
+public class gzt extends gys implements gzk {
+   public boolean a;
+   public boolean b;
+   public boolean c;
 
    @Override
-   public boolean a() {
-      return this.a != null;
+   public boolean c() {
+      return this.a;
    }
 }

@@ -24,7 +24,7 @@ public class ecj<T extends ebx> {
       this.d.b($$1).forEach($$0x -> {
          eck $$1x = $$0x.a(eck.c);
          if (!$$1x.a()) {
-            $$0x.b().filter($$0xx -> !$$0xx.dU()).forEach(this.b::e);
+            $$0x.b().filter($$0xx -> !$$0xx.dV()).forEach(this.b::e);
          }
       });
    }
@@ -35,7 +35,7 @@ public class ecj<T extends ebx> {
       this.d.b($$1).forEach($$0x -> {
          eck $$1x = $$0x.a(eck.b);
          if ($$1x.a()) {
-            $$0x.b().filter($$0xx -> !$$0xx.dU()).forEach(this.b::d);
+            $$0x.b().filter($$0xx -> !$$0xx.dV()).forEach(this.b::d);
          }
       });
    }
@@ -46,13 +46,13 @@ public class ecj<T extends ebx> {
 
    public void a(T $$0) {
       this.c.a($$0);
-      long $$1 = kj.c($$0.dv());
+      long $$1 = kj.c($$0.dw());
       ecb<T> $$2 = this.d.c($$1);
       $$2.a($$0);
       $$0.a(new ecj.a($$0, $$1, $$2));
       this.b.g($$0);
       this.b.c($$0);
-      if ($$0.dU() || $$2.c().a()) {
+      if ($$0.dV() || $$2.c().a()) {
          this.b.e($$0);
       }
    }
@@ -86,7 +86,7 @@ public class ecj<T extends ebx> {
 
       @Override
       public void a() {
-         jh $$0 = this.c.dv();
+         jh $$0 = this.c.dw();
          long $$1 = kj.c($$0);
          if ($$1 != this.d) {
             eck $$2 = this.e.c();
@@ -100,7 +100,7 @@ public class ecj<T extends ebx> {
             this.e = $$3;
             this.d = $$1;
             ecj.this.b.a(this.c);
-            if (!this.c.dU()) {
+            if (!this.c.dV()) {
                boolean $$4 = $$2.a();
                boolean $$5 = $$3.c().a();
                if ($$4 && !$$5) {
@@ -113,13 +113,13 @@ public class ecj<T extends ebx> {
       }
 
       @Override
-      public void a(bvj.c $$0) {
+      public void a(bvj.d $$0) {
          if (!this.e.b(this.c)) {
             ecj.a.warn("Entity {} wasn't found in section {} (destroying due to {})", new Object[]{this.c, kj.a(this.d), $$0});
          }
 
          eck $$1 = this.e.c();
-         if ($$1.a() || this.c.dU()) {
+         if ($$1.a() || this.c.dV()) {
             ecj.this.b.d(this.c);
          }
 

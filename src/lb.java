@@ -32,7 +32,7 @@ public interface lb {
                $$3.a($$0.b(), $$1, null, $$0.c().a($$2), bvp.o, $$2 != jm.b, false);
             } catch (Exception var6) {
                a.error("Error while dispensing spawn egg from dispenser at {}", $$0.c(), var6);
-               return cxo.k;
+               return cxo.j;
             }
 
             $$1.h(1);
@@ -80,7 +80,7 @@ public interface lb {
             jh $$2 = $$0.c().a($$0.d().c(dms.b));
 
             for (cjz $$4 : $$0.b().a(cjz.class, new fbs($$2), $$0x -> $$0x.bL() && !$$0x.t())) {
-               if ($$4.gD() && $$4.a_(499).a($$1)) {
+               if ($$4.gF() && $$4.a_(499).a($$1)) {
                   $$1.h(1);
                   this.a(true);
                   return $$1;
@@ -206,7 +206,7 @@ public interface lb {
             jh $$3 = $$0.c().a($$0.d().c(dms.b));
             cmb $$4 = new cmb($$2, (double)$$3.u() + 0.5, (double)$$3.v(), (double)$$3.w() + 0.5, null);
             $$2.b($$4);
-            $$2.a(null, $$4.dA(), $$4.dC(), $$4.dG(), axf.zX, axg.e, 1.0F, 1.0F);
+            $$2.a(null, $$4.dB(), $$4.dD(), $$4.dH(), axf.zX, axg.e, 1.0F, 1.0F);
             $$2.a(null, ecq.t, $$3);
             $$1.h(1);
             return $$1;
@@ -320,7 +320,7 @@ public interface lb {
                return $$1;
             } else {
                for (cjf $$5 : $$4) {
-                  if ($$5.gq()) {
+                  if ($$5.gs()) {
                      $$1.a(16, $$2, null, $$0x -> {
                      });
                      return $$1;

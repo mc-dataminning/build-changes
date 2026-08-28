@@ -10,7 +10,7 @@ public class cei extends cdd {
 
    @Override
    public boolean c() {
-      return this.a.gm();
+      return this.a.go();
    }
 
    @Override
@@ -26,7 +26,7 @@ public class cei extends cdd {
          if ($$0 == null) {
             return true;
          } else {
-            return this.a.g((bvj)$$0) < 144.0 && $$0.ep() != null ? false : this.a.gm();
+            return this.a.g((bvj)$$0) < 144.0 && $$0.eq() != null ? false : this.a.go();
          }
       }
    }

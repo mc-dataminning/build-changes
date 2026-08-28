@@ -24,7 +24,7 @@ public class bzi extends bxy<bwh> {
          this.d--;
          return false;
       } else {
-         bxh<?> $$2 = $$1.eb();
+         bxh<?> $$2 = $$1.ec();
          cfm $$3 = $$2.c(cfj.m).get();
          boolean $$4 = this.a($$1, $$3);
          if (!$$4 && this.a($$1, $$3, $$0.ac())) {
@@ -43,7 +43,7 @@ public class bzi extends bxy<bwh> {
 
    protected boolean a(ash $$0, bwh $$1, long $$2) {
       if (this.e != null && this.f != null) {
-         Optional<cfm> $$3 = $$1.eb().c(cfj.m);
+         Optional<cfm> $$3 = $$1.ec().c(cfj.m);
          boolean $$4 = $$3.<Boolean>map(bzi::a).orElse(false);
          cfr $$5 = $$1.L();
          return !$$5.m() && $$3.isPresent() && !this.a($$1, $$3.get()) && !$$4;
@@ -53,24 +53,24 @@ public class bzi extends bxy<bwh> {
    }
 
    protected void b(ash $$0, bwh $$1, long $$2) {
-      if ($$1.eb().a(cfj.m) && !this.a($$1, $$1.eb().c(cfj.m).get()) && $$1.L().s()) {
+      if ($$1.ec().a(cfj.m) && !this.a($$1, $$1.ec().c(cfj.m).get()) && $$1.L().s()) {
          this.d = $$0.H_().a(40);
       }
 
       $$1.L().o();
-      $$1.eb().b(cfj.m);
-      $$1.eb().b(cfj.t);
+      $$1.ec().b(cfj.m);
+      $$1.ec().b(cfj.t);
       this.e = null;
    }
 
    protected void c(ash $$0, bwh $$1, long $$2) {
-      $$1.eb().a(cfj.t, this.e);
+      $$1.ec().a(cfj.t, this.e);
       $$1.L().a(this.e, (double)this.g);
    }
 
    protected void d(ash $$0, bwh $$1, long $$2) {
       euk $$3 = $$1.L().k();
-      bxh<?> $$4 = $$1.eb();
+      bxh<?> $$4 = $$1.ec();
       if (this.e != $$3) {
          this.e = $$3;
          $$4.a(cfj.t, $$3);
@@ -89,7 +89,7 @@ public class bzi extends bxy<bwh> {
       jh $$3 = $$1.a().b();
       this.e = $$0.L().a($$3, 0);
       this.g = $$1.b();
-      bxh<?> $$4 = $$0.eb();
+      bxh<?> $$4 = $$0.ec();
       if (this.a($$0, $$1)) {
          $$4.b(cfj.E);
       } else {
@@ -115,7 +115,7 @@ public class bzi extends bxy<bwh> {
    }
 
    private boolean a(bwh $$0, cfm $$1) {
-      return $$1.a().b().k($$0.dv()) <= $$1.c();
+      return $$1.a().b().k($$0.dw()) <= $$1.c();
    }
 
    private static boolean a(cfm $$0) {

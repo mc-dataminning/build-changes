@@ -56,10 +56,10 @@ public class bum implements csp {
    }
 
    public void b(bwf $$0, int $$1) {
-      this.j.ifPresent($$1x -> $$0.dV().a(null, $$0.dA(), $$0.dC(), $$0.dG(), $$1x, $$0.dm(), 1.0F, 1.0F));
+      this.j.ifPresent($$1x -> $$0.dW().a(null, $$0.dB(), $$0.dD(), $$0.dH(), $$1x, $$0.dn(), 1.0F, 1.0F));
    }
 
-   public void a(ash $$0, bwf $$1, int $$2, bvj.c $$3) {
+   public void a(ash $$0, bwf $$1, int $$2, bvj.d $$3) {
    }
 
    public void a(ash $$0, bwf $$1, int $$2, btz $$3, float $$4) {

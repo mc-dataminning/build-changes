@@ -1,3 +1,10 @@
-public class gxg extends gzo {
-   public boolean a;
+public class gxg extends gxu {
+   public float a;
+   public int b;
+   public float c;
+   public float d;
+   public float e;
+   public boolean f;
+   public float g;
+   public float h;
 }

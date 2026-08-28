@@ -157,7 +157,7 @@ public class djp extends dkl implements dko {
 
    @Override
    protected float a(dxu $$0, cpw $$1, dgm $$2, jh $$3) {
-      return $$1.eX().h() instanceof czc ? 1.0F : super.a($$0, $$1, $$2, $$3);
+      return $$1.eZ().h() instanceof czc ? 1.0F : super.a($$0, $$1, $$2, $$3);
    }
 
    protected void a(dxu $$0, dhh $$1, jh $$2, bam $$3, int $$4) {

@@ -17,7 +17,7 @@ public record dek(ju<bum> d, def e, def f, def g, def h) implements dep {
    @Override
    public void a(ash $$0, int $$1, ddx $$2, bvj $$3, fbx $$4) {
       if ($$3 instanceof bwf $$5) {
-         bam $$6 = $$5.dY();
+         bam $$6 = $$5.dZ();
          Optional<jq<bum>> $$7 = this.d.a($$6);
          if ($$7.isPresent()) {
             int $$8 = Math.round(bae.b($$6, this.e.a($$1), this.f.a($$1)) * 20.0F);

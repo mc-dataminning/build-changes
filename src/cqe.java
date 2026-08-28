@@ -16,15 +16,15 @@ public abstract class cqe extends cqp {
 
    public cqe(bvq<? extends cqe> $$0, double $$1, double $$2, double $$3, fbx $$4, dhh $$5) {
       this($$0, $$5);
-      this.b($$1, $$2, $$3, this.dL(), this.dN());
+      this.b($$1, $$2, $$3, this.dM(), this.dO());
       this.ay();
       this.a($$4, this.c);
    }
 
    public cqe(bvq<? extends cqe> $$0, bwf $$1, fbx $$2, dhh $$3) {
-      this($$0, $$1.dA(), $$1.dC(), $$1.dG(), $$2, $$3);
+      this($$0, $$1.dB(), $$1.dD(), $$1.dH(), $$2, $$3);
       this.c($$1);
-      this.b($$1.dL(), $$1.dN());
+      this.b($$1.dM(), $$1.dO());
    }
 
    @Override
@@ -50,13 +50,13 @@ public abstract class cqe extends cqp {
    public void h() {
       bvj $$0 = this.p();
       this.v();
-      if (this.dV().C || ($$0 == null || !$$0.dQ()) && this.dV().B(this.dv())) {
+      if (this.dW().C || ($$0 == null || !$$0.dR()) && this.dW().B(this.dw())) {
          fbv $$1 = cqr.a(this, this::b, this.al_());
          fbx $$2;
          if ($$1.d() != fbv.a.a) {
             $$2 = $$1.g();
          } else {
-            $$2 = this.dt().e(this.dy());
+            $$2 = this.du().e(this.dz());
          }
 
          cqr.a(this, 0.2F);
@@ -78,13 +78,13 @@ public abstract class cqe extends cqp {
    }
 
    private void v() {
-      fbx $$0 = this.dy();
-      fbx $$1 = this.dt();
+      fbx $$0 = this.dz();
+      fbx $$1 = this.du();
       float $$4;
       if (this.bj()) {
          for (int $$2 = 0; $$2 < 4; $$2++) {
             float $$3 = 0.25F;
-            this.dV().a(ls.d, $$1.d - $$0.d * 0.25, $$1.e - $$0.e * 0.25, $$1.f - $$0.f * 0.25, $$0.d, $$0.e, $$0.f);
+            this.dW().a(ls.d, $$1.d - $$0.d * 0.25, $$1.e - $$0.e * 0.25, $$1.f - $$0.f * 0.25, $$0.d, $$0.e, $$0.f);
          }
 
          $$4 = this.u();
@@ -97,9 +97,9 @@ public abstract class cqe extends cqp {
 
    private void w() {
       lq $$0 = this.s();
-      fbx $$1 = this.dt();
+      fbx $$1 = this.du();
       if ($$0 != null) {
-         this.dV().a($$0, $$1.d, $$1.e + 0.5, $$1.f, 0.0, 0.0, 0.0);
+         this.dW().a($$0, $$1.d, $$1.e + 0.5, $$1.f, 0.0, 0.0, 0.0);
       }
    }
 

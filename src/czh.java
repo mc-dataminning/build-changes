@@ -10,7 +10,7 @@ public class czh extends cxk implements cyj {
    }
 
    public static daf c() {
-      return daf.a().a(bxn.c, new bxl(f, 8.0, bxl.a.a), bvs.b).a(bxn.e, new bxl(g, -2.9F, bxl.a.a), bvs.b).a();
+      return daf.a().a(bxn.c, new bxl(g, 8.0, bxl.a.a), bvs.b).a(bxn.e, new bxl(h, -2.9F, bxl.a.a), bvs.b).a();
    }
 
    public static daq d() {
@@ -50,10 +50,10 @@ public class czh extends cxk implements cyj {
                   $$0.a(1, $$4);
                   if ($$7 == 0.0F) {
                      crc $$10 = cqp.a(crc::new, $$9, $$0, $$4, 0.0F, 2.5F, 1.0F);
-                     if ($$4.fT()) {
+                     if ($$4.fV()) {
                         $$10.c = cqd.a.c;
                      } else {
-                        $$4.gg().h($$0);
+                        $$4.gi().h($$0);
                      }
 
                      $$1.a(null, $$10, $$8.a(), axg.h, 1.0F, 1.0F);
@@ -63,8 +63,8 @@ public class czh extends cxk implements cyj {
 
                $$4.b(axp.c.b(this));
                if ($$7 > 0.0F) {
-                  float $$11 = $$4.dL();
-                  float $$12 = $$4.dN();
+                  float $$11 = $$4.dM();
+                  float $$12 = $$4.dO();
                   float $$13 = -bae.a($$11 * (float) (Math.PI / 180.0)) * bae.b($$12 * (float) (Math.PI / 180.0));
                   float $$14 = -bae.a($$12 * (float) (Math.PI / 180.0));
                   float $$15 = bae.b($$11 * (float) (Math.PI / 180.0)) * bae.b($$12 * (float) (Math.PI / 180.0));

@@ -57,8 +57,8 @@ public class drh extends djx implements drp {
 
    @Override
    public void a(dhh $$0, jh $$1, dxu $$2, bvj $$3) {
-      if (!$$0.B_() && q($$2) && $$3.aq() != bvq.bG && $$0.c_($$1) instanceof dwg $$5 && $$0 instanceof ash $$6 && $$5.go().a($$6, $$1, ecq.P, ecq.a.a($$2))) {
-         $$5.f().b($$6, ecq.P, ecq.a.a($$3), $$3.dt());
+      if (!$$0.B_() && q($$2) && $$3.aq() != bvq.bG && $$0.c_($$1) instanceof dwg $$5 && $$0 instanceof ash $$6 && $$5.gq().a($$6, $$1, ecq.P, ecq.a.a($$2))) {
+         $$5.f().b($$6, ecq.P, ecq.a.a($$3), $$3.du());
       }
 
       super.a($$0, $$1, $$2, $$3);
@@ -107,7 +107,7 @@ public class drh extends djx implements drp {
    @Nullable
    @Override
    public <T extends duw> dux<T> a(dhh $$0, dxu $$1, duy<T> $$2) {
-      return !$$0.C ? a($$2, duy.J, ($$0x, $$1x, $$2x, $$3) -> ecz.c.a($$0x, $$3.gn(), $$3.go())) : null;
+      return !$$0.C ? a($$2, duy.J, ($$0x, $$1x, $$2x, $$3) -> ecz.c.a($$0x, $$3.gp(), $$3.gq())) : null;
    }
 
    @Override

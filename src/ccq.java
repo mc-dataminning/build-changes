@@ -12,7 +12,7 @@ public class ccq extends cdq {
 
    @Override
    public boolean b() {
-      return this.g.p() && !this.g.gm() && !this.g.gz() && super.b();
+      return this.g.p() && !this.g.go() && !this.g.gB() && super.b();
    }
 
    @Override
@@ -38,7 +38,7 @@ public class ccq extends cdq {
       this.g.y(false);
       if (!this.m()) {
          this.g.A(false);
-      } else if (!this.g.gz()) {
+      } else if (!this.g.gB()) {
          this.g.A(true);
       }
    }

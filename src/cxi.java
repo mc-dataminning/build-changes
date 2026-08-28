@@ -33,12 +33,12 @@ public class cxi extends cxk {
    @Override
    public bti a(dhh $$0, cpw $$1, bth $$2) {
       cxo $$3 = $$1.b($$2);
-      Optional<? extends jq<cxh>> $$4 = this.a($$3, $$1.dX());
+      Optional<? extends jq<cxh>> $$4 = this.a($$3, $$1.dY());
       if ($$4.isPresent()) {
          cxh $$5 = $$4.get().a();
          $$1.c($$2);
          a($$0, $$1, $$5);
-         $$1.gC().a($$3, bae.d($$5.b() * 20.0F));
+         $$1.gE().a($$3, bae.d($$5.b() * 20.0F));
          $$1.b(axp.c.b(this));
          return bti.c;
       } else {
@@ -48,7 +48,7 @@ public class cxi extends cxk {
 
    @Override
    public int a(cxo $$0, bwf $$1) {
-      Optional<jq<cxh>> $$2 = this.a($$0, $$1.dX());
+      Optional<jq<cxh>> $$2 = this.a($$0, $$1.dY());
       return $$2.<Integer>map($$0x -> bae.d(((cxh)$$0x.a()).b() * 20.0F)).orElse(0);
    }
 
@@ -78,6 +78,6 @@ public class cxi extends cxk {
       axe $$3 = $$2.a().a();
       float $$4 = $$2.c() / 16.0F;
       $$0.a($$1, $$1, $$3, axg.c, $$4, 1.0F);
-      $$0.a(ecq.B, $$1.dt(), ecq.a.a($$1));
+      $$0.a(ecq.B, $$1.du(), ecq.a.a($$1));
    }
 }

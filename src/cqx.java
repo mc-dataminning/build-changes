@@ -32,14 +32,15 @@ public abstract class cqx extends cqp {
 
    @Override
    public void h() {
-      fbv $$0 = cqr.a(this, this::b);
+      this.s();
       this.bf();
       this.m();
+      fbv $$0 = cqr.a(this, this::b);
       fbx $$1;
       if ($$0.d() != fbv.a.a) {
          $$1 = $$0.g();
       } else {
-         $$1 = this.dt().e(this.dy());
+         $$1 = this.du().e(this.dz());
       }
 
       this.b($$1);
@@ -52,13 +53,13 @@ public abstract class cqx extends cqp {
    }
 
    private void m() {
-      fbx $$0 = this.dy();
-      fbx $$1 = this.dt();
+      fbx $$0 = this.dz();
+      fbx $$1 = this.du();
       float $$4;
       if (this.bj()) {
          for (int $$2 = 0; $$2 < 4; $$2++) {
             float $$3 = 0.25F;
-            this.dV().a(ls.d, $$1.d - $$0.d * 0.25, $$1.e - $$0.e * 0.25, $$1.f - $$0.f * 0.25, $$0.d, $$0.e, $$0.f);
+            this.dW().a(ls.d, $$1.d - $$0.d * 0.25, $$1.e - $$0.e * 0.25, $$1.f - $$0.f * 0.25, $$0.d, $$0.e, $$0.f);
          }
 
          $$4 = 0.8F;
@@ -67,6 +68,17 @@ public abstract class cqx extends cqp {
       }
 
       this.h($$0.c((double)$$4));
+   }
+
+   private void s() {
+      if (this.ak) {
+         for (jh $$0 : jh.a(this.cR())) {
+            dxu $$1 = this.dW().a_($$0);
+            if ($$1.a(dkn.ny)) {
+               $$1.a(this.dW(), $$0, this);
+            }
+         }
+      }
    }
 
    @Override

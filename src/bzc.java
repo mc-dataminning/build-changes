@@ -2,7 +2,7 @@ import java.util.Optional;
 
 public final class bzc {
    public static Optional<fbx> a(bwh $$0, fbx $$1, float $$2, int $$3, boolean $$4) {
-      fbx $$5 = $$0.dt();
+      fbx $$5 = $$0.du();
       fbx $$6 = new fbx($$1.d - $$5.d, 0.0, $$1.f - $$5.f).d().c(0.5);
       fbx $$7 = $$1.d($$6);
       fbx $$8 = $$7.d($$5);
@@ -62,7 +62,7 @@ public final class bzc {
 
       for (int $$9 = 0; $$9 < $$6; $$9++) {
          $$8 = $$9 == $$6 - 1 ? $$3 : $$8.e($$7.c($$5 * 0.9F));
-         if (!$$0.dV().a($$0, $$1.a($$8))) {
+         if (!$$0.dW().a($$0, $$1.a($$8))) {
             return false;
          }
       }

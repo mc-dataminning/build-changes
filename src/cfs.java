@@ -16,7 +16,7 @@ public class cfs extends cfq {
 
    @Override
    public euk a(bvj $$0, int $$1) {
-      this.p = $$0.dv();
+      this.p = $$0.dw();
       return super.a($$0, $$1);
    }
 
@@ -26,7 +26,7 @@ public class cfs extends cfq {
       if ($$2 != null) {
          return this.a($$2, $$1);
       } else {
-         this.p = $$0.dv();
+         this.p = $$0.dw();
          this.d = $$1;
          return true;
       }
@@ -38,8 +38,8 @@ public class cfs extends cfq {
          super.c();
       } else {
          if (this.p != null) {
-            if (!this.p.a(this.a.dt(), (double)this.a.dq())
-               && (!(this.a.dC() > (double)this.p.v()) || !jh.a((double)this.p.u(), this.a.dC(), (double)this.p.w()).a(this.a.dt(), (double)this.a.dq()))) {
+            if (!this.p.a(this.a.du(), (double)this.a.dr())
+               && (!(this.a.dD() > (double)this.p.v()) || !jh.a((double)this.p.u(), this.a.dD(), (double)this.p.w()).a(this.a.du(), (double)this.a.dr()))) {
                this.a.I().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
             } else {
                this.p = null;

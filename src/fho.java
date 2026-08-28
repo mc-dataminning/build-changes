@@ -1,13 +1,8 @@
-import javax.annotation.Nullable;
+public class fho extends fhp {
+   private static final xv a = xv.c("mco.upload.cancelled");
 
-public abstract class fho extends RuntimeException {
-   @Nullable
+   @Override
    public xv a() {
-      return null;
-   }
-
-   @Nullable
-   public xv[] b() {
-      return null;
+      return a;
    }
 }

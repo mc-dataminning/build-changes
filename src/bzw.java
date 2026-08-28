@@ -26,8 +26,8 @@ public class bzw {
                         return false;
                      } else {
                         chj $$7 = $$4x.z();
-                        Optional<jh> $$8 = $$7.d($$0xxxx -> $$0xxxx.a(chn.n), $$5.dv(), 48, chj.b.c);
-                        if (!$$8.isEmpty() && !($$8.get().j($$5.dv()) <= 4.0)) {
+                        Optional<jh> $$8 = $$7.d($$0xxxx -> $$0xxxx.a(chn.n), $$5.dw(), 48, chj.b.c);
+                        if (!$$8.isEmpty() && !($$8.get().j($$5.dw()) <= 4.0)) {
                            MutableInt $$9 = new MutableInt(0);
                            $$2.setValue($$4x.ac() + (long)$$4x.H_().a(20));
                            Predicate<jh> $$10 = $$3xxx -> {
@@ -41,7 +41,7 @@ public class bzw {
                                  return true;
                               }
                            };
-                           Set<Pair<jq<chm>, jh>> $$11 = $$7.b($$0xxxx -> $$0xxxx.a(chn.n), $$10, $$5.dv(), 48, chj.b.c).collect(Collectors.toSet());
+                           Set<Pair<jq<chm>, jh>> $$11 = $$7.b($$0xxxx -> $$0xxxx.a(chn.n), $$10, $$5.dw(), 48, chj.b.c).collect(Collectors.toSet());
                            euk $$12 = bxr.a($$5, $$11);
                            if ($$12 != null && $$12.j()) {
                               jh $$13 = $$12.l();

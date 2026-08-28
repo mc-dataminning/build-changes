@@ -88,11 +88,11 @@ public abstract class ne implements nh {
       return this.a($$0, (exe.a<?>)this.a((dhg)$$0, exb.a($$1).a(eyt.a($$2))));
    }
 
-   private ewt.a c(dhg $$0) {
+   private ewt.a d(dhg $$0) {
       return ewt.b().a(ews.a().a(this.a()).a(faq.a(1.0F)).a(exb.a($$0)));
    }
 
-   private ewt.a d(dhg $$0) {
+   private ewt.a e(dhg $$0) {
       return ewt.b().a(this.a(dkn.gf, ews.a().a(faq.a(1.0F)).a(exb.a(dkn.gf)))).a(this.a($$0, ews.a().a(faq.a(1.0F)).a(exb.a($$0))));
    }
 
@@ -175,6 +175,10 @@ public abstract class ne implements nh {
 
    protected ewt.a b(dhg $$0) {
       return ewt.b().a(ews.a().a(faq.a(1.0F)).a(this.c()).a(exb.a($$0)));
+   }
+
+   protected ewt.a c(dhg $$0) {
+      return ewt.b().a(ews.a().a(faq.a(1.0F)).a(this.f()).a(exb.a($$0)));
    }
 
    protected ewt.a a(dkl $$0, ezx.a $$1) {
@@ -314,11 +318,11 @@ public abstract class ne implements nh {
    }
 
    protected void s(dkl $$0) {
-      this.a($$0, $$0x -> this.d((dhg)((dnp)$$0x).b()));
+      this.a($$0, $$0x -> this.e((dhg)((dnp)$$0x).b()));
    }
 
    protected void c(dkl $$0, dkl $$1) {
-      this.a($$0, this.c((dhg)$$1));
+      this.a($$0, this.d((dhg)$$1));
    }
 
    protected void c(dkl $$0, dhg $$1) {

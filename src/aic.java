@@ -5,7 +5,7 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 public class aic implements aac<ahm> {
    public static final zt<xg, aic> a = aac.a(aic::a, aic::new);
    private static final int b = 128;
-   private static final zt<xg, Int2ObjectMap<cxo>> c = zr.a(Int2ObjectOpenHashMap::new, zr.e.a(Short::intValue, Integer::shortValue), cxo.h, 128);
+   private static final zt<xg, Int2ObjectMap<cxo>> c = zr.a(Int2ObjectOpenHashMap::new, zr.e.a(Short::intValue, Integer::shortValue), cxo.g, 128);
    private final int d;
    private final int e;
    private final int f;
@@ -31,7 +31,7 @@ public class aic implements aac<ahm> {
       this.g = $$0.readByte();
       this.h = $$0.b(ctm.class);
       this.j = Int2ObjectMaps.unmodifiable(c.decode($$0));
-      this.i = cxo.h.decode($$0);
+      this.i = cxo.g.decode($$0);
    }
 
    private void a(xg $$0) {
@@ -41,7 +41,7 @@ public class aic implements aac<ahm> {
       $$0.l(this.g);
       $$0.a(this.h);
       c.encode($$0, this.j);
-      cxo.h.encode($$0, this.i);
+      cxo.g.encode($$0, this.i);
    }
 
    @Override

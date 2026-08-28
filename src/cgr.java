@@ -14,7 +14,7 @@ public class cgr extends cgp<bwn> {
    }
 
    protected void a(ash $$0, bwn $$1) {
-      bxh<?> $$2 = $$1.eb();
+      bxh<?> $$2 = $$1.ec();
       cgw $$3 = a.c().a((double)((float)$$1.h(bxn.E)));
       List<cpw> $$4 = $$0.y()
          .stream()
@@ -33,7 +33,7 @@ public class cgr extends cgp<bwn> {
    }
 
    private boolean a(cpw $$0) {
-      return this.a($$0.eX()) || this.a($$0.eY());
+      return this.a($$0.eZ()) || this.a($$0.fa());
    }
 
    private boolean a(cxo $$0) {

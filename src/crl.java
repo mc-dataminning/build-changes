@@ -51,7 +51,7 @@ public class crl extends evi {
    }
 
    public static boolean a(crk $$0, crj $$1) {
-      return $$0 != null && $$1 != null && $$1.i() != null ? $$0.bL() && $$0.gy() && $$0.et() <= 2400 && $$0.dV().G_() == $$1.i().G_() : false;
+      return $$0 != null && $$1 != null && $$1.i() != null ? $$0.bL() && $$0.gA() && $$0.eu() <= 2400 && $$0.dW().G_() == $$1.i().G_() : false;
    }
 
    @Nullable
@@ -61,7 +61,7 @@ public class crl extends evi {
       } else if (this.c.N().b(dhd.C)) {
          return null;
       } else {
-         ebp $$2 = $$0.dV().G_();
+         ebp $$2 = $$0.dW().G_();
          if (!$$2.c()) {
             return null;
          } else {

@@ -187,8 +187,8 @@ public class yb {
    }
 
    public static class c {
-      public static final Codec<yb.c> a = cxo.b.xmap(yb.c::new, yb.c::a);
-      private static final Codec<yb.c> c = cxo.g.xmap(yb.c::new, yb.c::a);
+      public static final Codec<yb.c> a = cxo.a.xmap(yb.c::new, yb.c::a);
+      private static final Codec<yb.c> c = cxo.f.xmap(yb.c::new, yb.c::a);
       public static final Codec<yb.c> b = Codec.withAlternative(a, c);
       private final jq<cxk> d;
       private final int e;
@@ -237,7 +237,7 @@ public class yb {
          try {
             ux $$2 = vv.a($$0.getString());
             DynamicOps<vu> $$3 = (DynamicOps<vu>)($$1 != null ? $$1.a(vl.a) : vl.a);
-            return cxo.b.parse($$3, $$2).map(yb.c::new);
+            return cxo.a.parse($$3, $$2).map(yb.c::new);
          } catch (CommandSyntaxException var4) {
             return DataResult.error(() -> "Failed to parse item tag: " + var4.getMessage());
          }

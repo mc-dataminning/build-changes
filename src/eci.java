@@ -67,7 +67,7 @@ public class eci<T extends ebx> implements AutoCloseable {
       if (!this.b($$0)) {
          return false;
       } else {
-         long $$2 = kj.c($$0.dv());
+         long $$2 = kj.c($$0.dw());
          ecb<T> $$3 = this.f.c($$2);
          $$3.a($$0);
          $$0.a(new eci.a($$0, $$2, $$3));
@@ -89,7 +89,7 @@ public class eci<T extends ebx> implements AutoCloseable {
    }
 
    static <T extends ebx> eck a(T $$0, eck $$1) {
-      return $$0.dU() ? eck.c : $$1;
+      return $$0.dV() ? eck.c : $$1;
    }
 
    public void a(Stream<T> $$0) {
@@ -141,17 +141,17 @@ public class eci<T extends ebx> implements AutoCloseable {
          boolean $$5 = $$2x.a();
          boolean $$6 = $$1.a();
          if ($$5 && !$$6) {
-            $$1x.b().filter($$0xx -> !$$0xx.dU()).forEach(this::d);
+            $$1x.b().filter($$0xx -> !$$0xx.dV()).forEach(this::d);
          }
 
          if ($$3 && !$$4) {
-            $$1x.b().filter($$0xx -> !$$0xx.dU()).forEach(this::f);
+            $$1x.b().filter($$0xx -> !$$0xx.dV()).forEach(this::f);
          } else if (!$$3 && $$4) {
-            $$1x.b().filter($$0xx -> !$$0xx.dU()).forEach(this::e);
+            $$1x.b().filter($$0xx -> !$$0xx.dV()).forEach(this::e);
          }
 
          if (!$$5 && $$6) {
-            $$1x.b().filter($$0xx -> !$$0xx.dU()).forEach(this::c);
+            $$1x.b().filter($$0xx -> !$$0xx.dV()).forEach(this::c);
          }
       });
    }
@@ -168,7 +168,7 @@ public class eci<T extends ebx> implements AutoCloseable {
       if ($$2 == eci.b.b) {
          return false;
       } else {
-         List<T> $$3 = this.f.b($$0).flatMap($$0x -> $$0x.b().filter(ebx::dT)).collect(Collectors.toList());
+         List<T> $$3 = this.f.b($$0).flatMap($$0x -> $$0x.b().filter(ebx::dU)).collect(Collectors.toList());
          if ($$3.isEmpty()) {
             if ($$2 == eci.b.c) {
                this.d.a(new ebv<>(new dgn($$0), ImmutableList.of()));
@@ -206,7 +206,7 @@ public class eci<T extends ebx> implements AutoCloseable {
    }
 
    private void g(ebx $$0) {
-      $$0.c(bvj.c.c);
+      $$0.c(bvj.d.c);
       $$0.a(eby.a);
    }
 
@@ -335,7 +335,7 @@ public class eci<T extends ebx> implements AutoCloseable {
 
       @Override
       public void a() {
-         jh $$0 = this.c.dv();
+         jh $$0 = this.c.dw();
          long $$1 = kj.c($$0);
          if ($$1 != this.d) {
             eck $$2 = this.e.c();
@@ -383,7 +383,7 @@ public class eci<T extends ebx> implements AutoCloseable {
       }
 
       @Override
-      public void a(bvj.c $$0) {
+      public void a(bvj.d $$0) {
          if (!this.e.b(this.c)) {
             eci.a.warn("Entity {} wasn't found in section {} (destroying due to {})", new Object[]{this.c, kj.a(this.d), $$0});
          }

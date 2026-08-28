@@ -17,7 +17,7 @@ public class clv extends cls implements bxf<jq<clw>> {
 
    @Override
    protected void a(alg.a $$0) {
-      $$0.a(g, this.dX().e(mb.X).a().orElseThrow());
+      $$0.a(g, this.dY().e(mb.X).a().orElseThrow());
    }
 
    @Override
@@ -80,14 +80,14 @@ public class clv extends cls implements bxf<jq<clw>> {
 
    @Override
    public void b(ux $$0) {
-      e.encodeStart(this.dX().a(vl.a), this.s()).ifSuccess($$1 -> $$0.a((ux)$$1));
+      e.encodeStart(this.dY().a(vl.a), this.s()).ifSuccess($$1 -> $$0.a((ux)$$1));
       $$0.a("facing", (byte)this.c.e());
       super.b($$0);
    }
 
    @Override
    public void a(ux $$0) {
-      e.parse(this.dX().a(vl.a), $$0).ifSuccess(this::b);
+      e.parse(this.dY().a(vl.a), $$0).ifSuccess(this::b);
       this.c = jm.b($$0.f("facing"));
       super.a($$0);
       this.a(this.c);
@@ -117,7 +117,7 @@ public class clv extends cls implements bxf<jq<clw>> {
    public void a(ash $$0, @Nullable bvj $$1) {
       if ($$0.N().b(dhd.i)) {
          this.a(axf.sK, 1.0F, 1.0F);
-         if ($$1 instanceof cpw $$2 && $$2.fT()) {
+         if ($$1 instanceof cpw $$2 && $$2.fV()) {
             return;
          }
 
@@ -141,7 +141,7 @@ public class clv extends cls implements bxf<jq<clw>> {
    }
 
    @Override
-   public fbx du() {
+   public fbx dv() {
       return fbx.a(this.a);
    }
 
@@ -157,7 +157,7 @@ public class clv extends cls implements bxf<jq<clw>> {
    }
 
    @Override
-   public cxo dI() {
+   public cxo dJ() {
       return new cxo(cxs.qv);
    }
 }

@@ -30,7 +30,7 @@ public class clz extends bvj {
       this.K = $$1;
       this.L = $$2;
       this.M = $$3;
-      this.a(this.dv());
+      this.a(this.dw());
    }
 
    public static clz a(dhh $$0, jh $$1, dxu $$2) {
@@ -63,8 +63,8 @@ public class clz extends bvj {
    }
 
    @Override
-   protected bvj.b bg() {
-      return bvj.b.a;
+   protected bvj.c bg() {
+      return bvj.c.a;
    }
 
    @Override
@@ -74,7 +74,7 @@ public class clz extends bvj {
 
    @Override
    public boolean bH() {
-      return !this.dQ();
+      return !this.dR();
    }
 
    @Override
@@ -90,24 +90,24 @@ public class clz extends bvj {
          dkl $$0 = this.g.b();
          this.a++;
          this.bf();
-         this.a(bwj.a, this.dy());
+         this.a(bwj.a, this.dz());
          this.aK();
          this.bW();
-         if (this.dV() instanceof ash $$1 && (this.bL() || this.d)) {
-            jh $$2 = this.dv();
+         if (this.dW() instanceof ash $$1 && (this.bL() || this.d)) {
+            jh $$2 = this.dw();
             boolean $$3 = this.g.b() instanceof dly;
-            boolean $$4 = $$3 && this.dV().b_($$2).a(aya.a);
-            double $$5 = this.dy().h();
+            boolean $$4 = $$3 && this.dW().b_($$2).a(aya.a);
+            double $$5 = this.dz().h();
             if ($$3 && $$5 > 1.0) {
-               fbt $$6 = this.dV().a(new dgp(new fbx(this.K, this.L, this.M), this.dt(), dgp.a.a, dgp.b.b, this));
-               if ($$6.d() != fbv.a.a && this.dV().b_($$6.b()).a(aya.a)) {
+               fbt $$6 = this.dW().a(new dgp(new fbx(this.K, this.L, this.M), this.du(), dgp.a.a, dgp.b.b, this));
+               if ($$6.d() != fbv.a.a && this.dW().b_($$6.b()).a(aya.a)) {
                   $$2 = $$6.b();
                   $$4 = true;
                }
             }
 
             if (!this.aJ() && !$$4) {
-               if (this.a > 100 && ($$2.v() <= this.dV().L_() || $$2.v() > this.dV().am()) || this.a > 600) {
+               if (this.a > 100 && ($$2.v() <= this.dW().L_() || $$2.v() > this.dW().am()) || this.a > 600) {
                   if (this.b && $$1.N().b(dhd.i)) {
                      this.a($$1, $$0);
                   }
@@ -115,36 +115,36 @@ public class clz extends bvj {
                   this.at();
                }
             } else {
-               dxu $$7 = this.dV().a_($$2);
-               this.h(this.dy().d(0.7, -0.5, 0.7));
+               dxu $$7 = this.dW().a_($$2);
+               this.h(this.dz().d(0.7, -0.5, 0.7));
                if (!$$7.a(dkn.bX)) {
                   if (!this.h) {
-                     boolean $$8 = $$7.a(new dbg(this.dV(), $$2, jm.a, cxo.k, jm.b));
-                     boolean $$9 = dni.n(this.dV().a_($$2.e())) && (!$$3 || !$$4);
-                     boolean $$10 = this.g.a((dhk)this.dV(), $$2) && !$$9;
+                     boolean $$8 = $$7.a(new dbg(this.dW(), $$2, jm.a, cxo.j, jm.b));
+                     boolean $$9 = dni.n(this.dW().a_($$2.e())) && (!$$3 || !$$4);
+                     boolean $$10 = this.g.a((dhk)this.dW(), $$2) && !$$9;
                      if ($$8 && $$10) {
-                        if (this.g.b(dyk.D) && this.dV().b_($$2).a() == etx.c) {
+                        if (this.g.b(dyk.D) && this.dW().b_($$2).a() == etx.c) {
                            this.g = this.g.b(dyk.D, Boolean.valueOf(true));
                         }
 
-                        if (this.dV().a($$2, this.g, 3)) {
-                           ((ash)this.dV()).m().a.a(this, new ada($$2, this.dV().a_($$2)));
+                        if (this.dW().a($$2, this.g, 3)) {
+                           ((ash)this.dW()).m().a.a(this, new ada($$2, this.dW().a_($$2)));
                            this.at();
                            if ($$0 instanceof dnh) {
-                              ((dnh)$$0).a(this.dV(), $$2, this.g, $$7, this);
+                              ((dnh)$$0).a(this.dW(), $$2, this.g, $$7, this);
                            }
 
                            if (this.c != null && this.g.x()) {
-                              duw $$11 = this.dV().c_($$2);
+                              duw $$11 = this.dW().c_($$2);
                               if ($$11 != null) {
-                                 ux $$12 = $$11.d(this.dV().K_());
+                                 ux $$12 = $$11.d(this.dW().K_());
 
                                  for (String $$13 : this.c.e()) {
                                     $$12.a($$13, this.c.c($$13).d());
                                  }
 
                                  try {
-                                    $$11.c($$12, this.dV().K_());
+                                    $$11.c($$12, this.dW().K_());
                                  } catch (Exception var16) {
                                     f.error("Failed to load block entity from falling block", var16);
                                  }
@@ -172,13 +172,13 @@ public class clz extends bvj {
             }
          }
 
-         this.h(this.dy().c(0.98));
+         this.h(this.dz().c(0.98));
       }
    }
 
    public void a(dkl $$0, jh $$1) {
       if ($$0 instanceof dnh) {
-         ((dnh)$$0).a(this.dV(), $$1, this);
+         ((dnh)$$0).a(this.dW(), $$1, this);
       }
    }
 
@@ -192,9 +192,9 @@ public class clz extends bvj {
             return false;
          } else {
             Predicate<bvj> $$4 = bvo.e.and(bvo.b);
-            btz $$6 = this.g.b() instanceof dnh $$5 ? $$5.a(this) : this.dW().a(this);
+            btz $$6 = this.g.b() instanceof dnh $$5 ? $$5.a(this) : this.dX().a(this);
             float $$7 = (float)Math.min(bae.d((float)$$3 * this.k), this.j);
-            this.dV().a(this, this.cR(), $$4).forEach($$2x -> $$2x.a($$6, $$7));
+            this.dW().a(this, this.cR(), $$4).forEach($$2x -> $$2x.a($$6, $$7));
             boolean $$8 = this.g.a(axu.O);
             if ($$8 && $$7 > 0.0F && this.ae.i() < 0.05F + (float)$$3 * 0.05F) {
                dxu $$9 = djl.e(this.g);
@@ -227,7 +227,7 @@ public class clz extends bvj {
 
    @Override
    protected void a(ux $$0) {
-      this.g = vm.a(this.dV().a(mb.f), $$0.p("BlockState"));
+      this.g = vm.a(this.dW().a(mb.f), $$0.p("BlockState"));
       this.a = $$0.h("Time");
       if ($$0.b("HurtEntities", 99)) {
          this.i = $$0.q("HurtEntities");
@@ -301,14 +301,14 @@ public class clz extends bvj {
       double $$2 = $$0.h();
       double $$3 = $$0.i();
       this.a_($$1, $$2, $$3);
-      this.a(this.dv());
+      this.a(this.dw());
    }
 
    @Nullable
    @Override
    public bvj b(euw $$0) {
       aly<dhh> $$1 = $$0.b().ah();
-      aly<dhh> $$2 = this.dV().ah();
+      aly<dhh> $$2 = this.dW().ah();
       boolean $$3 = ($$2 == dhh.k || $$1 == dhh.k) && $$2 != $$1;
       bvj $$4 = super.b($$0);
       this.d = $$4 != null && $$3;

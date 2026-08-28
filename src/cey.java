@@ -18,9 +18,9 @@ public class cey<T extends bwf> extends cew<T> {
 
    @Override
    public boolean b() {
-      if (this.j > 0 || !this.e.dY().h()) {
+      if (this.j > 0 || !this.e.dZ().h()) {
          return false;
-      } else if (!((crk)this.e).gC()) {
+      } else if (!((crk)this.e).gE()) {
          return false;
       } else {
          this.h();

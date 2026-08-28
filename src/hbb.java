@@ -1,39 +1,59 @@
 import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import javax.annotation.Nullable;
 
-public class hbb extends hbc {
-   @Nullable
-   private CompletableFuture<hbc.a> e;
+public class hbb implements AutoCloseable {
+   private static final int e = 16;
+   public static final int a = 0;
+   public static final int b = 3;
+   public static final int c = 10;
+   public static final int d = a(0, 10);
+   private final hax f = new hax(16, 16, false);
 
-   public hbb(avv $$0, alz $$1, Executor $$2) {
-      super($$1);
-      this.e = CompletableFuture.supplyAsync(() -> hbc.a.a($$0, $$1), $$2);
-   }
+   public hbb() {
+      ffr $$0 = this.f.f();
 
-   @Override
-   protected hbc.a b(avv $$0) {
-      if (this.e != null) {
-         hbc.a $$1 = this.e.join();
-         this.e = null;
-         return $$1;
-      } else {
-         return hbc.a.a($$0, this.d);
+      for (int $$1 = 0; $$1 < 16; $$1++) {
+         for (int $$2 = 0; $$2 < 16; $$2++) {
+            if ($$1 < 8) {
+               $$0.a($$2, $$1, -1291911168);
+            } else {
+               int $$3 = (int)((1.0F - (float)$$2 / 15.0F * 0.75F) * 255.0F);
+               $$0.a($$2, $$1, ayp.c($$3, -1));
+            }
+         }
       }
-   }
 
-   public CompletableFuture<Void> e() {
-      return this.e == null ? CompletableFuture.completedFuture(null) : this.e.thenApply($$0 -> null);
+      RenderSystem.activeTexture(33985);
+      this.f.d();
+      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), false, true, false, false);
+      RenderSystem.activeTexture(33984);
    }
 
    @Override
-   public void a(hbk $$0, avv $$1, alz $$2, Executor $$3) {
-      this.e = CompletableFuture.supplyAsync(() -> hbc.a.a($$1, this.d), ae.g());
-      this.e.thenRunAsync(() -> $$0.a(this.d, this), a($$3));
+   public void close() {
+      this.f.close();
    }
 
-   private static Executor a(Executor $$0) {
-      return $$1 -> $$0.execute(() -> RenderSystem.recordRenderCall($$1::run));
+   public void a() {
+      RenderSystem.setupOverlayColor(this.f.a(), 16);
+   }
+
+   public static int a(float $$0) {
+      return (int)($$0 * 15.0F);
+   }
+
+   public static int a(boolean $$0) {
+      return $$0 ? 3 : 10;
+   }
+
+   public static int a(int $$0, int $$1) {
+      return $$0 | $$1 << 16;
+   }
+
+   public static int a(float $$0, boolean $$1) {
+      return a(a($$0), a($$1));
+   }
+
+   public void b() {
+      RenderSystem.teardownOverlayColor();
    }
 }

@@ -11,7 +11,7 @@ public record daa(List<dba> d) {
 
    public void a(cxo $$0, bwf $$1) {
       for (dba $$2 : this.d) {
-         $$2.a($$1.dV(), $$0, $$1);
+         $$2.a($$1.dW(), $$0, $$1);
       }
    }
 

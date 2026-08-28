@@ -30,19 +30,19 @@ public class cco extends cdd {
 
    private void h() {
       Iterable<jh> $$0 = jh.b(
-         bae.a(this.a.dA() - 1.0), this.a.dB(), bae.a(this.a.dG() - 1.0), bae.a(this.a.dA() + 1.0), bae.a(this.a.dC() + 8.0), bae.a(this.a.dG() + 1.0)
+         bae.a(this.a.dB() - 1.0), this.a.dC(), bae.a(this.a.dH() - 1.0), bae.a(this.a.dB() + 1.0), bae.a(this.a.dD() + 8.0), bae.a(this.a.dH() + 1.0)
       );
       jh $$1 = null;
 
       for (jh $$2 : $$0) {
-         if (this.a(this.a.dV(), $$2)) {
+         if (this.a(this.a.dW(), $$2)) {
             $$1 = $$2;
             break;
          }
       }
 
       if ($$1 == null) {
-         $$1 = jh.a(this.a.dA(), this.a.dC() + 8.0, this.a.dG());
+         $$1 = jh.a(this.a.dB(), this.a.dD() + 8.0, this.a.dH());
       }
 
       this.a.L().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
@@ -52,7 +52,7 @@ public class cco extends cdd {
    public void a() {
       this.h();
       this.a.a(0.02F, new fbx((double)this.a.bo, (double)this.a.bp, (double)this.a.bq));
-      this.a.a(bwj.a, this.a.dy());
+      this.a.a(bwj.a, this.a.dz());
    }
 
    private boolean a(dhk $$0, jh $$1) {

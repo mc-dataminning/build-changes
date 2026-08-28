@@ -7,18 +7,18 @@ public abstract class cmw extends bwn implements cmo {
    }
 
    @Override
-   public axg dm() {
+   public axg dn() {
       return axg.f;
    }
 
    @Override
    public void d_() {
-      this.eV();
-      this.gq();
+      this.eX();
+      this.gs();
       super.d_();
    }
 
-   protected void gq() {
+   protected void gs() {
       float $$0 = this.by();
       if ($$0 > 0.5F) {
          this.bf += 2;
@@ -51,7 +51,7 @@ public abstract class cmw extends bwn implements cmo {
    }
 
    @Override
-   public bwf.a eL() {
+   public bwf.a eM() {
       return new bwf.a(axf.no, axf.nl);
    }
 
@@ -83,17 +83,17 @@ public abstract class cmw extends bwn implements cmo {
       return $$1.al() != btf.a && a($$0, $$1, $$2, $$3, $$4);
    }
 
-   public static bxm.a gr() {
+   public static bxm.a gt() {
       return bwh.C().a(bxn.c);
    }
 
    @Override
-   public boolean em() {
+   public boolean en() {
       return true;
    }
 
    @Override
-   protected boolean en() {
+   protected boolean eo() {
       return true;
    }
 
@@ -108,7 +108,7 @@ public abstract class cmw extends bwn implements cmo {
          cxo $$2 = cyk.a(this, $$1);
          return $$2.f() ? new cxo(cxs.oS) : $$2;
       } else {
-         return cxo.k;
+         return cxo.j;
       }
    }
 }

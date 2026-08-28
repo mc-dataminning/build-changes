@@ -15,9 +15,9 @@ public class cqg extends cqe {
    protected void a(fbv $$0) {
       super.a($$0);
       if ($$0.d() != fbv.a.c || !this.e(((fbu)$$0).a())) {
-         if (!this.dV().C) {
-            List<bwf> $$1 = this.dV().a(bwf.class, this.cR().c(4.0, 2.0, 4.0));
-            bvc $$2 = new bvc(this.dV(), this.dA(), this.dC(), this.dG());
+         if (!this.dW().C) {
+            List<bwf> $$1 = this.dW().a(bwf.class, this.cR().c(4.0, 2.0, 4.0));
+            bvc $$2 = new bvc(this.dW(), this.dB(), this.dD(), this.dH());
             bvj $$3 = this.p();
             if ($$3 instanceof bwf) {
                $$2.a((bwf)$$3);
@@ -32,14 +32,14 @@ public class cqg extends cqe {
                for (bwf $$4 : $$1) {
                   double $$5 = this.g($$4);
                   if ($$5 < 16.0) {
-                     $$2.a_($$4.dA(), $$4.dC(), $$4.dG());
+                     $$2.a_($$4.dB(), $$4.dD(), $$4.dH());
                      break;
                   }
                }
             }
 
-            this.dV().c(2006, this.dv(), this.bb() ? -1 : 1);
-            this.dV().b($$2);
+            this.dW().c(2006, this.dw(), this.bb() ? -1 : 1);
+            this.dW().b($$2);
             this.at();
          }
       }

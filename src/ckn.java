@@ -27,7 +27,7 @@ public class ckn extends chw {
    public final bvb ce = new bvb();
 
    public static bxm.a p() {
-      return chw.gr().a(bxn.v, 0.1F).a(bxn.s, 14.0);
+      return chw.gt().a(bxn.v, 0.1F).a(bxn.s, 14.0);
    }
 
    public ckn(bvq<? extends chw> $$0, dhh $$1) {
@@ -60,35 +60,35 @@ public class ckn extends chw {
 
    @Override
    public bvm e(bwr $$0) {
-      return this.gz() == ckn.a.f ? cl.a(this.ei()) : super.e($$0);
+      return this.gB() == ckn.a.f ? cl.a(this.ej()) : super.e($$0);
    }
 
    public boolean t() {
-      return this.gz() == ckn.a.e;
+      return this.gB() == ckn.a.e;
    }
 
    public boolean x() {
       return this.bF.c(cfj.R).orElse(false);
    }
 
-   public boolean gm() {
-      return !this.x() && !this.gj() && !this.bj() && !this.gw() && this.aJ() && !this.bZ() && !this.P_();
+   public boolean go() {
+      return !this.x() && !this.gl() && !this.bj() && !this.gy() && this.aJ() && !this.bZ() && !this.P_();
    }
 
-   public boolean gn() {
-      return this.gz() == ckn.a.f || this.gz() == ckn.a.e;
+   public boolean gp() {
+      return this.gB() == ckn.a.f || this.gB() == ckn.a.e;
    }
 
-   private jh gq() {
-      fbx $$0 = this.gy();
-      return jh.a($$0.a(), this.dC() + 0.2F, $$0.c());
+   private jh gs() {
+      fbx $$0 = this.gA();
+      return jh.a($$0.a(), this.dD() + 0.2F, $$0.c());
    }
 
-   private fbx gy() {
-      return this.dt().e(this.bV().c(2.25));
+   private fbx gA() {
+      return this.du().e(this.bV().c(2.25));
    }
 
-   private ckn.a gz() {
+   private ckn.a gB() {
       return this.al.a(cm);
    }
 
@@ -100,8 +100,8 @@ public class ckn extends chw {
    @Override
    public void a(alc<?> $$0) {
       if (cm.equals($$0)) {
-         ckn.a $$1 = this.gz();
-         this.gA();
+         ckn.a $$1 = this.gB();
+         this.gC();
          switch ($$1) {
             case b:
                this.bZ.b(this.af);
@@ -127,7 +127,7 @@ public class ckn extends chw {
       super.a($$0);
    }
 
-   private void gA() {
+   private void gC() {
       this.cd.a();
       this.cb.a();
       this.ce.a();
@@ -145,7 +145,7 @@ public class ckn extends chw {
             this.b(ckn.a.b);
             break;
          case c:
-            this.b(ckn.a.c).gB();
+            this.b(ckn.a.c).gD();
             break;
          case d:
             this.a(axf.yR, 1.0F, 1.0F);
@@ -155,7 +155,7 @@ public class ckn extends chw {
             this.b(ckn.a.e);
             break;
          case f:
-            this.b(ckn.a.f).gC();
+            this.b(ckn.a.f).gE();
             break;
          case g:
             this.a(axf.yU, 1.0F, 1.0F);
@@ -165,14 +165,14 @@ public class ckn extends chw {
       return this;
    }
 
-   private ckn gB() {
+   private ckn gD() {
       this.a(axf.yQ, 1.0F, this.e_() ? 1.3F : 1.0F);
       return this;
    }
 
-   private ckn gC() {
+   private ckn gE() {
       this.al.a(cn, this.af + 120);
-      this.dV().a(this, (byte)63);
+      this.dW().a(this, (byte)63);
       return this;
    }
 
@@ -184,32 +184,32 @@ public class ckn extends chw {
       return this;
    }
 
-   Optional<jh> go() {
+   Optional<jh> gq() {
       return IntStream.range(0, 5)
          .mapToObj($$0 -> chd.a(this, 10 + 2 * $$0, 3))
          .filter(Objects::nonNull)
          .map(jh::a)
-         .filter($$0 -> this.dV().F_().a($$0))
+         .filter($$0 -> this.dW().F_().a($$0))
          .map(jh::e)
          .filter(this::h)
          .findFirst();
    }
 
-   boolean gp() {
-      return !this.gj() && !this.x() && !this.e_() && !this.bj() && this.aJ() && !this.bZ() && this.h(this.gq().e());
+   boolean gr() {
+      return !this.gl() && !this.x() && !this.e_() && !this.bj() && this.aJ() && !this.bZ() && this.h(this.gs().e());
    }
 
    private boolean h(jh $$0) {
-      return this.dV().a_($$0).a(axu.cu)
-         && this.gE().noneMatch($$1 -> jp.a(this.dV().ah(), $$0).equals($$1))
+      return this.dW().a_($$0).a(axu.cu)
+         && this.gG().noneMatch($$1 -> jp.a(this.dW().ah(), $$0).equals($$1))
          && Optional.ofNullable(this.L().a($$0, 1)).map(euk::j).orElse(false);
    }
 
-   private void gD() {
-      if (this.dV() instanceof ash $$0 && this.al.a(cn) == this.af) {
-         jh $$2 = this.gq();
+   private void gF() {
+      if (this.dW() instanceof ash $$0 && this.al.a(cn) == this.af) {
+         jh $$2 = this.gs();
          this.a($$0, ewk.aG, ($$1x, $$2x) -> {
-            cma $$3 = new cma(this.dV(), (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$2x);
+            cma $$3 = new cma(this.dW(), (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$2x);
             $$3.s();
             $$1x.b($$3);
          });
@@ -221,36 +221,36 @@ public class ckn extends chw {
    private ckn a(bvb $$0) {
       boolean $$1 = $$0.a((float)this.af) > 1700L && $$0.a((float)this.af) < 6000L;
       if ($$1) {
-         jh $$2 = this.gq();
-         dxu $$3 = this.dV().a_($$2.e());
+         jh $$2 = this.gs();
+         dxu $$3 = this.dW().a_($$2.e());
          if ($$3.o() != dqu.a) {
             for (int $$4 = 0; $$4 < 30; $$4++) {
                fbx $$5 = fbx.b($$2).b(0.0, -0.65F, 0.0);
-               this.dV().a(new lk(ls.b, $$3), $$5.d, $$5.e, $$5.f, 0.0, 0.0, 0.0);
+               this.dW().a(new lk(ls.b, $$3), $$5.d, $$5.e, $$5.f, 0.0, 0.0, 0.0);
             }
 
             if (this.af % 10 == 0) {
-               this.dV().a(this.dA(), this.dC(), this.dG(), $$3.A().f(), this.dm(), 0.5F, 0.5F, false);
+               this.dW().a(this.dB(), this.dD(), this.dH(), $$3.A().f(), this.dn(), 0.5F, 0.5F, false);
             }
          }
       }
 
       if (this.af % 10 == 0) {
-         this.dV().a(ecq.u, this.gq(), ecq.a.a(this));
+         this.dW().a(ecq.u, this.gs(), ecq.a.a(this));
       }
 
       return this;
    }
 
    private ckn i(jh $$0) {
-      List<jp> $$1 = this.gE().limit(20L).collect(Collectors.toList());
-      $$1.add(0, jp.a(this.dV().ah(), $$0));
-      this.eb().a(cfj.aQ, $$1);
+      List<jp> $$1 = this.gG().limit(20L).collect(Collectors.toList());
+      $$1.add(0, jp.a(this.dW().ah(), $$0));
+      this.ec().a(cfj.aQ, $$1);
       return this;
    }
 
-   private Stream<jp> gE() {
-      return this.eb().c(cfj.aQ).stream().flatMap(Collection::stream);
+   private Stream<jp> gG() {
+      return this.ec().c(cfj.aQ).stream().flatMap(Collection::stream);
    }
 
    @Override
@@ -258,7 +258,7 @@ public class ckn extends chw {
       super.s();
       double $$0 = this.bQ.c();
       if ($$0 > 0.0) {
-         double $$1 = this.dy().j();
+         double $$1 = this.dz().j();
          if ($$1 < 0.01) {
             this.a(0.1F, new fbx(0.0, 0.0, 1.0));
          }
@@ -268,7 +268,7 @@ public class ckn extends chw {
    @Override
    public void a(ash $$0, chw $$1) {
       cxo $$2 = new cxo(cxs.kE);
-      cma $$3 = new cma($$0, this.dt().a(), this.dt().b(), this.dt().c(), $$2);
+      cma $$3 = new cma($$0, this.du().a(), this.du().b(), this.du().c(), $$2);
       $$3.s();
       this.a($$0, $$1, null);
       this.a(axf.yW, 1.0F, (this.ae.i() - this.ae.i()) * 0.2F + 0.5F);
@@ -283,12 +283,12 @@ public class ckn extends chw {
 
    @Override
    public void h() {
-      switch (this.gz()) {
+      switch (this.gB()) {
          case e:
-            this.gF();
+            this.gH();
             break;
          case f:
-            this.a(this.cd).gD();
+            this.a(this.cd).gF();
       }
 
       super.h();
@@ -300,20 +300,20 @@ public class ckn extends chw {
       boolean $$3 = this.j($$2);
       bti $$4 = super.b($$0, $$1);
       if ($$4.a() && $$3) {
-         this.gs();
+         this.gu();
       }
 
       return $$4;
    }
 
    @Override
-   protected void gs() {
-      this.dV().a(null, this, axf.yL, axg.g, 1.0F, bae.b(this.dV().A, 0.8F, 1.2F));
+   protected void gu() {
+      this.dW().a(null, this, axf.yL, axg.g, 1.0F, bae.b(this.dW().A, 0.8F, 1.2F));
    }
 
-   private void gF() {
-      if (this.dV().B_() && this.af % 20 == 0) {
-         this.dV().a(this.dA(), this.dC(), this.dG(), axf.yS, this.dm(), 1.0F, 1.0F, false);
+   private void gH() {
+      if (this.dW().B_() && this.af % 20 == 0) {
+         this.dW().a(this.dB(), this.dD(), this.dH(), axf.yS, this.dn(), 1.0F, 1.0F, false);
       }
    }
 
@@ -324,7 +324,7 @@ public class ckn extends chw {
 
    @Override
    protected axe u() {
-      return Set.of(ckn.a.f, ckn.a.e).contains(this.gz()) ? null : axf.yM;
+      return Set.of(ckn.a.f, ckn.a.e).contains(this.gB()) ? null : axf.yM;
    }
 
    @Override
@@ -358,7 +358,7 @@ public class ckn extends chw {
          return false;
       } else {
          Set<ckn.a> $$2 = Set.of(ckn.a.a, ckn.a.c, ckn.a.b);
-         return $$2.contains(this.gz()) && $$2.contains($$1.gz()) && super.a($$0);
+         return $$2.contains(this.gB()) && $$2.contains($$1.gB()) && super.a($$0);
       }
    }
 
@@ -369,16 +369,16 @@ public class ckn extends chw {
 
    @Override
    protected bxh<?> a(Dynamic<?> $$0) {
-      return cko.a(this.ec().a($$0));
+      return cko.a(this.ed().a($$0));
    }
 
    @Override
-   public bxh<ckn> eb() {
-      return (bxh<ckn>)super.eb();
+   public bxh<ckn> ec() {
+      return (bxh<ckn>)super.ec();
    }
 
    @Override
-   protected bxh.b<ckn> ec() {
+   protected bxh.b<ckn> ed() {
       return bxh.a(cko.b, cko.a);
    }
 
@@ -386,7 +386,7 @@ public class ckn extends chw {
    protected void a(ash $$0) {
       bps $$1 = bpr.a();
       $$1.a("snifferBrain");
-      this.eb().a($$0, this);
+      this.ec().a($$0, this);
       $$1.b("snifferActivityUpdate");
       cko.a(this);
       $$1.c();

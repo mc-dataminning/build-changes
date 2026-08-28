@@ -1,56 +1,62 @@
-import com.google.common.collect.Maps;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.util.Collection;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
+import javax.annotation.Nullable;
 
 public class hgh {
-   private final avy a;
-   private final Map<alz, CompletableFuture<feh>> b = Maps.newHashMap();
+   private static final int a = 100;
+   private final bam b = bam.a();
+   private final fmf c;
+   @Nullable
+   private hfh d;
+   private int e = 100;
 
-   public hgh(avy $$0) {
-      this.a = $$0;
-   }
-
-   public CompletableFuture<feh> a(alz $$0) {
-      return this.b.computeIfAbsent($$0, $$0x -> CompletableFuture.supplyAsync(() -> {
-            try {
-               feh var5;
-               try (
-                  InputStream $$1 = this.a.open($$0x);
-                  hgc $$2 = new hge($$1);
-               ) {
-                  ByteBuffer $$3 = $$2.b();
-                  var5 = new feh($$3, $$2.a());
-               }
-
-               return var5;
-            } catch (IOException var10) {
-               throw new CompletionException(var10);
-            }
-         }, ae.i()));
-   }
-
-   public CompletableFuture<hfz> a(alz $$0, boolean $$1) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            InputStream $$2 = this.a.open($$0);
-            return (hfz)($$1 ? new hgf(hge::new, $$2) : new hge($$2));
-         } catch (IOException var4) {
-            throw new CompletionException(var4);
-         }
-      }, ae.i());
+   public hgh(fmf $$0) {
+      this.c = $$0;
    }
 
    public void a() {
-      this.b.values().forEach($$0 -> $$0.thenAccept(feh::b));
-      this.b.clear();
+      axc $$0 = this.c.al();
+      if (this.d != null) {
+         if (!$$0.a().a().a().equals(this.d.a()) && $$0.d()) {
+            this.c.ak().b(this.d);
+            this.e = bae.a(this.b, 0, $$0.b() / 2);
+         }
+
+         if (!this.c.ak().c(this.d)) {
+            this.d = null;
+            this.e = Math.min(this.e, bae.a(this.b, $$0.b(), $$0.c()));
+         }
+      }
+
+      this.e = Math.min(this.e, $$0.c());
+      if (this.d == null && this.e-- <= 0) {
+         this.a($$0);
+      }
    }
 
-   public CompletableFuture<?> a(Collection<hfd> $$0) {
-      return CompletableFuture.allOf($$0.stream().map($$0x -> this.a($$0x.b())).toArray(CompletableFuture[]::new));
+   public void a(axc $$0) {
+      this.d = hfc.a($$0.a().a());
+      if (this.d.b() != hgm.b) {
+         this.c.ak().a(this.d);
+      }
+
+      this.e = Integer.MAX_VALUE;
+   }
+
+   public void b(axc $$0) {
+      if (this.c($$0)) {
+         this.b();
+      }
+   }
+
+   public void b() {
+      if (this.d != null) {
+         this.c.ak().b(this.d);
+         this.d = null;
+      }
+
+      this.e += 100;
+   }
+
+   public boolean c(axc $$0) {
+      return this.d == null ? false : $$0.a().a().a().equals(this.d.a());
    }
 }

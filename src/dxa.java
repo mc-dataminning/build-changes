@@ -127,7 +127,7 @@ public enum dxa implements bba {
    private void a(ash $$0, jh $$1, dww $$2) {
       dwz $$3 = $$2.f();
       dwx $$4 = $$2.b();
-      cxo $$5 = $$3.a($$0, $$4, $$1).a($$0.A).orElse(cxo.k);
+      cxo $$5 = $$3.a($$0, $$4, $$1).a($$0.A).orElse(cxo.j);
       if (!$$5.f()) {
          if (this.a($$0, $$3)) {
             a($$0, $$1, $$2, $$3).ifPresent($$4x -> {
@@ -158,8 +158,8 @@ public enum dxa implements bba {
    }
 
    private static Optional<fbx> a(bvj $$0, ash $$1) {
-      fbx $$2 = $$0.dt();
-      fbx $$3 = $$2.a(jm.b, (double)($$0.dr() + 2.0F + (float)$$1.A.a(4)));
+      fbx $$2 = $$0.du();
+      fbx $$3 = $$2.a(jm.b, (double)($$0.ds() + 2.0F + (float)$$1.A.a(4)));
       fbt $$4 = $$1.a(new dgp($$2, $$3, dgp.a.c, dgp.b.a, fcc.a()));
       fbx $$5 = $$4.b().b().a(jm.a, 1.0);
       jh $$6 = jh.a((ka)$$5);

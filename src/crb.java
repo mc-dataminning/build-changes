@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 public class crb extends cqw {
    public static final double a = 4.0;
    private static final double c = 16.0;
-   public static final Predicate<bwf> b = $$0 -> $$0.fp() || $$0.bY();
+   public static final Predicate<bwf> b = $$0 -> $$0.fr() || $$0.bY();
 
    public crb(bvq<? extends crb> $$0, dhh $$1) {
       super($$0, $$1);
@@ -33,7 +33,7 @@ public class crb extends cqw {
    @Override
    protected void a(fbt $$0) {
       super.a($$0);
-      if (!this.dV().C) {
+      if (!this.dW().C) {
          cxo $$1 = this.l();
          jm $$2 = $$0.c();
          jh $$3 = $$0.b();
@@ -53,7 +53,7 @@ public class crb extends cqw {
    @Override
    protected void a(fbv $$0) {
       super.a($$0);
-      if (this.dV() instanceof ash $$1) {
+      if (this.dW() instanceof ash $$1) {
          cxo $$3 = this.l();
          czn $$4 = $$3.a(ku.Q, czn.a);
          if ($$4.a(czo.a)) {
@@ -67,7 +67,7 @@ public class crb extends cqw {
          }
 
          int $$5 = $$4.e().isPresent() && $$4.e().get().a().c() ? 2007 : 2002;
-         $$1.c($$5, this.dv(), $$4.b());
+         $$1.c($$5, this.dw(), $$4.b());
          this.at();
       }
    }
@@ -75,11 +75,11 @@ public class crb extends cqw {
    private void b(ash $$0) {
       fbs $$1 = this.cR().c(4.0, 2.0, 4.0);
 
-      for (bwf $$3 : this.dV().a(bwf.class, $$1, b)) {
+      for (bwf $$3 : this.dW().a(bwf.class, $$1, b)) {
          double $$4 = this.g($$3);
          if ($$4 < 16.0) {
-            if ($$3.fp()) {
-               $$3.a($$0, this.dW().c(this, this.p()), 1.0F);
+            if ($$3.fr()) {
+               $$3.a($$0, this.dX().c(this, this.p()), 1.0F);
             }
 
             if ($$3.bY() && $$3.bL()) {
@@ -88,7 +88,7 @@ public class crb extends cqw {
          }
       }
 
-      for (cji $$6 : this.dV().a(cji.class, $$1)) {
+      for (cji $$6 : this.dW().a(cji.class, $$1)) {
          $$6.x();
       }
    }
@@ -100,7 +100,7 @@ public class crb extends cqw {
          bvj $$5 = this.D();
 
          for (bwf $$6 : $$4) {
-            if ($$6.fJ()) {
+            if ($$6.fL()) {
                double $$7 = this.g($$6);
                if ($$7 < 16.0) {
                   double $$8;
@@ -129,7 +129,7 @@ public class crb extends cqw {
    }
 
    private void a(czn $$0) {
-      bvc $$1 = new bvc(this.dV(), this.dA(), this.dC(), this.dG());
+      bvc $$1 = new bvc(this.dW(), this.dB(), this.dD(), this.dH());
       if (this.p() instanceof bwf $$2) {
          $$1.a($$2);
       }
@@ -139,7 +139,7 @@ public class crb extends cqw {
       $$1.c(10);
       $$1.c(-$$1.c() / (float)$$1.g());
       $$1.a($$0);
-      this.dV().b($$1);
+      this.dW().b($$1);
    }
 
    private boolean s() {
@@ -147,22 +147,22 @@ public class crb extends cqw {
    }
 
    private void a(jh $$0) {
-      dxu $$1 = this.dV().a_($$0);
+      dxu $$1 = this.dW().a_($$0);
       if ($$1.a(axu.aN)) {
-         this.dV().a($$0, false, this);
+         this.dW().a($$0, false, this);
       } else if (djd.c($$1)) {
-         djd.a(null, $$1, this.dV(), $$0);
+         djd.a(null, $$1, this.dW(), $$0);
       } else if (dla.h($$1)) {
-         this.dV().a(null, 1009, $$0, 0);
-         dla.a(this.p(), this.dV(), $$0, $$1);
-         this.dV().b($$0, $$1.b(dla.c, Boolean.valueOf(false)));
+         this.dW().a(null, 1009, $$0, 0);
+         dla.a(this.p(), this.dW(), $$0, $$1);
+         this.dW().b($$0, $$1.b(dla.c, Boolean.valueOf(false)));
       }
    }
 
    @Override
    public DoubleDoubleImmutablePair a_(bwf $$0, btz $$1) {
-      double $$2 = $$0.dt().d - this.dt().d;
-      double $$3 = $$0.dt().f - this.dt().f;
+      double $$2 = $$0.du().d - this.du().d;
+      double $$3 = $$0.du().f - this.du().f;
       return DoubleDoubleImmutablePair.of($$2, $$3);
    }
 }

@@ -4,11 +4,11 @@ public record bws(fbx b, fbx c, float d, float e) {
    public static final zt<ws, bws> a = zt.a(fbx.b, bws::a, fbx.b, bws::b, zr.l, bws::c, zr.l, bws::d, bws::new);
 
    public static bws a(bvj $$0) {
-      return new bws($$0.dt(), $$0.ah(), $$0.dL(), $$0.dN());
+      return new bws($$0.du(), $$0.ah(), $$0.dM(), $$0.dO());
    }
 
    public static bws b(bvj $$0) {
-      return new bws(new fbx($$0.R_(), $$0.S_(), $$0.g_()), $$0.ah(), $$0.dL(), $$0.dN());
+      return new bws(new fbx($$0.R_(), $$0.S_(), $$0.g_()), $$0.ah(), $$0.dM(), $$0.dO());
    }
 
    public static bws a(euw $$0) {

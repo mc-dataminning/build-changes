@@ -1,160 +1,310 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.UUID;
+import java.time.Duration;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class foc {
-   private static final int a = 182;
-   private static final int b = 5;
-   private static final alz[] c = new alz[]{
-      alz.b("boss_bar/pink_background"),
-      alz.b("boss_bar/blue_background"),
-      alz.b("boss_bar/red_background"),
-      alz.b("boss_bar/green_background"),
-      alz.b("boss_bar/yellow_background"),
-      alz.b("boss_bar/purple_background"),
-      alz.b("boss_bar/white_background")
-   };
-   private static final alz[] d = new alz[]{
-      alz.b("boss_bar/pink_progress"),
-      alz.b("boss_bar/blue_progress"),
-      alz.b("boss_bar/red_progress"),
-      alz.b("boss_bar/green_progress"),
-      alz.b("boss_bar/yellow_progress"),
-      alz.b("boss_bar/purple_progress"),
-      alz.b("boss_bar/white_progress")
-   };
-   private static final alz[] e = new alz[]{
-      alz.b("boss_bar/notched_6_background"),
-      alz.b("boss_bar/notched_10_background"),
-      alz.b("boss_bar/notched_12_background"),
-      alz.b("boss_bar/notched_20_background")
-   };
-   private static final alz[] f = new alz[]{
-      alz.b("boss_bar/notched_6_progress"), alz.b("boss_bar/notched_10_progress"), alz.b("boss_bar/notched_12_progress"), alz.b("boss_bar/notched_20_progress")
-   };
-   private final fme g;
-   final Map<UUID, fos> h = Maps.newLinkedHashMap();
+public abstract class foc implements fpi, fqc, frv, fsa {
+   private static final double a = 0.5;
+   private static final double b = 3.0;
+   protected int g;
+   protected int h;
+   private int c;
+   private int d;
+   private xv e;
+   protected boolean i;
+   public boolean j = true;
+   public boolean k = true;
+   protected float l = 1.0F;
+   private int f;
+   private boolean m;
+   private final fpt n = new fpt();
 
-   public foc(fme $$0) {
+   public foc(int $$0, int $$1, int $$2, int $$3, xv $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.e = $$4;
+   }
+
+   @Override
+   public int w() {
+      return this.h;
+   }
+
+   @Override
+   public final void a(fnr $$0, int $$1, int $$2, float $$3) {
+      if (this.k) {
+         this.i = $$0.a($$1, $$2) && $$1 >= this.D() && $$2 >= this.E() && $$1 < this.D() + this.g && $$2 < this.E() + this.h;
+         this.b($$0, $$1, $$2, $$3);
+         this.n.a(this.A(), this.aN_(), this.H());
+      }
+   }
+
+   public void a(@Nullable fpq $$0) {
+      this.n.a($$0);
+   }
+
+   @Nullable
+   public fpq x() {
+      return this.n.a();
+   }
+
+   public void a(Duration $$0) {
+      this.n.a($$0);
+   }
+
+   protected yj aR_() {
+      return a_(this.z());
+   }
+
+   public static yj a_(xv $$0) {
+      return xv.a("gui.narrate.button", $$0);
+   }
+
+   protected abstract void b(fnr var1, int var2, int var3, float var4);
+
+   protected static void a(fnr $$0, fnp $$1, xv $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+      a($$0, $$1, $$2, ($$3 + $$5) / 2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   protected static void a(fnr $$0, fnp $$1, xv $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+      int $$9 = $$1.a($$2);
+      int $$10 = ($$5 + $$7 - 9) / 2 + 1;
+      int $$11 = $$6 - $$4;
+      if ($$9 > $$11) {
+         int $$12 = $$9 - $$11;
+         double $$13 = (double)ae.c() / 1000.0;
+         double $$14 = Math.max((double)$$12 * 0.5, 3.0);
+         double $$15 = Math.sin((Math.PI / 2) * Math.cos((Math.PI * 2) * $$13 / $$14)) / 2.0 + 0.5;
+         double $$16 = bae.d($$15, 0.0, (double)$$12);
+         $$0.c($$4, $$5, $$6, $$7);
+         $$0.b($$1, $$2, $$4 - (int)$$16, $$10, $$8);
+         $$0.e();
+      } else {
+         int $$17 = bae.a($$3, $$4 + $$9 / 2, $$6 - $$9 / 2);
+         $$0.a($$1, $$2, $$17, $$10, $$8);
+      }
+   }
+
+   protected void a(fnr $$0, fnp $$1, int $$2, int $$3) {
+      int $$4 = this.D() + $$2;
+      int $$5 = this.D() + this.y() - $$2;
+      a($$0, $$1, this.z(), $$4, this.E(), $$5, this.E() + this.w(), $$3);
+   }
+
+   public void a(double $$0, double $$1) {
+   }
+
+   public void a_(double $$0, double $$1) {
+   }
+
+   protected void b(double $$0, double $$1, double $$2, double $$3) {
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.j && this.k) {
+         if (this.h($$2)) {
+            boolean $$3 = this.d($$0, $$1);
+            if ($$3) {
+               this.a(fmf.Q().ak());
+               this.a($$0, $$1);
+               return true;
+            }
+         }
+
+         return false;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      if (this.h($$2)) {
+         this.a_($$0, $$1);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected boolean h(int $$0) {
+      return $$0 == 0;
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      if (this.h($$2)) {
+         this.b($$0, $$1, $$3, $$4);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected boolean d(double $$0, double $$1) {
+      return this.j
+         && this.k
+         && $$0 >= (double)this.D()
+         && $$1 >= (double)this.E()
+         && $$0 < (double)(this.D() + this.y())
+         && $$1 < (double)(this.E() + this.w());
+   }
+
+   @Nullable
+   @Override
+   public fno a(fsi $$0) {
+      if (!this.j || !this.k) {
+         return null;
+      } else {
+         return !this.aN_() ? fno.a(this) : null;
+      }
+   }
+
+   @Override
+   public boolean c(double $$0, double $$1) {
+      return this.j && this.k && $$0 >= (double)this.D() && $$1 >= (double)this.E() && $$0 < (double)(this.D() + this.g) && $$1 < (double)(this.E() + this.h);
+   }
+
+   public void a(hgm $$0) {
+      b($$0);
+   }
+
+   public static void b(hgm $$0) {
+      $$0.a(hfc.a(axf.AQ, 1.0F));
+   }
+
+   @Override
+   public int y() {
+      return this.g;
+   }
+
+   public void i(int $$0) {
       this.g = $$0;
    }
 
-   public void a(fnq $$0) {
-      if (!this.h.isEmpty()) {
-         bps $$1 = bpr.a();
-         $$1.a("bossHealth");
-         int $$2 = $$0.a();
-         int $$3 = 12;
+   public void j(int $$0) {
+      this.h = $$0;
+   }
 
-         for (fos $$4 : this.h.values()) {
-            int $$5 = $$2 / 2 - 91;
-            this.a($$0, $$5, $$3, $$4);
-            xv $$7 = $$4.i();
-            int $$8 = this.g.h.a($$7);
-            int $$9 = $$2 / 2 - $$8 / 2;
-            int $$10 = $$3 - 9;
-            $$0.b(this.g.h, $$7, $$9, $$10, 16777215);
-            $$3 += 10 + 9;
-            if ($$3 >= $$0.b() / 3) {
-               break;
-            }
-         }
+   public void a(float $$0) {
+      this.l = $$0;
+   }
 
-         $$1.c();
+   public void b(xv $$0) {
+      this.e = $$0;
+   }
+
+   public xv z() {
+      return this.e;
+   }
+
+   @Override
+   public boolean aN_() {
+      return this.m;
+   }
+
+   public boolean A() {
+      return this.i;
+   }
+
+   public boolean B() {
+      return this.A() || this.aN_();
+   }
+
+   @Override
+   public boolean C() {
+      return this.k && this.j;
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.m = $$0;
+   }
+
+   @Override
+   public fsa.a u() {
+      if (this.aN_()) {
+         return fsa.a.c;
+      } else {
+         return this.i ? fsa.a.b : fsa.a.a;
       }
    }
 
-   private void a(fnq $$0, int $$1, int $$2, bsy $$3) {
-      this.a($$0, $$1, $$2, $$3, 182, c, e);
-      int $$4 = bae.b($$3.j(), 0, 182);
-      if ($$4 > 0) {
-         this.a($$0, $$1, $$2, $$3, $$4, d, f);
+   @Override
+   public final void b(fsc $$0) {
+      this.a($$0);
+      this.n.a($$0);
+   }
+
+   protected abstract void a(fsc var1);
+
+   protected void c(fsc $$0) {
+      $$0.a(fsb.a, this.aR_());
+      if (this.j) {
+         if (this.aN_()) {
+            $$0.a(fsb.d, xv.c("narration.button.usage.focused"));
+         } else {
+            $$0.a(fsb.d, xv.c("narration.button.usage.hovered"));
+         }
       }
    }
 
-   private void a(fnq $$0, int $$1, int $$2, bsy $$3, int $$4, alz[] $$5, alz[] $$6) {
-      $$0.a(glt::B, $$5[$$3.k().ordinal()], 182, 5, 0, 0, $$1, $$2, $$4, 5);
-      if ($$3.l() != bsy.b.a) {
-         $$0.a(glt::B, $$6[$$3.l().ordinal() - 1], 182, 5, 0, 0, $$1, $$2, $$4, 5);
-      }
+   @Override
+   public int D() {
+      return this.c;
    }
 
-   public void a(adb $$0) {
-      $$0.a(new adb.b() {
-         @Override
-         public void a(UUID $$0, xv $$1, float $$2, bsy.a $$3, bsy.b $$4, boolean $$5, boolean $$6, boolean $$7) {
-            foc.this.h.put($$0, new fos($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-         }
-
-         @Override
-         public void a(UUID $$0) {
-            foc.this.h.remove($$0);
-         }
-
-         @Override
-         public void a(UUID $$0, float $$1) {
-            foc.this.h.get($$0).a($$1);
-         }
-
-         @Override
-         public void a(UUID $$0, xv $$1) {
-            foc.this.h.get($$0).a($$1);
-         }
-
-         @Override
-         public void a(UUID $$0, bsy.a $$1, bsy.b $$2) {
-            fos $$3 = foc.this.h.get($$0);
-            $$3.a($$1);
-            $$3.a($$2);
-         }
-
-         @Override
-         public void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
-            fos $$4 = foc.this.h.get($$0);
-            $$4.a($$1);
-            $$4.b($$2);
-            $$4.c($$3);
-         }
-      });
+   @Override
+   public void k(int $$0) {
+      this.c = $$0;
    }
 
-   public void a() {
-      this.h.clear();
+   @Override
+   public int E() {
+      return this.d;
    }
 
-   public boolean b() {
-      if (!this.h.isEmpty()) {
-         for (bsy $$0 : this.h.values()) {
-            if ($$0.n()) {
-               return true;
-            }
-         }
-      }
-
-      return false;
+   @Override
+   public void l(int $$0) {
+      this.d = $$0;
    }
 
-   public boolean c() {
-      if (!this.h.isEmpty()) {
-         for (bsy $$0 : this.h.values()) {
-            if ($$0.m()) {
-               return true;
-            }
-         }
-      }
-
-      return false;
+   public int F() {
+      return this.D() + this.y();
    }
 
-   public boolean d() {
-      if (!this.h.isEmpty()) {
-         for (bsy $$0 : this.h.values()) {
-            if ($$0.o()) {
-               return true;
-            }
-         }
-      }
+   public int G() {
+      return this.E() + this.w();
+   }
 
-      return false;
+   @Override
+   public void a(Consumer<foc> $$0) {
+      $$0.accept(this);
+   }
+
+   public void b(int $$0, int $$1) {
+      this.g = $$0;
+      this.h = $$1;
+   }
+
+   @Override
+   public fsm H() {
+      return frv.super.H();
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.b($$0, $$1);
+      this.c($$2, $$3);
+   }
+
+   @Override
+   public int I() {
+      return this.f;
+   }
+
+   public void m(int $$0) {
+      this.f = $$0;
    }
 }

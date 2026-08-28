@@ -52,7 +52,7 @@ public class ctj extends ctb {
          public void a(cpw $$0, cxo $$1) {
             ctj.this.k.get(0).a(1);
             ctj.this.k.get(1).a(1);
-            $$1.h().a($$1, $$0.dV(), $$0);
+            $$1.h().a($$1, $$0.dW(), $$0);
             $$2.a(($$0x, $$1x) -> {
                long $$2xx = $$0x.ac();
                if (ctj.this.v != $$2xx) {
@@ -124,45 +124,45 @@ public class ctj extends ctb {
 
    @Override
    public cxo b(cpw $$0, int $$1) {
-      cxo $$2 = cxo.k;
+      cxo $$2 = cxo.j;
       cuy $$3 = this.k.get($$1);
       if ($$3 != null && $$3.h()) {
          cxo $$4 = $$3.g();
          $$2 = $$4.v();
          if ($$1 == 2) {
-            $$4.h().a($$4, $$0.dV(), $$0);
+            $$4.h().a($$4, $$0.dW(), $$0);
             if (!this.a($$4, 3, 39, true)) {
-               return cxo.k;
+               return cxo.j;
             }
 
             $$3.b($$4, $$2);
          } else if ($$1 != 1 && $$1 != 0) {
             if ($$4.b(ku.L)) {
                if (!this.a($$4, 0, 1, false)) {
-                  return cxo.k;
+                  return cxo.j;
                }
             } else if (!$$4.a(cxs.rm) && !$$4.a(cxs.uZ) && !$$4.a(cxs.gg)) {
                if ($$1 >= 3 && $$1 < 30) {
                   if (!this.a($$4, 30, 39, false)) {
-                     return cxo.k;
+                     return cxo.j;
                   }
                } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
-                  return cxo.k;
+                  return cxo.j;
                }
             } else if (!this.a($$4, 1, 2, false)) {
-               return cxo.k;
+               return cxo.j;
             }
          } else if (!this.a($$4, 3, 39, false)) {
-            return cxo.k;
+            return cxo.j;
          }
 
          if ($$4.f()) {
-            $$3.e(cxo.k);
+            $$3.e(cxo.j);
          }
 
          $$3.c();
          if ($$4.L() == $$2.L()) {
-            return cxo.k;
+            return cxo.j;
          }
 
          $$3.a($$0, $$4);

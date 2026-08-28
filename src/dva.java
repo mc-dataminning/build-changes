@@ -16,7 +16,7 @@ public class dva extends duw {
    private int i;
    private long j;
    private long k;
-   private cxo l = cxo.k;
+   private cxo l = cxo.j;
    @Nullable
    private jm m;
    @Nullable
@@ -63,11 +63,11 @@ public class dva extends duw {
             ao.Q.a($$4, this.n);
          }
 
-         ewr $$5 = new ewr.a($$0).a(ezi.f, fbx.b(this.p)).a($$1.gD()).a(ezi.a, $$1).a(ezi.i, $$2).a(ezh.i);
+         ewr $$5 = new ewr.a($$0).a(ezi.f, fbx.b(this.p)).a($$1.gF()).a(ezi.a, $$1).a(ezi.i, $$2).a(ezh.i);
          ObjectArrayList<cxo> $$6 = $$3.a($$5, this.r);
 
          this.l = switch ($$6.size()) {
-            case 0 -> cxo.k;
+            case 0 -> cxo.j;
             case 1 -> (cxo)$$6.getFirst();
             default -> {
                a.warn("Expected max 1 loot from loot table {}, but got {}", this.n.a(), $$6.size());
@@ -107,7 +107,7 @@ public class dva extends duw {
          cma $$11 = new cma($$0, $$8, $$9, $$10, this.l.a($$0.A.a(21) + 10));
          $$11.h(fbx.c);
          $$0.b($$11);
-         this.l = cxo.k;
+         this.l = cxo.j;
       }
    }
 
@@ -178,9 +178,9 @@ public class dva extends duw {
    protected void a(ux $$0, js.a $$1) {
       super.a($$0, $$1);
       if (!this.c($$0) && $$0.e("item")) {
-         this.l = cxo.a($$1, (vu)$$0.p("item")).orElse(cxo.k);
+         this.l = cxo.a($$1, (vu)$$0.p("item")).orElse(cxo.j);
       } else {
-         this.l = cxo.k;
+         this.l = cxo.j;
       }
 
       if ($$0.e("hit_direction")) {

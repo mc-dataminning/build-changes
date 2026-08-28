@@ -5,7 +5,7 @@ class bug extends bum {
 
    @Override
    public boolean a(ash $$0, bwf $$1, int $$2) {
-      return $$1.fu() > 0.0F;
+      return $$1.fw() > 0.0F;
    }
 
    @Override
@@ -16,6 +16,6 @@ class bug extends bum {
    @Override
    public void a(bwf $$0, int $$1) {
       super.a($$0, $$1);
-      $$0.E(Math.max($$0.fu(), (float)(4 * (1 + $$1))));
+      $$0.E(Math.max($$0.fw(), (float)(4 * (1 + $$1))));
    }
 }

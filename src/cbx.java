@@ -21,14 +21,14 @@ public class cbx<E extends coz> extends bxy<E> {
          $$1.b(bwr.a);
       }
 
-      $$1.eb().b(cfj.aB);
-      $$1.eb().c(cfj.B).filter($$1::b).ifPresent($$1x -> {
+      $$1.ec().b(cfj.aB);
+      $$1.ec().c(cfj.B).filter($$1::b).ifPresent($$1x -> {
          if ($$1.a($$1x, 6.0, 20.0)) {
             $$1.d($$1x);
          }
 
-         if (!$$1.eb().a(cfj.az)) {
-            cpa.a($$1, $$1x.dv());
+         if (!$$1.ec().a(cfj.az)) {
+            cpa.a($$1, $$1x.dw());
          }
       });
    }

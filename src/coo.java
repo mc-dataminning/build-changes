@@ -18,7 +18,7 @@ public class coo extends coj {
    }
 
    public static bxm.a t() {
-      return cmw.gr().a(bxn.s, 50.0).a(bxn.v, 0.35F).a(bxn.c, 7.0).a(bxn.m, 12.0);
+      return cmw.gt().a(bxn.s, 50.0).a(bxn.v, 0.35F).a(bxn.c, 7.0).a(bxn.m, 12.0);
    }
 
    @Nullable
@@ -35,18 +35,18 @@ public class coo extends coj {
    }
 
    @Override
-   protected bxh.b<coo> ec() {
+   protected bxh.b<coo> ed() {
       return bxh.a(bZ, d);
    }
 
    @Override
    protected bxh<?> a(Dynamic<?> $$0) {
-      return cop.a(this, this.ec().a($$0));
+      return cop.a(this, this.ed().a($$0));
    }
 
    @Override
-   public bxh<coo> eb() {
-      return (bxh<coo>)super.eb();
+   public bxh<coo> ec() {
+      return (bxh<coo>)super.ec();
    }
 
    @Override
@@ -63,7 +63,7 @@ public class coo extends coj {
    protected void a(ash $$0) {
       bps $$1 = bpr.a();
       $$1.a("piglinBruteBrain");
-      this.eb().a($$0, this);
+      this.ec().a($$0, this);
       $$1.c();
       cop.b(this);
       cop.c(this);
@@ -71,8 +71,8 @@ public class coo extends coj {
    }
 
    @Override
-   public com gn() {
-      return this.gb() && this.go() ? com.a : com.f;
+   public com gp() {
+      return this.gd() && this.gq() ? com.a : com.f;
    }
 
    @Override
@@ -105,12 +105,12 @@ public class coo extends coj {
       this.a(axf.un, 0.15F, 1.0F);
    }
 
-   protected void gs() {
+   protected void gu() {
       this.b(axf.uk);
    }
 
    @Override
-   protected void gp() {
+   protected void gr() {
       this.b(axf.uo);
    }
 }

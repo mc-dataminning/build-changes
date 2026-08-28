@@ -1,12 +1,5 @@
-public class fjc extends Exception {
-   public final fhi a;
-
-   public fjc(fhi $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public String getMessage() {
-      return this.a.c();
+public class fjc extends RuntimeException {
+   public fjc(String $$0, Exception $$1) {
+      super($$0, $$1);
    }
 }

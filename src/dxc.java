@@ -132,7 +132,7 @@ public class dxc extends duw {
 
       private static void a(dhh $$0, fbx $$1, cpw $$2) {
          bam $$3 = $$0.A;
-         fbx $$4 = $$1.a($$2.dt().b(0.0, (double)($$2.dr() / 2.0F), 0.0));
+         fbx $$4 = $$1.a($$2.du().b(0.0, (double)($$2.ds() / 2.0F), 0.0));
          int $$5 = bae.a($$3, 2, 5);
 
          for (int $$6 = 0; $$6 < $$5; $$6++) {
@@ -156,7 +156,7 @@ public class dxc extends duw {
       }
 
       private static boolean a(jh $$0, dxg $$1, cpw $$2) {
-         return $$2.dv().j($$0) <= bae.k($$1.e());
+         return $$2.dw().j($$0) <= bae.k($$1.e());
       }
 
       private static void a(dhh $$0, jh $$1, dxg $$2) {
@@ -244,7 +244,7 @@ public class dxc extends duw {
 
       static void a(ash $$0, dxh $$1, dxe $$2, dxg $$3, jh $$4) {
          if (!a($$2, $$1)) {
-            $$3.a(cxo.k);
+            $$3.a(cxo.j);
          } else {
             cxo $$5 = a($$0, $$4, $$2.f().orElse($$2.b()));
             $$3.a($$5);
@@ -255,7 +255,7 @@ public class dxc extends duw {
          ewt $$3 = $$0.p().bc().b($$2);
          ewr $$4 = new ewr.a($$0).a(ezi.f, fbx.b($$1)).a(ezh.l);
          List<cxo> $$5 = $$3.a($$4, $$0.H_());
-         return $$5.isEmpty() ? cxo.k : ae.a($$5, $$0.H_());
+         return $$5.isEmpty() ? cxo.j : ae.a($$5, $$0.H_());
       }
 
       private static void a(ash $$0, dxu $$1, jh $$2, dxe $$3, dxf $$4, dxg $$5, List<cxo> $$6) {
@@ -267,7 +267,7 @@ public class dxc extends duw {
 
       private static List<cxo> a(ash $$0, dxe $$1, jh $$2, cpw $$3, cxo $$4) {
          ewt $$5 = $$0.p().bc().b($$1.b());
-         ewr $$6 = new ewr.a($$0).a(ezi.f, fbx.b($$2)).a($$3.gD()).a(ezi.a, $$3).a(ezi.i, $$4).a(ezh.l);
+         ewr $$6 = new ewr.a($$0).a(ezi.f, fbx.b($$2)).a($$3.gF()).a(ezi.a, $$3).a(ezi.i, $$4).a(ezh.l);
          return $$5.a($$6);
       }
 

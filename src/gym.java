@@ -1,5 +1,4 @@
-public class gym extends gyr {
-   public float a;
-   public int b;
-   public bvg.a c = bvg.a.a;
+public class gym extends gyl {
+   public fbx[] a = new fbx[0];
+   public boolean i;
 }

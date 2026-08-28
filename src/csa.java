@@ -2,7 +2,7 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 
 public interface csa extends btb, btk {
-   fbx dt();
+   fbx du();
 
    fbs cR();
 
@@ -19,9 +19,9 @@ public interface csa extends btb, btk {
 
    void C();
 
-   dhh dV();
+   dhh dW();
 
-   boolean dQ();
+   boolean dR();
 
    @Override
    default boolean c() {
@@ -65,7 +65,7 @@ public interface csa extends btb, btk {
    }
 
    default void f(@Nullable cpw $$0) {
-      MinecraftServer $$1 = this.dV().p();
+      MinecraftServer $$1 = this.dW().p();
       if (this.v() != null && $$1 != null) {
          ewt $$2 = $$1.bc().b(this.v());
          if ($$0 != null) {
@@ -73,9 +73,9 @@ public interface csa extends btb, btk {
          }
 
          this.a(null);
-         ewr.a $$3 = new ewr.a((ash)this.dV()).a(ezi.f, this.dt());
+         ewr.a $$3 = new ewr.a((ash)this.dW()).a(ezi.f, this.du());
          if ($$0 != null) {
-            $$3.a($$0.gD()).a(ezi.a, $$0);
+            $$3.a($$0.gF()).a(ezi.a, $$0);
          }
 
          $$2.a(this, $$3.a(ezh.c), this.x());
@@ -101,9 +101,9 @@ public interface csa extends btb, btk {
       this.f(null);
       cxo $$1 = this.B().get($$0);
       if ($$1.f()) {
-         return cxo.k;
+         return cxo.j;
       } else {
-         this.B().set($$0, cxo.k);
+         this.B().set($$0, cxo.j);
          return $$1;
       }
    }
@@ -140,6 +140,6 @@ public interface csa extends btb, btk {
    }
 
    default boolean g(cpw $$0) {
-      return !this.dQ() && $$0.a(this.cR(), 4.0);
+      return !this.dR() && $$0.a(this.cR(), 4.0);
    }
 }

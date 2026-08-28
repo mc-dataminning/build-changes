@@ -35,8 +35,8 @@ public class cmt extends cnp {
    @Override
    public boolean c(ash $$0, bvj $$1) {
       boolean $$2 = super.c($$0, $$1);
-      if ($$2 && this.eX().f() && $$1 instanceof bwf) {
-         float $$3 = this.dV().d_(this.dv()).b();
+      if ($$2 && this.eZ().f() && $$1 instanceof bwf) {
+         float $$3 = this.dW().d_(this.dw()).b();
          ((bwf)$$1).b(new buo(buq.q, 140 * (int)$$3), this);
       }
 
@@ -44,7 +44,7 @@ public class cmt extends cnp {
    }
 
    @Override
-   protected boolean gn() {
+   protected boolean gp() {
       return true;
    }
 
@@ -52,12 +52,12 @@ public class cmt extends cnp {
    protected void ai_() {
       this.b(bvq.bO);
       if (!this.bb()) {
-         this.dV().a(null, 1041, this.dv(), 0);
+         this.dW().a(null, 1041, this.dw(), 0);
       }
    }
 
    @Override
-   protected cxo gm() {
-      return cxo.k;
+   protected cxo go() {
+      return cxo.j;
    }
 }

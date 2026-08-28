@@ -26,7 +26,7 @@ public abstract class ciy extends bwn {
          this.j($$0 - 1);
          if (this.ct() == -20) {
             this.j(0);
-            this.a(this.dW().i(), 2.0F);
+            this.a(this.dX().i(), 2.0F);
          }
       } else {
          this.j(300);

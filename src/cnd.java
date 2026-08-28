@@ -13,7 +13,7 @@ public class cnd extends cmw {
    protected void B() {
       this.a = new cnd.b(this);
       this.bT.a(1, new ccx(this));
-      this.bT.a(1, new ccs(this, this.dV()));
+      this.bT.a(1, new ccs(this, this.dW()));
       this.bT.a(3, this.a);
       this.bT.a(4, new cdn(this, 1.0, false));
       this.bT.a(5, new cnd.a(this));
@@ -22,12 +22,12 @@ public class cnd extends cmw {
    }
 
    public static bxm.a m() {
-      return cmw.gr().a(bxn.s, 8.0).a(bxn.v, 0.25).a(bxn.c, 1.0);
+      return cmw.gt().a(bxn.s, 8.0).a(bxn.v, 0.25).a(bxn.c, 1.0);
    }
 
    @Override
-   protected bvj.b bg() {
-      return bvj.b.c;
+   protected bvj.c bg() {
+      return bvj.c.c;
    }
 
    @Override
@@ -65,7 +65,7 @@ public class cnd extends cmw {
 
    @Override
    public void h() {
-      this.aX = this.dL();
+      this.aX = this.dM();
       super.h();
    }
 
@@ -108,11 +108,11 @@ public class cnd extends cmw {
          } else if (!this.b.L().m()) {
             return false;
          } else {
-            bam $$0 = this.b.dY();
+            bam $$0 = this.b.dZ();
             if (a(this.b).N().b(dhd.c) && $$0.a(b(10)) == 0) {
                this.i = jm.b($$0);
-               jh $$1 = jh.a(this.b.dA(), this.b.dC() + 0.5, this.b.dG()).a(this.i);
-               dxu $$2 = this.b.dV().a_($$1);
+               jh $$1 = jh.a(this.b.dB(), this.b.dD() + 0.5, this.b.dH()).a(this.i);
+               dxu $$2 = this.b.dW().a_($$1);
                if (dom.o($$2)) {
                   this.j = true;
                   return true;
@@ -134,8 +134,8 @@ public class cnd extends cmw {
          if (!this.j) {
             super.d();
          } else {
-            dhi $$0 = this.b.dV();
-            jh $$1 = jh.a(this.b.dA(), this.b.dC() + 0.5, this.b.dG()).a(this.i);
+            dhi $$0 = this.b.dW();
+            jh $$1 = jh.a(this.b.dB(), this.b.dD() + 0.5, this.b.dH()).a(this.i);
             dxu $$2 = $$0.a_($$1);
             if (dom.o($$2)) {
                $$0.a($$1, dom.p($$2), 3);
@@ -169,9 +169,9 @@ public class cnd extends cmw {
       public void a() {
          this.b--;
          if (this.b <= 0) {
-            dhh $$0 = this.a.dV();
-            bam $$1 = this.a.dY();
-            jh $$2 = this.a.dv();
+            dhh $$0 = this.a.dW();
+            bam $$1 = this.a.dZ();
+            jh $$2 = this.a.dw();
 
             for (int $$3 = 0; $$3 <= 5 && $$3 >= -5; $$3 = ($$3 <= 0 ? 1 : 0) - $$3) {
                for (int $$4 = 0; $$4 <= 10 && $$4 >= -10; $$4 = ($$4 <= 0 ? 1 : 0) - $$4) {

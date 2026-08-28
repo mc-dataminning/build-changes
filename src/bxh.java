@@ -378,7 +378,7 @@ public class bxh<E extends bwf> {
    }
 
    public void b(ash $$0, E $$1) {
-      long $$2 = $$1.dV().ac();
+      long $$2 = $$1.dW().ac();
 
       for (bxz<? super E> $$3 : this.e()) {
          $$3.g($$0, $$1, $$2);

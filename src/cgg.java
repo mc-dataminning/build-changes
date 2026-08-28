@@ -40,13 +40,13 @@ public class cgg extends cgp<bwh> {
                return true;
             }
          };
-         Set<Pair<jq<chm>, jh>> $$4 = $$2.b($$0x -> $$0x.a(chn.n), $$3, $$1.dv(), 48, chj.b.c).collect(Collectors.toSet());
+         Set<Pair<jq<chm>, jh>> $$4 = $$2.b($$0x -> $$0x.a(chn.n), $$3, $$1.dw(), 48, chj.b.c).collect(Collectors.toSet());
          euk $$5 = bxr.a($$1, $$4);
          if ($$5 != null && $$5.j()) {
             jh $$6 = $$5.l();
             Optional<jq<chm>> $$7 = $$2.c($$6);
             if ($$7.isPresent()) {
-               $$1.eb().a(cfj.w, $$6);
+               $$1.ec().a(cfj.w, $$6);
             }
          } else if (this.e < 5) {
             this.d.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.f);

@@ -872,7 +872,7 @@ public abstract class MinecraftServer extends bsb<amw> implements amp, eax, ev {
 
          for (int $$5 = 0; $$5 < $$2; $$5++) {
             asi $$6 = $$0.get($$4 + $$5);
-            $$3.add($$6.ab() ? $$6.gf() : e);
+            $$3.add($$6.ab() ? $$6.gh() : e);
          }
 
          ae.c($$3, this.K);
@@ -1102,7 +1102,7 @@ public abstract class MinecraftServer extends bsb<amw> implements amp, eax, ev {
    }
 
    private void c(asi $$0) {
-      evy $$1 = $$0.dV().D_();
+      evy $$1 = $$0.dW().D_();
       $$0.f.b(new ade($$1.q(), $$1.r()));
    }
 
@@ -1451,7 +1451,7 @@ public abstract class MinecraftServer extends bsb<amw> implements amp, eax, ev {
          awq $$2 = $$1.i();
 
          for (asi $$4 : Lists.newArrayList($$1.t())) {
-            if (!$$2.a($$4.gf())) {
+            if (!$$2.a($$4.gh())) {
                $$4.f.a(xv.c("multiplayer.disconnect.not_whitelisted"));
             }
          }

@@ -32,13 +32,13 @@ public class chq extends chp {
    }
 
    @Override
-   protected float fe() {
+   protected float fg() {
       return 0.1F;
    }
 
    @Override
-   public float ff() {
-      return super.ff() * 0.95F;
+   public float fh() {
+      return super.fh() * 0.95F;
    }
 
    @Nullable
@@ -92,9 +92,9 @@ public class chq extends chp {
       super.h();
       if (this.p()) {
          this.h(fbx.c);
-         this.o(this.dA(), (double)bae.a(this.dC()) + 1.0 - (double)this.dr(), this.dG());
+         this.o(this.dB(), (double)bae.a(this.dD()) + 1.0 - (double)this.ds(), this.dH());
       } else {
-         this.h(this.dy().d(1.0, 0.6, 1.0));
+         this.h(this.dz().d(1.0, 0.6, 1.0));
       }
 
       this.x();
@@ -103,7 +103,7 @@ public class chq extends chp {
    @Override
    protected void a(ash $$0) {
       super.a($$0);
-      jh $$1 = this.dv();
+      jh $$1 = this.dw();
       jh $$2 = $$1.d();
       if (this.p()) {
          boolean $$3 = this.bb();
@@ -129,24 +129,24 @@ public class chq extends chp {
             this.cb = null;
          }
 
-         if (this.cb == null || this.ae.a(30) == 0 || this.cb.a(this.dt(), 2.0)) {
+         if (this.cb == null || this.ae.a(30) == 0 || this.cb.a(this.du(), 2.0)) {
             this.cb = jh.a(
-               this.dA() + (double)this.ae.a(7) - (double)this.ae.a(7),
-               this.dC() + (double)this.ae.a(6) - 2.0,
-               this.dG() + (double)this.ae.a(7) - (double)this.ae.a(7)
+               this.dB() + (double)this.ae.a(7) - (double)this.ae.a(7),
+               this.dD() + (double)this.ae.a(6) - 2.0,
+               this.dH() + (double)this.ae.a(7) - (double)this.ae.a(7)
             );
          }
 
-         double $$4 = (double)this.cb.u() + 0.5 - this.dA();
-         double $$5 = (double)this.cb.v() + 0.1 - this.dC();
-         double $$6 = (double)this.cb.w() + 0.5 - this.dG();
-         fbx $$7 = this.dy();
+         double $$4 = (double)this.cb.u() + 0.5 - this.dB();
+         double $$5 = (double)this.cb.v() + 0.1 - this.dD();
+         double $$6 = (double)this.cb.w() + 0.5 - this.dH();
+         fbx $$7 = this.dz();
          fbx $$8 = $$7.b((Math.signum($$4) * 0.5 - $$7.d) * 0.1F, (Math.signum($$5) * 0.7F - $$7.e) * 0.1F, (Math.signum($$6) * 0.5 - $$7.f) * 0.1F);
          this.h($$8);
          float $$9 = (float)(bae.d($$8.f, $$8.d) * 180.0F / (float)Math.PI) - 90.0F;
-         float $$10 = bae.h($$9 - this.dL());
+         float $$10 = bae.h($$9 - this.dM());
          this.bq = 0.5F;
-         this.v(this.dL() + $$10);
+         this.v(this.dM() + $$10);
          if (this.ae.a(100) == 0 && $$0.a_($$2).d($$0, $$2)) {
             this.x(true);
          }
@@ -154,8 +154,8 @@ public class chq extends chp {
    }
 
    @Override
-   protected bvj.b bg() {
-      return bvj.b.c;
+   protected bvj.c bg() {
+      return bvj.c.c;
    }
 
    @Override

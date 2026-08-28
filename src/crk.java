@@ -9,7 +9,7 @@ import javax.annotation.Nullable;
 
 public abstract class crk extends cmx {
    protected static final alc<Boolean> c = alg.a(crk.class, ale.k);
-   static final Predicate<cma> a = $$0 -> !$$0.v() && $$0.bL() && cxo.a($$0.l(), crj.a($$0.dX().e(mb.d)));
+   static final Predicate<cma> a = $$0 -> !$$0.v() && $$0.bL() && cxo.a($$0.l(), crj.a($$0.dY().e(mb.d)));
    @Nullable
    protected crj d;
    private int b;
@@ -37,7 +37,7 @@ public abstract class crk extends cmx {
 
    public abstract void a(ash var1, int var2, boolean var3);
 
-   public boolean gy() {
+   public boolean gA() {
       return this.bZ;
    }
 
@@ -47,12 +47,12 @@ public abstract class crk extends cmx {
 
    @Override
    public void d_() {
-      if (this.dV() instanceof ash && this.bL()) {
-         crj $$0 = this.gz();
-         if (this.gy()) {
+      if (this.dW() instanceof ash && this.bL()) {
+         crj $$0 = this.gB();
+         if (this.gA()) {
             if ($$0 == null) {
-               if (this.dV().ac() % 20L == 0L) {
-                  crj $$1 = ((ash)this.dV()).d(this.dv());
+               if (this.dW().ac() % 20L == 0L) {
+                  crj $$1 = ((ash)this.dW()).d(this.dw());
                   if ($$1 != null && crl.a(this, $$1)) {
                      $$1.a($$1.k(), this, null, true);
                   }
@@ -70,18 +70,18 @@ public abstract class crk extends cmx {
    }
 
    @Override
-   protected void gq() {
+   protected void gs() {
       this.bf += 2;
    }
 
    @Override
    public void a(btz $$0) {
-      if (this.dV() instanceof ash) {
+      if (this.dW() instanceof ash) {
          bvj $$1 = $$0.d();
-         crj $$2 = this.gz();
+         crj $$2 = this.gB();
          if ($$2 != null) {
-            if (this.gp()) {
-               $$2.c(this.gD());
+            if (this.gr()) {
+               $$2.c(this.gF());
             }
 
             if ($$1 != null && $$1.aq() == bvq.bS) {
@@ -96,8 +96,8 @@ public abstract class crk extends cmx {
    }
 
    @Override
-   public boolean gs() {
-      return !this.gC();
+   public boolean gu() {
+      return !this.gE();
    }
 
    public void a(@Nullable crj $$0) {
@@ -105,34 +105,34 @@ public abstract class crk extends cmx {
    }
 
    @Nullable
-   public crj gz() {
+   public crj gB() {
       return this.d;
    }
 
-   public boolean gA() {
+   public boolean gC() {
       cxo $$0 = this.a(bvr.f);
-      boolean $$1 = !$$0.f() && cxo.a($$0, crj.a(this.dX().e(mb.d)));
-      boolean $$2 = this.gp();
+      boolean $$1 = !$$0.f() && cxo.a($$0, crj.a(this.dY().e(mb.d)));
+      boolean $$2 = this.gr();
       return $$1 && $$2;
    }
 
-   public boolean gB() {
-      return !(this.dV() instanceof ash $$0) ? false : this.gz() != null || $$0.d(this.dv()) != null;
+   public boolean gD() {
+      return !(this.dW() instanceof ash $$0) ? false : this.gB() != null || $$0.d(this.dw()) != null;
    }
 
-   public boolean gC() {
-      return this.gz() != null && this.gz().u();
+   public boolean gE() {
+      return this.gB() != null && this.gB().u();
    }
 
    public void b(int $$0) {
       this.b = $$0;
    }
 
-   public int gD() {
+   public int gF() {
       return this.b;
    }
 
-   public boolean gE() {
+   public boolean gG() {
       return this.al.a(c);
    }
 
@@ -156,13 +156,13 @@ public abstract class crk extends cmx {
       this.b = $$0.h("Wave");
       this.bZ = $$0.q("CanJoinRaid");
       if ($$0.b("RaidId", 3)) {
-         if (this.dV() instanceof ash) {
-            this.d = ((ash)this.dV()).A().a($$0.h("RaidId"));
+         if (this.dW() instanceof ash) {
+            this.d = ((ash)this.dW()).A().a($$0.h("RaidId"));
          }
 
          if (this.d != null) {
             this.d.a(this.b, this, false);
-            if (this.gp()) {
+            if (this.gr()) {
                this.d.a(this.b, this);
             }
          }
@@ -172,8 +172,8 @@ public abstract class crk extends cmx {
    @Override
    protected void a(ash $$0, cma $$1) {
       cxo $$2 = $$1.l();
-      boolean $$3 = this.gC() && this.gz().b(this.gD()) != null;
-      if (this.gC() && !$$3 && cxo.a($$2, crj.a(this.dX().e(mb.d)))) {
+      boolean $$3 = this.gE() && this.gB().b(this.gF()) != null;
+      if (this.gE() && !$$3 && cxo.a($$2, crj.a(this.dY().e(mb.d)))) {
          bvr $$4 = bvr.f;
          cxo $$5 = this.a($$4);
          double $$6 = (double)this.h($$4);
@@ -185,7 +185,7 @@ public abstract class crk extends cmx {
          this.a($$4, $$2);
          this.a($$1, $$2.L());
          $$1.at();
-         this.gz().a(this.gD(), this);
+         this.gB().a(this.gF(), this);
          this.x(true);
       } else {
          super.a($$0, $$1);
@@ -194,15 +194,15 @@ public abstract class crk extends cmx {
 
    @Override
    public boolean h(double $$0) {
-      return this.gz() == null ? super.h($$0) : false;
+      return this.gB() == null ? super.h($$0) : false;
    }
 
    @Override
    public boolean W() {
-      return super.W() || this.gz() != null;
+      return super.W() || this.gB() != null;
    }
 
-   public int gF() {
+   public int gH() {
       return this.ca;
    }
 
@@ -212,8 +212,8 @@ public abstract class crk extends cmx {
 
    @Override
    public boolean a(ash $$0, btz $$1, float $$2) {
-      if (this.gC()) {
-         this.gz().p();
+      if (this.gE()) {
+         this.gB().p();
       }
 
       return super.a($$0, $$1, $$2);
@@ -241,8 +241,8 @@ public abstract class crk extends cmx {
 
       @Override
       public boolean b() {
-         bwf $$0 = this.b.ep();
-         return this.b.gz() == null && this.b.gu() && this.b.O_() != null && !this.b.gb() && ($$0 == null || $$0.aq() != bvq.bS);
+         bwf $$0 = this.b.eq();
+         return this.b.gB() == null && this.b.gw() && this.b.O_() != null && !this.b.gd() && ($$0 == null || $$0.aq() != bvq.bS);
       }
 
       @Override
@@ -313,9 +313,9 @@ public abstract class crk extends cmx {
             Int2LongOpenHashMap $$0 = new Int2LongOpenHashMap();
             double $$1 = crk.this.h(bxn.m);
 
-            for (cma $$3 : this.b.dV().a(cma.class, this.b.cR().c($$1, 8.0, $$1), crk.a)) {
+            for (cma $$3 : this.b.dW().a(cma.class, this.b.cR().c($$1, 8.0, $$1), crk.a)) {
                long $$4 = this.c.getOrDefault($$3.ar(), Long.MIN_VALUE);
-               if (crk.this.dV().ac() < $$4) {
+               if (crk.this.dW().ac() < $$4) {
                   $$0.put($$3.ar(), $$4);
                } else {
                   euk $$5 = this.b.L().a($$3, 1);
@@ -325,7 +325,7 @@ public abstract class crk extends cmx {
                      return true;
                   }
 
-                  $$0.put($$3.ar(), crk.this.dV().ac() + 600L);
+                  $$0.put($$3.ar(), crk.this.dW().ac() + 600L);
                }
             }
 
@@ -338,7 +338,7 @@ public abstract class crk extends cmx {
       public boolean c() {
          if (this.e == null || this.d == null) {
             return false;
-         } else if (this.e.dQ()) {
+         } else if (this.e.dR()) {
             return false;
          } else {
             return this.d.c() ? false : !this.h();
@@ -346,16 +346,16 @@ public abstract class crk extends cmx {
       }
 
       private boolean h() {
-         if (!this.b.gC()) {
+         if (!this.b.gE()) {
             return true;
-         } else if (this.b.gz().a()) {
+         } else if (this.b.gB().a()) {
             return true;
-         } else if (!this.b.gm()) {
+         } else if (!this.b.go()) {
             return true;
-         } else if (cxo.a(this.b.a(bvr.f), crj.a(this.b.dX().e(mb.d)))) {
+         } else if (cxo.a(this.b.a(bvr.f), crj.a(this.b.dY().e(mb.d)))) {
             return true;
          } else {
-            crk $$0 = crk.this.d.b(this.b.gD());
+            crk $$0 = crk.this.d.b(this.b.gF());
             return $$0 != null && $$0.bL();
          }
       }
@@ -374,7 +374,7 @@ public abstract class crk extends cmx {
       @Override
       public void a() {
          if (this.e != null && this.e.a(this.b, 1.414)) {
-            this.b.a(a(crk.this.dV()), this.e);
+            this.b.a(a(crk.this.dW()), this.e);
          }
       }
    }
@@ -389,7 +389,7 @@ public abstract class crk extends cmx {
 
       @Override
       public boolean b() {
-         crj $$0 = this.b.gz();
+         crj $$0 = this.b.gB();
          return this.b.bL() && this.b.O_() == null && $$0 != null && $$0.f();
       }
 
@@ -441,12 +441,12 @@ public abstract class crk extends cmx {
       }
 
       private boolean h() {
-         return this.a.gC() && !this.a.gz().a();
+         return this.a.gE() && !this.a.gB().a();
       }
 
       private boolean i() {
-         ash $$0 = (ash)this.a.dV();
-         jh $$1 = this.a.dv();
+         ash $$0 = (ash)this.a.dW();
+         jh $$1 = this.a.dw();
          Optional<jh> $$2 = $$0.z().a($$0x -> $$0x.a(chn.n), this::a, chj.b.c, $$1, 48, this.a.ae);
          if ($$2.isEmpty()) {
             return false;
@@ -458,12 +458,12 @@ public abstract class crk extends cmx {
 
       @Override
       public boolean c() {
-         return this.a.L().m() ? false : this.a.O_() == null && !this.c.a(this.a.dt(), (double)(this.a.dq() + (float)this.e)) && !this.f;
+         return this.a.L().m() ? false : this.a.O_() == null && !this.c.a(this.a.du(), (double)(this.a.dr() + (float)this.e)) && !this.f;
       }
 
       @Override
       public void e() {
-         if (this.c.a(this.a.dt(), (double)this.e)) {
+         if (this.c.a(this.a.du(), (double)this.e)) {
             this.d.add(this.c);
          }
       }

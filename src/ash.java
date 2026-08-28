@@ -216,15 +216,15 @@ public class ash extends dhh implements asg, dif {
          }
 
          this.N.a($$2x -> {
-            if (!$$2x.dQ()) {
+            if (!$$2x.dR()) {
                if (!$$2.a($$2x)) {
                   $$1.a("checkDespawn");
-                  $$2x.dH();
+                  $$2x.dI();
                   $$1.c();
-                  if ($$2x instanceof asi || this.J.a.j().c($$2x.dx().a())) {
-                     bvj $$3x = $$2x.dk();
+                  if ($$2x instanceof asi || this.J.a.j().c($$2x.dy().a())) {
+                     bvj $$3x = $$2x.dl();
                      if ($$3x != null) {
-                        if (!$$3x.dQ() && $$3x.y($$2x)) {
+                        if (!$$3x.dR() && $$3x.y($$2x)) {
                            return;
                         }
 
@@ -277,7 +277,7 @@ public class ash extends dhh implements asg, dif {
 
    private void as() {
       this.Q.a();
-      this.I.stream().filter(bwf::fP).collect(Collectors.toList()).forEach($$0 -> $$0.a(false, false));
+      this.I.stream().filter(bwf::fR).collect(Collectors.toList()).forEach($$0 -> $$0.a(false, false));
    }
 
    public void a(dzz $$0, int $$1) {
@@ -396,9 +396,9 @@ public class ash extends dhh implements asg, dif {
          return $$2.get();
       } else {
          fbs $$3 = fbs.a($$1, $$1.h(this.am() + 1)).g(3.0);
-         List<bwf> $$4 = this.a(bwf.class, $$3, $$0x -> $$0x != null && $$0x.bL() && this.h($$0x.dv()));
+         List<bwf> $$4 = this.a(bwf.class, $$3, $$0x -> $$0x != null && $$0x.bL() && this.h($$0x.dw()));
          if (!$$4.isEmpty()) {
-            return $$4.get(this.A.a($$4.size())).dv();
+            return $$4.get(this.A.a($$4.size())).dw();
          } else {
             if ($$1.v() == this.L_() - 1) {
                $$1 = $$1.b(2);
@@ -569,7 +569,7 @@ public class ash extends dhh implements asg, dif {
    }
 
    private void a(bvj $$0, bvj $$1) {
-      if ($$1.dQ() || $$1.dk() != $$0) {
+      if ($$1.dR() || $$1.dl() != $$0) {
          $$1.ae();
       } else if ($$1 instanceof cpw || this.N.c($$1)) {
          $$1.bz();
@@ -707,14 +707,14 @@ public class ash extends dhh implements asg, dif {
       if ($$1 != null) {
          F.warn("Force-added player with duplicate UUID {}", $$0.cG());
          $$1.ao();
-         this.a((asi)$$1, bvj.c.b);
+         this.a((asi)$$1, bvj.d.b);
       }
 
       this.O.a($$0);
    }
 
    private boolean i(bvj $$0) {
-      if ($$0.dQ()) {
+      if ($$0.dR()) {
          F.warn("Tried to add entity {} but it was marked as removed already", bvq.a($$0.aq()));
          return false;
       } else {
@@ -736,17 +736,17 @@ public class ash extends dhh implements asg, dif {
       $$0.c(this);
    }
 
-   public void a(asi $$0, bvj.c $$1) {
+   public void a(asi $$0, bvj.d $$1) {
       $$0.a($$1);
    }
 
    @Override
    public void a(int $$0, jh $$1, int $$2) {
       for (asi $$3 : this.K.ag().t()) {
-         if ($$3 != null && $$3.dV() == this && $$3.ar() != $$0) {
-            double $$4 = (double)$$1.u() - $$3.dA();
-            double $$5 = (double)$$1.v() - $$3.dC();
-            double $$6 = (double)$$1.w() - $$3.dG();
+         if ($$3 != null && $$3.dW() == this && $$3.ar() != $$0) {
+            double $$4 = (double)$$1.u() - $$3.dB();
+            double $$5 = (double)$$1.v() - $$3.dD();
+            double $$6 = (double)$$1.w() - $$3.dH();
             if ($$4 * $$4 + $$5 * $$5 + $$6 * $$6 < 1024.0) {
                $$3.f.b(new acx($$0, $$1, $$2));
             }
@@ -761,7 +761,7 @@ public class ash extends dhh implements asg, dif {
 
    @Override
    public void a(@Nullable cpw $$0, bvj $$1, jq<axe> $$2, axg $$3, float $$4, float $$5, long $$6) {
-      this.K.ag().a($$0, $$1.dA(), $$1.dC(), $$1.dG(), (double)$$2.a().a($$4), this.ah(), new ags($$2, $$3, $$1, $$4, $$5, $$6));
+      this.K.ag().a($$0, $$1.dB(), $$1.dD(), $$1.dH(), (double)$$2.a().a($$4), this.ah(), new ags($$2, $$3, $$1, $$4, $$5, $$6));
    }
 
    @Override
@@ -967,10 +967,10 @@ public class ash extends dhh implements asg, dif {
    }
 
    private boolean a(asi $$0, boolean $$1, double $$2, double $$3, double $$4, aac<?> $$5) {
-      if ($$0.dV() != this) {
+      if ($$0.dW() != this) {
          return false;
       } else {
-         jh $$6 = $$0.dv();
+         jh $$6 = $$0.dw();
          if ($$6.a(new fbx($$2, $$3, $$4), $$1 ? 512.0 : 32.0)) {
             $$0.f.b($$5);
             return true;
@@ -1219,7 +1219,7 @@ public class ash extends dhh implements asg, dif {
       for (bvj $$3 : $$1) {
          xv $$4 = $$3.an();
          xv $$5 = $$3.p_();
-         $$2.a($$3.dA(), $$3.dC(), $$3.dG(), $$3.cG(), ma.f.b($$3.aq()), $$3.bL(), $$5.getString(), $$4 != null ? $$4.getString() : null);
+         $$2.a($$3.dB(), $$3.dD(), $$3.dH(), $$3.cG(), ma.f.b($$3.aq()), $$3.bL(), $$5.getString(), $$4 != null ? $$4.getString() : null);
       }
    }
 

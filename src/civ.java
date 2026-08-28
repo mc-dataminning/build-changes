@@ -27,7 +27,7 @@ public class civ extends chv {
       this.bT.a(1, new civ.a());
    }
 
-   public static bxm.a gm() {
+   public static bxm.a go() {
       return bwh.C().a(bxn.s, 10.0);
    }
 
@@ -56,13 +56,13 @@ public class civ extends chv {
    }
 
    @Override
-   protected float fe() {
+   protected float fg() {
       return 0.4F;
    }
 
    @Override
-   protected bvj.b bg() {
-      return bvj.b.c;
+   protected bvj.c bg() {
+      return bvj.c.c;
    }
 
    @Nullable
@@ -85,7 +85,7 @@ public class civ extends chv {
       this.cg = this.cf;
       this.cd = this.cd + this.ci;
       if ((double)this.cd > Math.PI * 2) {
-         if (this.dV().C) {
+         if (this.dW().C) {
             this.cd = (float) (Math.PI * 2);
          } else {
             this.cd -= (float) (Math.PI * 2);
@@ -93,7 +93,7 @@ public class civ extends chv {
                this.ci = 1.0F / (this.ae.i() + 1.0F) * 0.2F;
             }
 
-            this.dV().a(this, (byte)19);
+            this.dW().a(this, (byte)19);
          }
       }
 
@@ -113,13 +113,13 @@ public class civ extends chv {
          } else {
             this.cf = 0.0F;
             if (this.di()) {
-               this.h(this.dy().c(0.9));
+               this.h(this.dz().c(0.9));
             }
 
             this.cj *= 0.99F;
          }
 
-         fbx $$1 = this.dy();
+         fbx $$1 = this.dz();
          double $$2 = $$1.i();
          this.aX = this.aX + (-((float)bae.d($$1.d, $$1.f)) * (180.0F / (float)Math.PI) - this.aX) * 0.1F;
          this.v(this.aX);
@@ -127,8 +127,8 @@ public class civ extends chv {
          this.bZ = this.bZ + (-((float)bae.d($$2, $$1.e)) * (180.0F / (float)Math.PI) - this.bZ) * 0.1F;
       } else {
          this.cf = bae.e(bae.a(this.cd)) * (float) Math.PI * 0.25F;
-         if (!this.dV().C) {
-            double $$3 = this.dy().e;
+         if (!this.dW().C) {
+            double $$3 = this.dz().e;
             if (this.b(buq.y)) {
                $$3 = 0.05 * (double)(this.c(buq.y).e() + 1);
             } else {
@@ -144,7 +144,7 @@ public class civ extends chv {
 
    @Override
    public boolean a(ash $$0, btz $$1, float $$2) {
-      if (super.a($$0, $$1, $$2) && this.ep() != null) {
+      if (super.a($$0, $$1, $$2) && this.eq() != null) {
          this.x();
          return true;
       } else {
@@ -159,13 +159,13 @@ public class civ extends chv {
 
    private void x() {
       this.b(this.t());
-      fbx $$0 = this.k(new fbx(0.0, -1.0, 0.0)).b(this.dA(), this.dC(), this.dG());
+      fbx $$0 = this.k(new fbx(0.0, -1.0, 0.0)).b(this.dB(), this.dD(), this.dH());
 
       for (int $$1 = 0; $$1 < 30; $$1++) {
          fbx $$2 = this.k(new fbx((double)this.ae.i() * 0.6 - 0.3, -1.0, (double)this.ae.i() * 0.6 - 0.3));
          float $$3 = this.e_() ? 0.1F : 0.3F;
          fbx $$4 = $$2.c((double)($$3 + this.ae.i() * 2.0F));
-         ((ash)this.dV()).a(this.p(), $$0.d, $$0.e + 0.5, $$0.f, 0, $$4.d, $$4.e, $$4.f, 0.1F);
+         ((ash)this.dW()).a(this.p(), $$0.d, $$0.e + 0.5, $$0.f, 0, $$4.d, $$4.e, $$4.f, 0.1F);
       }
    }
 
@@ -176,7 +176,7 @@ public class civ extends chv {
    @Override
    public void a_(fbx $$0) {
       if (this.di()) {
-         this.a(bwj.a, this.dy());
+         this.a(bwj.a, this.dz());
       }
    }
 
@@ -189,7 +189,7 @@ public class civ extends chv {
       }
    }
 
-   public boolean gn() {
+   public boolean gp() {
       return this.ck.h() > 1.0E-5F;
    }
 
@@ -208,7 +208,7 @@ public class civ extends chv {
 
       @Override
       public boolean b() {
-         bwf $$0 = civ.this.ep();
+         bwf $$0 = civ.this.eq();
          return civ.this.bj() && $$0 != null ? civ.this.g((bvj)$$0) < 100.0 : false;
       }
 
@@ -225,11 +225,11 @@ public class civ extends chv {
       @Override
       public void a() {
          this.e++;
-         bwf $$0 = civ.this.ep();
+         bwf $$0 = civ.this.eq();
          if ($$0 != null) {
-            fbx $$1 = new fbx(civ.this.dA() - $$0.dA(), civ.this.dC() - $$0.dC(), civ.this.dG() - $$0.dG());
-            dxu $$2 = civ.this.dV().a_(jh.a(civ.this.dA() + $$1.d, civ.this.dC() + $$1.e, civ.this.dG() + $$1.f));
-            etw $$3 = civ.this.dV().b_(jh.a(civ.this.dA() + $$1.d, civ.this.dC() + $$1.e, civ.this.dG() + $$1.f));
+            fbx $$1 = new fbx(civ.this.dB() - $$0.dB(), civ.this.dD() - $$0.dD(), civ.this.dH() - $$0.dH());
+            dxu $$2 = civ.this.dW().a_(jh.a(civ.this.dB() + $$1.d, civ.this.dD() + $$1.e, civ.this.dH() + $$1.f));
+            etw $$3 = civ.this.dW().b_(jh.a(civ.this.dB() + $$1.d, civ.this.dD() + $$1.e, civ.this.dH() + $$1.f));
             if ($$3.a(aya.a) || $$2.l()) {
                double $$4 = $$1.g();
                if ($$4 > 0.0) {
@@ -252,7 +252,7 @@ public class civ extends chv {
             }
 
             if (this.e % 10 == 5) {
-               civ.this.dV().a(ls.d, civ.this.dA(), civ.this.dC(), civ.this.dG(), 0.0, 0.0, 0.0);
+               civ.this.dW().a(ls.d, civ.this.dB(), civ.this.dD(), civ.this.dH(), 0.0, 0.0, 0.0);
             }
          }
       }
@@ -272,12 +272,12 @@ public class civ extends chv {
 
       @Override
       public void a() {
-         int $$0 = this.a.et();
+         int $$0 = this.a.eu();
          if ($$0 > 100) {
             this.a.ck = fbx.c;
-         } else if (this.a.dY().a(b(50)) == 0 || !this.a.ag || !this.a.gn()) {
-            float $$1 = this.a.dY().i() * (float) (Math.PI * 2);
-            this.a.ck = new fbx((double)(bae.b($$1) * 0.2F), (double)(-0.1F + this.a.dY().i() * 0.2F), (double)(bae.a($$1) * 0.2F));
+         } else if (this.a.dZ().a(b(50)) == 0 || !this.a.ag || !this.a.gp()) {
+            float $$1 = this.a.dZ().i() * (float) (Math.PI * 2);
+            this.a.ck = new fbx((double)(bae.b($$1) * 0.2F), (double)(-0.1F + this.a.dZ().i() * 0.2F), (double)(bae.a($$1) * 0.2F));
          }
       }
    }

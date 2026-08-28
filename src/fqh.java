@@ -1,9 +1,26 @@
 import java.util.function.Consumer;
 
-public interface fqh {
-   xv a();
+public class fqh implements fqi {
+   private final xv b;
+   protected final frs a = new frs();
 
-   void a(Consumer<fob> var1);
+   public fqh(xv $$0) {
+      this.b = $$0;
+   }
 
-   void a(fsl var1);
+   @Override
+   public xv a() {
+      return this.b;
+   }
+
+   @Override
+   public void a(Consumer<foc> $$0) {
+      this.a.a($$0);
+   }
+
+   @Override
+   public void a(fsm $$0) {
+      this.a.a();
+      frr.a(this.a, $$0, 0.5F, 0.16666667F);
+   }
 }

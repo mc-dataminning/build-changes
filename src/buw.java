@@ -11,9 +11,9 @@ class buw extends bum {
    }
 
    @Override
-   public void a(ash $$0, bwf $$1, int $$2, bvj.c $$3) {
-      if ($$3 == bvj.c.a && ($$1 instanceof cpw || $$0.N().b(dhd.c))) {
-         this.a($$0, $$1.dY(), $$1.dv());
+   public void a(ash $$0, bwf $$1, int $$2, bvj.d $$3) {
+      if ($$3 == bvj.d.a && ($$1 instanceof cpw || $$0.N().b(dhd.c))) {
+         this.a($$0, $$1.dZ(), $$1.dw());
       }
    }
 

@@ -1,45 +1,7 @@
-public class gax extends gcf {
-   private static final String a = "bottom";
-   private static final String b = "lid";
-   private static final String c = "lock";
-   private final gem d;
-   private final gem e;
+public class gax extends gbn<gxk> {
+   public static final gew a = gew.scaling(0.8F);
 
-   public gax(gem $$0) {
-      super($$0, glt::c);
-      this.d = $$0.b("lid");
-      this.e = $$0.b("lock");
-   }
-
-   public static ges a() {
-      geu $$0 = new geu();
-      gew $$1 = $$0.a();
-      $$1.a("bottom", ger.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 14.0F, 10.0F, 14.0F), geo.a);
-      $$1.a("lid", ger.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 14.0F, 5.0F, 14.0F), geo.a(0.0F, 9.0F, 1.0F));
-      $$1.a("lock", ger.c().a(0, 0).a(7.0F, -2.0F, 14.0F, 2.0F, 4.0F, 1.0F), geo.a(0.0F, 9.0F, 1.0F));
-      return ges.a($$0, 64, 64);
-   }
-
-   public static ges b() {
-      geu $$0 = new geu();
-      gew $$1 = $$0.a();
-      $$1.a("bottom", ger.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), geo.a);
-      $$1.a("lid", ger.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), geo.a(0.0F, 9.0F, 1.0F));
-      $$1.a("lock", ger.c().a(0, 0).a(15.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), geo.a(0.0F, 9.0F, 1.0F));
-      return ges.a($$0, 64, 64);
-   }
-
-   public static ges c() {
-      geu $$0 = new geu();
-      gew $$1 = $$0.a();
-      $$1.a("bottom", ger.c().a(0, 19).a(0.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), geo.a);
-      $$1.a("lid", ger.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), geo.a(0.0F, 9.0F, 1.0F));
-      $$1.a("lock", ger.c().a(0, 0).a(0.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), geo.a(0.0F, 9.0F, 1.0F));
-      return ges.a($$0, 64, 64);
-   }
-
-   public void a(float $$0) {
-      this.d.e = -($$0 * (float) (Math.PI / 2));
-      this.e.e = this.d.e;
+   public gax(gen $$0) {
+      super($$0);
    }
 }

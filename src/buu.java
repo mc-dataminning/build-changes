@@ -5,7 +5,7 @@ class buu extends bum {
 
    @Override
    public boolean a(ash $$0, bwf $$1, int $$2) {
-      if ($$1.eD() < $$1.eR()) {
+      if ($$1.eE() < $$1.eS()) {
          $$1.c(1.0F);
       }
 

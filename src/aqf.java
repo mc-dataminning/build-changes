@@ -108,7 +108,7 @@ public class aqf {
 
    private static int a(ew $$0, Collection<? extends bvj> $$1, bvj $$2) throws CommandSyntaxException {
       for (bvj $$3 : $$1) {
-         a($$0, $$3, (ash)$$2.dV(), $$2.dA(), $$2.dC(), $$2.dG(), EnumSet.noneOf(bwt.class), $$2.dL(), $$2.dN(), null);
+         a($$0, $$3, (ash)$$2.dW(), $$2.dB(), $$2.dD(), $$2.dH(), EnumSet.noneOf(bwt.class), $$2.dM(), $$2.dO(), null);
       }
 
       if ($$1.size() == 1) {
@@ -123,13 +123,13 @@ public class aqf {
    private static int a(ew $$0, Collection<? extends bvj> $$1, ash $$2, gu $$3, @Nullable gu $$4, @Nullable aos $$5) throws CommandSyntaxException {
       fbx $$6 = $$3.a($$0);
       fbw $$7 = $$4 == null ? null : $$4.b($$0);
-      Set<bwt> $$8 = a($$3, $$4, $$0.f().dV().ah() == $$2.ah());
 
-      for (bvj $$9 : $$1) {
-         if ($$4 == null) {
-            a($$0, $$9, $$2, $$6.d, $$6.e, $$6.f, $$8, $$9.dL(), $$9.dN(), $$5);
+      for (bvj $$8 : $$1) {
+         Set<bwt> $$9 = a($$3, $$4, $$8.dW().ah() == $$2.ah());
+         if ($$7 == null) {
+            a($$0, $$8, $$2, $$6.d, $$6.e, $$6.f, $$9, $$8.dM(), $$8.dO(), $$5);
          } else {
-            a($$0, $$9, $$2, $$6.d, $$6.e, $$6.f, $$8, $$7.j, $$7.i, $$5);
+            a($$0, $$8, $$2, $$6.d, $$6.e, $$6.f, $$9, $$7.j, $$7.i, $$5);
          }
       }
 
@@ -165,17 +165,12 @@ public class aqf {
          }
       }
 
-      if ($$1 == null) {
+      if ($$1 == null || $$1.a()) {
          $$3.add(bwt.e);
-         $$3.add(bwt.d);
-      } else {
-         if ($$1.a()) {
-            $$3.add(bwt.e);
-         }
+      }
 
-         if ($$1.b()) {
-            $$3.add(bwt.d);
-         }
+      if ($$1 == null || $$1.b()) {
+         $$3.add(bwt.d);
       }
 
       return $$3;
@@ -190,11 +185,11 @@ public class aqf {
       if (!dhh.l($$10)) {
          throw a.create();
       } else {
-         double $$11 = $$6.contains(bwt.a) ? $$3 - $$1.dA() : $$3;
-         double $$12 = $$6.contains(bwt.b) ? $$4 - $$1.dC() : $$4;
-         double $$13 = $$6.contains(bwt.c) ? $$5 - $$1.dG() : $$5;
-         float $$14 = $$6.contains(bwt.d) ? $$7 - $$1.dL() : $$7;
-         float $$15 = $$6.contains(bwt.e) ? $$8 - $$1.dN() : $$8;
+         double $$11 = $$6.contains(bwt.a) ? $$3 - $$1.dB() : $$3;
+         double $$12 = $$6.contains(bwt.b) ? $$4 - $$1.dD() : $$4;
+         double $$13 = $$6.contains(bwt.c) ? $$5 - $$1.dH() : $$5;
+         float $$14 = $$6.contains(bwt.d) ? $$7 - $$1.dM() : $$7;
+         float $$15 = $$6.contains(bwt.e) ? $$8 - $$1.dO() : $$8;
          float $$16 = bae.h($$14);
          float $$17 = bae.h($$15);
          if ($$1.a($$2, $$11, $$12, $$13, $$6, $$16, $$17, true)) {
@@ -202,8 +197,8 @@ public class aqf {
                $$9.perform($$0, $$1);
             }
 
-            if (!($$1 instanceof bwf $$18) || !$$18.fH()) {
-               $$1.h($$1.dy().d(1.0, 0.0, 1.0));
+            if (!($$1 instanceof bwf $$18) || !$$18.fJ()) {
+               $$1.h($$1.dz().d(1.0, 0.0, 1.0));
                $$1.d(true);
             }
 

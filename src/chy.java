@@ -17,8 +17,8 @@ public interface chy {
    static void a(bwh $$0, cxo $$1) {
       $$1.b(ku.g, $$0.an());
       czx.a(ku.X, $$1, $$1x -> {
-         if ($$0.fZ()) {
-            $$1x.a("NoAI", $$0.fZ());
+         if ($$0.gb()) {
+            $$1x.a("NoAI", $$0.gb());
          }
 
          if ($$0.bb()) {
@@ -37,7 +37,7 @@ public interface chy {
             $$1x.a("Invulnerable", $$0.cC());
          }
 
-         $$1x.a("Health", $$0.eD());
+         $$1x.a("Health", $$0.eE());
       });
    }
 
@@ -76,7 +76,7 @@ public interface chy {
          $$2.i($$4);
          cxo $$5 = cxr.a($$3, $$0, $$4, false);
          $$0.a($$1, $$5);
-         dhh $$6 = $$2.dV();
+         dhh $$6 = $$2.dW();
          if (!$$6.C) {
             ao.k.a((asi)$$0, $$4);
          }

@@ -21,13 +21,13 @@ public class csj extends crv {
       super.h();
       if (this.h > 0) {
          this.h--;
-         this.dV().a(ls.af, this.dA(), this.dC() + 0.5, this.dG(), 0.0, 0.0, 0.0);
+         this.dW().a(ls.af, this.dB(), this.dD() + 0.5, this.dH(), 0.0, 0.0, 0.0);
       } else if (this.h == 0) {
-         this.h(this.dy().j());
+         this.h(this.dz().j());
       }
 
       if (this.P) {
-         double $$0 = this.dy().j();
+         double $$0 = this.dz().j();
          if ($$0 >= 0.01F) {
             this.h($$0);
          }
@@ -37,8 +37,8 @@ public class csj extends crv {
    @Override
    public boolean a(ash $$0, btz $$1, float $$2) {
       if ($$1.c() instanceof cqd $$4 && $$4.bY()) {
-         btz $$5 = this.dW().d(this, $$1.d());
-         this.a($$5, $$4.dy().h());
+         btz $$5 = this.dX().d(this, $$1.d());
+         this.a($$5, $$4.dz().h());
       }
 
       return super.a($$0, $$1, $$2);
@@ -46,7 +46,7 @@ public class csj extends crv {
 
    @Override
    public void a(ash $$0, btz $$1) {
-      double $$2 = this.dy().j();
+      double $$2 = this.dz().j();
       if (!e($$1) && !($$2 >= 0.01F)) {
          this.a($$0, this.u());
       } else {
@@ -63,7 +63,7 @@ public class csj extends crv {
    }
 
    @Override
-   public cxo dI() {
+   public cxo dJ() {
       return new cxo(cxs.oi);
    }
 
@@ -72,9 +72,9 @@ public class csj extends crv {
    }
 
    protected void a(@Nullable btz $$0, double $$1) {
-      if (this.dV() instanceof ash $$2) {
+      if (this.dW() instanceof ash $$2) {
          double $$3 = Math.min(Math.sqrt($$1), 5.0);
-         $$2.a(this, $$0, null, this.dA(), this.dC(), this.dG(), (float)((double)this.i + this.ae.j() * 1.5 * $$3), false, dhh.a.d);
+         $$2.a(this, $$0, null, this.dB(), this.dD(), this.dH(), (float)((double)this.i + this.ae.j() * 1.5 * $$3), false, dhh.a.d);
          this.at();
       }
    }
@@ -107,10 +107,10 @@ public class csj extends crv {
 
    public void v() {
       this.h = 80;
-      if (!this.dV().C) {
-         this.dV().a(this, (byte)10);
+      if (!this.dW().C) {
+         this.dW().a(this, (byte)10);
          if (!this.bb()) {
-            this.dV().a(null, this.dA(), this.dC(), this.dG(), axf.zX, axg.e, 1.0F, 1.0F);
+            this.dW().a(null, this.dB(), this.dD(), this.dH(), axf.zX, axg.e, 1.0F, 1.0F);
          }
       }
    }

@@ -39,17 +39,17 @@ public class csh extends crw implements dvx {
 
    @Override
    public double G() {
-      return this.dA();
+      return this.dB();
    }
 
    @Override
    public double H() {
-      return this.dC() + 0.5;
+      return this.dD() + 0.5;
    }
 
    @Override
    public double I() {
-      return this.dG();
+      return this.dH();
    }
 
    @Override
@@ -72,17 +72,17 @@ public class csh extends crw implements dvx {
    }
 
    private void P() {
-      if (!this.dV().C && this.bL() && this.F() && !this.d && this.K()) {
+      if (!this.dW().C && this.bL() && this.F() && !this.d && this.K()) {
          this.d = true;
          this.e();
       }
    }
 
    public boolean K() {
-      if (dvy.a(this.dV(), this)) {
+      if (dvy.a(this.dW(), this)) {
          return true;
       } else {
-         for (cma $$1 : this.dV().a(cma.class, this.cR().c(0.25, 0.0, 0.25), bvo.a)) {
+         for (cma $$1 : this.dW().a(cma.class, this.cR().c(0.25, 0.0, 0.25), bvo.a)) {
             if (dvy.a(this, $$1)) {
                return true;
             }
@@ -98,7 +98,7 @@ public class csh extends crw implements dvx {
    }
 
    @Override
-   public cxo dI() {
+   public cxo dJ() {
       return new cxo(cxs.oj);
    }
 

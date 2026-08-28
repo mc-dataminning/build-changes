@@ -204,12 +204,12 @@ public class cbe {
    }
 
    private static boolean a(ash $$0, bwf $$1) {
-      crj $$2 = $$0.d($$1.dv());
+      crj $$2 = $$0.d($$1.dw());
       return $$2 != null && $$2.u() && !$$2.e() && !$$2.f();
    }
 
    private static boolean b(ash $$0, bwf $$1) {
-      crj $$2 = $$0.d($$1.dv());
+      crj $$2 = $$0.d($$1.dw());
       return $$2 != null && $$2.e();
    }
 }

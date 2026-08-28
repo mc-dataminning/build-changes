@@ -1,78 +1,63 @@
-import com.mojang.logging.LogUtils;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Arrays;
 import java.util.Map;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import java.util.stream.Collectors;
+import org.joml.Quaternionf;
 
-public class hdn {
-   private static final Logger e = LogUtils.getLogger();
-   private static final String f = "map";
-   private static final String g = "map=true";
-   private static final String h = "map=false";
-   private static final dxv<dkl, dxu> i = new dxv.a<dkl, dxu>(dkn.a).a(dyl.a("map")).a(dkl::m, dxu::new);
-   private static final alz j = alz.b("glow_item_frame");
-   private static final alz k = alz.b("item_frame");
-   private static final Map<alz, dxv<dkl, dxu>> l = Map.of(k, i, j, i);
-   public static final hdz a = new hdz(j, "map=true");
-   public static final hdz b = new hdz(j, "map=false");
-   public static final hdz c = new hdz(k, "map=true");
-   public static final hdz d = new hdz(k, "map=false");
-   private final hee m;
+public enum hdn implements heb {
+   a(0, 0),
+   b(0, 90),
+   c(0, 180),
+   d(0, 270),
+   e(90, 0),
+   f(90, 90),
+   g(90, 180),
+   h(90, 270),
+   i(180, 0),
+   j(180, 90),
+   k(180, 180),
+   l(180, 270),
+   m(270, 0),
+   n(270, 90),
+   o(270, 180),
+   p(270, 270);
 
-   public hdn(hee $$0) {
-      this.m = $$0;
+   private static final int q = 360;
+   private static final Map<Integer, hdn> r = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.u, $$0 -> (hdn)$$0));
+   private final j s;
+   private final h t;
+   private final int u;
+
+   private static int b(int $$0, int $$1) {
+      return $$0 * 360 + $$1;
    }
 
-   public static Function<alz, dxv<dkl, dxu>> a() {
-      Map<alz, dxv<dkl, dxu>> $$0 = new HashMap<>(l);
+   private hdn(final int $$0, final int $$1) {
+      this.u = b($$0, $$1);
+      Quaternionf $$2 = new Quaternionf().rotateYXZ((float)(-$$1) * (float) (Math.PI / 180.0), (float)(-$$0) * (float) (Math.PI / 180.0), 0.0F);
+      h $$3 = h.a;
 
-      for (dkl $$1 : ma.e) {
-         $$0.put($$1.p().h().a(), $$1.l());
+      for (int $$4 = 0; $$4 < $$1; $$4 += 90) {
+         $$3 = $$3.a(h.u);
       }
 
-      return $$0::get;
-   }
-
-   public hdn.c a(alz $$0, dxv<dkl, dxu> $$1, List<hdn.a> $$2) {
-      List<dxu> $$3 = $$1.a();
-      Map<dxu, hdn.b> $$4 = new HashMap<>();
-      Map<hdz, hdn.b> $$5 = new HashMap<>();
-
-      try {
-         for (hdn.a $$6 : $$2) {
-            $$6.b.a($$1, $$0 + "/" + $$6.a).forEach(($$1x, $$2x) -> $$4.put($$1x, new hdn.b($$1x, $$2x)));
-         }
-      } finally {
-         Iterator var12 = $$3.iterator();
-
-         while (true) {
-            if (!var12.hasNext()) {
-               ;
-            } else {
-               dxu $$10 = (dxu)var12.next();
-               hdz $$11 = gml.a($$0, $$10);
-               hdn.b $$12 = $$4.get($$10);
-               if ($$12 == null) {
-                  e.warn("Missing blockstate definition: '{}' missing model for variant: '{}'", $$0, $$11);
-                  $$12 = new hdn.b($$10, this.m);
-               }
-
-               $$5.put($$11, $$12);
-            }
-         }
+      for (int $$5 = 0; $$5 < $$0; $$5 += 90) {
+         $$3 = $$3.a(h.s);
       }
 
-      return new hdn.c($$5);
+      this.s = new j(null, $$2, null, null);
+      this.t = $$3;
    }
 
-   public static record a(String a, gmw b) {
+   @Override
+   public j b() {
+      return this.s;
    }
 
-   public static record b(dxu a, hee b) {
+   public static hdn a(int $$0, int $$1) {
+      return r.get(b(bae.b($$0, 360), bae.b($$1, 360)));
    }
 
-   public static record c(Map<hdz, hdn.b> a) {
+   public h a() {
+      return this.t;
    }
 }

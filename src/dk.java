@@ -11,7 +11,7 @@ public record dk(Map<jq<bum>, dk.b> b) {
    public static final Codec<dk> a = Codec.unboundedMap(bum.a, dk.b.a).xmap(dk::new, dk::a);
 
    public boolean a(bvj $$0) {
-      if ($$0 instanceof bwf $$1 && this.a($$1.eB())) {
+      if ($$0 instanceof bwf $$1 && this.a($$1.eC())) {
          return true;
       }
 
@@ -19,7 +19,7 @@ public record dk(Map<jq<bum>, dk.b> b) {
    }
 
    public boolean a(bwf $$0) {
-      return this.a($$0.eB());
+      return this.a($$0.eC());
    }
 
    public boolean a(Map<jq<bum>, buo> $$0) {

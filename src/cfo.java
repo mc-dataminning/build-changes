@@ -17,7 +17,7 @@ public class cfo extends cfr {
 
    @Override
    protected fbx b() {
-      return new fbx(this.a.dA(), this.a.e(0.5), this.a.dG());
+      return new fbx(this.a.dB(), this.a.e(0.5), this.a.dH());
    }
 
    @Override

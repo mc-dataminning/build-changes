@@ -1,13 +1,12 @@
-public class fjd extends fjc {
-   public static final int b = 5;
-   public final int c;
+public class fjd extends Exception {
+   public final fhj a;
 
-   public fjd(int $$0, int $$1) {
-      super(fhi.b.a($$1));
-      if ($$0 >= 0 && $$0 <= 120) {
-         this.c = $$0;
-      } else {
-         this.c = 5;
-      }
+   public fjd(fhj $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public String getMessage() {
+      return this.a.c();
    }
 }

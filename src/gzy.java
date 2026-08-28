@@ -1,5 +1,7 @@
-public class gzy extends gyr {
-   public ciw.b a = ciw.b.g;
-   public int b = -1;
-   public int c = -1;
+import javax.annotation.Nullable;
+
+public class gzy extends gxu {
+   public float a;
+   @Nullable
+   public dxu b;
 }

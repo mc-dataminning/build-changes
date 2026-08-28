@@ -100,7 +100,7 @@ public class fl implements ArgumentType<fl.a> {
             List<GameProfile> $$2 = Lists.newArrayList();
 
             for (asi $$3 : $$1) {
-               $$2.add($$3.gf());
+               $$2.add($$3.gh());
             }
 
             return $$2;

@@ -72,14 +72,14 @@ public class bzk {
    }
 
    private static bwf a(bwf $$0) {
-      return $$0.eb().c(cfj.q).get();
+      return $$0.ec().c(cfj.q).get();
    }
 
    private static boolean b(bwf $$0) {
-      return $$0.eb().c(cfj.q).isPresent();
+      return $$0.ec().c(cfj.q).isPresent();
    }
 
    private static boolean a(bwf $$0, bwf $$1) {
-      return $$1.eb().c(cfj.q).filter($$1x -> $$1x == $$0).isPresent();
+      return $$1.ec().c(cfj.q).filter($$1x -> $$1x == $$0).isPresent();
    }
 }

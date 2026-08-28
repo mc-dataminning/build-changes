@@ -1,34 +1,53 @@
-public class fla extends fld {
-   private static final xv b = xv.c("mco.connect.connecting");
-   private final hhs c;
-   private final fih d;
-   private final fii e;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public fla(ftw $$0, fih $$1, fii $$2) {
-      this.d = $$1;
-      this.e = $$2;
-      this.c = new hhs($$0);
+public class fla extends fle {
+   private static final Logger b = LogUtils.getLogger();
+   private static final xv c = xv.c("mco.configure.world.closing");
+   private final fii d;
+   private final fjr e;
+
+   public fla(fii $$0, fjr $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
    @Override
    public void run() {
-      this.c.a(this.d, gha.a(this.e.a));
-   }
+      fhh $$0 = fhh.a();
 
-   @Override
-   public void b() {
-      super.b();
-      this.c.a();
-      fme.Q().af().i();
-   }
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
+            return;
+         }
 
-   @Override
-   public void c() {
-      this.c.b();
+         try {
+            boolean $$2 = $$0.g(this.d.a);
+            if ($$2) {
+               this.e.f();
+               this.d.e = fii.c.a;
+               a(this.e);
+               break;
+            }
+         } catch (fje var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Failed to close server", var5);
+            this.a(var5);
+         }
+      }
    }
 
    @Override
    public xv a() {
-      return b;
+      return c;
    }
 }

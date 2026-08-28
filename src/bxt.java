@@ -23,7 +23,7 @@ public class bxt<E extends bwn> extends bxy<E> {
    }
 
    protected boolean a(ash $$0, E $$1) {
-      return $$1.eb().c(cfj.x).map($$1x -> $$1x.a(this.h.apply($$1))).orElse(false) || $$1.eb().a(cfj.Z);
+      return $$1.ec().c(cfj.x).map($$1x -> $$1x.a(this.h.apply($$1))).orElse(false) || $$1.ec().a(cfj.Z);
    }
 
    protected boolean a(ash $$0, E $$1, long $$2) {
@@ -31,12 +31,12 @@ public class bxt<E extends bwn> extends bxy<E> {
    }
 
    protected void b(ash $$0, E $$1, long $$2) {
-      $$1.eb().a(cfj.Z, true);
-      $$1.eb().b(cfj.m);
+      $$1.ec().a(cfj.Z, true);
+      $$1.ec().b(cfj.m);
    }
 
    protected void c(ash $$0, E $$1, long $$2) {
-      bxh<?> $$3 = $$1.eb();
+      bxh<?> $$3 = $$1.ec();
       $$3.b(cfj.Z);
    }
 
@@ -44,7 +44,7 @@ public class bxt<E extends bwn> extends bxy<E> {
       if ($$1.L().m()) {
          fbx $$3 = this.a($$1, $$0);
          if ($$3 != null) {
-            $$1.eb().a(cfj.m, new cfm($$3, this.g, 0));
+            $$1.ec().a(cfj.m, new cfm($$3, this.g, 0));
          }
       }
    }
@@ -62,12 +62,12 @@ public class bxt<E extends bwn> extends bxy<E> {
    }
 
    private Optional<jh> a(dgm $$0, bvj $$1) {
-      jh $$2 = $$1.dv();
+      jh $$2 = $$1.dw();
       if (!$$0.a_($$2).g($$0, $$2).c()) {
          return Optional.empty();
       } else {
          Predicate<jh> $$3;
-         if (bae.f($$1.dq()) == 2) {
+         if (bae.f($$1.dr()) == 2) {
             $$3 = $$1x -> jh.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(aya.a));
          } else {
             $$3 = $$1x -> $$0.b_($$1x).a(aya.a);

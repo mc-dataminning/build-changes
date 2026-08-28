@@ -26,9 +26,9 @@ public class cvo extends cxk {
                }
 
                float $$11 = (float)bae.d((bae.h($$0.i() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
-               $$10.b($$10.dA(), $$10.dC(), $$10.dG(), $$11, 0.0F);
+               $$10.b($$10.dB(), $$10.dD(), $$10.dH(), $$11, 0.0F);
                $$8.a_($$10);
-               $$2.a(null, $$10.dA(), $$10.dC(), $$10.dG(), axf.aD, axg.e, 0.75F, 0.8F);
+               $$2.a(null, $$10.dB(), $$10.dD(), $$10.dH(), axf.aD, axg.e, 0.75F, 0.8F);
                $$10.a(ecq.t, $$0.o());
             }
 

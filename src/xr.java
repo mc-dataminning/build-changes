@@ -32,7 +32,7 @@ public record xr(xs l, xs m) {
    }
 
    public static xr.a a(aly<xr> $$0, bvj $$1) {
-      return a($$0, $$1.dV().K_(), $$1.p_());
+      return a($$0, $$1.dW().K_(), $$1.p_());
    }
 
    public static xr.a a(aly<xr> $$0, ew $$1) {

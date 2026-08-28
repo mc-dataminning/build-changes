@@ -18,8 +18,8 @@ public class cqv extends cqd {
    @Override
    public void h() {
       super.h();
-      if (this.dV().C && !this.a) {
-         this.dV().a(ls.R, this.dA(), this.dC(), this.dG(), 0.0, 0.0, 0.0);
+      if (this.dW().C && !this.a) {
+         this.dW().a(ls.R, this.dB(), this.dD(), this.dH(), 0.0, 0.0, 0.0);
       }
    }
 

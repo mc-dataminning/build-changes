@@ -1,26 +1,27 @@
-import com.mojang.jtracy.TracyClient;
-import com.mojang.logging.LogListeners;
-import org.slf4j.event.Level;
+import org.joml.Matrix4f;
 
-public class fea {
-   private static boolean a;
+public enum fea {
+   a(fgz.a, ($$0, $$1) -> $$0.scale(1.0F - $$1 / 4096.0F)),
+   b(fgz.b, ($$0, $$1) -> $$0.translate(0.0F, 0.0F, $$1 / 512.0F));
 
-   public static void a() {
-      if (!a) {
-         TracyClient.load();
-         if (TracyClient.isAvailable()) {
-            LogListeners.addListener("Tracy", ($$0, $$1) -> TracyClient.message($$0, a($$1)));
-            a = true;
-         }
-      }
+   private final fgz c;
+   private final fea.a d;
+
+   private fea(final fgz $$0, final fea.a $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   private static int a(Level $$0) {
-      return switch ($$0) {
-         case DEBUG -> 11184810;
-         case WARN -> 16777130;
-         case ERROR -> 16755370;
-         default -> 16777215;
-      };
+   public fgz a() {
+      return this.c;
+   }
+
+   public void a(Matrix4f $$0, float $$1) {
+      this.d.apply($$0, $$1);
+   }
+
+   @FunctionalInterface
+   interface a {
+      void apply(Matrix4f var1, float var2);
    }
 }

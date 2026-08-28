@@ -1,8 +1,4 @@
-public class gzc extends gyr implements gzj {
-   public boolean a;
-
-   @Override
-   public boolean c() {
-      return this.a;
-   }
+public class gzc extends gys {
+   public float a;
+   public int b;
 }

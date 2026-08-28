@@ -70,10 +70,10 @@ public abstract class chs extends ciy implements chy {
    public void a_(fbx $$0) {
       if (this.di() && this.bj()) {
          this.a(0.01F, $$0);
-         this.a(bwj.a, this.dy());
-         this.h(this.dy().c(0.9));
+         this.a(bwj.a, this.dz());
+         this.h(this.dz().c(0.9));
          if (this.O_() == null) {
-            this.h(this.dy().b(0.0, -0.005, 0.0));
+            this.h(this.dz().b(0.0, -0.005, 0.0));
          }
       } else {
          super.a_($$0);
@@ -83,10 +83,10 @@ public abstract class chs extends ciy implements chy {
    @Override
    public void d_() {
       if (!this.bj() && this.aJ() && this.Q) {
-         this.h(this.dy().b((double)((this.ae.i() * 2.0F - 1.0F) * 0.05F), 0.4F, (double)((this.ae.i() * 2.0F - 1.0F) * 0.05F)));
+         this.h(this.dz().b((double)((this.ae.i() * 2.0F - 1.0F) * 0.05F), 0.4F, (double)((this.ae.i() * 2.0F - 1.0F) * 0.05F)));
          this.d(false);
          this.ar = true;
-         this.b(this.gm());
+         this.b(this.go());
       }
 
       super.d_();
@@ -116,7 +116,7 @@ public abstract class chs extends ciy implements chy {
       return true;
    }
 
-   protected abstract axe gm();
+   protected abstract axe go();
 
    @Override
    protected axe aV() {
@@ -138,24 +138,24 @@ public abstract class chs extends ciy implements chy {
       @Override
       public void a() {
          if (this.l.a(aya.a)) {
-            this.l.h(this.l.dy().b(0.0, 0.005, 0.0));
+            this.l.h(this.l.dz().b(0.0, 0.005, 0.0));
          }
 
          if (this.k == ccg.a.b && !this.l.L().m()) {
             float $$0 = (float)(this.h * this.l.h(bxn.v));
-            this.l.C(bae.h(0.125F, this.l.fn(), $$0));
-            double $$1 = this.e - this.l.dA();
-            double $$2 = this.f - this.l.dC();
-            double $$3 = this.g - this.l.dG();
+            this.l.C(bae.h(0.125F, this.l.fp(), $$0));
+            double $$1 = this.e - this.l.dB();
+            double $$2 = this.f - this.l.dD();
+            double $$3 = this.g - this.l.dH();
             if ($$2 != 0.0) {
                double $$4 = Math.sqrt($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
-               this.l.h(this.l.dy().b(0.0, (double)this.l.fn() * ($$2 / $$4) * 0.1, 0.0));
+               this.l.h(this.l.dz().b(0.0, (double)this.l.fp() * ($$2 / $$4) * 0.1, 0.0));
             }
 
             if ($$1 != 0.0 || $$3 != 0.0) {
                float $$5 = (float)(bae.d($$3, $$1) * 180.0F / (float)Math.PI) - 90.0F;
-               this.l.v(this.b(this.l.dL(), $$5, 90.0F));
-               this.l.aX = this.l.dL();
+               this.l.v(this.b(this.l.dM(), $$5, 90.0F));
+               this.l.aX = this.l.dM();
             }
          } else {
             this.l.C(0.0F);

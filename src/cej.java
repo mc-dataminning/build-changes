@@ -18,13 +18,13 @@ public class cej extends cdd {
    public boolean b() {
       if (this.b.cY()) {
          return false;
-      } else if (this.b.dV().U()) {
+      } else if (this.b.dW().U()) {
          return false;
-      } else if (this.b.dY().a(this.c) != 0) {
+      } else if (this.b.dZ().a(this.c) != 0) {
          return false;
       } else {
-         ash $$0 = (ash)this.b.dV();
-         jh $$1 = this.b.dv();
+         ash $$0 = (ash)this.b.dW();
+         jh $$1 = this.b.dw();
          if (!$$0.a($$1, 6)) {
             return false;
          } else {
@@ -44,14 +44,14 @@ public class cej extends cdd {
    public void a() {
       if (this.d != null) {
          cfr $$0 = this.b.L();
-         if ($$0.m() && !this.d.a(this.b.dt(), 10.0)) {
+         if ($$0.m() && !this.d.a(this.b.du(), 10.0)) {
             fbx $$1 = fbx.c(this.d);
-            fbx $$2 = this.b.dt();
+            fbx $$2 = this.b.du();
             fbx $$3 = $$2.d($$1);
             $$1 = $$3.c(0.4).e($$1);
             fbx $$4 = $$1.d($$2).d().c(10.0).e($$2);
             jh $$5 = jh.a((ka)$$4);
-            $$5 = this.b.dV().a(edp.a.f, $$5);
+            $$5 = this.b.dW().a(edp.a.f, $$5);
             if (!$$0.a((double)$$5.u(), (double)$$5.v(), (double)$$5.w(), 1.0)) {
                this.h();
             }
@@ -60,8 +60,8 @@ public class cej extends cdd {
    }
 
    private void h() {
-      bam $$0 = this.b.dY();
-      jh $$1 = this.b.dV().a(edp.a.f, this.b.dv().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
+      bam $$0 = this.b.dZ();
+      jh $$1 = this.b.dW().a(edp.a.f, this.b.dw().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
       this.b.L().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), 1.0);
    }
 }

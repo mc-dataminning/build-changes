@@ -36,7 +36,7 @@ public class ccl extends cdd {
    @Override
    public void d() {
       this.a.A(true);
-      this.e = this.a(40 + this.a.dY().a(40));
+      this.e = this.a(40 + this.a.dZ().a(40));
    }
 
    @Override
@@ -47,7 +47,7 @@ public class ccl extends cdd {
 
    @Override
    public void a() {
-      this.a.H().a(this.b.dA(), this.b.dE(), this.b.dG(), 10.0F, (float)this.a.Z());
+      this.a.H().a(this.b.dB(), this.b.dF(), this.b.dH(), 10.0F, (float)this.a.Z());
       this.e--;
    }
 

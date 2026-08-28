@@ -78,7 +78,7 @@ public class dte extends dkl {
 
    @Override
    public dxu a(dhh $$0, jh $$1, dxu $$2, cpw $$3) {
-      if (!$$0.C && !$$3.eX().f() && $$3.eX().a(cxs.sJ)) {
+      if (!$$0.C && !$$3.eZ().f() && $$3.eZ().a(cxs.sJ)) {
          $$0.a($$1, $$2.b(d, Boolean.valueOf(true)), 4);
          $$0.a($$3, ecq.M, $$1);
       }

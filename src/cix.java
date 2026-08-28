@@ -25,7 +25,7 @@ public class cix extends chw {
       this.al.a(ca, $$0);
    }
 
-   jh gm() {
+   jh go() {
       return this.al.a(ca);
    }
 
@@ -33,7 +33,7 @@ public class cix extends chw {
       this.al.a(ce, $$0);
    }
 
-   jh gn() {
+   jh gp() {
       return this.al.a(ce);
    }
 
@@ -54,7 +54,7 @@ public class cix extends chw {
       this.al.a(cd, $$0);
    }
 
-   boolean go() {
+   boolean gq() {
       return this.al.a(cf);
    }
 
@@ -62,7 +62,7 @@ public class cix extends chw {
       this.al.a(cf, $$0);
    }
 
-   boolean gp() {
+   boolean gr() {
       return this.al.a(cg);
    }
 
@@ -84,13 +84,13 @@ public class cix extends chw {
    @Override
    public void b(ux $$0) {
       super.b($$0);
-      $$0.a("HomePosX", this.gm().u());
-      $$0.a("HomePosY", this.gm().v());
-      $$0.a("HomePosZ", this.gm().w());
+      $$0.a("HomePosX", this.go().u());
+      $$0.a("HomePosY", this.go().v());
+      $$0.a("HomePosZ", this.go().w());
       $$0.a("HasEgg", this.p());
-      $$0.a("TravelPosX", this.gn().u());
-      $$0.a("TravelPosY", this.gn().v());
-      $$0.a("TravelPosZ", this.gn().w());
+      $$0.a("TravelPosX", this.gp().u());
+      $$0.a("TravelPosY", this.gp().v());
+      $$0.a("TravelPosZ", this.gp().w());
    }
 
    @Override
@@ -110,7 +110,7 @@ public class cix extends chw {
    @Nullable
    @Override
    public bwy a(dhy $$0, btg $$1, bvp $$2, @Nullable bwy $$3) {
-      this.h(this.dv());
+      this.h(this.dw());
       this.i(jh.c);
       return super.a($$0, $$1, $$2, $$3);
    }
@@ -133,7 +133,7 @@ public class cix extends chw {
    }
 
    public static bxm.a x() {
-      return chw.gr().a(bxn.s, 30.0).a(bxn.v, 0.25).a(bxn.B, 1.0);
+      return chw.gt().a(bxn.s, 30.0).a(bxn.v, 0.25).a(bxn.B, 1.0);
    }
 
    @Override
@@ -181,8 +181,8 @@ public class cix extends chw {
    }
 
    @Override
-   public boolean gt() {
-      return super.gt() && !this.p();
+   public boolean gv() {
+      return super.gv() && !this.p();
    }
 
    @Override
@@ -191,7 +191,7 @@ public class cix extends chw {
    }
 
    @Override
-   public float ei() {
+   public float ej() {
       return this.e_() ? 0.3F : 1.0F;
    }
 
@@ -213,7 +213,7 @@ public class cix extends chw {
 
    @Override
    public float a(jh $$0, dhk $$1) {
-      if (!this.go() && $$1.b_($$0).a(aya.a)) {
+      if (!this.gq() && $$1.b_($$0).a(aya.a)) {
          return 10.0F;
       } else {
          return dtg.a($$1, $$0) ? 10.0F : $$1.w($$0);
@@ -224,9 +224,9 @@ public class cix extends chw {
    public void d_() {
       super.d_();
       if (this.bL() && this.t() && this.cj >= 1 && this.cj % 5 == 0) {
-         jh $$0 = this.dv();
-         if (dtg.a(this.dV(), $$0)) {
-            this.dV().c(2001, $$0, dkl.j(this.dV().a_($$0.e())));
+         jh $$0 = this.dw();
+         if (dtg.a(this.dW(), $$0)) {
+            this.dW().c(2001, $$0, dkl.j(this.dW().a_($$0.e())));
             this.a(ecq.u);
          }
       }
@@ -235,7 +235,7 @@ public class cix extends chw {
    @Override
    protected void i() {
       super.i();
-      if (!this.e_() && this.dV() instanceof ash $$0 && $$0.N().b(dhd.f)) {
+      if (!this.e_() && this.dW() instanceof ash $$0 && $$0.N().b(dhd.f)) {
          this.a($$0, cxs.oL, 1);
       }
    }
@@ -244,10 +244,10 @@ public class cix extends chw {
    public void a_(fbx $$0) {
       if (this.di() && this.bj()) {
          this.a(0.1F, $$0);
-         this.a(bwj.a, this.dy());
-         this.h(this.dy().c(0.9));
-         if (this.O_() == null && (!this.go() || !this.gm().a(this.dt(), 20.0))) {
-            this.h(this.dy().b(0.0, -0.005, 0.0));
+         this.a(bwj.a, this.dz());
+         this.h(this.dz().c(0.9));
+         if (this.O_() == null && (!this.gq() || !this.go().a(this.du(), 20.0))) {
+            this.h(this.dz().b(0.0, -0.005, 0.0));
          }
       } else {
          super.a_($$0);
@@ -261,7 +261,7 @@ public class cix extends chw {
 
    @Override
    public void a(ash $$0, bwe $$1) {
-      this.a($$0, this.dW().c(), Float.MAX_VALUE);
+      this.a($$0, this.dX().c(), Float.MAX_VALUE);
    }
 
    @Override
@@ -284,9 +284,9 @@ public class cix extends chw {
 
       @Override
       protected void g() {
-         asi $$0 = this.a.gv();
-         if ($$0 == null && this.c.gv() != null) {
-            $$0 = this.c.gv();
+         asi $$0 = this.a.gx();
+         if ($$0 == null && this.c.gx() != null) {
+            $$0 = this.c.gx();
          }
 
          if ($$0 != null) {
@@ -297,11 +297,11 @@ public class cix extends chw {
          this.d.x(true);
          this.a.c_(6000);
          this.c.c_(6000);
-         this.a.gx();
-         this.c.gx();
-         bam $$1 = this.a.dY();
+         this.a.gz();
+         this.c.gz();
+         bam $$1 = this.a.dZ();
          if (a(this.b).N().b(dhd.f)) {
-            this.b.b(new bvv(this.b, this.a.dA(), this.a.dC(), this.a.dG(), $$1.a(7) + 1));
+            this.b.b(new bvv(this.b, this.a.dB(), this.a.dD(), this.a.dH(), $$1.a(7) + 1));
          }
       }
    }
@@ -325,7 +325,7 @@ public class cix extends chw {
          } else if (this.a.p()) {
             return true;
          } else {
-            return this.a.dY().a(b(700)) != 0 ? false : !this.a.gm().a(this.a.dt(), 64.0);
+            return this.a.dZ().a(b(700)) != 0 ? false : !this.a.go().a(this.a.du(), 64.0);
          }
       }
 
@@ -343,13 +343,13 @@ public class cix extends chw {
 
       @Override
       public boolean c() {
-         return !this.a.gm().a(this.a.dt(), 7.0) && !this.c && this.d <= this.a(600);
+         return !this.a.go().a(this.a.du(), 7.0) && !this.c && this.d <= this.a(600);
       }
 
       @Override
       public void a() {
-         jh $$0 = this.a.gm();
-         boolean $$1 = $$0.a(this.a.dt(), 16.0);
+         jh $$0 = this.a.go();
+         boolean $$1 = $$0.a(this.a.du(), 16.0);
          if ($$1) {
             this.d++;
          }
@@ -361,7 +361,7 @@ public class cix extends chw {
                $$3 = cha.a(this.a, 8, 7, $$2, (float) (Math.PI / 2));
             }
 
-            if ($$3 != null && !$$1 && !this.a.dV().a_(jh.a((ka)$$3)).a(dkn.J)) {
+            if ($$3 != null && !$$1 && !this.a.dW().a_(jh.a((ka)$$3)).a(dkn.J)) {
                $$3 = cha.a(this.a, 16, 5, $$2, (float) (Math.PI / 2));
             }
 
@@ -387,7 +387,7 @@ public class cix extends chw {
 
       @Override
       public boolean c() {
-         return !this.h.bj() && this.d <= 1200 && this.a(this.h.dV(), this.e);
+         return !this.h.bj() && this.d <= 1200 && this.a(this.h.dW(), this.e);
       }
 
       @Override
@@ -395,7 +395,7 @@ public class cix extends chw {
          if (this.h.e_() && !this.h.bj()) {
             return super.b();
          } else {
-            return !this.h.go() && !this.h.bj() && !this.h.p() ? super.b() : false;
+            return !this.h.gq() && !this.h.bj() && !this.h.p() ? super.b() : false;
          }
       }
 
@@ -420,23 +420,23 @@ public class cix extends chw {
 
       @Override
       public boolean b() {
-         return this.g.p() && this.g.gm().a(this.g.dt(), 9.0) ? super.b() : false;
+         return this.g.p() && this.g.go().a(this.g.du(), 9.0) ? super.b() : false;
       }
 
       @Override
       public boolean c() {
-         return super.c() && this.g.p() && this.g.gm().a(this.g.dt(), 9.0);
+         return super.c() && this.g.p() && this.g.go().a(this.g.du(), 9.0);
       }
 
       @Override
       public void a() {
          super.a();
-         jh $$0 = this.g.dv();
+         jh $$0 = this.g.dw();
          if (!this.g.bj() && this.m()) {
             if (this.g.cj < 1) {
                this.g.y(true);
             } else if (this.g.cj > this.a(200)) {
-               dhh $$1 = this.g.dV();
+               dhh $$1 = this.g.dW();
                $$1.a(null, $$0, axf.AM, axg.e, 0.3F, 0.9F + $$1.A.i() * 0.2F);
                jh $$2 = this.e.d();
                dxu $$3 = dkn.mA.m().b(dtg.f, Integer.valueOf(this.g.ae.a(4) + 1));
@@ -469,16 +469,16 @@ public class cix extends chw {
 
       private void g() {
          if (this.l.bj()) {
-            this.l.h(this.l.dy().b(0.0, 0.005, 0.0));
-            if (!this.l.gm().a(this.l.dt(), 16.0)) {
-               this.l.C(Math.max(this.l.fn() / 2.0F, 0.08F));
+            this.l.h(this.l.dz().b(0.0, 0.005, 0.0));
+            if (!this.l.go().a(this.l.du(), 16.0)) {
+               this.l.C(Math.max(this.l.fp() / 2.0F, 0.08F));
             }
 
             if (this.l.e_()) {
-               this.l.C(Math.max(this.l.fn() / 3.0F, 0.06F));
+               this.l.C(Math.max(this.l.fp() / 3.0F, 0.06F));
             }
          } else if (this.l.aJ()) {
-            this.l.C(Math.max(this.l.fn() / 2.0F, 0.06F));
+            this.l.C(Math.max(this.l.fp() / 2.0F, 0.06F));
          }
       }
 
@@ -486,20 +486,20 @@ public class cix extends chw {
       public void a() {
          this.g();
          if (this.k == ccg.a.b && !this.l.L().m()) {
-            double $$0 = this.e - this.l.dA();
-            double $$1 = this.f - this.l.dC();
-            double $$2 = this.g - this.l.dG();
+            double $$0 = this.e - this.l.dB();
+            double $$1 = this.f - this.l.dD();
+            double $$2 = this.g - this.l.dH();
             double $$3 = Math.sqrt($$0 * $$0 + $$1 * $$1 + $$2 * $$2);
             if ($$3 < 1.0E-5F) {
                this.d.C(0.0F);
             } else {
                $$1 /= $$3;
                float $$4 = (float)(bae.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
-               this.l.v(this.b(this.l.dL(), $$4, 90.0F));
-               this.l.aX = this.l.dL();
+               this.l.v(this.b(this.l.dM(), $$4, 90.0F));
+               this.l.aX = this.l.dM();
                float $$5 = (float)(this.h * this.l.h(bxn.v));
-               this.l.C(bae.h(0.125F, this.l.fn(), $$5));
-               this.l.h(this.l.dy().b(0.0, (double)this.l.fn() * $$1 * 0.1, 0.0));
+               this.l.C(bae.h(0.125F, this.l.fp(), $$5));
+               this.l.h(this.l.dz().b(0.0, (double)this.l.fp() * $$1 * 0.1, 0.0));
             }
          } else {
             this.l.C(0.0F);
@@ -517,7 +517,7 @@ public class cix extends chw {
          if (!this.h()) {
             return false;
          } else {
-            jh $$0 = this.a(this.c.dV(), this.c, 7);
+            jh $$0 = this.a(this.c.dW(), this.c, 7);
             if ($$0 != null) {
                this.e = (double)$$0.u();
                this.f = (double)$$0.v();
@@ -537,7 +537,7 @@ public class cix extends chw {
 
       @Override
       public boolean a(jh $$0) {
-         if (this.a instanceof cix $$1 && $$1.gp()) {
+         if (this.a instanceof cix $$1 && $$1.gr()) {
             return this.b.a_($$0).a(dkn.J);
          }
 
@@ -555,7 +555,7 @@ public class cix extends chw {
 
       @Override
       public boolean b() {
-         return !this.b.bj() && !this.i.go() && !this.i.p() ? super.b() : false;
+         return !this.b.bj() && !this.i.gq() && !this.i.p() ? super.b() : false;
       }
    }
 
@@ -571,7 +571,7 @@ public class cix extends chw {
 
       @Override
       public boolean b() {
-         return !this.a.go() && !this.a.p() && this.a.bj();
+         return !this.a.gq() && !this.a.p() && this.a.bj();
       }
 
       @Override
@@ -582,11 +582,11 @@ public class cix extends chw {
          int $$3 = $$2.a(1025) - 512;
          int $$4 = $$2.a(9) - 4;
          int $$5 = $$2.a(1025) - 512;
-         if ((double)$$4 + this.a.dC() > (double)(this.a.dV().O() - 1)) {
+         if ((double)$$4 + this.a.dD() > (double)(this.a.dW().O() - 1)) {
             $$4 = 0;
          }
 
-         jh $$6 = jh.a((double)$$3 + this.a.dA(), (double)$$4 + this.a.dC(), (double)$$5 + this.a.dG());
+         jh $$6 = jh.a((double)$$3 + this.a.dB(), (double)$$4 + this.a.dD(), (double)$$5 + this.a.dH());
          this.a.i($$6);
          this.a.A(true);
          this.c = false;
@@ -595,7 +595,7 @@ public class cix extends chw {
       @Override
       public void a() {
          if (this.a.L().m()) {
-            fbx $$0 = fbx.c(this.a.gn());
+            fbx $$0 = fbx.c(this.a.gp());
             fbx $$1 = cha.a(this.a, 16, 3, $$0, (float) (Math.PI / 10));
             if ($$1 == null) {
                $$1 = cha.a(this.a, 8, 7, $$0, (float) (Math.PI / 2));
@@ -605,7 +605,7 @@ public class cix extends chw {
                int $$2 = bae.a($$1.d);
                int $$3 = bae.a($$1.f);
                int $$4 = 34;
-               if (!this.a.dV().b($$2 - 34, $$3 - 34, $$2 + 34, $$3 + 34)) {
+               if (!this.a.dW().b($$2 - 34, $$3 - 34, $$2 + 34, $$3 + 34)) {
                   $$1 = null;
                }
             }
@@ -621,7 +621,7 @@ public class cix extends chw {
 
       @Override
       public boolean c() {
-         return !this.a.L().m() && !this.c && !this.a.go() && !this.a.gw() && !this.a.p();
+         return !this.a.L().m() && !this.c && !this.a.gq() && !this.a.gy() && !this.a.p();
       }
 
       @Override

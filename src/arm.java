@@ -146,8 +146,8 @@ public class arm extends eaz implements ark.b, arx {
    private static double a(dgn $$0, bvj $$1) {
       double $$2 = (double)kj.a($$0.g, 8);
       double $$3 = (double)kj.a($$0.h, 8);
-      double $$4 = $$2 - $$1.dA();
-      double $$5 = $$3 - $$1.dG();
+      double $$4 = $$2 - $$1.dB();
+      double $$5 = $$3 - $$1.dH();
       return $$4 * $$4 + $$5 * $$5;
    }
 
@@ -947,7 +947,7 @@ public class arm extends eaz implements ark.b, arx {
    }
 
    private void e(asi $$0) {
-      dgn $$1 = $$0.dx();
+      dgn $$1 = $$0.dy();
       int $$2 = this.b($$0);
       if ($$0.Y() instanceof arr.a $$3 && $$3.a().equals($$1) && $$3.b() == $$2) {
          return;
@@ -957,7 +957,7 @@ public class arm extends eaz implements ark.b, arx {
    }
 
    private void a(asi $$0, arr $$1) {
-      if ($$0.dV() == this.s) {
+      if ($$0.dW() == this.s) {
          arr $$2 = $$0.Y();
          if ($$1 instanceof arr.a $$3 && (!($$2 instanceof arr.a $$4) || !$$4.a().equals($$3.a()))) {
             $$0.f.b(new afw($$3.a().g, $$3.a().h));
@@ -1196,12 +1196,12 @@ public class arm extends eaz implements ark.b, arx {
 
       public void b(asi $$0) {
          if ($$0 != this.c) {
-            fbx $$1 = $$0.dt().d(this.c.dt());
+            fbx $$1 = $$0.du().d(this.c.du());
             int $$2 = arm.this.b($$0);
             double $$3 = (double)Math.min(this.b(), $$2 * 16);
             double $$4 = $$1.d * $$1.d + $$1.f * $$1.f;
             double $$5 = $$3 * $$3;
-            boolean $$6 = $$4 <= $$5 && this.c.a($$0) && arm.this.a($$0, this.c.dx().g, this.c.dx().h);
+            boolean $$6 = $$4 <= $$5 && this.c.a($$0) && arm.this.a($$0, this.c.dy().g, this.c.dy().h);
             if ($$6) {
                if (this.f.add($$0.f)) {
                   this.b.b($$0);

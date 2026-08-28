@@ -4,8 +4,8 @@ import java.util.List;
 
 public final class czt {
    public static final czt a = new czt(List.of());
-   public static final Codec<czt> b = cxo.b.listOf().xmap(czt::new, $$0 -> $$0.d);
-   public static final zt<xg, czt> c = cxo.i.a(zr.a()).a(czt::new, $$0 -> $$0.d);
+   public static final Codec<czt> b = cxo.a.listOf().xmap(czt::new, $$0 -> $$0.d);
+   public static final zt<xg, czt> c = cxo.h.a(zr.a()).a(czt::new, $$0 -> $$0.d);
    private final List<cxo> d;
 
    private czt(List<cxo> $$0) {

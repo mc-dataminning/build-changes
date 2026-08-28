@@ -1,4 +1,4 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.BiFunction;
@@ -154,7 +154,7 @@ public interface dgm extends dhj {
       if ($$3.h() < (double)bae.l(0.99999F)) {
          return $$4;
       } else {
-         Set<jh> $$5 = new ObjectOpenHashSet();
+         Set<jh> $$5 = new ObjectLinkedOpenHashSet();
 
          for (jh $$6 : $$4) {
             $$5.add($$6.j());

@@ -39,7 +39,7 @@ public class cdl extends cdd {
 
    @Override
    public boolean b() {
-      if (this.b.dY().i() >= this.e) {
+      if (this.b.dZ().i() >= this.e) {
          return false;
       } else {
          if (this.b.O_() != null) {
@@ -48,10 +48,10 @@ public class cdl extends cdd {
 
          ash $$0 = a(this.b);
          if (this.f == cpw.class) {
-            this.c = $$0.a(this.g, this.b, this.b.dA(), this.b.dE(), this.b.dG());
+            this.c = $$0.a(this.g, this.b, this.b.dB(), this.b.dF(), this.b.dH());
          } else {
             this.c = $$0.a(
-               this.b.dV().a(this.f, this.b.cR().c((double)this.d, 3.0, (double)this.d), $$0x -> true), this.g, this.b, this.b.dA(), this.b.dE(), this.b.dG()
+               this.b.dW().a(this.f, this.b.cR().c((double)this.d, 3.0, (double)this.d), $$0x -> true), this.g, this.b, this.b.dB(), this.b.dF(), this.b.dH()
             );
          }
 
@@ -70,7 +70,7 @@ public class cdl extends cdd {
 
    @Override
    public void d() {
-      this.h = this.a(40 + this.b.dY().a(40));
+      this.h = this.a(40 + this.b.dZ().a(40));
    }
 
    @Override
@@ -81,8 +81,8 @@ public class cdl extends cdd {
    @Override
    public void a() {
       if (this.c.bL()) {
-         double $$0 = this.i ? this.b.dE() : this.c.dE();
-         this.b.H().a(this.c.dA(), $$0, this.c.dG());
+         double $$0 = this.i ? this.b.dF() : this.c.dF();
+         this.b.H().a(this.c.dB(), $$0, this.c.dH());
          this.h--;
       }
    }

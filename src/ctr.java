@@ -58,27 +58,27 @@ public class ctr extends ctb implements ctp {
 
    @Override
    public cxo b(cpw $$0, int $$1) {
-      cxo $$2 = cxo.k;
+      cxo $$2 = cxo.j;
       cuy $$3 = this.k.get($$1);
       if ($$3 != null && $$3.h()) {
          cxo $$4 = $$3.g();
          $$2 = $$4.v();
          if ($$1 < 9) {
             if (!this.a($$4, 9, 45, true)) {
-               return cxo.k;
+               return cxo.j;
             }
          } else if (!this.a($$4, 0, 9, false)) {
-            return cxo.k;
+            return cxo.j;
          }
 
          if ($$4.f()) {
-            $$3.f(cxo.k);
+            $$3.f(cxo.j);
          } else {
             $$3.c();
          }
 
          if ($$4.L() == $$2.L()) {
-            return cxo.k;
+            return cxo.j;
          }
 
          $$3.a($$0, $$4);
@@ -96,7 +96,7 @@ public class ctr extends ctb implements ctp {
       if (this.t instanceof asi $$0) {
          ash $$1 = $$0.y();
          dbr $$2 = this.u.aC_();
-         cxo $$3 = dmf.a($$1, $$2).map($$2x -> ((dbs)$$2x.b()).a($$2, $$1.K_())).orElse(cxo.k);
+         cxo $$3 = dmf.a($$1, $$2).map($$2x -> ((dbs)$$2x.b()).a($$2, $$1.K_())).orElse(cxo.j);
          this.r.a(0, $$3);
       }
    }

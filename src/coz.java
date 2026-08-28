@@ -78,7 +78,7 @@ public class coz extends cmw implements ecz {
 
    @Override
    public boolean a(dhk $$0) {
-      return super.a($$0) && $$0.a(this, this.aq().n().a(this.dt()));
+      return super.a($$0) && $$0.a(this, this.aq().n().a(this.du()));
    }
 
    @Override
@@ -88,10 +88,10 @@ public class coz extends cmw implements ecz {
 
    @Override
    public boolean a(ash $$0, btz $$1) {
-      return this.gp() && !$$1.a(axw.d) ? true : super.a($$0, $$1);
+      return this.gr() && !$$1.a(axw.d) ? true : super.a($$0, $$1);
    }
 
-   boolean gp() {
+   boolean gr() {
       return this.c(bwr.o) || this.c(bwr.n);
    }
 
@@ -101,7 +101,7 @@ public class coz extends cmw implements ecz {
    }
 
    @Override
-   public boolean fS() {
+   public boolean fU() {
       return true;
    }
 
@@ -111,7 +111,7 @@ public class coz extends cmw implements ecz {
    }
 
    public static bxm.a m() {
-      return cmw.gr().a(bxn.s, 500.0).a(bxn.v, 0.3F).a(bxn.p, 1.0).a(bxn.d, 1.5).a(bxn.c, 30.0).a(bxn.m, 24.0);
+      return cmw.gt().a(bxn.s, 500.0).a(bxn.v, 0.3F).a(bxn.p, 1.0).a(bxn.d, 1.5).a(bxn.c, 30.0).a(bxn.m, 24.0);
    }
 
    @Override
@@ -120,14 +120,14 @@ public class coz extends cmw implements ecz {
    }
 
    @Override
-   protected float fe() {
+   protected float fg() {
       return 4.0F;
    }
 
    @Nullable
    @Override
    protected axe u() {
-      return !this.c(bwr.l) && !this.gp() ? this.t().b() : null;
+      return !this.c(bwr.l) && !this.gr() ? this.t().b() : null;
    }
 
    @Override
@@ -148,7 +148,7 @@ public class coz extends cmw implements ecz {
    @Override
    public boolean c(ash $$0, bvj $$1) {
       $$0.a(this, (byte)4);
-      this.a(axf.Ci, 10.0F, this.ff());
+      this.a(axf.Ci, 10.0F, this.fh());
       cby.a(this, 40);
       return super.c($$0, $$1);
    }
@@ -163,13 +163,13 @@ public class coz extends cmw implements ecz {
       return this.al.a(ck);
    }
 
-   private void gs() {
-      this.al.a(ck, this.gv());
+   private void gu() {
+      this.al.a(ck, this.gx());
    }
 
    @Override
    public void h() {
-      if (this.dV() instanceof ash $$0) {
+      if (this.dW() instanceof ash $$0) {
          ecz.c.a($$0, this.cH, this.cG);
          if (this.aj() || this.W()) {
             cpa.a((bwf)this);
@@ -177,11 +177,11 @@ public class coz extends cmw implements ecz {
       }
 
       super.h();
-      if (this.dV().B_()) {
-         if (this.af % this.gt() == 0) {
+      if (this.dW().B_()) {
+         if (this.af % this.gv() == 0) {
             this.cD = 10;
             if (!this.bb()) {
-               this.dV().a(this.dA(), this.dC(), this.dG(), axf.Cm, this.dm(), 5.0F, this.ff(), false);
+               this.dW().a(this.dB(), this.dD(), this.dH(), axf.Cm, this.dn(), 5.0F, this.fh(), false);
             }
          }
 
@@ -209,16 +209,16 @@ public class coz extends cmw implements ecz {
    protected void a(ash $$0) {
       bps $$1 = bpr.a();
       $$1.a("wardenBrain");
-      this.eb().a($$0, this);
+      this.ec().a($$0, this);
       $$1.c();
       super.a($$0);
       if ((this.af + this.ar()) % 120 == 0) {
-         a($$0, this.dt(), this, 20);
+         a($$0, this.du(), this, 20);
       }
 
       if (this.af % 20 == 0) {
          this.cI.a($$0, this::b);
-         this.gs();
+         this.gu();
       }
 
       cpa.a(this);
@@ -238,7 +238,7 @@ public class coz extends cmw implements ecz {
       }
    }
 
-   private int gt() {
+   private int gv() {
       float $$0 = (float)this.p() / (float)cox.c.a();
       return 40 - bae.d(bae.a($$0, 0.0F, 1.0F) * 30.0F);
    }
@@ -253,14 +253,14 @@ public class coz extends cmw implements ecz {
 
    private void a(bvb $$0) {
       if ((float)$$0.a((float)this.af) < 4500.0F) {
-         bam $$1 = this.dY();
+         bam $$1 = this.dZ();
          dxu $$2 = this.bu();
          if ($$2.o() != dqu.a) {
             for (int $$3 = 0; $$3 < 30; $$3++) {
-               double $$4 = this.dA() + (double)bae.b($$1, -0.7F, 0.7F);
-               double $$5 = this.dC();
-               double $$6 = this.dG() + (double)bae.b($$1, -0.7F, 0.7F);
-               this.dV().a(new lk(ls.b, $$2), $$4, $$5, $$6, 0.0, 0.0, 0.0);
+               double $$4 = this.dB() + (double)bae.b($$1, -0.7F, 0.7F);
+               double $$5 = this.dD();
+               double $$6 = this.dH() + (double)bae.b($$1, -0.7F, 0.7F);
+               this.dW().a(new lk(ls.b, $$2), $$4, $$5, $$6, 0.0, 0.0, 0.0);
             }
          }
       }
@@ -289,7 +289,7 @@ public class coz extends cmw implements ecz {
 
    @Override
    public boolean a(dgz $$0) {
-      return this.gp();
+      return this.gr();
    }
 
    @Override
@@ -298,8 +298,8 @@ public class coz extends cmw implements ecz {
    }
 
    @Override
-   public bxh<coz> eb() {
-      return (bxh<coz>)super.eb();
+   public bxh<coz> ec() {
+      return (bxh<coz>)super.ec();
    }
 
    @Override
@@ -310,7 +310,7 @@ public class coz extends cmw implements ecz {
 
    @Override
    public void a(BiConsumer<ecn<?>, ash> $$0) {
-      if (this.dV() instanceof ash $$1) {
+      if (this.dW() instanceof ash $$1) {
          $$0.accept(this.cF, $$1);
       }
    }
@@ -318,14 +318,14 @@ public class coz extends cmw implements ecz {
    @Contract("null->false")
    public boolean b(@Nullable bvj $$0) {
       if ($$0 instanceof bwf $$1
-         && this.dV() == $$0.dV()
+         && this.dW() == $$0.dW()
          && bvo.e.test($$0)
          && !this.s($$0)
          && $$1.aq() != bvq.f
          && $$1.aq() != bvq.bG
          && !$$1.cC()
-         && !$$1.eE()
-         && this.dV().F_().a($$1.cR())) {
+         && !$$1.eF()
+         && this.dW().F_().a($$1.cR())) {
          return true;
       }
 
@@ -340,7 +340,7 @@ public class coz extends cmw implements ecz {
    @Override
    public void b(ux $$0) {
       super.b($$0);
-      alx<vu> $$1 = this.dX().a(vl.a);
+      alx<vu> $$1 = this.dY().a(vl.a);
       coy.a(this::b)
          .encodeStart($$1, this.cI)
          .resultOrPartial($$0x -> cb.error("Failed to encode anger state for Warden: '{}'", $$0x))
@@ -354,13 +354,13 @@ public class coz extends cmw implements ecz {
    @Override
    public void a(ux $$0) {
       super.a($$0);
-      alx<vu> $$1 = this.dX().a(vl.a);
+      alx<vu> $$1 = this.dY().a(vl.a);
       if ($$0.e("anger")) {
          coy.a(this::b)
             .parse($$1, $$0.c("anger"))
             .resultOrPartial($$0x -> cb.error("Failed to parse anger state for Warden: '{}'", $$0x))
             .ifPresent($$0x -> this.cI = $$0x);
-         this.gs();
+         this.gu();
       }
 
       if ($$0.b("listener", 10)) {
@@ -371,17 +371,17 @@ public class coz extends cmw implements ecz {
       }
    }
 
-   private void gu() {
+   private void gw() {
       if (!this.c(bwr.l)) {
-         this.a(this.t().c(), 10.0F, this.ff());
+         this.a(this.t().c(), 10.0F, this.fh());
       }
    }
 
    public cox t() {
-      return cox.a(this.gv());
+      return cox.a(this.gx());
    }
 
-   private int gv() {
+   private int gx() {
       return this.cI.b(this.O_());
    }
 
@@ -396,16 +396,16 @@ public class coz extends cmw implements ecz {
 
    @VisibleForTesting
    public void a(@Nullable bvj $$0, int $$1, boolean $$2) {
-      if (!this.fZ() && this.b($$0)) {
+      if (!this.gb() && this.b($$0)) {
          cpa.a((bwf)this);
          boolean $$3 = !(this.O_() instanceof cpw);
          int $$4 = this.cI.a($$0, $$1);
          if ($$0 instanceof cpw && $$3 && cox.a($$4).d()) {
-            this.eb().b(cfj.o);
+            this.ec().b(cfj.o);
          }
 
          if ($$2) {
-            this.gu();
+            this.gw();
          }
       }
    }
@@ -428,10 +428,10 @@ public class coz extends cmw implements ecz {
    @Nullable
    @Override
    public bwy a(dhy $$0, btg $$1, bvp $$2, @Nullable bwy $$3) {
-      this.eb().a(cfj.aE, bbk.a, 1200L);
+      this.ec().a(cfj.aE, bbk.a, 1200L);
       if ($$2 == bvp.k) {
          this.b(bwr.n);
-         this.eb().a(cfj.aC, bbk.a, (long)cpa.a);
+         this.ec().a(cfj.aC, bbk.a, (long)cpa.a);
          this.a(axf.Cf, 5.0F, 1.0F);
       }
 
@@ -441,7 +441,7 @@ public class coz extends cmw implements ecz {
    @Override
    public boolean a(ash $$0, btz $$1, float $$2) {
       boolean $$3 = super.a($$0, $$1, $$2);
-      if (!this.fZ() && !this.gp()) {
+      if (!this.gb() && !this.gr()) {
          bvj $$4 = $$1.d();
          this.a($$4, cox.c.a() + 20, false);
          if (this.bF.c(cfj.o).isEmpty() && $$4 instanceof bwf $$5 && ($$1.b() || this.a($$5, 5.0))) {
@@ -453,36 +453,36 @@ public class coz extends cmw implements ecz {
    }
 
    public void j(bwf $$0) {
-      this.eb().b(cfj.ay);
-      this.eb().a(cfj.o, $$0);
-      this.eb().b(cfj.E);
+      this.ec().b(cfj.ay);
+      this.ec().a(cfj.o, $$0);
+      this.ec().b(cfj.E);
       cby.a(this, 200);
    }
 
    @Override
    public bvm e(bwr $$0) {
       bvm $$1 = super.e($$0);
-      return this.gp() ? bvm.c($$1.a(), 1.0F) : $$1;
+      return this.gr() ? bvm.c($$1.a(), 1.0F) : $$1;
    }
 
    @Override
    public boolean bI() {
-      return !this.gp() && super.bI();
+      return !this.gr() && super.bI();
    }
 
    @Override
    protected void D(bvj $$0) {
-      if (!this.fZ() && !this.eb().a(cfj.aH)) {
-         this.eb().a(cfj.aH, bbk.a, 20L);
+      if (!this.gb() && !this.ec().a(cfj.aH)) {
+         this.ec().a(cfj.aH, bbk.a, 20L);
          this.d($$0);
-         cpa.a(this, $$0.dv());
+         cpa.a(this, $$0.dw());
       }
 
       super.D($$0);
    }
 
    @VisibleForTesting
-   public coy gm() {
+   public coy go() {
       return this.cI;
    }
 
@@ -504,12 +504,12 @@ public class coz extends cmw implements ecz {
    }
 
    @Override
-   public ecz.a gn() {
+   public ecz.a gp() {
       return this.cH;
    }
 
    @Override
-   public ecz.d go() {
+   public ecz.d gq() {
       return this.cG;
    }
 
@@ -539,7 +539,7 @@ public class coz extends cmw implements ecz {
 
       @Override
       public boolean a(ash $$0, jh $$1, jq<ecq> $$2, ecq.a $$3) {
-         if (!coz.this.fZ() && !coz.this.eE() && !coz.this.eb().a(cfj.aI) && !coz.this.gp() && $$0.F_().a($$1)) {
+         if (!coz.this.gb() && !coz.this.eF() && !coz.this.ec().a(cfj.aI) && !coz.this.gr() && $$0.F_().a($$1)) {
             if ($$3.a() instanceof bwf $$4 && !coz.this.b($$4)) {
                return false;
             }
@@ -552,16 +552,16 @@ public class coz extends cmw implements ecz {
 
       @Override
       public void a(ash $$0, jh $$1, jq<ecq> $$2, @Nullable bvj $$3, @Nullable bvj $$4, float $$5) {
-         if (!coz.this.eE()) {
+         if (!coz.this.eF()) {
             coz.this.bF.a(cfj.aI, bbk.a, 40L);
             $$0.a(coz.this, (byte)61);
-            coz.this.a(axf.Cy, 5.0F, coz.this.ff());
+            coz.this.a(axf.Cy, 5.0F, coz.this.fh());
             jh $$6 = $$1;
             if ($$4 != null) {
                if (coz.this.a($$4, 30.0)) {
-                  if (coz.this.eb().a(cfj.aA)) {
+                  if (coz.this.ec().a(cfj.aA)) {
                      if (coz.this.b($$4)) {
-                        $$6 = $$4.dv();
+                        $$6 = $$4.dw();
                      }
 
                      coz.this.d($$4);
@@ -570,7 +570,7 @@ public class coz extends cmw implements ecz {
                   }
                }
 
-               coz.this.eb().a(cfj.aA, bbk.a, 100L);
+               coz.this.ec().a(cfj.aA, bbk.a, 100L);
             } else {
                coz.this.d($$3);
             }

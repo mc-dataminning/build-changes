@@ -11,7 +11,7 @@ public class ckf extends cjz {
    }
 
    @Override
-   protected axe gN() {
+   protected axe gP() {
       return axf.pQ;
    }
 
@@ -22,7 +22,7 @@ public class ckf extends cjz {
 
    @Nullable
    @Override
-   protected axe go() {
+   protected axe gq() {
       return axf.pT;
    }
 
@@ -32,7 +32,7 @@ public class ckf extends cjz {
    }
 
    @Override
-   protected void gU() {
+   protected void gW() {
       this.a(axf.pV, 0.4F, 1.0F);
    }
 

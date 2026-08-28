@@ -16,7 +16,7 @@ public class cmk extends cnp implements cna {
    }
 
    public static bxm.a m() {
-      return cnp.gp().a(bxn.B, 1.0);
+      return cnp.gr().a(bxn.B, 1.0);
    }
 
    @Override
@@ -25,7 +25,7 @@ public class cmk extends cnp implements cna {
       this.bT.a(2, new cmk.f(this, 1.0, 40, 10.0F));
       this.bT.a(2, new cmk.a(this, 1.0, false));
       this.bT.a(5, new cmk.b(this, 1.0));
-      this.bT.a(6, new cmk.e(this, 1.0, this.dV().O()));
+      this.bT.a(6, new cmk.e(this, 1.0, this.dW().O()));
       this.bT.a(7, new cea(this, 1.0));
       this.bU.a(1, new cev(this, cmk.class).a(cnr.class));
       this.bU.a(2, new cew<>(this, cpw.class, 10, true, false, ($$0, $$1) -> this.j($$0)));
@@ -95,8 +95,8 @@ public class cmk extends cnp implements cna {
    }
 
    @Override
-   protected cxo gm() {
-      return cxo.k;
+   protected cxo go() {
+      return cxo.j;
    }
 
    @Override
@@ -123,7 +123,7 @@ public class cmk extends cnp implements cna {
    }
 
    @Override
-   protected boolean gn() {
+   protected boolean gp() {
       return false;
    }
 
@@ -133,7 +133,7 @@ public class cmk extends cnp implements cna {
    }
 
    public boolean j(@Nullable bwf $$0) {
-      return $$0 != null ? !this.dV().U() || $$0.bj() : false;
+      return $$0 != null ? !this.dW().U() || $$0.bj() : false;
    }
 
    @Override
@@ -141,7 +141,7 @@ public class cmk extends cnp implements cna {
       return !this.ck();
    }
 
-   boolean gv() {
+   boolean gx() {
       if (this.cc) {
          return true;
       } else {
@@ -152,10 +152,10 @@ public class cmk extends cnp implements cna {
 
    @Override
    public void a_(fbx $$0) {
-      if (this.di() && this.bo() && this.gv()) {
+      if (this.di() && this.bo() && this.gx()) {
          this.a(0.01F, $$0);
-         this.a(bwj.a, this.dy());
-         this.h(this.dy().c(0.9));
+         this.a(bwj.a, this.dz());
+         this.h(this.dz().c(0.9));
       } else {
          super.a_($$0);
       }
@@ -163,8 +163,8 @@ public class cmk extends cnp implements cna {
 
    @Override
    public void bp() {
-      if (!this.dV().C) {
-         if (this.dj() && this.bo() && this.gv()) {
+      if (!this.dW().C) {
+         if (this.dk() && this.bo() && this.gx()) {
             this.bS = this.b;
             this.i(true);
          } else {
@@ -179,7 +179,7 @@ public class cmk extends cnp implements cna {
       return this.ck();
    }
 
-   protected boolean go() {
+   protected boolean gq() {
       euk $$0 = this.L().k();
       if ($$0 != null) {
          jh $$1 = $$0.l();
@@ -196,18 +196,18 @@ public class cmk extends cnp implements cna {
 
    @Override
    public void a(bwf $$0, float $$1) {
-      cxo $$2 = this.eX();
+      cxo $$2 = this.eZ();
       cxo $$3 = $$2.a(cxs.wI) ? $$2 : new cxo(cxs.wI);
-      crc $$4 = new crc(this.dV(), this, $$3);
-      double $$5 = $$0.dA() - this.dA();
-      double $$6 = $$0.e(0.3333333333333333) - $$4.dC();
-      double $$7 = $$0.dG() - this.dG();
+      crc $$4 = new crc(this.dW(), this, $$3);
+      double $$5 = $$0.dB() - this.dB();
+      double $$6 = $$0.e(0.3333333333333333) - $$4.dD();
+      double $$7 = $$0.dH() - this.dH();
       double $$8 = Math.sqrt($$5 * $$5 + $$7 * $$7);
-      if (this.dV() instanceof ash $$9) {
-         cqp.a($$4, $$9, $$3, $$5, $$6 + $$8 * 0.2F, $$7, 1.6F, (float)(14 - this.dV().al().a() * 4));
+      if (this.dW() instanceof ash $$9) {
+         cqp.a($$4, $$9, $$3, $$5, $$6 + $$8 * 0.2F, $$7, 1.6F, (float)(14 - this.dW().al().a() * 4));
       }
 
-      this.a(axf.id, 1.0F, 1.0F / (this.dY().i() * 0.4F + 0.8F));
+      this.a(axf.id, 1.0F, 1.0F / (this.dZ().i() * 0.4F + 0.8F));
    }
 
    public void x(boolean $$0) {
@@ -243,7 +243,7 @@ public class cmk extends cnp implements cna {
 
       @Override
       public boolean b() {
-         return super.b() && !this.g.dV().U() && this.g.bj() && this.g.dC() >= (double)(this.g.dV().O() - 3);
+         return super.b() && !this.g.dW().U() && this.g.bj() && this.g.dD() >= (double)(this.g.dW().O() - 3);
       }
 
       @Override
@@ -281,7 +281,7 @@ public class cmk extends cnp implements cna {
       public c(bwn $$0, double $$1) {
          this.a = $$0;
          this.e = $$1;
-         this.f = $$0.dV();
+         this.f = $$0.dW();
          this.a(EnumSet.of(cdd.a.a));
       }
 
@@ -316,8 +316,8 @@ public class cmk extends cnp implements cna {
 
       @Nullable
       private fbx h() {
-         bam $$0 = this.a.dY();
-         jh $$1 = this.a.dv();
+         bam $$0 = this.a.dZ();
+         jh $$1 = this.a.dw();
 
          for (int $$2 = 0; $$2 < 10; $$2++) {
             jh $$3 = $$1.b($$0.a(20) - 10, 2 - $$0.a(8), $$0.a(20) - 10);
@@ -341,9 +341,9 @@ public class cmk extends cnp implements cna {
       @Override
       public void a() {
          bwf $$0 = this.l.O_();
-         if (this.l.gv() && this.l.bj()) {
-            if ($$0 != null && $$0.dC() > this.l.dC() || this.l.cc) {
-               this.l.h(this.l.dy().b(0.0, 0.002, 0.0));
+         if (this.l.gx() && this.l.bj()) {
+            if ($$0 != null && $$0.dD() > this.l.dD() || this.l.cc) {
+               this.l.h(this.l.dz().b(0.0, 0.002, 0.0));
             }
 
             if (this.k != ccg.a.b || this.l.L().m()) {
@@ -351,21 +351,21 @@ public class cmk extends cnp implements cna {
                return;
             }
 
-            double $$1 = this.e - this.l.dA();
-            double $$2 = this.f - this.l.dC();
-            double $$3 = this.g - this.l.dG();
+            double $$1 = this.e - this.l.dB();
+            double $$2 = this.f - this.l.dD();
+            double $$3 = this.g - this.l.dH();
             double $$4 = Math.sqrt($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
             $$2 /= $$4;
             float $$5 = (float)(bae.d($$3, $$1) * 180.0F / (float)Math.PI) - 90.0F;
-            this.l.v(this.b(this.l.dL(), $$5, 90.0F));
-            this.l.aX = this.l.dL();
+            this.l.v(this.b(this.l.dM(), $$5, 90.0F));
+            this.l.aX = this.l.dM();
             float $$6 = (float)(this.h * this.l.h(bxn.v));
-            float $$7 = bae.h(0.125F, this.l.fn(), $$6);
+            float $$7 = bae.h(0.125F, this.l.fp(), $$6);
             this.l.C($$7);
-            this.l.h(this.l.dy().b((double)$$7 * $$1 * 0.005, (double)$$7 * $$2 * 0.1, (double)$$7 * $$3 * 0.005));
+            this.l.h(this.l.dz().b((double)$$7 * $$1 * 0.005, (double)$$7 * $$2 * 0.1, (double)$$7 * $$3 * 0.005));
          } else {
             if (!this.l.aJ()) {
-               this.l.h(this.l.dy().b(0.0, -0.008, 0.0));
+               this.l.h(this.l.dz().b(0.0, -0.008, 0.0));
             }
 
             super.a();
@@ -387,7 +387,7 @@ public class cmk extends cnp implements cna {
 
       @Override
       public boolean b() {
-         return !this.a.dV().U() && this.a.bj() && this.a.dC() < (double)(this.c - 2);
+         return !this.a.dW().U() && this.a.bj() && this.a.dD() < (double)(this.c - 2);
       }
 
       @Override
@@ -397,8 +397,8 @@ public class cmk extends cnp implements cna {
 
       @Override
       public void a() {
-         if (this.a.dC() < (double)(this.c - 1) && (this.a.L().m() || this.a.go())) {
-            fbx $$0 = cha.a(this.a, 4, 8, new fbx(this.a.dA(), (double)(this.c - 1), this.a.dG()), (float) (Math.PI / 2));
+         if (this.a.dD() < (double)(this.c - 1) && (this.a.L().m() || this.a.gq())) {
+            fbx $$0 = cha.a(this.a, 4, 8, new fbx(this.a.dB(), (double)(this.c - 1), this.a.dH()), (float) (Math.PI / 2));
             if ($$0 == null) {
                this.d = true;
                return;
@@ -430,7 +430,7 @@ public class cmk extends cnp implements cna {
 
       @Override
       public boolean b() {
-         return super.b() && this.a.eX().a(cxs.wI);
+         return super.b() && this.a.eZ().a(cxs.wI);
       }
 
       @Override
@@ -443,7 +443,7 @@ public class cmk extends cnp implements cna {
       @Override
       public void e() {
          super.e();
-         this.a.fD();
+         this.a.fF();
          this.a.w(false);
       }
    }

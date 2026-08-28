@@ -11,7 +11,7 @@ public class chd {
    public static fbx a(bwn $$0, int $$1, int $$2, ToDoubleFunction<jh> $$3) {
       boolean $$4 = chb.a($$0, $$1);
       return che.a(() -> {
-         jh $$4x = che.a($$0.dY(), $$1, $$2);
+         jh $$4x = che.a($$0.dZ(), $$1, $$2);
          jh $$5 = a($$0, $$1, $$4, $$4x);
          return $$5 == null ? null : a($$0, $$5);
       }, $$3);
@@ -19,14 +19,14 @@ public class chd {
 
    @Nullable
    public static fbx a(bwn $$0, int $$1, int $$2, fbx $$3) {
-      fbx $$4 = $$3.a($$0.dA(), $$0.dC(), $$0.dG());
+      fbx $$4 = $$3.a($$0.dB(), $$0.dD(), $$0.dH());
       boolean $$5 = chb.a($$0, $$1);
       return a($$0, $$1, $$2, $$4, $$5);
    }
 
    @Nullable
    public static fbx b(bwn $$0, int $$1, int $$2, fbx $$3) {
-      fbx $$4 = $$0.dt().d($$3);
+      fbx $$4 = $$0.du().d($$3);
       boolean $$5 = chb.a($$0, $$1);
       return a($$0, $$1, $$2, $$4, $$5);
    }
@@ -34,7 +34,7 @@ public class chd {
    @Nullable
    private static fbx a(bwn $$0, int $$1, int $$2, fbx $$3, boolean $$4) {
       return che.a($$0, () -> {
-         jh $$5 = che.a($$0.dY(), $$1, $$2, 0, $$3.d, $$3.f, (float) (Math.PI / 2));
+         jh $$5 = che.a($$0.dZ(), $$1, $$2, 0, $$3.d, $$3.f, (float) (Math.PI / 2));
          if ($$5 == null) {
             return null;
          } else {
@@ -46,13 +46,13 @@ public class chd {
 
    @Nullable
    public static jh a(bwn $$0, jh $$1) {
-      $$1 = che.a($$1, $$0.dV().am(), $$1x -> chb.c($$0, $$1x));
+      $$1 = che.a($$1, $$0.dW().am(), $$1x -> chb.c($$0, $$1x));
       return !chb.a($$0, $$1) && !chb.b($$0, $$1) ? $$1 : null;
    }
 
    @Nullable
    public static jh a(bwn $$0, int $$1, boolean $$2, jh $$3) {
-      jh $$4 = che.a($$0, $$1, $$0.dY(), $$3);
+      jh $$4 = che.a($$0, $$1, $$0.dZ(), $$3);
       return !chb.a($$4, $$0) && !chb.a($$2, $$0, $$4) && !chb.a($$0.L(), $$4) ? $$4 : null;
    }
 }

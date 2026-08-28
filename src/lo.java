@@ -2,7 +2,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 
 public class lo implements lq {
-   private static final Codec<cxo> a = Codec.withAlternative(cxo.c, cxo.a, cxo::new);
+   private static final Codec<cxo> a = Codec.withAlternative(cxo.b, cxk.e, cxo::new);
    private final lr<lo> b;
    private final cxo c;
 
@@ -11,7 +11,7 @@ public class lo implements lq {
    }
 
    public static zt<? super xg, lo> b(lr<lo> $$0) {
-      return cxo.i.a($$1 -> new lo($$0, $$1), $$0x -> $$0x.c);
+      return cxo.h.a($$1 -> new lo($$0, $$1), $$0x -> $$0x.c);
    }
 
    public lo(lr<lo> $$0, cxo $$1) {

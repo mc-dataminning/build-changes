@@ -150,7 +150,7 @@ public class anz {
       int $$2 = 0;
 
       for (bvj $$3 : $$1) {
-         if ($$3 instanceof bwf && ((bwf)$$3).ez()) {
+         if ($$3 instanceof bwf && ((bwf)$$3).eA()) {
             $$2++;
          }
       }

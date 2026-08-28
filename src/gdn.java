@@ -1,45 +1,38 @@
-import java.util.Arrays;
+public class gdn extends gbl<gzf> {
+   private static final int a = 2;
+   private final gen[] b = new gen[2];
 
-public class gdn extends gbk<gzr> {
-   public static final gev a = gev.scaling(0.5F);
-   private final gem[] b = new gem[8];
-
-   public gdn(gem $$0) {
+   public gdn(gen $$0) {
       super($$0);
-      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
+
+      for (int $$1 = 0; $$1 < 2; $$1++) {
+         this.b[$$1] = $$0.b(a($$1));
+      }
    }
 
    private static String a(int $$0) {
-      return "tentacle" + $$0;
+      return "box" + $$0;
    }
 
-   public static ges a() {
-      geu $$0 = new geu();
-      gew $$1 = $$0.a();
-      geq $$2 = new geq(0.02F);
-      int $$3 = -16;
-      $$1.a("body", ger.c().a(0, 0).a(-6.0F, -8.0F, -6.0F, 12.0F, 16.0F, 12.0F, $$2), geo.a(0.0F, 8.0F, 0.0F));
-      int $$4 = 8;
-      ger $$5 = ger.c().a(48, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 18.0F, 2.0F);
+   public static get a() {
+      gev $$0 = new gev();
+      gex $$1 = $$0.a();
 
-      for (int $$6 = 0; $$6 < 8; $$6++) {
-         double $$7 = (double)$$6 * Math.PI * 2.0 / 8.0;
-         float $$8 = (float)Math.cos($$7) * 5.0F;
-         float $$9 = 15.0F;
-         float $$10 = (float)Math.sin($$7) * 5.0F;
-         $$7 = (double)$$6 * Math.PI * -2.0 / 8.0 + (Math.PI / 2);
-         float $$11 = (float)$$7;
-         $$1.a(a($$6), $$5, geo.a($$8, 15.0F, $$10, 0.0F, $$11, 0.0F));
+      for (int $$2 = 0; $$2 < 2; $$2++) {
+         float $$3 = -3.2F + 9.6F * (float)($$2 + 1);
+         float $$4 = 0.75F * (float)($$2 + 1);
+         $$1.a(a($$2), ges.c().a(0, 0).a(-8.0F, -16.0F + $$3, -8.0F, 16.0F, 32.0F, 16.0F), gep.a.a($$4));
       }
 
-      return ges.a($$0, 64, 32);
+      return get.a($$0, 64, 64);
    }
 
-   public void a(gzr $$0) {
+   public void a(gzf $$0) {
       super.a($$0);
 
-      for (gem $$1 : this.b) {
-         $$1.e = $$0.a;
+      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
+         float $$2 = $$0.p * (float)(-(45 + ($$1 + 1) * 5));
+         this.b[$$1].f = bae.h($$2) * (float) (Math.PI / 180.0);
       }
    }
 }

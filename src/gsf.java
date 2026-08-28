@@ -1,57 +1,35 @@
-public abstract class gsf<T extends bwh, S extends gyj, M extends gbx<S>> extends gqi<T, S, M> {
-   public gsf(gro.a $$0, M $$1, float $$2) {
-      this($$0, $$1, $$1, $$2);
+import com.google.common.collect.Maps;
+import java.util.Map;
+
+public final class gsf extends gqf<ckc, gyj, gbw> {
+   private static final Map<ckj, alz> a = ae.a(Maps.newEnumMap(ckj.class), $$0 -> {
+      $$0.put(ckj.a, alz.b("textures/entity/horse/horse_white.png"));
+      $$0.put(ckj.b, alz.b("textures/entity/horse/horse_creamy.png"));
+      $$0.put(ckj.c, alz.b("textures/entity/horse/horse_chestnut.png"));
+      $$0.put(ckj.d, alz.b("textures/entity/horse/horse_brown.png"));
+      $$0.put(ckj.e, alz.b("textures/entity/horse/horse_black.png"));
+      $$0.put(ckj.f, alz.b("textures/entity/horse/horse_gray.png"));
+      $$0.put(ckj.g, alz.b("textures/entity/horse/horse_darkbrown.png"));
+   });
+
+   public gsf(grp.a $$0) {
+      super($$0, new gbw($$0.a(gem.ba)), new gbw($$0.a(gem.bc)), 1.1F);
+      this.a(new gvs(this));
+      this.a(new gvr(this, $$0.f(), $$0.h()));
    }
 
-   public gsf(gro.a $$0, M $$1, M $$2, float $$3) {
-      this($$0, $$1, $$2, $$3, gvh.a.a);
+   public alz a(gyj $$0) {
+      return a.get($$0.a);
    }
 
-   public gsf(gro.a $$0, M $$1, M $$2, float $$3, gvh.a $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a(new gvh<>(this, $$0.f(), $$4, $$0.b()));
-      this.a(new gwo<>(this, $$0.f(), $$0.h()));
-      this.a(new gvv<>(this, $$0.b()));
+   public gyj b() {
+      return new gyj();
    }
 
-   public void a(T $$0, S $$1, float $$2) {
+   public void a(ckc $$0, gyj $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      a($$0, $$1, $$2);
-   }
-
-   public static void a(bwf $$0, gyj $$1, float $$2) {
-      $$1.I = $$0.ci();
-      $$1.J = $$0.fH();
-      $$1.K = $$0.cl();
-      $$1.L = $$0.bZ();
-      $$1.D = 1.0F;
-      if ($$1.J) {
-         $$1.D = (float)$$0.dy().h();
-         $$1.D /= 0.2F;
-         $$1.D = $$1.D * $$1.D * $$1.D;
-      }
-
-      if ($$1.D < 1.0F) {
-         $$1.D = 1.0F;
-      }
-
-      $$1.C = $$0.D($$2);
-      $$1.B = $$0.a($$2);
-      $$1.G = c($$0);
-      $$1.H = $$0.fy();
-      $$1.E = (float)cwf.b($$0.fz(), $$0);
-      $$1.F = $$0.fB();
-      $$1.M = $$0.fx();
-      $$1.N = $$0.bb.a($$2);
-      $$1.O = $$0.bb.b($$2);
-      $$1.P = $$0.bb.c($$2);
-      $$1.Q = $$0.a(bvr.e).v();
-      $$1.R = $$0.a(bvr.d).v();
-      $$1.S = $$0.a(bvr.c).v();
-   }
-
-   private static bvz c(bwf $$0) {
-      bvz $$1 = $$0.fw();
-      return $$0.aJ == bth.a ? $$1 : $$1.e();
+      $$1.a = $$0.p();
+      $$1.h = $$0.t();
+      $$1.i = $$0.af().v();
    }
 }

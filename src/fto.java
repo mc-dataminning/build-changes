@@ -1,61 +1,82 @@
-import java.net.URI;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fto extends ftw {
-   private static final xv a = xv.c("symlink_warning.title.world").a(n.r);
-   private static final xv b = xv.a("symlink_warning.message.world", xv.a(aza.p));
-   private static final xv c = xv.c("symlink_warning.title.pack").a(n.r);
-   private static final xv d = xv.a("symlink_warning.message.pack", xv.a(aza.p));
-   private final xv s;
-   private final URI u;
-   private final Runnable v;
-   private final frr w = new frr().b(10);
+public class fto {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Map<cuk<?>, fto.a<?, ?>> b = Maps.newHashMap();
 
-   public fto(xv $$0, xv $$1, URI $$2, Runnable $$3) {
-      super($$0);
-      this.s = $$1;
-      this.u = $$2;
-      this.v = $$3;
+   public static <T extends ctb> void a(cuk<T> $$0, fmf $$1, int $$2, xv $$3) {
+      fto.a<T, ?> $$4 = a($$0);
+      if ($$4 == null) {
+         a.warn("Failed to create screen for menu type: {}", ma.p.b($$0));
+      } else {
+         $$4.a($$3, $$0, $$1, $$2);
+      }
    }
 
-   public static ftw a(Runnable $$0) {
-      return new fto(a, b, aza.p, $$0);
+   @Nullable
+   private static <T extends ctb> fto.a<T, ?> a(cuk<T> $$0) {
+      return (fto.a<T, ?>)b.get($$0);
    }
 
-   public static ftw b(Runnable $$0) {
-      return new fto(c, d, aza.p, $$0);
+   private static <M extends ctb, U extends ftx & fvs<M>> void a(cuk<? extends M> $$0, fto.a<M, U> $$1) {
+      fto.a<?, ?> $$2 = b.put($$0, $$1);
+      if ($$2 != null) {
+         throw new IllegalStateException("Duplicate registration for " + ma.p.b($$0));
+      }
    }
 
-   @Override
-   protected void aT_() {
-      super.aT_();
-      this.w.c().b();
-      frr.b $$0 = this.w.d(1);
-      $$0.a(new fpl(this.l, this.p));
-      $$0.a(new foy(this.s, this.p).d(this.n - 50).b(true));
-      int $$1 = 120;
-      frr $$2 = new frr().a(5);
-      frr.b $$3 = $$2.d(3);
-      $$3.a(fod.a(xu.n, $$0x -> ae.m().a(this.u)).b(120, 20).a());
-      $$3.a(fod.a(xu.o, $$0x -> this.m.p.a(this.u.toString())).b(120, 20).a());
-      $$3.a(fod.a(xu.k, $$0x -> this.aP_()).b(120, 20).a());
-      $$0.a($$2);
-      this.c();
-      this.w.a(this::c);
+   public static boolean a() {
+      boolean $$0 = false;
+
+      for (cuk<?> $$1 : ma.p) {
+         if (!b.containsKey($$1)) {
+            a.debug("Menu {} has no matching screen", ma.p.b($$1));
+            $$0 = true;
+         }
+      }
+
+      return $$0;
    }
 
-   @Override
-   protected void c() {
-      this.w.a();
-      frq.a(this.w, this.H());
+   static {
+      a(cuk.a, fuy::new);
+      a(cuk.b, fuy::new);
+      a(cuk.c, fuy::new);
+      a(cuk.d, fuy::new);
+      a(cuk.e, fuy::new);
+      a(cuk.f, fuy::new);
+      a(cuk.g, fve::new);
+      a(cuk.h, fuz::new);
+      a(cuk.i, fuq::new);
+      a(cuk.j, fur::new);
+      a(cuk.k, fus::new);
+      a(cuk.l, fuv::new);
+      a(cuk.m, fva::new);
+      a(cuk.n, fvh::new);
+      a(cuk.o, fvi::new);
+      a(cuk.p, fvj::new);
+      a(cuk.q, fvl::new);
+      a(cuk.r, fvq::new);
+      a(cuk.s, fvr::new);
+      a(cuk.t, fvt::new);
+      a(cuk.u, fvw::new);
+      a(cuk.v, fvy::new);
+      a(cuk.w, fvz::new);
+      a(cuk.x, fuw::new);
+      a(cuk.y, fwa::new);
    }
 
-   @Override
-   public xv i() {
-      return xu.a(super.i(), this.s);
-   }
+   interface a<T extends ctb, U extends ftx & fvs<T>> {
+      default void a(xv $$0, cuk<T> $$1, fmf $$2, int $$3) {
+         U $$4 = this.create($$1.a($$3, $$2.t.gi()), $$2.t.gi(), $$0);
+         $$2.t.cd = $$4.F();
+         $$2.a($$4);
+      }
 
-   @Override
-   public void aP_() {
-      this.v.run();
+      U create(T var1, cpv var2, xv var3);
    }
 }

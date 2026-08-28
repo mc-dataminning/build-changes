@@ -40,8 +40,8 @@ public class dvs extends duw implements btl {
       $$3.i = $$3.h;
       cpw $$4 = $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 3.0, false);
       if ($$4 != null) {
-         double $$5 = $$4.dA() - ((double)$$1.u() + 0.5);
-         double $$6 = $$4.dG() - ((double)$$1.w() + 0.5);
+         double $$5 = $$4.dB() - ((double)$$1.u() + 0.5);
+         double $$6 = $$4.dH() - ((double)$$1.w() + 0.5);
          $$3.j = (float)bae.d($$6, $$5);
          $$3.f += 0.1F;
          if ($$3.f < 0.5F || k.a(40) == 0) {

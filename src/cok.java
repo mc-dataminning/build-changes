@@ -80,7 +80,7 @@ public class cok extends coj implements cmj, cpg {
          $$0.a("CannotHunt", true);
       }
 
-      this.b($$0, this.dX());
+      this.b($$0, this.dY());
    }
 
    @Override
@@ -88,7 +88,7 @@ public class cok extends coj implements cmj, cpg {
       super.a($$0);
       this.a($$0.q("IsBaby"));
       this.z($$0.q("CannotHunt"));
-      this.a($$0, this.dX());
+      this.a($$0, this.dY());
    }
 
    @bbl
@@ -100,9 +100,9 @@ public class cok extends coj implements cmj, cpg {
    @Override
    protected void a(ash $$0, btz $$1, boolean $$2) {
       super.a($$0, $$1, $$2);
-      if ($$1.d() instanceof cmi $$4 && $$4.gn()) {
+      if ($$1.d() instanceof cmi $$4 && $$4.gp()) {
          cxo $$5 = new cxo(cxs.vh);
-         $$4.go();
+         $$4.gq();
          this.a($$0, $$5);
       }
 
@@ -133,8 +133,8 @@ public class cok extends coj implements cmj, cpg {
       }
    }
 
-   public static bxm.a gs() {
-      return cmw.gr().a(bxn.s, 16.0).a(bxn.v, 0.35F).a(bxn.c, 5.0);
+   public static bxm.a gu() {
+      return cmw.gt().a(bxn.s, 16.0).a(bxn.v, 0.35F).a(bxn.c, 5.0);
    }
 
    public static boolean b(bvq<cok> $$0, dhi $$1, bvp $$2, jh $$3, bam $$4) {
@@ -148,8 +148,8 @@ public class cok extends coj implements cmj, cpg {
       if ($$2 != bvp.d) {
          if ($$4.i() < 0.2F) {
             this.a(true);
-         } else if (this.gm()) {
-            this.a(bvr.a, this.gu());
+         } else if (this.go()) {
+            this.a(bvr.a, this.gw());
          }
       }
 
@@ -171,7 +171,7 @@ public class cok extends coj implements cmj, cpg {
 
    @Override
    protected void a(bam $$0, btg $$1) {
-      if (this.gm()) {
+      if (this.go()) {
          this.a(bvr.f, new cxo(cxs.qk), $$0);
          this.a(bvr.e, new cxo(cxs.ql), $$0);
          this.a(bvr.d, new cxo(cxs.qm), $$0);
@@ -186,18 +186,18 @@ public class cok extends coj implements cmj, cpg {
    }
 
    @Override
-   protected bxh.b<cok> ec() {
+   protected bxh.b<cok> ed() {
       return bxh.a(bZ, d);
    }
 
    @Override
    protected bxh<?> a(Dynamic<?> $$0) {
-      return col.a(this, this.ec().a($$0));
+      return col.a(this, this.ed().a($$0));
    }
 
    @Override
-   public bxh<cok> eb() {
-      return (bxh<cok>)super.eb();
+   public bxh<cok> ec() {
+      return (bxh<cok>)super.ec();
    }
 
    @Override
@@ -205,10 +205,10 @@ public class cok extends coj implements cmj, cpg {
       bti $$2 = super.b($$0, $$1);
       if ($$2.a()) {
          return $$2;
-      } else if (this.dV() instanceof ash $$3) {
+      } else if (this.dW() instanceof ash $$3) {
          return col.a($$3, this, $$0, $$1);
       } else {
-         boolean $$4 = col.b(this, $$0.b($$1)) && this.gn() != com.d;
+         boolean $$4 = col.b(this, $$0.b($$1)) && this.gp() != com.d;
          return (bti)($$4 ? bti.a : bti.e);
       }
    }
@@ -221,7 +221,7 @@ public class cok extends coj implements cmj, cpg {
    @Override
    public void a(boolean $$0) {
       this.au().a(ca, $$0);
-      if (!this.dV().C) {
+      if (!this.dW().C) {
          bxj $$1 = this.g(bxn.v);
          $$1.c(ce.b());
          if ($$0) {
@@ -248,7 +248,7 @@ public class cok extends coj implements cmj, cpg {
    protected void a(ash $$0) {
       bps $$1 = bpr.a();
       $$1.a("piglinBrain");
-      this.eb().a($$0, this);
+      this.ec().a($$0, this);
       $$1.c();
       col.a(this);
       super.a($$0);
@@ -266,11 +266,11 @@ public class cok extends coj implements cmj, cpg {
       super.g($$0);
    }
 
-   private cxo gu() {
+   private cxo gw() {
       return (double)this.ae.i() < 0.5 ? new cxo(cxs.wL) : new cxo(cxs.ps);
    }
 
-   private boolean gv() {
+   private boolean gx() {
       return this.al.a(cb);
    }
 
@@ -285,21 +285,21 @@ public class cok extends coj implements cmj, cpg {
    }
 
    @Override
-   public com gn() {
-      if (this.gt()) {
+   public com gp() {
+      if (this.gv()) {
          return com.e;
-      } else if (col.a(this.eY())) {
+      } else if (col.a(this.fa())) {
          return com.d;
-      } else if (this.gb() && this.go()) {
+      } else if (this.gd() && this.gq()) {
          return com.a;
-      } else if (this.gv()) {
+      } else if (this.gx()) {
          return com.c;
       } else {
-         return this.b(cxs.wL) && cwf.g(this.dZ()) ? com.b : com.f;
+         return this.b(cxs.wL) && cwf.g(this.ea()) ? com.b : com.f;
       }
    }
 
-   public boolean gt() {
+   public boolean gv() {
       return this.al.a(cc);
    }
 
@@ -342,7 +342,7 @@ public class cok extends coj implements cmj, cpg {
 
    @Override
    public boolean c(ash $$0, cxo $$1) {
-      return $$0.N().b(dhd.c) && this.fL() && col.a(this, $$1);
+      return $$0.N().b(dhd.c) && this.fN() && col.a(this, $$1);
    }
 
    protected boolean m(cxo $$0) {
@@ -363,7 +363,7 @@ public class cok extends coj implements cmj, cpg {
          } else if (!$$3 && $$4) {
             return false;
          } else {
-            return this.gm() && !$$0.a(cxs.wL) && $$1.a(cxs.wL) ? false : super.a($$0, $$1, $$2);
+            return this.go() && !$$0.a(cxs.wL) && $$1.a(cxs.wL) ? false : super.a($$0, $$1, $$2);
          }
       }
    }
@@ -390,7 +390,7 @@ public class cok extends coj implements cmj, cpg {
 
    @Override
    protected axe u() {
-      return this.dV().C ? null : col.b(this).orElse(null);
+      return this.dW().C ? null : col.b(this).orElse(null);
    }
 
    @Override
@@ -409,7 +409,7 @@ public class cok extends coj implements cmj, cpg {
    }
 
    @Override
-   protected void gp() {
+   protected void gr() {
       this.b(axf.ui);
    }
 }

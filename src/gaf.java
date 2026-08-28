@@ -1,73 +1,69 @@
-public class gaf extends gbk<gwy> {
-   public static final gev a = gev.scaling(0.6F);
-   private static final float b = 25.0F;
-   private static final float c = 22.5F;
-   private static final float d = 16.5F;
-   private static final float e = 2.5F;
-   private static final String f = "head_cube";
-   private static final String g = "right_ear_cube";
-   private static final String i = "left_ear_cube";
-   private final gem j;
-   private final gem k;
-   private final gem l;
-   private final gem m;
-   private final gem n;
-   private final gem o;
-
-   public gaf(gem $$0) {
-      super($$0);
-      this.j = $$0.b("body");
-      this.k = $$0.b("right_hind_leg");
-      this.l = $$0.b("left_hind_leg");
-      this.n = this.j.b("head");
-      this.o = this.j.b("tail");
-      this.m = $$0.b("cube");
+public class gaf {
+   public static void a(gen $$0, gen $$1, gen $$2, boolean $$3) {
+      gen $$4 = $$3 ? $$0 : $$1;
+      gen $$5 = $$3 ? $$1 : $$0;
+      $$4.f = ($$3 ? -0.3F : 0.3F) + $$2.f;
+      $$5.f = ($$3 ? 0.6F : -0.6F) + $$2.f;
+      $$4.e = (float) (-Math.PI / 2) + $$2.e + 0.1F;
+      $$5.e = -1.5F + $$2.e;
    }
 
-   public static ges a() {
-      geu $$0 = new geu();
-      gew $$1 = $$0.a();
-      gew $$2 = $$1.a(
-         "body",
-         ger.c().a(0, 20).a(-4.0F, -7.0F, -10.0F, 8.0F, 8.0F, 12.0F, new geq(0.3F)).a(0, 40).a(-4.0F, -7.0F, -10.0F, 8.0F, 8.0F, 12.0F, new geq(0.0F)),
-         geo.a(0.0F, 21.0F, 4.0F)
-      );
-      $$2.a("tail", ger.c().a(44, 53).a(-0.5F, -0.0865F, 0.0933F, 1.0F, 6.0F, 1.0F, new geq(0.0F)), geo.a(0.0F, -3.0F, 1.0F, 0.5061F, 0.0F, 0.0F));
-      gew $$3 = $$2.a("head", ger.c(), geo.a(0.0F, -2.0F, -11.0F));
-      $$3.a("head_cube", ger.c().a(43, 15).a(-1.5F, -1.0F, -1.0F, 3.0F, 5.0F, 2.0F, new geq(0.0F)), geo.a(0.0F, 0.0F, 0.0F, -0.3927F, 0.0F, 0.0F));
-      gew $$4 = $$3.a("right_ear", ger.c(), geo.a(-1.0F, -1.0F, 0.0F));
-      $$4.a("right_ear_cube", ger.c().a(43, 10).a(-2.0F, -3.0F, 0.0F, 2.0F, 5.0F, 0.0F, new geq(0.0F)), geo.a(-0.5F, 0.0F, -0.6F, 0.1886F, -0.3864F, -0.0718F));
-      gew $$5 = $$3.a("left_ear", ger.c(), geo.a(1.0F, -2.0F, 0.0F));
-      $$5.a("left_ear_cube", ger.c().a(47, 10).a(0.0F, -3.0F, 0.0F, 2.0F, 5.0F, 0.0F, new geq(0.0F)), geo.a(0.5F, 1.0F, -0.6F, 0.1886F, 0.3864F, 0.0718F));
-      $$1.a("right_hind_leg", ger.c().a(51, 31).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new geq(0.0F)), geo.a(-2.0F, 21.0F, 4.0F));
-      $$1.a("left_hind_leg", ger.c().a(42, 31).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new geq(0.0F)), geo.a(2.0F, 21.0F, 4.0F));
-      $$1.a("right_front_leg", ger.c().a(51, 43).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new geq(0.0F)), geo.a(-2.0F, 21.0F, -4.0F));
-      $$1.a("left_front_leg", ger.c().a(42, 43).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new geq(0.0F)), geo.a(2.0F, 21.0F, -4.0F));
-      $$1.a("cube", ger.c().a(0, 0).a(-5.0F, -10.0F, -6.0F, 10.0F, 10.0F, 10.0F, new geq(0.0F)), geo.a(0.0F, 24.0F, 0.0F));
-      return ges.a($$0, 64, 64);
+   public static void a(gen $$0, gen $$1, float $$2, int $$3, boolean $$4) {
+      gen $$5 = $$4 ? $$0 : $$1;
+      gen $$6 = $$4 ? $$1 : $$0;
+      $$5.f = $$4 ? -0.8F : 0.8F;
+      $$5.e = -0.97079635F;
+      $$6.e = $$5.e;
+      float $$7 = bae.a((float)$$3, 0.0F, $$2);
+      float $$8 = $$7 / $$2;
+      $$6.f = bae.h($$8, 0.4F, 0.85F) * (float)($$4 ? 1 : -1);
+      $$6.e = bae.h($$8, $$6.e, (float) (-Math.PI / 2));
    }
 
-   public void a(gwy $$0) {
-      super.a($$0);
-      if ($$0.a) {
-         this.j.l = true;
-         this.l.k = false;
-         this.k.k = false;
-         this.o.k = false;
-         this.m.k = true;
+   public static void a(gen $$0, gen $$1, bvz $$2, float $$3, float $$4) {
+      float $$5 = bae.a($$3 * (float) Math.PI);
+      float $$6 = bae.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
+      $$0.g = 0.0F;
+      $$1.g = 0.0F;
+      $$0.f = (float) (Math.PI / 20);
+      $$1.f = (float) (-Math.PI / 20);
+      if ($$2 == bvz.b) {
+         $$0.e = -1.8849558F + bae.b($$4 * 0.09F) * 0.15F;
+         $$1.e = -0.0F + bae.b($$4 * 0.19F) * 0.5F;
+         $$0.e += $$5 * 2.2F - $$6 * 0.4F;
+         $$1.e += $$5 * 1.2F - $$6 * 0.4F;
       } else {
-         this.j.l = false;
-         this.l.k = true;
-         this.k.k = true;
-         this.o.k = true;
-         this.m.k = false;
-         this.n.e = bae.a($$0.V, -22.5F, 25.0F) * (float) (Math.PI / 180.0);
-         this.n.f = bae.a($$0.U, -32.5F, 32.5F) * (float) (Math.PI / 180.0);
+         $$0.e = -0.0F + bae.b($$4 * 0.19F) * 0.5F;
+         $$1.e = -1.8849558F + bae.b($$4 * 0.09F) * 0.15F;
+         $$0.e += $$5 * 1.2F - $$6 * 0.4F;
+         $$1.e += $$5 * 2.2F - $$6 * 0.4F;
       }
 
-      this.a(fmv.b, $$0.X, $$0.Y, 16.5F, 2.5F);
-      this.a($$0.b, fmv.d, $$0.p, 1.0F);
-      this.a($$0.c, fmv.a, $$0.p, 1.0F);
-      this.a($$0.d, fmv.c, $$0.p, 1.0F);
+      a($$0, $$1, $$4);
+   }
+
+   public static void a(gen $$0, float $$1, float $$2) {
+      $$0.g = $$0.g + $$2 * (bae.b($$1 * 0.09F) * 0.05F + 0.05F);
+      $$0.e = $$0.e + $$2 * bae.a($$1 * 0.067F) * 0.05F;
+   }
+
+   public static void a(gen $$0, gen $$1, float $$2) {
+      a($$0, $$2, 1.0F);
+      a($$1, $$2, -1.0F);
+   }
+
+   public static void a(gen $$0, gen $$1, boolean $$2, float $$3, float $$4) {
+      float $$5 = bae.a($$3 * (float) Math.PI);
+      float $$6 = bae.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
+      $$1.g = 0.0F;
+      $$0.g = 0.0F;
+      $$1.f = -(0.1F - $$5 * 0.6F);
+      $$0.f = 0.1F - $$5 * 0.6F;
+      float $$7 = (float) -Math.PI / ($$2 ? 1.5F : 2.25F);
+      $$1.e = $$7;
+      $$0.e = $$7;
+      $$1.e += $$5 * 1.2F - $$6 * 0.4F;
+      $$0.e += $$5 * 1.2F - $$6 * 0.4F;
+      a($$1, $$0, $$4);
    }
 }

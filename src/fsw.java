@@ -1,109 +1,188 @@
-import com.ibm.icu.text.Collator;
-import java.util.Comparator;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.function.Consumer;
+import com.mojang.logging.LogUtils;
+import io.netty.channel.ChannelFuture;
+import java.net.InetSocketAddress;
+import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fsw extends ftw {
-   private static final xv a = xv.c("createWorld.customize.buffet.biome").b(-8355712);
-   private static final int b = 8;
-   private final frs c = new frs(this);
-   private final ftw d;
-   private final Consumer<jq<dij>> s;
-   final kd<dij> u;
-   private fsw.a v;
-   jq<dij> w;
-   private fod x;
+public class fsw extends ftx {
+   private static final AtomicInteger c = new AtomicInteger(0);
+   static final Logger d = LogUtils.getLogger();
+   private static final long s = 2000L;
+   public static final xv a = xv.c("connect.aborted");
+   public static final xv b = xv.a("disconnect.genericReason", xv.c("disconnect.unknownHost"));
+   @Nullable
+   volatile wp u;
+   @Nullable
+   ChannelFuture v;
+   volatile boolean w;
+   final ftx x;
+   private xv y = xv.c("connect.connecting");
+   private long z = -1L;
+   final xv A;
 
-   public fsw(ftw $$0, fzf $$1, Consumer<jq<dij>> $$2) {
-      super(xv.c("createWorld.customize.buffet.title"));
-      this.d = $$0;
-      this.s = $$2;
-      this.u = $$1.a().e(mb.aI);
-      jq<dij> $$3 = this.u.a(diq.b).or(() -> this.u.c().findAny()).orElseThrow();
-      this.w = $$1.e().a().d().c().stream().findFirst().orElse($$3);
+   private fsw(ftx $$0, xv $$1) {
+      super(flw.a);
+      this.x = $$0;
+      this.A = $$1;
+   }
+
+   public static void a(ftx $$0, fmf $$1, ghb $$2, gfy $$3, boolean $$4, @Nullable ggc $$5) {
+      if ($$1.z instanceof fsw) {
+         d.error("Attempt to connect while already connecting");
+      } else {
+         xv $$6;
+         if ($$5 != null) {
+            $$6 = xu.q;
+         } else if ($$4) {
+            $$6 = gkn.a;
+         } else {
+            $$6 = xu.r;
+         }
+
+         fsw $$9 = new fsw($$0, $$6);
+         if ($$5 != null) {
+            $$9.a(xv.c("connect.transferring"));
+         }
+
+         $$1.y();
+         $$1.aV();
+         $$1.a(ggp.a($$3.b));
+         $$1.bd().a(gko.c.b, $$3.b, $$3.a);
+         $$1.a($$9);
+         $$9.a($$1, $$2, $$3, $$5);
+      }
+   }
+
+   private void a(final fmf $$0, final ghb $$1, final gfy $$2, @Nullable final ggc $$3) {
+      d.info("Connecting to {}, {}", $$1.a(), $$1.b());
+      Thread $$4 = new Thread("Server Connector #" + c.incrementAndGet()) {
+         @Override
+         public void run() {
+            InetSocketAddress $$0 = null;
+
+            try {
+               if (fsw.this.w) {
+                  return;
+               }
+
+               Optional<InetSocketAddress> $$1 = ghd.a.a($$1).map(gha::d);
+               if (fsw.this.w) {
+                  return;
+               }
+
+               if ($$1.isEmpty()) {
+                  $$0.execute(() -> $$0.a(new fte(fsw.this.x, fsw.this.A, fsw.b)));
+                  return;
+               }
+
+               $$0 = $$1.get();
+               wp $$2;
+               synchronized (fsw.this) {
+                  if (fsw.this.w) {
+                     return;
+                  }
+
+                  $$2 = new wp(aad.b);
+                  $$2.a($$0.aQ().n());
+                  fsw.this.v = wp.a($$0, $$0.n.aD(), $$2);
+               }
+
+               fsw.this.v.syncUninterruptibly();
+               synchronized (fsw.this) {
+                  if (fsw.this.w) {
+                     $$2.a(fsw.a);
+                     return;
+                  }
+
+                  fsw.this.u = $$2;
+                  $$0.af().a($$2, a($$2.b()));
+               }
+
+               fsw.this.u
+                  .a($$0.getHostName(), $$0.getPort(), akb.b, akb.d, new gfi(fsw.this.u, $$0, $$2, fsw.this.x, false, null, fsw.this::a, $$3), $$3 != null);
+               fsw.this.u.a(new ake($$0.X().c(), $$0.X().b()));
+            } catch (Exception var9) {
+               if (fsw.this.w) {
+                  return;
+               }
+
+               Exception $$6;
+               if (var9.getCause() instanceof Exception $$5) {
+                  $$6 = $$5;
+               } else {
+                  $$6 = var9;
+               }
+
+               fsw.d.error("Couldn't connect to server", var9);
+               String $$8 = $$0 == null
+                  ? $$6.getMessage()
+                  : $$6.getMessage().replaceAll($$0.getHostName() + ":" + $$0.getPort(), "").replaceAll($$0.toString(), "");
+               $$0.execute(() -> $$0.a(new fte(fsw.this.x, fsw.this.A, xv.a("disconnect.genericReason", $$8))));
+            }
+         }
+
+         private static hen.c a(gfy.a $$0x) {
+            return switch ($$0) {
+               case a -> hen.c.b;
+               case b -> hen.c.c;
+               case c -> hen.c.a;
+            };
+         }
+      };
+      $$4.setUncaughtExceptionHandler(new r(d));
+      $$4.start();
+   }
+
+   private void a(xv $$0) {
+      this.y = $$0;
    }
 
    @Override
-   public void aP_() {
-      this.m.a(this.d);
+   public void e() {
+      if (this.u != null) {
+         if (this.u.i()) {
+            this.u.b();
+         } else {
+            this.u.n();
+         }
+      }
+   }
+
+   @Override
+   public boolean aH_() {
+      return false;
    }
 
    @Override
    protected void aT_() {
-      frw $$0 = this.c.a(frw.d().a(8));
-      $$0.c().b();
-      $$0.a(new fpl(this.m(), this.p));
-      $$0.a(new fpl(a, this.p));
-      this.v = this.c.c(new fsw.a());
-      frw $$1 = this.c.b(frw.e().a(8));
-      this.x = $$1.a(fod.a(xu.d, $$0x -> {
-         this.s.accept(this.w);
-         this.aP_();
-      }).a());
-      $$1.a(fod.a(xu.e, $$0x -> this.aP_()).a());
-      this.v.a(this.v.aI_().stream().filter($$0x -> Objects.equals($$0x.b, this.w)).findFirst().orElse(null));
-      this.c.a(this::c);
-      this.c();
-   }
+      this.c(foe.a(xu.e, $$0 -> {
+         synchronized (this) {
+            this.w = true;
+            if (this.v != null) {
+               this.v.cancel(true);
+               this.v = null;
+            }
 
-   @Override
-   protected void c() {
-      this.c.a();
-      this.v.a(this.n, this.c);
-   }
-
-   void l() {
-      this.x.j = this.v.g() != null;
-   }
-
-   class a extends fpa<fsw.a.a> {
-      a() {
-         super(fsw.this.m, fsw.this.n, fsw.this.o - 77, 40, 16);
-         Collator $$0 = Collator.getInstance(Locale.getDefault());
-         fsw.this.u.c().map($$0x -> new fsw.a.a($$0x)).sorted(Comparator.comparing($$0x -> $$0x.c.getString(), $$0)).forEach($$1 -> this.b($$1));
-      }
-
-      public void a(@Nullable fsw.a.a $$0) {
-         super.a($$0);
-         if ($$0 != null) {
-            fsw.this.w = $$0.b;
-         }
-
-         fsw.this.l();
-      }
-
-      class a extends fpa.a<fsw.a.a> {
-         final jq.c<dij> b;
-         final xv c;
-
-         public a(final jq.c<dij> $$0) {
-            this.b = $$0;
-            alz $$1 = $$0.h().a();
-            String $$2 = $$1.h("biome");
-            if (us.a().b($$2)) {
-               this.c = xv.c($$2);
-            } else {
-               this.c = xv.b($$1.toString());
+            if (this.u != null) {
+               this.u.a(a);
             }
          }
 
-         @Override
-         public xv a() {
-            return xv.a("narrator.select", this.c);
-         }
+         this.m.a(this.x);
+      }).a(this.n / 2 - 100, this.o / 4 + 120 + 12, 200, 20).a());
+   }
 
-         @Override
-         public void a(fnq $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(fsw.this.p, this.c, $$3 + 5, $$2 + 2, 16777215);
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            a.this.a(this);
-            return super.a($$0, $$1, $$2);
-         }
+   @Override
+   public void a(fnr $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      long $$4 = ae.c();
+      if ($$4 - this.z > 2000L) {
+         this.z = $$4;
+         this.m.aZ().c(xv.c("narrator.joining"));
       }
+
+      $$0.a(this.p, this.y, this.n / 2, this.o / 2 - 50, 16777215);
    }
 }

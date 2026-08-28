@@ -1,20 +1,31 @@
-public class gqq extends gsu<cmf, gyr, gaq> {
-   private static final alz a = alz.b("textures/entity/blaze.png");
+public class gqq extends gqj<chx, gxe, gao> {
+   private static final alz a = alz.b("textures/entity/bee/bee_angry.png");
+   private static final alz b = alz.b("textures/entity/bee/bee_angry_nectar.png");
+   private static final alz k = alz.b("textures/entity/bee/bee.png");
+   private static final alz l = alz.b("textures/entity/bee/bee_nectar.png");
 
-   public gqq(gro.a $$0) {
-      super($$0, new gaq($$0.a(gel.A)), 0.5F);
+   public gqq(grp.a $$0) {
+      super($$0, new gao($$0.a(gem.u)), new gao($$0.a(gem.v)), 0.4F);
    }
 
-   protected int a(cmf $$0, jh $$1) {
-      return 15;
+   public alz a(gxe $$0) {
+      if ($$0.d) {
+         return $$0.e ? b : a;
+      } else {
+         return $$0.e ? l : k;
+      }
    }
 
-   @Override
-   public alz b(gyr $$0) {
-      return a;
+   public gxe a() {
+      return new gxe();
    }
 
-   public gyr a() {
-      return new gyr();
+   public void a(chx $$0, gxe $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.J($$2);
+      $$1.b = !$$0.gB();
+      $$1.c = $$0.aJ() && $$0.dz().h() < 1.0E-7;
+      $$1.d = $$0.ad_();
+      $$1.e = $$0.gA();
    }
 }

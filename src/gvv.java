@@ -1,28 +1,24 @@
-import javax.annotation.Nullable;
+public class gvv extends gwe<gyn, gca> {
+   private final gmn a;
 
-public class gvv<S extends gyr, M extends gbk<S> & gag> extends gwd<S, M> {
-   private final gsm a;
-
-   public gvv(gtl<S, M> $$0, gsm $$1) {
+   public gvv(gtm<gyn, gca> $$0, gmn $$1) {
       super($$0);
       this.a = $$1;
    }
 
-   public void a(fgq $$0, glj $$1, int $$2, S $$3, float $$4, float $$5) {
-      this.a($$3, $$3.aq, $$3.ar, cxm.c, bvz.b, $$0, $$1, $$2);
-      this.a($$3, $$3.as, $$3.at, cxm.b, bvz.a, $$0, $$1, $$2);
-   }
-
-   protected void a(S $$0, @Nullable hdl $$1, cxo $$2, cxm $$3, bvz $$4, fgq $$5, glj $$6, int $$7) {
-      if ($$1 != null && !$$2.f()) {
-         $$5.a();
-         this.d().a($$4, $$5);
-         $$5.a(a.b.rotationDegrees(-90.0F));
-         $$5.a(a.d.rotationDegrees(180.0F));
-         boolean $$8 = $$4 == bvz.a;
-         $$5.a((float)($$8 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
-         this.a.a($$2, $$3, $$8, $$5, $$6, $$7, hba.d, $$1);
-         $$5.b();
+   public void a(fgr $$0, glk $$1, int $$2, gyn $$3, float $$4, float $$5) {
+      if ($$3.b != 0) {
+         $$0.a();
+         gen $$6 = this.d().b();
+         $$6.a($$0);
+         $$0.a(-1.1875F, 1.0625F, -0.9375F);
+         $$0.a(0.5F, 0.5F, 0.5F);
+         float $$7 = 0.5F;
+         $$0.b(0.5F, 0.5F, 0.5F);
+         $$0.a(a.b.rotationDegrees(-90.0F));
+         $$0.a(-0.5F, -0.5F, -0.5F);
+         this.a.a(dkn.ca.m(), $$0, $$1, $$2, hbb.d);
+         $$0.b();
       }
    }
 }

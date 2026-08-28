@@ -25,8 +25,8 @@ public class cjx {
    public static final float h = 1.0F;
 
    protected static void a(cjw $$0, bam $$1) {
-      $$0.eb().a(cfj.S, o.a($$1));
-      $$0.eb().a(cfj.V, p.a($$1));
+      $$0.ec().a(cfj.S, o.a($$1));
+      $$0.ec().a(cfj.V, p.a($$1));
    }
 
    protected static bxh<?> a(bxh<cjw> $$0) {
@@ -61,7 +61,7 @@ public class cjx {
    private static void d(bxh<cjw> $$0) {
       $$0.a(
          crn.q,
-         ImmutableList.of(Pair.of(0, new byz(o, axf.lv)), Pair.of(1, new bzb<>(o, 5, 5, 3.5714288F, $$0x -> $$0x.gy() ? axf.lr : axf.li))),
+         ImmutableList.of(Pair.of(0, new byz(o, axf.lv)), Pair.of(1, new bzb<>(o, 5, 5, 3.5714288F, $$0x -> $$0x.gA() ? axf.lr : axf.li))),
          ImmutableSet.of(Pair.of(cfj.O, cfk.b), Pair.of(cfj.r, cfk.b), Pair.of(cfj.m, cfk.b), Pair.of(cfj.S, cfk.b))
       );
    }
@@ -70,15 +70,15 @@ public class cjx {
       $$0.a(
          crn.r,
          ImmutableList.of(
-            Pair.of(0, new bzo($$0x -> $$0x.gy() ? q : p, r, 3.0F, $$0x -> $$0x.e_() ? 1.0 : 2.5, $$0x -> $$0x.gy() ? axf.lu : axf.ll, $$0x -> axf.lm)),
-            Pair.of(1, new bzn<>($$0x -> $$0x.gy() ? q.a() : p.a(), 4, 7, 1.25F, r, 20, $$0x -> $$0x.gy() ? axf.lt : axf.lk))
+            Pair.of(0, new bzo($$0x -> $$0x.gA() ? q : p, r, 3.0F, $$0x -> $$0x.e_() ? 1.0 : 2.5, $$0x -> $$0x.gA() ? axf.lu : axf.ll, $$0x -> axf.lm)),
+            Pair.of(1, new bzn<>($$0x -> $$0x.gA() ? q.a() : p.a(), 4, 7, 1.25F, r, 20, $$0x -> $$0x.gA() ? axf.lt : axf.lk))
          ),
          ImmutableSet.of(Pair.of(cfj.O, cfk.b), Pair.of(cfj.r, cfk.b), Pair.of(cfj.V, cfk.b))
       );
    }
 
    public static void a(cjw $$0) {
-      $$0.eb().a(ImmutableList.of(crn.r, crn.q, crn.b));
+      $$0.ec().a(ImmutableList.of(crn.r, crn.q, crn.b));
    }
 
    public static Predicate<cxo> a() {

@@ -1,42 +1,25 @@
-public class gto extends grn<cqs, gzm> {
-   private static final alz a = alz.b("textures/entity/shulker/spark.png");
-   private static final glt b = glt.i(a);
-   private final gdc h;
+public class gto extends gqj<cis, gzm, gdb> {
+   private static final alz a = alz.b("textures/entity/sheep/sheep.png");
 
-   public gto(gro.a $$0) {
-      super($$0);
-      this.h = new gdc($$0.a(gel.cD));
+   public gto(grp.a $$0) {
+      super($$0, new gdb($$0.a(gem.cw)), new gdb($$0.a(gem.cx)), 0.7F);
+      this.a(new gwg(this, $$0.f()));
    }
 
-   protected int a(cqs $$0, jh $$1) {
-      return 15;
+   public alz a(gzm $$0) {
+      return a;
    }
 
-   public void a(gzm $$0, fgq $$1, glj $$2, int $$3) {
-      $$1.a();
-      float $$4 = $$0.p;
-      $$1.a(0.0F, 0.15F, 0.0F);
-      $$1.a(a.d.rotationDegrees(bae.a($$4 * 0.1F) * 180.0F));
-      $$1.a(a.b.rotationDegrees(bae.b($$4 * 0.1F) * 180.0F));
-      $$1.a(a.f.rotationDegrees(bae.a($$4 * 0.15F) * 360.0F));
-      $$1.b(-0.5F, -0.5F, 0.5F);
-      this.h.a($$0);
-      fgu $$5 = $$2.getBuffer(this.h.a(a));
-      this.h.a($$1, $$5, $$3, hba.d);
-      $$1.b(1.5F, 1.5F, 1.5F);
-      fgu $$6 = $$2.getBuffer(b);
-      this.h.a($$1, $$6, $$3, hba.d, 654311423);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   public gzm a() {
+   public gzm b() {
       return new gzm();
    }
 
-   public void a(cqs $$0, gzm $$1, float $$2) {
+   public void a(cis $$0, gzm $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.b = $$0.k($$2);
-      $$1.a = $$0.j($$2);
+      $$1.b = $$0.K($$2);
+      $$1.a = $$0.J($$2);
+      $$1.c = $$0.x();
+      $$1.d = $$0.t();
+      $$1.e = $$0.ar();
    }
 }

@@ -12,7 +12,7 @@ public class byc extends bxy<cpi> {
    }
 
    protected boolean a(ash $$0, cpi $$1) {
-      jh $$2 = $$1.dv();
+      jh $$2 = $$1.dw();
       this.c = $$0.d($$2);
       return this.c != null && this.c.e() && bzh.a($$0, $$1, $$2);
    }
@@ -23,20 +23,20 @@ public class byc extends bxy<cpi> {
 
    protected void b(ash $$0, cpi $$1, long $$2) {
       this.c = null;
-      $$1.eb().a($$0.ad(), $$0.ac());
+      $$1.ec().a($$0.ad(), $$0.ac());
    }
 
    protected void c(ash $$0, cpi $$1, long $$2) {
-      bam $$3 = $$1.dY();
+      bam $$3 = $$1.dZ();
       if ($$3.a(100) == 0) {
-         $$1.gr();
+         $$1.gt();
       }
 
-      if ($$3.a(200) == 0 && bzh.a($$0, $$1, $$1.dv())) {
+      if ($$3.a(200) == 0 && bzh.a($$0, $$1, $$1.dw())) {
          cwl $$4 = ae.a(cwl.values(), $$3);
          int $$5 = $$3.a(3);
          cxo $$6 = this.a($$4, $$5);
-         cqp.a(new cqk($$1.dV(), $$1, $$1.dA(), $$1.dE(), $$1.dG(), $$6), $$0, $$6);
+         cqp.a(new cqk($$1.dW(), $$1, $$1.dB(), $$1.dF(), $$1.dH(), $$6), $$0, $$6);
       }
    }
 

@@ -7,7 +7,7 @@ public class cfx extends cgj {
    }
 
    private boolean a(bwf $$0, bwf $$1) {
-      return !$$0.eb().a(cfj.U) && $$1.aq().a(axy.j);
+      return !$$0.ec().a(cfj.U) && $$1.aq().a(axy.j);
    }
 
    private boolean b(bwf $$0) {

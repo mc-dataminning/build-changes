@@ -13,10 +13,10 @@ public class cch extends ccf {
       if (this.d > 0) {
          this.d--;
          this.i().ifPresent($$0x -> this.a.aZ = this.a(this.a.aZ, $$0x + 20.0F, this.b));
-         this.h().ifPresent($$0x -> this.a.w(this.a(this.a.dN(), $$0x + 10.0F, this.c)));
+         this.h().ifPresent($$0x -> this.a.w(this.a(this.a.dO(), $$0x + 10.0F, this.c)));
       } else {
          if (this.a.L().m()) {
-            this.a.w(this.a(this.a.dN(), 0.0F, 5.0F));
+            this.a.w(this.a(this.a.dO(), 0.0F, 5.0F));
          }
 
          this.a.aZ = this.a(this.a.aZ, this.a.aX, this.b);

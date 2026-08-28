@@ -76,25 +76,25 @@ public class cmy extends bvw implements cmo {
    @Override
    public void h() {
       super.h();
-      if (this.dV().C) {
+      if (this.dW().C) {
          float $$0 = bae.b((float)(this.p() + this.af) * 7.448451F * (float) (Math.PI / 180.0) + (float) Math.PI);
          float $$1 = bae.b((float)(this.p() + this.af + 1) * 7.448451F * (float) (Math.PI / 180.0) + (float) Math.PI);
          if ($$0 > 0.0F && $$1 <= 0.0F) {
-            this.dV().a(this.dA(), this.dC(), this.dG(), axf.tR, this.dm(), 0.95F + this.ae.i() * 0.05F, 0.95F + this.ae.i() * 0.05F, false);
+            this.dW().a(this.dB(), this.dD(), this.dH(), axf.tR, this.dn(), 0.95F + this.ae.i() * 0.05F, 0.95F + this.ae.i() * 0.05F, false);
          }
 
-         float $$2 = this.dq() * 1.48F;
-         float $$3 = bae.b(this.dL() * (float) (Math.PI / 180.0)) * $$2;
-         float $$4 = bae.a(this.dL() * (float) (Math.PI / 180.0)) * $$2;
-         float $$5 = (0.3F + $$0 * 0.45F) * this.dr() * 2.5F;
-         this.dV().a(ls.aa, this.dA() + (double)$$3, this.dC() + (double)$$5, this.dG() + (double)$$4, 0.0, 0.0, 0.0);
-         this.dV().a(ls.aa, this.dA() - (double)$$3, this.dC() + (double)$$5, this.dG() - (double)$$4, 0.0, 0.0, 0.0);
+         float $$2 = this.dr() * 1.48F;
+         float $$3 = bae.b(this.dM() * (float) (Math.PI / 180.0)) * $$2;
+         float $$4 = bae.a(this.dM() * (float) (Math.PI / 180.0)) * $$2;
+         float $$5 = (0.3F + $$0 * 0.45F) * this.ds() * 2.5F;
+         this.dW().a(ls.aa, this.dB() + (double)$$3, this.dD() + (double)$$5, this.dH() + (double)$$4, 0.0, 0.0, 0.0);
+         this.dW().a(ls.aa, this.dB() - (double)$$3, this.dD() + (double)$$5, this.dH() - (double)$$4, 0.0, 0.0, 0.0);
       }
    }
 
    @Override
    public void d_() {
-      if (this.bL() && this.ge()) {
+      if (this.bL() && this.gg()) {
          this.d(8.0F);
       }
 
@@ -103,7 +103,7 @@ public class cmy extends bvw implements cmo {
 
    @Override
    public bwy a(dhy $$0, btg $$1, bvp $$2, @Nullable bwy $$3) {
-      this.bY = this.dv().b(5);
+      this.bY = this.dw().b(5);
       this.b(0);
       return super.a($$0, $$1, $$2, $$3);
    }
@@ -133,7 +133,7 @@ public class cmy extends bvw implements cmo {
    }
 
    @Override
-   public axg dm() {
+   public axg dn() {
       return axg.f;
    }
 
@@ -153,7 +153,7 @@ public class cmy extends bvw implements cmo {
    }
 
    @Override
-   protected float fe() {
+   protected float fg() {
       return 1.0F;
    }
 
@@ -189,10 +189,10 @@ public class cmy extends bvw implements cmo {
             return false;
          } else {
             this.c = b(60);
-            ash $$0 = a(cmy.this.dV());
+            ash $$0 = a(cmy.this.dW());
             List<cpw> $$1 = $$0.a(this.b, cmy.this, cmy.this.cR().c(16.0, 64.0, 16.0));
             if (!$$1.isEmpty()) {
-               $$1.sort(Comparator.comparing(bvj::dC).reversed());
+               $$1.sort(Comparator.comparing(bvj::dD).reversed());
 
                for (cpw $$2 : $$1) {
                   if (cmy.this.a($$0, $$2, cgw.a)) {
@@ -209,7 +209,7 @@ public class cmy extends bvw implements cmo {
       @Override
       public boolean c() {
          bwf $$0 = cmy.this.O_();
-         return $$0 != null ? cmy.this.a(a(cmy.this.dV()), $$0, cgw.a) : false;
+         return $$0 != null ? cmy.this.a(a(cmy.this.dW()), $$0, cgw.a) : false;
       }
    }
 
@@ -219,7 +219,7 @@ public class cmy extends bvw implements cmo {
       @Override
       public boolean b() {
          bwf $$0 = cmy.this.O_();
-         return $$0 != null ? cmy.this.a(a(cmy.this.dV()), $$0, cgw.a) : false;
+         return $$0 != null ? cmy.this.a(a(cmy.this.dW()), $$0, cgw.a) : false;
       }
 
       @Override
@@ -231,7 +231,7 @@ public class cmy extends bvw implements cmo {
 
       @Override
       public void e() {
-         cmy.this.bY = cmy.this.dV().a(edp.a.e, cmy.this.bY).b(10 + cmy.this.ae.a(20));
+         cmy.this.bY = cmy.this.dW().a(edp.a.e, cmy.this.bY).b(10 + cmy.this.ae.a(20));
       }
 
       @Override
@@ -248,9 +248,9 @@ public class cmy extends bvw implements cmo {
       }
 
       private void h() {
-         cmy.this.bY = cmy.this.O_().dv().b(20 + cmy.this.ae.a(20));
-         if (cmy.this.bY.v() < cmy.this.dV().O()) {
-            cmy.this.bY = new jh(cmy.this.bY.u(), cmy.this.dV().O() + 1, cmy.this.bY.w());
+         cmy.this.bY = cmy.this.O_().dw().b(20 + cmy.this.ae.a(20));
+         if (cmy.this.bY.v() < cmy.this.dW().O()) {
+            cmy.this.bY = new jh(cmy.this.bY.u(), cmy.this.dW().O() + 1, cmy.this.bY.w());
          }
       }
    }
@@ -263,7 +263,7 @@ public class cmy extends bvw implements cmo {
       @Override
       public void a() {
          cmy.this.aZ = cmy.this.aX;
-         cmy.this.aX = cmy.this.dL();
+         cmy.this.aX = cmy.this.dM();
       }
    }
 
@@ -309,12 +309,12 @@ public class cmy extends bvw implements cmo {
             this.i();
          }
 
-         if (cmy.this.d.e < cmy.this.dC() && !cmy.this.dV().u(cmy.this.dv().c(1))) {
+         if (cmy.this.d.e < cmy.this.dD() && !cmy.this.dW().u(cmy.this.dw().c(1))) {
             this.e = Math.max(1.0F, this.e);
             this.i();
          }
 
-         if (cmy.this.d.e > cmy.this.dC() && !cmy.this.dV().u(cmy.this.dv().b(1))) {
+         if (cmy.this.d.e > cmy.this.dD() && !cmy.this.dW().u(cmy.this.dw().b(1))) {
             this.e = Math.min(-1.0F, this.e);
             this.i();
          }
@@ -322,7 +322,7 @@ public class cmy extends bvw implements cmo {
 
       private void i() {
          if (jh.c.equals(cmy.this.bY)) {
-            cmy.this.bY = cmy.this.dv();
+            cmy.this.bY = cmy.this.dw();
          }
 
          this.c = this.c + this.f * 15.0F * (float) (Math.PI / 180.0);
@@ -350,13 +350,13 @@ public class cmy extends bvw implements cmo {
       @Override
       public void a() {
          if (cmy.this.P) {
-            cmy.this.v(cmy.this.dL() + 180.0F);
+            cmy.this.v(cmy.this.dM() + 180.0F);
             this.m = 0.1F;
          }
 
-         double $$0 = cmy.this.d.d - cmy.this.dA();
-         double $$1 = cmy.this.d.e - cmy.this.dC();
-         double $$2 = cmy.this.d.f - cmy.this.dG();
+         double $$0 = cmy.this.d.d - cmy.this.dB();
+         double $$1 = cmy.this.d.e - cmy.this.dD();
+         double $$2 = cmy.this.d.f - cmy.this.dH();
          double $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
          if (Math.abs($$3) > 1.0E-5F) {
             double $$4 = 1.0 - Math.abs($$1 * 0.7F) / $$3;
@@ -364,13 +364,13 @@ public class cmy extends bvw implements cmo {
             $$2 *= $$4;
             $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
             double $$5 = Math.sqrt($$0 * $$0 + $$2 * $$2 + $$1 * $$1);
-            float $$6 = cmy.this.dL();
+            float $$6 = cmy.this.dM();
             float $$7 = (float)bae.d($$2, $$0);
-            float $$8 = bae.h(cmy.this.dL() + 90.0F);
+            float $$8 = bae.h(cmy.this.dM() + 90.0F);
             float $$9 = bae.h($$7 * (180.0F / (float)Math.PI));
             cmy.this.v(bae.e($$8, $$9, 4.0F) - 90.0F);
-            cmy.this.aX = cmy.this.dL();
-            if (bae.d($$6, cmy.this.dL()) < 3.0F) {
+            cmy.this.aX = cmy.this.dM();
+            if (bae.d($$6, cmy.this.dM()) < 3.0F) {
                this.m = bae.d(this.m, 1.8F, 0.005F * (1.8F / this.m));
             } else {
                this.m = bae.d(this.m, 0.2F, 0.025F);
@@ -378,11 +378,11 @@ public class cmy extends bvw implements cmo {
 
             float $$10 = (float)(-(bae.d(-$$1, $$3) * 180.0F / (float)Math.PI));
             cmy.this.w($$10);
-            float $$11 = cmy.this.dL() + 90.0F;
+            float $$11 = cmy.this.dM() + 90.0F;
             double $$12 = (double)(this.m * bae.b($$11 * (float) (Math.PI / 180.0))) * Math.abs($$0 / $$5);
             double $$13 = (double)(this.m * bae.a($$11 * (float) (Math.PI / 180.0))) * Math.abs($$2 / $$5);
             double $$14 = (double)(this.m * bae.a($$10 * (float) (Math.PI / 180.0))) * Math.abs($$1 / $$5);
-            fbx $$15 = cmy.this.dy();
+            fbx $$15 = cmy.this.dz();
             cmy.this.h($$15.e(new fbx($$12, $$14, $$13).d($$15).c(0.2)));
          }
       }
@@ -394,7 +394,7 @@ public class cmy extends bvw implements cmo {
       }
 
       protected boolean h() {
-         return cmy.this.d.c(cmy.this.dA(), cmy.this.dC(), cmy.this.dG()) < 4.0;
+         return cmy.this.d.c(cmy.this.dB(), cmy.this.dD(), cmy.this.dH()) < 4.0;
       }
    }
 
@@ -425,10 +425,10 @@ public class cmy extends bvw implements cmo {
             } else {
                if (cmy.this.af > this.e) {
                   this.e = cmy.this.af + 20;
-                  List<chz> $$2 = cmy.this.dV().a(chz.class, cmy.this.cR().g(16.0), bvo.a);
+                  List<chz> $$2 = cmy.this.dW().a(chz.class, cmy.this.cR().g(16.0), bvo.a);
 
                   for (chz $$3 : $$2) {
-                     $$3.gB();
+                     $$3.gD();
                   }
 
                   this.d = !$$2.isEmpty();
@@ -453,12 +453,12 @@ public class cmy extends bvw implements cmo {
       public void a() {
          bwf $$0 = cmy.this.O_();
          if ($$0 != null) {
-            cmy.this.d = new fbx($$0.dA(), $$0.e(0.5), $$0.dG());
+            cmy.this.d = new fbx($$0.dB(), $$0.e(0.5), $$0.dH());
             if (cmy.this.cR().g(0.2F).c($$0.cR())) {
-               cmy.this.c(a(cmy.this.dV()), $$0);
+               cmy.this.c(a(cmy.this.dW()), $$0);
                cmy.this.bZ = cmy.a.a;
                if (!cmy.this.bb()) {
-                  cmy.this.dV().c(1039, cmy.this.dv(), 0);
+                  cmy.this.dW().c(1039, cmy.this.dw(), 0);
                }
             } else if (cmy.this.P || cmy.this.aN > 0) {
                cmy.this.bZ = cmy.a.a;

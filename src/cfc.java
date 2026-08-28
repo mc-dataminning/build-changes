@@ -17,12 +17,12 @@ public class cfc<T extends bwh & bwk> extends cdd {
    }
 
    private boolean h() {
-      return this.b.ep() != null && this.b.ep().aq() == bvq.bS && this.b.eq() > this.d;
+      return this.b.eq() != null && this.b.eq().aq() == bvq.bS && this.b.er() > this.d;
    }
 
    @Override
    public void d() {
-      this.d = this.b.eq();
+      this.d = this.b.er();
       this.b.ae_();
       if (this.c) {
          this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bwk)$$0).forEach(bwk::ae_);
@@ -33,7 +33,7 @@ public class cfc<T extends bwh & bwk> extends cdd {
 
    private List<? extends bwh> i() {
       double $$0 = this.b.h(bxn.m);
-      fbs $$1 = fbs.a(this.b.dt()).c($$0, 10.0, $$0);
-      return this.b.dV().a((Class<? extends bwh>)this.b.getClass(), $$1, bvo.f);
+      fbs $$1 = fbs.a(this.b.du()).c($$0, 10.0, $$0);
+      return this.b.dW().a((Class<? extends bwh>)this.b.getClass(), $$1, bvo.f);
    }
 }

@@ -11,7 +11,7 @@ public class cao {
                   $$1 -> ($$2, $$3, $$4) -> {
                         Optional.ofNullable($$2.a($$0.b($$1)))
                            .map($$0xxx -> $$0xxx instanceof bwf $$1xx ? $$1xx : null)
-                           .filter(bwf::eE)
+                           .filter(bwf::eF)
                            .filter($$1xx -> $$1xx.aq() != bvq.bS || $$2.N().b(dhd.O))
                            .ifPresent($$1xx -> $$1.b());
                         return true;

@@ -45,7 +45,7 @@ public abstract class dro extends djx implements drp {
    protected bti a(cxo $$0, dxu $$1, dhh $$2, jh $$3, cpw $$4, bth $$5, fbt $$6) {
       if ($$2.c_($$3) instanceof dwj $$7) {
          cys $$10 = $$0.h() instanceof cys $$9 ? $$9 : null;
-         boolean $$11 = $$10 != null && $$4.gt();
+         boolean $$11 = $$10 != null && $$4.gv();
          if (!$$2.C) {
             if ($$11 && !$$7.v() && !this.a($$4, $$7)) {
                boolean $$12 = $$7.a($$4);
@@ -83,7 +83,7 @@ public abstract class dro extends djx implements drp {
             return bti.b;
          } else if ($$8) {
             return bti.b;
-         } else if (!this.a($$3, $$5) && $$3.gt() && this.b($$3, $$5, $$7)) {
+         } else if (!this.a($$3, $$5) && $$3.gv() && this.b($$3, $$5, $$7)) {
             this.a($$3, $$5, $$7);
             return bti.b;
          } else {

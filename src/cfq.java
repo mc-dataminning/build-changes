@@ -19,7 +19,7 @@ public class cfq extends cfr {
 
    @Override
    protected fbx b() {
-      return new fbx(this.a.dA(), (double)this.t(), this.a.dG());
+      return new fbx(this.a.dB(), (double)this.t(), this.a.dH());
    }
 
    @Override
@@ -64,25 +64,25 @@ public class cfq extends cfr {
 
    @Override
    public euk a(bvj $$0, int $$1) {
-      return this.a($$0.dv(), $$1);
+      return this.a($$0.dw(), $$1);
    }
 
    private int t() {
       if (this.a.bj() && this.q()) {
-         int $$0 = this.a.dB();
-         dxu $$1 = this.b.a_(jh.a(this.a.dA(), (double)$$0, this.a.dG()));
+         int $$0 = this.a.dC();
+         dxu $$1 = this.b.a_(jh.a(this.a.dB(), (double)$$0, this.a.dH()));
          int $$2 = 0;
 
          while ($$1.a(dkn.J)) {
-            $$1 = this.b.a_(jh.a(this.a.dA(), (double)(++$$0), this.a.dG()));
+            $$1 = this.b.a_(jh.a(this.a.dB(), (double)(++$$0), this.a.dH()));
             if (++$$2 > 16) {
-               return this.a.dB();
+               return this.a.dC();
             }
          }
 
          return $$0;
       } else {
-         return bae.a(this.a.dC() + 0.5);
+         return bae.a(this.a.dD() + 0.5);
       }
    }
 
@@ -90,7 +90,7 @@ public class cfq extends cfr {
    protected void W_() {
       super.W_();
       if (this.p) {
-         if (this.b.h(jh.a(this.a.dA(), this.a.dC() + 0.5, this.a.dG()))) {
+         if (this.b.h(jh.a(this.a.dB(), this.a.dD() + 0.5, this.a.dH()))) {
             return;
          }
 

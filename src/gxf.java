@@ -1,10 +1,11 @@
-public class gxf extends gxt {
-   public float a;
-   public int b;
-   public float c;
-   public float d;
-   public float e;
-   public boolean f;
-   public float g;
-   public float h;
+import javax.annotation.Nullable;
+
+public class gxf extends gxo {
+   @Nullable
+   public bvh.b.a a;
+
+   @Override
+   public boolean a() {
+      return this.a != null;
+   }
 }

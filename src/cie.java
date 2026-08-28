@@ -36,7 +36,7 @@ public class cie extends chv {
    }
 
    @Override
-   public float ei() {
+   public float ej() {
       return this.e_() ? 0.65F : 1.0F;
    }
 
@@ -114,7 +114,7 @@ public class cie extends chv {
       this.bU.a(1, new cev(this, cms.class).a());
    }
 
-   public static bxm.a gm() {
+   public static bxm.a go() {
       return bwh.C().a(bxn.s, 10.0).a(bxn.v, 1.2F).a(bxn.c, 3.0);
    }
 
@@ -124,7 +124,7 @@ public class cie extends chv {
    }
 
    @Override
-   public void gd() {
+   public void gf() {
       this.a(axf.hr, 1.0F, 1.0F);
    }
 
@@ -160,7 +160,7 @@ public class cie extends chv {
 
    @Override
    protected boolean f(bvr $$0) {
-      return $$0 == bvr.a && this.fL();
+      return $$0 == bvr.a && this.fN();
    }
 
    @Override
@@ -180,7 +180,7 @@ public class cie extends chv {
    @Override
    public void h() {
       super.h();
-      if (this.fZ()) {
+      if (this.gb()) {
          this.j(this.cs());
       } else {
          if (this.bl()) {
@@ -188,28 +188,28 @@ public class cie extends chv {
          } else {
             this.s(this.x() - 1);
             if (this.x() <= 0) {
-               this.a(this.dW().t(), 1.0F);
+               this.a(this.dX().t(), 1.0F);
             }
 
             if (this.aJ()) {
-               this.h(this.dy().b((double)((this.ae.i() * 2.0F - 1.0F) * 0.2F), 0.5, (double)((this.ae.i() * 2.0F - 1.0F) * 0.2F)));
+               this.h(this.dz().b((double)((this.ae.i() * 2.0F - 1.0F) * 0.2F), 0.5, (double)((this.ae.i() * 2.0F - 1.0F) * 0.2F)));
                this.v(this.ae.i() * 360.0F);
                this.d(false);
                this.ar = true;
             }
          }
 
-         if (this.dV().C && this.bj() && this.dy().h() > 0.03) {
+         if (this.dW().C && this.bj() && this.dz().h() > 0.03) {
             fbx $$0 = this.g(0.0F);
-            float $$1 = bae.b(this.dL() * (float) (Math.PI / 180.0)) * 0.3F;
-            float $$2 = bae.a(this.dL() * (float) (Math.PI / 180.0)) * 0.3F;
+            float $$1 = bae.b(this.dM() * (float) (Math.PI / 180.0)) * 0.3F;
+            float $$2 = bae.a(this.dM() * (float) (Math.PI / 180.0)) * 0.3F;
             float $$3 = 1.2F - this.ae.i() * 0.7F;
 
             for (int $$4 = 0; $$4 < 2; $$4++) {
-               this.dV()
-                  .a(ls.at, this.dA() - $$0.d * (double)$$3 + (double)$$1, this.dC() - $$0.e, this.dG() - $$0.f * (double)$$3 + (double)$$2, 0.0, 0.0, 0.0);
-               this.dV()
-                  .a(ls.at, this.dA() - $$0.d * (double)$$3 - (double)$$1, this.dC() - $$0.e, this.dG() - $$0.f * (double)$$3 - (double)$$2, 0.0, 0.0, 0.0);
+               this.dW()
+                  .a(ls.at, this.dB() - $$0.d * (double)$$3 + (double)$$1, this.dD() - $$0.e, this.dH() - $$0.f * (double)$$3 + (double)$$2, 0.0, 0.0, 0.0);
+               this.dW()
+                  .a(ls.at, this.dB() - $$0.d * (double)$$3 - (double)$$1, this.dD() - $$0.e, this.dH() - $$0.f * (double)$$3 - (double)$$2, 0.0, 0.0, 0.0);
             }
          }
       }
@@ -229,7 +229,7 @@ public class cie extends chv {
          double $$2 = this.ae.k() * 0.01;
          double $$3 = this.ae.k() * 0.01;
          double $$4 = this.ae.k() * 0.01;
-         this.dV().a($$0, this.d(1.0), this.dD() + 0.2, this.g(1.0), $$2, $$3, $$4);
+         this.dW().a($$0, this.d(1.0), this.dE() + 0.2, this.g(1.0), $$2, $$3, $$4);
       }
    }
 
@@ -237,7 +237,7 @@ public class cie extends chv {
    protected bti b(cpw $$0, bth $$1) {
       cxo $$2 = $$0.b($$1);
       if (!$$2.f() && $$2.a(ayd.aV)) {
-         if (!this.dV().C) {
+         if (!this.dW().C) {
             this.a(axf.ht, 1.0F, 1.0F);
          }
 
@@ -282,19 +282,19 @@ public class cie extends chv {
       return axf.hy;
    }
 
-   protected boolean gn() {
+   protected boolean gp() {
       jh $$0 = this.L().i();
-      return $$0 != null ? $$0.a(this.dt(), 12.0) : false;
+      return $$0 != null ? $$0.a(this.du(), 12.0) : false;
    }
 
    @Override
    public void a_(fbx $$0) {
       if (this.di() && this.bj()) {
-         this.a(this.fn(), $$0);
-         this.a(bwj.a, this.dy());
-         this.h(this.dy().c(0.9));
+         this.a(this.fp(), $$0);
+         this.a(bwj.a, this.dz());
+         this.h(this.dz().c(0.9));
          if (this.O_() == null) {
-            this.h(this.dy().b(0.0, -0.005, 0.0));
+            this.h(this.dz().b(0.0, -0.005, 0.0));
          }
       } else {
          super.a_($$0);
@@ -328,16 +328,16 @@ public class cie extends chv {
       @Override
       public boolean c() {
          jh $$0 = this.a.p();
-         return !jh.a((double)$$0.u(), this.a.dC(), (double)$$0.w()).a(this.a.dt(), 4.0) && !this.b && this.a.ct() >= 100;
+         return !jh.a((double)$$0.u(), this.a.dD(), (double)$$0.w()).a(this.a.du(), 4.0) && !this.b && this.a.ct() >= 100;
       }
 
       @Override
       public void d() {
-         if (this.a.dV() instanceof ash) {
-            ash $$0 = (ash)this.a.dV();
+         if (this.a.dW() instanceof ash) {
+            ash $$0 = (ash)this.a.dW();
             this.b = false;
             this.a.L().o();
-            jh $$1 = this.a.dv();
+            jh $$1 = this.a.dw();
             jh $$2 = $$0.a(ayg.b, $$1, 50, false);
             if ($$2 != null) {
                this.a.h($$2);
@@ -351,15 +351,15 @@ public class cie extends chv {
       @Override
       public void e() {
          jh $$0 = this.a.p();
-         if (jh.a((double)$$0.u(), this.a.dC(), (double)$$0.w()).a(this.a.dt(), 4.0) || this.b) {
+         if (jh.a((double)$$0.u(), this.a.dD(), (double)$$0.w()).a(this.a.du(), 4.0) || this.b) {
             this.a.x(false);
          }
       }
 
       @Override
       public void a() {
-         dhh $$0 = this.a.dV();
-         if (this.a.gn() || this.a.L().m()) {
+         dhh $$0 = this.a.dW();
+         if (this.a.gp() || this.a.L().m()) {
             fbx $$1 = fbx.b(this.a.p());
             fbx $$2 = cha.a(this.a, 16, 1, $$1, (float) (Math.PI / 8));
             if ($$2 == null) {
@@ -430,7 +430,7 @@ public class cie extends chv {
             this.a.L().a(this.c, this.b);
          }
 
-         if (this.c.ck() && this.c.dV().A.a(6) == 0) {
+         if (this.c.ck() && this.c.dW().A.a(6) == 0) {
             this.c.b(new buo(buq.D, 100), this.a);
          }
       }
@@ -444,14 +444,14 @@ public class cie extends chv {
          if (this.b > cie.this.af) {
             return false;
          } else {
-            List<cma> $$0 = cie.this.dV().a(cma.class, cie.this.cR().c(8.0, 8.0, 8.0), cie.ca);
+            List<cma> $$0 = cie.this.dW().a(cma.class, cie.this.cR().c(8.0, 8.0, 8.0), cie.ca);
             return !$$0.isEmpty() || !cie.this.a(bvr.a).f();
          }
       }
 
       @Override
       public void d() {
-         List<cma> $$0 = cie.this.dV().a(cma.class, cie.this.cR().c(8.0, 8.0, 8.0), cie.ca);
+         List<cma> $$0 = cie.this.dW().a(cma.class, cie.this.cR().c(8.0, 8.0, 8.0), cie.ca);
          if (!$$0.isEmpty()) {
             cie.this.L().a($$0.get(0), 1.2F);
             cie.this.a(axf.hw, 1.0F, 1.0F);
@@ -465,18 +465,18 @@ public class cie extends chv {
          cxo $$0 = cie.this.a(bvr.a);
          if (!$$0.f()) {
             this.a($$0);
-            cie.this.a(bvr.a, cxo.k);
+            cie.this.a(bvr.a, cxo.j);
             this.b = cie.this.af + cie.this.ae.a(100);
          }
       }
 
       @Override
       public void a() {
-         List<cma> $$0 = cie.this.dV().a(cma.class, cie.this.cR().c(8.0, 8.0, 8.0), cie.ca);
+         List<cma> $$0 = cie.this.dW().a(cma.class, cie.this.cR().c(8.0, 8.0, 8.0), cie.ca);
          cxo $$1 = cie.this.a(bvr.a);
          if (!$$1.f()) {
             this.a($$1);
-            cie.this.a(bvr.a, cxo.k);
+            cie.this.a(bvr.a, cxo.j);
          } else if (!$$0.isEmpty()) {
             cie.this.L().a($$0.get(0), 1.2F);
          }
@@ -484,19 +484,19 @@ public class cie extends chv {
 
       private void a(cxo $$0) {
          if (!$$0.f()) {
-            double $$1 = cie.this.dE() - 0.3F;
-            cma $$2 = new cma(cie.this.dV(), cie.this.dA(), $$1, cie.this.dG(), $$0);
+            double $$1 = cie.this.dF() - 0.3F;
+            cma $$2 = new cma(cie.this.dW(), cie.this.dB(), $$1, cie.this.dH(), $$0);
             $$2.b(40);
             $$2.b(cie.this);
             float $$3 = 0.3F;
             float $$4 = cie.this.ae.i() * (float) (Math.PI * 2);
             float $$5 = 0.02F * cie.this.ae.i();
             $$2.n(
-               (double)(0.3F * -bae.a(cie.this.dL() * (float) (Math.PI / 180.0)) * bae.b(cie.this.dN() * (float) (Math.PI / 180.0)) + bae.b($$4) * $$5),
-               (double)(0.3F * bae.a(cie.this.dN() * (float) (Math.PI / 180.0)) * 1.5F),
-               (double)(0.3F * bae.b(cie.this.dL() * (float) (Math.PI / 180.0)) * bae.b(cie.this.dN() * (float) (Math.PI / 180.0)) + bae.a($$4) * $$5)
+               (double)(0.3F * -bae.a(cie.this.dM() * (float) (Math.PI / 180.0)) * bae.b(cie.this.dO() * (float) (Math.PI / 180.0)) + bae.b($$4) * $$5),
+               (double)(0.3F * bae.a(cie.this.dO() * (float) (Math.PI / 180.0)) * 1.5F),
+               (double)(0.3F * bae.b(cie.this.dM() * (float) (Math.PI / 180.0)) * bae.b(cie.this.dO() * (float) (Math.PI / 180.0)) + bae.a($$4) * $$5)
             );
-            cie.this.dV().b($$2);
+            cie.this.dW().b($$2);
          }
       }
    }

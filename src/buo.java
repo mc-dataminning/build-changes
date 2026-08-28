@@ -175,7 +175,7 @@ public class buo implements Comparable<buo> {
    public boolean a(bwf $$0, Runnable $$1) {
       if (this.m()) {
          int $$2 = this.b() ? $$0.af : this.h;
-         if ($$0.dV() instanceof ash $$3 && this.g.a().a($$2, this.i) && !this.g.a().a($$3, $$0, this.i)) {
+         if ($$0.dW() instanceof ash $$3 && this.g.a().a($$2, this.i) && !this.g.a().a($$3, $$0, this.i)) {
             $$0.e(this.g);
          }
 
@@ -207,7 +207,7 @@ public class buo implements Comparable<buo> {
       this.g.a().a($$0, this.i);
    }
 
-   public void a(ash $$0, bwf $$1, bvj.c $$2) {
+   public void a(ash $$0, bwf $$1, bvj.d $$2) {
       this.g.a().a($$0, $$1, this.i, $$2);
    }
 
@@ -339,7 +339,7 @@ public class buo implements Comparable<buo> {
       }
 
       public float a(bwf $$0, float $$1) {
-         if ($$0.dQ()) {
+         if ($$0.dR()) {
             this.b = this.a;
          }
 

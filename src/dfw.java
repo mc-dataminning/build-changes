@@ -7,7 +7,7 @@ public record dfw(String e, jq<cxk> f, float g, Map<alz, String> h, xv i) {
    public static final Codec<dfw> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                azn.C.fieldOf("asset_name").forGetter(dfw::a),
-               alw.a(mb.K).fieldOf("ingredient").forGetter(dfw::b),
+               cxk.e.fieldOf("ingredient").forGetter(dfw::b),
                Codec.FLOAT.fieldOf("item_model_index").forGetter(dfw::c),
                Codec.unboundedMap(alz.a, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(dfw::d),
                xx.a.fieldOf("description").forGetter(dfw::e)

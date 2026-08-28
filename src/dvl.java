@@ -58,7 +58,7 @@ public class dvl extends duw {
          $$3.m = 20;
          if ($$3.l != null) {
             if (dmh.a($$0) && !($$3.j() > 34.0)) {
-               if ($$3.l.dQ()) {
+               if ($$3.l.dR()) {
                   $$3.l = null;
                }
 
@@ -113,8 +113,8 @@ public class dvl extends duw {
          return null;
       } else {
          coc $$4 = $$3.get();
-         $$0.a($$4, ecq.t, $$4.dt());
-         $$4.S();
+         $$0.a($$4, ecq.t, $$4.du());
+         $$0.a($$4, (byte)60);
          $$4.h($$2);
          return $$4;
       }

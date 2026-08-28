@@ -30,12 +30,12 @@ public class cmi extends cmw {
    }
 
    public static bxm.a m() {
-      return cmw.gr().a(bxn.v, 0.25);
+      return cmw.gt().a(bxn.v, 0.25);
    }
 
    @Override
    public int cE() {
-      return this.O_() == null ? this.y(0.0F) : this.y(this.eD() - 1.0F);
+      return this.O_() == null ? this.y(0.0F) : this.y(this.eE() - 1.0F);
    }
 
    @Override
@@ -82,7 +82,7 @@ public class cmi extends cmw {
       }
 
       if ($$0.q("ignited")) {
-         this.gm();
+         this.go();
       }
    }
 
@@ -107,7 +107,7 @@ public class cmi extends cmw {
 
          if (this.bZ >= this.ca) {
             this.bZ = this.ca;
-            this.gp();
+            this.gr();
          }
       }
 
@@ -135,8 +135,8 @@ public class cmi extends cmw {
    protected void a(ash $$0, btz $$1, boolean $$2) {
       super.a($$0, $$1, $$2);
       bvj $$3 = $$1.d();
-      if ($$3 != this && $$3 instanceof cmi $$4 && $$4.gn()) {
-         $$4.go();
+      if ($$3 != this && $$3 instanceof cmi $$4 && $$4.gp()) {
+         $$4.gq();
          this.a($$0, cxs.vf);
       }
    }
@@ -173,9 +173,9 @@ public class cmi extends cmw {
       cxo $$2 = $$0.b($$1);
       if ($$2.a(ayd.bx)) {
          axe $$3 = $$2.a(cxs.uM) ? axf.je : axf.jt;
-         this.dV().a($$0, this.dA(), this.dC(), this.dG(), $$3, this.dm(), 1.0F, this.ae.i() * 0.4F + 0.8F);
-         if (!this.dV().C) {
-            this.gm();
+         this.dW().a($$0, this.dB(), this.dD(), this.dH(), $$3, this.dn(), 1.0F, this.ae.i() * 0.4F + 0.8F);
+         if (!this.dW().C) {
+            this.go();
             if (!$$2.m()) {
                $$2.h(1);
             } else {
@@ -189,21 +189,21 @@ public class cmi extends cmw {
       }
    }
 
-   private void gp() {
-      if (this.dV() instanceof ash $$0) {
+   private void gr() {
+      if (this.dW() instanceof ash $$0) {
          float $$1 = this.p() ? 2.0F : 1.0F;
          this.be = true;
-         $$0.a(this, this.dA(), this.dC(), this.dG(), (float)this.cb * $$1, dhh.a.c);
-         this.gs();
-         this.a($$0, bvj.c.a);
+         $$0.a(this, this.dB(), this.dD(), this.dH(), (float)this.cb * $$1, dhh.a.c);
+         this.gu();
+         this.a($$0, bvj.d.a);
          this.at();
       }
    }
 
-   private void gs() {
-      Collection<buo> $$0 = this.eA();
+   private void gu() {
+      Collection<buo> $$0 = this.eB();
       if (!$$0.isEmpty()) {
-         bvc $$1 = new bvc(this.dV(), this.dA(), this.dC(), this.dG());
+         bvc $$1 = new bvc(this.dW(), this.dB(), this.dD(), this.dH());
          $$1.a(2.5F);
          $$1.b(-0.5F);
          $$1.c(10);
@@ -214,7 +214,7 @@ public class cmi extends cmw {
             $$1.a(new buo($$2));
          }
 
-         this.dV().b($$1);
+         this.dW().b($$1);
       }
    }
 
@@ -222,15 +222,15 @@ public class cmi extends cmw {
       return this.al.a(c);
    }
 
-   public void gm() {
+   public void go() {
       this.al.a(c, true);
    }
 
-   public boolean gn() {
+   public boolean gp() {
       return this.p() && this.cc < 1;
    }
 
-   public void go() {
+   public void gq() {
       this.cc++;
    }
 }

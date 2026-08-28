@@ -51,7 +51,7 @@ public interface bwk {
    default void a(ash $$0, boolean $$1) {
       bwf $$2 = this.O_();
       UUID $$3 = this.b();
-      if (($$2 == null || $$2.eE()) && $$3 != null && $$0.a($$3) instanceof bwh) {
+      if (($$2 == null || $$2.eF()) && $$3 != null && $$0.a($$3) instanceof bwh) {
          this.af_();
       } else {
          if ($$2 != null && !Objects.equals($$3, $$2.cG())) {
@@ -105,7 +105,7 @@ public interface bwk {
    }
 
    @Nullable
-   bwf ep();
+   bwf eq();
 
    void a(@Nullable bwf var1);
 

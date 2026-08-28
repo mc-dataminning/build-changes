@@ -154,7 +154,7 @@ public class dvi extends duw {
       List<cpw> $$9 = $$0.a(cpw.class, $$8);
       if (!$$9.isEmpty()) {
          for (cpw $$10 : $$9) {
-            if ($$1.a($$10.dv(), (double)$$4) && $$10.bk()) {
+            if ($$1.a($$10.dw(), (double)$$4) && $$10.bk()) {
                $$10.a(new buo(buq.C, 260, 0, true, true));
             }
          }
@@ -174,12 +174,12 @@ public class dvi extends duw {
          if (!$$7.isEmpty()) {
             $$4.m = $$7.get($$0.A.a($$7.size()));
          }
-      } else if (!$$4.m.bL() || !$$1.a($$4.m.dv(), 8.0)) {
+      } else if (!$$4.m.bL() || !$$1.a($$4.m.dw(), 8.0)) {
          $$4.m = null;
       }
 
       if ($$4.m != null) {
-         $$0.a(null, $$4.m.dA(), $$4.m.dC(), $$4.m.dG(), axf.fB, axg.e, 1.0F, 1.0F);
+         $$0.a(null, $$4.m.dB(), $$4.m.dD(), $$4.m.dH(), axf.fB, axg.e, 1.0F, 1.0F);
          $$4.m.a($$0.aj().q(), 4.0F);
       }
 
@@ -229,10 +229,10 @@ public class dvi extends duw {
       }
 
       if ($$3 != null) {
-         fbx $$13 = new fbx($$3.dA(), $$3.dE(), $$3.dG());
-         float $$14 = (-0.5F + $$5.i()) * (3.0F + $$3.dq());
-         float $$15 = -1.0F + $$5.i() * $$3.dr();
-         float $$16 = (-0.5F + $$5.i()) * (3.0F + $$3.dq());
+         fbx $$13 = new fbx($$3.dB(), $$3.dF(), $$3.dH());
+         float $$14 = (-0.5F + $$5.i()) * (3.0F + $$3.dr());
+         float $$15 = -1.0F + $$5.i() * $$3.ds();
+         float $$16 = (-0.5F + $$5.i()) * (3.0F + $$3.dr());
          fbx $$17 = new fbx((double)$$14, (double)$$15, (double)$$16);
          $$0.a(ls.as, $$13.d, $$13.e, $$13.f, $$17.d, $$17.e, $$17.f);
       }

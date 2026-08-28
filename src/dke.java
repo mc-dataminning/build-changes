@@ -84,11 +84,11 @@ public class dke extends doj implements dnf {
    }
 
    private boolean a(dhh $$0, jh $$1) {
-      List<cpi> $$2 = $$0.a(cpi.class, new fbs($$1), bwf::fP);
+      List<cpi> $$2 = $$0.a(cpi.class, new fbs($$1), bwf::fR);
       if ($$2.isEmpty()) {
          return false;
       } else {
-         $$2.get(0).fQ();
+         $$2.get(0).fS();
          return true;
       }
    }
@@ -108,7 +108,7 @@ public class dke extends doj implements dnf {
    }
 
    private void a(bvj $$0) {
-      fbx $$1 = $$0.dy();
+      fbx $$1 = $$0.dz();
       if ($$1.e < 0.0) {
          double $$2 = $$0 instanceof bwf ? 1.0 : 0.8;
          $$0.n($$1.d, -$$1.e * 0.66F * $$2, $$1.f);

@@ -111,7 +111,7 @@ public abstract class cfr {
 
    @Nullable
    public euk a(bvj $$0, int $$1) {
-      return this.a(ImmutableSet.of($$0.dv()), 16, true, $$1);
+      return this.a(ImmutableSet.of($$0.dw()), 16, true, $$1);
    }
 
    @Nullable
@@ -123,7 +123,7 @@ public abstract class cfr {
    protected euk a(Set<jh> $$0, int $$1, boolean $$2, int $$3, float $$4) {
       if ($$0.isEmpty()) {
          return null;
-      } else if (this.a.dC() < (double)this.b.L_()) {
+      } else if (this.a.dD() < (double)this.b.L_()) {
          return null;
       } else if (!this.a()) {
          return null;
@@ -132,7 +132,7 @@ public abstract class cfr {
       } else {
          bps $$5 = bpr.a();
          $$5.a("pathfind");
-         jh $$6 = $$2 ? this.a.dv().d() : this.a.dv();
+         jh $$6 = $$2 ? this.a.dw().d() : this.a.dw();
          int $$7 = (int)($$4 + (float)$$1);
          dhu $$8 = new dhu(this.b, $$6.b(-$$7, -$$7, -$$7), $$6.b($$7, $$7, $$7));
          euk $$9 = this.v.a($$8, this.a, $$0, $$4, $$3, this.u);
@@ -223,11 +223,11 @@ public abstract class cfr {
 
    protected void l() {
       fbx $$0 = this.b();
-      this.l = this.a.dq() > 0.75F ? this.a.dq() / 2.0F : 0.75F - this.a.dq() / 2.0F;
+      this.l = this.a.dr() > 0.75F ? this.a.dr() / 2.0F : 0.75F - this.a.dr() / 2.0F;
       kl $$1 = this.c.g();
-      double $$2 = Math.abs(this.a.dA() - ((double)$$1.u() + 0.5));
-      double $$3 = Math.abs(this.a.dC() - (double)$$1.v());
-      double $$4 = Math.abs(this.a.dG() - ((double)$$1.w() + 0.5));
+      double $$2 = Math.abs(this.a.dB() - ((double)$$1.u() + 0.5));
+      double $$3 = Math.abs(this.a.dD() - (double)$$1.v());
+      double $$4 = Math.abs(this.a.dH() - ((double)$$1.w() + 0.5));
       boolean $$5 = $$2 < (double)this.l && $$4 < (double)this.l && $$3 < 1.0;
       if ($$5 || this.b(this.c.h().l) && this.c($$0)) {
          this.c.a();
@@ -266,7 +266,7 @@ public abstract class cfr {
 
    protected void b(fbx $$0) {
       if (this.e - this.f > 100) {
-         float $$1 = this.a.fn() >= 1.0F ? this.a.fn() : this.a.fn() * this.a.fn();
+         float $$1 = this.a.fp() >= 1.0F ? this.a.fp() : this.a.fp() * this.a.fp();
          float $$2 = $$1 * 100.0F * 0.25F;
          if ($$0.g(this.g) < (double)($$2 * $$2)) {
             this.w = true;
@@ -287,7 +287,7 @@ public abstract class cfr {
          } else {
             this.h = $$3;
             double $$5 = $$0.f(fbx.c(this.h));
-            this.k = this.a.fn() > 0.0F ? $$5 / (double)this.a.fn() * 20.0 : 0.0;
+            this.k = this.a.fp() > 0.0F ? $$5 / (double)this.a.fp() * 20.0 : 0.0;
          }
 
          if (this.k > 0.0 && (double)this.i > this.k * 3.0) {
@@ -351,8 +351,8 @@ public abstract class cfr {
    }
 
    protected static boolean a(bwh $$0, fbx $$1, fbx $$2, boolean $$3) {
-      fbx $$4 = new fbx($$2.d, $$2.e + (double)$$0.dr() * 0.5, $$2.f);
-      return $$0.dV().a(new dgp($$1, $$4, dgp.a.a, $$3 ? dgp.b.c : dgp.b.a, $$0)).d() == fbv.a.a;
+      fbx $$4 = new fbx($$2.d, $$2.e + (double)$$0.ds() * 0.5, $$2.f);
+      return $$0.dW().a(new dgp($$1, $$4, dgp.a.a, $$3 ? dgp.b.c : dgp.b.a, $$0)).d() == fbv.a.a;
    }
 
    public boolean a(jh $$0) {
@@ -377,7 +377,7 @@ public abstract class cfr {
          return false;
       } else if (this.c != null && !this.c.c() && this.c.e() != 0) {
          eui $$1 = this.c.d();
-         fbx $$2 = new fbx(((double)$$1.a + this.a.dA()) / 2.0, ((double)$$1.b + this.a.dC()) / 2.0, ((double)$$1.c + this.a.dG()) / 2.0);
+         fbx $$2 = new fbx(((double)$$1.a + this.a.dB()) / 2.0, ((double)$$1.b + this.a.dD()) / 2.0, ((double)$$1.c + this.a.dH()) / 2.0);
          return $$0.a($$2, (double)(this.c.e() - this.c.f()));
       } else {
          return false;

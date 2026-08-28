@@ -1,166 +1,169 @@
-import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.io.IOException;
+import java.util.Base64;
+import java.util.Collections;
 import java.util.List;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public class gfy {
-   private static final Logger a = LogUtils.getLogger();
-   private static final bry b = new bry(ae.g(), "server-list-io");
-   private static final int c = 16;
-   private final fme d;
-   private final List<gfx> e = Lists.newArrayList();
-   private final List<gfx> f = Lists.newArrayList();
-
-   public gfy(fme $$0) {
-      this.d = $$0;
-   }
-
-   public void a() {
-      try {
-         this.e.clear();
-         this.f.clear();
-         ux $$0 = vk.a(this.d.q.toPath().resolve("servers.dat"));
-         if ($$0 == null) {
-            return;
-         }
-
-         vd $$1 = $$0.c("servers", 10);
-
-         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-            ux $$3 = $$1.a($$2);
-            gfx $$4 = gfx.a($$3);
-            if ($$3.q("hidden")) {
-               this.f.add($$4);
-            } else {
-               this.e.add($$4);
-            }
-         }
-      } catch (Exception var6) {
-         a.error("Couldn't load server list", var6);
-      }
-   }
-
-   public void b() {
-      try {
-         vd $$0 = new vd();
-
-         for (gfx $$1 : this.e) {
-            ux $$2 = $$1.a();
-            $$2.a("hidden", false);
-            $$0.add($$2);
-         }
-
-         for (gfx $$3 : this.f) {
-            ux $$4 = $$3.a();
-            $$4.a("hidden", true);
-            $$0.add($$4);
-         }
-
-         ux $$5 = new ux();
-         $$5.a("servers", $$0);
-         Path $$6 = this.d.q.toPath();
-         Path $$7 = Files.createTempFile($$6, "servers", ".dat");
-         vk.b($$5, $$7);
-         Path $$8 = $$6.resolve("servers.dat_old");
-         Path $$9 = $$6.resolve("servers.dat");
-         ae.a($$9, $$7, $$8);
-      } catch (Exception var7) {
-         a.error("Couldn't save server list", var7);
-      }
-   }
-
-   public gfx a(int $$0) {
-      return this.e.get($$0);
-   }
-
+   private static final Logger j = LogUtils.getLogger();
+   private static final int k = 1024;
+   public String a;
+   public String b;
+   public xv c;
+   public xv d;
    @Nullable
-   public gfx a(String $$0) {
-      for (gfx $$1 : this.e) {
-         if ($$1.b.equals($$0)) {
-            return $$1;
-         }
-      }
-
-      for (gfx $$2 : this.f) {
-         if ($$2.b.equals($$0)) {
-            return $$2;
-         }
-      }
-
-      return null;
-   }
-
+   public akw.b e;
+   public long f;
+   public int g = ab.b().e();
+   public xv h = xv.b(ab.b().c());
+   public List<xv> i = Collections.emptyList();
+   private gfy.a l = gfy.a.c;
    @Nullable
-   public gfx b(String $$0) {
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         gfx $$2 = this.f.get($$1);
-         if ($$2.b.equals($$0)) {
-            this.f.remove($$1);
-            this.e.add($$2);
-            return $$2;
+   private byte[] m;
+   private gfy.c n;
+   private gfy.b o = gfy.b.a;
+
+   public gfy(String $$0, String $$1, gfy.c $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.n = $$2;
+   }
+
+   public ux a() {
+      ux $$0 = new ux();
+      $$0.a("name", this.a);
+      $$0.a("ip", this.b);
+      if (this.m != null) {
+         $$0.a("icon", Base64.getEncoder().encodeToString(this.m));
+      }
+
+      if (this.l == gfy.a.a) {
+         $$0.a("acceptTextures", true);
+      } else if (this.l == gfy.a.b) {
+         $$0.a("acceptTextures", false);
+      }
+
+      return $$0;
+   }
+
+   public gfy.a b() {
+      return this.l;
+   }
+
+   public void a(gfy.a $$0) {
+      this.l = $$0;
+   }
+
+   public static gfy a(ux $$0) {
+      gfy $$1 = new gfy($$0.l("name"), $$0.l("ip"), gfy.c.c);
+      if ($$0.b("icon", 8)) {
+         try {
+            byte[] $$2 = Base64.getDecoder().decode($$0.l("icon"));
+            $$1.a(b($$2));
+         } catch (IllegalArgumentException var3) {
+            j.warn("Malformed base64 server icon", var3);
          }
       }
 
-      return null;
-   }
-
-   public void a(gfx $$0) {
-      if (!this.e.remove($$0)) {
-         this.f.remove($$0);
-      }
-   }
-
-   public void a(gfx $$0, boolean $$1) {
-      if ($$1) {
-         this.f.add(0, $$0);
-
-         while (this.f.size() > 16) {
-            this.f.remove(this.f.size() - 1);
+      if ($$0.b("acceptTextures", 99)) {
+         if ($$0.q("acceptTextures")) {
+            $$1.a(gfy.a.a);
+         } else {
+            $$1.a(gfy.a.b);
          }
       } else {
-         this.e.add($$0);
+         $$1.a(gfy.a.c);
       }
+
+      return $$1;
    }
 
-   public int c() {
-      return this.e.size();
+   @Nullable
+   public byte[] c() {
+      return this.m;
    }
 
-   public void a(int $$0, int $$1) {
-      gfx $$2 = this.a($$0);
-      this.e.set($$0, this.a($$1));
-      this.e.set($$1, $$2);
-      this.b();
+   public void a(@Nullable byte[] $$0) {
+      this.m = $$0;
    }
 
-   public void a(int $$0, gfx $$1) {
-      this.e.set($$0, $$1);
+   public boolean d() {
+      return this.n == gfy.c.a;
    }
 
-   private static boolean a(gfx $$0, List<gfx> $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         gfx $$3 = $$1.get($$2);
-         if ($$3.a.equals($$0.a) && $$3.b.equals($$0.b)) {
-            $$1.set($$2, $$0);
-            return true;
+   public boolean e() {
+      return this.n == gfy.c.b;
+   }
+
+   public gfy.c f() {
+      return this.n;
+   }
+
+   public void a(gfy $$0) {
+      this.b = $$0.b;
+      this.a = $$0.a;
+      this.m = $$0.m;
+   }
+
+   public void b(gfy $$0) {
+      this.a($$0);
+      this.a($$0.b());
+      this.n = $$0.n;
+   }
+
+   public gfy.b g() {
+      return this.o;
+   }
+
+   public void a(gfy.b $$0) {
+      this.o = $$0;
+   }
+
+   @Nullable
+   public static byte[] b(@Nullable byte[] $$0) {
+      if ($$0 != null) {
+         try {
+            baj $$1 = baj.a($$0);
+            if ($$1.a() <= 1024 && $$1.b() <= 1024) {
+               return $$0;
+            }
+         } catch (IOException var2) {
+            j.warn("Failed to decode server icon", var2);
          }
       }
 
-      return false;
+      return null;
    }
 
-   public static void b(gfx $$0) {
-      b.a_(() -> {
-         gfy $$1 = new gfy(fme.Q());
-         $$1.a();
-         if (!a($$0, $$1.e)) {
-            a($$0, $$1.f);
-         }
+   public static enum a {
+      a("enabled"),
+      b("disabled"),
+      c("prompt");
 
-         $$1.b();
-      });
+      private final xv d;
+
+      private a(final String $$0) {
+         this.d = xv.c("addServer.resourcePack." + $$0);
+      }
+
+      public xv a() {
+         return this.d;
+      }
+   }
+
+   public static enum b {
+      a,
+      b,
+      c,
+      d,
+      e;
+   }
+
+   public static enum c {
+      a,
+      b,
+      c;
    }
 }

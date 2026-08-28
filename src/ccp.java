@@ -26,7 +26,7 @@ public class ccp extends cdd {
 
    @Override
    public boolean b() {
-      if (!this.a.gw()) {
+      if (!this.a.gy()) {
          return false;
       } else {
          this.c = this.h();
@@ -36,7 +36,7 @@ public class ccp extends cdd {
 
    @Override
    public boolean c() {
-      return this.c.bL() && this.c.gw() && this.f < 60 && !this.c.gj();
+      return this.c.bL() && this.c.gy() && this.f < 60 && !this.c.gl();
    }
 
    @Override
@@ -62,7 +62,7 @@ public class ccp extends cdd {
       chw $$2 = null;
 
       for (chw $$3 : $$0) {
-         if (this.a.a($$3) && !$$3.gj() && this.a.g($$3) < $$1) {
+         if (this.a.a($$3) && !$$3.gl() && this.a.g($$3) < $$1) {
             $$2 = $$3;
             $$1 = this.a.g($$3);
          }

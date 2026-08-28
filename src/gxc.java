@@ -1,5 +1,12 @@
-public class gxc extends gyr {
-   public boolean a;
-   public final bvb b = new bvb();
-   public final bvb c = new bvb();
+public class gxc extends gys {
+   public cji.e a;
+   public float b;
+   public float c;
+   public float d;
+   public float e;
+
+   public gxc() {
+      this.a = cji.e.a;
+      this.d = 1.0F;
+   }
 }

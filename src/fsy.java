@@ -1,42 +1,179 @@
-public class fsy extends ftw {
-   private static final int a = 8;
-   private static final int b = 210;
-   private static final xv c = xv.c("credits_and_attribution.screen.title");
-   private static final xv d = xv.c("credits_and_attribution.button.credits");
-   private static final xv s = xv.c("credits_and_attribution.button.attribution");
-   private static final xv u = xv.c("credits_and_attribution.button.licenses");
-   private final ftw v;
-   private final frs w = new frs(this);
+import java.util.List;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   public fsy(ftw $$0) {
-      super(c);
-      this.v = $$0;
+public class fsy extends ftx {
+   static final alz b = alz.b("container/slot");
+   private static final int c = 18;
+   private static final int d = 20;
+   private static final int s = 1;
+   private static final int u = 1;
+   private static final int v = 2;
+   private static final int w = 2;
+   protected final fyw a;
+   private final Consumer<emm> x;
+   emm y;
+   private xv z;
+   private xv A;
+   private fsy.a B;
+   private foe C;
+
+   public fsy(fyw $$0, Consumer<emm> $$1, emm $$2) {
+      super(xv.c("createWorld.customize.flat.title"));
+      this.a = $$0;
+      this.x = $$1;
+      this.y = $$2;
+   }
+
+   public emm k() {
+      return this.y;
+   }
+
+   public void a(emm $$0) {
+      this.y = $$0;
    }
 
    @Override
    protected void aT_() {
-      this.w.a(c, this.p);
-      frw $$0 = this.w.c(frw.d()).a(8);
-      $$0.c().b();
-      $$0.a(fod.a(d, $$0x -> this.l()).a(210).a());
-      $$0.a(fod.a(s, fst.b(this, aza.d)).a(210).a());
-      $$0.a(fod.a(u, fst.b(this, aza.e)).a(210).a());
-      this.w.b(fod.a(xu.d, $$0x -> this.aP_()).a(200).a());
-      this.w.a();
-      this.w.a(this::c);
+      this.z = xv.c("createWorld.customize.flat.tile");
+      this.A = xv.c("createWorld.customize.flat.height");
+      this.B = this.c(new fsy.a());
+      this.C = this.c(foe.a(xv.c("createWorld.customize.flat.removeLayer"), $$0 -> {
+         if (this.E()) {
+            List<emj> $$1 = this.y.e();
+            int $$2 = this.B.aI_().indexOf(this.B.g());
+            int $$3 = $$1.size() - $$2 - 1;
+            $$1.remove($$3);
+            this.B.a($$1.isEmpty() ? null : this.B.aI_().get(Math.min($$2, $$1.size() - 1)));
+            this.y.g();
+            this.B.b();
+            this.l();
+         }
+      }).a(this.n / 2 - 155, this.o - 52, 150, 20).a());
+      this.c(foe.a(xv.c("createWorld.customize.presets"), $$0 -> {
+         this.m.a(new ftt(this));
+         this.y.g();
+         this.l();
+      }).a(this.n / 2 + 5, this.o - 52, 150, 20).a());
+      this.c(foe.a(xu.d, $$0 -> {
+         this.x.accept(this.y);
+         this.m.a(this.a);
+         this.y.g();
+      }).a(this.n / 2 - 155, this.o - 28, 150, 20).a());
+      this.c(foe.a(xu.e, $$0 -> {
+         this.m.a(this.a);
+         this.y.g();
+      }).a(this.n / 2 + 5, this.o - 28, 150, 20).a());
+      this.y.g();
+      this.l();
    }
 
-   @Override
-   protected void c() {
-      this.w.a();
+   void l() {
+      this.C.j = this.E();
    }
 
-   private void l() {
-      this.m.a(new ftz(false, () -> this.m.a(this)));
+   private boolean E() {
+      return this.B.g() != null;
    }
 
    @Override
    public void aP_() {
-      this.m.a(this.v);
+      this.m.a(this.a);
+   }
+
+   @Override
+   public void a(fnr $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 8, 16777215);
+      int $$4 = this.n / 2 - 92 - 16;
+      $$0.b(this.p, this.z, $$4, 32, 16777215);
+      $$0.b(this.p, this.A, $$4 + 2 + 213 - this.p.a(this.A), 32, 16777215);
+   }
+
+   class a extends fpb<fsy.a.a> {
+      public a() {
+         super(fsy.this.m, fsy.this.n, fsy.this.o - 103, 43, 24);
+
+         for (int $$0 = 0; $$0 < fsy.this.y.e().size(); $$0++) {
+            this.b(new fsy.a.a());
+         }
+      }
+
+      public void a(@Nullable fsy.a.a $$0) {
+         super.a($$0);
+         fsy.this.l();
+      }
+
+      public void b() {
+         int $$0 = this.aI_().indexOf(this.g());
+         this.j();
+
+         for (int $$1 = 0; $$1 < fsy.this.y.e().size(); $$1++) {
+            this.b(new fsy.a.a());
+         }
+
+         List<fsy.a.a> $$2 = this.aI_();
+         if ($$0 >= 0 && $$0 < $$2.size()) {
+            this.a($$2.get($$0));
+         }
+      }
+
+      class a extends fpb.a<fsy.a.a> {
+         @Override
+         public void a(fnr $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            emj $$10 = fsy.this.y.e().get(fsy.this.y.e().size() - $$1 - 1);
+            dxu $$11 = $$10.b();
+            cxo $$12 = this.a($$11);
+            this.a($$0, $$3, $$2, $$12);
+            $$0.a(fsy.this.p, $$12.y(), $$3 + 18 + 5, $$2 + 3, 16777215, false);
+            xv $$13;
+            if ($$1 == 0) {
+               $$13 = xv.a("createWorld.customize.flat.layer.top", $$10.a());
+            } else if ($$1 == fsy.this.y.e().size() - 1) {
+               $$13 = xv.a("createWorld.customize.flat.layer.bottom", $$10.a());
+            } else {
+               $$13 = xv.a("createWorld.customize.flat.layer", $$10.a());
+            }
+
+            $$0.a(fsy.this.p, $$13, $$3 + 2 + 213 - fsy.this.p.a($$13), $$2 + 3, 16777215, false);
+         }
+
+         private cxo a(dxu $$0) {
+            cxk $$1 = $$0.b().j();
+            if ($$1 == cxs.a) {
+               if ($$0.a(dkn.J)) {
+                  $$1 = cxs.qX;
+               } else if ($$0.a(dkn.K)) {
+                  $$1 = cxs.qY;
+               }
+            }
+
+            return new cxo($$1);
+         }
+
+         @Override
+         public xv a() {
+            emj $$0 = fsy.this.y.e().get(fsy.this.y.e().size() - a.this.aI_().indexOf(this) - 1);
+            cxo $$1 = this.a($$0.b());
+            return (xv)(!$$1.f() ? xv.a("narrator.select", $$1.y()) : xu.a);
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(this);
+            return super.a($$0, $$1, $$2);
+         }
+
+         private void a(fnr $$0, int $$1, int $$2, cxo $$3) {
+            this.a($$0, $$1 + 1, $$2 + 1);
+            if (!$$3.f()) {
+               $$0.b($$3, $$1 + 2, $$2 + 2);
+            }
+         }
+
+         private void a(fnr $$0, int $$1, int $$2) {
+            $$0.a(glu::C, fsy.b, $$1, $$2, 18, 18);
+         }
+      }
    }
 }

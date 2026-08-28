@@ -12,7 +12,7 @@ public class aov {
       $$0.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("op").requires($$0x -> $$0x.c(3))).then(ex.a("targets", fl.a()).suggests(($$0x, $$1) -> {
             awi $$2 = ((ew)$$0x.getSource()).l().ag();
-            return fb.b($$2.t().stream().filter($$1x -> !$$2.f($$1x.gf())).map($$0xx -> $$0xx.gf().getName()), $$1);
+            return fb.b($$2.t().stream().filter($$1x -> !$$2.f($$1x.gh())).map($$0xx -> $$0xx.gh().getName()), $$1);
          }).executes($$0x -> a((ew)$$0x.getSource(), fl.a($$0x, "targets"))))
       );
    }

@@ -23,7 +23,7 @@ public class cdn extends cdd {
 
    @Override
    public boolean b() {
-      long $$0 = this.a.dV().ac();
+      long $$0 = this.a.dW().ac();
       if ($$0 - this.k < 20L) {
          return false;
       } else {
@@ -50,7 +50,7 @@ public class cdn extends cdd {
       } else if (!this.c) {
          return !this.a.L().m();
       } else {
-         return !this.a.a($$0.dv()) ? false : !($$0 instanceof cpw) || !$$0.aa_() && !((cpw)$$0).b();
+         return !this.a.a($$0.dw()) ? false : !($$0 instanceof cpw) || !$$0.aa_() && !((cpw)$$0).b();
       }
    }
 
@@ -86,11 +86,11 @@ public class cdn extends cdd {
          this.h = Math.max(this.h - 1, 0);
          if ((this.c || this.a.N().a($$0))
             && this.h <= 0
-            && (this.e == 0.0 && this.f == 0.0 && this.g == 0.0 || $$0.i(this.e, this.f, this.g) >= 1.0 || this.a.dY().i() < 0.05F)) {
-            this.e = $$0.dA();
-            this.f = $$0.dC();
-            this.g = $$0.dG();
-            this.h = 4 + this.a.dY().a(7);
+            && (this.e == 0.0 && this.f == 0.0 && this.g == 0.0 || $$0.i(this.e, this.f, this.g) >= 1.0 || this.a.dZ().i() < 0.05F)) {
+            this.e = $$0.dB();
+            this.f = $$0.dD();
+            this.g = $$0.dH();
+            this.h = 4 + this.a.dZ().a(7);
             double $$1 = this.a.g((bvj)$$0);
             if ($$1 > 1024.0) {
                this.h += 10;

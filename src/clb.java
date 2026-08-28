@@ -24,7 +24,7 @@ public class clb extends ckv {
 
    @Override
    public void a(ash $$0) {
-      double $$1 = this.d == null ? 0.0 : this.d.c(this.a.dA(), this.a.dC(), this.a.dG());
+      double $$1 = this.d == null ? 0.0 : this.d.c(this.a.dB(), this.a.dD(), this.a.dH());
       if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
          this.b($$0);
       }
@@ -43,7 +43,7 @@ public class clb extends ckv {
          cpw $$3 = $$0.a(b, this.a, (double)$$2.u(), (double)$$2.v(), (double)$$2.w());
          int $$5;
          if ($$3 != null) {
-            fbx $$4 = new fbx($$3.dA(), 0.0, $$3.dG()).d();
+            fbx $$4 = new fbx($$3.dB(), 0.0, $$3.dH()).d();
             $$5 = this.a.q(-$$4.d * 40.0, 105.0, -$$4.f * 40.0);
          } else {
             $$5 = this.a.q(40.0, (double)$$2.v(), 0.0);
@@ -58,7 +58,7 @@ public class clb extends ckv {
 
       this.i();
       if (this.c != null && this.c.c()) {
-         this.a.gi().a(clj.d);
+         this.a.gk().a(clj.d);
       }
    }
 
@@ -71,7 +71,7 @@ public class clb extends ckv {
 
          double $$3;
          do {
-            $$3 = (double)((float)$$0.v() + this.a.dY().i() * 20.0F);
+            $$3 = (double)((float)$$0.v() + this.a.dZ().i() * 20.0F);
          } while ($$3 < (double)$$0.v());
 
          this.d = new fbx($$1, $$3, $$2);

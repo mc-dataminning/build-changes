@@ -11,19 +11,19 @@ public class byq extends bxy<cpi> {
    }
 
    protected boolean a(ash $$0, cpi $$1) {
-      return $$1.eb().g().map($$0x -> $$0x == crn.b || $$0x == crn.c || $$0x == crn.d).orElse(true);
+      return $$1.ec().g().map($$0x -> $$0x == crn.b || $$0x == crn.c || $$0x == crn.d).orElse(true);
    }
 
    protected boolean a(ash $$0, cpi $$1, long $$2) {
-      return $$1.eb().a(cfj.d);
+      return $$1.ec().a(cfj.d);
    }
 
    protected void b(ash $$0, cpi $$1, long $$2) {
-      bya.a($$1, $$1.eb().c(cfj.d).get().b(), this.c, 1);
+      bya.a($$1, $$1.ec().c(cfj.d).get().b(), this.c, 1);
    }
 
    protected void c(ash $$0, cpi $$1, long $$2) {
-      Optional<jp> $$3 = $$1.eb().c(cfj.d);
+      Optional<jp> $$3 = $$1.ec().c(cfj.d);
       $$3.ifPresent($$1x -> {
          jh $$2x = $$1x.b();
          ash $$3x = $$0.p().a($$1x.a());
@@ -36,6 +36,6 @@ public class byq extends bxy<cpi> {
             ahj.c($$0, $$2x);
          }
       });
-      $$1.eb().b(cfj.d);
+      $$1.ec().b(cfj.d);
    }
 }

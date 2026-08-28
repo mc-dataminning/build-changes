@@ -120,7 +120,7 @@ public class dwo extends duw {
    }
 
    public boolean a(cpw $$0) {
-      if (!$$0.gE()) {
+      if (!$$0.gG()) {
          return false;
       } else {
          if ($$0.cU().C) {

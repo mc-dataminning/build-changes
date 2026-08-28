@@ -1,26 +1,20 @@
-public class gke extends gkd {
-   private final fmi d;
+public class gke {
+   public cpu a = cpu.b;
+   public float b;
+   public float c;
 
-   public gke(fmi $$0) {
-      this.d = $$0;
-   }
-
-   private static float a(boolean $$0, boolean $$1) {
-      if ($$0 == $$1) {
-         return 0.0F;
-      } else {
-         return $$0 ? 1.0F : -1.0F;
-      }
-   }
-
-   @Override
    public void a(boolean $$0, float $$1) {
-      this.a = new cpu(this.d.v.e(), this.d.x.e(), this.d.w.e(), this.d.y.e(), this.d.z.e(), this.d.A.e(), this.d.B.e());
-      this.c = a(this.a.a(), this.a.b());
-      this.b = a(this.a.c(), this.a.d());
-      if ($$0) {
-         this.b *= $$1;
-         this.c *= $$1;
-      }
+   }
+
+   public fbw a() {
+      return new fbw(this.b, this.c);
+   }
+
+   public boolean b() {
+      return this.c > 1.0E-5F;
+   }
+
+   public void c() {
+      this.a = new cpu(this.a.a(), this.a.b(), this.a.c(), this.a.d(), true, this.a.f(), this.a.g());
    }
 }

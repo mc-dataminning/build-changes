@@ -67,7 +67,7 @@ public class dky extends dkl {
          return bti.e;
       } else {
          $$3.a(axp.U);
-         $$3.gr().a(2, 0.1F);
+         $$3.gt().a(2, 0.1F);
          int $$4 = $$2.c(c);
          $$0.a($$3, ecq.m, $$1);
          if ($$4 < 6) {

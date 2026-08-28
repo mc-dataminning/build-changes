@@ -1,9 +1,17 @@
-public class hcg extends hcn {
-   public hcg(hbk $$0) {
-      super($$0, alz.b("textures/atlas/map_decorations.png"), alz.b("map_decorations"));
-   }
+import java.io.IOException;
+import java.io.InputStream;
 
-   public hbj a(evk $$0) {
-      return this.a($$0.a());
+public class hcg {
+   @Deprecated
+   public static int[] a(avv $$0, alz $$1) throws IOException {
+      int[] var4;
+      try (
+         InputStream $$2 = $$0.open($$1);
+         ffr $$3 = ffr.a($$2);
+      ) {
+         var4 = $$3.f();
+      }
+
+      return var4;
    }
 }

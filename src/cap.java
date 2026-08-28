@@ -13,7 +13,7 @@ public class cap {
       return cbl.a(
          (Function<cbl.b<bwn>, ? extends App<cbl.c<bwn>, cbo<bwn>>>)($$4 -> $$4.group($$4.a(cfj.m), $$4.b($$0)).apply($$4, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
                   jp $$9 = $$4.b($$5);
-                  if ($$6.ah() != $$9.a() || !$$9.b().a($$7.dt(), (double)$$2)) {
+                  if ($$6.ah() != $$9.a() || !$$9.b().a($$7.du(), (double)$$2)) {
                      return false;
                   } else if ($$8 <= $$3.getValue()) {
                      return true;

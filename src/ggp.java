@@ -1,47 +1,67 @@
-import java.util.List;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
 import java.util.Locale;
+import javax.annotation.Nullable;
 
-public enum ggp {
-   a("i_want_to_report_them"),
-   b("hate_speech"),
-   c("harassment_or_bullying"),
-   d("self_harm_or_suicide"),
-   e("imminent_harm"),
-   f("defamation_impersonation_false_information"),
-   g("alcohol_tobacco_drugs"),
-   h("child_sexual_exploitation_or_abuse"),
-   i("terrorism_or_violent_extremism"),
-   j("non_consensual_intimate_imagery"),
-   k("sexually_inappropriate");
-
-   private final String l;
-   private final xv m;
-   private final xv n;
-
-   private ggp(final String $$0) {
-      this.l = $$0.toUpperCase(Locale.ROOT);
-      String $$1 = "gui.abuseReport.reason." + $$0;
-      this.m = xv.c($$1);
-      this.n = xv.c($$1 + ".description");
+public record ggp(String a, @Nullable ggp.a b) {
+   public static ggp a() {
+      return a(null);
    }
 
-   public String a() {
-      return this.l;
+   public static ggp a(String $$0) {
+      return a(new ggp.a.b($$0));
    }
 
-   public xv b() {
-      return this.m;
+   public static ggp a(fii $$0) {
+      return a(new ggp.a.a($$0));
    }
 
-   public xv c() {
-      return this.n;
+   public static ggp a(@Nullable ggp.a $$0) {
+      return new ggp(g(), $$0);
    }
 
-   public static List<ggp> a(ggq $$0) {
-      return switch ($$0) {
-         case a -> List.of(k);
-         case b -> List.of(e, f);
-         default -> List.of();
-      };
+   public ClientInfo b() {
+      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
+   }
+
+   @Nullable
+   public ThirdPartyServerInfo c() {
+      return this.b instanceof ggp.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
+   }
+
+   @Nullable
+   public RealmInfo d() {
+      return this.b instanceof ggp.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
+   }
+
+   private static String g() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append("1.21.2-pre2");
+      if (fmf.e().a()) {
+         $$0.append(" (modded)");
+      }
+
+      return $$0.toString();
+   }
+
+   public String e() {
+      return this.a;
+   }
+
+   @Nullable
+   public ggp.a f() {
+      return this.b;
+   }
+
+   public interface a {
+      public static record a(long a, int b) implements ggp.a {
+         public a(fii $$0) {
+            this($$0.a, $$0.p);
+         }
+      }
+
+      public static record b(String a) implements ggp.a {
+      }
    }
 }

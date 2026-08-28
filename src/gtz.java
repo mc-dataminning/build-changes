@@ -1,39 +1,17 @@
-public class gtz extends gsu<cnj, gzs, gdo> {
-   private static final alz a = alz.b("textures/entity/strider/strider.png");
-   private static final alz b = alz.b("textures/entity/strider/strider_cold.png");
-   private static final float k = 0.5F;
+public class gtz extends gqh<cni, gzp> {
+   private static final alz a = alz.b("textures/entity/skeleton/stray.png");
+   private static final alz b = alz.b("textures/entity/skeleton/stray_overlay.png");
 
-   public gtz(gro.a $$0) {
-      super($$0, new gdo($$0.a(gel.da)), 0.5F);
-      this.a(new gwe<>(this, new gdo($$0.a(gel.db)), alz.b("textures/entity/strider/strider_saddle.png")));
+   public gtz(grp.a $$0) {
+      super($$0, gem.cW, gem.cX, gem.cY);
+      this.a(new gwh<>(this, $$0.f(), gem.cZ, b));
    }
 
-   public alz a(gzs $$0) {
-      return $$0.b ? b : a;
+   public alz b(gzp $$0) {
+      return a;
    }
 
-   protected float b(gzs $$0) {
-      float $$1 = super.g($$0);
-      return $$0.ae ? $$1 * 0.5F : $$1;
-   }
-
-   public gzs b() {
-      return new gzs();
-   }
-
-   public void a(cnj $$0, gzs $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.j();
-      $$1.b = $$0.p();
-      $$1.c = $$0.ca();
-   }
-
-   protected void a(gzs $$0, fgq $$1) {
-      float $$2 = $$0.ab;
-      $$1.b($$2, $$2, $$2);
-   }
-
-   protected boolean c(gzs $$0) {
-      return super.a($$0) || $$0.b;
+   public gzp b() {
+      return new gzp();
    }
 }

@@ -65,11 +65,11 @@ public class dda implements dcy {
                   dbz.d.optionalFieldOf("template").forGetter($$0x -> $$0x.c),
                   dbz.d.optionalFieldOf("base").forGetter($$0x -> $$0x.d),
                   dbz.d.optionalFieldOf("addition").forGetter($$0x -> $$0x.e),
-                  cxo.d.fieldOf("result").forGetter($$0x -> $$0x.f)
+                  cxo.c.fieldOf("result").forGetter($$0x -> $$0x.f)
                )
                .apply($$0, dda::new)
       );
-      public static final zt<xg, dda> w = zt.a(dbz.b, $$0 -> $$0.c, dbz.b, $$0 -> $$0.d, dbz.b, $$0 -> $$0.e, cxo.i, $$0 -> $$0.f, dda::new);
+      public static final zt<xg, dda> w = zt.a(dbz.b, $$0 -> $$0.c, dbz.b, $$0 -> $$0.d, dbz.b, $$0 -> $$0.e, cxo.h, $$0 -> $$0.f, dda::new);
 
       @Override
       public MapCodec<dda> a() {

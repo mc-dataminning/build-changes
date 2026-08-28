@@ -22,13 +22,13 @@ public class byz extends bxy<bwh> {
 
    protected void c(ash $$0, bwh $$1, long $$2) {
       if ($$1.aJ()) {
-         $$1.h($$1.dy().d(0.1F, 1.0, 0.1F));
+         $$1.h($$1.dz().d(0.1F, 1.0, 0.1F));
          $$0.a(null, $$1, this.e, axg.g, 2.0F, 1.0F);
       }
 
       $$1.r(false);
       $$1.b(bwr.a);
-      $$1.eb().b(cfj.T);
-      $$1.eb().a(cfj.S, this.d.a($$0.A));
+      $$1.ec().b(cfj.T);
+      $$1.ec().a(cfj.S, this.d.a($$0.A));
    }
 }

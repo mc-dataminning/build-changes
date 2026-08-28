@@ -62,7 +62,7 @@ public class cpi extends cpd implements bwu, cpk {
       cfj.b,
       (BiPredicate<cpi, jq>)($$0, $$1) -> $$1.a(chn.n),
       cfj.c,
-      (BiPredicate<cpi, jq>)($$0, $$1) -> $$0.gw().b().b().test($$1),
+      (BiPredicate<cpi, jq>)($$0, $$1) -> $$0.gy().b().b().test($$1),
       cfj.d,
       (BiPredicate<cpi, jq>)($$0, $$1) -> cpl.a.test($$1),
       cfj.e,
@@ -79,35 +79,35 @@ public class cpi extends cpd implements bwu, cpk {
       this.L().a(true);
       this.L().a(48.0F);
       this.a_(true);
-      this.a(this.gw().a($$2).a(cpl.b));
+      this.a(this.gy().a($$2).a(cpl.b));
    }
 
    @Override
-   public bxh<cpi> eb() {
-      return (bxh<cpi>)super.eb();
+   public bxh<cpi> ec() {
+      return (bxh<cpi>)super.ec();
    }
 
    @Override
-   protected bxh.b<cpi> ec() {
+   protected bxh.b<cpi> ed() {
       return bxh.a(cD, cE);
    }
 
    @Override
    protected bxh<?> a(Dynamic<?> $$0) {
-      bxh<cpi> $$1 = this.ec().a($$0);
+      bxh<cpi> $$1 = this.ed().a($$0);
       this.a($$1);
       return $$1;
    }
 
    public void g(ash $$0) {
-      bxh<cpi> $$1 = this.eb();
+      bxh<cpi> $$1 = this.ec();
       $$1.b($$0, this);
       this.bF = $$1.i();
-      this.a(this.eb());
+      this.a(this.ec());
    }
 
    private void a(bxh<cpi> $$0) {
-      cpl $$1 = this.gw().b();
+      cpl $$1 = this.gy().b();
       if (this.e_()) {
          $$0.a(crp.e);
          $$0.a(crn.d, cbe.a(0.5F));
@@ -127,22 +127,22 @@ public class cpi extends cpd implements bwu, cpk {
       $$0.a(ImmutableSet.of(crn.a));
       $$0.b(crn.b);
       $$0.a(crn.b);
-      $$0.a(this.dV().ad(), this.dV().ac());
+      $$0.a(this.dW().ad(), this.dW().ac());
    }
 
    @Override
    protected void i() {
       super.i();
-      if (this.dV() instanceof ash) {
-         this.g((ash)this.dV());
+      if (this.dW() instanceof ash) {
+         this.g((ash)this.dW());
       }
    }
 
-   public static bxm.a gv() {
+   public static bxm.a gx() {
       return bwh.C().a(bxn.v, 0.5);
    }
 
-   public boolean gx() {
+   public boolean gz() {
       return this.cC;
    }
 
@@ -150,17 +150,17 @@ public class cpi extends cpd implements bwu, cpk {
    protected void a(ash $$0) {
       bps $$1 = bpr.a();
       $$1.a("villagerBrain");
-      this.eb().a($$0, this);
+      this.ec().a($$0, this);
       $$1.c();
       if (this.cC) {
          this.cC = false;
       }
 
-      if (!this.gn() && this.co > 0) {
+      if (!this.gp() && this.co > 0) {
          this.co--;
          if (this.co <= 0) {
             if (this.cp) {
-               this.gS();
+               this.gU();
                this.cp = false;
             }
 
@@ -174,15 +174,15 @@ public class cpi extends cpd implements bwu, cpk {
          this.cq = null;
       }
 
-      if (!this.fZ() && this.ae.a(100) == 0) {
-         crj $$2 = $$0.d(this.dv());
+      if (!this.gb() && this.ae.a(100) == 0) {
+         crj $$2 = $$0.d(this.dw());
          if ($$2 != null && $$2.u() && !$$2.a()) {
             $$0.a(this, (byte)42);
          }
       }
 
-      if (this.gw().b() == cpl.b && this.gn()) {
-         this.gs();
+      if (this.gy().b() == cpl.b && this.gp()) {
+         this.gu();
       }
 
       super.a($$0);
@@ -195,23 +195,23 @@ public class cpi extends cpd implements bwu, cpk {
          this.r(this.p() - 1);
       }
 
-      this.gU();
+      this.gW();
    }
 
    @Override
    public bti b(cpw $$0, bth $$1) {
       cxo $$2 = $$0.b($$1);
-      if ($$2.a(cxs.ux) || !this.bL() || this.gn() || this.fP()) {
+      if ($$2.a(cxs.ux) || !this.bL() || this.gp() || this.fR()) {
          return super.b($$0, $$1);
       } else if (this.e_()) {
-         this.gH();
+         this.gJ();
          return bti.a;
       } else {
-         if (!this.dV().C) {
-            boolean $$3 = this.go().isEmpty();
+         if (!this.dW().C) {
+            boolean $$3 = this.gq().isEmpty();
             if ($$1 == bth.a) {
                if ($$3) {
-                  this.gH();
+                  this.gJ();
                }
 
                $$0.a(axp.S);
@@ -228,9 +228,9 @@ public class cpi extends cpd implements bwu, cpk {
       }
    }
 
-   private void gH() {
+   private void gJ() {
       this.r(40);
-      if (!this.dV().B_()) {
+      if (!this.dW().B_()) {
          this.b(axf.Bv);
       }
    }
@@ -238,59 +238,59 @@ public class cpi extends cpd implements bwu, cpk {
    private void g(cpw $$0) {
       this.h($$0);
       this.a($$0);
-      this.a($$0, this.p_(), this.gw().c());
+      this.a($$0, this.p_(), this.gy().c());
    }
 
    @Override
    public void a(@Nullable cpw $$0) {
-      boolean $$1 = this.gm() != null && $$0 == null;
+      boolean $$1 = this.go() != null && $$0 == null;
       super.a($$0);
       if ($$1) {
-         this.gs();
+         this.gu();
       }
    }
 
    @Override
-   protected void gs() {
-      super.gs();
-      this.gI();
+   protected void gu() {
+      super.gu();
+      this.gK();
    }
 
-   private void gI() {
-      if (!this.dV().B_()) {
-         for (dge $$0 : this.go()) {
+   private void gK() {
+      if (!this.dW().B_()) {
+         for (dge $$0 : this.gq()) {
             $$0.n();
          }
       }
    }
 
    @Override
-   public boolean gy() {
+   public boolean gA() {
       return true;
    }
 
-   public void gz() {
-      this.gN();
+   public void gB() {
+      this.gP();
 
-      for (dge $$0 : this.go()) {
+      for (dge $$0 : this.gq()) {
          $$0.j();
       }
 
-      this.gJ();
-      this.cx = this.dV().ac();
+      this.gL();
+      this.cx = this.dW().ac();
       this.cy++;
    }
 
-   private void gJ() {
-      dgf $$0 = this.go();
-      cpw $$1 = this.gm();
+   private void gL() {
+      dgf $$0 = this.gq();
+      cpw $$1 = this.go();
       if ($$1 != null && !$$0.isEmpty()) {
-         $$1.a($$1.cd.l, $$0, this.gw().c(), this.x(), this.gp(), this.gy());
+         $$1.a($$1.cd.l, $$0, this.gy().c(), this.x(), this.gr(), this.gA());
       }
    }
 
-   private boolean gK() {
-      for (dge $$0 : this.go()) {
+   private boolean gM() {
+      for (dge $$0 : this.gq()) {
          if ($$0.t()) {
             return true;
          }
@@ -299,15 +299,15 @@ public class cpi extends cpd implements bwu, cpk {
       return false;
    }
 
-   private boolean gL() {
-      return this.cy == 0 || this.cy < 2 && this.dV().ac() > this.cx + 2400L;
+   private boolean gN() {
+      return this.cy == 0 || this.cy < 2 && this.dW().ac() > this.cx + 2400L;
    }
 
-   public boolean gA() {
+   public boolean gC() {
       long $$0 = this.cx + 12000L;
-      long $$1 = this.dV().ac();
+      long $$1 = this.dW().ac();
       boolean $$2 = $$1 > $$0;
-      long $$3 = this.dV().ad();
+      long $$3 = this.dW().ad();
       if (this.cz > 0L) {
          long $$4 = this.cz / 24000L;
          long $$5 = $$3 / 24000L;
@@ -317,29 +317,29 @@ public class cpi extends cpd implements bwu, cpk {
       this.cz = $$3;
       if ($$2) {
          this.cx = $$1;
-         this.gV();
+         this.gX();
       }
 
-      return this.gL() && this.gK();
+      return this.gN() && this.gM();
    }
 
-   private void gM() {
+   private void gO() {
       int $$0 = 2 - this.cy;
       if ($$0 > 0) {
-         for (dge $$1 : this.go()) {
+         for (dge $$1 : this.gq()) {
             $$1.j();
          }
       }
 
       for (int $$2 = 0; $$2 < $$0; $$2++) {
-         this.gN();
+         this.gP();
       }
 
-      this.gJ();
+      this.gL();
    }
 
-   private void gN() {
-      for (dge $$0 : this.go()) {
+   private void gP() {
+      for (dge $$0 : this.gq()) {
          $$0.g();
       }
    }
@@ -347,7 +347,7 @@ public class cpi extends cpd implements bwu, cpk {
    private void h(cpw $$0) {
       int $$1 = this.f($$0);
       if ($$1 != 0) {
-         for (dge $$2 : this.go()) {
+         for (dge $$2 : this.gq()) {
             $$2.a(-bae.d((float)$$1 * $$2.p()));
          }
       }
@@ -356,7 +356,7 @@ public class cpi extends cpd implements bwu, cpk {
          buo $$3 = $$0.c(buq.F);
          int $$4 = $$3.e();
 
-         for (dge $$5 : this.go()) {
+         for (dge $$5 : this.gq()) {
             double $$6 = 0.3 + 0.0625 * (double)$$4;
             int $$7 = (int)Math.floor($$6 * (double)$$5.a().L());
             $$5.a(-Math.max($$7, 1));
@@ -373,7 +373,7 @@ public class cpi extends cpd implements bwu, cpk {
    @Override
    public void b(ux $$0) {
       super.b($$0);
-      cpj.c.encodeStart(vl.a, this.gw()).resultOrPartial(cf::error).ifPresent($$1 -> $$0.a("VillagerData", $$1));
+      cpj.c.encodeStart(vl.a, this.gy()).resultOrPartial(cf::error).ifPresent($$1 -> $$0.a("VillagerData", $$1));
       $$0.a("FoodLevel", (byte)this.cs);
       $$0.a("Gossips", this.ct.a(vl.a));
       $$0.a("Xp", this.cw);
@@ -404,8 +404,8 @@ public class cpi extends cpd implements bwu, cpk {
 
       this.cx = $$0.i("LastRestock");
       this.cv = $$0.i("LastGossipDecay");
-      if (this.dV() instanceof ash) {
-         this.g((ash)this.dV());
+      if (this.dW() instanceof ash) {
+         this.g((ash)this.dW());
       }
 
       this.cy = $$0.h("RestocksToday");
@@ -422,10 +422,10 @@ public class cpi extends cpd implements bwu, cpk {
    @Nullable
    @Override
    protected axe u() {
-      if (this.fP()) {
+      if (this.fR()) {
          return null;
       } else {
-         return this.gn() ? axf.Bw : axf.Br;
+         return this.gp() ? axf.Bw : axf.Br;
       }
    }
 
@@ -439,13 +439,13 @@ public class cpi extends cpd implements bwu, cpk {
       return axf.Bt;
    }
 
-   public void gB() {
-      this.b(this.gw().b().f());
+   public void gD() {
+      this.b(this.gy().b().f());
    }
 
    @Override
    public void a(cpj $$0) {
-      cpj $$1 = this.gw();
+      cpj $$1 = this.gy();
       if ($$1.b() != $$0.b()) {
          this.ca = null;
       }
@@ -454,7 +454,7 @@ public class cpi extends cpd implements bwu, cpk {
    }
 
    @Override
-   public cpj gw() {
+   public cpj gy() {
       return this.al.a(cg);
    }
 
@@ -462,24 +462,24 @@ public class cpi extends cpd implements bwu, cpk {
    protected void b(dge $$0) {
       int $$1 = 3 + this.ae.a(4);
       this.cw = this.cw + $$0.q();
-      this.cq = this.gm();
-      if (this.gR()) {
+      this.cq = this.go();
+      if (this.gT()) {
          this.co = 40;
          this.cp = true;
          $$1 += 5;
       }
 
       if ($$0.u()) {
-         this.dV().b(new bvv(this.dV(), this.dA(), this.dC() + 0.5, this.dG(), $$1));
+         this.dW().b(new bvv(this.dW(), this.dB(), this.dD() + 0.5, this.dH(), $$1));
       }
    }
 
    @Override
    public void a(@Nullable bwf $$0) {
-      if ($$0 != null && this.dV() instanceof ash) {
-         ((ash)this.dV()).a(chg.c, $$0, this);
+      if ($$0 != null && this.dW() instanceof ash) {
+         ((ash)this.dW()).a(chg.c, $$0, this);
          if (this.bL() && $$0 instanceof cpw) {
-            this.dV().a(this, (byte)13);
+            this.dW().a(this, (byte)13);
          }
       }
 
@@ -494,11 +494,11 @@ public class cpi extends cpd implements bwu, cpk {
          this.b($$1);
       }
 
-      this.gO();
+      this.gQ();
       super.a($$0);
    }
 
-   private void gO() {
+   private void gQ() {
       this.a(cfj.b);
       this.a(cfj.c);
       this.a(cfj.d);
@@ -506,7 +506,7 @@ public class cpi extends cpd implements bwu, cpk {
    }
 
    private void b(bvj $$0) {
-      if (this.dV() instanceof ash $$1) {
+      if (this.dW() instanceof ash $$1) {
          Optional<cfl> $$3 = this.bF.c(cfj.h);
          if (!$$3.isEmpty()) {
             $$3.get().b(bwu.class::isInstance).forEach($$2x -> $$1.a(chg.d, $$0, (bwu)$$2x));
@@ -515,8 +515,8 @@ public class cpi extends cpd implements bwu, cpk {
    }
 
    public void a(cfj<jp> $$0) {
-      if (this.dV() instanceof ash) {
-         MinecraftServer $$1 = ((ash)this.dV()).p();
+      if (this.dW() instanceof ash) {
+         MinecraftServer $$1 = ((ash)this.dW()).p();
          this.bF.c($$0).ifPresent($$2 -> {
             ash $$3 = $$1.a($$2.a());
             if ($$3 != null) {
@@ -534,15 +534,15 @@ public class cpi extends cpd implements bwu, cpk {
 
    @Override
    public boolean Y_() {
-      return this.cs + this.gT() >= 12 && !this.fP() && this.Z_() == 0;
+      return this.cs + this.gV() >= 12 && !this.fR() && this.Z_() == 0;
    }
 
-   private boolean gP() {
+   private boolean gR() {
       return this.cs < 12;
    }
 
-   private void gQ() {
-      if (this.gP() && this.gT() != 0) {
+   private void gS() {
+      if (this.gR() && this.gV() != 0) {
          for (int $$0 = 0; $$0 < this.t().b(); $$0++) {
             cxo $$1 = this.t().a($$0);
             if (!$$1.f()) {
@@ -553,7 +553,7 @@ public class cpi extends cpd implements bwu, cpk {
                   for (int $$4 = $$3; $$4 > 0; $$4--) {
                      this.cs = this.cs + $$2;
                      this.t().a($$0, 1);
-                     if (!this.gP()) {
+                     if (!this.gR()) {
                         return;
                      }
                   }
@@ -571,8 +571,8 @@ public class cpi extends cpd implements bwu, cpk {
       this.cs -= $$0;
    }
 
-   public void gC() {
-      this.gQ();
+   public void gE() {
+      this.gS();
       this.u(12);
    }
 
@@ -581,19 +581,19 @@ public class cpi extends cpd implements bwu, cpk {
       this.ca = $$0;
    }
 
-   private boolean gR() {
-      int $$0 = this.gw().c();
+   private boolean gT() {
+      int $$0 = this.gy().c();
       return cpj.d($$0) && this.cw >= cpj.c($$0);
    }
 
-   private void gS() {
-      this.a(this.gw().a(this.gw().c() + 1));
-      this.gt();
+   private void gU() {
+      this.a(this.gy().a(this.gy().c() + 1));
+      this.gv();
    }
 
    @Override
    protected xv cz() {
-      return xv.c(this.aq().g() + "." + ma.x.b(this.gw().b()).a());
+      return xv.c(this.aq().g() + "." + ma.x.b(this.gy().b()).a());
    }
 
    @Override
@@ -615,11 +615,11 @@ public class cpi extends cpd implements bwu, cpk {
    @Override
    public bwy a(dhy $$0, btg $$1, bvp $$2, @Nullable bwy $$3) {
       if ($$2 == bvp.e) {
-         this.a(this.gw().a(cpl.b));
+         this.a(this.gy().a(cpl.b));
       }
 
       if ($$2 == bvp.n || $$2 == bvp.m || bvp.a($$2) || $$2 == bvp.o) {
-         this.a(this.gw().a(cpn.a($$0.t(this.dv()))));
+         this.a(this.gy().a(cpn.a($$0.t(this.dw()))));
       }
 
       if ($$2 == bvp.d) {
@@ -634,15 +634,15 @@ public class cpi extends cpd implements bwu, cpk {
       double $$2 = this.ae.j();
       cpn $$3;
       if ($$2 < 0.5) {
-         $$3 = cpn.a($$0.t(this.dv()));
+         $$3 = cpn.a($$0.t(this.dw()));
       } else if ($$2 < 0.75) {
-         $$3 = this.gw().a();
+         $$3 = this.gy().a();
       } else {
-         $$3 = ((cpi)$$1).gw().a();
+         $$3 = ((cpi)$$1).gy().a();
       }
 
       cpi $$6 = new cpi(bvq.bD, $$0, $$3);
-      $$6.a($$0, $$0.d_($$6.dv()), bvp.e, null);
+      $$6.a($$0, $$0.d_($$6.dw()), bvp.e, null);
       return $$6;
    }
 
@@ -651,9 +651,9 @@ public class cpi extends cpd implements bwu, cpk {
       if ($$0.al() != btf.a) {
          cf.info("Villager {} was struck by lightning {}.", this, $$1);
          cnm $$2 = this.a(bvq.bI, bve.a(this, false, false), $$1x -> {
-            $$1x.a($$0, $$0.d_($$1x.dv()), bvp.i, null);
+            $$1x.a($$0, $$0.d_($$1x.dw()), bvp.i, null);
             $$1x.ai();
-            this.gO();
+            this.gQ();
          });
          if ($$2 == null) {
             super.a($$0, $$1);
@@ -671,31 +671,31 @@ public class cpi extends cpd implements bwu, cpk {
    @Override
    public boolean c(ash $$0, cxo $$1) {
       cxk $$2 = $$1.h();
-      return ($$1.a(ayd.bQ) || this.gw().b().d().contains($$2)) && this.t().c($$1);
+      return ($$1.a(ayd.bQ) || this.gy().b().d().contains($$2)) && this.t().c($$1);
    }
 
-   public boolean gD() {
-      return this.gT() >= 24;
+   public boolean gF() {
+      return this.gV() >= 24;
    }
 
-   public boolean gE() {
-      return this.gT() < 12;
+   public boolean gG() {
+      return this.gV() < 12;
    }
 
-   private int gT() {
+   private int gV() {
       btp $$0 = this.t();
       return cc.entrySet().stream().mapToInt($$1 -> $$0.a_($$1.getKey()) * $$1.getValue()).sum();
    }
 
-   public boolean gF() {
+   public boolean gH() {
       return this.t().a_($$0 -> $$0.a(ayd.bP));
    }
 
    @Override
-   protected void gt() {
-      cpj $$0 = this.gw();
+   protected void gv() {
+      cpj $$0 = this.gy();
       Int2ObjectMap<cpm.g[]> $$2;
-      if (this.dV().J().b(csu.c)) {
+      if (this.dW().J().b(csu.c)) {
          Int2ObjectMap<cpm.g[]> $$1 = cpm.c.get($$0.b());
          $$2 = $$1 != null ? $$1 : cpm.a.get($$0.b());
       } else {
@@ -705,7 +705,7 @@ public class cpi extends cpd implements bwu, cpk {
       if ($$2 != null && !$$2.isEmpty()) {
          cpm.g[] $$4 = (cpm.g[])$$2.get($$0.c());
          if ($$4 != null) {
-            dgf $$5 = this.go();
+            dgf $$5 = this.gq();
             this.a($$5, $$4, 2);
          }
       }
@@ -720,8 +720,8 @@ public class cpi extends cpd implements bwu, cpk {
       }
    }
 
-   private void gU() {
-      long $$0 = this.dV().ac();
+   private void gW() {
+      long $$0 = this.dW().ac();
       if (this.cv == 0L) {
          this.cv = $$0;
       } else if ($$0 >= this.cv + 24000L) {
@@ -736,7 +736,7 @@ public class cpi extends cpd implements bwu, cpk {
          List<cpi> $$4 = $$0.a(cpi.class, $$3);
          List<cpi> $$5 = $$4.stream().filter($$1x -> $$1x.a($$1)).limit(5L).toList();
          if ($$5.size() >= $$2) {
-            if (!bax.a(bvq.aq, bvp.f, $$0, this.dv(), 10, 8, 6, bax.a.a).isEmpty()) {
+            if (!bax.a(bvq.aq, bvp.f, $$0, this.dw(), 10, 8, 6, bax.a.a).isEmpty()) {
                $$4.forEach(cgb::b);
             }
          }
@@ -744,7 +744,7 @@ public class cpi extends cpd implements bwu, cpk {
    }
 
    public boolean a(long $$0) {
-      return !this.b(this.dV().ac()) ? false : !this.bF.a(cfj.F);
+      return !this.b(this.dW().ac()) ? false : !this.bF.a(cfj.F);
    }
 
    @Override
@@ -770,12 +770,12 @@ public class cpi extends cpd implements bwu, cpk {
       this.cw = $$0;
    }
 
-   private void gV() {
-      this.gM();
+   private void gX() {
+      this.gO();
       this.cy = 0;
    }
 
-   public cff gG() {
+   public cff gI() {
       return this.ct;
    }
 
@@ -792,15 +792,15 @@ public class cpi extends cpd implements bwu, cpk {
    @Override
    public void b(jh $$0) {
       super.b($$0);
-      this.bF.a(cfj.H, this.dV().ac());
+      this.bF.a(cfj.H, this.dW().ac());
       this.bF.b(cfj.m);
       this.bF.b(cfj.E);
    }
 
    @Override
-   public void fQ() {
-      super.fQ();
-      this.bF.a(cfj.I, this.dV().ac());
+   public void fS() {
+      super.fS();
+      this.bF.a(cfj.I, this.dW().ac());
    }
 
    private boolean b(long $$0) {

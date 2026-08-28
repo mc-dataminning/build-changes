@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 public class dvf extends duw implements btb {
    public static final int b = 6;
    private static final Logger c = LogUtils.getLogger();
-   private final jz<cxo> d = jz.a(6, cxo.k);
+   private final jz<cxo> d = jz.a(6, cxo.j);
    private int e = -1;
 
    public dvf(jh $$0, dxu $$1) {
@@ -72,8 +72,8 @@ public class dvf extends duw implements btb {
 
    @Override
    public cxo a(int $$0, int $$1) {
-      cxo $$2 = Objects.requireNonNullElse(this.d.get($$0), cxo.k);
-      this.d.set($$0, cxo.k);
+      cxo $$2 = Objects.requireNonNullElse(this.d.get($$0), cxo.j);
+      this.d.set($$0, cxo.j);
       if (!$$2.f()) {
          this.c($$0);
       }

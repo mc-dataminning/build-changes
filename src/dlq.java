@@ -123,7 +123,7 @@ public class dlq extends djx {
          cxo $$5 = $$3.a($$4, 1);
          axe $$6 = $$5.a(cxs.vm) ? axf.ff : axf.fe;
          $$0.a(null, $$1, $$6, axg.e, 1.0F, 1.0F);
-         if (!$$2.gg().f($$5)) {
+         if (!$$2.gi().f($$5)) {
             $$2.a($$5, false);
          }
 

@@ -1,51 +1,110 @@
-import com.google.common.base.Splitter;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 import java.util.Objects;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
-public class gnf {
-   private static final Splitter a = Splitter.on(',');
-   private static final Splitter b = Splitter.on('=').limit(2);
+public class gnf implements heb {
+   private final alz a;
+   private final j b;
+   private final boolean c;
+   private final int d;
 
-   public static <O, S extends dxw<O, S>> Predicate<dxw<O, S>> a(dxv<O, S> $$0, String $$1) {
-      Map<dyw<?>, Comparable<?>> $$2 = new HashMap<>();
+   public gnf(alz $$0, j $$1, boolean $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+   }
 
-      for (String $$3 : a.split($$1)) {
-         Iterator<String> $$4 = b.split($$3).iterator();
-         if ($$4.hasNext()) {
-            String $$5 = $$4.next();
-            dyw<?> $$6 = $$0.a($$5);
-            if ($$6 != null && $$4.hasNext()) {
-               String $$7 = $$4.next();
-               Comparable<?> $$8 = a((dyw<Comparable<?>>)$$6, $$7);
-               if ($$8 == null) {
-                  throw new RuntimeException("Unknown value: '" + $$7 + "' for blockstate property: '" + $$5 + "' " + $$6.a());
-               }
+   public alz a() {
+      return this.a;
+   }
 
-               $$2.put($$6, $$8);
-            } else if (!$$5.isEmpty()) {
-               throw new RuntimeException("Unknown blockstate property: '" + $$5 + "'");
-            }
+   @Override
+   public j b() {
+      return this.b;
+   }
+
+   @Override
+   public boolean c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   @Override
+   public String toString() {
+      return "Variant{modelLocation=" + this.a + ", rotation=" + this.b + ", uvLock=" + this.c + ", weight=" + this.d + "}";
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof gnf $$1) ? false : this.a.equals($$1.a) && Objects.equals(this.b, $$1.b) && this.c == $$1.c && this.d == $$1.d;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.a.hashCode();
+      $$0 = 31 * $$0 + this.b.hashCode();
+      $$0 = 31 * $$0 + Boolean.valueOf(this.c).hashCode();
+      return 31 * $$0 + this.d;
+   }
+
+   public static class a implements JsonDeserializer<gnf> {
+      @VisibleForTesting
+      static final boolean a = false;
+      @VisibleForTesting
+      static final int b = 1;
+      @VisibleForTesting
+      static final int c = 0;
+      @VisibleForTesting
+      static final int d = 0;
+
+      public gnf a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         alz $$4 = this.b($$3);
+         hdn $$5 = this.a($$3);
+         boolean $$6 = this.d($$3);
+         int $$7 = this.c($$3);
+         return new gnf($$4, $$5.b(), $$6, $$7);
+      }
+
+      private boolean d(JsonObject $$0) {
+         return azu.a($$0, "uvlock", false);
+      }
+
+      protected hdn a(JsonObject $$0) {
+         int $$1 = azu.a($$0, "x", 0);
+         int $$2 = azu.a($$0, "y", 0);
+         hdn $$3 = hdn.a($$1, $$2);
+         if ($$3 == null) {
+            throw new JsonParseException("Invalid BlockModelRotation x: " + $$1 + ", y: " + $$2);
+         } else {
+            return $$3;
          }
       }
 
-      return $$1x -> {
-         for (Entry<dyw<?>, Comparable<?>> $$2x : $$2.entrySet()) {
-            if (!Objects.equals($$1x.c($$2x.getKey()), $$2x.getValue())) {
-               return false;
-            }
+      protected alz b(JsonObject $$0) {
+         return alz.a(azu.i($$0, "model"));
+      }
+
+      protected int c(JsonObject $$0) {
+         int $$1 = azu.a($$0, "weight", 1);
+         if ($$1 < 1) {
+            throw new JsonParseException("Invalid weight " + $$1 + " found, expected integer >= 1");
+         } else {
+            return $$1;
          }
-
-         return true;
-      };
-   }
-
-   @Nullable
-   private static <T extends Comparable<T>> T a(dyw<T> $$0, String $$1) {
-      return $$0.b($$1).orElse(null);
+      }
    }
 }

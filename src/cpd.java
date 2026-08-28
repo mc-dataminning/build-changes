@@ -56,22 +56,22 @@ public abstract class cpd extends bva implements cpg, cph, dgd {
 
    @Nullable
    @Override
-   public cpw gm() {
+   public cpw go() {
       return this.ce;
    }
 
-   public boolean gn() {
+   public boolean gp() {
       return this.ce != null;
    }
 
    @Override
-   public dgf go() {
-      if (this.dV().C) {
+   public dgf gq() {
+      if (this.dW().C) {
          throw new IllegalStateException("Cannot load Villager offers on the client");
       } else {
          if (this.ca == null) {
             this.ca = new dgf();
-            this.gt();
+            this.gv();
          }
 
          return this.ca;
@@ -99,20 +99,20 @@ public abstract class cpd extends bva implements cpg, cph, dgd {
    protected abstract void b(dge var1);
 
    @Override
-   public boolean gp() {
+   public boolean gr() {
       return true;
    }
 
    @Override
    public void i(cxo $$0) {
-      if (!this.dV().C && this.bN > -this.Q() + 20) {
+      if (!this.dW().C && this.bN > -this.Q() + 20) {
          this.bN = -this.Q();
          this.b(this.x(!$$0.f()));
       }
    }
 
    @Override
-   public axe gq() {
+   public axe gs() {
       return axf.Bx;
    }
 
@@ -120,48 +120,48 @@ public abstract class cpd extends bva implements cpg, cph, dgd {
       return $$0 ? axf.Bx : axf.Bv;
    }
 
-   public void gr() {
+   public void gt() {
       this.b(axf.Bs);
    }
 
    @Override
    public void b(ux $$0) {
       super.b($$0);
-      if (!this.dV().C) {
-         dgf $$1 = this.go();
+      if (!this.dW().C) {
+         dgf $$1 = this.gq();
          if (!$$1.isEmpty()) {
-            $$0.a("Offers", (vu)dgf.a.encodeStart(this.dX().a(vl.a), $$1).getOrThrow());
+            $$0.a("Offers", (vu)dgf.a.encodeStart(this.dY().a(vl.a), $$1).getOrThrow());
          }
       }
 
-      this.b($$0, this.dX());
+      this.b($$0, this.dY());
    }
 
    @Override
    public void a(ux $$0) {
       super.a($$0);
       if ($$0.e("Offers")) {
-         dgf.a.parse(this.dX().a(vl.a), $$0.c("Offers")).resultOrPartial(ae.a("Failed to load offers: ", cc::warn)).ifPresent($$0x -> this.ca = $$0x);
+         dgf.a.parse(this.dY().a(vl.a), $$0.c("Offers")).resultOrPartial(ae.a("Failed to load offers: ", cc::warn)).ifPresent($$0x -> this.ca = $$0x);
       }
 
-      this.a($$0, this.dX());
+      this.a($$0, this.dY());
    }
 
    @Nullable
    @Override
    public bvj b(euw $$0) {
-      this.gs();
+      this.gu();
       return super.b($$0);
    }
 
-   protected void gs() {
+   protected void gu() {
       this.a(null);
    }
 
    @Override
    public void a(btz $$0) {
       super.a($$0);
-      this.gs();
+      this.gu();
    }
 
    protected void a(lq $$0) {
@@ -169,7 +169,7 @@ public abstract class cpd extends bva implements cpg, cph, dgd {
          double $$2 = this.ae.k() * 0.02;
          double $$3 = this.ae.k() * 0.02;
          double $$4 = this.ae.k() * 0.02;
-         this.dV().a($$0, this.d(1.0), this.dD() + 1.0, this.g(1.0), $$2, $$3, $$4);
+         this.dW().a($$0, this.d(1.0), this.dE() + 1.0, this.g(1.0), $$2, $$3, $$4);
       }
    }
 
@@ -189,7 +189,7 @@ public abstract class cpd extends bva implements cpg, cph, dgd {
       return $$1 >= 0 && $$1 < this.cf.b() ? bwx.a(this.cf, $$1) : super.a_($$0);
    }
 
-   protected abstract void gt();
+   protected abstract void gv();
 
    protected void a(dgf $$0, cpm.g[] $$1, int $$2) {
       ArrayList<cpm.g> $$3 = Lists.newArrayList($$1);
@@ -212,7 +212,7 @@ public abstract class cpd extends bva implements cpg, cph, dgd {
    }
 
    @Override
-   public boolean gu() {
-      return this.dV().C;
+   public boolean gw() {
+      return this.dW().C;
    }
 }

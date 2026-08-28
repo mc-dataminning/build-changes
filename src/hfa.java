@@ -1,24 +1,26 @@
-public class hfa extends hep {
+public class hfa extends heq {
    private static final float n = 0.0F;
-   private static final float o = 0.75F;
-   private final cpw p;
-   private final crv q;
-   private final boolean r;
+   private static final float o = 0.7F;
+   private static final float p = 0.0F;
+   private static final float q = 1.0F;
+   private static final float r = 0.0025F;
+   private final crv s;
+   private float t = 0.0F;
 
-   public hfa(cpw $$0, crv $$1, boolean $$2) {
-      super($$2 ? axf.pd : axf.pe, axg.g, hfg.t());
-      this.p = $$0;
-      this.q = $$1;
-      this.r = $$2;
-      this.k = hfg.a.a;
+   public hfa(crv $$0) {
+      super(axf.pf, axg.g, hfh.t());
+      this.s = $$0;
       this.i = true;
       this.j = 0;
       this.d = 0.0F;
+      this.f = (double)((float)$$0.dB());
+      this.g = (double)((float)$$0.dD());
+      this.h = (double)((float)$$0.dH());
    }
 
    @Override
    public boolean s() {
-      return !this.q.bb();
+      return !this.s.bb();
    }
 
    @Override
@@ -28,16 +30,19 @@ public class hfa extends hep {
 
    @Override
    public void q() {
-      if (this.q.dQ() || !this.p.bZ() || this.p.dk() != this.q) {
+      if (this.s.dR()) {
          this.n();
-      } else if (this.r != this.p.bo()) {
-         this.d = 0.0F;
       } else {
-         float $$0 = (float)this.q.dy().i();
-         boolean $$1 = !this.q.cq() && this.q.l() instanceof csk;
-         if ($$0 >= 0.01F && !$$1) {
-            this.d = bae.b(0.0F, 0.75F, $$0);
+         this.f = (double)((float)this.s.dB());
+         this.g = (double)((float)this.s.dD());
+         this.h = (double)((float)this.s.dH());
+         float $$0 = (float)this.s.dz().i();
+         boolean $$1 = !this.s.cq() && this.s.l() instanceof csk;
+         if ($$0 >= 0.01F && this.s.dW().t().i() && !$$1) {
+            this.t = bae.a(this.t + 0.0025F, 0.0F, 1.0F);
+            this.d = bae.h(bae.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
          } else {
+            this.t = 0.0F;
             this.d = 0.0F;
          }
       }

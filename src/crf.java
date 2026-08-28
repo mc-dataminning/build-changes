@@ -28,12 +28,12 @@ public abstract class crf extends cqe implements cqm {
       float $$1 = this.aq().n().b();
       float $$2 = 0.15F;
       return new fbs(
-         this.dt().d - (double)$$0,
-         this.dt().e - 0.15F,
-         this.dt().f - (double)$$0,
-         this.dt().d + (double)$$0,
-         this.dt().e - 0.15F + (double)$$1,
-         this.dt().f + (double)$$0
+         this.du().d - (double)$$0,
+         this.du().e - 0.15F,
+         this.du().f - (double)$$0,
+         this.du().d + (double)$$0,
+         this.du().e - 0.15F + (double)$$1,
+         this.du().f + (double)$$0
       );
    }
 
@@ -54,19 +54,19 @@ public abstract class crf extends cqe implements cqm {
    @Override
    protected void a(fbu $$0) {
       super.a($$0);
-      if (this.dV() instanceof ash $$1) {
+      if (this.dW() instanceof ash $$1) {
          bwf $$4 = this.p() instanceof bwf $$3 ? $$3 : null;
          bvj $$5 = $$0.a();
          if ($$4 != null) {
             $$4.B($$5);
          }
 
-         btz $$6 = this.dW().c(this, $$4);
+         btz $$6 = this.dX().c(this, $$4);
          if ($$5.a($$1, $$6, 1.0F) && $$5 instanceof bwf $$7) {
             dea.a($$1, (bvj)$$7, $$6);
          }
 
-         this.a(this.dt());
+         this.a(this.du());
       }
    }
 
@@ -79,7 +79,7 @@ public abstract class crf extends cqe implements cqm {
    @Override
    protected void a(fbt $$0) {
       super.a($$0);
-      if (!this.dV().C) {
+      if (!this.dW().C) {
          kl $$1 = $$0.c().q();
          fbx $$2 = fbx.a($$1).d(0.25, 0.25, 0.25);
          fbx $$3 = $$0.g().e($$2);
@@ -91,7 +91,7 @@ public abstract class crf extends cqe implements cqm {
    @Override
    protected void a(fbv $$0) {
       super.a($$0);
-      if (!this.dV().C) {
+      if (!this.dW().C) {
          this.at();
       }
    }
@@ -103,7 +103,7 @@ public abstract class crf extends cqe implements cqm {
 
    @Override
    public cxo l() {
-      return cxo.k;
+      return cxo.j;
    }
 
    @Override
@@ -124,8 +124,8 @@ public abstract class crf extends cqe implements cqm {
 
    @Override
    public void h() {
-      if (!this.dV().C && this.dB() > this.dV().am() + 30) {
-         this.a(this.dt());
+      if (!this.dW().C && this.dC() > this.dW().am() + 30) {
+         this.a(this.du());
          this.at();
       } else {
          super.h();

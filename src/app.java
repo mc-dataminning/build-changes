@@ -316,15 +316,15 @@ public class app {
       fdc $$3 = $$0.l().aJ();
       fcy $$4 = $$3.d($$1, $$2);
       if ($$4 == null) {
-         throw f.create($$2.b(), $$1.ha());
+         throw f.create($$2.b(), $$1.hc());
       } else {
-         $$0.a(() -> xv.a("commands.scoreboard.players.get.success", $$1.ha(), $$4.a(), $$2.g()), false);
+         $$0.a(() -> xv.a("commands.scoreboard.players.get.success", $$1.hc(), $$4.a(), $$2.g()), false);
          return $$4.a();
       }
    }
 
    private static xv a(Collection<fdb> $$0) {
-      return $$0.iterator().next().ha();
+      return $$0.iterator().next().hc();
    }
 
    private static int a(ew $$0, Collection<fdb> $$1, fcu $$2, fs.a $$3, Collection<fdb> $$4, fcu $$5) throws CommandSyntaxException {
@@ -518,7 +518,7 @@ public class app {
       if ($$1.isEmpty()) {
          $$0.a(() -> xv.c("commands.scoreboard.players.list.empty"), false);
       } else {
-         $$0.a(() -> xv.a("commands.scoreboard.players.list.success", $$1.size(), xy.b($$1, fdb::ha)), false);
+         $$0.a(() -> xv.a("commands.scoreboard.players.list.success", $$1.size(), xy.b($$1, fdb::hc)), false);
       }
 
       return $$1.size();
@@ -527,9 +527,9 @@ public class app {
    private static int a(ew $$0, fdb $$1) {
       Object2IntMap<fcu> $$2 = $$0.l().aJ().c($$1);
       if ($$2.isEmpty()) {
-         $$0.a(() -> xv.a("commands.scoreboard.players.list.entity.empty", $$1.ha()), false);
+         $$0.a(() -> xv.a("commands.scoreboard.players.list.entity.empty", $$1.hc()), false);
       } else {
-         $$0.a(() -> xv.a("commands.scoreboard.players.list.entity.success", $$1.ha(), $$2.size()), false);
+         $$0.a(() -> xv.a("commands.scoreboard.players.list.entity.success", $$1.hc(), $$2.size()), false);
          Object2IntMaps.fastForEach(
             $$2, $$1x -> $$0.a(() -> xv.a("commands.scoreboard.players.list.entity.entry", ((fcu)$$1x.getKey()).g(), $$1x.getIntValue()), false)
          );

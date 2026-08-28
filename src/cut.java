@@ -1,7 +1,7 @@
 import javax.annotation.Nullable;
 
 public class cut implements btb, cus {
-   private final jz<cxo> b = jz.a(1, cxo.k);
+   private final jz<cxo> b = jz.a(1, cxo.j);
    @Nullable
    private dci<?> c;
 

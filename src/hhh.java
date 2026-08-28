@@ -1,4 +1,8 @@
-public class hhh implements hho {
-   public hhh(hhn $$0) {
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface hhh {
 }

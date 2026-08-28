@@ -32,8 +32,8 @@ public class dwj extends duw {
    public boolean a(cpw $$0) {
       if (this.m().b() instanceof dro $$1) {
          fbx $$2 = $$1.o(this.m());
-         double $$3 = $$0.dA() - ((double)this.aB_().u() + $$2.d);
-         double $$4 = $$0.dG() - ((double)this.aB_().w() + $$2.f);
+         double $$3 = $$0.dB() - ((double)this.aB_().u() + $$2.d);
+         double $$4 = $$0.dH() - ((double)this.aB_().w() + $$2.f);
          float $$5 = $$1.h(this.m());
          float $$6 = (float)(bae.d($$4, $$3) * 180.0F / (float)Math.PI) - 90.0F;
          return bae.d($$5, $$6) <= 90.0F;

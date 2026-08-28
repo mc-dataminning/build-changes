@@ -41,7 +41,7 @@ public class dne extends djf<dvt> implements drp {
 
    @Override
    protected bti a(dxu $$0, dhh $$1, jh $$2, cpw $$3, fbt $$4) {
-      cup $$5 = $$3.gu();
+      cup $$5 = $$3.gw();
       if ($$5 != null && $$1.c_($$2) instanceof dvt $$7) {
          jh $$9 = $$2.d();
          if ($$1.a_($$9).d($$1, $$9)) {

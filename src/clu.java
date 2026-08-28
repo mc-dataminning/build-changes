@@ -22,7 +22,7 @@ public class clu extends clq {
       this.o((double)this.a.u() + 0.5, (double)this.a.v() + 0.375, (double)this.a.w() + 0.5);
       double $$0 = (double)this.aq().l() / 2.0;
       double $$1 = (double)this.aq().m();
-      this.a(new fbs(this.dA() - $$0, this.dC(), this.dG() - $$0, this.dA() + $$0, this.dC() + $$1, this.dG() + $$0));
+      this.a(new fbs(this.dB() - $$0, this.dD(), this.dH() - $$0, this.dB() + $$0, this.dD() + $$1, this.dH() + $$0));
    }
 
    @Override
@@ -45,11 +45,11 @@ public class clu extends clq {
 
    @Override
    public bti a(cpw $$0, bth $$1) {
-      if (this.dV().C) {
+      if (this.dW().C) {
          return bti.a;
       } else {
          boolean $$2 = false;
-         List<bwd> $$3 = cxy.a(this.dV(), this.p(), $$1x -> {
+         List<bwd> $$3 = cxy.a(this.dW(), this.p(), $$1x -> {
             bvj $$2x = $$1x.A();
             return $$2x == $$0 || $$2x == this;
          });
@@ -64,7 +64,7 @@ public class clu extends clq {
          boolean $$5 = false;
          if (!$$2) {
             this.at();
-            if ($$0.gh().d) {
+            if ($$0.gj().d) {
                for (bwd $$6 : $$3) {
                   if ($$6.P_() && $$6.A() == this) {
                      $$6.a(true, false);
@@ -84,7 +84,7 @@ public class clu extends clq {
 
    @Override
    public boolean m() {
-      return this.dV().a_(this.a).a(axu.U);
+      return this.dW().a_(this.a).a(axu.U);
    }
 
    public static clu a(dhh $$0, jh $$1) {
@@ -118,7 +118,7 @@ public class clu extends clq {
    }
 
    @Override
-   public cxo dI() {
+   public cxo dJ() {
       return new cxo(cxs.vA);
    }
 }

@@ -9,6 +9,6 @@ public class cxa extends cvu {
    @Override
    protected dxu c(dbf $$0) {
       cpw $$1 = $$0.o();
-      return $$1 != null && !$$1.gE() ? null : super.c($$0);
+      return $$1 != null && !$$1.gG() ? null : super.c($$0);
    }
 }

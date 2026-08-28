@@ -53,8 +53,8 @@ public class cub extends ctb {
 
                $$0x.c(1042, $$1x, 0);
             });
-            cub.this.v.a(0, cxo.k);
-            cub.this.v.a(1, cxo.k);
+            cub.this.v.a(0, cxo.j);
+            cub.this.v.a(1, cxo.j);
          }
 
          private int a(dhh $$0) {
@@ -103,23 +103,23 @@ public class cub extends ctb {
    private cxo a(cxo $$0, cxo $$1) {
       boolean $$2 = !$$0.f() || !$$1.f();
       if (!$$2) {
-         return cxo.k;
+         return cxo.j;
       } else if ($$0.L() <= 1 && $$1.L() <= 1) {
          boolean $$3 = !$$0.f() && !$$1.f();
          if (!$$3) {
             cxo $$4 = !$$0.f() ? $$0 : $$1;
-            return !dea.c($$4) ? cxo.k : this.c($$4.v());
+            return !dea.c($$4) ? cxo.j : this.c($$4.v());
          } else {
             return this.b($$0, $$1);
          }
       } else {
-         return cxo.k;
+         return cxo.j;
       }
    }
 
    private cxo b(cxo $$0, cxo $$1) {
       if (!$$0.a($$1.h())) {
-         return cxo.k;
+         return cxo.j;
       } else {
          int $$2 = Math.max($$0.p(), $$1.p());
          int $$3 = $$0.p() - $$0.o();
@@ -128,7 +128,7 @@ public class cub extends ctb {
          int $$6 = 1;
          if (!$$0.m()) {
             if ($$0.k() < 2 || !cxo.a($$0, $$1)) {
-               return cxo.k;
+               return cxo.j;
             }
 
             $$6 = 2;
@@ -187,7 +187,7 @@ public class cub extends ctb {
 
    @Override
    public cxo b(cpw $$0, int $$1) {
-      cxo $$2 = cxo.k;
+      cxo $$2 = cxo.j;
       cuy $$3 = this.k.get($$1);
       if ($$3 != null && $$3.h()) {
          cxo $$4 = $$3.g();
@@ -196,7 +196,7 @@ public class cub extends ctb {
          cxo $$6 = this.v.a(1);
          if ($$1 == 2) {
             if (!this.a($$4, 3, 39, true)) {
-               return cxo.k;
+               return cxo.j;
             }
 
             $$3.b($$4, $$2);
@@ -204,26 +204,26 @@ public class cub extends ctb {
             if (!$$5.f() && !$$6.f()) {
                if ($$1 >= 3 && $$1 < 30) {
                   if (!this.a($$4, 30, 39, false)) {
-                     return cxo.k;
+                     return cxo.j;
                   }
                } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
-                  return cxo.k;
+                  return cxo.j;
                }
             } else if (!this.a($$4, 0, 2, false)) {
-               return cxo.k;
+               return cxo.j;
             }
          } else if (!this.a($$4, 3, 39, false)) {
-            return cxo.k;
+            return cxo.j;
          }
 
          if ($$4.f()) {
-            $$3.e(cxo.k);
+            $$3.e(cxo.j);
          } else {
             $$3.c();
          }
 
          if ($$4.L() == $$2.L()) {
-            return cxo.k;
+            return cxo.j;
          }
 
          $$3.a($$0, $$4);

@@ -16,10 +16,10 @@ public class cgu extends cgi<coz> {
       super.a($$0, $$1);
       a($$1, $$0x -> $$0x.aq() == bvq.bS)
          .or(() -> a($$1, $$0xx -> $$0xx.aq() != bvq.bS))
-         .ifPresentOrElse($$1x -> $$1.eb().a(cfj.B, $$1x), () -> $$1.eb().b(cfj.B));
+         .ifPresentOrElse($$1x -> $$1.ec().a(cfj.B, $$1x), () -> $$1.ec().b(cfj.B));
    }
 
    private static Optional<bwf> a(coz $$0, Predicate<bwf> $$1) {
-      return $$0.eb().c(cfj.g).stream().flatMap(Collection::stream).filter($$0::b).filter($$1).findFirst();
+      return $$0.ec().c(cfj.g).stream().flatMap(Collection::stream).filter($$0::b).filter($$1).findFirst();
    }
 }

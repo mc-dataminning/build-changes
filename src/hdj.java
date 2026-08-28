@@ -1,8 +1,14 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.google.gson.JsonObject;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface hdj {
+public class hdj implements aut<hdi> {
+   public hdi b(JsonObject $$0) {
+      boolean $$1 = azu.a($$0, "blur", false);
+      boolean $$2 = azu.a($$0, "clamp", false);
+      return new hdi($$1, $$2);
+   }
+
+   @Override
+   public String a() {
+      return "texture";
+   }
 }

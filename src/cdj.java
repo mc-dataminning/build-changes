@@ -24,7 +24,7 @@ public class cdj extends cdd {
             if ($$0 < 4.0 || $$0 > 16.0) {
                return false;
             } else {
-               return !this.a.aJ() ? false : this.a.dY().a(b(5)) == 0;
+               return !this.a.aJ() ? false : this.a.dZ().a(b(5)) == 0;
             }
          }
       }
@@ -37,8 +37,8 @@ public class cdj extends cdd {
 
    @Override
    public void d() {
-      fbx $$0 = this.a.dy();
-      fbx $$1 = new fbx(this.b.dA() - this.a.dA(), 0.0, this.b.dG() - this.a.dG());
+      fbx $$0 = this.a.dz();
+      fbx $$1 = new fbx(this.b.dB() - this.a.dB(), 0.0, this.b.dH() - this.a.dH());
       if ($$1.h() > 1.0E-7) {
          $$1 = $$1.d().c(0.4).e($$0.c(0.2));
       }

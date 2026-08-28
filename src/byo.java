@@ -43,7 +43,7 @@ public class byo<E extends bwf & cpg> extends bxy<E> {
                   cjd.a((bwf)$$7).ifPresent($$2x -> this.a($$4, $$6, $$2x));
                }
 
-               $$1.eb().a(cfj.aP, 60);
+               $$1.ec().a(cfj.aP, 60);
             }
          }
       }
@@ -70,7 +70,7 @@ public class byo<E extends bwf & cpg> extends bxy<E> {
    public static void a(bwf $$0, cxo $$1, fbx $$2) {
       fbx $$3 = new fbx(0.2F, 0.3F, 0.2F);
       bya.a($$0, $$1, $$2, $$3, 0.2F);
-      dhh $$4 = $$0.dV();
+      dhh $$4 = $$0.dW();
       if ($$4.ac() % 7L == 0L && $$4.A.j() < 0.9) {
          float $$5 = ae.<Float>a(cjc.c, $$4.H_());
          $$4.a(null, $$0, axf.g, axg.g, 1.0F, $$5);

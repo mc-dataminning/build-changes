@@ -8,9 +8,9 @@ public class cpv implements btb, btl {
    public static final int d = 9;
    public static final int e = 40;
    public static final int f = -1;
-   public final jz<cxo> g = jz.a(36, cxo.k);
-   public final jz<cxo> h = jz.a(4, cxo.k);
-   public final jz<cxo> i = jz.a(1, cxo.k);
+   public final jz<cxo> g = jz.a(36, cxo.j);
+   public final jz<cxo> h = jz.a(4, cxo.j);
+   public final jz<cxo> i = jz.a(1, cxo.j);
    private final List<jz<cxo>> l = ImmutableList.of(this.g, this.h, this.i);
    public int j;
    public final cpw k;
@@ -21,7 +21,7 @@ public class cpv implements btb, btl {
    }
 
    public cxo f() {
-      return d(this.j) ? this.g.get(this.j) : cxo.k;
+      return d(this.j) ? this.g.get(this.j) : cxo.j;
    }
 
    public static int g() {
@@ -129,7 +129,7 @@ public class cpv implements btb, btl {
       cxo $$5 = this.k.cd.g();
       $$3 += btc.a($$5, $$0, $$1 - $$3, $$4);
       if ($$5.f()) {
-         this.k.cd.b(cxo.k);
+         this.k.cd.b(cxo.j);
       }
 
       return $$3;
@@ -184,7 +184,7 @@ public class cpv implements btb, btl {
       for (jz<cxo> $$0 : this.l) {
          for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
             if (!$$0.get($$1).f()) {
-               $$0.get($$1).a(this.k.dV(), this.k, $$1, this.j == $$1);
+               $$0.get($$1).a(this.k.dW(), this.k, $$1, this.j == $$1);
             }
          }
       }
@@ -208,7 +208,7 @@ public class cpv implements btb, btl {
                   this.g.set($$0, $$1.g());
                   this.g.get($$0).d(5);
                   return true;
-               } else if (this.k.fT()) {
+               } else if (this.k.fV()) {
                   $$1.e(0);
                   return true;
                } else {
@@ -225,7 +225,7 @@ public class cpv implements btb, btl {
                   }
                } while (!$$1.f() && $$1.L() < $$2);
 
-               if ($$1.L() == $$2 && this.k.fT()) {
+               if ($$1.L() == $$2 && this.k.fV()) {
                   $$1.e(0);
                   return true;
                } else {
@@ -283,14 +283,14 @@ public class cpv implements btb, btl {
          $$0 -= $$3.size();
       }
 
-      return $$2 != null && !$$2.get($$0).f() ? btc.a($$2, $$0, $$1) : cxo.k;
+      return $$2 != null && !$$2.get($$0).f() ? btc.a($$2, $$0, $$1) : cxo.j;
    }
 
    public void h(cxo $$0) {
       for (jz<cxo> $$1 : this.l) {
          for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
             if ($$1.get($$2) == $$0) {
-               $$1.set($$2, cxo.k);
+               $$1.set($$2, cxo.j);
                break;
             }
          }
@@ -312,10 +312,10 @@ public class cpv implements btb, btl {
 
       if ($$1 != null && !$$1.get($$0).f()) {
          cxo $$3 = $$1.get($$0);
-         $$1.set($$0, cxo.k);
+         $$1.set($$0, cxo.j);
          return $$3;
       } else {
-         return cxo.k;
+         return cxo.j;
       }
    }
 
@@ -346,7 +346,7 @@ public class cpv implements btb, btl {
          if (!this.g.get($$1).f()) {
             ux $$2 = new ux();
             $$2.a("Slot", (byte)$$1);
-            $$0.add(this.g.get($$1).b(this.k.dX(), $$2));
+            $$0.add(this.g.get($$1).b(this.k.dY(), $$2));
          }
       }
 
@@ -354,7 +354,7 @@ public class cpv implements btb, btl {
          if (!this.h.get($$3).f()) {
             ux $$4 = new ux();
             $$4.a("Slot", (byte)($$3 + 100));
-            $$0.add(this.h.get($$3).b(this.k.dX(), $$4));
+            $$0.add(this.h.get($$3).b(this.k.dY(), $$4));
          }
       }
 
@@ -362,7 +362,7 @@ public class cpv implements btb, btl {
          if (!this.i.get($$5).f()) {
             ux $$6 = new ux();
             $$6.a("Slot", (byte)($$5 + 150));
-            $$0.add(this.i.get($$5).b(this.k.dX(), $$6));
+            $$0.add(this.i.get($$5).b(this.k.dY(), $$6));
          }
       }
 
@@ -377,7 +377,7 @@ public class cpv implements btb, btl {
       for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
          ux $$2 = $$0.a($$1);
          int $$3 = $$2.f("Slot") & 255;
-         cxo $$4 = cxo.a(this.k.dX(), (vu)$$2).orElse(cxo.k);
+         cxo $$4 = cxo.a(this.k.dY(), (vu)$$2).orElse(cxo.j);
          if ($$3 >= 0 && $$3 < this.g.size()) {
             this.g.set($$3, $$4);
          } else if ($$3 >= 100 && $$3 < this.h.size() + 100) {
@@ -429,7 +429,7 @@ public class cpv implements btb, btl {
          $$0 -= $$2.size();
       }
 
-      return $$1 == null ? cxo.k : $$1.get($$0);
+      return $$1 == null ? cxo.j : $$1.get($$0);
    }
 
    @Override
@@ -447,7 +447,7 @@ public class cpv implements btb, btl {
             cxo $$2 = $$0.get($$1);
             if (!$$2.f()) {
                this.k.a($$2, true, false);
-               $$0.set($$1, cxo.k);
+               $$0.set($$1, cxo.j);
             }
          }
       }
@@ -526,6 +526,6 @@ public class cpv implements btb, btl {
 
    public cxo a(boolean $$0) {
       cxo $$1 = this.f();
-      return $$1.f() ? cxo.k : this.a(this.j, $$0 ? $$1.L() : 1);
+      return $$1.f() ? cxo.j : this.a(this.j, $$0 ? $$1.L() : 1);
    }
 }

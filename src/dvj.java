@@ -22,7 +22,7 @@ public abstract class dvj {
       }
 
       this.a($$1, $$2, $$3, $$4, this.b);
-      this.c = Math.max($$0.gH(), this.c);
+      this.c = Math.max($$0.gJ(), this.c);
    }
 
    public void b(cpw $$0, dhh $$1, jh $$2, dxu $$3) {
@@ -47,7 +47,7 @@ public abstract class dvj {
       this.c = 0.0;
 
       for (cpw $$4 : $$3) {
-         this.c = Math.max($$4.gH(), this.c);
+         this.c = Math.max($$4.gJ(), this.c);
       }
 
       int $$5 = $$3.size();

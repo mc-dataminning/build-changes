@@ -10,10 +10,10 @@ public class byu {
                .apply(
                   $$1,
                   $$1x -> ($$2, $$3, $$4) -> {
-                        if ($$2.h($$3.dv())) {
+                        if ($$2.h($$3.dw())) {
                            return false;
                         } else {
-                           jh $$5 = $$3.dv();
+                           jh $$5 = $$3.dw();
                            List<jh> $$6 = jh.d($$5.b(-1, -1, -1), $$5.b(1, 1, 1)).map(jh::j).collect(ae.b());
                            Collections.shuffle($$6);
                            $$6.stream()

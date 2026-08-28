@@ -50,12 +50,12 @@ public class cml extends cms {
       super.a($$0);
       if ((this.af + this.ar()) % 1200 == 0) {
          buo $$1 = new buo(buq.d, 6000, 2);
-         List<asi> $$2 = bup.a($$0, this, this.dt(), 50.0, $$1, 1200);
+         List<asi> $$2 = bup.a($$0, this, this.du(), 50.0, $$1, 1200);
          $$2.forEach($$0x -> $$0x.f.b(new adz(adz.l, this.bb() ? 0.0F : 1.0F)));
       }
 
-      if (!this.fY()) {
-         this.a(this.dv(), 16);
+      if (!this.ga()) {
+         this.a(this.dw(), 16);
       }
    }
 }

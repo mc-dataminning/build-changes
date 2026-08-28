@@ -52,7 +52,7 @@ public class cji extends chw implements bxf<cji.e>, chy {
    @Override
    public void b(ux $$0) {
       super.b($$0);
-      $$0.a("Variant", this.gm().a());
+      $$0.a("Variant", this.go().a());
       $$0.a("FromBucket", this.p());
    }
 
@@ -65,7 +65,7 @@ public class cji extends chw implements bxf<cji.e>, chy {
 
    @Override
    public void R() {
-      if (!this.gn()) {
+      if (!this.gp()) {
          super.R();
       }
    }
@@ -98,18 +98,18 @@ public class cji extends chw implements bxf<cji.e>, chy {
    public void az() {
       int $$0 = this.ct();
       super.az();
-      if (!this.fZ()) {
+      if (!this.gb()) {
          this.s($$0);
       }
 
-      if (this.dV().B_()) {
-         this.gp();
+      if (this.dW().B_()) {
+         this.gr();
       }
    }
 
-   private void gp() {
+   private void gr() {
       cji.a $$0;
-      if (this.gn()) {
+      if (this.gp()) {
          $$0 = cji.a.a;
       } else if (this.bm()) {
          $$0 = cji.a.b;
@@ -122,7 +122,7 @@ public class cji extends chw implements bxf<cji.e>, chy {
       this.cg.a($$0 == cji.a.a);
       this.ch.a($$0 == cji.a.b);
       this.ci.a($$0 == cji.a.c);
-      boolean $$4 = this.aT.d() || this.dN() != this.O || this.dL() != this.N;
+      boolean $$4 = this.aT.d() || this.dO() != this.O || this.dM() != this.N;
       this.cj.a($$4);
    }
 
@@ -131,7 +131,7 @@ public class cji extends chw implements bxf<cji.e>, chy {
          this.j($$0 - 1);
          if (this.ct() == -20) {
             this.j(0);
-            this.a(this.dW().t(), 2.0F);
+            this.a(this.dX().t(), 2.0F);
          }
       } else {
          this.j(this.cs());
@@ -148,7 +148,7 @@ public class cji extends chw implements bxf<cji.e>, chy {
       return 6000;
    }
 
-   public cji.e gm() {
+   public cji.e go() {
       return cji.e.a(this.al.a(cl));
    }
 
@@ -174,7 +174,7 @@ public class cji extends chw implements bxf<cji.e>, chy {
       this.al.a(cm, $$0);
    }
 
-   public boolean gn() {
+   public boolean gp() {
       return this.al.a(cm);
    }
 
@@ -197,7 +197,7 @@ public class cji extends chw implements bxf<cji.e>, chy {
          if (a(this.ae)) {
             $$3 = cji.e.b(this.ae);
          } else {
-            $$3 = this.ae.h() ? this.gm() : ((cji)$$1).gm();
+            $$3 = this.ae.h() ? this.go() : ((cji)$$1).go();
          }
 
          $$2.a($$3);
@@ -221,19 +221,19 @@ public class cji extends chw implements bxf<cji.e>, chy {
    protected void a(ash $$0) {
       bps $$1 = bpr.a();
       $$1.a("axolotlBrain");
-      this.eb().a($$0, this);
+      this.ec().a($$0, this);
       $$1.c();
       $$1.a("axolotlActivityUpdate");
       cjj.a(this);
       $$1.c();
-      if (!this.fZ()) {
-         Optional<Integer> $$2 = this.eb().c(cfj.N);
+      if (!this.gb()) {
+         Optional<Integer> $$2 = this.ec().c(cfj.N);
          this.y($$2.isPresent() && $$2.get() > 0);
       }
    }
 
-   public static bxm.a go() {
-      return chw.gr().a(bxn.s, 14.0).a(bxn.v, 1.0).a(bxn.c, 2.0).a(bxn.B, 1.0);
+   public static bxm.a gq() {
+      return chw.gt().a(bxn.s, 14.0).a(bxn.v, 1.0).a(bxn.c, 2.0).a(bxn.B, 1.0);
    }
 
    @Override
@@ -242,20 +242,20 @@ public class cji extends chw implements bxf<cji.e>, chy {
    }
 
    @Override
-   public void gd() {
+   public void gf() {
       this.a(axf.aK, 1.0F, 1.0F);
    }
 
    @Override
    public boolean a(ash $$0, btz $$1, float $$2) {
-      float $$3 = this.eD();
-      if (!this.fZ()
-         && this.dV().A.a(3) == 0
-         && ((float)this.dV().A.a(3) < $$2 || $$3 / this.eR() < 0.5F)
+      float $$3 = this.eE();
+      if (!this.gb()
+         && this.dW().A.a(3) == 0
+         && ((float)this.dW().A.a(3) < $$2 || $$3 / this.eS() < 0.5F)
          && $$2 < $$3
          && this.bj()
          && ($$1.d() != null || $$1.c() != null)
-         && !this.gn()) {
+         && !this.gp()) {
          this.bF.a(cfj.N, 200);
       }
 
@@ -281,9 +281,9 @@ public class cji extends chw implements bxf<cji.e>, chy {
    public void i(cxo $$0) {
       chy.a(this, $$0);
       czx.a(ku.X, $$0, $$0x -> {
-         $$0x.a("Variant", this.gm().a());
+         $$0x.a("Variant", this.go().a());
          $$0x.a("Age", this.Z_());
-         bxh<?> $$1 = this.eb();
+         bxh<?> $$1 = this.ec();
          if ($$1.a(cfj.U)) {
             $$0x.a("HuntingCooldown", $$1.e(cfj.U));
          }
@@ -299,7 +299,7 @@ public class cji extends chw implements bxf<cji.e>, chy {
       }
 
       if ($$0.e("HuntingCooldown")) {
-         this.eb().a(cfj.U, true, $$0.i("HuntingCooldown"));
+         this.ec().a(cfj.U, true, $$0.i("HuntingCooldown"));
       }
    }
 
@@ -314,13 +314,13 @@ public class cji extends chw implements bxf<cji.e>, chy {
    }
 
    @Override
-   public boolean ew() {
-      return !this.gn() && super.ew();
+   public boolean ex() {
+      return !this.gp() && super.ex();
    }
 
    public static void a(ash $$0, cji $$1, bwf $$2) {
-      if ($$2.eE()) {
-         btz $$3 = $$2.eF();
+      if ($$2.eF()) {
+         btz $$3 = $$2.eG();
          if ($$3 != null) {
             bvj $$4 = $$3.d();
             if ($$4 != null && $$4.aq() == bvq.bS) {
@@ -378,18 +378,18 @@ public class cji extends chw implements bxf<cji.e>, chy {
    }
 
    @Override
-   protected bxh.b<cji> ec() {
+   protected bxh.b<cji> ed() {
       return bxh.a(cb, ca);
    }
 
    @Override
    protected bxh<?> a(Dynamic<?> $$0) {
-      return cjj.a(this.ec().a($$0));
+      return cjj.a(this.ed().a($$0));
    }
 
    @Override
-   public bxh<cji> eb() {
-      return (bxh<cji>)super.eb();
+   public bxh<cji> ec() {
+      return (bxh<cji>)super.ec();
    }
 
    @Override
@@ -401,9 +401,9 @@ public class cji extends chw implements bxf<cji.e>, chy {
    @Override
    public void a_(fbx $$0) {
       if (this.di() && this.bj()) {
-         this.a(this.fn(), $$0);
-         this.a(bwj.a, this.dy());
-         this.h(this.dy().c(0.9));
+         this.a(this.fp(), $$0);
+         this.a(bwj.a, this.dz());
+         this.h(this.dz().c(0.9));
       } else {
          super.a_($$0);
       }
@@ -460,7 +460,7 @@ public class cji extends chw implements bxf<cji.e>, chy {
 
       @Override
       public void a() {
-         if (!cji.this.gn()) {
+         if (!cji.this.gp()) {
             super.a();
          }
       }
@@ -476,7 +476,7 @@ public class cji extends chw implements bxf<cji.e>, chy {
 
       @Override
       public void a() {
-         if (!this.l.gn()) {
+         if (!this.l.gp()) {
             super.a();
          }
       }

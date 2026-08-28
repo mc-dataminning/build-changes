@@ -19,17 +19,17 @@ public class clf extends ckw {
       if (this.e % 2 == 0 && this.e < 10) {
          fbx $$0 = this.a.J(1.0F).d();
          $$0.b((float) (-Math.PI / 4));
-         double $$1 = this.a.c.dA();
+         double $$1 = this.a.c.dB();
          double $$2 = this.a.c.e(0.5);
-         double $$3 = this.a.c.dG();
+         double $$3 = this.a.c.dH();
 
          for (int $$4 = 0; $$4 < 8; $$4++) {
-            double $$5 = $$1 + this.a.dY().k() / 2.0;
-            double $$6 = $$2 + this.a.dY().k() / 2.0;
-            double $$7 = $$3 + this.a.dY().k() / 2.0;
+            double $$5 = $$1 + this.a.dZ().k() / 2.0;
+            double $$6 = $$2 + this.a.dZ().k() / 2.0;
+            double $$7 = $$3 + this.a.dZ().k() / 2.0;
 
             for (int $$8 = 0; $$8 < 6; $$8++) {
-               this.a.dV().a(ls.h, $$5, $$6, $$7, -$$0.d * 0.08F * (double)$$8, -$$0.e * 0.6F, -$$0.f * 0.08F * (double)$$8);
+               this.a.dW().a(ls.h, $$5, $$6, $$7, -$$0.d * 0.08F * (double)$$8, -$$0.e * 0.6F, -$$0.f * 0.08F * (double)$$8);
             }
 
             $$0.b((float) (Math.PI / 16));
@@ -42,15 +42,15 @@ public class clf extends ckw {
       this.e++;
       if (this.e >= 200) {
          if (this.f >= 4) {
-            this.a.gi().a(clj.e);
+            this.a.gk().a(clj.e);
          } else {
-            this.a.gi().a(clj.g);
+            this.a.gk().a(clj.g);
          }
       } else if (this.e == 10) {
-         fbx $$1 = new fbx(this.a.c.dA() - this.a.dA(), 0.0, this.a.c.dG() - this.a.dG()).d();
+         fbx $$1 = new fbx(this.a.c.dB() - this.a.dB(), 0.0, this.a.c.dH() - this.a.dH()).d();
          float $$2 = 5.0F;
-         double $$3 = this.a.c.dA() + $$1.d * 5.0 / 2.0;
-         double $$4 = this.a.c.dG() + $$1.f * 5.0 / 2.0;
+         double $$3 = this.a.c.dB() + $$1.d * 5.0 / 2.0;
+         double $$4 = this.a.c.dH() + $$1.f * 5.0 / 2.0;
          double $$5 = this.a.c.e(0.5);
          double $$6 = $$5;
          jh.a $$7 = new jh.a($$3, $$5, $$4);

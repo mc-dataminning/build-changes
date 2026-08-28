@@ -43,7 +43,7 @@ public class ctg extends ctb {
    @Override
    public void a(cpw $$0) {
       super.a($$0);
-      if (!$$0.dV().C) {
+      if (!$$0.dW().C) {
          cxo $$1 = this.v.a(this.v.a());
          if (!$$1.f()) {
             $$0.a($$1, false);
@@ -64,41 +64,41 @@ public class ctg extends ctb {
 
    @Override
    public cxo b(cpw $$0, int $$1) {
-      cxo $$2 = cxo.k;
+      cxo $$2 = cxo.j;
       cuy $$3 = this.k.get($$1);
       if ($$3 != null && $$3.h()) {
          cxo $$4 = $$3.g();
          $$2 = $$4.v();
          if ($$1 == 0) {
             if (!this.a($$4, 1, 37, true)) {
-               return cxo.k;
+               return cxo.j;
             }
 
             $$3.b($$4, $$2);
          } else if (!this.v.h() && this.v.a($$4) && $$4.L() == 1) {
             if (!this.a($$4, 0, 1, false)) {
-               return cxo.k;
+               return cxo.j;
             }
          } else if ($$1 >= 1 && $$1 < 28) {
             if (!this.a($$4, 28, 37, false)) {
-               return cxo.k;
+               return cxo.j;
             }
          } else if ($$1 >= 28 && $$1 < 37) {
             if (!this.a($$4, 1, 28, false)) {
-               return cxo.k;
+               return cxo.j;
             }
          } else if (!this.a($$4, 1, 37, false)) {
-            return cxo.k;
+            return cxo.j;
          }
 
          if ($$4.f()) {
-            $$3.e(cxo.k);
+            $$3.e(cxo.j);
          } else {
             $$3.c();
          }
 
          if ($$4.L() == $$2.L()) {
-            return cxo.k;
+            return cxo.j;
          }
 
          $$3.a($$0, $$4);

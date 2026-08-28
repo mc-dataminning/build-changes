@@ -78,7 +78,7 @@ public class ahj {
    }
 
    private static List<String> a(bwf $$0, long $$1) {
-      Map<cfj<?>, Optional<? extends cfi<?>>> $$2 = $$0.eb().b();
+      Map<cfj<?>, Optional<? extends cfi<?>>> $$2 = $$0.ec().b();
       List<String> $$3 = Lists.newArrayList();
 
       for (Entry<cfj<?>, Optional<? extends cfi<?>>> $$4 : $$2.entrySet()) {
@@ -92,9 +92,9 @@ public class ahj {
                long $$9 = $$1 - (Long)$$8;
                $$10 = $$9 + " ticks ago";
             } else if ($$7.e()) {
-               $$10 = a((ash)$$0.dV(), $$8) + " (ttl: " + $$7.b() + ")";
+               $$10 = a((ash)$$0.dW(), $$8) + " (ttl: " + $$7.b() + ")";
             } else {
-               $$10 = a((ash)$$0.dV(), $$8);
+               $$10 = a((ash)$$0.dW(), $$8);
             }
          } else {
             $$10 = "-";

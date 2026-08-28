@@ -31,7 +31,7 @@ public class GLX {
          : GlStateManager._getString(7937) + " GL version " + GlStateManager._getString(7938) + ", " + GlStateManager._getString(7936);
    }
 
-   public static int _getRefreshRate(fft $$0) {
+   public static int _getRefreshRate(ffu $$0) {
       RenderSystem.assertOnRenderThread();
       long $$1 = GLFW.glfwGetWindowMonitor($$0.h());
       if ($$1 == 0L) {
@@ -47,7 +47,7 @@ public class GLX {
    }
 
    public static LongSupplier _initGlfw() {
-      fft.a(($$0x, $$1x) -> {
+      ffu.a(($$0x, $$1x) -> {
          throw new IllegalStateException(String.format(Locale.ROOT, "GLFW error before init: [0x%X]%s", $$0x, $$1x));
       });
       List<String> $$0 = Lists.newArrayList();
@@ -76,7 +76,7 @@ public class GLX {
       }
    }
 
-   public static boolean _shouldClose(fft $$0) {
+   public static boolean _shouldClose(ffu $$0) {
       return GLFW.glfwWindowShouldClose($$0.h());
    }
 
@@ -87,7 +87,7 @@ public class GLX {
       } catch (Throwable var3) {
       }
 
-      ffi.a($$0, $$1);
+      ffj.a($$0, $$1);
    }
 
    public static String _getCpuInfo() {
@@ -99,9 +99,9 @@ public class GLX {
          RenderSystem.assertOnRenderThread();
          GlStateManager._depthMask(false);
          GlStateManager._disableCull();
-         RenderSystem.setShader(gkt.W);
-         fgs $$4 = RenderSystem.renderThreadTesselator();
-         fgl $$5 = $$4.a(fgv.c.a, fgo.g);
+         RenderSystem.setShader(gku.X);
+         fgt $$4 = RenderSystem.renderThreadTesselator();
+         fgm $$5 = $$4.a(fgw.c.a, fgp.g);
          RenderSystem.lineWidth(4.0F);
          if ($$1) {
             $$5.a(0.0F, 0.0F, 0.0F).a(-16777216).b(1.0F, 0.0F, 0.0F);
@@ -118,9 +118,9 @@ public class GLX {
             $$5.a(0.0F, 0.0F, (float)$$0).a(-16777216).b(0.0F, 0.0F, 1.0F);
          }
 
-         fgm.a($$5.b());
+         fgn.a($$5.b());
          RenderSystem.lineWidth(2.0F);
-         $$5 = $$4.a(fgv.c.a, fgo.g);
+         $$5 = $$4.a(fgw.c.a, fgp.g);
          if ($$1) {
             $$5.a(0.0F, 0.0F, 0.0F).a(-65536).b(1.0F, 0.0F, 0.0F);
             $$5.a((float)$$0, 0.0F, 0.0F).a(-65536).b(1.0F, 0.0F, 0.0F);
@@ -136,7 +136,7 @@ public class GLX {
             $$5.a(0.0F, 0.0F, (float)$$0).a(-8421377).b(0.0F, 0.0F, 1.0F);
          }
 
-         fgm.a($$5.b());
+         fgn.a($$5.b());
          RenderSystem.lineWidth(1.0F);
          GlStateManager._enableCull();
          GlStateManager._depthMask(true);

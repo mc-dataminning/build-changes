@@ -14,6 +14,6 @@ public class cnx extends bxy<cns> {
    }
 
    protected void b(ash $$0, cns $$1, long $$2) {
-      $$1.eb().a(cfj.aV, bbk.a, 60L);
+      $$1.ec().a(cfj.aV, bbk.a, 60L);
    }
 }

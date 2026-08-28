@@ -40,7 +40,7 @@ public abstract class cme extends cmw implements cna {
    }
 
    public static bxm.a m() {
-      return cmw.gr().a(bxn.v, 0.25);
+      return cmw.gt().a(bxn.v, 0.25);
    }
 
    @Override
@@ -52,7 +52,7 @@ public abstract class cme extends cmw implements cna {
 
    @Override
    public void d_() {
-      boolean $$0 = this.ge();
+      boolean $$0 = this.gg();
       if ($$0) {
          cxo $$1 = this.a(bvr.f);
          if (!$$1.f()) {
@@ -61,7 +61,7 @@ public abstract class cme extends cmw implements cna {
                $$1.b($$1.o() + this.ae.a(2));
                if ($$1.o() >= $$1.p()) {
                   this.a($$2, bvr.f);
-                  this.a(bvr.f, cxo.k);
+                  this.a(bvr.f, cxo.j);
                }
             }
 
@@ -79,7 +79,7 @@ public abstract class cme extends cmw implements cna {
    @Override
    public void r() {
       super.r();
-      if (this.dl() instanceof bwn $$0) {
+      if (this.dm() instanceof bwn $$0) {
          this.aX = $$0.aX;
       }
    }
@@ -113,14 +113,14 @@ public abstract class cme extends cmw implements cna {
    }
 
    public void t() {
-      if (this.dV() != null && !this.dV().C) {
+      if (this.dW() != null && !this.dW().C) {
          this.bT.a(this.d);
          this.bT.a(this.c);
          cxo $$0 = this.b(cqr.a(this, cxs.oR));
          if ($$0.a(cxs.oR)) {
             int $$1 = this.x();
-            if (this.dV().al() != btf.d) {
-               $$1 = this.gm();
+            if (this.dW().al() != btf.d) {
+               $$1 = this.go();
             }
 
             this.c.c($$1);
@@ -135,7 +135,7 @@ public abstract class cme extends cmw implements cna {
       return 20;
    }
 
-   protected int gm() {
+   protected int go() {
       return 40;
    }
 
@@ -144,15 +144,15 @@ public abstract class cme extends cmw implements cna {
       cxo $$2 = this.b(cqr.a(this, cxs.oR));
       cxo $$3 = this.d($$2);
       cqd $$4 = this.a($$3, $$1, $$2);
-      double $$5 = $$0.dA() - this.dA();
-      double $$6 = $$0.e(0.3333333333333333) - $$4.dC();
-      double $$7 = $$0.dG() - this.dG();
+      double $$5 = $$0.dB() - this.dB();
+      double $$6 = $$0.e(0.3333333333333333) - $$4.dD();
+      double $$7 = $$0.dH() - this.dH();
       double $$8 = Math.sqrt($$5 * $$5 + $$7 * $$7);
-      if (this.dV() instanceof ash $$9) {
+      if (this.dW() instanceof ash $$9) {
          cqp.a($$4, $$9, $$3, $$5, $$6 + $$8 * 0.2F, $$7, 1.6F, (float)(14 - $$9.al().a() * 4));
       }
 
-      this.a(axf.xH, 1.0F, 1.0F / (this.dY().i() * 0.4F + 0.8F));
+      this.a(axf.xH, 1.0F, 1.0F / (this.dZ().i() * 0.4F + 0.8F));
    }
 
    protected cqd a(cxo $$0, float $$1, @Nullable cxo $$2) {
@@ -173,12 +173,12 @@ public abstract class cme extends cmw implements cna {
    @Override
    public void a(bvr $$0, cxo $$1) {
       super.a($$0, $$1);
-      if (!this.dV().C) {
+      if (!this.dW().C) {
          this.t();
       }
    }
 
-   public boolean gn() {
+   public boolean gp() {
       return this.cw();
    }
 }

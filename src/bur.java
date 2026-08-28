@@ -19,14 +19,14 @@ class bur extends bum {
    }
 
    @Override
-   public void a(ash $$0, bwf $$1, int $$2, bvj.c $$3) {
-      if ($$3 == bvj.c.a) {
-         int $$4 = this.e.applyAsInt($$1.dY());
+   public void a(ash $$0, bwf $$1, int $$2, bvj.d $$3) {
+      if ($$3 == bvj.d.a) {
+         int $$4 = this.e.applyAsInt($$1.dZ());
          int $$5 = $$0.N().c(dhd.v);
          int $$6 = a($$5, bur.a.a($$1), $$4);
 
          for (int $$7 = 0; $$7 < $$6; $$7++) {
-            this.a($$1.dV(), $$1.dA(), $$1.dC() + 0.5, $$1.dG());
+            this.a($$1.dW(), $$1.dB(), $$1.dD() + 0.5, $$1.dH());
          }
       }
    }
@@ -47,7 +47,7 @@ class bur extends bum {
       static bur.a a(bwf $$0) {
          return $$1 -> {
             List<cnf> $$2 = new ArrayList<>();
-            $$0.dV().a(bvq.bh, $$0.cR().g(2.0), $$1x -> $$1x != $$0, $$2, $$1);
+            $$0.dW().a(bvq.bh, $$0.cR().g(2.0), $$1x -> $$1x != $$0, $$2, $$1);
             return $$2.size();
          };
       }

@@ -1,3 +1,3 @@
-public interface hab {
-   cpj a();
+public class hab extends gys {
+   public boolean a;
 }

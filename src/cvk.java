@@ -21,22 +21,16 @@ public class cvk {
    private static final xv g = xv.c("item.canUse.unknown").a(n.h);
    private final List<ax> h;
    private final boolean i;
-   private final List<xv> j;
+   @Nullable
+   private List<xv> j;
    @Nullable
    private dxy k;
    private boolean l;
    private boolean m;
 
-   private cvk(List<ax> $$0, boolean $$1, List<xv> $$2) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
-   }
-
    public cvk(List<ax> $$0, boolean $$1) {
       this.h = $$0;
       this.i = $$1;
-      this.j = a($$0);
    }
 
    private static boolean a(dxy $$0, @Nullable dxy $$1, boolean $$2) {
@@ -74,12 +68,20 @@ public class cvk {
       }
    }
 
+   private List<xv> b() {
+      if (this.j == null) {
+         this.j = a(this.h);
+      }
+
+      return this.j;
+   }
+
    public void a(Consumer<xv> $$0) {
-      this.j.forEach($$0);
+      this.b().forEach($$0);
    }
 
    public cvk a(boolean $$0) {
-      return new cvk(this.h, $$0, this.j);
+      return new cvk(this.h, $$0);
    }
 
    private static List<xv> a(List<ax> $$0) {

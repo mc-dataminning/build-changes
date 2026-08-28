@@ -33,12 +33,12 @@ public interface fdj extends btb {
 
    @Override
    default cxo a(int $$0) {
-      return $$0 == 0 ? this.f() : cxo.k;
+      return $$0 == 0 ? this.f() : cxo.j;
    }
 
    @Override
    default cxo a(int $$0, int $$1) {
-      return $$0 != 0 ? cxo.k : this.c($$1);
+      return $$0 != 0 ? cxo.j : this.c($$1);
    }
 
    @Override

@@ -9,12 +9,12 @@ public class cdz extends cdd {
 
    @Override
    public void d() {
-      this.a.gS();
+      this.a.gU();
       this.h();
    }
 
    private void h() {
-      axe $$0 = this.a.gR();
+      axe $$0 = this.a.gT();
       if ($$0 != null) {
          this.a.a($$0);
       }
@@ -28,16 +28,16 @@ public class cdz extends cdd {
    @Override
    public boolean b() {
       this.b++;
-      if (this.b > 0 && this.a.dY().a(1000) < this.b) {
+      if (this.b > 0 && this.a.dZ().a(1000) < this.b) {
          this.a(this.a);
-         return !this.a.fg() && this.a.dY().a(10) == 0;
+         return !this.a.fi() && this.a.dZ().a(10) == 0;
       } else {
          return false;
       }
    }
 
    private void a(cka $$0) {
-      this.b = -$$0.gW();
+      this.b = -$$0.gY();
    }
 
    @Override

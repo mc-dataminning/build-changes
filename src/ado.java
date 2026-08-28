@@ -16,14 +16,14 @@ public class ado implements aac<acr> {
       this.b = $$0.x();
       this.c = $$0.l();
       this.d = $$0.readShort();
-      this.e = cxo.h.decode($$0);
+      this.e = cxo.g.decode($$0);
    }
 
    private void a(xg $$0) {
       $$0.f(this.b);
       $$0.c(this.c);
       $$0.m(this.d);
-      cxo.h.encode($$0, this.e);
+      cxo.g.encode($$0, this.e);
    }
 
    @Override

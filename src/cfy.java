@@ -12,13 +12,13 @@ public class cfy extends cgi<cns> {
 
    protected void a(ash $$0, cns $$1) {
       super.a($$0, $$1);
-      $$1.eb()
+      $$1.ec()
          .c(cfj.g)
          .stream()
          .flatMap(Collection::stream)
          .filter(bvo.e)
          .filter($$2 -> cgp.c($$0, $$1, $$2))
          .findFirst()
-         .ifPresentOrElse($$1x -> $$1.eb().a(cfj.B, $$1x), () -> $$1.eb().b(cfj.B));
+         .ifPresentOrElse($$1x -> $$1.ec().a(cfj.B, $$1x), () -> $$1.ec().b(cfj.B));
    }
 }

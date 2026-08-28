@@ -315,7 +315,7 @@ public class cbl<E extends bwf, M> implements App<cbl.c<E>, M> {
       d(final cbn<F, Value> $$0) {
          super(new cbl.e<E, cbm<F, Value>>() {
             public cbm<F, Value> b(ash $$0x, E $$1, long $$2) {
-               bxh<?> $$3 = $$1.eb();
+               bxh<?> $$3 = $$1.ec();
                Optional<Value> $$4 = $$3.d($$0.a());
                return $$4 == null ? null : $$0.a($$3, $$4);
             }

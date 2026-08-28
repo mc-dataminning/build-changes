@@ -38,7 +38,7 @@ public class cma extends bvj implements bxe {
    }
 
    private cma(cma $$0) {
-      super($$0.aq(), $$0.dV());
+      super($$0.aq(), $$0.dW());
       this.a($$0.l().v());
       this.w($$0);
       this.h = $$0.h;
@@ -53,9 +53,9 @@ public class cma extends bvj implements bxe {
    @Nullable
    @Override
    public bvj p() {
-      if (this.l != null && !this.l.dQ()) {
+      if (this.l != null && !this.l.dR()) {
          return this.l;
-      } else if (this.k != null && this.dV() instanceof ash $$0) {
+      } else if (this.k != null && this.dW() instanceof ash $$0) {
          this.l = $$0.a(this.k);
          return this.l;
       } else {
@@ -72,13 +72,13 @@ public class cma extends bvj implements bxe {
    }
 
    @Override
-   protected bvj.b bg() {
-      return bvj.b.a;
+   protected bvj.c bg() {
+      return bvj.c.a;
    }
 
    @Override
    protected void a(alg.a $$0) {
-      $$0.a(c, cxo.k);
+      $$0.a(c, cxo.j);
    }
 
    @Override
@@ -96,10 +96,10 @@ public class cma extends bvj implements bxe {
             this.i--;
          }
 
-         this.K = this.dA();
-         this.L = this.dC();
-         this.M = this.dG();
-         fbx $$0 = this.dy();
+         this.K = this.dB();
+         this.L = this.dD();
+         this.M = this.dH();
+         fbx $$0 = this.dz();
          if (this.bj() && this.b(aya.a) > 0.1F) {
             this.A();
          } else if (this.bx() && this.b(aya.b) > 0.1F) {
@@ -108,35 +108,35 @@ public class cma extends bvj implements bxe {
             this.bf();
          }
 
-         if (this.dV().C) {
+         if (this.dW().C) {
             this.ad = false;
          } else {
-            this.ad = !this.dV().a(this, this.cR().h(1.0E-7));
+            this.ad = !this.dW().a(this, this.cR().h(1.0E-7));
             if (this.ad) {
-               this.m(this.dA(), (this.cR().b + this.cR().e) / 2.0, this.dG());
+               this.m(this.dB(), (this.cR().b + this.cR().e) / 2.0, this.dH());
             }
          }
 
-         if (!this.aJ() || this.dy().j() > 1.0E-5F || (this.af + this.ar()) % 4 == 0) {
-            this.a(bwj.a, this.dy());
+         if (!this.aJ() || this.dz().j() > 1.0E-5F || (this.af + this.ar()) % 4 == 0) {
+            this.a(bwj.a, this.dz());
             this.aK();
             float $$1 = 0.98F;
             if (this.aJ()) {
-               $$1 = this.dV().a_(this.aQ()).b().g() * 0.98F;
+               $$1 = this.dW().a_(this.aQ()).b().g() * 0.98F;
             }
 
-            this.h(this.dy().d((double)$$1, 0.98, (double)$$1));
+            this.h(this.dz().d((double)$$1, 0.98, (double)$$1));
             if (this.aJ()) {
-               fbx $$2 = this.dy();
+               fbx $$2 = this.dz();
                if ($$2.e < 0.0) {
                   this.h($$2.d(1.0, -0.5, 1.0));
                }
             }
          }
 
-         boolean $$3 = bae.a(this.K) != bae.a(this.dA()) || bae.a(this.L) != bae.a(this.dC()) || bae.a(this.M) != bae.a(this.dG());
+         boolean $$3 = bae.a(this.K) != bae.a(this.dB()) || bae.a(this.L) != bae.a(this.dD()) || bae.a(this.M) != bae.a(this.dH());
          int $$4 = $$3 ? 2 : 40;
-         if (this.af % $$4 == 0 && !this.dV().C && this.D()) {
+         if (this.af % $$4 == 0 && !this.dW().C && this.D()) {
             this.C();
          }
 
@@ -145,14 +145,14 @@ public class cma extends bvj implements bxe {
          }
 
          this.ar = this.ar | this.bq();
-         if (!this.dV().C) {
-            double $$5 = this.dy().d($$0).h();
+         if (!this.dW().C) {
+            double $$5 = this.dz().d($$0).h();
             if ($$5 > 0.01) {
                this.ar = true;
             }
          }
 
-         if (!this.dV().C && this.h >= 6000) {
+         if (!this.dW().C && this.h >= 6000) {
             this.at();
          }
       }
@@ -172,16 +172,16 @@ public class cma extends bvj implements bxe {
    }
 
    private void h(double $$0) {
-      fbx $$1 = this.dy();
+      fbx $$1 = this.dz();
       this.n($$1.d * $$0, $$1.e + (double)($$1.e < 0.06F ? 5.0E-4F : 0.0F), $$1.f * $$0);
    }
 
    private void C() {
       if (this.D()) {
-         for (cma $$1 : this.dV().a(cma.class, this.cR().c(0.5, 0.0, 0.5), $$0 -> $$0 != this && $$0.D())) {
+         for (cma $$1 : this.dW().a(cma.class, this.cR().c(0.5, 0.0, 0.5), $$0 -> $$0 != this && $$0.D())) {
             if ($$1.D()) {
                this.a($$1);
-               if (this.dQ()) {
+               if (this.dR()) {
                   break;
                }
             }
@@ -233,7 +233,7 @@ public class cma extends bvj implements bxe {
 
    @Override
    public boolean bi() {
-      return !this.l().a(this.dW().a()) || super.bi();
+      return !this.l().a(this.dX().a()) || super.bi();
    }
 
    @Override
@@ -286,7 +286,7 @@ public class cma extends bvj implements bxe {
       }
 
       if (!this.l().f()) {
-         $$0.a("Item", this.l().a(this.dX()));
+         $$0.a("Item", this.l().a(this.dY()));
       }
    }
 
@@ -309,9 +309,9 @@ public class cma extends bvj implements bxe {
 
       if ($$0.b("Item", 10)) {
          ux $$1 = $$0.p("Item");
-         this.a(cxo.a(this.dX(), (vu)$$1).orElse(cxo.k));
+         this.a(cxo.a(this.dY(), (vu)$$1).orElse(cxo.j));
       } else {
-         this.a(cxo.k);
+         this.a(cxo.j);
       }
 
       if (this.l().f()) {
@@ -321,11 +321,11 @@ public class cma extends bvj implements bxe {
 
    @Override
    public void a_(cpw $$0) {
-      if (!this.dV().C) {
+      if (!this.dW().C) {
          cxo $$1 = this.l();
          cxk $$2 = $$1.h();
          int $$3 = $$1.L();
-         if (this.i == 0 && (this.m == null || this.m.equals($$0.cG())) && $$0.gg().f($$1)) {
+         if (this.i == 0 && (this.m == null || this.m.equals($$0.cG())) && $$0.gi().f($$1)) {
             $$0.a(this, $$3);
             if ($$1.f()) {
                this.at();
@@ -353,7 +353,7 @@ public class cma extends bvj implements bxe {
    @Override
    public bvj b(euw $$0) {
       bvj $$1 = super.b($$0);
-      if (!this.dV().C && $$1 instanceof cma $$2) {
+      if (!this.dW().C && $$1 instanceof cma $$2) {
          $$2.C();
       }
 
@@ -431,12 +431,12 @@ public class cma extends bvj implements bxe {
    }
 
    @Override
-   public axg dm() {
+   public axg dn() {
       return axg.i;
    }
 
    @Override
-   public float dM() {
+   public float dN() {
       return 180.0F - f((float)this.m() + 0.5F, this.b) / (float) (Math.PI * 2) * 360.0F;
    }
 

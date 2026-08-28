@@ -66,7 +66,7 @@ public class byx extends bxy<bwh> {
    }
 
    private void a(bwh $$0, jh $$1) {
-      $$0.eb().a(cfj.m, new cfm($$1, this.g, 0));
+      $$0.ec().a(cfj.m, new cfm($$1, this.g, 0));
    }
 
    private boolean b(ash $$0, bwh $$1) {
@@ -74,13 +74,13 @@ public class byx extends bxy<bwh> {
    }
 
    private boolean c(ash $$0, bwh $$1) {
-      jh $$2 = $$1.dv();
+      jh $$2 = $$1.dw();
       jh $$3 = $$2.e();
       return this.a($$0, $$2) || this.a($$0, $$3);
    }
 
    private boolean d(ash $$0, bwh $$1) {
-      return this.a($$0, $$1.dv());
+      return this.a($$0, $$1.dw());
    }
 
    private boolean a(ash $$0, jh $$1) {
@@ -88,7 +88,7 @@ public class byx extends bxy<bwh> {
    }
 
    private Optional<jh> a(bwh $$0) {
-      return $$0.eb().c(cfj.w);
+      return $$0.ec().c(cfj.w);
    }
 
    private boolean e(ash $$0, bwh $$1) {

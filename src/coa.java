@@ -37,13 +37,13 @@ public class coa extends cmw {
    }
 
    @Override
-   protected bxh.b<coa> ec() {
+   protected bxh.b<coa> ed() {
       return cob.a();
    }
 
    @Override
    protected bxh<?> a(Dynamic<?> $$0) {
-      return cob.d(this.ec().a($$0));
+      return cob.d(this.ed().a($$0));
    }
 
    @Override
@@ -54,7 +54,7 @@ public class coa extends cmw {
    }
 
    public static bxm.a m() {
-      return cmw.gr().a(bxn.s, 1.0).a(bxn.v, 0.3F).a(bxn.c, 2.0).a(bxn.m, 32.0).a(bxn.B, 1.0);
+      return cmw.gt().a(bxn.s, 1.0).a(bxn.v, 0.3F).a(bxn.c, 2.0).a(bxn.m, 32.0).a(bxn.B, 1.0);
    }
 
    public boolean p() {
@@ -67,7 +67,7 @@ public class coa extends cmw {
          return false;
       } else {
          this.cj = 20;
-         this.dV().a(this, (byte)4);
+         this.dW().a(this, (byte)4);
          return super.c($$0, $$1);
       }
    }
@@ -78,15 +78,15 @@ public class coa extends cmw {
    }
 
    @Override
-   public bxh<coa> eb() {
-      return (bxh<coa>)super.eb();
+   public bxh<coa> ec() {
+      return (bxh<coa>)super.ec();
    }
 
    @Override
    protected void a(ash $$0) {
       bps $$1 = bpr.a();
       $$1.a("creakingBrain");
-      this.eb().a((ash)this.dV(), this);
+      this.ec().a((ash)this.dW(), this);
       $$1.c();
       cob.a(this);
    }
@@ -97,7 +97,7 @@ public class coa extends cmw {
          this.cj--;
       }
 
-      if (!this.dV().C) {
+      if (!this.dW().C) {
          boolean $$0 = this.al.a(cb);
          boolean $$1 = this.t();
          if ($$1 != $$0) {
@@ -119,12 +119,12 @@ public class coa extends cmw {
    @Override
    public void h() {
       super.h();
-      if (this.dV().C) {
-         this.gm();
+      if (this.dW().C) {
+         this.go();
       }
    }
 
-   private void gm() {
+   private void go() {
       this.bZ.a(this.cj > 0, this.af);
    }
 
@@ -132,14 +132,14 @@ public class coa extends cmw {
    public void b(byte $$0) {
       if ($$0 == 4) {
          this.cj = 20;
-         this.gd();
+         this.gf();
       } else {
          super.b($$0);
       }
    }
 
    @Override
-   public void gd() {
+   public void gf() {
       this.b(axf.gn);
    }
 
@@ -196,7 +196,7 @@ public class coa extends cmw {
          Predicate<bwf> $$1 = this.x() ? bwf.aH : $$0x -> true;
 
          for (cpw $$2 : $$0) {
-            if (!$$2.b() && this.a($$2, 0.5, false, true, $$1, new DoubleSupplier[]{this::dE, this::dC, () -> (this.dE() + this.dC()) / 2.0})) {
+            if (!$$2.b() && this.a($$2, 0.5, false, true, $$1, new DoubleSupplier[]{this::dF, this::dD, () -> (this.dF() + this.dD()) / 2.0})) {
                if (this.x()) {
                   return false;
                }
@@ -205,7 +205,7 @@ public class coa extends cmw {
                   this.a(ecq.u);
                   this.b(axf.gl);
                   this.x(true);
-                  this.eb().a(cfj.o, $$2);
+                  this.ec().a(cfj.o, $$2);
                   return false;
                }
             }

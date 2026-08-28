@@ -54,8 +54,8 @@ public class ccg implements ccc {
          $$4 = $$1 / $$4;
          $$2 *= $$4;
          $$3 *= $$4;
-         float $$5 = bae.a(this.d.dL() * (float) (Math.PI / 180.0));
-         float $$6 = bae.b(this.d.dL() * (float) (Math.PI / 180.0));
+         float $$5 = bae.a(this.d.dM() * (float) (Math.PI / 180.0));
+         float $$6 = bae.b(this.d.dM() * (float) (Math.PI / 180.0));
          float $$7 = $$2 * $$6 - $$3 * $$5;
          float $$8 = $$3 * $$6 + $$2 * $$5;
          if (!this.b($$7, $$8)) {
@@ -69,9 +69,9 @@ public class ccg implements ccc {
          this.k = ccg.a.a;
       } else if (this.k == ccg.a.b) {
          this.k = ccg.a.a;
-         double $$9 = this.e - this.d.dA();
-         double $$10 = this.g - this.d.dG();
-         double $$11 = this.f - this.d.dC();
+         double $$9 = this.e - this.d.dB();
+         double $$10 = this.g - this.d.dH();
+         double $$11 = this.f - this.d.dD();
          double $$12 = $$9 * $$9 + $$11 * $$11 + $$10 * $$10;
          if ($$12 < 2.5000003E-7F) {
             this.d.G(0.0F);
@@ -79,13 +79,13 @@ public class ccg implements ccc {
          }
 
          float $$13 = (float)(bae.d($$10, $$9) * 180.0F / (float)Math.PI) - 90.0F;
-         this.d.v(this.b(this.d.dL(), $$13, 90.0F));
+         this.d.v(this.b(this.d.dM(), $$13, 90.0F));
          this.d.C((float)(this.h * this.d.h(bxn.v)));
-         jh $$14 = this.d.dv();
-         dxu $$15 = this.d.dV().a_($$14);
-         fcr $$16 = $$15.g(this.d.dV(), $$14);
-         if ($$11 > (double)this.d.dP() && $$9 * $$9 + $$10 * $$10 < (double)Math.max(1.0F, this.d.dq())
-            || !$$16.c() && this.d.dC() < $$16.c(jm.a.b) + (double)$$14.v() && !$$15.a(axu.q) && !$$15.a(axu.U)) {
+         jh $$14 = this.d.dw();
+         dxu $$15 = this.d.dW().a_($$14);
+         fcr $$16 = $$15.g(this.d.dW(), $$14);
+         if ($$11 > (double)this.d.dQ() && $$9 * $$9 + $$10 * $$10 < (double)Math.max(1.0F, this.d.dr())
+            || !$$16.c() && this.d.dD() < $$16.c(jm.a.b) + (double)$$14.v() && !$$15.a(axu.q) && !$$15.a(axu.U)) {
             this.d.J().a();
             this.k = ccg.a.d;
          }
@@ -103,7 +103,7 @@ public class ccg implements ccc {
       cfr $$2 = this.d.L();
       if ($$2 != null) {
          euj $$3 = $$2.p();
-         if ($$3 != null && $$3.a(this.d, jh.a(this.d.dA() + (double)$$0, (double)this.d.dB(), this.d.dG() + (double)$$1)) != eun.c) {
+         if ($$3 != null && $$3.a(this.d, jh.a(this.d.dB() + (double)$$0, (double)this.d.dC(), this.d.dH() + (double)$$1)) != eun.c) {
             return false;
          }
       }

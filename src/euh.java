@@ -27,17 +27,17 @@ public class euh extends eus {
    public eui a() {
       int $$0;
       if (this.f() && this.c.bj()) {
-         $$0 = this.c.dB();
-         jh.a $$1 = new jh.a(this.c.dA(), (double)$$0, this.c.dG());
+         $$0 = this.c.dC();
+         jh.a $$1 = new jh.a(this.c.dB(), (double)$$0, this.c.dH());
 
          for (dxu $$2 = this.b.a($$1); $$2.a(dkn.J); $$2 = this.b.a($$1)) {
-            $$1.b(this.c.dA(), (double)(++$$0), this.c.dG());
+            $$1.b(this.c.dB(), (double)(++$$0), this.c.dH());
          }
       } else {
-         $$0 = bae.a(this.c.dC() + 0.5);
+         $$0 = bae.a(this.c.dD() + 0.5);
       }
 
-      jh $$4 = jh.a(this.c.dA(), (double)$$0, this.c.dG());
+      jh $$4 = jh.a(this.c.dB(), (double)$$0, this.c.dH());
       if (!this.a($$4)) {
          for (jh $$5 : this.a(this.c)) {
             if (this.a($$5)) {
@@ -260,17 +260,17 @@ public class euh extends eus {
       boolean $$2 = $$1.a() < 1.0;
       if (!$$2) {
          return List.of(
-            jh.a($$1.a, (double)$$0.dB(), $$1.c),
-            jh.a($$1.a, (double)$$0.dB(), $$1.f),
-            jh.a($$1.d, (double)$$0.dB(), $$1.c),
-            jh.a($$1.d, (double)$$0.dB(), $$1.f)
+            jh.a($$1.a, (double)$$0.dC(), $$1.c),
+            jh.a($$1.a, (double)$$0.dC(), $$1.f),
+            jh.a($$1.d, (double)$$0.dC(), $$1.c),
+            jh.a($$1.d, (double)$$0.dC(), $$1.f)
          );
       } else {
          double $$3 = Math.max(0.0, 1.1F - $$1.d());
          double $$4 = Math.max(0.0, 1.1F - $$1.b());
          double $$5 = Math.max(0.0, 1.1F - $$1.c());
          fbs $$6 = $$1.c($$4, $$5, $$3);
-         return jh.a($$0.dY(), 10, bae.a($$6.a), bae.a($$6.b), bae.a($$6.c), bae.a($$6.d), bae.a($$6.e), bae.a($$6.f));
+         return jh.a($$0.dZ(), 10, bae.a($$6.a), bae.a($$6.b), bae.a($$6.c), bae.a($$6.d), bae.a($$6.e), bae.a($$6.f));
       }
    }
 }

@@ -82,8 +82,8 @@ public abstract class crv extends csn {
    }
 
    @Override
-   protected bvj.b bg() {
-      return bvj.b.c;
+   protected bvj.c bg() {
+      return bvj.c.c;
    }
 
    @Override
@@ -122,9 +122,9 @@ public abstract class crv extends csn {
          return super.b($$0);
       } else {
          int[][] $$2 = csb.a($$1);
-         jh $$3 = this.dv();
+         jh $$3 = this.dw();
          jh.a $$4 = new jh.a();
-         ImmutableList<bwr> $$5 = $$0.fM();
+         ImmutableList<bwr> $$5 = $$0.fO();
          UnmodifiableIterator $$14 = $$5.iterator();
 
          while ($$14.hasNext()) {
@@ -138,11 +138,11 @@ public abstract class crv extends csn {
 
                for (int[] $$10 : $$2) {
                   $$4.d($$3.u() + $$10[0], $$3.v() + $$9, $$3.w() + $$10[1]);
-                  double $$11 = this.dV().a(csb.a(this.dV(), $$4), () -> csb.a(this.dV(), $$4.e()));
+                  double $$11 = this.dW().a(csb.a(this.dW(), $$4), () -> csb.a(this.dW(), $$4.e()));
                   if (csb.a($$11)) {
                      fbs $$12 = new fbs((double)(-$$8), 0.0, (double)(-$$8), (double)$$8, (double)$$7.b(), (double)$$8);
                      fbx $$13 = fbx.a($$4, $$11);
-                     if (csb.a(this.dV(), $$0, $$12.c($$13))) {
+                     if (csb.a(this.dW(), $$0, $$12.c($$13))) {
                         $$0.b($$6);
                         return $$13;
                      }
@@ -159,7 +159,7 @@ public abstract class crv extends csn {
             bwr $$15 = (bwr)var22.next();
             double $$16 = (double)$$0.a($$15).b();
             int $$17 = bae.c($$14x - (double)$$4.v() + $$16);
-            double $$18 = csb.a($$4, $$17, $$0x -> this.dV().a_($$0x).g(this.dV(), $$0x));
+            double $$18 = csb.a($$4, $$17, $$0x -> this.dW().a_($$0x).g(this.dW(), $$0x));
             if ($$14x + $$16 <= $$18) {
                $$0.b($$15);
                break;
@@ -172,7 +172,7 @@ public abstract class crv extends csn {
 
    @Override
    protected float aT() {
-      dxu $$0 = this.dV().a_(this.dv());
+      dxu $$0 = this.dW().a_(this.dw());
       return $$0.a(axu.P) ? 1.0F : super.aT();
    }
 
@@ -185,7 +185,7 @@ public abstract class crv extends csn {
 
    @Override
    public boolean bH() {
-      return !this.dQ();
+      return !this.dR();
    }
 
    public static Pair<kl, kl> a(dyx $$0) {
@@ -229,15 +229,15 @@ public abstract class crv extends csn {
    }
 
    public jh p() {
-      int $$0 = bae.a(this.dA());
-      int $$1 = bae.a(this.dC());
-      int $$2 = bae.a(this.dG());
-      if (b(this.dV())) {
-         double $$3 = this.dC() - 0.1 - 1.0E-5F;
-         if (this.dV().a_(jh.a((double)$$0, $$3, (double)$$2)).a(axu.P)) {
+      int $$0 = bae.a(this.dB());
+      int $$1 = bae.a(this.dD());
+      int $$2 = bae.a(this.dH());
+      if (b(this.dW())) {
+         double $$3 = this.dD() - 0.1 - 1.0E-5F;
+         if (this.dW().a_(jh.a((double)$$0, $$3, (double)$$2)).a(axu.P)) {
             $$1 = bae.a($$3);
          }
-      } else if (this.dV().a_(new jh($$0, $$1 - 1, $$2)).a(axu.P)) {
+      } else if (this.dW().a_(new jh($$0, $$1 - 1, $$2)).a(axu.P)) {
          $$1--;
       }
 
@@ -322,15 +322,15 @@ public abstract class crv extends csn {
 
    protected void e(ash $$0) {
       double $$1 = this.a($$0);
-      fbx $$2 = this.dy();
+      fbx $$2 = this.dz();
       this.n(bae.a($$2.d, -$$1, $$1), $$2.e, bae.a($$2.f, -$$1, $$1));
       if (this.aJ()) {
-         this.h(this.dy().c(0.5));
+         this.h(this.dz().c(0.5));
       }
 
-      this.a(bwj.a, this.dy());
+      this.a(bwj.a, this.dz());
       if (!this.aJ()) {
-         this.h(this.dy().c(0.95));
+         this.h(this.dz().c(0.95));
       }
    }
 
@@ -340,12 +340,12 @@ public abstract class crv extends csn {
 
    @Override
    public void a(bwj $$0, fbx $$1) {
-      if (b(this.dV())) {
-         fbx $$2 = this.dt().e($$1);
+      if (b(this.dW())) {
+         fbx $$2 = this.du().e($$1);
          super.a($$0, $$1);
          boolean $$3 = this.l.i();
          if ($$3) {
-            super.a($$0, $$2.d(this.dt()));
+            super.a($$0, $$2.d(this.du()));
          }
 
          if ($$0.equals(bwj.c)) {
@@ -375,7 +375,7 @@ public abstract class crv extends csn {
    }
 
    public fbx a(jh $$0) {
-      dxu $$1 = this.dV().a_($$0);
+      dxu $$1 = this.dW().a_($$0);
       if ($$1.a(dkn.bw) && $$1.c(dqk.f)) {
          dyx $$2 = $$1.c(((dka)$$1.b()).c());
          if ($$2 == dyx.b) {
@@ -403,7 +403,7 @@ public abstract class crv extends csn {
    }
 
    public boolean b(jh $$0) {
-      return this.dV().a_($$0).d(this.dV(), $$0);
+      return this.dW().a_($$0).d(this.dW(), $$0);
    }
 
    @Override
@@ -420,7 +420,7 @@ public abstract class crv extends csn {
    @Override
    protected void a(ux $$0) {
       if ($$0.q("CustomDisplayTile")) {
-         this.c(vm.a(this.dV().a(mb.f), $$0.p("DisplayState")));
+         this.c(vm.a(this.dW().a(mb.f), $$0.p("DisplayState")));
          this.c($$0.h("DisplayOffset"));
       }
 
@@ -442,11 +442,11 @@ public abstract class crv extends csn {
 
    @Override
    public void h(bvj $$0) {
-      if (!this.dV().C) {
+      if (!this.dW().C) {
          if (!$$0.ad && !this.ad) {
             if (!this.y($$0)) {
-               double $$1 = $$0.dA() - this.dA();
-               double $$2 = $$0.dG() - this.dG();
+               double $$1 = $$0.dB() - this.dB();
+               double $$2 = $$0.dH() - this.dH();
                double $$3 = $$1 * $$1 + $$2 * $$2;
                if ($$3 >= 1.0E-4F) {
                   $$3 = Math.sqrt($$3);
@@ -478,20 +478,20 @@ public abstract class crv extends csn {
    private void a(crv $$0, double $$1, double $$2) {
       double $$3;
       double $$4;
-      if (b(this.dV())) {
-         $$3 = this.dy().d;
-         $$4 = this.dy().f;
+      if (b(this.dW())) {
+         $$3 = this.dz().d;
+         $$4 = this.dz().f;
       } else {
-         $$3 = $$0.dA() - this.dA();
-         $$4 = $$0.dG() - this.dG();
+         $$3 = $$0.dB() - this.dB();
+         $$4 = $$0.dH() - this.dH();
       }
 
       fbx $$7 = new fbx($$3, 0.0, $$4).d();
-      fbx $$8 = new fbx((double)bae.b(this.dL() * (float) (Math.PI / 180.0)), 0.0, (double)bae.a(this.dL() * (float) (Math.PI / 180.0))).d();
+      fbx $$8 = new fbx((double)bae.b(this.dM() * (float) (Math.PI / 180.0)), 0.0, (double)bae.a(this.dM() * (float) (Math.PI / 180.0))).d();
       double $$9 = Math.abs($$7.b($$8));
-      if (!($$9 < 0.8F) || b(this.dV())) {
-         fbx $$10 = this.dy();
-         fbx $$11 = $$0.dy();
+      if (!($$9 < 0.8F) || b(this.dW())) {
+         fbx $$10 = this.dz();
+         fbx $$11 = $$0.dz();
          if ($$0.E() && !this.E()) {
             this.h($$10.d(0.2, 1.0, 0.2));
             this.j($$11.d - $$1, 0.0, $$11.f - $$2);
@@ -550,7 +550,7 @@ public abstract class crv extends csn {
    }
 
    @Override
-   public abstract cxo dI();
+   public abstract cxo dJ();
 
    public boolean D() {
       return false;

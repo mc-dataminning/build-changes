@@ -12,7 +12,7 @@ public final class dbz implements Predicate<cxo> {
    public static final zt<xg, dbz> a = zr.c(mb.K).a(dbz::new, $$0 -> $$0.e);
    public static final zt<xg, Optional<dbz>> b = zr.c(mb.K)
       .a($$0 -> $$0.b() == 0 ? Optional.empty() : Optional.of(new dbz((ju<cxk>)$$0)), $$0 -> $$0.<ju.a<cxk>>map($$0x -> $$0x.e).orElse(ju.a()));
-   public static final Codec<ju<cxk>> c = alt.a(mb.K, cxo.a, false);
+   public static final Codec<ju<cxk>> c = alt.a(mb.K, cxk.e, false);
    public static final Codec<dbz> d = azn.b(c).xmap(dbz::new, $$0 -> $$0.e);
    private final ju<cxk> e;
    @Nullable

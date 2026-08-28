@@ -53,13 +53,13 @@ public class cqi extends bvj implements cqm {
       double $$1 = (double)$$0.u();
       int $$2 = $$0.v();
       double $$3 = (double)$$0.w();
-      double $$4 = $$1 - this.dA();
-      double $$5 = $$3 - this.dG();
+      double $$4 = $$1 - this.dB();
+      double $$5 = $$3 - this.dH();
       double $$6 = Math.sqrt($$4 * $$4 + $$5 * $$5);
       if ($$6 > 12.0) {
-         this.c = this.dA() + $$4 / $$6 * 12.0;
-         this.e = this.dG() + $$5 / $$6 * 12.0;
-         this.d = this.dC() + 8.0;
+         this.c = this.dB() + $$4 / $$6 * 12.0;
+         this.e = this.dH() + $$5 / $$6 * 12.0;
+         this.d = this.dD() + 8.0;
       } else {
          this.c = $$1;
          this.d = (double)$$2;
@@ -77,22 +77,22 @@ public class cqi extends bvj implements cqm {
          double $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
          this.v((float)(bae.d($$0, $$2) * 180.0F / (float)Math.PI));
          this.w((float)(bae.d($$1, $$3) * 180.0F / (float)Math.PI));
-         this.N = this.dL();
-         this.O = this.dN();
+         this.N = this.dM();
+         this.O = this.dO();
       }
    }
 
    @Override
    public void h() {
       super.h();
-      fbx $$0 = this.dy();
-      double $$1 = this.dA() + $$0.d;
-      double $$2 = this.dC() + $$0.e;
-      double $$3 = this.dG() + $$0.f;
+      fbx $$0 = this.dz();
+      double $$1 = this.dB() + $$0.d;
+      double $$2 = this.dD() + $$0.e;
+      double $$3 = this.dH() + $$0.f;
       double $$4 = $$0.i();
       this.w(cqp.f(this.O, (float)(bae.d($$0.e, $$4) * 180.0F / (float)Math.PI)));
       this.v(cqp.f(this.N, (float)(bae.d($$0.d, $$0.f) * 180.0F / (float)Math.PI)));
-      if (!this.dV().C) {
+      if (!this.dW().C) {
          double $$5 = this.c - $$1;
          double $$6 = this.e - $$3;
          float $$7 = (float)Math.sqrt($$5 * $$5 + $$6 * $$6);
@@ -104,7 +104,7 @@ public class cqi extends bvj implements cqm {
             $$10 *= 0.8;
          }
 
-         int $$11 = this.dC() < this.d ? 1 : -1;
+         int $$11 = this.dD() < this.d ? 1 : -1;
          $$0 = new fbx(Math.cos((double)$$8) * $$9, $$10 + ((double)$$11 - $$10) * 0.015F, Math.sin((double)$$8) * $$9);
          this.h($$0);
       }
@@ -112,23 +112,23 @@ public class cqi extends bvj implements cqm {
       float $$12 = 0.25F;
       if (this.bj()) {
          for (int $$13 = 0; $$13 < 4; $$13++) {
-            this.dV().a(ls.d, $$1 - $$0.d * 0.25, $$2 - $$0.e * 0.25, $$3 - $$0.f * 0.25, $$0.d, $$0.e, $$0.f);
+            this.dW().a(ls.d, $$1 - $$0.d * 0.25, $$2 - $$0.e * 0.25, $$3 - $$0.f * 0.25, $$0.d, $$0.e, $$0.f);
          }
       } else {
-         this.dV()
+         this.dW()
             .a(ls.ad, $$1 - $$0.d * 0.25 + this.ae.j() * 0.6 - 0.3, $$2 - $$0.e * 0.25 - 0.5, $$3 - $$0.f * 0.25 + this.ae.j() * 0.6 - 0.3, $$0.d, $$0.e, $$0.f);
       }
 
-      if (!this.dV().C) {
+      if (!this.dW().C) {
          this.a_($$1, $$2, $$3);
          this.f++;
-         if (this.f > 80 && !this.dV().C) {
+         if (this.f > 80 && !this.dW().C) {
             this.a(axf.iB, 1.0F, 1.0F);
             this.at();
             if (this.g) {
-               this.dV().b(new cma(this.dV(), this.dA(), this.dC(), this.dG(), this.l()));
+               this.dW().b(new cma(this.dW(), this.dB(), this.dD(), this.dH(), this.l()));
             } else {
-               this.dV().c(2003, this.dv(), 0);
+               this.dW().c(2003, this.dw(), 0);
             }
          }
       } else {
@@ -138,13 +138,13 @@ public class cqi extends bvj implements cqm {
 
    @Override
    public void b(ux $$0) {
-      $$0.a("Item", this.l().a(this.dX()));
+      $$0.a("Item", this.l().a(this.dY()));
    }
 
    @Override
    public void a(ux $$0) {
       if ($$0.b("Item", 10)) {
-         this.a(cxo.a(this.dX(), (vu)$$0.p("Item")).orElse(this.m()));
+         this.a(cxo.a(this.dY(), (vu)$$0.p("Item")).orElse(this.m()));
       } else {
          this.a(this.m());
       }

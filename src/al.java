@@ -21,7 +21,7 @@ public record al(int c, List<aly<ewt>> d, List<aly<dcd<?>>> e, Optional<er> f) {
 
    public void a(asi $$0) {
       $$0.d(this.c);
-      ewr $$1 = new ewr.a($$0.y()).a(ezi.a, $$0).a(ezi.f, $$0.dt()).a(ezh.m);
+      ewr $$1 = new ewr.a($$0.y()).a(ezi.a, $$0).a(ezi.f, $$0.du()).a(ezh.m);
       boolean $$2 = false;
 
       for (aly<ewt> $$3 : this.d) {
@@ -30,7 +30,7 @@ public record al(int c, List<aly<ewt>> d, List<aly<dcd<?>>> e, Optional<er> f) {
          while (var6.hasNext()) {
             cxo $$4 = (cxo)var6.next();
             if ($$0.i($$4)) {
-               $$0.dV().a(null, $$0.dA(), $$0.dC(), $$0.dG(), axf.nU, axg.h, 0.2F, (($$0.dY().i() - $$0.dY().i()) * 0.7F + 1.0F) * 2.0F);
+               $$0.dW().a(null, $$0.dB(), $$0.dD(), $$0.dH(), axf.nU, axg.h, 0.2F, (($$0.dZ().i() - $$0.dZ().i()) * 0.7F + 1.0F) * 2.0F);
                $$2 = true;
             } else {
                cma $$5 = $$0.a($$4, false);

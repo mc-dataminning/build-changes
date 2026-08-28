@@ -7,7 +7,7 @@ public interface asg extends dgy {
 
    @Nullable
    default cpw a(cgw $$0, bwf $$1) {
-      return this.a(this.y(), $$0, $$1, $$1.dA(), $$1.dC(), $$1.dG());
+      return this.a(this.y(), $$0, $$1, $$1.dB(), $$1.dD(), $$1.dH());
    }
 
    @Nullable
@@ -47,7 +47,7 @@ public interface asg extends dgy {
       List<cpw> $$3 = new ArrayList<>();
 
       for (cpw $$4 : this.y()) {
-         if ($$2.e($$4.dA(), $$4.dC(), $$4.dG()) && $$0.a(this.a(), $$1, $$4)) {
+         if ($$2.e($$4.dB(), $$4.dD(), $$4.dH()) && $$0.a(this.a(), $$1, $$4)) {
             $$3.add($$4);
          }
       }

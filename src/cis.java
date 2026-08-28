@@ -57,7 +57,7 @@ public class cis extends chw implements bww {
 
    @Override
    public void d_() {
-      if (this.dV().C) {
+      if (this.dW().C) {
          this.cd = Math.max(0, this.cd - 1);
       }
 
@@ -65,7 +65,7 @@ public class cis extends chw implements bww {
    }
 
    public static bxm.a p() {
-      return chw.gr().a(bxn.s, 8.0).a(bxn.v, 0.23F);
+      return chw.gt().a(bxn.s, 8.0).a(bxn.v, 0.23F);
    }
 
    @Override
@@ -98,7 +98,7 @@ public class cis extends chw implements bww {
          float $$1 = ((float)(this.cd - 4) - $$0) / 32.0F;
          return (float) (Math.PI / 5) + 0.21991149F * bae.a($$1 * 28.7F);
       } else {
-         return this.cd > 0 ? (float) (Math.PI / 5) : this.dN() * (float) (Math.PI / 180.0);
+         return this.cd > 0 ? (float) (Math.PI / 5) : this.dO() * (float) (Math.PI / 180.0);
       }
    }
 
@@ -106,7 +106,7 @@ public class cis extends chw implements bww {
    public bti b(cpw $$0, bth $$1) {
       cxo $$2 = $$0.b($$1);
       if ($$2.a(cxs.sJ)) {
-         if (this.dV() instanceof ash $$3 && this.a()) {
+         if (this.dW() instanceof ash $$3 && this.a()) {
             this.a($$3, axg.h, $$2);
             this.a(ecq.M, $$0);
             $$2.a(1, $$0, d($$1));
@@ -126,7 +126,7 @@ public class cis extends chw implements bww {
          for (int $$2x = 0; $$2x < $$1x.L(); $$2x++) {
             cma $$3 = this.a($$0x, $$1x.c(1), 1.0F);
             if ($$3 != null) {
-               $$3.h($$3.dy().b((double)((this.ae.i() - this.ae.i()) * 0.1F), (double)(this.ae.i() * 0.05F), (double)((this.ae.i() - this.ae.i()) * 0.1F)));
+               $$3.h($$3.dz().b((double)((this.ae.i() - this.ae.i()) * 0.1F), (double)(this.ae.i() * 0.05F), (double)((this.ae.i() - this.ae.i()) * 0.1F)));
             }
          }
       });

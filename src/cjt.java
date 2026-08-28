@@ -24,22 +24,22 @@ public class cjt extends chs {
    }
 
    @Override
-   protected bxh.b<cjt> ec() {
+   protected bxh.b<cjt> ed() {
       return bxh.a(ca, bZ);
    }
 
    @Override
    protected bxh<?> a(Dynamic<?> $$0) {
-      return cju.a(this.ec().a($$0));
+      return cju.a(this.ed().a($$0));
    }
 
    @Override
-   public bxh<cjt> eb() {
-      return (bxh<cjt>)super.eb();
+   public bxh<cjt> ec() {
+      return (bxh<cjt>)super.ec();
    }
 
    @Override
-   protected axe gm() {
+   protected axe go() {
       return axf.zT;
    }
 
@@ -47,7 +47,7 @@ public class cjt extends chs {
    protected void a(ash $$0) {
       bps $$1 = bpr.a();
       $$1.a("tadpoleBrain");
-      this.eb().a($$0, this);
+      this.ec().a($$0, this);
       $$1.c();
       $$1.a("tadpoleActivityUpdate");
       cju.a(this);
@@ -55,14 +55,14 @@ public class cjt extends chs {
       super.a($$0);
    }
 
-   public static bxm.a gn() {
-      return chw.gr().a(bxn.v, 1.0).a(bxn.s, 6.0);
+   public static bxm.a gp() {
+      return chw.gt().a(bxn.v, 1.0).a(bxn.s, 6.0);
    }
 
    @Override
    public void d_() {
       super.d_();
-      if (!this.dV().C) {
+      if (!this.dW().C) {
          this.c(this.cb + 1);
       }
    }
@@ -126,7 +126,7 @@ public class cjt extends chs {
    @Override
    public void i(cxo $$0) {
       chy.a(this, $$0);
-      czx.a(ku.X, $$0, $$0x -> $$0x.a("Age", this.go()));
+      czx.a(ku.X, $$0, $$0x -> $$0x.a("Age", this.gq()));
    }
 
    @Override
@@ -153,15 +153,15 @@ public class cjt extends chs {
 
    private void a(cpw $$0, cxo $$1) {
       this.b($$0, $$1);
-      this.b(bva.d_(this.gq()));
-      this.dV().a(ls.O, this.d(1.0), this.dD() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
+      this.b(bva.d_(this.gs()));
+      this.dW().a(ls.O, this.d(1.0), this.dE() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
    }
 
    private void b(cpw $$0, cxo $$1) {
       $$1.a(1, $$0);
    }
 
-   private int go() {
+   private int gq() {
       return this.cb;
    }
 
@@ -172,14 +172,14 @@ public class cjt extends chs {
    private void c(int $$0) {
       this.cb = $$0;
       if (this.cb >= a) {
-         this.gp();
+         this.gr();
       }
    }
 
-   private void gp() {
-      if (this.dV() instanceof ash $$0) {
+   private void gr() {
+      if (this.dW() instanceof ash $$0) {
          this.a(bvq.ac, bve.a(this, false, false), $$1 -> {
-            $$1.a($$0, this.dV().d_($$1.dv()), bvp.i, null);
+            $$1.a($$0, this.dW().d_($$1.dw()), bvp.i, null);
             $$1.ai();
             $$1.a(this.a(this.aw()));
             this.a(axf.zU, 0.15F, 1.0F);
@@ -187,12 +187,12 @@ public class cjt extends chs {
       }
    }
 
-   private int gq() {
+   private int gs() {
       return Math.max(0, a - this.cb);
    }
 
    @Override
-   public boolean em() {
+   public boolean en() {
       return false;
    }
 }

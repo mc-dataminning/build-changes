@@ -14,7 +14,7 @@ public abstract class csn extends bvj {
 
    @Override
    public boolean a(ash $$0, btz $$1, float $$2) {
-      if (this.dQ()) {
+      if (this.dR()) {
          return true;
       } else if (this.d($$1)) {
          return false;
@@ -26,7 +26,7 @@ public abstract class csn extends bvj {
             this.bD();
             this.b(this.L() + $$2 * 10.0F);
             this.a(ecq.o, $$1.d());
-            if ($$1.d() instanceof cpw $$3 && $$3.gh().d) {
+            if ($$1.d() instanceof cpw $$3 && $$3.gj().d) {
                var10000 = true;
                break label32;
             }

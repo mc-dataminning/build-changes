@@ -1,20 +1,17 @@
-import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
 
-public class ftu extends ftw {
-   private static final xv a = xv.c("multiplayer.downloadingTerrain");
-   private static final long b = 30000L;
-   private final long c;
-   private final BooleanSupplier d;
-   private final ftu.a s;
+public class ftu extends ftx implements bal {
    @Nullable
-   private hbj u;
+   private xv a;
+   @Nullable
+   private xv b;
+   private int c;
+   private boolean d;
+   private final boolean s;
 
-   public ftu(BooleanSupplier $$0, ftu.a $$1) {
-      super(flv.a);
-      this.d = $$0;
-      this.s = $$1;
-      this.c = ae.c();
+   public ftu(boolean $$0) {
+      super(flw.a);
+      this.s = $$0;
    }
 
    @Override
@@ -28,57 +25,47 @@ public class ftu extends ftw {
    }
 
    @Override
-   public void a(fnq $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, a, this.n / 2, this.o / 2 - 50, -1);
+   public void a(xv $$0) {
+      this.b($$0);
    }
 
    @Override
-   public void b(fnq $$0, int $$1, int $$2, float $$3) {
-      switch (this.s) {
-         case a:
-            $$0.a(glt::A, this.l(), 0, 0, $$0.a(), $$0.b());
-            break;
-         case b:
-            $$0.b(glt.t(), 0, 0, this.n, this.o, 0);
-            break;
-         case c:
-            this.a($$0, $$3);
-            this.q();
-            this.a($$0);
-      }
+   public void b(xv $$0) {
+      this.a = $$0;
+      this.c(xv.c("menu.working"));
    }
 
-   private hbj l() {
-      if (this.u != null) {
-         return this.u;
+   @Override
+   public void c(xv $$0) {
+      this.b = $$0;
+      this.a(0);
+   }
+
+   @Override
+   public void a(int $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public void a() {
+      this.d = true;
+   }
+
+   @Override
+   public void a(fnr $$0, int $$1, int $$2, float $$3) {
+      if (this.d) {
+         if (this.s) {
+            this.m.a(null);
+         }
       } else {
-         this.u = this.m.ap().a().a(dkn.eq.m());
-         return this.u;
+         super.a($$0, $$1, $$2, $$3);
+         if (this.a != null) {
+            $$0.a(this.p, this.a, this.n / 2, 70, 16777215);
+         }
+
+         if (this.b != null && this.c != 0) {
+            $$0.a(this.p, xv.i().b(this.b).f(" " + this.c + "%"), this.n / 2, 90, 16777215);
+         }
       }
-   }
-
-   @Override
-   public void e() {
-      if (this.d.getAsBoolean() || ae.c() > this.c + 30000L) {
-         this.aP_();
-      }
-   }
-
-   @Override
-   public void aP_() {
-      this.m.aZ().c(xv.c("narrator.ready_to_play"));
-      super.aP_();
-   }
-
-   @Override
-   public boolean j() {
-      return false;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
    }
 }

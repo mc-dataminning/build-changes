@@ -1,25 +1,20 @@
-public class gra<T extends coa> extends gsu<T, gxl, gbb> {
-   private static final alz a = alz.b("textures/entity/creaking/creaking.png");
-   private static final alz b = alz.b("textures/entity/creaking/creaking_eyes.png");
+public class gra extends gqj<cid, gys, gbb> {
+   private static final alz a = alz.b("textures/entity/cow/cow.png");
 
-   public gra(gro.a $$0) {
-      super($$0, new gbb($$0.a(gel.ae)), 0.7F);
-      this.a(new gvw<>(this, b, ($$0x, $$1) -> 1.0F, gbb::b, glt::p));
+   public gra(grp.a $$0) {
+      super($$0, new gbb($$0.a(gem.ac)), new gbb($$0.a(gem.ad)), 0.7F);
    }
 
-   public alz a(gxl $$0) {
+   @Override
+   public alz b(gys $$0) {
       return a;
    }
 
-   public gxl a() {
-      return new gxl();
+   public gys a() {
+      return new gys();
    }
 
-   public void a(T $$0, gxl $$1, float $$2) {
+   public void a(cid $$0, gys $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.b.a($$0.bZ);
-      $$1.a.a($$0.ca);
-      $$1.c = $$0.x();
-      $$1.d = $$0.p();
    }
 }

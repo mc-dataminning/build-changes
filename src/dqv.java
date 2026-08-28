@@ -17,7 +17,7 @@ public class dqv extends dmp {
 
    @Override
    protected bti a(dxu $$0, dhh $$1, jh $$2, cpw $$3, fbt $$4) {
-      if (!$$3.gh().e) {
+      if (!$$3.gj().e) {
          return bti.e;
       } else {
          $$1.a($$2, $$0.a(e), 3);

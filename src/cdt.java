@@ -44,8 +44,8 @@ public class cdt extends cdd {
    @Override
    public void a() {
       this.a.H().a(this.b, 30.0F, 30.0F);
-      double $$0 = (double)(this.a.dq() * 2.0F * this.a.dq() * 2.0F);
-      double $$1 = this.a.i(this.b.dA(), this.b.dC(), this.b.dG());
+      double $$0 = (double)(this.a.dr() * 2.0F * this.a.dr() * 2.0F);
+      double $$1 = this.a.i(this.b.dB(), this.b.dD(), this.b.dH());
       double $$2 = 0.8;
       if ($$1 > $$0 && $$1 < 16.0) {
          $$2 = 1.33;

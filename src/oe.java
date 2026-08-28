@@ -47,7 +47,7 @@ public class oe implements mh {
          throw new IllegalStateException("Missing blockstate definitions for: " + $$7);
       } else {
          ma.e.forEach($$2x -> {
-            cxk $$3x = cxk.e.get($$2x);
+            cxk $$3x = cxk.f.get($$2x);
             if ($$3x != null) {
                if ($$4.contains($$3x)) {
                   return;

@@ -14,9 +14,9 @@ public class cmh extends cnh {
       if (super.c($$0, $$1)) {
          if ($$1 instanceof bwf) {
             int $$2 = 0;
-            if (this.dV().al() == btf.c) {
+            if (this.dW().al() == btf.c) {
                $$2 = 7;
-            } else if (this.dV().al() == btf.d) {
+            } else if (this.dW().al() == btf.d) {
                $$2 = 15;
             }
 
@@ -39,6 +39,6 @@ public class cmh extends cnh {
 
    @Override
    public fbx l(bvj $$0) {
-      return $$0.dq() <= this.dq() ? new fbx(0.0, 0.21875 * (double)this.ej(), 0.0) : super.l($$0);
+      return $$0.dr() <= this.dr() ? new fbx(0.0, 0.21875 * (double)this.ek(), 0.0) : super.l($$0);
    }
 }

@@ -5,7 +5,7 @@ class buy extends bum {
 
    @Override
    public boolean a(ash $$0, bwf $$1, int $$2) {
-      $$1.a($$0, $$1.dW().r(), 1.0F);
+      $$1.a($$0, $$1.dX().r(), 1.0F);
       return true;
    }
 

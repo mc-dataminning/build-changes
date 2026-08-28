@@ -1,49 +1,39 @@
-public class fou extends fod {
-   private boolean a;
+import javax.annotation.Nullable;
 
-   public fou(int $$0, int $$1, fod.c $$2) {
-      super($$0, $$1, 20, 20, xv.c("narrator.button.difficulty_lock"), $$2, q);
-   }
+public class fou extends foc {
+   private final fnp a;
 
-   @Override
-   protected yj aR_() {
-      return xu.a(super.aR_(), this.a() ? xv.c("narrator.button.difficulty_lock.locked") : xv.c("narrator.button.difficulty_lock.unlocked"));
-   }
-
-   public boolean a() {
-      return this.a;
-   }
-
-   public void b(boolean $$0) {
+   public fou(fnp $$0, xv $$1) {
+      super(0, 0, $$0.a($$1), 9 * 3, $$1);
       this.a = $$0;
    }
 
    @Override
-   public void b(fnq $$0, int $$1, int $$2, float $$3) {
-      fou.a $$4;
-      if (!this.j) {
-         $$4 = this.a ? fou.a.c : fou.a.f;
-      } else if (this.B()) {
-         $$4 = this.a ? fou.a.b : fou.a.e;
-      } else {
-         $$4 = this.a ? fou.a.a : fou.a.d;
-      }
-
-      $$0.a(glt::B, $$4.g, this.D(), this.E(), this.g, this.h);
+   protected void b(fnr $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.D() + this.y() / 2;
+      int $$5 = this.E() + this.w() / 2;
+      xv $$6 = this.z();
+      $$0.a(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1, false);
+      String $$7 = ftm.a(ae.c());
+      $$0.a(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712, false);
    }
 
-   static enum a {
-      a(alz.b("widget/locked_button")),
-      b(alz.b("widget/locked_button_highlighted")),
-      c(alz.b("widget/locked_button_disabled")),
-      d(alz.b("widget/unlocked_button")),
-      e(alz.b("widget/unlocked_button_highlighted")),
-      f(alz.b("widget/unlocked_button_disabled"));
+   @Override
+   protected void a(fsc $$0) {
+   }
 
-      final alz g;
+   @Override
+   public void a(hgm $$0) {
+   }
 
-      private a(final alz $$0) {
-         this.g = $$0;
-      }
+   @Override
+   public boolean C() {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public fno a(fsi $$0) {
+      return null;
    }
 }

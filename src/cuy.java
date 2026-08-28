@@ -102,7 +102,7 @@ public class cuy {
             return Optional.empty();
          } else {
             if (this.g().f()) {
-               this.a(cxo.k, $$3);
+               this.a(cxo.j, $$3);
             }
 
             return Optional.of($$3);
@@ -113,7 +113,7 @@ public class cuy {
    public cxo b(int $$0, int $$1, cpw $$2) {
       Optional<cxo> $$3 = this.a($$0, $$1, $$2);
       $$3.ifPresent($$1x -> this.a($$2, $$1x));
-      return $$3.orElse(cxo.k);
+      return $$3.orElse(cxo.j);
    }
 
    public cxo d(cxo $$0) {

@@ -417,7 +417,7 @@ public class dqq extends dkl {
 
    @Override
    protected bti a(dxu $$0, dhh $$1, jh $$2, cpw $$3, fbt $$4) {
-      if (!$$3.gh().e) {
+      if (!$$3.gj().e) {
          return bti.e;
       } else {
          if (r($$0) || s($$0)) {

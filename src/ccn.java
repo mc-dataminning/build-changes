@@ -26,7 +26,7 @@ public class ccn extends ccu {
       if (!super.b()) {
          return false;
       } else {
-         return !a(this.d).N().b(dhd.c) ? false : this.a(this.d.dV().al()) && !this.h();
+         return !a(this.d).N().b(dhd.c) ? false : this.a(this.d.dW().al()) && !this.h();
       }
    }
 
@@ -38,36 +38,36 @@ public class ccn extends ccu {
 
    @Override
    public boolean c() {
-      return this.a <= this.f() && !this.h() && this.e.a(this.d.dt(), 2.0) && this.a(this.d.dV().al());
+      return this.a <= this.f() && !this.h() && this.e.a(this.d.du(), 2.0) && this.a(this.d.dW().al());
    }
 
    @Override
    public void e() {
       super.e();
-      this.d.dV().a(this.d.ar(), this.e, -1);
+      this.d.dW().a(this.d.ar(), this.e, -1);
    }
 
    @Override
    public void a() {
       super.a();
-      if (this.d.dY().a(20) == 0) {
-         this.d.dV().c(1019, this.e, 0);
+      if (this.d.dZ().a(20) == 0) {
+         this.d.dW().c(1019, this.e, 0);
          if (!this.d.aI) {
-            this.d.a(this.d.fy());
+            this.d.a(this.d.fA());
          }
       }
 
       this.a++;
       int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
       if ($$0 != this.b) {
-         this.d.dV().a(this.d.ar(), this.e, $$0);
+         this.d.dW().a(this.d.ar(), this.e, $$0);
          this.b = $$0;
       }
 
-      if (this.a == this.f() && this.a(this.d.dV().al())) {
-         this.d.dV().a(this.e, false);
-         this.d.dV().c(1021, this.e, 0);
-         this.d.dV().c(2001, this.e, dkl.j(this.d.dV().a_(this.e)));
+      if (this.a == this.f() && this.a(this.d.dW().al())) {
+         this.d.dW().a(this.e, false);
+         this.d.dW().c(1021, this.e, 0);
+         this.d.dW().c(2001, this.e, dkl.j(this.d.dW().a_(this.e)));
       }
    }
 

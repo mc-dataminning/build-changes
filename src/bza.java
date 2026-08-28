@@ -20,7 +20,7 @@ public class bza<E extends bwh> extends bzb<E> {
    protected void a(ash $$0, E $$1, long $$2) {
       super.a($$0, $$1, $$2);
       this.o.clear();
-      this.p = $$1.dY().i() < this.n;
+      this.p = $$1.dZ().i() < this.n;
    }
 
    @Override

@@ -66,7 +66,7 @@ public record bw(
    }
 
    public boolean a(asi $$0, @Nullable bvj $$1) {
-      return this.a($$0.y(), $$0.dt(), $$1);
+      return this.a($$0.y(), $$0.du(), $$1);
    }
 
    public boolean a(ash $$0, @Nullable fbx $$1, @Nullable bvj $$2) {
@@ -79,7 +79,7 @@ public record bw(
             if (this.d.isPresent()) {
                return false;
             }
-         } else if (this.d.isPresent() && !this.d.get().a($$1.d, $$1.e, $$1.f, $$2.dA(), $$2.dC(), $$2.dG())) {
+         } else if (this.d.isPresent() && !this.d.get().a($$1.d, $$1.e, $$1.f, $$2.dB(), $$2.dD(), $$2.dH())) {
             return false;
          }
 
@@ -91,7 +91,7 @@ public record bw(
             }
          }
 
-         if (this.f.b.isPresent() && !this.f.b.get().a($$0, $$2.dA(), $$2.dC(), $$2.dG())) {
+         if (this.f.b.isPresent() && !this.f.b.get().a($$0, $$2.dB(), $$2.dD(), $$2.dH())) {
             return false;
          } else {
             if (this.f.c.isPresent()) {
@@ -116,7 +116,7 @@ public record bw(
                return false;
             } else if (this.k.isPresent() && !this.k.get().a($$2, $$0, $$1)) {
                return false;
-            } else if (this.m.isPresent() && !this.m.get().a($$0, $$1, $$2.dk())) {
+            } else if (this.m.isPresent() && !this.m.get().a($$0, $$1, $$2.dl())) {
                return false;
             } else if (this.n.isPresent() && $$2.cZ().stream().noneMatch($$2x -> this.n.get().a($$0, $$1, $$2x))) {
                return false;
@@ -139,7 +139,7 @@ public record bw(
    }
 
    public static ewo b(asi $$0, bvj $$1) {
-      ewr $$2 = new ewr.a($$0.y()).a(ezi.a, $$1).a(ezi.f, $$0.dt()).a(ezh.n);
+      ewr $$2 = new ewr.a($$0.y()).a(ezi.a, $$1).a(ezi.f, $$0.du()).a(ezh.n);
       return new ewo.a($$2).a(Optional.empty());
    }
 

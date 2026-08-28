@@ -16,24 +16,24 @@ public class cdx<T extends crk> extends cdd {
 
    @Override
    public boolean b() {
-      return this.c.O_() == null && !this.c.cY() && this.c.gC() && !this.c.gz().a() && !((ash)this.c.dV()).c(this.c.dv());
+      return this.c.O_() == null && !this.c.cY() && this.c.gE() && !this.c.gB().a() && !((ash)this.c.dW()).c(this.c.dw());
    }
 
    @Override
    public boolean c() {
-      return this.c.gC() && !this.c.gz().a() && this.c.dV() instanceof ash && !((ash)this.c.dV()).c(this.c.dv());
+      return this.c.gE() && !this.c.gB().a() && this.c.dW() instanceof ash && !((ash)this.c.dW()).c(this.c.dw());
    }
 
    @Override
    public void a() {
-      if (this.c.gC()) {
-         crj $$0 = this.c.gz();
+      if (this.c.gE()) {
+         crj $$0 = this.c.gB();
          if (this.c.af > this.d) {
             this.d = this.c.af + 20;
             this.a($$0);
          }
 
-         if (!this.c.gi()) {
+         if (!this.c.gk()) {
             fbx $$1 = cha.a(this.c, 15, 4, fbx.c($$0.s()), (float) (Math.PI / 2));
             if ($$1 != null) {
                this.c.L().a($$1.d, $$1.e, $$1.f, 1.0);
@@ -45,7 +45,7 @@ public class cdx<T extends crk> extends cdd {
    private void a(crj $$0) {
       if ($$0.u()) {
          Set<crk> $$1 = Sets.newHashSet();
-         List<crk> $$2 = this.c.dV().a(crk.class, this.c.cR().g(16.0), $$1x -> !$$1x.gC() && crl.a($$1x, $$0));
+         List<crk> $$2 = this.c.dW().a(crk.class, this.c.cR().g(16.0), $$1x -> !$$1x.gE() && crl.a($$1x, $$0));
          $$1.addAll($$2);
 
          for (crk $$3 : $$1) {

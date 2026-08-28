@@ -49,13 +49,13 @@ public class cef extends cdq {
    @Override
    public void a() {
       super.a();
-      dhh $$0 = this.h.dV();
-      jh $$1 = this.h.dv();
+      dhh $$0 = this.h.dW();
+      jh $$1 = this.h.dw();
       jh $$2 = this.a($$1, $$0);
-      bam $$3 = this.h.dY();
+      bam $$3 = this.h.dZ();
       if (this.m() && $$2 != null) {
          if (this.i > 0) {
-            fbx $$4 = this.h.dy();
+            fbx $$4 = this.h.dz();
             this.h.n($$4.d, 0.3, $$4.f);
             if (!$$0.C) {
                double $$5 = 0.08;
@@ -75,7 +75,7 @@ public class cef extends cdq {
          }
 
          if (this.i % 2 == 0) {
-            fbx $$6 = this.h.dy();
+            fbx $$6 = this.h.dz();
             this.h.n($$6.d, -0.3, $$6.f);
             if (this.i % 6 == 0) {
                this.a((dhi)$$0, this.e);

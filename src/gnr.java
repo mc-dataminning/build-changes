@@ -1,53 +1,110 @@
-public class gnr implements gnu<dus> {
-   private final gcf a;
-   private final gcf b;
+import java.util.List;
 
-   public gnr(gnv.a $$0) {
-      this.a = new gcf.a($$0.a(gel.t), glt::c);
-      this.b = new gcf.a($$0.a(gel.s), glt::c);
+public class gnr implements gnv<dur> {
+   public static final alz a = alz.b("textures/entity/beacon_beam.png");
+   public static final int b = 1024;
+
+   public gnr(gnw.a $$0) {
    }
 
-   public static ges b() {
-      geu $$0 = new geu();
-      gew $$1 = $$0.a();
-      $$1.a("main", ger.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), geo.a);
-      $$1.a("left_leg", ger.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), geo.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
-      $$1.a("right_leg", ger.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), geo.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
-      return ges.a($$0, 64, 64);
-   }
+   public void a(dur $$0, float $$1, fgr $$2, glk $$3, int $$4, int $$5) {
+      long $$6 = $$0.i().ac();
+      List<dur.a> $$7 = $$0.b();
+      int $$8 = 0;
 
-   public static ges c() {
-      geu $$0 = new geu();
-      gew $$1 = $$0.a();
-      $$1.a("main", ger.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), geo.a);
-      $$1.a("left_leg", ger.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), geo.b((float) (Math.PI / 2), 0.0F, 0.0F));
-      $$1.a("right_leg", ger.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), geo.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
-      return ges.a($$0, 64, 64);
-   }
-
-   public void a(dus $$0, float $$1, fgq $$2, glj $$3, int $$4, int $$5) {
-      hds $$6 = gme.r[$$0.c().a()];
-      dhh $$7 = $$0.i();
-      if ($$7 != null) {
-         dxu $$8 = $$0.m();
-         dmu.c<? extends dus> $$9 = dmu.a(duy.z, dke::i, dke::h, dlp.c, $$8, $$7, $$0.aB_(), ($$0x, $$1x) -> false);
-         int $$10 = $$9.apply(new gnx<>()).get($$4);
-         this.a($$2, $$3, $$8.c(dke.b) == dyh.a ? this.a : this.b, $$8.c(dke.aF), $$6, $$10, $$5, false);
-      } else {
-         this.a($$2, $$3, this.a, jm.d, $$6, $$4, $$5, false);
-         this.a($$2, $$3, this.b, jm.d, $$6, $$4, $$5, true);
+      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
+         dur.a $$10 = $$7.get($$9);
+         a($$2, $$3, $$1, $$6, $$8, $$9 == $$7.size() - 1 ? 1024 : $$10.c(), $$10.b());
+         $$8 += $$10.c();
       }
    }
 
-   private void a(fgq $$0, glj $$1, gcf $$2, jm $$3, hds $$4, int $$5, int $$6, boolean $$7) {
+   private static void a(fgr $$0, glk $$1, float $$2, long $$3, int $$4, int $$5, int $$6) {
+      a($$0, $$1, a, $$2, 1.0F, $$3, $$4, $$5, $$6, 0.2F, 0.25F);
+   }
+
+   public static void a(fgr $$0, glk $$1, alz $$2, float $$3, float $$4, long $$5, int $$6, int $$7, int $$8, float $$9, float $$10) {
+      int $$11 = $$6 + $$7;
       $$0.a();
-      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
-      $$0.a(a.b.rotationDegrees(90.0F));
-      $$0.a(0.5F, 0.5F, 0.5F);
-      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
-      $$0.a(-0.5F, -0.5F, -0.5F);
-      fgu $$8 = $$4.a($$1, glt::c);
-      $$2.a($$0, $$8, $$5, $$6);
+      $$0.a(0.5, 0.0, 0.5);
+      float $$12 = (float)Math.floorMod($$5, 40) + $$3;
+      float $$13 = $$7 < 0 ? $$12 : -$$12;
+      float $$14 = bae.i($$13 * 0.2F - (float)bae.d($$13 * 0.1F));
+      $$0.a();
+      $$0.a(a.d.rotationDegrees($$12 * 2.25F - 45.0F));
+      float $$15 = 0.0F;
+      float $$18 = 0.0F;
+      float $$19 = -$$9;
+      float $$20 = 0.0F;
+      float $$21 = 0.0F;
+      float $$22 = -$$9;
+      float $$23 = 0.0F;
+      float $$24 = 1.0F;
+      float $$25 = -1.0F + $$14;
+      float $$26 = (float)$$7 * $$4 * (0.5F / $$9) + $$25;
+      a($$0, $$1.getBuffer(glu.e($$2, false)), $$8, $$6, $$11, 0.0F, $$9, $$9, 0.0F, $$19, 0.0F, 0.0F, $$22, 0.0F, 1.0F, $$26, $$25);
       $$0.b();
+      $$15 = -$$10;
+      float $$28 = -$$10;
+      $$18 = -$$10;
+      $$19 = -$$10;
+      $$23 = 0.0F;
+      $$24 = 1.0F;
+      $$25 = -1.0F + $$14;
+      $$26 = (float)$$7 * $$4 + $$25;
+      a($$0, $$1.getBuffer(glu.e($$2, true)), ayp.c(32, $$8), $$6, $$11, $$15, $$28, $$10, $$18, $$19, $$10, $$10, $$10, 0.0F, 1.0F, $$26, $$25);
+      $$0.b();
+   }
+
+   private static void a(
+      fgr $$0,
+      fgv $$1,
+      int $$2,
+      int $$3,
+      int $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15,
+      float $$16
+   ) {
+      fgr.a $$17 = $$0.c();
+      a($$17, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$13, $$14, $$15, $$16);
+      a($$17, $$1, $$2, $$3, $$4, $$11, $$12, $$9, $$10, $$13, $$14, $$15, $$16);
+      a($$17, $$1, $$2, $$3, $$4, $$7, $$8, $$11, $$12, $$13, $$14, $$15, $$16);
+      a($$17, $$1, $$2, $$3, $$4, $$9, $$10, $$5, $$6, $$13, $$14, $$15, $$16);
+   }
+
+   private static void a(
+      fgr.a $$0, fgv $$1, int $$2, int $$3, int $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11, float $$12
+   ) {
+      a($$0, $$1, $$2, $$4, $$5, $$6, $$10, $$11);
+      a($$0, $$1, $$2, $$3, $$5, $$6, $$10, $$12);
+      a($$0, $$1, $$2, $$3, $$7, $$8, $$9, $$12);
+      a($$0, $$1, $$2, $$4, $$7, $$8, $$9, $$11);
+   }
+
+   private static void a(fgr.a $$0, fgv $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      $$1.a($$0, $$4, (float)$$3, $$5).a($$2).a($$6, $$7).b(hbb.d).c(15728880).b($$0, 0.0F, 1.0F, 0.0F);
+   }
+
+   public boolean a(dur $$0) {
+      return true;
+   }
+
+   @Override
+   public int aW_() {
+      return 256;
+   }
+
+   public boolean a(dur $$0, fbx $$1) {
+      return fbx.b($$0.aB_()).d(1.0, 0.0, 1.0).a((ka)$$1.d(1.0, 0.0, 1.0), (double)this.aW_());
    }
 }

@@ -25,7 +25,7 @@ public class dpb extends dkl implements drp {
 
    @Override
    protected bti a(dxu $$0, dhh $$1, jh $$2, cpw $$3, fbt $$4) {
-      if (!$$1.C && $$3.gE()) {
+      if (!$$1.C && $$3.gG()) {
          $$1.a($$2, $$0.a(c), 2);
          return bti.b;
       } else {

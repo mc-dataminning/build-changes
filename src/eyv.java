@@ -3,9 +3,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
 public class eyv extends eyb {
-   public static final MapCodec<eyv> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(alw.a(mb.K).fieldOf("item").forGetter($$0x -> $$0x.b)).apply($$0, eyv::new)
-   );
+   public static final MapCodec<eyv> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(cxk.e.fieldOf("item").forGetter($$0x -> $$0x.b)).apply($$0, eyv::new));
    private final jq<cxk> b;
 
    private eyv(List<ezx> $$0, jq<cxk> $$1) {

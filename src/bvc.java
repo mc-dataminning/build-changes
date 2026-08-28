@@ -49,16 +49,16 @@ public class bvc extends bvj implements bxe {
    }
 
    public void a(float $$0) {
-      if (!this.dV().C) {
+      if (!this.dW().C) {
          this.au().a(e, bae.a($$0, 0.0F, 32.0F));
       }
    }
 
    @Override
    public void m_() {
-      double $$0 = this.dA();
-      double $$1 = this.dC();
-      double $$2 = this.dG();
+      double $$0 = this.dB();
+      double $$1 = this.dD();
+      double $$2 = this.dH();
       super.m_();
       this.a_($$0, $$1, $$2);
    }
@@ -111,7 +111,7 @@ public class bvc extends bvj implements bxe {
    @Override
    public void h() {
       super.h();
-      if (this.dV() instanceof ash $$0) {
+      if (this.dW() instanceof ash $$0) {
          this.a($$0);
       } else {
          this.t();
@@ -136,19 +136,19 @@ public class bvc extends bvj implements bxe {
          for (int $$7 = 0; $$7 < $$3; $$7++) {
             float $$8 = this.ae.i() * (float) (Math.PI * 2);
             float $$9 = bae.c(this.ae.i()) * $$4;
-            double $$10 = this.dA() + (double)(bae.b($$8) * $$9);
-            double $$11 = this.dC();
-            double $$12 = this.dG() + (double)(bae.a($$8) * $$9);
+            double $$10 = this.dB() + (double)(bae.b($$8) * $$9);
+            double $$11 = this.dD();
+            double $$12 = this.dH() + (double)(bae.a($$8) * $$9);
             if ($$2.a() == ls.u) {
                if ($$0 && this.ae.h()) {
-                  this.dV().b(ll.a(ls.u, -1), $$10, $$11, $$12, 0.0, 0.0, 0.0);
+                  this.dW().b(ll.a(ls.u, -1), $$10, $$11, $$12, 0.0, 0.0, 0.0);
                } else {
-                  this.dV().b($$2, $$10, $$11, $$12, 0.0, 0.0, 0.0);
+                  this.dW().b($$2, $$10, $$11, $$12, 0.0, 0.0, 0.0);
                }
             } else if ($$0) {
-               this.dV().b($$2, $$10, $$11, $$12, 0.0, 0.0, 0.0);
+               this.dW().b($$2, $$10, $$11, $$12, 0.0, 0.0, 0.0);
             } else {
-               this.dV().b($$2, $$10, $$11, $$12, (0.5 - this.ae.j()) * 0.15, 0.01F, (0.5 - this.ae.j()) * 0.15);
+               this.dW().b($$2, $$10, $$11, $$12, (0.5 - this.ae.j()) * 0.15, 0.01F, (0.5 - this.ae.j()) * 0.15);
             }
          }
       }
@@ -189,12 +189,12 @@ public class bvc extends bvj implements bxe {
                   }
 
                   $$4.addAll(this.k.d());
-                  List<bwf> $$6 = this.dV().a(bwf.class, this.cR());
+                  List<bwf> $$6 = this.dW().a(bwf.class, this.cR());
                   if (!$$6.isEmpty()) {
                      for (bwf $$7 : $$6) {
-                        if (!this.l.containsKey($$7) && $$7.fJ() && !$$4.stream().noneMatch($$7::b)) {
-                           double $$8 = $$7.dA() - this.dA();
-                           double $$9 = $$7.dG() - this.dG();
+                        if (!this.l.containsKey($$7) && $$7.fL() && !$$4.stream().noneMatch($$7::b)) {
+                           double $$8 = $$7.dB() - this.dB();
+                           double $$9 = $$7.dH() - this.dH();
                            double $$10 = $$8 * $$8 + $$9 * $$9;
                            if ($$10 <= (double)($$3 * $$3)) {
                               this.l.put($$7, this.af + this.o);
@@ -273,8 +273,8 @@ public class bvc extends bvj implements bxe {
 
    @Nullable
    public bwf n() {
-      if (this.s == null && this.t != null && this.dV() instanceof ash) {
-         bvj $$0 = ((ash)this.dV()).a(this.t);
+      if (this.s == null && this.t != null && this.dW() instanceof ash) {
+         bvj $$0 = ((ash)this.dW()).a(this.t);
          if ($$0 instanceof bwf) {
             this.s = (bwf)$$0;
          }
@@ -297,7 +297,7 @@ public class bvc extends bvj implements bxe {
          this.t = $$0.a("Owner");
       }
 
-      alx<vu> $$1 = this.dX().a(vl.a);
+      alx<vu> $$1 = this.dY().a(vl.a);
       if ($$0.b("Particle", 10)) {
          ls.bh
             .parse($$1, $$0.c("Particle"))
@@ -320,7 +320,7 @@ public class bvc extends bvj implements bxe {
       $$0.a("RadiusOnUse", this.q);
       $$0.a("RadiusPerTick", this.r);
       $$0.a("Radius", this.c());
-      alx<vu> $$1 = this.dX().a(vl.a);
+      alx<vu> $$1 = this.dY().a(vl.a);
       $$0.a("Particle", (vu)ls.bh.encodeStart($$1, this.e()).getOrThrow());
       if (this.t != null) {
          $$0.a("Owner", this.t);

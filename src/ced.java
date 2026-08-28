@@ -49,7 +49,7 @@ public class ced<T extends cmw & cna> extends cdd {
       this.a.w(false);
       this.f = 0;
       this.e = -1;
-      this.a.fD();
+      this.a.fF();
    }
 
    @Override
@@ -61,7 +61,7 @@ public class ced<T extends cmw & cna> extends cdd {
    public void a() {
       bwf $$0 = this.a.O_();
       if ($$0 != null) {
-         double $$1 = this.a.i($$0.dA(), $$0.dC(), $$0.dG());
+         double $$1 = this.a.i($$0.dB(), $$0.dD(), $$0.dH());
          boolean $$2 = this.a.N().a($$0);
          boolean $$3 = this.f > 0;
          if ($$2 != $$3) {
@@ -83,11 +83,11 @@ public class ced<T extends cmw & cna> extends cdd {
          }
 
          if (this.i >= 20) {
-            if ((double)this.a.dY().i() < 0.3) {
+            if ((double)this.a.dZ().i() < 0.3) {
                this.g = !this.g;
             }
 
-            if ((double)this.a.dY().i() < 0.3) {
+            if ((double)this.a.dZ().i() < 0.3) {
                this.h = !this.h;
             }
 
@@ -102,7 +102,7 @@ public class ced<T extends cmw & cna> extends cdd {
             }
 
             this.a.I().a(this.h ? -0.5F : 0.5F, this.g ? 0.5F : -0.5F);
-            if (this.a.dl() instanceof bwh $$4) {
+            if (this.a.dm() instanceof bwh $$4) {
                $$4.a($$0, 30.0F, 30.0F);
             }
 
@@ -111,13 +111,13 @@ public class ced<T extends cmw & cna> extends cdd {
             this.a.H().a($$0, 30.0F, 30.0F);
          }
 
-         if (this.a.fx()) {
+         if (this.a.fz()) {
             if (!$$2 && this.f < -60) {
-               this.a.fD();
+               this.a.fF();
             } else if ($$2) {
-               int $$5 = this.a.fB();
+               int $$5 = this.a.fD();
                if ($$5 >= 20) {
-                  this.a.fD();
+                  this.a.fF();
                   this.a.a($$0, cvy.a($$5));
                   this.e = this.c;
                }

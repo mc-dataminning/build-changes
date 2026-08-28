@@ -10,7 +10,7 @@ public class bxw {
                      if ($$9.a($$7, (double)$$0) && $$2.<cfl>b($$6).a($$9)) {
                         $$4.a(new byj($$9, true));
                         $$7.I().a(-$$1, 0.0F);
-                        $$7.v(bae.c($$7.dL(), $$7.aZ, 0.0F));
+                        $$7.v(bae.c($$7.dM(), $$7.aZ, 0.0F));
                         return true;
                      } else {
                         return false;

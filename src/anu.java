@@ -35,7 +35,7 @@ public class anu {
    }
 
    private static int a(ew $$0, asi $$1) {
-      GameProfile $$2 = $$1.gf();
+      GameProfile $$2 = $$1.gh();
       $$1.f.n();
       $$0.a(() -> xv.b("Switched player " + $$2.getName() + "(" + $$2.getId() + ") to config mode"), false);
       return 1;

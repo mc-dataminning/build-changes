@@ -58,15 +58,15 @@ public class dwf extends duw implements ecs.b<dwf.a> {
       @Override
       public boolean a(ash $$0, jq<ecq> $$1, ecq.a $$2, fbx $$3) {
          if ($$1.a(ecq.p) && $$2.a() instanceof bwf $$4) {
-            if (!$$4.eI()) {
-               btz $$5 = $$4.eF();
+            if (!$$4.eJ()) {
+               btz $$5 = $$4.eG();
                int $$6 = $$4.a($$0, x.a($$5, btz::d));
-               if ($$4.em() && $$6 > 0) {
+               if ($$4.en() && $$6 > 0) {
                   this.b.a(jh.a((ka)$$3.a(jm.b, 0.5)), $$6);
                   this.a($$0, $$4);
                }
 
-               $$4.eH();
+               $$4.eI();
                this.d.a($$0).ifPresent($$1x -> this.a($$0, jh.a((ka)$$1x), this.c, $$0.H_()));
             }
 
@@ -89,8 +89,8 @@ public class dwf extends duw implements ecs.b<dwf.a> {
       }
 
       private void a(dhh $$0, bwf $$1) {
-         if ($$1.ep() instanceof asi $$3) {
-            btz $$4 = $$1.eF() == null ? $$0.aj().a((cpw)$$3) : $$1.eF();
+         if ($$1.eq() instanceof asi $$3) {
+            btz $$4 = $$1.eG() == null ? $$0.aj().a((cpw)$$3) : $$1.eG();
             ao.Z.a($$3, $$1, $$4);
          }
       }

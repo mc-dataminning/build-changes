@@ -26,10 +26,10 @@ public class cvy extends cyk {
             } else {
                List<cxo> $$8 = a($$0, $$5, $$4);
                if ($$1 instanceof ash $$9 && !$$8.isEmpty()) {
-                  this.a($$9, $$4, $$4.fy(), $$0, $$8, $$7 * 3.0F, 1.0F, $$7 == 1.0F, null);
+                  this.a($$9, $$4, $$4.fA(), $$0, $$8, $$7 * 3.0F, 1.0F, $$7 == 1.0F, null);
                }
 
-               $$1.a(null, $$4.dA(), $$4.dC(), $$4.dG(), axf.aG, axg.h, 1.0F, 1.0F / ($$1.H_().i() * 0.4F + 1.2F) + $$7 * 0.5F);
+               $$1.a(null, $$4.dB(), $$4.dD(), $$4.dH(), axf.aG, axg.h, 1.0F, 1.0F / ($$1.H_().i() * 0.4F + 1.2F) + $$7 * 0.5F);
                $$4.b(axp.c.b(this));
                return true;
             }
@@ -39,7 +39,7 @@ public class cvy extends cyk {
 
    @Override
    protected void a(bwf $$0, cqp $$1, int $$2, float $$3, float $$4, float $$5, @Nullable bwf $$6) {
-      $$1.a($$0, $$0.dN(), $$0.dL() + $$5, 0.0F, $$3, $$4);
+      $$1.a($$0, $$0.dO(), $$0.dM() + $$5, 0.0F, $$3, $$4);
    }
 
    public static float a(int $$0) {
@@ -66,7 +66,7 @@ public class cvy extends cyk {
    public bti a(dhh $$0, cpw $$1, bth $$2) {
       cxo $$3 = $$1.b($$2);
       boolean $$4 = !$$1.d($$3).f();
-      if (!$$1.fT() && !$$4) {
+      if (!$$1.fV() && !$$4) {
          return bti.d;
       } else {
          $$1.c($$2);

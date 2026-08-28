@@ -1,89 +1,347 @@
-public class gen {
-   public static final String a = "left_fin";
-   public static final String b = "right_fin";
-   public static final String c = "top_fin";
-   public static final String d = "bottom_fin";
-   public static final String e = "tail_fin";
-   public static final String f = "left_blue_fin";
-   public static final String g = "right_blue_fin";
-   public static final String h = "left_arm";
-   public static final String i = "right_arm";
-   public static final String j = "left_wing";
-   public static final String k = "right_wing";
-   public static final String l = "left_wing_base";
-   public static final String m = "right_wing_base";
-   public static final String n = "left_wing_tip";
-   public static final String o = "right_wing_tip";
-   public static final String p = "left_ear";
-   public static final String q = "right_ear";
-   public static final String r = "left_leg";
-   public static final String s = "right_leg";
-   public static final String t = "left_hind_leg";
-   public static final String u = "right_hind_leg";
-   public static final String v = "left_mid_leg";
-   public static final String w = "right_mid_leg";
-   public static final String x = "left_front_leg";
-   public static final String y = "right_front_leg";
-   public static final String z = "left_hind_foot";
-   public static final String A = "right_hind_foot";
-   public static final String B = "left_front_foot";
-   public static final String C = "right_front_foot";
-   public static final String D = "feet";
-   public static final String E = "left_hind_leg_tip";
-   public static final String F = "right_hind_leg_tip";
-   public static final String G = "left_front_leg_tip";
-   public static final String H = "right_front_leg_tip";
-   public static final String I = "left_lid";
-   public static final String J = "right_lid";
-   public static final String K = "left_chest";
-   public static final String L = "right_chest";
-   public static final String M = "left_horn";
-   public static final String N = "right_horn";
-   public static final String O = "left_eye";
-   public static final String P = "right_eye";
-   public static final String Q = "jaw";
-   public static final String R = "nose";
-   public static final String S = "arms";
-   public static final String T = "tail";
-   public static final String U = "cube";
-   public static final String V = "beak";
-   public static final String W = "back_fin";
-   public static final String X = "mane";
-   public static final String Y = "neck";
-   public static final String Z = "mouth";
-   public static final String aa = "head";
-   public static final String ab = "hat";
-   public static final String ac = "body";
-   public static final String ad = "upper_body";
-   public static final String ae = "hat_rim";
-   public static final String af = "jacket";
-   public static final String ag = "top_gills";
-   public static final String ah = "left_gills";
-   public static final String ai = "right_gills";
-   public static final String aj = "root";
-   public static final String ak = "croaking_body";
-   public static final String al = "tongue";
-   public static final String am = "tongue_r1";
-   public static final String an = "left_hand";
-   public static final String ao = "right_hand";
-   public static final String ap = "left_foot";
-   public static final String aq = "right_foot";
-   public static final String ar = "eyes";
-   public static final String as = "right_tendril";
-   public static final String at = "left_tendril";
-   public static final String au = "right_ribcage";
-   public static final String av = "left_ribcage";
-   public static final String aw = "wind_body";
-   public static final String ax = "wind_top";
-   public static final String ay = "wind_mid";
-   public static final String az = "wind_bottom";
-   public static final String aA = "rods";
-   public static final String aB = "mushrooms";
-   public static final String aC = "bone";
-   public static final String aD = "left_paddle";
-   public static final String aE = "right_paddle";
-   public static final String aF = "bottom";
-   public static final String aG = "chest_bottom";
-   public static final String aH = "chest_lid";
-   public static final String aI = "chest_lock";
+import java.util.List;
+import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.Set;
+import java.util.stream.Stream;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
+
+public final class gen {
+   public static final float a = 1.0F;
+   public float b;
+   public float c;
+   public float d;
+   public float e;
+   public float f;
+   public float g;
+   public float h = 1.0F;
+   public float i = 1.0F;
+   public float j = 1.0F;
+   public boolean k = true;
+   public boolean l;
+   private final List<gen.a> m;
+   private final Map<String, gen> n;
+   private gep o = gep.a;
+
+   public gen(List<gen.a> $$0, Map<String, gen> $$1) {
+      this.m = $$0;
+      this.n = $$1;
+   }
+
+   public gep a() {
+      return gep.a(this.b, this.c, this.d, this.e, this.f, this.g);
+   }
+
+   public gep b() {
+      return this.o;
+   }
+
+   public void a(gep $$0) {
+      this.o = $$0;
+   }
+
+   public void c() {
+      this.b(this.o);
+   }
+
+   public void b(gep $$0) {
+      this.b = $$0.a();
+      this.c = $$0.b();
+      this.d = $$0.c();
+      this.e = $$0.d();
+      this.f = $$0.e();
+      this.g = $$0.f();
+      this.h = $$0.g();
+      this.i = $$0.h();
+      this.j = $$0.i();
+   }
+
+   public void a(gen $$0) {
+      this.h = $$0.h;
+      this.i = $$0.i;
+      this.j = $$0.j;
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.b = $$0.b;
+      this.c = $$0.c;
+      this.d = $$0.d;
+   }
+
+   public boolean a(String $$0) {
+      return this.n.containsKey($$0);
+   }
+
+   public gen b(String $$0) {
+      gen $$1 = this.n.get($$0);
+      if ($$1 == null) {
+         throw new NoSuchElementException("Can't find part " + $$0);
+      } else {
+         return $$1;
+      }
+   }
+
+   public void a(float $$0, float $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+   }
+
+   public void b(float $$0, float $$1, float $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+   }
+
+   public void a(fgr $$0, fgv $$1, int $$2, int $$3) {
+      this.a($$0, $$1, $$2, $$3, -1);
+   }
+
+   public void a(fgr $$0, fgv $$1, int $$2, int $$3, int $$4) {
+      if (this.k) {
+         if (!this.m.isEmpty() || !this.n.isEmpty()) {
+            $$0.a();
+            this.a($$0);
+            if (!this.l) {
+               this.a($$0.c(), $$1, $$2, $$3, $$4);
+            }
+
+            for (gen $$5 : this.n.values()) {
+               $$5.a($$0, $$1, $$2, $$3, $$4);
+            }
+
+            $$0.b();
+         }
+      }
+   }
+
+   public void a(Quaternionf $$0) {
+      Matrix3f $$1 = new Matrix3f().rotationZYX(this.g, this.f, this.e);
+      Matrix3f $$2 = $$1.rotate($$0);
+      Vector3f $$3 = $$2.getEulerAnglesZYX(new Vector3f());
+      this.b($$3.x, $$3.y, $$3.z);
+   }
+
+   public void a(fgr $$0, gen.d $$1) {
+      this.a($$0, $$1, "");
+   }
+
+   private void a(fgr $$0, gen.d $$1, String $$2) {
+      if (!this.m.isEmpty() || !this.n.isEmpty()) {
+         $$0.a();
+         this.a($$0);
+         fgr.a $$3 = $$0.c();
+
+         for (int $$4 = 0; $$4 < this.m.size(); $$4++) {
+            $$1.visit($$3, $$2, $$4, this.m.get($$4));
+         }
+
+         String $$5 = $$2 + "/";
+         this.n.forEach(($$3x, $$4) -> $$4.a($$0, $$1, $$5 + $$3x));
+         $$0.b();
+      }
+   }
+
+   public void a(fgr $$0) {
+      $$0.a(this.b / 16.0F, this.c / 16.0F, this.d / 16.0F);
+      if (this.e != 0.0F || this.f != 0.0F || this.g != 0.0F) {
+         $$0.a(new Quaternionf().rotationZYX(this.g, this.f, this.e));
+      }
+
+      if (this.h != 1.0F || this.i != 1.0F || this.j != 1.0F) {
+         $$0.b(this.h, this.i, this.j);
+      }
+   }
+
+   private void a(fgr.a $$0, fgv $$1, int $$2, int $$3, int $$4) {
+      for (gen.a $$5 : this.m) {
+         $$5.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   public gen.a a(bam $$0) {
+      return this.m.get($$0.a(this.m.size()));
+   }
+
+   public boolean d() {
+      return this.m.isEmpty();
+   }
+
+   public void a(Vector3f $$0) {
+      this.b = this.b + $$0.x();
+      this.c = this.c + $$0.y();
+      this.d = this.d + $$0.z();
+   }
+
+   public void b(Vector3f $$0) {
+      this.e = this.e + $$0.x();
+      this.f = this.f + $$0.y();
+      this.g = this.g + $$0.z();
+   }
+
+   public void c(Vector3f $$0) {
+      this.h = this.h + $$0.x();
+      this.i = this.i + $$0.y();
+      this.j = this.j + $$0.z();
+   }
+
+   public Stream<gen> e() {
+      return Stream.concat(Stream.of(this), this.n.values().stream().flatMap(gen::e));
+   }
+
+   public static class a {
+      public final gen.b[] a;
+      public final float b;
+      public final float c;
+      public final float d;
+      public final float e;
+      public final float f;
+      public final float g;
+
+      public a(
+         int $$0,
+         int $$1,
+         float $$2,
+         float $$3,
+         float $$4,
+         float $$5,
+         float $$6,
+         float $$7,
+         float $$8,
+         float $$9,
+         float $$10,
+         boolean $$11,
+         float $$12,
+         float $$13,
+         Set<jm> $$14
+      ) {
+         this.b = $$2;
+         this.c = $$3;
+         this.d = $$4;
+         this.e = $$2 + $$5;
+         this.f = $$3 + $$6;
+         this.g = $$4 + $$7;
+         this.a = new gen.b[$$14.size()];
+         float $$15 = $$2 + $$5;
+         float $$16 = $$3 + $$6;
+         float $$17 = $$4 + $$7;
+         $$2 -= $$8;
+         $$3 -= $$9;
+         $$4 -= $$10;
+         $$15 += $$8;
+         $$16 += $$9;
+         $$17 += $$10;
+         if ($$11) {
+            float $$18 = $$15;
+            $$15 = $$2;
+            $$2 = $$18;
+         }
+
+         gen.c $$19 = new gen.c($$2, $$3, $$4, 0.0F, 0.0F);
+         gen.c $$20 = new gen.c($$15, $$3, $$4, 0.0F, 8.0F);
+         gen.c $$21 = new gen.c($$15, $$16, $$4, 8.0F, 8.0F);
+         gen.c $$22 = new gen.c($$2, $$16, $$4, 8.0F, 0.0F);
+         gen.c $$23 = new gen.c($$2, $$3, $$17, 0.0F, 0.0F);
+         gen.c $$24 = new gen.c($$15, $$3, $$17, 0.0F, 8.0F);
+         gen.c $$25 = new gen.c($$15, $$16, $$17, 8.0F, 8.0F);
+         gen.c $$26 = new gen.c($$2, $$16, $$17, 8.0F, 0.0F);
+         float $$27 = (float)$$0;
+         float $$28 = (float)$$0 + $$7;
+         float $$29 = (float)$$0 + $$7 + $$5;
+         float $$30 = (float)$$0 + $$7 + $$5 + $$5;
+         float $$31 = (float)$$0 + $$7 + $$5 + $$7;
+         float $$32 = (float)$$0 + $$7 + $$5 + $$7 + $$5;
+         float $$33 = (float)$$1;
+         float $$34 = (float)$$1 + $$7;
+         float $$35 = (float)$$1 + $$7 + $$6;
+         int $$36 = 0;
+         if ($$14.contains(jm.a)) {
+            this.a[$$36++] = new gen.b(new gen.c[]{$$24, $$23, $$19, $$20}, $$28, $$33, $$29, $$34, $$12, $$13, $$11, jm.a);
+         }
+
+         if ($$14.contains(jm.b)) {
+            this.a[$$36++] = new gen.b(new gen.c[]{$$21, $$22, $$26, $$25}, $$29, $$34, $$30, $$33, $$12, $$13, $$11, jm.b);
+         }
+
+         if ($$14.contains(jm.e)) {
+            this.a[$$36++] = new gen.b(new gen.c[]{$$19, $$23, $$26, $$22}, $$27, $$34, $$28, $$35, $$12, $$13, $$11, jm.e);
+         }
+
+         if ($$14.contains(jm.c)) {
+            this.a[$$36++] = new gen.b(new gen.c[]{$$20, $$19, $$22, $$21}, $$28, $$34, $$29, $$35, $$12, $$13, $$11, jm.c);
+         }
+
+         if ($$14.contains(jm.f)) {
+            this.a[$$36++] = new gen.b(new gen.c[]{$$24, $$20, $$21, $$25}, $$29, $$34, $$31, $$35, $$12, $$13, $$11, jm.f);
+         }
+
+         if ($$14.contains(jm.d)) {
+            this.a[$$36] = new gen.b(new gen.c[]{$$23, $$24, $$25, $$26}, $$31, $$34, $$32, $$35, $$12, $$13, $$11, jm.d);
+         }
+      }
+
+      public void a(fgr.a $$0, fgv $$1, int $$2, int $$3, int $$4) {
+         Matrix4f $$5 = $$0.a();
+         Vector3f $$6 = new Vector3f();
+
+         for (gen.b $$7 : this.a) {
+            Vector3f $$8 = $$0.a($$7.b, $$6);
+            float $$9 = $$8.x();
+            float $$10 = $$8.y();
+            float $$11 = $$8.z();
+
+            for (gen.c $$12 : $$7.a) {
+               float $$13 = $$12.a.x() / 16.0F;
+               float $$14 = $$12.a.y() / 16.0F;
+               float $$15 = $$12.a.z() / 16.0F;
+               Vector3f $$16 = $$5.transformPosition($$13, $$14, $$15, $$6);
+               $$1.a($$16.x(), $$16.y(), $$16.z(), $$4, $$12.b, $$12.c, $$3, $$2, $$9, $$10, $$11);
+            }
+         }
+      }
+   }
+
+   public static record b(gen.c[] a, Vector3f b) {
+
+      public b(gen.c[] $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, boolean $$7, jm $$8) {
+         this($$0, $$8.m());
+         float $$9 = 0.0F / $$5;
+         float $$10 = 0.0F / $$6;
+         $$0[0] = $$0[0].a($$3 / $$5 - $$9, $$2 / $$6 + $$10);
+         $$0[1] = $$0[1].a($$1 / $$5 + $$9, $$2 / $$6 + $$10);
+         $$0[2] = $$0[2].a($$1 / $$5 + $$9, $$4 / $$6 - $$10);
+         $$0[3] = $$0[3].a($$3 / $$5 - $$9, $$4 / $$6 - $$10);
+         if ($$7) {
+            int $$11 = $$0.length;
+
+            for (int $$12 = 0; $$12 < $$11 / 2; $$12++) {
+               gen.c $$13 = $$0[$$12];
+               $$0[$$12] = $$0[$$11 - 1 - $$12];
+               $$0[$$11 - 1 - $$12] = $$13;
+            }
+         }
+
+         if ($$7) {
+            this.b.mul(-1.0F, 1.0F, 1.0F);
+         }
+      }
+   }
+
+   public static record c(Vector3f a, float b, float c) {
+
+      public c(float $$0, float $$1, float $$2, float $$3, float $$4) {
+         this(new Vector3f($$0, $$1, $$2), $$3, $$4);
+      }
+
+      public gen.c a(float $$0, float $$1) {
+         return new gen.c(this.a, $$0, $$1);
+      }
+   }
+
+   @FunctionalInterface
+   public interface d {
+      void visit(fgr.a var1, String var2, int var3, gen.a var4);
+   }
 }

@@ -10,7 +10,7 @@ public class cgi<T extends bwf> extends cgp<T> {
       fbs $$3 = $$1.cR().c($$2, $$2, $$2);
       List<bwf> $$4 = $$0.a(bwf.class, $$3, $$1x -> $$1x != $$1 && $$1x.bL());
       $$4.sort(Comparator.comparingDouble($$1::g));
-      bxh<?> $$5 = $$1.eb();
+      bxh<?> $$5 = $$1.ec();
       $$5.a(cfj.g, $$4);
       $$5.a(cfj.h, new cfl($$0, $$1, $$4));
    }

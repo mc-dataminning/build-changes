@@ -1,25 +1,22 @@
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
-public class fxc extends fxa {
-   private static final xv a = xv.c("options.sounds.title");
+public class fxc extends fxb {
+   private static final xv a = xv.c("options.skinCustomisation.title");
 
-   private static fmh<?>[] a(fmi $$0) {
-      return new fmh[]{$$0.Z(), $$0.aa()};
-   }
-
-   public fxc(ftw $$0, fmi $$1) {
+   public fxc(ftx $$0, fmj $$1) {
       super($$0, $$1, a);
    }
 
    @Override
    protected void l() {
-      this.d.a(this.c.b(axg.a));
-      this.d.a(this.J());
-      this.d.a(this.c.aw());
-      this.d.a(a(this.c));
-   }
+      List<foc> $$0 = new ArrayList<>();
 
-   private fmh<?>[] J() {
-      return Arrays.stream(axg.values()).filter($$0 -> $$0 != axg.a).map($$0 -> this.c.b($$0)).toArray(fmh[]::new);
+      for (cpx $$1 : cpx.values()) {
+         $$0.add(fol.b(this.c.a($$1)).a($$1.d(), ($$1x, $$2) -> this.c.a($$1, $$2)));
+      }
+
+      $$0.add(this.c.x().a(this.c));
+      this.d.a($$0);
    }
 }

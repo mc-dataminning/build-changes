@@ -1,3 +1,8 @@
-public interface fnj {
-   int getColor(cxo var1, int var2);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fnj {
 }

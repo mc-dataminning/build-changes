@@ -6,7 +6,7 @@ public class cmg extends cme implements bww {
    private static final alc<Boolean> d = alg.a(cmg.class, ale.k);
    public static final String a = "sheared";
 
-   public static bxm.a go() {
+   public static bxm.a gq() {
       return cme.m().a(bxn.s, 16.0);
    }
 
@@ -23,7 +23,7 @@ public class cmg extends cme implements bww {
    @Override
    public void b(ux $$0) {
       super.b($$0);
-      $$0.a("sheared", this.gp());
+      $$0.a("sheared", this.gr());
    }
 
    @Override
@@ -32,7 +32,7 @@ public class cmg extends cme implements bww {
       this.x($$0.q("sheared"));
    }
 
-   public boolean gp() {
+   public boolean gr() {
       return this.al.a(d);
    }
 
@@ -44,7 +44,7 @@ public class cmg extends cme implements bww {
    protected bti b(cpw $$0, bth $$1) {
       cxo $$2 = $$0.b($$1);
       if ($$2.a(cxs.sJ) && this.a()) {
-         if (this.dV() instanceof ash $$3) {
+         if (this.dW() instanceof ash $$3) {
             this.a($$3, axg.h, $$2);
             this.a(ecq.M, $$0);
             $$2.a(1, $$0, d($$1));
@@ -92,7 +92,7 @@ public class cmg extends cme implements bww {
    }
 
    @Override
-   protected int gm() {
+   protected int go() {
       return 70;
    }
 
@@ -104,11 +104,11 @@ public class cmg extends cme implements bww {
    }
 
    private void d(ash $$0, cxo $$1) {
-      this.a($$0, ewk.aQ, $$1, ($$0x, $$1x) -> this.a($$0x, $$1x, this.dr()));
+      this.a($$0, ewk.aQ, $$1, ($$0x, $$1x) -> this.a($$0x, $$1x, this.ds()));
    }
 
    @Override
    public boolean a() {
-      return !this.gp() && this.bL();
+      return !this.gr() && this.bL();
    }
 }

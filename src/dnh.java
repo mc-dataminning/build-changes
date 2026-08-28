@@ -6,6 +6,6 @@ public interface dnh {
    }
 
    default btz a(bvj $$0) {
-      return $$0.dW().a($$0);
+      return $$0.dX().a($$0);
    }
 }

@@ -44,7 +44,7 @@ public class dpr extends dkl implements dqg {
             bvj $$4 = bvq.bR.a($$1, $$2.d(), bvp.d);
             if ($$4 != null) {
                $$4.aB();
-               bvj $$5 = $$4.dk();
+               bvj $$5 = $$4.dl();
                if ($$5 != null) {
                   $$5.aB();
                }
@@ -70,7 +70,7 @@ public class dpr extends dkl implements dqg {
 
    @Override
    public int a(ash $$0, bvj $$1) {
-      return $$1 instanceof cpw $$2 ? Math.max(0, $$0.N().c($$2.gh().a ? dhd.G : dhd.F)) : 0;
+      return $$1 instanceof cpw $$2 ? Math.max(0, $$0.N().c($$2.gj().a ? dhd.G : dhd.F)) : 0;
    }
 
    @Nullable
@@ -84,7 +84,7 @@ public class dpr extends dkl implements dqg {
          boolean $$5 = $$4.ah() == dhh.j;
          dzk $$6 = $$4.F_();
          double $$7 = ebp.a($$0.G_(), $$4.G_());
-         jh $$8 = $$6.b($$1.dA() * $$7, $$1.dC(), $$1.dG() * $$7);
+         jh $$8 = $$6.b($$1.dB() * $$7, $$1.dD(), $$1.dH() * $$7);
          return this.a($$4, $$1, $$2, $$8, $$5, $$6);
       }
    }
@@ -100,7 +100,7 @@ public class dpr extends dkl implements dqg {
          $$9 = l.a($$7, $$8.c(dyk.I), 21, jm.a.b, 21, $$2x -> $$0.a_($$2x) == $$8);
          $$10 = euw.b.then($$1x -> $$1x.f($$7));
       } else {
-         jm.a $$11 = $$1.dV().a_($$2).d(b).orElse(jm.a.a);
+         jm.a $$11 = $$1.dW().a_($$2).d(b).orElse(jm.a.a);
          Optional<l.a> $$12 = $$0.q().a($$3, $$11);
          if ($$12.isEmpty()) {
             f.error("Unable to create a portal, likely target out of worldborder");
@@ -115,12 +115,12 @@ public class dpr extends dkl implements dqg {
    }
 
    private static euw a(bvj $$0, jh $$1, l.a $$2, ash $$3, euw.a $$4) {
-      dxu $$5 = $$0.dV().a_($$1);
+      dxu $$5 = $$0.dW().a_($$1);
       jm.a $$6;
       fbx $$8;
       if ($$5.b(dyk.I)) {
          $$6 = $$5.c(dyk.I);
-         l.a $$7 = l.a($$1, $$6, 21, jm.a.b, 21, $$2x -> $$0.dV().a_($$2x) == $$5);
+         l.a $$7 = l.a($$1, $$6, 21, jm.a.b, 21, $$2x -> $$0.dW().a_($$2x) == $$5);
          $$8 = $$0.a($$6, $$7);
       } else {
          $$6 = jm.a.a;
@@ -180,7 +180,7 @@ public class dpr extends dkl implements dqg {
 
    @Override
    public cxo a(dhk $$0, jh $$1, dxu $$2) {
-      return cxo.k;
+      return cxo.j;
    }
 
    @Override

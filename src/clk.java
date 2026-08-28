@@ -21,11 +21,11 @@ public class clk {
          }
 
          this.d = this.b((clj<cld>)$$0);
-         if (!this.b.dV().C) {
+         if (!this.b.dW().C) {
             this.b.au().a(ckt.a, $$0.b());
          }
 
-         a.debug("Dragon is now in phase {} on the {}", $$0, this.b.dV().C ? "client" : "server");
+         a.debug("Dragon is now in phase {} on the {}", $$0, this.b.dW().C ? "client" : "server");
          this.d.c();
       }
    }

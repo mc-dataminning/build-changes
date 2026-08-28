@@ -89,7 +89,7 @@ public class eif extends egv<ejt> {
          $$19.n($$2.a());
          $$19.b((double)$$3.a() + 0.5, (double)($$3.d() + 1), (double)$$3.b() + 0.5, $$1.i() * 360.0F, 0.0F);
          $$0.b($$19);
-         jh $$20 = $$19.dv();
+         jh $$20 = $$19.dw();
          this.a($$0, $$20.e(), dkn.I.m());
          this.a($$0, $$20, dnm.a($$0, $$20));
       }

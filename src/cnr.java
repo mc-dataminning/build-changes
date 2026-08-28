@@ -34,8 +34,8 @@ public class cnr extends cnp implements bwk {
       this.bU.a(3, new cfc<>(this, true));
    }
 
-   public static bxm.a gv() {
-      return cnp.gp().a(bxn.A, 0.0).a(bxn.v, 0.23F).a(bxn.c, 5.0);
+   public static bxm.a gx() {
+      return cnp.gr().a(bxn.A, 0.0).a(bxn.v, 0.23F).a(bxn.c, 5.0);
    }
 
    @Override
@@ -44,7 +44,7 @@ public class cnr extends cnp implements bwk {
    }
 
    @Override
-   protected boolean gn() {
+   protected boolean gp() {
       return false;
    }
 
@@ -56,14 +56,14 @@ public class cnr extends cnp implements bwk {
             $$1.b(cd);
          }
 
-         this.gw();
+         this.gy();
       } else if ($$1.b(cc)) {
          $$1.c(cc);
       }
 
       this.a($$0, true);
       if (this.O_() != null) {
-         this.gx();
+         this.gz();
       }
 
       if (this.ad_()) {
@@ -73,31 +73,31 @@ public class cnr extends cnp implements bwk {
       super.a($$0);
    }
 
-   private void gw() {
+   private void gy() {
       if (this.cf > 0) {
          this.cf--;
          if (this.cf == 0) {
-            this.gz();
+            this.gB();
          }
       }
    }
 
-   private void gx() {
+   private void gz() {
       if (this.cl > 0) {
          this.cl--;
       } else {
          if (this.N().a(this.O_())) {
-            this.gy();
+            this.gA();
          }
 
          this.cl = ck.a(this.ae);
       }
    }
 
-   private void gy() {
+   private void gA() {
       double $$0 = this.h(bxn.m);
-      fbs $$1 = fbs.a(this.dt()).c($$0, 10.0, $$0);
-      this.dV()
+      fbs $$1 = fbs.a(this.du()).c($$0, 10.0, $$0);
+      this.dW()
          .a(cnr.class, $$1, bvo.f)
          .stream()
          .filter($$0x -> $$0x != this)
@@ -106,8 +106,8 @@ public class cnr extends cnp implements bwk {
          .forEach($$0x -> $$0x.h(this.O_()));
    }
 
-   private void gz() {
-      this.a(axf.Ef, this.fe() * 2.0F, this.ff() * 1.8F);
+   private void gB() {
+      this.a(axf.Ef, this.fg() * 2.0F, this.fh() * 1.8F);
    }
 
    @Override
@@ -147,7 +147,7 @@ public class cnr extends cnp implements bwk {
    @Override
    public void a(ux $$0) {
       super.a($$0);
-      this.a(this.dV(), $$0);
+      this.a(this.dW(), $$0);
    }
 
    @Override
@@ -181,12 +181,12 @@ public class cnr extends cnp implements bwk {
    }
 
    @Override
-   protected cxo gm() {
-      return cxo.k;
+   protected cxo go() {
+      return cxo.j;
    }
 
    @Override
-   protected void gu() {
+   protected void gw() {
       this.g(bxn.A).a(0.0);
    }
 

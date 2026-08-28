@@ -31,7 +31,7 @@ public class bob {
    }
 
    public void a(asi $$0, bod $$1) {
-      if (this.c.f($$0.gf())) {
+      if (this.c.f($$0.gh())) {
          this.e.add(new bob.a($$0, $$1));
       }
    }
@@ -51,7 +51,7 @@ public class bob {
    private void b(long $$0, int $$1) {
       for (Map<asi, bob.b> $$2 : this.d.values()) {
          $$2.entrySet().removeIf($$2x -> {
-            boolean $$3 = !this.c.f(((asi)$$2x.getKey()).gf());
+            boolean $$3 = !this.c.f(((asi)$$2x.getKey()).gh());
             bob.b $$4 = (bob.b)$$2x.getValue();
             return $$3 || $$1 > $$4.b() + 200 && $$0 > $$4.a() + 10000L;
          });

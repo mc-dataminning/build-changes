@@ -8,7 +8,7 @@ public class ccr extends cdq {
 
    @Override
    public boolean b() {
-      return this.g.p() && !this.g.gm() && super.b();
+      return this.g.p() && !this.g.go() && super.b();
    }
 
    @Override

@@ -34,7 +34,7 @@ public class cgf<T extends bwf> extends cgp<T> {
 
    @Override
    public void a(T $$0) {
-      Optional<List<bwf>> $$1 = $$0.eb().c(cfj.g);
+      Optional<List<bwf>> $$1 = $$0.ec().c(cfj.g);
       if (!$$1.isEmpty()) {
          boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
          if ($$2) {
@@ -44,10 +44,10 @@ public class cgf<T extends bwf> extends cgp<T> {
    }
 
    public void b(T $$0) {
-      $$0.eb().a(this.c, true, (long)this.d);
+      $$0.ec().a(this.c, true, (long)this.d);
    }
 
    public void c(T $$0) {
-      $$0.eb().b(this.c);
+      $$0.ec().b(this.c);
    }
 }

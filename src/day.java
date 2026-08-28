@@ -29,7 +29,7 @@ public record day(List<buo> c, float f) implements dba {
 
    @Override
    public boolean a(dhh $$0, cxo $$1, bwf $$2) {
-      if ($$2.dY().i() >= this.f) {
+      if ($$2.dZ().i() >= this.f) {
          return false;
       } else {
          boolean $$3 = false;

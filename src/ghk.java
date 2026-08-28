@@ -1,72 +1,25 @@
-public class ghk extends gjq {
-   private final float a;
-   private final float b;
-
-   ghk(gfi $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cxo $$7) {
-      this($$0, $$1, $$2, $$3, $$7);
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
+public class ghk extends gjr {
+   ghk(gfj $$0, double $$1, double $$2, double $$3, dxu $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a(fmf.Q().ap().a().a($$4));
+      this.u = 0.0F;
+      this.t = 80;
+      this.n = false;
    }
 
    @Override
-   public giu b() {
-      return giu.a;
-   }
-
-   protected ghk(gfi $$0, double $$1, double $$2, double $$3, cxo $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a(fme.Q().as().a($$4, $$0, null, 0).e());
-      this.u = 1.0F;
-      this.D /= 2.0F;
-      this.a = this.r.i() * 3.0F;
-      this.b = this.r.i() * 3.0F;
+   public giv b() {
+      return giv.a;
    }
 
    @Override
-   protected float c() {
-      return this.E.a((this.a + 1.0F) / 4.0F);
+   public float b(float $$0) {
+      return 0.5F;
    }
 
-   @Override
-   protected float d() {
-      return this.E.a(this.a / 4.0F);
-   }
-
-   @Override
-   protected float e() {
-      return this.E.c(this.b / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.b + 1.0F) / 4.0F);
-   }
-
-   public static class a implements git<lw> {
-      public giq a(lw $$0, gfi $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new ghk($$1, $$2, $$3, $$4, new cxo(cxs.cT));
-      }
-   }
-
-   public static class b implements git<lo> {
-      public giq a(lo $$0, gfi $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new ghk($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.b());
-      }
-   }
-
-   public static class c implements git<lw> {
-      public giq a(lw $$0, gfi $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new ghk($$1, $$2, $$3, $$4, new cxo(cxs.ro));
-      }
-   }
-
-   public static class d implements git<lw> {
-      public giq a(lw $$0, gfi $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new ghk($$1, $$2, $$3, $$4, new cxo(cxs.ra));
+   public static class a implements giu<lk> {
+      public gir a(lk $$0, gfj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new ghk($$1, $$2, $$3, $$4, $$0.b());
       }
    }
 }

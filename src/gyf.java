@@ -1,5 +1,3 @@
-public class gyf extends gyr {
-   public boolean a = true;
-   public boolean b = true;
-   public float c;
+public class gyf extends gys {
+   public boolean a;
 }

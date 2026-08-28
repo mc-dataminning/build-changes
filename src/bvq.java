@@ -299,9 +299,9 @@ public class bvq<T extends bvj> implements csp, ece<bvj, T> {
 
          $$6.b((double)$$2.u() + 0.5, (double)$$2.v() + $$7, (double)$$2.w() + 0.5, bae.h($$0.A.i() * 360.0F), 0.0F);
          if ($$6 instanceof bwh $$9) {
-            $$9.aZ = $$9.dL();
-            $$9.aX = $$9.dL();
-            $$9.a($$0, $$0.d_($$9.dv()), $$3, null);
+            $$9.aZ = $$9.dM();
+            $$9.aX = $$9.dM();
+            $$9.a($$0, $$0.d_($$9.dw()), $$3, null);
             $$9.R();
          }
 
@@ -326,7 +326,7 @@ public class bvq<T extends bvj> implements csp, ece<bvj, T> {
    public static void a(dhh $$0, @Nullable cpw $$1, @Nullable bvj $$2, czx $$3) {
       MinecraftServer $$4 = $$0.p();
       if ($$4 != null && $$2 != null) {
-         if ($$0.C || !$$2.cW() || $$1 != null && $$4.ag().f($$1.gf())) {
+         if ($$0.C || !$$2.cW() || $$1 != null && $$4.ag().f($$1.gh())) {
             $$3.a($$2);
          }
       }

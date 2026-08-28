@@ -1,21 +1,17 @@
-public record fga(int a, int b, boolean c) implements fgb<ffa> {
-   public ffa a() {
-      return new ffb(this.a, this.b, this.c);
-   }
+public interface fga {
+   fga a = new fga() {
+      @Override
+      public <T> T a(fgc<T> $$0) {
+         return $$0.e();
+      }
 
-   public void a(ffa $$0) {
-      $$0.a();
-   }
+      @Override
+      public <T> void a(fgc<T> $$0, T $$1) {
+         $$0.a($$1);
+      }
+   };
 
-   public int b() {
-      return this.a;
-   }
+   <T> T a(fgc<T> var1);
 
-   public int c() {
-      return this.b;
-   }
-
-   public boolean d() {
-      return this.c;
-   }
+   <T> void a(fgc<T> var1, T var2);
 }

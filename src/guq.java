@@ -1,40 +1,22 @@
-public class guq extends gsu<cln, haf, gea> {
-   private static final alz a = alz.b("textures/entity/wither/wither_invulnerable.png");
-   private static final alz b = alz.b("textures/entity/wither/wither.png");
+public class guq extends gsv<cnm, haf, gea> {
+   private static final alz a = alz.b("textures/entity/witch.png");
 
-   public guq(gro.a $$0) {
-      super($$0, new gea($$0.a(gel.du)), 1.0F);
-      this.a(new gwq(this, $$0.f()));
-   }
-
-   protected int a(cln $$0, jh $$1) {
-      return 15;
+   public guq(grp.a $$0) {
+      super($$0, new gea($$0.a(gem.dt)), 0.5F);
+      this.a(new gwq(this, $$0.b()));
    }
 
    public alz a(haf $$0) {
-      int $$1 = bae.d($$0.c);
-      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : b;
+      return a;
    }
 
    public haf b() {
       return new haf();
    }
 
-   protected void a(haf $$0, fgq $$1) {
-      float $$2 = 2.0F;
-      if ($$0.c > 0.0F) {
-         $$2 -= $$0.c / 220.0F * 0.5F;
-      }
-
-      $$1.b($$2, $$2, $$2);
-   }
-
-   public void a(cln $$0, haf $$1, float $$2) {
+   public void a(cnm $$0, haf $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      int $$3 = $$0.gm();
-      $$1.c = $$3 > 0 ? (float)$$3 - $$2 : 0.0F;
-      System.arraycopy($$0.x(), 0, $$1.a, 0, $$1.a.length);
-      System.arraycopy($$0.t(), 0, $$1.b, 0, $$1.b.length);
-      $$1.d = $$0.gn();
+      $$1.a = $$0.ar();
+      $$1.b = !$$0.eZ().f();
    }
 }

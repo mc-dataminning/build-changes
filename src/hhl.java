@@ -1,41 +1,114 @@
 import javax.annotation.Nullable;
 
-public class hhl implements hho {
-   private static final int a = 600;
-   private static final xv b = xv.c("tutorial.open_inventory.title");
-   private static final xv c = xv.a("tutorial.open_inventory.description", hhn.a("inventory"));
-   private final hhn d;
+public class hhl implements hhp {
+   private static final int a = 40;
+   private static final int b = 40;
+   private static final int c = 100;
+   private static final int d = 20;
+   private static final int e = -1;
+   private static final xv f = xv.a("tutorial.move.title", hho.a("forward"), hho.a("left"), hho.a("back"), hho.a("right"));
+   private static final xv g = xv.a("tutorial.move.description", hho.a("jump"));
+   private static final xv h = xv.c("tutorial.look.title");
+   private static final xv i = xv.c("tutorial.look.description");
+   private final hho j;
    @Nullable
-   private fqq e;
-   private int f;
+   private fqr k;
+   @Nullable
+   private fqr l;
+   private int m;
+   private int n;
+   private int o;
+   private boolean p;
+   private boolean q;
+   private int r = -1;
+   private int s = -1;
 
-   public hhl(hhn $$0) {
-      this.d = $$0;
+   public hhl(hho $$0) {
+      this.j = $$0;
    }
 
    @Override
    public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(hhp.f);
-      } else {
-         if (this.f >= 600 && this.e == null) {
-            this.e = new fqq(fqq.a.d, b, c, false);
-            this.d.e().aA().a(this.e);
+      this.m++;
+      if (this.p) {
+         this.n++;
+         this.p = false;
+      }
+
+      if (this.q) {
+         this.o++;
+         this.q = false;
+      }
+
+      if (this.r == -1 && this.n > 40) {
+         if (this.k != null) {
+            this.k.d();
+            this.k = null;
+         }
+
+         this.r = this.m;
+      }
+
+      if (this.s == -1 && this.o > 40) {
+         if (this.l != null) {
+            this.l.d();
+            this.l = null;
+         }
+
+         this.s = this.m;
+      }
+
+      if (this.r != -1 && this.s != -1) {
+         if (this.j.f()) {
+            this.j.a(hhq.b);
+         } else {
+            this.j.a(hhq.f);
+         }
+      }
+
+      if (this.k != null) {
+         this.k.a((float)this.n / 40.0F);
+      }
+
+      if (this.l != null) {
+         this.l.a((float)this.o / 40.0F);
+      }
+
+      if (this.m >= 100) {
+         if (this.r == -1 && this.k == null) {
+            this.k = new fqr(fqr.a.a, f, g, true);
+            this.j.e().aA().a(this.k);
+         } else if (this.r != -1 && this.m - this.r >= 20 && this.s == -1 && this.l == null) {
+            this.l = new fqr(fqr.a.b, h, i, true);
+            this.j.e().aA().a(this.l);
          }
       }
    }
 
    @Override
    public void b() {
-      if (this.e != null) {
-         this.e.d();
-         this.e = null;
+      if (this.k != null) {
+         this.k.d();
+         this.k = null;
+      }
+
+      if (this.l != null) {
+         this.l.d();
+         this.l = null;
       }
    }
 
    @Override
-   public void c() {
-      this.d.a(hhp.e);
+   public void a(gke $$0) {
+      if ($$0.a.a() || $$0.a.b() || $$0.a.c() || $$0.a.d() || $$0.a.e()) {
+         this.p = true;
+      }
+   }
+
+   @Override
+   public void a(double $$0, double $$1) {
+      if (Math.abs($$0) > 0.01 || Math.abs($$1) > 0.01) {
+         this.q = true;
+      }
    }
 }

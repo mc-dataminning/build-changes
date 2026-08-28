@@ -115,7 +115,7 @@ public class aez implements aac<acr> {
    public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, dhe e, @Nullable xv f, int g, @Nullable ym.a h) {
 
       b(asi $$0) {
-         this($$0.cG(), $$0.gf(), true, $$0.f.k(), $$0.h.b(), $$0.O(), $$0.P(), x.a($$0.ad(), ym::a));
+         this($$0.cG(), $$0.gh(), true, $$0.f.k(), $$0.h.b(), $$0.O(), $$0.P(), x.a($$0.ad(), ym::a));
       }
    }
 

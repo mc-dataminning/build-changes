@@ -121,7 +121,7 @@ public class aqd {
    }
 
    private static xv a(Collection<fdb> $$0) {
-      return $$0.iterator().next().ha();
+      return $$0.iterator().next().hc();
    }
 
    private static int a(ew $$0, Collection<fdb> $$1) {

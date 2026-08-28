@@ -46,7 +46,7 @@ public class cum extends ctb {
 
    @Override
    public boolean b(cpw $$0) {
-      return this.x.gm() == $$0;
+      return this.x.go() == $$0;
    }
 
    public int l() {
@@ -84,14 +84,14 @@ public class cum extends ctb {
 
    @Override
    public cxo b(cpw $$0, int $$1) {
-      cxo $$2 = cxo.k;
+      cxo $$2 = cxo.j;
       cuy $$3 = this.k.get($$1);
       if ($$3 != null && $$3.h()) {
          cxo $$4 = $$3.g();
          $$2 = $$4.v();
          if ($$1 == 2) {
             if (!this.a($$4, 3, 39, true)) {
-               return cxo.k;
+               return cxo.j;
             }
 
             $$3.b($$4, $$2);
@@ -99,23 +99,23 @@ public class cum extends ctb {
          } else if ($$1 != 0 && $$1 != 1) {
             if ($$1 >= 3 && $$1 < 30) {
                if (!this.a($$4, 30, 39, false)) {
-                  return cxo.k;
+                  return cxo.j;
                }
             } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
-               return cxo.k;
+               return cxo.j;
             }
          } else if (!this.a($$4, 3, 39, false)) {
-            return cxo.k;
+            return cxo.j;
          }
 
          if ($$4.f()) {
-            $$3.e(cxo.k);
+            $$3.e(cxo.j);
          } else {
             $$3.c();
          }
 
          if ($$4.L() == $$2.L()) {
-            return cxo.k;
+            return cxo.j;
          }
 
          $$3.a($$0, $$4);
@@ -125,9 +125,9 @@ public class cum extends ctb {
    }
 
    private void r() {
-      if (!this.x.gu()) {
+      if (!this.x.gw()) {
          bvj $$0 = (bvj)this.x;
-         $$0.dV().a($$0.dA(), $$0.dC(), $$0.dG(), this.x.gq(), axg.g, 1.0F, 1.0F, false);
+         $$0.dW().a($$0.dB(), $$0.dD(), $$0.dH(), this.x.gs(), axg.g, 1.0F, 1.0F, false);
       }
    }
 
@@ -135,7 +135,7 @@ public class cum extends ctb {
    public void a(cpw $$0) {
       super.a($$0);
       this.x.a(null);
-      if (!this.x.gu()) {
+      if (!this.x.gw()) {
          if (!$$0.bL() || $$0 instanceof asi && ((asi)$$0).u()) {
             cxo $$1 = this.y.b(0);
             if (!$$1.f()) {
@@ -147,8 +147,8 @@ public class cum extends ctb {
                $$0.a($$1, false);
             }
          } else if ($$0 instanceof asi) {
-            $$0.gg().g(this.y.b(0));
-            $$0.gg().g(this.y.b(1));
+            $$0.gi().g(this.y.b(0));
+            $$0.gi().g(this.y.b(1));
          }
       }
    }
@@ -205,7 +205,7 @@ public class cum extends ctb {
    }
 
    public dgf p() {
-      return this.x.go();
+      return this.x.gq();
    }
 
    public boolean q() {

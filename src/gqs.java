@@ -1,22 +1,31 @@
-public class gqs extends gqg<cmg, gxg> {
-   private static final alz a = alz.b("textures/entity/skeleton/bogged.png");
-   private static final alz b = alz.b("textures/entity/skeleton/bogged_overlay.png");
+import java.util.function.UnaryOperator;
 
-   public gqs(gro.a $$0) {
-      super($$0, gel.D, gel.E, new gas($$0.a(gel.C)));
-      this.a(new gwg<>(this, $$0.f(), gel.F, b));
+public class gqs extends gqd {
+   private final gcg a;
+   private final alz b;
+   private final gbl<gxg> h;
+
+   public gqs(grp.a $$0, gel $$1) {
+      super($$0);
+      this.b = $$1.a().a((UnaryOperator<String>)($$0x -> "textures/entity/" + $$0x + ".png"));
+      this.a = new gcg.a($$0.a(gem.B), $$0x -> glu.i());
+      this.h = new gas($$0.a($$1));
    }
 
-   public alz a(gxg $$0) {
-      return a;
+   @Override
+   protected gbl<gxg> a() {
+      return this.h;
    }
 
-   public gxg a() {
-      return new gxg();
+   @Override
+   protected glu b() {
+      return this.h.a(this.b);
    }
 
-   public void a(cmg $$0, gxg $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gp();
+   @Override
+   protected void b(gxg $$0, fgr $$1, glk $$2, int $$3) {
+      if (!$$0.f) {
+         this.a.a($$1, $$2.getBuffer(this.a.a(this.b)), $$3, hbb.d);
+      }
    }
 }

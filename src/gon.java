@@ -1,46 +1,41 @@
-import org.joml.Matrix4f;
+public class gon extends goo<dwp> {
+   private static final alz c = alz.b("textures/entity/end_gateway_beam.png");
 
-public class gon<T extends dwq> implements gnu<T> {
-   public static final alz a = alz.b("textures/environment/end_sky.png");
-   public static final alz b = alz.b("textures/entity/end_portal.png");
-
-   public gon(gnv.a $$0) {
+   public gon(gnw.a $$0) {
+      super($$0);
    }
 
-   public void a(T $$0, float $$1, fgq $$2, glj $$3, int $$4, int $$5) {
-      Matrix4f $$6 = $$2.c().a();
-      this.a($$0, $$6, $$3.getBuffer(this.d()));
-   }
-
-   private void a(T $$0, Matrix4f $$1, fgu $$2) {
-      float $$3 = this.c();
-      float $$4 = this.b();
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, jm.d);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, jm.c);
-      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, jm.f);
-      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, jm.e);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, jm.a);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, jm.b);
-   }
-
-   private void a(T $$0, Matrix4f $$1, fgu $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, jm $$11) {
-      if ($$0.a($$11)) {
-         $$2.a($$1, $$3, $$5, $$7);
-         $$2.a($$1, $$4, $$5, $$8);
-         $$2.a($$1, $$4, $$6, $$9);
-         $$2.a($$1, $$3, $$6, $$10);
+   public void a(dwp $$0, float $$1, fgr $$2, glk $$3, int $$4, int $$5) {
+      if ($$0.b() || $$0.c()) {
+         float $$6 = $$0.b() ? $$0.a($$1) : $$0.b($$1);
+         double $$7 = $$0.b() ? (double)$$0.i().am() : 50.0;
+         $$6 = bae.a($$6 * (float) Math.PI);
+         int $$8 = bae.a((double)$$6 * $$7);
+         int $$9 = $$0.b() ? cwl.c.d() : cwl.k.d();
+         long $$10 = $$0.i().ac();
+         gnr.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
       }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
+   @Override
    protected float b() {
-      return 0.75F;
+      return 1.0F;
    }
 
+   @Override
    protected float c() {
-      return 0.375F;
+      return 0.0F;
    }
 
-   protected glt d() {
-      return glt.t();
+   @Override
+   protected glu d() {
+      return glu.u();
+   }
+
+   @Override
+   public int aW_() {
+      return 256;
    }
 }

@@ -4,7 +4,7 @@ import java.util.Optional;
 public class dwa extends duw implements fdj.a {
    public static final String b = "RecordItem";
    public static final String c = "ticks_since_song_started";
-   private cxo d = cxo.k;
+   private cxo d = cxo.j;
    private final cxv e = new cxv(this::k, this.aB_());
 
    public dwa(jh $$0, dxu $$1) {
@@ -54,9 +54,9 @@ public class dwa extends duw implements fdj.a {
    protected void a(ux $$0, js.a $$1) {
       super.a($$0, $$1);
       if ($$0.b("RecordItem", 10)) {
-         this.d = cxo.a($$1, (vu)$$0.p("RecordItem")).orElse(cxo.k);
+         this.d = cxo.a($$1, (vu)$$0.p("RecordItem")).orElse(cxo.j);
       } else {
-         this.d = cxo.k;
+         this.d = cxo.j;
       }
 
       if ($$0.b("ticks_since_song_started", 4)) {
@@ -84,7 +84,7 @@ public class dwa extends duw implements fdj.a {
    @Override
    public cxo c(int $$0) {
       cxo $$1 = this.d;
-      this.b(cxo.k);
+      this.b(cxo.j);
       return $$1;
    }
 

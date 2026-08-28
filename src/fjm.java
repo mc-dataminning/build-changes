@@ -1,120 +1,120 @@
-import java.util.Locale;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Collection;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class fjm extends hhu {
-   private static final xv a = xv.c("mco.backup.info.title");
-   private static final xv b = xv.c("mco.backup.unknown");
-   private final ftw c;
-   final fhw C;
-   final frs D = new frs(this);
-   private fjm.a E;
+public class fjm extends hhv {
+   private static final xv a = xv.c("mco.selectServer.popup");
+   private static final xv b = xv.c("mco.selectServer.close");
+   private static final alz c = alz.b("popup/background");
+   private static final alz C = alz.b("icon/trial_available");
+   private static final fps D = new fps(alz.b("widget/cross_button"), alz.b("widget/cross_button_highlighted"));
+   private static final int E = 236;
+   private static final int F = 34;
+   private static final int G = 6;
+   private static final int H = 195;
+   private static final int I = 152;
+   private static final int J = 4;
+   private static final int K = 10;
+   private static final int L = 320;
+   private static final int M = 172;
+   private static final int N = 100;
+   private static final int O = 99;
+   private static final int P = 100;
+   private static List<alz> Q = List.of();
+   private final ftx R;
+   private final boolean S;
+   @Nullable
+   private foe T;
+   private int U;
+   private int V;
 
-   public fjm(ftw $$0, fhw $$1) {
+   public fjm(ftx $$0, boolean $$1) {
       super(a);
-      this.c = $$0;
-      this.C = $$1;
+      this.R = $$0;
+      this.S = $$1;
+   }
+
+   public static void a(avv $$0) {
+      Collection<alz> $$1 = $$0.b("textures/gui/images", $$0x -> $$0x.a().endsWith(".png")).keySet();
+      Q = $$1.stream().filter($$0x -> $$0x.b().equals("realms")).toList();
    }
 
    @Override
-   public void aT_() {
-      this.D.a(a, this.p);
-      this.E = this.D.c(new fjm.a(this.m));
-      this.D.b(fod.a(xu.k, $$0 -> this.aP_()).a());
-      this.c();
-      this.D.a($$1 -> {
-         fob var10000 = this.c($$1);
-      });
+   protected void aT_() {
+      this.R.a(this.m, this.n, this.o);
+      if (this.S) {
+         this.T = this.c(foe.a(xv.c("mco.selectServer.trial"), fsu.b(this, aza.q)).a(this.G() - 10 - 99, this.J() - 10 - 4 - 40, 99, 20).a());
+      }
+
+      this.c(foe.a(xv.c("mco.selectServer.buy"), fsu.b(this, aza.r)).a(this.G() - 10 - 99, this.J() - 10 - 20, 99, 20).a());
+      foq $$0 = this.c(new foq(this.E() + 4, this.F() + 4, 14, 14, D, $$0x -> this.aP_(), b));
+      $$0.a(fpq.a(b));
+      int $$1 = 142 - (this.S ? 40 : 20);
+      foo $$2 = new foo(this.G() - 10 - 100, this.F() + 10, 100, $$1, a, this.p);
+      if ($$2.j()) {
+         $$2.i(100 - $$2.g());
+      }
+
+      this.c($$2);
    }
 
    @Override
-   protected void c() {
-      this.E.b(this.n, this.D.d());
-      this.D.a();
+   public void e() {
+      super.e();
+      if (++this.V > 100) {
+         this.V = 0;
+         this.U = (this.U + 1) % Q.size();
+      }
+   }
+
+   @Override
+   public void a(fnr $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.T != null) {
+         a($$0, this.T);
+      }
+   }
+
+   public static void a(fnr $$0, foe $$1) {
+      int $$2 = 8;
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, 110.0F);
+      $$0.a(glu::C, C, $$1.D() + $$1.y() - 8 - 4, $$1.E() + $$1.w() / 2 - 4, 8, 8);
+      $$0.c().b();
+   }
+
+   @Override
+   public void b(fnr $$0, int $$1, int $$2, float $$3) {
+      this.R.a($$0, -1, -1, $$3);
+      $$0.d();
+      RenderSystem.clear(256);
+      this.A();
+      this.b($$0);
+      $$0.a(glu::C, c, this.E(), this.F(), 320, 172);
+      if (!Q.isEmpty()) {
+         $$0.a(glu::C, Q.get(this.U), this.E() + 10, this.F() + 10, 0.0F, 0.0F, 195, 152, 195, 152);
+      }
+   }
+
+   private int E() {
+      return (this.n - 320) / 2;
+   }
+
+   private int F() {
+      return (this.o - 172) / 2;
+   }
+
+   private int G() {
+      return this.E() + 320;
+   }
+
+   private int J() {
+      return this.F() + 172;
    }
 
    @Override
    public void aP_() {
-      this.m.a(this.c);
-   }
-
-   xv a(String $$0, String $$1) {
-      String $$2 = $$0.toLowerCase(Locale.ROOT);
-      if ($$2.contains("game") && $$2.contains("mode")) {
-         return this.b($$1);
-      } else {
-         return (xv)($$2.contains("game") && $$2.contains("difficulty") ? this.a($$1) : xv.b($$1));
-      }
-   }
-
-   private xv a(String $$0) {
-      try {
-         return fkh.a.get(Integer.parseInt($$0)).b();
-      } catch (Exception var3) {
-         return b;
-      }
-   }
-
-   private xv b(String $$0) {
-      try {
-         return fkh.b.get(Integer.parseInt($$0)).e();
-      } catch (Exception var3) {
-         return b;
-      }
-   }
-
-   class a extends fpa<fjm.b> {
-      public a(final fme $$0) {
-         super($$0, fjm.this.n, fjm.this.D.d(), fjm.this.D.c(), 36);
-         if (fjm.this.C.e != null) {
-            fjm.this.C.e.forEach(($$0x, $$1) -> this.b(fjm.this.new b($$0x, $$1)));
-         }
-      }
-   }
-
-   class b extends fpa.a<fjm.b> {
-      private static final xv b = xv.c("mco.backup.entry.templateName");
-      private static final xv c = xv.c("mco.backup.entry.gameDifficulty");
-      private static final xv d = xv.c("mco.backup.entry.name");
-      private static final xv e = xv.c("mco.backup.entry.gameServerVersion");
-      private static final xv f = xv.c("mco.backup.entry.uploaded");
-      private static final xv g = xv.c("mco.backup.entry.enabledPack");
-      private static final xv h = xv.c("mco.backup.entry.description");
-      private static final xv i = xv.c("mco.backup.entry.gameMode");
-      private static final xv j = xv.c("mco.backup.entry.seed");
-      private static final xv k = xv.c("mco.backup.entry.worldType");
-      private static final xv l = xv.c("mco.backup.entry.undefined");
-      private final String m;
-      private final String n;
-
-      public b(final String $$0, final String $$1) {
-         this.m = $$0;
-         this.n = $$1;
-      }
-
-      @Override
-      public void a(fnq $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.b(fjm.this.p, this.a(this.m), $$3, $$2, -6250336);
-         $$0.b(fjm.this.p, fjm.this.a(this.m, this.n), $$3, $$2 + 12, -1);
-      }
-
-      private xv a(String $$0) {
-         return switch ($$0) {
-            case "template_name" -> b;
-            case "game_difficulty" -> c;
-            case "name" -> d;
-            case "game_server_version" -> e;
-            case "uploaded" -> f;
-            case "enabled_packs" -> g;
-            case "description" -> h;
-            case "game_mode" -> i;
-            case "seed" -> j;
-            case "world_type" -> k;
-            default -> l;
-         };
-      }
-
-      @Override
-      public xv a() {
-         return xv.a("narrator.select", this.m + " " + this.n);
-      }
+      this.m.a(this.R);
    }
 }

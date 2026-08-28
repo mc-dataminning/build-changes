@@ -48,14 +48,14 @@ public class coe extends chw implements cmo, cog {
    }
 
    public static bxm.a p() {
-      return cmw.gr().a(bxn.s, 40.0).a(bxn.v, 0.3F).a(bxn.p, 0.6F).a(bxn.d, 1.0).a(bxn.c, 6.0);
+      return cmw.gt().a(bxn.s, 40.0).a(bxn.v, 0.3F).a(bxn.p, 0.6F).a(bxn.d, 1.0).a(bxn.c, 6.0);
    }
 
    @Override
    public boolean c(ash $$0, bvj $$1) {
       if ($$1 instanceof bwf $$2) {
          this.ck = 10;
-         this.dV().a(this, (byte)4);
+         this.dW().a(this, (byte)4);
          this.b(axf.mI);
          cof.a(this, $$2);
          return cog.a($$0, this, $$2);
@@ -82,32 +82,32 @@ public class coe extends chw implements cmo, cog {
    }
 
    @Override
-   protected bxh.b<coe> ec() {
+   protected bxh.b<coe> ed() {
       return bxh.a(cb, ca);
    }
 
    @Override
    protected bxh<?> a(Dynamic<?> $$0) {
-      return cof.a(this.ec().a($$0));
+      return cof.a(this.ed().a($$0));
    }
 
    @Override
-   public bxh<coe> eb() {
-      return (bxh<coe>)super.eb();
+   public bxh<coe> ec() {
+      return (bxh<coe>)super.ec();
    }
 
    @Override
    protected void a(ash $$0) {
       bps $$1 = bpr.a();
       $$1.a("hoglinBrain");
-      this.eb().a($$0, this);
+      this.ec().a($$0, this);
       $$1.c();
       cof.a(this);
-      if (this.gm()) {
+      if (this.go()) {
          this.cl++;
          if (this.cl > 300) {
             this.b(axf.mJ);
-            this.go();
+            this.gq();
          }
       } else {
          this.cl = 0;
@@ -188,7 +188,7 @@ public class coe extends chw implements cmo, cog {
    }
 
    @Override
-   public boolean em() {
+   public boolean en() {
       return true;
    }
 
@@ -197,7 +197,7 @@ public class coe extends chw implements cmo, cog {
       return this.bO;
    }
 
-   private void go() {
+   private void gq() {
       this.a(bvq.bN, bve.a(this, true, false), $$0 -> $$0.a(new buo(buq.i, 200, 0)));
    }
 
@@ -219,7 +219,7 @@ public class coe extends chw implements cmo, cog {
    @Override
    public void b(ux $$0) {
       super.b($$0);
-      if (this.gp()) {
+      if (this.gr()) {
          $$0.a("IsImmuneToZombification", true);
       }
 
@@ -241,19 +241,19 @@ public class coe extends chw implements cmo, cog {
       this.au().a(cd, $$0);
    }
 
-   private boolean gp() {
+   private boolean gr() {
       return this.au().a(cd);
    }
 
-   public boolean gm() {
-      return !this.dV().G_().b() && !this.gp() && !this.fZ();
+   public boolean go() {
+      return !this.dW().G_().b() && !this.gr() && !this.gb();
    }
 
    private void y(boolean $$0) {
       this.cm = $$0;
    }
 
-   public boolean gn() {
+   public boolean gp() {
       return this.t() && !this.cm;
    }
 
@@ -269,18 +269,18 @@ public class coe extends chw implements cmo, cog {
    }
 
    @Override
-   public boolean gt() {
-      return !cof.c(this) && super.gt();
+   public boolean gv() {
+      return !cof.c(this) && super.gv();
    }
 
    @Override
-   public axg dm() {
+   public axg dn() {
       return axg.f;
    }
 
    @Override
    protected axe u() {
-      return this.dV().C ? null : cof.b(this).orElse(null);
+      return this.dW().C ? null : cof.b(this).orElse(null);
    }
 
    @Override

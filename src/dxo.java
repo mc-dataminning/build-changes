@@ -80,7 +80,7 @@ public class dxo extends dmq {
 
    @Override
    public dxu a(dhh $$0, jh $$1, dxu $$2, cpw $$3) {
-      if (!$$0.C && $$3.gh().d) {
+      if (!$$0.C && $$3.gj().d) {
          jh $$4 = $$1.a($$2.c(a).g());
          if (this.a($$2, $$0.a_($$4))) {
             $$0.b($$4, false);

@@ -50,7 +50,7 @@ public abstract class duq extends duw implements btb, btk, btl {
    }
 
    public static boolean a(cpw $$0, btj $$1, xv $$2) {
-      if (!$$0.aa_() && !$$1.a($$0.eX())) {
+      if (!$$0.aa_() && !$$1.a($$0.eZ())) {
          $$0.a(xv.a("container.isLocked", $$2), true);
          $$0.a(axf.eR, axg.e, 1.0F, 1.0F);
          return false;

@@ -54,13 +54,13 @@ public class cgw {
    public boolean a(ash $$0, @Nullable bwf $$1, bwf $$2) {
       if ($$1 == $$2) {
          return false;
-      } else if (!$$2.ex()) {
+      } else if (!$$2.ey()) {
          return false;
       } else if (this.g != null && !this.g.test($$2, $$0)) {
          return false;
       } else {
          if ($$1 == null) {
-            if (this.c && (!$$2.ew() || $$0.al() == btf.a)) {
+            if (this.c && (!$$2.ex() || $$0.al() == btf.a)) {
                return false;
             }
          } else {
@@ -71,7 +71,7 @@ public class cgw {
             if (this.d > 0.0) {
                double $$3 = this.f ? $$2.C($$1) : 1.0;
                double $$4 = Math.max(this.d * $$3, 2.0);
-               double $$5 = $$1.i($$2.dA(), $$2.dC(), $$2.dG());
+               double $$5 = $$1.i($$2.dB(), $$2.dD(), $$2.dH());
                if ($$5 > $$4 * $$4) {
                   return false;
                }

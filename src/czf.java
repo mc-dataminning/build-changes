@@ -18,7 +18,7 @@ public record czf(ayk<dkl> g, int h, float i, float j, int k, ayk<cxk> l) {
    }
 
    private daf a(float $$0, float $$1) {
-      return daf.a().a(bxn.c, new bxl(cxk.f, (double)($$0 + this.j), bxl.a.a), bvs.b).a(bxn.e, new bxl(cxk.g, (double)$$1, bxl.a.a), bvs.b).a();
+      return daf.a().a(bxn.c, new bxl(cxk.g, (double)($$0 + this.j), bxl.a.a), bvs.b).a(bxn.e, new bxl(cxk.h, (double)$$1, bxl.a.a), bvs.b).a();
    }
 
    public cxk.a a(cxk.a $$0, float $$1, float $$2) {
@@ -27,7 +27,7 @@ public record czf(ayk<dkl> g, int h, float i, float j, int k, ayk<cxk> l) {
    }
 
    private daf b(float $$0, float $$1) {
-      return daf.a().a(bxn.c, new bxl(cxk.f, (double)($$0 + this.j), bxl.a.a), bvs.b).a(bxn.e, new bxl(cxk.g, (double)$$1, bxl.a.a), bvs.b).a();
+      return daf.a().a(bxn.c, new bxl(cxk.g, (double)($$0 + this.j), bxl.a.a), bvs.b).a(bxn.e, new bxl(cxk.h, (double)$$1, bxl.a.a), bvs.b).a();
    }
 
    public ayk<dkl> a() {

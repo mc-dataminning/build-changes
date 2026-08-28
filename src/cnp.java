@@ -45,7 +45,7 @@ public class cnp extends cmw {
 
    protected void p() {
       this.bT.a(2, new ces(this, 1.0, false));
-      this.bT.a(6, new cdp(this, 1.0, true, 4, this::gt));
+      this.bT.a(6, new cdp(this, 1.0, true, 4, this::gv));
       this.bT.a(7, new ceq(this, 1.0));
       this.bU.a(1, new cev(this).a(cnr.class));
       this.bU.a(2, new cew<>(this, cpw.class, true));
@@ -54,8 +54,8 @@ public class cnp extends cmw {
       this.bU.a(5, new cew<>(this, cix.class, 10, true, false, cix.bZ));
    }
 
-   public static bxm.a gp() {
-      return cmw.gr().a(bxn.m, 35.0).a(bxn.v, 0.23F).a(bxn.c, 3.0).a(bxn.a, 2.0).a(bxn.A);
+   public static bxm.a gr() {
+      return cmw.gt().a(bxn.m, 35.0).a(bxn.v, 0.23F).a(bxn.c, 3.0).a(bxn.a, 2.0).a(bxn.A);
    }
 
    @Override
@@ -66,11 +66,11 @@ public class cnp extends cmw {
       $$0.a(ch, false);
    }
 
-   public boolean gs() {
+   public boolean gu() {
       return this.au().a(ch);
    }
 
-   public boolean gt() {
+   public boolean gv() {
       return this.cm;
    }
 
@@ -108,7 +108,7 @@ public class cnp extends cmw {
    @Override
    public void a(boolean $$0) {
       this.au().a(cf, $$0);
-      if (this.dV() != null && !this.dV().C) {
+      if (this.dW() != null && !this.dW().C) {
          bxj $$1 = this.g(bxn.v);
          $$1.c(a);
          if ($$0) {
@@ -126,19 +126,19 @@ public class cnp extends cmw {
       super.a($$0);
    }
 
-   protected boolean gn() {
+   protected boolean gp() {
       return true;
    }
 
    @Override
    public void h() {
-      if (!this.dV().C && this.bL() && !this.fZ()) {
-         if (this.gs()) {
+      if (!this.dW().C && this.bL() && !this.gb()) {
+         if (this.gu()) {
             this.co--;
             if (this.co < 0) {
                this.ai_();
             }
-         } else if (this.gn()) {
+         } else if (this.gp()) {
             if (this.a(aya.a)) {
                this.cn++;
                if (this.cn >= 600) {
@@ -156,7 +156,7 @@ public class cnp extends cmw {
    @Override
    public void d_() {
       if (this.bL()) {
-         boolean $$0 = this.aj_() && this.ge();
+         boolean $$0 = this.aj_() && this.gg();
          if ($$0) {
             cxo $$1 = this.a(bvr.f);
             if (!$$1.f()) {
@@ -165,7 +165,7 @@ public class cnp extends cmw {
                   $$1.b($$1.o() + this.ae.a(2));
                   if ($$1.o() >= $$1.p()) {
                      this.a($$2, bvr.f);
-                     this.a(bvr.f, cxo.k);
+                     this.a(bvr.f, cxo.j);
                   }
                }
 
@@ -189,24 +189,24 @@ public class cnp extends cmw {
    protected void ai_() {
       this.b(bvq.L);
       if (!this.bb()) {
-         this.dV().a(null, 1040, this.dv(), 0);
+         this.dW().a(null, 1040, this.dw(), 0);
       }
    }
 
    protected void b(bvq<? extends cnp> $$0) {
-      this.a($$0, bve.a(this, true, true), $$0x -> $$0x.J($$0x.dV().d_($$0x.dv()).d()));
+      this.a($$0, bve.a(this, true, true), $$0x -> $$0x.J($$0x.dW().d_($$0x.dw()).d()));
    }
 
    @VisibleForTesting
    public boolean a(ash $$0, cpi $$1) {
       cnq $$2 = $$1.a(bvq.bQ, bve.a($$1, true, true), $$2x -> {
-         $$2x.a($$0, $$0.d_($$2x.dv()), bvp.i, new cnp.b(false, true));
-         $$2x.a($$1.gw());
-         $$2x.a($$1.gG().a(vl.a));
-         $$2x.a($$1.go().a());
+         $$2x.a($$0, $$0.d_($$2x.dw()), bvp.i, new cnp.b(false, true));
+         $$2x.a($$1.gy());
+         $$2x.a($$1.gI().a(vl.a));
+         $$2x.a($$1.gq().a());
          $$2x.s($$1.x());
          if (!this.bb()) {
-            $$0.a(null, 1026, this.dv(), 0);
+            $$0.a(null, 1026, this.dw(), 0);
          }
       });
       return $$2 != null;
@@ -227,9 +227,9 @@ public class cnp extends cmw {
          }
 
          if ($$3 != null && $$0.al() == btf.d && (double)this.ae.i() < this.h(bxn.A) && $$0.N().b(dhd.e)) {
-            int $$4 = bae.a(this.dA());
-            int $$5 = bae.a(this.dC());
-            int $$6 = bae.a(this.dG());
+            int $$4 = bae.a(this.dB());
+            int $$5 = bae.a(this.dD());
+            int $$6 = bae.a(this.dH());
             bvq<? extends cnp> $$7 = this.aq();
             cnp $$8 = $$7.a($$0, bvp.j);
             if ($$8 == null) {
@@ -245,7 +245,7 @@ public class cnp extends cmw {
                   $$8.a_((double)$$10, (double)$$11, (double)$$12);
                   if (!$$0.a((double)$$10, (double)$$11, (double)$$12, 7.0) && $$0.f($$8) && $$0.g($$8) && ($$8.x() || !$$0.d($$8.cR()))) {
                      $$8.h($$3);
-                     $$8.a($$0, $$0.d_($$8.dv()), bvp.j, null);
+                     $$8.a($$0, $$0.d_($$8.dw()), bvp.j, null);
                      $$0.a_($$8);
                      bxj $$14 = this.g(bxn.A);
                      bxl $$15 = $$14.a(c);
@@ -267,8 +267,8 @@ public class cnp extends cmw {
    public boolean c(ash $$0, bvj $$1) {
       boolean $$2 = super.c($$0, $$1);
       if ($$2) {
-         float $$3 = this.dV().d_(this.dv()).b();
-         if (this.eX().f() && this.bY() && this.ae.i() < $$3 * 0.3F) {
+         float $$3 = this.dW().d_(this.dw()).b();
+         if (this.eZ().f() && this.bY() && this.ae.i() < $$3 * 0.3F) {
             $$1.d((float)(2 * (int)$$3));
          }
       }
@@ -312,7 +312,7 @@ public class cnp extends cmw {
    @Override
    protected void a(bam $$0, btg $$1) {
       super.a($$0, $$1);
-      if ($$0.i() < (this.dV().al() == btf.d ? 0.05F : 0.01F)) {
+      if ($$0.i() < (this.dW().al() == btf.d ? 0.05F : 0.01F)) {
          int $$2 = $$0.a(3);
          if ($$2 == 0) {
             this.a(bvr.a, new cxo(cxs.px));
@@ -326,9 +326,9 @@ public class cnp extends cmw {
    public void b(ux $$0) {
       super.b($$0);
       $$0.a("IsBaby", this.e_());
-      $$0.a("CanBreakDoors", this.gt());
+      $$0.a("CanBreakDoors", this.gv());
       $$0.a("InWaterTime", this.bj() ? this.cn : -1);
-      $$0.a("DrownedConversionTime", this.gs() ? this.co : -1);
+      $$0.a("DrownedConversionTime", this.gu() ? this.co : -1);
    }
 
    @Override
@@ -399,9 +399,9 @@ public class cnp extends cmw {
                      this.n($$8);
                   }
                } else if ((double)$$4.i() < 0.05) {
-                  cib $$9 = bvq.z.a(this.dV(), bvp.g);
+                  cib $$9 = bvq.z.a(this.dW(), bvp.g);
                   if ($$9 != null) {
-                     $$9.b(this.dA(), this.dC(), this.dG(), this.dL(), 0.0F);
+                     $$9.b(this.dB(), this.dD(), this.dH(), this.dM(), 0.0F);
                      $$9.a($$0, $$1, bvp.g, null);
                      $$9.x(true);
                      this.n($$9);
@@ -447,7 +447,7 @@ public class cnp extends cmw {
    }
 
    protected void J(float $$0) {
-      this.gu();
+      this.gw();
       this.g(bxn.p).c(new bxl(bM, this.ae.j() * 0.05F, bxl.a.a));
       double $$1 = this.ae.j() * 1.5 * (double)$$0;
       if ($$1 > 1.0) {
@@ -461,23 +461,23 @@ public class cnp extends cmw {
       }
    }
 
-   protected void gu() {
+   protected void gw() {
       this.g(bxn.A).a(this.ae.j() * 0.1F);
    }
 
    @Override
    protected void a(ash $$0, btz $$1, boolean $$2) {
       super.a($$0, $$1, $$2);
-      if ($$1.d() instanceof cmi $$4 && $$4.gn()) {
-         cxo $$5 = this.gm();
+      if ($$1.d() instanceof cmi $$4 && $$4.gp()) {
+         cxo $$5 = this.go();
          if (!$$5.f()) {
-            $$4.go();
+            $$4.gq();
             this.a($$0, $$5);
          }
       }
    }
 
-   protected cxo gm() {
+   protected cxo go() {
       return new cxo(cxs.ve);
    }
 

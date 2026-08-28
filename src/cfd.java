@@ -82,7 +82,7 @@ public abstract class cfd extends cdd {
          return false;
       } else if (!$$1.a(a(this.e), this.e, $$0)) {
          return false;
-      } else if (!this.e.a($$0.dv())) {
+      } else if (!this.e.a($$0.dw())) {
          return false;
       } else {
          if (this.d) {
@@ -104,7 +104,7 @@ public abstract class cfd extends cdd {
    }
 
    private boolean a(bwf $$0) {
-      this.j = b(10 + this.e.dY().a(5));
+      this.j = b(10 + this.e.dZ().a(5));
       euk $$1 = this.e.L().a($$0, 0);
       if ($$1 == null) {
          return false;
@@ -113,8 +113,8 @@ public abstract class cfd extends cdd {
          if ($$2 == null) {
             return false;
          } else {
-            int $$3 = $$2.a - $$0.dz();
-            int $$4 = $$2.c - $$0.dF();
+            int $$3 = $$2.a - $$0.dA();
+            int $$4 = $$2.c - $$0.dG();
             return (double)($$3 * $$3 + $$4 * $$4) <= 2.25;
          }
       }

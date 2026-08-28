@@ -1,5 +1,5 @@
 public record aje(short b, cxo c) implements aac<ahm> {
-   public static final zt<xg, aje> a = zt.a(zr.e, aje::b, cxo.a(cxo.h), aje::e, aje::new);
+   public static final zt<xg, aje> a = zt.a(zr.e, aje::b, cxo.a(cxo.g), aje::e, aje::new);
 
    public aje(int $$0, cxo $$1) {
       this((short)$$0, $$1);

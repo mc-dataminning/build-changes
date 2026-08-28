@@ -112,6 +112,6 @@ public class dri extends djx implements drp {
    @Nullable
    @Override
    public <T extends duw> dux<T> a(dhh $$0, dxu $$1, duy<T> $$2) {
-      return !$$0.C ? djx.a($$2, duy.M, ($$0x, $$1x, $$2x, $$3) -> ecz.c.a($$0x, $$3.gn(), $$3.go())) : null;
+      return !$$0.C ? djx.a($$2, duy.M, ($$0x, $$1x, $$2x, $$3) -> ecz.c.a($$0x, $$3.gp(), $$3.gq())) : null;
    }
 }

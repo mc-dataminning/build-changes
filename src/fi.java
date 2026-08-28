@@ -68,7 +68,7 @@ public class fi implements ArgumentType<fi.a> {
       }
 
       public fbx a(bvj $$0) {
-         return this.e.apply($$0.dt(), $$0);
+         return this.e.apply($$0.du(), $$0);
       }
 
       public fbx a(ew $$0) {

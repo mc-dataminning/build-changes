@@ -73,7 +73,7 @@ public class cof {
    }
 
    protected static void a(coe $$0) {
-      bxh<coe> $$1 = $$0.eb();
+      bxh<coe> $$1 = $$0.ec();
       crn $$2 = $$1.g().orElse(null);
       $$1.a(ImmutableList.of(crn.k, crn.n, crn.b));
       crn $$3 = $$1.g().orElse(null);
@@ -100,24 +100,24 @@ public class cof {
    }
 
    private static void c(coe $$0, bwf $$1) {
-      bxh<coe> $$3 = $$0.eb();
+      bxh<coe> $$3 = $$0.ec();
       bwf $$2 = bya.a($$0, $$3.c(cfj.z), $$1);
       $$2 = bya.a($$0, $$3.c(cfj.o), $$2);
       d($$0, $$2);
    }
 
    private static void d(coe $$0, bwf $$1) {
-      $$0.eb().b(cfj.o);
-      $$0.eb().b(cfj.m);
-      $$0.eb().a(cfj.z, $$1, (long)c.a($$0.dV().A));
+      $$0.ec().b(cfj.o);
+      $$0.ec().b(cfj.m);
+      $$0.ec().a(cfj.z, $$1, (long)c.a($$0.dW().A));
    }
 
    private static Optional<? extends bwf> a(ash $$0, coe $$1) {
-      return !c($$1) && !h($$1) ? $$1.eb().c(cfj.l) : Optional.empty();
+      return !c($$1) && !h($$1) ? $$1.ec().c(cfj.l) : Optional.empty();
    }
 
    static boolean a(coe $$0, jh $$1) {
-      Optional<jh> $$2 = $$0.eb().c(cfj.aw);
+      Optional<jh> $$2 = $$0.ec().c(cfj.aw);
       return $$2.isPresent() && $$2.get().a($$1, 8.0);
    }
 
@@ -129,14 +129,14 @@ public class cof {
       if ($$0.e_()) {
          return false;
       } else {
-         int $$1 = $$0.eb().c(cfj.as).orElse(0);
-         int $$2 = $$0.eb().c(cfj.at).orElse(0) + 1;
+         int $$1 = $$0.ec().c(cfj.as).orElse(0);
+         int $$2 = $$0.ec().c(cfj.at).orElse(0) + 1;
          return $$1 > $$2;
       }
    }
 
    protected static void a(ash $$0, coe $$1, bwf $$2) {
-      bxh<coe> $$3 = $$1.eb();
+      bxh<coe> $$3 = $$1.ec();
       $$3.b(cfj.ax);
       $$3.b(cfj.r);
       if ($$1.e_()) {
@@ -147,7 +147,7 @@ public class cof {
    }
 
    private static void b(ash $$0, coe $$1, bwf $$2) {
-      if (!$$1.eb().c(crn.n) || $$2.aq() != bvq.aS) {
+      if (!$$1.ec().c(crn.n) || $$2.aq() != bvq.aS) {
          if ($$2.aq() != bvq.ak) {
             if (!bya.a($$1, $$2, 4.0)) {
                if (cgp.c($$0, $$1, $$2)) {
@@ -160,7 +160,7 @@ public class cof {
    }
 
    private static void e(coe $$0, bwf $$1) {
-      bxh<coe> $$2 = $$0.eb();
+      bxh<coe> $$2 = $$0.ec();
       $$2.b(cfj.E);
       $$2.b(cfj.r);
       $$2.a(cfj.o, $$1, 200L);
@@ -172,18 +172,18 @@ public class cof {
 
    private static void g(coe $$0, bwf $$1) {
       if (!c($$0)) {
-         Optional<bwf> $$2 = $$0.eb().c(cfj.o);
+         Optional<bwf> $$2 = $$0.ec().c(cfj.o);
          bwf $$3 = bya.a($$0, $$2, $$1);
          e($$0, $$3);
       }
    }
 
    public static Optional<axe> b(coe $$0) {
-      return $$0.eb().g().map($$1 -> a($$0, $$1));
+      return $$0.ec().g().map($$1 -> a($$0, $$1));
    }
 
    private static axe a(coe $$0, crn $$1) {
-      if ($$1 == crn.n || $$0.gm()) {
+      if ($$1 == crn.n || $$0.go()) {
          return axf.mM;
       } else if ($$1 == crn.k) {
          return axf.mH;
@@ -193,18 +193,18 @@ public class cof {
    }
 
    private static List<coe> f(coe $$0) {
-      return $$0.eb().c(cfj.ap).orElse(ImmutableList.of());
+      return $$0.ec().c(cfj.ap).orElse(ImmutableList.of());
    }
 
    private static boolean g(coe $$0) {
-      return $$0.eb().a(cfj.aw);
+      return $$0.ec().a(cfj.aw);
    }
 
    private static boolean h(coe $$0) {
-      return $$0.eb().a(cfj.r);
+      return $$0.ec().a(cfj.r);
    }
 
    protected static boolean c(coe $$0) {
-      return $$0.eb().a(cfj.ax);
+      return $$0.ec().a(cfj.ax);
    }
 }

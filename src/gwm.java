@@ -1,47 +1,66 @@
-public class gwm extends gwd<gzy, gbk<gzy>> {
-   private static final alz a = alz.b("textures/entity/fish/tropical_a_pattern_1.png");
-   private static final alz b = alz.b("textures/entity/fish/tropical_a_pattern_2.png");
-   private static final alz c = alz.b("textures/entity/fish/tropical_a_pattern_3.png");
-   private static final alz d = alz.b("textures/entity/fish/tropical_a_pattern_4.png");
-   private static final alz e = alz.b("textures/entity/fish/tropical_a_pattern_5.png");
-   private static final alz f = alz.b("textures/entity/fish/tropical_a_pattern_6.png");
-   private static final alz g = alz.b("textures/entity/fish/tropical_b_pattern_1.png");
-   private static final alz h = alz.b("textures/entity/fish/tropical_b_pattern_2.png");
-   private static final alz i = alz.b("textures/entity/fish/tropical_b_pattern_3.png");
-   private static final alz j = alz.b("textures/entity/fish/tropical_b_pattern_4.png");
-   private static final alz k = alz.b("textures/entity/fish/tropical_b_pattern_5.png");
-   private static final alz l = alz.b("textures/entity/fish/tropical_b_pattern_6.png");
-   private final gdr m;
-   private final gds n;
+public abstract class gwm<M extends gcq> extends gwe<gzf, M> {
+   private final gcg a;
+   private final alz b;
+   private final gwm.a c;
 
-   public gwm(gtl<gzy, gbk<gzy>> $$0, gei $$1) {
+   public gwm(gsq<?, gzf, M> $$0, gcg $$1, alz $$2, gwm.a $$3) {
       super($$0);
-      this.m = new gdr($$1.a(gel.dk));
-      this.n = new gds($$1.a(gel.di));
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   public void a(fgq $$0, glj $$1, int $$2, gzy $$3, float $$4, float $$5) {
-      ciw.b $$6 = $$3.a;
+   protected abstract int a(gzf var1);
 
-      gbk<gzy> $$7 = (gbk<gzy>)(switch ($$6.a()) {
-         case a -> this.m;
-         case b -> this.n;
-      });
+   private void a(fgr $$0, glk $$1, int $$2, float $$3, float $$4, float $$5) {
+      float $$6 = bae.c($$3 * $$3 + $$5 * $$5);
+      float $$7 = (float)(Math.atan2((double)$$3, (double)$$5) * 180.0F / (float)Math.PI);
+      float $$8 = (float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI);
+      $$0.a(a.d.rotationDegrees($$7 - 90.0F));
+      $$0.a(a.f.rotationDegrees($$8));
+      this.a.a($$0, $$1.getBuffer(this.a.a(this.b)), $$2, hbb.d);
+   }
 
-      alz $$8 = switch ($$6) {
-         case a -> a;
-         case b -> b;
-         case c -> c;
-         case d -> d;
-         case e -> e;
-         case f -> f;
-         case g -> g;
-         case h -> h;
-         case i -> i;
-         case j -> j;
-         case k -> k;
-         case l -> l;
-      };
-      a($$7, $$8, $$0, $$1, $$2, $$3, $$3.c);
+   public void a(fgr $$0, glk $$1, int $$2, gzf $$3, float $$4, float $$5) {
+      int $$6 = this.a($$3);
+      if ($$6 > 0) {
+         bam $$7 = bam.a((long)$$3.aG);
+
+         for (int $$8 = 0; $$8 < $$6; $$8++) {
+            $$0.a();
+            gen $$9 = this.d().a($$7);
+            gen.a $$10 = $$9.a($$7);
+            $$9.a($$0);
+            float $$11 = $$7.i();
+            float $$12 = $$7.i();
+            float $$13 = $$7.i();
+            if (this.c == gwm.a.b) {
+               int $$14 = $$7.a(3);
+               switch ($$14) {
+                  case 0:
+                     $$11 = a($$11);
+                     break;
+                  case 1:
+                     $$12 = a($$12);
+                     break;
+                  default:
+                     $$13 = a($$13);
+               }
+            }
+
+            $$0.a(bae.h($$11, $$10.b, $$10.e) / 16.0F, bae.h($$12, $$10.c, $$10.f) / 16.0F, bae.h($$13, $$10.d, $$10.g) / 16.0F);
+            this.a($$0, $$1, $$2, -($$11 * 2.0F - 1.0F), -($$12 * 2.0F - 1.0F), -($$13 * 2.0F - 1.0F));
+            $$0.b();
+         }
+      }
+   }
+
+   private static float a(float $$0) {
+      return $$0 > 0.5F ? 1.0F : 0.5F;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

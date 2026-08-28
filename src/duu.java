@@ -91,8 +91,8 @@ public class duu extends duw {
 
       if (!this.o.C) {
          for (bwf $$2 : this.m) {
-            if ($$2.bL() && !$$2.dQ() && $$0.a($$2.dt(), 32.0)) {
-               $$2.eb().a(cfj.D, this.o.ac());
+            if ($$2.bL() && !$$2.dR() && $$0.a($$2.du(), 32.0)) {
+               $$2.ec().a(cfj.D, this.o.ac());
             }
          }
       }
@@ -100,7 +100,7 @@ public class duu extends duw {
 
    private static boolean a(jh $$0, List<bwf> $$1) {
       for (bwf $$2 : $$1) {
-         if ($$2.bL() && !$$2.dQ() && $$0.a($$2.dt(), 32.0) && $$2.aq().a(axy.c)) {
+         if ($$2.bL() && !$$2.dR() && $$0.a($$2.du(), 32.0) && $$2.aq().a(axy.c)) {
             return true;
          }
       }
@@ -114,12 +114,12 @@ public class duu extends duw {
 
    private static void b(dhh $$0, jh $$1, List<bwf> $$2) {
       MutableInt $$3 = new MutableInt(16700985);
-      int $$4 = (int)$$2.stream().filter($$1x -> $$1.a($$1x.dt(), 48.0)).count();
+      int $$4 = (int)$$2.stream().filter($$1x -> $$1.a($$1x.du(), 48.0)).count();
       $$2.stream().filter($$1x -> a($$1, $$1x)).forEach($$4x -> {
          float $$5 = 1.0F;
-         double $$6 = Math.sqrt(($$4x.dA() - (double)$$1.u()) * ($$4x.dA() - (double)$$1.u()) + ($$4x.dG() - (double)$$1.w()) * ($$4x.dG() - (double)$$1.w()));
-         double $$7 = (double)((float)$$1.u() + 0.5F) + 1.0 / $$6 * ($$4x.dA() - (double)$$1.u());
-         double $$8 = (double)((float)$$1.w() + 0.5F) + 1.0 / $$6 * ($$4x.dG() - (double)$$1.w());
+         double $$6 = Math.sqrt(($$4x.dB() - (double)$$1.u()) * ($$4x.dB() - (double)$$1.u()) + ($$4x.dH() - (double)$$1.w()) * ($$4x.dH() - (double)$$1.w()));
+         double $$7 = (double)((float)$$1.u() + 0.5F) + 1.0 / $$6 * ($$4x.dB() - (double)$$1.u());
+         double $$8 = (double)((float)$$1.w() + 0.5F) + 1.0 / $$6 * ($$4x.dH() - (double)$$1.w());
          int $$9 = bae.a(($$4 - 21) / -2, 3, 15);
 
          for (int $$10 = 0; $$10 < $$9; $$10++) {
@@ -130,7 +130,7 @@ public class duu extends duw {
    }
 
    private static boolean a(jh $$0, bwf $$1) {
-      return $$1.bL() && !$$1.dQ() && $$0.a($$1.dt(), 48.0) && $$1.aq().a(axy.c);
+      return $$1.bL() && !$$1.dR() && $$0.a($$1.du(), 48.0) && $$1.aq().a(axy.c);
    }
 
    private static void a(bwf $$0) {

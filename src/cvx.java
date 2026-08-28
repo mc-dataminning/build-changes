@@ -12,8 +12,8 @@ public class cvx extends cxk {
       if (!$$3.isEmpty()) {
          bvc $$5 = $$3.get(0);
          $$5.a($$5.c() - 0.5F);
-         $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), axf.cD, axg.g, 1.0F, 1.0F);
-         $$0.a($$1, ecq.y, $$1.dt());
+         $$0.a(null, $$1.dB(), $$1.dD(), $$1.dH(), axf.cD, axg.g, 1.0F, 1.0F);
+         $$0.a($$1, ecq.y, $$1.du());
          if ($$1 instanceof asi $$6) {
             ao.T.a($$6, $$4, $$5);
          }
@@ -31,7 +31,7 @@ public class cvx extends cxk {
                }
 
                if ($$0.b_($$8).a(aya.a)) {
-                  $$0.a($$1, $$1.dA(), $$1.dC(), $$1.dG(), axf.cC, axg.g, 1.0F, 1.0F);
+                  $$0.a($$1, $$1.dB(), $$1.dD(), $$1.dH(), axf.cC, axg.g, 1.0F, 1.0F);
                   $$0.a($$1, ecq.y, $$8);
                   return bti.a.a(this.a($$4, $$1, czn.a(cxs.sZ, czo.a)));
                }

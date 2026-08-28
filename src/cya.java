@@ -6,16 +6,16 @@ public class cya extends cxk {
    private static final int c = 5;
    private static final float d = -3.4F;
    public static final float a = 1.5F;
-   private static final float l = 5.0F;
+   private static final float m = 5.0F;
    public static final float b = 3.5F;
-   private static final float m = 0.7F;
+   private static final float n = 0.7F;
 
    public cya(cxk.a $$0) {
       super($$0);
    }
 
    public static daf b() {
-      return daf.a().a(bxn.c, new bxl(f, 5.0, bxl.a.a), bvs.b).a(bxn.e, new bxl(g, -3.4F, bxl.a.a), bvs.b).a();
+      return daf.a().a(bxn.c, new bxl(g, 5.0, bxl.a.a), bvs.b).a(bxn.e, new bxl(h, -3.4F, bxl.a.a), bvs.b).a();
    }
 
    public static daq c() {
@@ -30,8 +30,8 @@ public class cya extends cxk {
    @Override
    public boolean a(cxo $$0, bwf $$1, bwf $$2) {
       if (b($$2)) {
-         ash $$3 = (ash)$$2.dV();
-         $$2.h($$2.dy().a(jm.a.b, 0.01F));
+         ash $$3 = (ash)$$2.dW();
+         $$2.h($$2.dz().a(jm.a.b, 0.01F));
          if ($$2 instanceof asi $$4) {
             $$4.cx = this.a($$4);
             $$4.w(true);
@@ -44,9 +44,9 @@ public class cya extends cxk {
             }
 
             axe $$6 = $$2.Z > 5.0F ? axf.oI : axf.oH;
-            $$3.a(null, $$2.dA(), $$2.dC(), $$2.dG(), $$6, $$2.dm(), 1.0F, 1.0F);
+            $$3.a(null, $$2.dB(), $$2.dD(), $$2.dH(), $$6, $$2.dn(), 1.0F, 1.0F);
          } else {
-            $$3.a(null, $$2.dA(), $$2.dC(), $$2.dG(), axf.oG, $$2.dm(), 1.0F, 1.0F);
+            $$3.a(null, $$2.dB(), $$2.dD(), $$2.dH(), axf.oG, $$2.dn(), 1.0F, 1.0F);
          }
 
          a($$3, $$2, $$1);
@@ -56,7 +56,7 @@ public class cya extends cxk {
    }
 
    private fbx a(asi $$0) {
-      return $$0.gJ() && $$0.cx != null && $$0.cx.e <= $$0.dt().e ? $$0.cx : $$0.dt();
+      return $$0.gL() && $$0.cx != null && $$0.cx.e <= $$0.du().e ? $$0.cx : $$0.du();
    }
 
    @Override
@@ -85,7 +85,7 @@ public class cya extends cxk {
                $$8 = 22.0F + $$7 - 8.0F;
             }
 
-            return $$3.dV() instanceof ash $$11 ? $$8 + dea.b($$11, $$3.dZ(), $$0, $$2, 0.0F) * $$7 : $$8;
+            return $$3.dW() instanceof ash $$11 ? $$8 + dea.b($$11, $$3.ea(), $$0, $$2, 0.0F) * $$7 : $$8;
          }
       } else {
          return 0.0F;
@@ -95,7 +95,7 @@ public class cya extends cxk {
    private static void a(dhh $$0, bvj $$1, bvj $$2) {
       $$0.c(2013, $$2.aR(), 750);
       $$0.a(bwf.class, $$2.cR().g(3.5), a($$1, $$2)).forEach($$2x -> {
-         fbx $$3 = $$2x.dt().d($$2.dt());
+         fbx $$3 = $$2x.du().d($$2.du());
          double $$4 = a($$1, $$2x, $$3);
          fbx $$5 = $$3.d().c($$4);
          if ($$4 > 0.0) {
@@ -147,12 +147,12 @@ public class cya extends cxk {
    }
 
    public static boolean b(bwf $$0) {
-      return $$0.Z > 1.5F && !$$0.fH();
+      return $$0.Z > 1.5F && !$$0.fJ();
    }
 
    @Nullable
    @Override
    public btz a(bwf $$0) {
-      return b($$0) ? $$0.dW().f($$0) : super.a($$0);
+      return b($$0) ? $$0.dX().f($$0) : super.a($$0);
    }
 }

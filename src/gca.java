@@ -1,46 +1,63 @@
-import java.util.Arrays;
+public class gca extends gbl<gyn> {
+   private final gen a;
+   private final gen b;
+   private final gen c;
+   private final gen d;
+   private final gen e;
 
-public class gca extends gbk<gzp> {
-   private static final int a = 8;
-   private final gem[] b = new gem[8];
-
-   public gca(gem $$0) {
+   public gca(gen $$0) {
       super($$0);
-      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
+      this.a = $$0.b("head");
+      this.b = $$0.b("right_arm");
+      this.c = $$0.b("left_arm");
+      this.d = $$0.b("right_leg");
+      this.e = $$0.b("left_leg");
    }
 
-   private static String a(int $$0) {
-      return "cube" + $$0;
+   public static get a() {
+      gev $$0 = new gev();
+      gex $$1 = $$0.a();
+      $$1.a("head", ges.c().a(0, 0).a(-4.0F, -12.0F, -5.5F, 8.0F, 10.0F, 8.0F).a(24, 0).a(-1.0F, -5.0F, -7.5F, 2.0F, 4.0F, 2.0F), gep.a(0.0F, -7.0F, -2.0F));
+      $$1.a(
+         "body",
+         ges.c().a(0, 40).a(-9.0F, -2.0F, -6.0F, 18.0F, 12.0F, 11.0F).a(0, 70).a(-4.5F, 10.0F, -3.0F, 9.0F, 5.0F, 6.0F, new ger(0.5F)),
+         gep.a(0.0F, -7.0F, 0.0F)
+      );
+      $$1.a("right_arm", ges.c().a(60, 21).a(-13.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), gep.a(0.0F, -7.0F, 0.0F));
+      $$1.a("left_arm", ges.c().a(60, 58).a(9.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), gep.a(0.0F, -7.0F, 0.0F));
+      $$1.a("right_leg", ges.c().a(37, 0).a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), gep.a(-4.0F, 11.0F, 0.0F));
+      $$1.a("left_leg", ges.c().a(60, 0).a().a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), gep.a(5.0F, 11.0F, 0.0F));
+      return get.a($$0, 128, 128);
    }
 
-   public static ges a() {
-      geu $$0 = new geu();
-      gew $$1 = $$0.a();
-
-      for (int $$2 = 0; $$2 < 8; $$2++) {
-         int $$3 = 0;
-         int $$4 = $$2;
-         if ($$2 == 2) {
-            $$3 = 24;
-            $$4 = 10;
-         } else if ($$2 == 3) {
-            $$3 = 24;
-            $$4 = 19;
-         }
-
-         $$1.a(a($$2), ger.c().a($$3, $$4).a(-4.0F, (float)(16 + $$2), -4.0F, 8.0F, 1.0F, 8.0F), geo.a);
-      }
-
-      $$1.a("inside_cube", ger.c().a(0, 16).a(-2.0F, 18.0F, -2.0F, 4.0F, 4.0F, 4.0F), geo.a);
-      return ges.a($$0, 64, 32);
-   }
-
-   public void a(gzp $$0) {
+   public void a(gyn $$0) {
       super.a($$0);
-      float $$1 = Math.max(0.0F, $$0.a);
-
-      for (int $$2 = 0; $$2 < this.b.length; $$2++) {
-         this.b[$$2].c = (float)(-(4 - $$2)) * $$1 * 1.7F;
+      float $$1 = $$0.a;
+      float $$2 = $$0.Y;
+      float $$3 = $$0.X;
+      if ($$1 > 0.0F) {
+         this.b.e = -2.0F + 1.5F * bae.e($$1, 10.0F);
+         this.c.e = -2.0F + 1.5F * bae.e($$1, 10.0F);
+      } else {
+         int $$4 = $$0.b;
+         if ($$4 > 0) {
+            this.b.e = -0.8F + 0.025F * bae.e((float)$$4, 70.0F);
+            this.c.e = 0.0F;
+         } else {
+            this.b.e = (-0.2F + 1.5F * bae.e($$3, 13.0F)) * $$2;
+            this.c.e = (-0.2F - 1.5F * bae.e($$3, 13.0F)) * $$2;
+         }
       }
+
+      this.a.f = $$0.U * (float) (Math.PI / 180.0);
+      this.a.e = $$0.V * (float) (Math.PI / 180.0);
+      this.d.e = -1.5F * bae.e($$3, 13.0F) * $$2;
+      this.e.e = 1.5F * bae.e($$3, 13.0F) * $$2;
+      this.d.f = 0.0F;
+      this.e.f = 0.0F;
+   }
+
+   public gen b() {
+      return this.b;
    }
 }

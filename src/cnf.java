@@ -24,12 +24,12 @@ public class cnf extends bwh implements cmo {
       this.bT.a(2, new cnf.a(this));
       this.bT.a(3, new cnf.e(this));
       this.bT.a(5, new cnf.c(this));
-      this.bU.a(1, new cew<>(this, cpw.class, 10, true, false, ($$0, $$1) -> Math.abs($$0.dC() - this.dC()) <= 4.0));
+      this.bU.a(1, new cew<>(this, cpw.class, 10, true, false, ($$0, $$1) -> Math.abs($$0.dD() - this.dD()) <= 4.0));
       this.bU.a(3, new cew<>(this, cii.class, true));
    }
 
    @Override
-   public axg dm() {
+   public axg dn() {
       return axg.f;
    }
 
@@ -49,20 +49,20 @@ public class cnf extends bwh implements cmo {
       this.g(bxn.v).a((double)(0.2F + 0.1F * (float)$$2));
       this.g(bxn.c).a((double)$$2);
       if ($$1) {
-         this.x(this.eR());
+         this.x(this.eS());
       }
 
       this.bO = $$2;
    }
 
-   public int gm() {
+   public int go() {
       return this.al.a(ca);
    }
 
    @Override
    public void b(ux $$0) {
       super.b($$0);
-      $$0.a("Size", this.gm() - 1);
+      $$0.a("Size", this.go() - 1);
       $$0.a("wasOnGround", this.cb);
    }
 
@@ -73,8 +73,8 @@ public class cnf extends bwh implements cmo {
       this.cb = $$0.q("wasOnGround");
    }
 
-   public boolean gn() {
-      return this.gm() <= 1;
+   public boolean gp() {
+      return this.go() <= 1;
    }
 
    protected lq p() {
@@ -83,7 +83,7 @@ public class cnf extends bwh implements cmo {
 
    @Override
    protected boolean X() {
-      return this.gm() > 0;
+      return this.go() > 0;
    }
 
    @Override
@@ -100,10 +100,10 @@ public class cnf extends bwh implements cmo {
             float $$4 = this.ae.i() * 0.5F + 0.5F;
             float $$5 = bae.a($$3) * $$1 * $$4;
             float $$6 = bae.b($$3) * $$1 * $$4;
-            this.dV().a(this.p(), this.dA() + (double)$$5, this.dC(), this.dG() + (double)$$6, 0.0, 0.0, 0.0);
+            this.dW().a(this.p(), this.dB() + (double)$$5, this.dD(), this.dH() + (double)$$6, 0.0, 0.0, 0.0);
          }
 
-         this.a(this.gk(), this.fe(), ((this.ae.i() - this.ae.i()) * 0.2F + 1.0F) / 0.8F);
+         this.a(this.gm(), this.fg(), ((this.ae.i() - this.ae.i()) * 0.2F + 1.0F) / 0.8F);
          this.d = -0.5F;
       } else if (!this.aJ() && this.cb) {
          this.d = 1.0F;
@@ -123,9 +123,9 @@ public class cnf extends bwh implements cmo {
 
    @Override
    public void m_() {
-      double $$0 = this.dA();
-      double $$1 = this.dC();
-      double $$2 = this.dG();
+      double $$0 = this.dB();
+      double $$1 = this.dD();
+      double $$2 = this.dH();
       super.m_();
       this.a_($$0, $$1, $$2);
    }
@@ -150,9 +150,9 @@ public class cnf extends bwh implements cmo {
    }
 
    @Override
-   public void a(bvj.c $$0) {
-      int $$1 = this.gm();
-      if (!this.dV().C && $$1 > 1 && this.eE()) {
+   public void a(bvj.d $$0) {
+      int $$1 = this.go();
+      if (!this.dW().C && $$1 > 1 && this.eF()) {
          float $$2 = this.a(this.aw()).a();
          float $$3 = $$2 / 2.0F;
          int $$4 = $$1 / 2;
@@ -164,7 +164,7 @@ public class cnf extends bwh implements cmo {
             float $$9 = ((float)($$7 / 2) - 0.5F) * $$3;
             this.a(this.aq(), new bve(bvf.b, false, false, $$6), bvp.k, $$3x -> {
                $$3x.a($$4, true);
-               $$3x.b(this.dA() + (double)$$8, this.dC() + 0.5, this.dG() + (double)$$9, this.ae.i() * 360.0F, 0.0F);
+               $$3x.b(this.dB() + (double)$$8, this.dD() + 0.5, this.dH() + (double)$$9, this.ae.i() * 360.0F, 0.0F);
             });
          }
       }
@@ -175,22 +175,22 @@ public class cnf extends bwh implements cmo {
    @Override
    public void h(bvj $$0) {
       super.h($$0);
-      if ($$0 instanceof cii && this.gi()) {
+      if ($$0 instanceof cii && this.gk()) {
          this.j((bwf)$$0);
       }
    }
 
    @Override
    public void a_(cpw $$0) {
-      if (this.gi()) {
+      if (this.gk()) {
          this.j($$0);
       }
    }
 
    protected void j(bwf $$0) {
-      if (this.dV() instanceof ash $$1 && this.bL() && this.i($$0) && this.E($$0)) {
-         btz $$2 = this.dW().b((bwf)this);
-         if ($$0.a($$1, $$2, this.gj())) {
+      if (this.dW() instanceof ash $$1 && this.bL() && this.i($$0) && this.E($$0)) {
+         btz $$2 = this.dX().b((bwf)this);
+         if ($$0.a($$1, $$2, this.gl())) {
             this.a(axf.xJ, 1.0F, (this.ae.i() - this.ae.i()) * 0.2F + 1.0F);
             dea.a($$1, (bvj)$$0, $$2);
          }
@@ -199,29 +199,29 @@ public class cnf extends bwh implements cmo {
 
    @Override
    protected fbx a(bvj $$0, bvm $$1, float $$2) {
-      return new fbx(0.0, (double)$$1.b() - 0.015625 * (double)this.gm() * (double)$$2, 0.0);
+      return new fbx(0.0, (double)$$1.b() - 0.015625 * (double)this.go() * (double)$$2, 0.0);
    }
 
-   protected boolean gi() {
-      return !this.gn() && this.dj();
+   protected boolean gk() {
+      return !this.gp() && this.dk();
    }
 
-   protected float gj() {
+   protected float gl() {
       return (float)this.h(bxn.c);
    }
 
    @Override
    protected axe e(btz $$0) {
-      return this.gn() ? axf.yF : axf.xL;
+      return this.gp() ? axf.yF : axf.xL;
    }
 
    @Override
    protected axe o_() {
-      return this.gn() ? axf.yE : axf.xK;
+      return this.gp() ? axf.yE : axf.xK;
    }
 
-   protected axe gk() {
-      return this.gn() ? axf.yH : axf.xN;
+   protected axe gm() {
+      return this.gp() ? axf.yH : axf.xN;
    }
 
    public static boolean c(bvq<cnf> $$0, dhi $$1, bvp $$2, jh $$3, bam $$4) {
@@ -249,8 +249,8 @@ public class cnf extends bwh implements cmo {
    }
 
    @Override
-   protected float fe() {
-      return 0.4F * (float)this.gm();
+   protected float fg() {
+      return 0.4F * (float)this.go();
    }
 
    @Override
@@ -258,14 +258,14 @@ public class cnf extends bwh implements cmo {
       return 0;
    }
 
-   protected boolean go() {
-      return this.gm() > 0;
+   protected boolean gq() {
+      return this.go() > 0;
    }
 
    @Override
    public void s() {
-      fbx $$0 = this.dy();
-      this.n($$0.d, (double)this.fh(), $$0.f);
+      fbx $$0 = this.dz();
+      this.n($$0.d, (double)this.fj(), $$0.f);
       this.ar = true;
    }
 
@@ -284,17 +284,17 @@ public class cnf extends bwh implements cmo {
    }
 
    float m() {
-      float $$0 = this.gn() ? 1.4F : 0.8F;
+      float $$0 = this.gp() ? 1.4F : 0.8F;
       return ((this.ae.i() - this.ae.i()) * 0.2F + 1.0F) * $$0;
    }
 
-   protected axe gl() {
-      return this.gn() ? axf.yG : axf.xM;
+   protected axe gn() {
+      return this.gp() ? axf.yG : axf.xM;
    }
 
    @Override
    public bvm e(bwr $$0) {
-      return super.e($$0).a((float)this.gm());
+      return super.e($$0).a((float)this.go());
    }
 
    static class a extends cdd {
@@ -345,7 +345,7 @@ public class cnf extends bwh implements cmo {
          }
 
          if (this.a.I() instanceof cnf.d $$1) {
-            $$1.a(this.a.dL(), this.a.gi());
+            $$1.a(this.a.dM(), this.a.gk());
          }
       }
    }
@@ -371,7 +371,7 @@ public class cnf extends bwh implements cmo {
 
       @Override
       public void a() {
-         if (this.a.dY().i() < 0.8F) {
+         if (this.a.dZ().i() < 0.8F) {
             this.a.J().a();
          }
 
@@ -411,7 +411,7 @@ public class cnf extends bwh implements cmo {
       public d(cnf $$0) {
          super($$0);
          this.n = $$0;
-         this.l = 180.0F * $$0.dL() / (float) Math.PI;
+         this.l = 180.0F * $$0.dM() / (float) Math.PI;
       }
 
       public void a(float $$0, boolean $$1) {
@@ -426,9 +426,9 @@ public class cnf extends bwh implements cmo {
 
       @Override
       public void a() {
-         this.d.v(this.b(this.d.dL(), this.l, 90.0F));
-         this.d.aZ = this.d.dL();
-         this.d.aX = this.d.dL();
+         this.d.v(this.b(this.d.dM(), this.l, 90.0F));
+         this.d.aZ = this.d.dM();
+         this.d.aX = this.d.dM();
          if (this.k != ccg.a.b) {
             this.d.G(0.0F);
          } else {
@@ -442,8 +442,8 @@ public class cnf extends bwh implements cmo {
                   }
 
                   this.n.J().a();
-                  if (this.n.go()) {
-                     this.n.a(this.n.gl(), this.n.fe(), this.n.m());
+                  if (this.n.gq()) {
+                     this.n.a(this.n.gn(), this.n.fg(), this.n.m());
                   }
                } else {
                   this.n.bo = 0.0F;
@@ -475,8 +475,8 @@ public class cnf extends bwh implements cmo {
       @Override
       public void a() {
          if (--this.c <= 0) {
-            this.c = this.a(40 + this.a.dY().a(60));
-            this.b = (float)this.a.dY().a(360);
+            this.c = this.a(40 + this.a.dZ().a(60));
+            this.b = (float)this.a.dZ().a(360);
          }
 
          if (this.a.I() instanceof cnf.d $$0) {

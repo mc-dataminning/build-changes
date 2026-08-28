@@ -1,5 +1,7 @@
-public class gzv extends gxt {
-   public float a;
-   public float b;
-   public boolean c;
+import javax.annotation.Nullable;
+
+public class gzv extends gxu {
+   @Nullable
+   public hdm a;
+   public cxo b = cxo.j;
 }

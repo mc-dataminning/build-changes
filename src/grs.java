@@ -1,56 +1,27 @@
-public class grs extends grn<bvv, gxx> {
-   private static final alz a = alz.b("textures/entity/experience_orb.png");
-   private static final glt b = glt.h(a);
+public class grs<T extends cng> extends gsi<T, gxx> {
+   private static final alz a = alz.b("textures/entity/illager/evoker.png");
 
-   public grs(gro.a $$0) {
-      super($$0);
-      this.f = 0.15F;
-      this.g = 0.75F;
+   public grs(grp.a $$0) {
+      super($$0, new gbz<>($$0.a(gem.aI)), 0.5F);
+      this.a(new gvw<gxx, gbz<gxx>>(this, $$0.b()) {
+         public void a(fgr $$0, glk $$1, int $$2, gxx $$3, float $$4, float $$5) {
+            if ($$3.a) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5);
+            }
+         }
+      });
    }
 
-   protected int a(bvv $$0, jh $$1) {
-      return bae.a(super.a($$0, $$1) + 7, 0, 15);
+   public alz a(gxx $$0) {
+      return a;
    }
 
-   public void a(gxx $$0, fgq $$1, glj $$2, int $$3) {
-      $$1.a();
-      int $$4 = $$0.a;
-      float $$5 = (float)($$4 % 4 * 16 + 0) / 64.0F;
-      float $$6 = (float)($$4 % 4 * 16 + 16) / 64.0F;
-      float $$7 = (float)($$4 / 4 * 16 + 0) / 64.0F;
-      float $$8 = (float)($$4 / 4 * 16 + 16) / 64.0F;
-      float $$9 = 1.0F;
-      float $$10 = 0.5F;
-      float $$11 = 0.25F;
-      float $$12 = 255.0F;
-      float $$13 = $$0.p / 2.0F;
-      int $$14 = (int)((bae.a($$13 + 0.0F) + 1.0F) * 0.5F * 255.0F);
-      int $$15 = 255;
-      int $$16 = (int)((bae.a($$13 + (float) (Math.PI * 4.0 / 3.0)) + 1.0F) * 0.1F * 255.0F);
-      $$1.a(0.0F, 0.1F, 0.0F);
-      $$1.a(this.e.b());
-      float $$17 = 0.3F;
-      $$1.b(0.3F, 0.3F, 0.3F);
-      fgu $$18 = $$2.getBuffer(b);
-      fgq.a $$19 = $$1.c();
-      a($$18, $$19, -0.5F, -0.25F, $$14, 255, $$16, $$5, $$8, $$3);
-      a($$18, $$19, 0.5F, -0.25F, $$14, 255, $$16, $$6, $$8, $$3);
-      a($$18, $$19, 0.5F, 0.75F, $$14, 255, $$16, $$6, $$7, $$3);
-      a($$18, $$19, -0.5F, 0.75F, $$14, 255, $$16, $$5, $$7, $$3);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   private static void a(fgu $$0, fgq.a $$1, float $$2, float $$3, int $$4, int $$5, int $$6, float $$7, float $$8, int $$9) {
-      $$0.a($$1, $$2, $$3, 0.0F).a($$4, $$5, $$6, 128).a($$7, $$8).b(hba.d).c($$9).b($$1, 0.0F, 1.0F, 0.0F);
-   }
-
-   public gxx a() {
+   public gxx b() {
       return new gxx();
    }
 
-   public void a(bvv $$0, gxx $$1, float $$2) {
+   public void a(T $$0, gxx $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.m();
+      $$1.a = $$0.gx();
    }
 }

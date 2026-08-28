@@ -98,21 +98,21 @@ public class che {
    public static jh a(bwn $$0, int $$1, bam $$2, jh $$3) {
       int $$4 = $$3.u();
       int $$5 = $$3.w();
-      if ($$0.fY() && $$1 > 1) {
-         jh $$6 = $$0.fV();
-         if ($$0.dA() > (double)$$6.u()) {
+      if ($$0.ga() && $$1 > 1) {
+         jh $$6 = $$0.fX();
+         if ($$0.dB() > (double)$$6.u()) {
             $$4 -= $$2.a($$1 / 2);
          } else {
             $$4 += $$2.a($$1 / 2);
          }
 
-         if ($$0.dG() > (double)$$6.w()) {
+         if ($$0.dH() > (double)$$6.w()) {
             $$5 -= $$2.a($$1 / 2);
          } else {
             $$5 += $$2.a($$1 / 2);
          }
       }
 
-      return jh.a((double)$$4 + $$0.dA(), (double)$$3.v() + $$0.dC(), (double)$$5 + $$0.dG());
+      return jh.a((double)$$4 + $$0.dB(), (double)$$3.v() + $$0.dD(), (double)$$5 + $$0.dH());
    }
 }

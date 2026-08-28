@@ -12,20 +12,20 @@ public class by {
    public static final MapCodec<eb> d = a("slime", eb.b);
    public static final MapCodec<dt> e = a("raider", dt.b);
    public static final MapCodec<dw> f = a("sheep", dw.b);
-   public static final by.b<cji.e> g = a("axolotl", by.b.a(cji.e.f, $$0 -> $$0 instanceof cji $$1 ? Optional.of($$1.gm()) : Optional.empty()));
+   public static final by.b<cji.e> g = a("axolotl", by.b.a(cji.e.f, $$0 -> $$0 instanceof cji $$1 ? Optional.of($$1.go()) : Optional.empty()));
    public static final by.b<cig.v> h = a("fox", by.b.a(cig.v.c, $$0 -> $$0 instanceof cig $$1 ? Optional.of($$1.t()) : Optional.empty()));
    public static final by.b<cij.a> i = a("mooshroom", by.b.a(cij.a.c, $$0 -> $$0 instanceof cij $$1 ? Optional.of($$1.t()) : Optional.empty()));
-   public static final by.b<ciq.g> j = a("rabbit", by.b.a(ciq.g.h, $$0 -> $$0 instanceof ciq $$1 ? Optional.of($$1.gm()) : Optional.empty()));
+   public static final by.b<ciq.g> j = a("rabbit", by.b.a(ciq.g.h, $$0 -> $$0 instanceof ciq $$1 ? Optional.of($$1.go()) : Optional.empty()));
    public static final by.b<ckj> k = a("horse", by.b.a(ckj.h, $$0 -> $$0 instanceof ckc $$1 ? Optional.of($$1.p()) : Optional.empty()));
-   public static final by.b<ckd.d> l = a("llama", by.b.a(ckd.d.e, $$0 -> $$0 instanceof ckd $$1 ? Optional.of($$1.gz()) : Optional.empty()));
+   public static final by.b<ckd.d> l = a("llama", by.b.a(ckd.d.e, $$0 -> $$0 instanceof ckd $$1 ? Optional.of($$1.gB()) : Optional.empty()));
    public static final by.b<cpn> m = a("villager", by.b.a(ma.w.q(), $$0 -> $$0 instanceof cpk $$1 ? Optional.of($$1.a()) : Optional.empty()));
-   public static final by.b<cim.b> n = a("parrot", by.b.a(cim.b.f, $$0 -> $$0 instanceof cim $$1 ? Optional.of($$1.gA()) : Optional.empty()));
-   public static final by.b<cir.a> o = a("salmon", by.b.a(cir.a.d, $$0 -> $$0 instanceof cir $$1 ? Optional.of($$1.gu()) : Optional.empty()));
-   public static final by.b<ciw.b> p = a("tropical_fish", by.b.a(ciw.b.m, $$0 -> $$0 instanceof ciw $$1 ? Optional.of($$1.gw()) : Optional.empty()));
+   public static final by.b<cim.b> n = a("parrot", by.b.a(cim.b.f, $$0 -> $$0 instanceof cim $$1 ? Optional.of($$1.gC()) : Optional.empty()));
+   public static final by.b<cir.a> o = a("salmon", by.b.a(cir.a.d, $$0 -> $$0 instanceof cir $$1 ? Optional.of($$1.gw()) : Optional.empty()));
+   public static final by.b<ciw.b> p = a("tropical_fish", by.b.a(ciw.b.m, $$0 -> $$0 instanceof ciw $$1 ? Optional.of($$1.gy()) : Optional.empty()));
    public static final by.a<clw> q = a("painting", by.a.a(mb.X, $$0 -> $$0 instanceof clv $$1 ? Optional.of($$1.s()) : Optional.empty()));
-   public static final by.a<cia> r = a("cat", by.a.a(mb.l, $$0 -> $$0 instanceof chz $$1 ? Optional.of($$1.gy()) : Optional.empty()));
+   public static final by.a<cia> r = a("cat", by.a.a(mb.l, $$0 -> $$0 instanceof chz $$1 ? Optional.of($$1.gA()) : Optional.empty()));
    public static final by.a<cih> s = a("frog", by.a.a(mb.F, $$0 -> $$0 instanceof cjq $$1 ? Optional.of($$1.x()) : Optional.empty()));
-   public static final by.a<cja> t = a("wolf", by.a.a(mb.m, $$0 -> $$0 instanceof ciz $$1 ? Optional.of($$1.gz()) : Optional.empty()));
+   public static final by.a<cja> t = a("wolf", by.a.a(mb.m, $$0 -> $$0 instanceof ciz $$1 ? Optional.of($$1.gB()) : Optional.empty()));
 
    private static <T extends bx> MapCodec<T> a(String $$0, MapCodec<T> $$1) {
       return kd.a(ma.ap, $$0, $$1);

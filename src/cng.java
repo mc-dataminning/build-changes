@@ -31,15 +31,15 @@ public abstract class cng extends cmd {
 
    @Override
    public cmd.a m() {
-      if (this.gv()) {
+      if (this.gx()) {
          return cmd.a.c;
       } else {
-         return this.gE() ? cmd.a.g : cmd.a.a;
+         return this.gG() ? cmd.a.g : cmd.a.a;
       }
    }
 
-   public boolean gv() {
-      return this.dV().C ? this.al.a(a) > 0 : this.b > 0;
+   public boolean gx() {
+      return this.dW().C ? this.al.a(a) > 0 : this.b > 0;
    }
 
    public void a(cng.a $$0) {
@@ -47,8 +47,8 @@ public abstract class cng extends cmd {
       this.al.a(a, (byte)$$0.h);
    }
 
-   protected cng.a gw() {
-      return !this.dV().C ? this.bZ : cng.a.a(this.al.a(a));
+   protected cng.a gy() {
+      return !this.dW().C ? this.bZ : cng.a.a(this.al.a(a));
    }
 
    @Override
@@ -62,22 +62,22 @@ public abstract class cng extends cmd {
    @Override
    public void h() {
       super.h();
-      if (this.dV().C && this.gv()) {
-         cng.a $$0 = this.gw();
+      if (this.dW().C && this.gx()) {
+         cng.a $$0 = this.gy();
          float $$1 = (float)$$0.i[0];
          float $$2 = (float)$$0.i[1];
          float $$3 = (float)$$0.i[2];
          float $$4 = this.aX * (float) (Math.PI / 180.0) + bae.b((float)this.af * 0.6662F) * 0.25F;
          float $$5 = bae.b($$4);
          float $$6 = bae.a($$4);
-         double $$7 = 0.6 * (double)this.ej();
-         double $$8 = 1.8 * (double)this.ej();
-         this.dV().a(ll.a(ls.u, $$1, $$2, $$3), this.dA() + (double)$$5 * $$7, this.dC() + $$8, this.dG() + (double)$$6 * $$7, 0.0, 0.0, 0.0);
-         this.dV().a(ll.a(ls.u, $$1, $$2, $$3), this.dA() - (double)$$5 * $$7, this.dC() + $$8, this.dG() - (double)$$6 * $$7, 0.0, 0.0, 0.0);
+         double $$7 = 0.6 * (double)this.ek();
+         double $$8 = 1.8 * (double)this.ek();
+         this.dW().a(ll.a(ls.u, $$1, $$2, $$3), this.dB() + (double)$$5 * $$7, this.dD() + $$8, this.dH() + (double)$$6 * $$7, 0.0, 0.0, 0.0);
+         this.dW().a(ll.a(ls.u, $$1, $$2, $$3), this.dB() - (double)$$5 * $$7, this.dD() + $$8, this.dH() - (double)$$6 * $$7, 0.0, 0.0, 0.0);
       }
    }
 
-   protected int gx() {
+   protected int gz() {
       return this.b;
    }
 
@@ -112,7 +112,7 @@ public abstract class cng extends cmd {
 
       @Override
       public boolean b() {
-         return cng.this.gx() > 0;
+         return cng.this.gz() > 0;
       }
 
       @Override
@@ -145,7 +145,7 @@ public abstract class cng extends cmd {
          if ($$0 == null || !$$0.bL()) {
             return false;
          } else {
-            return cng.this.gv() ? false : cng.this.af >= this.c;
+            return cng.this.gx() ? false : cng.this.af >= this.c;
          }
       }
 

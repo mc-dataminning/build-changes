@@ -22,12 +22,12 @@ public class cfp extends cfr {
 
    @Override
    protected fbx b() {
-      return this.a.dt();
+      return this.a.du();
    }
 
    @Override
    public euk a(bvj $$0, int $$1) {
-      return this.a($$0.dv(), $$1);
+      return this.a($$0.dw(), $$1);
    }
 
    @Override
@@ -42,7 +42,7 @@ public class cfp extends cfr {
             this.l();
          } else if (this.c != null && !this.c.c()) {
             fbx $$0 = this.c.a(this.a);
-            if (this.a.dz() == bae.a($$0.d) && this.a.dB() == bae.a($$0.e) && this.a.dF() == bae.a($$0.f)) {
+            if (this.a.dA() == bae.a($$0.d) && this.a.dC() == bae.a($$0.e) && this.a.dG() == bae.a($$0.f)) {
                this.c.a();
             }
          }

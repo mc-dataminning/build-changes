@@ -13,7 +13,7 @@ public record eb(dj.d c) implements bx {
 
    @Override
    public boolean a(bvj $$0, ash $$1, @Nullable fbx $$2) {
-      return $$0 instanceof cnf $$3 ? this.c.d($$3.gm()) : false;
+      return $$0 instanceof cnf $$3 ? this.c.d($$3.go()) : false;
    }
 
    @Override

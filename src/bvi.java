@@ -20,9 +20,9 @@ public class bvi {
       float $$3;
       float $$4;
       float $$5;
-      if (this.i.fH()) {
+      if (this.i.fJ()) {
          float $$0 = 1.0F;
-         fbx $$1 = this.i.dy();
+         fbx $$1 = this.i.dz();
          if ($$1.e < 0.0) {
             fbx $$2 = $$1.d();
             $$0 = 1.0F - (float)Math.pow(-$$2.e, 1.5);

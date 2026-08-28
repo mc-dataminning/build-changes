@@ -1,9 +1,10 @@
-public class gyd extends gyr {
-   private static final alz g = alz.b("textures/entity/frog/temperate_frog.png");
-   public boolean a;
-   public final bvb b = new bvb();
-   public final bvb c = new bvb();
-   public final bvb d = new bvb();
-   public final bvb e = new bvb();
-   public alz f = g;
+public class gyd extends gys {
+   public float a;
+   public float b;
+   public boolean c;
+   public boolean d;
+   public boolean e;
+   public boolean f;
+   public boolean g;
+   public cig.v h = cig.v.a;
 }

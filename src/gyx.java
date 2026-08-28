@@ -1,7 +1,7 @@
-import javax.annotation.Nullable;
+public class gyx extends gys {
+   public cij.a a;
 
-public class gyx extends gxt {
-   @Nullable
-   public hdl a;
-   public cxo b = cxo.k;
+   public gyx() {
+      this.a = cij.a.a;
+   }
 }

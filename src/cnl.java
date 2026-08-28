@@ -32,8 +32,8 @@ public class cnl extends cmd {
 
    @Override
    protected void a(ash $$0) {
-      if (!this.fZ() && chb.a(this)) {
-         boolean $$1 = $$0.e(this.dv());
+      if (!this.gb() && chb.a(this)) {
+         boolean $$1 = $$0.e(this.dw());
          ((cfq)this.L()).b($$1);
       }
 
@@ -41,7 +41,7 @@ public class cnl extends cmd {
    }
 
    public static bxm.a p() {
-      return cmw.gr().a(bxn.v, 0.35F).a(bxn.m, 12.0).a(bxn.s, 24.0).a(bxn.c, 5.0);
+      return cmw.gt().a(bxn.v, 0.35F).a(bxn.m, 12.0).a(bxn.s, 24.0).a(bxn.c, 5.0);
    }
 
    @Override
@@ -54,10 +54,10 @@ public class cnl extends cmd {
 
    @Override
    public cmd.a m() {
-      if (this.gb()) {
+      if (this.gd()) {
          return cmd.a.b;
       } else {
-         return this.gE() ? cmd.a.g : cmd.a.a;
+         return this.gG() ? cmd.a.g : cmd.a.a;
       }
    }
 
@@ -87,7 +87,7 @@ public class cnl extends cmd {
 
    @Override
    protected void a(bam $$0, btg $$1) {
-      if (this.gz() == null) {
+      if (this.gB() == null) {
          this.a(bvr.a, new cxo(cxs.pA));
       }
    }
@@ -118,11 +118,11 @@ public class cnl extends cmd {
    @Override
    public void a(ash $$0, int $$1, boolean $$2) {
       cxo $$3 = new cxo(cxs.pA);
-      crj $$4 = this.gz();
+      crj $$4 = this.gB();
       boolean $$5 = this.ae.i() <= $$4.v();
       if ($$5) {
          aly<dfg> $$6 = $$1 > $$4.a(btf.c) ? dfm.f : dfm.e;
-         dea.a($$3, $$0.K_(), $$6, $$0.d_(this.dv()), this.ae);
+         dea.a($$3, $$0.K_(), $$6, $$0.d_(this.dw()), this.ae);
       }
 
       this.a(bvr.a, $$3);
@@ -137,13 +137,13 @@ public class cnl extends cmd {
       @Override
       public boolean c() {
          cnl $$0 = (cnl)this.d;
-         return $$0.gC() && super.c();
+         return $$0.gE() && super.c();
       }
 
       @Override
       public boolean b() {
          cnl $$0 = (cnl)this.d;
-         return $$0.gC() && $$0.ae.a(b(10)) == 0 && super.b();
+         return $$0.gE() && $$0.ae.a(b(10)) == 0 && super.b();
       }
 
       @Override
@@ -155,7 +155,7 @@ public class cnl extends cmd {
 
    static class b extends cew<bwf> {
       public b(cnl $$0) {
-         super($$0, bwf.class, 0, true, true, ($$0x, $$1) -> $$0x.fK());
+         super($$0, bwf.class, 0, true, true, ($$0x, $$1) -> $$0x.fM());
       }
 
       @Override

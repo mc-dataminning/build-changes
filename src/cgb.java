@@ -26,7 +26,7 @@ public class cgb extends cgp<bwf> {
    }
 
    public static void a(bwf $$0) {
-      Optional<List<bwf>> $$1 = $$0.eb().c(cfj.g);
+      Optional<List<bwf>> $$1 = $$0.ec().c(cfj.g);
       if (!$$1.isEmpty()) {
          boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.aq().equals(bvq.aq));
          if ($$2) {
@@ -36,6 +36,6 @@ public class cgb extends cgp<bwf> {
    }
 
    public static void b(bwf $$0) {
-      $$0.eb().a(cfj.F, true, 599L);
+      $$0.ec().a(cfj.F, true, 599L);
    }
 }

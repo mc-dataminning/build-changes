@@ -64,7 +64,7 @@ public class bvx extends civ {
          this.s($$0 - 1);
       }
 
-      this.dV().a(ls.aR, this.d(0.6), this.dD(), this.g(0.6), 0.0, 0.0, 0.0);
+      this.dW().a(ls.aR, this.d(0.6), this.dE(), this.g(0.6), 0.0, 0.0, 0.0);
    }
 
    @Override

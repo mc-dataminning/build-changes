@@ -40,7 +40,7 @@ public class cel extends cdd {
    }
 
    private boolean a(bwf $$0) {
-      return this.m.test($$0.eX()) || this.m.test($$0.eY());
+      return this.m.test($$0.eZ()) || this.m.test($$0.fa());
    }
 
    @Override
@@ -51,17 +51,17 @@ public class cel extends cdd {
                return false;
             }
 
-            if (Math.abs((double)this.b.dN() - this.i) > 5.0 || Math.abs((double)this.b.dL() - this.j) > 5.0) {
+            if (Math.abs((double)this.b.dO() - this.i) > 5.0 || Math.abs((double)this.b.dM() - this.j) > 5.0) {
                return false;
             }
          } else {
-            this.f = this.b.dA();
-            this.g = this.b.dC();
-            this.h = this.b.dG();
+            this.f = this.b.dB();
+            this.g = this.b.dD();
+            this.h = this.b.dH();
          }
 
-         this.i = (double)this.b.dN();
-         this.j = (double)this.b.dL();
+         this.i = (double)this.b.dO();
+         this.j = (double)this.b.dM();
       }
 
       return this.b();
@@ -73,9 +73,9 @@ public class cel extends cdd {
 
    @Override
    public void d() {
-      this.f = this.b.dA();
-      this.g = this.b.dC();
-      this.h = this.b.dG();
+      this.f = this.b.dB();
+      this.g = this.b.dD();
+      this.h = this.b.dH();
       this.l = true;
    }
 

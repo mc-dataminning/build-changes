@@ -22,14 +22,14 @@ public record dbd(float c) implements dba {
       boolean $$3 = false;
 
       for (int $$4 = 0; $$4 < 16; $$4++) {
-         double $$5 = $$2.dA() + ($$2.dY().j() - 0.5) * (double)this.c;
-         double $$6 = bae.a($$2.dC() + ($$2.dY().j() - 0.5) * (double)this.c, (double)$$0.L_(), (double)($$0.L_() + ((ash)$$0).l() - 1));
-         double $$7 = $$2.dG() + ($$2.dY().j() - 0.5) * (double)this.c;
+         double $$5 = $$2.dB() + ($$2.dZ().j() - 0.5) * (double)this.c;
+         double $$6 = bae.a($$2.dD() + ($$2.dZ().j() - 0.5) * (double)this.c, (double)$$0.L_(), (double)($$0.L_() + ((ash)$$0).l() - 1));
+         double $$7 = $$2.dH() + ($$2.dZ().j() - 0.5) * (double)this.c;
          if ($$2.bZ()) {
             $$2.ae();
          }
 
-         fbx $$8 = $$2.dt();
+         fbx $$8 = $$2.du();
          if ($$2.b($$5, $$6, $$7, true)) {
             $$0.a(ecq.R, $$8, ecq.a.a($$2));
             axg $$10;
@@ -42,7 +42,7 @@ public record dbd(float c) implements dba {
                $$10 = axg.h;
             }
 
-            $$0.a(null, $$2.dA(), $$2.dC(), $$2.dG(), $$9, $$10);
+            $$0.a(null, $$2.dB(), $$2.dD(), $$2.dH(), $$9, $$10);
             $$2.k();
             $$3 = true;
             break;
@@ -50,7 +50,7 @@ public record dbd(float c) implements dba {
       }
 
       if ($$3 && $$2 instanceof cpw $$13) {
-         $$13.gL();
+         $$13.gN();
       }
 
       return $$3;

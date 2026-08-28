@@ -26,7 +26,7 @@ public class clt extends cls {
 
    @Override
    protected void a(alg.a $$0) {
-      $$0.a(e, cxo.k);
+      $$0.a(e, cxo.j);
       $$0.a(f, 0);
    }
 
@@ -42,8 +42,8 @@ public class clt extends cls {
          this.v(0.0F);
       }
 
-      this.O = this.dN();
-      this.N = this.dL();
+      this.O = this.dO();
+      this.N = this.dM();
       this.l();
    }
 
@@ -62,11 +62,11 @@ public class clt extends cls {
    public boolean m() {
       if (this.k) {
          return true;
-      } else if (!this.dV().g(this)) {
+      } else if (!this.dW().g(this)) {
          return false;
       } else {
-         dxu $$0 = this.dV().a_(this.a.a(this.c.g()));
-         return $$0.e() || this.c.o().d() && dmp.n($$0) ? this.dV().a(this, this.cR(), b).isEmpty() : false;
+         dxu $$0 = this.dW().a_(this.a.a(this.c.g()));
+         return $$0.e() || this.c.o().d() && dmp.n($$0) ? this.dW().a(this, this.cR(), b).isEmpty() : false;
       }
    }
 
@@ -155,13 +155,13 @@ public class clt extends cls {
    private void a(ash $$0, @Nullable bvj $$1, boolean $$2) {
       if (!this.k) {
          cxo $$3 = this.A();
-         this.b(cxo.k);
+         this.b(cxo.j);
          if (!$$0.N().b(dhd.i)) {
             if ($$1 == null) {
                this.c($$3);
             }
          } else {
-            if ($$1 instanceof cpw $$4 && $$4.fT()) {
+            if ($$1 instanceof cpw $$4 && $$4.fV()) {
                this.c($$3);
                return;
             }
@@ -184,7 +184,7 @@ public class clt extends cls {
    private void c(cxo $$0) {
       evo $$1 = this.a($$0);
       if ($$1 != null) {
-         evq $$2 = cyb.a($$1, this.dV());
+         evq $$2 = cyb.a($$1, this.dW());
          if ($$2 != null) {
             $$2.a(this.a, this.ar());
          }
@@ -222,7 +222,7 @@ public class clt extends cls {
       }
 
       if ($$1 && this.a != null) {
-         this.dV().c(this.a, dkn.a);
+         this.dW().c(this.a, dkn.a);
       }
    }
 
@@ -261,7 +261,7 @@ public class clt extends cls {
    private void a(int $$0, boolean $$1) {
       this.au().a(f, $$0 % 8);
       if ($$1 && this.a != null) {
-         this.dV().c(this.a, dkn.a);
+         this.dW().c(this.a, dkn.a);
       }
    }
 
@@ -269,7 +269,7 @@ public class clt extends cls {
    public void b(ux $$0) {
       super.b($$0);
       if (!this.A().f()) {
-         $$0.a("Item", this.A().a(this.dX()));
+         $$0.a("Item", this.A().a(this.dY()));
          $$0.a("ItemRotation", (byte)this.C());
          $$0.a("ItemDropChance", this.j);
       }
@@ -285,9 +285,9 @@ public class clt extends cls {
       cxo $$2;
       if ($$0.b("Item", 10)) {
          ux $$1 = $$0.p("Item");
-         $$2 = cxo.a(this.dX(), (vu)$$1).orElse(cxo.k);
+         $$2 = cxo.a(this.dY(), (vu)$$1).orElse(cxo.j);
       } else {
-         $$2 = cxo.k;
+         $$2 = cxo.j;
       }
 
       cxo $$4 = this.A();
@@ -315,10 +315,10 @@ public class clt extends cls {
       boolean $$4 = !$$2.f();
       if (this.k) {
          return bti.e;
-      } else if (!$$0.dV().C) {
+      } else if (!$$0.dW().C) {
          if (!$$3) {
-            if ($$4 && !this.dQ()) {
-               evq $$5 = cyb.b($$2, this.dV());
+            if ($$4 && !this.dR()) {
+               evq $$5 = cyb.b($$2, this.dW());
                if ($$5 != null && $$5.a(256)) {
                   return bti.d;
                } else {
@@ -361,7 +361,7 @@ public class clt extends cls {
    }
 
    @Override
-   public cxo dI() {
+   public cxo dJ() {
       cxo $$0 = this.A();
       return $$0.f() ? this.x() : $$0.v();
    }
@@ -371,7 +371,7 @@ public class clt extends cls {
    }
 
    @Override
-   public float dM() {
+   public float dN() {
       jm $$0 = this.cO();
       int $$1 = $$0.o().b() ? 90 * $$0.f().a() : 0;
       return (float)bae.b(180 + $$0.e() * 90 + this.C() * 45 + $$1);

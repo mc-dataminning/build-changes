@@ -6,7 +6,7 @@ public class ckq extends bvj {
    private final bvm c;
 
    public ckq(ckt $$0, String $$1, float $$2, float $$3) {
-      super($$0.aq(), $$0.dV());
+      super($$0.aq(), $$0.dW());
       this.c = bvm.b($$2, $$3);
       this.m_();
       this.a = $$0;
@@ -32,8 +32,8 @@ public class ckq extends bvj {
 
    @Nullable
    @Override
-   public cxo dI() {
-      return this.a.dI();
+   public cxo dJ() {
+      return this.a.dJ();
    }
 
    @Override
@@ -57,7 +57,7 @@ public class ckq extends bvj {
    }
 
    @Override
-   public boolean dT() {
+   public boolean dU() {
       return false;
    }
 }

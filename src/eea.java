@@ -27,12 +27,12 @@ public class eea implements dgt {
                   cpw $$6 = $$0.y().get($$3.a($$5));
                   if ($$6.aa_()) {
                      return 0;
-                  } else if ($$0.a($$6.dv(), 2)) {
+                  } else if ($$0.a($$6.dw(), 2)) {
                      return 0;
                   } else {
                      int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
                      int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     jh.a $$9 = $$6.dv().k().e($$7, 0, $$8);
+                     jh.a $$9 = $$6.dw().k().e($$7, 0, $$8);
                      int $$10 = 10;
                      if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
                         return 0;
@@ -80,7 +80,7 @@ public class eea implements dgt {
          if ($$5 != null) {
             if ($$3) {
                $$5.x(true);
-               $$5.gt();
+               $$5.gv();
             }
 
             $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());

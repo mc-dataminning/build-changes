@@ -116,7 +116,7 @@ public record czn(Optional<jq<czl>> d, Optional<Integer> e, List<buo> f, Optiona
    }
 
    public void a(bwf $$0) {
-      if ($$0.dV() instanceof ash $$1) {
+      if ($$0.dW() instanceof ash $$1) {
          cpw $$4 = $$0 instanceof cpw $$3 ? $$3 : null;
          this.a((Consumer<buo>)($$3x -> {
             if ($$3x.c().a().a()) {

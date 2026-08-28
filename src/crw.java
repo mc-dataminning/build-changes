@@ -1,7 +1,7 @@
 import javax.annotation.Nullable;
 
 public abstract class crw extends crv implements csa {
-   private jz<cxo> b = jz.a(36, cxo.k);
+   private jz<cxo> b = jz.a(36, cxo.j);
    @Nullable
    private aly<ewt> c;
    private long d;
@@ -51,9 +51,9 @@ public abstract class crw extends crv implements csa {
    }
 
    @Override
-   public void a(bvj.c $$0) {
-      if (!this.dV().C && $$0.a()) {
-         bte.a(this.dV(), this, this);
+   public void a(bvj.d $$0) {
+      if (!this.dW().C && $$0.a()) {
+         bte.a(this.dW(), this, this);
       }
 
       super.a($$0);
@@ -62,13 +62,13 @@ public abstract class crw extends crv implements csa {
    @Override
    protected void b(ux $$0) {
       super.b($$0);
-      this.a($$0, this.dX());
+      this.a($$0, this.dY());
    }
 
    @Override
    protected void a(ux $$0) {
       super.a($$0);
-      this.b($$0, this.dX());
+      this.b($$0, this.dY());
    }
 
    @Override
@@ -142,6 +142,6 @@ public abstract class crw extends crv implements csa {
 
    @Override
    public void C() {
-      this.b = jz.a(this.b(), cxo.k);
+      this.b = jz.a(this.b(), cxo.j);
    }
 }

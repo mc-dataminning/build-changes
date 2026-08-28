@@ -15,7 +15,7 @@ public class byg<E extends bwh & cmj, T extends bwf> extends bxy<E> {
    }
 
    protected boolean a(ash $$0, E $$1, long $$2) {
-      return $$1.eb().a(cfj.o) && this.a($$0, $$1);
+      return $$1.ec().a(cfj.o) && this.a($$0, $$1);
    }
 
    protected void b(ash $$0, E $$1, long $$2) {
@@ -25,13 +25,13 @@ public class byg<E extends bwh & cmj, T extends bwf> extends bxy<E> {
    }
 
    protected void c(ash $$0, E $$1, long $$2) {
-      if ($$1.fx()) {
-         $$1.fD();
+      if ($$1.fz()) {
+         $$1.fF();
       }
 
       if ($$1.b(cxs.wL)) {
          $$1.b(false);
-         $$1.fz().b(ku.O, czt.a);
+         $$1.fB().b(ku.O, czt.a);
       }
    }
 
@@ -41,16 +41,16 @@ public class byg<E extends bwh & cmj, T extends bwf> extends bxy<E> {
          this.e = byg.a.b;
          $$0.b(true);
       } else if (this.e == byg.a.b) {
-         if (!$$0.fx()) {
+         if (!$$0.fz()) {
             this.e = byg.a.a;
          }
 
-         int $$2 = $$0.fB();
-         cxo $$3 = $$0.fz();
+         int $$2 = $$0.fD();
+         cxo $$3 = $$0.fB();
          if ($$2 >= cwf.b($$3, $$0)) {
-            $$0.fC();
+            $$0.fE();
             this.e = byg.a.c;
-            this.d = 20 + $$0.dY().a(20);
+            this.d = 20 + $$0.dZ().a(20);
             $$0.b(false);
          }
       } else if (this.e == byg.a.c) {
@@ -65,11 +65,11 @@ public class byg<E extends bwh & cmj, T extends bwf> extends bxy<E> {
    }
 
    private void b(bwh $$0, bwf $$1) {
-      $$0.eb().a(cfj.n, new byj($$1, true));
+      $$0.ec().a(cfj.n, new byj($$1, true));
    }
 
    private static bwf b(bwf $$0) {
-      return $$0.eb().c(cfj.o).get();
+      return $$0.ec().c(cfj.o).get();
    }
 
    static enum a {

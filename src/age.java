@@ -21,7 +21,7 @@ public class age implements aac<acr> {
       do {
          $$1 = $$0.readByte();
          bvr $$2 = bvr.i.get($$1 & 127);
-         cxo $$3 = cxo.h.decode($$0);
+         cxo $$3 = cxo.g.decode($$0);
          this.d.add(Pair.of($$2, $$3));
       } while (($$1 & -128) != 0);
    }
@@ -36,7 +36,7 @@ public class age implements aac<acr> {
          boolean $$5 = $$2 != $$1 - 1;
          int $$6 = $$4.ordinal();
          $$0.l($$5 ? $$6 | -128 : $$6);
-         cxo.h.encode($$0, (cxo)$$3.getSecond());
+         cxo.g.encode($$0, (cxo)$$3.getSecond());
       }
    }
 

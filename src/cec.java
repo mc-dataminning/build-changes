@@ -63,7 +63,7 @@ public class cec extends cdd {
 
    @Override
    public void a() {
-      double $$0 = this.a.i(this.c.dA(), this.c.dC(), this.c.dG());
+      double $$0 = this.a.i(this.c.dB(), this.c.dD(), this.c.dH());
       boolean $$1 = this.a.N().a(this.c);
       if ($$1) {
          this.f++;

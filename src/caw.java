@@ -10,14 +10,14 @@ public class caw {
                .apply(
                   $$3,
                   ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                        if ($$5x.b_($$6.dv()).a(aya.a)) {
+                        if ($$5x.b_($$6.dw()).a(aya.a)) {
                            return false;
                         } else if ($$7 < $$2.getValue()) {
                            $$2.setValue($$7 + 40L);
                            return true;
                         } else {
                            fcc $$8 = fcc.a($$6);
-                           jh $$9 = $$6.dv();
+                           jh $$9 = $$6.dw();
                            jh.a $$10 = new jh.a();
 
                            label45:

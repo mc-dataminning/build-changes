@@ -20,7 +20,7 @@ public abstract class cls extends clq {
       Validate.isTrue($$0.o().d());
       this.c = $$0;
       this.v((float)(this.c.e() * 90));
-      this.N = this.dL();
+      this.N = this.dM();
       this.l();
    }
 
@@ -38,14 +38,14 @@ public abstract class cls extends clq {
 
    @Override
    public boolean m() {
-      if (!this.dV().g(this)) {
+      if (!this.dW().g(this)) {
          return false;
       } else {
          boolean $$0 = jh.b(this.y()).allMatch($$0x -> {
-            dxu $$1 = this.dV().a_($$0x);
+            dxu $$1 = this.dW().a_($$0x);
             return $$1.e() || dmp.n($$1);
          });
-         return !$$0 ? false : this.dV().a(this, this.cR(), b).isEmpty();
+         return !$$0 ? false : this.dW().a(this, this.cR(), b).isEmpty();
       }
    }
 
@@ -63,10 +63,10 @@ public abstract class cls extends clq {
    @Override
    public cma a(ash $$0, cxo $$1, float $$2) {
       cma $$3 = new cma(
-         this.dV(), this.dA() + (double)((float)this.c.j() * 0.15F), this.dC() + (double)$$2, this.dG() + (double)((float)this.c.l() * 0.15F), $$1
+         this.dW(), this.dB() + (double)((float)this.c.j() * 0.15F), this.dD() + (double)$$2, this.dH() + (double)((float)this.c.l() * 0.15F), $$1
       );
       $$3.s();
-      this.dV().b($$3);
+      this.dW().b($$3);
       return $$3;
    }
 
@@ -85,7 +85,7 @@ public abstract class cls extends clq {
          }
       }
 
-      float $$1 = bae.h(this.dL());
+      float $$1 = bae.h(this.dM());
 
       return switch ($$0) {
          case c -> $$1 + 180.0F;

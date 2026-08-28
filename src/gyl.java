@@ -1,4 +1,9 @@
-public class gyl extends gyk {
-   public fbx[] a = new fbx[0];
-   public boolean i;
+public class gyl extends gys {
+   public boolean b;
+   public boolean c;
+   public bvz d = bvz.b;
+   public cmd.a e = cmd.a.h;
+   public int f;
+   public int g;
+   public float h;
 }

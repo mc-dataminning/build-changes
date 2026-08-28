@@ -84,7 +84,7 @@ public abstract class bxc extends chw implements bwm {
          double $$3 = this.ae.k() * 0.02;
          double $$4 = this.ae.k() * 0.02;
          double $$5 = this.ae.k() * 0.02;
-         this.dV().a($$1, this.d(1.0), this.dD() + 0.5, this.g(1.0), $$3, $$4, $$5);
+         this.dW().a($$1, this.d(1.0), this.dE() + 0.5, this.g(1.0), $$3, $$4, $$5);
       }
    }
 
@@ -193,14 +193,14 @@ public abstract class bxc extends chw implements bwm {
 
    @Override
    public void a(btz $$0) {
-      if (this.dV() instanceof ash $$1 && $$1.N().b(dhd.n) && this.ah_() instanceof asi $$2) {
-         $$2.a(this.eP().a());
+      if (this.dW() instanceof ash $$1 && $$1.N().b(dhd.n) && this.ah_() instanceof asi $$2) {
+         $$2.a(this.eQ().a());
       }
 
       super.a($$0);
    }
 
-   public boolean gm() {
+   public boolean go() {
       return this.cg;
    }
 
@@ -208,14 +208,14 @@ public abstract class bxc extends chw implements bwm {
       this.cg = $$0;
    }
 
-   public void gn() {
+   public void gp() {
       bwf $$0 = this.ah_();
       if ($$0 != null) {
-         this.h($$0.dv());
+         this.h($$0.dw());
       }
    }
 
-   public boolean go() {
+   public boolean gq() {
       bwf $$0 = this.ah_();
       return $$0 != null && this.g((bvj)this.ah_()) >= 144.0;
    }
@@ -237,7 +237,7 @@ public abstract class bxc extends chw implements bwm {
       if (!this.i(new jh($$0, $$1, $$2))) {
          return false;
       } else {
-         this.b((double)$$0 + 0.5, (double)$$1, (double)$$2 + 0.5, this.dL(), this.dN());
+         this.b((double)$$0 + 0.5, (double)$$1, (double)$$2 + 0.5, this.dM(), this.dO());
          this.bS.o();
          return true;
       }
@@ -248,21 +248,21 @@ public abstract class bxc extends chw implements bwm {
       if ($$1 != eun.c) {
          return false;
       } else {
-         dxu $$2 = this.dV().a_($$0.e());
-         if (!this.gq() && $$2.b() instanceof dox) {
+         dxu $$2 = this.dW().a_($$0.e());
+         if (!this.gs() && $$2.b() instanceof dox) {
             return false;
          } else {
-            jh $$3 = $$0.b(this.dv());
-            return this.dV().a(this, this.cR().a($$3));
+            jh $$3 = $$0.b(this.dw());
+            return this.dW().a(this, this.cR().a($$3));
          }
       }
    }
 
-   public final boolean gp() {
-      return this.gm() || this.bZ() || this.q() || this.ah_() != null && this.ah_().aa_();
+   public final boolean gr() {
+      return this.go() || this.bZ() || this.q() || this.ah_() != null && this.ah_().aa_();
    }
 
-   protected boolean gq() {
+   protected boolean gs() {
       return false;
    }
 
@@ -277,8 +277,8 @@ public abstract class bxc extends chw implements bwm {
 
       @Override
       public void a() {
-         if (!bxc.this.gp() && bxc.this.go()) {
-            bxc.this.gn();
+         if (!bxc.this.gr() && bxc.this.gq()) {
+            bxc.this.gp();
          }
 
          super.a();

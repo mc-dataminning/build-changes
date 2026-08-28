@@ -1,15 +1,21 @@
-public class gtr extends gqg<cne, gzo> {
-   private static final alz a = alz.b("textures/entity/skeleton/skeleton.png");
+public class gtr extends gsv<cnd, gys, gdf> {
+   private static final alz a = alz.b("textures/entity/silverfish.png");
 
-   public gtr(gro.a $$0) {
-      super($$0, gel.cF, gel.cI, gel.cJ);
+   public gtr(grp.a $$0) {
+      super($$0, new gdf($$0.a(gem.cE)), 0.3F);
    }
 
-   public alz b(gzo $$0) {
+   @Override
+   protected float aX_() {
+      return 180.0F;
+   }
+
+   @Override
+   public alz b(gys $$0) {
       return a;
    }
 
-   public gzo b() {
-      return new gzo();
+   public gys b() {
+      return new gys();
    }
 }

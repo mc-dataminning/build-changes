@@ -56,7 +56,7 @@ public class dhx implements dgz {
                   double $$14 = bae.d($$11, $$2.b, $$2.e);
                   double $$15 = bae.d($$12, $$2.c, $$2.f);
                   fbx $$16 = new fbx($$13 + $$6, $$14, $$15 + $$7);
-                  if ($$1.dV().a(new dgp($$16, $$0, dgp.a.a, dgp.b.a, $$1)).d() == fbv.a.a) {
+                  if ($$1.dW().a(new dgp($$16, $$0, dgp.a.a, dgp.b.a, $$1)).d() == fbv.a.a) {
                      $$8++;
                   }
 
@@ -143,9 +143,9 @@ public class dhx implements dgz {
          if (!$$8.a(this)) {
             double $$9 = Math.sqrt($$8.f(this.g)) / (double)$$0;
             if ($$9 <= 1.0) {
-               double $$10 = $$8.dA() - this.g.d;
-               double $$11 = ($$8 instanceof cmb ? $$8.dC() : $$8.dE()) - this.g.e;
-               double $$12 = $$8.dG() - this.g.f;
+               double $$10 = $$8.dB() - this.g.d;
+               double $$11 = ($$8 instanceof cmb ? $$8.dD() : $$8.dF()) - this.g.e;
+               double $$12 = $$8.dH() - this.g.f;
                double $$13 = Math.sqrt($$10 * $$10 + $$11 * $$11 + $$12 * $$12);
                if ($$13 != 0.0) {
                   $$10 /= $$13;
@@ -170,10 +170,10 @@ public class dhx implements dgz {
                   $$11 *= $$19;
                   $$12 *= $$19;
                   fbx $$21 = new fbx($$10, $$11, $$12);
-                  $$8.h($$8.dy().e($$21));
+                  $$8.h($$8.dz().e($$21));
                   if ($$8 instanceof cpw) {
                      cpw $$22 = (cpw)$$8;
-                     if (!$$22.aa_() && (!$$22.b() || !$$22.gh().b)) {
+                     if (!$$22.aa_() && (!$$22.b() || !$$22.gj().b)) {
                         this.l.put($$22, $$21);
                      }
                   }

@@ -107,7 +107,7 @@ public class esl {
       this.m.clear();
 
       for (bvj $$4 : $$3) {
-         fbx $$5 = new fbx($$4.dA() - (double)$$1.u(), $$4.dC() - (double)$$1.v(), $$4.dG() - (double)$$1.w());
+         fbx $$5 = new fbx($$4.dB() - (double)$$1.u(), $$4.dD() - (double)$$1.v(), $$4.dH() - (double)$$1.w());
          ux $$6 = new ux();
          $$4.e($$6);
          jh $$7;
@@ -373,8 +373,8 @@ public class esl {
             $$9.r("UUID");
             a($$0, $$9).ifPresent($$5x -> {
                float $$6x = $$5x.a($$3);
-               $$6x += $$5x.a($$2) - $$5x.dL();
-               $$5x.b($$11.d, $$11.e, $$11.f, $$6x, $$5x.dN());
+               $$6x += $$5x.a($$2) - $$5x.dM();
+               $$5x.b($$11.d, $$11.e, $$11.f, $$6x, $$5x.dO());
                if ($$6 && $$5x instanceof bwh) {
                   ((bwh)$$5x).a($$0, $$0.d_(jh.a((ka)$$11)), bvp.d, null);
                }

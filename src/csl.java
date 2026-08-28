@@ -37,17 +37,17 @@ public class csl extends csd {
 
    @Override
    public double b() {
-      return this.f > 0 ? this.g : this.a.dA();
+      return this.f > 0 ? this.g : this.a.dB();
    }
 
    @Override
    public double c() {
-      return this.f > 0 ? this.h : this.a.dC();
+      return this.f > 0 ? this.h : this.a.dD();
    }
 
    @Override
    public double d() {
-      return this.f > 0 ? this.i : this.a.dG();
+      return this.f > 0 ? this.i : this.a.dH();
    }
 
    @Override
@@ -121,9 +121,9 @@ public class csl extends csd {
       jh $$1 = this.a.p();
       dxu $$2 = this.h().a_($$1);
       this.a.k();
-      double $$3 = this.a.dA();
-      double $$4 = this.a.dC();
-      double $$5 = this.a.dG();
+      double $$3 = this.a.dB();
+      double $$4 = this.a.dD();
+      double $$5 = this.a.dH();
       fbx $$6 = this.d($$3, $$4, $$5);
       $$4 = (double)$$1.v();
       boolean $$7 = false;
@@ -224,14 +224,14 @@ public class csl extends csd {
       double $$37 = this.a.a($$0);
       $$10 = this.j();
       this.a.a(bwj.a, new fbx(bae.a($$36 * $$10.d, -$$37, $$37), 0.0, bae.a($$36 * $$10.f, -$$37, $$37)));
-      if ($$13.v() != 0 && bae.a(this.a.dA()) - $$1.u() == $$13.u() && bae.a(this.a.dG()) - $$1.w() == $$13.w()) {
-         this.c(this.a.dA(), this.a.dC() + (double)$$13.v(), this.a.dG());
-      } else if ($$14.v() != 0 && bae.a(this.a.dA()) - $$1.u() == $$14.u() && bae.a(this.a.dG()) - $$1.w() == $$14.w()) {
-         this.c(this.a.dA(), this.a.dC() + (double)$$14.v(), this.a.dG());
+      if ($$13.v() != 0 && bae.a(this.a.dB()) - $$1.u() == $$13.u() && bae.a(this.a.dH()) - $$1.w() == $$13.w()) {
+         this.c(this.a.dB(), this.a.dD() + (double)$$13.v(), this.a.dH());
+      } else if ($$14.v() != 0 && bae.a(this.a.dB()) - $$1.u() == $$14.u() && bae.a(this.a.dH()) - $$1.w() == $$14.w()) {
+         this.c(this.a.dB(), this.a.dD() + (double)$$14.v(), this.a.dH());
       }
 
       this.a(this.a.a(this.j()));
-      fbx $$38 = this.d(this.a.dA(), this.a.dC(), this.a.dG());
+      fbx $$38 = this.d(this.a.dB(), this.a.dD(), this.a.dH());
       if ($$38 != null && $$6 != null) {
          double $$39 = ($$6.e - $$38.e) * 0.05;
          fbx $$40 = this.j();
@@ -240,11 +240,11 @@ public class csl extends csd {
             this.a($$40.d(($$41 + $$39) / $$41, 1.0, ($$41 + $$39) / $$41));
          }
 
-         this.c(this.a.dA(), $$38.e, this.a.dG());
+         this.c(this.a.dB(), $$38.e, this.a.dH());
       }
 
-      int $$42 = bae.a(this.a.dA());
-      int $$43 = bae.a(this.a.dG());
+      int $$42 = bae.a(this.a.dB());
+      int $$43 = bae.a(this.a.dH());
       if ($$42 != $$1.u() || $$43 != $$1.w()) {
          fbx $$44 = this.j();
          double $$45 = $$44.i();

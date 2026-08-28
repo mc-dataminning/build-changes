@@ -50,7 +50,7 @@ public record dft(bvr c, jq<axe> d, Optional<alz> e, Optional<alz> f, Optional<j
       } else {
          cxo $$2 = $$1.a(this.c);
          if ((!dea.a($$2, ddz.E) || $$1.b()) && !cxo.c($$0, $$2)) {
-            if (!$$1.dV().B_()) {
+            if (!$$1.dW().B_()) {
                $$1.b(axp.c.b($$0.h()));
             }
 
@@ -63,7 +63,7 @@ public record dft(bvr c, jq<axe> d, Optional<alz> e, Optional<alz> f, Optional<j
                cxo $$5 = $$2.g();
                cxo $$6 = $$0.b(1, $$1);
                $$1.a(this.c, $$6);
-               if (!$$1.gg().f($$5)) {
+               if (!$$1.gi().f($$5)) {
                   $$1.a($$5, false);
                }
 

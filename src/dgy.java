@@ -25,7 +25,7 @@ public interface dgy {
          return true;
       } else {
          for (bvj $$2 : this.a_($$0, $$1.a())) {
-            if (!$$2.dQ() && $$2.I && ($$0 == null || !$$2.z($$0)) && fco.c($$1, fco.a($$2.cR()), fcb.i)) {
+            if (!$$2.dR() && $$2.I && ($$0 == null || !$$2.z($$0)) && fco.c($$1, fco.a($$2.cR()), fcb.i)) {
                return false;
             }
          }
@@ -78,7 +78,7 @@ public interface dgy {
 
    @Nullable
    default cpw a(bvj $$0, double $$1) {
-      return this.a($$0.dA(), $$0.dC(), $$0.dG(), $$1, false);
+      return this.a($$0.dB(), $$0.dD(), $$0.dH(), $$1, false);
    }
 
    @Nullable

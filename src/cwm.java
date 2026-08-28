@@ -14,8 +14,8 @@ public class cwm extends cxk implements cys {
    @Override
    public bti a(cxo $$0, cpw $$1, bwf $$2, bth $$3) {
       if ($$2 instanceof cis $$4 && $$4.bL() && !$$4.x() && $$4.t() != this.b) {
-         $$4.dV().a($$1, $$4, axf.ig, axg.h, 1.0F, 1.0F);
-         if (!$$1.dV().C) {
+         $$4.dW().a($$1, $$4, axf.ig, axg.h, 1.0F, 1.0F);
+         if (!$$1.dW().C) {
             $$4.b(this.b);
             $$0.h(1);
          }

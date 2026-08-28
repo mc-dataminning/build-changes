@@ -4,7 +4,7 @@ public class cmv extends cnf {
    }
 
    public static bxm.a m() {
-      return cmw.gr().a(bxn.v, 0.2F);
+      return cmw.gt().a(bxn.v, 0.2F);
    }
 
    public static boolean b(bvq<cmv> $$0, dhi $$1, bvp $$2, jh $$3, bam $$4) {
@@ -44,17 +44,17 @@ public class cmv extends cnf {
 
    @Override
    public void s() {
-      fbx $$0 = this.dy();
-      float $$1 = (float)this.gm() * 0.1F;
-      this.n($$0.d, (double)(this.fh() + $$1), $$0.f);
+      fbx $$0 = this.dz();
+      float $$1 = (float)this.go() * 0.1F;
+      this.n($$0.d, (double)(this.fj() + $$1), $$0.f);
       this.ar = true;
    }
 
    @Override
    protected void c(ayk<etv> $$0) {
       if ($$0 == aya.b) {
-         fbx $$1 = this.dy();
-         this.n($$1.d, (double)(0.22F + (float)this.gm() * 0.05F), $$1.f);
+         fbx $$1 = this.dz();
+         this.n($$1.d, (double)(0.22F + (float)this.go() * 0.05F), $$1.f);
          this.ar = true;
       } else {
          super.c($$0);
@@ -62,32 +62,32 @@ public class cmv extends cnf {
    }
 
    @Override
-   protected boolean gi() {
-      return this.dj();
+   protected boolean gk() {
+      return this.dk();
    }
 
    @Override
-   protected float gj() {
-      return super.gj() + 2.0F;
+   protected float gl() {
+      return super.gl() + 2.0F;
    }
 
    @Override
    protected axe e(btz $$0) {
-      return this.gn() ? axf.oL : axf.oK;
+      return this.gp() ? axf.oL : axf.oK;
    }
 
    @Override
    protected axe o_() {
-      return this.gn() ? axf.oz : axf.oJ;
+      return this.gp() ? axf.oz : axf.oJ;
    }
 
    @Override
-   protected axe gk() {
-      return this.gn() ? axf.oO : axf.oN;
+   protected axe gm() {
+      return this.gp() ? axf.oO : axf.oN;
    }
 
    @Override
-   protected axe gl() {
+   protected axe gn() {
       return axf.oM;
    }
 }

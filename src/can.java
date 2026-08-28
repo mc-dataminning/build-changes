@@ -23,7 +23,7 @@ public class can {
       return cbl.a(
          (Function<cbl.b<E>, ? extends App<cbl.c<E>, cbo<E>>>)($$3 -> $$3.group($$3.b(cfj.o), $$3.a(cfj.E)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
                   bwf $$9 = $$3.b($$4);
-                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bL() && $$9.dV() == $$7.dV() && !$$0.test($$6, $$9)) {
+                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bL() && $$9.dW() == $$7.dW() && !$$0.test($$6, $$9)) {
                      return true;
                   } else {
                      $$1.accept($$6, (E)$$7, $$9);
@@ -35,7 +35,7 @@ public class can {
    }
 
    private static boolean a(bwf $$0, Optional<Long> $$1) {
-      return $$1.isPresent() && $$0.dV().ac() - $$1.get() > 200L;
+      return $$1.isPresent() && $$0.dW().ac() - $$1.get() > 200L;
    }
 
    @FunctionalInterface

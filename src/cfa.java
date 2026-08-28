@@ -13,13 +13,13 @@ public class cfa extends cfd {
 
    @Override
    public boolean b() {
-      if (this.a.p() && !this.a.gm()) {
+      if (this.a.p() && !this.a.go()) {
          bwf $$0 = this.a.ah_();
          if ($$0 == null) {
             return false;
          } else {
-            this.b = $$0.ep();
-            int $$1 = $$0.eq();
+            this.b = $$0.eq();
+            int $$1 = $$0.er();
             return $$1 != this.c && this.a(this.b, cgw.a) && this.a.a(this.b, $$0);
          }
       } else {
@@ -32,7 +32,7 @@ public class cfa extends cfd {
       this.e.h(this.b);
       bwf $$0 = this.a.ah_();
       if ($$0 != null) {
-         this.c = $$0.eq();
+         this.c = $$0.er();
       }
 
       super.d();

@@ -33,11 +33,11 @@ public final class dhs {
 
          bwi $$8 = $$6.aq().f();
          if ($$8 != bwi.h) {
-            jh $$9 = $$6.dv();
+            jh $$9 = $$6.dw();
             $$2.query(dgn.a($$9), $$6x -> {
                div.b $$7 = a($$9, $$6x).b().a($$6.aq());
                if ($$7 != null) {
-                  $$4.a($$6.dv(), $$7.b());
+                  $$4.a($$6.dw(), $$7.b());
                }
 
                if ($$6 instanceof bwh) {
@@ -189,7 +189,7 @@ public final class dhs {
 
                         $$26.b($$21, (double)$$8, $$22, $$1.A.i() * 360.0F, 0.0F);
                         if (a($$1, $$26, $$24)) {
-                           $$17 = $$26.a($$1, $$1.d_($$26.dv()), bvp.a, $$17);
+                           $$17 = $$26.a($$1, $$1.d_($$26.dw()), bvp.a, $$17);
                            $$11++;
                            $$19++;
                            $$1.a_($$26);
@@ -343,7 +343,7 @@ public final class dhs {
 
                         $$23.b($$21, (double)$$19.v(), $$22, $$3.i() * 360.0F, 0.0F);
                         if ($$23 instanceof bwh $$26 && $$26.a($$0, bvp.b) && $$26.a($$0)) {
-                           $$11 = $$26.a($$0, $$0.d_($$26.dv()), bvp.b, $$11);
+                           $$11 = $$26.a($$0, $$0.d_($$26.dw()), bvp.b, $$11);
                            $$0.a_($$26);
                            $$17 = true;
                         }
@@ -429,7 +429,7 @@ public final class dhs {
 
       private void a(bwh $$0, dzp $$1) {
          bvq<?> $$2 = $$0.aq();
-         jh $$3 = $$0.dv();
+         jh $$3 = $$0.dw();
          double $$4;
          if ($$3.equals(this.f) && $$2 == this.g) {
             $$4 = this.h;

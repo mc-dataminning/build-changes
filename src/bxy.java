@@ -86,7 +86,7 @@ public abstract class bxy<E extends bwf> implements bxz<E> {
       for (Entry<cfj<?>, cfk> $$1 : this.b.entrySet()) {
          cfj<?> $$2 = $$1.getKey();
          cfk $$3 = $$1.getValue();
-         if (!$$0.eb().a($$2, $$3)) {
+         if (!$$0.ec().a($$2, $$3)) {
             return false;
          }
       }

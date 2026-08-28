@@ -80,17 +80,17 @@ public class dkf extends djx {
       if ($$7 >= 5) {
          cxk $$9 = $$0.h();
          if ($$0.a(cxs.sJ)) {
-            $$2.a($$4, $$4.dA(), $$4.dC(), $$4.dG(), axf.bX, axg.e, 1.0F, 1.0F);
+            $$2.a($$4, $$4.dB(), $$4.dD(), $$4.dH(), axf.bX, axg.e, 1.0F, 1.0F);
             a($$2, $$3);
             $$0.a(1, $$4, bwf.d($$5));
             $$8 = true;
             $$2.a($$4, ecq.M, $$3);
          } else if ($$0.a(cxs.sY)) {
             $$0.h(1);
-            $$2.a($$4, $$4.dA(), $$4.dC(), $$4.dG(), axf.cC, axg.e, 1.0F, 1.0F);
+            $$2.a($$4, $$4.dB(), $$4.dD(), $$4.dH(), axf.cC, axg.e, 1.0F, 1.0F);
             if ($$0.f()) {
                $$4.a($$5, new cxo(cxs.xt));
-            } else if (!$$4.gg().f(new cxo(cxs.xt))) {
+            } else if (!$$4.gi().f(new cxo(cxs.xt))) {
                $$4.a(new cxo(cxs.xt), false);
             }
 

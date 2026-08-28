@@ -1,9 +1,10 @@
-public class gux extends gsf<cnr, hak, gee> {
-   private static final alz a = alz.b("textures/entity/piglin/zombified_piglin.png");
+public class gux extends gsg<cnq, hak, gee<hak>> {
+   private static final alz a = alz.b("textures/entity/zombie_villager/zombie_villager.png");
 
-   public gux(gro.a $$0, gek $$1, gek $$2, gek $$3, gek $$4, gek $$5, gek $$6) {
-      super($$0, new gee($$0.a($$1)), new gee($$0.a($$2)), 0.5F, gte.a);
-      this.a(new gvs<>(this, new gbw($$0.a($$3)), new gbw($$0.a($$4)), new gbw($$0.a($$5)), new gbw($$0.a($$5)), $$0.h()));
+   public gux(grp.a $$0) {
+      super($$0, new gee<>($$0.a(gem.dQ)), new gee<>($$0.a(gem.dR)), 0.5F, gul.a);
+      this.a(new gvt<>(this, new gee($$0.a(gem.dU)), new gee($$0.a(gem.dV)), new gee($$0.a(gem.dS)), new gee($$0.a(gem.dT)), $$0.h()));
+      this.a(new gwo<>(this, $$0.e(), "zombie_villager"));
    }
 
    public alz a(hak $$0) {
@@ -14,8 +15,14 @@ public class gux extends gsf<cnr, hak, gee> {
       return new hak();
    }
 
-   public void a(cnr $$0, hak $$1, float $$2) {
+   public void a(cnq $$0, hak $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gb();
+      $$1.b = $$0.gx();
+      $$1.c = $$0.gy();
+      $$1.a = $$0.gd();
+   }
+
+   protected boolean b(hak $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

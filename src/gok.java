@@ -1,36 +1,73 @@
-public class gok implements gnu<dwn> {
-   private final grm a;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-   public gok(gnv.a $$0) {
-      this.a = $$0.c();
+public class gok implements gnv<dwl> {
+   private final Map<drq.a, gdi> a;
+   private static final Map<drq.a, alz> b = ae.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(drq.b.c, alz.b("textures/entity/skeleton/skeleton.png"));
+      $$0.put(drq.b.d, alz.b("textures/entity/skeleton/wither_skeleton.png"));
+      $$0.put(drq.b.f, alz.b("textures/entity/zombie/zombie.png"));
+      $$0.put(drq.b.g, alz.b("textures/entity/creeper/creeper.png"));
+      $$0.put(drq.b.i, alz.b("textures/entity/enderdragon/dragon.png"));
+      $$0.put(drq.b.h, alz.b("textures/entity/piglin/piglin.png"));
+      $$0.put(drq.b.e, hcc.a());
+   });
+
+   public static Map<drq.a, gdi> a(gej $$0) {
+      Builder<drq.a, gdi> $$1 = ImmutableMap.builder();
+      $$1.put(drq.b.c, new gdh($$0.a(gem.cK)));
+      $$1.put(drq.b.d, new gdh($$0.a(gem.dz)));
+      $$1.put(drq.b.e, new gdh($$0.a(gem.ce)));
+      $$1.put(drq.b.f, new gdh($$0.a(gem.dL)));
+      $$1.put(drq.b.g, new gdh($$0.a(gem.ah)));
+      $$1.put(drq.b.i, new geg($$0.a(gem.as)));
+      $$1.put(drq.b.h, new gcm($$0.a(gem.bU)));
+      return $$1.build();
    }
 
-   public void a(dwn $$0, float $$1, fgq $$2, glj $$3, int $$4, int $$5) {
-      dhh $$6 = $$0.i();
-      if ($$6 != null) {
-         dgi $$7 = $$0.c();
-         bvj $$8 = $$7.b($$6, $$0.aB_());
-         if ($$8 != null) {
-            a($$1, $$2, $$3, $$4, $$8, this.a, $$7.b(), $$7.a());
-         }
-      }
+   public gok(gnw.a $$0) {
+      this.a = a($$0.e());
    }
 
-   public static void a(float $$0, fgq $$1, glj $$2, int $$3, bvj $$4, grm $$5, double $$6, double $$7) {
-      $$1.a();
-      $$1.a(0.5F, 0.0F, 0.5F);
-      float $$8 = 0.53125F;
-      float $$9 = Math.max($$4.dq(), $$4.dr());
-      if ((double)$$9 > 1.0) {
-         $$8 /= $$9;
+   public void a(dwl $$0, float $$1, fgr $$2, glk $$3, int $$4, int $$5) {
+      float $$6 = $$0.a($$1);
+      dxu $$7 = $$0.m();
+      boolean $$8 = $$7.b() instanceof dtp;
+      jm $$9 = $$8 ? $$7.c(dtp.d) : null;
+      int $$10 = $$8 ? dyz.a($$9.g()) : $$7.c(drq.e);
+      float $$11 = dyz.b($$10);
+      drq.a $$12 = ((djh)$$7.b()).b();
+      gdi $$13 = this.a.get($$12);
+      glu $$14 = a($$12, $$0.c());
+      a($$9, $$11, $$6, $$2, $$3, $$4, $$13, $$14);
+   }
+
+   public static void a(@Nullable jm $$0, float $$1, float $$2, fgr $$3, glk $$4, int $$5, gdi $$6, glu $$7) {
+      $$3.a();
+      if ($$0 == null) {
+         $$3.a(0.5F, 0.0F, 0.5F);
+      } else {
+         float $$8 = 0.25F;
+         $$3.a(0.5F - (float)$$0.j() * 0.25F, 0.25F, 0.5F - (float)$$0.l() * 0.25F);
       }
 
-      $$1.a(0.0F, 0.4F, 0.0F);
-      $$1.a(a.d.rotationDegrees((float)bae.d((double)$$0, $$6, $$7) * 10.0F));
-      $$1.a(0.0F, -0.2F, 0.0F);
-      $$1.a(a.b.rotationDegrees(-30.0F));
-      $$1.b($$8, $$8, $$8);
-      $$5.a($$4, 0.0, 0.0, 0.0, $$0, $$1, $$2, $$3);
-      $$1.b();
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      fgv $$9 = $$4.getBuffer($$7);
+      $$6.a($$2, $$1, 0.0F);
+      $$6.a($$3, $$9, $$5, hbb.d);
+      $$3.b();
+   }
+
+   public static glu a(drq.a $$0, @Nullable dan $$1) {
+      alz $$2 = b.get($$0);
+      if ($$0 == drq.b.e && $$1 != null) {
+         hcm $$3 = fmf.Q().an();
+         return glu.j($$3.b($$1.f()).a());
+      } else {
+         return glu.h($$2);
+      }
    }
 }

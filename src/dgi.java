@@ -92,7 +92,7 @@ public abstract class dgi {
                   }
 
                   bvj $$15 = bvq.a($$6, $$0, bvp.c, $$3x -> {
-                     $$3x.b($$10, $$11, $$12, $$3x.dL(), $$3x.dN());
+                     $$3x.b($$10, $$11, $$12, $$3x.dM(), $$3x.dO());
                      return $$3x;
                   });
                   if ($$15 == null) {
@@ -112,7 +112,7 @@ public abstract class dgi {
                      return;
                   }
 
-                  $$15.b($$15.dA(), $$15.dC(), $$15.dG(), $$3.i() * 360.0F, 0.0F);
+                  $$15.b($$15.dB(), $$15.dD(), $$15.dH(), $$3.i() * 360.0F, 0.0F);
                   if ($$15 instanceof bwh $$17) {
                      if ($$4.b().isEmpty() && !$$17.a($$0, bvp.c) || !$$17.a((dhk)$$0)) {
                         continue;
@@ -120,7 +120,7 @@ public abstract class dgi {
 
                      boolean $$18 = $$4.a().f() == 1 && $$4.a().b("id", 8);
                      if ($$18) {
-                        ((bwh)$$15).a($$0, $$0.d_($$15.dv()), bvp.c, null);
+                        ((bwh)$$15).a($$0, $$0.d_($$15.dw()), bvp.c, null);
                      }
 
                      $$4.c().ifPresent($$17::a);

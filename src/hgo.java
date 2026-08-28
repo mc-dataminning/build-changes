@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface hgo<T> {
+   int e();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface hgo {
+   T b(bam var1);
+
+   void a(hgj var1);
 }

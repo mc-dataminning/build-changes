@@ -7,10 +7,10 @@ public class czi extends cxk implements cyj {
    public bti a(dhh $$0, cpw $$1, bth $$2) {
       cxo $$3 = $$1.b($$2);
       if ($$0 instanceof ash $$4) {
-         cqp.a(($$2x, $$3x, $$4x) -> new crh($$1, $$0, $$1.dt().a(), $$1.bF().b(), $$1.dt().c()), $$4, $$3, $$1, 0.0F, 1.5F, 1.0F);
+         cqp.a(($$2x, $$3x, $$4x) -> new crh($$1, $$0, $$1.du().a(), $$1.bF().b(), $$1.du().c()), $$4, $$3, $$1, 0.0F, 1.5F, 1.0F);
       }
 
-      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), axf.CQ, axg.g, 0.5F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
+      $$0.a(null, $$1.dB(), $$1.dD(), $$1.dH(), axf.CQ, axg.g, 0.5F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
       $$1.b(axp.c.b(this));
       $$3.a(1, $$1);
       return bti.a;

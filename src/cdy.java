@@ -13,7 +13,7 @@ public class cdy extends cdd {
 
    @Override
    public boolean b() {
-      return this.a.dY().i() < 0.02F;
+      return this.a.dZ().i() < 0.02F;
    }
 
    @Override
@@ -23,10 +23,10 @@ public class cdy extends cdd {
 
    @Override
    public void d() {
-      double $$0 = (Math.PI * 2) * this.a.dY().j();
+      double $$0 = (Math.PI * 2) * this.a.dZ().j();
       this.b = Math.cos($$0);
       this.c = Math.sin($$0);
-      this.d = 20 + this.a.dY().a(20);
+      this.d = 20 + this.a.dZ().a(20);
    }
 
    @Override
@@ -37,6 +37,6 @@ public class cdy extends cdd {
    @Override
    public void a() {
       this.d--;
-      this.a.H().a(this.a.dA() + this.b, this.a.dE(), this.a.dG() + this.c);
+      this.a.H().a(this.a.dB() + this.b, this.a.dF(), this.a.dH() + this.c);
    }
 }

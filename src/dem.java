@@ -11,7 +11,7 @@ public record dem(def d, def e, jq<bub> f) implements dep {
 
    @Override
    public void a(ash $$0, int $$1, ddx $$2, bvj $$3, fbx $$4) {
-      float $$5 = bae.b($$3.dY(), this.d.a($$1), this.e.a($$1));
+      float $$5 = bae.b($$3.dZ(), this.d.a($$1), this.e.a($$1));
       $$3.a($$0, new btz(this.f, $$2.c()), $$5);
    }
 

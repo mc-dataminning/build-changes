@@ -41,7 +41,7 @@ public class cwc extends cxk {
          $$2.a(null, $$1, axf.oF, axg.h, 1.0F, 1.0F);
          cpw $$3 = $$0.o();
          cxo $$4 = $$0.n();
-         boolean $$5 = !$$3.fT() && $$4.L() == 1;
+         boolean $$5 = !$$3.fV() && $$4.L() == 1;
          dai $$6 = new dai(Optional.of(jp.a($$2.ah(), $$1)), true);
          if ($$5) {
             $$4.b(ku.ad, $$6);
@@ -49,7 +49,7 @@ public class cwc extends cxk {
             cxo $$7 = $$4.a(cxs.rq, 1);
             $$4.a(1, $$3);
             $$7.b(ku.ad, $$6);
-            if (!$$3.gg().f($$7)) {
+            if (!$$3.gi().f($$7)) {
                $$3.a($$7, false);
             }
          }

@@ -31,7 +31,7 @@ public class eco implements ecu {
          this.b($$0);
       }
 
-      return this.e.left().map($$0x -> $$0x.dt().b(0.0, (double)this.f, 0.0));
+      return this.e.left().map($$0x -> $$0x.du().b(0.0, (double)this.f, 0.0));
    }
 
    private void b(dhh $$0) {

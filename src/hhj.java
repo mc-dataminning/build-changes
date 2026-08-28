@@ -1,15 +1,15 @@
 import javax.annotation.Nullable;
 
-public class hhj implements hho {
-   private static final int a = 6000;
-   private static final xv b = xv.c("tutorial.find_tree.title");
-   private static final xv c = xv.c("tutorial.find_tree.description");
-   private final hhn d;
+public class hhj implements hhp {
+   private static final int a = 1200;
+   private static final xv b = xv.c("tutorial.craft_planks.title");
+   private static final xv c = xv.c("tutorial.craft_planks.description");
+   private final hho d;
    @Nullable
-   private fqq e;
+   private fqr e;
    private int f;
 
-   public hhj(hhn $$0) {
+   public hhj(hho $$0) {
       this.d = $$0;
    }
 
@@ -17,18 +17,25 @@ public class hhj implements hho {
    public void a() {
       this.f++;
       if (!this.d.f()) {
-         this.d.a(hhp.f);
+         this.d.a(hhq.f);
       } else {
          if (this.f == 1) {
-            gkf $$0 = this.d.e().t;
-            if ($$0 != null && (b($$0) || a($$0))) {
-               this.d.a(hhp.e);
-               return;
+            gkg $$0 = this.d.e().t;
+            if ($$0 != null) {
+               if ($$0.gi().a(ayd.b)) {
+                  this.d.a(hhq.f);
+                  return;
+               }
+
+               if (a($$0, ayd.b)) {
+                  this.d.a(hhq.f);
+                  return;
+               }
             }
          }
 
-         if (this.f >= 6000 && this.e == null) {
-            this.e = new fqq(fqq.a.c, b, c, false);
+         if (this.f >= 1200 && this.e == null) {
+            this.e = new fqr(fqr.a.e, b, c, false);
             this.d.e().aA().a(this.e);
          }
       }
@@ -43,30 +50,15 @@ public class hhj implements hho {
    }
 
    @Override
-   public void a(gfi $$0, fbv $$1) {
-      if ($$1.d() == fbv.a.b) {
-         dxu $$2 = $$0.a_(((fbt)$$1).b());
-         if ($$2.a(axu.al)) {
-            this.d.a(hhp.c);
-         }
-      }
-   }
-
-   @Override
    public void a(cxo $$0) {
-      if ($$0.a(ayd.aS)) {
-         this.d.a(hhp.e);
+      if ($$0.a(ayd.b)) {
+         this.d.a(hhq.f);
       }
    }
 
-   private static boolean b(gkf $$0) {
-      return $$0.gg().a_($$0x -> $$0x.a(ayd.aS));
-   }
-
-   public static boolean a(gkf $$0) {
-      for (jq<dkl> $$1 : ma.e.c(axu.al)) {
-         dkl $$2 = $$1.a();
-         if ($$0.m().a(axp.a.b($$2)) > 0) {
+   public static boolean a(gkg $$0, ayk<cxk> $$1) {
+      for (jq<cxk> $$2 : ma.g.c($$1)) {
+         if ($$0.m().a(axp.b.b($$2.a())) > 0) {
             return true;
          }
       }

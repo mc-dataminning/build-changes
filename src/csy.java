@@ -14,11 +14,11 @@ public record csy(int c, float d, boolean e) implements czv {
 
    @Override
    public void a(dhh $$0, bwf $$1, cxo $$2, czu $$3) {
-      bam $$4 = $$1.dY();
-      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), $$3.e().a(), axg.g, 1.0F, $$4.a(1.0F, 0.4F));
+      bam $$4 = $$1.dZ();
+      $$0.a(null, $$1.dB(), $$1.dD(), $$1.dH(), $$3.e().a(), axg.g, 1.0F, $$4.a(1.0F, 0.4F));
       if ($$1 instanceof cpw $$5) {
-         $$5.gr().a(this);
-         $$0.a(null, $$5.dA(), $$5.dC(), $$5.dG(), axf.uD, axg.h, 0.5F, bae.b($$4, 0.9F, 1.0F));
+         $$5.gt().a(this);
+         $$0.a(null, $$5.dB(), $$5.dD(), $$5.dH(), axf.uD, axg.h, 0.5F, bae.b($$4, 0.9F, 1.0F));
       }
    }
 

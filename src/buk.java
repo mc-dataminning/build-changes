@@ -13,11 +13,11 @@ class buk extends bum {
 
    @Override
    public void a(ash $$0, bwf $$1, int $$2, btz $$3, float $$4) {
-      if ($$1.dY().i() <= this.c) {
-         int $$5 = this.d.applyAsInt($$1.dY());
+      if ($$1.dZ().i() <= this.c) {
+         int $$5 = this.d.applyAsInt($$1.dZ());
 
          for (int $$6 = 0; $$6 < $$5; $$6++) {
-            this.a($$0, $$1, $$1.dA(), $$1.dC() + (double)$$1.dr() / 2.0, $$1.dG());
+            this.a($$0, $$1, $$1.dB(), $$1.dD() + (double)$$1.ds() / 2.0, $$1.dH());
          }
       }
    }
@@ -25,7 +25,7 @@ class buk extends bum {
    private void a(ash $$0, bwf $$1, double $$2, double $$3, double $$4) {
       cnd $$5 = bvq.be.a($$0, bvp.k);
       if ($$5 != null) {
-         bam $$6 = $$1.dY();
+         bam $$6 = $$1.dZ();
          float $$7 = (float) (Math.PI / 2);
          float $$8 = bae.b($$6, (float) (-Math.PI / 2), (float) (Math.PI / 2));
          Vector3f $$9 = $$1.bT().k().mul(0.3F).mul(1.0F, 1.5F, 1.0F).rotateY($$8);

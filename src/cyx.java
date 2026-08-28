@@ -11,11 +11,11 @@ public class cyx extends cxk {
    private static final MapCodec<bvq<?>> b = ma.f.q().fieldOf("id");
    private final int c;
    private final int d;
-   private final bvq<?> l;
+   private final bvq<?> m;
 
    public cyx(bvq<? extends bwh> $$0, int $$1, int $$2, cxk.a $$3) {
       super($$3);
-      this.l = $$0;
+      this.m = $$0;
       this.c = $$1;
       this.d = $$2;
       a.put($$0, this);
@@ -77,7 +77,7 @@ public class cyx extends cxk {
             } else {
                $$3.a(1, $$1);
                $$1.b(axp.c.b(this));
-               $$0.a($$1, ecq.t, $$8.dt());
+               $$0.a($$1, ecq.t, $$8.du());
                return bti.a;
             }
          } else {
@@ -105,12 +105,12 @@ public class cyx extends cxk {
 
    public bvq<?> g(cxo $$0) {
       czx $$1 = $$0.a(ku.W, czx.a);
-      return !$$1.b() ? $$1.a(b).result().orElse(this.l) : this.l;
+      return !$$1.b() ? $$1.a(b).result().orElse(this.m) : this.m;
    }
 
    @Override
    public css i() {
-      return this.l.i();
+      return this.m.i();
    }
 
    public Optional<bwh> a(cpw $$0, bwh $$1, bvq<? extends bwh> $$2, ash $$3, fbx $$4, cxo $$5) {

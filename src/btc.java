@@ -5,11 +5,11 @@ public class btc {
    public static final String a = "Items";
 
    public static cxo a(List<cxo> $$0, int $$1, int $$2) {
-      return $$1 >= 0 && $$1 < $$0.size() && !$$0.get($$1).f() && $$2 > 0 ? $$0.get($$1).a($$2) : cxo.k;
+      return $$1 >= 0 && $$1 < $$0.size() && !$$0.get($$1).f() && $$2 > 0 ? $$0.get($$1).a($$2) : cxo.j;
    }
 
    public static cxo a(List<cxo> $$0, int $$1) {
-      return $$1 >= 0 && $$1 < $$0.size() ? $$0.set($$1, cxo.k) : cxo.k;
+      return $$1 >= 0 && $$1 < $$0.size() ? $$0.set($$1, cxo.j) : cxo.j;
    }
 
    public static ux a(ux $$0, jz<cxo> $$1, js.a $$2) {
@@ -42,7 +42,7 @@ public class btc {
          ux $$5 = $$3.a($$4);
          int $$6 = $$5.f("Slot") & 255;
          if ($$6 >= 0 && $$6 < $$1.size()) {
-            $$1.set($$6, cxo.a($$2, (vu)$$5).orElse(cxo.k));
+            $$1.set($$6, cxo.a($$2, (vu)$$5).orElse(cxo.j));
          }
       }
    }
@@ -54,7 +54,7 @@ public class btc {
          cxo $$6 = $$0.a($$5);
          int $$7 = a($$6, $$1, $$2 - $$4, $$3);
          if ($$7 > 0 && !$$3 && $$6.f()) {
-            $$0.a($$5, cxo.k);
+            $$0.a($$5, cxo.j);
          }
 
          $$4 += $$7;

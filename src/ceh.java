@@ -15,7 +15,7 @@ public class ceh extends cdd {
 
    @Override
    public boolean b() {
-      if (!this.a.gD() && this.a.ca()) {
+      if (!this.a.gF() && this.a.ca()) {
          fbx $$0 = cha.a(this.a, 5, 4);
          if ($$0 == null) {
             return false;
@@ -37,21 +37,21 @@ public class ceh extends cdd {
 
    @Override
    public boolean c() {
-      return !this.a.gD() && !this.a.L().m() && this.a.ca();
+      return !this.a.gF() && !this.a.L().m() && this.a.ca();
    }
 
    @Override
    public void a() {
-      if (!this.a.gD() && this.a.dY().a(this.a(50)) == 0) {
+      if (!this.a.gF() && this.a.dZ().a(this.a(50)) == 0) {
          bvj $$0 = this.a.da();
          if ($$0 == null) {
             return;
          }
 
          if ($$0 instanceof cpw $$1) {
-            int $$2 = this.a.gJ();
-            int $$3 = this.a.gP();
-            if ($$3 > 0 && this.a.dY().a($$3) < $$2) {
+            int $$2 = this.a.gL();
+            int $$3 = this.a.gR();
+            if ($$3 > 0 && this.a.dZ().a($$3) < $$2) {
                this.a.g($$1);
                return;
             }
@@ -60,8 +60,8 @@ public class ceh extends cdd {
          }
 
          this.a.bP();
-         this.a.gT();
-         this.a.dV().a(this.a, (byte)6);
+         this.a.gV();
+         this.a.dW().a(this.a, (byte)6);
       }
    }
 }

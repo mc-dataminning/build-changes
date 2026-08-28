@@ -10,7 +10,7 @@ public class dvk extends dwe implements ctt {
    public static final int h = 0;
    public static final int i = 9;
    public static final int j = 10;
-   private jz<cxo> n = jz.a(9, cxo.k);
+   private jz<cxo> n = jz.a(9, cxo.j);
    private int r = 0;
    protected final ctn k = new ctn() {
       private final int[] a = new int[9];
@@ -93,7 +93,7 @@ public class dvk extends dwe implements ctt {
    protected void a(ux $$0, js.a $$1) {
       super.a($$0, $$1);
       this.r = $$0.h("crafting_ticks_remaining");
-      this.n = jz.a(this.b(), cxo.k);
+      this.n = jz.a(this.b(), cxo.j);
       if (!this.b_($$0)) {
          btc.b($$0, this.n, $$1);
       }

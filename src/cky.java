@@ -12,10 +12,10 @@ public class cky extends ckv {
    @Override
    public void b() {
       if (this.c++ % 10 == 0) {
-         float $$0 = (this.a.dY().i() - 0.5F) * 8.0F;
-         float $$1 = (this.a.dY().i() - 0.5F) * 4.0F;
-         float $$2 = (this.a.dY().i() - 0.5F) * 8.0F;
-         this.a.dV().a(ls.v, this.a.dA() + (double)$$0, this.a.dC() + 2.0 + (double)$$1, this.a.dG() + (double)$$2, 0.0, 0.0, 0.0);
+         float $$0 = (this.a.dZ().i() - 0.5F) * 8.0F;
+         float $$1 = (this.a.dZ().i() - 0.5F) * 4.0F;
+         float $$2 = (this.a.dZ().i() - 0.5F) * 8.0F;
+         this.a.dW().a(ls.v, this.a.dB() + (double)$$0, this.a.dD() + 2.0 + (double)$$1, this.a.dH() + (double)$$2, 0.0, 0.0, 0.0);
       }
    }
 
@@ -27,7 +27,7 @@ public class cky extends ckv {
          this.b = fbx.c($$1);
       }
 
-      double $$2 = this.b.c(this.a.dA(), this.a.dC(), this.a.dG());
+      double $$2 = this.b.c(this.a.dB(), this.a.dD(), this.a.dH());
       if (!($$2 < 100.0) && !($$2 > 22500.0) && !this.a.P && !this.a.Q) {
          this.a.x(1.0F);
       } else {

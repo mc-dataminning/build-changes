@@ -30,7 +30,7 @@ public class cda extends cdd {
 
    @Override
    public boolean b() {
-      List<bwh> $$0 = this.a.dV().a(bwh.class, this.a.cR().g((double)this.i), this.b);
+      List<bwh> $$0 = this.a.dW().a(bwh.class, this.a.cR().g((double)this.i), this.b);
       if (!$$0.isEmpty()) {
          for (bwh $$1 : $$0) {
             if (!$$1.cp()) {
@@ -68,19 +68,19 @@ public class cda extends cdd {
          this.a.H().a(this.c, 10.0F, (float)this.a.Z());
          if (--this.f <= 0) {
             this.f = this.a(10);
-            double $$0 = this.a.dA() - this.c.dA();
-            double $$1 = this.a.dC() - this.c.dC();
-            double $$2 = this.a.dG() - this.c.dG();
+            double $$0 = this.a.dB() - this.c.dB();
+            double $$1 = this.a.dD() - this.c.dD();
+            double $$2 = this.a.dH() - this.c.dH();
             double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
             if (!($$3 <= (double)(this.g * this.g))) {
                this.e.a(this.c, this.d);
             } else {
                this.e.o();
                ccf $$4 = this.c.H();
-               if ($$3 <= (double)this.g || $$4.e() == this.a.dA() && $$4.f() == this.a.dC() && $$4.g() == this.a.dG()) {
-                  double $$5 = this.c.dA() - this.a.dA();
-                  double $$6 = this.c.dG() - this.a.dG();
-                  this.e.a(this.a.dA() - $$5, this.a.dC(), this.a.dG() - $$6, this.d);
+               if ($$3 <= (double)this.g || $$4.e() == this.a.dB() && $$4.f() == this.a.dD() && $$4.g() == this.a.dH()) {
+                  double $$5 = this.c.dB() - this.a.dB();
+                  double $$6 = this.c.dH() - this.a.dH();
+                  this.e.a(this.a.dB() - $$5, this.a.dD(), this.a.dH() - $$6, this.d);
                }
             }
          }

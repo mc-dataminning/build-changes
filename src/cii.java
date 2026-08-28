@@ -48,7 +48,7 @@ public class cii extends cht implements bwk {
 
    @Override
    protected void D(bvj $$0) {
-      if ($$0 instanceof cmo && !($$0 instanceof cmi) && this.dY().a(20) == 0) {
+      if ($$0 instanceof cmo && !($$0 instanceof cmi) && this.dZ().a(20) == 0) {
          this.h((bwf)$$0);
       }
 
@@ -66,19 +66,19 @@ public class cii extends cht implements bwk {
          this.ca--;
       }
 
-      if (!this.dV().C) {
-         this.a((ash)this.dV(), true);
+      if (!this.dW().C) {
+         this.a((ash)this.dW(), true);
       }
    }
 
    @Override
    public boolean bv() {
-      return this.dy().j() > 2.5000003E-7F && this.ae.a(5) == 0;
+      return this.dz().j() > 2.5000003E-7F && this.ae.a(5) == 0;
    }
 
    @Override
    public boolean a(bvq<?> $$0) {
-      if (this.gm() && $$0 == bvq.bS) {
+      if (this.go() && $$0 == bvq.bS) {
          return false;
       } else {
          return $$0 == bvq.F ? false : super.a($$0);
@@ -88,7 +88,7 @@ public class cii extends cht implements bwk {
    @Override
    public void b(ux $$0) {
       super.b($$0);
-      $$0.a("PlayerCreated", this.gm());
+      $$0.a("PlayerCreated", this.go());
       this.a_($$0);
    }
 
@@ -96,7 +96,7 @@ public class cii extends cht implements bwk {
    public void a(ux $$0) {
       super.a($$0);
       this.y($$0.q("PlayerCreated"));
-      this.a(this.dV(), $$0);
+      this.a(this.dW(), $$0);
    }
 
    @Override
@@ -125,7 +125,7 @@ public class cii extends cht implements bwk {
       return this.cd;
    }
 
-   private float gn() {
+   private float gp() {
       return (float)this.h(bxn.c);
    }
 
@@ -133,14 +133,14 @@ public class cii extends cht implements bwk {
    public boolean c(ash $$0, bvj $$1) {
       this.bZ = 10;
       $$0.a(this, (byte)4);
-      float $$2 = this.gn();
+      float $$2 = this.gp();
       float $$3 = (int)$$2 > 0 ? $$2 / 2.0F + (float)this.ae.a((int)$$2) : $$2;
-      btz $$4 = this.dW().b((bwf)this);
+      btz $$4 = this.dX().b((bwf)this);
       boolean $$5 = $$1.a($$0, $$4, $$3);
       if ($$5) {
          double $$7 = $$1 instanceof bwf $$6 ? $$6.h(bxn.p) : 0.0;
          double $$8 = Math.max(0.0, 1.0 - $$7);
-         $$1.h($$1.dy().b(0.0, 0.4F * $$8, 0.0));
+         $$1.h($$1.dz().b(0.0, 0.4F * $$8, 0.0));
          dea.a($$0, $$1, $$4);
       }
 
@@ -160,7 +160,7 @@ public class cii extends cht implements bwk {
    }
 
    public bvg.a p() {
-      return bvg.a.a(this.eD() / this.eR());
+      return bvg.a.a(this.eE() / this.eS());
    }
 
    @Override
@@ -184,10 +184,10 @@ public class cii extends cht implements bwk {
    public void x(boolean $$0) {
       if ($$0) {
          this.ca = 400;
-         this.dV().a(this, (byte)11);
+         this.dW().a(this, (byte)11);
       } else {
          this.ca = 0;
-         this.dV().a(this, (byte)34);
+         this.dW().a(this, (byte)34);
       }
    }
 
@@ -207,9 +207,9 @@ public class cii extends cht implements bwk {
       if (!$$2.a(cxs.pb)) {
          return bti.e;
       } else {
-         float $$3 = this.eD();
+         float $$3 = this.eE();
          this.c(25.0F);
-         if (this.eD() == $$3) {
+         if (this.eE() == $$3) {
             return bti.e;
          } else {
             float $$4 = 1.0F + (this.ae.i() - this.ae.i()) * 0.2F;
@@ -229,7 +229,7 @@ public class cii extends cht implements bwk {
       return this.ca;
    }
 
-   public boolean gm() {
+   public boolean go() {
       return (this.al.a(c) & 1) != 0;
    }
 
@@ -249,7 +249,7 @@ public class cii extends cht implements bwk {
 
    @Override
    public boolean a(dhk $$0) {
-      jh $$1 = this.dv();
+      jh $$1 = this.dw();
       jh $$2 = $$1.e();
       dxu $$3 = $$0.a_($$2);
       if (!$$3.a($$0, $$2, this)) {
@@ -269,6 +269,6 @@ public class cii extends cht implements bwk {
 
    @Override
    public fbx cT() {
-      return new fbx(0.0, (double)(0.875F * this.cS()), (double)(this.dq() * 0.4F));
+      return new fbx(0.0, (double)(0.875F * this.cS()), (double)(this.dr() * 0.4F));
    }
 }

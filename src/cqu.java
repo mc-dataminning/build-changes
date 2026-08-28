@@ -27,7 +27,7 @@ public class cqu extends cqw {
          lq $$1 = this.s();
 
          for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dV().a($$1, this.dA(), this.dC(), this.dG(), 0.0, 0.0, 0.0);
+            this.dW().a($$1, this.dB(), this.dD(), this.dH(), 0.0, 0.0, 0.0);
          }
       }
    }
@@ -37,14 +37,14 @@ public class cqu extends cqw {
       super.a($$0);
       bvj $$1 = $$0.a();
       int $$2 = $$1 instanceof cmf ? 3 : 0;
-      $$1.a(this.dW().b(this, this.p()), (float)$$2);
+      $$1.a(this.dX().b(this, this.p()), (float)$$2);
    }
 
    @Override
    protected void a(fbv $$0) {
       super.a($$0);
-      if (!this.dV().C) {
-         this.dV().a(this, (byte)3);
+      if (!this.dW().C) {
+         this.dW().a(this, (byte)3);
          this.at();
       }
    }

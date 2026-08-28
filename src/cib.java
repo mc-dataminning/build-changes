@@ -34,7 +34,7 @@ public class cib extends chw {
    }
 
    public static bxm.a p() {
-      return chw.gr().a(bxn.s, 4.0).a(bxn.v, 0.25);
+      return chw.gt().a(bxn.s, 4.0).a(bxn.v, 0.25);
    }
 
    @Override
@@ -49,13 +49,13 @@ public class cib extends chw {
       }
 
       this.ce *= 0.9F;
-      fbx $$0 = this.dy();
+      fbx $$0 = this.dz();
       if (!this.aJ() && $$0.e < 0.0) {
          this.h($$0.d(1.0, 0.6, 1.0));
       }
 
       this.bZ = this.bZ + this.ce * 2.0F;
-      if (this.dV() instanceof ash $$1 && this.bL() && !this.e_() && !this.t() && --this.cf <= 0) {
+      if (this.dW() instanceof ash $$1 && this.bL() && !this.e_() && !this.t() && --this.cf <= 0) {
          if (this.a($$1, ewk.aI, this::a)) {
             this.a(axf.eV, 1.0F, (this.ae.i() - this.ae.i()) * 0.2F + 1.0F);
             this.a(ecq.t);

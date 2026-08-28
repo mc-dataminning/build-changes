@@ -17,7 +17,7 @@ public interface fdb {
       return null;
    }
 
-   default xv ha() {
+   default xv hc() {
       xv $$0 = this.p_();
       return $$0 != null ? $$0.f().a($$0x -> $$0x.a(new yb(yb.a.a, xv.b(this.cI())))) : xv.b(this.cI());
    }
@@ -34,7 +34,7 @@ public interface fdb {
             }
 
             @Override
-            public xv ha() {
+            public xv hc() {
                return $$1;
             }
          };

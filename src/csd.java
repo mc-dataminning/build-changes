@@ -41,7 +41,7 @@ public abstract class csd {
    public abstract void g();
 
    public dhh h() {
-      return this.a.dV();
+      return this.a.dW();
    }
 
    public abstract void a(ash var1);
@@ -51,7 +51,7 @@ public abstract class csd {
    public abstract boolean i();
 
    public fbx j() {
-      return this.a.dy();
+      return this.a.dz();
    }
 
    public void a(fbx $$0) {
@@ -63,19 +63,19 @@ public abstract class csd {
    }
 
    public fbx k() {
-      return this.a.dt();
+      return this.a.du();
    }
 
    public double l() {
-      return this.a.dA();
+      return this.a.dB();
    }
 
    public double m() {
-      return this.a.dC();
+      return this.a.dD();
    }
 
    public double n() {
-      return this.a.dG();
+      return this.a.dH();
    }
 
    public void b(fbx $$0) {
@@ -87,7 +87,7 @@ public abstract class csd {
    }
 
    public float o() {
-      return this.a.dN();
+      return this.a.dO();
    }
 
    public void a(float $$0) {
@@ -95,7 +95,7 @@ public abstract class csd {
    }
 
    public float p() {
-      return this.a.dL();
+      return this.a.dM();
    }
 
    public void b(float $$0) {

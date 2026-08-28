@@ -1,3 +1,3 @@
-public class gzg extends gyr {
-   public int a;
+public class gzg extends gys {
+   public float a;
 }

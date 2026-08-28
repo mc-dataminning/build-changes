@@ -4,12 +4,12 @@ class bux extends bum {
    }
 
    @Override
-   public void a(ash $$0, bwf $$1, int $$2, bvj.c $$3) {
-      if ($$3 == bvj.c.a) {
-         double $$4 = $$1.dA();
-         double $$5 = $$1.dC() + (double)($$1.dr() / 2.0F);
-         double $$6 = $$1.dG();
-         float $$7 = 3.0F + $$1.dY().i() * 2.0F;
+   public void a(ash $$0, bwf $$1, int $$2, bvj.d $$3) {
+      if ($$3 == bvj.d.a) {
+         double $$4 = $$1.dB();
+         double $$5 = $$1.dD() + (double)($$1.ds() / 2.0F);
+         double $$6 = $$1.dH();
+         float $$7 = 3.0F + $$1.dZ().i() * 2.0F;
          $$0.a($$1, null, crf.d, $$4, $$5, $$6, $$7, false, dhh.a.e, ls.A, ls.z, axf.cQ);
       }
    }

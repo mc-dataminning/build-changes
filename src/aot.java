@@ -32,7 +32,7 @@ public class aot {
                               .suggests(a)
                               .then(
                                  ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ex.a("pos", gs.a())
-                                             .executes($$1xx -> a($$1xx, fy.a($$1xx, "loot_table"), gs.a($$1xx, "pos"), cxo.k, $$2)))
+                                             .executes($$1xx -> a($$1xx, fy.a($$1xx, "loot_table"), gs.a($$1xx, "pos"), cxo.j, $$2)))
                                           .then(
                                              ex.a("tool", hf.a($$1))
                                                 .executes(
@@ -56,7 +56,7 @@ public class aot {
                      ex.a("mine")
                         .then(
                            ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ex.a("pos", gs.a())
-                                       .executes($$1xx -> a($$1xx, gs.a($$1xx, "pos"), cxo.k, $$2)))
+                                       .executes($$1xx -> a($$1xx, gs.a($$1xx, "pos"), cxo.j, $$2)))
                                     .then(ex.a("tool", hf.a($$1)).executes($$1xx -> a($$1xx, gs.a($$1xx, "pos"), hf.a($$1xx, "tool").a(1, false), $$2))))
                                  .then(ex.a("mainhand").executes($$1xx -> a($$1xx, gs.a($$1xx, "pos"), a((ew)$$1xx.getSource(), bvr.a), $$2))))
                               .then(ex.a("offhand").executes($$1xx -> a($$1xx, gs.a($$1xx, "pos"), a((ew)$$1xx.getSource(), bvr.b), $$2)))
@@ -174,7 +174,7 @@ public class aot {
 
          for (int $$9 = 0; $$9 < $$3; $$9++) {
             int $$10 = $$2 + $$9;
-            cxo $$11 = $$9 < $$4.size() ? $$4.get($$9) : cxo.k;
+            cxo $$11 = $$9 < $$4.size() ? $$4.get($$9) : cxo.j;
             if ($$6.b($$10, $$11)) {
                $$6.a($$10, $$11);
                $$8.add($$11);
@@ -197,7 +197,7 @@ public class aot {
 
       for (cxo $$4 : $$1) {
          for (asi $$5 : $$0) {
-            if ($$5.gg().f($$4.v())) {
+            if ($$5.gi().f($$4.v())) {
                $$3.add($$4);
             }
          }
@@ -209,7 +209,7 @@ public class aot {
 
    private static void a(bvj $$0, List<cxo> $$1, int $$2, int $$3, List<cxo> $$4) {
       for (int $$5 = 0; $$5 < $$3; $$5++) {
-         cxo $$6 = $$5 < $$1.size() ? $$1.get($$5) : cxo.k;
+         cxo $$6 = $$5 < $$1.size() ? $$1.get($$5) : cxo.j;
          bwx $$7 = $$0.a_($$2 + $$5);
          if ($$7 != bwx.a && $$7.a($$6.v())) {
             $$4.add($$6);
@@ -287,7 +287,7 @@ public class aot {
    }
 
    private static int a(CommandContext<ew> $$0, bvj $$1, aot.b $$2) throws CommandSyntaxException {
-      Optional<aly<ewt>> $$3 = $$1.ea();
+      Optional<aly<ewt>> $$3 = $$1.eb();
       if ($$3.isEmpty()) {
          throw c.create($$1.p_());
       } else {
@@ -298,7 +298,7 @@ public class aot {
             $$5.a(ezi.b, $$7);
          }
 
-         $$5.a(ezi.c, $$1.dW().q());
+         $$5.a(ezi.c, $$1.dX().q());
          $$5.b(ezi.e, $$6);
          $$5.b(ezi.d, $$6);
          $$5.a(ezi.a, $$1);

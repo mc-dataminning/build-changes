@@ -12,7 +12,7 @@ public class ccw extends cdd {
    public ccw(bwn $$0, double $$1) {
       this.a = $$0;
       this.e = $$1;
-      this.f = $$0.dV();
+      this.f = $$0.dW();
       this.a(EnumSet.of(cdd.a.a));
    }
 
@@ -24,7 +24,7 @@ public class ccw extends cdd {
          return false;
       } else if (!this.a.bY()) {
          return false;
-      } else if (!this.f.h(this.a.dv())) {
+      } else if (!this.f.h(this.a.dw())) {
          return false;
       } else {
          return !this.a.a(bvr.f).f() ? false : this.h();
@@ -55,8 +55,8 @@ public class ccw extends cdd {
 
    @Nullable
    protected fbx i() {
-      bam $$0 = this.a.dY();
-      jh $$1 = this.a.dv();
+      bam $$0 = this.a.dZ();
+      jh $$1 = this.a.dw();
 
       for (int $$2 = 0; $$2 < 10; $$2++) {
          jh $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);

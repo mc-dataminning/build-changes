@@ -30,7 +30,7 @@ public class bwe extends bvj {
    }
 
    @Override
-   public axg dm() {
+   public axg dn() {
       return axg.d;
    }
 
@@ -45,9 +45,9 @@ public class bwe extends bvj {
 
    private void s() {
       jh $$0 = this.t();
-      dxu $$1 = this.dV().a_($$0);
+      dxu $$1 = this.dW().a_($$0);
       if ($$1.a(dkn.sN)) {
-         ((dpc)$$1.b()).e($$1, this.dV(), $$0);
+         ((dpc)$$1.b()).e($$1, this.dW(), $$0);
       }
    }
 
@@ -55,17 +55,17 @@ public class bwe extends bvj {
    public void h() {
       super.h();
       if (this.e == 2) {
-         if (this.dV().B_()) {
-            this.dV().a(this.dA(), this.dC(), this.dG(), axf.oo, axg.d, 10000.0F, 0.8F + this.ae.i() * 0.2F, false);
-            this.dV().a(this.dA(), this.dC(), this.dG(), axf.on, axg.d, 2.0F, 0.5F + this.ae.i() * 0.2F, false);
+         if (this.dW().B_()) {
+            this.dW().a(this.dB(), this.dD(), this.dH(), axf.oo, axg.d, 10000.0F, 0.8F + this.ae.i() * 0.2F, false);
+            this.dW().a(this.dB(), this.dD(), this.dH(), axf.on, axg.d, 2.0F, 0.5F + this.ae.i() * 0.2F, false);
          } else {
-            btf $$0 = this.dV().al();
+            btf $$0 = this.dW().al();
             if ($$0 == btf.c || $$0 == btf.d) {
                this.b(4);
             }
 
             this.s();
-            a(this.dV(), this.t());
+            a(this.dW(), this.t());
             this.a(ecq.G);
          }
       }
@@ -73,15 +73,15 @@ public class bwe extends bvj {
       this.e--;
       if (this.e < 0) {
          if (this.f == 0) {
-            if (this.dV() instanceof ash) {
-               List<bvj> $$1 = this.dV()
+            if (this.dW() instanceof ash) {
+               List<bvj> $$1 = this.dW()
                   .a(
                      this,
-                     new fbs(this.dA() - 15.0, this.dC() - 15.0, this.dG() - 15.0, this.dA() + 15.0, this.dC() + 6.0 + 15.0, this.dG() + 15.0),
+                     new fbs(this.dB() - 15.0, this.dD() - 15.0, this.dH() - 15.0, this.dB() + 15.0, this.dD() + 6.0 + 15.0, this.dH() + 15.0),
                      $$0 -> $$0.bL() && !this.i.contains($$0)
                   );
 
-               for (asi $$2 : ((ash)this.dV()).a($$0 -> $$0.f(this) < 256.0F)) {
+               for (asi $$2 : ((ash)this.dW()).a($$0 -> $$0.f(this) < 256.0F)) {
                   ao.V.a($$2, this, $$1);
                }
             }
@@ -96,14 +96,14 @@ public class bwe extends bvj {
       }
 
       if (this.e >= 0) {
-         if (!(this.dV() instanceof ash)) {
-            this.dV().c(2);
+         if (!(this.dW() instanceof ash)) {
+            this.dW().c(2);
          } else if (!this.g) {
-            List<bvj> $$3 = this.dV()
-               .a(this, new fbs(this.dA() - 3.0, this.dC() - 3.0, this.dG() - 3.0, this.dA() + 3.0, this.dC() + 6.0 + 3.0, this.dG() + 3.0), bvj::bL);
+            List<bvj> $$3 = this.dW()
+               .a(this, new fbs(this.dB() - 3.0, this.dD() - 3.0, this.dH() - 3.0, this.dB() + 3.0, this.dD() + 6.0 + 3.0, this.dH() + 3.0), bvj::bL);
 
             for (bvj $$4 : $$3) {
-               $$4.a((ash)this.dV(), this);
+               $$4.a((ash)this.dW(), this);
             }
 
             this.i.addAll($$3);
@@ -115,24 +115,24 @@ public class bwe extends bvj {
    }
 
    private jh t() {
-      fbx $$0 = this.dt();
+      fbx $$0 = this.du();
       return jh.a($$0.d, $$0.e - 1.0E-6, $$0.f);
    }
 
    private void b(int $$0) {
-      if (!this.g && this.dV() instanceof ash $$1 && $$1.N().b(dhd.b)) {
-         jh $$3 = this.dv();
-         dxu $$4 = djy.a(this.dV(), $$3);
-         if (this.dV().a_($$3).l() && $$4.a((dhk)this.dV(), $$3)) {
-            this.dV().b($$3, $$4);
+      if (!this.g && this.dW() instanceof ash $$1 && $$1.N().b(dhd.b)) {
+         jh $$3 = this.dw();
+         dxu $$4 = djy.a(this.dW(), $$3);
+         if (this.dW().a_($$3).l() && $$4.a((dhk)this.dW(), $$3)) {
+            this.dW().b($$3, $$4);
             this.j++;
          }
 
          for (int $$5 = 0; $$5 < $$0; $$5++) {
             jh $$6 = $$3.b(this.ae.a(3) - 1, this.ae.a(3) - 1, this.ae.a(3) - 1);
-            $$4 = djy.a(this.dV(), $$6);
-            if (this.dV().a_($$6).l() && $$4.a((dhk)this.dV(), $$6)) {
-               this.dV().b($$6, $$4);
+            $$4 = djy.a(this.dW(), $$6);
+            if (this.dW().a_($$6).l() && $$4.a((dhk)this.dW(), $$6)) {
+               this.dW().b($$6, $$4);
                this.j++;
             }
          }

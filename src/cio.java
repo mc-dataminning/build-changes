@@ -45,7 +45,7 @@ public class cio extends chw implements bwk {
    }
 
    public static bxm.a p() {
-      return chw.gr().a(bxn.s, 30.0).a(bxn.m, 20.0).a(bxn.v, 0.25).a(bxn.c, 6.0);
+      return chw.gt().a(bxn.s, 30.0).a(bxn.m, 20.0).a(bxn.v, 0.25).a(bxn.c, 6.0);
    }
 
    public static boolean c(bvq<cio> $$0, dhi $$1, bvp $$2, jh $$3, bam $$4) {
@@ -56,7 +56,7 @@ public class cio extends chw implements bwk {
    @Override
    public void a(ux $$0) {
       super.a($$0);
-      this.a(this.dV(), $$0);
+      this.a(this.dW(), $$0);
    }
 
    @Override
@@ -127,7 +127,7 @@ public class cio extends chw implements bwk {
    @Override
    public void h() {
       super.h();
-      if (this.dV().C) {
+      if (this.dW().C) {
          if (this.cd != this.cb) {
             this.m_();
          }
@@ -144,8 +144,8 @@ public class cio extends chw implements bwk {
          this.ce--;
       }
 
-      if (!this.dV().C) {
-         this.a((ash)this.dV(), true);
+      if (!this.dW().C) {
+         this.a((ash)this.dW(), true);
       }
    }
 
@@ -173,7 +173,7 @@ public class cio extends chw implements bwk {
    }
 
    @Override
-   protected float fk() {
+   protected float fm() {
       return 0.98F;
    }
 
@@ -197,7 +197,7 @@ public class cio extends chw implements bwk {
             return false;
          } else {
             if (super.b()) {
-               for (cio $$1 : cio.this.dV().a(cio.class, cio.this.cR().c(8.0, 4.0, 8.0))) {
+               for (cio $$1 : cio.this.dW().a(cio.class, cio.this.cR().c(8.0, 4.0, 8.0))) {
                   if ($$1.e_()) {
                      return true;
                   }
@@ -247,7 +247,7 @@ public class cio extends chw implements bwk {
             this.h();
             this.a.c(a(this.a), $$0);
             cio.this.x(false);
-         } else if (this.a.g((bvj)$$0) < (double)(($$0.dq() + 3.0F) * ($$0.dq() + 3.0F))) {
+         } else if (this.a.g((bvj)$$0) < (double)(($$0.dr() + 3.0F) * ($$0.dr() + 3.0F))) {
             if (this.i()) {
                cio.this.x(false);
                this.h();

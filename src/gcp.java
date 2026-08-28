@@ -1,99 +1,21 @@
-import java.util.List;
-
-public class gcp extends gbx<gze> {
-   private static final String f = "left_sleeve";
-   private static final String g = "right_sleeve";
-   private static final String x = "left_pants";
-   private static final String y = "right_pants";
-   private final List<gem> z;
-   public final gem a;
-   public final gem b;
-   public final gem c;
-   public final gem d;
-   public final gem e;
-   private final boolean A;
-
-   public gcp(gem $$0, boolean $$1) {
-      super($$0, glt::i);
-      this.A = $$1;
-      this.a = this.s.b("left_sleeve");
-      this.b = this.r.b("right_sleeve");
-      this.c = this.u.b("left_pants");
-      this.d = this.t.b("right_pants");
-      this.e = this.q.b("jacket");
-      this.z = List.of(this.o, this.q, this.s, this.r, this.u, this.t);
+public class gcp extends gby<gzf> {
+   public gcp(gen $$0) {
+      super($$0);
    }
 
-   public static geu a(geq $$0, boolean $$1) {
-      geu $$2 = gbx.a($$0, 0.0F);
-      gew $$3 = $$2.a();
-      float $$4 = 0.25F;
-      if ($$1) {
-         gew $$5 = $$3.a("left_arm", ger.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0), geo.a(5.0F, 2.0F, 0.0F));
-         gew $$6 = $$3.a("right_arm", ger.c().a(40, 16).a(-2.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0), geo.a(-5.0F, 2.0F, 0.0F));
-         $$5.a("left_sleeve", ger.c().a(48, 48).a(-1.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0.a(0.25F)), geo.a);
-         $$6.a("right_sleeve", ger.c().a(40, 32).a(-2.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0.a(0.25F)), geo.a);
-      } else {
-         gew $$7 = $$3.a("left_arm", ger.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), geo.a(5.0F, 2.0F, 0.0F));
-         gew $$8 = $$3.b("right_arm");
-         $$7.a("left_sleeve", ger.c().a(48, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), geo.a);
-         $$8.a("right_sleeve", ger.c().a(40, 32).a(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), geo.a);
-      }
-
-      gew $$9 = $$3.a("left_leg", ger.c().a(16, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), geo.a(1.9F, 12.0F, 0.0F));
-      gew $$10 = $$3.b("right_leg");
-      $$9.a("left_pants", ger.c().a(0, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), geo.a);
-      $$10.a("right_pants", ger.c().a(0, 32).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), geo.a);
-      gew $$11 = $$3.b("body");
-      $$11.a("jacket", ger.c().a(16, 32).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0.a(0.25F)), geo.a);
-      return $$2;
-   }
-
-   public void a(gze $$0) {
-      boolean $$1 = !$$0.h;
-      this.q.k = $$1;
-      this.r.k = $$1;
-      this.s.k = $$1;
-      this.t.k = $$1;
-      this.u.k = $$1;
-      this.p.k = $$0.i;
-      this.e.k = $$0.j;
-      this.c.k = $$0.k;
-      this.d.k = $$0.l;
-      this.a.k = $$0.au;
-      this.b.k = $$0.av;
-      super.a($$0);
-   }
-
-   @Override
-   public void c_(boolean $$0) {
-      super.c_($$0);
-      this.a.k = $$0;
-      this.b.k = $$0;
-      this.c.k = $$0;
-      this.d.k = $$0;
-      this.e.k = $$0;
-   }
-
-   @Override
-   public void a(bvz $$0, fgq $$1) {
-      this.e().a($$1);
-      gem $$2 = this.a($$0);
-      if (this.A) {
-         float $$3 = 0.5F * (float)($$0 == bvz.b ? 1 : -1);
-         $$2.b += $$3;
-         $$2.a($$1);
-         $$2.b -= $$3;
-      } else {
-         $$2.a($$1);
-      }
-   }
-
-   public gem a(bam $$0) {
-      return ae.a(this.z, $$0);
-   }
-
-   protected gbx.a a(gze $$0, bvz $$1) {
-      return gwv.a($$0, $$1);
+   public static get a() {
+      gev $$0 = gby.a(ger.a, 0.0F);
+      gex $$1 = $$0.a();
+      gex $$2 = $$1.a("head");
+      $$2.a("hat");
+      $$1.a("body");
+      $$1.a("left_arm");
+      $$1.a("right_arm");
+      $$1.a("left_leg");
+      $$1.a("right_leg");
+      ges $$3 = ges.c().a(24, 0).a(-3.0F, -6.0F, -1.0F, 6.0F, 6.0F, 1.0F, new ger(1.0F));
+      $$2.a("left_ear", $$3, gep.a(-6.0F, -6.0F, 0.0F));
+      $$2.a("right_ear", $$3, gep.a(6.0F, -6.0F, 0.0F));
+      return get.a($$0, 64, 64);
    }
 }

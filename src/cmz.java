@@ -27,7 +27,7 @@ public class cmz extends cmd implements cmj, cpg {
    }
 
    public static bxm.a p() {
-      return cmw.gr().a(bxn.v, 0.35F).a(bxn.s, 24.0).a(bxn.c, 5.0).a(bxn.m, 32.0);
+      return cmw.gt().a(bxn.v, 0.35F).a(bxn.s, 24.0).a(bxn.c, 5.0).a(bxn.m, 32.0);
    }
 
    @Override
@@ -58,7 +58,7 @@ public class cmz extends cmd implements cmj, cpg {
    @Override
    public void b(ux $$0) {
       super.b($$0);
-      this.b($$0, this.dX());
+      this.b($$0, this.dY());
    }
 
    @Override
@@ -68,14 +68,14 @@ public class cmz extends cmd implements cmj, cpg {
       } else if (this.b(cxs.wL)) {
          return cmd.a.e;
       } else {
-         return this.gb() ? cmd.a.b : cmd.a.h;
+         return this.gd() ? cmd.a.b : cmd.a.h;
       }
    }
 
    @Override
    public void a(ux $$0) {
       super.a($$0);
-      this.a($$0, this.dX());
+      this.a($$0, this.dY());
       this.a_(true);
    }
 
@@ -107,7 +107,7 @@ public class cmz extends cmd implements cmj, cpg {
    protected void b(dhy $$0, bam $$1, btg $$2) {
       super.b($$0, $$1, $$2);
       if ($$1.a(300) == 0) {
-         cxo $$3 = this.eX();
+         cxo $$3 = this.eZ();
          if ($$3.a(cxs.wL)) {
             dea.a($$3, $$0.K_(), dfm.b, $$2, $$1);
          }
@@ -156,7 +156,7 @@ public class cmz extends cmd implements cmj, cpg {
    }
 
    private boolean i(cxo $$0) {
-      return this.gC() && $$0.a(cxs.vF);
+      return this.gE() && $$0.a(cxs.vF);
    }
 
    @Override
@@ -167,7 +167,7 @@ public class cmz extends cmd implements cmj, cpg {
 
    @Override
    public void a(ash $$0, int $$1, boolean $$2) {
-      crj $$3 = this.gz();
+      crj $$3 = this.gB();
       boolean $$4 = this.ae.i() <= $$3.v();
       if ($$4) {
          cxo $$5 = new cxo(cxs.wL);
@@ -181,7 +181,7 @@ public class cmz extends cmd implements cmj, cpg {
          }
 
          if ($$6 != null) {
-            dea.a($$5, $$0.K_(), $$6, $$0.d_(this.dv()), this.dY());
+            dea.a($$5, $$0.K_(), $$6, $$0.d_(this.dw()), this.dZ());
             this.a(bvr.a, $$5);
          }
       }

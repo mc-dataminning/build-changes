@@ -31,7 +31,7 @@ public class ciq extends chw implements bxf<ciq.g> {
    @Override
    protected void B() {
       this.bT.a(1, new ccx(this));
-      this.bT.a(1, new ccs(this, this.dV()));
+      this.bT.a(1, new ccs(this, this.dW()));
       this.bT.a(1, new ciq.e(this, 2.2));
       this.bT.a(2, new ccp(this, 0.8));
       this.bT.a(3, new cel(this, 1.0, $$0 -> $$0.a(ayd.ay), false));
@@ -44,16 +44,16 @@ public class ciq extends chw implements bxf<ciq.g> {
    }
 
    @Override
-   protected float fh() {
+   protected float fj() {
       float $$0 = 0.3F;
-      if (this.P || this.bQ.b() && this.bQ.e() > this.dC() + 0.5) {
+      if (this.P || this.bQ.b() && this.bQ.e() > this.dD() + 0.5) {
          $$0 = 0.5F;
       }
 
       euk $$1 = this.bS.k();
       if ($$1 != null && !$$1.c()) {
          fbx $$2 = $$1.a(this);
-         if ($$2.e > this.dC() + 0.5) {
+         if ($$2.e > this.dD() + 0.5) {
             $$0 = 0.5F;
          }
       }
@@ -70,14 +70,14 @@ public class ciq extends chw implements bxf<ciq.g> {
       super.s();
       double $$0 = this.bQ.c();
       if ($$0 > 0.0) {
-         double $$1 = this.dy().j();
+         double $$1 = this.dz().j();
          if ($$1 < 0.01) {
             this.a(0.1F, new fbx(0.0, 0.0, 1.0));
          }
       }
 
-      if (!this.dV().C) {
-         this.dV().a(this, (byte)1);
+      if (!this.dW().C) {
+         this.dW().a(this, (byte)1);
       }
    }
 
@@ -94,7 +94,7 @@ public class ciq extends chw implements bxf<ciq.g> {
    public void t(boolean $$0) {
       super.t($$0);
       if ($$0) {
-         this.a(this.x(), this.fe(), ((this.ae.i() - this.ae.i()) * 0.2F + 1.0F) * 0.8F);
+         this.a(this.x(), this.fg(), ((this.ae.i() - this.ae.i()) * 0.2F + 1.0F) * 0.8F);
       }
    }
 
@@ -126,14 +126,14 @@ public class ciq extends chw implements bxf<ciq.g> {
       if (this.aJ()) {
          if (!this.co) {
             this.t(false);
-            this.gq();
+            this.gs();
          }
 
-         if (this.gm() == ciq.g.g && this.cp == 0) {
+         if (this.go() == ciq.g.g && this.cp == 0) {
             bwf $$1 = this.O_();
             if ($$1 != null && this.g((bvj)$$1) < 16.0) {
-               this.c($$1.dA(), $$1.dG());
-               this.bQ.a($$1.dA(), $$1.dC(), $$1.dG(), this.bQ.c());
+               this.c($$1.dB(), $$1.dH());
+               this.bQ.a($$1.dB(), $$1.dD(), $$1.dH(), this.bQ.c());
                this.p();
                this.co = true;
             }
@@ -152,7 +152,7 @@ public class ciq extends chw implements bxf<ciq.g> {
                this.p();
             }
          } else if (!$$2.d()) {
-            this.gn();
+            this.gp();
          }
       }
 
@@ -165,18 +165,18 @@ public class ciq extends chw implements bxf<ciq.g> {
    }
 
    private void c(double $$0, double $$1) {
-      this.v((float)(bae.d($$1 - this.dG(), $$0 - this.dA()) * 180.0F / (float)Math.PI) - 90.0F);
-   }
-
-   private void gn() {
-      ((ciq.c)this.bR).a(true);
-   }
-
-   private void go() {
-      ((ciq.c)this.bR).a(false);
+      this.v((float)(bae.d($$1 - this.dH(), $$0 - this.dB()) * 180.0F / (float)Math.PI) - 90.0F);
    }
 
    private void gp() {
+      ((ciq.c)this.bR).a(true);
+   }
+
+   private void gq() {
+      ((ciq.c)this.bR).a(false);
+   }
+
+   private void gr() {
       if (this.bQ.c() < 2.2) {
          this.cp = 10;
       } else {
@@ -184,9 +184,9 @@ public class ciq extends chw implements bxf<ciq.g> {
       }
    }
 
-   private void gq() {
-      this.gp();
-      this.go();
+   private void gs() {
+      this.gr();
+      this.gq();
    }
 
    @Override
@@ -202,13 +202,13 @@ public class ciq extends chw implements bxf<ciq.g> {
    }
 
    public static bxm.a t() {
-      return chw.gr().a(bxn.s, 3.0).a(bxn.v, 0.3F).a(bxn.c, 3.0);
+      return chw.gt().a(bxn.s, 3.0).a(bxn.v, 0.3F).a(bxn.c, 3.0);
    }
 
    @Override
    public void b(ux $$0) {
       super.b($$0);
-      $$0.a("RabbitType", this.gm().j);
+      $$0.a("RabbitType", this.go().j);
       $$0.a("MoreCarrotTicks", this.cq);
    }
 
@@ -239,15 +239,15 @@ public class ciq extends chw implements bxf<ciq.g> {
    }
 
    @Override
-   public void gd() {
-      if (this.gm() == ciq.g.g) {
+   public void gf() {
+      if (this.go() == ciq.g.g) {
          this.a(axf.vs, 1.0F, (this.ae.i() - this.ae.i()) * 0.2F + 1.0F);
       }
    }
 
    @Override
-   public axg dm() {
-      return this.gm() == ciq.g.g ? axg.f : axg.g;
+   public axg dn() {
+      return this.go() == ciq.g.g ? axg.f : axg.g;
    }
 
    @Nullable
@@ -255,15 +255,15 @@ public class ciq extends chw implements bxf<ciq.g> {
       ciq $$2 = bvq.aY.a($$0, bvp.e);
       if ($$2 != null) {
          ciq.g $$3;
-         $$3 = a($$0, this.dv());
+         $$3 = a($$0, this.dw());
          label16:
          if (this.ae.a(20) != 0) {
             if ($$1 instanceof ciq $$4 && this.ae.h()) {
-               $$3 = $$4.gm();
+               $$3 = $$4.go();
                break label16;
             }
 
-            $$3 = this.gm();
+            $$3 = this.go();
          }
 
          $$2.a($$3);
@@ -277,7 +277,7 @@ public class ciq extends chw implements bxf<ciq.g> {
       return $$0.a(ayd.ay);
    }
 
-   public ciq.g gm() {
+   public ciq.g go() {
       return ciq.g.a(this.al.a(cf));
    }
 
@@ -302,7 +302,7 @@ public class ciq extends chw implements bxf<ciq.g> {
    @Nullable
    @Override
    public bwy a(dhy $$0, btg $$1, bvp $$2, @Nullable bwy $$3) {
-      ciq.g $$4 = a($$0, this.dv());
+      ciq.g $$4 = a($$0, this.dw());
       if ($$3 instanceof ciq.b) {
          $$4 = ((ciq.b)$$3).a;
       } else {
@@ -329,7 +329,7 @@ public class ciq extends chw implements bxf<ciq.g> {
       return $$1.a_($$3.e()).a(axu.cf) && a((dgj)$$1, $$3);
    }
 
-   boolean gy() {
+   boolean gA() {
       return this.cq <= 0;
    }
 
@@ -346,7 +346,7 @@ public class ciq extends chw implements bxf<ciq.g> {
 
    @Override
    public fbx cT() {
-      return new fbx(0.0, (double)(0.6F * this.cS()), (double)(this.dq() * 0.4F));
+      return new fbx(0.0, (double)(0.6F * this.cS()), (double)(this.dr() * 0.4F));
    }
 
    static class a<T extends bwf> extends cck<T> {
@@ -359,7 +359,7 @@ public class ciq extends chw implements bxf<ciq.g> {
 
       @Override
       public boolean b() {
-         return this.i.gm() != ciq.g.g && super.b();
+         return this.i.go() != ciq.g.g && super.b();
       }
    }
 
@@ -468,7 +468,7 @@ public class ciq extends chw implements bxf<ciq.g> {
             }
 
             this.i = false;
-            this.h = this.g.gy();
+            this.h = this.g.gA();
          }
 
          return super.b();
@@ -484,7 +484,7 @@ public class ciq extends chw implements bxf<ciq.g> {
          super.a();
          this.g.H().a((double)this.e.u() + 0.5, (double)(this.e.v() + 1), (double)this.e.w() + 0.5, 10.0F, (float)this.g.Z());
          if (this.m()) {
-            dhh $$0 = this.g.dV();
+            dhh $$0 = this.g.dW();
             jh $$1 = this.e.d();
             dxu $$2 = $$0.a_($$1);
             dkl $$3 = $$2.b();

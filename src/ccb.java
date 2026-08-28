@@ -12,7 +12,7 @@ public class ccb implements ccc {
 
    public void a() {
       if (this.f()) {
-         this.a.aX = this.a.dL();
+         this.a.aX = this.a.dM();
          this.c();
          this.f = this.a.aZ;
          this.e = 0;
@@ -52,8 +52,8 @@ public class ccb implements ccc {
    }
 
    private boolean f() {
-      double $$0 = this.a.dA() - this.a.K;
-      double $$1 = this.a.dG() - this.a.M;
+      double $$0 = this.a.dB() - this.a.K;
+      double $$1 = this.a.dH() - this.a.M;
       return $$0 * $$0 + $$1 * $$1 > 2.5000003E-7F;
    }
 }

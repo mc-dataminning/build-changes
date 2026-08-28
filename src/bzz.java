@@ -15,7 +15,7 @@ public class bzz {
                      boolean $$10 = $$9 + 300L <= $$8;
                      if ($$3.getValue() <= $$2 && !$$10) {
                         jh $$11 = $$3x.<jp>b($$4).b();
-                        if ($$11.a($$7.dv(), (double)$$1)) {
+                        if ($$11.a($$7.dw(), (double)$$1)) {
                            $$3.increment();
                         }
 
@@ -23,7 +23,7 @@ public class bzz {
                      } else {
                         $$5.b();
                         $$4.b();
-                        $$7.eb().a($$6.ad(), $$6.ac());
+                        $$7.ec().a($$6.ad(), $$6.ac());
                         $$3.setValue(0);
                         return true;
                      }

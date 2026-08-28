@@ -1,13 +1,13 @@
 public interface cpk extends bxf<cpn> {
-   cpj gw();
+   cpj gy();
 
    void a(cpj var1);
 
    default cpn a() {
-      return this.gw().a();
+      return this.gy().a();
    }
 
    default void a(cpn $$0) {
-      this.a(this.gw().a($$0));
+      this.a(this.gy().a($$0));
    }
 }

@@ -41,7 +41,7 @@ public class cil extends chw {
 
    @Override
    protected boolean f(bvr $$0) {
-      return $$0 == bvr.a && this.fL();
+      return $$0 == bvr.a && this.fN();
    }
 
    public int p() {
@@ -64,7 +64,7 @@ public class cil extends chw {
       this.d(8, $$0);
    }
 
-   public boolean gm() {
+   public boolean go() {
       return this.v(16);
    }
 
@@ -72,7 +72,7 @@ public class cil extends chw {
       this.d(16, $$0);
    }
 
-   public boolean gn() {
+   public boolean gp() {
       return this.al.a(ce) > 0;
    }
 
@@ -80,7 +80,7 @@ public class cil extends chw {
       this.al.a(ce, $$0 ? 1 : 0);
    }
 
-   private int gJ() {
+   private int gL() {
       return this.al.a(ce);
    }
 
@@ -95,7 +95,7 @@ public class cil extends chw {
       }
    }
 
-   public int go() {
+   public int gq() {
       return this.al.a(cd);
    }
 
@@ -103,7 +103,7 @@ public class cil extends chw {
       this.al.a(cd, $$0);
    }
 
-   public cil.a gp() {
+   public cil.a gr() {
       return cil.a.a(this.al.a(cf));
    }
 
@@ -115,7 +115,7 @@ public class cil extends chw {
       this.al.a(cf, (byte)$$0.a());
    }
 
-   public cil.a gq() {
+   public cil.a gs() {
       return cil.a.a(this.al.a(cg));
    }
 
@@ -127,7 +127,7 @@ public class cil extends chw {
       this.al.a(cg, (byte)$$0.a());
    }
 
-   public boolean gy() {
+   public boolean gA() {
       return this.v(4);
    }
 
@@ -162,8 +162,8 @@ public class cil extends chw {
    @Override
    public void b(ux $$0) {
       super.b($$0);
-      $$0.a("MainGene", this.gp().c());
-      $$0.a("HiddenGene", this.gq().c());
+      $$0.a("MainGene", this.gr().c());
+      $$0.a("HiddenGene", this.gs().c());
    }
 
    @Override
@@ -182,7 +182,7 @@ public class cil extends chw {
             $$2.a(this, $$3);
          }
 
-         $$2.gH();
+         $$2.gJ();
       }
 
       return $$2;
@@ -209,37 +209,37 @@ public class cil extends chw {
       this.bU.a(1, new cil.e(this).a(new Class[0]));
    }
 
-   public static bxm.a gz() {
-      return chw.gr().a(bxn.v, 0.15F).a(bxn.c, 6.0);
+   public static bxm.a gB() {
+      return chw.gt().a(bxn.v, 0.15F).a(bxn.c, 6.0);
    }
 
-   public cil.a gA() {
-      return cil.a.a(this.gp(), this.gq());
-   }
-
-   public boolean gB() {
-      return this.gA() == cil.a.b;
-   }
-
-   public boolean gC() {
-      return this.gA() == cil.a.c;
+   public cil.a gC() {
+      return cil.a.a(this.gr(), this.gs());
    }
 
    public boolean gD() {
-      return this.gA() == cil.a.d;
+      return this.gC() == cil.a.b;
    }
 
    public boolean gE() {
-      return this.gA() == cil.a.e;
+      return this.gC() == cil.a.c;
    }
 
    public boolean gF() {
-      return this.gA() == cil.a.f;
+      return this.gC() == cil.a.d;
+   }
+
+   public boolean gG() {
+      return this.gC() == cil.a.e;
+   }
+
+   public boolean gH() {
+      return this.gC() == cil.a.f;
    }
 
    @Override
-   public boolean gb() {
-      return this.gA() == cil.a.g;
+   public boolean gd() {
+      return this.gC() == cil.a.g;
    }
 
    @Override
@@ -249,7 +249,7 @@ public class cil extends chw {
 
    @Override
    public boolean c(ash $$0, bvj $$1) {
-      if (!this.gb()) {
+      if (!this.gd()) {
          this.cr = true;
       }
 
@@ -257,18 +257,18 @@ public class cil extends chw {
    }
 
    @Override
-   public void gd() {
+   public void gf() {
       this.a(axf.sX, 1.0F, 1.0F);
    }
 
    @Override
    public void h() {
       super.h();
-      if (this.gC()) {
-         if (this.dV().ae() && !this.bj()) {
+      if (this.gE()) {
+         if (this.dW().ae() && !this.bj()) {
             this.x(true);
             this.z(false);
-         } else if (!this.gn()) {
+         } else if (!this.gp()) {
             this.x(false);
          }
       }
@@ -292,17 +292,17 @@ public class cil extends chw {
       }
 
       if (this.t()) {
-         this.t(this.go() + 1);
-         if (this.go() > 20) {
+         this.t(this.gq() + 1);
+         if (this.gq() > 20) {
             this.A(false);
-            this.gQ();
-         } else if (this.go() == 1) {
+            this.gS();
+         } else if (this.gq() == 1) {
             this.a(axf.sN, 1.0F, 1.0F);
          }
       }
 
-      if (this.gy()) {
-         this.gP();
+      if (this.gA()) {
+         this.gR();
       } else {
          this.ca = 0;
       }
@@ -311,29 +311,29 @@ public class cil extends chw {
          this.w(0.0F);
       }
 
-      this.gM();
-      this.gK();
-      this.gN();
       this.gO();
+      this.gM();
+      this.gP();
+      this.gQ();
    }
 
-   public boolean gG() {
-      return this.gC() && this.dV().ae();
+   public boolean gI() {
+      return this.gE() && this.dW().ae();
    }
 
-   private void gK() {
-      if (!this.gn() && this.x() && !this.gG() && !this.a(bvr.a).f() && this.ae.a(80) == 1) {
+   private void gM() {
+      if (!this.gp() && this.x() && !this.gI() && !this.a(bvr.a).f() && this.ae.a(80) == 1) {
          this.z(true);
       } else if (this.a(bvr.a).f() || !this.x()) {
          this.z(false);
       }
 
-      if (this.gn()) {
-         this.gL();
-         if (!this.dV().C && this.gJ() > 80 && this.ae.a(20) == 1) {
-            if (this.gJ() > 100 && this.a(bvr.a).a(ayd.aw)) {
-               if (!this.dV().C) {
-                  this.a(bvr.a, cxo.k);
+      if (this.gp()) {
+         this.gN();
+         if (!this.dW().C && this.gL() > 80 && this.ae.a(20) == 1) {
+            if (this.gL() > 100 && this.a(bvr.a).a(ayd.aw)) {
+               if (!this.dW().C) {
+                  this.a(bvr.a, cxo.j);
                   this.a(ecq.m);
                }
 
@@ -344,28 +344,28 @@ public class cil extends chw {
             return;
          }
 
-         this.u(this.gJ() + 1);
+         this.u(this.gL() + 1);
       }
    }
 
-   private void gL() {
-      if (this.gJ() % 5 == 0) {
+   private void gN() {
+      if (this.gL() % 5 == 0) {
          this.a(axf.sR, 0.5F + 0.5F * (float)this.ae.a(2), (this.ae.i() - this.ae.i()) * 0.2F + 1.0F);
 
          for (int $$0 = 0; $$0 < 6; $$0++) {
             fbx $$1 = new fbx(((double)this.ae.i() - 0.5) * 0.1, Math.random() * 0.1 + 0.1, ((double)this.ae.i() - 0.5) * 0.1);
-            $$1 = $$1.a(-this.dN() * (float) (Math.PI / 180.0));
-            $$1 = $$1.b(-this.dL() * (float) (Math.PI / 180.0));
+            $$1 = $$1.a(-this.dO() * (float) (Math.PI / 180.0));
+            $$1 = $$1.b(-this.dM() * (float) (Math.PI / 180.0));
             double $$2 = (double)(-this.ae.i()) * 0.6 - 0.3;
             fbx $$3 = new fbx(((double)this.ae.i() - 0.5) * 0.8, $$2, 1.0 + ((double)this.ae.i() - 0.5) * 0.4);
             $$3 = $$3.b(-this.aX * (float) (Math.PI / 180.0));
-            $$3 = $$3.b(this.dA(), this.dE() + 1.0, this.dG());
-            this.dV().a(new lo(ls.S, this.a(bvr.a)), $$3.d, $$3.e, $$3.f, $$1.d, $$1.e + 0.05, $$1.f);
+            $$3 = $$3.b(this.dB(), this.dF() + 1.0, this.dH());
+            this.dW().a(new lo(ls.S, this.a(bvr.a)), $$3.d, $$3.e, $$3.f, $$1.d, $$1.e + 0.05, $$1.f);
          }
       }
    }
 
-   private void gM() {
+   private void gO() {
       this.cu = this.ct;
       if (this.x()) {
          this.ct = Math.min(1.0F, this.ct + 0.15F);
@@ -374,18 +374,18 @@ public class cil extends chw {
       }
    }
 
-   private void gN() {
+   private void gP() {
       this.cw = this.cv;
-      if (this.gm()) {
+      if (this.go()) {
          this.cv = Math.min(1.0F, this.cv + 0.15F);
       } else {
          this.cv = Math.max(0.0F, this.cv - 0.19F);
       }
    }
 
-   private void gO() {
+   private void gQ() {
       this.cy = this.cx;
-      if (this.gy()) {
+      if (this.gA()) {
          this.cx = Math.min(1.0F, this.cx + 0.15F);
       } else {
          this.cx = Math.max(0.0F, this.cx - 0.19F);
@@ -404,15 +404,15 @@ public class cil extends chw {
       return bae.h($$0, this.cy, this.cx);
    }
 
-   private void gP() {
+   private void gR() {
       this.ca++;
       if (this.ca > 32) {
          this.B(false);
       } else {
-         if (!this.dV().C) {
-            fbx $$0 = this.dy();
+         if (!this.dW().C) {
+            fbx $$0 = this.dz();
             if (this.ca == 1) {
-               float $$1 = this.dL() * (float) (Math.PI / 180.0);
+               float $$1 = this.dM() * (float) (Math.PI / 180.0);
                float $$2 = this.e_() ? 0.1F : 0.2F;
                this.cs = new fbx($$0.d + (double)(-bae.a($$1) * $$2), 0.0, $$0.f + (double)(bae.b($$1) * $$2));
                this.h(this.cs.b(0.0, 0.27, 0.0));
@@ -425,14 +425,14 @@ public class cil extends chw {
       }
    }
 
-   private void gQ() {
-      fbx $$0 = this.dy();
-      dhh $$1 = this.dV();
+   private void gS() {
+      fbx $$0 = this.dz();
+      dhh $$1 = this.dW();
       $$1.a(
          ls.ah,
-         this.dA() - (double)(this.dq() + 1.0F) * 0.5 * (double)bae.a(this.aX * (float) (Math.PI / 180.0)),
-         this.dE() - 0.1F,
-         this.dG() + (double)(this.dq() + 1.0F) * 0.5 * (double)bae.b(this.aX * (float) (Math.PI / 180.0)),
+         this.dB() - (double)(this.dr() + 1.0F) * 0.5 * (double)bae.a(this.aX * (float) (Math.PI / 180.0)),
+         this.dF() - 0.1F,
+         this.dH() + (double)(this.dr() + 1.0F) * 0.5 * (double)bae.b(this.aX * (float) (Math.PI / 180.0)),
          $$0.d,
          0.0,
          $$0.f
@@ -440,12 +440,12 @@ public class cil extends chw {
       this.a(axf.sO, 1.0F, 1.0F);
 
       for (cil $$3 : $$1.a(cil.class, this.cR().g(10.0))) {
-         if (!$$3.e_() && $$3.aJ() && !$$3.bj() && $$3.gI()) {
+         if (!$$3.e_() && $$3.aJ() && !$$3.bj() && $$3.gK()) {
             $$3.s();
          }
       }
 
-      if (this.dV() instanceof ash $$4 && $$4.N().b(dhd.f)) {
+      if (this.dW() instanceof ash $$4 && $$4.N().b(dhd.f)) {
          this.a($$4, ewk.aH, this::a);
       }
    }
@@ -474,7 +474,7 @@ public class cil extends chw {
       bam $$4 = $$0.H_();
       this.a(cil.a.a($$4));
       this.b(cil.a.a($$4));
-      this.gH();
+      this.gJ();
       if ($$3 == null) {
          $$3 = new bva.a(0.2F);
       }
@@ -485,18 +485,18 @@ public class cil extends chw {
    public void a(cil $$0, @Nullable cil $$1) {
       if ($$1 == null) {
          if (this.ae.h()) {
-            this.a($$0.gR());
+            this.a($$0.gT());
             this.b(cil.a.a(this.ae));
          } else {
             this.a(cil.a.a(this.ae));
-            this.b($$0.gR());
+            this.b($$0.gT());
          }
       } else if (this.ae.h()) {
-         this.a($$0.gR());
-         this.b($$1.gR());
+         this.a($$0.gT());
+         this.b($$1.gT());
       } else {
-         this.a($$1.gR());
-         this.b($$0.gR());
+         this.a($$1.gT());
+         this.b($$0.gT());
       }
 
       if (this.ae.a(32) == 0) {
@@ -508,21 +508,21 @@ public class cil extends chw {
       }
    }
 
-   private cil.a gR() {
-      return this.ae.h() ? this.gp() : this.gq();
+   private cil.a gT() {
+      return this.ae.h() ? this.gr() : this.gs();
    }
 
-   public void gH() {
-      if (this.gF()) {
+   public void gJ() {
+      if (this.gH()) {
          this.g(bxn.s).a(10.0);
       }
 
-      if (this.gB()) {
+      if (this.gD()) {
          this.g(bxn.v).a(0.07F);
       }
    }
 
-   void gS() {
+   void gU() {
       if (!this.bj()) {
          this.G(0.0F);
          this.L().o();
@@ -533,9 +533,9 @@ public class cil extends chw {
    @Override
    public bti b(cpw $$0, bth $$1) {
       cxo $$2 = $$0.b($$1);
-      if (this.gG()) {
+      if (this.gI()) {
          return bti.e;
-      } else if (this.gm()) {
+      } else if (this.go()) {
          this.y(false);
          return bti.a;
       } else if (this.j($$2)) {
@@ -546,18 +546,18 @@ public class cil extends chw {
          if (this.e_()) {
             this.a($$0, $$1, $$2);
             this.a((int)((float)(-this.Z_() / 20) * 0.1F), true);
-         } else if (!this.dV().C && this.Z_() == 0 && this.gt()) {
+         } else if (!this.dW().C && this.Z_() == 0 && this.gv()) {
             this.a($$0, $$1, $$2);
             this.f($$0);
          } else {
-            if (!(this.dV() instanceof ash $$3) || this.x() || this.bj()) {
+            if (!(this.dW() instanceof ash $$3) || this.x() || this.bj()) {
                return bti.e;
             }
 
-            this.gS();
+            this.gU();
             this.z(true);
             cxo $$4 = this.a(bvr.a);
-            if (!$$4.f() && !$$0.fT()) {
+            if (!$$4.f() && !$$0.fV()) {
                this.a($$3, $$4);
             }
 
@@ -574,10 +574,10 @@ public class cil extends chw {
    @Nullable
    @Override
    protected axe u() {
-      if (this.gb()) {
+      if (this.gd()) {
          return axf.sU;
       } else {
-         return this.gC() ? axf.sV : axf.sP;
+         return this.gE() ? axf.sV : axf.sP;
       }
    }
 
@@ -603,8 +603,8 @@ public class cil extends chw {
       return axf.sW;
    }
 
-   public boolean gI() {
-      return !this.gm() && !this.gG() && !this.gn() && !this.gy() && !this.x();
+   public boolean gK() {
+      return !this.go() && !this.gI() && !this.gp() && !this.gA() && !this.x();
    }
 
    @Override
@@ -695,7 +695,7 @@ public class cil extends chw {
 
       @Override
       public boolean b() {
-         return this.b.gI() && super.b();
+         return this.b.gK() && super.b();
       }
    }
 
@@ -709,7 +709,7 @@ public class cil extends chw {
 
       @Override
       public boolean b() {
-         return this.i.gC() && this.i.gI() && super.b();
+         return this.i.gE() && this.i.gK() && super.b();
       }
    }
 
@@ -730,7 +730,7 @@ public class cil extends chw {
             if (this.e <= this.d.af) {
                this.d.s(32);
                this.e = this.d.af + 600;
-               if (this.d.dj()) {
+               if (this.d.dk()) {
                   cpw $$0 = this.b.a(cil.ci, this.d);
                   this.d.cz.a($$0);
                }
@@ -743,7 +743,7 @@ public class cil extends chw {
       }
 
       private boolean h() {
-         jh $$0 = this.d.dv();
+         jh $$0 = this.d.dw();
          jh.a $$1 = new jh.a();
 
          for (int $$2 = 0; $$2 < 3; $$2++) {
@@ -783,7 +783,7 @@ public class cil extends chw {
 
       @Override
       protected void a(bwh $$0, bwf $$1) {
-         if ($$0 instanceof cil && $$0.gb()) {
+         if ($$0 instanceof cil && $$0.gd()) {
             $$0.h($$1);
          }
       }
@@ -799,12 +799,12 @@ public class cil extends chw {
 
       @Override
       public boolean b() {
-         return this.b < this.a.af && this.a.gB() && this.a.gI() && this.a.ae.a(b(400)) == 1;
+         return this.b < this.a.af && this.a.gD() && this.a.gK() && this.a.ae.a(b(400)) == 1;
       }
 
       @Override
       public boolean c() {
-         return !this.a.bj() && (this.a.gB() || this.a.ae.a(b(600)) != 1) ? this.a.ae.a(b(2000)) != 1 : false;
+         return !this.a.bj() && (this.a.gD() || this.a.ae.a(b(600)) != 1) ? this.a.ae.a(b(2000)) != 1 : false;
       }
 
       @Override
@@ -839,26 +839,26 @@ public class cil extends chw {
 
       @Override
       public boolean b() {
-         if (this.b.dY().i() >= this.e) {
+         if (this.b.dZ().i() >= this.e) {
             return false;
          } else {
             if (this.c == null) {
                ash $$0 = a(this.b);
                if (this.f == cpw.class) {
-                  this.c = $$0.a(this.g, this.b, this.b.dA(), this.b.dE(), this.b.dG());
+                  this.c = $$0.a(this.g, this.b, this.b.dB(), this.b.dF(), this.b.dH());
                } else {
                   this.c = $$0.a(
-                     this.b.dV().a(this.f, this.b.cR().c((double)this.d, 3.0, (double)this.d), $$0x -> true),
+                     this.b.dW().a(this.f, this.b.cR().c((double)this.d, 3.0, (double)this.d), $$0x -> true),
                      this.g,
                      this.b,
-                     this.b.dA(),
-                     this.b.dE(),
-                     this.b.dG()
+                     this.b.dB(),
+                     this.b.dF(),
+                     this.b.dH()
                   );
                }
             }
 
-            return this.h.gI() && this.c != null;
+            return this.h.gK() && this.c != null;
          }
       }
 
@@ -880,7 +880,7 @@ public class cil extends chw {
 
       @Override
       public void a() {
-         if (this.l.gI()) {
+         if (this.l.gK()) {
             super.a();
          }
       }
@@ -915,19 +915,19 @@ public class cil extends chw {
 
       @Override
       public boolean b() {
-         if ((this.a.e_() || this.a.gD()) && this.a.aJ()) {
-            if (!this.a.gI()) {
+         if ((this.a.e_() || this.a.gF()) && this.a.aJ()) {
+            if (!this.a.gK()) {
                return false;
             } else {
-               float $$0 = this.a.dL() * (float) (Math.PI / 180.0);
+               float $$0 = this.a.dM() * (float) (Math.PI / 180.0);
                float $$1 = -bae.a($$0);
                float $$2 = bae.b($$0);
                int $$3 = (double)Math.abs($$1) > 0.5 ? bae.j((double)$$1) : 0;
                int $$4 = (double)Math.abs($$2) > 0.5 ? bae.j((double)$$2) : 0;
-               if (this.a.dV().a_(this.a.dv().b($$3, -1, $$4)).l()) {
+               if (this.a.dW().a_(this.a.dw().b($$3, -1, $$4)).l()) {
                   return true;
                } else {
-                  return this.a.gD() && this.a.ae.a(b(60)) == 1 ? true : this.a.ae.a(b(500)) == 1;
+                  return this.a.gF() && this.a.ae.a(b(60)) == 1 ? true : this.a.ae.a(b(500)) == 1;
                }
             }
          } else {
@@ -960,34 +960,34 @@ public class cil extends chw {
 
       @Override
       public boolean b() {
-         if (this.b > cil.this.af || cil.this.e_() || cil.this.bj() || !cil.this.gI() || cil.this.p() > 0) {
+         if (this.b > cil.this.af || cil.this.e_() || cil.this.bj() || !cil.this.gK() || cil.this.p() > 0) {
             return false;
          } else {
-            return !cil.this.a(bvr.a).f() ? true : !cil.this.dV().a(cma.class, cil.this.cR().c(6.0, 6.0, 6.0), cil::b).isEmpty();
+            return !cil.this.a(bvr.a).f() ? true : !cil.this.dW().a(cma.class, cil.this.cR().c(6.0, 6.0, 6.0), cil::b).isEmpty();
          }
       }
 
       @Override
       public boolean c() {
-         return !cil.this.bj() && (cil.this.gB() || cil.this.ae.a(b(600)) != 1) ? cil.this.ae.a(b(2000)) != 1 : false;
+         return !cil.this.bj() && (cil.this.gD() || cil.this.ae.a(b(600)) != 1) ? cil.this.ae.a(b(2000)) != 1 : false;
       }
 
       @Override
       public void a() {
          if (!cil.this.x() && !cil.this.a(bvr.a).f()) {
-            cil.this.gS();
+            cil.this.gU();
          }
       }
 
       @Override
       public void d() {
          if (cil.this.a(bvr.a).f()) {
-            List<cma> $$0 = cil.this.dV().a(cma.class, cil.this.cR().c(8.0, 8.0, 8.0), cil::b);
+            List<cma> $$0 = cil.this.dW().a(cma.class, cil.this.cR().c(8.0, 8.0, 8.0), cil::b);
             if (!$$0.isEmpty()) {
                cil.this.L().a($$0.getFirst(), 1.2F);
             }
          } else {
-            cil.this.gS();
+            cil.this.gU();
          }
 
          this.b = 0;
@@ -997,9 +997,9 @@ public class cil extends chw {
       public void e() {
          cxo $$0 = cil.this.a(bvr.a);
          if (!$$0.f()) {
-            cil.this.a(a(cil.this.dV()), $$0);
-            cil.this.a(bvr.a, cxo.k);
-            int $$1 = cil.this.gB() ? cil.this.ae.a(50) + 10 : cil.this.ae.a(150) + 10;
+            cil.this.a(a(cil.this.dW()), $$0);
+            cil.this.a(bvr.a, cxo.j);
+            int $$1 = cil.this.gD() ? cil.this.ae.a(50) + 10 : cil.this.ae.a(150) + 10;
             this.b = cil.this.af + $$1 * 20;
          }
 
@@ -1016,8 +1016,8 @@ public class cil extends chw {
 
       @Override
       public boolean b() {
-         if (this.a.e_() && this.a.gI()) {
-            return this.a.gF() && this.a.ae.a(b(500)) == 1 ? true : this.a.ae.a(b(6000)) == 1;
+         if (this.a.e_() && this.a.gK()) {
+            return this.a.gH() && this.a.ae.a(b(500)) == 1 ? true : this.a.ae.a(b(6000)) == 1;
          } else {
             return false;
          }

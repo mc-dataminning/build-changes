@@ -19,7 +19,7 @@ public class ckz extends ckv {
 
    @Override
    public void a(ash $$0) {
-      double $$1 = this.d == null ? 0.0 : this.d.c(this.a.dA(), this.a.dC(), this.a.dG());
+      double $$1 = this.d == null ? 0.0 : this.d.c(this.a.dB(), this.a.dD(), this.a.dH());
       if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
          this.b($$0);
       }
@@ -40,21 +40,21 @@ public class ckz extends ckv {
    private void b(ash $$0) {
       if (this.c != null && this.c.c()) {
          jh $$1 = $$0.a(edp.a.f, egu.a(this.a.m()));
-         int $$2 = this.a.gj() == null ? 0 : this.a.gj().e();
-         if (this.a.dY().a($$2 + 3) == 0) {
-            this.a.gi().a(clj.c);
+         int $$2 = this.a.gl() == null ? 0 : this.a.gl().e();
+         if (this.a.dZ().a($$2 + 3) == 0) {
+            this.a.gk().a(clj.c);
             return;
          }
 
          cpw $$3 = $$0.a(b, this.a, (double)$$1.u(), (double)$$1.v(), (double)$$1.w());
          double $$4;
          if ($$3 != null) {
-            $$4 = $$1.b($$3.dt()) / 512.0;
+            $$4 = $$1.b($$3.du()) / 512.0;
          } else {
             $$4 = 64.0;
          }
 
-         if ($$3 != null && (this.a.dY().a((int)($$4 + 2.0)) == 0 || this.a.dY().a($$2 + 2) == 0)) {
+         if ($$3 != null && (this.a.dZ().a((int)($$4 + 2.0)) == 0 || this.a.dZ().a($$2 + 2) == 0)) {
             this.a($$3);
             return;
          }
@@ -63,7 +63,7 @@ public class ckz extends ckv {
       if (this.c == null || this.c.c()) {
          int $$6 = this.a.t();
          int $$7 = $$6;
-         if (this.a.dY().a(8) == 0) {
+         if (this.a.dZ().a(8) == 0) {
             this.e = !this.e;
             $$7 = $$6 + 6;
          }
@@ -74,7 +74,7 @@ public class ckz extends ckv {
             $$7--;
          }
 
-         if (this.a.gj() != null && this.a.gj().e() >= 0) {
+         if (this.a.gl() != null && this.a.gl().e() >= 0) {
             $$7 %= 12;
             if ($$7 < 0) {
                $$7 += 12;
@@ -95,8 +95,8 @@ public class ckz extends ckv {
    }
 
    private void a(cpw $$0) {
-      this.a.gi().a(clj.b);
-      this.a.gi().b(clj.b).a($$0);
+      this.a.gk().a(clj.b);
+      this.a.gk().b(clj.b).a($$0);
    }
 
    private void i() {
@@ -108,7 +108,7 @@ public class ckz extends ckv {
 
          double $$3;
          do {
-            $$3 = (double)((float)$$0.v() + this.a.dY().i() * 20.0F);
+            $$3 = (double)((float)$$0.v() + this.a.dZ().i() * 20.0F);
          } while ($$3 < (double)$$0.v());
 
          this.d = new fbx($$1, $$3, $$2);

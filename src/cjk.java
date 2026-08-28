@@ -10,11 +10,11 @@ public class cjk extends bxy<cji> {
    }
 
    protected boolean a(ash $$0, cji $$1, long $$2) {
-      return $$1.bm() && $$1.eb().a(cfj.N);
+      return $$1.bm() && $$1.ec().a(cfj.N);
    }
 
    protected void b(ash $$0, cji $$1, long $$2) {
-      bxh<cji> $$3 = $$1.eb();
+      bxh<cji> $$3 = $$1.ec();
       $$3.b(cfj.m);
       $$3.b(cfj.n);
       $$1.a(new buo(buq.j, 200, 0));

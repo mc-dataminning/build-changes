@@ -1,32 +1,30 @@
-public class gdc extends gbk<gzm> {
-   private static final String a = "main";
-   private final gem b;
+public class gdc extends gcg {
+   private static final String a = "plate";
+   private static final String b = "handle";
+   private static final int c = 10;
+   private static final int d = 20;
+   private final gen e;
+   private final gen f;
 
-   public gdc(gem $$0) {
-      super($$0);
-      this.b = $$0.b("main");
+   public gdc(gen $$0) {
+      super($$0, glu::d);
+      this.e = $$0.b("plate");
+      this.f = $$0.b("handle");
    }
 
-   public static ges a() {
-      geu $$0 = new geu();
-      gew $$1 = $$0.a();
-      $$1.a(
-         "main",
-         ger.c()
-            .a(0, 0)
-            .a(-4.0F, -4.0F, -1.0F, 8.0F, 8.0F, 2.0F)
-            .a(0, 10)
-            .a(-1.0F, -4.0F, -4.0F, 2.0F, 8.0F, 8.0F)
-            .a(20, 0)
-            .a(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F),
-         geo.a
-      );
-      return ges.a($$0, 64, 32);
+   public static get a() {
+      gev $$0 = new gev();
+      gex $$1 = $$0.a();
+      $$1.a("plate", ges.c().a(0, 0).a(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), gep.a);
+      $$1.a("handle", ges.c().a(26, 0).a(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), gep.a);
+      return get.a($$0, 64, 64);
    }
 
-   public void a(gzm $$0) {
-      super.a($$0);
-      this.b.f = $$0.b * (float) (Math.PI / 180.0);
-      this.b.e = $$0.a * (float) (Math.PI / 180.0);
+   public gen b() {
+      return this.e;
+   }
+
+   public gen c() {
+      return this.f;
    }
 }

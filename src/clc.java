@@ -12,17 +12,17 @@ public class clc extends ckv {
    public void b() {
       fbx $$0 = this.a.J(1.0F).d();
       $$0.b((float) (-Math.PI / 4));
-      double $$1 = this.a.c.dA();
+      double $$1 = this.a.c.dB();
       double $$2 = this.a.c.e(0.5);
-      double $$3 = this.a.c.dG();
+      double $$3 = this.a.c.dH();
 
       for (int $$4 = 0; $$4 < 8; $$4++) {
-         bam $$5 = this.a.dY();
+         bam $$5 = this.a.dZ();
          double $$6 = $$1 + $$5.k() / 2.0;
          double $$7 = $$2 + $$5.k() / 2.0;
          double $$8 = $$3 + $$5.k() / 2.0;
-         fbx $$9 = this.a.dy();
-         this.a.dV().a(ls.h, $$6, $$7, $$8, -$$0.d * 0.08F + $$9.d, -$$0.e * 0.3F + $$9.e, -$$0.f * 0.08F + $$9.f);
+         fbx $$9 = this.a.dz();
+         this.a.dW().a(ls.h, $$6, $$7, $$8, -$$0.d * 0.08F + $$9.d, -$$0.e * 0.3F + $$9.e, -$$0.f * 0.08F + $$9.f);
          $$0.b((float) (Math.PI / 16));
       }
    }
@@ -33,9 +33,9 @@ public class clc extends ckv {
          this.b = fbx.c($$0.a(edp.a.f, egu.a(this.a.m())));
       }
 
-      if (this.b.c(this.a.dA(), this.a.dC(), this.a.dG()) < 1.0) {
-         this.a.gi().b(clj.f).i();
-         this.a.gi().a(clj.g);
+      if (this.b.c(this.a.dB(), this.a.dD(), this.a.dH()) < 1.0) {
+         this.a.gk().b(clj.f).i();
+         this.a.gk().a(clj.g);
       }
    }
 
@@ -46,7 +46,7 @@ public class clc extends ckv {
 
    @Override
    public float g() {
-      float $$0 = (float)this.a.dy().i() + 1.0F;
+      float $$0 = (float)this.a.dz().i() + 1.0F;
       float $$1 = Math.min($$0, 40.0F);
       return $$1 / $$0;
    }

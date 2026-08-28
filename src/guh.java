@@ -1,27 +1,52 @@
-public class guh extends gqi<cix, gzz, gdt> {
-   private static final alz a = alz.b("textures/entity/turtle/big_sea_turtle.png");
+public class guh extends gsv<ciw, gzz, gbl<gzz>> {
+   private final gbl<gzz> a = this.c();
+   private final gbl<gzz> b;
+   private static final alz k = alz.b("textures/entity/fish/tropical_a.png");
+   private static final alz l = alz.b("textures/entity/fish/tropical_b.png");
 
-   public guh(gro.a $$0) {
-      super($$0, new gdt($$0.a(gel.dl)), new gdt($$0.a(gel.dm)), 0.7F);
+   public guh(grp.a $$0) {
+      super($$0, new gds($$0.a(gem.dj)), 0.15F);
+      this.b = new gdt($$0.a(gem.dh));
+      this.a(new gwn(this, $$0.f()));
    }
 
-   protected float a(gzz $$0) {
-      float $$1 = super.g($$0);
-      return $$0.ae ? $$1 * 0.83F : $$1;
+   public alz a(gzz $$0) {
+      return switch ($$0.a.a()) {
+         case a -> k;
+         case b -> l;
+      };
    }
 
    public gzz b() {
       return new gzz();
    }
 
-   public void a(cix $$0, gzz $$1, float $$2) {
+   public void a(ciw $$0, gzz $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = !$$0.bj() && $$0.aJ();
-      $$1.b = $$0.t();
-      $$1.c = !$$0.e_() && $$0.p();
+      $$1.a = $$0.gy();
+      $$1.b = $$0.gw().d();
+      $$1.c = $$0.gx().d();
    }
 
-   public alz b(gzz $$0) {
-      return a;
+   public void a(gzz $$0, fgr $$1, glk $$2, int $$3) {
+      this.h = switch ($$0.a.a()) {
+         case a -> this.a;
+         case b -> this.b;
+      };
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected int b(gzz $$0) {
+      return $$0.b;
+   }
+
+   protected void a(gzz $$0, fgr $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      float $$4 = 4.3F * bae.a(0.6F * $$0.p);
+      $$1.a(a.d.rotationDegrees($$4));
+      if (!$$0.af) {
+         $$1.a(0.2F, 0.1F, 0.0F);
+         $$1.a(a.f.rotationDegrees(90.0F));
+      }
    }
 }

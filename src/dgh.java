@@ -167,7 +167,7 @@ public abstract class dgh implements ev {
    }
 
    public bti a(cpw $$0) {
-      if (!$$0.gE()) {
+      if (!$$0.gG()) {
          return bti.e;
       } else {
          if ($$0.cU().C) {

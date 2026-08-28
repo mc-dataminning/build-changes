@@ -26,7 +26,7 @@ public class cmf extends cmw {
    }
 
    public static bxm.a m() {
-      return cmw.gr().a(bxn.c, 6.0).a(bxn.v, 0.23F).a(bxn.m, 48.0);
+      return cmw.gt().a(bxn.c, 6.0).a(bxn.v, 0.23F).a(bxn.m, 48.0);
    }
 
    @Override
@@ -57,17 +57,17 @@ public class cmf extends cmw {
 
    @Override
    public void d_() {
-      if (!this.aJ() && this.dy().e < 0.0) {
-         this.h(this.dy().d(1.0, 0.6, 1.0));
+      if (!this.aJ() && this.dz().e < 0.0) {
+         this.h(this.dz().d(1.0, 0.6, 1.0));
       }
 
-      if (this.dV().C) {
+      if (this.dW().C) {
          if (this.ae.a(24) == 0 && !this.bb()) {
-            this.dV().a(this.dA() + 0.5, this.dC() + 0.5, this.dG() + 0.5, axf.ch, this.dm(), 1.0F + this.ae.i(), this.ae.i() * 0.7F + 0.3F, false);
+            this.dW().a(this.dB() + 0.5, this.dD() + 0.5, this.dH() + 0.5, axf.ch, this.dn(), 1.0F + this.ae.i(), this.ae.i() * 0.7F + 0.3F, false);
          }
 
          for (int $$0 = 0; $$0 < 2; $$0++) {
-            this.dV().a(ls.Y, this.d(0.5), this.dD(), this.g(0.5), 0.0, 0.0, 0.0);
+            this.dW().a(ls.Y, this.d(0.5), this.dE(), this.g(0.5), 0.0, 0.0, 0.0);
          }
       }
 
@@ -75,7 +75,7 @@ public class cmf extends cmw {
    }
 
    @Override
-   public boolean fp() {
+   public boolean fr() {
       return true;
    }
 
@@ -88,9 +88,9 @@ public class cmf extends cmw {
       }
 
       bwf $$1 = this.O_();
-      if ($$1 != null && $$1.dE() > this.dE() + (double)this.a && this.c($$1)) {
-         fbx $$2 = this.dy();
-         this.h(this.dy().b(0.0, (0.3F - $$2.e) * 0.3F, 0.0));
+      if ($$1 != null && $$1.dF() > this.dF() + (double)this.a && this.c($$1)) {
+         fbx $$2 = this.dz();
+         this.h(this.dz().b(0.0, (0.3F - $$2.e) * 0.3F, 0.0));
          this.ar = true;
       }
 
@@ -173,11 +173,11 @@ public class cmf extends cmw {
                   this.a.c(a(this.a), $$0);
                }
 
-               this.a.I().a($$0.dA(), $$0.dC(), $$0.dG(), 1.0);
+               this.a.I().a($$0.dB(), $$0.dD(), $$0.dH(), 1.0);
             } else if ($$2 < this.h() * this.h() && $$1) {
-               double $$3 = $$0.dA() - this.a.dA();
+               double $$3 = $$0.dB() - this.a.dB();
                double $$4 = $$0.e(0.5) - this.a.e(0.5);
-               double $$5 = $$0.dG() - this.a.dG();
+               double $$5 = $$0.dH() - this.a.dH();
                if (this.c <= 0) {
                   this.b++;
                   if (this.b == 1) {
@@ -194,21 +194,21 @@ public class cmf extends cmw {
                   if (this.b > 1) {
                      double $$6 = Math.sqrt(Math.sqrt($$2)) * 0.5;
                      if (!this.a.bb()) {
-                        this.a.dV().a(null, 1018, this.a.dv(), 0);
+                        this.a.dW().a(null, 1018, this.a.dw(), 0);
                      }
 
                      for (int $$7 = 0; $$7 < 1; $$7++) {
-                        fbx $$8 = new fbx(this.a.dY().a($$3, 2.297 * $$6), $$4, this.a.dY().a($$5, 2.297 * $$6));
-                        cqt $$9 = new cqt(this.a.dV(), this.a, $$8.d());
-                        $$9.a_($$9.dA(), this.a.e(0.5) + 0.5, $$9.dG());
-                        this.a.dV().b($$9);
+                        fbx $$8 = new fbx(this.a.dZ().a($$3, 2.297 * $$6), $$4, this.a.dZ().a($$5, 2.297 * $$6));
+                        cqt $$9 = new cqt(this.a.dW(), this.a, $$8.d());
+                        $$9.a_($$9.dB(), this.a.e(0.5) + 0.5, $$9.dH());
+                        this.a.dW().b($$9);
                      }
                   }
                }
 
                this.a.H().a($$0, 10.0F, 10.0F);
             } else if (this.d < 5) {
-               this.a.I().a($$0.dA(), $$0.dC(), $$0.dG(), 1.0);
+               this.a.I().a($$0.dB(), $$0.dD(), $$0.dH(), 1.0);
             }
 
             super.a();

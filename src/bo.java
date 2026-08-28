@@ -9,7 +9,7 @@ public class bo extends dy<bo.a> {
    }
 
    public void a(asi $$0, fbx $$1) {
-      fbx $$2 = $$0.dt();
+      fbx $$2 = $$0.du();
       this.a($$0, $$3 -> $$3.a($$0.y(), $$1, $$2));
    }
 

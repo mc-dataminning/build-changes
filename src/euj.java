@@ -17,9 +17,9 @@ public abstract class euj {
       this.b = new eup($$0, $$1);
       this.c = $$1;
       this.d.clear();
-      this.e = bae.d($$1.dq() + 1.0F);
-      this.f = bae.d($$1.dr() + 1.0F);
-      this.g = bae.d($$1.dq() + 1.0F);
+      this.e = bae.d($$1.dr() + 1.0F);
+      this.f = bae.d($$1.ds() + 1.0F);
+      this.g = bae.d($$1.dr() + 1.0F);
    }
 
    public void b() {
@@ -50,7 +50,7 @@ public abstract class euj {
    public abstract eun a(eup var1, int var2, int var3, int var4);
 
    public eun a(bwh $$0, jh $$1) {
-      return this.a(new eup($$0.dV(), $$0), $$1.u(), $$1.v(), $$1.w());
+      return this.a(new eup($$0.dW(), $$0), $$1.u(), $$1.v(), $$1.w());
    }
 
    public void a(boolean $$0) {

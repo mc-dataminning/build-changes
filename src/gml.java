@@ -1,61 +1,115 @@
-import java.util.Map;
-import java.util.Map.Entry;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
 
 public class gml {
-   private Map<dxu, hdl> a = Map.of();
-   private final hdy b;
+   private static final alz a = alz.b("textures/misc/forcefield.png");
 
-   public gml(hdy $$0) {
-      this.b = $$0;
-   }
+   public void a(dzk $$0, fbx $$1, double $$2, double $$3) {
+      double $$4 = $$0.e();
+      double $$5 = $$0.g();
+      double $$6 = $$0.f();
+      double $$7 = $$0.h();
+      if (!($$1.d < $$5 - $$2) || !($$1.d > $$4 + $$2) || !($$1.f < $$7 - $$2) || !($$1.f > $$6 + $$2)) {
+         double $$8 = 1.0 - $$0.b($$1.d, $$1.f) / $$2;
+         $$8 = Math.pow($$8, 4.0);
+         $$8 = bae.a($$8, 0.0, 1.0);
+         double $$9 = $$1.d;
+         double $$10 = $$1.f;
+         float $$11 = (float)$$3;
+         RenderSystem.enableBlend();
+         RenderSystem.enableDepthTest();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
+         );
+         RenderSystem.setShaderTexture(0, a);
+         RenderSystem.depthMask(fmf.O());
+         int $$12 = $$0.d().a();
+         float $$13 = (float)ayp.b($$12) / 255.0F;
+         float $$14 = (float)ayp.c($$12) / 255.0F;
+         float $$15 = (float)ayp.d($$12) / 255.0F;
+         RenderSystem.setShaderColor($$13, $$14, $$15, (float)$$8);
+         RenderSystem.setShader(gku.h);
+         RenderSystem.polygonOffset(-3.0F, -3.0F);
+         RenderSystem.enablePolygonOffset();
+         RenderSystem.disableCull();
+         float $$16 = (float)(ae.c() % 3000L) / 3000.0F;
+         float $$17 = (float)(-bae.e($$1.e * 0.5));
+         float $$18 = $$17 + $$11;
+         fgm $$19 = fgt.b().a(fgw.c.h, fgp.i);
+         double $$20 = Math.max((double)bae.a($$10 - $$2), $$6);
+         double $$21 = Math.min((double)bae.c($$10 + $$2), $$7);
+         float $$22 = (float)(bae.a($$20) & 1) * 0.5F;
+         if ($$9 > $$5 - $$2) {
+            float $$23 = $$22;
 
-   public hbj a(dxu $$0) {
-      return this.b($$0).e();
-   }
-
-   public hdl b(dxu $$0) {
-      hdl $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         $$1 = this.b.a();
-      }
-
-      return $$1;
-   }
-
-   public hdy a() {
-      return this.b;
-   }
-
-   public void a(Map<dxu, hdl> $$0) {
-      this.a = $$0;
-   }
-
-   public static hdz c(dxu $$0) {
-      return a(ma.e.b($$0.b()), $$0);
-   }
-
-   public static hdz a(alz $$0, dxu $$1) {
-      return new hdz($$0, b($$1.G()));
-   }
-
-   public static String b(Map<dyw<?>, Comparable<?>> $$0) {
-      StringBuilder $$1 = new StringBuilder();
-
-      for (Entry<dyw<?>, Comparable<?>> $$2 : $$0.entrySet()) {
-         if ($$1.length() != 0) {
-            $$1.append(',');
+            for (double $$24 = $$20; $$24 < $$21; $$23 += 0.5F) {
+               double $$25 = Math.min(1.0, $$21 - $$24);
+               float $$26 = (float)$$25 * 0.5F;
+               $$19.a((float)($$5 - $$9), -$$11, (float)($$24 - $$10)).a($$16 - $$23, $$16 + $$18);
+               $$19.a((float)($$5 - $$9), -$$11, (float)($$24 + $$25 - $$10)).a($$16 - ($$26 + $$23), $$16 + $$18);
+               $$19.a((float)($$5 - $$9), $$11, (float)($$24 + $$25 - $$10)).a($$16 - ($$26 + $$23), $$16 + $$17);
+               $$19.a((float)($$5 - $$9), $$11, (float)($$24 - $$10)).a($$16 - $$23, $$16 + $$17);
+               $$24++;
+            }
          }
 
-         dyw<?> $$3 = $$2.getKey();
-         $$1.append($$3.f());
-         $$1.append('=');
-         $$1.append(a($$3, $$2.getValue()));
+         if ($$9 < $$4 + $$2) {
+            float $$27 = $$22;
+
+            for (double $$28 = $$20; $$28 < $$21; $$27 += 0.5F) {
+               double $$29 = Math.min(1.0, $$21 - $$28);
+               float $$30 = (float)$$29 * 0.5F;
+               $$19.a((float)($$4 - $$9), -$$11, (float)($$28 - $$10)).a($$16 + $$27, $$16 + $$18);
+               $$19.a((float)($$4 - $$9), -$$11, (float)($$28 + $$29 - $$10)).a($$16 + $$30 + $$27, $$16 + $$18);
+               $$19.a((float)($$4 - $$9), $$11, (float)($$28 + $$29 - $$10)).a($$16 + $$30 + $$27, $$16 + $$17);
+               $$19.a((float)($$4 - $$9), $$11, (float)($$28 - $$10)).a($$16 + $$27, $$16 + $$17);
+               $$28++;
+            }
+         }
+
+         $$20 = Math.max((double)bae.a($$9 - $$2), $$4);
+         $$21 = Math.min((double)bae.c($$9 + $$2), $$5);
+         $$22 = (float)(bae.a($$20) & 1) * 0.5F;
+         if ($$10 > $$7 - $$2) {
+            float $$31 = $$22;
+
+            for (double $$32 = $$20; $$32 < $$21; $$31 += 0.5F) {
+               double $$33 = Math.min(1.0, $$21 - $$32);
+               float $$34 = (float)$$33 * 0.5F;
+               $$19.a((float)($$32 - $$9), -$$11, (float)($$7 - $$10)).a($$16 + $$31, $$16 + $$18);
+               $$19.a((float)($$32 + $$33 - $$9), -$$11, (float)($$7 - $$10)).a($$16 + $$34 + $$31, $$16 + $$18);
+               $$19.a((float)($$32 + $$33 - $$9), $$11, (float)($$7 - $$10)).a($$16 + $$34 + $$31, $$16 + $$17);
+               $$19.a((float)($$32 - $$9), $$11, (float)($$7 - $$10)).a($$16 + $$31, $$16 + $$17);
+               $$32++;
+            }
+         }
+
+         if ($$10 < $$6 + $$2) {
+            float $$35 = $$22;
+
+            for (double $$36 = $$20; $$36 < $$21; $$35 += 0.5F) {
+               double $$37 = Math.min(1.0, $$21 - $$36);
+               float $$38 = (float)$$37 * 0.5F;
+               $$19.a((float)($$36 - $$9), -$$11, (float)($$6 - $$10)).a($$16 - $$35, $$16 + $$18);
+               $$19.a((float)($$36 + $$37 - $$9), -$$11, (float)($$6 - $$10)).a($$16 - ($$38 + $$35), $$16 + $$18);
+               $$19.a((float)($$36 + $$37 - $$9), $$11, (float)($$6 - $$10)).a($$16 - ($$38 + $$35), $$16 + $$17);
+               $$19.a((float)($$36 - $$9), $$11, (float)($$6 - $$10)).a($$16 - $$35, $$16 + $$17);
+               $$36++;
+            }
+         }
+
+         fgq $$39 = $$19.a();
+         if ($$39 != null) {
+            fgn.a($$39);
+         }
+
+         RenderSystem.enableCull();
+         RenderSystem.polygonOffset(0.0F, 0.0F);
+         RenderSystem.disablePolygonOffset();
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+         RenderSystem.depthMask(true);
       }
-
-      return $$1.toString();
-   }
-
-   private static <T extends Comparable<T>> String a(dyw<T> $$0, Comparable<?> $$1) {
-      return $$0.b((T)$$1);
    }
 }

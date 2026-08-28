@@ -35,8 +35,8 @@ public class cnn extends cme {
    @Override
    protected void a(ash $$0, btz $$1, boolean $$2) {
       super.a($$0, $$1, $$2);
-      if ($$1.d() instanceof cmi $$4 && $$4.gn()) {
-         $$4.go();
+      if ($$1.d() instanceof cmi $$4 && $$4.gp()) {
+         $$4.gq();
          this.a($$0, cxs.vc);
       }
    }

@@ -26,8 +26,8 @@ public class bvv extends bvj {
    }
 
    @Override
-   protected bvj.b bg() {
-      return bvj.b.a;
+   protected bvj.c bg() {
+      return bvj.c.a;
    }
 
    @Override
@@ -42,50 +42,50 @@ public class bvv extends bvj {
    @Override
    public void h() {
       super.h();
-      this.K = this.dA();
-      this.L = this.dC();
-      this.M = this.dG();
+      this.K = this.dB();
+      this.L = this.dD();
+      this.M = this.dH();
       if (this.a(aya.a)) {
          this.s();
       } else {
          this.bf();
       }
 
-      if (this.dV().b_(this.dv()).a(aya.b)) {
+      if (this.dW().b_(this.dw()).a(aya.b)) {
          this.n((double)((this.ae.i() - this.ae.i()) * 0.2F), 0.2F, (double)((this.ae.i() - this.ae.i()) * 0.2F));
       }
 
-      if (!this.dV().b(this.cR())) {
-         this.m(this.dA(), (this.cR().b + this.cR().e) / 2.0, this.dG());
+      if (!this.dW().b(this.cR())) {
+         this.m(this.dB(), (this.cR().b + this.cR().e) / 2.0, this.dH());
       }
 
       if (this.af % 20 == 1) {
          this.p();
       }
 
-      if (this.j != null && (this.j.aa_() || this.j.eE())) {
+      if (this.j != null && (this.j.aa_() || this.j.eF())) {
          this.j = null;
       }
 
       if (this.j != null) {
-         fbx $$0 = new fbx(this.j.dA() - this.dA(), this.j.dC() + (double)this.j.cS() / 2.0 - this.dC(), this.j.dG() - this.dG());
+         fbx $$0 = new fbx(this.j.dB() - this.dB(), this.j.dD() + (double)this.j.cS() / 2.0 - this.dD(), this.j.dH() - this.dH());
          double $$1 = $$0.h();
          if ($$1 < 64.0) {
             double $$2 = 1.0 - Math.sqrt($$1) / 8.0;
-            this.h(this.dy().e($$0.d().c($$2 * $$2 * 0.1)));
+            this.h(this.dz().e($$0.d().c($$2 * $$2 * 0.1)));
          }
       }
 
-      this.a(bwj.a, this.dy());
+      this.a(bwj.a, this.dz());
       this.aK();
       float $$3 = 0.98F;
       if (this.aJ()) {
-         $$3 = this.dV().a_(this.aQ()).b().g() * 0.98F;
+         $$3 = this.dW().a_(this.aQ()).b().g() * 0.98F;
       }
 
-      this.h(this.dy().d((double)$$3, 0.98, (double)$$3));
+      this.h(this.dz().d((double)$$3, 0.98, (double)$$3));
       if (this.aJ()) {
-         this.h(this.dy().d(1.0, -0.9, 1.0));
+         this.h(this.dz().d(1.0, -0.9, 1.0));
       }
 
       this.f++;
@@ -101,11 +101,11 @@ public class bvv extends bvj {
 
    private void p() {
       if (this.j == null || this.j.g(this) > 64.0) {
-         this.j = this.dV().a(this, 8.0);
+         this.j = this.dW().a(this, 8.0);
       }
 
-      if (this.dV() instanceof ash) {
-         for (bvv $$1 : this.dV().a(ece.a(bvv.class), this.cR().g(0.5), this::a)) {
+      if (this.dW() instanceof ash) {
+         for (bvv $$1 : this.dW().a(ece.a(bvv.class), this.cR().g(0.5), this::a)) {
             this.b($$1);
          }
       }
@@ -140,7 +140,7 @@ public class bvv extends bvj {
    }
 
    private static boolean a(bvv $$0, int $$1, int $$2) {
-      return !$$0.dQ() && ($$0.ar() - $$1) % 40 == 0 && $$0.h == $$2;
+      return !$$0.dR() && ($$0.ar() - $$1) % 40 == 0 && $$0.h == $$2;
    }
 
    private void b(bvv $$0) {
@@ -150,7 +150,7 @@ public class bvv extends bvj {
    }
 
    private void s() {
-      fbx $$0 = this.dy();
+      fbx $$0 = this.dz();
       this.n($$0.d * 0.99F, Math.min($$0.e + 5.0E-4F, 0.06F), $$0.f * 0.99F);
    }
 
@@ -296,7 +296,7 @@ public class bvv extends bvj {
    }
 
    @Override
-   public axg dm() {
+   public axg dn() {
       return axg.i;
    }
 }

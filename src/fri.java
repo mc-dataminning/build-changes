@@ -1,28 +1,34 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
 
-public enum fri implements bba {
-   a("bitmap", frf.a.a),
-   b("ttf", frk.a),
-   c("space", fer.a.a),
-   d("unihex", frl.b.a),
-   e("reference", frj.a);
+public interface fri {
+   MapCodec<fri> b = frj.f.dispatchMap(fri::a, frj::a);
 
-   public static final Codec<fri> f = bba.a(fri::values);
-   private final String g;
-   private final MapCodec<? extends frh> h;
+   frj a();
 
-   private fri(final String $$0, final MapCodec<? extends frh> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   Either<fri.b, fri.c> b();
+
+   public static record a(fri b, fqw.a c) {
+      public static final Codec<fri.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(fri.b.forGetter(fri.a::a), fqw.a.a.optionalFieldOf("filter", fqw.a.b).forGetter(fri.a::b)).apply($$0, fri.a::new)
+      );
+
+      public fri a() {
+         return this.b;
+      }
+
+      public fqw.a b() {
+         return this.c;
+      }
    }
 
-   @Override
-   public String c() {
-      return this.g;
+   public interface b {
+      feq load(avv var1) throws IOException;
    }
 
-   public MapCodec<? extends frh> a() {
-      return this.h;
+   public static record c(alz a) {
    }
 }

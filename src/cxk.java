@@ -1,6 +1,8 @@
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -9,19 +11,22 @@ import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public class cxk implements csp, dhg {
+   public static final Codec<jq<cxk>> e = ma.g
+      .r()
+      .validate($$0 -> $$0.a(cxs.a.f()) ? DataResult.error(() -> "Item must not be minecraft:air") : DataResult.success($$0));
    private static final Logger a = LogUtils.getLogger();
-   public static final Map<dkl, cxk> e = Maps.newHashMap();
-   public static final alz f = alz.b("base_attack_damage");
-   public static final alz g = alz.b("base_attack_speed");
-   public static final int h = 64;
-   public static final int i = 99;
-   public static final int j = 13;
+   public static final Map<dkl, cxk> f = Maps.newHashMap();
+   public static final alz g = alz.b("base_attack_damage");
+   public static final alz h = alz.b("base_attack_speed");
+   public static final int i = 64;
+   public static final int j = 99;
+   public static final int k = 13;
    private final jq.c<cxk> b = ma.g.f(this);
    private final kq c;
    @Nullable
    private final cxk d;
-   protected final String k;
-   private final css l;
+   protected final String l;
+   private final css m;
 
    public static int a(cxk $$0) {
       return $$0 == null ? 0 : ma.g.a($$0);
@@ -33,14 +38,14 @@ public class cxk implements csp, dhg {
 
    @Deprecated
    public static cxk a(dkl $$0) {
-      return e.getOrDefault($$0, cxs.a);
+      return f.getOrDefault($$0, cxs.a);
    }
 
    public cxk(cxk.a $$0) {
-      this.k = $$0.d();
-      this.c = $$0.a(xv.c(this.k), $$0.e());
+      this.l = $$0.d();
+      this.c = $$0.a(xv.c(this.l), $$0.e());
       this.d = $$0.d;
-      this.l = $$0.e;
+      this.m = $$0.e;
       if (ab.aU) {
          String $$1 = this.getClass().getSimpleName();
          if (!$$1.endsWith("Item")) {
@@ -171,7 +176,7 @@ public class cxk implements csp, dhg {
    }
 
    public final cxo k() {
-      return this.d == null ? cxo.k : new cxo(this.d);
+      return this.d == null ? cxo.j : new cxo(this.d);
    }
 
    public void a(cxo $$0, dhh $$1, bvj $$2, int $$3, boolean $$4) {
@@ -207,7 +212,7 @@ public class cxk implements csp, dhg {
 
    @VisibleForTesting
    public final String l() {
-      return this.k;
+      return this.l;
    }
 
    public final xv m() {
@@ -224,7 +229,7 @@ public class cxk implements csp, dhg {
 
    protected static fbt a(dhh $$0, cpw $$1, dgp.b $$2) {
       fbx $$3 = $$1.bF();
-      fbx $$4 = $$3.e($$1.d($$1.dN(), $$1.dL()).c($$1.gH()));
+      fbx $$4 = $$3.e($$1.d($$1.dO(), $$1.dM()).c($$1.gJ()));
       return $$0.a(new dgp($$3, $$4, dgp.a.b, $$2, $$1));
    }
 
@@ -246,7 +251,7 @@ public class cxk implements csp, dhg {
 
    @Override
    public css i() {
-      return this.l;
+      return this.m;
    }
 
    public static class a {

@@ -29,10 +29,10 @@ public abstract class ctb {
    private final jz<cxo> n = jz.a();
    public final jz<cuy> k = jz.a();
    private final List<ctv> o = Lists.newArrayList();
-   private cxo p = cxo.k;
+   private cxo p = cxo.j;
    private final jz<cxo> q = jz.a();
    private final IntList r = new IntArrayList();
-   private cxo s = cxo.k;
+   private cxo s = cxo.j;
    private int t;
    @Nullable
    private final cuk<?> u;
@@ -104,8 +104,8 @@ public abstract class ctb {
    protected cuy a(cuy $$0) {
       $$0.d = this.k.size();
       this.k.add($$0);
-      this.n.add(cxo.k);
-      this.q.add(cxo.k);
+      this.n.add(cxo.j);
+      this.q.add(cxo.j);
       return $$0;
    }
 
@@ -307,7 +307,7 @@ public abstract class ctb {
    }
 
    private void b(int $$0, int $$1, ctm $$2, cpw $$3) {
-      cpv $$4 = $$3.gg();
+      cpv $$4 = $$3.gi();
       if ($$2 == ctm.f) {
          int $$5 = this.w;
          this.w = d($$1);
@@ -373,7 +373,7 @@ public abstract class ctb {
             if (!this.g().f()) {
                if ($$16 == ctl.a) {
                   $$3.a(this.g(), true);
-                  this.b(cxo.k);
+                  this.b(cxo.j);
                } else {
                   $$3.a(this.g().a(1), true);
                }
@@ -445,7 +445,7 @@ public abstract class ctb {
                if ($$28.a($$3)) {
                   $$4.a($$1, $$29);
                   $$28.b($$29.L());
-                  $$28.e(cxo.k);
+                  $$28.e(cxo.j);
                   $$28.a($$3, $$29);
                }
             } else if ($$29.f()) {
@@ -454,7 +454,7 @@ public abstract class ctb {
                   if ($$27.L() > $$30) {
                      $$28.e($$27.a($$30));
                   } else {
-                     $$4.a($$1, cxo.k);
+                     $$4.a($$1, cxo.j);
                      $$28.e($$27);
                   }
                }
@@ -473,7 +473,7 @@ public abstract class ctb {
                }
             }
          }
-      } else if ($$2 == ctm.d && $$3.fT() && this.g().f() && $$0 >= 0) {
+      } else if ($$2 == ctm.d && $$3.fV() && this.g().f() && $$0 >= 0) {
          cuy $$32 = this.k.get($$0);
          if ($$32.h()) {
             cxo $$33 = $$32.g();
@@ -482,7 +482,7 @@ public abstract class ctb {
       } else if ($$2 == ctm.e && this.g().f() && $$0 >= 0) {
          cuy $$34 = this.k.get($$0);
          int $$35 = $$1 == 0 ? 1 : $$34.g().L();
-         if (!$$3.gj()) {
+         if (!$$3.gl()) {
             return;
          }
 
@@ -491,7 +491,7 @@ public abstract class ctb {
          $$3.g($$36);
          if ($$1 == 1) {
             while (!$$36.f() && cxo.b($$34.g(), $$36)) {
-               if (!$$3.gj()) {
+               if (!$$3.gl()) {
                   return;
                }
 
@@ -524,7 +524,7 @@ public abstract class ctb {
    }
 
    private boolean a(cpw $$0, ctl $$1, cuy $$2, cxo $$3, cxo $$4) {
-      css $$5 = $$0.dV().J();
+      css $$5 = $$0.dW().J();
       return $$4.a($$5) && $$4.a($$2, $$1, $$0) ? true : $$3.a($$5) && $$3.a($$4, $$2, $$1, $$0, this.m());
    }
 
@@ -552,7 +552,7 @@ public abstract class ctb {
          cxo $$1 = this.g();
          if (!$$1.f()) {
             a($$0, $$1);
-            this.b(cxo.k);
+            this.b(cxo.j);
          }
       }
    }
@@ -561,7 +561,7 @@ public abstract class ctb {
       boolean $$2;
       boolean var10000;
       label27: {
-         $$2 = $$0.dQ() && $$0.dR() != bvj.c.e;
+         $$2 = $$0.dR() && $$0.dS() != bvj.d.e;
          if ($$0 instanceof asi $$3 && $$3.u()) {
             var10000 = true;
             break label27;
@@ -574,7 +574,7 @@ public abstract class ctb {
       if ($$2 || $$4) {
          $$0.a($$1, false);
       } else if ($$0 instanceof asi) {
-         $$0.gg().g($$1);
+         $$0.gi().g($$1);
       }
    }
 
@@ -688,7 +688,7 @@ public abstract class ctb {
       if ($$0 == 0) {
          return true;
       } else {
-         return $$0 == 1 ? true : $$0 == 2 && $$1.fT();
+         return $$0 == 1 ? true : $$0 == 2 && $$1.fV();
       }
    }
 

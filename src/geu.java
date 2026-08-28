@@ -1,22 +1,9 @@
-import com.google.common.collect.ImmutableList;
-import java.util.function.UnaryOperator;
-
 public class geu {
-   private final gew a;
+   final int a;
+   final int b;
 
-   public geu() {
-      this(new gew(ImmutableList.of(), geo.a));
-   }
-
-   private geu(gew $$0) {
+   public geu(int $$0, int $$1) {
       this.a = $$0;
-   }
-
-   public gew a() {
-      return this.a;
-   }
-
-   public geu a(UnaryOperator<geo> $$0) {
-      return new geu(this.a.a($$0));
+      this.b = $$1;
    }
 }

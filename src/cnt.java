@@ -34,8 +34,8 @@ public class cnt {
       $$0.a(
          crn.b,
          ImmutableList.of(
-            Pair.of(0, cak.a(($$0x, $$1) -> $$1.eb().c(cfj.B))),
-            Pair.of(1, cak.a(($$0x, $$1) -> $$1.gm())),
+            Pair.of(0, cak.a(($$0x, $$1) -> $$1.ec().c(cfj.B))),
+            Pair.of(1, cak.a(($$0x, $$1) -> $$1.go())),
             Pair.of(2, new cnt.a(20, 40)),
             Pair.of(3, new bzv(ImmutableList.of(Pair.of(new byi(20, 100), 1), Pair.of(bzq.a(0.6F), 2))))
          )
@@ -53,7 +53,7 @@ public class cnt {
    }
 
    static void a(cns $$0) {
-      $$0.eb().a(ImmutableList.of(crn.k, crn.b));
+      $$0.ec().a(ImmutableList.of(crn.k, crn.b));
    }
 
    public static class a extends bzi {
@@ -73,8 +73,8 @@ public class cnt {
       protected void b(ash $$0, bwh $$1, long $$2) {
          super.b($$0, $$1, $$2);
          $$1.b(bwr.a);
-         if ($$1.eb().a(cfj.o)) {
-            $$1.eb().a(cfj.aV, bbk.a, 60L);
+         if ($$1.ec().a(cfj.o)) {
+            $$1.ec().a(cfj.aV, bbk.a, 60L);
          }
       }
    }

@@ -27,13 +27,13 @@ public class cno extends cmw implements cog {
    }
 
    @Override
-   protected bxh.b<cno> ec() {
+   protected bxh.b<cno> ed() {
       return bxh.a(b, a);
    }
 
    @Override
    protected bxh<?> a(Dynamic<?> $$0) {
-      bxh<cno> $$1 = this.ec().a($$0);
+      bxh<cno> $$1 = this.ed().a($$0);
       a($$1);
       b($$1);
       c($$1);
@@ -64,7 +64,7 @@ public class cno extends cmw implements cog {
    }
 
    private Optional<? extends bwf> g(ash $$0) {
-      return this.eb().c(cfj.h).orElse(cfl.a()).a($$1 -> this.b($$0, $$1));
+      return this.ec().c(cfj.h).orElse(cfl.a()).a($$1 -> this.b($$0, $$1));
    }
 
    private boolean b(ash $$0, bwf $$1) {
@@ -97,7 +97,7 @@ public class cno extends cmw implements cog {
    }
 
    public static bxm.a m() {
-      return cmw.gr().a(bxn.s, 40.0).a(bxn.v, 0.3F).a(bxn.p, 0.6F).a(bxn.d, 1.0).a(bxn.c, 6.0);
+      return cmw.gt().a(bxn.s, 40.0).a(bxn.v, 0.3F).a(bxn.p, 0.6F).a(bxn.d, 1.0).a(bxn.c, 6.0);
    }
 
    public boolean p() {
@@ -148,8 +148,8 @@ public class cno extends cmw implements cog {
    }
 
    @Override
-   public bxh<cno> eb() {
-      return (bxh<cno>)super.eb();
+   public bxh<cno> ec() {
+      return (bxh<cno>)super.ec();
    }
 
    protected void t() {
@@ -157,7 +157,7 @@ public class cno extends cmw implements cog {
       this.bF.a(ImmutableList.of(crn.k, crn.b));
       crn $$1 = this.bF.g().orElse(null);
       if ($$1 == crn.k && $$0 != crn.k) {
-         this.gm();
+         this.go();
       }
 
       this.w(this.bF.a(cfj.o));
@@ -167,7 +167,7 @@ public class cno extends cmw implements cog {
    protected void a(ash $$0) {
       bps $$1 = bpr.a();
       $$1.a("zoglinBrain");
-      this.eb().a($$0, this);
+      this.ec().a($$0, this);
       $$1.c();
       this.t();
    }
@@ -175,7 +175,7 @@ public class cno extends cmw implements cog {
    @Override
    public void a(boolean $$0) {
       this.au().a(bZ, $$0);
-      if (!this.dV().C && $$0) {
+      if (!this.dW().C && $$0) {
          this.g(bxn.c).a(0.5);
       }
    }
@@ -211,7 +211,7 @@ public class cno extends cmw implements cog {
 
    @Override
    protected axe u() {
-      if (this.dV().C) {
+      if (this.dW().C) {
          return null;
       } else {
          return this.bF.a(cfj.o) ? axf.DN : axf.DM;
@@ -233,7 +233,7 @@ public class cno extends cmw implements cog {
       this.a(axf.DR, 0.15F, 1.0F);
    }
 
-   protected void gm() {
+   protected void go() {
       this.b(axf.DN);
    }
 

@@ -55,13 +55,13 @@ public abstract class dbj extends dcv {
                      Codec.STRING.optionalFieldOf("group", "").forGetter(dcv::j),
                      dbp.d.fieldOf("category").orElse(dbp.c).forGetter(dbj::e),
                      dbz.d.fieldOf("ingredient").forGetter(dcv::k),
-                     cxo.e.fieldOf("result").forGetter(dcv::l),
+                     cxo.d.fieldOf("result").forGetter(dcv::l),
                      Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter(dbj::c),
                      Codec.INT.fieldOf("cookingtime").orElse($$1).forGetter(dbj::d)
                   )
                   .apply($$2, $$0::create)
          );
-         this.x = zt.a(zr.o, dcv::j, dbp.e, dbj::e, dbz.a, dcv::k, cxo.i, dcv::l, zr.l, dbj::c, zr.g, dbj::d, $$0::create);
+         this.x = zt.a(zr.o, dcv::j, dbp.e, dbj::e, dbz.a, dcv::k, cxo.h, dcv::l, zr.l, dbj::c, zr.g, dbj::d, $$0::create);
       }
 
       @Override

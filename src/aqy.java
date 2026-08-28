@@ -319,7 +319,7 @@ public class aqy extends MinecraftServer implements amq {
          return false;
       } else if (this.bs().k().c()) {
          return false;
-      } else if (this.bs().f($$2.gf())) {
+      } else if (this.bs().f($$2.gh())) {
          return false;
       } else if (this.al() <= 0) {
          return false;
@@ -510,7 +510,7 @@ public class aqy extends MinecraftServer implements amq {
 
    @Override
    public atq a(asi $$0) {
-      return this.u != null ? this.u.a($$0.gf()) : atq.e;
+      return this.u != null ? this.u.a($$0.gh()) : atq.e;
    }
 
    @Nullable

@@ -67,7 +67,7 @@ public class cij extends cid implements bww, bxf<cij.a> {
          this.a($$7, 1.0F, 1.0F);
          return bti.a;
       } else if ($$2.a(cxs.sJ) && this.a()) {
-         if (this.dV() instanceof ash $$9) {
+         if (this.dW() instanceof ash $$9) {
             this.a($$9, axg.h, $$2);
             this.a(ecq.M, $$0);
             $$2.a(1, $$0, d($$1));
@@ -77,7 +77,7 @@ public class cij extends cid implements bww, bxf<cij.a> {
       } else if (this.t() == cij.a.b && $$2.a(ayd.P)) {
          if (this.cd != null) {
             for (int $$10 = 0; $$10 < 2; $$10++) {
-               this.dV().a(ls.af, this.dA() + this.ae.j() / 2.0, this.e(0.5), this.dG() + this.ae.j() / 2.0, 0.0, this.ae.j() / 5.0, 0.0);
+               this.dW().a(ls.af, this.dB() + this.ae.j() / 2.0, this.e(0.5), this.dH() + this.ae.j() / 2.0, 0.0, this.ae.j() / 5.0, 0.0);
             }
          } else {
             Optional<dap> $$11 = this.i($$2);
@@ -88,7 +88,7 @@ public class cij extends cid implements bww, bxf<cij.a> {
             $$2.a(1, $$0);
 
             for (int $$12 = 0; $$12 < 4; $$12++) {
-               this.dV().a(ls.p, this.dA() + this.ae.j() / 2.0, this.e(0.5), this.dG() + this.ae.j() / 2.0, 0.0, this.ae.j() / 5.0, 0.0);
+               this.dW().a(ls.p, this.dB() + this.ae.j() / 2.0, this.e(0.5), this.dH() + this.ae.j() / 2.0, 0.0, this.ae.j() / 5.0, 0.0);
             }
 
             this.cd = $$11.get();
@@ -105,10 +105,10 @@ public class cij extends cid implements bww, bxf<cij.a> {
    public void a(ash $$0, axg $$1, cxo $$2) {
       $$0.a(null, this, axf.pk, $$1, 1.0F, 1.0F);
       this.a(bvq.C, bve.a(this, false, false), $$2x -> {
-         $$0.a(ls.w, this.dA(), this.e(0.5), this.dG(), 1, 0.0, 0.0, 0.0, 0.0);
+         $$0.a(ls.w, this.dB(), this.e(0.5), this.dH(), 1, 0.0, 0.0, 0.0, 0.0);
          this.a($$0, ewk.aR, $$2, ($$0xx, $$1xx) -> {
             for (int $$2xx = 0; $$2xx < $$1xx.L(); $$2xx++) {
-               $$0xx.b(new cma(this.dV(), this.dA(), this.e(1.0), this.dG(), $$1xx.c(1)));
+               $$0xx.b(new cma(this.dW(), this.dB(), this.e(1.0), this.dH(), $$1xx.c(1)));
             }
          });
       });

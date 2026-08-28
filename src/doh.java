@@ -52,28 +52,28 @@ public class doh extends doc {
    private boolean a(jh $$0, bvj $$1) {
       if ($$1.aJ()) {
          return false;
-      } else if ($$1.dC() > (double)$$0.v() + 0.9375 - 1.0E-7) {
+      } else if ($$1.dD() > (double)$$0.v() + 0.9375 - 1.0E-7) {
          return false;
-      } else if ($$1.dy().e >= -0.1568) {
+      } else if ($$1.dz().e >= -0.1568) {
          return false;
       } else {
-         double $$2 = Math.abs((double)$$0.u() + 0.5 - $$1.dA());
-         double $$3 = Math.abs((double)$$0.w() + 0.5 - $$1.dG());
-         double $$4 = 0.4375 + (double)($$1.dq() / 2.0F);
+         double $$2 = Math.abs((double)$$0.u() + 0.5 - $$1.dB());
+         double $$3 = Math.abs((double)$$0.w() + 0.5 - $$1.dH());
+         double $$4 = 0.4375 + (double)($$1.dr() / 2.0F);
          return $$2 + 1.0E-7 > $$4 || $$3 + 1.0E-7 > $$4;
       }
    }
 
    private void a(bvj $$0, jh $$1) {
-      if ($$0 instanceof asi && $$0.dV().ac() % 20L == 0L) {
-         ao.K.a((asi)$$0, $$0.dV().a_($$1));
+      if ($$0 instanceof asi && $$0.dW().ac() % 20L == 0L) {
+         ao.K.a((asi)$$0, $$0.dW().a_($$1));
       }
    }
 
    private void d(bvj $$0) {
-      fbx $$1 = $$0.dy();
-      if ($$0.dy().e < -0.2058) {
-         double $$2 = $$0.dy().e / 0.98F + 0.08;
+      fbx $$1 = $$0.dz();
+      if ($$0.dz().e < -0.2058) {
+         double $$2 = $$0.dz().e / 0.98F + 0.08;
          double $$3 = -0.1274 / $$2;
          $$0.h(new fbx($$1.d * $$3, -0.1274, $$1.f * $$3));
       } else {
@@ -104,11 +104,11 @@ public class doh extends doc {
    }
 
    private static void a(bvj $$0, int $$1) {
-      if ($$0.dV().C) {
+      if ($$0.dW().C) {
          dxu $$2 = dkn.pB.m();
 
          for (int $$3 = 0; $$3 < $$1; $$3++) {
-            $$0.dV().a(new lk(ls.b, $$2), $$0.dA(), $$0.dC(), $$0.dG(), 0.0, 0.0, 0.0);
+            $$0.dW().a(new lk(ls.b, $$2), $$0.dB(), $$0.dD(), $$0.dH(), 0.0, 0.0, 0.0);
          }
       }
    }

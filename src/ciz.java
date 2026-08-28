@@ -56,8 +56,8 @@ public class ciz extends bxc implements bwk, bxf<jq<cja>> {
       this.bU.a(8, new cfc<>(this, true));
    }
 
-   public alz gy() {
-      cja $$0 = this.gz().a();
+   public alz gA() {
+      cja $$0 = this.gB().a();
       if (this.p()) {
          return $$0.b();
       } else {
@@ -65,7 +65,7 @@ public class ciz extends bxc implements bwk, bxf<jq<cja>> {
       }
    }
 
-   public jq<cja> gz() {
+   public jq<cja> gB() {
       return this.al.a(ci);
    }
 
@@ -73,14 +73,14 @@ public class ciz extends bxc implements bwk, bxf<jq<cja>> {
       this.al.a(ci, $$0);
    }
 
-   public static bxm.a gA() {
-      return chw.gr().a(bxn.v, 0.3F).a(bxn.s, 8.0).a(bxn.c, 4.0);
+   public static bxm.a gC() {
+      return chw.gt().a(bxn.v, 0.3F).a(bxn.s, 8.0).a(bxn.c, 4.0);
    }
 
    @Override
    protected void a(alg.a $$0) {
       super.a($$0);
-      ke $$1 = this.dX();
+      ke $$1 = this.dY();
       kd<cja> $$2 = $$1.e(mb.m);
       $$0.a(ci, $$2.a(cjb.j).or($$2::a).orElseThrow());
       $$0.a(cf, false);
@@ -96,31 +96,31 @@ public class ciz extends bxc implements bwk, bxf<jq<cja>> {
    @Override
    public void b(ux $$0) {
       super.b($$0);
-      $$0.a("CollarColor", (byte)this.gC().a());
-      this.gz().e().ifPresent($$1 -> $$0.a("variant", $$1.a().toString()));
+      $$0.a("CollarColor", (byte)this.gE().a());
+      this.gB().e().ifPresent($$1 -> $$0.a("variant", $$1.a().toString()));
       this.a_($$0);
    }
 
    @Override
    public void a(ux $$0) {
       super.a($$0);
-      Optional.ofNullable(alz.c($$0.l("variant"))).map($$0x -> aly.a(mb.m, $$0x)).flatMap($$0x -> this.dX().e(mb.m).a($$0x)).ifPresent(this::j);
+      Optional.ofNullable(alz.c($$0.l("variant"))).map($$0x -> aly.a(mb.m, $$0x)).flatMap($$0x -> this.dY().e(mb.m).a($$0x)).ifPresent(this::j);
       if ($$0.b("CollarColor", 99)) {
          this.a(cwl.a($$0.h("CollarColor")));
       }
 
-      this.a(this.dV(), $$0);
+      this.a(this.dW(), $$0);
    }
 
    @Nullable
    @Override
    public bwy a(dhy $$0, btg $$1, bvp $$2, @Nullable bwy $$3) {
-      jq<dij> $$4 = $$0.t(this.dv());
+      jq<dij> $$4 = $$0.t(this.dw());
       jq<cja> $$6;
       if ($$3 instanceof ciz.b $$5) {
          $$6 = $$5.a;
       } else {
-         $$6 = cjb.a(this.dX(), $$4);
+         $$6 = cjb.a(this.dY(), $$4);
          $$3 = new ciz.b($$6);
       }
 
@@ -133,7 +133,7 @@ public class ciz extends bxc implements bwk, bxf<jq<cja>> {
       if (this.ad_()) {
          return axf.Dn;
       } else if (this.ae.a(3) == 0) {
-         return this.p() && this.eD() < 20.0F ? axf.Dt : axf.Dq;
+         return this.p() && this.eE() < 20.0F ? axf.Dt : axf.Dq;
       } else {
          return axf.Dl;
       }
@@ -150,22 +150,22 @@ public class ciz extends bxc implements bwk, bxf<jq<cja>> {
    }
 
    @Override
-   protected float fe() {
+   protected float fg() {
       return 0.4F;
    }
 
    @Override
    public void d_() {
       super.d_();
-      if (!this.dV().C && this.co && !this.cp && !this.gi() && this.aJ()) {
+      if (!this.dW().C && this.co && !this.cp && !this.gk() && this.aJ()) {
          this.cp = true;
          this.cq = 0.0F;
          this.cr = 0.0F;
-         this.dV().a(this, (byte)8);
+         this.dW().a(this, (byte)8);
       }
 
-      if (!this.dV().C) {
-         this.a((ash)this.dV(), true);
+      if (!this.dW().C) {
+         this.a((ash)this.dW(), true);
       }
    }
 
@@ -174,7 +174,7 @@ public class ciz extends bxc implements bwk, bxf<jq<cja>> {
       super.h();
       if (this.bL()) {
          this.cn = this.cm;
-         if (this.gD()) {
+         if (this.gF()) {
             this.cm = this.cm + (1.0F - this.cm) * 0.4F;
          } else {
             this.cm = this.cm + (0.0F - this.cm) * 0.4F;
@@ -182,13 +182,13 @@ public class ciz extends bxc implements bwk, bxf<jq<cja>> {
 
          if (this.bl()) {
             this.co = true;
-            if (this.cp && !this.dV().C) {
-               this.dV().a(this, (byte)56);
-               this.gE();
+            if (this.cp && !this.dW().C) {
+               this.dW().a(this, (byte)56);
+               this.gG();
             }
          } else if ((this.co || this.cp) && this.cp) {
             if (this.cq == 0.0F) {
-               this.a(axf.Dr, this.fe(), (this.ae.i() - this.ae.i()) * 0.2F + 1.0F);
+               this.a(axf.Dr, this.fg(), (this.ae.i() - this.ae.i()) * 0.2F + 1.0F);
                this.a(ecq.u);
             }
 
@@ -202,21 +202,21 @@ public class ciz extends bxc implements bwk, bxf<jq<cja>> {
             }
 
             if (this.cq > 0.4F) {
-               float $$0 = (float)this.dC();
+               float $$0 = (float)this.dD();
                int $$1 = (int)(bae.a((this.cq - 0.4F) * (float) Math.PI) * 7.0F);
-               fbx $$2 = this.dy();
+               fbx $$2 = this.dz();
 
                for (int $$3 = 0; $$3 < $$1; $$3++) {
-                  float $$4 = (this.ae.i() * 2.0F - 1.0F) * this.dq() * 0.5F;
-                  float $$5 = (this.ae.i() * 2.0F - 1.0F) * this.dq() * 0.5F;
-                  this.dV().a(ls.an, this.dA() + (double)$$4, (double)($$0 + 0.8F), this.dG() + (double)$$5, $$2.d, $$2.e, $$2.f);
+                  float $$4 = (this.ae.i() * 2.0F - 1.0F) * this.dr() * 0.5F;
+                  float $$5 = (this.ae.i() * 2.0F - 1.0F) * this.dr() * 0.5F;
+                  this.dW().a(ls.an, this.dB() + (double)$$4, (double)($$0 + 0.8F), this.dH() + (double)$$5, $$2.d, $$2.e, $$2.f);
                }
             }
          }
       }
    }
 
-   private void gE() {
+   private void gG() {
       this.cp = false;
       this.cq = 0.0F;
       this.cr = 0.0F;
@@ -274,7 +274,7 @@ public class ciz extends bxc implements bwk, bxf<jq<cja>> {
          $$3.a(bae.f($$2), this, bvr.g);
          if (bvg.b.a($$4, $$5) != bvg.b.a(this.af())) {
             this.a(axf.Di);
-            $$0.a(new lo(ls.S, cxs.oM.n()), this.dA(), this.dC() + 1.0, this.dG(), 20, 0.2, 0.1, 0.2, 0.1);
+            $$0.a(new lo(ls.S, cxs.oM.n()), this.dB(), this.dD() + 1.0, this.dH(), 20, 0.2, 0.1, 0.2, 0.1);
          }
       }
    }
@@ -303,7 +303,7 @@ public class ciz extends bxc implements bwk, bxf<jq<cja>> {
       cxo $$2 = $$0.b($$1);
       cxk $$3 = $$2.h();
       if (this.p()) {
-         if (this.j($$2) && this.eD() < this.eR()) {
+         if (this.j($$2) && this.eE() < this.eS()) {
             this.a($$0, $$1, $$2);
             csy $$4 = $$2.a(ku.w);
             float $$5 = $$4 != null ? (float)$$4.a() : 1.0F;
@@ -312,7 +312,7 @@ public class ciz extends bxc implements bwk, bxf<jq<cja>> {
          } else {
             if ($$3 instanceof cwm $$6 && this.j($$0)) {
                cwl $$7 = $$6.b();
-               if ($$7 != this.gC()) {
+               if ($$7 != this.gE()) {
                   this.a($$7);
                   $$2.a(1, $$0);
                   return bti.a;
@@ -329,8 +329,8 @@ public class ciz extends bxc implements bwk, bxf<jq<cja>> {
                $$2.a(1, $$0, d($$1));
                this.a(axf.az);
                cxo $$8 = this.af();
-               this.h(cxo.k);
-               if (this.dV() instanceof ash $$9) {
+               this.h(cxo.j);
+               if (this.dW() instanceof ash $$9) {
                   this.a($$9, $$8);
                }
 
@@ -345,7 +345,7 @@ public class ciz extends bxc implements bwk, bxf<jq<cja>> {
             } else {
                bti $$12 = super.b($$0, $$1);
                if (!$$12.a() && this.j($$0)) {
-                  this.z(!this.gm());
+                  this.z(!this.go());
                   this.bn = false;
                   this.bS.o();
                   this.h(null);
@@ -355,7 +355,7 @@ public class ciz extends bxc implements bwk, bxf<jq<cja>> {
                }
             }
          }
-      } else if (!this.dV().C && $$2.a(cxs.sn) && !this.ad_()) {
+      } else if (!this.dW().C && $$2.a(cxs.sn) && !this.ad_()) {
          $$2.a(1, $$0);
          this.g($$0);
          return bti.b;
@@ -370,9 +370,9 @@ public class ciz extends bxc implements bwk, bxf<jq<cja>> {
          this.bS.o();
          this.h(null);
          this.z(true);
-         this.dV().a(this, (byte)7);
+         this.dW().a(this, (byte)7);
       } else {
-         this.dV().a(this, (byte)6);
+         this.dW().a(this, (byte)6);
       }
    }
 
@@ -383,18 +383,18 @@ public class ciz extends bxc implements bwk, bxf<jq<cja>> {
          this.cq = 0.0F;
          this.cr = 0.0F;
       } else if ($$0 == 56) {
-         this.gE();
+         this.gG();
       } else {
          super.b($$0);
       }
    }
 
-   public float gB() {
+   public float gD() {
       if (this.ad_()) {
          return 1.5393804F;
       } else if (this.p()) {
-         float $$0 = this.eR();
-         float $$1 = ($$0 - this.eD()) / $$0;
+         float $$0 = this.eS();
+         float $$1 = ($$0 - this.eE()) / $$0;
          return (0.55F - $$1 * 0.4F) * (float) Math.PI;
       } else {
          return (float) (Math.PI / 5);
@@ -437,7 +437,7 @@ public class ciz extends bxc implements bwk, bxf<jq<cja>> {
       this.ct = $$0;
    }
 
-   public cwl gC() {
+   public cwl gE() {
       return cwl.a(this.al.a(cg));
    }
 
@@ -450,18 +450,18 @@ public class ciz extends bxc implements bwk, bxf<jq<cja>> {
       ciz $$2 = bvq.bM.a($$0, bvp.e);
       if ($$2 != null && $$1 instanceof ciz $$3) {
          if (this.ae.h()) {
-            $$2.j(this.gz());
+            $$2.j(this.gB());
          } else {
-            $$2.j($$3.gz());
+            $$2.j($$3.gB());
          }
 
          if (this.p()) {
             $$2.b(this.ab_());
             $$2.b(true, true);
             if (this.ae.h()) {
-               $$2.a(this.gC());
+               $$2.a(this.gE());
             } else {
-               $$2.a($$3.gC());
+               $$2.a($$3.gE());
             }
          }
       }
@@ -484,11 +484,11 @@ public class ciz extends bxc implements bwk, bxf<jq<cja>> {
       } else if (!$$1.p()) {
          return false;
       } else {
-         return $$1.x() ? false : this.gw() && $$1.gw();
+         return $$1.x() ? false : this.gy() && $$1.gy();
       }
    }
 
-   public boolean gD() {
+   public boolean gF() {
       return this.al.a(cf);
    }
 
@@ -503,7 +503,7 @@ public class ciz extends bxc implements bwk, bxf<jq<cja>> {
             return false;
          }
 
-         if ($$0 instanceof cka $$5 && $$5.gD()) {
+         if ($$0 instanceof cka $$5 && $$5.gF()) {
             return false;
          }
 
@@ -522,7 +522,7 @@ public class ciz extends bxc implements bwk, bxf<jq<cja>> {
 
    @Override
    public fbx cT() {
-      return new fbx(0.0, (double)(0.6F * this.cS()), (double)(this.dq() * 0.4F));
+      return new fbx(0.0, (double)(0.6F * this.cS()), (double)(this.dr() * 0.4F));
    }
 
    public static boolean c(bvq<ciz> $$0, dhi $$1, bvp $$2, jh $$3, bam $$4) {
@@ -543,7 +543,7 @@ public class ciz extends bxc implements bwk, bxf<jq<cja>> {
       }
 
       private boolean a(ckd $$0) {
-         return $$0.gq() >= ciz.this.ae.a(5);
+         return $$0.gs() >= ciz.this.ae.a(5);
       }
 
       @Override

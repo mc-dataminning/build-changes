@@ -100,7 +100,7 @@ public class dxq extends duw {
                      }
 
                      if (!($$11 instanceof asi)) {
-                        fbx $$12 = $$11.dy();
+                        fbx $$12 = $$11.dz();
                         double $$13 = $$12.d;
                         double $$14 = $$12.e;
                         double $$15 = $$12.f;
@@ -169,7 +169,7 @@ public class dxq extends duw {
    }
 
    private static boolean a(fbs $$0, bvj $$1, jh $$2) {
-      return $$1.n_() == eub.a && $$1.aJ() && ($$1.d($$2) || $$1.dA() >= $$0.a && $$1.dA() <= $$0.d && $$1.dG() >= $$0.c && $$1.dG() <= $$0.f);
+      return $$1.n_() == eub.a && $$1.aJ() && ($$1.d($$2) || $$1.dB() >= $$0.a && $$1.dB() <= $$0.d && $$1.dH() >= $$0.c && $$1.dH() <= $$0.f);
    }
 
    private boolean w() {

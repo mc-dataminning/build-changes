@@ -15,7 +15,7 @@ public class cmq extends bvw implements cmo {
       this.bT.a(5, new cmq.d(this));
       this.bT.a(7, new cmq.a(this));
       this.bT.a(7, new cmq.c(this));
-      this.bU.a(1, new cew<>(this, cpw.class, 10, true, false, ($$0, $$1) -> Math.abs($$0.dC() - this.dC()) <= 4.0));
+      this.bU.a(1, new cew<>(this, cpw.class, 10, true, false, ($$0, $$1) -> Math.abs($$0.dD() - this.dD()) <= 4.0));
    }
 
    public boolean m() {
@@ -65,7 +65,7 @@ public class cmq extends bvw implements cmo {
    }
 
    @Override
-   public axg dm() {
+   public axg dn() {
       return axg.f;
    }
 
@@ -85,7 +85,7 @@ public class cmq extends bvw implements cmo {
    }
 
    @Override
-   protected float fe() {
+   protected float fg() {
       return 5.0F;
    }
 
@@ -133,17 +133,17 @@ public class cmq extends bvw implements cmo {
       @Override
       public void a() {
          if (this.a.O_() == null) {
-            fbx $$0 = this.a.dy();
+            fbx $$0 = this.a.dz();
             this.a.v(-((float)bae.d($$0.d, $$0.f)) * (180.0F / (float)Math.PI));
-            this.a.aX = this.a.dL();
+            this.a.aX = this.a.dM();
          } else {
             bwf $$1 = this.a.O_();
             double $$2 = 64.0;
             if ($$1.g(this.a) < 4096.0) {
-               double $$3 = $$1.dA() - this.a.dA();
-               double $$4 = $$1.dG() - this.a.dG();
+               double $$3 = $$1.dB() - this.a.dB();
+               double $$4 = $$1.dH() - this.a.dH();
                this.a.v(-((float)bae.d($$3, $$4)) * (180.0F / (float)Math.PI));
-               this.a.aX = this.a.dL();
+               this.a.aX = this.a.dM();
             }
          }
       }
@@ -162,12 +162,12 @@ public class cmq extends bvw implements cmo {
       public void a() {
          if (this.k == ccg.a.b) {
             if (this.m-- <= 0) {
-               this.m = this.m + this.l.dY().a(5) + 2;
-               fbx $$0 = new fbx(this.e - this.l.dA(), this.f - this.l.dC(), this.g - this.l.dG());
+               this.m = this.m + this.l.dZ().a(5) + 2;
+               fbx $$0 = new fbx(this.e - this.l.dB(), this.f - this.l.dD(), this.g - this.l.dH());
                double $$1 = $$0.g();
                $$0 = $$0.d();
                if (this.a($$0, bae.c($$1))) {
-                  this.l.h(this.l.dy().e($$0.c(0.1)));
+                  this.l.h(this.l.dz().e($$0.c(0.1)));
                } else {
                   this.k = ccg.a.a;
                }
@@ -180,7 +180,7 @@ public class cmq extends bvw implements cmo {
 
          for (int $$3 = 1; $$3 < $$1; $$3++) {
             $$2 = $$2.c($$0);
-            if (!this.l.dV().a(this.l, $$2)) {
+            if (!this.l.dW().a(this.l, $$2)) {
                return false;
             }
          }
@@ -223,25 +223,25 @@ public class cmq extends bvw implements cmo {
          if ($$0 != null) {
             double $$1 = 64.0;
             if ($$0.g(this.b) < 4096.0 && this.b.E($$0)) {
-               dhh $$2 = this.b.dV();
+               dhh $$2 = this.b.dW();
                this.a++;
                if (this.a == 10 && !this.b.bb()) {
-                  $$2.a(null, 1015, this.b.dv(), 0);
+                  $$2.a(null, 1015, this.b.dw(), 0);
                }
 
                if (this.a == 20) {
                   double $$3 = 4.0;
                   fbx $$4 = this.b.g(1.0F);
-                  double $$5 = $$0.dA() - (this.b.dA() + $$4.d * 4.0);
+                  double $$5 = $$0.dB() - (this.b.dB() + $$4.d * 4.0);
                   double $$6 = $$0.e(0.5) - (0.5 + this.b.e(0.5));
-                  double $$7 = $$0.dG() - (this.b.dG() + $$4.f * 4.0);
+                  double $$7 = $$0.dH() - (this.b.dH() + $$4.f * 4.0);
                   fbx $$8 = new fbx($$5, $$6, $$7);
                   if (!this.b.bb()) {
-                     $$2.a(null, 1016, this.b.dv(), 0);
+                     $$2.a(null, 1016, this.b.dw(), 0);
                   }
 
                   cqn $$9 = new cqn($$2, this.b, $$8.d(), this.b.p());
-                  $$9.a_(this.b.dA() + $$4.d * 4.0, this.b.e(0.5) + 0.5, $$9.dG() + $$4.f * 4.0);
+                  $$9.a_(this.b.dB() + $$4.d * 4.0, this.b.e(0.5) + 0.5, $$9.dH() + $$4.f * 4.0);
                   $$2.b($$9);
                   this.a = -40;
                }
@@ -268,9 +268,9 @@ public class cmq extends bvw implements cmo {
          if (!$$0.b()) {
             return true;
          } else {
-            double $$1 = $$0.d() - this.a.dA();
-            double $$2 = $$0.e() - this.a.dC();
-            double $$3 = $$0.f() - this.a.dG();
+            double $$1 = $$0.d() - this.a.dB();
+            double $$2 = $$0.e() - this.a.dD();
+            double $$3 = $$0.f() - this.a.dH();
             double $$4 = $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
             return $$4 < 1.0 || $$4 > 3600.0;
          }
@@ -283,10 +283,10 @@ public class cmq extends bvw implements cmo {
 
       @Override
       public void d() {
-         bam $$0 = this.a.dY();
-         double $$1 = this.a.dA() + (double)(($$0.i() * 2.0F - 1.0F) * 16.0F);
-         double $$2 = this.a.dC() + (double)(($$0.i() * 2.0F - 1.0F) * 16.0F);
-         double $$3 = this.a.dG() + (double)(($$0.i() * 2.0F - 1.0F) * 16.0F);
+         bam $$0 = this.a.dZ();
+         double $$1 = this.a.dB() + (double)(($$0.i() * 2.0F - 1.0F) * 16.0F);
+         double $$2 = this.a.dD() + (double)(($$0.i() * 2.0F - 1.0F) * 16.0F);
+         double $$3 = this.a.dH() + (double)(($$0.i() * 2.0F - 1.0F) * 16.0F);
          this.a.I().a($$1, $$2, $$3, 1.0);
       }
    }

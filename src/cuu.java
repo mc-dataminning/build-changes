@@ -37,7 +37,7 @@ public class cuu extends cuy {
    @Override
    protected void b_(cxo $$0) {
       if (this.g > 0) {
-         $$0.a(this.b.dV(), this.b, this.g);
+         $$0.a(this.b.dW(), this.b, this.g);
       }
 
       if (this.c instanceof cus $$1) {
@@ -48,7 +48,7 @@ public class cuu extends cuy {
    }
 
    private static jz<cxo> a(dbr $$0) {
-      jz<cxo> $$1 = jz.a($$0.a(), cxo.k);
+      jz<cxo> $$1 = jz.a($$0.a(), cxo.j);
 
       for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
          $$1.set($$2, $$0.a($$2));
@@ -68,7 +68,7 @@ public class cuu extends cuy {
       dbr $$3 = $$2.a();
       int $$4 = $$2.b();
       int $$5 = $$2.c();
-      jz<cxo> $$6 = this.a($$3, $$0.dV());
+      jz<cxo> $$6 = this.a($$3, $$0.dW());
 
       for (int $$7 = 0; $$7 < $$3.g(); $$7++) {
          for (int $$8 = 0; $$8 < $$3.f(); $$8++) {
@@ -86,7 +86,7 @@ public class cuu extends cuy {
                } else if (cxo.c($$10, $$11)) {
                   $$11.g($$10.L());
                   this.a.a($$9, $$11);
-               } else if (!this.b.gg().f($$11)) {
+               } else if (!this.b.gi().f($$11)) {
                   this.b.a($$11, false);
                }
             }

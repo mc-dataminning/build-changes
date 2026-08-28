@@ -10,9 +10,9 @@ public class cge extends cgp<bwf> {
    @Override
    protected void a(ash $$0, bwf $$1) {
       if ($$1.bj()) {
-         $$1.eb().a(cfj.X, bbk.a);
+         $$1.ec().a(cfj.X, bbk.a);
       } else {
-         $$1.eb().b(cfj.X);
+         $$1.ec().b(cfj.X);
       }
    }
 }

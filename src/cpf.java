@@ -10,7 +10,7 @@ public class cpf implements dgd {
    }
 
    @Override
-   public cpw gm() {
+   public cpw go() {
       return this.a;
    }
 
@@ -19,7 +19,7 @@ public class cpf implements dgd {
    }
 
    @Override
-   public dgf go() {
+   public dgf gq() {
       return this.b;
    }
 
@@ -38,8 +38,8 @@ public class cpf implements dgd {
    }
 
    @Override
-   public boolean gu() {
-      return this.a.dV().C;
+   public boolean gw() {
+      return this.a.dW().C;
    }
 
    @Override
@@ -53,12 +53,12 @@ public class cpf implements dgd {
    }
 
    @Override
-   public boolean gp() {
+   public boolean gr() {
       return true;
    }
 
    @Override
-   public axe gq() {
+   public axe gs() {
       return axf.Bx;
    }
 }

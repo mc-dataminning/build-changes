@@ -40,7 +40,7 @@ public class kj extends kl {
    }
 
    public static kj a(ebx $$0) {
-      return a($$0.dv());
+      return a($$0.dw());
    }
 
    public static kj a(ka $$0) {

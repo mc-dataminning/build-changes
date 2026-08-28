@@ -13,7 +13,7 @@ public class cgl extends cgp<bwf> {
 
    @Override
    protected void a(ash $$0, bwf $$1) {
-      bxh<?> $$2 = $$1.eb();
+      bxh<?> $$2 = $$1.ec();
       $$2.a(cfj.aw, c($$0, $$1));
       Optional<bwh> $$3 = Optional.empty();
       Optional<coe> $$4 = Optional.empty();
@@ -34,7 +34,7 @@ public class cgl extends cgp<bwf> {
                $$5 = Optional.of($$15);
             } else if ($$15.t()) {
                $$10++;
-               if ($$4.isEmpty() && $$15.gn()) {
+               if ($$4.isEmpty() && $$15.gp()) {
                   $$4 = Optional.of($$15);
                }
             }
@@ -44,7 +44,7 @@ public class cgl extends cgp<bwf> {
             cok $$17 = (cok)$$14;
             if ($$17.e_() && $$6.isEmpty()) {
                $$6 = Optional.of($$17);
-            } else if ($$17.gm()) {
+            } else if ($$17.go()) {
                $$11.add($$17);
             }
          } else if ($$14 instanceof cpw) {
@@ -68,7 +68,7 @@ public class cgl extends cgp<bwf> {
       for (bwf $$20 : $$2.c(cfj.g).orElse(ImmutableList.of())) {
          if ($$20 instanceof coj) {
             coj $$21 = (coj)$$20;
-            if ($$21.gm()) {
+            if ($$21.go()) {
                $$12.add($$21);
             }
          }
@@ -87,7 +87,7 @@ public class cgl extends cgp<bwf> {
    }
 
    private static Optional<jh> c(ash $$0, bwf $$1) {
-      return jh.a($$1.dv(), 8, 4, $$1x -> a($$0, $$1x));
+      return jh.a($$1.dw(), 8, 4, $$1x -> a($$0, $$1x));
    }
 
    private static boolean a(ash $$0, jh $$1) {

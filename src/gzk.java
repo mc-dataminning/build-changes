@@ -1,3 +1,3 @@
-public class gzk extends gyr {
-   public cir.a a = cir.a.b;
+public interface gzk {
+   boolean c();
 }

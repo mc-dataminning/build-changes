@@ -1,265 +1,170 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fStack;
-import org.joml.Vector3f;
+import com.google.common.collect.ImmutableList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class gmf implements AutoCloseable {
-   private static final alz a = alz.b("textures/environment/sun.png");
-   private static final alz b = alz.b("textures/environment/moon_phases.png");
-   private static final alz c = alz.b("textures/environment/end_sky.png");
-   private static final float d = 512.0F;
-   private final fgt e = this.a();
-   private final fgt f = this.b();
-   private final fgt g = this.c();
+public class gmf {
+   public static final alz a = alz.b("textures/atlas/shulker_boxes.png");
+   public static final alz b = alz.b("textures/atlas/beds.png");
+   public static final alz c = alz.b("textures/atlas/banner_patterns.png");
+   public static final alz d = alz.b("textures/atlas/shield_patterns.png");
+   public static final alz e = alz.b("textures/atlas/signs.png");
+   public static final alz f = alz.b("textures/atlas/chest.png");
+   public static final alz g = alz.b("textures/atlas/armor_trims.png");
+   public static final alz h = alz.b("textures/atlas/decorated_pot.png");
+   private static final glu C = glu.g(a);
+   private static final glu D = glu.d(b);
+   private static final glu E = glu.n(c);
+   private static final glu F = glu.n(d);
+   private static final glu G = glu.g(e);
+   private static final glu H = glu.f(f);
+   private static final glu I = glu.a(g);
+   private static final glu J = glu.b(g);
+   private static final glu K = glu.d(hbj.d);
+   private static final glu L = glu.f(hbj.d);
+   private static final glu M = glu.i(hbj.d);
+   public static final hdt i = new hdt(a, alz.b("entity/shulker/shulker"));
+   public static final List<hdt> j = Stream.of(
+         "white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"
+      )
+      .map($$0 -> new hdt(a, alz.b("entity/shulker/shulker_" + $$0)))
+      .collect(ImmutableList.toImmutableList());
+   public static final Map<dzg, hdt> k = dzg.a().collect(Collectors.toMap(Function.identity(), gmf::c));
+   public static final Map<dzg, hdt> l = dzg.a().collect(Collectors.toMap(Function.identity(), gmf::d));
+   public static final hdt m = new hdt(c, alz.b("entity/banner/base"));
+   public static final hdt n = new hdt(d, alz.b("entity/shield/base"));
+   private static final Map<alz, hdt> N = new HashMap<>();
+   private static final Map<alz, hdt> O = new HashMap<>();
+   public static final Map<aly<dvo>, hdt> o = ma.ak.c().collect(Collectors.toMap(jq.c::h, $$0 -> a($$0.a().a())));
+   public static final hdt p = a(alz.b("decorated_pot_base"));
+   public static final hdt q = a(alz.b("decorated_pot_side"));
+   public static final hdt[] r = Arrays.stream(cwl.values())
+      .sorted(Comparator.comparingInt(cwl::a))
+      .map($$0 -> new hdt(b, alz.b("entity/bed/" + $$0.b())))
+      .toArray(hdt[]::new);
+   public static final hdt s = a("trapped");
+   public static final hdt t = a("trapped_left");
+   public static final hdt u = a("trapped_right");
+   public static final hdt v = a("christmas");
+   public static final hdt w = a("christmas_left");
+   public static final hdt x = a("christmas_right");
+   public static final hdt y = a("normal");
+   public static final hdt z = a("normal_left");
+   public static final hdt A = a("normal_right");
+   public static final hdt B = a("ender");
 
-   private fgt a() {
-      fgt $$0 = new fgt(fek.b);
-      $$0.a();
-      $$0.a(this.a(fgs.b()));
-      fgt.b();
-      return $$0;
+   public static glu a() {
+      return E;
    }
 
-   private fgt b() {
-      fgt $$0 = new fgt(fek.b);
-      $$0.a();
-      $$0.a(this.a(fgs.b(), 16.0F));
-      fgt.b();
-      return $$0;
+   public static glu b() {
+      return F;
    }
 
-   private fgt c() {
-      fgt $$0 = new fgt(fek.b);
-      $$0.a();
-      $$0.a(this.a(fgs.b(), -16.0F));
-      fgt.b();
-      return $$0;
+   public static glu c() {
+      return D;
    }
 
-   private fgp a(fgs $$0) {
-      bam $$1 = bam.a(10842L);
-      int $$2 = 1500;
-      float $$3 = 100.0F;
-      fgl $$4 = $$0.a(fgv.c.h, fgo.e);
+   public static glu d() {
+      return C;
+   }
 
-      for (int $$5 = 0; $$5 < 1500; $$5++) {
-         float $$6 = $$1.i() * 2.0F - 1.0F;
-         float $$7 = $$1.i() * 2.0F - 1.0F;
-         float $$8 = $$1.i() * 2.0F - 1.0F;
-         float $$9 = 0.15F + $$1.i() * 0.1F;
-         float $$10 = bae.k($$6, $$7, $$8);
-         if (!($$10 <= 0.010000001F) && !($$10 >= 1.0F)) {
-            Vector3f $$11 = new Vector3f($$6, $$7, $$8).normalize(100.0F);
-            float $$12 = (float)($$1.j() * (float) Math.PI * 2.0);
-            Matrix3f $$13 = new Matrix3f().rotateTowards(new Vector3f($$11).negate(), new Vector3f(0.0F, 1.0F, 0.0F)).rotateZ(-$$12);
-            $$4.a(new Vector3f($$9, -$$9, 0.0F).mul($$13).add($$11));
-            $$4.a(new Vector3f($$9, $$9, 0.0F).mul($$13).add($$11));
-            $$4.a(new Vector3f(-$$9, $$9, 0.0F).mul($$13).add($$11));
-            $$4.a(new Vector3f(-$$9, -$$9, 0.0F).mul($$13).add($$11));
-         }
+   public static glu e() {
+      return G;
+   }
+
+   public static glu f() {
+      return G;
+   }
+
+   public static glu g() {
+      return H;
+   }
+
+   public static glu a(boolean $$0) {
+      return $$0 ? J : I;
+   }
+
+   public static glu h() {
+      return K;
+   }
+
+   public static glu i() {
+      return L;
+   }
+
+   public static glu j() {
+      return M;
+   }
+
+   private static hdt c(dzg $$0) {
+      return new hdt(e, alz.b("entity/signs/" + $$0.b()));
+   }
+
+   private static hdt d(dzg $$0) {
+      return new hdt(e, alz.b("entity/signs/hanging/" + $$0.b()));
+   }
+
+   public static hdt a(dzg $$0) {
+      return k.get($$0);
+   }
+
+   public static hdt b(dzg $$0) {
+      return l.get($$0);
+   }
+
+   public static hdt a(jq<dum> $$0) {
+      return N.computeIfAbsent($$0.a().a(), $$0x -> {
+         alz $$1 = $$0x.f("entity/banner/");
+         return new hdt(c, $$1);
+      });
+   }
+
+   public static hdt b(jq<dum> $$0) {
+      return O.computeIfAbsent($$0.a().a(), $$0x -> {
+         alz $$1 = $$0x.f("entity/shield/");
+         return new hdt(d, $$1);
+      });
+   }
+
+   private static hdt a(String $$0) {
+      return new hdt(f, alz.b("entity/chest/" + $$0));
+   }
+
+   private static hdt a(alz $$0) {
+      return new hdt(h, $$0.f("entity/decorated_pot/"));
+   }
+
+   @Nullable
+   public static hdt a(@Nullable aly<dvo> $$0) {
+      return $$0 == null ? null : o.get($$0);
+   }
+
+   public static hdt a(duw $$0, dym $$1, boolean $$2) {
+      if ($$0 instanceof dvt) {
+         return B;
+      } else if ($$2) {
+         return a($$1, v, w, x);
+      } else {
+         return $$0 instanceof dws ? a($$1, s, t, u) : a($$1, y, z, A);
       }
-
-      return $$4.b();
    }
 
-   private fgp a(fgs $$0, float $$1) {
-      float $$2 = Math.signum($$1) * 512.0F;
-      fgl $$3 = $$0.a(fgv.c.g, fgo.e);
-      $$3.a(0.0F, $$1, 0.0F);
-
-      for (int $$4 = -180; $$4 <= 180; $$4 += 45) {
-         $$3.a($$2 * bae.b((float)$$4 * (float) (Math.PI / 180.0)), $$1, 512.0F * bae.a((float)$$4 * (float) (Math.PI / 180.0)));
+   private static hdt a(dym $$0, hdt $$1, hdt $$2, hdt $$3) {
+      switch ($$0) {
+         case b:
+            return $$2;
+         case c:
+            return $$3;
+         case a:
+         default:
+            return $$1;
       }
-
-      return $$3.b();
-   }
-
-   public void a(float $$0, float $$1, float $$2) {
-      RenderSystem.depthMask(false);
-      RenderSystem.setShader(gkt.d);
-      RenderSystem.setShaderColor($$0, $$1, $$2, 1.0F);
-      this.f.a();
-      this.f.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
-      fgt.b();
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.depthMask(true);
-   }
-
-   public void a(fgq $$0) {
-      RenderSystem.depthMask(false);
-      RenderSystem.setShader(gkt.d);
-      RenderSystem.setShaderColor(0.0F, 0.0F, 0.0F, 1.0F);
-      $$0.a();
-      $$0.a(0.0F, 12.0F, 0.0F);
-      this.g.a();
-      this.g.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
-      fgt.b();
-      $$0.b();
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.depthMask(true);
-   }
-
-   public void a(fgq $$0, fgs $$1, float $$2, int $$3, float $$4, float $$5, gkx $$6) {
-      $$0.a();
-      $$0.a(a.d.rotationDegrees(-90.0F));
-      $$0.a(a.b.rotationDegrees($$2 * 360.0F));
-      this.a($$4, $$1, $$0);
-      this.a($$3, $$4, $$1, $$0);
-      if ($$5 > 0.0F) {
-         this.a($$6, $$5, $$0);
-      }
-
-      $$0.b();
-   }
-
-   private void a(float $$0, fgs $$1, fgq $$2) {
-      float $$3 = 30.0F;
-      float $$4 = 100.0F;
-      fgl $$5 = $$1.a(fgv.c.h, fgo.i);
-      Matrix4f $$6 = $$2.c().a();
-      RenderSystem.depthMask(false);
-      RenderSystem.overlayBlendFunc();
-      RenderSystem.setShader(gkt.h);
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, $$0);
-      RenderSystem.setShaderTexture(0, a);
-      RenderSystem.enableBlend();
-      $$5.a($$6, -30.0F, 100.0F, -30.0F).a(0.0F, 0.0F);
-      $$5.a($$6, 30.0F, 100.0F, -30.0F).a(1.0F, 0.0F);
-      $$5.a($$6, 30.0F, 100.0F, 30.0F).a(1.0F, 1.0F);
-      $$5.a($$6, -30.0F, 100.0F, 30.0F).a(0.0F, 1.0F);
-      fgm.a($$5.b());
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.disableBlend();
-      RenderSystem.defaultBlendFunc();
-      RenderSystem.depthMask(true);
-   }
-
-   private void a(int $$0, float $$1, fgs $$2, fgq $$3) {
-      float $$4 = 20.0F;
-      int $$5 = $$0 % 4;
-      int $$6 = $$0 / 4 % 2;
-      float $$7 = (float)($$5 + 0) / 4.0F;
-      float $$8 = (float)($$6 + 0) / 2.0F;
-      float $$9 = (float)($$5 + 1) / 4.0F;
-      float $$10 = (float)($$6 + 1) / 2.0F;
-      float $$11 = 100.0F;
-      fgl $$12 = $$2.a(fgv.c.h, fgo.i);
-      RenderSystem.depthMask(false);
-      RenderSystem.overlayBlendFunc();
-      RenderSystem.setShader(gkt.h);
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, $$1);
-      RenderSystem.setShaderTexture(0, b);
-      RenderSystem.enableBlend();
-      Matrix4f $$13 = $$3.c().a();
-      $$12.a($$13, -20.0F, -100.0F, 20.0F).a($$9, $$10);
-      $$12.a($$13, 20.0F, -100.0F, 20.0F).a($$7, $$10);
-      $$12.a($$13, 20.0F, -100.0F, -20.0F).a($$7, $$8);
-      $$12.a($$13, -20.0F, -100.0F, -20.0F).a($$9, $$8);
-      fgm.a($$12.b());
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.disableBlend();
-      RenderSystem.defaultBlendFunc();
-      RenderSystem.depthMask(true);
-   }
-
-   private void a(gkx $$0, float $$1, fgq $$2) {
-      Matrix4fStack $$3 = RenderSystem.getModelViewStack();
-      $$3.pushMatrix();
-      $$3.mul($$2.c().a());
-      RenderSystem.depthMask(false);
-      RenderSystem.overlayBlendFunc();
-      RenderSystem.setShader(gkt.d);
-      RenderSystem.setShaderColor($$1, $$1, $$1, $$1);
-      RenderSystem.enableBlend();
-      RenderSystem.setShaderFog(gkx.a);
-      this.e.a();
-      this.e.a($$3, RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
-      fgt.b();
-      RenderSystem.setShaderFog($$0);
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.disableBlend();
-      RenderSystem.defaultBlendFunc();
-      RenderSystem.depthMask(true);
-      $$3.popMatrix();
-   }
-
-   public void a(fgq $$0, fgs $$1, float $$2, int $$3) {
-      RenderSystem.setShader(gkt.e);
-      RenderSystem.depthMask(false);
-      RenderSystem.enableBlend();
-      $$0.a();
-      $$0.a(a.b.rotationDegrees(90.0F));
-      float $$4 = bae.a($$2) < 0.0F ? 180.0F : 0.0F;
-      $$0.a(a.f.rotationDegrees($$4));
-      $$0.a(a.f.rotationDegrees(90.0F));
-      Matrix4f $$5 = $$0.c().a();
-      fgl $$6 = $$1.a(fgv.c.g, fgo.f);
-      float $$7 = ayp.i(ayp.a($$3));
-      $$6.a($$5, 0.0F, 100.0F, 0.0F).a($$3);
-      int $$8 = ayp.g($$3);
-      int $$9 = 16;
-
-      for (int $$10 = 0; $$10 <= 16; $$10++) {
-         float $$11 = (float)$$10 * (float) (Math.PI * 2) / 16.0F;
-         float $$12 = bae.a($$11);
-         float $$13 = bae.b($$11);
-         $$6.a($$5, $$12 * 120.0F, $$13 * 120.0F, -$$13 * 40.0F * $$7).a($$8);
-      }
-
-      fgm.a($$6.b());
-      $$0.b();
-      RenderSystem.disableBlend();
-      RenderSystem.depthMask(true);
-   }
-
-   public void b(fgq $$0) {
-      RenderSystem.enableBlend();
-      RenderSystem.depthMask(false);
-      RenderSystem.setShader(gkt.i);
-      RenderSystem.setShaderTexture(0, c);
-      fgs $$1 = fgs.b();
-
-      for (int $$2 = 0; $$2 < 6; $$2++) {
-         $$0.a();
-         if ($$2 == 1) {
-            $$0.a(a.b.rotationDegrees(90.0F));
-         }
-
-         if ($$2 == 2) {
-            $$0.a(a.b.rotationDegrees(-90.0F));
-         }
-
-         if ($$2 == 3) {
-            $$0.a(a.b.rotationDegrees(180.0F));
-         }
-
-         if ($$2 == 4) {
-            $$0.a(a.f.rotationDegrees(90.0F));
-         }
-
-         if ($$2 == 5) {
-            $$0.a(a.f.rotationDegrees(-90.0F));
-         }
-
-         Matrix4f $$3 = $$0.c().a();
-         fgl $$4 = $$1.a(fgv.c.h, fgo.j);
-         $$4.a($$3, -100.0F, -100.0F, -100.0F).a(0.0F, 0.0F).a(-14145496);
-         $$4.a($$3, -100.0F, -100.0F, 100.0F).a(0.0F, 16.0F).a(-14145496);
-         $$4.a($$3, 100.0F, -100.0F, 100.0F).a(16.0F, 16.0F).a(-14145496);
-         $$4.a($$3, 100.0F, -100.0F, -100.0F).a(16.0F, 0.0F).a(-14145496);
-         fgm.a($$4.b());
-         $$0.b();
-      }
-
-      RenderSystem.depthMask(true);
-      RenderSystem.disableBlend();
-   }
-
-   @Override
-   public void close() {
-      this.e.close();
-      this.f.close();
-      this.g.close();
    }
 }

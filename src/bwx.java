@@ -6,7 +6,7 @@ public interface bwx {
    bwx a = new bwx() {
       @Override
       public cxo a() {
-         return cxo.k;
+         return cxo.j;
       }
 
       @Override

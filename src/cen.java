@@ -7,7 +7,7 @@ public class cen extends cdd {
 
    @Override
    public boolean b() {
-      return this.a.aJ() && !this.a.dV().b_(this.a.dv()).a(aya.a);
+      return this.a.aJ() && !this.a.dW().b_(this.a.dw()).a(aya.a);
    }
 
    @Override
@@ -15,9 +15,9 @@ public class cen extends cdd {
       jh $$0 = null;
 
       for (jh $$2 : jh.b(
-         bae.a(this.a.dA() - 2.0), bae.a(this.a.dC() - 2.0), bae.a(this.a.dG() - 2.0), bae.a(this.a.dA() + 2.0), this.a.dB(), bae.a(this.a.dG() + 2.0)
+         bae.a(this.a.dB() - 2.0), bae.a(this.a.dD() - 2.0), bae.a(this.a.dH() - 2.0), bae.a(this.a.dB() + 2.0), this.a.dC(), bae.a(this.a.dH() + 2.0)
       )) {
-         if (this.a.dV().b_($$2).a(aya.a)) {
+         if (this.a.dW().b_($$2).a(aya.a)) {
             $$0 = $$2;
             break;
          }

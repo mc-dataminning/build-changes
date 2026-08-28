@@ -11,7 +11,7 @@ public class cbg extends bxy<cpi> {
 
    protected void b(ash $$0, cpi $$1, long $$2) {
       if (c($$1) || b($$1)) {
-         bxh<?> $$3 = $$1.eb();
+         bxh<?> $$3 = $$1.ec();
          if (!$$3.c(crn.g)) {
             $$3.b(cfj.t);
             $$3.b(cfj.m);
@@ -31,10 +31,10 @@ public class cbg extends bxy<cpi> {
    }
 
    public static boolean b(bwf $$0) {
-      return $$0.eb().a(cfj.A);
+      return $$0.ec().a(cfj.A);
    }
 
    public static boolean c(bwf $$0) {
-      return $$0.eb().a(cfj.x);
+      return $$0.ec().a(cfj.x);
    }
 }

@@ -11,7 +11,7 @@ public class cgc extends cgp<coe> {
    }
 
    protected void a(ash $$0, coe $$1) {
-      bxh<?> $$2 = $$1.eb();
+      bxh<?> $$2 = $$1.ec();
       $$2.a(cfj.aw, this.b($$0, $$1));
       Optional<cok> $$3 = Optional.empty();
       int $$4 = 0;
@@ -38,6 +38,6 @@ public class cgc extends cgp<coe> {
    }
 
    private Optional<jh> b(ash $$0, coe $$1) {
-      return jh.a($$1.dv(), 8, 4, $$1x -> $$0.a_($$1x).a(axu.aU));
+      return jh.a($$1.dw(), 8, 4, $$1x -> $$0.a_($$1x).a(axu.aU));
    }
 }

@@ -46,7 +46,7 @@ public class ctx extends ctb {
       this.a(ctv.a(this.m, 0));
       this.a(ctv.a(this.m, 1));
       this.a(ctv.a(this.m, 2));
-      this.a(this.t).a($$1.k.gp());
+      this.a(this.t).a($$1.k.gr());
       this.a(ctv.a(this.n, 0));
       this.a(ctv.a(this.n, 1));
       this.a(ctv.a(this.n, 2));
@@ -110,9 +110,9 @@ public class ctx extends ctb {
          cxo $$2 = this.q.a(0);
          cxo $$3 = this.q.a(1);
          int $$4 = $$1 + 1;
-         if (($$3.f() || $$3.L() < $$4) && !$$0.fT()) {
+         if (($$3.f() || $$3.L() < $$4) && !$$0.fV()) {
             return false;
-         } else if (this.m[$$1] <= 0 || $$2.f() || ($$0.cq < $$4 || $$0.cq < this.m[$$1]) && !$$0.gh().d) {
+         } else if (this.m[$$1] <= 0 || $$2.f() || ($$0.cq < $$4 || $$0.cq < this.m[$$1]) && !$$0.gj().d) {
             return false;
          } else {
             this.r.a(($$5, $$6) -> {
@@ -131,7 +131,7 @@ public class ctx extends ctb {
 
                   $$3.a($$4, (bwf)$$0);
                   if ($$3.f()) {
-                     this.q.a(1, cxo.k);
+                     this.q.a(1, cxo.j);
                   }
 
                   $$0.a(axp.ak);
@@ -140,7 +140,7 @@ public class ctx extends ctb {
                   }
 
                   this.q.e();
-                  this.t.a($$0.gp());
+                  this.t.a($$0.gr());
                   this.a(this.q);
                   $$5.a(null, $$6, axf.ir, axg.e, 1.0F, $$5.A.i() * 0.1F + 0.9F);
                }
@@ -190,26 +190,26 @@ public class ctx extends ctb {
 
    @Override
    public cxo b(cpw $$0, int $$1) {
-      cxo $$2 = cxo.k;
+      cxo $$2 = cxo.j;
       cuy $$3 = this.k.get($$1);
       if ($$3 != null && $$3.h()) {
          cxo $$4 = $$3.g();
          $$2 = $$4.v();
          if ($$1 == 0) {
             if (!this.a($$4, 2, 38, true)) {
-               return cxo.k;
+               return cxo.j;
             }
          } else if ($$1 == 1) {
             if (!this.a($$4, 2, 38, true)) {
-               return cxo.k;
+               return cxo.j;
             }
          } else if ($$4.a(cxs.oX)) {
             if (!this.a($$4, 1, 2, true)) {
-               return cxo.k;
+               return cxo.j;
             }
          } else {
             if (this.k.get(0).h() || !this.k.get(0).a($$4)) {
-               return cxo.k;
+               return cxo.j;
             }
 
             cxo $$5 = $$4.c(1);
@@ -218,13 +218,13 @@ public class ctx extends ctb {
          }
 
          if ($$4.f()) {
-            $$3.e(cxo.k);
+            $$3.e(cxo.j);
          } else {
             $$3.c();
          }
 
          if ($$4.L() == $$2.L()) {
-            return cxo.k;
+            return cxo.j;
          }
 
          $$3.a($$0, $$4);

@@ -11,13 +11,13 @@ public class cct extends cdh {
 
    @Override
    public boolean b() {
-      if (this.b.dY().a(this.c) != 0) {
+      if (this.b.dZ().a(this.c) != 0) {
          return false;
       } else {
          jm $$0 = this.b.cP();
          int $$1 = $$0.j();
          int $$2 = $$0.l();
-         jh $$3 = this.b.dv();
+         jh $$3 = this.b.dw();
 
          for (int $$4 : a) {
             if (!this.a($$3, $$1, $$2, $$4) || !this.b($$3, $$1, $$2, $$4)) {
@@ -31,17 +31,17 @@ public class cct extends cdh {
 
    private boolean a(jh $$0, int $$1, int $$2, int $$3) {
       jh $$4 = $$0.b($$1 * $$3, 0, $$2 * $$3);
-      return this.b.dV().b_($$4).a(aya.a) && !this.b.dV().a_($$4).d();
+      return this.b.dW().b_($$4).a(aya.a) && !this.b.dW().a_($$4).d();
    }
 
    private boolean b(jh $$0, int $$1, int $$2, int $$3) {
-      return this.b.dV().a_($$0.b($$1 * $$3, 1, $$2 * $$3)).l() && this.b.dV().a_($$0.b($$1 * $$3, 2, $$2 * $$3)).l();
+      return this.b.dW().a_($$0.b($$1 * $$3, 1, $$2 * $$3)).l() && this.b.dW().a_($$0.b($$1 * $$3, 2, $$2 * $$3)).l();
    }
 
    @Override
    public boolean c() {
-      double $$0 = this.b.dy().e;
-      return (!($$0 * $$0 < 0.03F) || this.b.dN() == 0.0F || !(Math.abs(this.b.dN()) < 10.0F) || !this.b.bj()) && !this.b.aJ();
+      double $$0 = this.b.dz().e;
+      return (!($$0 * $$0 < 0.03F) || this.b.dO() == 0.0F || !(Math.abs(this.b.dO()) < 10.0F) || !this.b.bj()) && !this.b.aJ();
    }
 
    @Override
@@ -52,7 +52,7 @@ public class cct extends cdh {
    @Override
    public void d() {
       jm $$0 = this.b.cP();
-      this.b.h(this.b.dy().b((double)$$0.j() * 0.6, 0.7, (double)$$0.l() * 0.6));
+      this.b.h(this.b.dz().b((double)$$0.j() * 0.6, 0.7, (double)$$0.l() * 0.6));
       this.b.L().o();
    }
 
@@ -65,7 +65,7 @@ public class cct extends cdh {
    public void a() {
       boolean $$0 = this.d;
       if (!$$0) {
-         etw $$1 = this.b.dV().b_(this.b.dv());
+         etw $$1 = this.b.dW().b_(this.b.dw());
          this.d = $$1.a(aya.a);
       }
 
@@ -73,9 +73,9 @@ public class cct extends cdh {
          this.b.a(axf.hv, 1.0F, 1.0F);
       }
 
-      fbx $$2 = this.b.dy();
-      if ($$2.e * $$2.e < 0.03F && this.b.dN() != 0.0F) {
-         this.b.w(bae.i(0.2F, this.b.dN(), 0.0F));
+      fbx $$2 = this.b.dz();
+      if ($$2.e * $$2.e < 0.03F && this.b.dO() != 0.0F) {
+         this.b.w(bae.i(0.2F, this.b.dO(), 0.0F));
       } else if ($$2.g() > 1.0E-5F) {
          double $$3 = $$2.i();
          double $$4 = Math.atan2(-$$2.e, $$3) * 180.0F / (float)Math.PI;

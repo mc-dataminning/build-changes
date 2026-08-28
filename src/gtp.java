@@ -1,60 +1,42 @@
-import java.util.Objects;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+public class gtp extends gro<cqs, gzn> {
+   private static final alz a = alz.b("textures/entity/shulker/spark.png");
+   private static final glu b = glu.j(a);
+   private final gdd h;
 
-public class gtp extends gsu<cnc, gzn, gdd> {
-   private static final alz a = gme.i.b().a((UnaryOperator<String>)($$0 -> "textures/" + $$0 + ".png"));
-   private static final alz[] b = gme.j.stream().map($$0 -> $$0.b().a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png"))).toArray(alz[]::new);
-
-   public gtp(gro.a $$0) {
-      super($$0, new gdd($$0.a(gel.cB)), 0.0F);
+   public gtp(grp.a $$0) {
+      super($$0);
+      this.h = new gdd($$0.a(gem.cD));
    }
 
-   public fbx a(gzn $$0) {
-      return $$0.a;
+   protected int a(cqs $$0, jh $$1) {
+      return 15;
    }
 
-   public boolean a(cnc $$0, gpa $$1, double $$2, double $$3, double $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4)) {
-         return true;
-      } else {
-         fbx $$5 = $$0.K(0.0F);
-         if ($$5 == null) {
-            return false;
-         } else {
-            bvq<?> $$6 = $$0.aq();
-            float $$7 = $$6.m() / 2.0F;
-            float $$8 = $$6.l() / 2.0F;
-            fbx $$9 = fbx.c($$0.dv());
-            return $$1.a(new fbs($$5.d, $$5.e + (double)$$7, $$5.f, $$9.d, $$9.e + (double)$$7, $$9.f).c((double)$$8, (double)$$7, (double)$$8));
-         }
-      }
+   public void a(gzn $$0, fgr $$1, glk $$2, int $$3) {
+      $$1.a();
+      float $$4 = $$0.p;
+      $$1.a(0.0F, 0.15F, 0.0F);
+      $$1.a(a.d.rotationDegrees(bae.a($$4 * 0.1F) * 180.0F));
+      $$1.a(a.b.rotationDegrees(bae.b($$4 * 0.1F) * 180.0F));
+      $$1.a(a.f.rotationDegrees(bae.a($$4 * 0.15F) * 360.0F));
+      $$1.b(-0.5F, -0.5F, 0.5F);
+      this.h.a($$0);
+      fgv $$5 = $$2.getBuffer(this.h.a(a));
+      this.h.a($$1, $$5, $$3, hbb.d);
+      $$1.b(1.5F, 1.5F, 1.5F);
+      fgv $$6 = $$2.getBuffer(b);
+      this.h.a($$1, $$6, $$3, hbb.d, 654311423);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public alz b(gzn $$0) {
-      return a($$0.b);
-   }
-
-   public gzn b() {
+   public gzn a() {
       return new gzn();
    }
 
-   public void a(cnc $$0, gzn $$1, float $$2) {
+   public void a(cqs $$0, gzn $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = Objects.requireNonNullElse($$0.K($$2), fbx.c);
-      $$1.b = $$0.gm();
-      $$1.c = $$0.J($$2);
-      $$1.d = $$0.aZ;
-      $$1.e = $$0.aX;
-      $$1.f = $$0.t();
-   }
-
-   public static alz a(@Nullable cwl $$0) {
-      return $$0 == null ? a : b[$$0.a()];
-   }
-
-   protected void a(gzn $$0, fgq $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2 + 180.0F, $$3);
-      $$1.a($$0.f.g().b(), 0.0F, 0.5F, 0.0F);
+      $$1.b = $$0.k($$2);
+      $$1.a = $$0.j($$2);
    }
 }

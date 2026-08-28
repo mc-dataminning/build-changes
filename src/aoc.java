@@ -67,7 +67,7 @@ public class aoc {
                                           List<ew> $$1x = Lists.newArrayList();
 
                                           for (bvj $$2x : fj.c($$0x, "targets")) {
-                                             $$1x.add(((ew)$$0x.getSource()).a((ash)$$2x.dV()).a($$2x.dt()).a($$2x.bU()));
+                                             $$1x.add(((ew)$$0x.getSource()).a((ash)$$2x.dW()).a($$2x.du()).a($$2x.bU()));
                                           }
 
                                           return $$1x;
@@ -80,7 +80,7 @@ public class aoc {
                                              List<ew> $$1x = Lists.newArrayList();
 
                                              for (bvj $$2x : fj.c($$0x, "targets")) {
-                                                $$1x.add(((ew)$$0x.getSource()).a($$2x.dt()));
+                                                $$1x.add(((ew)$$0x.getSource()).a($$2x.du()));
                                              }
 
                                              return $$1x;
@@ -690,7 +690,7 @@ public class aoc {
       return $$1 -> {
          ew $$2 = (ew)$$1.getSource();
          bvj $$3 = $$2.f();
-         return (Collection)($$3 == null ? List.of() : $$0.apply($$3).filter($$0xx -> !$$0xx.dQ()).map($$1x -> List.of($$2.a($$1x))).orElse(List.of()));
+         return (Collection)($$3 == null ? List.of() : $$0.apply($$3).filter($$0xx -> !$$0xx.dR()).map($$1x -> List.of($$2.a($$1x))).orElse(List.of()));
       };
    }
 
@@ -698,7 +698,7 @@ public class aoc {
       return $$1 -> {
          ew $$2 = (ew)$$1.getSource();
          bvj $$3 = $$2.f();
-         return $$3 == null ? List.of() : $$0.apply($$3).filter($$0xx -> !$$0xx.dQ()).map($$2::a).toList();
+         return $$3 == null ? List.of() : $$0.apply($$3).filter($$0xx -> !$$0xx.dR()).map($$2::a).toList();
       };
    }
 
@@ -726,7 +726,7 @@ public class aoc {
                         ex.a("attacker")
                            .fork($$0, a((Function<bvj, Optional<bvj>>)($$0x -> $$0x instanceof bvd $$1x ? Optional.ofNullable($$1x.am()) : Optional.empty())))
                      ))
-                  .then(ex.a("vehicle").fork($$0, a((Function<bvj, Optional<bvj>>)($$0x -> Optional.ofNullable($$0x.dk()))))))
+                  .then(ex.a("vehicle").fork($$0, a((Function<bvj, Optional<bvj>>)($$0x -> Optional.ofNullable($$0x.dl()))))))
                .then(ex.a("controller").fork($$0, a((Function<bvj, Optional<bvj>>)($$0x -> Optional.ofNullable($$0x.cX()))))))
             .then(
                ex.a("origin").fork($$0, a((Function<bvj, Optional<bvj>>)($$0x -> $$0x instanceof bxe $$1x ? Optional.ofNullable($$1x.p()) : Optional.empty())))

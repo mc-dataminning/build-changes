@@ -1,21 +1,23 @@
-public class gry extends gsu<cmq, gye, gbp> {
-   private static final alz a = alz.b("textures/entity/ghast/ghast.png");
-   private static final alz b = alz.b("textures/entity/ghast/ghast_shooting.png");
-
-   public gry(gro.a $$0) {
-      super($$0, new gbp($$0.a(gel.aO)), 1.5F);
+public class gry extends gsv<cjq, gye, gbp> {
+   public gry(grp.a $$0) {
+      super($$0, new gbp($$0.a(gem.aM)), 0.3F);
    }
 
    public alz a(gye $$0) {
-      return $$0.a ? b : a;
+      return $$0.f;
    }
 
    public gye b() {
       return new gye();
    }
 
-   public void a(cmq $$0, gye $$1, float $$2) {
+   public void a(cjq $$0, gye $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.m();
+      $$1.a = $$0.bm();
+      $$1.b.a($$0.cd);
+      $$1.c.a($$0.ce);
+      $$1.d.a($$0.cf);
+      $$1.e.a($$0.cg);
+      $$1.f = $$0.x().a().a();
    }
 }

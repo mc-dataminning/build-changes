@@ -49,13 +49,13 @@ public class cmb extends bvj implements bxe {
    }
 
    @Override
-   protected bvj.b bg() {
-      return bvj.b.a;
+   protected bvj.c bg() {
+      return bvj.c.a;
    }
 
    @Override
    public boolean bH() {
-      return !this.dQ();
+      return !this.dR();
    }
 
    @Override
@@ -67,30 +67,30 @@ public class cmb extends bvj implements bxe {
    public void h() {
       this.bW();
       this.bf();
-      this.a(bwj.a, this.dy());
+      this.a(bwj.a, this.dz());
       this.aK();
-      this.h(this.dy().c(0.98));
+      this.h(this.dz().c(0.98));
       if (this.aJ()) {
-         this.h(this.dy().d(0.7, -0.5, 0.7));
+         this.h(this.dz().d(0.7, -0.5, 0.7));
       }
 
       int $$0 = this.m() - 1;
       this.b($$0);
       if ($$0 <= 0) {
          this.at();
-         if (!this.dV().C) {
+         if (!this.dW().C) {
             this.t();
          }
       } else {
          this.bq();
-         if (this.dV().C) {
-            this.dV().a(ls.af, this.dA(), this.dC() + 0.5, this.dG(), 0.0, 0.0, 0.0);
+         if (this.dW().C) {
+            this.dW().a(ls.af, this.dB(), this.dD() + 0.5, this.dH(), 0.0, 0.0, 0.0);
          }
       }
    }
 
    private void t() {
-      this.dV().a(this, dgz.a(this.dV(), this), this.j ? h : null, this.dA(), this.e(0.0625), this.dG(), this.k, false, dhh.a.d);
+      this.dW().a(this, dgz.a(this.dW(), this), this.j ? h : null, this.dB(), this.e(0.0625), this.dH(), this.k, false, dhh.a.d);
    }
 
    @Override
@@ -106,7 +106,7 @@ public class cmb extends bvj implements bxe {
    protected void a(ux $$0) {
       this.b($$0.g("fuse"));
       if ($$0.b("block_state", 10)) {
-         this.c(vm.a(this.dV().a(mb.f), $$0.p("block_state")));
+         this.c(vm.a(this.dW().a(mb.f), $$0.p("block_state")));
       }
 
       if ($$0.b("explosion_power", 99)) {

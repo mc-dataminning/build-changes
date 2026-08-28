@@ -18,7 +18,7 @@ public class cag extends bxy<cpi> {
    }
 
    public boolean a(ash $$0, cpi $$1) {
-      bxh<?> $$2 = $$1.eb();
+      bxh<?> $$2 = $$1.ec();
       if ($$2.c(cfj.q).isEmpty()) {
          return false;
       } else {
@@ -28,7 +28,7 @@ public class cag extends bxy<cpi> {
    }
 
    public boolean a(ash $$0, cpi $$1, long $$2) {
-      return this.a($$0, $$1) && this.i > 0 && $$1.eb().c(cfj.q).isPresent();
+      return this.a($$0, $$1) && this.i > 0 && $$1.ec().c(cfj.q).isPresent();
    }
 
    public void b(ash $$0, cpi $$1, long $$2) {
@@ -54,14 +54,14 @@ public class cag extends bxy<cpi> {
 
    public void d(ash $$0, cpi $$1, long $$2) {
       super.b($$0, $$1, $$2);
-      $$1.eb().b(cfj.q);
+      $$1.ec().b(cfj.q);
       c($$1);
       this.e = null;
    }
 
    private void a(bwf $$0, cpi $$1) {
       boolean $$2 = false;
-      cxo $$3 = $$0.eX();
+      cxo $$3 = $$0.eZ();
       if (this.e == null || !cxo.b(this.e, $$3)) {
          this.e = $$3;
          $$2 = true;
@@ -82,7 +82,7 @@ public class cag extends bxy<cpi> {
    }
 
    private void b(cpi $$0) {
-      for (dge $$1 : $$0.go()) {
+      for (dge $$1 : $$0.gq()) {
          if (!$$1.r() && this.a($$1)) {
             this.f.add($$1.h());
          }
@@ -94,7 +94,7 @@ public class cag extends bxy<cpi> {
    }
 
    private static void c(cpi $$0) {
-      $$0.a(bvr.a, cxo.k);
+      $$0.a(bvr.a, cxo.j);
       $$0.a(bvr.a, 0.085F);
    }
 
@@ -104,7 +104,7 @@ public class cag extends bxy<cpi> {
    }
 
    private bwf d(cpi $$0) {
-      bxh<?> $$1 = $$0.eb();
+      bxh<?> $$1 = $$0.ec();
       bwf $$2 = $$1.c(cfj.q).get();
       $$1.a(cfj.n, new byj($$2, true));
       return $$2;

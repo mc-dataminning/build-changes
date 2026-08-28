@@ -20,11 +20,11 @@ public abstract class clq extends bvj {
 
    @Override
    public void h() {
-      if (this.dV() instanceof ash $$0) {
+      if (this.dW() instanceof ash $$0) {
          this.aA();
          if (this.c++ == 100) {
             this.c = 0;
-            if (!this.dQ() && !this.m()) {
+            if (!this.dR() && !this.m()) {
                this.at();
                this.a($$0, null);
             }
@@ -42,7 +42,7 @@ public abstract class clq extends bvj {
    @Override
    public boolean v(bvj $$0) {
       if ($$0 instanceof cpw $$1) {
-         return !this.dV().a($$1, this.a) ? true : this.b(this.dW().a($$1), 0.0F);
+         return !this.dW().a($$1, this.a) ? true : this.b(this.dX().a($$1), 0.0F);
       } else {
          return false;
       }
@@ -60,7 +60,7 @@ public abstract class clq extends bvj {
       } else if (!$$0.N().b(dhd.c) && $$1.d() instanceof bwh) {
          return false;
       } else {
-         if (!this.dQ()) {
+         if (!this.dR()) {
             this.c($$0);
             this.bD();
             this.a($$0, $$1.d());
@@ -77,7 +77,7 @@ public abstract class clq extends bvj {
 
    @Override
    public void a(bwj $$0, fbx $$1) {
-      if (this.dV() instanceof ash $$2 && !this.dQ() && $$1.h() > 0.0) {
+      if (this.dW() instanceof ash $$2 && !this.dR() && $$1.h() > 0.0) {
          this.c($$2);
          this.a($$2, null);
       }
@@ -85,7 +85,7 @@ public abstract class clq extends bvj {
 
    @Override
    public void j(double $$0, double $$1, double $$2) {
-      if (this.dV() instanceof ash $$3 && !this.dQ() && $$0 * $$0 + $$1 * $$1 + $$2 * $$2 > 0.0) {
+      if (this.dW() instanceof ash $$3 && !this.dR() && $$0 * $$0 + $$1 * $$1 + $$2 * $$2 > 0.0) {
          this.c($$3);
          this.a($$3, null);
       }
@@ -102,7 +102,7 @@ public abstract class clq extends bvj {
    @Override
    public void a(ux $$0) {
       jh $$1 = new jh($$0.h("TileX"), $$0.h("TileY"), $$0.h("TileZ"));
-      if (!$$1.a(this.dv(), 16.0)) {
+      if (!$$1.a(this.dw(), 16.0)) {
          b.error("Block-attached entity at invalid position: {}", $$1);
       } else {
          this.a = $$1;

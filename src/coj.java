@@ -63,7 +63,7 @@ public abstract class coj extends cmw {
       }
 
       if (this.c > 300) {
-         this.gp();
+         this.gr();
          this.g($$0);
       }
    }
@@ -74,18 +74,18 @@ public abstract class coj extends cmw {
    }
 
    public boolean x() {
-      return !this.dV().G_().b() && !this.p() && !this.fZ();
+      return !this.dW().G_().b() && !this.p() && !this.gb();
    }
 
    protected void g(ash $$0) {
       this.a(bvq.bR, bve.a(this, true, true), $$0x -> $$0x.a(new buo(buq.i, 200, 0)));
    }
 
-   public boolean gm() {
+   public boolean go() {
       return !this.e_();
    }
 
-   public abstract com gn();
+   public abstract com gp();
 
    @Nullable
    @Override
@@ -93,8 +93,8 @@ public abstract class coj extends cmw {
       return this.O();
    }
 
-   protected boolean go() {
-      return this.eX().b(ku.B);
+   protected boolean gq() {
+      return this.eZ().b(ku.B);
    }
 
    @Override
@@ -110,5 +110,5 @@ public abstract class coj extends cmw {
       ahj.a(this);
    }
 
-   protected abstract void gp();
+   protected abstract void gr();
 }

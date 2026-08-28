@@ -11,12 +11,12 @@ public class byj implements bzm {
 
    @Override
    public fbx a() {
-      return this.b ? this.a.dt().b(0.0, (double)this.a.cS(), 0.0) : this.a.dt();
+      return this.b ? this.a.du().b(0.0, (double)this.a.cS(), 0.0) : this.a.du();
    }
 
    @Override
    public jh b() {
-      return this.a.dv();
+      return this.a.dw();
    }
 
    @Override
@@ -25,7 +25,7 @@ public class byj implements bzm {
          if (!$$1.bL()) {
             return false;
          } else {
-            Optional<cfl> $$3 = $$0.eb().c(cfj.h);
+            Optional<cfl> $$3 = $$0.ec().c(cfj.h);
             return $$3.isPresent() && $$3.get().a($$1);
          }
       } else {

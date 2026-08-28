@@ -56,7 +56,7 @@ public class doy extends djx {
       cxo $$2 = $$0.n();
       cpw $$3 = $$0.o();
       boolean $$4 = false;
-      if (!$$1.C && $$3 != null && $$3.gE()) {
+      if (!$$1.C && $$3 != null && $$3.gG()) {
          czx $$5 = $$2.a(ku.Y, czx.a);
          if ($$5.a("Book")) {
             $$4 = true;

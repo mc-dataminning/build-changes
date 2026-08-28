@@ -19,72 +19,72 @@ public abstract class chu extends chs {
 
    @Override
    public int ad() {
-      return this.gn();
+      return this.gp();
    }
 
-   public int gn() {
+   public int gp() {
       return super.ad();
    }
 
    @Override
    protected boolean x() {
-      return !this.go();
+      return !this.gq();
    }
 
-   public boolean go() {
+   public boolean gq() {
       return this.a != null && this.a.bL();
    }
 
    public chu a(chu $$0) {
       this.a = $$0;
-      $$0.gu();
+      $$0.gw();
       return $$0;
    }
 
-   public void gp() {
-      this.a.gv();
+   public void gr() {
+      this.a.gx();
       this.a = null;
    }
 
-   private void gu() {
+   private void gw() {
       this.b++;
    }
 
-   private void gv() {
+   private void gx() {
       this.b--;
    }
 
-   public boolean gq() {
-      return this.gr() && this.b < this.gn();
+   public boolean gs() {
+      return this.gt() && this.b < this.gp();
    }
 
    @Override
    public void h() {
       super.h();
-      if (this.gr() && this.dV().A.a(200) == 1) {
-         List<? extends chs> $$0 = this.dV().a((Class<? extends chs>)this.getClass(), this.cR().c(8.0, 8.0, 8.0));
+      if (this.gt() && this.dW().A.a(200) == 1) {
+         List<? extends chs> $$0 = this.dW().a((Class<? extends chs>)this.getClass(), this.cR().c(8.0, 8.0, 8.0));
          if ($$0.size() <= 1) {
             this.b = 1;
          }
       }
    }
 
-   public boolean gr() {
+   public boolean gt() {
       return this.b > 1;
    }
 
-   public boolean gs() {
+   public boolean gu() {
       return this.g(this.a) <= 121.0;
    }
 
-   public void gt() {
-      if (this.go()) {
+   public void gv() {
+      if (this.gq()) {
          this.L().a(this.a, 1.0);
       }
    }
 
    public void a(Stream<? extends chu> $$0) {
-      $$0.limit((long)(this.gn() - this.b)).filter($$0x -> $$0x != this).forEach($$0x -> $$0x.a(this));
+      $$0.limit((long)(this.gp() - this.b)).filter($$0x -> $$0x != this).forEach($$0x -> $$0x.a(this));
    }
 
    @Nullable

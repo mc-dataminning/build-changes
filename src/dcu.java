@@ -43,8 +43,8 @@ public class dcu extends dbt {
    }
 
    public cxo a(dbr $$0, js.a $$1) {
-      cxo $$2 = cxo.k;
-      cxo $$3 = cxo.k;
+      cxo $$2 = cxo.j;
+      cxo $$3 = cxo.j;
 
       for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
          cxo $$5 = $$0.a($$4);

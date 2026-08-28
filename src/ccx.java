@@ -11,7 +11,7 @@ public class ccx extends cdd {
 
    @Override
    public boolean b() {
-      return this.a.bj() && this.a.b(aya.a) > this.a.dp() || this.a.bx();
+      return this.a.bj() && this.a.b(aya.a) > this.a.dq() || this.a.bx();
    }
 
    @Override
@@ -21,7 +21,7 @@ public class ccx extends cdd {
 
    @Override
    public void a() {
-      if (this.a.dY().i() < 0.8F) {
+      if (this.a.dZ().i() < 0.8F) {
          this.a.J().a();
       }
    }

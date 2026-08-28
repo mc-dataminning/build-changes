@@ -9,7 +9,7 @@ public class dbh {
    private final cxo e;
 
    public dbh(cpw $$0, bth $$1, fbt $$2) {
-      this($$0.dV(), $$0, $$1, $$0.b($$1), $$2);
+      this($$0.dW(), $$0, $$1, $$0.b($$1), $$2);
    }
 
    protected dbh(dhh $$0, @Nullable cpw $$1, bth $$2, cxo $$3, fbt $$4) {
@@ -62,10 +62,10 @@ public class dbh {
    }
 
    public boolean h() {
-      return this.a != null && this.a.fW();
+      return this.a != null && this.a.fY();
    }
 
    public float i() {
-      return this.a == null ? 0.0F : this.a.dL();
+      return this.a == null ? 0.0F : this.a.dM();
    }
 }

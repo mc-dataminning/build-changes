@@ -9,7 +9,7 @@ public class cas<T extends bwh> extends bxy<T> {
    }
 
    public static <T extends bwh> boolean a(T $$0) {
-      return $$0.bj() && $$0.b(aya.a) > $$0.dp() || $$0.bx();
+      return $$0.bj() && $$0.b(aya.a) > $$0.dq() || $$0.bx();
    }
 
    protected boolean a(ash $$0, bwh $$1) {
@@ -21,7 +21,7 @@ public class cas<T extends bwh> extends bxy<T> {
    }
 
    protected void b(ash $$0, bwh $$1, long $$2) {
-      if ($$1.dY().i() < this.c) {
+      if ($$1.dZ().i() < this.c) {
          $$1.J().a();
       }
    }

@@ -1,41 +1,57 @@
-import com.mojang.authlib.yggdrasil.ProfileResult;
-import java.util.Date;
-import java.util.UUID;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.Base64;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.lwjgl.system.MemoryUtil;
+import org.slf4j.Logger;
 
 public class fkv {
-   private static final xv a = xv.c("mco.util.time.now");
-   private static final int b = 60;
-   private static final int c = 3600;
-   private static final int d = 86400;
+   private static final Map<String, fkv.a> a = Maps.newHashMap();
+   private static final Logger b = LogUtils.getLogger();
+   private static final alz c = alz.b("textures/gui/presets/isles.png");
 
-   public static xv a(long $$0) {
-      if ($$0 < 0L) {
-         return a;
+   public static alz a(String $$0, @Nullable String $$1) {
+      return $$1 == null ? c : b($$0, $$1);
+   }
+
+   private static alz b(String $$0, String $$1) {
+      fkv.a $$2 = a.get($$0);
+      if ($$2 != null && $$2.a().equals($$1)) {
+         return $$2.b;
       } else {
-         long $$1 = $$0 / 1000L;
-         if ($$1 < 60L) {
-            return xv.a("mco.time.secondsAgo", $$1);
-         } else if ($$1 < 3600L) {
-            long $$2 = $$1 / 60L;
-            return xv.a("mco.time.minutesAgo", $$2);
-         } else if ($$1 < 86400L) {
-            long $$3 = $$1 / 3600L;
-            return xv.a("mco.time.hoursAgo", $$3);
+         ffr $$3 = a($$1);
+         if ($$3 == null) {
+            alz $$4 = hba.b();
+            a.put($$0, new fkv.a($$1, $$4));
+            return $$4;
          } else {
-            long $$4 = $$1 / 86400L;
-            return xv.a("mco.time.daysAgo", $$4);
+            alz $$5 = alz.a("realms", "dynamic/" + $$0);
+            fmf.Q().aa().a($$5, new hax($$3));
+            a.put($$0, new fkv.a($$1, $$5));
+            return $$5;
          }
       }
    }
 
-   public static xv a(Date $$0) {
-      return a(System.currentTimeMillis() - $$0.getTime());
+   @Nullable
+   private static ffr a(String $$0) {
+      byte[] $$1 = Base64.getDecoder().decode($$0);
+      ByteBuffer $$2 = MemoryUtil.memAlloc($$1.length);
+
+      try {
+         return ffr.a($$2.put($$1).flip());
+      } catch (IOException var7) {
+         b.warn("Failed to load world image: {}", $$0, var7);
+      } finally {
+         MemoryUtil.memFree($$2);
+      }
+
+      return null;
    }
 
-   public static void a(fnq $$0, int $$1, int $$2, int $$3, UUID $$4) {
-      fme $$5 = fme.Q();
-      ProfileResult $$6 = $$5.am().fetchProfile($$4, false);
-      hck $$7 = $$6 != null ? $$5.an().b($$6.profile()) : hcb.a($$4);
-      fpd.a($$0, $$7, $$1, $$2, $$3);
+   public static record a(String a, alz b) {
    }
 }

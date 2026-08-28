@@ -1,99 +1,30 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.IntFunction;
 
-public class fml {
-   private static final Logger a = LogUtils.getLogger();
-   @Nullable
-   private fml.c b;
-   private int c;
+public enum fml implements bah {
+   a(0, "options.prioritizeChunkUpdates.none"),
+   b(1, "options.prioritizeChunkUpdates.byPlayer"),
+   c(2, "options.prioritizeChunkUpdates.nearby");
 
-   public void a(fml.b $$0, List<aug> $$1) {
-      this.c++;
-      if (this.b != null && !this.b.d) {
-         a.warn("Reload already ongoing, replacing");
-      }
+   private static final IntFunction<fml> d = ayv.a(fml::b, values(), ayv.a.b);
+   private final int e;
+   private final String f;
 
-      this.b = new fml.c($$0, $$1.stream().map(aug::b).collect(ImmutableList.toImmutableList()));
+   private fml(final int $$0, final String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public void a(Throwable $$0) {
-      if (this.b == null) {
-         a.warn("Trying to signal reload recovery, but nothing was started");
-         this.b = new fml.c(fml.b.c, ImmutableList.of());
-      }
-
-      this.b.c = new fml.a($$0);
+   @Override
+   public int b() {
+      return this.e;
    }
 
-   public void a() {
-      if (this.b == null) {
-         a.warn("Trying to finish reload, but nothing was started");
-      } else {
-         this.b.d = true;
-      }
+   @Override
+   public String a() {
+      return this.f;
    }
 
-   public void a(o $$0) {
-      p $$1 = $$0.a("Last reload");
-      $$1.a("Reload number", this.c);
-      if (this.b != null) {
-         this.b.a($$1);
-      }
-   }
-
-   static class a {
-      private final Throwable a;
-
-      a(Throwable $$0) {
-         this.a = $$0;
-      }
-
-      public void a(p $$0) {
-         $$0.a("Recovery", "Yes");
-         $$0.a("Recovery reason", () -> {
-            StringWriter $$0x = new StringWriter();
-            this.a.printStackTrace(new PrintWriter($$0x));
-            return $$0x.toString();
-         });
-      }
-   }
-
-   public static enum b {
-      a("initial"),
-      b("manual"),
-      c("unknown");
-
-      final String d;
-
-      private b(final String $$0) {
-         this.d = $$0;
-      }
-   }
-
-   static class c {
-      private final fml.b a;
-      private final List<String> b;
-      @Nullable
-      fml.a c;
-      boolean d;
-
-      c(fml.b $$0, List<String> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public void a(p $$0) {
-         $$0.a("Reload reason", this.a.d);
-         $$0.a("Finished", this.d ? "Yes" : "No");
-         $$0.a("Packs", () -> String.join(", ", this.b));
-         if (this.c != null) {
-            this.c.a($$0);
-         }
-      }
+   public static fml a(int $$0) {
+      return d.apply($$0);
    }
 }

@@ -10,7 +10,7 @@ public class bye extends bxy<bwf> {
    }
 
    private Optional<Integer> b(bwf $$0) {
-      return $$0.eb().c(this.c);
+      return $$0.ec().c(this.c);
    }
 
    @Override
@@ -27,11 +27,11 @@ public class bye extends bxy<bwf> {
    @Override
    protected void c(ash $$0, bwf $$1, long $$2) {
       Optional<Integer> $$3 = this.b($$1);
-      $$1.eb().a(this.c, $$3.get() - 1);
+      $$1.ec().a(this.c, $$3.get() - 1);
    }
 
    @Override
    protected void b(ash $$0, bwf $$1, long $$2) {
-      $$1.eb().b(this.c);
+      $$1.ec().b(this.c);
    }
 }

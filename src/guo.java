@@ -1,26 +1,36 @@
-public class guo extends grn<crf, gxt> {
-   private static final alz a = alz.b("textures/entity/projectiles/wind_charge.png");
-   private final gdy b;
+public class guo extends gsv<coz, hae, gdy> {
+   private static final alz a = alz.b("textures/entity/warden/warden.png");
+   private static final alz b = alz.b("textures/entity/warden/warden_bioluminescent_layer.png");
+   private static final alz k = alz.b("textures/entity/warden/warden_heart.png");
+   private static final alz l = alz.b("textures/entity/warden/warden_pulsating_spots_1.png");
+   private static final alz m = alz.b("textures/entity/warden/warden_pulsating_spots_2.png");
 
-   public guo(gro.a $$0) {
-      super($$0);
-      this.b = new gdy($$0.a(gel.ds));
+   public guo(grp.a $$0) {
+      super($$0, new gdy($$0.a(gem.dr)), 0.9F);
+      this.a(new gvx<>(this, b, ($$0x, $$1) -> 1.0F, gdy::d, glu::k));
+      this.a(new gvx<>(this, l, ($$0x, $$1) -> Math.max(0.0F, bae.b($$1 * 0.045F) * 0.25F), gdy::e, glu::k));
+      this.a(new gvx<>(this, m, ($$0x, $$1) -> Math.max(0.0F, bae.b($$1 * 0.045F + (float) Math.PI) * 0.25F), gdy::e, glu::k));
+      this.a(new gvx<>(this, a, ($$0x, $$1) -> $$0x.a, gdy::b, glu::k));
+      this.a(new gvx<>(this, k, ($$0x, $$1) -> $$0x.b, gdy::c, glu::k));
    }
 
-   @Override
-   public void a(gxt $$0, fgq $$1, glj $$2, int $$3) {
-      fgu $$4 = $$2.getBuffer(glt.a(a, this.a($$0.p) % 1.0F, 0.0F));
-      this.b.a($$0);
-      this.b.a($$1, $$4, $$3, hba.d);
-      super.a($$0, $$1, $$2, $$3);
+   public alz a(hae $$0) {
+      return a;
    }
 
-   protected float a(float $$0) {
-      return $$0 * 0.03F;
+   public hae b() {
+      return new hae();
    }
 
-   @Override
-   public gxt d() {
-      return new gxt();
+   public void a(coz $$0, hae $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.J($$2);
+      $$1.b = $$0.K($$2);
+      $$1.c.a($$0.a);
+      $$1.d.a($$0.b);
+      $$1.e.a($$0.c);
+      $$1.f.a($$0.d);
+      $$1.g.a($$0.bZ);
+      $$1.h.a($$0.ca);
    }
 }

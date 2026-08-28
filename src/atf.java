@@ -42,7 +42,7 @@ public class atf {
             if (!this.f.isEmpty()) {
                ash $$2 = $$0.y();
                arm $$3 = $$2.m().a;
-               List<dzz> $$4 = this.a($$3, $$0.dx());
+               List<dzz> $$4 = this.a($$3, $$0.dy());
                if (!$$4.isEmpty()) {
                   atk $$5 = $$0.f;
                   this.j++;

@@ -1,29 +1,18 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import java.util.List;
 
-public class fis extends fiv {
-   public long a;
-   public List<fir> b = Lists.newArrayList();
+public class fis extends fiw {
+   public String a;
+   public long b;
+   public long c;
 
-   public static fis a(String $$0) {
+   public static fis a(JsonObject $$0) {
       fis $$1 = new fis();
-      JsonParser $$2 = new JsonParser();
 
       try {
-         JsonElement $$3 = $$2.parse($$0);
-         JsonObject $$4 = $$3.getAsJsonObject();
-         $$1.a = fkr.a("periodInMillis", $$4, -1L);
-         JsonElement $$5 = $$4.get("playerActivityDto");
-         if ($$5 != null && $$5.isJsonArray()) {
-            for (JsonElement $$7 : $$5.getAsJsonArray()) {
-               fir $$8 = fir.a($$7.getAsJsonObject());
-               $$1.b.add($$8);
-            }
-         }
-      } catch (Exception var10) {
+         $$1.a = fks.b("profileUuid", $$0, null);
+         $$1.b = fks.a("joinTime", $$0, Long.MIN_VALUE);
+         $$1.c = fks.a("leaveTime", $$0, Long.MIN_VALUE);
+      } catch (Exception var3) {
       }
 
       return $$1;

@@ -9,12 +9,12 @@ public record dfo(int a, Map<dfq, Integer> b, int c, jq<axe> d, float e, float f
       return $$0.b(dfq.e.a(this.a)).a(this.a(dfq.e)).a(this.g).a(ku.D, dft.a(bvr.g).a(this.d).a(this.h).a($$1).a());
    }
 
-   public cxk.a a(cxk.a $$0, axe $$1, boolean $$2, ju<bvq<?>> $$3) {
+   public cxk.a a(cxk.a $$0, jq<axe> $$1, boolean $$2, ju<bvq<?>> $$3) {
       if ($$2) {
          $$0 = $$0.b(dfq.e.a(this.a)).a(this.g);
       }
 
-      return $$0.a(this.a(dfq.e)).a(ku.D, dft.a(bvr.g).a(jq.a($$1)).a(this.h).a($$3).c($$2).a());
+      return $$0.a(this.a(dfq.e)).a(ku.D, dft.a(bvr.g).a($$1).a(this.h).a($$3).c($$2).a());
    }
 
    private daf a(dfq $$0) {

@@ -31,7 +31,7 @@ public interface drp extends dkt, dpe {
 
          return new cxo(cxs.qX);
       } else {
-         return cxo.k;
+         return cxo.j;
       }
    }
 

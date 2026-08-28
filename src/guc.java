@@ -1,18 +1,32 @@
-public class guc extends grn<crc, gzv> {
-   public static final alz a = alz.b("textures/entity/trident.png");
-   private final gdq b;
+public class guc<T extends bvj & cqm> extends gro<T, gzv> {
+   private final gsn a;
+   private final float b;
+   private final boolean h;
 
-   public guc(gro.a $$0) {
+   public guc(grp.a $$0, float $$1, boolean $$2) {
       super($$0);
-      this.b = new gdq($$0.a(gel.dg));
+      this.a = $$0.b();
+      this.b = $$1;
+      this.h = $$2;
    }
 
-   public void a(gzv $$0, fgq $$1, glj $$2, int $$3) {
+   public guc(grp.a $$0) {
+      this($$0, 1.0F, false);
+   }
+
+   @Override
+   protected int a(T $$0, jh $$1) {
+      return this.h ? 15 : super.a($$0, $$1);
+   }
+
+   public void a(gzv $$0, fgr $$1, glk $$2, int $$3) {
       $$1.a();
-      $$1.a(a.d.rotationDegrees($$0.b - 90.0F));
-      $$1.a(a.f.rotationDegrees($$0.a + 90.0F));
-      fgu $$4 = gsm.a($$2, this.b.a(a), false, $$0.c);
-      this.b.a($$1, $$4, $$3, hba.d);
+      $$1.b(this.b, this.b, this.b);
+      $$1.a(this.e.b());
+      if ($$0.a != null) {
+         this.a.a($$0.b, cxm.h, false, $$1, $$2, $$3, hbb.d, $$0.a);
+      }
+
       $$1.b();
       super.a($$0, $$1, $$2, $$3);
    }
@@ -21,10 +35,10 @@ public class guc extends grn<crc, gzv> {
       return new gzv();
    }
 
-   public void a(crc $$0, gzv $$1, float $$2) {
+   public void a(T $$0, gzv $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.b = $$0.k($$2);
-      $$1.a = $$0.j($$2);
-      $$1.c = $$0.C();
+      cxo $$3 = $$0.l();
+      $$1.a = !$$3.f() ? this.a.a($$3, $$0.dW(), null, $$0.ar()) : null;
+      $$1.b = $$3.v();
    }
 }

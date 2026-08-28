@@ -36,7 +36,7 @@ public class cnj extends chw implements bwc, bwv {
 
    @Override
    public void a(alc<?> $$0) {
-      if (ce.equals($$0) && this.dV().C) {
+      if (ce.equals($$0) && this.dW().C) {
          this.ch.a();
       }
 
@@ -77,7 +77,7 @@ public class cnj extends chw implements bwc, bwv {
    public void a(cxo $$0, @Nullable axg $$1) {
       this.ch.a(true);
       if ($$1 != null) {
-         this.dV().a(null, this, axf.yD, $$1, 0.5F, 1.0F);
+         this.dW().a(null, this, axf.yD, $$1, 0.5F, 1.0F);
       }
    }
 
@@ -138,11 +138,11 @@ public class cnj extends chw implements bwc, bwv {
    @Override
    public fbx b(bwf $$0) {
       fbx[] $$1 = new fbx[]{
-         a((double)this.dq(), (double)$$0.dq(), $$0.dL()),
-         a((double)this.dq(), (double)$$0.dq(), $$0.dL() - 22.5F),
-         a((double)this.dq(), (double)$$0.dq(), $$0.dL() + 22.5F),
-         a((double)this.dq(), (double)$$0.dq(), $$0.dL() - 45.0F),
-         a((double)this.dq(), (double)$$0.dq(), $$0.dL() + 45.0F)
+         a((double)this.dr(), (double)$$0.dr(), $$0.dM()),
+         a((double)this.dr(), (double)$$0.dr(), $$0.dM() - 22.5F),
+         a((double)this.dr(), (double)$$0.dr(), $$0.dM() + 22.5F),
+         a((double)this.dr(), (double)$$0.dr(), $$0.dM() - 45.0F),
+         a((double)this.dr(), (double)$$0.dr(), $$0.dM() + 45.0F)
       };
       Set<jh> $$2 = Sets.newLinkedHashSet();
       double $$3 = this.cR().e;
@@ -150,7 +150,7 @@ public class cnj extends chw implements bwc, bwv {
       jh.a $$5 = new jh.a();
 
       for (fbx $$6 : $$1) {
-         $$5.b(this.dA() + $$6.d, $$3, this.dG() + $$6.f);
+         $$5.b(this.dB() + $$6.d, $$3, this.dH() + $$6.f);
 
          for (double $$7 = $$3; $$7 > $$4; $$7--) {
             $$2.add($$5.j());
@@ -159,16 +159,16 @@ public class cnj extends chw implements bwc, bwv {
       }
 
       for (jh $$8 : $$2) {
-         if (!this.dV().b_($$8).a(aya.b)) {
-            double $$9 = this.dV().j($$8);
+         if (!this.dW().b_($$8).a(aya.b)) {
+            double $$9 = this.dW().j($$8);
             if (csb.a($$9)) {
                fbx $$10 = fbx.a($$8, $$9);
-               UnmodifiableIterator var14 = $$0.fM().iterator();
+               UnmodifiableIterator var14 = $$0.fO().iterator();
 
                while (var14.hasNext()) {
                   bwr $$11 = (bwr)var14.next();
                   fbs $$12 = $$0.f($$11);
-                  if (csb.a(this.dV(), $$0, $$12.c($$10))) {
+                  if (csb.a(this.dW(), $$0, $$12.c($$10))) {
                      $$0.b($$11);
                      return $$10;
                   }
@@ -177,13 +177,13 @@ public class cnj extends chw implements bwc, bwv {
          }
       }
 
-      return new fbx(this.dA(), this.cR().e, this.dG());
+      return new fbx(this.dB(), this.cR().e, this.dH());
    }
 
    @Override
    protected void a(cpw $$0, fbx $$1) {
-      this.b($$0.dL(), $$0.dN() * 0.5F);
-      this.N = this.aX = this.aZ = this.dL();
+      this.b($$0.dM(), $$0.dO() * 0.5F);
+      this.N = this.aX = this.aZ = this.dM();
       this.ch.b();
       super.a($$0, $$1);
    }
@@ -210,7 +210,7 @@ public class cnj extends chw implements bwc, bwv {
 
    @Override
    public boolean a() {
-      return this.ch.a(this.dY());
+      return this.ch.a(this.dZ());
    }
 
    @Override
@@ -226,18 +226,18 @@ public class cnj extends chw implements bwc, bwv {
    public void h() {
       if (this.x() && this.ae.a(140) == 0) {
          this.b(axf.yw);
-      } else if (this.gj() && this.ae.a(60) == 0) {
+      } else if (this.gl() && this.ae.a(60) == 0) {
          this.b(axf.yx);
       }
 
-      if (!this.fZ()) {
+      if (!this.gb()) {
          boolean $$2;
          boolean var10000;
          label36: {
-            dxu $$0 = this.dV().a_(this.dv());
+            dxu $$0 = this.dW().a_(this.dw());
             dxu $$1 = this.bt();
             $$2 = $$0.a(axu.aW) || $$1.a(axu.aW) || this.b(aya.b) > 0.0;
-            if (this.dk() instanceof cnj $$3 && $$3.p()) {
+            if (this.dl() instanceof cnj $$3 && $$3.p()) {
                var10000 = true;
                break label36;
             }
@@ -250,7 +250,7 @@ public class cnj extends chw implements bwc, bwv {
       }
 
       super.h();
-      this.gm();
+      this.go();
    }
 
    private boolean x() {
@@ -262,24 +262,24 @@ public class cnj extends chw implements bwc, bwv {
       return true;
    }
 
-   private void gm() {
+   private void go() {
       if (this.bx()) {
          fcc $$0 = fcc.a(this);
-         if ($$0.a(dpd.d, this.dv(), true) && !this.dV().b_(this.dv().d()).a(aya.b)) {
+         if ($$0.a(dpd.d, this.dw(), true) && !this.dW().b_(this.dw().d()).a(aya.b)) {
             this.d(true);
          } else {
-            this.h(this.dy().c(0.5).b(0.0, 0.05, 0.0));
+            this.h(this.dz().c(0.5).b(0.0, 0.05, 0.0));
          }
       }
    }
 
    public static bxm.a t() {
-      return chw.gr().a(bxn.v, 0.175F);
+      return chw.gt().a(bxn.v, 0.175F);
    }
 
    @Override
    protected axe u() {
-      return !this.gj() && !this.x() ? axf.yv : null;
+      return !this.gl() && !this.x() ? axf.yv : null;
    }
 
    @Override
@@ -298,7 +298,7 @@ public class cnj extends chw implements bwc, bwv {
    }
 
    @Override
-   public boolean fp() {
+   public boolean fr() {
       return true;
    }
 
@@ -342,8 +342,8 @@ public class cnj extends chw implements bwc, bwv {
    @Override
    public bti b(cpw $$0, bth $$1) {
       boolean $$2 = this.j($$0.b($$1));
-      if (!$$2 && this.j() && !this.ca() && !$$0.fW()) {
-         if (!this.dV().C) {
+      if (!$$2 && this.j() && !this.ca() && !$$0.fY()) {
+         if (!this.dW().C) {
             $$0.n(this);
          }
 
@@ -355,7 +355,7 @@ public class cnj extends chw implements bwc, bwv {
             return (bti)($$4.a(cxs.oe) ? $$4.a($$0, this, $$1) : bti.e);
          } else {
             if ($$2 && !this.bb()) {
-               this.dV().a(null, this.dA(), this.dC(), this.dG(), axf.yC, this.dm(), 1.0F, 1.0F + (this.ae.i() - this.ae.i()) * 0.2F);
+               this.dW().a(null, this.dB(), this.dD(), this.dH(), axf.yC, this.dn(), 1.0F, 1.0F + (this.ae.i() - this.ae.i()) * 0.2F);
             }
 
             return $$3;
@@ -365,7 +365,7 @@ public class cnj extends chw implements bwc, bwv {
 
    @Override
    public fbx cT() {
-      return new fbx(0.0, (double)(0.6F * this.cS()), (double)(this.dq() * 0.4F));
+      return new fbx(0.0, (double)(0.6F * this.cS()), (double)(this.dr() * 0.4F));
    }
 
    @Nullable
@@ -397,7 +397,7 @@ public class cnj extends chw implements bwc, bwv {
    }
 
    private bwy a(dhy $$0, btg $$1, bwh $$2, @Nullable bwy $$3) {
-      $$2.b(this.dA(), this.dC(), this.dG(), this.dL(), 0.0F);
+      $$2.b(this.dB(), this.dD(), this.dH(), this.dM(), 0.0F);
       $$2.a($$0, $$1, bvp.g, $$3);
       $$2.a(this, true);
       return new bva.a(0.0F);
@@ -418,7 +418,7 @@ public class cnj extends chw implements bwc, bwv {
 
       @Override
       public boolean c() {
-         return !this.g.bx() && this.a(this.g.dV(), this.e);
+         return !this.g.bx() && this.a(this.g.dW(), this.e);
       }
 
       @Override

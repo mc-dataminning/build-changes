@@ -1,317 +1,263 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
-import java.nio.file.Path;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.UUID;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.concurrent.atomic.AtomicReferenceArray;
 import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public abstract class gff implements aai {
-   private static final xv k = xv.c("disconnect.lost");
-   private static final Logger l = LogUtils.getLogger();
-   protected final fme a;
-   protected final wp b;
+public class gff extends dzt {
+   static final Logger a = LogUtils.getLogger();
+   private final dzz b;
+   private final etl c;
+   volatile gff.a d;
+   final gfj e;
+
+   public gff(gfj $$0, int $$1) {
+      this.e = $$0;
+      this.b = new dzv($$0, new dgn(0, 0), $$0.K_().e(mb.aI).b(diq.b));
+      this.c = new etl(this, true, $$0.G_().g());
+      this.d = new gff.a(b($$1));
+   }
+
+   @Override
+   public etl p() {
+      return this.c;
+   }
+
+   private static boolean a(@Nullable dzz $$0, int $$1, int $$2) {
+      if ($$0 == null) {
+         return false;
+      } else {
+         dgn $$3 = $$0.f();
+         return $$3.g == $$1 && $$3.h == $$2;
+      }
+   }
+
+   public void a(dgn $$0) {
+      if (this.d.b($$0.g, $$0.h)) {
+         int $$1 = this.d.a($$0.g, $$0.h);
+         dzz $$2 = this.d.a($$1);
+         if (a($$2, $$0.g, $$0.h)) {
+            this.d.b($$1, $$2);
+         }
+      }
+   }
+
    @Nullable
-   protected final gfx c;
-   @Nullable
-   protected String d;
-   protected final hgy e;
-   @Nullable
-   protected final ftw f;
-   protected boolean g;
-   private final List<gff.a> m = new ArrayList<>();
-   protected final Map<alz, byte[]> h;
-   protected Map<String, String> i;
-   protected amr j;
+   public dzz b(int $$0, int $$1, eaq $$2, boolean $$3) {
+      if (this.d.b($$0, $$1)) {
+         dzz $$4 = this.d.a(this.d.a($$0, $$1));
+         if (a($$4, $$0, $$1)) {
+            return $$4;
+         }
+      }
 
-   protected gff(fme $$0, wp $$1, gfn $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2.f();
-      this.d = $$2.e();
-      this.e = $$2.b();
-      this.f = $$2.g();
-      this.h = $$2.h();
-      this.i = $$2.j();
-      this.j = $$2.k();
+      return $$3 ? this.b : null;
    }
 
    @Override
-   public void a(aac $$0, Exception $$1) {
-      l.error("Failed to handle packet {}, disconnecting", $$0, $$1);
-      aai.super.a($$0, $$1);
-      Optional<Path> $$2 = this.a($$0, (Throwable)$$1);
-      Optional<URI> $$3 = this.j.a(amr.b.a).map(amr.a::c);
-      this.b.a(new wr(xv.c("disconnect.packetError"), $$2, $$3));
+   public dgm q() {
+      return this.e;
    }
 
-   @Override
-   public wr a(xv $$0, Throwable $$1) {
-      Optional<Path> $$2 = this.a(null, $$1);
-      Optional<URI> $$3 = this.j.a(amr.b.a).map(amr.a::c);
-      return new wr($$0, $$2, $$3);
-   }
-
-   private Optional<Path> a(@Nullable aac $$0, Throwable $$1) {
-      o $$2 = o.a($$1, "Packet handling error");
-      aaf.a($$2, this, $$0);
-      Path $$3 = this.a.q.toPath().resolve("debug");
-      Path $$4 = $$3.resolve("disconnect-" + ae.f() + "-client.txt");
-      Optional<amr.a> $$5 = this.j.a(amr.b.a);
-      List<String> $$6 = $$5.<List<String>>map($$0x -> List.of("Server bug reporting link: " + $$0x.c())).orElse(List.of());
-      return $$2.a($$4, y.d, $$6) ? Optional.of($$4) : Optional.empty();
-   }
-
-   @Override
-   public boolean a(aac<?> $$0) {
-      return aai.super.a($$0) ? true : this.g && ($$0 instanceof aar || $$0 instanceof aas);
-   }
-
-   @Override
-   public void a(aam $$0) {
-      this.a(new aay($$0.b()), () -> !RenderSystem.isFrozenAtPollEvents(), Duration.ofMinutes(1L));
-   }
-
-   @Override
-   public void a(aan $$0) {
-      aaf.a($$0, this, this.a);
-      this.b(new aaz($$0.b()));
-   }
-
-   @Override
-   public void a(aaj $$0) {
-      abf $$1 = $$0.b();
-      if (!($$1 instanceof abg)) {
-         aaf.a($$0, this, this.a);
-         if ($$1 instanceof abd $$2) {
-            this.d = $$2.b();
-            this.e.a($$2.b());
+   public void a(int $$0, int $$1, ws $$2) {
+      if (!this.d.b($$0, $$1)) {
+         a.warn("Ignoring chunk since it's not in the view range: {}, {}", $$0, $$1);
+      } else {
+         int $$3 = this.d.a($$0, $$1);
+         dzz $$4 = this.d.b.get($$3);
+         if (!a($$4, $$0, $$1)) {
+            a.warn("Ignoring chunk since it's not present: {}, {}", $$0, $$1);
          } else {
+            $$4.a($$2);
+         }
+      }
+   }
+
+   @Nullable
+   public dzz a(int $$0, int $$1, ws $$2, ux $$3, Consumer<aed.b> $$4) {
+      if (!this.d.b($$0, $$1)) {
+         a.warn("Ignoring chunk since it's not in the view range: {}, {}", $$0, $$1);
+         return null;
+      } else {
+         int $$5 = this.d.a($$0, $$1);
+         dzz $$6 = this.d.b.get($$5);
+         dgn $$7 = new dgn($$0, $$1);
+         if (!a($$6, $$0, $$1)) {
+            $$6 = new dzz(this.e, $$7);
+            $$6.a($$2, $$3, $$4);
+            this.d.a($$5, $$6);
+         } else {
+            $$6.a($$2, $$3, $$4);
+         }
+
+         this.e.a($$7);
+         return $$6;
+      }
+   }
+
+   @Override
+   public void a(BooleanSupplier $$0, boolean $$1) {
+   }
+
+   public void d(int $$0, int $$1) {
+      this.d.f = $$0;
+      this.d.g = $$1;
+   }
+
+   public void a(int $$0) {
+      int $$1 = this.d.d;
+      int $$2 = b($$0);
+      if ($$1 != $$2) {
+         gff.a $$3 = new gff.a($$2);
+         $$3.f = this.d.f;
+         $$3.g = this.d.g;
+
+         for (int $$4 = 0; $$4 < this.d.b.length(); $$4++) {
+            dzz $$5 = this.d.b.get($$4);
+            if ($$5 != null) {
+               dgn $$6 = $$5.f();
+               if ($$3.b($$6.g, $$6.h)) {
+                  $$3.a($$3.a($$6.g, $$6.h), $$5);
+               }
+            }
+         }
+
+         this.d = $$3;
+      }
+   }
+
+   private static int b(int $$0) {
+      return Math.max(2, $$0) + 3;
+   }
+
+   @Override
+   public String e() {
+      return this.d.b.length() + ", " + this.j();
+   }
+
+   @Override
+   public int j() {
+      return this.d.h;
+   }
+
+   @Override
+   public void a(dhq $$0, kj $$1) {
+      fmf.Q().f.b($$1.a(), $$1.b(), $$1.c());
+   }
+
+   public LongOpenHashSet a() {
+      return this.d.c;
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      this.d.a($$0, $$1, $$2, $$3);
+   }
+
+   final class a {
+      final AtomicReferenceArray<dzz> b;
+      final LongOpenHashSet c = new LongOpenHashSet();
+      final int d;
+      private final int e;
+      volatile int f;
+      volatile int g;
+      int h;
+
+      a(final int $$0) {
+         this.d = $$0;
+         this.e = $$0 * 2 + 1;
+         this.b = new AtomicReferenceArray<>(this.e * this.e);
+      }
+
+      int a(int $$0, int $$1) {
+         return Math.floorMod($$1, this.e) * this.e + Math.floorMod($$0, this.e);
+      }
+
+      void a(int $$0, @Nullable dzz $$1) {
+         dzz $$2 = this.b.getAndSet($$0, $$1);
+         if ($$2 != null) {
+            this.h--;
+            this.a($$2);
+            gff.this.e.a($$2);
+         }
+
+         if ($$1 != null) {
+            this.h++;
+            this.b($$1);
+         }
+      }
+
+      void b(int $$0, dzz $$1) {
+         if (this.b.compareAndSet($$0, $$1, null)) {
+            this.h--;
             this.a($$1);
          }
+
+         gff.this.e.a($$1);
       }
-   }
 
-   protected abstract void a(abf var1);
-
-   @Override
-   public void a(aap $$0) {
-      aaf.a($$0, this, this.a);
-      UUID $$1 = $$0.b();
-      URL $$2 = a($$0.e());
-      if ($$2 == null) {
-         this.b.a(new aba($$1, aba.a.f));
-      } else {
-         String $$3 = $$0.f();
-         boolean $$4 = $$0.g();
-         gfx.a $$5 = this.c != null ? this.c.b() : gfx.a.c;
-         if ($$5 != gfx.a.c && (!$$4 || $$5 != gfx.a.b)) {
-            this.a.af().a($$1, $$2, $$3);
-         } else {
-            this.a.a(this.a($$1, $$2, $$3, $$4, $$0.h().orElse(null)));
-         }
-      }
-   }
-
-   @Override
-   public void a(aao $$0) {
-      aaf.a($$0, this, this.a);
-      $$0.b().ifPresentOrElse($$0x -> this.a.af().a($$0x), () -> this.a.af().e());
-   }
-
-   static xv a(xv $$0, @Nullable xv $$1) {
-      return (xv)($$1 == null ? $$0 : xv.a("multiplayer.texturePrompt.serverPrompt", $$0, $$1));
-   }
-
-   @Nullable
-   private static URL a(String $$0) {
-      try {
-         URL $$1 = new URL($$0);
-         String $$2 = $$1.getProtocol();
-         return !"http".equals($$2) && !"https".equals($$2) ? null : $$1;
-      } catch (MalformedURLException var3) {
-         return null;
-      }
-   }
-
-   @Override
-   public void a(acm $$0) {
-      aaf.a($$0, this, this.a);
-      this.b.a(new acp($$0.b(), this.h.get($$0.b())));
-   }
-
-   @Override
-   public void a(aar $$0) {
-      aaf.a($$0, this, this.a);
-      this.h.put($$0.b(), $$0.e());
-   }
-
-   @Override
-   public void a(aak $$0) {
-      aaf.a($$0, this, this.a);
-      this.i = $$0.b();
-   }
-
-   @Override
-   public void a(aaq $$0) {
-      aaf.a($$0, this, this.a);
-      List<amr.c> $$1 = $$0.b();
-      Builder<amr.a> $$2 = ImmutableList.builderWithExpectedSize($$1.size());
-
-      for (amr.c $$3 : $$1) {
-         try {
-            URI $$4 = ae.a($$3.b());
-            $$2.add(new amr.a($$3.a(), $$4));
-         } catch (Exception var7) {
-            l.warn("Received invalid link for type {}:{}", new Object[]{$$3.a(), $$3.b(), var7});
+      public void a(int $$0, int $$1, int $$2, boolean $$3) {
+         if (this.b($$0, $$2)) {
+            long $$4 = kj.b($$0, $$1, $$2);
+            if ($$3) {
+               this.c.add($$4);
+            } else if (this.c.remove($$4)) {
+               gff.this.e.b($$4);
+            }
          }
       }
 
-      this.j = new amr($$2.build());
-   }
+      private void a(dzz $$0) {
+         eaa[] $$1 = $$0.d();
 
-   @Override
-   public void a(aas $$0) {
-      this.g = true;
-      aaf.a($$0, this, this.a);
-      if (this.c == null) {
-         throw new IllegalStateException("Cannot transfer to server from singleplayer");
-      } else {
-         this.b.a(xv.c("disconnect.transfer"));
-         this.b.m();
-         this.b.n();
-         gha $$1 = new gha($$0.b(), $$0.e());
-         fsv.a(Objects.requireNonNullElseGet(this.f, fty::new), this.a, $$1, this.c, false, new ggb(this.h));
-      }
-   }
-
-   @Override
-   public void a(aal $$0) {
-      this.b.a($$0.b());
-   }
-
-   protected void e() {
-      Iterator<gff.a> $$0 = this.m.iterator();
-
-      while ($$0.hasNext()) {
-         gff.a $$1 = $$0.next();
-         if ($$1.b().getAsBoolean()) {
-            this.b($$1.a);
-            $$0.remove();
-         } else if ($$1.c() <= ae.c()) {
-            $$0.remove();
+         for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+            dgn $$3 = $$0.f();
+            this.c.remove(kj.b($$3.g, $$0.h($$2), $$3.h));
          }
       }
-   }
 
-   public void b(aac<?> $$0) {
-      this.b.a($$0);
-   }
+      private void b(dzz $$0) {
+         eaa[] $$1 = $$0.d();
 
-   @Override
-   public void a(wr $$0) {
-      this.e.c();
-      this.a.a(this.b($$0), this.g);
-      l.warn("Client disconnected with reason: {}", $$0.a().getString());
-   }
-
-   @Override
-   public void a(o $$0, p $$1) {
-      $$1.a("Is Local", () -> String.valueOf(this.b.e()));
-      $$1.a("Server type", () -> this.c != null ? this.c.f().toString() : "<none>");
-      $$1.a("Server brand", () -> this.d);
-      if (!this.i.isEmpty()) {
-         p $$2 = $$0.a("Custom Server Details");
-         this.i.forEach($$2::a);
+         for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+            eaa $$3 = $$1[$$2];
+            if ($$3.c()) {
+               dgn $$4 = $$0.f();
+               this.c.add(kj.b($$4.g, $$0.h($$2), $$4.h));
+            }
+         }
       }
-   }
 
-   protected ftw b(wr $$0) {
-      ftw $$1 = Objects.requireNonNullElseGet(this.f, () -> new fwm(new fty()));
-      return (ftw)(this.c != null && this.c.e() ? new hhr($$1, k, $$0.a()) : new ftd($$1, k, $$0));
-   }
-
-   @Nullable
-   public String f() {
-      return this.d;
-   }
-
-   private void a(aac<? extends xh> $$0, BooleanSupplier $$1, Duration $$2) {
-      if ($$1.getAsBoolean()) {
-         this.b($$0);
-      } else {
-         this.m.add(new gff.a($$0, $$1, ae.c() + $$2.toMillis()));
+      boolean b(int $$0, int $$1) {
+         return Math.abs($$0 - this.f) <= this.d && Math.abs($$1 - this.g) <= this.d;
       }
-   }
 
-   private ftw a(UUID $$0, URL $$1, String $$2, boolean $$3, @Nullable xv $$4) {
-      ftw $$5 = this.a.z;
-      return $$5 instanceof gff.b $$6 ? $$6.a(this.a, $$0, $$1, $$2, $$3, $$4) : new gff.b(this.a, $$5, List.of(new gff.b.a($$0, $$1, $$2)), $$3, $$4);
-   }
-
-   static record a(aac<? extends xh> a, BooleanSupplier b, long c) {
-   }
-
-   class b extends fsu {
-      private final List<gff.b.a> s;
       @Nullable
-      private final ftw u;
-
-      b(final fme $$0, @Nullable final ftw $$1, final List<gff.b.a> $$2, final boolean $$3, @Nullable final xv $$4) {
-         super(
-            $$5 -> {
-               $$0.a($$1);
-               hei $$6 = $$0.af();
-               if ($$5) {
-                  if (gff.this.c != null) {
-                     gff.this.c.a(gfx.a.a);
-                  }
-
-                  $$6.g();
-               } else {
-                  $$6.h();
-                  if ($$3) {
-                     gff.this.b.a(xv.c("multiplayer.requiredTexturePrompt.disconnect"));
-                  } else if (gff.this.c != null) {
-                     gff.this.c.a(gfx.a.b);
-                  }
-               }
-
-               for (gff.b.a $$7 : $$2) {
-                  $$6.a($$7.a, $$7.b, $$7.c);
-               }
-
-               if (gff.this.c != null) {
-                  gfy.b(gff.this.c);
-               }
-            },
-            $$3 ? xv.c("multiplayer.requiredTexturePrompt.line1") : xv.c("multiplayer.texturePrompt.line1"),
-            gff.a($$3 ? xv.c("multiplayer.requiredTexturePrompt.line2").a(n.o, n.r) : xv.c("multiplayer.texturePrompt.line2"), $$4),
-            $$3 ? xu.i : xu.f,
-            $$3 ? xu.p : xu.g
-         );
-         this.s = $$2;
-         this.u = $$1;
+      protected dzz a(int $$0) {
+         return this.b.get($$0);
       }
 
-      public gff.b a(fme $$0, UUID $$1, URL $$2, String $$3, boolean $$4, @Nullable xv $$5) {
-         List<gff.b.a> $$6 = ImmutableList.builderWithExpectedSize(this.s.size() + 1).addAll(this.s).add(new gff.b.a($$1, $$2, $$3)).build();
-         return gff.this.new b($$0, this.u, $$6, $$4, $$5);
-      }
+      private void a(String $$0) {
+         try (FileOutputStream $$1 = new FileOutputStream($$0)) {
+            int $$2 = gff.this.d.d;
 
-      static record a(UUID a, URL b, String c) {
+            for (int $$3 = this.g - $$2; $$3 <= this.g + $$2; $$3++) {
+               for (int $$4 = this.f - $$2; $$4 <= this.f + $$2; $$4++) {
+                  dzz $$5 = gff.this.d.b.get(gff.this.d.a($$4, $$3));
+                  if ($$5 != null) {
+                     dgn $$6 = $$5.f();
+                     $$1.write(($$6.g + "\t" + $$6.h + "\t" + $$5.B() + "\n").getBytes(StandardCharsets.UTF_8));
+                  }
+               }
+            }
+         } catch (IOException var10) {
+            gff.a.error("Failed to dump chunks to file {}", $$0, var10);
+         }
       }
    }
 }

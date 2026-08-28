@@ -13,9 +13,9 @@ public class cqn extends cqj {
    @Override
    protected void a(fbv $$0) {
       super.a($$0);
-      if (this.dV() instanceof ash $$1) {
+      if (this.dW() instanceof ash $$1) {
          boolean $$2 = $$1.N().b(dhd.c);
-         this.dV().a(this, this.dA(), this.dC(), this.dG(), (float)this.d, $$2, dhh.a.c);
+         this.dW().a(this, this.dB(), this.dD(), this.dH(), (float)this.d, $$2, dhh.a.c);
          this.at();
       }
    }
@@ -23,10 +23,10 @@ public class cqn extends cqj {
    @Override
    protected void a(fbu $$0) {
       super.a($$0);
-      if (this.dV() instanceof ash $$1) {
+      if (this.dW() instanceof ash $$1) {
          bvj var6 = $$0.a();
          bvj $$4 = this.p();
-         btz $$5 = this.dW().a((cqj)this, $$4);
+         btz $$5 = this.dX().a((cqj)this, $$4);
          var6.a($$1, $$5, 6.0F);
          dea.a($$1, var6, $$5);
       }

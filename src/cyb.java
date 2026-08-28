@@ -43,8 +43,8 @@ public class cyb extends cxk {
          int $$3 = 1 << $$2.f;
          int $$4 = $$2.c;
          int $$5 = $$2.d;
-         int $$6 = bae.a($$1.dA() - (double)$$4) / $$3 + 64;
-         int $$7 = bae.a($$1.dG() - (double)$$5) / $$3 + 64;
+         int $$6 = bae.a($$1.dB() - (double)$$4) / $$3 + 64;
+         int $$7 = bae.a($$1.dH() - (double)$$5) / $$3 + 64;
          int $$8 = 128 / $$3;
          if ($$0.G_().h()) {
             $$8 /= 2;
@@ -246,7 +246,7 @@ public class cyb extends cxk {
                $$5.a($$6, $$0);
             }
 
-            if (!$$5.h && ($$4 || $$2 instanceof cpw && ((cpw)$$2).eY() == $$0)) {
+            if (!$$5.h && ($$4 || $$2 instanceof cpw && ((cpw)$$2).fa() == $$0)) {
                this.a($$1, $$2, $$5);
             }
          }

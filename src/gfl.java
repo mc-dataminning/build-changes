@@ -1,13 +1,21 @@
-import java.util.List;
+import java.util.Map;
 
-public enum gfl {
-   a,
-   b;
+public class gfl implements dce {
+   private final Map<aly<dcm>, dcm> a;
+   private final dcq.b<ddd> b;
 
-   private static final List<gfl> c = List.of(values());
-   private static final ke.b d = ke.a(ma.aC);
+   public gfl(Map<aly<dcm>, dcm> $$0, dcq.b<ddd> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   public static jx<gfl> a() {
-      return new jx<>(c).a(a, d);
+   @Override
+   public dcm a(aly<dcm> $$0) {
+      return this.a.getOrDefault($$0, dcm.j);
+   }
+
+   @Override
+   public dcq.b<ddd> a() {
+      return this.b;
    }
 }

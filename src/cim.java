@@ -100,8 +100,8 @@ public class cim extends cit implements bxf<cim.b>, cif {
       this.bT.a(3, new cda(this, 1.0, 3.0F, 7.0F));
    }
 
-   public static bxm.a gy() {
-      return chw.gr().a(bxn.s, 6.0).a(bxn.l, 0.4F).a(bxn.v, 0.2F).a(bxn.c, 3.0);
+   public static bxm.a gA() {
+      return chw.gt().a(bxn.s, 6.0).a(bxn.l, 0.4F).a(bxn.v, 0.2F).a(bxn.c, 3.0);
    }
 
    @Override
@@ -115,17 +115,17 @@ public class cim extends cit implements bxf<cim.b>, cif {
 
    @Override
    public void d_() {
-      if (this.cn == null || !this.cn.a(this.dt(), 3.46) || !this.dV().a_(this.cn).a(dkn.eg)) {
+      if (this.cn == null || !this.cn.a(this.du(), 3.46) || !this.dW().a_(this.cn).a(dkn.eg)) {
          this.cm = false;
          this.cn = null;
       }
 
-      if (this.dV().A.a(400) == 0) {
-         a(this.dV(), this);
+      if (this.dW().A.a(400) == 0) {
+         a(this.dW(), this);
       }
 
       super.d_();
-      this.gD();
+      this.gF();
    }
 
    @Override
@@ -134,11 +134,11 @@ public class cim extends cit implements bxf<cim.b>, cif {
       this.cm = $$1;
    }
 
-   public boolean gz() {
+   public boolean gB() {
       return this.cm;
    }
 
-   private void gD() {
+   private void gF() {
       this.cg = this.cd;
       this.cf = this.ce;
       this.ce = this.ce + (float)(!this.aJ() && !this.bZ() ? 4 : -1) * 0.3F;
@@ -148,7 +148,7 @@ public class cim extends cit implements bxf<cim.b>, cif {
       }
 
       this.ck *= 0.9F;
-      fbx $$0 = this.dy();
+      fbx $$0 = this.dz();
       if (!this.aJ() && $$0.e < 0.0) {
          this.h($$0.d(1.0, 0.6, 1.0));
       }
@@ -163,7 +163,7 @@ public class cim extends cit implements bxf<cim.b>, cif {
             bwh $$3 = $$2.get($$0.A.a($$2.size()));
             if (!$$3.bb()) {
                axe $$4 = b($$3.aq());
-               $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), $$4, $$1.dm(), 0.7F, a($$0.A));
+               $$0.a(null, $$1.dB(), $$1.dD(), $$1.dH(), $$4, $$1.dn(), 0.7F, a($$0.A));
                return true;
             }
          }
@@ -180,23 +180,23 @@ public class cim extends cit implements bxf<cim.b>, cif {
       if (!this.p() && $$2.a(ayd.aC)) {
          this.a($$0, $$1, $$2);
          if (!this.bb()) {
-            this.dV().a(null, this.dA(), this.dC(), this.dG(), axf.ta, this.dm(), 1.0F, 1.0F + (this.ae.i() - this.ae.i()) * 0.2F);
+            this.dW().a(null, this.dB(), this.dD(), this.dH(), axf.ta, this.dn(), 1.0F, 1.0F + (this.ae.i() - this.ae.i()) * 0.2F);
          }
 
-         if (!this.dV().C) {
+         if (!this.dW().C) {
             if (this.ae.a(10) == 0) {
                this.a($$0);
-               this.dV().a(this, (byte)7);
+               this.dW().a(this, (byte)7);
             } else {
-               this.dV().a(this, (byte)6);
+               this.dW().a(this, (byte)6);
             }
          }
 
          return bti.a;
       } else if (!$$2.a(ayd.aD)) {
-         if (!this.gB() && this.p() && this.j($$0)) {
-            if (!this.dV().C) {
-               this.z(!this.gm());
+         if (!this.gD() && this.p() && this.j($$0)) {
+            if (!this.dW().C) {
+               this.z(!this.go());
             }
 
             return bti.a;
@@ -207,7 +207,7 @@ public class cim extends cit implements bxf<cim.b>, cif {
          this.a($$0, $$1, $$2);
          this.a(new buo(buq.s, 900));
          if ($$0.b() || !this.cC()) {
-            this.a(this.dW().a($$0), Float.MAX_VALUE);
+            this.a(this.dX().a($$0), Float.MAX_VALUE);
          }
 
          return bti.a;
@@ -241,7 +241,7 @@ public class cim extends cit implements bxf<cim.b>, cif {
    @Nullable
    @Override
    public axe u() {
-      return a(this.dV(), this.dV().A);
+      return a(this.dW(), this.dW().A);
    }
 
    public static axe a(dhh $$0, bam $$1) {
@@ -284,7 +284,7 @@ public class cim extends cit implements bxf<cim.b>, cif {
    }
 
    @Override
-   public float ff() {
+   public float fh() {
       return a(this.ae);
    }
 
@@ -293,7 +293,7 @@ public class cim extends cit implements bxf<cim.b>, cif {
    }
 
    @Override
-   public axg dm() {
+   public axg dn() {
       return axg.g;
    }
 
@@ -319,7 +319,7 @@ public class cim extends cit implements bxf<cim.b>, cif {
       }
    }
 
-   public cim.b gA() {
+   public cim.b gC() {
       return cim.b.a(this.al.a(ch));
    }
 
@@ -336,7 +336,7 @@ public class cim extends cit implements bxf<cim.b>, cif {
    @Override
    public void b(ux $$0) {
       super.b($$0);
-      $$0.a("Variant", this.gA().h);
+      $$0.a("Variant", this.gC().h);
    }
 
    @Override
@@ -346,18 +346,18 @@ public class cim extends cit implements bxf<cim.b>, cif {
    }
 
    @Override
-   public boolean gB() {
+   public boolean gD() {
       return !this.aJ();
    }
 
    @Override
-   protected boolean gq() {
+   protected boolean gs() {
       return true;
    }
 
    @Override
    public fbx cT() {
-      return new fbx(0.0, (double)(0.5F * this.cS()), (double)(this.dq() * 0.4F));
+      return new fbx(0.0, (double)(0.5F * this.cS()), (double)(this.dr() * 0.4F));
    }
 
    static class a extends cep {
@@ -373,7 +373,7 @@ public class cim extends cit implements bxf<cim.b>, cif {
             $$0 = chd.a(this.b, 15, 15);
          }
 
-         if (this.b.dY().i() >= this.j) {
+         if (this.b.dZ().i() >= this.j) {
             $$0 = this.k();
          }
 
@@ -382,22 +382,22 @@ public class cim extends cit implements bxf<cim.b>, cif {
 
       @Nullable
       private fbx k() {
-         jh $$0 = this.b.dv();
+         jh $$0 = this.b.dw();
          jh.a $$1 = new jh.a();
          jh.a $$2 = new jh.a();
 
          for (jh $$4 : jh.b(
-            bae.a(this.b.dA() - 3.0),
-            bae.a(this.b.dC() - 6.0),
-            bae.a(this.b.dG() - 3.0),
-            bae.a(this.b.dA() + 3.0),
-            bae.a(this.b.dC() + 6.0),
-            bae.a(this.b.dG() + 3.0)
+            bae.a(this.b.dB() - 3.0),
+            bae.a(this.b.dD() - 6.0),
+            bae.a(this.b.dH() - 3.0),
+            bae.a(this.b.dB() + 3.0),
+            bae.a(this.b.dD() + 6.0),
+            bae.a(this.b.dH() + 3.0)
          )) {
             if (!$$0.equals($$4)) {
-               dxu $$5 = this.b.dV().a_($$2.a($$4, jm.a));
+               dxu $$5 = this.b.dW().a_($$2.a($$4, jm.a));
                boolean $$6 = $$5.b() instanceof dox || $$5.a(axu.u);
-               if ($$6 && this.b.dV().u($$4) && this.b.dV().u($$1.a($$4, jm.b))) {
+               if ($$6 && this.b.dW().u($$4) && this.b.dW().u($$1.a($$4, jm.b))) {
                   return fbx.c($$4);
                }
             }

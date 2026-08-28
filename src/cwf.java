@@ -9,16 +9,16 @@ import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
 public class cwf extends cyk {
-   private static final float l = 1.25F;
+   private static final float m = 1.25F;
    public static final int a = 8;
-   private boolean m = false;
    private boolean n = false;
-   private static final float o = 0.2F;
-   private static final float p = 0.5F;
-   private static final float q = 3.15F;
-   private static final float r = 1.6F;
+   private boolean o = false;
+   private static final float p = 0.2F;
+   private static final float q = 0.5F;
+   private static final float r = 3.15F;
+   private static final float s = 1.6F;
    public static final float b = 1.6F;
-   private static final cwf.a s = new cwf.a(Optional.of(axf.gK), Optional.of(axf.gJ), Optional.of(axf.gI));
+   private static final cwf.a t = new cwf.a(Optional.of(axf.gK), Optional.of(axf.gJ), Optional.of(axf.gI));
 
    public cwf(cxk.a $$0) {
       super($$0);
@@ -42,8 +42,8 @@ public class cwf extends cyk {
          this.a($$0, $$1, $$2, $$3, a($$4), 1.0F, null);
          return bti.c;
       } else if (!$$1.d($$3).f()) {
-         this.m = false;
          this.n = false;
+         this.o = false;
          $$1.c($$2);
          return bti.c;
       } else {
@@ -61,7 +61,7 @@ public class cwf extends cyk {
       float $$5 = a($$4, $$0, $$2);
       if ($$5 >= 1.0F && !g($$0) && a($$2, $$0)) {
          cwf.a $$6 = this.i($$0);
-         $$6.c().ifPresent($$2x -> $$1.a(null, $$2.dA(), $$2.dC(), $$2.dG(), (axe)$$2x.a(), $$2.dm(), 1.0F, 1.0F / ($$1.H_().i() * 0.5F + 1.0F) + 0.2F));
+         $$6.c().ifPresent($$2x -> $$1.a(null, $$2.dB(), $$2.dD(), $$2.dH(), (axe)$$2x.a(), $$2.dn(), 1.0F, 1.0F / ($$1.H_().i() * 0.5F + 1.0F) + 0.2F));
          return true;
       } else {
          return false;
@@ -87,10 +87,10 @@ public class cwf extends cyk {
    protected void a(bwf $$0, cqp $$1, int $$2, float $$3, float $$4, float $$5, @Nullable bwf $$6) {
       Vector3f $$11;
       if ($$6 != null) {
-         double $$7 = $$6.dA() - $$0.dA();
-         double $$8 = $$6.dG() - $$0.dG();
+         double $$7 = $$6.dB() - $$0.dB();
+         double $$8 = $$6.dH() - $$0.dH();
          double $$9 = Math.sqrt($$7 * $$7 + $$8 * $$8);
-         double $$10 = $$6.e(0.3333333333333333) - $$1.dC() + $$9 * 0.2F;
+         double $$10 = $$6.e(0.3333333333333333) - $$1.dD() + $$9 * 0.2F;
          $$11 = a($$0, new fbx($$7, $$10, $$8), $$5);
       } else {
          fbx $$12 = $$0.l(1.0F);
@@ -100,8 +100,8 @@ public class cwf extends cyk {
       }
 
       $$1.c((double)$$11.x(), (double)$$11.y(), (double)$$11.z(), $$3, $$4);
-      float $$16 = a($$0.dY(), $$2);
-      $$0.dV().a(null, $$0.dA(), $$0.dC(), $$0.dG(), axf.gO, $$0.dm(), 1.0F, $$16);
+      float $$16 = a($$0.dZ(), $$2);
+      $$0.dW().a(null, $$0.dB(), $$0.dD(), $$0.dH(), axf.gO, $$0.dn(), 1.0F, $$16);
    }
 
    private static Vector3f a(bwf $$0, fbx $$1, float $$2) {
@@ -119,7 +119,7 @@ public class cwf extends cyk {
    @Override
    protected cqp a(dhh $$0, bwf $$1, cxo $$2, cxo $$3, boolean $$4) {
       if ($$3.a(cxs.vk)) {
-         return new cqk($$0, $$3, $$1, $$1.dA(), $$1.dE() - 0.15F, $$1.dG(), true);
+         return new cqk($$0, $$3, $$1, $$1.dB(), $$1.dF() - 0.15F, $$1.dH(), true);
       } else {
          cqp $$5 = super.a($$0, $$1, $$2, $$3, $$4);
          if ($$5 instanceof cqd $$6) {
@@ -163,18 +163,18 @@ public class cwf extends cyk {
          cwf.a $$4 = this.i($$2);
          float $$5 = (float)($$2.a($$1) - $$3) / (float)b($$2, $$1);
          if ($$5 < 0.2F) {
-            this.m = false;
             this.n = false;
+            this.o = false;
          }
 
-         if ($$5 >= 0.2F && !this.m) {
-            this.m = true;
-            $$4.a().ifPresent($$2x -> $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), (axe)$$2x.a(), axg.h, 0.5F, 1.0F));
-         }
-
-         if ($$5 >= 0.5F && !this.n) {
+         if ($$5 >= 0.2F && !this.n) {
             this.n = true;
-            $$4.b().ifPresent($$2x -> $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), (axe)$$2x.a(), axg.h, 0.5F, 1.0F));
+            $$4.a().ifPresent($$2x -> $$0.a(null, $$1.dB(), $$1.dD(), $$1.dH(), (axe)$$2x.a(), axg.h, 0.5F, 1.0F));
+         }
+
+         if ($$5 >= 0.5F && !this.o) {
+            this.o = true;
+            $$4.b().ifPresent($$2x -> $$0.a(null, $$1.dB(), $$1.dD(), $$1.dH(), (axe)$$2x.a(), axg.h, 0.5F, 1.0F));
          }
       }
    }
@@ -195,7 +195,7 @@ public class cwf extends cyk {
    }
 
    cwf.a i(cxo $$0) {
-      return dea.b($$0, ddz.B).orElse(s);
+      return dea.b($$0, ddz.B).orElse(t);
    }
 
    private static float a(int $$0, cxo $$1, bwf $$2) {

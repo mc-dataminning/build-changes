@@ -268,7 +268,7 @@ public class ew implements ey<ew>, fb {
       xv $$1 = xv.a("chat.type.admin", this.b(), $$0).a(n.h, n.u);
       if (this.i.aL().b(dhd.p)) {
          for (asi $$2 : this.i.ag().t()) {
-            if ($$2.z() != this.c && this.i.ag().f($$2.gf())) {
+            if ($$2.z() != this.c && this.i.ag().f($$2.gh())) {
                $$2.a($$1);
             }
          }

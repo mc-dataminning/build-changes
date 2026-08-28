@@ -51,7 +51,7 @@ public class ckt extends bwh implements cmo {
       this.cq = new ckq(this, "wing", 4.0F, 2.0F);
       this.cr = new ckq(this, "wing", 4.0F, 2.0F);
       this.ck = new ckq[]{this.c, this.cl, this.cm, this.cn, this.co, this.cp, this.cq, this.cr};
-      this.x(this.eR());
+      this.x(this.eS());
       this.ad = true;
       this.cu = new clk(this);
    }
@@ -82,8 +82,8 @@ public class ckt extends bwh implements cmo {
 
    @Override
    public void aZ() {
-      if (this.dV().C && !this.bb()) {
-         this.dV().a(this.dA(), this.dC(), this.dG(), axf.ix, this.dm(), 5.0F, 0.8F + this.ae.i() * 0.3F, false);
+      if (this.dW().C && !this.bb()) {
+         this.dW().a(this.dB(), this.dD(), this.dH(), axf.ix, this.dn(), 5.0F, 0.8F + this.ae.i() * 0.3F, false);
       }
    }
 
@@ -96,15 +96,15 @@ public class ckt extends bwh implements cmo {
    @Override
    public void d_() {
       this.aO();
-      if (this.dV().C) {
-         this.x(this.eD());
+      if (this.dW().C) {
+         this.x(this.eE());
          if (!this.bb() && !this.cu.a().a() && --this.cv < 0) {
-            this.dV().a(this.dA(), this.dC(), this.dG(), axf.iy, this.dm(), 2.5F, 0.8F + this.ae.i() * 0.3F, false);
+            this.dW().a(this.dB(), this.dD(), this.dH(), axf.iy, this.dn(), 2.5F, 0.8F + this.ae.i() * 0.3F, false);
             this.cv = 200 + this.ae.a(200);
          }
       }
 
-      if (this.cs == null && this.dV() instanceof ash $$0) {
+      if (this.cs == null && this.dW() instanceof ash $$0) {
          ebs $$1 = $$0.E();
          if ($$1 != null && this.cG().equals($$1.i())) {
             this.cs = $$1;
@@ -112,14 +112,14 @@ public class ckt extends bwh implements cmo {
       }
 
       this.d = this.bY;
-      if (this.eE()) {
+      if (this.eF()) {
          float $$2 = (this.ae.i() - 0.5F) * 8.0F;
          float $$3 = (this.ae.i() - 0.5F) * 4.0F;
          float $$4 = (this.ae.i() - 0.5F) * 8.0F;
-         this.dV().a(ls.w, this.dA() + (double)$$2, this.dC() + 2.0 + (double)$$3, this.dG() + (double)$$4, 0.0, 0.0, 0.0);
+         this.dW().a(ls.w, this.dB() + (double)$$2, this.dD() + 2.0 + (double)$$3, this.dH() + (double)$$4, 0.0, 0.0, 0.0);
       } else {
-         this.gl();
-         fbx $$5 = this.dy();
+         this.gn();
+         fbx $$5 = this.dz();
          float $$6 = 0.2F / ((float)$$5.i() * 10.0F + 1.0F);
          $$6 *= (float)Math.pow(2.0, $$5.e);
          if (this.cu.a().a()) {
@@ -130,12 +130,12 @@ public class ckt extends bwh implements cmo {
             this.bY += $$6;
          }
 
-         this.v(bae.h(this.dL()));
-         if (this.fZ()) {
+         this.v(bae.h(this.dM()));
+         if (this.gb()) {
             this.bY = 0.5F;
          } else {
-            this.b.a(this.dC(), this.dL());
-            if (this.dV() instanceof ash $$7) {
+            this.b.a(this.dD(), this.dM());
+            if (this.dW() instanceof ash $$7) {
                cld $$9 = this.cu.a();
                $$9.a($$7);
                if (this.cu.a() != $$9) {
@@ -145,9 +145,9 @@ public class ckt extends bwh implements cmo {
 
                fbx $$10 = $$9.f();
                if ($$10 != null) {
-                  double $$11 = $$10.d - this.dA();
-                  double $$12 = $$10.e - this.dC();
-                  double $$13 = $$10.f - this.dG();
+                  double $$11 = $$10.d - this.dB();
+                  double $$12 = $$10.e - this.dD();
+                  double $$13 = $$10.f - this.dH();
                   double $$14 = $$11 * $$11 + $$12 * $$12 + $$13 * $$13;
                   float $$15 = $$9.e();
                   double $$16 = Math.sqrt($$11 * $$11 + $$13 * $$13);
@@ -155,31 +155,31 @@ public class ckt extends bwh implements cmo {
                      $$12 = bae.a($$12 / $$16, (double)(-$$15), (double)$$15);
                   }
 
-                  this.h(this.dy().b(0.0, $$12 * 0.01, 0.0));
-                  this.v(bae.h(this.dL()));
-                  fbx $$17 = $$10.a(this.dA(), this.dC(), this.dG()).d();
-                  fbx $$18 = new fbx((double)bae.a(this.dL() * (float) (Math.PI / 180.0)), this.dy().e, (double)(-bae.b(this.dL() * (float) (Math.PI / 180.0))))
+                  this.h(this.dz().b(0.0, $$12 * 0.01, 0.0));
+                  this.v(bae.h(this.dM()));
+                  fbx $$17 = $$10.a(this.dB(), this.dD(), this.dH()).d();
+                  fbx $$18 = new fbx((double)bae.a(this.dM() * (float) (Math.PI / 180.0)), this.dz().e, (double)(-bae.b(this.dM() * (float) (Math.PI / 180.0))))
                      .d();
                   float $$19 = Math.max(((float)$$18.b($$17) + 0.5F) / 1.5F, 0.0F);
                   if (Math.abs($$11) > 1.0E-5F || Math.abs($$13) > 1.0E-5F) {
-                     float $$20 = bae.a(bae.h(180.0F - (float)bae.d($$11, $$13) * (180.0F / (float)Math.PI) - this.dL()), -50.0F, 50.0F);
+                     float $$20 = bae.a(bae.h(180.0F - (float)bae.d($$11, $$13) * (180.0F / (float)Math.PI) - this.dM()), -50.0F, 50.0F);
                      this.cb *= 0.8F;
                      this.cb = this.cb + $$20 * $$9.g();
-                     this.v(this.dL() + this.cb * 0.1F);
+                     this.v(this.dM() + this.cb * 0.1F);
                   }
 
                   float $$21 = (float)(2.0 / ($$14 + 1.0));
                   float $$22 = 0.06F;
                   this.a(0.06F * ($$19 * $$21 + (1.0F - $$21)), new fbx(0.0, 0.0, -1.0));
                   if (this.bZ) {
-                     this.a(bwj.a, this.dy().c(0.8F));
+                     this.a(bwj.a, this.dz().c(0.8F));
                   } else {
-                     this.a(bwj.a, this.dy());
+                     this.a(bwj.a, this.dz());
                   }
 
-                  fbx $$23 = this.dy().d();
+                  fbx $$23 = this.dz().d();
                   double $$24 = 0.8 + 0.15 * ($$23.b($$18) + 1.0) / 2.0;
-                  this.h(this.dy().d($$24, 0.91F, $$24));
+                  this.h(this.dz().d($$24, 0.91F, $$24));
                }
             } else {
                if (this.br > 0) {
@@ -190,36 +190,36 @@ public class ckt extends bwh implements cmo {
                this.cu.a().b();
             }
 
-            if (!this.dV().B_()) {
+            if (!this.dW().B_()) {
                this.aK();
             }
 
-            this.aX = this.dL();
+            this.aX = this.dM();
             fbx[] $$25 = new fbx[this.ck.length];
 
             for (int $$26 = 0; $$26 < this.ck.length; $$26++) {
-               $$25[$$26] = new fbx(this.ck[$$26].dA(), this.ck[$$26].dC(), this.ck[$$26].dG());
+               $$25[$$26] = new fbx(this.ck[$$26].dB(), this.ck[$$26].dD(), this.ck[$$26].dH());
             }
 
             float $$27 = (float)(this.b.a(5).a() - this.b.a(10).a()) * 10.0F * (float) (Math.PI / 180.0);
             float $$28 = bae.b($$27);
             float $$29 = bae.a($$27);
-            float $$30 = this.dL() * (float) (Math.PI / 180.0);
+            float $$30 = this.dM() * (float) (Math.PI / 180.0);
             float $$31 = bae.a($$30);
             float $$32 = bae.b($$30);
             this.a(this.cm, (double)($$31 * 0.5F), 0.0, (double)(-$$32 * 0.5F));
             this.a(this.cq, (double)($$32 * 4.5F), 2.0, (double)($$31 * 4.5F));
             this.a(this.cr, (double)($$32 * -4.5F), 2.0, (double)($$31 * -4.5F));
-            if (this.dV() instanceof ash $$33 && this.aN == 0) {
+            if (this.dW() instanceof ash $$33 && this.aN == 0) {
                this.a($$33, $$33.a(this, this.cq.cR().c(4.0, 2.0, 4.0).d(0.0, -2.0, 0.0), bvo.e));
                this.a($$33, $$33.a(this, this.cr.cR().c(4.0, 2.0, 4.0).d(0.0, -2.0, 0.0), bvo.e));
                this.b($$33, $$33.a(this, this.c.cR().g(1.0), bvo.e));
                this.b($$33, $$33.a(this, this.cl.cR().g(1.0), bvo.e));
             }
 
-            float $$34 = bae.a(this.dL() * (float) (Math.PI / 180.0) - this.cb * 0.01F);
-            float $$35 = bae.b(this.dL() * (float) (Math.PI / 180.0) - this.cb * 0.01F);
-            float $$36 = this.gk();
+            float $$34 = bae.a(this.dM() * (float) (Math.PI / 180.0) - this.cb * 0.01F);
+            float $$35 = bae.b(this.dM() * (float) (Math.PI / 180.0) - this.cb * 0.01F);
+            float $$36 = this.gm();
             this.a(this.c, (double)($$34 * 6.5F * $$28), (double)($$36 + $$29 * 6.5F), (double)(-$$35 * 6.5F * $$28));
             this.a(this.cl, (double)($$34 * 5.5F * $$28), (double)($$36 + $$29 * 5.5F), (double)(-$$35 * 5.5F * $$28));
             ckr.a $$37 = this.b.a(5);
@@ -239,7 +239,7 @@ public class ckt extends bwh implements cmo {
                }
 
                ckr.a $$40 = this.b.a(12 + $$38 * 2);
-               float $$41 = this.dL() * (float) (Math.PI / 180.0) + this.i((double)($$40.b() - $$37.b())) * (float) (Math.PI / 180.0);
+               float $$41 = this.dM() * (float) (Math.PI / 180.0) + this.i((double)($$40.b() - $$37.b())) * (float) (Math.PI / 180.0);
                float $$42 = bae.a($$41);
                float $$43 = bae.b($$41);
                float $$44 = 1.5F;
@@ -252,7 +252,7 @@ public class ckt extends bwh implements cmo {
                );
             }
 
-            if (this.dV() instanceof ash $$46) {
+            if (this.dW() instanceof ash $$46) {
                this.bZ = this.a($$46, this.c.cR()) | this.a($$46, this.cl.cR()) | this.a($$46, this.cm.cR());
                if (this.cs != null) {
                   this.cs.b(this);
@@ -272,10 +272,10 @@ public class ckt extends bwh implements cmo {
    }
 
    private void a(ckq $$0, double $$1, double $$2, double $$3) {
-      $$0.a_(this.dA() + $$1, this.dC() + $$2, this.dG() + $$3);
+      $$0.a_(this.dB() + $$1, this.dD() + $$2, this.dH() + $$3);
    }
 
-   private float gk() {
+   private float gm() {
       if (this.cu.a().a()) {
          return -1.0F;
       } else {
@@ -285,17 +285,17 @@ public class ckt extends bwh implements cmo {
       }
    }
 
-   private void gl() {
+   private void gn() {
       if (this.cc != null) {
-         if (this.cc.dQ()) {
+         if (this.cc.dR()) {
             this.cc = null;
-         } else if (this.af % 10 == 0 && this.eD() < this.eR()) {
-            this.x(this.eD() + 1.0F);
+         } else if (this.af % 10 == 0 && this.eE() < this.eS()) {
+            this.x(this.eE() + 1.0F);
          }
       }
 
       if (this.ae.a(10) == 0) {
-         List<cks> $$0 = this.dV().a(cks.class, this.cR().g(32.0));
+         List<cks> $$0 = this.dW().a(cks.class, this.cR().g(32.0));
          cks $$1 = null;
          double $$2 = Double.MAX_VALUE;
 
@@ -318,12 +318,12 @@ public class ckt extends bwh implements cmo {
       for (bvj $$4 : $$1) {
          if ($$4 instanceof bwf) {
             bwf $$5 = (bwf)$$4;
-            double $$6 = $$4.dA() - $$2;
-            double $$7 = $$4.dG() - $$3;
+            double $$6 = $$4.dB() - $$2;
+            double $$7 = $$4.dH() - $$3;
             double $$8 = Math.max($$6 * $$6 + $$7 * $$7, 0.1);
             $$4.j($$6 / $$8 * 4.0, 0.2F, $$7 / $$8 * 4.0);
-            if (!this.cu.a().a() && $$5.eq() < $$4.af - 2) {
-               btz $$9 = this.dW().b((bwf)this);
+            if (!this.cu.a().a() && $$5.er() < $$4.af - 2) {
+               btz $$9 = this.dX().b((bwf)this);
                $$4.a($$0, $$9, 5.0F);
                dea.a($$0, $$4, $$9);
             }
@@ -334,7 +334,7 @@ public class ckt extends bwh implements cmo {
    private void b(ash $$0, List<bvj> $$1) {
       for (bvj $$2 : $$1) {
          if ($$2 instanceof bwf) {
-            btz $$3 = this.dW().b((bwf)this);
+            btz $$3 = this.dX().b((bwf)this);
             $$2.a($$0, $$3, 10.0F);
             dea.a($$0, $$2, $$3);
          }
@@ -392,16 +392,16 @@ public class ckt extends bwh implements cmo {
             return false;
          } else {
             if ($$2.d() instanceof cpw || $$2.a(axw.y)) {
-               float $$4 = this.eD();
+               float $$4 = this.eE();
                this.c($$0, $$2, $$3);
-               if (this.eE() && !this.cu.a().a()) {
+               if (this.eF() && !this.cu.a().a()) {
                   this.x(1.0F);
                   this.cu.a(clj.j);
                }
 
                if (this.cu.a().a()) {
-                  this.cw = this.cw + $$4 - this.eD();
-                  if (this.cw > 0.25F * this.eR()) {
+                  this.cw = this.cw + $$4 - this.eE();
+                  if (this.cw > 0.25F * this.eS()) {
                      this.cw = 0.0F;
                      this.cu.a(clj.e);
                   }
@@ -424,7 +424,7 @@ public class ckt extends bwh implements cmo {
 
    @Override
    public void c(ash $$0) {
-      this.a(bvj.c.a);
+      this.a(bvj.d.a);
       this.a(ecq.p);
       if (this.cs != null) {
          this.cs.b(this);
@@ -433,7 +433,7 @@ public class ckt extends bwh implements cmo {
    }
 
    @Override
-   protected void el() {
+   protected void em() {
       if (this.cs != null) {
          this.cs.b(this);
       }
@@ -443,7 +443,7 @@ public class ckt extends bwh implements cmo {
          float $$0 = (this.ae.i() - 0.5F) * 8.0F;
          float $$1 = (this.ae.i() - 0.5F) * 4.0F;
          float $$2 = (this.ae.i() - 0.5F) * 8.0F;
-         this.dV().a(ls.v, this.dA() + (double)$$0, this.dC() + 2.0 + (double)$$1, this.dG() + (double)$$2, 0.0, 0.0, 0.0);
+         this.dW().a(ls.v, this.dB() + (double)$$0, this.dD() + 2.0 + (double)$$1, this.dH() + (double)$$2, 0.0, 0.0, 0.0);
       }
 
       int $$3 = 500;
@@ -451,27 +451,27 @@ public class ckt extends bwh implements cmo {
          $$3 = 12000;
       }
 
-      if (this.dV() instanceof ash $$4) {
+      if (this.dW() instanceof ash $$4) {
          if (this.ca > 150 && this.ca % 5 == 0 && $$4.N().b(dhd.f)) {
-            bvv.a($$4, this.dt(), bae.d((float)$$3 * 0.08F));
+            bvv.a($$4, this.du(), bae.d((float)$$3 * 0.08F));
          }
 
          if (this.ca == 1 && !this.bb()) {
-            $$4.b(1028, this.dv(), 0);
+            $$4.b(1028, this.dw(), 0);
          }
       }
 
       this.a(bwj.a, new fbx(0.0, 0.1F, 0.0));
-      if (this.ca == 200 && this.dV() instanceof ash $$5) {
+      if (this.ca == 200 && this.dW() instanceof ash $$5) {
          if ($$5.N().b(dhd.f)) {
-            bvv.a($$5, this.dt(), bae.d((float)$$3 * 0.2F));
+            bvv.a($$5, this.du(), bae.d((float)$$3 * 0.2F));
          }
 
          if (this.cs != null) {
             this.cs.a(this);
          }
 
-         this.a(bvj.c.a);
+         this.a(bvj.d.a);
          this.a(ecq.p);
       }
    }
@@ -496,7 +496,7 @@ public class ckt extends bwh implements cmo {
                $$4 = bae.d(20.0F * bae.a(2.0F * ((float) -Math.PI + (float) (Math.PI / 4) * (float)var7)));
             }
 
-            int $$9 = Math.max(73, this.dV().a(edp.a.f, new jh($$3, 0, $$4)).v() + $$1);
+            int $$9 = Math.max(73, this.dW().a(edp.a.f, new jh($$3, 0, $$4)).v() + $$1);
             this.cx[$$0] = new eui($$3, $$9, $$4);
          }
 
@@ -526,7 +526,7 @@ public class ckt extends bwh implements cmo {
          this.cy[23] = 8257536;
       }
 
-      return this.q(this.dA(), this.dC(), this.dG());
+      return this.q(this.dB(), this.dD(), this.dH());
    }
 
    public int q(double $$0, double $$1, double $$2) {
@@ -668,7 +668,7 @@ public class ckt extends bwh implements cmo {
    }
 
    @Override
-   public void dH() {
+   public void dI() {
    }
 
    public ckq[] x() {
@@ -681,7 +681,7 @@ public class ckt extends bwh implements cmo {
    }
 
    @Override
-   public axg dm() {
+   public axg dn() {
       return axg.f;
    }
 
@@ -696,7 +696,7 @@ public class ckt extends bwh implements cmo {
    }
 
    @Override
-   protected float fe() {
+   protected float fg() {
       return 5.0F;
    }
 
@@ -705,16 +705,16 @@ public class ckt extends bwh implements cmo {
       clj<? extends cld> $$2 = $$1.h();
       fbx $$8;
       if ($$2 == clj.d || $$2 == clj.e) {
-         jh $$3 = this.dV().a(edp.a.f, egu.a(this.ct));
-         float $$4 = Math.max((float)Math.sqrt($$3.b(this.dt())) / 4.0F, 1.0F);
+         jh $$3 = this.dW().a(edp.a.f, egu.a(this.ct));
+         float $$4 = Math.max((float)Math.sqrt($$3.b(this.du())) / 4.0F, 1.0F);
          float $$5 = 6.0F / $$4;
-         float $$6 = this.dN();
+         float $$6 = this.dO();
          float $$7 = 1.5F;
          this.w(-$$5 * 1.5F * 5.0F);
          $$8 = this.g($$0);
          this.w($$6);
       } else if ($$1.a()) {
-         float $$9 = this.dN();
+         float $$9 = this.dO();
          float $$10 = 1.5F;
          this.w(-45.0F);
          $$8 = this.g($$0);
@@ -735,7 +735,7 @@ public class ckt extends bwh implements cmo {
       }
 
       if ($$1 == this.cc) {
-         this.a($$0, this.c, this.dW().d($$1, $$4), 10.0F);
+         this.a($$0, this.c, this.dX().d($$1, $$4), 10.0F);
       }
 
       this.cu.a().a($$1, $$2, $$3, $$4);
@@ -743,19 +743,19 @@ public class ckt extends bwh implements cmo {
 
    @Override
    public void a(alc<?> $$0) {
-      if (a.equals($$0) && this.dV().C) {
+      if (a.equals($$0) && this.dW().C) {
          this.cu.a(clj.a(this.au().a(a)));
       }
 
       super.a($$0);
    }
 
-   public clk gi() {
+   public clk gk() {
       return this.cu;
    }
 
    @Nullable
-   public ebs gj() {
+   public ebs gl() {
       return this.cs;
    }
 
@@ -786,7 +786,7 @@ public class ckt extends bwh implements cmo {
 
    @Override
    public boolean c(bwf $$0) {
-      return $$0.ew();
+      return $$0.ex();
    }
 
    @Override

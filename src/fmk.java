@@ -1,30 +1,158 @@
-import java.util.function.IntFunction;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.math.LongMath;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2BooleanFunction;
+import java.io.Reader;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.Map.Entry;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public enum fmk implements bah {
-   a(0, "options.prioritizeChunkUpdates.none"),
-   b(1, "options.prioritizeChunkUpdates.byPlayer"),
-   c(2, "options.prioritizeChunkUpdates.nearby");
+public class fmk extends awa<Map<String, List<fmk.a>>> implements AutoCloseable {
+   private static final Codec<Map<String, List<fmk.a>>> a = Codec.unboundedMap(
+      Codec.STRING,
+      RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     Codec.LONG.optionalFieldOf("delay", 0L).forGetter(fmk.a::a),
+                     Codec.LONG.fieldOf("period").forGetter(fmk.a::b),
+                     Codec.STRING.fieldOf("title").forGetter(fmk.a::c),
+                     Codec.STRING.fieldOf("message").forGetter(fmk.a::d)
+                  )
+                  .apply($$0, fmk.a::new)
+         )
+         .listOf()
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final alz c;
+   private final Object2BooleanFunction<String> d;
+   @Nullable
+   private Timer e;
+   @Nullable
+   private fmk.b f;
 
-   private static final IntFunction<fmk> d = ayv.a(fmk::b, values(), ayv.a.b);
-   private final int e;
-   private final String f;
+   public fmk(alz $$0, Object2BooleanFunction<String> $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
 
-   private fmk(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   protected Map<String, List<fmk.a>> a(avv $$0, bps $$1) {
+      try {
+         Map var4;
+         try (Reader $$2 = $$0.openAsReader(this.c)) {
+            var4 = (Map)a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$2)).result().orElseThrow();
+         }
+
+         return var4;
+      } catch (Exception var8) {
+         b.warn("Failed to load {}", this.c, var8);
+         return ImmutableMap.of();
+      }
+   }
+
+   protected void a(Map<String, List<fmk.a>> $$0, avv $$1, bps $$2) {
+      List<fmk.a> $$3 = $$0.entrySet()
+         .stream()
+         .filter($$0x -> (Boolean)this.d.apply((String)$$0x.getKey()))
+         .map(Entry::getValue)
+         .flatMap(Collection::stream)
+         .collect(Collectors.toList());
+      if ($$3.isEmpty()) {
+         this.a();
+      } else if ($$3.stream().anyMatch($$0x -> $$0x.b == 0L)) {
+         ae.b("A periodic notification in " + this.c + " has a period of zero minutes");
+         this.a();
+      } else {
+         long $$4 = this.a($$3);
+         long $$5 = this.a($$3, $$4);
+         if (this.e == null) {
+            this.e = new Timer();
+         }
+
+         if (this.f == null) {
+            this.f = new fmk.b($$3, $$4, $$5);
+         } else {
+            this.f = this.f.a($$3, $$5);
+         }
+
+         this.e.scheduleAtFixedRate(this.f, TimeUnit.MINUTES.toMillis($$4), TimeUnit.MINUTES.toMillis($$5));
+      }
    }
 
    @Override
-   public int b() {
-      return this.e;
+   public void close() {
+      this.a();
    }
 
-   @Override
-   public String a() {
-      return this.f;
+   private void a() {
+      if (this.e != null) {
+         this.e.cancel();
+      }
    }
 
-   public static fmk a(int $$0) {
-      return d.apply($$0);
+   private long a(List<fmk.a> $$0, long $$1) {
+      return $$0.stream().mapToLong($$1x -> {
+         long $$2 = $$1x.a - $$1;
+         return LongMath.gcd($$2, $$1x.b);
+      }).reduce(LongMath::gcd).orElseThrow(() -> new IllegalStateException("Empty notifications from: " + this.c));
+   }
+
+   private long a(List<fmk.a> $$0) {
+      return $$0.stream().mapToLong($$0x -> $$0x.a).min().orElse(0L);
+   }
+
+   public static record a(long a, long b, String c, String d) {
+
+      public a(final long a, final long b, final String c, final String d) {
+         this.a = a != 0L ? a : b;
+         this.b = b;
+         this.c = c;
+         this.d = d;
+      }
+   }
+
+   static class b extends TimerTask {
+      private final fmf a = fmf.Q();
+      private final List<fmk.a> b;
+      private final long c;
+      private final AtomicLong d;
+
+      public b(List<fmk.a> $$0, long $$1, long $$2) {
+         this.b = $$0;
+         this.c = $$2;
+         this.d = new AtomicLong($$1);
+      }
+
+      public fmk.b a(List<fmk.a> $$0, long $$1) {
+         this.cancel();
+         return new fmk.b($$0, this.d.get(), $$1);
+      }
+
+      @Override
+      public void run() {
+         long $$0 = this.d.getAndAdd(this.c);
+         long $$1 = this.d.get();
+
+         for (fmk.a $$2 : this.b) {
+            if ($$0 >= $$2.a) {
+               long $$3 = $$0 / $$2.b;
+               long $$4 = $$1 / $$2.b;
+               if ($$3 != $$4) {
+                  this.a.execute(() -> fqo.a(fmf.Q().aA(), fqo.a.g, xv.a($$2.c, $$3), xv.a($$2.d, $$3)));
+                  return;
+               }
+            }
+         }
+      }
    }
 }

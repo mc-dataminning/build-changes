@@ -363,7 +363,7 @@ public class ebs {
       if ($$0 != null) {
          $$0.a(this);
          $$0.c(this.m);
-         $$0.gi().a(clj.a);
+         $$0.gk().a(clj.a);
          $$0.b((double)this.m.u(), (double)(128 + this.m.v()), (double)this.m.w(), this.l.A.i() * 360.0F, 0.0F);
          this.l.b($$0);
          this.w = $$0.cG();
@@ -374,7 +374,7 @@ public class ebs {
 
    public void b(ckt $$0) {
       if ($$0.cG().equals(this.w)) {
-         this.k.a($$0.eD() / $$0.eR());
+         this.k.a($$0.eE() / $$0.eS());
          this.p = 0;
          if ($$0.l_()) {
             this.k.a($$0.p_());
@@ -396,7 +396,7 @@ public class ebs {
       } else {
          this.p();
          if (this.l.a(this.w) instanceof ckt $$3) {
-            $$3.a(this.l, $$0, $$0.dv(), $$1);
+            $$3.a(this.l, $$0, $$0.dw(), $$1);
          }
       }
    }

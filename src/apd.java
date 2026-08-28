@@ -89,13 +89,13 @@ public class apd {
 
    private static int b(ew $$0, int $$1) throws CommandSyntaxException {
       asi $$2 = $$0.h();
-      jh $$3 = $$2.dv();
+      jh $$3 = $$2.dw();
       if ($$2.y().e($$3)) {
          $$0.b(xv.b("Raid already started close by"));
          return -1;
       } else {
          crl $$4 = $$2.y().A();
-         crj $$5 = $$4.a($$2, $$2.dv());
+         crj $$5 = $$4.a($$2, $$2.dw());
          if ($$5 != null) {
             $$5.a($$1);
             $$4.c();
@@ -110,7 +110,7 @@ public class apd {
 
    private static int c(ew $$0) throws CommandSyntaxException {
       asi $$1 = $$0.h();
-      jh $$2 = $$1.dv();
+      jh $$2 = $$1.dw();
       crj $$3 = $$1.y().d($$2);
       if ($$3 != null) {
          $$3.n();
@@ -149,6 +149,6 @@ public class apd {
 
    @Nullable
    private static crj a(asi $$0) {
-      return $$0.y().d($$0.dv());
+      return $$0.y().d($$0.dw());
    }
 }

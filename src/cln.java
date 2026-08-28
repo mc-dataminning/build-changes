@@ -18,13 +18,13 @@ public class cln extends cmw implements cna {
    private final int[] cg = new int[2];
    private int ch;
    private final asd ci = (asd)new asd(this.p_(), bsy.a.f, bsy.b.a).a(true);
-   private static final cgw.a cj = ($$0, $$1) -> !$$0.aq().a(axy.y) && $$0.fK();
+   private static final cgw.a cj = ($$0, $$1) -> !$$0.aq().a(axy.y) && $$0.fM();
    private static final cgw ck = cgw.a().a(20.0).a(cj);
 
    public cln(bvq<? extends cln> $$0, dhh $$1) {
       super($$0, $$1);
       this.bQ = new ccd(this, 10, false);
-      this.x(this.eR());
+      this.x(this.eS());
       this.bO = 50;
    }
 
@@ -60,7 +60,7 @@ public class cln extends cmw implements cna {
    @Override
    public void b(ux $$0) {
       super.b($$0);
-      $$0.a("Invul", this.gm());
+      $$0.a("Invul", this.go());
    }
 
    @Override
@@ -95,18 +95,18 @@ public class cln extends cmw implements cna {
 
    @Override
    public void d_() {
-      fbx $$0 = this.dy().d(1.0, 0.6, 1.0);
-      if (!this.dV().C && this.c(0) > 0) {
-         bvj $$1 = this.dV().a(this.c(0));
+      fbx $$0 = this.dz().d(1.0, 0.6, 1.0);
+      if (!this.dW().C && this.c(0) > 0) {
+         bvj $$1 = this.dW().a(this.c(0));
          if ($$1 != null) {
             double $$2 = $$0.e;
-            if (this.dC() < $$1.dC() || !this.gn() && this.dC() < $$1.dC() + 5.0) {
+            if (this.dD() < $$1.dD() || !this.gp() && this.dD() < $$1.dD() + 5.0) {
                $$2 = Math.max(0.0, $$2);
                $$2 += 0.3 - $$2 * 0.6F;
             }
 
             $$0 = new fbx($$0.d, $$2, $$0.f);
-            fbx $$3 = new fbx($$1.dA() - this.dA(), 0.0, $$1.dG() - this.dG());
+            fbx $$3 = new fbx($$1.dB() - this.dB(), 0.0, $$1.dH() - this.dH());
             if ($$3.j() > 9.0) {
                fbx $$4 = $$3.d();
                $$0 = $$0.b($$4.d * 0.3 - $$0.d * 0.6, 0.0, $$4.f * 0.3 - $$0.f * 0.6);
@@ -130,16 +130,16 @@ public class cln extends cmw implements cna {
          int $$7 = this.c($$6 + 1);
          bvj $$8 = null;
          if ($$7 > 0) {
-            $$8 = this.dV().a($$7);
+            $$8 = this.dW().a($$7);
          }
 
          if ($$8 != null) {
             double $$9 = this.r($$6 + 1);
             double $$10 = this.s($$6 + 1);
             double $$11 = this.t($$6 + 1);
-            double $$12 = $$8.dA() - $$9;
-            double $$13 = $$8.dE() - $$10;
-            double $$14 = $$8.dG() - $$11;
+            double $$12 = $$8.dB() - $$9;
+            double $$13 = $$8.dF() - $$10;
+            double $$14 = $$8.dH() - $$11;
             double $$15 = Math.sqrt($$12 * $$12 + $$14 * $$14);
             float $$16 = (float)(bae.d($$14, $$12) * 180.0F / (float)Math.PI) - 90.0F;
             float $$17 = (float)(-(bae.d($$13, $$15) * 180.0F / (float)Math.PI));
@@ -150,16 +150,16 @@ public class cln extends cmw implements cna {
          }
       }
 
-      boolean $$18 = this.gn();
+      boolean $$18 = this.gp();
 
       for (int $$19 = 0; $$19 < 3; $$19++) {
          double $$20 = this.r($$19);
          double $$21 = this.s($$19);
          double $$22 = this.t($$19);
-         float $$23 = 0.3F * this.ej();
-         this.dV().a(ls.af, $$20 + this.ae.k() * (double)$$23, $$21 + this.ae.k() * (double)$$23, $$22 + this.ae.k() * (double)$$23, 0.0, 0.0, 0.0);
-         if ($$18 && this.dV().A.a(4) == 0) {
-            this.dV()
+         float $$23 = 0.3F * this.ek();
+         this.dW().a(ls.af, $$20 + this.ae.k() * (double)$$23, $$21 + this.ae.k() * (double)$$23, $$22 + this.ae.k() * (double)$$23, 0.0, 0.0, 0.0);
+         if ($$18 && this.dW().A.a(4) == 0) {
+            this.dW()
                .a(
                   ll.a(ls.u, 0.7F, 0.7F, 0.5F),
                   $$20 + this.ae.k() * (double)$$23,
@@ -172,25 +172,25 @@ public class cln extends cmw implements cna {
          }
       }
 
-      if (this.gm() > 0) {
-         float $$24 = 3.3F * this.ej();
+      if (this.go() > 0) {
+         float $$24 = 3.3F * this.ek();
 
          for (int $$25 = 0; $$25 < 3; $$25++) {
-            this.dV()
-               .a(ll.a(ls.u, 0.7F, 0.7F, 0.9F), this.dA() + this.ae.k(), this.dC() + (double)(this.ae.i() * $$24), this.dG() + this.ae.k(), 0.0, 0.0, 0.0);
+            this.dW()
+               .a(ll.a(ls.u, 0.7F, 0.7F, 0.9F), this.dB() + this.ae.k(), this.dD() + (double)(this.ae.i() * $$24), this.dH() + this.ae.k(), 0.0, 0.0, 0.0);
          }
       }
    }
 
    @Override
    protected void a(ash $$0) {
-      if (this.gm() > 0) {
-         int $$1 = this.gm() - 1;
+      if (this.go() > 0) {
+         int $$1 = this.go() - 1;
          this.ci.a(1.0F - (float)$$1 / 220.0F);
          if ($$1 <= 0) {
-            $$0.a(this, this.dA(), this.dE(), this.dG(), 7.0F, false, dhh.a.c);
+            $$0.a(this, this.dB(), this.dF(), this.dH(), 7.0F, false, dhh.a.c);
             if (!this.bb()) {
-               $$0.b(1023, this.dv(), 0);
+               $$0.b(1023, this.dw(), 0);
             }
          }
 
@@ -207,9 +207,9 @@ public class cln extends cmw implements cna {
                if (($$0.al() == btf.c || $$0.al() == btf.d) && this.cg[$$2 - 1]++ > 15) {
                   float $$3 = 10.0F;
                   float $$4 = 5.0F;
-                  double $$5 = bae.a(this.ae, this.dA() - 10.0, this.dA() + 10.0);
-                  double $$6 = bae.a(this.ae, this.dC() - 5.0, this.dC() + 5.0);
-                  double $$7 = bae.a(this.ae, this.dG() - 10.0, this.dG() + 10.0);
+                  double $$5 = bae.a(this.ae, this.dB() - 10.0, this.dB() + 10.0);
+                  double $$6 = bae.a(this.ae, this.dD() - 5.0, this.dD() + 5.0);
+                  double $$7 = bae.a(this.ae, this.dH() - 10.0, this.dH() + 10.0);
                   this.a($$2 + 1, $$5, $$6, $$7, true);
                   this.cg[$$2 - 1] = 0;
                }
@@ -244,10 +244,10 @@ public class cln extends cmw implements cna {
             this.ch--;
             if (this.ch == 0 && $$0.N().b(dhd.c)) {
                boolean $$12 = false;
-               int $$13 = bae.d(this.dq() / 2.0F + 1.0F);
-               int $$14 = bae.d(this.dr());
+               int $$13 = bae.d(this.dr() / 2.0F + 1.0F);
+               int $$14 = bae.d(this.ds());
 
-               for (jh $$15 : jh.b(this.dz() - $$13, this.dB(), this.dF() - $$13, this.dz() + $$13, this.dB() + $$14, this.dF() + $$13)) {
+               for (jh $$15 : jh.b(this.dA() - $$13, this.dC(), this.dG() - $$13, this.dA() + $$13, this.dC() + $$14, this.dG() + $$13)) {
                   dxu $$16 = $$0.a_($$15);
                   if (c($$16)) {
                      $$12 = $$0.a($$15, true, this) || $$12;
@@ -255,7 +255,7 @@ public class cln extends cmw implements cna {
                }
 
                if ($$12) {
-                  $$0.a(null, 1022, this.dv(), 0);
+                  $$0.a(null, 1022, this.dw(), 0);
                }
             }
          }
@@ -264,7 +264,7 @@ public class cln extends cmw implements cna {
             this.c(1.0F);
          }
 
-         this.ci.a(this.eD() / this.eR());
+         this.ci.a(this.eE() / this.eS());
       }
    }
 
@@ -276,7 +276,7 @@ public class cln extends cmw implements cna {
    public void m() {
       this.b(220);
       this.ci.a(0.0F);
-      this.x(this.eR() / 3.0F);
+      this.x(this.eS() / 3.0F);
    }
 
    @Override
@@ -297,26 +297,26 @@ public class cln extends cmw implements cna {
 
    private double r(int $$0) {
       if ($$0 <= 0) {
-         return this.dA();
+         return this.dB();
       } else {
          float $$1 = (this.aX + (float)(180 * ($$0 - 1))) * (float) (Math.PI / 180.0);
          float $$2 = bae.b($$1);
-         return this.dA() + (double)$$2 * 1.3 * (double)this.ej();
+         return this.dB() + (double)$$2 * 1.3 * (double)this.ek();
       }
    }
 
    private double s(int $$0) {
       float $$1 = $$0 <= 0 ? 3.0F : 2.2F;
-      return this.dC() + (double)($$1 * this.ej());
+      return this.dD() + (double)($$1 * this.ek());
    }
 
    private double t(int $$0) {
       if ($$0 <= 0) {
-         return this.dG();
+         return this.dH();
       } else {
          float $$1 = (this.aX + (float)(180 * ($$0 - 1))) * (float) (Math.PI / 180.0);
          float $$2 = bae.a($$1);
-         return this.dG() + (double)$$2 * 1.3 * (double)this.ej();
+         return this.dH() + (double)$$2 * 1.3 * (double)this.ek();
       }
    }
 
@@ -334,12 +334,12 @@ public class cln extends cmw implements cna {
    }
 
    private void a(int $$0, bwf $$1) {
-      this.a($$0, $$1.dA(), $$1.dC() + (double)$$1.cS() * 0.5, $$1.dG(), $$0 == 0 && this.ae.i() < 0.001F);
+      this.a($$0, $$1.dB(), $$1.dD() + (double)$$1.cS() * 0.5, $$1.dH(), $$0 == 0 && this.ae.i() < 0.001F);
    }
 
    private void a(int $$0, double $$1, double $$2, double $$3, boolean $$4) {
       if (!this.bb()) {
-         this.dV().a(null, 1024, this.dv(), 0);
+         this.dW().a(null, 1024, this.dw(), 0);
       }
 
       double $$5 = this.r($$0);
@@ -349,14 +349,14 @@ public class cln extends cmw implements cna {
       double $$9 = $$2 - $$6;
       double $$10 = $$3 - $$7;
       fbx $$11 = new fbx($$8, $$9, $$10);
-      crd $$12 = new crd(this.dV(), this, $$11.d());
+      crd $$12 = new crd(this.dW(), this, $$11.d());
       $$12.c(this);
       if ($$4) {
          $$12.a(true);
       }
 
       $$12.a_($$5, $$6, $$7);
-      this.dV().b($$12);
+      this.dW().b($$12);
    }
 
    @Override
@@ -370,10 +370,10 @@ public class cln extends cmw implements cna {
          return false;
       } else if ($$1.a(axw.t) || $$1.d() instanceof cln) {
          return false;
-      } else if (this.gm() > 0 && !$$1.a(axw.d)) {
+      } else if (this.go() > 0 && !$$1.a(axw.d)) {
          return false;
       } else {
-         if (this.gn()) {
+         if (this.gp()) {
             bvj $$3 = $$1.c();
             if ($$3 instanceof cqd || $$3 instanceof crh) {
                return false;
@@ -407,8 +407,8 @@ public class cln extends cmw implements cna {
    }
 
    @Override
-   public void dH() {
-      if (this.dV().al() == btf.a && this.X()) {
+   public void dI() {
+      if (this.dW().al() == btf.a && this.X()) {
          this.at();
       } else {
          this.bf = 0;
@@ -421,7 +421,7 @@ public class cln extends cmw implements cna {
    }
 
    public static bxm.a p() {
-      return cmw.gr().a(bxn.s, 300.0).a(bxn.v, 0.6F).a(bxn.l, 0.6F).a(bxn.m, 40.0).a(bxn.a, 4.0);
+      return cmw.gt().a(bxn.s, 300.0).a(bxn.v, 0.6F).a(bxn.l, 0.6F).a(bxn.m, 40.0).a(bxn.a, 4.0);
    }
 
    public float[] t() {
@@ -432,7 +432,7 @@ public class cln extends cmw implements cna {
       return this.cb;
    }
 
-   public int gm() {
+   public int go() {
       return this.al.a(bZ);
    }
 
@@ -448,8 +448,8 @@ public class cln extends cmw implements cna {
       this.al.a(d.get($$0), $$1);
    }
 
-   public boolean gn() {
-      return this.eD() <= this.eR() / 2.0F;
+   public boolean gp() {
+      return this.eE() <= this.eS() / 2.0F;
    }
 
    @Override
@@ -474,7 +474,7 @@ public class cln extends cmw implements cna {
 
       @Override
       public boolean b() {
-         return cln.this.gm() > 0;
+         return cln.this.go() > 0;
       }
    }
 }

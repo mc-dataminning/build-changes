@@ -1,42 +1,84 @@
-public class gbc extends gbk<gxm> {
-   private final gem a;
-   private final gem b;
-   private final gem c;
-   private final gem d;
-   private final gem e;
-   private static final int f = 6;
+import java.util.List;
 
-   public gbc(gem $$0) {
+public class gbc extends gbl<gxm> {
+   public static final List<gen> a = List.of();
+   private final gen b;
+   private final List<gen> c;
+
+   public gbc(gen $$0) {
       super($$0);
-      this.a = $$0.b("head");
-      this.c = $$0.b("right_hind_leg");
-      this.b = $$0.b("left_hind_leg");
-      this.e = $$0.b("right_front_leg");
-      this.d = $$0.b("left_front_leg");
+      gen $$1 = $$0.b("root");
+      gen $$2 = $$1.b("upper_body");
+      this.b = $$2.b("head");
+      this.c = List.of(this.b);
    }
 
-   public static ges a(geq $$0) {
-      geu $$1 = new geu();
-      gew $$2 = $$1.a();
-      $$2.a("head", ger.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), geo.a(0.0F, 6.0F, 0.0F));
-      $$2.a("body", ger.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), geo.a(0.0F, 6.0F, 0.0F));
-      ger $$3 = ger.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, $$0);
-      $$2.a("right_hind_leg", $$3, geo.a(-2.0F, 18.0F, 4.0F));
-      $$2.a("left_hind_leg", $$3, geo.a(2.0F, 18.0F, 4.0F));
-      $$2.a("right_front_leg", $$3, geo.a(-2.0F, 18.0F, -4.0F));
-      $$2.a("left_front_leg", $$3, geo.a(2.0F, 18.0F, -4.0F));
-      return ges.a($$1, 64, 32);
+   private static gev b() {
+      gev $$0 = new gev();
+      gex $$1 = $$0.a();
+      gex $$2 = $$1.a("root", ges.c(), gep.a(0.0F, 24.0F, 0.0F));
+      gex $$3 = $$2.a("upper_body", ges.c(), gep.a(-1.0F, -19.0F, 0.0F));
+      $$3.a(
+         "head",
+         ges.c()
+            .a(0, 0)
+            .a(-3.0F, -10.0F, -3.0F, 6.0F, 10.0F, 6.0F)
+            .a(28, 31)
+            .a(-3.0F, -13.0F, -3.0F, 6.0F, 3.0F, 6.0F)
+            .a(12, 40)
+            .a(3.0F, -13.0F, 0.0F, 9.0F, 14.0F, 0.0F)
+            .a(34, 12)
+            .a(-12.0F, -14.0F, 0.0F, 9.0F, 14.0F, 0.0F),
+         gep.a(-3.0F, -11.0F, 0.0F)
+      );
+      $$3.a("body", ges.c().a(0, 16).a(0.0F, -3.0F, -3.0F, 6.0F, 13.0F, 5.0F).a(24, 0).a(-6.0F, -4.0F, -3.0F, 6.0F, 7.0F, 5.0F), gep.a(0.0F, -7.0F, 1.0F));
+      $$3.a(
+         "right_arm", ges.c().a(22, 13).a(-2.0F, -1.5F, -1.5F, 3.0F, 21.0F, 3.0F).a(46, 0).a(-2.0F, 19.5F, -1.5F, 3.0F, 4.0F, 3.0F), gep.a(-7.0F, -9.5F, 1.5F)
+      );
+      $$3.a(
+         "left_arm",
+         ges.c()
+            .a(30, 40)
+            .a(0.0F, -1.0F, -1.5F, 3.0F, 16.0F, 3.0F)
+            .a(52, 12)
+            .a(0.0F, -5.0F, -1.5F, 3.0F, 4.0F, 3.0F)
+            .a(52, 19)
+            .a(0.0F, 15.0F, -1.5F, 3.0F, 4.0F, 3.0F),
+         gep.a(6.0F, -9.0F, 0.5F)
+      );
+      $$2.a(
+         "left_leg", ges.c().a(42, 40).a(-1.5F, 0.0F, -1.5F, 3.0F, 16.0F, 3.0F).a(45, 55).a(-1.5F, 15.7F, -4.5F, 5.0F, 0.0F, 9.0F), gep.a(1.5F, -16.0F, 0.5F)
+      );
+      $$2.a(
+         "right_leg",
+         ges.c()
+            .a(0, 34)
+            .a(-3.0F, -1.5F, -1.5F, 3.0F, 19.0F, 3.0F)
+            .a(45, 46)
+            .a(-5.0F, 17.2F, -4.5F, 5.0F, 0.0F, 9.0F)
+            .a(12, 34)
+            .a(-3.0F, -4.5F, -1.5F, 3.0F, 3.0F, 3.0F),
+         gep.a(-1.0F, -17.5F, 0.5F)
+      );
+      return $$0;
+   }
+
+   public static get a() {
+      gev $$0 = b();
+      return get.a($$0, 64, 64);
    }
 
    public void a(gxm $$0) {
-      super.a($$0);
-      this.a.f = $$0.U * (float) (Math.PI / 180.0);
-      this.a.e = $$0.V * (float) (Math.PI / 180.0);
-      float $$1 = $$0.Y;
-      float $$2 = $$0.X;
-      this.b.e = bae.b($$2 * 0.6662F) * 1.4F * $$1;
-      this.c.e = bae.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
-      this.d.e = bae.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
-      this.e.e = bae.b($$2 * 0.6662F) * 1.4F * $$1;
+      this.e().e().forEach(gen::c);
+      if ($$0.d) {
+         this.a(fna.a, $$0.X, $$0.Y, 5.5F, 3.0F);
+      }
+
+      this.a($$0.b, fna.b, $$0.p);
+      this.a($$0.a, fna.c, $$0.p);
+   }
+
+   public List<gen> b(gxm $$0) {
+      return !$$0.c ? a : this.c;
    }
 }

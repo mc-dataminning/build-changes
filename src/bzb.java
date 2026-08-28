@@ -32,7 +32,7 @@ public class bzb<E extends bwh> extends bxy<E> {
    }
 
    public static <E extends bwh> boolean a(E $$0, jh $$1) {
-      dhh $$2 = $$0.dV();
+      dhh $$2 = $$0.dW();
       jh $$3 = $$1.e();
       return $$2.a_($$3).s() && $$0.a(eus.b($$0, $$1)) == 0.0F;
    }
@@ -48,19 +48,19 @@ public class bzb<E extends bwh> extends bxy<E> {
    }
 
    protected boolean a(ash $$0, bwh $$1) {
-      boolean $$2 = $$1.aJ() && !$$1.bj() && !$$1.bx() && !$$0.a_($$1.dv()).a(dkn.pB);
+      boolean $$2 = $$1.aJ() && !$$1.bj() && !$$1.bx() && !$$0.a_($$1.dw()).a(dkn.pB);
       if (!$$2) {
-         $$1.eb().a(cfj.S, this.p.a($$0.A) / 2);
+         $$1.ec().a(cfj.S, this.p.a($$0.A) / 2);
       }
 
       return $$2;
    }
 
    protected boolean b(ash $$0, bwh $$1, long $$2) {
-      boolean $$3 = this.i.isPresent() && this.i.get().equals($$1.dt()) && this.k > 0 && !$$1.bm() && (this.j != null || !this.h.isEmpty());
-      if (!$$3 && $$1.eb().c(cfj.T).isEmpty()) {
-         $$1.eb().a(cfj.S, this.p.a($$0.A) / 2);
-         $$1.eb().b(cfj.n);
+      boolean $$3 = this.i.isPresent() && this.i.get().equals($$1.du()) && this.k > 0 && !$$1.bm() && (this.j != null || !this.h.isEmpty());
+      if (!$$3 && $$1.ec().c(cfj.T).isEmpty()) {
+         $$1.ec().a(cfj.S, this.p.a($$0.A) / 2);
+         $$1.ec().b(cfj.n);
       }
 
       return $$3;
@@ -69,8 +69,8 @@ public class bzb<E extends bwh> extends bxy<E> {
    protected void a(ash $$0, E $$1, long $$2) {
       this.j = null;
       this.k = 20;
-      this.i = Optional.of($$1.dt());
-      jh $$3 = $$1.dv();
+      this.i = Optional.of($$1.du());
+      jh $$3 = $$1.dw();
       int $$4 = $$3.u();
       int $$5 = $$3.v();
       int $$6 = $$3.w();
@@ -86,9 +86,9 @@ public class bzb<E extends bwh> extends bxy<E> {
             $$1.v($$1.aX);
             $$1.r(true);
             double $$3 = this.j.g();
-            double $$4 = $$3 + (double)$$1.fi();
+            double $$4 = $$3 + (double)$$1.fk();
             $$1.h(this.j.c($$4 / $$3));
-            $$1.eb().a(cfj.T, true);
+            $$1.ec().a(cfj.T, true);
             $$0.a(null, $$1, this.q.apply($$1), axg.g, 1.0F, 1.0F);
          }
       } else {
@@ -107,7 +107,7 @@ public class bzb<E extends bwh> extends bxy<E> {
                fbx $$6 = fbx.b($$5);
                fbx $$7 = this.a($$1, $$6);
                if ($$7 != null) {
-                  $$1.eb().a(cfj.n, new byb($$5));
+                  $$1.ec().a(cfj.n, new byb($$5));
                   cfr $$8 = $$1.L();
                   euk $$9 = $$8.a($$5, 0, 8);
                   if ($$9 == null || !$$9.j()) {
@@ -128,7 +128,7 @@ public class bzb<E extends bwh> extends bxy<E> {
    }
 
    private boolean a(ash $$0, E $$1, jh $$2) {
-      jh $$3 = $$1.dv();
+      jh $$3 = $$1.dw();
       int $$4 = $$3.u();
       int $$5 = $$3.w();
       return $$4 == $$2.u() && $$5 == $$2.w() ? false : this.r.test($$1, $$2);

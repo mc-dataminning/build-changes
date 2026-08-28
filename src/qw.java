@@ -16,7 +16,7 @@ public class qw extends qk<dkl> {
       this.a(axu.r).a(dkn.G);
       this.a(axu.w).a(dkn.ae, dkn.u, dkn.ap, dkn.aI);
       this.a(axu.s).a(axu.w);
-      this.a(axu.t).a(axu.w);
+      this.a(axu.t).a(dkn.ae);
       this.a(axu.ah).a(dkn.tP);
       this.a(axu.an).a(dkn.go);
       this.a(axu.n).a(dkn.dS);
@@ -27,7 +27,9 @@ public class qw extends qk<dkl> {
       this.a(axu.aB).a(dkn.dr);
       this.a(axu.aC).a(dkn.dD);
       this.a(axu.ba).a(dkn.kt);
-      this.a(axu.bD).a(dkn.aR);
+      this.a(axu.bD).a(dkn.aR, dkn.tP, dkn.tQ);
       this.a(axu.bC).a(dkn.cB);
+      this.a(axu.bG).a(dkn.tQ);
+      this.a(axu.bq).a(dkn.tQ);
    }
 }

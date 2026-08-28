@@ -1,228 +1,211 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.logging.LogUtils;
+import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fkb extends hhu {
-   static final Logger a = LogUtils.getLogger();
-   private static final xv b = xv.c("mco.configure.world.players.title");
-   static final xv c = xv.c("mco.question");
-   private static final int C = 8;
-   final frs D = new frs(this);
-   private final fjq E;
-   final fih F;
+public class fkb extends hhv {
+   static final alz a = alz.b("pending_invite/accept_highlighted");
+   static final alz b = alz.b("pending_invite/accept");
+   static final alz c = alz.b("pending_invite/reject_highlighted");
+   static final alz C = alz.b("pending_invite/reject");
+   private static final Logger D = LogUtils.getLogger();
+   private static final xv E = xv.c("mco.invites.nopending");
+   static final xv F = xv.c("mco.invites.button.accept");
+   static final xv G = xv.c("mco.invites.button.reject");
+   private final ftx H;
+   private final CompletableFuture<List<fib>> I = CompletableFuture.supplyAsync(() -> {
+      try {
+         return fhh.a().i().a;
+      } catch (fjd var1x) {
+         D.error("Couldn't list invites", var1x);
+         return List.of();
+      }
+   }, ae.h());
    @Nullable
-   private fkb.b G;
-   boolean H;
+   xv J;
+   fkb.b K;
+   private foe L;
+   private foe M;
 
-   public fkb(fjq $$0, fih $$1) {
-      super(b);
-      this.E = $$0;
-      this.F = $$1;
+   public fkb(ftx $$0, xv $$1) {
+      super($$1);
+      this.H = $$0;
    }
 
    @Override
    public void aT_() {
-      this.D.a(b, this.p);
-      this.G = this.D.c(new fkb.b());
-      this.E();
-      frw $$0 = this.D.b(frw.e().a(8));
-      $$0.a(fod.a(xv.c("mco.configure.world.buttons.invite"), $$0x -> this.m.a(new fjv(this.E, this, this.F))).a());
-      $$0.a(fod.a(xu.k, $$0x -> this.aP_()).a());
-      this.D.a($$1 -> {
-         fob var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.D.a();
-      if (this.G != null) {
-         this.G.a(this.n, this.D);
-      }
-   }
-
-   void E() {
-      if (this.G != null) {
-         this.G.aI_().clear();
-
-         for (fid $$0 : this.F.h) {
-            this.G.aI_().add(new fkb.a($$0));
+      fhc.f();
+      this.K = new fkb.b();
+      this.I.thenAcceptAsync($$0 -> {
+         List<fkb.a> $$1 = $$0.stream().map($$0x -> new fkb.a($$0x)).toList();
+         this.K.a($$1);
+         if ($$1.isEmpty()) {
+            this.m.aZ().b(E);
          }
-      }
+      }, this.r);
+      this.c(this.K);
+      this.L = this.c((foe)foe.a(F, $$0 -> this.c(true)).a(this.n / 2 - 174, this.o - 32, 100, 20).a());
+      this.c((foe)foe.a(xu.d, $$0 -> this.aP_()).a(this.n / 2 - 50, this.o - 32, 100, 20).a());
+      this.M = this.c((foe)foe.a(G, $$0 -> this.c(false)).a(this.n / 2 + 74, this.o - 32, 100, 20).a());
+      this.E();
    }
 
    @Override
    public void aP_() {
-      this.F();
+      this.m.a(this.H);
    }
 
-   private void F() {
-      if (this.H) {
-         this.m.a(this.E.g());
-      } else {
-         this.m.a(this.E);
-      }
-   }
-
-   class a extends foj.a<fkb.a> {
-      private static final xv b = xv.c("mco.configure.world.invites.normal.tooltip");
-      private static final xv c = xv.c("mco.configure.world.invites.ops.tooltip");
-      private static final xv d = xv.c("mco.configure.world.invites.remove.tooltip");
-      private static final alz e = alz.b("player_list/make_operator");
-      private static final alz f = alz.b("player_list/remove_operator");
-      private static final alz g = alz.b("player_list/remove_player");
-      private static final int h = 8;
-      private static final int i = 7;
-      private final fid j;
-      private final fod k;
-      private final fod l;
-      private final fod m;
-
-      public a(final fid $$0) {
-         this.j = $$0;
-         int $$1 = fkb.this.F.h.indexOf(this.j);
-         this.l = fpj.a(b, $$1x -> this.a($$1), false)
-            .a(e, 8, 7)
-            .a(16 + fkb.this.p.a(b))
-            .a($$1x -> xu.a(xv.a("mco.invited.player.narration", $$0.a()), (xv)$$1x.get(), xv.a("narration.cycle_button.usage.focused", c)))
-            .a();
-         this.m = fpj.a(c, $$1x -> this.b($$1), false)
-            .a(f, 8, 7)
-            .a(16 + fkb.this.p.a(c))
-            .a($$1x -> xu.a(xv.a("mco.invited.player.narration", $$0.a()), (xv)$$1x.get(), xv.a("narration.cycle_button.usage.focused", b)))
-            .a();
-         this.k = fpj.a(d, $$1x -> this.c($$1), false)
-            .a(g, 8, 7)
-            .a(16 + fkb.this.p.a(d))
-            .a($$1x -> xu.a(xv.a("mco.invited.player.narration", $$0.a()), (xv)$$1x.get()))
-            .a();
-         this.c();
-      }
-
-      private void a(int $$0) {
-         fhg $$1 = fhg.a();
-         UUID $$2 = fkb.this.F.h.get($$0).b();
-
-         try {
-            this.a($$1.b(fkb.this.F.a, $$2));
-         } catch (fjc var5) {
-            fkb.a.error("Couldn't op the user", var5);
-         }
-
-         this.c();
-      }
-
-      private void b(int $$0) {
-         fhg $$1 = fhg.a();
-         UUID $$2 = fkb.this.F.h.get($$0).b();
-
-         try {
-            this.a($$1.c(fkb.this.F.a, $$2));
-         } catch (fjc var5) {
-            fkb.a.error("Couldn't deop the user", var5);
-         }
-
-         this.c();
-      }
-
-      private void c(int $$0) {
-         if ($$0 >= 0 && $$0 < fkb.this.F.h.size()) {
-            fid $$1 = fkb.this.F.h.get($$0);
-            fjr $$2 = new fjr($$2x -> {
-               if ($$2x) {
-                  fhg $$3 = fhg.a();
-
-                  try {
-                     $$3.a(fkb.this.F.a, $$1.b());
-                  } catch (fjc var6) {
-                     fkb.a.error("Couldn't uninvite user", var6);
-                  }
-
-                  fkb.this.F.h.remove($$0);
-                  fkb.this.E();
+   @Override
+   void c(boolean $$0) {
+      if (this.K.g() instanceof fkb.a $$1) {
+         String $$2 = $$1.c.a;
+         CompletableFuture.<Boolean>supplyAsync(() -> {
+            try {
+               fhh $$2x = fhh.a();
+               if ($$0) {
+                  $$2x.a($$2);
+               } else {
+                  $$2x.b($$2);
                }
 
-               fkb.this.H = true;
-               fkb.this.m.a(fkb.this);
-            }, fkb.c, xv.a("mco.configure.world.uninvite.player", $$1.a()));
-            fkb.this.m.a($$2);
-         }
-      }
+               return true;
+            } catch (fjd var3) {
+               D.error("Couldn't handle invite", var3);
+               return false;
+            }
+         }, ae.h()).thenAcceptAsync($$2x -> {
+            if ($$2x) {
+               this.K.a($$1);
+               this.E();
+               fjg $$3 = this.m.bc();
+               if ($$0) {
+                  $$3.c.a();
+               }
 
-      private void a(fhz $$0) {
-         for (fid $$1 : fkb.this.F.h) {
-            $$1.a($$0.a.contains($$1.a()));
-         }
-      }
-
-      private void c() {
-         this.l.k = !this.j.c();
-         this.m.k = !this.l.k;
-      }
-
-      private fod g() {
-         return this.l.k ? this.l : this.m;
-      }
-
-      @Override
-      public List<? extends fqb> aI_() {
-         return ImmutableList.of(this.g(), this.k);
-      }
-
-      @Override
-      public List<? extends frz> b() {
-         return ImmutableList.of(this.g(), this.k);
-      }
-
-      @Override
-      public void a(fnq $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10;
-         if (!this.j.d()) {
-            $$10 = -6250336;
-         } else if (this.j.e()) {
-            $$10 = 8388479;
-         } else {
-            $$10 = -1;
-         }
-
-         int $$13 = $$2 + $$5 / 2 - 16;
-         fkv.a($$0, $$3, $$13, 32, this.j.b());
-         int $$14 = $$2 + $$5 / 2 - 9 / 2;
-         $$0.a(fkb.this.p, this.j.a(), $$3 + 8 + 32, $$14, $$10, false);
-         int $$15 = $$2 + $$5 / 2 - 10;
-         int $$16 = $$3 + $$4 - this.k.y();
-         this.k.c($$16, $$15);
-         this.k.a($$0, $$6, $$7, $$9);
-         int $$17 = $$16 - this.g().y() - 8;
-         this.l.c($$17, $$15);
-         this.l.a($$0, $$6, $$7, $$9);
-         this.m.c($$17, $$15);
-         this.m.a($$0, $$6, $$7, $$9);
+               $$3.d.a();
+            }
+         }, this.r);
       }
    }
 
-   class b extends foj<fkb.a> {
-      private static final int m = 36;
+   @Override
+   public void a(fnr $$0, int $$1, int $$2, float $$3) {
+      this.J = null;
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 12, -1);
+      if (this.J != null) {
+         $$0.a(this.p, this.J, $$1, $$2);
+      }
 
-      public b() {
-         super(fme.Q(), fkb.this.n, fkb.this.D.d(), fkb.this.D.c(), 36);
-         this.a(true, (int)(9.0F * 1.5F));
+      if (this.I.isDone() && this.K.b()) {
+         $$0.a(this.p, E, this.n / 2, this.o / 2 - 20, -1);
+      }
+   }
+
+   void E() {
+      fkb.a $$0 = this.K.g();
+      this.L.k = $$0 != null;
+      this.M.k = $$0 != null;
+   }
+
+   class a extends fpb.a<fkb.a> {
+      private static final int b = 38;
+      final fib c;
+      private final List<fjk> d;
+
+      a(final fib $$0) {
+         this.c = $$0;
+         this.d = Arrays.asList(new fkb.a.a(), new fkb.a.b());
       }
 
       @Override
-      protected void a(fnq $$0, int $$1, int $$2) {
-         String $$3 = fkb.this.F.h != null ? Integer.toString(fkb.this.F.h.size()) : "0";
-         xv $$4 = xv.a("mco.configure.world.invited.number", $$3).a(n.t);
-         $$0.a(fkb.this.p, $$4, $$1 + this.a() / 2 - fkb.this.p.a($$4) / 2, $$2, -1, false);
+      public void a(fnr $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, this.c, $$3, $$2, $$6, $$7);
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         fjk.a(fkb.this.K, this, this.d, $$2, $$0, $$1);
+         return super.a($$0, $$1, $$2);
+      }
+
+      private void a(fnr $$0, fib $$1, int $$2, int $$3, int $$4, int $$5) {
+         $$0.a(fkb.this.p, $$1.b, $$2 + 38, $$3 + 1, -1, false);
+         $$0.a(fkb.this.p, $$1.c, $$2 + 38, $$3 + 12, 7105644, false);
+         $$0.a(fkb.this.p, fkw.a($$1.e), $$2 + 38, $$3 + 24, 7105644, false);
+         fjk.a($$0, this.d, fkb.this.K, $$2, $$3, $$4, $$5);
+         fkw.a($$0, $$2, $$3, 32, $$1.d);
+      }
+
+      @Override
+      public xv a() {
+         xv $$0 = xu.b(xv.b(this.c.b), xv.b(this.c.c), fkw.a(this.c.e));
+         return xv.a("narrator.select", $$0);
+      }
+
+      class a extends fjk {
+         a() {
+            super(15, 15, 215, 5);
+         }
+
+         @Override
+         protected void a(fnr $$0, int $$1, int $$2, boolean $$3) {
+            $$0.a(glu::C, $$3 ? fkb.a : fkb.b, $$1, $$2, 18, 18);
+            if ($$3) {
+               fkb.this.J = fkb.F;
+            }
+         }
+
+         @Override
+         public void a(int $$0) {
+            fkb.this.c(true);
+         }
+      }
+
+      class b extends fjk {
+         b() {
+            super(15, 15, 235, 5);
+         }
+
+         @Override
+         protected void a(fnr $$0, int $$1, int $$2, boolean $$3) {
+            $$0.a(glu::C, $$3 ? fkb.c : fkb.C, $$1, $$2, 18, 18);
+            if ($$3) {
+               fkb.this.J = fkb.G;
+            }
+         }
+
+         @Override
+         public void a(int $$0) {
+            fkb.this.c(false);
+         }
+      }
+   }
+
+   class b extends fpb<fkb.a> {
+      public b() {
+         super(fmf.Q(), fkb.this.n, fkb.this.o - 72, 32, 36);
       }
 
       @Override
       public int a() {
-         return 300;
+         return 260;
+      }
+
+      @Override
+      public void a(int $$0) {
+         super.a($$0);
+         fkb.this.E();
+      }
+
+      public boolean b() {
+         return this.k() == 0;
+      }
+
+      public void a(fkb.a $$0) {
+         this.g($$0);
       }
    }
 }

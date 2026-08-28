@@ -32,7 +32,7 @@ public class bym<E extends bwf> implements bxz<E> {
       for (Entry<cfj<?>, cfk> $$1 : this.a.entrySet()) {
          cfj<?> $$2 = $$1.getKey();
          cfk $$3 = $$1.getValue();
-         if (!$$0.eb().a($$2, $$3)) {
+         if (!$$0.ec().a($$2, $$3)) {
             return false;
          }
       }
@@ -64,7 +64,7 @@ public class bym<E extends bwf> implements bxz<E> {
    public final void g(ash $$0, E $$1, long $$2) {
       this.f = bxy.a.a;
       this.e.b().filter($$0x -> $$0x.a() == bxy.a.b).forEach($$3 -> $$3.g($$0, $$1, $$2));
-      this.b.forEach($$1.eb()::b);
+      this.b.forEach($$1.ec()::b);
    }
 
    @Override

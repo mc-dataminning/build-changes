@@ -5,8 +5,8 @@ class bus extends bum {
 
    @Override
    public boolean a(ash $$0, bwf $$1, int $$2) {
-      if ($$1.eD() > 1.0F) {
-         $$1.a($$0, $$1.dW().q(), 1.0F);
+      if ($$1.eE() > 1.0F) {
+         $$1.a($$0, $$1.dX().q(), 1.0F);
       }
 
       return true;

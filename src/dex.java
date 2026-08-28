@@ -16,7 +16,7 @@ public record dex(kl d, Optional<eew> e, ela f, Optional<jq<ecq>> g) implements 
    @Override
    public void a(ash $$0, int $$1, ddx $$2, bvj $$3, fbx $$4) {
       jh $$5 = jh.a((ka)$$4).a(this.d);
-      if (this.e.map($$2x -> $$2x.test($$0, $$5)).orElse(true) && $$0.b($$5, this.f.a($$3.dY(), $$5))) {
+      if (this.e.map($$2x -> $$2x.test($$0, $$5)).orElse(true) && $$0.b($$5, this.f.a($$3.dZ(), $$5))) {
          this.g.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
       }
    }

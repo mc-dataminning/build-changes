@@ -11,7 +11,7 @@ public class dwi extends dwe implements bts {
    public static final float i = 0.5F;
    public static final float j = 270.0F;
    private static final int[] k = IntStream.range(0, 27).toArray();
-   private jz<cxo> n = jz.a(27, cxo.k);
+   private jz<cxo> n = jz.a(27, cxo.j);
    private int r;
    private dwi.a s = dwi.a.a;
    private float t;
@@ -169,7 +169,7 @@ public class dwi extends dwe implements bts {
    }
 
    public void e(ux $$0, js.a $$1) {
-      this.n = jz.a(this.b(), cxo.k);
+      this.n = jz.a(this.b(), cxo.j);
       if (!this.b_($$0) && $$0.b("Items", 9)) {
          btc.b($$0, this.n, $$1);
       }

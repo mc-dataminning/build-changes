@@ -42,6 +42,6 @@ public class cju {
    }
 
    public static void a(cjt $$0) {
-      $$0.eb().a(ImmutableList.of(crn.b));
+      $$0.ec().a(ImmutableList.of(crn.b));
    }
 }

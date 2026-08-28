@@ -24,7 +24,7 @@ public abstract class cit extends bxc {
       super.h();
    }
 
-   public boolean gC() {
+   public boolean gE() {
       return this.ce > 100;
    }
 }

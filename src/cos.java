@@ -22,6 +22,6 @@ public class cos {
    }
 
    private static boolean a(coj $$0) {
-      return $$0.eb().a(cfj.ah);
+      return $$0.ec().a(cfj.ah);
    }
 }

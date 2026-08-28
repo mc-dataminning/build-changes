@@ -1,6 +1,4 @@
-public class gxl extends gyr {
-   public bvb a = new bvb();
-   public bvb b = new bvb();
-   public boolean c;
-   public boolean d;
+public class gxl extends gys {
+   public float a;
+   public float b;
 }

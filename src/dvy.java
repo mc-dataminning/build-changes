@@ -6,7 +6,7 @@ public class dvy extends dwe implements dvx {
    public static final int d = 8;
    public static final int e = 5;
    private static final int[][] f = new int[54][];
-   private jz<cxo> g = jz.a(5, cxo.k);
+   private jz<cxo> g = jz.a(5, cxo.j);
    private int h = -1;
    private long i;
    private jm j;
@@ -19,7 +19,7 @@ public class dvy extends dwe implements dvx {
    @Override
    protected void a(ux $$0, js.a $$1) {
       super.a($$0, $$1);
-      this.g = jz.a(this.b(), cxo.k);
+      this.g = jz.a(this.b(), cxo.j);
       if (!this.b_($$0)) {
          btc.b($$0, this.g, $$1);
       }
@@ -238,7 +238,7 @@ public class dvy extends dwe implements dvx {
       cxo $$4 = a(null, $$0, $$3, null);
       if ($$4.f()) {
          $$2 = true;
-         $$1.a(cxo.k);
+         $$1.a(cxo.j);
          $$1.at();
       } else {
          $$1.a($$4);
@@ -298,7 +298,7 @@ public class dvy extends dwe implements dvx {
          boolean $$7 = $$1.c();
          if ($$5.f()) {
             $$1.a($$3, $$2);
-            $$2 = cxo.k;
+            $$2 = cxo.j;
             $$6 = true;
          } else if (a($$5, $$2)) {
             int $$8 = $$2.k() - $$5.L();

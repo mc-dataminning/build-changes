@@ -60,7 +60,7 @@ public class chh implements dgt {
    private boolean a(ash $$0) {
       for (cpw $$1 : $$0.y()) {
          if (!$$1.aa_()) {
-            jh $$2 = $$1.dv();
+            jh $$2 = $$1.dw();
             if ($$0.c($$2) && !$$0.t($$2).a(axt.af)) {
                for (int $$3 = 0; $$3 < 10; $$3++) {
                   float $$4 = $$0.A.i() * (float) (Math.PI * 2);
@@ -88,7 +88,7 @@ public class chh implements dgt {
          cnp $$2;
          try {
             $$2 = new cnp($$0);
-            $$2.a($$0, $$0.d_($$2.dv()), bvp.h, null);
+            $$2.a($$0, $$0.d_($$2.dw()), bvp.h, null);
          } catch (Exception var5) {
             a.warn("Failed to create zombie for village siege at {}", $$1, var5);
             return;

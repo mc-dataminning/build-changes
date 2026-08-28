@@ -1,25 +1,38 @@
-public abstract class gwd<S extends gxt, M extends gbk<? super S>> {
-   private final gtl<S, M> a;
+import javax.annotation.Nullable;
 
-   public gwd(gtl<S, M> $$0) {
-      this.a = $$0;
+public class gwd<S extends gzf, M extends gbl<S> & gah & gbu> extends gvw<S, M> {
+   private final gsn a;
+   private static final float b = (float) (-Math.PI / 6);
+   private static final float c = (float) (Math.PI / 2);
+
+   public gwd(gtm<S, M> $$0, gsn $$1) {
+      super($$0, $$1);
+      this.a = $$1;
    }
 
-   protected static <S extends gyr> void a(gbk<S> $$0, alz $$1, fgq $$2, glj $$3, int $$4, S $$5, int $$6) {
-      if (!$$5.u) {
-         $$0.a($$5);
-         b($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   protected void a(S $$0, @Nullable hdm $$1, cxo $$2, cxm $$3, bvz $$4, fgr $$5, glk $$6, int $$7) {
+      if ($$1 != null) {
+         bth $$8 = $$4 == $$0.ap ? bth.a : bth.b;
+         if ($$0.M && $$0.H == $$8 && $$0.C < 1.0E-5F && $$2.a(cxs.rL)) {
+            this.a($$1, $$2, $$4, $$5, $$6, $$7);
+         } else {
+            super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         }
       }
    }
 
-   protected static void b(gbk<?> $$0, alz $$1, fgq $$2, glj $$3, int $$4, gyr $$5, int $$6) {
-      fgu $$7 = $$3.getBuffer(glt.f($$1));
-      $$0.a($$2, $$7, $$4, gsp.a($$5, 0.0F), $$6);
+   private void a(hdm $$0, cxo $$1, bvz $$2, fgr $$3, glk $$4, int $$5) {
+      $$3.a();
+      this.d().e().a($$3);
+      gen $$6 = this.d().b();
+      float $$7 = $$6.e;
+      $$6.e = bae.a($$6.e, (float) (-Math.PI / 6), (float) (Math.PI / 2));
+      $$6.a($$3);
+      $$6.e = $$7;
+      gvi.a($$3, gvi.a.a);
+      boolean $$8 = $$2 == bvz.a;
+      $$3.a(($$8 ? -2.5F : 2.5F) / 16.0F, -0.0625F, 0.0F);
+      this.a.a($$1, cxm.f, false, $$3, $$4, $$5, hbb.d, $$0);
+      $$3.b();
    }
-
-   public M d() {
-      return this.a.c();
-   }
-
-   public abstract void a(fgq var1, glj var2, int var3, S var4, float var5, float var6);
 }

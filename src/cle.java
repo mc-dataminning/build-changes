@@ -8,13 +8,13 @@ public class cle extends ckw {
 
    @Override
    public void b() {
-      this.a.dV().a(this.a.dA(), this.a.dC(), this.a.dG(), axf.iy, this.a.dm(), 2.5F, 0.8F + this.a.dY().i() * 0.3F, false);
+      this.a.dW().a(this.a.dB(), this.a.dD(), this.a.dH(), axf.iy, this.a.dn(), 2.5F, 0.8F + this.a.dZ().i() * 0.3F, false);
    }
 
    @Override
    public void a(ash $$0) {
       if (this.c++ >= 40) {
-         this.a.gi().a(clj.f);
+         this.a.gk().a(clj.f);
       }
    }
 

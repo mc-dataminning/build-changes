@@ -161,7 +161,7 @@ public class ani {
    }
 
    private static bxj a(bvj $$0, jq<bxi> $$1) throws CommandSyntaxException {
-      bxj $$2 = a($$0).eW().a($$1);
+      bxj $$2 = a($$0).eY().a($$1);
       if ($$2 == null) {
          throw b.create($$0.al(), a($$1));
       } else {
@@ -179,7 +179,7 @@ public class ani {
 
    private static bwf b(bvj $$0, jq<bxi> $$1) throws CommandSyntaxException {
       bwf $$2 = a($$0);
-      if (!$$2.eW().b($$1)) {
+      if (!$$2.eY().b($$1)) {
          throw b.create($$0.al(), a($$1));
       } else {
          return $$2;
@@ -202,7 +202,7 @@ public class ani {
 
    private static int a(ew $$0, bvj $$1, jq<bxi> $$2, alz $$3, double $$4) throws CommandSyntaxException {
       bwf $$5 = b($$1, $$2);
-      bxk $$6 = $$5.eW();
+      bxk $$6 = $$5.eY();
       if (!$$6.a($$2, $$3)) {
          throw c.create($$1.al(), a($$2), $$3);
       } else {

@@ -1,111 +1,143 @@
-import java.util.function.Consumer;
+public interface frw {
+   frw a(int var1);
 
-public class frw implements frt {
-   private final frr a;
-   private final frw.a b;
-   private int c = 0;
+   frw a(int var1, int var2);
 
-   private frw(frw.a $$0) {
-      this(0, 0, $$0);
+   frw a(int var1, int var2, int var3, int var4);
+
+   frw b(int var1);
+
+   frw c(int var1);
+
+   frw d(int var1);
+
+   frw e(int var1);
+
+   frw f(int var1);
+
+   frw g(int var1);
+
+   frw a(float var1, float var2);
+
+   frw a(float var1);
+
+   frw b(float var1);
+
+   default frw a() {
+      return this.a(0.0F);
    }
 
-   public frw(int $$0, int $$1, frw.a $$2) {
-      this.a = new frr($$0, $$1);
-      this.b = $$2;
+   default frw b() {
+      return this.a(0.5F);
    }
 
-   public frw a(int $$0) {
-      this.b.a(this.a, $$0);
-      return this;
+   default frw c() {
+      return this.a(1.0F);
    }
 
-   public frv b() {
-      return this.a.b();
+   default frw d() {
+      return this.b(0.0F);
    }
 
-   public frv c() {
-      return this.a.c();
+   default frw e() {
+      return this.b(0.5F);
    }
 
-   public <T extends fru> T a(T $$0, frv $$1) {
-      return this.b.a(this.a, $$0, this.c++, $$1);
+   default frw f() {
+      return this.b(1.0F);
    }
 
-   public <T extends fru> T a(T $$0) {
-      return this.a($$0, this.b());
+   frw g();
+
+   frw.a h();
+
+   static frw i() {
+      return new frw.a();
    }
 
-   public <T extends fru> T a(T $$0, Consumer<frv> $$1) {
-      return this.b.a(this.a, $$0, this.c++, ae.a(this.b(), $$1));
-   }
+   public static class a implements frw {
+      public int a;
+      public int b;
+      public int c;
+      public int d;
+      public float e;
+      public float f;
 
-   @Override
-   public void b(Consumer<fru> $$0) {
-      this.a.b($$0);
-   }
-
-   @Override
-   public void a() {
-      this.a.a();
-   }
-
-   @Override
-   public int y() {
-      return this.a.y();
-   }
-
-   @Override
-   public int w() {
-      return this.a.w();
-   }
-
-   @Override
-   public void k(int $$0) {
-      this.a.k($$0);
-   }
-
-   @Override
-   public void l(int $$0) {
-      this.a.l($$0);
-   }
-
-   @Override
-   public int D() {
-      return this.a.D();
-   }
-
-   @Override
-   public int E() {
-      return this.a.E();
-   }
-
-   public static frw d() {
-      return new frw(frw.a.b);
-   }
-
-   public static frw e() {
-      return new frw(frw.a.a);
-   }
-
-   public static enum a {
-      a,
-      b;
-
-      void a(frr $$0, int $$1) {
-         switch (this) {
-            case a:
-               $$0.a($$1);
-               break;
-            case b:
-               $$0.b($$1);
-         }
+      public a() {
       }
 
-      public <T extends fru> T a(frr $$0, T $$1, int $$2, frv $$3) {
-         return (T)(switch (this) {
-            case a -> (fru)$$0.a($$1, 0, $$2, $$3);
-            case b -> (fru)$$0.a($$1, $$2, 0, $$3);
-         });
+      public a(frw.a $$0) {
+         this.a = $$0.a;
+         this.b = $$0.b;
+         this.c = $$0.c;
+         this.d = $$0.d;
+         this.e = $$0.e;
+         this.f = $$0.f;
+      }
+
+      public frw.a h(int $$0) {
+         return this.b($$0, $$0);
+      }
+
+      public frw.a b(int $$0, int $$1) {
+         return this.m($$0).n($$1);
+      }
+
+      public frw.a b(int $$0, int $$1, int $$2, int $$3) {
+         return this.i($$0).k($$2).j($$1).l($$3);
+      }
+
+      public frw.a i(int $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public frw.a j(int $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public frw.a k(int $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public frw.a l(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public frw.a m(int $$0) {
+         return this.i($$0).k($$0);
+      }
+
+      public frw.a n(int $$0) {
+         return this.j($$0).l($$0);
+      }
+
+      public frw.a b(float $$0, float $$1) {
+         this.e = $$0;
+         this.f = $$1;
+         return this;
+      }
+
+      public frw.a c(float $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public frw.a d(float $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public frw.a j() {
+         return new frw.a(this);
+      }
+
+      @Override
+      public frw.a h() {
+         return this;
       }
    }
 }

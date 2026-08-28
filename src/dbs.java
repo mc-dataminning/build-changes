@@ -14,7 +14,7 @@ public interface dbs extends dcd<dbr> {
    }
 
    static jz<cxo> b(dbr $$0) {
-      jz<cxo> $$1 = jz.a($$0.a(), cxo.k);
+      jz<cxo> $$1 = jz.a($$0.a(), cxo.j);
 
       for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
          cxk $$3 = $$0.a($$2).h();

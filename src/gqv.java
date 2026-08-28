@@ -1,39 +1,27 @@
-public class gqv extends gqi<chz, gxj, gaw> {
-   public gqv(gro.a $$0) {
-      super($$0, new gaw($$0.a(gel.L)), new gaw($$0.a(gel.M)), 0.4F);
-      this.a(new gve(this, $$0.f()));
+public class gqv extends gqj<cjn, gxj, gaw> {
+   private static final alz a = alz.b("textures/entity/camel/camel.png");
+
+   public gqv(grp.a $$0) {
+      super($$0, new gaw($$0.a(gem.J)), new gaw($$0.a(gem.K)), 0.7F);
    }
 
    public alz a(gxj $$0) {
-      return $$0.a;
+      return a;
    }
 
    public gxj a() {
       return new gxj();
    }
 
-   public void a(chz $$0, gxj $$1, float $$2) {
+   public void a(cjn $$0, gxj $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gy().a().a();
-      $$1.d = $$0.ci();
-      $$1.e = $$0.cj();
-      $$1.f = $$0.x();
-      $$1.g = $$0.J($$2);
-      $$1.h = $$0.K($$2);
-      $$1.i = $$0.L($$2);
-      $$1.b = $$0.gD();
-      $$1.c = $$0.p() ? $$0.gA() : null;
-   }
-
-   protected void a(gxj $$0, fgq $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = $$0.g;
-      if ($$4 > 0.0F) {
-         $$1.a(0.4F * $$4, 0.15F * $$4, 0.1F * $$4);
-         $$1.a(a.f.rotationDegrees(bae.i($$4, 0.0F, 90.0F)));
-         if ($$0.b) {
-            $$1.a(0.15F * $$4, 0.0F, 0.0F);
-         }
-      }
+      $$1.a = $$0.j();
+      $$1.b = $$0.ca();
+      $$1.c = Math.max((float)$$0.c() - $$2, 0.0F);
+      $$1.d.a($$0.cf);
+      $$1.e.a($$0.cg);
+      $$1.f.a($$0.ch);
+      $$1.g.a($$0.ci);
+      $$1.h.a($$0.cj);
    }
 }

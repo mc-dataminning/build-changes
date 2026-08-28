@@ -18,7 +18,7 @@ public record dat(float c, Optional<alz> d) {
 
    public void a(cxo $$0, bwf $$1) {
       if ($$1 instanceof cpw $$2) {
-         $$2.gC().a($$0, this.a());
+         $$2.gE().a($$0, this.a());
       }
    }
 

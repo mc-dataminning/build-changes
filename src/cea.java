@@ -34,11 +34,11 @@ public class cea extends cdd {
          return false;
       } else {
          if (!this.h) {
-            if (this.i && this.b.et() >= 100) {
+            if (this.i && this.b.eu() >= 100) {
                return false;
             }
 
-            if (this.b.dY().a(b(this.g)) != 0) {
+            if (this.b.dZ().a(b(this.g)) != 0) {
                return false;
             }
          }

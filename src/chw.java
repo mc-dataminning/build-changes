@@ -14,7 +14,7 @@ public abstract class chw extends bva {
       this.a(eun.o, -1.0F);
    }
 
-   public static bxm.a gr() {
+   public static bxm.a gt() {
       return bwh.C().a(bxn.E, 10.0);
    }
 
@@ -40,14 +40,14 @@ public abstract class chw extends bva {
             double $$0 = this.ae.k() * 0.02;
             double $$1 = this.ae.k() * 0.02;
             double $$2 = this.ae.k() * 0.02;
-            this.dV().a(ls.Q, this.d(1.0), this.dD() + 0.5, this.g(1.0), $$0, $$1, $$2);
+            this.dW().a(ls.Q, this.d(1.0), this.dE() + 0.5, this.g(1.0), $$0, $$1, $$2);
          }
       }
    }
 
    @Override
    protected void b(ash $$0, btz $$1, float $$2) {
-      this.gx();
+      this.gz();
       super.b($$0, $$1, $$2);
    }
 
@@ -103,21 +103,21 @@ public abstract class chw extends bva {
       cxo $$2 = $$0.b($$1);
       if (this.j($$2)) {
          int $$3 = this.Z_();
-         if (!this.dV().C && $$3 == 0 && this.gt()) {
+         if (!this.dW().C && $$3 == 0 && this.gv()) {
             this.a($$0, $$1, $$2);
             this.f($$0);
-            this.gs();
+            this.gu();
             return bti.b;
          }
 
          if (this.e_()) {
             this.a($$0, $$1, $$2);
             this.a(d_(-$$3), true);
-            this.gs();
+            this.gu();
             return bti.a;
          }
 
-         if (this.dV().C) {
+         if (this.dW().C) {
             return bti.c;
          }
       }
@@ -125,7 +125,7 @@ public abstract class chw extends bva {
       return super.b($$0, $$1);
    }
 
-   protected void gs() {
+   protected void gu() {
    }
 
    protected void a(cpw $$0, bth $$1, cxo $$2) {
@@ -133,12 +133,12 @@ public abstract class chw extends bva {
       dau $$4 = $$2.a(ku.y);
       $$2.a(1, $$0);
       if ($$4 != null) {
-         cxo $$5 = $$4.a($$2, $$3, $$0.fT(), $$0::b);
+         cxo $$5 = $$4.a($$2, $$3, $$0.fV(), $$0::b);
          $$0.a($$1, $$5);
       }
    }
 
-   public boolean gt() {
+   public boolean gv() {
       return this.bZ <= 0;
    }
 
@@ -148,32 +148,32 @@ public abstract class chw extends bva {
          this.ca = $$0.cG();
       }
 
-      this.dV().a(this, (byte)18);
+      this.dW().a(this, (byte)18);
    }
 
    public void r(int $$0) {
       this.bZ = $$0;
    }
 
-   public int gu() {
+   public int gw() {
       return this.bZ;
    }
 
    @Nullable
-   public asi gv() {
+   public asi gx() {
       if (this.ca == null) {
          return null;
       } else {
-         cpw $$0 = this.dV().b(this.ca);
+         cpw $$0 = this.dW().b(this.ca);
          return $$0 instanceof asi ? (asi)$$0 : null;
       }
    }
 
-   public boolean gw() {
+   public boolean gy() {
       return this.bZ > 0;
    }
 
-   public void gx() {
+   public void gz() {
       this.bZ = 0;
    }
 
@@ -181,7 +181,7 @@ public abstract class chw extends bva {
       if ($$0 == this) {
          return false;
       } else {
-         return $$0.getClass() != this.getClass() ? false : this.gw() && $$0.gw();
+         return $$0.getClass() != this.getClass() ? false : this.gy() && $$0.gy();
       }
    }
 
@@ -189,24 +189,24 @@ public abstract class chw extends bva {
       bva $$2 = this.a($$0, (bva)$$1);
       if ($$2 != null) {
          $$2.a(true);
-         $$2.b(this.dA(), this.dC(), this.dG(), 0.0F, 0.0F);
+         $$2.b(this.dB(), this.dD(), this.dH(), 0.0F, 0.0F);
          this.a($$0, $$1, $$2);
          $$0.a_($$2);
       }
    }
 
    public void a(ash $$0, chw $$1, @Nullable bva $$2) {
-      Optional.ofNullable(this.gv()).or(() -> Optional.ofNullable($$1.gv())).ifPresent($$2x -> {
+      Optional.ofNullable(this.gx()).or(() -> Optional.ofNullable($$1.gx())).ifPresent($$2x -> {
          $$2x.a(axp.P);
          ao.p.a($$2x, this, $$1, $$2);
       });
       this.c_(6000);
       $$1.c_(6000);
-      this.gx();
-      $$1.gx();
+      this.gz();
+      $$1.gz();
       $$0.a(this, (byte)18);
       if ($$0.N().b(dhd.f)) {
-         $$0.b(new bvv($$0, this.dA(), this.dC(), this.dG(), this.dY().a(7) + 1));
+         $$0.b(new bvv($$0, this.dB(), this.dD(), this.dH(), this.dZ().a(7) + 1));
       }
    }
 
@@ -217,7 +217,7 @@ public abstract class chw extends bva {
             double $$2 = this.ae.k() * 0.02;
             double $$3 = this.ae.k() * 0.02;
             double $$4 = this.ae.k() * 0.02;
-            this.dV().a(ls.Q, this.d(1.0), this.dD() + 0.5, this.g(1.0), $$2, $$3, $$4);
+            this.dW().a(ls.Q, this.d(1.0), this.dE() + 0.5, this.g(1.0), $$2, $$3, $$4);
          }
       } else {
          super.b($$0);

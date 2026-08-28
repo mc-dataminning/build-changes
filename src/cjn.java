@@ -52,7 +52,7 @@ public class cjn extends cka {
    }
 
    public static bxm.a p() {
-      return gO().a(bxn.s, 32.0).a(bxn.v, 0.09F).a(bxn.o, 0.42F).a(bxn.B, 1.5);
+      return gQ().a(bxn.s, 32.0).a(bxn.v, 0.09F).a(bxn.o, 0.42F).a(bxn.B, 1.5);
    }
 
    @Override
@@ -70,7 +70,7 @@ public class cjn extends cka {
    }
 
    @Override
-   protected bxh.b<cjn> ec() {
+   protected bxh.b<cjn> ed() {
       return cjo.a();
    }
 
@@ -80,19 +80,19 @@ public class cjn extends cka {
 
    @Override
    protected bxh<?> a(Dynamic<?> $$0) {
-      return cjo.a(this.ec().a($$0));
+      return cjo.a(this.ed().a($$0));
    }
 
    @Override
    public bvm e(bwr $$0) {
-      return $$0 == bwr.k ? cK.a(this.ei()) : super.e($$0);
+      return $$0 == bwr.k ? cK.a(this.ej()) : super.e($$0);
    }
 
    @Override
    protected void a(ash $$0) {
       bps $$1 = bpr.a();
       $$1.a("camelBrain");
-      bxh<?> $$2 = this.eb();
+      bxh<?> $$2 = this.ec();
       ((bxh<cjn>)$$2).a($$0, this);
       $$1.c();
       $$1.a("camelActivityUpdate");
@@ -111,24 +111,24 @@ public class cjn extends cka {
       if (this.cL > 0) {
          this.cL--;
          if (this.cL == 0) {
-            this.dV().a(null, this.dv(), axf.dB, axg.g, 1.0F, 1.0F);
+            this.dW().a(null, this.dw(), axf.dB, axg.g, 1.0F, 1.0F);
          }
       }
 
-      if (this.dV().B_()) {
-         this.gY();
+      if (this.dW().B_()) {
+         this.ha();
       }
 
       if (this.t()) {
          this.ab();
       }
 
-      if (this.gp() && this.bj()) {
-         this.gB();
+      if (this.gr() && this.bj()) {
+         this.gD();
       }
    }
 
-   private void gY() {
+   private void ha() {
       if (this.cM <= 0) {
          this.cM = this.ae.a(40) + 80;
          this.ci.a(this.af);
@@ -136,10 +136,10 @@ public class cjn extends cka {
          this.cM--;
       }
 
-      if (this.gq()) {
+      if (this.gs()) {
          this.ch.a();
          this.cj.a();
-         if (this.gZ()) {
+         if (this.hb()) {
             this.cf.b(this.af);
             this.cg.a();
          } else {
@@ -150,7 +150,7 @@ public class cjn extends cka {
          this.cf.a();
          this.cg.a();
          this.cj.a(this.x(), this.af);
-         this.ch.a(this.gy() && this.gC() >= 0L, this.af);
+         this.ch.a(this.gA() && this.gE() >= 0L, this.af);
       }
    }
 
@@ -169,7 +169,7 @@ public class cjn extends cka {
    @Override
    public void a_(fbx $$0) {
       if (this.t() && this.aJ()) {
-         this.h(this.dy().d(0.0, 1.0, 0.0));
+         this.h(this.dz().d(0.0, 1.0, 0.0));
          $$0 = $$0.d(0.0, 1.0, 0.0);
       }
 
@@ -179,13 +179,13 @@ public class cjn extends cka {
    @Override
    protected void a(cpw $$0, fbx $$1) {
       super.a($$0, $$1);
-      if ($$0.bq > 0.0F && this.gp() && !this.gy()) {
-         this.gA();
+      if ($$0.bq > 0.0F && this.gr() && !this.gA()) {
+         this.gC();
       }
    }
 
    public boolean t() {
-      return this.gp() || this.gy();
+      return this.gr() || this.gA();
    }
 
    @Override
@@ -196,7 +196,7 @@ public class cjn extends cka {
 
    @Override
    protected fbw j(bwf $$0) {
-      return this.t() ? new fbw(this.dN(), this.dL()) : super.j($$0);
+      return this.t() ? new fbw(this.dO(), this.dM()) : super.j($$0);
    }
 
    @Override
@@ -217,13 +217,13 @@ public class cjn extends cka {
    }
 
    @Override
-   public boolean dO() {
+   public boolean dP() {
       return true;
    }
 
    @Override
    protected void b(float $$0, fbx $$1) {
-      double $$2 = (double)this.fh();
+      double $$2 = (double)this.fj();
       this.i(this.bT().d(1.0, 0.0, 1.0).d().c((double)(22.2222F * $$0) * this.h(bxn.v) * (double)this.aT()).b(0.0, (double)(1.4285F * $$0) * $$2, 0.0));
       this.cL = 55;
       this.x(true);
@@ -286,7 +286,7 @@ public class cjn extends cka {
    @Override
    public bti b(cpw $$0, bth $$1) {
       cxo $$2 = $$0.b($$1);
-      if ($$0.fW() && !this.e_()) {
+      if ($$0.fY() && !this.e_()) {
          this.b($$0);
          return bti.a;
       } else {
@@ -307,15 +307,15 @@ public class cjn extends cka {
 
    @Override
    public boolean a(bvj $$0, float $$1) {
-      if ($$1 > 6.0F && this.gp() && !this.gy() && this.gm()) {
-         this.gA();
+      if ($$1 > 6.0F && this.gr() && !this.gA() && this.go()) {
+         this.gC();
       }
 
       return true;
    }
 
-   public boolean gm() {
-      return this.g(this.gp() ? bwr.a : bwr.k);
+   public boolean go() {
+      return this.g(this.gr() ? bwr.a : bwr.k);
    }
 
    @Override
@@ -323,20 +323,20 @@ public class cjn extends cka {
       if (!this.j($$1)) {
          return false;
       } else {
-         boolean $$2 = this.eD() < this.eR();
+         boolean $$2 = this.eE() < this.eS();
          if ($$2) {
             this.c(2.0F);
          }
 
-         boolean $$3 = this.gD() && this.Z_() == 0 && this.gt();
+         boolean $$3 = this.gF() && this.Z_() == 0 && this.gv();
          if ($$3) {
             this.f($$0);
          }
 
          boolean $$4 = this.e_();
          if ($$4) {
-            this.dV().a(ls.O, this.d(1.0), this.dD() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
-            if (!this.dV().C) {
+            this.dW().a(ls.O, this.d(1.0), this.dE() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
+            if (!this.dW().C) {
                this.b_(10);
             }
          }
@@ -345,9 +345,9 @@ public class cjn extends cka {
             return false;
          } else {
             if (!this.bb()) {
-               axe $$5 = this.go();
+               axe $$5 = this.gq();
                if ($$5 != null) {
-                  this.dV().a(null, this.dA(), this.dC(), this.dG(), $$5, this.dm(), 1.0F, 1.0F + (this.ae.i() - this.ae.i()) * 0.2F);
+                  this.dW().a(null, this.dB(), this.dD(), this.dH(), $$5, this.dn(), 1.0F, 1.0F + (this.ae.i() - this.ae.i()) * 0.2F);
                }
             }
 
@@ -358,13 +358,13 @@ public class cjn extends cka {
    }
 
    @Override
-   protected boolean gn() {
+   protected boolean gp() {
       return false;
    }
 
    @Override
    public boolean a(chw $$0) {
-      if ($$0 != this && $$0 instanceof cjn $$1 && this.gV() && $$1.gV()) {
+      if ($$0 != this && $$0 instanceof cjn $$1 && this.gX() && $$1.gX()) {
          return true;
       }
 
@@ -378,13 +378,13 @@ public class cjn extends cka {
 
    @Nullable
    @Override
-   protected axe go() {
+   protected axe gq() {
       return axf.dD;
    }
 
    @Override
    protected void b(ash $$0, btz $$1, float $$2) {
-      this.gB();
+      this.gD();
       super.b($$0, $$1, $$2);
    }
 
@@ -393,7 +393,7 @@ public class cjn extends cka {
       int $$3 = Math.max(this.cZ().indexOf($$0), 0);
       boolean $$4 = $$3 == 0;
       float $$5 = 0.5F;
-      float $$6 = (float)(this.dQ() ? 0.01F : this.a($$4, 0.0F, $$1, $$2));
+      float $$6 = (float)(this.dR() ? 0.01F : this.a($$4, 0.0F, $$1, $$2));
       if (this.cZ().size() > 1) {
          if (!$$4) {
             $$5 = -0.7F;
@@ -404,11 +404,11 @@ public class cjn extends cka {
          }
       }
 
-      return new fbx(0.0, (double)$$6, (double)($$5 * $$2)).b(-this.dL() * (float) (Math.PI / 180.0));
+      return new fbx(0.0, (double)$$6, (double)($$5 * $$2)).b(-this.dM() * (float) (Math.PI / 180.0));
    }
 
    @Override
-   public float ei() {
+   public float ej() {
       return this.e_() ? 0.45F : 1.0F;
    }
 
@@ -417,8 +417,8 @@ public class cjn extends cka {
       float $$5 = $$3 * 1.43F;
       float $$6 = $$5 - $$3 * 0.2F;
       float $$7 = $$5 - $$6;
-      boolean $$8 = this.gy();
-      boolean $$9 = this.gp();
+      boolean $$8 = this.gA();
+      boolean $$9 = this.gr();
       if ($$8) {
          int $$10 = $$9 ? 40 : 52;
          int $$11;
@@ -431,7 +431,7 @@ public class cjn extends cka {
             $$12 = $$0 ? 0.6F : 0.35F;
          }
 
-         float $$15 = bae.a((float)this.gC() + $$1, 0.0F, (float)$$10);
+         float $$15 = bae.a((float)this.gE() + $$1, 0.0F, (float)$$10);
          boolean $$16 = $$15 < (float)$$11;
          float $$17 = $$16 ? $$15 / (float)$$11 : ($$15 - (float)$$11) / (float)($$10 - $$11);
          float $$18 = $$5 - $$12 * $$6;
@@ -448,7 +448,7 @@ public class cjn extends cka {
    @Override
    public fbx s(float $$0) {
       bvm $$1 = this.a(this.aw());
-      float $$2 = this.ei();
+      float $$2 = this.ej();
       return new fbx(0.0, this.a(true, $$0, $$1, $$2) - (double)(0.2F * $$2), (double)($$1.a() * 0.56F));
    }
 
@@ -468,45 +468,45 @@ public class cjn extends cka {
       ahj.a(this);
    }
 
-   public boolean gp() {
+   public boolean gr() {
       return this.al.a(ce) < 0L;
    }
 
-   public boolean gq() {
-      return this.gC() < 0L != this.gp();
+   public boolean gs() {
+      return this.gE() < 0L != this.gr();
    }
 
-   public boolean gy() {
-      long $$0 = this.gC();
-      return $$0 < (long)(this.gp() ? 40 : 52);
+   public boolean gA() {
+      long $$0 = this.gE();
+      return $$0 < (long)(this.gr() ? 40 : 52);
    }
 
-   private boolean gZ() {
-      return this.gp() && this.gC() < 40L && this.gC() >= 0L;
-   }
-
-   public void gz() {
-      if (!this.gp()) {
-         this.b(axf.dG);
-         this.b(bwr.k);
-         this.a(ecq.u);
-         this.a(-this.dV().ac());
-      }
-   }
-
-   public void gA() {
-      if (this.gp()) {
-         this.b(axf.dH);
-         this.b(bwr.a);
-         this.a(ecq.u);
-         this.a(this.dV().ac());
-      }
+   private boolean hb() {
+      return this.gr() && this.gE() < 40L && this.gE() >= 0L;
    }
 
    public void gB() {
+      if (!this.gr()) {
+         this.b(axf.dG);
+         this.b(bwr.k);
+         this.a(ecq.u);
+         this.a(-this.dW().ac());
+      }
+   }
+
+   public void gC() {
+      if (this.gr()) {
+         this.b(axf.dH);
+         this.b(bwr.a);
+         this.a(ecq.u);
+         this.a(this.dW().ac());
+      }
+   }
+
+   public void gD() {
       this.b(bwr.a);
       this.a(ecq.u);
-      this.b(this.dV().ac());
+      this.b(this.dW().ac());
    }
 
    @VisibleForTesting
@@ -518,8 +518,8 @@ public class cjn extends cka {
       this.a(Math.max(0L, $$0 - 52L - 1L));
    }
 
-   public long gC() {
-      return this.dV().ac() - Math.abs(this.al.a(ce));
+   public long gE() {
+      return this.dW().ac() - Math.abs(this.al.a(ce));
    }
 
    @Override
@@ -537,13 +537,13 @@ public class cjn extends cka {
    }
 
    @Override
-   public boolean gD() {
+   public boolean gF() {
       return true;
    }
 
    @Override
    public void b(cpw $$0) {
-      if (!this.dV().C) {
+      if (!this.dW().C) {
          $$0.a(this, this.cu);
       }
    }
@@ -586,8 +586,8 @@ public class cjn extends cka {
 
       @Override
       public void a() {
-         if (this.k == ccg.a.b && !cjn.this.P_() && cjn.this.gp() && !cjn.this.gy() && cjn.this.gm()) {
-            cjn.this.gA();
+         if (this.k == ccg.a.b && !cjn.this.P_() && cjn.this.gr() && !cjn.this.gA() && cjn.this.go()) {
+            cjn.this.gC();
          }
 
          super.a();

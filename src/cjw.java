@@ -28,32 +28,32 @@ public class cjw extends chw {
 
    public cxo p() {
       bam $$0 = bam.a((long)this.cG().hashCode());
-      ayk<cxh> $$1 = this.gy() ? ayc.b : ayc.a;
-      return this.dV().K_().e(mb.I).a($$1, $$0).map($$0x -> cxi.a(cxs.wY, $$0x)).orElseGet(() -> new cxo(cxs.wY));
+      ayk<cxh> $$1 = this.gA() ? ayc.b : ayc.a;
+      return this.dW().K_().e(mb.I).a($$1, $$0).map($$0x -> cxi.a(cxs.wY, $$0x)).orElseGet(() -> new cxo(cxs.wY));
    }
 
    @Override
-   protected bxh.b<cjw> ec() {
+   protected bxh.b<cjw> ed() {
       return bxh.a(cb, ca);
    }
 
    @Override
    protected bxh<?> a(Dynamic<?> $$0) {
-      return cjx.a(this.ec().a($$0));
+      return cjx.a(this.ed().a($$0));
    }
 
    public static bxm.a t() {
-      return chw.gr().a(bxn.s, 10.0).a(bxn.v, 0.2F).a(bxn.c, 2.0);
+      return chw.gt().a(bxn.s, 10.0).a(bxn.v, 0.2F).a(bxn.c, 2.0);
    }
 
    @Override
    protected void i() {
       if (this.e_()) {
          this.g(bxn.c).a(1.0);
-         this.gq();
+         this.gs();
       } else {
          this.g(bxn.c).a(2.0);
-         this.gp();
+         this.gr();
       }
    }
 
@@ -64,17 +64,17 @@ public class cjw extends chw {
 
    @Override
    protected axe u() {
-      return this.gy() ? axf.ln : axf.le;
+      return this.gA() ? axf.ln : axf.le;
    }
 
    @Override
    protected axe e(btz $$0) {
-      return this.gy() ? axf.lq : axf.lh;
+      return this.gA() ? axf.lq : axf.lh;
    }
 
    @Override
    protected axe o_() {
-      return this.gy() ? axf.lo : axf.lf;
+      return this.gA() ? axf.lo : axf.lf;
    }
 
    @Override
@@ -83,7 +83,7 @@ public class cjw extends chw {
    }
 
    protected axe x() {
-      return this.gy() ? axf.ls : axf.lj;
+      return this.gA() ? axf.ls : axf.lj;
    }
 
    @Nullable
@@ -92,7 +92,7 @@ public class cjw extends chw {
       if ($$2 != null) {
          cjx.a($$2, $$0.H_());
          bva $$3 = (bva)($$0.H_().h() ? this : $$1);
-         boolean $$5 = $$3 instanceof cjw $$4 && $$4.gy() || $$0.H_().j() < 0.02;
+         boolean $$5 = $$3 instanceof cjw $$4 && $$4.gA() || $$0.H_().j() < 0.02;
          $$2.x($$5);
       }
 
@@ -100,15 +100,15 @@ public class cjw extends chw {
    }
 
    @Override
-   public bxh<cjw> eb() {
-      return (bxh<cjw>)super.eb();
+   public bxh<cjw> ec() {
+      return (bxh<cjw>)super.ec();
    }
 
    @Override
    protected void a(ash $$0) {
       bps $$1 = bpr.a();
       $$1.a("goatBrain");
-      this.eb().a($$0, this);
+      this.ec().a($$0, this);
       $$1.c();
       $$1.a("goatActivityUpdate");
       cjx.a(this);
@@ -130,8 +130,8 @@ public class cjw extends chw {
    }
 
    @Override
-   protected void gs() {
-      this.dV().a(null, this, this.gy() ? axf.lp : axf.lg, axg.g, 1.0F, bae.b(this.dV().A, 0.8F, 1.2F));
+   protected void gu() {
+      this.dW().a(null, this, this.gA() ? axf.lp : axf.lg, axg.g, 1.0F, bae.b(this.dW().A, 0.8F, 1.2F));
    }
 
    @Override
@@ -150,7 +150,7 @@ public class cjw extends chw {
       } else {
          bti $$4 = super.b($$0, $$1);
          if ($$4.a() && this.j($$2)) {
-            this.gs();
+            this.gu();
          }
 
          return $$4;
@@ -179,15 +179,15 @@ public class cjw extends chw {
 
    @Override
    public bvm e(bwr $$0) {
-      return $$0 == bwr.g ? bZ.a(this.ei()) : super.e($$0);
+      return $$0 == bwr.g ? bZ.a(this.ej()) : super.e($$0);
    }
 
    @Override
    public void b(ux $$0) {
       super.b($$0);
-      $$0.a("IsScreamingGoat", this.gy());
-      $$0.a("HasLeftHorn", this.gm());
-      $$0.a("HasRightHorn", this.gn());
+      $$0.a("IsScreamingGoat", this.gA());
+      $$0.a("HasLeftHorn", this.go());
+      $$0.a("HasRightHorn", this.gp());
    }
 
    @Override
@@ -229,17 +229,17 @@ public class cjw extends chw {
       $$0.a(ck, true);
    }
 
-   public boolean gm() {
+   public boolean go() {
       return this.al.a(cj);
    }
 
-   public boolean gn() {
+   public boolean gp() {
       return this.al.a(ck);
    }
 
-   public boolean go() {
-      boolean $$0 = this.gm();
-      boolean $$1 = this.gn();
+   public boolean gq() {
+      boolean $$0 = this.go();
+      boolean $$1 = this.gp();
       if (!$$0 && !$$1) {
          return false;
       } else {
@@ -253,28 +253,28 @@ public class cjw extends chw {
          }
 
          this.al.a($$2, false);
-         fbx $$5 = this.dt();
+         fbx $$5 = this.du();
          cxo $$6 = this.p();
          double $$7 = (double)bae.b(this.ae, -0.2F, 0.2F);
          double $$8 = (double)bae.b(this.ae, 0.3F, 0.7F);
          double $$9 = (double)bae.b(this.ae, -0.2F, 0.2F);
-         cma $$10 = new cma(this.dV(), $$5.a(), $$5.b(), $$5.c(), $$6, $$7, $$8, $$9);
-         this.dV().b($$10);
+         cma $$10 = new cma(this.dW(), $$5.a(), $$5.b(), $$5.c(), $$6, $$7, $$8, $$9);
+         this.dW().b($$10);
          return true;
       }
    }
 
-   public void gp() {
+   public void gr() {
       this.al.a(cj, true);
       this.al.a(ck, true);
    }
 
-   public void gq() {
+   public void gs() {
       this.al.a(cj, false);
       this.al.a(ck, false);
    }
 
-   public boolean gy() {
+   public boolean gA() {
       return this.al.a(ci);
    }
 
@@ -282,7 +282,7 @@ public class cjw extends chw {
       this.al.a(ci, $$0);
    }
 
-   public float gz() {
+   public float gB() {
       return (float)this.cm / 20.0F * 30.0F * (float) (Math.PI / 180.0);
    }
 

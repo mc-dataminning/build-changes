@@ -8,8 +8,8 @@ import org.apache.commons.lang3.math.Fraction;
 
 public final class czs implements cvi {
    public static final czs a = new czs(List.of());
-   public static final Codec<czs> b = cxo.b.listOf().xmap(czs::new, $$0 -> $$0.g);
-   public static final zt<xg, czs> c = cxo.i.a(zr.a()).a(czs::new, $$0 -> $$0.g);
+   public static final Codec<czs> b = cxo.a.listOf().xmap(czs::new, $$0 -> $$0.g);
+   public static final zt<xg, czs> c = cxo.h.a(zr.a()).a(czs::new, $$0 -> $$0.g);
    private static final Fraction e = Fraction.getFraction(1, 16);
    private static final int f = -1;
    public static final int d = -1;

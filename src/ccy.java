@@ -14,7 +14,7 @@ public class ccy extends cdd {
 
    @Override
    public boolean b() {
-      List<crt> $$0 = this.b.dV().a(crt.class, this.b.cR().g(5.0));
+      List<crt> $$0 = this.b.dW().a(crt.class, this.b.cR().g(5.0));
       boolean $$1 = false;
 
       for (crt $$2 : $$0) {
@@ -40,7 +40,7 @@ public class ccy extends cdd {
 
    @Override
    public void d() {
-      for (crt $$1 : this.b.dV().a(crt.class, this.b.cR().g(5.0))) {
+      for (crt $$1 : this.b.dW().a(crt.class, this.b.cR().g(5.0))) {
          if ($$1.cX() instanceof cpw $$2) {
             this.c = $$2;
             break;
@@ -61,11 +61,11 @@ public class ccy extends cdd {
       boolean $$0 = bae.e(this.c.bo) > 0.0F || bae.e(this.c.bq) > 0.0F;
       float $$1 = this.d == ccm.b ? ($$0 ? 0.01F : 0.0F) : 0.015F;
       this.b.a($$1, new fbx((double)this.b.bo, (double)this.b.bp, (double)this.b.bq));
-      this.b.a(bwj.a, this.b.dy());
+      this.b.a(bwj.a, this.b.dz());
       if (--this.a <= 0) {
          this.a = this.a(10);
          if (this.d == ccm.a) {
-            jh $$2 = this.c.dv().a(this.c.cO().g());
+            jh $$2 = this.c.dw().a(this.c.cO().g());
             $$2 = $$2.b(0, -1, 0);
             this.b.L().a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0);
             if (this.b.f(this.c) < 4.0F) {
@@ -74,7 +74,7 @@ public class ccy extends cdd {
             }
          } else if (this.d == ccm.b) {
             jm $$3 = this.c.cP();
-            jh $$4 = this.c.dv().a($$3, 10);
+            jh $$4 = this.c.dw().a($$3, 10);
             this.b.L().a((double)$$4.u(), (double)($$4.v() - 1), (double)$$4.w(), 1.0);
             if (this.b.f(this.c) > 12.0F) {
                this.a = 0;

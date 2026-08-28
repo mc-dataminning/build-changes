@@ -13,13 +13,13 @@ public class cgk extends cgp<bwf> {
 
    @Override
    protected void a(ash $$0, bwf $$1) {
-      bxh<?> $$2 = $$1.eb();
+      bxh<?> $$2 = $$1.ec();
       List<coj> $$3 = Lists.newArrayList();
       cfl $$4 = $$2.c(cfj.h).orElse(cfl.a());
       Optional<bwh> $$5 = $$4.a($$0x -> $$0x instanceof cnn || $$0x instanceof cln).map(bwh.class::cast);
 
       for (bwf $$7 : $$2.c(cfj.g).orElse(ImmutableList.of())) {
-         if ($$7 instanceof coj && ((coj)$$7).gm()) {
+         if ($$7 instanceof coj && ((coj)$$7).go()) {
             $$3.add((coj)$$7);
          }
       }

@@ -1,130 +1,111 @@
-import com.google.common.collect.Queues;
-import java.util.Deque;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
+import it.unimi.dsi.fastutil.ints.IntConsumer;
+import java.nio.ByteBuffer;
+import java.nio.FloatBuffer;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableLong;
 import org.joml.Vector3f;
+import org.lwjgl.system.MemoryUtil;
 
-public class fgq {
-   private final Deque<fgq.a> a = ae.a(Queues.newArrayDeque(), $$0 -> {
-      Matrix4f $$1 = new Matrix4f();
-      Matrix3f $$2 = new Matrix3f();
-      $$0.add(new fgq.a($$1, $$2));
-   });
+public class fgq implements AutoCloseable {
+   private final fgo.a a;
+   @Nullable
+   private fgo.a b;
+   private final fgq.a c;
 
-   public void a(double $$0, double $$1, double $$2) {
-      this.a((float)$$0, (float)$$1, (float)$$2);
+   public fgq(fgo.a $$0, fgq.a $$1) {
+      this.a = $$0;
+      this.c = $$1;
    }
 
-   public void a(float $$0, float $$1, float $$2) {
-      fgq.a $$3 = this.a.getLast();
-      $$3.a.translate($$0, $$1, $$2);
-   }
-
-   public void a(fbx $$0) {
-      this.a($$0.d, $$0.e, $$0.f);
-   }
-
-   public void b(float $$0, float $$1, float $$2) {
-      fgq.a $$3 = this.a.getLast();
-      $$3.a.scale($$0, $$1, $$2);
-      if (Math.abs($$0) == Math.abs($$1) && Math.abs($$1) == Math.abs($$2)) {
-         if ($$0 < 0.0F || $$1 < 0.0F || $$2 < 0.0F) {
-            $$3.b.scale(Math.signum($$0), Math.signum($$1), Math.signum($$2));
-         }
+   private static Vector3f[] a(ByteBuffer $$0, int $$1, fgw $$2) {
+      int $$3 = $$2.a(fgx.b);
+      if ($$3 == -1) {
+         throw new IllegalArgumentException("Cannot identify quad centers with no position element");
       } else {
-         $$3.b.scale(1.0F / $$0, 1.0F / $$1, 1.0F / $$2);
-         $$3.c = false;
+         FloatBuffer $$4 = $$0.asFloatBuffer();
+         int $$5 = $$2.b() / 4;
+         int $$6 = $$5 * 4;
+         int $$7 = $$1 / 4;
+         Vector3f[] $$8 = new Vector3f[$$7];
+
+         for (int $$9 = 0; $$9 < $$7; $$9++) {
+            int $$10 = $$9 * $$6 + $$3;
+            int $$11 = $$10 + $$5 * 2;
+            float $$12 = $$4.get($$10 + 0);
+            float $$13 = $$4.get($$10 + 1);
+            float $$14 = $$4.get($$10 + 2);
+            float $$15 = $$4.get($$11 + 0);
+            float $$16 = $$4.get($$11 + 1);
+            float $$17 = $$4.get($$11 + 2);
+            $$8[$$9] = new Vector3f(($$12 + $$15) / 2.0F, ($$13 + $$16) / 2.0F, ($$14 + $$17) / 2.0F);
+         }
+
+         return $$8;
       }
    }
 
-   public void a(Quaternionf $$0) {
-      fgq.a $$1 = this.a.getLast();
-      $$1.a.rotate($$0);
-      $$1.b.rotate($$0);
+   public ByteBuffer a() {
+      return this.a.a();
    }
 
-   public void a(Quaternionf $$0, float $$1, float $$2, float $$3) {
-      fgq.a $$4 = this.a.getLast();
-      $$4.a.rotateAround($$0, $$1, $$2, $$3);
-      $$4.b.rotate($$0);
-   }
-
-   public void a() {
-      this.a.addLast(new fgq.a(this.a.getLast()));
-   }
-
-   public void b() {
-      this.a.removeLast();
+   @Nullable
+   public ByteBuffer b() {
+      return this.b != null ? this.b.a() : null;
    }
 
    public fgq.a c() {
-      return this.a.getLast();
+      return this.c;
    }
 
-   public boolean d() {
-      return this.a.size() == 1;
+   @Nullable
+   public fgq.b a(fgo $$0, fgz $$1) {
+      if (this.c.d() != fgw.c.h) {
+         return null;
+      } else {
+         Vector3f[] $$2 = a(this.a.a(), this.c.b(), this.c.a());
+         fgq.b $$3 = new fgq.b($$2, this.c.e());
+         this.b = $$3.a($$0, $$1);
+         return $$3;
+      }
    }
 
-   public void e() {
-      fgq.a $$0 = this.a.getLast();
-      $$0.a.identity();
-      $$0.b.identity();
-      $$0.c = true;
+   @Override
+   public void close() {
+      this.a.close();
+      if (this.b != null) {
+         this.b.close();
+      }
    }
 
-   public void a(Matrix4f $$0) {
-      fgq.a $$1 = this.a.getLast();
-      $$1.a.mul($$0);
-      if (!f.a($$0)) {
-         if (f.b($$0)) {
-            $$1.b.mul(new Matrix3f($$0));
-         } else {
-            $$1.d();
+   public static record a(fgw a, int b, int c, fgw.c d, fgw.b e) {
+   }
+
+   public static record b(Vector3f[] a, fgw.b b) {
+      @Nullable
+      public fgo.a a(fgo $$0, fgz $$1) {
+         int[] $$2 = $$1.sort(this.a);
+         long $$3 = $$0.a($$2.length * 6 * this.b.d);
+         IntConsumer $$4 = this.a($$3, this.b);
+
+         for (int $$5 : $$2) {
+            $$4.accept($$5 * 4 + 0);
+            $$4.accept($$5 * 4 + 1);
+            $$4.accept($$5 * 4 + 2);
+            $$4.accept($$5 * 4 + 2);
+            $$4.accept($$5 * 4 + 3);
+            $$4.accept($$5 * 4 + 0);
          }
-      }
-   }
 
-   public static final class a {
-      final Matrix4f a;
-      final Matrix3f b;
-      boolean c = true;
-
-      a(Matrix4f $$0, Matrix3f $$1) {
-         this.a = $$0;
-         this.b = $$1;
+         return $$0.a();
       }
 
-      a(fgq.a $$0) {
-         this.a = new Matrix4f($$0.a);
-         this.b = new Matrix3f($$0.b);
-         this.c = $$0.c;
-      }
+      private IntConsumer a(long $$0, fgw.b $$1) {
+         MutableLong $$2 = new MutableLong($$0);
 
-      void d() {
-         this.b.set(this.a).invert().transpose();
-         this.c = false;
-      }
-
-      public Matrix4f a() {
-         return this.a;
-      }
-
-      public Matrix3f b() {
-         return this.b;
-      }
-
-      public Vector3f a(Vector3f $$0, Vector3f $$1) {
-         return this.a($$0.x, $$0.y, $$0.z, $$1);
-      }
-
-      public Vector3f a(float $$0, float $$1, float $$2, Vector3f $$3) {
-         Vector3f $$4 = this.b.transform($$0, $$1, $$2, $$3);
-         return this.c ? $$4 : $$4.normalize();
-      }
-
-      public fgq.a c() {
-         return new fgq.a(this);
+         return switch ($$1) {
+            case a -> $$1x -> MemoryUtil.memPutShort($$2.getAndAdd(2L), (short)$$1x);
+            case b -> $$1x -> MemoryUtil.memPutInt($$2.getAndAdd(4L), $$1x);
+         };
       }
    }
 }

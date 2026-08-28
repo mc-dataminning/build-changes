@@ -41,10 +41,10 @@ public class cee<T extends cmw & cna & cmj> extends cdd {
       this.b.w(false);
       this.b.h(null);
       this.f = 0;
-      if (this.b.fx()) {
-         this.b.fD();
+      if (this.b.fz()) {
+         this.b.fF();
          this.b.b(false);
-         this.b.fz().b(ku.O, czt.a);
+         this.b.fB().b(ku.O, czt.a);
       }
    }
 
@@ -75,7 +75,7 @@ public class cee<T extends cmw & cna & cmj> extends cdd {
             this.h--;
             if (this.h <= 0) {
                this.b.L().a($$0, this.k() ? this.d : this.d * 0.5);
-               this.h = a.a(this.b.dY());
+               this.h = a.a(this.b.dZ());
             }
          } else {
             this.h = 0;
@@ -90,16 +90,16 @@ public class cee<T extends cmw & cna & cmj> extends cdd {
                this.b.b(true);
             }
          } else if (this.c == cee.a.b) {
-            if (!this.b.fx()) {
+            if (!this.b.fz()) {
                this.c = cee.a.a;
             }
 
-            int $$5 = this.b.fB();
-            cxo $$6 = this.b.fz();
+            int $$5 = this.b.fD();
+            cxo $$6 = this.b.fB();
             if ($$5 >= cwf.b($$6, this.b)) {
-               this.b.fC();
+               this.b.fE();
                this.c = cee.a.c;
-               this.g = 20 + this.b.dY().a(20);
+               this.g = 20 + this.b.dZ().a(20);
                this.b.b(false);
             }
          } else if (this.c == cee.a.c) {

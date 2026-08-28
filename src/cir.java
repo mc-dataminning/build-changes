@@ -9,7 +9,7 @@ public class cir extends chu implements bxf<cir.a> {
    }
 
    @Override
-   public int gn() {
+   public int gp() {
       return 5;
    }
 
@@ -34,7 +34,7 @@ public class cir extends chu implements bxf<cir.a> {
    }
 
    @Override
-   protected axe gm() {
+   protected axe go() {
       return axf.wb;
    }
 
@@ -55,7 +55,7 @@ public class cir extends chu implements bxf<cir.a> {
    @Override
    public void b(ux $$0) {
       super.b($$0);
-      $$0.a("type", this.gu().c());
+      $$0.a("type", this.gw().c());
    }
 
    @Override
@@ -67,7 +67,7 @@ public class cir extends chu implements bxf<cir.a> {
    @Override
    public void i(cxo $$0) {
       chy.a(this, $$0);
-      czx.a(ku.X, $$0, $$0x -> $$0x.a("type", this.gu().c()));
+      czx.a(ku.X, $$0, $$0x -> $$0x.a("type", this.gw().c()));
    }
 
    @Override
@@ -80,7 +80,7 @@ public class cir extends chu implements bxf<cir.a> {
       this.al.a(a, $$0.e);
    }
 
-   public cir.a gu() {
+   public cir.a gw() {
       return cir.a.a(this.al.a(a));
    }
 
@@ -95,13 +95,13 @@ public class cir extends chu implements bxf<cir.a> {
       return super.a($$0, $$1, $$2, $$3);
    }
 
-   public float gv() {
-      return this.gu().f;
+   public float gx() {
+      return this.gw().f;
    }
 
    @Override
    protected bvm e(bwr $$0) {
-      return super.e($$0).a(this.gv());
+      return super.e($$0).a(this.gx());
    }
 
    public static enum a implements bba {

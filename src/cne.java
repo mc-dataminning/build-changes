@@ -17,7 +17,7 @@ public class cne extends cme {
       $$0.a(c, false);
    }
 
-   public boolean go() {
+   public boolean gq() {
       return this.au().a(c);
    }
 
@@ -26,18 +26,18 @@ public class cne extends cme {
    }
 
    @Override
-   public boolean gn() {
-      return this.go();
+   public boolean gp() {
+      return this.gq();
    }
 
    @Override
    public void h() {
-      if (!this.dV().C && this.bL() && !this.fZ()) {
+      if (!this.dW().C && this.bL() && !this.gb()) {
          if (this.av) {
-            if (this.go()) {
+            if (this.gq()) {
                this.bZ--;
                if (this.bZ < 0) {
-                  this.gp();
+                  this.gr();
                }
             } else {
                this.d++;
@@ -57,7 +57,7 @@ public class cne extends cme {
    @Override
    public void b(ux $$0) {
       super.b($$0);
-      $$0.a("StrayConversionTime", this.go() ? this.bZ : -1);
+      $$0.a("StrayConversionTime", this.gq() ? this.bZ : -1);
    }
 
    @Override
@@ -74,16 +74,16 @@ public class cne extends cme {
       this.x(true);
    }
 
-   protected void gp() {
+   protected void gr() {
       this.a(bvq.bs, bve.a(this, true, true), $$0 -> {
          if (!this.bb()) {
-            this.dV().a(null, 1048, this.dv(), 0);
+            this.dW().a(null, 1048, this.dw(), 0);
          }
       });
    }
 
    @Override
-   public boolean dJ() {
+   public boolean dK() {
       return false;
    }
 
@@ -110,8 +110,8 @@ public class cne extends cme {
    @Override
    protected void a(ash $$0, btz $$1, boolean $$2) {
       super.a($$0, $$1, $$2);
-      if ($$1.d() instanceof cmi $$4 && $$4.gn()) {
-         $$4.go();
+      if ($$1.d() instanceof cmi $$4 && $$4.gp()) {
+         $$4.gq();
          this.a($$0, cxs.vb);
       }
    }

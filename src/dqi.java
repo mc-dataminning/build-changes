@@ -28,17 +28,17 @@ public class dqi extends dkl implements dkt {
 
    @Override
    protected void a(dxu $$0, dhh $$1, jh $$2, bvj $$3) {
-      if (!($$3 instanceof bwf) || $$3.dw().a(this)) {
+      if (!($$3 instanceof bwf) || $$3.dx().a(this)) {
          $$3.a($$0, new fbx(0.9F, 1.5, 0.9F));
          if ($$1.C) {
             bam $$4 = $$1.H_();
-            boolean $$5 = $$3.aa != $$3.dA() || $$3.ac != $$3.dG();
+            boolean $$5 = $$3.aa != $$3.dB() || $$3.ac != $$3.dH();
             if ($$5 && $$4.h()) {
                $$1.a(
                   ls.aL,
-                  $$3.dA(),
+                  $$3.dB(),
                   (double)($$2.v() + 1),
-                  $$3.dG(),
+                  $$3.dH(),
                   (double)(bae.b($$4, -1.0F, 1.0F) * 0.083333336F),
                   0.05F,
                   (double)(bae.b($$4, -1.0F, 1.0F) * 0.083333336F)
@@ -60,7 +60,7 @@ public class dqi extends dkl implements dkt {
    @Override
    public void a(dhh $$0, dxu $$1, jh $$2, bvj $$3, float $$4) {
       if (!((double)$$4 < 4.0) && $$3 instanceof bwf $$5) {
-         bwf.a $$7 = $$5.eL();
+         bwf.a $$7 = $$5.eM();
          axe $$8 = (double)$$4 < 7.0 ? $$7.a() : $$7.b();
          $$3.a($$8, 1.0F, 1.0F);
       }

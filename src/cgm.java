@@ -19,7 +19,7 @@ public class cgm extends cgp<bwf> {
          .filter($$1x -> $$1.a($$1x, this.a($$1)))
          .sorted(Comparator.comparingDouble($$1::g))
          .collect(Collectors.toList());
-      bxh<?> $$3 = $$1.eb();
+      bxh<?> $$3 = $$1.ec();
       $$3.a(cfj.j, $$2);
       List<cpw> $$4 = $$2.stream().filter($$2x -> b($$0, $$1, $$2x)).collect(Collectors.toList());
       $$3.a(cfj.k, $$4.isEmpty() ? null : $$4.get(0));

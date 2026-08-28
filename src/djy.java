@@ -101,15 +101,15 @@ public abstract class djy extends dkl {
    @Override
    protected void a(dxu $$0, dhh $$1, jh $$2, bvj $$3) {
       if (!$$3.bi()) {
-         if ($$3.aG() >= 0) {
-            if ($$3 instanceof asi) {
-               int $$4 = $$1.H_().b(1, 3);
-               $$3.h($$3.aG() + $$4);
-            }
-
-            $$3.d(8.0F);
-         } else {
+         if ($$3.aG() < 0) {
             $$3.h($$3.aG() + 1);
+         } else if ($$3 instanceof asi) {
+            int $$4 = $$1.H_().b(1, 3);
+            $$3.h($$3.aG() + $$4);
+         }
+
+         if ($$3.aG() >= 0) {
+            $$3.d(8.0F);
          }
       }
 

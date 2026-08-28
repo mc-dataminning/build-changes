@@ -25,7 +25,7 @@ public class cid extends chw {
    }
 
    public static bxm.a p() {
-      return chw.gr().a(bxn.s, 10.0).a(bxn.v, 0.2F);
+      return chw.gt().a(bxn.s, 10.0).a(bxn.v, 0.2F);
    }
 
    @Override
@@ -49,7 +49,7 @@ public class cid extends chw {
    }
 
    @Override
-   protected float fe() {
+   protected float fg() {
       return 0.4F;
    }
 

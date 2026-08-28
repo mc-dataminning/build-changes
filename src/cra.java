@@ -24,10 +24,10 @@ public class cra extends cqw {
    @Override
    protected void a(fbv $$0) {
       super.a($$0);
-      if (this.dV() instanceof ash) {
-         this.dV().c(2002, this.dv(), czn.c(czo.a));
-         int $$1 = 3 + this.dV().A.a(5) + this.dV().A.a(5);
-         bvv.a((ash)this.dV(), this.dt(), $$1);
+      if (this.dW() instanceof ash) {
+         this.dW().c(2002, this.dw(), czn.c(czo.a));
+         int $$1 = 3 + this.dW().A.a(5) + this.dW().A.a(5);
+         bvv.a((ash)this.dW(), this.du(), $$1);
          this.at();
       }
    }

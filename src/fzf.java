@@ -1,70 +1,173 @@
-import java.util.Set;
-import java.util.function.BiFunction;
-import java.util.function.UnaryOperator;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public record fzf(een a, kd<ebq> b, eek c, jx<ami> d, amk e, die f, fza g) {
-   public fzf(eel $$0, jx<ami> $$1, amk $$2, die $$3) {
-      this($$0.a(), $$0.b(), $$1, $$2, $$3, new fza(fzh.a.a, Set.of(), null));
+class fzf {
+   private static final int a = 44;
+   private final List<fzf.c> b;
+
+   fzf(List<fzf.c> $$0) {
+      this.b = $$0;
    }
 
-   public fzf(een $$0, eek $$1, jx<ami> $$2, amk $$3, die $$4, fza $$5) {
-      this($$0, $$2.a(ami.c).e(mb.bf), $$1, $$2.a(ami.c), $$3, $$4, $$5);
+   public void a() {
+      this.b.forEach(fzf.c::a);
    }
 
-   public fzf a(een $$0, eek $$1) {
-      return new fzf($$0, this.b, $$1, this.d, this.e, this.f, this.g);
+   public static fzf.a a(int $$0) {
+      return new fzf.a($$0);
    }
 
-   public fzf a(fzf.b $$0) {
-      return new fzf($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f, this.g);
-   }
+   public static class a {
+      final int a;
+      private final List<fzf.d> b = new ArrayList<>();
+      int c;
+      int d = 4;
+      int e;
+      Optional<fzf.b> f = Optional.empty();
 
-   public fzf a(fzf.a $$0) {
-      return new fzf(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f, this.g);
-   }
+      public a(int $$0) {
+         this.a = $$0;
+      }
 
-   public ke.b a() {
-      return this.d.a();
-   }
+      void a() {
+         this.e++;
+      }
 
-   public void b() {
-      for (ebq $$0 : this.d()) {
-         $$0.b().a();
+      public fzf.d a(xv $$0, BooleanSupplier $$1, Consumer<Boolean> $$2) {
+         fzf.d $$3 = new fzf.d($$0, $$1, $$2, 44);
+         this.b.add($$3);
+         return $$3;
+      }
+
+      public fzf.a a(int $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public fzf.a b(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public fzf a(Consumer<frv> $$0) {
+         frs $$1 = new frs().b(this.d);
+         $$1.a(fry.a(this.a - 44), 0, 0);
+         $$1.a(fry.a(44), 0, 1);
+         List<fzf.c> $$2 = new ArrayList<>();
+         this.e = 0;
+
+         for (fzf.d $$3 : this.b) {
+            $$2.add($$3.a(this, $$1, 0));
+         }
+
+         $$1.a();
+         $$0.accept($$1);
+         fzf $$4 = new fzf($$2);
+         $$4.a();
+         return $$4;
+      }
+
+      public fzf.a a(int $$0, boolean $$1) {
+         this.f = Optional.of(new fzf.b($$0, $$1));
+         return this;
       }
    }
 
-   public een c() {
-      return this.a;
+   static record b(int a, boolean b) {
    }
 
-   public kd<ebq> d() {
-      return this.b;
+   static record c(fol<Boolean> a, BooleanSupplier b, @Nullable BooleanSupplier c) {
+      public void a() {
+         this.a.a(this.b.getAsBoolean());
+         if (this.c != null) {
+            this.a.j = this.c.getAsBoolean();
+         }
+      }
+
+      public fol<Boolean> b() {
+         return this.a;
+      }
+
+      public BooleanSupplier c() {
+         return this.b;
+      }
+
+      @Nullable
+      public BooleanSupplier d() {
+         return this.c;
+      }
    }
 
-   public eek e() {
-      return this.c;
-   }
+   public static class d {
+      private final xv a;
+      private final BooleanSupplier b;
+      private final Consumer<Boolean> c;
+      @Nullable
+      private xv d;
+      @Nullable
+      private BooleanSupplier e;
+      private final int f;
 
-   public jx<ami> f() {
-      return this.d;
-   }
+      d(xv $$0, BooleanSupplier $$1, Consumer<Boolean> $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = $$3;
+      }
 
-   public amk g() {
-      return this.e;
-   }
+      public fzf.d a(BooleanSupplier $$0) {
+         this.e = $$0;
+         return this;
+      }
 
-   public die h() {
-      return this.f;
-   }
+      public fzf.d a(xv $$0) {
+         this.d = $$0;
+         return this;
+      }
 
-   public fza i() {
-      return this.g;
-   }
+      fzf.c a(fzf.a $$0, frs $$1, int $$2) {
+         $$0.a();
+         fpm $$3 = new fpm(this.a, fmf.Q().h).c();
+         $$1.a($$3, $$0.e, $$2, $$1.b().a(0.0F, 0.5F).b($$0.c));
+         Optional<fzf.b> $$4 = $$0.f;
+         fol.a<Boolean> $$5 = fol.b(this.b.getAsBoolean());
+         $$5.a();
+         boolean $$6 = this.d != null && $$4.isEmpty();
+         if ($$6) {
+            fpq $$7 = fpq.a(this.d);
+            $$5.a($$1x -> $$7);
+         }
 
-   @FunctionalInterface
-   public interface a extends BiFunction<ke.b, eek, eek> {
-   }
+         if (this.d != null && !$$6) {
+            $$5.a($$0x -> xu.a(this.a, $$0x.c(), this.d));
+         } else {
+            $$5.a($$0x -> xu.a(this.a, $$0x.c()));
+         }
 
-   public interface b extends UnaryOperator<een> {
+         fol<Boolean> $$8 = $$5.a(0, 0, this.f, 20, xv.i(), ($$0x, $$1x) -> this.c.accept($$1x));
+         if (this.e != null) {
+            $$8.j = this.e.getAsBoolean();
+         }
+
+         $$1.a($$8, $$0.e, $$2 + 1, $$1.b().c());
+         if (this.d != null) {
+            $$4.ifPresent($$3x -> {
+               xv $$4x = this.d.f().a(n.h);
+               fnp $$5x = fmf.Q().h;
+               foz $$6x = new foz($$4x, $$5x);
+               $$6x.d($$0.a - $$0.c - this.f);
+               $$6x.e($$3x.a());
+               $$0.a();
+               int $$7 = $$3x.b ? 9 * $$3x.a - $$6x.w() : 0;
+               $$1.a($$6x, $$0.e, $$2, $$1.b().c(-$$0.d).e($$7));
+            });
+         }
+
+         return new fzf.c($$8, this.b, this.e);
+      }
    }
 }

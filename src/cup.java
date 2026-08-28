@@ -19,14 +19,14 @@ public class cup extends btp {
    @Override
    public void a(vd $$0, js.a $$1) {
       for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         this.a($$2, cxo.k);
+         this.a($$2, cxo.j);
       }
 
       for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
          ux $$4 = $$0.a($$3);
          int $$5 = $$4.f("Slot") & 255;
          if ($$5 >= 0 && $$5 < this.b()) {
-            this.a($$5, cxo.a($$1, (vu)$$4).orElse(cxo.k));
+            this.a($$5, cxo.a($$1, (vu)$$4).orElse(cxo.j));
          }
       }
    }

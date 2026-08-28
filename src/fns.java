@@ -1,9 +1,22 @@
-public interface fns {
-   boolean a(cuy var1);
+import java.util.Set;
 
-   boolean a(double var1, double var3, int var5, cxo var6);
+public class fns extends hco {
+   private static final Set<aut<?>> a = Set.of(hcw.a, hdc.c);
 
-   void b(cuy var1);
+   public fns(hbl $$0) {
+      super($$0, alz.b("textures/atlas/gui.png"), alz.b("gui"), a);
+   }
 
-   void a(cuy var1, ctm var2);
+   @Override
+   public hbk a(alz $$0) {
+      return super.a($$0);
+   }
+
+   public hdd a(hbk $$0) {
+      return this.b($$0).a();
+   }
+
+   private hdc b(hbk $$0) {
+      return $$0.e().f().a(hdc.c).orElse(hdc.a);
+   }
 }

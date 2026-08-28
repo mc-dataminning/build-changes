@@ -22,7 +22,7 @@ public class ceo<T extends bwh> extends cdd {
 
    @Override
    public boolean c() {
-      return this.a.fx();
+      return this.a.fz();
    }
 
    @Override
@@ -33,9 +33,9 @@ public class ceo<T extends bwh> extends cdd {
 
    @Override
    public void e() {
-      this.a.a(bvr.a, cxo.k);
+      this.a.a(bvr.a, cxo.j);
       if (this.d != null) {
-         this.a.a(this.d, 1.0F, this.a.dY().i() * 0.2F + 0.9F);
+         this.a.a(this.d, 1.0F, this.a.dZ().i() * 0.2F + 0.9F);
       }
    }
 }

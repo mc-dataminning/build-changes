@@ -1,4 +1,4 @@
-public class gzp extends gyr {
-   public float a;
-   public int b = 1;
+public class gzp extends gyk {
+   public boolean b;
+   public boolean c;
 }

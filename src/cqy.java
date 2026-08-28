@@ -19,12 +19,12 @@ public class cqy extends cqw {
          double $$1 = 0.08;
 
          for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dV()
+            this.dW()
                .a(
                   new lo(ls.S, this.l()),
-                  this.dA(),
-                  this.dC(),
-                  this.dG(),
+                  this.dB(),
+                  this.dD(),
+                  this.dH(),
                   ((double)this.ae.i() - 0.5) * 0.08,
                   ((double)this.ae.i() - 0.5) * 0.08,
                   ((double)this.ae.i() - 0.5) * 0.08
@@ -36,13 +36,13 @@ public class cqy extends cqw {
    @Override
    protected void a(fbu $$0) {
       super.a($$0);
-      $$0.a().a(this.dW().b(this, this.p()), 0.0F);
+      $$0.a().a(this.dX().b(this, this.p()), 0.0F);
    }
 
    @Override
    protected void a(fbv $$0) {
       super.a($$0);
-      if (!this.dV().C) {
+      if (!this.dW().C) {
          if (this.ae.a(8) == 0) {
             int $$1 = 1;
             if (this.ae.a(32) == 0) {
@@ -50,20 +50,20 @@ public class cqy extends cqw {
             }
 
             for (int $$2 = 0; $$2 < $$1; $$2++) {
-               cib $$3 = bvq.z.a(this.dV(), bvp.k);
+               cib $$3 = bvq.z.a(this.dW(), bvp.k);
                if ($$3 != null) {
                   $$3.c_(-24000);
-                  $$3.b(this.dA(), this.dC(), this.dG(), this.dL(), 0.0F);
+                  $$3.b(this.dB(), this.dD(), this.dH(), this.dM(), 0.0F);
                   if (!$$3.a(a)) {
                      break;
                   }
 
-                  this.dV().b($$3);
+                  this.dW().b($$3);
                }
             }
          }
 
-         this.dV().a(this, (byte)3);
+         this.dW().a(this, (byte)3);
          this.at();
       }
    }

@@ -1,11 +1,4 @@
-import javax.annotation.Nullable;
-
-public abstract class gxn extends gxt {
-   @Nullable
-   public bvh.k b;
-   public float c;
-   public float d;
-   public float e;
-
-   public abstract boolean a();
+public class gxn extends gys {
+   public float a;
+   public boolean b;
 }

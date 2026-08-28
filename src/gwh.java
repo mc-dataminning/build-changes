@@ -1,23 +1,14 @@
-public class gwh extends gwd<gzp, gdi> {
-   private final gdi a;
+public class gwh<S extends gzp, M extends gbl<S>> extends gwe<S, M> {
+   private final gdg<S> a;
+   private final alz b;
 
-   public gwh(gtl<gzp, gdi> $$0, gei $$1) {
+   public gwh(gtm<S, M> $$0, gej $$1, gel $$2, alz $$3) {
       super($$0);
-      this.a = new gdi($$1.a(gel.cM));
+      this.b = $$3;
+      this.a = new gdg<>($$1.a($$2));
    }
 
-   public void a(fgq $$0, glj $$1, int $$2, gzp $$3, float $$4, float $$5) {
-      boolean $$6 = $$3.aj && $$3.u;
-      if (!$$3.u || $$6) {
-         fgu $$7;
-         if ($$6) {
-            $$7 = $$1.getBuffer(glt.r(gts.a));
-         } else {
-            $$7 = $$1.getBuffer(glt.i(gts.a));
-         }
-
-         this.a.a($$3);
-         this.a.a($$0, $$7, $$2, gsp.a($$3, 0.0F));
-      }
+   public void a(fgr $$0, glk $$1, int $$2, S $$3, float $$4, float $$5) {
+      a(this.a, this.b, $$0, $$1, $$2, $$3, -1);
    }
 }

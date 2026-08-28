@@ -1,13 +1,11 @@
-public class guv extends gqh<cnp, hai, gec<hai>> {
-   public guv(gro.a $$0) {
-      this($$0, gel.dH, gel.dI, gel.dO, gel.dP, gel.dJ, gel.dK);
+public class guv extends gqe<cno> {
+   private static final alz a = alz.b("textures/entity/hoglin/zoglin.png");
+
+   public guv(grp.a $$0) {
+      super($$0, gem.dF, gem.dG, 0.7F);
    }
 
-   public hai b() {
-      return new hai();
-   }
-
-   public guv(gro.a $$0, gek $$1, gek $$2, gek $$3, gek $$4, gek $$5, gek $$6) {
-      super($$0, new gec<>($$0.a($$1)), new gec<>($$0.a($$2)), new gec<>($$0.a($$3)), new gec<>($$0.a($$4)), new gec<>($$0.a($$5)), new gec<>($$0.a($$6)));
+   public alz a(gyi $$0) {
+      return a;
    }
 }

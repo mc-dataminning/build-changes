@@ -45,13 +45,13 @@ public class cuh extends ctb {
                this.b(0, $$3 + 1);
                return true;
             case 3:
-               if (!$$0.gt()) {
+               if (!$$0.gv()) {
                   return false;
                }
 
                cxo $$5 = this.s.b(0);
                this.s.e();
-               if (!$$0.gg().f($$5)) {
+               if (!$$0.gi().f($$5)) {
                   $$0.a($$5, false);
                }
 
@@ -64,7 +64,7 @@ public class cuh extends ctb {
 
    @Override
    public cxo b(cpw $$0, int $$1) {
-      return cxo.k;
+      return cxo.j;
    }
 
    @Override

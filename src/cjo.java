@@ -66,7 +66,7 @@ public class cjo {
    }
 
    public static void a(cjn $$0) {
-      $$0.eb().a(ImmutableList.of(crn.b));
+      $$0.ec().a(ImmutableList.of(crn.b));
    }
 
    public static Predicate<cxo> b() {
@@ -79,7 +79,7 @@ public class cjo {
       }
 
       protected void a(ash $$0, cjn $$1, long $$2) {
-         $$1.gB();
+         $$1.gD();
          super.b($$0, $$1, $$2);
       }
    }
@@ -93,14 +93,14 @@ public class cjo {
       }
 
       protected boolean a(ash $$0, cjn $$1) {
-         return !$$1.bj() && $$1.gC() >= (long)this.c && !$$1.P_() && $$1.aJ() && !$$1.cY() && $$1.gm();
+         return !$$1.bj() && $$1.gE() >= (long)this.c && !$$1.P_() && $$1.aJ() && !$$1.cY() && $$1.go();
       }
 
       protected void a(ash $$0, cjn $$1, long $$2) {
-         if ($$1.gp()) {
-            $$1.gA();
-         } else if (!$$1.gj()) {
-            $$1.gz();
+         if ($$1.gr()) {
+            $$1.gC();
+         } else if (!$$1.gl()) {
+            $$1.gB();
          }
       }
    }

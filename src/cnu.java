@@ -6,12 +6,12 @@ public class cnu {
       float $$3 = $$0.aZ + 180.0F + (float)$$1.k() * 90.0F / 2.0F;
       float $$4 = bae.h($$1.i(), 4.0F, 8.0F);
       fbx $$5 = fbx.a(0.0F, $$3).c((double)$$4);
-      return $$0.dt().e($$5);
+      return $$0.du().e($$5);
    }
 
    public static boolean a(cns $$0, fbx $$1) {
-      fbx $$2 = new fbx($$0.dA(), $$0.dC(), $$0.dG());
-      return $$1.f($$2) > a($$0) ? false : $$0.dV().a(new dgp($$2, $$1, dgp.a.a, dgp.b.a, $$0)).d() == fbv.a.a;
+      fbx $$2 = new fbx($$0.dB(), $$0.dD(), $$0.dH());
+      return $$1.f($$2) > a($$0) ? false : $$0.dW().a(new dgp($$2, $$1, dgp.a.a, dgp.b.a, $$0)).d() == fbv.a.a;
    }
 
    private static double a(cns $$0) {

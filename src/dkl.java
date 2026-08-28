@@ -192,7 +192,7 @@ public class dkl extends dxt implements dhg {
    }
 
    public static List<cxo> a(dxu $$0, ash $$1, jh $$2, @Nullable duw $$3) {
-      ewr.a $$4 = new ewr.a($$1).a(ezi.f, fbx.b($$2)).a(ezi.i, cxo.k).b(ezi.h, $$3);
+      ewr.a $$4 = new ewr.a($$1).a(ezi.f, fbx.b($$2)).a(ezi.i, cxo.j).b(ezi.h, $$3);
       return $$0.a($$4);
    }
 
@@ -204,14 +204,14 @@ public class dkl extends dxt implements dhg {
    public static void c(dxu $$0, dhh $$1, jh $$2) {
       if ($$1 instanceof ash) {
          a($$0, (ash)$$1, $$2, null).forEach($$2x -> a($$1, $$2, $$2x));
-         $$0.a((ash)$$1, $$2, cxo.k, true);
+         $$0.a((ash)$$1, $$2, cxo.j, true);
       }
    }
 
    public static void a(dxu $$0, dhi $$1, jh $$2, @Nullable duw $$3) {
       if ($$1 instanceof ash) {
          a($$0, (ash)$$1, $$2, $$3).forEach($$2x -> a((dhh)((ash)$$1), $$2, $$2x));
-         $$0.a((ash)$$1, $$2, cxo.k, true);
+         $$0.a((ash)$$1, $$2, cxo.j, true);
       }
    }
 
@@ -293,11 +293,11 @@ public class dkl extends dxt implements dhg {
    }
 
    public void a(dhh $$0, dxu $$1, jh $$2, bvj $$3, float $$4) {
-      $$3.a($$4, 1.0F, $$3.dW().l());
+      $$3.a($$4, 1.0F, $$3.dX().l());
    }
 
    public void a(dgm $$0, bvj $$1) {
-      $$1.h($$1.dy().d(1.0, 0.0, 1.0));
+      $$1.h($$1.dz().d(1.0, 0.0, 1.0));
    }
 
    public cxo a(dhk $$0, jh $$1, dxu $$2) {

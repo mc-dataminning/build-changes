@@ -1,419 +1,132 @@
 import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import it.unimi.dsi.fastutil.objects.ObjectSet;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public abstract class fxt<T extends cuq> implements fph, fqb, frz {
-   public static final fpr a = new fpr(alz.b("recipe_book/button"), alz.b("recipe_book/button_highlighted"));
-   protected static final alz b = alz.b("textures/gui/recipe_book.png");
-   private static final int h = 256;
-   private static final int i = 256;
-   private static final xv j = xv.c("gui.recipebook.search_hint").a(n.u).a(n.h);
-   public static final int c = 147;
-   public static final int d = 166;
-   private static final int k = 86;
-   private static final int l = 8;
-   private static final xv m = xv.c("gui.recipebook.toggleRecipes.all");
-   private static final int n = 30;
-   private int o;
-   private int p;
-   private int q;
-   private float r;
+public class fxt implements fpi, fqc {
+   private static final alz b = alz.b("recipe_book/overlay_recipe");
+   private static final int c = 4;
+   private static final int d = 5;
+   private static final float e = 0.375F;
+   public static final int a = 25;
+   private final List<fxt.b> f = Lists.newArrayList();
+   private boolean g;
+   private int h;
+   private int i;
+   private fxy j;
    @Nullable
-   private ddk s;
-   private final fxr u;
-   private final List<fxv> v = Lists.newArrayList();
-   @Nullable
-   private fxv w;
-   protected fpk e;
-   protected final T f;
-   protected fme g;
-   @Nullable
-   private fom x;
-   private String y = "";
-   private final List<fxt.a> z;
-   private flp A;
-   private final fxu B;
-   @Nullable
-   private ddk C;
-   @Nullable
-   private fxx D;
-   private final cqb E = new cqb();
-   private int F;
-   private boolean G;
-   private boolean H;
-   private boolean I;
-   @Nullable
-   private fsl J;
+   private ddk k;
+   final fyb l;
+   private final boolean m;
 
-   public fxt(T $$0, List<fxt.a> $$1) {
-      this.f = $$0;
-      this.z = $$1;
-      fya $$2 = () -> bae.d(this.r / 30.0F);
-      this.u = new fxr($$2);
-      this.B = new fxu(this, $$2, $$0 instanceof ctd);
+   public fxt(fyb $$0, boolean $$1) {
+      this.l = $$0;
+      this.m = $$1;
    }
 
-   public void a(int $$0, int $$1, fme $$2, boolean $$3) {
-      this.g = $$2;
-      this.p = $$0;
-      this.q = $$1;
-      this.I = $$3;
-      this.A = $$2.t.n();
-      this.F = $$2.t.gg().l();
-      this.H = this.m();
-      if (this.H) {
-         this.i();
-      }
-   }
-
-   private void i() {
-      boolean $$0 = this.o();
-      this.o = this.I ? 0 : 86;
-      int $$1 = this.k();
-      int $$2 = this.j();
-      this.E.a();
-      this.g.t.gg().a(this.E);
-      this.f.a(this.E);
-      String $$3 = this.x != null ? this.x.a() : "";
-      this.x = new fom(this.g.h, $$1 + 25, $$2 + 13, 81, 9 + 5, xv.c("itemGroup.search"));
-      this.x.f(50);
-      this.x.g(true);
-      this.x.g(16777215);
-      this.x.a($$3);
-      this.x.c(j);
-      this.J = fsl.a(fsi.a, $$1 + 8, this.x.E(), this.x.D() - this.k(), this.x.w());
-      this.B.a(this.g, $$1, $$2);
-      this.e = new fpk($$1 + 110, $$2 + 12, 26, 16, $$0);
-      this.l();
-      this.a();
-      this.v.clear();
-
-      for (fxt.a $$4 : this.z) {
-         this.v.add(new fxv($$4));
+   public void a(fxy $$0, bbp $$1, boolean $$2, int $$3, int $$4, int $$5, int $$6, float $$7) {
+      this.j = $$0;
+      List<ddj> $$8 = $$0.a(fxy.a.b);
+      List<ddj> $$9 = $$2 ? Collections.emptyList() : $$0.a(fxy.a.c);
+      int $$10 = $$8.size();
+      int $$11 = $$10 + $$9.size();
+      int $$12 = $$11 <= 16 ? 4 : 5;
+      int $$13 = (int)Math.ceil((double)((float)$$11 / (float)$$12));
+      this.h = $$3;
+      this.i = $$4;
+      float $$14 = (float)(this.h + Math.min($$11, $$12) * 25);
+      float $$15 = (float)($$5 + 50);
+      if ($$14 > $$15) {
+         this.h = (int)((float)this.h - $$7 * (float)((int)(($$14 - $$15) / $$7)));
       }
 
-      if (this.w != null) {
-         this.w = this.v.stream().filter($$0x -> $$0x.b().equals(this.w.b())).findFirst().orElse(null);
+      float $$16 = (float)(this.i + $$13 * 25);
+      float $$17 = (float)($$6 + 50);
+      if ($$16 > $$17) {
+         this.i = (int)((float)this.i - $$7 * (float)bae.f(($$16 - $$17) / $$7));
       }
 
-      if (this.w == null) {
-         this.w = this.v.get(0);
+      float $$18 = (float)this.i;
+      float $$19 = (float)($$6 - 100);
+      if ($$18 < $$19) {
+         this.i = (int)((float)this.i - $$7 * (float)bae.f(($$18 - $$19) / $$7));
       }
 
-      this.w.b(true);
-      this.a(false, $$0);
-      this.c($$0);
-   }
+      this.g = true;
+      this.f.clear();
 
-   private int j() {
-      return (this.q - 166) / 2;
-   }
-
-   private int k() {
-      return (this.p - 147) / 2 - this.o;
-   }
-
-   private void l() {
-      this.e.a(this.e.a() ? fpp.a(this.b()) : fpp.a(m));
-   }
-
-   protected abstract void a();
-
-   public int a(int $$0, int $$1) {
-      int $$2;
-      if (this.d() && !this.I) {
-         $$2 = 177 + ($$0 - $$1 - 200) / 2;
-      } else {
-         $$2 = ($$0 - $$1) / 2;
-      }
-
-      return $$2;
-   }
-
-   public void c() {
-      this.b(!this.d());
-   }
-
-   public boolean d() {
-      return this.H;
-   }
-
-   private boolean m() {
-      return this.A.a(this.f.an_());
-   }
-
-   protected void b(boolean $$0) {
-      if ($$0) {
-         this.i();
-      }
-
-      this.H = $$0;
-      this.A.a(this.f.an_(), $$0);
-      if (!$$0) {
-         this.B.c();
-      }
-
-      this.h();
-   }
-
-   protected abstract boolean a(cuy var1);
-
-   public void b(@Nullable cuy $$0) {
-      if ($$0 != null && this.a($$0)) {
-         this.s = null;
-         this.u.a();
-         if (this.d()) {
-            this.n();
-         }
-      }
-   }
-
-   protected abstract void a(fxx var1, cqb var2);
-
-   private void a(boolean $$0, boolean $$1) {
-      List<fxx> $$2 = this.A.a(this.w.b());
-      $$2.forEach($$0x -> this.a($$0x, this.E));
-      List<fxx> $$3 = Lists.newArrayList($$2);
-      $$3.removeIf($$0x -> !$$0x.b());
-      String $$4 = this.x.a();
-      if (!$$4.isEmpty()) {
-         gfj $$5 = this.g.L();
-         if ($$5 != null) {
-            ObjectSet<fxx> $$6 = new ObjectLinkedOpenHashSet($$5.D().b().search($$4.toLowerCase(Locale.ROOT)));
-            $$3.removeIf($$1x -> !$$6.contains($$1x));
+      for (int $$20 = 0; $$20 < $$11; $$20++) {
+         boolean $$21 = $$20 < $$10;
+         ddj $$22 = $$21 ? $$8.get($$20) : $$9.get($$20 - $$10);
+         int $$23 = this.h + 4 + 25 * ($$20 % $$12);
+         int $$24 = this.i + 5 + 25 * ($$20 / $$12);
+         if (this.m) {
+            this.f.add(new fxt.c($$23, $$24, $$22.a(), $$22.b(), $$1, $$21));
+         } else {
+            this.f.add(new fxt.a($$23, $$24, $$22.a(), $$22.b(), $$1, $$21));
          }
       }
 
-      if ($$1) {
-         $$3.removeIf($$0x -> !$$0x.a());
-      }
-
-      this.B.a($$3, $$0, $$1);
+      this.k = null;
    }
 
-   private void c(boolean $$0) {
-      int $$1 = (this.p - 147) / 2 - this.o - 30;
-      int $$2 = (this.q - 166) / 2 + 3;
-      int $$3 = 27;
-      int $$4 = 0;
-
-      for (fxv $$5 : this.v) {
-         dbv $$6 = $$5.b();
-         if ($$6 instanceof fxz) {
-            $$5.k = true;
-            $$5.c($$1, $$2 + 27 * $$4++);
-         } else if ($$5.a(this.A)) {
-            $$5.c($$1, $$2 + 27 * $$4++);
-            $$5.a(this.A, $$0);
-         }
-      }
+   public fxy a() {
+      return this.j;
    }
 
-   public void e() {
-      boolean $$0 = this.m();
-      if (this.d() != $$0) {
-         this.b($$0);
-      }
-
-      if (this.d()) {
-         if (this.F != this.g.t.gg().l()) {
-            this.n();
-            this.F = this.g.t.gg().l();
-         }
-      }
-   }
-
-   private void n() {
-      this.E.a();
-      this.g.t.gg().a(this.E);
-      this.f.a(this.E);
-      this.a(false, this.o());
-   }
-
-   private boolean o() {
-      return this.A.b(this.f.an_());
-   }
-
-   @Override
-   public void a(fnq $$0, int $$1, int $$2, float $$3) {
-      if (this.d()) {
-         if (!ftw.r()) {
-            this.r += $$3;
-         }
-
-         $$0.c().a();
-         $$0.c().a(0.0F, 0.0F, 100.0F);
-         int $$4 = this.k();
-         int $$5 = this.j();
-         $$0.a(glt::B, b, $$4, $$5, 1.0F, 1.0F, 147, 166, 256, 256);
-         this.x.a($$0, $$1, $$2, $$3);
-
-         for (fxv $$6 : this.v) {
-            $$6.a($$0, $$1, $$2, $$3);
-         }
-
-         this.e.a($$0, $$1, $$2, $$3);
-         this.B.a($$0, $$4, $$5, $$1, $$2, $$3);
-         $$0.c().b();
-      }
-   }
-
-   public void a(fnq $$0, int $$1, int $$2, @Nullable cuy $$3) {
-      if (this.d()) {
-         this.B.a($$0, $$1, $$2);
-         this.u.a($$0, this.g, $$1, $$2, $$3);
-      }
-   }
-
-   protected abstract xv b();
-
-   public void a(fnq $$0, boolean $$1) {
-      this.u.a($$0, this.g, $$1);
+   @Nullable
+   public ddk b() {
+      return this.k;
    }
 
    @Override
    public boolean a(double $$0, double $$1, int $$2) {
-      if (this.d() && !this.g.t.aa_()) {
-         if (this.B.a($$0, $$1, $$2, this.k(), this.j(), 147, 166)) {
-            ddk $$3 = this.B.a();
-            fxx $$4 = this.B.b();
-            if ($$3 != null && $$4 != null) {
-               if (!this.a($$4, $$3)) {
-                  return false;
-               }
-
-               this.D = $$4;
-               this.C = $$3;
-               if (!this.r()) {
-                  this.b(false);
-               }
-            }
-
-            return true;
-         } else {
-            if (this.x != null) {
-               boolean $$5 = this.J != null && this.J.a(bae.a($$0), bae.a($$1));
-               if ($$5 || this.x.a($$0, $$1, $$2)) {
-                  this.x.a(true);
-                  return true;
-               }
-
-               this.x.a(false);
-            }
-
-            if (this.e.a($$0, $$1, $$2)) {
-               boolean $$6 = this.p();
-               this.e.b($$6);
-               this.l();
-               this.h();
-               this.a(false, $$6);
+      if ($$2 != 0) {
+         return false;
+      } else {
+         for (fxt.b $$3 : this.f) {
+            if ($$3.a($$0, $$1, $$2)) {
+               this.k = $$3.b;
                return true;
-            } else {
-               for (fxv $$7 : this.v) {
-                  if ($$7.a($$0, $$1, $$2)) {
-                     if (this.w != $$7) {
-                        if (this.w != null) {
-                           this.w.b(false);
-                        }
-
-                        this.w = $$7;
-                        this.w.b(true);
-                        this.a(true, this.o());
-                     }
-
-                     return true;
-                  }
-               }
-
-               return false;
             }
          }
-      } else {
-         return false;
-      }
-   }
 
-   private boolean a(fxx $$0, ddk $$1) {
-      if (!$$0.a($$1) && $$1.equals(this.s)) {
          return false;
-      } else {
-         this.s = $$1;
-         this.u.a();
-         this.g.r.a(this.g.t.cd.l, $$1, ftw.s());
-         return true;
-      }
-   }
-
-   private boolean p() {
-      cur $$0 = this.f.an_();
-      boolean $$1 = !this.A.b($$0);
-      this.A.b($$0, $$1);
-      return $$1;
-   }
-
-   public boolean a(double $$0, double $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      if (!this.d()) {
-         return true;
-      } else {
-         boolean $$7 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + $$4) || $$1 >= (double)($$3 + $$5);
-         boolean $$8 = (double)($$2 - 147) < $$0 && $$0 < (double)$$2 && (double)$$3 < $$1 && $$1 < (double)($$3 + $$5);
-         return $$7 && !$$8 && !this.w.B();
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      this.G = false;
-      if (!this.d() || this.g.t.aa_()) {
-         return false;
-      } else if ($$0 == 256 && !this.r()) {
-         this.b(false);
-         return true;
-      } else if (this.x.a($$0, $$1, $$2)) {
-         this.q();
-         return true;
-      } else if (this.x.aN_() && this.x.i() && $$0 != 256) {
-         return true;
-      } else if (this.g.n.I.a($$0, $$1) && !this.x.aN_()) {
-         this.G = true;
-         this.x.a(true);
-         return true;
-      } else if (fsg.a($$0) && this.D != null && this.C != null) {
-         fob.b(fme.Q().ak());
-         return this.a(this.D, this.C);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean c(int $$0, int $$1, int $$2) {
-      this.G = false;
-      return fqb.super.c($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      if (this.G) {
-         return false;
-      } else if (!this.d() || this.g.t.aa_()) {
-         return false;
-      } else if (this.x.a($$0, $$1)) {
-         this.q();
-         return true;
-      } else {
-         return fqb.super.a($$0, $$1);
       }
    }
 
    @Override
    public boolean c(double $$0, double $$1) {
       return false;
+   }
+
+   @Override
+   public void a(fnr $$0, int $$1, int $$2, float $$3) {
+      if (this.g) {
+         $$0.c().a();
+         $$0.c().a(0.0F, 0.0F, 1000.0F);
+         int $$4 = this.f.size() <= 16 ? 4 : 5;
+         int $$5 = Math.min(this.f.size(), $$4);
+         int $$6 = bae.f((float)this.f.size() / (float)$$4);
+         int $$7 = 4;
+         $$0.a(glu::C, b, this.h, this.i, $$5 * 25 + 8, $$6 * 25 + 8);
+
+         for (fxt.b $$8 : this.f) {
+            $$8.a($$0, $$1, $$2, $$3);
+         }
+
+         $$0.c().b();
+      }
+   }
+
+   public void b(boolean $$0) {
+      this.g = $$0;
+   }
+
+   public boolean c() {
+      return this.g;
    }
 
    @Override
@@ -425,96 +138,143 @@ public abstract class fxt<T extends cuq> implements fph, fqb, frz {
       return false;
    }
 
-   private void q() {
-      String $$0 = this.x.a().toLowerCase(Locale.ROOT);
-      this.a($$0);
-      if (!$$0.equals(this.y)) {
-         this.a(false, this.o());
-         this.y = $$0;
-      }
-   }
+   class a extends fxt.b {
+      private static final alz b = alz.b("recipe_book/crafting_overlay");
+      private static final alz c = alz.b("recipe_book/crafting_overlay_highlighted");
+      private static final alz d = alz.b("recipe_book/crafting_overlay_disabled");
+      private static final alz e = alz.b("recipe_book/crafting_overlay_disabled_highlighted");
+      private static final int f = 3;
+      private static final int m = 3;
 
-   private void a(String $$0) {
-      if ("excitedze".equals($$0)) {
-         hcs $$1 = this.g.ah();
-         String $$2 = "en_pt";
-         hcr $$3 = $$1.b("en_pt");
-         if ($$3 == null || $$1.a().equals("en_pt")) {
-            return;
+      public a(final int $$0, final int $$1, final ddk $$2, final ddi $$3, final bbp $$4, final boolean $$5) {
+         super($$0, $$1, $$2, $$5, a($$3, $$4));
+      }
+
+      private static List<fxt.b.a> a(ddi $$0, bbp $$1) {
+         List<fxt.b.a> $$2 = new ArrayList<>();
+         Objects.requireNonNull($$0);
+         switch ($$0) {
+            case ddm $$3:
+               alk.a(3, 3, $$3.b(), $$3.c(), $$3.f(), ($$2x, $$3x, $$4x, $$5x) -> {
+                  List<cxo> $$6x = $$2x.a($$1);
+                  if (!$$6x.isEmpty()) {
+                     $$2.add(a($$4x, $$5x, $$6x));
+                  }
+               });
+               break;
+            case ddn $$4:
+               label19: {
+                  List<ddo> $$5 = $$4.b();
+
+                  for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
+                     List<cxo> $$7 = $$5.get($$6).a($$1);
+                     if (!$$7.isEmpty()) {
+                        $$2.add(a($$6 % 3, $$6 / 3, $$7));
+                     }
+                  }
+                  break label19;
+               }
          }
 
-         $$1.a("en_pt");
-         this.g.n.ab = "en_pt";
-         this.g.l();
-         this.g.n.az();
+         return $$2;
       }
-   }
 
-   private boolean r() {
-      return this.o == 86;
-   }
-
-   public void g() {
-      this.c(this.o());
-      if (this.d()) {
-         this.a(false, this.o());
-      }
-   }
-
-   public void a(ddk $$0) {
-      this.g.t.a($$0);
-   }
-
-   public void a(ddi $$0) {
-      this.u.a();
-      bbp $$1 = ddp.a(Objects.requireNonNull(this.g.s));
-      this.a(this.u, $$0, $$1);
-   }
-
-   protected abstract void a(fxr var1, ddi var2, bbp var3);
-
-   protected void h() {
-      if (this.g.L() != null) {
-         cur $$0 = this.f.an_();
-         boolean $$1 = this.A.a().a($$0);
-         boolean $$2 = this.A.a().b($$0);
-         this.g.L().b(new aiu($$0, $$1, $$2));
-      }
-   }
-
-   @Override
-   public frz.a u() {
-      return this.H ? frz.a.b : frz.a.a;
-   }
-
-   @Override
-   public void b(fsb $$0) {
-      List<frz> $$1 = Lists.newArrayList();
-      this.B.a($$1x -> {
-         if ($$1x.C()) {
-            $$1.add($$1x);
+      @Override
+      protected alz b(boolean $$0) {
+         if ($$0) {
+            return this.B() ? c : b;
+         } else {
+            return this.B() ? e : d;
          }
-      });
-      $$1.add(this.x);
-      $$1.add(this.e);
-      $$1.addAll(this.v);
-      ftw.b $$2 = ftw.a($$1, null);
-      if ($$2 != null) {
-         $$2.a.b($$0.a());
       }
    }
 
-   public static record a(cxo a, Optional<cxo> b, dbv c) {
-      public a(fxz $$0) {
-         this(new cxo(cxs.rq), Optional.empty(), $$0);
+   abstract class b extends foc {
+      final ddk b;
+      private final boolean c;
+      private final List<fxt.b.a> d;
+
+      public b(final int $$0, final int $$1, final ddk $$2, final boolean $$3, final List<fxt.b.a> $$4) {
+         super($$0, $$1, 24, 24, xu.a);
+         this.d = $$4;
+         this.b = $$2;
+         this.c = $$3;
       }
 
-      public a(cxk $$0, dcg $$1) {
-         this(new cxo($$0), Optional.empty(), $$1);
+      protected static fxt.b.a a(int $$0, int $$1, List<cxo> $$2) {
+         return new fxt.b.a(3 + $$0 * 7, 3 + $$1 * 7, $$2);
       }
 
-      public a(cxk $$0, cxk $$1, dcg $$2) {
-         this(new cxo($$0), Optional.of(new cxo($$1)), $$2);
+      protected abstract alz b(boolean var1);
+
+      @Override
+      public void a(fsc $$0) {
+         this.c($$0);
+      }
+
+      @Override
+      public void b(fnr $$0, int $$1, int $$2, float $$3) {
+         $$0.a(glu::C, this.b(this.c), this.D(), this.E(), this.g, this.h);
+         float $$4 = (float)(this.D() + 2);
+         float $$5 = (float)(this.E() + 2);
+         float $$6 = 150.0F;
+
+         for (fxt.b.a $$7 : this.d) {
+            $$0.c().a();
+            $$0.c().a($$4 + (float)$$7.a, $$5 + (float)$$7.b, 150.0F);
+            $$0.c().b(0.375F, 0.375F, 1.0F);
+            $$0.c().a(-8.0F, -8.0F, 0.0F);
+            $$0.a($$7.a(fxt.this.l.currentIndex()), 0, 0);
+            $$0.c().b();
+         }
+      }
+
+      protected static record a(int a, int b, List<cxo> c) {
+
+         public a(int a, int b, List<cxo> c) {
+            if (c.isEmpty()) {
+               throw new IllegalArgumentException("Ingredient list must be non-empty");
+            } else {
+               this.a = a;
+               this.b = b;
+               this.c = c;
+            }
+         }
+
+         public cxo a(int $$0) {
+            return this.c.get($$0 % this.c.size());
+         }
+      }
+   }
+
+   class c extends fxt.b {
+      private static final alz b = alz.b("recipe_book/furnace_overlay");
+      private static final alz c = alz.b("recipe_book/furnace_overlay_highlighted");
+      private static final alz d = alz.b("recipe_book/furnace_overlay_disabled");
+      private static final alz e = alz.b("recipe_book/furnace_overlay_disabled_highlighted");
+
+      public c(final int $$0, final int $$1, final ddk $$2, final ddi $$3, final bbp $$4, final boolean $$5) {
+         super($$0, $$1, $$2, $$5, a($$3, $$4));
+      }
+
+      private static List<fxt.b.a> a(ddi $$0, bbp $$1) {
+         if ($$0 instanceof ddh $$2) {
+            List<cxo> $$3 = $$2.b().a($$1);
+            if (!$$3.isEmpty()) {
+               return List.of(a(1, 1, $$3));
+            }
+         }
+
+         return List.of();
+      }
+
+      @Override
+      protected alz b(boolean $$0) {
+         if ($$0) {
+            return this.B() ? c : b;
+         } else {
+            return this.B() ? e : d;
+         }
       }
    }
 }

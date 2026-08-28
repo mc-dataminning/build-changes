@@ -1,13 +1,12 @@
-public class gva extends gwd<gxh, gau> {
-   private static final glt a = glt.q(alz.b("textures/entity/breeze/breeze_eyes.png"));
+public class gva<M extends gcq> extends gwm<M> {
+   private static final alz a = alz.b("textures/entity/bee/bee_stinger.png");
 
-   public gva(gtl<gxh, gau> $$0) {
-      super($$0);
+   public gva(gsq<?, gzf, M> $$0, grp.a $$1) {
+      super($$0, new gap($$1.a(gem.w)), a, gwm.a.b);
    }
 
-   public void a(fgq $$0, glj $$1, int $$2, gxh $$3, float $$4, float $$5) {
-      fgu $$6 = $$1.getBuffer(a);
-      gau $$7 = this.d();
-      gqt.a($$7, $$7.a(), $$7.b()).a($$0, $$6, $$2, hba.d);
+   @Override
+   protected int a(gzf $$0) {
+      return $$0.f;
    }
 }

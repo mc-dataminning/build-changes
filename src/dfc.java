@@ -34,10 +34,10 @@ public record dfc(lq d, dfc.a e, dfc.a f, dfc.c g, dfc.c h, bsl i) implements de
 
    @Override
    public void a(ash $$0, int $$1, ddx $$2, bvj $$3, fbx $$4) {
-      bam $$5 = $$3.dY();
+      bam $$5 = $$3.dZ();
       fbx $$6 = $$3.ah();
-      float $$7 = $$3.dq();
-      float $$8 = $$3.dr();
+      float $$7 = $$3.dr();
+      float $$8 = $$3.ds();
       $$0.a(
          this.d,
          this.e.a($$4.a(), $$4.a(), $$7, $$5),

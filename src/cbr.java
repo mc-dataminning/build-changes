@@ -6,7 +6,7 @@ public class cbr<E extends coz> extends bxy<E> {
    }
 
    protected boolean a(ash $$0, E $$1, long $$2) {
-      return $$1.dR() == null;
+      return $$1.dS() == null;
    }
 
    protected boolean a(ash $$0, E $$1) {
@@ -24,8 +24,8 @@ public class cbr<E extends coz> extends bxy<E> {
    }
 
    protected void c(ash $$0, E $$1, long $$2) {
-      if ($$1.dR() == null) {
-         $$1.a(bvj.c.b);
+      if ($$1.dS() == null) {
+         $$1.a(bvj.d.b);
       }
    }
 }

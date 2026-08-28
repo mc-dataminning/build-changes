@@ -25,7 +25,7 @@ public final class bvo {
       return (Predicate<bvj>)($$2 == fde.a.b ? Predicates.alwaysFalse() : f.and($$3 -> {
          if (!$$3.bI()) {
             return false;
-         } else if (!$$0.dV().C || $$3 instanceof cpw && ((cpw)$$3).c()) {
+         } else if (!$$0.dW().C || $$3 instanceof cpw && ((cpw)$$3).c()) {
             fde $$4 = $$3.cr();
             fde.a $$5 = $$4 == null ? fde.a.a : $$4.l();
             if ($$5 == fde.a.b) {
@@ -43,7 +43,7 @@ public final class bvo {
    public static Predicate<bvj> b(bvj $$0) {
       return $$1 -> {
          while ($$1.bZ()) {
-            $$1 = $$1.dk();
+            $$1 = $$1.dl();
             if ($$1 == $$0) {
                return false;
             }

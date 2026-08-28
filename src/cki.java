@@ -9,14 +9,14 @@ public class cki extends ckd {
    }
 
    @Override
-   public boolean gp() {
+   public boolean gr() {
       return true;
    }
 
    @Nullable
    @Override
-   protected ckd gA() {
-      return bvq.by.a(this.dV(), bvp.e);
+   protected ckd gC() {
+      return bvq.by.a(this.dW(), bvp.e);
    }
 
    @Override
@@ -58,14 +58,14 @@ public class cki extends ckd {
    @Override
    public void d_() {
       super.d_();
-      if (!this.dV().C) {
-         this.hb();
+      if (!this.dW().C) {
+         this.hd();
       }
    }
 
-   private void hb() {
-      if (this.hc()) {
-         this.bZ = this.hd() ? ((cpo)this.A()).gv() - 1 : this.bZ - 1;
+   private void hd() {
+      if (this.he()) {
+         this.bZ = this.hf() ? ((cpo)this.A()).gx() - 1 : this.bZ - 1;
          if (this.bZ <= 0) {
             this.a(true, false);
             this.at();
@@ -73,16 +73,16 @@ public class cki extends ckd {
       }
    }
 
-   private boolean hc() {
-      return !this.gD() && !this.he() && !this.df();
+   private boolean he() {
+      return !this.gF() && !this.hg() && !this.df();
    }
 
-   private boolean hd() {
+   private boolean hf() {
       return this.A() instanceof cpo;
    }
 
-   private boolean he() {
-      return this.P_() && !this.hd();
+   private boolean hg() {
+      return this.P_() && !this.hf();
    }
 
    @Nullable
@@ -117,8 +117,8 @@ public class cki extends ckd {
          } else if (!(this.a.A() instanceof cpo $$1)) {
             return false;
          } else {
-            this.b = $$1.ep();
-            int $$2 = $$1.eq();
+            this.b = $$1.eq();
+            int $$2 = $$1.er();
             return $$2 != this.c && this.a(this.b, cgw.a);
          }
       }
@@ -128,7 +128,7 @@ public class cki extends ckd {
          this.e.h(this.b);
          bvj $$0 = this.a.A();
          if ($$0 instanceof cpo) {
-            this.c = ((cpo)$$0).eq();
+            this.c = ((cpo)$$0).er();
          }
 
          super.d();

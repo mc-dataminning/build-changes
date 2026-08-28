@@ -6,7 +6,7 @@ public class cvm extends cxk {
       this.a = $$1;
    }
 
-   public cvm(dfo $$0, cvm.a $$1, axe $$2, boolean $$3, cxk.a $$4) {
+   public cvm(dfo $$0, cvm.a $$1, jq<axe> $$2, boolean $$3, cxk.a $$4) {
       super($$0.a($$4, $$2, $$3, $$1.d));
       this.a = $$1;
    }

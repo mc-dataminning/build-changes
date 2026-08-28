@@ -1,38 +1,14 @@
-public class gap extends gcf {
-   private static final String a = "bell_body";
-   private final gem b;
-
-   public gap(gem $$0) {
-      super($$0, glt::c);
-      this.b = $$0.b("bell_body");
+public class gap extends gcg {
+   public gap(gen $$0) {
+      super($$0, glu::f);
    }
 
-   public static ges a() {
-      geu $$0 = new geu();
-      gew $$1 = $$0.a();
-      gew $$2 = $$1.a("bell_body", ger.c().a(0, 0).a(-3.0F, -6.0F, -3.0F, 6.0F, 7.0F, 6.0F), geo.a(8.0F, 12.0F, 8.0F));
-      $$2.a("bell_base", ger.c().a(0, 13).a(4.0F, 4.0F, 4.0F, 8.0F, 2.0F, 8.0F), geo.a(-8.0F, -12.0F, -8.0F));
-      return ges.a($$0, 32, 32);
-   }
-
-   public void a(duu $$0, float $$1) {
-      float $$2 = (float)$$0.a + $$1;
-      float $$3 = 0.0F;
-      float $$4 = 0.0F;
-      if ($$0.b) {
-         float $$5 = bae.a($$2 / (float) Math.PI) / (4.0F + $$2 / 3.0F);
-         if ($$0.c == jm.c) {
-            $$3 = -$$5;
-         } else if ($$0.c == jm.d) {
-            $$3 = $$5;
-         } else if ($$0.c == jm.f) {
-            $$4 = -$$5;
-         } else if ($$0.c == jm.e) {
-            $$4 = $$5;
-         }
-      }
-
-      this.b.e = $$3;
-      this.b.g = $$4;
+   public static get a() {
+      gev $$0 = new gev();
+      gex $$1 = $$0.a();
+      ges $$2 = ges.c().a(0, 0).a(-1.0F, -0.5F, 0.0F, 2.0F, 1.0F, 0.0F);
+      $$1.a("cross_1", $$2, gep.b((float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("cross_2", $$2, gep.b((float) (Math.PI * 3.0 / 4.0), 0.0F, 0.0F));
+      return get.a($$0, 16, 16);
    }
 }

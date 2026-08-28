@@ -6,7 +6,7 @@ public class cyv extends cxk implements cyj {
    @Override
    public bti a(dhh $$0, cpw $$1, bth $$2) {
       cxo $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), axf.yZ, axg.g, 0.5F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
+      $$0.a(null, $$1.dB(), $$1.dD(), $$1.dH(), axf.yZ, axg.g, 0.5F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
       if ($$0 instanceof ash $$4) {
          cqp.a(cqu::new, $$4, $$3, $$1, 0.0F, 1.5F, 1.0F);
       }

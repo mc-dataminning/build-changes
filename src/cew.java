@@ -31,7 +31,7 @@ public class cew<T extends bwf> extends cfd {
 
    @Override
    public boolean b() {
-      if (this.b > 0 && this.e.dY().a(this.b) != 0) {
+      if (this.b > 0 && this.e.dZ().a(this.b) != 0) {
          return false;
       } else {
          this.h();
@@ -46,9 +46,9 @@ public class cew<T extends bwf> extends cfd {
    protected void h() {
       ash $$0 = a(this.e);
       if (this.a != cpw.class && this.a != asi.class) {
-         this.c = $$0.a(this.e.dV().a(this.a, this.a(this.l()), $$0x -> true), this.i(), this.e, this.e.dA(), this.e.dE(), this.e.dG());
+         this.c = $$0.a(this.e.dW().a(this.a, this.a(this.l()), $$0x -> true), this.i(), this.e, this.e.dB(), this.e.dF(), this.e.dH());
       } else {
-         this.c = $$0.a(this.i(), this.e, this.e.dA(), this.e.dE(), this.e.dG());
+         this.c = $$0.a(this.i(), this.e, this.e.dB(), this.e.dF(), this.e.dH());
       }
    }
 

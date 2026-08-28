@@ -7,7 +7,7 @@ public class dge {
       $$0 -> $$0.group(
                dgc.a.fieldOf("buy").forGetter($$0x -> $$0x.c),
                dgc.a.lenientOptionalFieldOf("buyB").forGetter($$0x -> $$0x.d),
-               cxo.b.fieldOf("sell").forGetter($$0x -> $$0x.e),
+               cxo.a.fieldOf("sell").forGetter($$0x -> $$0x.e),
                Codec.INT.lenientOptionalFieldOf("uses", 0).forGetter($$0x -> $$0x.f),
                Codec.INT.lenientOptionalFieldOf("maxUses", 4).forGetter($$0x -> $$0x.g),
                Codec.BOOL.lenientOptionalFieldOf("rewardExp", true).forGetter($$0x -> $$0x.h),
@@ -78,7 +78,7 @@ public class dge {
    }
 
    public cxo c() {
-      return this.d.map(dgc::d).orElse(cxo.k);
+      return this.d.map(dgc::d).orElse(cxo.j);
    }
 
    public dgc d() {
@@ -188,7 +188,7 @@ public class dge {
 
    private static void a(xg $$0, dge $$1) {
       dgc.b.encode($$0, $$1.d());
-      cxo.i.encode($$0, $$1.f());
+      cxo.h.encode($$0, $$1.f());
       dgc.c.encode($$0, $$1.e());
       $$0.a($$1.r());
       $$0.q($$1.i());
@@ -201,7 +201,7 @@ public class dge {
 
    public static dge a(xg $$0) {
       dgc $$1 = dgc.b.decode($$0);
-      cxo $$2 = cxo.i.decode($$0);
+      cxo $$2 = cxo.h.decode($$0);
       Optional<dgc> $$3 = dgc.c.decode($$0);
       boolean $$4 = $$0.readBoolean();
       int $$5 = $$0.readInt();

@@ -15,8 +15,8 @@ public class cli extends ckv {
    public void a(ash $$0) {
       if (!this.b && this.c != null) {
          jh $$1 = $$0.a(edp.a.f, egu.a(this.a.m()));
-         if (!$$1.a(this.a.dt(), 10.0)) {
-            this.a.gi().a(clj.a);
+         if (!$$1.a(this.a.du(), 10.0)) {
+            this.a.gk().a(clj.a);
          }
       } else {
          this.b = false;
@@ -35,7 +35,7 @@ public class cli extends ckv {
       int $$0 = this.a.t();
       fbx $$1 = this.a.J(1.0F);
       int $$2 = this.a.q(-$$1.d * 40.0, 105.0, -$$1.f * 40.0);
-      if (this.a.gj() != null && this.a.gj().e() > 0) {
+      if (this.a.gl() != null && this.a.gl().e() > 0) {
          $$2 %= 12;
          if ($$2 < 0) {
             $$2 += 12;
@@ -59,7 +59,7 @@ public class cli extends ckv {
 
             double $$1;
             do {
-               $$1 = (double)((float)$$0.v() + this.a.dY().i() * 20.0F);
+               $$1 = (double)((float)$$0.v() + this.a.dZ().i() * 20.0F);
             } while ($$1 < (double)$$0.v());
 
             this.d = new fbx((double)$$0.u(), $$1, (double)$$0.w());

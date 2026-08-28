@@ -35,11 +35,11 @@ public class cdp extends cdd {
          return false;
       } else {
          this.h();
-         if (this.e && this.a.dV().U()) {
+         if (this.e && this.a.dW().U()) {
             return false;
          } else {
-            ash $$0 = (ash)this.a.dV();
-            jh $$1 = this.a.dv();
+            ash $$0 = (ash)this.a.dW();
+            jh $$1 = this.a.dw();
             if (!$$0.a($$1, 6)) {
                return false;
             } else {
@@ -81,7 +81,7 @@ public class cdp extends cdd {
                      for (int $$7 = 0; $$7 < this.c.e(); $$7++) {
                         eui $$8 = this.c.a($$7);
                         jh $$9 = new jh($$8.a, $$8.b + 1, $$8.c);
-                        if (dmt.a(this.a.dV(), $$9)) {
+                        if (dmt.a(this.a.dW(), $$9)) {
                            this.c = this.a.L().a((double)$$8.a, (double)$$8.b, (double)$$8.c, 0);
                            break;
                         }
@@ -97,7 +97,7 @@ public class cdp extends cdd {
 
    @Override
    public boolean c() {
-      return this.a.L().m() ? false : !this.d.a(this.a.dt(), (double)(this.a.dq() + (float)this.g));
+      return this.a.L().m() ? false : !this.d.a(this.a.du(), (double)(this.a.dr() + (float)this.g));
    }
 
    @Override
@@ -107,7 +107,7 @@ public class cdp extends cdd {
 
    @Override
    public void e() {
-      if (this.a.L().m() || this.d.a(this.a.dt(), (double)this.g)) {
+      if (this.a.L().m() || this.d.a(this.a.du(), (double)this.g)) {
          this.f.add(this.d);
       }
    }

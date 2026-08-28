@@ -7,7 +7,7 @@ public class cbi extends cbj {
 
    @Override
    protected void a(ash $$0, cpi $$1) {
-      Optional<jp> $$2 = $$1.eb().c(cfj.c);
+      Optional<jp> $$2 = $$1.ec().c(cfj.c);
       if (!$$2.isEmpty()) {
          jp $$3 = $$2.get();
          dxu $$4 = $$0.a_($$3.b());

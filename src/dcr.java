@@ -90,7 +90,7 @@ public class dcr implements dbs {
                   Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.e),
                   dbq.e.fieldOf("category").orElse(dbq.d).forGetter($$0x -> $$0x.f),
                   dcs.b.forGetter($$0x -> $$0x.c),
-                  cxo.d.fieldOf("result").forGetter($$0x -> $$0x.d),
+                  cxo.c.fieldOf("result").forGetter($$0x -> $$0x.d),
                   Codec.BOOL.optionalFieldOf("show_notification", true).forGetter($$0x -> $$0x.g)
                )
                .apply($$0, dcr::new)
@@ -111,7 +111,7 @@ public class dcr implements dbs {
          String $$1 = $$0.p();
          dbq $$2 = $$0.b(dbq.class);
          dcs $$3 = dcs.c.decode($$0);
-         cxo $$4 = cxo.i.decode($$0);
+         cxo $$4 = cxo.h.decode($$0);
          boolean $$5 = $$0.readBoolean();
          return new dcr($$1, $$2, $$3, $$4, $$5);
       }
@@ -120,7 +120,7 @@ public class dcr implements dbs {
          $$0.a($$1.e);
          $$0.a($$1.f);
          dcs.c.encode($$0, $$1.c);
-         cxo.i.encode($$0, $$1.d);
+         cxo.h.encode($$0, $$1.d);
          $$0.a($$1.g);
       }
    }

@@ -13,7 +13,7 @@ public class cnm extends crk implements cna {
    @Override
    protected void B() {
       super.B();
-      this.cb = new cey<>(this, crk.class, true, ($$0, $$1) -> this.gC() && $$0.aq() != bvq.bI);
+      this.cb = new cey<>(this, crk.class, true, ($$0, $$1) -> this.gE() && $$0.aq() != bvq.bI);
       this.cc = new cex<>(this, cpw.class, 10, true, false, null);
       this.bT.a(1, new ccx(this));
       this.bT.a(2, new cec(this, 1.0, 60, 10.0F));
@@ -55,12 +55,12 @@ public class cnm extends crk implements cna {
    }
 
    public static bxm.a p() {
-      return cmw.gr().a(bxn.s, 26.0).a(bxn.v, 0.25);
+      return cmw.gt().a(bxn.s, 26.0).a(bxn.v, 0.25);
    }
 
    @Override
    public void d_() {
-      if (!this.dV().C && this.bL()) {
+      if (!this.dW().C && this.bL()) {
          this.cb.k();
          if (this.cb.i() <= 0) {
             this.cc.a(true);
@@ -71,8 +71,8 @@ public class cnm extends crk implements cna {
          if (this.m()) {
             if (this.ca-- <= 0) {
                this.z(false);
-               cxo $$0 = this.eX();
-               this.a(bvr.a, cxo.k);
+               cxo $$0 = this.eZ();
+               this.a(bvr.a, cxo.j);
                czn $$1 = $$0.a(ku.Q);
                if ($$0.a(cxs.sZ) && $$1 != null) {
                   $$1.a(this::a);
@@ -85,9 +85,9 @@ public class cnm extends crk implements cna {
             jq<czl> $$2 = null;
             if (this.ae.i() < 0.15F && this.a(aya.a) && !this.b(buq.m)) {
                $$2 = czo.w;
-            } else if (this.ae.i() < 0.15F && (this.bY() || this.eF() != null && this.eF().a(axw.i)) && !this.b(buq.l)) {
+            } else if (this.ae.i() < 0.15F && (this.bY() || this.eG() != null && this.eG().a(axw.i)) && !this.b(buq.l)) {
                $$2 = czo.l;
-            } else if (this.ae.i() < 0.05F && this.eD() < this.eR()) {
+            } else if (this.ae.i() < 0.05F && this.eE() < this.eS()) {
                $$2 = czo.y;
             } else if (this.ae.i() < 0.5F && this.O_() != null && !this.b(buq.a) && this.O_().g(this) > 121.0) {
                $$2 = czo.n;
@@ -95,10 +95,10 @@ public class cnm extends crk implements cna {
 
             if ($$2 != null) {
                this.a(bvr.a, czn.a(cxs.sZ, $$2));
-               this.ca = this.eX().a((bwf)this);
+               this.ca = this.eZ().a((bwf)this);
                this.z(true);
                if (!this.bb()) {
-                  this.dV().a(null, this.dA(), this.dC(), this.dG(), axf.CU, this.dm(), 1.0F, 0.8F + this.ae.i() * 0.4F);
+                  this.dW().a(null, this.dB(), this.dD(), this.dH(), axf.CU, this.dn(), 1.0F, 0.8F + this.ae.i() * 0.4F);
                }
 
                bxj $$3 = this.g(bxn.v);
@@ -108,7 +108,7 @@ public class cnm extends crk implements cna {
          }
 
          if (this.ae.i() < 7.5E-4F) {
-            this.dV().a(this, (byte)15);
+            this.dW().a(this, (byte)15);
          }
       }
 
@@ -124,7 +124,7 @@ public class cnm extends crk implements cna {
    public void b(byte $$0) {
       if ($$0 == 15) {
          for (int $$1 = 0; $$1 < this.ae.a(35) + 10; $$1++) {
-            this.dV().a(ls.ao, this.dA() + this.ae.k() * 0.13F, this.cR().e + 0.5 + this.ae.k() * 0.13F, this.dG() + this.ae.k() * 0.13F, 0.0, 0.0, 0.0);
+            this.dW().a(ls.ao, this.dB() + this.ae.k() * 0.13F, this.cR().e + 0.5 + this.ae.k() * 0.13F, this.dH() + this.ae.k() * 0.13F, 0.0, 0.0, 0.0);
          }
       } else {
          super.b($$0);
@@ -148,14 +148,14 @@ public class cnm extends crk implements cna {
    @Override
    public void a(bwf $$0, float $$1) {
       if (!this.m()) {
-         fbx $$2 = $$0.dy();
-         double $$3 = $$0.dA() + $$2.d - this.dA();
-         double $$4 = $$0.dE() - 1.1F - this.dC();
-         double $$5 = $$0.dG() + $$2.f - this.dG();
+         fbx $$2 = $$0.dz();
+         double $$3 = $$0.dB() + $$2.d - this.dB();
+         double $$4 = $$0.dF() - 1.1F - this.dD();
+         double $$5 = $$0.dH() + $$2.f - this.dH();
          double $$6 = Math.sqrt($$3 * $$3 + $$5 * $$5);
          jq<czl> $$7 = czo.A;
          if ($$0 instanceof crk) {
-            if ($$0.eD() <= 4.0F) {
+            if ($$0.eE() <= 4.0F) {
                $$7 = czo.y;
             } else {
                $$7 = czo.F;
@@ -164,19 +164,19 @@ public class cnm extends crk implements cna {
             this.h(null);
          } else if ($$6 >= 8.0 && !$$0.b(buq.b)) {
             $$7 = czo.q;
-         } else if ($$0.eD() >= 8.0F && !$$0.b(buq.s)) {
+         } else if ($$0.eE() >= 8.0F && !$$0.b(buq.s)) {
             $$7 = czo.C;
          } else if ($$6 <= 3.0 && !$$0.b(buq.r) && this.ae.i() < 0.25F) {
             $$7 = czo.L;
          }
 
-         if (this.dV() instanceof ash $$8) {
+         if (this.dW() instanceof ash $$8) {
             cxo $$9 = czn.a(cxs.we, $$7);
             cqp.a(crb::new, $$8, $$9, this, $$3, $$4 + $$6 * 0.2, $$5, 0.75F, 8.0F);
          }
 
          if (!this.bb()) {
-            this.dV().a(null, this.dA(), this.dC(), this.dG(), axf.CW, this.dm(), 1.0F, 0.8F + this.ae.i() * 0.4F);
+            this.dW().a(null, this.dB(), this.dD(), this.dH(), axf.CW, this.dn(), 1.0F, 0.8F + this.ae.i() * 0.4F);
          }
       }
    }
@@ -186,7 +186,7 @@ public class cnm extends crk implements cna {
    }
 
    @Override
-   public boolean gm() {
+   public boolean go() {
       return false;
    }
 }

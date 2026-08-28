@@ -53,7 +53,7 @@ public class cqf extends cqd {
    @Override
    public void h() {
       super.h();
-      if (this.dV().C) {
+      if (this.dW().C) {
          if (this.a) {
             if (this.b % 5 == 0) {
                this.b(1);
@@ -62,7 +62,7 @@ public class cqf extends cqd {
             this.b(2);
          }
       } else if (this.a && this.b != 0 && !this.F().equals(czn.a) && this.b >= 600) {
-         this.dV().a(this, (byte)0);
+         this.dW().a(this, (byte)0);
          this.a(new cxo(cxs.oS));
       }
    }
@@ -71,7 +71,7 @@ public class cqf extends cqd {
       int $$1 = this.C();
       if ($$1 != -1 && $$0 > 0) {
          for (int $$2 = 0; $$2 < $$0; $$2++) {
-            this.dV().a(ll.a(ls.u, $$1), this.d(0.5), this.dD(), this.g(0.5), 0.0, 0.0, 0.0);
+            this.dW().a(ll.a(ls.u, $$1), this.d(0.5), this.dE(), this.g(0.5), 0.0, 0.0, 0.0);
          }
       }
    }
@@ -111,7 +111,7 @@ public class cqf extends cqd {
             float $$4 = (float)($$1 >> 0 & 0xFF) / 255.0F;
 
             for (int $$5 = 0; $$5 < 20; $$5++) {
-               this.dV().a(ll.a(ls.u, $$2, $$3, $$4), this.d(0.5), this.dD(), this.g(0.5), 0.0, 0.0, 0.0);
+               this.dW().a(ll.a(ls.u, $$2, $$3, $$4), this.d(0.5), this.dE(), this.g(0.5), 0.0, 0.0, 0.0);
             }
          }
       } else {

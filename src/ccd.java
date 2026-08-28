@@ -13,9 +13,9 @@ public class ccd extends ccg {
       if (this.k == ccg.a.b) {
          this.k = ccg.a.a;
          this.d.f(true);
-         double $$0 = this.e - this.d.dA();
-         double $$1 = this.f - this.d.dC();
-         double $$2 = this.g - this.d.dG();
+         double $$0 = this.e - this.d.dB();
+         double $$1 = this.f - this.d.dD();
+         double $$2 = this.g - this.d.dH();
          double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
          if ($$3 < 2.5000003E-7F) {
             this.d.H(0.0F);
@@ -24,7 +24,7 @@ public class ccd extends ccg {
          }
 
          float $$4 = (float)(bae.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
-         this.d.v(this.b(this.d.dL(), $$4, 90.0F));
+         this.d.v(this.b(this.d.dM(), $$4, 90.0F));
          float $$5;
          if (this.d.aJ()) {
             $$5 = (float)(this.h * this.d.h(bxn.v));
@@ -36,7 +36,7 @@ public class ccd extends ccg {
          double $$7 = Math.sqrt($$0 * $$0 + $$2 * $$2);
          if (Math.abs($$1) > 1.0E-5F || Math.abs($$7) > 1.0E-5F) {
             float $$8 = (float)(-(bae.d($$1, $$7) * 180.0F / (float)Math.PI));
-            this.d.w(this.b(this.d.dN(), $$8, (float)this.l));
+            this.d.w(this.b(this.d.dO(), $$8, (float)this.l));
             this.d.H($$1 > 0.0 ? $$5 : -$$5);
          }
       } else {

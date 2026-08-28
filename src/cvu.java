@@ -123,7 +123,7 @@ public class cvu extends cxk {
          if (!$$5.b()) {
             duw $$6 = $$0.c_($$2);
             if ($$6 != null) {
-               if ($$0.C || !$$6.p() || $$1 != null && $$1.gE()) {
+               if ($$0.C || !$$6.p() || $$1 != null && $$1.gG()) {
                   return $$5.a($$6, $$0.K_());
                }
 

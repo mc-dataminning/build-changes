@@ -1,18 +1,45 @@
-import java.util.Map;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class hdq extends avz<dfr> {
-   public static final dfr a = new dfr(Map.of());
-   private Map<alz, dfr> b = Map.of();
+public abstract class hdq implements hdm {
+   protected final hdm a;
 
-   public hdq() {
-      super(dfr.a, "models/equipment");
+   public hdq(hdm $$0) {
+      this.a = $$0;
    }
 
-   protected void a(Map<alz, dfr> $$0, avv $$1, bps $$2) {
-      this.b = Map.copyOf($$0);
+   @Override
+   public List<gmr> a(@Nullable dxu $$0, @Nullable jm $$1, bam $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   public dfr a(alz $$0) {
-      return this.b.getOrDefault($$0, a);
+   @Override
+   public boolean a() {
+      return this.a.a();
+   }
+
+   @Override
+   public boolean b() {
+      return this.a.b();
+   }
+
+   @Override
+   public boolean c() {
+      return this.a.c();
+   }
+
+   @Override
+   public boolean d() {
+      return this.a.d();
+   }
+
+   @Override
+   public hbk e() {
+      return this.a.e();
+   }
+
+   @Override
+   public gnc f() {
+      return this.a.f();
    }
 }

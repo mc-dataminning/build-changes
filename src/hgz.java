@@ -1,51 +1,65 @@
 import java.time.Duration;
-import java.time.Instant;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public abstract class hgz {
-   private static final int a = 60000;
-   private static final int b = 10;
-   private int c;
-   private boolean d = false;
-   @Nullable
-   private Instant e;
+public class hgz {
+   private final UUID a = UUID.randomUUID();
+   private final hgu b;
+   private final hhd c;
+   private final hhf d = new hhf();
+   private final hhc e;
+   private final hhe f;
+
+   public hgz(hgu $$0, boolean $$1, @Nullable Duration $$2, @Nullable String $$3) {
+      this.c = new hhd($$3);
+      this.e = new hhc();
+      this.f = new hhe($$1, $$2);
+      this.b = $$0.decorate($$0x -> {
+         this.c.a($$0x);
+         $$0x.a(hgx.i, this.a);
+      });
+   }
 
    public void a() {
-      this.d = true;
-      this.e = Instant.now();
-      this.c = 0;
+      this.e.a(this.b);
    }
 
-   public void a(hgt $$0) {
-      if (this.b()) {
-         this.f();
-         this.c++;
-         this.e = Instant.now();
+   public void a(dhe $$0, boolean $$1) {
+      this.c.a($$0, $$1);
+      this.d.a();
+      this.b();
+   }
+
+   public void a(String $$0) {
+      this.c.a($$0);
+      this.b();
+   }
+
+   public void a(long $$0) {
+      this.d.a($$0);
+   }
+
+   public void b() {
+      if (this.c.a(this.b)) {
+         this.f.a(this.b);
+         this.e.a();
       }
+   }
 
-      if (this.c()) {
-         this.b($$0);
-         this.c = 0;
+   public void c() {
+      this.c.a(this.b);
+      this.e.d();
+      this.d.a(this.b);
+   }
+
+   public void a(dhh $$0, ah $$1) {
+      alz $$2 = $$1.a();
+      if ($$1.b().g() && "minecraft".equals($$2.b())) {
+         long $$3 = $$0.ac();
+         this.b.send(hgv.f, $$2x -> {
+            $$2x.a(hgx.D, $$2.toString());
+            $$2x.a(hgx.E, $$3);
+         });
       }
    }
-
-   public boolean b() {
-      return this.d && this.e != null && Duration.between(this.e, Instant.now()).toMillis() > 60000L;
-   }
-
-   public boolean c() {
-      return this.c >= 10;
-   }
-
-   public void d() {
-      this.d = false;
-   }
-
-   protected int e() {
-      return this.c;
-   }
-
-   public abstract void f();
-
-   public abstract void b(hgt var1);
 }

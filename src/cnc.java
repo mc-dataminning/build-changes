@@ -46,12 +46,12 @@ public class cnc extends cht implements bxf<Optional<cwl>>, cmo {
    }
 
    @Override
-   protected bvj.b bg() {
-      return bvj.b.a;
+   protected bvj.c bg() {
+      return bvj.c.a;
    }
 
    @Override
-   public axg dm() {
+   public axg dn() {
       return axg.f;
    }
 
@@ -62,7 +62,7 @@ public class cnc extends cht implements bxf<Optional<cwl>>, cmo {
 
    @Override
    public void R() {
-      if (!this.gq()) {
+      if (!this.gs()) {
          super.R();
       }
    }
@@ -74,7 +74,7 @@ public class cnc extends cht implements bxf<Optional<cwl>>, cmo {
 
    @Override
    protected axe e(btz $$0) {
-      return this.gq() ? axf.xn : axf.xm;
+      return this.gs() ? axf.xn : axf.xm;
    }
 
    @Override
@@ -115,15 +115,15 @@ public class cnc extends cht implements bxf<Optional<cwl>>, cmo {
    @Override
    public void h() {
       super.h();
-      if (!this.dV().C && !this.bZ() && !this.a(this.dv(), this.t())) {
-         this.gn();
-      }
-
-      if (this.go()) {
+      if (!this.dW().C && !this.bZ() && !this.a(this.dw(), this.t())) {
          this.gp();
       }
 
-      if (this.dV().C) {
+      if (this.gq()) {
+         this.gr();
+      }
+
+      if (this.dW().C) {
          if (this.cm > 0) {
             this.cm--;
          } else {
@@ -132,8 +132,8 @@ public class cnc extends cht implements bxf<Optional<cwl>>, cmo {
       }
    }
 
-   private void gn() {
-      jm $$0 = this.h(this.dv());
+   private void gp() {
+      jm $$0 = this.h(this.dw());
       if ($$0 != null) {
          this.a($$0);
       } else {
@@ -145,17 +145,17 @@ public class cnc extends cht implements bxf<Optional<cwl>>, cmo {
    protected fbs ax() {
       float $$0 = L(this.ck);
       jm $$1 = this.t().g();
-      float $$2 = this.dq() / 2.0F;
-      return a(this.ej(), $$1, $$0).d(this.dA() - (double)$$2, this.dC(), this.dG() - (double)$$2);
+      float $$2 = this.dr() / 2.0F;
+      return a(this.ek(), $$1, $$0).d(this.dB() - (double)$$2, this.dD(), this.dH() - (double)$$2);
    }
 
    private static float L(float $$0) {
       return 0.5F - bae.a((0.5F + $$0) * (float) Math.PI) * 0.5F;
    }
 
-   private boolean go() {
+   private boolean gq() {
       this.cj = this.ck;
-      float $$0 = (float)this.gs() * 0.01F;
+      float $$0 = (float)this.gu() * 0.01F;
       if (this.ck == $$0) {
          return false;
       } else {
@@ -169,14 +169,14 @@ public class cnc extends cht implements bxf<Optional<cwl>>, cmo {
       }
    }
 
-   private void gp() {
+   private void gr() {
       this.ay();
       float $$0 = L(this.ck);
       float $$1 = L(this.cj);
       jm $$2 = this.t().g();
-      float $$3 = ($$0 - $$1) * this.ej();
+      float $$3 = ($$0 - $$1) * this.ek();
       if (!($$3 <= 0.0F)) {
-         for (bvj $$5 : this.dV().a(this, a(this.ej(), $$2, $$1, $$0).d(this.dA() - 0.5, this.dC(), this.dG() - 0.5), bvo.f.and($$0x -> !$$0x.z(this)))) {
+         for (bvj $$5 : this.dW().a(this, a(this.ek(), $$2, $$1, $$0).d(this.dB() - 0.5, this.dD(), this.dH() - 0.5), bvo.f.and($$0x -> !$$0x.z(this)))) {
             if (!($$5 instanceof cnc) && !$$5.ad) {
                $$5.a(bwj.e, new fbx((double)($$3 * (float)$$2.j()), (double)($$3 * (float)$$2.k()), (double)($$3 * (float)$$2.l())));
             }
@@ -198,7 +198,7 @@ public class cnc extends cht implements bxf<Optional<cwl>>, cmo {
 
    @Override
    public boolean a(bvj $$0, boolean $$1) {
-      if (this.dV().B_()) {
+      if (this.dW().B_()) {
          this.cl = null;
          this.cm = 0;
       }
@@ -210,8 +210,8 @@ public class cnc extends cht implements bxf<Optional<cwl>>, cmo {
    @Override
    public void ae() {
       super.ae();
-      if (this.dV().C) {
-         this.cl = this.dv();
+      if (this.dW().C) {
+         this.cl = this.dw();
       }
 
       this.aY = 0.0F;
@@ -222,7 +222,7 @@ public class cnc extends cht implements bxf<Optional<cwl>>, cmo {
    @Override
    public bwy a(dhy $$0, btg $$1, bvp $$2, @Nullable bwy $$3) {
       this.v(0.0F);
-      this.aZ = this.dL();
+      this.aZ = this.dM();
       this.bz();
       return super.a($$0, $$1, $$2, $$3);
    }
@@ -237,7 +237,7 @@ public class cnc extends cht implements bxf<Optional<cwl>>, cmo {
    }
 
    @Override
-   public fbx dy() {
+   public fbx dz() {
       return fbx.c;
    }
 
@@ -247,7 +247,7 @@ public class cnc extends cht implements bxf<Optional<cwl>>, cmo {
 
    @Override
    public void a_(double $$0, double $$1, double $$2) {
-      jh $$3 = this.dv();
+      jh $$3 = this.dw();
       if (this.bZ()) {
          super.a_($$0, $$1, $$2);
       } else {
@@ -255,16 +255,16 @@ public class cnc extends cht implements bxf<Optional<cwl>>, cmo {
       }
 
       if (this.af != 0) {
-         jh $$4 = this.dv();
+         jh $$4 = this.dw();
          if (!$$4.equals($$3)) {
             this.al.a(b, (byte)0);
             this.ar = true;
-            if (this.dV().C && !this.bZ() && !$$4.equals(this.cl)) {
+            if (this.dW().C && !this.bZ() && !$$4.equals(this.cl)) {
                this.cl = $$3;
                this.cm = 6;
-               this.aa = this.dA();
-               this.ab = this.dC();
-               this.ac = this.dG();
+               this.aa = this.dB();
+               this.ab = this.dD();
+               this.ac = this.dH();
             }
          }
       }
@@ -286,39 +286,39 @@ public class cnc extends cht implements bxf<Optional<cwl>>, cmo {
          return false;
       } else {
          jm $$2 = $$1.g();
-         if (!this.dV().a($$0.a($$1), this, $$2)) {
+         if (!this.dW().a($$0.a($$1), this, $$2)) {
             return false;
          } else {
-            fbs $$3 = a(this.ej(), $$2, 1.0F).a($$0).h(1.0E-6);
-            return this.dV().a(this, $$3);
+            fbs $$3 = a(this.ek(), $$2, 1.0F).a($$0).h(1.0E-6);
+            return this.dW().a(this, $$3);
          }
       }
    }
 
    private boolean i(jh $$0) {
-      dxu $$1 = this.dV().a_($$0);
+      dxu $$1 = this.dW().a_($$0);
       if ($$1.l()) {
          return false;
       } else {
-         boolean $$2 = $$1.a(dkn.bX) && $$0.equals(this.dv());
+         boolean $$2 = $$1.a(dkn.bX) && $$0.equals(this.dw());
          return !$$2;
       }
    }
 
    protected boolean p() {
-      if (!this.fZ() && this.bL()) {
-         jh $$0 = this.dv();
+      if (!this.gb() && this.bL()) {
+         jh $$0 = this.dw();
 
          for (int $$1 = 0; $$1 < 5; $$1++) {
             jh $$2 = $$0.b(bae.b(this.ae, -8, 8), bae.b(this.ae, -8, 8), bae.b(this.ae, -8, 8));
-            if ($$2.v() > this.dV().L_() && this.dV().u($$2) && this.dV().F_().a($$2) && this.dV().a(this, new fbs($$2).h(1.0E-6))) {
+            if ($$2.v() > this.dW().L_() && this.dW().u($$2) && this.dW().F_().a($$2) && this.dW().a(this, new fbs($$2).h(1.0E-6))) {
                jm $$3 = this.h($$2);
                if ($$3 != null) {
                   this.ao();
                   this.a($$3);
                   this.a(axf.xq, 1.0F, 1.0F);
                   this.a_((double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5);
-                  this.dV().a(ecq.R, $$0, ecq.a.a(this));
+                  this.dW().a(ecq.R, $$0, ecq.a.a(this));
                   this.al.a(b, (byte)0);
                   this.h(null);
                   return true;
@@ -341,7 +341,7 @@ public class cnc extends cht implements bxf<Optional<cwl>>, cmo {
 
    @Override
    public boolean a(ash $$0, btz $$1, float $$2) {
-      if (this.gq()) {
+      if (this.gs()) {
          bvj $$3 = $$1.c();
          if ($$3 instanceof cqd) {
             return false;
@@ -351,12 +351,12 @@ public class cnc extends cht implements bxf<Optional<cwl>>, cmo {
       if (!super.a($$0, $$1, $$2)) {
          return false;
       } else {
-         if ((double)this.eD() < (double)this.eR() * 0.5 && this.ae.a(4) == 0) {
+         if ((double)this.eE() < (double)this.eS() * 0.5 && this.ae.a(4) == 0) {
             this.p();
          } else if ($$1.a(axw.j)) {
             bvj $$4 = $$1.c();
             if ($$4 != null && $$4.aq() == bvq.bd) {
-               this.gr();
+               this.gt();
             }
          }
 
@@ -364,22 +364,22 @@ public class cnc extends cht implements bxf<Optional<cwl>>, cmo {
       }
    }
 
-   private boolean gq() {
-      return this.gs() == 0;
+   private boolean gs() {
+      return this.gu() == 0;
    }
 
-   private void gr() {
-      fbx $$0 = this.dt();
+   private void gt() {
+      fbx $$0 = this.du();
       fbs $$1 = this.cR();
-      if (!this.gq() && this.p()) {
-         int $$2 = this.dV().a(bvq.bc, $$1.g(8.0), bvj::bL).size();
+      if (!this.gs() && this.p()) {
+         int $$2 = this.dW().a(bvq.bc, $$1.g(8.0), bvj::bL).size();
          float $$3 = (float)($$2 - 1) / 5.0F;
-         if (!(this.dV().A.i() < $$3)) {
-            cnc $$4 = bvq.bc.a(this.dV(), bvp.e);
+         if (!(this.dW().A.i() < $$3)) {
+            cnc $$4 = bvq.bc.a(this.dW(), bvp.e);
             if ($$4 != null) {
                $$4.a(this.x());
                $$4.e($$0);
-               this.dV().b($$4);
+               this.dW().b($$4);
             }
          }
       }
@@ -407,12 +407,12 @@ public class cnc extends cht implements bxf<Optional<cwl>>, cmo {
       super.a($$0);
    }
 
-   private int gs() {
+   private int gu() {
       return this.al.a(b);
    }
 
    void b(int $$0) {
-      if (!this.dV().C) {
+      if (!this.dW().C) {
          this.g(bxn.a).c(d);
          if ($$0 == 0) {
             this.g(bxn.a).d(bZ);
@@ -457,8 +457,8 @@ public class cnc extends cht implements bxf<Optional<cwl>>, cmo {
       if (this.cl != null && this.cm > 0) {
          double $$1 = (double)((float)this.cm - $$0) / 6.0;
          $$1 *= $$1;
-         $$1 *= (double)this.ej();
-         jh $$2 = this.dv();
+         $$1 *= (double)this.ek();
+         jh $$2 = this.dw();
          double $$3 = (double)($$2.u() - this.cl.u()) * $$1;
          double $$4 = (double)($$2.v() - this.cl.v()) * $$1;
          double $$5 = (double)($$2.w() - this.cl.w()) * $$1;
@@ -478,11 +478,11 @@ public class cnc extends cht implements bxf<Optional<cwl>>, cmo {
    }
 
    public Optional<cwl> x() {
-      return Optional.ofNullable(this.gm());
+      return Optional.ofNullable(this.go());
    }
 
    @Nullable
-   public cwl gm() {
+   public cwl go() {
       byte $$0 = this.al.a(c);
       return $$0 != 16 && $$0 <= 15 ? cwl.a($$0) : null;
    }
@@ -497,7 +497,7 @@ public class cnc extends cht implements bxf<Optional<cwl>>, cmo {
       @Override
       public boolean b() {
          bwf $$0 = cnc.this.O_();
-         return $$0 != null && $$0.bL() ? cnc.this.dV().al() != btf.a : false;
+         return $$0 != null && $$0.bL() ? cnc.this.dW().al() != btf.a : false;
       }
 
       @Override
@@ -518,7 +518,7 @@ public class cnc extends cht implements bxf<Optional<cwl>>, cmo {
 
       @Override
       public void a() {
-         if (cnc.this.dV().al() != btf.a) {
+         if (cnc.this.dW().al() != btf.a) {
             this.b--;
             bwf $$0 = cnc.this.O_();
             if ($$0 != null) {
@@ -527,7 +527,7 @@ public class cnc extends cht implements bxf<Optional<cwl>>, cmo {
                if ($$1 < 400.0) {
                   if (this.b <= 0) {
                      this.b = 20 + cnc.this.ae.a(10) * 20 / 2;
-                     cnc.this.dV().b(new cqs(cnc.this.dV(), cnc.this, $$0, cnc.this.t().o()));
+                     cnc.this.dW().b(new cqs(cnc.this.dW(), cnc.this, $$0, cnc.this.t().o()));
                      cnc.this.a(axf.xp, 2.0F, (cnc.this.ae.i() - cnc.this.ae.i()) * 0.2F + 1.0F);
                   }
                } else {
@@ -587,9 +587,9 @@ public class cnc extends cht implements bxf<Optional<cwl>>, cmo {
          kl $$2 = $$0.q();
          Vector3f $$3 = new Vector3f((float)$$2.u(), (float)$$2.v(), (float)$$2.w());
          $$3.cross($$1);
-         double $$4 = this.e - this.a.dA();
-         double $$5 = this.f - this.a.dE();
-         double $$6 = this.g - this.a.dG();
+         double $$4 = this.e - this.a.dB();
+         double $$5 = this.f - this.a.dF();
+         double $$6 = this.g - this.a.dH();
          Vector3f $$7 = new Vector3f((float)$$4, (float)$$5, (float)$$6);
          float $$8 = $$3.dot($$7);
          float $$9 = $$1.dot($$7);
@@ -611,7 +611,7 @@ public class cnc extends cht implements bxf<Optional<cwl>>, cmo {
 
       @Override
       public boolean b() {
-         return cnc.this.dV().al() == btf.a ? false : super.b();
+         return cnc.this.dW().al() == btf.a ? false : super.b();
       }
 
       @Override
@@ -630,7 +630,7 @@ public class cnc extends cht implements bxf<Optional<cwl>>, cmo {
 
       @Override
       public boolean b() {
-         return cnc.this.O_() == null && cnc.this.ae.a(b(40)) == 0 && cnc.this.a(cnc.this.dv(), cnc.this.t());
+         return cnc.this.O_() == null && cnc.this.ae.a(b(40)) == 0 && cnc.this.a(cnc.this.dw(), cnc.this.t());
       }
 
       @Override

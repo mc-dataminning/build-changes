@@ -41,7 +41,7 @@ public class cmm extends cmw implements bwk {
    }
 
    public static bxm.a m() {
-      return cmw.gr().a(bxn.s, 40.0).a(bxn.v, 0.3F).a(bxn.c, 7.0).a(bxn.m, 64.0).a(bxn.B, 1.0);
+      return cmw.gt().a(bxn.s, 40.0).a(bxn.v, 0.3F).a(bxn.c, 7.0).a(bxn.m, 64.0).a(bxn.B, 1.0);
    }
 
    @Override
@@ -100,14 +100,14 @@ public class cmm extends cmw implements bwk {
       if (this.af >= this.ce + 400) {
          this.ce = this.af;
          if (!this.bb()) {
-            this.dV().a(this.dA(), this.dE(), this.dG(), axf.iH, this.dm(), 2.5F, 1.0F, false);
+            this.dW().a(this.dB(), this.dF(), this.dH(), axf.iH, this.dn(), 2.5F, 1.0F, false);
          }
       }
    }
 
    @Override
    public void a(alc<?> $$0) {
-      if (cc.equals($$0) && this.gn() && this.dV().C) {
+      if (cc.equals($$0) && this.gp() && this.dW().C) {
          this.p();
       }
 
@@ -130,38 +130,38 @@ public class cmm extends cmw implements bwk {
       super.a($$0);
       dxu $$1 = null;
       if ($$0.b("carriedBlockState", 10)) {
-         $$1 = vm.a(this.dV().a(mb.f), $$0.p("carriedBlockState"));
+         $$1 = vm.a(this.dW().a(mb.f), $$0.p("carriedBlockState"));
          if ($$1.l()) {
             $$1 = null;
          }
       }
 
       this.c($$1);
-      this.a(this.dV(), $$0);
+      this.a(this.dW(), $$0);
    }
 
    boolean a(cpw $$0) {
-      return this.a($$0, 0.025, true, false, bwf.aH, new DoubleSupplier[]{this::dE});
+      return this.a($$0, 0.025, true, false, bwf.aH, new DoubleSupplier[]{this::dF});
    }
 
    @Override
    public void d_() {
-      if (this.dV().C) {
+      if (this.dW().C) {
          for (int $$0 = 0; $$0 < 2; $$0++) {
-            this.dV().a(ls.ad, this.d(0.5), this.dD() - 0.25, this.g(0.5), (this.ae.j() - 0.5) * 2.0, -this.ae.j(), (this.ae.j() - 0.5) * 2.0);
+            this.dW().a(ls.ad, this.d(0.5), this.dE() - 0.25, this.g(0.5), (this.ae.j() - 0.5) * 2.0, -this.ae.j(), (this.ae.j() - 0.5) * 2.0);
          }
       }
 
       this.bn = false;
-      if (!this.dV().C) {
-         this.a((ash)this.dV(), true);
+      if (!this.dW().C) {
+         this.a((ash)this.dW(), true);
       }
 
       super.d_();
    }
 
    @Override
-   public boolean fp() {
+   public boolean fr() {
       return true;
    }
 
@@ -169,7 +169,7 @@ public class cmm extends cmw implements bwk {
    protected void a(ash $$0) {
       if ($$0.U() && this.af >= this.cf + 600) {
          float $$1 = this.by();
-         if ($$1 > 0.5F && $$0.h(this.dv()) && this.ae.i() * 30.0F < ($$1 - 0.4F) * 2.0F) {
+         if ($$1 > 0.5F && $$0.h(this.dw()) && this.ae.i() * 30.0F < ($$1 - 0.4F) * 2.0F) {
             this.h(null);
             this.t();
          }
@@ -179,10 +179,10 @@ public class cmm extends cmw implements bwk {
    }
 
    protected boolean t() {
-      if (!this.dV().B_() && this.bL()) {
-         double $$0 = this.dA() + (this.ae.j() - 0.5) * 64.0;
-         double $$1 = this.dC() + (double)(this.ae.a(64) - 32);
-         double $$2 = this.dG() + (this.ae.j() - 0.5) * 64.0;
+      if (!this.dW().B_() && this.bL()) {
+         double $$0 = this.dB() + (this.ae.j() - 0.5) * 64.0;
+         double $$1 = this.dD() + (double)(this.ae.a(64) - 32);
+         double $$2 = this.dH() + (this.ae.j() - 0.5) * 64.0;
          return this.q($$0, $$1, $$2);
       } else {
          return false;
@@ -190,32 +190,32 @@ public class cmm extends cmw implements bwk {
    }
 
    boolean b(bvj $$0) {
-      fbx $$1 = new fbx(this.dA() - $$0.dA(), this.e(0.5) - $$0.dE(), this.dG() - $$0.dG());
+      fbx $$1 = new fbx(this.dB() - $$0.dB(), this.e(0.5) - $$0.dF(), this.dH() - $$0.dH());
       $$1 = $$1.d();
       double $$2 = 16.0;
-      double $$3 = this.dA() + (this.ae.j() - 0.5) * 8.0 - $$1.d * 16.0;
-      double $$4 = this.dC() + (double)(this.ae.a(16) - 8) - $$1.e * 16.0;
-      double $$5 = this.dG() + (this.ae.j() - 0.5) * 8.0 - $$1.f * 16.0;
+      double $$3 = this.dB() + (this.ae.j() - 0.5) * 8.0 - $$1.d * 16.0;
+      double $$4 = this.dD() + (double)(this.ae.a(16) - 8) - $$1.e * 16.0;
+      double $$5 = this.dH() + (this.ae.j() - 0.5) * 8.0 - $$1.f * 16.0;
       return this.q($$3, $$4, $$5);
    }
 
    private boolean q(double $$0, double $$1, double $$2) {
       jh.a $$3 = new jh.a($$0, $$1, $$2);
 
-      while ($$3.v() > this.dV().L_() && !this.dV().a_($$3).d()) {
+      while ($$3.v() > this.dW().L_() && !this.dW().a_($$3).d()) {
          $$3.c(jm.a);
       }
 
-      dxu $$4 = this.dV().a_($$3);
+      dxu $$4 = this.dW().a_($$3);
       boolean $$5 = $$4.d();
       boolean $$6 = $$4.y().a(aya.a);
       if ($$5 && !$$6) {
-         fbx $$7 = this.dt();
+         fbx $$7 = this.du();
          boolean $$8 = this.b($$0, $$1, $$2, true);
          if ($$8) {
-            this.dV().a(ecq.R, $$7, ecq.a.a(this));
+            this.dW().a(ecq.R, $$7, ecq.a.a(this));
             if (!this.bb()) {
-               this.dV().a(null, this.K, this.L, this.M, axf.iI, this.dm(), 1.0F, 1.0F);
+               this.dW().a(null, this.K, this.L, this.M, axf.iI, this.dn(), 1.0F, 1.0F);
                this.a(axf.iI, 1.0F, 1.0F);
             }
          }
@@ -228,7 +228,7 @@ public class cmm extends cmw implements bwk {
 
    @Override
    protected axe u() {
-      return this.gm() ? axf.iG : axf.iD;
+      return this.go() ? axf.iG : axf.iD;
    }
 
    @Override
@@ -247,8 +247,8 @@ public class cmm extends cmw implements bwk {
       dxu $$3 = this.x();
       if ($$3 != null) {
          cxo $$4 = new cxo(cxs.pF);
-         dea.a($$4, $$0.K_(), dfm.g, $$0.d_(this.dv()), this.dY());
-         ewr.a $$5 = new ewr.a((ash)this.dV()).a(ezi.f, this.dt()).a(ezi.i, $$4).b(ezi.a, this);
+         dea.a($$4, $$0.K_(), dfm.g, $$0.d_(this.dw()), this.dZ());
+         ewr.a $$5 = new ewr.a((ash)this.dW()).a(ezi.f, this.du()).a(ezi.i, $$4).b(ezi.a, this);
 
          for (cxo $$7 : $$3.a($$5)) {
             this.a($$0, $$7);
@@ -298,15 +298,15 @@ public class cmm extends cmw implements bwk {
       return $$5.a(czo.a) ? super.a($$0, $$1, $$3) : false;
    }
 
-   public boolean gm() {
+   public boolean go() {
       return this.al.a(cc);
    }
 
-   public boolean gn() {
+   public boolean gp() {
       return this.al.a(cd);
    }
 
-   public void go() {
+   public void gq() {
       this.al.a(cd, true);
    }
 
@@ -343,7 +343,7 @@ public class cmm extends cmw implements bwk {
 
       @Override
       public void a() {
-         this.a.H().a(this.b.dA(), this.b.dE(), this.b.dG());
+         this.a.H().a(this.b.dB(), this.b.dF(), this.b.dH());
       }
    }
 
@@ -359,24 +359,24 @@ public class cmm extends cmw implements bwk {
          if (this.a.x() == null) {
             return false;
          } else {
-            return !a(this.a).N().b(dhd.c) ? false : this.a.dY().a(b(2000)) == 0;
+            return !a(this.a).N().b(dhd.c) ? false : this.a.dZ().a(b(2000)) == 0;
          }
       }
 
       @Override
       public void a() {
-         bam $$0 = this.a.dY();
-         dhh $$1 = this.a.dV();
-         int $$2 = bae.a(this.a.dA() - 1.0 + $$0.j() * 2.0);
-         int $$3 = bae.a(this.a.dC() + $$0.j() * 2.0);
-         int $$4 = bae.a(this.a.dG() - 1.0 + $$0.j() * 2.0);
+         bam $$0 = this.a.dZ();
+         dhh $$1 = this.a.dW();
+         int $$2 = bae.a(this.a.dB() - 1.0 + $$0.j() * 2.0);
+         int $$3 = bae.a(this.a.dD() + $$0.j() * 2.0);
+         int $$4 = bae.a(this.a.dH() - 1.0 + $$0.j() * 2.0);
          jh $$5 = new jh($$2, $$3, $$4);
          dxu $$6 = $$1.a_($$5);
          jh $$7 = $$5.e();
          dxu $$8 = $$1.a_($$7);
          dxu $$9 = this.a.x();
          if ($$9 != null) {
-            $$9 = dkl.b($$9, this.a.dV(), $$5);
+            $$9 = dkl.b($$9, this.a.dW(), $$5);
             if (this.a($$1, $$5, $$9, $$6, $$8, $$7)) {
                $$1.a($$5, $$9, 3);
                $$1.a(ecq.i, $$5, ecq.a.a(this.a, $$9));
@@ -417,7 +417,7 @@ public class cmm extends cmw implements bwk {
       public void d() {
          this.k = this.a(5);
          this.l = 0;
-         this.i.go();
+         this.i.gq();
       }
 
       @Override
@@ -492,20 +492,20 @@ public class cmm extends cmw implements bwk {
          if (this.a.x() != null) {
             return false;
          } else {
-            return !a(this.a).N().b(dhd.c) ? false : this.a.dY().a(b(20)) == 0;
+            return !a(this.a).N().b(dhd.c) ? false : this.a.dZ().a(b(20)) == 0;
          }
       }
 
       @Override
       public void a() {
-         bam $$0 = this.a.dY();
-         dhh $$1 = this.a.dV();
-         int $$2 = bae.a(this.a.dA() - 2.0 + $$0.j() * 4.0);
-         int $$3 = bae.a(this.a.dC() + $$0.j() * 3.0);
-         int $$4 = bae.a(this.a.dG() - 2.0 + $$0.j() * 4.0);
+         bam $$0 = this.a.dZ();
+         dhh $$1 = this.a.dW();
+         int $$2 = bae.a(this.a.dB() - 2.0 + $$0.j() * 4.0);
+         int $$3 = bae.a(this.a.dD() + $$0.j() * 3.0);
+         int $$4 = bae.a(this.a.dH() - 2.0 + $$0.j() * 4.0);
          jh $$5 = new jh($$2, $$3, $$4);
          dxu $$6 = $$1.a_($$5);
-         fbx $$7 = new fbx((double)this.a.dz() + 0.5, (double)$$3 + 0.5, (double)this.a.dF() + 0.5);
+         fbx $$7 = new fbx((double)this.a.dA() + 0.5, (double)$$3 + 0.5, (double)this.a.dG() + 0.5);
          fbx $$8 = new fbx((double)$$2 + 0.5, (double)$$3 + 0.5, (double)$$4 + 0.5);
          fbt $$9 = $$1.a(new dgp($$7, $$8, dgp.a.b, dgp.b.a, this.a));
          boolean $$10 = $$9.b().equals($$5);

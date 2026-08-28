@@ -88,7 +88,7 @@ public class coy {
          Entry<bvj> $$6 = (Entry<bvj>)$$5.next();
          int $$7 = $$6.getIntValue();
          bvj $$8 = (bvj)$$6.getKey();
-         bvj.c $$9 = $$8.dR();
+         bvj.d $$9 = $$8.dS();
          if ($$7 > 1 && $$1.test($$8) && $$9 == null) {
             $$6.setValue($$7 - 1);
          } else {

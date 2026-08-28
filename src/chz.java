@@ -25,7 +25,7 @@ public class chz extends bxc implements bxf<jq<cia>> {
 
    public chz(bvq<? extends chz> $$0, dhh $$1) {
       super($$0, $$1);
-      this.gE();
+      this.gG();
    }
 
    @Override
@@ -48,7 +48,7 @@ public class chz extends bxc implements bxf<jq<cia>> {
       this.bU.a(1, new cez<>(this, cix.class, false, cix.bZ));
    }
 
-   public jq<cia> gy() {
+   public jq<cia> gA() {
       return this.al.a(cg);
    }
 
@@ -60,7 +60,7 @@ public class chz extends bxc implements bxf<jq<cia>> {
       this.al.a(ch, $$0);
    }
 
-   public boolean gz() {
+   public boolean gB() {
       return this.al.a(ch);
    }
 
@@ -68,11 +68,11 @@ public class chz extends bxc implements bxf<jq<cia>> {
       this.al.a(ci, $$0);
    }
 
-   boolean gF() {
+   boolean gH() {
       return this.al.a(ci);
    }
 
-   public cwl gA() {
+   public cwl gC() {
       return cwl.a(this.al.a(cj));
    }
 
@@ -92,8 +92,8 @@ public class chz extends bxc implements bxf<jq<cia>> {
    @Override
    public void b(ux $$0) {
       super.b($$0);
-      $$0.a("variant", this.gy().e().orElse(ck).a().toString());
-      $$0.a("CollarColor", (byte)this.gA().a());
+      $$0.a("variant", this.gA().e().orElse(ck).a().toString());
+      $$0.a("CollarColor", (byte)this.gC().a());
    }
 
    @Override
@@ -129,7 +129,7 @@ public class chz extends bxc implements bxf<jq<cia>> {
    @Override
    protected axe u() {
       if (this.p()) {
-         if (this.gw()) {
+         if (this.gy()) {
             return axf.dZ;
          } else {
             return this.ae.a(4) == 0 ? axf.ea : axf.dS;
@@ -144,7 +144,7 @@ public class chz extends bxc implements bxf<jq<cia>> {
       return 120;
    }
 
-   public void gB() {
+   public void gD() {
       this.b(axf.dW);
    }
 
@@ -158,12 +158,12 @@ public class chz extends bxc implements bxf<jq<cia>> {
       return axf.dU;
    }
 
-   public static bxm.a gC() {
-      return chw.gr().a(bxn.s, 10.0).a(bxn.v, 0.3F).a(bxn.c, 3.0);
+   public static bxm.a gE() {
+      return chw.gt().a(bxn.s, 10.0).a(bxn.v, 0.3F).a(bxn.c, 3.0);
    }
 
    @Override
-   protected void gs() {
+   protected void gu() {
       this.a(axf.dV, 1.0F, 1.0F);
    }
 
@@ -174,22 +174,22 @@ public class chz extends bxc implements bxf<jq<cia>> {
          this.a(axf.dX, 1.0F, 1.0F);
       }
 
-      this.gG();
+      this.gI();
    }
 
-   private void gG() {
-      if ((this.gz() || this.gF()) && this.af % 5 == 0) {
+   private void gI() {
+      if ((this.gB() || this.gH()) && this.af % 5 == 0) {
          this.a(axf.dZ, 0.6F + 0.4F * (this.ae.i() - this.ae.i()), 1.0F);
       }
 
-      this.gH();
-      this.gI();
+      this.gJ();
+      this.gK();
       this.cr = false;
-      if (this.gz()) {
-         jh $$0 = this.dv();
+      if (this.gB()) {
+         jh $$0 = this.dw();
 
-         for (cpw $$2 : this.dV().a(cpw.class, new fbs($$0).c(2.0, 2.0, 2.0))) {
-            if ($$2.fP()) {
+         for (cpw $$2 : this.dW().a(cpw.class, new fbs($$0).c(2.0, 2.0, 2.0))) {
+            if ($$2.fR()) {
                this.cr = true;
                break;
             }
@@ -197,14 +197,14 @@ public class chz extends bxc implements bxf<jq<cia>> {
       }
    }
 
-   public boolean gD() {
+   public boolean gF() {
       return this.cr;
    }
 
-   private void gH() {
+   private void gJ() {
       this.co = this.cn;
       this.cq = this.cp;
-      if (this.gz()) {
+      if (this.gB()) {
          this.cn = Math.min(1.0F, this.cn + 0.15F);
          this.cp = Math.min(1.0F, this.cp + 0.08F);
       } else {
@@ -213,9 +213,9 @@ public class chz extends bxc implements bxf<jq<cia>> {
       }
    }
 
-   private void gI() {
+   private void gK() {
       this.ct = this.cs;
-      if (this.gF()) {
+      if (this.gH()) {
          this.cs = Math.min(1.0F, this.cs + 0.1F);
       } else {
          this.cs = Math.max(0.0F, this.cs - 0.13F);
@@ -239,18 +239,18 @@ public class chz extends bxc implements bxf<jq<cia>> {
       chz $$2 = bvq.u.a($$0, bvp.e);
       if ($$2 != null && $$1 instanceof chz $$3) {
          if (this.ae.h()) {
-            $$2.j(this.gy());
+            $$2.j(this.gA());
          } else {
-            $$2.j($$3.gy());
+            $$2.j($$3.gA());
          }
 
          if (this.p()) {
             $$2.b(this.ab_());
             $$2.b(true, true);
             if (this.ae.h()) {
-               $$2.a(this.gA());
+               $$2.a(this.gC());
             } else {
-               $$2.a($$3.gA());
+               $$2.a($$3.gC());
             }
          }
       }
@@ -275,7 +275,7 @@ public class chz extends bxc implements bxf<jq<cia>> {
       ayk<cia> $$5 = $$4 ? axv.b : axv.a;
       ma.ai.a($$5, $$0.H_()).ifPresent(this::j);
       ash $$6 = $$0.a();
-      if ($$6.b().a(this.dv(), ayg.o).b()) {
+      if ($$6.b().a(this.dw(), ayg.o).b()) {
          this.j(ma.ai.b(cia.l));
          this.ai();
       }
@@ -291,8 +291,8 @@ public class chz extends bxc implements bxf<jq<cia>> {
          if (this.j($$0)) {
             if ($$3 instanceof cwm $$4) {
                cwl $$5 = $$4.b();
-               if ($$5 != this.gA()) {
-                  if (!this.dV().B_()) {
+               if ($$5 != this.gC()) {
+                  if (!this.dW().B_()) {
                      this.a($$5);
                      $$2.a(1, $$0);
                      this.ai();
@@ -300,12 +300,12 @@ public class chz extends bxc implements bxf<jq<cia>> {
 
                   return bti.a;
                }
-            } else if (this.j($$2) && this.eD() < this.eR()) {
-               if (!this.dV().B_()) {
+            } else if (this.j($$2) && this.eE() < this.eS()) {
+               if (!this.dW().B_()) {
                   this.a($$0, $$1, $$2);
                   csy $$6 = $$2.a(ku.w);
                   this.c($$6 != null ? (float)$$6.a() : 1.0F);
-                  this.gs();
+                  this.gu();
                }
 
                return bti.a;
@@ -313,18 +313,18 @@ public class chz extends bxc implements bxf<jq<cia>> {
 
             bti $$7 = super.b($$0, $$1);
             if (!$$7.a()) {
-               this.z(!this.gm());
+               this.z(!this.go());
                return bti.a;
             }
 
             return $$7;
          }
       } else if (this.j($$2)) {
-         if (!this.dV().B_()) {
+         if (!this.dW().B_()) {
             this.a($$0, $$1, $$2);
             this.g($$0);
             this.ai();
-            this.gs();
+            this.gu();
          }
 
          return bti.a;
@@ -351,10 +351,10 @@ public class chz extends bxc implements bxf<jq<cia>> {
    @Override
    public void b(boolean $$0, boolean $$1) {
       super.b($$0, $$1);
-      this.gE();
+      this.gG();
    }
 
-   protected void gE() {
+   protected void gG() {
       if (this.cl == null) {
          this.cl = new chz.a<>(this, cpw.class, 16.0F, 0.8, 1.33);
       }
@@ -369,9 +369,9 @@ public class chz extends bxc implements bxf<jq<cia>> {
       if (this.ae.a(3) == 0) {
          this.a($$0);
          this.z(true);
-         this.dV().a(this, (byte)7);
+         this.dW().a(this, (byte)7);
       } else {
-         this.dV().a(this, (byte)6);
+         this.dW().a(this, (byte)6);
       }
    }
 
@@ -415,13 +415,13 @@ public class chz extends bxc implements bxf<jq<cia>> {
       public boolean b() {
          if (!this.a.p()) {
             return false;
-         } else if (this.a.gm()) {
+         } else if (this.a.go()) {
             return false;
          } else {
             bwf $$0 = this.a.ah_();
             if ($$0 instanceof cpw) {
                this.b = (cpw)$$0;
-               if (!$$0.fP()) {
+               if (!$$0.fR()) {
                   return false;
                }
 
@@ -429,8 +429,8 @@ public class chz extends bxc implements bxf<jq<cia>> {
                   return false;
                }
 
-               jh $$1 = this.b.dv();
-               dxu $$2 = this.a.dV().a_($$1);
+               jh $$1 = this.b.dw();
+               dxu $$2 = this.a.dW().a_($$1);
                if ($$2.a(axu.T)) {
                   this.c = $$2.d(dke.aF).map($$1x -> $$1.a($$1x.g())).orElseGet(() -> new jh($$1));
                   return !this.h();
@@ -442,8 +442,8 @@ public class chz extends bxc implements bxf<jq<cia>> {
       }
 
       private boolean h() {
-         for (chz $$1 : this.a.dV().a(chz.class, new fbs(this.c).g(2.0))) {
-            if ($$1 != this.a && ($$1.gz() || $$1.gF())) {
+         for (chz $$1 : this.a.dW().a(chz.class, new fbs(this.c).g(2.0))) {
+            if ($$1 != this.a && ($$1.gB() || $$1.gH())) {
                return true;
             }
          }
@@ -453,7 +453,7 @@ public class chz extends bxc implements bxf<jq<cia>> {
 
       @Override
       public boolean c() {
-         return this.a.p() && !this.a.gm() && this.b != null && this.b.fP() && this.c != null && !this.h();
+         return this.a.p() && !this.a.go() && this.b != null && this.b.fR() && this.c != null && !this.h();
       }
 
       @Override
@@ -467,8 +467,8 @@ public class chz extends bxc implements bxf<jq<cia>> {
       @Override
       public void e() {
          this.a.A(false);
-         float $$0 = this.a.dV().f(1.0F);
-         if (this.b.gl() >= 100 && (double)$$0 > 0.77 && (double)$$0 < 0.8 && (double)this.a.dV().H_().i() < 0.7) {
+         float $$0 = this.a.dW().f(1.0F);
+         if (this.b.gn() >= 100 && (double)$$0 > 0.77 && (double)$$0 < 0.8 && (double)this.a.dW().H_().i() < 0.7) {
             this.i();
          }
 
@@ -478,11 +478,11 @@ public class chz extends bxc implements bxf<jq<cia>> {
       }
 
       private void i() {
-         bam $$0 = this.a.dY();
+         bam $$0 = this.a.dZ();
          jh.a $$1 = new jh.a();
-         $$1.g(this.a.P_() ? this.a.A().dv() : this.a.dv());
+         $$1.g(this.a.P_() ? this.a.A().dw() : this.a.dw());
          this.a.b((double)($$1.u() + $$0.a(11) - 5), (double)($$1.v() + $$0.a(5) - 2), (double)($$1.w() + $$0.a(11) - 5), false);
-         $$1.g(this.a.dv());
+         $$1.g(this.a.dw());
          this.a
             .a(
                a(this.a),
@@ -533,9 +533,9 @@ public class chz extends bxc implements bxf<jq<cia>> {
       @Override
       public void a() {
          super.a();
-         if (this.c == null && this.a.dY().a(this.a(600)) == 0) {
+         if (this.c == null && this.a.dZ().a(this.a(600)) == 0) {
             this.c = this.b;
-         } else if (this.a.dY().a(this.a(500)) == 0) {
+         } else if (this.a.dZ().a(this.a(500)) == 0) {
             this.c = null;
          }
       }

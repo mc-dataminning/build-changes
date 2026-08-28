@@ -65,7 +65,7 @@ public class dzk {
    }
 
    public double a(bvj $$0) {
-      return this.b($$0.dA(), $$0.dG());
+      return this.b($$0.dB(), $$0.dH());
    }
 
    public fcr c() {
@@ -84,7 +84,7 @@ public class dzk {
 
    public boolean a(bvj $$0, fbs $$1) {
       double $$2 = Math.max(bae.a($$1.b(), $$1.d()), 1.0);
-      return this.a($$0) < $$2 * 2.0 && this.a($$0.dA(), $$0.dG(), $$2);
+      return this.a($$0) < $$2 * 2.0 && this.a($$0.dB(), $$0.dH(), $$2);
    }
 
    public dzj d() {

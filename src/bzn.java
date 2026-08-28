@@ -30,12 +30,12 @@ public class bzn<E extends bwn> extends bxy<E> {
    }
 
    protected void a(ash $$0, bwn $$1, long $$2) {
-      bxh<?> $$3 = $$1.eb();
+      bxh<?> $$3 = $$1.ec();
       $$3.c(cfj.h).flatMap($$2x -> $$2x.a($$2xx -> this.h.a($$0, $$1, $$2xx))).ifPresent($$1x -> this.b($$1, $$1x));
    }
 
    protected void b(ash $$0, E $$1, long $$2) {
-      bxh<?> $$3 = $$1.eb();
+      bxh<?> $$3 = $$1.ec();
       if (!$$3.a(cfj.W)) {
          $$0.a($$1, (byte)59);
          $$3.a(cfj.V, this.d.applyAsInt($$1));
@@ -48,15 +48,15 @@ public class bzn<E extends bwn> extends bxy<E> {
 
    protected void d(ash $$0, E $$1, long $$2) {
       if (!this.l.isEmpty()) {
-         $$1.eb().a(cfj.m, new cfm(this.l.get().a(), this.g, 0));
-         $$1.eb().a(cfj.n, new byj(this.l.get().c(), true));
-         boolean $$3 = !this.l.get().c().dv().equals(this.l.get().b());
+         $$1.ec().a(cfj.m, new cfm(this.l.get().a(), this.g, 0));
+         $$1.ec().a(cfj.n, new byj(this.l.get().c(), true));
+         boolean $$3 = !this.l.get().c().dw().equals(this.l.get().b());
          if ($$3) {
             $$0.a($$1, (byte)59);
             $$1.L().o();
             this.b($$1, this.l.get().c);
          } else {
-            jh $$4 = $$1.dv();
+            jh $$4 = $$1.dw();
             if ($$4.equals(this.l.get().a())) {
                $$0.a($$1, (byte)58);
                if (this.k.isEmpty()) {
@@ -64,8 +64,8 @@ public class bzn<E extends bwn> extends bxy<E> {
                }
 
                if ($$2 - this.k.get() >= (long)this.i) {
-                  $$1.eb().a(cfj.W, this.a($$4, this.l.get().b()));
-                  $$0.a(null, $$1, this.j.apply($$1), axg.g, 1.0F, $$1.ff());
+                  $$1.ec().a(cfj.W, this.a($$4, this.l.get().b()));
+                  $$0.a(null, $$1, this.j.apply($$1), axg.g, 1.0F, $$1.fh());
                   this.l = Optional.empty();
                }
             }
@@ -81,7 +81,7 @@ public class bzn<E extends bwn> extends bxy<E> {
    }
 
    private Optional<jh> a(bwn $$0, bwf $$1) {
-      jh $$2 = $$1.dv();
+      jh $$2 = $$1.dw();
       if (!this.a($$0, $$2)) {
          return Optional.empty();
       } else {
@@ -104,7 +104,7 @@ public class bzn<E extends bwn> extends bxy<E> {
          }
 
          cfr $$7 = $$0.L();
-         return $$3.stream().sorted(Comparator.comparingDouble($$0.dv()::j)).filter($$1x -> {
+         return $$3.stream().sorted(Comparator.comparingDouble($$0.dw()::j)).filter($$1x -> {
             euk $$2x = $$7.a($$1x, 0);
             return $$2x != null && $$2x.j();
          }).findFirst();
@@ -117,7 +117,7 @@ public class bzn<E extends bwn> extends bxy<E> {
 
    private void b(bwn $$0, bwf $$1) {
       this.k = Optional.empty();
-      this.l = this.a($$0, $$1).map($$1x -> new bzn.a($$1x, $$1.dv(), $$1));
+      this.l = this.a($$0, $$1).map($$1x -> new bzn.a($$1x, $$1.dw(), $$1));
    }
 
    public static class a {

@@ -9,7 +9,7 @@ public class awl {
    }
 
    public boolean a(int $$0, List<asi> $$1) {
-      int $$2 = (int)$$1.stream().filter(cpw::gk).count();
+      int $$2 = (int)$$1.stream().filter(cpw::gm).count();
       return $$2 >= this.b($$0);
    }
 
@@ -34,7 +34,7 @@ public class awl {
       for (asi $$3 : $$0) {
          if (!$$3.aa_()) {
             this.a++;
-            if ($$3.fP()) {
+            if ($$3.fR()) {
                this.b++;
             }
          }

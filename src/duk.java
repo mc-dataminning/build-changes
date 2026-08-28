@@ -20,7 +20,7 @@ public abstract class duk extends duq implements bts, cus, cvd {
    public static final int j = 200;
    public static final int k = 2;
    public static final int l = 0;
-   protected jz<cxo> m = jz.a(3, cxo.k);
+   protected jz<cxo> m = jz.a(3, cxo.j);
    int u;
    int v = 0;
    int w;
@@ -79,7 +79,7 @@ public abstract class duk extends duq implements bts, cus, cvd {
    @Override
    protected void a(ux $$0, js.a $$1) {
       super.a($$0, $$1);
-      this.m = jz.a(this.b(), cxo.k);
+      this.m = jz.a(this.b(), cxo.j);
       btc.b($$0, this.m, $$1);
       this.u = $$0.g("BurnTime");
       this.w = $$0.g("CookTime");
@@ -302,7 +302,7 @@ public abstract class duk extends duq implements bts, cus, cvd {
    }
 
    public void a(asi $$0) {
-      List<dci<?>> $$1 = this.a($$0.y(), $$0.dt());
+      List<dci<?>> $$1 = this.a($$0.y(), $$0.du());
       $$0.a($$1);
 
       for (dci<?> $$2 : $$1) {

@@ -1,89 +1,53 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import ca.weblite.objc.Client;
+import ca.weblite.objc.NSObject;
+import com.sun.jna.Pointer;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Base64;
 import java.util.Locale;
 import java.util.Optional;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWVidMode;
-import org.lwjgl.glfw.GLFWVidMode.Buffer;
+import org.lwjgl.glfw.GLFWNativeCocoa;
 
-public final class ffo {
-   private final long a;
-   private final List<ffs> b;
-   private ffs c;
-   private int d;
-   private int e;
+public class ffo {
+   public static final boolean a = System.getProperty("os.name").toLowerCase(Locale.ROOT).contains("mac");
+   private static final int b = 8;
+   private static final int c = 16384;
 
-   public ffo(long $$0) {
-      this.a = $$0;
-      this.b = Lists.newArrayList();
-      this.a();
+   public static void a(long $$0) {
+      c($$0).filter(ffo::a).ifPresent(ffo::c);
    }
 
-   public void a() {
-      this.b.clear();
-      Buffer $$0 = GLFW.glfwGetVideoModes(this.a);
+   public static void b(long $$0) {
+      c($$0).ifPresent($$0x -> {
+         long $$1 = b($$0x);
+         $$0x.send("setStyleMask:", new Object[]{$$1 & -9L});
+      });
+   }
 
-      for (int $$1 = $$0.limit() - 1; $$1 >= 0; $$1--) {
-         $$0.position($$1);
-         ffs $$2 = new ffs($$0);
-         if ($$2.c() >= 8 && $$2.d() >= 8 && $$2.e() >= 8) {
-            this.b.add($$2);
-         }
+   private static Optional<NSObject> c(long $$0) {
+      long $$1 = GLFWNativeCocoa.glfwGetCocoaWindow($$0);
+      return $$1 != 0L ? Optional.of(new NSObject(new Pointer($$1))) : Optional.empty();
+   }
+
+   private static boolean a(NSObject $$0) {
+      return (b($$0) & 16384L) != 0L;
+   }
+
+   private static long b(NSObject $$0) {
+      return (Long)$$0.sendRaw("styleMask", new Object[0]);
+   }
+
+   private static void c(NSObject $$0) {
+      $$0.send("toggleFullScreen:", new Object[]{Pointer.NULL});
+   }
+
+   public static void a(avn<InputStream> $$0) throws IOException {
+      try (InputStream $$1 = $$0.get()) {
+         String $$2 = Base64.getEncoder().encodeToString($$1.readAllBytes());
+         Client $$3 = Client.getInstance();
+         Object $$4 = $$3.sendProxy("NSData", "alloc", new Object[0]).send("initWithBase64Encoding:", new Object[]{$$2});
+         Object $$5 = $$3.sendProxy("NSImage", "alloc", new Object[0]).send("initWithData:", new Object[]{$$4});
+         $$3.sendProxy("NSApplication", "sharedApplication", new Object[0]).send("setApplicationIconImage:", new Object[]{$$5});
       }
-
-      int[] $$3 = new int[1];
-      int[] $$4 = new int[1];
-      GLFW.glfwGetMonitorPos(this.a, $$3, $$4);
-      this.d = $$3[0];
-      this.e = $$4[0];
-      GLFWVidMode $$5 = GLFW.glfwGetVideoMode(this.a);
-      this.c = new ffs($$5);
-   }
-
-   public ffs a(Optional<ffs> $$0) {
-      if ($$0.isPresent()) {
-         ffs $$1 = $$0.get();
-
-         for (ffs $$2 : this.b) {
-            if ($$2.equals($$1)) {
-               return $$2;
-            }
-         }
-      }
-
-      return this.b();
-   }
-
-   public int a(ffs $$0) {
-      return this.b.indexOf($$0);
-   }
-
-   public ffs b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
-   }
-
-   public ffs a(int $$0) {
-      return this.b.get($$0);
-   }
-
-   public int e() {
-      return this.b.size();
-   }
-
-   public long f() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "Monitor[%s %sx%s %s]", this.a, this.d, this.e, this.c);
    }
 }

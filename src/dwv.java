@@ -4,12 +4,12 @@ import java.util.UUID;
 import java.util.function.Predicate;
 
 public interface dwv {
-   dwv a = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dv().a($$2, $$3) && !$$2x.b() && !$$2x.aa_())
+   dwv a = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dw().a($$2, $$3) && !$$2x.b() && !$$2x.aa_())
          .stream()
          .filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bF()))
          .map(bvj::cG)
          .toList();
-   dwv b = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dv().a($$2, $$3) && !$$2x.aa_())
+   dwv b = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dw().a($$2, $$3) && !$$2x.aa_())
          .stream()
          .filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bF()))
          .map(bvj::cG)

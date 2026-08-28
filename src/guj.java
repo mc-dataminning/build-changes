@@ -1,26 +1,18 @@
-public class guj extends gsu<cnk, haa, gdu> {
-   private static final alz a = alz.b("textures/entity/illager/vex.png");
-   private static final alz b = alz.b("textures/entity/illager/vex_charging.png");
+public class guj extends gqf<cka, gxv, gab<gxv>> {
+   private static final alz a = alz.b("textures/entity/horse/horse_zombie.png");
+   private static final alz b = alz.b("textures/entity/horse/horse_skeleton.png");
+   private final alz k;
 
-   public guj(gro.a $$0) {
-      super($$0, new gdu($$0.a(gel.dn)), 0.3F);
-      this.a(new gvv<>(this, $$0.b()));
+   public guj(grp.a $$0, gel $$1, gel $$2, boolean $$3) {
+      super($$0, new gbw($$0.a($$1)), new gbw($$0.a($$2)), 1.0F);
+      this.k = $$3 ? b : a;
    }
 
-   protected int a(cnk $$0, jh $$1) {
-      return 15;
+   public alz a(gxv $$0) {
+      return this.k;
    }
 
-   public alz a(haa $$0) {
-      return $$0.a ? b : a;
-   }
-
-   public haa b() {
-      return new haa();
-   }
-
-   public void a(cnk $$0, haa $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gm();
+   public gxv b() {
+      return new gxv();
    }
 }

@@ -57,18 +57,18 @@ public class btz {
 
    @Nullable
    public cxo e() {
-      return this.c != null ? this.c.dZ() : null;
+      return this.c != null ? this.c.ea() : null;
    }
 
    public xv a(bwf $$0) {
       String $$1 = "death.attack." + this.k().a();
       if (this.b == null && this.c == null) {
-         bwf $$5 = $$0.eQ();
+         bwf $$5 = $$0.eR();
          String $$6 = $$1 + ".player";
          return $$5 != null ? xv.a($$6, $$0.p_(), $$5.p_()) : xv.a($$1, $$0.p_());
       } else {
          xv $$2 = this.b == null ? this.c.p_() : this.b.p_();
-         cxo $$4 = this.b instanceof bwf $$3 ? $$3.eX() : cxo.k;
+         cxo $$4 = this.b instanceof bwf $$3 ? $$3.eZ() : cxo.j;
          return !$$4.f() && $$4.b(ku.g) ? xv.a($$1 + ".item", $$0.p_(), $$2, $$4.J()) : xv.a($$1, $$0.p_(), $$2);
       }
    }
@@ -86,7 +86,7 @@ public class btz {
    }
 
    public boolean h() {
-      if (this.d() instanceof cpw $$0 && $$0.gh().d) {
+      if (this.d() instanceof cpw $$0 && $$0.gj().d) {
          return true;
       }
 
@@ -98,7 +98,7 @@ public class btz {
       if (this.d != null) {
          return this.d;
       } else {
-         return this.c != null ? this.c.dt() : null;
+         return this.c != null ? this.c.du() : null;
       }
    }
 

@@ -30,8 +30,8 @@ public class eus extends euj {
    @Override
    public eui a() {
       jh.a $$0 = new jh.a();
-      int $$1 = this.c.dB();
-      dxu $$2 = this.b.a($$0.b(this.c.dA(), (double)$$1, this.c.dG()));
+      int $$1 = this.c.dC();
+      dxu $$2 = this.b.a($$0.b(this.c.dB(), (double)$$1, this.c.dH()));
       if (!this.c.a($$2.y())) {
          if (this.f() && this.c.bj()) {
             while (true) {
@@ -40,12 +40,12 @@ public class eus extends euj {
                   break;
                }
 
-               $$2 = this.b.a($$0.b(this.c.dA(), (double)(++$$1), this.c.dG()));
+               $$2 = this.b.a($$0.b(this.c.dB(), (double)(++$$1), this.c.dH()));
             }
          } else if (this.c.aJ()) {
-            $$1 = bae.a(this.c.dC() + 0.5);
+            $$1 = bae.a(this.c.dD() + 0.5);
          } else {
-            $$0.b(this.c.dA(), this.c.dC() + 1.0, this.c.dG());
+            $$0.b(this.c.dB(), this.c.dD() + 1.0, this.c.dH());
 
             while ($$0.v() > this.b.a().L_()) {
                $$1 = $$0.v();
@@ -58,13 +58,13 @@ public class eus extends euj {
          }
       } else {
          while (this.c.a($$2.y())) {
-            $$2 = this.b.a($$0.b(this.c.dA(), (double)(++$$1), this.c.dG()));
+            $$2 = this.b.a($$0.b(this.c.dB(), (double)(++$$1), this.c.dH()));
          }
 
          $$1--;
       }
 
-      jh $$4 = this.c.dv();
+      jh $$4 = this.c.dw();
       if (!this.a($$0.d($$4.u(), $$1, $$4.w()))) {
          fbs $$5 = this.c.cR();
          if (this.a($$0.b($$5.a, (double)$$1, $$5.c))
@@ -102,7 +102,7 @@ public class eus extends euj {
       eun $$4 = this.b($$1.a, $$1.b + 1, $$1.c);
       eun $$5 = this.b($$1.a, $$1.b, $$1.c);
       if (this.c.a($$4) >= 0.0F && $$5 != eun.w) {
-         $$3 = bae.d(Math.max(1.0F, this.c.dP()));
+         $$3 = bae.d(Math.max(1.0F, this.c.dQ()));
       }
 
       double $$6 = this.d(new jh($$1.a, $$1.b, $$1.c));
@@ -136,7 +136,7 @@ public class eus extends euj {
       if ($$2 == null || $$1 == null || $$2.b > $$0.b || $$1.b > $$0.b) {
          return false;
       } else if ($$1.l != eun.d && $$2.l != eun.d) {
-         boolean $$3 = $$2.l == eun.h && $$1.l == eun.h && (double)this.c.dq() < 0.5;
+         boolean $$3 = $$2.l == eun.h && $$1.l == eun.h && (double)this.c.dr() < 0.5;
          return ($$2.b < $$0.b || $$2.k >= 0.0F || $$3) && ($$1.b < $$0.b || $$1.k >= 0.0F || $$3);
       } else {
          return false;
@@ -157,7 +157,7 @@ public class eus extends euj {
 
    private boolean b(eui $$0) {
       fbs $$1 = this.c.cR();
-      fbx $$2 = new fbx((double)$$0.a - this.c.dA() + $$1.b() / 2.0, (double)$$0.b - this.c.dC() + $$1.c() / 2.0, (double)$$0.c - this.c.dG() + $$1.d() / 2.0);
+      fbx $$2 = new fbx((double)$$0.a - this.c.dB() + $$1.b() / 2.0, (double)$$0.b - this.c.dD() + $$1.c() / 2.0, (double)$$0.c - this.c.dH() + $$1.d() / 2.0);
       int $$3 = bae.c($$2.g() / $$1.a());
       $$2 = $$2.c((double)(1.0F / (float)$$3));
 
@@ -223,7 +223,7 @@ public class eus extends euj {
    }
 
    private double h() {
-      return Math.max(1.125, (double)this.c.dP());
+      return Math.max(1.125, (double)this.c.dQ());
    }
 
    private eui a(int $$0, int $$1, int $$2, eun $$3, float $$4) {
@@ -253,20 +253,20 @@ public class eus extends euj {
       eui $$8 = this.a($$0, $$1 + 1, $$2, $$3 - 1, $$4, $$5, $$6);
       if ($$8 == null) {
          return null;
-      } else if (this.c.dq() >= 1.0F) {
+      } else if (this.c.dr() >= 1.0F) {
          return $$8;
       } else if ($$8.l != eun.b && $$8.l != eun.c) {
          return $$8;
       } else {
          double $$9 = (double)($$0 - $$5.j()) + 0.5;
          double $$10 = (double)($$2 - $$5.l()) + 0.5;
-         double $$11 = (double)this.c.dq() / 2.0;
+         double $$11 = (double)this.c.dr() / 2.0;
          fbs $$12 = new fbs(
             $$9 - $$11,
             this.d($$7.b($$9, (double)($$1 + 1), $$10)) + 0.001,
             $$10 - $$11,
             $$9 + $$11,
-            (double)this.c.dr() + this.d($$7.b((double)$$8.a, (double)$$8.b, (double)$$8.c)) - 0.002,
+            (double)this.c.ds() + this.d($$7.b((double)$$8.a, (double)$$8.b, (double)$$8.c)) - 0.002,
             $$10 + $$11
          );
          return this.a($$12) ? null : $$8;
@@ -277,7 +277,7 @@ public class eus extends euj {
    private eui a(int $$0, int $$1, int $$2, @Nullable eui $$3) {
       $$1--;
 
-      while ($$1 > this.c.dV().L_()) {
+      while ($$1 > this.c.dW().L_()) {
          eun $$4 = this.b($$0, $$1, $$2);
          if ($$4 != eun.j) {
             return $$3;
@@ -291,7 +291,7 @@ public class eus extends euj {
    }
 
    private eui d(int $$0, int $$1, int $$2) {
-      for (int $$3 = $$1 - 1; $$3 >= this.c.dV().L_(); $$3--) {
+      for (int $$3 = $$1 - 1; $$3 >= this.c.dW().L_(); $$3--) {
          if ($$1 - $$3 > this.c.cE()) {
             return this.a($$0, $$3, $$2);
          }
@@ -352,7 +352,7 @@ public class eus extends euj {
                int $$9 = $$6 + $$2;
                int $$10 = $$7 + $$3;
                eun $$11 = this.a($$0, $$8, $$9, $$10);
-               jh $$12 = this.c.dv();
+               jh $$12 = this.c.dw();
                boolean $$13 = this.d();
                if ($$11 == eun.s && this.e() && $$13) {
                   $$11 = eun.d;
@@ -380,7 +380,7 @@ public class eus extends euj {
    }
 
    public static eun b(bwh $$0, jh $$1) {
-      return a(new eup($$0.dV(), $$0), $$1.k());
+      return a(new eup($$0.dW(), $$0), $$1.k());
    }
 
    public static eun a(eup $$0, jh.a $$1) {

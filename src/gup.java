@@ -1,22 +1,26 @@
-public class gup extends gsu<cnm, hae, gdz> {
-   private static final alz a = alz.b("textures/entity/witch.png");
+public class gup extends gro<crf, gxu> {
+   private static final alz a = alz.b("textures/entity/projectiles/wind_charge.png");
+   private final gdz b;
 
-   public gup(gro.a $$0) {
-      super($$0, new gdz($$0.a(gel.dt)), 0.5F);
-      this.a(new gwp(this, $$0.b()));
+   public gup(grp.a $$0) {
+      super($$0);
+      this.b = new gdz($$0.a(gem.ds));
    }
 
-   public alz a(hae $$0) {
-      return a;
+   @Override
+   public void a(gxu $$0, fgr $$1, glk $$2, int $$3) {
+      fgv $$4 = $$2.getBuffer(glu.a(a, this.a($$0.p) % 1.0F, 0.0F));
+      this.b.a($$0);
+      this.b.a($$1, $$4, $$3, hbb.d);
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public hae b() {
-      return new hae();
+   protected float a(float $$0) {
+      return $$0 * 0.03F;
    }
 
-   public void a(cnm $$0, hae $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.ar();
-      $$1.b = !$$0.eX().f();
+   @Override
+   public gxu d() {
+      return new gxu();
    }
 }

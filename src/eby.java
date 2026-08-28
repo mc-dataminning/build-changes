@@ -5,11 +5,11 @@ public interface eby {
       }
 
       @Override
-      public void a(bvj.c $$0) {
+      public void a(bvj.d $$0) {
       }
    };
 
    void a();
 
-   void a(bvj.c var1);
+   void a(bvj.d var1);
 }

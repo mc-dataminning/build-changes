@@ -7,11 +7,11 @@ public class aeo implements aac<acr> {
    private final float f;
 
    public aeo(bvj $$0) {
-      this.b = $$0.dA();
-      this.c = $$0.dC();
-      this.d = $$0.dG();
-      this.e = $$0.dL();
-      this.f = $$0.dN();
+      this.b = $$0.dB();
+      this.c = $$0.dD();
+      this.d = $$0.dH();
+      this.e = $$0.dM();
+      this.f = $$0.dO();
    }
 
    private aeo(ws $$0) {

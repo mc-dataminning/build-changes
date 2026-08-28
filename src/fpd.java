@@ -1,35 +1,18 @@
-public class fpd {
-   public static final int a = 8;
-   public static final int b = 8;
-   public static final int c = 8;
-   public static final int d = 8;
-   public static final int e = 40;
-   public static final int f = 8;
-   public static final int g = 8;
-   public static final int h = 8;
-   public static final int i = 64;
-   public static final int j = 64;
+public class fpd extends foe {
+   private final fnp a;
+   private final xv b;
+   private final xv c;
 
-   public static void a(fnq $$0, hck $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1, $$2, $$3, $$4, -1);
+   public fpd(int $$0, int $$1, int $$2, int $$3, xv $$4, foe.c $$5, fnp $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, q);
+      this.a = $$6;
+      this.b = $$4;
+      this.c = xy.a($$4.f(), ys.a.c(true));
    }
 
-   public static void a(fnq $$0, hck $$1, int $$2, int $$3, int $$4, int $$5) {
-      a($$0, $$1.a(), $$2, $$3, $$4, true, false, $$5);
-   }
-
-   public static void a(fnq $$0, alz $$1, int $$2, int $$3, int $$4, boolean $$5, boolean $$6, int $$7) {
-      int $$8 = 8 + ($$6 ? 8 : 0);
-      int $$9 = 8 * ($$6 ? -1 : 1);
-      $$0.a(glt::B, $$1, $$2, $$3, 8.0F, (float)$$8, $$4, $$4, 8, $$9, 64, 64, $$7);
-      if ($$5) {
-         a($$0, $$1, $$2, $$3, $$4, $$6, $$7);
-      }
-   }
-
-   private static void a(fnq $$0, alz $$1, int $$2, int $$3, int $$4, boolean $$5, int $$6) {
-      int $$7 = 8 + ($$5 ? 8 : 0);
-      int $$8 = 8 * ($$5 ? -1 : 1);
-      $$0.a(glt::B, $$1, $$2, $$3, 40.0F, (float)$$7, $$4, $$4, 8, $$8, 64, 64, $$6);
+   @Override
+   public void b(fnr $$0, int $$1, int $$2, float $$3) {
+      xv $$4 = this.B() ? this.c : this.b;
+      $$0.b(this.a, $$4, this.D(), this.E(), 16777215 | bae.f(this.l * 255.0F) << 24);
    }
 }

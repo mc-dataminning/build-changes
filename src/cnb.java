@@ -41,7 +41,7 @@ public class cnb extends crk {
    @Override
    protected void T() {
       boolean $$0 = !(this.cX() instanceof bwh) || this.cX().aq().a(axy.c);
-      boolean $$1 = !(this.dk() instanceof crt);
+      boolean $$1 = !(this.dl() instanceof crt);
       this.bT.a(cdd.a.a, $$0);
       this.bT.a(cdd.a.c, $$0 && $$1);
       this.bT.a(cdd.a.b, $$0);
@@ -49,7 +49,7 @@ public class cnb extends crk {
    }
 
    public static bxm.a m() {
-      return cmw.gr().a(bxn.s, 100.0).a(bxn.v, 0.3).a(bxn.p, 0.75).a(bxn.c, 12.0).a(bxn.d, 1.5).a(bxn.m, 32.0).a(bxn.B, 1.0);
+      return cmw.gt().a(bxn.s, 100.0).a(bxn.v, 0.3).a(bxn.p, 0.75).a(bxn.c, 12.0).a(bxn.d, 1.5).a(bxn.m, 32.0).a(bxn.B, 1.0);
    }
 
    @Override
@@ -82,7 +82,7 @@ public class cnb extends crk {
    public void d_() {
       super.d_();
       if (this.bL()) {
-         if (this.fg()) {
+         if (this.fi()) {
             this.g(bxn.v).a(0.0);
          } else {
             double $$0 = this.O_() != null ? 0.35 : 0.3;
@@ -90,7 +90,7 @@ public class cnb extends crk {
             this.g(bxn.v).a(bae.d(0.1, $$1, $$0));
          }
 
-         if (this.dV() instanceof ash $$2 && this.P && $$2.N().b(dhd.c)) {
+         if (this.dW() instanceof ash $$2 && this.P && $$2.N().b(dhd.c)) {
             boolean $$3 = false;
             fbs $$4 = this.cR().g(0.2);
 
@@ -110,7 +110,7 @@ public class cnb extends crk {
          if (this.ck > 0) {
             this.ck--;
             if (this.ck == 10) {
-               this.gx();
+               this.gz();
             }
          }
 
@@ -120,7 +120,7 @@ public class cnb extends crk {
 
          if (this.cj > 0) {
             this.cj--;
-            this.gw();
+            this.gy();
             if (this.cj == 0) {
                this.a(axf.vE, 1.0F, 1.0F);
                this.ck = 20;
@@ -129,18 +129,18 @@ public class cnb extends crk {
       }
    }
 
-   private void gw() {
+   private void gy() {
       if (this.ae.a(6) == 0) {
-         double $$0 = this.dA() - (double)this.dq() * Math.sin((double)(this.aX * (float) (Math.PI / 180.0))) + (this.ae.j() * 0.6 - 0.3);
-         double $$1 = this.dC() + (double)this.dr() - 0.3;
-         double $$2 = this.dG() + (double)this.dq() * Math.cos((double)(this.aX * (float) (Math.PI / 180.0))) + (this.ae.j() * 0.6 - 0.3);
-         this.dV().a(ll.a(ls.u, 0.49803922F, 0.5137255F, 0.57254905F), $$0, $$1, $$2, 0.0, 0.0, 0.0);
+         double $$0 = this.dB() - (double)this.dr() * Math.sin((double)(this.aX * (float) (Math.PI / 180.0))) + (this.ae.j() * 0.6 - 0.3);
+         double $$1 = this.dD() + (double)this.ds() - 0.3;
+         double $$2 = this.dH() + (double)this.dr() * Math.cos((double)(this.aX * (float) (Math.PI / 180.0))) + (this.ae.j() * 0.6 - 0.3);
+         this.dW().a(ll.a(ls.u, 0.49803922F, 0.5137255F, 0.57254905F), $$0, $$1, $$2, 0.0, 0.0, 0.0);
       }
    }
 
    @Override
-   protected boolean fg() {
-      return super.fg() || this.ci > 0 || this.cj > 0 || this.ck > 0;
+   protected boolean fi() {
+      return super.fi() || this.ci > 0 || this.cj > 0 || this.ck > 0;
    }
 
    @Override
@@ -154,7 +154,7 @@ public class cnb extends crk {
          if (this.ae.j() < 0.5) {
             this.cj = 40;
             this.a(axf.vD, 1.0F, 1.0F);
-            this.dV().a(this, (byte)39);
+            this.dW().a(this, (byte)39);
             $$0.h(this);
          } else {
             this.b($$0);
@@ -164,14 +164,14 @@ public class cnb extends crk {
       }
    }
 
-   private void gx() {
+   private void gz() {
       if (this.bL()) {
-         if (this.dV() instanceof ash $$0) {
+         if (this.dW() instanceof ash $$0) {
             Predicate<bvj> $$1 = $$0.N().b(dhd.c) ? bZ : ca;
 
-            for (bwf $$3 : this.dV().a(bwf.class, this.cR().g(4.0), $$1)) {
+            for (bwf $$3 : this.dW().a(bwf.class, this.cR().g(4.0), $$1)) {
                if (!($$3 instanceof cmd)) {
-                  $$3.a($$0, this.dW().b((bwf)this), 6.0F);
+                  $$3.a($$0, this.dX().b((bwf)this), 6.0F);
                }
 
                if (!($$3 instanceof cpw)) {
@@ -181,7 +181,7 @@ public class cnb extends crk {
 
             this.a(ecq.u);
          } else {
-            for (bwf $$5 : this.dV().a(bwf.class, this.cR().g(4.0), cb)) {
+            for (bwf $$5 : this.dW().a(bwf.class, this.cR().g(4.0), cb)) {
                this.b($$5);
             }
 
@@ -191,15 +191,15 @@ public class cnb extends crk {
                double $$8 = this.ae.k() * 0.2;
                double $$9 = this.ae.k() * 0.2;
                double $$10 = this.ae.k() * 0.2;
-               this.dV().a(ls.ac, $$6.d, $$6.e, $$6.f, $$8, $$9, $$10);
+               this.dW().a(ls.ac, $$6.d, $$6.e, $$6.f, $$8, $$9, $$10);
             }
          }
       }
    }
 
    private void b(bvj $$0) {
-      double $$1 = $$0.dA() - this.dA();
-      double $$2 = $$0.dG() - this.dG();
+      double $$1 = $$0.dB() - this.dB();
+      double $$2 = $$0.dH() - this.dH();
       double $$3 = Math.max($$1 * $$1 + $$2 * $$2, 0.001);
       $$0.j($$1 / $$3 * 4.0, 0.2, $$2 / $$3 * 4.0);
    }
@@ -224,7 +224,7 @@ public class cnb extends crk {
       return this.cj;
    }
 
-   public int gv() {
+   public int gx() {
       return this.ck;
    }
 
@@ -267,13 +267,13 @@ public class cnb extends crk {
    }
 
    @Override
-   public boolean gm() {
+   public boolean go() {
       return false;
    }
 
    @Override
-   protected fbs gc() {
-      fbs $$0 = super.gc();
+   protected fbs ge() {
+      fbs $$0 = super.ge();
       return $$0.f(0.05, 0.0, 0.05);
    }
 }

@@ -60,7 +60,7 @@ public class cwa extends cxk implements cwj {
    }
 
    public static cxo a(cxo $$0, cpw $$1) {
-      return !$$1.fT() ? new cxo(cxs.qW) : $$0;
+      return !$$1.fV() ? new cxo(cxs.qW) : $$0;
    }
 
    @Override

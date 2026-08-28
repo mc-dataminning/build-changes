@@ -1,95 +1,99 @@
 import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fjw extends hhu {
+public class fjw extends hhv {
    private static final Logger a = LogUtils.getLogger();
-   private static final hhv b = new hhv(Duration.ofSeconds(5L));
-   private final List<fld> c;
-   private final ftw C;
-   private final frw D = frw.d();
-   private volatile xv E;
+   private static final xv b = xv.c("mco.configure.world.buttons.invite");
+   private static final xv c = xv.c("mco.configure.world.invite.profile.name").b(-6250336);
+   private static final xv C = xv.c("mco.configure.world.players.inviting").b(-6250336);
+   private static final xv D = xv.c("mco.configure.world.players.error").b(-65536);
+   private final frt E = new frt(this);
+   private fon F;
+   private foe G;
+   private final fii H;
+   private final fjr I;
+   private final ftx J;
    @Nullable
-   private fot F;
+   private xv K;
 
-   public fjw(ftw $$0, fld... $$1) {
-      super(flv.a);
-      this.C = $$0;
-      this.c = List.of($$1);
-      if (this.c.isEmpty()) {
-         throw new IllegalArgumentException("No tasks added");
-      } else {
-         this.E = this.c.get(0).a();
-         Runnable $$2 = () -> {
-            for (fld $$1x : $$1) {
-               this.a($$1x.a());
-               if ($$1x.d()) {
-                  break;
-               }
-
-               $$1x.run();
-               if ($$1x.d()) {
-                  return;
-               }
-            }
-         };
-         Thread $$3 = new Thread($$2, "Realms-long-running-task");
-         $$3.setUncaughtExceptionHandler(new fja(a));
-         $$3.start();
-      }
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      if (this.F != null) {
-         b.a(this.m.aZ(), this.F.z());
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.f();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
+   public fjw(fjr $$0, ftx $$1, fii $$2) {
+      super(b);
+      this.I = $$0;
+      this.J = $$1;
+      this.H = $$2;
    }
 
    @Override
    public void aT_() {
-      this.D.c().b();
-      this.F = new fot(this.p, this.E);
-      this.D.a(this.F, $$0 -> $$0.e(30));
-      this.D.a(fod.a(xu.e, $$0 -> this.f()).a());
-      this.D.a($$1 -> {
-         fob var10000 = this.c($$1);
+      this.E.a(b, this.p);
+      frx $$0 = this.E.c(frx.d().a(8));
+      this.F = new fon(this.m.h, 200, 20, xv.c("mco.configure.world.invite.profile.name"));
+      $$0.a(frp.a(this.p, this.F, c));
+      this.G = $$0.a(foe.a(b, $$0x -> this.E()).a(200).a());
+      this.E.b(foe.a(xu.k, $$0x -> this.aP_()).a(200).a());
+      this.E.a($$1 -> {
+         foc var10000 = this.c($$1);
       });
       this.c();
    }
 
    @Override
    protected void c() {
-      this.D.a();
-      frq.a(this.D, this.H());
+      this.E.a();
    }
 
-   protected void f() {
-      for (fld $$0 : this.c) {
-         $$0.b();
-      }
-
-      this.m.a(this.C);
+   @Override
+   protected void aG_() {
+      this.b(this.F);
    }
 
-   public void a(xv $$0) {
-      if (this.F != null) {
-         this.F.b($$0);
-      }
+   private void E() {
+      if (bbb.h(this.F.a())) {
+         this.a(D);
+      } else {
+         long $$0 = this.H.a;
+         String $$1 = this.F.a().trim();
+         this.G.j = false;
+         this.F.e(false);
+         this.a(C);
+         CompletableFuture.<fii>supplyAsync(() -> {
+            try {
+               return fhh.a().a($$0, $$1);
+            } catch (Exception var4) {
+               a.error("Couldn't invite user");
+               return null;
+            }
+         }, ae.h()).thenAcceptAsync($$0x -> {
+            if ($$0x != null) {
+               this.H.h = $$0x.h;
+               this.m.a(new fkc(this.I, this.H));
+            } else {
+               this.a(D);
+            }
 
-      this.E = $$0;
+            this.F.e(true);
+            this.G.j = true;
+         }, this.r);
+      }
+   }
+
+   private void a(xv $$0) {
+      this.K = $$0;
+      this.m.aZ().c($$0);
+   }
+
+   @Override
+   public void aP_() {
+      this.m.a(this.J);
+   }
+
+   @Override
+   public void a(fnr $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.K != null) {
+         $$0.a(this.p, this.K, this.n / 2, this.G.E() + this.G.w() + 8, -1);
+      }
    }
 }

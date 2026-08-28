@@ -28,7 +28,7 @@ public abstract class cqp extends bvj implements bxe {
    @Nullable
    @Override
    public bvj p() {
-      if (this.b != null && !this.b.dQ()) {
+      if (this.b != null && !this.b.dR()) {
          return this.b;
       } else if (this.a != null) {
          this.b = this.b(this.a);
@@ -40,7 +40,7 @@ public abstract class cqp extends bvj implements bxe {
 
    @Nullable
    protected bvj b(UUID $$0) {
-      return this.dV() instanceof ash $$1 ? $$1.a($$0) : null;
+      return this.dW() instanceof ash $$1 ? $$1.a($$0) : null;
    }
 
    public bvj D() {
@@ -107,7 +107,7 @@ public abstract class cqp extends bvj implements bxe {
    private boolean m() {
       bvj $$0 = this.p();
       if ($$0 != null) {
-         fbs $$1 = this.cR().b(this.dy()).g(1.0);
+         fbs $$1 = this.cR().b(this.dz()).g(1.0);
          return $$0.dg().db().filter(bvo.h).noneMatch($$1x -> $$1.c($$1x.cR()));
       } else {
          return true;
@@ -128,8 +128,8 @@ public abstract class cqp extends bvj implements bxe {
       double $$6 = $$5.i();
       this.v((float)(bae.d($$5.d, $$5.f) * 180.0F / (float)Math.PI));
       this.w((float)(bae.d($$5.e, $$6) * 180.0F / (float)Math.PI));
-      this.N = this.dL();
-      this.O = this.dN();
+      this.N = this.dM();
+      this.O = this.dO();
    }
 
    public void a(bvj $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
@@ -138,11 +138,11 @@ public abstract class cqp extends bvj implements bxe {
       float $$8 = bae.b($$2 * (float) (Math.PI / 180.0)) * bae.b($$1 * (float) (Math.PI / 180.0));
       this.c((double)$$6, (double)$$7, (double)$$8, $$4, $$5);
       fbx $$9 = $$0.ah();
-      this.h(this.dy().b($$9.d, $$0.aJ() ? 0.0 : $$9.e, $$9.f));
+      this.h(this.dz().b($$9.d, $$0.aJ() ? 0.0 : $$9.e, $$9.f));
    }
 
    public static <T extends cqp> T a(cqp.a<T> $$0, ash $$1, cxo $$2, bwf $$3, float $$4, float $$5, float $$6) {
-      return a($$0.create($$1, $$3, $$2), $$1, $$2, $$4x -> $$4x.a($$3, $$3.dN(), $$3.dL(), $$4, $$5, $$6));
+      return a($$0.create($$1, $$3, $$2), $$1, $$2, $$4x -> $$4x.a($$3, $$3.dO(), $$3.dM(), $$4, $$5, $$6));
    }
 
    public static <T extends cqp> T a(cqp.a<T> $$0, ash $$1, cxo $$2, bwf $$3, double $$4, double $$5, double $$6, float $$7, float $$8) {
@@ -169,7 +169,7 @@ public abstract class cqp extends bvj implements bxe {
       dea.a($$0, $$1, this, $$0x -> {
       });
       if (this instanceof cqd $$2) {
-         cxo $$3 = $$2.dZ();
+         cxo $$3 = $$2.ea();
          if ($$3 != null && !$$3.f() && !$$1.h().equals($$3.h())) {
             dea.a($$0, $$3, this, $$2::b);
          }
@@ -191,7 +191,7 @@ public abstract class cqp extends bvj implements bxe {
       } else if (this.B() && $$0 instanceof fbt $$4 && $$4.f()) {
          cqq $$5 = cqq.b;
          if (this.a($$5, null, this.p(), false)) {
-            this.h(this.dy().c(0.2));
+            this.h(this.dz().c(0.2));
             return $$5;
          }
       }
@@ -206,7 +206,7 @@ public abstract class cqp extends bvj implements bxe {
 
    public boolean a(cqq $$0, @Nullable bvj $$1, @Nullable bvj $$2, boolean $$3) {
       $$0.deflect(this, $$1, this.ae);
-      if (!this.dV().C) {
+      if (!this.dW().C) {
          this.c($$2);
          this.b($$1, $$3);
       }
@@ -230,12 +230,12 @@ public abstract class cqp extends bvj implements bxe {
          }
 
          this.a($$2);
-         this.dV().a(ecq.J, $$0.g(), ecq.a.a(this, null));
+         this.dW().a(ecq.J, $$0.g(), ecq.a.a(this, null));
       } else if ($$1 == fbv.a.b) {
          fbt $$5 = (fbt)$$0;
          this.a($$5);
          jh $$6 = $$5.b();
-         this.dV().a(ecq.J, $$6, ecq.a.a(this, this.dV().a_($$6)));
+         this.dW().a(ecq.J, $$6, ecq.a.a(this, this.dW().a_($$6)));
       }
    }
 
@@ -243,8 +243,8 @@ public abstract class cqp extends bvj implements bxe {
    }
 
    protected void a(fbt $$0) {
-      dxu $$1 = this.dV().a_($$0.b());
-      $$1.a(this.dV(), $$1, $$0, this);
+      dxu $$1 = this.dW().a_($$0.b());
+      $$1.a(this.dW(), $$1, $$0, this);
    }
 
    @Override
@@ -254,9 +254,9 @@ public abstract class cqp extends bvj implements bxe {
          double $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
          this.w((float)(bae.d($$1, $$3) * 180.0F / (float)Math.PI));
          this.v((float)(bae.d($$0, $$2) * 180.0F / (float)Math.PI));
-         this.O = this.dN();
-         this.N = this.dL();
-         this.b(this.dA(), this.dC(), this.dG(), this.dL(), this.dN());
+         this.O = this.dO();
+         this.N = this.dM();
+         this.b(this.dB(), this.dD(), this.dH(), this.dM(), this.dO());
       }
    }
 
@@ -271,7 +271,7 @@ public abstract class cqp extends bvj implements bxe {
 
    @Override
    protected void E() {
-      fbx $$0 = this.dy();
+      fbx $$0 = this.dz();
       double $$1 = $$0.i();
       this.w(f(this.O, (float)(bae.d($$0.e, $$1) * 180.0F / (float)Math.PI)));
       this.v(f(this.N, (float)(bae.d($$0.d, $$0.f) * 180.0F / (float)Math.PI)));
@@ -298,7 +298,7 @@ public abstract class cqp extends bvj implements bxe {
    @Override
    public void a(acs $$0) {
       super.a($$0);
-      bvj $$1 = this.dV().a($$0.p());
+      bvj $$1 = this.dW().a($$0.p());
       if ($$1 != null) {
          this.c($$1);
       }
@@ -325,8 +325,8 @@ public abstract class cqp extends bvj implements bxe {
    }
 
    public DoubleDoubleImmutablePair a_(bwf $$0, btz $$1) {
-      double $$2 = this.dy().d;
-      double $$3 = this.dy().f;
+      double $$2 = this.dz().d;
+      double $$3 = this.dz().f;
       return DoubleDoubleImmutablePair.of($$2, $$3);
    }
 

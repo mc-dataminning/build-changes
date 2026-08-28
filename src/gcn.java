@@ -1,36 +1,67 @@
-import org.joml.Quaternionf;
-
-public class gcn<T extends gze> extends gbx<T> {
-   private static final String a = "cape";
-   private final gem b = this.q.b("cape");
-
-   public gcn(gem $$0) {
+public class gcn extends gac<gze> {
+   public gcn(gen $$0) {
       super($$0);
    }
 
-   public static ges a() {
-      geu $$0 = gbx.a(geq.a, 0.0F);
-      gew $$1 = $$0.a();
-      gew $$2 = $$1.a("head");
-      $$2.a("hat");
-      gew $$3 = $$1.a("body");
-      $$1.a("left_arm");
-      $$1.a("right_arm");
-      $$1.a("left_leg");
-      $$1.a("right_leg");
-      $$3.a("cape", ger.c().a(0, 0).a(-5.0F, 0.0F, -1.0F, 10.0F, 16.0F, 1.0F, geq.a, 1.0F, 0.5F), geo.a(0.0F, 0.0F, 2.0F, 0.0F, (float) Math.PI, 0.0F));
-      return ges.a($$0, 64, 64);
+   public void a(gze $$0) {
+      super.a($$0);
+      float $$1 = (float) (Math.PI / 6);
+      float $$2 = $$0.C;
+      com $$3 = $$0.d;
+      if ($$3 == com.e) {
+         float $$4 = $$0.p / 60.0F;
+         this.f.g = (float) (Math.PI / 6) + (float) (Math.PI / 180.0) * bae.a($$4 * 30.0F) * 10.0F;
+         this.g.g = (float) (-Math.PI / 6) - (float) (Math.PI / 180.0) * bae.b($$4 * 30.0F) * 10.0F;
+         this.o.b = this.o.b + bae.a($$4 * 10.0F);
+         this.o.c = this.o.c + bae.a($$4 * 40.0F) + 0.4F;
+         this.r.g = (float) (Math.PI / 180.0) * (70.0F + bae.b($$4 * 40.0F) * 10.0F);
+         this.s.g = this.r.g * -1.0F;
+         this.r.c = this.r.c + (bae.a($$4 * 40.0F) * 0.5F - 0.5F);
+         this.s.c = this.s.c + bae.a($$4 * 40.0F) * 0.5F + 0.5F;
+         this.q.c = this.q.c + bae.a($$4 * 40.0F) * 0.35F;
+      } else if ($$3 == com.a && $$2 == 0.0F) {
+         this.b($$0);
+      } else if ($$3 == com.b) {
+         gaf.a(this.r, this.s, this.o, $$0.ap == bvz.b);
+      } else if ($$3 == com.c) {
+         gaf.a(this.r, this.s, $$0.c, $$0.F, $$0.ap == bvz.b);
+      } else if ($$3 == com.d) {
+         this.o.e = 0.5F;
+         this.o.f = 0.0F;
+         if ($$0.ap == bvz.a) {
+            this.r.f = -0.5F;
+            this.r.e = -0.9F;
+         } else {
+            this.s.f = 0.5F;
+            this.s.e = -0.9F;
+         }
+      }
    }
 
-   public void a(T $$0) {
-      super.a($$0);
-      this.b
-         .a(
-            new Quaternionf()
-               .rotateY((float) -Math.PI)
-               .rotateX((6.0F + $$0.c / 2.0F + $$0.b) * (float) (Math.PI / 180.0))
-               .rotateZ($$0.d / 2.0F * (float) (Math.PI / 180.0))
-               .rotateY((180.0F - $$0.d / 2.0F) * (float) (Math.PI / 180.0))
-         );
+   protected void a(gze $$0, float $$1) {
+      float $$2 = $$0.C;
+      if ($$2 > 0.0F && $$0.d == com.a) {
+         gaf.a(this.r, this.s, $$0.ap, $$2, $$0.p);
+      } else {
+         super.a($$0, $$1);
+      }
+   }
+
+   private void b(gze $$0) {
+      if ($$0.ap == bvz.a) {
+         this.s.e = -1.8F;
+      } else {
+         this.r.e = -1.8F;
+      }
+   }
+
+   @Override
+   public void c_(boolean $$0) {
+      super.c_($$0);
+      this.a.k = $$0;
+      this.b.k = $$0;
+      this.c.k = $$0;
+      this.d.k = $$0;
+      this.e.k = $$0;
    }
 }

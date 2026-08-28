@@ -1,3 +1,4 @@
-public class gxw extends gyk {
-   public boolean a;
+public class gxw extends gxu {
+   public float a;
+   public float b;
 }

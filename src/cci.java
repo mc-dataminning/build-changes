@@ -19,21 +19,21 @@ public class cci extends ccg {
    @Override
    public void a() {
       if (this.r && this.d.bj()) {
-         this.d.h(this.d.dy().b(0.0, 0.005, 0.0));
+         this.d.h(this.d.dz().b(0.0, 0.005, 0.0));
       }
 
       if (this.k == ccg.a.b && !this.d.L().m()) {
-         double $$0 = this.e - this.d.dA();
-         double $$1 = this.f - this.d.dC();
-         double $$2 = this.g - this.d.dG();
+         double $$0 = this.e - this.d.dB();
+         double $$1 = this.f - this.d.dD();
+         double $$2 = this.g - this.d.dH();
          double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
          if ($$3 < 2.5000003E-7F) {
             this.d.G(0.0F);
          } else {
             float $$4 = (float)(bae.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
-            this.d.v(this.b(this.d.dL(), $$4, (float)this.o));
-            this.d.aX = this.d.dL();
-            this.d.aZ = this.d.dL();
+            this.d.v(this.b(this.d.dM(), $$4, (float)this.o));
+            this.d.aX = this.d.dM();
+            this.d.aZ = this.d.dM();
             float $$5 = (float)(this.h * this.d.h(bxn.v));
             if (this.d.bj()) {
                this.d.C($$5 * this.p);
@@ -41,15 +41,15 @@ public class cci extends ccg {
                if (Math.abs($$1) > 1.0E-5F || Math.abs($$6) > 1.0E-5F) {
                   float $$7 = -((float)(bae.d($$1, $$6) * 180.0F / (float)Math.PI));
                   $$7 = bae.a(bae.h($$7), (float)(-this.n), (float)this.n);
-                  this.d.w(this.a(this.d.dN(), $$7, 5.0F));
+                  this.d.w(this.a(this.d.dO(), $$7, 5.0F));
                }
 
-               float $$8 = bae.b(this.d.dN() * (float) (Math.PI / 180.0));
-               float $$9 = bae.a(this.d.dN() * (float) (Math.PI / 180.0));
+               float $$8 = bae.b(this.d.dO() * (float) (Math.PI / 180.0));
+               float $$9 = bae.a(this.d.dO() * (float) (Math.PI / 180.0));
                this.d.bq = $$8 * $$5;
                this.d.bp = -$$9 * $$5;
             } else {
-               float $$10 = Math.abs(bae.h(this.d.dL() - $$4));
+               float $$10 = Math.abs(bae.h(this.d.dM() - $$4));
                float $$11 = a($$10);
                this.d.C($$5 * this.q * $$11);
             }

@@ -5,7 +5,7 @@ import java.util.Optional;
 public class at {
    public static final Codec<at> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               cxo.d.fieldOf("icon").forGetter(at::c),
+               cxo.c.fieldOf("icon").forGetter(at::c),
                xx.a.fieldOf("title").forGetter(at::a),
                xx.a.fieldOf("description").forGetter(at::b),
                alz.a.optionalFieldOf("background").forGetter(at::d),
@@ -87,7 +87,7 @@ public class at {
    private void a(xg $$0) {
       xx.d.encode($$0, this.c);
       xx.d.encode($$0, this.d);
-      cxo.i.encode($$0, this.e);
+      cxo.h.encode($$0, this.e);
       $$0.a(this.g);
       int $$1 = 0;
       if (this.f.isPresent()) {
@@ -111,7 +111,7 @@ public class at {
    private static at b(xg $$0) {
       xv $$1 = xx.d.decode($$0);
       xv $$2 = xx.d.decode($$0);
-      cxo $$3 = cxo.i.decode($$0);
+      cxo $$3 = cxo.h.decode($$0);
       an $$4 = $$0.b(an.class);
       int $$5 = $$0.readInt();
       Optional<alz> $$6 = ($$5 & 1) != 0 ? Optional.of($$0.q()) : Optional.empty();

@@ -9,13 +9,13 @@ public class eup {
 
    public eup(dgq $$0, bwh $$1) {
       this.a = $$0;
-      if ($$1.dV() instanceof ash $$2) {
+      if ($$1.dW() instanceof ash $$2) {
          this.b = $$2.H();
       } else {
          this.b = null;
       }
 
-      this.c = $$1.dv();
+      this.c = $$1.dw();
    }
 
    public eun a(int $$0, int $$1, int $$2) {

@@ -1,3 +1,5 @@
-public interface gzj {
-   boolean c();
+public class gzj extends gys {
+   public float a;
+   public float b;
+   public float c;
 }

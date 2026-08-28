@@ -169,7 +169,7 @@ public final class dww {
 
                         boolean $$16 = $$3.a().f() == 1 && $$3.a().b("id", 8);
                         if ($$16) {
-                           $$15.a($$0, $$0.d_($$15.dv()), bvp.q, null);
+                           $$15.a($$0, $$0.d_($$15.dw()), bvp.q, null);
                         }
 
                         $$15.ai();
@@ -241,7 +241,7 @@ public final class dww {
 
    private static boolean a(ash $$0, jh $$1, UUID $$2) {
       bvj $$3 = $$0.a($$2);
-      return $$3 == null || !$$3.bL() || !$$3.dV().ah().equals($$0.ah()) || $$3.dv().j($$1) > (double)g;
+      return $$3 == null || !$$3.bL() || !$$3.dW().ah().equals($$0.ah()) || $$3.dw().j($$1) > (double)g;
    }
 
    private static boolean a(dhh $$0, fbx $$1, fbx $$2) {

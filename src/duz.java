@@ -11,7 +11,7 @@ public class duz extends duq implements bts {
    public static final int c = 0;
    public static final int d = 1;
    public static final int e = 2;
-   private jz<cxo> l = jz.a(5, cxo.k);
+   private jz<cxo> l = jz.a(5, cxo.j);
    int m;
    private boolean[] n;
    private cxk r;
@@ -166,7 +166,7 @@ public class duz extends duq implements bts {
    @Override
    protected void a(ux $$0, js.a $$1) {
       super.a($$0, $$1);
-      this.l = jz.a(this.b(), cxo.k);
+      this.l = jz.a(this.b(), cxo.j);
       btc.b($$0, this.l, $$1);
       this.m = $$0.g("BrewTime");
       if (this.m > 0) {

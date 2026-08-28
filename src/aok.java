@@ -41,14 +41,14 @@ public class aok {
                int $$9 = Math.min($$5, $$8);
                $$8 -= $$9;
                cxo $$10 = $$1.a($$9, false);
-               boolean $$11 = $$7.gg().f($$10);
+               boolean $$11 = $$7.gi().f($$10);
                if ($$11 && $$10.f()) {
                   cma $$13 = $$7.a($$4, false);
                   if ($$13 != null) {
                      $$13.y();
                   }
 
-                  $$7.dV().a(null, $$7.dA(), $$7.dC(), $$7.dG(), axf.nU, axg.h, 0.2F, (($$7.dY().i() - $$7.dY().i()) * 0.7F + 1.0F) * 2.0F);
+                  $$7.dW().a(null, $$7.dB(), $$7.dD(), $$7.dH(), axf.nU, axg.h, 0.2F, (($$7.dZ().i() - $$7.dZ().i()) * 0.7F + 1.0F) * 2.0F);
                   $$7.cd.d();
                } else {
                   cma $$12 = $$7.a($$10, false);

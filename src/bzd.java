@@ -9,7 +9,7 @@ public class bzd extends bxy<cpi> {
    }
 
    protected boolean a(ash $$0, cpi $$1) {
-      cpw $$2 = $$1.gm();
+      cpw $$2 = $$1.go();
       return $$1.bL() && $$2 != null && !$$1.bj() && !$$1.T && $$1.g($$2) <= 16.0 && $$2.cd != null;
    }
 
@@ -22,7 +22,7 @@ public class bzd extends bxy<cpi> {
    }
 
    protected void c(ash $$0, cpi $$1, long $$2) {
-      bxh<?> $$3 = $$1.eb();
+      bxh<?> $$3 = $$1.ec();
       $$3.b(cfj.m);
       $$3.b(cfj.n);
    }
@@ -37,8 +37,8 @@ public class bzd extends bxy<cpi> {
    }
 
    private void a(cpi $$0) {
-      bxh<?> $$1 = $$0.eb();
-      $$1.a(cfj.m, new cfm(new byj($$0.gm(), false), this.c, 2));
-      $$1.a(cfj.n, new byj($$0.gm(), true));
+      bxh<?> $$1 = $$0.ec();
+      $$1.a(cfj.m, new cfm(new byj($$0.go(), false), this.c, 2));
+      $$1.a(cfj.n, new byj($$0.go(), true));
    }
 }

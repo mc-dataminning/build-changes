@@ -50,7 +50,7 @@ public abstract class ckv implements cld {
 
    @Override
    public float g() {
-      float $$0 = (float)this.a.dy().i() + 1.0F;
+      float $$0 = (float)this.a.dz().i() + 1.0F;
       float $$1 = Math.min($$0, 40.0F);
       return 0.7F / $$1 / $$0;
    }

@@ -43,7 +43,7 @@ public class euf extends eus {
       eun $$4 = this.b($$1.a, $$1.b, $$1.c);
       int $$5;
       if (this.c.a($$3) >= 0.0F && $$4 != eun.w) {
-         $$5 = bae.d(Math.max(1.0F, this.c.dP()));
+         $$5 = bae.d(Math.max(1.0F, this.c.dQ()));
       } else {
          $$5 = 0;
       }
@@ -61,7 +61,7 @@ public class euf extends eus {
 
       for (int $$10 = 0; $$10 < $$2; $$10++) {
          eui $$11 = $$0[$$10];
-         if ($$11.l == eun.j && this.a && $$11.b < this.c.dV().O() - 10) {
+         if ($$11.l == eun.j && this.a && $$11.b < this.c.dW().O() - 10) {
             $$11.k++;
          }
       }

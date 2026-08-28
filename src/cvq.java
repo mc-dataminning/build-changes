@@ -64,7 +64,7 @@ public class cvq extends cwh {
 
    private static boolean b(dbh $$0) {
       cpw $$1 = $$0.o();
-      return $$0.p().equals(bth.a) && $$1.eY().a(cxs.wi) && !$$1.fW();
+      return $$0.p().equals(bth.a) && $$1.fa().a(cxs.wi) && !$$1.fY();
    }
 
    private Optional<dxu> a(dhh $$0, jh $$1, @Nullable cpw $$2, dxu $$3) {

@@ -7,8 +7,8 @@ public class cab {
             if ($$0x.A.a(20) != 0) {
                return false;
             } else {
-               bxh<?> $$3 = $$1.eb();
-               crj $$4 = $$0x.d($$1.dv());
+               bxh<?> $$3 = $$1.ec();
+               crj $$4 = $$0x.d($$1.dw());
                if ($$4 != null) {
                   if ($$4.c() && !$$4.b()) {
                      $$3.b(crn.h);

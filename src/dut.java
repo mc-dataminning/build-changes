@@ -94,7 +94,7 @@ public class dut extends duw {
          for (bvj $$4 : $$3) {
             if ($$4 instanceof chx) {
                chx $$5 = (chx)$$4;
-               if ($$0.dt().g($$4.dt()) <= 16.0) {
+               if ($$0.du().g($$4.du()) <= 16.0) {
                   if (!this.j()) {
                      $$5.h($$0);
                   } else {
@@ -172,7 +172,7 @@ public class dut extends duw {
                   }
 
                   if ($$5 == dut.b.a) {
-                     $$11.gC();
+                     $$11.gE();
                      if ($$2.a(axu.aJ, $$0x -> $$0x.b(dkf.c))) {
                         int $$12 = a($$2);
                         if ($$12 < 5) {
@@ -190,12 +190,12 @@ public class dut extends duw {
                      $$4.add($$11);
                   }
 
-                  float $$14 = $$10.dq();
+                  float $$14 = $$10.dr();
                   double $$15 = $$9 ? 0.0 : 0.55 + (double)($$14 / 2.0F);
                   double $$16 = (double)$$1.u() + 0.5 + $$15 * (double)$$7.j();
-                  double $$17 = (double)$$1.v() + 0.5 - (double)($$10.dr() / 2.0F);
+                  double $$17 = (double)$$1.v() + 0.5 - (double)($$10.ds() / 2.0F);
                   double $$18 = (double)$$1.w() + 0.5 + $$15 * (double)$$7.l();
-                  $$10.b($$16, $$17, $$18, $$10.dL(), $$10.dN());
+                  $$10.b($$16, $$17, $$18, $$10.dM(), $$10.dO());
                }
 
                $$0.a(null, $$1, axf.bW, axg.e, 1.0F, 1.0F);
@@ -368,7 +368,7 @@ public class dut extends duw {
             $$1.c_(Math.max(0, $$2 - $$0));
          }
 
-         $$1.r(Math.max(0, $$1.gu() - $$0));
+         $$1.r(Math.max(0, $$1.gw() - $$0));
       }
 
       public czx a() {

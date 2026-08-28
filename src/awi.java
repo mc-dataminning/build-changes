@@ -58,7 +58,7 @@ public abstract class awi {
    }
 
    public void a(wp $$0, asi $$1, asx $$2) {
-      GameProfile $$3 = $$1.gf();
+      GameProfile $$3 = $$1.gh();
       awe $$4 = this.k.at();
       String $$6;
       if ($$4 != null) {
@@ -82,7 +82,7 @@ public abstract class awi {
 
       $$1.a($$11);
       String $$13 = $$0.a(this.k.bl());
-      h.info("{}[{}] logged in with entity id {} at ({}, {}, {})", new Object[]{$$1.al().getString(), $$13, $$1.ar(), $$1.dA(), $$1.dC(), $$1.dG()});
+      h.info("{}[{}] logged in with entity id {} at ({}, {}, {})", new Object[]{$$1.al().getString(), $$13, $$1.ar(), $$1.dB(), $$1.dD(), $$1.dH()});
       evy $$14 = $$11.D_();
       $$1.c($$8.orElse(null));
       atk $$15 = new atk(this.k, $$0, $$1, $$2);
@@ -93,8 +93,8 @@ public abstract class awi {
       boolean $$19 = $$16.b(dhd.x);
       $$15.b(new aej($$1.ar(), $$14.l(), this.k.K(), this.n(), this.w, this.x, $$18, !$$17, $$19, $$1.b($$11), this.k.aA()));
       $$15.b(new ade($$14.q(), $$14.r()));
-      $$15.b(new aet($$1.gh()));
-      $$15.b(new agh($$1.gg().j));
+      $$15.b(new aet($$1.gj()));
+      $$15.b(new agh($$1.gi().j));
       dck $$20 = this.k.aI();
       $$15.b(new ahg($$20.b(), $$20.d()));
       this.e($$1);
@@ -103,14 +103,14 @@ public abstract class awi {
       this.a($$11.g(), $$1);
       this.k.av();
       yj $$21;
-      if ($$1.gf().getName().equalsIgnoreCase($$6)) {
+      if ($$1.gh().getName().equalsIgnoreCase($$6)) {
          $$21 = xv.a("multiplayer.player.joined", $$1.p_());
       } else {
          $$21 = xv.a("multiplayer.player.joined.renamed", $$1.p_(), $$6);
       }
 
       this.a($$21.a(n.o), false);
-      $$15.a($$1.dA(), $$1.dC(), $$1.dG(), $$1.dL(), $$1.dN());
+      $$15.a($$1.dB(), $$1.dD(), $$1.dH(), $$1.dM(), $$1.dO());
       akw $$23 = this.k.au();
       if ($$23 != null && !$$2.d()) {
          $$1.a($$23);
@@ -188,7 +188,7 @@ public abstract class awi {
    public Optional<ux> a(asi $$0) {
       ux $$1 = this.k.aZ().w();
       Optional<ux> $$2;
-      if (this.k.a($$0.gf()) && $$1 != null) {
+      if (this.k.a($$0.gh()) && $$1 != null) {
          $$2 = Optional.of($$1);
          $$0.g($$1);
          h.debug("loading single player");
@@ -221,17 +221,17 @@ public abstract class awi {
          if ($$2.df()) {
             h.debug("Removing player mount");
             $$0.ae();
-            $$2.dc().forEach($$0x -> $$0x.c(bvj.c.d));
+            $$2.dc().forEach($$0x -> $$0x.c(bvj.d.d));
          }
       }
 
       $$0.ao();
 
       for (cqz $$3 : $$0.ak()) {
-         $$3.c(bvj.c.d);
+         $$3.c(bvj.d.d);
       }
 
-      $$1.a($$0, bvj.c.d);
+      $$1.a($$0, bvj.d.d);
       $$0.S().a();
       this.l.remove($$0);
       this.k.aM().b($$0);
@@ -297,16 +297,16 @@ public abstract class awi {
       return !$$2.isEmpty();
    }
 
-   public asi a(asi $$0, boolean $$1, bvj.c $$2) {
+   public asi a(asi $$0, boolean $$1, bvj.d $$2) {
       this.l.remove($$0);
       $$0.y().a($$0, $$2);
       euw $$3 = $$0.a(!$$1, euw.a);
       ash $$4 = $$3.b();
-      asi $$5 = new asi(this.k, $$4, $$0.gf(), $$0.C());
+      asi $$5 = new asi(this.k, $$4, $$0.gh(), $$0.C());
       $$5.f = $$0.f;
       $$5.a($$0, $$1);
       $$5.e($$0.ar());
-      $$5.b($$0.fw());
+      $$5.b($$0.fy());
       if (!$$3.g()) {
          $$5.b($$0);
       }
@@ -325,7 +325,7 @@ public abstract class awi {
       ash $$9 = $$5.y();
       evy $$10 = $$9.D_();
       $$5.f.b(new afk($$5.b($$9), $$8));
-      $$5.f.a($$5.dA(), $$5.dC(), $$5.dG(), $$5.dL(), $$5.dN());
+      $$5.f.a($$5.dB(), $$5.dD(), $$5.dH(), $$5.dM(), $$5.dO());
       $$5.f.b(new afz($$4.Y(), $$4.Z()));
       $$5.f.b(new ade($$10.q(), $$10.r()));
       $$5.f.b(new agf($$5.cs, $$5.cr, $$5.cq));
@@ -336,7 +336,7 @@ public abstract class awi {
       this.l.add($$5);
       this.m.put($$5.cG(), $$5);
       $$5.d();
-      $$5.x($$5.eD());
+      $$5.x($$5.eE());
       jh $$11 = $$5.T();
       ash $$12 = this.k.a($$5.V());
       if (!$$1 && $$11 != null && $$12 != null) {
@@ -354,13 +354,13 @@ public abstract class awi {
    }
 
    public void a(bwf $$0, atk $$1) {
-      for (buo $$2 : $$0.eA()) {
+      for (buo $$2 : $$0.eB()) {
          $$1.b(new ahf($$0.ar(), $$2, false));
       }
    }
 
    public void e(asi $$0) {
-      GameProfile $$1 = $$0.gf();
+      GameProfile $$1 = $$0.gh();
       int $$2 = this.k.c($$1);
       this.a($$0, $$2);
    }
@@ -380,7 +380,7 @@ public abstract class awi {
 
    public void a(aac<?> $$0, aly<dhh> $$1) {
       for (asi $$2 : this.l) {
-         if ($$2.dV().ah() == $$1) {
+         if ($$2.dW().ah() == $$1) {
             $$2.f.b($$0);
          }
       }
@@ -416,7 +416,7 @@ public abstract class awi {
       String[] $$0 = new String[this.l.size()];
 
       for (int $$1 = 0; $$1 < this.l.size(); $$1++) {
-         $$0[$$1] = this.l.get($$1).gf().getName();
+         $$0[$$1] = this.l.get($$1).gh().getName();
       }
 
       return $$0;
@@ -477,7 +477,7 @@ public abstract class awi {
 
       for (int $$2 = 0; $$2 < $$1; $$2++) {
          asi $$3 = this.l.get($$2);
-         if ($$3.gf().getName().equalsIgnoreCase($$0)) {
+         if ($$3.gh().getName().equalsIgnoreCase($$0)) {
             return $$3;
          }
       }
@@ -488,10 +488,10 @@ public abstract class awi {
    public void a(@Nullable cpw $$0, double $$1, double $$2, double $$3, double $$4, aly<dhh> $$5, aac<?> $$6) {
       for (int $$7 = 0; $$7 < this.l.size(); $$7++) {
          asi $$8 = this.l.get($$7);
-         if ($$8 != $$0 && $$8.dV().ah() == $$5) {
-            double $$9 = $$1 - $$8.dA();
-            double $$10 = $$2 - $$8.dC();
-            double $$11 = $$3 - $$8.dG();
+         if ($$8 != $$0 && $$8.dW().ah() == $$5) {
+            double $$9 = $$1 - $$8.dB();
+            double $$10 = $$2 - $$8.dD();
+            double $$11 = $$3 - $$8.dH();
             if ($$9 * $$9 + $$10 * $$10 + $$11 * $$11 < $$4 * $$4) {
                $$8.f.b($$6);
             }
@@ -542,7 +542,7 @@ public abstract class awi {
    public void f(asi $$0) {
       $$0.cc.b();
       $$0.v();
-      $$0.f.b(new agh($$0.gg().j));
+      $$0.f.b(new agh($$0.gi().j));
    }
 
    public int m() {

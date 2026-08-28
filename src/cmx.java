@@ -37,19 +37,19 @@ public abstract class cmx extends cmw {
       this.c = $$0.q("Patrolling");
    }
 
-   public boolean gm() {
+   public boolean go() {
       return true;
    }
 
    @Nullable
    @Override
    public bwy a(dhy $$0, btg $$1, bvp $$2, @Nullable bwy $$3) {
-      if ($$2 != bvp.p && $$2 != bvp.h && $$2 != bvp.d && $$0.H_().i() < 0.06F && this.gm()) {
+      if ($$2 != bvp.p && $$2 != bvp.h && $$2 != bvp.d && $$0.H_().i() < 0.06F && this.go()) {
          this.b = true;
       }
 
-      if (this.gp()) {
-         this.a(bvr.f, crj.a(this.dX().e(mb.d)));
+      if (this.gr()) {
+         this.a(bvr.f, crj.a(this.dY().e(mb.d)));
          this.a(bvr.f, 2.0F);
       }
 
@@ -74,11 +74,11 @@ public abstract class cmx extends cmw {
       this.c = true;
    }
 
-   public jh gn() {
+   public jh gp() {
       return this.a;
    }
 
-   public boolean go() {
+   public boolean gq() {
       return this.a != null;
    }
 
@@ -87,20 +87,20 @@ public abstract class cmx extends cmw {
       this.c = true;
    }
 
-   public boolean gp() {
+   public boolean gr() {
       return this.b;
    }
 
-   public boolean gs() {
+   public boolean gu() {
       return true;
    }
 
-   public void gt() {
-      this.a = this.dv().b(-500 + this.ae.a(1000), 0, -500 + this.ae.a(1000));
+   public void gv() {
+      this.a = this.dw().b(-500 + this.ae.a(1000), 0, -500 + this.ae.a(1000));
       this.c = true;
    }
 
-   protected boolean gu() {
+   protected boolean gw() {
       return this.c;
    }
 
@@ -125,8 +125,8 @@ public abstract class cmx extends cmw {
 
       @Override
       public boolean b() {
-         boolean $$0 = this.b.dV().ac() < this.e;
-         return this.b.gu() && this.b.O_() == null && !this.b.cY() && this.b.go() && !$$0;
+         boolean $$0 = this.b.dW().ac() < this.e;
+         return this.b.gw() && this.b.O_() == null && !this.b.cY() && this.b.gq() && !$$0;
       }
 
       @Override
@@ -139,25 +139,25 @@ public abstract class cmx extends cmw {
 
       @Override
       public void a() {
-         boolean $$0 = this.b.gp();
+         boolean $$0 = this.b.gr();
          cfr $$1 = this.b.L();
          if ($$1.m()) {
             List<cmx> $$2 = this.h();
-            if (this.b.gu() && $$2.isEmpty()) {
+            if (this.b.gw() && $$2.isEmpty()) {
                this.b.y(false);
-            } else if ($$0 && this.b.gn().a(this.b.dt(), 10.0)) {
-               this.b.gt();
+            } else if ($$0 && this.b.gp().a(this.b.du(), 10.0)) {
+               this.b.gv();
             } else {
-               fbx $$3 = fbx.c(this.b.gn());
-               fbx $$4 = this.b.dt();
+               fbx $$3 = fbx.c(this.b.gp());
+               fbx $$4 = this.b.du();
                fbx $$5 = $$4.d($$3);
                $$3 = $$5.b(90.0F).c(0.4).e($$3);
                fbx $$6 = $$3.d($$4).d().c(10.0).e($$4);
                jh $$7 = jh.a((ka)$$6);
-               $$7 = this.b.dV().a(edp.a.f, $$7);
+               $$7 = this.b.dW().a(edp.a.f, $$7);
                if (!$$1.a((double)$$7.u(), (double)$$7.v(), (double)$$7.w(), $$0 ? this.d : this.c)) {
                   this.i();
-                  this.e = this.b.dV().ac() + 200L;
+                  this.e = this.b.dW().ac() + 200L;
                } else if ($$0) {
                   for (cmx $$8 : $$2) {
                      $$8.h($$7);
@@ -168,12 +168,12 @@ public abstract class cmx extends cmw {
       }
 
       private List<cmx> h() {
-         return this.b.dV().a(cmx.class, this.b.cR().g(16.0), $$0 -> $$0.gs() && !$$0.u(this.b));
+         return this.b.dW().a(cmx.class, this.b.cR().g(16.0), $$0 -> $$0.gu() && !$$0.u(this.b));
       }
 
       private boolean i() {
-         bam $$0 = this.b.dY();
-         jh $$1 = this.b.dV().a(edp.a.f, this.b.dv().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
+         bam $$0 = this.b.dZ();
+         jh $$1 = this.b.dW().a(edp.a.f, this.b.dw().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
          return this.b.L().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), this.c);
       }
    }

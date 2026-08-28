@@ -116,13 +116,13 @@ public class aod {
 
    static enum a {
       a("points", cpw::d, ($$0, $$1) -> {
-         if ($$1 >= $$0.gq()) {
+         if ($$1 >= $$0.gs()) {
             return false;
          } else {
             $$0.a($$1);
             return true;
          }
-      }, $$0 -> bae.d($$0.cs * (float)$$0.gq())),
+      }, $$0 -> bae.d($$0.cs * (float)$$0.gs())),
       b("levels", asi::c, ($$0, $$1) -> {
          $$0.b($$1);
          return true;

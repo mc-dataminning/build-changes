@@ -18,7 +18,7 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
    private static final float cg = 0.25F;
    private static final float ch = 0.5F;
    private static final cgw.a ci = ($$0, $$1) -> {
-      if ($$0 instanceof cka $$2 && $$2.gI()) {
+      if ($$0 instanceof cka $$2 && $$2.gK()) {
          return true;
       }
 
@@ -72,13 +72,13 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
 
       @Override
       public boolean a(cpw $$0) {
-         return $$0.dk() == cka.this || $$0.b(cka.this, 4.0);
+         return $$0.dl() == cka.this || $$0.b(cka.this, 4.0);
       }
    };
 
    protected cka(bvq<? extends cka> $$0, dhh $$1) {
       super($$0, $$1);
-      this.gL();
+      this.gN();
    }
 
    @Override
@@ -90,14 +90,14 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
       this.bT.a(6, new ceq(this, 0.7));
       this.bT.a(7, new cdl(this, cpw.class, 6.0F));
       this.bT.a(8, new cdy(this));
-      if (this.gn()) {
+      if (this.gp()) {
          this.bT.a(9, new cdz(this));
       }
 
-      this.gE();
+      this.gG();
    }
 
-   protected void gE() {
+   protected void gG() {
       this.bT.a(0, new ccx(this));
       this.bT.a(3, new cel(this, 1.25, $$0 -> $$0.a(ayd.al), false));
    }
@@ -121,7 +121,7 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
       }
    }
 
-   public boolean gD() {
+   public boolean gF() {
       return this.s(2);
    }
 
@@ -135,7 +135,7 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
       this.cS = $$0;
    }
 
-   public boolean gF() {
+   public boolean gH() {
       return this.ct;
    }
 
@@ -149,22 +149,22 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
 
    @Override
    public boolean a(bvj $$0, float $$1) {
-      if ($$1 > 6.0F && this.gG()) {
+      if ($$1 > 6.0F && this.gI()) {
          this.B(false);
       }
 
       return true;
    }
 
-   public boolean gG() {
+   public boolean gI() {
       return this.s(16);
    }
 
-   public boolean gH() {
+   public boolean gJ() {
       return this.s(32);
    }
 
-   public boolean gI() {
+   public boolean gK() {
       return this.s(8);
    }
 
@@ -174,7 +174,7 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
 
    @Override
    public boolean f() {
-      return this.bL() && !this.e_() && this.gD();
+      return this.bL() && !this.e_() && this.gF();
    }
 
    @Override
@@ -190,7 +190,7 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
 
    @Override
    protected boolean f(bvr $$0) {
-      return $$0 == bvr.g && this.gD() || super.f($$0);
+      return $$0 == bvr.g && this.gF() || super.f($$0);
    }
 
    @Override
@@ -198,7 +198,7 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
       return this.s(4);
    }
 
-   public int gJ() {
+   public int gL() {
       return this.cv;
    }
 
@@ -207,7 +207,7 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
    }
 
    public int u(int $$0) {
-      int $$1 = bae.a(this.gJ() + $$0, 0, this.gP());
+      int $$1 = bae.a(this.gL() + $$0, 0, this.gR());
       this.t($$1);
       return $$1;
    }
@@ -220,9 +220,9 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
    private void p() {
       this.x();
       if (!this.bb()) {
-         axe $$0 = this.go();
+         axe $$0 = this.gq();
          if ($$0 != null) {
-            this.dV().a(null, this.dA(), this.dC(), this.dG(), $$0, this.dm(), 1.0F, 1.0F + (this.ae.i() - this.ae.i()) * 0.2F);
+            this.dW().a(null, this.dB(), this.dD(), this.dH(), $$0, this.dn(), 1.0F, 1.0F + (this.ae.i() - this.ae.i()) * 0.2F);
          }
       }
    }
@@ -244,12 +244,12 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
             }
          }
 
-         this.eN();
+         this.eO();
          return true;
       }
    }
 
-   public final int gK() {
+   public final int gM() {
       return v(this.ag_());
    }
 
@@ -257,9 +257,9 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
       return $$0 * 3 + 1;
    }
 
-   protected void gL() {
+   protected void gN() {
       btp $$0 = this.cu;
-      this.cu = new btp(this.gK());
+      this.cu = new btp(this.gM());
       if ($$0 != null) {
          $$0.b(this);
          int $$1 = Math.min($$0.b(), this.cu.b());
@@ -273,11 +273,11 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
       }
 
       this.cu.a(this);
-      this.gM();
+      this.gO();
    }
 
-   protected void gM() {
-      if (!this.dV().C) {
+   protected void gO() {
+      if (!this.dW().C) {
          this.d(4, !this.cu.a(0).f());
       }
    }
@@ -285,7 +285,7 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
    @Override
    public void a(btb $$0) {
       boolean $$1 = this.j();
-      this.gM();
+      this.gO();
       if (this.af > 20 && !$$1 && this.j()) {
          this.a(this.ac_(), 0.5F, 1.0F);
       }
@@ -295,30 +295,30 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
    public boolean a(ash $$0, btz $$1, float $$2) {
       boolean $$3 = super.a($$0, $$1, $$2);
       if ($$3 && this.ae.a(3) == 0) {
-         this.gS();
+         this.gU();
       }
 
       return $$3;
    }
 
-   protected boolean gn() {
+   protected boolean gp() {
       return true;
    }
 
    @Nullable
-   protected axe go() {
+   protected axe gq() {
       return null;
    }
 
    @Nullable
-   protected axe gN() {
+   protected axe gP() {
       return null;
    }
 
    @Override
    protected void b(jh $$0, dxu $$1) {
       if (!$$1.n()) {
-         dxu $$2 = this.dV().a_($$0.d());
+         dxu $$2 = this.dW().a_($$0.d());
          dsb $$3 = $$1.A();
          if ($$2.a(dkn.ea)) {
             $$3 = $$2.A();
@@ -347,8 +347,8 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
       this.a(axf.ne, $$0.a() * 0.15F, $$0.b());
    }
 
-   public static bxm.a gO() {
-      return chw.gr().a(bxn.o, 0.7).a(bxn.s, 53.0).a(bxn.v, 0.225F).a(bxn.B, 1.0).a(bxn.x, 6.0).a(bxn.k, 0.5);
+   public static bxm.a gQ() {
+      return chw.gt().a(bxn.o, 0.7).a(bxn.s, 53.0).a(bxn.v, 0.225F).a(bxn.B, 1.0).a(bxn.x, 6.0).a(bxn.k, 0.5);
    }
 
    @Override
@@ -356,12 +356,12 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
       return 6;
    }
 
-   public int gP() {
+   public int gR() {
       return 100;
    }
 
    @Override
-   protected float fe() {
+   protected float fg() {
       return 0.8F;
    }
 
@@ -372,7 +372,7 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
 
    @Override
    public void b(cpw $$0) {
-      if (!this.dV().C && (!this.ca() || this.y($$0)) && this.gD()) {
+      if (!this.dW().C && (!this.ca() || this.y($$0)) && this.gF()) {
          $$0.a(this, this.cu);
       }
    }
@@ -383,7 +383,7 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
          $$1.a(1, $$0);
       }
 
-      return (bti)(!$$2 && !this.dV().C ? bti.e : bti.b);
+      return (bti)(!$$2 && !this.dW().C ? bti.e : bti.b);
    }
 
    protected boolean a(cpw $$0, cxo $$1) {
@@ -410,7 +410,7 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
          $$3 = 4.0F;
          $$4 = 60;
          $$5 = 5;
-         if (!this.dV().C && this.gD() && this.Z_() == 0 && !this.gw()) {
+         if (!this.dW().C && this.gF() && this.Z_() == 0 && !this.gy()) {
             $$2 = true;
             this.f($$0);
          }
@@ -418,26 +418,26 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
          $$3 = 10.0F;
          $$4 = 240;
          $$5 = 10;
-         if (!this.dV().C && this.gD() && this.Z_() == 0 && !this.gw()) {
+         if (!this.dW().C && this.gF() && this.Z_() == 0 && !this.gy()) {
             $$2 = true;
             this.f($$0);
          }
       }
 
-      if (this.eD() < this.eR() && $$3 > 0.0F) {
+      if (this.eE() < this.eS() && $$3 > 0.0F) {
          this.c($$3);
          $$2 = true;
       }
 
       if (this.e_() && $$4 > 0) {
-         this.dV().a(ls.O, this.d(1.0), this.dD() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
-         if (!this.dV().C) {
+         this.dW().a(ls.O, this.d(1.0), this.dE() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
+         if (!this.dW().C) {
             this.b_($$4);
             $$2 = true;
          }
       }
 
-      if ($$5 > 0 && ($$2 || !this.gD()) && this.gJ() < this.gP() && !this.dV().C) {
+      if ($$5 > 0 && ($$2 || !this.gF()) && this.gL() < this.gR() && !this.dW().C) {
          this.u($$5);
          $$2 = true;
       }
@@ -453,16 +453,16 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
    protected void a(cpw $$0) {
       this.B(false);
       this.C(false);
-      if (!this.dV().C) {
-         $$0.v(this.dL());
-         $$0.w(this.dN());
+      if (!this.dW().C) {
+         $$0.v(this.dM());
+         $$0.w(this.dO());
          $$0.n(this);
       }
    }
 
    @Override
-   public boolean fg() {
-      return super.fg() && this.ca() && this.j() || this.gG() || this.gH();
+   public boolean fi() {
+      return super.fi() && this.ca() && this.j() || this.gI() || this.gJ();
    }
 
    @Override
@@ -494,17 +494,17 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
       }
 
       super.d_();
-      if (this.dV() instanceof ash $$0 && this.bL()) {
+      if (this.dW() instanceof ash $$0 && this.bL()) {
          if (this.ae.a(900) == 0 && this.aP == 0) {
             this.c(1.0F);
          }
 
-         if (this.gQ()) {
-            if (!this.gG() && !this.ca() && this.ae.a(300) == 0 && $$0.a_(this.dv().e()).a(dkn.i)) {
+         if (this.gS()) {
+            if (!this.gI() && !this.ca() && this.ae.a(300) == 0 && $$0.a_(this.dw().e()).a(dkn.i)) {
                this.B(true);
             }
 
-            if (this.gG() && ++this.cJ > 50) {
+            if (this.gI() && ++this.cJ > 50) {
                this.cJ = 0;
                this.B(false);
             }
@@ -516,15 +516,15 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
    }
 
    protected void g(ash $$0) {
-      if (this.gI() && this.e_() && !this.gG()) {
-         bwf $$1 = $$0.a(cka.class, cj, this, this.dA(), this.dC(), this.dG(), this.cR().g(16.0));
+      if (this.gK() && this.e_() && !this.gI()) {
+         bwf $$1 = $$0.a(cka.class, cj, this, this.dB(), this.dD(), this.dH(), this.cR().g(16.0));
          if ($$1 != null && this.g($$1) > 4.0) {
             this.bS.a($$1, 0);
          }
       }
    }
 
-   public boolean gQ() {
+   public boolean gS() {
       return true;
    }
 
@@ -536,7 +536,7 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
          this.d(64, false);
       }
 
-      if (this.dj() && this.cL > 0 && ++this.cL > 20) {
+      if (this.dk() && this.cL > 0 && ++this.cL > 20) {
          this.cL = 0;
          this.C(false);
       }
@@ -553,7 +553,7 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
       }
 
       this.cN = this.cM;
-      if (this.gG()) {
+      if (this.gI()) {
          this.cM = this.cM + (1.0F - this.cM) * 0.4F + 0.05F;
          if (this.cM > 1.0F) {
             this.cM = 1.0F;
@@ -566,7 +566,7 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
       }
 
       this.cP = this.cO;
-      if (this.gH()) {
+      if (this.gJ()) {
          this.cM = 0.0F;
          this.cN = this.cM;
          this.cO = this.cO + (1.0F - this.cO) * 0.4F + 0.05F;
@@ -599,7 +599,7 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
    public bti b(cpw $$0, bth $$1) {
       if (this.ca() || this.e_()) {
          return super.b($$0, $$1);
-      } else if (this.gD() && $$0.fW()) {
+      } else if (this.gF() && $$0.fY()) {
          this.b($$0);
          return bti.a;
       } else {
@@ -622,7 +622,7 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
    }
 
    private void x() {
-      if (!this.dV().C) {
+      if (!this.dW().C) {
          this.cK = 1;
          this.d(64, true);
       }
@@ -641,21 +641,21 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
    }
 
    @Nullable
-   public axe gR() {
+   public axe gT() {
       return this.u();
    }
 
-   public void gS() {
-      if (this.gn() && this.dj()) {
+   public void gU() {
+      if (this.gp() && this.dk()) {
          this.cL = 1;
          this.C(true);
       }
    }
 
-   public void gT() {
-      if (!this.gH()) {
-         this.gS();
-         this.b(this.gN());
+   public void gV() {
+      if (!this.gJ()) {
+         this.gU();
+         this.b(this.gP());
       }
    }
 
@@ -666,7 +666,7 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
          ao.y.a((asi)$$0, this);
       }
 
-      this.dV().a(this, (byte)7);
+      this.dW().a(this, (byte)7);
       return true;
    }
 
@@ -675,7 +675,7 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
       super.a($$0, $$1);
       fbw $$2 = this.j($$0);
       this.b($$2.j, $$2.i);
-      this.N = this.aX = this.aZ = this.dL();
+      this.N = this.aX = this.aZ = this.dM();
       if (this.di()) {
          if ($$1.f <= 0.0) {
             this.cz = 0;
@@ -683,7 +683,7 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
 
          if (this.aJ()) {
             this.z(false);
-            if (this.cw > 0.0F && !this.gF()) {
+            if (this.cw > 0.0F && !this.gH()) {
                this.b(this.cw, $$1);
             }
 
@@ -693,12 +693,12 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
    }
 
    protected fbw j(bwf $$0) {
-      return new fbw($$0.dN() * 0.5F, $$0.dL());
+      return new fbw($$0.dO() * 0.5F, $$0.dM());
    }
 
    @Override
    protected fbx b(cpw $$0, fbx $$1) {
-      if (this.aJ() && this.cw == 0.0F && this.gH() && !this.cx) {
+      if (this.aJ() && this.cw == 0.0F && this.gJ() && !this.cx) {
          return fbx.c;
       } else {
          float $$2 = $$0.bo * 0.5F;
@@ -718,34 +718,34 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
 
    protected void b(float $$0, fbx $$1) {
       double $$2 = (double)this.A($$0);
-      fbx $$3 = this.dy();
+      fbx $$3 = this.dz();
       this.n($$3.d, $$2, $$3.f);
       this.z(true);
       this.ar = true;
       if ($$1.f > 0.0) {
-         float $$4 = bae.a(this.dL() * (float) (Math.PI / 180.0));
-         float $$5 = bae.b(this.dL() * (float) (Math.PI / 180.0));
-         this.h(this.dy().b((double)(-0.4F * $$4 * $$0), 0.0, (double)(0.4F * $$5 * $$0)));
+         float $$4 = bae.a(this.dM() * (float) (Math.PI / 180.0));
+         float $$5 = bae.b(this.dM() * (float) (Math.PI / 180.0));
+         this.h(this.dz().b((double)(-0.4F * $$4 * $$0), 0.0, (double)(0.4F * $$5 * $$0)));
       }
    }
 
-   protected void gU() {
+   protected void gW() {
       this.a(axf.ng, 0.4F, 1.0F);
    }
 
    @Override
    public void b(ux $$0) {
       super.b($$0);
-      $$0.a("EatingHaystack", this.gG());
-      $$0.a("Bred", this.gI());
-      $$0.a("Temper", this.gJ());
-      $$0.a("Tame", this.gD());
+      $$0.a("EatingHaystack", this.gI());
+      $$0.a("Bred", this.gK());
+      $$0.a("Temper", this.gL());
+      $$0.a("Tame", this.gF());
       if (this.ab_() != null) {
          $$0.a("Owner", this.ab_());
       }
 
       if (!this.cu.a(0).f()) {
-         $$0.a("SaddleItem", this.cu.a(0).a(this.dX()));
+         $$0.a("SaddleItem", this.cu.a(0).a(this.dY()));
       }
    }
 
@@ -769,13 +769,13 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
       }
 
       if ($$0.b("SaddleItem", 10)) {
-         cxo $$4 = cxo.a(this.dX(), (vu)$$0.p("SaddleItem")).orElse(cxo.k);
+         cxo $$4 = cxo.a(this.dY(), (vu)$$0.p("SaddleItem")).orElse(cxo.j);
          if ($$4.a(cxs.oe)) {
             this.cu.a(0, $$4);
          }
       }
 
-      this.gM();
+      this.gO();
    }
 
    @Override
@@ -783,8 +783,8 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
       return false;
    }
 
-   protected boolean gV() {
-      return !this.ca() && !this.bZ() && this.gD() && !this.e_() && this.eD() >= this.eR() && this.gw();
+   protected boolean gX() {
+      return !this.ca() && !this.bZ() && this.gF() && !this.e_() && this.eE() >= this.eS() && this.gy();
    }
 
    @Nullable
@@ -846,7 +846,7 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
             $$0 = 0;
          } else {
             this.cx = true;
-            this.gS();
+            this.gU();
          }
 
          if ($$0 >= 90) {
@@ -865,8 +865,8 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
    @Override
    public void c(int $$0) {
       this.cx = true;
-      this.gS();
       this.gU();
+      this.gW();
    }
 
    @Override
@@ -880,7 +880,7 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
          double $$3 = this.ae.k() * 0.02;
          double $$4 = this.ae.k() * 0.02;
          double $$5 = this.ae.k() * 0.02;
-         this.dV().a($$1, this.d(1.0), this.dD() + 0.5, this.g(1.0), $$3, $$4, $$5);
+         this.dW().a($$1, this.d(1.0), this.dE() + 0.5, this.g(1.0), $$3, $$4, $$5);
       }
    }
 
@@ -936,7 +936,7 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
                   return false;
                } else {
                   cka.this.cu.a(0, $$0);
-                  cka.this.gM();
+                  cka.this.gO();
                   return true;
                }
             }
@@ -962,11 +962,11 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
 
    @Nullable
    private fbx a(fbx $$0, bwf $$1) {
-      double $$2 = this.dA() + $$0.d;
+      double $$2 = this.dB() + $$0.d;
       double $$3 = this.cR().b;
-      double $$4 = this.dG() + $$0.f;
+      double $$4 = this.dH() + $$0.f;
       jh.a $$5 = new jh.a();
-      UnmodifiableIterator var10 = $$1.fM().iterator();
+      UnmodifiableIterator var10 = $$1.fO().iterator();
 
       while (var10.hasNext()) {
          bwr $$6 = (bwr)var10.next();
@@ -974,7 +974,7 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
          double $$7 = this.cR().e + 0.75;
 
          do {
-            double $$8 = this.dV().j($$5);
+            double $$8 = this.dW().j($$5);
             if ((double)$$5.v() + $$8 > $$7) {
                break;
             }
@@ -982,7 +982,7 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
             if (csb.a($$8)) {
                fbs $$9 = $$1.f($$6);
                fbx $$10 = new fbx($$2, (double)$$5.v() + $$8, $$4);
-               if (csb.a(this.dV(), $$1, $$9.c($$10))) {
+               if (csb.a(this.dW(), $$1, $$9.c($$10))) {
                   $$1.b($$6);
                   return $$10;
                }
@@ -997,14 +997,14 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
 
    @Override
    public fbx b(bwf $$0) {
-      fbx $$1 = a((double)this.dq(), (double)$$0.dq(), this.dL() + ($$0.fw() == bvz.b ? 90.0F : -90.0F));
+      fbx $$1 = a((double)this.dr(), (double)$$0.dr(), this.dM() + ($$0.fy() == bvz.b ? 90.0F : -90.0F));
       fbx $$2 = this.a($$1, $$0);
       if ($$2 != null) {
          return $$2;
       } else {
-         fbx $$3 = a((double)this.dq(), (double)$$0.dq(), this.dL() + ($$0.fw() == bvz.a ? 90.0F : -90.0F));
+         fbx $$3 = a((double)this.dr(), (double)$$0.dr(), this.dM() + ($$0.fy() == bvz.a ? 90.0F : -90.0F));
          fbx $$4 = this.a($$3, $$0);
-         return $$4 != null ? $$4 : this.dt();
+         return $$4 != null ? $$4 : this.du();
       }
    }
 
@@ -1026,17 +1026,17 @@ public abstract class cka extends chw implements btd, bvy, bwm, bwp, bwv {
       return this.cu != $$0;
    }
 
-   public int gW() {
+   public int gY() {
       return this.Q();
    }
 
    @Override
    protected fbx a(bvj $$0, bvm $$1, float $$2) {
       return super.a($$0, $$1, $$2)
-         .e(new fbx(0.0, 0.15 * (double)this.cP * (double)$$2, -0.7 * (double)this.cP * (double)$$2).b(-this.dL() * (float) (Math.PI / 180.0)));
+         .e(new fbx(0.0, 0.15 * (double)this.cP * (double)$$2, -0.7 * (double)this.cP * (double)$$2).b(-this.dM() * (float) (Math.PI / 180.0)));
    }
 
-   public final btb gX() {
+   public final btb gZ() {
       return this.cT;
    }
 

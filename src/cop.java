@@ -25,8 +25,8 @@ public class cop {
    }
 
    protected static void a(coo $$0) {
-      jp $$1 = jp.a($$0.dV().ah(), $$0.dv());
-      $$0.eb().a(cfj.b, $$1);
+      jp $$1 = jp.a($$0.dW().ah(), $$0.dw());
+      $$0.ec().a(cfj.b, $$1);
    }
 
    private static void b(coo $$0, bxh<coo> $$1) {
@@ -67,7 +67,7 @@ public class cop {
    }
 
    protected static void b(coo $$0) {
-      bxh<coo> $$1 = $$0.eb();
+      bxh<coo> $$1 = $$0.ec();
       crn $$2 = $$1.g().orElse(null);
       $$1.a(ImmutableList.of(crn.k, crn.b));
       crn $$3 = $$1.g().orElse(null);
@@ -87,8 +87,8 @@ public class cop {
       if ($$2.isPresent() && cgp.d($$0, $$1, $$2.get())) {
          return $$2;
       } else {
-         Optional<? extends bwf> $$3 = $$1.eb().c(cfj.l);
-         return $$3.isPresent() ? $$3 : $$1.eb().c(cfj.M);
+         Optional<? extends bwf> $$3 = $$1.ec().c(cfj.l);
+         return $$3.isPresent() ? $$3 : $$1.ec().c(cfj.M);
       }
    }
 
@@ -99,20 +99,20 @@ public class cop {
    }
 
    protected static void a(coo $$0, bwf $$1) {
-      $$0.eb().b(cfj.E);
-      $$0.eb().a(cfj.ab, $$1.cG(), 600L);
+      $$0.ec().b(cfj.E);
+      $$0.ec().a(cfj.ab, $$1.cG(), 600L);
    }
 
    protected static void c(coo $$0) {
-      if ((double)$$0.dV().A.i() < 0.0125) {
+      if ((double)$$0.dW().A.i() < 0.0125) {
          d($$0);
       }
    }
 
    private static void d(coo $$0) {
-      $$0.eb().g().ifPresent($$1 -> {
+      $$0.ec().g().ifPresent($$1 -> {
          if ($$1 == crn.k) {
-            $$0.gs();
+            $$0.gu();
          }
       });
    }

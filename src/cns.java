@@ -21,7 +21,7 @@ public class cns extends cmw {
    private int ck = 0;
    private int cl = 0;
    private static final cqq cm = ($$0, $$1, $$2) -> {
-      $$1.dV().a(null, $$1, axf.cF, $$1.dm(), 1.0F, 1.0F);
+      $$1.dW().a(null, $$1, axf.cF, $$1.dn(), 1.0F, 1.0F);
       cqq.b.deflect($$0, $$1, $$2);
    };
 
@@ -38,23 +38,23 @@ public class cns extends cmw {
 
    @Override
    protected bxh<?> a(Dynamic<?> $$0) {
-      return cnt.a(this, this.ec().a($$0));
+      return cnt.a(this, this.ed().a($$0));
    }
 
    @Override
-   public bxh<cns> eb() {
-      return (bxh<cns>)super.eb();
+   public bxh<cns> ec() {
+      return (bxh<cns>)super.ec();
    }
 
    @Override
-   protected bxh.b<cns> ec() {
+   protected bxh.b<cns> ed() {
       return bxh.a(cnt.f, cnt.e);
    }
 
    @Override
    public void a(alc<?> $$0) {
-      if (this.dV().B_() && aq.equals($$0)) {
-         this.go();
+      if (this.dW().B_() && aq.equals($$0)) {
+         this.gq();
          bwr $$1 = this.aw();
          switch ($$1) {
             case q:
@@ -71,7 +71,7 @@ public class cns extends cmw {
       super.a($$0);
    }
 
-   private void go() {
+   private void gq() {
       this.bZ.a();
       this.a.a();
       this.ca.a();
@@ -85,7 +85,7 @@ public class cns extends cmw {
          case q:
          case r:
          case a:
-            this.p().b(1 + this.dY().a(1));
+            this.p().b(1 + this.dZ().a(1));
             break;
          case p:
             this.b(20);
@@ -98,6 +98,10 @@ public class cns extends cmw {
       if ($$0 != bwr.p && this.b.b()) {
          this.c.a(this.af);
          this.b.a();
+      }
+
+      if ($$0 == bwr.a) {
+         this.a.b(this.af);
       }
 
       this.cl = this.cl == 0 ? this.ae.a(1, 80) : this.cl - 1;
@@ -115,12 +119,12 @@ public class cns extends cmw {
 
    public void t() {
       if (++this.ck <= 5) {
-         dxu $$0 = !this.dw().l() ? this.dw() : this.bu();
-         fbx $$1 = this.dy();
-         fbx $$2 = this.dt().e($$1).b(0.0, 0.1F, 0.0);
+         dxu $$0 = !this.dx().l() ? this.dx() : this.bu();
+         fbx $$1 = this.dz();
+         fbx $$2 = this.du().e($$1).b(0.0, 0.1F, 0.0);
 
          for (int $$3 = 0; $$3 < 3; $$3++) {
-            this.dV().a(new lk(ls.b, $$0), $$2.d, $$2.e, $$2.f, 0.0, 0.0, 0.0);
+            this.dW().a(new lk(ls.b, $$0), $$2.d, $$2.e, $$2.f, 0.0, 0.0, 0.0);
          }
       }
    }
@@ -128,11 +132,11 @@ public class cns extends cmw {
    public void b(int $$0) {
       if (!this.bZ()) {
          fbx $$1 = this.cR().f();
-         fbx $$2 = new fbx($$1.d, this.dt().e, $$1.f);
-         dxu $$3 = !this.dw().l() ? this.dw() : this.bu();
+         fbx $$2 = new fbx($$1.d, this.du().e, $$1.f);
+         dxu $$3 = !this.dx().l() ? this.dx() : this.bu();
          if ($$3.o() != dqu.a) {
             for (int $$4 = 0; $$4 < $$0; $$4++) {
-               this.dV().a(new lk(ls.b, $$3), $$2.d, $$2.e, $$2.f, 0.0, 0.0, 0.0);
+               this.dW().a(new lk(ls.b, $$3), $$2.d, $$2.e, $$2.f, 0.0, 0.0, 0.0);
             }
          }
       }
@@ -141,14 +145,14 @@ public class cns extends cmw {
    @Override
    public void R() {
       if (this.O_() == null || !this.aJ()) {
-         this.dV().a(this, this.u(), this.dm(), 1.0F, 1.0F);
+         this.dW().a(this, this.u(), this.dn(), 1.0F, 1.0F);
       }
    }
 
    public void x() {
       float $$0 = 0.7F + 0.4F * this.ae.i();
       float $$1 = 0.8F + 0.2F * this.ae.i();
-      this.dV().a(this, axf.cP, this.dm(), $$1, $$0);
+      this.dW().a(this, axf.cP, this.dn(), $$1, $$0);
    }
 
    @Override
@@ -161,7 +165,7 @@ public class cns extends cmw {
    }
 
    @Override
-   public axg dm() {
+   public axg dn() {
       return axg.f;
    }
 
@@ -180,12 +184,12 @@ public class cns extends cmw {
       return this.aJ() ? axf.cH : axf.cI;
    }
 
-   public Optional<bwf> gm() {
-      return this.eb().c(cfj.x).map(btz::d).filter($$0 -> $$0 instanceof bwf).map($$0 -> (bwf)$$0);
+   public Optional<bwf> go() {
+      return this.ec().c(cfj.x).map(btz::d).filter($$0 -> $$0 instanceof bwf).map($$0 -> (bwf)$$0);
    }
 
    public boolean k(fbx $$0) {
-      fbx $$1 = this.dv().b();
+      fbx $$1 = this.dw().b();
       return $$0.a($$1, 4.0, 10.0);
    }
 
@@ -193,7 +197,7 @@ public class cns extends cmw {
    protected void a(ash $$0) {
       bps $$1 = bpr.a();
       $$1.a("breezeBrain");
-      this.eb().a($$0, this);
+      this.ec().a($$0, this);
       $$1.b("breezeActivityUpdate");
       cnt.a(this);
       $$1.c();
@@ -222,8 +226,8 @@ public class cns extends cmw {
       return 25;
    }
 
-   public double gn() {
-      return this.dC() + (double)(this.dr() / 2.0F) + 0.3F;
+   public double gp() {
+      return this.dD() + (double)(this.ds() / 2.0F) + 0.3F;
    }
 
    @Override
@@ -232,7 +236,7 @@ public class cns extends cmw {
    }
 
    @Override
-   public double dp() {
+   public double dq() {
       return (double)this.cS();
    }
 
@@ -246,8 +250,8 @@ public class cns extends cmw {
    }
 
    @Override
-   protected bvj.b bg() {
-      return bvj.b.c;
+   protected bvj.c bg() {
+      return bvj.c.c;
    }
 
    @Nullable

@@ -41,10 +41,10 @@ public class asf {
       this.g = $$1;
       this.h = $$2;
       this.i = $$3;
-      this.k.e($$1.du());
-      this.o = $$1.dy();
-      this.l = bae.g($$1.dL());
-      this.m = bae.g($$1.dN());
+      this.k.e($$1.dv());
+      this.o = $$1.dz();
+      this.l = bae.g($$1.dM());
+      this.m = bae.g($$1.dO());
       this.n = bae.g($$1.cA());
       this.t = $$1.aJ();
       this.u = $$1.au().c();
@@ -56,7 +56,7 @@ public class asf {
          this.j.accept(new agj(this.g));
          a($$0, this.r).forEach($$0x -> {
             if ($$0x instanceof asi $$1) {
-               $$1.f.a($$1.dA(), $$1.dC(), $$1.dG(), $$1.dL(), $$1.dN());
+               $$1.f.a($$1.dB(), $$1.dD(), $$1.dH(), $$1.dM(), $$1.dO());
             }
          });
          this.r = $$0;
@@ -82,8 +82,8 @@ public class asf {
       }
 
       if (this.p % this.h == 0 || this.g.ar || this.g.au().a()) {
-         byte $$7 = bae.g(this.g.dL());
-         byte $$8 = bae.g(this.g.dN());
+         byte $$7 = bae.g(this.g.dM());
+         byte $$8 = bae.g(this.g.dO());
          boolean $$9 = Math.abs($$7 - this.l) >= 1 || Math.abs($$8 - this.m) >= 1;
          if (this.g.bZ()) {
             if ($$9) {
@@ -92,7 +92,7 @@ public class asf {
                this.m = $$8;
             }
 
-            this.k.e(this.g.du());
+            this.k.e(this.g.dv());
             this.g();
             this.s = true;
          } else {
@@ -103,7 +103,7 @@ public class asf {
                }
 
                this.q++;
-               fbx $$12 = this.g.du();
+               fbx $$12 = this.g.dv();
                boolean $$13 = this.k.d($$12).h() >= 7.6293945E-6F;
                aac<?> $$14 = null;
                boolean $$15 = $$13 || this.p % 60 == 0;
@@ -133,8 +133,8 @@ public class asf {
                   $$17 = true;
                }
 
-               if ((this.i || this.g.ar || this.g instanceof bwf && ((bwf)this.g).fH()) && this.p > 0) {
-                  fbx $$22 = this.g.dy();
+               if ((this.i || this.g.ar || this.g instanceof bwf && ((bwf)this.g).fJ()) && this.p > 0) {
+                  fbx $$22 = this.g.dz();
                   double $$23 = $$22.g(this.o);
                   if ($$23 > 1.0E-7 || $$23 > 0.0 && $$22.h() == 0.0) {
                      this.o = $$22;
@@ -183,13 +183,13 @@ public class asf {
    private void a(csk $$0, byte $$1, byte $$2, boolean $$3) {
       this.g();
       if ($$0.e.isEmpty()) {
-         fbx $$4 = this.g.dy();
+         fbx $$4 = this.g.dz();
          double $$5 = $$4.g(this.o);
-         fbx $$6 = this.g.du();
+         fbx $$6 = this.g.dv();
          boolean $$7 = this.k.d($$6).h() >= 7.6293945E-6F;
          boolean $$8 = $$7 || this.p % 60 == 0;
          if ($$8 || $$3 || $$5 > 1.0E-7) {
-            this.j.accept(new aen(this.g.ar(), List.of(new csk.a(this.g.dt(), this.g.dy(), this.g.dL(), this.g.dN(), 1.0F))));
+            this.j.accept(new aen(this.g.ar(), List.of(new csk.a(this.g.du(), this.g.dz(), this.g.dM(), this.g.dO(), 1.0F))));
          }
       } else {
          this.j.accept(new aen(this.g.ar(), List.copyOf($$0.e)));
@@ -198,7 +198,7 @@ public class asf {
 
       this.l = $$1;
       this.m = $$2;
-      this.k.e(this.g.dt());
+      this.k.e(this.g.du());
    }
 
    private static Stream<bvj> a(List<bvj> $$0, List<bvj> $$1) {
@@ -218,7 +218,7 @@ public class asf {
    }
 
    public void a(asi $$0, Consumer<aac<acr>> $$1) {
-      if (this.g.dQ()) {
+      if (this.g.dR()) {
          b.warn("Fetching packet for removed entity {}", this.g);
       }
 
@@ -230,12 +230,12 @@ public class asf {
 
       boolean $$3 = this.i;
       if (this.g instanceof bwf) {
-         Collection<bxj> $$4 = ((bwf)this.g).eW().c();
+         Collection<bxj> $$4 = ((bwf)this.g).eY().c();
          if (!$$4.isEmpty()) {
             $$1.accept(new ahe(this.g.ar(), $$4));
          }
 
-         if (((bwf)this.g).fH()) {
+         if (((bwf)this.g).fJ()) {
             $$3 = true;
          }
       }
@@ -264,7 +264,7 @@ public class asf {
       }
 
       if (this.g.bZ()) {
-         $$1.accept(new agj(this.g.dk()));
+         $$1.accept(new agj(this.g.dl()));
       }
 
       if (this.g instanceof bwd $$9 && $$9.P_()) {
@@ -301,7 +301,7 @@ public class asf {
       }
 
       if (this.g instanceof bwf) {
-         Set<bxj> $$2 = ((bwf)this.g).eW().a();
+         Set<bxj> $$2 = ((bwf)this.g).eY().a();
          if (!$$2.isEmpty()) {
             this.a(new ahe(this.g.ar(), $$2));
          }

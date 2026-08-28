@@ -36,7 +36,7 @@ public class dia extends dha {
    public float a(bvj $$0) {
       boolean var10000;
       label17: {
-         if ($$0 instanceof cpw $$1 && $$1.gh().b) {
+         if ($$0 instanceof cpw $$1 && $$1.gj().b) {
             var10000 = true;
             break label17;
          }

@@ -2,7 +2,7 @@ import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
 public class fch implements fcc {
-   protected static final fcc a = new fch(false, -Double.MAX_VALUE, cxo.k, $$0 -> false, null) {
+   protected static final fcc a = new fch(false, -Double.MAX_VALUE, cxo.j, $$0 -> false, null) {
       @Override
       public boolean a(fcr $$0, jh $$1, boolean $$2) {
          return $$2;
@@ -49,15 +49,15 @@ public class fch implements fcc {
       // 01: aload 1
       // 02: invokevirtual bvj.ch ()Z
       // 05: aload 1
-      // 06: invokevirtual bvj.dC ()D
+      // 06: invokevirtual bvj.dD ()D
       // 09: aload 1
       // 0a: instanceof bwf
       // 0d: ifeq 1a
       // 10: aload 1
       // 11: checkcast bwf
-      // 14: invokevirtual bwf.eX ()Lcxo;
+      // 14: invokevirtual bwf.eZ ()Lcxo;
       // 17: goto 1d
-      // 1a: getstatic cxo.k Lcxo;
+      // 1a: getstatic cxo.j Lcxo;
       // 1d: iload 2
       // 1e: ifeq 29
       // 21: invokedynamic test ()Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, fch.b (Letw;)Z, (Letw;)Z ]

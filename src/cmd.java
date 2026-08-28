@@ -44,7 +44,7 @@ public abstract class cmd extends crk {
 
       @Override
       public boolean b() {
-         return super.b() && cmd.this.gC();
+         return super.b() && cmd.this.gE();
       }
    }
 }

@@ -1,34 +1,29 @@
-public class hey extends hep {
-   private static final float n = 0.0F;
-   private static final float o = 1.0F;
-   private static final float p = 0.7F;
-   private static final float q = 0.5F;
-   private final cms r;
+public class hey extends heq {
+   private final bvj n;
 
-   public hey(cms $$0) {
-      super(axf.lK, axg.f, hfg.t());
-      this.r = $$0;
-      this.k = hfg.a.a;
-      this.i = true;
-      this.j = 0;
+   public hey(axe $$0, axg $$1, float $$2, float $$3, bvj $$4, long $$5) {
+      super($$0, $$1, bam.a($$5));
+      this.d = $$2;
+      this.e = $$3;
+      this.n = $$4;
+      this.f = (double)((float)this.n.dB());
+      this.g = (double)((float)this.n.dD());
+      this.h = (double)((float)this.n.dH());
    }
 
    @Override
    public boolean s() {
-      return !this.r.bb();
+      return !this.n.bb();
    }
 
    @Override
    public void q() {
-      if (!this.r.dQ() && this.r.O_() == null) {
-         this.f = (double)((float)this.r.dA());
-         this.g = (double)((float)this.r.dC());
-         this.h = (double)((float)this.r.dG());
-         float $$0 = this.r.L(0.0F);
-         this.d = 0.0F + 1.0F * $$0 * $$0;
-         this.e = 0.7F + 0.5F * $$0;
-      } else {
+      if (this.n.dR()) {
          this.n();
+      } else {
+         this.f = (double)((float)this.n.dB());
+         this.g = (double)((float)this.n.dD());
+         this.h = (double)((float)this.n.dH());
       }
    }
 }

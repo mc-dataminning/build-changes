@@ -41,11 +41,11 @@ public class cck<T extends bwf> extends cdd {
    @Override
    public boolean b() {
       this.b = a(this.a)
-         .a(this.a.dV().a(this.f, this.a.cR().c((double)this.c, 3.0, (double)this.c), $$0x -> true), this.k, this.a, this.a.dA(), this.a.dC(), this.a.dG());
+         .a(this.a.dW().a(this.f, this.a.cR().c((double)this.c, 3.0, (double)this.c), $$0x -> true), this.k, this.a, this.a.dB(), this.a.dD(), this.a.dH());
       if (this.b == null) {
          return false;
       } else {
-         fbx $$0 = cha.a(this.a, 16, 7, this.b.dt());
+         fbx $$0 = cha.a(this.a, 16, 7, this.b.du());
          if ($$0 == null) {
             return false;
          } else if (this.b.i($$0.d, $$0.e, $$0.f) < this.b.g(this.a)) {

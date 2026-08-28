@@ -6,7 +6,7 @@ public class agd implements aac<acr> {
    private final int e;
 
    public agd(bvj $$0) {
-      this($$0.ar(), $$0.dy());
+      this($$0.ar(), $$0.dz());
    }
 
    public agd(int $$0, fbx $$1) {

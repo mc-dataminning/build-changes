@@ -20,7 +20,7 @@ public class cjf extends chw {
    public cjf(bvq<? extends chw> $$0, dhh $$1) {
       super($$0, $$1);
       this.L().a(true);
-      this.ck = this.gz();
+      this.ck = this.gB();
    }
 
    @Nullable
@@ -30,7 +30,7 @@ public class cjf extends chw {
    }
 
    public static bxm.a p() {
-      return chw.gr().a(bxn.s, 12.0).a(bxn.v, 0.14);
+      return chw.gt().a(bxn.s, 12.0).a(bxn.v, 0.14);
    }
 
    @Override
@@ -44,14 +44,14 @@ public class cjf extends chw {
    }
 
    public boolean x() {
-      return this.gn().a(this.cj);
+      return this.gp().a(this.cj);
    }
 
-   public boolean gm() {
-      return this.gn() == cjf.a.b && this.cj > (long)cjf.a.b.b();
+   public boolean go() {
+      return this.gp() == cjf.a.b && this.cj > (long)cjf.a.b.b();
    }
 
-   public cjf.a gn() {
+   public cjf.a gp() {
       return this.al.a(ci);
    }
 
@@ -75,13 +75,13 @@ public class cjf extends chw {
    }
 
    @Override
-   protected bxh.b<cjf> ec() {
+   protected bxh.b<cjf> ed() {
       return cjg.a();
    }
 
    @Override
    protected bxh<?> a(Dynamic<?> $$0) {
-      return cjg.a(this.ec().a($$0));
+      return cjg.a(this.ed().a($$0));
    }
 
    @Override
@@ -99,21 +99,21 @@ public class cjf extends chw {
             this.a(ecq.t);
          }
 
-         this.ck = this.gz();
+         this.ck = this.gB();
       }
 
       super.a($$0);
    }
 
-   private int gz() {
+   private int gB() {
       return this.ae.a(20 * bbg.e * 5) + 20 * bbg.e * 5;
    }
 
    @Override
    public void h() {
       super.h();
-      if (this.dV().B_()) {
-         this.gA();
+      if (this.dW().B_()) {
+         this.gC();
       }
 
       if (this.t()) {
@@ -124,12 +124,12 @@ public class cjf extends chw {
    }
 
    @Override
-   public float ei() {
+   public float ej() {
       return this.e_() ? 0.6F : 1.0F;
    }
 
-   private void gA() {
-      switch (this.gn()) {
+   private void gC() {
+      switch (this.gp()) {
          case a:
             this.cd.a();
             this.ce.a();
@@ -164,9 +164,9 @@ public class cjf extends chw {
 
    @Override
    public void b(byte $$0) {
-      if ($$0 == 64 && this.dV().C) {
+      if ($$0 == 64 && this.dW().C) {
          this.cl = true;
-         this.dV().a(this.dA(), this.dC(), this.dG(), axf.am, this.dm(), 1.0F, 1.0F, false);
+         this.dW().a(this.dB(), this.dD(), this.dH(), axf.am, this.dn(), 1.0F, 1.0F, false);
       } else {
          super.b($$0);
       }
@@ -186,7 +186,7 @@ public class cjf extends chw {
          return false;
       } else if ($$0.aq().a(axy.d)) {
          return true;
-      } else if (this.ep() == $$0) {
+      } else if (this.eq() == $$0) {
          return true;
       } else if ($$0 instanceof cpw $$1) {
          return $$1.aa_() ? false : $$1.cj() || $$1.bZ();
@@ -198,7 +198,7 @@ public class cjf extends chw {
    @Override
    public void b(ux $$0) {
       super.b($$0);
-      $$0.a("state", this.gn().c());
+      $$0.a("state", this.gp().c());
       $$0.a("scute_time", this.ck);
    }
 
@@ -211,17 +211,17 @@ public class cjf extends chw {
       }
    }
 
-   public void go() {
+   public void gq() {
       if (!this.t()) {
          this.U();
-         this.gx();
+         this.gz();
          this.a(ecq.u);
          this.b(axf.ai);
          this.a(cjf.a.b);
       }
    }
 
-   public void gp() {
+   public void gr() {
       if (this.t()) {
          this.a(ecq.u);
          this.b(axf.al);
@@ -241,14 +241,14 @@ public class cjf extends chw {
    @Override
    protected void b(ash $$0, btz $$1, float $$2) {
       super.b($$0, $$1, $$2);
-      if (!this.fZ() && !this.eE()) {
+      if (!this.gb() && !this.eF()) {
          if ($$1.d() instanceof bwf) {
-            this.eb().a(cfj.G, true, 80L);
-            if (this.gy()) {
-               this.go();
+            this.ec().a(cfj.G, true, 80L);
+            if (this.gA()) {
+               this.gq();
             }
          } else if ($$1.a(axw.G)) {
-            this.gp();
+            this.gr();
          }
       }
    }
@@ -256,7 +256,7 @@ public class cjf extends chw {
    @Override
    public bti b(cpw $$0, bth $$1) {
       cxo $$2 = $$0.b($$1);
-      if ($$2.a(cxs.yl) && this.gq()) {
+      if ($$2.a(cxs.yl) && this.gs()) {
          $$2.a(16, $$0, d($$1));
          return bti.a;
       } else {
@@ -264,11 +264,11 @@ public class cjf extends chw {
       }
    }
 
-   public boolean gq() {
+   public boolean gs() {
       if (this.e_()) {
          return false;
       } else {
-         if (this.dV() instanceof ash $$0) {
+         if (this.dW() instanceof ash $$0) {
             this.a($$0, new cxo(cxs.oM));
             this.a(ecq.r);
             this.a(axf.ao);
@@ -278,13 +278,13 @@ public class cjf extends chw {
       }
    }
 
-   public boolean gy() {
-      return !this.gj() && !this.bn() && !this.P_() && !this.bZ() && !this.ca();
+   public boolean gA() {
+      return !this.gl() && !this.bn() && !this.P_() && !this.bZ() && !this.ca();
    }
 
    @Override
-   public boolean gt() {
-      return super.gt() && !this.t();
+   public boolean gv() {
+      return super.gv() && !this.t();
    }
 
    @Override
@@ -293,7 +293,7 @@ public class cjf extends chw {
    }
 
    @Override
-   protected void gs() {
+   protected void gu() {
       this.b(axf.ac);
    }
 

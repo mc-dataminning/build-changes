@@ -15,7 +15,7 @@ public class cgh extends cgp<bwh> {
    }
 
    protected void a(ash $$0, bwh $$1) {
-      bxh<?> $$2 = $$1.eb();
+      bxh<?> $$2 = $$1.ec();
       List<cma> $$3 = $$0.a(cma.class, $$1.cR().c(32.0, 16.0, 32.0), $$0x -> true);
       $$3.sort(Comparator.comparingDouble($$1::g));
       Optional<cma> $$4 = $$3.stream().filter($$2x -> $$1.c($$0, $$2x.l())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();

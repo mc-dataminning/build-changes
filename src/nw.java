@@ -22,7 +22,7 @@ public class nw extends ne {
       this.u(dkn.kt);
       this.u(dkn.kC);
       this.a(dkn.tQ, $$1 -> this.l($$1));
-      this.u(dkn.tR);
+      this.a(dkn.tR, $$1 -> this.c((dhg)$$1));
       this.u(dkn.tP);
       this.s(dkn.go);
       this.a(dkn.jR, $$1 -> this.a($$1));

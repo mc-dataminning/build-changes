@@ -12,6 +12,6 @@ public record daz() implements dba {
 
    @Override
    public boolean a(dhh $$0, cxo $$1, bwf $$2) {
-      return $$2.ez();
+      return $$2.eA();
    }
 }

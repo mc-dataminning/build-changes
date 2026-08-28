@@ -89,7 +89,7 @@ public class dqf extends dkl implements dnh, drp {
    protected void a(dhh $$0, dxu $$1, fbt $$2, cqp $$3) {
       if (!$$0.C) {
          jh $$4 = $$2.b();
-         if ($$0 instanceof ash $$5 && $$3.c($$5, $$4) && $$3.a($$5) && $$3 instanceof crc && $$3.dy().g() > 0.6) {
+         if ($$0 instanceof ash $$5 && $$3.c($$5, $$4) && $$3.a($$5) && $$3 instanceof crc && $$3.dz().g() > 0.6) {
             $$0.b($$4, true);
          }
       }
@@ -244,7 +244,7 @@ public class dqf extends dkl implements dnh, drp {
 
    @Override
    public btz a(bvj $$0) {
-      return $$0.dW().c($$0);
+      return $$0.dX().c($$0);
    }
 
    private static void a(dxu $$0, ash $$1, jh $$2) {

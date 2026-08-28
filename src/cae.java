@@ -10,12 +10,12 @@ public class cae {
                      jp $$12 = $$5.b($$8);
                      Optional<Long> $$13 = $$5.a($$6);
                      if ($$12.a() == $$9.ah() && (!$$13.isPresent() || $$9.ac() - $$13.get() <= (long)$$4)) {
-                        if ($$12.b().k($$10.dv()) > $$3) {
+                        if ($$12.b().k($$10.dw()) > $$3) {
                            fbx $$14 = null;
                            int $$15 = 0;
                            int $$16 = 1000;
 
-                           while ($$14 == null || jh.a((ka)$$14).k($$10.dv()) > $$3) {
+                           while ($$14 == null || jh.a((ka)$$14).k($$10.dw()) > $$3) {
                               $$14 = cha.a($$10, 15, 7, fbx.c($$12.b()), (float) (Math.PI / 2));
                               if (++$$15 == 1000) {
                                  $$10.a($$0);
@@ -26,7 +26,7 @@ public class cae {
                            }
 
                            $$7.a(new cfm($$14, $$1, $$2));
-                        } else if ($$12.b().k($$10.dv()) > $$2) {
+                        } else if ($$12.b().k($$10.dw()) > $$2) {
                            $$7.a(new cfm($$12.b(), $$1, $$2));
                         }
                      } else {

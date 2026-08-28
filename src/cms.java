@@ -42,7 +42,7 @@ public class cms extends cmw {
    }
 
    public static bxm.a x() {
-      return cmw.gr().a(bxn.c, 6.0).a(bxn.v, 0.5).a(bxn.s, 30.0);
+      return cmw.gt().a(bxn.c, 6.0).a(bxn.v, 0.5).a(bxn.s, 30.0);
    }
 
    @Override
@@ -57,7 +57,7 @@ public class cms extends cmw {
       $$0.a(d, 0);
    }
 
-   public boolean gm() {
+   public boolean go() {
       return this.al.a(a);
    }
 
@@ -73,19 +73,19 @@ public class cms extends cmw {
       this.al.a(d, $$0);
    }
 
-   public boolean gn() {
+   public boolean gp() {
       return this.al.a(d) != 0;
    }
 
    @Nullable
-   public bwf go() {
-      if (!this.gn()) {
+   public bwf gq() {
+      if (!this.gp()) {
          return null;
-      } else if (this.dV().C) {
+      } else if (this.dW().C) {
          if (this.ce != null) {
             return this.ce;
          } else {
-            bvj $$0 = this.dV().a(this.al.a(d));
+            bvj $$0 = this.dW().a(this.al.a(d));
             if ($$0 instanceof bwf) {
                this.ce = (bwf)$$0;
                return this.ce;
@@ -128,8 +128,8 @@ public class cms extends cmw {
    }
 
    @Override
-   protected bvj.b bg() {
-      return bvj.b.c;
+   protected bvj.c bg() {
+      return bvj.c.c;
    }
 
    @Override
@@ -140,17 +140,17 @@ public class cms extends cmw {
    @Override
    public void d_() {
       if (this.bL()) {
-         if (this.dV().C) {
+         if (this.dW().C) {
             this.ca = this.bZ;
             if (!this.bj()) {
                this.cb = 2.0F;
-               fbx $$0 = this.dy();
+               fbx $$0 = this.dz();
                if ($$0.e > 0.0 && this.cg && !this.bb()) {
-                  this.dV().a(this.dA(), this.dC(), this.dG(), this.t(), this.dm(), 1.0F, 1.0F, false);
+                  this.dW().a(this.dB(), this.dD(), this.dH(), this.t(), this.dn(), 1.0F, 1.0F, false);
                }
 
-               this.cg = $$0.e < 0.0 && this.dV().a(this.dv().e(), this);
-            } else if (this.gm()) {
+               this.cg = $$0.e < 0.0 && this.dW().a(this.dw().e(), this);
+            } else if (this.go()) {
                if (this.cb < 0.5F) {
                   this.cb = 4.0F;
                } else {
@@ -164,33 +164,33 @@ public class cms extends cmw {
             this.cd = this.cc;
             if (!this.bm()) {
                this.cc = this.ae.i();
-            } else if (this.gm()) {
+            } else if (this.go()) {
                this.cc = this.cc + (0.0F - this.cc) * 0.25F;
             } else {
                this.cc = this.cc + (1.0F - this.cc) * 0.06F;
             }
 
-            if (this.gm() && this.bj()) {
+            if (this.go() && this.bj()) {
                fbx $$1 = this.g(0.0F);
 
                for (int $$2 = 0; $$2 < 2; $$2++) {
-                  this.dV().a(ls.d, this.d(0.5) - $$1.d * 1.5, this.dD() - $$1.e * 1.5, this.g(0.5) - $$1.f * 1.5, 0.0, 0.0, 0.0);
+                  this.dW().a(ls.d, this.d(0.5) - $$1.d * 1.5, this.dE() - $$1.e * 1.5, this.g(0.5) - $$1.f * 1.5, 0.0, 0.0, 0.0);
                }
             }
 
-            if (this.gn()) {
+            if (this.gp()) {
                if (this.cf < this.p()) {
                   this.cf++;
                }
 
-               bwf $$3 = this.go();
+               bwf $$3 = this.gq();
                if ($$3 != null) {
                   this.H().a($$3, 90.0F, 90.0F);
                   this.H().a();
                   double $$4 = (double)this.L(0.0F);
-                  double $$5 = $$3.dA() - this.dA();
-                  double $$6 = $$3.e(0.5) - this.dE();
-                  double $$7 = $$3.dG() - this.dG();
+                  double $$5 = $$3.dB() - this.dB();
+                  double $$6 = $$3.e(0.5) - this.dF();
+                  double $$7 = $$3.dH() - this.dH();
                   double $$8 = Math.sqrt($$5 * $$5 + $$6 * $$6 + $$7 * $$7);
                   $$5 /= $$8;
                   $$6 /= $$8;
@@ -199,7 +199,7 @@ public class cms extends cmw {
 
                   while ($$9 < $$8) {
                      $$9 += 1.8 - $$4 + this.ae.j() * (1.7 - $$4);
-                     this.dV().a(ls.d, this.dA() + $$5 * $$9, this.dE() + $$6 * $$9, this.dG() + $$7 * $$9, 0.0, 0.0, 0.0);
+                     this.dW().a(ls.d, this.dB() + $$5 * $$9, this.dF() + $$6 * $$9, this.dH() + $$7 * $$9, 0.0, 0.0, 0.0);
                   }
                }
             }
@@ -208,13 +208,13 @@ public class cms extends cmw {
          if (this.bm()) {
             this.j(300);
          } else if (this.aJ()) {
-            this.h(this.dy().b((double)((this.ae.i() * 2.0F - 1.0F) * 0.4F), 0.5, (double)((this.ae.i() * 2.0F - 1.0F) * 0.4F)));
+            this.h(this.dz().b((double)((this.ae.i() * 2.0F - 1.0F) * 0.4F), 0.5, (double)((this.ae.i() * 2.0F - 1.0F) * 0.4F)));
             this.v(this.ae.i() * 360.0F);
             this.d(false);
             this.ar = true;
          }
 
-         if (this.gn()) {
+         if (this.gp()) {
             this.v(this.aZ);
          }
       }
@@ -238,7 +238,7 @@ public class cms extends cmw {
       return ((float)this.cf + $$0) / (float)this.p();
    }
 
-   public float gp() {
+   public float gr() {
       return (float)this.cf;
    }
 
@@ -253,8 +253,8 @@ public class cms extends cmw {
 
    @Override
    public boolean a(ash $$0, btz $$1, float $$2) {
-      if (!this.gm() && !$$1.a(axw.w) && !$$1.a(buc.P) && $$1.c() instanceof bwf $$3) {
-         $$3.a($$0, this.dW().d(this), 2.0F);
+      if (!this.go() && !$$1.a(axw.w) && !$$1.a(buc.P) && $$1.c() instanceof bwf $$3) {
+         $$3.a($$0, this.dX().d(this), 2.0F);
       }
 
       if (this.c != null) {
@@ -273,10 +273,10 @@ public class cms extends cmw {
    public void a_(fbx $$0) {
       if (this.di() && this.bj()) {
          this.a(0.1F, $$0);
-         this.a(bwj.a, this.dy());
-         this.h(this.dy().c(0.9));
-         if (!this.gm() && this.O_() == null) {
-            this.h(this.dy().b(0.0, -0.005, 0.0));
+         this.a(bwj.a, this.dz());
+         this.h(this.dz().c(0.9));
+         if (!this.go() && this.O_() == null) {
+            this.h(this.dz().b(0.0, -0.005, 0.0));
          }
       } else {
          super.a_($$0);
@@ -342,11 +342,11 @@ public class cms extends cmw {
                if (this.b == 0) {
                   this.a.b($$0.ar());
                   if (!this.a.bb()) {
-                     this.a.dV().a(this.a, (byte)21);
+                     this.a.dW().a(this.a, (byte)21);
                   }
                } else if (this.b >= this.a.p()) {
                   float $$1 = 1.0F;
-                  if (this.a.dV().al() == btf.d) {
+                  if (this.a.dW().al() == btf.d) {
                      $$1 += 2.0F;
                   }
 
@@ -355,7 +355,7 @@ public class cms extends cmw {
                   }
 
                   ash $$2 = a(this.a);
-                  $$0.a($$2, this.a.dW().c(this.a, (bvj)this.a), $$1);
+                  $$0.a($$2, this.a.dX().c(this.a, (bvj)this.a), $$1);
                   this.a.c($$2, $$0);
                   this.a.h(null);
                }
@@ -390,26 +390,26 @@ public class cms extends cmw {
       @Override
       public void a() {
          if (this.k == ccg.a.b && !this.l.L().m()) {
-            fbx $$0 = new fbx(this.e - this.l.dA(), this.f - this.l.dC(), this.g - this.l.dG());
+            fbx $$0 = new fbx(this.e - this.l.dB(), this.f - this.l.dD(), this.g - this.l.dH());
             double $$1 = $$0.g();
             double $$2 = $$0.d / $$1;
             double $$3 = $$0.e / $$1;
             double $$4 = $$0.f / $$1;
             float $$5 = (float)(bae.d($$0.f, $$0.d) * 180.0F / (float)Math.PI) - 90.0F;
-            this.l.v(this.b(this.l.dL(), $$5, 90.0F));
-            this.l.aX = this.l.dL();
+            this.l.v(this.b(this.l.dM(), $$5, 90.0F));
+            this.l.aX = this.l.dM();
             float $$6 = (float)(this.h * this.l.h(bxn.v));
-            float $$7 = bae.h(0.125F, this.l.fn(), $$6);
+            float $$7 = bae.h(0.125F, this.l.fp(), $$6);
             this.l.C($$7);
             double $$8 = Math.sin((double)(this.l.af + this.l.ar()) * 0.5) * 0.05;
-            double $$9 = Math.cos((double)(this.l.dL() * (float) (Math.PI / 180.0)));
-            double $$10 = Math.sin((double)(this.l.dL() * (float) (Math.PI / 180.0)));
+            double $$9 = Math.cos((double)(this.l.dM() * (float) (Math.PI / 180.0)));
+            double $$10 = Math.sin((double)(this.l.dM() * (float) (Math.PI / 180.0)));
             double $$11 = Math.sin((double)(this.l.af + this.l.ar()) * 0.75) * 0.05;
-            this.l.h(this.l.dy().b($$8 * $$9, $$11 * ($$10 + $$9) * 0.25 + (double)$$7 * $$3 * 0.1, $$8 * $$10));
+            this.l.h(this.l.dz().b($$8 * $$9, $$11 * ($$10 + $$9) * 0.25 + (double)$$7 * $$3 * 0.1, $$8 * $$10));
             ccf $$12 = this.l.H();
-            double $$13 = this.l.dA() + $$2 * 2.0;
-            double $$14 = this.l.dE() + $$3 / $$1;
-            double $$15 = this.l.dG() + $$4 * 2.0;
+            double $$13 = this.l.dB() + $$2 * 2.0;
+            double $$14 = this.l.dF() + $$3 / $$1;
+            double $$15 = this.l.dH() + $$4 * 2.0;
             double $$16 = $$12.e();
             double $$17 = $$12.f();
             double $$18 = $$12.g();

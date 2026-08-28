@@ -1,110 +1,76 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fStack;
+import java.util.ArrayList;
+import java.util.List;
 
 public class gku {
-   private static final int a = 6;
-   private final alz[] b = new alz[6];
+   private static final List<gmc> ae = new ArrayList<>();
+   public static final gmc a = a("blit_screen", fgp.a);
+   public static final gmc b = a("lightmap", fgp.a);
+   public static final gmc c = a("particle", fgp.d);
+   public static final gmc d = a("position", fgp.e);
+   public static final gmc e = a("position_color", fgp.f);
+   public static final gmc f = a("position_color_lightmap", fgp.h);
+   public static final gmc g = a("position_color_tex_lightmap", fgp.k);
+   public static final gmc h = a("position_tex", fgp.i);
+   public static final gmc i = a("position_tex_color", fgp.j);
+   public static final gmc j = a("rendertype_solid", fgp.b);
+   public static final gmc k = a("rendertype_cutout_mipped", fgp.b);
+   public static final gmc l = a("rendertype_cutout", fgp.b);
+   public static final gmc m = a("rendertype_translucent", fgp.b);
+   public static final gmc n = a("rendertype_translucent_moving_block", fgp.b);
+   public static final gmc o = a("rendertype_armor_cutout_no_cull", fgp.c);
+   public static final gmc p = a("rendertype_armor_translucent", fgp.c);
+   public static final gmc q = a("rendertype_entity_solid", fgp.c);
+   public static final gmc r = a("rendertype_entity_cutout", fgp.c);
+   public static final gmc s = a("rendertype_entity_cutout_no_cull", fgp.c);
+   public static final gmc t = a("rendertype_entity_cutout_no_cull_z_offset", fgp.c);
+   public static final gmc u = a("rendertype_item_entity_translucent_cull", fgp.c);
+   public static final gmc v = a("rendertype_entity_translucent", fgp.c);
+   public static final gmc w = a("rendertype_entity_translucent_emissive", fgp.c);
+   public static final gmc x = a("rendertype_entity_smooth_cutout", fgp.c);
+   public static final gmc y = a("rendertype_beacon_beam", fgp.b);
+   public static final gmc z = a("rendertype_entity_decal", fgp.c);
+   public static final gmc A = a("rendertype_entity_no_outline", fgp.c);
+   public static final gmc B = a("rendertype_entity_shadow", fgp.c);
+   public static final gmc C = a("rendertype_entity_alpha", fgp.c);
+   public static final gmc D = a("rendertype_eyes", fgp.c);
+   public static final gmc E = a("rendertype_energy_swirl", fgp.c);
+   public static final gmc F = a("rendertype_leash", fgp.h);
+   public static final gmc G = a("rendertype_water_mask", fgp.e);
+   public static final gmc H = a("rendertype_outline", fgp.j);
+   public static final gmc I = a("rendertype_armor_entity_glint", fgp.i);
+   public static final gmc J = a("rendertype_glint_translucent", fgp.i);
+   public static final gmc K = a("rendertype_glint", fgp.i);
+   public static final gmc L = a("rendertype_entity_glint", fgp.i);
+   public static final gmc M = a("rendertype_text", fgp.k);
+   public static final gmc N = a("rendertype_text_background", fgp.h);
+   public static final gmc O = a("rendertype_text_intensity", fgp.k);
+   public static final gmc P = a("rendertype_text_see_through", fgp.k);
+   public static final gmc Q = a("rendertype_text_background_see_through", fgp.h);
+   public static final gmc R = a("rendertype_text_intensity_see_through", fgp.k);
+   public static final gmc S = a("rendertype_lightning", fgp.f);
+   public static final gmc T = a("rendertype_tripwire", fgp.b);
+   public static final gmc U = a("rendertype_end_portal", fgp.e);
+   public static final gmc V = a("rendertype_end_gateway", fgp.e);
+   public static final gmc W = a("rendertype_clouds", fgp.f);
+   public static final gmc X = a("rendertype_lines", fgp.g);
+   public static final gmc Y = a("rendertype_crumbling", fgp.b);
+   public static final gmc Z = a("rendertype_gui", fgp.f);
+   public static final gmc aa = a("rendertype_gui_overlay", fgp.f);
+   public static final gmc ab = a("rendertype_gui_text_highlight", fgp.f);
+   public static final gmc ac = a("rendertype_gui_ghost_recipe_overlay", fgp.f);
+   public static final gmc ad = a("rendertype_breeze_wind", fgp.c);
 
-   public gku(alz $$0) {
-      for (int $$1 = 0; $$1 < 6; $$1++) {
-         this.b[$$1] = $$0.e($$0.a() + "_" + $$1 + ".png");
-      }
+   private static gmc a(String $$0, fgw $$1) {
+      return a($$0, $$1, gma.a);
    }
 
-   public void a(fme $$0, float $$1, float $$2, float $$3) {
-      fgs $$4 = fgs.b();
-      Matrix4f $$5 = new Matrix4f().setPerspective(1.4835298F, (float)$$0.aO().k() / (float)$$0.aO().l(), 0.05F, 10.0F);
-      RenderSystem.backupProjectionMatrix();
-      RenderSystem.setProjectionMatrix($$5, fgy.a);
-      Matrix4fStack $$6 = RenderSystem.getModelViewStack();
-      $$6.pushMatrix();
-      $$6.rotationX((float) Math.PI);
-      RenderSystem.setShader(gkt.i);
-      RenderSystem.enableBlend();
-      RenderSystem.disableCull();
-      RenderSystem.depthMask(false);
-      int $$7 = 2;
-
-      for (int $$8 = 0; $$8 < 4; $$8++) {
-         $$6.pushMatrix();
-         float $$9 = ((float)($$8 % 2) / 2.0F - 0.5F) / 256.0F;
-         float $$10 = ((float)($$8 / 2) / 2.0F - 0.5F) / 256.0F;
-         float $$11 = 0.0F;
-         $$6.translate($$9, $$10, 0.0F);
-         $$6.rotateX($$1 * (float) (Math.PI / 180.0));
-         $$6.rotateY($$2 * (float) (Math.PI / 180.0));
-
-         for (int $$12 = 0; $$12 < 6; $$12++) {
-            RenderSystem.setShaderTexture(0, this.b[$$12]);
-            fgl $$13 = $$4.a(fgv.c.h, fgo.j);
-            int $$14 = Math.round(255.0F * $$3) / ($$8 + 1);
-            if ($$12 == 0) {
-               $$13.a(-1.0F, -1.0F, 1.0F).a(0.0F, 0.0F).d($$14);
-               $$13.a(-1.0F, 1.0F, 1.0F).a(0.0F, 1.0F).d($$14);
-               $$13.a(1.0F, 1.0F, 1.0F).a(1.0F, 1.0F).d($$14);
-               $$13.a(1.0F, -1.0F, 1.0F).a(1.0F, 0.0F).d($$14);
-            }
-
-            if ($$12 == 1) {
-               $$13.a(1.0F, -1.0F, 1.0F).a(0.0F, 0.0F).d($$14);
-               $$13.a(1.0F, 1.0F, 1.0F).a(0.0F, 1.0F).d($$14);
-               $$13.a(1.0F, 1.0F, -1.0F).a(1.0F, 1.0F).d($$14);
-               $$13.a(1.0F, -1.0F, -1.0F).a(1.0F, 0.0F).d($$14);
-            }
-
-            if ($$12 == 2) {
-               $$13.a(1.0F, -1.0F, -1.0F).a(0.0F, 0.0F).d($$14);
-               $$13.a(1.0F, 1.0F, -1.0F).a(0.0F, 1.0F).d($$14);
-               $$13.a(-1.0F, 1.0F, -1.0F).a(1.0F, 1.0F).d($$14);
-               $$13.a(-1.0F, -1.0F, -1.0F).a(1.0F, 0.0F).d($$14);
-            }
-
-            if ($$12 == 3) {
-               $$13.a(-1.0F, -1.0F, -1.0F).a(0.0F, 0.0F).d($$14);
-               $$13.a(-1.0F, 1.0F, -1.0F).a(0.0F, 1.0F).d($$14);
-               $$13.a(-1.0F, 1.0F, 1.0F).a(1.0F, 1.0F).d($$14);
-               $$13.a(-1.0F, -1.0F, 1.0F).a(1.0F, 0.0F).d($$14);
-            }
-
-            if ($$12 == 4) {
-               $$13.a(-1.0F, -1.0F, -1.0F).a(0.0F, 0.0F).d($$14);
-               $$13.a(-1.0F, -1.0F, 1.0F).a(0.0F, 1.0F).d($$14);
-               $$13.a(1.0F, -1.0F, 1.0F).a(1.0F, 1.0F).d($$14);
-               $$13.a(1.0F, -1.0F, -1.0F).a(1.0F, 0.0F).d($$14);
-            }
-
-            if ($$12 == 5) {
-               $$13.a(-1.0F, 1.0F, 1.0F).a(0.0F, 0.0F).d($$14);
-               $$13.a(-1.0F, 1.0F, -1.0F).a(0.0F, 1.0F).d($$14);
-               $$13.a(1.0F, 1.0F, -1.0F).a(1.0F, 1.0F).d($$14);
-               $$13.a(1.0F, 1.0F, 1.0F).a(1.0F, 0.0F).d($$14);
-            }
-
-            fgm.a($$13.b());
-         }
-
-         $$6.popMatrix();
-         RenderSystem.colorMask(true, true, true, false);
-      }
-
-      RenderSystem.colorMask(true, true, true, true);
-      RenderSystem.restoreProjectionMatrix();
-      $$6.popMatrix();
-      RenderSystem.depthMask(true);
-      RenderSystem.enableCull();
-      RenderSystem.enableDepthTest();
+   private static gmc a(String $$0, fgw $$1, gma $$2) {
+      gmc $$3 = new gmc(alz.b("core/" + $$0), $$1, $$2);
+      ae.add($$3);
+      return $$3;
    }
 
-   public CompletableFuture<Void> a(hbk $$0, Executor $$1) {
-      CompletableFuture<?>[] $$2 = new CompletableFuture[6];
-
-      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-         $$2[$$3] = $$0.a(this.b[$$3], $$1);
-      }
-
-      return CompletableFuture.allOf($$2);
+   public static List<gmc> a() {
+      return ae;
    }
 }

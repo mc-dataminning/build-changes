@@ -1,102 +1,109 @@
-import com.google.common.collect.Lists;
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.List;
+import java.net.URI;
 
-public class fsu extends ftw {
-   private static final int d = 20;
-   private final xv s;
-   private fox u = fox.a;
-   protected xv a;
-   protected xv b;
-   private int v;
-   protected final BooleanConsumer c;
-   private final List<fod> w = Lists.newArrayList();
+public class fsu extends fsv {
+   private static final xv d = xv.c("chat.copy");
+   private static final xv s = xv.c("chat.link.warning");
+   private final String u;
+   private final boolean v;
 
-   public fsu(BooleanConsumer $$0, xv $$1, xv $$2) {
-      this($$0, $$1, $$2, xu.f, xu.g);
+   public fsu(BooleanConsumer $$0, String $$1, boolean $$2) {
+      this($$0, c($$2), xv.b($$1), $$1, $$2 ? xu.e : xu.g, $$2);
    }
 
-   public fsu(BooleanConsumer $$0, xv $$1, xv $$2, xv $$3, xv $$4) {
-      super($$1);
-      this.c = $$0;
-      this.s = $$2;
-      this.a = $$3;
+   public fsu(BooleanConsumer $$0, xv $$1, String $$2, boolean $$3) {
+      this($$0, $$1, a($$3, $$2), $$2, $$3 ? xu.e : xu.g, $$3);
+   }
+
+   public fsu(BooleanConsumer $$0, xv $$1, URI $$2, boolean $$3) {
+      this($$0, $$1, $$2.toString(), $$3);
+   }
+
+   public fsu(BooleanConsumer $$0, xv $$1, xv $$2, URI $$3, xv $$4, boolean $$5) {
+      this($$0, $$1, $$2, $$3.toString(), $$4, true);
+   }
+
+   public fsu(BooleanConsumer $$0, xv $$1, xv $$2, String $$3, xv $$4, boolean $$5) {
+      super($$0, $$1, $$2);
+      this.a = (xv)($$5 ? xv.c("chat.link.open") : xu.f);
       this.b = $$4;
+      this.v = !$$5;
+      this.u = $$3;
+   }
+
+   protected static yj a(boolean $$0, String $$1) {
+      return c($$0).b(xu.v).b(xv.b($$1));
+   }
+
+   protected static yj c(boolean $$0) {
+      return xv.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
    }
 
    @Override
-   public xv i() {
-      return xu.a(super.i(), this.s);
-   }
-
-   @Override
-   protected void aT_() {
-      super.aT_();
-      this.u = fox.a(this.p, this.s, this.n - 50);
-      int $$0 = bae.a(this.E() + this.F() + 20, this.o / 6 + 96, this.o - 24);
-      this.w.clear();
-      this.a($$0);
-   }
-
    protected void a(int $$0) {
-      this.a(fod.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 155, $$0, 150, 20).a());
-      this.a(fod.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 155 + 160, $$0, 150, 20).a());
-   }
-
-   protected void a(fod $$0) {
-      this.w.add(this.c($$0));
-   }
-
-   @Override
-   public void a(fnq $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, this.l(), 16777215);
-      this.u.a($$0, this.n / 2, this.E());
-   }
-
-   private int l() {
-      int $$0 = (this.o - this.F()) / 2;
-      return bae.a($$0 - 20 - 9, 10, 80);
-   }
-
-   private int E() {
-      return this.l() + 20;
-   }
-
-   private int F() {
-      return this.u.a() * 9;
-   }
-
-   public void b(int $$0) {
-      this.v = $$0;
-
-      for (fod $$1 : this.w) {
-         $$1.j = false;
-      }
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      if (--this.v == 0) {
-         for (fod $$0 : this.w) {
-            $$0.j = true;
-         }
-      }
-   }
-
-   @Override
-   public boolean aH_() {
-      return false;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
+      this.c(foe.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 50 - 105, $$0, 100, 20).a());
+      this.c(foe.a(d, $$0x -> {
+         this.k();
          this.c.accept(false);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+      }).a(this.n / 2 - 50, $$0, 100, 20).a());
+      this.c(foe.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 50 + 105, $$0, 100, 20).a());
+   }
+
+   public void k() {
+      this.m.p.a(this.u);
+   }
+
+   @Override
+   public void a(fnr $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.v) {
+         $$0.a(this.p, s, this.n / 2, 110, 16764108);
       }
+   }
+
+   public static void a(ftx $$0, String $$1, boolean $$2) {
+      fmf $$3 = fmf.Q();
+      $$3.a(new fsu($$3x -> {
+         if ($$3x) {
+            ae.m().a($$1);
+         }
+
+         $$3.a($$0);
+      }, $$1, $$2));
+   }
+
+   public static void a(ftx $$0, URI $$1, boolean $$2) {
+      fmf $$3 = fmf.Q();
+      $$3.a(new fsu($$3x -> {
+         if ($$3x) {
+            ae.m().a($$1);
+         }
+
+         $$3.a($$0);
+      }, $$1.toString(), $$2));
+   }
+
+   public static void a(ftx $$0, URI $$1) {
+      a($$0, $$1, true);
+   }
+
+   public static void a(ftx $$0, String $$1) {
+      a($$0, $$1, true);
+   }
+
+   public static foe.c b(ftx $$0, String $$1, boolean $$2) {
+      return $$3 -> a($$0, $$1, $$2);
+   }
+
+   public static foe.c b(ftx $$0, URI $$1, boolean $$2) {
+      return $$3 -> a($$0, $$1, $$2);
+   }
+
+   public static foe.c b(ftx $$0, String $$1) {
+      return b($$0, $$1, true);
+   }
+
+   public static foe.c b(ftx $$0, URI $$1) {
+      return b($$0, $$1, true);
    }
 }

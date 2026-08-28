@@ -1,12 +1,16 @@
-public class fhq extends fho {
-   final long a;
+public class fhq extends fhp {
+   private final xv a;
 
-   public fhq(long $$0) {
+   public fhq(xv $$0) {
       this.a = $$0;
    }
 
+   public fhq(String $$0) {
+      this(xv.b($$0));
+   }
+
    @Override
-   public xv[] b() {
-      return new xv[]{xv.c("mco.upload.failed.too_big.title"), xv.a("mco.upload.failed.too_big.description", fhc.b(this.a, fhc.a(this.a)))};
+   public xv a() {
+      return xv.a("mco.upload.failed", this.a);
    }
 }

@@ -14,12 +14,12 @@ public class cdu extends cdd {
 
    @Override
    public boolean b() {
-      if (!this.c.dV().U()) {
+      if (!this.c.dW().U()) {
          return false;
-      } else if (this.c.dY().a(8000) != 0) {
+      } else if (this.c.dZ().a(8000) != 0) {
          return false;
       } else {
-         this.d = a(this.c).a(cpi.class, b, this.c, this.c.dA(), this.c.dC(), this.c.dG(), this.c.cR().c(6.0, 2.0, 6.0));
+         this.d = a(this.c).a(cpi.class, b, this.c, this.c.dB(), this.c.dD(), this.c.dH(), this.c.cR().c(6.0, 2.0, 6.0));
          return this.d != null;
       }
    }

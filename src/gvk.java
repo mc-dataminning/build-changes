@@ -1,16 +1,27 @@
-public class gvk extends gwd<hai, gbf> {
-   private static final alz a = alz.b("textures/entity/zombie/drowned_outer_layer.png");
-   private final gbf b;
-   private final gbf c;
+public class gvk extends gwe<gxp, gbe> {
+   private final gsn a;
 
-   public gvk(gtl<hai, gbf> $$0, gei $$1) {
+   public gvk(gtm<gxp, gbe> $$0, gsn $$1) {
       super($$0);
-      this.b = new gbf($$1.a(gel.aA));
-      this.c = new gbf($$1.a(gel.ax));
+      this.a = $$1;
    }
 
-   public void a(fgq $$0, glj $$1, int $$2, hai $$3, float $$4, float $$5) {
-      gbf $$6 = $$3.ae ? this.c : this.b;
-      a($$6, a, $$0, $$1, $$2, $$3, -1);
+   public void a(fgr $$0, glk $$1, int $$2, gxp $$3, float $$4, float $$5) {
+      cxo $$6 = $$3.aY_();
+      hdm $$7 = $$3.b();
+      if ($$7 != null) {
+         $$0.a();
+         float $$8 = 1.0F;
+         float $$9 = -1.0F;
+         float $$10 = bae.e($$3.V) / 60.0F;
+         if ($$3.V < 0.0F) {
+            $$0.a(0.0F, 1.0F - $$10 * 0.5F, -1.0F + $$10 * 0.5F);
+         } else {
+            $$0.a(0.0F, 1.0F + $$10 * 0.8F, -1.0F + $$10 * 0.2F);
+         }
+
+         this.a.a($$6, cxm.h, false, $$0, $$1, $$2, hbb.d, $$7);
+         $$0.b();
+      }
    }
 }

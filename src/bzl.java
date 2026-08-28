@@ -39,13 +39,13 @@ public class bzl {
          $$3 = $$0;
       }
 
-      $$3.eb().b(cfj.c);
+      $$3.ec().b(cfj.c);
       return $$2;
    }
 
    private static boolean a(jp $$0, jq<chm> $$1, cpi $$2) {
-      Optional<jp> $$3 = $$2.eb().c(cfj.c);
-      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gw().b());
+      Optional<jp> $$3 = $$2.ec().c(cfj.c);
+      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gy().b());
    }
 
    private static boolean a(jq<chm> $$0, cpl $$1) {

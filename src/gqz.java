@@ -1,20 +1,27 @@
-public class gqz extends gqi<cid, gyr, gba> {
-   private static final alz a = alz.b("textures/entity/cow/cow.png");
+public class gqz extends gsv<cic, gys, gba> {
+   private static final alz a = alz.b("textures/entity/fish/cod.png");
 
-   public gqz(gro.a $$0) {
-      super($$0, new gba($$0.a(gel.ac)), new gba($$0.a(gel.ad)), 0.7F);
+   public gqz(grp.a $$0) {
+      super($$0, new gba($$0.a(gem.W)), 0.3F);
    }
 
    @Override
-   public alz b(gyr $$0) {
+   public alz b(gys $$0) {
       return a;
    }
 
-   public gyr a() {
-      return new gyr();
+   public gys a() {
+      return new gys();
    }
 
-   public void a(cid $$0, gyr $$1, float $$2) {
-      super.a($$0, $$1, $$2);
+   @Override
+   protected void a(gys $$0, fgr $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      float $$4 = 4.3F * bae.a(0.6F * $$0.p);
+      $$1.a(a.d.rotationDegrees($$4));
+      if (!$$0.af) {
+         $$1.a(0.1F, 0.1F, -0.1F);
+         $$1.a(a.f.rotationDegrees(90.0F));
+      }
    }
 }

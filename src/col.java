@@ -60,7 +60,7 @@ public class col {
 
    protected static void a(cok $$0, bam $$1) {
       int $$2 = d.a($$1);
-      $$0.eb().a(cfj.ah, true, (long)$$2);
+      $$0.ec().a(cfj.ah, true, (long)$$2);
    }
 
    private static void a(bxh<cok> $$0) {
@@ -71,7 +71,7 @@ public class col {
       $$0.a(
          crn.b,
          10,
-         ImmutableList.of(bzx.a(col::b, 14.0F), cak.a(($$0x, $$1) -> $$1.gm(), col::b), cbl.a(cok::m, cos.a()), d(), g(), b(), c(), caa.a(bvq.bS, 4))
+         ImmutableList.of(bzx.a(col::b, 14.0F), cak.a(($$0x, $$1) -> $$1.go(), col::b), cbl.a(cok::m, cos.a()), d(), g(), b(), c(), caa.a(bvq.bS, 4))
       );
    }
 
@@ -93,9 +93,9 @@ public class col {
          ImmutableList.of(
             d(),
             bzx.a(col::b, 14.0F),
-            cak.a(($$0x, $$1) -> $$1.gm(), col::b),
-            cbl.a($$0x -> !$$0x.gt(), byr.a(cfj.ai, 2, 1.0F)),
-            cbl.a(cok::gt, byr.a(cfj.ai, 4, 0.6F)),
+            cak.a(($$0x, $$1) -> $$1.go(), col::b),
+            cbl.a($$0x -> !$$0x.gv(), byr.a(cfj.ai, 2, 1.0F)),
+            cbl.a(cok::gv, byr.a(cfj.ai, 4, 0.6F)),
             new bzv(ImmutableList.of(Pair.of(bzx.a(bvq.aS, 8.0F), 1), Pair.of(bzq.a(0.6F, 2, 1), 1), Pair.of(new byi(10, 20), 1)))
          ),
          cfj.ai
@@ -153,7 +153,7 @@ public class col {
    }
 
    protected static void a(cok $$0) {
-      bxh<cok> $$1 = $$0.eb();
+      bxh<cok> $$1 = $$0.ec();
       crn $$2 = $$1.g().orElse(null);
       $$1.a(ImmutableList.of(crn.m, crn.k, crn.n, crn.l, crn.o, crn.b));
       crn $$3 = $$1.g().orElse(null);
@@ -177,7 +177,7 @@ public class col {
       if (!$$0.e_()) {
          return false;
       } else {
-         bvj $$1 = $$0.dk();
+         bvj $$1 = $$0.dl();
          return $$1 instanceof cok && ((cok)$$1).e_() || $$1 instanceof coe && ((coe)$$1).e_();
       }
    }
@@ -195,13 +195,13 @@ public class col {
       }
 
       if (a($$3)) {
-         $$1.eb().b(cfj.ae);
+         $$1.ec().b(cfj.ae);
          a($$0, $$1, $$3);
          d((bwf)$$1);
       } else if (c($$3) && !o($$1)) {
          m($$1);
       } else {
-         boolean $$5 = !$$1.b($$0, $$3).equals(cxo.k);
+         boolean $$5 = !$$1.b($$0, $$3).equals(cxo.j);
          if (!$$5) {
             c($$1, $$3);
          }
@@ -230,8 +230,8 @@ public class col {
 
    protected static void a(ash $$0, cok $$1, boolean $$2) {
       cxo $$3 = $$1.b(bth.b);
-      $$1.a(bth.b, cxo.k);
-      if ($$1.gm()) {
+      $$1.a(bth.b, cxo.j);
+      if ($$1.go()) {
          boolean $$4 = b($$3);
          if ($$2 && $$4) {
             a($$1, f($$1));
@@ -244,7 +244,7 @@ public class col {
       } else {
          boolean $$6 = !$$1.b($$0, $$3).f();
          if (!$$6) {
-            cxo $$7 = $$1.eX();
+            cxo $$7 = $$1.eZ();
             if (a($$7)) {
                c($$1, $$7);
             } else {
@@ -257,9 +257,9 @@ public class col {
    }
 
    protected static void a(ash $$0, cok $$1) {
-      if (p($$1) && !$$1.eY().f()) {
-         $$1.a($$0, $$1.eY());
-         $$1.a(bth.b, cxo.k);
+      if (p($$1) && !$$1.fa().f()) {
+         $$1.a($$0, $$1.fa());
+         $$1.a(bth.b, cxo.j);
       }
    }
 
@@ -269,7 +269,7 @@ public class col {
    }
 
    private static void a(cok $$0, List<cxo> $$1) {
-      Optional<cpw> $$2 = $$0.eb().c(cfj.k);
+      Optional<cpw> $$2 = $$0.ec().c(cfj.k);
       if ($$2.isPresent()) {
          a($$0, $$2.get(), $$1);
       } else {
@@ -282,7 +282,7 @@ public class col {
    }
 
    private static void a(cok $$0, cpw $$1, List<cxo> $$2) {
-      a($$0, $$2, $$1.dt());
+      a($$0, $$2, $$1.du());
    }
 
    private static void a(cok $$0, List<cxo> $$1, fbx $$2) {
@@ -296,13 +296,13 @@ public class col {
    }
 
    private static List<cxo> f(cok $$0) {
-      ewt $$1 = $$0.dV().p().bc().b(ewk.aK);
-      List<cxo> $$2 = $$1.a(new ewr.a((ash)$$0.dV()).a(ezi.a, $$0).a(ezh.k));
+      ewt $$1 = $$0.dW().p().bc().b(ewk.aK);
+      List<cxo> $$2 = $$1.a(new ewr.a((ash)$$0.dW()).a(ezi.a, $$0).a(ezh.k));
       return $$2;
    }
 
    private static boolean a(bwf $$0, bwf $$1) {
-      return $$1.aq() != bvq.ak ? false : bam.a($$0.dV().ac()).i() < 0.1F;
+      return $$1.aq() != bvq.ak ? false : bam.a($$0.dW().ac()).i() < 0.1F;
    }
 
    protected static boolean a(cok $$0, cxo $$1) {
@@ -310,7 +310,7 @@ public class col {
          return false;
       } else if ($$1.a(ayd.U)) {
          return false;
-      } else if (r($$0) && $$0.eb().a(cfj.o)) {
+      } else if (r($$0) && $$0.ec().a(cfj.o)) {
          return false;
       } else if (b($$1)) {
          return t($$0);
@@ -331,7 +331,7 @@ public class col {
    }
 
    private static boolean a(cok $$0, bvj $$1) {
-      return !($$1 instanceof bwh $$2) ? false : !$$2.e_() || !$$2.bL() || g((bwf)$$0) || g($$2) || $$2 instanceof cok && $$2.dk() == null;
+      return !($$1 instanceof bwh $$2) ? false : !$$2.e_() || !$$2.bL() || g((bwf)$$0) || g($$2) || $$2 instanceof cok && $$2.dl() == null;
    }
 
    private static boolean b(ash $$0, cok $$1, bwf $$2) {
@@ -339,7 +339,7 @@ public class col {
    }
 
    private static boolean g(cok $$0) {
-      bxh<cok> $$1 = $$0.eb();
+      bxh<cok> $$1 = $$0.ec();
       if ($$1.a(cfj.ar)) {
          bwf $$2 = $$1.c(cfj.ar).get();
          return $$0.a($$2, 6.0);
@@ -349,7 +349,7 @@ public class col {
    }
 
    private static Optional<? extends bwf> b(ash $$0, cok $$1) {
-      bxh<cok> $$2 = $$1.eb();
+      bxh<cok> $$2 = $$1.ec();
       if (g($$1)) {
          return Optional.empty();
       } else {
@@ -376,7 +376,7 @@ public class col {
    }
 
    public static void a(ash $$0, cpw $$1, boolean $$2) {
-      List<cok> $$3 = $$1.dV().a(cok.class, $$1.cR().g(16.0));
+      List<cok> $$3 = $$1.dW().a(cok.class, $$1.cR().g(16.0));
       $$3.stream().filter(col::c).filter($$2x -> !$$2 || bya.b($$2x, $$1)).forEach($$2x -> {
          if ($$0.N().b(dhd.P)) {
             d($$0, $$2x, $$1);
@@ -400,7 +400,7 @@ public class col {
    }
 
    protected static boolean b(cok $$0, cxo $$1) {
-      return !r($$0) && !p($$0) && $$0.gm() && b($$1);
+      return !r($$0) && !p($$0) && $$0.go() && b($$1);
    }
 
    protected static void a(ash $$0, cok $$1, bwf $$2) {
@@ -409,7 +409,7 @@ public class col {
             a($$0, $$1, false);
          }
 
-         bxh<cok> $$3 = $$1.eb();
+         bxh<cok> $$3 = $$1.ec();
          $$3.b(cfj.ai);
          $$3.b(cfj.aj);
          $$3.b(cfj.ad);
@@ -437,7 +437,7 @@ public class col {
    }
 
    protected static void a(ash $$0, coj $$1, bwf $$2) {
-      if (!$$1.eb().c(crn.n)) {
+      if (!$$1.ec().c(crn.n)) {
          if (cgp.d($$0, $$1, $$2)) {
             if (!bya.a($$1, $$2, 4.0)) {
                if ($$2.aq() == bvq.bS && $$0.N().b(dhd.P)) {
@@ -453,7 +453,7 @@ public class col {
    }
 
    public static Optional<axe> b(cok $$0) {
-      return $$0.eb().g().map($$1 -> a($$0, $$1));
+      return $$0.ec().g().map($$1 -> a($$0, $$1));
    }
 
    private static axe a(cok $$0, crn $$1) {
@@ -475,20 +475,20 @@ public class col {
    }
 
    private static boolean h(cok $$0) {
-      bxh<cok> $$1 = $$0.eb();
+      bxh<cok> $$1 = $$0.ec();
       return !$$1.a(cfj.z) ? false : $$1.c(cfj.z).get().a($$0, 12.0);
    }
 
    protected static List<coj> c(cok $$0) {
-      return $$0.eb().c(cfj.ao).orElse(ImmutableList.of());
+      return $$0.ec().c(cfj.ao).orElse(ImmutableList.of());
    }
 
    private static List<coj> d(coj $$0) {
-      return $$0.eb().c(cfj.an).orElse(ImmutableList.of());
+      return $$0.ec().c(cfj.an).orElse(ImmutableList.of());
    }
 
    public static boolean a(bwf $$0) {
-      for (cxo $$1 : $$0.fb()) {
+      for (cxo $$1 : $$0.fd()) {
          if ($$1.a(ayd.X)) {
             return true;
          }
@@ -498,18 +498,18 @@ public class col {
    }
 
    private static void i(cok $$0) {
-      $$0.eb().b(cfj.m);
+      $$0.ec().b(cfj.m);
       $$0.L().o();
    }
 
    private static bxz<bwf> g() {
       bzy.a $$0 = new bzy.a(o);
-      return byd.a($$1 -> $$1.e_() && $$0.a($$1.dV().A), cfj.al, cfj.s, p);
+      return byd.a($$1 -> $$1.e_() && $$0.a($$1.dW().A), cfj.al, cfj.s, p);
    }
 
    protected static void b(ash $$0, coj $$1, bwf $$2) {
       d($$1).forEach($$2x -> {
-         if ($$2.aq() != bvq.ak || $$2x.m() && ((coe)$$2).gn()) {
+         if ($$2.aq() != bvq.ak || $$2x.m() && ((coe)$$2).gp()) {
             e($$0, $$2x, $$2);
          }
       });
@@ -521,14 +521,14 @@ public class col {
 
    protected static void c(ash $$0, coj $$1, bwf $$2) {
       if (cgp.d($$0, $$1, $$2)) {
-         $$1.eb().b(cfj.E);
-         $$1.eb().a(cfj.ab, $$2.cG(), 600L);
+         $$1.ec().b(cfj.E);
+         $$1.ec().a(cfj.ab, $$2.cG(), 600L);
          if ($$2.aq() == bvq.ak && $$1.m()) {
             b($$1);
          }
 
          if ($$2.aq() == bvq.bS && $$0.N().b(dhd.P)) {
-            $$1.eb().a(cfj.ac, true, 600L);
+            $$1.ec().a(cfj.ac, true, 600L);
          }
       }
    }
@@ -555,11 +555,11 @@ public class col {
    }
 
    public static Optional<bwf> d(cok $$0) {
-      return $$0.eb().a(cfj.z) ? $$0.eb().c(cfj.z) : Optional.empty();
+      return $$0.ec().a(cfj.z) ? $$0.ec().c(cfj.z) : Optional.empty();
    }
 
    public static Optional<cpw> a(coj $$0) {
-      return $$0.eb().a(cfj.l) ? $$0.eb().c(cfj.l) : Optional.empty();
+      return $$0.ec().a(cfj.l) ? $$0.ec().c(cfj.l) : Optional.empty();
    }
 
    private static void a(cok $$0, bwf $$1) {
@@ -567,14 +567,14 @@ public class col {
    }
 
    private static void b(cok $$0, bwf $$1) {
-      bxh<cok> $$2 = $$0.eb();
+      bxh<cok> $$2 = $$0.ec();
       bwf $$3 = bya.a($$0, $$2.c(cfj.z), $$1);
       $$3 = bya.a($$0, $$2.c(cfj.o), $$3);
       c($$0, $$3);
    }
 
    private static boolean j(cok $$0) {
-      bxh<cok> $$1 = $$0.eb();
+      bxh<cok> $$1 = $$0.ec();
       if (!$$1.a(cfj.z)) {
          return true;
       } else {
@@ -593,38 +593,38 @@ public class col {
    }
 
    private static boolean l(cok $$0) {
-      int $$1 = $$0.eb().c(cfj.as).orElse(0) + 1;
-      int $$2 = $$0.eb().c(cfj.at).orElse(0);
+      int $$1 = $$0.ec().c(cfj.as).orElse(0) + 1;
+      int $$2 = $$0.ec().c(cfj.at).orElse(0);
       return $$2 > $$1;
    }
 
    private static void c(cok $$0, bwf $$1) {
-      $$0.eb().b(cfj.ab);
-      $$0.eb().b(cfj.o);
-      $$0.eb().b(cfj.m);
-      $$0.eb().a(cfj.z, $$1, (long)q.a($$0.dV().A));
+      $$0.ec().b(cfj.ab);
+      $$0.ec().b(cfj.o);
+      $$0.ec().b(cfj.m);
+      $$0.ec().a(cfj.z, $$1, (long)q.a($$0.dW().A));
       b((coj)$$0);
    }
 
    protected static void b(coj $$0) {
-      $$0.eb().a(cfj.ah, true, (long)d.a($$0.dV().A));
+      $$0.ec().a(cfj.ah, true, (long)d.a($$0.dW().A));
    }
 
    private static void m(cok $$0) {
-      $$0.eb().a(cfj.av, true, 200L);
+      $$0.ec().a(cfj.av, true, 200L);
    }
 
    private static fbx n(cok $$0) {
       fbx $$1 = chd.a($$0, 4, 2);
-      return $$1 == null ? $$0.dt() : $$1;
+      return $$1 == null ? $$0.du() : $$1;
    }
 
    private static boolean o(cok $$0) {
-      return $$0.eb().a(cfj.av);
+      return $$0.ec().a(cfj.av);
    }
 
    protected static boolean c(coj $$0) {
-      return $$0.eb().c(crn.b);
+      return $$0.ec().c(crn.b);
    }
 
    private static boolean c(bwf $$0) {
@@ -632,11 +632,11 @@ public class col {
    }
 
    private static void d(bwf $$0) {
-      $$0.eb().a(cfj.ad, true, 119L);
+      $$0.ec().a(cfj.ad, true, 119L);
    }
 
    private static boolean p(cok $$0) {
-      return $$0.eb().a(cfj.ad);
+      return $$0.ec().a(cfj.ad);
    }
 
    private static boolean b(cxo $$0) {
@@ -648,11 +648,11 @@ public class col {
    }
 
    private static boolean q(cok $$0) {
-      return $$0.eb().a(cfj.aw);
+      return $$0.ec().a(cfj.aw);
    }
 
    private static boolean e(bwf $$0) {
-      return $$0.eb().a(cfj.au);
+      return $$0.ec().a(cfj.au);
    }
 
    private static boolean f(bwf $$0) {
@@ -664,19 +664,19 @@ public class col {
    }
 
    private static boolean r(cok $$0) {
-      return $$0.eb().a(cfj.ag);
+      return $$0.ec().a(cfj.ag);
    }
 
    private static boolean g(bwf $$0) {
-      return $$0.eb().a(cfj.x);
+      return $$0.ec().a(cfj.x);
    }
 
    private static boolean s(cok $$0) {
-      return !$$0.eY().f();
+      return !$$0.fa().f();
    }
 
    private static boolean t(cok $$0) {
-      return $$0.eY().f() || !a($$0.eY());
+      return $$0.fa().f() || !a($$0.fa());
    }
 
    public static boolean a(bvq<?> $$0) {

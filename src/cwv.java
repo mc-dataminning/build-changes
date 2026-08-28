@@ -24,7 +24,7 @@ public class cwv extends cxk implements cyj {
 
    @Override
    public bti a(dhh $$0, cpw $$1, bth $$2) {
-      if ($$1.fH()) {
+      if ($$1.fJ()) {
          cxo $$3 = $$1.b($$2);
          if ($$0 instanceof ash $$4) {
             cqp.a(new cqk($$0, $$3, $$1), $$4, $$3);

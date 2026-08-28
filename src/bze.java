@@ -6,14 +6,14 @@ public class bze extends bxy<bwh> {
    }
 
    protected boolean a(ash $$0, bwh $$1, long $$2) {
-      return $$1.eb().c(cfj.n).filter($$1x -> $$1x.a($$1)).isPresent();
+      return $$1.ec().c(cfj.n).filter($$1x -> $$1x.a($$1)).isPresent();
    }
 
    protected void b(ash $$0, bwh $$1, long $$2) {
-      $$1.eb().b(cfj.n);
+      $$1.ec().b(cfj.n);
    }
 
    protected void c(ash $$0, bwh $$1, long $$2) {
-      $$1.eb().c(cfj.n).ifPresent($$1x -> $$1.H().a($$1x.a()));
+      $$1.ec().c(cfj.n).ifPresent($$1x -> $$1.H().a($$1x.a()));
    }
 }

@@ -52,7 +52,7 @@ public class dml extends djx {
 
    @Override
    protected bti a(dxu $$0, dhh $$1, jh $$2, cpw $$3, fbt $$4) {
-      if (!$$3.gt()) {
+      if (!$$3.gv()) {
          return super.a($$0, $$1, $$2, $$3, $$4);
       } else {
          if (!$$1.C) {

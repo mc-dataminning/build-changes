@@ -1440,7 +1440,7 @@ public class cxs {
       cxk $$2 = a($$0);
 
       for (dkl $$3 : $$1) {
-         cxk.e.put($$3, $$2);
+         cxk.f.put($$3, $$2);
       }
 
       return $$2;
@@ -1477,7 +1477,7 @@ public class cxs {
    public static cxk a(aly<cxk> $$0, Function<cxk.a, cxk> $$1, cxk.a $$2) {
       cxk $$3 = $$1.apply($$2.b($$0));
       if ($$3 instanceof cvu $$4) {
-         $$4.a(cxk.e, $$3);
+         $$4.a(cxk.f, $$3);
       }
 
       return kd.a(ma.g, $$0, $$3);

@@ -24,7 +24,7 @@ public class cic extends chu {
    }
 
    @Override
-   protected axe gm() {
+   protected axe go() {
       return axf.fr;
    }
 }

@@ -1,38 +1,56 @@
-public class grt extends grn<clz, gxy> {
-   private final gmm a;
+public class grt extends gro<bvv, gxy> {
+   private static final alz a = alz.b("textures/entity/experience_orb.png");
+   private static final glu b = glu.i(a);
 
-   public grt(gro.a $$0) {
+   public grt(grp.a $$0) {
       super($$0);
-      this.f = 0.5F;
-      this.a = $$0.d();
+      this.f = 0.15F;
+      this.g = 0.75F;
    }
 
-   public boolean a(clz $$0, gpa $$1, double $$2, double $$3, double $$4) {
-      return !super.a($$0, $$1, $$2, $$3, $$4) ? false : $$0.p() != $$0.dV().a_($$0.dv());
+   protected int a(bvv $$0, jh $$1) {
+      return bae.a(super.a($$0, $$1) + 7, 0, 15);
    }
 
-   public void a(gxy $$0, fgq $$1, glj $$2, int $$3) {
-      dxu $$4 = $$0.c;
-      if ($$4.o() == dqu.c) {
-         $$1.a();
-         $$1.a(-0.5, 0.0, -0.5);
-         this.a.b().a($$0, this.a.a($$4), $$4, $$0.b, $$1, $$2.getBuffer(glb.b($$4)), false, bam.a(), $$4.b($$0.a), hba.d);
-         $$1.b();
-         super.a($$0, $$1, $$2, $$3);
-      }
+   public void a(gxy $$0, fgr $$1, glk $$2, int $$3) {
+      $$1.a();
+      int $$4 = $$0.a;
+      float $$5 = (float)($$4 % 4 * 16 + 0) / 64.0F;
+      float $$6 = (float)($$4 % 4 * 16 + 16) / 64.0F;
+      float $$7 = (float)($$4 / 4 * 16 + 0) / 64.0F;
+      float $$8 = (float)($$4 / 4 * 16 + 16) / 64.0F;
+      float $$9 = 1.0F;
+      float $$10 = 0.5F;
+      float $$11 = 0.25F;
+      float $$12 = 255.0F;
+      float $$13 = $$0.p / 2.0F;
+      int $$14 = (int)((bae.a($$13 + 0.0F) + 1.0F) * 0.5F * 255.0F);
+      int $$15 = 255;
+      int $$16 = (int)((bae.a($$13 + (float) (Math.PI * 4.0 / 3.0)) + 1.0F) * 0.1F * 255.0F);
+      $$1.a(0.0F, 0.1F, 0.0F);
+      $$1.a(this.e.b());
+      float $$17 = 0.3F;
+      $$1.b(0.3F, 0.3F, 0.3F);
+      fgv $$18 = $$2.getBuffer(b);
+      fgr.a $$19 = $$1.c();
+      a($$18, $$19, -0.5F, -0.25F, $$14, 255, $$16, $$5, $$8, $$3);
+      a($$18, $$19, 0.5F, -0.25F, $$14, 255, $$16, $$6, $$8, $$3);
+      a($$18, $$19, 0.5F, 0.75F, $$14, 255, $$16, $$6, $$7, $$3);
+      a($$18, $$19, -0.5F, 0.75F, $$14, 255, $$16, $$5, $$7, $$3);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   private static void a(fgv $$0, fgr.a $$1, float $$2, float $$3, int $$4, int $$5, int $$6, float $$7, float $$8, int $$9) {
+      $$0.a($$1, $$2, $$3, 0.0F).a($$4, $$5, $$6, 128).a($$7, $$8).b(hbb.d).c($$9).b($$1, 0.0F, 1.0F, 0.0F);
    }
 
    public gxy a() {
       return new gxy();
    }
 
-   public void a(clz $$0, gxy $$1, float $$2) {
+   public void a(bvv $$0, gxy $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      jh $$3 = jh.a($$0.dA(), $$0.cR().e, $$0.dG());
-      $$1.a = $$0.l();
-      $$1.b = $$3;
-      $$1.c = $$0.p();
-      $$1.d = $$0.dV().t($$3);
-      $$1.e = $$0.dV();
+      $$1.a = $$0.m();
    }
 }

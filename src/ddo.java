@@ -21,7 +21,7 @@ public interface ddo {
    }
 
    default cxo b(bbp $$0) {
-      return this.a($$0, ddo.e.a).findFirst().orElse(cxo.k);
+      return this.a($$0, ddo.e.a).findFirst().orElse(cxo.j);
    }
 
    public static class a implements ddo {
@@ -109,9 +109,7 @@ public interface ddo {
    }
 
    public static record d(jq<cxk> f) implements ddo {
-      public static final MapCodec<ddo.d> c = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(alw.a(mb.K).fieldOf("item").forGetter(ddo.d::b)).apply($$0, ddo.d::new)
-      );
+      public static final MapCodec<ddo.d> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cxk.e.fieldOf("item").forGetter(ddo.d::b)).apply($$0, ddo.d::new));
       public static final zt<xg, ddo.d> d = zt.a(zr.b(mb.K), ddo.d::b, ddo.d::new);
       public static final ddo.i<ddo.d> e = new ddo.i<>(c, d);
 
@@ -148,8 +146,8 @@ public interface ddo {
    }
 
    public static record f(cxo f) implements ddo {
-      public static final MapCodec<ddo.f> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cxo.d.fieldOf("item").forGetter(ddo.f::b)).apply($$0, ddo.f::new));
-      public static final zt<xg, ddo.f> d = zt.a(cxo.i, ddo.f::b, ddo.f::new);
+      public static final MapCodec<ddo.f> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cxo.c.fieldOf("item").forGetter(ddo.f::b)).apply($$0, ddo.f::new));
+      public static final zt<xg, ddo.f> d = zt.a(cxo.h, ddo.f::b, ddo.f::new);
       public static final ddo.i<ddo.f> e = new ddo.i<>(c, d);
 
       @Override

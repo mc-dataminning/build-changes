@@ -1,15 +1,16 @@
-public class hes extends het {
+public class hes extends heu {
    public hes(chx $$0) {
-      super($$0, axf.bR, axg.g);
+      super($$0, axf.bQ, axg.g);
+      this.j = 0;
    }
 
    @Override
-   protected hep o() {
-      return new her(this.n);
+   protected heq o() {
+      return new het(this.n);
    }
 
    @Override
    protected boolean p() {
-      return this.n.ad_();
+      return !this.n.ad_();
    }
 }

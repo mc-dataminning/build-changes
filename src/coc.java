@@ -16,14 +16,14 @@ public class coc extends coa {
 
    @Override
    public boolean a(ash $$0, btz $$1, float $$2) {
-      if (this.dV().C) {
+      if (this.dW().C) {
          return super.a($$0, $$1, $$2);
       } else if ($$1.a(axw.d)) {
          return super.a($$0, $$1, $$2);
       } else if (!this.a($$0, $$1) && this.cc <= 0) {
          this.cc = 8;
-         this.dV().a(this, (byte)66);
-         if (this.dV().c_(this.cd) instanceof dvl $$3 && $$3.a(this)) {
+         this.dW().a(this, (byte)66);
+         if (this.dW().c_(this.cd) instanceof dvl $$3 && $$3.a(this)) {
             if ($$1.d() instanceof cpw) {
                $$3.c();
             }
@@ -48,13 +48,13 @@ public class coc extends coa {
 
    @Override
    public void h() {
-      if (this.dV().C || this.cd != null && this.dV().c_(this.cd) instanceof dvl $$0 && $$0.a(this)) {
+      if (this.dW().C || this.cd != null && this.dW().c_(this.cd) instanceof dvl $$0 && $$0.a(this)) {
          super.h();
-         if (this.dV().C) {
-            this.gm();
+         if (this.dW().C) {
+            this.go();
          }
       } else {
-         this.c(bvj.c.b);
+         this.c(bvj.d.b);
       }
    }
 
@@ -62,18 +62,18 @@ public class coc extends coa {
    public void b(byte $$0) {
       if ($$0 == 66) {
          this.cc = 8;
-         this.f(this.dW().p());
+         this.f(this.dX().p());
       } else {
          super.b($$0);
       }
    }
 
-   private void gm() {
+   private void go() {
       this.ca.a(this.cc > 0, this.af);
    }
 
    public void h(@Nullable btz $$0) {
-      if (this.dV() instanceof ash $$1) {
+      if (this.dW() instanceof ash $$1) {
          fbs $$2 = this.cR();
          fbx $$3 = $$2.f();
          double $$4 = $$2.b() * 0.3;
@@ -88,7 +88,7 @@ public class coc extends coa {
          $$7.a(this, this.bl, $$0);
       }
 
-      this.a(bvj.c.b);
+      this.a(bvj.d.b);
    }
 
    @Override

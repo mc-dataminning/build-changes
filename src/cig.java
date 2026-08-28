@@ -19,7 +19,7 @@ public class cig extends chw implements bxf<cig.v> {
    private static final alc<Optional<UUID>> cj = alg.a(cig.class, ale.r);
    private static final alc<Optional<UUID>> ck = alg.a(cig.class, ale.r);
    static final Predicate<cma> cl = $$0 -> !$$0.v() && $$0.bL();
-   private static final Predicate<bvj> cm = $$0 -> !($$0 instanceof bwf $$1) ? false : $$1.er() != null && $$1.es() < $$1.af + 600;
+   private static final Predicate<bvj> cm = $$0 -> !($$0 instanceof bwf $$1) ? false : $$1.es() != null && $$1.et() < $$1.af + 600;
    static final Predicate<bvj> cn = $$0 -> $$0 instanceof cib || $$0 instanceof ciq;
    private static final Predicate<bvj> co = $$0 -> !$$0.cg() && bvo.e.test($$0);
    private static final int cp = 600;
@@ -58,13 +58,13 @@ public class cig extends chw implements bxf<cig.v> {
       this.cs = new cew<>(this, cix.class, 10, false, false, cix.bZ);
       this.ct = new cew<>(this, chs.class, 20, false, false, ($$0, $$1) -> $$0 instanceof chu);
       this.bT.a(0, new cig.g());
-      this.bT.a(0, new ccs(this, this.dV()));
+      this.bT.a(0, new ccs(this, this.dW()));
       this.bT.a(1, new cig.b());
       this.bT.a(2, new cig.n(2.2));
       this.bT.a(3, new cig.e(1.0));
-      this.bT.a(4, new cck<>(this, cpw.class, 16.0F, 1.6, 1.4, $$0 -> co.test($$0) && !this.c($$0.cG()) && !this.gA()));
-      this.bT.a(4, new cck<>(this, ciz.class, 8.0F, 1.6, 1.4, $$0 -> !((ciz)$$0).p() && !this.gA()));
-      this.bT.a(4, new cck<>(this, cio.class, 8.0F, 1.6, 1.4, $$0 -> !this.gA()));
+      this.bT.a(4, new cck<>(this, cpw.class, 16.0F, 1.6, 1.4, $$0 -> co.test($$0) && !this.c($$0.cG()) && !this.gC()));
+      this.bT.a(4, new cck<>(this, ciz.class, 8.0F, 1.6, 1.4, $$0 -> !((ciz)$$0).p() && !this.gC()));
+      this.bT.a(4, new cck<>(this, cio.class, 8.0F, 1.6, 1.4, $$0 -> !this.gC()));
       this.bT.a(5, new cig.u());
       this.bT.a(6, new cig.o());
       this.bT.a(6, new cig.s(1.25));
@@ -83,20 +83,20 @@ public class cig extends chw implements bxf<cig.v> {
 
    @Override
    public void d_() {
-      if (!this.dV().C && this.bL() && this.dj()) {
+      if (!this.dW().C && this.bL() && this.dk()) {
          this.cy++;
          cxo $$0 = this.a(bvr.a);
          if (this.i($$0)) {
             if (this.cy > 600) {
-               cxo $$1 = $$0.a(this.dV(), this);
+               cxo $$1 = $$0.a(this.dW(), this);
                if (!$$1.f()) {
                   this.a(bvr.a, $$1);
                }
 
                this.cy = 0;
             } else if (this.cy > 560 && this.ae.i() < 0.1F) {
-               this.gs();
-               this.dV().a(this, (byte)45);
+               this.gu();
+               this.dW().a(this, (byte)45);
             }
          }
 
@@ -107,25 +107,25 @@ public class cig extends chw implements bxf<cig.v> {
          }
       }
 
-      if (this.fP() || this.fg()) {
+      if (this.fR() || this.fi()) {
          this.bn = false;
          this.bo = 0.0F;
          this.bq = 0.0F;
       }
 
       super.d_();
-      if (this.gA() && this.ae.i() < 0.05F) {
+      if (this.gC() && this.ae.i() < 0.05F) {
          this.a(axf.jz, 1.0F, 1.0F);
       }
    }
 
    @Override
-   protected boolean fg() {
-      return this.eE();
+   protected boolean fi() {
+      return this.eF();
    }
 
    private boolean i(cxo $$0) {
-      return $$0.b(ku.w) && this.O_() == null && this.aJ() && !this.fP();
+      return $$0.b(ku.w) && this.O_() == null && this.aJ() && !this.fR();
    }
 
    @Override
@@ -158,9 +158,9 @@ public class cig extends chw implements bxf<cig.v> {
          if (!$$1.f()) {
             for (int $$2 = 0; $$2 < 8; $$2++) {
                fbx $$3 = new fbx(((double)this.ae.i() - 0.5) * 0.1, Math.random() * 0.1 + 0.1, 0.0)
-                  .a(-this.dN() * (float) (Math.PI / 180.0))
-                  .b(-this.dL() * (float) (Math.PI / 180.0));
-               this.dV().a(new lo(ls.S, $$1), this.dA() + this.bT().d / 2.0, this.dC(), this.dG() + this.bT().f / 2.0, $$3.d, $$3.e + 0.05, $$3.f);
+                  .a(-this.dO() * (float) (Math.PI / 180.0))
+                  .b(-this.dM() * (float) (Math.PI / 180.0));
+               this.dW().a(new lo(ls.S, $$1), this.dB() + this.bT().d / 2.0, this.dD(), this.dH() + this.bT().f / 2.0, $$3.d, $$3.e + 0.05, $$3.f);
             }
          }
       } else {
@@ -169,7 +169,7 @@ public class cig extends chw implements bxf<cig.v> {
    }
 
    public static bxm.a p() {
-      return chw.gr().a(bxn.v, 0.3F).a(bxn.s, 10.0).a(bxn.c, 2.0).a(bxn.x, 5.0).a(bxn.m, 32.0);
+      return chw.gt().a(bxn.v, 0.3F).a(bxn.s, 10.0).a(bxn.c, 2.0).a(bxn.x, 5.0).a(bxn.m, 32.0);
    }
 
    @Nullable
@@ -189,7 +189,7 @@ public class cig extends chw implements bxf<cig.v> {
    @Nullable
    @Override
    public bwy a(dhy $$0, btg $$1, bvp $$2, @Nullable bwy $$3) {
-      jq<dij> $$4 = $$0.t(this.dv());
+      jq<dij> $$4 = $$0.t(this.dw());
       cig.v $$5 = cig.v.a($$4);
       boolean $$6 = false;
       if ($$3 instanceof cig.i $$7) {
@@ -207,14 +207,14 @@ public class cig extends chw implements bxf<cig.v> {
       }
 
       if ($$0 instanceof ash) {
-         this.gy();
+         this.gA();
       }
 
       this.a($$0.H_(), $$1);
       return super.a($$0, $$1, $$2, $$3);
    }
 
-   private void gy() {
+   private void gA() {
       if (this.t() == cig.v.a) {
          this.bU.a(4, this.cr);
          this.bU.a(4, this.cs);
@@ -227,7 +227,7 @@ public class cig extends chw implements bxf<cig.v> {
    }
 
    @Override
-   protected void gs() {
+   protected void gu() {
       this.a(axf.jD, 1.0F, 1.0F);
    }
 
@@ -244,7 +244,7 @@ public class cig extends chw implements bxf<cig.v> {
       this.al.a(cd, $$0.a());
    }
 
-   List<UUID> gz() {
+   List<UUID> gB() {
       Optional<UUID> $$0 = this.al.a(cj);
       Optional<UUID> $$1 = this.al.a(ck);
       if ($$0.isPresent() && $$1.isPresent()) {
@@ -267,7 +267,7 @@ public class cig extends chw implements bxf<cig.v> {
    @Override
    public void b(ux $$0) {
       super.b($$0);
-      List<UUID> $$1 = this.gz();
+      List<UUID> $$1 = this.gB();
       vd $$2 = new vd();
 
       for (UUID $$3 : $$1) {
@@ -275,7 +275,7 @@ public class cig extends chw implements bxf<cig.v> {
       }
 
       $$0.a("Trusted", $$2);
-      $$0.a("Sleeping", this.fP());
+      $$0.a("Sleeping", this.fR());
       $$0.a("Type", this.t().c());
       $$0.a("Sitting", this.x());
       $$0.a("Crouching", this.ci());
@@ -293,8 +293,8 @@ public class cig extends chw implements bxf<cig.v> {
       this.a(cig.v.a($$0.l("Type")));
       this.x($$0.q("Sitting"));
       this.z($$0.q("Crouching"));
-      if (this.dV() instanceof ash) {
-         this.gy();
+      if (this.dW() instanceof ash) {
+         this.gA();
       }
    }
 
@@ -306,7 +306,7 @@ public class cig extends chw implements bxf<cig.v> {
       this.d(1, $$0);
    }
 
-   public boolean gm() {
+   public boolean go() {
       return this.s(64);
    }
 
@@ -314,7 +314,7 @@ public class cig extends chw implements bxf<cig.v> {
       this.d(64, $$0);
    }
 
-   boolean gA() {
+   boolean gC() {
       return this.s(128);
    }
 
@@ -323,7 +323,7 @@ public class cig extends chw implements bxf<cig.v> {
    }
 
    @Override
-   public boolean fP() {
+   public boolean fR() {
       return this.s(32);
    }
 
@@ -345,7 +345,7 @@ public class cig extends chw implements bxf<cig.v> {
 
    @Override
    protected boolean f(bvr $$0) {
-      return $$0 == bvr.a && this.fL();
+      return $$0 == bvr.a && this.fN();
    }
 
    @Override
@@ -355,18 +355,18 @@ public class cig extends chw implements bxf<cig.v> {
    }
 
    private void k(cxo $$0) {
-      if (!$$0.f() && !this.dV().C) {
-         cma $$1 = new cma(this.dV(), this.dA() + this.bT().d, this.dC() + 1.0, this.dG() + this.bT().f, $$0);
+      if (!$$0.f() && !this.dW().C) {
+         cma $$1 = new cma(this.dW(), this.dB() + this.bT().d, this.dD() + 1.0, this.dH() + this.bT().f, $$0);
          $$1.b(40);
          $$1.b(this);
          this.a(axf.jI, 1.0F, 1.0F);
-         this.dV().b($$1);
+         this.dW().b($$1);
       }
    }
 
    private void l(cxo $$0) {
-      cma $$1 = new cma(this.dV(), this.dA(), this.dC(), this.dG(), $$0);
-      this.dV().b($$1);
+      cma $$1 = new cma(this.dW(), this.dB(), this.dD(), this.dH(), $$0);
+      this.dW().b($$1);
    }
 
    @Override
@@ -391,25 +391,25 @@ public class cig extends chw implements bxf<cig.v> {
    @Override
    public void h() {
       super.h();
-      if (this.dj()) {
+      if (this.dk()) {
          boolean $$0 = this.bj();
-         if ($$0 || this.O_() != null || this.dV().ae()) {
-            this.gB();
+         if ($$0 || this.O_() != null || this.dW().ae()) {
+            this.gD();
          }
 
-         if ($$0 || this.fP()) {
+         if ($$0 || this.fR()) {
             this.x(false);
          }
 
-         if (this.gm() && this.dV().A.i() < 0.2F) {
-            jh $$1 = this.dv();
-            dxu $$2 = this.dV().a_($$1);
-            this.dV().c(2001, $$1, dkl.j($$2));
+         if (this.go() && this.dW().A.i() < 0.2F) {
+            jh $$1 = this.dw();
+            dxu $$2 = this.dW().a_($$1);
+            this.dW().c(2001, $$1, dkl.j($$2));
          }
       }
 
       this.cv = this.cu;
-      if (this.gq()) {
+      if (this.gs()) {
          this.cu = this.cu + (1.0F - this.cu) * 0.4F;
       } else {
          this.cu = this.cu + (0.0F - this.cu) * 0.4F;
@@ -436,7 +436,7 @@ public class cig extends chw implements bxf<cig.v> {
       ((cig)$$1).b($$0.cG());
    }
 
-   public boolean gn() {
+   public boolean gp() {
       return this.s(16);
    }
 
@@ -444,11 +444,11 @@ public class cig extends chw implements bxf<cig.v> {
       this.d(16, $$0);
    }
 
-   public boolean go() {
+   public boolean gq() {
       return this.bn;
    }
 
-   public boolean gp() {
+   public boolean gr() {
       return this.cw == 3.0F;
    }
 
@@ -465,7 +465,7 @@ public class cig extends chw implements bxf<cig.v> {
       this.d(8, $$0);
    }
 
-   public boolean gq() {
+   public boolean gs() {
       return this.s(8);
    }
 
@@ -479,18 +479,18 @@ public class cig extends chw implements bxf<cig.v> {
 
    @Override
    public void h(@Nullable bwf $$0) {
-      if (this.gA() && $$0 == null) {
+      if (this.gC() && $$0 == null) {
          this.C(false);
       }
 
       super.h($$0);
    }
 
-   void gB() {
+   void gD() {
       this.D(false);
    }
 
-   void gC() {
+   void gE() {
       this.A(false);
       this.z(false);
       this.x(false);
@@ -499,15 +499,15 @@ public class cig extends chw implements bxf<cig.v> {
       this.B(false);
    }
 
-   boolean gD() {
-      return !this.fP() && !this.x() && !this.gm();
+   boolean gF() {
+      return !this.fR() && !this.x() && !this.go();
    }
 
    @Override
    public void R() {
       axe $$0 = this.u();
       if ($$0 == axf.jF) {
-         this.a($$0, 2.0F, this.ff());
+         this.a($$0, 2.0F, this.fh());
       } else {
          super.R();
       }
@@ -516,11 +516,11 @@ public class cig extends chw implements bxf<cig.v> {
    @Nullable
    @Override
    protected axe u() {
-      if (this.fP()) {
+      if (this.fR()) {
          return axf.jG;
       } else {
-         if (!this.dV().U() && this.ae.i() < 0.1F) {
-            List<cpw> $$0 = this.dV().a(cpw.class, this.cR().c(16.0, 16.0, 16.0), bvo.f);
+         if (!this.dW().U() && this.ae.i() < 0.1F) {
+            List<cpw> $$0 = this.dW().a(cpw.class, this.cR().c(16.0, 16.0, 16.0), bvo.f);
             if ($$0.isEmpty()) {
                return axf.jF;
             }
@@ -543,7 +543,7 @@ public class cig extends chw implements bxf<cig.v> {
    }
 
    boolean c(UUID $$0) {
-      return this.gz().contains($$0);
+      return this.gB().contains($$0);
    }
 
    @Override
@@ -551,15 +551,15 @@ public class cig extends chw implements bxf<cig.v> {
       cxo $$2 = this.a(bvr.a);
       if (!$$2.f()) {
          this.a($$0, $$2);
-         this.a(bvr.a, cxo.k);
+         this.a(bvr.a, cxo.j);
       }
 
       super.b($$0, $$1);
    }
 
    public static boolean a(cig $$0, bwf $$1) {
-      double $$2 = $$1.dG() - $$0.dG();
-      double $$3 = $$1.dA() - $$0.dA();
+      double $$2 = $$1.dH() - $$0.dH();
+      double $$3 = $$1.dB() - $$0.dB();
       double $$4 = $$2 / $$3;
       int $$5 = 6;
 
@@ -568,7 +568,7 @@ public class cig extends chw implements bxf<cig.v> {
          double $$8 = $$4 == 0.0 ? $$3 * (double)((float)$$6 / 6.0F) : $$7 / $$4;
 
          for (int $$9 = 1; $$9 < 4; $$9++) {
-            if (!$$0.dV().a_(jh.a($$0.dA() + $$8, $$0.dC() + (double)$$9, $$0.dG() + $$7)).v()) {
+            if (!$$0.dW().a_(jh.a($$0.dB() + $$8, $$0.dD() + (double)$$9, $$0.dH() + $$7)).v()) {
                return false;
             }
          }
@@ -579,7 +579,7 @@ public class cig extends chw implements bxf<cig.v> {
 
    @Override
    public fbx cT() {
-      return new fbx(0.0, (double)(0.55F * this.cS()), (double)(this.dq() * 0.4F));
+      return new fbx(0.0, (double)(0.55F * this.cS()), (double)(this.dr() * 0.4F));
    }
 
    class a extends cew<bwf> {
@@ -595,16 +595,16 @@ public class cig extends chw implements bxf<cig.v> {
 
       @Override
       public boolean b() {
-         if (this.b > 0 && this.e.dY().a(this.b) != 0) {
+         if (this.b > 0 && this.e.dZ().a(this.b) != 0) {
             return false;
          } else {
-            ash $$0 = a(cig.this.dV());
+            ash $$0 = a(cig.this.dW());
 
-            for (UUID $$1 : cig.this.gz()) {
+            for (UUID $$1 : cig.this.gB()) {
                if ($$0.a($$1) instanceof bwf $$3) {
                   this.k = $$3;
-                  this.j = $$3.ep();
-                  int $$4 = $$3.eq();
+                  this.j = $$3.eq();
+                  int $$4 = $$3.er();
                   return $$4 != this.l && this.a(this.j, this.d);
                }
             }
@@ -618,12 +618,12 @@ public class cig extends chw implements bxf<cig.v> {
          this.a(this.j);
          this.c = this.j;
          if (this.k != null) {
-            this.l = this.k.eq();
+            this.l = this.k.er();
          }
 
          cig.this.a(axf.jz, 1.0F, 1.0F);
          cig.this.C(true);
-         cig.this.gB();
+         cig.this.gD();
          super.d();
       }
    }
@@ -637,7 +637,7 @@ public class cig extends chw implements bxf<cig.v> {
 
       @Override
       public boolean b() {
-         return cig.this.gm();
+         return cig.this.go();
       }
 
       @Override
@@ -671,7 +671,7 @@ public class cig extends chw implements bxf<cig.v> {
          } else if ($$0 instanceof bxc) {
             return !((bxc)$$0).p();
          } else if (!($$0 instanceof cpw) || !$$0.aa_() && !((cpw)$$0).b()) {
-            return cig.this.c($$0.cG()) ? false : !$$0.fP() && !$$0.cg();
+            return cig.this.c($$0.cG()) ? false : !$$0.fR() && !$$0.cg();
          } else {
             return false;
          }
@@ -682,12 +682,12 @@ public class cig extends chw implements bxf<cig.v> {
       private final cgw b = cgw.a().a(12.0).d().a(cig.this.new c());
 
       protected boolean h() {
-         jh $$0 = jh.a(cig.this.dA(), cig.this.cR().e, cig.this.dG());
-         return !cig.this.dV().h($$0) && cig.this.c($$0) >= 0.0F;
+         jh $$0 = jh.a(cig.this.dB(), cig.this.cR().e, cig.this.dH());
+         return !cig.this.dW().h($$0) && cig.this.c($$0) >= 0.0F;
       }
 
       protected boolean i() {
-         return !a(cig.this.dV()).a(bwf.class, this.b, cig.this, cig.this.cR().c(12.0, 6.0, 12.0)).isEmpty();
+         return !a(cig.this.dW()).a(bwf.class, this.b, cig.this, cig.this.cR().c(12.0, 6.0, 12.0)).isEmpty();
       }
    }
 
@@ -698,8 +698,8 @@ public class cig extends chw implements bxf<cig.v> {
 
       @Override
       public void d() {
-         ((cig)this.a).gC();
-         ((cig)this.c).gC();
+         ((cig)this.a).gE();
+         ((cig)this.c).gE();
          super.d();
       }
 
@@ -708,8 +708,8 @@ public class cig extends chw implements bxf<cig.v> {
          ash $$0 = this.b;
          cig $$1 = (cig)this.a.a($$0, (bva)this.c);
          if ($$1 != null) {
-            asi $$2 = this.a.gv();
-            asi $$3 = this.c.gv();
+            asi $$2 = this.a.gx();
+            asi $$3 = this.c.gx();
             asi $$4 = $$2;
             if ($$2 != null) {
                $$1.b($$2.cG());
@@ -728,14 +728,14 @@ public class cig extends chw implements bxf<cig.v> {
 
             this.a.c_(6000);
             this.c.c_(6000);
-            this.a.gx();
-            this.c.gx();
+            this.a.gz();
+            this.c.gz();
             $$1.c_(-24000);
-            $$1.b(this.a.dA(), this.a.dC(), this.a.dG(), 0.0F, 0.0F);
+            $$1.b(this.a.dB(), this.a.dD(), this.a.dH(), 0.0F, 0.0F);
             $$0.a_($$1);
             this.b.a(this.a, (byte)18);
             if ($$0.N().b(dhd.f)) {
-               this.b.b(new bvv(this.b, this.a.dA(), this.a.dC(), this.a.dG(), this.a.dY().a(7) + 1));
+               this.b.b(new bvv(this.b, this.a.dB(), this.a.dD(), this.a.dH(), this.a.dZ().a(7) + 1));
             }
          }
       }
@@ -781,8 +781,8 @@ public class cig extends chw implements bxf<cig.v> {
       }
 
       protected void o() {
-         if (a(cig.this.dV()).N().b(dhd.c)) {
-            dxu $$0 = cig.this.dV().a_(this.e);
+         if (a(cig.this.dW()).N().b(dhd.c)) {
+            dxu $$0 = cig.this.dW().a_(this.e);
             if ($$0.a(dkn.oD)) {
                this.b($$0);
             } else if (dli.j_($$0)) {
@@ -792,13 +792,13 @@ public class cig extends chw implements bxf<cig.v> {
       }
 
       private void a(dxu $$0) {
-         dli.a(cig.this, $$0, cig.this.dV(), this.e);
+         dli.a(cig.this, $$0, cig.this.dW(), this.e);
       }
 
       private void b(dxu $$0) {
          int $$1 = $$0.c(dsr.c);
          $$0.b(dsr.c, Integer.valueOf(1));
-         int $$2 = 1 + cig.this.dV().A.a(2) + ($$1 == 3 ? 1 : 0);
+         int $$2 = 1 + cig.this.dW().A.a(2) + ($$1 == 3 ? 1 : 0);
          cxo $$3 = cig.this.a(bvr.a);
          if ($$3.f()) {
             cig.this.a(bvr.a, new cxo(cxs.xl));
@@ -806,17 +806,17 @@ public class cig extends chw implements bxf<cig.v> {
          }
 
          if ($$2 > 0) {
-            dkl.a(cig.this.dV(), this.e, new cxo(cxs.xl, $$2));
+            dkl.a(cig.this.dW(), this.e, new cxo(cxs.xl, $$2));
          }
 
          cig.this.a(axf.zR, 1.0F, 1.0F);
-         cig.this.dV().a(this.e, $$0.b(dsr.c, Integer.valueOf(1)), 2);
-         cig.this.dV().a(ecq.c, this.e, ecq.a.a(cig.this));
+         cig.this.dW().a(this.e, $$0.b(dsr.c, Integer.valueOf(1)), 2);
+         cig.this.dW().a(ecq.c, this.e, ecq.a.a(cig.this));
       }
 
       @Override
       public boolean b() {
-         return !cig.this.fP() && super.b();
+         return !cig.this.fR() && super.b();
       }
 
       @Override
@@ -835,7 +835,7 @@ public class cig extends chw implements bxf<cig.v> {
       @Override
       public void d() {
          super.d();
-         cig.this.gC();
+         cig.this.gE();
       }
 
       @Override
@@ -854,17 +854,17 @@ public class cig extends chw implements bxf<cig.v> {
 
       @Override
       public boolean b() {
-         return !this.d.gA() && super.b();
+         return !this.d.gC() && super.b();
       }
 
       @Override
       public boolean c() {
-         return !this.d.gA() && super.c();
+         return !this.d.gC() && super.c();
       }
 
       @Override
       public void d() {
-         this.d.gC();
+         this.d.gE();
          super.d();
       }
    }
@@ -885,12 +885,12 @@ public class cig extends chw implements bxf<cig.v> {
 
       @Override
       public boolean b() {
-         return super.b() && !cig.this.gm() && !cig.this.gq();
+         return super.b() && !cig.this.go() && !cig.this.gs();
       }
 
       @Override
       public boolean c() {
-         return super.c() && !cig.this.gm() && !cig.this.gq();
+         return super.c() && !cig.this.go() && !cig.this.gs();
       }
    }
 
@@ -901,14 +901,14 @@ public class cig extends chw implements bxf<cig.v> {
 
       @Override
       public void a() {
-         if (!cig.this.fP()) {
+         if (!cig.this.fR()) {
             super.a();
          }
       }
 
       @Override
       protected boolean c() {
-         return !cig.this.gn() && !cig.this.ci() && !cig.this.gq() && !cig.this.gm();
+         return !cig.this.gp() && !cig.this.ci() && !cig.this.gs() && !cig.this.go();
       }
    }
 
@@ -934,7 +934,7 @@ public class cig extends chw implements bxf<cig.v> {
 
       @Override
       public boolean b() {
-         return !cig.this.x() && !cig.this.fP() && !cig.this.ci() && !cig.this.gm() && super.b();
+         return !cig.this.x() && !cig.this.fR() && !cig.this.ci() && !cig.this.go() && super.b();
       }
    }
 
@@ -945,7 +945,7 @@ public class cig extends chw implements bxf<cig.v> {
 
       @Override
       public void a() {
-         if (cig.this.gD()) {
+         if (cig.this.gF()) {
             super.a();
          }
       }
@@ -958,14 +958,14 @@ public class cig extends chw implements bxf<cig.v> {
 
       @Override
       public boolean h() {
-         return !cig.this.gA() && super.h();
+         return !cig.this.gC() && super.h();
       }
    }
 
    public class o extends cdh {
       @Override
       public boolean b() {
-         if (!cig.this.gp()) {
+         if (!cig.this.gr()) {
             return false;
          } else {
             bwf $$0 = cig.this.O_();
@@ -992,8 +992,8 @@ public class cig extends chw implements bxf<cig.v> {
       public boolean c() {
          bwf $$0 = cig.this.O_();
          if ($$0 != null && $$0.bL()) {
-            double $$1 = cig.this.dy().e;
-            return (!($$1 * $$1 < 0.05F) || !(Math.abs(cig.this.dN()) < 15.0F) || !cig.this.aJ()) && !cig.this.gm();
+            double $$1 = cig.this.dz().e;
+            return (!($$1 * $$1 < 0.05F) || !(Math.abs(cig.this.dO()) < 15.0F) || !cig.this.aJ()) && !cig.this.go();
          } else {
             return false;
          }
@@ -1012,8 +1012,8 @@ public class cig extends chw implements bxf<cig.v> {
          bwf $$0 = cig.this.O_();
          if ($$0 != null) {
             cig.this.H().a($$0, 60.0F, 30.0F);
-            fbx $$1 = new fbx($$0.dA() - cig.this.dA(), $$0.dC() - cig.this.dC(), $$0.dG() - cig.this.dG()).d();
-            cig.this.h(cig.this.dy().b($$1.d * 0.8, 0.9, $$1.f * 0.8));
+            fbx $$1 = new fbx($$0.dB() - cig.this.dB(), $$0.dD() - cig.this.dD(), $$0.dH() - cig.this.dH()).d();
+            cig.this.h(cig.this.dz().b($$1.d * 0.8, 0.9, $$1.f * 0.8));
          }
 
          cig.this.L().o();
@@ -1035,10 +1035,10 @@ public class cig extends chw implements bxf<cig.v> {
             cig.this.H().a($$0, 60.0F, 30.0F);
          }
 
-         if (!cig.this.gm()) {
-            fbx $$1 = cig.this.dy();
-            if ($$1.e * $$1.e < 0.03F && cig.this.dN() != 0.0F) {
-               cig.this.w(bae.i(0.2F, cig.this.dN(), 0.0F));
+         if (!cig.this.go()) {
+            fbx $$1 = cig.this.dz();
+            if ($$1.e * $$1.e < 0.03F && cig.this.dO() != 0.0F) {
+               cig.this.w(bae.i(0.2F, cig.this.dO(), 0.0F));
             } else {
                double $$2 = $$1.i();
                double $$3 = Math.signum(-$$1.e) * Math.acos($$2 / $$1.g()) * 180.0F / (float)Math.PI;
@@ -1047,8 +1047,8 @@ public class cig extends chw implements bxf<cig.v> {
          }
 
          if ($$0 != null && cig.this.f($$0) <= 2.0F) {
-            cig.this.c(a(cig.this.dV()), $$0);
-         } else if (cig.this.dN() > 0.0F && cig.this.aJ() && (float)cig.this.dy().e != 0.0F && cig.this.dV().a_(cig.this.dv()).a(dkn.ea)) {
+            cig.this.c(a(cig.this.dW()), $$0);
+         } else if (cig.this.dO() > 0.0F && cig.this.aJ() && (float)cig.this.dz().e != 0.0F && cig.this.dW().a_(cig.this.dw()).a(dkn.ea)) {
             cig.this.w(60.0F);
             cig.this.h(null);
             cig.this.B(true);
@@ -1065,21 +1065,21 @@ public class cig extends chw implements bxf<cig.v> {
       public boolean b() {
          if (!cig.this.a(bvr.a).f()) {
             return false;
-         } else if (cig.this.O_() != null || cig.this.ep() != null) {
+         } else if (cig.this.O_() != null || cig.this.eq() != null) {
             return false;
-         } else if (!cig.this.gD()) {
+         } else if (!cig.this.gF()) {
             return false;
-         } else if (cig.this.dY().a(b(10)) != 0) {
+         } else if (cig.this.dZ().a(b(10)) != 0) {
             return false;
          } else {
-            List<cma> $$0 = cig.this.dV().a(cma.class, cig.this.cR().c(8.0, 8.0, 8.0), cig.cl);
+            List<cma> $$0 = cig.this.dW().a(cma.class, cig.this.cR().c(8.0, 8.0, 8.0), cig.cl);
             return !$$0.isEmpty() && cig.this.a(bvr.a).f();
          }
       }
 
       @Override
       public void a() {
-         List<cma> $$0 = cig.this.dV().a(cma.class, cig.this.cR().c(8.0, 8.0, 8.0), cig.cl);
+         List<cma> $$0 = cig.this.dW().a(cma.class, cig.this.cR().c(8.0, 8.0, 8.0), cig.cl);
          cxo $$1 = cig.this.a(bvr.a);
          if ($$1.f() && !$$0.isEmpty()) {
             cig.this.L().a($$0.get(0), 1.2F);
@@ -1088,7 +1088,7 @@ public class cig extends chw implements bxf<cig.v> {
 
       @Override
       public void d() {
-         List<cma> $$0 = cig.this.dV().a(cma.class, cig.this.cR().c(8.0, 8.0, 8.0), cig.cl);
+         List<cma> $$0 = cig.this.dW().a(cma.class, cig.this.cR().c(8.0, 8.0, 8.0), cig.cl);
          if (!$$0.isEmpty()) {
             cig.this.L().a($$0.get(0), 1.2F);
          }
@@ -1102,7 +1102,7 @@ public class cig extends chw implements bxf<cig.v> {
 
       @Override
       public void d() {
-         cig.this.gC();
+         cig.this.gE();
          super.d();
       }
 
@@ -1117,7 +1117,7 @@ public class cig extends chw implements bxf<cig.v> {
       }
 
       private boolean h() {
-         return !cig.this.fP() && !cig.this.x() && !cig.this.gA() && cig.this.O_() == null;
+         return !cig.this.fR() && !cig.this.x() && !cig.this.gC() && cig.this.O_() == null;
       }
    }
 
@@ -1133,13 +1133,13 @@ public class cig extends chw implements bxf<cig.v> {
 
       @Override
       public boolean b() {
-         return cig.this.ep() == null
-            && cig.this.dY().i() < 0.02F
-            && !cig.this.fP()
+         return cig.this.eq() == null
+            && cig.this.dZ().i() < 0.02F
+            && !cig.this.fR()
             && cig.this.O_() == null
             && cig.this.L().m()
             && !this.i()
-            && !cig.this.gn()
+            && !cig.this.gp()
             && !cig.this.ci();
       }
 
@@ -1151,7 +1151,7 @@ public class cig extends chw implements bxf<cig.v> {
       @Override
       public void d() {
          this.k();
-         this.f = 2 + cig.this.dY().a(3);
+         this.f = 2 + cig.this.dZ().a(3);
          cig.this.x(true);
          cig.this.L().o();
       }
@@ -1169,14 +1169,14 @@ public class cig extends chw implements bxf<cig.v> {
             this.k();
          }
 
-         cig.this.H().a(cig.this.dA() + this.c, cig.this.dE(), cig.this.dG() + this.d, (float)cig.this.aa(), (float)cig.this.Z());
+         cig.this.H().a(cig.this.dB() + this.c, cig.this.dF(), cig.this.dH() + this.d, (float)cig.this.aa(), (float)cig.this.Z());
       }
 
       private void k() {
-         double $$0 = (Math.PI * 2) * cig.this.dY().j();
+         double $$0 = (Math.PI * 2) * cig.this.dZ().j();
          this.c = Math.cos($$0);
          this.d = Math.sin($$0);
-         this.e = this.a(80 + cig.this.dY().a(20));
+         this.e = this.a(80 + cig.this.dZ().a(20));
       }
    }
 
@@ -1189,16 +1189,16 @@ public class cig extends chw implements bxf<cig.v> {
 
       @Override
       public boolean b() {
-         if (!cig.this.fP() && this.a.O_() == null) {
-            if (cig.this.dV().ae() && cig.this.dV().h(this.a.dv())) {
+         if (!cig.this.fR() && this.a.O_() == null) {
+            if (cig.this.dW().ae() && cig.this.dW().h(this.a.dw())) {
                return this.h();
             } else if (this.c > 0) {
                this.c--;
                return false;
             } else {
                this.c = 100;
-               jh $$0 = this.a.dv();
-               return cig.this.dV().U() && cig.this.dV().h($$0) && !((ash)cig.this.dV()).c($$0) && this.h();
+               jh $$0 = this.a.dw();
+               return cig.this.dW().U() && cig.this.dW().h($$0) && !((ash)cig.this.dW()).c($$0) && this.h();
             }
          } else {
             return false;
@@ -1207,7 +1207,7 @@ public class cig extends chw implements bxf<cig.v> {
 
       @Override
       public void d() {
-         cig.this.gC();
+         cig.this.gE();
          super.d();
       }
    }
@@ -1222,7 +1222,7 @@ public class cig extends chw implements bxf<cig.v> {
 
       @Override
       public boolean b() {
-         return cig.this.bo == 0.0F && cig.this.bp == 0.0F && cig.this.bq == 0.0F ? this.k() || cig.this.fP() : false;
+         return cig.this.bo == 0.0F && cig.this.bp == 0.0F && cig.this.bq == 0.0F ? this.k() || cig.this.fR() : false;
       }
 
       @Override
@@ -1235,14 +1235,14 @@ public class cig extends chw implements bxf<cig.v> {
             this.d--;
             return false;
          } else {
-            return cig.this.dV().U() && this.h() && !this.i() && !cig.this.av;
+            return cig.this.dW().U() && this.h() && !this.i() && !cig.this.av;
          }
       }
 
       @Override
       public void e() {
          this.d = cig.this.ae.a(c);
-         cig.this.gC();
+         cig.this.gE();
       }
 
       @Override
@@ -1253,7 +1253,7 @@ public class cig extends chw implements bxf<cig.v> {
          cig.this.t(false);
          cig.this.D(true);
          cig.this.L().o();
-         cig.this.I().a(cig.this.dA(), cig.this.dC(), cig.this.dG(), 0.0);
+         cig.this.I().a(cig.this.dB(), cig.this.dD(), cig.this.dH(), 0.0);
       }
    }
 
@@ -1264,11 +1264,11 @@ public class cig extends chw implements bxf<cig.v> {
 
       @Override
       public boolean b() {
-         if (cig.this.fP()) {
+         if (cig.this.fR()) {
             return false;
          } else {
             bwf $$0 = cig.this.O_();
-            return $$0 != null && $$0.bL() && cig.cn.test($$0) && cig.this.g($$0) > 36.0 && !cig.this.ci() && !cig.this.gq() && !cig.this.bn;
+            return $$0 != null && $$0.bL() && cig.cn.test($$0) && cig.this.g($$0) > 36.0 && !cig.this.ci() && !cig.this.gs() && !cig.this.bn;
          }
       }
 

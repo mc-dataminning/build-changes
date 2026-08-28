@@ -20,7 +20,7 @@ public abstract class cjz extends cka {
    }
 
    public static bxm.a p() {
-      return gO().a(bxn.v, 0.175F).a(bxn.o, 0.5);
+      return gQ().a(bxn.v, 0.175F).a(bxn.o, 0.5);
    }
 
    public boolean t() {
@@ -57,7 +57,7 @@ public abstract class cjz extends cka {
             if (!$$3.f()) {
                ux $$4 = new ux();
                $$4.a("Slot", (byte)($$2 - 1));
-               $$1.add($$3.b(this.dX(), $$4));
+               $$1.add($$3.b(this.dY(), $$4));
             }
          }
 
@@ -69,7 +69,7 @@ public abstract class cjz extends cka {
    public void a(ux $$0) {
       super.a($$0);
       this.x($$0.q("ChestedHorse"));
-      this.gL();
+      this.gN();
       if (this.t()) {
          vd $$1 = $$0.c("Items", 10);
 
@@ -77,12 +77,12 @@ public abstract class cjz extends cka {
             ux $$3 = $$1.a($$2);
             int $$4 = $$3.f("Slot") & 255;
             if ($$4 < this.cu.b() - 1) {
-               this.cu.a($$4 + 1, cxo.a(this.dX(), (vu)$$3).orElse(cxo.k));
+               this.cu.a($$4 + 1, cxo.a(this.dY(), (vu)$$3).orElse(cxo.j));
             }
          }
       }
 
-      this.gM();
+      this.gO();
    }
 
    @Override
@@ -90,7 +90,7 @@ public abstract class cjz extends cka {
       return $$0 == 499 ? new bwx() {
          @Override
          public cxo a() {
-            return cjz.this.t() ? new cxo(cxs.eZ) : cxo.k;
+            return cjz.this.t() ? new cxo(cxs.eZ) : cxo.j;
          }
 
          @Override
@@ -98,14 +98,14 @@ public abstract class cjz extends cka {
             if ($$0.f()) {
                if (cjz.this.t()) {
                   cjz.this.x(false);
-                  cjz.this.gL();
+                  cjz.this.gN();
                }
 
                return true;
             } else if ($$0.a(cxs.eZ)) {
                if (!cjz.this.t()) {
                   cjz.this.x(true);
-                  cjz.this.gL();
+                  cjz.this.gN();
                }
 
                return true;
@@ -118,7 +118,7 @@ public abstract class cjz extends cka {
 
    @Override
    public bti b(cpw $$0, bth $$1) {
-      boolean $$2 = !this.e_() && this.gD() && $$0.fW();
+      boolean $$2 = !this.e_() && this.gF() && $$0.fY();
       if (!this.ca() && !$$2) {
          cxo $$3 = $$0.b($$1);
          if (!$$3.f()) {
@@ -126,8 +126,8 @@ public abstract class cjz extends cka {
                return this.c($$0, $$3);
             }
 
-            if (!this.gD()) {
-               this.gT();
+            if (!this.gF()) {
+               this.gV();
                return bti.a;
             }
 
@@ -147,7 +147,7 @@ public abstract class cjz extends cka {
       this.x(true);
       this.x();
       $$1.a(1, $$0);
-      this.gL();
+      this.gN();
    }
 
    @Override

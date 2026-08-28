@@ -10,8 +10,8 @@ public class aim implements aac<ahm> {
       this.b = $$0.R_();
       this.c = $$0.S_();
       this.d = $$0.g_();
-      this.e = $$0.dL();
-      this.f = $$0.dN();
+      this.e = $$0.dM();
+      this.f = $$0.dO();
    }
 
    private aim(ws $$0) {

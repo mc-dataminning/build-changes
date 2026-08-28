@@ -48,12 +48,12 @@ public class dwg extends duw implements ecs.b<ecz.b>, ecz {
    }
 
    @Override
-   public ecz.a gn() {
+   public ecz.a gp() {
       return this.b;
    }
 
    @Override
-   public ecz.d go() {
+   public ecz.d gq() {
       return this.d;
    }
 

@@ -5,7 +5,7 @@ import java.util.function.Consumer;
 
 public class exb extends exg {
    public static final MapCodec<exb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ma.g.r().fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, exb::new)
+      $$0 -> $$0.group(cxk.e.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, exb::new)
    );
    private final jq<cxk> j;
 

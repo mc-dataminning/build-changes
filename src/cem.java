@@ -19,7 +19,7 @@ public class cem extends cdd {
       } else if (this.a.T) {
          return false;
       } else {
-         cpw $$0 = this.a.gm();
+         cpw $$0 = this.a.go();
          if ($$0 == null) {
             return false;
          } else {

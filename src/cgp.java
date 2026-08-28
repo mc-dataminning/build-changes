@@ -47,11 +47,11 @@ public abstract class cgp<E extends bwf> {
    public abstract Set<cfj<?>> a();
 
    public static boolean b(ash $$0, bwf $$1, bwf $$2) {
-      return $$1.eb().b(cfj.o, $$2) ? e.a($$0, $$1, $$2) : d.a($$0, $$1, $$2);
+      return $$1.ec().b(cfj.o, $$2) ? e.a($$0, $$1, $$2) : d.a($$0, $$1, $$2);
    }
 
    public static boolean c(ash $$0, bwf $$1, bwf $$2) {
-      return $$1.eb().b(cfj.o, $$2) ? g.a($$0, $$1, $$2) : f.a($$0, $$1, $$2);
+      return $$1.ec().b(cfj.o, $$2) ? g.a($$0, $$1, $$2) : f.a($$0, $$1, $$2);
    }
 
    public static BiPredicate<ash, bwf> a(bwf $$0, int $$1) {
@@ -59,7 +59,7 @@ public abstract class cgp<E extends bwf> {
    }
 
    public static boolean d(ash $$0, bwf $$1, bwf $$2) {
-      return $$1.eb().b(cfj.o, $$2) ? i.a($$0, $$1, $$2) : h.a($$0, $$1, $$2);
+      return $$1.ec().b(cfj.o, $$2) ? i.a($$0, $$1, $$2) : h.a($$0, $$1, $$2);
    }
 
    static <T, U> BiPredicate<T, U> a(int $$0, BiPredicate<T, U> $$1) {

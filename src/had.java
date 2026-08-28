@@ -1,10 +1,9 @@
-public class had extends gyr {
-   public float a;
-   public float b;
-   public final bvb c = new bvb();
-   public final bvb d = new bvb();
-   public final bvb e = new bvb();
-   public final bvb f = new bvb();
-   public final bvb g = new bvb();
-   public final bvb h = new bvb();
+public class had extends gys implements hac {
+   public boolean a;
+   public cpj b = new cpj(cpn.c, cpl.b, 1);
+
+   @Override
+   public cpj a() {
+      return this.b;
+   }
 }

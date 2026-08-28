@@ -26,7 +26,7 @@ public class cnk extends cmw implements bxe {
 
    @Override
    protected boolean aL() {
-      return !this.dQ();
+      return !this.dR();
    }
 
    @Override
@@ -37,7 +37,7 @@ public class cnk extends cmw implements bxe {
       this.f(true);
       if (this.cb && --this.cc <= 0) {
          this.cc = 20;
-         this.a(this.dW().j(), 1.0F);
+         this.a(this.dX().j(), 1.0F);
       }
    }
 
@@ -55,7 +55,7 @@ public class cnk extends cmw implements bxe {
    }
 
    public static bxm.a m() {
-      return cmw.gr().a(bxn.s, 14.0).a(bxn.c, 4.0);
+      return cmw.gt().a(bxn.s, 14.0).a(bxn.c, 4.0);
    }
 
    @Override
@@ -128,7 +128,7 @@ public class cnk extends cmw implements bxe {
       this.al.a(c, (byte)($$2 & 0xFF));
    }
 
-   public boolean gm() {
+   public boolean go() {
       return this.c(1);
    }
 
@@ -193,7 +193,7 @@ public class cnk extends cmw implements bxe {
 
       @Override
       public boolean c() {
-         return cnk.this.I().b() && cnk.this.gm() && cnk.this.O_() != null && cnk.this.O_().bL();
+         return cnk.this.I().b() && cnk.this.go() && cnk.this.O_() != null && cnk.this.O_().bL();
       }
 
       @Override
@@ -223,7 +223,7 @@ public class cnk extends cmw implements bxe {
          bwf $$0 = cnk.this.O_();
          if ($$0 != null) {
             if (cnk.this.cR().c($$0.cR())) {
-               cnk.this.c(a(cnk.this.dV()), $$0);
+               cnk.this.c(a(cnk.this.dW()), $$0);
                cnk.this.x(false);
             } else {
                double $$1 = cnk.this.g($$0);
@@ -263,22 +263,22 @@ public class cnk extends cmw implements bxe {
       @Override
       public void a() {
          if (this.k == ccg.a.b) {
-            fbx $$0 = new fbx(this.e - cnk.this.dA(), this.f - cnk.this.dC(), this.g - cnk.this.dG());
+            fbx $$0 = new fbx(this.e - cnk.this.dB(), this.f - cnk.this.dD(), this.g - cnk.this.dH());
             double $$1 = $$0.g();
             if ($$1 < cnk.this.cR().a()) {
                this.k = ccg.a.a;
-               cnk.this.h(cnk.this.dy().c(0.5));
+               cnk.this.h(cnk.this.dz().c(0.5));
             } else {
-               cnk.this.h(cnk.this.dy().e($$0.c(this.h * 0.05 / $$1)));
+               cnk.this.h(cnk.this.dz().e($$0.c(this.h * 0.05 / $$1)));
                if (cnk.this.O_() == null) {
-                  fbx $$2 = cnk.this.dy();
+                  fbx $$2 = cnk.this.dz();
                   cnk.this.v(-((float)bae.d($$2.d, $$2.f)) * (180.0F / (float)Math.PI));
-                  cnk.this.aX = cnk.this.dL();
+                  cnk.this.aX = cnk.this.dM();
                } else {
-                  double $$3 = cnk.this.O_().dA() - cnk.this.dA();
-                  double $$4 = cnk.this.O_().dG() - cnk.this.dG();
+                  double $$3 = cnk.this.O_().dB() - cnk.this.dB();
+                  double $$4 = cnk.this.O_().dH() - cnk.this.dH();
                   cnk.this.v(-((float)bae.d($$3, $$4)) * (180.0F / (float)Math.PI));
-                  cnk.this.aX = cnk.this.dL();
+                  cnk.this.aX = cnk.this.dM();
                }
             }
          }
@@ -304,12 +304,12 @@ public class cnk extends cmw implements bxe {
       public void a() {
          jh $$0 = cnk.this.x();
          if ($$0 == null) {
-            $$0 = cnk.this.dv();
+            $$0 = cnk.this.dw();
          }
 
          for (int $$1 = 0; $$1 < 3; $$1++) {
             jh $$2 = $$0.b(cnk.this.ae.a(15) - 7, cnk.this.ae.a(11) - 5, cnk.this.ae.a(15) - 7);
-            if (cnk.this.dV().u($$2)) {
+            if (cnk.this.dW().u($$2)) {
                cnk.this.bQ.a((double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, 0.25);
                if (cnk.this.O_() == null) {
                   cnk.this.H().a((double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, 180.0F, 20.0F);

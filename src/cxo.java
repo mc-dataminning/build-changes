@@ -21,36 +21,33 @@ import org.apache.commons.lang3.mutable.MutableBoolean;
 import org.slf4j.Logger;
 
 public final class cxo implements kp {
-   public static final Codec<jq<cxk>> a = ma.g
-      .r()
-      .validate($$0 -> $$0.a(cxs.a.f()) ? DataResult.error(() -> "Item must not be minecraft:air") : DataResult.success($$0));
-   public static final Codec<cxo> b = Codec.lazyInitialized(
+   public static final Codec<cxo> a = Codec.lazyInitialized(
       () -> RecordCodecBuilder.create(
             $$0 -> $$0.group(
-                     a.fieldOf("id").forGetter(cxo::i),
+                     cxk.e.fieldOf("id").forGetter(cxo::i),
                      azn.a(1, 99).fieldOf("count").orElse(1).forGetter(cxo::L),
-                     kr.b.optionalFieldOf("components", kr.a).forGetter($$0x -> $$0x.q.g())
+                     kr.b.optionalFieldOf("components", kr.a).forGetter($$0x -> $$0x.p.g())
                   )
                   .apply($$0, cxo::new)
          )
    );
-   public static final Codec<cxo> c = Codec.lazyInitialized(
+   public static final Codec<cxo> b = Codec.lazyInitialized(
       () -> RecordCodecBuilder.create(
-            $$0 -> $$0.group(a.fieldOf("id").forGetter(cxo::i), kr.b.optionalFieldOf("components", kr.a).forGetter($$0x -> $$0x.q.g()))
+            $$0 -> $$0.group(cxk.e.fieldOf("id").forGetter(cxo::i), kr.b.optionalFieldOf("components", kr.a).forGetter($$0x -> $$0x.p.g()))
                   .apply($$0, ($$0x, $$1) -> new cxo($$0x, 1, $$1))
          )
    );
+   public static final Codec<cxo> c = a.validate(cxo::c);
    public static final Codec<cxo> d = b.validate(cxo::c);
-   public static final Codec<cxo> e = c.validate(cxo::c);
-   public static final Codec<cxo> f = azn.f(b).xmap($$0 -> $$0.orElse(cxo.k), $$0 -> $$0.f() ? Optional.empty() : Optional.of($$0));
-   public static final Codec<cxo> g = a.xmap(cxo::new, cxo::i);
-   public static final zt<xg, cxo> h = new zt<xg, cxo>() {
+   public static final Codec<cxo> e = azn.f(a).xmap($$0 -> $$0.orElse(cxo.j), $$0 -> $$0.f() ? Optional.empty() : Optional.of($$0));
+   public static final Codec<cxo> f = cxk.e.xmap(cxo::new, cxo::i);
+   public static final zt<xg, cxo> g = new zt<xg, cxo>() {
       private static final zt<xg, jq<cxk>> a = zr.b(mb.K);
 
       public cxo a(xg $$0) {
          int $$1 = $$0.l();
          if ($$1 <= 0) {
-            return cxo.k;
+            return cxo.j;
          } else {
             jq<cxk> $$2 = a.decode($$0);
             kr $$3 = kr.c.decode($$0);
@@ -64,13 +61,13 @@ public final class cxo implements kp {
          } else {
             $$0.c($$1.L());
             a.encode($$0, $$1.i());
-            kr.c.encode($$0, $$1.q.g());
+            kr.c.encode($$0, $$1.p.g());
          }
       }
    };
-   public static final zt<xg, cxo> i = new zt<xg, cxo>() {
+   public static final zt<xg, cxo> h = new zt<xg, cxo>() {
       public cxo a(xg $$0) {
-         cxo $$1 = cxo.h.decode($$0);
+         cxo $$1 = cxo.g.decode($$0);
          if ($$1.f()) {
             throw new DecoderException("Empty ItemStack not allowed");
          } else {
@@ -82,22 +79,22 @@ public final class cxo implements kp {
          if ($$1.f()) {
             throw new EncoderException("Empty ItemStack not allowed");
          } else {
-            cxo.h.encode($$0, $$1);
+            cxo.g.encode($$0, $$1);
          }
       }
    };
-   public static final zt<xg, List<cxo>> j = h.a(zr.a(jz::a));
-   private static final Logger l = LogUtils.getLogger();
-   public static final cxo k = new cxo((Void)null);
-   private static final xv m = xv.c("item.disabled").a(n.m);
+   public static final zt<xg, List<cxo>> i = g.a(zr.a(jz::a));
+   private static final Logger k = LogUtils.getLogger();
+   public static final cxo j = new cxo((Void)null);
+   private static final xv l = xv.c("item.disabled").a(n.m);
+   private int m;
    private int n;
-   private int o;
    @Deprecated
    @Nullable
-   private final cxk p;
-   final kv q;
+   private final cxk o;
+   final kv p;
    @Nullable
-   private bvj r;
+   private bvj q;
 
    private static DataResult<cxo> c(cxo $$0) {
       DataResult<bbk> $$1 = a($$0.a());
@@ -116,7 +113,7 @@ public final class cxo implements kp {
             cxo $$1 = $$0.decode($$0);
             if (!$$1.f()) {
                alx<bbk> $$2 = $$0.H().a(bag.a);
-               cxo.b.encodeStart($$2, $$1).getOrThrow(DecoderException::new);
+               cxo.a.encodeStart($$2, $$1).getOrThrow(DecoderException::new);
             }
 
             return $$1;
@@ -134,11 +131,11 @@ public final class cxo implements kp {
 
    @Override
    public kq a() {
-      return (kq)(!this.f() ? this.q : kq.a);
+      return (kq)(!this.f() ? this.p : kq.a);
    }
 
    public void c() {
-      this.q.f();
+      this.p.f();
    }
 
    public kq d() {
@@ -146,7 +143,7 @@ public final class cxo implements kp {
    }
 
    public kr e() {
-      return !this.f() ? this.q.g() : kr.a;
+      return !this.f() ? this.p.g() : kr.a;
    }
 
    public cxo(dhg $$0) {
@@ -170,15 +167,15 @@ public final class cxo implements kp {
    }
 
    private cxo(dhg $$0, int $$1, kv $$2) {
-      this.p = $$0.j();
-      this.n = $$1;
-      this.q = $$2;
+      this.o = $$0.j();
+      this.m = $$1;
+      this.p = $$2;
       this.h().l(this);
    }
 
    private cxo(@Nullable Void $$0) {
-      this.p = null;
-      this.q = new kv(kq.a);
+      this.o = null;
+      this.p = new kv(kq.a);
    }
 
    public static DataResult<bbk> a(kq $$0) {
@@ -200,15 +197,15 @@ public final class cxo implements kp {
    }
 
    public static Optional<cxo> a(js.a $$0, vu $$1) {
-      return b.parse($$0.a(vl.a), $$1).resultOrPartial($$0x -> l.error("Tried to load invalid item: '{}'", $$0x));
+      return a.parse($$0.a(vl.a), $$1).resultOrPartial($$0x -> k.error("Tried to load invalid item: '{}'", $$0x));
    }
 
    public static cxo a(js.a $$0, ux $$1) {
-      return $$1.g() ? k : a($$0, (vu)$$1).orElse(k);
+      return $$1.g() ? j : a($$0, (vu)$$1).orElse(j);
    }
 
    public boolean f() {
-      return this == k || this.p == cxs.a || this.n <= 0;
+      return this == j || this.o == cxs.a || this.m <= 0;
    }
 
    public boolean a(css $$0) {
@@ -224,7 +221,7 @@ public final class cxo implements kp {
 
    public cxo g() {
       if (this.f()) {
-         return k;
+         return j;
       } else {
          cxo $$0 = this.v();
          this.e(0);
@@ -233,7 +230,7 @@ public final class cxo implements kp {
    }
 
    public cxk h() {
-      return this.f() ? cxs.a : this.p;
+      return this.f() ? cxs.a : this.o;
    }
 
    public jq<cxk> i() {
@@ -267,7 +264,7 @@ public final class cxo implements kp {
    public bti a(dbh $$0) {
       cpw $$1 = $$0.o();
       jh $$2 = $$0.a();
-      if ($$1 != null && !$$1.gh().e && !this.a(new dxy($$0.q(), $$2, false))) {
+      if ($$1 != null && !$$1.gj().e && !this.a(new dxy($$0.q(), $$2, false))) {
          return bti.e;
       } else {
          cxk $$3 = this.h();
@@ -303,7 +300,7 @@ public final class cxo implements kp {
       int $$4 = $$1.L();
       cxo $$5 = this;
       if ($$2 != null) {
-         $$5 = $$2.a(this, $$4, $$0.fT(), $$0::b);
+         $$5 = $$2.a(this, $$4, $$0.fV(), $$0::b);
       }
 
       if ($$3 != null) {
@@ -317,7 +314,7 @@ public final class cxo implements kp {
       if (this.f()) {
          throw new IllegalStateException("Cannot encode empty ItemStack");
       } else {
-         return (vu)b.encode(this, $$0.a(vl.a), $$1).getOrThrow();
+         return (vu)a.encode(this, $$0.a(vl.a), $$1).getOrThrow();
       }
    }
 
@@ -325,7 +322,7 @@ public final class cxo implements kp {
       if (this.f()) {
          throw new IllegalStateException("Cannot encode empty ItemStack");
       } else {
-         return (vu)b.encodeStart($$0.a(vl.a), this).getOrThrow();
+         return (vu)a.encodeStart($$0.a(vl.a), this).getOrThrow();
       }
    }
 
@@ -379,7 +376,7 @@ public final class cxo implements kp {
    private int a(int $$0, ash $$1, @Nullable asi $$2) {
       if (!this.m()) {
          return 0;
-      } else if ($$2 != null && $$2.fT()) {
+      } else if ($$2 != null && $$2.fV()) {
          return 0;
       } else {
          return $$0 > 0 ? dea.a($$1, this, $$0) : $$0;
@@ -413,7 +410,7 @@ public final class cxo implements kp {
    }
 
    public void a(int $$0, bwf $$1, bvr $$2) {
-      if ($$1.dV() instanceof ash $$3) {
+      if ($$1.dW() instanceof ash $$3) {
          this.a($$0, $$3, $$1 instanceof asi $$4 ? $$4 : null, $$2x -> $$1.a($$2x, $$2));
       }
    }
@@ -486,9 +483,9 @@ public final class cxo implements kp {
 
    public cxo v() {
       if (this.f()) {
-         return k;
+         return j;
       } else {
-         cxo $$0 = new cxo(this.h(), this.n, this.q.h());
+         cxo $$0 = new cxo(this.h(), this.m, this.p.h());
          $$0.d(this.K());
          return $$0;
       }
@@ -496,7 +493,7 @@ public final class cxo implements kp {
 
    public cxo c(int $$0) {
       if (this.f()) {
-         return k;
+         return j;
       } else {
          cxo $$1 = this.v();
          $$1.e($$0);
@@ -509,11 +506,11 @@ public final class cxo implements kp {
    }
 
    public cxo a(dhg $$0, int $$1) {
-      return this.f() ? k : this.b($$0, $$1);
+      return this.f() ? j : this.b($$0, $$1);
    }
 
    private cxo b(dhg $$0, int $$1) {
-      return new cxo($$0.j().f(), $$1, this.q.g());
+      return new cxo($$0.j().f(), $$1, this.p.g());
    }
 
    public static boolean a(cxo $$0, cxo $$1) {
@@ -547,12 +544,12 @@ public final class cxo implements kp {
       if (!$$0.a($$1.h())) {
          return false;
       } else {
-         return $$0.f() && $$1.f() ? true : Objects.equals($$0.q, $$1.q);
+         return $$0.f() && $$1.f() ? true : Objects.equals($$0.p, $$1.p);
       }
    }
 
    public static MapCodec<cxo> a(String $$0) {
-      return b.lenientOptionalFieldOf($$0).xmap($$0x -> $$0x.orElse(k), $$0x -> $$0x.f() ? Optional.empty() : Optional.of($$0x));
+      return a.lenientOptionalFieldOf($$0).xmap($$0x -> $$0x.orElse(j), $$0x -> $$0x.f() ? Optional.empty() : Optional.of($$0x));
    }
 
    public static int a(@Nullable cxo $$0) {
@@ -581,8 +578,8 @@ public final class cxo implements kp {
    }
 
    public void a(dhh $$0, bvj $$1, int $$2, boolean $$3) {
-      if (this.o > 0) {
-         this.o--;
+      if (this.n > 0) {
+         this.n--;
       }
 
       if (this.h() != null) {
@@ -612,7 +609,7 @@ public final class cxo implements kp {
       if (this.h().a(this, $$0, $$1, $$2)) {
          cxo $$4 = this.a($$1, $$3);
          if ($$4 != this) {
-            $$1.a($$1.fy(), $$4);
+            $$1.a($$1.fA(), $$4);
          }
       }
    }
@@ -623,7 +620,7 @@ public final class cxo implements kp {
 
    @Nullable
    public <T> T b(kt<? super T> $$0, @Nullable T $$1) {
-      return this.q.b($$0, $$1);
+      return this.p.b($$0, $$1);
    }
 
    @Nullable
@@ -639,28 +636,28 @@ public final class cxo implements kp {
 
    @Nullable
    public <T> T c(kt<? extends T> $$0) {
-      return this.q.d($$0);
+      return this.p.d($$0);
    }
 
    public void a(kr $$0) {
-      kr $$1 = this.q.g();
-      this.q.a($$0);
+      kr $$1 = this.p.g();
+      this.p.a($$0);
       Optional<Error<cxo>> $$2 = c(this).error();
       if ($$2.isPresent()) {
-         l.error("Failed to apply component patch '{}' to item: '{}'", $$0, $$2.get().message());
-         this.q.b($$1);
+         k.error("Failed to apply component patch '{}' to item: '{}'", $$0, $$2.get().message());
+         this.p.b($$1);
       } else {
          this.h().l(this);
       }
    }
 
    public void b(kr $$0) {
-      this.q.a($$0);
+      this.p.a($$0);
       this.h().l(this);
    }
 
    public void b(kq $$0) {
-      this.q.a($$0);
+      this.p.a($$0);
       this.h().l(this);
    }
 
@@ -749,14 +746,14 @@ public final class cxo implements kp {
             }
 
             $$3.add(xv.b(ma.g.b(this.h()).toString()).a(n.i));
-            int $$8 = this.q.d();
+            int $$8 = this.p.d();
             if ($$8 > 0) {
                $$3.add(xv.a("item.components", $$8).a(n.i));
             }
          }
 
-         if ($$1 != null && !this.h().a($$1.dV().J())) {
-            $$3.add(m);
+         if ($$1 != null && !this.h().a($$1.dW().J())) {
+            $$3.add(l);
          }
 
          return $$3;
@@ -785,10 +782,10 @@ public final class cxo implements kp {
       double $$4 = $$3.c();
       boolean $$5 = false;
       if ($$1 != null) {
-         if ($$3.a(cxk.f)) {
+         if ($$3.a(cxk.g)) {
             $$4 += $$1.i(bxn.c);
             $$5 = true;
-         } else if ($$3.a(cxk.g)) {
+         } else if ($$3.a(cxk.h)) {
             $$4 += $$1.i(bxn.e);
             $$5 = true;
          }
@@ -852,23 +849,23 @@ public final class cxo implements kp {
    }
 
    public boolean G() {
-      return this.r instanceof clt;
+      return this.q instanceof clt;
    }
 
    public void a(@Nullable bvj $$0) {
       if (!this.f()) {
-         this.r = $$0;
+         this.q = $$0;
       }
    }
 
    @Nullable
    public clt H() {
-      return this.r instanceof clt ? (clt)this.I() : null;
+      return this.q instanceof clt ? (clt)this.I() : null;
    }
 
    @Nullable
    public bvj I() {
-      return !this.f() ? this.r : null;
+      return !this.f() ? this.q : null;
    }
 
    public void a(bvs $$0, BiConsumer<jq<bxi>, bxl> $$1) {
@@ -908,19 +905,19 @@ public final class cxo implements kp {
    }
 
    public int K() {
-      return this.o;
+      return this.n;
    }
 
    public void d(int $$0) {
-      this.o = $$0;
+      this.n = $$0;
    }
 
    public int L() {
-      return this.f() ? 0 : this.n;
+      return this.f() ? 0 : this.m;
    }
 
    public void e(int $$0) {
-      this.n = $$0;
+      this.m = $$0;
    }
 
    public void f(int $$0) {
@@ -938,7 +935,7 @@ public final class cxo implements kp {
    }
 
    public void a(int $$0, @Nullable bwf $$1) {
-      if ($$1 == null || !$$1.fT()) {
+      if ($$1 == null || !$$1.fV()) {
          this.h($$0);
       }
    }
@@ -952,7 +949,7 @@ public final class cxo implements kp {
    public void b(dhh $$0, bwf $$1, int $$2) {
       czu $$3 = this.a(ku.x);
       if ($$3 != null && $$3.a($$2)) {
-         $$3.a($$1.dY(), $$1, this, 5);
+         $$3.a($$1.dZ(), $$1, this, 5);
       }
 
       this.h().a($$0, $$1, this, $$2);

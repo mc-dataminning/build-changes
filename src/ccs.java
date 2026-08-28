@@ -14,7 +14,7 @@ public class ccs extends cdd {
    public boolean b() {
       boolean $$0 = this.a.aw || this.a.av;
       if ($$0 && this.a.aq().a(axy.h)) {
-         jh $$1 = this.a.dv().d();
+         jh $$1 = this.a.dw().d();
          dxu $$2 = this.b.a_($$1);
          return $$2.a(dkn.rk) || $$2.g(this.b, $$1) == fco.a();
       } else {

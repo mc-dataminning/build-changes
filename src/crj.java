@@ -144,7 +144,7 @@ public class crj {
 
    private Predicate<asi> w() {
       return $$0 -> {
-         jh $$1 = $$0.dv();
+         jh $$1 = $$0.dw();
          return $$0.bL() && this.D.d($$1) == this;
       };
    }
@@ -382,19 +382,19 @@ public class crj {
          Set<crk> $$2 = $$0.next();
 
          for (crk $$3 : $$2) {
-            jh $$4 = $$3.dv();
-            if ($$3.dQ() || $$3.dV().ah() != this.D.ah() || this.C.j($$4) >= 12544.0) {
+            jh $$4 = $$3.dw();
+            if ($$3.dR() || $$3.dW().ah() != this.D.ah() || this.C.j($$4) >= 12544.0) {
                $$1.add($$3);
             } else if ($$3.af > 600) {
                if (this.D.a($$3.cG()) == null) {
                   $$1.add($$3);
                }
 
-               if (!this.D.c($$4) && $$3.et() > 2400) {
-                  $$3.c($$3.gF() + 1);
+               if (!this.D.c($$4) && $$3.eu() > 2400) {
+                  $$3.c($$3.gH() + 1);
                }
 
-               if ($$3.gF() >= 30) {
+               if ($$3.gH() >= 30) {
                   $$1.add($$3);
                }
             }
@@ -403,8 +403,8 @@ public class crj {
 
       for (crk $$5 : $$1) {
          this.a($$5, true);
-         if ($$5.gp()) {
-            this.c($$5.gD());
+         if ($$5.gr()) {
+            this.c($$5.gF());
          }
       }
    }
@@ -416,13 +416,13 @@ public class crj {
       long $$4 = this.N.g();
 
       for (asi $$5 : this.D.y()) {
-         fbx $$6 = $$5.dt();
+         fbx $$6 = $$5.du();
          fbx $$7 = fbx.b($$0);
          double $$8 = Math.sqrt(($$7.d - $$6.d) * ($$7.d - $$6.d) + ($$7.f - $$6.f) * ($$7.f - $$6.f));
          double $$9 = $$6.d + 13.0 / $$8 * ($$7.d - $$6.d);
          double $$10 = $$6.f + 13.0 / $$8 * ($$7.f - $$6.f);
          if ($$8 <= 64.0 || $$3.contains($$5)) {
-            $$5.f.b(new agt(axf.vw, axg.g, $$9, $$5.dC(), $$10, 64.0F, 1.0F, $$4));
+            $$5.f.b(new agt(axf.vw, axg.g, $$9, $$5.dD(), $$10, 64.0F, 1.0F, $$4));
          }
       }
    }
@@ -444,7 +444,7 @@ public class crj {
                break;
             }
 
-            if (!$$1 && $$9.gm()) {
+            if (!$$1 && $$9.go()) {
                $$9.x(true);
                this.a($$2, $$9);
                $$1 = true;
@@ -505,7 +505,7 @@ public class crj {
 
       for (Set<crk> $$1 : this.z.values()) {
          for (crk $$2 : $$1) {
-            $$0 += $$2.eD();
+            $$0 += $$2.eE();
          }
       }
 
@@ -521,12 +521,12 @@ public class crj {
    }
 
    public void a(crk $$0, boolean $$1) {
-      Set<crk> $$2 = this.z.get($$0.gD());
+      Set<crk> $$2 = this.z.get($$0.gF());
       if ($$2 != null) {
          boolean $$3 = $$2.remove($$0);
          if ($$3) {
             if ($$1) {
-               this.G = this.G - $$0.eD();
+               this.G = this.G - $$0.eE();
             }
 
             $$0.a(null);
@@ -615,7 +615,7 @@ public class crj {
 
       $$3.add($$1);
       if ($$2) {
-         this.G = this.G + $$1.eD();
+         this.G = this.G + $$1.eE();
       }
 
       this.p();
@@ -625,7 +625,7 @@ public class crj {
 
    public void a(int $$0, crk $$1) {
       this.y.put($$0, $$1);
-      $$1.a(bvr.f, a($$1.dX().e(mb.d)));
+      $$1.a(bvr.f, a($$1.dY().e(mb.d)));
       $$1.a(bvr.f, 2.0F);
    }
 

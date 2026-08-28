@@ -1,8 +1,8 @@
 import com.mojang.serialization.Codec;
 
 public record dau(cxo c) {
-   public static final Codec<dau> a = cxo.b.xmap(dau::new, dau::a);
-   public static final zt<xg, dau> b = zt.a(cxo.i, dau::a, dau::new);
+   public static final Codec<dau> a = cxo.a.xmap(dau::new, dau::a);
+   public static final zt<xg, dau> b = zt.a(cxo.h, dau::a, dau::new);
 
    public cxo a(cxo $$0, int $$1, boolean $$2, dau.a $$3) {
       if ($$2) {

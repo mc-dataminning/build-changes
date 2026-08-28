@@ -29,7 +29,7 @@ public class cdb extends cdd {
       bwf $$0 = this.a.ah_();
       if ($$0 == null) {
          return false;
-      } else if (this.a.gp()) {
+      } else if (this.a.gr()) {
          return false;
       } else if (this.a.g((bvj)$$0) < (double)(this.g * this.g)) {
          return false;
@@ -44,7 +44,7 @@ public class cdb extends cdd {
       if (this.d.m()) {
          return false;
       } else {
-         return this.a.gp() ? false : !(this.a.g((bvj)this.b) <= (double)(this.f * this.f));
+         return this.a.gr() ? false : !(this.a.g((bvj)this.b) <= (double)(this.f * this.f));
       }
    }
 
@@ -64,7 +64,7 @@ public class cdb extends cdd {
 
    @Override
    public void a() {
-      boolean $$0 = this.a.go();
+      boolean $$0 = this.a.gq();
       if (!$$0) {
          this.a.H().a(this.b, 10.0F, (float)this.a.Z());
       }
@@ -72,7 +72,7 @@ public class cdb extends cdd {
       if (--this.e <= 0) {
          this.e = this.a(10);
          if ($$0) {
-            this.a.gn();
+            this.a.gp();
          } else {
             this.d.a(this.b, this.c);
          }

@@ -1,347 +1,311 @@
-import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
+import com.google.common.collect.Sets;
 import java.util.Set;
 import java.util.stream.Stream;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
 
-public final class gem {
-   public static final float a = 1.0F;
-   public float b;
-   public float c;
-   public float d;
-   public float e;
-   public float f;
-   public float g;
-   public float h = 1.0F;
-   public float i = 1.0F;
-   public float j = 1.0F;
-   public boolean k = true;
-   public boolean l;
-   private final List<gem.a> m;
-   private final Map<String, gem> n;
-   private geo o = geo.a;
+public class gem {
+   private static final String ec = "main";
+   private static final Set<gel> ed = Sets.newHashSet();
+   public static final gel a = a("boat/acacia");
+   public static final gel b = a("chest_boat/acacia");
+   public static final gel c = a("allay");
+   public static final gel d = a("armadillo");
+   public static final gel e = a("armadillo_baby");
+   public static final gel f = a("armor_stand");
+   public static final gel g = b("armor_stand");
+   public static final gel h = c("armor_stand");
+   public static final gel i = a("armor_stand_small");
+   public static final gel j = b("armor_stand_small");
+   public static final gel k = c("armor_stand_small");
+   public static final gel l = a("arrow");
+   public static final gel m = a("axolotl");
+   public static final gel n = a("axolotl_baby");
+   public static final gel o = a("chest_boat/bamboo");
+   public static final gel p = a("boat/bamboo");
+   public static final gel q = a("banner");
+   public static final gel r = a("bat");
+   public static final gel s = a("bed_foot");
+   public static final gel t = a("bed_head");
+   public static final gel u = a("bee");
+   public static final gel v = a("bee_baby");
+   public static final gel w = a("bee_stinger");
+   public static final gel x = a("bell");
+   public static final gel y = a("boat/birch");
+   public static final gel z = a("chest_boat/birch");
+   public static final gel A = a("blaze");
+   public static final gel B = a("boat", "water_patch");
+   public static final gel C = a("bogged");
+   public static final gel D = b("bogged");
+   public static final gel E = c("bogged");
+   public static final gel F = a("bogged", "outer");
+   public static final gel G = a("book");
+   public static final gel H = a("breeze");
+   public static final gel I = a("breeze_wind");
+   public static final gel J = a("camel");
+   public static final gel K = a("camel_baby");
+   public static final gel L = a("cat");
+   public static final gel M = a("cat_baby");
+   public static final gel N = a("cat_baby", "collar");
+   public static final gel O = a("cat", "collar");
+   public static final gel P = a("cave_spider");
+   public static final gel Q = a("boat/cherry");
+   public static final gel R = a("chest_boat/cherry");
+   public static final gel S = a("chest");
+   public static final gel T = a("chest_minecart");
+   public static final gel U = a("chicken");
+   public static final gel V = a("chicken_baby");
+   public static final gel W = a("cod");
+   public static final gel X = a("command_block_minecart");
+   public static final gel Y = a("conduit", "cage");
+   public static final gel Z = a("conduit", "eye");
+   public static final gel aa = a("conduit", "shell");
+   public static final gel ab = a("conduit", "wind");
+   public static final gel ac = a("cow");
+   public static final gel ad = a("cow_baby");
+   public static final gel ae = a("creaking");
+   public static final gel af = a("creeper");
+   public static final gel ag = a("creeper", "armor");
+   public static final gel ah = a("creeper_head");
+   public static final gel ai = a("boat/dark_oak");
+   public static final gel aj = a("chest_boat/dark_oak");
+   public static final gel ak = a("decorated_pot_base");
+   public static final gel al = a("decorated_pot_sides");
+   public static final gel am = a("dolphin");
+   public static final gel an = a("dolphin_baby");
+   public static final gel ao = a("donkey");
+   public static final gel ap = a("donkey_baby");
+   public static final gel aq = a("double_chest_left");
+   public static final gel ar = a("double_chest_right");
+   public static final gel as = a("dragon_skull");
+   public static final gel at = a("drowned");
+   public static final gel au = a("drowned_baby");
+   public static final gel av = b("drowned_baby");
+   public static final gel aw = c("drowned_baby");
+   public static final gel ax = a("drowned_baby", "outer");
+   public static final gel ay = b("drowned");
+   public static final gel az = c("drowned");
+   public static final gel aA = a("drowned", "outer");
+   public static final gel aB = a("elder_guardian");
+   public static final gel aC = a("elytra");
+   public static final gel aD = a("elytra_baby");
+   public static final gel aE = a("enderman");
+   public static final gel aF = a("endermite");
+   public static final gel aG = a("ender_dragon");
+   public static final gel aH = a("end_crystal");
+   public static final gel aI = a("evoker");
+   public static final gel aJ = a("evoker_fangs");
+   public static final gel aK = a("fox");
+   public static final gel aL = a("fox_baby");
+   public static final gel aM = a("frog");
+   public static final gel aN = a("furnace_minecart");
+   public static final gel aO = a("ghast");
+   public static final gel aP = a("giant");
+   public static final gel aQ = b("giant");
+   public static final gel aR = c("giant");
+   public static final gel aS = a("glow_squid");
+   public static final gel aT = a("glow_squid_baby");
+   public static final gel aU = a("goat");
+   public static final gel aV = a("goat_baby");
+   public static final gel aW = a("guardian");
+   public static final gel aX = a("hoglin");
+   public static final gel aY = a("hoglin_baby");
+   public static final gel aZ = a("hopper_minecart");
+   public static final gel ba = a("horse");
+   public static final gel bb = a("horse_armor");
+   public static final gel bc = a("horse_baby");
+   public static final gel bd = a("horse_armor_baby");
+   public static final gel be = a("husk");
+   public static final gel bf = a("husk_baby");
+   public static final gel bg = b("husk_baby");
+   public static final gel bh = c("husk_baby");
+   public static final gel bi = b("husk");
+   public static final gel bj = c("husk");
+   public static final gel bk = a("illusioner");
+   public static final gel bl = a("iron_golem");
+   public static final gel bm = a("boat/jungle");
+   public static final gel bn = a("chest_boat/jungle");
+   public static final gel bo = a("leash_knot");
+   public static final gel bp = a("llama");
+   public static final gel bq = a("llama_baby");
+   public static final gel br = a("llama_baby", "decor");
+   public static final gel bs = a("llama", "decor");
+   public static final gel bt = a("llama_spit");
+   public static final gel bu = a("magma_cube");
+   public static final gel bv = a("boat/mangrove");
+   public static final gel bw = a("chest_boat/mangrove");
+   public static final gel bx = a("minecart");
+   public static final gel by = a("mooshroom");
+   public static final gel bz = a("mooshroom_baby");
+   public static final gel bA = a("mule");
+   public static final gel bB = a("mule_baby");
+   public static final gel bC = a("boat/oak");
+   public static final gel bD = a("chest_boat/oak");
+   public static final gel bE = a("ocelot");
+   public static final gel bF = a("ocelot_baby");
+   public static final gel bG = a("boat/pale_oak");
+   public static final gel bH = a("chest_boat/pale_oak");
+   public static final gel bI = a("panda");
+   public static final gel bJ = a("panda_baby");
+   public static final gel bK = a("parrot");
+   public static final gel bL = a("phantom");
+   public static final gel bM = a("pig");
+   public static final gel bN = a("piglin");
+   public static final gel bO = a("piglin_baby");
+   public static final gel bP = b("piglin_baby");
+   public static final gel bQ = c("piglin_baby");
+   public static final gel bR = a("piglin_brute");
+   public static final gel bS = b("piglin_brute");
+   public static final gel bT = c("piglin_brute");
+   public static final gel bU = a("piglin_head");
+   public static final gel bV = b("piglin");
+   public static final gel bW = c("piglin");
+   public static final gel bX = a("pig_baby");
+   public static final gel bY = a("pig_baby", "saddle");
+   public static final gel bZ = a("pig", "saddle");
+   public static final gel ca = a("pillager");
+   public static final gel cb = a("player");
+   public static final gel cc = a("player", "cape");
+   public static final gel cd = a("player", "ears");
+   public static final gel ce = a("player_head");
+   public static final gel cf = b("player");
+   public static final gel cg = c("player");
+   public static final gel ch = a("player_slim");
+   public static final gel ci = b("player_slim");
+   public static final gel cj = c("player_slim");
+   public static final gel ck = a("spin_attack");
+   public static final gel cl = a("polar_bear");
+   public static final gel cm = a("polar_bear_baby");
+   public static final gel cn = a("pufferfish_big");
+   public static final gel co = a("pufferfish_medium");
+   public static final gel cp = a("pufferfish_small");
+   public static final gel cq = a("rabbit");
+   public static final gel cr = a("rabbit_baby");
+   public static final gel cs = a("ravager");
+   public static final gel ct = a("salmon");
+   public static final gel cu = a("salmon_large");
+   public static final gel cv = a("salmon_small");
+   public static final gel cw = a("sheep");
+   public static final gel cx = a("sheep_baby");
+   public static final gel cy = a("sheep_baby", "wool");
+   public static final gel cz = a("sheep", "wool");
+   public static final gel cA = a("shield");
+   public static final gel cB = a("shulker");
+   public static final gel cC = a("shulker_box");
+   public static final gel cD = a("shulker_bullet");
+   public static final gel cE = a("silverfish");
+   public static final gel cF = a("skeleton");
+   public static final gel cG = a("skeleton_horse");
+   public static final gel cH = a("skeleton_horse_baby");
+   public static final gel cI = b("skeleton");
+   public static final gel cJ = c("skeleton");
+   public static final gel cK = a("skeleton_skull");
+   public static final gel cL = a("slime");
+   public static final gel cM = a("slime", "outer");
+   public static final gel cN = a("sniffer");
+   public static final gel cO = a("sniffer_baby");
+   public static final gel cP = a("snow_golem");
+   public static final gel cQ = a("spawner_minecart");
+   public static final gel cR = a("spider");
+   public static final gel cS = a("boat/spruce");
+   public static final gel cT = a("chest_boat/spruce");
+   public static final gel cU = a("squid");
+   public static final gel cV = a("squid_baby");
+   public static final gel cW = a("stray");
+   public static final gel cX = b("stray");
+   public static final gel cY = c("stray");
+   public static final gel cZ = a("stray", "outer");
+   public static final gel da = a("strider");
+   public static final gel db = a("strider", "saddle");
+   public static final gel dc = a("tadpole");
+   public static final gel dd = a("tnt_minecart");
+   public static final gel de = a("trader_llama");
+   public static final gel df = a("trader_llama_baby");
+   public static final gel dg = a("trident");
+   public static final gel dh = a("tropical_fish_large");
+   public static final gel di = a("tropical_fish_large", "pattern");
+   public static final gel dj = a("tropical_fish_small");
+   public static final gel dk = a("tropical_fish_small", "pattern");
+   public static final gel dl = a("turtle");
+   public static final gel dm = a("turtle_baby");
+   public static final gel dn = a("vex");
+   public static final gel do = a("villager");
+   public static final gel dp = a("vindicator");
+   public static final gel dq = a("wandering_trader");
+   public static final gel dr = a("warden");
+   public static final gel ds = a("wind_charge");
+   public static final gel dt = a("witch");
+   public static final gel du = a("wither");
+   public static final gel dv = a("wither", "armor");
+   public static final gel dw = a("wither_skeleton");
+   public static final gel dx = b("wither_skeleton");
+   public static final gel dy = c("wither_skeleton");
+   public static final gel dz = a("wither_skeleton_skull");
+   public static final gel dA = a("wither_skull");
+   public static final gel dB = a("wolf");
+   public static final gel dC = a("wolf_armor");
+   public static final gel dD = a("wolf_baby");
+   public static final gel dE = a("wolf_baby_armor");
+   public static final gel dF = a("zoglin");
+   public static final gel dG = a("zoglin_baby");
+   public static final gel dH = a("zombie");
+   public static final gel dI = a("zombie_baby");
+   public static final gel dJ = b("zombie_baby");
+   public static final gel dK = c("zombie_baby");
+   public static final gel dL = a("zombie_head");
+   public static final gel dM = a("zombie_horse");
+   public static final gel dN = a("zombie_horse_baby");
+   public static final gel dO = b("zombie");
+   public static final gel dP = c("zombie");
+   public static final gel dQ = a("zombie_villager");
+   public static final gel dR = a("zombie_villager_baby");
+   public static final gel dS = b("zombie_villager_baby");
+   public static final gel dT = c("zombie_villager_baby");
+   public static final gel dU = b("zombie_villager");
+   public static final gel dV = c("zombie_villager");
+   public static final gel dW = a("zombified_piglin");
+   public static final gel dX = a("zombified_piglin_baby");
+   public static final gel dY = b("zombified_piglin_baby");
+   public static final gel dZ = c("zombified_piglin_baby");
+   public static final gel ea = b("zombified_piglin");
+   public static final gel eb = c("zombified_piglin");
 
-   public gem(List<gem.a> $$0, Map<String, gem> $$1) {
-      this.m = $$0;
-      this.n = $$1;
+   private static gel a(String $$0) {
+      return a($$0, "main");
    }
 
-   public geo a() {
-      return geo.a(this.b, this.c, this.d, this.e, this.f, this.g);
-   }
-
-   public geo b() {
-      return this.o;
-   }
-
-   public void a(geo $$0) {
-      this.o = $$0;
-   }
-
-   public void c() {
-      this.b(this.o);
-   }
-
-   public void b(geo $$0) {
-      this.b = $$0.a();
-      this.c = $$0.b();
-      this.d = $$0.c();
-      this.e = $$0.d();
-      this.f = $$0.e();
-      this.g = $$0.f();
-      this.h = $$0.g();
-      this.i = $$0.h();
-      this.j = $$0.i();
-   }
-
-   public void a(gem $$0) {
-      this.h = $$0.h;
-      this.i = $$0.i;
-      this.j = $$0.j;
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.b = $$0.b;
-      this.c = $$0.c;
-      this.d = $$0.d;
-   }
-
-   public boolean a(String $$0) {
-      return this.n.containsKey($$0);
-   }
-
-   public gem b(String $$0) {
-      gem $$1 = this.n.get($$0);
-      if ($$1 == null) {
-         throw new NoSuchElementException("Can't find part " + $$0);
+   private static gel a(String $$0, String $$1) {
+      gel $$2 = b($$0, $$1);
+      if (!ed.add($$2)) {
+         throw new IllegalStateException("Duplicate registration for " + $$2);
       } else {
-         return $$1;
+         return $$2;
       }
    }
 
-   public void a(float $$0, float $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   private static gel b(String $$0, String $$1) {
+      return new gel(alz.b($$0), $$1);
    }
 
-   public void b(float $$0, float $$1, float $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   private static gel b(String $$0) {
+      return a($$0, "inner_armor");
    }
 
-   public void a(fgq $$0, fgu $$1, int $$2, int $$3) {
-      this.a($$0, $$1, $$2, $$3, -1);
+   private static gel c(String $$0) {
+      return a($$0, "outer_armor");
    }
 
-   public void a(fgq $$0, fgu $$1, int $$2, int $$3, int $$4) {
-      if (this.k) {
-         if (!this.m.isEmpty() || !this.n.isEmpty()) {
-            $$0.a();
-            this.a($$0);
-            if (!this.l) {
-               this.a($$0.c(), $$1, $$2, $$3, $$4);
-            }
-
-            for (gem $$5 : this.n.values()) {
-               $$5.a($$0, $$1, $$2, $$3, $$4);
-            }
-
-            $$0.b();
-         }
-      }
+   public static gel a(dzg $$0) {
+      return b("sign/standing/" + $$0.b(), "main");
    }
 
-   public void a(Quaternionf $$0) {
-      Matrix3f $$1 = new Matrix3f().rotationZYX(this.g, this.f, this.e);
-      Matrix3f $$2 = $$1.rotate($$0);
-      Vector3f $$3 = $$2.getEulerAnglesZYX(new Vector3f());
-      this.b($$3.x, $$3.y, $$3.z);
+   public static gel b(dzg $$0) {
+      return b("sign/wall/" + $$0.b(), "main");
    }
 
-   public void a(fgq $$0, gem.d $$1) {
-      this.a($$0, $$1, "");
+   public static gel c(dzg $$0) {
+      return b("hanging_sign/" + $$0.b(), "main");
    }
 
-   private void a(fgq $$0, gem.d $$1, String $$2) {
-      if (!this.m.isEmpty() || !this.n.isEmpty()) {
-         $$0.a();
-         this.a($$0);
-         fgq.a $$3 = $$0.c();
-
-         for (int $$4 = 0; $$4 < this.m.size(); $$4++) {
-            $$1.visit($$3, $$2, $$4, this.m.get($$4));
-         }
-
-         String $$5 = $$2 + "/";
-         this.n.forEach(($$3x, $$4) -> $$4.a($$0, $$1, $$5 + $$3x));
-         $$0.b();
-      }
-   }
-
-   public void a(fgq $$0) {
-      $$0.a(this.b / 16.0F, this.c / 16.0F, this.d / 16.0F);
-      if (this.e != 0.0F || this.f != 0.0F || this.g != 0.0F) {
-         $$0.a(new Quaternionf().rotationZYX(this.g, this.f, this.e));
-      }
-
-      if (this.h != 1.0F || this.i != 1.0F || this.j != 1.0F) {
-         $$0.b(this.h, this.i, this.j);
-      }
-   }
-
-   private void a(fgq.a $$0, fgu $$1, int $$2, int $$3, int $$4) {
-      for (gem.a $$5 : this.m) {
-         $$5.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   public gem.a a(bam $$0) {
-      return this.m.get($$0.a(this.m.size()));
-   }
-
-   public boolean d() {
-      return this.m.isEmpty();
-   }
-
-   public void a(Vector3f $$0) {
-      this.b = this.b + $$0.x();
-      this.c = this.c + $$0.y();
-      this.d = this.d + $$0.z();
-   }
-
-   public void b(Vector3f $$0) {
-      this.e = this.e + $$0.x();
-      this.f = this.f + $$0.y();
-      this.g = this.g + $$0.z();
-   }
-
-   public void c(Vector3f $$0) {
-      this.h = this.h + $$0.x();
-      this.i = this.i + $$0.y();
-      this.j = this.j + $$0.z();
-   }
-
-   public Stream<gem> e() {
-      return Stream.concat(Stream.of(this), this.n.values().stream().flatMap(gem::e));
-   }
-
-   public static class a {
-      public final gem.b[] a;
-      public final float b;
-      public final float c;
-      public final float d;
-      public final float e;
-      public final float f;
-      public final float g;
-
-      public a(
-         int $$0,
-         int $$1,
-         float $$2,
-         float $$3,
-         float $$4,
-         float $$5,
-         float $$6,
-         float $$7,
-         float $$8,
-         float $$9,
-         float $$10,
-         boolean $$11,
-         float $$12,
-         float $$13,
-         Set<jm> $$14
-      ) {
-         this.b = $$2;
-         this.c = $$3;
-         this.d = $$4;
-         this.e = $$2 + $$5;
-         this.f = $$3 + $$6;
-         this.g = $$4 + $$7;
-         this.a = new gem.b[$$14.size()];
-         float $$15 = $$2 + $$5;
-         float $$16 = $$3 + $$6;
-         float $$17 = $$4 + $$7;
-         $$2 -= $$8;
-         $$3 -= $$9;
-         $$4 -= $$10;
-         $$15 += $$8;
-         $$16 += $$9;
-         $$17 += $$10;
-         if ($$11) {
-            float $$18 = $$15;
-            $$15 = $$2;
-            $$2 = $$18;
-         }
-
-         gem.c $$19 = new gem.c($$2, $$3, $$4, 0.0F, 0.0F);
-         gem.c $$20 = new gem.c($$15, $$3, $$4, 0.0F, 8.0F);
-         gem.c $$21 = new gem.c($$15, $$16, $$4, 8.0F, 8.0F);
-         gem.c $$22 = new gem.c($$2, $$16, $$4, 8.0F, 0.0F);
-         gem.c $$23 = new gem.c($$2, $$3, $$17, 0.0F, 0.0F);
-         gem.c $$24 = new gem.c($$15, $$3, $$17, 0.0F, 8.0F);
-         gem.c $$25 = new gem.c($$15, $$16, $$17, 8.0F, 8.0F);
-         gem.c $$26 = new gem.c($$2, $$16, $$17, 8.0F, 0.0F);
-         float $$27 = (float)$$0;
-         float $$28 = (float)$$0 + $$7;
-         float $$29 = (float)$$0 + $$7 + $$5;
-         float $$30 = (float)$$0 + $$7 + $$5 + $$5;
-         float $$31 = (float)$$0 + $$7 + $$5 + $$7;
-         float $$32 = (float)$$0 + $$7 + $$5 + $$7 + $$5;
-         float $$33 = (float)$$1;
-         float $$34 = (float)$$1 + $$7;
-         float $$35 = (float)$$1 + $$7 + $$6;
-         int $$36 = 0;
-         if ($$14.contains(jm.a)) {
-            this.a[$$36++] = new gem.b(new gem.c[]{$$24, $$23, $$19, $$20}, $$28, $$33, $$29, $$34, $$12, $$13, $$11, jm.a);
-         }
-
-         if ($$14.contains(jm.b)) {
-            this.a[$$36++] = new gem.b(new gem.c[]{$$21, $$22, $$26, $$25}, $$29, $$34, $$30, $$33, $$12, $$13, $$11, jm.b);
-         }
-
-         if ($$14.contains(jm.e)) {
-            this.a[$$36++] = new gem.b(new gem.c[]{$$19, $$23, $$26, $$22}, $$27, $$34, $$28, $$35, $$12, $$13, $$11, jm.e);
-         }
-
-         if ($$14.contains(jm.c)) {
-            this.a[$$36++] = new gem.b(new gem.c[]{$$20, $$19, $$22, $$21}, $$28, $$34, $$29, $$35, $$12, $$13, $$11, jm.c);
-         }
-
-         if ($$14.contains(jm.f)) {
-            this.a[$$36++] = new gem.b(new gem.c[]{$$24, $$20, $$21, $$25}, $$29, $$34, $$31, $$35, $$12, $$13, $$11, jm.f);
-         }
-
-         if ($$14.contains(jm.d)) {
-            this.a[$$36] = new gem.b(new gem.c[]{$$23, $$24, $$25, $$26}, $$31, $$34, $$32, $$35, $$12, $$13, $$11, jm.d);
-         }
-      }
-
-      public void a(fgq.a $$0, fgu $$1, int $$2, int $$3, int $$4) {
-         Matrix4f $$5 = $$0.a();
-         Vector3f $$6 = new Vector3f();
-
-         for (gem.b $$7 : this.a) {
-            Vector3f $$8 = $$0.a($$7.b, $$6);
-            float $$9 = $$8.x();
-            float $$10 = $$8.y();
-            float $$11 = $$8.z();
-
-            for (gem.c $$12 : $$7.a) {
-               float $$13 = $$12.a.x() / 16.0F;
-               float $$14 = $$12.a.y() / 16.0F;
-               float $$15 = $$12.a.z() / 16.0F;
-               Vector3f $$16 = $$5.transformPosition($$13, $$14, $$15, $$6);
-               $$1.a($$16.x(), $$16.y(), $$16.z(), $$4, $$12.b, $$12.c, $$3, $$2, $$9, $$10, $$11);
-            }
-         }
-      }
-   }
-
-   public static record b(gem.c[] a, Vector3f b) {
-
-      public b(gem.c[] $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, boolean $$7, jm $$8) {
-         this($$0, $$8.m());
-         float $$9 = 0.0F / $$5;
-         float $$10 = 0.0F / $$6;
-         $$0[0] = $$0[0].a($$3 / $$5 - $$9, $$2 / $$6 + $$10);
-         $$0[1] = $$0[1].a($$1 / $$5 + $$9, $$2 / $$6 + $$10);
-         $$0[2] = $$0[2].a($$1 / $$5 + $$9, $$4 / $$6 - $$10);
-         $$0[3] = $$0[3].a($$3 / $$5 - $$9, $$4 / $$6 - $$10);
-         if ($$7) {
-            int $$11 = $$0.length;
-
-            for (int $$12 = 0; $$12 < $$11 / 2; $$12++) {
-               gem.c $$13 = $$0[$$12];
-               $$0[$$12] = $$0[$$11 - 1 - $$12];
-               $$0[$$11 - 1 - $$12] = $$13;
-            }
-         }
-
-         if ($$7) {
-            this.b.mul(-1.0F, 1.0F, 1.0F);
-         }
-      }
-   }
-
-   public static record c(Vector3f a, float b, float c) {
-
-      public c(float $$0, float $$1, float $$2, float $$3, float $$4) {
-         this(new Vector3f($$0, $$1, $$2), $$3, $$4);
-      }
-
-      public gem.c a(float $$0, float $$1) {
-         return new gem.c(this.a, $$0, $$1);
-      }
-   }
-
-   @FunctionalInterface
-   public interface d {
-      void visit(fgq.a var1, String var2, int var3, gem.a var4);
+   public static Stream<gel> a() {
+      return ed.stream();
    }
 }

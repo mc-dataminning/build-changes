@@ -6,7 +6,7 @@ import java.util.function.UnaryOperator;
 public record dgc(jq<cxk> d, int e, ks f, cxo g) {
    public static final Codec<dgc> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               cxo.a.fieldOf("id").forGetter(dgc::a),
+               cxk.e.fieldOf("id").forGetter(dgc::a),
                azn.m.fieldOf("count").orElse(1).forGetter(dgc::b),
                ks.a.optionalFieldOf("components", ks.c).forGetter(dgc::c)
             )

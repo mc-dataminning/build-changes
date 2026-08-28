@@ -39,17 +39,22 @@ public class crc extends cqd {
       int $$1 = this.al.a(f);
       if ($$1 > 0 && (this.h || this.A()) && $$0 != null) {
          if (!this.F()) {
-            if (this.dV() instanceof ash $$2 && this.c == cqd.a.b) {
+            if (this.dW() instanceof ash $$2 && this.c == cqd.a.b) {
                this.a($$2, this.t(), 0.1F);
             }
 
             this.at();
          } else {
+            if (!($$0 instanceof cpw) && this.du().f($$0.bF()) < (double)$$0.dr() + 1.0) {
+               this.at();
+               return;
+            }
+
             this.b(true);
-            fbx $$3 = $$0.bF().d(this.dt());
-            this.o(this.dA(), this.dC() + $$3.e * 0.015 * (double)$$1, this.dG());
+            fbx $$3 = $$0.bF().d(this.du());
+            this.o(this.dB(), this.dD() + $$3.e * 0.015 * (double)$$1, this.dH());
             double $$4 = 0.05 * (double)$$1;
-            this.h(this.dy().c(0.95).e($$3.d().c($$4)));
+            this.h(this.dz().c(0.95).e($$3.d().c($$4)));
             if (this.e == 0) {
                this.a(axf.Ab, 10.0F, 1.0F);
             }
@@ -81,9 +86,9 @@ public class crc extends cqd {
       bvj $$1 = $$0.a();
       float $$2 = 8.0F;
       bvj $$3 = this.p();
-      btz $$4 = this.dW().a(this, (bvj)($$3 == null ? this : $$3));
-      if (this.dV() instanceof ash $$5) {
-         $$2 = dea.a($$5, this.dZ(), $$1, $$4, $$2);
+      btz $$4 = this.dX().a(this, (bvj)($$3 == null ? this : $$3));
+      if (this.dW() instanceof ash $$5) {
+         $$2 = dea.a($$5, this.ea(), $$1, $$4, $$2);
       }
 
       this.h = true;
@@ -92,8 +97,8 @@ public class crc extends cqd {
             return;
          }
 
-         if (this.dV() instanceof ash $$6) {
-            dea.a($$6, $$1, $$4, this.dZ(), $$1x -> this.c($$6));
+         if (this.dW() instanceof ash $$6) {
+            dea.a($$6, $$1, $$4, this.ea(), $$1x -> this.c($$6));
          }
 
          if ($$1 instanceof bwf $$7) {
@@ -103,7 +108,7 @@ public class crc extends cqd {
       }
 
       this.a(cqq.b, $$1, this.p(), false);
-      this.h(this.dy().d(0.02, 0.2, 0.02));
+      this.h(this.dz().d(0.02, 0.2, 0.02));
       this.a(axf.zZ, 1.0F, 1.0F);
    }
 
@@ -114,13 +119,13 @@ public class crc extends cqd {
    }
 
    @Override
-   public cxo dZ() {
+   public cxo ea() {
       return this.v();
    }
 
    @Override
    protected boolean a(cpw $$0) {
-      return super.a($$0) || this.A() && this.e($$0) && $$0.gg().f(this.t());
+      return super.a($$0) || this.A() && this.e($$0) && $$0.gi().f(this.t());
    }
 
    @Override
@@ -154,7 +159,7 @@ public class crc extends cqd {
    }
 
    private byte b(cxo $$0) {
-      return this.dV() instanceof ash $$1 ? (byte)bae.a(dea.c($$1, $$0, this), 0, 127) : 0;
+      return this.dW() instanceof ash $$1 ? (byte)bae.a(dea.c($$1, $$0, this), 0, 127) : 0;
    }
 
    @Override

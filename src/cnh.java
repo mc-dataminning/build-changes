@@ -36,13 +36,13 @@ public class cnh extends cmw {
    @Override
    public void h() {
       super.h();
-      if (!this.dV().C) {
+      if (!this.dW().C) {
          this.x(this.P);
       }
    }
 
    public static bxm.a p() {
-      return cmw.gr().a(bxn.s, 16.0).a(bxn.v, 0.3F);
+      return cmw.gt().a(bxn.s, 16.0).a(bxn.v, 0.3F);
    }
 
    @Override
@@ -103,9 +103,9 @@ public class cnh extends cmw {
       $$3 = super.a($$0, $$1, $$2, $$3);
       bam $$4 = $$0.H_();
       if ($$4.a(100) == 0) {
-         cne $$5 = bvq.bf.a(this.dV(), bvp.g);
+         cne $$5 = bvq.bf.a(this.dW(), bvp.g);
          if ($$5 != null) {
-            $$5.b(this.dA(), this.dC(), this.dG(), this.dL(), 0.0F);
+            $$5.b(this.dB(), this.dD(), this.dH(), this.dM(), 0.0F);
             $$5.a($$0, $$1, $$2, null);
             $$5.n(this);
          }
@@ -130,7 +130,7 @@ public class cnh extends cmw {
 
    @Override
    public fbx l(bvj $$0) {
-      return $$0.dq() <= this.dq() ? new fbx(0.0, 0.3125 * (double)this.ej(), 0.0) : super.l($$0);
+      return $$0.dr() <= this.dr() ? new fbx(0.0, 0.3125 * (double)this.ek(), 0.0) : super.l($$0);
    }
 
    static class a extends cdn {
@@ -146,7 +146,7 @@ public class cnh extends cmw {
       @Override
       public boolean c() {
          float $$0 = this.a.by();
-         if ($$0 >= 0.5F && this.a.dY().a(100) == 0) {
+         if ($$0 >= 0.5F && this.a.dZ().a(100) == 0) {
             this.a.h(null);
             return false;
          } else {

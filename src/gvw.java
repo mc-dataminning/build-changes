@@ -1,52 +1,28 @@
-import java.util.List;
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class gvw<S extends gyr, M extends gbk<S>> extends gwd<S, M> {
-   private final alz a;
-   private final gvw.a<S> b;
-   private final gvw.b<S, M> c;
-   private final Function<alz, glt> d;
+public class gvw<S extends gys, M extends gbl<S> & gah> extends gwe<S, M> {
+   private final gsn a;
 
-   public gvw(gtl<S, M> $$0, alz $$1, gvw.a<S> $$2, gvw.b<S, M> $$3, Function<alz, glt> $$4) {
+   public gvw(gtm<S, M> $$0, gsn $$1) {
       super($$0);
       this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-      this.d = $$4;
    }
 
-   public void a(fgq $$0, glj $$1, int $$2, S $$3, float $$4, float $$5) {
-      if (!$$3.u) {
-         if (this.a($$3)) {
-            fgu $$6 = $$1.getBuffer(this.d.apply(this.a));
-            float $$7 = this.b.apply($$3, $$3.p);
-            int $$8 = ayp.a(bae.d($$7 * 255.0F), 255, 255, 255);
-            this.d().a($$0, $$6, $$2, gsp.a($$3, 0.0F), $$8);
-            this.a();
-         }
+   public void a(fgr $$0, glk $$1, int $$2, S $$3, float $$4, float $$5) {
+      this.a($$3, $$3.aq, $$3.ar, cxm.c, bvz.b, $$0, $$1, $$2);
+      this.a($$3, $$3.as, $$3.at, cxm.b, bvz.a, $$0, $$1, $$2);
+   }
+
+   protected void a(S $$0, @Nullable hdm $$1, cxo $$2, cxm $$3, bvz $$4, fgr $$5, glk $$6, int $$7) {
+      if ($$1 != null && !$$2.f()) {
+         $$5.a();
+         this.d().a($$4, $$5);
+         $$5.a(a.b.rotationDegrees(-90.0F));
+         $$5.a(a.d.rotationDegrees(180.0F));
+         boolean $$8 = $$4 == bvz.a;
+         $$5.a((float)($$8 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
+         this.a.a($$2, $$3, $$8, $$5, $$6, $$7, hbb.d, $$1);
+         $$5.b();
       }
-   }
-
-   private boolean a(S $$0) {
-      List<gem> $$1 = this.c.getPartsToDraw(this.d(), $$0);
-      if ($$1.isEmpty()) {
-         return false;
-      } else {
-         this.d().f().forEach($$0x -> $$0x.l = true);
-         $$1.forEach($$0x -> $$0x.l = false);
-         return true;
-      }
-   }
-
-   private void a() {
-      this.d().f().forEach($$0 -> $$0.l = false);
-   }
-
-   public interface a<S extends gyr> {
-      float apply(S var1, float var2);
-   }
-
-   public interface b<S extends gyr, M extends gbk<S>> {
-      List<gem> getPartsToDraw(M var1, S var2);
    }
 }

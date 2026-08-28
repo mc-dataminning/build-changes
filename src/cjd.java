@@ -47,12 +47,12 @@ public class cjd {
    }
 
    public static void a(cjc $$0) {
-      $$0.eb().a(ImmutableList.of(crn.b));
+      $$0.ec().a(ImmutableList.of(crn.b));
    }
 
    public static void a(bwf $$0, jh $$1) {
-      bxh<?> $$2 = $$0.eb();
-      jp $$3 = jp.a($$0.dV().ah(), $$1);
+      bxh<?> $$2 = $$0.ec();
+      jp $$3 = jp.a($$0.dW().ah(), $$1);
       Optional<jp> $$4 = $$2.c(cfj.aN);
       if ($$4.isEmpty()) {
          $$2.a(cfj.aN, $$3);
@@ -63,7 +63,7 @@ public class cjd {
    }
 
    private static Optional<bzm> b(bwf $$0) {
-      bxh<?> $$1 = $$0.eb();
+      bxh<?> $$1 = $$0.ec();
       Optional<jp> $$2 = $$1.c(cfj.aN);
       if ($$2.isPresent()) {
          jp $$3 = $$2.get();
@@ -78,13 +78,13 @@ public class cjd {
    }
 
    private static boolean c(bwf $$0) {
-      bxh<?> $$1 = $$0.eb();
+      bxh<?> $$1 = $$0.ec();
       return $$1.a(cfj.L);
    }
 
    private static boolean a(bwf $$0, bxh<?> $$1, jp $$2) {
       Optional<Integer> $$3 = $$1.c(cfj.aO);
-      dhh $$4 = $$0.dV();
+      dhh $$4 = $$0.dW();
       return $$4.ah() == $$2.a() && $$4.a_($$2.b()).a(dkn.bf) && $$3.isPresent();
    }
 
@@ -93,9 +93,9 @@ public class cjd {
    }
 
    public static Optional<asi> a(bwf $$0) {
-      dhh $$1 = $$0.dV();
+      dhh $$1 = $$0.dW();
       if (!$$1.B_() && $$1 instanceof ash $$2) {
-         Optional<UUID> $$3 = $$0.eb().c(cfj.aM);
+         Optional<UUID> $$3 = $$0.ec().c(cfj.aM);
          if ($$3.isPresent()) {
             if ($$2.a($$3.get()) instanceof asi $$5 && ($$5.h.d() || $$5.h.e()) && $$5.a($$0, 64.0)) {
                return Optional.of($$5);

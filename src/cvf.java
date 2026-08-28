@@ -7,7 +7,7 @@ public class cvf implements ctt {
    private final ctb e;
 
    public cvf(ctb $$0, int $$1, int $$2) {
-      this($$0, $$1, $$2, jz.a($$1 * $$2, cxo.k));
+      this($$0, $$1, $$2, jz.a($$1 * $$2, cxo.j));
    }
 
    private cvf(ctb $$0, int $$1, int $$2, jz<cxo> $$3) {
@@ -35,7 +35,7 @@ public class cvf implements ctt {
 
    @Override
    public cxo a(int $$0) {
-      return $$0 >= this.b() ? cxo.k : this.b.get($$0);
+      return $$0 >= this.b() ? cxo.j : this.b.get($$0);
    }
 
    @Override

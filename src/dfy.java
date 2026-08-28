@@ -5,7 +5,7 @@ public record dfy(alz e, jq<cxk> f, xv g, boolean h) {
    public static final Codec<dfy> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                alz.a.fieldOf("asset_id").forGetter(dfy::a),
-               alw.a(mb.K).fieldOf("template_item").forGetter(dfy::b),
+               cxk.e.fieldOf("template_item").forGetter(dfy::b),
                xx.a.fieldOf("description").forGetter(dfy::c),
                Codec.BOOL.fieldOf("decal").orElse(false).forGetter(dfy::d)
             )

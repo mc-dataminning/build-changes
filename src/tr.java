@@ -82,7 +82,7 @@ public class tr {
          }
 
          fbx $$5 = this.a($$1);
-         $$3.b($$5.d, $$5.e, $$5.f, $$3.dL(), $$3.dN());
+         $$3.b($$5.d, $$5.e, $$5.f, $$3.dM(), $$3.dO());
          $$2.b($$3);
          return $$3;
       }
@@ -109,8 +109,8 @@ public class tr {
       } else {
          fbx $$6 = this.a(new fbx((double)$$1, (double)$$2, (double)$$3));
          $$5.sort(($$1x, $$2x) -> {
-            double $$3x = $$1x.dt().f($$6);
-            double $$4x = $$2x.dt().f($$6);
+            double $$3x = $$1x.du().f($$6);
+            double $$4x = $$2x.du().f($$6);
             return Double.compare($$3x, $$4x);
          });
          return $$5.get(0);
@@ -139,7 +139,7 @@ public class tr {
 
    public <E extends bwh> E b(bvq<E> $$0, jh $$1) {
       E $$2 = (E)this.a($$0, $$1);
-      $$2.gf();
+      $$2.gh();
       return $$2;
    }
 
@@ -149,7 +149,7 @@ public class tr {
 
    public <E extends bwh> E b(bvq<E> $$0, fbx $$1) {
       E $$2 = (E)this.a($$0, $$1);
-      $$2.gf();
+      $$2.gh();
       return $$2;
    }
 
@@ -159,7 +159,7 @@ public class tr {
 
    public void a(bwh $$0, float $$1, float $$2, float $$3) {
       fbx $$4 = this.a(new fbx((double)$$1, (double)$$2, (double)$$3));
-      $$0.b($$4.d, $$4.e, $$4.f, $$0.dL(), $$0.dN());
+      $$0.b($$4.d, $$4.e, $$4.f, $$0.dM(), $$0.dO());
    }
 
    public tw a(bwh $$0, jh $$1, float $$2) {
@@ -662,7 +662,7 @@ public class tr {
    }
 
    public void a(bvj $$0, fbs $$1, String $$2) {
-      if (!$$1.d(this.b($$0.dt()))) {
+      if (!$$1.d(this.b($$0.du()))) {
          this.a($$2);
       }
    }
@@ -774,7 +774,7 @@ public class tr {
    }
 
    public void a(String $$0, bvj $$1) {
-      throw new tl($$0, $$1.dv(), this.k($$1.dv()), this.i());
+      throw new tl($$0, $$1.dw(), this.k($$1.dw()), this.i());
    }
 
    public void a(String $$0) {

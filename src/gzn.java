@@ -1,11 +1,4 @@
-import javax.annotation.Nullable;
-
-public class gzn extends gyr {
-   public fbx a = fbx.c;
-   @Nullable
-   public cwl b;
-   public float c;
-   public float d;
-   public float e;
-   public jm f = jm.a;
+public class gzn extends gxu {
+   public float a;
+   public float b;
 }

@@ -37,7 +37,7 @@ public class cba extends bxy<cpi> {
       for (int $$5 = -1; $$5 <= 1; $$5++) {
          for (int $$6 = -1; $$6 <= 1; $$6++) {
             for (int $$7 = -1; $$7 <= 1; $$7++) {
-               $$2.a($$1.dv(), $$5, $$6, $$7);
+               $$2.a($$1.dw(), $$5, $$6, $$7);
                if (this.a($$2, $$0)) {
                   if ($$0.A.a(++$$4) == 0) {
                      $$3 = Optional.of($$2.j());
@@ -66,20 +66,20 @@ public class cba extends bxy<cpi> {
    private void a(cpi $$0) {
       this.g.ifPresent($$1 -> {
          byb $$2 = new byb($$1);
-         $$0.eb().a(cfj.n, $$2);
-         $$0.eb().a(cfj.m, new cfm($$2, 0.5F, 1));
+         $$0.ec().a(cfj.n, $$2);
+         $$0.ec().a(cfj.m, new cfm($$2, 0.5F, 1));
       });
    }
 
    protected void c(ash $$0, cpi $$1, long $$2) {
-      $$1.a(bvr.a, cxo.k);
+      $$1.a(bvr.a, cxo.j);
       this.e = (long)$$1.af;
    }
 
    protected void d(ash $$0, cpi $$1, long $$2) {
       jh $$3 = this.g.get();
-      if ($$2 >= this.d && $$3.a($$1.dt(), 1.0)) {
-         cxo $$4 = cxo.k;
+      if ($$2 >= this.d && $$3.a($$1.du(), 1.0)) {
+         cxo $$4 = cxo.j;
          btp $$5 = $$1.t();
          int $$6 = $$5.b();
 

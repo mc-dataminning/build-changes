@@ -21,7 +21,7 @@ public class eeb implements dgt {
 
                for (asi $$5 : $$0.y()) {
                   if (!$$5.aa_()) {
-                     jh $$6 = $$5.dv();
+                     jh $$6 = $$5.dw();
                      if (!$$0.G_().g() || $$6.v() >= $$0.O() && $$0.h($$6)) {
                         btg $$7 = $$0.d_($$6);
                         if ($$7.a($$3.i() * 3.0F)) {

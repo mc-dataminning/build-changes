@@ -65,12 +65,12 @@ public class dct implements dbs {
          $$0 -> $$0.group(
                   Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.c),
                   dbq.e.fieldOf("category").orElse(dbq.d).forGetter($$0x -> $$0x.d),
-                  cxo.d.fieldOf("result").forGetter($$0x -> $$0x.e),
+                  cxo.c.fieldOf("result").forGetter($$0x -> $$0x.e),
                   dbz.d.listOf(1, 9).fieldOf("ingredients").forGetter($$0x -> $$0x.f)
                )
                .apply($$0, dct::new)
       );
-      public static final zt<xg, dct> w = zt.a(zr.o, $$0 -> $$0.c, dbq.g, $$0 -> $$0.d, cxo.i, $$0 -> $$0.e, dbz.a.a(zr.a()), $$0 -> $$0.f, dct::new);
+      public static final zt<xg, dct> w = zt.a(zr.o, $$0 -> $$0.c, dbq.g, $$0 -> $$0.d, cxo.h, $$0 -> $$0.e, dbz.a.a(zr.a()), $$0 -> $$0.f, dct::new);
 
       @Override
       public MapCodec<dct> a() {

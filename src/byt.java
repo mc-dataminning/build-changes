@@ -19,16 +19,16 @@ public class byt extends bxy<cpi> {
    protected boolean a(ash $$0, cpi $$1) {
       if (!$$0.N().b(dhd.c)) {
          return false;
-      } else if ($$1.gw().b() != cpl.g) {
+      } else if ($$1.gy().b() != cpl.g) {
          return false;
       } else {
-         jh.a $$2 = $$1.dv().k();
+         jh.a $$2 = $$1.dw().k();
          this.h.clear();
 
          for (int $$3 = -1; $$3 <= 1; $$3++) {
             for (int $$4 = -1; $$4 <= 1; $$4++) {
                for (int $$5 = -1; $$5 <= 1; $$5++) {
-                  $$2.b($$1.dA() + (double)$$3, $$1.dC() + (double)$$4, $$1.dG() + (double)$$5);
+                  $$2.b($$1.dB() + (double)$$3, $$1.dD() + (double)$$4, $$1.dH() + (double)$$5);
                   if (this.a($$2, $$0)) {
                      this.h.add(new jh($$2));
                   }
@@ -55,20 +55,20 @@ public class byt extends bxy<cpi> {
 
    protected void a(ash $$0, cpi $$1, long $$2) {
       if ($$2 > this.f && this.e != null) {
-         $$1.eb().a(cfj.n, new byb(this.e));
-         $$1.eb().a(cfj.m, new cfm(new byb(this.e), 0.5F, 1));
+         $$1.ec().a(cfj.n, new byb(this.e));
+         $$1.ec().a(cfj.m, new cfm(new byb(this.e), 0.5F, 1));
       }
    }
 
    protected void b(ash $$0, cpi $$1, long $$2) {
-      $$1.eb().b(cfj.n);
-      $$1.eb().b(cfj.m);
+      $$1.ec().b(cfj.n);
+      $$1.ec().b(cfj.m);
       this.g = 0;
       this.f = $$2 + 40L;
    }
 
    protected void c(ash $$0, cpi $$1, long $$2) {
-      if (this.e == null || this.e.a($$1.dt(), 1.0)) {
+      if (this.e == null || this.e.a($$1.du(), 1.0)) {
          if (this.e != null && $$2 > this.f) {
             dxu $$3 = $$0.a_(this.e);
             dkl $$4 = $$3.b();
@@ -77,7 +77,7 @@ public class byt extends bxy<cpi> {
                $$0.a(this.e, true, $$1);
             }
 
-            if ($$3.l() && $$5 instanceof dnj && $$1.gF()) {
+            if ($$3.l() && $$5 instanceof dnj && $$1.gH()) {
                btp $$6 = $$1.t();
 
                for (int $$7 = 0; $$7 < $$6.b(); $$7++) {
@@ -94,7 +94,7 @@ public class byt extends bxy<cpi> {
                      $$0.a(null, (double)this.e.u(), (double)this.e.v(), (double)this.e.w(), axf.gG, axg.e, 1.0F, 1.0F);
                      $$8.h(1);
                      if ($$8.f()) {
-                        $$6.a($$7, cxo.k);
+                        $$6.a($$7, cxo.j);
                      }
                      break;
                   }
@@ -106,8 +106,8 @@ public class byt extends bxy<cpi> {
                this.e = this.a($$0);
                if (this.e != null) {
                   this.f = $$2 + 20L;
-                  $$1.eb().a(cfj.m, new cfm(new byb(this.e), 0.5F, 1));
-                  $$1.eb().a(cfj.n, new byb(this.e));
+                  $$1.ec().a(cfj.m, new cfm(new byb(this.e), 0.5F, 1));
+                  $$1.ec().a(cfj.n, new byb(this.e));
                }
             }
          }

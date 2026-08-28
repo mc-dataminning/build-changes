@@ -1,6 +1,4 @@
-public class haf extends gyr {
-   public float[] a = new float[2];
-   public float[] b = new float[2];
-   public float c;
-   public boolean d;
+public class haf extends gys {
+   public int a;
+   public boolean b;
 }

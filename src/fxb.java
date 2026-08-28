@@ -1,22 +1,67 @@
-import java.util.ArrayList;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class fxb extends fxa {
-   private static final xv a = xv.c("options.skinCustomisation.title");
+public abstract class fxb extends ftx {
+   protected final ftx b;
+   protected final fmj c;
+   @Nullable
+   protected fpc d;
+   public final frt s = new frt(this);
 
-   public fxb(ftw $$0, fmi $$1) {
-      super($$0, $$1, a);
+   public fxb(ftx $$0, fmj $$1, xv $$2) {
+      super($$2);
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   protected void l() {
-      List<fob> $$0 = new ArrayList<>();
+   protected void aT_() {
+      this.G();
+      this.F();
+      this.E();
+      this.s.a($$1 -> {
+         foc var10000 = this.c($$1);
+      });
+      this.c();
+   }
 
-      for (cpx $$1 : cpx.values()) {
-         $$0.add(fok.b(this.c.a($$1)).a($$1.d(), ($$1x, $$2) -> this.c.a($$1, $$2)));
+   protected void G() {
+      this.s.a(this.l, this.p);
+   }
+
+   protected void F() {
+      this.d = this.s.c(new fpc(this.m, this.n, this));
+      this.l();
+      if (this.d.b(this.c.av()) instanceof fol $$0) {
+         this.q = $$0;
+         this.q.j = this.m.aZ().a();
+      }
+   }
+
+   protected abstract void l();
+
+   protected void E() {
+      this.s.b(foe.a(xu.d, $$0 -> this.aP_()).a(200).a());
+   }
+
+   @Override
+   protected void c() {
+      this.s.a();
+      if (this.d != null) {
+         this.d.a(this.n, this.s);
+      }
+   }
+
+   @Override
+   public void aJ_() {
+      this.m.n.az();
+   }
+
+   @Override
+   public void aP_() {
+      if (this.d != null) {
+         this.d.b();
       }
 
-      $$0.add(this.c.x().a(this.c));
-      this.d.a($$0);
+      this.m.a(this.b);
    }
 }

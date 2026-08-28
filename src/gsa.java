@@ -1,17 +1,22 @@
-public class gsa extends gtx<bvx> {
-   private static final alz a = alz.b("textures/entity/squid/glow_squid.png");
+public class gsa extends gsv<cmr, haj, gby<haj>> {
+   private static final alz a = alz.b("textures/entity/zombie/zombie.png");
 
-   public gsa(gro.a $$0, gdn $$1, gdn $$2) {
-      super($$0, $$1, $$2);
+   public gsa(grp.a $$0, float $$1) {
+      super($$0, new gbr($$0.a(gem.aP)), 0.5F * $$1);
+      this.a(new gvw<>(this, $$0.b()));
+      this.a(new gvt<>(this, new gbr($$0.a(gem.aQ)), new gbr($$0.a(gem.aR)), $$0.h()));
    }
 
-   @Override
-   public alz a(gzr $$0) {
+   public alz a(haj $$0) {
       return a;
    }
 
-   protected int a(bvx $$0, jh $$1) {
-      int $$2 = (int)bae.b(0.0F, 15.0F, 1.0F - (float)$$0.x() / 10.0F);
-      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
+   public haj b() {
+      return new haj();
+   }
+
+   public void a(cmr $$0, haj $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      gsg.a($$0, $$1, $$2);
    }
 }

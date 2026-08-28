@@ -1,80 +1,65 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+public class fte extends ftx {
+   private static final xv a = xv.c("gui.toMenu");
+   private static final xv b = xv.c("gui.toTitle");
+   private static final xv c = xv.c("gui.report_to_server");
+   private static final xv d = xv.c("gui.open_report_dir");
+   private final ftx s;
+   private final wr u;
+   private final xv v;
+   private final frx w = frx.d();
 
-public class fte extends ftw {
-   private static final xv a = xv.c("addServer.enterName");
-   private static final xv b = xv.c("addServer.enterIp");
-   private fod c;
-   private final BooleanConsumer d;
-   private final gfx s;
-   private fom u;
-   private fom v;
-   private final ftw w;
+   public fte(ftx $$0, xv $$1, xv $$2) {
+      this($$0, $$1, new wr($$2));
+   }
 
-   public fte(ftw $$0, BooleanConsumer $$1, gfx $$2) {
-      super(xv.c("addServer.title"));
-      this.w = $$0;
-      this.d = $$1;
-      this.s = $$2;
+   public fte(ftx $$0, xv $$1, xv $$2, xv $$3) {
+      this($$0, $$1, new wr($$2), $$3);
+   }
+
+   public fte(ftx $$0, xv $$1, wr $$2) {
+      this($$0, $$1, $$2, a);
+   }
+
+   public fte(ftx $$0, xv $$1, wr $$2, xv $$3) {
+      super($$1);
+      this.s = $$0;
+      this.u = $$2;
+      this.v = $$3;
    }
 
    @Override
    protected void aT_() {
-      this.v = new fom(this.p, this.n / 2 - 100, 66, 200, 20, xv.c("addServer.enterName"));
-      this.v.a(this.s.a);
-      this.v.b($$0 -> this.E());
-      this.d(this.v);
-      this.u = new fom(this.p, this.n / 2 - 100, 106, 200, 20, xv.c("addServer.enterIp"));
-      this.u.f(128);
-      this.u.a(this.s.b);
-      this.u.b($$0 -> this.E());
-      this.d(this.u);
-      this.c(
-         fok.a(gfx.a::a)
-            .a(gfx.a.values())
-            .a(this.s.b())
-            .a(this.n / 2 - 100, this.o / 4 + 72, 200, 20, xv.c("addServer.resourcePack"), ($$0, $$1) -> this.s.a($$1))
-      );
-      this.c = this.c(fod.a(xv.c("addServer.add"), $$0 -> this.l()).a(this.n / 2 - 100, this.o / 4 + 96 + 18, 200, 20).a());
-      this.c(fod.a(xu.e, $$0 -> this.d.accept(false)).a(this.n / 2 - 100, this.o / 4 + 120 + 18, 200, 20).a());
-      this.E();
+      this.w.c().b().a(10);
+      this.w.a(new fpm(this.l, this.p));
+      this.w.a(new foz(this.u.a(), this.p).d(this.n - 50).b(true));
+      this.w.c().a(2);
+      this.u.c().ifPresent($$0 -> this.w.a(foe.a(c, fsu.b(this, $$0, false)).a(200).a()));
+      this.u.b().ifPresent($$0 -> this.w.a(foe.a(d, $$1x -> ae.m().a($$0.getParent())).a(200).a()));
+      foe $$0;
+      if (this.m.F()) {
+         $$0 = foe.a(this.v, $$0x -> this.m.a(this.s)).a(200).a();
+      } else {
+         $$0 = foe.a(b, $$0x -> this.m.a(new ftz())).a(200).a();
+      }
+
+      this.w.a($$0);
+      this.w.a();
+      this.w.a(this::c);
+      this.c();
    }
 
    @Override
-   protected void aG_() {
-      this.b(this.v);
+   protected void c() {
+      frr.a(this.w, this.H());
    }
 
    @Override
-   public void a(fme $$0, int $$1, int $$2) {
-      String $$3 = this.u.a();
-      String $$4 = this.v.a();
-      this.b($$0, $$1, $$2);
-      this.u.a($$3);
-      this.v.a($$4);
-   }
-
-   private void l() {
-      this.s.a = this.v.a();
-      this.s.b = this.u.a();
-      this.d.accept(true);
+   public xv i() {
+      return xu.a(this.l, this.u.a());
    }
 
    @Override
-   public void aP_() {
-      this.m.a(this.w);
-   }
-
-   private void E() {
-      this.c.j = gha.b(this.u.a()) && !this.v.a().isEmpty();
-   }
-
-   @Override
-   public void a(fnq $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 17, 16777215);
-      $$0.b(this.p, a, this.n / 2 - 100 + 1, 53, 10526880);
-      $$0.b(this.p, b, this.n / 2 - 100 + 1, 94, 10526880);
-      this.v.a($$0, $$1, $$2, $$3);
-      this.u.a($$0, $$1, $$2, $$3);
+   public boolean aH_() {
+      return false;
    }
 }

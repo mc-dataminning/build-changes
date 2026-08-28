@@ -23,7 +23,7 @@ public class cjg {
    private static final bzj<cjf> k = cbl.a(
       (Function<cbl.b<cjf>, ? extends App<cbl.c<cjf>, cbo<cjf>>>)($$0 -> $$0.group($$0.c(cfj.G)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
                if ($$1.t()) {
-                  $$1.gp();
+                  $$1.gr();
                   return true;
                } else {
                   return false;
@@ -78,7 +78,7 @@ public class cjg {
    }
 
    public static void a(cjf $$0) {
-      $$0.eb().a(ImmutableList.of(crn.g, crn.b));
+      $$0.ec().a(ImmutableList.of(crn.g, crn.b));
    }
 
    public static Predicate<cxo> b() {
@@ -102,14 +102,14 @@ public class cjg {
             this.f--;
          }
 
-         if ($$1.gm()) {
+         if ($$1.go()) {
             $$1.a(cjf.a.c);
             if ($$1.aJ()) {
                $$1.a(axf.aj);
             }
          } else {
-            cjf.a $$3 = $$1.gn();
-            long $$4 = $$1.eb().e(cfj.G);
+            cjf.a $$3 = $$1.gp();
+            long $$4 = $$1.ec().e(cfj.G);
             boolean $$5 = $$4 > 75L;
             if ($$5 != this.g) {
                this.f = this.a($$1);
@@ -133,7 +133,7 @@ public class cjg {
       }
 
       private int a(cjf $$0) {
-         return cjf.a.c.b() + $$0.dY().a(100, 400);
+         return cjf.a.c.b() + $$0.dZ().a(100, 400);
       }
 
       protected boolean a(ash $$0, cjf $$1) {
@@ -141,16 +141,16 @@ public class cjg {
       }
 
       protected boolean b(ash $$0, cjf $$1, long $$2) {
-         return $$1.gn().a();
+         return $$1.gp().a();
       }
 
       protected void c(ash $$0, cjf $$1, long $$2) {
-         $$1.go();
+         $$1.gq();
       }
 
       protected void d(ash $$0, cjf $$1, long $$2) {
-         if (!$$1.gy()) {
-            $$1.gp();
+         if (!$$1.gA()) {
+            $$1.gr();
          }
       }
    }
@@ -161,7 +161,7 @@ public class cjg {
       }
 
       protected void a(ash $$0, cjf $$1, long $$2) {
-         $$1.gp();
+         $$1.gr();
          super.b($$0, $$1, $$2);
       }
    }

@@ -15,8 +15,8 @@ public class cdk extends cdd {
 
    @Override
    public boolean b() {
-      if (!this.a.P_() && !this.a.gY()) {
-         List<bvj> $$0 = this.a.dV().a(this.a, this.a.cR().c(9.0, 4.0, 9.0), $$0x -> {
+      if (!this.a.P_() && !this.a.ha()) {
+         List<bvj> $$0 = this.a.dW().a(this.a, this.a.cR().c(9.0, 4.0, 9.0), $$0x -> {
             bvq<?> $$1x = $$0x.aq();
             return $$1x == bvq.ay || $$1x == bvq.by;
          });
@@ -25,7 +25,7 @@ public class cdk extends cdd {
 
          for (bvj $$3 : $$0) {
             ckd $$4 = (ckd)$$3;
-            if ($$4.gY() && !$$4.gC()) {
+            if ($$4.ha() && !$$4.gE()) {
                double $$5 = this.a.g($$4);
                if (!($$5 > $$2)) {
                   $$2 = $$5;
@@ -37,7 +37,7 @@ public class cdk extends cdd {
          if ($$1 == null) {
             for (bvj $$6 : $$0) {
                ckd $$7 = (ckd)$$6;
-               if ($$7.P_() && !$$7.gC()) {
+               if ($$7.P_() && !$$7.gE()) {
                   double $$8 = this.a.g($$7);
                   if (!($$8 > $$2)) {
                      $$2 = $$8;
@@ -64,8 +64,8 @@ public class cdk extends cdd {
 
    @Override
    public boolean c() {
-      if (this.a.gY() && this.a.gZ().bL() && this.a(this.a, 0)) {
-         double $$0 = this.a.g(this.a.gZ());
+      if (this.a.ha() && this.a.hb().bL() && this.a(this.a, 0)) {
+         double $$0 = this.a.g(this.a.hb());
          if ($$0 > 676.0) {
             if (this.b <= 3.0) {
                this.b *= 1.2;
@@ -90,19 +90,19 @@ public class cdk extends cdd {
 
    @Override
    public void e() {
-      this.a.gB();
+      this.a.gD();
       this.b = 2.1;
    }
 
    @Override
    public void a() {
-      if (this.a.gY()) {
+      if (this.a.ha()) {
          if (!(this.a.A() instanceof clu)) {
-            ckd $$0 = this.a.gZ();
+            ckd $$0 = this.a.hb();
             double $$1 = (double)this.a.f($$0);
             float $$2 = 2.0F;
-            fbx $$3 = new fbx($$0.dA() - this.a.dA(), $$0.dC() - this.a.dC(), $$0.dG() - this.a.dG()).d().c(Math.max($$1 - 2.0, 0.0));
-            this.a.L().a(this.a.dA() + $$3.d, this.a.dC() + $$3.e, this.a.dG() + $$3.f, this.b);
+            fbx $$3 = new fbx($$0.dB() - this.a.dB(), $$0.dD() - this.a.dD(), $$0.dH() - this.a.dH()).d().c(Math.max($$1 - 2.0, 0.0));
+            this.a.L().a(this.a.dB() + $$3.d, this.a.dD() + $$3.e, this.a.dH() + $$3.f, this.b);
          }
       }
    }
@@ -110,8 +110,8 @@ public class cdk extends cdd {
    private boolean a(ckd $$0, int $$1) {
       if ($$1 > 8) {
          return false;
-      } else if ($$0.gY()) {
-         return $$0.gZ().P_() ? true : this.a($$0.gZ(), ++$$1);
+      } else if ($$0.ha()) {
+         return $$0.hb().P_() ? true : this.a($$0.hb(), ++$$1);
       } else {
          return false;
       }

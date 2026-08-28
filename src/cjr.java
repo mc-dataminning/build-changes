@@ -16,7 +16,7 @@ public class cjr {
    private static final float i = 1.25F;
 
    protected static void a(cjq $$0, bam $$1) {
-      $$0.eb().a(cfj.S, e.a($$1));
+      $$0.ec().a(cfj.S, e.a($$1));
    }
 
    protected static bxh<?> a(bxh<cjq> $$0) {
@@ -43,7 +43,7 @@ public class cjr {
             Pair.of(0, bzy.a(bvq.bS, 6.0F, bst.a(30, 60))),
             Pair.of(0, new bxs(bvq.ac)),
             Pair.of(1, new byl($$0x -> 1.25F)),
-            Pair.of(2, cak.a(($$0x, $$1) -> b($$1), ($$0x, $$1) -> $$1.eb().c(cfj.B))),
+            Pair.of(2, cak.a(($$0x, $$1) -> b($$1), ($$0x, $$1) -> $$1.ec().c(cfj.B))),
             Pair.of(3, cav.a(6, 1.0F)),
             Pair.of(
                4,
@@ -63,7 +63,7 @@ public class cjr {
          ImmutableList.of(
             Pair.of(0, bzy.a(bvq.bS, 6.0F, bst.a(30, 60))),
             Pair.of(1, new byl($$0x -> 1.25F)),
-            Pair.of(2, cak.a(($$0x, $$1) -> b($$1), ($$0x, $$1) -> $$1.eb().c(cfj.B))),
+            Pair.of(2, cak.a(($$0x, $$1) -> b($$1), ($$0x, $$1) -> $$1.ec().c(cfj.B))),
             Pair.of(3, cav.a(8, 1.5F)),
             Pair.of(
                5,
@@ -85,7 +85,7 @@ public class cjr {
          crn.u,
          ImmutableList.of(
             Pair.of(0, bzy.a(bvq.bS, 6.0F, bst.a(30, 60))),
-            Pair.of(1, cak.a(($$0x, $$1) -> b($$1), ($$0x, $$1) -> $$1.eb().c(cfj.B))),
+            Pair.of(1, cak.a(($$0x, $$1) -> b($$1), ($$0x, $$1) -> $$1.ec().c(cfj.B))),
             Pair.of(2, caw.a(8, 1.0F)),
             Pair.of(3, cay.a(dkn.tI)),
             Pair.of(4, new bzv(ImmutableList.of(Pair.of(bzq.a(1.0F), 2), Pair.of(caf.a(1.0F, 3), 1), Pair.of(new byf(), 2), Pair.of(cbl.a(bvj::aJ), 1))))
@@ -107,13 +107,13 @@ public class cjr {
    }
 
    private static <E extends bwh> boolean a(E $$0, jh $$1) {
-      dhh $$2 = $$0.dV();
+      dhh $$2 = $$0.dW();
       jh $$3 = $$1.e();
       if ($$2.b_($$1).c() && $$2.b_($$3).c() && $$2.b_($$1.d()).c()) {
          dxu $$4 = $$2.a_($$1);
          dxu $$5 = $$2.a_($$3);
          if (!$$4.a(axu.bT) && !$$5.a(axu.bT)) {
-            eup $$6 = new eup($$0.dV(), $$0);
+            eup $$6 = new eup($$0.dW(), $$0);
             eun $$7 = eus.a($$6, $$1.k());
             eun $$8 = eus.a($$6, $$3.k());
             return $$7 != eun.e && (!$$4.l() || $$8 != eun.e) ? bzb.a($$0, $$1) : true;
@@ -130,7 +130,7 @@ public class cjr {
    }
 
    public static void a(cjq $$0) {
-      $$0.eb().a(ImmutableList.of(crn.s, crn.u, crn.q, crn.t, crn.b));
+      $$0.ec().a(ImmutableList.of(crn.s, crn.u, crn.q, crn.t, crn.b));
    }
 
    public static Predicate<cxo> a() {

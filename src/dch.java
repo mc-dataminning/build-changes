@@ -52,7 +52,7 @@ public class dch {
    }
 
    private void a(dbr $$0, @Nullable dci<dbs> $$1) {
-      jz<cxo> $$2 = jz.a($$0.a(), cxo.k);
+      jz<cxo> $$2 = jz.a($$0.a(), cxo.j);
 
       for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
          $$2.set($$3, $$0.a($$3).c(1));

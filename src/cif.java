@@ -1,3 +1,3 @@
 public interface cif {
-   boolean gB();
+   boolean gD();
 }

@@ -1,3 +1,3 @@
-public class gxp extends gxu {
+public class gxp extends gys {
    public boolean a;
 }

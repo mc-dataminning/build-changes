@@ -8,18 +8,18 @@ public class cwb extends cxk {
    public static final int b = 3;
    public static final int c = 12;
    public static final int d = 11;
-   private static final int l = ayp.a(1.0F, 1.0F, 0.33F, 0.33F);
-   private static final int m = ayp.a(1.0F, 0.44F, 0.53F, 1.0F);
-   private static final int n = 10;
-   private static final int o = 2;
-   private static final int p = 200;
-   private final alz q;
+   private static final int m = ayp.a(1.0F, 1.0F, 0.33F, 0.33F);
+   private static final int n = ayp.a(1.0F, 0.44F, 0.53F, 1.0F);
+   private static final int o = 10;
+   private static final int p = 2;
+   private static final int q = 200;
    private final alz r;
+   private final alz s;
 
    public cwb(alz $$0, alz $$1, cxk.a $$2) {
       super($$2);
-      this.q = $$0;
-      this.r = $$1;
+      this.r = $$0;
+      this.s = $$1;
    }
 
    public static float c(cxo $$0) {
@@ -28,11 +28,11 @@ public class cwb extends cxk {
    }
 
    public alz b() {
-      return this.q;
+      return this.r;
    }
 
    public alz c() {
-      return this.r;
+      return this.s;
    }
 
    @Override
@@ -146,7 +146,7 @@ public class cwb extends cxk {
    @Override
    public int f(cxo $$0) {
       czs $$1 = $$0.a(ku.P, czs.a);
-      return $$1.f().compareTo(Fraction.ONE) >= 0 ? l : m;
+      return $$1.f().compareTo(Fraction.ONE) >= 0 ? m : n;
    }
 
    public static void a(cxo $$0, int $$1) {
@@ -263,11 +263,11 @@ public class cwb extends cxk {
    }
 
    private static void a(bvj $$0) {
-      $$0.a(axf.ds, 0.8F, 0.8F + $$0.dV().H_().i() * 0.4F);
+      $$0.a(axf.ds, 0.8F, 0.8F + $$0.dW().H_().i() * 0.4F);
    }
 
    private static void b(bvj $$0) {
-      $$0.a(axf.dq, 0.8F, 0.8F + $$0.dV().H_().i() * 0.4F);
+      $$0.a(axf.dq, 0.8F, 0.8F + $$0.dW().H_().i() * 0.4F);
    }
 
    private static void c(bvj $$0) {
@@ -275,13 +275,13 @@ public class cwb extends cxk {
    }
 
    private static void a(dhh $$0, bvj $$1) {
-      $$0.a(null, $$1.dv(), axf.dp, axg.h, 0.8F, 0.8F + $$1.dV().H_().i() * 0.4F);
+      $$0.a(null, $$1.dw(), axf.dp, axg.h, 0.8F, 0.8F + $$1.dW().H_().i() * 0.4F);
    }
 
    private void a(cpw $$0) {
       ctb $$1 = $$0.cd;
       if ($$1 != null) {
-         $$1.a($$0.gg());
+         $$1.a($$0.gi());
       }
    }
 }

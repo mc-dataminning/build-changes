@@ -1,182 +1,19 @@
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
-public class fkd extends hhu {
-   static final Logger c = LogUtils.getLogger();
-   private static final xv C = xv.c("mco.selectServer.create");
-   private static final xv D = xv.c("mco.selectServer.create.subtitle");
-   private static final xv E = xv.c("mco.configure.world.switch.slot");
-   private static final xv F = xv.c("mco.configure.world.switch.slot.subtitle");
-   private static final xv G = xv.c("mco.reset.world.generate");
-   private static final xv H = xv.c("mco.reset.world.title");
-   private static final xv I = xv.c("mco.reset.world.warning");
-   public static final xv a = xv.c("mco.create.world.reset.title");
-   private static final xv J = xv.c("mco.reset.world.resetting.screen.title");
-   private static final xv K = xv.c("mco.reset.world.template");
-   private static final xv L = xv.c("mco.reset.world.adventure");
-   private static final xv M = xv.c("mco.reset.world.experience");
-   private static final xv N = xv.c("mco.reset.world.inspiration");
-   private final ftw O;
-   private final fih P;
-   private final xv Q;
-   private final int R;
-   private final xv S;
-   private static final alz T = alz.b("textures/gui/realms/upload.png");
-   private static final alz U = alz.b("textures/gui/realms/adventure.png");
-   private static final alz V = alz.b("textures/gui/realms/survival_spawn.png");
-   private static final alz W = alz.b("textures/gui/realms/new_world.png");
-   private static final alz X = alz.b("textures/gui/realms/experience.png");
-   private static final alz Y = alz.b("textures/gui/realms/inspiration.png");
-   fiy Z;
-   fiy aa;
-   fiy ab;
-   fiy ac;
-   public final int b;
-   @Nullable
-   private final flf ad;
-   private final Runnable ae;
-   private final frs af = new frs(this);
+public class fkd {
+   private static final int a = 8226750;
+   private static final xv b = xv.c("mco.info").b(8226750);
+   private static final xv c = xv.c("mco.warning").b(-65536);
 
-   private fkd(ftw $$0, fih $$1, int $$2, xv $$3, xv $$4, int $$5, xv $$6, Runnable $$7) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, null, $$7);
+   public static fph a(ftx $$0, xv $$1, Consumer<fph> $$2) {
+      return new fph.a($$0, b).a($$1).a(xu.j, $$2).a(xu.e, fph::aP_).a();
    }
 
-   public fkd(ftw $$0, fih $$1, int $$2, xv $$3, xv $$4, int $$5, xv $$6, @Nullable flf $$7, Runnable $$8) {
-      super($$3);
-      this.O = $$0;
-      this.P = $$1;
-      this.b = $$2;
-      this.Q = $$4;
-      this.R = $$5;
-      this.S = $$6;
-      this.ad = $$7;
-      this.ae = $$8;
+   public static fph b(ftx $$0, xv $$1, Consumer<fph> $$2) {
+      return new fph.a($$0, c).a($$1).a(xu.j, $$2).a(xu.e, fph::aP_).a();
    }
 
-   public static fkd a(ftw $$0, fih $$1, flf $$2, Runnable $$3) {
-      return new fkd($$0, $$1, $$1.p, C, D, -6250336, a, $$2, $$3);
-   }
-
-   public static fkd a(ftw $$0, int $$1, fih $$2, Runnable $$3) {
-      return new fkd($$0, $$2, $$1, E, F, -6250336, a, $$3);
-   }
-
-   public static fkd a(ftw $$0, fih $$1, Runnable $$2) {
-      return new fkd($$0, $$1, $$1.p, H, I, -65536, J, $$2);
-   }
-
-   @Override
-   public void aT_() {
-      frw $$0 = this.af.a(frw.d());
-      $$0.c().a(9 / 3);
-      $$0.a(new fpl(this.l, this.p), frv::b);
-      $$0.a(new fpl(this.Q, this.p).b(this.R), frv::b);
-      (new Thread("Realms-reset-world-fetcher") {
-         @Override
-         public void run() {
-            fhg $$0 = fhg.a();
-
-            try {
-               fiy $$1 = $$0.a(1, 10, fih.d.a);
-               fiy $$2 = $$0.a(1, 10, fih.d.c);
-               fiy $$3 = $$0.a(1, 10, fih.d.d);
-               fiy $$4 = $$0.a(1, 10, fih.d.e);
-               fkd.this.m.execute(() -> {
-                  fkd.this.Z = $$1;
-                  fkd.this.aa = $$2;
-                  fkd.this.ab = $$3;
-                  fkd.this.ac = $$4;
-               });
-            } catch (fjc var6) {
-               fkd.c.error("Couldn't fetch templates in reset world", var6);
-            }
-         }
-      }).start();
-      frr $$1 = this.af.c(new frr());
-      frr.b $$2 = $$1.d(3);
-      $$2.c().f(16);
-      $$2.a(new fkd.a(this.m.h, G, W, $$0x -> fhm.a(this.m, this.O, this, this.b, this.P, this.ad)));
-      $$2.a(new fkd.a(this.m.h, fke.a, T, $$0x -> this.m.a(new fke(this.ad, this.P.a, this.b, this))));
-      $$2.a(new fkd.a(this.m.h, K, V, $$0x -> this.m.a(new fkf(K, this::a, fih.d.a, this.Z))));
-      $$2.a(frx.b(16), 3);
-      $$2.a(new fkd.a(this.m.h, L, U, $$0x -> this.m.a(new fkf(L, this::a, fih.d.c, this.aa))));
-      $$2.a(new fkd.a(this.m.h, M, X, $$0x -> this.m.a(new fkf(M, this::a, fih.d.d, this.ab))));
-      $$2.a(new fkd.a(this.m.h, N, Y, $$0x -> this.m.a(new fkf(N, this::a, fih.d.e, this.ac))));
-      this.af.b(fod.a(xu.k, $$0x -> this.aP_()).a());
-      this.af.a($$1x -> {
-         fob var10000 = this.c($$1x);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.af.a();
-   }
-
-   @Override
-   public xv i() {
-      return xu.a(this.m(), this.Q);
-   }
-
-   @Override
-   public void aP_() {
-      this.m.a(this.O);
-   }
-
-   private void a(@Nullable fix $$0) {
-      this.m.a(this);
-      if ($$0 != null) {
-         this.a(new flg($$0, this.P.a, this.S, this.ae));
-      }
-
-      fhb.g();
-   }
-
-   private void a(fld $$0) {
-      List<fld> $$1 = new ArrayList<>();
-      if (this.ad != null) {
-         $$1.add(this.ad);
-      }
-
-      if (this.b != this.P.p) {
-         $$1.add(new flk(this.P.a, this.b, () -> {
-         }));
-      }
-
-      $$1.add($$0);
-      this.m.a(new fjw(this.O, $$1.toArray(new fld[0])));
-   }
-
-   class a extends fod {
-      private static final alz b = alz.b("widget/slot_frame");
-      private static final int c = 60;
-      private static final int d = 2;
-      private static final int u = 56;
-      private final alz v;
-
-      a(final fno $$0, final xv $$1, final alz $$2, final fod.c $$3) {
-         super(0, 0, 60, 60 + 9, $$1, $$3, q);
-         this.v = $$2;
-      }
-
-      @Override
-      public void b(fnq $$0, int $$1, int $$2, float $$3) {
-         boolean $$4 = this.B();
-         int $$5 = -1;
-         if ($$4) {
-            $$5 = ayp.a(1.0F, 0.56F, 0.56F, 0.56F);
-         }
-
-         int $$6 = this.D();
-         int $$7 = this.E();
-         $$0.a(glt::B, this.v, $$6 + 2, $$7 + 2, 0.0F, 0.0F, 56, 56, 56, 56, 56, 56, $$5);
-         $$0.a(glt::B, b, $$6, $$7, 60, 60, $$5);
-         int $$8 = $$4 ? -6250336 : -1;
-         $$0.a(fkd.this.p, this.z(), $$6 + 28, $$7 - 14, $$8);
-      }
+   public static fph c(ftx $$0, xv $$1, Consumer<fph> $$2) {
+      return new fph.a($$0, c).a($$1).a(xu.h, $$2).a();
    }
 }

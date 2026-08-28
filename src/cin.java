@@ -24,7 +24,7 @@ public class cin extends chw implements bwc, bwv {
    }
 
    public static bxm.a p() {
-      return chw.gr().a(bxn.s, 10.0).a(bxn.v, 0.25);
+      return chw.gt().a(bxn.s, 10.0).a(bxn.v, 0.25);
    }
 
    @Nullable
@@ -35,7 +35,7 @@ public class cin extends chw implements bwc, bwv {
 
    @Override
    public void a(alc<?> $$0) {
-      if (ca.equals($$0) && this.dV().C) {
+      if (ca.equals($$0) && this.dW().C) {
          this.cb.a();
       }
 
@@ -84,8 +84,8 @@ public class cin extends chw implements bwc, bwv {
    @Override
    public bti b(cpw $$0, bth $$1) {
       boolean $$2 = this.j($$0.b($$1));
-      if (!$$2 && this.j() && !this.ca() && !$$0.fW()) {
-         if (!this.dV().C) {
+      if (!$$2 && this.j() && !this.ca() && !$$0.fY()) {
+         if (!this.dW().C) {
             $$0.n(this);
          }
 
@@ -123,7 +123,7 @@ public class cin extends chw implements bwc, bwv {
    public void a(cxo $$0, @Nullable axg $$1) {
       this.cb.a(true);
       if ($$1 != null) {
-         this.dV().a(null, this, axf.tX, $$1, 0.5F, 1.0F);
+         this.dW().a(null, this, axf.tX, $$1, 0.5F, 1.0F);
       }
    }
 
@@ -134,9 +134,9 @@ public class cin extends chw implements bwc, bwv {
          return super.b($$0);
       } else {
          int[][] $$2 = csb.a($$1);
-         jh $$3 = this.dv();
+         jh $$3 = this.dw();
          jh.a $$4 = new jh.a();
-         UnmodifiableIterator var6 = $$0.fM().iterator();
+         UnmodifiableIterator var6 = $$0.fO().iterator();
 
          while (var6.hasNext()) {
             bwr $$5 = (bwr)var6.next();
@@ -144,10 +144,10 @@ public class cin extends chw implements bwc, bwv {
 
             for (int[] $$7 : $$2) {
                $$4.d($$3.u() + $$7[0], $$3.v(), $$3.w() + $$7[1]);
-               double $$8 = this.dV().j($$4);
+               double $$8 = this.dW().j($$4);
                if (csb.a($$8)) {
                   fbx $$9 = fbx.a($$4, $$8);
-                  if (csb.a(this.dV(), $$0, $$6.c($$9))) {
+                  if (csb.a(this.dW(), $$0, $$6.c($$9))) {
                      $$0.b($$5);
                      return $$9;
                   }
@@ -163,7 +163,7 @@ public class cin extends chw implements bwc, bwv {
    public void a(ash $$0, bwe $$1) {
       if ($$0.al() != btf.a) {
          cnr $$2 = this.a(bvq.bR, bve.a(this, false, true), $$0x -> {
-            if (this.eX().f()) {
+            if (this.eZ().f()) {
                $$0x.a(bvr.a, new cxo(cxs.ps));
             }
 
@@ -180,8 +180,8 @@ public class cin extends chw implements bwc, bwv {
    @Override
    protected void a(cpw $$0, fbx $$1) {
       super.a($$0, $$1);
-      this.b($$0.dL(), $$0.dN() * 0.5F);
-      this.N = this.aX = this.aZ = this.dL();
+      this.b($$0.dM(), $$0.dO() * 0.5F);
+      this.N = this.aX = this.aZ = this.dM();
       this.cb.b();
    }
 
@@ -197,7 +197,7 @@ public class cin extends chw implements bwc, bwv {
 
    @Override
    public boolean a() {
-      return this.cb.a(this.dY());
+      return this.cb.a(this.dZ());
    }
 
    @Nullable
@@ -212,6 +212,6 @@ public class cin extends chw implements bwc, bwv {
 
    @Override
    public fbx cT() {
-      return new fbx(0.0, (double)(0.6F * this.cS()), (double)(this.dq() * 0.4F));
+      return new fbx(0.0, (double)(0.6F * this.cS()), (double)(this.dr() * 0.4F));
    }
 }

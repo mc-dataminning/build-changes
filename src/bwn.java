@@ -6,7 +6,7 @@ public abstract class bwn extends bwh {
    }
 
    public float c(jh $$0) {
-      return this.a($$0, this.dV());
+      return this.a($$0, this.dW());
    }
 
    public float a(jh $$0, dhk $$1) {
@@ -15,14 +15,14 @@ public abstract class bwn extends bwh {
 
    @Override
    public boolean a(dhi $$0, bvp $$1) {
-      return this.a(this.dv(), $$0) >= 0.0F;
+      return this.a(this.dw(), $$0) >= 0.0F;
    }
 
-   public boolean gi() {
+   public boolean gk() {
       return !this.L().m();
    }
 
-   public boolean gj() {
+   public boolean gl() {
       if (this.bF.a(cfj.Z)) {
          return this.bF.c(cfj.Z).isPresent();
       } else {
@@ -36,29 +36,29 @@ public abstract class bwn extends bwh {
       }
    }
 
-   protected boolean gk() {
+   protected boolean gm() {
       return true;
    }
 
    @Override
    public void a(bvj $$0) {
       super.a($$0);
-      if (this.gk() && !this.gj()) {
+      if (this.gm() && !this.gl()) {
          this.bT.b(cdd.a.a);
          float $$1 = 2.0F;
          float $$2 = this.f($$0);
-         fbx $$3 = new fbx($$0.dA() - this.dA(), $$0.dC() - this.dC(), $$0.dG() - this.dG()).d().c((double)Math.max($$2 - 2.0F, 0.0F));
-         this.L().a(this.dA() + $$3.d, this.dC() + $$3.e, this.dG() + $$3.f, this.gl());
+         fbx $$3 = new fbx($$0.dB() - this.dB(), $$0.dD() - this.dD(), $$0.dH() - this.dH()).d().c((double)Math.max($$2 - 2.0F, 0.0F));
+         this.L().a(this.dB() + $$3.d, this.dD() + $$3.e, this.dH() + $$3.f, this.gn());
       }
    }
 
    @Override
    public boolean a(bvj $$0, float $$1) {
-      this.a($$0.dv(), 5);
+      this.a($$0.dw(), 5);
       return true;
    }
 
-   protected double gl() {
+   protected double gn() {
       return 1.0;
    }
 }

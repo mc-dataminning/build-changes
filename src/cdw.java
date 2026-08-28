@@ -33,7 +33,7 @@ public class cdw extends cdd {
          return false;
       } else {
          if (this.c.bY()) {
-            jh $$0 = this.a(this.c.dV(), this.c, 5);
+            jh $$0 = this.a(this.c.dW(), this.c, 5);
             if ($$0 != null) {
                this.e = (double)$$0.u();
                this.f = (double)$$0.v();
@@ -47,7 +47,7 @@ public class cdw extends cdd {
    }
 
    protected boolean h() {
-      return this.c.eF() != null && this.c.eF().a(this.a.apply(this.c));
+      return this.c.eG() != null && this.c.eG().a(this.a.apply(this.c));
    }
 
    protected boolean i() {
@@ -84,7 +84,7 @@ public class cdw extends cdd {
 
    @Nullable
    protected jh a(dgm $$0, bvj $$1, int $$2) {
-      jh $$3 = $$1.dv();
-      return !$$0.a_($$3).g($$0, $$3).c() ? null : jh.a($$1.dv(), $$2, 1, $$1x -> $$0.b_($$1x).a(aya.a)).orElse(null);
+      jh $$3 = $$1.dw();
+      return !$$0.a_($$3).g($$0, $$3).c() ? null : jh.a($$1.dw(), $$2, 1, $$1x -> $$0.b_($$1x).a(aya.a)).orElse(null);
    }
 }

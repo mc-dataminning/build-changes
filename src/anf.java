@@ -125,8 +125,8 @@ public class anf {
          return null;
       } else {
          asi $$1 = $$0.get(0);
-         String $$2 = (String)ann.a.inverse().get($$1.dV().ah());
-         return $$2 == null ? null : new anf.a($$2, $$1.dA(), $$1.dC(), $$1.dG(), $$1.dL(), $$1.dN());
+         String $$2 = (String)ann.a.inverse().get($$1.dW().ah());
+         return $$2 == null ? null : new anf.a($$2, $$1.dB(), $$1.dD(), $$1.dH(), $$1.dM(), $$1.dO());
       }
    }
 

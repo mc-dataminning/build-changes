@@ -63,7 +63,7 @@ public class cue extends ctc {
 
    @Override
    public void a(btb $$0) {
-      if (this.M.dV() instanceof ash $$1) {
+      if (this.M.dW() instanceof ash $$1) {
          ctu.a(this, $$1, this.M, this.m, this.n, null);
       }
    }
@@ -72,7 +72,7 @@ public class cue extends ctc {
    public void a(cpw $$0) {
       super.a($$0);
       this.n.a();
-      if (!$$0.dV().C) {
+      if (!$$0.dW().C) {
          this.a($$0, this.m);
       }
    }
@@ -84,7 +84,7 @@ public class cue extends ctc {
 
    @Override
    public cxo b(cpw $$0, int $$1) {
-      cxo $$2 = cxo.k;
+      cxo $$2 = cxo.j;
       cuy $$3 = this.k.get($$1);
       if ($$3.h()) {
          cxo $$4 = $$3.g();
@@ -92,47 +92,47 @@ public class cue extends ctc {
          bvr $$5 = $$0.f($$2);
          if ($$1 == 0) {
             if (!this.a($$4, 9, 45, true)) {
-               return cxo.k;
+               return cxo.j;
             }
 
             $$3.b($$4, $$2);
          } else if ($$1 >= 1 && $$1 < 5) {
             if (!this.a($$4, 9, 45, false)) {
-               return cxo.k;
+               return cxo.j;
             }
          } else if ($$1 >= 5 && $$1 < 9) {
             if (!this.a($$4, 9, 45, false)) {
-               return cxo.k;
+               return cxo.j;
             }
          } else if ($$5.a() == bvr.a.b && !this.k.get(8 - $$5.b()).h()) {
             int $$6 = 8 - $$5.b();
             if (!this.a($$4, $$6, $$6 + 1, false)) {
-               return cxo.k;
+               return cxo.j;
             }
          } else if ($$5 == bvr.b && !this.k.get(45).h()) {
             if (!this.a($$4, 45, 46, false)) {
-               return cxo.k;
+               return cxo.j;
             }
          } else if ($$1 >= 9 && $$1 < 36) {
             if (!this.a($$4, 36, 45, false)) {
-               return cxo.k;
+               return cxo.j;
             }
          } else if ($$1 >= 36 && $$1 < 45) {
             if (!this.a($$4, 9, 36, false)) {
-               return cxo.k;
+               return cxo.j;
             }
          } else if (!this.a($$4, 9, 45, false)) {
-            return cxo.k;
+            return cxo.j;
          }
 
          if ($$4.f()) {
-            $$3.a(cxo.k, $$2);
+            $$3.a(cxo.j, $$2);
          } else {
             $$3.c();
          }
 
          if ($$4.L() == $$2.L()) {
-            return cxo.k;
+            return cxo.j;
          }
 
          $$3.a($$0, $$4);

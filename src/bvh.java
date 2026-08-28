@@ -98,12 +98,12 @@ public abstract class bvh extends bvj {
 
    @Override
    public void h() {
-      bvj $$0 = this.dk();
-      if ($$0 != null && $$0.dQ()) {
+      bvj $$0 = this.dl();
+      if ($$0 != null && $$0.dR()) {
          this.ae();
       }
 
-      if (this.dV().C) {
+      if (this.dW().C) {
          if (this.aQ) {
             this.aQ = false;
             int $$1 = this.t();
@@ -258,27 +258,27 @@ public abstract class bvh extends bvj {
 
    @Override
    public double R_() {
-      return this.aT != null ? this.aT.b : this.dA();
+      return this.aT != null ? this.aT.b : this.dB();
    }
 
    @Override
    public double S_() {
-      return this.aT != null ? this.aT.c : this.dC();
+      return this.aT != null ? this.aT.c : this.dD();
    }
 
    @Override
    public double g_() {
-      return this.aT != null ? this.aT.d : this.dG();
+      return this.aT != null ? this.aT.d : this.dH();
    }
 
    @Override
    public float r_() {
-      return this.aT != null ? (float)this.aT.f : this.dN();
+      return this.aT != null ? (float)this.aT.f : this.dO();
    }
 
    @Override
    public float h_() {
-      return this.aT != null ? (float)this.aT.e : this.dL();
+      return this.aT != null ? (float)this.aT.e : this.dM();
    }
 
    public fbs l() {
@@ -422,9 +422,9 @@ public abstract class bvh extends bvj {
       float $$1 = this.D();
       this.aP = $$0 == 0.0F || $$1 == 0.0F;
       float $$2 = $$0 / 2.0F;
-      double $$3 = this.dA();
-      double $$4 = this.dC();
-      double $$5 = this.dG();
+      double $$3 = this.dB();
+      double $$4 = this.dD();
+      double $$5 = this.dH();
       this.aO = new fbs($$3 - (double)$$2, $$4, $$5 - (double)$$2, $$3 + (double)$$2, $$4 + (double)$$1, $$5 + (double)$$2);
    }
 
@@ -511,7 +511,7 @@ public abstract class bvh extends bvj {
       @Override
       protected void a(ux $$0) {
          super.a($$0);
-         this.c(vm.a(this.dV().a(mb.f), $$0.p("block_state")));
+         this.c(vm.a(this.dW().a(mb.f), $$0.p("block_state")));
       }
 
       @Override
@@ -584,7 +584,7 @@ public abstract class bvh extends bvj {
       @Override
       protected void a(alg.a $$0) {
          super.a($$0);
-         $$0.a(q, cxo.k);
+         $$0.a(q, cxo.j);
          $$0.a(r, cxm.a.a());
       }
 
@@ -616,9 +616,9 @@ public abstract class bvh extends bvj {
       protected void a(ux $$0) {
          super.a($$0);
          if ($$0.e("item")) {
-            this.a(cxo.a(this.dX(), (vu)$$0.p("item")).orElse(cxo.k));
+            this.a(cxo.a(this.dY(), (vu)$$0.p("item")).orElse(cxo.j));
          } else {
-            this.a(cxo.k);
+            this.a(cxo.j);
          }
 
          if ($$0.b("item_display", 8)) {
@@ -630,7 +630,7 @@ public abstract class bvh extends bvj {
       protected void b(ux $$0) {
          super.b($$0);
          if (!this.t().f()) {
-            $$0.a("item", this.t().a(this.dX()));
+            $$0.a("item", this.t().a(this.dY()));
          }
 
          cxm.j.encodeStart(vl.a, this.u()).ifSuccess($$1 -> $$0.a("item_display", $$1));
@@ -826,8 +826,8 @@ public abstract class bvh extends bvj {
             String $$3 = $$0.l("text");
 
             try {
-               xv $$4 = xv.a.a($$3, this.dX());
-               if ($$4 != null && this.dV() instanceof ash $$5) {
+               xv $$4 = xv.a.a($$3, this.dY());
+               if ($$4 != null && this.dW() instanceof ash $$5) {
                   ew $$6 = this.d($$5).a(2);
                   xv $$7 = xy.a($$6, $$4, this, 0);
                   this.a($$7);
@@ -847,7 +847,7 @@ public abstract class bvh extends bvj {
       @Override
       protected void b(ux $$0) {
          super.b($$0);
-         $$0.a("text", xv.a.a(this.t(), this.dX()));
+         $$0.a("text", xv.a.a(this.t(), this.dY()));
          $$0.a("line_width", this.u());
          $$0.a("background", this.w());
          $$0.a("text_opacity", this.v());

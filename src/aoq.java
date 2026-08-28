@@ -16,7 +16,7 @@ public class aoq {
    }
 
    private static int b(ew $$0) {
-      return a($$0, $$0x -> xv.a("commands.list.nameAndId", $$0x.al(), xv.a($$0x.gf().getId())));
+      return a($$0, $$0x -> xv.a("commands.list.nameAndId", $$0x.al(), xv.a($$0x.gh().getId())));
    }
 
    private static int a(ew $$0, Function<asi, xv> $$1) {

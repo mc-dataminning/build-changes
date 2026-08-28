@@ -11,7 +11,7 @@ public class btv {
       float $$7 = $$6 / 25.0F;
       cxo $$8 = $$2.e();
       float $$10;
-      if ($$8 != null && $$0.dV() instanceof ash $$9) {
+      if ($$8 != null && $$0.dW() instanceof ash $$9) {
          $$10 = bae.a(dea.c($$9, $$8, $$0, $$2, $$7), 0.0F, 1.0F);
       } else {
          $$10 = $$7;

@@ -1429,9 +1429,9 @@ public class eqt {
          if ($$1.b($$5)) {
             cml $$6 = bvq.N.a($$0.a(), bvp.d);
             if ($$6 != null) {
-               $$6.c($$6.eR());
+               $$6.c($$6.eS());
                $$6.b((double)$$5.u() + 0.5, (double)$$5.v(), (double)$$5.w() + 0.5, 0.0F, 0.0F);
-               $$6.a($$0, $$0.d_($$6.dv()), bvp.d, null);
+               $$6.a($$0, $$0.d_($$6.dw()), bvp.d, null);
                $$0.a_($$6);
             }
          }

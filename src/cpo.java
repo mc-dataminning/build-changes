@@ -15,8 +15,8 @@ public class cpo extends cpd implements czu.b {
    @Override
    protected void B() {
       this.bT.a(0, new ccx(this));
-      this.bT.a(0, new ceo<>(this, czn.a(cxs.sZ, czo.g), axf.BX, $$0 -> this.dV().V() && !$$0.cp()));
-      this.bT.a(0, new ceo<>(this, new cxo(cxs.rc), axf.Cc, $$0 -> this.dV().U() && $$0.cp()));
+      this.bT.a(0, new ceo<>(this, czn.a(cxs.sZ, czo.g), axf.BX, $$0 -> this.dW().V() && !$$0.cp()));
+      this.bT.a(0, new ceo<>(this, new cxo(cxs.rc), axf.Cc, $$0 -> this.dW().U() && $$0.cp()));
       this.bT.a(1, new cem(this));
       this.bT.a(1, new cck<>(this, cnp.class, 8.0F, 0.5, 0.5));
       this.bT.a(1, new cck<>(this, cmp.class, 12.0F, 0.5, 0.5));
@@ -41,20 +41,20 @@ public class cpo extends cpd implements czu.b {
    }
 
    @Override
-   public boolean gp() {
+   public boolean gr() {
       return false;
    }
 
    @Override
    public bti b(cpw $$0, bth $$1) {
       cxo $$2 = $$0.b($$1);
-      if (!$$2.a(cxs.ux) && this.bL() && !this.gn() && !this.e_()) {
+      if (!$$2.a(cxs.ux) && this.bL() && !this.gp() && !this.e_()) {
          if ($$1 == bth.a) {
             $$0.a(axp.S);
          }
 
-         if (!this.dV().C) {
-            if (this.go().isEmpty()) {
+         if (!this.dW().C) {
+            if (this.gq().isEmpty()) {
                return bti.c;
             }
 
@@ -69,14 +69,14 @@ public class cpo extends cpd implements czu.b {
    }
 
    @Override
-   protected void gt() {
-      if (this.dV().J().b(csu.c)) {
-         this.gw();
+   protected void gv() {
+      if (this.dW().J().b(csu.c)) {
+         this.gy();
       } else {
          cpm.g[] $$0 = (cpm.g[])cpm.b.get(1);
          cpm.g[] $$1 = (cpm.g[])cpm.b.get(2);
          if ($$0 != null && $$1 != null) {
-            dgf $$2 = this.go();
+            dgf $$2 = this.gq();
             this.a($$2, $$0, 5);
             int $$3 = this.ae.a($$1.length);
             cpm.g $$4 = $$1[$$3];
@@ -88,8 +88,8 @@ public class cpo extends cpd implements czu.b {
       }
    }
 
-   private void gw() {
-      dgf $$0 = this.go();
+   private void gy() {
+      dgf $$0 = this.gq();
 
       for (Pair<cpm.g[], Integer> $$1 : cpm.d) {
          cpm.g[] $$2 = (cpm.g[])$$1.getLeft();
@@ -126,13 +126,13 @@ public class cpo extends cpd implements czu.b {
    protected void b(dge $$0) {
       if ($$0.u()) {
          int $$1 = 3 + this.ae.a(4);
-         this.dV().b(new bvv(this.dV(), this.dA(), this.dC() + 0.5, this.dG(), $$1));
+         this.dW().b(new bvv(this.dW(), this.dB(), this.dD() + 0.5, this.dH(), $$1));
       }
    }
 
    @Override
    protected axe u() {
-      return this.gn() ? axf.Cd : axf.BV;
+      return this.gp() ? axf.Cd : axf.BV;
    }
 
    @Override
@@ -156,7 +156,7 @@ public class cpo extends cpd implements czu.b {
    }
 
    @Override
-   public axe gq() {
+   public axe gs() {
       return axf.Ce;
    }
 
@@ -164,20 +164,20 @@ public class cpo extends cpd implements czu.b {
       this.cd = $$0;
    }
 
-   public int gv() {
+   public int gx() {
       return this.cd;
    }
 
    @Override
    public void d_() {
       super.d_();
-      if (!this.dV().C) {
-         this.gx();
+      if (!this.dW().C) {
+         this.gz();
       }
    }
 
-   private void gx() {
-      if (this.cd > 0 && !this.gn() && --this.cd == 0) {
+   private void gz() {
+      if (this.cd > 0 && !this.gp() && --this.cd == 0) {
          this.at();
       }
    }
@@ -187,7 +187,7 @@ public class cpo extends cpd implements czu.b {
    }
 
    @Nullable
-   jh gz() {
+   jh gB() {
       return this.cc;
    }
 
@@ -211,17 +211,17 @@ public class cpo extends cpd implements czu.b {
 
       @Override
       public boolean b() {
-         jh $$0 = this.a.gz();
+         jh $$0 = this.a.gB();
          return $$0 != null && this.a($$0, this.b);
       }
 
       @Override
       public void a() {
-         jh $$0 = this.a.gz();
+         jh $$0 = this.a.gB();
          if ($$0 != null && cpo.this.bS.m()) {
             if (this.a($$0, 10.0)) {
-               fbx $$1 = new fbx((double)$$0.u() - this.a.dA(), (double)$$0.v() - this.a.dC(), (double)$$0.w() - this.a.dG()).d();
-               fbx $$2 = $$1.c(10.0).b(this.a.dA(), this.a.dC(), this.a.dG());
+               fbx $$1 = new fbx((double)$$0.u() - this.a.dB(), (double)$$0.v() - this.a.dD(), (double)$$0.w() - this.a.dH()).d();
+               fbx $$2 = $$1.c(10.0).b(this.a.dB(), this.a.dD(), this.a.dH());
                cpo.this.bS.a($$2.d, $$2.e, $$2.f, this.c);
             } else {
                cpo.this.bS.a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), this.c);
@@ -230,7 +230,7 @@ public class cpo extends cpd implements czu.b {
       }
 
       private boolean a(jh $$0, double $$1) {
-         return !$$0.a(this.a.dt(), $$1);
+         return !$$0.a(this.a.du(), $$1);
       }
    }
 }

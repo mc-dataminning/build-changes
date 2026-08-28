@@ -30,7 +30,7 @@ public class csx {
       }
 
       boolean $$3 = $$1.N().b(dhd.k);
-      if ($$3 && this.b > 0.0F && $$0.gs() && this.a >= 20) {
+      if ($$3 && this.b > 0.0F && $$0.gu() && this.a >= 20) {
          this.d++;
          if (this.d >= 10) {
             float $$4 = Math.min(this.b, 6.0F);
@@ -38,7 +38,7 @@ public class csx {
             this.a($$4);
             this.d = 0;
          }
-      } else if ($$3 && this.a >= 18 && $$0.gs()) {
+      } else if ($$3 && this.a >= 18 && $$0.gu()) {
          this.d++;
          if (this.d >= 80) {
             $$0.c(1.0F);
@@ -48,8 +48,8 @@ public class csx {
       } else if (this.a <= 0) {
          this.d++;
          if (this.d >= 80) {
-            if ($$0.eD() > 10.0F || $$2 == btf.d || $$0.eD() > 1.0F && $$2 == btf.c) {
-               $$0.a($$1, $$0.dW().j(), 1.0F);
+            if ($$0.eE() > 10.0F || $$2 == btf.d || $$0.eE() > 1.0F && $$2 == btf.c) {
+               $$0.a($$1, $$0.dX().j(), 1.0F);
             }
 
             this.d = 0;

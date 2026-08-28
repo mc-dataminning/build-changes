@@ -1,27 +1,32 @@
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.google.gson.annotations.SerializedName;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 
-public class fiw extends fiv {
-   private static final Logger d = LogUtils.getLogger();
-   public String a;
-   public String b;
-   public String c;
+public abstract class fiw {
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder("{");
 
-   public static fiw a(String $$0) {
-      JsonParser $$1 = new JsonParser();
-      JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
-      fiw $$3 = new fiw();
-
-      try {
-         $$3.a = fkr.b("downloadLink", $$2, "");
-         $$3.b = fkr.b("resourcePackUrl", $$2, "");
-         $$3.c = fkr.b("resourcePackHash", $$2, "");
-      } catch (Exception var5) {
-         d.error("Could not parse WorldDownload: {}", var5.getMessage());
+      for (Field $$1 : this.getClass().getFields()) {
+         if (!b($$1)) {
+            try {
+               $$0.append(a($$1)).append("=").append($$1.get(this)).append(" ");
+            } catch (IllegalAccessException var7) {
+            }
+         }
       }
 
-      return $$3;
+      $$0.deleteCharAt($$0.length() - 1);
+      $$0.append('}');
+      return $$0.toString();
+   }
+
+   private static String a(Field $$0) {
+      SerializedName $$1 = $$0.getAnnotation(SerializedName.class);
+      return $$1 != null ? $$1.value() : $$0.getName();
+   }
+
+   private static boolean b(Field $$0) {
+      return Modifier.isStatic($$0.getModifiers());
    }
 }

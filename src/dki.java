@@ -175,7 +175,7 @@ public class dki extends doj implements dko, drp {
    }
 
    private static boolean a(jh $$0, bvj $$1) {
-      return $$1.aJ() && $$1.dt().e > (double)((float)$$0.v() + 0.6875F);
+      return $$1.aJ() && $$1.du().e > (double)((float)$$0.v() + 0.6875F);
    }
 
    private void a(dxu $$0, dhh $$1, jh $$2, dze $$3, @Nullable axe $$4) {

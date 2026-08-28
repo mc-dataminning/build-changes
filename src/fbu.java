@@ -2,7 +2,7 @@ public class fbu extends fbv {
    private final bvj b;
 
    public fbu(bvj $$0) {
-      this($$0, $$0.dt());
+      this($$0, $$0.du());
    }
 
    public fbu(bvj $$0, fbx $$1) {

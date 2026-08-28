@@ -14,12 +14,12 @@ public class cqt extends cqj {
    @Override
    protected void a(fbu $$0) {
       super.a($$0);
-      if (this.dV() instanceof ash $$1) {
+      if (this.dW() instanceof ash $$1) {
          bvj var7 = $$0.a();
          bvj $$4 = this.p();
          int $$5 = var7.aG();
          var7.d(5.0F);
-         btz $$6 = this.dW().a((cqj)this, $$4);
+         btz $$6 = this.dX().a((cqj)this, $$4);
          if (!var7.a($$1, $$6, 5.0F)) {
             var7.h($$5);
          } else {
@@ -31,12 +31,12 @@ public class cqt extends cqj {
    @Override
    protected void a(fbt $$0) {
       super.a($$0);
-      if (this.dV() instanceof ash $$1) {
+      if (this.dW() instanceof ash $$1) {
          bvj $$3 = this.p();
          if (!($$3 instanceof bwh) || $$1.N().b(dhd.c)) {
             jh $$4 = $$0.b().a($$0.c());
-            if (this.dV().u($$4)) {
-               this.dV().b($$4, djy.a(this.dV(), $$4));
+            if (this.dW().u($$4)) {
+               this.dW().b($$4, djy.a(this.dW(), $$4));
             }
          }
       }
@@ -45,7 +45,7 @@ public class cqt extends cqj {
    @Override
    protected void a(fbv $$0) {
       super.a($$0);
-      if (!this.dV().C) {
+      if (!this.dW().C) {
          this.at();
       }
    }

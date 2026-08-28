@@ -112,16 +112,16 @@ public class chx extends chw implements bwk, cif {
    @Override
    public void b(ux $$0) {
       super.b($$0);
-      if (this.go()) {
-         $$0.a("hive_pos", vm.a(this.gp()));
+      if (this.gq()) {
+         $$0.a("hive_pos", vm.a(this.gr()));
       }
 
       if (this.t()) {
          $$0.a("flower_pos", vm.a(this.p()));
       }
 
-      $$0.a("HasNectar", this.gy());
-      $$0.a("HasStung", this.gz());
+      $$0.a("HasNectar", this.gA());
+      $$0.a("HasStung", this.gB());
       $$0.a("TicksSincePollination", this.cI);
       $$0.a("CannotEnterHiveTicks", this.cJ);
       $$0.a("CropsGrownSincePollination", this.cK);
@@ -138,21 +138,21 @@ public class chx extends chw implements bwk, cif {
       this.cK = $$0.h("CropsGrownSincePollination");
       this.cS = vm.a($$0, "hive_pos").orElse(null);
       this.cR = vm.a($$0, "flower_pos").orElse(null);
-      this.a(this.dV(), $$0);
+      this.a(this.dW(), $$0);
    }
 
    @Override
    public boolean c(ash $$0, bvj $$1) {
-      btz $$2 = this.dW().a((bwf)this);
+      btz $$2 = this.dX().a((bwf)this);
       boolean $$3 = $$1.a($$0, $$2, (float)((int)this.h(bxn.c)));
       if ($$3) {
          dea.a($$0, $$1, $$2);
          if ($$1 instanceof bwf $$4) {
-            $$4.p($$4.eU() + 1);
+            $$4.p($$4.eV() + 1);
             int $$5 = 0;
-            if (this.dV().al() == btf.c) {
+            if (this.dW().al() == btf.c) {
                $$5 = 10;
-            } else if (this.dV().al() == btf.d) {
+            } else if (this.dW().al() == btf.d) {
                $$5 = 18;
             }
 
@@ -172,13 +172,13 @@ public class chx extends chw implements bwk, cif {
    @Override
    public void h() {
       super.h();
-      if (this.gy() && this.gJ() < 10 && this.ae.i() < 0.05F) {
+      if (this.gA() && this.gL() < 10 && this.ae.i() < 0.05F) {
          for (int $$0 = 0; $$0 < this.ae.a(2) + 1; $$0++) {
-            this.a(this.dV(), this.dA() - 0.3F, this.dA() + 0.3F, this.dG() - 0.3F, this.dG() + 0.3F, this.e(0.5), ls.az);
+            this.a(this.dW(), this.dB() - 0.3F, this.dB() + 0.3F, this.dH() - 0.3F, this.dH() + 0.3F, this.e(0.5), ls.az);
          }
       }
 
-      this.gH();
+      this.gJ();
    }
 
    private void a(dhh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, lq $$6) {
@@ -188,7 +188,7 @@ public class chx extends chw implements bwk, cif {
    void j(jh $$0) {
       fbx $$1 = fbx.c($$0);
       int $$2 = 0;
-      jh $$3 = this.dv();
+      jh $$3 = this.dw();
       int $$4 = (int)$$1.e - $$3.v();
       if ($$4 > 2) {
          $$2 = 4;
@@ -230,28 +230,28 @@ public class chx extends chw implements bwk, cif {
    }
 
    @bbl
-   public List<jh> gm() {
+   public List<jh> go() {
       return this.cU.f;
    }
 
-   private boolean gD() {
+   private boolean gF() {
       return this.cI > 3600;
    }
 
-   void gE() {
+   void gG() {
       this.cS = null;
       this.cM = 200;
    }
 
-   void gF() {
+   void gH() {
       this.cR = null;
       this.cQ = bae.a(this.ae, 20, 60);
    }
 
-   boolean gG() {
-      if (this.cJ <= 0 && !this.cT.l() && !this.gz() && this.O_() == null) {
-         boolean $$0 = this.gD() || c(this.dV()) || this.gy();
-         return $$0 && !this.gI();
+   boolean gI() {
+      if (this.cJ <= 0 && !this.cT.l() && !this.gB() && this.O_() == null) {
+         boolean $$0 = this.gF() || c(this.dW()) || this.gA();
+         return $$0 && !this.gK();
       } else {
          return false;
       }
@@ -269,9 +269,9 @@ public class chx extends chw implements bwk, cif {
       return bae.h($$0, this.cG, this.cF);
    }
 
-   private void gH() {
+   private void gJ() {
       this.cG = this.cF;
-      if (this.gN()) {
+      if (this.gP()) {
          this.cF = Math.min(1.0F, this.cF + 0.2F);
       } else {
          this.cF = Math.max(0.0F, this.cF - 0.24F);
@@ -280,7 +280,7 @@ public class chx extends chw implements bwk, cif {
 
    @Override
    protected void a(ash $$0) {
-      boolean $$1 = this.gz();
+      boolean $$1 = this.gB();
       if (this.bm()) {
          this.cW++;
       } else {
@@ -288,32 +288,32 @@ public class chx extends chw implements bwk, cif {
       }
 
       if (this.cW > 20) {
-         this.a($$0, this.dW().i(), 1.0F);
+         this.a($$0, this.dX().i(), 1.0F);
       }
 
       if ($$1) {
          this.cH++;
          if (this.cH % 5 == 0 && this.ae.a(bae.a(1200 - this.cH, 1, 1200)) == 0) {
-            this.a($$0, this.dW().p(), this.eD());
+            this.a($$0, this.dX().p(), this.eE());
          }
       }
 
-      if (!this.gy()) {
+      if (!this.gA()) {
          this.cI++;
       }
 
       this.a($$0, false);
    }
 
-   public void gn() {
+   public void gp() {
       this.cI = 0;
    }
 
-   private boolean gI() {
+   private boolean gK() {
       if (this.cS == null) {
          return false;
       } else {
-         duw $$0 = this.dV().c_(this.cS);
+         duw $$0 = this.dW().c_(this.cS);
          return $$0 instanceof dut && ((dut)$$0).b();
       }
    }
@@ -345,23 +345,23 @@ public class chx extends chw implements bwk, cif {
    }
 
    private boolean k(jh $$0) {
-      duw $$1 = this.dV().c_($$0);
+      duw $$1 = this.dW().c_($$0);
       return $$1 instanceof dut ? !((dut)$$1).d() : false;
    }
 
    @bbl
-   public boolean go() {
+   public boolean gq() {
       return this.cS != null;
    }
 
    @Nullable
    @bbl
-   public jh gp() {
+   public jh gr() {
       return this.cS;
    }
 
    @bbl
-   public cde gq() {
+   public cde gs() {
       return this.bT;
    }
 
@@ -371,22 +371,22 @@ public class chx extends chw implements bwk, cif {
       ahj.a(this);
    }
 
-   int gJ() {
+   int gL() {
       return this.cK;
    }
 
-   private void gK() {
+   private void gM() {
       this.cK = 0;
    }
 
-   void gL() {
+   void gN() {
       this.cK++;
    }
 
    @Override
    public void d_() {
       super.d_();
-      if (!this.dV().C) {
+      if (!this.dW().C) {
          if (this.cJ > 0) {
             this.cJ--;
          }
@@ -399,38 +399,38 @@ public class chx extends chw implements bwk, cif {
             this.cQ--;
          }
 
-         boolean $$0 = this.ad_() && !this.gz() && this.O_() != null && this.O_().g(this) < 4.0;
+         boolean $$0 = this.ad_() && !this.gB() && this.O_() != null && this.O_().g(this) < 4.0;
          this.z($$0);
-         if (this.af % 20 == 0 && !this.gM()) {
+         if (this.af % 20 == 0 && !this.gO()) {
             this.cS = null;
          }
       }
    }
 
-   boolean gM() {
-      if (!this.go()) {
+   boolean gO() {
+      if (!this.gq()) {
          return false;
       } else if (this.l(this.cS)) {
          return false;
       } else {
-         duw $$0 = this.dV().c_(this.cS);
+         duw $$0 = this.dW().c_(this.cS);
          return $$0 != null && $$0.q() == duy.I;
       }
    }
 
-   public boolean gy() {
+   public boolean gA() {
       return this.t(8);
    }
 
    void x(boolean $$0) {
       if ($$0) {
-         this.gn();
+         this.gp();
       }
 
       this.d(8, $$0);
    }
 
-   public boolean gz() {
+   public boolean gB() {
       return this.t(4);
    }
 
@@ -438,7 +438,7 @@ public class chx extends chw implements bwk, cif {
       this.d(4, $$0);
    }
 
-   private boolean gN() {
+   private boolean gP() {
       return this.t(2);
    }
 
@@ -462,8 +462,8 @@ public class chx extends chw implements bwk, cif {
       return (this.al.a(cj) & $$0) != 0;
    }
 
-   public static bxm.a gA() {
-      return chw.gr().a(bxn.s, 10.0).a(bxn.l, 0.6F).a(bxn.v, 0.3F).a(bxn.c, 2.0);
+   public static bxm.a gC() {
+      return chw.gt().a(bxn.s, 10.0).a(bxn.l, 0.6F).a(bxn.v, 0.3F).a(bxn.c, 2.0);
    }
 
    @Override
@@ -513,7 +513,7 @@ public class chx extends chw implements bwk, cif {
    }
 
    @Override
-   protected float fe() {
+   protected float fg() {
       return 0.4F;
    }
 
@@ -528,17 +528,17 @@ public class chx extends chw implements bwk, cif {
 
    @Override
    public boolean ba() {
-      return this.gB() && this.af % ca == 0;
+      return this.gD() && this.af % ca == 0;
    }
 
    @Override
-   public boolean gB() {
+   public boolean gD() {
       return !this.aJ();
    }
 
-   public void gC() {
+   public void gE() {
       this.x(false);
-      this.gK();
+      this.gM();
    }
 
    @Override
@@ -553,16 +553,16 @@ public class chx extends chw implements bwk, cif {
 
    @Override
    protected void c(ayk<etv> $$0) {
-      this.h(this.dy().b(0.0, 0.01, 0.0));
+      this.h(this.dz().b(0.0, 0.01, 0.0));
    }
 
    @Override
    public fbx cT() {
-      return new fbx(0.0, (double)(0.5F * this.cS()), (double)(this.dq() * 0.2F));
+      return new fbx(0.0, (double)(0.5F * this.cS()), (double)(this.dr() * 0.2F));
    }
 
    boolean b(jh $$0, int $$1) {
-      return $$0.a(this.dv(), (double)$$1);
+      return $$0.a(this.dw(), (double)$$1);
    }
 
    public void i(jh $$0) {
@@ -592,12 +592,12 @@ public class chx extends chw implements bwk, cif {
 
       @Override
       public boolean b() {
-         return super.b() && chx.this.ad_() && !chx.this.gz();
+         return super.b() && chx.this.ad_() && !chx.this.gB();
       }
 
       @Override
       public boolean c() {
-         return super.c() && chx.this.ad_() && !chx.this.gz();
+         return super.c() && chx.this.ad_() && !chx.this.gB();
       }
    }
 
@@ -624,14 +624,14 @@ public class chx extends chw implements bwk, cif {
 
       private boolean i() {
          chx $$0 = (chx)this.e;
-         return $$0.ad_() && !$$0.gz();
+         return $$0.ad_() && !$$0.gB();
       }
    }
 
    class d extends chx.a {
       @Override
       public boolean h() {
-         if (chx.this.go() && chx.this.gG() && chx.this.cS.a(chx.this.dt(), 2.0) && chx.this.dV().c_(chx.this.cS) instanceof dut $$1) {
+         if (chx.this.gq() && chx.this.gI() && chx.this.cS.a(chx.this.du(), 2.0) && chx.this.dW().c_(chx.this.cS) instanceof dut $$1) {
             if (!$$1.d()) {
                return true;
             }
@@ -649,7 +649,7 @@ public class chx extends chw implements bwk, cif {
 
       @Override
       public void d() {
-         if (chx.this.dV().c_(chx.this.cS) instanceof dut $$1) {
+         if (chx.this.dW().c_(chx.this.cS) instanceof dut $$1) {
             $$1.a(chx.this);
          }
       }
@@ -658,7 +658,7 @@ public class chx extends chw implements bwk, cif {
    @bbl
    public class e extends chx.a {
       public static final int b = 2400;
-      int d = chx.this.dV().A.a(10);
+      int d = chx.this.dW().A.a(10);
       private static final int e = 3;
       final List<jh> f = Lists.newArrayList();
       @Nullable
@@ -672,7 +672,7 @@ public class chx extends chw implements bwk, cif {
 
       @Override
       public boolean h() {
-         return chx.this.cS != null && !chx.this.fY() && chx.this.gG() && !this.d(chx.this.cS) && chx.this.dV().a_(chx.this.cS).a(axu.aJ);
+         return chx.this.cS != null && !chx.this.ga() && chx.this.gI() && !this.d(chx.this.cS) && chx.this.dW().a_(chx.this.cS).a(axu.aJ);
       }
 
       @Override
@@ -704,7 +704,7 @@ public class chx extends chw implements bwk, cif {
             } else if (!chx.this.bS.n()) {
                if (!chx.this.b(chx.this.cS, 16)) {
                   if (chx.this.l(chx.this.cS)) {
-                     chx.this.gE();
+                     chx.this.gG();
                   } else {
                      chx.this.j(chx.this.cS);
                   }
@@ -715,7 +715,7 @@ public class chx extends chw implements bwk, cif {
                   } else if (this.g != null && chx.this.bS.k().a(this.g)) {
                      this.i++;
                      if (this.i > 60) {
-                        chx.this.gE();
+                        chx.this.gG();
                         this.i = 0;
                      }
                   } else {
@@ -754,7 +754,7 @@ public class chx extends chw implements bwk, cif {
             this.c(chx.this.cS);
          }
 
-         chx.this.gE();
+         chx.this.gG();
       }
 
       private boolean d(jh $$0) {
@@ -769,7 +769,7 @@ public class chx extends chw implements bwk, cif {
 
    public class f extends chx.a {
       private static final int c = 2400;
-      int d = chx.this.dV().A.a(10);
+      int d = chx.this.dW().A.a(10);
 
       f() {
          this.a(EnumSet.of(cdd.a.a));
@@ -777,7 +777,7 @@ public class chx extends chw implements bwk, cif {
 
       @Override
       public boolean h() {
-         return chx.this.cR != null && !chx.this.fY() && this.k() && !chx.this.b(chx.this.cR, 2);
+         return chx.this.cR != null && !chx.this.ga() && this.k() && !chx.this.b(chx.this.cR, 2);
       }
 
       @Override
@@ -803,10 +803,10 @@ public class chx extends chw implements bwk, cif {
          if (chx.this.cR != null) {
             this.d++;
             if (this.d > this.a(2400)) {
-               chx.this.gF();
+               chx.this.gH();
             } else if (!chx.this.bS.n()) {
                if (chx.this.l(chx.this.cR)) {
-                  chx.this.gF();
+                  chx.this.gH();
                } else {
                   chx.this.j(chx.this.cR);
                }
@@ -824,10 +824,10 @@ public class chx extends chw implements bwk, cif {
 
       @Override
       public boolean h() {
-         if (chx.this.gJ() >= 10) {
+         if (chx.this.gL() >= 10) {
             return false;
          } else {
-            return chx.this.ae.i() < 0.3F ? false : chx.this.gy() && chx.this.gM();
+            return chx.this.ae.i() < 0.3F ? false : chx.this.gA() && chx.this.gO();
          }
       }
 
@@ -840,8 +840,8 @@ public class chx extends chw implements bwk, cif {
       public void a() {
          if (chx.this.ae.a(this.a(30)) == 0) {
             for (int $$0 = 1; $$0 <= 2; $$0++) {
-               jh $$1 = chx.this.dv().c($$0);
-               dxu $$2 = chx.this.dV().a_($$1);
+               jh $$1 = chx.this.dw().c($$0);
+               dxu $$2 = chx.this.dW().a_($$1);
                dkl $$3 = $$2.b();
                dxu $$4 = null;
                if ($$2.a(axu.aL)) {
@@ -862,16 +862,16 @@ public class chx extends chw implements bwk, cif {
                      }
                   } else if ($$2.a(dkn.sQ) || $$2.a(dkn.sR)) {
                      dko $$8 = (dko)$$2.b();
-                     if ($$8.b(chx.this.dV(), $$1, $$2)) {
-                        $$8.a((ash)chx.this.dV(), chx.this.ae, $$1, $$2);
-                        $$4 = chx.this.dV().a_($$1);
+                     if ($$8.b(chx.this.dW(), $$1, $$2)) {
+                        $$8.a((ash)chx.this.dW(), chx.this.ae, $$1, $$2);
+                        $$4 = chx.this.dW().a_($$1);
                      }
                   }
 
                   if ($$4 != null) {
-                     chx.this.dV().c(2011, $$1, 15);
-                     chx.this.dV().b($$1, $$4);
-                     chx.this.gL();
+                     chx.this.dW().c(2011, $$1, 15);
+                     chx.this.dW().b($$1, $$4);
+                     chx.this.gN();
                   }
                }
             }
@@ -900,7 +900,7 @@ public class chx extends chw implements bwk, cif {
    class i extends chx.a {
       @Override
       public boolean h() {
-         return chx.this.cM == 0 && !chx.this.go() && chx.this.gG();
+         return chx.this.cM == 0 && !chx.this.gq() && chx.this.gI();
       }
 
       @Override
@@ -926,8 +926,8 @@ public class chx extends chw implements bwk, cif {
       }
 
       private List<jh> k() {
-         jh $$0 = chx.this.dv();
-         chj $$1 = ((ash)chx.this.dV()).z();
+         jh $$0 = chx.this.dw();
+         chj $$1 = ((ash)chx.this.dW()).z();
          Stream<chk> $$2 = $$1.c($$0x -> $$0x.a(ayf.c), $$0, 20, chj.b.c);
          return $$2.map(chk::g).filter(chx.this::k).sorted(Comparator.comparingDouble($$1x -> $$1x.j($$0))).collect(Collectors.toList());
       }
@@ -985,9 +985,9 @@ public class chx extends chw implements bwk, cif {
       public boolean h() {
          if (chx.this.cQ > 0) {
             return false;
-         } else if (chx.this.gy()) {
+         } else if (chx.this.gA()) {
             return false;
-         } else if (chx.this.dV().af()) {
+         } else if (chx.this.dW().af()) {
             return false;
          } else {
             Optional<jh> $$0 = this.p();
@@ -1008,7 +1008,7 @@ public class chx extends chw implements bwk, cif {
             return false;
          } else if (!chx.this.t()) {
             return false;
-         } else if (chx.this.dV().af()) {
+         } else if (chx.this.dW().af()) {
             return false;
          } else {
             return this.k() ? chx.this.ae.i() < 0.2F : true;
@@ -1033,7 +1033,7 @@ public class chx extends chw implements bwk, cif {
          this.o = 0;
          this.l = 0;
          this.m = true;
-         chx.this.gn();
+         chx.this.gp();
       }
 
       @Override
@@ -1057,12 +1057,12 @@ public class chx extends chw implements bwk, cif {
          if (chx.this.t()) {
             this.o++;
             if (this.o > 600) {
-               chx.this.gF();
+               chx.this.gH();
                this.m = false;
                chx.this.cQ = 200;
             } else {
                fbx $$0 = fbx.c(chx.this.cR).b(0.0, 0.6F, 0.0);
-               if ($$0.f(chx.this.dt()) > 1.0) {
+               if ($$0.f(chx.this.du()) > 1.0) {
                   this.n = $$0;
                   this.n();
                } else {
@@ -1070,10 +1070,10 @@ public class chx extends chw implements bwk, cif {
                      this.n = $$0;
                   }
 
-                  boolean $$1 = chx.this.dt().f(this.n) <= 0.1;
+                  boolean $$1 = chx.this.du().f(this.n) <= 0.1;
                   boolean $$2 = true;
                   if (!$$1 && this.o > 600) {
-                     chx.this.gF();
+                     chx.this.gH();
                   } else {
                      if ($$1) {
                         boolean $$3 = chx.this.ae.a(25) == 0;
@@ -1111,20 +1111,20 @@ public class chx extends chw implements bwk, cif {
       }
 
       private Optional<jh> p() {
-         Iterable<jh> $$0 = jh.a(chx.this.dv(), 5, 5, 5);
+         Iterable<jh> $$0 = jh.a(chx.this.dw(), 5, 5, 5);
          Long2LongOpenHashMap $$1 = new Long2LongOpenHashMap();
 
          for (jh $$2 : $$0) {
             long $$3 = this.q.getOrDefault($$2.a(), Long.MIN_VALUE);
-            if (chx.this.dV().ac() < $$3) {
+            if (chx.this.dW().ac() < $$3) {
                $$1.put($$2.a(), $$3);
-            } else if (this.d.test(chx.this.dV().a_($$2))) {
+            } else if (this.d.test(chx.this.dW().a_($$2))) {
                euk $$4 = chx.this.bS.a($$2, 1);
                if ($$4 != null && $$4.j()) {
                   return Optional.of($$2);
                }
 
-               $$1.put($$2.a(), chx.this.dV().ac() + 600L);
+               $$1.put($$2.a(), chx.this.dW().ac() + 600L);
             }
          }
 
@@ -1159,9 +1159,9 @@ public class chx extends chw implements bwk, cif {
       @Nullable
       private fbx h() {
          fbx $$1;
-         if (chx.this.gM() && !chx.this.b(chx.this.cS, this.i())) {
+         if (chx.this.gO() && !chx.this.b(chx.this.cS, this.i())) {
             fbx $$0 = fbx.b(chx.this.cS);
-            $$1 = $$0.d(chx.this.dt()).d();
+            $$1 = $$0.d(chx.this.du()).d();
          } else {
             $$1 = chx.this.g(0.0F);
          }
@@ -1172,7 +1172,7 @@ public class chx extends chw implements bwk, cif {
       }
 
       private int i() {
-         int $$0 = !chx.this.go() && !chx.this.t() ? 16 : 24;
+         int $$0 = !chx.this.gq() && !chx.this.t() ? 16 : 24;
          return 48 - $$0;
       }
    }
@@ -1183,16 +1183,16 @@ public class chx extends chw implements bwk, cif {
 
       @Override
       public void d() {
-         if (chx.this.cR != null && chx.this.dV().p(chx.this.cR) && !this.a(chx.this.cR)) {
-            chx.this.gF();
+         if (chx.this.cR != null && chx.this.dW().p(chx.this.cR) && !this.a(chx.this.cR)) {
+            chx.this.gH();
          }
 
-         this.d = chx.this.dV().ac();
+         this.d = chx.this.dW().ac();
       }
 
       @Override
       public boolean h() {
-         return chx.this.dV().ac() > this.d + (long)this.c;
+         return chx.this.dW().ac() > this.d + (long)this.c;
       }
 
       @Override
@@ -1201,7 +1201,7 @@ public class chx extends chw implements bwk, cif {
       }
 
       private boolean a(jh $$0) {
-         return chx.this.dV().a_($$0).a(axu.W);
+         return chx.this.dW().a_($$0).a(axu.W);
       }
    }
 
@@ -1211,16 +1211,16 @@ public class chx extends chw implements bwk, cif {
 
       @Override
       public void d() {
-         if (chx.this.cS != null && chx.this.dV().p(chx.this.cS) && !chx.this.gM()) {
-            chx.this.gE();
+         if (chx.this.cS != null && chx.this.dW().p(chx.this.cS) && !chx.this.gO()) {
+            chx.this.gG();
          }
 
-         this.d = chx.this.dV().ac();
+         this.d = chx.this.dW().ac();
       }
 
       @Override
       public boolean h() {
-         return chx.this.dV().ac() > this.d + (long)this.c;
+         return chx.this.dW().ac() > this.d + (long)this.c;
       }
 
       @Override

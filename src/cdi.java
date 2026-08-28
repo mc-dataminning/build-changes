@@ -10,8 +10,8 @@ public class cdi extends cdd {
    @Override
    public boolean b() {
       asi $$0 = (asi)this.a.ah_();
-      boolean $$1 = $$0 != null && !$$0.aa_() && !$$0.gh().b && !$$0.bj() && !$$0.av;
-      return !this.a.gm() && $$1 && this.a.gC();
+      boolean $$1 = $$0 != null && !$$0.aa_() && !$$0.gj().b && !$$0.bj() && !$$0.av;
+      return !this.a.go() && $$1 && this.a.gE();
    }
 
    @Override

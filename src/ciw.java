@@ -65,7 +65,7 @@ public class ciw extends chu implements bxf<ciw.b> {
    @Override
    public void b(ux $$0) {
       super.b($$0);
-      $$0.a("Variant", this.gx());
+      $$0.a("Variant", this.gz());
    }
 
    @Override
@@ -83,24 +83,24 @@ public class ciw extends chu implements bxf<ciw.b> {
       return !this.bZ;
    }
 
-   private int gx() {
+   private int gz() {
       return this.al.a(c);
    }
 
-   public cwl gu() {
-      return c(this.gx());
+   public cwl gw() {
+      return c(this.gz());
    }
 
-   public cwl gv() {
-      return r(this.gx());
+   public cwl gx() {
+      return r(this.gz());
    }
 
-   public ciw.b gw() {
-      return s(this.gx());
+   public ciw.b gy() {
+      return s(this.gz());
    }
 
    public void a(ciw.b $$0) {
-      int $$1 = this.gx();
+      int $$1 = this.gz();
       cwl $$2 = c($$1);
       cwl $$3 = r($$1);
       this.u(a($$0, $$2, $$3));
@@ -109,7 +109,7 @@ public class ciw extends chu implements bxf<ciw.b> {
    @Override
    public void i(cxo $$0) {
       super.i($$0);
-      czx.a(ku.X, $$0, $$0x -> $$0x.a("BucketVariantTag", this.gx()));
+      czx.a(ku.X, $$0, $$0x -> $$0x.a("BucketVariantTag", this.gz()));
    }
 
    @Override
@@ -133,7 +133,7 @@ public class ciw extends chu implements bxf<ciw.b> {
    }
 
    @Override
-   protected axe gm() {
+   protected axe go() {
       return axf.An;
    }
 

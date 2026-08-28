@@ -23,15 +23,15 @@ public class bxs extends bxy<chw> {
    }
 
    protected boolean a(ash $$0, chw $$1) {
-      return $$1.gw() && this.c($$1).isPresent();
+      return $$1.gy() && this.c($$1).isPresent();
    }
 
    protected void a(ash $$0, chw $$1, long $$2) {
       chw $$3 = this.c($$1).get();
-      $$1.eb().a(cfj.r, $$3);
-      $$3.eb().a(cfj.r, $$1);
+      $$1.ec().a(cfj.r, $$3);
+      $$3.ec().a(cfj.r, $$1);
       bya.a($$1, (bwf)$$3, this.g, this.h);
-      int $$4 = 60 + $$1.dY().a(50);
+      int $$4 = 60 + $$1.dZ().a(50);
       this.j = $$2 + (long)$$4;
    }
 
@@ -40,7 +40,7 @@ public class bxs extends bxy<chw> {
          return false;
       } else {
          chw $$3 = this.a($$1);
-         return $$3.bL() && $$1.a($$3) && bya.a($$1.eb(), $$3) && $$2 <= this.j && !$$1.gj() && !$$3.gj();
+         return $$3.bL() && $$1.a($$3) && bya.a($$1.ec(), $$3) && $$2 <= this.j && !$$1.gl() && !$$3.gl();
       }
    }
 
@@ -50,31 +50,31 @@ public class bxs extends bxy<chw> {
       if ($$1.a($$3, 3.0)) {
          if ($$2 >= this.j) {
             $$1.a($$0, $$3);
-            $$1.eb().b(cfj.r);
-            $$3.eb().b(cfj.r);
+            $$1.ec().b(cfj.r);
+            $$3.ec().b(cfj.r);
          }
       }
    }
 
    protected void d(ash $$0, chw $$1, long $$2) {
-      $$1.eb().b(cfj.r);
-      $$1.eb().b(cfj.m);
-      $$1.eb().b(cfj.n);
+      $$1.ec().b(cfj.r);
+      $$1.ec().b(cfj.m);
+      $$1.ec().b(cfj.n);
       this.j = 0L;
    }
 
    private chw a(chw $$0) {
-      return (chw)$$0.eb().c(cfj.r).get();
+      return (chw)$$0.ec().c(cfj.r).get();
    }
 
    private boolean b(chw $$0) {
-      bxh<?> $$1 = $$0.eb();
+      bxh<?> $$1 = $$0.ec();
       return $$1.a(cfj.r) && $$1.c(cfj.r).get().aq() == this.f;
    }
 
    private Optional<? extends chw> c(chw $$0) {
-      return $$0.eb().c(cfj.h).get().a($$1 -> {
-         if ($$1.aq() == this.f && $$1 instanceof chw $$2 && $$0.a($$2) && !$$2.gj()) {
+      return $$0.ec().c(cfj.h).get().a($$1 -> {
+         if ($$1.aq() == this.f && $$1 instanceof chw $$2 && $$0.a($$2) && !$$2.gl()) {
             return true;
          }
 

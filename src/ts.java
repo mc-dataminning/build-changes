@@ -227,7 +227,7 @@ public class ts {
          this.H();
          fbs $$0 = this.e();
          List<bvj> $$1 = this.g().a(bvj.class, $$0.g(1.0), $$0x -> !($$0x instanceof cpw));
-         $$1.forEach($$0x -> $$0x.a(bvj.c.b));
+         $$1.forEach($$0x -> $$0x.a(bvj.d.b));
       }
    }
 

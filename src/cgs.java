@@ -11,7 +11,7 @@ public class cgs extends cgp<bwf> {
 
    @Override
    protected void a(ash $$0, bwf $$1) {
-      $$1.eb().a(cfj.i, this.a($$1));
+      $$1.ec().a(cfj.i, this.a($$1));
    }
 
    private List<bwf> a(bwf $$0) {
@@ -23,6 +23,6 @@ public class cgs extends cgp<bwf> {
    }
 
    private cfl c(bwf $$0) {
-      return $$0.eb().c(cfj.h).orElse(cfl.a());
+      return $$0.ec().c(cfj.h).orElse(cfl.a());
    }
 }

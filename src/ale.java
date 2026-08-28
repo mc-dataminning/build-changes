@@ -19,7 +19,7 @@ public class ale {
    public static final ald<cxo> h = new ald<cxo>() {
       @Override
       public zt<? super xg, cxo> codec() {
-         return cxo.h;
+         return cxo.g;
       }
 
       public cxo a(cxo $$0) {

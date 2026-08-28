@@ -58,7 +58,7 @@ public class dsx extends dkl {
       if (!$$0.C) {
          cmb $$3 = new cmb($$0, (double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, $$2);
          $$0.b($$3);
-         $$0.a(null, $$3.dA(), $$3.dC(), $$3.dG(), axf.zX, axg.e, 1.0F, 1.0F);
+         $$0.a(null, $$3.dB(), $$3.dD(), $$3.dH(), axf.zX, axg.e, 1.0F, 1.0F);
          $$0.a($$2, ecq.I, $$1);
       }
    }

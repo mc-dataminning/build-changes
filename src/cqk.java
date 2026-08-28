@@ -37,7 +37,7 @@ public class cqk extends cqp implements cqm {
    }
 
    public cqk(dhh $$0, cxo $$1, bwf $$2) {
-      this($$0, $$2, $$2.dA(), $$2.dC(), $$2.dG(), $$1);
+      this($$0, $$2, $$2.dB(), $$2.dD(), $$2.dH(), $$1);
       this.al.a(b, OptionalInt.of($$2.ar()));
       this.f = $$2;
    }
@@ -76,7 +76,7 @@ public class cqk extends cqp implements cqm {
       if (this.t()) {
          if (this.f == null) {
             this.al.a(b).ifPresent($$0x -> {
-               bvj $$1x = this.dV().a($$0x);
+               bvj $$1x = this.dW().a($$0x);
                if ($$1x instanceof bwf) {
                   this.f = (bwf)$$1x;
                }
@@ -85,29 +85,29 @@ public class cqk extends cqp implements cqm {
 
          if (this.f != null) {
             fbx $$4;
-            if (this.f.fH()) {
+            if (this.f.fJ()) {
                fbx $$0 = this.f.bT();
                double $$1 = 1.5;
                double $$2 = 0.1;
-               fbx $$3 = this.f.dy();
+               fbx $$3 = this.f.dz();
                this.f.h($$3.b($$0.d * 0.1 + ($$0.d * 1.5 - $$3.d) * 0.5, $$0.e * 0.1 + ($$0.e * 1.5 - $$3.e) * 0.5, $$0.f * 0.1 + ($$0.f * 1.5 - $$3.f) * 0.5));
                $$4 = this.f.a(cxs.vk);
             } else {
                $$4 = fbx.c;
             }
 
-            this.a_(this.f.dA() + $$4.d, this.f.dC() + $$4.e, this.f.dG() + $$4.f);
-            this.h(this.f.dy());
+            this.a_(this.f.dB() + $$4.d, this.f.dD() + $$4.e, this.f.dH() + $$4.f);
+            this.h(this.f.dz());
          }
 
          $$6 = cqr.a(this, this::b);
       } else {
          if (!this.m()) {
             double $$7 = this.P ? 1.0 : 1.15;
-            this.h(this.dy().d($$7, 1.0, $$7).b(0.0, 0.04, 0.0));
+            this.h(this.dz().d($$7, 1.0, $$7).b(0.0, 0.04, 0.0));
          }
 
-         fbx $$8 = this.dy();
+         fbx $$8 = this.dz();
          $$6 = cqr.a(this, this::b);
          this.a(bwj.a, $$8);
          this.aK();
@@ -121,15 +121,15 @@ public class cqk extends cqp implements cqm {
 
       this.E();
       if (this.d == 0 && !this.bb()) {
-         this.dV().a(null, this.dA(), this.dC(), this.dG(), axf.jj, axg.i, 3.0F, 1.0F);
+         this.dW().a(null, this.dB(), this.dD(), this.dH(), axf.jj, axg.i, 3.0F, 1.0F);
       }
 
       this.d++;
-      if (this.dV().C && this.d % 2 < 2) {
-         this.dV().a(ls.D, this.dA(), this.dC(), this.dG(), this.ae.k() * 0.05, -this.dy().e * 0.5, this.ae.k() * 0.05);
+      if (this.dW().C && this.d % 2 < 2) {
+         this.dW().a(ls.D, this.dB(), this.dD(), this.dH(), this.ae.k() * 0.05, -this.dz().e * 0.5, this.ae.k() * 0.05);
       }
 
-      if (this.d > this.e && this.dV() instanceof ash $$10) {
+      if (this.d > this.e && this.dW() instanceof ash $$10) {
          this.b($$10);
       }
    }
@@ -144,7 +144,7 @@ public class cqk extends cqp implements cqm {
    @Override
    protected void a(fbu $$0) {
       super.a($$0);
-      if (this.dV() instanceof ash $$1) {
+      if (this.dW() instanceof ash $$1) {
          this.b($$1);
       }
    }
@@ -152,8 +152,8 @@ public class cqk extends cqp implements cqm {
    @Override
    protected void a(fbt $$0) {
       jh $$1 = new jh($$0.b());
-      this.dV().a_($$1).a(this.dV(), $$1, this);
-      if (this.dV() instanceof ash $$2 && this.s()) {
+      this.dW().a_($$1).a(this.dW(), $$1, this);
+      if (this.dW() instanceof ash $$2 && this.s()) {
          this.b($$2);
       }
 
@@ -173,19 +173,19 @@ public class cqk extends cqp implements cqm {
 
       if ($$1 > 0.0F) {
          if (this.f != null) {
-            this.f.a($$0, this.dW().a(this, this.p()), 5.0F + (float)($$2.size() * 2));
+            this.f.a($$0, this.dX().a(this, this.p()), 5.0F + (float)($$2.size() * 2));
          }
 
          double $$3 = 5.0;
-         fbx $$4 = this.dt();
+         fbx $$4 = this.du();
 
-         for (bwf $$6 : this.dV().a(bwf.class, this.cR().g(5.0))) {
+         for (bwf $$6 : this.dW().a(bwf.class, this.cR().g(5.0))) {
             if ($$6 != this.f && !(this.g($$6) > 25.0)) {
                boolean $$7 = false;
 
                for (int $$8 = 0; $$8 < 2; $$8++) {
-                  fbx $$9 = new fbx($$6.dA(), $$6.e(0.5 * (double)$$8), $$6.dG());
-                  fbv $$10 = this.dV().a(new dgp($$4, $$9, dgp.a.a, dgp.b.a, this));
+                  fbx $$9 = new fbx($$6.dB(), $$6.e(0.5 * (double)$$8), $$6.dH());
+                  fbv $$10 = this.dW().a(new dgp($$4, $$9, dgp.a.a, dgp.b.a, this));
                   if ($$10.d() == fbv.a.a) {
                      $$7 = true;
                      break;
@@ -194,7 +194,7 @@ public class cqk extends cqp implements cqm {
 
                if ($$7) {
                   float $$11 = $$1 * (float)Math.sqrt((5.0 - (double)this.f($$6)) / 5.0);
-                  $$6.a($$0, this.dW().a(this, this.p()), $$11);
+                  $$6.a($$0, this.dX().a(this, this.p()), $$11);
                }
             }
          }
@@ -212,9 +212,9 @@ public class cqk extends cqp implements cqm {
 
    @Override
    public void b(byte $$0) {
-      if ($$0 == 17 && this.dV().C) {
-         fbx $$1 = this.dy();
-         this.dV().a(this.dA(), this.dC(), this.dG(), $$1.d, $$1.e, $$1.f, this.u());
+      if ($$0 == 17 && this.dW().C) {
+         fbx $$1 = this.dz();
+         this.dW().a(this.dB(), this.dD(), this.dH(), $$1.d, $$1.e, $$1.f, this.u());
       }
 
       super.b($$0);
@@ -225,7 +225,7 @@ public class cqk extends cqp implements cqm {
       super.b($$0);
       $$0.a("Life", this.d);
       $$0.a("LifeTime", this.e);
-      $$0.a("FireworksItem", this.l().a(this.dX()));
+      $$0.a("FireworksItem", this.l().a(this.dY()));
       $$0.a("ShotAtAngle", this.al.a(c));
    }
 
@@ -235,7 +235,7 @@ public class cqk extends cqp implements cqm {
       this.d = $$0.h("Life");
       this.e = $$0.h("LifeTime");
       if ($$0.b("FireworksItem", 10)) {
-         this.al.a(a, cxo.a(this.dX(), (vu)$$0.p("FireworksItem")).orElseGet(cqk::v));
+         this.al.a(a, cxo.a(this.dY(), (vu)$$0.p("FireworksItem")).orElseGet(cqk::v));
       } else {
          this.al.a(a, v());
       }
@@ -267,8 +267,8 @@ public class cqk extends cqp implements cqm {
 
    @Override
    public DoubleDoubleImmutablePair a_(bwf $$0, btz $$1) {
-      double $$2 = $$0.dt().d - this.dt().d;
-      double $$3 = $$0.dt().f - this.dt().f;
+      double $$2 = $$0.du().d - this.du().d;
+      double $$3 = $$0.du().f - this.du().f;
       return DoubleDoubleImmutablePair.of($$2, $$3);
    }
 }

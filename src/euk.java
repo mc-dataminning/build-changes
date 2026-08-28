@@ -64,9 +64,9 @@ public class euk {
 
    public fbx a(bvj $$0, int $$1) {
       eui $$2 = this.a.get($$1);
-      double $$3 = (double)$$2.a + (double)((int)($$0.dq() + 1.0F)) * 0.5;
+      double $$3 = (double)$$2.a + (double)((int)($$0.dr() + 1.0F)) * 0.5;
       double $$4 = (double)$$2.b;
-      double $$5 = (double)$$2.c + (double)((int)($$0.dq() + 1.0F)) * 0.5;
+      double $$5 = (double)$$2.c + (double)((int)($$0.dr() + 1.0F)) * 0.5;
       return new fbx($$3, $$4, $$5);
    }
 

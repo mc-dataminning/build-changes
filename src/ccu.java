@@ -17,7 +17,7 @@ public abstract class ccu extends cdd {
       if (!this.f) {
          return false;
       } else {
-         dxu $$0 = this.d.dV().a_(this.e);
+         dxu $$0 = this.d.dW().a_(this.e);
          if (!($$0.b() instanceof dmt)) {
             this.f = false;
             return false;
@@ -29,9 +29,9 @@ public abstract class ccu extends cdd {
 
    protected void a(boolean $$0) {
       if (this.f) {
-         dxu $$1 = this.d.dV().a_(this.e);
+         dxu $$1 = this.d.dW().a_(this.e);
          if ($$1.b() instanceof dmt) {
-            ((dmt)$$1.b()).a(this.d, this.d.dV(), $$1, this.e, $$0);
+            ((dmt)$$1.b()).a(this.d, this.d.dW(), $$1, this.e, $$0);
          }
       }
    }
@@ -49,16 +49,16 @@ public abstract class ccu extends cdd {
             for (int $$2 = 0; $$2 < Math.min($$1.f() + 2, $$1.e()); $$2++) {
                eui $$3 = $$1.a($$2);
                this.e = new jh($$3.a, $$3.b + 1, $$3.c);
-               if (!(this.d.i((double)this.e.u(), this.d.dC(), (double)this.e.w()) > 2.25)) {
-                  this.f = dmt.a(this.d.dV(), this.e);
+               if (!(this.d.i((double)this.e.u(), this.d.dD(), (double)this.e.w()) > 2.25)) {
+                  this.f = dmt.a(this.d.dW(), this.e);
                   if (this.f) {
                      return true;
                   }
                }
             }
 
-            this.e = this.d.dv().d();
-            this.f = dmt.a(this.d.dV(), this.e);
+            this.e = this.d.dw().d();
+            this.f = dmt.a(this.d.dW(), this.e);
             return this.f;
          } else {
             return false;
@@ -74,8 +74,8 @@ public abstract class ccu extends cdd {
    @Override
    public void d() {
       this.a = false;
-      this.b = (float)((double)this.e.u() + 0.5 - this.d.dA());
-      this.c = (float)((double)this.e.w() + 0.5 - this.d.dG());
+      this.b = (float)((double)this.e.u() + 0.5 - this.d.dB());
+      this.c = (float)((double)this.e.w() + 0.5 - this.d.dH());
    }
 
    @Override
@@ -85,8 +85,8 @@ public abstract class ccu extends cdd {
 
    @Override
    public void a() {
-      float $$0 = (float)((double)this.e.u() + 0.5 - this.d.dA());
-      float $$1 = (float)((double)this.e.w() + 0.5 - this.d.dG());
+      float $$0 = (float)((double)this.e.u() + 0.5 - this.d.dB());
+      float $$1 = (float)((double)this.e.w() + 0.5 - this.d.dH());
       float $$2 = this.b * $$0 + this.c * $$1;
       if ($$2 < 0.0F) {
          this.a = true;

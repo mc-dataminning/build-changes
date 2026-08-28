@@ -24,14 +24,14 @@ public record deo(alz b, jq<bxi> d, def e, bxl.a f) implements deq {
    @Override
    public void a(ash $$0, int $$1, ddx $$2, bvj $$3, fbx $$4, boolean $$5) {
       if ($$5 && $$3 instanceof bwf $$6) {
-         $$6.eW().a(this.a($$1, $$2.b()));
+         $$6.eY().a(this.a($$1, $$2.b()));
       }
    }
 
    @Override
    public void a(ddx $$0, bvj $$1, fbx $$2, int $$3) {
       if ($$1 instanceof bwf $$4) {
-         $$4.eW().b(this.a($$3, $$0.b()));
+         $$4.eY().b(this.a($$3, $$0.b()));
       }
    }
 

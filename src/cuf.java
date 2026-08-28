@@ -7,7 +7,12 @@ public abstract class cuf extends ctb {
    protected final cto q;
    protected final cpw r;
    protected final btb s;
-   protected final cut t = new cut();
+   protected final cut t = new cut() {
+      @Override
+      public void e() {
+         cuf.this.a(this);
+      }
+   };
    private final int p;
 
    protected boolean a(cpw $$0, boolean $$1) {
@@ -93,7 +98,7 @@ public abstract class cuf extends ctb {
 
    @Override
    public cxo b(cpw $$0, int $$1) {
-      cxo $$2 = cxo.k;
+      cxo $$2 = cxo.j;
       cuy $$3 = this.k.get($$1);
       if ($$3 != null && $$3.h()) {
          cxo $$4 = $$3.g();
@@ -102,34 +107,34 @@ public abstract class cuf extends ctb {
          int $$6 = this.q();
          if ($$1 == this.n()) {
             if (!this.a($$4, $$5, $$6, true)) {
-               return cxo.k;
+               return cxo.j;
             }
 
             $$3.b($$4, $$2);
          } else if ($$1 >= 0 && $$1 < this.n()) {
             if (!this.a($$4, $$5, $$6, false)) {
-               return cxo.k;
+               return cxo.j;
             }
          } else if (this.c($$4) && $$1 >= this.m() && $$1 < this.q()) {
             if (!this.a($$4, 0, this.n(), false)) {
-               return cxo.k;
+               return cxo.j;
             }
          } else if ($$1 >= this.m() && $$1 < this.o()) {
             if (!this.a($$4, this.p(), this.q(), false)) {
-               return cxo.k;
+               return cxo.j;
             }
          } else if ($$1 >= this.p() && $$1 < this.q() && !this.a($$4, this.m(), this.o(), false)) {
-            return cxo.k;
+            return cxo.j;
          }
 
          if ($$4.f()) {
-            $$3.e(cxo.k);
+            $$3.e(cxo.j);
          } else {
             $$3.c();
          }
 
          if ($$4.L() == $$2.L()) {
-            return cxo.k;
+            return cxo.j;
          }
 
          $$3.a($$0, $$4);

@@ -9,7 +9,7 @@ public interface fcc {
       Objects.requireNonNull($$0);
 
       return (fcc)(switch ($$0) {
-         case crv $$1 -> crv.b($$1.dV()) ? new fcl($$1, false) : new fch($$0, false);
+         case crv $$1 -> crv.b($$1.dW()) ? new fcl($$1, false) : new fch($$0, false);
          default -> new fch($$0, false);
       });
    }

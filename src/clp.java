@@ -36,8 +36,8 @@ public class clp extends bwf {
 
       return false;
    };
-   private final jz<cxo> bZ = jz.a(2, cxo.k);
-   private final jz<cxo> ca = jz.a(4, cxo.k);
+   private final jz<cxo> bZ = jz.a(2, cxo.j);
+   private final jz<cxo> ca = jz.a(4, cxo.j);
    private boolean cb;
    public long bQ;
    private int cc;
@@ -58,14 +58,14 @@ public class clp extends bwf {
    }
 
    public static bxm.a m() {
-      return ed().a(bxn.B, 0.0);
+      return ee().a(bxn.B, 0.0);
    }
 
    @Override
    public void m_() {
-      double $$0 = this.dA();
-      double $$1 = this.dC();
-      double $$2 = this.dG();
+      double $$0 = this.dB();
+      double $$1 = this.dD();
+      double $$2 = this.dH();
       super.m_();
       this.a_($$0, $$1, $$2);
    }
@@ -75,8 +75,8 @@ public class clp extends bwf {
    }
 
    @Override
-   public boolean dj() {
-      return super.dj() && this.E();
+   public boolean dk() {
+      return super.dk() && this.E();
    }
 
    @Override
@@ -92,12 +92,12 @@ public class clp extends bwf {
    }
 
    @Override
-   public Iterable<cxo> fa() {
+   public Iterable<cxo> fc() {
       return this.bZ;
    }
 
    @Override
-   public Iterable<cxo> eZ() {
+   public Iterable<cxo> fb() {
       return this.ca;
    }
 
@@ -109,7 +109,7 @@ public class clp extends bwf {
          case b:
             return this.ca.get($$0.b());
          default:
-            return cxo.k;
+            return cxo.j;
       }
    }
 
@@ -136,14 +136,14 @@ public class clp extends bwf {
       vd $$1 = new vd();
 
       for (cxo $$2 : this.ca) {
-         $$1.add($$2.b(this.dX()));
+         $$1.add($$2.b(this.dY()));
       }
 
       $$0.a("ArmorItems", $$1);
       vd $$3 = new vd();
 
       for (cxo $$4 : this.bZ) {
-         $$3.add($$4.b(this.dX()));
+         $$3.add($$4.b(this.dY()));
       }
 
       $$0.a("HandItems", $$3);
@@ -167,7 +167,7 @@ public class clp extends bwf {
 
          for (int $$2 = 0; $$2 < this.ca.size(); $$2++) {
             ux $$3 = $$1.a($$2);
-            this.ca.set($$2, cxo.a(this.dX(), $$3));
+            this.ca.set($$2, cxo.a(this.dY(), $$3));
          }
       }
 
@@ -176,7 +176,7 @@ public class clp extends bwf {
 
          for (int $$5 = 0; $$5 < this.bZ.size(); $$5++) {
             ux $$6 = $$4.a($$5);
-            this.bZ.set($$5, cxo.a(this.dX(), $$6));
+            this.bZ.set($$5, cxo.a(this.dY(), $$6));
          }
       }
 
@@ -246,7 +246,7 @@ public class clp extends bwf {
 
    @Override
    protected void o() {
-      for (bvj $$1 : this.dV().a(this, this.cR(), bY)) {
+      for (bvj $$1 : this.dW().a(this, this.cR(), bY)) {
          if (this.g($$1) <= 0.2) {
             $$1.h(this);
          }
@@ -260,7 +260,7 @@ public class clp extends bwf {
          return bti.e;
       } else if ($$0.aa_()) {
          return bti.a;
-      } else if ($$0.dV().C) {
+      } else if ($$0.dW().C) {
          return bti.b;
       } else {
          bvr $$4 = this.f($$3);
@@ -291,7 +291,7 @@ public class clp extends bwf {
    private bvr k(fbx $$0) {
       bvr $$1 = bvr.a;
       boolean $$2 = this.p();
-      double $$3 = $$0.e / (double)(this.ej() * this.ei());
+      double $$3 = $$0.e / (double)(this.ek() * this.ej());
       bvr $$4 = bvr.c;
       if ($$3 >= 0.1 && $$3 < 0.1 + ($$2 ? 0.8 : 0.45) && this.d($$4)) {
          $$1 = bvr.c;
@@ -318,7 +318,7 @@ public class clp extends bwf {
          return false;
       } else if ($$4.f() && (this.cc & 1 << $$1.b(16)) != 0) {
          return false;
-      } else if ($$0.fT() && $$4.f() && !$$2.f()) {
+      } else if ($$0.fV() && $$4.f() && !$$2.f()) {
          this.a($$1, $$2.c(1));
          return true;
       } else if ($$2.f() || $$2.L() <= 1) {
@@ -335,7 +335,7 @@ public class clp extends bwf {
 
    @Override
    public boolean a(ash $$0, btz $$1, float $$2) {
-      if (this.dQ()) {
+      if (this.dR()) {
          return false;
       } else if (!$$0.N().b(dhd.c) && $$1.d() instanceof bwh) {
          return false;
@@ -356,7 +356,7 @@ public class clp extends bwf {
          }
 
          return false;
-      } else if ($$1.a(axw.v) && this.eD() > 0.5F) {
+      } else if ($$1.a(axw.v) && this.eE() > 0.5F) {
          this.c($$0, $$1, 4.0F);
          return false;
       } else {
@@ -365,7 +365,7 @@ public class clp extends bwf {
          if (!$$3 && !$$4) {
             return false;
          } else {
-            if ($$1.d() instanceof cpw $$5 && !$$5.gh().e) {
+            if ($$1.d() instanceof cpw $$5 && !$$5.gj().e) {
                return false;
             }
 
@@ -395,9 +395,9 @@ public class clp extends bwf {
    @Override
    public void b(byte $$0) {
       if ($$0 == 32) {
-         if (this.dV().C) {
-            this.dV().a(this.dA(), this.dC(), this.dG(), axf.aC, this.dm(), 0.3F, 1.0F, false);
-            this.bQ = this.dV().ac();
+         if (this.dW().C) {
+            this.dW().a(this.dB(), this.dD(), this.dH(), axf.aC, this.dn(), 0.3F, 1.0F, false);
+            this.bQ = this.dW().ac();
          }
       } else {
          super.b($$0);
@@ -416,24 +416,24 @@ public class clp extends bwf {
    }
 
    private void G() {
-      if (this.dV() instanceof ash) {
-         ((ash)this.dV())
+      if (this.dW() instanceof ash) {
+         ((ash)this.dW())
             .a(
                new lk(ls.b, dkn.n.m()),
-               this.dA(),
+               this.dB(),
                this.e(0.6666666666666666),
-               this.dG(),
+               this.dH(),
                10,
-               (double)(this.dq() / 4.0F),
                (double)(this.dr() / 4.0F),
-               (double)(this.dq() / 4.0F),
+               (double)(this.ds() / 4.0F),
+               (double)(this.dr() / 4.0F),
                0.05
             );
       }
    }
 
    private void c(ash $$0, btz $$1, float $$2) {
-      float $$3 = this.eD();
+      float $$3 = this.eE();
       $$3 -= $$2;
       if ($$3 <= 0.5F) {
          this.d($$0, $$1);
@@ -447,7 +447,7 @@ public class clp extends bwf {
    private void c(ash $$0, btz $$1) {
       cxo $$2 = new cxo(cxs.vv);
       $$2.b(ku.g, this.an());
-      dkl.a(this.dV(), this.dv(), $$2);
+      dkl.a(this.dW(), this.dw(), $$2);
       this.d($$0, $$1);
    }
 
@@ -458,28 +458,28 @@ public class clp extends bwf {
       for (int $$2 = 0; $$2 < this.bZ.size(); $$2++) {
          cxo $$3 = this.bZ.get($$2);
          if (!$$3.f()) {
-            dkl.a(this.dV(), this.dv().d(), $$3);
-            this.bZ.set($$2, cxo.k);
+            dkl.a(this.dW(), this.dw().d(), $$3);
+            this.bZ.set($$2, cxo.j);
          }
       }
 
       for (int $$4 = 0; $$4 < this.ca.size(); $$4++) {
          cxo $$5 = this.ca.get($$4);
          if (!$$5.f()) {
-            dkl.a(this.dV(), this.dv().d(), $$5);
-            this.ca.set($$4, cxo.k);
+            dkl.a(this.dW(), this.dw().d(), $$5);
+            this.ca.set($$4, cxo.j);
          }
       }
    }
 
    private void H() {
-      this.dV().a(null, this.dA(), this.dC(), this.dG(), axf.aA, this.dm(), 1.0F, 1.0F);
+      this.dW().a(null, this.dB(), this.dD(), this.dH(), axf.aA, this.dn(), 1.0F, 1.0F);
    }
 
    @Override
    protected float g(float $$0, float $$1) {
       this.aY = this.N;
-      this.aX = this.dL();
+      this.aX = this.dM();
       return 0.0F;
    }
 
@@ -554,7 +554,7 @@ public class clp extends bwf {
 
    @Override
    public void c(ash $$0) {
-      this.a(bvj.c.a);
+      this.a(bvj.d.a);
       this.a(ecq.p);
    }
 
@@ -677,16 +677,16 @@ public class clp extends bwf {
 
    @Override
    public boolean v(bvj $$0) {
-      return $$0 instanceof cpw && !this.dV().a((cpw)$$0, this.dv());
+      return $$0 instanceof cpw && !this.dW().a((cpw)$$0, this.dw());
    }
 
    @Override
-   public bvz fw() {
+   public bvz fy() {
       return bvz.b;
    }
 
    @Override
-   public bwf.a eL() {
+   public bwf.a eM() {
       return new bwf.a(axf.aB, axf.aB);
    }
 
@@ -707,7 +707,7 @@ public class clp extends bwf {
    }
 
    @Override
-   public boolean fJ() {
+   public boolean fL() {
       return false;
    }
 
@@ -722,7 +722,7 @@ public class clp extends bwf {
    }
 
    @Override
-   public boolean fK() {
+   public boolean fM() {
       return false;
    }
 
@@ -742,12 +742,12 @@ public class clp extends bwf {
    @Override
    public fbx n(float $$0) {
       if (this.x()) {
-         fbs $$1 = this.w(false).a(this.dt());
-         jh $$2 = this.dv();
+         fbs $$1 = this.w(false).a(this.du());
+         jh $$2 = this.dw();
          int $$3 = Integer.MIN_VALUE;
 
          for (jh $$4 : jh.c(jh.a($$1.a, $$1.b, $$1.c), jh.a($$1.d, $$1.e, $$1.f))) {
-            int $$5 = Math.max(this.dV().a(dhq.b, $$4), this.dV().a(dhq.a, $$4));
+            int $$5 = Math.max(this.dW().a(dhq.b, $$4), this.dW().a(dhq.a, $$4));
             if ($$5 == 15) {
                return fbx.b($$4);
             }
@@ -765,12 +765,12 @@ public class clp extends bwf {
    }
 
    @Override
-   public cxo dI() {
+   public cxo dJ() {
       return new cxo(cxs.vv);
    }
 
    @Override
-   public boolean ex() {
+   public boolean ey() {
       return !this.cp() && !this.x();
    }
 }

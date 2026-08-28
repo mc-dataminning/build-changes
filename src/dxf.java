@@ -15,7 +15,7 @@ public class dxf {
       $$0 -> $$0.group(
                kk.c.lenientOptionalFieldOf("rewarded_players", Set.of()).forGetter($$0x -> $$0x.e),
                Codec.LONG.lenientOptionalFieldOf("state_updating_resumes_at", 0L).forGetter($$0x -> $$0x.f),
-               cxo.b.listOf().lenientOptionalFieldOf("items_to_eject", List.of()).forGetter($$0x -> $$0x.g),
+               cxo.a.listOf().lenientOptionalFieldOf("items_to_eject", List.of()).forGetter($$0x -> $$0x.g),
                Codec.INT.lenientOptionalFieldOf("total_ejections_needed", 0).forGetter($$0x -> $$0x.i)
             )
             .apply($$0, dxf::new)
@@ -94,15 +94,15 @@ public class dxf {
    }
 
    cxo f() {
-      return this.g.isEmpty() ? cxo.k : Objects.requireNonNullElse(this.g.get(this.g.size() - 1), cxo.k);
+      return this.g.isEmpty() ? cxo.j : Objects.requireNonNullElse(this.g.get(this.g.size() - 1), cxo.j);
    }
 
    cxo g() {
       if (this.g.isEmpty()) {
-         return cxo.k;
+         return cxo.j;
       } else {
          this.i();
-         return Objects.requireNonNullElse(this.g.remove(this.g.size() - 1), cxo.k);
+         return Objects.requireNonNullElse(this.g.remove(this.g.size() - 1), cxo.j);
       }
    }
 

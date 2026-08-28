@@ -157,12 +157,12 @@ public class dwz {
    public void a(dww $$0, ash $$1) {
       this.d.stream().map($$1::a).forEach($$1x -> {
          if ($$1x != null) {
-            $$1.c(3012, $$1x.dv(), dww.a.a.a());
+            $$1.c(3012, $$1x.dw(), dww.a.a.a());
             if ($$1x instanceof bwh $$2) {
                $$2.b($$1);
             }
 
-            $$1x.a(bvj.c.b);
+            $$1x.a(bvj.d.b);
          }
       });
       if (!$$0.d().i().d()) {

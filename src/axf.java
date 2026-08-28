@@ -730,7 +730,7 @@ public class axf {
    public static final ImmutableList<jq.c<axe>> mX = a();
    public static final axe mY = a("entity.horse.ambient");
    public static final axe mZ = a("entity.horse.angry");
-   public static final axe na = a("entity.horse.armor");
+   public static final jq.c<axe> na = b("entity.horse.armor");
    public static final axe nb = a("entity.horse.breathe");
    public static final axe nc = a("entity.horse.death");
    public static final axe nd = a("entity.horse.eat");

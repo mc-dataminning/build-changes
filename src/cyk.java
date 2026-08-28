@@ -21,7 +21,7 @@ public abstract class cyk extends cxk {
       if ($$1.test($$0.b(bth.b))) {
          return $$0.b(bth.b);
       } else {
-         return $$1.test($$0.b(bth.a)) ? $$0.b(bth.a) : cxo.k;
+         return $$1.test($$0.b(bth.a)) ? $$0.b(bth.a) : cxo.j;
       }
    }
 
@@ -68,7 +68,7 @@ public abstract class cyk extends cxk {
       if ($$1.f()) {
          return List.of();
       } else {
-         int $$4 = $$2.dV() instanceof ash $$3 ? dea.a($$3, $$0, $$2, 1) : 1;
+         int $$4 = $$2.dW() instanceof ash $$3 ? dea.a($$3, $$0, $$2, 1) : 1;
          List<cxo> $$5 = new ArrayList<>($$4);
          cxo $$6 = $$1.v();
 
@@ -84,9 +84,9 @@ public abstract class cyk extends cxk {
    }
 
    protected static cxo a(cxo $$0, cxo $$1, bwf $$2, boolean $$3) {
-      int $$5 = !$$3 && !$$2.fT() && $$2.dV() instanceof ash $$4 ? dea.a($$4, $$0, $$1, 1) : 0;
+      int $$5 = !$$3 && !$$2.fV() && $$2.dW() instanceof ash $$4 ? dea.a($$4, $$0, $$1, 1) : 0;
       if ($$5 > $$1.L()) {
-         return cxo.k;
+         return cxo.j;
       } else if ($$5 == 0) {
          cxo $$6 = $$1.c(1);
          $$6.b(ku.v, bbk.a);
@@ -94,7 +94,7 @@ public abstract class cyk extends cxk {
       } else {
          cxo $$7 = $$1.a($$5);
          if ($$1.f() && $$2 instanceof cpw $$8) {
-            $$8.gg().h($$1);
+            $$8.gi().h($$1);
          }
 
          return $$7;

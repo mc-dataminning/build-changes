@@ -1,11 +1,11 @@
-public class gja extends gjq {
-   private final gjl a;
+public class gja extends gjr {
+   private final gjm a;
 
-   gja(gfi $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gjl $$7) {
+   gja(gfj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gjm $$7) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       this.B = 0.96F;
       this.a = $$7;
-      this.d(1.0F);
+      this.d(1.5F);
       this.n = false;
       this.b($$7);
    }
@@ -16,8 +16,8 @@ public class gja extends gjq {
    }
 
    @Override
-   public giu b() {
-      return giu.c;
+   public giv b() {
+      return giv.c;
    }
 
    @Override
@@ -26,12 +26,14 @@ public class gja extends gjq {
       this.b(this.a);
    }
 
-   public static record a(gjl a) implements git<lw> {
-      public giq a(lw $$0, gfi $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static record a(gjm a) implements giu<lu> {
+      public gir a(lu $$0, gfj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          gja $$8 = new gja($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
          $$8.e(1.0F);
          $$8.b($$5, $$6, $$7);
-         $$8.a($$1.A.a(4) + 6);
+         $$8.A = $$0.b();
+         $$8.z = $$0.b();
+         $$8.a($$1.A.a(12) + 8);
          return $$8;
       }
    }

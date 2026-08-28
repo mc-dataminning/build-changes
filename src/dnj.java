@@ -74,7 +74,7 @@ public class dnj extends dkl {
          && $$0.A.i() < $$4 - 0.5F
          && $$3 instanceof bwf
          && ($$3 instanceof cpw || $$5.N().b(dhd.c))
-         && $$3.dq() * $$3.dq() * $$3.dr() > 0.512F) {
+         && $$3.dr() * $$3.dr() * $$3.ds() > 0.512F) {
          a($$3, $$1, $$0, $$2);
       }
 

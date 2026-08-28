@@ -70,7 +70,7 @@ public interface bwd {
    }
 
    private static <E extends bvj & bwd> void a(E $$0, bwd.a $$1) {
-      if ($$1.b != null && $$0.dV() instanceof ash $$2) {
+      if ($$1.b != null && $$0.dW() instanceof ash $$2) {
          Optional<UUID> $$3 = $$1.b.left();
          Optional<jh> $$4 = $$1.b.right();
          if ($$3.isPresent()) {
@@ -99,7 +99,7 @@ public interface bwd {
       bwd.a $$3 = $$0.T_();
       if ($$3 != null && $$3.a != null) {
          $$0.a(null);
-         if ($$0.dV() instanceof ash $$4) {
+         if ($$0.dW() instanceof ash $$4) {
             if ($$2) {
                $$0.a($$4, cxs.vA);
             }
@@ -123,7 +123,7 @@ public interface bwd {
          }
 
          bvj $$3 = $$1.A();
-         if ($$3 != null && $$3.dV() == $$1.dV()) {
+         if ($$3 != null && $$3.dW() == $$1.dW()) {
             float $$4 = $$1.f($$3);
             if (!$$1.a($$3, $$4)) {
                return;
@@ -157,10 +157,10 @@ public interface bwd {
    }
 
    private static <E extends bvj & bwd> void a(E $$0, bvj $$1, float $$2) {
-      double $$3 = ($$1.dA() - $$0.dA()) / (double)$$2;
-      double $$4 = ($$1.dC() - $$0.dC()) / (double)$$2;
-      double $$5 = ($$1.dG() - $$0.dG()) / (double)$$2;
-      $$0.h($$0.dy().b(Math.copySign($$3 * $$3 * 0.4, $$3), Math.copySign($$4 * $$4 * 0.4, $$4), Math.copySign($$5 * $$5 * 0.4, $$5)));
+      double $$3 = ($$1.dB() - $$0.dB()) / (double)$$2;
+      double $$4 = ($$1.dD() - $$0.dD()) / (double)$$2;
+      double $$5 = ($$1.dH() - $$0.dH()) / (double)$$2;
+      $$0.h($$0.dz().b(Math.copySign($$3 * $$3 * 0.4, $$3), Math.copySign($$4 * $$4 * 0.4, $$4), Math.copySign($$5 * $$5 * 0.4, $$5)));
    }
 
    default void b(bvj $$0, boolean $$1) {
@@ -176,7 +176,7 @@ public interface bwd {
          $$3.a($$1);
       }
 
-      if ($$2 && $$0.dV() instanceof ash $$4) {
+      if ($$2 && $$0.dW() instanceof ash $$4) {
          $$4.m().b($$0, new agc($$0, $$1));
       }
 
@@ -196,8 +196,8 @@ public interface bwd {
       if ($$1 == null) {
          return null;
       } else {
-         if ($$1.c != 0 && $$0.dV().C) {
-            bvj var3 = $$0.dV().a($$1.c);
+         if ($$1.c != 0 && $$0.dW().C) {
+            bvj var3 = $$0.dW().a($$1.c);
             if (var3 instanceof bvj) {
                $$1.a(var3);
             }

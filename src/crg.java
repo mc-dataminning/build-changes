@@ -6,11 +6,11 @@ public class crg extends crf {
    }
 
    public crg(cns $$0, dhh $$1) {
-      super(bvq.s, $$1, $$0, $$0.dA(), $$0.gn(), $$0.dG());
+      super(bvq.s, $$1, $$0, $$0.dB(), $$0.gp(), $$0.dH());
    }
 
    @Override
    protected void a(fbx $$0) {
-      this.dV().a(this, null, d, $$0.a(), $$0.b(), $$0.c(), 3.0F, false, dhh.a.e, ls.A, ls.z, axf.cQ);
+      this.dW().a(this, null, d, $$0.a(), $$0.b(), $$0.c(), 3.0F, false, dhh.a.e, ls.A, ls.z, axf.cQ);
    }
 }

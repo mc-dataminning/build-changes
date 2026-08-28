@@ -19,7 +19,7 @@ public class cob {
          crn.b,
          10,
          ImmutableList.of(
-            cak.a(($$0x, $$1) -> $$1.x(), ($$0x, $$1) -> $$1.eb().c(cfj.l)),
+            cak.a(($$0x, $$1) -> $$1.x(), ($$0x, $$1) -> $$1.ec().c(cfj.l)),
             bzy.a(8.0F, bst.a(30, 60)),
             new bzv(ImmutableList.of(Pair.of(bzq.a(0.2F), 2), Pair.of(caf.a(0.2F, 3), 2), Pair.of(new byi(30, 60), 1)))
          )
@@ -46,9 +46,9 @@ public class cob {
 
    public static void a(coa $$0) {
       if (!$$0.p()) {
-         $$0.eb().f();
+         $$0.ec().f();
       } else {
-         $$0.eb().a(ImmutableList.of(crn.k, crn.b));
+         $$0.ec().a(ImmutableList.of(crn.k, crn.b));
       }
    }
 }

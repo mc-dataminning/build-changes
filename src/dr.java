@@ -76,7 +76,7 @@ public record dr(dj.d d, cf e, List<dr.e<?>> f, Object2BooleanMap<aly<dcd<?>>> g
             fbx $$13 = $$3.bF();
             fbx $$14 = $$3.g(1.0F);
             fbx $$15 = $$13.b($$14.d * 100.0, $$14.e * 100.0, $$14.f * 100.0);
-            fbu $$16 = cqr.a($$3.dV(), $$3, $$13, $$15, new fbs($$13, $$15).g(1.0), $$0x -> !$$0x.aa_(), 0.0F);
+            fbu $$16 = cqr.a($$3.dW(), $$3, $$13, $$15, new fbs($$13, $$15).g(1.0), $$0x -> !$$0x.aa_(), 0.0F);
             if ($$16 == null || $$16.d() != fbv.a.c) {
                return false;
             }

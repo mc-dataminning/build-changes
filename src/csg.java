@@ -23,7 +23,7 @@ public class csg extends crv {
    @Override
    public void h() {
       super.h();
-      if (!this.dV().B_()) {
+      if (!this.dW().B_()) {
          if (this.i > 0) {
             this.i--;
          }
@@ -36,7 +36,7 @@ public class csg extends crv {
       }
 
       if (this.v() && this.ae.a(4) == 0) {
-         this.dV().a(ls.Y, this.dA(), this.dC() + 0.8, this.dG(), 0.0, 0.0, 0.0);
+         this.dW().a(ls.Y, this.dB(), this.dD() + 0.8, this.dH(), 0.0, 0.0, 0.0);
       }
    }
 
@@ -51,7 +51,7 @@ public class csg extends crv {
    }
 
    @Override
-   public cxo dI() {
+   public cxo dJ() {
       return new cxo(cxs.oh);
    }
 
@@ -86,7 +86,7 @@ public class csg extends crv {
       }
 
       if (this.i > 0) {
-         this.b = this.dt().d($$0.dt()).f();
+         this.b = this.du().d($$0.du()).f();
       }
 
       return bti.a;

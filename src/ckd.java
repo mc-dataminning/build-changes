@@ -18,7 +18,7 @@ public class ckd extends cjz implements bxf<ckd.d>, cna {
       this.L().a(40.0F);
    }
 
-   public boolean gp() {
+   public boolean gr() {
       return false;
    }
 
@@ -31,15 +31,15 @@ public class ckd extends cjz implements bxf<ckd.d>, cna {
       this.w(1 + $$0.a($$1));
    }
 
-   public int gq() {
+   public int gs() {
       return this.al.a(ca);
    }
 
    @Override
    public void b(ux $$0) {
       super.b($$0);
-      $$0.a("Variant", this.gz().g);
-      $$0.a("Strength", this.gq());
+      $$0.a("Variant", this.gB().g);
+      $$0.a("Strength", this.gs());
    }
 
    @Override
@@ -66,7 +66,7 @@ public class ckd extends cjz implements bxf<ckd.d>, cna {
       this.bU.a(2, new ckd.a(this));
    }
 
-   public static bxm.a gy() {
+   public static bxm.a gA() {
       return p();
    }
 
@@ -77,7 +77,7 @@ public class ckd extends cjz implements bxf<ckd.d>, cna {
       $$0.a(cb, 0);
    }
 
-   public ckd.d gz() {
+   public ckd.d gB() {
       return ckd.d.a(this.al.a(cb));
    }
 
@@ -104,37 +104,37 @@ public class ckd extends cjz implements bxf<ckd.d>, cna {
          $$2 = 90;
          $$3 = 6;
          $$4 = 10.0F;
-         if (this.gD() && this.Z_() == 0 && this.gt()) {
+         if (this.gF() && this.Z_() == 0 && this.gv()) {
             $$5 = true;
             this.f($$0);
          }
       }
 
-      if (this.eD() < this.eR() && $$4 > 0.0F) {
+      if (this.eE() < this.eS() && $$4 > 0.0F) {
          this.c($$4);
          $$5 = true;
       }
 
       if (this.e_() && $$2 > 0) {
-         this.dV().a(ls.O, this.d(1.0), this.dD() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
-         if (!this.dV().C) {
+         this.dW().a(ls.O, this.d(1.0), this.dE() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
+         if (!this.dW().C) {
             this.b_($$2);
          }
 
          $$5 = true;
       }
 
-      if ($$3 > 0 && ($$5 || !this.gD()) && this.gJ() < this.gP()) {
+      if ($$3 > 0 && ($$5 || !this.gF()) && this.gL() < this.gR()) {
          $$5 = true;
-         if (!this.dV().C) {
+         if (!this.dW().C) {
             this.u($$3);
          }
       }
 
       if ($$5 && !this.bb()) {
-         axe $$6 = this.go();
+         axe $$6 = this.gq();
          if ($$6 != null) {
-            this.dV().a(null, this.dA(), this.dC(), this.dG(), this.go(), this.dm(), 1.0F, 1.0F + (this.ae.i() - this.ae.i()) * 0.2F);
+            this.dW().a(null, this.dB(), this.dD(), this.dH(), this.gq(), this.dn(), 1.0F, 1.0F + (this.ae.i() - this.ae.i()) * 0.2F);
          }
       }
 
@@ -142,8 +142,8 @@ public class ckd extends cjz implements bxf<ckd.d>, cna {
    }
 
    @Override
-   public boolean fg() {
-      return this.eE() || this.gG();
+   public boolean fi() {
+      return this.eF() || this.gI();
    }
 
    @Nullable
@@ -164,12 +164,12 @@ public class ckd extends cjz implements bxf<ckd.d>, cna {
    }
 
    @Override
-   protected boolean gn() {
+   protected boolean gp() {
       return false;
    }
 
    @Override
-   protected axe gN() {
+   protected axe gP() {
       return axf.or;
    }
 
@@ -190,7 +190,7 @@ public class ckd extends cjz implements bxf<ckd.d>, cna {
 
    @Nullable
    @Override
-   protected axe go() {
+   protected axe gq() {
       return axf.ou;
    }
 
@@ -206,7 +206,7 @@ public class ckd extends cjz implements bxf<ckd.d>, cna {
 
    @Override
    public int ag_() {
-      return this.t() ? this.gq() : 0;
+      return this.t() ? this.gs() : 0;
    }
 
    @Override
@@ -220,50 +220,50 @@ public class ckd extends cjz implements bxf<ckd.d>, cna {
    }
 
    @Override
-   public int gP() {
+   public int gR() {
       return 30;
    }
 
    @Override
    public boolean a(chw $$0) {
-      return $$0 != this && $$0 instanceof ckd && this.gV() && ((ckd)$$0).gV();
+      return $$0 != this && $$0 instanceof ckd && this.gX() && ((ckd)$$0).gX();
    }
 
    @Nullable
    public ckd b(ash $$0, bva $$1) {
-      ckd $$2 = this.gA();
+      ckd $$2 = this.gC();
       if ($$2 != null) {
          this.a($$1, $$2);
          ckd $$3 = (ckd)$$1;
-         int $$4 = this.ae.a(Math.max(this.gq(), $$3.gq())) + 1;
+         int $$4 = this.ae.a(Math.max(this.gs(), $$3.gs())) + 1;
          if (this.ae.i() < 0.03F) {
             $$4++;
          }
 
          $$2.w($$4);
-         $$2.a(this.ae.h() ? this.gz() : $$3.gz());
+         $$2.a(this.ae.h() ? this.gB() : $$3.gB());
       }
 
       return $$2;
    }
 
    @Nullable
-   protected ckd gA() {
-      return bvq.ay.a(this.dV(), bvp.e);
+   protected ckd gC() {
+      return bvq.ay.a(this.dW(), bvp.e);
    }
 
    private void k(bwf $$0) {
-      cqo $$1 = new cqo(this.dV(), this);
-      double $$2 = $$0.dA() - this.dA();
-      double $$3 = $$0.e(0.3333333333333333) - $$1.dC();
-      double $$4 = $$0.dG() - this.dG();
+      cqo $$1 = new cqo(this.dW(), this);
+      double $$2 = $$0.dB() - this.dB();
+      double $$3 = $$0.e(0.3333333333333333) - $$1.dD();
+      double $$4 = $$0.dH() - this.dH();
       double $$5 = Math.sqrt($$2 * $$2 + $$4 * $$4) * 0.2F;
-      if (this.dV() instanceof ash $$6) {
-         cqp.a($$1, $$6, cxo.k, $$2, $$3 + $$5, $$4, 1.5F, 10.0F);
+      if (this.dW() instanceof ash $$6) {
+         cqp.a($$1, $$6, cxo.j, $$2, $$3 + $$5, $$4, 1.5F, 10.0F);
       }
 
       if (!this.bb()) {
-         this.dV().a(null, this.dA(), this.dC(), this.dG(), axf.ow, this.dm(), 1.0F, 1.0F + (this.ae.i() - this.ae.i()) * 0.2F);
+         this.dW().a(null, this.dB(), this.dD(), this.dH(), axf.ow, this.dn(), 1.0F, 1.0F + (this.ae.i() - this.ae.i()) * 0.2F);
       }
 
       this.ce = true;
@@ -288,12 +288,12 @@ public class ckd extends cjz implements bxf<ckd.d>, cna {
             }
          }
 
-         this.eN();
+         this.eO();
          return true;
       }
    }
 
-   public void gB() {
+   public void gD() {
       if (this.cf != null) {
          this.cf.cg = null;
       }
@@ -306,33 +306,33 @@ public class ckd extends cjz implements bxf<ckd.d>, cna {
       this.cf.cg = this;
    }
 
-   public boolean gC() {
+   public boolean gE() {
       return this.cg != null;
    }
 
-   public boolean gY() {
+   public boolean ha() {
       return this.cf != null;
    }
 
    @Nullable
-   public ckd gZ() {
+   public ckd hb() {
       return this.cf;
    }
 
    @Override
-   protected double gl() {
+   protected double gn() {
       return 2.0;
    }
 
    @Override
    protected void g(ash $$0) {
-      if (!this.gY() && this.e_()) {
+      if (!this.ha() && this.e_()) {
          super.g($$0);
       }
    }
 
    @Override
-   public boolean gQ() {
+   public boolean gS() {
       return false;
    }
 
@@ -343,7 +343,7 @@ public class ckd extends cjz implements bxf<ckd.d>, cna {
 
    @Override
    public fbx cT() {
-      return new fbx(0.0, 0.75 * (double)this.cS(), (double)this.dq() * 0.5);
+      return new fbx(0.0, 0.75 * (double)this.cS(), (double)this.dr() * 0.5);
    }
 
    @Override

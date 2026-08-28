@@ -17,11 +17,11 @@ public class ckx extends ckv {
    public void a(ash $$0) {
       if (this.d == null) {
          b.warn("Aborting charge player as no target was set.");
-         this.a.gi().a(clj.a);
+         this.a.gk().a(clj.a);
       } else if (this.e > 0 && this.e++ >= 10) {
-         this.a.gi().a(clj.a);
+         this.a.gk().a(clj.a);
       } else {
-         double $$1 = this.d.c(this.a.dA(), this.a.dC(), this.a.dG());
+         double $$1 = this.d.c(this.a.dB(), this.a.dD(), this.a.dH());
          if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
             this.e++;
          }

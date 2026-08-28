@@ -9,13 +9,13 @@ public class cgy {
 
    @Nullable
    public static jh a(bwn $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
-      jh $$8 = che.a($$0.dY(), $$1, $$2, $$3, $$4, $$5, $$6);
+      jh $$8 = che.a($$0.dZ(), $$1, $$2, $$3, $$4, $$5, $$6);
       if ($$8 == null) {
          return null;
       } else {
-         jh $$9 = che.a($$0, $$1, $$0.dY(), $$8);
+         jh $$9 = che.a($$0, $$1, $$0.dZ(), $$8);
          if (!chb.a($$9, $$0) && !chb.a($$7, $$0, $$9)) {
-            $$9 = che.a($$9, $$0.dV().am(), $$1x -> chb.c($$0, $$1x));
+            $$9 = che.a($$9, $$0.dW().am(), $$1x -> chb.c($$0, $$1x));
             return chb.b($$0, $$9) ? null : $$9;
          } else {
             return null;

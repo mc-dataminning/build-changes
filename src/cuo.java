@@ -21,7 +21,7 @@ public class cuo extends cuy {
 
    @Override
    public cxo b(int $$0, int $$1, cpw $$2) {
-      return cxo.k;
+      return cxo.j;
    }
 
    @Override
@@ -46,7 +46,7 @@ public class cuo extends cuy {
 
    @Override
    public cxo a(int $$0) {
-      return cxo.k;
+      return cxo.j;
    }
 
    @Override

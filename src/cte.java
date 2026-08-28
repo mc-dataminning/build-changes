@@ -47,12 +47,12 @@ public class cte extends cuf {
 
    @Override
    protected boolean a(cpw $$0, boolean $$1) {
-      return ($$0.fT() || $$0.cq >= this.y.b()) && this.y.b() > 0;
+      return ($$0.fV() || $$0.cq >= this.y.b()) && this.y.b() > 0;
    }
 
    @Override
    protected void a(cpw $$0, cxo $$1) {
-      if (!$$0.gh().d) {
+      if (!$$0.gj().d) {
          $$0.c(-this.y.b());
       }
 
@@ -62,17 +62,17 @@ public class cte extends cuf {
             $$2.h(this.w);
             this.s.a(1, $$2);
          } else {
-            this.s.a(1, cxo.k);
+            this.s.a(1, cxo.j);
          }
       } else if (!this.z) {
-         this.s.a(1, cxo.k);
+         this.s.a(1, cxo.j);
       }
 
       this.y.a(0);
-      this.s.a(0, cxo.k);
+      this.s.a(0, cxo.j);
       this.q.a(($$1x, $$2x) -> {
          dxu $$3 = $$1x.a_($$2x);
-         if (!$$0.fT() && $$3.a(axu.O) && $$0.dY().i() < 0.12F) {
+         if (!$$0.fV() && $$3.a(axu.O) && $$0.dZ().i() < 0.12F) {
             dxu $$4 = djl.e($$3);
             if ($$4 == null) {
                $$1x.a($$2x, false);
@@ -106,7 +106,7 @@ public class cte extends cuf {
             if ($$4.m() && $$0.b($$5)) {
                int $$8 = Math.min($$4.o(), $$4.p() / 4);
                if ($$8 <= 0) {
-                  this.t.a(0, cxo.k);
+                  this.t.a(0, cxo.j);
                   this.y.a(0);
                   return;
                }
@@ -122,7 +122,7 @@ public class cte extends cuf {
                this.w = $$9;
             } else {
                if (!$$7 && (!$$4.a($$5.h()) || !$$4.m())) {
-                  this.t.a(0, cxo.k);
+                  this.t.a(0, cxo.j);
                   this.y.a(0);
                   return;
                }
@@ -154,7 +154,7 @@ public class cte extends cuf {
                   $$22 = $$21 == $$22 ? $$22 + 1 : Math.max($$22, $$21);
                   ddy $$23 = $$20.a();
                   boolean $$24 = $$23.c($$0);
-                  if (this.r.gh().d || $$0.a(cxs.vm)) {
+                  if (this.r.gj().d || $$0.a(cxs.vm)) {
                      $$24 = true;
                   }
 
@@ -187,7 +187,7 @@ public class cte extends cuf {
                }
 
                if ($$18 && !$$17) {
-                  this.t.a(0, cxo.k);
+                  this.t.a(0, cxo.j);
                   this.y.a(0);
                   return;
                }
@@ -209,7 +209,7 @@ public class cte extends cuf {
          int $$27 = $$1 <= 0 ? 0 : (int)bae.a($$2 + (long)$$1, 0L, 2147483647L);
          this.y.a($$27);
          if ($$1 <= 0) {
-            $$4 = cxo.k;
+            $$4 = cxo.j;
          }
 
          if ($$3 == $$1 && $$3 > 0) {
@@ -220,8 +220,8 @@ public class cte extends cuf {
             this.z = true;
          }
 
-         if (this.y.b() >= 40 && !this.r.gh().d) {
-            $$4 = cxo.k;
+         if (this.y.b() >= 40 && !this.r.gj().d) {
+            $$4 = cxo.j;
          }
 
          if (!$$4.f()) {
@@ -241,7 +241,7 @@ public class cte extends cuf {
          this.t.a(0, $$4);
          this.d();
       } else {
-         this.t.a(0, cxo.k);
+         this.t.a(0, cxo.j);
          this.y.a(0);
       }
    }

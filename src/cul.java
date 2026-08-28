@@ -2,7 +2,7 @@ import javax.annotation.Nullable;
 
 public class cul implements btb {
    private final dgd b;
-   private final jz<cxo> c = jz.a(3, cxo.k);
+   private final jz<cxo> c = jz.a(3, cxo.j);
    @Nullable
    private dge d;
    private int e;
@@ -68,7 +68,7 @@ public class cul implements btb {
 
    @Override
    public boolean a(cpw $$0) {
-      return this.b.gm() == $$0;
+      return this.b.go() == $$0;
    }
 
    @Override
@@ -82,17 +82,17 @@ public class cul implements btb {
       cxo $$1;
       if (this.c.get(0).f()) {
          $$0 = this.c.get(1);
-         $$1 = cxo.k;
+         $$1 = cxo.j;
       } else {
          $$0 = this.c.get(0);
          $$1 = this.c.get(1);
       }
 
       if ($$0.f()) {
-         this.a(2, cxo.k);
+         this.a(2, cxo.j);
          this.f = 0;
       } else {
-         dgf $$4 = this.b.go();
+         dgf $$4 = this.b.gq();
          if (!$$4.isEmpty()) {
             dge $$5 = $$4.a($$0, $$1, this.e);
             if ($$5 == null || $$5.r()) {
@@ -105,7 +105,7 @@ public class cul implements btb {
                this.a(2, $$5.h());
                this.f = $$5.q();
             } else {
-               this.a(2, cxo.k);
+               this.a(2, cxo.j);
                this.f = 0;
             }
          }

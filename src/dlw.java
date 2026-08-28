@@ -90,7 +90,7 @@ public class dlw extends dmp implements dnf {
 
    @Override
    protected bti a(dxu $$0, dhh $$1, jh $$2, cpw $$3, fbt $$4) {
-      if (!$$3.gh().e) {
+      if (!$$3.gj().e) {
          return bti.e;
       } else {
          $$0 = $$0.a(b);

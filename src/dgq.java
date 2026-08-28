@@ -116,7 +116,7 @@ public interface dgq extends dgm {
 
       while ($$4.hasNext()) {
          jh $$5 = (jh)$$4.next();
-         double $$6 = $$5.b($$0.dt());
+         double $$6 = $$5.b($$0.du());
          if ($$6 < $$3 || $$6 == $$3 && ($$2 == null || $$2.i($$5) < 0)) {
             $$2 = $$5.j();
             $$3 = $$6;

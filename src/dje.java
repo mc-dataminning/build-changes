@@ -25,7 +25,7 @@ public abstract class dje extends dkl {
    }
 
    protected boolean a(dxu $$0, jh $$1, bvj $$2) {
-      return $$2.dC() < (double)$$1.v() + this.b($$0) && $$2.cR().e > (double)$$1.v() + 0.25;
+      return $$2.dD() < (double)$$1.v() + this.b($$0) && $$2.cR().e > (double)$$1.v() + 0.25;
    }
 
    @Override

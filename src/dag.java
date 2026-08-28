@@ -11,7 +11,7 @@ public final class dag {
    private static final int e = 256;
    public static final dag a = new dag(jz.a());
    public static final Codec<dag> b = dag.a.a.sizeLimitedListOf(256).xmap(dag::b, dag::f);
-   public static final zt<xg, dag> c = cxo.h.a(zr.c(256)).a(dag::new, $$0 -> $$0.f);
+   public static final zt<xg, dag> c = cxo.g.a(zr.c(256)).a(dag::new, $$0 -> $$0.f);
    private final jz<cxo> f;
    private final int g;
 
@@ -25,7 +25,7 @@ public final class dag {
    }
 
    private dag(int $$0) {
-      this(jz.a($$0, cxo.k));
+      this(jz.a($$0, cxo.j));
    }
 
    private dag(List<cxo> $$0) {
@@ -91,13 +91,13 @@ public final class dag {
 
    public void a(jz<cxo> $$0) {
       for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         cxo $$2 = $$1 < this.f.size() ? this.f.get($$1) : cxo.k;
+         cxo $$2 = $$1 < this.f.size() ? this.f.get($$1) : cxo.j;
          $$0.set($$1, $$2.v());
       }
    }
 
    public cxo a() {
-      return this.f.isEmpty() ? cxo.k : this.f.get(0).v();
+      return this.f.isEmpty() ? cxo.j : this.f.get(0).v();
    }
 
    public Stream<cxo> b() {
@@ -136,7 +136,7 @@ public final class dag {
 
    static record a(int b, cxo c) {
       public static final Codec<dag.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.intRange(0, 255).fieldOf("slot").forGetter(dag.a::a), cxo.b.fieldOf("item").forGetter(dag.a::b)).apply($$0, dag.a::new)
+         $$0 -> $$0.group(Codec.intRange(0, 255).fieldOf("slot").forGetter(dag.a::a), cxo.a.fieldOf("item").forGetter(dag.a::b)).apply($$0, dag.a::new)
       );
 
       public int a() {
